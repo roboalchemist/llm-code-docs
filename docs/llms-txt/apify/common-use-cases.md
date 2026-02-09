@@ -15,4 +15,4 @@ You can do about anything with a headless browser, but, there are some extremely
 
 ## Next up
 
-The https://docs.apify.com/academy/puppeteer-playwright/common-use-cases/logging-into-a-website.md of this section is all about logging into a website and running multiple concurrent operations within a user's account.
+The [first lesson](https://docs.apify.com/academy/puppeteer-playwright/common-use-cases/logging-into-a-website.md) of this section is all about logging into a website and running multiple concurrent operations within a user's account.

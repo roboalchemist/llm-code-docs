@@ -7,10 +7,10 @@ description: Configuration options for the Electric sync engine.
 
 # Sync service configuration
 
-This page documents the config options for [self-hosting](/docs/guides/deployment) the [Electric sync engine](/product/electric).
+This page documents the config options for [self-hosting](/docs/guides/deployment) the [Electric sync engine](/products/postgres-sync).
 
 > \[!Warning] Advanced only
-> You don't need to worry about this if you're using [Electric Cloud](/product/cloud).
+> You don't need to worry about this if you're using [Electric Cloud](/cloud).
 >
 > Also, the only required configuration options are `DATABASE_URL` and `ELECTRIC_SECRET`.
 
@@ -178,6 +178,37 @@ If you enable this feature then you should configure `ELECTRIC_SHAPE_HIBERNATE_A
 ### ELECTRIC\_SHAPE\_HIBERNATE\_AFTER
 
 The amount of time a consumer process remains active without receiving transaction operations before either [hibernating](https://www.erlang.org/doc/apps/erts/erlang#hibernate/3) or terminating (if `ELECTRIC_SHAPE_SUSPEND_CONSUMER` is `true`).
+
+## Feature Flags
+
+Feature flags enable experimental or advanced features that are not yet enabled by default in production.
+
+### ELECTRIC\_FEATURE\_FLAGS
+
+**Available flags:**
+
+* `allow_subqueries` - Enables subquery support in shape WHERE clauses
+* `tagged_subqueries` - Enables improved multi-level dependency handling
+
+### allow\_subqueries
+
+Enables support for subqueries in the WHERE clause of [shape](/docs/guides/shapes) definitions. When enabled, you can use queries in the form:
+
+```sql
+WHERE id IN (SELECT user_id FROM memberships WHERE org_id = 'org_123')
+```
+
+This allows creating shapes that filter based on related data in other tables, enabling more complex data synchronization patterns.
+
+**Status:** Experimental. Disabled by default in production.
+
+### tagged\_subqueries
+
+Subqueries create dependency trees between shapes. Without this flag, when data moves into or out of a dependent shape, the shape is invalidated (returning a 409). With this flag enabled, move operations are handled correctly without invalidation.
+
+See [discussion #2931](https://github.com/electric-sql/electric/discussions/2931) for more details about this feature.
+
+**Status:** Experimental. Disabled by default in production. Requires `allow_subqueries` to be enabled.
 
 ## Caching
 

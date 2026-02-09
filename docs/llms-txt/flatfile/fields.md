@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fields
 
 > Blueprint definitions that define the structure and validation rules for your data in Flatfile
@@ -35,7 +39,7 @@ The following examples demonstrate the configuration of isolated fields, which a
 
 This example configures a single `string` Field that is `required` and another a `number` Field with a `decimalPlaces` config.
 
-```javascript
+```javascript  theme={null}
 // Basic string field
 const nameField = {
   key: "firstName",
@@ -61,7 +65,7 @@ const ageField = {
 
 This example configures a single `enum` field with a `status` key, `Customer Status` label, and `Current status of the customer` description. It also defines four options for the field: `active`, `inactive`, `pending`, and `suspended`.
 
-```javascript
+```javascript  theme={null}
 const statusField = {
   key: "status",
   type: "enum",
@@ -105,7 +109,7 @@ Flatfile supports 9 field types for defining data structure:
 
 A property that should be stored and read as a basic string.
 
-```javascript
+```javascript  theme={null}
 {
   "key": "productCode",
   "label": "Product Code",
@@ -122,7 +126,7 @@ A property that should be stored and read as a basic string.
 
 Stores an array of string values. Useful for fields that contain multiple text entries.
 
-```javascript
+```javascript  theme={null}
 {
   "key": "tags",
   "label": "Product Tags",
@@ -137,7 +141,7 @@ A property that should be stored and read as either an integer or floating point
 **config.decimalPlaces**
 The number of decimal places to preserve accuracy to.
 
-```javascript
+```javascript  theme={null}
 {
   "key": "price",
   "label": "Retail Price",
@@ -161,7 +165,7 @@ The field to sort the options by (`label`, `value`, `ordinal`).
 **config.options**
 An array of valid options the user can select from:
 
-```json
+```json  theme={null}
 {
   "key": "status",
   "label": "Status",
@@ -194,7 +198,7 @@ Sort options by: `label`, `value`, or `ordinal`.
 **config.options**
 Array of option objects:
 
-```json
+```json  theme={null}
 {
   "key": "categories",
   "label": "Product Categories",
@@ -227,7 +231,7 @@ A `true` or `false` value type. Usually displayed as a checkbox.
 **config.allowIndeterminate**
 Allow a neither true or false state to be stored as `null`.
 
-```json
+```json  theme={null}
 {
   "key": "is_active",
   "label": "Active",
@@ -242,7 +246,7 @@ Allow a neither true or false state to be stored as `null`.
 
 Store a field as a GMT date. Data hooks must convert this value into a `YYYY-MM-DD` format in order for it to be considered a valid value.
 
-```json
+```json  theme={null}
 {
   "key": "start_date",
   "label": "Start Date",
@@ -263,7 +267,7 @@ The key of the property to use as the reference key.
 **config.filter**
 Optional filter to narrow the set of records in the reference sheet used as valid values. When provided, only records where the `refField` value matches the current record's `recordField` value will be available as options.
 
-```json
+```json  theme={null}
 {
   "key": "author",
   "type": "reference",
@@ -310,7 +314,7 @@ Consider a scenario where you want state options to be filtered based on the sel
   This example also demonstrates the use of the `ENUM_REFERENCE` [sheet treatment](/core-concepts/sheets#reference-sheets) to hide the reference sheet from the UI. You may wish to disable this treatment for testing purposes.
 </Info>
 
-```json
+```json  theme={null}
 {
   "sheets": [
     {
@@ -379,7 +383,7 @@ Consider a scenario where you want state options to be filtered based on the sel
 
 The following diagram illustrates how reference field filtering works:
 
-```mermaid
+```mermaid  theme={null}
 graph TD
     A[User selects **USA**] --> B[System filters references]
     B --> C[Show only States where **country-name** = **USA**]
@@ -398,15 +402,15 @@ graph TD
 And this is how it looks in the UI:
 
 <Frame caption="Filtering for USA States based on the selected country">
-  ![Reference Field Filtering](https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/usa-filter.png)
+    <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=503a182228da187660781b015816b240" alt="Reference Field Filtering" data-og-width="1625" width="1625" data-og-height="825" height="825" data-path="core-concepts/assets/usa-filter.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=43e9b69c8419211e815396854d8eb658 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b90dc047d2b3fb67f1e888394951f73f 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b5635200c93225dec269edbfa7678fce 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f50f9e6bb838caf571ec2bed093e84dd 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=103ab6e7e9abd844e8ef207294896c19 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/usa-filter.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a2cf84b8775574894c0271bed34f0fce 2500w" />
 </Frame>
 
 <Frame caption="Filtering for Canadian Provinces based on the selected country">
-  ![Reference Field Filtering](https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/canada-filter.png)
+    <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b2a9a0e2c5cb0269ce795a52c1e90ee2" alt="Reference Field Filtering" data-og-width="1624" width="1624" data-og-height="825" height="825" data-path="core-concepts/assets/canada-filter.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=494a780a289f14ea03b2383bd8f34220 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e21e947bf2c735f94ba8c8ee6afffd27 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ac94b092f2389dc3d370752025c1e066 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2dfa1f7ba30719a46440f2175a2f5664 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=7bdc59d48e52ce3768b6d3892f1c1b13 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/canada-filter.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=689ab2b6a7d48dc9708cc9d5fe2e53cb 2500w" />
 </Frame>
 
 <Frame caption="If data is imported that does not match the filtered options, it will result in a validation error">
-  ![Reference Field Filtering](https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/invalid-filter.png)
+    <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e53fef1beb9c853b1c311961f504d67a" alt="Reference Field Filtering" data-og-width="1625" width="1625" data-og-height="825" height="825" data-path="core-concepts/assets/invalid-filter.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=fa2c14655d2516a019ebec4a8e6f9455 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5bf20436465bbe67bb9b85657cb90f52 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=6717c5c260a48126b8d5665345194308 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=9dfd29028785fb8dce1e42b02d5469e0 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=04a5766fe7679dd08023887f52abb2e5 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/invalid-filter.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a921938b2c7411c027c7cd0e5a8063e6 2500w" />
 </Frame>
 
 ### `reference-list`
@@ -422,7 +426,7 @@ The key of the property to use as the reference key.
 **config.filter**
 Optional filter to narrow the set of records in the reference sheet used as valid values.
 
-```json
+```json  theme={null}
 {
   "key": "authors",
   "type": "reference-list",
@@ -438,7 +442,7 @@ Optional filter to narrow the set of records in the reference sheet used as vali
 
 The `filter` property on `reference-list` fields works identically to `reference` [field filters](#reference-field-filtering), but allows for multiple selections.
 
-```json
+```json  theme={null}
 {
   "key": "categories",
   "label": "Product Categories",
@@ -458,7 +462,7 @@ The `filter` property on `reference-list` fields works identically to `reference
 
 You can create complex, multi-level cascading dropdowns by chaining filtered reference fields together. This example shows a product taxonomy where department selection filters available categories, and category selection filters available subcategories:
 
-```json
+```json  theme={null}
 {
   "sheets": [
     {
@@ -541,7 +545,7 @@ Field constraints are system-level validation rules that enforce data integrity 
 
 Ensures that a field must have a non-null value. Empty cells are considered null values and will fail this constraint.
 
-```json
+```json  theme={null}
 {
   "key": "email",
   "type": "string",
@@ -556,7 +560,7 @@ You can override the message and/or the error level of the message by supplying 
 
 For example:
 
-```json
+```json  theme={null}
 {
   "key": "email",
   "type": "string",
@@ -575,7 +579,7 @@ For example:
 
 Ensures that field values appear only once across all records in the sheet. Note that null values can appear multiple times as they don't count toward uniqueness validation.
 
-```json
+```json  theme={null}
 {
   "key": "employeeId",
   "type": "string",
@@ -592,7 +596,7 @@ You can override the message and/or the error level of the message by supplying 
 
 Marks a field as computed, hiding it from the mapping process. Users will not be able to map imported data to fields with this constraint.
 
-```json
+```json  theme={null}
 {
   "key": "calculatedField",
   "type": "string",
@@ -610,7 +614,7 @@ Marks a field as computed, hiding it from the mapping process. Users will not be
 **`readonly`**
 On a field level you can restrict a user's interaction with the data to `readonly`. This feature is useful if you're inviting others to view uploaded data, but do not want to allow them to edit that field.
 
-```json
+```json  theme={null}
 {
   "fields": [
     {

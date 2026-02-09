@@ -4,30 +4,6 @@
 
 # Source: https://grafbase.com/docs/gateway/mcp.md
 
-# Source: https://grafbase.com/docs/cli/commands/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/mcp.md
-
-# Source: https://grafbase.com/docs/cli/commands/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/mcp.md
-
-# Source: https://grafbase.com/docs/cli/commands/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/mcp.md
-
-# Source: https://grafbase.com/docs/cli/commands/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/mcp.md
-
-# Source: https://grafbase.com/docs/gateway/mcp.md
-
 # Model Context Protocol
 
 MCP is a new protocol, launched in November 2024 by [Anthropic](https://anthropic.com), designed to make structured data explorable and actionable via natural language. Grafbase offers MCP support out of the box - removing the need to stand up your own standalone MCP server, configure authentication, or fine-tune access control.

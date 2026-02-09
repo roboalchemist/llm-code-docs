@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/self-hosting/docker-compose.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker Compose
 
 Lunary is designed to be simple to self-host using Docker Compose, which makes managing all components easier.
@@ -294,8 +298,3 @@ To upgrade to a newer version of Lunary:
    ```
 
 This will update all services to the latest available versions while preserving your configuration.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

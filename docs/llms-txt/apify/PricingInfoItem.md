@@ -11,10 +11,10 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#price)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L381)price
+### [**](#price)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L380)price
 
 **price: Decimal
 
-### [**](#title)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L382)title
+### [**](#title)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L381)title
 
 **title: str

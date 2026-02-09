@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/ping.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/ping.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Ping
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol includes an optional ping mechanism that allows either party
 to verify that their counterpart is still responsive and the connection is alive.

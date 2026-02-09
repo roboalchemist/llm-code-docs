@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/local-development.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create and test agents locally
 
 > Develop Agent Builder agents offline on your local machine with Writer Framework. Test agents locally before deploying to Writer Cloud.

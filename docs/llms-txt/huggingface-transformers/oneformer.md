@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/oneformer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/oneformer.md
 
 # OneFormer
 
@@ -21,8 +21,8 @@ This model was contributed by [Jitesh Jain](https://huggingface.co/praeclarumjj3
 - If you want to train the model in a distributed environment across multiple nodes, then one should update the
   `get_num_masks` function inside in the `OneFormerLoss` class of `modeling_oneformer.py`. When training on multiple nodes, this should be
   set to the average number of target masks across all nodes, as can be seen in the original implementation [here](https://github.com/SHI-Labs/OneFormer/blob/33ebb56ed34f970a30ae103e786c0cb64c653d9a/oneformer/modeling/criterion.py#L287).
-- One can use [OneFormerProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerProcessor) to prepare input images and task inputs for the model and optional targets for the model. [OneFormerProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerProcessor) wraps [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor) and [CLIPTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPTokenizer) into a single instance to both prepare the images and encode the task inputs.
-- To get the final segmentation, depending on the task, you can call [post_process_semantic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerProcessor.post_process_semantic_segmentation) or [post_process_instance_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_instance_segmentation) or [post_process_panoptic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_panoptic_segmentation). All three tasks can be solved using [OneFormerForUniversalSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerForUniversalSegmentation) output, panoptic segmentation accepts an optional `label_ids_to_fuse` argument to fuse instances of the target object/s (e.g. sky) together.
+- One can use [OneFormerProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor) to prepare input images and task inputs for the model and optional targets for the model. [OneFormerProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor) wraps [OneFormerImageProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor) and [CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer) into a single instance to both prepare the images and encode the task inputs.
+- To get the final segmentation, depending on the task, you can call `post_process_semantic_segmentation()` or [post_process_instance_segmentation()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_instance_segmentation) or [post_process_panoptic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_panoptic_segmentation). All three tasks can be solved using [OneFormerForUniversalSegmentation](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerForUniversalSegmentation) output, panoptic segmentation accepts an optional `label_ids_to_fuse` argument to fuse instances of the target object/s (e.g. sky) together.
 
 ## Resources
 
@@ -37,9 +37,9 @@ The resource should ideally demonstrate something new instead of duplicating an 
 
 #### transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput[[transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L821)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L820)
 
-Class for outputs of [OneFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerModel). This class returns all the needed hidden states to compute the logits.
+Class for outputs of [OneFormerModel](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerModel). This class returns all the needed hidden states to compute the logits.
 
 **Parameters:**
 
@@ -67,22 +67,22 @@ attentions (`tuple(tuple(torch.FloatTensor))`, *optional*, returned when `output
 
 #### transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput[[transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L878)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L877)
 
 Class for outputs of `OneFormerForUniversalSegmentationOutput`.
 
-This output can be directly passed to [post_process_semantic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_semantic_segmentation) or
-[post_process_instance_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_instance_segmentation) or
-[post_process_panoptic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_panoptic_segmentation) depending on the task. Please, see
+This output can be directly passed to [post_process_semantic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_semantic_segmentation) or
+[post_process_instance_segmentation()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_instance_segmentation) or
+[post_process_panoptic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_panoptic_segmentation) depending on the task. Please, see
 [`~OneFormerImageProcessor] for details regarding usage.
 
 **Parameters:**
 
 loss (`torch.Tensor`, *optional*) : The computed loss, returned when labels are present.
 
-class_queries_logits (`torch.FloatTensor`, *optional*, defaults to `None`) : A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each query. Note the `+ 1` is needed because we incorporate the null class.
+class_queries_logits (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) : A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each query. Note the `+ 1` is needed because we incorporate the null class.
 
-masks_queries_logits (`torch.FloatTensor`, *optional*, defaults to `None`) : A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each query.
+masks_queries_logits (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) : A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each query.
 
 auxiliary_predictions (`List` of Dict of `str, torch.FloatTensor`, *optional*) : List of class and mask predictions from each layer of the transformer decoder.
 
@@ -112,16 +112,16 @@ attentions (`tuple(tuple(torch.FloatTensor))`, *optional*, returned when `output
 
 #### transformers.OneFormerConfig[[transformers.OneFormerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/configuration_oneformer.py#L28)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/configuration_oneformer.py#L25)
 
-This is the configuration class to store the configuration of a [OneFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [OneFormerModel](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerModel). It is used to instantiate a
 OneFormer model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the OneFormer
 [shi-labs/oneformer_ade20k_swin_tiny](https://huggingface.co/shi-labs/oneformer_ade20k_swin_tiny) architecture
 trained on [ADE20k-150](https://huggingface.co/datasets/scene_parse_150).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 ```python
@@ -137,7 +137,7 @@ Examples:
 
 **Parameters:**
 
-backbone_config (`PreTrainedConfig`, *optional*, defaults to `SwinConfig`) : The configuration of the backbone model.
+backbone_config (`Union[dict, "PreTrainedConfig"]`, *optional*, defaults to `SwinConfig()`) : The configuration of the backbone model.
 
 backbone (`str`, *optional*) : Name of backbone to use when `backbone_config` is `None`. If `use_pretrained_backbone` is `True`, this will load the corresponding pretrained weights from the timm or transformers library. If `use_pretrained_backbone` is `False`, this loads the backbone's config and uses that to initialize the backbone with random weights.
 
@@ -231,15 +231,15 @@ common_stride (`int`, *optional*, defaults to 4) : Common stride used for featur
 
 #### transformers.OneFormerImageProcessor[[transformers.OneFormerImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer.py#L400)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer.py#L399)
 
 Constructs a OneFormer image processor. The image processor can be used to prepare image(s), task input(s) and
 optional text inputs and targets for the model.
 
-This image processor inherits from [BaseImageProcessor](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BaseImageProcessor) which contains most of the main methods. Users should
+This image processor inherits from [BaseImageProcessor](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BaseImageProcessor) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-preprocesstransformers.OneFormerImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer.py#L691[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "task_inputs", "val": ": typing.Optional[list[str]] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": typing.Optional[dict[int, int]] = None"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "resample", "val": ": typing.Optional[PIL.Image.Resampling] = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "ignore_index", "val": ": typing.Optional[int] = None"}, {"name": "do_reduce_labels", "val": ": typing.Optional[bool] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension] = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]
+preprocesstransformers.OneFormerImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer.py#L690[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "task_inputs", "val": ": list[str] | None = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": dict[int, int] | None = None"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "resample", "val": ": PIL.Image.Resampling | None = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | list[float] | None = None"}, {"name": "image_std", "val": ": float | list[float] | None = None"}, {"name": "ignore_index", "val": ": int | None = None"}, {"name": "do_reduce_labels", "val": ": bool | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]
 
 **Parameters:**
 
@@ -272,14 +272,14 @@ num_text (`int`, *optional*) : Number of text entries in the text input list.
 num_labels (`int`, *optional*) : The number of labels in the segmentation map.
 #### post_process_semantic_segmentation[[transformers.OneFormerImageProcessor.post_process_semantic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer.py#L1102)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer.py#L1101)
 
-Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
+Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
 PyTorch.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 target_sizes (`list[tuple[int, int]]`, *optional*) : List of length (batch_size), where each list item (`tuple[int, int]]`) corresponds to the requested final size (height, width) of each prediction. If left to None, predictions will not be resized.
 
@@ -292,7 +292,7 @@ corresponding to the target_sizes entry (if `target_sizes` is specified). Each e
 `torch.Tensor` correspond to a semantic class id.
 #### post_process_instance_segmentation[[transformers.OneFormerImageProcessor.post_process_instance_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer.py#L1152)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer.py#L1151)
 
 Converts the output of `OneFormerForUniversalSegmentationOutput` into image instance segmentation
 predictions. Only supports PyTorch.
@@ -331,14 +331,14 @@ A list of dictionaries, one per image, each dictionary containing two keys:
   - **score** -- Prediction score of segment with `segment_id`.
 #### post_process_panoptic_segmentation[[transformers.OneFormerImageProcessor.post_process_panoptic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer.py#L1272)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer.py#L1271)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into image panoptic segmentation
 predictions. Only supports PyTorch.
 
 **Parameters:**
 
-outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
+outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -369,11 +369,11 @@ A list of dictionaries, one per image, each dictionary containing two keys:
 
 #### transformers.OneFormerImageProcessorFast[[transformers.OneFormerImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L303)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L302)
 
 Constructs a fast Oneformer image processor.
 
-preprocesstransformers.OneFormerImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L330[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "task_inputs", "val": ": typing.Optional[list[str]] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": typing.Union[list[dict[int, int]], dict[int, int], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.oneformer.image_processing_oneformer.OneFormerImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) --
+preprocesstransformers.OneFormerImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L329[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "task_inputs", "val": ": list[str] | None = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": list[dict[int, int]] | dict[int, int] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.oneformer.image_processing_oneformer.OneFormerImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **task_inputs** (`list[str]`, *optional*) --
@@ -382,40 +382,40 @@ preprocesstransformers.OneFormerImageProcessorFast.preprocesshttps://github.com/
   The segmentation maps.
 - **instance_id_to_semantic_id** (`Union[list[dict[int, int]], dict[int, int]]`, *optional*) --
   A mapping from instance IDs to semantic IDs.
-- **do_convert_rgb** (`bool`, *optional*) --
+- **do_convert_rgb** (`bool | None.do_convert_rgb`) --
   Whether to convert the image to RGB.
-- **do_resize** (`bool`, *optional*) --
+- **do_resize** (`bool | None.do_resize`) --
   Whether to resize the image.
-- **size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Describes the maximum input dimensions to the model.
-- **crop_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **crop_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Size of the output image after applying `center_crop`.
 - **resample** (`Annotated[Union[PILImageResampling, int, NoneType], None]`) --
   Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only
   has an effect if `do_resize` is set to `True`.
-- **do_rescale** (`bool`, *optional*) --
+- **do_rescale** (`bool | None.do_rescale`) --
   Whether to rescale the image.
-- **rescale_factor** (`float`, *optional*) --
+- **rescale_factor** (`float | None.rescale_factor`) --
   Rescale factor to rescale the image by if `do_rescale` is set to `True`.
-- **do_normalize** (`bool`, *optional*) --
+- **do_normalize** (`bool | None.do_normalize`) --
   Whether to normalize the image.
-- **image_mean** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_mean** (`float | list[float] | tuple[float, ...] | None.image_mean`) --
   Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
-- **image_std** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_std** (`float | list[float] | tuple[float, ...] | None.image_std`) --
   Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to
   `True`.
-- **do_pad** (`bool`, *optional*) --
+- **do_pad** (`bool | None.do_pad`) --
   Whether to pad the image. Padding is done either to the largest size in the batch
   or to a fixed square size per image. The exact padding strategy depends on the model.
-- **pad_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **pad_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size
   provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest
   height and width in the batch. Applied only when `do_pad=True.`
-- **do_center_crop** (`bool`, *optional*) --
+- **do_center_crop** (`bool | None.do_center_crop`) --
   Whether to center crop the image.
-- **data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **data_format** (`str | ~image_utils.ChannelDimension | None.data_format`) --
   Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
-- **input_data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **input_data_format** (`str | ~image_utils.ChannelDimension | None.input_data_format`) --
   The channel dimension format for the input image. If unset, the channel dimension format is inferred
   from the input image. Can be one of:
   - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format.
@@ -423,13 +423,13 @@ preprocesstransformers.OneFormerImageProcessorFast.preprocesshttps://github.com/
   - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 - **device** (`Annotated[Union[str, torch.device, NoneType], None]`) --
   The device to process the images on. If unset, the device is inferred from the input images.
-- **return_tensors** (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) --
+- **return_tensors** (`Annotated[str | ~utils.generic.TensorType | None, None]`) --
   Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
-- **disable_grouping** (`bool`, *optional*) --
+- **disable_grouping** (`bool | None.disable_grouping`) --
   Whether to disable grouping of images by size to process them individually and not in batches.
   If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on
   empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
-- **image_seq_length** (`int`, *optional*) --
+- **image_seq_length** (`int | None.image_seq_length`) --
   The number of image tokens to be used for each image in the input.
   Added for backward compatibility but this should be set as a processor attribute in future models.
 - **repo_path** (`str`, *optional*, defaults to `shi-labs/oneformer_demo`) --
@@ -449,7 +449,7 @@ preprocesstransformers.OneFormerImageProcessorFast.preprocesshttps://github.com/
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
 task_inputs (`list[str]`, *optional*) : List of tasks (`"panoptic"`, `"instance"`, `"semantic"`) for each image in the batch.
 
@@ -457,43 +457,43 @@ segmentation_maps (`ImageInput`, *optional*) : The segmentation maps.
 
 instance_id_to_semantic_id (`Union[list[dict[int, int]], dict[int, int]]`, *optional*) : A mapping from instance IDs to semantic IDs.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 repo_path (`str`, *optional*, defaults to `shi-labs/oneformer_demo`) : Path to a local directory or Hugging Face Hub repository containing model metadata.
 
@@ -516,14 +516,14 @@ do_reduce_labels (`bool`, *optional*, defaults to `False`) : Whether to decremen
   initialization.
 #### post_process_semantic_segmentation[[transformers.OneFormerImageProcessorFast.post_process_semantic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L690)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L689)
 
-Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
+Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
 PyTorch.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 target_sizes (`List[Tuple[int, int]]`, *optional*) : List of length (batch_size), where each list item (`Tuple[int, int]]`) corresponds to the requested final size (height, width) of each prediction. If left to None, predictions will not be resized.
 
@@ -536,7 +536,7 @@ corresponding to the target_sizes entry (if `target_sizes` is specified). Each e
 `torch.Tensor` correspond to a semantic class id.
 #### post_process_instance_segmentation[[transformers.OneFormerImageProcessorFast.post_process_instance_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L742)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L741)
 
 Converts the output of `OneFormerForUniversalSegmentationOutput` into image instance segmentation
 predictions. Only supports PyTorch.
@@ -575,14 +575,14 @@ A list of dictionaries, one per image, each dictionary containing two keys:
   - **score** -- Prediction score of segment with `segment_id`.
 #### post_process_panoptic_segmentation[[transformers.OneFormerImageProcessorFast.post_process_panoptic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L862)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/image_processing_oneformer_fast.py#L861)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into image panoptic segmentation
 predictions. Only supports PyTorch.
 
 **Parameters:**
 
-outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
+outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -613,54 +613,65 @@ A list of dictionaries, one per image, each dictionary containing two keys:
 
 #### transformers.OneFormerProcessor[[transformers.OneFormerProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/processing_oneformer.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/processing_oneformer.py#L27)
 
-Constructs an OneFormer processor which wraps [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor) and
-[CLIPTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPTokenizer)/[CLIPTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPTokenizer) into a single processor that inherits both the image processor and
-tokenizer functionalities.
+Constructs a OneFormerProcessor which wraps a image processor and a tokenizer into a single processor.
 
-encode_inputstransformers.OneFormerProcessor.encode_inputshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/processing_oneformer.py#L134[{"name": "images", "val": " = None"}, {"name": "task_inputs", "val": " = None"}, {"name": "segmentation_maps", "val": " = None"}, {"name": "**kwargs", "val": ""}]
+[OneFormerProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor) offers all the functionalities of [OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast) and [CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer). See the
+[~OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast) and [~CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer) for more information.
 
-This method forwards all its arguments to `OneFormerImageProcessor.encode_inputs()` and then tokenizes the
-task_inputs. Please refer to the docstring of this method for more information.
+__call__transformers.OneFormerProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/processing_oneformer.py#L61[{"name": "images", "val": " = None"}, {"name": "task_inputs", "val": " = None"}, {"name": "segmentation_maps", "val": " = None"}, {"name": "**kwargs", "val": ""}]- **images** (``) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **task_inputs** (`str` or `list[str]`, *required*) --
+  The task type(s) for segmentation. Must be one or more of `"semantic"`, `"instance"`, or `"panoptic"`.
+  Can be a single string for a single image, or a list of strings (one per image) for batch processing.
+  The task type determines which type of segmentation the model will perform on the input images.
+- **segmentation_maps** (`ImageInput`, *optional*) --
+  The corresponding semantic segmentation maps with the pixel-wise annotations.
+
+  (`bool`, *optional*, defaults to `True`):
+  Whether or not to pad images up to the largest image in a batch and create a pixel mask.
+
+  If left to the default, will return a pixel mask that is:
+
+  - 1 for pixels that are real (i.e. **not masked**),
+  - 0 for pixels that are padding (i.e. **masked**).
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+- **task_inputs** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 **Parameters:**
 
-image_processor ([OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor)) : The image processor is a required input.
+image_processor (`OneFormerImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([`CLIPTokenizer`, `CLIPTokenizerFast`]) : The tokenizer is a required input.
+tokenizer (`CLIPTokenizer`) : The tokenizer is a required input.
 
-max_seq_len (`int`, *optional*, defaults to 77)) : Sequence length for input text list.
+max_seq_length (`int`, *optional*, defaults to `77`) : Maximum sequence length for encoding class names and text inputs. This parameter controls the maximum number of tokens used when tokenizing class names and other text inputs for the model.
 
-task_seq_len (`int`, *optional*, defaults to 77) : Sequence length for input task token.
-#### post_process_instance_segmentation[[transformers.OneFormerProcessor.post_process_instance_segmentation]]
+task_seq_length (`int`, *optional*, defaults to `77`) : Maximum sequence length specifically for encoding task descriptions. Task descriptions (e.g., "the task is semantic") are tokenized with this length limit, which may differ from the general text sequence length.
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/processing_oneformer.py#L181)
+**Returns:**
 
-This method forwards all its arguments to [OneFormerImageProcessor.post_process_instance_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_instance_segmentation).
-Please refer to the docstring of this method for more information.
-#### post_process_panoptic_segmentation[[transformers.OneFormerProcessor.post_process_panoptic_segmentation]]
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/processing_oneformer.py#L188)
-
-This method forwards all its arguments to [OneFormerImageProcessor.post_process_panoptic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_panoptic_segmentation).
-Please refer to the docstring of this method for more information.
-#### post_process_semantic_segmentation[[transformers.OneFormerProcessor.post_process_semantic_segmentation]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/processing_oneformer.py#L174)
-
-This method forwards all its arguments to [OneFormerImageProcessor.post_process_semantic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor.post_process_semantic_segmentation).
-Please refer to the docstring of this method for more information.
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+- **task_inputs** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 ## OneFormerModel[[transformers.OneFormerModel]]
 
 #### transformers.OneFormerModel[[transformers.OneFormerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L2849)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L2818)
 
 The bare Oneformer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -668,12 +679,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.OneFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L2866[{"name": "pixel_values", "val": ": Tensor"}, {"name": "task_inputs", "val": ": Tensor"}, {"name": "text_inputs", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "pixel_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.OneFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L2835[{"name": "pixel_values", "val": ": Tensor"}, {"name": "task_inputs", "val": ": Tensor"}, {"name": "text_inputs", "val": ": torch.Tensor | None = None"}, {"name": "pixel_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor). See `OneFormerImageProcessor.__call__()` for details ([OneFormerProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerProcessor) uses
-  [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor) for processing images).
+  [OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast). See [OneFormerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([OneFormerProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor) uses
+  [OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast) for processing images).
 - **task_inputs** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
-  Task inputs. Task inputs can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor). See `OneFormerProcessor.__call__()`
+  Task inputs. Task inputs can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor). See [OneFormerProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor.__call__)
   for details.
 - **text_inputs** (`list[torch.Tensor]`, *optional*) --
   Tensor of shape `(num_queries, sequence_length)` to be fed to a model
@@ -691,9 +702,9 @@ forwardtransformers.OneFormerModel.forwardhttps://github.com/huggingface/transfo
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
+elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
 
 - **encoder_hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each stage) of
   shape `(batch_size, num_channels, height, width)`. Hidden-states (also called feature maps) of the encoder
@@ -713,7 +724,7 @@ elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5
 - **task_token** (`torch.FloatTensor` of shape `(batch_size, hidden_dim)`) -- 1D task token to condition the queries.
 - **attentions** (`tuple(tuple(torch.FloatTensor))`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `tuple(torch.FloatTensor)` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`. Self and Cross Attentions weights from transformer decoder.
-The [OneFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerModel) forward method, overrides the `__call__` special method.
+The [OneFormerModel](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -724,12 +735,14 @@ Example:
 ```python
 >>> import torch
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import OneFormerProcessor, OneFormerModel
 
 >>> # download texting image
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> # load processor for preprocessing the inputs
 >>> processor = OneFormerProcessor.from_pretrained("shi-labs/oneformer_ade20k_swin_tiny")
@@ -748,15 +761,15 @@ Example:
 
 **Parameters:**
 
-config ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or a tuple of
+A [transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
+elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
 
 - **encoder_hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each stage) of
   shape `(batch_size, num_channels, height, width)`. Hidden-states (also called feature maps) of the encoder
@@ -781,11 +794,11 @@ elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5
 
 #### transformers.OneFormerForUniversalSegmentation[[transformers.OneFormerForUniversalSegmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L2983)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L2954)
 
 OneFormer Model for instance, semantic and panoptic image segmentation.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -793,12 +806,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.OneFormerForUniversalSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/oneformer/modeling_oneformer.py#L3050[{"name": "pixel_values", "val": ": Tensor"}, {"name": "task_inputs", "val": ": Tensor"}, {"name": "text_inputs", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "mask_labels", "val": ": typing.Optional[list[torch.Tensor]] = None"}, {"name": "class_labels", "val": ": typing.Optional[list[torch.Tensor]] = None"}, {"name": "pixel_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_auxiliary_logits", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.OneFormerForUniversalSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/oneformer/modeling_oneformer.py#L3021[{"name": "pixel_values", "val": ": Tensor"}, {"name": "task_inputs", "val": ": Tensor"}, {"name": "text_inputs", "val": ": torch.Tensor | None = None"}, {"name": "mask_labels", "val": ": list[torch.Tensor] | None = None"}, {"name": "class_labels", "val": ": list[torch.Tensor] | None = None"}, {"name": "pixel_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_auxiliary_logits", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor). See `OneFormerImageProcessor.__call__()` for details ([OneFormerProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerProcessor) uses
-  [OneFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerImageProcessor) for processing images).
+  [OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast). See [OneFormerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([OneFormerProcessor](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor) uses
+  [OneFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerImageProcessorFast) for processing images).
 - **task_inputs** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
-  Task inputs. Task inputs can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor). See `OneFormerProcessor.__call__()`
+  Task inputs. Task inputs can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor). See [OneFormerProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerProcessor.__call__)
   for details.
 - **text_inputs** (`list[torch.Tensor]`, *optional*) --
   Tensor of shape `(num_queries, sequence_length)` to be fed to a model
@@ -823,14 +836,14 @@ forwardtransformers.OneFormerForUniversalSegmentation.forwardhttps://github.com/
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or `tuple(torch.FloatTensor)`A [transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or `tuple(torch.FloatTensor)`A [transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
+elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
 
 - **loss** (`torch.Tensor`, *optional*) -- The computed loss, returned when labels are present.
-- **class_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
+- **class_queries_logits** (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
   query. Note the `+ 1` is needed because we incorporate the null class.
-- **masks_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
+- **masks_queries_logits** (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
   query.
 - **auxiliary_predictions** (`List` of Dict of `str, torch.FloatTensor`, *optional*) -- List of class and mask predictions from each layer of the transformer decoder.
 - **encoder_hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each stage) of
@@ -851,7 +864,7 @@ elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5
 - **task_token** (`torch.FloatTensor` of shape `(batch_size, hidden_dim)`) -- 1D task token to condition the queries.
 - **attentions** (`tuple(tuple(torch.FloatTensor))`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `tuple(torch.FloatTensor)` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`. Self and Cross Attentions weights from transformer decoder.
-The [OneFormerForUniversalSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerForUniversalSegmentation) forward method, overrides the `__call__` special method.
+The [OneFormerForUniversalSegmentation](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerForUniversalSegmentation) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -864,7 +877,8 @@ Universal segmentation example:
 ```python
 >>> from transformers import OneFormerProcessor, OneFormerForUniversalSegmentation
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> import torch
 
 >>> # load OneFormer fine-tuned on ADE20k for universal segmentation
@@ -874,7 +888,8 @@ Universal segmentation example:
 >>> url = (
 ...     "https://huggingface.co/datasets/hf-internal-testing/fixtures_ade20k/resolve/main/ADE_val_00000001.jpg"
 ... )
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> # Semantic Segmentation
 >>> inputs = processor(image, ["semantic"], return_tensors="pt")
@@ -930,20 +945,20 @@ Universal segmentation example:
 
 **Parameters:**
 
-config ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or a tuple of
+A [transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.models.oneformer.modeling_oneformer.OneFormerForUniversalSegmentationOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
+elements depending on the configuration ([OneFormerConfig](/docs/transformers/v5.0.0/en/model_doc/oneformer#transformers.OneFormerConfig)) and inputs.
 
 - **loss** (`torch.Tensor`, *optional*) -- The computed loss, returned when labels are present.
-- **class_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
+- **class_queries_logits** (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
   query. Note the `+ 1` is needed because we incorporate the null class.
-- **masks_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
+- **masks_queries_logits** (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
   query.
 - **auxiliary_predictions** (`List` of Dict of `str, torch.FloatTensor`, *optional*) -- List of class and mask predictions from each layer of the transformer decoder.
 - **encoder_hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each stage) of

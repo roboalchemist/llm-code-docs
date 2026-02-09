@@ -29,18 +29,23 @@ import { FunnelChart } from '@mui/x-charts-pro';
 | disableAxisListener | `bool` | `false` | No |  |
 | gap | `number` | `0` | No |  |
 | height | `number` | - | No |  |
+| hiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'funnel' }>` | - | No |  |
 | hideLegend | `bool` | `false` | No |  |
 | highlightedItem | `{ dataIndex?: number, seriesId: number \| string }` | - | No |  |
 | id | `string` | - | No |  |
+| initialHiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'funnel' }>` | - | No |  |
 | loading | `bool` | `false` | No |  |
 | localeText | `object` | - | No |  |
 | margin | `number \| { bottom?: number, left?: number, right?: number, top?: number }` | - | No |  |
 | onAxisClick | `function(event: MouseEvent, data: null \| ChartsAxisData) => void` | - | No |  |
+| onHiddenItemsChange | `function(hiddenItems: Array<VisibilityIdentifier>) => void` | - | No |  |
 | onHighlightChange | `function(highlightedItem: HighlightItemData \| null) => void` | - | No |  |
 | onItemClick | `function(event: React.MouseEvent<SVGElement, MouseEvent>, funnelItemIdentifier: FunnelItemIdentifier) => void` | - | No |  |
+| onTooltipItemChange | `function(tooltipItem: SeriesItemIdentifier<TSeries> \| null) => void` | - | No |  |
 | skipAnimation | `bool` | - | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |
+| tooltipItem | `{ dataIndex: number, seriesId: number \| string, type: 'funnel' }` | - | No |  |
 | width | `number` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element (SVGSVGElement).

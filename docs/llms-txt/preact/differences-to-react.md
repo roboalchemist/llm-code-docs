@@ -1,242 +1,177 @@
 # Source: https://preactjs.com/guide/v10/differences-to-react#features-exclusive-to-preactcompat
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="/favicon.ico">
-		<title>Differences to React – Preact Guide</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#673AB8">
-		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
-		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
-		<meta property="og:image" content="https://preactjs.com/app-icon.png">
-		<meta name="twitter:card" content="summary">
-		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
-		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
-		<script type="module" crossorigin src="/assets/index-nodqeQT7.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-CzbcAXL9.css">
-	<meta name="description" content="What are the differences between Preact and React. This document describes them in detail">
-<meta property="og:url" content="https://preactjs.com/guide/v10/differences-to-react">
-<meta property="og:title" content="Differences to React – Preact Guide">
-<meta property="og:description" content="What are the differences between Preact and React. This document describes them in detail">
-<link rel="preload" href="/.netlify/functions/release?repo=preact" as="fetch" fetchpriority="low">
-<link rel="preload" href="/contributors.json" as="fetch" fetchpriority="low">
-<link rel="preload" href="/content/en/guide/v10/differences-to-react.json" as="fetch" fetchpriority="low">
-<script>ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga('set','dimension1','master');onerror=function(e,f,l,c){ga('send','event','exception',e,f+':'+l+':'+c)}</script></head>
-	<body class="banner">
-		<div id="app"><header class="_header_nxrmc_38 "><div class="_banner_nxrmc_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_nxrmc_24"><div class="_inner_nxrmc_301"><nav><a href="/" class="home" aria-label="Home"><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_nxrmc_92 ">Guide</a><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_nxrmc_479"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><span class="DocSearch-Button-Placeholder">Search</span></span></button></div><div class="_social_nxrmc_321"><a href="https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0" class="_socialItem_nxrmc_357 _release_nxrmc_396">v11.0.0-beta.0</a><a class="_socialItem_nxrmc_357" aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_nxrmc_322"><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false" aria-label="Select your language"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_nxrmc_402" data-open="false"><div class="_hb1_nxrmc_444"></div><div class="_hb2_nxrmc_445"></div><div class="_hb3_nxrmc_446"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><!--$s--><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div class="_wrapper_14rnv_1" data-open="false"><button class="_toggle_14rnv_6">Guide</button><aside class="_sidebar_14rnv_58"><div class="_sidebarInner_14rnv_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v11">11.x (preview)</option><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Differences to React</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a><a href="/guide/v10/preact-custom-element" class="_link_1ttwe_16  ">preact-custom-element</a><a href="/guide/v10/preact-root-fragment" class="_link_1ttwe_16  ">preact-root-fragment</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a class="_edit_1gw8e_13" href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/differences-to-react.md" target="_blank" rel="noopener noreferrer">Edit this Page</a></div><content-region name="/guide/v10/differences-to-react" can-edit><div class="markup"><h1>Differences to React</h1><p>Preact is not intended to be a reimplementation of React. There are differences. Many of these differences are trivial, or can be completely removed by using <a href="/guide/v10/getting-started#aliasing-react-to-preact">preact/compat</a>, which is a thin layer over Preact that attempts to achieve 100% compatibility with React.</p>
-<p>The reason Preact does not attempt to include every single feature of React is in order to remain <strong>small</strong> and <strong>focused</strong> - otherwise it would make more sense to simply submit optimizations to the React project, which is already a very complex and well-architected codebase.</p>
-<hr>
-<nav><ul><li><a href="#main-differences">Main differences</a></li><li><a href="#version-compatibility">Version Compatibility</a></li><li><a href="#debug-messages-and-errors">Debug messages and errors</a></li><li><a href="#features-unique-to-preact">Features unique to Preact</a><ul><li><a href="#native-support-for-es-modules">Native support for ES Modules</a></li><li><a href="#arguments-in-componentrender">Arguments in `Component.render()`</a></li><li><a href="#raw-html-attributeproperty-names">Raw HTML attribute/property names</a></li><li><a href="#svg-inside-jsx">SVG inside JSX</a></li><li><a href="#use-oninput-instead-of-onchange">Use `onInput` instead of `onChange`</a></li><li><a href="#jsx-constructor">JSX Constructor</a></li><li><a href="#no-contexttypes-needed">No contextTypes needed</a></li></ul></li></ul></nav><hr>
+# Differences to React
 
-				<h2 id="main-differences">
-					<a class="fragment-link" href="#main-differences">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Main differences (#main-differences)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Main differences</span>
-				</h2><p>The main difference between Preact and React is that Preact does not implement a synthetic event system for size and performance reasons. Preact uses the browser's standard <code>addEventListener</code> to register event handlers, which means event naming and behavior works the same in Preact as it does in plain JavaScript / DOM. See <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener noreferrer">MDN's Event Reference</a> for a full list of DOM event handlers.</p>
-<p>Standard browser events work very similarly to how events work in React, with a few small differences. In Preact:</p>
-<ul>
-<li>events don't bubble up through <code>&lt;Portal></code> components</li>
-<li>standard <code>onInput</code> should be used instead of React's <code>onChange</code> for form inputs (<strong>only if <code>preact/compat</code> is not used</strong>)</li>
-<li>standard <code>onDblClick</code> should be used instead of React's <code>onDoubleClick</code> (<strong>only if <code>preact/compat</code> is not used</strong>)</li>
-<li><code>onSearch</code> should generally be used for <code>&lt;input type=&quot;search&quot;></code>, since the clear &quot;x&quot; button does not fire <code>onInput</code> in IE11</li>
-</ul>
-<p>Another notable difference is that Preact follows the DOM specification more closely. Custom elements are supported like any other element, and custom events are supported with case-sensitive names (as they are in the DOM).</p>
+Preact is not intended to be a reimplementation of React. There are differences. Many of these differences are trivial, or can be completely removed by using [preact/compat](/guide/v10/getting-started#aliasing-react-to-preact), which is a thin layer over Preact that attempts to achieve 100% compatibility with React.
 
-				<h2 id="version-compatibility">
-					<a class="fragment-link" href="#version-compatibility">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Version Compatibility (#version-compatibility)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Version Compatibility</span>
-				</h2><p>For both preact and <a href="/guide/v10/getting-started#aliasing-react-to-preact">preact/compat</a>, version compatibility is measured against the <em>current</em> and <em>previous</em> major releases of React. When new features are announced by the React team, they may be added to Preact's core if it makes sense given the <a href="/about/project-goals">Project Goals</a>. This is a fairly democratic process, constantly evolving through discussion and decisions made in the open, using issues and pull requests.</p>
-<blockquote>
-<p>Thus, the website and documentation reflect React <code>15.x</code> through <code>17.x</code>, with some <code>18.x</code> and <code>19.x</code> additions, when discussing compatibility or making comparisons.</p>
-</blockquote>
+The reason Preact does not attempt to include every single feature of React is in order to remain **small** and **focused** - otherwise it would make more sense to simply submit optimizations to the React project, which is already a very complex and well-architected codebase.
 
-				<h2 id="debug-messages-and-errors">
-					<a class="fragment-link" href="#debug-messages-and-errors">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Debug messages and errors (#debug-messages-and-errors)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Debug messages and errors</span>
-				</h2><p>Our flexible architecture allows addons to enhance the Preact experience in any way they want. One of those addons is <code>preact/debug</code> which adds <a href="/guide/v10/debugging">helpful warnings and errors</a> and attaches the <a href="https://preactjs.github.io/preact-devtools/" target="_blank" rel="noopener noreferrer">Preact Developer Tools</a> browser extension, if installed. Those guide you when developing Preact applications and make it a lot easier to inspect what's going on. You can enable them by adding the relevant import statement:</p>
+---
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'preact/debug'</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- Add this line at the top of your main entry file</span></code></pre>
-					
-				</div>
-			<p>This is different from React which requires a bundler being present that strips out debugging messages at build time by checking for <code>NODE_ENV != &quot;production&quot;</code>.</p>
+*   [Main differences](#main-differences)
+*   [Version Compatibility](#version-compatibility)
+*   [Debug messages and errors](#debug-messages-and-errors)
+*   [Features unique to Preact](#features-unique-to-preact)
+    *   [Native support for ES Modules](#native-support-for-es-modules)
+    *   [Arguments in `Component.render()`](#arguments-in-componentrender)
+    *   [Raw HTML attribute/property names](#raw-html-attributeproperty-names)
+    *   [SVG inside JSX](#svg-inside-jsx)
+    *   [Use `onInput` instead of `onChange`](#use-oninput-instead-of-onchange)
+    *   [JSX Constructor](#jsx-constructor)
+    *   [No contextTypes needed](#no-contexttypes-needed)
 
-				<h2 id="features-unique-to-preact">
-					<a class="fragment-link" href="#features-unique-to-preact">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Features unique to Preact (#features-unique-to-preact)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Features unique to Preact</span>
-				</h2><p>Preact actually adds a few convenient features inspired by work in the (P)React community:</p>
+---
 
-				<h3 id="native-support-for-es-modules">
-					<a class="fragment-link" href="#native-support-for-es-modules">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Native support for ES Modules (#native-support-for-es-modules)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Native support for ES Modules</span>
-				</h3><p>Preact was built with ES Modules in mind from the beginning, and was one of the first frameworks to support them. You can load Preact via the <code>import</code> keyword directly in browsers without having it to pass through a bundler first.</p>
+## Main differences
 
-				<h3 id="arguments-in-componentrender">
-					<a class="fragment-link" href="#arguments-in-componentrender">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Arguments in `Component.render()` (#arguments-in-componentrender)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Arguments in `Component.render()`</span>
-				</h3><p>For convenience, we pass <code>this.props</code> and <code>this.state</code> to the <code>render()</code> method on class components. Take a look at this component which uses one prop and one state property.</p>
+The main difference between Preact and React is that Preact does not implement a synthetic event system for size and performance reasons. Preact uses the browser's standard `addEventListener` to register event handlers, which means event naming and behavior works the same in Preact as it does in plain JavaScript / DOM. See [MDN's Event Reference](https://developer.mozilla.org/en-US/docs/Web/Events) for a full list of DOM event handlers.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Works in both Preact and React</span>
-<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Standard browser events work very similarly to how events work in React, with a few small differences. In Preact:
 
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> <span class="token punctuation">(</span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
-				Name: </span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token plain-text">, Age: </span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-					
-				</div>
-			<p>In Preact this can be also written like this:</p>
+- events don't bubble up through `<Portal>` components
+- standard `onInput` should be used instead of React's `onChange` for form inputs (**only if `preact/compat` is not used**)
+- standard `onDblClick` should be used instead of React's `onDoubleClick` (**only if `preact/compat` is not used**)
+- `onSearch` should generally be used for `<input type="search">`, since the clear "x" button does not fire `onInput` in IE11
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// Only works in Preact</span>
-<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-	state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Another notable difference is that Preact follows the DOM specification more closely. Custom elements are supported like any other element, and custom events are supported with case-sensitive names (as they are in the DOM).
 
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> name <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> age <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> <span class="token punctuation">(</span>
-			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
-				Name: </span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token plain-text">, Age: </span><span class="token punctuation">{</span>age<span class="token punctuation">}</span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-		<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-					
-				</div>
-			<p>Both snippets render the exact same thing, render arguments are provided for convenience.</p>
+## Version Compatibility
 
-				<h3 id="raw-html-attributeproperty-names">
-					<a class="fragment-link" href="#raw-html-attributeproperty-names">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Raw HTML attribute/property names (#raw-html-attributeproperty-names)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Raw HTML attribute/property names</span>
-				</h3><p>Preact aims to closely match the DOM specification supported by all major browsers. When applying <code>props</code> to an element, Preact <em>detects</em> whether each prop should be set as a property or HTML attribute. This makes it possible to set complex properties on Custom Elements, but it also means you can use attribute names like <code>class</code> in JSX:</p>
+For both preact and [preact/compat](/guide/v10/getting-started#aliasing-react-to-preact), version compatibility is measured against the _current_ and _previous_ major releases of React. When new features are announced by the React team, they may be added to Preact's core if it makes sense given the [Project Goals](/about/project-goals). This is a fairly democratic process, constantly evolving through discussion and decisions made in the open, using issues and pull requests.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// This:</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span>
+> Thus, the website and documentation reflect React `15.x` through `17.x`, with some `18.x` and `19.x` additions, when discussing compatibility or making comparisons.
 
-<span class="token comment">// ...is the same as:</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span></code></pre>
-					
-				</div>
-			<p>Most Preact developers prefer to use <code>class</code> instead of <code>className</code> as it's shorter to write but both are supported.</p>
+## Debug messages and errors
 
-				<h3 id="svg-inside-jsx">
-					<a class="fragment-link" href="#svg-inside-jsx">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: SVG inside JSX (#svg-inside-jsx)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>SVG inside JSX</span>
-				</h3><p>SVG is pretty interesting when it comes to the names of its properties and attributes. Some properties (and their attributes) on SVG objects are camelCased (e.g. <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath#Attributes" target="_blank" rel="noopener noreferrer">clipPathUnits on a clipPath element</a>), some attributes are kebab-case (e.g. <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation" target="_blank" rel="noopener noreferrer">clip-path on many SVG elements</a>), and other attributes (usually ones inherited from the DOM, e.g. <code>oninput</code>) are all lowercase.</p>
-<p>Preact applies SVG attributes as-written. This means you can copy and paste unmodified SVG snippets right into your code and have them work out of the box. This allows greater interoperability with tools designers tend to use to generate icons or SVG illustrations.</p>
+Our flexible architecture allows addons to enhance the Preact experience in any way they want. One of those addons is `preact/debug` which adds [helpful warnings and errors](/guide/v10/debugging) and attaches the [Preact Developer Tools](https://preactjs.github.io/preact-devtools/) browser extension, if installed. Those guides you when developing Preact applications and make it a lot easier to inspect what's going on. You can enable them by adding the relevant import statement:
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// React</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2000/svg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>0 0 48 48<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>circle</span> <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>none<span class="token punctuation">&quot;</span></span> <span class="token attr-name">strokeWidth</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span> <span class="token attr-name">strokeLinejoin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>round<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cx</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>24<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>24<span class="token punctuation">&quot;</span></span> <span class="token attr-name">r</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>20<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
-<span class="token comment">// Preact (note stroke-width and stroke-linejoin)</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2000/svg<span class="token punctuation">&quot;</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>0 0 48 48<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>circle</span> <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>none<span class="token punctuation">&quot;</span></span> <span class="token attr-name">stroke-width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2<span class="token punctuation">&quot;</span></span> <span class="token attr-name">stroke-linejoin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>round<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cx</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>24<span class="token punctuation">&quot;</span></span> <span class="token attr-name">cy</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>24<span class="token punctuation">&quot;</span></span> <span class="token attr-name">r</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>20<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			<p>If you're coming from React, you may be used to specifying all attributes in camelCase. You can continue to use always-camelCase SVG attribute names by adding <a href="/guide/v10/getting-started#aliasing-react-to-preact">preact/compat</a> to your project, which mirrors the React API and normalizes these attributes.</p>
+```js
+import 'preact/debug'; // <-- Add this line at the top of your main entry file
+```
 
-				<h3 id="use-oninput-instead-of-onchange">
-					<a class="fragment-link" href="#use-oninput-instead-of-onchange">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Use `onInput` instead of `onChange` (#use-oninput-instead-of-onchange)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Use `onInput` instead of `onChange`</span>
-				</h3><p>Largely for historical reasons, the semantics of React's <code>onChange</code> event are actually the same as the <code>onInput</code> event provided by browsers, which is supported everywhere. The <code>input</code> event is the best-suited event for the majority of cases where you want to react when a form control is modified. In Preact core, <code>onChange</code> is the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event" target="_blank" rel="noopener noreferrer">DOM change event</a> that gets fired when an element's value is <em>committed</em> by the user.</p>
+This is different from React which requires a bundler being present that strips out debugging messages at build time by checking for `NODE_ENV != "production"`.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// React</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+## Features unique to Preact
 
-<span class="token comment">// Preact</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">onInput</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span></code></pre>
-					
-				</div>
-			<p>If you're using <a href="/guide/v10/getting-started#aliasing-react-to-preact">preact/compat</a>, most <code>onChange</code> events are internally converted to <code>onInput</code> to emulate React's behavior. This is one of the tricks we use to ensure maximum compatibility with the React ecosystem.</p>
+Preact actually adds a few convenient features inspired by work in the (P)React community:
 
-				<h3 id="jsx-constructor">
-					<a class="fragment-link" href="#jsx-constructor">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: JSX Constructor (#jsx-constructor)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>JSX Constructor</span>
-				</h3><p>JSX is a syntax extension for JavaScript that is converted to nested function calls. The idea of using these nested calls to build up tree structures long predates JSX, and was previously popularized in JavaScript by the <a href="https://github.com/dominictarr/hyperscript" target="_blank" rel="noopener noreferrer">hyperscript</a> project. This approach has value well beyond the scope of the React ecosystem, so Preact promotes the original generalized community-standard. For a more in-depth discussion of JSX and its relationship to Hyperscript, <a href="https://jasonformat.com/wtf-is-jsx" target="_blank" rel="noopener noreferrer">read this article on how JSX works</a>.</p>
-<p><strong>Source:</strong> (JSX)</p>
+### Native support for ES Modules
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-	</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">Home</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			<p><strong>Output:</strong></p>
+Preact was built with ES Modules in mind from the beginning, and was one of the first frameworks to support them. You can load Preact via the `import` keyword directly in browsers without having it to pass through a bundler first.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-js"><span class="token comment">// Preact:</span>
-<span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">href</span><span class="token operator">:</span> <span class="token string">'/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Home'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+### Arguments in `Component.render()`
 
-<span class="token comment">// React:</span>
-React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>
-	<span class="token string">'a'</span><span class="token punctuation">,</span>
-	<span class="token punctuation">{</span> <span class="token literal-property property">href</span><span class="token operator">:</span> <span class="token string">'/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-	React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'Home'</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Ultimately, if you're looking at the generated output code for a Preact application, it's clear that a shorter un-namespaced &quot;JSX pragma&quot; is both easier to read <em>and</em> more suitable for optimizations like minification. In most Preact apps you'll encounter <code>h()</code>, though it doesn't really matter which name you use since a <code>createElement</code> alias export is also provided.</p>
+For convenience, we pass `this.props` and `this.state` to the `render()` method on class components. Take a look at this component which uses one prop and one state property.
 
-				<h3 id="no-contexttypes-needed">
-					<a class="fragment-link" href="#no-contexttypes-needed">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: No contextTypes needed (#no-contexttypes-needed)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>No contextTypes needed</span>
-				</h3><p>The legacy <code>Context</code> API requires Components to declare specific properties using React's <code>contextTypes</code> or <code>childContextTypes</code> in order to receive those values. Preact does not have this requirement: all Components receive all <code>context</code> properties produced by <code>getChildContext()</code> by default.</p>
-</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="de">German</option><option value="es">Spanish</option><option value="fr">French</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="kr">Korean</option><option value="pt-br">Brazilian Portuguese</option><option value="ru">Русский</option><option value="tr">Turkish</option><option value="zh">简体中文</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/yyx990803" target="_blank" rel="noopener noreferrer">@yyx990803</a>.</p></div></footer></div></div></div><!--/$s--></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"11.0.0-beta.0","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0","preactOrgRepos":[{"html_url":"https://github.com/preactjs/preact","full_name":"preactjs/preact","stargazers_count":38228,"description":"⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM."},{"html_url":"https://github.com/preactjs/wmr","full_name":"preactjs/wmr","stargazers_count":4936,"description":"👩‍🚀 The tiny all-in-one development tool for modern web apps."},{"html_url":"https://github.com/preactjs/preact-cli","full_name":"preactjs/preact-cli","stargazers_count":4688,"description":"😺 Your next Preact PWA starts in 30 seconds."},{"html_url":"https://github.com/preactjs/signals","full_name":"preactjs/signals","stargazers_count":4331,"description":"Manage state with style in every framework"},{"html_url":"https://github.com/preactjs/awesome-preact","full_name":"preactjs/awesome-preact","stargazers_count":965,"description":"A curated list of amazingly awesome things regarding Preact ecosystem :star2:"}]}</script></div>
-	</body>
-</html>
+```jsx
+// Works in both Preact and React
+class Foo extends Component {
+  state = { age: 1 };
+
+  render() {
+    return (
+      <div>
+        Name: {this.props.name}, Age: {this.state.age}
+      </div>
+    );
+  }
+}
+```
+
+In Preact this can be also written like this:
+
+```jsx
+// Only works in Preact
+class Foo extends Component {
+  state = { age: 1 };
+
+  render({ name }, { age }) {
+    return (
+      <div>
+        Name: {name}, Age: {age}
+      </div>
+    );
+  }
+}
+```
+
+Both snippets render the exact same thing, render arguments are provided for convenience.
+
+### Raw HTML attribute/property names
+
+Preact aims to closely match the DOM specification supported by all major browsers. When applying `props` to an element, Preact _detects_ whether each prop should be set as a property or HTML attribute. This makes it possible to set complex properties on Custom Elements, but it also means you can use attribute names like `class` in JSX:
+
+```jsx
+// This:
+<div class="foo" />
+
+// ...is the same as:
+<div className="foo" />
+```
+
+Most Preact developers prefer to use `class` instead of `className` as it's shorter to write but both are supported.
+
+### SVG inside JSX
+
+SVG is pretty interesting when it comes to the names of its properties and attributes. Some properties (and their attributes) on SVG objects are camelCased (e.g. [clipPathUnits on a clipPath element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath#Attributes)), some attributes are kebab-case (e.g. [clip-path on many SVG elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation)), and other attributes (usually ones inherited from the DOM, e.g. `oninput`) are all lowercase.
+
+Preact applies SVG attributes as-written. This means you can copy and paste unmodified SVG snippets right into your code and have them work out of the box. This allows greater interoperability with tools designers tend to use to generate icons or SVG illustrations.
+
+```jsx
+// React
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle fill="none" strokeWidth="2" strokeLinejoin="round" cx="24" cy="24" r="20" />
+</svg>
+// Preact (note stroke-width and stroke-linejoin)
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle fill="none" stroke-width="2" stroke-linejoin="round" cx="24" cy="24" r="20" />
+</svg>
+```
+
+If you're coming from React, you may be used to specifying all attributes in camelCase. You can continue to use always-camelCase SVG attribute names by adding [preact/compat](/guide/v10/getting-started#aliasing-react-to-preact) to your project, which mirrors the React API and normalizes these attributes.
+
+### Use `onInput` instead of `onChange`
+
+Largely for historical reasons, the semantics of React's `onChange` event are actually the same as the `onInput` event provided by browsers, which is supported everywhere. The `input` event is the best-suited event for the majority of cases where you want to react when a form control is modified. In Preact core, `onChange` is the standard [DOM change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) that gets fired when an element's value is _committed_ by the user.
+
+```jsx
+// React
+<input onChange={e => console.log(e.currentTarget.value)} />
+
+// Preact
+<input onInput={e => console.log(e.currentTarget.value)} />
+```
+
+If you're using [preact/compat](/guide/v10/getting-started#aliasing-react-to-preact), most `onChange` events are internally converted to `onInput` to emulate React's behavior. This is one of the tricks we use to ensure maximum compatibility with the React ecosystem.
+
+### JSX Constructor
+
+JSX is a syntax extension for JavaScript that is converted to nested function calls. The idea of using these nested calls to build up tree structures long predates JSX, and was previously popularized in JavaScript by the [hyperscript](https://github.com/dominictarr/hyperscript) project. This approach has value well beyond the scope of the React ecosystem, so Preact promotes the original generalized community-standard. For a more in-depth discussion of JSX and its relationship to Hyperscript, [read this article on how JSX works](https://jasonformat.com/wtf-is-jsx).
+
+**Source:** (JSX)
+
+```jsx
+<a href="/">
+  <span>Home</span>
+</a>
+```
+
+**Output:**
+
+```js
+// Preact:
+h('a', { href: '/' }, h('span', null, 'Home'));
+
+// React:
+React.createElement(
+	'a',
+	{ href: '/' },
+	h('span', null, 'Home')
+);
+```
+
+Ultimately, if you're looking at the generated output code for a Preact application, it's clear that a shorter un-namespaced "JSX pragma" is both easier to read _and_ more suitable for optimizations like minification. In most Preact apps you'll encounter `h()`, though it doesn't really matter which name you use since a `createElement` alias export is also provided.
+
+### No contextTypes needed
+
+The legacy `Context` API requires Components to declare specific properties using React's `contextTypes` or `childContextTypes` in order to receive those values. Preact does not have this requirement: all Components receive all `context` properties produced by `getChildContext()` by default.

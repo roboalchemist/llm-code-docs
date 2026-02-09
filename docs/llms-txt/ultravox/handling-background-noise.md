@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/noise/handling-background-noise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling Background Noise
 
 > Built-in robust noise handling to keep your calls on track and fast.
@@ -23,8 +27,3 @@ Ultravox employs a comprehensive approach to noise management through multiple i
 **Custom Architecture** → A specialized low-latency architecture that seamlessly integrates noise handling components while maintaining real-time performance.
 
 The result is natural, clear voice interactions that work reliably across diverse acoustic conditions, allowing your AI agents to perform effectively in real-world environments.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

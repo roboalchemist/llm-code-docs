@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/faq/general.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # General
 
 ## 1. Is billing that hard for engineers?

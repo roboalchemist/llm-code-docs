@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/rate-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate Limits
 
 > Learn about Tavily's API rate limits for both  development and production environments.
@@ -46,12 +50,12 @@ The crawl endpoint has a separate rate limit that applies to both development an
   <tbody>
     <tr>
       <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Development</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>50</td>
+      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>100</td>
     </tr>
 
     <tr>
       <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Production</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>50</td>
+      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>100</td>
     </tr>
   </tbody>
 </table>
@@ -60,8 +64,3 @@ The crawl endpoint has a separate rate limit that applies to both development an
   1. Access to production keys requires either an active **Paid Plan** or **PAYGO** enabled. More information can be found [here](/guides/api-credits).
   2. When using the REST API, ensure you include your API key in the header to apply the correct rate limits.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,14 +1,18 @@
 # Source: https://docs.pipecat.ai/guides/fundamentals/user-input-muting.md
 
-# User Input Muting with STTMuteFilter
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# User Input Muting
 
 > Learn how to control when user speech is processed in your conversational bot
 
 ## Overview
 
-In conversational applications, there are moments when you don't want to process user speech, such as during bot introductions or while executing function calls. Pipecat's `STTMuteFilter` lets you selectively "mute" user input based on different conversation states.
+In conversational applications, there are moments when you don't want to process user speech, such as during bot introductions or while executing function calls. Pipecat's user mute strategies let you selectively "mute" user input based on different conversation states.
 
-## When to Use STTMuteFilter
+## When to Use Mute Strategies
 
 Common scenarios for muting user input include:
 
@@ -19,119 +23,136 @@ Common scenarios for muting user input include:
 
 ## How It Works
 
-The `STTMuteFilter` works by blocking specific user-related frames from flowing through your pipeline. When muted, it filters:
+User mute strategies work by blocking specific user-related frames from flowing through your pipeline. When muted, the following frames are filtered:
 
 * Voice activity detection (VAD) events
 * Interruption signals
 * Raw audio input frames
-* Transcription frames
+* Transcription frames (both interim and final)
 
-This prevents the Speech-to-Text service from receiving and processing the user's speech during muted periods.
+This prevents user speech from being processed during muted periods.
 
 <Note>
-  The filter must be placed between your STT service and context aggregator in
-  the pipeline to work correctly.
+  Mute strategies are configured on the `LLMUserAggregator` via the
+  `user_mute_strategies` parameter.
 </Note>
 
 ## Mute Strategies
 
-The `STTMuteFilter` supports several strategies for determining when to mute user input:
+Pipecat provides several built-in strategies for determining when to mute user input:
 
 <CardGroup cols={2}>
-  <Card title="FIRST_SPEECH" icon="microphone-slash" iconType="duotone">
+  <Card title="FirstSpeechUserMuteStrategy" icon="microphone-slash" iconType="duotone">
     Mute only during the bot's first speech utterance. Useful for introductions
     when you want the bot to complete its greeting before the user can speak.
   </Card>
 
-  <Card title="MUTE_UNTIL_FIRST_BOT_COMPLETE" icon="hourglass-half" iconType="duotone">
+  <Card title="MuteUntilFirstBotCompleteUserMuteStrategy" icon="hourglass-half" iconType="duotone">
     Start muted and remain muted until the first bot utterance completes.
     Ensures the bot's initial instructions are fully delivered.
   </Card>
 
-  <Card title="FUNCTION_CALL" icon="gear" iconType="duotone">
+  <Card title="FunctionCallUserMuteStrategy" icon="gear" iconType="duotone">
     Mute during function calls. Prevents users from speaking while the bot is
     processing external data requests.
   </Card>
 
-  <Card title="ALWAYS" icon="volume-xmark" iconType="duotone">
+  <Card title="AlwaysUserMuteStrategy" icon="volume-xmark" iconType="duotone">
     Mute whenever the bot is speaking. Creates a strict turn-taking conversation
     pattern.
-  </Card>
-
-  <Card title="CUSTOM" icon="sliders" iconType="duotone">
-    Use custom logic via callback to determine when to mute. Provides maximum
-    flexibility for complex muting rules.
   </Card>
 </CardGroup>
 
 <Warning>
-  The `FIRST_SPEECH` and `MUTE_UNTIL_FIRST_BOT_COMPLETE` strategies should not
-  be used together as they handle the first bot speech differently.
+  The `FirstSpeechUserMuteStrategy` and
+  `MuteUntilFirstBotCompleteUserMuteStrategy` strategies should not be used
+  together as they handle the first bot speech differently.
 </Warning>
 
 ## Basic Implementation
 
-### Step 1: Configure the Filter
-
-First, create a configuration for the `STTMuteFilter`:
+Import and configure the mute strategies you need:
 
 ```python  theme={null}
-from pipecat.processors.filters.stt_mute_filter import STTMuteConfig, STTMuteFilter, STTMuteStrategy
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_mute import AlwaysUserMuteStrategy
 
 # Configure with one or more strategies
-stt_mute_processor = STTMuteFilter(
-    config=STTMuteConfig(
-        strategies={
-            STTMuteStrategy.MUTE_UNTIL_FIRST_BOT_COMPLETE,
-            STTMuteStrategy.FUNCTION_CALL,
-        }
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[AlwaysUserMuteStrategy()],
     ),
 )
 ```
 
-### Step 2: Add to Your Pipeline
+## Combining Multiple Strategies
 
-Place the filter between the STT service and context aggregator:
+Multiple strategies can be combined. They use OR logic—if **any** strategy indicates the user should be muted, input is suppressed:
 
 ```python  theme={null}
-pipeline = Pipeline(
-    [
-        transport.input(),           # Transport user input
-        stt,                         # Speech-to-text service
-        stt_mute_processor,          # Add between STT and context aggregator
-        context_aggregator.user(),   # User responses
-        llm,                         # LLM
-        tts,                         # Text-to-speech
-        transport.output(),          # Transport bot output
-        context_aggregator.assistant(),  # Assistant spoken responses
-    ]
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+
+from pipecat.turns.user_mute import (
+    MuteUntilFirstBotCompleteUserMuteStrategy,
+    FunctionCallUserMuteStrategy,
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            MuteUntilFirstBotCompleteUserMuteStrategy(),  # Mute until first response
+            FunctionCallUserMuteStrategy(),               # Mute during function calls
+        ],
+    ),
 )
 ```
 
+## Responding to Mute Events
+
+You can register event handlers to be notified when muting starts or stops. This is particularly useful for providing visual feedback to users:
+
+```python  theme={null}
+@user_aggregator.event_handler("on_user_mute_started")
+async def on_user_mute_started(aggregator):
+    logger.info("User mute started")
+    # Send a visual indicator to your client
+    # e.g., show a "Bot is speaking" indicator
+
+@user_aggregator.event_handler("on_user_mute_stopped")
+async def on_user_mute_stopped(aggregator):
+    logger.info("User mute stopped")
+    # Update your client UI
+    # e.g., show a "You can speak now" indicator
+```
+
+These events fire whenever the mute state changes, allowing you to keep your UI synchronized with the bot's state.
+
 ## Best Practices
 
-* **Place the filter correctly**: Always position `STTMuteFilter` between the STT service and context aggregator
 * **Choose strategies wisely**: Select the minimal set of strategies needed for your use case
 * **Test user experience**: Excessive muting can frustrate users; balance control with usability
-* **Consider feedback**: Provide visual cues when the user is muted to improve the experience
+* **Provide feedback**: Use the mute event handlers to show visual cues when the user is muted to improve the experience
 
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Try the STTMuteFilter Example" icon="code" iconType="duotone" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/24-stt-mute-filter.py">
-    Explore a complete working example that demonstrates how to use
-    STTMuteFilter to control user input during bot speech and function calls.
+  <Card title="User Mute Strategies Reference" icon="book" iconType="duotone" href="/server/utilities/turn-management/user-mute-strategies">
+    Read the complete API reference documentation for all available mute
+    strategies and their behavior.
   </Card>
 
-  <Card title="STTMuteFilter Reference" icon="book" iconType="duotone" href="/server/utilities/filters/stt-mute">
-    Read the complete API reference documentation for advanced configuration
-    options and muting strategies.
+  <Card title="User Turn Strategies" icon="arrows-turn-to-dots" iconType="duotone" href="/server/utilities/turn-management/user-turn-strategies">
+    Learn how to configure turn detection behavior for more control over
+    conversation flow.
   </Card>
 </CardGroup>
 
-Experiment with different muting strategies to find the right balance for your application. For advanced scenarios, try implementing custom muting logic based on specific conversation states or content.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt
+Experiment with different muting strategies to find the right balance for your application.

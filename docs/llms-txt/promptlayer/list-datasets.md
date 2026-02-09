@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/list-datasets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Datasets
 
 Retrieve a paginated list of datasets based on various filtering criteria. This endpoint allows you to retrieve datasets with various filtering options including dataset group, prompt, report, workspace, and name filters. Supports both JWT and API key authentication.
@@ -244,7 +248,3 @@ components:
       title: DatasetGroup
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

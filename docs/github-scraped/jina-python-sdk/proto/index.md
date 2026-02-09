@@ -1,0 +1,1 @@
+# Source: https://github.com/jina-ai/jina/blob/master/docs/proto/index.mdTo update `jina` Protobuf:```bashdocker run -v $(pwd)/jina/:/jina/ jinaai/protogen``````````{include} docs.md```

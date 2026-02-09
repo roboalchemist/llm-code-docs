@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/telephony/twilio-websockets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Twilio WebSocket Integration
 
 > Complete guide to using Twilio Media Streams with Pipecat for dial-in and dial-out functionality
@@ -256,7 +260,6 @@ task = PipelineTask(
     params=PipelineParams(
         audio_in_sample_rate=8000,
         audio_out_sample_rate=8000,
-        allow_interruptions=True,
     ),
 )
 ```
@@ -298,8 +301,3 @@ For fully self-hosted production deployment, ensure your servers are:
 * Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot) for full implementations
 * Learn about [Daily + Twilio SIP integration](./twilio-daily-sip) for advanced telephony scenarios
 * Check out [Daily PSTN integration](./daily-pstn) for direct phone number provisioning
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

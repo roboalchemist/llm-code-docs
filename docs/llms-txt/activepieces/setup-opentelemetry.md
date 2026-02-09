@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/guides/setup-opentelemetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Setup OpenTelemetry
 
 > Configure OpenTelemetry for observability and tracing
@@ -17,8 +21,3 @@ Activepieces supports both standard OpenTelemetry environment variables and vend
 <Note>
   Both `AP_OTEL_ENABLED` and `OTEL_EXPORTER_OTLP_ENDPOINT` must be set for OpenTelemetry to be enabled.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

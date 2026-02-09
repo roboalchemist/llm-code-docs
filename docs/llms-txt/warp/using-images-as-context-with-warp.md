@@ -73,7 +73,7 @@ The agent built:
 * Static data for three MCP servers (`Linear`, `GitHub`, `Stripe`)
 * Proper rendering logic and styling
 
-&#x20;Verify the UI in Warp:
+Verify the UI in Warp:
 
 > “It matched the mock almost perfectly — something that would’ve taken me two days was done in 20 minutes.”
 

@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/full_stack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full Stack
 
 The Full Stack app example can be found [here](https://github.com/mem0ai/mem0/tree/main/embedchain/examples/full_stack).
@@ -10,7 +14,7 @@ This guide will help you setup the full stack app on your local machine.
 
 * Create a `docker-compose.yml` file and paste the following code in it.
 
-```yaml
+```yaml  theme={null}
 version: "3.9"
 
 services:
@@ -39,7 +43,7 @@ services:
 
 * Run the following command,
 
-```bash
+```bash  theme={null}
 docker-compose up
 ```
 

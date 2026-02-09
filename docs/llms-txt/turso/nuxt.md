@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/ts/guides/nuxt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nuxt + Turso
 
 > Set up Turso in your Nuxt project in minutes

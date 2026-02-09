@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/sharp-image-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Process images using Sharp
 
 > This example demonstrates how to process images using the Sharp library with Trigger.dev.
@@ -20,7 +24,7 @@ This task processes and watermarks an image using the Sharp library, and then up
 
 To use this example, you'll first need to add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -46,7 +50,7 @@ export default defineConfig({
 
 ## Task code
 
-```ts trigger/sharp-image-processing.ts theme={null}
+```ts trigger/sharp-image-processing.ts theme={"theme":"css-variables"}
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import { logger, task } from "@trigger.dev/sdk";
@@ -120,7 +124,7 @@ export const sharpProcessImage = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "imageUrl": "<an-image-url.jpg>", // Replace with a URL to a JPEG image
   "watermarkUrl": "<an-image-url.png>" // Replace with a URL to a PNG watermark image

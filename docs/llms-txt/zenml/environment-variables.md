@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/concepts/environment-variables.md
 
-# Source: https://docs.zenml.io/reference/environment-variables.md
-
-# Source: https://docs.zenml.io/concepts/environment-variables.md
-
 # Environment Variables
 
 Environment variables can be configured to be available at runtime during step execution. ZenML provides two ways to set environment variables:

@@ -1,3 +1,5 @@
+# Source: https://lynxjs.org/ai/start/quick-start.md
+
 # Source: https://lynxjs.org/rspeedy/start/quick-start.md
 
 # Source: https://lynxjs.org/react/start/quick-start.md

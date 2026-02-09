@@ -2,19 +2,31 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ScheduleClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ScheduleClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ScheduleClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ScheduleClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ScheduleClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ScheduleClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ScheduleClient.md
-
 # ScheduleClient<!-- -->
+
+Client for managing a specific Schedule.
+
+Schedules are used to automatically start Actors or tasks at specified times. This client provides methods to get, update, and delete schedules, as well as retrieve schedule logs.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const scheduleClient = client.schedule('my-schedule-id');
+
+  // Get schedule details
+  const schedule = await scheduleClient.get();
+
+  // Update schedule
+  await scheduleClient.update({
+    cronExpression: '0 12 * * *',
+    isEnabled: true
+  });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/schedules>
 
 ### Hierarchy
 
@@ -44,25 +56,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -72,7 +84,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -82,19 +94,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -104,7 +116,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -112,41 +124,61 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L40)delete
+### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L72)delete
 
 * ****delete**(): Promise\<void>
 
-- <https://docs.apify.com/api/v2#/reference/schedules/schedule-object/delete-schedule>
+- Deletes the schedule.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/schedule-delete>
 
   ***
 
   #### Returns Promise\<void>
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L25)get
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L51)get
 
 * ****get**(): Promise\<undefined | [Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md)>
 
-- <https://docs.apify.com/api/v2#/reference/schedules/schedule-object/get-schedule>
+- Retrieves the schedule.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/schedule-get>
 
   ***
 
   #### Returns Promise\<undefined | [Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md)>
 
-### [**](#getLog)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L47)getLog
+  The schedule object, or `undefined` if it does not exist.
+
+### [**](#getLog)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L82)getLog
 
 * ****getLog**(): Promise\<undefined | string>
 
-- <https://docs.apify.com/api/v2#/reference/schedules/schedule-log/get-schedule-log>
+- Retrieves the schedule's log.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/schedule-log-get>
 
   ***
 
   #### Returns Promise\<undefined | string>
 
-### [**](#update)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L32)update
+  The schedule log as a string, or `undefined` if it does not exist.
+
+### [**](#update)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L62)update
 
 * ****update**(newFields): Promise<[Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md)>
 
-- <https://docs.apify.com/api/v2#/reference/schedules/schedule-object/update-schedule>
+- Updates the schedule with the specified fields.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/schedule-put>
 
   ***
 
@@ -154,4 +186,8 @@ Inherited from ResourceClient.url
 
   * ##### newFields: Partial\<Pick<[Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md), name | description | title | cronExpression | timezone | isEnabled | isExclusive | notifications> & { actions: DistributiveOptional<[ScheduleAction](https://docs.apify.com/api/client/js/api/client/js/reference.md#ScheduleAction), id>\[] }>
 
+    Fields to update.
+
   #### Returns Promise<[Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md)>
+
+  The updated schedule object.

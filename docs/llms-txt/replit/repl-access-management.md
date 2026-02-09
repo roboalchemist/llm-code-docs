@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/repl-access-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Access Management
 
 > Learn how to control access and visibility settings for Replit Apps through the workspace interface, including group permissions and user roles.

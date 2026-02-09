@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/define-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/define-plugin/](https://webpack.js.org/plugins/define-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/define-plugin/" />
 
 # DefinePlugin
 
@@ -16,7 +21,7 @@ new rspack.DefinePlugin({
 
 ## Options
 
-* **Type:**
+- **Type:**
 
 ```ts
 type CodeValue = RecursiveArrayOrRecord<CodeValuePrimitive>;
@@ -43,10 +48,10 @@ type DefinePluginOptions = Record<string, CodeValue>;
 
 Each key passed into `DefinePlugin` is an identifier or multiple identifiers joined with `.`.
 
-* If the value is a string it will be used as a code fragment.
-* If the value isn't a string, it will be stringified (including functions).
-* If the value is an object all keys are defined the same way.
-* If you prefix `typeof` to the key, it's only defined for typeof calls.
+- If the value is a string it will be used as a code fragment.
+- If the value isn't a string, it will be stringified (including functions).
+- If the value is an object all keys are defined the same way.
+- If you prefix `typeof` to the key, it's only defined for typeof calls.
 
 The values will be inlined into the code allowing a minification pass to remove the redundant conditional.
 

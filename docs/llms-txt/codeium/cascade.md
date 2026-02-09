@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/cascade.md
 
-# Overview
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Cascade Overview
+
+> Cascade is Windsurf's agentic AI assistant with Code/Chat modes, tool calling, voice input, checkpoints, real-time awareness, and linter integration.
 
 Windsurf's Cascade unlocks a new level of collaboration between human and AI.
 
@@ -9,17 +15,17 @@ To open Cascade, press `Cmd/Ctrl+L`click the Cascade icon in the top right corne
 ### Quick links to features
 
 <CardGroup cols={2}>
-  <Card title="Web Search" icon="globe-pointer" href="/windsurf/web-search">
+  <Card title="Web Search" icon="globe-pointer" href="/windsurf/cascade/web-search">
     Search the web for information to be referenced in Cascade's suggestions.
   </Card>
 
-  <Card title="Memories & Rules" icon="cloud-word" href="/windsurf/memories">
+  <Card title="Memories & Rules" icon="cloud-word" href="/windsurf/cascade/memories">
     Memories and rules help customize behavior.
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
-  <Card title="MCP" icon="hammer" href="/windsurf/mcp">
+  <Card title="MCP" icon="hammer" href="/windsurf/cascade/mcp">
     MCP servers extend the agent's capabilities.
   </Card>
 
@@ -62,7 +68,7 @@ In the background, a specialized planning agent continuously refines the long-te
 
 Cascade will create a Todo list within the conversation to track progress on complex tasks. To make changes to the plan, simply ask Cascade to make updates to the Todo list.
 
-Cascade may also automatically make updates to the plan as it picks up new information, such as a [Memory](/windsurf/memories), during the course of a conversation.
+Cascade may also automatically make updates to the plan as it picks up new information, such as a [Memory](/windsurf/cascade/memories), during the course of a conversation.
 
 # Queued Messages
 
@@ -75,7 +81,7 @@ To add a message to the queue, simply type in your message while Cascade is work
 
 # Tool Calling
 
-Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/web-search), [MCP](/windsurf/mcp), and the [terminal](/windsurf/terminal).
+Cascade has a variety of tools at its disposal, such as Search, Analyze, [Web Search](/windsurf/cascade/web-search), [MCP](/windsurf/cascade/mcp), and the [terminal](/windsurf/terminal).
 
 It can detect which packages and tools that you're using, which ones need to be installed, and even install them for you. Just ask Cascade how to run your project and press Accept.
 
@@ -151,7 +157,7 @@ fixing lint errors increases the number of tool calls that Cascade makes.
 
 # Sharing your conversation
 
-<Note>This feature is currently only available for Teams and Enterprise customers. Currently not available to Hybrid customers.</Note>
+<Note>This feature is currently only available for Teams and Enterprise customers.</Note>
 
 You can share your Cascade trajectories with your team by clicking the `...` Additional options button in the top right of the Cascade panel, and clicking `Share Conversation`.
 
@@ -168,3 +174,5 @@ When you do this, Cascade will retrieve the most relevant and useful information
 Users can have multiple Cascades running simultaneously. You can navigate between them using the dropdown menu in the top left of the Cascade panel.
 
 <Warning>If two Cascades edit the same file at the same time, the edits can race, and sometimes the second edit will fail.</Warning>
+
+If you expect two Cascades to edit similar files, you should consider using [worktrees](./worktrees) to keep them isolated.

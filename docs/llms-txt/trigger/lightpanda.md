@@ -2,17 +2,9 @@
 
 # Source: https://trigger.dev/docs/config/extensions/lightpanda.md
 
-# Source: https://trigger.dev/docs/guides/examples/lightpanda.md
-
-# Source: https://trigger.dev/docs/config/extensions/lightpanda.md
-
-# Source: https://trigger.dev/docs/guides/examples/lightpanda.md
-
-# Source: https://trigger.dev/docs/config/extensions/lightpanda.md
-
-# Source: https://trigger.dev/docs/guides/examples/lightpanda.md
-
-# Source: https://trigger.dev/docs/config/extensions/lightpanda.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Lightpanda
 
@@ -20,7 +12,7 @@
 
 To use the Lightpanda browser in your project, add the extension to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
 
@@ -39,7 +31,7 @@ export default defineConfig({
 
 For example:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { lightpanda } from "@trigger.dev/build/extensions/lightpanda";
 

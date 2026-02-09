@@ -1,6 +1,10 @@
-# Source: https://mintlify.com/docs/ai-native.md
+# Source: https://www.mintlify.com/docs/ai-native.md
 
-# AI-native
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# AI-native documentation
 
 > Learn how AI enhances reading, writing, and discovering your documentation
 
@@ -14,15 +18,17 @@ In addition to reading individual pages, users can chat with the [assistant](/ai
 
 ### Writing
 
-The [agent](/ai/agent) helps you write and maintain documentation. It creates pull requests with proposed changes based on your prompts, pull requests, and Slack threads. Add the agent to your Slack workspace so that anyone on your team can help maintain your documentation by chatting with the agent. Or embed the agent into custom apps via the [API](/api-reference/agent/create-agent-job).
+The [agent](/agent) helps you write and maintain documentation. It creates pull requests with proposed changes based on your prompts, pull requests, and Slack threads. Add the agent to your Slack workspace so that anyone on your team can help maintain your documentation by chatting with the agent. Or embed the agent into custom apps via the [API](/api-reference/agent/create-agent-job).
+
+You can configure the agent to monitor connected repositories and proactively [suggest](/agent/suggestions) documentation updates when it identifies user-facing changes.
 
 Configure popular tools like [Cursor](/guides/cursor), [Claude Code](/guides/claude-code), and [Windsurf](/guides/windsurf) to reference the Mintlify schema, your style guide, and best practices.
 
 ### Discovering
 
-Your site is automatically optimized for AI tools and search engines to help users discover your documentation. All pages are sent as Markdown to AI agents instead of HTML, which helps these tools process your content faster and use fewer tokens. Every page is also available to view as Markdown by appending `.md` to the URL.
+Your site is automatically optimized for AI tools and search engines to help users discover your documentation. All pages send their content as Markdown to AI agents instead of HTML, which helps these tools process your content faster and use fewer tokens. Every page is also available to view as Markdown by appending `.md` to the URL.
 
-Mintlify hosts `llms.txt` and `llms-full.txt` files for your documentation. These industry-standard files help LLMs index your documentation and respond efficiently with relevant information to user queries.
+Mintlify hosts `llms.txt` and `skill.md` files for your documentation. These industry-standard files help LLMs respond efficiently with relevant information to user queries and provide a list of capabilities for agents to use, so that users are more successful with your product.
 
 Your documentation site also hosts an MCP server that lets users connect your documentation directly to their AI tools for up to date information about your product directly where they want it.
 
@@ -37,15 +43,15 @@ Select any of the following cards for more information.
     Configure the assistant to search external sites or direct people to your support team if it can't answer their questions.
   </Card>
 
-  <Card title="Agent" icon="pen-line" href="/ai/agent">
-    Add the agent to your Slack workspace or embed it into custom apps to have it help write and update your documentation.
+  <Card title="Agent" icon="pen-line" href="/agent/quickstart">
+    Use the agent in your dashboard to create documentation updates.
+  </Card>
+
+  <Card title="Suggestions" icon="message-circle-plus" href="/agent/suggestions">
+    Monitor Git repositories for changes and receive suggested documentation updates.
   </Card>
 
   <Card title="Contextual menu" icon="sparkles" href="/ai/contextual-menu">
     Add a menu to pages that lets users query AI tools, connect to your MCP server, and copy pages as context with one click.
-  </Card>
-
-  <Card title="MCP integration" icon="plug" href="/ai/model-context-protocol">
-    Your site has a hosted MCP server that lets users connect your documentation directly to their AI tools. Make your users aware of your MCP server and how to connect to it.
   </Card>
 </CardGroup>

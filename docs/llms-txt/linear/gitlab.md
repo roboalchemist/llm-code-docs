@@ -83,6 +83,10 @@ If you'd like to use the Merge Request automation to capture passing CI checks, 
 > [!NOTE]
 > If you want to capture MR approvals, please verify in **Project Settings > Merge requests** that Merge request approvals are required.
 
+### Custom merge queues
+
+If you use a custom merge queue that merges changes and then closes the merge request, be sure to add the `externally-merged` label **before** closing it. This tells Linear to treat the merge request as successfully merged even though it was closed.
+
 ### Branch-specific rules
 
 You can set custom workflow automations based on particular target branches. For example, you can now configure that when a MR is merged to:

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/tenants.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tenants
 
 Tenants allow you to structure your customers in Plain in the same way as they are structured in your product.

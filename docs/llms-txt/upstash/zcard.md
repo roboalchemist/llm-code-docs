@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcard.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcard.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcard.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZCARD
 
@@ -26,24 +12,20 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of elements in the sorted set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"one": 1, "two": 2, "three": 3})
 
-  await redis.zadd("key", 
-      { score: 1, member: "one"}, 
-      { score: 2, member: "two" },
-  );
-  const elements = await redis.zrank("key");
-  console.log(elements); // 2
+  assert redis.zcard("myset") == 3
   ```
 </RequestExample>

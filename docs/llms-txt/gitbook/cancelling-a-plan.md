@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/cancelling-a-plan.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/cancelling-a-plan.md
-
-# Source: https://gitbook.com/docs/account-management/cancelling-a-plan.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/cancelling-a-plan.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/cancelling-a-plan.md
 

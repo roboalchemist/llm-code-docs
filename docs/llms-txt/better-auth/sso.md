@@ -4,11 +4,7 @@
 
 Integrate Single Sign-On (SSO) with your application.
 
-***
 
-title: Single Sign-On (SSO)
-description: Integrate Single Sign-On (SSO) with your application.
-------------------------------------------------------------------
 
 `OIDC` `OAuth2` `SSO` `SAML`
 
@@ -51,7 +47,7 @@ Single Sign-On (SSO) allows users to authenticate with multiple applications usi
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -97,7 +93,7 @@ Single Sign-On (SSO) allows users to authenticate with multiple applications usi
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -257,6 +253,7 @@ Better Auth automatically fetches and validates the provider's [OpenID Connect D
 
 This allows most endpoint-related fields in `oidcConfig` to be **optional** â they will be hydrated automatically from the Identity Provider (IdP).
 
+
 ### Client Side
 
 ```ts
@@ -281,14 +278,15 @@ const data = await auth.api.registerSSOProvider({
 
 ```ts
 type registerSSOProvider = {
-    /**
-     * Unique identifier for the provider
-     */
-    providerId: string = "okta"
-    /**
-     * The OIDC issuer URL. Discovery document is fetched from `{issuer
+      /**
+       * Unique identifier for the provider
+       */
+      providerId: string = "okta"
+      /**
+       * The OIDC issuer URL. Discovery document is fetched from `{issuer
 }
 ```
+
 
 #### Fields Automatically Discovered
 
@@ -606,6 +604,7 @@ const res = await auth.api.signInSSO({
 
 #### Full method
 
+
 ### Client Side
 
 ```ts
@@ -646,49 +645,50 @@ const data = await auth.api.signInSSO({
 
 ```ts
 type signInSSO = {
-    /**
-     * The email address to sign in with. This is used to identify the issuer to sign in with. It's optional if the issuer is provided. 
-     */
-    email?: string = "john@example.com"
-    /**
-     * The slug of the organization to sign in with. 
-     */
-    organizationSlug?: string = "example-org"
-    /**
-     * The ID of the provider to sign in with. This can be provided instead of email or issuer. 
-     */
-    providerId?: string = "example-provider"
-    /**
-     * The domain of the provider. 
-     */
-    domain?: string = "example.com"
-    /**
-     * The URL to redirect to after login. 
-     */
-    callbackURL: string = "https://example.com/callback"
-    /**
-     * The URL to redirect to after login. 
-     */
-    errorCallbackURL?: string = "https://example.com/callback"
-    /**
-     * The URL to redirect to after login if the user is new. 
-     */
-    newUserCallbackURL?: string = "https://example.com/new-user"
-    /**
-     * Scopes to request from the provider. 
-     */
-    scopes?: string[] = ["openid", "email", "profile", "offline_access"]
-    /**
-     * Login hint to send to the identity provider (e.g., email or identifier). 
-     */
-    loginHint?: string = "user@example.com"
-    /**
-     * Explicitly request sign-up. Useful when disableImplicitSignUp is true for this provider. 
-     */
-    requestSignUp?: boolean = true
-
+      /**
+       * The email address to sign in with. This is used to identify the issuer to sign in with. It's optional if the issuer is provided. 
+       */
+      email?: string = "john@example.com"
+      /**
+       * The slug of the organization to sign in with. 
+       */
+      organizationSlug?: string = "example-org"
+      /**
+       * The ID of the provider to sign in with. This can be provided instead of email or issuer. 
+       */
+      providerId?: string = "example-provider"
+      /**
+       * The domain of the provider. 
+       */
+      domain?: string = "example.com"
+      /**
+       * The URL to redirect to after login. 
+       */
+      callbackURL: string = "https://example.com/callback"
+      /**
+       * The URL to redirect to after login. 
+       */
+      errorCallbackURL?: string = "https://example.com/callback"
+      /**
+       * The URL to redirect to after login if the user is new. 
+       */
+      newUserCallbackURL?: string = "https://example.com/new-user"
+      /**
+       * Scopes to request from the provider. 
+       */
+      scopes?: string[] = ["openid", "email", "profile", "offline_access"]
+      /**
+       * Login hint to send to the identity provider (e.g., email or identifier). 
+       */
+      loginHint?: string = "user@example.com"
+      /**
+       * Explicitly request sign-up. Useful when disableImplicitSignUp is true for this provider. 
+       */
+      requestSignUp?: boolean = true
+  
 }
 ```
+
 
 Note: If email is provided and loginHint is not specified, email will be sent as the login\_hint to OIDC providers automatically. SAML flows do not support login\_hint.
 
@@ -1318,7 +1318,7 @@ Once enabled, make sure you migrate the database schema (again).
   </Tab>
 </Tabs>
 
-See the [Schema](#schema-for-domain-verification) section to add the fields manually.
+See the [Schema](#if-you-have-enabled-domain-verification) section to add the fields manually.
 
 ### Verify your domain
 
@@ -1359,6 +1359,7 @@ Once you have configured your domain, you can use your `auth` instance to submit
 This request will either result in a rejection (could not prove your ownership over the domain)
 or if the verification is successful, your SSO provider domain will be marked as verified.
 
+
 ### Client Side
 
 ```ts
@@ -1383,13 +1384,14 @@ const data = await auth.api.verifyDomain({
 
 ```ts
 type verifyDomain = {
-  /**
-  * The provider id
-  */
-  providerId: string = "acme-corp"
-
+    /**
+    * The provider id
+    */
+    providerId: string = "acme-corp"
+  
 }
 ```
+
 
 ### Creating a new verification token
 
@@ -1398,6 +1400,7 @@ or the moment when the SSO provider was registered.
 
 After that time, the token will expire and cannot longer be used. When that happens,
 you can create a new verification token:
+
 
 ### Client Side
 
@@ -1423,20 +1426,39 @@ const data = await auth.api.requestDomainVerification({
 
 ```ts
 type requestDomainVerification = {
-  /**
-  * The provider id
-  */
-  providerId: string = "acme-corp"
-
+    /**
+    * The provider id
+    */
+    providerId: string = "acme-corp"
+  
 }
 ```
+
 
 ### SAML Endpoints
 
 The plugin automatically creates the following SAML endpoints:
 
 * **SP Metadata**: `/api/auth/sso/saml2/sp/metadata?providerId={providerId}`
-* **SAML Callback**: `/api/auth/sso/saml2/callback/{providerId}`
+* **SAML Callback**: `/api/auth/sso/saml2/callback/{providerId}` (supports both GET and POST)
+
+### SAML Callback URL Configuration
+
+The SAML callback endpoint (`/api/auth/sso/saml2/callback/{providerId}`) handles both **SP-initiated** and **IdP-initiated** SSO flows:
+
+* **SP-initiated**: User clicks "Sign in with SSO" in your app â redirects to IdP â IdP POSTs SAMLResponse to callback
+* **IdP-initiated**: User clicks app icon in IdP dashboard (Okta, Azure AD, etc.) â IdP POSTs SAMLResponse to callback
+
+**Important**: The `callbackUrl` in your SAML configuration should point to your application's destination URL (e.g., `/dashboard`), **not** the callback route itself. Better Auth automatically handles the callback route and redirects users to your specified `callbackUrl` after successful authentication.
+
+```ts
+samlConfig: {
+  callbackUrl: "/dashboard", // Correct - points to your app destination
+  // callbackUrl: "/api/auth/sso/saml2/callback/my-provider" // Incorrect - don't point to callback route
+}
+```
+
+The callback route supports both GET and POST methods automatically, so you don't need to create any additional route handlers in your framework.
 
 ## Schema
 
@@ -1466,6 +1488,27 @@ The `ssoProvider` schema is extended as follows:
       { name: "domainVerified", type: "boolean", description: "A flag indicating whether the provider domain has been verified.", isRequired: false },
   ]}
 />
+
+### IdP-Initiated SAML SSO
+
+Better Auth supports **IdP-initiated SSO flows**, where users access your application directly from their Identity Provider dashboard (e.g., Okta, Azure AD, OneLogin). This is common in enterprise environments where IT admins prefer centralized app access.
+
+**How it works:**
+
+1. User clicks your app icon in the IdP dashboard
+2. IdP POSTs SAMLResponse to `/api/auth/sso/saml2/callback/{providerId}`
+3. Better Auth processes the assertion, creates a session, and redirects to your `callbackUrl`
+4. Browser follows the redirect with a GET request (handled automatically)
+
+**No additional configuration required** - the callback route automatically handles both GET and POST requests.
+
+<Callout type="info">
+  If you previously created a manual GET handler for the SAML callback route as a workaround, you can remove it after upgrading. Better Auth now handles GET requests automatically.
+</Callout>
+
+<Callout type="info">
+  **Security:** Better Auth validates all redirect URLs to prevent open redirect attacks. Only relative paths (e.g., `/dashboard`) and URLs matching your configured `trustedOrigins` are allowed. Malicious URLs like `https://evil.com` or protocol-relative URLs (`//evil.com`) are automatically blocked.
+</Callout>
 
 For a detailed guide on setting up SAML SSO with examples for Okta and testing with DummyIDP, see our [SAML SSO with Okta](/docs/guides/saml-sso-with-okta).
 

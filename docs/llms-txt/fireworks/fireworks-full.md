@@ -17,26 +17,26 @@ Fireworks provides a CLI tool to export comprehensive billing metrics for all us
 
 Use the Fireworks CLI to export a billing CSV that includes all usage:
 
-```bash  theme={null}
+```bash theme={null}
 # Authenticate (once)
-firectl auth login
+firectl login
 
 # Export billing metrics to CSV
-firectl export billing-metrics
+firectl billing export-metrics
 ```
 
 ## Examples
 
 Export all billing metrics for an account:
 
-```bash  theme={null}
-firectl export billing-metrics
+```bash theme={null}
+firectl billing export-metrics
 ```
 
 Export metrics for a specific date range and filename:
 
-```bash  theme={null}
-firectl export billing-metrics \
+```bash theme={null}
+firectl billing export-metrics \
   --start-time "2025-01-01" \
   --end-time "2025-01-31" \
   --filename january_metrics.csv
@@ -60,7 +60,7 @@ The exported CSV includes the following columns:
 
 ### Sample row
 
-```csv  theme={null}
+```csv theme={null}
 email,start_time,end_time,usage_type,accelerator_type,accelerator_seconds,base_model_name,model_bucket,parameter_count,prompt_tokens,completion_tokens
 user@example.com,2025-10-20 17:16:48 UTC,2025-10-20 17:16:48 UTC,TEXT_COMPLETION_INFERENCE_USAGE,,,accounts/fireworks/models/llama4-maverick-instruct-basic,Llama 4 Maverick Basic,401583781376,803,109
 ```
@@ -69,16 +69,17 @@ user@example.com,2025-10-20 17:16:48 UTC,2025-10-20 17:16:48 UTC,TEXT_COMPLETION
 
 You can automate exports in cron jobs and load the CSV into your internal systems:
 
-```bash  theme={null}
+```bash theme={null}
 # Example: Daily export with dated filename
-firectl export billing-metrics \
+firectl billing export-metrics \
   --start-time "$(date -v-1d '+%Y-%m-%d')" \
   --end-time "$(date '+%Y-%m-%d')" \
   --filename "billing_$(date '+%Y%m%d').csv"
 ```
 
 <Tip>
-  Run `firectl export billing-metrics --help` to see all available flags and options.
+  Run `firectl billing export-metrics --help` to see all available flags and
+  options.
 </Tip>
 
 ## Coverage
@@ -91,7 +92,9 @@ This export includes:
 * **Other services**: All billable Fireworks services
 
 <Note>
-  For real-time monitoring of on-demand deployment performance metrics (latency, throughput, etc.), use the [Prometheus metrics endpoint](/deployments/exporting-metrics) instead.
+  For real-time monitoring of on-demand deployment performance metrics (latency,
+  throughput, etc.), use the [Prometheus metrics
+  endpoint](/deployments/exporting-metrics) instead.
 </Note>
 
 ## See also
@@ -110,20 +113,48 @@ Service accounts in Fireworks allow applications, scripts, and automated systems
 
 Service accounts can take actions using an API key, like creating deployments, running models or creating datasets (see [API reference](https://fireworks.ai/docs/api-reference/introduction)). Service accounts cannot login through the web interface or use OIDC tokens.
 
+To manage service accounts via the Fireworks web UI visit [app.fireworks.ai/account/users](https://app.fireworks.ai/account/users).
+
 ## Creating a Service Account
 
 Using our firectl you can create service accounts
 
-```bash  theme={null}
-firectl create user --user-id "my-service-account" --service-account
+```bash theme={null}
+firectl user create --user-id "my-service-account" --service-account
 ```
 
-## Creating an API Key for Service Account
+## Creating an API Key for a Service Account
 
-Using our firectl you can create an api key on behalf of a service account
+Using firectl you can create an API key on behalf of a service account:
 
-```bash  theme={null}
-firectl create api-key --service-account "my-service-account"
+```bash theme={null}
+firectl api-key create --service-account "my-service-account"
+```
+
+## Roles
+
+You can assign a role when creating a service account using the `--role` flag:
+
+```bash theme={null}
+firectl user create --user-id "my-service-account" --service-account --role=contributor
+```
+
+If not specified, the default service account role is `user`.
+
+To change the role of an existing service account, use the update command:
+
+```bash theme={null}
+firectl user update my-service-account --role=inference-user
+```
+
+See [Managing users](/accounts/users) for available roles.
+
+## Listing Service Accounts
+
+To list all service accounts in your account:
+
+```bash theme={null}
+firectl user list --filter 'service_account=true'
 ```
 
 ## Billing
@@ -219,6 +250,12 @@ If you have an enterprise account, Fireworks supports bringing your own identity
   </Step>
 </Steps>
 
+## Just-In-Time (JIT) user provisioning
+
+JIT user provisioning automatically creates user accounts when they sign in through SSO for the first time. When enabled, users who authenticate through your identity provider are automatically added to your Fireworks account without requiring manual user creation.
+
+To enable JIT user provisioning, use the [`--enable-jit-user-provisioning`](/tools-sdks/firectl/commands/identity-provider-create) flag when creating your identity provider with firectl.
+
 ## Troubleshooting
 
 ### Invalid samlResponse or relayState from identity provider
@@ -237,318 +274,76 @@ See above.
 # Managing users
 Source: https://docs.fireworks.ai/accounts/users
 
-Add and delete additional users in your Fireworks account
+Add, delete, and manage roles for users in your Fireworks account
 
-See the concepts [page](/getting-started/concepts#account) for definitions of accounts and users. Only admin users can manage other users within the account.
+See the concepts [page](/getting-started/concepts#account) for definitions of accounts and users.
+
+## User roles
+
+Each user in an account is assigned a role that determines their level of access:
+
+| Role               | Description                                                                                                             |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------- |
+| **Admin**          | Full administrative control over resources, users, and access. Can manage all account settings and add or remove users. |
+| **User** (default) | Can manage all resources, including those owned by others, but cannot manage users or access settings.                  |
+| **Contributor**    | Can run inference on any resource and create and manage their own resources. Cannot modify resources owned by others.   |
+| **Inference User** | Can view all resources and run inference, but cannot create or modify resources.                                        |
+
+<Note>
+  The `contributor` and `inference-user` roles are newer roles that provide more granular access control. Contact Fireworks support if you need these roles enabled for your account.
+</Note>
+
+#### Resource management
+
+| Permission                                                             | Inference User | Contributor | User | Admin |
+| :--------------------------------------------------------------------- | :------------: | :---------: | :--: | :---: |
+| Execute inference on any deployment                                    |        ✅       |      ✅      |   ✅  |   ✅   |
+| View all resources (deployments, models, fine tuning jobs, datasets)   |        ✅       |      ✅      |   ✅  |   ✅   |
+| Create new resources (deployments, models, fine tuning jobs, datasets) |        ❌       |      ✅      |   ✅  |   ✅   |
+| Manage their own resources (edit/delete)                               |        ❌       |      ✅      |   ✅  |   ✅   |
+| Manage resources owned by others (edit/delete)                         |        ❌       |      ❌      |   ✅  |   ✅   |
+
+#### API key & account management
+
+| Permission                                       | Inference User | Contributor | User | Admin |
+| :----------------------------------------------- | :------------: | :---------: | :--: | :---: |
+| Manage self-owned API keys (create/delete)       |        ✅       |      ✅      |   ✅  |   ✅   |
+| View all users and service accounts              |        ✅       |      ✅      |   ✅  |   ✅   |
+| Create service account API keys                  |        ❌       |      ❌      |   ❌  |   ✅   |
+| Delete other users and service accounts API keys |        ❌       |      ❌      |   ❌  |   ✅   |
+| Add/modify/delete users and their access         |        ❌       |      ❌      |   ❌  |   ✅   |
 
 ## Adding users
 
 To add a new user to your Fireworks account, run the following command. If the email for the new user is already associated with a Fireworks account, they will have the option to freely switch between your account and their existing account(s). You can also add users in the Fireworks web UI at [https://app.fireworks.ai/account/users](https://app.fireworks.ai/account/users).
 
-```bash  theme={null}
-firectl create user --email="alice@example.com"
+```bash theme={null}
+firectl user create --email="alice@example.com"
 ```
 
 To create another admin user, pass the `--role=admin` flag:
 
-```bash  theme={null}
-firectl create user --email="alice@example.com" --role=admin
+```bash theme={null}
+firectl user create --email="alice@example.com" --role=admin
 ```
 
 ## Updating a user's role
 
 To update a user's role, run
 
-```bash  theme={null}
-firectl update user <USER_ID> --role="{admin,user}"
+```bash theme={null}
+firectl user update <USER_ID> --role=<ROLE>
 ```
+
+Where `<ROLE>` is one of: `admin`, `user`, `contributor`, or `inference-user`.
 
 ## Deleting users
 
 You can remove a user from your account by running:
 
-```bash  theme={null}
-firectl delete user <USER_ID>
+```bash theme={null}
+firectl user delete <USER_ID>
 ```
-
-
-# Batch Delete Batch Jobs
-Source: https://docs.fireworks.ai/api-reference-dlde/batch-delete-batch-jobs
-
-post /v1/accounts/{account_id}/batchJobs:batchDelete
-
-
-
-# Batch Delete Environments
-Source: https://docs.fireworks.ai/api-reference-dlde/batch-delete-environments
-
-post /v1/accounts/{account_id}/environments:batchDelete
-
-
-
-# Batch Delete Node Pools
-Source: https://docs.fireworks.ai/api-reference-dlde/batch-delete-node-pools
-
-post /v1/accounts/{account_id}/nodePools:batchDelete
-
-
-
-# Cancel Batch Job
-Source: https://docs.fireworks.ai/api-reference-dlde/cancel-batch-job
-
-post /v1/accounts/{account_id}/batchJobs/{batch_job_id}:cancel
-Cancels an existing batch job if it is queued, pending, or running.
-
-
-
-# Connect Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/connect-environment
-
-post /v1/accounts/{account_id}/environments/{environment_id}:connect
-Connects the environment to a node pool.
-Returns an error if there is an existing pending connection.
-
-
-
-# Create Aws Iam Role Binding
-Source: https://docs.fireworks.ai/api-reference-dlde/create-aws-iam-role-binding
-
-post /v1/accounts/{account_id}/awsIamRoleBindings
-
-
-
-# Create Batch Job
-Source: https://docs.fireworks.ai/api-reference-dlde/create-batch-job
-
-post /v1/accounts/{account_id}/batchJobs
-
-
-
-# Create Cluster
-Source: https://docs.fireworks.ai/api-reference-dlde/create-cluster
-
-post /v1/accounts/{account_id}/clusters
-
-
-
-# Create Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/create-environment
-
-post /v1/accounts/{account_id}/environments
-
-
-
-# Create Node Pool
-Source: https://docs.fireworks.ai/api-reference-dlde/create-node-pool
-
-post /v1/accounts/{account_id}/nodePools
-
-
-
-# Create Node Pool Binding
-Source: https://docs.fireworks.ai/api-reference-dlde/create-node-pool-binding
-
-post /v1/accounts/{account_id}/nodePoolBindings
-
-
-
-# Create Snapshot
-Source: https://docs.fireworks.ai/api-reference-dlde/create-snapshot
-
-post /v1/accounts/{account_id}/snapshots
-
-
-
-# Delete Aws Iam Role Binding
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-aws-iam-role-binding
-
-post /v1/accounts/{account_id}/awsIamRoleBindings:delete
-
-
-
-# Delete Batch Job
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-batch-job
-
-delete /v1/accounts/{account_id}/batchJobs/{batch_job_id}
-
-
-
-# Delete Cluster
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-cluster
-
-delete /v1/accounts/{account_id}/clusters/{cluster_id}
-
-
-
-# Delete Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-environment
-
-delete /v1/accounts/{account_id}/environments/{environment_id}
-
-
-
-# Delete Node Pool
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-node-pool
-
-delete /v1/accounts/{account_id}/nodePools/{node_pool_id}
-
-
-
-# Delete Node Pool Binding
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-node-pool-binding
-
-post /v1/accounts/{account_id}/nodePoolBindings:delete
-
-
-
-# Delete Snapshot
-Source: https://docs.fireworks.ai/api-reference-dlde/delete-snapshot
-
-delete /v1/accounts/{account_id}/snapshots/{snapshot_id}
-
-
-
-# Disconnect Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/disconnect-environment
-
-post /v1/accounts/{account_id}/environments/{environment_id}:disconnect
-Disconnects the environment from the node pool. Returns an error
-if the environment is not connected to a node pool.
-
-
-
-# Get Batch Job
-Source: https://docs.fireworks.ai/api-reference-dlde/get-batch-job
-
-get /v1/accounts/{account_id}/batchJobs/{batch_job_id}
-
-
-
-# Get Batch Job Logs
-Source: https://docs.fireworks.ai/api-reference-dlde/get-batch-job-logs
-
-get /v1/accounts/{account_id}/batchJobs/{batch_job_id}:getLogs
-
-
-
-# Get Cluster
-Source: https://docs.fireworks.ai/api-reference-dlde/get-cluster
-
-get /v1/accounts/{account_id}/clusters/{cluster_id}
-
-
-
-# Get Cluster Connection Info
-Source: https://docs.fireworks.ai/api-reference-dlde/get-cluster-connection-info
-
-get /v1/accounts/{account_id}/clusters/{cluster_id}:getConnectionInfo
-Retrieve connection settings for the cluster to be put in kubeconfig
-
-
-
-# Get Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/get-environment
-
-get /v1/accounts/{account_id}/environments/{environment_id}
-
-
-
-# Get Node Pool
-Source: https://docs.fireworks.ai/api-reference-dlde/get-node-pool
-
-get /v1/accounts/{account_id}/nodePools/{node_pool_id}
-
-
-
-# Get Node Pool Stats
-Source: https://docs.fireworks.ai/api-reference-dlde/get-node-pool-stats
-
-get /v1/accounts/{account_id}/nodePools/{node_pool_id}:getStats
-
-
-
-# Get Snapshot
-Source: https://docs.fireworks.ai/api-reference-dlde/get-snapshot
-
-get /v1/accounts/{account_id}/snapshots/{snapshot_id}
-
-
-
-# List Aws Iam Role Bindings
-Source: https://docs.fireworks.ai/api-reference-dlde/list-aws-iam-role-bindings
-
-get /v1/accounts/{account_id}/awsIamRoleBindings
-
-
-
-# List Batch Jobs
-Source: https://docs.fireworks.ai/api-reference-dlde/list-batch-jobs
-
-get /v1/accounts/{account_id}/batchJobs
-
-
-
-# List Clusters
-Source: https://docs.fireworks.ai/api-reference-dlde/list-clusters
-
-get /v1/accounts/{account_id}/clusters
-
-
-
-# List Environments
-Source: https://docs.fireworks.ai/api-reference-dlde/list-environments
-
-get /v1/accounts/{account_id}/environments
-
-
-
-# List Node Pool Bindings
-Source: https://docs.fireworks.ai/api-reference-dlde/list-node-pool-bindings
-
-get /v1/accounts/{account_id}/nodePoolBindings
-
-
-
-# List Node Pools
-Source: https://docs.fireworks.ai/api-reference-dlde/list-node-pools
-
-get /v1/accounts/{account_id}/nodePools
-
-
-
-# List Snapshots
-Source: https://docs.fireworks.ai/api-reference-dlde/list-snapshots
-
-get /v1/accounts/{account_id}/snapshots
-
-
-
-# Update Batch Job
-Source: https://docs.fireworks.ai/api-reference-dlde/update-batch-job
-
-patch /v1/accounts/{account_id}/batchJobs/{batch_job_id}
-
-
-
-# Update Cluster
-Source: https://docs.fireworks.ai/api-reference-dlde/update-cluster
-
-patch /v1/accounts/{account_id}/clusters/{cluster_id}
-
-
-
-# Update Environment
-Source: https://docs.fireworks.ai/api-reference-dlde/update-environment
-
-patch /v1/accounts/{account_id}/environments/{environment_id}
-
-
-
-# Update Node Pool
-Source: https://docs.fireworks.ai/api-reference-dlde/update-node-pool
-
-patch /v1/accounts/{account_id}/nodePools/{node_pool_id}
-
 
 
 # Streaming Transcription
@@ -566,13 +361,13 @@ websocket /audio/transcriptions/streaming
   </Step>
 </Steps>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Try Python notebook" icon="notebook" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/audio/audio_streaming_speech_to_text/audio_streaming_speech_to_text.ipynb">
     Stream audio to get transcription continuously in real-time.
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Explore Python sources" icon="code" href="https://github.com/fw-ai/cookbook/tree/main/learn/audio/audio_streaming_speech_to_text/python">
     Stream audio to get transcription continuously in real-time.
   </Card>
@@ -604,33 +399,33 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key, e.g. `Authorization=API_KEY`. Alternatively, can be provided as a query param.
 </ParamField>
 
 ### Query Parameters
 
-<ParamField query="Authorization" type="string" optional>
+<ParamField type="string">
   Your Fireworks API key. Required when headers cannot be set (e.g., browser WebSocket connections). Can alternatively be provided via the Authorization header.
 </ParamField>
 
-<ParamField query="response_format" type="string" default="verbose_json" optional>
+<ParamField type="string">
   The format in which to return the response. Currently only `verbose_json` is recommended for streaming.
 </ParamField>
 
-<ParamField query="language" type="string | null" optional>
+<ParamField type="string | null">
   The target language for transcription. See the [Supported Languages](#supported-languages) section below for a complete list of available languages.
 </ParamField>
 
-<ParamField query="prompt" type="string | null" optional>
+<ParamField type="string | null">
   The input prompt that the model will use when generating the transcription. Can be used to specify custom words or specify the style of the transcription. E.g. `Um, here's, uh, what was recorded.` will make the model to include the filler words into the transcription.
 </ParamField>
 
-<ParamField query="temperature" type="float" default="0">
+<ParamField type="float">
   Sampling temperature to use when decoding text tokens during transcription.
 </ParamField>
 
-<ParamField query="timestamp_granularities" type="string | list[string] | null" optional>
+<ParamField type="string | list[string] | null">
   The timestamp granularities to populate for this streaming transcription. Defaults to null. Set to `word,segment` to enable timestamp granularities. Use a list for timestamp\_granularities in all client libraries. A comma-separated string like `word,segment` only works when manually included in the URL (e.g. in curl).
 </ParamField>
 
@@ -648,7 +443,7 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
       A unique identifier for the event.
     </ResponseField>
 
-    <ResponseField name="object" type="string" fixed="stt.state.clear">
+    <ResponseField name="object" type="string">
       A constant string that identifies the type of event as "stt.state.clear".
     </ResponseField>
 
@@ -664,7 +459,7 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
       A unique identifier for the event.
     </ResponseField>
 
-    <ResponseField name="object" type="string" fixed="stt.input.trace">
+    <ResponseField name="object" type="string">
       A constant string indicating the event type is "stt.input.trace".
     </ResponseField>
 
@@ -678,73 +473,77 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
 
 <Tabs>
   <Tab title="json">
-    <ResponseField name="task" type="string" default="transcribe" required>
+    <ResponseField name="task" type="string">
       The task that was performed — either `transcribe` or `translate`.
     </ResponseField>
 
-    <ResponseField name="language" type="string" required>
-      The language of the transcribed/translated text.
+    <ResponseField name="language" type="string">
+      The language(s) of the transcribed/translated text. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
     </ResponseField>
 
-    <ResponseField name="text" type="string" required>
+    <ResponseField name="text" type="string">
       The transcribed/translated text.
     </ResponseField>
 
-    <ResponseField name="words" type="object[] | null" optional>
+    <ResponseField name="words" type="object[] | null">
       Extracted words and their corresponding timestamps.
 
       <Expandable title="Word properties">
-        <ResponseField name="word" type="string" required>
+        <ResponseField name="word" type="string">
           The text content of the word.
         </ResponseField>
 
-        <ResponseField name="language" type="string" required>
+        <ResponseField name="language" type="string">
           The language of the word.
         </ResponseField>
 
-        <ResponseField name="probability" type="number" required>
+        <ResponseField name="probability" type="number">
           The probability of the word.
         </ResponseField>
 
-        <ResponseField name="hallucination_score" type="number" required>
+        <ResponseField name="hallucination_score" type="number">
           The hallucination score of the word.
         </ResponseField>
 
-        <ResponseField name="start" type="number" optional>
+        <ResponseField name="start" type="number">
           Start time of the word in seconds. Appears only when timestamp\_granularities is set to `word,segment`.
         </ResponseField>
 
-        <ResponseField name="end" type="number" optional>
+        <ResponseField name="end" type="number">
           End time of the word in seconds. Appears only when timestamp\_granularities is set to `word,segment`.
         </ResponseField>
 
-        <ResponseField name="is_final" type="bool" required>
+        <ResponseField name="is_final" type="bool">
           Indicates whether this word has been finalized.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="segments" type="object[] | null" optional>
+    <ResponseField name="segments" type="object[] | null">
       Segments of the transcribed/translated text and their corresponding details.
 
       <Expandable title="Segment properties (partial)">
-        <ResponseField name="id" type="number" required>
+        <ResponseField name="id" type="number">
           The ID of the segment.
         </ResponseField>
 
-        <ResponseField name="text" type="string" required>
+        <ResponseField name="text" type="string">
           The text content of the segment.
         </ResponseField>
 
-        <ResponseField name="words" type="object[] | null" optional>
+        <ResponseField name="language" type="string">
+          The language(s) of the segment. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
+        </ResponseField>
+
+        <ResponseField name="words" type="object[] | null">
           Extracted words in the segment.
         </ResponseField>
 
-        <ResponseField name="start" type="number" optional>
+        <ResponseField name="start" type="number">
           Start time of the segment in seconds. Appears only when timestamp\_granularities is set to `word,segment`.
         </ResponseField>
 
-        <ResponseField name="end" type="number" optional>
+        <ResponseField name="end" type="number">
           End time of the segment in seconds. Appears only when timestamp\_granularities is set to `word,segment`.
         </ResponseField>
       </Expandable>
@@ -758,7 +557,7 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
       A unique identifier for the event.
     </ResponseField>
 
-    <ResponseField name="object" type="string" fixed="stt.state.cleared">
+    <ResponseField name="object" type="string">
       A constant string indicating the event type is "stt.state.cleared"
     </ResponseField>
 
@@ -774,7 +573,7 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
       A unique identifier for the event.
     </ResponseField>
 
-    <ResponseField name="object" type="string" fixed="stt.output.trace">
+    <ResponseField name="object" type="string">
       A constant string indicating the event type is "stt.output.trace".
     </ResponseField>
 
@@ -796,7 +595,7 @@ Stream short audio chunks (50-400ms) in binary frames of PCM 16-bit little-endia
 
 The client maintains a state dictionary, starting with an empty dictionary `{}`. When the server sends the first transcription message, it contains a list of segments. Each segment has an `id` and `text`:
 
-```python  theme={null}
+```python theme={null}
 # Server initial message:
 {
     "segments": [
@@ -814,7 +613,7 @@ The client maintains a state dictionary, starting with an empty dictionary `{}`.
 
 When the server sends the next updates to the transcription, the client updates the state dictionary based on the segment `id`:
 
-```python  theme={null}
+```python theme={null}
 # Server continuous message:
 {
     "segments": [
@@ -863,7 +662,7 @@ Check out a brief Python example below or example sources:
 * [Node.js sources](https://github.com/fw-ai/cookbook/tree/main/learn/audio/audio_streaming_speech_to_text/nodejs)
 
 <CodeGroup>
-  ```python  theme={null}
+  ```python theme={null}
   !pip3 install requests torch torchaudio websocket-client
 
   import io
@@ -1039,7 +838,7 @@ Source: https://docs.fireworks.ai/api-reference/audio-transcriptions
 
 post /audio/transcriptions
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Try notebook" icon="rocket" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/audio/audio_prerecorded_speech_to_text/audio_prerecorded_speech_to_text.ipynb">
     Send a sample audio to get a transcription.
   </Card>
@@ -1047,7 +846,7 @@ post /audio/transcriptions
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key, e.g. `Authorization=API_KEY`.
 </ParamField>
 
@@ -1055,52 +854,51 @@ post /audio/transcriptions
 
 ##### (multi-part form)
 
-<ParamField query="file" type="file | string" required>
+<ParamField type="file | string">
   The input audio file to transcribe or an URL to the public audio file.
 
   Max audio file size is 1 GB, there is no limit for audio duration. Common file formats such as mp3, flac, and wav are supported. Note that the audio will be resampled to 16kHz, downmixed to mono, and reformatted to 16-bit signed little-endian format before transcription. Pre-converting the file before sending it to the API can improve runtime performance.
 </ParamField>
 
-<ParamField query="model" type="string" default="whisper-v3" optional>
+<ParamField type="string">
   String name of the ASR model to use. Can be one of `whisper-v3` or `whisper-v3-turbo`. Please use the following serverless endpoints:
 
   * [https://audio-prod.api.fireworks.ai](https://audio-prod.api.fireworks.ai) (for `whisper-v3`);
   * [https://audio-turbo.api.fireworks.ai](https://audio-turbo.api.fireworks.ai) (for `whisper-v3-turbo`);
 </ParamField>
 
-<ParamField query="vad_model" type="string" default="silero" optional>
+<ParamField type="string">
   String name of the voice activity detection (VAD) model to use. Can be one of `silero`, or `whisperx-pyannet`.
 </ParamField>
 
-<ParamField query="alignment_model" type="string" default="mms_fa" optional>
+<ParamField type="string">
   String name of the alignment model to use. Currently supported:
 
   * `mms_fa` optimal accuracy for multilingual speech.
   * `tdnn_ffn` optimal accuracy for English-only speech.
-  * `gentle` best accuracy for English-only speech (requires a dedicated endpoint, contact us at <a href="mailto:inquiries@fireworks.ai">[inquiries@fireworks.ai](mailto:inquiries@fireworks.ai)</a>).
 </ParamField>
 
-<ParamField query="language" type="string | null" optional>
+<ParamField type="string | null">
   The target language for transcription. See the [Supported Languages](#supported-languages) section below for a complete list of available languages.
 </ParamField>
 
-<ParamField query="prompt" type="string | null" optional>
+<ParamField type="string | null">
   The input prompt that the model will use when generating the transcription. Can be used to specify custom words or specify the style of the transcription. E.g. `Um, here's, uh, what was recorded.` will make the model to include the filler words into the transcription.
 </ParamField>
 
-<ParamField query="temperature" type="float | list[float]" default="0">
+<ParamField type="float | list[float]">
   Sampling temperature to use when decoding text tokens during transcription. Alternatively, fallback decoding can be enabled by passing a list of temperatures like `0.0,0.2,0.4,0.6,0.8,1.0`. This can help to improve performance.
 </ParamField>
 
-<ParamField query="response_format" type="string" default="json">
+<ParamField type="string">
   The format in which to return the response. Can be one of `json`, `text`, `srt`, `verbose_json`, or `vtt`.
 </ParamField>
 
-<ParamField query="timestamp_granularities" type="string | list[string]" optional>
+<ParamField type="string | list[string]">
   The timestamp granularities to populate for this transcription. `response_format` must be set `verbose_json` to use timestamp granularities. Either or both of these options are supported. Can be one of `word`, `segment`, or `word,segment`. If not present, defaults to `segment`.
 </ParamField>
 
-<ParamField query="diarize" type="string" optional>
+<ParamField type="string">
   Whether to get speaker diarization for the transcription. Can be one of `true`, or `false`. If not present, defaults to `false`.
 
   Enabling diarization also requires other fields to hold specific values:
@@ -1109,15 +907,15 @@ post /audio/transcriptions
   2. `timestamp_granularities` must include `word` to use diarization.
 </ParamField>
 
-<ParamField query="min_speakers" type="int" optional>
+<ParamField type="int">
   The minimum number of speakers to detect for diarization. `diarize` must be set `true` to use `min_speakers`. If not present, defaults to `1`.
 </ParamField>
 
-<ParamField query="max_speakers" type="int" optional>
+<ParamField type="int">
   The maximum number of speakers to detect for diarization. `diarize` must be set `true` to use `max_speakers`. If not present, defaults to `inf`.
 </ParamField>
 
-<ParamField query="preprocessing" type="string" optional>
+<ParamField type="string">
   Audio preprocessing mode. Currently supported:
 
   * `none` to skip audio preprocessing.
@@ -1130,85 +928,89 @@ post /audio/transcriptions
 
 <Tabs>
   <Tab title="json/text/srt/vtt">
-    <ResponseField name="text" type="string" required />
+    <ResponseField name="text" type="string" />
   </Tab>
 
   <Tab title="verbose_json">
-    <ResponseField name="task" type="string" default="transcribe" required>
+    <ResponseField name="task" type="string">
       The task which was performed. Either `transcribe` or `translate`.
     </ResponseField>
 
-    <ResponseField name="language" type="string" required>
-      The language of the transcribed/translated text.
+    <ResponseField name="language" type="string">
+      The language(s) of the transcribed/translated text. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
     </ResponseField>
 
-    <ResponseField name="duration" type="number" required>
+    <ResponseField name="duration" type="number">
       The duration of the transcribed/translated audio, in seconds.
     </ResponseField>
 
-    <ResponseField name="text" type="string" required>
+    <ResponseField name="text" type="string">
       The transcribed/translated text.
     </ResponseField>
 
-    <ResponseField name="words" type="object[] | null" optional>
+    <ResponseField name="words" type="object[] | null">
       Extracted words and their corresponding timestamps.
 
       <Expandable title="Word properties">
-        <ResponseField name="word" type="string" required>
+        <ResponseField name="word" type="string">
           The text content of the word.
         </ResponseField>
 
-        <ResponseField name="language" type="string" required>
+        <ResponseField name="language" type="string">
           The language of the word.
         </ResponseField>
 
-        <ResponseField name="probability" type="number" required>
+        <ResponseField name="probability" type="number">
           The probability of the word.
         </ResponseField>
 
-        <ResponseField name="hallucination_score" type="number" required>
+        <ResponseField name="hallucination_score" type="number">
           The hallucination score of the word.
         </ResponseField>
 
-        <ResponseField name="start" type="number" required>
+        <ResponseField name="start" type="number">
           Start time of the word in seconds.
         </ResponseField>
 
-        <ResponseField name="end" type="number" required>
+        <ResponseField name="end" type="number">
           End time of the word in seconds.
         </ResponseField>
 
-        <ResponseField name="speaker_id" type="string" optional>
+        <ResponseField name="speaker_id" type="string">
           Speaker label for the word.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="segments" type="object[] | null" optional>
+    <ResponseField name="segments" type="object[] | null">
       Segments of the transcribed/translated text and their corresponding details.
 
       <Expandable title="Segment properties (partial)">
-        <ResponseField name="id" type="number" required>
+        <ResponseField name="id" type="number">
           The id of the segment.
         </ResponseField>
 
-        <ResponseField name="text" type="string" required>
+        <ResponseField name="text" type="string">
           The text content of the segment.
         </ResponseField>
 
-        <ResponseField name="start" type="number" required>
+        <ResponseField name="language" type="string">
+          The language(s) of the segment. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
+        </ResponseField>
+
+        <ResponseField name="start" type="number">
           Start time of the segment in seconds.
         </ResponseField>
 
-        <ResponseField name="end" type="number" required>
+        <ResponseField name="end" type="number">
           End time of the segment in seconds.
         </ResponseField>
 
-        <ResponseField name="speaker_id" type="string" optional>
+        <ResponseField name="speaker_id" type="string">
           Speaker label for the segment.
         </ResponseField>
 
-        <ResponseField name="words" type="object[] | null" optional>
+        <ResponseField name="words" type="object[] | null">
           Extracted words in the segment.
         </ResponseField>
       </Expandable>
@@ -1402,7 +1204,7 @@ post /audio/translations
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key, e.g. `Authorization=API_KEY`.
 </ParamField>
 
@@ -1410,52 +1212,51 @@ post /audio/translations
 
 ##### (multi-part form)
 
-<ParamField query="file" type="file | string" required>
+<ParamField type="file | string">
   The input audio file to translate or an URL to the public audio file.
 
   Max audio file size is 1 GB, there is no limit for audio duration. Common file formats such as mp3, flac, and wav are supported. Note that the audio will be resampled to 16kHz, downmixed to mono, and reformatted to 16-bit signed little-endian format before transcription. Pre-converting the file before sending it to the API can improve runtime performance.
 </ParamField>
 
-<ParamField query="model" type="string" default="whisper-v3" optional>
+<ParamField type="string">
   String name of the ASR model to use. Can be one of `whisper-v3` or `whisper-v3-turbo`. Please use the following serverless endpoints:
 
   * [https://audio-prod.api.fireworks.ai](https://audio-prod.api.fireworks.ai) (for `whisper-v3`);
   * [https://audio-turbo.api.fireworks.ai](https://audio-turbo.api.fireworks.ai) (for `whisper-v3-turbo`);
 </ParamField>
 
-<ParamField query="vad_model" type="string" default="silero" optional>
+<ParamField type="string">
   String name of the voice activity detection (VAD) model to use. Can be one of `silero`, or `whisperx-pyannet`.
 </ParamField>
 
-<ParamField query="alignment_model" type="string" default="mms_fa" optional>
+<ParamField type="string">
   String name of the alignment model to use. Currently supported:
 
   * `mms_fa` optimal accuracy for multilingual speech.
   * `tdnn_ffn` optimal accuracy for English-only speech.
-  * `gentle` best accuracy for English-only speech (requires a dedicated endpoint, contact us at <a href="mailto:inquiries@fireworks.ai">[inquiries@fireworks.ai](mailto:inquiries@fireworks.ai)</a>).
 </ParamField>
 
-<ParamField query="language" type="string | null" optional>
+<ParamField type="string | null">
   The source language for transcription. See the [Supported Languages](#supported-languages) section below for a complete list of available languages.
 </ParamField>
 
-<ParamField query="prompt" type="string | null" optional>
+<ParamField type="string | null">
   The input prompt that the model will use when generating the transcription. Can be used to specify custom words or specify the style of the transcription. E.g. `Um, here's, uh, what was recorded.` will make the model to include the filler words into the transcription.
 </ParamField>
 
-<ParamField query="temperature" type="float | list[float]" default="0">
+<ParamField type="float | list[float]">
   Sampling temperature to use when decoding text tokens during transcription. Alternatively, fallback decoding can be enabled by passing a list of temperatures like `0.0,0.2,0.4,0.6,0.8,1.0`. This can help to improve performance.
 </ParamField>
 
-<ParamField query="response_format" type="string" default="json">
+<ParamField type="string">
   The format in which to return the response. Can be one of `json`, `text`, `srt`, `verbose_json`, or `vtt`.
 </ParamField>
 
-<ParamField query="timestamp_granularities" type="string | list[string]" optional>
+<ParamField type="string | list[string]">
   The timestamp granularities to populate for this transcription. response\_format must be set `verbose_json` to use timestamp granularities. Either or both of these options are supported. Can be one of `word`, `segment`, or `word,segment`. If not present, defaults to `segment`.
 </ParamField>
 
-<ParamField query="preprocessing" type="string" optional>
+<ParamField type="string">
   Audio preprocessing mode. Currently supported:
 
   * `none` to skip audio preprocessing.
@@ -1468,45 +1269,45 @@ post /audio/translations
 
 <Tabs>
   <Tab title="json/text/srt/vtt">
-    <ResponseField name="text" type="string" required />
+    <ResponseField name="text" type="string" />
   </Tab>
 
   <Tab title="verbose_json">
-    <ResponseField name="task" type="string" default="transcribe" required>
+    <ResponseField name="task" type="string">
       The task which was performed. Either `transcribe` or `translate`.
     </ResponseField>
 
-    <ResponseField name="language" type="string" required>
+    <ResponseField name="language" type="string">
       The language of the transcribed/translated text.
     </ResponseField>
 
-    <ResponseField name="duration" type="number" required>
+    <ResponseField name="duration" type="number">
       The duration of the transcribed/translated audio, in seconds.
     </ResponseField>
 
-    <ResponseField name="text" type="string" required>
+    <ResponseField name="text" type="string">
       The transcribed/translated text.
     </ResponseField>
 
-    <ResponseField name="words" type="object" optional>
+    <ResponseField name="words" type="object">
       Extracted words and their corresponding timestamps.
 
       <Expandable title="properties">
-        <ResponseField name="word" type="string" required>
+        <ResponseField name="word" type="string">
           The text content of the word.
         </ResponseField>
 
-        <ResponseField name="words.start" type="number" required>
+        <ResponseField name="words.start" type="number">
           Start time of the word in seconds.
         </ResponseField>
 
-        <ResponseField name="words.end" type="number" required>
+        <ResponseField name="words.end" type="number">
           End time of the word in seconds.
         </ResponseField>
       </Expandable>
     </ResponseField>
 
-    <ResponseField name="segments" type="object[] | null" optional>
+    <ResponseField name="segments" type="object[] | null">
       Segments of the transcribed/translated text and their corresponding details.
     </ResponseField>
   </Tab>
@@ -1713,7 +1514,7 @@ Source: https://docs.fireworks.ai/api-reference/create-batch-request
 
 post /{path}?endpoint_id={endpoint_id}
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Try notebook" icon="rocket" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/batch-api/batch_api.ipynb">
     Create a batch request for our audio transcription service
   </Card>
@@ -1721,19 +1522,19 @@ post /{path}?endpoint_id={endpoint_id}
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key, e.g. `Authorization=FIREWORKS_API_KEY`. Alternatively, can be provided as a query param.
 </ParamField>
 
 ### Path Parameters
 
-<ParamField query="path" type="string" required>
+<ParamField type="string">
   The relative route of the target API operation (e.g. `"v1/audio/transcriptions"`, `"v1/audio/translations"`). This should correspond to a valid route supported by the backend service.
 </ParamField>
 
 ### Query Parameters
 
-<ParamField query="endpoint_id" type="string" required>
+<ParamField type="string">
   Identifies the target backend service or model to handle the request. Currently supported:
 
   * `audio-prod`: [https://audio-prod.api.fireworks.ai](https://audio-prod.api.fireworks.ai)
@@ -1755,26 +1556,26 @@ Refer to the relevant synchronous API for required fields:
 
 <Tabs>
   <Tab title="json">
-    <ResponseField name="status" type="string" required>
+    <ResponseField name="status" type="string">
       The status of the batch request submission.\
       A value of `"submitted"` indicates the batch request was accepted and queued for processing.
     </ResponseField>
 
-    <ResponseField name="batch_id" type="string" required>
+    <ResponseField name="batch_id" type="string">
       A unique identifier assigned to the batch job.
       This ID can be used to check job status or retrieve results later.
     </ResponseField>
 
-    <ResponseField name="account_id" type="string" required>
+    <ResponseField name="account_id" type="string">
       The unique identifier of the account associated with the batch job.
     </ResponseField>
 
-    <ResponseField name="endpoint_id" type="string" required>
+    <ResponseField name="endpoint_id" type="string">
       The backend service selected to process the request.\
       This typically matches the `endpoint_id` used during submission.
     </ResponseField>
 
-    <ResponseField name="message" type="string" optional>
+    <ResponseField name="message" type="string">
       A human-readable message describing the result of the submission.\
       Typically `"Request submitted successfully"` if accepted.
     </ResponseField>
@@ -1846,6 +1647,49 @@ post /v1/accounts/{account_id}/deployments
 Source: https://docs.fireworks.ai/api-reference/create-dpo-job
 
 post /v1/accounts/{account_id}/dpoJobs
+
+
+
+# Create Evaluation Job
+Source: https://docs.fireworks.ai/api-reference/create-evaluation-job
+
+post /v1/accounts/{account_id}/evaluationJobs
+
+
+
+# Create Evaluator
+Source: https://docs.fireworks.ai/api-reference/create-evaluator
+
+post /v1/accounts/{account_id}/evaluatorsV2
+Creates a custom evaluator for scoring model outputs. Evaluators use the
+[Eval Protocol](https://evalprotocol.io) to define test cases, run model
+inference, and score responses. They are used with evaluation jobs and
+Reinforcement Fine-Tuning (RFT).
+
+## Source Code Requirements
+
+Your project should contain:
+- `requirements.txt` - Python dependencies for your evaluator
+- `test_*.py` - Pytest test file(s) with
+  [`@evaluation_test`](https://evalprotocol.io/reference/evaluation-test)
+  decorated functions
+- Any additional code/modules your evaluator needs
+
+## Workflow
+
+**Recommended:** Use the [`ep upload`](https://evalprotocol.io/reference/cli#ep-upload)
+CLI command to handle all these steps automatically.
+
+If using the API directly:
+
+1. Call this endpoint to create the evaluator resource
+2. Package your source directory as a `.tar.gz` (respecting `.gitignore`)
+3. Call [Get Evaluator Upload Endpoint](/api-reference/get-evaluator-upload-endpoint) to get a signed upload URL
+4. `PUT` the tar.gz file to the signed URL
+5. Call [Validate Evaluator Upload](/api-reference/validate-evaluator-upload) to trigger server-side validation
+6. Poll [Get Evaluator](/api-reference/get-evaluator) until ready
+
+Once active, reference the evaluator in [Create Evaluation Job](/api-reference/create-evaluation-job) or [Create Reinforcement Fine-tuning Job](/api-reference/create-reinforcement-fine-tuning-job).
 
 
 
@@ -1940,6 +1784,21 @@ delete /v1/accounts/{account_id}/dpoJobs/{dpo_job_id}
 
 
 
+# Delete Evaluation Job
+Source: https://docs.fireworks.ai/api-reference/delete-evaluation-job
+
+delete /v1/accounts/{account_id}/evaluationJobs/{evaluation_job_id}
+
+
+
+# Delete Evaluator
+Source: https://docs.fireworks.ai/api-reference/delete-evaluator
+
+delete /v1/accounts/{account_id}/evaluators/{evaluator_id}
+Deletes an evaluator and its associated versions and build artifacts.
+
+
+
 # Delete Model
 Source: https://docs.fireworks.ai/api-reference/delete-model
 
@@ -1985,6 +1844,13 @@ delete /v1/accounts/{account_id}/supervisedFineTuningJobs/{supervised_fine_tunin
 
 
 
+# Execute one training step for keep-alive Reinforcement Fine-tuning Step
+Source: https://docs.fireworks.ai/api-reference/execute-reinforcement-fine-tuning-step
+
+post /v1/accounts/{account_id}/rlorTrainerJobs/{rlor_trainer_job_id}:executeTrainStep
+
+
+
 # Generate an image with FLUX.1 [schnell] FP8
 Source: https://docs.fireworks.ai/api-reference/generate-a-new-image-from-a-text-prompt
 
@@ -2002,41 +1868,41 @@ to quickly try it out in your browser.
 
 ## Headers
 
-<ParamField header="Accept" type="string" initialValue="image/png" placeholder="image/png">
+<ParamField type="string" placeholder="image/png">
   Specifies which format to return the response in. With `image/png` and
   `image/jpeg`, the server will populate the response body with a binary image
   of the specified format.
 </ParamField>
 
-<ParamField header="Content-Type" type="string" initialValue="application/json" placeholder="application/json">
+<ParamField type="string" placeholder="application/json">
   The media type of the request body.
 </ParamField>
 
-<ParamField header="Authorization" type="string">
+<ParamField type="string">
   The Bearer with Fireworks API Key.
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required initialValue="A photo of a cat" placeholder="A photo of a cat">
+<ParamField type="string" placeholder="A photo of a cat">
   Prompt to use for the image generation process.
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string" optional initialValue="16:9" placeholder="16:9">
+<ParamField type="string" placeholder="16:9">
   Aspect ratio of the generated image.
 
   **Options:** `1:1`, `21:9`, `16:9`, `3:2`, `5:4`, `4:5`, `2:3`, `9:16`, `9:21`, `4:3`, `3:4`
 </ParamField>
 
-<ParamField body="guidance_scale" type="float" optional initialValue="3.5" placeholder="3.5">
+<ParamField type="float" placeholder="3.5">
   Classifier-free guidance scale for the image diffusion process. Default value is 3.5.
 </ParamField>
 
-<ParamField body="num_inference_steps" type="integer" optional initialValue="4" placeholder="4">
+<ParamField type="integer" placeholder="4">
   Number of denoising steps for the image generation process. Default value is 4.
 </ParamField>
 
-<ParamField body="seed" type="integer" optional initialValue="0" placeholder="0">
+<ParamField type="integer" placeholder="0">
   Random seed to use for the image generation process. If 0, we will use a totally random seed.
 </ParamField>
 
@@ -2126,17 +1992,17 @@ to quickly try it out in your browser.
 
 <Tabs>
   <Tab title="application/json">
-    <ResponseField name="id" type="string" required>
+    <ResponseField name="id" type="string">
       The unique identifier for the image generation request.
     </ResponseField>
 
-    <ResponseField name="base64" type="string" required>
+    <ResponseField name="base64" type="string">
       Includes a base64-encoded string containing an image in PNG format.
       To retrieve the image, base64-decode the string into binary data,
       then load that binary data as a PNG file.
     </ResponseField>
 
-    <ResponseField name="finishReason" type="string" required>
+    <ResponseField name="finishReason" type="string">
       Can be `SUCCESS` or `CONTENT_FILTERED`.
 
       Specifies the outcome of the image generation process. It could be
@@ -2145,7 +2011,7 @@ to quickly try it out in your browser.
       parameter being set.
     </ResponseField>
 
-    <ResponseField name="seed" type="integer" required>
+    <ResponseField name="seed" type="integer">
       The seed used for the image generation process.
     </ResponseField>
   </Tab>
@@ -2195,59 +2061,59 @@ POST https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/{
 
 ## Path
 
-<ParamField path="model" type="string" required initialValue="flux-kontext-pro" placeholder="flux-kontext-pro">
+<ParamField type="string" placeholder="flux-kontext-pro">
   The model to use for image generation. Use **flux-kontext-pro** or  **flux-kontext-max** as the model name in the API.
 </ParamField>
 
 ## Headers
 
-<ParamField header="Content-Type" type="string" initialValue="application/json" placeholder="application/json">
+<ParamField type="string" placeholder="application/json">
   The media type of the request body.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key.
 </ParamField>
 
 ## Request Body
 
-<ParamField body="prompt" type="string" required initialValue="A photo of a cat" placeholder="A photo of a cat">
+<ParamField type="string" placeholder="A photo of a cat">
   Prompt to use for the image generation process.
 </ParamField>
 
-<ParamField body="input_image" type="string | null" optional>
+<ParamField type="string | null">
   Base64 encoded image or URL to use with Kontext.
 </ParamField>
 
-<ParamField body="seed" type="integer | null" optional initialValue="42" placeholder="42">
+<ParamField type="integer | null" placeholder="42">
   Optional seed for reproducibility.
 </ParamField>
 
-<ParamField body="aspect_ratio" type="string | null" optional>
+<ParamField type="string | null">
   Aspect ratio of the image between 21:9 and 9:21.
 </ParamField>
 
-<ParamField body="output_format" type="string" optional initialValue="png" placeholder="png">
+<ParamField type="string" placeholder="png">
   Output format for the generated image. Can be 'jpeg' or 'png'.
 
   **Options:** `jpeg`, `png`
 </ParamField>
 
-<ParamField body="webhook_url" type="string | null" optional>
+<ParamField type="string | null">
   URL to receive webhook notifications.
 
   **Length:** 1-2083 characters
 </ParamField>
 
-<ParamField body="webhook_secret" type="string | null" optional>
+<ParamField type="string | null">
   Optional secret for webhook signature verification.
 </ParamField>
 
-<ParamField body="prompt_upsampling" type="boolean" optional initialValue="false" placeholder="false">
+<ParamField type="boolean" placeholder="false">
   Whether to perform upsampling on the prompt. If active, automatically modifies the prompt for more creative generation.
 </ParamField>
 
-<ParamField body="safety_tolerance" type="integer" optional initialValue="2" placeholder="2">
+<ParamField type="integer" placeholder="2">
   Tolerance level for input and output moderation. Between 0 and 6, 0 being most strict, 6 being least strict. Limit of 2 for Image to Image.
 
   **Range:** 0-6
@@ -2314,7 +2180,7 @@ POST https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/{
   <Tab title="200">
     Successful Response
 
-    <ParamField body="request_id" type="string">
+    <ParamField type="string">
       request id
     </ParamField>
   </Tab>
@@ -2322,7 +2188,7 @@ POST https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/{
   <Tab title="400">
     Unsuccessful Response
 
-    <ParamField body="error_message" type="string">
+    <ParamField type="string">
       error message
     </ParamField>
   </Tab>
@@ -2350,7 +2216,7 @@ get /v1/accounts/{account_id}/batch_job/{batch_id}
 
 This endpoint allows you to check the current status of a previously submitted batch request, and retrieve the final result if available.
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Try notebook" icon="rocket" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/batch-api/batch_api.ipynb">
     Check status of your batch request
   </Card>
@@ -2358,17 +2224,17 @@ This endpoint allows you to check the current status of a previously submitted b
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key. e.g. `Authorization=FIREWORKS_API_KEY`. Alternatively, can be provided as a query param.
 </ParamField>
 
 ### Path Parameters
 
-<ParamField query="account_id" type="string" required>
+<ParamField type="string">
   The identifier of your Fireworks account. Must match the account used when the batch request was submitted.
 </ParamField>
 
-<ParamField query="batch_id" type="string" required>
+<ParamField type="string">
   The unique identifier of the batch job to check.\
   This should match the `batch_id` returned when the batch request was originally submitted.
 </ParamField>
@@ -2379,27 +2245,27 @@ The response includes the status of the batch job and, if completed, the final r
 
 <Tabs>
   <Tab title="json">
-    <ResponseField name="status" type="string" required>
+    <ResponseField name="status" type="string">
       The status of the batch job at the time of the request.\
       Possible values include `"completed"` and `"processing"`.
     </ResponseField>
 
-    <ResponseField name="batch_id" type="string" required>
+    <ResponseField name="batch_id" type="string">
       The unique identifier of the batch job whose status is being retrieved.\
       This ID matches the one provided in the original request.
     </ResponseField>
 
-    <ResponseField name="message" type="string" optional>
+    <ResponseField name="message" type="string">
       A human-readable message describing the current state of the batch job.\
       This field is typically `null` when the job has completed successfully.
     </ResponseField>
 
-    <ResponseField name="content_type" type="string" optional>
+    <ResponseField name="content_type" type="string">
       The original content type of the response body.\
       This value can be used to determine how to parse the string in the `body` field.
     </ResponseField>
 
-    <ResponseField name="body" type="string" optional>
+    <ResponseField name="body" type="string">
       The serialized result of the batch job, this field is only present when `status` is `"completed"`.\
       The format of this string depends on the `content_type` field and may vary across endpoints.\
       Clients should use `content_type` to determine how to parse or interpret the value.
@@ -2470,6 +2336,13 @@ get /v1/accounts/{account_id}/deployments/{deployment_id}
 
 
 
+# Get Deployment Shape
+Source: https://docs.fireworks.ai/api-reference/get-deployment-shape
+
+get /v1/accounts/{account_id}/deploymentShapes/{deployment_shape_id}
+
+
+
 # Get Deployment Shape Version
 Source: https://docs.fireworks.ai/api-reference/get-deployment-shape-version
 
@@ -2491,6 +2364,64 @@ get /v1/accounts/{account_id}/dpoJobs/{dpo_job_id}:getMetricsFileEndpoint
 
 
 
+# Get Evaluation Job
+Source: https://docs.fireworks.ai/api-reference/get-evaluation-job
+
+get /v1/accounts/{account_id}/evaluationJobs/{evaluation_job_id}
+
+
+
+# Get Evaluation Job execution logs (stream log endpoint + tracing IDs).
+Source: https://docs.fireworks.ai/api-reference/get-evaluation-job-log-endpoint
+
+get /v1/accounts/{account_id}/evaluationJobs/{evaluation_job_id}:getExecutionLogEndpoint
+
+
+
+# Get Evaluator
+Source: https://docs.fireworks.ai/api-reference/get-evaluator
+
+get /v1/accounts/{account_id}/evaluators/{evaluator_id}
+Retrieves an evaluator by name. Use this to monitor build progress after
+creation (**step 6** in the [Create Evaluator](/api-reference/create-evaluator) workflow).
+
+Possible states:
+
+- `BUILDING` - Environment is being prepared
+- `ACTIVE` - Evaluator is ready to use
+- `BUILD_FAILED` - Check build logs via [Get Evaluator Build Log Endpoint](/api-reference/get-evaluator-build-log-endpoint)
+
+
+
+# Get Evaluator Build Log Endpoint
+Source: https://docs.fireworks.ai/api-reference/get-evaluator-build-log-endpoint
+
+get /v1/accounts/{account_id}/evaluators/{evaluator_id}:getBuildLogEndpoint
+Returns a signed URL to download the evaluator's build logs. Useful for
+debugging `BUILD_FAILED` state.
+
+
+
+# Get Evaluator Source Code Endpoint
+Source: https://docs.fireworks.ai/api-reference/get-evaluator-source-code-endpoint
+
+get /v1/accounts/{account_id}/evaluators/{evaluator_id}:getSourceCodeSignedUrl
+Returns a signed URL to download the evaluator's source code archive.
+Useful for debugging or reviewing the uploaded code.
+
+
+
+# Get Evaluator Upload Endpoint
+Source: https://docs.fireworks.ai/api-reference/get-evaluator-upload-endpoint
+
+post /v1/accounts/{account_id}/evaluators/{evaluator_id}:getUploadEndpoint
+Returns signed URLs for uploading evaluator source code (**step 3** in the
+[Create Evaluator](/api-reference/create-evaluator) workflow). After receiving
+the signed URL, upload your `.tar.gz` archive using HTTP `PUT` with
+`Content-Type: application/octet-stream` header.
+
+
+
 # Get generated image from FLUX.1 Kontext
 Source: https://docs.fireworks.ai/api-reference/get-generated-image-from-flux-kontex
 
@@ -2508,23 +2439,23 @@ GET https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/{m
 
 ## Path
 
-<ParamField path="model" type="string" required initialValue="flux-kontext-pro" placeholder="flux-kontext-pro">
+<ParamField type="string" placeholder="flux-kontext-pro">
   The model to use for image generation. Use **flux-kontext-pro** or  **flux-kontext-max** as the model name in the API.
 </ParamField>
 
 ## Headers
 
-<ParamField header="Content-Type" type="string" initialValue="application/json" placeholder="application/json">
+<ParamField type="string" placeholder="application/json">
   The media type of the request body.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Fireworks API key.
 </ParamField>
 
 ## Request Body
 
-<ParamField body="id" type="string" required>
+<ParamField type="string">
   Request id generated from create/edit image request.
 </ParamField>
 
@@ -2579,11 +2510,11 @@ GET https://api.fireworks.ai/inference/v1/workflows/accounts/fireworks/models/{m
 
 ## Response
 
-<ResponseField name="id" type="string" required>
+<ResponseField name="id" type="string">
   Task id for retrieving result
 </ResponseField>
 
-<ResponseField name="status" type="enum<string>" required>
+<ResponseField name="status" type="enum<string>">
   Available options: Task not found, Pending, Request Moderated, Content Moderated, Ready, Error
 </ResponseField>
 
@@ -2673,14 +2604,14 @@ All requests made to the Fireworks AI REST API must include an `Authorization` h
 
 You can obtain an API key by:
 
-* Using the [`firectl create api-key`](/tools-sdks/firectl/commands/create-api-key) command
+* Using the [`firectl api-key create`](/tools-sdks/firectl/commands/api-key-create) command
 * Generating one through the [Fireworks AI dashboard](https://app.fireworks.ai/settings/users/api-keys)
 
 ### Request headers
 
 Include the following headers in your REST API requests:
 
-```json  theme={null}
+```json theme={null}
 authorization: Bearer <API_KEY>
 content-type: application/json
 ```
@@ -2728,6 +2659,13 @@ get /v1/accounts/{account_id}/deploymentShapes/{deployment_shape_id}/versions
 
 
 
+# List Deployment Shapes
+Source: https://docs.fireworks.ai/api-reference/list-deployment-shapes
+
+get /v1/accounts/{account_id}/deploymentShapes
+
+
+
 # List Deployments
 Source: https://docs.fireworks.ai/api-reference/list-deployments
 
@@ -2739,6 +2677,21 @@ get /v1/accounts/{account_id}/deployments
 Source: https://docs.fireworks.ai/api-reference/list-dpo-jobs
 
 get /v1/accounts/{account_id}/dpoJobs
+
+
+
+# List Evaluation Jobs
+Source: https://docs.fireworks.ai/api-reference/list-evaluation-jobs
+
+get /v1/accounts/{account_id}/evaluationJobs
+
+
+
+# List Evaluators
+Source: https://docs.fireworks.ai/api-reference/list-evaluators
+
+get /v1/accounts/{account_id}/evaluators
+Lists all evaluators for an account with pagination support.
 
 
 
@@ -2801,16 +2754,16 @@ get /v1/accounts/{account_id}/users
 # Create Chat Completion
 Source: https://docs.fireworks.ai/api-reference/post-chatcompletions
 
-post /chat/completions
-Creates a model response for the given chat conversation.
+post /v1/chat/completions
+Create a completion for the provided prompt and parameters.
 
 
 
 # Create Completion
 Source: https://docs.fireworks.ai/api-reference/post-completions
 
-post /completions
-Creates a completion for the provided prompt and parameters.
+post /v1/completions
+Create a completion for the provided prompt and parameters.
 
 
 
@@ -2845,10 +2798,24 @@ Rerank documents for a query using relevance scoring
 
 
 
+# Resume Dpo Job
+Source: https://docs.fireworks.ai/api-reference/resume-dpo-job
+
+post /v1/accounts/{account_id}/dpoJobs/{dpo_job_id}:resume
+
+
+
 # Resume Reinforcement Fine-tuning Job
 Source: https://docs.fireworks.ai/api-reference/resume-reinforcement-fine-tuning-job
 
 post /v1/accounts/{account_id}/reinforcementFineTuningJobs/{reinforcement_fine_tuning_job_id}:resume
+
+
+
+# Resume Rlor Trainer Job
+Source: https://docs.fireworks.ai/api-reference/resume-reinforcement-fine-tuning-step
+
+post /v1/accounts/{account_id}/rlorTrainerJobs/{rlor_trainer_job_id}:resume
 
 
 
@@ -2894,6 +2861,16 @@ patch /v1/accounts/{account_id}/deployments/{deployment_id}
 
 
 
+# Update Evaluator
+Source: https://docs.fireworks.ai/api-reference/update-evaluator
+
+patch /v1/accounts/{account_id}/evaluators/{evaluator_id}
+Updates evaluator metadata (display_name, description, default_dataset).
+Changing `requirements` or `entry_point` triggers a rebuild. To upload new
+source code, set `prepare_code_upload: true` then follow the upload flow.
+
+
+
 # Update Model
 Source: https://docs.fireworks.ai/api-reference/update-model
 
@@ -2931,6 +2908,17 @@ post /v1/accounts/{account_id}/datasets/{dataset_id}:validateUpload
 
 
 
+# Validate Evaluator Upload
+Source: https://docs.fireworks.ai/api-reference/validate-evaluator-upload
+
+post /v1/accounts/{account_id}/evaluators/{evaluator_id}:validateUpload
+Triggers server-side validation of the uploaded source code (**step 5** in
+the [Create Evaluator](/api-reference/create-evaluator) workflow). The server
+extracts and processes the archive, then builds the evaluator environment.
+Poll [Get Evaluator](/api-reference/get-evaluator) to monitor progress.
+
+
+
 # Validate Model Upload
 Source: https://docs.fireworks.ai/api-reference/validate-model-upload
 
@@ -2960,6 +2948,7 @@ Control how your deployment scales based on traffic and load.
 
 * `default=<Fraction>` - General load target from 0 to 1
 * `tokens_generated_per_second=<Integer>` - Desired tokens per second per replica
+* `prompt_tokens_per_second=<Integer>` - Desired prompt tokens per second per replica
 * `requests_per_second=<Number>` - Desired requests per second per replica
 * `concurrent_requests=<Number>` - Desired concurrent requests per replica
 
@@ -2971,8 +2960,8 @@ When multiple targets are specified, the maximum replica count across all is use
   <Tab title="Cost optimization">
     Scale to zero when idle to minimize costs:
 
-    ```bash  theme={null}
-    firectl create deployment <MODEL_NAME> \
+    ```bash theme={null}
+    firectl deployment create <MODEL_NAME> \
       --min-replica-count 0 \
       --max-replica-count 3 \
       --scale-to-zero-window 1h
@@ -2984,8 +2973,8 @@ When multiple targets are specified, the maximum replica count across all is use
   <Tab title="Performance-focused">
     Keep replicas running for instant response:
 
-    ```bash  theme={null}
-    firectl create deployment <MODEL_NAME> \
+    ```bash theme={null}
+    firectl deployment create <MODEL_NAME> \
       --min-replica-count 2 \
       --max-replica-count 10 \
       --scale-up-window 15s \
@@ -2998,8 +2987,8 @@ When multiple targets are specified, the maximum replica count across all is use
   <Tab title="Predictable traffic">
     Match known traffic patterns:
 
-    ```bash  theme={null}
-    firectl create deployment <MODEL_NAME> \
+    ```bash theme={null}
+    firectl deployment create <MODEL_NAME> \
       --min-replica-count 3 \
       --max-replica-count 5 \
       --scale-down-window 30m \
@@ -3010,8 +2999,141 @@ When multiple targets are specified, the maximum replica count across all is use
   </Tab>
 </Tabs>
 
+## Scaling from zero behavior
+
+When a deployment is scaled to zero and receives a request, the system immediately returns a `503` error with the `DEPLOYMENT_SCALING_UP` error code while initiating the scale-up process:
+
+```json theme={null}
+{
+  "error": {
+    "message": "Deployment is currently scaled to zero and is scaling up. Please retry your request in a few minutes.",
+    "code": "DEPLOYMENT_SCALING_UP",
+    "type": "error"
+  }
+}
+```
+
+<Warning>
+  Requests to a scaled-to-zero deployment are **not queued**. Your application must implement retry logic to handle `503` responses while the deployment scales up.
+</Warning>
+
+### Handling scale-from-zero responses
+
+Implement retry logic with exponential backoff to gracefully handle scale-up delays:
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import time
+    import requests
+
+    def query_deployment_with_retry(url, payload, max_retries=30, initial_delay=5):
+        """Query a deployment with retry logic for scale-from-zero scenarios."""
+        delay = initial_delay
+        
+        for attempt in range(max_retries):
+            response = requests.post(url, json=payload, headers=headers)
+            
+            # Only retry if deployment is scaling up
+            if response.status_code == 503:
+                error_code = response.json().get("error", {}).get("code")
+                if error_code == "DEPLOYMENT_SCALING_UP":
+                    print(f"Deployment scaling up, retrying in {delay}s...")
+                    time.sleep(delay)
+                    delay = min(delay * 1.5, 60)  # Cap at 60 seconds
+                    continue
+                
+            response.raise_for_status()
+            return response.json()
+        
+        raise Exception("Deployment did not scale up in time")
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```javascript theme={null}
+    async function queryDeploymentWithRetry(url, payload, maxRetries = 30, initialDelay = 5000) {
+      let delay = initialDelay;
+      
+      for (let attempt = 0; attempt < maxRetries; attempt++) {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', ...headers },
+          body: JSON.stringify(payload)
+        });
+        
+        // Only retry if deployment is scaling up
+        if (response.status === 503) {
+          const body = await response.json();
+          if (body.error?.code === 'DEPLOYMENT_SCALING_UP') {
+            console.log(`Deployment scaling up, retrying in ${delay/1000}s...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            delay = Math.min(delay * 1.5, 60000); // Cap at 60 seconds
+            continue;
+          }
+        }
+        
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      }
+      
+      throw new Error('Deployment did not scale up in time');
+    }
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash theme={null}
+    # Simple retry loop for scale-from-zero
+    MAX_RETRIES=30
+    RETRY_DELAY=5
+
+    for i in $(seq 1 $MAX_RETRIES); do
+      response=$(curl -s -w "\n%{http_code}" \
+        https://api.fireworks.ai/inference/v1/chat/completions \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $FIREWORKS_API_KEY" \
+        -d '{"model": "accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>", ...}')
+      
+      http_code=$(echo "$response" | tail -n1)
+      body=$(echo "$response" | head -n -1)
+      
+      # Only retry if deployment is scaling up
+      if [ "$http_code" -eq 503 ]; then
+        error_code=$(echo "$body" | jq -r '.error.code // empty')
+        if [ "$error_code" = "DEPLOYMENT_SCALING_UP" ]; then
+          echo "Deployment scaling up, retrying in ${RETRY_DELAY}s..."
+          sleep $RETRY_DELAY
+          RETRY_DELAY=$((RETRY_DELAY * 2))
+          continue
+        fi
+
+        echo "$body"
+        exit 1
+      fi
+      
+      # Check for success (2xx status codes)
+      if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
+        echo "$body"
+        exit 0
+      fi
+
+      echo "$body"
+      exit 1
+    done
+
+    echo "Deployment did not scale up in time"
+    exit 1
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  Cold start times vary depending on model size—larger models may take longer to download and initialize. If you need instant responses without cold starts, set `--min-replica-count 1` or higher to keep replicas always running.
+</Tip>
+
 <Note>
-  Cold starts take up to a few minutes when scaling from 0→1. Deployments with min replicas = 0 are auto-deleted after 7 days of no traffic. [Reserved capacity](/deployments/reservations) guarantees availability during scale-up.
+  Deployments with min replicas = 0 are auto-deleted after 7 days of no traffic. [Reserved capacity](/deployments/reservations) guarantees availability during scale-up.
 </Note>
 
 
@@ -3037,7 +3159,7 @@ This tool allows you to:
 
 ### Installation
 
-```bash  theme={null}
+```bash theme={null}
 git clone https://github.com/fw-ai/benchmark.git
 cd benchmark
 pip install -r requirements.txt
@@ -3047,7 +3169,7 @@ pip install -r requirements.txt
 
 Run a basic benchmark test:
 
-```bash  theme={null}
+```bash theme={null}
 python benchmark.py \
   --model "accounts/fireworks/models/llama-v3p1-8b-instruct" \
   --deployment "your-deployment-id" \
@@ -3083,7 +3205,7 @@ You can also develop custom performance testing scripts or integrate with monito
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Autoscaling" href="/deployments/autoscaling" icon="arrows-up-down">
     Configure autoscaling to handle variable load
   </Card>
@@ -3099,82 +3221,127 @@ Source: https://docs.fireworks.ai/deployments/client-side-performance-optimizati
 
 Optimize your client code for maximum performance with dedicated deployments
 
-When using a dedicated deployment, it is important to optimize the client-side
-HTTP connection pooling for maximum performance. We recommend using our [Python
-SDK](/tools-sdks/python-client/sdk-introduction) as it has good defaults for
-connection pooling and utilizes
-[aiohttp](https://docs.aiohttp.org/en/stable/index.html) for optimal performance
-with Python's `asyncio` library. It also includes retry logic for handling `429`
-errors that Fireworks returns when the server is overloaded. We have run
-benchmarks that demonstrate the performance benefits.
+When using a dedicated deployment, it is important to optimize the client-side HTTP connection pooling for maximum performance. We recommend using our [Python SDK](/tools-sdks/python-sdk) as it has good defaults for connection pooling and utilizes [httpx](https://www.python-httpx.org/) for optimal performance with Python's `asyncio` library. It also includes retry logic for handling `429` errors that Fireworks returns when the server is overloaded.
 
 ## General optimization recommendations
 
 Based on our benchmarks, we recommend the following:
 
-1. Use a client library optimized for high concurrency, such as
-   [aiohttp](https://docs.aiohttp.org/en/stable/index.html) in Python or
-   [http.Agent](https://nodejs.org/api/http.html#class-httpagent) in Node.js.
-2. Keep the [`connection pool size`](https://docs.aiohttp.org/en/stable/client_advanced.html#limiting-connection-pool-size) high (1000+).
+1. Use a client library optimized for high concurrency, such as [httpx](https://www.python-httpx.org/) in Python or [http.Agent](https://nodejs.org/api/http.html#class-httpagent) in Node.js.
+2. Use the `AsyncFireworks` client for high-concurrency workloads.
 3. Increase concurrency until performance stops improving or you observe too many `429` errors.
 4. Use [direct routing](/deployments/direct-routing) to avoid the global API load balancer and route requests directly to your deployment.
 
 ## Code example: Optimal concurrent requests (Python)
 
-Here's how to implement optimal concurrent requests using `asyncio` and the `LLM` class:
+Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
+
+<Note>
+  The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+</Note>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install --pre fireworks-ai
+  ```
+
+  ```bash poetry theme={null}
+  poetry add --pre fireworks-ai
+  ```
+
+  ```bash uv theme={null}
+  uv add --pre fireworks-ai
+  ```
+</CodeGroup>
+
+Here's how to implement optimal concurrent requests using `asyncio` and the `AsyncFireworks` client:
 
 ```python main.py theme={null}
 import asyncio
-from fireworks import LLM
+import time
+import statistics
+from fireworks import AsyncFireworks
+
 
 async def make_concurrent_requests(
     messages: list[str],
+    model: str,
     max_workers: int = 1000,
-    max_connections: int = 1000, # this is the default value in the SDK
 ):
     """Make concurrent requests with optimized connection pooling"""
-    
-    llm = LLM(
-        model="your-model-name",
-        deployment_type="on-demand", 
-        id="your-deployment-id",
-        max_connections=max_connections
+
+    client = AsyncFireworks(
+        base_url="https://my-account-abcd1234.eu-iceland-2.direct.fireworks.ai",
+        api_key="MY_DIRECT_ROUTE_API_KEY",
+        max_retries=5,
     )
-    
-    # Apply deployment configuration to Fireworks
-    llm.apply()
-    
+
     # Semaphore to limit concurrent requests
     semaphore = asyncio.Semaphore(max_workers)
-    
+    latencies = []
+
     async def single_request(message: str):
         """Make a single request with semaphore control"""
         async with semaphore:
-            response = await llm.chat.completions.acreate(
+            start_time = time.perf_counter()
+            response = await client.chat.completions.create(
+                model=model,
                 messages=[{"role": "user", "content": message}],
-                max_tokens=100
+                max_tokens=100,
             )
+            latency = time.perf_counter() - start_time
+            latencies.append(latency)
             return response.choices[0].message.content
-    
+
     # Create all request tasks
-    tasks = [
-        single_request(message) 
-        for message in messages
-    ]
-    
+    tasks = [single_request(message) for message in messages]
+
     # Execute all requests concurrently
     results = await asyncio.gather(*tasks)
-    return results
+    return results, latencies
+
 
 # Usage example
 async def main():
     messages = ["Hello!"] * 1000  # 1000 requests
-    
-    results = await make_concurrent_requests(
+
+    model = "accounts/fireworks/models/qwen3-0p6b"
+
+    start_time = time.perf_counter()
+    results, latencies = await make_concurrent_requests(
         messages=messages,
+        model=model,
     )
-    
-    print(f"Completed {len(results)} requests")
+    total_time = time.perf_counter() - start_time
+
+    # Calculate performance metrics
+    num_requests = len(results)
+    requests_per_second = num_requests / total_time
+
+    # Latency statistics (in milliseconds)
+    latencies_ms = [lat * 1000 for lat in latencies]
+    avg_latency = statistics.mean(latencies_ms)
+    min_latency = min(latencies_ms)
+    max_latency = max(latencies_ms)
+    p50_latency = statistics.median(latencies_ms)
+    p95_latency = statistics.quantiles(latencies_ms, n=20)[18]  # 95th percentile
+    p99_latency = statistics.quantiles(latencies_ms, n=100)[98]  # 99th percentile
+
+    print("\n" + "=" * 50)
+    print("Performance Results")
+    print("=" * 50)
+    print(f"Total requests:      {num_requests}")
+    print(f"Total time:          {total_time:.2f} seconds")
+    print(f"Throughput:          {requests_per_second:.2f} requests/second")
+    print("\nLatency Statistics (ms):")
+    print(f"  Min:               {min_latency:.2f}")
+    print(f"  Max:               {max_latency:.2f}")
+    print(f"  Avg:               {avg_latency:.2f}")
+    print(f"  P50 (median):      {p50_latency:.2f}")
+    print(f"  P95:               {p95_latency:.2f}")
+    print(f"  P99:               {p99_latency:.2f}")
+    print("=" * 50)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
@@ -3182,8 +3349,9 @@ if __name__ == "__main__":
 
 This implementation:
 
+* Uses `AsyncFireworks` for non-blocking async requests with optimized connection pooling
 * Uses `asyncio.Semaphore` to control concurrency to avoid overwhelming the server
-* Allows configuration of the maximum number of concurrent connections to the Fireworks API
+* Targets a dedicated deployment with [direct routing](/deployments/direct-routing)
 
 
 # Direct routing
@@ -3203,8 +3371,8 @@ To create a deployment using Internet direct routing:
   When creating a deployment with direct routing, the `--region` parameter is required to specify the deployment region.
 </Note>
 
-```bash  theme={null}
-$ firectl create deployment accounts/fireworks/models/llama-v3p1-8b-instruct \
+```bash theme={null}
+$ firectl deployment create accounts/fireworks/models/llama-v3p1-8b-instruct \
     --direct-route-type INTERNET \
     --direct-route-api-keys <API_KEYS> \
     --region <REGION>
@@ -3224,7 +3392,7 @@ routing.
 Take note of the `Direct Route Handle` to get the inference endpoint. This is what you will use access the deployment
 instead of the global `https://api.fireworks.ai/inference/` endpoint. For example:
 
-```bash  theme={null}
+```bash theme={null}
 curl \
     --header 'Authorization: Bearer <DIRECT_ROUTE_API_KEY>' \
     --header 'Content-Type: application/json' \
@@ -3235,27 +3403,54 @@ curl \
     --url https://my-account-abcd1234.us-arizona-1.direct.fireworks.ai/v1/completions
 ```
 
-### Use the OpenAI SDK with direct routing
+### Use Python SDKs with direct routing
 
-Set the direct route handle (with the `/v1` suffix) as the `base_url` when you initialize the OpenAI SDK so your calls go straight to the regional deployment endpoint.
+Set the direct route handle as the `base_url` when you initialize the SDK so your calls go straight to the regional deployment endpoint.
 
-```python  theme={null}
-from openai import OpenAI
+<Warning>
+  **Important:** The `base_url` format differs between SDKs:
 
-client = OpenAI(
-    api_key="<YOUR_DIRECT_ROUTE_API_KEY>",
-    base_url="https://my-account-abcd1234.us-arizona-1.direct.fireworks.ai/v1"
-)
+  * **OpenAI SDK:** Include the `/v1` suffix (e.g., `https://...direct.fireworks.ai/v1`)
+  * **Fireworks SDK:** Omit the `/v1` suffix (e.g., `https://...direct.fireworks.ai`)
+</Warning>
 
-response = client.chat.completions.create(
-    model="accounts/fireworks/models/llama-v3-8b-instruct",
-    messages=[{"role": "user", "content": "Hello!"}]
-)
-```
+<CodeGroup>
+  ```python OpenAI SDK theme={null}
+  from openai import OpenAI
+
+  client = OpenAI(
+      # Note: Include /v1 suffix for OpenAI SDK
+      base_url="https://my-account-abcd1234.us-arizona-1.direct.fireworks.ai/v1",
+      api_key="<YOUR_DIRECT_ROUTE_API_KEY>"
+  )
+
+  response = client.chat.completions.create(
+      model="accounts/fireworks/models/llama-v3-8b-instruct",
+      messages=[{"role": "user", "content": "Hello!"}]
+  )
+  ```
+
+  ```python Fireworks SDK theme={null}
+  from fireworks import Fireworks
+
+  client = Fireworks(
+      # Note: No /v1 suffix for Fireworks SDK
+      base_url="https://my-account-abcd1234.us-arizona-1.direct.fireworks.ai",
+      api_key="<YOUR_DIRECT_ROUTE_API_KEY>"
+  )
+
+  response = client.chat.completions.create(
+      model="accounts/fireworks/models/llama-v3-8b-instruct",
+      messages=[{"role": "user", "content": "Hello!"}]
+  )
+  ```
+</CodeGroup>
 
 <Info>
-  The direct route handle replaces the standard [https://api.fireworks.ai/inference/v1](https://api.fireworks.ai/inference/v1) endpoint—keep the `/v1` suffix so the OpenAI SDK routes requests correctly while bypassing the global load balancer to reduce latency.
+  The direct route handle replaces the standard `https://api.fireworks.ai/inference/v1` endpoint, bypassing the global load balancer to reduce latency.
 </Info>
+
+For a complete code-only example that demonstrates creating a direct route deployment and querying it, see the [Python SDK direct route deployment example](https://github.com/fw-ai-external/python-sdk/blob/main/examples/direct_route_deployment.py).
 
 ## Supported Regions for Direct Routing
 
@@ -3310,7 +3505,7 @@ https://api.fireworks.ai/v1/accounts/<account-id>/metrics
 
 Use the Authorization header with your Fireworks API key:
 
-```json  theme={null}
+```json theme={null}
 {
   "Authorization": "Bearer YOUR_API_KEY"
 }
@@ -3340,7 +3535,7 @@ The Fireworks metrics endpoint can be integrated with OpenTelemetry Collector by
 
 To integrate directly with Prometheus, specify the Fireworks metrics endpoint in your scrape config:
 
-```yaml  theme={null}
+```yaml theme={null}
 global:
   scrape_interval: 60s
 scrape_configs:
@@ -3471,7 +3666,7 @@ Current region availability:
 When creating a deployment, you can pass the `--region` flag:
 
 ```
-firectl create deployment accounts/fireworks/models/llama-v3p1-8b-instruct \
+firectl deployment create accounts/fireworks/models/llama-v3p1-8b-instruct \
     --region US_IOWA_1
 ```
 
@@ -3485,7 +3680,7 @@ create a new deployment in the new region, then delete the old deployment.
 Each region has it's own separate quota for each hardware type. To view your current quotas, run
 
 ```
-firectl list quotas
+firectl quota list
 ```
 
 If you need deployments in a non-GA region, please contact our team at [inquiries@fireworks.ai](mailto:inquiries@fireworks.ai).
@@ -3526,7 +3721,7 @@ manager. If you are a new, prospective customer, please reach out to our [sales 
 To view your existing reservations, run:
 
 ```
-firectl list reservations
+firectl reservation list
 ```
 
 
@@ -3566,8 +3761,8 @@ Speed up text generation by using a smaller "draft" model to assist the main mod
   <Tab title="Draft model">
     Use a smaller model to speed up generation:
 
-    ```bash  theme={null}
-    firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+    ```bash theme={null}
+    firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
       --draft-model="accounts/fireworks/models/llama-v3p2-1b-instruct" \
       --draft-token-count=4
     ```
@@ -3576,8 +3771,8 @@ Speed up text generation by using a smaller "draft" model to assist the main mod
   <Tab title="N-gram speculation">
     Use input history for speculation (no draft model needed):
 
-    ```bash  theme={null}
-    firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+    ```bash theme={null}
+    firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
       --ngram-speculation-length=3 \
       --draft-token-count=4
     ```
@@ -3596,7 +3791,7 @@ Cloud Integrations
 
 ## Cloud Deployments
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Amazon SageMaker" icon="aws" href="/ecosystem/integrations/sagemaker">
     Deploy Fireworks models on AWS SageMaker
   </Card>
@@ -3628,7 +3823,7 @@ Fireworks AI seamlessly integrates with the best open-source agent frameworks, e
 
 ## Supported Frameworks
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="LangChain" icon="link" href="https://docs.langchain.com/oss/python/integrations/providers/fireworks">
     Build LLM applications with powerful orchestration and tool integration
   </Card>
@@ -3664,7 +3859,7 @@ Fireworks AI integrates with industry-leading MLOps and observability platforms 
 
 ## Supported Platforms
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Weights & Biases" icon="chart-line" href="/ecosystem/integrations/wandb">
     Track fine-tuning experiments and visualize training metrics with W\&B
   </Card>
@@ -3688,7 +3883,7 @@ Explore our collection of notebooks that showcase real-world applications, best 
 
 ## Fine-Tuning & Training
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Knowledge Distillation" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/finetuning/knowledge_distillation.ipynb" icon="graduation-cap">
     Transfer large model capabilities to efficient models using a two-stage SFT + RFT approach.
 
@@ -3708,7 +3903,7 @@ Explore our collection of notebooks that showcase real-world applications, best 
 
 ## Multimodal AI
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="NVIDIA Nemotron VL for Document Intelligence" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/vlm/nvidia-nemotron-vl/NVIDIA-Nemotron-v2-VL-cookbook.ipynb" icon="file-invoice">
     Extract structured data from invoices, forms, and financial documents using state-of-the-art OCR and document understanding.
 
@@ -3722,11 +3917,17 @@ Explore our collection of notebooks that showcase real-world applications, best 
 
     **Features:** Streaming support, low-latency transcription, production-ready
   </Card>
+
+  <Card title="Chat with Video using Qwen3 Omni" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/video/Qwen3-Omni-Chat-With-Video-Cookbook.ipynb" icon="video">
+    Analyze video and audio content with Qwen3 Omni, a multimodal model supporting video, audio, and text inputs.
+
+    **Features:** Video captioning, scene analysis, content understanding, multimodal Q\&A
+  </Card>
 </CardGroup>
 
 ## API Features
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Fireworks MCP Examples" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/response-api/fireworks_mcp_examples.ipynb" icon="code">
     Leverage Model Context Protocol (MCP) for GitHub repository analysis, code search, and documentation Q\&A.
 
@@ -3742,7 +3943,7 @@ Source: https://docs.fireworks.ai/examples/introduction
 
 Standalone end-to-end examples showing how to use Fireworks to solve real-world use cases
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Text to SQL" href="/examples/text-to-sql">
     Learn how to use Fireworks to fine-tune a model to convert natural language to SQL queries.
   </Card>
@@ -3882,24 +4083,21 @@ Source: https://docs.fireworks.ai/faq-new/billing-pricing/are-there-extra-fees-f
 
 
 
-No, deploying fine-tuned models to serverless infrastructure is free. Here's what you need to know:
-
-**What's free**:
-
-* Deploying fine-tuned models to serverless infrastructure
-* Hosting the models on serverless infrastructure
-* Deploying up to 100 fine-tuned models
+Fine-tuned (LoRA) models require a dedicated deployment to serve. Here's what you need to know:
 
 **What you pay for**:
 
-* **Usage costs** on a per-token basis when the model is actually used
-* The **fine-tuning process** itself, if applicable
+* **Deployment costs** on a per-GPU-second basis for hosting the model
+* **The fine-tuning process** itself, if applicable
 
-<Info>
-  Only a limited set of models are supported for serverless hosting of fine-tuned models. Checkout the [Fireworks Model Library](https://app.fireworks.ai/models?filter=LLM\&serverlessWithLoRA=true) to see models with serverless support for fine-tuning.
-</Info>
+**Deployment options**:
 
-*Note*: This differs from on-demand deployments, which include hourly hosting costs.
+* **Live-merge deployment**: Deploy your LoRA model with weights merged into the base model for optimal performance
+* **Multi-LoRA deployment**: Deploy up to 100 LoRA models as addons on a single base model deployment
+
+<Tip>
+  For more details on deploying fine-tuned models, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
+</Tip>
 
 
 # How does billing and credit usage work?
@@ -3947,7 +4145,7 @@ For instance, for Qwen2.5 VL, you can use the following code:
 
 <Steps>
   <Step title="Install dependencies">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install torch torchvision transformers pillow
     ```
   </Step>
@@ -4405,7 +4603,7 @@ The input control signal image will be automatically:
 
 **Example**: To generate a 768x1344 image, explicitly include these parameters in your request:
 
-```json  theme={null}
+```json theme={null}
 {
     "width": 768,
     "height": 1344
@@ -4424,24 +4622,58 @@ Source: https://docs.fireworks.ai/faq-new/models-inference/how-to-check-if-a-mod
 
 Go to [https://app.fireworks.ai/models?filter=LLM\&serverless=true](https://app.fireworks.ai/models?filter=LLM\&serverless=true)
 
-## Programmatically
+## API
 
-You can use the
-[`is_available_on_serverless`](/tools-sdks/python-client/sdk-reference#is-available-on-serverless)
-method on the [LLM](/tools-sdks/python-client/sdk-reference#llm) object in our
-[Build SDK](/tools-sdks/python-client/sdk-introduction) to check if a model is
-available on serverless.
+You can programmatically retrieve all serverless models using the [List Models API](/api-reference/list-models) with the `supports_serverless=true` filter.
 
-```python  theme={null}
-llm = LLM(model="llama4-maverick-instruct-basic", deployment_type="auto")
-print(llm.is_available_on_serverless()) # True
+<Tabs>
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
 
-llm = LLM(model="qwen2p5-7b-instruct", deployment_type="auto")
-# Error will be raised saying: "LLM(id=...) must be provided when deployment_strategy is on-demand"
-# Which means the model is not available on serverless if the
-# deployment_strategy was resolved as "on-demand" when the deployment_type was
-# "auto"
-```
+    client = Fireworks()
+
+    # List all serverless models
+    models = client.models.list(filter="supports_serverless=true")
+
+    for model in models:
+        print(model.name)
+    ```
+
+    You can also combine filters and customize the response:
+
+    ```python theme={null}
+    # List serverless models with pagination
+    models = client.models.list(
+        filter="supports_serverless=true",
+        page_size=50,
+    )
+
+    for model in models:
+        print(f"{model.name}: {model.display_name}")
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash theme={null}
+    curl "https://api.fireworks.ai/v1/accounts/fireworks/models?filter=supports_serverless%3Dtrue" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY"
+    ```
+
+    With pagination:
+
+    ```bash theme={null}
+    curl "https://api.fireworks.ai/v1/accounts/fireworks/models?filter=supports_serverless%3Dtrue&pageSize=50" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY"
+    ```
+  </Tab>
+</Tabs>
+
+The filter parameter uses the [AIP-160 filter syntax](https://google.aip.dev/160). The `supports_serverless` field indicates whether a model is available on serverless infrastructure.
+
+<Tip>
+  See the [List Models API reference](/api-reference/list-models) for all available parameters including `order_by`, `page_size`, and `read_mask`.
+</Tip>
 
 
 # There’s a model I would like to use that isn’t available on Fireworks. Can I request it?
@@ -4480,7 +4712,7 @@ Request handling capacity depends on several factors:
 * **Deployment type** (serverless vs. on-demand)
 
 
-# Training Guide: CLI
+# Training Overview
 Source: https://docs.fireworks.ai/fine-tuning/cli-reference
 
 Launch RFT jobs using the eval-protocol CLI
@@ -4505,13 +4737,13 @@ The following guide will help you:
 
 <Steps>
   <Step title="Install Eval Protocol CLI">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install eval-protocol
     ```
 
     Verify installation:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     eval-protocol --version
     ```
   </Step>
@@ -4519,13 +4751,13 @@ The following guide will help you:
   <Step title="Set up authentication">
     Configure your Fireworks API key:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export FIREWORKS_API_KEY="fw_your_api_key_here"
     ```
 
     Or create a `.env` file:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     FIREWORKS_API_KEY=fw_your_api_key_here
     ```
   </Step>
@@ -4533,16 +4765,20 @@ The following guide will help you:
   <Step title="Test your evaluator locally">
     Before training, verify your evaluator works. This command discovers and runs your `@evaluation_test` with pytest. If a Dockerfile is present, it builds an image and runs the test in Docker; otherwise it runs on your host.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cd evaluator_directory
     ep local-test
     ```
+
+    <Note>
+      If using a Dockerfile, it must use a Debian-based image (no Alpine or CentOS), be single-stage (no multi-stage builds), and only use supported instructions: `FROM`, `RUN`, `COPY`, `ADD`, `WORKDIR`, `USER`, `ENV`, `CMD`, `ENTRYPOINT`, `ARG`. Instructions like `EXPOSE` and `VOLUME` are ignored. See [Dockerfile constraints for RFT evaluators](/fine-tuning/quickstart-svg-agent#dockerfile-constraints-for-rft-evaluators) for details.
+    </Note>
   </Step>
 
   <Step title="Create the RFT job">
     From the directory where your evaluator and dataset (dataset.jsonl) are located,
 
-    ```bash  theme={null}
+    ```bash theme={null}
     eval-protocol create rft \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --output-model my-model-name 
@@ -4579,14 +4815,14 @@ Customize your RFT job with these flags:
 
 **Model and output**:
 
-```bash  theme={null}
+```bash theme={null}
 --base-model accounts/fireworks/models/llama-v3p1-8b-instruct  # Base model to fine-tune
 --output-model my-custom-name                                   # Name for fine-tuned model
 ```
 
 **Training parameters**:
 
-```bash  theme={null}
+```bash theme={null}
 --epochs 2                    # Number of training epochs (default: 1)
 --learning-rate 5e-5          # Learning rate (default: 1e-4)
 --lora-rank 16                # LoRA rank (default: 8)
@@ -4595,29 +4831,29 @@ Customize your RFT job with these flags:
 
 **Rollout (sampling) parameters**:
 
-```bash  theme={null}
---inference-temperature 0.8   # Sampling temperature (default: 0.7)
---inference-n 8               # Number of rollouts per prompt (default: 4)
---inference-max-tokens 4096   # Max tokens per response (default: 2048)
---inference-top-p 0.95        # Top-p sampling (default: 1.0)
---inference-top-k 50          # Top-k sampling (default: 40)
+```bash theme={null}
+--temperature 0.8   # Sampling temperature (default: 0.7)
+--n 8               # Number of rollouts per prompt (default: 4)
+--max-tokens 4096   # Max tokens per response (default: 32768)
+--top-p 0.95        # Top-p sampling (default: 1.0)
+--top-k 50          # Top-k sampling (default: 40)
 ```
 
 **Remote environments**:
 
-```bash  theme={null}
+```bash theme={null}
 --remote-server-url https://your-evaluator.example.com  # For remote rollout processing
 ```
 
 **Force re-upload**:
 
-```bash  theme={null}
+```bash theme={null}
 --force                       # Re-upload evaluator even if unchanged
 ```
 
 See all options:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft --help
 ```
 
@@ -4627,7 +4863,7 @@ eval-protocol create rft --help
   <Accordion title="Weights & Biases integration">
     Track training metrics in W\&B for deeper analysis:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     eval-protocol create rft \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --wandb-project my-rft-experiments \
@@ -4640,8 +4876,8 @@ eval-protocol create rft --help
   <Accordion title="Custom checkpoint frequency">
     Save intermediate checkpoints during training:
 
-    ```bash  theme={null}
-    firectl create rftj \
+    ```bash theme={null}
+    firectl rftj create \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --checkpoint-frequency 500  # Save every 500 steps
       ...
@@ -4653,8 +4889,8 @@ eval-protocol create rft --help
   <Accordion title="Multi-GPU acceleration">
     Speed up training with multiple GPUs:
 
-    ```bash  theme={null}
-    firectl create rftj \
+    ```bash theme={null}
+    firectl rftj create \
       --base-model accounts/fireworks/models/llama-v3p1-70b-instruct \
       --accelerator-count 4  # Use 4 GPUs
       ...
@@ -4666,8 +4902,8 @@ eval-protocol create rft --help
   <Accordion title="Custom timeout">
     For evaluators that need more time:
 
-    ```bash  theme={null}
-    firectl create rftj \
+    ```bash theme={null}
+    firectl rftj create \
       --rollout-timeout 300  # 5 minutes per rollout
       ...
     ```
@@ -4680,7 +4916,7 @@ eval-protocol create rft --help
 
 **Fast experimentation** (small model, 1 epoch):
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/qwen3-0p6b \
   --output-model quick-test
@@ -4688,17 +4924,17 @@ eval-protocol create rft \
 
 **High-quality training** (more rollouts, higher temperature):
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --output-model high-quality-model \
-  --inference-n 8 \
-  --inference-temperature 1.0
+  --n 8 \
+  --temperature 1.0
 ```
 
 **Remote environment** (for multi-turn agents):
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --remote-server-url https://your-agent.example.com \
@@ -4707,7 +4943,7 @@ eval-protocol create rft \
 
 **Multiple epochs with custom learning rate**:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --epochs 3 \
@@ -4719,8 +4955,8 @@ eval-protocol create rft \
 
 For users already familiar with Fireworks `firectl`, you can create RFT jobs directly:
 
-```bash  theme={null}
-firectl create rftj \
+```bash theme={null}
+firectl rftj create \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --dataset accounts/your-account/datasets/my-dataset \
   --evaluator accounts/your-account/evaluators/my-evaluator \
@@ -4734,11 +4970,11 @@ firectl create rftj \
 * More verbose but offers finer control
 * Same underlying API as `eval-protocol`
 
-See [firectl documentation](/tools-sdks/firectl/commands/create-reinforcement-fine-tuning-job) for all options.
+See [firectl documentation](/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create) for all options.
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Prerequisites & Validation" icon="list-check" href="/fine-tuning/training-prerequisites">
     Review requirements, validation, and common errors
   </Card>
@@ -4774,7 +5010,7 @@ Remote agent are ideal for:
 ## How remote rollouts work
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=fddb7cdd900077c631ee50a825d5400f" alt="Remote rollout processor flow diagram showing the interaction between Eval Protocol, your remote server, and Fireworks Tracing" data-og-width="1756" width="1756" data-og-height="1310" height="1310" data-path="images/fine-tuning/remote-rollout-processor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=280&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=47857b3749ab4f58147a7d95c63ef547 280w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=560&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=c4a2e3572598904ca24373da755f1b48 560w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=840&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=254fd163d7155d49291bd5bb15265a2a 840w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=1100&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=f4c3b7c3e7cb95d8b14f96619a5a917d 1100w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=1650&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=d7c4234cc3d77b77951debc10362eb34 1650w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/remote-rollout-processor.png?w=2500&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=968ae7c95a87ad602d3f15c51567f77f 2500w" />
+  <img alt="Remote rollout processor flow diagram showing the interaction between Eval Protocol, your remote server, and Fireworks Tracing" />
 </Frame>
 
 <Steps>
@@ -4805,33 +5041,33 @@ Your remote service must implement a single `/init` endpoint that accepts rollou
 
 ### Request schema
 
-<ParamField body="completion_params" type="object" required>
+<ParamField type="object">
   Model configuration including model name and inference parameters like temperature, max\_tokens, etc.
 </ParamField>
 
-<ParamField body="messages" type="array">
+<ParamField type="array">
   Array of conversation messages to send to the model
 </ParamField>
 
-<ParamField body="tools" type="array">
+<ParamField type="array">
   Array of available tools for the model (for function calling)
 </ParamField>
 
-<ParamField body="model_base_url" type="string">
+<ParamField type="string">
   Base URL for making LLM calls through Fireworks tracing (includes correlation metadata)
 </ParamField>
 
-<ParamField body="metadata" type="object" required>
+<ParamField type="object">
   Rollout execution metadata for correlation (rollout\_id, run\_id, row\_id, etc.)
 </ParamField>
 
-<ParamField body="api_key" type="string">
+<ParamField type="string">
   Fireworks API key to use for model calls
 </ParamField>
 
 ### Example request
 
-```json  theme={null}
+```json theme={null}
 {
   "completion_params": {
     "model": "accounts/fireworks/models/llama-v3p1-8b-instruct",
@@ -4890,7 +5126,7 @@ Your remote server must use Fireworks tracing to report rollout status. Eval Pro
 
 ### Basic setup
 
-```python  theme={null}
+```python theme={null}
 import logging
 from eval_protocol import Status, InitRequest, FireworksTracingHttpHandler, RolloutIdFilter
 
@@ -4941,7 +5177,7 @@ For simpler setups, you can use the `EP_ROLLOUT_ID` environment variable instead
   <Tab title="Single rollout per instance">
     If your server processes one rollout at a time (e.g., serverless functions, container per request):
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import logging
     from eval_protocol import Status, InitRequest, FireworksTracingHttpHandler
@@ -4966,7 +5202,7 @@ For simpler setups, you can use the `EP_ROLLOUT_ID` environment variable instead
   <Tab title="Separate processes">
     If your `/init` handler spawns separate Python processes for each rollout:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import logging
     import multiprocessing
@@ -5004,7 +5240,7 @@ For simpler setups, you can use the `EP_ROLLOUT_ID` environment variable instead
 
 Here's a minimal but complete remote server implementation:
 
-```python  theme={null}
+```python theme={null}
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from eval_protocol import InitRequest, FireworksTracingHttpHandler, RolloutIdFilter, Status
@@ -5068,7 +5304,7 @@ Before deploying, test your remote server locally:
 
 <Steps>
   <Step title="Start your server">
-    ```bash  theme={null}
+    ```bash theme={null}
     uvicorn main:app --reload --port 8080
     ```
   </Step>
@@ -5076,7 +5312,7 @@ Before deploying, test your remote server locally:
   <Step title="Configure RemoteRolloutProcessor">
     In your evaluator test, point to your local server:
 
-    ```python  theme={null}
+    ```python theme={null}
     from eval_protocol.pytest import RemoteRolloutProcessor
 
     rollout_processor = RemoteRolloutProcessor(
@@ -5086,7 +5322,7 @@ Before deploying, test your remote server locally:
   </Step>
 
   <Step title="Run test evaluation">
-    ```bash  theme={null}
+    ```bash theme={null}
     pytest my-evaluator-name.py -vs
     ```
 
@@ -5134,7 +5370,7 @@ Once tested locally, deploy to production:
 
 Once your remote server is deployed, create an RFT job that uses it:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --remote-server-url https://your-evaluator.example.com \
@@ -5193,7 +5429,7 @@ The RFT job will send all rollouts to your remote server for evaluation during t
 
 Learn by example:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="SVG Agent (TypeScript)" icon="image" href="/fine-tuning/quickstart-svg-agent">
     Complete walkthrough using a Vercel TypeScript server for SVG generation
   </Card>
@@ -5205,7 +5441,7 @@ Learn by example:
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Launch training" icon="rocket" href="/fine-tuning/cli-reference">
     Launch your RFT job using the CLI
   </Card>
@@ -5243,43 +5479,13 @@ Deploy your LoRA fine-tuned model with a single command that delivers performanc
 
 Deploy your LoRA fine-tuned model with one simple command:
 
-```bash  theme={null}
-firectl create deployment "accounts/fireworks/models/<MODEL_ID of lora model>"
+```bash theme={null}
+firectl deployment create "accounts/fireworks/models/<MODEL_ID of lora model>"
 ```
 
 <Check>
   Your deployment will be ready to use once it completes, with performance that matches the base model.
 </Check>
-
-### Deployment with the Build SDK
-
-You can also deploy your LoRA fine-tuned model using the Build SDK:
-
-```python  theme={null}
-from fireworks import LLM
-
-# Deploy a fine-tuned model with on-demand deployment (live merge)
-fine_tuned_llm = LLM(
-    model="accounts/your-account/models/your-fine-tuned-model-id",
-    deployment_type="on-demand",
-    id="my-fine-tuned-deployment"  # Simple string identifier
-)
-
-# Apply the deployment to ensure it's ready
-fine_tuned_llm.apply()
-
-# Use the deployed model
-response = fine_tuned_llm.chat.completions.create(
-    messages=[{"role": "user", "content": "Hello!"}]
-)
-
-# Track deployment in web dashboard
-print(f"Track at: {fine_tuned_llm.deployment_url}")
-```
-
-<Note>
-  The `id` parameter can be any simple string - it does not need to follow the format `"accounts/account_id/deployments/model_id"`.
-</Note>
 
 ## Multi-LoRA deployment
 
@@ -5295,68 +5501,21 @@ If you have multiple fine-tuned versions of the same base model (e.g., you've fi
   <Step title="Create base model deployment">
     Deploy the base model with addons enabled:
 
-    ```bash  theme={null}
-    firectl create deployment "accounts/fireworks/models/<MODEL_ID of base model>" --enable-addons
+    ```bash theme={null}
+    firectl deployment create "accounts/fireworks/models/<MODEL_ID of base model>" --enable-addons
     ```
   </Step>
 
   <Step title="Load LoRA addons">
     Once the deployment is ready, load your LoRA models onto the deployment:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     firectl load-lora <FINE_TUNED_MODEL_ID> --deployment <DEPLOYMENT_ID>
     ```
 
     You can load multiple LoRA models onto the same deployment by repeating this command with different model IDs.
   </Step>
 </Steps>
-
-### Deploy with the Build SDK
-
-You can also use multi-LoRA deployment with the Build SDK:
-
-```python  theme={null}
-from fireworks import LLM
-
-# Create a base model deployment with addons enabled
-base_model = LLM(
-    model="accounts/fireworks/models/base-model-id",
-    deployment_type="on-demand",
-    id="shared-base-deployment",  # Simple string identifier
-    enable_addons=True
-)
-base_model.apply()
-
-# Deploy multiple fine-tuned models using the same base deployment
-fine_tuned_model_1 = LLM(
-    model="accounts/your-account/models/fine-tuned-model-1",
-    deployment_type="on-demand-lora",
-    base_id=base_model.deployment_id
-)
-
-fine_tuned_model_2 = LLM(
-    model="accounts/your-account/models/fine-tuned-model-2", 
-    deployment_type="on-demand-lora",
-    base_id=base_model.deployment_id
-)
-
-# Apply deployments
-fine_tuned_model_1.apply()
-fine_tuned_model_2.apply()
-
-# Use the deployed models
-response_1 = fine_tuned_model_1.chat.completions.create(
-    messages=[{"role": "user", "content": "Hello from model 1!"}]
-)
-
-response_2 = fine_tuned_model_2.chat.completions.create(
-    messages=[{"role": "user", "content": "Hello from model 2!"}]
-)
-```
-
-<Note>
-  When using `deployment_type="on-demand-lora"`, you need to provide the `base_id` parameter that references the deployment ID of your base model deployment.
-</Note>
 
 ### When to use multi-LoRA deployment
 
@@ -5367,37 +5526,9 @@ Use multi-LoRA deployment when you:
 * Can accept some performance tradeoff compared to single-LoRA deployment
 * Are managing multiple variants or experiments of the same model
 
-## Serverless deployment
-
-For quick experimentation and prototyping, you can deploy your fine-tuned model to shared serverless infrastructure without managing GPUs.
-
-<Note>
-  Not all base models support serverless addons. Check the [list of models that support serverless with LoRA](https://app.fireworks.ai/models?filter=LLM\&serverlessWithLoRA=true) to confirm your base model is supported.
-</Note>
-
-### Deploy to serverless
-
-Load your fine-tuned model into a serverless deployment:
-
-```bash  theme={null}
-firectl load-lora <FINE_TUNED_MODEL_ID>
-```
-
-### Key considerations
-
-* **No hosting costs**: Deploying to serverless is free—you only pay per-token usage costs
-* **Rate limits**: Same rate limits apply as serverless base models
-* **Performance**: Lower performance than on-demand deployments and the base model
-* **Automatic unloading**: Unused addons may be automatically unloaded after a week
-* **Limit**: Deploy up to 100 fine-tuned models to serverless
-
-<Tip>
-  For production workloads requiring consistent performance, use [on-demand deployments](#single-lora-deployment) instead.
-</Tip>
-
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="On-Demand Deployments" href="/guides/ondemand-deployments" icon="rocket">
     Learn about deployment configuration and optimization
   </Card>
@@ -5482,21 +5613,21 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
       <Tab title="UI">
         * You can simply navigate to the dataset tab, click `Create Dataset` and follow the wizard.
 
-          <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=33255bb2d9afefc697230a6f4e723577" alt="Dataset Pn" data-og-width="2972" width="2972" data-og-height="2060" height="2060" data-path="images/fine-tuning/dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e1f7631eedf19be2ffe910e931734378 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5148e67713f7a207c47a73da1fa56658 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=dde9343748034e1d13ae4fbc1ad4aecf 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a4a99ce824157064f5cbbdfdf0953c0d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=699fd69866de9383a06dc08a5139cb69 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b55ed77bc807c1ebf00223fff2997342 2500w" />
+          <img alt="Dataset Pn" />
       </Tab>
 
       <Tab title="firectl">
         * Upload dataset using `firectl`
 
-        ```bash  theme={null}
-        firectl create dataset <dataset-id> /path/to/file.jsonl
+        ```bash theme={null}
+        firectl dataset create <dataset-id> /path/to/file.jsonl
         ```
       </Tab>
 
       <Tab title="Restful API">
         You need to make two separate HTTP requests. One for creating the dataset entry and one for uploading the dataset. Full reference here: [Create dataset](/api-reference/create-dataset). Note that the `exampleCount` parameter needs to be provided by the client.
 
-        ```jsx  theme={null}
+        ```jsx theme={null}
         // Create Dataset Entry
         const createDatasetPayload = {
           datasetId: "trader-poe-sample-data",
@@ -5511,7 +5642,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
         });
         ```
 
-        ```jsx  theme={null}
+        ```jsx theme={null}
         // Upload JSONL file
         const urlUpload = `${BASE_URL}/datasets/${DATASET_ID}:upload`;
         const files = new FormData();
@@ -5534,8 +5665,8 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
   <Step title="Create a DPO Job">
     Simple use `firectl` to create a new DPO job:
 
-    ```bash  theme={null}
-    firectl create dpoj \
+    ```bash theme={null}
+    firectl dpoj create \
       --base-model accounts/account-id/models/base-model-id \
       --dataset accounts/my-account-id/datasets/my-dataset-id \
       --output-model new-model-id
@@ -5543,8 +5674,8 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
 
     for our example, we might run the following command:
 
-    ```bash  theme={null}
-    firectl create dpoj \
+    ```bash theme={null}
+    firectl dpoj create \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --dataset accounts/pyroworks/datasets/einstein-dpo \
       --output-model einstein-dpo-model
@@ -5556,8 +5687,8 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
   <Step title="Monitor the DPO Job">
     Use `firectl` to monitor progress updates for the DPO fine-tuning job.
 
-    ```bash  theme={null}
-    firectl get dpoj dpo-job-id
+    ```bash theme={null}
+    firectl dpoj get dpo-job-id
     ```
 
     Once the job is complete, the `STATE` will be set to `JOB_STATE_COMPLETED`, and the fine-tuned model can be deployed.
@@ -5572,7 +5703,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
 
 Explore other fine-tuning methods to improve model output for different use cases.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Supervised Fine Tuning - Text" icon="message" href="/fine-tuning/fine-tuning-models">
     Train models on input-output examples to improve task-specific performance.
   </Card>
@@ -5721,7 +5852,7 @@ def init(request: InitRequest):
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Connect remote environment" icon="server" href="/fine-tuning/connect-environments">
     Implement `/init`, tracing, and structured status for remote agents
   </Card>
@@ -5764,7 +5895,7 @@ Every evaluator has three core components:
 
 The prompt and any ground truth data needed for evaluation:
 
-```python  theme={null}
+```python theme={null}
 {
   "messages": [
     {"role": "system", "content": "You are a math tutor."},
@@ -5778,7 +5909,7 @@ The prompt and any ground truth data needed for evaluation:
 
 The assistant's response to evaluate:
 
-```python  theme={null}
+```python theme={null}
 {
   "role": "assistant",
   "content": "Let me calculate that step by step:\n15 * 23 = 345"
@@ -5789,7 +5920,7 @@ The assistant's response to evaluate:
 
 Code that compares the output to your criteria:
 
-```python  theme={null}
+```python theme={null}
 def evaluate(model_output: str, ground_truth: str) -> float:
     # Extract answer from model's response
     predicted = extract_number(model_output)
@@ -5855,7 +5986,7 @@ Your evaluator should return a score between 0.0 and 1.0:
   <Accordion title="Start simple, iterate">
     Begin with basic evaluation logic and refine over time:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Start here
     score = 1.0 if predicted == expected else 0.0
 
@@ -5880,7 +6011,7 @@ Your evaluator should return a score between 0.0 and 1.0:
   <Accordion title="Handle edge cases">
     Models will generate unexpected outputs, so build robust error handling:
 
-    ```python  theme={null}
+    ```python theme={null}
     try:
         result = execute_code(model_output)
         score = check_result(result)
@@ -5902,7 +6033,7 @@ Your evaluator should return a score between 0.0 and 1.0:
 
     If you score outputs by length, the model might generate verbose nonsense. Add constraints:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Bad: Model learns to write long outputs
     score = min(len(output) / 1000, 1.0)
 
@@ -5917,7 +6048,7 @@ Your evaluator should return a score between 0.0 and 1.0:
 
     If you only check JSON validity, the model might return valid but wrong JSON. Check content too:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Bad: Only checks format
     score = 1.0 if is_valid_json(output) else 0.0
 
@@ -5947,7 +6078,7 @@ Test your evaluator before training. Look for:
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Connect environments" icon="code" href="/fine-tuning/connect-environments">
     Connect to your environment for single and multi-turn agents
   </Card>
@@ -5963,7 +6094,7 @@ Source: https://docs.fireworks.ai/fine-tuning/fine-tuning-models
 
 
 
-This guide will focus on using supervised fine-tuning to fine-tune and deploy a model with on-demand and serverless hosting.
+This guide will focus on using supervised fine-tuning to fine-tune and deploy a model with on-demand hosting.
 
 ## Fine-tuning a model using SFT
 
@@ -5971,8 +6102,8 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
   <Step title="Confirm model support for fine-tuning">
     You can confirm that a base model is available to fine-tune by looking for the `Tunnable` tag in the model library or by using:
 
-    ```bash  theme={null}
-    firectl get model -a fireworks <MODEL-ID>
+    ```bash theme={null}
+    firectl model get -a fireworks <MODEL-ID>
     ```
 
     And looking for `Tunable: true`.
@@ -5992,14 +6123,15 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
       * `role`: one of `system`, `user`, or `assistant`. A message with the `system` role is optional, but if specified, it must be the first message of the conversation
       * `content`: a string representing the message content
       * `weight`: optional key with value to be configured in either 0 or 1. message will be skipped if value is set to 0
+    * **Sample weight:** Optional key `weight` at the root of the JSON object. It can be any floating point number (positive, negative, or 0) and is used as a loss multiplier for tokens in that sample. If used, this field must be present in all samples in the dataset.
 
     Here is an example conversation dataset:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "What is the capital of France?"}, 
+        {"role": "user", "content": "What is the capital of France?"},
         {"role": "assistant", "content": "Paris."}
       ]
     }
@@ -6013,9 +6145,31 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
     }
     ```
 
+    Here is an example conversation dataset with sample weights:
+
+    ```json theme={null}
+    {
+      "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is the capital of France?"},
+        {"role": "assistant", "content": "Paris."}
+      ],
+      "weight": 0.5
+    }
+    {
+      "messages": [
+        {"role": "user", "content": "What is 1+1?"},
+        {"role": "assistant", "content": "2", "weight": 0},
+        {"role": "user", "content": "Now what is 2+2?"},
+        {"role": "assistant", "content": "4"}
+      ],
+      "weight": 1.0
+    }
+    ```
+
     We also support function calling dataset with a list of tools. An example would look like:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "tools": [
         {
@@ -6056,11 +6210,11 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
 
     For the subset of models that supports thinking (e.g. DeepSeek R1, GPT OSS models and Qwen3 thinking models), we also support fine tuning with thinking traces. If you wish to fine tune with thinking traces, the dataset could also include thinking traces for assistant turns. Though optional, ideally each assistant turn includes a thinking trace. For example:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "What is the capital of France?"}, 
+        {"role": "user", "content": "What is the capital of France?"},
         {"role": "assistant", "content": "Paris.", "reasoning_content": "The user is asking about the capital city of France, it should be Paris."}
       ]
     }
@@ -6084,19 +6238,19 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
       <Tab title="UI">
         * You can simply navigate to the dataset tab, click `Create Dataset` and follow the wizard.
 
-          <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=33255bb2d9afefc697230a6f4e723577" alt="Dataset Pn" data-og-width="2972" width="2972" data-og-height="2060" height="2060" data-path="images/fine-tuning/dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e1f7631eedf19be2ffe910e931734378 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5148e67713f7a207c47a73da1fa56658 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=dde9343748034e1d13ae4fbc1ad4aecf 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a4a99ce824157064f5cbbdfdf0953c0d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=699fd69866de9383a06dc08a5139cb69 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b55ed77bc807c1ebf00223fff2997342 2500w" />
+          <img alt="Dataset Pn" />
       </Tab>
 
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl create dataset <DATASET_ID> /path/to/jsonl/file
+        ```bash theme={null}
+        firectl dataset create <DATASET_ID> /path/to/jsonl/file
         ```
       </Tab>
 
       <Tab title="Restful API">
         You need to make two separate HTTP requests. One for creating the dataset entry and one for uploading the dataset. Full reference here: [Create dataset](/api-reference/create-dataset). Note that the `exampleCount` parameter needs to be provided by the client.
 
-        ```jsx  theme={null}
+        ```jsx theme={null}
         // Create Dataset Entry
         const createDatasetPayload = {
           datasetId: "trader-poe-sample-data",
@@ -6111,7 +6265,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
         });
         ```
 
-        ```jsx  theme={null}
+        ```jsx theme={null}
         // Upload JSONL file
         const urlUpload = `${BASE_URL}/datasets/${DATASET_ID}:upload`;
         const files = new FormData();
@@ -6138,23 +6292,23 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
       <Tab title="UI">
         Simply navigate to the `Fine-Tuning` tab, click `Fine-Tune a Model` and follow the wizard from there. You can even pick a LoRA model to start the fine-tuning for continued training.
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4c2ad94681a8327cb870c5f92c1cf5d7" alt="Fine Tuning Pn" data-og-width="2966" width="2966" data-og-height="2052" height="2052" data-path="images/fine-tuning/fine-tuning.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=67e542c9ea90128f6cd1b53ff8c92aed 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=deef7708b9713cce4afd4cf7744df559 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=f99d019df0142144114475ce9e7c7729 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=bca80f9c479e23ed45e8c51374ac71bb 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5835f9d2a269326985b00cb9b15f12e6 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=040f237a22bd3109c36acaad9c15907f 2500w" />
+        <img alt="Fine Tuning Pn" />
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=102b729d2d50fd9466d3b36606992443" alt="Create Sftj Pn" data-og-width="2970" width="2970" data-og-height="2048" height="2048" data-path="images/fine-tuning/create-sftj.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=eabe188f029777c24abd5c3d9787c1da 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5fd4390ff45d3412c1b0cc687392d054 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=add5687145f89362ce42a171136b2639 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=d074f5e4c69f9fed3644d9cdd637570d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=d4830964471e8e7450fcbfad39a54269 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=2635d10a906f4c5b75899f41e8f1bf6c 2500w" />
+        <img alt="Create Sftj Pn" />
       </Tab>
 
       <Tab title="firectl">
         Ensure the fine tuned model ID conforms to the [resource id restrictions](/getting-started/concepts#resource-names-and-ids). This will return a fine-tuning job ID. For a full explanation of the settings available to control the fine-tuning process, including learning rate and epochs, consult [additional SFT job settings](#additional-sft-job-settings).
 
-        ```bash  theme={null}
-        firectl create sftj --base-model <MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
+        ```bash theme={null}
+        firectl sftj create --base-model <MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
         ```
 
         <Tip>
           Similar to UI, instead of tuning a base model, you can also start tuning from a previous LoRA model using
 
-          ```bash  theme={null}
-          firectl create sftj --warm-start-from <FINE_TUNED_MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
+          ```bash theme={null}
+          firectl sftj create --warm-start-from <FINE_TUNED_MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
           ```
 
           Notice that we use `--warm-start-from` instead of `--base-model` when creating this job.
@@ -6164,34 +6318,38 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
 
     With `UI`, once the job is created, it will show in the list of jobs. Clicking to view the job details to monitor the job progress.
 
-        <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=acfecc07e34d6992ba64f171469c62db" alt="Sftj Details Pn" data-og-width="2960" width="2960" data-og-height="1938" height="1938" data-path="images/fine-tuning/sftj-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=2fa38f207d49f54a0cecd6b5e2ab1a9c 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=f780b120ceb0e9ffe136f2874c9e2e9a 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=916b78d429f9fe7d7a819e576fa0cf42 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=deb16417332fa2237a7c3ba7c0c8b0a9 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=0a0155fbf12d2a2b7265d7a49c93925c 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/sftj-details.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=7e7aceaff30008e0d3fe2792db8260ed 2500w" />
+    <img alt="Sftj Details Pn" />
 
     With `firectl`, you can monitor the progress of the tuning job by running
 
-    ```bash  theme={null}
-    firectl get sftj <DATASET_ID>
+    ```bash theme={null}
+    firectl sftj get <DATASET_ID>
     ```
 
     Once the job successfully completes, you will see the new LoRA model in your model list
 
-    ```bash  theme={null}
-    firectl list models
+    ```bash theme={null}
+    firectl model list
     ```
   </Step>
 </Steps>
+
+<Tip>
+  For a complete Python SDK example that demonstrates the full workflow (creating datasets, uploading files, and launching a supervised fine-tuning job), see the [Python SDK workflow example](https://github.com/fw-ai-external/python-sdk/blob/main/examples/sftj_workflow.py).
+</Tip>
 
 ## Deploying a fine-tuned model
 
 After fine-tuning completes, deploy your model to make it available for inference:
 
-```bash  theme={null}
-firectl create deployment <FINE_TUNED_MODEL_ID>
+```bash theme={null}
+firectl deployment create <FINE_TUNED_MODEL_ID>
 ```
 
 This creates a dedicated deployment with performance matching the base model.
 
 <Tip>
-  For more details on deploying fine-tuned models, including multi-LoRA and serverless deployments, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
+  For more details on deploying fine-tuned models, including multi-LoRA deployments, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
 </Tip>
 
 ## Additional SFT job settings
@@ -6204,8 +6362,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
 
     `evaluation_dataset`: The ID of a separate dataset to use for evaluation. Must be pre-uploaded via firectl
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --evaluation-dataset my-eval-set \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -6213,24 +6371,24 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     ```
   </Accordion>
 
-  <Accordion title="Early stopping">
-    Early stopping stops training early if the validation loss does not improve. It is off by default.
+  <Accordion title="Max Context Length">
+    Depending on the size of the model, the default context size will be different. For most models, the default context size is >= 32768. Training examples will be cut-off at 32768 tokens. Usually you do not need to set the max context length unless out of memory error is encountered with higher lora rank and large max context length.
 
-    ```shell  theme={null}
-    firectl create sftj \
-      --early-stop \
+    ```shell theme={null}
+    firectl sftj create \
+      --max-context-length 65536 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
     ```
   </Accordion>
 
-  <Accordion title="Max Context Length">
-    By default, fine-tuned models support a max context length of 8k. Increase max context length if your use case requires context above 8k. Maximum context length can be increased up to the default context length of your selected model. For models with over 70B parameters, we only support up to 65536 max context length.
+  <Accordion title="Batch Size">
+    Batch size is the number of tokens packed into one forward step during training. One batch could consist of multiple training samples. We do sequence packing on the training samples, and batch size controls how many total tokens will be packed into each batch.
 
-    ```shell  theme={null}
-    firectl create sftj \
-      --max-context-length 65536 \
+    ```shell theme={null}
+    firectl sftj create \
+      --batch-size 65536 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -6242,8 +6400,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
 
     **Note: we set a max value of 3 million dataset examples × epochs**
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --epochs 2.0 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -6254,9 +6412,34 @@ Additional tuning settings are available when starting a fine-tuning job. All of
   <Accordion title="Learning rate">
     Learning rate controls how fast the model updates from data. We generally do not recommend changing learning rate. The default value is automatically based on your selected model.
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --learning-rate 0.0001 \
+      --base-model MY_BASE_MODEL \
+      --dataset cancerset \
+      --output-model my-tuned-model
+    ```
+  </Accordion>
+
+  <Accordion title="Learning rate warmup steps">
+    Learning rate warmup steps controls the number of training steps during which the learning rate will be linearly ramped up to the set learning rate.
+
+    ```shell theme={null}
+    firectl sftj create \
+      --learning-rate 0.0001 \
+      --learning-rate-warmup-steps 200 \
+      --base-model MY_BASE_MODEL \
+      --dataset cancerset \
+      --output-model my-tuned-model
+    ```
+  </Accordion>
+
+  <Accordion title="Gradient accumlation steps">
+    Gradient accumulation steps controls the number of forward steps and backward steps to take (gradients are accumulated) before optimizer.step() is taken. Gradient accumulation steps > 1 increases effective batch size.
+
+    ```shell theme={null}
+    firectl sftj create \
+      --gradient-accumulation-steps 4 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -6266,8 +6449,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
   <Accordion title="LoRA Rank">
     LoRA rank refers to the number of parameters that will be tuned in your LoRA add-on. Higher LoRA rank increases the amount of information that can be captured while tuning. LoRA rank must be a power of 2 up to 64. Our default value is 8.
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --lora-rank 16 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -6278,8 +6461,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
   <Accordion title="Training progress and monitoring">
     The fine-tuning service integrates with Weights & Biases to provide observability into the tuning process. To use this feature, you must have a Weights & Biases account and have provisioned an API key.
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --wandb-entity my-org \
       --wandb-api-key xxx \
       --wandb-project "My Project" \
@@ -6292,8 +6475,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
   <Accordion title="Model ID">
     By default, the fine-tuning job will generate a random unique ID for the model. This ID is used to refer to the model at inference time. You can optionally specify a custom ID, within [ID constraints](/getting-started/concepts#resource-names-and-ids).
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --output-model my-model \
       --base-model MY_BASE_MODEL \
       --dataset cancerset
@@ -6303,21 +6486,9 @@ Additional tuning settings are available when starting a fine-tuning job. All of
   <Accordion title="Job ID">
     By default, the fine-tuning job will generate a random unique ID for the fine-tuning job. You can optionally choose a custom ID.
 
-    ```shell  theme={null}
-    firectl create sftj \
+    ```shell theme={null}
+    firectl sftj create \
       --job-id my-fine-tuning-job \
-      --base-model MY_BASE_MODEL \
-      --dataset cancerset \
-      --output-model my-tuned-model
-    ```
-  </Accordion>
-
-  <Accordion title="Turbo Mode">
-    By default, the fine-tuning job will use a single GPU. You can optionally enable the turbo mode to accelerate with multiple GPUs (only for non-Deepseek models).
-
-    ```shell  theme={null}
-    firectl create sftj \
-      --turbo \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -6327,11 +6498,10 @@ Additional tuning settings are available when starting a fine-tuning job. All of
 
 ## Appendix
 
-`Python builder SDK` [references](/tools-sdks/python-client/sdk-introduction)
-
-`Restful API`[ references](/api-reference/introduction)
-
-`firectl` [references](/tools-sdks/firectl/firectl)
+* `Python SDK` [references](/tools-sdks/python-sdk)
+* `Restful API` [references](/api-reference/introduction)
+* `firectl` [references](/tools-sdks/firectl/firectl)
+* [Complete Python SDK workflow example](https://github.com/fw-ai-external/python-sdk/blob/main/examples/sftj_workflow.py) for a code-only implementation
 
 
 # Supervised Fine Tuning - Vision
@@ -6367,7 +6537,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     ### Basic VLM Dataset Example
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "messages": [
         {
@@ -6403,7 +6573,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     <Tabs>
       <Tab title="❌ Incorrect">
-        ```json  theme={null}
+        ```json theme={null}
         {
           "type": "image_url",
           "image_url": {
@@ -6415,7 +6585,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
       </Tab>
 
       <Tab title="✅ Correct">
-        ```json  theme={null}
+        ```json theme={null}
         {
           "type": "image_url",
           "image_url": {
@@ -6434,7 +6604,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
       <Accordion title="Python script to download and encode images to base64">
         **Usage:**
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Install required dependency
         pip install requests
 
@@ -6468,7 +6638,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
                   }
                 },
                 {
-                  "type": "image_url", 
+                  "type": "image_url",
                   "image_url": {
                     "url": "data:image/jpeg;base64,/9j/4BBBSkZJRg..."
                   }
@@ -6493,7 +6663,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
               "content": "You are a helpful visual assistant that can analyze images and remember details from previous images in our conversation."
             },
             {
-              "role": "user", 
+              "role": "user",
               "content": [
                 {
                   "type": "text",
@@ -6516,7 +6686,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
               "content": "Now look at this living room. Do you think the styles would work well together?"
             },
             {
-              "role": "assistant", 
+              "role": "assistant",
               "content": "I'd be happy to help compare the styles! However, I don't see a living room image in your message. Could you please share the living room photo so I can analyze how well it would coordinate with the modern kitchen style we just discussed?"
             },
             {
@@ -6550,15 +6720,15 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     <Tabs>
       <Tab title="Download with curl">
-        ```bash  theme={null}
+        ```bash theme={null}
         # Download the example dataset
         curl -L -o food_reasoning.jsonl https://huggingface.co/datasets/fireworks-ai/vision-food-reasoning-dataset/resolve/main/food_reasoning.jsonl
         ```
       </Tab>
 
       <Tab title="Download with wget">
-        ```bash  theme={null}
-        # Download the example dataset  
+        ```bash theme={null}
+        # Download the example dataset
         wget https://huggingface.co/datasets/fireworks-ai/vision-food-reasoning-dataset/resolve/main/food_reasoning.jsonl
         ```
       </Tab>
@@ -6570,8 +6740,8 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     <Tabs>
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl create dataset my-vlm-dataset /path/to/vlm_training_data.jsonl
+        ```bash theme={null}
+        firectl dataset create my-vlm-dataset /path/to/vlm_training_data.jsonl
         ```
       </Tab>
 
@@ -6579,12 +6749,12 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
         Navigate to the Datasets tab in the Fireworks console, click "Create Dataset", and upload your JSONL file through the wizard.
 
         <Frame>
-          <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=33255bb2d9afefc697230a6f4e723577" alt="Dataset creation interface" data-og-width="2972" width="2972" data-og-height="2060" height="2060" data-path="images/fine-tuning/dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e1f7631eedf19be2ffe910e931734378 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5148e67713f7a207c47a73da1fa56658 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=dde9343748034e1d13ae4fbc1ad4aecf 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a4a99ce824157064f5cbbdfdf0953c0d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=699fd69866de9383a06dc08a5139cb69 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b55ed77bc807c1ebf00223fff2997342 2500w" />
+          <img alt="Dataset creation interface" />
         </Frame>
       </Tab>
 
       <Tab title="REST API">
-        ```javascript  theme={null}
+        ```javascript theme={null}
         // Create dataset entry
         const createDatasetPayload = {
           datasetId: "my-vlm-dataset",
@@ -6593,7 +6763,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
         const response = await fetch(`${BASE_URL}/datasets`, {
           method: "POST",
-          headers: { 
+          headers: {
             "Authorization": `Bearer ${API_KEY}`,
             "Content-Type": "application/json"
           },
@@ -6623,8 +6793,8 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     <Tabs>
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl create sftj \
+        ```bash theme={null}
+        firectl sftj create \
           --base-model accounts/fireworks/models/qwen2p5-vl-32b-instruct \
           --dataset my-vlm-dataset \
           --output-model my-custom-vlm \
@@ -6643,7 +6813,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
         6. Launch the job
 
         <Frame>
-          <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=102b729d2d50fd9466d3b36606992443" alt="Fine-tuning job creation interface" data-og-width="2970" width="2970" data-og-height="2048" height="2048" data-path="images/fine-tuning/create-sftj.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=eabe188f029777c24abd5c3d9787c1da 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5fd4390ff45d3412c1b0cc687392d054 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=add5687145f89362ce42a171136b2639 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=d074f5e4c69f9fed3644d9cdd637570d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=d4830964471e8e7450fcbfad39a54269 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/create-sftj.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=2635d10a906f4c5b75899f41e8f1bf6c 2500w" />
+          <img alt="Fine-tuning job creation interface" />
         </Frame>
       </Tab>
     </Tabs>
@@ -6655,7 +6825,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
     Track your VLM fine-tuning job in the [Fireworks console](https://app.fireworks.ai/dashboard/fine-tuning).
 
     <Frame>
-      <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=2aa1e7f17fc8c070d52158a47f060300" alt="VLM fine-tuning job in the Fireworks console" data-og-width="3802" width="3802" data-og-height="1690" height="1690" data-path="images/fine-tuning/vlm-sftj.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4a0a7cc3b9a1f15dfa529cbc7cb3fc7d 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=be9b10f14100644e5bacf2d1320f07a1 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=c30a34029e337362fd1b68ab9e284af8 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=7aca6caa6584382211c2a956d5e57b02 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=eeed5ba8c2e92be97029fd43c3a3597c 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e83d0ba476e94812a27f81105b36f1d9 2500w" />
+      <img alt="VLM fine-tuning job in the Fireworks console" />
     </Frame>
 
     Monitor key metrics:
@@ -6674,12 +6844,12 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
     <Tabs>
       <Tab title="firectl">
-        ```bash  theme={null}
+        ```bash theme={null}
         # Create a deployment for your fine-tuned VLM
-        firectl create deployment my-custom-vlm
+        firectl deployment create my-custom-vlm
 
         # Check deployment status
-        firectl get deployment accounts/your-account/deployment/deployment-id
+        firectl deployment get accounts/your-account/deployment/deployment-id
         ```
       </Tab>
 
@@ -6687,7 +6857,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
         Deploy from the UI using the `Deploy` dropdown in the fine-tuning job page.
 
         <Frame>
-          <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=896e4e94621b9eeb8a6207b1f4ba2e08" alt="Deploy dropdown in the fine-tuning job page" data-og-width="3802" width="3802" data-og-height="1690" height="1690" data-path="images/fine-tuning/vlm-sftj-deploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a31edefdaa851b15a5e1386fcecbbbe4 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=7376dcfadaa71f950e72a6d61f93d6a4 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=ecaae0f37a36a03da0e664b2caf49505 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=c3bb4ed6bdfd7f1334948ba410c32be1 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=f8cb54c40529e395e5b2bf7ae1daf01b 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/vlm-sftj-deploy.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=f195e66cab9bfde9a9ff756115f57772 2500w" />
+          <img alt="Deploy dropdown in the fine-tuning job page" />
         </Frame>
       </Tab>
     </Tabs>
@@ -6702,7 +6872,7 @@ For additional fine-tuning parameters and advanced settings like custom learning
 
 For a hands-on, step-by-step walkthrough of VLM fine-tuning, we've created two fine tuning cookbooks that demonstrates the complete process from dataset preparation, model deployment to evaluation.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="VLM Fine-tuning Quickstart" icon="notebook" href="https://colab.research.google.com/drive/11WpagNa6xKgh1zhr1xh5uIuVtkPPL-qn">
     **Google Colab Notebook: Fine-tune Qwen2.5 VL on Fireworks AI**
   </Card>
@@ -6726,56 +6896,31 @@ The cookbooks above cover the following:
 
 After deployment, test your fine-tuned VLM using the same API patterns as base VLMs:
 
-<CodeGroup>
-  ```python Python (OpenAI Compatible) theme={null}
-  import openai
+```python Python (OpenAI SDK) theme={null}
+import openai
 
-  client = openai.OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key="<FIREWORKS_API_KEY>",
-  )
+client = openai.OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key="<FIREWORKS_API_KEY>",
+)
 
-  response = client.chat.completions.create(
-      model="accounts/your-account/models/my-custom-vlm",
-      messages=[{
-          "role": "user",
-          "content": [{
-              "type": "image_url",
-              "image_url": {
-                  "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
-              },
-          },{
-              "type": "text",
-              "text": "What's in this image?",
-          }],
-      }]
-  )
-  print(response.choices[0].message.content)
-  ```
-
-  ```python Python (Fireworks SDK) theme={null}
-  from fireworks import LLM
-
-  # Use your fine-tuned model
-  llm = LLM(model="accounts/your-account/models/my-custom-vlm")
-
-  response = llm.chat.completions.create(
-      messages=[{
-          "role": "user",
-          "content": [{
-              "type": "image_url",
-              "image_url": {
-                  "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
-              },
-          },{
-              "type": "text",
-              "text": "What's in this image?",
-          }],
-      }]
-  )
-  print(response.choices[0].message.content)
-  ```
-</CodeGroup>
+response = client.chat.completions.create(
+    model="accounts/your-account/models/my-custom-vlm",
+    messages=[{
+        "role": "user",
+        "content": [{
+            "type": "image_url",
+            "image_url": {
+                "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
+            },
+        },{
+            "type": "text",
+            "text": "What's in this image?",
+        }],
+    }]
+)
+print(response.choices[0].message.content)
+```
 
 <Tip>
   If you fine-tuned using the example dataset, your model should include `<think></think>` tags in its response.
@@ -6791,7 +6936,7 @@ Fireworks helps you fine-tune models to improve quality and performance for your
 
 ## Fine-tuning methods
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Reinforcement Fine Tuning" href="/fine-tuning/reinforcement-fine-tuning-models" icon="brain">
     Train models using custom reward functions for complex reasoning tasks
   </Card>
@@ -6843,7 +6988,7 @@ However, SFT may struggle in situations where:
 
 Here is a simple decision tree:
 
-```mermaid  theme={null}
+```mermaid theme={null}
 flowchart TD
         B{"Do you have labeled ground truth data?"}
         B --"Yes"--> C{"How much?"}
@@ -6890,7 +7035,7 @@ Reinforcement fine-tuning helps you train models to excel at:
 
 <Steps>
   <Step title="Design your evaluator">
-    Define how you'll score model outputs from 0 to 1. For example, scoring outputs higherchecking if your agent called the right tools, or if your LLM-as-judge rates the output highly.
+    Define how you'll score model outputs from 0 to 1. For example, scoring outputs higher by checking if your agent called the right tools, or if your LLM-as-judge rates the output highly.
   </Step>
 
   <Step title="Prepare dataset">
@@ -6919,7 +7064,7 @@ Reinforcement fine-tuning helps you train models to excel at:
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Create an evaluator" icon="code" href="/fine-tuning/evaluators">
     Learn how to design effective reward functions
   </Card>
@@ -7033,7 +7178,7 @@ The most important metric in RFT is the reward curve, which shows how well your 
 * **Spikes** - Could indicate noisy rewards or outliers in evaluation
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=30a9835239d9811bd99f8641e6c90c9a" alt="Reward curve showing upward trend over training epochs" data-og-width="995" width="995" data-og-height="640" height="640" data-path="images/fine-tuning/rft-curve.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=280&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=fbab65cb28b1db31b5654619c9c819c4 280w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=560&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=02b7fdee7646eab5ce3cbf04b450211a 560w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=840&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=6ea697df83c36145d78f002624de411b 840w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=1100&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=6935a782b99aa116e98edde28da2e5b1 1100w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=1650&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=7952d0f69d7ce54cd2a89620f3c95fb5 1650w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rft-curve.png?w=2500&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=78aaa06c5e2defea39e696ed817261ac 2500w" />
+  <img alt="Reward curve showing upward trend over training epochs" />
 </Frame>
 
 <Tip>
@@ -7068,7 +7213,7 @@ Understanding individual rollouts helps you verify your evaluator is working cor
 Click any **Epoch** in the training timeline, then click the **table icon** to view all rollouts for that step.
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=ce21765cb4aea1ddf692022ef46b2103" alt="Table showing rollout IDs, prompts, responses, and rewards" data-og-width="970" width="970" data-og-height="738" height="738" data-path="images/fine-tuning/rollouts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=280&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=03d4817a065f954817539a6d72dcb27e 280w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=560&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=881653d7d6900f773ebb15bdccb2cfd2 560w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=840&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=7d0a95d99eb4917dce29e83980278965 840w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=1100&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=fe1736ae21cdd89f95b53b5db479c923 1100w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=1650&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=8f9bf1f0210a0c4b1d86ed21b843fd63 1650w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollouts.png?w=2500&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=9818f2f4873ecb2b84712137e83ddba5 2500w" />
+  <img alt="Table showing rollout IDs, prompts, responses, and rewards" />
 </Frame>
 
 The table shows:
@@ -7092,7 +7237,7 @@ The table shows:
 Click any row in the rollout table to see full details:
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=ddd3e5b90495925b71b869d9814a0437" alt="Detailed view of a single rollout showing full prompt, response, and evaluation" data-og-width="958" width="958" data-og-height="1134" height="1134" data-path="images/fine-tuning/rollout_details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=280&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=56d02fc5120b13c55203609cf130d74a 280w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=560&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=40fbc95ea50ad570bf0b7d06b66e4956 560w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=840&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=7affad09e726a4c46c5b7c2aa255e26c 840w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=1100&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=4eb63a6539b5a4caf7305f191c092b6e 1100w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=1650&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=72c0f95c60aabed999bf2586102e8085 1650w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/rollout_details.png?w=2500&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=d9b764f09c51d63fe9207475c239d891 2500w" />
+  <img alt="Detailed view of a single rollout showing full prompt, response, and evaluation" />
 </Frame>
 
 You'll see:
@@ -7138,7 +7283,7 @@ Real-time logs show what's happening inside your training job.
 Click the **Logs icon** next to the table icon to view real-time logs for your training job.
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=3a7932de5139fc3262084fc67ee94dd7" alt="Live log streaming showing rollout processing and evaluation" data-og-width="1227" width="1227" data-og-height="606" height="606" data-path="images/fine-tuning/logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=280&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=3c4da82b89545ca421565884207ef74c 280w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=560&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=8ccfa4fbaf154bcfb48b2d4ce4d7a41c 560w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=840&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=a2b8fe1865347b37bbaaaeeafbf5593f 840w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=1100&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=6e02bc57070a8506d29a595b68b90015 1100w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=1650&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=b4a17c66e8c74abbb6695f19b0c627a2 1650w, https://mintcdn.com/fireworksai/Q8d9TB4Mz8qoqdNf/images/fine-tuning/logs.png?w=2500&fit=max&auto=format&n=Q8d9TB4Mz8qoqdNf&q=85&s=0b26b25f8b43c9962a1c2ee45855fb80 2500w" />
+  <img alt="Live log streaming showing rollout processing and evaluation" />
 </Frame>
 
 ### Using logs for debugging
@@ -7314,8 +7459,8 @@ If you need to stop training:
 
 1. Click **Cancel Job** in the dashboard
 2. Or via CLI:
-   ```bash  theme={null}
-   firectl delete rftj <job-id>
+   ```bash theme={null}
+   firectl rftj delete <job-id>
    ```
 
 The model state at the last checkpoint is saved and can be deployed.
@@ -7328,7 +7473,7 @@ The model state at the last checkpoint is saved and can be deployed.
 
 Checkpoints are automatically saved during training. To continue from a checkpoint:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --warm-start-from accounts/your-account/models/previous-checkpoint \
   --output-model continued-training
@@ -7371,7 +7516,7 @@ For deeper analysis or paper writing:
 
 ### Via API
 
-```python  theme={null}
+```python theme={null}
 import requests
 
 response = requests.get(
@@ -7386,7 +7531,7 @@ metrics = response.json()
 
 If you enabled W\&B when creating the job:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --wandb-project my-experiments \
   --wandb-entity my-org \
@@ -7421,7 +7566,7 @@ All metrics automatically sync to W\&B for advanced analysis, comparison, and sh
   <Accordion title="Save successful configurations">
     When you find good hyperparameters, save the command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Save to file for reproducibility
     echo "eval-protocol create rft --base-model ... --learning-rate 5e-5 ..." > best_config.sh
     ```
@@ -7452,7 +7597,7 @@ All metrics automatically sync to W\&B for advanced analysis, comparison, and sh
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Deploy your model" icon="rocket" href="/fine-tuning/deploying-loras">
     Once training completes, deploy your fine-tuned model for inference
   </Card>
@@ -7746,9 +7891,9 @@ Best practices for adjusting parameters to achieve your training goals.
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card title="Parameters Reference" icon="list" href="/fine-tuning/rft-parameters-reference">
-    Quick lookup table for all parameters with defaults and valid ranges
+<CardGroup>
+  <Card title="CLI Reference" icon="terminal" href="/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create">
+    Complete guide to CLI parameters and options
   </Card>
 
   <Card title="Launch Training" icon="rocket" href="/fine-tuning/cli-reference">
@@ -7798,7 +7943,7 @@ In this quickstart, you'll train a small language model—`Qwen3 0.6B`—to solv
   <Tab title="Clone repository (recommended)">
     Clone the quickstart-gsm8k repository and install dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     git clone https://github.com/eval-protocol/quickstart-gsm8k.git
     cd quickstart-gsm8k
     pip install -r requirements.txt
@@ -7806,7 +7951,7 @@ In this quickstart, you'll train a small language model—`Qwen3 0.6B`—to solv
 
     Create the `gsm8k_artifacts/` folder structure and copy files:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     mkdir -p gsm8k_artifacts/{tests/pytest/gsm8k,development}
     cp evaluation.py gsm8k_artifacts/tests/pytest/gsm8k/test_pytest_math_example.py
     cp gsm8k_sample.jsonl gsm8k_artifacts/development/gsm8k_sample.jsonl
@@ -7821,7 +7966,7 @@ In this quickstart, you'll train a small language model—`Qwen3 0.6B`—to solv
   <Tab title="Download files manually">
     Install the latest `eval-protocol` SDK, `pytest`, and `requests`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     python -m pip install --upgrade pip
     python -m pip install pytest requests git+https://github.com/eval-protocol/python-sdk.git
     ```
@@ -7871,7 +8016,7 @@ In this step, we will test your evaluator by examining the output locally. Feel 
   <Step title="Start the local UI server">
     Open a terminal and run:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     ep logs
     ```
 
@@ -7881,7 +8026,7 @@ In this step, we will test your evaluator by examining the output locally. Feel 
   <Step title="Run the test script">
     In a **new terminal**, call the test script to run the evaluator on your dataset of sample math problems.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cd gsm8k_artifacts
     ep local-test
     ```
@@ -7893,20 +8038,20 @@ In this step, we will test your evaluator by examining the output locally. Feel 
 </Steps>
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=5471eb87139be4ec8cb2d80f3dfdd520" alt="GSM8K evaluation UI showing model scores and trajectories" data-og-width="1372" width="1372" data-og-height="932" height="932" data-path="images/fine-tuning/gsm8k-local-eval.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=280&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=6739d7f7b7d46199b697d4d080c24901 280w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=560&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=0e0c275275f5b1c06d16c7b1b198df99 560w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=840&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=300fc7447b2fe0317dbbf2326daeb4d3 840w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=1100&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=49c5520f70b125626432919a49bb068f 1100w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=1650&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=03f75f36f4252506619dcf1316d8760e 1650w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-local-eval.jpeg?w=2500&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=84ccf999f7f2d12ca200318166d1282e 2500w" />
+  <img alt="GSM8K evaluation UI showing model scores and trajectories" />
 </Frame>
 
 ## 3. Start training
 
 First, set your Fireworks API key so the Fireworks CLI can authenticate you:
 
-```bash  theme={null}
+```bash theme={null}
 export FIREWORKS_API_KEY="<your-fireworks-key>"
 ```
 
 Next, we'll launch the RFT job using the evaluator and dataset you just registered. We're using a small base model (`qwen3-0p6b`) to keep training fast and inexpensive. Because your evaluator and dataset were already registered with Fireworks in the last step, we don't need to specify them again here.
 
-```bash  theme={null}
+```bash theme={null}
 cd ..
 eval-protocol create rft 
     --base-model accounts/fireworks/models/qwen3-0p6b
@@ -7915,7 +8060,7 @@ eval-protocol create rft
 The CLI will output dashboard links where you can monitor your training job in real-time.
 
 <Frame>
-  <img src="https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=ca2553da459a27a7b82771bfae07a6f1" alt="GSM8K evaluation score showing upward trajectory" data-og-width="1090" width="1090" data-og-height="479" height="479" data-path="images/fine-tuning/gsm8k-rft-final.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=280&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=ae0c72579e2e6e5654a04138820505d8 280w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=560&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=c79460e3470abc158ec08f544bd9f0b6 560w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=840&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=c809eba0a3968f99c51b6e6ca1adc38d 840w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=1100&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=2fc65dd97cfb82dce989900215e1dd5a 1100w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=1650&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=3f2025bacf483a7bea26c0aa3aab61be 1650w, https://mintcdn.com/fireworksai/-W_W6FWo8Ax1n6pD/images/fine-tuning/gsm8k-rft-final.png?w=2500&fit=max&auto=format&n=-W_W6FWo8Ax1n6pD&q=85&s=ab6e5c638257937c22b3f0b95f22d0c0 2500w" />
+  <img alt="GSM8K evaluation score showing upward trajectory" />
 </Frame>
 
 <Tip>
@@ -7930,7 +8075,7 @@ Your RFT job is now running. You can monitor progress in the dashboard links pro
   <Accordion title="Evaluate accuracy regularly">
     Re-run the pytest evaluation command to measure your model's performance on new checkpoints:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cd gsm8k_artifacts
     pytest -q tests/pytest/gsm8k/test_pytest_math_example.py::test_math_dataset -s
     ```
@@ -7956,7 +8101,7 @@ Understanding the training workflow:
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Customize training" icon="terminal" href="/fine-tuning/cli-reference">
     Learn all CLI options to customize your training parameters
   </Card>
@@ -7985,7 +8130,7 @@ In this quickstart, you'll train an agent to generate SVG drawings. Your agent r
 Here's a quick walkthrough:
 
 <Frame>
-  <iframe src="https://www.loom.com/embed/24ba433601de45ba8b63d9fb34c31fd5" width="100%" height="420" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen />
+  <iframe />
 </Frame>
 
 ## What You'll Learn
@@ -7998,14 +8143,14 @@ Here's a quick walkthrough:
 
 1. **Clone the quickstart repo**: [https://github.com/eval-protocol/quickstart](https://github.com/eval-protocol/quickstart)
 
-```bash  theme={null}
+```bash theme={null}
 git clone git@github.com:eval-protocol/quickstart.git
 cd quickstart
 ```
 
 2. **Install Eval Protocol**:
 
-```bash  theme={null}
+```bash theme={null}
 pip install "eval-protocol[svgbench]"
 ```
 
@@ -8013,7 +8158,7 @@ pip install "eval-protocol[svgbench]"
 
 The `env.example` file is located in the `evaluator/` directory. Make a copy of it in the same directory, name it `.env`, and fill in your API keys:
 
-```bash  theme={null}
+```bash theme={null}
 cp evaluator/env.example evaluator/.env
 ```
 
@@ -8026,19 +8171,21 @@ OPENAI_API_KEY=your-openai-key-here
 
 The create process below automatically reads and uploads these secrets to Fireworks.
 
+For more details on Fireworks Secret Management usage, please refer to [using secret in evaluator](/fine-tuning/using-secret-in-evaluator).
+
 ## 2. Test your evaluator locally
 
 Test your evaluator locally before launching training, to verify everything works with your rollout processor.
 
 **Terminal 1** - Start the local UI server to view results:
 
-```bash  theme={null}
+```bash theme={null}
 ep logs
 ```
 
 **Terminal 2** - Kick off the test:
 
-```bash  theme={null}
+```bash theme={null}
 cd evaluator
 ep local-test
 ```
@@ -8061,6 +8208,62 @@ If you want to use a local development Vercel server instead, see [Local Develop
 * If you don't need Docker, `ep local-test` will run `pytest` on your host machine by default.
 * You can ignore the `Dockerfile` and force host execution with: `ep local-test --ignore-docker`.
 
+<Accordion title="Dockerfile constraints for RFT evaluators">
+  RFT evaluators run in sandboxed environments. Your Dockerfile must follow these constraints:
+
+  **Base image:**
+
+  * Only Debian-based images are supported (e.g., Debian, Ubuntu, or `python:3.x-slim`)
+  * Alpine, CentOS, and other non-Debian distros are not supported
+  * If no Dockerfile is provided, the system uses a default Python environment with common packages pre-installed
+
+  **Supported instructions:**
+
+  * `FROM`: Base image (required, only one allowed)
+  * `RUN`: Execute commands
+  * `COPY` / `ADD`: Copy files into the image
+  * `WORKDIR`: Set working directory
+  * `USER`: Set the user
+  * `ENV`: Set environment variables
+  * `CMD` / `ENTRYPOINT`: Set the start command
+  * `ARG`: Build-time variables
+
+  **Unsupported features:**
+
+  | Feature                | Status                                    |
+  | ---------------------- | ----------------------------------------- |
+  | Non-Debian base images | ❌ Not supported (no Alpine, CentOS, etc.) |
+  | Multi-stage builds     | ❌ Not supported (only one `FROM` allowed) |
+  | `EXPOSE`               | ⚠️ Ignored                                |
+  | `VOLUME`               | ⚠️ Ignored                                |
+
+  **Example Dockerfile:**
+
+  ```dockerfile theme={null}
+  FROM python:3.11-slim
+
+  WORKDIR /app
+
+  # Install system dependencies
+  RUN apt-get update && apt-get install -y \
+      chromium \
+      && rm -rf /var/lib/apt/lists/*
+
+  # Install Python dependencies
+  COPY requirements.txt .
+  RUN pip install --no-cache-dir -r requirements.txt
+
+  # Copy evaluator code
+  COPY . .
+
+  CMD ["pytest", "-vs"]
+  ```
+
+  <Warning>
+    Multi-stage Dockerfiles will fail during the evaluator build. Use a single `FROM` instruction and install all dependencies in one stage.
+  </Warning>
+</Accordion>
+
 ### Expected Test Output
 
 Navigate to [http://localhost:8000](http://localhost:8000) to see the Eval Protocol UI.
@@ -8074,7 +8277,7 @@ Runs (Parallel): 100%|███████████████████�
 PASSED
 ```
 
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=e77097c700e374bdf7e7cafbe867eacb" alt="Eval Protocol Logs Interface" data-og-width="1273" width="1273" data-og-height="716" height="716" data-path="images/ep_logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=d9929ea24b65066e9b49db7a1cc01735 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=e65c345b1cc114b86cc482c0b049595f 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=a9ff29184be84502944bef0fec9e3c78 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=fc6db5a4b499f5039bf5625f8293e2c2 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=3346acbf2a9428562371dc2f5500c58e 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/ep_logs.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=d38c0c8c66935f754ff97757dd1b90e1 2500w" />
+<img alt="Eval Protocol Logs Interface" />
 
 If you're interested in understanding how Remote Rollout Processing works and how it communicates with the remote server, see [How Remote Rollout Processing Works](#how-remote-rollout-processing-works).
 
@@ -8082,10 +8285,9 @@ If you're interested in understanding how Remote Rollout Processing works and ho
 
 To kickoff training, simply do:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/qwen3-0p6b \
-  --epochs 8 \
   --chunk-size 10
 ```
 
@@ -8103,10 +8305,9 @@ This command:
 
 **Changing Evaluators**: If you've made changes to your evaluator code and want to upload a new version:
 
-```bash  theme={null}
+```bash theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/qwen3-0p6b \
-  --epochs 8 \
   --chunk-size 10 \
   --force
 ```
@@ -8143,17 +8344,19 @@ Click on the **RFT Job** link to view real-time training progress, epoch counts,
 
 After successful training, you should see performance improvements reflected in the training metrics:
 
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=049359a9ff673f1ebbe79870bebc646e" alt="SVG Agent Training Progress" data-og-width="1145" width="1145" data-og-height="727" height="727" data-path="images/graph.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=c134ea53f61e553faed64f894fbd0968 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=33b9a24999f60e61c13de78a55e3825a 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=029ff347c5522122c86cdc6e5f98036b 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=e8920443c785f7a525342f33a80183fd 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=5d4544e02181f10132840bb4c748d38f 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/graph.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=b064462ba16e5906472fe66a7c4b5b98 2500w" />
+<img alt="SVG Agent Training Progress" />
 
 ### SVG Quality Improvement
 
 You can inspect individual rollouts to see the dramatic improvement in SVG generation quality. Below is a comparison between the first epoch and the final 8th epoch:
 
 **Before (1st Epoch):**
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=7160c0606439b6a7c5bc851d207975f7" alt="SVG Generation - Before Training" data-og-width="1606" width="1606" data-og-height="1136" height="1136" data-path="images/before.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=c3dc3ebfa621ef702648f84c4ebe2657 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=48d46aad8b93acc9e9eb40c42137d6b7 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=94f322bcf6fd77d3709ae6cebd4e9f5f 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=03476db9954ce10c5179f934f235d60c 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=328e7e71e39095a6c868bb1cc40f4c19 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/before.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=5088edd903f4c0d3c71c18e6ff70c74b 2500w" />
+
+<img alt="SVG Generation - Before Training" />
 
 **After (8th Epoch):**
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=4d99b24ddb6cd458f35f2b4b00fd8646" alt="SVG Generation - After Training" data-og-width="2030" width="2030" data-og-height="1134" height="1134" data-path="images/after.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=1679375e0cf298aee49b0d0b666ca55e 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=f8ec41ee5416fdecf791041e61fe197d 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=622917132d20de1c72529156353d4cbe 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=c6d98d80618948496ec32998486c4564 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=29b3e697b5b9667255a04a6ede7e6c06 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/after.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=02b71ab52b92f08ef90eade45d365361 2500w" />
+
+<img alt="SVG Generation - After Training" />
 
 The reinforcement fine tuning process significantly improves the model's ability to generate accurate, detailed SVG graphics that better match the input descriptions.
 
@@ -8165,23 +8368,23 @@ When your training is running, you have several powerful tools to debug and moni
 
 Clicking on any **Epoch** or **Step** in the training dashboard, then clicking the **table icon** to the right, will show you a comprehensive table of all rollouts. It's a good high-level overview to see if any rollouts failed and for what reason.
 
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=4e6dda85703f77bcce58b83a391e0f2d" alt="Rollout Overview Table" data-og-width="981" width="981" data-og-height="824" height="824" data-path="images/rollouts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=0a39037d8e3818f7ffe5dd311c210b74 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=2bbe1b8c9b5ade0376fa8363fe8d5ec2 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=54cf4174612678513d44af4afb7a4387 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=ec2e71a16032151cbb3f0c647f16a94f 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=f9cd11af326b4329adf16993bb1a970e 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollouts.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=94ab07e54df7e21f8f2b9cf216c3d961 2500w" />
+<img alt="Rollout Overview Table" />
 
 ### Individual Rollout Details
 
 If you click on a specific row in the rollout table, you can see exactly what the prompt was and how the model responded. You can even copy and paste out the SVG code generated and render it yourself to see what the model did. This is how we got the results above in the before and after comparison.
 
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=0f1384d546a1d5f5f2e85cef97242265" alt="Individual Rollout Details" data-og-width="1497" width="1497" data-og-height="958" height="958" data-path="images/rollout_details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=c38dbe0ea185fc439889ec216b4d7d89 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=20831b5ff6710155343ec26a519c69cd 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=6de20cd4112cc11966b92792eb9d38f6 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=e7fc0f01da318743bd0d0d47539ef9c9 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=082a3a517842f905b4b002ec6898c22d 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/rollout_details.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=237f8903eefb31bb1f66937cf2979769 2500w" />
+<img alt="Individual Rollout Details" />
 
 ### Live Log Streaming
 
 Clicking on **View Logs** takes you to a page of logs being streamed in. Here, you can see precisely what errors are happening to the rollouts. This is useful to debug and fix any issues with your rollouts.
 
-<img src="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=66aed2a6eac9532a37f0106c0f5a526a" alt="Live Log Streaming" data-og-width="1399" width="1399" data-og-height="958" height="958" data-path="images/logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=280&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=9b5d411a6c5810f975952bda32990a74 280w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=560&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=3b1067074975220120cf884e2fe4e04e 560w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=840&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=990e0d1a4815818d085cfe6e8319185c 840w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=1100&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=a6f64807089b7221495cbac2e8eeea5a 1100w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=1650&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=658c42b53a98ce57d8746106ec2b7b03 1650w, https://mintcdn.com/fireworksai/53mdbJUS0jgliYBV/images/logs.png?w=2500&fit=max&auto=format&n=53mdbJUS0jgliYBV&q=85&s=b726b75b643b3837231aa5e4c3cf795c 2500w" />
+<img alt="Live Log Streaming" />
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Customize training" icon="terminal" href="/fine-tuning/cli-reference">
     Learn all CLI options to customize your training parameters
   </Card>
@@ -8219,7 +8422,7 @@ In this example, we showcase a **Vercel TypeScript server** that executes single
 
 ### Local Development Server
 
-```bash  theme={null}
+```bash theme={null}
 cd vercel_svg_server_ts
 vercel dev
 ```
@@ -8234,7 +8437,7 @@ rollout_processor=RemoteRolloutProcessor(
 
 And in a third terminal, run the evaluation:
 
-```bash  theme={null}
+```bash theme={null}
 ep local-test
 ```
 
@@ -8258,7 +8461,7 @@ Fireworks RFT helps you train frontier models like DeepSeek V3 and Kimi K2 to **
 
 ## Quickstart: Pick Your Training Approach
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Single-Turn Training" icon="laptop-code" href="/fine-tuning/quickstart-math">
     **⏱️ 15 minutes**
 
@@ -8286,7 +8489,7 @@ Fireworks RFT helps you train frontier models like DeepSeek V3 and Kimi K2 to **
 
 ## Launch Training
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Prerequisites & Validation" icon="list-check" href="/fine-tuning/training-prerequisites">
     Requirements, validation checks, and common errors before launching
   </Card>
@@ -8306,7 +8509,7 @@ Fireworks RFT helps you train frontier models like DeepSeek V3 and Kimi K2 to **
 
 ## RFT Concepts
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="How RFT Works" href="/fine-tuning/how-rft-works" icon="brain">
     The RL training loop explained
   </Card>
@@ -8325,110 +8528,6 @@ Fireworks RFT helps you train frontier models like DeepSeek V3 and Kimi K2 to **
 </CardGroup>
 
 
-# Parameters Reference
-Source: https://docs.fireworks.ai/fine-tuning/rft-parameters-reference
-
-Quick lookup for all RFT training and rollout parameters
-
-Quick reference for all reinforcement fine-tuning parameters. Most experiments converge with the defaults below. Change them only when you have a clear hypothesis.
-
-<Tip>
-  For guidance on **when to change** these parameters, see the [Parameter Tuning guide](/fine-tuning/parameter-tuning).
-</Tip>
-
-## Training parameters
-
-| Flag                   | Default         | Suggested range             | When to change                                                                                                        |
-| ---------------------- | --------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `--epochs`             | **1**           | 1 – 10 (whole numbers only) | Add 1-2 more passes if the reward still climbs steadily near the end of training. Too many epochs risks over-fitting. |
-| `--learning-rate`      | **1 e-4**       | 1 e-5 – 5 e-4               | Decrease when the reward spikes then collapses; increase when the curve plateaus too early.                           |
-| `--lora-rank`          | **8**           | 4 – 32 (powers of 2)        | Higher ranks may potentially improve training quality, but often require more data/iterations to train                |
-| `--max-context-length` | **8192 tokens** | Up to model limit           | Raise only when your prompts truncate; remember longer sequences consume quadratic compute.                           |
-
-### Example usage
-
-```bash  theme={null}
-eval-protocol create rft \
-  --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
-  --output-model my-rft-model \
-  --epochs 3 \
-  --learning-rate 1e-4 \
-  --lora-rank 16 \
-  --max-context-length 16384
-```
-
-## Rollout (sampling) parameters
-
-During each training step, the model generates multiple responses with stochastic decoding. These parameters control that generation process.
-
-| Field           | CLI flag                 | Default   | Recommended range      | Why it matters                                                                                            |
-| --------------- | ------------------------ | --------- | ---------------------- | --------------------------------------------------------------------------------------------------------- |
-| Maximum tokens  | `--max-tokens`           | **2 048** | 16 – 16 384            | Longer responses improve reward on summarisation / story tasks but add cost.                              |
-| Temperature     | `--temperature`          | **0.7**   | 0.1 – 2.0 ( > 0 only ) | Values below 0.1 converge towards greedy decoding and kill exploration; 0.5–1.0 is a sweet spot for RLHF. |
-| Top-p           | `--top-p`                | **1.0**   | 0 – 1                  | Lower to 0.2–0.5 to clamp long-tail tokens when the reward penalises hallucinations.                      |
-| Top-k           | `--top-k`                | **40**    | 0 – 100 (0 = off)      | Combine with `temperature` for more creative exploration; keep ≤50 for latency.                           |
-| *n* (choices)   | `--n`                    | **4**     | 2 – 8                  | Policy-Optimization needs multiple candidates to compute a meaningful KL term; ≥2 is mandatory.           |
-| Extra body JSON | `--inference-extra-body` | *empty*   | valid JSON             | Pass extra OpenAI-style params (e.g., `stop`, `logit_bias`). Invalid JSON is rejected.                    |
-
-### Example usage
-
-```bash  theme={null}
-eval-protocol create rft \
-  --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
-  --output-model my-model \
-  --max-tokens 1024 \
-  --temperature 0.8 \
-  --top-p 0.9 \
-  --top-k 40 \
-  --n 6 \
-  --inference-extra-body '{"stop":["\n\n"]}'
-```
-
-## Quick reference by goal
-
-| Goal                   | Parameters to adjust                           |
-| ---------------------- | ---------------------------------------------- |
-| **Faster convergence** | ↑ `epochs`, tune `learning-rate` \< 2× default |
-| **Safer / less toxic** | ↓ `temperature`, `top_p`, `top_k`              |
-| **More creative**      | `temperature` ≈ 1 – 1.2, `top_p` 0.9           |
-| **Cheaper roll-outs**  | ↓ `n`, `max_tokens`, batch size                |
-| **Higher capacity**    | ↑ `lora-rank`                                  |
-
-## Important constraints
-
-### Temperature must be > 0
-
-Greedy sampling (temperature 0) is deterministic and cannot produce multiple different rollouts, which is a requirement for RFT. It also can lead to mode-dropping and repetitive text.
-
-### At least 2 rollouts required
-
-Policy optimization needs multiple candidates per prompt to compute a meaningful KL divergence term. Setting `--inference-n 1` will fail.
-
-### Range enforcement
-
-The UI and CLI enforce the ranges shown above. Out-of-bound values throw an *Invalid rollout parameters* error immediately, saving wasted GPU hours.
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Parameter tuning guide" icon="sliders" href="/fine-tuning/parameter-tuning">
-    Learn strategies for when and how to adjust parameters
-  </Card>
-
-  <Card title="Launch training" icon="rocket" href="/fine-tuning/cli-reference">
-    Launch your RFT job
-  </Card>
-
-  <Card title="GSM8K Quickstart" icon="graduation-cap" href="/fine-tuning/quickstart-math">
-    Hands-on tutorial for RFT training
-  </Card>
-
-  <Card title="RFT Overview" icon="book-open" href="/fine-tuning/reinforcement-fine-tuning-models">
-    Learn about the RFT training process
-  </Card>
-</CardGroup>
-
-
 # Secure Training (BYOB)
 Source: https://docs.fireworks.ai/fine-tuning/secure-fine-tuning
 
@@ -8436,20 +8535,141 @@ Fine-tune models while keeping sensitive data and components under your control
 
 Fireworks enables secure model fine-tuning while maintaining customer control over sensitive components and data. Use your own cloud storage, keep reward functions proprietary, and ensure training data never persists on our platform beyond active workflows.
 
-## Secure reinforcement fine-tuning (RFT)
+## Dataset Storage (BYOB)
+
+Point Fireworks to your own cloud storage for training datasets. This applies to both Supervised Fine-Tuning (SFT) and Reinforcement Fine-Tuning (RFT) jobs.
+
+<Tip>
+  Grant least-privilege IAM to only the bucket/path prefixes needed for training. Use server-side encryption and your KMS policies where required.
+</Tip>
+
+### GCS Bucket Integration
+
+Use external Google Cloud Storage (GCS) buckets for fine-tuning while keeping your data private. Fireworks creates proxy datasets that reference your external buckets—data is only accessed during fine-tuning within a secure, isolated cluster.
+
+<Info>
+  Your data never leaves your GCS bucket except during fine-tuning, ensuring maximum privacy and security.
+</Info>
+
+#### Required Permissions
+
+You need to grant access to three service accounts:
+
+**Fireworks Control Plane**
+
+* **Account**: `fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com`
+* **Required role**: Custom role with `storage.buckets.getIamPolicy` permission
+
+```bash theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com \
+  --role=projects/<YOUR_PROJECT>/roles/<YOUR_CUSTOM_ROLE>
+```
+
+**Inference Service Account**
+
+* **Account**: `inference@fw-ai-cp-prod.iam.gserviceaccount.com`
+* **Required role**: Storage Object Viewer (`roles/storage.objectViewer`)
+
+```bash theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+```
+
+**Your Company's Fireworks Service Account**
+
+* **Account**: Your company's Fireworks account email (get it with `firectl account get`)
+* **Required role**: Storage Object Viewer (`roles/storage.objectViewer`)
+
+```bash theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
+  --role=roles/storage.objectViewer
+```
+
+#### Usage
+
+```bash theme={null}
+# Create dataset referencing your GCS bucket
+firectl dataset create {DATASET_NAME} --external-url gs://bucket-name/path/to/data.jsonl
+
+# Use in fine-tuning job
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME}
+```
+
+### AWS S3 Bucket Integration
+
+Use external AWS S3 buckets for fine-tuning while keeping your data private. Fireworks accesses your S3 data using GCP-to-AWS OIDC federation—no long-lived credentials are stored.
+
+<Note>
+  S3 bucket integration is currently supported for **training datasets only** (SFT and RFT jobs). Evaluation datasets are not yet supported.
+</Note>
+
+#### IAM Role Setup
+
+Create an IAM role with a trust policy that allows Fireworks to assume it via web identity federation:
+
+* **Federated Principal:** `accounts.google.com`
+* **Action:** `sts:AssumeRoleWithWebIdentity`
+* **Condition:** `accounts.google.com:aud` equals `117388763667264115668`
+
+Then attach a policy granting `s3:GetObject` and `s3:ListBucket` on your bucket.
+
+See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html) for detailed steps on creating roles for OIDC federation.
+
+#### Usage
+
+```bash theme={null}
+# Create dataset referencing your S3 bucket
+firectl dataset create {DATASET_NAME} --external-url s3://bucket-name/path/to/data.jsonl
+
+# Use in fine-tuning job with IAM role
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME} \
+  --aws-iam-role "arn:aws:iam::{AWS_ACCOUNT_ID}:role/{ROLE_NAME}"
+```
+
+<Check>
+  For RFT jobs, use `firectl rftj create` with the same `--aws-iam-role` flag.
+</Check>
+
+#### Alternative: Credentials Secret
+
+Instead of IAM role federation, you can use static AWS access keys stored in a Fireworks secret:
+
+```bash theme={null}
+# Create secret
+firectl secret create --name aws-creds \
+  --aws-access-key-id "AKIA..." \
+  --aws-secret-access-key "..."
+
+# Use in fine-tuning job
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME} \
+  --aws-credentials-secret "accounts/{ACCOUNT}/secrets/aws-creds"
+```
+
+<Warning>
+  IAM role federation is recommended for production. If using credentials, rotate them regularly.
+</Warning>
+
+## Secure Reinforcement Fine-Tuning (RFT)
 
 Use reinforcement fine-tuning while keeping sensitive components and data under your control. Follow these steps to run secure RFT end to end using your own storage and reward pipeline.
 
 <Steps>
   <Step title="Configure storage (BYOB)">
-    Point Fireworks to your storage so you retain governance and apply your own compliance controls.
+    Set up your dataset storage using [GCS](#gcs-bucket-integration) or [AWS S3](#aws-s3-bucket-integration) as described above.
 
-    * Datasets: [GCS Bucket Integration](#gcs-bucket-integration) (AWS S3 coming soon)
-    * Models (optional): [External AWS S3 Bucket Integration](/models/uploading-custom-models#uploading-your-model)
-
-    <Tip>
-      Grant least-privilege IAM to only the bucket/path prefixes needed for training. Use server-side encryption and your KMS policies where required.
-    </Tip>
+    For models, you can optionally use [External AWS S3 Bucket Integration](/models/uploading-custom-models#uploading-your-model).
   </Step>
 
   <Step title="Prepare your reward pipeline and rollouts">
@@ -8468,38 +8688,56 @@ Use reinforcement fine-tuning while keeping sensitive components and data under 
     </Info>
   </Step>
 
-  <Step title="Run reinforcement step from Python">
-    Use the Python SDK to run reinforcement steps that read from your BYOB dataset and produce a new checkpoint.
+  <Step title="Run reinforcement fine-tuning step from Python">
+    Use the Python SDK to create a reinforcement fine-tuning step that reads from your BYOB dataset and produces a new checkpoint.
 
-    ```python  theme={null}
-    # Assumes you have an authenticated `llm` client and a `dataset` that
-    # references your BYOB bucket with per-example rewards.
-    import time
+    ```python theme={null}
+    from fireworks import Fireworks
 
-    job = llm.reinforcement_step(
-        dataset=dataset,                 # Dataset with rewards in your bucket
-        output_model="my-improved-model-v1",  # New checkpoint name (must not exist)
-        epochs=1,
-        learning_rate=1e-5,
-        accelerator_count=2,
-        accelerator_type="NVIDIA_H100_80GB",
+    client = Fireworks()
+
+    # Create a reinforcement fine-tuning step
+    step = client.reinforcement_fine_tuning_steps.create(
+        rlor_trainer_job_id="my-rft-job-001",
+        display_name="Secure RFT Training Step",
+        training_config={
+            "base_model": "accounts/fireworks/models/{BASE_MODEL}",
+            "learning_rate": 1e-5,
+            "lora_rank": 8,
+            "max_context_length": 4096,
+            "batch_size": 32768,
+        },
+        dataset="accounts/{ACCOUNT}/datasets/{DATASET_NAME}",  # Your BYOB dataset with rewards
+        output_model="accounts/{ACCOUNT}/models/my-improved-model-v1",
+        reward_weights=["score"],  # Field name for rewards in your dataset
     )
 
-    # Wait for completion
-    while not job.is_completed:
-        job.raise_if_bad_state()
-        time.sleep(1)
-        job = job.get()
-        if job is None:
-            raise RuntimeError("Job was deleted while waiting for completion")
-
-    # The new model is now available at job.output_model
+    # Poll for completion
+    import time
+    timeout = 3600  # 1 hour timeout
+    start_time = time.time()
+    while True:
+        if time.time() - start_time > timeout:
+            raise TimeoutError(f"Job polling timed out after {timeout} seconds")
+        job = client.reinforcement_fine_tuning_steps.get(
+            rlor_trainer_job_id="my-rft-job-001"
+        )
+        if job.state == "JOB_STATE_COMPLETED":
+            print("Training complete!")
+            break
+        elif job.state in ("JOB_STATE_FAILED", "JOB_STATE_CANCELLED"):
+            raise RuntimeError(f"Training failed: {job.state}")
+        time.sleep(10)
     ```
 
-    See [`LLM.reinforcement_step()`](/tools-sdks/python-client/sdk-reference#reinforcement-step) and [`ReinforcementStep`](/tools-sdks/python-client/sdk-reference#reinforcementstep) for full parameters and return types.
+    See the [Create Reinforcement Fine-tuning Step API reference](/api-reference/create-reinforcement-fine-tuning-step) for full parameters and options.
+
+    <Tip>
+      For a complete iterative RL workflow example using the [Python SDK](/tools-sdks/python-sdk), including rollout generation, reward computation, and hot-reloading LoRA adapters, see the [iterative RL workflow example on GitHub](https://github.com/fw-ai-external/python-sdk/tree/main/examples/iterative_rl_workflow).
+    </Tip>
 
     <Note>
-      When continuing from a LoRA checkpoint, training parameters such as `lora_rank`, `learning_rate`, `max_context_length`, `epochs`, and `batch_size` must match the original LoRA training.
+      When continuing from a LoRA checkpoint, training parameters such as `lora_rank`, `learning_rate`, `max_context_length`, and `batch_size` must match the original LoRA training.
     </Note>
   </Step>
 
@@ -8518,125 +8756,9 @@ Use reinforcement fine-tuning while keeping sensitive components and data under 
   You now have an end-to-end secure RFT workflow with BYOB datasets, proprietary reward pipelines, and isolated training jobs that generate new checkpoints.
 </Check>
 
-## GCS Bucket Integration
-
-Use external Google Cloud Storage (GCS) buckets for fine-tuning while keeping your data private. Fireworks creates proxy datasets that reference your external buckets—data is only accessed during fine-tuning within a secure, isolated cluster.
-
-<Info>
-  Your data never leaves your GCS bucket except during fine-tuning, ensuring maximum privacy and security.
-</Info>
-
-### Required Permissions
-
-You need to grant access to three service accounts:
-
-#### Fireworks Control Plane
-
-* **Account**: `fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com`
-* **Required role**: Custom role with `storage.buckets.getIamPolicy` permission
-
-<CodeGroup>
-  ```bash Setup command theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=projects/<YOUR_PROJECT>/roles/<YOUR_CUSTOM_ROLE>
-  ```
-</CodeGroup>
-
-This service account will be used to retrieve the IAM Policy set on the bucket, so that we are able to perform bucket ownership verifications and access verifications during dataset creation.
-
-#### Inference Service Account
-
-* **Account**: `inference@fw-ai-cp-prod.iam.gserviceaccount.com`
-* **Required role**: Storage Object Viewer or Storage Object Admin
-
-<CodeGroup>
-  ```bash Storage Object Viewer theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=roles/storage.objectViewer
-  ```
-
-  ```bash Storage Object Admin theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=roles/storage.objectAdmin
-  ```
-</CodeGroup>
-
-This service account will be used to access the files in the bucket.
-
-#### Your Company's Fireworks Service Account
-
-* **Account**: Your company's Fireworks account registration email
-* **Required role**: Storage Object Viewer or Storage Object Admin
-
-<CodeGroup>
-  ```bash Storage Object Viewer theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
-    --role=roles/storage.objectViewer
-  ```
-
-  ```bash Storage Object Admin theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
-    --role=roles/storage.objectAdmin
-  ```
-</CodeGroup>
-
-This is used to validate that your account actually has access to the bucket that you are trying to reference the dataset from. The email associated with your account (not the email of the user, but the account itself, you can get it with `firectl get account`) must have at least read access to the bucket listed under the bucket access IAM policy.
-
-### Usage Example
-
-<Steps>
-  <Step title="Create a Proxy Dataset">
-    Create a dataset that references your external GCS bucket:
-
-    ```bash  theme={null}
-    firectl create dataset {DATASET_NAME} --external-url gs://bucket-name/object-name
-    ```
-
-    <Tip>
-      Ensure your gsutil path points directly to the JSONL file. If the file is in a folder, make sure the folder contains only the intended file.
-    </Tip>
-  </Step>
-
-  <Step title="Start Fine-tuning">
-    Use the proxy dataset to create a fine-tuning job:
-
-    ```bash  theme={null}
-    firectl create sftj \
-      --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
-      --base-model "accounts/fireworks/models/{MODEL}" \
-      --output-model {TRAINED_MODEL_NAME}
-    ```
-
-    <Check>
-      For additional options, run: `firectl create sftj -h`
-    </Check>
-  </Step>
-</Steps>
-
-### Key Benefits
-
-<CardGroup cols={3}>
-  <Card title="Data Privacy" icon="shield">
-    Your data never leaves your GCS bucket except during fine-tuning
-  </Card>
-
-  <Card title="Security" icon="lock">
-    Access is limited to isolated fine-tuning clusters
-  </Card>
-
-  <Card title="Simplicity" icon="circle">
-    Reference external data without copying or moving files
-  </Card>
-</CardGroup>
-
 ## Related Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Data Security Overview" href="/guides/security_compliance/data_security" icon="shield-check">
     Learn about our comprehensive security measures
   </Card>
@@ -8664,7 +8786,7 @@ Before launching an RFT job, ensure you have the following set up. Our quickstar
 
     Upload via CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     eval-protocol create dataset my-dataset --file dataset.jsonl
     ```
 
@@ -8674,7 +8796,7 @@ Before launching an RFT job, ensure you have the following set up. Our quickstar
   <Accordion title="Evaluator created">
     Your reward function must be tested and uploaded. For local evaluators, upload via pytest:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cd evaluator_directory
     pytest my-evaluator-name.py -vs
     ```
@@ -8685,7 +8807,7 @@ Before launching an RFT job, ensure you have the following set up. Our quickstar
   <Accordion title="Fireworks API key configured">
     Set your API key as an environment variable:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export FIREWORKS_API_KEY="fw_your_api_key_here"
     ```
 
@@ -8761,7 +8883,7 @@ If validation fails, you'll receive specific error messages with instructions to
 
     **Fix**: Each dataset row must have a `messages` array:
 
-    ```json  theme={null}
+    ```json theme={null}
     {"messages": [{"role": "user", "content": "..."}]}
     ```
   </Accordion>
@@ -8772,7 +8894,7 @@ If validation fails, you'll receive specific error messages with instructions to
     **Fix**:
 
     1. Upload your evaluator first:
-       ```bash  theme={null}
+       ```bash theme={null}
        cd evaluator_directory
        pytest my-evaluator-name.py -vs
        ```
@@ -8796,11 +8918,11 @@ If validation fails, you'll receive specific error messages with instructions to
 
     **Fix**: Adjust the parameter to be within the allowed range:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     --learning-rate 1e-4  # Use default value
     ```
 
-    See [Parameter Reference](/fine-tuning/rft-parameters-reference) for all valid ranges.
+    See [CLI Reference](tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create) for all available parameters.
   </Accordion>
 
   <Accordion title="Evaluator build timeout">
@@ -8862,7 +8984,7 @@ Once your job is created, here's what happens:
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Launch with CLI" icon="terminal" href="/fine-tuning/cli-reference">
     Use eval-protocol CLI for fast, scriptable launches
   </Card>
@@ -8875,6 +8997,123 @@ Once your job is created, here's what happens:
     Track job progress, inspect rollouts, and debug issues
   </Card>
 </CardGroup>
+
+
+# Using Secrets
+Source: https://docs.fireworks.ai/fine-tuning/using-secret-in-evaluator
+
+Learn how to create secrets that can be utilized within your reward function.
+
+# Creating Secrets
+
+<Steps>
+  <Step title="Navigate to the secrets page on your dashboard">
+    <img alt="new.png" />
+  </Step>
+
+  <Step title="Create a new secret">
+    <img alt="test.png" />
+
+    All secrets created here will be injected as environment variables for your Evaluator to access.
+  </Step>
+
+  <Step title="Update the Evaluator to access the new secret">
+    <img alt="openai_secret.png" />
+  </Step>
+</Steps>
+
+And that's it! If you want to learn more about creating evaluators, see:
+
+1. Learn about [Evaluation](/fine-tuning/evaluators) and [Eval Protocol](https://evalprotocol.io/introduction) for evaluator authoring
+
+
+# Warm Start from Fine-Tuned Models
+Source: https://docs.fireworks.ai/fine-tuning/warm-start
+
+Continue training from a previously fine-tuned model with RFT
+
+Fireworks supports RFT training on warm start and already-fine-tuned models. Upload models to Fireworks and use the warm start option to continue training (e.g. from an SFT LoRA) with RFT, rather than start from scratch with a base model.
+
+## When to use warm start
+
+Use the `--warm-start-from` flag when you want to:
+
+* Start RFT from an SFT model you've trained with Fireworks
+* Continue training from an existing fine-tuned LoRA adapter you've uploaded to Fireworks
+
+## Basic usage
+
+```bash theme={null}
+eval-protocol create rft \
+  --warm-start-from accounts/your-account/models/<SFT_MODEL_ID> \
+  --output-model <RFT_MODEL_ID>
+```
+
+<Warning>
+  When using `--warm-start-from`, do NOT include `--base-model`. The base model is automatically determined from the LoRA adapter.
+
+  ```bash theme={null}
+  # Wrong, includes --base-model
+  eval-protocol create rft \
+    --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
+    --warm-start-from accounts/your-account/models/<SFT_MODEL_ID>
+  ```
+</Warning>
+
+## SFT to RFT workflow
+
+<Steps>
+  <Step title="Create or upload SFT model">
+    Get started with supervised fine-tuning on Fireworks:
+
+    ```bash theme={null}
+    firectl sftj create \
+      --base-model accounts/fireworks/models/<BASE_MODEL_ID> \
+      --dataset accounts/your-account/datasets/<DATASET_ID> \
+      --output-model <MODEL_ID>
+    ```
+
+    Or if you already have a LoRA adapter, upload it to Fireworks:
+
+    ```bash theme={null}
+    firectl model create <MODEL_ID> /path/to/files/ \
+      --base-model "accounts/fireworks/models/<BASE_MODEL_ID>"
+    ```
+
+    <Note>
+      Learn more about uploading custom LoRA adapters in the [Custom Models guide](/models/uploading-custom-models#importing-fine-tuned-models).
+    </Note>
+  </Step>
+
+  <Step title="Start RFT from SFT model">
+    Use an existing model as a starting point, and combine with standard RFT parameters.
+
+    ```bash theme={null}
+    eval-protocol create rft \
+      --warm-start-from accounts/your-account/models/<SFT_MODEL_ID> \
+      --output-model <RFT_MODEL_ID> \
+      --epochs 2 \
+      --learning-rate 5e-5 \
+      --temperature 0.8
+    ```
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Error: 'not of kind base_model, but HF_PEFT_ADDON'">
+    This means you specified both `--base-model` and `--warm-start-from`. Remove the `--base-model` flag.
+  </Accordion>
+
+  <Accordion title="Model not found">
+    Verify the model exists in your account:
+
+    ```bash theme={null}
+    firectl model list --account accounts/your-account
+    ```
+  </Accordion>
+</AccordionGroup>
 
 
 # Training Guide: UI
@@ -8908,7 +9147,7 @@ The Fireworks RFT UI provides a visual interface for creating RFT jobs, with gui
     3. Click **Fine-tune a Model**
 
     <Frame>
-      <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4c2ad94681a8327cb870c5f92c1cf5d7" alt="Fine-tuning dashboard showing list of jobs" data-og-width="2966" width="2966" data-og-height="2052" height="2052" data-path="images/fine-tuning/fine-tuning.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=67e542c9ea90128f6cd1b53ff8c92aed 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=deef7708b9713cce4afd4cf7744df559 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=f99d019df0142144114475ce9e7c7729 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=bca80f9c479e23ed45e8c51374ac71bb 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5835f9d2a269326985b00cb9b15f12e6 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/fine-tuning.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=040f237a22bd3109c36acaad9c15907f 2500w" />
+      <img alt="Fine-tuning dashboard showing list of jobs" />
     </Frame>
   </Step>
 
@@ -8929,12 +9168,12 @@ The Fireworks RFT UI provides a visual interface for creating RFT jobs, with gui
     3. The UI validates your JSONL format automatically
 
     <Frame>
-      <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=33255bb2d9afefc697230a6f4e723577" alt="Dataset selection interface" data-og-width="2972" width="2972" data-og-height="2060" height="2060" data-path="images/fine-tuning/dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e1f7631eedf19be2ffe910e931734378 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5148e67713f7a207c47a73da1fa56658 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=dde9343748034e1d13ae4fbc1ad4aecf 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a4a99ce824157064f5cbbdfdf0953c0d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=699fd69866de9383a06dc08a5139cb69 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b55ed77bc807c1ebf00223fff2997342 2500w" />
+      <img alt="Dataset selection interface" />
     </Frame>
 
     Each dataset row should have `messages` array:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -8951,7 +9190,7 @@ The Fireworks RFT UI provides a visual interface for creating RFT jobs, with gui
 
     If you haven't uploaded an evaluator yet, you'll need to do that first via CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pytest my-evaluator-name.py -vs
     ```
 
@@ -8997,7 +9236,7 @@ The Fireworks RFT UI provides a visual interface for creating RFT jobs, with gui
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Prerequisites & Validation" icon="list-check" href="/fine-tuning/training-prerequisites">
     Review requirements, validation, and common errors
   </Card>
@@ -9010,6 +9249,114 @@ The Fireworks RFT UI provides a visual interface for creating RFT jobs, with gui
     Learn how to adjust parameters for better results
   </Card>
 </CardGroup>
+
+
+# Weighted Training
+Source: https://docs.fireworks.ai/fine-tuning/weighted-training
+
+Control which samples have greater influence during RFT training
+
+Weighted training lets you assign different importance levels to samples in your dataset, giving you control over how your model learns. This is useful when some examples are higher quality, more representative, or more important to your use case than others.
+
+## How it works
+
+During training, each sample's loss is multiplied by its weight before being used to update model parameters. Higher weights mean stronger learning signals—the model pays more attention to these examples. Lower weights (including negative) reduce or reverse a sample's influence.
+
+## Dataset format
+
+Add a `weight` field at the root level of each JSON object in your JSONL dataset:
+
+```json theme={null}
+{
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What is 2 + 2?"},
+    {"role": "assistant", "content": "4"}
+  ],
+  "weight": 2.0
+}
+```
+
+### Weight values
+
+The `weight` field accepts any floating-point number:
+
+| Weight      | Effect                                                  |
+| ----------- | ------------------------------------------------------- |
+| `> 1.0`     | Increased importance—model learns more from this sample |
+| `1.0`       | Default behavior (same as omitting weight)              |
+| `0.0 - 1.0` | Reduced importance—sample has less influence            |
+| `0.0`       | Sample is effectively ignored during training           |
+| `< 0.0`     | Negative weight—reverses the learning signal            |
+
+<Warning>
+  If you use weights, the `weight` field must be present in **all samples** in your dataset. Mixing weighted and unweighted samples is not supported.
+</Warning>
+
+## Use cases
+
+### Upweight high-quality examples
+
+When you have samples of varying quality, give more weight to your best examples:
+
+```json theme={null}
+{"messages": [...], "weight": 2.0}
+{"messages": [...], "weight": 1.0}
+{"messages": [...], "weight": 0.5}
+```
+
+### Balance dataset distribution
+
+If certain prompt types are underrepresented, upweight them to ensure the model learns them well:
+
+```json theme={null}
+{"messages": [...], "weight": 3.0}
+{"messages": [...], "weight": 1.0}
+```
+
+### De-emphasize noisy samples
+
+If you have samples that may contain noise but can't easily be filtered, reduce their weight:
+
+```json theme={null}
+{"messages": [...], "weight": 0.3}
+```
+
+## Message filtering
+
+For multi-turn conversations, you can also control which assistant messages to include in training by adding a `weight` field to individual messages. This uses a binary format following the [OpenAI fine-tuning specification](https://platform.openai.com/docs/api-reference/fine-tuning/chat-input#fine_tuning-chat_input-messages-assistant_message-weight).
+
+```json theme={null}
+{
+  "messages": [
+    {"role": "user", "content": "What's the capital of France?"},
+    {"role": "assistant", "content": "Paris.", "weight": 1},
+    {"role": "user", "content": "What about Germany?"},
+    {"role": "assistant", "content": "Berlin.", "weight": 0}
+  ]
+}
+```
+
+Message-level weights only accept `0` or `1`:
+
+* `1`: Include this assistant message in training (default)
+* `0`: Exclude this assistant message from training
+
+<Note>
+  Message-level weights are for **filtering** which turns to train on, not for adjusting training influence. Use sample-level weights (at the root of the JSON object) for weighted importance.
+</Note>
+
+## Example dataset
+
+Here's a complete example of a weighted RFT dataset:
+
+```jsonl dataset.jsonl theme={null}
+{"messages": [{"role": "system", "content": "You are a math tutor."}, {"role": "user", "content": "What is 15 * 3?"}, {"role": "assistant", "content": "15 * 3 = 45"}], "weight": 1.0}
+{"messages": [{"role": "system", "content": "You are a math tutor."}, {"role": "user", "content": "Solve: 2x + 5 = 15"}, {"role": "assistant", "content": "x = 5"}], "weight": 1.5}
+{"messages": [{"role": "system", "content": "You are a math tutor."}, {"role": "user", "content": "Integrate x^2 dx"}, {"role": "assistant", "content": "(x^3)/3 + C"}], "weight": 2.0}
+```
+
+This dataset upweights more complex math problems, so the model focuses more on calculus than basic arithmetic.
 
 
 # Concepts
@@ -9028,7 +9375,7 @@ Your account is the top-level resource under which other resources are located. 
 
 ### User
 
-A user is an email address associated with an account. Users added to an account have full access to delete, edit, and create resources within the account, such as deployments and models.
+A user is an email address associated with an account. Each user is assigned a role (such as Admin, User, Contributor, or Inference User) that determines their level of access to resources within the account.
 
 ### Models and model types
 
@@ -9039,7 +9386,7 @@ A model is a set of model weights and metadata associated with the model. Each m
 * Fireworks has a library of common base models that can be used for [**serverless inference**](/models/overview#serverless-inference) as well as [**dedicated deployments**](/models/overview#dedicated-deployments). Model IDs for these models are pre-populated. For example, `llama-v3p1-70b-instruct` is the model ID for the Llama 3.1 70B model that Fireworks provides. The ID for each model can be found on its page ([**example**](https://app.fireworks.ai/models/fireworks/qwen3-coder-480b-a35b-instruct))
 * Users can also [upload their own](/models/uploading-custom-models) custom base models and specify model IDs.
 
-**LoRA (low-rank adaptation) addons:** A LoRA addon is a small, fine-tuned model that significantly reduces the amount of memory required to deploy compared to a fully fine-tuned model. Fireworks supports [**training**](/fine-tuning/finetuning-intro), [**uploading**](/models/uploading-custom-models#importing-fine-tuned-models), and [**serving**](/fine-tuning/fine-tuning-models#deploying-a-fine-tuned-model) LoRA addons. LoRA addons must be deployed on a serverless or dedicated deployment for its corresponding base model. Model IDs for LoRAs can be either auto-generated or user-specified.
+**LoRA (low-rank adaptation) addons:** A LoRA addon is a small, fine-tuned model that significantly reduces the amount of memory required to deploy compared to a fully fine-tuned model. Fireworks supports [**training**](/fine-tuning/finetuning-intro), [**uploading**](/models/uploading-custom-models#importing-fine-tuned-models), and [**serving**](/fine-tuning/fine-tuning-models#deploying-a-fine-tuned-model) LoRA addons. LoRA addons must be deployed on a dedicated deployment for its corresponding base model. Model IDs for LoRAs can be either auto-generated or user-specified.
 
 ### Deployments and deployment types
 
@@ -9047,7 +9394,7 @@ A model must be deployed before it can be used for inference. A deployment is a 
 
 Fireworks supports two types of deployments:
 
-* **Serverless deployments:**  Fireworks hosts popular base models on shared "serverless" deployments. Users pay-per-token to query these models and do not need to configure GPUs. The most popular serverless deployments also support serverless LoRA addons. See our [Quickstart - Serverless](/getting-started/quickstart) guide to get started.
+* **Serverless deployments:**  Fireworks hosts popular base models on shared "serverless" deployments. Users pay-per-token to query these models and do not need to configure GPUs. See our [Quickstart - Serverless](/getting-started/quickstart) guide to get started.
 * **Dedicated deployments:** Dedicated deployments enable users to configure private deployments with a wide array of hardware (see [on-demand deployments guide](/guides/ondemand-deployments)). Dedicated deployments give users performance guarantees and the most flexibility and control over what models can be deployed. Both LoRA addons and base models can be deployed to dedicated deployments. Dedicated deployments are billed by a GPU-second basis (see [**pricing**](https://fireworks.ai/pricing#ondemand) page).
 
 See the [**Querying text models guide**](/guides/querying-text-models) for a comprehensive overview of making LLM inference.
@@ -9091,7 +9438,7 @@ Users can interact with Fireworks through one of many interfaces:
 * The **web app** at [https://app.fireworks.ai](https://app.fireworks.ai)
 * The [`firectl`](/tools-sdks/firectl/firectl) CLI
 * [OpenAI compatible API](/tools-sdks/openai-compatibility)
-* [Python SDK](/tools-sdks/python-client/sdk-introduction)
+* [Python SDK](/tools-sdks/python-sdk)
 
 
 # Build with Fireworks AI
@@ -9103,7 +9450,7 @@ Fireworks AI is the fastest platform for building with open source AI models. Ge
 
 ## Get started in minutes
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="Start fast with Serverless" href="/getting-started/quickstart" icon="bolt">
     Use popular models instantly with pay-per-token pricing. Perfect for quality vibe testing and prototyping.
   </Card>
@@ -9125,7 +9472,7 @@ Fireworks AI is the fastest platform for building with open source AI models. Ge
 
 ## What you can build
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="100+ Supported Models" href="https://fireworks.ai/models" icon="books">
     Text, vision, audio, image, and embeddings
   </Card>
@@ -9161,7 +9508,7 @@ Fireworks AI is the fastest platform for building with open source AI models. Ge
 
 ## Resources & help
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="Which model should I use?" href="/guides/recommended-models" icon="compass">
     Find the best model for your use case
   </Card>
@@ -9207,13 +9554,13 @@ Once you have your API key, export it as an environment variable in your termina
 
 <Tabs>
   <Tab title="macOS / Linux">
-    ```bash  theme={null}
+    ```bash theme={null}
     export FIREWORKS_API_KEY="your_api_key_here"
     ```
   </Tab>
 
   <Tab title="Windows">
-    ```powershell  theme={null}
+    ```powershell theme={null}
     setx FIREWORKS_API_KEY "your_api_key_here"
     ```
   </Tab>
@@ -9259,7 +9606,7 @@ To create and manage on-demand deployments, you'll need the `firectl` CLI tool. 
 
 Then, sign in:
 
-```bash  theme={null}
+```bash theme={null}
 firectl signin
 ```
 
@@ -9267,8 +9614,8 @@ firectl signin
 
 This command will create a deployment of GPT OSS 120B optimized for speed. It will take a few minutes to complete. The resulting deployment will scale up to 1 replica.
 
-```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+```bash theme={null}
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \
@@ -9291,7 +9638,7 @@ firectl create deployment accounts/fireworks/models/gpt-oss-120b \
 
 The response will look like this:
 
-```bash  theme={null}
+```bash theme={null}
 Name: accounts/<YOUR ACCOUNT ID>/deployments/<DEPLOYMENT ID>
 Create Time: <CREATION_TIME>
 Expire Time: <EXPIRATION_TIME>
@@ -9321,15 +9668,33 @@ Take note of the `Name:` field in the response, as it will be used in the next s
 Now you can query your on-demand deployment using the same API as serverless models, but using your dedicated deployment. Replace `<DEPLOYMENT_NAME>` in the below snippets with the value from the `Name:` field in the previous step:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
-    import os
-    from openai import OpenAI
+  <Tab title="Python (Fireworks SDK)">
+    Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
 
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1"
-    )
+    <Note>
+      The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+    </Note>
+
+    <CodeGroup>
+      ```bash pip theme={null}
+      pip install --pre fireworks-ai
+      ```
+
+      ```bash poetry theme={null}
+      poetry add --pre fireworks-ai
+      ```
+
+      ```bash uv theme={null}
+      uv add --pre fireworks-ai
+      ```
+    </CodeGroup>
+
+    Then make your first on-demand API call:
+
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
 
     response = client.chat.completions.create(
         model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
@@ -9343,8 +9708,30 @@ Now you can query your on-demand deployment using the same API as serverless mod
     ```
   </Tab>
 
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ.get("FIREWORKS_API_KEY"),
+        base_url="https://api.fireworks.ai/inference/v1"
+    )
+
+    response = client.chat.completions.create(
+        model="<DEPLOYMENT_NAME>",
+        messages=[{
+            "role": "user",
+            "content": "Explain quantum computing in simple terms",
+        }],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9353,7 +9740,7 @@ Now you can query your on-demand deployment using the same API as serverless mod
     });
 
     const response = await client.chat.completions.create({
-      model: "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      model: "<DEPLOYMENT_NAME>",
       messages: [
         {
           role: "user",
@@ -9367,12 +9754,12 @@ Now you can query your on-demand deployment using the same API as serverless mod
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
       -d '{
-        "model": "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        "model": "<DEPLOYMENT_NAME>",
         "messages": [
           {
             "role": "user",
@@ -9392,8 +9779,8 @@ The examples from the Serverless quickstart will work with this deployment as we
 
 ### Autoscale based on requests per second
 
-```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+```bash theme={null}
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \
@@ -9406,8 +9793,8 @@ firectl create deployment accounts/fireworks/models/gpt-oss-120b \
 
 ### Autoscale based on concurrent requests
 
-```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+```bash theme={null}
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \
@@ -9422,7 +9809,7 @@ firectl create deployment accounts/fireworks/models/gpt-oss-120b \
 
 Ready to scale to production, explore other modalities, or customize your models?
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="Upload a custom model" href="/models/uploading-custom-models" icon="server">
     Bring your own model and deploy it on Fireworks
   </Card>
@@ -9468,13 +9855,13 @@ Once you have your API key, export it as an environment variable in your termina
 
 <Tabs>
   <Tab title="macOS / Linux">
-    ```bash  theme={null}
+    ```bash theme={null}
     export FIREWORKS_API_KEY="your_api_key_here"
     ```
   </Tab>
 
   <Tab title="Windows">
-    ```powershell  theme={null}
+    ```powershell theme={null}
     setx FIREWORKS_API_KEY "your_api_key_here"
     ```
   </Tab>
@@ -9483,16 +9870,56 @@ Once you have your API key, export it as an environment variable in your termina
 ## Step 2: Make your first Serverless API call
 
 <Tabs>
-  <Tab title="Python">
-    Fireworks provides an OpenAI compatible endpoint. Install the OpenAI Python SDK:
+  <Tab title="Python (Fireworks SDK)">
+    Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
 
-    ```bash  theme={null}
+    <Note>
+      The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+    </Note>
+
+    <CodeGroup>
+      ```bash pip theme={null}
+      pip install --pre fireworks-ai
+      ```
+
+      ```bash poetry theme={null}
+      poetry add --pre fireworks-ai
+      ```
+
+      ```bash uv theme={null}
+      uv add --pre fireworks-ai
+      ```
+    </CodeGroup>
+
+    Then make your first Serverless API call:
+
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{
+        "role": "user",
+        "content": "Say hello in Spanish",
+      }],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    Fireworks provides an OpenAI compatible endpoint. Install the [OpenAI Python SDK](https://github.com/openai/openai-python):
+
+    ```bash theme={null}
     pip install openai
     ```
 
     Then make your first Serverless API call:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -9514,15 +9941,15 @@ Once you have your API key, export it as an environment variable in your termina
   </Tab>
 
   <Tab title="JavaScript">
-    Fireworks provides an OpenAI compatible endpoint. Install the OpenAI Node.js SDK:
+    Fireworks provides an OpenAI compatible endpoint. Install the [OpenAI JavaScript / TypeScript SDK](https://github.com/openai/openai-node):
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install openai
     ```
 
     Then make your first Serverless API call:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9545,7 +9972,7 @@ Once you have your API key, export it as an environment variable in your termina
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -9571,8 +9998,26 @@ You should see a response like: `"¡Hola!"`
 Stream responses token-by-token for a better user experience:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    stream = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{"role": "user", "content": "Tell me a short story"}],
+      stream=True
+    )
+
+    for chunk in stream:
+      if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -9594,7 +10039,7 @@ Stream responses token-by-token for a better user experience:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9615,7 +10060,7 @@ Stream responses token-by-token for a better user experience:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -9638,19 +10083,17 @@ Stream responses token-by-token for a better user experience:
 Connect your models to external tools and APIs:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
-    import os
-    from openai import OpenAI
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
 
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1",
-    )
+    client = Fireworks()
 
     response = client.chat.completions.create(
         model="accounts/fireworks/models/kimi-k2-instruct-0905",
-        messages=[{"role": "user", "content": "What's the weather in Paris?"}],
+        messages=[
+            {"role": "user", "content": "What's the weather in Paris?"}
+        ],
         tools=[
             {
                 "type": "function",
@@ -9668,7 +10111,47 @@ Connect your models to external tools and APIs:
                         "required": ["location"],
                     },
                 },
-            }
+            },
+        ],
+    )
+
+    print(response.choices[0].message.tool_calls)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ.get("FIREWORKS_API_KEY"),
+        base_url="https://api.fireworks.ai/inference/v1",
+    )
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/kimi-k2-instruct-0905",
+        messages=[
+            {"role": "user", "content": "What's the weather in Paris?"}
+        ],
+        tools=[
+            {
+                "type": "function",
+                "function": {
+                    "name": "get_weather",
+                    "description": "Get the current weather for a location",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "location": {
+                                "type": "string",
+                                "description": "City name, e.g. San Francisco",
+                            }
+                        },
+                        "required": ["location"],
+                    },
+                },
+            },
         ],
     )
 
@@ -9677,7 +10160,7 @@ Connect your models to external tools and APIs:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9716,7 +10199,7 @@ Connect your models to external tools and APIs:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -9759,8 +10242,42 @@ Connect your models to external tools and APIs:
 Get reliable JSON responses that match your schema:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[
+        {
+          "role": "user",
+          "content": "Extract the name and age from: John is 30 years old",
+        }
+      ],
+      response_format={
+        "type": "json_schema",
+        "json_schema": {
+          "name": "person",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "age": { "type": "number" }
+            },
+            "required": ["name", "age"],
+          },
+        },
+      },
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -9795,7 +10312,7 @@ Get reliable JSON responses that match your schema:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9832,7 +10349,7 @@ Get reliable JSON responses that match your schema:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -9874,8 +10391,36 @@ Get reliable JSON responses that match your schema:
 Analyze images with vision-language models:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+      messages=[
+        {
+          "role": "user",
+          "content": [
+            {"type": "text", "text": "What's in this image?"},
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": "https://storage.googleapis.com/fireworks-public/image_assets/fireworks-ai-wordmark-color-dark.png"
+              },
+            },
+          ],
+        }
+      ],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -9907,7 +10452,7 @@ Analyze images with vision-language models:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -9938,7 +10483,7 @@ Analyze images with vision-language models:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -9978,11 +10523,15 @@ Serverless models are managed by the Fireworks team and may be updated or deprec
   Make sure to add a [payment method](https://fireworks.ai/billing) to access [higher rate limits](/guides/quotas_usage/rate-limits) up to 6,000 RPM. Without a payment method, you're limited to 10 RPM.
 </Tip>
 
+<Callout type="warning">
+  The 6,000 RPM figure is the maximum ceiling enforced by our spike arrest policy. Your actual limit scales dynamically with sustained usage, so short-lived spikes may be throttled below that cap. For predictable throughput needs, consider [on-demand deployments](/guides/ondemand-deployments) or [requesting a rate review](/guides/quotas_usage/rate-limits#serverless-rate-limits).
+</Callout>
+
 ## Next steps
 
 Ready to scale to production, explore other modalities, or customize your models?
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="Deploy and autoscale on Dedicated GPUs" href="/guides/ondemand-deployments" icon="server">
     Deploy with high performance on dedicated GPUs with fast autoscaling and minimal cold starts
   </Card>
@@ -10042,7 +10591,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
     **Example dataset:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {"custom_id": "request-1", "body": {"messages": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "What is the capital of France?"}], "max_tokens": 100}}
     {"custom_id": "request-2", "body": {"messages": [{"role": "user", "content": "Explain quantum computing"}], "temperature": 0.7}}
     {"custom_id": "request-3", "body": {"messages": [{"role": "user", "content": "Tell me a joke"}]}}
@@ -10056,19 +10605,19 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       <Tab title="UI">
         You can simply navigate to the dataset tab, click `Create Dataset` and follow the wizard.
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=33255bb2d9afefc697230a6f4e723577" alt="Dataset Upload" data-og-width="2972" width="2972" data-og-height="2060" height="2060" data-path="images/fine-tuning/dataset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=e1f7631eedf19be2ffe910e931734378 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5148e67713f7a207c47a73da1fa56658 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=dde9343748034e1d13ae4fbc1ad4aecf 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a4a99ce824157064f5cbbdfdf0953c0d 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=699fd69866de9383a06dc08a5139cb69 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/fine-tuning/dataset.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b55ed77bc807c1ebf00223fff2997342 2500w" />
+        <img alt="Dataset Upload" />
       </Tab>
 
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl create dataset batch-input-dataset ./batch_input_data.jsonl
+        ```bash theme={null}
+        firectl dataset create batch-input-dataset ./batch_input_data.jsonl
         ```
       </Tab>
 
       <Tab title="HTTP API">
         You need to make two separate HTTP requests. One for creating the dataset entry and one for uploading the dataset. Full reference here: [Create dataset](/api-reference/create-dataset).
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Create Dataset Entry
         curl -X POST "https://api.fireworks.ai/v1/accounts/${ACCOUNT_ID}/datasets" \
           -H "Authorization: Bearer ${API_KEY}" \
@@ -10092,28 +10641,28 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       <Tab title="UI">
         Navigate to the Batch Inference tab and click "Create Batch Inference Job". Select your input dataset:
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=c74141b465db64bd4ca3c037d20b3f30" alt="BIJ Dataset Select" data-og-width="3840" width="3840" data-og-height="1982" height="1982" data-path="images/batch-inference/BIJ_Dataset_Select.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=ad3decfc23ff03325cc141ddb0bc3853 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4f8af4b1fb7736f614229eb4ba19bc71 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=cfe1d39030f0c62956bfc194464b181e 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=3e45d9a631ed269bfc65976050127e75 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=df78513dac5d93ff6e316ac501662309 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Select.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=6581fe37392ca0df9907f1aaa57861f7 2500w" />
+        <img alt="BIJ Dataset Select" />
 
         Choose your model:
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=384fe513029928f248d751e58e2f89b9" alt="BIJ Model Select" data-og-width="3840" width="3840" data-og-height="1970" height="1970" data-path="images/batch-inference/BIJ_Model_Select.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=d902f47c06ab6a6fa1aeb6df721ba1ab 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=ce98f4d224a1485b4e600e08c860f947 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=1115f215e13cae034bc16a8f85f89316 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=fc380420be1ae9e6bbacb80bbd1bf810 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4675a8e7e3bdb523f68c177bcfde4347 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Model_Select.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=fabe3dd83aa7daf1c161cdc754d09782 2500w" />
+        <img alt="BIJ Model Select" />
 
         Configure optional settings:
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=56179acd8c88d94143fda4b78c5cec2a" alt="BIJ Optional Settings" data-og-width="3840" width="3840" data-og-height="1976" height="1976" data-path="images/batch-inference/BIJ_Optional_Settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=b3b8500e3b62e3314a289cf9fdd2a4b5 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=9f7870d2799cfdc8f83eb86d490e6192 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=23086532b59056a622bb03b4d13b7512 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=8000e1cacdf5dff70f4a18ebffb5b3b8 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=6564c2703f112beb51da20d1f5f95b5d 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Optional_Settings.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=7fd4dd8043ac01bd8efe3af0552e6cb0 2500w" />
+        <img alt="BIJ Optional Settings" />
       </Tab>
 
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl create batch-inference-job \
+        ```bash theme={null}
+        firectl batch-inference-job create \
           --model accounts/fireworks/models/llama-v3p1-8b-instruct \
           --input-dataset-id batch-input-dataset
         ```
 
         With additional parameters:
 
-        ```bash  theme={null}
-        firectl create batch-inference-job \
+        ```bash theme={null}
+        firectl batch-inference-job create \
           --job-id my-batch-job \
           --model accounts/fireworks/models/llama-v3p1-8b-instruct \
           --input-dataset-id batch-input-dataset \
@@ -10125,7 +10674,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       </Tab>
 
       <Tab title="HTTP API">
-        ```bash  theme={null}
+        ```bash theme={null}
         curl -X POST "https://api.fireworks.ai/v1/accounts/${ACCOUNT_ID}/batchInferenceJobs?batchInferenceJobId=my-batch-job" \
           -H "Authorization: Bearer ${API_KEY}" \
           -H "Content-Type: application/json" \
@@ -10149,21 +10698,21 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       <Tab title="UI">
         View all your batch inference jobs in the dashboard:
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=523de401343695e5db041c42b36364ea" alt="BIJ List" data-og-width="3840" width="3840" data-og-height="1986" height="1986" data-path="images/batch-inference/BIJ_List.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=5eb7409172fe41f7d8fdf472f673e5bc 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=a6b3851347a0302d1942ccc20a01cd48 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=991bee935ffeeae9f177de6d016ee2c8 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=146cf5029a45bf2cf9c140aa5e56c7c5 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4909a6d11d5927d83d6d5a7062d35c54 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_List.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=8d54557cf79cdc8aca7d7eb27078b748 2500w" />
+        <img alt="BIJ List" />
       </Tab>
 
       <Tab title="firectl">
-        ```bash  theme={null}
+        ```bash theme={null}
         # Get job status
-        firectl get batch-inference-job my-batch-job
+        firectl batch-inference-job get my-batch-job
 
         # List all batch jobs
-        firectl list batch-inference-jobs
+        firectl batch-inference-job list
         ```
       </Tab>
 
       <Tab title="HTTP API">
-        ```bash  theme={null}
+        ```bash theme={null}
         # Get specific job
         curl -X GET "https://api.fireworks.ai/v1/accounts/${ACCOUNT_ID}/batchInferenceJobs/my-batch-job" \
           -H "Authorization: Bearer ${API_KEY}"
@@ -10181,17 +10730,17 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       <Tab title="UI">
         Navigate to the output dataset and download the results:
 
-                <img src="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=af22b69efced8a70bcac70fecdf38ba8" alt="BIJ Dataset Download" data-og-width="3840" width="3840" data-og-height="1976" height="1976" data-path="images/batch-inference/BIJ_Dataset_Download.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=280&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=770f031bb6313b77cf2abcbc3f7684de 280w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=560&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=3353ebde5f51bc348170c4d6cb1ee75f 560w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=840&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4180e89050342a2848db0a0670de2b35 840w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=1100&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=64b7c055d37652271e6cda3da3fc4ccb 1100w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=1650&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=ec7edc0a8e862d839f881df18c5eaf18 1650w, https://mintcdn.com/fireworksai/sTHhFfY93wc80BaS/images/batch-inference/BIJ_Dataset_Download.png?w=2500&fit=max&auto=format&n=sTHhFfY93wc80BaS&q=85&s=4db728381845bb89bbc98258bd7f2449 2500w" />
+        <img alt="BIJ Dataset Download" />
       </Tab>
 
       <Tab title="firectl">
-        ```bash  theme={null}
-        firectl download dataset batch-output-dataset
+        ```bash theme={null}
+        firectl dataset download batch-output-dataset
         ```
       </Tab>
 
       <Tab title="HTTP API">
-        ```bash  theme={null}
+        ```bash theme={null}
         # Get download endpoint and save response
         curl -s -X GET "https://api.fireworks.ai/v1/accounts/${ACCOUNT_ID}/datasets/batch-output-dataset:getDownloadEndpoint" \
           -H "Authorization: Bearer ${API_KEY}" \
@@ -10249,8 +10798,8 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
     **Resume processing:**
 
-    ```bash  theme={null}
-    firectl create batch-inference-job \
+    ```bash theme={null}
+    firectl batch-inference-job create \
       --continue-from original-job-id \
       --model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --output-dataset-id new-output-dataset
@@ -10260,8 +10809,8 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
     **Download complete lineage:**
 
-    ```bash  theme={null}
-    firectl download dataset output-dataset-id --download-lineage
+    ```bash theme={null}
+    firectl dataset download output-dataset-id --download-lineage
     ```
 
     Downloads all datasets in the continuation chain.
@@ -10278,7 +10827,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
 ## Next Steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Prompt Caching" icon="bolt" href="/guides/prompt-caching">
     Maximize cost savings with automatic prompt caching
   </Card>
@@ -10314,8 +10863,23 @@ The completions API provides raw text generation without automatic message forma
 ## Basic usage
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      prompt="Once upon a time"
+    )
+
+    print(response.choices[0].text)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -10334,7 +10898,7 @@ The completions API provides raw text generation without automatic message forma
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -10352,7 +10916,7 @@ The completions API provides raw text generation without automatic message forma
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -10372,7 +10936,7 @@ The completions API provides raw text generation without automatic message forma
 
 The completions API is useful when you need to implement custom prompt formats:
 
-```python  theme={null}
+```python theme={null}
 # Custom few-shot prompt template
 prompt = """Task: Classify the sentiment of the following text.
 
@@ -10411,16 +10975,16 @@ See the [API reference](/api-reference/post-completions) for complete parameter 
 
 Use completions with [on-demand deployments](/guides/ondemand-deployments) by specifying the deployment identifier:
 
-```python  theme={null}
+```python theme={null}
 response = client.completions.create(
-    model="accounts/fireworks/models/deepseek-v3p1#accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+    model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
     prompt="Your prompt here"
 )
 ```
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Chat Completions" href="/guides/querying-text-models" icon="messages">
     Use chat completions for most use cases
   </Card>
@@ -10453,15 +11017,29 @@ Tool calling (also known as function calling) enables models to intelligently se
 
 Define tools and send a request - the model will return structured tool calls when needed:
 
-```python  theme={null}
-import os
-from openai import OpenAI
+Initialize the client:
 
-client = OpenAI(
-    api_key=os.environ.get("FIREWORKS_API_KEY"),
-    base_url="https://api.fireworks.ai/inference/v1"
-)
+<CodeGroup>
+  ```python Python (Fireworks SDK) theme={null}
+  from fireworks import Fireworks
 
+  client = Fireworks()
+  ```
+
+  ```python Python (OpenAI SDK) theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      api_key=os.environ.get("FIREWORKS_API_KEY"),
+      base_url="https://api.fireworks.ai/inference/v1"
+  )
+  ```
+</CodeGroup>
+
+Define the tools and make the request:
+
+```python theme={null}
 tools = [{
     "type": "function",
     "function": {
@@ -10494,15 +11072,8 @@ print(response.choices[0].message.tool_calls)
 
 <AccordionGroup>
   <Accordion title="Complete workflow: Execute tools and get final response">
-    ```python  theme={null}
-    import os
-    from openai import OpenAI
+    ```python theme={null}
     import json
-
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1"
-    )
 
     # Step 1: Define your tools
     tools = [{
@@ -10534,16 +11105,16 @@ print(response.choices[0].message.tool_calls)
     if response.choices[0].message.tool_calls:
         # Step 4: Execute the tool
         tool_call = response.choices[0].message.tool_calls[0]
-        
+
         # Your actual tool implementation
         def get_weather(location, unit="celsius"):
             # In production, call your weather API here
             return {"temperature": 72, "condition": "sunny", "unit": unit}
-        
+
         # Parse arguments and call your function
         function_args = json.loads(tool_call.function.arguments)
         function_response = get_weather(**function_args)
-        
+
         # Step 5: Send tool response back to model
         messages.append(response.choices[0].message)  # Add assistant's tool call
         messages.append({
@@ -10551,7 +11122,7 @@ print(response.choices[0].message.tool_calls)
             "tool_call_id": tool_call.id,
             "content": json.dumps(function_response)
         })
-        
+
         # Step 6: Get final response
         final_response = client.chat.completions.create(
             model="accounts/fireworks/models/kimi-k2-instruct-0905",
@@ -10559,7 +11130,7 @@ print(response.choices[0].message.tool_calls)
             tools=tools,
             temperature=0.1
         )
-        
+
         print(final_response.choices[0].message.content)
         # Output: "It's currently 72°F and sunny in San Francisco."
     ```
@@ -10587,7 +11158,7 @@ JSON Schema supports: `string`, `number`, `integer`, `object`, `array`, `boolean
 * Provide descriptions for each parameter
 
 <Accordion title="Example: Defining multiple tools">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "type": "function",
@@ -10651,7 +11222,7 @@ The [`tool_choice`](/api-reference/post-chatcompletions#body-tool-choice) parame
 * **`required`**: Model must call at least one tool
 * **Specific function**: Force the model to call a particular function
 
-```python  theme={null}
+```python theme={null}
 # Force a specific tool
 response = client.chat.completions.create(
     model="accounts/fireworks/models/kimi-k2-instruct-0905",
@@ -10671,15 +11242,8 @@ response = client.chat.completions.create(
 <Accordion title="Using tool calls with streaming responses">
   Tool calls work with streaming responses. Arguments are sent incrementally as the model generates them:
 
-  ```python  theme={null}
+  ```python theme={null}
   import json
-  import os
-  from openai import OpenAI
-
-  client = OpenAI(
-      api_key=os.environ.get("FIREWORKS_API_KEY"),
-      base_url="https://api.fireworks.ai/inference/v1"
-  )
 
   tools = [{
       "type": "function",
@@ -10757,7 +11321,7 @@ response = client.chat.completions.create(
 
 ## Next steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Structured Outputs" icon="brackets-curly" href="/structured-responses/structured-response-formatting">
     Enforce JSON schemas for consistent responses
   </Card>
@@ -10839,9 +11403,9 @@ Need higher GPU quotas or want to reserve capacity? [Contact us](https://firewor
 
 **Create a deployment:**
 
-```bash  theme={null}
-# This command returns your DEPLOYMENT_NAME - save it for querying
-firectl create deployment accounts/fireworks/models/<MODEL_NAME> --wait
+```bash theme={null}
+# This command returns your accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID> - save it for querying
+firectl deployment create accounts/fireworks/models/<MODEL_NAME> --wait
 ```
 
 See [Deployment shapes](#deployment-shapes) below to optimize for speed, throughput, or cost.
@@ -10851,48 +11415,39 @@ See [Deployment shapes](#deployment-shapes) below to optimize for speed, through
 After creating a deployment, query it using this format:
 
 ```
-<MODEL_NAME>#<DEPLOYMENT_NAME>
+accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>
 ```
 
 <Tip>
-  You can find your deployment name anytime with `firectl list deployments` and `firectl get deployment <DEPLOYMENT_ID>`.
+  You can find your deployment name anytime with `firectl deployment list` and `firectl deployment get <DEPLOYMENT_ID>`.
 </Tip>
 
-**Examples:**
+**Example:**
 
-<Tabs>
-  <Tab title="Fireworks model">
-    ```
-    accounts/fireworks/models/mixtral-8x7b#accounts/alice/deployments/12345678
-    ```
-
-    * Model: `accounts/fireworks/models/mixtral-8x7b`
-    * Deployment: `accounts/alice/deployments/12345678`
-
-    <Tip>
-      You can also use shorthand: `fireworks/mixtral-8x7b#alice/12345678`
-    </Tip>
-  </Tab>
-
-  <Tab title="Custom model">
-    ```
-    accounts/alice/models/custom-model#accounts/alice/deployments/12345678
-    ```
-
-    * Model: `accounts/alice/models/custom-model`
-    * Deployment: `accounts/alice/deployments/12345678`
-
-    <Tip>
-      You can also use shorthand: `alice/custom-model#alice/12345678`
-    </Tip>
-  </Tab>
-</Tabs>
+```
+accounts/alice/deployments/12345678
+```
 
 ### Code examples
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -10902,7 +11457,7 @@ After creating a deployment, query it using this format:
     )
 
     response = client.chat.completions.create(
-        model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
         messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
     )
 
@@ -10911,7 +11466,7 @@ After creating a deployment, query it using this format:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -10920,7 +11475,7 @@ After creating a deployment, query it using this format:
     });
 
     const response = await client.chat.completions.create({
-      model: "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      model: "accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
       messages: [
         {
           role: "user",
@@ -10934,12 +11489,12 @@ After creating a deployment, query it using this format:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
       -d '{
-        "model": "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        "model": "accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
         "messages": [
           {
             "role": "user",
@@ -10961,19 +11516,19 @@ Deployment shapes are the primary way to configure deployments. They're pre-conf
 
 **Usage:**
 
-```bash  theme={null}
+```bash theme={null}
 # List available shapes
-firectl list deployment-shape-versions --base-model <model-id>
+firectl deployment-shape-version list --base-model <model-id>
 
 # Create with a shape (shorthand)
-firectl create deployment accounts/fireworks/models/deepseek-v3 --deployment-shape throughput
+firectl deployment create accounts/fireworks/models/deepseek-v3 --deployment-shape throughput
 
 # Create with full shape ID
-firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
   --deployment-shape accounts/fireworks/deploymentShapes/llama-v3p3-70b-instruct-fast
 
 # View shape details
-firectl get deployment-shape-version <full-deployment-shape-version-id>
+firectl deployment-shape-version get <full-deployment-shape-version-id>
 ```
 
 <Tip>
@@ -10984,20 +11539,24 @@ firectl get deployment-shape-version <full-deployment-shape-version-id>
 
 ### Basic management
 
-```bash  theme={null}
+```bash theme={null}
 # List all deployments
-firectl list deployments
+firectl deployment list
 
 # Check deployment status
-firectl get deployment <DEPLOYMENT_ID>
+firectl deployment get <DEPLOYMENT_ID>
 
 # Delete a deployment
-firectl delete deployment <DEPLOYMENT_ID>
+firectl deployment delete <DEPLOYMENT_ID>
 ```
 
 <Note>
   By default, deployments scale to zero if unused for 1 hour. Deployments with min replicas set to 0 are automatically deleted after 7 days of no traffic.
 </Note>
+
+<Warning>
+  When a deployment is scaled to zero, requests return a `503` error immediately while the deployment scales up. Your application should implement retry logic to handle this. See [Scaling from zero behavior](/deployments/autoscaling#scaling-from-zero-behavior) for implementation details.
+</Warning>
 
 ### GPU hardware
 
@@ -11019,8 +11578,8 @@ See the [Autoscaling guide](/deployments/autoscaling) for configuration options.
 
 Use multiple GPUs to improve latency and throughput:
 
-```bash  theme={null}
-firectl create deployment <MODEL_NAME> --accelerator-count 2
+```bash theme={null}
+firectl deployment create <MODEL_NAME> --accelerator-count 2
 ```
 
 More GPUs = faster generation. Note that scaling is sub-linear (2x GPUs ≠ 2x performance).
@@ -11035,7 +11594,7 @@ More GPUs = faster generation. Note that scaling is sub-linear (2x GPUs ≠ 2x p
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Autoscaling" href="/deployments/autoscaling" icon="arrows-up-down">
     Configure autoscaling for optimal cost and performance
   </Card>
@@ -11169,9 +11728,11 @@ situations, it can reduce time to first token (TTFT) by as much as 80%.
 
 Prompt caching is enabled by default for all Fireworks models and deployments.
 
+For serverless models, cached prompt tokens cost 50% less than regular prompt tokens.
+
 For dedicated deployments, prompt caching frees up resources, leading to higher
-throughput on the same hardware. Dedicated deployments on the Enterprise plan allow
-additional configuration options to further optimize cache performance.
+throughput on the same hardware. Cached tokens on dedicated deployments are close to
+free for you, because they affect context length but do not need extra processing.
 
 ## Using prompt caching
 
@@ -11195,7 +11756,89 @@ information, at the end.
 
 For function calling models, tools are considered part of the prompt.
 
-## Optimization techniques for maximum cache hits
+### Optimizing inference request for caching
+
+Prompt caching only works within 1 replica. If you are using serverless or a
+deployment with multiple replicas, you need to give us hints for where to send
+the traffic to maximize prompt cache hit rates. To do this, you can send us a
+unique identifier for each user or session, when you expect the prompts to share
+the same prefix.
+
+You may place this identifier either in the `user` field of the request body or
+in the `x-session-affinity` header.
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ.get("FIREWORKS_API_KEY"),
+        base_url="https://api.fireworks.ai/inference/v1",
+        extra_header={
+            "x-session-affinity": "session-id-123"
+        }
+    )
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/<MODEL_ID>",
+        messages=[{
+            "role": "user",
+            "content": "Explain quantum computing in simple terms"
+        }]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```javascript theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.FIREWORKS_API_KEY,
+      baseURL: "https://api.fireworks.ai/inference/v1",
+      extra_header: {
+        x-session-affinity: "session-id-123"
+      }
+    });
+
+    const response = await client.chat.completions.create({
+      model: "accounts/fireworks/models/<MODEL_ID>",
+      messages: [
+        {
+          role: "user",
+          content: "Explain quantum computing in simple terms",
+        },
+      ]
+    });
+
+    console.log(response.choices[0].message.content);
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash theme={null}
+    curl https://api.fireworks.ai/inference/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY" \
+      -H "x-session-affinity: session-id-123" \
+      -d '{
+        "model": "accounts/fireworks/models/",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain quantum computing in simple terms"
+          }
+        ]
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Prompt optimization techniques for maximum cache hits
 
 Due to the autoregressive nature of LLMs, even a single-token difference can invalidate the cache from that token onward. Here are key strategies to maximize your cache hit rates:
 
@@ -11206,7 +11849,7 @@ The most critical rule for effective prompt caching is maintaining a stable pref
 <Warning>
   **Common mistake:** Including timestamps or other dynamic content at the beginning of your system prompt.
 
-  ```python  theme={null}
+  ```python theme={null}
   # ❌ DON'T: This kills cache hit rates
   system_prompt = f"""
   Current time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -11221,9 +11864,7 @@ The most critical rule for effective prompt caching is maintaining a stable pref
 
 **✅ DO:** Place static content first, dynamic content last
 
-```python  theme={null}
-from fireworks import LLM
-
+```python theme={null}
 # ✅ Good: Static content first
 system_prompt = """
 You are a helpful AI assistant with expertise in software development.
@@ -11252,10 +11893,8 @@ if current_time_needed:
 # User query goes last
 user_message += user_query
 
-# Use with Fireworks Build SDK
-llm = LLM(model="llama-v3p1-70b-instruct", deployment_type="auto")
-
-response = llm.chat.completions.create(
+response = client.chat.completions.create(
+    model="accounts/fireworks/models/<MODEL_ID>",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_message}
@@ -11269,7 +11908,7 @@ When you need to provide current time information, consider these strategies:
 
 **Option 1: Rounded timestamps**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Round to larger intervals to increase cache hits
 current_hour = datetime.now().replace(minute=0, second=0, microsecond=0)
 system_prompt = f"""
@@ -11281,7 +11920,7 @@ Current hour: {current_hour.strftime('%Y-%m-%d %H:00')}
 
 **Option 2: Conditional time injection**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Only add time when the query actually needs it
 def build_prompt(user_query, system_base):
     prompt = system_base
@@ -11297,9 +11936,7 @@ def build_prompt(user_query, system_base):
 
 **Option 3: Move time to user message**
 
-```python  theme={null}
-from fireworks import LLM
-
+```python theme={null}
 # ✅ Keep system prompt static, add time context to user message
 system_prompt = """
 You are a helpful AI assistant...
@@ -11311,10 +11948,8 @@ Current time: {datetime.now().isoformat()}
 User query: {user_query}
 """
 
-# Use with Fireworks Build SDK
-llm = LLM(model="llama-v3p1-70b-instruct", deployment_type="auto")
-
-response = llm.chat.completions.create(
+response = client.chat.completions.create(
+    model="accounts/fireworks/models/<MODEL_ID>",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_message}
@@ -11357,44 +11992,18 @@ Because prompt caching doesn't change the outputs, privacy is preserved even
 if the deployment powers a multi-tenant application. It does open a minor risk
 of a timing attack: potentially, an adversary can learn that a particular prompt
 is cached by observing the response time. To ensure full isolation, you can pass
-the `x-prompt-cache-isolation-key` header or the `prompt_cache_isolation_key`
+the `x-prompt-cache-isolation-key` header or the [`prompt_cache_isolation_key`](/api-reference/post-chatcompletions#body-prompt-cache-isolation-key)
 field in the body of the request. It can contain an arbitrary string that acts
 as an additional cache key, i.e., no sharing will occur between requests with
 different IDs.
 
-## Limiting or turning off caching
-
-Additionally, you can pass the `prompt_cache_max_len` field in the request body to
-limit the maximum prefix of the prompt (in tokens) that is considered for
-caching. It's rarely needed in real applications but can come in handy for
-benchmarking the performance of dedicated deployments by passing
-`"prompt_cache_max_len": 0`.
-
-## Advanced: cache locality for Enterprise deployments
-
-Dedicated deployments on an Enterprise plan allow you to pass an additional hint in the request to improve cache hit rates.
-
-First, the deployment needs to be created or updated with an additional flag:
-
-```bash  theme={null}
-firectl create deployment ... --enable-session-affinity
-```
-
-Then the client can pass an opaque identifier representing a single user or
-session in the `user` field of the body or in the `x-session-affinity` header. Fireworks
-will try to route requests with the identifier to the same server, further reducing response times.
-
-It's best to choose an identifier that groups requests with long shared prompt
-prefixes. For example, it can be a chat session with the same user or an
-assistant working with the same shared context.
-
-### Migration and traffic management
+## Advanced: Migration and traffic management
 
 When migrating between deployments that use prompt caching, it's crucial to implement proper traffic routing to maintain optimal cache hit rates. When gradually routing traffic to a new deployment, use consistent user/session-based sampling rather than random sampling.
 
 Here's the recommended implementation for traffic routing:
 
-```python  theme={null}
+```python theme={null}
 import hashlib
 
 # Configure traffic fraction (e.g., 20% to new deployment)
@@ -11417,7 +12026,7 @@ else:
 <Warning>
   Avoid random sampling for traffic routing as it can negatively impact cache hit rates:
 
-  ```python  theme={null}
+  ```python theme={null}
   # Don't do this:
   if random() < fireworks_traffic_fraction:  # ❌ Reduces cache effectiveness
     send_to_new_deployment(user=hashed_user_id)
@@ -11634,13 +12243,19 @@ Fireworks hosts several purpose-built embeddings models, which are optimized spe
 
 ## Reranking documents
 
-Reranking models are used to rerank a list of documents based on a query. We only support reranking with the Qwen3 Reranker family of models:
+Reranking models are used to rerank a list of documents based on a query. We support reranking with the Qwen3 Reranker family of models:
 
 * `fireworks/qwen3-reranker-8b` (\*available on serverless)
 * `fireworks/qwen3-reranker-4b`
 * `fireworks/qwen3-reranker-0p6b`
 
-The reranking model takes a query and a list of documents as input and outputs the list of documents scored by relevance to the query.
+### Using the `/rerank` endpoint
+
+The `/rerank` endpoint provides a simple interface for reranking documents.
+
+<Note>
+  The `/rerank` endpoint does not yet support all models and parallelism options. For more flexibility, use the `/embeddings` endpoint with `return_logits` as shown in the next section.
+</Note>
 
 ```python Python theme={null}
 import requests
@@ -11648,16 +12263,16 @@ import requests
 url = "https://api.fireworks.ai/inference/v1/rerank"
 
 payload = {
-      "model": "fireworks/qwen3-reranker-8b",
-      "query": "What was the primary objective of the Apollo 10 mission?",
-      "documents": [
-        "The Apollo 10 mission was launched in May 1969 and served as a 'dress rehearsal' for the Apollo 11 lunar landing.",
-        "The crew of Apollo 10 consisted of astronauts Thomas Stafford, John Young, and Eugene Cernan.",
-        "The command module for Apollo 10 was nicknamed 'Charlie Brown' and the lunar module was called 'Snoopy', after characters from the Peanuts comics.",
-        "The Apollo program was a series of NASA missions that successfully landed the first humans on the Moon and returned them safely to Earth."
-      ],
-      "top_n": 3,
-      "return_documents": True
+    "model": "fireworks/qwen3-reranker-8b",
+    "query": "What is the capital of France?",
+    "documents": [
+        "Paris is the capital and largest city of France, home to the Eiffel Tower and the Louvre Museum.",
+        "France is a country in Western Europe known for its wine, cuisine, and rich history.",
+        "The weather in Europe varies significantly between northern and southern regions.",
+        "Python is a popular programming language used for web development and data science."
+    ],
+    "top_n": 3,
+    "return_documents": True
 }
 
 headers = {
@@ -11670,6 +12285,132 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 
 ```
+
+### Using the `/embeddings` endpoint
+
+You can also use the `/embeddings` endpoint with the `return_logits` parameter to rerank documents. This approach supports more models and parallelism options.
+
+The embedding model takes in token IDs for "yes" and "no" and outputs associated logits indicating how likely the document is relevant or not relevant to the query. You can obtain these token IDs using `tokenizer.convert_tokens_to_ids()` with the transformers library and the Qwen3 tokenizer.
+
+<Tabs>
+  <Tab title="Simple">
+    ```python Python theme={null}
+    import requests
+
+    url = "https://api.fireworks.ai/inference/v1/embeddings"
+
+    query = "What is the capital of France?"
+    documents = [
+        "Paris is the capital and largest city of France, home to the Eiffel Tower and the Louvre Museum.",
+        "France is a country in Western Europe known for its wine, cuisine, and rich history.",
+        "The weather in Europe varies significantly between northern and southern regions.",
+        "Python is a popular programming language used for web development and data science."
+    ]
+
+    # Format prompts as query-document pairs using the Qwen3 Reranker format
+    instruction = "Given a web search query, retrieve relevant passages that answer the query"
+    prompts = [
+        f"<Instruct>: {instruction}\n<Query>: {query}\n<Document>: {doc}"
+        for doc in documents
+    ]
+
+    # Token IDs for "no" and "yes" in Qwen3 reranker models
+    token_false_id = 2753   # "no"
+    token_true_id = 9454    # "yes"
+
+    payload = {
+        "model": "fireworks/qwen3-reranker-8b",
+        "input": prompts,
+        "return_logits": [token_false_id, token_true_id],
+        "normalize": True  # Applies softmax to the selected logits
+    }
+
+    headers = {
+        "Authorization": "Bearer <FIREWORKS_API_KEY>",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers).json()
+
+    # Extract relevance scores (probability of "yes" token)
+    results = []
+    for i, item in enumerate(response["data"]):
+        probs = item["embedding"]  # [no_prob, yes_prob]
+        relevance_score = probs[1]  # "yes" probability is the relevance score
+        results.append({
+            "index": i,
+            "relevance_score": relevance_score,
+            "document": documents[i]
+        })
+
+    # Sort by relevance score (highest first)
+    results.sort(key=lambda x: x["relevance_score"], reverse=True)
+
+    for result in results:
+        print(f"Score: {result['relevance_score']:.4f} - {result['document'][:80]}...")
+
+    ```
+  </Tab>
+
+  <Tab title="Parallel (asyncio)">
+    For large document sets, you can improve throughput by sending multiple requests in parallel using minibatches:
+
+    ```python Python theme={null}
+    import asyncio
+    import aiohttp
+
+    url = "https://api.fireworks.ai/inference/v1/embeddings"
+
+    query = "What is the capital of France?"
+    documents = [...]  # Your list of documents
+
+    # Format prompts as query-document pairs using the Qwen3 Reranker format
+    instruction = "Given a web search query, retrieve relevant passages that answer the query"
+    prompts = [
+        f"<Instruct>: {instruction}\n<Query>: {query}\n<Document>: {doc}"
+        for doc in documents
+    ]
+
+    # Token IDs for "no" and "yes" in Qwen3 reranker models
+    token_false_id = 2753   # "no"
+    token_true_id = 9454    # "yes"
+
+    headers = {
+        "Authorization": "Bearer <FIREWORKS_API_KEY>",
+        "Content-Type": "application/json"
+    }
+
+    async def rerank_batch(session, batch_prompts):
+        payload = {
+            "model": "fireworks/qwen3-reranker-8b",
+            "input": batch_prompts,
+            "return_logits": [token_false_id, token_true_id],
+            "normalize": True
+        }
+        async with session.post(url, json=payload, headers=headers) as response:
+            return await response.json()
+
+    async def rerank_parallel(prompts, batch_size=100):
+        batches = [prompts[i:i+batch_size] for i in range(0, len(prompts), batch_size)]
+
+        async with aiohttp.ClientSession() as session:
+            tasks = [rerank_batch(session, batch) for batch in batches]
+            results = await asyncio.gather(*tasks)
+
+        # Combine results from all batches
+        all_scores = []
+        for result in results:
+            for item in result["data"]:
+                all_scores.append(item["embedding"][1])  # "yes" probability
+
+        return all_scores
+
+    scores = asyncio.run(rerank_parallel(prompts))
+    ```
+  </Tab>
+</Tabs>
+
+With `normalize=True`, the endpoint applies softmax to the selected logits, returning probabilities that sum to 1. The "yes" probability directly represents the relevance score.
 
 ## Deploying embeddings and reranking models
 
@@ -11685,13 +12426,30 @@ Query, track and manage inference for text models
   New to Fireworks? Start with the [Serverless Quickstart](/getting-started/quickstart) for a step-by-step guide to making your first API call.
 </Info>
 
-Fireworks provides fast, cost-effective access to leading open-source text models through OpenAI-compatible APIs. Query models via serverless inference or dedicated deployments using the chat completions API (recommended), completions API, or responses API. [Browse 100+ available models →](https://fireworks.ai/models)
+Fireworks provides fast, cost-effective access to leading open-source text models through OpenAI-compatible APIs. Query models via serverless inference or dedicated deployments using the chat completions API (recommended), completions API, or responses API.
+
+[Browse 100+ available models →](https://fireworks.ai/models)
 
 ## Chat Completions API
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import os
     from openai import OpenAI
 
@@ -11713,7 +12471,7 @@ Fireworks provides fast, cost-effective access to leading open-source text model
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -11736,7 +12494,7 @@ Fireworks provides fast, cost-effective access to leading open-source text model
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -11763,17 +12521,17 @@ Fireworks also supports [Completions API](/guides/completions-api) and [Response
 
 ## Querying dedicated deployments
 
-For consistent performance, guaranteed capacity, or higher throughput, you can query [on-demand deployments](/guides/ondemand-deployments) instead of serverless models. Deployments use the same APIs with a deployment-specific model identifier:
+For consistent performance, guaranteed capacity, or higher throughput, you can query [on-demand deployments](/guides/ondemand-deployments) instead of serverless models. Deployments use the same APIs with a deployment-specific identifier:
 
 ```
-<MODEL_NAME>#<DEPLOYMENT_NAME>
+accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>
 ```
 
 For example:
 
-```python  theme={null}
+```python theme={null}
 response = client.chat.completions.create(
-    model="accounts/fireworks/models/deepseek-v3p1#accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+    model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
     messages=[{"role": "user", "content": "Hello"}]
 )
 ```
@@ -11784,7 +12542,7 @@ response = client.chat.completions.create(
 
 Maintain conversation history by including all previous messages:
 
-```python  theme={null}
+```python theme={null}
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "What's the capital of France?"},
@@ -11806,7 +12564,7 @@ The model uses the full conversation history to provide contextually relevant re
 
 Override the default system prompt by setting the first message with `role: "system"`:
 
-```python  theme={null}
+```python theme={null}
 messages = [
     {"role": "system", "content": "You are a helpful Python expert who provides concise code examples."},
     {"role": "user", "content": "How do I read a CSV file?"}
@@ -11824,7 +12582,7 @@ To completely omit the system prompt, set the first message's `content` to an em
 
 Stream tokens as they're generated for real time, interactive UX. Covered in detail in the [Serverless Quickstart](/getting-started/quickstart#streaming-responses).
 
-```python  theme={null}
+```python theme={null}
 stream = client.chat.completions.create(
     model="accounts/fireworks/models/deepseek-v3p1",
     messages=[{"role": "user", "content": "Tell me a story"}],
@@ -11838,7 +12596,7 @@ for chunk in stream:
 
 **Aborting streams:** Close the connection to stop generation and avoid billing for ungenerated tokens:
 
-```python  theme={null}
+```python theme={null}
 for chunk in stream:
     print(chunk.choices[0].delta.content, end="")
     if some_condition:
@@ -11851,8 +12609,25 @@ for chunk in stream:
 Use async clients to make multiple concurrent requests for better throughput:
 
 <Tabs>
-  <Tab title="Python">
-    ```python  theme={null}
+  <Tab title="Python (Fireworks SDK)">
+    ```python theme={null}
+    from fireworks import AsyncFireworks
+
+    client = AsyncFireworks()
+
+    async def main():
+      response = await client.chat.completions.create(
+        model="accounts/fireworks/models/deepseek-v3p1",
+        messages=[{"role": "user", "content": "Hello"}]
+      )
+      print(response.choices[0].message.content)
+
+    asyncio.run(main())
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python theme={null}
     import asyncio
     from openai import AsyncOpenAI
 
@@ -11873,7 +12648,7 @@ Use async clients to make multiple concurrent requests for better throughput:
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -11900,11 +12675,11 @@ Every response includes token usage information and performance metrics for debu
 
 **Token usage** (prompt, completion, total tokens) is included in the response body for all requests.
 
-**Performance metrics** (latency, time-to-first-token, etc.) are included in response headers for non-streaming requests. For streaming requests, use the `perf_metrics_in_response` parameter to include all metrics in the response body.
+**Performance metrics** (latency, time-to-first-token, etc.) are included in response headers for non-streaming requests. For streaming requests, use the [`perf_metrics_in_response`](/api-reference/post-chatcompletions#body-perf-metrics-in-response) parameter to include all metrics in the response body.
 
 <Tabs>
   <Tab title="Non-streaming">
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}]
@@ -11921,7 +12696,7 @@ Every response includes token usage information and performance metrics for debu
   </Tab>
 
   <Tab title="Streaming (usage only)">
-    ```python  theme={null}
+    ```python theme={null}
     stream = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -11940,7 +12715,7 @@ Every response includes token usage information and performance metrics for debu
   </Tab>
 
   <Tab title="Streaming (with performance metrics)">
-    ```python  theme={null}
+    ```python theme={null}
     stream = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello, world!"}],
@@ -11966,7 +12741,7 @@ Every response includes token usage information and performance metrics for debu
   Usage information is automatically included in the final chunk for streaming responses (the chunk with `finish_reason` set). This is a Fireworks extension - OpenAI SDK doesn't return usage for streaming by default.
 </Note>
 
-For all available metrics and details, see the [API reference documentation](/api-reference/post-chatcompletions#response-perf_metrics).
+For all available metrics and details, see the [API reference documentation](/api-reference/post-chatcompletions#body-perf-metrics-in-response).
 
 <Tip>
   If you encounter errors during inference, see [Inference Error Codes](/guides/inference-error-codes) for common issues and resolutions.
@@ -11976,7 +12751,7 @@ For all available metrics and details, see the [API reference documentation](/ap
 
 Extend text models with additional features for structured outputs, tool integration, and performance optimization:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Tool calling" href="/guides/function-calling" icon="function">
     Connect models to external tools and APIs with type-safe parameters
   </Card>
@@ -12014,7 +12789,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Adjust randomness (0 = deterministic, higher = more creative):
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Write a poem"}],
@@ -12026,7 +12801,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Control the maximum number of tokens in the generated completion:
 
-    ```python  theme={null}
+    ```python theme={null}
     max_tokens=100  # Generate at most 100 tokens
     ```
 
@@ -12044,7 +12819,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Consider only the most probable tokens summing to `top_p` probability mass:
 
-    ```python  theme={null}
+    ```python theme={null}
     top_p=0.9  # Consider top 90% probability mass
     ```
 
@@ -12052,7 +12827,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Consider only the k most probable tokens:
 
-    ```python  theme={null}
+    ```python theme={null}
     top_k=50  # Consider top 50 tokens
     ```
 
@@ -12060,7 +12835,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Exclude tokens below a probability threshold:
 
-    ```python  theme={null}
+    ```python theme={null}
     min_p=0.05  # Exclude tokens with <5% probability
     ```
 
@@ -12068,7 +12843,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Use typical sampling to select tokens with probability close to the entropy of the distribution:
 
-    ```python  theme={null}
+    ```python theme={null}
     typical_p=0.95  # Consider tokens with typical probability
     ```
 
@@ -12076,7 +12851,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     Reduce repetitive text with `frequency_penalty`, `presence_penalty`, or `repetition_penalty`:
 
-    ```python  theme={null}
+    ```python theme={null}
     frequency_penalty=0.5,   # Penalize frequent tokens (OpenAI compatible)
     presence_penalty=0.5,    # Penalize any repeated token (OpenAI compatible)
     repetition_penalty=1.1   # Exponential penalty from prompt + output
@@ -12088,18 +12863,10 @@ Extend text models with additional features for structured outputs, tool integra
 
     <Tabs>
       <Tab title="Python">
-        ```python  theme={null}
-        import os
-        from openai import OpenAI
-
-        client = OpenAI(
-            api_key=os.environ.get("FIREWORKS_API_KEY"),
-            base_url="https://api.fireworks.ai/inference/v1"
-        )
-
+        ```python theme={null}
         response = client.chat.completions.with_raw_response.create(
-            model="accounts/fireworks/models/deepseek-v3p1",
-            messages=[{"role": "user", "content": "Hello"}]
+          model="accounts/fireworks/models/deepseek-v3p1",
+          messages=[{"role": "user", "content": "Hello"}]
         )
 
         # Access headers from the raw response
@@ -12112,7 +12879,7 @@ Extend text models with additional features for structured outputs, tool integra
       </Tab>
 
       <Tab title="JavaScript">
-        ```javascript  theme={null}
+        ```javascript theme={null}
         import OpenAI from "openai";
 
         const client = new OpenAI({
@@ -12141,7 +12908,7 @@ Extend text models with additional features for structured outputs, tool integra
   <Accordion title="Multiple generations">
     Generate multiple completions in one request:
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Tell me a joke"}],
@@ -12156,7 +12923,7 @@ Extend text models with additional features for structured outputs, tool integra
   <Accordion title="Token probabilities (logprobs)">
     Inspect token probabilities for debugging or analysis:
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12174,7 +12941,7 @@ Extend text models with additional features for structured outputs, tool integra
 
     **Echo:** Return the prompt along with the generation:
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12188,7 +12955,7 @@ Extend text models with additional features for structured outputs, tool integra
       Experimental API - may change without notice.
     </Warning>
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12203,7 +12970,7 @@ Extend text models with additional features for structured outputs, tool integra
   <Accordion title="Ignore EOS token">
     Force generation to continue past the end-of-sequence token (useful for benchmarking):
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12220,7 +12987,7 @@ Extend text models with additional features for structured outputs, tool integra
   <Accordion title="Logit bias">
     Modify token probabilities to encourage or discourage specific tokens:
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12235,7 +13002,7 @@ Extend text models with additional features for structured outputs, tool integra
   <Accordion title="Mirostat sampling">
     Control perplexity dynamically using the [Mirostat algorithm](https://arxiv.org/abs/2007.14966):
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         messages=[{"role": "user", "content": "Hello"}],
@@ -12258,54 +13025,13 @@ Language models process text in chunks called **tokens**. In English, a token ca
 
 For Llama models, use [this tokenizer tool](https://belladoreai.github.io/llama-tokenizer-js/example-demo/build/) to estimate token counts. Actual usage is returned in the `usage` field of every API response.
 
-## OpenAI SDK Migration
+## OpenAI SDK migration
 
-<Accordion title="OpenAI SDK compatibility notes">
-  Fireworks provides an OpenAI-compatible API, making migration straightforward. However, there are some minor differences to be aware of:
-
-  ### Behavioral differences
-
-  **`stop` parameter:**
-
-  * **Fireworks**: Returns text including the stop word
-  * **OpenAI**: Omits the stop word
-  * *You can easily truncate it client-side if needed*
-
-  **`max_tokens` with context limits:**
-
-  * **Fireworks**: Automatically adjusts `max_tokens` lower if `prompt + max_tokens` exceeds the model's context window
-  * **OpenAI**: Returns an invalid request error
-  * *Control this behavior with the `context_length_exceeded_behavior` parameter*
-
-  **Streaming usage stats:**
-
-  * **Fireworks**: Returns `usage` field in the final chunk (where `finish_reason` is set) for both streaming and non-streaming
-  * **OpenAI**: Only returns usage for non-streaming responses
-
-  Example accessing streaming usage:
-
-  ```python  theme={null}
-  for chunk in client.chat.completions.create(stream=True, ...):
-      if chunk.usage:  # Available in final chunk
-          print(f"Tokens: {chunk.usage.total_tokens}")
-  ```
-
-  ### Unsupported parameters
-
-  The following OpenAI parameters are not yet supported:
-
-  * `presence_penalty`
-  * `frequency_penalty`
-  * `best_of` (use `n` instead)
-  * `logit_bias`
-  * `functions` (deprecated - use [Tool Calling](/guides/function-calling) with the `tools` parameter instead)
-
-  Have a use case requiring one of these? [Join our Discord](https://discord.gg/fireworks-ai) to discuss.
-</Accordion>
+Fireworks provides an OpenAI-compatible API, making migration from OpenAI straightforward. For detailed information on setup, usage examples, and API compatibility notes, see the [OpenAI compatibility guide](/tools-sdks/openai-compatibility).
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Vision models" href="/guides/querying-vision-language-models" icon="image">
     Process images alongside text
   </Card>
@@ -12341,26 +13067,20 @@ Source: https://docs.fireworks.ai/guides/querying-vision-language-models
 
 Query vision-language models to analyze images and visual content
 
-<Info>
-  New to Fireworks? Start with the [Serverless Quickstart](/getting-started/quickstart#vision-models) to see a vision model example, then return here for more details.
-</Info>
+Vision-language models (VLMs) process both text and images in a single request, enabling image captioning, visual question answering, document analysis, chart interpretation, OCR, and content moderation. Use VLMs via serverless inference or [dedicated deployments](/getting-started/ondemand-quickstart).
 
-Vision-language models (VLMs) process both text and images in a single request, enabling image captioning, visual question answering, document analysis, chart interpretation, OCR, and content moderation. Use VLMs via serverless inference or [dedicated deployments](/getting-started/ondemand-quickstart). [Browse available vision models →](https://app.fireworks.ai/models?filter=Vision)
+[Browse available vision models →](https://app.fireworks.ai/models?filter=Vision)
 
 ## Chat Completions API
 
-Provide images via URL or base64 encoding:
+Provide images via URL or base64 encoding. The request structure is identical to OpenAI's vision API.
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={null}
-    import os
-    from openai import OpenAI
+    ```python theme={null}
+    from fireworks import Fireworks
 
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1"
-    )
+    client = Fireworks()
 
     response = client.chat.completions.create(
         model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
@@ -12372,7 +13092,7 @@ Provide images via URL or base64 encoding:
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                            "url": "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?w=800"
                         }
                     }
                 ]
@@ -12382,10 +13102,14 @@ Provide images via URL or base64 encoding:
 
     print(response.choices[0].message.content)
     ```
+
+    <Tip>
+      You can also use the [OpenAI SDK](/tools-sdks/openai-compatibility) with Fireworks by changing the base URL and API key.
+    </Tip>
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -12403,7 +13127,7 @@ Provide images via URL or base64 encoding:
             {
               type: "image_url",
               image_url: {
-                url: "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                url: "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?w=800"
               }
             }
           ]
@@ -12416,7 +13140,7 @@ Provide images via URL or base64 encoding:
   </Tab>
 
   <Tab title="curl">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://api.fireworks.ai/inference/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
@@ -12426,14 +13150,11 @@ Provide images via URL or base64 encoding:
           {
             "role": "user",
             "content": [
-              {
-                "type": "text",
-                "text": "Can you describe this image?"
-              },
+              {"type": "text", "text": "Can you describe this image?"},
               {
                 "type": "image_url",
                 "image_url": {
-                  "url": "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                  "url": "https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?w=800"
                 }
               }
             ]
@@ -12444,48 +13165,80 @@ Provide images via URL or base64 encoding:
   </Tab>
 </Tabs>
 
-<Accordion title="Using base64-encoded images">
-  Instead of URLs, you can provide base64-encoded images prefixed with MIME types:
+### Using base64-encoded images
 
-  ```python  theme={null}
-  import os
-  import base64
-  from openai import OpenAI
+For local files, encode them as base64 with the appropriate MIME type prefix:
 
-  # Helper function to encode the image
-  def encode_image(image_path):
-      with open(image_path, "rb") as image_file:
-          return base64.b64encode(image_file.read()).decode('utf-8')
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import base64
+    from fireworks import Fireworks
 
-  # Encode your image
-  image_base64 = encode_image("your_image.jpg")
+    def encode_image(image_path):
+        with open(image_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode("utf-8")
 
-  client = OpenAI(
-      api_key=os.environ.get("FIREWORKS_API_KEY"),
-      base_url="https://api.fireworks.ai/inference/v1"
-  )
+    image_base64 = encode_image("your_image.jpg")
 
-  response = client.chat.completions.create(
-      model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
-      messages=[
-          {
-              "role": "user",
-              "content": [
-                  {"type": "text", "text": "Can you describe this image?"},
-                  {
-                      "type": "image_url",
-                      "image_url": {
-                          "url": f"data:image/jpeg;base64,{image_base64}"
-                      }
-                  }
-              ]
-          }
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "Can you describe this image?"},
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": f"data:image/jpeg;base64,{image_base64}"
+                        }
+                    }
+                ]
+            }
+        ]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```javascript theme={null}
+    import OpenAI from "openai";
+    import fs from "fs";
+
+    const client = new OpenAI({
+      apiKey: process.env.FIREWORKS_API_KEY,
+      baseURL: "https://api.fireworks.ai/inference/v1",
+    });
+
+    const imageBase64 = fs.readFileSync("your_image.jpg").toString("base64");
+
+    const response = await client.chat.completions.create({
+      model: "accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: "Can you describe this image?" },
+            {
+              type: "image_url",
+              image_url: {
+                url: `data:image/jpeg;base64,${imageBase64}`
+              }
+            }
+          ]
+        }
       ]
-  )
+    });
 
-  print(response.choices[0].message.content)
-  ```
-</Accordion>
+    console.log(response.choices[0].message.content);
+    ```
+  </Tab>
+</Tabs>
 
 ## Working with images
 
@@ -12500,7 +13253,7 @@ Vision-language models support [prompt caching](/guides/prompt-caching) to impro
 
 ## Advanced capabilities
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Vision fine-tuning" href="/fine-tuning/fine-tuning-vlm" icon="sliders">
     Fine-tune VLMs for specialized visual tasks
   </Card>
@@ -12512,33 +13265,27 @@ Vision-language models support [prompt caching](/guides/prompt-caching) to impro
   <Card title="Dedicated deployments" href="/getting-started/ondemand-quickstart" icon="server">
     Deploy VLMs on dedicated GPUs for better performance
   </Card>
+
+  <Card title="Video & audio inputs" href="/guides/video-audio-inputs" icon="video">
+    Process video and audio content with multimodal models
+  </Card>
 </CardGroup>
 
 ## Alternative query methods
 
-<Accordion title="Completions API (advanced)">
-  For the Completions API, manually insert the image token `<image>` in your prompt and supply images as an ordered list:
+For the Completions API, manually insert the image token `<image>` in your prompt and supply images as an ordered list:
 
-  ```python  theme={null}
-  import os
-  from openai import OpenAI
+```python theme={null}
+response = client.completions.create(
+    model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+    prompt="SYSTEM: Hello\n\nUSER:<image>\ntell me about the image\n\nASSISTANT:",
+    extra_body={
+        "images": ["https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"]
+    }
+)
 
-  client = OpenAI(
-      api_key=os.environ.get("FIREWORKS_API_KEY"),
-      base_url="https://api.fireworks.ai/inference/v1"
-  )
-
-  response = client.completions.create(
-      model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
-      prompt="SYSTEM: Hello\n\nUSER:<image>\ntell me about the image\n\nASSISTANT:",
-      extra_body={
-          "images": ["https://images.unsplash.com/photo-1582538885592-e70a5d7ab3d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"]
-      }
-  )
-
-  print(response.choices[0].text)
-  ```
-</Accordion>
+print(response.choices[0].text)
+```
 
 ## Known limitations
 
@@ -12558,8 +13305,8 @@ Understand and manage your rate limits, spend limits and quotas
 
 View your account's current quotas and limits:
 
-```bash  theme={null}
-firectl list quotas
+```bash theme={null}
+firectl quota list
 ```
 
 This shows your rate limits, GPU quotas, spend limits, and usage across serverless and on-demand deployments.
@@ -12582,104 +13329,959 @@ Your account tier determines the maximum budget you can set:
 
 ## Manage your quotas
 
-<AccordionGroup>
-  <Accordion title="Budget control">
-    Control your monthly spending with flexible budget limits. Set a limit that fits your needs and adjust it anytime.
+### Budget control
 
-    ### View and adjust your spend limit
+Control your monthly spending with flexible budget limits. Set a limit that fits your needs and adjust it anytime.
 
-    Check your current spend limit:
+### View and adjust your spend limit
 
-    ```bash  theme={null}
-    firectl list quotas
+Check your current spend limit:
+
+```bash theme={null}
+firectl quota list
+```
+
+Set a custom monthly budget:
+
+```bash theme={null}
+firectl quota update monthly-spend-usd --value <AMOUNT>
+```
+
+For example, to set a \$200 monthly budget:
+
+```bash theme={null}
+firectl quota update monthly-spend-usd --value 200
+```
+
+### When you reach your budget
+
+When you reach your spending limit, all API requests pause automatically across serverless inference, deployments, and fine-tuning. To resume, [add credits](https://fireworks.ai/billing) to increase your tier and set a higher budget.
+
+### On-demand deployment quotas
+
+On-demand deployments have GPU quotas instead of rate limits:
+
+| GPU Type          | Default Quota |
+| ----------------- | ------------- |
+| Nvidia A100       | 16 GPUs       |
+| Nvidia H100       | 16 GPUs       |
+| Nvidia H200       | 16 GPUs       |
+| Nvidia B200       | 16 GPUs       |
+| GPU hours/month   | 2,000         |
+| LoRAs (on-demand) | 100           |
+
+<Tip>
+  Need more GPUs? [Contact us](https://fireworks.ai/company/contact-us) to request a quota increase.
+</Tip>
+
+### Serverless rate limits
+
+### Default limits
+
+All accounts with a payment method get these limits:
+
+| Limit                                       | Value                         |
+| ------------------------------------------- | ----------------------------- |
+| Requests per minute (RPM, spike arrest max) | Up to 6,000 (dynamic ceiling) |
+| Audio min per minute, Whisper-v3-large      | 200                           |
+| Audio min per minute, Whisper-v3-turbo      | 400                           |
+| Concurrent connections, streaming speech    | 10                            |
+| LoRAs (on-demand)                           | 100                           |
+
+<Tip>
+  Make sure to add a [payment method](https://fireworks.ai/billing) to access higher rate limits up to the 6,000 RPM spike arrest ceiling. Without a payment method, you're limited to 10 RPM. Your rate limits will increase automatically once the payment method is added.
+</Tip>
+
+<Tip>
+  During periods of high load, RPM limit may be lower.
+</Tip>
+
+<Callout type="warning">
+  **Spike arrest policy**: 6,000 RPM is the maximum ceiling under our spike arrest policy, not a guaranteed fixed rate. Your effective RPM limit adjusts dynamically based on sustained usage and system load, so short spikes may see a lower cap to protect other tenants.
+</Callout>
+
+### How rate limiting works
+
+Dynamic rate limits support high RPM limits in a fair manner, while limiting spiky traffic from impacting other users:
+
+* **Gradual scaling**: Your minimum limits increase as you sustain consistent high usage
+* **Typical scale-up**: Traffic can typically double within an hour without issues
+* **Burst handling**: Short traffic spikes are accommodated during autoscaling
+
+**Monitoring your limits:**
+
+* Check response headers to see your current limits and remaining capacity
+* `x-ratelimit-limit-requests`: Your current minimum limit
+* `x-ratelimit-remaining-requests`: Remaining capacity
+* `x-ratelimit-over-limit: yes`: Your request was processed but you're near capacity
+
+<Tip>
+  For production workloads requiring consistent performance and higher limits, use [on-demand deployments](/guides/ondemand-deployments). They provide dedicated GPUs with no rate limits and SLA guarantees.
+</Tip>
+
+### Account recovery
+
+If your account is suspended due to failed payment:
+
+1. Go to [Billing → Invoices](https://fireworks.ai/billing)
+2. Pay any outstanding invoices
+3. Your account reactivates automatically within an hour
+
+<Tip>
+  Still suspended after resolving payment issues? Contact support via [Discord](https://discord.gg/fireworks-ai) or email [inquiries@fireworks.ai](mailto:inquiries@fireworks.ai).
+</Tip>
+
+
+# Reasoning
+Source: https://docs.fireworks.ai/guides/reasoning
+
+How to use reasoning with Fireworks models
+
+For thinking/reasoning models, Fireworks provides access to the model's
+reasoning process through the `reasoning_content` field. This field contains the
+model's internal reasoning, which would otherwise appear in `<think></think>`
+tags within the content field. For some models, the reasoning content may
+instead be included directly in the content field itself.
+
+### Prerequisites
+
+We recommend using the [Fireworks Python SDK](/tools-sdks/python-sdk) to work with
+reasoning, as it supports Fireworks-specific parameters and response fields.
+
+<Note>
+  The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+</Note>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install --pre fireworks-ai
+  ```
+
+  ```bash poetry theme={null}
+  poetry add --pre fireworks-ai
+  ```
+
+  ```bash uv theme={null}
+  uv add --pre fireworks-ai
+  ```
+</CodeGroup>
+
+### Basic usage
+
+Select a reasoning model from our [serverless model library](https://app.fireworks.ai/models/?filter=Serverless).
+
+```python lines highlight={16-18} theme={null}
+from fireworks import Fireworks
+
+client = Fireworks()
+
+completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 25 * 37?",
+        }
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+)
+
+for choice in completion.choices:
+    # Access the reasoning content (thinking process)
+    if choice.message.reasoning_content:
+        print("Reasoning:", choice.message.reasoning_content)
+    print("Answer:", choice.message.content)
+```
+
+### Controlling reasoning effort
+
+You can control the reasoning token length using either the `reasoning_effort` parameter or the Anthropic-compatible `thinking` parameter.
+
+#### Using `reasoning_effort`
+
+The [`reasoning_effort`](/api-reference/post-chatcompletions#body-reasoning-effort-one-of-0) parameter accepts string values like `"low"`, `"medium"`, or `"high"`:
+
+```python lines highlight={9} theme={null}
+completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Solve this step by step: If a train travels at 60 mph for 2.5 hours, how far does it go?",
+        }
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+    reasoning_effort="medium",
+)
+```
+
+See the [reasoning\_effort](/api-reference/post-chatcompletions#body-reasoning-effort-one-of-0) parameter for more details.
+
+#### Using `thinking` (Anthropic-compatible)
+
+Alternatively, you can use the [`thinking`](/api-reference/post-chatcompletions#body-thinking) parameter, which provides an Anthropic-compatible format for controlling reasoning behavior:
+
+```python lines highlight={9-12} theme={null}
+completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Solve this step by step: If a train travels at 60 mph for 2.5 hours, how far does it go?",
+        }
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+    thinking={
+        "type": "enabled",
+        "budget_tokens": 4096,  # Must be >= 1024
+    },
+)
+```
+
+See the [thinking](/api-reference/post-chatcompletions#body-thinking) parameter for more details.
+
+<Warning>
+  You cannot specify both `thinking` and `reasoning_effort` in the same request. If both are provided, a validation error will be raised.
+</Warning>
+
+### Streaming with reasoning content
+
+When streaming, the reasoning content is available in each chunk's delta:
+
+```python lines highlight={21-23} theme={null}
+from fireworks import Fireworks
+
+client = Fireworks()
+
+stream = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the square root of 144?",
+        }
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+    reasoning_effort="medium",
+    stream=True,
+)
+
+reasoning_parts = []
+content_parts = []
+
+for chunk in stream:
+    delta = chunk.choices[0].delta
+    if delta.reasoning_content:
+        reasoning_parts.append(delta.reasoning_content)
+    if delta.content:
+        content_parts.append(delta.content)
+
+print("Reasoning:", "".join(reasoning_parts))
+print("Answer:", "".join(content_parts))
+```
+
+### Interleaved thinking
+
+When building multi-turn tool-calling agents with models that support
+interleaved thinking, you must include the `reasoning_content` from previous
+assistant turns in subsequent requests. This enables the model to think between tool calls and after receiving tool results, allowing for more complex, step-by-step reasoning.
+
+<Frame>
+  <img alt="Diagram showing interleaved thinking where reasoning is preserved within Turn 1 across multiple steps but starts fresh in Turn 2" />
+</Frame>
+
+You can preserve reasoning context in two ways:
+
+1. **Pass the `Message` object directly** (recommended) - The SDK message object
+   already contains the `reasoning_content` field alongside `content` and `tool_calls`
+2. **Manually include `reasoning_content`** - When constructing messages as
+   dictionaries, explicitly add the `reasoning_content` field
+
+<Note>
+  Interleaved thinking is triggered when the last message in your API request
+  has `"role": "tool"`, enabling the model to use its previous reasoning process
+  when responding to the tool result. If a model does not support interleaved
+  thinking, it simply ignores the extra reasoning context so this pattern is
+  safe to use broadly.
+</Note>
+
+Here's how to preserve reasoning context using both approaches:
+
+<Tabs>
+  <Tab title="Pass Message object">
+    ```python theme={null}
+    # First turn: Get a response with reasoning_content
+    first_response = client.chat.completions.create(
+        messages=[{"role": "user", "content": "What is 15 + 27?"}],
+        model="accounts/fireworks/models/<reasoning-model>",
+        tools=tools,
+    )
+
+    # The assistant message contains reasoning_content, content, and tool_calls
+    assistant_message = first_response.choices[0].message
+    # assistant_message.reasoning_content -> "The user is asking for addition..."
+    # assistant_message.tool_calls -> [ToolCall(id="...", function=...)]
+
+    # Second turn: Pass the Message object directly
+    # This automatically includes reasoning_content alongside the message
+    second_response = client.chat.completions.create(
+        messages=[
+            {"role": "user", "content": "What is 15 + 27?"},
+            assistant_message,  # Pass the complete Message object
+            {"role": "tool", "content": "42", "tool_call_id": assistant_message.tool_calls[0].id},
+        ],
+        model="accounts/fireworks/models/<reasoning-model>",
+        tools=tools,
+    )
     ```
+  </Tab>
 
-    Set a custom monthly budget:
+  <Tab title="Manual dictionary">
+    ```python theme={null}
+    # First turn: Get a response with reasoning_content
+    first_response = client.chat.completions.create(
+        messages=[{"role": "user", "content": "What is 15 + 27?"}],
+        model="accounts/fireworks/models/<reasoning-model>",
+        tools=tools,
+    )
 
-    ```bash  theme={null}
-    firectl update quota monthly-spend-usd --value <AMOUNT>
+    assistant_message = first_response.choices[0].message
+
+    # Second turn: Manually construct the assistant message dict
+    # Include reasoning_content explicitly alongside role, content, and tool_calls
+    second_response = client.chat.completions.create(
+        messages=[
+            {"role": "user", "content": "What is 15 + 27?"},
+            {
+                "role": "assistant",
+                "content": assistant_message.content,
+                "reasoning_content": assistant_message.reasoning_content,  # Include reasoning
+                "tool_calls": assistant_message.tool_calls,
+            },
+            {"role": "tool", "content": "42", "tool_call_id": assistant_message.tool_calls[0].id},
+        ],
+        model="accounts/fireworks/models/<reasoning-model>",
+        tools=tools,
+    )
     ```
+  </Tab>
+</Tabs>
 
-    For example, to set a \$200 monthly budget:
+<Warning>
+  If you construct the assistant message manually as a dictionary but omit the
+  `reasoning_content` field, the model will not have access to its previous
+  reasoning process.
+</Warning>
 
-    ```bash  theme={null}
-    firectl update quota monthly-spend-usd --value 200
-    ```
+The following script demonstrates this behavior and validates that the
+`reasoning_content` from the first turn is included in subsequent requests:
 
-    ### When you reach your budget
+```python main.py expandable theme={null}
+"""Test that reasoning_content is passed in multi-turn conversations.
 
-    When you reach your spending limit, all API requests pause automatically across serverless inference, deployments, and fine-tuning. To resume, [add credits](https://fireworks.ai/billing) to increase your tier and set a higher budget.
-  </Accordion>
+This test proves that reasoning_content from previous turns is included
+in subsequent requests by examining the raw prompt sent to the model.
+"""
 
-  <Accordion title="On-demand deployment quotas">
-    On-demand deployments have GPU quotas instead of rate limits:
+from fireworks import Fireworks
+from dotenv import load_dotenv
 
-    | GPU Type                         | Default Quota |
-    | -------------------------------- | ------------- |
-    | Nvidia A100                      | 8 GPUs        |
-    | Nvidia H100                      | 8 GPUs        |
-    | Nvidia H200                      | 8 GPUs        |
-    | GPU hours/month                  | 2,000         |
-    | LoRAs (on-demand and serverless) | 100           |
+load_dotenv()
 
-    <Tip>
-      Need more GPUs? [Contact us](https://fireworks.ai/company/contact-us) to request a quota increase.
-    </Tip>
-  </Accordion>
+client = Fireworks()
 
-  <Accordion title="Serverless rate limits">
-    ### Default limits
+MODEL = "accounts/fireworks/models/kimi-k2-thinking"
+# MODEL = "accounts/fireworks/models/minimax-m2"
 
-    All accounts with a payment method get these limits:
+# Define tools to enable interleaved thinking
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "calculator",
+            "description": "Perform basic arithmetic operations",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "operation": {
+                        "type": "string",
+                        "enum": ["add", "subtract", "multiply", "divide"],
+                    },
+                    "a": {"type": "number"},
+                    "b": {"type": "number"},
+                },
+                "required": ["operation", "a", "b"],
+            },
+        },
+    }
+]
 
-    | Limit                                    | Value |
-    | ---------------------------------------- | ----- |
-    | Requests per minute (RPM)                | 6,000 |
-    | Audio min per minute, Whisper-v3-large   | 200   |
-    | Audio min per minute, Whisper-v3-turbo   | 400   |
-    | Concurrent connections, streaming speech | 10    |
-    | LoRAs (on-demand and serverless)         | 100   |
 
-    <Tip>
-      Make sure to add a [payment method](https://fireworks.ai/billing) to access higher rate limits up to 6,000 RPM. Without a payment method, you're limited to 10 RPM. Your rate limits will increase automatically once the payment method is added.
-    </Tip>
+def print_header(title: str, char: str = "═", width: int = 60):
+    """Print a formatted section header."""
+    print(f"\n{char * width}")
+    print(f"  {title}")
+    print(f"{char * width}")
 
-    <Tip>
-      During periods of high load, RPM limit may be lower.
-    </Tip>
 
-    ### How rate limiting works
+def print_field(label: str, value: str, indent: int = 2):
+    """Print a labeled field with optional indentation."""
+    prefix = " " * indent
+    print(f"{prefix}{label}: {value}")
 
-    Dynamic rate limits support high RPM limits in a fair manner, while limiting spiky traffic from impacting other users:
 
-    * **Gradual scaling**: Your minimum limits increase as you sustain consistent high usage
-    * **Typical scale-up**: Traffic can typically double within an hour without issues
-    * **Burst handling**: Short traffic spikes are accommodated during autoscaling
+def print_multiline(label: str, content: str, max_preview: int = 200, indent: int = 2):
+    """Print multiline content with a label and optional truncation."""
+    prefix = " " * indent
+    print(f"{prefix}{label}:")
+    preview = content[:max_preview] + "..." if len(content) > max_preview else content
+    for line in preview.split("\n"):
+        print(f"{prefix}  │ {line}")
 
-    **Monitoring your limits:**
 
-    * Check response headers to see your current limits and remaining capacity
-    * `x-ratelimit-limit-requests`: Your current minimum limit
-    * `x-ratelimit-remaining-requests`: Remaining capacity
-    * `x-ratelimit-over-limit: yes`: Your request was processed but you're near capacity
+# First turn - get a response with reasoning_content
+print_header("FIRST TURN", "═")
+first_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        }
+    ],
+    model=MODEL,
+    tools=tools,
+)
 
-    <Tip>
-      For production workloads requiring consistent performance and higher limits, use [on-demand deployments](/guides/ondemand-deployments). They provide dedicated GPUs with no rate limits and SLA guarantees.
-    </Tip>
-  </Accordion>
+print_field("📝 Content", first_response.choices[0].message.content or "(none)")
 
-  <Accordion title="Account recovery">
-    If your account is suspended due to failed payment:
+reasoning = first_response.choices[0].message.reasoning_content
+print_multiline("💭 Reasoning", reasoning)
 
-    1. Go to [Billing → Invoices](https://fireworks.ai/billing)
-    2. Pay any outstanding invoices
-    3. Your account reactivates automatically within an hour
+# Print tool call (verified) from the first response
+tool_calls = first_response.choices[0].message.tool_calls
+assert tool_calls, "No tool calls in first response!"
+print(f"\n  🔧 Tool Calls ({len(tool_calls)}):")
+for i, tc in enumerate(tool_calls, 1):
+    print(f"    [{i}] id={tc.id}")
+    print(f"        function={tc.function.name}")
+    print(f"        arguments={tc.function.arguments}")
+tool_call_id = first_response.choices[0].message.tool_calls[0].id
 
-    <Tip>
-      Still suspended after resolving payment issues? Contact support via [Discord](https://discord.gg/fireworks-ai) or email [inquiries@fireworks.ai](mailto:inquiries@fireworks.ai).
-    </Tip>
-  </Accordion>
-</AccordionGroup>
+# Verify we got reasoning_content
+assert reasoning and len(reasoning) > 0, "No reasoning_content in first response!"
+print("\n  ✓ First response has reasoning_content")
+
+# Second turn - include the first assistant message
+print_header("SECOND TURN", "═")
+second_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        },
+        first_response.choices[0].message,  # Includes reasoning_content
+        {"role": "tool", "content": "42", "tool_call_id": tool_call_id},
+    ],
+    model=MODEL,
+    tools=tools,
+    raw_output=True,
+)
+
+print_field("📝 Answer", second_response.choices[0].message.content or "(none)")
+
+# Extract and display the raw prompt that was sent to the model
+raw_prompt = second_response.choices[0].raw_output.prompt_fragments[0]
+print_header("RAW PROMPT SENT TO MODEL", "─")
+print(raw_prompt)
+
+# Check if reasoning_content from first turn is in the raw prompt
+has_reasoning_content = reasoning[:50] in raw_prompt
+
+print_header("RESULT", "═")
+if has_reasoning_content:
+    print("  ✅ SUCCESS: reasoning_content IS included in subsequent requests!")
+else:
+    print("  ❌ FAILED: reasoning_content not found in raw prompt")
+print()
+```
+
+Below is the expected output:
+
+<CodeGroup>
+  ```txt Kimi-K2-Thinking (output) expandable theme={null}
+  ════════════════════════════════════════════════════════════
+    FIRST TURN
+  ════════════════════════════════════════════════════════════
+    📝 Content: (none)
+    💭 Reasoning:
+      │ The user is asking for a simple addition calculation: 15 + 27.
+      │ 
+      │ I should use the calculator function with:
+      │ - operation: "add"
+      │ - a: 15
+      │ - b: 27
+
+    🔧 Tool Calls (1):
+      [1] id=functions.calculator:0
+          function=calculator
+          arguments={"operation": "add", "a": 15, "b": 27}
+
+    ✓ First response has reasoning_content
+
+  ════════════════════════════════════════════════════════════
+    SECOND TURN
+  ════════════════════════════════════════════════════════════
+    📝 Answer: 15 + 27 = 42
+
+  ────────────────────────────────────────────────────────────
+    RAW PROMPT SENT TO MODEL
+  ────────────────────────────────────────────────────────────
+  <|im_system|>tool_declare<|im_middle|>[{"function":{"description":"Perform basic arithmetic operations","name":"calculator","parameters":{"properties":{"a":{"type":"number"},"b":{"type":"number"},"operation":{"enum":["add","subtract","multiply","divide"],"type":"string"}},"required":["operation","a","b"],"type":"object"}},"type":"function"}]<|im_end|><|im_user|>user<|im_middle|>What is 15 + 27?<|im_end|><|im_assistant|>assistant<|im_middle|><think>The user is asking for a simple addition calculation: 15 + 27.
+
+  I should use the calculator function with:
+  - operation: "add"
+  - a: 15
+  - b: 27</think><|tool_calls_section_begin|><|tool_call_begin|>functions.calculator:0<|tool_call_argument_begin|>{"operation": "add", "a": 15, "b": 27}<|tool_call_end|><|tool_calls_section_end|><|im_end|><|im_system|>tool<|im_middle|>## Return of None
+  42<|im_end|><|im_assistant|>assistant<|im_middle|>
+
+  ════════════════════════════════════════════════════════════
+    RESULT
+  ════════════════════════════════════════════════════════════
+    ✅ SUCCESS: reasoning_content IS included in subsequent requests!
+  ```
+
+  ```txt Minimax-M2 (output) expandable theme={null}
+  ════════════════════════════════════════════════════════════
+    FIRST TURN
+  ════════════════════════════════════════════════════════════
+    📝 Content: (none)
+    💭 Reasoning:
+      │ 
+      │ Okay, the user is asking a simple arithmetic question: "What is 15 + 27?". This is a basic addition operation. I have a calculator tool available that can perform arithmetic operations. This is the p...
+
+    🔧 Tool Calls (1):
+      [1] id=chatcmpl-tool-249757d9ac8f4ca9afbdb580ced40ae6
+          function=calculator
+          arguments={"operation": "add", "a": 15, "b": 27}
+
+    ✓ First response has reasoning_content
+
+  ════════════════════════════════════════════════════════════
+    SECOND TURN
+  ════════════════════════════════════════════════════════════
+    📝 Answer: 42
+
+  ────────────────────────────────────────────────────────────
+    RAW PROMPT SENT TO MODEL
+  ────────────────────────────────────────────────────────────
+  ]~b]system
+  You are a helpful assistant.
+
+  # Tools
+  You may call one or more tools to assist with the user query.
+  Here are the tools available in JSONSchema format:
+
+  <tools>
+  <tool>{"name": "calculator", "description": "Perform basic arithmetic operations", "parameters": {"type": "object", "properties": {"operation": {"type": "string", "enum": ["add", "subtract", "multiply", "divide"]}, "a": {"type": "number"}, "b": {"type": "number"}}, "required": ["operation", "a", "b"]}}</tool>
+  </tools>
+
+  When making tool calls, use XML format to invoke tools and pass parameters:
+
+  <minimax:tool_call>
+  <invoke name="tool-name-1">
+  <parameter name="param-key-1">param-value-1</parameter>
+  <parameter name="param-key-2">param-value-2</parameter>
+  ...
+  </invoke>
+  </minimax:tool_call>[e~[
+  ]~b]user
+  What is 15 + 27?[e~[
+  ]~b]ai
+  <think>
+
+  Okay, the user is asking a simple arithmetic question: "What is 15 + 27?". This is a basic addition operation. I have a calculator tool available that can perform arithmetic operations. This is the perfect tool for this task.
+
+  Looking at the calculator tool parameters, I need to provide:
+  1. The operation: In this case, it would be "add" since we're adding two numbers
+  2. The first number: 15
+  3. The second number: 27
+
+  The calculator tool will handle the actual computation. Addition is one of the most basic arithmetic operations, so I'm confident the calculator tool can handle this correctly. I don't need to do the calculation manually since we have a dedicated tool for this.
+
+  The user might be expecting me to simply state the answer, but using the calculator tool will ensure accuracy and follows the guidelines of using available tools when appropriate. The tool will take the two numbers (15 and 27) and add them together.
+
+  So I'll make a tool call to the calculator with the operation "add", a=15, and b=27. The calculator will perform the addition and return the result, which I can then provide to the user as the final answer.
+
+  This is a straightforward request that aligns perfectly with the calculator tool's functionality. No additional clarification is needed from the user, and the operation doesn't require any special handling.
+
+  </think>
+
+
+  <minimax:tool_call>
+  <invoke name="calculator">
+  <parameter name="operation">add</parameter>
+  <parameter name="a">15</parameter>
+  <parameter name="b">27</parameter>
+  </invoke>
+  </minimax:tool_call>[e~[
+  ]~b]tool
+  <response>42</response>[e~[
+  ]~b]ai
+
+
+  ════════════════════════════════════════════════════════════
+    RESULT
+  ════════════════════════════════════════════════════════════
+    ✅ SUCCESS: reasoning_content IS included in subsequent requests!
+  ```
+</CodeGroup>
+
+### Preserved thinking
+
+While interleaved thinking preserves reasoning within a single turn (across tool calls), **preserved thinking** extends this concept across multiple user turns. This allows the model to retain reasoning content from previous assistant turns in the conversation context, enabling more coherent multi-turn reasoning.
+
+<Frame>
+  <img alt="Diagram showing preserved thinking where reasoning from Turn 1 is included in the input context for Turn 2" />
+</Frame>
+
+#### Controlling reasoning history
+
+You can control how historical reasoning content is included in subsequent requests using the [`reasoning_history`](/api-reference/post-chatcompletions#body-reasoning-history-one-of-0) parameter:
+
+```python lines highlight={8} theme={null}
+completion = client.chat.completions.create(
+    messages=[
+        {"role": "user", "content": "What is 15 + 27?"},
+        assistant_message,  # Contains reasoning_content from previous turn
+        {"role": "user", "content": "Now multiply that by 2"},
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+    reasoning_history="preserved",  # Retain all previous reasoning content
+)
+```
+
+See the [`reasoning_history`](/api-reference/post-chatcompletions#body-reasoning-history-one-of-0) parameter for all accepted values.
+
+<Note>
+  When `reasoning_history` is set to `"preserved"`, the model receives the full reasoning context from all previous turns. This is particularly useful for complex multi-turn conversations where maintaining reasoning continuity is important.
+</Note>
+
+The following script demonstrates preserved thinking across multiple turns and validates that
+`reasoning_content` from all previous turns is included in subsequent requests:
+
+```python main.py expandable theme={null}
+"""Test that reasoning_content is passed in multi-turn conversations.
+
+This test proves that reasoning_content from previous turns is included
+in subsequent requests by examining the raw prompt sent to the model.
+"""
+
+from fireworks import Fireworks
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = Fireworks()
+
+MODEL = "accounts/fireworks/models/glm-4p7"
+
+
+# Define tools to enable interleaved thinking
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "calculator",
+            "description": "Perform basic arithmetic operations",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "operation": {
+                        "type": "string",
+                        "enum": ["add", "subtract", "multiply", "divide"],
+                    },
+                    "a": {"type": "number"},
+                    "b": {"type": "number"},
+                },
+                "required": ["operation", "a", "b"],
+            },
+        },
+    }
+]
+
+
+def print_header(title: str, char: str = "═", width: int = 60):
+    """Print a formatted section header."""
+    print(f"\n{char * width}")
+    print(f"  {title}")
+    print(f"{char * width}")
+
+
+def print_field(label: str, value: str, indent: int = 2):
+    """Print a labeled field with optional indentation."""
+    prefix = " " * indent
+    print(f"{prefix}{label}: {value}")
+
+
+def print_multiline(label: str, content: str, max_preview: int = 200, indent: int = 2):
+    """Print multiline content with a label and optional truncation."""
+    prefix = " " * indent
+    print(f"{prefix}{label}:")
+    preview = content[:max_preview] + "..." if len(content) > max_preview else content
+    for line in preview.split("\n"):
+        print(f"{prefix}  │ {line}")
+
+
+# First turn - get a response with reasoning_content
+print_header("FIRST TURN", "═")
+first_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        }
+    ],
+    model=MODEL,
+    tools=tools,
+)
+
+print_field("📝 Content", first_response.choices[0].message.content or "(none)")
+
+reasoning = first_response.choices[0].message.reasoning_content
+print_multiline("💭 Reasoning", reasoning)
+
+# Print tool call (verified) from the first response
+tool_calls = first_response.choices[0].message.tool_calls
+assert tool_calls, "No tool calls in first response!"
+print(f"\n  🔧 Tool Calls ({len(tool_calls)}):")
+for i, tc in enumerate(tool_calls, 1):
+    print(f"    [{i}] id={tc.id}")
+    print(f"        function={tc.function.name}")
+    print(f"        arguments={tc.function.arguments}")
+tool_call_id = first_response.choices[0].message.tool_calls[0].id
+
+# Verify we got reasoning_content
+assert reasoning and len(reasoning) > 0, "No reasoning_content in first response!"
+print("\n  ✓ First response has reasoning_content")
+
+# Second turn - include the first assistant message
+print_header("SECOND TURN", "═")
+second_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        },
+        first_response.choices[0].message,  # Includes reasoning_content
+        {"role": "tool", "content": "42", "tool_call_id": tool_call_id},
+    ],
+    model=MODEL,
+    tools=tools,
+    raw_output=True,
+)
+
+print_field("📝 Answer", second_response.choices[0].message.content or "(none)")
+
+# Extract and display the raw prompt that was sent to the model
+raw_prompt = second_response.choices[0].raw_output.prompt_fragments[0]
+print_header("RAW PROMPT SENT TO MODEL", "─")
+print(raw_prompt)
+
+# Check if reasoning_content from first turn is in the raw prompt
+has_reasoning_content = reasoning[:50] in raw_prompt
+
+print_header("RESULT", "═")
+if has_reasoning_content:
+    print("  ✅ SUCCESS: reasoning_content IS included in subsequent requests!")
+else:
+    print("  ❌ FAILED: reasoning_content not found in raw prompt")
+print()
+
+# Third turn - ask for another calculation
+print_header("THIRD TURN", "═")
+third_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        },
+        first_response.choices[0].message,  # Includes reasoning_content
+        {"role": "tool", "content": "42", "tool_call_id": tool_call_id},
+        {
+            "role": "user",
+            "content": "What is 20 * 5?",
+        },
+    ],
+    model=MODEL,
+    tools=tools,
+)
+
+print_field("📝 Answer", third_response.choices[0].message.content or "(none)")
+
+reasoning_third = third_response.choices[0].message.reasoning_content
+print_multiline("💭 Reasoning", reasoning_third)
+
+# Print tool call from the third response
+tool_calls_third = third_response.choices[0].message.tool_calls
+assert tool_calls_third, "No tool calls in third response!"
+print(f"\n  🔧 Tool Calls ({len(tool_calls_third)}):")
+for i, tc in enumerate(tool_calls_third, 1):
+    print(f"    [{i}] id={tc.id}")
+    print(f"        function={tc.function.name}")
+    print(f"        arguments={tc.function.arguments}")
+tool_call_id_third = third_response.choices[0].message.tool_calls[0].id
+print()
+
+# Fourth turn - include the third assistant message and tool response
+print_header("FOURTH TURN", "═")
+fourth_response = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 15 + 27?",
+        },
+        first_response.choices[0].message,  # Includes reasoning_content
+        {"role": "tool", "content": "42", "tool_call_id": tool_call_id},
+        {
+            "role": "user",
+            "content": "What is 20 * 5?",
+        },
+        third_response.choices[0].message,  # Includes reasoning_content from third turn
+        {"role": "tool", "content": "100", "tool_call_id": tool_call_id_third},
+    ],
+    model=MODEL,
+    tools=tools,
+    raw_output=True,
+    reasoning_history="preserved",
+)
+
+print_field("📝 Answer", fourth_response.choices[0].message.content or "(none)")
+
+# Extract and display the raw prompt that was sent to the model
+raw_prompt_fourth = fourth_response.choices[0].raw_output.prompt_fragments[0]
+print_header("RAW PROMPT SENT TO MODEL (FOURTH TURN)", "─")
+print(raw_prompt_fourth)
+
+# Check if reasoning_content from both first and third turns are in the raw prompt
+has_reasoning_content_first = reasoning[:50] in raw_prompt_fourth
+has_reasoning_content_third = reasoning_third[:50] in raw_prompt_fourth
+
+print_header("RESULT (FOURTH TURN)", "═")
+if has_reasoning_content_first and has_reasoning_content_third:
+    print(
+        "  ✅ SUCCESS: reasoning_content from both first and third turns IS included in fourth turn requests!"
+    )
+elif has_reasoning_content_first:
+    print("  ⚠️  PARTIAL: Only first turn reasoning_content found in raw prompt")
+elif has_reasoning_content_third:
+    print("  ⚠️  PARTIAL: Only third turn reasoning_content found in raw prompt")
+else:
+    print("  ❌ FAILED: reasoning_content not found in raw prompt")
+print()
+```
+
+Below is the expected output:
+
+```txt GLM-4.7 (output) expandable theme={null}
+════════════════════════════════════════════════════════════
+  FIRST TURN
+════════════════════════════════════════════════════════════
+  📝 Content: (none)
+  💭 Reasoning:
+    │ The user is asking for the sum of 15 and 27. This is a simple arithmetic calculation that I can perform using the calculator function. I need to:
+    │ 
+    │ - Call the calculator function
+    │ - Set operation to "ad...
+
+  🔧 Tool Calls (1):
+    [1] id=call_6iGeMOel4nRUNw9B1UZlphUp
+        function=calculator
+        arguments={"operation": "add", "a": 15, "b": 27}
+
+  ✓ First response has reasoning_content
+
+════════════════════════════════════════════════════════════
+  SECOND TURN
+════════════════════════════════════════════════════════════
+  📝 Answer: 15 + 27 = 42
+
+────────────────────────────────────────────────────────────
+  RAW PROMPT SENT TO MODEL
+────────────────────────────────────────────────────────────
+[gMASK]<sop><|system|>
+# Tools
+
+You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{"type": "function", "function": {"name": "calculator", "description": "Perform basic arithmetic operations", "parameters": {"type": "object", "properties": {"operation": {"type": "string", "enum": ["add", "subtract", "multiply", "divide"]}, "a": {"type": "number"}, "b": {"type": "number"}}, "required": ["operation", "a", "b"]}}}
+</tools>
+
+For each function call, output the function name and arguments within the following XML format:
+<tool_call>{function-name}<arg_key>{arg-key-1}</arg_key><arg_value>{arg-value-1}</arg_value><arg_key>{arg-key-2}</arg_key><arg_value>{arg-value-2}</arg_value>...</tool_call><|user|>What is 15 + 27?<|assistant|><think>The user is asking for the sum of 15 and 27. This is a simple arithmetic calculation that I can perform using the calculator function. I need to:
+
+- Call the calculator function
+- Set operation to "add" 
+- Set a to 15
+- Set b to 27
+
+Let me make the function call.</think><tool_call>calculator<arg_key>operation</arg_key><arg_value>add</arg_value><arg_key>a</arg_key><arg_value>15</arg_value><arg_key>b</arg_key><arg_value>27</arg_value></tool_call><|observation|><tool_response>42</tool_response><|assistant|><think>
+
+════════════════════════════════════════════════════════════
+  RESULT
+════════════════════════════════════════════════════════════
+  ✅ SUCCESS: reasoning_content IS included in subsequent requests!
+
+
+════════════════════════════════════════════════════════════
+  THIRD TURN
+════════════════════════════════════════════════════════════
+  📝 Answer: (none)
+  💭 Reasoning:
+    │ The user is asking for 20 * 5. I need to use the calculator function with:
+    │ - operation: "multiply"
+    │ - a: 20
+    │ - b: 5
+
+  🔧 Tool Calls (1):
+    [1] id=call_s3VSYmOARo0gZUl0S4pai8jk
+        function=calculator
+        arguments={"operation": "multiply", "a": 20, "b": 5}
+
+
+════════════════════════════════════════════════════════════
+  FOURTH TURN
+════════════════════════════════════════════════════════════
+  📝 Answer: 100
+
+────────────────────────────────────────────────────────────
+  RAW PROMPT SENT TO MODEL (FOURTH TURN)
+────────────────────────────────────────────────────────────
+[gMASK]<sop><|system|>
+# Tools
+
+You may call one or more functions to assist with the user query.
+
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{"type": "function", "function": {"name": "calculator", "description": "Perform basic arithmetic operations", "parameters": {"type": "object", "properties": {"operation": {"type": "string", "enum": ["add", "subtract", "multiply", "divide"]}, "a": {"type": "number"}, "b": {"type": "number"}}, "required": ["operation", "a", "b"]}}}
+</tools>
+
+For each function call, output the function name and arguments within the following XML format:
+<tool_call>{function-name}<arg_key>{arg-key-1}</arg_key><arg_value>{arg-value-1}</arg_value><arg_key>{arg-key-2}</arg_key><arg_value>{arg-value-2}</arg_value>...</tool_call><|user|>What is 15 + 27?<|assistant|><think>The user is asking for the sum of 15 and 27. This is a simple arithmetic calculation that I can perform using the calculator function. I need to:
+
+- Call the calculator function
+- Set operation to "add" 
+- Set a to 15
+- Set b to 27
+
+Let me make the function call.</think><tool_call>calculator<arg_key>operation</arg_key><arg_value>add</arg_value><arg_key>a</arg_key><arg_value>15</arg_value><arg_key>b</arg_key><arg_value>27</arg_value></tool_call><|observation|><tool_response>42</tool_response><|user|>What is 20 * 5?<|assistant|><think>The user is asking for 20 * 5. I need to use the calculator function with:
+- operation: "multiply"
+- a: 20
+- b: 5</think><tool_call>calculator<arg_key>operation</arg_key><arg_value>multiply</arg_value><arg_key>a</arg_key><arg_value>20</arg_value><arg_key>b</arg_key><arg_value>5</arg_value></tool_call><|observation|><tool_response>100</tool_response><|assistant|><think>
+
+════════════════════════════════════════════════════════════
+  RESULT (FOURTH TURN)
+════════════════════════════════════════════════════════════
+  ✅ SUCCESS: reasoning_content from both first and third turns IS included in fourth turn requests!
+```
 
 
 # Which model should I use?
@@ -12697,7 +14299,7 @@ Looking for the right open source model? Whether you're exploring by use case or
 
 | **Category**            | **Use Case**                          | **Recommended Models**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Code & Development**  | **Code generation & reasoning**       | [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905), [Deepseek V3.1](https://app.fireworks.ai/models/fireworks/deepseek-v3p1), [GLM 4.6](https://app.fireworks.ai/models/fireworks/glm-4p6) *(Large)*<br />[Qwen2.5-32B-Coder](https://app.fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct) *(Medium)*<br />[Qwen3 Coder 30B A3B](https://app.fireworks.ai/models/fireworks/qwen3-coder-30b-a3b-instruct) *(Small)*                                                                                                                                                                                                                                  |
+| **Code & Development**  | **Code generation & reasoning**       | [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905), [Deepseek V3.2](https://app.fireworks.ai/models/fireworks/deepseek-v3p2), [Deepseek V3.1](https://app.fireworks.ai/models/fireworks/deepseek-v3p1), [GLM 4.6](https://app.fireworks.ai/models/fireworks/glm-4p6) *(Large)*<br />[Qwen2.5-32B-Coder](https://app.fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct) *(Medium)*<br />[Qwen3 Coder 30B A3B](https://app.fireworks.ai/models/fireworks/qwen3-coder-30b-a3b-instruct) *(Small)*                                                                                                                                                        |
 |                         | **Code completion & bug fixing**      | [Qwen3 235B A22B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b), [Qwen2.5-32B-Coder](https://app.fireworks.ai/models/fireworks/qwen2p5-coder-32b-instruct) *(Medium)*<br />[Qwen3 Coder 30B A3B](https://app.fireworks.ai/models/fireworks/qwen3-coder-30b-a3b-instruct), [Qwen3 14B](https://app.fireworks.ai/models/fireworks/qwen3-14b), [Qwen3 8B](https://app.fireworks.ai/models/fireworks/qwen3-8b) *(Small)*                                                                                                                                                                                                                                                         |
 | **AI Applications**     | **AI Agents with tool use**           | [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905), [Deepseek V3.1](https://app.fireworks.ai/models/fireworks/deepseek-v3p1), [Qwen3 235B A22B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b), [GLM 4.6](https://app.fireworks.ai/models/fireworks/glm-4p6) *(Large)*<br />[Qwen 3 Family Models](https://app.fireworks.ai/models?filter=Provider\&provider=Qwen) *(Large/Medium/Small)*                                                                                                                                                                                                                                                        |
 |                         | **General reasoning & planning**      | [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905), [Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking), [Deepseek V3.1](https://app.fireworks.ai/models/fireworks/deepseek-v3p1), [Qwen3 235B Thinking 2507](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b-thinking-2507), [GLM 4.6](https://app.fireworks.ai/models/fireworks/glm-4p6) *(Large)*<br />[GPT-OSS-120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b), [Qwen2.5-72B-Instruct](https://app.fireworks.ai/models/fireworks/qwen2p5-72b-instruct), [Llama 3.3 70B](https://app.fireworks.ai/models/fireworks/llama-v3p3-70b-instruct) *(Medium)* |
@@ -12722,15 +14324,15 @@ If you're currently using Claude, OpenAI / GPT, or Gemini models, here's a guide
 
 | **Closed Source**     | **Use Case**                                          | **Latency Budget** | **Open Source Alternative**                                                                                                                                                                                                                                                     |
 | --------------------- | ----------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **GPT-5**             | • Agentic use cases<br />• Research agents            | High               | • [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905)<br />• [Qwen 3 235B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b)                                                                                                               |
+| **GPT-5**             | • Agentic use cases<br />• Research agents            | High               | • [Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking) • [Kimi K2 0905](https://app.fireworks.ai/models/fireworks/kimi-k2-instruct-0905)<br />• [Qwen 3 235B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b)                              |
 | **GPT-5 mini & nano** | • Chatbots<br />• Intent classification<br />• Search | Low                | • [Qwen 3 14B](https://app.fireworks.ai/models/fireworks/qwen3-14b) and [8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)<br />• [GPT-OSS 120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b) and [20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b) |
 
 ### Google Gemini Alternatives
 
-| **Closed Source**                      | **Use Case**                                          | **Latency Budget** | **Open Source Alternative**                                                                                                                                                                                                                                                                        |
-| -------------------------------------- | ----------------------------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Gemini 2.5 Pro**                     | • Agentic use cases<br />• Research agents            | High               | • [Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking)<br />• [Qwen 3 235B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b)                                                                                                                                   |
-| **Gemini 2.5 Pro Flash & Flash Light** | • Chatbots<br />• Intent classification<br />• Search | Low                | • [Qwen 3 4B](https://app.fireworks.ai/models/fireworks/qwen3-4b) and [8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)<br />• [Llama 3.1 8B](https://app.fireworks.ai/models/fireworks/llama-v3p1-8b-instruct)<br />• [GPT-OSS 20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b) |
+| **Closed Source**                    | **Use Case**                                          | **Latency Budget** | **Open Source Alternative**                                                                                                                                                                                                                                                                        |
+| ------------------------------------ | ----------------------------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Gemini 3 Pro**                     | • Agentic use cases<br />• Research agents            | High               | • [Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking)<br />• [Qwen 3 235B](https://app.fireworks.ai/models/fireworks/qwen3-235b-a22b)                                                                                                                                   |
+| **Gemini 3 Pro Flash & Flash Light** | • Chatbots<br />• Intent classification<br />• Search | Low                | • [Qwen 3 4B](https://app.fireworks.ai/models/fireworks/qwen3-4b) and [8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)<br />• [Llama 3.1 8B](https://app.fireworks.ai/models/fireworks/llama-v3p1-8b-instruct)<br />• [GPT-OSS 20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b) |
 
 **Understanding Latency Budget:**
 
@@ -12762,7 +14364,7 @@ Fireworks.ai offers a powerful Responses API that allows for more complex and st
 The Responses API is designed for building conversational applications and complex workflows. It allows you to:
 
 * **Continue conversations**: Maintain context across multiple turns without resending the entire history.
-* **Use external tools**: Integrate with external services and data sources through the Model Context Protocol (MCP).
+* **Use external tools**: Integrate with external services and data sources through MCP/SSE tools (server-executed) or function tools (client-executed).
 * **Stream responses**: Receive results as they are generated, enabling real-time applications.
 * **Control tool usage**: Set limits on tool calls with `max_tool_calls` parameter.
 * **Manage data retention**: Choose whether to store conversations (default) or opt-out with `store=false`.
@@ -12775,135 +14377,120 @@ You can interact with the Response API using the Fireworks Python SDK or by maki
 
 To start a new conversation, you use the `client.responses.create` method. For a complete example, see the [getting started notebook](https://github.com/fw-ai/cookbook/blob/main/learn/response-api/fireworks_mcp_examples.ipynb).
 
-<CodeGroup>
-  ```python Python (Fireworks) theme={null}
-  from fireworks import LLM
+```python OpenAI SDK theme={null}
+import os
+from openai import OpenAI
 
-  llm = LLM(model="qwen3-235b-a22b", deployment_type="serverless")
+client = OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
+)
 
-  response = llm.responses.create(
-      input="What is reward-kit and what are its 2 main features? Keep it short Please analyze the fw-ai-external/reward-kit repository.",
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
+response = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="What is reward-kit and what are its 2 main features? Keep it short Please analyze the fw-ai-external/reward-kit repository.",
+    tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
+)
 
-  print(response.output[-1].content[0].text.split("</think>")[-1])
-  ```
+print(response.output[-1].content[0].text.split("</think>")[-1])
+```
 
-  ```python Python (OpenAI) theme={null}
-  import os
-  from openai import OpenAI
+### Using Function Tools
 
-  client = OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
-  )
+Function tools follow the OpenAI-compatible format and are returned to the client for execution.
 
-  response = client.responses.create(
-      model="accounts/fireworks/models/qwen3-235b-a22b",
-      input="What is reward-kit and what are its 2 main features? Keep it short Please analyze the fw-ai-external/reward-kit repository.",
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
+```python OpenAI SDK theme={null}
+import os
+from openai import OpenAI
 
-  print(response.output[-1].content[0].text.split("</think>")[-1])
-  ```
-</CodeGroup>
+client = OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
+)
+
+response = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="What is the weather like in San Francisco?",
+    tools=[{
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the current weather for a location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "The city and state, e.g. San Francisco, CA"
+                }
+            },
+            "required": ["location"]
+        }
+    }],
+    tool_choice="auto"
+)
+
+# Check if the model wants to call a function
+for item in response.output:
+    if hasattr(item, 'type') and item.type == "tool_call":
+        print(f"Function: {item.function.name}")
+        print(f"Arguments: {item.function.arguments}")
+```
 
 ### Continuing a Conversation with `previous_response_id`
 
 To continue a conversation, you can use the `previous_response_id` parameter. This tells the API to use the context from a previous response, so you don't have to send the entire conversation history again. For a complete example, see the [previous response ID notebook](https://github.com/fw-ai/cookbook/blob/main/learn/response-api/fireworks_previous_response_cookbook.ipynb).
 
-<CodeGroup>
-  ```python Python (Fireworks) theme={null}
-  from fireworks import LLM
+```python OpenAI SDK theme={null}
+import os
+from openai import OpenAI
 
-  llm = LLM(model="qwen3-235b-a22b", deployment_type="serverless")
+client = OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
+)
 
-  # First, create an initial response
-  initial_response = llm.responses.create(
-      input="What are the key features of reward-kit?",
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
-  initial_response_id = initial_response.id
+# First, create an initial response
+initial_response = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="What are the key features of reward-kit?",
+    tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
+)
+initial_response_id = initial_response.id
 
-  # Now, continue the conversation
-  continuation_response = llm.responses.create(
-      input="How do I install it?",
-      previous_response_id=initial_response_id,
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
+# Now, continue the conversation
+continuation_response = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="How do I install it?",
+    previous_response_id=initial_response_id,
+    tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
+)
 
-  print(continuation_response.output[-1].content[0].text.split("</think>")[-1])
-  ```
-
-  ```python Python (OpenAI) theme={null}
-  import os
-  from openai import OpenAI
-
-  client = OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
-  )
-
-  # First, create an initial response
-  initial_response = client.responses.create(
-      model="accounts/fireworks/models/qwen3-235b-a22b",
-      input="What are the key features of reward-kit?",
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
-  initial_response_id = initial_response.id
-
-  # Now, continue the conversation
-  continuation_response = client.responses.create(
-      model="accounts/fireworks/models/qwen3-235b-a22b",
-      input="How do I install it?",
-      previous_response_id=initial_response_id,
-      tools=[{"type": "sse", "server_url": "https://gitmcp.io/docs"}]
-  )
-
-  print(continuation_response.output[-1].content[0].text.split("</think>")[-1])
-  ```
-</CodeGroup>
+print(continuation_response.output[-1].content[0].text.split("</think>")[-1])
+```
 
 ## Streaming Responses
 
 For real-time applications, you can stream the response as it's being generated. For a complete example, see the [streaming example notebook](https://github.com/fw-ai/cookbook/blob/main/learn/response-api/fireworks_streaming_example.ipynb).
 
-<CodeGroup>
-  ```python Python (Fireworks) theme={null}
-  from fireworks import LLM
+```python OpenAI SDK theme={null}
+import os
+from openai import OpenAI
 
-  llm = LLM(model="qwen3-235b-a22b", deployment_type="serverless")
+client = OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
+)
 
-  stream = llm.responses.create(
-      input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
-      stream=True,
-      tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
-  )
+stream = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
+    stream=True,
+    tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
+)
 
-  for chunk in stream:
-      print(chunk)
-  ```
-
-  ```python Python (OpenAI) theme={null}
-  import os
-  from openai import OpenAI
-
-  client = OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
-  )
-
-  stream = client.responses.create(
-      model="accounts/fireworks/models/qwen3-235b-a22b",
-      input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
-      stream=True,
-      tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
-  )
-
-  for chunk in stream:
-      print(chunk)
-  ```
-</CodeGroup>
+for chunk in stream:
+    print(chunk)
+```
 
 ## Cookbook Examples
 
@@ -12919,94 +14506,39 @@ For more in-depth examples, check out the following notebooks:
 
 By default, responses are stored and can be referenced by their ID. You can disable this by setting `store=False`. If you do this, you will not be able to use the `previous_response_id` to continue the conversation. For a complete example, see the [store=False notebook](https://github.com/fw-ai/cookbook/blob/main/learn/response-api/mcp_server_with_store_false_argument.ipynb).
 
-<CodeGroup>
-  ```python Python (Fireworks) theme={null}
-  from fireworks import LLM
+```python OpenAI SDK theme={null}
+import os
+from openai import OpenAI
 
-  llm = LLM(model="qwen3-235b-a22b", deployment_type="serverless")
+client = OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
+)
 
-  response = llm.responses.create(
-      input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
-      store=False,
-      tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
-  )
+response = client.responses.create(
+    model="accounts/fireworks/models/qwen3-235b-a22b",
+    input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
+    store=False,
+    tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
+)
 
-  # This will fail because the previous response was not stored
-  try:
-      continuation_response = llm.responses.create(
-          input="Explain the second fact in more detail.",
-          previous_response_id=response.id
-      )
-  except Exception as e:
-      print(e)
-  ```
-
-  ```python Python (OpenAI) theme={null}
-  import os
-  from openai import OpenAI
-
-  client = OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key=os.getenv("FIREWORKS_API_KEY", "YOUR_FIREWORKS_API_KEY_HERE")
-  )
-
-  response = client.responses.create(
-      model="accounts/fireworks/models/qwen3-235b-a22b",
-      input="give me 5 interesting facts on modelcontextprotocol/python-sdk -- keep it short!",
-      store=False,
-      tools=[{"type": "mcp", "server_url": "https://mcp.deepwiki.com/mcp"}]
-  )
-
-  # This will fail because the previous response was not stored
-  try:
-      continuation_response = client.responses.create(
-          model="accounts/fireworks/models/qwen3-235b-a22b",
-          input="Explain the second fact in more detail.",
-          previous_response_id=response.id
-      )
-  except Exception as e:
-      print(e)
-  ```
-</CodeGroup>
+# This will fail because the previous response was not stored
+try:
+    continuation_response = client.responses.create(
+        model="accounts/fireworks/models/qwen3-235b-a22b",
+        input="Explain the second fact in more detail.",
+        previous_response_id=response.id
+    )
+except Exception as e:
+    print(e)
+```
 
 ## Deleting Stored Responses
 
 When responses are stored (the default behavior with `store=True`), you can immediately delete them from storage using the DELETE endpoint. This permanently removes the conversation data.
 
 <CodeGroup>
-  ```python Python (Fireworks) theme={null}
-  from fireworks import LLM
-  import requests
-  import os
-
-  llm = LLM(model="qwen3-235b-a22b", deployment_type="serverless")
-
-  # Create a response
-  response = llm.responses.create(
-      input="What is the capital of France?",
-      store=True  # This is the default
-  )
-
-  response_id = response.id
-  print(f"Created response with ID: {response_id}")
-
-  # Delete the response immediately
-  headers = {
-      "Authorization": f"Bearer {os.getenv('FIREWORKS_API_KEY')}",
-      "x-fireworks-account-id": "your-account-id"
-  }
-  delete_response = requests.delete(
-      f"https://api.fireworks.ai/inference/v1/responses/{response_id}",
-      headers=headers
-  )
-
-  if delete_response.status_code == 200:
-      print("Response deleted successfully")
-  else:
-      print(f"Failed to delete response: {delete_response.status_code}")
-  ```
-
-  ```python Python (OpenAI) theme={null}
+  ```python Python (OpenAI SDK) theme={null}
   import os
   from openai import OpenAI
   import requests
@@ -13086,7 +14618,7 @@ All response objects include the following fields:
 
 ### Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "resp_abc123...",
   "created_at": 1735000000,
@@ -13131,12 +14663,12 @@ Audit logs include data access logs. All read, write, and delete operations on s
 
 You can view audit logs, including data access logs, using the Fireworks CLI:
 
-```bash  theme={null}
+```bash theme={null}
 firectl ls audit-logs
 ```
 
-<Frame caption="Audit logs showing data access activities with timestamps, principals, and resource paths">
-  <img src="https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=5aaa79c36dbd45b72c0ed6da84d3f1c1" alt="Audit logs table showing data access activities with columns for timestamp, principal, response code, resource path, and message" data-og-width="2110" width="2110" data-og-height="258" height="258" data-path="images/audit-logs-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=280&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=18af189a09152586b09b6382971d43e0 280w, https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=560&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=77c913fcd6a6adce3f4607679ca7317e 560w, https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=840&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=945986ab1108cd2eca5ec6bb9fa4d383 840w, https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=1100&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=942a772dc0e7a4692707235afc50d97d 1100w, https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=1650&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=c80a83bad6f3ab4882f7ed945237ef70 1650w, https://mintcdn.com/fireworksai/2J3dYvs4OJ-_-alw/images/audit-logs-example.png?w=2500&fit=max&auto=format&n=2J3dYvs4OJ-_-alw&q=85&s=9c47f023f9dced9345b3ec6c41cca053 2500w" />
+<Frame>
+  <img alt="Audit logs table showing data access activities with columns for timestamp, principal, response code, resource path, and message" />
 </Frame>
 
 
@@ -13153,8 +14685,6 @@ Fireworks has Zero Data Retention by default. Specifically, this means
   * More technically: prompt and generation data exist only in volatile memory for the duration of the request. If [prompt caching](https://docs.fireworks.ai/guides/prompt-caching#data-privacy) is active, some prompt data (and associated KV caches) can be stored in volatile memory for several minutes. In either case, prompt and generation data are not logged into any persistent storage.
 * Fireworks logs metadata (e.g. number of tokens in a request) as required to deliver the service.
 * Users can explicitly opt-in to log prompt and generation data for certain advanced features (e.g. FireOptimizer).
-* For proprietary Fireworks models (e.g. f1, FireFunction), prompt and generation data may be logged to enable bulk analytics to improve the model.
-  * In this case, the model description will contain an explicit message about logging.
 
 ## Response API data retention
 
@@ -13256,6 +14786,258 @@ Fireworks aligns with leading industry standards to support customer compliance 
 </Note>
 
 
+# Video & Audio Inputs
+Source: https://docs.fireworks.ai/guides/video-audio-inputs
+
+Query multimodal models to process video and audio content directly
+
+Some Omni/multimodal models can process audio and/or video inputs directly, enabling video captioning, scene analysis, content understanding, and multimodal question answering. A good example is Qwen3 Omni (`qwen3-omni-30b-a3b-instruct`), which supports video, audio, and text inputs in a single request. Deploy these models using [dedicated deployments](/getting-started/ondemand-quickstart) for production workloads.
+
+## Available models
+
+| Model                                                                                            | Input support      | Notes                         |
+| ------------------------------------------------------------------------------------------------ | ------------------ | ----------------------------- |
+| [Qwen3 Omni 30B A3B Instruct](https://fireworks.ai/models/fireworks/qwen3-omni-30b-a3b-instruct) | Video, audio, text | Dedicated deployment required |
+| [Molmo2-4B](https://fireworks.ai/models/fireworks/molmo2-4b)                                     | Video, text        | Dedicated deployment required |
+| [Molmo2-8B](https://fireworks.ai/models/fireworks/molmo2-8b)                                     | Video, text        | Dedicated deployment required |
+
+<Note>
+  Qwen3 Omni supports native video and audio inputs. Molmo2 models are video-only, so use the same request structure as below, but omit `audio_url`. Molmo2 models cannot understand audio from videos.
+</Note>
+
+## Create a deployment
+
+Video and audio models require dedicated deployments. Create one using firectl:
+
+```bash theme={null}
+firectl deployment create qwen3-omni-30b-a3b-instruct \
+  --account-id <YOUR_ACCOUNT_ID> \
+  --min-replica-count 1 \
+  --max-replica-count 1 \
+  --deployment-shape qwen3-omni-30b-a3b-instruct-minimal
+```
+
+<Note>
+  Make sure to use the predefined `qwen3-omni-30b-a3b-instruct-minimal` deployment shape for your deployment to work correctly.
+</Note>
+
+## Chat Completions API
+
+Provide video and audio as base64-encoded data URLs. The model accepts `video_url`, `audio_url`, and `text` content types.
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import os
+    import base64
+    import requests
+
+    # Load and encode your preprocessed video and audio
+    with open("processed_video.mp4", "rb") as f:
+        video_b64 = base64.b64encode(f.read()).decode("utf-8")
+
+    with open("audio.ogg", "rb") as f:
+        audio_b64 = base64.b64encode(f.read()).decode("utf-8")
+
+    # API configuration
+    url = "https://api.fireworks.ai/inference/v1/chat/completions"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {os.environ['FIREWORKS_API_KEY']}",
+    }
+
+    # Request payload
+    payload = {
+        "model": "accounts/<YOUR_ACCOUNT_ID>/models/qwen3-omni-30b-a3b-instruct#accounts/<YOUR_ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+        "max_tokens": 1000,
+        "temperature": 0.3,
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "video_url", "video_url": {"url": f"data:video/mp4;base64,{video_b64}"}},
+                    {"type": "audio_url", "audio_url": {"url": f"data:audio/ogg;base64,{audio_b64}"}},
+                    {"type": "text", "text": "Describe what happens in this video."},
+                ],
+            },
+        ],
+    }
+
+    # Send request
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json()["choices"][0]["message"]["content"])
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash theme={null}
+    # Encode your files (run these separately)
+    VIDEO_B64=$(base64 -i processed_video.mp4)
+    AUDIO_B64=$(base64 -i audio.ogg)
+
+    curl https://api.fireworks.ai/inference/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY" \
+      -d '{
+        "model": "accounts/<YOUR_ACCOUNT_ID>/models/qwen3-omni-30b-a3b-instruct#accounts/<YOUR_ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+        "max_tokens": 1000,
+        "temperature": 0.3,
+        "messages": [
+          {
+            "role": "user",
+            "content": [
+              {"type": "video_url", "video_url": {"url": "data:video/mp4;base64,'$VIDEO_B64'"}},
+              {"type": "audio_url", "audio_url": {"url": "data:audio/ogg;base64,'$AUDIO_B64'"}},
+              {"type": "text", "text": "Describe what happens in this video."}
+            ]
+          }
+        ]
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Working with videos
+
+Video models perform best with preprocessed inputs that balance quality and token efficiency. Use ffmpeg to optimize your video and audio before sending requests.
+
+### Preprocessing video
+
+Extract frames at 1 FPS and downscale to 360p for efficient processing:
+
+```bash theme={null}
+ffmpeg -y -i input_video.mp4 \
+  -t 60 \
+  -vf "fps=1,scale=-1:360" \
+  -c:v libx264 -preset fast \
+  -an \
+  processed_video.mp4
+```
+
+| Parameter      | Description                                     |
+| -------------- | ----------------------------------------------- |
+| `-t 60`        | Limit to first 60 seconds                       |
+| `fps=1`        | Extract 1 frame per second                      |
+| `scale=-1:360` | Downscale to 360p height, maintain aspect ratio |
+| `-an`          | Remove audio track (extracted separately)       |
+
+### Preprocessing audio
+
+Extract audio as Opus in an Ogg container for optimal compression:
+
+```bash theme={null}
+ffmpeg -y -i input_video.mp4 \
+  -t 60 \
+  -vn \
+  -c:a libopus \
+  -b:a 24k \
+  -ar 16000 \
+  -ac 1 \
+  audio.ogg
+```
+
+| Parameter      | Description               |
+| -------------- | ------------------------- |
+| `-t 60`        | Limit to first 60 seconds |
+| `-vn`          | Remove video track        |
+| `-c:a libopus` | Use Opus codec            |
+| `-b:a 24k`     | 24 kbps bitrate           |
+| `-ar 16000`    | 16 kHz sample rate        |
+| `-ac 1`        | Mono audio                |
+
+### Complete preprocessing example
+
+```python theme={null}
+import subprocess
+import tempfile
+import base64
+import os
+
+def preprocess_video(video_path: str) -> tuple[str, str]:
+    """
+    Preprocess video for optimal model input.
+    
+    Returns:
+        Tuple of (video_base64, audio_base64)
+    """
+    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp_video:
+        processed_video_path = tmp_video.name
+    with tempfile.NamedTemporaryFile(suffix=".ogg", delete=False) as tmp_audio:
+        audio_path = tmp_audio.name
+    
+    try:
+        # Process video: 1 FPS, 360p, max 60 seconds
+        subprocess.run([
+            "ffmpeg", "-y", "-i", video_path,
+            "-t", "60",
+            "-vf", "fps=1,scale=-1:360",
+            "-c:v", "libx264", "-preset", "fast",
+            "-an",
+            processed_video_path
+        ], check=True, capture_output=True)
+        
+        # Extract audio: Opus/Ogg, mono, 16kHz, 24kbps
+        subprocess.run([
+            "ffmpeg", "-y", "-i", video_path,
+            "-t", "60",
+            "-vn",
+            "-c:a", "libopus",
+            "-b:a", "24k",
+            "-ar", "16000",
+            "-ac", "1",
+            audio_path
+        ], check=True, capture_output=True)
+        
+        with open(processed_video_path, "rb") as f:
+            video_b64 = base64.b64encode(f.read()).decode("utf-8")
+        
+        with open(audio_path, "rb") as f:
+            audio_b64 = base64.b64encode(f.read()).decode("utf-8")
+        
+        return video_b64, audio_b64
+    
+    finally:
+        os.unlink(processed_video_path)
+        os.unlink(audio_path)
+```
+
+<Tip>
+  Preprocessing is highly recommended to reduce latency and ensure consistent performance.
+</Tip>
+
+## Performance considerations
+
+**Tips for optimal throughput:**
+
+* **Preprocess all videos** – 1 FPS at 360p provides good quality with minimal tokens
+* **Extract audio separately** – Opus/Ogg at 24kbps offers excellent compression
+* **Limit video duration** – Cap at 60 seconds for consistent performance
+* **Use dedicated deployments** – Scale replicas based on your throughput needs
+
+## Known limitations
+
+1. **Video duration**: Maximum 60 seconds recommended for optimal performance
+2. **Supported formats**: `.mp4` for video, `.ogg` (Opus) for audio
+3. **Base64 size**: Total encoded payload should be under 10MB
+4. **Deployment required**: Video models are not available on serverless; dedicated deployment required
+
+## Related resources
+
+<CardGroup>
+  <Card title="Chat with Video using Qwen3 Omni" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/video/Qwen3-Omni-Chat-With-Video-Cookbook.ipynb" icon="video">
+    Interactive notebook for video and audio analysis
+  </Card>
+
+  <Card title="Vision models" href="/guides/querying-vision-language-models" icon="image">
+    Query models with image inputs
+  </Card>
+
+  <Card title="Dedicated deployments" href="/getting-started/ondemand-quickstart" icon="server">
+    Deploy models on dedicated GPUs
+  </Card>
+</CardGroup>
+
+
 # Quantization
 Source: https://docs.fireworks.ai/models/quantization
 
@@ -13273,14 +15055,14 @@ Models may support different numerical precisions like FP16, FP8, BF16, or INT8,
 
 **Check default precision:**
 
-```bash  theme={null}
-firectl get model accounts/fireworks/models/llama-v3p1-8b-instruct | grep "Default Precision"
+```bash theme={null}
+firectl model get accounts/fireworks/models/llama-v3p1-8b-instruct | grep "Default Precision"
 ```
 
 **Check supported precisions:**
 
-```bash  theme={null}
-firectl get model accounts/fireworks/models/llama-v3p1-8b-instruct | grep -E "(Supported Precisions|Supported Precisions With Calibration)"
+```bash theme={null}
+firectl model get accounts/fireworks/models/llama-v3p1-8b-instruct | grep -E "(Supported Precisions|Supported Precisions With Calibration)"
 ```
 
 The `Precisions` field indicates what precisions the model has been prepared for.
@@ -13291,13 +15073,13 @@ A model can be quantized to 8-bit floating-point (FP8) precision.
 
 <Tabs>
   <Tab title="firectl">
-    ```bash  theme={null}
+    ```bash theme={null}
     firectl prepare-model <MODEL_ID>
     ```
   </Tab>
 
   <Tab title="Python (REST API)">
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import requests
 
@@ -13327,13 +15109,13 @@ You can check on the status of preparation by running:
 
 <Tabs>
   <Tab title="firectl">
-    ```bash  theme={null}
-    firectl get model <MODEL_ID>
+    ```bash theme={null}
+    firectl model get <MODEL_ID>
     ```
   </Tab>
 
   <Tab title="Python (REST API)">
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import requests
 
@@ -13362,13 +15144,13 @@ By default, creating a deployment uses the FP16 checkpoint. To use a quantized F
 
 <Tabs>
   <Tab title="firectl">
-    ```bash  theme={null}
-    firectl create deployment <MODEL> --accelerator-type NVIDIA_H100_80GB --precision FP8
+    ```bash theme={null}
+    firectl deployment create <MODEL> --accelerator-type NVIDIA_H100_80GB --precision FP8
     ```
   </Tab>
 
   <Tab title="Python (REST API)">
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import requests
 
@@ -13408,7 +15190,7 @@ Upload, verify, and deploy your own models from Hugging Face or elsewhere
 
 Upload your own models from Hugging Face or elsewhere to deploy fine-tuned or custom-trained models optimized for your use case.
 
-* **Multiple upload options** – Upload from local files or directly from S3 buckets
+* **Multiple upload options** – Upload from local files or directly from S3 buckets or Azure Blob Storage
 * **Secure uploads** – All uploads are encrypted and models remain private to your account by default
 
 ## Requirements
@@ -13467,26 +15249,39 @@ You'll need standard Hugging Face model files: `config.json`, model weights (`.s
     * `tokenizer_config.json`
 
   If the requisite files are not present, model deployment may fail.
-
-  **Enabling chat completions**: To enable the chat completions API for your custom base model, ensure your `tokenizer_config.json` contains a `chat_template` field. See the Hugging Face guide on [Templates for Chat Models](https://huggingface.co/docs/transformers/main/en/chat_templating) for details.
 </Accordion>
 
+### Customizing base model configuration
+
+For base models (not LoRA adapters), you can customize the chat template and generation defaults by modifying the standard Hugging Face configuration files:
+
+* **Chat template**: Add or modify the `chat_template` field in `tokenizer_config.json`. See the Hugging Face guide on [Templates for Chat Models](https://huggingface.co/docs/transformers/main/en/chat_templating) for details.
+* **Generation defaults**: Modify `generation_config.json` to set default generation parameters like `max_new_tokens`, `temperature`, `top_p`, etc.
+
+You can also use a `fireworks.json` file with base models. If present, `fireworks.json` takes priority over both `tokenizer_config.json` and `generation_config.json`. See [Customizing chat template and generation defaults](#customizing-chat-template-and-generation-defaults) for the full `fireworks.json` schema.
+
+<Warning>
+  For LoRA adapters, you must use `fireworks.json` to customize configuration. Modifying `tokenizer_config.json` or `generation_config.json` in the adapter folder won't work because adapters inherit these settings from their base model.
+</Warning>
+
 ## Uploading your model
+
+For larger models, you can upload directly from cloud storage (S3 or Azure Blob Storage) for faster transfer instead of uploading from your local machine.
 
 <Tabs>
   <Tab title="Local files (CLI)">
     Upload from your local machine:
 
-    ```bash  theme={null}
-    firectl create model <MODEL_ID> /path/to/files/
+    ```bash theme={null}
+    firectl model create <MODEL_ID> /path/to/files/
     ```
   </Tab>
 
   <Tab title="S3 bucket (CLI)">
-    For larger models, upload directly from an Amazon S3 bucket for faster transfer:
+    Upload directly from an Amazon S3 bucket:
 
-    ```bash  theme={null}
-    firectl create model <MODEL_ID> s3://<BUCKET_NAME>/<PATH_TO_MODEL>/ \
+    ```bash theme={null}
+    firectl model create <MODEL_ID> s3://<BUCKET_NAME>/<PATH_TO_MODEL>/ \
       --aws-access-key-id <ACCESS_KEY_ID> \
       --aws-secret-access-key <SECRET_ACCESS_KEY>
     ```
@@ -13496,6 +15291,51 @@ You'll need standard Hugging Face model files: `config.json`, model weights (`.s
     <Note>
       Ensure the IAM user has read access to the S3 bucket containing the model.
     </Note>
+  </Tab>
+
+  <Tab title="Azure Blob Storage (CLI)">
+    Upload directly from Azure Blob Storage using either SAS token or federated identity authentication.
+
+    <Tabs>
+      <Tab title="SAS token">
+        First, create a Fireworks secret containing your Azure SAS token:
+
+        ```bash theme={null}
+        firectl secret create --name <SECRET_NAME> --value <SAS_TOKEN>
+        ```
+
+        Then, upload the model using the secret:
+
+        ```bash theme={null}
+        firectl model create <MODEL_ID> https://<STORAGE_ACCOUNT>.blob.core.windows.net/<CONTAINER>/<PATH> \
+          --azure-sas-token-secret accounts/<ACCOUNT_ID>/secrets/<SECRET_NAME>
+        ```
+
+        See the [Azure documentation](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) for how to generate a SAS token.
+
+        <Note>
+          Ensure the SAS token has read access to the Azure Blob Storage container containing the model.
+        </Note>
+      </Tab>
+
+      <Tab title="Federated identity">
+        Use Azure AD federated identity for passwordless authentication.
+
+        **Setup:** Register an Azure AD application and add a federated credential with:
+
+        * **Issuer:** `https://accounts.google.com`
+        * **Subject:** `114308823136673488563`
+        * **Audience:** `api://AzureADTokenExchange`
+
+        Then grant **Storage Blob Data Reader** role to the application on your storage account.
+
+        ```bash theme={null}
+        firectl model create <MODEL_ID> https://<STORAGE_ACCOUNT>.blob.core.windows.net/<CONTAINER>/<PATH> \
+          --azure-client-id <CLIENT_ID> \
+          --azure-tenant-id <TENANT_ID>
+        ```
+      </Tab>
+    </Tabs>
   </Tab>
 
   <Tab title="REST API">
@@ -13513,8 +15353,8 @@ You'll need standard Hugging Face model files: `config.json`, model weights (`.s
 
 After uploading, verify your model is ready to deploy:
 
-```bash  theme={null}
-firectl get model accounts/<ACCOUNT_ID>/models/<MODEL_NAME>
+```bash theme={null}
+firectl model get accounts/<ACCOUNT_ID>/models/<MODEL_NAME>
 ```
 
 Look for `State: READY` in the output. Once ready, you can create a deployment.
@@ -13523,8 +15363,8 @@ Look for `State: READY` in the output. Once ready, you can create a deployment.
 
 Once your model shows `State: READY`, create a deployment:
 
-```bash  theme={null}
-firectl create deployment accounts/<ACCOUNT_ID>/models/<MODEL_NAME> --wait
+```bash theme={null}
+firectl deployment create accounts/<ACCOUNT_ID>/models/<MODEL_NAME> --wait
 ```
 
 See the [On-demand deployments guide](/guides/ondemand-deployments) for configuration options like GPU types, autoscaling, and quantization.
@@ -13541,14 +15381,14 @@ By default, models are private to your account. Publish a model to make it avail
 
 **Publish a model:**
 
-```bash  theme={null}
-firectl update model <MODEL_ID> --public
+```bash theme={null}
+firectl model update <MODEL_ID> --public
 ```
 
 **Unpublish a model:**
 
-```bash  theme={null}
-firectl update model <MODEL_ID> --public=false
+```bash theme={null}
+firectl model update <MODEL_ID> --public=false
 ```
 
 ## Importing fine-tuned models
@@ -13577,20 +15417,125 @@ The `adapter_config.json` must contain the following fields:
 
 Additional fields may be specified but are ignored.
 
-### Enabling chat completions
+### Customizing chat template and generation defaults
 
-To enable the chat completions API for your LoRA addon, add a `fireworks.json` file to the directory containing:
+For LoRA adapters, use a `fireworks.json` file to customize the chat template and generation defaults. This is the recommended approach because adapters inherit configuration from their base model—modifying `generation_config.json` or `tokenizer_config.json` in the adapter folder won't work.
 
-```json  theme={null}
+Add a `fireworks.json` file to the directory containing your adapter files:
+
+```json fireworks.json theme={null}
 {
   "conversation_config": {
     "style": "jinja",
     "args": {
-      "template": "<YOUR_JINJA_TEMPLATE>"
+      "template": "{% for message in messages %}...",
+      "system": "optional system prompt",
+      "special_tokens_map": {
+        "bos_token": "<s>",
+        "eos_token": "</s>",
+        "unk_token": "<unk>"
+      },
+      "keep_leading_spaces": true,
+      "function_call_prefix": "...",
+      "function_call_suffix": "...",
+      "disable_grammar": false
     }
-  }
+  },
+  "defaults": {
+    "stop": ["<|im_end|>", "</s>"],
+    "max_tokens": 1024,
+    "temperature": 0.7,
+    "top_k": 50,
+    "top_p": 0.9,
+    "min_p": 0.0,
+    "typical_p": 1.0,
+    "frequency_penalty": 0.0,
+    "presence_penalty": 0.0,
+    "repetition_penalty": 1.0
+  },
+  "model_arch": null,
+  "model_config_name": null,
+  "has_lora": true,
+  "has_teft": false
 }
 ```
+
+<AccordionGroup>
+  <Accordion title="conversation_config options">
+    | Field                       | Required          | Description                                              |
+    | --------------------------- | ----------------- | -------------------------------------------------------- |
+    | `style`                     | Yes               | Template style (see supported styles below)              |
+    | `args.template`             | Yes (for `jinja`) | Jinja2 template string for formatting messages           |
+    | `args.system`               | No                | Default system prompt                                    |
+    | `args.special_tokens_map`   | No                | Token mappings for `bos_token`, `eos_token`, `unk_token` |
+    | `args.keep_leading_spaces`  | No                | Preserve leading whitespace in the template output       |
+    | `args.function_call_prefix` | No                | Prefix for tool/function calls                           |
+    | `args.function_call_suffix` | No                | Suffix for tool/function calls                           |
+    | `args.disable_grammar`      | No                | Disable grammar constraints                              |
+
+    **Supported conversation styles:**
+
+    | Style                    | Description                                       |
+    | ------------------------ | ------------------------------------------------- |
+    | `jinja`                  | Custom Jinja2 template (requires `args.template`) |
+    | `huggingface`            | Uses the model's HuggingFace chat template        |
+    | `alpaca`                 | Alpaca instruction format                         |
+    | `chatml`                 | ChatML format                                     |
+    | `codellama-70b-instruct` | CodeLlama 70B instruction format                  |
+    | `deepseek`               | DeepSeek format                                   |
+    | `deepseek-v3p1`          | DeepSeek V3.1 format                              |
+    | `deepseek-v3p2`          | DeepSeek V3.2 format                              |
+    | `glm`                    | GLM format                                        |
+    | `glm_47`                 | GLM 4.7 format                                    |
+    | `harmony`                | Harmony format                                    |
+    | `kimi`                   | Kimi format                                       |
+    | `kimi-k2-instruct`       | Kimi K2 instruction format                        |
+    | `llama-chat`             | Llama chat format                                 |
+    | `llama-infill`           | Llama infilling format                            |
+    | `llama4`                 | Llama 4 format                                    |
+    | `minimax`                | MiniMax format                                    |
+    | `minimax_m2`             | MiniMax M2 format                                 |
+    | `mistral-chat`           | Mistral chat format                               |
+    | `passthrough`            | No formatting applied                             |
+    | `qwen2`                  | Qwen2 format                                      |
+    | `qwen3`                  | Qwen3 format                                      |
+    | `qwen3-coder`            | Qwen3 Coder format                                |
+    | `qwen3-vl`               | Qwen3 Vision-Language format                      |
+    | `qwen3-vl-moe`           | Qwen3 Vision-Language MoE format                  |
+    | `stablelm-zephyr`        | StableLM Zephyr format                            |
+    | `vicuna`                 | Vicuna chat format                                |
+  </Accordion>
+
+  <Accordion title="defaults options">
+    These defaults are applied when the user doesn't specify values in their API request:
+
+    | Field                | Type    | Example                    | Description                           |
+    | -------------------- | ------- | -------------------------- | ------------------------------------- |
+    | `stop`               | array   | `["<\|im_end\|>", "</s>"]` | Default stop sequences                |
+    | `max_tokens`         | integer | `1024`                     | Default maximum tokens to generate    |
+    | `temperature`        | float   | `0.7`                      | Default sampling temperature          |
+    | `top_k`              | integer | `50`                       | Default top-k sampling                |
+    | `top_p`              | float   | `0.9`                      | Default nucleus sampling probability  |
+    | `min_p`              | float   | `0.0`                      | Default minimum probability threshold |
+    | `typical_p`          | float   | `1.0`                      | Default typical sampling probability  |
+    | `frequency_penalty`  | float   | `0.0`                      | Default frequency penalty             |
+    | `presence_penalty`   | float   | `0.0`                      | Default presence penalty              |
+    | `repetition_penalty` | float   | `1.0`                      | Default repetition penalty            |
+  </Accordion>
+
+  <Accordion title="Additional options">
+    | Field               | Default | Description                                                                            |
+    | ------------------- | ------- | -------------------------------------------------------------------------------------- |
+    | `model_arch`        | null    | Model architecture (e.g., `"qwen2"`, `"llama"`). Usually auto-detected from base model |
+    | `model_config_name` | null    | Model configuration name (e.g., `"4B"`). Usually auto-detected from base model         |
+    | `has_lora`          | true    | Set to `true` for LoRA adapters                                                        |
+    | `has_teft`          | false   | Set to `true` if using TEFT (Token-Efficient Fine-Tuning)                              |
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  All fields in `fireworks.json` are optional except for `conversation_config.style` when customizing the chat template. Include only the fields you need to override.
+</Note>
 
 ### Uploading the LoRA adapter
 
@@ -13600,13 +15545,13 @@ To upload a LoRA addon, run the following command. The MODEL\_ID is an arbitrary
   Only some base models support LoRA addons.
 </Note>
 
-```bash  theme={null}
-firectl create model <MODEL_ID> /path/to/files/ --base-model "accounts/fireworks/models/<BASE_MODEL_ID>"
+```bash theme={null}
+firectl model create <MODEL_ID> /path/to/files/ --base-model "accounts/fireworks/models/<BASE_MODEL_ID>"
 ```
 
 ## Next steps
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy your model" icon="rocket" href="/guides/ondemand-deployments">
     Configure GPU types, autoscaling, and optimization
   </Card>
@@ -13636,7 +15581,7 @@ Structured outputs ensure model responses conform to your specified format, maki
 
 Force model output to conform to a [JSON schema](https://json-schema.org/):
 
-```python  theme={null}
+```python theme={null}
 import os
 from openai import OpenAI
 from pydantic import BaseModel
@@ -13689,7 +15634,7 @@ Fireworks supports two JSON mode variants:
   <Accordion title="Using arbitrary JSON mode">
     To force JSON output without a specific schema:
 
-    ```python  theme={null}
+    ```python theme={null}
     response = client.chat.completions.create(
         model="accounts/fireworks/models/deepseek-v3p1",
         response_format={"type": "json_object"},
@@ -13738,7 +15683,7 @@ Fireworks supports most [JSON schema specification](https://json-schema.org/spec
 
   #### Example Usage
 
-  ```python  theme={null}
+  ```python theme={null}
   import os
   import re
   from openai import OpenAI
@@ -13797,7 +15742,7 @@ Fireworks supports most [JSON schema specification](https://json-schema.org/spec
 
   #### Additional Examples
 
-  <CardGroup cols={2}>
+  <CardGroup>
     <Card title="Computer Specs with Reasoning" icon="square-1" href="https://colab.research.google.com/drive/1zBK1nDITDNOx7oRWxh19C5_sNSh64PKM?usp=sharing">
       Generate structured PC specifications with reasoning
     </Card>
@@ -13821,6 +15766,181 @@ For advanced use cases where JSON isn't sufficient, use [Grammar mode](/structur
 ## Related features
 
 Check out [Tool Calling](/guides/function-calling) for multi-turn capabilities and routing across multiple schemas.
+
+
+# firectl account get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/account-get
+
+Prints information about an account.
+
+```
+firectl account get [flags]
+```
+
+### Examples
+
+```
+firectl account get
+firectl account get my-account
+firectl account get accounts/my-account
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl account list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/account-list
+
+Prints all accounts the current signed-in user has access to.
+
+```
+firectl account list [flags]
+```
+
+### Examples
+
+```
+firectl account list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl api-key create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/api-key-create
+
+Creates an API key for the signed in user or a specified service account user.
+
+```
+firectl api-key create [flags]
+```
+
+### Examples
+
+```
+firectl api-key create
+firectl api-key create --service-account=my-service-account
+firectl api-key create --key-name="Production Key" --service-account=ci-bot
+firectl api-key create --key-name="Temporary Key" --expire-time="2025-12-31 23:59:59"
+```
+
+### Flags
+
+```
+      --dry-run                  Print the request proto without running it.
+      --expire-time string       If specified, the time at which the API key will automatically expire. Specified in YYYY-MM-DD[ HH:MM:SS] format.
+  -h, --help                     help for create
+      --key-name string          The name of the key to be created. Defaults to "default"
+  -o, --output Output            Set the output format to "text", "json", or "flag". (default text)
+      --service-account string   Admin only: Create API key for the specified service account user
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl api-key delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/api-key-delete
+
+Deletes an API key.
+
+```
+firectl api-key delete [flags]
+```
+
+### Examples
+
+```
+firectl api-key delete key-id
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for delete
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl api-key list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/api-key-list
+
+Prints all API keys for the signed in user.
+
+```
+firectl api-key list [flags]
+```
+
+### Examples
+
+```
+firectl api-key list
+```
+
+### Flags
+
+```
+      --all-users           Admin only: list API keys for all users in the account
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
 
 
 # Authentication
@@ -13857,88 +15977,19 @@ firectl set-api-key API_KEY
 ```
 
 
-# firectl cancel reinforcement-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/cancel-reinforcement-fine-tuning-job
-
-Cancels a running reinforcement fine-tuning job.
-
-```
-firectl cancel reinforcement-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl cancel reinforcement-fine-tuning-job my-rftj
-firectl cancel reinforcement-fine-tuning-job accounts/my-account/reinforcementFineTuningJobs/my-rftj
-```
-
-### Flags
-
-```
-  -h, --help   help for reinforcement-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create api-key
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key
-
-Creates an API key for the signed in user or a specified service account user.
-
-```
-firectl create api-key [flags]
-```
-
-### Examples
-
-```
-firectl create api-key
-firectl create api-key --service-account=my-service-account
-firectl create api-key --key-name="Production Key" --service-account=ci-bot
-firectl create api-key --key-name="Temporary Key" --expire-time="2025-12-31 23:59:59"
-```
-
-### Flags
-
-```
-      --expire-time string       If specified, the time at which the API key will automatically expire. Specified in YYYY-MM-DD[ HH:MM:SS] format.
-  -h, --help                     help for api-key
-      --key-name string          The name of the key to be created. Defaults to "default"
-      --service-account string   Admin only: Create API key for the specified service account user
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create batch-inference-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-batch-inference-job
+# firectl batch-inference-job create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/batch-inference-job-create
 
 Creates a batch inference job.
 
 ```
-firectl create batch-inference-job [flags]
+firectl batch-inference-job create [flags]
 ```
 
 ### Examples
 
 ```
-firectl create batch-inference-job --input-dataset-id my-dataset --output-dataset-id my-output-dataset --model my-model \
+firectl batch-inference-job create --input-dataset-id my-dataset --output-dataset-id my-output-dataset --model my-model \
 			--job-id my-job --max-tokens 1024 --temperature 0.7 --top-p 0.9 --top-k 50 --n 2 --precision FP16 \
 			--extra-body '{"stop": ["\n"], "presence_penalty": 0.5}'
 ```
@@ -13960,7 +16011,9 @@ firectl create batch-inference-job --input-dataset-id my-dataset --output-datase
       --extra-body string          Additional inference parameters as a JSON string (e.g., '{"stop": ["\n"]}').
       --precision string           The precision with which the model should be served. If not specified, a suitable default will be chosen based on the model.
       --quiet                      If set, only errors will be printed.
-  -h, --help                       help for batch-inference-job
+      --dry-run                    Print the request proto without running it.
+  -o, --output Output              Set the output format to "text", "json", or "flag". (default text)
+  -h, --help                       help for create
 ```
 
 ### Global flags
@@ -13968,38 +16021,270 @@ firectl create batch-inference-job --input-dataset-id my-dataset --output-datase
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl create dataset
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dataset
+# firectl batch-inference-job delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/batch-inference-job-delete
 
-Creates and uploads a dataset.
+Deletes a batch inference job.
 
 ```
-firectl create dataset [flags]
+firectl batch-inference-job delete [flags]
 ```
 
 ### Examples
 
 ```
-firectl create dataset my-dataset /path/to/dataset.jsonl
-firectl create dataset --trace-from-model-id model_abc --format chat --date 2024-01-10 my-dataset
-firectl create dataset my-dataset --external-url gs://bucket-name/object-name
+firectl batch-inference-job delete my-batch-job
+firectl batch-inference-job delete accounts/my-account/batchInferenceJobs/my-batch-job
+```
+
+### Flags
+
+```
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for delete
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --wait                    Wait until the batch inference job is deleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl batch-inference-job get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/batch-inference-job-get
+
+Retrieves information about a batch inference job.
+
+```
+firectl batch-inference-job get [flags]
+```
+
+### Examples
+
+```
+firectl batch-inference-job get my-batch-job
+firectl batch-inference-job get accounts/my-account/batchInferenceJobs/my-batch-job
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl batch-inference-job list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/batch-inference-job-list
+
+Lists all batch inference jobs in an account.
+
+```
+firectl batch-inference-job list [flags]
+```
+
+### Examples
+
+```
+firectl batch-inference-job list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl billing export-metrics
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/billing-export-metrics
+
+Exports billing metrics
+
+```
+firectl billing export-metrics [flags]
+```
+
+### Examples
+
+```
+firectl billing export-metrics
+```
+
+### Flags
+
+```
+      --end-time string     The end time (exclusive).
+      --filename string     The file name to export to. (default "billing_metrics.csv")
+  -h, --help                help for export-metrics
+      --start-time string   The start time (inclusive).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl billing list-invoices
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/billing-list-invoices
+
+Prints information about invoices.
+
+```
+firectl billing list-invoices [flags]
+```
+
+### Examples
+
+```
+firectl billing list-invoices
+```
+
+### Flags
+
+```
+  -h, --help           help for list-invoices
+      --show-pending   If true, only pending invoices are shown.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl credit-redemption list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/credit-redemption-list
+
+Lists credit code redemptions for the current account.
+
+```
+firectl credit-redemption list [flags]
+```
+
+### Examples
+
+```
+firectl credit-redemption list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl credit-redemption redeem
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/credit-redemption-redeem
+
+Redeems a credit code.
+
+```
+firectl credit-redemption redeem [flags]
+```
+
+### Examples
+
+```
+firectl credit-redemption redeem PROMO2025
+```
+
+### Flags
+
+```
+  -h, --help   help for redeem
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dataset create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-create
+
+Creates and uploads a dataset.
+
+```
+firectl dataset create [flags]
+```
+
+### Examples
+
+```
+firectl dataset create my-dataset /path/to/dataset.jsonl
+firectl dataset create --trace-from-model-id model_abc --format chat --date 2024-01-10 my-dataset
+firectl dataset create my-dataset --external-url gs://bucket-name/object-name
 ```
 
 ### Flags
 
 ```
       --display-name string    The display name of the dataset.
+      --dry-run                Print the request proto without running it.
       --end-time string        The end time for which to trace data (format: YYYY-MM-DD). Only specify for traced dataset.
       --eval-protocol-output   If true, the dataset is in eval protocol output format.
       --external-url string    The GCS URI that points to the dataset file.
       --filter string          Filter condition to apply to the source dataset.
-  -h, --help                   help for dataset
+  -h, --help                   help for create
+  -o, --output Output          Set the output format to "text", "json", or "flag". (default text)
       --quiet                  If true, does not print the upload progress bar.
       --source string          Source dataset ID to filter from.
       --start-time string      The start time for which to trace data (format: YYYY-MM-DD). Only specify for traced dataset.
@@ -14010,28 +16295,305 @@ firectl create dataset my-dataset --external-url gs://bucket-name/object-name
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl create deployment
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-deployment
+# firectl dataset delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-delete
 
-Creates a new deployment.
+Deletes a dataset.
 
 ```
-firectl create deployment [flags]
+firectl dataset delete [flags]
 ```
 
 ### Examples
 
 ```
-firectl create deployment falcon-7b
-firectl create deployment accounts/fireworks/models/falcon-7b
-firectl create deployment falcon-7b --file=/path/to/deployment-config.json
-firectl create deployment falcon-7b --deployment-shape=falcon-7b-shape
+firectl dataset delete my-dataset
+firectl dataset delete accounts/my-account/datasets/my-dataset
+```
+
+### Flags
+
+```
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for delete
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --wait                    Wait until the dataset is deleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dataset download
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-download
+
+Downloads a dataset to a local directory.
+
+```
+firectl dataset download [flags]
+```
+
+### Examples
+
+```
+# Download a single dataset
+firectl dataset download my-dataset --output-dir /path/to/download
+
+# Download entire lineage chain (only for batch inference continuation jobs)
+firectl dataset download my-dataset --download-lineage --output-dir /path/to/download
+```
+
+### Flags
+
+```
+      --download-lineage    If true, downloads entire lineage chain (all related datasets)
+  -h, --help                help for download
+      --output-dir string   Directory to download dataset files to (default ".")
+      --quiet               If true, does not show download progress
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dataset get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-get
+
+Prints information about a dataset.
+
+```
+firectl dataset get [flags]
+```
+
+### Examples
+
+```
+firectl dataset get my-dataset
+firectl dataset get accounts/my-account/datasets/my-dataset
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dataset list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-list
+
+Prints all datasets in an account.
+
+```
+firectl dataset list [flags]
+```
+
+### Examples
+
+```
+firectl dataset list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dataset update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dataset-update
+
+Updates a dataset.
+
+```
+firectl dataset update [flags]
+```
+
+### Examples
+
+```
+firectl dataset update my-dataset
+firectl dataset update accounts/my-account/datasets/my-dataset
+```
+
+### Flags
+
+```
+      --display-name string   The display name of the dataset.
+      --dry-run               Print the request proto without running it.
+  -h, --help                  help for update
+  -o, --output Output         Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployed-model get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployed-model-get
+
+Prints information about a deployed model.
+
+```
+firectl deployed-model get [flags]
+```
+
+### Examples
+
+```
+firectl deployed-model get my-deployed-model
+firectl deployed-model get accounts/my-account/deployedModels/my-deployed-model
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployed-model list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployed-model-list
+
+Prints all deployed models in the account.
+
+```
+firectl deployed-model list [flags]
+```
+
+### Examples
+
+```
+firectl deployed-model list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployed-model update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployed-model-update
+
+Update a deployed model.
+
+```
+firectl deployed-model update [flags]
+```
+
+### Examples
+
+```
+firectl deployed-model update my-deployed-model
+firectl deployed-model update accounts/my-account/deployedModels/my-deployed-model
+```
+
+### Flags
+
+```
+      --default #<deployment>   If true, this is the default deployment when querying this model without the #<deployment> suffix.
+      --description string      Description of the deployed model. Must be fewer than 1000 characters long.
+      --display-name string     Human-readable name of the deployed model. Must be fewer than 64 characters long.
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for update
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --public                  If true, the deployed model will be publicly reachable.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-create
+
+Creates a new deployment.
+
+```
+firectl deployment create [flags]
+```
+
+### Examples
+
+```
+firectl deployment create falcon-7b
+firectl deployment create accounts/fireworks/models/falcon-7b
+firectl deployment create falcon-7b --file=/path/to/deployment-config.json
+firectl deployment create falcon-7b --deployment-shape=falcon-7b-shape
 ```
 
 ### Flags
@@ -14050,21 +16612,22 @@ firectl create deployment falcon-7b --deployment-shape=falcon-7b-shape
       --display-name string                 Human-readable name of the deployment. Must be fewer than 64 characters long.
       --draft-model string                  The draft model to use for speculative decoding. If the model is under your account, you can specify the model ID. If the model is under another account, you can specify the full resource name (e.g. accounts/other-account/models/falcon-7b).
       --draft-token-count int32             The number of tokens to generate per step for speculative decoding.
+      --dry-run                             Print the request proto without running it.
       --enable-addons                       If true, enable addons for this deployment.
       --enable-mtp                          If true, enable multi-token prediction for this deployment.
       --enable-session-affinity             If true, does sticky routing based on the 'user' field. Only available to enterprise accounts.
       --expire-time string                  If specified, the time at which the deployment will automatically be deleted. Specified in YYYY-MM-DD[ HH:MM:SS] format.
       --file string                         Path to a JSON configuration file containing deployment settings.
-  -h, --help                                help for deployment
+  -h, --help                                help for create
       --load-targets Map                    Map of autoscaling load metric names to their target utilization factors. Only available to enterprise accounts.
       --long-prompt                         Whether this deployment is optimized for long prompts.
       --max-context-length int32            The maximum context length supported by the model (context window). If not specified, the model's default maximum context length will be used.
       --max-replica-count int32             Maximum number of replicas for the deployment. If min-replica-count > 0 defaults to 0, otherwise defaults to 1.
       --min-replica-count int32             Minimum number of replicas for the deployment. If min-replica-count < max-replica-count the deployment will automatically scale between the two replica counts based on load.
-      --multi-region string                 The multi-region where the deployment must be placed.
       --ngram-speculation-length int32      The length of previous input sequence to be considered for N-gram speculation.
+  -o, --output Output                       Set the output format to "text", "json", or "flag". (default text)
       --precision string                    The precision with which the model is served. If specified, must be one of {FP8, FP16, FP8_MM, FP8_AR, FP8_MM_KV_ATTN, FP8_KV, FP8_MM_V2, FP8_V2, FP8_MM_KV_ATTN_V2, FP4, BF16, FP4_BLOCKSCALED_MM, FP4_MX_MOE}.
-      --region string                       The region where the deployment must be placed.
+      --region string                       Placement: 'global', region group (us), or specific region (us-iowa-1).
       --scale-down-window duration          The duration the autoscaler will wait before scaling down a deployment after observing decreased load. Default is 10m.
       --scale-to-zero-window duration       The duration after which there are no requests that the deployment will be scaled down to zero replicas, if min-replica-count is 0. Default 1h.
       --scale-up-window duration            The duration the autoscaler will wait before scaling up a deployment after observing increased load. Default is 30s.
@@ -14078,31 +16641,359 @@ firectl create deployment falcon-7b --deployment-shape=falcon-7b-shape
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl create dpo-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dpo-job
+# firectl deployment delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-delete
 
-Creates a dpo job.
+Deletes a deployment.
 
 ```
-firectl create dpo-job [flags]
+firectl deployment delete [flags]
 ```
 
 ### Examples
 
 ```
-firectl create dpoj \
+firectl deployment delete my-deployment
+firectl deployment delete accounts/my-account/deployments/my-deployment
+```
+
+### Flags
+
+```
+      --dry-run                 Print the request proto without running it.
+      --hard                    Hard delete the deployment
+  -h, --help                    help for delete
+      --ignore-checks           Skip checking if the deployment is in use before deleting
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --wait                    Wait until the deployment is deleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 1h0m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-get
+
+Prints information about a deployment.
+
+```
+firectl deployment get [flags]
+```
+
+### Examples
+
+```
+firectl deployment get my-deployment
+firectl deployment get accounts/my-account/deployments/my-deployment
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-list
+
+Prints all deployments in the account.
+
+```
+firectl deployment list [flags]
+```
+
+### Examples
+
+```
+firectl deployment list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+      --show-deleted        If true, DELETED deployments will be included.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment scale
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-scale
+
+Scales a deployment to a specified number of replicas.
+
+```
+firectl deployment scale [flags]
+```
+
+### Examples
+
+```
+firectl deployment scale my-deployment --replica-count=3
+firectl deployment scale accounts/my-account/deployments/my-deployment --replica-count=3
+```
+
+### Flags
+
+```
+  -h, --help                  help for scale
+      --replica-count int32   The desired number of replicas. Must be non-negative.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment-shape-version get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-shape-version-get
+
+Prints information about a deployment shape version.
+
+```
+firectl deployment-shape-version get [flags]
+```
+
+### Examples
+
+```
+firectl deployment-shape-version get accounts/my-account/deploymentShapes/my-deployment-shape/versions/my-version
+firectl deployment-shape-version get accounts/my-account/deploymentShapes/my-deployment-shape/versions/latest
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment-shape-version list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-shape-version-list
+
+Prints all deployment shape versions of this deployment shape.
+
+```
+firectl deployment-shape-version list [flags]
+```
+
+### Examples
+
+```
+firectl deployment-shape-version list my-deployment-shape
+firectl deployment-shape-version list accounts/my-account/deploymentShapes/my-deployment-shape
+firectl deployment-shape-version list
+```
+
+### Flags
+
+```
+      --base-model string   If specified, will filter out versions not matching the given base model.
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment undelete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-undelete
+
+Undeletes a deployment.
+
+```
+firectl deployment undelete [flags]
+```
+
+### Examples
+
+```
+firectl deployment undelete my-deployment
+```
+
+### Flags
+
+```
+  -h, --help                    help for undelete
+      --wait                    Wait until the deployment is undeleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 1h0m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl deployment update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/deployment-update
+
+Update a deployment.
+
+```
+firectl deployment update [flags]
+```
+
+### Examples
+
+```
+firectl deployment update my-deployment
+firectl deployment update accounts/my-account/deployments/my-deployment
+```
+
+### Flags
+
+```
+      --accelerator-count int32             The number of accelerators to use per replica.
+      --accelerator-type string             The type of accelerator to use. Must be one of {NVIDIA_A100_80GB, NVIDIA_H100_80GB, NVIDIA_H200_141GB, AMD_MI300X_192GB}
+      --deployment-shape string             The deployment shape to use for this deployment.
+      --description string                  Description of the deployment.
+      --direct-route-api-keys stringArray   The API keys for the direct route. Only available to enterprise accounts.
+      --direct-route-type string            If set, this deployment will expose an endpoint that bypasses our API gateway. Must be one of {INTERNET, GCP_PRIVATE_SERVICE_CONNECT, AWS_PRIVATELINK}. Only available to enterprise accounts.
+      --display-name string                 Human-readable name of the deployment. Must be fewer than 64 characters long.
+      --draft-model string                  The draft model to use for speculative decoding. If the model is under your account, you can specify the model ID. If the model is under another account, you can specify the full resource name (e.g. accounts/other-account/models/falcon-7b).
+      --draft-token-count int32             The number of tokens to generate per step for speculative decoding.
+      --dry-run                             Print the request proto without running it.
+      --enable-addons                       If true, enable addons for this deployment.
+      --enable-mtp                          If true, enable multi-token prediction for this deployment.
+      --enable-session-affinity             If true, does sticky routing based on the 'user' field. Only available to enterprise accounts.
+      --expire-time string                  If specified, the time at which the deployment will automatically be deleted. Specified in YYYY-MM-DD[ HH:MM:SS] format.
+  -h, --help                                help for update
+      --load-targets Map                    Map of autoscaling load metric names to their target utilization factors. Only available to enterprise accounts.
+      --long-prompt                         Whether this deployment is optimized for long prompts.
+      --max-context-length int32            The maximum context length supported by the model (context window). If not specified, the model's default maximum context length will be used.
+      --max-replica-count int32             Maximum number of replicas for the deployment. If min-replica-count > 0 defaults to 0, otherwise defaults to 1.
+      --min-replica-count int32             Minimum number of replicas for the deployment. If min-replica-count < max-replica-count the deployment will automatically scale between the two replica counts based on load.
+      --ngram-speculation-length int32      The length of previous input sequence to be considered for N-gram speculation.
+  -o, --output Output                       Set the output format to "text", "json", or "flag". (default text)
+      --precision string                    The precision with which the model is served. If specified, must be one of {FP8, FP16, FP8_MM, FP8_AR, FP8_MM_KV_ATTN, FP8_KV, FP8_MM_V2, FP8_V2, FP8_MM_KV_ATTN_V2, FP4, BF16, FP4_BLOCKSCALED_MM, FP4_MX_MOE}.
+      --scale-down-window duration          The duration the autoscaler will wait before scaling down a deployment after observing decreased load. Default is 10m.
+      --scale-to-zero-window duration       The duration after which there are no requests that the deployment will be scaled down to zero replicas, if min-replica-count is 0. Default 1h.
+      --scale-up-window duration            The duration the autoscaler will wait before scaling up a deployment after observing increased load. Default is 30s.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dpo-job cancel
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-cancel
+
+Cancels a running dpo job.
+
+```
+firectl dpo-job cancel [flags]
+```
+
+### Examples
+
+```
+firectl dpo-job cancel my-dpo-job
+firectl dpo-job cancel accounts/my-account/dpoJobs/my-dpo-job
+```
+
+### Flags
+
+```
+  -h, --help                    help for cancel
+      --wait                    Wait until the dpo job is cancelled.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 10m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dpo-job create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-create
+
+Creates a dpo job.
+
+```
+firectl dpo-job create [flags]
+```
+
+### Examples
+
+```
+firectl dpo-job create \
 	--base-model llama-v3-8b-instruct \
 	--dataset sample-dataset \
 	--output-model name-of-the-trained-model
 
 # Create from source job:
-firectl create dpoj \
+firectl dpo-job create \
 	--source-job my-previous-job \
 	--output-model new-model
 
@@ -14119,13 +17010,14 @@ firectl create dpoj \
       --source-job string                   The source dpo job to copy configuration from. If other flags are set, they will override the source job's configuration.
       --epochs int32                        The number of epochs for the dpo job.
       --learning-rate float32               The learning rate for the dpo job.
-      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated. (default 8192)
-      --batch-size int32                    The maximum number of tokens packed into each training batch in the dpo job. (default 32768)
-      --gradient-accumulation-steps int32   The number of gradient accumulation steps for the dpo job. (default 1)
+      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated.
+      --batch-size int32                    The batch size measured in tokens. Maximum number of tokens packed into each training batch/step. A single sequence will not be split across batches.
+      --batch-size-samples int32            Number of samples per gradient update. If set to k, gradients update after every k samples. By default (0), gradients update based on batch-size (tokens).
+      --gradient-accumulation-steps int32   The number of batches to accumulate gradients before updating the model parameters. The effective batch size will be batch-size multiplied by this value. (default 1)
       --learning-rate-warmup-steps int32    The number of learning rate warmup steps for the dpo job.
       --lora-rank int32                     The rank of the LoRA layers for the dpo job. (default 8)
-      --accelerator-count int32             The number of accelerators to use for the dpo job.
-                                             (default 1)
+      --optimizer-weight-decay float32      Weight decay (L2 regularization) for the optimizer. Default in trainer is 0.01.
+                                            
       --wandb-api-key string                [WANDB_API_KEY] WandB API Key. (Required if any WandB flag is set)
       --wandb-project string                [WANDB_PROJECT] WandB Project. (Required if any WandB flag is set)
       --wandb-entity string                 [WANDB_ENTITY] WandB Entity. (Required if any WandB flag is set)
@@ -14134,351 +17026,10 @@ firectl create dpoj \
       --display-name string                 The display name of the dpo job.
       --early-stop                          Enable early stopping for the dpo job.
       --quiet                               If set, only errors will be printed.
-  -h, --help                                help for dpo-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create identity-provider
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-identity-provider
-
-Creates a new identity provider.
-
-```
-firectl create identity-provider [flags]
-```
-
-### Examples
-
-```
-# Create SAML identity provider
-firectl create identity-provider --display-name="Company SAML" \
-  --saml-metadata-url="https://company.okta.com/app/xyz/sso/saml/metadata"
-
-# Create OIDC identity provider
-firectl create identity-provider --display-name="Company OIDC" \
-  --oidc-issuer="https://auth.company.com" \
-  --oidc-client-id="abc123" \
-  --oidc-client-secret="secret456"
-
-# Create OIDC identity provider with multiple domains
-firectl create identity-provider --display-name="Example OIDC" \
-  --oidc-issuer="https://accounts.google.com" \
-  --oidc-client-id="client123" \
-  --oidc-client-secret="secret456" \
-  --tenant-domains="example.com,example.co.uk"
-```
-
-### Flags
-
-```
-      --display-name string         The display name of the identity provider (required)
-  -h, --help                        help for identity-provider
-      --oidc-client-id string       The OIDC client ID for OIDC providers
-      --oidc-client-secret string   The OIDC client secret for OIDC providers
-      --oidc-issuer string          The OIDC issuer URL for OIDC providers
-      --saml-metadata-url string    The SAML metadata URL for SAML providers
-      --tenant-domains string       Comma-separated list of allowed domains for the organization (e.g., 'example.com,example.co.uk'). If not provided, domain will be derived from account email.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-model
-
-Creates and uploads a model.
-
-```
-firectl create model [flags]
-```
-
-### Examples
-
-```
-firectl create model my-model /path/to/checkpoint/
-firectl create model my-model s3://bucket/path
-```
-
-### Flags
-
-```
-      --base-model string                 If specified, then the model will be considered a PEFT addon with the given base model.
-      --default-draft-model string        The default speculative draft model to use when creating a deployment.
-      --default-draft-token-count int32   The default speculative draft token count when creating a deployment.
-      --description string                The description of the model.
-      --display-name string               The display name of the model.
-      --embedding                         If true, sets the model kind to an embeddings base model.
-      --enable-resumable-upload           If true, uses resumable upload for the model.
-      --github-url string                 The GitHub URL of the model.
-  -h, --help                              help for model
-      --hugging-face-url string           The Hugging Face URL of the model.
-      --poll-duration duration            The duration to poll for model import operation completion. Default is 2 hours. (default 2h0m0s)
-      --public                            Whether the model is publicly accessible.
-      --quiet                             If true, does not print the upload progress bar.
-      --supports-image-input              Whether the model supports image inputs.
-      --supports-tools                    Whether the model supports function calling.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create reinforcement-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-reinforcement-fine-tuning-job
-
-Creates a reinforcement fine-tuning job.
-
-```
-firectl create reinforcement-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl create reinforcement-fine-tuning-job \
-	--base-model llama-v3-8b-instruct \
-	--dataset sample-dataset \
-	--epochs 5 \
-	--output-model name-of-the-trained-model \
-	--evaluator accounts/my-account/evaluators/abc123
-
-# Create from source job:
-firectl create reinforcement-fine-tuning-job \
-	--source-job my-previous-job \
-	--output-model new-model
-
-```
-
-### Flags
-
-```
-      --base-model string                   The base model for the reinforcement fine-tuning job. Only one of base-model or warm-start-from should be specified.
-      --dataset string                      The dataset for the reinforcement fine-tuning job. (Required)
-      --output-model string                 The output model for the reinforcement fine-tuning job.
-      --job-id string                       The ID of the reinforcement fine-tuning job. If not set, it will be autogenerated.
-      --warm-start-from string              The model to warm start from. If set, base-model must not be set.
-      --source-job string                   The source reinforcement fine-tuning job to copy configuration from. If other flags are set, they will override the source job's configuration.
-      --evaluator string                    The evaluator resource name to use for the reinforcement fine-tuning job. (Required)
-      --mcp-server string                   The MCP server resource name to use for the reinforcement fine-tuning job. (Optional)
-      --epochs int32                        The number of epochs for the reinforcement fine-tuning job. (default 5)
-      --learning-rate float32               The learning rate for the reinforcement fine-tuning job. (default 0.0001)
-      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated. (default 8192)
-      --batch-size int32                    The maximum number of tokens packed into each training batch in the reinforcement fine-tuning. (default 32768)
-      --gradient-accumulation-steps int32   The number of gradient accumulation steps for the reinforcement fine-tuning job. (default 1)
-      --learning-rate-warmup-steps int32    The number of learning rate warmup steps for the reinforcement fine-tuning job.
-      --lora-rank int32                     The rank of the LoRA layers for the reinforcement fine-tuning job.
-                                             (default 8)
-      --wandb-api-key string                [WANDB_API_KEY] WandB API Key. (Required if any WandB flag is set)
-      --wandb-project string                [WANDB_PROJECT] WandB Project. (Required if any WandB flag is set)
-      --wandb-entity string                 [WANDB_ENTITY] WandB Entity. (Required if any WandB flag is set)
-      --wandb                               Enable WandB
-                                            
-      --temperature float32                 The randomness of the model's word or token selection during text generation. (default 1)
-      --top-p float32                       Top-p sampling, selecting the smallest set of candidate words whose cumulative probability exceeds the top-p. (default 1)
-      --response-candidates-count int32     The number of response candidates to generate per input. (default 4)
-      --max-output-tokens int32             The maximum number of tokens to generate in the response. If 0, the model's default will be used.
-      --top-k int32                         Top-k sampling parameter, limits the token selection to the top k tokens.
-      --extra-body string                   Additional parameters for the inference request as a JSON string. For example: '{"stop": ["\n"]}'
-      --quiet                               If set, only errors will be printed.
-      --eval-auto-carveout                  If set, the evaluation dataset will be auto-carved.
-  -h, --help                                help for reinforcement-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create secret
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-secret
-
-Creates a secret for the signed in user.
-
-```
-firectl create secret [flags]
-```
-
-### Examples
-
-```
-firectl create secret --name MY_SECRET --value mysecretvalue
-```
-
-### Flags
-
-```
-  -h, --help           help for secret
-      --name string    The name of the secret to be created
-      --value string   The value of the secret
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create supervised-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-supervised-fine-tuning-job
-
-Creates a supervised fine-tuning job.
-
-```
-firectl create supervised-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl create sftj \
-	--base-model llama-v3-8b-instruct \
-	--dataset sample-dataset \
-	--output-model name-of-the-trained-model
-
-# Create from source job:
-firectl create sftj \
-	--source-job my-previous-job \
-	--output-model new-model
-
-```
-
-### Flags
-
-```
-      --base-model string                   The base model for the supervised fine-tuning job. Only one of base-model or warm-start-from should be specified.
-      --dataset string                      The dataset for the supervised fine-tuning job. (Required)
-      --output-model string                 The output model for the supervised fine-tuning job.
-      --job-id string                       The ID of the supervised fine-tuning job. If not set, it will be autogenerated.
-      --warm-start-from string              The model to warm start from. If set, base-model must not be set.
-      --source-job string                   The source supervised fine-tuning job to copy configuration from. If other flags are set, they will override the source job's configuration.
-      --evaluation-dataset string           The evaluation dataset for the supervised fine-tuning job.
-      --epochs int32                        The number of epochs for the supervised fine-tuning job.
-      --learning-rate float32               The learning rate for the supervised fine-tuning job.
-      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated. (default 8192)
-      --batch-size int32                    The maximum number of tokens packed into each training batch. (default 32768)
-      --gradient-accumulation-steps int32   The number of gradient accumulation steps for the supervised fine-tuning job. (default 1)
-      --learning-rate-warmup-steps int32    The number of learning rate warmup steps for the supervised fine-tuning job.
-      --lora-rank int32                     The rank of the LoRA layers for the supervised fine-tuning job.
-                                             (default 8)
-      --wandb-api-key string                [WANDB_API_KEY] WandB API Key. (Required if any WandB flag is set)
-      --wandb-project string                [WANDB_PROJECT] WandB Project. (Required if any WandB flag is set)
-      --wandb-entity string                 [WANDB_ENTITY] WandB Entity. (Required if any WandB flag is set)
-      --wandb                               Enable WandB
-                                            
-      --display-name string                 The display name of the supervised fine-tuning job.
-      --early-stop                          Enable early stopping for the supervised fine-tuning job.
-      --quiet                               If set, only errors will be printed.
-      --eval-auto-carveout                  If set, the evaluation dataset will be auto-carved.
-      --mtp-enable                          If set, enables MTP (Multi-Token-Prediction) layer (only available for Deepseek finetuning).
-      --mtp-num-draft-tokens int32          Number of draft tokens in MTP. Needs to be between 1 and 3. Default is 1.
-      --mtp-freeze-base-model               If set, freezes the base model parameters during MTP training.
-  -h, --help                                help for supervised-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl create user
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-user
-
-Creates a new user.
-
-```
-firectl create user [flags]
-```
-
-### Examples
-
-```
-firectl create user --email="alice.cullen@gmail.com"
-firectl create user --service-account --user-id="my-bot"
-```
-
-### Flags
-
-```
-      --display-name string   The display name of the user.
-      --email string          The email address of the user (not required for service accounts).
-  -h, --help                  help for user
-      --role string           The user's role, must be one of "user" or "admin" (default "user")
-      --service-account       Admin only: Create as a service account (email will be auto-generated)
-      --user-id string        The ID of the user (required for service accounts).
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete api-key
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-api-key
-
-Deletes an API key.
-
-```
-firectl delete api-key [flags]
-```
-
-### Examples
-
-```
-firectl delete api-key key-id
-```
-
-### Flags
-
-```
-  -h, --help   help for api-key
+      --loss-method string                  Loss method for the job (GRPO, DPO, or ORPO). Defaults to GRPO if not specified.
+      --dry-run                             Print the request proto without running it.
+  -o, --output Output                       Set the output format to "text", "json", or "flag". (default text)
+  -h, --help                                help for create
 ```
 
 ### Global flags
@@ -14490,127 +17041,28 @@ firectl delete api-key key-id
 ```
 
 
-# firectl delete batch-inference-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-batch-inference-job
-
-Deletes a batch inference job.
-
-```
-firectl delete batch-inference-job [flags]
-```
-
-### Examples
-
-```
-firectl delete batch-inference-job my-batch-job
-firectl delete batch-inference-job accounts/my-account/batch-inference-jobs/my-batch-job
-```
-
-### Flags
-
-```
-  -h, --help                    help for batch-inference-job
-      --wait                    Wait until the batch inference job is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete dataset
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset
-
-Deletes a dataset.
-
-```
-firectl delete dataset [flags]
-```
-
-### Examples
-
-```
-firectl delete dataset my-dataset
-firectl delete dataset accounts/my-account/datasets/my-dataset
-```
-
-### Flags
-
-```
-  -h, --help                    help for dataset
-      --wait                    Wait until the dataset is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete deployment
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment
-
-Deletes a deployment.
-
-```
-firectl delete deployment [flags]
-```
-
-### Examples
-
-```
-firectl delete deployment my-deployment
-firectl delete deployment accounts/my-account/deployments/my-deployment
-```
-
-### Flags
-
-```
-      --hard                    Hard delete the deployment
-  -h, --help                    help for deployment
-      --ignore-checks           Skip checking if the deployment is in use before deleting
-      --wait                    Wait until the deployment is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 1h0m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete dpo-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dpo-job
+# firectl dpo-job delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-delete
 
 Deletes a dpo job.
 
 ```
-firectl delete dpo-job [flags]
+firectl dpo-job delete [flags]
 ```
 
 ### Examples
 
 ```
-firectl delete dpo-job my-dpo-job
-firectl delete dpo-job accounts/my-account/dpo-jobs/my-dpo-job
+firectl dpo-job delete my-dpo-job
+firectl dpo-job delete accounts/my-account/dpoJobs/my-dpo-job
 ```
 
 ### Flags
 
 ```
-  -h, --help                    help for dpo-job
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for delete
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
       --wait                    Wait until the dpo job is deleted.
       --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
 ```
@@ -14624,255 +17076,27 @@ firectl delete dpo-job accounts/my-account/dpo-jobs/my-dpo-job
 ```
 
 
-# firectl delete model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model
+# firectl dpo-job export-metrics
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-export-metrics
 
-Deletes a model.
-
-```
-firectl delete model [flags]
-```
-
-### Examples
+Exports metrics for a dpo job.
 
 ```
-firectl delete model my-model
-firectl delete model accounts/my-account/models/my-model
-```
-
-### Flags
-
-```
-  -h, --help   help for model
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete reinforcement-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-reinforcement-fine-tuning-job
-
-Deletes a reinforcement fine-tuning job.
-
-```
-firectl delete reinforcement-fine-tuning-job [flags]
+firectl dpo-job export-metrics [flags]
 ```
 
 ### Examples
 
 ```
-firectl delete reinforcement-fine-tuning-job my-rftj
-firectl delete reinforcement-fine-tuning-job accounts/my-account/reinforcementFineTuningJobs/my-rftj
-```
-
-### Flags
-
-```
-  -h, --help                    help for reinforcement-fine-tuning-job
-      --wait                    Wait until the reinforcement fine-tuning job is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete secret
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-secret
-
-Deletes a secret.
-
-```
-firectl delete secret [flags]
-```
-
-### Examples
-
-```
-firectl delete secret MY_SECRET
-```
-
-### Flags
-
-```
-  -h, --help   help for secret
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete supervised-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-supervised-fine-tuning-job
-
-Deletes a supervised fine-tuning job.
-
-```
-firectl delete supervised-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl delete supervised-fine-tuning-job my-sft-job
-firectl delete supervised-fine-tuning-job accounts/my-account/supervised-fine-tuning-jobs/my-sft-job
-```
-
-### Flags
-
-```
-  -h, --help                    help for supervised-fine-tuning-job
-      --wait                    Wait until the supervised fine-tuning job is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl delete user
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-user
-
-Deletes a user.
-
-```
-firectl delete user [flags]
-```
-
-### Examples
-
-```
-firectl delete user my-user
-firectl delete user accounts/my-account/users/my-user
-```
-
-### Flags
-
-```
-  -h, --help   help for user
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl download billing-metrics
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/download-billing-metrics
-
-Exports billing metrics
-
-```
-firectl download billing-metrics [flags]
-```
-
-### Examples
-
-```
-firectl export billing-metrics
-```
-
-### Flags
-
-```
-      --end-time string     The end time (exclusive).
-      --filename string     The file name to export to. (default "billing_metrics.csv")
-  -h, --help                help for billing-metrics
-      --start-time string   The start time (inclusive).
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl download dataset
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/download-dataset
-
-Downloads a dataset to a local directory.
-
-```
-firectl download dataset [flags]
-```
-
-### Examples
-
-```
-# Download a single dataset
-firectl download dataset my-dataset --output-dir /path/to/download
-
-# Download entire lineage chain
-firectl download dataset my-dataset --download-lineage --output-dir /path/to/download
-```
-
-### Flags
-
-```
-      --download-lineage    If true, downloads entire lineage chain (all related datasets)
-  -h, --help                help for dataset
-      --output-dir string   Directory to download dataset files to (default ".")
-      --quiet               If true, does not show download progress
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl download dpo-job-metrics
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/download-dpo-job-metrics
-
-Retrieves metrics for a dpo job.
-
-```
-firectl download dpo-job-metrics [flags]
-```
-
-### Examples
-
-```
-firectl download dpoj-metrics my-dpo-job
-firectl download dpoj-metrics accounts/my-account/dpo-jobs/my-dpo-job
+firectl dpo-job export-metrics my-dpo-job
+firectl dpo-job export-metrics accounts/my-account/dpoJobs/my-dpo-job
 ```
 
 ### Flags
 
 ```
       --filename string   The file name to export to. (default "metrics.jsonl")
-  -h, --help              help for dpo-job-metrics
+  -h, --help              help for export-metrics
 ```
 
 ### Global flags
@@ -14884,25 +17108,456 @@ firectl download dpoj-metrics accounts/my-account/dpo-jobs/my-dpo-job
 ```
 
 
-# firectl download model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/download-model
+# firectl dpo-job get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-get
 
-Download a model.
+Retrieves information about a dpo job.
 
 ```
-firectl download model [flags]
+firectl dpo-job get [flags]
 ```
 
 ### Examples
 
 ```
-firectl download model my-model /path/to/checkpoint/
+firectl dpo-job get my-dpo-job
+firectl dpo-job get accounts/my-account/dpoJobs/my-dpo-job
 ```
 
 ### Flags
 
 ```
-  -h, --help    help for model
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dpo-job list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-list
+
+Lists all dpo jobs in an account.
+
+```
+firectl dpo-job list [flags]
+```
+
+### Examples
+
+```
+firectl dpo-job list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl dpo-job resume
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/dpo-job-resume
+
+Resumes a dpo job.
+
+```
+firectl dpo-job resume [flags]
+```
+
+### Examples
+
+```
+firectl dpo-job resume my-dpo-job
+firectl dpo-job resume accounts/my-account/dpoJobs/my-dpo-job
+```
+
+### Flags
+
+```
+  -h, --help   help for resume
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl evaluator-revision alias
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/evaluator-revision-alias
+
+Alias an evaluator revision
+
+```
+firectl evaluator-revision alias [flags]
+```
+
+### Examples
+
+```
+firectl evaluator-revision alias accounts/my-account/evaluators/my-evaluator/versions/abc123 --alias-id current
+```
+
+### Flags
+
+```
+  -h, --help   help for alias
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl evaluator-revision delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/evaluator-revision-delete
+
+Delete an evaluator revision
+
+```
+firectl evaluator-revision delete [flags]
+```
+
+### Examples
+
+```
+firectl evaluator-revision delete accounts/my-account/evaluators/my-evaluator/versions/abc123
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for delete
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl evaluator-revision get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/evaluator-revision-get
+
+Get an evaluator revision
+
+```
+firectl evaluator-revision get [flags]
+```
+
+### Examples
+
+```
+firectl evaluator-revision get accounts/my-account/evaluators/my-evaluator/versions/latest
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl evaluator-revision list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/evaluator-revision-list
+
+List evaluator revisions
+
+```
+firectl evaluator-revision list [flags]
+```
+
+### Examples
+
+```
+firectl evaluator-revision list accounts/my-account/evaluators/my-evaluator
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl identity-provider create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/identity-provider-create
+
+Creates a new identity provider.
+
+```
+firectl identity-provider create [flags]
+```
+
+### Examples
+
+```
+# Create SAML identity provider
+firectl identity-provider create --display-name="Company SAML" \
+  --saml-metadata-url="https://company.okta.com/app/xyz/sso/saml/metadata"
+
+# Create OIDC identity provider
+firectl identity-provider create --display-name="Company OIDC" \
+  --oidc-issuer="https://auth.company.com" \
+  --oidc-client-id="abc123" \
+  --oidc-client-secret="secret456"
+
+# Create OIDC identity provider with multiple domains
+firectl identity-provider create --display-name="Example OIDC" \
+  --oidc-issuer="https://accounts.google.com" \
+  --oidc-client-id="client123" \
+  --oidc-client-secret="secret456" \
+  --tenant-domains="example.com,example.co.uk"
+```
+
+### Flags
+
+```
+      --display-name string            The display name of the identity provider (required)
+      --dry-run                        Print the request proto without running it.
+      --enable-jit-user-provisioning   Enable Just-In-Time (JIT) user provisioning. When enabled, users are automatically created on first SSO login if they don't already exist.
+  -h, --help                           help for create
+      --oidc-client-id string          The OIDC client ID for OIDC providers
+      --oidc-client-secret string      The OIDC client secret for OIDC providers
+      --oidc-issuer string             The OIDC issuer URL for OIDC providers
+  -o, --output Output                  Set the output format to "text", "json", or "flag". (default text)
+      --saml-metadata-url string       The SAML metadata URL for SAML providers
+      --tenant-domains string          Comma-separated list of allowed domains for the organization (e.g., 'example.com,example.co.uk'). If not provided, domain will be derived from account email.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl identity-provider get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/identity-provider-get
+
+Prints information about an identity provider.
+
+```
+firectl identity-provider get [flags]
+```
+
+### Examples
+
+```
+firectl identity-provider get my-provider
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl identity-provider list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/identity-provider-list
+
+List identity providers for an account
+
+```
+firectl identity-provider list [flags]
+```
+
+### Examples
+
+```
+firectl identity-provider list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl model create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-create
+
+Creates and uploads a model.
+
+```
+firectl model create [flags]
+```
+
+### Examples
+
+```
+firectl model create my-model /path/to/checkpoint/
+firectl model create my-model s3://bucket/path --role-arn arn:aws:iam::123456789012:role/MyRole
+firectl model create my-model https://storage-account.blob.core.windows.net/container/path --azure-sas-token-secret accounts/{account}/secrets/{secret}
+firectl model create my-model https://storage-account.blob.core.windows.net/container/path --azure-client-id <client-id> --azure-tenant-id <tenant-id>
+```
+
+### Flags
+
+```
+      --base-model string                 If specified, then the model will be considered a PEFT addon with the given base model.
+      --default-draft-model string        The default speculative draft model to use when creating a deployment.
+      --default-draft-token-count int32   The default speculative draft token count when creating a deployment.
+      --description string                The description of the model.
+      --display-name string               The display name of the model.
+      --dry-run                           Print the request proto without running it.
+      --embedding                         If true, sets the model kind to an embeddings base model.
+      --enable-resumable-upload           If true, uses resumable upload for the model.
+      --github-url string                 The GitHub URL of the model.
+  -h, --help                              help for create
+      --hugging-face-url string           The Hugging Face URL of the model.
+  -o, --output Output                     Set the output format to "text", "json", or "flag". (default text)
+      --poll-duration duration            The duration to poll for model import operation completion. Default is 2 hours. (default 2h0m0s)
+      --public                            Whether the model is publicly accessible.
+      --quiet                             If true, does not print the upload progress bar.
+      --supports-image-input              Whether the model supports image inputs.
+      --supports-tools                    Whether the model supports function calling.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl model delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-delete
+
+Deletes a model.
+
+```
+firectl model delete [flags]
+```
+
+### Examples
+
+```
+firectl model delete my-model
+firectl model delete accounts/my-account/models/my-model
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for delete
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl model download
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-download
+
+Download a model.
+
+```
+firectl model download [flags]
+```
+
+### Examples
+
+```
+firectl model download my-model /path/to/checkpoint/
+```
+
+### Flags
+
+```
+  -h, --help    help for download
       --quiet   If true, does not print the upload progress bar.
 ```
 
@@ -14915,322 +17570,28 @@ firectl download model my-model /path/to/checkpoint/
 ```
 
 
-# firectl get account
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-account
-
-Prints information about an account.
-
-```
-firectl get account [flags]
-```
-
-### Examples
-
-```
-firectl get account
-firectl get account my-account
-firectl get account accounts/my-account
-```
-
-### Flags
-
-```
-  -h, --help   help for account
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get batch-inference-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-batch-inference-job
-
-Retrieves information about a batch inference job.
-
-```
-firectl get batch-inference-job [flags]
-```
-
-### Examples
-
-```
-firectl get batch-inference-job my-batch-job
-firectl get batch-inference-job accounts/my-account/batch-inference-jobs/my-batch-job
-```
-
-### Flags
-
-```
-  -h, --help   help for batch-inference-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get dataset
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dataset
-
-Prints information about a dataset.
-
-```
-firectl get dataset [flags]
-```
-
-### Examples
-
-```
-firectl get dataset my-dataset
-firectl get dataset accounts/my-account/datasets/my-dataset
-```
-
-### Flags
-
-```
-  -h, --help   help for dataset
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get deployed-model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployed-model
-
-Prints information about a deployed model.
-
-```
-firectl get deployed-model [flags]
-```
-
-### Examples
-
-```
-firectl get deployed-model my-deployed-model
-firectl get deployed-model accounts/my-account/deployed-models/my-deployed-model
-```
-
-### Flags
-
-```
-  -h, --help   help for deployed-model
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get deployment
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment
-
-Prints information about a deployment.
-
-```
-firectl get deployment [flags]
-```
-
-### Examples
-
-```
-firectl get deployment my-deployment
-firectl get deployment accounts/my-account/deployments/my-deployment
-```
-
-### Flags
-
-```
-  -h, --help   help for deployment
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get deployment-shape-version
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment-shape-version
-
-Prints information about a deployment shape version.
-
-```
-firectl get deployment-shape-version [flags]
-```
-
-### Examples
-
-```
-firectl get deployment-shape-version accounts/my-account/deploymentShapes/my-deployment-shape/versions/my-version
-		firectl get deployment-shape-version accounts/my-account/deploymentShapes/my-deployment-shape/versions/latest
-```
-
-### Flags
-
-```
-  -h, --help   help for deployment-shape-version
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get dpo-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dpo-job
-
-Retrieves information about a dpo job.
-
-```
-firectl get dpo-job [flags]
-```
-
-### Examples
-
-```
-firectl get dpo-job my-dpo-job
-firectl get dpo-job accounts/my-account/dpo-jobs/my-dpo-job
-```
-
-### Flags
-
-```
-  -h, --help   help for dpo-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get feature-flag
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-feature-flag
-
-Gets a feature flag.
-
-```
-firectl get feature-flag [flags]
-```
-
-### Examples
-
-```
-firectl get feature-flag my-account my-feature-flag
-```
-
-### Flags
-
-```
-  -h, --help   help for feature-flag
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get identity-provider
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-identity-provider
-
-Prints information about an identity provider.
-
-```
-firectl get identity-provider [flags]
-```
-
-### Examples
-
-```
-firectl get identity-provider my-provider
-```
-
-### Flags
-
-```
-  -h, --help   help for identity-provider
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-model
+# firectl model get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-get
 
 Prints information about a model.
 
 ```
-firectl get model [flags]
+firectl model get [flags]
 ```
 
 ### Examples
 
 ```
-firectl get model my-model
-firectl get model accounts/fireworks/models/my-model
+firectl model get my-model
+firectl model get accounts/fireworks/models/my-model
 ```
 
 ### Flags
 
 ```
-  -h, --help   help for model
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
 ```
 
 ### Global flags
@@ -15238,584 +17599,53 @@ firectl get model accounts/fireworks/models/my-model
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl get quota
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-quota
-
-Prints information about a quota.
-
-```
-firectl get quota [flags]
-```
-
-### Examples
-
-```
-firectl get quota serverless-inference-rpm
-firectl get quota accounts/my-account/quotas/serverless-inference-rpm
-```
-
-### Flags
-
-```
-  -h, --help   help for quota
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get reinforcement-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-reinforcement-fine-tuning-job
-
-Retrieves information about a reinforcement fine-tuning job.
-
-```
-firectl get reinforcement-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl get reinforcement-fine-tuning-job my-rftj
-firectl get reinforcement-fine-tuning-job accounts/my-account/reinforcementFineTuningJobs/my-rftj
-```
-
-### Flags
-
-```
-  -h, --help   help for reinforcement-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get reservation
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-reservation
-
-Prints information about a reservation.
-
-```
-firectl get reservation [flags]
-```
-
-### Examples
-
-```
-firectl get reservation abcdef
-firectl get reservation accounts/my-account/reservations/abcdef
-```
-
-### Flags
-
-```
-  -h, --help   help for reservation
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get secret
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-secret
-
-Retrieves a secret by name.
-
-```
-firectl get secret [flags]
-```
-
-### Examples
-
-```
-firectl get secret MY_SECRET
-```
-
-### Flags
-
-```
-  -h, --help   help for secret
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get supervised-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-supervised-fine-tuning-job
-
-Retrieves information about a supervised fine-tuning job.
-
-```
-firectl get supervised-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl get supervised-fine-tuning-job my-sft-job
-firectl get supervised-fine-tuning-job accounts/my-account/supervised-fine-tuning-jobs/my-sft-job
-```
-
-### Flags
-
-```
-  -h, --help   help for supervised-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl get user
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-user
-
-Prints information about a user.
-
-```
-firectl get user [flags]
-```
-
-### Examples
-
-```
-firectl get user my-user
-firectl get user accounts/my-account/users/my-user
-```
-
-### Flags
-
-```
-  -h, --help   help for user
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list accounts
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-accounts
-
-Prints all accounts the current signed-in user has access to.
-
-```
-firectl list accounts [flags]
-```
-
-### Examples
-
-```
-firectl list accounts
-```
-
-### Flags
-
-```
-  -h, --help   help for accounts
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list api-key
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-api-key
-
-Prints all API keys for the signed in user.
-
-```
-firectl list api-key [flags]
-```
-
-### Examples
-
-```
-firectl list api-keys
-```
-
-### Flags
-
-```
-      --all-users   Admin only: list API keys for all users in the account
-  -h, --help        help for api-key
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list batch-inference-jobs
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-batch-inference-jobs
-
-Lists all batch inference jobs in an account.
-
-```
-firectl list batch-inference-jobs [flags]
-```
-
-### Examples
-
-```
-firectl list batch-inference-jobs
-```
-
-### Flags
-
-```
-  -h, --help   help for batch-inference-jobs
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list datasets
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-datasets
-
-Prints all datasets in an account.
-
-```
-firectl list datasets [flags]
-```
-
-### Examples
-
-```
-firectl list datasets
-```
-
-### Flags
-
-```
-  -h, --help   help for datasets
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list deployed-models
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployed-models
-
-Prints all deployed models in the account.
-
-```
-firectl list deployed-models [flags]
-```
-
-### Examples
-
-```
-firectl list deployed-models
-```
-
-### Flags
-
-```
-  -h, --help   help for deployed-models
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list deployment-shape-versions
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployment-shape-versions
-
-Prints all deployment shape versions of this deployment shape.
-
-```
-firectl list deployment-shape-versions [flags]
-```
-
-### Examples
-
-```
-firectl list deployment-shape-versions my-deployment-shape
-firectl list deployment-shape-versions accounts/my-account/deploymentShapes/my-deployment-shape
-firectl list deployment-shape-versions
-```
-
-### Flags
-
-```
-      --base-model string   If specified, will filter out versions not matching the given base model.
-  -h, --help                help for deployment-shape-versions
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list deployments
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployments
-
-Prints all deployments in the account.
-
-```
-firectl list deployments [flags]
-```
-
-### Examples
-
-```
-firectl list deployments
-```
-
-### Flags
-
-```
-  -h, --help           help for deployments
-      --show-deleted   If true, DELETED deployments will be included.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list dpo-jobs
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-dpo-jobs
-
-Lists all dpo jobs in an account.
-
-```
-firectl list dpo-jobs [flags]
-```
-
-### Examples
-
-```
-firectl list dpo-jobs
-```
-
-### Flags
-
-```
-  -h, --help   help for dpo-jobs
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list identity-providers
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-identity-providers
-
-List identity providers for an account
-
-```
-firectl list identity-providers [flags]
-```
-
-### Examples
-
-```
-firectl list identity-providers
-```
-
-### Flags
-
-```
-  -h, --help   help for identity-providers
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list invoices
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-invoices
-
-Prints information about invoices.
-
-```
-firectl list invoices [flags]
-```
-
-### Examples
-
-```
-firectl list invoices
-```
-
-### Flags
-
-```
-  -h, --help           help for invoices
-      --show-pending   If true, only pending invoices are shown.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list models
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-models
+# firectl model list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-list
 
 Prints all models in an account.
 
 ```
-firectl list models [flags]
+firectl model list [flags]
 ```
 
 ### Examples
 
 ```
-firectl list models
+# List all models
+firectl model list
+
+# Search by name (partial match)
+firectl model list --search deepseek
+
+# Filter by kind
+firectl model list --kind HF_PEFT_ADDON
+
+# Filter by state
+firectl model list --state READY
+
+# Combine filters
+firectl model list --search deepseek --kind HF_PEFT_ADDON
+
+# Use raw filter for advanced queries
+firectl model list --filter 'create_time > timestamp("2025-01-01T00:00:00Z")'
 ```
 
 ### Flags
 
 ```
-  -h, --help   help for models
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --kind string         Filter by model kind (e.g., HF_PEFT_ADDON, HF_BASE_MODEL, DRAFT_ADDON)
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+      --search string       Filter models by name (searches both model_id and display_name)
+      --state string        Filter by state (e.g., READY, UPLOADING)
 ```
 
 ### Global flags
@@ -15823,244 +17653,27 @@ firectl list models
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl list quotas
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-quotas
+# firectl model load-lora
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-load-lora
 
-Prints all quotas.
-
-```
-firectl list quotas [flags]
-```
-
-### Examples
-
-```
-firectl list quotas
-```
-
-### Flags
-
-```
-  -h, --help   help for quotas
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list reinforcement-fine-tuning-jobs
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-reinforcement-fine-tuning-jobs
-
-Lists all reinforcement fine-tuning jobs in an account.
-
-```
-firectl list reinforcement-fine-tuning-jobs [flags]
-```
-
-### Examples
-
-```
-firectl list reinforcement-fine-tuning-jobs
-```
-
-### Flags
-
-```
-  -h, --help   help for reinforcement-fine-tuning-jobs
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list reservations
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-reservations
-
-Prints active reservations.
-
-```
-firectl list reservations [flags]
-```
-
-### Examples
-
-```
-firectl list reservations
-```
-
-### Flags
-
-```
-  -h, --help            help for reservations
-      --show-inactive   Show all reservations
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list secret
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-secret
-
-Lists all secrets for the signed in user.
-
-```
-firectl list secret [flags]
-```
-
-### Examples
-
-```
-firectl list secrets
-```
-
-### Flags
-
-```
-  -h, --help   help for secret
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list supervised-fine-tuning-jobs
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-supervised-fine-tuning-jobs
-
-Lists all supervised fine-tuning jobs in an account.
-
-```
-firectl list supervised-fine-tuning-jobs [flags]
-```
-
-### Examples
-
-```
-firectl list supervised-fine-tuning-jobs
-```
-
-### Flags
-
-```
-  -h, --help   help for supervised-fine-tuning-jobs
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl list user
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-user
-
-Prints all users in the account.
-
-```
-firectl list user [flags]
-```
-
-### Examples
-
-```
-firectl list users
-```
-
-### Flags
-
-```
-  -h, --help   help for user
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
-      --no-paginate         List all resources without pagination.
-      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
-      --page-size int32     The maximum number of resources to list.
-      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl load-lora
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/load-lora
-
-Loads a LoRA model to a deployment.
+Loads a LoRA model.
 
 ### Usage
 
-Loads a LoRA model to a deployment. If a deployment is not specified, the model will be loaded to Fireworks' serverless platform (if supported). If a deployment is specified, it will be loaded to the given dedicated deployment. If successful, a DeployedModel resource will be created.
+Loads a LoRA model to a dedicated deployment. If successful, a DeployedModel resource will be created.
 
 ```
-firectl load-lora [flags]
+firectl model load-lora [flags]
 ```
 
 ### Examples
 
 ```
-firectl load-lora my-lora  # To load it to serverless
-firectl load-lora my-lora --deployment abcd1234  # To load it to a dedicated deployment
+firectl model load-lora my-lora --deployment my-deployment
 ```
 
 ### Flags
@@ -16083,26 +17696,26 @@ firectl load-lora my-lora --deployment abcd1234  # To load it to a dedicated dep
 ```
 
 
-# firectl prepare-model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/prepare-model
+# firectl model prepare
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-prepare
 
 Prepare models for different precisions
 
 ```
-firectl prepare-model [flags]
+firectl model prepare [flags]
 ```
 
 ### Examples
 
 ```
-firectl prepare-model my-model
-firectl prepare-model accounts/my-account/models/my-model
+firectl model prepare my-model
+firectl model prepare accounts/my-account/models/my-model
 ```
 
 ### Flags
 
 ```
-  -h, --help                    help for prepare-model
+  -h, --help                    help for prepare
       --wait                    Wait until the model preparation is complete.
       --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
 ```
@@ -16116,119 +17729,23 @@ firectl prepare-model accounts/my-account/models/my-model
 ```
 
 
-# firectl resume reinforcement-fine-tuning-job
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/resume-reinforcement-fine-tuning-job
+# firectl model unload-lora
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-unload-lora
 
-Resumes a failed reinforcement fine-tuning job.
-
-```
-firectl resume reinforcement-fine-tuning-job [flags]
-```
-
-### Examples
-
-```
-firectl resume reinforcement-fine-tuning-job my-rftj
-firectl resume reinforcement-fine-tuning-job accounts/my-account/reinforcementFineTuningJobs/my-rftj
-```
-
-### Flags
-
-```
-  -h, --help   help for reinforcement-fine-tuning-job
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl scale
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/scale
-
-Scales a deployment to a specified number of replicas.
-
-```
-firectl scale [flags]
-```
-
-### Examples
-
-```
-firectl scale my-deployment --replica-count=3
-firectl scale accounts/my-account/deployments/my-deployment --replica-count=3
-```
-
-### Flags
-
-```
-  -h, --help                  help for scale
-      --replica-count int32   The desired number of replicas. Must be non-negative.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl undelete deployment
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/undelete-deployment
-
-Undeletes a deployment.
-
-```
-firectl undelete deployment [flags]
-```
-
-### Examples
-
-```
-firectl undelete deployment my-deployment
-```
-
-### Flags
-
-```
-  -h, --help                    help for deployment
-      --wait                    Wait until the deployment is undeleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 1h0m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl unload-lora
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/unload-lora
-
-Unloads a LoRA model from a deployment.
+Unloads a LoRA model.
 
 ### Usage
 
-Unloads a LoRA model from a deployment. If a deployment is not specified, the model will be unloaded from the Fireworks serverless platform. If a deployment is specified, it will be unloaded to the given dedicated deployment.
+Unloads a LoRA model from a dedicated deployment.
 
 ```
-firectl unload-lora [flags]
+firectl model unload-lora [flags]
 ```
 
 ### Examples
 
 ```
-firectl unload-lora my-lora  # To unload it from serverless
-firectl unload-lora my-lora --deployment abcd1234  # To unload it from a dedicated deployment
+firectl model unload-lora my-lora --deployment abcd1234
 ```
 
 ### Flags
@@ -16249,147 +17766,20 @@ firectl unload-lora my-lora --deployment abcd1234  # To unload it from a dedicat
 ```
 
 
-# firectl update dataset
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-dataset
-
-Updates a dataset.
-
-```
-firectl update dataset [flags]
-```
-
-### Examples
-
-```
-firectl update dataset my-dataset
-firectl update dataset accounts/my-account/datasets/my-dataset
-```
-
-### Flags
-
-```
-      --display-name string   The display name of the dataset.
-  -h, --help                  help for dataset
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl update deployed-model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployed-model
-
-Update a deployed model.
-
-```
-firectl update deployed-model [flags]
-```
-
-### Examples
-
-```
-firectl update deployed-model my-deployed-model
-firectl update deployed-model accounts/my-account/deployed-models/my-deployed-model
-```
-
-### Flags
-
-```
-      --default #<deployment>   If true, this is the default deployment when querying this model without the #<deployment> suffix.
-      --description string      Description of the deployed model. Must be fewer than 1000 characters long.
-      --display-name string     Human-readable name of the deployed model. Must be fewer than 64 characters long.
-  -h, --help                    help for deployed-model
-      --public                  If true, the deployed model will be publicly reachable.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl update deployment
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployment
-
-Update a deployment.
-
-```
-firectl update deployment [flags]
-```
-
-### Examples
-
-```
-firectl update deployment my-deployment
-firectl update deployment accounts/my-account/deployments/my-deployment
-```
-
-### Flags
-
-```
-      --accelerator-count int32             The number of accelerators to use per replica.
-      --accelerator-type string             The type of accelerator to use. Must be one of {NVIDIA_A100_80GB, NVIDIA_H100_80GB, NVIDIA_H200_141GB, AMD_MI300X_192GB}
-      --deployment-shape string             The deployment shape to use for this deployment.
-      --description string                  Description of the deployment.
-      --direct-route-api-keys stringArray   The API keys for the direct route. Only available to enterprise accounts.
-      --direct-route-type string            If set, this deployment will expose an endpoint that bypasses our API gateway. Must be one of {INTERNET, GCP_PRIVATE_SERVICE_CONNECT, AWS_PRIVATELINK}. Only available to enterprise accounts.
-      --display-name string                 Human-readable name of the deployment. Must be fewer than 64 characters long.
-      --draft-model string                  The draft model to use for speculative decoding. If the model is under your account, you can specify the model ID. If the model is under another account, you can specify the full resource name (e.g. accounts/other-account/models/falcon-7b).
-      --draft-token-count int32             The number of tokens to generate per step for speculative decoding.
-      --enable-addons                       If true, enable addons for this deployment.
-      --enable-mtp                          If true, enable multi-token prediction for this deployment.
-      --enable-session-affinity             If true, does sticky routing based on the 'user' field. Only available to enterprise accounts.
-      --expire-time string                  If specified, the time at which the deployment will automatically be deleted. Specified in YYYY-MM-DD[ HH:MM:SS] format.
-  -h, --help                                help for deployment
-      --load-targets Map                    Map of autoscaling load metric names to their target utilization factors. Only available to enterprise accounts.
-      --long-prompt                         Whether this deployment is optimized for long prompts.
-      --max-context-length int32            The maximum context length supported by the model (context window). If not specified, the model's default maximum context length will be used.
-      --max-replica-count int32             Maximum number of replicas for the deployment. If min-replica-count > 0 defaults to 0, otherwise defaults to 1.
-      --min-replica-count int32             Minimum number of replicas for the deployment. If min-replica-count < max-replica-count the deployment will automatically scale between the two replica counts based on load.
-      --ngram-speculation-length int32      The length of previous input sequence to be considered for N-gram speculation.
-      --precision string                    The precision with which the model is served. If specified, must be one of {FP8, FP16, FP8_MM, FP8_AR, FP8_MM_KV_ATTN, FP8_KV, FP8_MM_V2, FP8_V2, FP8_MM_KV_ATTN_V2, FP4, BF16, FP4_BLOCKSCALED_MM, FP4_MX_MOE}.
-      --scale-down-window duration          The duration the autoscaler will wait before scaling down a deployment after observing decreased load. Default is 10m.
-      --scale-to-zero-window duration       The duration after which there are no requests that the deployment will be scaled down to zero replicas, if min-replica-count is 0. Default 1h.
-      --scale-up-window duration            The duration the autoscaler will wait before scaling up a deployment after observing increased load. Default is 30s.
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
-
-
-# firectl update model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-model
+# firectl model update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-update
 
 Updates a model.
 
 ```
-firectl update model [flags]
+firectl model update [flags]
 ```
 
 ### Examples
 
 ```
-firectl update model my-model --display-name="New Name"
-firectl update model accounts/my-account/models/my-model --display-name="New Name"
+firectl model update my-model --display-name="New Name"
+firectl model update accounts/my-account/models/my-model --display-name="New Name"
 ```
 
 ### Flags
@@ -16399,9 +17789,11 @@ firectl update model accounts/my-account/models/my-model --display-name="New Nam
       --default-draft-token-count int32   The default speculative draft token count when creating a deployment.
       --description string                The description of the model.
       --display-name string               The display name of the model.
+      --dry-run                           Print the request proto without running it.
       --github-url string                 The GitHub URL of the model.
-  -h, --help                              help for model
+  -h, --help                              help for update
       --hugging-face-url string           The Hugging Face URL of the model.
+  -o, --output Output                     Set the output format to "text", "json", or "flag". (default text)
       --public                            Whether the model is publicly accessible.
       --supports-image-input              Whether the model supports image inputs.
       --supports-tools                    Whether the model supports function calling.
@@ -16412,32 +17804,135 @@ firectl update model accounts/my-account/models/my-model --display-name="New Nam
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl update quota
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-quota
+# firectl model upload
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/model-upload
+
+Resumes or completes a model upload.
+
+### Usage
+
+Resumes or completes a model upload for an existing model. This command should be used when a previous upload was interrupted.
+
+```
+firectl model upload [flags]
+```
+
+### Examples
+
+```
+firectl model upload my-model /path/to/checkpoint/
+```
+
+### Flags
+
+```
+  -h, --help    help for upload
+      --quiet   If true, does not print the upload progress bar.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl quota get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/quota-get
+
+Prints information about a quota.
+
+```
+firectl quota get [flags]
+```
+
+### Examples
+
+```
+firectl quota get serverless-inference-rpm
+firectl quota get accounts/my-account/quotas/serverless-inference-rpm
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl quota list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/quota-list
+
+Prints all quotas.
+
+```
+firectl quota list [flags]
+```
+
+### Examples
+
+```
+firectl quota list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl quota update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/quota-update
 
 Updates a quota.
 
 ```
-firectl update quota [flags]
+firectl quota update [flags]
 ```
 
 ### Examples
 
 ```
-firectl update quota serverless-inference-rpm --value 300
+firectl quota update serverless-inference-rpm --value 300
 ```
 
 ### Flags
 
 ```
-  -h, --help        help for quota
-      --value int   The quota allowed to be used by this account. Must be less than max_value.
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for update
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+      --value int       The quota allowed to be used by this account. Must be less than max_value.
 ```
 
 ### Global flags
@@ -16445,33 +17940,492 @@ firectl update quota serverless-inference-rpm --value 300
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl update secret
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret
+# firectl reinforcement-fine-tuning-job cancel
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-cancel
+
+Cancels a running reinforcement fine-tuning job.
+
+```
+firectl reinforcement-fine-tuning-job cancel [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job cancel my-rftj
+firectl reinforcement-fine-tuning-job cancel accounts/my-account/reinforcementFineTuningJobs/my-rftj
+```
+
+### Flags
+
+```
+  -h, --help   help for cancel
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reinforcement-fine-tuning-job create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create
+
+Creates a reinforcement fine-tuning job.
+
+```
+firectl reinforcement-fine-tuning-job create [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job create \
+	--base-model llama-v3-8b-instruct \
+	--dataset sample-dataset \
+	--epochs 5 \
+	--output-model name-of-the-trained-model \
+	--evaluator accounts/my-account/evaluators/abc123
+
+# Create from source job:
+firectl reinforcement-fine-tuning-job create \
+	--source-job my-previous-job \
+	--output-model new-model
+
+```
+
+### Flags
+
+```
+      --base-model string                   The base model for the reinforcement fine-tuning job. Only one of base-model or warm-start-from should be specified.
+      --dataset string                      The dataset for the reinforcement fine-tuning job. (Required)
+      --output-model string                 The output model for the reinforcement fine-tuning job.
+      --job-id string                       The ID of the reinforcement fine-tuning job. If not set, it will be autogenerated.
+      --warm-start-from string              The model to warm start from. If set, base-model must not be set.
+      --source-job string                   The source reinforcement fine-tuning job to copy configuration from. If other flags are set, they will override the source job's configuration.
+      --evaluator string                    The evaluator resource name to use for the reinforcement fine-tuning job. (Required)
+      --mcp-server string                   The MCP server resource name to use for the reinforcement fine-tuning job. (Optional)
+      --epochs int32                        The number of epochs for the reinforcement fine-tuning job. (default 1)
+      --learning-rate float32               The learning rate for the reinforcement fine-tuning job. (default 0.0001)
+      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated.
+      --batch-size int32                    The batch size measured in tokens. Maximum number of tokens packed into each training batch/step. A single sequence will not be split across batches.
+      --batch-size-samples int32            Number of samples per gradient update. If set to k, gradients update after every k samples. By default (0), gradients update based on batch-size (tokens).
+      --gradient-accumulation-steps int32   The number of batches to accumulate gradients before updating the model parameters. The effective batch size will be batch-size multiplied by this value. (default 1)
+      --learning-rate-warmup-steps int32    The number of learning rate warmup steps for the reinforcement fine-tuning job.
+      --lora-rank int32                     The rank of the LoRA layers for the reinforcement fine-tuning job. (default 8)
+      --optimizer-weight-decay float32      Weight decay (L2 regularization) for the optimizer. Default in trainer is 0.01.
+                                            
+      --wandb-api-key string                [WANDB_API_KEY] WandB API Key. (Required if any WandB flag is set)
+      --wandb-project string                [WANDB_PROJECT] WandB Project. (Required if any WandB flag is set)
+      --wandb-entity string                 [WANDB_ENTITY] WandB Entity. (Required if any WandB flag is set)
+      --wandb                               Enable WandB
+                                            
+                                            
+      --aws-credentials-secret string       [AWS_CREDENTIALS_SECRET] AWS credentials secret (mutually exclusive with --aws-iam-role)
+      --aws-iam-role string                 [AWS_IAM_ROLE_ARN] AWS IAM role ARN (mutually exclusive with --aws-credentials-secret)
+                                            
+      --temperature float32                 The randomness of the model's word or token selection during text generation.
+      --top-p float32                       Top-p sampling, selecting the smallest set of candidate words whose cumulative probability exceeds the top-p.
+      --response-candidates-count int32     The number of response candidates to generate per input.
+      --max-output-tokens int32             The maximum number of tokens to generate in the response.
+      --top-k int32                         Top-k sampling parameter, limits the token selection to the top k tokens.
+      --extra-body string                   Additional parameters for the inference request as a JSON string. For example: '{"stop": ["\n"]}'
+      --quiet                               If set, only errors will be printed.
+      --max-concurrent-rollouts int32       Maximum number of concurrent rollouts during the RFT job. If not set, defaults to the value set in @evaluation_test header.
+      --max-concurrent-evaluations int32    Maximum number of concurrent evaluations during the RFT job. If not set, defaults to the value set in @evaluation_test header.
+      --rl-loss-method string               RL loss method for underlying trainers. One of {grpo,dapo,gspo-token}.
+      --rl-kl-beta float32                  Override KL beta for GRPO-like methods. Must be >= 0.
+      --chunk-size int32                    The minimum chunk size to split the dataset before the RL flow. Set to -1 to disable chunking. (default 200)
+      --dry-run                             Print the request proto without running it.
+  -o, --output Output                       Set the output format to "text", "json", or "flag". (default text)
+  -h, --help                                help for create
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reinforcement-fine-tuning-job delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-delete
+
+Deletes a reinforcement fine-tuning job.
+
+```
+firectl reinforcement-fine-tuning-job delete [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job delete my-rftj
+firectl reinforcement-fine-tuning-job delete accounts/my-account/reinforcementFineTuningJobs/my-rftj
+```
+
+### Flags
+
+```
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for delete
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --wait                    Wait until the reinforcement fine-tuning job is deleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reinforcement-fine-tuning-job get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-get
+
+Retrieves information about a reinforcement fine-tuning job.
+
+```
+firectl reinforcement-fine-tuning-job get [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job get my-rftj
+firectl reinforcement-fine-tuning-job get accounts/my-account/reinforcementFineTuningJobs/my-rftj
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reinforcement-fine-tuning-job list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-list
+
+Lists all reinforcement fine-tuning jobs in an account.
+
+```
+firectl reinforcement-fine-tuning-job list [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reinforcement-fine-tuning-job resume
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-resume
+
+Resumes a failed reinforcement fine-tuning job.
+
+```
+firectl reinforcement-fine-tuning-job resume [flags]
+```
+
+### Examples
+
+```
+firectl reinforcement-fine-tuning-job resume my-rftj
+firectl reinforcement-fine-tuning-job resume accounts/my-account/reinforcementFineTuningJobs/my-rftj
+```
+
+### Flags
+
+```
+  -h, --help   help for resume
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reservation get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reservation-get
+
+Prints information about a reservation.
+
+```
+firectl reservation get [flags]
+```
+
+### Examples
+
+```
+firectl reservation get abcdef
+firectl reservation get accounts/my-account/reservations/abcdef
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl reservation list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/reservation-list
+
+Prints active reservations.
+
+```
+firectl reservation list [flags]
+```
+
+### Examples
+
+```
+firectl reservation list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+      --show-inactive       Show all reservations
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl secret create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/secret-create
+
+Creates a secret for the signed in user.
+
+```
+firectl secret create [flags]
+```
+
+### Examples
+
+```
+firectl secret create --name MY_SECRET --value mysecretvalue
+firectl secret create --name AWS_CREDS --from-file aws-credentials.json
+firectl secret create --name AWS_CREDS --aws-access-key-id AKIA... --aws-secret-access-key ...
+```
+
+### Flags
+
+```
+      --aws-access-key-id string       AWS access key ID (automatically formats as JSON with --aws-secret-access-key)
+      --aws-secret-access-key string   AWS secret access key (automatically formats as JSON with --aws-access-key-id)
+      --dry-run                        Print the request proto without running it.
+      --from-file string               Path to a file containing the secret value
+  -h, --help                           help for create
+      --name string                    The name of the secret to be created
+  -o, --output Output                  Set the output format to "text", "json", or "flag". (default text)
+      --value string                   The value of the secret
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl secret delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/secret-delete
+
+Deletes a secret.
+
+```
+firectl secret delete [flags]
+```
+
+### Examples
+
+```
+firectl secret delete MY_SECRET
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for delete
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl secret get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/secret-get
+
+Retrieves a secret by name.
+
+```
+firectl secret get [flags]
+```
+
+### Examples
+
+```
+firectl secret get MY_SECRET
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl secret list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/secret-list
+
+Lists all secrets for the signed in user.
+
+```
+firectl secret list [flags]
+```
+
+### Examples
+
+```
+firectl secret list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl secret update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/secret-update
 
 Updates an existing secret.
 
 ```
-firectl update secret [flags]
+firectl secret update [flags]
 ```
 
 ### Examples
 
 ```
-firectl update secret --id MY_SECRET --value newvalue
+firectl secret update --id MY_SECRET --value newvalue
+firectl secret update --id AWS_CREDS --from-file aws-credentials.json
+firectl secret update --id AWS_CREDS --aws-access-key-id AKIA... --aws-secret-access-key ...
 ```
 
 ### Flags
 
 ```
-  -h, --help           help for secret
-      --id string      The id of the secret to be updated
-      --value string   The new value of the secret
+      --aws-access-key-id string       AWS access key ID (automatically formats as JSON with --aws-secret-access-key)
+      --aws-secret-access-key string   AWS secret access key (automatically formats as JSON with --aws-access-key-id)
+      --dry-run                        Print the request proto without running it.
+      --from-file string               Path to a file containing the secret value
+  -h, --help                           help for update
+      --id string                      The id of the secret to be updated
+  -o, --output Output                  Set the output format to "text", "json", or "flag". (default text)
+      --value string                   The new value of the secret
 ```
 
 ### Global flags
@@ -16479,34 +18433,29 @@ firectl update secret --id MY_SECRET --value newvalue
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
 
-# firectl update user
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-user
+# firectl set-api-key
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/set-api-key
 
-Updates a user.
+Sets the default API key in ~/.fireworks/auth.ini.
 
 ```
-firectl update user [flags]
+firectl set-api-key [flags]
 ```
 
 ### Examples
 
 ```
-firectl update user my-user --display-name="Alice Cullen"
-firectl update user accounts/my-account/users/my-user --display-name="Alice Cullen"
+firectl set-api-key API_KEY
 ```
 
 ### Flags
 
 ```
-      --display-name string   The display name of the user.
-  -h, --help                  help for user
-      --role string           The role of the user. Must be one of {user, admin}.
+  -h, --help   help for set-api-key
 ```
 
 ### Global flags
@@ -16514,8 +18463,215 @@ firectl update user accounts/my-account/users/my-user --display-name="Alice Cull
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl supervised-fine-tuning-job cancel
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/supervised-fine-tuning-job-cancel
+
+Cancels a running supervised fine-tuning job.
+
+```
+firectl supervised-fine-tuning-job cancel [flags]
+```
+
+### Examples
+
+```
+firectl supervised-fine-tuning-job cancel my-sft-job
+firectl supervised-fine-tuning-job cancel accounts/my-account/supervisedFineTuningJobs/my-sft-job
+```
+
+### Flags
+
+```
+  -h, --help   help for cancel
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl supervised-fine-tuning-job create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/supervised-fine-tuning-job-create
+
+Creates a supervised fine-tuning job.
+
+```
+firectl supervised-fine-tuning-job create [flags]
+```
+
+### Examples
+
+```
+firectl supervised-fine-tuning-job create \
+	--base-model llama-v3-8b-instruct \
+	--dataset sample-dataset \
+	--output-model name-of-the-trained-model
+
+# Create from source job:
+firectl supervised-fine-tuning-job create \
+	--source-job my-previous-job \
+	--output-model new-model
+
+```
+
+### Flags
+
+```
+      --base-model string                   The base model for the supervised fine-tuning job. Only one of base-model or warm-start-from should be specified.
+      --dataset string                      The dataset for the supervised fine-tuning job. (Required)
+      --output-model string                 The output model for the supervised fine-tuning job.
+      --job-id string                       The ID of the supervised fine-tuning job. If not set, it will be autogenerated.
+      --warm-start-from string              The model to warm start from. If set, base-model must not be set.
+      --source-job string                   The source supervised fine-tuning job to copy configuration from. If other flags are set, they will override the source job's configuration.
+      --evaluation-dataset string           The evaluation dataset for the supervised fine-tuning job.
+      --epochs int32                        The number of epochs for the supervised fine-tuning job.
+      --learning-rate float32               The learning rate for the supervised fine-tuning job.
+      --max-context-length int32            Maximum token length for sequences within each training batch. Shorter sequences are concatenated; longer sequences are truncated.
+      --batch-size int32                    The batch size measured in tokens. Maximum number of tokens packed into each training batch/step. A single sequence will not be split across batches.
+      --batch-size-samples int32            Number of samples per gradient update. If set to k, gradients update after every k samples. By default (0), gradients update based on batch-size (tokens).
+      --gradient-accumulation-steps int32   The number of batches to accumulate gradients before updating the model parameters. The effective batch size will be batch-size multiplied by this value. (default 1)
+      --learning-rate-warmup-steps int32    The number of learning rate warmup steps for the supervised fine-tuning job.
+      --lora-rank int32                     The rank of the LoRA layers for the supervised fine-tuning job. Set to 0 for full parameter tuning. (default 8)
+      --optimizer-weight-decay float32      Weight decay (L2 regularization) for the optimizer. Default in trainer is 0.01.
+      --full-parameter-tuning               Enable full parameter fine-tuning instead of LoRA. Equivalent to --lora-rank=0. Requires bf16 precision.
+                                            
+      --wandb-api-key string                [WANDB_API_KEY] WandB API Key. (Required if any WandB flag is set)
+      --wandb-project string                [WANDB_PROJECT] WandB Project. (Required if any WandB flag is set)
+      --wandb-entity string                 [WANDB_ENTITY] WandB Entity. (Required if any WandB flag is set)
+      --wandb                               Enable WandB
+                                            
+                                            
+      --aws-credentials-secret string       [AWS_CREDENTIALS_SECRET] AWS credentials secret (mutually exclusive with --aws-iam-role)
+      --aws-iam-role string                 [AWS_IAM_ROLE_ARN] AWS IAM role ARN (mutually exclusive with --aws-credentials-secret)
+                                            
+      --display-name string                 The display name of the supervised fine-tuning job.
+      --early-stop                          Enable early stopping for the supervised fine-tuning job.
+      --quiet                               If set, only errors will be printed.
+      --eval-auto-carveout                  If set, the evaluation dataset will be auto-carved.
+      --mtp-enable                          If set, enables MTP (Multi-Token-Prediction) layer (only available for Deepseek finetuning).
+      --mtp-num-draft-tokens int32          Number of draft tokens in MTP. Needs to be between 1 and 3. Default is 1.
+      --mtp-freeze-base-model               If set, freezes the base model parameters during MTP training.
+      --dry-run                             Print the request proto without running it.
+  -o, --output Output                       Set the output format to "text", "json", or "flag". (default text)
+  -h, --help                                help for create
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl supervised-fine-tuning-job delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/supervised-fine-tuning-job-delete
+
+Deletes a supervised fine-tuning job.
+
+```
+firectl supervised-fine-tuning-job delete [flags]
+```
+
+### Examples
+
+```
+firectl supervised-fine-tuning-job delete my-sft-job
+firectl supervised-fine-tuning-job delete accounts/my-account/supervisedFineTuningJobs/my-sft-job
+```
+
+### Flags
+
+```
+      --dry-run                 Print the request proto without running it.
+  -h, --help                    help for delete
+  -o, --output Output           Set the output format to "text", "json", or "flag". (default text)
+      --wait                    Wait until the supervised fine-tuning job is deleted.
+      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 30m0s)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl supervised-fine-tuning-job get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/supervised-fine-tuning-job-get
+
+Retrieves information about a supervised fine-tuning job.
+
+```
+firectl supervised-fine-tuning-job get [flags]
+```
+
+### Examples
+
+```
+firectl supervised-fine-tuning-job get my-sft-job
+firectl supervised-fine-tuning-job get accounts/my-account/supervisedFineTuningJobs/my-sft-job
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl supervised-fine-tuning-job list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/supervised-fine-tuning-job-list
+
+Lists all supervised fine-tuning jobs in an account.
+
+```
+firectl supervised-fine-tuning-job list [flags]
+```
+
+### Examples
+
+```
+firectl supervised-fine-tuning-job list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
@@ -16550,30 +18706,33 @@ sudo firectl upgrade
 ```
 
 
-# firectl upload model
-Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/upload-model
+# firectl user create
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/user-create
 
-Resumes or completes a model upload.
-
-### Usage
-
-Resumes or completes a model upload for an existing model. This command should be used when a previous upload was interrupted.
+Creates a new user.
 
 ```
-firectl upload model [flags]
+firectl user create [flags]
 ```
 
 ### Examples
 
 ```
-firectl upload model my-model /path/to/checkpoint/
+firectl user create --email="alice.cullen@gmail.com"
+firectl user create --service-account --user-id="my-bot"
 ```
 
 ### Flags
 
 ```
-  -h, --help    help for model
-      --quiet   If true, does not print the upload progress bar.
+      --display-name string   The display name of the user.
+      --dry-run               Print the request proto without running it.
+      --email string          The email address of the user (not required for service accounts).
+  -h, --help                  help for create
+  -o, --output Output         Set the output format to "text", "json", or "flag". (default text)
+      --role string           The user's role, must be one of "user", "admin", "contributor", or "inference-user". (default "user")
+      --service-account       Admin only: Create as a service account (email will be auto-generated)
+      --user-id string        The ID of the user (required for service accounts).
 ```
 
 ### Global flags
@@ -16581,8 +18740,142 @@ firectl upload model my-model /path/to/checkpoint/
 ```
   -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
       --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl user delete
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/user-delete
+
+Deletes a user.
+
+```
+firectl user delete [flags]
+```
+
+### Examples
+
+```
+firectl user delete my-user
+firectl user delete accounts/my-account/users/my-user
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for delete
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl user get
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/user-get
+
+Prints information about a user.
+
+```
+firectl user get [flags]
+```
+
+### Examples
+
+```
+firectl user get my-user
+firectl user get accounts/my-account/users/my-user
+```
+
+### Flags
+
+```
+      --dry-run         Print the request proto without running it.
+  -h, --help            help for get
+  -o, --output Output   Set the output format to "text", "json", or "flag". (default text)
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl user list
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/user-list
+
+Prints all users in the account.
+
+```
+firectl user list [flags]
+```
+
+### Examples
+
+```
+firectl user list
+```
+
+### Flags
+
+```
+      --filter string       Only resources satisfying the provided filter will be listed. See https://google.aip.dev/160 for the filter grammar.
+  -h, --help                help for list
+      --no-paginate         List all resources without pagination.
+      --order-by string     A list of fields to order by. To specify a descending order for a field, append a " desc" suffix
+      --page-size int32     The maximum number of resources to list.
+      --page-token string   The page to list. A number from 0 to the total number of pages (number of entities / page size).
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
+  -p, --profile string      fireworks auth and settings profile to use.
+```
+
+
+# firectl user update
+Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/user-update
+
+Updates a user.
+
+```
+firectl user update [flags]
+```
+
+### Examples
+
+```
+firectl user update my-user --display-name="Alice Cullen"
+firectl user update accounts/my-account/users/my-user --display-name="Alice Cullen"
+```
+
+### Flags
+
+```
+      --display-name string   The display name of the user.
+      --dry-run               Print the request proto without running it.
+  -h, --help                  help for update
+  -o, --output Output         Set the output format to "text", "json", or "flag". (default text)
+      --role string           The role of the user. Must be one of {user, admin, contributor, inference-user}.
+```
+
+### Global flags
+
+```
+  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
+      --api-key string      An API key used to authenticate with Fireworks.
   -p, --profile string      fireworks auth and settings profile to use.
 ```
 
@@ -16693,13 +18986,13 @@ Firectl can be installed several ways based on your choice and platform.
 
 To sign into your Fireworks account:
 
-```bash  theme={null}
+```bash theme={null}
 firectl signin
 ```
 
 If you have set up [Custom SSO](/accounts/sso) then also pass your account ID:
 
-```bash  theme={null}
+```bash theme={null}
 firectl signin <ACCOUNT_ID>
 ```
 
@@ -16707,19 +19000,19 @@ firectl signin <ACCOUNT_ID>
 
 To show which account you have signed into:
 
-```bash  theme={null}
+```bash theme={null}
 firectl whoami
 ```
 
 ### Check your installed version
 
-```bash  theme={null}
+```bash theme={null}
 firectl version
 ```
 
 ### Upgrade to the latest version
 
-```bash  theme={null}
+```bash theme={null}
 sudo firectl upgrade
 ```
 
@@ -16737,7 +19030,7 @@ You can use the [OpenAI Python client library](https://github.com/openai/openai-
 
 You can use the OpenAI client by initializing it with your Fireworks configuration:
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 
 # Initialize with Fireworks parameters
@@ -16749,7 +19042,7 @@ client = OpenAI(
 
 You can also use environment variables with the client:
 
-```python  theme={null}
+```python theme={null}
 import os
 from openai import OpenAI
 
@@ -16762,14 +19055,14 @@ client = OpenAI(
 
 ### Using environment variables
 
-```shell  theme={null}
+```shell theme={null}
 export OPENAI_API_BASE="https://api.fireworks.ai/inference/v1"
 export OPENAI_API_KEY="<YOUR_FIREWORKS_API_KEY>"
 ```
 
 ### Alternative approach
 
-```python  theme={null}
+```python theme={null}
 import openai
 
 # warning: it has a process-wide effect
@@ -16785,7 +19078,7 @@ Use OpenAI's SDK how you'd normally would. Just ensure that the `model` paramete
 
 Simple completion API that doesn't modify provided prompt in any way:
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 
 client = OpenAI(
@@ -16804,7 +19097,7 @@ print(completion.choices[0].text)
 
 Works best for models fine-tuned for conversation (e.g. llama\*-chat variants):
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 
 client = OpenAI(
@@ -16834,14 +19127,15 @@ print(chat_completion.choices[0].message.content)
 
 The following options have minor differences:
 
-* `stop`: the returned string includes the stop word for Fireworks while it's omitted for OpenAI (it can be easily truncated on client side)
-* `max_tokens`: behaves differently if the model context length is exceeded. If the length of `prompt` or `messages` plus `max_tokens` is higher than the model's context window, `max_tokens` will be adjusted lower accordingly. OpenAI returns invalid request error in this situation. This behavior can be adjusted by `context_length_exceeded_behavior` parameter.
+* `max_tokens`: behaves differently if the model context length is exceeded. If the length of `prompt` or `messages` plus `max_tokens` is higher than the model's context window, `max_tokens` will be adjusted lower accordingly. OpenAI returns an invalid request error in this situation. Control this behavior with the `context_length_exceeded_behavior` parameter:
+  * `truncate` (default): Automatically adjusts `max_tokens` to fit within the context window
+  * `error`: Returns an error like OpenAI does
 
 ### Token usage for streaming responses
 
 OpenAI API returns usage stats (number of tokens in prompt and completion) for non-streaming responses but doesn't for the streaming ones (see [forum post](https://community.openai.com/t/chat-completion-stream-api-token-usage/352964)).
 
-Fireworks.ai returns usage stats in both cases. For streaming responses, the `usage` field is returned in the very last chunk on the response (i.e. the one having `finish_reason` set). For example:
+Fireworks API returns usage stats in both cases. For streaming responses, the `usage` field is returned in the very last chunk on the response (i.e. the one having `finish_reason` set). For example:
 
 ```bash cURL theme={null}
 curl --request POST \           
@@ -16867,21 +19161,20 @@ data: [DONE]
 <Note>
   Note, that if you're using OpenAI SDK, they `usage` field won't be listed in the SDK's structure definition. But it can be accessed directly. For example:
 
-  * In Python SDK, you can access the attribute directly, e.g. `for chunk in openai.ChatCompletion.create(...): print(chunk["usage"])`.
-  * In TypeScript SDK, you need to cast away the typing, e.g. `for await (const chunk of await openai.chat.completions.create(...)) { console.log((chunk as any).usage); }`.
+  <CodeGroup>
+    ```python Python theme={null}
+    for chunk in client.chat.completions.create(stream=True, ...):
+        if chunk.usage:  # Available in final chunk
+            print(f"Tokens: {chunk.usage.total_tokens}")
+    ```
+
+    ```typescript TypeScript theme={null}
+    for await (const chunk of await openai.chat.completions.create(...)) {
+        console.log((chunk as any).usage);
+    }
+    ```
+  </CodeGroup>
 </Note>
-
-### Not supported options
-
-The following options are not yet supported:
-
-* `presence_penalty`
-* `frequency_penalty`
-* `best_of`: you can use `n` instead
-* `logit_bias`
-* `functions`: you can use our [LangChain integration](https://python.langchain.com/docs/integrations/providers/fireworks) to achieve similar functionality client-side
-
-Please reach out to us on [Discord](https://discord.gg/fireworks-ai) if you have a use case requiring one of these.
 
 
 # Querying Dedicated Deployments
@@ -16890,7 +19183,7 @@ Source: https://docs.fireworks.ai/tools-sdks/python-client/querying-dedicated-de
 Learn how to connect to and query dedicated deployments that were created outside the SDK
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 When you have dedicated deployments that were created via `firectl` or the Fireworks web UI, you can easily connect to them using the Build SDK to run inference. This is particularly useful when you want to leverage existing infrastructure or when deployments are managed by different teams.
@@ -16911,7 +19204,7 @@ Before you begin, make sure you have:
 
 To query an existing dedicated deployment, you simply need to create an `LLM` instance with the `deployment_type="on-demand"` and provide the deployment `id`:
 
-```python  theme={null}
+```python theme={null}
 from fireworks import LLM
 
 # Connect to your existing dedicated deployment
@@ -16955,7 +19248,7 @@ The `id` parameter should match exactly with your existing deployment:
 
 While you need to specify the `model` parameter, it should match the model that your deployment is actually running:
 
-```python  theme={null}
+```python theme={null}
 # If your deployment is running Llama 3.2 3B Instruct
 llm = LLM(
     model="llama-v3p2-3b-instruct",
@@ -17073,7 +19366,7 @@ Source: https://docs.fireworks.ai/tools-sdks/python-client/sdk-basics
 
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 ## Why use the Build SDK?
@@ -17195,7 +19488,7 @@ For non-finetuned models, you can always specify the deployment type of `LLM()` 
   When using `deployment_type="on-demand"`, you must provide an `id` parameter to uniquely identify your deployment. This is required to prevent accidental creation of multiple deployments.
 </Warning>
 
-For finetuned (LoRA) models, passing `deployment_type="serverless" ` will try to deploy the finetuned model to serverless hosting, `deployment_type="on-demand"` will create an on-demand deployment of your base model and merge in your LoRA weights, `deployment_type="on-demand-lora"` will create an on-demand deployment with Multi-LoRA enabled, and `deployment_type="auto"` will try to use `serverless` if available, otherwise fall back to `on-demand-lora`.
+For finetuned (LoRA) models, `deployment_type="on-demand"` will create an on-demand deployment of your base model and merge in your LoRA weights, and `deployment_type="on-demand-lora"` will create an on-demand deployment with Multi-LoRA enabled. When using `deployment_type="auto"`, the SDK will create an on-demand deployment.
 
 #### Deploying Fine-tuned Models with On-Demand
 
@@ -17204,7 +19497,7 @@ When deploying a fine-tuned model using `deployment_type="on-demand"`, you need 
 * `model` - Your fine-tuned model ID (e.g., `"accounts/your-account/models/your-fine-tuned-model-id"`)
 * `id` - A unique deployment identifier (can be any simple string like `"my-fine-tuned-deployment"`)
 
-```python  theme={null}
+```python theme={null}
 # Deploy a fine-tuned model with on-demand deployment
 fine_tuned_llm = LLM(
     model="accounts/your-account/models/your-fine-tuned-model-id",
@@ -17258,7 +19551,7 @@ Source: https://docs.fireworks.ai/tools-sdks/python-client/sdk-introduction
 
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 The [Fireworks Build SDK](https://pypi.org/project/fireworks-ai/) is a client library that allows you to interact with the Fireworks API using Python. It provides a simple and intuitive interface for working with Fireworks primitives like deployments, fine-tuning jobs, and datasets as Python objects.
@@ -17271,21 +19564,21 @@ The [Fireworks Build SDK](https://pypi.org/project/fireworks-ai/) is a client li
 
 You can install the Fireworks Build SDK using pip:
 
-```bash  theme={null}
+```bash theme={null}
 pip install --upgrade fireworks-ai
 ```
 
 Make sure to set the `FIREWORKS_API_KEY` environment variable to your Fireworks API key:
 
-```bash  theme={null}
+```bash theme={null}
 export FIREWORKS_API_KEY=<API_KEY>
 ```
 
 You can create an API key in the [Fireworks AI web UI](https://app.fireworks.ai/settings/users/api-keys) or by installing the [firectl](/tools-sdks/firectl/firectl) CLI tool and running:
 
-```bash  theme={null}
+```bash theme={null}
 firectl signin
-firectl create api-key --key-name <Your-Key-Name>
+firectl api-key create --key-name <Your-Key-Name>
 ```
 
 ## Next Steps
@@ -17299,7 +19592,7 @@ Source: https://docs.fireworks.ai/tools-sdks/python-client/sdk-reference
 
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 # Resource types
@@ -17308,7 +19601,7 @@ The SDK currently supports four types of resources: `LLM`, `Dataset`, `Supervise
 
 ## LLM
 
-```python  theme={null}
+```python theme={null}
 class LLM()
 ```
 
@@ -17322,7 +19615,7 @@ class LLM()
 * `base_deployment_name` *str* - If a LoRA addon, the deployment name of the base model deployment
 * `peft_base_model` *str* - If this is a LoRA addon, the base model identifier (e.g., `accounts/fireworks/models/llama-v3p2-3b-instruct`)
 * `addons_enabled` *bool* - Whether LoRA addons are enabled for this LLM
-* `model_id` *str* - The identifier used under the hood to query this model (e.g., `accounts/my-account/deployedModels/my-deployed-model-abcdefg`)
+* `model_id` *str* - The identifier used under the hood to query this model (e.g., `accounts/my-account/deployments/my-deployment-12345678`)
 * `deployment_id` *str* - The deployment ID (e.g., `my-custom-deployment`)
 * `base_deployment_id` *str* - The base deployment ID for LoRA addons
 * `perf_metrics_in_response` *bool* - Whether performance metrics are included in responses
@@ -17331,7 +19624,7 @@ class LLM()
 
 The `LLM(*args, **kwargs)` class constructor initializes a new LLM instance.
 
-```python  theme={null}
+```python theme={null}
 from fireworks import LLM
 from datetime import timedelta
 
@@ -17401,7 +19694,7 @@ fine_tuned_with_lora.apply()
 
 **Deployment Configuration**
 
-* `id` *str, optional* - Deployment ID to identify the deployment. Required when deployment\_type is "on-demand". Can be any simple string (e.g., `"my-deployment"`) - does not need to follow the format `"accounts/account_id/deployments/model_id"`.
+* `id` *str, optional* - Deployment ID to identify the deployment. Required when deployment\_type is "on-demand". Can be any simple string (e.g., `"my-deployment"`) - does not need to follow the format `"accounts/account_id/deployments/deployment_id"`.
 * `deployment_display_name` *str, optional* - Display name for the deployment. Defaults to the filename where the LLM was instantiated. If a deployment with the same display name and model already exists, the SDK will try and re-use it.
 * `base_id` *str, optional* - Base deployment ID for LoRA addons. Required when deployment\_type is "on-demand-lora".
 
@@ -17465,7 +19758,7 @@ fine_tuned_with_lora.apply()
 
 Ensures the deployment is ready and returns the deployment. Like Terraform apply, this will ensure the deployment is ready.
 
-```python  theme={null}
+```python theme={null}
 llm.apply(wait=True)
 ```
 
@@ -17477,7 +19770,7 @@ Creates a new supervised fine-tuning job and blocks until it is ready. See the [
 
 * An instance of `SupervisedFineTuningJob`.
 
-```python  theme={null}
+```python theme={null}
 job = llm.create_supervised_fine_tuning_job(
     display_name="my-fine-tuning-job",
     dataset_or_id=dataset,
@@ -17512,7 +19805,7 @@ Performs a reinforcement learning step for training. This method creates a new m
 
 **Note:** The output model name must not already exist. If a model with the same name exists, a `ValueError` will be raised.
 
-```python  theme={null}
+```python theme={null}
 # Perform a reinforcement learning step
 job = llm.reinforcement_step(
     dataset=dataset,
@@ -17543,7 +19836,7 @@ Deletes the deployment associated with this LLM instance if one exists.
 * `ignore_checks` *bool, optional* - Whether to ignore safety checks. Defaults to False.
 * `wait` *bool, optional* - Whether to wait for deletion to complete. Defaults to True.
 
-```python  theme={null}
+```python theme={null}
 llm.delete_deployment(ignore_checks=True)
 ```
 
@@ -17555,7 +19848,7 @@ Returns the mean time to last token for non-streaming requests. If no metrics ar
 
 * A float representing the mean time to last token, or None if no metrics are available.
 
-```python  theme={null}
+```python theme={null}
 time_to_last_token_mean = llm.get_time_to_last_token_mean()
 ```
 
@@ -17565,13 +19858,13 @@ Returns a new LLM instance with the specified deployment type.
 
 **Arguments:**
 
-* `deployment_type` *str* - The deployment type to use ("serverless", "on-demand", "auto", or "on-demand-lora")
+* `deployment_type` *str* - The deployment type to use ("serverless", "on-demand", "auto", or "on-demand-lora"). Note: For LoRA models, only "on-demand" and "on-demand-lora" are supported.
 
 **Returns:**
 
 * A new `LLM` instance with the specified deployment type
 
-```python  theme={null}
+```python theme={null}
 # Create a new LLM with different deployment type
 serverless_llm = llm.with_deployment_type("serverless")
 on_demand_llm = llm.with_deployment_type("on-demand")
@@ -17589,7 +19882,7 @@ Returns a new LLM instance with the specified temperature.
 
 * A new `LLM` instance with the specified temperature
 
-```python  theme={null}
+```python theme={null}
 # Create a new LLM with different temperature
 creative_llm = llm.with_temperature(1.0)
 deterministic_llm = llm.with_temperature(0.0)
@@ -17607,7 +19900,7 @@ Returns a new LLM instance with the specified performance metrics setting.
 
 * A new `LLM` instance with the specified performance metrics setting
 
-```python  theme={null}
+```python theme={null}
 # Create a new LLM with performance metrics enabled
 llm_with_metrics = llm.with_perf_metrics_in_response(True)
 ```
@@ -17620,7 +19913,7 @@ Sends a request to scale the deployment to 0 replicas but does not wait for it t
 
 * The deployment object, or None if no deployment exists
 
-```python  theme={null}
+```python theme={null}
 deployment = llm.scale_to_zero()
 ```
 
@@ -17628,7 +19921,7 @@ deployment = llm.scale_to_zero()
 
 Scales the deployment to at least 1 replica.
 
-```python  theme={null}
+```python theme={null}
 llm.scale_to_1_replica()
 ```
 
@@ -17640,7 +19933,7 @@ Returns the deployment associated with this LLM instance, or None if no deployme
 
 * The deployment object, or None if no deployment exists
 
-```python  theme={null}
+```python theme={null}
 deployment = llm.get_deployment()
 ```
 
@@ -17652,7 +19945,7 @@ Checks if this LLM is a PEFT (Parameter-Efficient Fine-Tuning) addon.
 
 * True if this LLM is a PEFT addon, False otherwise
 
-```python  theme={null}
+```python theme={null}
 is_peft = llm.is_peft_addon()
 ```
 
@@ -17664,7 +19957,7 @@ Lists all models available to your account.
 
 * A list of model objects
 
-```python  theme={null}
+```python theme={null}
 models = llm.list_models()
 ```
 
@@ -17676,7 +19969,7 @@ Gets the model object for this LLM's model.
 
 * The model object, or None if the model doesn't exist
 
-```python  theme={null}
+```python theme={null}
 model = llm.get_model()
 ```
 
@@ -17688,7 +19981,7 @@ Checks if the model is available on serverless infrastructure.
 
 * True if the model is available on serverless, False otherwise
 
-```python  theme={null}
+```python theme={null}
 is_serverless = llm.is_available_on_serverless()
 ```
 
@@ -17700,20 +19993,8 @@ Returns the model ID, which is the model name plus the deployment name if it exi
 
 * The model ID string
 
-```python  theme={null}
+```python theme={null}
 model_id = llm.model_id()
-```
-
-### `supports_serverless_lora()`
-
-Checks if the model supports serverless LoRA deployment.
-
-**Returns:**
-
-* True if the model supports serverless LoRA, False otherwise
-
-```python  theme={null}
-supports_lora = llm.supports_serverless_lora()
 ```
 
 ### `list_fireworks_models()`
@@ -17724,7 +20005,7 @@ Lists all models available on the Fireworks account.
 
 * A list of model objects from the Fireworks account
 
-```python  theme={null}
+```python theme={null}
 fireworks_models = llm.list_fireworks_models()
 ```
 
@@ -17740,7 +20021,7 @@ Checks if the model is on the Fireworks account.
 
 * The model object if it exists on the Fireworks account, None otherwise
 
-```python  theme={null}
+```python theme={null}
 model_obj = llm.is_model_on_fireworks_account("accounts/fireworks/models/llama-v3p2-3b-instruct")
 ```
 
@@ -17756,7 +20037,7 @@ Checks if a specific model is available on serverless infrastructure.
 
 * True if the model is available on serverless, False otherwise
 
-```python  theme={null}
+```python theme={null}
 is_serverless = llm.is_model_available_on_serverless("accounts/fireworks/models/llama-v3p2-3b-instruct")
 ```
 
@@ -17772,7 +20053,7 @@ Checks if a model is deployed on a serverless-enabled account.
 
 * True if the model is deployed on a supported serverless account, False otherwise
 
-```python  theme={null}
+```python theme={null}
 model_obj = llm.get_model()
 if model_obj:
     is_deployed = llm.is_model_deployed_on_serverless_account(model_obj)
@@ -17814,7 +20095,7 @@ Creates a text completion using the LLM. These methods are OpenAI compatible and
 * `Generator[Completion, None, None]` when `stream=True` (sync version)
 * `AsyncGenerator[Completion, None]` when `stream=True` (async version)
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 from fireworks import LLM
 
@@ -17881,7 +20162,7 @@ Creates a chat completion using the LLM. These methods are OpenAI compatible and
 
 For details on the `ChatCompletion` object structure, see the [OpenAI Chat Completion Object documentation](https://platform.openai.com/docs/api-reference/chat/object). For the `ChatCompletionChunk` object structure used in streaming, see the [OpenAI Chat Streaming documentation](https://platform.openai.com/docs/api-reference/chat-streaming/streaming).
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 from fireworks import LLM
 
@@ -17942,14 +20223,14 @@ The `Dataset` class provides a convenient way to manage datasets for fine-tuning
 
 ### `from_list()`
 
-```python  theme={null}
+```python theme={null}
 @classmethod
 from_list(data: list)
 ```
 
 Creates a Dataset from a list of training examples. Each example should be compatible with OpenAI's chat completion format.
 
-```python  theme={null}
+```python theme={null}
 from fireworks import Dataset
 
 # Create dataset from a list of examples
@@ -17967,14 +20248,14 @@ dataset = Dataset.from_list(examples)
 
 ### `from_file()`
 
-```python  theme={null}
+```python theme={null}
 @classmethod
 from_file(path: str)
 ```
 
 Creates a Dataset from a local JSONL file. The file should contain training examples in OpenAI's chat completion format.
 
-```python  theme={null}
+```python theme={null}
 from fireworks import Dataset
 
 # Create dataset from a JSONL file
@@ -17983,14 +20264,14 @@ dataset = Dataset.from_file("path/to/training_data.jsonl")
 
 ### `from_string()`
 
-```python  theme={null}
+```python theme={null}
 @classmethod
 from_string(data: str)
 ```
 
 Creates a Dataset from a string containing JSONL-formatted training examples.
 
-```python  theme={null}
+```python theme={null}
 from fireworks import Dataset
 
 # Create dataset from a JSONL string
@@ -18003,14 +20284,14 @@ dataset = Dataset.from_string(jsonl_data)
 
 ### `from_id()`
 
-```python  theme={null}
+```python theme={null}
 @classmethod
 from_id(id: str)
 ```
 
 Creates a Dataset from an existing dataset ID on Fireworks.
 
-```python  theme={null}
+```python theme={null}
 from fireworks import Dataset
 
 # Create dataset from existing ID
@@ -18026,7 +20307,7 @@ Uploads the dataset to Fireworks if it doesn't already exist. This method automa
 3. If it doesn't exist, creates and uploads the dataset to Fireworks
 4. Validates the dataset after upload
 
-```python  theme={null}
+```python theme={null}
 from fireworks import Dataset
 
 # Create dataset and sync it to Fireworks
@@ -18040,7 +20321,7 @@ dataset.sync()
 
 Deletes the dataset from Fireworks.
 
-```python  theme={null}
+```python theme={null}
 dataset = Dataset.from_file("path/to/training_data.jsonl")
 dataset.delete()
 ```
@@ -18058,7 +20339,7 @@ Returns the first n rows of the dataset.
 
 * *list or Dataset* - List of dictionaries if as\_dataset=False, Dataset object if as\_dataset=True
 
-```python  theme={null}
+```python theme={null}
 # Get first 5 rows as a list
 first_5_rows = dataset.head(5)
 
@@ -18079,7 +20360,7 @@ Creates an evaluation job using a reward function for this dataset.
 
 * *EvaluationJob* - The created evaluation job
 
-```python  theme={null}
+```python theme={null}
 from fireworks import reward_function
 
 @reward_function
@@ -18103,7 +20384,7 @@ Previews the evaluator for the dataset.
 
 * *SyncPreviewEvaluatorResponse* - Preview response from the evaluator
 
-```python  theme={null}
+```python theme={null}
 preview_response = dataset.preview_evaluator(my_reward_function, samples=10)
 ```
 
@@ -18116,7 +20397,7 @@ The Dataset class expects data in OpenAI's chat completion format. Each training
 
 Example format:
 
-```json  theme={null}
+```json theme={null}
 {
     "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -18130,7 +20411,7 @@ Example format:
 
 The `SupervisedFineTuningJob` class manages fine-tuning jobs on Fireworks. It provides a convenient interface for creating, monitoring, and managing fine-tuning jobs.
 
-```python  theme={null}
+```python theme={null}
 class SupervisedFineTuningJob()
 ```
 
@@ -18191,7 +20472,7 @@ Creates the job if it doesn't exist, otherwise returns the existing job. If prev
 
 * *SupervisedFineTuningJob* - The synced job object
 
-```python  theme={null}
+```python theme={null}
 job = job.sync()
 ```
 
@@ -18203,7 +20484,7 @@ Polls the job status until it is complete and returns the job object.
 
 * *SupervisedFineTuningJob* - The completed job object
 
-```python  theme={null}
+```python theme={null}
 job = job.wait_for_completion()
 ```
 
@@ -18215,7 +20496,7 @@ Asynchronously polls the job status until it is complete and returns the job obj
 
 * *SupervisedFineTuningJob* - The completed job object
 
-```python  theme={null}
+```python theme={null}
 job = await job.await_for_completion()
 ```
 
@@ -18223,7 +20504,7 @@ job = await job.await_for_completion()
 
 Deletes the job.
 
-```python  theme={null}
+```python theme={null}
 job.delete()
 ```
 
@@ -18231,7 +20512,7 @@ job.delete()
 
 Asynchronously deletes the job.
 
-```python  theme={null}
+```python theme={null}
 await job.adelete()
 ```
 
@@ -18240,7 +20521,7 @@ await job.adelete()
 The `ReinforcementStep` class represents a reinforcement learning training step.
 It provides methods to monitor and manage the training process.
 
-```python  theme={null}
+```python theme={null}
 class ReinforcementStep()
 ```
 
@@ -18258,7 +20539,7 @@ Retrieves the current state of the training job from the server.
 
 * A `ReinforcementStep` object with updated state, or `None` if the job no longer exists
 
-```python  theme={null}
+```python theme={null}
 # Get updated job status
 updated_job = job.get()
 if updated_job is None:
@@ -18275,7 +20556,7 @@ Raises a `RuntimeError` if the job is in a failed, cancelled, or otherwise bad s
 
 * `RuntimeError` - If the job is in a bad state (failed, cancelled, expired, etc.)
 
-```python  theme={null}
+```python theme={null}
 # Check for bad states during training
 try:
     job.raise_if_bad_state()
@@ -18285,7 +20566,7 @@ except RuntimeError as e:
 
 ### Usage Example
 
-```python  theme={null}
+```python theme={null}
 import time
 from fireworks import LLM, Dataset
 
@@ -18348,7 +20629,7 @@ improved_llm.apply()
 
 The `reinforcement_step` method is designed to support iterative reinforcement learning workflows. Here's a complete example showing how to perform multiple reinforcement learning steps:
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 import time
 import random
@@ -18522,7 +20803,7 @@ This workflow demonstrates the iterative nature of reinforcement learning, where
 
 The `BatchInferenceJob` class provides a convenient way to manage batch inference jobs on Fireworks. It allows you to perform bulk asynchronous inference on large datasets, reducing costs by up to 50%.
 
-```python  theme={null}
+```python theme={null}
 class BatchInferenceJob()
 ```
 
@@ -18540,7 +20821,7 @@ class BatchInferenceJob()
 
 ### `create()`
 
-```python  theme={null}
+```python theme={null}
 @staticmethod
 create(
     model: str,
@@ -18575,7 +20856,7 @@ Creates a new batch inference job.
 
 * A `BatchInferenceJob` object
 
-```python  theme={null}
+```python theme={null}
 from fireworks import BatchInferenceJob
 
 # Create a batch inference job
@@ -18595,7 +20876,7 @@ job = BatchInferenceJob.create(
 
 ### `get()`
 
-```python  theme={null}
+```python theme={null}
 @staticmethod
 get(job_id: str, account: str, api_key: Optional[str] = None) -> Optional[BatchInferenceJob]
 ```
@@ -18612,7 +20893,7 @@ Retrieves a batch inference job by its ID.
 
 * A `BatchInferenceJob` object if found, `None` otherwise
 
-```python  theme={null}
+```python theme={null}
 # Get an existing batch inference job
 job = BatchInferenceJob.get(
     job_id="my-batch-job",
@@ -18626,7 +20907,7 @@ if job:
 
 ### `list()`
 
-```python  theme={null}
+```python theme={null}
 @staticmethod
 list(
     account: str,
@@ -18647,7 +20928,7 @@ Lists batch inference jobs in an account.
 
 * A list of `BatchInferenceJob` objects
 
-```python  theme={null}
+```python theme={null}
 # List all batch inference jobs
 jobs = BatchInferenceJob.list(account="my-account")
 
@@ -18657,7 +20938,7 @@ for job in jobs:
 
 ### `delete()`
 
-```python  theme={null}
+```python theme={null}
 @staticmethod
 delete(job_id: str, account: str, api_key: Optional[str] = None) -> None
 ```
@@ -18670,7 +20951,7 @@ Deletes a batch inference job.
 * `account` *str* - Account ID
 * `api_key` *str, optional* - The API key to use
 
-```python  theme={null}
+```python theme={null}
 # Delete a batch inference job
 BatchInferenceJob.delete(
     job_id="my-batch-job",
@@ -18680,7 +20961,7 @@ BatchInferenceJob.delete(
 
 ### `to_dict()`
 
-```python  theme={null}
+```python theme={null}
 @staticmethod
 to_dict(proto: BatchInferenceJob) -> dict
 ```
@@ -18695,7 +20976,7 @@ Converts a batch inference job proto to a friendly dictionary representation.
 
 * A dictionary with human-readable field values
 
-```python  theme={null}
+```python theme={null}
 # Convert job to dictionary for easy viewing
 job = BatchInferenceJob.get("my-batch-job", "my-account")
 if job:
@@ -18719,7 +21000,7 @@ Source: https://docs.fireworks.ai/tools-sdks/python-client/the-tutorial
 
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 ## Foreword
@@ -18767,7 +21048,7 @@ To get started with the Fireworks AI Python SDK, you need to install the `firect
   <Step>
     Sign in to Fireworks by running the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     firectl signin
     ```
 
@@ -18778,7 +21059,7 @@ To get started with the Fireworks AI Python SDK, you need to install the `firect
     Create an API key by running the following command:
 
     ```bash {1,4} theme={null}
-    $ firectl create api-key --key-name "quick-start"
+    $ firectl api-key create --key-name "quick-start"
     Key Id: key_42vAYeb7rwt9zzg1
     Display Name: quick-start
     Key: fw_3ZLd....
@@ -18788,7 +21069,7 @@ To get started with the Fireworks AI Python SDK, you need to install the `firect
 
     Copy the value of the `Key` field to your environment variable `FIREWORKS_API_KEY`.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export FIREWORKS_API_KEY=fw_3ZLd....
     ```
   </Step>
@@ -18933,7 +21214,7 @@ The Build SDK makes fine-tuning a model a breeze! To see how, let's try a canoni
   <Step>
     Install the required dependencies, you will need the `datasets` library from Hugging Face to load the dataset.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install datasets
     ```
   </Step>
@@ -19112,10 +21393,384 @@ The Build SDK makes fine-tuning a model a breeze! To see how, let's try a canoni
 This tutorial walked you through the basic use cases for the SDK: trying out different models/configurations and fine-tuning on a dataset. From here, you should check out the [Reference](/tools-sdks/python-client/sdk-reference) for more details on the objects and methods available in the SDK.
 
 
+# Python SDK
+Source: https://docs.fireworks.ai/tools-sdks/python-sdk
+
+
+
+The official Python SDK for the Fireworks AI API is available on [GitHub](https://github.com/fw-ai-external/python-sdk) and [PyPI](https://pypi.org/project/fireworks-ai/).
+
+## Fireworks vs. OpenAI SDK
+
+Fireworks is [OpenAI-compatible](/tools-sdks/openai-compatibility), so you can use the OpenAI SDK with Fireworks. The Fireworks SDK offers additional benefits:
+
+* **Better concurrency defaults** — Optimized connection pooling for high-throughput workloads
+* **Fireworks-exclusive features** — Access parameters and response fields not available in the OpenAI API
+* **Platform automation** — Manage datasets, evals, fine-tuning, and deployments programmatically
+
+## Installation
+
+Requires Python 3.9+ and an API key. See [Getting your API key](/api-reference/introduction#getting-your-api-key) for instructions.
+
+<Note>
+  The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+</Note>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install --pre fireworks-ai
+  ```
+
+  ```bash poetry theme={null}
+  poetry add --pre fireworks-ai
+  ```
+
+  ```bash uv theme={null}
+  uv add --pre fireworks-ai
+  ```
+</CodeGroup>
+
+For detailed usage instructions, see the
+[README.md](https://github.com/fw-ai-external/python-sdk#readme). To quickly get
+started with serverless, see our [Serverless
+Quickstart](/getting-started/quickstart).
+
+
 # Changelog
 Source: https://docs.fireworks.ai/updates/changelog
 
 
+
+<Update label="2026-01-20">
+  # Warm-Start Training and Azure Model Uploads
+
+  ## **Warm-Start Training for Reinforcement Fine-Tuning**
+
+  You can now warm-start Reinforcement Fine-Tuning jobs from previously supervised fine-tuned checkpoints using the `--warm-start-from` flag. This enables a streamlined SFT-to-RFT workflow where you first train a model with supervised fine-tuning, then continue training with reinforcement learning.
+
+  See the [Warm-Start Training guide](/fine-tuning/warm-start) for details.
+
+  ## **Azure Federated Identity for Model Uploads**
+
+  Model uploads from Azure Blob Storage now support Azure AD federated identity authentication as an alternative to SAS tokens. This eliminates the need for credential rotation and enables secure, credential-less authentication.
+
+  See the [Uploading Custom Models documentation](/models/uploading-custom-models) for setup instructions.
+
+  ## 📚 Documentation Updates
+
+  * **Warm-Start Training:** New guide for SFT-to-RFT workflows ([Warm-Start Training](/fine-tuning/warm-start))
+  * **Azure Federated Identity:** Setup instructions for Azure AD authentication ([Uploading Custom Models](/models/uploading-custom-models))
+  * **Preserved Thinking:** Multi-turn reasoning with preserved thinking context ([Reasoning](/guides/reasoning))
+  * **GLM 4.7:** Added to models supporting `reasoning_effort` parameter
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **RFT Cost Display:** Reinforcement Fine-Tuning job pages now show approximate final cost (Web App)
+    - **GPU Information:** Deployments table displays GPU type and count (Web App)
+    - **DPO Job Resume:** Preference Fine-Tuning jobs can now be resumed after stopping (Web App, API)
+    - **Free Tuning Filter:** New filter in fine-tuning model selector for free-to-fine-tune models (Web App)
+    - **Playground Inputs:** Editable number inputs for temperature, top\_p, and other parameters (Web App)
+    - **Clone Fine-Tuning Jobs:** Fixed field population when cloning jobs (Web App)
+    - **Evaluation Job Errors:** Errors now display with alert banners (Web App)
+    - **Invoice CSV Export:** Improved download experience (Web App)
+    - **Multi-Region Display:** Per-region replica counts shown for multi-region deployments (Web App)
+    - **Playground Validation:** Prevents querying deployments with 0 replicas (Web App)
+    - **List Models Filter:** `firectl model list` supports `--name` and `--public-only` flags (CLI)
+    - **RFT Concurrency:** New `--max-concurrent-rollouts` and `--max-concurrent-evaluations` flags (CLI)
+  </Accordion>
+</Update>
+
+<Update label="2025-12-22">
+  # Playground Categories, New User Roles, Fine-Tuning Improvements, and New Models
+
+  ## **Playground Categories**
+
+  The Playground now features category tabs (LLM, Image, TTS, STT) in the header for easier switching between model types. The playground automatically detects the appropriate category based on the selected model and provides smart defaults for each category.
+
+  ## **User Roles: Contributor and Inference**
+
+  New user roles provide more granular access control for team collaboration:
+
+  * **Contributor**: Read and write access to resources without administrative privileges
+  * **Inference**: Read-only access with the ability to run inference on deployments
+
+  Assign these roles when inviting team members to provide appropriate access levels.
+
+  ## **Fine-Tuning Improvements**
+
+  Fine-tuning workflows have been enhanced with several new capabilities:
+
+  * **Stop and Resume Jobs**: Stop running fine-tuning jobs and resume them later from where they left off. Available for Supervised Fine-Tuning and Reinforcement Fine-Tuning jobs.
+  * **Clone Jobs**: Quickly create new fine-tuning jobs based on existing job configurations using the Clone action.
+  * **Download Output Datasets**: Download output datasets from Reinforcement Fine-Tuning jobs, including individual files or bulk download as a ZIP archive.
+  * **Download Rollout Logs**: Download rollout logs from Reinforcement Fine-Tuning jobs for offline analysis.
+
+  ## ✨ New Models
+
+  * **[Gemma 3 12B Instruct](https://app.fireworks.ai/models/fireworks/gemma-3-12b-it)** is now available in the Model Library
+  * **[Gemma 3 4B Instruct](https://app.fireworks.ai/models/fireworks/gemma-3-4b-it)** is now available in the Model Library
+  * **[Qwen3 Omni 30B A3B Instruct](https://app.fireworks.ai/models/fireworks/qwen3-omni-30b-a3b-instruct)** is now available in the Model Library
+
+  ## 📚 Documentation Updates
+
+  * **Deployment Shapes API:** Added [List Deployment Shapes](/api-reference/list-deployment-shapes) and [Get Deployment Shape](/api-reference/get-deployment-shape) endpoints for querying available deployment shapes
+  * **Evaluator APIs:** Added [Create Evaluator](/api-reference/create-evaluator), [Update Evaluator](/api-reference/update-evaluator), and helper endpoints for evaluator source code, build logs, and upload validation
+  * **Fine-Tuning APIs:** Added [Resume DPO Job](/api-reference/resume-dpo-job), [Resume Reinforcement Fine-Tuning Step](/api-reference/resume-reinforcement-fine-tuning-step), [Execute Reinforcement Fine-Tuning Step](/api-reference/execute-reinforcement-fine-tuning-step), and [Get Evaluation Job Log Endpoint](/api-reference/get-evaluation-job-log-endpoint)
+  * **SDK Examples:** Added Python SDK example links for [direct routing](/deployments/direct-routing) and [supervised fine-tuning](/fine-tuning/fine-tuning-models) workflows
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **Deployment Progress Display:** Deployment details page now shows live deployment progress with replica status (pending, downloading, initializing, ready) and error banners (Web App)
+    - **Multi-LoRA Display:** Deployment details page now shows all deployed models with expandable sections, not just the default model (Web App)
+    - **Prompt Cache Usage Chart:** Added Cached Prompt Tokens chart to the Serverless Usage page for visibility into prompt caching savings (Web App)
+    - **Audio Usage Charts:** Audio usage metrics are now displayed in a dedicated Voice tab on the Usage page with filtering support (Web App)
+    - **Deployment Shape Search:** Improved deployment shape discovery for models where exact base model matches aren't found, using parameter count bucketing (Web App)
+    - **Vision Model Auto-Detection:** Vision-language models (Qwen VL, LLaVA, Phi-3 Vision, etc.) now automatically have image input support enabled when uploaded (API)
+    - **Dataset Loading UX:** Output dataset tables now stream results with a progress indicator for faster perceived loading (Web App)
+    - **File Size Limit:** Dataset uploads now enforce a clear file size limit with improved error messaging (Web App)
+    - **Number Input Fields:** Improved number input validation across forms (Web App)
+    - **Combobox Responsiveness:** Improved combobox dropdown height on smaller screens (Web App)
+    - **Evaluator Editor Scroll:** Prevented accidental page navigation when scrolling inside the evaluator code editor (Web App)
+    - **Evaluator Save Dialog:** Fixed overflow issues in the save evaluator dialog (Web App)
+    - **Evaluator Selector Labels:** Fixed label rendering in async evaluator select components (Web App)
+    - **Deploy Button Validation:** Deploy button is now disabled when the model is not ready (Web App)
+    - **Model Metadata:** Fixed missing model metadata display on deployment pages (Web App)
+    - **Invoice Display:** Invoice list now shows "paid" status for contract payments (Web App)
+    - **Color Palette Update:** Updated UI color palette for improved visual consistency (Web App)
+  </Accordion>
+</Update>
+
+<Update label="2025-12-15">
+  # Reasoning Guide, Prompt Caching Updates, New Models and CLI Updates
+
+  ## **Reasoning Guide**
+
+  A new [Reasoning guide](/guides/reasoning) is now available in the documentation. This comprehensive guide covers:
+
+  * Accessing `reasoning_content` from thinking/reasoning models
+  * Controlling reasoning effort with the `reasoning_effort` parameter
+  * Streaming with reasoning content
+  * Interleaved thinking for multi-step tool-calling workflows
+
+  The guide provides code examples using the Fireworks Python SDK and explains how to work with models that support extended reasoning capabilities.
+
+  ## **Prompt Caching Updates**
+
+  Prompt caching documentation has been updated with expanded guidance:
+
+  * Cached prompt tokens on serverless now cost 50% less than uncached tokens
+  * Session affinity routing via the `user` field or `x-session-affinity` header for improved cache hit rates
+  * Prompt optimization techniques for maximizing cache efficiency
+
+  See the [Prompt Caching guide](/guides/prompt-caching) for details.
+
+  ## ✨ New Models
+
+  * **[Devstral Small 2 24B Instruct 2512](https://app.fireworks.ai/models/fireworks/devstral-small-2-24b-instruct-2512)** is now available in the Model Library
+  * **[NVIDIA Nemotron Nano 3 30B A3B](https://app.fireworks.ai/models/fireworks/nemotron-nano-3-30b-a3b)** is now available in the Model Library
+
+  ## 📚 Documentation Updates
+
+  * **Reasoning Guide:** New documentation for working with reasoning models, including `reasoning_content`, `reasoning_effort`, streaming, and interleaved thinking ([Reasoning](/guides/reasoning))
+  * **Recommended Models:** Updated recommendations to include DeepSeek V3.2 for code generation and Kimi K2 Thinking as a GPT-5 alternative ([Recommended Models](/guides/recommended-models))
+  * **OpenAI Compatibility:** Removed `stop` sequence documentation as Fireworks is now 1:1 compatible with OpenAI's behavior ([OpenAI Compatibility](/tools-sdks/openai-compatibility))
+  * **Evaluator APIs:** Added REST API documentation for Evaluator and Evaluation Job CRUD operations ([Evals API Reference](/api-reference/list-evaluators))
+  * **firectl CLI Reference:** Updated with new commands including `cancel dpo-job`, `cancel supervised-fine-tuning-job`, `set-api-key`, `redeem-credit-code`, and evaluator revision management
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **Audio Usage Charts:** Added a Voice modality tab to the Usage page for viewing audio-specific usage metrics and charts (Web App)
+    - **Deployment Page Redesign:** Redesigned deployment details page with inline action buttons (Edit, Delete, Enable/Disable), reordered metadata sections, and collapsible API examples (Web App)
+    - **Deployment API Examples:** API code examples now use the deployment route as the canonical model identifier for clearer usage patterns (Web App)
+    - **LoRA Addons Tab:** Renamed "Serverless LoRA" tab to "LoRA Addons" on the deployments dashboard for clarity (Web App)
+    - **Evaluator Selector:** Improved evaluator selector UI to display both display name and evaluator ID for easier identification (Web App)
+    - **Evaluator Delete Confirmation:** Added confirmation modal with success/error feedback when deleting evaluators (Web App)
+    - **Evaluator Code Viewer:** Evaluator source files now load asynchronously, preventing browser freezes with large files (Web App)
+    - **Dataset Image Preview:** Dataset preview now properly renders image content in message bubbles and comparison views (Web App)
+    - **Model Search:** Improved model search accuracy by restricting results to display name and model ID matches only (Web App)
+    - **Fine-Tuning Progress Status:** Fine-tuning job detail pages now show the initial job status immediately on page load (Web App)
+    - **Evaluator Test Controls:** Dataset selection and pagination are now disabled while an evaluator test is running to prevent conflicts (Web App)
+    - **Repository Name Validation:** Evaluator repository names now validate against GitHub naming conventions (Web App)
+    - **Billing Contracts Tab:** Added a Contracts tab to the billing page alongside Invoices for viewing contract details (Web App)
+    - **Dataset Size Limit:** Enforced 1GB maximum file size for dataset uploads with clear error messaging (Web App)
+    - **Evaluator Documentation Link:** Fixed evaluator documentation links to point to the correct location (Web App)
+    - **Session Update Fix:** Fixed an issue with session state updates in the web app (Web App)
+    - **Popover Fix:** Fixed popover components nested in dialogs not displaying correctly (Web App)
+    - **Per-Replica Status:** Deployment status now shows per-replica counts (pending, downloading, initializing, ready) for better visibility into deployment progress (CLI, API)
+    - **set-api-key Command:** The `set-api-key` command is now visible in firectl help output (CLI)
+    - **DPO Resume:** Added support for resuming cancelled DPO fine-tuning jobs (API)
+    - **Reasoning Effort Normalization:** `reasoning_effort` parameter now accepts boolean values in addition to strings and integers (API)
+  </Accordion>
+</Update>
+
+<Update label="2025-12-08">
+  # DeepSeek V3.2 on Serverless, Cached Token Pricing, and New Models
+
+  ## ☁️ Serverless
+
+  * **[DeepSeek V3.2](https://app.fireworks.ai/models/fireworks/deepseek-v3p2)** is now available on serverless
+
+  ## **Cached Token Pricing Display**
+
+  The Model Library and model detail pages now display cached and uncached input
+  token pricing for serverless models that support prompt caching. This gives you
+  better visibility into potential cost savings when using prompt caching with
+  supported models.
+
+  ## **Evaluations Dashboard Improvements**
+
+  The Evaluations dashboard has been enhanced with new filtering and status tracking capabilities:
+
+  * Status column showing evaluator build state (Active, Building, Failed)
+  * Quick filters to filter evaluators and evaluation jobs by status
+  * Improved table layout with actions integrated into the status column
+
+  ## ✨ New Models
+
+  * **[DeepSeek V3.2](https://app.fireworks.ai/models/fireworks/deepseek-v3p2)** is now available in the Model Library
+  * **[Ministral 3 14B Instruct 2512](https://app.fireworks.ai/models/fireworks/ministral-3-14b-instruct-2512)** is now available in the Model Library
+  * **[Ministral 3 8B Instruct 2512](https://app.fireworks.ai/models/fireworks/ministral-3-8b-instruct-2512)** is now available in the Model Library
+  * **[Ministral 3 3B Instruct 2512](https://app.fireworks.ai/models/fireworks/ministral-3-3b-instruct-2512)** is now available in the Model Library
+  * **[Mistral Large 3 675B Instruct](https://app.fireworks.ai/models/fireworks/mistral-large-3-fp8)** is now available in the Model Library
+  * **[Qwen3-VL-32B-Instruct](https://app.fireworks.ai/models/fireworks/qwen3-vl-32b-instruct)** is now available in the Model Library
+  * **[Qwen3-VL-8B-Instruct](https://app.fireworks.ai/models/fireworks/qwen3-vl-8b-instruct)** is now available in the Model Library
+
+  ## 📚 Documentation Updates
+
+  * **Reranking Guide:** Added documentation for using the `/rerank` endpoint and `/embeddings` endpoint with `return_logits` for reranking, including parallel batching examples ([Querying Embeddings Models](/guides/querying-embeddings-models))
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **Deployment Page Enhancements:** Redesigned deployment detail page with new model header, quick actions (Playground, Go to Model), tabbed API/Info interface, collapsible code examples, and improved GPU count display (Web App)
+    - **Login Page Redesign:** New marketing panel with customer testimonials carousel, highlighted platform capabilities, and improved visual design (Web App)
+    - **Playground CTA:** Added "Deploy on Demand" button next to "Try the API" for eligible models, making it easier to deploy models directly from the playground (Web App)
+    - **Console Navigation Icons:** Updated sidebar icons with a refreshed icon set for improved visual consistency (Web App)
+    - **Reinforcement Fine-Tuning Defaults:** Changed default epochs to 1 and increased maximum inference N from 8 to 32 for rollout configuration (Web App)
+    - **Failed Job Visibility:** Training progress and loss curves now display for failed and cancelled fine-tuning jobs, helping with debugging (Web App)
+    - **Large Dataset Uploads:** Improved upload handling for large JSONL files with progress tracking and direct-to-storage uploads (Web App)
+    - **Dataset Preview:** Fixed page freeze issue when previewing datasets with very long text content (Web App)
+    - **Loss Chart Y-Axis:** Fixed y-axis scaling on loss charts to properly display the full range of values (Web App)
+    - **Model Deletion Dialog:** Improved custom model delete confirmation dialog with better validation and feedback (Web App)
+    - **Billing Date Range:** Fixed date range calculation errors on the first day of the month in billing usage views (Web App)
+    - **Login Session:** Fixed an issue where expired sessions required manual cookie clearing to log in again (Web App)
+    - **Rollout Detail Panel:** Improved rollout log viewing with resizable split panels and better log formatting (Web App)
+    - **Checkpoint Promotion:** Added validation and error messages when promoting checkpoints with missing target modules or base model (Web App)
+    - **Model Validation:** Added validation before deploying fine-tuned models to ensure the model ID is valid (Web App)
+    - **Quota Error Message:** Improved error message clarity when request quota is exceeded in the playground (Web App)
+    - **Safari Layout:** Fixed extra spacing in login page marketing panel on Safari browsers (Web App)
+  </Accordion>
+</Update>
+
+<Update label="2025-12-01">
+  # Audit Logs, Dataset Download, Weighted Training for Reinforcement Fine-Tuning, and New Model
+
+  ## **Audit Logs in Web App**
+
+  You can now view and search audit logs directly from the Fireworks web app. The new Audit Logs page provides:
+
+  * Search and filter logs by status and timeframe
+  * Detailed view panel for individual log entries
+  * Easy navigation from the console sidebar under Account settings
+
+  See the [Audit Logs documentation](/guides/security_compliance/audit_logs) for more information.
+
+  ## **Dataset Download**
+
+  You can now download datasets directly from the Fireworks web app. The new download functionality allows you to:
+
+  * Download individual files from a dataset
+  * Download all files at once with "Download All"
+  * Access downloads from the Datasets table in the dashboard
+
+  ## **Weighted Training for Reinforcement Fine-Tuning**
+
+  Reinforcement Fine-Tuning now supports per-example weighting, giving you more control over which samples have greater influence during training. This feature mirrors the weighted training functionality already available in Supervised Fine-Tuning.
+
+  See the [Weighted Training documentation](/fine-tuning/weighted-training) for details on the weight field format.
+
+  ## ✨ New Models
+
+  * **[KAT Coder](https://app.fireworks.ai/models/fireworks/kat-coder)** is now available in the Model Library
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **Console Navigation:** Redesigned sidebar with organized groups (CREATE, EXPLORE, MANAGE) for easier navigation (Web App)
+    - **Fine-Tuning Progress Display:** Training progress (progress/epoch) now displays inline in the job title while Supervised Fine-Tuning jobs are running (Web App)
+    - **Reinforcement Fine-Tuning Evaluator Selection:** Evaluators that are still building are now disabled in the selector with a tooltip and status badge (Web App)
+    - **Loss Chart Smoothing:** Large datasets (>1000 metrics) now show EMA smoothing by default for improved visibility (Web App)
+    - **Checkpoint Restore:** Fixed base model resolution when promoting checkpoints from fine-tuning jobs (Web App)
+    - **Deployment Usage Charts:** Fixed usage graph display on deployment details page (Web App)
+    - **Evaluation Job Share Links:** Fixed incorrect output dataset share links and improved deep-link behavior for evaluation jobs (Web App)
+    - **Embedding Model Deployments:** Embedding models can now be deployed directly from the UI (Web App)
+    - **Dataset Download State:** Download option is now disabled for datasets that are still uploading (Web App)
+    - **GPU Hints:** Removed invalid GPU hints from region selector in deployment form (Web App)
+    - **PEFT Model Shapes:** Fixed deployment shape lookup for PEFT Addon and Live Merge models (Web App)
+    - **LoRA Validation:** Improved error messages when LoRA checkpoints are missing the required `language_model.` prefix, with actionable conversion instructions (API)
+    - **Reinforcement Fine-Tuning Timeout:** Extended maximum job timeout from 4 to 7 days for longer training runs (API)
+    - **Training Job Cancellation:** Added ability to cancel Supervised Fine-Tuning, DPO, and Reinforcement Fine-Tuning jobs via API (API)
+    - **Resource Errors:** Improved error messages for capacity-related issues during training and deployment (API)
+  </Accordion>
+</Update>
+
+<Update label="2025-11-24">
+  # Evaluator Improvements, Kimi K2 Thinking on Serverless, and New API Endpoints
+
+  ## **Improved Evaluator Creation Experience**
+
+  The evaluator creation workflow has been significantly enhanced with GitHub template integration. You can now:
+
+  * Fork evaluator templates directly from GitHub repositories
+  * Browse and preview templates before using them
+  * Create evaluators with a streamlined save dialog
+  * View evaluators in a new sortable and paginated table
+
+  ## **MLOps & Observability Integrations**
+
+  New documentation for integrating Fireworks with MLOps and observability tools:
+
+  * [Weights & Biases (W\&B)](/ecosystem/integrations/wandb) integration for experiment tracking during fine-tuning
+  * MLflow integration for model management and experiment logging
+
+  ## ✨ New Models
+
+  * **[Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking)** is now available in the Model Library
+  * **[KAT Dev 32B](https://app.fireworks.ai/models/fireworks/kat-dev-32b)** is now available in the Model Library
+  * **[KAT Dev 72B Exp](https://app.fireworks.ai/models/fireworks/kat-dev-72b-exp)** is now available in the Model Library
+
+  ## ☁️ Serverless
+
+  * **[Kimi K2 Thinking](https://app.fireworks.ai/models/fireworks/kimi-k2-thinking)** is now available on serverless
+
+  ## 📚 New REST API Endpoints
+
+  New REST API endpoints are now available for managing Reinforcement Fine-Tuning Steps and deployments:
+
+  * [Create Reinforcement Fine-Tuning Step](/api-reference/create-reinforcement-fine-tuning-step)
+  * [List Reinforcement Fine-Tuning Steps](/api-reference/list-reinforcement-fine-tuning-steps)
+  * [Get Reinforcement Fine-Tuning Step](/api-reference/get-reinforcement-fine-tuning-step)
+  * [Delete Reinforcement Fine-Tuning Step](/api-reference/delete-reinforcement-fine-tuning-step)
+  * [Scale Deployment](/api-reference/scale-deployment)
+  * [List Deployment Shape Versions](/api-reference/list-deployment-shape-versions)
+  * [Get Deployment Shape Version](/api-reference/get-deployment-shape-version)
+  * [Get Dataset Download Endpoint](/api-reference/get-dataset-download-endpoint)
+
+  <Accordion title="Bug Fixes & Minor Improvements">
+    - **Deployment Region Selector:** Added GPU accelerator hints to the region selector, with Global set as default for optimal availability (Web App)
+    - **Preference Fine-Tuning (DPO):** Added to the Fine-Tuning page for training models with human preference data (Web App)
+    - **Redeem Credits:** Credit code redemption is now available to all users from the Billing page (Web App)
+    - **Model Library Search:** Improved fuzzy search with hybrid matching for better model discovery (Web App)
+    - **Cogito Models:** Added Cogito namespace to the Model Library for easier discovery (Web App)
+    - **Custom Model Editing:** You can now edit display name and description inline on custom model detail pages (Web App)
+    - **Loss Curve Charts:** Fixed an issue where loss curves were not updating in real-time during fine-tuning jobs (Web App)
+    - **Deployment Shapes:** Fixed deployment shape selection for fine-tuned models (PEFT and live-merge) (Web App)
+    - **Usage Charts:** Fixed replica calculation in multi-series usage charts (Web App)
+    - **Session Management:** Removed auto-logout on inactivity for improved user experience (Web App)
+    - **Onboarding:** Updated onboarding survey with improved profile and questionnaire flow (Web App)
+    - **Fine-Tuning Form:** Max context length now defaults to and is capped by the selected base model's context length (Web App)
+    - **Secrets for Evaluators:** Added documentation for using secrets in evaluators to securely call external services (Docs)
+    - **Region Selection:** Deprecated regions are now filtered from deployment options (Web App)
+    - **Playground:** Embedding and reranker models are now filtered from playground model selection (Web App)
+    - **LoRA Rank:** Updated valid LoRA rank range to 4-32 in documentation (Docs)
+    - **SFT Documentation:** Added documentation for batch size, learning rate warmup, and gradient accumulation settings (Docs)
+    - **Direct Routing:** Added OpenAI SDK code examples for direct routing (Docs)
+    - **Recommended Models:** Updated model recommendations with migration guidance from Claude, GPT, and Gemini (Docs)
+  </Accordion>
+</Update>
 
 <Update label="2025-11-12">
   ## ☀️ Sunsetting Build SDK
@@ -19133,9 +21788,7 @@ Source: https://docs.fireworks.ai/updates/changelog
   The new SDK replaces the Build SDK's `LLM` and `Dataset` classes with REST
   API-aligned methods. If you upgrade to version `1.0.0` or later, you will need
   to migrate your code.
-</Update>
 
-<Update label="2025-11-12">
   ## 🚀 Improved RFT Experience
 
   We've drastically improved the RFT experience with better reliability,
@@ -19151,7 +21804,7 @@ Source: https://docs.fireworks.ai/updates/changelog
 
   We now support supervised fine tuning with separate thinking traces for reasoning models (e.g. DeepSeek R1, GPT OSS, Qwen3 Thinking etc) that ensures training-inference consistency. An example including thinking traces would look like:
 
-  ```json  theme={null}
+  ```json theme={null}
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -19363,19 +22016,19 @@ Source: https://docs.fireworks.ai/updates/changelog
 
   You can now deploy a LoRA fine-tune with a single command and get speeds that approximately match the base model:
 
-  ```bash  theme={null}
-  firectl create deployment "accounts/fireworks/models/<MODEL_ID of lora model>"
+  ```bash theme={null}
+  firectl deployment create "accounts/fireworks/models/<MODEL_ID of lora model>"
   ```
 
   Previously, this involved two distinct steps, and the resulting deployment was slower than the base model:
 
-  1. Create a deployment using `firectl create deployment "accounts/fireworks/models/<MODEL_ID of base model>" --enable-addons`
+  1. Create a deployment using `firectl deployment create "accounts/fireworks/models/<MODEL_ID of base model>" --enable-addons`
   2. Then deploy the addon to the deployment: `firectl load-lora <MODEL_ID> --deployment <DEPLOYMENT_ID>`
 
   For more information, see our [deployment documentation](https://docs.fireworks.ai/models/deploying#deploying-to-on-demand).
 
   <Note>
-    This change is for dedicated deployments with a single LoRA. You can still deploy multiple LoRAs on a deployment or deploy LoRA(s) on some Serverless models as described in the documentation.
+    This change is for dedicated deployments with a single LoRA. You can still deploy multiple LoRAs on a deployment as described in the documentation.
   </Note>
 </Update>
 

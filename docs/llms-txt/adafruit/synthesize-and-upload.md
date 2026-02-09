@@ -36,7 +36,7 @@ Note: In the future, you can use the command script **de0-nano/program.cmd** to 
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### Medium 16x32 RGB LED matrix panel - 6mm Pitch
@@ -58,18 +58,18 @@ No Longer Stocked
 
 ## Related Guides
 
-- [Matrix Portal Sand Handles](https://learn.adafruit.com/matrix-portal-sand.md)
-- [NextBus transit clock for Raspberry Pi](https://learn.adafruit.com/nextbus-transit-clock-for-raspberry-pi.md)
-- [T³ Time Triangle Thing](https://learn.adafruit.com/t-time-triangle-thing.md)
-- [Ultrasonic Ruler](https://learn.adafruit.com/ultrasonic-ruler.md)
-- [DIY Pocket LED Gamer - Tiny Tetris!](https://learn.adafruit.com/diy-3d-printed-handheld-pocket-game-tiny-tetris-snake.md)
-- [Moon Phase Clock for Adafruit Matrix Portal](https://learn.adafruit.com/moon-phase-clock-for-adafruit-matrixportal.md)
-- [Lighting LED Nets with WLED and xLights](https://learn.adafruit.com/lighting-led-nets-with-wled-and-xlights.md)
-- [MatrixPortal CircuitPython Animated Message Board](https://learn.adafruit.com/matrixportal-circuitpython-animated-message-board.md)
-- [TIMESQUARE Watch Kit](https://learn.adafruit.com/timesquare-watch-kit.md)
-- [Matrix Portal Scoreboard](https://learn.adafruit.com/matrix-portal-scoreboard.md)
+- [Smart Bathroom App](https://learn.adafruit.com/smart-bathroom-app.md)
+- [NeoTrellis Light Painting](https://learn.adafruit.com/neotrellis-light-painting.md)
+- [TIMESQUARE Wordclock](https://learn.adafruit.com/timesquare-wordclock.md)
+- [MatrixPortal S3 Flight Proximity Tracker](https://learn.adafruit.com/matrixportal-s3-flight-proximity-tracker.md)
+- [MicroPython Displays: Drawing Shapes](https://learn.adafruit.com/micropython-displays-drawing-shapes.md)
+- [Adafruit Protomatter RGB Matrix Library](https://learn.adafruit.com/adafruit-protomatter-rgb-matrix-library.md)
+- [Adafruit Microphone Amplifier Breakout](https://learn.adafruit.com/adafruit-microphone-amplifier-breakout.md)
+- [16x16 NeoPixel Matrix Square Pixel Display](https://learn.adafruit.com/16x16-neopixel-matrix-square-pixel-display.md)
+- [Shake Away 2021 with MatrixPortal](https://learn.adafruit.com/matrixportal-shake-away-2020.md)
+- [NeoTrellis Feather Case Assembly](https://learn.adafruit.com/neotrellis-feather-case-assembly.md)
+- [RGB LED Matrices with CircuitPython](https://learn.adafruit.com/rgb-led-matrices-matrix-panels-with-circuitpython.md)
+- [Scroll an SMS Text Message on your RGB Matrix](https://learn.adafruit.com/scroll-an-sms-text-message-on-your-rgb-matrix.md)
+- [Adafruit LED Backpacks](https://learn.adafruit.com/adafruit-led-backpack.md)
 - [Raspberry Pi LED Matrix Display](https://learn.adafruit.com/raspberry-pi-led-matrix-display.md)
-- [Adafruit CharliePlex LED Matrix Bonnet](https://learn.adafruit.com/adafruit-charlieplex-bonnet.md)
-- [LED Matrix Scoreboard](https://learn.adafruit.com/led-matrix-scoreboard.md)
-- [SmartMatrix Remote Controlled LED Art Display](https://learn.adafruit.com/smartmatrix-remote-controlled-led-art-display.md)
-- [Motion Controlled Matrix Bed Clock](https://learn.adafruit.com/motion-controlled-matrix-bed-clock.md)
+- [Sino:bit with Arduino](https://learn.adafruit.com/sino-bit-with-arduino.md)

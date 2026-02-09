@@ -2,6 +2,8 @@
 
 # KeyValueListItem<!-- -->
 
+Metadata about a single key in a Key-Value Store.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,14 +14,14 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#key)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L378)key
+### [**](#key)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L590)key
 
 **key: string
 
-### [**](#recordPublicUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L380)recordPublicUrl
+### [**](#recordPublicUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L592)recordPublicUrl
 
 **recordPublicUrl: string
 
-### [**](#size)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L379)size
+### [**](#size)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L591)size
 
 **size: number

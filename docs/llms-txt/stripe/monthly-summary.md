@@ -5,7 +5,7 @@
 Learn about the monthly summary report.
 
 The [monthly summary](https://dashboard.stripe.com/revenue-recognition/) provides a detailed breakdown of activity for the previous month. You can use this information to understand how your billing activity affected your revenue and to book journal entries.
-![Monthly summary for July 2020](https://b.stripecdn.com/docs-statics-srv/assets/monthly-summary-v2.ba474e8e2a801fedb0674c40bae653ad.png)
+![Monthly summary for a given month](https://b.stripecdn.com/docs-statics-srv/assets/monthly-summary-v2.ba474e8e2a801fedb0674c40bae653ad.png)
 
 You can see that the net recognized revenue is 171,601 USD and the ending balance of deferred revenue at the end of July is 310,000 USD.
 
@@ -46,11 +46,11 @@ The deferred revenue section gives the breakdown of what changed in the deferred
 
 This example includes only one *invoice* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice) with the following assumptions:
 
-- The invoice finalizes on July 10, 2020.
-- The invoice has only one line item whose service period is from July 20, 2020 to September 17, 2020.
+- The invoice finalizes on July 10, 2025.
+- The invoice has only one line item whose service period is from July 20, 2025 to September 17, 2025.
 - The amount for the invoice line item is 60 USD, out of which 12 USD is recognized in July and 48 USD is deferred.
 
-The monthly summary for July 2020 would look like this:
+The monthly summary for July 2025 would look like this:
 
 | **Recognized revenue**                       |         |
 | -------------------------------------------- | ------- |
@@ -65,7 +65,7 @@ The monthly summary for July 2020 would look like this:
 | Starting balance Jul 1 UTC                   | 0 USD   |
 | **Ending balance Jul 31 UTC**                | 0 USD   |
 
-Continuing on this example, if the invoice is refunded on August 15, 2020, the monthly summary for August 2020 would look like this:
+Continuing on this example, if the invoice is refunded on August 15, 2025, the monthly summary for August 2025 would look like this:
 
 | **Recognized revenue**        |         |
 | ----------------------------- | ------- |
@@ -83,10 +83,10 @@ Continuing on this example, if the invoice is refunded on August 15, 2020, the m
 
 The revenue of a standalone payment is recognized when the payment occurs. This example has only one charge with the following assumptions:
 
-- The charge occurs on July 15, 2020.
+- The charge occurs on July 15, 2025.
 - The charge’s amount is 17 USD.
 
-The monthly summary for July 2020 would look like this:
+The monthly summary for July 2025 would look like this:
 
 | **Recognized revenue**                       |        |
 | -------------------------------------------- | ------ |

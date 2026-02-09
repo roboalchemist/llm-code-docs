@@ -5213,6 +5213,37 @@ You can map groups from your IdP (typically communicated through the `groups` cl
 
 ---
 
+The Grafbase Enterprise Platform control plane emits OpenTelemetry metrics. This is configured through the [standard OpenTelemetry environment variables](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/), in particular `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_SERVICE_NAME`.
+
+This mechanism is in place starting with version 0.6.5 of the `api` and `telemetry-sink` docker images.
+
+## Metrics
+
+### HTTP services
+
+The API and the HTTP listener of the telemetry sink both expose [the HTTP metrics defined in OTEL semantic conventions](httpss://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-metrics.md).
+
+### gRPC services
+
+The gRPC listener of the telemetry sink exposes the following metrics:
+
+| Metric Name | Type | Description | Labels |
+| :--- | :--- | :--- | :--- |
+| `grpc_server_started` | Counter | Total number of RPCs started on the server | `grpc_service`, `grpc_method` |
+| `grpc_server_handled` | Counter | Total number of RPCs completed on the server | `grpc_service`, `grpc_method`, `grpc_code` |
+| `grpc_server_handling_duration_seconds` | Histogram | RPC call duration in seconds | `grpc_service`, `grpc_method`, `grpc_code` |
+| `grpc_server_active_requests` | UpDownCounter | Current number of active server requests | `grpc_service`, `grpc_method` |
+
+Request duration is tracked with the following bucket boundaries (in seconds): `0.001, 0.005, 0.01, 0.015, 0.020, 0.025, 0.50, 0.75, 1.0, 2.0`
+
+#### Labels
+
+- **`grpc_service`**: The gRPC service name (extracted from request path).
+- **`grpc_method`**: The gRPC method name (extracted from request path).
+- **`grpc_code`**: The gRPC response status code (e.g., `Ok`, `Unknown`, etc.) - only on completed requests.
+
+---
+
 # Platform - Self-Hosting - Release notes - v0.10.0
 
 October 1st, 2025

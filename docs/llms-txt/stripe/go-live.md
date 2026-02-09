@@ -33,7 +33,7 @@ If you’re a developer (or had a developer perform an integration for you) also
       - Duplicate data (for example, retry the same request to see what happens) We also recommend you have someone else test your integration, especially if that other person isn’t a developer themselves.
 
 - [ ] Review your API error handling
-      Don’t wait to go live before discovering that you haven’t properly written your code to handle every possible [error type](https://docs.stripe.com/api.md#errors), including those that should “never” happen. Be certain your code is defensive, handling not just the common errors, but all possibilities.
+      Don’t wait to go live before discovering that you haven’t properly written your code to handle every possible [error type](https://docs.stripe.com/api/errors.md), including those that should “never” happen. Be certain your code is defensive, handling not just the common errors, but all possibilities.
 
       When testing your error handling, pay close attention to what information you show to your users. A card being declined (that is, a `card_error`) is a different concern than an error on your back end (for example, an `invalid_request_error`).
 

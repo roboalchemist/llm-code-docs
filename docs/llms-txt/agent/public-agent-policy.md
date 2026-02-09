@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/public-agent-policy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Policy for Public Agents
 
 > This is the Agent.ai policy for publishing public agents. Below you’ll find the criteria your agent needs to meet to be published. Published agents can show up in search so other users can find and use them. This document should be viewed alongside our Terms of Service and Privacy Policy.

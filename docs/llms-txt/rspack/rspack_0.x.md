@@ -12,11 +12,11 @@ In Rspack 1.x, we have aligned the default configuration values with those of We
 
 ### \[Important] experiments.css
 
-The default value of [experiments.css](/config/experiments.md#experimentscss) has been changed from `true` to `false`.
+`experiments.css` has been deprecated and no longer enables default CSS processing.
 
-In Rspack 0.x, `experiments.css` was enabled by default, which means files ending with`*.css`were automatically treated as`type: 'css/auto'` without needing to manually include other loaders to process CSS files.
+In Rspack 0.x, `experiments.css` was enabled by default, which meant files ending with `*.css` were automatically treated as `type: 'css/auto'` and processed with built-in CSS logic.
 
-If you rely on the built-in feature to handle CSS files without using any loaders, or if you have used the following configuration to handle CSS files:
+Now, you must manually configure `module.rules` to handle CSS files. For example:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -32,14 +32,12 @@ export default {
 };
 ```
 
-Please note that you now need to manually enable `experiments.css`.
-
 ### \[Important] optimization.concatenateModules
 
 The default value of [optimization.concatenateModules](/config/optimization.md#optimizationconcatenatemodules) has been changed from `false` to:
 
-* `true` when `mode` is `'production'`.
-* `false` for other values of `mode`.
+- `true` when `mode` is `'production'`.
+- `false` for other values of `mode`.
 
 In Rspack 1.x, module concatenation optimization has become more stable. Thus, it's now enabled by default in production mode, allowing multiple modules to be concatenated into a single module to reduce output size and improve compression efficiency.
 
@@ -47,8 +45,8 @@ In Rspack 1.x, module concatenation optimization has become more stable. Thus, i
 
 The default value of [devtool](/config/devtool.md) has been changed from `false` to:
 
-* `eval` when `mode` is `'development'`.
-* `false` for other values of `mode`.
+- `eval` when `mode` is `'development'`.
+- `false` for other values of `mode`.
 
 > `@rspack/cli` overrides the default `devtool` value from `@rspack/core`. Therefore, if you are using `@rspack/cli`, this change will not affect you.
 
@@ -229,24 +227,24 @@ export default {
 
 Rspack's built-in and default-enabled JavaScript minimizer plugin has had its configuration aligned with [SWC's minification configuration](https://swc.rs/docs/configuration/minification). The breaking changes are as follows:
 
-* `minimizerOptions.passes`: moved to `minimizerOptions.compress.passes`
-* `minimizerOptions.dropConsole`: moved to `minimizerOptions.compress.drop_console`
-* `minimizerOptions.pureFuncs`: moved to `minimizerOptions.compress.pure_funcs`
-* `minimizerOptions.keepClassNames`: moved to `minimizerOptions.mangle.keep_classnames`
-* `minimizerOptions.keepFnNames`: moved to `minimizerOptions.mangle.keep_fnames`
-* `minimizerOptions.comments`: moved to `minimizerOptions.format.comments`
-* `minimizerOptions.asciiOnly`: moved to `minimizerOptions.format.ascii_only`
+- `minimizerOptions.passes`: moved to `minimizerOptions.compress.passes`
+- `minimizerOptions.dropConsole`: moved to `minimizerOptions.compress.drop_console`
+- `minimizerOptions.pureFuncs`: moved to `minimizerOptions.compress.pure_funcs`
+- `minimizerOptions.keepClassNames`: moved to `minimizerOptions.mangle.keep_classnames`
+- `minimizerOptions.keepFnNames`: moved to `minimizerOptions.mangle.keep_fnames`
+- `minimizerOptions.comments`: moved to `minimizerOptions.format.comments`
+- `minimizerOptions.asciiOnly`: moved to `minimizerOptions.format.ascii_only`
 
 Default value changes:
 
-* `comments` (`options.format.comments`): changed from `false` to `"some"`
+- `comments` (`options.format.comments`): changed from `false` to `"some"`
 
 ### rspack.HtmlRspackPlugin
 
 We have aligned its configuration with [html-webpack-plugin](https://www.npmjs.com/package/html-webpack-plugin), with the following breaking changes:
 
-* `excludedChunks` has been renamed to `excludeChunks`
-* When `mode` is `'production'`, `minify` is now `true` by default
+- `excludedChunks` has been renamed to `excludeChunks`
+- When `mode` is `'production'`, `minify` is now `true` by default
 
 ## Other changes
 
@@ -254,8 +252,8 @@ We have aligned its configuration with [html-webpack-plugin](https://www.npmjs.c
 
 `@rspack/cli` has upgraded its dependency on `webpack-dev-server` from v4 to v5. If you are using `@rspack/cli`, please be aware of the following breaking changes:
 
-* The minimum supported Node.js version for webpack-dev-server v5 is 18.12.0.
-* Several configuration options have changed. Please refer to the [webpack-dev-server v5 migration guide](https://github.com/webpack/webpack-dev-server/blob/master/migration-v5.md).
+- The minimum supported Node.js version for webpack-dev-server v5 is 18.12.0.
+- Several configuration options have changed. Please refer to the [webpack-dev-server v5 migration guide](https://github.com/webpack/webpack-dev-server/blob/master/migration-v5.md).
 
 ### \[Important] `ResolverFactory` and `Resolver` refactoring with Rust
 
@@ -263,9 +261,9 @@ We have aligned its configuration with [html-webpack-plugin](https://www.npmjs.c
 
 Additionally, `Resolver` now only supports the following methods:
 
-* `resolveSync`
-* `resolve`
-* `withOptions`
+- `resolveSync`
+- `resolve`
+- `withOptions`
 
 This change might cause some plugins to become unusable.
 

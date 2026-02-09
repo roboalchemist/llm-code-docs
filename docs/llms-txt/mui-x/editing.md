@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-tree-view/rich-tree-view/editing.md
 
-# Source: https://mui.com/x/react-data-grid/editing.md
-
-# Source: https://mui.com/x/react-tree-view/rich-tree-view/editing.md
-
 ---
 productId: x-tree-view
 components: RichTreeView, TreeItem

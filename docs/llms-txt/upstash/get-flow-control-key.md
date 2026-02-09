@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/api-refence/flow-control/get-flow-control-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Flow Control Key
 
 > Get details of a specific Flow Control key
@@ -99,7 +103,3 @@ components:
       description: QStash authentication token passed as a query parameter
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

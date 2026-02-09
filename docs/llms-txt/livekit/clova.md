@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/stt/plugins/clova.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Clova
+LiveKit docs › Models › STT › Plugins › Clova
 
 ---
 
@@ -25,7 +25,7 @@ This section provides a brief overview of the CLOVA STT plugin. For more informa
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[clova]~=1.2"
+uv add "livekit-agents[clova]~=1.3"
 
 ```
 
@@ -77,7 +77,7 @@ The following resources provide more information about using CLOVA with LiveKit 
 
 ---
 
-This document was rendered at 2025-11-18T23:55:07.687Z.
+This document was rendered at 2026-02-03T03:25:03.126Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/clova.md](https://docs.livekit.io/agents/models/stt/plugins/clova.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

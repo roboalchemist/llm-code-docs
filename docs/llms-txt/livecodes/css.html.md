@@ -2,18 +2,6 @@
 
 # Source: https://livecodes.io/docs/features/css.html.md
 
-# Source: https://livecodes.io/docs/languages/css.html.md
-
-# Source: https://livecodes.io/docs/features/css.html.md
-
-# Source: https://livecodes.io/docs/languages/css.html.md
-
-# Source: https://livecodes.io/docs/features/css.html.md
-
-# Source: https://livecodes.io/docs/languages/css.html.md
-
-# Source: https://livecodes.io/docs/features/css.html.md
-
 # CSS
 
 import LiveCodes from '../../src/components/LiveCodes.tsx';

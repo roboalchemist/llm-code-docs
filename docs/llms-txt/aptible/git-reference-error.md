@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/git-reference-error.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # git Reference Error
 
 You may encounter the following error messages when running a `git push` from a CI platform, such as Circle CI, Travis CI, Jenkins and others:

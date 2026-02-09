@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/import-from-github.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import from GitHub
 
 > Learn how to import GitHub repositories into Replit using rapid import or guided import methods.
@@ -60,7 +64,7 @@ and supports public and private repositories.
 During the import process, Replit attempts to set your app's language, dependencies, and workflow.
 If your app doesn't run as expected, Replit offers the following workspace tools to help you resolve the issues:
 
-* **[Assistant](/replitai/assistant)**: Diagnose and fix setup issues using AI-powered assistance.
+* **[Agent](/replitai/agent)**: Diagnose and fix setup issues using AI-powered assistance.
 * **[Configure Repl](/replit-app/configuration)**: Configure your app's language, dependencies, and workflow.
 * **[Secrets](/replit-workspace/workspace-features/secrets)**: Securely add environment variables your app depends on.
 * **[Workflows](/replit-workspace/workflows)**: Configure the Run button to your preferred command.

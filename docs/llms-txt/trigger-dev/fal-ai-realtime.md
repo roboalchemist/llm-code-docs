@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/fal-ai-realtime.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate an image from a prompt using Fal.ai and Trigger.dev Realtime
 
 > This example task generates an image from a prompt using Fal.ai and shows the progress of the task on the frontend using Trigger.dev Realtime.
@@ -27,7 +31,7 @@ This video walks through the process of creating this task in a Next.js project.
 
 This task generates an image from a prompt using Fal.ai.
 
-```ts trigger/fal-ai-image-from-prompt-realtime.ts theme={null}
+```ts trigger/fal-ai-image-from-prompt-realtime.ts theme={"theme":"css-variables"}
 import * as fal from "@fal-ai/serverless-client";
 import { logger, schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -69,7 +73,7 @@ export const realtimeImageGeneration = schemaTask({
 
 You can test your task by triggering it from the Trigger.dev dashboard. Here's an example payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "imageUrl": "https://static.vecteezy.com/system/resources/previews/005/857/332/non_2x/funny-portrait-of-cute-corgi-dog-outdoors-free-photo.jpg",
   "prompt": "Dress this dog for Christmas"

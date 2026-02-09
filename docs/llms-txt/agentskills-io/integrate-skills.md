@@ -1,5 +1,9 @@
 # Source: https://agentskills.io/integrate-skills.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentskills.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate skills into your agent
 
 > How to add Agent Skills support to your agent or tool.
@@ -99,8 +103,3 @@ skills-ref to-prompt <path>...
 ```
 
 Use the library source code as a reference implementation.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentskills.io/llms.txt

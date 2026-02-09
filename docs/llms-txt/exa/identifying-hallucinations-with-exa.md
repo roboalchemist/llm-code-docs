@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/identifying-hallucinations-with-exa.md
+# Source: https://exa.ai/docs/examples/identifying-hallucinations-with-exa.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Building a Hallucination Checker
 
@@ -327,8 +331,3 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
     Through this combination of Exa's search capabilities and LangGraph's workflow management, we've created a powerful system for identifying and verifying claims in any text. The system successfully identified both true claims (structure and location) and false claims (construction date and purpose) about the Eiffel Tower.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

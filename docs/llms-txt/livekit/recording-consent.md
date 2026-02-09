@@ -296,7 +296,7 @@ For the full list of available prebuilt tasks and detailed usage, see [Tasks and
 
 ---
 
-This document was rendered at 2025-12-31T18:29:42.378Z.
+This document was rendered at 2026-02-03T03:25:28.624Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/recording-consent.md](https://docs.livekit.io/recipes/recording-consent.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

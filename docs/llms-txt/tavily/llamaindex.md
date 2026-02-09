@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/llamaindex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LlamaIndex
 
 > Search the web from LlamaIndex with Tavily.
@@ -37,8 +41,3 @@ agent.chat('What happened in the latest Burning Man festival?')
 `search`: Search for relevant dynamic data based on a query. Returns a list of urls and their relevant content.
 
 This loader is designed to be used as a way to load data as a Tool in an Agent. See [here](https://github.com/emptycrown/llama-hub/tree/main) for examples.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

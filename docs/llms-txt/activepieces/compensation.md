@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/hiring/compensation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Our Compensation
 
 The packages include three factors for the salary:

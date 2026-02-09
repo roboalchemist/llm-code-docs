@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/v2/api-reference/getting-started/simulation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Simulation
 
 > Solid Platform simulates transactions

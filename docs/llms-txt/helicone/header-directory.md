@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/helicone-headers/header-directory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Helicone Header Directory
 
 > Comprehensive guide to all Helicone headers. Learn how to access and implement various Helicone features through custom request headers.
@@ -159,6 +163,18 @@
 
 <ResponseField name="Helicone-Omit-Request" type="boolean">
   Whether to exclude the request from the response. Set to `true` or  `false`.
+</ResponseField>
+
+<ResponseField name="Helicone-Token-Limit-Exception-Handler" type="string (truncate | middle-out | fallback)">
+  Control how Helicone handles requests that would exceed a model's context window. Accepted values:
+
+  * `truncate` — Best-effort normalization and trimming of message content to reduce token count.
+  * `middle-out` — Preserve the beginning and end of messages while removing middle content to fit within the limit. Uses token estimation to keep high-value context.
+  * `fallback` — Switch to an alternate model when input exceeds the context limit. Provide multiple candidates in the request body's `model` field as a comma-separated list (e.g., `"gpt-4o, gpt-4o-mini"`). Helicone picks the second model as the fallback when needed. When under the limit, Helicone normalizes the `model` field to the primary model.
+
+  <Note>
+    If your request body does not include a `model` or you need to override it for estimation, set `Helicone-Model-Override`. For fallbacks, specify multiple `model` candidates in the body; only the first two are considered.
+  </Note>
 </ResponseField>
 
 <ResponseField name="Helicone-Cache-Enabled" type="boolean">

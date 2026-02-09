@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/strict-boolean-expressions.md
 ---
-# typescript/strict-boolean-expressions&#x20;
 
 ### What it does
 

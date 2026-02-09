@@ -2,10 +2,6 @@
 
 # Source: https://docs.kaisar.io/kaisar-network/origins/faq.md
 
-# Source: https://docs.kaisar.io/kaisar-network/kaisar-ai-ops/troubleshooting/troubleshooting/faq.md
-
-# Source: https://docs.kaisar.io/kaisar-network/origins/faq.md
-
 # FAQ
 
 - [What is Kaisar?](/kaisar-network/origins/faq/what-is-kaisar.md)

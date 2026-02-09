@@ -8,25 +8,25 @@
 
 To get started, you can follow the official [guide](https://content.nuxt.com/docs/getting-started/installation) or in summary:
 
-<code-group sync="pm">
-
-```bash [pnpm]
+```bash
 pnpm add @nuxt/content
+
 ```
 
-```bash [yarn]
+```bash
 yarn add @nuxt/content
+
 ```
 
-```bash [npm]
+```bash
 npm install @nuxt/content
+
 ```
 
-```bash [bun]
+```bash
 bun add @nuxt/content
-```
 
-</code-group>
+```
 
 Then, add the `@nuxt/content` module in your `nuxt.config.ts`:
 
@@ -40,11 +40,8 @@ export default defineNuxtConfig({
 })
 ```
 
-<caution>
-
-You need to register `@nuxt/content` after `@nuxt/ui` in the `modules` array, otherwise the prose components will not be available.
-
-</caution>
+> [!CAUTION]
+> You need to register `@nuxt/content` after `@nuxt/ui` in the `modules` array, otherwise the prose components will not be available.
 
 ## Configuration
 
@@ -65,20 +62,12 @@ This ensures that:
 - Any utility classes used in your markdown (like `text-primary`) are included in the final CSS
 - Dynamic classes in MDC components or custom Vue components within your content work properly
 
-<tip>
+> [!TIP]
+> You can also use glob patterns to be more specific about which files to scan:`@source "../../../content/docs/**/*.md"` - Only scan markdown in the docs folder`@source "../../../content/**/*.{md,yml}"` - Include both markdown and YAML files
 
-You can also use glob patterns to be more specific about which files to scan:
-
-- `@source "../../../content/docs/**/*.md"` - Only scan markdown in the docs folder
-- `@source "../../../content/**/*.{md,yml}"` - Include both markdown and YAML files
-
-</tip>
-
-<note to="https://tailwindcss.com/docs/detecting-classes-in-source-files" target="_blank">
-
-Learn more about Tailwind's automatic content detection and best practices for optimizing build performance.
-
-</note>
+> [!NOTE]
+> See: https://tailwindcss.com/docs/detecting-classes-in-source-files
+> Learn more about Tailwind's automatic content detection and best practices for optimizing build performance.
 
 ## Components
 
@@ -93,11 +82,9 @@ You might be using `@nuxt/content` to build a documentation. To help you with th
 
 Nuxt UI provides its own custom implementations of all prose components for seamless integration with `@nuxt/content`. This approach ensures consistent styling, complete control over typography, and perfect alignment with the Nuxt UI design system so your content always looks and feels cohesive out of the box.
 
-<note to="/docs/typography">
-
-Discover the full **Typography** system and explore all available prose components for rich, consistent content presentation.
-
-</note>
+> [!NOTE]
+> See: /docs/typography
+> Discover the full Typography system and explore all available prose components for rich, consistent content presentation.
 
 ## Utils
 

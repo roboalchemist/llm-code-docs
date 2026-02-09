@@ -28,11 +28,14 @@ import { MarkElement } from '@mui/x-charts-premium';
 |------|------|---------|----------|-------------|
 | dataIndex | `number` | - | Yes |  |
 | shape | `'circle' \| 'cross' \| 'diamond' \| 'square' \| 'star' \| 'triangle' \| 'wye'` | - | Yes |  |
+| hidden | `bool` | `false` | No |  |
 | isFaded | `bool` | `false` | No |  |
 | isHighlighted | `bool` | `false` | No |  |
 | skipAnimation | `bool` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element.
+
+> Any other props supplied will be provided to the root element (native element).
 
 ## CSS
 

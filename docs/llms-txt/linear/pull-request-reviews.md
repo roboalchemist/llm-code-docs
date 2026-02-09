@@ -66,11 +66,6 @@ No, you can only access your PRs and PRs awaiting your review.
 </details>
 
 <details>
-<summary>Will there be support for other code hosting platforms?</summary>
-Yes, we are planning to add support for GitLab in the near future after releasing this for GitHub initially.
-</details>
-
-<details>
 <summary>How do I update a PR that is showing the wrong state?</summary>
 This can happen sometimes if a webhook is missed between Linear and GitHub and we fail to capture the change in PR state automatically.   
   

@@ -79,5 +79,13 @@ Other features in sub-teams have no relation to the parent team and should be cu
 
 * Team timezone
 * Recurring issues
-* Team Slack notifications
 * GitHub/GitLab automations
+
+### Notification settings for sub-teams
+
+* **Public sub-teams inherit Slack notifications from their parent team by default.**  
+If the parent team has Slack notifications enabled, newly created issues in its public sub-teams will also post to the same Slack channel.
+* **Sub-teams can have their own Slack notifications.**  
+You can configure notifications on a per–sub-team basis, including sending updates to a different Slack channel. These notifications can run alongside the parent team’s notifications.
+* **Private sub-teams do not inherit notifications.**  
+Private sub-teams must have their own Slack notification settings enabled in order to send notifications to Slack.

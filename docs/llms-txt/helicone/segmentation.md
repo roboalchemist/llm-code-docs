@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/segmentation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Custom Properties to Segment Data
 
 > Derive powerful insights into costs and user behaviors using custom properties in Helicone. Learn to track environments, user types, and more.

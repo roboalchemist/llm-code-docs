@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/create/text.md
+# Source: https://www.mintlify.com/docs/create/text.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Format text
 
@@ -63,7 +67,7 @@ You can combine formatting styles:
 ```mdx  theme={null}
 **_bold and italic_**
 **~~bold and strikethrough~~**
-*~~italic and strikethrough~~**
+*~~italic and strikethrough~~*
 ```
 
 ***bold and italic***<br />
@@ -147,7 +151,7 @@ For longer quotes or multiple paragraphs:
 
 ## Mathematical expressions
 
-We support LaTeX for rendering mathematical expressions and equations.
+We support LaTeX for rendering mathematical expressions and equations. You can override automated detection by configuring `styles.latex` in your `docs.json` [settings](/organize/settings#param-latex).
 
 ### Inline math
 

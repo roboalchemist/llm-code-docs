@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/insert-images.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/insert-images.md
-
-# Source: https://gitbook.com/docs/creating-content/blocks/insert-images.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/blocks/insert-images.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/insert-images.md
 
@@ -146,7 +142,7 @@ You can add a frame to image blocks to give your images a consistent look and vi
 
 <div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FfL0VWcltHyuCKeqJsW0Q%2Fimage-frame-demo%402x.jpg?alt=media&#x26;token=6cac6c68-c288-4c42-abb2-e2bb7de23652" alt="A black and white photograph of a lone figure walking across a stark white landscape"><figcaption><p>Framed images can have captions, and show a subtle grid behind the caption.</p></figcaption></figure></div>
 
-To add a frame to an image, hover over it, open the block’s **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt=""></picture> and enable the **With frame** toggle.&#x20;
+To add a frame to an image, hover over it, open the block’s **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt=""></picture> and enable the **With frame** toggle.
 
 {% hint style="info" %}
 **Good to know:** You can only frame single images in a block. Image blocks that contain multiple images and inline images cannot have frames.

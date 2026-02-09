@@ -2,7 +2,7 @@
 
 # Advanced web scraping
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners.md course, we have learned the necessary basics required to create a scraper. In the following courses, we learned more about specific practices and techniques that will help us to solve most of the problems we will face.
+In the [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course, we have learned the necessary basics required to create a scraper. In the following courses, we learned more about specific practices and techniques that will help us to solve most of the problems we will face.
 
 In this course, we will take all of that knowledge, add a few more advanced concepts, and apply them to learn how to build a production-ready web scraper.
 
@@ -16,4 +16,4 @@ If you've managed to follow along with all of the courses prior to this one, the
 
 ## First up
 
-First, we will explore https://docs.apify.com/academy/advanced-web-scraping/crawling/sitemaps-vs-search.md that will help us to find all pages or products on the website.
+First, we will explore [advanced crawling section](https://docs.apify.com/academy/advanced-web-scraping/crawling/sitemaps-vs-search.md) that will help us to find all pages or products on the website.

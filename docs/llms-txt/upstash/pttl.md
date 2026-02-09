@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PTTL
 
@@ -26,18 +12,28 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of milliseconds until this expires, negative if the key does not exist or does not have an expiration set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const millis = await redis.pttl(key);
+  ```py Example theme={"system"}
+  redis.set("key1", "Hello")
+
+  assert redis.pttl("key1") == -1
+
+  redis.expire("key1", 1000)
+
+  assert redis.pttl("key1") > 0
+
+  redis.persist("key1")
+
+  assert redis.pttl("key1") == -1
   ```
 </RequestExample>

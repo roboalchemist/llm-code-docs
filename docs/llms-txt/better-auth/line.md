@@ -4,11 +4,7 @@
 
 LINE provider setup and usage.
 
-***
 
-title: LINE
-description: LINE provider setup and usage.
--------------------------------------------
 
 <Steps>
   <Step>

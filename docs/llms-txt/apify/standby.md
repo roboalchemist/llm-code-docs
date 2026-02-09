@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
 
-# Source: https://docs.apify.com/platform/actors/running/standby.md
-
-# Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
-
-# Source: https://docs.apify.com/platform/actors/running/standby.md
-
-# Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
-
-# Source: https://docs.apify.com/platform/actors/running/standby.md
-
-# Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
-
 # Standby mode
 
 **Use Actors as an API server for fast response times.**
@@ -26,11 +14,11 @@ Traditional Actors are designed to run a single task and then stop. They're most
 
 <!-- -->
 
-The best way to start developing Standby Actors is to use the predefined templates in the https://console.apify.com/actors/templates or in https://docs.apify.com/cli/ via `apify create`. The templates contain minimal code to get you up to speed for development in JavaScript, TypeScript or Python. Standby mode will automatically be enabled with default settings.
+The best way to start developing Standby Actors is to use the predefined templates in the [Console UI](https://console.apify.com/actors/templates) or in [CLI](https://docs.apify.com/cli/) via `apify create`. The templates contain minimal code to get you up to speed for development in JavaScript, TypeScript or Python. Standby mode will automatically be enabled with default settings.
 
 If you already have an existing Actor, or you just want to tweak the configuration of Standby mode, you can head to the Settings tab of your Actor, where the Actor Standby settings are located. ![Standby for creators](/assets/images/standby-creators-a4633d8d11b7d7b016ddb197cd838b53.png)
 
-Actors using Standby mode must run a HTTP server listening on a specific port. The user requests will then be proxied to the HTTP server. You can use any of the existing https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods like GET, POST, PUT, DELETE, etc. You can pass the input via https://en.wikipedia.org/wiki/Query_string or via https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#body.
+Actors using Standby mode must run a HTTP server listening on a specific port. The user requests will then be proxied to the HTTP server. You can use any of the existing [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) like GET, POST, PUT, DELETE, etc. You can pass the input via [HTTP request query string](https://en.wikipedia.org/wiki/Query_string) or via [HTTP request body](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages#body).
 
 Sometimes, you want the HTTP server to listen on a specific port and cannot change it yourself. You can use `ACTOR_WEB_SERVER_PORT` environment variable to override the port so that Actor Standby will work with your code.
 
@@ -68,7 +56,7 @@ class GetHandler(SimpleHTTPRequestHandler):
 
 async def main() -> None:
     async with Actor:
-        with HTTPServer(('', Actor.config.web_server_port), GetHandler) as http_server:
+        with HTTPServer(('', Actor.configuration.web_server_port), GetHandler) as http_server:
             http_server.serve_forever()
 ```
 
@@ -130,7 +118,7 @@ class GetHandler(SimpleHTTPRequestHandler):
 
 async def main() -> None:
     async with Actor:
-        with HTTPServer(('', Actor.config.standby_port), GetHandler) as http_server:
+        with HTTPServer(('', Actor.configuration.standby_port), GetHandler) as http_server:
             http_server.serve_forever()
 ```
 
@@ -162,7 +150,7 @@ from apify import Actor
 
 async def main() -> None:
     async with Actor:
-        if Actor.config.meta_origin == 'STANDBY':
+        if Actor.configuration.meta_origin == 'STANDBY':
             # Start your Standby server here
         else:
             # Perform the standard Actor operations here

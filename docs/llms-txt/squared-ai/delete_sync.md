@@ -1,47 +1,47 @@
 # Source: https://docs.squared.ai/api-reference/syncs/delete_sync.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Sync
+
+
 
 ## OpenAPI
 
 ````yaml DELETE /api/v1/syncs/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/{id}
-  method: delete
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/syncs/{id}:
+    delete:
+      tags:
+        - Syncs
+      summary: Delete a specific sync operation
+      operationId: deleteSync
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID of the sync operation to delete
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: No content, indicating the sync operation was successfully deleted
-        examples: {}
-        description: No content, indicating the sync operation was successfully deleted
-  deprecated: false
-  type: path
+            type: string
+          description: The ID of the sync operation to delete
+      responses:
+        '204':
+          description: No content, indicating the sync operation was successfully deleted
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

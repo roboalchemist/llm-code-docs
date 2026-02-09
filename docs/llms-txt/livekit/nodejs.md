@@ -87,7 +87,7 @@ export default defineAgent({
       vad,
       stt: new deepgram.STT(),
       tts: new elevenlabs.TTS(),
-      llm: new openai.LLM(),
+      llm: new openai.responses.LLM(),
       turnDetection: new livekit.turnDetector.MultilingualModel(),
     });
     
@@ -370,7 +370,7 @@ Agent events were overhauled in version 1.0. For details, see the [events](https
 
 ---
 
-This document was rendered at 2025-12-31T18:29:41.346Z.
+This document was rendered at 2026-02-03T03:25:26.912Z.
 For the latest version of this document, see [https://docs.livekit.io/reference/migration-guides/v0-migration/nodejs.md](https://docs.livekit.io/reference/migration-guides/v0-migration/nodejs.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

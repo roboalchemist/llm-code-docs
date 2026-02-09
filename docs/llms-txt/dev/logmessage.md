@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/logmessage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log message
 
 Prints a message to the console for debugging or monitoring app flow.
@@ -134,14 +138,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>The request was successful.</td>
+      <td>The message was logged successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>The blueprint was executed successfully.</td>
+      <td>There was an error logging the message.</td>
     </tr>
   </tbody>
 </table>

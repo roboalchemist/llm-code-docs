@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-deprecated-functions.md
 ---
-# jest/no-deprecated-functions&#x20;
 
 ### What it does
 

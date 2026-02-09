@@ -1,4 +1,8 @@
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/mcp-servers.md
+# Source: https://infisical.com/docs/documentation/platform/agent-sentinel/mcp-servers.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # MCP Servers
 
@@ -8,11 +12,11 @@
 
 MCP Servers are external services that expose tools and capabilities through the Model Context Protocol. By connecting MCP servers to Infisical, you can centrally manage access to tools like Notion, GitHub, Slack, and more.
 
-When you add an MCP server to Infisical, the platform discovers all available tools from that server and allows you to make them accessible through [MCP Endpoints](/documentation/platform/agentic-manager/mcp-endpoints).
+When you add an MCP server to Infisical, the platform discovers all available tools from that server and allows you to make them accessible through [MCP Endpoints](/documentation/platform/agent-sentinel/mcp-endpoints).
 
 ## Supported MCP Servers
 
-Infisical supports connecting to any remote MCP server that implements the Model Context Protocol over HTTP with OAuth authentication. Popular MCP servers include:
+Infisical supports connecting to any remote MCP server that implements the Model Context Protocol over HTTP with OAuth or Bearer Token authentication. Popular MCP servers include:
 
 * **Notion** - Search, create, and manage Notion pages and databases
 * **GitHub** - Manage repositories, issues, pull requests, and more
@@ -26,9 +30,23 @@ Infisical supports connecting to any remote MCP server that implements the Model
 
 ## Authentication
 
-MCP servers typically require authentication to access their tools. Infisical supports **OAuth** authentication, which handles the authorization flow automatically.
+MCP servers require authentication to access their tools. Infisical supports two authentication methods:
 
-Some MCP servers support **Dynamic Client Registration**, which means Infisical can automatically register as an OAuth client. For servers that don't support this (like GitHub), you'll need to manually create an OAuth application and provide the client credentials.
+<CardGroup cols={2}>
+  <Card title="OAuth" icon="key">
+    The server uses OAuth 2.0 for authentication. Users are redirected to the service to authorize access.
+
+    **Best for:** Services with full OAuth support like Notion, GitHub, Google.
+  </Card>
+
+  <Card title="Bearer Token" icon="ticket">
+    Users provide their own API token or access token directly.
+
+    **Best for:** Services where users have existing API tokens, or services without OAuth support.
+  </Card>
+</CardGroup>
+
+Some MCP servers with OAuth support **Dynamic Client Registration**, which means Infisical can automatically register as an OAuth client. For servers that don't support this (like GitHub), you'll need to manually create an OAuth application and provide the client credentials.
 
 ## Credential Modes
 
@@ -48,15 +66,33 @@ When adding an MCP server, you choose how credentials are managed:
   </Card>
 </CardGroup>
 
+<Note>
+  When using **Personal Credentials** mode, the administrator setting up the MCP server must still authenticate during setup. This initial authentication is required to fetch and discover the available tools from the server.
+</Note>
+
+## Gateway Support
+
+By default, Infisical connects directly to MCP servers over the internet. For MCP servers hosted on private networks (internal APIs, self-hosted services), you can route connections through a [Gateway](/documentation/platform/gateways/overview).
+
+<Note>
+  OAuth is not supported when using a gateway. Only Bearer Token authentication is available.
+</Note>
+
+Gateways enable you to:
+
+* Connect to MCP servers on private networks without exposing them to the internet
+* Access self-hosted MCP servers within VPCs or on-premises infrastructure
+* Maintain network isolation while enabling AI tool access
+
 ## Guide to Adding an MCP Server
 
-In the following steps, we explore how to add an MCP server to your Agentic Manager project.
+In the following steps, we explore how to add an MCP server to your Agent Sentinel project.
 
 <Tabs>
   <Tab title="Infisical UI">
     <Steps>
       <Step title="Navigate to MCP Servers">
-        Head to your Agentic Manager project and select **MCP Servers** from the sidebar, then click **Add MCP Server**.
+        Head to your Agent Sentinel project and select **MCP Servers** from the sidebar, then click **Add MCP Server**.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-list.png" alt="mcp servers list" />
       </Step>
@@ -66,31 +102,36 @@ In the following steps, we explore how to add an MCP server to your Agentic Mana
 
         * **Name**: A friendly name to identify this server (e.g., "Notion", "GitHub")
         * **URL**: The MCP server endpoint URL (e.g., `https://mcp.notion.com/mcp`)
+        * **Gateway** (optional): Select a gateway to route connections through a private network. Leave as "Internet Gateway" for public MCP servers
         * **Credential Mode**: Choose between **Shared Credentials** or **Personal Credentials**
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-add.png" alt="mcp server add" />
       </Step>
 
       <Step title="Configure authentication">
-        For OAuth authentication, you may need to provide credentials depending on the server:
+        Choose the authentication method for your MCP server:
 
-        **For servers with Dynamic Client Registration (e.g., Notion):**
+        <AccordionGroup>
+          <Accordion title="OAuth Authentication">
+            * For servers with Dynamic Client Registration (e.g., Notion): Click **Authorize** to complete the OAuth flow
+            * For servers without Dynamic Client Registration (e.g., GitHub): Enter the **Client ID** and **Client Secret**, then click **Authorize**
 
-        * Simply click **Authorize** to complete the OAuth flow
+                        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-auth.png" alt="mcp server auth" />
+          </Accordion>
 
-        **For servers without Dynamic Client Registration (e.g., GitHub):**
+          <Accordion title="Bearer Token Authentication">
+            * Select **Bearer Token** as the authentication method
+            * Users will be prompted to enter their personal access token when connecting to endpoints that include this server
 
-        * Create an OAuth application in the service's developer settings
-        * Enter the **Client ID** and **Client Secret**
-        * Click **Authorize** to complete the OAuth flow
-
-                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-auth.png" alt="mcp server auth" />
+                        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-add-bearer.png" alt="mcp server add bearer" />
+          </Accordion>
+        </AccordionGroup>
       </Step>
 
       <Step title="Review available tools">
         After authorization, Infisical discovers and displays all tools available from the MCP server.
 
-        You can view each tool's name and description. These tools can now be enabled in [MCP Endpoints](/documentation/platform/agentic-manager/mcp-endpoints).
+        You can view each tool's name and description. These tools can now be enabled in [MCP Endpoints](/documentation/platform/agent-sentinel/mcp-endpoints).
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-servers-tools.png" alt="mcp server tools" />
       </Step>
@@ -125,9 +166,32 @@ In the following steps, we explore how to add an MCP server to your Agentic Mana
   <Accordion title="What happens if the MCP server goes offline?">
     If an MCP server becomes unavailable, tool invocations through endpoints connected to that server will fail. The Activity Logs will capture these failures for troubleshooting.
   </Accordion>
+
+  <Accordion title="When should I use Bearer Token vs OAuth?">
+    Use **OAuth** when:
+
+    * The MCP server supports OAuth 2.0
+    * You want automatic token refresh
+    * The service has a native OAuth integration
+
+    Use **Bearer Token** when:
+
+    * Users already have API tokens they want to use
+    * The MCP server doesn't support OAuth
+    * You need a simpler authentication flow
+  </Accordion>
+
+  <Accordion title="When should I use a gateway for MCP servers?">
+    Use a gateway when your MCP server is:
+
+    * Hosted on a private network (VPC, on-premises)
+    * Not accessible from the public internet
+    * A self-hosted service that should not be exposed externally
+
+    For public MCP servers like Notion or GitHub, use the default "Internet Gateway" option.
+  </Accordion>
+
+  <Accordion title="Can I use OAuth with a gateway?">
+    No, only Bearer Token authentication is supported when using a gateway. If you choose Personal Credentials mode, each user can provide their own token when connecting to an MCP endpoint.
+  </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

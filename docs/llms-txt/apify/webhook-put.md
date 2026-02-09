@@ -9,7 +9,7 @@ https://api.apify.com/v2/webhooks/:webhookId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/WebhookClientAsync#updatehttps://docs.apify.com/api/client/js/reference/class/WebhookClient#updateUpdates a webhook using values specified by a webhook object passed as JSON in the POST payload. If the object does not define a specific property, its value will not be updated.
+Updates a webhook using values specified by a webhook object passed as JSON in the POST payload. If the object does not define a specific property, its value will not be updated.
 
 The response is the full webhook object as returned by the  endpoint.
 
@@ -22,6 +22,10 @@ When providing your API authentication token, we recommend using the request's `
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

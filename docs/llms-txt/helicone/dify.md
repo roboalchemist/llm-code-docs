@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/other-integrations/dify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dify
 
 > Dify is an open-source LLM app development platform. Its intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production. Here is how to get Observability and logs for your dify instance.

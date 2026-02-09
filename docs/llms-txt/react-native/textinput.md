@@ -151,7 +151,7 @@ If `true`, focuses the input. The default value is `false`.
 
 ***
 
-### `blurOnSubmit`[​](#bluronsubmit "Direct link to bluronsubmit")
+### 🗑️ `blurOnSubmit`[​](#️-bluronsubmit "Direct link to ️-bluronsubmit")
 
 Deprecated
 

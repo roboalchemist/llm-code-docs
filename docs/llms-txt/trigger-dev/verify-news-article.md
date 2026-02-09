@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/verify-news-article.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Verify a news article
 
 > Create an AI agent workflow that verifies the facts in a news article
@@ -23,7 +27,7 @@ Our example task uses multiple LLM calls to extract claims from a news article a
 * Evaluates claims against recent sources and analyzes historical context in parallel
 * Combines results into a structured analysis report
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { batch, logger, task } from "@trigger.dev/sdk";
 import { CoreMessage, generateText } from "ai";
@@ -202,7 +206,7 @@ export const newsFactChecker = task({
 
 On the Test page in the dashboard, select the `news-fact-checker` task and include a payload like the following:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "article": "Tesla announced a new breakthrough in battery technology today. The company claims their new batteries will have 50% more capacity and cost 30% less to produce. Elon Musk stated this development will enable electric vehicles to achieve price parity with gasoline cars by 2024. The new batteries are scheduled to enter production next quarter at the Texas Gigafactory."
 }

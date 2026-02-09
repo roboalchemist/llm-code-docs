@@ -30,7 +30,7 @@ If you don’t have an API key for the AI/ML API yet, feel free to use our [Quic
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/images/generations":{"post":{"operationId":"_v1_images_generations","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["hunyuan/hunyuan-image-v3-text-to-image"]},"prompt":{"type":"string","maxLength":4000,"description":"The text prompt describing the content, style, or composition of the image to be generated."},"num_images":{"type":"number","minimum":1,"maximum":4,"default":1,"description":"The number of images to generate."},"seed":{"type":"integer","minimum":1,"description":"The same seed and the same prompt given to the same version of the model will output the same image every time."},"negative_prompt":{"type":"string","description":"The description of elements to avoid in the generated image."},"image_size":{"anyOf":[{"type":"string","enum":["square_hd","square","portrait_4_3","portrait_16_9","landscape_4_3","landscape_16_9"]},{"type":"object","properties":{"width":{"type":"number"},"height":{"type":"number"}},"required":["width","height"]}],"default":"square_hd","description":"The size of the generated image."},"num_inference_steps":{"type":"integer","minimum":1,"maximum":50,"default":28,"description":"The number of inference steps to perform."},"guidance_scale":{"type":"number","minimum":1,"maximum":20,"default":7.5,"description":"The CFG (Classifier Free Guidance) scale is a measure of how close you want the model to stick to your prompt when looking for a related image to show you."},"enable_safety_checker":{"type":"boolean","default":true,"description":"If set to True, the safety checker will be enabled."},"sync_mode":{"type":"boolean","default":false,"description":"If set to true, the function will wait for the image to be generated and uploaded before returning the response. This will increase the latency of the function but it allows you to get the image directly in the response without going through the CDN."},"output_format":{"type":"string","enum":["jpeg","png"],"default":"png","description":"The format of the generated image."},"enable_prompt_expansion":{"type":"boolean","description":"If set to True, prompt will be upsampled with more details."}},"required":["model","prompt"],"title":"hunyuan/hunyuan-image-v3-text-to-image"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","nullable":true,"items":{"type":"object","properties":{"url":{"type":"string","nullable":true,"description":"The URL where the file can be downloaded from."},"b64_json":{"type":"string","nullable":true,"description":"The base64-encoded JSON of the generated image."}}},"description":"The list of generated images."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"tokens_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["tokens_used"]}},"description":"Additional details about the generation."}}}}}}}}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/images/generations":{"post":{"operationId":"_v1_images_generations","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["hunyuan/hunyuan-image-v3-text-to-image"]},"prompt":{"type":"string","maxLength":4000,"description":"The text prompt describing the content, style, or composition of the image to be generated."},"num_images":{"type":"number","minimum":1,"maximum":4,"default":1,"description":"The number of images to generate."},"seed":{"type":"integer","minimum":1,"description":"The same seed and the same prompt given to the same version of the model will output the same image every time."},"negative_prompt":{"type":"string","description":"The description of elements to avoid in the generated image."},"image_size":{"anyOf":[{"type":"string","enum":["square_hd","square","portrait_4_3","portrait_16_9","landscape_4_3","landscape_16_9"]},{"type":"object","properties":{"width":{"type":"number"},"height":{"type":"number"}},"required":["width","height"]}],"default":"square_hd","description":"The size of the generated image."},"num_inference_steps":{"type":"integer","minimum":1,"maximum":50,"default":28,"description":"The number of inference steps to perform."},"guidance_scale":{"type":"number","minimum":1,"maximum":20,"default":7.5,"description":"The CFG (Classifier Free Guidance) scale is a measure of how close you want the model to stick to your prompt when looking for a related image to show you."},"enable_safety_checker":{"type":"boolean","default":true,"description":"If set to True, the safety checker will be enabled."},"sync_mode":{"type":"boolean","default":false,"description":"If set to true, the function will wait for the image to be generated and uploaded before returning the response. This will increase the latency of the function but it allows you to get the image directly in the response without going through the CDN."},"output_format":{"type":"string","enum":["jpeg","png"],"default":"png","description":"The format of the generated image."},"enable_prompt_expansion":{"type":"boolean","description":"If set to True, prompt will be upsampled with more details."}},"required":["model","prompt"],"title":"hunyuan/hunyuan-image-v3-text-to-image"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","nullable":true,"items":{"type":"object","properties":{"url":{"type":"string","nullable":true,"description":"The URL where the file can be downloaded from."},"b64_json":{"type":"string","nullable":true,"description":"The base64-encoded JSON of the generated image."}}},"description":"The list of generated images."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}}}}}}}}}}}
 ```
 
 ## Quick Example
@@ -108,21 +108,16 @@ main();
 
 ```json5
 {
-    "data": [
-        {
-            "url": "https://v3b.fal.media/files/b/lion/JdrvNguTlt29LmURRbKKN.png",
-            "content_type": "image/png",
-            "file_name": null,
-            "file_size": null,
-            "width": 1280,
-            "height": 768
-        }
-    ],
-    "meta": {
-        "usage": {
-            "tokens_used": 210000
-        }
+  "data": [
+    {
+      "url": "https://cdn.aimlapi.com/flamingo/files/b/0a8a7b4c/371avBpG23C3CoYzHJXB5.png"
     }
+  ],
+  "meta": {
+    "usage": {
+      "credits_used": 210000
+    }
+  }
 }
 ```
 
@@ -132,4 +127,4 @@ main();
 
 We obtained the following 1280x768 image by running this code example:
 
-<figure><img src="https://v3b.fal.media/files/b/lion/JdrvNguTlt29LmURRbKKN.png" alt=""><figcaption><p><code>A T-Rex relaxing on a beach, lying on a sun lounger and wearing sunglasses.</code></p></figcaption></figure>
+<figure><img src="https://3927338786-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FROMd1X5PuqtikJ48n2N9%2Fuploads%2FMC5E8w2chCFBuncbM4k0%2F371avBpG23C3CoYzHJXB5.png?alt=media&#x26;token=3a30277e-125c-46cb-918a-917884c6c708" alt=""><figcaption><p>A T-Rex relaxing on a beach, lying on a sun lounger and wearing sunglasses.</p></figcaption></figure>

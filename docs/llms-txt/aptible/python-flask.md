@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/python-flask.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python + Flask - Demo App
 
 > Deploy our Python demo app using the Flask framework with Managed PostgreSQL Database and Redis instance

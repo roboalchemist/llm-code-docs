@@ -1,10 +1,13 @@
 # Source: https://turbo.build/guides/tools/biome.md
 
 # Biome
-Description: Learn how to use Biome in your Turborepo projects.
 
-import { Callout } from '#components/callout';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+<CopyPrompt
+  title="Set up Biome in a Turborepo"
+  prompt={
+  "Set up Biome for formatting and linting in this Turborepo.\n1) Install Biome\n2) Create scripts\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
 
 [Biome](https://biomejs.dev/) is a fast formatter for JavaScript, TypeScript, JSX, and JSON that saves CI and developer time.
 
@@ -59,3 +62,7 @@ To create a [Root Task](/docs/crafting-your-repository/configuring-tasks#registe
 ```
 
 You'll now be able to run these scripts using `turbo run format-and-lint` and `turbo run format-and-lint:fix`.
+
+---
+
+[View full sitemap](/sitemap.md)

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/api_with_cdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy a Serverless API with AWS CDK and AWS Lambda
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/redis-js/tree/main/examples/aws-cdk-typescript" horizontal>

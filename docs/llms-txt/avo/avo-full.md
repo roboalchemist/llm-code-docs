@@ -9,8 +9,8 @@ Source: https://avohq.io/llms-full.txt
 Generated from Avo documentation v3.0 for LLM consumption
 
 <!-- Generated file - do not edit directly -->
-<!-- Generated at: 2025-11-06T10:09:47.410Z -->
-<!-- Sections: 150 -->
+<!-- Generated at: 2026-01-13T11:10:25.272Z -->
+<!-- Sections: 151 -->
 
 # Getting Started
 
@@ -881,7 +881,7 @@ RAILS_GROUPS=avo BUNDLE_WITH=avo bundle install
 
 ```ruby
 # Gemfile
-gem 'avo',
+gem 'avo'
 
 group :avo, optional: true do
   source "https://packager.dev/avo-hq/" do
@@ -1468,6 +1468,10 @@ end
 When working with files, it may be necessary to establish policies that determine whether users can `upload`, `download` or `delete` files. Fortunately, Avo simplifies this process by providing a straightforward naming schema for these policies.
 
 Both the `record` and the `user` will be available for you to access.
+
+:::info Actions inherit attachment authorization
+These attachment authorization methods also apply to file fields in actions that run on the resource using the same policy. For example, if you define `upload_file?` in `PostPolicy` and have an action on `Avo::Resources::Post` with `field :file, as: :file`, the same `upload_file?` policy method will be used to authorize the file upload in that action.
+:::
 
 <Image src="/assets/img/authorization/file_actions.png" width="472" height="93" alt="" />
 
@@ -3396,6 +3400,8 @@ Format the field value using a block.
 Notice that this block will have effect on **all** views.
 :::
 
+Formatting affects copyable value, when using `format_using` with `copyable`, the formatted value is what gets copied to the clipboard, not the original database value. For example, using `format_using: -> { value.truncate(20) }` will copy the truncated text (including the `...`). If you need to display a truncated value while copying the full value, consider using CSS truncation via the `html` option instead of `format_using`.
+
 ```ruby
 field :is_writer, as: :text, format_using: -> {
   if view.form?
@@ -4708,7 +4714,7 @@ end
 # Discreet Information
 
 Sometimes you need to have some information available on the record page, but not necesarily front-and-center.
-This is where the Discreet Information option is handy.
+This is where the Discreet Information option is handy. You can use it to display one or more pieces of information.
 
 ```ruby
 # app/avo/resources/post.rb
@@ -4842,14 +4848,6 @@ end
 ```
 
 </Option>
-
-## Display multiple pieces of information
-
-You can use it to display one or more pieces of information.
-
-## Information properties
-
-Each piece of information has a fe
 
 ## Full configuration
 
@@ -5636,6 +5634,19 @@ What should count as false. You can use `0`, `no`, or a different value.
 #### Default value
 
 `[false, "false", "0"]`
+</Option>
+
+<Option name="`nil_as_indeterminate`">
+
+<VersionReq version="3.28.0" />
+
+When `true`, `nil` values render as a gray minus-circle icon on **Show** and **Index** views instead of the default dash. This keeps the `nil` value intact while making it more visible.
+
+<Image src="/assets/img/fields/boolean_nil_as_indeterminate.png" width="265" height="200" alt="nil_as_indeterminate option" />
+
+#### Default value
+
+`false`
 </Option>
 
 <Option name="`as_toggle`">
@@ -7857,6 +7868,47 @@ end
 `true` or `false`
 
 </Option>
+
+---
+
+# Stars
+
+The `stars` field renders a star rating display on <Index /> and <Show /> views, and interactive clickable stars on <Edit /> and <New /> views. It's ideal for ratings, reviews, or any numeric value you want to represent visually as stars.
+
+```ruby
+field :rating, as: :stars
+```
+
+:::info
+This field needs to be backed by a numeric column in your database (e.g., `integer`, `decimal`, or `float`).
+:::
+
+## Options
+
+<Option name="`max`">
+
+Sets the maximum number of stars to display.
+
+#### Default
+
+`5`
+
+#### Possible values
+
+Any positive integer.
+</Option>
+
+## Examples
+
+```ruby
+field :rating, as: :stars
+```
+
+```ruby
+field :rating, as: :stars, max: 10
+```
+
+The field stores a numeric value (e.g., `0` to `5` for a 5-star rating). On edit forms, users can click on stars to set the rating. Filled stars represent the current value, while unfilled stars show the remaining capacity up to the maximum.
 
 ---
 
@@ -23796,8 +23848,8 @@ Now you can reference all helpers in your `Resource` files.
 
 ## Generation Information
 
-- **Generated at:** 2025-11-06T10:09:47.410Z
-- **Total sections:** 150
+- **Generated at:** 2026-01-13T11:10:25.272Z
+- **Total sections:** 151
 
 ### Source Files
 
@@ -23852,6 +23904,7 @@ Now you can reference all helpers in your `Resource` files.
 - docs/3.0/fields/record_link.md
 - docs/3.0/fields/rhino.md
 - docs/3.0/fields/select.md
+- docs/3.0/fields/stars.md
 - docs/3.0/fields/status.md
 - docs/3.0/fields/tags.md
 - docs/3.0/fields/text.md

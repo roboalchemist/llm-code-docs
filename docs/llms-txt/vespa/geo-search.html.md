@@ -223,7 +223,7 @@ This illustrates how these parameters can be used to return the most appropriate
 1. Searching for restaurants with the DistanceToPath feature. `distance = 1000, traveled = 0.1`
 2. Searching for gas stations with the DistanceToPath feature. `distance = 1000, traveled = 0.9`
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

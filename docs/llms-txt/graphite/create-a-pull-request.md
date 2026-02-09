@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/create-a-pull-request.md
 
-# Create A Pull Request
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Create A Pull Request
 
 > Learn to use the Graphite CLI to create a single pull request.
 
@@ -16,7 +21,7 @@ This tutorial intentionally avoids discussing stacked pull requests, so you can 
 
 Pick a Git repository that already exists on your computer, and change to that directory:
 
-```bash Terminal theme={null}
+```bash
 cd ~/path/to/your/repo
 ```
 
@@ -24,7 +29,7 @@ If you don’t have a repository or prefer a blank one for demo purposes, you ca
 
 If this is the first time working with `gt` in this repo, run `gt init` and select your trunk branch when prompted (usually `main` or `master`):
 
-```bash Terminal theme={null}
+```bash
 gt init
 ```
 
@@ -34,7 +39,7 @@ Your repo is now configured to work with `gt` and you’re ready to start making
 
 For this tutorial, pretend that your team is building a new activity feed feature, and you’ve been assigned a task to build a server API endpoint that returns the current user’s activity feed items:
 
-```bash Terminal theme={null}
+```bash
 GET /activity-feed
 
 
@@ -48,7 +53,7 @@ Your goal is to get something up with dummy data quickly, so the frontend engine
 
 This tutorial isn’t focused on coding, so paste this command into your terminal to quickly create a file with the new API changes:
 
-```bash Terminal theme={null}
+```bash
 cat << EOF > activity_feed.js
 const express = require('express');
 const app = express();
@@ -92,7 +97,7 @@ Run `git status` and confirm that `activity_feed.js` shows up as an untracked fi
 
 If you’re coming from Git/GitHub, you’re probably used to this workflow:
 
-```bash Terminal theme={null}
+```bash
 # Create a new branch
 git checkout -b your-feature-branch-name
 
@@ -123,14 +128,14 @@ From the previous section, your repo should have an uncommitted file called `act
 
 To commit this new file & create a new branch for it:
 
-```bash Terminal theme={null}
+```bash
 gt add activity_feed.js
 gt create --message "feat: Add basic activity feed API"
 ```
 
 If you run `gt log short`, you should see your new branch, with an indicator that you’ve also checked the branch out:
 
-```plain Terminal theme={null}
+```plain
 ◉  12-26-feat_Add_basic_activity_feed_API
 ◯  main
 ```
@@ -149,7 +154,7 @@ Once your work is finished locally, the next step in the authoring workflow is t
 
 Since `gt create` already checked out your new feature branch for you, run the following command to create a new pull request:
 
-```bash Terminal theme={null}
+```bash
 gt submit
 ```
 
@@ -177,7 +182,7 @@ Once your coworker reviews your new pull request, it’s possible they might hav
 
 A typical Git workflow might look like this:
 
-```bash Terminal theme={null}
+```bash
 # Check out the branch and address the feedback
 git checkout your-feature-branch
 echo "respond to feedback" > file.js
@@ -196,7 +201,7 @@ With `gt`, you can make this a little easier.
 
 If you need to check out your branch, you can do it with autocomplete and/or arrow key selection by running:
 
-```bash Terminal theme={null}
+```bash
 gt checkout
 ```
 
@@ -204,7 +209,7 @@ You’ll be prompted for which branch to pick, saving you the effort of copying 
 
 Once you’ve made your changes and are ready to `git add && git commit`, you can run:
 
-```bash Terminal theme={null}
+```bash
 gt modify
 ```
 
@@ -212,7 +217,7 @@ and your changes will be amended to the existing commit.
 
 If you prefer to create a new commit for your changes, you can pass the `--commit` flag to `gt modify`:
 
-```bash Terminal theme={null}
+```bash
 gt modify --commit --message "Responded to Alice's feedback"
 
 
@@ -226,13 +231,13 @@ gt m -cm "Responded to Alice's feedback"
 
 Now that you’ve committed your changes, you can push them up using the same command as before:
 
-```bash Terminal theme={null}
+```bash
 gt submit
 ```
 
 The full workflow for updating an existing branch is:
 
-```bash Terminal theme={null}
+```bash
 # Check out your branch interactively
 gt checkout  # or gt co
 

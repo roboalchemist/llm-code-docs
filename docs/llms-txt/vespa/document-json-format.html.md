@@ -1254,7 +1254,7 @@ This also works for nested structures, e.g. a `map` of `map` to `array` of `stru
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

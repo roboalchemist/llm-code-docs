@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/how-to/editing-centralized-stages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Editing Centralized Stages
 
 > Edit centralized stages in Galileo Protect with this guide, ensuring accurate ruleset updates and maintaining effective AI monitoring across applications.
@@ -10,7 +14,7 @@ Once you've created and registered a [centralized stage](/galileo/gen-ai-studio-
 
 To update a stage, you can call `gp.update_stage()`:
 
-```py
+```py  theme={null}
 import galileo_protect as gp
 
 gp.update_stage(project_id="<project_id>", # Alternatively, use project_name

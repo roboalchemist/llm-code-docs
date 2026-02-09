@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/core-functionality/cleaning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cleaning
 
 > As part of data preparation for an NLP model, it’s common to need to clean up your data prior to passing it into the model. If there’s unwanted content in your output, for example, it could impact the quality of your NLP model. To help with this, the `unstructured` library includes cleaning functions to help users sanitize output before sending it to downstream applications.

@@ -2,7 +2,7 @@
 
 # Create skills
 
-[Skills](/codex/skills) let teams capture institutional knowledge and turn it into reusable, shareable workflows. Skills help Codex behave consistently across users, repositories, and sessions, which is especially useful when you want standard conventions and checks applied automatically.
+[Skills](https://developers.openai.com/codex/skills) let teams capture institutional knowledge and turn it into reusable, shareable workflows. Skills help Codex behave consistently across users, repositories, and sessions, which is especially useful when you want standard conventions and checks applied automatically.
 
 A **skill** is a small bundle consisting of a `name`, a `description` that explains what it does and when to use it, and an optional body of instructions. Codex injects only the skill's name, description, and file path into the runtime context. The instruction body is never injected unless the skill is explicitly invoked.
 
@@ -41,7 +41,9 @@ Create a skill that drafts a conventional commit message based on a short summar
 
 The creator asks what the skill does, when Codex should trigger it automatically, and the run type (instruction-only or script-backed). Use instruction-only by default.
 
-The output is a `SKILL.md` file with a name, description, and instructions. If needed, it can also scaffold script stubs (Python or a container).
+When writing or revising a skill, treat the YAML frontmatter `description` as agent-facing metadata. The description is used by the agent to decide when to use the skill based on the user's prompt. Thus, the description should be explicit: describe what kinds of requests should trigger the skill, and what should not. Vague descriptions can cause over-triggering during implicit invocation. When editing a `SKILL.md` file manually, use the Skill Creator (`$skill-creator`) skill to update the YAML frontmatter `description` based on the contents of the skill.
+
+The output is a `SKILL.md` file with a name, description, and instructions. If needed, it can also scaffold scripts and other optional resources.
 
 ### Create a skill manually
 
@@ -49,24 +51,24 @@ Use this method when you want full control or are working directly in an editor.
 
 1. Choose a location (repo-scoped or user-scoped).
 
-    ```shell
-    # User-scoped skill (macOS/Linux default)
-    mkdir -p ~/.codex/skills/<skill-name>
+   ```shell
+   # User-scoped skill (macOS/Linux default)
+   mkdir -p ~/.codex/skills/<skill-name>
 
-    # Repo-scoped skill (checked into your repository)
-    mkdir -p .codex/skills/<skill-name>
-    ```
+   # Repo-scoped skill (checked into your repository)
+   mkdir -p .codex/skills/<skill-name>
+   ```
 
 2. Create `SKILL.md`.
 
-    ```md
-    ---
-    name: <skill-name>
-    description: <what it does and when to use it>
-    ---
+   ```md
+   ---
+   name: <skill-name>
+   description: <what it does and when to use it>
+   ---
 
-    <instructions, references, or examples>
-    ```
+   <instructions, references, or examples>
+   ```
 
 3. Restart Codex to load the skill.
 
@@ -104,6 +106,16 @@ Along with inline instructions, skill directories often include:
           name: "assets/",
           comment: "Optional: templates, resources",
         },
+        {
+          name: "agents/",
+          open: true,
+          children: [
+            {
+              name: "openai.yaml",
+              comment: "Optional: appearance and dependencies",
+            },
+          ],
+        },
       ],
     },
   ]}
@@ -121,7 +133,7 @@ Codex loads skills from these locations (repo, user, admin, and system scopes). 
 - Save skills in your user skills directory when they should apply across all repositories on your machine.
 - Use admin/system locations only in managed environments (for example, when loading skills on shared machines).
 
-For the full list of supported locations and precedence, see the "Where to save skills" section on the [Skills overview](/codex/skills#where-to-save-skills).
+For the full list of supported locations and precedence, see the "Where to save skills" section on the [Skills overview](https://developers.openai.com/codex/skills#where-to-save-skills).
 
 ## See an example skill
 
@@ -129,8 +141,6 @@ For the full list of supported locations and precedence, see the "Where to save 
 ---
 name: draft-commit-message
 description: Draft a conventional commit message when the user asks for help writing a commit message.
-metadata:
-  short-description: Draft an informative commit message.
 ---
 
 Draft a conventional commit message that matches the change summary provided by the user.
@@ -153,12 +163,58 @@ Check out more example skills and ideas in the [github.com/openai/skills](https:
 
 ## Follow best practices
 
-- Be explicit about triggers. The `description` tells Codex when to trigger a skill.
+- Write the `description` for the agent, not for humans.
+  - Define explicit scope boundaries in `description`: when to use the skill.
+  - This helps prevent over-triggering with implicit invocation based on the user's prompt.
 - Keep skills small. Prefer narrow, modular skills over large ones.
 - Prefer instructions over scripts. Use scripts only when you need determinism or external data.
 - Assume no context. Write instructions as if Codex knows nothing beyond the input.
 - Avoid ambiguity. Use imperative, step-by-step language.
 - Test triggers. Verify your example prompts activate the skill as expected.
+
+## Advanced configuration
+
+To create the best experience for a skill in Codex, you can provide additional metadata for your skill inside an `agents/openai.yaml` file.
+
+Within the file you can configure the visual appearance of the skill inside the [Codex app](https://developers.openai.com/codex/app) and declare dependencies for MCPs the skill requires.
+
+```yaml
+interface:
+  display_name: "Optional user-facing name"
+  short_description: "Optional user-facing description"
+  icon_small: "./assets/small-logo.svg" # relative of the skill's main directory
+  icon_large: "./assets/large-logo.png" # relative from the skill's main directory
+  brand_color: "#3B82F6"
+  default_prompt: "Optional surrounding prompt to use the skill with"
+
+dependencies:
+  tools:
+    - type: "mcp" # MCPs defined here will be installed when the skill is used and OAuth flows are triggered
+      value: "openaiDeveloperDocs"
+      description: "OpenAI Docs MCP server"
+      transport: "streamable_http"
+      url: "https://developers.openai.com/mcp"
+```
+
+### Icon requirements
+
+**Small icon**
+
+- File type: `svg`
+- Size: `16px` &times; `16px`
+- Color: Use a fill of `currentColor`. The system will automatically adjust the color based on the theme
+
+**Large icon**
+
+- File type: `png` or `jpg`
+- Size: `100px` &times; `100px`
+- Color: Solid colored background
+
+### Tool dependencies
+
+**Model Context Protocol**
+
+If you define a tool dependency of type `mcp`, Codex will automatically try to detect that MCP when the skill gets called by checking for the name declared in the `value` property. If the MCP has to be installed and requires OAuth, Codex will automatically start an authentication flow.
 
 ## Troubleshoot skills
 
@@ -166,7 +222,9 @@ Check out more example skills and ideas in the [github.com/openai/skills](https:
 
 If a skill doesn’t show up in Codex, make sure you enabled skills and restarted Codex. Confirm the file name is exactly `SKILL.md` and that it lives under a supported path such as `~/.codex/skills`.
 
-Codex ignores symlinked directories, and it skips skills with malformed YAML or `name`/`description` fields that exceed the length limits.
+If you’ve disabled a skill in `~/.codex/config.toml`, remove or flip the matching `[[skills.config]]` entry and restart Codex.
+
+If you use symlinked directories, confirm the symlink target exists and is readable. Codex also skips skills with malformed YAML or `name`/`description` fields that exceed the length limits.
 
 ### Skill doesn’t trigger
 

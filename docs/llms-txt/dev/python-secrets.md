@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/python-secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Access secrets in Python code
 
 Agent Builder provides **Vault**, which is a secure way to store and use secrets in your agents. Use Vault to store sensitive information like API keys, passwords, and other credentials that you don't want to expose in your code. Secrets are available in [blueprint blocks](/agent-builder/secrets#use-a-secret) and within Python code.

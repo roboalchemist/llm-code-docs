@@ -1,139 +1,99 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieve-a-publisher-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a publisher by ID
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /publishers/{publisherId}
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /publishers/{publisherId}
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        publisherId:
+  /publishers/{publisherId}:
+    get:
+      tags:
+        - Registry
+      summary: Retrieve a publisher by ID
+      operationId: GetPublisher
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              createdAt:
-                allOf:
-                  - description: The date and time the publisher was created.
-                    format: date-time
-                    type: string
-              description:
-                allOf:
-                  - type: string
-              id:
-                allOf:
-                  - description: >-
-                      The unique identifier for the publisher. It's akin to a
-                      username. Should be lowercase.
-                    type: string
-              logo:
-                allOf:
-                  - description: URL to the publisher's logo.
-                    type: string
-              members:
-                allOf:
-                  - description: A list of members in the publisher.
-                    items:
-                      $ref: '#/components/schemas/PublisherMember'
-                    type: array
-              name:
-                allOf:
-                  - type: string
-              source_code_repo:
-                allOf:
-                  - type: string
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/PublisherStatus'
-              support:
-                allOf:
-                  - type: string
-              website:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Publisher'
-        examples:
-          example:
-            value:
-              createdAt: '2023-11-07T05:31:56Z'
-              description: <string>
-              id: <string>
-              logo: <string>
-              members:
-                - id: <string>
-                  role: <string>
-                  user:
-                    email: <string>
-                    id: <string>
-                    name: <string>
-              name: <string>
-              source_code_repo: <string>
-              status: PublisherStatusActive
-              support: <string>
-              website: <string>
-        description: Publisher retrieved successfully
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Publisher not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publisher'
+          description: Publisher retrieved successfully
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Publisher not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    Publisher:
+      properties:
+        createdAt:
+          description: The date and time the publisher was created.
+          format: date-time
+          type: string
+        description:
+          type: string
+        id:
+          description: >-
+            The unique identifier for the publisher. It's akin to a username.
+            Should be lowercase.
+          type: string
+        logo:
+          description: URL to the publisher's logo.
+          type: string
+        members:
+          description: A list of members in the publisher.
+          items:
+            $ref: '#/components/schemas/PublisherMember'
+          type: array
+        name:
+          type: string
+        source_code_repo:
+          type: string
+        status:
+          $ref: '#/components/schemas/PublisherStatus'
+        support:
+          type: string
+        website:
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     PublisherMember:
       properties:
         id:

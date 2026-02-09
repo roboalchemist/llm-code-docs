@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/void-dom-elements-no-children.md
 ---
-# react/void-dom-elements-no-children&#x20;
 
 ### What it does
 

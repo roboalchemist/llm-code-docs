@@ -57,7 +57,7 @@ from apify_client import ApifyClient
 
 In the last lesson, we ran the **adding-actor** and retrieved its dataset items. That's exactly what we're going to do now; however, by using the Apify client instead.
 
-Before we can use the client though, we must create a new instance of the `ApifyClient` class and pass it our API token from the https://console.apify.com/account?tab=integrations&asrc=developers_portal on the Apify Console:
+Before we can use the client though, we must create a new instance of the `ApifyClient` class and pass it our API token from the [Integrations page](https://console.apify.com/account?tab=integrations&asrc=developers_portal) on the Apify Console:
 
 * Node.js
 * Python
@@ -80,7 +80,7 @@ Environment variables
 
 If you are planning on publishing your code to a public GitHub/Gitlab repository or anywhere else online, be sure to set your API token as en environment variable, and never hardcode it directly into your script.
 
-Now that we've got our instance, we can point to an Actor using the https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor function, then call the Actor with some input with the https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor function - the first parameter of which is the input for the Actor.
+Now that we've got our instance, we can point to an Actor using the [client.actor()](https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor) function, then call the Actor with some input with the [.call()](https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor) function - the first parameter of which is the input for the Actor.
 
 * Node.js
 * Python
@@ -105,7 +105,7 @@ run = client.actor('YOUR_USERNAME/adding-actor').call(run_input={
 
 Learn more
 
-Learn more about the `.call()` function in our https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor.
+Learn more about the `.call()` function in our [API documentation](https://docs.apify.com/api/client/js/reference/class/ApifyClient#actor).
 
 ## Downloading dataset items
 
@@ -202,7 +202,7 @@ print(items)
 
 If you check the **Settings** tab within your **adding-actor**, you'll notice that the default timeout being set to the Actor is **360 seconds**. This is a bit overkill considering the fact that the Actor is only adding two numbers together - the run should never take more than 20 seconds (even this is a generous number). The default memory being allocated to the Actor is **256 MB**, which is reasonable for our purposes.
 
-Let's change these two Actor settings via the Apify client using the https://docs.apify.com/api/client/js/reference/class/ActorClient#update function. This function will call the **update Actor** endpoint, which can take `defaultRunOptions` as an input property. You can find the shape of the `defaultRunOptions` in the https://docs.apify.com/api/v2/act-put.md. Perfect!
+Let's change these two Actor settings via the Apify client using the [actor.update()](https://docs.apify.com/api/client/js/reference/class/ActorClient#update) function. This function will call the **update Actor** endpoint, which can take `defaultRunOptions` as an input property. You can find the shape of the `defaultRunOptions` in the [API documentation](https://docs.apify.com/api/v2/act-put.md). Perfect!
 
 First, we'll create a pointer to our Actor, similar to before (except this time, we won't be using `.call()` at the end):
 
@@ -254,9 +254,9 @@ You can do so much more with the Apify client than running Actors, updating Acto
 
 For a more in-depth understanding of the Apify API client, give these a quick lookover:
 
-* https://docs.apify.com/api/client/js
-* https://docs.apify.com/api/client/python
+* [API client for JavaScript](https://docs.apify.com/api/client/js)
+* [API client for Python](https://docs.apify.com/api/client/python)
 
 ## Next up
 
-Now that you're familiar and a bit more comfortable with the Apify platform, you're ready to start deploying your code to Apify! In the https://docs.apify.com/academy/deploying-your-code.md, you'll learn how to take any project written in any programming language and turn it into an Actor.
+Now that you're familiar and a bit more comfortable with the Apify platform, you're ready to start deploying your code to Apify! In the [next section](https://docs.apify.com/academy/deploying-your-code.md), you'll learn how to take any project written in any programming language and turn it into an Actor.

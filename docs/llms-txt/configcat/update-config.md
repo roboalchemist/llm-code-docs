@@ -2,10 +2,7 @@
 
 # Update Config
 
-```
-PUT 
-/v1/configs/:configId
-```
+Copy page
 
 This endpoint updates a Config identified by the `configId` parameter.
 

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/sync-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sync agents between local and cloud
 
 This guide shows you how to synchronize your agents between local development and Writer Cloud environments. This allows local development offline and cloud development and deployment when you wish to share your agent with your team.

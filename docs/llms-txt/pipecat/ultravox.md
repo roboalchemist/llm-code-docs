@@ -1,34 +1,38 @@
-# Source: https://docs.pipecat.ai/server/services/stt/ultravox.md
+# Source: https://docs.pipecat.ai/server/services/s2s/ultravox.md
 
-# Ultravox
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Speech-to-text service implementation using a locally-loaded Ultravox multimodal model
+# Ultravox Realtime
+
+> Real-time speech-to-speech service implementation using Ultravox's Realtime API
 
 ## Overview
 
-`UltravoxSTTService` provides real-time speech-to-text using the Ultravox multimodal model running locally. Ultravox directly encodes audio into the LLM's embedding space, eliminating traditional ASR components and providing faster, more efficient transcription with built-in conversational understanding.
+`UltravoxRealtimeLLMService` provides real-time conversational AI capabilities using Ultravox's Realtime API. It supports both text and audio modalities with voice transcription, streaming responses, and tool usage for creating interactive AI experiences.
 
 <CardGroup cols={2}>
-  <Card title="Ultravox STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ultravox.stt.html">
-    Pipecat's API methods for Ultravox STT integration
+  <Card title="Ultravox Realtime API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ultravox.llm.html">
+    Pipecat's API methods for Ultravox Realtime integration
   </Card>
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07u-interruptible-ultravox.py">
-    Complete example with GPU optimization
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/50-ultravox-realtime.py">
+    Complete Ultravox Realtime conversation example
   </Card>
 
-  <Card title="Ultravox Documentation" icon="book" href="https://docs.ultravox.ai/">
-    Official Ultravox documentation and features
+  <Card title="Ultravox Documentation" icon="book" href="https://docs.ultravox.ai/overview">
+    Official Ultravox API documentation
   </Card>
 
-  <Card title="Hugging Face Models" icon="microphone" href="https://huggingface.co/settings/tokens">
-    Access Ultravox models and get HF tokens
+  <Card title="Ultravox Console" icon="external-link" href="https://app.ultravox.ai/">
+    Access Ultravox models and manage API keys
   </Card>
 </CardGroup>
 
 ## Installation
 
-To use Ultravox services, install the required dependency:
+To use Ultravox Realtime services, install the required dependencies:
 
 ```bash  theme={null}
 pip install "pipecat-ai[ultravox]"
@@ -36,19 +40,24 @@ pip install "pipecat-ai[ultravox]"
 
 ## Prerequisites
 
-### Ultravox Model Setup
+### Ultravox Account Setup
 
-Before using Ultravox STT services, you need:
+Before using Ultravox Realtime services, you need:
 
-1. **Hugging Face Account**: Sign up at [Hugging Face](https://huggingface.co/)
-2. **HF Token**: Generate a Hugging Face token for model access
-3. **GPU Resources**: Recommended for optimal performance with local model inference
+1. **Ultravox Account**: Sign up at [Ultravox Console](https://app.ultravox.ai/)
+2. **API Key**: Generate an Ultravox API key from your account dashboard
+3. **Model Access**: Ensure access to Ultravox Realtime models
+4. **Usage Limits**: Configure appropriate usage limits and billing
 
 ### Required Environment Variables
 
-* `HF_TOKEN`: Your Hugging Face token for model access
+* `ULTRAVOX_API_KEY`: Your Ultravox API key for authentication
 
+### Key Features
 
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt
+* **Audio-Native Model**: Ultravox is an audio-native model for natural voice interactions
+* **Real-time Streaming**: Low-latency audio processing and streaming responses
+* **Multiple Input Modes**: Support for Agent, One-Shot, and Join URL input parameters
+* **Voice Transcription**: Built-in transcription with streaming output
+* **Function Calling**: Support for tool integration and API calling
+* **Configurable Duration**: Set maximum call duration limits

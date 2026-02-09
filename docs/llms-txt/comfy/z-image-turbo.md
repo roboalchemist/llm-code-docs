@@ -1,8 +1,14 @@
 # Source: https://docs.comfy.org/tutorials/image/z-image/z-image-turbo.md
 
-# Z-Image ComfyUI Workflow Example
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Z-Image is a 6B parameter efficient image generation foundation model with single-stream diffusion transformer, offering sub-second inference latency.
+# Z-Image-Turbo ComfyUI Workflow Example
+
+> Z-Image-Turbo is a distilled 6B parameter efficient image generation model with sub-second inference latency.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HvaEsnyOfSw?si=bsOQzcL0vsPcaE83" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 **Z-Image (造相)** is a powerful and highly efficient image generation model with **6B** parameters, developed by Alibaba's Tongyi Lab. It uses a **Scalable Single-Stream DiT** (S3-DiT) architecture where text, visual semantic tokens, and image VAE tokens are concatenated at the sequence level to serve as a unified input stream, maximizing parameter efficiency.
 
@@ -26,13 +32,15 @@
 
 ## Z-Image-Turbo text-to-image workflow
 
-<a className="prose" target="_blank" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/image_z_image_turbo.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginRight: '10px'}}>
-  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow File</p>
-</a>
+<CardGroup cols={2}>
+  <Card title="Download Workflow" icon="download" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/image_z_image_turbo.json">
+    Download the Z-Image-Turbo text-to-image workflow JSON file.
+  </Card>
 
-<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=image_z_image_turbo&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on ComfyUI Cloud</p>
-</a>
+  <Card title="Run on ComfyUI Cloud" icon="cloud" href="https://cloud.comfy.org/?template=image_z_image_turbo&utm_source=docs&utm_medium=inhouse_social&utm_campaign=z_image_launch">
+    Run this workflow directly on ComfyUI Cloud.
+  </Card>
+</CardGroup>
 
 <Tip>
   <Tabs>
@@ -60,21 +68,23 @@
   </Tabs>
 </Tip>
 
-## Model links
+### Z-Image-Turbo model downloads
 
-**text\_encoders**
+<CardGroup cols={2}>
+  <Card title="qwen_3_4b.safetensors" icon="download" href="https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors">
+    Text encoder for Z-Image-Turbo.
+  </Card>
 
-* [qwen\_3\_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)
+  <Card title="z_image_turbo_bf16.safetensors" icon="download" href="https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors">
+    Diffusion model for Z-Image-Turbo.
+  </Card>
 
-**diffusion\_models**
+  <Card title="ae.safetensors" icon="download" href="https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors">
+    VAE for Z-Image-Turbo.
+  </Card>
+</CardGroup>
 
-* [z\_image\_turbo\_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)
-
-**vae**
-
-* [ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)
-
-**Model Storage Location**
+**Z-Image-Turbo Model Storage Location**
 
 ```
 📂 ComfyUI/
@@ -91,15 +101,19 @@
 
 This workflow uses the Z-Image-Turbo Fun Union ControlNet model to generate images with ControlNet guidance. It applies Canny edge detection to a reference image and uses the ControlNet to guide the generation process.
 
-<a className="prose" target="_blank" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/image_z_image_turbo_fun_union_controlnet.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginRight: '10px'}}>
-  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow File</p>
-</a>
+<CardGroup cols={1}>
+  <Card title="Download Workflow" icon="download" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/image_z_image_turbo_fun_union_controlnet.json">
+    Download the Z-Image-Turbo Fun Union ControlNet workflow JSON file.
+  </Card>
+</CardGroup>
 
 ### Additional model for ControlNet
 
-**model\_patches**
-
-* [Z-Image-Turbo-Fun-Controlnet-Union.safetensors](https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors)
+<CardGroup cols={1}>
+  <Card title="Z-Image-Turbo-Fun-Controlnet-Union.safetensors" icon="download" href="https://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union.safetensors">
+    ControlNet model patch for Z-Image-Turbo.
+  </Card>
+</CardGroup>
 
 **Model Storage Location**
 
@@ -115,8 +129,3 @@ This workflow uses the Z-Image-Turbo Fun Union ControlNet model to generate imag
 │   └── 📂 model_patches/
 │          └── Z-Image-Turbo-Fun-Controlnet-Union.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/signals/schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Smartcar Signals & Attributes Overview
 
 > Smartcar's standard list of vehicle signals and attributes across all compatible OEMs.
@@ -39,3 +43,27 @@ Below you will find the signal groups and their respective signals. Each signal 
 * [VehicleIdentification](/api-reference/signals/vehicleidentification)
 * [VehicleUserAccount](/api-reference/signals/vehicleuseraccount)
 * [Wheel](/api-reference/signals/wheel)
+
+***
+
+## Next Steps
+
+Now that you know what vehicle data is available, learn how to receive it in your application:
+
+<CardGroup cols={2}>
+  <Card title="Webhooks (Recommended)" icon="webhook" href="/integrations/webhooks/overview">
+    Real-time vehicle data pushed to your application
+  </Card>
+
+  <Card title="REST API" icon="code" href="/api-reference/vehicles-api-intro">
+    Request vehicle data on-demand via HTTP requests
+  </Card>
+
+  <Card title="Integration Overview" icon="book" href="/getting-started/integration-overview">
+    Compare webhooks vs REST API to choose the right approach
+  </Card>
+
+  <Card title="Check Compatibility" icon="car" href="/api-reference/compatibility-api-intro">
+    See which vehicles support specific signals
+  </Card>
+</CardGroup>

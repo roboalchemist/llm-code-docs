@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/features/hybridindexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hybrid Indexes
 
 Dense indexes are useful to perform semantic searches over

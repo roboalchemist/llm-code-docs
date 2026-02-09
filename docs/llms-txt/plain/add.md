@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/labels/add.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add labels
 
 You can add multiple labels to a thread with a call to `addLabels`. Label type IDs passed to this endpoint should not be archived, we return a validation error with code `cannot_add_label_using_archived_label_type` for any which are submitted.

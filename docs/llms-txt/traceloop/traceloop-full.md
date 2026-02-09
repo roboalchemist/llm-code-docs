@@ -4,6 +4,46 @@ Source: https://www.traceloop.com/docs/llms-full.txt
 
 ---
 
+# Create an auto monitor setup
+Source: https://www.traceloop.com/docs/api-reference/auto-monitor-setups/create-an-auto-monitor-setup
+
+post /v2/auto-monitor-setups
+Create a new auto monitor setup for automatic monitor creation
+
+
+
+# Delete an auto monitor setup
+Source: https://www.traceloop.com/docs/api-reference/auto-monitor-setups/delete-an-auto-monitor-setup
+
+delete /v2/auto-monitor-setups/{setup_id}
+Delete an auto monitor setup by ID
+
+
+
+# Get an auto monitor setup by ID
+Source: https://www.traceloop.com/docs/api-reference/auto-monitor-setups/get-an-auto-monitor-setup-by-id
+
+get /v2/auto-monitor-setups/{setup_id}
+Get a specific auto monitor setup by its ID
+
+
+
+# List auto monitor setups
+Source: https://www.traceloop.com/docs/api-reference/auto-monitor-setups/list-auto-monitor-setups
+
+get /v2/auto-monitor-setups
+List all auto monitor setups for the organization with optional filters
+
+
+
+# Update an auto monitor setup
+Source: https://www.traceloop.com/docs/api-reference/auto-monitor-setups/update-an-auto-monitor-setup
+
+put /v2/auto-monitor-setups/{setup_id}
+Update an existing auto monitor setup by ID
+
+
+
 # Get costs by property
 Source: https://www.traceloop.com/docs/api-reference/costs/property_costs
 
@@ -13,24 +53,24 @@ Query your LLM costs broken down by a specific association property. This helps 
 
 ## Request Parameters
 
-<ParamField query="property_name" type="string" required>
+<ParamField type="string">
   The name of the association property to group costs by (e.g., "user\_id", "session\_id").
 </ParamField>
 
-<ParamField query="start_time" type="string" required>
+<ParamField type="string">
   The start time in ISO 8601 format (e.g., "2025-04-15T00:00:00Z").
 </ParamField>
 
-<ParamField query="end_time" type="string" required>
+<ParamField type="string">
   The end time in ISO 8601 format (e.g., "2025-04-28T23:00:00Z").
 </ParamField>
 
-<ParamField query="env" type="string">
+<ParamField type="string">
   List of environments to include in the calculation. Separated by comma.
 </ParamField>
 
-<ParamField query="selected_token_types" type="string">
-  <span style={{backgroundColor: '#10b981', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold'}}>NEW</span> Filter costs by specific token types. Separate multiple types with commas.
+<ParamField type="string">
+  <span>NEW</span> Filter costs by specific token types. Separate multiple types with commas.
 
   **Supported token types:**
 
@@ -65,7 +105,7 @@ Query your LLM costs broken down by a specific association property. This helps 
   The total cost across all property values.
 </ResponseField>
 
-```json  theme={null}
+```json theme={null}
 {
   "property_name": "session_id",
   "values": [
@@ -93,6 +133,439 @@ The API can return special values:
 * `"Unknown_Value"` for spans where the property exists but has an empty value
 
 
+# Execute agent-efficiency evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-efficiency-evaluator
+
+post /v2/evaluators/execute/agent-efficiency
+Evaluate agent efficiency - detect redundant calls, unnecessary follow-ups
+
+**Request Body:**
+- `input.trajectory_prompts` (string, required): JSON array of prompts in the agent trajectory
+- `input.trajectory_completions` (string, required): JSON array of completions in the agent trajectory
+
+
+
+# Execute agent-flow-quality evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-flow-quality-evaluator
+
+post /v2/evaluators/execute/agent-flow-quality
+Validate agent trajectory against user-defined conditions
+
+**Request Body:**
+- `input.trajectory_prompts` (string, required): JSON array of prompts in the agent trajectory
+- `input.trajectory_completions` (string, required): JSON array of completions in the agent trajectory
+- `config.conditions` (array of strings, required): Array of evaluation conditions/rules to validate against
+- `config.threshold` (number, required): Score threshold for pass/fail determination (0.0-1.0)
+
+
+
+# Execute agent-goal-accuracy evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-goal-accuracy-evaluator
+
+post /v2/evaluators/execute/agent-goal-accuracy
+Evaluate agent goal accuracy
+
+**Request Body:**
+- `input.question` (string, required): The original question or goal
+- `input.completion` (string, required): The agent's completion/response
+- `input.reference` (string, required): The expected reference answer
+
+
+
+# Execute agent-goal-completeness evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-goal-completeness-evaluator
+
+post /v2/evaluators/execute/agent-goal-completeness
+Measure if agent accomplished all user goals
+
+**Request Body:**
+- `input.trajectory_prompts` (string, required): JSON array of prompts in the agent trajectory
+- `input.trajectory_completions` (string, required): JSON array of completions in the agent trajectory
+- `config.threshold` (number, required): Score threshold for pass/fail determination (0.0-1.0)
+
+
+
+# Execute agent-tool-error-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-tool-error-detector-evaluator
+
+post /v2/evaluators/execute/agent-tool-error-detector
+Detect errors or failures during tool execution
+
+**Request Body:**
+- `input.tool_input` (string, required): JSON string of the tool input
+- `input.tool_output` (string, required): JSON string of the tool output
+
+
+
+# Execute agent-tool-trajectory evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-agent-tool-trajectory-evaluator
+
+post /v2/evaluators/execute/agent-tool-trajectory
+Compare actual tool calls against expected reference tool calls
+
+**Request Body:**
+- `input.executed_tool_calls` (string, required): JSON array of actual tool calls made by the agent
+- `input.expected_tool_calls` (string, required): JSON array of expected/reference tool calls
+- `config.threshold` (float, optional): Score threshold for pass/fail determination (default: 0.5)
+- `config.mismatch_sensitive` (bool, optional): Whether tool calls must match exactly (default: false)
+- `config.order_sensitive` (bool, optional): Whether order of tool calls matters (default: false)
+- `config.input_params_sensitive` (bool, optional): Whether to compare input parameters (default: true)
+
+
+
+# Execute answer-completeness evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-answer-completeness-evaluator
+
+post /v2/evaluators/execute/answer-completeness
+Evaluate whether the answer is complete and contains all the necessary information
+
+**Request Body:**
+- `input.question` (string, required): The original question
+- `input.completion` (string, required): The completion to evaluate for completeness
+- `input.context` (string, required): The context that provides the complete information
+
+
+
+# Execute answer-correctness evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-answer-correctness-evaluator
+
+post /v2/evaluators/execute/answer-correctness
+Evaluate factual accuracy by comparing answers against ground truth
+
+**Request Body:**
+- `input.question` (string, required): The original question
+- `input.completion` (string, required): The completion to evaluate
+- `input.ground_truth` (string, required): The expected correct answer
+
+
+
+# Execute answer-relevancy evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-answer-relevancy-evaluator
+
+post /v2/evaluators/execute/answer-relevancy
+Check if an answer is relevant to a question
+
+**Request Body:**
+- `input.answer` (string, required): The answer to evaluate for relevancy
+- `input.question` (string, required): The question that the answer should be relevant to
+
+
+
+# Execute char-count evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-char-count-evaluator
+
+post /v2/evaluators/execute/char-count
+Count the number of characters in text
+
+**Request Body:**
+- `input.text` (string, required): The text to count characters in
+
+
+
+# Execute char-count-ratio evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-char-count-ratio-evaluator
+
+post /v2/evaluators/execute/char-count-ratio
+Calculate the ratio of characters between two texts
+
+**Request Body:**
+- `input.numerator_text` (string, required): The numerator text (will be divided by denominator)
+- `input.denominator_text` (string, required): The denominator text (divides the numerator)
+
+
+
+# Execute context-relevance evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-context-relevance-evaluator
+
+post /v2/evaluators/execute/context-relevance
+Evaluate whether retrieved context contains sufficient information to answer the query
+
+**Request Body:**
+- `input.query` (string, required): The query/question to evaluate context relevance for
+- `input.context` (string, required): The context to evaluate for relevance to the query
+- `config.model` (string, optional): Model to use for evaluation (default: gpt-4o)
+
+
+
+# Execute conversation-quality evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-conversation-quality-evaluator
+
+post /v2/evaluators/execute/conversation-quality
+Evaluate conversation quality based on tone, clarity, flow, responsiveness, and transparency
+
+**Request Body:**
+- `input.prompts` (string, required): JSON array of prompts in the conversation
+- `input.completions` (string, required): JSON array of completions in the conversation
+
+
+
+# Execute faithfulness evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-faithfulness-evaluator
+
+post /v2/evaluators/execute/faithfulness
+Check if a completion is faithful to the provided context
+
+**Request Body:**
+- `input.completion` (string, required): The LLM completion to check for faithfulness
+- `input.context` (string, required): The context that the completion should be faithful to
+- `input.question` (string, required): The original question asked
+
+
+
+# Execute html-comparison evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-html-comparison-evaluator
+
+post /v2/evaluators/execute/html-comparison
+Compare two HTML documents for structural and content similarity
+
+**Request Body:**
+- `input.html1` (string, required): The first HTML document to compare
+- `input.html2` (string, required): The second HTML document to compare
+
+
+
+# Execute instruction-adherence evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-instruction-adherence-evaluator
+
+post /v2/evaluators/execute/instruction-adherence
+Evaluate how well responses follow given instructions
+
+**Request Body:**
+- `input.instructions` (string, required): The instructions that should be followed
+- `input.response` (string, required): The response to evaluate for instruction adherence
+
+
+
+# Execute intent-change evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-intent-change-evaluator
+
+post /v2/evaluators/execute/intent-change
+Detect changes in user intent between prompts and completions
+
+**Request Body:**
+- `input.prompts` (string, required): JSON array of prompts in the conversation
+- `input.completions` (string, required): JSON array of completions in the conversation
+
+
+
+# Execute json-validator evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-json-validator-evaluator
+
+post /v2/evaluators/execute/json-validator
+Validate JSON syntax
+
+**Request Body:**
+- `input.text` (string, required): The text to validate as JSON
+- `config.enable_schema_validation` (bool, optional): Enable JSON schema validation
+- `config.schema_string` (string, optional): JSON schema to validate against
+
+
+
+# Execute perplexity evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-perplexity-evaluator
+
+post /v2/evaluators/execute/perplexity
+Measure text perplexity from logprobs
+
+**Request Body:**
+- `input.logprobs` (string, required): JSON array of log probabilities from the model
+
+
+
+# Execute pii-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-pii-detector-evaluator
+
+post /v2/evaluators/execute/pii-detector
+Detect personally identifiable information in text
+
+**Request Body:**
+- `input.text` (string, required): The text to scan for personally identifiable information
+- `config.probability_threshold` (float, optional): Detection threshold (default: 0.8)
+
+
+
+# Execute placeholder-regex evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-placeholder-regex-evaluator
+
+post /v2/evaluators/execute/placeholder-regex
+Validate text against a placeholder regex pattern
+
+**Request Body:**
+- `input.placeholder_value` (string, required): The regex pattern to match against
+- `input.text` (string, required): The text to validate against the regex pattern
+- `config.should_match` (bool, optional): Whether the text should match the regex
+- `config.case_sensitive` (bool, optional): Case-sensitive matching
+- `config.dot_include_nl` (bool, optional): Dot matches newlines
+- `config.multi_line` (bool, optional): Multi-line mode
+
+
+
+# Execute profanity-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-profanity-detector-evaluator
+
+post /v2/evaluators/execute/profanity-detector
+Detect profanity in text
+
+**Request Body:**
+- `input.text` (string, required): The text to scan for profanity
+
+
+
+# Execute prompt-injection evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-prompt-injection-evaluator
+
+post /v2/evaluators/execute/prompt-injection
+Detect prompt injection attempts
+
+**Request Body:**
+- `input.prompt` (string, required): The prompt to check for injection attempts
+- `config.threshold` (float, optional): Detection threshold (default: 0.5)
+
+
+
+# Execute prompt-perplexity evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-prompt-perplexity-evaluator
+
+post /v2/evaluators/execute/prompt-perplexity
+Measure prompt perplexity to detect potential injection attempts
+
+**Request Body:**
+- `input.prompt` (string, required): The prompt to calculate perplexity for
+
+
+
+# Execute regex-validator evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-regex-validator-evaluator
+
+post /v2/evaluators/execute/regex-validator
+Validate text against a regex pattern
+
+**Request Body:**
+- `input.text` (string, required): The text to validate against a regex pattern
+- `config.regex` (string, optional): The regex pattern to match against
+- `config.should_match` (bool, optional): Whether the text should match the regex
+- `config.case_sensitive` (bool, optional): Case-sensitive matching
+- `config.dot_include_nl` (bool, optional): Dot matches newlines
+- `config.multi_line` (bool, optional): Multi-line mode
+
+
+
+# Execute secrets-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-secrets-detector-evaluator
+
+post /v2/evaluators/execute/secrets-detector
+Detect secrets and credentials in text
+
+**Request Body:**
+- `input.text` (string, required): The text to scan for secrets (API keys, passwords, etc.)
+
+
+
+# Execute semantic-similarity evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-semantic-similarity-evaluator
+
+post /v2/evaluators/execute/semantic-similarity
+Calculate semantic similarity between completion and reference
+
+**Request Body:**
+- `input.completion` (string, required): The completion text to compare
+- `input.reference` (string, required): The reference text to compare against
+
+
+
+# Execute sexism-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-sexism-detector-evaluator
+
+post /v2/evaluators/execute/sexism-detector
+Detect sexist language and bias
+
+**Request Body:**
+- `input.text` (string, required): The text to scan for sexist content
+- `config.threshold` (float, optional): Detection threshold (default: 0.5)
+
+
+
+# Execute sql-validator evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-sql-validator-evaluator
+
+post /v2/evaluators/execute/sql-validator
+Validate SQL query syntax
+
+**Request Body:**
+- `input.text` (string, required): The text to validate as SQL
+
+
+
+# Execute tone-detection evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-tone-detection-evaluator
+
+post /v2/evaluators/execute/tone-detection
+Detect the tone of the text
+
+**Request Body:**
+- `input.text` (string, required): The text to detect the tone of
+
+
+
+# Execute topic-adherence evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-topic-adherence-evaluator
+
+post /v2/evaluators/execute/topic-adherence
+Evaluate topic adherence
+
+**Request Body:**
+- `input.question` (string, required): The original question
+- `input.completion` (string, required): The completion to evaluate
+- `input.reference_topics` (string, required): Comma-separated list of expected topics
+
+
+
+# Execute toxicity-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-toxicity-detector-evaluator
+
+post /v2/evaluators/execute/toxicity-detector
+Detect toxic or harmful language
+
+**Request Body:**
+- `input.text` (string, required): The text to scan for toxic content
+- `config.threshold` (float, optional): Detection threshold (default: 0.5)
+
+
+
+# Execute uncertainty-detector evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-uncertainty-detector-evaluator
+
+post /v2/evaluators/execute/uncertainty-detector
+Detect uncertainty in the text
+
+**Request Body:**
+- `input.prompt` (string, required): The text to detect uncertainty in
+
+
+
+# Execute word-count evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-word-count-evaluator
+
+post /v2/evaluators/execute/word-count
+Count the number of words in text
+
+**Request Body:**
+- `input.text` (string, required): The text to count words in
+
+
+
+# Execute word-count-ratio evaluator
+Source: https://www.traceloop.com/docs/api-reference/evaluators/execute-word-count-ratio-evaluator
+
+post /v2/evaluators/execute/word-count-ratio
+Calculate the ratio of words between two texts
+
+**Request Body:**
+- `input.numerator_text` (string, required): The numerator text (will be divided by denominator)
+- `input.denominator_text` (string, required): The denominator text (divides the numerator)
+
+
+
 # Introduction
 Source: https://www.traceloop.com/docs/api-reference/introduction
 
@@ -106,7 +579,7 @@ All APIs require an API key to be used for authentication.
 
 Use your API key as a Bearer token in the `Authorization` header:
 
-```bash  theme={null}
+```bash theme={null}
 Authorization: Bearer YOUR_API_KEY
 ```
 
@@ -126,6 +599,30 @@ Authorization: Bearer YOUR_API_KEY
 </Note>
 
 
+# Get metrics high water mark
+Source: https://www.traceloop.com/docs/api-reference/metrics/get-metrics-high-water-mark
+
+get /v2/metrics_hwm
+Returns the timestamp of the last successfully processed evaluation (high water mark)
+
+
+
+# Get metrics with filtering and grouping
+Source: https://www.traceloop.com/docs/api-reference/metrics/get-metrics-with-filtering-and-grouping
+
+post /v2/metrics
+Retrieves metrics data with support for filtering, sorting, and pagination. Metrics are grouped by metric name with individual data points. Supports filtering by direct column fields (bool_value, trace_id, etc.), label fields (labels.agent_name, labels.trace_id), and attribute fields (attributes.*).
+
+
+
+# Create a new organization
+Source: https://www.traceloop.com/docs/api-reference/organizations/create-a-new-organization
+
+post /v2/organizations
+Create a new organization with environments and API keys.
+
+
+
 # Delete specific user data
 Source: https://www.traceloop.com/docs/api-reference/privacy/delete_request
 
@@ -135,11 +632,11 @@ You can delete traces data for a specific user of yours by specifying their asso
 
 ## Request Body
 
-<ParamField body="associationProperties" type="JSON">
+<ParamField type="JSON">
   A list of users to delete, each specific using a specific criterion for deletion like `{userId: "123"}`.
 </ParamField>
 
-```json  theme={null}
+```json theme={null}
 {
   "associationProperties": [
     {
@@ -169,7 +666,7 @@ Get the status of your user deletion request.
 
 ## Request Query Parameter
 
-<ParamField query="requestId" type="string">
+<ParamField type="string">
   The request ID from the user deletion request.
 </ParamField>
 
@@ -200,13 +697,13 @@ can use this API to disable it for previously enabled ones.
 
 ## Request Body
 
-<ParamField body="associationProperty" type="Associated Property Object">
+<ParamField type="Associated Property Object">
   A single association property (like `{userId: "123"}`) that was previously allowed to be logged.
 </ParamField>
 
 Example:
 
-```json  theme={null}
+```json theme={null}
 {
   "associationProperty": {
     "userId": "123"
@@ -232,7 +729,7 @@ can use this API to view which users you've enabled.
   association properties.
 </ResponseField>
 
-```json  theme={null}
+```json theme={null}
 {
   "associationPropertyAllowList": [
     {
@@ -258,13 +755,13 @@ you can selectively enable it for some of your users with this API.
 
 ## Request Body
 
-<ParamField body="associationPropertyAllowList" type="Associated Property Object">
+<ParamField type="Associated Property Object">
   The list of association properties (like `{userId: "123"}`) that will be allowed to be logged.
 </ParamField>
 
 Example:
 
-```json  theme={null}
+```json theme={null}
 {
   "associationPropertyAllowList": [
     {
@@ -284,33 +781,33 @@ Retrieve spans from the data warehouse with flexible filtering and pagination op
 
 ## Request Parameters
 
-<ParamField query="from_timestamp_sec" type="int64" required>
+<ParamField type="int64">
   Start time in Unix seconds timestamp.
 </ParamField>
 
-<ParamField query="to_timestamp_sec" type="int64">
+<ParamField type="int64">
   End time in Unix seconds timestamp.
 </ParamField>
 
-<ParamField query="workflow" type="string">
+<ParamField type="string">
   Filter spans by workflow name.
 </ParamField>
 
-<ParamField query="span_name" type="string">
+<ParamField type="string">
   Filter spans by span name.
 </ParamField>
 
-<ParamField query="attributes" type="map[string]string">
+<ParamField type="map[string]string">
   Simple key-value attribute filtering. Any query parameter not matching a known field is treated as an attribute filter.
 
   **Example:** `?llm.vendor=openai&llm.request.model=gpt-4`
 </ParamField>
 
-<ParamField query="sort_order" type="string">
+<ParamField type="string">
   Sort order for results. Accepted values: `ASC` or `DESC`. Defaults to `ASC`.
 </ParamField>
 
-<ParamField query="sort_by" type="string">
+<ParamField type="string">
   Field to sort by. Supported values:
 
   * `timestamp` - Span creation time
@@ -324,20 +821,20 @@ Retrieve spans from the data warehouse with flexible filtering and pagination op
   * `llm_response_model` - LLM model used
 </ParamField>
 
-<ParamField query="cursor" type="string">
+<ParamField type="string">
   Pagination cursor for fetching the next set of results. Use the `next_cursor` value from the previous response.
 </ParamField>
 
-<ParamField query="limit" type="int">
+<ParamField type="int">
   Maximum number of spans to return per page.
 </ParamField>
 
-<ParamField query="filters" type="FilterCondition[]">
+<ParamField type="FilterCondition[]">
   Array of filter conditions to apply to the query. Each filter should have `id`, `value`, and `operator` fields. Filters must be URL-encoded JSON.
 
   **Filter structure:**
 
-  ```json  theme={null}
+  ```json theme={null}
   [{"id": "field_name", "operator": "equals", "value": "value"}]
   ```
 
@@ -473,7 +970,7 @@ Returns a paginated response containing span objects:
 
 ## Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "spans": {
     "data": [
@@ -537,7 +1034,7 @@ To paginate through results:
 2. Use the `next_cursor` value from the response in subsequent requests
 3. Continue until `next_cursor` is empty or you've retrieved all needed data
 
-```bash  theme={null}
+```bash theme={null}
 # Example Filter: [{"id":"llm.vendor","operator":"equals","value":"openai"}]
 #
 # First request with filter (URL-encoded)
@@ -559,9 +1056,9 @@ Datasets are simple data tables that you can use to manage your data for experim
 Datasets are available in the SDK, and they enable you to create versioned snapshots for reproducible testing.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=68d309644007054d2c6d59e30f9bff65" data-og-width="3266" width="3266" data-og-height="504" height="504" data-path="img/dataset/dataset-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=df9fd9ac97d1f77a1b619993afc5a257 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0e3d9f932d21bff8156e03bd9c3e73a2 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=db41fe7734a4bf693c7aec25ebd83f85 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=292981a46bd2c1b476dc07c6de5be7b2 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=50c4edb6436cc75b5ef36a8b20e1b56b 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c48d6fb122d9224b499550effdefbbbc 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6b3d9e87aef25951d5ac9919618117c5" data-og-width="3260" width="3260" data-og-height="504" height="504" data-path="img/dataset/dataset-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=952dc18d44ab8c1c446916705c0c731b 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9190386ded054e8837617b5ebaea00f4 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9a4f3f08e48451bea85f57868361d1cf 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ccf5f86e4630c35378a13d44d259b322 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a814a4576326e39ce6e109432de72940 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-list-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=011f67d16f6e91ee75fb82e787364155 2500w" />
+  <img />
 </Frame>
 
 <Steps>
@@ -585,9 +1082,9 @@ Datasets are available in the SDK, and they enable you to create versioned snaps
 
   <Step title="Publish your dataset version">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7b689bac69a6c16d58ccd89b0067dea1" data-og-width="3298" width="3298" data-og-height="600" height="600" data-path="img/dataset/dataset-view-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c938347ad661bb64d658f38b20e8179f 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0dc82764ba10265866d420650635a003 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2c817c30c57c255f620f44079e35442b 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2f020ff033baaa0d6074c61266fef1d4 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1875e785ee47d014d627e02cb0ebe07f 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=19e03c3f00fc2ad34d6ef4502342cc46 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=46aacf3c5fb12e1964b6af7f4497c9d0" data-og-width="3270" width="3270" data-og-height="594" height="594" data-path="img/dataset/dataset-view-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0fe4e0b9f202e48568ce6104e0a95364 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4e223bf675534280e854f6b9bc51d803 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=734d8539842ca3008e62055e3a6a641b 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=49cff0daa2c010610ddad09d050848f7 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=edc1bb4a0e763f1f52bc7d8b703fd774 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/dataset/dataset-view-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2f822bac08383bf22c75da9b3dd5532b 2500w" />
+      <img />
     </Frame>
 
     Once you're satisfied with your dataset structure and data:
@@ -835,9 +1332,9 @@ Define an evaluator for your specific needs
 Create your own evaluator to match your specific needs. You can start right away with custom criteria for full flexibility, or use one of our recommended formats as a starting point.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=875e3060f650ac2058742288d3b27e6b" data-og-width="2376" width="2376" data-og-height="1386" height="1386" data-path="img/evaluator/eval-custom-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=46090a7c162198e95eedba1069a737a9 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4e724aaebbf402b3d4fddc0c0f5af7f8 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=23a9193a3a12b71db60670ac5c41c50d 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=77c1bee4cfc3a5d79b0820078a47d118 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=62a3082c072511bc4386e295325c0fc7 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fb22928102050d38984b1b6d193692fe 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d272ae37ea8e3a2a7d9e057700fac28d" data-og-width="2378" width="2378" data-og-height="1388" height="1388" data-path="img/evaluator/eval-custom-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=cce8b473e983b6f5648f5ad7e028437f 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=bc8f1475d3199e7ddc3afc48711659d3 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=445f31e8076a38eb936011ebf96d3a1d 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c54626e6a201e59b9abe9cecfff9cfd6 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=321db37b71c27f1cc2c09d2bf4e2259c 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-custom-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e7b0312cc6d16dbcb7dc0fd41c226751 2500w" />
+  <img />
 </Frame>
 
 ## Do It Yourself
@@ -845,9 +1342,9 @@ Create your own evaluator to match your specific needs. You can start right away
 This option lets you write the evaluator prompt from scratch by adding the desired messages (System, Assistant, User, or Developer) and configuring the model along with its settings.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=61ec66544fab9316edd6f5031a327393" data-og-width="2698" width="2698" data-og-height="1390" height="1390" data-path="img/evaluator/eval-do-it-yourself-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=eed47bd859dfa451a4ec69aaf74f4fa6 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=31ff1c84b1b85cdb43799e26081113c6 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e1f43faeff043c4bc4f58e907d2e1cf8 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2d4f4d3d282841e65b4efd3d7ed452ca 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=837498e1e7073434223e21d4d3c0cd25 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b4cc117499e84a6597ba7ad8c7f5d77b 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=23e2088c62a4e3d2d1a2c89ed051ef06" data-og-width="2392" width="2392" data-og-height="1384" height="1384" data-path="img/evaluator/eval-do-it-yourself-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e07c34b541ba43740ec577876eeecc8b 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=429ff2171836d2f9d0895f9501c3fd23 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fc119e56adf5d34686fadd729f2c8d66 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=96434d7fc821fb8ef4d01380a5daaf89 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5546b6489ea72cbcfd18ffcec9d2837f 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-do-it-yourself-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b990e54c88d44a9449292381d1285cd4 2500w" />
+  <img />
 </Frame>
 
 ## Generate Evaluator
@@ -949,7 +1446,7 @@ Ensure consistent brand voice:
 
 First, initialize the Traceloop SDK in your application:
 
-```python  theme={null}
+```python theme={null}
 from traceloop.sdk import Traceloop
 
 Traceloop.init(app_name="your-app-name")
@@ -959,7 +1456,7 @@ Traceloop.init(app_name="your-app-name")
 
 Apply the `@guardrail` decorator to functions that interact with LLMs:
 
-```python  theme={null}
+```python theme={null}
 from traceloop.sdk.decorators import guardrail
 from openai import AsyncOpenAI
 
@@ -984,7 +1481,7 @@ The `slug` parameter identifies which guardrail evaluator to apply. This corresp
 
 Here's a complete example showing guardrails for a medical chatbot:
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 import os
 from openai import AsyncOpenAI
@@ -1046,7 +1543,7 @@ if __name__ == "__main__":
 
 You can apply multiple guardrails to the same function for layered protection:
 
-```python  theme={null}
+```python theme={null}
 @guardrail(slug="content_safety")
 @guardrail(slug="pii_detection")
 @guardrail(slug="factual_accuracy")
@@ -1094,7 +1591,7 @@ Guardrails add latency to your application since they run synchronously:
 
 Implement robust error handling for guardrail failures:
 
-```python  theme={null}
+```python theme={null}
 from traceloop.sdk.decorators import guardrail
 
 @guardrail(slug="safety_check")
@@ -1143,7 +1640,7 @@ For regulated industries:
 
 When applying guardrails, you can configure behavior:
 
-```python  theme={null}
+```python theme={null}
 @guardrail(
     slug="safety_check",
     # Additional configuration options
@@ -1212,9 +1709,9 @@ In the Evaluator Library, select the evaluator you want to define.
 You can either create a custom evaluator by clicking **New Evaluator** or choose one of the prebuilt **Made by Traceloop** evaluators.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7d69270c64122e6a882daf930897f366" data-og-width="2370" width="2370" data-og-height="1376" height="1376" data-path="img/evaluator/eval-library-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ef654f37807e63377669e10984393ca5 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c7ca9fab7c0efb3644a7274bd4a2ce2c 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1ebe5ab46ad2c7c6f9ac9b25bbe658c8 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2dc1fe885e05646d2912579a094f0e76 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7820d08b52f57a5216b2b69001ba8818 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9c025d919d874f1b57fa39990aa8df32 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fd362fa828c219fe2647f2d9594bd039" data-og-width="2378" width="2378" data-og-height="1376" height="1376" data-path="img/evaluator/eval-library-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fe221ba4669f635f43bf6df7c132b202 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=90972a83cde649c3b60598ea0ca63e3b 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2bc3fdfe6ed6107b6b9a2d3fe0107e67 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=88d2ebf74a717077350d553d191fa679 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=283084a4f50c8136336fce23a8f42ab3 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-library-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=93db1be0b94703920a1c6c17e57753c9 2500w" />
+  <img />
 </Frame>
 
 Clicking on existing evaluators will present their input and output schema. This is valuable information in order to execute the evaluator [through the SDK](../experiments/running-from-code).
@@ -1239,16 +1736,16 @@ The Evaluator Library provides a comprehensive collection of pre-built quality c
 Each evaluator comes with a predefined input and output schema. When using an evaluator, you’ll need to map your data to its input schema.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=99441f9ee05624cc1167e7a16600984d" data-og-width="2384" width="2384" data-og-height="1392" height="1392" data-path="img/evaluator/eval-made-by-traceloop-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=863a4cbc9f32a775330a81753846313f 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=90493bcf908dccfe98033df5489b229b 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=72786af4c0b9cb5f780c6d4139778331 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e5a988662851764167696fd4f2fc6d0b 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=219cef3045bdbde62af03b1236858644 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d7aef7cacb08ee41d95fa53209e99140 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=dfc7496c9b2afb1128a3af59bf90a68f" data-og-width="2378" width="2378" data-og-height="1374" height="1374" data-path="img/evaluator/eval-made-by-traceloop-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1020f0b2e654def7f388cc45c153948b 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=bd3ad3305814b1ef2a85cd60687f35b2 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f775454161783c264fc19afc62c7959e 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=20b4100bfeb4b2a2bcea871be7aefd3b 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f6c63389550d078e4874fa2c168dec42 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/evaluator/eval-made-by-traceloop-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=af33b371245f886a5bfc80bd55252475 2500w" />
+  <img />
 </Frame>
 
 ## Evaluator Types
 
 ### Style
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Character Count" icon="text">
     Analyze response length and verbosity to ensure outputs meet specific length requirements.
   </Card>
@@ -1268,7 +1765,7 @@ Each evaluator comes with a predefined input and output schema. When using an ev
 
 ### Quality & Correctness
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Answer Relevancy" icon="bullseye">
     Verify responses address the query to ensure AI outputs stay on topic and remain relevant.
   </Card>
@@ -1316,7 +1813,7 @@ Each evaluator comes with a predefined input and output schema. When using an ev
 
 ### Security & Compliance
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="PII Detection" icon="shield">
     Identify personal information exposure to protect user privacy and ensure data security compliance.
   </Card>
@@ -1344,7 +1841,7 @@ Each evaluator comes with a predefined input and output schema. When using an ev
 
 ### Formatting
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="SQL Validation" icon="database">
     Validate SQL queries to ensure proper syntax and structure in database-related AI outputs.
   </Card>
@@ -1364,7 +1861,7 @@ Each evaluator comes with a predefined input and output schema. When using an ev
 
 ### Agents
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Agent Goal Accuracy" icon="bullseye">
     Validate agent goal accuracy to ensure AI systems achieve their intended objectives effectively.
   </Card>
@@ -1399,16 +1896,16 @@ Source: https://www.traceloop.com/docs/experiments/introduction
 Building reliable LLM applications means knowing whether a new prompt, model, or change of flow actually makes things better.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=06e88a10c2a158599e21539ae47f8cec" data-og-width="3264" width="3264" data-og-height="506" height="506" data-path="img/experiment/exp-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=8f617baa1423690be988b6e8fbce889e 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c2835051045e9cdc57959fb3f4da4fce 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=370a5e5a930bd3a60983914d34732fbe 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0e98da67b3a6d2158f8a9d5fee86d3b9 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=411754d3d32e41f551ef2764a8f9e4ce 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f217df51ab569ff65023a48e999ced9a 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=53c6d94b9003aeaaac920c048592967c" data-og-width="3266" width="3266" data-og-height="492" height="492" data-path="img/experiment/exp-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=17572782b79a33caf5b22a7c350c1cb8 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=95da7b1e32cb9ead344ce928708b0b72 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2e59c55252df4708a846ad8a70901327 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4b345d1e080f7411a672b32e48dec14d 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c67937add2a60fd53da5fade8271f90a 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=16e9bc68d0b6ded1e7521522886efe2a 2500w" />
+  <img />
 </Frame>
 
 Experiments in Traceloop provide teams with a structured workflow for testing and comparing results across different prompt, model, and evaluator checks, all against real datasets.
 
 ## What You Can Do with Experiments
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Run Multiple Evaluators" icon="list-check">
     Execute multiple evaluation checks against your dataset
   </Card>
@@ -1435,9 +1932,9 @@ Source: https://www.traceloop.com/docs/experiments/result-overview
 All experiments are logged in the Traceloop platform. Each experiment is executed through the SDK.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=06e88a10c2a158599e21539ae47f8cec" data-og-width="3264" width="3264" data-og-height="506" height="506" data-path="img/experiment/exp-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=8f617baa1423690be988b6e8fbce889e 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c2835051045e9cdc57959fb3f4da4fce 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=370a5e5a930bd3a60983914d34732fbe 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0e98da67b3a6d2158f8a9d5fee86d3b9 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=411754d3d32e41f551ef2764a8f9e4ce 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f217df51ab569ff65023a48e999ced9a 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=53c6d94b9003aeaaac920c048592967c" data-og-width="3266" width="3266" data-og-height="492" height="492" data-path="img/experiment/exp-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=17572782b79a33caf5b22a7c350c1cb8 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=95da7b1e32cb9ead344ce928708b0b72 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2e59c55252df4708a846ad8a70901327 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4b345d1e080f7411a672b32e48dec14d 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c67937add2a60fd53da5fade8271f90a 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-list-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=16e9bc68d0b6ded1e7521522886efe2a 2500w" />
+  <img />
 </Frame>
 
 ## Experiment Runs
@@ -1445,9 +1942,9 @@ All experiments are logged in the Traceloop platform. Each experiment is execute
 An experiment can be run multiple times against different datasets and tasks. All runs are logged in the Traceloop platform to enable easy comparison.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=315b053a65e344a73f3ed45b8174c990" data-og-width="2308" width="2308" data-og-height="808" height="808" data-path="img/experiment/exp-run-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2fd619bab9d0d95da20947fa272dce06 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=223ba6d4a8dbbeaafabd35f0c62fd3b6 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=37dcea1fd57f315cd5d3661ea980cafb 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e1805a9366405fd7095d1db38d5ba14b 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0c0d403f332a37075bb95b4413555d64 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2122aa18a55e8454e70a22bd60895fb6 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=822697ddfdaeacae0114434af98cc85a" data-og-width="2306" width="2306" data-og-height="792" height="792" data-path="img/experiment/exp-run-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b5b6f12f18e0d1c3d26d92902ed276cb 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e8e896d89506b9bbf4de3a336ac113d3 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=498bb0432dfaf28420fc7821a45ee5e0 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=009974029abb7cb850b0a6ec96806326 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=36a33a0ed1a34f1a89de1201bf629857 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-list-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c1206e41fb3707362ed19346b3eb2467 2500w" />
+  <img />
 </Frame>
 
 ## Experiment Tasks
@@ -1463,9 +1960,9 @@ The task logging captures:
 * Evaluator results – the evaluator’s assessment based on the task outputs.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=90dcae379fa511eec6e3d4eb8de2a0d1" data-og-width="3284" width="3284" data-og-height="1734" height="1734" data-path="img/experiment/exp-run-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0349ec10842305c08ffba493579d982a 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=421b6e6222304ed027ef67d4aa70f964 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9b54fe314789c2bd172c8ff4a8599177 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=dc29e22b139ad1236fc301eca444d358 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=79481edca1b87f3c4c180042cb668436 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=30006b186fbdde619ad18d0cc793fe79 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=adbc0f62ec0ce48b0bbbee8382a67fe0" data-og-width="3290" width="3290" data-og-height="1734" height="1734" data-path="img/experiment/exp-run-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=676cf56e7cca6fc0d04a827f8f66b870 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=51206f8cd3a7bddd175b29991c3decee 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=13839974cc4cf63ecfe99d7aacb3b141 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ca9db2aea548301de850277debf61725 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5905d2d6359fe144c9dcf911c2938db3 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/experiment/exp-run-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fe751cfc888c42a59108debde76876ae 2500w" />
+  <img />
 </Frame>
 
 
@@ -1799,7 +2296,7 @@ You can run multiple experiments to compare different approaches—whether by us
 
 For complete, working examples that you can run and modify:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Python Example" icon="python" href="https://github.com/traceloop/openllmetry/blob/main/packages/sample-app/sample_app/experiment/experiment_example.py" />
 
   <Card title="TypeScript Example" icon="js" href="https://github.com/traceloop/openllmetry-js/blob/main/packages/sample-app/src/sample_experiment.ts" />
@@ -1815,7 +2312,7 @@ The hub configuration is done through the `config.yaml` file that should be plac
 
 Here's an example of the configuration file:
 
-```yaml  theme={null}
+```yaml theme={null}
 providers:
   - key: azure-openai
     type: azure
@@ -1888,7 +2385,7 @@ It's built in Rust so it's fast and efficient. It's completely open-source and f
 
 1. Clone the repo:
 
-```bash  theme={null}
+```bash theme={null}
 git clone https://github.com/traceloop/hub
 ```
 
@@ -1901,7 +2398,7 @@ git clone https://github.com/traceloop/hub
 Traceloop Hub is available as a docker image named `traceloop/hub`. Make sure to create a `config.yaml` file
 following the [configuration](./configuration) instructions.
 
-```bash  theme={null}
+```bash theme={null}
 docker run --rm -p 3000:3000 -v $(pwd)/config.yaml:/etc/hub/config.yaml:ro -e CONFIG_FILE_PATH='/etc/hub/config.yaml'  -t traceloop/hub
 ```
 
@@ -1912,7 +2409,7 @@ Its API is the standard OpenAI API, so you can use it as a drop-in replacement f
 
 You can invoke different pipelines by passing the `x-traceloop-pipeline` header. If none is specified, the default pipeline will be used.
 
-```python  theme={null}
+```python theme={null}
 import openai
 
 client = OpenAI(
@@ -1963,9 +2460,9 @@ Run an experiment in your CI/CD pipeline with the Traceloop GitHub App integrati
 
   <Step title="Authorize GitHub app installation at Traceloop">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=503c0d33e8c72f0fceadea948f723d17" data-og-width="1366" width="1366" data-og-height="1156" height="1156" data-path="img/traceloop-integrations/github-app-auth-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=783d65809f70ffae9108462044beb75d 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=ab307178cde06ff03be22327ba222fb4 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=be3f08b4694738bdd58182c10d68b35e 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=f509ac6671695237f69880e49f6714a2 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=70318f43eb849ee706d4f73770a32238 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-light.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=80fa7df8037c5bc750909469bc433e98 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=d4c9f83be0a7e50ab7c16e8090a77255" data-og-width="1366" width="1366" data-og-height="1156" height="1156" data-path="img/traceloop-integrations/github-app-auth-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=40acafc4c996b059960626aa67d38405 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=70105bf56170292d3865ec73d3670035 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=a5d13263c4235bf4a1187befe9b47094 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=4127d3725e7876a0973ec70f994fe3c9 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=3a2b998002238d606e5bc2ae5fafb07d 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-auth-dark.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=0cc1ea5867e034f4a22b0528a7fe6f23 2500w" />
+      <img />
     </Frame>
   </Step>
 
@@ -2172,9 +2669,9 @@ Run an experiment in your CI/CD pipeline with the Traceloop GitHub App integrati
     </Note>
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=f580a641f03ddae2dbdd20430cd1b7c3" data-og-width="2248" width="2248" data-og-height="566" height="566" data-path="img/traceloop-integrations/github-app-secrets-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=7f21d7e17579492e81b1b95e11e72071 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=05f0b56c16ea976cafe6fd0b7bba2700 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=cf4bd460e1e8040b08396084b50aaf91 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=2e1a406d64bf06e9c59016200bf10225 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=7bcafc0f12fa6fe25c63f962eb71b6f4 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-light.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=51834a3f63c4ef40b7dd7710d9bced5c 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=2922e81fc98d30b96ac5bf2f2b5312ea" data-og-width="2248" width="2248" data-og-height="566" height="566" data-path="img/traceloop-integrations/github-app-secrets-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=16e38ab5a92712b613334b9a5765c976 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=dc93eb07251cddc0625585fe172d7ab8 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=51856b574b5dd028f8df5a24cd466dd4 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=82a616c5debee3bc9a59c12fb8906db7 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=7750728ed862ab833d5ef9f4d139820d 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-secrets-dark.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=d0c6cb0aea751dcafc2c54996f81461d 2500w" />
+      <img />
     </Frame>
   </Step>
 
@@ -2182,9 +2679,9 @@ Run an experiment in your CI/CD pipeline with the Traceloop GitHub App integrati
     Once configured, every pull request will automatically trigger the experiment run. The Traceloop GitHub App will post a comment on the PR with a comprehensive summary of the evaluation results.
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=29082d266b0e447fe36306aec969cef9" data-og-width="918" width="918" data-og-height="531" height="531" data-path="img/traceloop-integrations/github-app-comment-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=99d2b0305e3de24ebfb04ebb2c1fd721 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=bd610949e4a760ab835449aad2aa003d 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=039170b3f8e8b0ccb93da1ca9b93dc5d 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=456856c0270c58968b1bfb29ec7fea28 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=a0c013cdfff0b7b48c1cd52c1f860840 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-light.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=44b83ec4e1a2a5ccde0311d940f9fd85 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=25120a30f67e789ae23020224c33161a" data-og-width="918" width="918" data-og-height="531" height="531" data-path="img/traceloop-integrations/github-app-comment-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=7f8b1d88d2c19524a85601e947b97248 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=0d59fc0f32a88f65909df07e121d7a1f 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=99d019e929a06ad83a151702d45341b0 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=606d4e1068546c443ed0ce741fda867c 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=422aeb83d7ba8023d3ffa02f56baf790 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-comment-dark.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=c0351df6ccae448230286a46a84f81ab 2500w" />
+      <img />
     </Frame>
 
     The PR comment includes:
@@ -2203,9 +2700,9 @@ Run an experiment in your CI/CD pipeline with the Traceloop GitHub App integrati
     * Drill down into evaluator reasoning and feedback
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=f48438b396576113e46dcdb947392033" data-og-width="2476" width="2476" data-og-height="1514" height="1514" data-path="img/traceloop-integrations/github-app-exp-run-results-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=35d99650899b9b88501d09ec629f1072 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=3be1ae25bd206a124b64494fcad5f4a1 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=8e5b8c3f83d2fc664cae0863186c28d8 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=0dd11e6b9077a6bb41a10d3bf46696f0 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=775589dff86c5764610dd979740415b0 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-light.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=efd8a35ee82c2db42dc9f96239022629 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=5a0023b8a84b42045de88ae32b620d79" data-og-width="2476" width="2476" data-og-height="1514" height="1514" data-path="img/traceloop-integrations/github-app-exp-run-results-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=280&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=840838398a0eeaa2f7d3c04bc5d8ff81 280w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=560&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=33193cac0373ed069aa6e2d115a8efec 560w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=840&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=8bc19177c80060257166bde8217f9d6d 840w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=1100&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=a419410f3619d2cc96e346a7bba5caf1 1100w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=1650&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=b2427a47a2e71153aac0d56c4ccaed42 1650w, https://mintcdn.com/enrolla/Xvmb1kKCuNCuc41v/img/traceloop-integrations/github-app-exp-run-results-dark.png?w=2500&fit=max&auto=format&n=Xvmb1kKCuNCuc41v&q=85&s=ce85e2355a2caeb2569370ae878a6fda 2500w" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -2230,9 +2727,9 @@ Connecting Traceloop to Posthog can be done by following these steps:
     Go to the [integrations page](https://app.traceloop.com/settings/integrations) within Traceloop and click on the Posthog card.
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=35ac5fe45caf3c3530228c0a3b0bff35" data-og-width="2570" width="2570" data-og-height="1536" height="1536" data-path="img/traceloop-integrations/integrations-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7808c9d3c6effed886279981cedd62ef 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=c34accf8f8506402b2a1206d1fbc9bb1 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=da7f7d0802920e44a2b77dad15c5e0e5 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7bc22776339cf7dc4fb8fdd1d8fae87d 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=cbbd5dc3dfc7c05bbde8a7d5c072b623 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=6f81b4b7119103acf0aa0e70b5be2dfc 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=23c023f1759a68c3fd35cf8d58b5e4e2" data-og-width="2570" width="2570" data-og-height="1536" height="1536" data-path="img/traceloop-integrations/integrations-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7e01c6589cfc972a43bcbe0b5cb9ac43 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=2277536bbdef309a55006740413c2bd5 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=77276213c59309e1e435bae21852f088 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=8fb7db7d10a5a5b0ac27b72e654c12dd 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=6a91559b2ce8ad7173298530618e21db 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=b5f88909d17b892d0e2a6bc6a0233bc3 2500w" />
+      <img />
     </Frame>
   </Step>
 
@@ -2240,9 +2737,9 @@ Connecting Traceloop to Posthog can be done by following these steps:
     Fill in the data you got from Posthog. Choose the environment you want to connect to Posthog and click on "Enable".
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a1fb090cc7ba9861de483fbfb2f415fd" data-og-width="3024" width="3024" data-og-height="1807" height="1807" data-path="img/traceloop-integrations/posthog-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=09353a6fe2ad0902f66e04d5f9f98092 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=60ab41c155a36b19d7941543b5a76c38 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=431b7fb1fb8ef5d44dc0eecad86c6ca2 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=82151fda3d78b4d1f1c6515221352de8 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=aaa9f6e686f9fd640eaa95c18aeaeee5 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=650d7d3735dea738963406a65e7e4b5f 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cbb35b1346f438ac29dc3166ceb62228" data-og-width="3005" width="3005" data-og-height="1801" height="1801" data-path="img/traceloop-integrations/posthog-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=dd1e1a62e3663225c7755a755277dab4 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=194dc74f216052676ab53220be23abc7 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e1d98c1b13e363d00e1a90875685406d 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1873606fa8294a7e25b894486509312e 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f9a95d146326ea645a68beed1afb7e90 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6c4c2279b571a7f75d0a1de29673805d 2500w" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -2254,7 +2751,7 @@ Go to your Posthog instance, click "Activity" and search for events named `trace
 You can then create a new dashboard from the "LLM Metrics - Traceloop" template to visualize the data.
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a7ac3ec7d419d08964c981d15789798c" data-og-width="1619" width="1619" data-og-height="1062" height="1062" data-path="img/traceloop-integrations/posthog-result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=92dada6eaa3fd060cbc86aecd6e965a6 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=87d2c7b2c184818f67a3101db7dcaae9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e89cd13fc2abc56e8cee7f0467d7e429 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2b11d75fb13d0f8b97e522087e02915e 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=637e2c22dac14bf939a82002801390cd 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2809ac33a86e1683caaeeb85c3bbe654 2500w" />
+  <img />
 </Frame>
 
 
@@ -2270,9 +2767,9 @@ Connecting Traceloop to Slack allows you to receive automated updates about your
     Go to the [integrations page](https://app.traceloop.com/settings/integrations) within Traceloop and click on the Slack card.
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=35ac5fe45caf3c3530228c0a3b0bff35" data-og-width="2570" width="2570" data-og-height="1536" height="1536" data-path="img/traceloop-integrations/integrations-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7808c9d3c6effed886279981cedd62ef 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=c34accf8f8506402b2a1206d1fbc9bb1 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=da7f7d0802920e44a2b77dad15c5e0e5 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7bc22776339cf7dc4fb8fdd1d8fae87d 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=cbbd5dc3dfc7c05bbde8a7d5c072b623 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-light.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=6f81b4b7119103acf0aa0e70b5be2dfc 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=23c023f1759a68c3fd35cf8d58b5e4e2" data-og-width="2570" width="2570" data-og-height="1536" height="1536" data-path="img/traceloop-integrations/integrations-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7e01c6589cfc972a43bcbe0b5cb9ac43 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=2277536bbdef309a55006740413c2bd5 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=77276213c59309e1e435bae21852f088 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=8fb7db7d10a5a5b0ac27b72e654c12dd 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=6a91559b2ce8ad7173298530618e21db 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/integrations-dark.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=b5f88909d17b892d0e2a6bc6a0233bc3 2500w" />
+      <img />
     </Frame>
   </Step>
 
@@ -2290,7 +2787,7 @@ Connecting Traceloop to Slack allows you to receive automated updates about your
     </Info>
 
     <Frame>
-      <img src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=bf2d85ccfbfd32eee84dea0db1897a62" data-og-width="1870" width="1870" data-og-height="644" height="644" data-path="img/traceloop-integrations/slack-invite-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=b0bf2273ac7400da2c1500cbc4a3ab6a 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=1ba506f45b0cb8742446b07d529d742f 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7e9c5729e88f0fef93d58588795ae547 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=067adddc4a257e7ae02bf28dc6428844 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=8844d171b265ae5c5ee829c4b932d215 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-invite-app.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=faf3e41548049a5352b39fa1f5d6a634 2500w" />
+      <img />
     </Frame>
 
     * Select the desired schedule -  daily/weekly
@@ -2298,9 +2795,9 @@ Connecting Traceloop to Slack allows you to receive automated updates about your
     * Choose which environment to monitor
 
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=90492a5b6ee99ce51d1957cfdc121586" data-og-width="1628" width="1628" data-og-height="1420" height="1420" data-path="img/traceloop-integrations/slack-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=b45c7ffcd9474dd361902c4b4bf0a5ff 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=b391f4fba8a4bbe977f6b1343f5faab8 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=5abdf67b7cb00be3ec6845eea37afe0e 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=eb1377d5254ff4bd3533ecb57428332c 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=2a726d12ebd12260d00b08f4e077d5ee 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-light.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=363ce75b593bac7bfa968670a23ce241 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=3dfadbba5fb666187c3a947aa282ddac" data-og-width="1628" width="1628" data-og-height="1420" height="1420" data-path="img/traceloop-integrations/slack-settings-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=d22f0cb52cdeed2df3a231106e1a0546 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=7b8680c083877aebdc4248523d659081 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=d12c1af42a417d0e99522d81b5fef038 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=87ff62438d3d370b4f09bf17c4f3cf6f 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=4a2a7d4cdc381f933449ba97685d833d 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-settings-dark.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=e1a655f6b1cb06cb03c0d17bd267d465 2500w" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -2310,7 +2807,7 @@ Connecting Traceloop to Slack allows you to receive automated updates about your
 You'll now receive automated messages in your chosen Slack channel with insights about your AI flows, including key metrics and performance updates.
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=c0489636d1a9bb96f431e06b9185b327" data-og-width="568" width="568" data-og-height="361" height="361" data-path="img/traceloop-integrations/slack-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=0032e3b3a6138314e51d0547c6f2443e 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=ce474ab1a81fd62eb7fccfd07c32586a 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=76557b8fb9f0299d0d2cdf525a46c1e7 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=fec5942168d4b07f7acf52d30eaa15b6 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=d2786691a3d03ec2899486ccdc980814 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=ed9a750e25e04bc5d7ba574d68ff9087 2500w" />
+  <img />
 </Frame>
 
 
@@ -2335,7 +2832,7 @@ You can install the OpenLLMetry SDK in your application, or use Traceloop Hub as
 
 To get started, pick the language you are using and follow the instructions.
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Hub" icon="arrows-to-dot" href="/hub/getting-started">
     Beta
   </Card>
@@ -2398,9 +2895,9 @@ The span filtering modal shows the actual spans from your system, letting you se
 Add filters by clicking on the  <kbd>+</kbd>  button.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=e882a9b6eb5ca662b5770f2c26fbebc5" data-og-width="2392" width="2392" data-og-height="1406" height="1406" data-path="img/monitor/monitor-filter-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=2848dcefb764e044c7a1c745ca71e83b 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=49dfc8127ce02a358cf70525fb43b059 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=4eda52e0f2aee84a8a8a4ab6b81c7ca6 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=98f51f9869ec06710e28da149a82d383 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=66f0299d567a2fb3bef6115bc153fb67 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-light.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=96843d8f1570a38ba3407d9f09125dc8 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=5d7f6d15f3cc60cc9d4ded8660b4b3e5" data-og-width="2402" width="2402" data-og-height="1408" height="1408" data-path="img/monitor/monitor-filter-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=b9c4ad0ee461305a7d61ae4703b35db9 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=292c5a8fd5102e712316ad03a9879650 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=7ba8780a2238974cfa6f26d06990d241 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=2b4cb399e02dfce20731945f8f9b4f0c 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=50b318edc53500231e625818248001f2 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-dark.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=7f97340ef0526d895874e5c6f21659f0 2500w" />
+  <img />
 </Frame>
 
 ### Filter Options
@@ -2411,9 +2908,9 @@ Add filters by clicking on the  <kbd>+</kbd>  button.
 * **AI Data**: Filter based on LLM-specific attributes like model name, token usage, streaming status, and other AI-related metadata
 * **Attributes**: Filter based on span attributes
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=7b9f0c7fa861ee4237a5b930079de105" style={{maxWidth: '500px'}} data-og-width="970" width="970" data-og-height="916" height="916" data-path="img/monitor/monitor-filter-options-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=d7a89fd389a99c2038450b6d0edae6a1 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=3aed584189a6a688be20109e57767015 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=516b0b1f09ab7d53f5371332dab91ec5 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=ddbaa61d04b37d2ba8db639dbb93870b 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=ebef7bb934b61ce38c5764ab8e869d36 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-light.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=bacb7bd4bb4e17a4039ba355dea9acc2 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=f43bbc0f8be5a83e76011f1c2acdbe4d" style={{maxWidth: '500px'}} data-og-width="964" width="964" data-og-height="922" height="922" data-path="img/monitor/monitor-filter-options-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=9de9008a443e674408a93d0d8840fbc9 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=486a7951e08615d2815a8ffe8e17eb92 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=e164d493a8b5ff3400046ed06800a8c4 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=517aaf80ee25e693797a48f93e8cd87a 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=6c0ca452991595c225fa48c009731d43 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-filter-options-dark.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=569669fba78e9c462a1bd54fc8e866ab 2500w" />
+<img />
 
 ## Monitor Settings
 
@@ -2423,33 +2920,33 @@ You need to map the appropriate span fields to the evaluator’s input schema.
 This can be done easily by browsing through the available span field options—once you select a field, the real data is immediately displayed so you can see how it maps to the input.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=32a441ef62772a8f23528fa2a8762153" data-og-width="2388" width="2388" data-og-height="1390" height="1390" data-path="img/monitor/monitor-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=51bd00bf41e8c66bf026bbc019094e0c 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=f089455d4bc03db6a3957cdd88fe4f0a 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ac0d13ccedc0edb338ae9eb5bf84b5e4 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b23bee03e01518be81e99cfc076bc517 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=bbe258a562140214eb7be4ad1faa923f 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=656e8b40b4c87f62d3eec011fe9e5fe0 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ced02fcf7efcb0d7e00fdf5d0ffb2f7e" data-og-width="2402" width="2402" data-og-height="1406" height="1406" data-path="img/monitor/monitor-settings-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=d5ba7f4015832b1504a5af4c4d4ad2fd 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=841121a746dee5d79cd8678624f3fdc0 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=9496c1d1b2322d6c49f42fb345799501 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=bf429e6954bb8b38e54b4466095e85ba 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ae502a50bf2b9b6d2bd694552e016556 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-settings-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=d7dbd37b256bcddde7e3d22ad7f77342 2500w" />
+  <img />
 </Frame>
 
 When the field data is not plain text, you can use JSON key mapping or Regex to extract the specific content you need.
 
 For example, if your content is an array and you want to extract the "text" field from the object:
 
-```json  theme={null}
+```json theme={null}
 [{"type":"text","text":"explain who are you and what can you do in one sentence"}]
 ```
 
 You can use JSON key mapping like `0.text` to extract just the text content. The JSON key mapping will be applied to the Preview table, allowing you to see the extracted result in real-time.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=41f7fd4b8d5e4a353d0c9e6e13857aee" data-og-width="2380" width="2380" data-og-height="1404" height="1404" data-path="img/monitor/monitor-json-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=02ac2a705485d1dd0469d12500a21d55 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=d865289b0586412d5cb3334152c407cf 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=5a7b2c67b1c4992736eb25c84a7a328b 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=ab610b1dee58e1851926a298632f276a 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=dace78e7f152568e41ad731da6edaba2 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-light.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=9eaa7b1c415cca0c70a231568601a1ee 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=d744d896c0d932044a6e298c0138db3c" data-og-width="2390" width="2390" data-og-height="1398" height="1398" data-path="img/monitor/monitor-json-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=856aaaf7843898b626e41ce3925cb38e 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=2fe6c380b59cdb29d781822dd5230f89 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=1f5c2ef66f88fec9e93dac472ba0d154 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=3d93fae5454210aa6a6d93b3f3d983c3 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=cc69ef9a5546bbb1beb4049b30e23d35 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-json-dark.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=06e9791655885d14d6db53643783117e 2500w" />
+  <img />
 </Frame>
 
 You can use Regex like `text":"(.+?)"` to extract just the text content. The regex will be applied to the Preview table, allowing you to see the extracted result in real-time.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=28cab1fcf3466cd3507b42757e8d4051" data-og-width="2386" width="2386" data-og-height="1390" height="1390" data-path="img/monitor/monitor-regex-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=269ab08522ee1404e8b3a4a1fb8aaff2 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=f5da3959a3eb63ae5fe198228f800055 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=41794847ddf3dada13d8d9e4ade5a151 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=e71845de50ff6283d1b9862f0e17dece 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=7259d42b9385cd10e70d0b711a96f53f 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=04d21b6d4f60ec812209e9e8ba9a3615 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=cf8eb05558708aaa81d9a8eac34b16ff" data-og-width="2392" width="2392" data-og-height="1396" height="1396" data-path="img/monitor/monitor-regex-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=7c7d95d7341374a90e9ff5e9a83f298e 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=50da1e5b2945caf2194275917829a4ef 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=6e934cd134b2ca8a93ef6b1e3723275c 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=de91a3e8577bb7e5968d8a1dacd06c00 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=52d468c6381c2f5c68ec9b9551e4bcfc 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-regex-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=8008182b47688ed7c8117c55900e8969 2500w" />
+  <img />
 </Frame>
 
 ### Advanced
@@ -2468,9 +2965,9 @@ To start monitoring your LLM outputs, make sure you installed OpenLLMetry and co
 Next, if you're not using a [supported LLM framework](/openllmetry/tracing/supported#frameworks), [make sure to annotate workflows and tasks](/openllmetry/tracing/annotations).
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=30a73ea21acf37932c555562f725543d" data-og-width="2464" width="2464" data-og-height="640" height="640" data-path="img/monitor/monitor-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=85fda1e47b38bc90c2648e1a0acc8446 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=52b421f78ec768b573a8a0b69035fc41 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=75a062bf0645a72a4cfeb37e9a366994 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=f23bdd12b8455e6982b5938387af235e 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=ea458a1e2d79db8e234dba522de90778 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=feea6bdf4053cac87e91c6297c9b0953 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=d3856b465eaf0a313f8d68c015f3b11b" data-og-width="2456" width="2456" data-og-height="650" height="650" data-path="img/monitor/monitor-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=86feeb8f3346c34c5e61e758e6505414 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=0716483ddec0796643c43948daa07301 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=eea8087dab9cf76768b945144a6de930 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=f5caa6a5549ff434693e5167f6e42ec2 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=345a0850f093beff67b9fe9100e940f6 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=7df3a76d26001cf279a67517da5675d5 2500w" />
+  <img />
 </Frame>
 
 ## What is a Monitor?
@@ -2498,9 +2995,9 @@ The Monitor Dashboard provides an overview of all active monitors and their curr
 It shows each monitor’s health, the number of times it has run, and the most recent execution time.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=30a73ea21acf37932c555562f725543d" data-og-width="2464" width="2464" data-og-height="640" height="640" data-path="img/monitor/monitor-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=85fda1e47b38bc90c2648e1a0acc8446 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=52b421f78ec768b573a8a0b69035fc41 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=75a062bf0645a72a4cfeb37e9a366994 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=f23bdd12b8455e6982b5938387af235e 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=ea458a1e2d79db8e234dba522de90778 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-light.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=feea6bdf4053cac87e91c6297c9b0953 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=d3856b465eaf0a313f8d68c015f3b11b" data-og-width="2456" width="2456" data-og-height="650" height="650" data-path="img/monitor/monitor-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=280&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=86feeb8f3346c34c5e61e758e6505414 280w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=560&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=0716483ddec0796643c43948daa07301 560w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=840&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=eea8087dab9cf76768b945144a6de930 840w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=1100&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=f5caa6a5549ff434693e5167f6e42ec2 1100w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=1650&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=345a0850f093beff67b9fe9100e940f6 1650w, https://mintcdn.com/enrolla/f92M4jgLiPyzhzrI/img/monitor/monitor-list-dark.png?w=2500&fit=max&auto=format&n=f92M4jgLiPyzhzrI&q=85&s=7df3a76d26001cf279a67517da5675d5 2500w" />
+  <img />
 </Frame>
 
 ## Viewing Monitor Results
@@ -2525,17 +3022,17 @@ The Monitor page includes multiple chart views to help you analyze your data, an
 **Line Chart View** - Shows evaluation trends over time:
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=bcacca5096e53a569970c17fcecf0d8a" data-og-width="3538" width="3538" data-og-height="2018" height="2018" data-path="img/monitor/monitor-page-line-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=bd714ec4bcb3f7cc7aa2566a130f9665 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=0a7238c51f943c3855485184a503e267 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=03a39499add955563caac24467885e01 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=28654624a3c50e73afc7aa0b2d1484e6 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=bcd53e20a3a3941a26e106cb1523c4e8 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=93c2dc25c9b2b5bbb1772de73b225198 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c9249577d43a7098883e30cb505abbde" data-og-width="3532" width="3532" data-og-height="2018" height="2018" data-path="img/monitor/monitor-page-line-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=1d35692ad9a4641fe021771f68890b93 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=8989d4e802521bed189cc77a19f9011c 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=191cd29eb139a4033d08b84c35e7f3d8 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ad7495ada812b635791516f649f3199e 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=494a16c63220cda58bcd4a5444ee6ee0 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-line-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=7810fbed1f9d5c362bf368fc36da6f8a 2500w" />
+  <img />
 </Frame>
 
 **Bar Chart View** - Displays evaluation results in time buckets:
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=faf09c414909355ea856ae7f44328d90" data-og-width="3550" width="3550" data-og-height="2020" height="2020" data-path="img/monitor/monitor-page-buckets-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=f473490a880a24be706fdae1f292c0cb 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b59e90f300026cb440d9d9f7e2dafa8f 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=07feb355059f7860f85116318976d972 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=a825bef37af8404cf1a98850bd4f95e8 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b1b110dcc12dade0e5eb0cb9c92ab90c 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=59972434ef6c867f1e72ff4be698ccd8 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=1ecf640aff45d206120ff6282eec02b3" data-og-width="3550" width="3550" data-og-height="1882" height="1882" data-path="img/monitor/monitor-page-buckets-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=21c337525fc8679f830ebf68251e73d9 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=587a3d4c9ab6c4551e66907922ecdc7a 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=88aebd07c2449e0c7611381c840be524 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=f6650d10f4c6a7de3fee70b7ecb936cc 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=f7ca68ae5966604d70e3aa12dd88150c 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/monitor/monitor-page-buckets-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=96d2a28c7b279418be36ec0006099df0 2500w" />
+  <img />
 </Frame>
 
 #### Filtering and Time Controls
@@ -2561,9 +3058,9 @@ The bottom section shows all spans that matched your monitor's filter criteria:
 Each row includes a link icon to view the full span details in the trace explorer:
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2733424bcb797188846417e2516e50fe" data-og-width="3014" width="3014" data-og-height="1798" height="1798" data-path="img/trace/trace-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c024b621caac98fb924006c3e2fdf3e2 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ab9ba8134ba04bdfefb6a56c44f03256 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=637f82f9dd748f77b39a80591f34ab9d 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b47f4145aad5d3ac1f78646d6b000b05 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=176db5b65b57b786248777ac9660de8f 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=fac61fd5dc7f341881afe09c4a25cc67 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=740795f397c532c9080a91ea521a3a7e" data-og-width="3024" width="3024" data-og-height="1806" height="1806" data-path="img/trace/trace-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2146004180f5dce3c59c73da4e4445f1 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=277eb56b1e83c16a15de79612b490935 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=d64bec8d366115d0070c6ac5fdf34855 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c892fe1ad02e8b04c94171ebf5b7fbad 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=8625ee39f6877740038d00c9ca5d97a4 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=966a935d28281d3b9e1944e97e8ea6c6 2500w" />
+  <img />
 </Frame>
 
 For further information on tracing refer to [OpenLLMetry](/openllmetry/introduction).
@@ -2862,7 +3359,7 @@ Make sure you have `node >= 18` and `nx` installed globally.
 
 Most commands can be run from the root of the project. For example, to lint the entire project, run:
 
-```bash  theme={null}
+```bash theme={null}
 nx run-many -t lint
 ```
 
@@ -2870,7 +3367,7 @@ Other commands you can use simiarily are `test`, or `build`, or `lock` and `inst
 
 To run a specific command on a specific package, run:
 
-```bash  theme={null}
+```bash theme={null}
 nx run <package>:<command>
 ```
 
@@ -2895,13 +3392,13 @@ their documentation to understand how to use them and re-record the requests.
 
 You can run all tests by running:
 
-```bash  theme={null}
+```bash theme={null}
 nx run-many -t test
 ```
 
 Or run a specific test by running:
 
-```bash  theme={null}
+```bash theme={null}
 nx run <package>:test
 ```
 
@@ -3075,13 +3572,13 @@ Install OpenLLMetry for Go by following these 3 easy steps and get instant monit
   <Step title="Install the SDK">
     Run the following command in your terminal:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     go get github.com/traceloop/go-openllmetry/traceloop-sdk
     ```
 
     In your LLM app, initialize the Traceloop tracer like this:
 
-    ```go  theme={null}
+    ```go theme={null}
     import sdk "github.com/traceloop/go-openllmetry/traceloop-sdk"
 
     func main() {
@@ -3100,9 +3597,9 @@ Install OpenLLMetry for Go by following these 3 easy steps and get instant monit
 
   <Step title="Log your prompts">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1fb91081386699f120ed74946fc07da6" data-og-width="3024" width="3024" data-og-height="1810" height="1810" data-path="img/single-trace-prompt-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5a31f519b941d126be8dceb062697f1b 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4d42e4bf5fc9e2755454a7cee2ccf8dc 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=abf32cc1326044c8b69f08ac26ca723e 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e8b1446efb308a1a4cb66c20d98b6a92 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=79ffb6db70b7dc34d676bcbd5ff9a307 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3015a00759d9d307248e9541ca491f1d 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7ab70b34bda2c3c95f3a431b86c76c02" data-og-width="3019" width="3019" data-og-height="1806" height="1806" data-path="img/single-trace-prompt-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0cff7999488d911e2117ec0224ff6947 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0d17a103e01d0df03112594b25b8e731 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b692de6cec06f0117fbf8bae13dd02b8 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=65980060063d479150d7b9c6ef1fb46a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=28f2aed316df14733190811e6881760d 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=eda1d196fab8a7a3011e6d6200b1ae20 2500w" />
+      <img />
     </Frame>
 
     For now, we don't automatically instrument libraries on Go (as opposed to Python and Javascript).
@@ -3110,7 +3607,7 @@ Install OpenLLMetry for Go by following these 3 easy steps and get instant monit
 
     This means that you'll need to manually log your prompts and completions.
 
-    ```go  theme={null}
+    ```go theme={null}
     import (
         openai "github.com/sashabaranov/go-openai"
     )
@@ -3190,7 +3687,7 @@ Install OpenLLMetry for Go by following these 3 easy steps and get instant monit
 
     Set the API key as an environment variable in your app named `TRACELOOP_API_KEY`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
@@ -3215,7 +3712,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
 <Steps>
   <Step title="Install the SDK">
     <Tip>
-      Want our AI to do it for you? <a href="" target="_blank" id="vibekit-button" data-vibekit-token="k174v9knzdnmt51nf4d76fdnjn7jtmt4" rel="noreferrer">Click here</a>
+      Want our AI to do it for you? <a href="">Click here</a>
     </Tip>
 
     Run the following command in your terminal:
@@ -3238,7 +3735,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
       <Tab title="With Pages Router">
         Create a file named `instrumentation.ts` in the root of your project (i.e., outside of the `pages` or 'app' directory) and add the following code:
 
-        ```ts  theme={null}
+        ```ts theme={null}
         export async function register() {
           if (process.env.NEXT_RUNTIME === "nodejs") {
             await import("./instrumentation.node.ts");
@@ -3248,14 +3745,14 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
         <Warning>
           Please note that you might see the following warning: `An import path can only
-            end with a '.ts' extension when 'allowImportingTsExtensions' is enabled` To
+                      end with a '.ts' extension when 'allowImportingTsExtensions' is enabled` To
           resolve it, simply add `"allowImportingTsExtensions": true` to your
           tsconfig.json
         </Warning>
 
         Create a file named `instrumentation.node.ts` in the root of your project and add the following code:
 
-        ```ts  theme={null}
+        ```ts theme={null}
         import * as traceloop from "@traceloop/node-server-sdk";
         import OpenAI from "openai";
         // Make sure to import the entire module you want to instrument, like this:
@@ -3281,7 +3778,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
         On Next.js v12 and below, you'll also need to add the following to your `next.config.js`:
 
-        ```js  theme={null}
+        ```js theme={null}
         /** @type {import('next').NextConfig} */
         const nextConfig = {
           experimental: {
@@ -3321,7 +3818,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
         Edit your `next.config.js` file and add the following webpack configuration:
 
-        ```js  theme={null}
+        ```js theme={null}
         const nextConfig = {
         webpack: (config, { isServer }) => {
           config.module.rules.push({
@@ -3338,7 +3835,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
         On every app API route you want to instrument, add the following code at the top of the file:
 
-        ```ts  theme={null}
+        ```ts theme={null}
         import * as traceloop from "@traceloop/node-server-sdk";
         import OpenAI from "openai";
         // Make sure to import the entire module you want to instrument, like this:
@@ -3367,9 +3864,9 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
   <Step title="Annotate your workflows">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4fb338092a5577def9eb9098f02cb196" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=70baa0606922b2fd3e8e0190191e74bc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c928d5b7c0e5831ffa2b8937df89abd9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ffe71ed1ab9296db92c537e0a7b552c6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f867d9c2a3693e1ab581962476710beb 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e9ea81c7adb1b6b3f1ed5bead5e56498 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc52f5b2a5925e7e3e72aee1e7731cff 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1059fe0a327bccf355b00ca598537abc" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=80f095a842aa8c3d96aee367b4f0f91a 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47021b4cec64e8d65cc85a0c2d75bc70 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2ef7c4b86b9af56f624376bffff7aa41 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ba9206af514f391cc75488c79367b1c9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ae49fb7c1039b35ee0ba06463a2db08 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f1cd87cc3f3944bf8f5ff0936f68fd6b 2500w" />
+      <img />
     </Frame>
 
     If you have complex workflows or chains, you can annotate them to get a better understanding of what's going on.
@@ -3427,7 +3924,7 @@ You can also check out our full working example with Next.js 13 [here](https://g
 
     Set the API key as an environment variable in your app named `TRACELOOP_API_KEY`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
@@ -3452,7 +3949,7 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
 <Steps>
   <Step title="Install the SDK">
     <Tip>
-      Want our AI to do it for you? <a href="" target="_blank" id="vibekit-button" data-vibekit-token="k171j2wgqrg27p7zsr9kgv93kx7jtdmv" rel="noreferrer">Click here</a>
+      Want our AI to do it for you? <a href="">Click here</a>
     </Tip>
 
     Run the following command in your terminal:
@@ -3469,7 +3966,7 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
 
     In your LLM app, initialize the Traceloop tracer like this:
 
-    ```python  theme={null}
+    ```python theme={null}
     from traceloop.sdk import Traceloop
 
     Traceloop.init()
@@ -3477,16 +3974,16 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
 
     If you're running this locally, you may want to disable batch sending, so you can see the traces immediately:
 
-    ```python  theme={null}
+    ```python theme={null}
     Traceloop.init(disable_batch=True)
     ```
   </Step>
 
   <Step title="Annotate your workflows">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4fb338092a5577def9eb9098f02cb196" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=70baa0606922b2fd3e8e0190191e74bc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c928d5b7c0e5831ffa2b8937df89abd9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ffe71ed1ab9296db92c537e0a7b552c6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f867d9c2a3693e1ab581962476710beb 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e9ea81c7adb1b6b3f1ed5bead5e56498 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc52f5b2a5925e7e3e72aee1e7731cff 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1059fe0a327bccf355b00ca598537abc" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=80f095a842aa8c3d96aee367b4f0f91a 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47021b4cec64e8d65cc85a0c2d75bc70 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2ef7c4b86b9af56f624376bffff7aa41 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ba9206af514f391cc75488c79367b1c9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ae49fb7c1039b35ee0ba06463a2db08 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f1cd87cc3f3944bf8f5ff0936f68fd6b 2500w" />
+      <img />
     </Frame>
 
     If you have complex workflows or chains, you can annotate them to get a better understanding of what's going on.
@@ -3505,7 +4002,7 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
       we'll do that for you. No need to add any annotations to your code.
     </Tip>
 
-    ```python  theme={null}
+    ```python theme={null}
     from traceloop.sdk.decorators import workflow
 
     @workflow(name="suggest_answers")
@@ -3541,7 +4038,7 @@ You can also check out our full working example of a RAG pipeline with Pinecone 
 
     Set the API key as an environment variable in your app named `TRACELOOP_API_KEY`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
@@ -3583,7 +4080,7 @@ Install OpenLLMetry for Ruby by following these 3 easy steps and get instant mon
       If you're using Rails, this needs to be in `config/initializers/traceloop.rb`
     </Tip>
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     require "traceloop/sdk"
 
     traceloop = Traceloop::SDK::Traceloop.new
@@ -3592,9 +4089,9 @@ Install OpenLLMetry for Ruby by following these 3 easy steps and get instant mon
 
   <Step title="Log your prompts">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1fb91081386699f120ed74946fc07da6" data-og-width="3024" width="3024" data-og-height="1810" height="1810" data-path="img/single-trace-prompt-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5a31f519b941d126be8dceb062697f1b 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4d42e4bf5fc9e2755454a7cee2ccf8dc 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=abf32cc1326044c8b69f08ac26ca723e 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e8b1446efb308a1a4cb66c20d98b6a92 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=79ffb6db70b7dc34d676bcbd5ff9a307 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3015a00759d9d307248e9541ca491f1d 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7ab70b34bda2c3c95f3a431b86c76c02" data-og-width="3019" width="3019" data-og-height="1806" height="1806" data-path="img/single-trace-prompt-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0cff7999488d911e2117ec0224ff6947 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0d17a103e01d0df03112594b25b8e731 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b692de6cec06f0117fbf8bae13dd02b8 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=65980060063d479150d7b9c6ef1fb46a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=28f2aed316df14733190811e6881760d 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/single-trace-prompt-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=eda1d196fab8a7a3011e6d6200b1ae20 2500w" />
+      <img />
     </Frame>
 
     For now, we don't automatically instrument libraries on Ruby (as opposed to Python and Javascript).
@@ -3602,7 +4099,7 @@ Install OpenLLMetry for Ruby by following these 3 easy steps and get instant mon
 
     This means that you'll need to manually log your prompts and completions.
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     require "openai"
 
     client = OpenAI::Client.new
@@ -3650,7 +4147,7 @@ Install OpenLLMetry for Ruby by following these 3 easy steps and get instant mon
 
     Set the API key as an environment variable in your app named `TRACELOOP_API_KEY`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
@@ -3678,7 +4175,7 @@ Install OpenLLMetry for Node.js by following these 3 easy steps and get instant 
 <Steps>
   <Step title="Install the SDK">
     <Tip>
-      Want our AI to do it for you? <a href="" target="_blank" id="vibekit-button" data-vibekit-token="k174v9knzdnmt51nf4d76fdnjn7jtmt4" rel="noreferrer">Click here</a>
+      Want our AI to do it for you? <a href="">Click here</a>
     </Tip>
 
     Run the following command in your terminal:
@@ -3699,7 +4196,7 @@ Install OpenLLMetry for Node.js by following these 3 easy steps and get instant 
 
     In your LLM app, initialize the Traceloop tracer like this:
 
-    ```js  theme={null}
+    ```js theme={null}
     import * as traceloop from "@traceloop/node-server-sdk";
 
     traceloop.initialize();
@@ -3712,7 +4209,7 @@ Install OpenLLMetry for Node.js by following these 3 easy steps and get instant 
 
     If you're running this locally, you may want to disable batch sending, so you can see the traces immediately:
 
-    ```js  theme={null}
+    ```js theme={null}
     traceloop.initialize({ disableBatch: true });
     ```
 
@@ -3725,9 +4222,9 @@ Install OpenLLMetry for Node.js by following these 3 easy steps and get instant 
 
   <Step title="Annotate your workflows">
     <Frame>
-      <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4fb338092a5577def9eb9098f02cb196" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=70baa0606922b2fd3e8e0190191e74bc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c928d5b7c0e5831ffa2b8937df89abd9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ffe71ed1ab9296db92c537e0a7b552c6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f867d9c2a3693e1ab581962476710beb 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e9ea81c7adb1b6b3f1ed5bead5e56498 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc52f5b2a5925e7e3e72aee1e7731cff 2500w" />
+      <img />
 
-      <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1059fe0a327bccf355b00ca598537abc" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=80f095a842aa8c3d96aee367b4f0f91a 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47021b4cec64e8d65cc85a0c2d75bc70 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2ef7c4b86b9af56f624376bffff7aa41 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ba9206af514f391cc75488c79367b1c9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ae49fb7c1039b35ee0ba06463a2db08 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f1cd87cc3f3944bf8f5ff0936f68fd6b 2500w" />
+      <img />
     </Frame>
 
     If you have complex workflows or chains, you can annotate them to get a better understanding of what's going on.
@@ -3785,7 +4282,7 @@ Install OpenLLMetry for Node.js by following these 3 easy steps and get instant 
 
     Set the API key as an environment variable in your app named `TRACELOOP_API_KEY`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
@@ -3806,12 +4303,12 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/axiom
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=cee239b3f53eea321e125efd5698e776" data-og-width="1629" width="1629" data-og-height="1182" height="1182" data-path="img/integrations/axiom.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9b68a5e9e61edc59bfd22de0a4db4219 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6982f89c4420672f8ab563212decec78 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4e59f776669f399c2992b9176180c813 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e09a1e1d916ce5ab69131631c7871c3e 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5fe08316de042a54616ae67059b17902 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/axiom.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=dc5ec643b14dfff35eb2d98e8ce571f5 2500w" />
+  <img />
 </Frame>
 
 Axiom is an [observability platform](https://axiom.co/) that natively supports OpenTelemetry, you just need to route the traces to Axiom's endpoint and set the dataset, and API key:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="https://api.axiom.co"
 TRACELOOP_HEADERS="Authorization=Bearer <YOUR_API_KEY>,X-Axiom-Dataset=<YOUR_DATASET>"
 ```
@@ -3829,20 +4326,20 @@ Traceloop supports sending traces to Azure Application Insights via standard Ope
 Review how to setup [OpenTelemetry with Python in Azure Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=python).
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ecfe3e97ec2d052dbfd69b0c4f301376" data-og-width="1849" width="1849" data-og-height="949" height="949" data-path="img/integrations/azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4c2ca75f71c6b159b95ee541309e35df 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7efd762c983955a1e18094cc3559f176 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=790a4cfe37e0e44ca210f131db4e5ef8 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6c1a9d3a2911ac34717410bcc17fd8c7 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e36803b394f3b0907a8294c35c33b489 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/azure.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=aa19a1dc53ff72348e29e79623e45fd8 2500w" />
+  <img />
 </Frame>
 
 1. Provision an Application Insights instance in the [Azure portal](https://portal.azure.com/).
 2. Get your Connection String from the instance - [details here](https://learn.microsoft.com/en-us/azure/azure-monitor/app/sdk-connection-string?tabs=python).
 3. Install required packages
 
-```bash  theme={null}
+```bash theme={null}
 pip install azure-monitor-opentelemetry-exporter traceloop-sdk openai
 ```
 
 4. Example implementation
 
-```python  theme={null}
+```python theme={null}
 import os
 from traceloop.sdk import Traceloop
 from traceloop.sdk.decorators import workflow, task, agent, tool
@@ -3920,7 +4417,7 @@ See also [BMC Helix documentation](https://docs.bmc.com/xwiki/bin/view/IT-Operat
 
 Exporting Data to an OpenTelemetry Collector
 
-```yaml  theme={null}
+```yaml theme={null}
 otlp:
   receiver:
     protocols:
@@ -3930,7 +4427,7 @@ otlp:
 
 Then, set this env var, and you're done!
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=http://<tenantURL>
 ```
 
@@ -3945,19 +4442,19 @@ To set up Braintrust as an [OpenTelemetry](https://opentelemetry.io/docs/) backe
 For more information, see the [Braintrust documentation](https://www.braintrust.dev/docs/guides/tracing#traceloop).
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=85e32a38e296f84fbbca8645e3e33c44" data-og-width="2412" width="2412" data-og-height="1558" height="1558" data-path="img/integrations/braintrust.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f681f888cc11d2e8f7643d167e87785b 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=905ace05bcc10e82a69a9bb6f424d398 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=536395e1fac5fd7977cc1911102ab1b0 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=090a00b2ba77020aa410654709589dc2 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fce0010fab1ba9b20e0441bc583bb00e 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/braintrust.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ed2e1af9091d951eac330544a27bcfdd 2500w" />
+  <img />
 </Frame>
 
 To export OTel traces from Traceloop OpenLLMetry to Braintrust, set the following environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://api.braintrust.dev/otel
 TRACELOOP_HEADERS="Authorization=Bearer%20<Your API Key>, x-bt-parent=project_id:<Your Project ID>"
 ```
 
 Note: When setting the bearer token, make sure to URL encode the space between "Bearer" and your API key using `%20`. For example:
 
-```bash  theme={null}
+```bash theme={null}
 # Incorrect format
 TRACELOOP_HEADERS="Authorization=Bearer sk-RiPodT20anlA1d3ki4T5I0V24WHXFuwvlPivUUoUGOnczOVI, x-bt-parent=project_id:<Your Project ID>"
 
@@ -3973,7 +4470,7 @@ Important: The project ID is not the same as your project name. To find your pro
 
 Traces will then appear under the Braintrust project or experiment provided in the `x-bt-parent` header.
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 from traceloop.sdk.decorators import workflow
@@ -4001,12 +4498,12 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/dash0
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1ea165082123d4e1641114910ba753fe" data-og-width="3024" width="3024" data-og-height="1653" height="1653" data-path="img/integrations/dash0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6396cdf59aaffc136d6a17afdf2b584e 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=932791acbf9c86186419d33e6f090157 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=45684a84e377ccca311aea70a6e5eaf2 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c8b662fc77bec98df12defd9f994531a 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c2e9f4199586079db7ca92035c4f79b0 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/dash0.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=574bc084fc149df8c6716cff81567bf3 2500w" />
+  <img />
 </Frame>
 
 [Dash0](https://www.dash0.com) is an OpenTelemetry-natively observability solution. You can route your traces directly to Dash0's ingest APIs.
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="https://ingress.eu-west-1.aws.dash0.com"
 TRACELOOP_HEADERS="Authorization=Bearer <YOUR_AUTH_TOKEN>"
 ```
@@ -4029,7 +4526,7 @@ This depends on how you deployed your Datadog agent. For example, if you've used
 you can add the following to your `values.yaml`
 (see [this](https://docs.datadoghq.com/opentelemetry/otlp_ingest_in_the_agent/?tab=kuberneteshelmvaluesyaml#enabling-otlp-ingestion-on-the-datadog-agent) for other options):
 
-```yaml  theme={null}
+```yaml theme={null}
 otlp:
   receiver:
     protocols:
@@ -4039,7 +4536,7 @@ otlp:
 
 Then, set this env var, and you're done!
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=http://<datadog-agent-hostname>:4318
 ```
 
@@ -4050,7 +4547,7 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/dynatrace
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=552c3d2dc162abc28dd2c47759e5a06a" data-og-width="1874" width="1874" data-og-height="1117" height="1117" data-path="img/integrations/dynatrace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=280&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=5a573f99e2805e0807239123c343cbaa 280w, https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=560&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=872087acf0157c93522a2809eb36825f 560w, https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=840&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=c2d62dd60a08489099c99c86d9859926 840w, https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=1100&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=b656a85b9f736c79a82ade36468db205 1100w, https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=1650&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=85988430c38adec6555cfa244f4fb34a 1650w, https://mintcdn.com/enrolla/svnZvSYnNXkA6fDZ/img/integrations/dynatrace.png?w=2500&fit=max&auto=format&n=svnZvSYnNXkA6fDZ&q=85&s=03304260bfbe09dc3df4515ae014aafa 2500w" />
+  <img />
 </Frame>
 
 Analyze all collected LLM traces and logs within Dynatrace by using the native OpenTelemetry ingest endpoint of your Dynatrace environment.
@@ -4061,13 +4558,13 @@ The access token needs the following permission scopes that allow the ingest of 
 
 Set `TRACELOOP_BASE_URL` environment variable to the URL of your Dynatrace OpenTelemetry ingest endpoint
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://<YOUR_ENV>.live.dynatrace.com\api\v2\otlp
 ```
 
 Set the `TRACELOOP_HEADERS` environment variable to include your previously created access token
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_HEADERS=Authorization=Api-Token%20<YOUR_ACCESS_TOKEN>
 ```
 
@@ -4092,7 +4589,7 @@ Connect OpenLLMetry to [Elastic APM](https://www.elastic.co/guide/en/apm/guide/c
   <Step title="Install OpenLLMetry">
     Install the Traceloop SDK alongside your LLM provider client:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install traceloop-sdk openai
     ```
   </Step>
@@ -4102,7 +4599,7 @@ Connect OpenLLMetry to [Elastic APM](https://www.elastic.co/guide/en/apm/guide/c
 
     Create an `otel-collector-config.yaml` file:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     receivers:
       otlp:
         protocols:
@@ -4179,7 +4676,7 @@ Connect OpenLLMetry to [Elastic APM](https://www.elastic.co/guide/en/apm/guide/c
   <Step title="Initialize Traceloop">
     Import and initialize Traceloop before any LLM imports:
 
-    ```python  theme={null}
+    ```python theme={null}
     from os import getenv
 
     from traceloop.sdk import Traceloop
@@ -4241,7 +4738,7 @@ Configure OpenLLMetry behavior using environment variables:
 
 For complex applications with multiple steps, use workflow decorators to create hierarchical traces:
 
-```python  theme={null}
+```python theme={null}
 from os import getenv
 from traceloop.sdk import Traceloop
 from traceloop.sdk.decorators import workflow, task
@@ -4290,13 +4787,13 @@ In Kibana APM, you'll see:
 ### Trace View
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=3c80793f031dc7a87e87cdf818495de2" data-og-width="3443" width="3443" data-og-height="1318" height="1318" data-path="img/integrations/elasticsearch-apm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=280&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=68771b6ac1b26188ccb5732adb8281b1 280w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=560&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=ce20f6272fd048bd636018887b7f5f52 560w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=840&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=1cb138720fc31f85a2c6a94d00c0178d 840w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=1100&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=6b8f239c1436eb17db0f64e040637dc8 1100w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=1650&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=82fd84f1affb46255df961ab43bb964e 1650w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm.png?w=2500&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=d17782cd7e2356e79c2ee733ecf1f165 2500w" />
+  <img />
 </Frame>
 
 ### Trace Details
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=64630899a978784a6dfbb37148ac0531" data-og-width="2066" width="2066" data-og-height="1122" height="1122" data-path="img/integrations/elasticsearch-apm-trace-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=280&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=ef8c6257a763e91a1d90aa88fbbfefa3 280w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=560&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=ade727d4a1539c30ebeaa85eeeb39d8b 560w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=840&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=61c8bd0b1902f2d6fc8a9b26b4273b15 840w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=1100&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=a75e9a1a411ec7a1c32cacf4e9b32182 1100w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=1650&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=a8bf49b1cce9db2c7203c93185d1ae3f 1650w, https://mintcdn.com/enrolla/1lszxSzWiDlUFRyz/img/integrations/elasticsearch-apm-trace-details.png?w=2500&fit=max&auto=format&n=1lszxSzWiDlUFRyz&q=85&s=00eae35bd6daa0d0a7fbc8a0a1527034 2500w" />
+  <img />
 </Frame>
 
 ## Captured Metadata
@@ -4332,7 +4829,7 @@ OpenLLMetry automatically captures these attributes in each LLM span:
   <Tab title="Content Logging">
     Disable prompt/completion logging in production:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_TRACE_CONTENT=false
     ```
 
@@ -4342,7 +4839,7 @@ OpenLLMetry automatically captures these attributes in each LLM span:
   <Tab title="Sampling">
     Configure sampling in the OpenTelemetry Collector to reduce trace volume:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     processors:
       probabilistic_sampler:
         sampling_percentage: 10  # Sample 10% of traces
@@ -4352,7 +4849,7 @@ OpenLLMetry automatically captures these attributes in each LLM span:
   <Tab title="Security">
     Enable APM Server authentication:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     exporters:
       otlp/apm:
         endpoint: https://localhost:8200
@@ -4389,7 +4886,7 @@ supports writing that instrumentation data to Google Cloud, primarily as distrib
 
 ### Step 1. Install Python Dependencies
 
-```bash  theme={null}
+```bash theme={null}
 pip install \
    opentelemetry-exporter-gcp-trace \
    opentelemetry-exporter-gcp-monitoring \
@@ -4401,7 +4898,7 @@ pip install \
 
 In your application code, invoke `Traceloop.init` as shown:
 
-```python  theme={null}
+```python theme={null}
 
 # ...
 from opentelemetry.exporter.cloud_logging import CloudLoggingExporter
@@ -4447,7 +4944,7 @@ The host to target your traces is constructed is the hostname of the `URL` noted
 
 Add this to the configuration of your agent:
 
-```yaml  theme={null}
+```yaml theme={null}
 traces:
   configs:
     - name: default
@@ -4470,7 +4967,7 @@ traces:
 
 Set this as an environment variable in your app:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=<grafana-agent-hostname>:4317
 ```
 
@@ -4482,7 +4979,7 @@ and make sure your region is supported.
 
 In a terminal, type:
 
-```bash  theme={null}
+```bash theme={null}
 echo -n "<your stack id>:<your api key>" | base64
 ```
 
@@ -4493,7 +4990,7 @@ See [here](https://grafana.com/docs/grafana-cloud/monitor-infrastructure/otlp/se
 
 Then, you can set the following environment variables when running your app with Traceloop SDK installed:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://otlp-gateway-<zone>.grafana.net/otlp
 TRACELOOP_HEADERS="Authorization=Basic%20<base64 encoded stack id and api key>"
 ```
@@ -4505,7 +5002,7 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/groundcover
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=60aae2470d21449de61701d918e322d6" data-og-width="3010" width="3010" data-og-height="1458" height="1458" data-path="img/integrations/groundcover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=280&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=a884400fcb92e905c34f75a430b287cd 280w, https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=560&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=025659f85bc185f739c7340ecf2d5ba4 560w, https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=840&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=1a545f4ac0a42a8df83f30bba2546809 840w, https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=1100&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=0be75a7672840f4ff01f8fd06f22e704 1100w, https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=1650&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=04508d0918a389754ab819f5d9add706 1650w, https://mintcdn.com/enrolla/UL38GgJOBlei-xtG/img/integrations/groundcover.png?w=2500&fit=max&auto=format&n=UL38GgJOBlei-xtG&q=85&s=b9865fb30744ab2c79b31d6ab40f09a4 2500w" />
+  <img />
 </Frame>
 
 [groundcover](https://www.groundcover.com) is a BYOC, eBPF-powered, OpenTelemetry-native complete observability platform.
@@ -4516,7 +5013,7 @@ You have two options for sending traces to groundcover:
 
 No API key required. Saves on networking costs.
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=http://groundcover-sensor.groundcover.svc.cluster.local:4318
 ```
 
@@ -4528,7 +5025,7 @@ First, [create an ingestion key](https://docs.groundcover.com/use-groundcover/re
 
 Then, set the following environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://<GROUNDCOVER_BYOC_ENDPOINT>
 TRACELOOP_HEADERS="apikey=<GROUNDCOVER_INGESTION_KEY>"
 ```
@@ -4542,13 +5039,13 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/highlight
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ddda6554e850a37745325766ac189586" data-og-width="3671" width="3671" data-og-height="1975" height="1975" data-path="img/integrations/highlight.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=eeac0cd40f91128adc5e08a1906e3514 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=31670a3716e3b412c02f331e9675a183 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d24b681187fbbe4dc20b94394a69e83e 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=354c253e7631a39387e0c7d95ea41ea9 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7dfe3c09d1c562ae77fc6d94537f5961 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/highlight.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=3827829115f1ac69aaba6044c27af3fc 2500w" />
+  <img />
 </Frame>
 
 Since [Highlight](https://www.highlight.io) natively supports OpenTelemetry, you just need to route the traces to Highlights's OTLP endpoint and set the
 highlight project id in the headers:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://otel.highlight.io:4318
 TRACELOOP_HEADERS="x-highlight-project=<YOUR_HIGHLIGHT_PROJECT_ID>"
 ```
@@ -4560,13 +5057,13 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/honeycomb
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=16703d0789a86d2092051d4d8181533c" data-og-width="1684" width="1684" data-og-height="1029" height="1029" data-path="img/integrations/honeycomb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a53dab25a378d8cd651f7ab5d7c6214d 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a5a26d96448eb641783f14253e5584b0 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e8863887adc3c15bd9eaa22dc99ac57c 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=bbe12597e17a298c7422e00887a41a3f 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4425109bbf89f5e3b0a215aa29e606cb 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/honeycomb.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c7d32bb20c7a5440f00d6b4c625baec0 2500w" />
+  <img />
 </Frame>
 
 Since Honeycomb natively supports OpenTelemetry, you just need to route the traces to Honeycomb's endpoint and set the
 API key:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://api.honeycomb.io
 TRACELOOP_HEADERS="x-honeycomb-team=<YOUR_API_KEY>"
 ```
@@ -4578,13 +5075,13 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/hyperdx
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=8b1e640fca13f41af95c00ebb3f72273" data-og-width="1663" width="1663" data-og-height="1061" height="1061" data-path="img/integrations/hyperdx.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7203de519e94d8296ef237c6099b1190 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1ea487ae7ba75ee4b4352f936c2281bb 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=feea23e4ba4250a2362503d03990d0e8 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f545e7a9ede36d7a48ea6a087108d3fa 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9eabe54747cc6af03f98ebd42ff55676 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/hyperdx.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=63a0d56cf6f6985aa6264f7372e7b2a1 2500w" />
+  <img />
 </Frame>
 
 HyperDX is an [open source observability platform](https://github.com/hyperdxio/hyperdx) that natively supports OpenTelemetry.
 Just route the traces to HyperDX's endpoint and set the API key:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://in-otel.hyperdx.io
 TRACELOOP_HEADERS="authorization=<YOUR_INGESTION_API_KEY>"
 ```
@@ -4596,7 +5093,7 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/instana
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=440da9f390600f83897496beb1ed360f" data-og-width="2984" width="2984" data-og-height="2224" height="2224" data-path="img/integrations/instana.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c6c98fcd4c26e2e109ed0bff95c78e66 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a3340d048a575eb1b13127db3b3e9f68 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=dd1e15f3395622ffdc6a546e403cf247 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ac5202ecc51f951b1ac0e60a63683db2 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2e7c211504cfb884fd2b6feba761f616 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/instana.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=568db42c876613f963211a2292782db8 2500w" />
+  <img />
 </Frame>
 
 With Instana, you can export directly to an Instana Agent in your cluster.
@@ -4631,7 +5128,7 @@ If you are running Instana Agent on OpenShift or Kubernetes, do the following to
 
 In Instana Configmap, add the following content:
 
-```yaml  theme={null}
+```yaml theme={null}
 com.instana.plugin.opentelemetry:
   enabled: true
   grpc:
@@ -4640,7 +5137,7 @@ com.instana.plugin.opentelemetry:
 
 For Instana Daemonset, add the following:
 
-```yaml  theme={null}
+```yaml theme={null}
 - mountPath: /opt/instana/agent/etc/instana/configuration-opentelemetry.yaml
   name: configuration
   subPath: configuration-opentelemetry.yaml
@@ -4650,7 +5147,7 @@ The Instana agent should be ready for OpenTelemetry data at port 4317.
 
 Then, set this env var, and you're done!
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=<instana-agent-hostname>:4317
 ```
 
@@ -4664,7 +5161,7 @@ mcp.session.init\_options
 Here is the MCP traces from Instana UI:
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0da4830bf137b6a563e3e52cc93ee8c7" data-og-width="2898" width="2898" data-og-height="1662" height="1662" data-path="img/integrations/mcpTraces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2c2794b2280807e2e18a1f94d0af7d5d 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7d5939b5c91f97ae85ac8b93f41e8c30 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0b0db2d45a7cfd26c6c13d70469dbe08 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f31477e9f656609636abf6440a1b5333 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0cf17f24a43245da05d78b4add3a6595 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e44c49fe2d1b41a8a46c4efbeb0627c5 2500w" />
+  <img />
 </Frame>
 
 
@@ -4678,7 +5175,7 @@ in any observability platform that supports OpenTelemetry.
 
 ## The Integrations Catalog
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Traceloop" href="/openllmetry/integrations/traceloop" />
 
   <Card title="Axiom" href="/openllmetry/integrations/axiom" />
@@ -4747,12 +5244,12 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/kloudmate
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=91ac7c997718ae7637878a85b89446db" data-og-width="1804" width="1804" data-og-height="781" height="781" data-path="img/integrations/kloudmate.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6dbcc50b0b1cc9b1378e49846199847a 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=729c79b4306ec03bfdc41f056e9f7959 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6eb2f039fc7304fb292bd69669d98a19 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=cab8d9219cd5d3106ac2da8e0329f431 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=97ff11d109500dd6c1242414604baa94 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/kloudmate.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=344855f33ef209c101c64bcd61a8a822 2500w" />
+  <img />
 </Frame>
 
 KloudMate is an [observability platform](https://kloudmate.com/) that natively supports OpenTelemetry, you just need to route the traces to KloudMate OpenTelemetry Collector endpoint and set Authorization header:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="https://otel.kloudmate.com:4318"
 TRACELOOP_HEADERS="Authorization=<YOUR_KM_SECRET_KEY>"
 ```
@@ -4779,7 +5276,7 @@ The recommended setup is to use gRPC, as it's more efficient. You will need to c
 
 <Steps>
   <Step title="Install dependencies">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install traceloop-sdk openai
     ```
   </Step>
@@ -4788,7 +5285,7 @@ The recommended setup is to use gRPC, as it's more efficient. You will need to c
     To get your API key, either sign up on [Laminar](https://lmnr.ai) and get it from the project settings,
     or spin up [Laminar](https://github.com/lmnr-ai/lmnr) locally.
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     os.environ["LMNR_PROJECT_API_KEY"] = "<YOUR_LMNR_PROJECT_API_KEY>"
     os.environ["LMNR_BASE_URL"] = "https://api.lmnr.ai:8443"
@@ -4796,7 +5293,7 @@ The recommended setup is to use gRPC, as it's more efficient. You will need to c
   </Step>
 
   <Step title="Initialize the OpenTelemetry gRPC exporter">
-    ```python  theme={null}
+    ```python theme={null}
     import os
     from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
         OTLPSpanExporter,
@@ -4813,14 +5310,14 @@ The recommended setup is to use gRPC, as it's more efficient. You will need to c
   </Step>
 
   <Step title="Initialize the Traceloop SDK">
-    ```python  theme={null}
+    ```python theme={null}
     from traceloop.sdk import Traceloop
     Traceloop.init(exporter=exporter)
     ```
   </Step>
 
   <Step title="Run your application">
-    ```python  theme={null}
+    ```python theme={null}
     from openai import OpenAI
     openai_client = OpenAI()
 
@@ -4847,7 +5344,7 @@ The recommended setup is to use gRPC, as it's more efficient. You will need to c
 
 Laminar's backend also supports accepting traces over HTTP, so for a minimal configuration change you can do:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="https://api.lmnr.ai"
 TRACELOOP_HEADERS="Authorization=<YOUR_LMNR_PROJECT_API_KEY>"
 ```
@@ -4874,7 +5371,7 @@ Langfuse provides a backend built on OpenTelemetry for ingesting trace data, and
 
 Begin by installing the necessary Python packages. In this example, we need the `openai` library to interact with OpenAI’s API and `traceloop-sdk` for enabling OpenLLMetry instrumentation.
 
-```python  theme={null}
+```python theme={null}
 %pip install openai traceloop-sdk
 ```
 
@@ -4882,7 +5379,7 @@ Begin by installing the necessary Python packages. In this example, we need the 
 
 Before initiating any requests, configure your environment with the necessary credentials and endpoints. Here, we establish Langfuse authentication by combining your public and secret keys into a Base64-encoded token. Additionally, specify the Langfuse endpoint based on your preferred geographical region (EU or US) and provide your OpenAI API key.
 
-```python  theme={null}
+```python theme={null}
 import os
 import base64
 
@@ -4902,7 +5399,7 @@ os.environ["OPENAI_API_KEY"] = ""
 
 Proceed to initialize the OpenLLMetry instrumentation using the `traceloop-sdk`. It is advisable to use `disable_batch=True` if you are executing this code in a notebook, as traces are sent immediately without waiting for batching. Once initialized, any action performed using the OpenAI SDK (such as a chat completion request) will be automatically traced and forwarded to Langfuse.
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 
@@ -4938,7 +5435,7 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/langsmith
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c348394b2956c4b5c17846094c722089" data-og-width="2814" width="2814" data-og-height="1796" height="1796" data-path="img/integrations/langsmith.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=84a003a365a8c346661f9361640d8df4 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=61e0561feb6eb8e28cb280c1d1a28236 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=805e709d01fcb7d7ee050127e6719ba9 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=95f6615f98164d0a9e7290d0eeabb8f6 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=abac893003c0b703efa5626e01928c56 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/langsmith.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6fdfbb15950c0dbaf6043f1f7f916dd3 2500w" />
+  <img />
 </Frame>
 
 LangSmith is an [all-in-one developer platform](https://www.langchain.com/langsmith) for every step of the LLM-powered application lifecycle.
@@ -4949,14 +5446,14 @@ LangSmith supports ingesting traces using OpenTelemetry / OpenLLMetry format. Fo
 
 Signup for LangSmith and create an API Key. Then setup your environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://api.smith.langchain.com/otel
 TRACELOOP_HEADERS="x-api-key=<LANGSMITH_API_KEY>"
 ```
 
 You can then log traces with OpenLLMetry to LangSmith, here is an example:
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 
@@ -4984,15 +5481,15 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/middleware
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=929904890498ef38b068f9c6f9fed3ef" data-og-width="1960" width="1960" data-og-height="1163" height="1163" data-path="img/integrations/middleware-dashboard-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=67cacbc5297e8ef6e7ff196a760f9b45 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d1cdd648d91441ba847fadae2303498c 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=90ea153bd3e936418b766a17817b94d5 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fc823ba558127996402dae82d8e7ee59 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ace4e2918b136bbf861fb477c8263201 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-1.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5f60ac69325fcb7ad022fda1d5a00dbe 2500w" />
+  <img />
 
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=3bdb2a4ef1f6a49ad04954a4bc863852" data-og-width="1960" width="1960" data-og-height="1163" height="1163" data-path="img/integrations/middleware-dashboard-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d23302b120a4cb08e5f25bba8fb80dde 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d5aefdb0420cede2da77c0c8347a1d3b 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d188a90ba565177cf81b38127efacd8c 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=afee9f53c1888044b6747a000a7134c7 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=9445778c4eee3149a96321a8b53c064b 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-2.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=740a925218aa8f55c5d511e2e149c492 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c2612ebde18579daf27bc8e83828623e" data-og-width="1960" width="1960" data-og-height="1163" height="1163" data-path="img/integrations/middleware-dashboard-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0b2a1493140adc6dbb37e29660152d2b 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=af832a102e468f7f8d657bca01dc1ee1 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2d59ff615b759954fc226aadf626e3a5 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=443ab726bc5fb90ec1679699212bf0bf 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0d6ee163195714042385de45e5d1a552 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-3.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b45cb8cc51da805acdf4eab3e5fd4028 2500w" />
+  <img />
 
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ec51d315d2d68e70ceade635576dc231" data-og-width="1960" width="1960" data-og-height="1163" height="1163" data-path="img/integrations/middleware-dashboard-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a778968bffb416e9aeb82ebc590fbb52 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f64e1a121c8fde4c61b315164f026afd 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=26399bfda5d5b8ebe8da0e14acb4df9e 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6e927fa5d32a6da02a1dc815d5acbeb4 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=666fc90b9b48f205f1c334b2649d6ae3 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/middleware-dashboard-4.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=3ff8ac94bcdd8f28dd6eba6b8e883984 2500w" />
+  <img />
 </Frame>
 
 To send OpenTelemetry metrics and traces generated by Traceloop from your LLM Application to Middleware, Follow the below steps.
@@ -5009,7 +5506,7 @@ To send OpenTelemetry metrics and traces generated by Traceloop from your LLM Ap
   <Step title="Add the following lines to your application code:">
     <Tabs>
       <Tab title="Python">
-        ```python  theme={null}
+        ```python theme={null}
         from traceloop.sdk import Traceloop
 
         Traceloop.init(
@@ -5025,7 +5522,7 @@ To send OpenTelemetry metrics and traces generated by Traceloop from your LLM Ap
       </Tab>
 
       <Tab title="Typescript (Node js)">
-        ```javascript  theme={null}
+        ```javascript theme={null}
         import * as traceloop from "@traceloop/node-server-sdk";
         traceloop.initialize({
           appName: "YOUR_APPLICATION_NAME",
@@ -5073,12 +5570,12 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/newrelic
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1eeb5b1a0c7d698fdf9a03a158a3305b" data-og-width="3042" width="3042" data-og-height="2015" height="2015" data-path="img/integrations/newrelic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6788fb73abc5e08ec3e94ab01b4d4d8f 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7b9ddb2e6b3165938863768debecef2b 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d655fa44a3af9798b25e544eaa91e43e 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=44adccdb7e5134ebf7ffff8a414a8061 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=53f5ffcde5a7e77f8de0bf780c50139d 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/newrelic.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c95e508e7262ec6809e1571454343375 2500w" />
+  <img />
 </Frame>
 
 Since New Relic natively supports OpenTelemetry, you just need to route the traces to New Relic's endpoint and set the API key:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://otlp.nr-data.net:443
 TRACELOOP_HEADERS="api-key=<YOUR_NEWRELIC_LICENSE_KEY>"
 ```
@@ -5092,14 +5589,14 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/oraclecloud
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=cf421f3f4b032ff07040a3c3abe33b03" data-og-width="1789" width="1789" data-og-height="822" height="822" data-path="img/integrations/ociapm-traceexplorer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e78e72ef46055f1d23b5d89fbfcd1835 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=09156e0ee7beb7af96b4ed360cdc3541 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0d8cc9a0fdb8be19c5a7a0a77b75e0e9 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a64de324ae064724f1a69d60d6999477 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f1bc19b8361b8af8c486f87d3b7d4783 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/ociapm-traceexplorer.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=3c1d280f901c1b1dacc568f2219d7fd7 2500w" />
+  <img />
 </Frame>
 
 [Oracle Cloud Infrastructure Application Performance Monitoring(APM) service](https://docs.oracle.com/en-us/iaas/application-performance-monitoring/home.htm) natively supports and can ingest OpenTelemetry (OTLP) spans and metrics. Traceloop's OpenLLMetry library enables instrumenting LLM frameworks and applications in Open Telemetry format and can be routed to OCI Application Performance Monitoring for observability and evaluation of LLM applications.
 
 ## Initialize and export directly from application code
 
-```python  theme={null}
+```python theme={null}
 APM_BASE_URL=“<OCI APM dataUploadEndpoint>/20200101/opentelemetry/private"
 APM_DATA_KEY="dataKey <OCI APM Private Data Key>"
 APM_SERVICE_NAME=“My LLM Service”
@@ -5116,7 +5613,7 @@ Traceloop.init(
 
 ## Initialize using environment variables
 
-```bash  theme={null}
+```bash theme={null}
 export TRACELOOP_BASE_URL=<OCI APM dataUploadEndpoint>/20200101/opentelemetry/private
 export TRACELOOP_HEADERS="Authorization=dataKey <OCI APM Private Data Key>"
 ```
@@ -5125,7 +5622,7 @@ export TRACELOOP_HEADERS="Authorization=dataKey <OCI APM Private Data Key>"
 
 If you are using an OpenTelemetry Collector, you can route metrics and traces to OCI APM by simply adding an OTLP exporter to your collector configuration.
 
-```yaml  theme={null}
+```yaml theme={null}
 receivers:
   otlp:
     protocols:
@@ -5160,7 +5657,7 @@ First, [deploy an OpenTelemetry Collector](https://opentelemetry.io/docs/kuberne
 in your cluster.
 Then, point the output of the Traceloop SDK to the collector by setting:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://<opentelemetry-collector-hostname>:4318
 ```
 
@@ -5185,7 +5682,7 @@ To integrate OpenLLMetry with Scorecard, you'll need to configure your tracing e
 
 ### 2. Configure Environment Variables
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="https://tracing.scorecard.io/otel"
 TRACELOOP_HEADERS="Authorization=Bearer <YOUR_SCORECARD_API_KEY>"
 ```
@@ -5347,13 +5844,13 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/service-now
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5b455cd683b8be512371e2450af36da2" data-og-width="1071" width="1071" data-og-height="480" height="480" data-path="img/integrations/service-now.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7865d921b2e03afcf2902f916c674094 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5b07ede3c7cdf823b8fe5c2d6aa418d1 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1cab0526e8442a22baa9222c71bd19e6 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=964176c835fea8a143f892f7de4bdd23 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=975b4a18bb701a244a32fec0f52fdf4a 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/service-now.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=028af3aa0a60f827c0eb4859068d2a1a 2500w" />
+  <img />
 </Frame>
 
 Since Service Now Cloud Observability natively supports OpenTelemetry, you just need to route the traces to Service Now Cloud Observability's endpoint and set the
 access token:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=https://ingest.lightstep.com
 TRACELOOP_HEADERS="lightstep-access-token=<YOUR_ACCESS_TOKEN>"
 ```
@@ -5365,7 +5862,7 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/signoz
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a8564fd1662ca4c77fcc0e2c317267d3" data-og-width="1675" width="1675" data-og-height="1061" height="1061" data-path="img/integrations/signoz.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a85773904b6697013d4f9dd0d409b240 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=24864cc6cd0e49b0db991431fdaae2b9 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f7757bd2c3250184ac22571f4893df4e 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5700334774352d8717025cb5ab7a3356 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=dcc924c2fc66a76a567252bb9e644be4 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/signoz.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=810b49bf69500803f670dcf12a7b7f31 2500w" />
+  <img />
 </Frame>
 
 SigNoz is an [open-source observability platform](https://github.com/signoz/signoz).
@@ -5375,7 +5872,7 @@ SigNoz is an [open-source observability platform](https://github.com/signoz/sign
 Since SigNoz natively supports OpenTelemetry, you just need to route the traces to SigNoz's endpoint and set the
 ingestion key (note no `https` in the URL):
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=ingest.{region}.signoz.cloud
 TRACELOOP_HEADERS="signoz-access-token=<SIGNOZ_INGESTION_KEY>"
 ```
@@ -5394,7 +5891,7 @@ Validate your configuration by [following these instructions](https://signoz.io/
 
 Once you have an up and running instance of SigNoz, use the following environment variables to export your traces:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="http://localhost:4318"
 ```
 
@@ -5405,14 +5902,14 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/splunk
 
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=fd0d199e9157682c6f47e23e81bdee87" data-og-width="3416" width="3416" data-og-height="1516" height="1516" data-path="img/integrations/splunk.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=287442db9bbb6268873324a3e9073c0c 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c94ebddccc4f482deb5ab90fadd3df28 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d91f2a068a8dc46e427a3b037a2a93d3 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=667b6debc31f4f8ce54495c9798fcbb8 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=64d8e3f4c2d8ca976fa30ec4dae70723 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/splunk.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=29d2acf8ab6da8f94b475891fbd9584f 2500w" />
+  <img />
 </Frame>
 
 Collecting and analyzing LLM traces in [Splunk Observability Cloud](https://www.splunk.com/en_us/products/observability.html) can be achieved by configuring the **TRACELOOP\_BASE\_URL** environment variable to point to the [Splunk OpenTelemetry Collector](https://github.com/signalfx/splunk-otel-collector/releases) OTLP endpoint.
 
 Have the Collector run in agent or gateway mode and ensure the OTLP receiver is configured, see [Get data into Splunk Observability Cloud](https://docs.splunk.com/observability/en/gdi/get-data-in/get-data-in.html).
 
-```yaml  theme={null}
+```yaml theme={null}
 receivers:
   otlp:
     protocols:
@@ -5424,7 +5921,7 @@ receivers:
 
 Secondly, ensure the OTLP exporter is configured to send to Splunk Observability Cloud:
 
-```yaml  theme={null}
+```yaml theme={null}
 exporters:
   # Traces
   sapm:
@@ -5436,7 +5933,7 @@ exporters:
 
 Thirdly, make sure `otlp` is defined in the traces pipeline:
 
-```yaml  theme={null}
+```yaml theme={null}
   pipelines:
     traces:
       receivers: [jaeger, otlp, sapm, zipkin]
@@ -5449,7 +5946,7 @@ Thirdly, make sure `otlp` is defined in the traces pipeline:
 
 Finally, define the `TRACELOOP_BASE_URL` environment variable to point to the Splunk OpenTelemetry Collector OTLP endpoint:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL=http://<splunk-otel-collector>:4318
 ```
 
@@ -5464,12 +5961,12 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/tencent
 Tencent APM natively supports OpenTelemetry, so you can use OpenLLMetry to trace your applications.
 
 <Frame>
-  <img src="https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=bce312dcae554692a83799b54ef5bace" data-og-width="3454" width="3454" data-og-height="1986" height="1986" data-path="img/integrations/tencent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=280&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=b4bcb1e54a5a7e479d45823016af3dd0 280w, https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=560&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=73e8010dde2ce1e45d1e5fa604333c0f 560w, https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=840&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=1862b0b428e3d4e3d9e2497c4172b652 840w, https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=1100&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=08bb634502fa0ecd244beab2a5d145cd 1100w, https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=1650&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=5bc962374dbdecf82afdc5249375741e 1650w, https://mintcdn.com/enrolla/GnqeYuB5cchQKSek/img/integrations/tencent.png?w=2500&fit=max&auto=format&n=GnqeYuB5cchQKSek&q=85&s=55bfdb3a8467121c8f051fc17881db0e 2500w" />
+  <img />
 </Frame>
 
 To integrate OpenLLMetry with Tencent APM, you'll need to configure your tracing endpoint and authentication:
 
-```bash  theme={null}
+```bash theme={null}
 TRACELOOP_BASE_URL="<TAPM_ENDPOINT>" # Use port `55681` rather than `4317` as the default port.
 TRACELOOP_HEADERS="Authorization=Bearer%20<TAPM_TOKEN>" # header values in env variables must be URL‑encoded.
 ```
@@ -5483,9 +5980,9 @@ Source: https://www.traceloop.com/docs/openllmetry/integrations/traceloop
 
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2733424bcb797188846417e2516e50fe" data-og-width="3014" width="3014" data-og-height="1798" height="1798" data-path="img/trace/trace-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c024b621caac98fb924006c3e2fdf3e2 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ab9ba8134ba04bdfefb6a56c44f03256 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=637f82f9dd748f77b39a80591f34ab9d 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b47f4145aad5d3ac1f78646d6b000b05 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=176db5b65b57b786248777ac9660de8f 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=fac61fd5dc7f341881afe09c4a25cc67 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=740795f397c532c9080a91ea521a3a7e" data-og-width="3024" width="3024" data-og-height="1806" height="1806" data-path="img/trace/trace-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2146004180f5dce3c59c73da4e4445f1 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=277eb56b1e83c16a15de79612b490935 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=d64bec8d366115d0070c6ac5fdf34855 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c892fe1ad02e8b04c94171ebf5b7fbad 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=8625ee39f6877740038d00c9ca5d97a4 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=966a935d28281d3b9e1944e97e8ea6c6 2500w" />
+  <img />
 </Frame>
 
 [Traceloop](https://app.traceloop.com) is a platform for observability and evaluation of LLM outputs.
@@ -5509,7 +6006,7 @@ It allows you to deploy changes to prompts and model configurations with confide
 
 Set the API key as an environment variable named `TRACELOOP_API_KEY`:
 
-```bash  theme={null}
+```bash theme={null}
 export TRACELOOP_API_KEY=your_api_key_here
 ```
 
@@ -5525,7 +6022,7 @@ If you're calling a vector DB, or any other external service or database, you'll
 
 If you are using an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/), you can route metrics and traces to Traceloop by simply adding an OTLP exporter to your collector configuration.
 
-```yaml  theme={null}
+```yaml theme={null}
 receivers:
   otlp:
     protocols:
@@ -5555,9 +6052,9 @@ Source: https://www.traceloop.com/docs/openllmetry/introduction
 
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2733424bcb797188846417e2516e50fe" data-og-width="3014" width="3014" data-og-height="1798" height="1798" data-path="img/trace/trace-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c024b621caac98fb924006c3e2fdf3e2 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=ab9ba8134ba04bdfefb6a56c44f03256 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=637f82f9dd748f77b39a80591f34ab9d 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=b47f4145aad5d3ac1f78646d6b000b05 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=176db5b65b57b786248777ac9660de8f 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-light.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=fac61fd5dc7f341881afe09c4a25cc67 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=740795f397c532c9080a91ea521a3a7e" data-og-width="3024" width="3024" data-og-height="1806" height="1806" data-path="img/trace/trace-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=280&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=2146004180f5dce3c59c73da4e4445f1 280w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=560&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=277eb56b1e83c16a15de79612b490935 560w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=840&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=d64bec8d366115d0070c6ac5fdf34855 840w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1100&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=c892fe1ad02e8b04c94171ebf5b7fbad 1100w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=1650&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=8625ee39f6877740038d00c9ca5d97a4 1650w, https://mintcdn.com/enrolla/UIxmLWs2sJDl37WW/img/trace/trace-dark.png?w=2500&fit=max&auto=format&n=UIxmLWs2sJDl37WW&q=85&s=966a935d28281d3b9e1944e97e8ea6c6 2500w" />
+  <img />
 </Frame>
 
 OpenLLMetry is an open source project that allows you to easily start monitoring and debugging the execution of your LLM app.
@@ -5739,9 +6236,9 @@ Source: https://www.traceloop.com/docs/openllmetry/tracing/annotations
 Enrich your traces by annotating chains and workflows in your app
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4fb338092a5577def9eb9098f02cb196" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=70baa0606922b2fd3e8e0190191e74bc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c928d5b7c0e5831ffa2b8937df89abd9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ffe71ed1ab9296db92c537e0a7b552c6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f867d9c2a3693e1ab581962476710beb 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e9ea81c7adb1b6b3f1ed5bead5e56498 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc52f5b2a5925e7e3e72aee1e7731cff 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1059fe0a327bccf355b00ca598537abc" data-og-width="1328" width="1328" data-og-height="955" height="955" data-path="img/workflow-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=80f095a842aa8c3d96aee367b4f0f91a 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47021b4cec64e8d65cc85a0c2d75bc70 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2ef7c4b86b9af56f624376bffff7aa41 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ba9206af514f391cc75488c79367b1c9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ae49fb7c1039b35ee0ba06463a2db08 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/workflow-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f1cd87cc3f3944bf8f5ff0936f68fd6b 2500w" />
+  <img />
 </Frame>
 
 Traceloop SDK supports several ways to annotate workflows, tasks, agents and tools in your code to get a more complete picture of your app structure.
@@ -5770,7 +6267,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
       to the decorator: `@workflow(name="my_workflow", version=2)`
     </Tip>
 
-    ```python  theme={null}
+    ```python theme={null}
     from openai import OpenAI
     from traceloop.sdk.decorators import workflow, task
 
@@ -5811,7 +6308,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
 
     Update `tsconfig.json` to enable decorators:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "compilerOptions": {
         "experimentalDecorators": true
@@ -5829,7 +6326,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
       qualified name as the workflow or task name.
     </Tip>
 
-    ```js  theme={null}
+    ```js theme={null}
     import * as traceloop from "@traceloop/node-server-sdk";
 
     class JokeCreation {
@@ -5870,7 +6367,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
     Use it as `withWorkflow("my_workflow", {}, () => ...)` or `withTask(name="my_task", () => ...)`.
     The function passed to `withWorkflow` or `withTask` witll be part of the workflow or task and can be async or sync.
 
-    ```js  theme={null}
+    ```js theme={null}
     import * as traceloop from "@traceloop/node-server-sdk";
 
     async function create_joke() {
@@ -5922,7 +6419,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
     Similarily, if you use autonomous agents, you can use the `@agent` decorator to trace them as a single unit.
     Each tool should be marked with `@tool`.
 
-    ```python  theme={null}
+    ```python theme={null}
     from openai import OpenAI
     from traceloop.sdk.decorators import agent, tool
 
@@ -5959,7 +6456,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
       If you're not on Nest.js, remember to set `experimentalDecorators` to `true` in your `tsconfig.json`.
     </Note>
 
-    ```js  theme={null}
+    ```js theme={null}
     import * as traceloop from "@traceloop/node-server-sdk";
 
     class Agent {
@@ -5994,7 +6491,7 @@ Sometimes called a "chain", intended for a multi-step process that can be traced
     Similarily, if you use autonomous agents, you can use the `withAgent` to trace them as a single unit.
     Each tool should be in `withTool`.
 
-    ```js  theme={null}
+    ```js theme={null}
     import * as traceloop from "@traceloop/node-server-sdk";
 
     async function translate_joke_to_pirate(joke: str) {
@@ -6138,7 +6635,7 @@ In order to resolve it, you can provide the SDK with the libraries that you use 
 
 Here is an example of how to do it:
 
-```js  theme={null}
+```js theme={null}
 import OpenAI from "openai";
 
 import * as LlamaIndex from "llamaindex";
@@ -6345,7 +6842,7 @@ Multi-modality logging is automatic. Simply use your LLM provider as normal:
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={null}
+    ```python theme={null}
     import os
     from openai import OpenAI
     from traceloop.sdk import Traceloop
@@ -6380,7 +6877,7 @@ Multi-modality logging is automatic. Simply use your LLM provider as normal:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import OpenAI from "openai";
     import * as traceloop from "@traceloop/node-server-sdk";
 
@@ -6422,7 +6919,7 @@ Multi-modality logging is automatic. Simply use your LLM provider as normal:
 
 You can also send images as base64-encoded data:
 
-```python  theme={null}
+```python theme={null}
 import base64
 from openai import OpenAI
 from traceloop.sdk import Traceloop
@@ -6462,7 +6959,7 @@ Base64-encoded images are automatically captured and can be viewed in the Tracel
 
 Analyze multiple images in a single request:
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 
@@ -6495,7 +6992,7 @@ All images in the conversation are logged and viewable in sequence.
 
 ### Audio Transcription
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 
@@ -6516,7 +7013,7 @@ Audio files and their transcriptions are automatically logged.
 
 ### Text-to-Speech
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 from traceloop.sdk import Traceloop
 
@@ -6537,7 +7034,7 @@ The input text and generated audio metadata are captured automatically.
 
 ### Multi-Modal with Anthropic Claude
 
-```python  theme={null}
+```python theme={null}
 import anthropic
 from traceloop.sdk import Traceloop
 
@@ -6573,7 +7070,7 @@ message = client.messages.create(
 
 Multi-modality logging works seamlessly with LangChain:
 
-```python  theme={null}
+```python theme={null}
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 from traceloop.sdk import Traceloop
@@ -6702,7 +7199,7 @@ How to use OpenLLMetry with `ThreadPoolExecutor` and other thread-based librarie
 Since many LLM operations tend to be I/O bound, it is often useful to use threads to perform multiple operations at once.
 Usually, you'll use the `ThreadPoolExecutor` class from the `concurrent.futures` module in the Python standard library, like this:
 
-```python  theme={null}
+```python theme={null}
 indexes = [pinecone.Index(f"index{i}") for i in range(3)]
 executor = ThreadPoolExecutor(max_workers=3)
 for i in range(3):
@@ -6714,7 +7211,7 @@ The reason relies in how OpenTelemetry (which is what we use under the hood in O
 uses [Python's context](https://docs.python.org/3/library/contextvars.html) to propagate the trace.
 You'll need to explictly propagate the context to the threads:
 
-```python  theme={null}
+```python theme={null}
 indexes = [pinecone.Index(f"index{i}") for i in range(3)]
 executor = ThreadPoolExecutor(max_workers=3)
 for i in range(3):
@@ -6963,9 +7460,9 @@ Source: https://www.traceloop.com/docs/openllmetry/troubleshooting
 Not seeing anything? Here are some things to check.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=830b02a7eddb112a017f85e30b8e5a86" data-og-width="3021" width="3021" data-og-height="1806" height="1806" data-path="img/no-traces-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e607c8c019fa95dbc7566db6acc11728 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ae2147fd7635aa22297b6845fec0018b 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=32bf19fa6c9288666922b885ff78c6b5 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=6272ccfd6ec8d768e94f8de12244a0a6 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=73761266b120b961af22fa968a0a7012 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f0c4dede37d07aea86c869b33617cd02 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=64ae1fc5090ab0d3157454e5c70ab5d9" data-og-width="3024" width="3024" data-og-height="1809" height="1809" data-path="img/no-traces-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4784cdbe3c1ed0cc7844cf21c9e57431 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=8dc500b98f1a4b9cc7445d966900d2b8 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0e8dec63dd21b7f75732d3300636210c 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5d88cecd86d58c5616c6089f8f139041 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=25ba180f32e5858ee04ad0d16581e727 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/no-traces-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e39ec4e70cff3286dd907158b3df88cb 2500w" />
+  <img />
 </Frame>
 
 We've all been there. You followed all the instructions, but you're not seeing any traces. Let's fix this.
@@ -6997,7 +7494,7 @@ If you don't see that, you might not be initializing the SDK properly.
 If you're using Typescript or Javascript, make sure to import traceloop before any other LLM libraries.
 This is because traceloop needs to instrument the libraries you're using, and it can only do that if it's imported first.
 
-```js  theme={null}
+```js theme={null}
 import * as traceloop from "@traceloop/traceloop";
 import OpenAI from "openai";
 ...
@@ -7006,7 +7503,7 @@ import OpenAI from "openai";
 If that doesn't work, you may need to manually instrument the libraries you're using.
 See the [manual instrumentation guide](/openllmetry/tracing/js-force-instrumentations) for more details.
 
-```js  theme={null}
+```js theme={null}
 import OpenAI from "openai";
 import * as LlamaIndex from "llamaindex";
 
@@ -7065,9 +7562,9 @@ Columns in the Playground can be reordered, edited, or deleted at any time to ad
 
 Column Settings lets you hide specific columns from the Playground and reorder them as needed. To open the settings, click the Playground Action button and select Column Settings
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a5462e5160c9807353b0d7a19559bab1" data-og-width="302" width="302" data-og-height="233" height="233" data-path="img/playground/play-action-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=75bf16052a7a923591b7620a8ba0901a 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ddaa736c062f89f3b8edc2b8627c41ca 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b71409c654e609f89b2902a5df406dd9 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=72a34491c9387d5975f56dd5e227bc7a 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4f26771f779d1f3a0a0a58a80e8e9b81 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=df73b8825bc41f847177109c8a92588f 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f9709c7d6c0f2d96d0a81bef17dbe617" data-og-width="307" width="307" data-og-height="240" height="240" data-path="img/playground/play-action-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f10926b60a7d4637da67cadc2713c032 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c042ac304ceb971ff594d8fbef9533f9 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2d729aa70ec2b1caf8916b516a4ec8d4 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=15abff6134b270694a7f083a4059e827 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=c6519be4ee564f42afb73e27ca5a98d6 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-action-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a2502a130144f05b5930491f0404a351 2500w" />
+<img />
 
 To change the column order, use the six-dot handle on the right side of each column to simply drag the column into the desired position.
 
@@ -7077,9 +7574,9 @@ To hide a column, toggle its switch in the menu.
   Columns can also be reordered by dragging them to your desired position in the playground
 </Info>
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4aaca11ba78232eec794e36ff9a306ef" style={{maxWidth: '600px'}} data-og-width="1584" width="1584" data-og-height="1146" height="1146" data-path="img/playground/play-column-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9d9bc55e7357962c60117b138c648a0b 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8a1210906240362107642bb6ba00bf56 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f095d721699fe2cc0dbb07b0fed0aab8 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=da629cd47026e7e7664c53c74a76831a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=acb38e2e4e238aa6ed94885276eb04d5 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f2bcf710e09700b70ce1715df4be490d 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cafa4292c5b4025ff74bf0455a9e489e" style={{maxWidth: '600px'}} data-og-width="1574" width="1574" data-og-height="1156" height="1156" data-path="img/playground/play-column-settings-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2e6f0cf6827959d942fc7a1cd23a20e3 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cdb29ba78701826e0f65f75c43e4c476 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7cbbbe5ad54e7da244db3e0dd8a26358 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4696b4632121f7202dc6a999713fddbb 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2bd276450bcf12421fc255145903f692 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-settings-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=91b72b7dc3ca78efc1f4961a9a615af6 2500w" />
+<img />
 
 ## Columns Actions
 
@@ -7090,9 +7587,9 @@ Each column has a menu that lets you manage and customize it. From this menu, yo
 * Duplicate the column to create a copy with the same settings
 * Delete the column if it’s no longer needed
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1a19a1e8585460a04904e3667214f36d" style={{maxWidth: '350px'}} data-og-width="592" width="592" data-og-height="538" height="538" data-path="img/playground/play-column-options-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=20ae0534eccc81369490f5fe7725c2db 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5fbdf0ae14a8320a0c7c535e8647a439 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a29a1cde52e8ffec7f49a54f689442e2 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=49b385570d64ada5e023a170bf38a3ff 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=fee31b863fac5e32d818e943b4e03a51 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2c0aa3789bded43897e046fc9e63679c 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=021e28c139eac31215e334d731b9131a" style={{maxWidth: '350px'}} data-og-width="602" width="602" data-og-height="538" height="538" data-path="img/playground/play-column-options-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=456edf74fad3cd5e9625825c2d47ccfc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d469a7ee2ebb5456052394e231183e78 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a31ed204f6020141b4977ffc2bcc46d5 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c133742b0eabf5eab0deb0b37088e728 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ed6695dc393ab3ed924bf7d70167904f 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-column-options-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=55712c75d40cfb473c613a8137fcf66d 2500w" />
+<img />
 
 
 # Data Columns
@@ -7102,9 +7599,9 @@ Source: https://www.traceloop.com/docs/playgrounds/columns/data-columns
 
 Columns are the building blocks of playgrounds, defining what kind of data you can store, process, and analyze.
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=4dd205dab9f833df58876c2ee779d516" data-og-width="459" width="459" data-og-height="549" height="549" data-path="img/playground/play-column-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=357cccf7d5509ac1a95cafdcd80b9c67 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=b10275231bcb95ce34530c768c74cc40 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=003f69446e7ed1f99ca64eb8725a9935 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=a04fbd72ac9d8f4d18f0cf399db3778f 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=cebde1e581494694ed212bb6a3d110bc 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-light.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=5444f0543da55fb2c461264d08ae370c 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=d331520b479be0b6cf4f3a49a12a13a9" data-og-width="455" width="455" data-og-height="535" height="535" data-path="img/playground/play-column-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=be8860b2f0d054f88b389513ab62bb7a 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=ece50f173aa1e9d9697d5d72f89dc6fd 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=91592beee980b7d181273be067a7ae15 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=1ec11173e568cc479f349bfa66c36dc0 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=db3a21b86bd3473230cfd89dafd41996 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/playground/play-column-list-dark.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=8e3f1080f46e28f2f3a1a1e9a585e3a3 2500w" />
+<img />
 
 <Tip>
   **Need to reorder, edit, or delete columns?**
@@ -7124,15 +7621,15 @@ Free-form text input with multiline support
 
 Numbers, integers, and floating-point values
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=73eec08d9f51e84050bd71ef59d81898" style={{maxWidth: '300px'}} data-og-width="459" width="459" data-og-height="535" height="535" data-path="img/playground/play-number-col-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=bf75ab64228586cdfedfc3dd4a7e3681 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=daa4b70ae43d45beb2061b5c9c90e729 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=27a9c85ff682665a097d03a0ddff5ea1 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1e0084d0e925f0bf49db7cea05bd192c 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47aff043f2ab8011135eeac6f14d93d1 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b87b231b210a35f25b81f31e130ad9f2 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=af327ac5b7b58d867434fcf781e4dad4" style={{maxWidth: '300px'}} data-og-width="454" width="454" data-og-height="527" height="527" data-path="img/playground/play-number-col-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=72ee14c25925d37826cdbac236adc720 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2bd1b48e8f431dd9120877f9d8ca3609 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=21f620bbda82c74811a1e54e6a4be825 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ec12878180341eac5c8eac00e82f4af 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=fb11aa89344920198bb6ed38681557c3 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=755bb9c12ec31df5fddabcd1327121b5 2500w" />
+<img />
 
 The last row allows you to choose a calculation method for the column, such as average, median, minimum, maximum, or sum.
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cf9570a5386e88fe796183e2a4941a97" style={{maxWidth: '300px'}} data-og-width="481" width="481" data-og-height="534" height="534" data-path="img/playground/play-number-col-summary-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a35bc2d60935de0f67cb0e1558e3dba8 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=371d91b693e1c2134ec0ef8119f18db9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=db1af998e87b978bdfa4f2658c1e9d80 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=dcbdf092aa5ffb59bb1204f322692f7c 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=47c1da056c6a6e767d581c5ffa904981 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ace221f11e6b107e4d0b32fd44b882c7 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2b47a6e9b34e2953b4b0ebeb01eea7aa" style={{maxWidth: '300px'}} data-og-width="465" width="465" data-og-height="536" height="536" data-path="img/playground/play-number-col-summary-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=01b30fdee41533ad44633eb00c7fa7f3 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d991b9ba00f078bc1d105fb85427760e 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c385e307f861f91457d47cd61679a933 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f0d981f5969f1584eba6e31fad7c6c24 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=91b0ab9f21d35abaa3dfbe3dc035e122 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-number-col-summary-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1949b67bc90747bec5f1a4662c7d9a97 2500w" />
+<img />
 
 ### Single select
 
@@ -7143,13 +7640,13 @@ In the values box, type an option and press Enter to save it—once added, it wi
 In the table, each cell will then allow you to select only one of the defined options.
 This column type is especially useful for manual tagging with a single tag.
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d9f1c12d407a9abb6147ea8eb07acac1" data-og-width="840" width="840" data-og-height="419" height="419" data-path="img/playground/play-single-select-creation-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5e403233c186398aaf70255e6df63d08 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=803d37f9d1ba4e993b054dbc8380dbcc 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2a208474c9cabbddd2c449e37db8a35a 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=57f1c91f4f0dd5deaa5bbc917337cb3f 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f87ca3e9458397ef95d3efffaa9f6d64 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b12bd8f640a8b387e5a7929f9beeb5bc 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ce46776e681b5bd7cd25e8406c4dc485" data-og-width="848" width="848" data-og-height="422" height="422" data-path="img/playground/play-single-select-creation-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ff80d8a45f47859a9847d1e1e7f7701a 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ca4071db82acbbc6fa1fc4e149c1e863 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8780ae80d906ee77ba70b7ea554034d9 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=952c344ed771c6448e947f552116ccf7 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=1ba080156064056ce07190e268367f98 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-creation-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=bd029bf0d4f10ad4005b5a830becf982 2500w" />
+<img />
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3203f31fbee7d3d9cdd8d9549ef44f7d" data-og-width="264" width="264" data-og-height="348" height="348" data-path="img/playground/play-single-select-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ab160860c8468ccd44df1b607ca5bd45 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=45f1ff55405269b07f64b41db136f2be 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=45f3e333f63ad4a39911bd1caca31ef2 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7586069f18c9ba5707c753558a5cfef7 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=dd68d462512569d2b4131955c98c7c63 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4ed4641d13b49dc70fd7f438b55d76eb 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=887fdaf04295b484c35e5071d2575413" data-og-width="266" width="266" data-og-height="356" height="356" data-path="img/playground/play-single-select-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=dda7efccb13a4034dcd890d74da65624 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6410bef440e0458587f4bf6ae3057eeb 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f6a8c2a5254a42a1aa249a50fd3ca9d9 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=da39af96701597e5709d9ad38bf578d9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=29b63f6be71ac8ab5327476744c5744a 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-single-select-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=de98a4c2d81f6c06767d603a94a78f21 2500w" />
+<img />
 
 ### Multi select
 
@@ -7157,9 +7654,9 @@ Multi-select columns let you define a set of predefined options and allow each c
 
 In the table, each cell can then include several of the defined options. This column type is especially useful for manual tagging with multiple tags.
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6819744eb6616a208cf544b43a1c566e" data-og-width="271" width="271" data-og-height="365" height="365" data-path="img/playground/play-multi-select-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7c57acd67a8771d7b1e4e931558c03d8 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7693c6d61fc35feaca2e91fd6f9dbe4d 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9678b37a5b412cb17bf18ebdf34b2a8a 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f4f071220f3157a84d658f97ea17fbcc 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=168cd61451d2653ae4b9f0063086d2dd 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=73755322fcea09244d4a219f6d1ec1f3 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=eecc366aaa398d7a5ae43850bb82c028" data-og-width="270" width="270" data-og-height="356" height="356" data-path="img/playground/play-multi-select-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b6bdedfc55470e7ce62dcc71145636b9 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2c2193372f74f888880f73f9d3277e2b 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=018484a7f7cf6609f3ca9b09433e38f0 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7a37039d36326f5657e3bda006070cf4 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f8cd25419f6bee2aec6b5bb502b95fe2 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-multi-select-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=094f21e7fb8807aa3cb708a700deee4b 2500w" />
+<img />
 
 ### JSON
 
@@ -7167,9 +7664,9 @@ A JSON column allows you to store and edit structured JSON objects directly in t
 
 When editing a cell, an Edit JSON panel opens with syntax highlighting and formatting support, so you can quickly add or update fields.
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9a55508b40b99129ad3e1260df4ba323" data-og-width="547" width="547" data-og-height="728" height="728" data-path="img/playground/play-json-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c1571e8106eb9f337f207a6c7ee1a2d3 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6697bc489b75e13bea9dc915194949c0 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=23a835dec8dc312daed7540dbbd0bb7a 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a84ed3944143eb51613721238ac7662a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0959fd3eb605a5fc3802b1541bcd6e6b 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=008504aeff0983e50b65ecbaf4bfc1f5 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=22f9fe4a02a9b3fc50a84b9f6ca059f2" data-og-width="544" width="544" data-og-height="734" height="734" data-path="img/playground/play-json-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cc0896c96a97ddd548a56621ebe2c58c 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=428e4fa833486e52795d57c8e493a1ba 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2f77f79bb413daa23825cd707470e3c5 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4d3d2a21f66980451f159159884be762 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c38eba15bb2b875fba491626df976b82 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-json-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5386588488480d6ec6cb3061d1d0f853 2500w" />
+<img />
 
 
 # Prompt Column
@@ -7187,9 +7684,9 @@ Each row in your playground will be passed through the prompt, and the model’s
   Prompt columns make it easy to test different prompts against real data, compare model outputs side by side.
 </Info>
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=88046857909c4eb3be8500a4aafed854" style={{maxWidth: '400'}} data-og-width="2680" width="2680" data-og-height="1510" height="1510" data-path="img/playground/play-prompt-column-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=eefb57c6d6320da2471dd0b2665526a0 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6d98da9ea23b9cc3e175b83faa18d1f9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c8e2c25b84eb8c1e9c7f4eb0bda3f5e6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b0c3aff36d4741574037e49b77655dc9 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ece809297f252bf8cd6eed9f8a920138 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6ba62615ea71742ee9ba64a976454972 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=37290df1e71a2ac357db3e3f38322246" style={{maxWidth: '400'}} data-og-width="2700" width="2700" data-og-height="1544" height="1544" data-path="img/playground/play-prompt-column-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=768af2c6526dfc3ddf133ac6676380a0 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c5cbf0a52e9fa08ec346c36db60bbb93 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c2334a9e63ae3f29b2abe3722d2ab304 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b8f664472600d4ba7b8db21a54803937 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3a9d8da709aaaee8a440780de7749091 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-column-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=71f654b811e46979f7fbe10b21e9c641 2500w" />
+<img />
 
 ## Prompt Writing
 
@@ -7197,9 +7694,9 @@ Write your prompt messages by selecting a specific role—System, User, Assistan
 
 You can insert variables into the prompt using curly brackets (e.g., `{{variable_name}}`) or by adding column valuable with the top right `+` button in the message box. These variables can then be mapped to existing column data, allowing your prompt to dynamically adapt to the playground
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=2b06d83d25704bc9cede4c42e9915535" style={{maxWidth: '400'}} data-og-width="1576" width="1576" data-og-height="1368" height="1368" data-path="img/playground/play-prompt-write-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=280&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=155b8edcdd898db061087fd2726af90b 280w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=560&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=f508b436d19b135628ac51843c1fc075 560w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=840&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=bb0ec529462a5e591bc4866f8a24f9c1 840w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=1100&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=0acc0e65ff40391ce469ae0766664d6b 1100w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=1650&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=5ab0f93fa6d6f8cfcf834c2f90c7e7c0 1650w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-light.png?w=2500&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=a3348b4f5e89532b323f32f859ab21ed 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=c71f537426522461848a63ecd32915c8" style={{maxWidth: '400'}} data-og-width="1576" width="1576" data-og-height="1368" height="1368" data-path="img/playground/play-prompt-write-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=280&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=d52b472e6cfdcc1bc98fe6e789f1cf3c 280w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=560&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=cd2743812dc2b5400157a174de7fcfc3 560w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=840&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=2bd49513845561fee707150220e807d1 840w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=1100&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=41e1f43753a21c31e5380afcbf66f54a 1100w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=1650&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=96fbf5c08a8c5d221b55e61413300c12 1650w, https://mintcdn.com/enrolla/fi54H1qiXGQeGMJV/img/playground/play-prompt-write-dark.png?w=2500&fit=max&auto=format&n=fi54H1qiXGQeGMJV&q=85&s=cb41facdfe4115eda07c3a689b70cd36 2500w" />
+<img />
 
 ## Configuration Options
 
@@ -7216,9 +7713,9 @@ Structured output can be enabled for models that support it. You can define a sc
 * **Visual Editor** - Add parameters interactively, specifying their names and types
 * **Generate Schema** - Use the "Generate schema" button on the top right to automatically create a schema based on your written prompt
 
-<img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f058893831f04ac7a12a5954e59aa8bb" style={{maxWidth: '600px'}} data-og-width="1064" width="1064" data-og-height="658" height="658" data-path="img/playground/play-prompt-structure-output-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4218fdd45a85b4ac0e103c782a1c621b 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=750934d1e3c583f00211fea405fe4e99 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=37de6f4786cfae52d16d8d11049d6dc1 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f600e5afb0e577f791ada174ccddcc86 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=16b005b83df2545c2f70044c4e2ce071 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b4e9606c87513c0cb42dcd03ab246de0 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8d17fd484c50a99e721a92f8840adadf" style={{maxWidth: '600px'}} data-og-width="1030" width="1030" data-og-height="620" height="620" data-path="img/playground/play-prompt-structure-output-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ebb3ea7fb39034f8dc88004a60598909 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=37b133d040bac8226329b7b887f3776b 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c95bf5088bf898b09ab87388759d9594 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c89a7f3be7e65e63f9230eb9508bb05a 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4edb9c48f9dd4f9e56784ba9b342bc12 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-prompt-structure-output-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0caaf0f9d32c01a8057dd40b985c650c 2500w" />
+<img />
 
 ## Tools
 
@@ -7257,9 +7754,9 @@ Think of them as powerful workbenches for AI development that combine the flexib
 It’s designed for everyone, from product managers and analysts to QA, data engineers, and software developers.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0cb1f3eb995558e6abc3a046318c8732" data-og-width="2308" width="2308" data-og-height="630" height="630" data-path="img/playground/play-list-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8e7c67ea6e8c322eb5eb9b43661d82d1 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2232e8ac08201e56971162e47d7ae5b9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b0d6a22c5242054bce8f12a834edef1d 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=bc185d2708d5f7dd28887d5870ff1c68 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=fb6f49da28fd4cca997461ded6fe553b 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a3d63263431fdca04828047e570af0fb 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=05ed62c5e6dce751d4cc58ca3f503af8" data-og-width="2302" width="2302" data-og-height="644" height="644" data-path="img/playground/play-list-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9675f79f0748c8da36ef31f5ce275ffc 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=665525729a8a06e6ea56d418cae5876f 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b1dbc0fe700c83fb1d044ecd57bc377d 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a02bc32867cb2317d637c82edf3bdb5b 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=66273471a9421032b885ddc14d294bf6 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-list-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c22961cf9dca891e04ef50ceab013d9b 2500w" />
+  <img />
 </Frame>
 
 <Tip>
@@ -7306,9 +7803,9 @@ Data can be imported from different sources:
 You can create a Playground from scratch and import data later. Simply set a name for the Playground and start adding columns, rows, and data.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=33e54fba5ba438b73b3834eab3c1d9c3" data-og-width="2180" width="2180" data-og-height="1478" height="1478" data-path="img/playground/play-full-table-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c43c24d60ba039a8eb44fe41da9474ed 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=aa85c8ebe2ba4ee9bf0d2d09f1e12110 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0e7dcf4c91d60000dd99555d0bdd2cf6 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5fc8a270919290b2a14edb3bb46c8978 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=93de941171abadce89d8f5d76e0e333c 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4d36aeed687efc354bbf37bd8c6d2f05 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=cccdc19649cc10be33662d895952a27d" data-og-width="2200" width="2200" data-og-height="1482" height="1482" data-path="img/playground/play-full-table-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=eebcd1ffec7519498480bc9fe05fc384 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=89d5cd8562b772a4008a016b04c7869b 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a9ed452904d7a4e9181ec726a2be0ded 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3c5a220e1a8777b120499d5debf97cc2 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=400eb770ea2c3ab02be33e5c57a34116 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/playground/play-full-table-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3a5e30bb56e50cd49d9e123e8fa50bd4 2500w" />
+  <img />
 </Frame>
 
 ## Running a Playground
@@ -7326,9 +7823,9 @@ Source: https://www.traceloop.com/docs/prompts/quick-start
 
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f02ab8b4912d10fd398785e7aaeb524c" data-og-width="3024" width="3024" data-og-height="1808" height="1808" data-path="img/prompt-configuration-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=416ca2bcdfdc4ad52cbbe5b5c766b4a2 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=926fbcd30c669b149669216c48abe69b 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f914e3de83f13357428c6804eb68d957 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5b71e5380013daf711f1df27a32a86b4 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d3f399364ee6ce9937daabebf12f87a4 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4f1aaae2a34e76d016560813e3768f2b 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7fc4c5cebcbef9a037d36738354afc7a" data-og-width="3024" width="3024" data-og-height="1809" height="1809" data-path="img/prompt-configuration-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=085af81ba4452f848ed2d9c97fc96a90 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b544c148ed3477146d675c31764c7489 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3474b0b11a2701bbe9ddb18276672891 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0e45b2d71090f815ace968b3338b6b85 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e2eefd1a01cd813ccac9b2f6794dcd2f 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c51e8dd61c6dc53fd6724bf513a145f4 2500w" />
+  <img />
 </Frame>
 
 You can use Traceloop to manage your prompts and model configurations.
@@ -7444,9 +7941,9 @@ Traceloop's Prompt Registry is where you manage your prompts. You can create, ed
 ## Configuring Prompts
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f02ab8b4912d10fd398785e7aaeb524c" data-og-width="3024" width="3024" data-og-height="1808" height="1808" data-path="img/prompt-configuration-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=416ca2bcdfdc4ad52cbbe5b5c766b4a2 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=926fbcd30c669b149669216c48abe69b 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=f914e3de83f13357428c6804eb68d957 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5b71e5380013daf711f1df27a32a86b4 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d3f399364ee6ce9937daabebf12f87a4 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4f1aaae2a34e76d016560813e3768f2b 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7fc4c5cebcbef9a037d36738354afc7a" data-og-width="3024" width="3024" data-og-height="1809" height="1809" data-path="img/prompt-configuration-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=085af81ba4452f848ed2d9c97fc96a90 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=b544c148ed3477146d675c31764c7489 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3474b0b11a2701bbe9ddb18276672891 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=0e45b2d71090f815ace968b3338b6b85 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e2eefd1a01cd813ccac9b2f6794dcd2f 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-configuration-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c51e8dd61c6dc53fd6724bf513a145f4 2500w" />
+  <img />
 </Frame>
 
 The prompt configuration is composed of two parts:
@@ -7469,9 +7966,9 @@ Initially, prompts are created in `Draft Mode`. In this mode, you can make chang
 By using the prompt playground you can iterate and refine your prompt before deploying it.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c538ba31864dc369f5f53787eff52edb" data-og-width="3024" width="3024" data-og-height="1809" height="1809" data-path="img/prompt-playground-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=ebf2b8051158894bb256a00f9e576375 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=71b74bfe4c021669a2135a8e210b967d 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=827ed91ff327ec0e2c7dcc82d1f5499e 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=7a12f2391f3116916e7f1bc20588f463 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=06fd29dcf053ff6a892983455b147fe3 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9a060c5a835279d2da2d77481912aac0 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9fcac82a6348ba53fa431744b80b4743" data-og-width="3021" width="3021" data-og-height="1808" height="1808" data-path="img/prompt-playground-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=77eee38335a603d0b5b57d54a330ce87 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=d90439f0a836c19ee3088d5ffc199f39 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=084eaba6e309f37f20f8380d964d77a7 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=4856f559484f10bf58e457229340b82f 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e60a29141ab734a4266708710d60267f 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-playground-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9bd56097f5b2bcdd7964a317bacbc367 2500w" />
+  <img />
 </Frame>
 
 Simply click on the `Test` button in the playground tab at the bottom of the screen.
@@ -7485,9 +7982,9 @@ The completion response (including token usage) will be displayed in the playgro
 ## Deploying Prompts
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8f2584bf665c9147ad09d334f214d599" data-og-width="3024" width="3024" data-og-height="1808" height="1808" data-path="img/prompt-deployment-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=59bff189cbbb2bab93843889ac66041f 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=8898148c5b1306c853dba35ed23a58b3 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=9094fbfc405493c8ddbbceee5bccfd93 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=3496570a631ac716d436d14184e890c6 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=c419b7fb786e7058ffaba83b86492575 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-light.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=820f521e61e9f565e8522d336e98eb6e 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e4b36122965eeac6d561ad7796d7a8d3" data-og-width="3024" width="3024" data-og-height="1805" height="1805" data-path="img/prompt-deployment-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=6e864a00d18e77ad702a86b3ffbf312d 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=482b98719fbc9ed005be5f0f28fdf328 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=5d8f1199ea7f6a251602439462cd07c8 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=067833165557412eecf0eca8f420f2ef 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=49b78293de15fe20c2ebe698074d8b4e 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/prompt-deployment-dark.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=92f3f0184809fbd233f8d0fcdf0d9fd4 2500w" />
+  <img />
 </Frame>
 
 Draft mode prompts can only be deployed to the `development` environment.
@@ -7672,7 +8169,7 @@ Requires manual load balancer setup to forward traffic to NodePort 30080 and han
 
 #### 1. Create Traceloop namespace
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create namespace traceloop
 ```
 
@@ -7682,7 +8179,7 @@ kubectl create namespace traceloop
 
 Credentials will be provided by Traceloop via secure channel
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create secret docker-registry regcred \
   --namespace traceloop \
   --docker-server=docker.io \
@@ -7692,7 +8189,7 @@ kubectl create secret docker-registry regcred \
 
 ##### Postgres Secret (if not already present)
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create secret generic traceloop-postgres-secret \
   --namespace traceloop \
   --from-literal=POSTGRES_DATABASE_USERNAME=<postgres-username> \
@@ -7701,7 +8198,7 @@ kubectl create secret generic traceloop-postgres-secret \
 
 ##### ClickHouse Secret (if not already present)
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create secret generic traceloop-clickhouse-secret \
   --namespace traceloop \
   --from-literal=CLICKHOUSE_USERNAME=<clickhouse-username> \
@@ -7710,7 +8207,7 @@ kubectl create secret generic traceloop-clickhouse-secret \
 
 ##### Kafka Secret (if not already present)
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create secret generic traceloop-kafka-secret \
   --namespace traceloop \
   --from-literal=KAFKA_API_KEY=<kafka-api-key> \
@@ -7719,14 +8216,14 @@ kubectl create secret generic traceloop-kafka-secret \
 
 #### 3. Download the Traceloop Helm chart to your local environment
 
-```bash  theme={null}
+```bash theme={null}
 # Add Traceloop Helm repository
 helm pull oci://registry-1.docker.io/traceloop/helm --untar
 ```
 
 #### 4. Run subcharts and dependency extractions script
 
-```bash  theme={null}
+```bash theme={null}
 chmod +x extract-subcharts.sh
 ./extract-subcharts.sh
 ```
@@ -7735,7 +8232,7 @@ chmod +x extract-subcharts.sh
 
 Configure your deployment settings including gateway, authentication, and image support:
 
-```yaml  theme={null}
+```yaml theme={null}
 kong-gateway:
   service:
     type: NodePort # Or ClusterIP
@@ -7785,7 +8282,7 @@ customerSecret:
 
 ##### values-external-postgres.yaml
 
-```yaml  theme={null}
+```yaml theme={null}
 postgresql:
   enabled: false
   host: "" # Example: "my-postgres-server.example.com"
@@ -7795,7 +8292,7 @@ postgresql:
 
 ##### values-external-clickhouse.yaml
 
-```yaml  theme={null}
+```yaml theme={null}
 clickhouse:
   enabled: false
   host: "" # Example: "my-clickhouse-server.example.com"
@@ -7808,7 +8305,7 @@ clickhouse:
 
 ##### values-external-kafka.yaml
 
-```yaml  theme={null}
+```yaml theme={null}
 kafka:
   enabled: false
   bootstrapServer: "" # Example: "kafka-broker.example.com:9092"
@@ -7822,7 +8319,7 @@ kafka:
 
 Replace only these values to the values you have from postgres.
 
-```yaml  theme={null}
+```yaml theme={null}
 temporal:
   ...
   server:
@@ -7857,7 +8354,7 @@ temporal:
 
 #### 7. Install Traceloop Helm chart
 
-```bash  theme={null}
+```bash theme={null}
 helm upgrade --install traceloop . \
   -n traceloop \
   --values values.yaml \
@@ -7886,7 +8383,7 @@ This approach deploys all components including databases through Helm charts.
 
 #### 1. Create Traceloop namespace
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create namespace traceloop
 ```
 
@@ -7896,7 +8393,7 @@ kubectl create namespace traceloop
 
 Credentials will be provided by Traceloop via secure channel
 
-```bash  theme={null}
+```bash theme={null}
 kubectl create secret docker-registry regcred \
   --namespace traceloop \
   --docker-server=docker.io \
@@ -7906,14 +8403,14 @@ kubectl create secret docker-registry regcred \
 
 #### 3. Download the Traceloop Helm chart to your local environment
 
-```bash  theme={null}
+```bash theme={null}
 # Add Traceloop Helm repository
 helm pull oci://registry-1.docker.io/traceloop/helm --untar
 ```
 
 #### 4. Run subcharts and dependency extractions script
 
-```bash  theme={null}
+```bash theme={null}
 chmod +x extract-subcharts.sh
 ./extract-subcharts.sh
 ```
@@ -7922,7 +8419,7 @@ chmod +x extract-subcharts.sh
 
 Configure your deployment settings including gateway, authentication, and image support:
 
-```yaml  theme={null}
+```yaml theme={null}
 kong-gateway:
   service:
     type: NodePort
@@ -7966,7 +8463,7 @@ customerSecret:
 
 #### 6. Install complete Traceloop stack
 
-```bash  theme={null}
+```bash theme={null}
 helm upgrade --install traceloop . \
   -n traceloop \
   --values values.yaml \
@@ -7986,13 +8483,13 @@ helm upgrade --install traceloop . \
 
 1. Check all pods are running:
 
-```bash  theme={null}
+```bash theme={null}
 kubectl get pods -n traceloop
 ```
 
 2. Verify infrastructure connectivity:
 
-```bash  theme={null}
+```bash theme={null}
 kubectl logs -n traceloop deployment/traceloop-api
 ```
 
@@ -8033,7 +8530,7 @@ The Hybrid deployment model allows you to maintain full control over your data s
 
     #### Option B: Using Helm on Kubernetes
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Add Altinity Helm repository
     helm repo add altinity https://altinity.github.io/kubernetes-blueprints-for-clickhouse
     helm repo update
@@ -8047,7 +8544,7 @@ The Hybrid deployment model allows you to maintain full control over your data s
 
     Example `clickhouse-values.yaml`:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     clickhouse:
       persistence:
         enabled: true
@@ -8208,7 +8705,7 @@ The Traceloop Helm chart expects specific configuration for external ClickHouse 
   * `CLICKHOUSE_PASSWORD`
   * **Note:** This secret is automatically created if using Traceloop Terraform, otherwise create it manually
 
-```bash  theme={null}
+```bash theme={null}
 # Verify the ClickHouse secret exists
 kubectl get secret traceloop-clickhouse-secret -n traceloop
 
@@ -8235,7 +8732,7 @@ The Traceloop Helm chart expects specific configuration for external Kafka conne
 * Ensure the following Kafka topics exist: `traces`, `spans`, and `metrics`
   * **Note:** These topics are automatically created if using Traceloop Terraform, otherwise create them manually
 
-```bash  theme={null}
+```bash theme={null}
 # Verify your Kafka configuration is properly applied
 kubectl get configmap -n traceloop | grep kafka
 ```
@@ -8263,7 +8760,7 @@ The Traceloop Helm chart expects specific configuration for external PostgreSQL 
   * `POSTGRES_DATABASE_PASSWORD`
   * **Note:** This secret is automatically created if using Traceloop Terraform, otherwise create it manually
 
-```bash  theme={null}
+```bash theme={null}
 # Verify the PostgreSQL secret exists
 kubectl get secret traceloop-postgres-secret -n traceloop
 
@@ -8286,7 +8783,7 @@ Common PostgreSQL connectivity issues:
 
 If pods aren't starting properly:
 
-```bash  theme={null}
+```bash theme={null}
 # Check pod status
 kubectl get pods -n traceloop
 
@@ -8326,7 +8823,7 @@ If you can't access Traceloop through your load balancer:
 * Check that Kong is listening on the correct port (default mapped to 30800)
 * Ensure Kong domain configuration is correct in `values-customer.yaml` - verify `kong-gateway.kong.domain` is properly filled
 
-```bash  theme={null}
+```bash theme={null}
 # Check Kong gateway pod status
 kubectl get pods -n traceloop | grep kong
 
@@ -8346,7 +8843,7 @@ Traceloop images are stored on Docker Hub and require authentication. A `regcred
 * Create the `regcred` secret in the traceloop namespace using credentials provided by Traceloop
 * Ensure the secret is properly referenced in your Helm values
 
-```bash  theme={null}
+```bash theme={null}
 # Verify the regcred secret exists
 kubectl get secret regcred -n traceloop
 
@@ -8367,7 +8864,7 @@ kubectl describe secret regcred -n traceloop
 
 Check component connectivity:
 
-```bash  theme={null}
+```bash theme={null}
 # Test ClickHouse connectivity
 kubectl exec -it -n traceloop deploy/traceloop-api -- nc -vz your-clickhouse-host 9000
 
@@ -8385,7 +8882,7 @@ Traceloop uses PropelAuth as the authentication provider. Ensure proper configur
 **Required Configuration:**
 
 * Fill out `values-customer.yaml` with PropelAuth settings:
-  ```yaml  theme={null}
+  ```yaml theme={null}
   customerConfig:
     propelauth:
       authURL: "traceloop-provided"
@@ -8452,9 +8949,9 @@ Generate and manage API keys for sending traces and accessing Traceloop features
 API keys are required to authenticate your application with Traceloop. Each API key is tied to a specific project and environment combination, determining where your traces and data will appear.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=bc8341021b2620bef9022708e8dad3c3" data-og-width="1414" width="1414" data-og-height="623" height="623" data-path="img/settings/project-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=280&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=1023d05e012014491255d30a34b0d9cb 280w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=560&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=cd3ddb6cc17628e4fc5b331708f4820b 560w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=840&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=78f1e33b59ab29d6ffed5c6387b120e2 840w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=1100&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=2fffe5b13ab2638955fdbfe0f07425a1 1100w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=1650&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=1fe8dfaec20b2db187e6e7fcffccba8d 1650w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-light.png?w=2500&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=99e50d50ff20735d27bc9b9005db7321 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=5e3071baa2b531c343f8f5915e526a6d" data-og-width="1390" width="1390" data-og-height="616" height="616" data-path="img/settings/project-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=280&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=b878c93b4f71901ea03dced634c41e97 280w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=560&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=806e69231bf9fc70059a12b259ab2e17 560w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=840&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=7bddc65ee5ee58dd4754a449ba897547 840w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=1100&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=591677b28439f620d4fd023bb2d04381 1100w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=1650&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=fb6080c1ba411a7eef57f1a1543445e1 1650w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/project-dark.png?w=2500&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=4ada4ca05c30d5656f9344e3b997bb09 2500w" />
+  <img />
 </Frame>
 
 ## Quick Start: Generate Your First API Key
@@ -8484,13 +8981,13 @@ API keys are required to authenticate your application with Traceloop. Each API 
   <Step title="Set as Environment Variable">
     Export the API key in your application:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export TRACELOOP_API_KEY=your_api_key_here
     ```
 
     Or set it in your `.env` file:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     TRACELOOP_API_KEY=your_api_key_here
     ```
   </Step>
@@ -8536,7 +9033,7 @@ To see your traces in the dashboard:
 
 Use your dev environment API key:
 
-```bash  theme={null}
+```bash theme={null}
 # In your .env or shell
 export TRACELOOP_API_KEY=your_development_key
 ```
@@ -8545,13 +9042,13 @@ export TRACELOOP_API_KEY=your_development_key
 
 Use stg or prd keys in your deployment configuration:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Example: GitHub Actions
 env:
   TRACELOOP_API_KEY: ${{ secrets.TRACELOOP_STG_KEY }}
 ```
 
-```yaml  theme={null}
+```yaml theme={null}
 # Example: Docker Compose
 environment:
   - TRACELOOP_API_KEY=${TRACELOOP_PRD_KEY}
@@ -8617,7 +9114,7 @@ This is a security feature - API keys are never stored in retrievable form.
 
 ### Best Practices
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Use Secret Management" icon="key">
     Store API keys in secret management systems like AWS Secrets Manager, Azure Key Vault,
     HashiCorp Vault, or 1Password instead of hardcoding them.
@@ -8684,7 +9181,7 @@ This is a security feature - API keys are never stored in retrievable form.
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Projects and Environments" icon="folder-tree" href="/settings/projects-and-environments">
     Learn about organizing your applications and deployment stages
   </Card>
@@ -8711,9 +9208,9 @@ Organize your applications and deployment stages with Projects and Environments
 Projects and Environments help you keep your LLM observability data organized and isolated across different applications, services, and deployment stages.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=b8a98f6bd2fd608f273b3a05d4285f76" data-og-width="1354" width="1354" data-og-height="688" height="688" data-path="img/settings/projects-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=280&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=1f5a9a47cf8ad01d1b9c9a3395ae8779 280w, https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=560&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=435e345df3142935970cb22b22322602 560w, https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=840&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=93e286d7c3415bdf6a1e5bf7a3e5335c 840w, https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=1100&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=db57bd051d225407e866db1c4158a13b 1100w, https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=1650&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=474cc8a6c8d6bc43f4c6e09da6727d78 1650w, https://mintcdn.com/enrolla/asYyEPkc7VzcZY2h/img/settings/projects-light.png?w=2500&fit=max&auto=format&n=asYyEPkc7VzcZY2h&q=85&s=b148f1bffdb15d7d3c34976f7756ea49 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=d146cfe5276ae80e7581a933be7ecc5a" data-og-width="1331" width="1331" data-og-height="677" height="677" data-path="img/settings/projects-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=280&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=6f9f7879b3028cee1729d23d6f3a168a 280w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=560&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=27cf998c55ca1bb7b048dadde93049ff 560w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=840&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=1300229e414223712734d059ef62ad02 840w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=1100&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=f9f4e0505d38c72c89fa57bf07854f36 1100w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=1650&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=c995e5a01c0408f3d7e1c226008e25aa 1650w, https://mintcdn.com/enrolla/lW7wB2m9x4U1nXpX/img/settings/projects-dark.png?w=2500&fit=max&auto=format&n=lW7wB2m9x4U1nXpX&q=85&s=f857feb8c24531ebe08b66e51be854f3 2500w" />
+  <img />
 </Frame>
 
 ## Why Projects and Environments?
@@ -9008,7 +9505,7 @@ To delete an environment:
 
 ### Project Organization
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="By Application" icon="layer-group">
     Create one project per application or major service.
 
@@ -9177,7 +9674,7 @@ Projects:
 
 ## Related Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Managing API Keys" icon="key" href="/settings/managing-api-keys">
     Learn how to generate and manage API keys for your projects
   </Card>

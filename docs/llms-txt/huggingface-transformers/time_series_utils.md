@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/time_series_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/time_series_utils.md
 
 # Time Series Utilities
 
@@ -10,19 +10,19 @@ Most of those are only useful if you are studying the code of the time series mo
 
 #### transformers.time_series_utils.NormalOutput[[transformers.time_series_utils.NormalOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/time_series_utils.py#L179)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/time_series_utils.py#L179)
 
 Normal distribution output class.
 
 #### transformers.time_series_utils.StudentTOutput[[transformers.time_series_utils.StudentTOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/time_series_utils.py#L164)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/time_series_utils.py#L164)
 
 Student-T distribution output class.
 
 #### transformers.time_series_utils.NegativeBinomialOutput[[transformers.time_series_utils.NegativeBinomialOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/time_series_utils.py#L193)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/time_series_utils.py#L193)
 
 Negative Binomial distribution output class.
 

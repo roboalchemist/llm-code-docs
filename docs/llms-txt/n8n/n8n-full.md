@@ -231,6 +231,10 @@ The Start node is no longer supported. This node was the original way to begin w
 - **Sub-workflows:** If another workflow calls this workflow as a sub-workflow, replace the Start node with an [Execute Workflow Trigger](../integrations/builtin/core-nodes/n8n-nodes-base.executeworkflowtrigger/) node and activate the workflow.
 - **Disabled Start nodes:** If the Start node is disabled, delete it from the workflow.
 
+### Saving and publishing workflows
+
+The new workflow publishing system replaces the previous active/inactive toggle. This means that the old "Activate/Deactivate" toggles become the new "Publish/Unpublish" buttons. This change gives you better control over when your workflow changes go live, reducing the risk of accidentally deploying work-in-progress changes to production. More information can be found here: [Saving and publishing workflows.](../workflows/publish/)
+
 ### Removed nodes for retired services
 
 The following nodes have been removed because the external services they connect to are no longer available:
@@ -445,6 +449,10 @@ Feature availability
 - External secrets are available on Enterprise Self-hosted and Enterprise Cloud plans.
 - n8n supports AWS Secrets Manager, Azure Key Vault, GCP Secrets Manager, Infisical and HashiCorp Vault.
 - n8n doesn't support [HashiCorp Vault Secrets](https://developer.hashicorp.com/hcp/docs/vault-secrets).
+
+Infisical deprecation
+
+Infisical is deprecated and is no longer recommended. Use an alternative external secrets provider.
 
 You can use an external secrets store to manage [credentials](../glossary/#credential-n8n) for n8n.
 
@@ -1168,7 +1176,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## How to update n8n
 
@@ -1191,20 +1199,326 @@ Older versions
 
 You can find the release notes for older versions of n8n: [1.x](1-x/) and [0.x](0-x/)
 
-## n8n@2.2.0
+## n8n@2.7.0
 
-View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.0...n8n@2.2.0) for this version.
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.6.0...n8n@2.7.0) for this version.\
+**Release date:** 2026-02-02
 
-**Release date:** 2025-12-22
+Beta version
+
+This is the `beta` version. n8n recommends using the `stable` version. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
+
+This release contains bug fixes.
+
+### Contributors
+
+[LostInBrittany](https://github.com/LostInBrittany)\
+[adriencohen](https://github.com/adriencohen)\
+[ibex088](https://github.com/ibex088)\
+[rutgere-indeed](https://github.com/rutgere-indeed)
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.7-exp.0
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.7...n8n@2.4.7-exp.0) for this version.\
+**Release date:** 2026-01-29
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.6.3
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.6.2...n8n@2.6.3) for this version.\
+**Release date:** 2026-02-02
+
+Stable version
+
+This is the `stable` version. n8n recommends using the `stable` version. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
 This release contains bug fixes.
 
 For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
 
-## n8n@2.1.2
+## n8n@2.4.8
 
-View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.1...n8n@2.1.2) for this version.\
-**Release date:** 2025-12-22
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.7...n8n@2.4.8) for this version.\
+**Release date:** 2026-01-29
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.6.2
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.6.1...n8n@2.6.2) for this version.\
+**Release date:** 2026-01-28
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.7
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.6...n8n@2.4.7) for this version.\
+**Release date:** 2026-01-28
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.5.2
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.5.1...n8n@2.5.2) for this version.\
+**Release date:** 2026-01-23
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.6
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.5...n8n@2.4.6) for this version.\
+**Release date:** 2026-01-23
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.5
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.4...n8n@2.4.5) for this version.\
+**Release date:** 2026-01-22
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.6.0
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.5.0...n8n@2.6.0) for this version.\
+**Release date:** 2026-01-26
+
+This release contains bug fixes.
+
+### Contributors
+
+[ibex088](https://github.com/ibex088)\
+[johnlinp](https://github.com/johnlinp)\
+[loganaden](https://github.com/loganaden)\
+[Jameswlepage](https://github.com/Jameswlepage)\
+[cesars-gh](https://github.com/cesars-gh)\
+[antman1p](https://github.com/antman1p)
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.5.0
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.0...n8n@2.5.0) for this version.\
+**Release date:** 2026-01-20
+
+This release contains bug fixes.
+
+### **Chat node: human-in-the-loop actions**
+
+The **Chat** node now includes two new Actions for human-in-the-loop interactions in agentic workflows:
+
+- **Send a message**: send a message to the user and continue the workflow
+- **Send a message and wait for response**: send a message and pause execution until the user replies. Users can respond with free text in the Chat or by clicking inline approval buttons, as defined in the node’s configuration.
+
+These Actions can be used as deterministic workflow steps or as tools for an **AI Agent**, enabling multi-turn human interaction within a single execution when using the **Chat Trigger**.
+
+When used as an agent tool, the agent can ask for clarification before proceeding, helping it better interpret user intent and follow instructions. Agents can also send updates during long-running workflows using these Actions.
+
+### **How to**
+
+1. Trigger your workflow with the **Chat Trigger** node. In the node parameters, add the *Response Mode* option and set it to *Using Response Nodes*.
+1. Add a **Chat** node later in the workflow, or add it as a tool for an **AI Agent**. Select one of the following operations: *Send a message* or *Send a message and wait for response*.
+
+### **Keep in mind**
+
+- If you want an AI Agent to choose between sending a message or waiting for input, add two **Chat** tool nodes, one for each action.
+- For AI Agents triggered by the **Chat Trigger** node, adding **Send a message and wait for response** is recommended so the agent can request clarification when needed.
+
+Learn more in the [Chat node documentation](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-langchain.chat/#operation).
+
+[](/_video/release-notes/ChatHITL.webm)
+
+### Contributors
+
+[AbdulTawabJuly](https://github.com/AbdulTawabJuly)\
+[ByteEVM](https://github.com/ByteEVM)\
+[aikido-autofix[bot]](https://github.com/aikido-autofix%5Bbot%5D)\
+[sudarshan12s](https://github.com/sudarshan12s)\
+[KaanAydinli](https://github.com/KaanAydinli)
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.3
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.2...n8n@2.4.3) for this version.\
+**Release date:** 2026-01-15
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.6
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.5...n8n@2.3.6) for this version.\
+**Release date:** 2026-01-16
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.4
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.3...n8n@2.4.4) for this version.\
+**Release date:** 2026-01-16
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.5
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.4...n8n@2.3.5) for this version.\
+**Release date:** 2026-01-14
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.1
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.4.0...n8n@2.4.1) for this version.\
+**Release date:** 2026-01-13
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.2
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.1...n8n@2.3.2) for this version.\
+**Release date:** 2026-01-09
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.4.0
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.0...n8n@2.4.0) for this version.\
+**Release date:** 2026-01-12
+
+This release contains bug fixes.
+
+### Contributors
+
+[JonLaliberte](https://github.com/JonLaliberte)\
+[davidpanic](https://github.com/davidpanic)\
+[TomTom101](https://github.com/TomTom101)\
+[garritfra](https://github.com/garritfra)\
+[maximepvrt](https://github.com/maximepvrt)
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.3
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.2...n8n@2.3.3) for this version.\
+**Release date:** 2026-01-13
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.4
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.3...n8n@2.3.4) for this version.\
+**Release date:** 2026-01-13
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.1
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.3.0...n8n@2.3.1) for this version.\
+**Release date:** 2026-01-07
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.2.5
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.2.4...n8n@2.2.5) for this version.\
+**Release date:** 2026-01-08
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.2.4
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.2.3...n8n@2.2.4) for this version.\
+**Release date:** 2026-01-06
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.3.0
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.2.0...n8n@2.3.0) for this version.\
+**Release date:** 2026-01-05
+
+This release contains bug fixes.
+
+### Contributors
+
+[Shashwat-06](https://github.com/Shashwat-06)\
+[ByteEVM](https://github.com/ByteEVM)\
+[mithredate](https://github.com/mithredate)\
+[belyas](https://github.com/belyas)\
+[saurabhssonkar](https://github.com/saurabhssonkar)
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.2.3
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.2.2...n8n@2.2.3) for this version.\
+**Release date:** 2026-01-05
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.2.2
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.2.1...n8n@2.2.2) for this version.\
+**Release date:** 2025-12-30
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.1.5
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.4...n8n@2.1.5) for this version.\
+**Release date:** 2025-12-30
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.1.4
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.3...n8n@2.1.4) for this version.\
+**Release date:** 2025-12-23
 
 This release contains bug fixes.
 
@@ -1228,10 +1542,20 @@ This release contains bug fixes.
 
 For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
 
-## n8n@2.1.4
+## n8n@2.2.0
 
-View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.3...n8n@2.1.4) for this version.\
-**Release date:** 2025-12-23
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.0...n8n@2.2.0) for this version.
+
+**Release date:** 2025-12-22
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@2.1.2
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@2.1.1...n8n@2.1.2) for this version.\
+**Release date:** 2025-12-22
 
 This release contains bug fixes.
 
@@ -1391,6 +1715,10 @@ This release contains bug fixes.
 [farzad528](https://github.com/farzad528)
 
 For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+Older versions
+
+You can find the release notes for older versions of n8n: [1.x](1-x/) and [0.x](0-x/)
 
 # Sustainable Use License
 
@@ -2069,6 +2397,120 @@ To manage these settings, go to **Settings > Chat** and edit the providers.
 1. You can't add file knowledge when creating simple personal agents.
 1. Tool selection is limited to a few options.
 1. Only workflows with [Chat Trigger node](../../integrations/builtin/core-nodes/n8n-nodes-langchain.chattrigger/) and streaming-enabled [AI Agent node](../../integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/) work as workflow agents. Your workflows must meet specific requirements.
+
+# Human-in-the-loop for AI tool calls
+
+You can require human approval before an AI Agent executes a specific tool. When a tool requires human review, the workflow pauses and waits for a person to take one of the following actions:
+
+- **Approve**: The tool executes with the input specified by the AI.
+- **Deny**: The action is canceled and doesn't run.
+
+This feature allows for selective oversight of tool use within AI workflows, making it easier to apply additional review to tools with higher risk, such as sending messages, modifying records, or deleting data.
+
+## When to use human review
+
+Human-in-the-loop (HITL) review is useful when:
+
+- **Tools perform irreversible actions**: Deleting data, sending external communications, or making purchases.
+- **Compliance requirements exist**: Regulated industries may require human approval for certain automated actions.
+- **High-value decisions are involved**: Actions that have significant business impact benefit from human oversight.
+- **You're building trust in AI workflows**: Start with human review enabled, then reduce oversight as confidence grows.
+
+HITL can be applied to all tools connected to an AI Agent node, or just selected individual tools, offering more precise control than general output gating.
+
+## How it works
+
+1. The AI Agent determines it needs to use a tool that has human review enabled.
+1. The workflow pauses and sends an approval request through your configured channel (such as Slack, Telegram, or the n8n Chat interface).
+1. A human reviewer receives the request showing which tool the AI wants to use and with what parameters.
+1. The reviewer either approves or denies the request.
+1. If approved, the tool executes with the AI-specified input. If denied, the action is canceled and the AI is informed of the rejection.
+
+Different approval channels
+
+The review step can happen through a different channel than the main interaction. For example, you could have users interact with an AI agent through the n8n Chat interface, but route approval requests to a specific person in Slack.
+
+## Setting up human review for tools
+
+### Step 1: Open the Tools Panel
+
+In your workflow, click the **Tools** connector on an AI Agent node to open the Tools Panel.
+
+### Step 2: Add a human review step
+
+1. In the Tools Panel, find the **Human review** section.
+1. Select your preferred approval channel from the available options.
+1. Configure the approval channel with the appropriate credentials and settings.
+
+### Step 3: Connect tools to the review step
+
+1. Add the tools that require approval to the human review step's tool connector.
+1. Configure each tool as you normally would.
+
+## Available approval channels
+
+You can use any of the following services as your human review channel:
+
+| Channel                                                                                    | Description                                       |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| [Chat](../../integrations/builtin/core-nodes/n8n-nodes-langchain.chat/)                    | n8n's built-in chat interface                     |
+| [Slack](../../integrations/builtin/app-nodes/n8n-nodes-base.slack/)                        | Send approval requests to a Slack channel or DM   |
+| [Discord](../../integrations/builtin/app-nodes/n8n-nodes-base.discord/)                    | Send approval requests to a Discord channel       |
+| [Telegram](../../integrations/builtin/app-nodes/n8n-nodes-base.telegram/)                  | Send approval requests through Telegram           |
+| [Microsoft Teams](../../integrations/builtin/app-nodes/n8n-nodes-base.microsoftteams/)     | Send approval requests to a Teams channel or chat |
+| [Gmail](../../integrations/builtin/app-nodes/n8n-nodes-base.gmail/)                        | Send approval requests via email                  |
+| [WhatsApp Business Cloud](../../integrations/builtin/app-nodes/n8n-nodes-base.whatsapp/)   | Send approval requests through WhatsApp           |
+| [Google Chat](../../integrations/builtin/app-nodes/n8n-nodes-base.googlechat/)             | Send approval requests to Google Chat             |
+| [Microsoft Outlook](../../integrations/builtin/app-nodes/n8n-nodes-base.microsoftoutlook/) | Send approval requests via Outlook email          |
+
+## Using expressions in human review tools
+
+### The $tool variable
+
+When configuring the human review step, you can use the `$tool` variable to construct a message for the reviewer that provides context about what the AI is trying to do. This variable has two properties:
+
+| Property           | Description                                                                                                                                                          |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$tool.name`       | The name of the tool the AI Agent is trying to call. This is the node name as shown on the canvas in n8n.                                                            |
+| `$tool.parameters` | The parameters the AI Agent is trying to use in the tool call. This includes any fields in the tool's input schema that are configured with `$fromAI()` expressions. |
+
+**Example message configuration:**
+
+```
+The AI wants to use {{ $tool.name }} with the following parameters:
+{{ JSON.stringify($tool.parameters, null, 2) }}
+```
+
+This helps reviewers understand exactly what action the AI is attempting before they approve or deny the request.
+
+### Using $fromAI() in human review tools
+
+The [`$fromAI()` function](../examples/using-the-fromai-function/) works with tools connected to human review steps. This means the AI can dynamically specify tool parameters, and those AI-determined values are what the human reviewer sees and approves.
+
+## System prompt best practices
+
+For the AI Agent to correctly interpret and handle denied tool call attempts, include information about the human review setup in your system prompt.
+
+System prompt configuration required
+
+Make sure you include the tool setup and human review steps in your system prompt. This helps the AI understand which tools require approval and how to respond gracefully when a tool call is denied.
+
+Consider including:
+
+- Which tools require human approval
+- What happens when approval is denied
+- How the AI should respond to rejections (for example, inform the user, suggest alternatives, or ask for clarification)
+
+## Chaining and subagents
+
+When using an AI Agent as a tool for another AI Agent, human review steps in the subagent work correctly.
+
+## Related resources
+
+- [AI Agent node](../../integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/)
+- [Tools Agent](../../integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/tools-agent/)
+- [What is a tool in AI?](../examples/understand-tools/)
+- [Let AI specify tool parameters with $fromAI()](../examples/using-the-fromai-function/)
 
 # Build an AI chat agent with n8n
 
@@ -5285,6 +5727,7 @@ Luxon is a JavaScript library. The two convenience [variables](#get-the-current-
 Be aware of the following:
 
 - In a workflow, n8n converts dates and times to strings between nodes. Keep this in mind when doing arithmetic on dates and times from other nodes.
+- Using Luxon's `DateTime()` is the recommended approach in n8n. Using vanilla JavaScript's `Date()` doesn't work with some n8n features. For example, it doesn't respect the [Workflow-specific Time Zone](https://docs.n8n.io/workflows/settings/#timezone).
 - With vanilla JavaScript, you can convert a string to a date with `new Date('2019-06-23')`. In Luxon, you must use a function explicitly stating the format, such as `DateTime.fromISO('2019-06-23')` or `DateTime.fromFormat("23-06-2019", "dd-MM-yyyy")`.
 
 ## Setting the timezone in n8n
@@ -8567,7 +9010,7 @@ To check the configuration of the nodes, you can copy the JSON workflow code bel
 		{
 			"parameters": {
 				"channel": "channelname",
-				"text": "=This workflow {{$node[\"Error Trigger\"].json[\"workflow\"][\"name\"]}}failed.\nHave a look at it here: {{$node[\"Error Trigger\"].json[\"execution\"][\"url\"]}}",
+				"text": "=This workflow {{$(\"Error Trigger\").item.json[\"workflow\"][\"name\"]}}failed.\nHave a look at it here: {{$(\"Error Trigger\").item.json[\"execution\"][\"url\"]}}",
 				"attachments": [],
 				"otherOptions": {}
 			},
@@ -9745,8 +10188,8 @@ See [Data table node](../../integrations/builtin/core-nodes/n8n-nodes-base.datat
 
 ## Considerations and limitations of data tables
 
-- Data tables are suitable for light to moderate data storage. By default, a data table can't contain more than 50MB of data. In self-hosted environments, you can increase this default size limit using the environment variable `N8N_DATA_TABLES_MAX_SIZE_BYTES`.
-- When a data table approaches 80% of your storage limit, a warning will alert you. A final warning appears when you reach the storage limit. Exceeding this limit will disable manual additions to tables and cause workflow execution errors during attempts to insert or update data.
+- Data tables are suitable for light to moderate data storage. By default, the total storage used by all data tables in an instance is limited to 50MB. In self-hosted environments, you can increase this default size limit using the environment variable `N8N_DATA_TABLES_MAX_SIZE_BYTES`.
+- When your data tables approach 80% of your storage limit, a warning will alert you. A final warning appears when you reach the storage limit. Exceeding this limit will disable manual additions to tables and cause workflow execution errors during attempts to insert or update data.
 - By default, data tables created within a project are accessible to all team members in that project.
 - Tables created in a **Personal** space are only accessible by their creator.
 
@@ -10707,7 +11150,7 @@ The response will contain the JSON data of the selected workflow:
       {
         "parameters": {
           "webhookUri": "https://discord.com/api/webhooks/865213348202151968/oD5_WPDQwtr22Vjd_82QP3-_4b_lGhAeM7RynQ8Js5DzyXrQEnj0zeAQIA6fki1JLtXE",
-          "text": "=This week we have {{$json[\"totalBooked\"]}} booked orders with a total value of {{$json[\"bookedSum\"]}}. My Unique ID: {{$node[\"HTTP Request\"].parameter[\"headerParametersUi\"][\"parameter\"][0][\"value\"]}}"
+          "text": "=This week we have {{$json[\"totalBooked\"]}} booked orders with a total value of {{$json[\"bookedSum\"]}}. My Unique ID: {{ $(\"HTTP Request\").params.headerParameters.parameters[0].value }}"
         },
         "name": "Discord",
         "type": "n8n-nodes-base.discord",
@@ -12472,7 +12915,7 @@ DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED_FILE=/path/to/ssl_reject_unauth
 
 # Supported databases
 
-By default, n8n uses SQLite to save credentials, past executions, and workflows. n8n also supports PostgresDB.
+By default, n8n uses SQLite to save credentials, past executions, and workflows. n8n also supports PostgresDB (only [actively maintained versions](https://www.postgresql.org/support/versioning/)).
 
 ## Database type by n8n installation
 
@@ -12558,6 +13001,10 @@ The database file is located at: `~/.n8n/database.sqlite`
 Task runners are a generic mechanism to execute tasks in a secure and performant way. They're used to execute user-provided JavaScript and Python code in the [Code node](../../../integrations/builtin/core-nodes/n8n-nodes-base.code/).
 
 This document describes how task runners work and how you can configure them.
+
+Internal mode not recommended for production
+
+Using internal mode in production environments can pose a security risk. For production deployments, use [external mode](#external-mode) to ensure proper isolation between n8n and task runner processes. Refer to [Hardening task runners](../../securing/hardening-task-runners/) for additional security measures.
 
 ## How it works
 
@@ -13129,6 +13576,7 @@ You can provide a [configuration file](../configuration-methods/) for n8n. You c
 - [Timezone and localization](/hosting/configuration/environment-variables/timezone-localization/)
 - [User management and 2FA](/hosting/configuration/environment-variables/user-management-smtp-2fa/)
 - [Workflows](/hosting/configuration/environment-variables/workflows/)
+- [Workflow history](/hosting/configuration/environment-variables/workflow-history/)
 
 # AI Assistant environment variables
 
@@ -13234,7 +13682,7 @@ To learn more about proxy environment variables, check the [environment variable
 | `N8N_TEMPLATES_HOST`                 | String                       | `https://api.n8n.io`                                             | Change this if creating your own workflow template library. Note that to use your own workflow templates library, your API must provide the same endpoints and response structure as n8n's. Refer to [Workflow templates](../../../../workflows/templates/) for more information. |
 | `N8N_ENCRYPTION_KEY`                 | String                       | Random key generated by n8n                                      | Provide a custom key used to encrypt credentials in the n8n database. By default n8n generates a random key on first launch.                                                                                                                                                      |
 | `N8N_USER_FOLDER`                    | String                       | `user-folder`                                                    | Provide the path where n8n will create the `.n8n` folder. This directory stores user-specific data, such as database file and encryption key.                                                                                                                                     |
-| `N8N_PATH`                           | String                       | `/`                                                              | The path n8n deploys to.                                                                                                                                                                                                                                                          |
+| `N8N_PATH`                           | String                       | `/`                                                              | The path n8n deploys to. Combining `N8N_PATH` with reverse proxies can cause folder navigation issues. Use a subdomain (for example, `n8n.example.com`) or use `N8N_PATH` without reverse proxy.                                                                                  |
 | `N8N_HOST`                           | String                       | `localhost`                                                      | Host name n8n runs on.                                                                                                                                                                                                                                                            |
 | `N8N_PORT`                           | Number                       | `5678`                                                           | The HTTP port n8n runs on.                                                                                                                                                                                                                                                        |
 | `N8N_LISTEN_ADDRESS`                 | String                       | `::`                                                             | The IP address n8n should listen on.                                                                                                                                                                                                                                              |
@@ -13301,24 +13749,25 @@ You can add `_FILE` to individual variables to provide their configuration in a 
 
 This page lists environment variables to configure workflow execution settings.
 
-| Variable                                            | Type                            | Default   | Description                                                                                                                                                                                                                                   |
-| --------------------------------------------------- | ------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `EXECUTIONS_MODE`                                   | Enum string: `regular`, `queue` | `regular` | Whether executions should run directly or using queue. Refer to [Queue mode](../../../scaling/queue-mode/) for more details.                                                                                                                  |
-| `EXECUTIONS_TIMEOUT`                                | Number                          | `-1`      | Sets a default timeout (in seconds) to all workflows after which n8n stops their execution. Users can override this for individual workflows up to the duration set in `EXECUTIONS_TIMEOUT_MAX`. Set `EXECUTIONS_TIMEOUT` to `-1` to disable. |
-| `EXECUTIONS_TIMEOUT_MAX`                            | Number                          | `3600`    | The maximum execution time (in seconds) that users can set for an individual workflow.                                                                                                                                                        |
-| `EXECUTIONS_DATA_SAVE_ON_ERROR`                     | Enum string: `all`, `none`      | `all`     | Whether n8n saves execution data on error.                                                                                                                                                                                                    |
-| `EXECUTIONS_DATA_SAVE_ON_SUCCESS`                   | Enum string: `all`, `none`      | `all`     | Whether n8n saves execution data on success.                                                                                                                                                                                                  |
-| `EXECUTIONS_DATA_SAVE_ON_PROGRESS`                  | Boolean                         | `false`   | Whether to save progress for each node executed (true) or not (false).                                                                                                                                                                        |
-| `EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS`            | Boolean                         | `true`    | Whether to save data of executions when started manually.                                                                                                                                                                                     |
-| `EXECUTIONS_DATA_PRUNE`                             | Boolean                         | `true`    | Whether to delete data of past executions on a rolling basis.                                                                                                                                                                                 |
-| `EXECUTIONS_DATA_MAX_AGE`                           | Number                          | `336`     | The execution age (in hours) before it's deleted.                                                                                                                                                                                             |
-| `EXECUTIONS_DATA_PRUNE_MAX_COUNT`                   | Number                          | `10000`   | Maximum number of executions to keep in the database. 0 = no limit                                                                                                                                                                            |
-| `EXECUTIONS_DATA_HARD_DELETE_BUFFER`                | Number                          | `1`       | How old (hours) the finished execution data has to be to get hard-deleted. By default, this buffer excludes recent executions as the user may need them while building a workflow.                                                            |
-| `EXECUTIONS_DATA_PRUNE_HARD_DELETE_INTERVAL`        | Number                          | `15`      | How often (minutes) execution data should be hard-deleted.                                                                                                                                                                                    |
-| `EXECUTIONS_DATA_PRUNE_SOFT_DELETE_INTERVAL`        | Number                          | `60`      | How often (minutes) execution data should be soft-deleted.                                                                                                                                                                                    |
-| `N8N_CONCURRENCY_PRODUCTION_LIMIT`                  | Number                          | `-1`      | Max production executions allowed to run concurrently, in both regular and scaling modes. `-1` to disable in regular mode.                                                                                                                    |
-| `N8N_WORKFLOW_AUTODEACTIVATION_ENABLED`             | Boolean                         | `false`   | Whether workflows are automatically unpublished after repeated crashed executions.                                                                                                                                                            |
-| `N8N_WORKFLOW_AUTODEACTIVATION_MAX_LAST_EXECUTIONS` | Number                          | `3`       | Number of crashed executions before unpublishing a workflow.                                                                                                                                                                                  |
+| Variable                                            | Type                            | Default   | Description                                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------- | ------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `EXECUTIONS_MODE`                                   | Enum string: `regular`, `queue` | `regular` | Whether executions should run directly or using queue. Refer to [Queue mode](../../../scaling/queue-mode/) for more details.                                                                                                                                                                        |
+| `EXECUTIONS_TIMEOUT`                                | Number                          | `-1`      | Sets a default timeout (in seconds) to all workflows after which n8n stops their execution. Users can override this for individual workflows up to the duration set in `EXECUTIONS_TIMEOUT_MAX`. Set `EXECUTIONS_TIMEOUT` to `-1` to disable.                                                       |
+| `EXECUTIONS_TIMEOUT_MAX`                            | Number                          | `3600`    | The maximum execution time (in seconds) that users can set for an individual workflow.                                                                                                                                                                                                              |
+| `N8N_AI_TIMEOUT_MAX`                                | Number                          | `3600000` | Sets the HTTP request timeout in milliseconds for AI and LLM nodes (such as OpenAI, Anthropic, Mistral, and Ollama). This controls how long n8n waits for responses from AI services before timing out. Useful for slower local AI services or complex prompts that require longer processing time. |
+| `EXECUTIONS_DATA_SAVE_ON_ERROR`                     | Enum string: `all`, `none`      | `all`     | Whether n8n saves execution data on error.                                                                                                                                                                                                                                                          |
+| `EXECUTIONS_DATA_SAVE_ON_SUCCESS`                   | Enum string: `all`, `none`      | `all`     | Whether n8n saves execution data on success.                                                                                                                                                                                                                                                        |
+| `EXECUTIONS_DATA_SAVE_ON_PROGRESS`                  | Boolean                         | `false`   | Whether to save progress for each node executed (true) or not (false).                                                                                                                                                                                                                              |
+| `EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS`            | Boolean                         | `true`    | Whether to save data of executions when started manually.                                                                                                                                                                                                                                           |
+| `EXECUTIONS_DATA_PRUNE`                             | Boolean                         | `true`    | Whether to delete data of past executions on a rolling basis.                                                                                                                                                                                                                                       |
+| `EXECUTIONS_DATA_MAX_AGE`                           | Number                          | `336`     | The execution age (in hours) before it's deleted.                                                                                                                                                                                                                                                   |
+| `EXECUTIONS_DATA_PRUNE_MAX_COUNT`                   | Number                          | `10000`   | Maximum number of executions to keep in the database. 0 = no limit                                                                                                                                                                                                                                  |
+| `EXECUTIONS_DATA_HARD_DELETE_BUFFER`                | Number                          | `1`       | How old (hours) the finished execution data has to be to get hard-deleted. By default, this buffer excludes recent executions as the user may need them while building a workflow.                                                                                                                  |
+| `EXECUTIONS_DATA_PRUNE_HARD_DELETE_INTERVAL`        | Number                          | `15`      | How often (minutes) execution data should be hard-deleted.                                                                                                                                                                                                                                          |
+| `EXECUTIONS_DATA_PRUNE_SOFT_DELETE_INTERVAL`        | Number                          | `60`      | How often (minutes) execution data should be soft-deleted.                                                                                                                                                                                                                                          |
+| `N8N_CONCURRENCY_PRODUCTION_LIMIT`                  | Number                          | `-1`      | Max production executions allowed to run concurrently, in both regular and scaling modes. `-1` to disable in regular mode.                                                                                                                                                                          |
+| `N8N_WORKFLOW_AUTODEACTIVATION_ENABLED`             | Boolean                         | `false`   | Whether workflows are automatically unpublished after repeated crashed executions.                                                                                                                                                                                                                  |
+| `N8N_WORKFLOW_AUTODEACTIVATION_MAX_LAST_EXECUTIONS` | Number                          | `3`       | Number of crashed executions before unpublishing a workflow.                                                                                                                                                                                                                                        |
 
 # External data storage environment variables
 
@@ -13638,6 +14087,12 @@ Refer to [User management](../../user-management-self-hosted/) for more informat
 | `N8N_MFA_ENABLED`                               | Boolean | `true`  | Whether to enable two-factor authentication (true) or disable (false). n8n ignores this if existing users have 2FA enabled.                                                                                                                                          |
 | `N8N_INVITE_LINKS_EMAIL_ONLY`                   | Boolean | `false` | When set to true, n8n will only deliver invite links via email and will not expose them through the API. This option enhances security by preventing invite URLs from being accessible programmatically, or to high privileged users.                                |
 
+# Workflow history environment variables
+
+| Variable                          | Type   | Default | Description                                                                                                                              |
+| --------------------------------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `N8N_WORKFLOW_HISTORY_PRUNE_TIME` | Number | `-1`    | How long to keep workflow history versions before automatically deleting them (in hours). Set to `-1` to keep all versions indefinitely. |
+
 # Workflows environment variables
 
 File-based configuration
@@ -13682,7 +14137,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Starting n8n
 
@@ -13837,7 +14292,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Try n8n with npx
 
@@ -13992,7 +14447,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Create a cluster
 
@@ -14175,7 +14630,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Hosting options
 
@@ -14356,7 +14811,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Create a Droplet
 
@@ -14578,7 +15033,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## 1. Install Docker and Docker Compose
 
@@ -14795,7 +15250,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Before you begin: get a Google Cloud project
 
@@ -15051,7 +15506,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Create project
 
@@ -15235,7 +15690,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Use the deployment template to create a Heroku project
 
@@ -15312,7 +15767,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## Create a server
 
@@ -16290,6 +16745,22 @@ Refer to [Configuration](../../configuration/configuration-methods/) for more in
 ## Run task runners as sidecars in external mode
 
 To increase the isolation between the core n8n process and code in the Code node, run task runners in [external mode](../../configuration/task-runners/#setting-up-external-mode). External task runners launch as separate containers, providing a fully isolated environment to execute the JavaScript defined in the Code node.
+
+## Use the distroless image
+
+For a reduced attack surface, use the distroless Docker image variant. Distroless images contain only the application and its runtime dependencies, excluding package managers, shells, and other utilities that aren't needed at runtime.
+
+To use the distroless image, append the `-distroless` suffix to the Docker tag. For example: `2.4.6-distroless`.
+
+## Run as the nobody user
+
+For improved security, configure task runners to run as the unprivileged `nobody` user with user and group ID 65532. This prevents the container process from running with root privileges and limits potential damage from security vulnerabilities.
+
+## Configure read-only root filesystem
+
+Configure a [read-only root filesystem](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) to prevent any modifications to the container's filesystem at runtime. This helps protect against malicious code that might attempt to modify system files.
+
+Task runners still require some temporary storage for operation. To accommodate this, mount a minimal `emptyDir` volume to `/tmp`. If your workflows require more temporary space, increase the size of the volume accordingly.
 
 # Securing n8n
 
@@ -18023,6 +18494,24 @@ You can find authentication information for this node [here](../../credentials/a
 
 ## Templates and examples
 
+**Automated AWS S3 / Azure / Google to local MinIO Object Backup with Scheduling**
+
+by SIENNA
+
+[View template details](https://n8n.io/workflows/7284-automated-aws-s3-azure-google-to-local-minio-object-backup-with-scheduling/)
+
+**Generate and Store AI Images with DALL-E and Azure Blob Storage**
+
+by Trung Tran
+
+[View template details](https://n8n.io/workflows/7648-generate-and-store-ai-images-with-dall-e-and-azure-blob-storage/)
+
+**Qualify and email literary agents with GPT‑4.1, Gmail and Google Sheets**
+
+by malcolm
+
+[View template details](https://n8n.io/workflows/12651-qualify-and-email-literary-agents-with-gpt41-gmail-and-google-sheets/)
+
 [Browse Azure Storage integration templates](https://n8n.io/integrations/azure-storage/), or [search all templates](https://n8n.io/workflows/)
 
 ## Related resources
@@ -18950,6 +19439,24 @@ Refer to [Coda credentials](../../credentials/coda/) for guidance on setting up 
   - Push view button
 
 ## Templates and examples
+
+**Insert data into a new row for a table in Coda**
+
+by tanaypant
+
+[View template details](https://n8n.io/workflows/482-insert-data-into-a-new-row-for-a-table-in-coda/)
+
+**AI Agent Managed Tables and Views with 🛠️ Coda Tool MCP Server 💪 18 operations**
+
+by David Ashby
+
+[View template details](https://n8n.io/workflows/5319-ai-agent-managed-tables-and-views-with-coda-tool-mcp-server-18-operations/)
+
+**Sync your HRIS employee directory with Microsoft Teams, Coda, and Slack**
+
+by vinci-king-01
+
+[View template details](https://n8n.io/workflows/12586-sync-your-hris-employee-directory-with-microsoft-teams-coda-and-slack/)
 
 [Browse Coda integration templates](https://n8n.io/integrations/coda/), or [search all templates](https://n8n.io/workflows/)
 
@@ -20424,7 +20931,7 @@ by Joseph LePage
 
 [View template details](https://n8n.io/workflows/2522-pdf2blog-create-blog-post-on-ghost-crm-from-pdf-document/)
 
-**✍️ AI Agent to Create Linkedin Posts for Blog Promotion with GPT-4o**
+**✍️ AI agent to create Linkedin posts for blog promotion with GPT-4o**
 
 by Samir Saci
 
@@ -20809,7 +21316,7 @@ This node can be used to enhance the capabilities of an AI agent. When used in t
 
 ## Templates and examples
 
-**🗼 AI Powered Supply Chain Control Tower with BigQuery and GPT-4o**
+**🗼 AI powered supply chain control tower with BigQuery and GPT-4o**
 
 by Samir Saci
 
@@ -20981,6 +21488,10 @@ Refer to [Google credentials](../../credentials/google/) for guidance on setting
 This node can be used as an AI tool
 
 This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../advanced-ai/examples/using-the-fromai-function/).
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Operations
 
@@ -21429,7 +21940,7 @@ by Gerald Denor
 
 **Dynamically replace images in Google Slides via API**
 
-by Emmanuel Bernard
+by Emmanuel Bernard - n8n Expert Lausanne
 
 [View template details](https://n8n.io/workflows/2244-dynamically-replace-images-in-google-slides-via-api/)
 
@@ -21537,7 +22048,7 @@ by Milorad Filipovic
 
 [View template details](https://n8n.io/workflows/2179-translate-pdf-documents-from-google-drive-folder-with-deepl/)
 
-**🉑 Generate Anki Flash Cards for Language Learning with Google Translate and GPT**
+**🉑 Generate Anki flash cards for language learning with Google Translate and GPT**
 
 by Samir Saci
 
@@ -21767,7 +22278,7 @@ Create a new column in your Grist table with the formula `$id`.
 
 The **Get All** operation returns the Row ID of each record along with the fields.
 
-You can get it with the expression `{{$node["GristNodeName"].json["id"]}}`.
+You can get it with the expression `{{$("GristNodeName").item.json.id}}`.
 
 ## Filter records when using the Get All operation
 
@@ -24128,6 +24639,10 @@ Credentials
 
 You can find authentication information for this node [here](../../credentials/microsoftentra/).
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft Entra ID credentials configuration.
+
 ## Operations
 
 - **Group**
@@ -24184,6 +24699,10 @@ On this page, you'll find a list of operations the Microsoft Excel node supports
 Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
+
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
 
 This node can be used as an AI tool
 
@@ -24247,6 +24766,10 @@ Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
+
 ## Operations
 
 - Secure Score
@@ -24282,6 +24805,10 @@ On this page, you'll find a list of operations the Microsoft OneDrive node suppo
 Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
+
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
 
 This node can be used as an AI tool
 
@@ -24353,9 +24880,17 @@ Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
+
 This node can be used as an AI tool
 
 This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../advanced-ai/examples/using-the-fromai-function/).
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Operations
 
@@ -24585,9 +25120,17 @@ Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
+
 This node can be used as an AI tool
 
 This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../advanced-ai/examples/using-the-fromai-function/).
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Operations
 
@@ -24694,6 +25237,10 @@ On this page, you'll find a list of operations the Microsoft To Do node supports
 Credentials
 
 Refer to [Microsoft credentials](../../credentials/microsoft/) for guidance on setting up authentication.
+
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
 
 This node can be used as an AI tool
 
@@ -27724,6 +28271,10 @@ Credentials
 
 Refer to [Slack credentials](../../credentials/slack/) for guidance on setting up authentication.
 
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
+
 ## Operations
 
 - **Channel**
@@ -27753,7 +28304,7 @@ Refer to [Slack credentials](../../credentials/slack/) for guidance on setting u
   - **Get permalink**: Get a message's permalink.
   - **Search** for messages
   - **Send** a message
-  - **Send and Wait for Approval**: Send a message and wait for approval from the recipient before continuing.
+  - **Send and Wait for Response**: Send a message and wait for a response from the recipient before continuing.
   - **Update** a message
 - **Reaction**
   - **Add** a reaction to a message.
@@ -27834,7 +28385,7 @@ If those aren't enough, use the table below to look up the resource and operatio
 | Message      | Get Permalink              | [chat.getPermalink](https://api.slack.com/methods/chat.getPermalink)               |
 | Message      | Search                     | [search.messages](https://api.slack.com/methods/search.messages)                   |
 | Message      | Send                       | [chat.postMessage](https://api.slack.com/methods/chat.postMessage)                 |
-| Message      | Send and Wait for Approval | [chat.postMessage](https://api.slack.com/methods/chat.postMessage)                 |
+| Message      | Send and Wait for Response | [chat.postMessage](https://api.slack.com/methods/chat.postMessage)                 |
 | Message      | Update                     | [chat.update](https://api.slack.com/methods/chat.update)                           |
 | Reaction     | Add                        | [reactions.add](https://api.slack.com/methods/reactions.add)                       |
 | Reaction     | Get                        | [reactions.get](https://api.slack.com/methods/reactions.get)                       |
@@ -28296,13 +28847,13 @@ by Jonathan
 
 **Simplest way to create a Stripe Payment Link**
 
-by Emmanuel Bernard
+by Emmanuel Bernard - n8n Expert Lausanne
 
 [View template details](https://n8n.io/workflows/2195-simplest-way-to-create-a-stripe-payment-link/)
 
 **Streamline Your Zoom Meetings with Secure, Automated Stripe Payments**
 
-by Emmanuel Bernard
+by Emmanuel Bernard - n8n Expert Lausanne
 
 [View template details](https://n8n.io/workflows/2192-streamline-your-zoom-meetings-with-secure-automated-stripe-payments/)
 
@@ -30590,7 +31141,7 @@ by Friedemann Schuetz
 
 **Streamline Your Zoom Meetings with Secure, Automated Stripe Payments**
 
-by Emmanuel Bernard
+by Emmanuel Bernard - n8n Expert Lausanne
 
 [View template details](https://n8n.io/workflows/2192-streamline-your-zoom-meetings-with-secure-automated-stripe-payments/)
 
@@ -30733,11 +31284,17 @@ You can find authentication information for this node [here](../../credentials/g
   - Transcribe a Recording: Transcribes audio into text.
 - Document:
   - Analyze Document: Take in documents and answer questions about them.
-- File:
-  - Upload File: Upload a file to the Google Gemini API for later user.
+- File Search:
+  - Create File Search Store: Create a new File Search store for RAG (Retrieval Augmented Generation)
+  - Delete File Search Store: Delete File Search Store
+  - List File Search Stores: List all File Search stores owned by the user
+  - Upload to File Search Store: Upload a file to a File Search store for RAG (Retrieval Augmented Generation)
 - Image:
   - Analyze Image: Take in images and answer questions about them.
   - Generate an Image: Creates an image from a text prompt.
+  - Edit Image: Upload one or more images and apply edits based on a prompt
+- Media File:
+  - Upload Media File: Upload a file to the Google Gemini API for later user.
 - Text:
   - Message a Model: Create a completion with a Google Gemini model.
 - Video:
@@ -30961,6 +31518,10 @@ Refer to [Discord credentials](../../credentials/discord/) for guidance on setti
 This node can be used as an AI tool
 
 This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../advanced-ai/examples/using-the-fromai-function/).
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Operations
 
@@ -31444,6 +32005,10 @@ For common errors or issues and suggested resolution steps, refer to [Common Iss
 # Gmail node Message Operations
 
 Use the Message operations to send, reply to, delete, mark read or unread, add a label to, remove a label from, or get a message or get a list of messages in Gmail. Refer to the [Gmail node](../) for more information on the Gmail node itself.
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Add Label to a message
 
@@ -33966,11 +34531,11 @@ by Oskar
 
 [View template details](https://n8n.io/workflows/2315-autonomous-ai-crawler/)
 
-**Supabase Insertion & Upsertion & Retrieval**
+**🤖 Create a Documentation Expert Bot with RAG, Gemini, and Supabase**
 
-by Ria
+by Lucas Peyrin
 
-[View template details](https://n8n.io/workflows/2395-supabase-insertion-and-upsertion-and-retrieval/)
+[View template details](https://n8n.io/workflows/5993-create-a-documentation-expert-bot-with-rag-gemini-and-supabase/)
 
 [Browse Supabase integration templates](https://n8n.io/integrations/supabase/), or [search all templates](https://n8n.io/workflows/)
 
@@ -34344,7 +34909,9 @@ This node can be used as an AI tool
 
 This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../../advanced-ai/examples/using-the-fromai-function/).
 
-s
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Delete Chat Message
 
@@ -34833,6 +35400,10 @@ On this page, you'll find a list of operations the WhatsApp Business Cloud node 
 Credentials
 
 Refer to [WhatsApp Business Cloud credentials](../../credentials/whatsapp/) for guidance on setting up authentication.
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
 
 ## Operations
 
@@ -37385,9 +37956,9 @@ In sub-nodes, the expression always resolves to the first item. For example, giv
 
 Before using this node, you need a Redis database with the [Redis Query Engine](https://redis.io/docs/latest/develop/ai/search-and-query/?utm_source=n8n&utm_medium=docs) enabled. Use one of the following:
 
-- Redis Open Source (v8.0 and later) - includes the Redis Query Engine by default
-- [Redis Cloud](https://cloud.redis.io/?utm_source=n8n&utm_medium=docs) - fully managed service
-- [Redis Software](https://redis.io/software/?utm_source=n8n&utm_medium=docs) - self-managed deployment
+- **Redis Open Source (v8.0 and later)** : includes the Redis Query Engine by default
+- **[Redis Cloud](https://cloud.redis.io/?utm_source=n8n&utm_medium=docs)** : fully managed service
+- **[Redis Software](https://redis.io/software/?utm_source=n8n&utm_medium=docs)** : self-managed deployment
 
 A new index will be created if you don't have one.
 
@@ -37401,7 +37972,7 @@ You can use the Redis Vector Store node in the following patterns:
 
 You can use the Redis Vector Store as a regular node to insert or get documents. This pattern places the Redis Vector Store in the regular connection flow without using an agent.
 
-You can see an example of this in scenario 1 of [this template](https://n8n.io/workflows/2621-ai-agent-to-chat-with-files-in-supabase-storage/) (the template uses the Supabase Vector Store, but the pattern is the same).
+You can see an example in [this template](https://n8n.io/workflows/10887-reduce-llm-costs-with-semantic-caching-using-redis-vector-store-and-huggingface/) where the semantic cache is stored in Redis and retrieved using the Redis Vector Store node in the start of the workflow.
 
 ### Connect directly to an AI agent as a tool
 
@@ -37419,7 +37990,7 @@ An [example of the connection flow](https://n8n.io/workflows/1960-ask-questions-
 
 Another pattern uses the [Vector Store Question Answer Tool](../../sub-nodes/n8n-nodes-langchain.toolvectorstore/) to summarize results and answer questions from the Redis Vector Store node. Rather than connecting the Redis Vector Store directly as a tool, this pattern uses a tool specifically designed to summarizes data in the vector store.
 
-The [connections flow](https://n8n.io/workflows/2464-scale-deal-flow-with-a-pitch-deck-ai-vision-chatbot-and-qdrant-vector-store/) (the linked example uses Qdrant, but the pattern is the same) in this case would look like this: AI agent (tools connector) -> Vector Store Question Answer Tool (Vector Store connector) -> Redis Vector store.
+This [template](https://n8n.io/workflows/10837-chat-with-github-issues-using-openai-and-redis-vector-search/) shows how to use the Vector Store Question Answer Tool with the Redis Vector Store node. The connections flow in this case would look like this: AI agent (tools connector) -> Vector Store Question Answer Tool (Vector Store connector) -> Redis Vector store.
 
 ## Node parameters
 
@@ -37461,9 +38032,9 @@ This Operation Mode includes one **Node option**, the [Metadata Filter](#metadat
 
 ### Retrieve Documents (As Vector Store for Chain/Tool) parameters
 
-- **Redis Index**: Enter the name of the Redis vector search index to use.
+- **Redis Index**: Enter the name of the Redis vector search index to use. Optionally choose an existing one from the list.
 
-This Operation Mode includes one **Node option**, the [Metadata Filter](#metadata-filter). Optionally choose an existing one from the list.
+This Operation Mode includes one **Node option**, the [Metadata Filter](#metadata-filter).
 
 ### Retrieve Documents (As Tool for AI Agent) parameters
 
@@ -37668,17 +38239,17 @@ by Mark Shcherbakov
 
 [View template details](https://n8n.io/workflows/2621-ai-agent-to-chat-with-files-in-supabase-storage/)
 
+**🤖 Create a Documentation Expert Bot with RAG, Gemini, and Supabase**
+
+by Lucas Peyrin
+
+[View template details](https://n8n.io/workflows/5993-create-a-documentation-expert-bot-with-rag-gemini-and-supabase/)
+
 **Supabase Insertion & Upsertion & Retrieval**
 
 by Ria
 
 [View template details](https://n8n.io/workflows/2395-supabase-insertion-and-upsertion-and-retrieval/)
-
-**Automate Sales Cold Calling Pipeline with Apify, GPT-4o, and WhatsApp**
-
-by Khairul Muhtadin
-
-[View template details](https://n8n.io/workflows/5449-automate-sales-cold-calling-pipeline-with-apify-gpt-4o-and-whatsapp/)
 
 [Browse Supabase Vector Store integration templates](https://n8n.io/integrations/supabase-vector-store/), or [search all templates](https://n8n.io/workflows/)
 
@@ -38710,6 +39281,21 @@ Refer to the main AI Agent node's [Templates and examples](../#templates-and-exa
 
 To learn how to dynamically populate parameters for app node tools, refer to [Let AI specify tool parameters with `$fromAI()`](../../../../../../advanced-ai/examples/using-the-fromai-function/).
 
+## Human review for tool calls
+
+You can require human approval before the AI Agent executes specific tools. This is useful for tools that perform sensitive actions like sending messages, modifying records, or deleting data.
+
+To add a human review step:
+
+1. Click the tool connector on the AI Agent node.
+1. In the Tools Panel, find the **Human review** section.
+1. Select your preferred approval channel (Chat, Slack, Telegram, and more) and configure it.
+1. Connect the tools that require approval to the human review step.
+
+When the AI wants to use a gated tool, the workflow pauses and sends an approval request through your chosen channel. The recipient can approve (tool executes) or deny (action canceled).
+
+For detailed setup instructions and best practices, refer to [Human-in-the-loop for AI tool calls](../../../../../../advanced-ai/human-in-the-loop-tools/).
+
 ## Common issues
 
 For common questions or issues and suggested solutions, refer to [Common issues](../common-issues/).
@@ -39077,11 +39663,11 @@ by Joseph LePage
 
 [View template details](https://n8n.io/workflows/2982-ai-powered-rag-chatbot-for-your-docs-google-drive-gemini-qdrant/)
 
-**API Schema Extractor**
+**🤖 Create a Documentation Expert Bot with RAG, Gemini, and Supabase**
 
-by Polina Medvedieva
+by Lucas Peyrin
 
-[View template details](https://n8n.io/workflows/2658-api-schema-extractor/)
+[View template details](https://n8n.io/workflows/5993-create-a-documentation-expert-bot-with-rag-gemini-and-supabase/)
 
 [Browse Embeddings Google Gemini integration templates](https://n8n.io/integrations/embeddings-google-gemini/), or [search all templates](https://n8n.io/workflows/)
 
@@ -42386,17 +42972,17 @@ Configure these parameters to configure the node:
 
 ## Templates and examples
 
-**Chat with GitHub API Documentation: RAG-Powered Chatbot with Pinecone & OpenAI**
-
-by Mihai Farcas
-
-[View template details](https://n8n.io/workflows/2705-chat-with-github-api-documentation-rag-powered-chatbot-with-pinecone-and-openai/)
-
 **🤖 Create a Documentation Expert Bot with RAG, Gemini, and Supabase**
 
 by Lucas Peyrin
 
 [View template details](https://n8n.io/workflows/5993-create-a-documentation-expert-bot-with-rag-gemini-and-supabase/)
+
+**Chat with GitHub API Documentation: RAG-Powered Chatbot with Pinecone & OpenAI**
+
+by Mihai Farcas
+
+[View template details](https://n8n.io/workflows/2705-chat-with-github-api-documentation-rag-powered-chatbot-with-pinecone-and-openai/)
 
 **🤖 Build a Documentation Expert Chatbot with Gemini RAG Pipeline**
 
@@ -44672,7 +45258,7 @@ Choose between these options when using **On n8n Form Submission**:
 
 - **Show Completion Screen**: Shows users a final screen to confirm that they submitted the form.
   - Fill in **Completion Title** to set the `h1` title on the form.
-  - n8n displays the **Completion Message** as a subtitle below the main `h1` title on the form. Use `<br>` to add a line break.
+  - n8n displays the **Completion Message** as a subtitle below the main `h1` title on the form. Use `\n` or `<br>` to add a line break.
   - Select **Add option** and fill in **Completion Page Title** to set the page's title in the browser tab.
 - **Redirect to URL**: Redirect the user to a specified URL when the form completes.
   - Fill in the **URL** field with the page you want to redirect to when users complete the form.
@@ -44680,7 +45266,7 @@ Choose between these options when using **On n8n Form Submission**:
   - Fill in the **Text** field with the HTML or plain text content you wish to show.
 - **Return Binary File**: Return a binary file upon completion.
   - Fill in **Completion Title** to set the `h1` title on the form.
-  - n8n displays the **Completion Message** as a subtitle below the main `h1` title on the form. Use `<br>` to add a line break.
+  - n8n displays the **Completion Message** as a subtitle below the main `h1` title on the form. Use `\n` or `<br>` to add a line break.
   - Provide the **Input Data Field Name** containing the binary file to return to the user.
 
 ### Forms with branches
@@ -44710,7 +45296,7 @@ This workflow may execute more than one branch during an execution. Here, n8n ex
 Select **Add Option** to view more configuration options:
 
 - **Form Title**: The title for your form. n8n displays the **Form Title** as the webpage title and main `h1` title on the form.
-- **Form Description**: The description for your form. n8n displays the **Form Description** as a subtitle below the main `h1` title on the form. This field supports HTML. Use `<br>` to add a line break. The Form Description also populates the [HTML meta description](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#standard_metadata_names_defined_in_the_html_specification) for the page.
+- **Form Description**: The description for your form. n8n displays the **Form Description** as a subtitle below the main `h1` title on the form. This field supports HTML. Use `\n` or `<br>` to add a line break. The Form Description also populates the [HTML meta description](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#standard_metadata_names_defined_in_the_html_specification) for the page.
 - **Button Label**: The label to use for your form's submit button. n8n displays the **Button Label** as the name of the submit button.
 - **Custom Form Styling**: Override the default styling of the public form interface with CSS. The field pre-populates with the default styling so you can change only what you need to.
 - **Completion Page Title**: The title for the final completion page of the form.
@@ -45016,19 +45602,20 @@ You can find authentication information for this node [here](../../credentials/g
 
 ## Operations
 
-- [**Add**](#add) a file or folder to commit. Performs a [git add](https://git-scm.com/docs/git-add).
-- [**Add Config**](#add-config): Add configuration property. Performs a [git config](https://git-scm.com/docs/git-config) set or add.
-- [**Clone**](#clone) a repository: Performs a [git clone](https://git-scm.com/docs/git-clone).
-- [**Commit**](#commit) files or folders to git. Performs a [git commit](https://git-scm.com/docs/git-commit).
-- [**Fetch**](#fetch) from remote repository. Performs a [git fetch](https://git-scm.com/docs/git-fetch).
-- [**List Config**](#list-config): Return current configuration. Performs a [git config](https://git-scm.com/docs/git-config) query.
-- [**Log**](#log): Return git commit history. Performs a [git log](https://git-scm.com/docs/git-log).
-- [**Pull**](#pull) from remote repository: Performs a [git pull](https://git-scm.com/docs/git-pull).
-- [**Push**](#push) to remote repository: Performs a [git push](https://git-scm.com/docs/git-push).
-- [**Push Tags**](#push-tags) to remote repository: Performs a [git push --tags](https://git-scm.com/docs/git-push#Documentation/git-push.txt---tags).
-- Return [**Status**](#status) of current repository: Performs a [git status](https://git-scm.com/docs/git-status).
-- Create a new [**Tag**](#tag): Performs a [git tag](https://git-scm.com/docs/git-tag).
-- [**User Setup**](#user-setup): Set the user.
+- **Add** a file or folder to commit. Performs a [git add](https://git-scm.com/docs/git-add).
+- **Add Config**: Add configuration property. Performs a [git config](https://git-scm.com/docs/git-config) set or add.
+- **Clone** a repository: Performs a [git clone](https://git-scm.com/docs/git-clone).
+- **Commit** files or folders to git. Performs a [git commit](https://git-scm.com/docs/git-commit).
+- **Fetch** from remote repository. Performs a [git fetch](https://git-scm.com/docs/git-fetch).
+- **List Config**: Return current configuration. Performs a [git config](https://git-scm.com/docs/git-config) query.
+- **Log**: Return git commit history. Performs a [git log](https://git-scm.com/docs/git-log).
+- **Pull** from remote repository: Performs a [git pull](https://git-scm.com/docs/git-pull).
+- **Push** to remote repository: Performs a [git push](https://git-scm.com/docs/git-push).
+- **Push Tags** to remote repository: Performs a [git push --tags](https://git-scm.com/docs/git-push#Documentation/git-push.txt---tags).
+- Return **Status** of current repository: Performs a [git status](https://git-scm.com/docs/git-status).
+- **Switch Branch:** Performs a [git switch](https://git-scm.com/docs/git-switch).
+- Create a new **Tag**: Performs a [git tag](https://git-scm.com/docs/git-tag).
+- **User Setup**: Set the user.
 
 Refer to the sections below for more details on the parameters and options for each operation.
 
@@ -45050,108 +45637,6 @@ Configure this operation with these parameters:
 ### Add Config options
 
 The add config operation adds the **Mode** option. Choose whether to **Set** or **Append** the setting in the local config.
-
-## Clone
-
-Configure this operation with these parameters:
-
-- **Repository Path**: Enter the local path of the git repository.
-- **Authentication**: Select **Authenticate** to pass credentials in. Select **None** to not use authentication.
-  - **Credential for Git**: If you select **Authenticate**, you must select or create credentials for the node to use. Refer to [Git credential](../../credentials/git/) for more information.
-- **New Repository Path**: Enter the local path where you'd like to locate the cloned repository.
-- **Source Repository**: Enter the URL or path of the repository you want to clone.
-
-## Commit
-
-Configure this operation with these parameters:
-
-- **Repository Path**: Enter the local path of the git repository.
-- **Message**: Enter the commit message to use in this field.
-
-### Commit options
-
-The commit operation adds the **Paths to Add** option. To commit all "added" files and folders, leave this field blank. To commit specific "added" files and folders, enter a comma-separated list of paths of files or folders in this field.
-
-You can use absolute paths or relative paths from the **Repository Path**.
-
-## Fetch
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## List Config
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## Log
-
-Configure this operation with these parameters:
-
-- **Repository Path**: Enter the local path of the git repository.
-- **Return All**: When turned on, the node will return all results. When turned off, the node will return results up to the set **Limit**.
-- **Limit**: Only available when you turn off **Return All**. Enter the maximum number of results to return.
-
-### Log options
-
-The log operation adds the **File** option. Enter the path of a file or folder to get the history of in this field.
-
-You can use absolute paths or relative paths from the **Repository Path**.
-
-## Pull
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## Push
-
-Configure this operation with these parameters:
-
-- **Repository Path**: Enter the local path of the git repository.
-- **Authentication**: Select **Authenticate** to pass credentials in or **None** to not use authentication.
-  - If you select **Authenticate**, you must select or create **Credential for Git** for the node to use. Refer to [Git credential](../../credentials/git/) for more information.
-
-### Push options
-
-The push operation adds the **Target Repository** option. Enter the URL or path of the repository to push to in this field.
-
-## Push Tags
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## Status
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## Tag
-
-Configure this operation with these parameters:
-
-- **Repository Path**: Enter the local path of the git repository.
-- **Name**: Enter the name of the tag to create in this field.
-
-## User Setup
-
-This operation only prompts you to enter the local path of the git repository in the **Repository Path** parameter.
-
-## Templates and examples
-
-**Back Up Your n8n Workflows To Github**
-
-by Jonathan
-
-[View template details](https://n8n.io/workflows/1534-back-up-your-n8n-workflows-to-github/)
-
-**Building RAG Chatbot for Movie Recommendations with Qdrant and Open AI**
-
-by Jenny
-
-[View template details](https://n8n.io/workflows/2440-building-rag-chatbot-for-movie-recommendations-with-qdrant-and-open-ai/)
-
-**ChatGPT Automatic Code Review in Gitlab MR**
-
-by assert
-
-[View template details](https://n8n.io/workflows/2167-chatgpt-automatic-code-review-in-gitlab-mr/)
-
-[Browse Git integration templates](https://n8n.io/integrations/git/), or [search all templates](https://n8n.io/workflows/)
 
 # GraphQL
 
@@ -47420,11 +47905,11 @@ Copy the workflow file above and paste into your instance, or manually build it 
 
 ### Check that the node has processed all items
 
-To check if the node still has items to process, use the following expression: `{{$node["Loop Over Items"].context["noItemsLeft"]}}`. This expression returns a boolean value. If the node still has data to process, the expression returns `false`, otherwise it returns `true`.
+To check if the node still has items to process, use the following expression: `{{$("Loop Over Items").context["noItemsLeft"]}}`. This expression returns a boolean value. If the node still has data to process, the expression returns `false`, otherwise it returns `true`.
 
 ### Get the current running index of the node
 
-To get the current running index of the node, use the following expression: `{{$node["Loop Over Items"].context["currentRunIndex"];}}`.
+To get the current running index of the node, use the following expression: `{{$("Loop Over Items").context["currentRunIndex"];}}`.
 
 # Split Out
 
@@ -48202,6 +48687,139 @@ by Miko
 
 [Browse XML integration templates](https://n8n.io/integrations/xml/), or [search all templates](https://n8n.io/workflows/)
 
+# Chat node
+
+Use the Chat node with the [Chat Trigger](../n8n-nodes-langchain.chattrigger/) node to send messages into the chat and optionally wait for responses from users. This enables human-in-the-loop (HITL) use cases in chat workflows, allowing you to have multiple chat interactions within a single execution. The Chat node also works as a tool for AI Agents.
+
+All features work with both embedded and hosted chat interfaces.
+
+Chat Trigger node
+
+The Chat node requires a [Chat Trigger](../n8n-nodes-langchain.chattrigger/) node to be present in the workflow, with the [Response Mode](../n8n-nodes-langchain.chattrigger/#response-mode) set to 'Using Response Nodes'.
+
+Previous version
+
+In previous versions, this node was called "Respond to Chat" and used a single "Wait for User Reply" toggle. The functionality has been reorganized into two distinct actions with additional response types.
+
+## Node parameters
+
+This node can be used as an AI tool
+
+This node can be used to enhance the capabilities of an AI agent. When used in this way, many parameters can be set automatically, or with information directed by AI - find out more in the [AI tool parameters documentation](../../../../advanced-ai/examples/using-the-fromai-function/).
+
+Human-in-the-loop for AI tool calls
+
+This node can be used as a human review step for AI Agent tool calls. When configured this way, the AI Agent will pause and request human approval through this service before executing tools that require oversight. Learn more in [Human-in-the-loop for AI tool calls](../../../../advanced-ai/human-in-the-loop-tools/).
+
+Configure this node using the following parameters.
+
+### Operation
+
+The Chat node supports the following operations:
+
+- **Send Message**: Send a message to the chat. The workflow execution continues immediately after sending.
+- **Send and Wait for Response**: Send a message to the chat and wait for a response from the user. This operation pauses the workflow execution until the user submits a response.
+
+Choosing **Send and Wait for Response** activates additional parameters and options as discussed in [waiting for a response](#waiting-for-a-response).
+
+### Message
+
+The message to send to the chat. This parameter is available for both operations.
+
+## Node options
+
+Use these **Options** to further refine the node's behavior.
+
+### Add Memory Input Connection
+
+Choose whether you want to commit the messages from the Chat node to a connected memory. Using a shared memory between an agent or chain [root node](../../cluster-nodes/root-nodes/) and the Chat node attaches the same session key to these messages and lets you capture the full message history.
+
+## Waiting for a response
+
+By choosing the **Send and Wait for Response** operation, you can send a message and pause the workflow execution until a person responds. This enables multi-turn conversations and approval workflows within a single execution.
+
+### Response Type
+
+You can choose between the following types of responses:
+
+- **Free Text**: Users can type any response in the chat. This is the same behavior as the previous "Wait for User Reply" option.
+- **Approval**: Users can approve or disapprove using inline buttons in the message. You can also optionally allow users to type custom responses.
+
+Different parameters and options are available depending on which type you choose.
+
+### Free Text parameters and options
+
+When using the Free Text response type, the user can type any message as their response.
+
+**Use cases:**
+
+- Open-ended questions
+- Collecting detailed feedback
+- Requesting specific information
+
+**Options:** * **Limit Wait Time**: Whether the workflow automatically resumes execution after a specified time limit. This can be an interval or a specific wall time.
+
+### Approval parameters and options
+
+When using the Approval response type, the message displays inline buttons that users can click to approve or disapprove. This response type follows the same pattern as other human-in-the-loop (HITL) nodes in n8n.
+
+**Use cases:**
+
+- Simple yes/no decisions
+- Approval workflows
+- Confirmations
+
+When using the Approval response type, the following parameters are available:
+
+- **Type of Approval**: Whether to present only an approval button or both approval and disapproval buttons.
+- **Approve Only**: Displays a single approval button
+- **Approve and Disapprove**: Displays both buttons (default)
+- **Approve Button Label**: The text to display on the approval button. Default: `Approve`
+- **Disapprove Button Label**: The text to display on the disapproval button (only shown when Type of Approval is "Approve and Disapprove"). Default: `Disapprove`
+- **Block User Input**: Whether to prevent users from typing custom messages (enabled) or allow them to type responses (disabled, default).
+- When **disabled** (default): Users can click buttons or type a custom message. Typed messages are treated as disapproval with a custom message.
+- When **enabled**: Users can only interact using the buttons.
+
+The Approval response type also offers the following option:
+
+- **Limit Wait Time**: Whether the workflow automatically resumes execution after a specified time limit. This can be an interval or a specific wall time.
+
+## Related resources
+
+View n8n's [Advanced AI](../../../../advanced-ai/) documentation.
+
+Refer to the [Chat Trigger](../n8n-nodes-langchain.chattrigger/) node documentation for information about setting up the chat interface.
+
+## Templates and examples
+
+**AI agent chat**
+
+by n8n Team
+
+[View template details](https://n8n.io/workflows/1954-ai-agent-chat/)
+
+**Building Your First WhatsApp Chatbot**
+
+by Jimleuk
+
+[View template details](https://n8n.io/workflows/2465-building-your-first-whatsapp-chatbot/)
+
+**Scrape and summarize webpages with AI**
+
+by n8n Team
+
+[View template details](https://n8n.io/workflows/1951-scrape-and-summarize-webpages-with-ai/)
+
+[Browse Chat integration templates](https://n8n.io/integrations/chat/), or [search all templates](https://n8n.io/workflows/)
+
+## Common issues
+
+- The Chat node doesn't work when used as a tool of a subagent.
+- The Chat node doesn't work when used in a subworkflow. This includes usage in a subworkflow that's being used as a tool for an AI Agent.
+- Make sure the Chat Trigger node's Response Mode is set to "Using Response Nodes" for the Chat node to function properly.
+
+For common questions or issues with the Chat Trigger node, refer to [Common Chat Trigger Node Issues](../n8n-nodes-langchain.chattrigger/common-issues/).
+
 # Guardrails node
 
 Use the Guardrails node to enforce safety, security, and content policies on text. You can use it to validate user input *before* sending it to an AI model, or to check the *output* from an AI model before using it in your workflow.
@@ -48471,45 +49089,6 @@ location /mcp/ {
     # . . .
 }
 ```
-
-# Respond to Chat node
-
-Use the Respond to Chat node in correspondence with the [Chat Trigger](../n8n-nodes-langchain.chattrigger/) node to send a response into the chat and optionally wait for a response from the user. This allows you to have multiple chat interactions within a single execution and enables human-in-the-loop use cases in the chat. The Respond to Chat node also works as a tool for AI Agents.
-
-Chat Trigger node
-
-The Respond to Chat node requires a [Chat Trigger](../n8n-nodes-langchain.chattrigger/) node to be present in the workflow, with the [Response Mode](../n8n-nodes-langchain.chattrigger/#response-mode) set to 'Using Response Nodes'.
-
-## Node parameters
-
-### Message
-
-The message to send to the chat.
-
-### Wait for User Reply
-
-Set whether the workflow execution should wait for a response from the user (enabled) or continue immediately after sending the message (disabled).
-
-## Node options
-
-### Add Memory Input Connection
-
-Choose whether you want to commit the messages from the Respond to Chat node to a connected memory. Using a shared memory between an agent or chain [root node](../../cluster-nodes/root-nodes/) and the Respond to Chat node attaches the same session key to these messages and lets you capture the full message history.
-
-### Limit Wait Time
-
-When you enable **Wait for User Reply**, this option decides whether the workflow automatically resumes execution after a specific limit (enabled) or not (disabled).
-
-## Related resources
-
-View n8n's [Advanced AI](../../../../advanced-ai/) documentation.
-
-## Common issues
-
-- The Respond to Chat node does not work when used as a tool of a subagent.
-- The Respond to Chat node does not work when used in a subworkflow. This includes usage in a subworkflow that's being used as a tool for an AI Agent.
-
-For common questions or issues and suggested solutions with the Chat Trigger node, refer to [Common Chat Trigger Node Issues](../n8n-nodes-langchain.chattrigger/common-issues/).
 
 # Code node
 
@@ -50549,7 +51128,7 @@ View screenshot
 Use this option when building a workflow with steps after the agent or chain that's handling the chat. Choose from:
 
 - **When Last Node Finishes**: The Chat Trigger node returns the response code and the data output from the last node executed in the workflow.
-- **Using Response Nodes**: The Chat Trigger node responds as defined in a [Respond to Chat](../n8n-nodes-langchain.respondtochat/) node or [Respond to Webhook](../n8n-nodes-base.respondtowebhook/) node. In this response mode, the Chat Trigger will solely show messages as defined in these nodes and not output the data from the last node executed in the workflow.
+- **Using Response Nodes**: The Chat Trigger node responds as defined in a [Chat](../n8n-nodes-langchain.chat/) node or [Respond to Webhook](../n8n-nodes-base.respondtowebhook/) node. In this response mode, the Chat Trigger will solely show messages as defined in these nodes and not output the data from the last node executed in the workflow.
 
 Using Response Nodes
 
@@ -50584,7 +51163,7 @@ View screenshot
 Use this option when building a workflow with steps after the agent or chain that's handling the chat. Choose from:
 
 - **When Last Node Finishes**: The Chat Trigger node returns the response code and the data output from the last node executed in the workflow.
-- **Using Response Nodes**: The Chat Trigger node responds as defined in a [Respond to Chat](../n8n-nodes-langchain.respondtochat/) node or [Respond to Webhook](../n8n-nodes-base.respondtowebhook/) node. In this response mode, the Chat Trigger will solely show messages as defined in these nodes and not output the data from the last node executed in the workflow.
+- **Using Response Nodes**: The Chat Trigger node responds as defined in a [Chat](../n8n-nodes-langchain.chat/) node or [Respond to Webhook](../n8n-nodes-base.respondtowebhook/) node. In this response mode, the Chat Trigger will solely show messages as defined in these nodes and not output the data from the last node executed in the workflow.
 
 Using Response Nodes
 
@@ -50626,9 +51205,9 @@ In a basic workflow, the Agent and Chain nodes output a parameter named either `
 
 If you need to manually create the response sent to the user, you must create a parameter named either `text` or `output`. If you use a different parameter name, the Chat trigger sends the entire object as its response, not just the value.
 
-Respond to Chat node
+Chat node
 
-When you are using a [Respond to Chat](../n8n-nodes-langchain.respondtochat/) node to manually create the response sent to the user, you must set the Chat Trigger response mode to 'Using Response Nodes'.
+When you are using a [Chat](../n8n-nodes-langchain.chat/) node to manually create the response sent to the user, you must set the Chat Trigger response mode to 'Using Response Nodes'.
 
 ## Common issues
 
@@ -50673,8 +51252,6 @@ If you're retrieving the session ID from an expression, the same expression must
 # Credentials library
 
 This section contains step-by-step information about authenticating the different nodes in n8n.
-
-To learn more about creating, managing, and sharing credentials, refer to [Manage credentials](../../../credentials/).
 
 # Action Network credentials
 
@@ -55535,11 +56112,11 @@ Then:
 1. Enter your Jira account **Password**.
 1. Enter the **Domain** you access Jira on.
 
-# JotForm credentials
+# Jotform credentials
 
 You can use these credentials to authenticate the following nodes:
 
-- [JotForm Trigger](../../trigger-nodes/n8n-nodes-base.jotformtrigger/)
+- [Jotform Trigger](../../trigger-nodes/n8n-nodes-base.jotformtrigger/)
 
 ## Supported authentication methods
 
@@ -55547,11 +56124,11 @@ You can use these credentials to authenticate the following nodes:
 
 ## Related resources
 
-Refer to [JotForm's API documentation](https://api.jotform.com/docs/) for more information about the service.
+Refer to [Jotform's API documentation](https://api.jotform.com/docs/) for more information about the service.
 
 ## Using API key
 
-To configure this credential, you'll need a [JotForm](https://www.jotform.com/) account and:
+To configure this credential, you'll need a [Jotform](https://www.jotform.com/) account and:
 
 - An **API Key**
 - The **API Domain**
@@ -55560,14 +56137,14 @@ To set it up:
 
 1. Go to **Settings >** [**API**](https://www.jotform.com/myaccount/api).
 1. Select **Create New Key**.
-1. Select the **Name** in JotForm to update the API key name to something meaningful, like `n8n integration`.
+1. Select the **Name** in Jotform to update the API key name to something meaningful, like `n8n integration`.
 1. Copy the **API Key** and enter it in your n8n credential.
 1. In n8n, select the **API Domain** that applies to you based on the forms you're using:
    - **api.jotform.com**: Use this unless the other form types apply to you.
-   - **eu-api.jotform.com**: Select this if you're using JotForm [EU Safe Forms](https://www.jotform.com/eu-safe-forms/).
-   - **hipaa-api.jotform.com**: Select this if you're using JotForm [HIPAA forms](https://www.jotform.com/hipaa/).
+   - **eu-api.jotform.com**: Select this if you're using Jotform [EU Safe Forms](https://www.jotform.com/eu-safe-forms/).
+   - **hipaa-api.jotform.com**: Select this if you're using Jotform [HIPAA forms](https://www.jotform.com/hipaa/).
 
-Refer to the [JotForm API documentation](https://api.jotform.com/docs/) for more information on creating keys and API domains.
+Refer to the [Jotform API documentation](https://api.jotform.com/docs/) for more information on creating keys and API domains.
 
 # JWT credentials
 
@@ -56699,6 +57276,31 @@ With your application created, generate a client secret for it:
 
 Refer to Microsoft's [Add credentials](https://learn.microsoft.com/en-us/graph/auth-register-app-v2#add-credentials) for more information on adding a client secret.
 
+### Microsoft Graph API Base URL
+
+The Microsoft OAuth2 credential supports different Microsoft cloud environments. Select the appropriate endpoint based on your tenant's cloud environment:
+
+- **Global**: Use for standard Microsoft 365 tenants (default)
+- **US Government**: Use for Azure US Government (GCC) tenants
+- **US Government DOD**: Use for Azure US Government Department of Defense tenants
+- **China**: Use for Microsoft 365 operated by 21Vianet in China
+
+This setting applies to all Microsoft Graph API nodes that use Microsoft credentials, including:
+
+- Microsoft Teams
+- Microsoft Outlook
+- Microsoft Excel
+- Microsoft OneDrive
+- Microsoft Graph Security
+- Microsoft To Do
+
+Government Cloud Authorization URLs
+
+If you're using a government cloud tenant, you may also need to update the **Authorization URL** and **Access Token URL** fields in your credential to use the government cloud endpoints. For example:
+
+- US Government: Use `https://login.microsoftonline.us/{tenant}/oauth2/v2.0/authorize` and `https://login.microsoftonline.us/{tenant}/oauth2/v2.0/token`
+- Replace `{tenant}` with your tenant ID or use `common` for multi-tenant apps
+
 ### Service-specific settings
 
 The following services require extra information for OAuth2:
@@ -56848,6 +57450,22 @@ With your application created, generate a client secret for it:
 1. Log in to your Microsoft account and allow the app to access your info.
 
 Refer to Microsoft's [Add credentials](https://learn.microsoft.com/en-us/graph/auth-register-app-v2#add-credentials) for more information on adding a client secret.
+
+### Microsoft Graph API Base URL
+
+Microsoft Entra ID credentials extend the Microsoft OAuth2 API credentials and support different Microsoft cloud environments. Select the appropriate endpoint based on your tenant's cloud environment:
+
+- **Global**: Use for standard Microsoft 365 tenants (default)
+- **US Government**: Use for Azure US Government (GCC) tenants
+- **US Government DOD**: Use for Azure US Government Department of Defense tenants
+- **China**: Use for Microsoft 365 operated by 21Vianet in China
+
+Government Cloud Authorization URLs
+
+If you're using a government cloud tenant, you may also need to update the **Authorization URL** and **Access Token URL** fields in your credential to use the government cloud endpoints. For example:
+
+- US Government: Use `https://login.microsoftonline.us/{tenant}/oauth2/v2.0/authorize` and `https://login.microsoftonline.us/{tenant}/oauth2/v2.0/token`
+- Replace `{tenant}` with your tenant ID or use `common` for multi-tenant apps
 
 ## Setting custom scopes
 
@@ -60279,26 +60897,44 @@ Create a [Snowflake](https://www.snowflake.com/en/) account.
 
 ## Supported authentication methods
 
-- Database connection
+- [Password](#using-password-authentication)
+- [Key-pair](#using-key-pair-authentication)
 
 ## Related resources
 
 Refer to [Snowflake's API documentation](https://docs.snowflake.com/en/api-reference) and [SQL Command Reference](https://docs.snowflake.com/en/sql-reference-commands) for more information about the service.
 
-## Using database connection
+## Common configuration fields
 
-To configure this credential, you'll need:
+Both authentication methods require the following fields:
 
 - An **Account** name: Your account name is the string of characters located between `https://` and `snowflakecomputing.com` in your Snowflake URL. For example, if the URL of your Snowflake account is `https://abc.eu-central-1.snowflakecomputing.com` then the name of your account is `abc.eu-central-1`.
 - A **Database**: Enter the name of the [database](https://docs.snowflake.com/en/sql-reference/sql/use-database) the credential should connect to.
 - A **Warehouse**: Enter the name of the default virtual [warehouse](https://docs.snowflake.com/en/sql-reference/sql/use-warehouse) to use for the session after connecting. n8n uses this warehouse for performing queries, loading data, and so on.
-- A **Username**
-- A **Password**
 - A **Schema**: Enter the [schema](https://docs.snowflake.com/en/sql-reference/sql/use-schema) you want to use after connecting.
 - A **Role**: Enter the security [role](https://docs.snowflake.com/en/sql-reference/sql/use-role) you want to use after connecting.
 - **Client Session Keep Alive**: By default, client connections typically time out three or four hours after the most recent query execution. Turning this setting on sets the `clientSessionKeepAlive` parameter to true: the server will keep the client's connection alive indefinitely, even if the connection doesn't execute any queries.
 
 Refer to [Session Commands](https://docs.snowflake.com/en/sql-reference/commands-session) for more information on these settings.
+
+## Using password authentication
+
+In addition to the [common configuration fields](#common-configuration-fields), password authentication requires:
+
+- A **Username**
+- A **Password**
+
+## Using key-pair authentication
+
+Key-pair authentication provides enhanced security as an alternative to password-based authentication. This method uses a public-private key pair for authentication.
+
+In addition to the [common configuration fields](#common-configuration-fields), key-pair authentication requires:
+
+- A **Username**: The Snowflake user that has the public key assigned to it.
+- A **Private Key**: The private key in PEM format (PKCS#8). This should be the full content of your private key file, including the `-----BEGIN ENCRYPTED PRIVATE KEY-----` and `-----END ENCRYPTED PRIVATE KEY-----` delimiters (or `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` for unencrypted keys).
+- A **Passphrase** (optional): If your private key is encrypted, enter the passphrase used to encrypt it. Leave this field empty if you're using an unencrypted private key.
+
+Refer to [Snowflake's key-pair authentication documentation](https://docs.snowflake.com/en/user-guide/key-pair-auth) for more information about generating and configuring key pairs.
 
 # SolarWinds IPAM credentials
 
@@ -60671,17 +61307,13 @@ You can use these credentials to authenticate the following nodes:
 
 ## Supported authentication methods
 
-- API key
+- Secret key
+
+You'll also need a Stripe **Signature Secret** or endpoint secret, which is a unique key for each webhook endpoint used to verify incoming requests, ensuring they truly came from Stripe.
 
 ## Related resources
 
-Refer to [Stripe's API documentation](https://docs.stripe.com/api) for more information about the service.
-
-## Using API key
-
-To configure this credential, you'll need a [Stripe](https://stripe.com/) admin or developer account and:
-
-- An API **Secret Key**
+To configure this credential, you'll need a Stripe admin or developer account. Refer to [Stripe's API documentation](https://docs.stripe.com/api) for more information about the service.
 
 Before you generate an API key, decide whether to generate it in live mode or test mode. Refer to [Test mode and live mode](#test-mode-and-live-mode) for more information about the two modes.
 
@@ -64801,9 +65433,9 @@ Examples and templates
 
 For usage examples and templates to help you get started, refer to n8n's [Jira trigger integrations](https://n8n.io/integrations/jira-trigger/) page.
 
-# JotForm Trigger node
+# Jotform Trigger node
 
-[JotForm](https://www.jotform.com/) is an online form building service. JotForm's software creates forms with a drag and drop creation tool and an option to encrypt user data.
+[Jotform](https://www.jotform.com/) is an online form building service. Jotform's software creates forms with a drag and drop creation tool and an option to encrypt user data.
 
 Credentials
 
@@ -64811,7 +65443,7 @@ You can find authentication information for this node [here](../../credentials/j
 
 Examples and templates
 
-For usage examples and templates to help you get started, refer to n8n's [JotForm Trigger integrations](https://n8n.io/integrations/jotform-trigger/) page.
+For usage examples and templates to help you get started, refer to n8n's [Jotform Trigger integrations](https://n8n.io/integrations/jotform-trigger/) page.
 
 # Kafka Trigger node
 
@@ -65040,6 +65672,10 @@ Credentials
 
 You can find authentication information for this node [here](../../credentials/microsoft/).
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
+
 Examples and templates
 
 For usage examples and templates to help you get started, refer to n8n's [Microsoft OneDrive integrations](https://n8n.io/integrations/microsoft-onedrive-trigger/) page.
@@ -65069,6 +65705,10 @@ Credentials
 
 You can find authentication information for this node [here](../../credentials/microsoft/).
 
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
+
 Examples and templates
 
 For usage examples and templates to help you get started, refer to n8n's [Microsoft Outlook integrations](https://n8n.io/integrations/microsoft-outlook-trigger/) page.
@@ -65092,6 +65732,10 @@ On this page, you'll find a list of events the Microsoft Teams Trigger node can 
 Credentials
 
 You can find authentication information for this node [here](../../credentials/microsoft/).
+
+Government Cloud Support
+
+If you're using a government cloud tenant (US Government, US Government DOD, or China), make sure to select the appropriate **Microsoft Graph API Base URL** in your Microsoft credentials configuration.
 
 ## Events
 
@@ -71810,7 +72454,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## How to update n8n
 
@@ -78304,7 +78948,7 @@ Stable and Beta versions
 
 n8n releases a new minor version most weeks. The `stable` version is for production use. `beta` is the most recent release. The `beta` version may be unstable. To report issues, use the [forum](https://community.n8n.io/c/questions/12).
 
-Current `stable`: 2.1.4 Current `beta`: 2.2.1
+Current `stable`: 2.6.3 Current `beta`: 2.7.0
 
 ## How to update n8n
 
@@ -78326,6 +78970,69 @@ n8n uses [semantic versioning](https://semver.org/). All version numbers are in 
 Older versions
 
 You can find the release notes for older versions of n8n [here](../0-x/)
+
+## n8n@1.123.18
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.17...n8n@1.123.18) for this version.\
+**Release date:** 2026-01-29
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.16
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.15...n8n@1.123.16) for this version.\
+**Release date:** 2026-01-16
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.15
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.14...n8n@1.123.15) for this version.\
+**Release date:** 2026-01-15
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.13
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.12...n8n@1.123.13) for this version.\
+**Release date:** 2026-01-13
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.12
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.11...n8n@1.123.12) for this version.\
+**Release date:** 2026-01-13
+
+This release contains a bug fix.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.11
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.10...n8n@1.123.11) for this version.\
+**Release date:** 2026-01-08
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
+
+## n8n@1.123.10
+
+View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.123.9...n8n@1.123.10) for this version.\
+**Release date:** 2025-12-31
+
+This release contains bug fixes.
+
+For full release details, refer to [Releases](https://github.com/n8n-io/n8n/releases) on GitHub.
 
 ## n8n@1.123.9
 
@@ -78576,6 +79283,10 @@ For full release details, refer to [Releases](https://github.com/n8n-io/n8n/rele
 View the [commits](https://github.com/n8n-io/n8n/compare/n8n@1.120.0...n8n@1.121.0) for this version.
 
 **Release date:** 2025-11-18
+
+### Critical security update
+
+This release contains a critical security update. For more information, see [Security Advisory: Security Vulnerability in n8n Versions 1.65-1.120.4](https://blog.n8n.io/security-advisory-20260108/).
 
 ### Instance-level MCP connections (beta)
 
@@ -79493,7 +80204,7 @@ This release contains core updates, editor improvements, node updates, and bug f
 
 ### **Respond to Chat node**
 
-With the [\*\*Respond to Chat](../../integrations/builtin/core-nodes/n8n-nodes-langchain.respondtochat/) node\*\*, you can now access Human-in-the-Loop functionality natively in n8n Chat.
+With the [\*\*Respond to Chat](../../integrations/builtin/core-nodes/n8n-nodes-langchain.chat/) node\*\*, you can now access Human-in-the-Loop functionality natively in n8n Chat.
 
 Enable conversational experiences where you can ask for clarification, request approval before taking further action, and get back intermediate results — all within a single workflow execution.
 
@@ -85230,7 +85941,7 @@ You can now invite other people to your n8n instance.
 
 Feature availability
 
-- Available on Self-hosted Enterprise and Cloud Enterprise plans.
+- Available on Self-hosted Business and Enterprise, and Cloud Enterprise plans.
 - You need access to the n8n instance owner account.
 
 This page tells you how to enable LDAP in n8n. It assumes you're familiar with LDAP, and have an existing LDAP server set up.
@@ -85529,6 +86240,184 @@ RBAC is a way of managing access to workflows and [credentials](../../glossary/#
 
 - [Role types](/user-management/rbac/role-types/)
 - [Projects](/user-management/rbac/projects/)
+- [Custom roles](/user-management/rbac/custom-roles/)
+
+# Custom project roles
+
+Feature availability
+
+Custom roles are available on Self-hosted Enterprise and Cloud Enterprise plans. Refer to n8n's [pricing page](https://n8n.io/pricing/) for plan details.
+
+**Available from:** n8n version 1.122.0 (released November 24, 2025)
+
+Instance roles vs project roles
+
+n8n has two types of roles: * **Instance roles** ([account types](../../account-types/)): Owner, Admin, and Member roles that span the entire n8n instance and all projects * **Project roles**: Roles that apply within a specific project (Admin, Editor, Viewer, and custom roles)
+
+Custom roles are project-level roles. They define permissions within individual projects, not across the entire instance.
+
+Custom project roles allow you to create roles with specific permissions tailored to your team's needs. Unlike the built-in project roles (Admin, Editor, Viewer), custom roles let you define granular access to workflows, credentials, and other project resources.
+
+## Create a custom role
+
+Instance owners and instance admins can create custom roles.
+
+To create a custom role:
+
+1. Go to **Settings** > **Project roles**.
+1. Select **Create role**.
+1. Enter a role name and optional description.
+1. Select the permissions (scopes) for this role:
+   - **Workflow permissions**: Create, read, update, publish, delete, list, execute, move, or share workflows
+   - **Credential permissions**: Create, read, update, delete, list, move, or share credentials
+   - **Project permissions**: List, read, update, or delete projects
+   - **Folder permissions**: Create, read, update, delete, list, or move folders
+   - **Data table permissions**: Create, read, update, delete, list project tables, read/write rows
+   - **Project variable permissions**: Create, read, update, delete, or list project variables
+   - **Source control**: Push to source control
+1. Select **Create role**.
+
+## Assign a custom role to users
+
+Project admins can assign custom roles to project members. Custom roles apply only within the specific project where they're assigned. A user can have different roles in different projects.
+
+To assign a custom role:
+
+1. Select the project.
+1. Select **Project settings**.
+1. Under **Project members**, browse or search for users.
+1. Select the user and choose the custom role from the dropdown.
+1. Select **Save**.
+
+Project-level permissions
+
+Custom role permissions only apply within the project where the role is assigned. To grant the same permissions across multiple projects, assign the custom role in each project individually.
+
+## Edit a custom role
+
+To modify an existing custom role:
+
+1. Go to **Settings** > **Project roles**.
+1. Find the custom role you want to edit.
+1. Select the **three-dot menu** > **Edit**.
+1. Update the role name, description, or permissions.
+1. Select **Save changes**.
+
+Editing affects all assigned users
+
+Changes to a custom role immediately affect all users assigned to that role in any project. If the role is used across multiple projects, the permission changes apply everywhere the role is assigned.
+
+## Duplicate a custom role
+
+To create a new role based on an existing one:
+
+1. Go to **Settings** > **Project roles**.
+1. Find the role you want to duplicate.
+1. Select the **three-dot menu** > **Duplicate**.
+1. Modify the role name and permissions as needed.
+1. Select **Create role**.
+
+## Delete a custom role
+
+To delete a custom role:
+
+1. Go to **Settings** > **Project roles**.
+1. Find the role you want to delete.
+1. Select the **three-dot menu** > **Delete**.
+1. Confirm the deletion.
+
+Reassign users before deletion
+
+If users are assigned to this role, you must first reassign them to a different role before deleting it.
+
+## Permission scopes reference
+
+Custom roles use permission scopes to define what users can do within a project. Here are the available scopes by resource:
+
+### Workflow scopes
+
+- `workflow:create` - Create new workflows
+- `workflow:read` - View workflow details
+- `workflow:update` - Edit workflows
+- `workflow:publish` - Publish and unpublish workflows
+- `workflow:delete` - Delete workflows
+- `workflow:list` - View workflows in project
+- `workflow:execute` - Manually execute workflows
+- `workflow:execute-chat` - Execute workflows via chat interface
+- `workflow:move` - Move workflows between projects
+- `workflow:share` - Share workflows with other users
+
+### Credential scopes
+
+- `credential:create` - Create new credentials
+- `credential:read` - View credential details
+- `credential:update` - Edit credentials
+- `credential:delete` - Delete credentials
+- `credential:list` - View credentials in project
+- `credential:move` - Move credentials between projects
+- `credential:share` - Share credentials with other users
+
+### Project scopes
+
+- `project:list` - View available projects
+- `project:read` - View project details
+- `project:update` - Edit project settings (Admin only)
+- `project:delete` - Delete projects (Admin only)
+
+### Folder scopes
+
+- `folder:create` - Create new folders
+- `folder:read` - View folder contents
+- `folder:update` - Rename folders
+- `folder:delete` - Delete folders
+- `folder:list` - View folders in project
+- `folder:move` - Move folders
+
+### Data table scopes
+
+- `dataTable:create` - Create new data tables
+- `dataTable:read` - View data table schema
+- `dataTable:update` - Modify data table schema
+- `dataTable:delete` - Delete data tables
+- `dataTable:listProject` - View data tables in project
+- `dataTable:readRow` - Read rows from data tables
+- `dataTable:writeRow` - Insert or update rows in data tables
+
+### Project variable scopes
+
+- `projectVariable:list` - View project variables
+- `projectVariable:read` - View variable values
+- `projectVariable:create` - Create new variables
+- `projectVariable:update` - Edit variable values
+- `projectVariable:delete` - Delete variables
+
+### Source control scopes
+
+- `sourceControl:push` - Push changes to source control
+
+## Common custom role examples
+
+These are example custom project roles you can create for common use cases. Remember that these roles apply within individual projects, not across your entire n8n instance.
+
+### Workflow Developer
+
+A role for users who work only with workflows: * `workflow:create`, `workflow:read`, `workflow:update`, `workflow:delete`, `workflow:list`, `workflow:execute` * `credential:read`, `credential:list` (view credentials but not modify) * `project:list`, `project:read`
+
+### Credential Manager
+
+A role for users who manage credentials: * `credential:create`, `credential:read`, `credential:update`, `credential:delete`, `credential:list`, `credential:share` * `workflow:read`, `workflow:list` (view workflows to understand credential usage) * `project:list`, `project:read`
+
+### Workflow Publisher
+
+A role for users who can publish workflows without full edit access: * `workflow:read`, `workflow:list`, `workflow:publish` * `credential:read`, `credential:list` * `project:list`, `project:read`
+
+### Read-Only with Execute
+
+A role for users who can view and run workflows but not modify them: * `workflow:read`, `workflow:list`, `workflow:execute` * `credential:read`, `credential:list` * `project:list`, `project:read`
+
+Combining scopes
+
+You can combine any scopes to create roles that match your specific needs. Consider the principle of least privilege: grant only the permissions users need to perform their tasks.
 
 Feature availability
 
@@ -85651,7 +86540,7 @@ Role types and [account types](../../account-types/) are different things. Every
 
 Feature availability
 
-- Available on Enterprise plans.
+- Available on Business and Enterprise plans.
 - You need to be an instance owner or admin to enable and configure SAML.
 
 This section tells you how to enable SAML SSO (single sign-on) in n8n. It assumes you're familiar with SAML. If you're not, [SAML Explained in Plain English](https://www.onelogin.com/learn/saml) can help you understand how SAML works, and its benefits.
@@ -85665,7 +86554,7 @@ This section tells you how to enable SAML SSO (single sign-on) in n8n. It assume
 
 Feature availability
 
-- Available on Enterprise plans.
+- Available on Business and Enterprise plans.
 - You need to be an instance owner or admin to enable and configure SAML.
 
 There are some user management tasks that are affected by SAML.
@@ -85794,7 +86683,7 @@ Now when you go to **Directory** > **Groups** and edit the assigned n8n applicat
 
 Feature availability
 
-- Available on Enterprise plans.
+- Available on Business and Enterprise plans.
 - You need to be an instance owner or admin to enable and configure SAML.
 
 ## Enable SAML
@@ -86000,6 +86889,8 @@ n8n creates a new version when you:
 - Restore an old version. n8n saves the latest version before restoring.
 - Pull from a Git repository using [Source control](../../source-control-environments/). Note that n8n saves versions to the instance database, not to Git.
 
+Changes to workflow settings do not create a new version.
+
 Workflow history and execution history
 
 Don't confuse workflow history with the [Workflow-level executions list](../executions/single-workflow-executions/).
@@ -86028,9 +86919,13 @@ You can restore a previous workflow version, or make a copy of it:
 
 # Saving and publishing workflows
 
-You can iterate on, test, and save changes to workflows as many times as you need. Then when you're ready to put the workflow into production, publish your workflow.
+n8n automatically saves your workflow changes every 5 seconds while you're editing. When you're ready to put the workflow into production, publish your workflow. This approach prevents accidental production changes while enabling safe iteration and review.
 
-This approach prevents accidental production changes while enabling safe iteration and review.
+## How saving works
+
+Changes save automatically every 5 seconds while you edit. No manual save button is required, though you can still use Ctrl+S or Cmd+S if preferred. All edits remain in draft until you publish.
+
+## How publishing works
 
 Publishing makes your workflow live and locks it to a specific version. Production executions will use this published version, not your latest edits. When you publish, your workflow will enable the following:
 
@@ -86040,24 +86935,29 @@ Publishing makes your workflow live and locks it to a specific version. Producti
 
 **Initial state: You open the workflow**
 
-**Changed state: You make changes to the the workflow**
+**Changed state: Autosaved changes yet to be published**
 
-**Saved state: Saved changes awaiting publish**
+**Published state: All changes published**
+
+**Changed state: New changes yet to be published**
+
+## How collaboration works
+
+Only one person can edit a workflow at a time. If someone else is currently editing:
+
+- You see the workflow in read-only mode
+- The edit lock releases when they stop editing or become inactive
+- You can then take over editing with the latest changes
 
 ## Checking publishing status
 
-On the **Workflows** page, each workflow displays an indicator showing whether it is **Published** or **Not Published**.
+On the **Workflows** page, each workflow displays an indicator showing whether it is **Published** or **Not Published**. You will also be able to see the same indicator on the canvas header.
 
 ## Publishing a workflow
 
-The **Publish** button in the header indicates that a publish action is pending for one of these reasons:
+The **Publish** button in the canvas header is enabled whenever there are unpublished changes.
 
-- When you open a workflow and make changes to it
-- When you have saved changes that aren't published
-
-This indicator is independent from the act of saving your changes, which you must still do manually. Each time you save changes to a workflow, n8n creates a new version of the workflow.
-
-You can save your changes as many times as you need to, but the saved version goes live in production only when you publish the workflow.
+Each time you make a change to a workflow, n8n autosaves those changes to a new version of the workflow. These saved versions go live in production only when you publish the workflow after the changes.
 
 1. Click the **Publish** button to open the publishing modal
 1. The version name defaults to a UUID. Customize the name if you'd like and add a description of the version.
@@ -86169,6 +87069,10 @@ Users can share workflows they created. Instance owners, and users with the admi
 1. Select **Share**.
 1. In **Add users**, find and select the users you want to share with.
 1. Select **Save**.
+
+**Note:** This option is only available when sharing a workflow that is inside a **Personal** workspace. When trying to use the "Add users" option for a workflow that's **inside a project**, you'll get this pop-up instead:
+
+This is intended behavior, and it means that the workflow is shared with everyone inside that specific project. Instead of adding the user directly to the workflow, you need to add the user to the project in which the workflow is located.
 
 ## View shared workflows
 

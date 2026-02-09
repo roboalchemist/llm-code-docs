@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/validation-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Validation Errors
 
 > Thrown if there is an issue with the format of the request or body.

@@ -2,7 +2,7 @@
 
 # Coding in Warp
 
-When you enter a git repo for the first time, Warp will enter an initialization flow to index your codebase and generate a WARP.md file.
+When you enter a git repo for the first time, Warp will enter an initialization flow to index your codebase and generate an AGENTS.md file.
 
 As you're in the repo, Warp will enter an advanced code generation flow that supports both single-line and multi-file changes when it detects an opportunity to write code.
 
@@ -48,14 +48,14 @@ If your codebase is large, you can exclude specific files by adding them to a `.
 
 You can provide different types of input as context directly to the agent to guide its behavior and improve response quality. This includes:
 
-* [Blocks](https://docs.warp.dev/agents/using-agents/agent-context#attaching-blocks-as-context) from your terminal output
-* [Images](https://docs.warp.dev/agents/using-agents/agent-context#attaching-images-as-context)
-* [Files and code](https://docs.warp.dev/agents/using-agents/agent-context#referencing-files-and-code-using) (using the @ symbol)
-* [Public websites](https://docs.warp.dev/agents/using-agents/agent-context#referencing-websites-via-urls) via URLs
+* [Blocks](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context#attaching-blocks-as-context) from your terminal output
+* [Images](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context#attaching-images-as-context)
+* [Files and code](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context#referencing-files-and-code-using) (using the @ symbol)
+* [Public websites](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context#referencing-websites-via-urls) via URLs
 
 #### Warp Drive as Context
 
-Agents pull directly from your [**Warp Drive**](https://docs.warp.dev/features/warp-drive) contents to generate more accurate responses -- including your **Workflows**, **Notebooks**, **Prompts**, and **Environment Variables**.
+Agents pull directly from your [**Warp Drive**](https://docs.warp.dev/knowledge-and-collaboration/warp-drive) contents to generate more accurate responses -- including your **Workflows**, **Notebooks**, **Prompts**, and **Environment Variables**.
 
 * When used, context appears under the “References” or “Derived from” section in the conversation.
 * This setting is **enabled by default** and can be managed via: `Settings > AI > Knowledge > Warp Drive as Agent Mode Context`.
@@ -64,7 +64,7 @@ Agents pull directly from your [**Warp Drive**](https://docs.warp.dev/features/w
 
 **Rules** let you provide persistent context to Agents, enabling smarter and more personalized responses.
 
-You can create global rules (accessed through [Warp Drive](https://docs.warp.dev/features/warp-drive) > Personal > Rules) or project scoped rules, defined in a WARP.md file.
+You can create global rules (accessed through [Warp Drive](https://docs.warp.dev/knowledge-and-collaboration/warp-drive) > Personal > Rules) or project scoped rules, defined in an `AGENTS.md` file. Note: the filename must be in all caps for Warp to recognize it.
 
 **Examples of Rules include:**
 
@@ -74,12 +74,12 @@ You can create global rules (accessed through [Warp Drive](https://docs.warp.dev
 
 How to access project-specific Rules
 
-1. From the file-searcher, CMD+O and search "WARP.md"
+1. From the file-searcher, CMD+O and search "AGENTS.md"
 2. From the file tree, click the "code" icon when in a repo
 
 How to access Global Rules
 
-1. From the [Warp Drive](https://docs.warp.dev/features/warp-drive) > Personal > Rules
-2. From the [Command Palette](https://github.com/warpdotdev/gitbook/blob/main/docs/features/warp-ai/command-palette.md), search for "Open AI Rules"
+1. From the [Warp Drive](https://docs.warp.dev/knowledge-and-collaboration/warp-drive) > Personal > Rules
+2. From the [Command Palette](https://docs.warp.dev/terminal/command-palette), search for "Open AI Rules"
 3. From the Settings panel, `Settings > AI > Knowledge > Manage Rules`
 4. From the macOS Menu, `AI > Open Rules`

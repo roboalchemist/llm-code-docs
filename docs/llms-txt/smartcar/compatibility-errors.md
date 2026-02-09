@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/compatibility-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compatibility Errors
 
 > Thrown when Smartcar does not support a make, or feature for a vehicle.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipTextEncodeSdxl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipTextEncodeSdxl - ComfyUI Built-in Node Documentation
 
 > The ClipTextEncodeSdxl node is used to encode text prompts into SDXL-compatible conditioning embeddings.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/user.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Account Management
 
 > In this document, we will introduce the account management features of ComfyUI, including account login, registration, and logout operations.

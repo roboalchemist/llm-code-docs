@@ -1,249 +1,186 @@
 # Source: https://docs.unstructured.io/api-reference/workflows/list-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Workflows
 
 > Retrieve a list of workflows, optionally filtered by source, destination, state, name, date range, and supports pagination and sorting.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/workflows/
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/workflows/
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        dag_node_configuration_id:
+  /api/v1/workflows/:
+    get:
+      tags:
+        - workflows
+      summary: List Workflows
+      description: >-
+        Retrieve a list of workflows, optionally filtered by source,
+        destination, state, name, date range, and supports pagination and
+        sorting.
+      operationId: list_workflows
+      parameters:
+        - name: dag_node_configuration_id
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Dag Node Configuration Id
-            - type: 'null'
-              required: false
-              title: Dag Node Configuration Id
-        source_id:
-          schema:
-            - type: string
-              required: false
-              title: Source Id
-              format: uuid
-            - type: 'null'
-              required: false
-              title: Source Id
-        destination_id:
-          schema:
-            - type: string
-              required: false
-              title: Destination Id
-              format: uuid
-            - type: 'null'
-              required: false
-              title: Destination Id
-        status:
-          schema:
-            - type: enum<string>
-              enum:
-                - active
-                - inactive
-              required: false
-              title: WorkflowState
-              refIdentifier: '#/components/schemas/WorkflowState'
-            - type: 'null'
-              required: false
-              title: Status
-        page:
-          schema:
-            - type: integer
-              required: false
-              title: Page
-              default: 1
-            - type: 'null'
-              required: false
-              title: Page
-              default: 1
-        page_size:
-          schema:
-            - type: integer
-              required: false
-              title: Page Size
-              default: 20
-            - type: 'null'
-              required: false
-              title: Page Size
-              default: 20
-        created_since:
-          schema:
-            - type: string
-              required: false
-              title: Created Since
-              format: date-time
-            - type: 'null'
-              required: false
-              title: Created Since
-        created_before:
-          schema:
-            - type: string
-              required: false
-              title: Created Before
-              format: date-time
-            - type: 'null'
-              required: false
-              title: Created Before
-        name:
-          schema:
-            - type: string
-              required: false
-              title: Name
-            - type: 'null'
-              required: false
-              title: Name
-        sort_by:
-          schema:
-            - type: string
-              required: false
-              title: Sort By
-              default: id
-        sort_direction:
-          schema:
-            - type: enum<string>
-              enum:
-                - asc
-                - desc
-              required: false
-              title: SortDirection
-        show_only_soft_deleted:
-          schema:
-            - type: boolean
-              required: false
-              title: Show Only Soft Deleted
-              default: false
-            - type: 'null'
-              required: false
-              title: Show Only Soft Deleted
-              default: false
-        show_recommender_workflows:
-          schema:
-            - type: boolean
-              required: false
-              title: Show Recommender Workflows
-              default: false
-            - type: 'null'
-              required: false
-              title: Show Recommender Workflows
-              default: false
-      header:
-        unstructured-api-key:
-          schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/WorkflowInformation'
-            title: Response List Workflows
-        examples:
-          example:
-            value:
-              - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                sources:
-                  - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                destinations:
-                  - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                workflow_type: basic
-                workflow_nodes:
-                  - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    name: <string>
-                    type: <string>
-                    subtype: <string>
-                    settings: {}
-                schedule:
-                  crontab_entries:
-                    - cron_expression: 0 0 * * *
-                status: active
-                created_at: '2023-11-07T05:31:56Z'
-                updated_at: '2023-11-07T05:31:56Z'
-                reprocess_all: false
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
-components:
-  schemas:
-    CronTabEntry:
-      properties:
-        cron_expression:
-          type: string
-          title: Cron Expression
-      type: object
-      required:
-        - cron_expression
-      title: CronTabEntry
-    ValidationError:
-      properties:
-        loc:
-          items:
             anyOf:
               - type: string
+              - type: 'null'
+            title: Dag Node Configuration Id
+        - name: source_id
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+                format: uuid
+              - type: 'null'
+            title: Source Id
+        - name: destination_id
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+                format: uuid
+              - type: 'null'
+            title: Destination Id
+        - name: status
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - $ref: '#/components/schemas/WorkflowState'
+              - type: 'null'
+            title: Status
+        - name: page
+          in: query
+          required: false
+          schema:
+            anyOf:
               - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+              - type: 'null'
+            default: 1
+            title: Page
+        - name: page_size
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: integer
+              - type: 'null'
+            default: 20
+            title: Page Size
+        - name: created_since
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+            title: Created Since
+        - name: created_before
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+                format: date-time
+              - type: 'null'
+            title: Created Before
+        - name: name
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Name
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+            default: id
+            title: Sort By
+        - name: sort_direction
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortDirection'
+            default: asc
+        - name: show_only_soft_deleted
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: boolean
+              - type: 'null'
+            default: false
+            title: Show Only Soft Deleted
+        - name: show_recommender_workflows
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: boolean
+              - type: 'null'
+            default: false
+            title: Show Recommender Workflows
+        - name: unstructured-api-key
+          in: header
+          required: false
+          schema:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowInformation'
+                title: Response List Workflows
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    WorkflowState:
+      type: string
+      enum:
+        - active
+        - inactive
+      title: WorkflowState
+    SortDirection:
+      type: string
+      enum:
+        - asc
+        - desc
+      title: SortDirection
     WorkflowInformation:
       properties:
         id:
@@ -304,6 +241,23 @@ components:
         - status
         - created_at
       title: WorkflowInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    WorkflowType:
+      type: string
+      enum:
+        - basic
+        - advanced
+        - platinum
+        - custom
+      title: WorkflowType
     WorkflowNode:
       properties:
         id:
@@ -347,20 +301,35 @@ components:
       examples:
         - crontab_entries:
             - cron_expression: 0 0 * * *
-    WorkflowState:
-      type: string
-      enum:
-        - active
-        - inactive
-      title: WorkflowState
-    WorkflowType:
-      type: string
-      enum:
-        - basic
-        - advanced
-        - platinum
-        - custom
-        - template
-      title: WorkflowType
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    CronTabEntry:
+      properties:
+        cron_expression:
+          type: string
+          title: Cron Expression
+      type: object
+      required:
+        - cron_expression
+      title: CronTabEntry
 
 ````

@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-an-early-access-sale.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-an-early-access-sale.md
 
 # How to Set Up an Early Access Sale
 
@@ -7,7 +7,7 @@
 You can use Offers to power your Early Access Sales. If you'd like to create a rich experience for VIP customers that you offer Early Access to, use build an Offer that updates the content, powers the discount automatically, and makes the customer feel special.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Create VIP early access moment; replicate the public sale experience
@@ -43,7 +43,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/d57f558e19a743d396d0c692bc485f35?sid=40bbddb4-f8a2-4144-8bec-57aa65fa306c>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Amount off Order**
 3. Add an Offer name (internal name) like Early Access 25% off
 4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.
@@ -59,7 +59,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
    1. You can select products based on Product Type, Vendor, Status, Collections, and also search for individual products
 
 {% hint style="info" %}
-We recommend setting up a Sale collection in Shopify and then select that collection\\
+We recommend setting up a Sale collection in Shopify and then select that collection
 {% endhint %}
 
 9. Choose if you want this discount to combine with other Shopify discounts
@@ -75,7 +75,7 @@ We recommend setting up a Sale collection in Shopify and then select that collec
 15. Copy that link
 16. **Save** your Offer
 17. **Preview** your Offer on desktop and mobile
-18. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+18. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when scheduling
 19. Share the link with your VIP Early Access customers via SMS, email etc.
 

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/deployment/preview-branches.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Preview branches
 
 > Create isolated environments for each branch of your code, allowing you to test changes before merging to production. You can create preview branches manually or automatically from your git branches.
@@ -46,14 +50,14 @@ Before we talk about how to deploy to preview branches, one important thing to u
 
 When deploying to somewhere that supports `process.env` (like Node.js runtimes) you can just set the environment variables:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_preview_1234567890"
 TRIGGER_PREVIEW_BRANCH="your-branch-name"
 ```
 
 If you're deploying somewhere that doesn't support `process.env` (like some edge runtimes) you can manually configure the SDK:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 
@@ -75,7 +79,7 @@ This GitHub Action will:
 2. Deploy the preview branch.
 3. Archive the preview branch when the Pull Request is merged/closed.
 
-```yml .github/workflows/trigger-preview-branches.yml theme={null}
+```yml .github/workflows/trigger-preview-branches.yml theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (preview branches)
 
 on:
@@ -116,13 +120,13 @@ You can manually specify the branch using `--branch <branch-name>` in the deploy
 
 Creating and deploying a preview branch manually is easy:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --env preview
 ```
 
 This will create and deploy a preview branch, automatically detecting the git branch. If for some reason the auto-detection doesn't work it will let you know and tell you do this:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --env preview --branch your-branch-name
 ```
 
@@ -130,7 +134,7 @@ npx trigger.dev@latest deploy --env preview --branch your-branch-name
 
 You can manually archive a preview branch with the CLI:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest preview archive
 ```
 
@@ -159,7 +163,7 @@ These can be set manually in the dashboard, or automatically at deploy time usin
 
 Full instructions are in the [syncEnvVars()](/config/extensions/syncEnvVars) documentation.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 // You will need to install the @trigger.dev/build package
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
@@ -185,7 +189,7 @@ You need to set the `VERCEL_ACCESS_TOKEN`, `VERCEL_PROJECT_ID` and `VERCEL_TEAM_
 
 The extension will automatically detect a preview branch deploy from Vercel and sync the appropriate environment variables.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 // You will need to install the @trigger.dev/build package
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";

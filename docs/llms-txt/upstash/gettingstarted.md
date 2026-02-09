@@ -12,128 +12,69 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/py/gettingstarted.md
 
-# Source: https://upstash.com/docs/vector/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/search/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/search/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/search/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/search/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/gettingstarted.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/gettingstarted.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/gettingstarted.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/gettingstarted.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Getting Started
 
-The `upstash-vector` SDK is a lightweight, HTTP-based Upstash Vector client designed for Python. It seamlessly operates in both serverless and serverful environments, ensuring optimal compatibility across various connection setups.
-
-This SDK simplifies interaction with Upstash Vector through the [Upstash Vector API](https://docs.upstash.com/vector/api/get-started).
-
-It is designed to work with Python versions 3.8 and above.
-
-Explore the source code, contribute, and stay informed through our [GitHub Repository](https://github.com/upstash/vector-py).
-
 ## Install
 
-To begin using `upstash-vector`, you can install it via PyPI using the following command:
+### PyPI
 
 ```bash  theme={"system"}
-pip install upstash-vector
+pip install qstash
 ```
+
+## Get QStash token
+
+Follow the instructions [here](/qstash/overall/getstarted) to get your QStash token and signing keys.
 
 ## Usage
 
-Before using upstash-vector, you'll need to set up a vector database on [Upstash](https://console.upstash.com/). Once created, grab your URL and TOKEN from the Upstash console.
-
-To initialize the index client:
+#### Synchronous Client
 
 ```python  theme={"system"}
-from upstash_vector import Index
-index = Index(url="UPSTASH_VECTOR_REST_URL", token="UPSTASH_VECTOR_REST_TOKEN")
+from qstash import QStash
+
+client = QStash("<QSTASH_TOKEN>")
+client.message.publish_json(...)
 ```
 
-Alternatively, you can automatically load the credentials from the environment:
+#### Asynchronous Client
 
 ```python  theme={"system"}
-from upstash_vector import Index
-index = Index.from_env()
+import asyncio
+
+from qstash import AsyncQStash
+
+
+async def main():
+    client = AsyncQStash("<QSTASH_TOKEN>")
+    await client.message.publish_json(...)
+
+
+asyncio.run(main())
 ```
 
-For serverless environments that allow it, it's recommended to initialize the client outside the request handler to be reused while your function is still "hot."
+#### RetryConfig
 
-Here's an example of how you can use the SDK in your Python application:
+You can configure the retry policy of the client by passing the configuration to the client constructor.
+
+Note: This isn for sending the request to QStash, not for the retry policy of QStash.
+
+The default number of retries is **5** and the default backoff function is `lambda retry_count: math.exp(retry_count) * 50`.
+
+You can also pass in `False` to disable retrying.
 
 ```python  theme={"system"}
-import random
-from upstash_vector import Index
+from qstash import QStash
 
-# Initialize the index client using environment variables
-index = Index.from_env()
-
-def main():
-    # Define the dimension based on the index configuration
-    dimension = 128
-    # Generate a random vector for upsert
-    vector_to_upsert = [random.random() for _ in range(dimension)]
-    # Additional metadata associated with the vector
-    metadata = {"text": "example test for metadata"}
-
-    # Upsert the vector into the index
-    index.upsert(vectors=[
-        ("id-for-vector", vector_to_upsert, metadata)
-    ])
-
+client = QStash(
+    "<QSTASH_TOKEN>",
+    retry={
+        "retries": 3,
+        "backoff": lambda retry_count: (2**retry_count) * 20,
+    },
+)
 ```
-
-The example above demonstrates how to upsert a vector with metadata using the SDK into the Upstash Vector database.
-
-## More SDK Features
-
-For additional functionalities and usage examples, check out the [Commands](/vector/sdks/py/example_calls) section in the documentation.

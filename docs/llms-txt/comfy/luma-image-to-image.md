@@ -2,13 +2,9 @@
 
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/luma/luma-image-to-image.md
 
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-image-to-image.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/image/luma/luma-image-to-image.md
-
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-image-to-image.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/image/luma/luma-image-to-image.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Luma Image to Image - ComfyUI Built-in Node Documentation
 

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/aggregation-examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Aggregation examples
 
 Imagine you are a Tracking API company (such as

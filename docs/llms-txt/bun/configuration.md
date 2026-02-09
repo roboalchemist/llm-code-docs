@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test configuration
 
 > Learn how to configure Bun test behavior using bunfig.toml and command-line options
@@ -377,16 +381,18 @@ timeout = 10000
 
 ## Environment Variables
 
-You can also set environment variables in your configuration that affect test behavior:
+Environment variables for tests should be set using `.env` files. Bun automatically loads `.env` files from your project root. For test-specific variables, create a `.env.test` file:
 
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[env]
-NODE_ENV = "test"
-DATABASE_URL = "postgresql://localhost:5432/test_db"
-LOG_LEVEL = "error"
+```ini title=".env.test" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+NODE_ENV=test
+DATABASE_URL=postgresql://localhost:5432/test_db
+LOG_LEVEL=error
+```
 
-[test]
-coverage = true
+Then load it with `--env-file`:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun test --env-file=.env.test
 ```
 
 ## Complete Configuration Example
@@ -398,13 +404,6 @@ Here's a comprehensive example showing all available test configuration options:
 # Install settings inherited by tests
 registry = "https://registry.npmjs.org/"
 exact = true
-
-[env]
-# Environment variables for tests
-NODE_ENV = "test"
-DATABASE_URL = "postgresql://localhost:5432/test_db"
-API_URL = "http://localhost:3001"
-LOG_LEVEL = "error"
 
 [test]
 # Test discovery

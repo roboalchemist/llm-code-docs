@@ -2,109 +2,160 @@
 
 # Codex IDE extension
 
-Codex is OpenAI's coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Codex VS Code extension you can use Codex side-by-side in your IDE, or delegate tasks to the cloud.
+Codex is OpenAI's coding agent that can read, edit, and run code. It helps you build faster, squash bugs, and understand unfamiliar code. With the Codex VS Code extension, you can use Codex side by side in your IDE or delegate tasks to Codex Cloud.
+
+ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more about [what's included](https://developers.openai.com/codex/pricing).
 
 <YouTubeEmbed
   title="Codex IDE extension overview"
   videoId="sd21Igx4HtA"
-  class="w-full"
+  class="max-w-md"
 />
+<br />
 
-## Set up the extension
+## Extension setup
 
-The Codex IDE extension works with VS Code forks such as Insiders, Cursor, or Windsurf.
+The Codex IDE extension works with VS Code forks like Cursor and Windsurf.
 
-You can get the Codex extension from the [Visual Studio Code marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt), or download it for your IDE:
+You can get the Codex extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt), or download it for your IDE:
 
 - [Download for Visual Studio Code](vscode:extension/openai.chatgpt)
 - [Download for Cursor](cursor:extension/openai.chatgpt)
 - [Download for Windsurf](windsurf:extension/openai.chatgpt)
 - [Download for Visual Studio Code Insiders](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
+- [Download for JetBrains IDEs](#jetbrains-ide-integration)
 
 <DocsTip>
   The Codex VS Code extension is available on macOS and Linux. Windows support
-  is still experimental. For the best Windows experience, use Codex in a WSL
-  workspace and follow our <a href="/codex/windows">Windows setup guide</a>. You
-  can also reference the Microsoft docs for
-  <a
-    href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode"
-    target="_blank"
-    rel="noreferrer noopener"
-  >VS Code + WSL</a>.
+  is experimental. For the best Windows experience, use Codex in a WSL workspace
+  and follow our <a href="/codex/windows">Windows setup guide</a>.
 </DocsTip>
 
-After installing, you'll find the extension in your left sidebar next to other extensions.
-If you're using VS Code, you might need to restart VS Code to see the Codex extension on the left sidebar.
+After you install it, you'll find the extension in your left sidebar next to your other extensions.
+If you're using VS Code, restart the editor if you don't see Codex right away.
 
-If you're using Cursor, this section displays horizontally by default, and collapsed items can hide Codex, so you can pin it and reorganize the order of the extensions.
-![codex-extension](https://cdn.openai.com/devhub/docs/codex-extension.webp)
+If you're using Cursor, the activity bar displays horizontally by default. Collapsed items can hide Codex, so you can pin it and reorganize the order of the extensions.
 
-### Adding Codex to the right sidebar <a id="right-sidebar"></a>
+<div class="not-prose max-w-56 mr-auto">
+  <img src="https://cdn.openai.com/devhub/docs/codex-extension.webp"
+    alt="Codex extension"
+    class="block h-auto w-full mx-0!"
+  />
+</div>
 
-In VS Code you should be able to click and drag the Codex icon to the right of your editor screen to move it to the right sidebar to make it more accessible.
+## JetBrains IDE integration
 
-In some IDEs, like Cursor, you will have to first change the display of the activity bar temporarily.
+If you want to use Codex in JetBrains IDEs like Rider, IntelliJ, PyCharm, or WebStorm, install the JetBrains IDE integration. It supports signing in with ChatGPT, an API key, or a JetBrains AI subscription.
 
-Go into your editor settings and search for "activity bar" (in Workbench settings), then change the orientation to "vertical." You'll have to restart your editor to see the changes.
+<CtaPillLink
+  href="https://blog.jetbrains.com/ai/2026/01/codex-in-jetbrains-ides/"
+  label="Install Codex for JetBrains IDEs"
+  class="mt-6"
+/>
+
+### Move Codex to the right sidebar <a id="right-sidebar"></a>
+
+In VS Code, you can drag the Codex icon to the right of your editor to move it to the right sidebar.
+
+In some IDEs, like Cursor, you may need to temporarily change the activity bar orientation first:
+
+1. Open your editor settings and search for `activity bar` (in Workbench settings).
+2. Change the orientation to `vertical`.
+3. Restart your editor.
 
 ![codex-workbench-setting](https://cdn.openai.com/devhub/docs/codex-workbench-setting.webp)
 
-Now you can drag the Codex icon to the right of your editor screen into the same area as your Cursor chat. Codex now appears as another tab in the sidebar.
+Now drag the Codex icon to the right sidebar (for example, next to your Cursor chat). Codex appears as another tab in the sidebar.
 
-After moving it you can reset the activity bar orientation to "horizontal" to restore the default behavior.
+After you move it, reset the activity bar orientation to `horizontal` to restore the default behavior.
 
 ### Sign in
 
-Once you have installed the extension, it prompts you to sign in with your ChatGPT account, which is the recommended path.
-You get usage credits with your ChatGPT plan, so you can use Codex without any extra setup.
-If you wish to use Codex with an API key, you can do so, but this requires extra setup—you can learn more about this and what's included in each plan on the [pricing page](/codex/pricing).
+After you install the extension, it prompts you to sign in with your ChatGPT account or API key. Your ChatGPT plan includes usage credits, so you can use Codex without extra setup. Learn more on the [pricing page](https://developers.openai.com/codex/pricing).
 
 ### Update the extension
 
-The extension auto updates, but you can also open the extension page in your IDE to manually check for updates.
+The extension updates automatically, but you can also open the extension page in your IDE to check for updates.
 
-### Keyboard shortcuts
+### Set up keyboard shortcuts
 
-Codex offers a series of commands that you can bind as keyboard shortcuts in your IDE settings such as toggling the Codex chat or adding something to the Codex context.
+Codex includes commands you can bind as keyboard shortcuts in your IDE settings (for example, toggle the Codex chat or add items to the Codex context).
 
-To see all available commands and bind them as keyboard shortcuts, press the Settings icon in the Codex chat and select "Keyboard shortcuts."
+To see all available commands and bind them as keyboard shortcuts, select the settings icon in the Codex chat and select **Keyboard shortcuts**.
+You can also refer to the [Codex IDE extension commands](https://developers.openai.com/codex/ide/commands) page.
+For a list of supported slash commands, see [Codex IDE extension slash commands](https://developers.openai.com/codex/ide/slash-commands).
 
-## Pair with Codex
+---
 
-Use Codex in your editor to chat, edit, and preview changes seamlessly.
-With context from opened files and selected code, you can write shorter prompts and get faster, more relevant results.
+## Work with the Codex IDE extension
 
-You can reference any file in your editor by tagging it in your prompt like this:
+<BentoContainer>
+  <BentoContent href="/codex/ide/features#prompting-codex">
 
-```
-Use @example.tsx as a reference to add a new page named "Resources" to the app that contains a list of resources defined in @resources.ts
-```
+### Prompt with editor context
 
-### Switch between models
+Use open files, selections, and `@file` references to get more relevant results with shorter prompts.
 
-You can use Codex with GPT-5 (default), but consider switching to the newest model optimized for agentic coding in Codex: GPT-5-Codex.
+  </BentoContent>
+  <BentoContent href="/codex/ide/features#switch-between-models">
 
-You can switch between models with the switcher under the extension chat input.
+### Switch models
 
-![codex-switch-model](https://cdn.openai.com/devhub/docs/codex-switch-model.png)
+Use the default model or switch to other models to leverage their respective strengths.
 
-### Reasoning effort
+  </BentoContent>
+  <BentoContent href="/codex/ide/features#adjust-reasoning-effort">
 
-You can adjust the reasoning effort of Codex to make it think more or less before answering. GPT-5-Codex has the widest range of modulation; with high reasoning effort it will take longer to answer, but it can perform more complex tasks. High effort also uses more tokens and can consume your rate limits when you're using GPT-5-Codex, so start with medium and only switch to high when you need more depth.
-If the tasks are short and you need speed, you can use a lower reasoning effort.
+### Adjust reasoning effort
 
-You can adjust the reasoning effort with the same model switcher shown above, and choose between `low`, `medium`, and `high` for each model.
+Choose `low`, `medium`, or `high` to trade off speed and depth based on the task.
 
-### Approval modes
+  </BentoContent>
 
-Codex uses a powerful default for how it works on your computer called `Agent`. In this approval mode, Codex can read files, make edits, and run commands in the working directory automatically. Codex still needs your approval to work outside the working directory or access the internet network.
+  <BentoContent href="/codex/ide/features#choose-an-approval-mode">
 
-When you just want to chat, or if you want to plan before diving in, you can switch to `Chat` with the switcher under the extension chat input.
+### Choose an approval mode
 
-![codex-approval-modes](https://cdn.openai.com/devhub/docs/codex-switch-mode.webp)
+Switch between `Chat`, `Agent`, and `Agent (Full Access)` depending on how much autonomy you want Codex to have.
 
-If you need Codex to read files, make edits, and run commands with network access, without approval, you can use `Agent (Full Access)`. Exercise caution before doing so.
+  </BentoContent>
 
-### Detailed docs
+  <BentoContent href="/codex/ide/features#cloud-delegation">
 
-The VS Code extension builds on the open source Codex CLI. For more detailed docs covering advanced configuration, MCP, and more, check out the README and docs on the GitHub repository: [github.com/openai/codex](https://github.com/openai/codex).
+### Delegate to the cloud
+
+Offload longer jobs to a cloud environment, then monitor progress and review results without leaving your IDE.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/ide/features#cloud-task-follow-up">
+
+### Follow up on cloud work
+
+Preview cloud changes, ask for follow-ups, and apply the resulting diffs locally to test and finish.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/ide/commands">
+
+### IDE extension commands
+
+Browse the full list of commands you can run from the command palette and bind to keyboard shortcuts.
+
+  </BentoContent>
+  <BentoContent href="/codex/ide/slash-commands">
+
+### Slash commands
+
+Use slash commands to control how Codex behaves and quickly change common settings from chat.
+
+  </BentoContent>
+
+  <BentoContent href="/codex/ide/settings">
+
+### Extension settings
+
+Tune Codex to your workflow with editor settings for models, approvals, and other defaults.
+
+  </BentoContent>
+</BentoContainer>

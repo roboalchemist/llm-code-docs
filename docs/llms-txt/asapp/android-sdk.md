@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Android SDK Overview
 
 > Learn how to integrate the ASAPP Android SDK into your application.
@@ -55,7 +59,7 @@ Then, add the SDK to your application dependencies:
 
 Please check the latest Chat SDK version in the [repository](https://gitlab.com/asappinc/public/mobile-sdk/android/-/packages) or [release notes](https://docs-sdk.asapp.com/api/chatsdk/android/releasenotes/).
 
-At this point, sync and rebuild your project to make sure all dependencies are imported successfully. You can also validate the authenticity of the downloaded dependency by following these steps.
+At this point, sync and rebuild your project to make sure you have successfully imported all dependencies. You can also validate the authenticity of the downloaded dependency by following these steps.
 
 ### Validate Android SDK Authenticity
 

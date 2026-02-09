@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/help-center/published-documentation/adaptive-content.md
 
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/adaptive-content.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/adaptive-content.md
-
-# Source: https://gitbook.com/docs/help-center/published-documentation/adaptive-content.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/adaptive-content.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content.md
 
@@ -29,7 +23,7 @@ Adaptive content helps to build a tailored documentation experience based on who
 <p align="center"><a href="https://gitbook.com/adaptive-content-demo/" class="button primary">Launch the demo site</a></p>
 
 {% hint style="info" %}
-Adaptive content is slightly different from [authenticated access](https://gitbook.com/docs/publishing-documentation/authenticated-access), although they can work together.&#x20;
+Adaptive content is slightly different from [authenticated access](https://gitbook.com/docs/publishing-documentation/authenticated-access), although they can work together.
 
 While authenticated access allows you to protect your docs through a login, adaptive content customizes published material based on various authentication methods — including authenticated access or those from your own app.
 {% endhint %}
@@ -41,6 +35,6 @@ Adaptive content works in one of two ways:
 1. Passing data from your app to GitBook
 2. Passing data from authenticated access
 
-When a user visits your sites, we call the data they bring with them their “claims” — basically data that helps to identify a user. These claims are controllable by you — the site author — and can be used through the GitBook editor to show or hide different pages, variants, and sections in your docs.
+When a user visits your sites, we call the data they bring with them their “claims” — basically data that helps to identify a user. These claims are controllable by you — the site author — and can be used through the GitBook editor to show or hide different pages, variants, and sections in your docs.
 
 Head to our page about [enabling adaptive content](https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content) to start setting up adaptive content for your site.

@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/agentic-browser-control/human-in-the-loop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Human-in-the-Loop
 
 > Enable human intervention during AI agent task execution

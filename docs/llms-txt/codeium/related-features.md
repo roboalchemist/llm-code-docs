@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/command/related-features.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Refactors, Docstrings, and More
 
-> Features powered by Command
+> Use Command-powered features like code lenses for refactoring, docstring generation, and Smart Paste for cross-language code translation.
 
 Command enables streamlined experiences for a few common operations.
 

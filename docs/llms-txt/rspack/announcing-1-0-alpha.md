@@ -1,8 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-0-alpha.md
 
-import { PackageManagerTabs } from '@theme';
-
-*June 29, 2024*
+_June 29, 2024_
 
 # Announcing Rspack 1.0 alpha
 
@@ -10,7 +8,7 @@ import { PackageManagerTabs } from '@theme';
 
 Rspack 1.0 alpha is now available on npm!
 
-Before releasing Rspack 1.0 stable version, we will test for 1~2 months to improve the API stability and reliability of v1.0 and to verify its impact on downstream projects.
+Before releasing Rspack 1.0 stable version, we will test for 1\~2 months to improve the API stability and reliability of v1.0 and to verify its impact on downstream projects.
 
 Rspack 1.0 stable version is expected to be released this August. This is a significant milestone as it means that Rspack has implemented the major features and APIs of webpack. This will allow thousands of webpack projects to make a smooth transition while achieving significant improvements in build performance.
 
@@ -76,19 +74,19 @@ In v0.x, Rspack core has built-in SWC plugins to support Emotion, Styled Compone
 
 Currently, Rspack supports the use of SWC plugins via [experimental.plugins](/guide/features/builtin-swc-loader.md#jscexperimentalplugins) in `builtin:swc-loader`. So we have removed the built-in plugins from the Rspack core, including:
 
-* [@swc/plugin-emotion](https://www.npmjs.com/package/@swc/plugin-emotion)
-* [@swc/plugin-relay](https://www.npmjs.com/package/@swc/plugin-relay)
-* [@swc/plugin-styled-components](https://www.npmjs.com/package/@swc/plugin-styled-components)
+- [@swc/plugin-emotion](https://www.npmjs.com/package/@swc/plugin-emotion)
+- [@swc/plugin-relay](https://www.npmjs.com/package/@swc/plugin-relay)
+- [@swc/plugin-styled-components](https://www.npmjs.com/package/@swc/plugin-styled-components)
 
 Take `@swc/plugin-styled-components` as an example. In v1.0, you can use it as follows.
 
-* Installation:
+- Installation:
 
 ```bash
 npm i @swc/plugin-styled-components -D
 ```
 
-* Configuration:
+- Configuration:
 
 ```diff
 export default {
@@ -256,10 +254,10 @@ export default {
 
 Other breaking changes:
 
-* `optimization.chunkIds` defaults to `'natural'` when `mode === 'none'`, see [#6956](https://github.com/web-infra-dev/rspack/pull/6956).
-* `optimization.moduleIds` defaults to `'natural'` when `mode === 'none'`, see [#6956](https://github.com/web-infra-dev/rspack/pull/6956).
-* Rust crate `swc_core` has been upgraded to `0.95.x`, please upgrade your SWC Wasm plugin, see [#6887](https://github.com/web-infra-dev/rspack/pull/6887).
-* Removed `output.amdContainer`, use `output.library.amdContainer` instead, see [#6958](https://github.com/web-infra-dev/rspack/pull/6958).
-* Removed `Compilation.currentNormalModuleHooks`, see [#6859](https://github.com/web-infra-dev/rspack/pull/6859).
-* Removed `stats.modules[].profile.integration`, see [#6947](https://github.com/web-infra-dev/rspack/pull/6947).
-* Removed some options for `SwcJsMinimizerRspackPluginOptions`, see [#6950](https://github.com/web-infra-dev/rspack/pull/6950).
+- `optimization.chunkIds` defaults to `'natural'` when `mode === 'none'`, see [#6956](https://github.com/web-infra-dev/rspack/pull/6956).
+- `optimization.moduleIds` defaults to `'natural'` when `mode === 'none'`, see [#6956](https://github.com/web-infra-dev/rspack/pull/6956).
+- Rust crate `swc_core` has been upgraded to `0.95.x`, please upgrade your SWC Wasm plugin, see [#6887](https://github.com/web-infra-dev/rspack/pull/6887).
+- Removed `output.amdContainer`, use `output.library.amdContainer` instead, see [#6958](https://github.com/web-infra-dev/rspack/pull/6958).
+- Removed `Compilation.currentNormalModuleHooks`, see [#6859](https://github.com/web-infra-dev/rspack/pull/6859).
+- Removed `stats.modules[].profile.integration`, see [#6947](https://github.com/web-infra-dev/rspack/pull/6947).
+- Removed some options for `SwcJsMinimizerRspackPluginOptions`, see [#6950](https://github.com/web-infra-dev/rspack/pull/6950).

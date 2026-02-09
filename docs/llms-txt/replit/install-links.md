@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/mcp/install-links.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP install links
 
 > Generate direct install links for Model Context Protocol servers.
@@ -113,8 +117,3 @@ Add a clickable badge to your README or documentation that installs your MCP ser
 </Frame>
 
 You can customize the badge caption (maximum 30 characters) by URL-encoding the text in the `caption` parameter.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

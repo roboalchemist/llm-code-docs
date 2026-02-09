@@ -1,10 +1,14 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/intent-routing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Intent Routing
 
 > Learn how to route intents to flows or agents.
 
-Intents are the set of reasons that a customer might contact your business and are recognized by the virtual agent when the customer first reaches out. Our ASAPP teams work with you to optimize your intent list on an ongoing basis.
+Intents are the set of reasons that a customer might contact your business and the virtual agent recognizes them when the customer first reaches out. Our ASAPP teams work with you to optimize your intent list on an ongoing basis.
 
 Within intent routing, you can view the full list of intents and the routing behavior after an intent is recognized. Creators have the ability to modify this behavior.
 
@@ -18,7 +22,7 @@ You can access **Intent Routing** in the **Virtual Agent** navigation panel.
 
 ## Intent Routing List
 
-On the intent routing page, you will find a filterable list of intents along with their routing information. The following information is displayed in the table:
+On the intent routing page, you will find a filterable list of intents along with their routing information. The table displays the following information:
 
 1. **Intent name:** displays the name of the intent, as well as a brief description on what it is.
 2. **Code:** unique identifier for each intent.
@@ -48,9 +52,9 @@ Clicking on a specific intent in the list will direct you to a page where routin
 Routing behavior for a specific intent is determined by selecting one of the following options:
 
 1. **Route to a live agent**
-   When the intent is identified, the customer will be immediately directed to an agent queue. This is the default selection for any new intents unless configured otherwise.
+   When the system identifies the intent, it will immediately direct the customer to an agent queue. This is the default selection for any new intents unless configured otherwise.
 2. **Route to a flow**
-   When the intent is identified, the customer will be directed to a flow in accordance with the [conditional rules](#conditional-rules-and-default-flow) that you will subsequently define.
+   When the system identifies the intent, it will direct the customer to a flow in accordance with the [conditional rules](#conditional-rules-and-default-flow) that you will subsequently define.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=f21e3881119a161ce0d1725eda33e853" data-og-width="1490" width="1490" data-og-height="674" height="674" data-path="image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=231c4ad60aa1867a37f150a599a105bf 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=2dec4dc830fc82e11db99f65e703bc4e 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=3a23d129136e413dbf468af2717a8c3d 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=c891474483ad05e757857c56cf0b89ae 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=f9342af38d9909ba80706a0c63113ecc 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ca3faf8-99e8-e73f-c913-74597e8ea743.jpg?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=ac029133da10e6324b2d5146a2587ae8 2500w" />
@@ -58,7 +62,7 @@ Routing behavior for a specific intent is determined by selecting one of the fol
 
 ### Conditional Rules and Default Flow
 
-If an intent is configured to be [routed to a flow](#routing-behavior), you have the option to build conditional rules and route to a flow only when the conditions are validated TRUE. If all the conditional rules are invalid, customers will be routed to a [default flow](#default-flow) of your choosing.
+If an intent is configured to be [routed to a flow](#routing-behavior), you have the option to build conditional rules and route to a flow only when the system validates the conditions as TRUE. If all the conditional rules are invalid, the system will route customers to a [default flow](#default-flow) of your choosing.
 
 #### Add Conditional Route
 
@@ -82,7 +86,7 @@ To add a new conditional route:
 
 #### Multiple Conditional Routes
 
-You can add multiple conditional rules that can route to different flows. You can reorder these conditions by dragging the conditional rule from the icon on the left. Once saved, conditions are evaluated from top to bottom, with the customer being routed to the first flow for which the conditions are validated. If no conditional route is valid, the customer will be routed to the [default flow](#default-flow).
+You can add multiple conditional rules that can route to different flows. You can reorder these conditions by dragging the conditional rule from the icon on the left. Once saved, the system evaluates conditions from top to bottom, with the customer being routed to the first flow for which the system validates the conditions. If no conditional route is valid, the system will route the customer to the [default flow](#default-flow).
 
 <Frame>
   <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=a3b8684a4aaa590d44ec453cdadb24a8" data-og-width="1490" width="1490" data-og-height="972" height="972" data-path="image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=74e687a509728cf794cd7ce3b6aa1634 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=04ea037f1c7920024f19ca6b0f25eafc 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=0d867ef430a665c3ed66e4bc40cb627d 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c4d65ed7fe15cca39ce430e18da33a72 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c64db5c550ae5754afbf43829e7d14e4 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-c372598b-9b88-245a-484a-1e28874355f1.jpg?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=cb8a0e9ef33485f7b25ed2b9840ebd8b 2500w" />
@@ -106,7 +110,7 @@ The **Assigned routes** will display any flow(s) that are currently routed from 
 
 ### Intent Toolbar
 
-When you are editing intent routing, the following buttons will display in the toolbar:
+When you are editing intent routing, the toolbar displays the following buttons:
 
 * **Discard changes**: remove all unsaved changes.
 * **Save**: save changes to intent routing.

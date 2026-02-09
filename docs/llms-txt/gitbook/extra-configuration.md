@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/customization/extra-configuration.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/customization/extra-configuration.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/customization/extra-configuration.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/customization/extra-configuration.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/customization/extra-configuration.md
 
@@ -36,7 +32,7 @@ The **External links** section in the **Configure** tab controls the behavior wh
 
 ### Page actions
 
-Page actions adds a page-level dropdown to every page of your docs, allowing users to perform quick actions on a page's content — ideal for using your docs content as context within an AI prompt.&#x20;
+Page actions adds a page-level dropdown to every page of your docs, allowing users to perform quick actions on a page's content — ideal for using your docs content as context within an AI prompt.
 
 You can disable this option from the **Configure** tab if you do not wish to show page options in your published docs.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/optimize/decrease-latency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Decrease latency
 
 > Learn techniques to decrease latency for search and upsert operations.
@@ -103,9 +107,21 @@ When you target an index for upserting or querying, the client establishes a TCP
 
 If you experience slow uploads or high query latencies, it might be because you are accessing Pinecone from your home network. To decrease latency, access Pinecone/deploy your application from a cloud environment instead, ideally from the same [cloud and region](/guides/index-data/create-an-index#cloud-regions) as your index.
 
+## Avoid including vector values when not needed
+
+For on-demand indexes, since vector values are retrieved from object storage, including vector values in query responses (`include_values=true`) adds latency, especially with higher `top_k` values. If you don't need the vector values in your response, set `include_values=false` to improve query performance. This applies to [`query`](/reference/api/latest/data-plane/query) and [`fetch`](/reference/api/latest/data-plane/fetch) operations.
+
+<Note>
+  This optimization applies to on-demand indexes. DRN indexes cache values locally and are not affected.
+</Note>
+
 ## Work with database limits
 
 Pinecone has [rate limits](/reference/api/database-limits#rate-limits) to protect your applications and maintain infrastructure health. Rate limits vary based on pricing plan and apply to serverless indexes only.
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 To handle rate limits effectively:
 

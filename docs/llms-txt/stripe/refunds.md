@@ -6,7 +6,7 @@ Learn how to cancel or refund a payment.
 
 You can [cancel a payment](https://docs.stripe.com/refunds.md#cancel-payment) before it’s completed at no cost. Or you can refund all or part of a payment after it succeeds, which might incur a fee. Go to our [pricing page](https://stripe.com/pricing/local-payment-methods) for more information.
 
-Refunds use your available Stripe balance (not including pending amounts). If your available balance doesn’t cover the amount of the refund, Stripe holds the refund as pending until your Stripe balance becomes sufficient. You can resolve a negative Stripe balance by collecting payments or *topping up* (The act of adding funds to a Stripe account, typically through a transfer from a bank external to Stripe) your account balance. In regions where applicable, Stripe might debit your bank accounts automatically to recover a negative Stripe balance.
+Refunds use your available Stripe balance (not including pending amounts). If your available balance doesn’t cover the amount of the refund, Stripe holds the refund as pending for card transactions (refunds for other payment method types will fail) until your Stripe balance becomes sufficient. You can resolve a negative Stripe balance by collecting payments or *topping up* (The act of adding funds to a Stripe account, typically through a transfer from a bank external to Stripe) your account balance. In regions where applicable, Stripe might debit your bank accounts automatically to recover a negative Stripe balance.
 
 ## Refund requests 
 
@@ -223,7 +223,7 @@ If you want to separate the [authorization and capture](https://docs.stripe.com/
 Refund behavior depends on the [Connect charge type](https://docs.stripe.com/connect/charges.md#refund-creation) used in your integration.
 
 - Stripe debits the connected account directly for refunds to [direct charge](https://docs.stripe.com/connect/direct-charges.md#issue-refunds) payments.
-- Stripe debits your platform for refunds to [destination charge](https://docs.stripe.com/connect/destination-charges.md#issue-refunds) or [separate charge and transfer](https://docs.stripe.com/connect/separate-charges-and-transfers.md#issue-refunds) (with or without `on_behalf_of`) payments.  Reverse the transfers associated with these charge types to recover the refund amount from your connected accounts.
+- Stripe debits your platform for refunds to [destination charge](https://docs.stripe.com/connect/destination-charges.md#issue-refunds) or [separate charge and transfer](https://docs.stripe.com/connect/separate-charges-and-transfers.md#issue-refunds) (with or without `on_behalf_of`) payments. Reverse the transfers associated with these charge types to recover the refund amount from your connected accounts.
 
 Connect platforms can enable their connected accounts to provide refunds to customers from their site by using Connect embedded components such as the [payments](https://docs.stripe.com/connect/supported-embedded-components/payments.md) or the [payment details](https://docs.stripe.com/connect/supported-embedded-components/payment-details.md) component.
 
@@ -353,8 +353,8 @@ const refund = await stripe.refunds.cancel('re_Aabcxyz01aDfoo');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.RefundCancelParams{Refund: stripe.String("re_Aabcxyz01aDfoo")}
-result, err := sc.V1Refunds.Cancel(context.TODO(), params)
+params := &stripe.RefundCancelParams{}
+result, err := sc.V1Refunds.Cancel(context.TODO(), "re_Aabcxyz01aDfoo", params)
 ```
 
 ```dotnet
@@ -520,10 +520,9 @@ const paymentIntent = await stripe.paymentIntents.cancel('pi_32AkjQ5H4Bas2eAolX1
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentIntentCancelParams{
-  Intent: stripe.String("pi_32AkjQ5H4Bas2eAolX13"),
-}
-result, err := sc.V1PaymentIntents.Cancel(context.TODO(), params)
+params := &stripe.PaymentIntentCancelParams{}
+result, err := sc.V1PaymentIntents.Cancel(
+  context.TODO(), "pi_32AkjQ5H4Bas2eAolX13", params)
 ```
 
 ```dotnet
@@ -548,7 +547,7 @@ A PaymentIntent can’t be canceled after it has succeeded. When a PaymentIntent
 
 Stripe triggers [events](https://docs.stripe.com/api/events.md#events) every time a refund is created or changed. Some other actions, like reviews closing, also trigger events that are relevant to refunds.
 
-Make sure that your integration is set up to [handle events](https://docs.stripe.com/payments/handling-payment-events.md). You must also build internal logic for notifying customers or your team about the state of the refund process. At a minimum, Stripe recommends that you listen for the `refund.created` event.
+Make sure that your integration is set up to [handle events](https://docs.stripe.com/webhooks/handling-payment-events.md). You must also build internal logic for notifying customers or your team about the state of the refund process. At a minimum, Stripe recommends that you listen for the `refund.created` event.
 
 The following table describes the most common events related to refunds.
 

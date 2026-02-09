@@ -43,8 +43,8 @@ Enter the destination in the format: `[did]@[LiveKit SIP endpoint]`, for example
 An [inbound trunk](https://docs.livekit.io/telephony/accepting-calls/inbound-trunk.md) allows you to accept incoming phone calls to your Wavix phone number. To create an inbound trunk in LiveKit, use the following steps:
 
 1. Sign in to [LiveKit Cloud](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select the **+Create new** button → **Trunk**.
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
+3. Select the **+Create new trunk** button.
 4. For **Trunk direction**, select **Inbound**.
 5. Enter a comma-separated list of Wavix numbers to associate with the trunk.
 6. Select **Create**.
@@ -55,8 +55,8 @@ In addition to an inbound trunk, you need a [dispatch rule](https://docs.livekit
 
 Create a dispatch rule using the following steps:
 
-1. Navigate to the **Telephony** → **Configuration** page.
-2. Select the **+Create new** button → **Dispatch rule**.
+1. Navigate to the **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch) page.
+2. Select the **+Create new dispatch rule** button.
 3. Complete the **Rule name** and **Room name** fields.
 4. Select **Match trunks** and select the inbound trunk you created in the previous step.
 
@@ -96,8 +96,8 @@ After the SIP trunk is successfully created, it appears in your account's SIP tr
 For outbound calls, you need to create an outbound trunk in LiveKit using the Wavix SIP trunk credentials:
 
 1. Sign in to [LiveKit Cloud](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select the **+ Create new** button → **Trunk**.
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
+3. Select the **+ Create new trunk** button.
 4. For **Trunk direction**, select **Outbound**.
 5. Configure the outbound trunk with the following settings:- **Address**: Use the Wavix SIP gateway (e.g., `<country-code>.wavix.net`)
 - **Numbers**: Enter your Wavix phone number.
@@ -173,7 +173,7 @@ The following guides provide next steps for building your telephony app.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:34.944Z.
+This document was rendered at 2026-02-03T03:25:10.688Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/start/providers/wavix.md](https://docs.livekit.io/telephony/start/providers/wavix.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

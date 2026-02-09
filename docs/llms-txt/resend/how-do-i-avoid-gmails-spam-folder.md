@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How do I avoid Gmail's spam folder?
 
 > Learn how to improve inbox placement in Gmail.
@@ -56,7 +60,7 @@ It would seem like adding open and click tracking would be ideal to gather this 
 **Action Items**
 
 1. Make it easy to opt-out to your emails (including the [Unsubscribe Headers](https://resend.com/docs/dashboard/emails/add-unsubscribe-to-transactional-emails))
-2. Use [Webhooks](/dashboard/webhooks/introduction) to remove bounced or complained recipients from your list
+2. Use [Webhooks](/webhooks/introduction) to remove bounced or complained recipients from your list
 3. Use [Gmail's Postmaster Tool](https://support.google.com/mail/answer/9981691?sjid=4594872399309427672-NA\&visit_id=638259770782293948-1913697299\&rd=1) to monitor your spam reports
 
 ## Monitor Affiliate Marketers

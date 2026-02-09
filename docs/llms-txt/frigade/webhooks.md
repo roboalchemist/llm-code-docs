@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/api-reference/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 Webhooks allow you to receive notifications from Frigade when certain events occur.
@@ -10,7 +14,7 @@ You can use webhooks to receive notifications about your users when they start a
 To add a new webhook, open the **Developer** page from the left sidebar, pick the **Webhooks** tab and click the "New webhook" button.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/webhooks.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f8b3b7e5dbf1d0b133c3e0a0787309bc" data-og-width="1399" width="1399" data-og-height="835" height="835" data-path="images/platform/webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=38e3d45ef2decfaadf6f40a618f5ed46 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=daf73ded7c324f9ce557f4debdb1f7aa 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8b7811f8060afe7d32b07efc5fc9b5c6 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a12a11b1e1a9250ad50daea4978f758d 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b106460424f04cb8976ada82addcaff5 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/webhooks.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=c1f68f6715a84281bc1953bce373c776 2500w" />
 </Frame>
 
 ## Supported events
@@ -32,7 +36,7 @@ The payload can be a different object depending on the event type.
 
 ### Schema
 
-```typescript
+```typescript  theme={"system"}
 {
   // Event type identifier
   type: string;  // e.g. "flowResponse.completedFlow"
@@ -110,7 +114,7 @@ The payload can be a different object depending on the event type.
 
 The below example shows the payload for a `flowResponse.completedFlow` event for the [NPS Survey](/component/survey/nps) component with flattened data fields:
 
-```json
+```json  theme={"system"}
 {
   "timeout": 1000,
   "data__nps-feedback-page__nps-feedback-text": "I love the service!",
@@ -177,7 +181,7 @@ Note that when JSON-encoding the `data` field it needs to match the order of the
 
 For example, in Node.js, you can do it like this:
 
-```ts
+```ts  theme={"system"}
 const crypto = require('crypto');
 
 const payload = '{"type":"flowResponse.completedStep",....}}'

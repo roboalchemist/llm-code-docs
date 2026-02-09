@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/account-access/what-email-does-linkedin-authentication-use.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What email does LinkedIn authentication use?
 
 When you authenticate with Fireworks using LinkedIn, we use the **primary email address** associated with your LinkedIn account for identification and account management.

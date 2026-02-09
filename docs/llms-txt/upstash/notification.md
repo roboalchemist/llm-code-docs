@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/notification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building a Serverless Notification API for Your Web Application with Redis
 
 > This tutorial shows how to create a Serverless Notification API for Your Web Application with Redis.

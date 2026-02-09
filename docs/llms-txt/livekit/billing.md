@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/deploy/admin/billing.md
 
-# Source: https://docs.livekit.io/home/cloud/billing.md
-
-LiveKit docs › LiveKit Cloud › Billing
+LiveKit docs › Administration › Billing
 
 ---
 
@@ -12,15 +10,19 @@ LiveKit docs › LiveKit Cloud › Billing
 
 ## Pricing
 
-Refer to the following page for current pricing information:
+Refer to the following pages for current pricing information:
 
 - **[LiveKit Cloud pricing](https://livekit.io/pricing)**: Current pricing, limits, and quotas for LiveKit Cloud plans.
 
 - **[LiveKit Inference pricing](https://livekit.io/pricing/inference)**: Current pricing for LiveKit Inference models.
 
+> ⚠️ **Prohibited usage**
+> 
+> Attempting to manipulate or circumvent billing through any means violates the LiveKit [Terms of Service](https://livekit.io/legal/terms-of-service). If suspicious activity is detected, your account may be suspended or terminated.
+
 ## Resource metering
 
-All LiveKit Cloud pricing plans include usage-based pricing, metered by resource consumption. The following sections provide more information about how each specific type of resource is metered. For information on quotas and limits, see the [Quotas and limits](https://docs.livekit.io/home/cloud/quotas-and-limits.md) guide.
+All LiveKit Cloud pricing plans include usage-based pricing, metered by resource consumption. The following sections provide more information about how each specific type of resource is metered. For information on quotas and limits, see the [Quotas and limits](https://docs.livekit.io/deploy/admin/quotas-and-limits.md) guide.
 
 > ℹ️ **Rounding up**
 > 
@@ -28,7 +30,7 @@ All LiveKit Cloud pricing plans include usage-based pricing, metered by resource
 
 ### Realtime media and data
 
-LiveKit Cloud transport services, including [WebRTC media](https://docs.livekit.io/home/client/tracks.md), [SIP](https://docs.livekit.io/sip.md), and [Stream import](https://docs.livekit.io/home/ingress/overview.md), and [Recording and export](https://docs.livekit.io/home/egress/overview.md), are metered on a combination of **time** and **data transfer**. The following table shows the units and minimum increments for each resource.
+LiveKit Cloud transport services, including [WebRTC media](https://docs.livekit.io/transport/media.md), [telephony](https://docs.livekit.io/telephony.md), and [Stream import](https://docs.livekit.io/transport/media/ingress-egress/ingress.md), and [Recording and export](https://docs.livekit.io/transport/media/ingress-egress/ingress.md), are metered on a combination of **time** and **data transfer**. The following table shows the units and minimum increments for each resource.
 
 | Resource type | Unit | Minimum increment |
 | Time | Minute | 1 minute |
@@ -38,9 +40,45 @@ LiveKit Cloud transport services, including [WebRTC media](https://docs.livekit.
 
 Agents deployed to LiveKit Cloud are metered by the **agent session minute**, in increments of 1 minute. This reflects the amount of time the agent is actively connected to a WebRTC or SIP-based session.
 
+Metering starts after the agent connects to the room. Metering stops when either the room ends or the agent disconnects, whichever occurs first. If an agent receives a job but never connects to the room, no metering occurs.
+
+To explicitly end a session and stop metering, call `ctx.shutdown()` in your entrypoint function:
+
+**Python**:
+
+```python
+async def entrypoint(ctx: JobContext):
+    try:
+        await ctx.connect()
+        # ... agent logic ...
+    except Exception as e:
+        logger.error(f"Error: {e}")
+        ctx.shutdown()
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+export default defineAgent({
+  entry: async (ctx: JobContext) => {
+    try {
+      await ctx.connect();
+      // ... agent logic ...
+    } catch (e) {
+      logger.error(`Error: ${e}`);
+      ctx.shutdown();
+    }
+  },
+});
+
+```
+
 ### Agent observability
 
-Agent observability is metered in two ways. First, by [events](https://docs.livekit.io/agents/observability.md#events), which include individual transcripts, observations, and logs. Second, by [recorded audio](https://docs.livekit.io/agents/observability.md#audio), in increments of 1 minute.
+Agent observability is metered in two ways. First, by [events](https://docs.livekit.io/deploy/observability/insights.md#events), which include individual transcripts, observations, and logs. Second, by [recorded audio](https://docs.livekit.io/deploy/observability/insights.md#audio), in increments of 1 minute.
 
 The following table shows the units and minimum increments for each resource.
 
@@ -75,7 +113,7 @@ Past monthly invoices are available on the project's [billing page](https://clou
 
 ---
 
-This document was rendered at 2025-11-18T23:54:59.618Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cloud/billing.md](https://docs.livekit.io/home/cloud/billing.md).
+This document was rendered at 2026-02-03T03:25:24.084Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/admin/billing.md](https://docs.livekit.io/deploy/admin/billing.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/support/issues/document-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Document processing issues
 
 ## Issues

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/http/stream-node-streams-in-bun.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streaming HTTP Server with Node.js Streams
 
 In Bun, [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects can accept a Node.js [`Readable`](https://nodejs.org/api/stream.html#stream_readable_streams).

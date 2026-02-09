@@ -1,135 +1,201 @@
 # Source: https://getlago.com/docs/api-reference/audit-logs/get-specific-activity-log.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve an activity log
 
 > This endpoint retrieves an existing activity log that represents an action performed on some resource. The activity log is identified by its unique activity_id.
 
+
+
 ## OpenAPI
 
 ````yaml GET /activity_logs/{activity_id}
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /activity_logs/{activity_id}
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
+  /activity_logs/{activity_id}:
     parameters:
-      path:
-        activity_id:
-          schema:
-            - type: string
-              required: true
-              description: The Activity Id of the existing activity log.
-              example: bdc0eda6-ea52-4f72-a46a-94f47a89b546
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              activity_log:
-                allOf:
-                  - $ref: '#/components/schemas/ActivityLogObject'
-            refIdentifier: '#/components/schemas/ActivityLog'
-            requiredProperties:
-              - activity_log
-        examples:
-          example:
-            value:
-              activity_log:
-                activity_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                user_email: dinesh@piedpiper.test
-                activity_type: billing_metric.created
-                activity_source: api
-                activity_object:
-                  lago_id: dad68bc7-c01a-4ad8-a87b-13e78693a5bc
-                  plan_id: b9155544-e261-4e92-b54e-f65d7609294c
-                activity_object_changes:
-                  plan_id:
-                    - null
-                    - b9155544-e261-4e92-b54e-f65d7609294c
-                external_customer_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                external_subscription_id: external_id
-                resource_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                resource_type: BillableMetric
-                organization_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                logged_at: '2025-03-31T12:31:44Z'
-                created_at: '2022-04-29T08:59:51Z'
-        description: Activity Log
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 404
-              error:
-                allOf:
-                  - type: string
-                    example: Not Found
-              code:
-                allOf:
-                  - type: string
-                    example: object_not_found
-            refIdentifier: '#/components/schemas/ApiErrorNotFound'
-            requiredProperties:
-              - status
-              - error
-              - code
-        examples:
-          example:
-            value:
-              status: 404
-              error: Not Found
-              code: object_not_found
-        description: Not Found error
-  deprecated: false
-  type: path
+      - name: activity_id
+        in: path
+        description: The Activity Id of the existing activity log.
+        required: true
+        schema:
+          type: string
+          example: bdc0eda6-ea52-4f72-a46a-94f47a89b546
+    get:
+      tags:
+        - activity_logs
+      summary: Retrieve an activity log
+      description: >-
+        This endpoint retrieves an existing activity log that represents an
+        action performed on some resource. The activity log is identified by its
+        unique activity_id.
+      operationId: findActivityLog
+      responses:
+        '200':
+          description: Activity Log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLog'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ActivityLog:
+      type: object
+      required:
+        - activity_log
+      properties:
+        activity_log:
+          $ref: '#/components/schemas/ActivityLogObject'
     ActivityLogObject:
       type: object
       required:
@@ -241,5 +307,52 @@ components:
             presented in the ISO 8601 datetime format, specifically in
             Coordinated Universal Time (UTC). It provides the precise timestamp
             of when the event's record was created within the Lago application
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+    ApiErrorNotFound:
+      type: object
+      required:
+        - status
+        - error
+        - code
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 404
+        error:
+          type: string
+          example: Not Found
+        code:
+          type: string
+          example: object_not_found
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+    NotFound:
+      description: Not Found error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorNotFound'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

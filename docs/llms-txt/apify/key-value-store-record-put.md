@@ -9,7 +9,7 @@ https://api.apify.com/v2/key-value-stores/:storeId/records/:recordKey
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#set_recordhttps://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#setRecordStores a value under a specific key to the key-value store.
+Stores a value under a specific key to the key-value store.
 
 The value is passed as the PUT payload and it is stored with a MIME content type defined by the `Content-Type` header and with encoding defined by the `Content-Encoding` header.
 
@@ -26,7 +26,10 @@ Below is a list of supported `Content-Encoding` types.
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

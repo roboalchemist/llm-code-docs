@@ -1,5 +1,9 @@
 # Source: https://agentskills.io/what-are-skills.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentskills.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What are skills?
 
 > Agent Skills are a lightweight, open format for extending AI agent capabilities with specialized knowledge and workflows.
@@ -70,8 +74,3 @@ This simple format has some key advantages:
 * [See example skills](https://github.com/anthropics/skills) on GitHub.
 * [Read authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) for writing effective skills.
 * [Use the reference library](https://github.com/agentskills/agentskills/tree/main/skills-ref) to validate skills and generate prompt XML.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentskills.io/llms.txt

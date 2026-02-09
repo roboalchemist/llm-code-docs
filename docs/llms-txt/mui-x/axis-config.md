@@ -25,7 +25,7 @@ import { AxisConfig } from '@mui/x-charts'
 | disableLine | `boolean` | `false` | No |  |
 | disableTicks | `boolean` | `false` | No |  |
 | domainLimit | `'nice' \| 'strict' \| ((min: number, max: number) => { min: number; max: number })` | - | No |  |
-| height | `number` | `30` | No |  |
+| height | `number` | `45 if an axis label is provided, 25 otherwise.` | No |  |
 | hideTooltip | `boolean` | - | No |  |
 | ignoreTooltip | `boolean` | - | No |  |
 | label | `string` | - | No |  |

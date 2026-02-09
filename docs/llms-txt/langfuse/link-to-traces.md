@@ -26,6 +26,8 @@ After linking prompts and traces, navigating to a generation span in Langfuse wi
 <LangTabs items={["Python SDK", "JS/TS SDK", "OpenAI SDK (Python)", "OpenAI SDK (JS/TS)", "Langchain (Python)", "Langchain (JS/TS)", "Vercel AI SDK"]}>
 <Tab>
 
+There are three ways to create traces with the Langfuse Python SDK. For more information, see the [SDK documentation](/docs/observability/sdk/python/instrumentation).
+
 **Decorators**
 
 ```python
@@ -67,25 +69,50 @@ with langfuse.start_as_current_observation(
     generation.update(output="LLM response")
 ```
 
+**Manual observations**
+
+```python
+from langfuse import get_client
+
+langfuse = get_client()
+
+prompt = langfuse.get_prompt("movie-critic")
+
+generation = langfuse.start_generation(
+    name="movie-generation",
+    model="gpt-4o",
+    prompt=prompt
+)
+
+# Your LLM call here
+
+generation.update(output="LLM response")
+generation.end()  # Important: manually end the generation
+```
+
 </Tab>
 
 <Tab>
 
-**Manual observations**
+There are three ways to create traces with the Langfuse JS/TS SDK. For more information, see the [SDK documentation](/docs/observability/sdk/typescript/instrumentation).
+
+**Observe wrapper**
 
 ```ts
 import { LangfuseClient } from "@langfuse/client";
-import { startObservation } from "@langfuse/tracing";
+import { observe, startObservation } from "@langfuse/tracing";
 
-const prompt = new LangfuseClient().prompt.get("my-prompt");
+const langfuse = new LangfuseClient();
 
-startObservation(
-  "llm",
-  {
-    prompt,
-  },
-  { asType: "generation" },
-);
+const callLLM = async (input: string) => {
+  const prompt = langfuse.prompt.get("my-prompt");
+
+  updateActiveObservation({ prompt }, { asType: "generation" });
+
+  return await invokeLLM(input);
+};
+
+export const observedCallLLM = observe(callLLM);
 ```
 
 **Context manager**
@@ -106,23 +133,21 @@ startActiveObservation(
 );
 ```
 
-**Observe wrapper**
+**Manual observations**
 
 ```ts
 import { LangfuseClient } from "@langfuse/client";
-import { observe } from "@langfuse/tracing";
+import { startObservation } from "@langfuse/tracing";
 
-const langfuse = new LangfuseClient();
+const prompt = new LangfuseClient().prompt.get("my-prompt");
 
-const callLLM = async (input: string) => {
-  const prompt = langfuse.prompt.get("my-prompt");
-
-  updateActiveObservation({ prompt }, { asType: "generation" });
-
-  return await invokeLLM(input);
-};
-
-export const observedCallLLM = observe(callLLM);
+startObservation(
+  "llm",
+  {
+    prompt,
+  },
+  { asType: "generation" },
+);
 ```
 
 </Tab>
@@ -149,7 +174,7 @@ openai.chat.completions.create(
 </Tab>
 
 <Tab>
-Please make sure you have [OpenTelemetry already set up](/docs/observability/sdk/typescript/setup) for tracing.
+Please make sure you have [OpenTelemetry already set up](/docs/observability/sdk/overview#initialize-tracing) for tracing.
 
 ```ts /langfusePrompt,/
 import { observeOpenAI } from "@langfuse/openai";
@@ -242,7 +267,7 @@ chat_chain.invoke({"movie": "Dune 2", "criticlevel": "expert"}, config={"callbac
 
 <Tab>
 
-Please make sure you have [OpenTelemetry already set up](/docs/observability/sdk/typescript/setup) for tracing.
+Please make sure you have [OpenTelemetry already set up](/docs/observability/sdk/overview#initialize-tracing) for tracing.
 
 ```ts
 import { LangfuseClient } from "@langfuse/client";
@@ -344,10 +369,12 @@ const result = await generateText({
 
 {/* TODO: add screenshot of metrics page which shows various scores and cost metrics for versions of a prompt from langfuse-docs project */}
 
+Once prompts are linked to traces, Langfuse automatically aggregates the following metrics per prompt version. You can compare them across prompt versions in the Metrics tab in the Langfuse UI:
+
 - Median generation latency
 - Median generation input tokens
 - Median generation output tokens
 - Median generation costs
 - Generation count
-- Median [score](/docs/evaluation/evaluation-methods/data-model) value
+- Median [score](/docs/evaluation/experiments/data-model#scores) value
 - First and last generation timestamp

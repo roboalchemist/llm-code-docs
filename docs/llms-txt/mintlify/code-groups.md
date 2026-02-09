@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/code-groups.md
+# Source: https://www.mintlify.com/docs/components/code-groups.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Code groups
 
@@ -26,7 +30,9 @@ Use the `CodeGroup` component to display multiple code blocks in a tabbed interf
 
 Code groups inherit global styling from your `docs.json` file. Customize your theme using `styling.codeblocks`. See [Settings](/organize/settings#styling) for configuration options.
 
-## Creating code groups
+Code groups automatically synchronize with other code groups and [tabs](/components/tabs) on the same page when their labels match. When you select a language in one code group, all tabs and code groups with matching labels update to show the same language.
+
+## Create code groups
 
 To create a code group, wrap multiple code blocks with `<CodeGroup>` tags. Each code block must include a title, which becomes the tab label.
 

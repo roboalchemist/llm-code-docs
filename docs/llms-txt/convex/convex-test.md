@@ -2,7 +2,7 @@
 
 # convex-test
 
-The `convex-test` library provides a mock implementation of the Convex backend in JavaScript. It enables fast automated testing of the logic in your [functions](/functions.md).
+The [`convex-test`](https://www.npmjs.com/package/convex-test) library provides a mock implementation of the Convex backend in JavaScript. It enables fast automated testing of the logic in your [functions](/functions.md).
 
 ## Example[​](#example "Direct link to Example")
 

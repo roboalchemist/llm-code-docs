@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/binary/arraybuffer-to-buffer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert an ArrayBuffer to a Buffer
 
 The Node.js [`Buffer`](https://nodejs.org/api/buffer.html) API predates the introduction of `ArrayBuffer` into the JavaScript language. Bun implements both.
@@ -22,4 +26,4 @@ const nodeBuffer = Buffer.from(arrBuffer, 0, 16); // view first 16 bytes
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.

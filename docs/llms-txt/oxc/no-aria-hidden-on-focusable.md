@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsx_a11y/no-aria-hidden-on-focusable.md
 ---
-# jsx\_a11y/no-aria-hidden-on-focusable&#x20;
 
 ### What it does
 

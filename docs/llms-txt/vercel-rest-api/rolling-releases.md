@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/examples/rolling-releases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rolling Releases Management
 
 > Learn how to use the Vercel SDK to manage Rolling Releases through real-life examples.

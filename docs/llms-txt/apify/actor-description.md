@@ -48,7 +48,7 @@ Different descriptions give you a chance to target different stages of user acqu
 
 *Description (and name)* is targeting a “warm” potential user who is already curious about your tool. They have clicked on the tool's page and have a few seconds to understand how complex the tool is and what it can do for them. Here you can forget SEO optimization and speak directly to the user. The regular description also has a longer character limit, which means you can expand on your Actor’s features.
 
-Learn more about search intent here: https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/seo.md
+Learn more about search intent here: [SEO](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/seo.md)
 
 ## Where can Actor descriptions be set?
 

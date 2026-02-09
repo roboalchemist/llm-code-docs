@@ -11,7 +11,7 @@ Adding an **Influencer Endorsement Image Block** at checkout is a great way to b
 This experience is designed for **all visitors** — it should display for **100% of checkout traffic.**\
 Every shopper benefits from seeing recognizable social proof or influencer credibility, especially those unfamiliar with your brand.
 
-### What this Experience does
+### What this Personalization does
 
 This experience adds a single image to your Shopify checkout page.\
 The block features a bold, single-line endorsement from the influencer to help build trust.
@@ -33,18 +33,18 @@ Use the Influencer Endorsement Image Block when you want to:
 * Convert brand awareness into purchase confidence
 
 {% hint style="success" %}
-**Pro Tip:** A Checkout Experience can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
+**Pro Tip:** A Checkout Personalization can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
 {% endhint %}
 
 ### Why it matters
 
 Social proof is one of the strongest drivers of purchase confidence. Featuring recognizable endorsements or public praise where customers finalize their orders helps remove last-minute doubts and builds deeper trust in your brand.
 
-## How to Set Up This Checkout Experience in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
+## How to Set Up This Checkout Personalization in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
 
 {% embed url="<https://www.loom.com/share/98b85dc579fa4dc2b7b060b36a04c009>" %}
 
-1. Go to Experiences > **Checkout**
+1. Go to Personalizations > **Checkout**
 2. Select **Static Images**
 3. Add a **Block name**
 4. Rename the **Location ID** to be descriptive
@@ -68,8 +68,8 @@ Social proof is one of the strongest drivers of purchase confidence. Featuring r
 11. You can update the content, launch a different Theme or Template, and update styles or javascript
 12. Add **Targeting** to choose which shoppers you want to see this block. It will be set to all visitors by default.
 13. **Save** your Experience
-14. **Preview** your Checkout Experience on desktop and mobile
-15. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+14. **Preview** your Checkout Personalization on desktop and mobile
+15. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
 
 {% hint style="info" %}

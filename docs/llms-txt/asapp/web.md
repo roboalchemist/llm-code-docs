@@ -1,9 +1,13 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/web.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web
 
 A feature that prompts customers to use Chat instead of calling. When customers shift volume from phone to chat, this reduces costs and improves the customer experience.
-When customers tap a phone number, phone button, or any other entry point that the customer company chooses, ASAPP triggers an intercept that gives the customer the option to chat or to call.
+When customers tap a phone number, phone button, or any other entry point that the customer company chooses, ASAPP triggers an intercept that gives the customer the option to chat or call.
 In order to enable this feature, please:
 
 1. Identify Entry Points.

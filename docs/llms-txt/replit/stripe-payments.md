@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/stripe-payments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stripe Payments Integration
 
 > Add payments and subscriptions to your app with Stripe using Agent, test safely in a sandbox, then go live with your own Stripe account.
@@ -11,6 +15,10 @@ export const AiPrompt = ({children}) => {
       </div>
     </CodeBlock>;
 };
+
+<Note>
+  The Stripe Connector is only supported for Replit Free and Core users. It is not available in Teams workspaces at this time.
+</Note>
 
 ## What you can build
 
@@ -31,13 +39,9 @@ Agent starts with a Stripe sandbox so you can safely test payments without movin
 * **Ask Agent to use Stripe**
   * Use a slash command on the home screen and select Stripe, or ask directly:
     <AiPrompt>Build a storefront and integrate Stripe for payments</AiPrompt>
-* **Choose your starting point**
-  * Start with a full app, or begin with a design and convert it to a full app
-    when you’re ready to generate the Stripe integration.
 
 <Note>
-  If you start with a design, Agent creates the Stripe integration when you
-  convert the design into a full app.
+  Stripe integration requires an App with backend functionality. Select **App** from the homepage to get started.
 </Note>
 
 ## Test payments in the sandbox
@@ -82,7 +86,7 @@ To accept real payments:
 <Warning>
   Before you publish:
 
-  * Install the **Replit Integrated Payments** app in your live Stripe account
+  * Install the [Replit Integrated Payments](https://marketplace.stripe.com/apps/replit-integrated-payments) app in your live Stripe account
     (required for sandbox‑to‑live synchronization)
   * Complete Stripe’s KYB verification and add your live API keys
 
@@ -129,9 +133,139 @@ and activation: [Create and manage your Stripe account](https://docs.stripe.com/
 3. Reveal your live keys or create new ones. For step‑by‑step instructions on creating new keys, see
    [Create a secret API key](https://docs.stripe.com/keys#create-api-secret-key).
 
+## Update or remove the Stripe connection
+
+If you're not ready to publish with your Stripe live keys, you have three options:
+
+### Option A: Use placeholder API keys
+
+You can use Stripe placeholder keys that you can replace later.
+
+<Warning>
+  Placeholder keys will not process real payments. The catalog and checkout will not function on your published URL until you add your live Stripe keys. Use this option only for testing purposes.
+</Warning>
+
+<Steps>
+  <Step title="Go to the publishing tab">
+    Open the **Publish** pane in your Workspace.
+  </Step>
+
+  <Step title="Enter placeholder keys">
+    Use these values:
+
+    **Publishable Key:**
+
+    ```text  theme={null}
+    pk_live_abcdef
+    ```
+
+    **Secret Key:**
+
+    ```text  theme={null}
+    sk_live_abcdef
+    ```
+  </Step>
+</Steps>
+
+### Option B: Remove the Stripe integration manually
+
+You can completely remove the Stripe integration from your project.
+
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project with the Stripe integration you want to remove.
+  </Step>
+
+  <Step title="Open a new tab and type integrations">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=f21f82f66f280ad26a4d20b5f7d0576d" alt="New tab search showing Integrations option to connect to Replit-native and external services" data-og-width="1328" width="1328" data-og-height="356" height="356" data-path="images/replitai/stripe-remove-1-integrations-search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=31b502699b72cb90c0d5c10837e62aa3 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=f5aa62d8380b74587a2f6fdb57ecc140 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=7b2c337c10f1fb2816bdbac9079b40bb 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=59d95870bf21cc3e745299814f572d6a 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e8bbb1e73d2d92f22198dcd5cc9d7928 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-1-integrations-search.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=a0939ab768d3b5b9515137dfe7021479 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Scroll down to Stripe and select Manage">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=6ed6e2a79cc0ab3834dc671f7cbf7930" alt="Connectors panel showing Stripe integration with Manage button" data-og-width="1376" width="1376" data-og-height="492" height="492" data-path="images/replitai/stripe-remove-2-connector-manage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=741b7f5066c00b046f5f1f8f47de3778 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=0a72b7c120e8950f3956acfad4bfa3d9 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=55491e2577658376ffa0921f35e980b9 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e8342e5cffa3a85b4922867b90d065bd 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=c6cef3b8cfef8ef347985563dd60a93b 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-2-connector-manage.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=90aee61410e7790508e8e5bfe52dc5f1 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the name of your project">
+    This opens the connection details.
+  </Step>
+
+  <Step title="Select Edit">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=6eaa272bb35d2b95bef6320a8de57457" alt="Stripe sandbox account showing Publishable key, Secret key, and Edit button" data-og-width="434" width="434" data-og-height="100" height="100" data-path="images/replitai/stripe-remove-3-sandbox-edit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=5046ff603cc9dee58b2c5a601fa4da7c 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=873ccf17048dec5e3b765b2b583ba7e7 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=85bd4add65e901d41c360924056b8bd3 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e1cb2cbe6cd02476e2a5e3fa720a7ce9 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=31d6fd955bd9d5c74964c20ab075a72b 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-3-sandbox-edit.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=c7d042b39ab039491d027a25e91c27fc 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Delete">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=01a7c694455bfb6ecfda0a629254c049" alt="Stripe sandbox account with Delete and Update buttons" data-og-width="1600" width="1600" data-og-height="378" height="378" data-path="images/replitai/stripe-remove-4-sandbox-delete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=00474be34610b339d35b8cd777ac3a90 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=85daa3706aab6dbcd2037131d373dc2d 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=ce688afa7d666b6ff575239934f1292b 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e148df483e37980303c1bb0a4de03a57 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=1f4e3484d4eb759cd597d8dff587f047 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-remove-4-sandbox-delete.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=70714ab666c620706ba296eab0f77f11 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Ask Agent to remove the Stripe code">
+    Go to Agent chat and ask Agent to remove the Stripe connector code from your application. This will remove your entire Stripe integration.
+  </Step>
+</Steps>
+
+### Option C: Roll back to a checkpoint before the Stripe integration
+
+If you want to completely undo the Stripe integration and return to a previous state, you can roll back to an earlier checkpoint.
+
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project with the Stripe integration you want to remove.
+  </Step>
+
+  <Step title="Open a new tab and type integrations">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=ca0c10b11b2d3dbee98577976fcf5d50" alt="New tab search showing Integrations option" data-og-width="1328" width="1328" data-og-height="356" height="356" data-path="images/replitai/stripe-rollback-1-integrations-search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=d9cafd161d4b4c3de9762b0fb2fb6ffd 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=bf9975bc1b9e5e66905946d85aa425cf 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=7a672a6c13f5cf9f2b8d13dd24b1cb08 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=7018dd4159b861013eb93f8ec508a1c9 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=0d7f53204eaefb9519136d87336a9c5d 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-1-integrations-search.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=3863493eacbd8ba12413115d8e4a5f46 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Scroll down to Stripe and select Manage">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=6100d8cb4cf278e92047e78173f3692d" alt="Connectors panel showing Stripe integration with Manage button" data-og-width="1376" width="1376" data-og-height="492" height="492" data-path="images/replitai/stripe-rollback-2-connector-manage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=a453c8cf415b8a34d69b94d1265262e9 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=8d8d24c23072884730d2dfb2e5042d59 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=bff0d73b2bf2e00f49cb24b05b66dc31 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=8d023416f25d0263bf9af88d585b7882 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=659c345fcbc929f7f0b5c5261baf4df6 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-2-connector-manage.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=268b20b79596a44ea18defd590057dd5 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the name of your project">
+    This opens the connection details.
+  </Step>
+
+  <Step title="Select Edit">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=8e4246ed661bc5c4dd5dee09da76b641" alt="Stripe sandbox account with Edit button" data-og-width="1600" width="1600" data-og-height="320" height="320" data-path="images/replitai/stripe-rollback-3-sandbox-edit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=6e8ba6aed51b4acd9f09cffada420fb7 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=30bef1999e7dd1f6211600164390f432 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=edfe1c561fcf9542dfe922903cf02204 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=06de32da633620a877df8f542e689f6c 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=97fb8d2d68498067b3dd549cc6ed9fbe 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-3-sandbox-edit.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=d2e3d5fe4b21ef3c938d7b89090fee85 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Delete">
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=16b1328d75d5beb70b215be51d7a8a1d" alt="Stripe sandbox account with Delete button" data-og-width="1600" width="1600" data-og-height="378" height="378" data-path="images/replitai/stripe-rollback-4-sandbox-delete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=a870319dec67277aa73d7c3e884c61bc 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=89759333eec7efc6f8b2fc0ce85c55a5 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=4da555672f389195429122000811a8f8 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=2fba1df7b3e8a028eb5495d46c12035b 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=069c32861fe3ee56fb059c144207653e 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-4-sandbox-delete.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=58c4ce5786d26d89c071f2d69760b1bf 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Find a checkpoint from before the Stripe integration">
+    Go to Agent chat and look for a checkpoint that was created before the Stripe integration. Select the **clock icon** on the top left of the chat pane to view older chat history.
+
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=5a8e86892fea6061d3af970dd6499a32" alt="Clock icon for viewing chat history and checkpoints" data-og-width="56" width="56" data-og-height="50" height="50" data-path="images/replitai/stripe-rollback-5-clock-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=8c147d1f64d46ed42a31d0871ee526fc 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=10b1c079c8c859b631cbaa74ba5ca779 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=fe38b06329fde70f04ea01fc1ec2f12b 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=1cf6bd298ff6eb5f2d9e036187863056 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e5f517b4db7ff7a350413c4a3ec85770 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-5-clock-icon.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=8244780d8305f6f120722dcc73da593e 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Rollback here">
+    Once you find a checkpoint that looks good, select **Rollback here** to restore your project to that state.
+
+    <Frame>
+      <img src="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=a48d19624a6740286ff9f004c302547d" alt="Checkpoint with Rollback here button" data-og-width="904" width="904" data-og-height="202" height="202" data-path="images/replitai/stripe-rollback-6-checkpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=280&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=12669d004d6ecf6ff9350b0b6039f2d1 280w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=560&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=ba3941df61285510e4889fc55819e35c 560w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=840&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=c130492f71aba1d16df6f46423c29321 840w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=1100&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=e54f461c3ea6d3726b7ffb6cddbab7e3 1100w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=1650&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=a8b275783e8817cc78968de41bb015e5 1650w, https://mintcdn.com/replit/YElKpLz4AJkoRVnw/images/replitai/stripe-rollback-6-checkpoint.png?w=2500&fit=max&auto=format&n=YElKpLz4AJkoRVnw&q=85&s=46c52919604f4156924e6652d47cf6d1 2500w" />
+    </Frame>
+  </Step>
+</Steps>
+
 ## Notes and limitations
 
 * Sandbox activity does not affect real balances or customers.
-* Some Stripe features can’t be tested in sandboxes (for example, IC+ pricing
+* Some Stripe features can't be tested in sandboxes (for example, IC+ pricing
   and certain Connect flows). See
-  [Stripe’s sandbox limitations](https://docs.stripe.com/sandboxes).
+  [Stripe's sandbox limitations](https://docs.stripe.com/sandboxes).

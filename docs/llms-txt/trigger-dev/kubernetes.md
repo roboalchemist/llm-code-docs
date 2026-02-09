@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/self-hosting/kubernetes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kubernetes
 
 > You can self-host Trigger.dev in Kubernetes using our official Helm chart.
@@ -42,7 +46,7 @@ The following are minimum requirements for running the entire stack on Kubernete
 
 These requirements scale based on your task concurrency and can be adjusted via the `resources` section in your `values.yaml`. For example:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   resources:
     requests:
@@ -59,16 +63,16 @@ webapp:
 
 1. Install with default values (for testing only):
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta" \
+  --version "~4.0.0" \
   --create-namespace
 ```
 
 2. Access the webapp:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 kubectl port-forward svc/trigger-webapp 3040:3030 -n trigger
 ```
 
@@ -76,7 +80,7 @@ kubectl port-forward svc/trigger-webapp 3040:3030 -n trigger
 
 4. Login with the magic link:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Check the webapp logs
 kubectl logs -n trigger deployment/trigger-webapp | grep -A1 "magic link"
 ```
@@ -92,7 +96,7 @@ Most values map directly to the environment variables documented in the [webapp]
 
 **Example mapping:**
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Environment variable
 APP_ORIGIN=https://trigger.example.com
 
@@ -105,14 +109,14 @@ config:
 
 The following commands will display the default values:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Specific version
 helm show values oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5"
+  --version "4.0.5"
 
-# Latest v4 beta
+# Latest v4
 helm show values oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta"
+  --version "~4.0.0"
 ```
 
 ### Custom values
@@ -121,7 +125,7 @@ The default values are insecure and are only suitable for testing. You will need
 
 Create a `values-custom.yaml` file to override the defaults. For example:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 # Generate new secrets with `openssl rand -hex 16`
 # WARNING: You should probably use an existingSecret instead
 secrets:
@@ -169,10 +173,10 @@ supervisor:
 
 Deploy with your custom values:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "~4.0.0-beta" \
+  --version "~4.0.0" \
   --create-namespace \
   -f values-custom.yaml
 ```
@@ -181,7 +185,7 @@ helm upgrade -n trigger --install trigger \
 
 You can set extra environment variables on all services. For example:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: EXTRA_ENV_VAR
@@ -192,7 +196,7 @@ webapp:
 
 You can set extra annotations on all services. For example:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   podAnnotations:
     "my-annotation": "my-value"
@@ -206,7 +210,7 @@ You can disable the built-in services and use external services instead. The cha
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -216,7 +220,7 @@ postgres:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -231,7 +235,7 @@ postgres:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 redis:
   deploy: false
   external:
@@ -244,7 +248,7 @@ redis:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 redis:
   deploy: false
   external:
@@ -260,7 +264,7 @@ redis:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 clickhouse:
   deploy: false
   external:
@@ -272,7 +276,7 @@ clickhouse:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 clickhouse:
   deploy: false
   external:
@@ -287,7 +291,7 @@ clickhouse:
 
 **Direct configuration:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 minio:
   deploy: false
 s3:
@@ -299,7 +303,7 @@ s3:
 
 **Using existing secrets (recommended):**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 minio:
   deploy: false
 s3:
@@ -316,7 +320,7 @@ s3:
 
 When connecting to PostgreSQL instances that require custom CA certificates (such as AWS RDS with SSL verification), you can mount the CA certificate as a volume and configure the webapp to use it:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 postgres:
   deploy: false
   external:
@@ -361,7 +365,7 @@ When using the default bootstrap configuration, worker creation and authenticati
 
 ### Bootstrap (default)
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   bootstrap:
     enabled: true
@@ -374,13 +378,13 @@ If you need to set up workers separately or use a custom token:
 
 1. Get the worker token from the webapp logs:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 kubectl logs deployment/trigger-webapp -n trigger | grep -A15 "Worker Token"
 ```
 
 2. Create a secret with the token:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 kubectl create secret generic worker-token \
   --from-literal=token=tr_wgt_your_token_here \
   -n trigger
@@ -388,7 +392,7 @@ kubectl create secret generic worker-token \
 
 3. Configure the supervisor to use the secret:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 supervisor:
   bootstrap:
     enabled: false
@@ -402,7 +406,7 @@ supervisor:
 
 See the [Docker registry setup](/self-hosting/docker#registry-setup) for conceptual information. The configuration is specified in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 # Use external registry (recommended)
 registry:
   deploy: false
@@ -426,7 +430,7 @@ registry:
 
 See the [Docker object storage setup](/self-hosting/docker#object-storage) for conceptual information. The defaults will use built-in MinIO, but you can use an external S3-compatible storage. The configuration is specified in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 # Use external S3-compatible storage
 minio:
   deploy: false
@@ -447,7 +451,7 @@ Authentication options are identical to the [Docker-based installation](/self-ho
 
 **GitHub OAuth:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: AUTH_GITHUB_CLIENT_ID
@@ -458,7 +462,7 @@ webapp:
 
 **Email authentication (Resend):**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: EMAIL_TRANSPORT
@@ -473,11 +477,11 @@ webapp:
 
 **Restricting access:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   extraEnvVars:
     - name: WHITELISTED_EMAILS
-      value: "user1@company\\.com|user2@company\\.com"
+      value: "^(user1@company\\.com|user2@company\\.com)$"
 ```
 
 ## Version locking
@@ -486,23 +490,23 @@ You can lock versions in two ways:
 
 **Helm chart version (recommended):**
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Pin to a specific version for production
 helm upgrade -n trigger --install trigger \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5"
+  --version "4.0.5"
 
 # The app version will be different from the chart version
 # This is the version of the Trigger.dev webapp and supervisor
 # ..and should always match your Trigger.dev CLI version
 helm show chart \
   oci://ghcr.io/triggerdotdev/charts/trigger \
-  --version "4.0.0-beta.5" | grep appVersion
+  --version "4.0.5" | grep appVersion
 ```
 
 **Specific image tags:**
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 webapp:
   image:
     tag: "v4.0.0"
@@ -518,7 +522,7 @@ The chart version's `appVersion` field determines the default image tags. Newer 
 
 **Check logs:**
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Webapp logs
 kubectl logs deployment/trigger-webapp -n trigger -f
 
@@ -531,14 +535,14 @@ kubectl logs -l app.kubernetes.io/instance=trigger -n trigger -f
 
 **Check pod status:**
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 kubectl get pods -n trigger
 kubectl describe pod <pod-name> -n trigger
 ```
 
 **Start from scratch:**
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Delete the release
 helm uninstall trigger -n trigger
 
@@ -574,7 +578,7 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. To disable telemetry, set in your `values.yaml`:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 telemetry:
   enabled: false
 ```

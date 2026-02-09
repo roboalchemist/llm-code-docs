@@ -1,67 +1,59 @@
 # Source: https://docs.ollama.com/api/copy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Copy a model
+
+
 
 ## OpenAPI
 
 ````yaml openapi.yaml post /api/copy
+openapi: 3.1.0
+info:
+  title: Ollama API
+  version: 0.1.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: |
+    OpenAPI specification for the Ollama HTTP API
+servers:
+  - url: http://localhost:11434
+    description: Ollama
+security: []
 paths:
-  path: /api/copy
-  method: post
-  servers:
-    - url: http://localhost:11434
-      description: Ollama
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              source:
-                allOf:
-                  - type: string
-                    description: Existing model name to copy from
-              destination:
-                allOf:
-                  - type: string
-                    description: New model name to create
-            required: true
-            refIdentifier: '#/components/schemas/CopyRequest'
-            requiredProperties:
-              - source
-              - destination
-        examples:
-          example:
-            value:
+  /api/copy:
+    post:
+      summary: Copy a model
+      operationId: copy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyRequest'
+            example:
               source: gemma3
               destination: gemma3-backup
-    codeSamples:
-      - label: Copy a model to a new name
-        lang: bash
-        source: |
-          curl http://localhost:11434/api/copy -d '{
-            "source": "gemma3",
-            "destination": "gemma3-backup"
-          }'
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Model successfully copied
-        examples: {}
-        description: Model successfully copied
-  deprecated: false
-  type: path
-  xMint:
-    href: /api/copy
+      responses:
+        '200':
+          description: Model successfully copied
 components:
-  schemas: {}
+  schemas:
+    CopyRequest:
+      type: object
+      required:
+        - source
+        - destination
+      properties:
+        source:
+          type: string
+          description: Existing model name to copy from
+        destination:
+          type: string
+          description: New model name to create
 
 ````

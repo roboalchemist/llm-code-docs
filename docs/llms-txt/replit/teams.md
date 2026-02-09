@@ -1,10 +1,18 @@
 # Source: https://docs.replit.com/category/teams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Teams and Enterprise
 
 > Have your team build production-ready customer apps and business tools faster with Replit.
 
 export const TeamsCredits = '$40';
+
+<Warning>
+  The Teams plan is being replaced by the new Pro plan. These changes will take effect on February 20th, 2026. [Learn more about what's changing](https://blog.replit.com/pro-plan).
+</Warning>
 
 <CardGroup cols={2}>
   <Card title="Teams Plan" icon="users">
@@ -33,7 +41,7 @@ Enterprise includes all Teams features plus enhanced security, control, and supp
 
 <CardGroup cols={2}>
   <Card title="Enterprise Security" icon="shield-check">
-    SOC-2 compliant platform with SAML SSO, Role-Based Access Control, and advanced security features.
+    SOC-2 compliant platform with SSO/SAML, SCIM Provisioning, and advanced security controls.
   </Card>
 
   <Card title="Centralized Management" icon="folder-open">
@@ -41,11 +49,15 @@ Enterprise includes all Teams features plus enhanced security, control, and supp
   </Card>
 </CardGroup>
 
-* **SSO & Identity Management**: Single Sign-On with SAML and SCIM integration for easier provisioning and enhanced security
-* **Advanced Security Controls**: SCIM Groups for data segmentation and granular access control
-* **Custom Pricing & Solutions**: Tailored pricing plans with flexible publishing options and enterprise-specific integrations
-* **Dedicated Support**: Priority access to technical assistance and account management
-* **Advanced Privacy Controls**: Enhanced admin controls and privacy settings
+* **SSO/SAML with SCIM Provisioning**: Secure team access with Single Sign-On and automated user provisioning
+* **Dedicated Development Environment**: Role-based access control with IDP groups for granular permissions
+* **Admin Controls**: Require Private Deployments, ban public apps, and mandate Security Scanner checks before publishing
+* **Enterprise Security Center**: Detect CVEs across dependencies by severity. View affected apps and download SBOMs for compliance.
+* **Custom Integration Permissions**: Define access boundaries for first-party integrations across your organization
+* **Larger Deployment VMs**: Access expanded VM sizes for scalable app hosting
+* **Dedicated Support**: Access your dedicated account manager and sales engineer for platform support
+* **Enterprise Data Connectors**: Connect to Snowflake, BigQuery, and Databricks for seamless data integration
+* **Unlimited Viewer Seats**: Give stakeholders and non-builders unlimited access to your published private apps
 
 ## Essential resources
 

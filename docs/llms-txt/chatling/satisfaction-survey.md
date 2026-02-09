@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/satisfaction-survey.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Satisfaction survey
 
 > A guide on how to set up and display satisfaction surveys.

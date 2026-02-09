@@ -4,7 +4,7 @@
 
 **Note**: 
 
-You can now use the Upsun composable image (BETA) to install runtimes and tools in your application container.
+You can now use the Upsun [composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) to install runtimes and tools in your application container.
 To find out more about this feature, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md). 
 Also, see how you can [modify your PHP runtime when using the composable image](#modify-your-php-runtime-when-using-the-composable-image).
 
@@ -21,8 +21,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 8.3
 
    - 8.2
-
-   - 8.1
 
 Note that from PHP versions 7.1 to 8.1, the images support the Zend Thread Safe (ZTS) version of PHP.
 
@@ -51,6 +49,8 @@ applications:
 The following versions are [deprecated](https://docs.upsun.com/glossary.md#deprecated-versions).
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
+
+   - 8.1
 
    - 8.0
 
@@ -87,14 +87,14 @@ applications:
 ```
 ### 2. Serve your app
 
-To serve your app, define what (and how) content should be served by setting the [`locations` parameter](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+To serve your app, define what (and how) content should be served by setting the [`locations` parameter](https://docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 Usually, it contains the two following (optional) keys:
 
 - `root` for the document root,
   the directory to which all requests for existing `.php` and static files (such as `.css`, `.jpg`) are sent.
 - `passthru` to [define a front controller](https://docs.upsun.com../../create-apps/web/php-basic.md#set-different-rules-for-specific-locations) to handle nonexistent files.
-  The value is a file path relative to the [app root](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#root-directory).
+  The value is a file path relative to the [app root](https://docs.upsun.com/create-apps/image-properties/source.md).
 
   **Note**: 
 
@@ -256,6 +256,54 @@ applications:
           - type: vcs
             url: "git@github.com:platformsh/platformsh-client-php.git"
 ```
+### Configure security blocking {#configure-security-blocking}
+
+When building a PHP app, Upsun runs `composer install`, which runs the latest available Composer version.
+
+By default, PHP builds fail if a dependency in a project has a known vulnerability. A PHP build might also fail if a dependency is abandoned. 
+
+**The best practice is to upgrade the dependencies** to reduce security risks and to catch issues sooner. However, you can configure the level of security blocking by defining the following keys in the `.dependencies.php.config` section of your `.upsun/config.yaml` file. 
+
+| Key                     | Description                                                      |
+| ------------------------| ---------------------------------------------------------------- |
+| `audit.block-insecure`  | Default is `true`. **Important: Upsun recommends keeping this default setting and upgrading affected dependencies to reduce security risks.**                                                 | 
+| `audit.block-abandoned` | Default is `false`; set to `true` for even stricter security. Ignored if `audit.block-insecure` is `false`.                  |
+| `audit.ignore`          | Array of specific advisories to ignore; see example below.        | 
+| `audit.ignore-severity` | Ignore vulnerabilities based on their severity rating (`low`/`medium`/`high`). See the example below.<BR>For each rating, include an `apply` key with one of these values: - `all` to ignore everything for this rating -  `block` to ignore this severity level for blocking builds (but still flag findings in audit reports) - `audit` to ignore this severity level in audit reports (but still block builds) |
+
+Examples: 
+```yaml  {location=".upsun/config.yaml"}
+applications:
+  # The app's name, which must be unique within the project.
+  myapp:
+    type: 'php:8.5'
+
+    dependencies:
+      php:
+        config:
+          audit:
+            ignore:  # ignore these security advisories
+              - "PKSA-yhcn-xrg3-68b1"
+              - "PKSA-2wrf-1mxk-1pky"
+```
+
+```yaml  {location=".upsun/config.yaml"}
+applications:
+  # The app's name, which must be unique within the project.
+  myapp:
+    type: 'php:8.5'
+
+    dependencies:
+      php:
+        config:
+          audit:
+            ignore-severity:
+              low:
+                apply: all   # ignore all low severity findings
+```
+
+Related information: 
+- [Troubleshooting PHP builds that now fail](https://docs.upsun.com/languages/php/troubleshoot.md#build-failure-security-blocking)
 
 ### Additional Composer schema properties
 In addition to [alternate repositories](#alternative-repositories), other
@@ -320,6 +368,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 - [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md#use-in-app)
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
+
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
 
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 
@@ -462,7 +512,7 @@ Common functions to disable include:
 PHP has two execution modes you can choose from:
 
 - The command line interface mode (PHP-CLI) is the mode used for command line scripts and standalone apps.
-  This is the mode used when you're logged into your container via SSH, for [crons](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons),
+  This is the mode used when you're logged into your container via SSH, for [crons](https://docs.upsun.com/create-apps/image-properties/crons.md),
   and usually also for [alternate start commands](#alternate-start-commands).
   To use PHP-CLI, run your script with `php <PATH_TO_SCRIPT>`,
   where <PATH_TO_SCRIPT> is a file path relative to the [app root](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#root-directory).
@@ -475,7 +525,7 @@ PHP has two execution modes you can choose from:
 ## Alternate start commands
 
 To specify an alternative process to run your code, set a `start` command.
-For more information about the start command, see the [web commands reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web-commands).
+For more information about the start command, see the [web commands reference](create-apps/image-properties/web.md#web-commands).
 
 By default, start commands use PHP-CLI.
 Find out how and when to use each [execution mode](#execution-mode).
@@ -536,7 +586,7 @@ applications:
 ```
 
 When you listen on a TCP socket, the ``$PORT`` environment variable is automatically set.
-See more options on how to [configure where requests are sent](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#upstream).
+See more options on how to [configure where requests are sent](https://docs.upsun.com/create-apps/image-properties/web.md#upstream).
 You might have to configure your app to connect via the ``$PORT`` TCP socket,
 especially when using web servers such as [Swoole](https://docs.upsun.com/languages/php/swoole.md) or [Roadrunner](https://github.com/roadrunner-server/roadrunner).
 
@@ -643,48 +693,69 @@ See dedicated guides for deploying and working with them:
 
 **Note**: 
 
-This section is only relevant when using the Upsun [composable image (BETA)](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+This section is only relevant when using the Upsun [composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
 
-The following table presents the possible modifications you can make to your PHP primary runtime using the `stack` key and composable image.
-Each modification should be listed below the stack chosen (i.e. `extensions` are enabled under `.applications.frontend.stack[0]["php@8.3"].extensions` for PHP 8.3).
-See the example below for more details.
+The following table presents the possible modifications you can make to your PHP primary runtime using the `stack.runtimes` key in a composable image.
+
+For example, `extensions` are enabled under `.applications.frontend.stack.runtimes[0]["php@8.5"].extensions` for PHP 8.5).
+See the [example](#example-php-configuration) below for more details.
+
+**Note**: 
+
+The PHP-FPM service starts automatically only when PHP is the primary runtime.
 
 | Name                        | Type                                                                                                                          | Description                                                                                             |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | `extensions`                | List of `string`s OR [extensions definitions](https://docs.upsun.com/create-apps/app-reference/composable-image#php-extensions-and-python-packages) | [PHP extensions](https://docs.upsun.com/languages/php/extensions.md) to enable.                                               |
 | `disabled_extensions`       | List of `string`s                                                                                                             | [PHP extensions](https://docs.upsun.com/languages/php/extensions.md) to disable.                                              |
 | `request_terminate_timeout` | `integer`                                                                                                                     | The timeout (in seconds) for serving a single request after which the PHP-FPM worker process is killed. |
-| `sizing_hints`              | A [sizing hints definition](https://docs.upsun.com/create-apps/app-reference/composable-image.md#sizing-hints)                                      | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
+| `sizing_hints`              | A [sizing hints definition](#sizing-hints)                                      | The assumptions for setting the number of workers in your PHP-FPM runtime.                              |
 | `xdebug`                    | An Xdebug definition                                                                                                          | The setting to turn on [Xdebug](https://docs.upsun.com/languages/php/xdebug.md).                                              |
+
+### PHP-FPM service sizing hints {#sizing-hints}
+
+The following table shows the properties that can be set in `sizing_hints`:
+
+| Name              | Type      | Default | Minimum | Description                                    |
+|-------------------|-----------|---------|---------|------------------------------------------------|
+| `request_memory`  | `integer` | 45      | 10      | The average memory consumed per request in MB. |
+| `reserved_memory` | `integer` | 70      | 70      | The amount of memory reserved in MB.           |
+
+See more about [PHP-FPM workers and sizing](https://docs.upsun.com/languages/php/fpm.md).
+
+### Example PHP configuration {#example-php-configuration}
 
 Here is an example configuration:
 
 ```yaml  {location=".upsun/config.yaml"}
 applications:
   frontend:
+    type: "composable:25.11"
     stack:
-      - "php@8.3":
-          extensions:
-            - apcu # A PHP extension made available to the PHP runtime
-            - sodium
-            - xsl
-            - pdo_sqlite
+      runtimes:
+        - "php@8.4":
+            extensions:
+              - apcu # A PHP extension made available to the PHP runtime
+              - sodium
+              - xsl
+              - pdo_sqlite
 
-          xdebug:
-            idekey: YOUR_KEY
+            xdebug:
+              idekey: YOUR_KEY
 
-          disabled_extensions:
-            - gd
+            disabled_extensions:
+              - gd
 
-          request_terminate_timeout: 200
+            request_terminate_timeout: 200
 
-          sizing_hints:
-            request_memory: 45
-            reserved_memory: 70
+            sizing_hints:
+              request_memory: 45
+              reserved_memory: 70
 
-      - "php83Extensions.apcu" # A PHP extension made available to all runtimes.
-      - "python@3.12"
-      - "python312Packages.yq"
+        - "python@3.13"
+      packages:
+        - "php84Extensions.apcu" # A PHP extension made available to all runtimes.
+        - "python313Packages.yq"
 ```
 
 **Note**: 

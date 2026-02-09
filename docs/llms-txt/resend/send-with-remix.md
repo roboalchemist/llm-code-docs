@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-remix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Remix
 
 > Learn how to send your first email using Remix and the Resend Node.js SDK.
@@ -16,16 +20,20 @@ To get the most out of this guide, you'll need to:
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -36,7 +44,7 @@ Create a [Resource Route](https://remix.run/docs/en/1.16.1/guides/resource-route
 The easiest way to send an email is by using the `html` parameter.
 
 <CodeGroup>
-  ```ts app/routes/send.ts theme={null}
+  ```ts app/routes/send.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { json } from '@remix-run/node';
   import { Resend } from 'resend';
 

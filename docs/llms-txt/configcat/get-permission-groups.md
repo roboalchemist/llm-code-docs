@@ -2,12 +2,9 @@
 
 # List Permission Groups
 
-```
-GET 
-/v1/products/:productId/permissions
-```
+Copy page
 
-This endpoint returns the list of the Permission Groups that belongs to the given Product identified by the `productId` parameter, which can be obtained from the [List Products](https://configcat.com/docs/docs/api/reference/get-products/.md) endpoint.
+This endpoint returns the list of the Permission Groups that belongs to the given Product identified by the `productId` parameter, which can be obtained from the [List Products](https://configcat.com/docs/api/reference/get-products.md) endpoint.
 
 ## Request[​](#request "Direct link to Request")
 

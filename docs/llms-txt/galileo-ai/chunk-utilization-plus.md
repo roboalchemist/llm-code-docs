@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/chunk-utilization/chunk-utilization-plus.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chunk Utilization Plus
 
 > Leverage Chunk Utilization+ in Galileo Guardrail Metrics to optimize generative AI output segmentation and maximize model efficiency.

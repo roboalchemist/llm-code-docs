@@ -1,95 +1,51 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieve-all-publishers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve all publishers
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /publishers
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /publishers
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/Publisher'
-        examples:
-          example:
-            value:
-              - createdAt: '2023-11-07T05:31:56Z'
-                description: <string>
-                id: <string>
-                logo: <string>
-                members:
-                  - id: <string>
-                    role: <string>
-                    user:
-                      email: <string>
-                      id: <string>
-                      name: <string>
-                name: <string>
-                source_code_repo: <string>
-                status: PublisherStatusActive
-                support: <string>
-                website: <string>
-        description: A list of publishers
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request, invalid input data
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+  /publishers:
+    get:
+      tags:
+        - Registry
+      summary: Retrieve all publishers
+      operationId: ListPublishers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Publisher'
+                type: array
+          description: A list of publishers
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request, invalid input data
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
     Publisher:
@@ -123,6 +79,16 @@ components:
           type: string
         website:
           type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
       type: object
     PublisherMember:
       properties:

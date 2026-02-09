@@ -6,72 +6,87 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
 
-# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/basics/serve/advanced.md
+# Advanced
 
-# Source: https://upstash.com/docs/vector/sdks/ts/advanced.md
+## Disable automatic serialization
 
-# Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
+Your data is (de)serialized as `json` by default. This works for most use cases
+but you can disable it if you want:
 
-# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+```ts  theme={"system"}
+const redis = new Redis({
+  // ...
+  automaticDeserialization: false,
+});
 
-# Source: https://upstash.com/docs/workflow/basics/serve/advanced.md
+// or
+const redis = Redis.fromEnv({
+  automaticDeserialization: false,
+});
+```
 
-# Source: https://upstash.com/docs/vector/sdks/ts/advanced.md
+This probably breaks quite a few types, but it's a first step in that direction.
+Please report bugs and broken types
+[here](https://github.com/upstash/upstash-redis/issues/49).
 
-# Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
+## Keep-Alive
 
-# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+`@upstash/redis` optimizes performance by reusing connections wherever possible, reducing latency.
+This is achieved by keeping the client in memory instead of reinitializing it with each new function invocation.
+As a result, when a hot lambda function receives a new request, it uses the already initialized client, allowing for the reuse of existing connections to Upstash.
 
-# Source: https://upstash.com/docs/workflow/basics/serve/advanced.md
+<Tip>This functionality is enabled by default.</Tip>
 
-# Source: https://upstash.com/docs/vector/sdks/ts/advanced.md
+## Request Timeout
 
-# Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
+You can configure the SDK so that it will throw an error if the request takes longer than a specified time.
 
-# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+You can achieve this using the signal parameter like this:
 
-# Source: https://upstash.com/docs/workflow/basics/serve/advanced.md
+```ts  theme={"system"}
+const redis = new Redis({
+  url: "<UPSTASH_REDIS_REST_URL>",
+  token: "<UPSTASH_REDIS_REST_TOKEN>",
+  // set a timeout of 1 second
+  signal: () => AbortSignal.timeout(1000),
+});
 
-# Source: https://upstash.com/docs/vector/sdks/ts/advanced.md
+try {
+  await redis.get( ... )
+} catch (error) {
+  if (error.name === "TimeoutError") {
+    console.error("Request timed out");
+  } else {
+    console.error("An error occurred:", error);
+  }
+}
+```
 
-# Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
+## Telemetry
 
-# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+This library sends anonymous telemetry data to help us improve your experience.
+We collect the following:
 
-# Advanced failureUrl Option
+* SDK version
+* Platform (Deno, Cloudflare, Vercel)
+* Runtime version ([node@18.x](mailto:node@18.x))
 
-The `failureUrl` is an advanced option that sends failure callback to a different endpoint rather than to the workflow endpoint (failure function).
-This approach is useful for handling failures on separate infrastructure.
+You can opt out by setting the `UPSTASH_DISABLE_TELEMETRY` environment variable
+to any truthy value.
 
-<Tip>You can use either `failureFunction` or `failureUrl`, but not both. These options are mutually exclusive.</Tip>
+```sh  theme={"system"}
+UPSTASH_DISABLE_TELEMETRY=1
+```
 
-For most users, **Failure Function** is the better choice because:
+Alternatively, you can pass `enableTelemetry: false` when initializing the Redis client:
 
-* It runs alongside your workflow and has access to the same context and dependencies
-* Failure function requests are automatically retried on failure as well.
-* You can manually retry failure function if it fails via DLQ.
-
-If you think this advanced option fits your need, you can configure it by passing `failureUrl` configuration.
-
-<CodeGroup>
-  ```typescript  theme={"system"}
-  import { Client } from "@upstash/workflow";
-
-  const client = new Client({ token: "<QSTASH_TOKEN>" })
-
-  const { workflowRunId } = await client.trigger({
-    url: "https://<YOUR_WORKFLOW_URL>/workflow"
-    failureUrl: "https://<YOUR_FAILURE_URL>/workflow-failure",
-    keepTriggerConfig: true,
-  })
-  ```
-
-  ```python Python theme={"system"}
-  @serve.post("/api/example", failure_url="https://<YOUR_FAILURE_URL>/workflow-failure")
-  async def example(context: AsyncWorkflowContext[str]) -> None:
-      # Your workflow logic...
-      pass
-  ```
-</CodeGroup>
+```ts  theme={"system"}
+const redis = new Redis({
+  // ...,
+  enableTelemetry: false,
+});
+```

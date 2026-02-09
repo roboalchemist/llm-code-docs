@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/scalar-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scalar Indexes
 
 > Learn how to use scalar indexes in LanceDB for efficient metadata filtering and query optimization.
@@ -146,8 +150,3 @@ LanceDB supports scalar indexes on UUID columns (stored as `FixedSizeBinary(16)`
     {ScalarIndexUuidUpsert}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

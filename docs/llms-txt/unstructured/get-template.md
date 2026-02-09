@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/api-reference/templates/get-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Template
 
 > Retrieve detailed information and DAG for a specific template.
@@ -12,7 +16,7 @@
 openapi: 3.1.0
 info:
   title: Platform API
-  version: 3.0.5
+  version: 3.1.0
 servers:
   - url: https://platform.unstructuredapp.io/
     description: Unstructured Platform API
@@ -148,7 +152,3 @@ components:
       title: ValidationError
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.unstructured.io/llms.txt

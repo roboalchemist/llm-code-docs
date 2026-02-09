@@ -4,7 +4,7 @@
 
  
 
-The default Vespa query response format is used when [presentation.format](../api/query.html#presentation.format) is unset or set to `json`. Results are rendered with one or more objects:
+The default Vespa query response format is used when [presentation.format](../api/query.html#presentation.format) is unset or set to `json`. An alternative binary [CBOR](https://cbor.io/) format is available by setting `format=cbor` or using `Accept: application/cbor`. CBOR is a drop-in replacement - when deserialized, the result is identical to JSON. CBOR is both more compact and faster to generate, especially for numeric data such as tensors and embeddings. Results are rendered with one or more objects:
 
 - `root`: mandatory object with the tree of returned data
 - `timing`: optional object with query timing information
@@ -106,7 +106,7 @@ Array of error messages with the fields given below. [Example](../../querying/qu
  |
 | code | errors | yes | Integer | 
 
-Numeric identifier used by the container application. See [error codes](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/protect/Error.java) and [ErrorMessage.java](https://github.com/vespa-engine/vespa/blob/master/container-search/src/main/java/com/yahoo/search/result/ErrorMessage.java) for a short description.
+Numeric identifier used by the container application. See [error codes](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/protect/Error.java) and [ErrorMessage.java](https://github.com/vespa-engine/vespa/blob/master/container-search/src/main/java/com/yahoo/search/result/ErrorMessage.java) for a short description.
 
  |
 | message | errors | no | String | 
@@ -566,7 +566,7 @@ rank-profile whatever {
 
 which gives you the same output as before.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

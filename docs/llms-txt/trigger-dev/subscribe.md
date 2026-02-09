@@ -2,645 +2,230 @@
 
 # Source: https://trigger.dev/docs/realtime/backend/subscribe.md
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+# Subscribe functions
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+> Subscribe to run updates using async iterators
 
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+These functions allow you to subscribe to run updates from your backend code. Each function returns an async iterator that yields run objects as they change.
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+## runs.subscribeToRun
 
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+Subscribes to all changes to a specific run.
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+```ts Example theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
 
-# Subscribing to runs
-
-> Get live updates from runs, batches, metadata, and more in your frontend application.
-
-These hooks allow you to subscribe to runs, batches, and streams using [Trigger.dev Realtime](/realtime). They automatically include real-time updates for run status, metadata, output, and other properties.
-
-## Hooks
-
-## Triggering + Realtime hooks
-
-For triggering tasks and immediately subscribing to their runs, we provide combo hooks, details on how to use them can be found in the [triggering](/realtime/react-hooks/triggering) section.
-
-* **[`useRealtimeTaskTrigger`](/realtime/react-hooks/triggering#userealtimetasktrigger)** - Trigger a task and subscribe to the run
-* **[`useRealtimeTaskTriggerWithStreams`](/realtime/react-hooks/triggering#userealtimetasktriggerwithstreams)** - Trigger a task and subscribe to both run updates and streams
-
-## Other Realtime subscription hooks
-
-### useRealtimeRun
-
-The `useRealtimeRun` hook allows you to subscribe to a run by its ID.
-
-```tsx  theme={null}
-"use client"; // This is needed for Next.js App Router or other RSC frameworks
-
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-export function MyComponent({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run, error } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  return <div>Run: {run.id}</div>;
+for await (const run of runs.subscribeToRun("run_1234")) {
+  console.log(run);
 }
 ```
 
-To correctly type the run's payload and output, you can provide the type of your task to the `useRealtimeRun` hook:
+This function subscribes to all changes to a run. It returns an async iterator that yields the run object whenever the run is updated. The iterator will complete when the run is finished.
 
-```tsx  theme={null}
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-import type { myTask } from "@/trigger/myTask";
+**Authentication**: This function supports both server-side and client-side authentication. For server-side authentication, use your API key. For client-side authentication, you must generate a public access token with read access to the specific run. See our [authentication guide](/realtime/auth) for details.
 
-export function MyComponent({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run, error } = useRealtimeRun<typeof myTask>(runId, {
-    accessToken: publicAccessToken,
-  });
+**Response**: The AsyncIterator yields the [run object](/realtime/run-object).
 
-  if (error) return <div>Error: {error.message}</div>;
+## runs.subscribeToRunsWithTag
 
-  // Now run.payload and run.output are correctly typed
+Subscribes to all changes to runs with a specific tag.
 
-  return <div>Run: {run.id}</div>;
+```ts Example theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
+
+for await (const run of runs.subscribeToRunsWithTag("user:1234")) {
+  console.log(run);
 }
 ```
 
-You can supply an `onComplete` callback to the `useRealtimeRun` hook to be called when the run is completed or errored. This is useful if you want to perform some action when the run is completed, like navigating to a different page or showing a notification.
+This function subscribes to all changes to runs with a specific tag. It returns an async iterator that yields the run object whenever a run with the specified tag is updated. This iterator will never complete, so you must manually break out of the loop when you no longer want to receive updates.
 
-```tsx  theme={null}
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+**Authentication**: This function supports both server-side and client-side authentication. For server-side authentication, use your API key. For client-side authentication, you must generate a public access token with read access to the specific tag. See our [authentication guide](/realtime/auth) for details.
 
-export function MyComponent({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run, error } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-    onComplete: (run, error) => {
-      console.log("Run completed", run);
-    },
-  });
+**Response**: The AsyncIterator yields the [run object](/realtime/run-object).
 
-  if (error) return <div>Error: {error.message}</div>;
+## runs.subscribeToBatch
 
-  return <div>Run: {run.id}</div>;
+Subscribes to all changes for runs in a batch.
+
+```ts Example theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
+
+for await (const run of runs.subscribeToBatch("batch_1234")) {
+  console.log(run);
 }
 ```
 
-See our [run object reference](/realtime/run-object) for the complete schema and [How it Works documentation](/realtime/how-it-works) for more technical details.
+This function subscribes to all changes for runs in a batch. It returns an async iterator that yields a run object whenever a run in the batch is updated. The iterator does not complete on its own, you must manually `break` the loop when you want to stop listening for updates.
 
-### useRealtimeRunsWithTag
+**Authentication**: This function supports both server-side and client-side authentication. For server-side authentication, use your API key. For client-side authentication, you must generate a public access token with read access to the specific batch. See our [authentication guide](/realtime/auth) for details.
 
-The `useRealtimeRunsWithTag` hook allows you to subscribe to multiple runs with a specific tag.
+**Response**: The AsyncIterator yields the [run object](/realtime/run-object).
 
-```tsx  theme={null}
-"use client"; // This is needed for Next.js App Router or other RSC frameworks
+## Type safety
 
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
+You can infer the types of the run's payload and output by passing the type of the task to the subscribe functions:
 
-export function MyComponent({ tag }: { tag: string }) {
-  const { runs, error } = useRealtimeRunsWithTag(tag);
+```ts  theme={"theme":"css-variables"}
+import { runs, tasks } from "@trigger.dev/sdk";
+import type { myTask } from "./trigger/my-task";
 
-  if (error) return <div>Error: {error.message}</div>;
+async function myBackend() {
+  const handle = await tasks.trigger("my-task", { some: "data" });
 
-  return (
-    <div>
-      {runs.map((run) => (
-        <div key={run.id}>Run: {run.id}</div>
-      ))}
-    </div>
-  );
-}
-```
+  for await (const run of runs.subscribeToRun<typeof myTask>(handle.id)) {
+    // run.payload and run.output are now typed
+    console.log(run.payload.some);
 
-To correctly type the runs payload and output, you can provide the type of your task to the `useRealtimeRunsWithTag` hook:
-
-```tsx  theme={null}
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
-import type { myTask } from "@/trigger/myTask";
-
-export function MyComponent({ tag }: { tag: string }) {
-  const { runs, error } = useRealtimeRunsWithTag<typeof myTask>(tag);
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  // Now runs[i].payload and runs[i].output are correctly typed
-
-  return (
-    <div>
-      {runs.map((run) => (
-        <div key={run.id}>Run: {run.id}</div>
-      ))}
-    </div>
-  );
-}
-```
-
-If `useRealtimeRunsWithTag` could return multiple different types of tasks, you can pass a union of all the task types to the hook:
-
-```tsx  theme={null}
-import { useRealtimeRunsWithTag } from "@trigger.dev/react-hooks";
-import type { myTask1, myTask2 } from "@/trigger/myTasks";
-
-export function MyComponent({ tag }: { tag: string }) {
-  const { runs, error } = useRealtimeRunsWithTag<typeof myTask1 | typeof myTask2>(tag);
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  // You can narrow down the type of the run based on the taskIdentifier
-  for (const run of runs) {
-    if (run.taskIdentifier === "my-task-1") {
-      // run is correctly typed as myTask1
-    } else if (run.taskIdentifier === "my-task-2") {
-      // run is correctly typed as myTask2
+    if (run.output) {
+      console.log(run.output.some);
     }
   }
-
-  return (
-    <div>
-      {runs.map((run) => (
-        <div key={run.id}>Run: {run.id}</div>
-      ))}
-    </div>
-  );
 }
 ```
 
-### useRealtimeBatch
+When using `subscribeToRunsWithTag`, you can pass a union of task types:
 
-The `useRealtimeBatch` hook allows you to subscribe to a batch of runs by its the batch ID.
+```ts  theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
+import type { myTask, myOtherTask } from "./trigger/my-task";
 
-```tsx  theme={null}
-"use client"; // This is needed for Next.js App Router or other RSC frameworks
-
-import { useRealtimeBatch } from "@trigger.dev/react-hooks";
-
-export function MyComponent({ batchId }: { batchId: string }) {
-  const { runs, error } = useRealtimeBatch(batchId);
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  return (
-    <div>
-      {runs.map((run) => (
-        <div key={run.id}>Run: {run.id}</div>
-      ))}
-    </div>
-  );
+for await (const run of runs.subscribeToRunsWithTag<typeof myTask | typeof myOtherTask>("my-tag")) {
+  // Narrow down the type based on the taskIdentifier
+  switch (run.taskIdentifier) {
+    case "my-task": {
+      console.log("Run output:", run.output.foo); // Type-safe
+      break;
+    }
+    case "my-other-task": {
+      console.log("Run output:", run.output.bar); // Type-safe
+      break;
+    }
+  }
 }
 ```
 
-See our [Realtime documentation](/realtime) for more information.
+## Subscribe to metadata updates from your tasks
 
-## Using metadata to show progress in your UI
+The metadata API allows you to update custom metadata on runs and receive real-time updates when metadata changes. This is useful for tracking progress, storing intermediate results, or adding custom status information that can be monitored in real-time.
 
-All realtime hooks automatically include metadata updates. Whenever your task updates metadata using `metadata.set()`, `metadata.append()`, or other metadata methods, your component will re-render with the updated data.
+<Note>
+  For frontend applications using React, see our [React hooks metadata
+  documentation](/realtime/react-hooks/subscribe#using-metadata-to-show-progress-in-your-ui) for
+  consuming metadata updates in your UI.
+</Note>
 
-<Note>To learn how to write tasks using metadata, see our [metadata](/runs/metadata) guide.</Note>
+When you update metadata from within a task using `metadata.set()`, `metadata.append()`, or other metadata methods, all subscribers to that run will automatically receive the updated run object containing the new metadata.
 
-### Progress monitoring
+This makes metadata perfect for:
 
-This example demonstrates how to create a progress monitor component that can be used to display the progress of a run:
+* Progress tracking
+* Status updates
+* Intermediate results
+* Custom notifications
 
-```tsx  theme={null}
-"use client"; // This is needed for Next.js App Router or other RSC frameworks
+Use the metadata API within your task to update metadata in real-time. In this basic example task, we're updating the progress of a task as it processes items.
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
+### How to subscribe to metadata updates
 
-export function ProgressMonitor({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run, error, isLoading } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
+This example task updates the progress of a task as it processes items.
 
-  if (isLoading) return <div>Loading run...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!run) return <div>Run not found</div>;
+```ts  theme={"theme":"css-variables"}
+// Your task code
+import { task, metadata } from "@trigger.dev/sdk";
 
-  const progress = run.metadata?.progress as
-    | {
+export const progressTask = task({
+  id: "progress-task",
+  run: async (payload: { items: string[] }) => {
+    const total = payload.items.length;
+
+    for (let i = 0; i < payload.items.length; i++) {
+      // Update progress metadata
+      metadata.set("progress", {
+        current: i + 1,
+        total: total,
+        percentage: Math.round(((i + 1) / total) * 100),
+        currentItem: payload.items[i],
+      });
+
+      // Process the item
+      await processItem(payload.items[i]);
+    }
+
+    metadata.set("status", "completed");
+    return { processed: total };
+  },
+});
+
+async function processItem(item: string) {
+  // Simulate work
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+}
+```
+
+We can now subscribe to the runs and receive real-time metadata updates.
+
+```ts  theme={"theme":"css-variables"}
+// Somewhere in your backend code
+import { runs } from "@trigger.dev/sdk";
+import type { progressTask } from "./trigger/progress-task";
+
+async function monitorProgress(runId: string) {
+  for await (const run of runs.subscribeToRun<typeof progressTask>(runId)) {
+    console.log(`Run ${run.id} status: ${run.status}`);
+
+    if (run.metadata?.progress) {
+      const progress = run.metadata.progress as {
         current: number;
         total: number;
         percentage: number;
         currentItem: string;
-      }
-    | undefined;
+      };
 
-  return (
-    <div className="space-y-4">
-      <div>
-        <h3>Run Status: {run.status}</h3>
-        <p>Run ID: {run.id}</p>
-      </div>
-
-      {progress && (
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span>Progress</span>
-            <span>{progress.percentage}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress.percentage}%` }}
-            />
-          </div>
-          <p className="text-sm text-gray-600">
-            Processing: {progress.currentItem} ({progress.current}/{progress.total})
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
-```
-
-### Reusable progress bar
-
-This example demonstrates how to create a reusable progress bar component that can be used to display the percentage progress of a run:
-
-```tsx  theme={null}
-"use client";
-
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-interface ProgressBarProps {
-  runId: string;
-  publicAccessToken: string;
-  title?: string;
-}
-
-export function ProgressBar({ runId, publicAccessToken, title }: ProgressBarProps) {
-  const { run } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
-
-  const progress = run?.metadata?.progress as
-    | {
-        current?: number;
-        total?: number;
-        percentage?: number;
-        currentItem?: string;
-      }
-    | undefined;
-
-  const percentage = progress?.percentage ?? 0;
-  const isComplete = run?.status === "COMPLETED";
-  const isFailed = run?.status === "FAILED";
-
-  return (
-    <div className="w-full space-y-2">
-      {title && <h4 className="font-medium">{title}</h4>}
-
-      <div className="w-full bg-gray-200 rounded-full h-3">
-        <div
-          className={`h-3 rounded-full transition-all duration-500 ${
-            isFailed ? "bg-red-500" : isComplete ? "bg-green-500" : "bg-blue-500"
-          }`}
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
-
-      <div className="flex justify-between text-sm text-gray-600">
-        <span>
-          {progress?.current && progress?.total
-            ? `${progress.current}/${progress.total} items`
-            : "Processing..."}
-        </span>
-        <span>{percentage}%</span>
-      </div>
-
-      {progress?.currentItem && (
-        <p className="text-sm text-gray-500 truncate">Current: {progress.currentItem}</p>
-      )}
-    </div>
-  );
-}
-```
-
-### Status indicator with logs
-
-This example demonstrates how to create a status indicator component that can be used to display the status of a run, and also logs that are emitted by the task:
-
-```tsx  theme={null}
-"use client";
-
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-interface StatusIndicatorProps {
-  runId: string;
-  publicAccessToken: string;
-}
-
-export function StatusIndicator({ runId, publicAccessToken }: StatusIndicatorProps) {
-  const { run } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
-
-  const status = run?.metadata?.status as string | undefined;
-  const logs = run?.metadata?.logs as string[] | undefined;
-
-  const getStatusColor = (status: string | undefined) => {
-    switch (status) {
-      case "completed":
-        return "text-green-600 bg-green-100";
-      case "failed":
-        return "text-red-600 bg-red-100";
-      case "running":
-        return "text-blue-600 bg-blue-100";
-      default:
-        return "text-gray-600 bg-gray-100";
+      console.log(`Progress: ${progress.current}/${progress.total} (${progress.percentage}%)`);
+      console.log(`Processing: ${progress.currentItem}`);
     }
-  };
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center space-x-2">
-        <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status)}`}>
-          {status || run?.status || "Unknown"}
-        </span>
-        <span className="text-sm text-gray-500">Run {run?.id}</span>
-      </div>
-
-      {logs && logs.length > 0 && (
-        <div className="bg-gray-50 rounded-lg p-4">
-          <h4 className="font-medium mb-2">Logs</h4>
-          <div className="space-y-1 max-h-48 overflow-y-auto">
-            {logs.map((log, index) => (
-              <div key={index} className="text-sm text-gray-700 font-mono">
-                {log}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+    if (run.metadata?.status === "completed") {
+      console.log("Task completed!");
+      break;
+    }
+  }
 }
 ```
 
-### Multi-stage deployment monitor
-
-This example demonstrates how to create a multi-stage deployment monitor component that can be used to display the progress of a deployment:
-
-```tsx  theme={null}
-"use client";
-
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-interface DeploymentMonitorProps {
-  runId: string;
-  publicAccessToken: string;
-}
-
-const DEPLOYMENT_STAGES = [
-  "initializing",
-  "building",
-  "testing",
-  "deploying",
-  "verifying",
-  "completed",
-] as const;
-
-export function DeploymentMonitor({ runId, publicAccessToken }: DeploymentMonitorProps) {
-  const { run } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
-
-  const status = run?.metadata?.status as string | undefined;
-  const logs = run?.metadata?.logs as string[] | undefined;
-  const currentStageIndex = DEPLOYMENT_STAGES.indexOf(status as any);
-
-  return (
-    <div className="space-y-6">
-      <h3 className="text-lg font-semibold">Deployment Progress</h3>
-
-      {/* Stage indicators */}
-      <div className="space-y-4">
-        {DEPLOYMENT_STAGES.map((stage, index) => {
-          const isActive = currentStageIndex === index;
-          const isCompleted = currentStageIndex > index;
-          const isFailed = run?.status === "FAILED" && currentStageIndex === index;
-
-          return (
-            <div key={stage} className="flex items-center space-x-3">
-              <div
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium ${
-                  isFailed
-                    ? "bg-red-500 text-white"
-                    : isCompleted
-                    ? "bg-green-500 text-white"
-                    : isActive
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 text-gray-600"
-                }`}
-              >
-                {isCompleted ? "✓" : index + 1}
-              </div>
-              <span
-                className={`capitalize ${
-                  isActive
-                    ? "font-medium text-blue-600"
-                    : isCompleted
-                    ? "text-green-600"
-                    : isFailed
-                    ? "text-red-600"
-                    : "text-gray-500"
-                }`}
-              >
-                {stage}
-              </span>
-              {isActive && (
-                <div className="animate-spin w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full" />
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Recent logs */}
-      {logs && logs.length > 0 && (
-        <div className="bg-black text-green-400 rounded-lg p-4 font-mono text-sm">
-          <div className="space-y-1 max-h-32 overflow-y-auto">
-            {logs.slice(-5).map((log, index) => (
-              <div key={index}>
-                <span className="text-gray-500">$ </span>
-                {log}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-```
+For more information on how to write tasks that use the metadata API, as well as more examples, see our [run metadata docs](/runs/metadata#more-metadata-task-examples).
 
 ### Type safety
 
-Define TypeScript interfaces for your metadata to get full type safety:
+You can get type safety for your metadata by defining types:
 
-```tsx  theme={null}
-"use client";
+```ts  theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
+import type { progressTask } from "./trigger/progress-task";
 
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-interface TaskMetadata {
+interface ProgressMetadata {
   progress?: {
     current: number;
     total: number;
     percentage: number;
     currentItem: string;
   };
-  status?: "initializing" | "processing" | "completed" | "failed";
-  user?: {
-    id: string;
-    name: string;
-  };
-  logs?: string[];
+  status?: "running" | "completed" | "failed";
 }
 
-export function TypedMetadataComponent({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-  });
+async function monitorTypedProgress(runId: string) {
+  for await (const run of runs.subscribeToRun<typeof progressTask>(runId)) {
+    const metadata = run.metadata as ProgressMetadata;
 
-  // Type-safe metadata access
-  const metadata = run?.metadata as TaskMetadata | undefined;
-
-  return (
-    <div>
-      {metadata?.progress && <p>Progress: {metadata.progress.percentage}%</p>}
-
-      {metadata?.user && (
-        <p>
-          User: {metadata.user.name} ({metadata.user.id})
-        </p>
-      )}
-
-      {metadata?.status && <p>Status: {metadata.status}</p>}
-    </div>
-  );
+    if (metadata?.progress) {
+      // Now you have full type safety
+      console.log(`Progress: ${metadata.progress.percentage}%`);
+    }
+  }
 }
 ```
-
-## Common options
-
-### accessToken & baseURL
-
-You can pass the `accessToken` option to the Realtime hooks to authenticate the subscription.
-
-```tsx  theme={null}
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-export function MyComponent({
-  runId,
-  publicAccessToken,
-}: {
-  runId: string;
-  publicAccessToken: string;
-}) {
-  const { run, error } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-    baseURL: "https://my-self-hosted-trigger.com", // Optional if you are using a self-hosted Trigger.dev instance
-  });
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  return <div>Run: {run.id}</div>;
-}
-```
-
-### enabled
-
-You can pass the `enabled` option to the Realtime hooks to enable or disable the subscription.
-
-```tsx  theme={null}
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-export function MyComponent({
-  runId,
-  publicAccessToken,
-  enabled,
-}: {
-  runId: string;
-  publicAccessToken: string;
-  enabled: boolean;
-}) {
-  const { run, error } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-    enabled,
-  });
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  return <div>Run: {run.id}</div>;
-}
-```
-
-This allows you to conditionally disable using the hook based on some state.
-
-### id
-
-You can pass the `id` option to the Realtime hooks to change the ID of the subscription.
-
-```tsx  theme={null}
-import { useRealtimeRun } from "@trigger.dev/react-hooks";
-
-export function MyComponent({
-  id,
-  runId,
-  publicAccessToken,
-  enabled,
-}: {
-  id: string;
-  runId: string;
-  publicAccessToken: string;
-  enabled: boolean;
-}) {
-  const { run, error } = useRealtimeRun(runId, {
-    accessToken: publicAccessToken,
-    enabled,
-    id,
-  });
-
-  if (error) return <div>Error: {error.message}</div>;
-
-  return <div>Run: {run.id}</div>;
-}
-```
-
-This allows you to change the ID of the subscription based on some state. Passing in a different ID will unsubscribe from the current subscription and subscribe to the new one (and remove any cached data).

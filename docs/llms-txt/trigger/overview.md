@@ -18,65 +18,9 @@
 
 # Source: https://trigger.dev/docs/config/extensions/overview.md
 
-# Source: https://trigger.dev/docs/tasks/overview.md
-
-# Source: https://trigger.dev/docs/self-hosting/overview.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/overview.md
-
-# Source: https://trigger.dev/docs/realtime/overview.md
-
-# Source: https://trigger.dev/docs/realtime/backend/overview.md
-
-# Source: https://trigger.dev/docs/management/overview.md
-
-# Source: https://trigger.dev/docs/guides/use-cases/overview.md
-
-# Source: https://trigger.dev/docs/guides/ai-agents/overview.md
-
-# Source: https://trigger.dev/docs/deployment/overview.md
-
-# Source: https://trigger.dev/docs/config/extensions/overview.md
-
-# Source: https://trigger.dev/docs/tasks/overview.md
-
-# Source: https://trigger.dev/docs/self-hosting/overview.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/overview.md
-
-# Source: https://trigger.dev/docs/realtime/overview.md
-
-# Source: https://trigger.dev/docs/realtime/backend/overview.md
-
-# Source: https://trigger.dev/docs/management/overview.md
-
-# Source: https://trigger.dev/docs/guides/use-cases/overview.md
-
-# Source: https://trigger.dev/docs/guides/ai-agents/overview.md
-
-# Source: https://trigger.dev/docs/deployment/overview.md
-
-# Source: https://trigger.dev/docs/config/extensions/overview.md
-
-# Source: https://trigger.dev/docs/tasks/overview.md
-
-# Source: https://trigger.dev/docs/self-hosting/overview.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/overview.md
-
-# Source: https://trigger.dev/docs/realtime/overview.md
-
-# Source: https://trigger.dev/docs/realtime/backend/overview.md
-
-# Source: https://trigger.dev/docs/management/overview.md
-
-# Source: https://trigger.dev/docs/guides/use-cases/overview.md
-
-# Source: https://trigger.dev/docs/guides/ai-agents/overview.md
-
-# Source: https://trigger.dev/docs/deployment/overview.md
-
-# Source: https://trigger.dev/docs/config/extensions/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build extensions
 
@@ -88,7 +32,7 @@ You can use pre-built extensions by installing the `@trigger.dev/build` package 
 
 Build extensions are added to your `trigger.config.ts` file under the `build.extensions` property:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -108,7 +52,7 @@ export default defineConfig({
 
 If you are using a pre-built extension, you can import it from the `@trigger.dev/build` package:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 

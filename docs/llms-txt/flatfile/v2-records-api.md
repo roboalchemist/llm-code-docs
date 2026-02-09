@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/v2-records-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # V2 Records API
 
 > Using the V2 Records API with the Flatfile TypeScript API package
@@ -13,7 +17,7 @@ It is optimized for performance when working with large numbers of records.
 
 The V2 Records API is accessible through the `records.v2` property on the Flatfile client.
 
-```typescript
+```typescript  theme={null}
 import { FlatfileClient } from "@flatfile/api";
 const client = new FlatfileClient({ token: "YOUR_TOKEN" });
 await client.records.v2.get("us_sh_1234abcd")
@@ -28,7 +32,7 @@ usage with streaming requests.
 
 Retrieve records from a sheet in raw JSONL format.
 
-```typescript
+```typescript  theme={null}
 getRaw(
   sheetId: Flatfile.SheetId,
   options?: GetRecordsRequestOptions,
@@ -40,7 +44,7 @@ Returns an array of `JsonlRecord` objects containing the raw data structure from
 
 **Example:**
 
-```typescript
+```typescript  theme={null}
 const rawRecords = await api.records.v2.getRaw('us_sh_123', {
   fields: ['firstName', 'lastName'],
   pageSize: 1000
@@ -56,7 +60,7 @@ rawRecords.forEach(record => {
 
 Stream records from a sheet in raw JSONL format.
 
-```typescript
+```typescript  theme={null}
 getRawStreaming(
   sheetId: Flatfile.SheetId,
   options?: GetRecordsRequestOptions,
@@ -68,7 +72,7 @@ The most memory-efficient way to process large datasets as records are yielded i
 
 **Example:**
 
-```typescript
+```typescript  theme={null}
 for await (const rawRecord of api.records.v2.getRawStreaming('us_sh_123', {
   includeTimestamps: true
 })) {
@@ -84,7 +88,7 @@ for await (const rawRecord of api.records.v2.getRawStreaming('us_sh_123', {
 
 Write records to a sheet in raw JSONL format.
 
-```typescript
+```typescript  theme={null}
 writeRaw(
   records: JsonlRecord[],
   options?: WriteRecordsRequestOptions,
@@ -100,7 +104,7 @@ writeRaw(
 
 **Example:**
 
-```typescript
+```typescript  theme={null}
 const records: JsonlRecord[] = [
   { firstName: 'John', lastName: 'Doe', __s: 'us_sh_123' },
   { __k: 'us_rc_456', firstName: 'Jane', lastName: 'Smith' }  // Update existing
@@ -118,7 +122,7 @@ console.log(`Created: ${result.created}, Updated: ${result.updated}`);
 
 Stream records to a sheet in raw JSONL format.
 
-```typescript
+```typescript  theme={null}
 writeRawStreaming(
   recordsStream: AsyncIterable<JsonlRecord>,
   options?: WriteStreamingOptions,
@@ -130,7 +134,7 @@ Efficiently write large datasets by streaming records to the server.
 
 **Example:**
 
-```typescript
+```typescript  theme={null}
 async function* generateRecords() {
   for (let i = 0; i < 100000; i++) {
     yield {
@@ -178,7 +182,7 @@ such as `includeMessages` to include the `__i` field with validation messages.
 
 Regular field values are stored directly as properties on the JSONL record:
 
-```json
+```json  theme={null}
 {
   "__k": "us_rc_123456",
   "__s": "us_sh_123",
@@ -196,7 +200,7 @@ If included, the `__i` field contains validation messages for fields that have e
 The messages are structured as an array of objects. Each validation message object will be structured
 as `{"x": <field key of message>, "m": <validation message>}`.
 
-```json
+```json  theme={null}
 {
   "__k": "us_rc_123456",
   "__s": "us_sh_123",
@@ -212,7 +216,7 @@ as `{"x": <field key of message>, "m": <validation message>}`.
 
 A complete JSONL record with all common fields:
 
-```json
+```json  theme={null}
 {
   "__k": "us_rc_123456",
   "__v": "v_789",
@@ -249,7 +253,7 @@ all in a single request. The operation performed depends on which special keys a
 
 To create a new record, the record can simply be passed with a sheet ID in `__s` and no record ID.
 
-```json
+```json  theme={null}
 {
   "__s": "us_sh_123",
   "firstName": "New",
@@ -261,7 +265,7 @@ To create a new record, the record can simply be passed with a sheet ID in `__s`
 
 To update an existing record, provide the record ID in the `__k` field.
 
-```json
+```json  theme={null}
 {
   "__k": "us_rc_123456",
   "__s": "us_sh_123",
@@ -275,7 +279,7 @@ To update an existing record, provide the record ID in the `__k` field.
 To delete a record, provide the record ID in the `__k` field and pass the delete flag
 in the `__d` field.
 
-```json
+```json  theme={null}
 {
   "__k": "us_rc_123456",
   "__s": "us_sh_123",

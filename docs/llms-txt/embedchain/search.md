@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/app/search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🔍 search
 
 `.search()` enables you to uncover the most pertinent context by performing a semantic search across your data sources based on a given query. Refer to the function signature below:
@@ -35,7 +39,7 @@
 
 Refer to the following example on how to use the search api:
 
-```python Code example
+```python Code example theme={null}
 from embedchain import App
 
 app = App()
@@ -51,7 +55,7 @@ print(context)
 
 Here is an advanced example of `search()` API with metadata filtering on pinecone database:
 
-```python
+```python  theme={null}
 import os
 
 from embedchain import App
@@ -83,7 +87,7 @@ print("Num of search results: ", len(results))
 
 Following is an example of metadata filtering by passing the raw filter query that pinecone vector database follows:
 
-```python
+```python  theme={null}
 import os
 
 from embedchain import App

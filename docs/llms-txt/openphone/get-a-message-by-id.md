@@ -1,50 +1,84 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/messages/get-a-message-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a message by ID
 
 > Get a message by its unique identifier.
 
+
+
 ## OpenAPI
 
 ````yaml https://openphone-public-api-prod.s3.us-west-2.amazonaws.com/public/openphone-public-api-v1-prod.json get /v1/messages/{id}
+openapi: 3.1.0
+info:
+  title: OpenPhone Public API
+  version: 1.0.0
+  description: API for connecting with OpenPhone.
+  contact:
+    name: OpenPhone Support
+    email: support@openphone.com
+    url: https://support.openphone.com/hc/en-us
+  termsOfService: https://www.openphone.com/terms
+servers:
+  - description: Production server
+    url: https://api.openphone.com
+security:
+  - apiKey: []
+tags:
+  - description: Operations related to calls
+    name: Calls
+  - description: >-
+      Operations related to call summaries, including AI-generated summaries and
+      Sona voice assistant summaries
+    name: Call Summaries
+  - description: >-
+      Operations related to call transcripts, including AI-generated transcripts
+      and Sona voice assistant transcripts
+    name: Call Transcripts
+  - description: Operations related to contacts
+    name: Contacts
+  - description: Operations related to conversations
+    name: Conversations
+  - description: Operations related to text messages
+    name: Messages
+  - description: Operations related to phone numbers
+    name: Phone Numbers
+  - description: Operations related to users
+    name: Users
+  - description: Operations related to webhooks
+    name: Webhooks
 paths:
-  path: /v1/messages/{id}
-  method: get
-  servers:
-    - url: https://api.openphone.com
-      description: Production server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v1/messages/{id}:
+    get:
+      tags:
+        - Messages
+      summary: Get a message by ID
+      description: Get a message by its unique identifier.
+      operationId: getMessageById_v1
+      parameters:
+        - in: path
+          name: id
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of a message
-              examples:
-                - AC123abc
-              example: AC123abc
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            description: The unique identifier of a message
+            examples:
+              - AC123abc
+            pattern: ^AC(.*)$
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         description: The unique identifier of the message.
@@ -140,54 +174,33 @@ paths:
                       - status
                       - createdAt
                       - updatedAt
-            requiredProperties:
-              - data
-        examples:
-          example:
-            value:
-              data:
-                id: AC123abc
-                to:
-                  - '+15555555555'
-                from: '+15555555555'
-                text: Hello, world!
-                phoneNumberId: PN123abc
-                direction: incoming
-                userId: US123abc
-                status: sent
-                createdAt: '2022-01-01T00:00:00Z'
-                updatedAt: '2022-01-01T00:00:00Z'
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0206400'
+                required:
+                  - data
+        '400':
+          description: A2P Registration Not Approved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 400
+                  code:
+                    const: '0206400'
+                    type: string
+                  status:
+                    const: 400
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: A2P Registration Not Approved
+                  title:
+                    const: A2P Registration Not Approved
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -207,64 +220,41 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: A2P Registration Not Approved
+                  description:
+                    const: A2P Registration Not Approved
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: A2P Registration Not Approved
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0200401'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 401
+                  code:
+                    const: '0200401'
+                    type: string
+                  status:
+                    const: 401
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unauthorized
+                  title:
+                    const: Unauthorized
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -284,58 +274,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unauthorized
-    '402':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0200402'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '402':
+          description: Not Enough Credits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 402
+                  code:
+                    const: '0200402'
+                    type: string
+                  status:
+                    const: 402
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Enough Credits
+                  title:
+                    const: Not Enough Credits
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -355,66 +324,43 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: >-
+                  description:
+                    const: >-
                       The organization does not have enough prepaid credits to
                       send the message
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: Not Enough Credits
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0202403'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '403':
+          description: Not Phone Number User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 403
+                  code:
+                    const: '0202403'
+                    type: string
+                  status:
+                    const: 403
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Phone Number User
+                  title:
+                    const: Not Phone Number User
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -434,64 +380,41 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: Not Phone Number User
+                  description:
+                    const: Not Phone Number User
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: Not Phone Number User
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0200404'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 404
+                  code:
+                    const: '0200404'
+                    type: string
+                  status:
+                    const: 404
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Found
+                  title:
+                    const: Not Found
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -511,58 +434,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Not Found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0201500'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '500':
+          description: Unknown Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 500
+                  code:
+                    const: '0201500'
+                    type: string
+                  status:
+                    const: 500
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unknown
+                  title:
+                    const: Unknown
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -582,31 +484,19 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unknown Error
-  deprecated: false
-  type: path
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

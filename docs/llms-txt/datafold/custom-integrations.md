@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/orchestrators/custom-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Integrations
 
 > Integrate Datafold with your custom orchestration using the Datafold SDK and REST API.

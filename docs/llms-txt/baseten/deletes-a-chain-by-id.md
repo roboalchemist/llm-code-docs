@@ -1,91 +1,70 @@
 # Source: https://docs.baseten.co/reference/management-api/chains/deletes-a-chain-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete chains
+
+
 
 ## OpenAPI
 
 ````yaml delete /v1/chains/{chain_id}
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/chains/{chain_id}
-  method: delete
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/chains/{chain_id}:
     parameters:
-      path:
-        chain_id:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: bash
-        source: |
-          curl --request DELETE \
-          --url https://api.baseten.co/v1/chains/{chain_id} \
-          --header "Authorization: Api-Key $BASETEN_API_KEY"
-      - lang: python
-        source: |-
-          import requests
-          import os
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-          url = "https://api.baseten.co/v1/chains/{chain_id}"
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-          response = requests.request(
-              "DELETE",
-              url,
-              headers=headers,
-              json={}
-          )
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: Unique identifier of the chain
-                    title: Id
-                    type: string
-              deleted:
-                allOf:
-                  - description: Whether the chain was deleted
-                    title: Deleted
-                    type: boolean
-            title: ChainTombstoneV1
-            description: A chain tombstone.
-            refIdentifier: '#/components/schemas/ChainTombstoneV1'
-            requiredProperties:
-              - id
-              - deleted
-        examples:
-          example:
-            value:
-              id: <string>
-              deleted: true
-        description: A chain tombstone.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/chain_id'
+    delete:
+      summary: Deletes a chain by ID
+      responses:
+        '200':
+          description: A chain tombstone.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChainTombstoneV1'
 components:
-  schemas: {}
+  parameters:
+    chain_id:
+      schema:
+        type: string
+      name: chain_id
+      in: path
+      required: true
+  schemas:
+    ChainTombstoneV1:
+      description: A chain tombstone.
+      properties:
+        id:
+          description: Unique identifier of the chain
+          title: Id
+          type: string
+        deleted:
+          description: Whether the chain was deleted
+          title: Deleted
+          type: boolean
+      required:
+        - id
+        - deleted
+      title: ChainTombstoneV1
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

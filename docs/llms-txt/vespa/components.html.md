@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/applications/components.html.md
 
-# Source: https://docs.vespa.ai/en/applications/components.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/components.html.md
-
-# Source: https://docs.vespa.ai/en/applications/components.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/components.html.md
-
 # Component reference
 
  
@@ -32,7 +24,7 @@ Vespa defined various component types (superclasses) for common tasks:
 | --- | --- |
 | Request handler | 
 
-[Request handlers](../../applications/request-handlers.html) allow applications to implement arbitrary HTTP APIs. A request handler accepts a request and returns a response. Custom request handlers are subclasses of [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
+[Request handlers](../../applications/request-handlers.html) allow applications to implement arbitrary HTTP APIs. A request handler accepts a request and returns a response. Custom request handlers are subclasses of [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
 
  |
 | Processor | 
@@ -42,7 +34,7 @@ The [processing framework](../../applications/processing.html) can be used to cr
  |
 | Renderer | 
 
-Renderers convert a Response (or query Result) into a serialized form sent over the network. Renderers are subclasses of [com.yahoo.processing.rendering.Renderer](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/processing/rendering/Renderer.java).
+Renderers convert a Response (or query Result) into a serialized form sent over the network. Renderers are subclasses of [com.yahoo.processing.rendering.Renderer](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/processing/rendering/Renderer.java).
 
  |
 | Searcher | 
@@ -110,7 +102,7 @@ These components are available from Vespa for [injection](../../applications/dep
 | [Executor](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html) | Default threadpool for processing requests in threaded request handler |
 | [Linguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Linguistics.java) | Inject a Linguistics component like [SimpleLinguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleLinguistics.java) or provide a custom implementation - see [linguistics](../../linguistics/linguistics.html). |
 | [Metric](https://github.com/vespa-engine/vespa/blob/master/jdisc_core/src/main/java/com/yahoo/jdisc/Metric.java) | Jdisc core interface for metrics. Required by all subclasses of ThreadedRequestHandler. |
-| [MetricReceiver](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/metrics/simple/MetricReceiver.java) | Use to emit metrics from a component. Find an example in the [metrics](../../operations/metrics.html#metrics-from-custom-components) guide. |
+| [MetricReceiver](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/metrics/simple/MetricReceiver.java) | Use to emit metrics from a component. Find an example in the [metrics](../../operations/metrics.html#metrics-from-custom-components) guide. |
 | [ModelsEvaluator](https://github.com/vespa-engine/vespa/blob/master/model-evaluation/src/main/java/ai/vespa/models/evaluation/ModelsEvaluator.java) | Evaluates machine-learned models added to Vespa applications and available as config form. |
 | [SentencePieceEmbedder](https://github.com/vespa-engine/vespa/blob/master/linguistics-components/src/main/java/com/yahoo/language/sentencepiece/SentencePieceEmbedder.java) | A native Java implementation of SentencePiece, see [SentencePiece embedder](../rag/embedding.html#sentencepiece-embedder). |
 | [VespaCurator](https://github.com/vespa-engine/vespa/blob/master/zkfacade/src/main/java/com/yahoo/vespa/curator/api/VespaCurator.java) | 
@@ -118,7 +110,7 @@ These components are available from Vespa for [injection](../../applications/dep
 A client for ZooKeeper. For use in container clusters that have ZooKeeper enabled. See [using ZooKeeper](../../applications/using-zookeeper).
 
  |
-| [VipStatus](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/handler/VipStatus.java) | Use this to gain control over the service status (up/down) to be emitted from this container. |
+| [VipStatus](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/handler/VipStatus.java) | Use this to gain control over the service status (up/down) to be emitted from this container. |
 | [WordPieceEmbedder](https://github.com/vespa-engine/vespa/blob/master/linguistics-components/src/main/java/com/yahoo/language/wordpiece/WordPieceEmbedder.java) | An implementation of the WordPiece embedder, usually used with BERT models. Refer to [WordPiece embedder](../rag/embedding.html#wordpiece-embedder). |
 | [SystemInfo](https://github.com/vespa-engine/vespa/blob/master/hosted-zone-api/src/main/java/ai/vespa/cloud/SystemInfo.java) | Vespa Cloud: Provides information about the environment the component is running in. [Read more](/en/applications/components.html#the-systeminfo-injectable-component). |
 | Available in containers having `search` |
@@ -193,7 +185,7 @@ Two version references are said to be _compatible_ if one is a prefix of the oth
 </search>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

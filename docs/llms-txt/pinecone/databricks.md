@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/integrations/databricks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Databricks
 
 > Using Databricks and Pinecone to create and index vector embeddings at scale
@@ -292,7 +296,7 @@ As your example dataset, use a collection of news articles from Hugging Face's d
 
    This means the process was completed successfully and the embeddings have been stored in Pinecone.
 
-4. Perform a similarity search using the embeddings you loaded into Pinecone by providing a set of vector values or a vector ID. The [query endpoint](https://docs.pinecone.io/reference/api/2024-10/data-plane/query) will return the IDs of the most similar records in the index, along with their similarity scores:
+4. Perform a similarity search using the embeddings you loaded into Pinecone by providing a set of vector values or a vector ID. The [query endpoint](/reference/api/2025-10/data-plane/query) will return the IDs of the most similar records in the index, along with their similarity scores:
    ```Python Python theme={null}
        index.query(
            namespace="example-namespace",
@@ -302,5 +306,5 @@ As your example dataset, use a collection of news articles from Hugging Face's d
        )
    ```
    <Note>
-     If you want to make a query with a text string (e.g., `"Summarize this article"`), use the [`search` endpoint via integrated inference](/reference/api/2025-01/data-plane/search_records).
+     If you want to make a query with a text string (e.g., `"Summarize this article"`), use the [`search` endpoint via integrated inference](/reference/api/2025-10/data-plane/search_records).
    </Note>

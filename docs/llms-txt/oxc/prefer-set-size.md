@@ -1,0 +1,51 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-set-size.md
+
+---
+url: /docs/guide/usage/linter/rules/unicorn/prefer-set-size.md
+---
+
+### What it does
+
+Prefer `Set#size` over `Set#length` when the `Set` is converted to an array.
+
+### Why is this bad?
+
+Using `Set#size` is more readable and performant.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```javascript
+const length = [...new Set([1, 2, 3])].length;
+```
+
+Examples of **correct** code for this rule:
+
+```javascript
+const size = new Set([1, 2, 3]).size;
+```
+
+## How to use
+
+To **enable** this rule using the config file or in the CLI, you can use:
+
+::: code-group
+
+```json [Config (.oxlintrc.json)]
+{
+  "rules": {
+    "unicorn/prefer-set-size": "error"
+  }
+}
+```
+
+```bash [CLI]
+oxlint --deny unicorn/prefer-set-size
+```
+
+:::
+
+## References
+
+* Rule Source

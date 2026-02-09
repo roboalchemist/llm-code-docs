@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-delta-table.md
 
-# Source: https://docs.unstructured.io/ui/destinations/databricks-delta-table.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/databricks-delta-table.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-delta-table.md
-
-# Source: https://docs.unstructured.io/ui/destinations/databricks-delta-table.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/databricks-delta-table.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-delta-table.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Delta Tables in Databricks
 
@@ -56,8 +48,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -245,7 +236,7 @@ The requirements are as follows.
   * To access a Unity Catalog table, the following privileges:
 
     * `USE CATALOG` on the table's parent catalog in Unity Catalog.
-    * `USE SCHEMA` on the tables's parent schema (formerly known as a database) in Unity Catalog.
+    * `USE SCHEMA` on the table's parent schema (formerly known as a database) in Unity Catalog.
     * To create a new table, `CREATE TABLE` on the table's parent schema (formerly known as a database) in Unity Catalog.
     * If the table already exists, `MODIFY` and `SELECT` on the table.
 

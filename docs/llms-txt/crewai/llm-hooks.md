@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/llm-hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Call Hooks
 
 > Learn how to use LLM call hooks to intercept, modify, and control language model interactions in CrewAI

@@ -10,7 +10,7 @@ The NVIDIA® Ethernet Switch SDK provides the flexibility to implement any switc
 
   
 
-Apply for access to NVIDIA Spectrum Ethernet Switch SDK and SAI documentation and code. Please log in or create an account using a business email address. Applications using personal accounts (e.g., @gmail, @yahoo) won’t be accepted. An NVIDIA representative may reach out to you through Email to be accepted to participate in this program.
+Apply for access to NVIDIA Spectrum Ethernet Switch SDK and SAI documentation and code. Please log in or create an account using a business email address. Applications using personal accounts (e.g., @gmail, @yahoo) won’t be accepted.
 
 Access will only be approved after signing an SDK license agreement. For more information, please reach out to an NVIDIA representative.
 
@@ -62,7 +62,7 @@ Access will only be approved after signing an SDK license agreement. For more in
  NVIDIA development systems (DVS) and DVS-OS with native Linux are used as the development environment:  
   
 
-- Open Network Linux based on Debian 9.2 (Kernel 4.9) base OS
+- Open Network Linux based on Debian 12 (Kernel 6.1.123) base OS
 - Open Network Installation Environment (ONIE)
 - Straightforward, practical feature usage by example, supported on every Ethernet platform. Code examples in Python and C
 - User-friendly development environment, including everything needed to build and debug the SDK, switch abstraction interface (SAI), and NVIDIA What Just Happened® (WJH)
@@ -71,7 +71,7 @@ Access will only be approved after signing an SDK license agreement. For more in
 
 ## Key Features
 
-- **Unified forwarding capacity** – Up to 12.8 terabits per second (Tb/s) with up to 128 low-latency ports running from 1GbE to 400GbE
+- **Unified forwarding capacity** – Up to 102.4 terabits per second (Tb/s) with up to 512 low-latency ports running from 1GbE to 800GbE
 - **Layer 1** – Port interfaces, speeds, and form factors. Cables (including split) and transceivers.
 - **Layer 2 switching** – 802.1Q, 802.1D, LAG, STP, MSTP, PVRST, QinQ, IGMP snooping with (\*,G) and (S,G) support. SFLOW and port mirroring (SPAN, RSPAN, ERSPAN), port isolation, 802.1X.
 - **Layer 3 routing** – VLAN and physical port router interface, VRF, IPv4 and IPv6 unicast and multicast routing. Router interface and router counters. Shared ECMP containers. Tunneling, IPinIP, VxLAN, and QinVXLAN. PIM-EVPN and EVPN multihoming. MPLS, BFD.
@@ -84,7 +84,7 @@ Access will only be approved after signing an SDK license agreement. For more in
 - **Precision Timing Protocol (PTP)** – 1588v2 with as low as 5ns accuracy.
 - **AI switching** – 200GbE, adaptive routing, congestion control with dynamic resource allocation.
 - **Resource management** – Centralized resources management module with utilization and prediction capabilities. The SDK provides access to the maximum available capacity of the configuration and forwarding tables
-- **Debuggability** – Logging facilities, SDK dump, and API recorder and player. Interactive Python buildings and example scripts.
+- **Debuggability** – Logging facilities, SDK dump, and API recorder and player. Interactive Python binding and example scripts.
 - **Host** – Flexible control packets trap to host CPU. Policing and rate limiting to host CPU. Netdev per port/LAG and bridge Linux kernel integration. User space file descriptor-based packet send and receive. Iterators for every allocable SDK object. Convenient logging for debugging and troubleshooting. System debug information collection script. Precompiled packages for CentOS- and Debian-based systems. 
 
 

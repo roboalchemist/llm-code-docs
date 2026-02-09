@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/support/reporting-issues-to-asapp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reporting Issues to ASAPP
 
 ## Incident Management
@@ -64,7 +68,7 @@ This table displays ASAPP's standard response and resolution times based on issu
 
 * ASAPP maintains all client reported issues in its own ticketing system.
 * ASAPP triages and slates issues for sprints based on severity level and number of users impacted.
-* ASAPP's engineering teams work in 2 week sprints, meaning that reported issues are typically resolved within 1-2 sprints.
+* ASAPP's engineering teams work in 2 week sprints, meaning that the teams typically resolve reported issues within 1-2 sprints.
 * ASAPP will consider Severity Level 1 and 2 issues for a hotfix (i.e. breaking the ASAPP sprint and release process, and being released directly to PreProd / Prod).
 
 ### Issue Reporting Process
@@ -93,7 +97,7 @@ When you report issues to ASAPP, please provide the following information whenev
 * **Date Observed\*:** provide the date you observed the issue. (please note: the observed date may differ from the date the issue is being reported)
 * **Description\*:** provide a detailed description of the observed issue, including number of impacted users, the specific users experiencing the issue, impacted sites, and the timestamp when the issue began.
 * **Steps to Reproduce\*:** provide detailed list of steps taken at the time you observed the issue.
-* **ASAPP Portal\*:** indicate environment if the bug is not in production.
+* **ASAPP Portal\*:** indicate environment if the bug does not occur in production.
 * **Device/Operating System\*:** provide the device / OS being utilized at the time you observed the issue.
 * **Browser\*:** provide the browser being utilized at the time you observed the issue.
 * **Attachments**: include any screenshots or videos that may help clearly illustrate the issue.
@@ -123,7 +127,7 @@ The issue ID is next to the date. The issue ID is also in the Left Hand Panel an
 
 **In Admin:** Go to Conversation Manager.
 
-Issue IDs are in the first column for both live and ended conversations.
+Issue IDs appear in the first column for both live and ended conversations.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=0a3448d8646c2196bb7cdae0e6d62dc6" data-og-width="526" width="526" data-og-height="446" height="446" data-path="image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=0ff56c75878822247c96cda6bfad3a81 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=ac9acb775865a93fb3a297359c7f8d5e 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c172ee9999a6ee8ad3a4eae3fc1195a7 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=2be46d9307ea60055cdba65907911f35 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=0cf7552ef33bb5d0c5e84fb993a84d6d 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a8b9107f-5752-2cb1-b0c6-673e82c7803d.png?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=1bb7479d5c469fcd9279d579704a835b 2500w" />

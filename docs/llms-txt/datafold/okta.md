@@ -2,17 +2,9 @@
 
 # Source: https://docs.datafold.com/security/single-sign-on/okta.md
 
-# Source: https://docs.datafold.com/security/single-sign-on/saml/examples/okta.md
-
-# Source: https://docs.datafold.com/security/single-sign-on/okta.md
-
-# Source: https://docs.datafold.com/security/single-sign-on/saml/examples/okta.md
-
-# Source: https://docs.datafold.com/security/single-sign-on/okta.md
-
-# Source: https://docs.datafold.com/security/single-sign-on/saml/examples/okta.md
-
-# Source: https://docs.datafold.com/security/single-sign-on/okta.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Okta (OIDC)
 

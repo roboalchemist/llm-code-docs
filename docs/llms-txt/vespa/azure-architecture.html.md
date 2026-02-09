@@ -40,5 +40,5 @@ Only your Vespa tenant (that registered this Azure subscription) can deploy appl
 
 For more general information about security in Vespa Cloud, see the[whitepaper](../../security/whitepaper).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

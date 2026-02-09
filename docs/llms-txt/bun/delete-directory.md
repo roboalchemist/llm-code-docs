@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/delete-directory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete directories
 
 To recursively delete a directory and all its contents, use `rm` from `node:fs/promises`. This is like running `rm -rf` in JavaScript.
@@ -34,4 +38,4 @@ try {
 
 ***
 
-See [Docs > API > FileSystem](https://bun.com/docs/api/file-io) for more filesystem operations.
+See [Docs > API > FileSystem](/runtime/file-io) for more filesystem operations.

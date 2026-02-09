@@ -1,81 +1,78 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/list-products-for-integration-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List products for integration configuration
 
-> Lists all products available for an integration configuration. Use this endpoint to discover what integration products are available for your integration configuration. The returned product IDs or slugs can then be used with storage provisioning endpoints like `POST /v1/storage/stores/integration/direct`. ## Workflow 1. Get your integration configurations: `GET /v1/integrations/configurations` 2. **Use this endpoint**: Get products for a configuration: `GET /v1/integrations/configuration/{id}/products` 3. Create storage resource: `POST /v1/storage/stores/integration/direct` ## Response Returns an array of products with their IDs, slugs, names, supported protocols, and metadata requirements. Each product represents a different type of resource you can provision. The `metadataSchema` field contains a JSON Schema that defines: - **Required metadata**: Fields that must be provided during storage creation - **Optional metadata**: Fields that can be provided but are not mandatory - **Field validation**: Data types, allowed values, and constraints Use this schema to validate metadata before calling the storage creation endpoint.
+> Returns products available for an integration configuration. Each product includes a `metadataSchema` field with the JSON Schema for required and optional metadata fields.
+
+
 
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/integrations/configuration/{id}/products
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/integrations/configuration/{id}/products
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v1/integrations/configuration/{id}/products:
+    get:
+      tags:
+        - integrations
+      summary: List products for integration configuration
+      description: >-
+        Returns products available for an integration configuration. Each
+        product includes a `metadataSchema` field with the JSON Schema for
+        required and optional metadata fields.
+      operationId: getConfigurationProducts
+      parameters:
+        - name: id
+          description: ID of the integration configuration
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: ID of the integration configuration
-              example: icfg_cuwj0AdCdH3BwWT4LPijCC7t
-      query:
-        teamId:
+            type: string
+            description: ID of the integration configuration
+            example: icfg_cuwj0AdCdH3BwWT4LPijCC7t
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getConfigurationProducts
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.integrations.getConfigurationProducts({
-              id: "icfg_cuwj0AdCdH3BwWT4LPijCC7t",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              products:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: List of products available for this integration configuration
+          content:
+            application/json:
+              schema:
+                properties:
+                  products:
+                    items:
                       properties:
                         id:
                           type: string
@@ -96,8 +93,14 @@ paths:
                                   properties:
                                     enabled:
                                       type: boolean
+                                      enum:
+                                        - false
+                                        - true
                                     supportsReadOnlyMode:
                                       type: boolean
+                                      enum:
+                                        - false
+                                        - true
                                     welcomeMessage:
                                       type: string
                                   required:
@@ -116,6 +119,9 @@ paths:
                                     - enabled
                                 edgeConfigSyncingSupport:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                               required:
                                 - status
                               type: object
@@ -198,9 +204,9 @@ paths:
                                     - json
                                     - ndjson
                               required:
-                                - status
                                 - endpoint
                                 - format
+                                - status
                               type: object
                             traceDrain:
                               properties:
@@ -221,9 +227,9 @@ paths:
                                     - json
                                     - proto
                               required:
-                                - status
                                 - endpoint
                                 - format
+                                - status
                               type: object
                             messaging:
                               properties:
@@ -249,17 +255,17 @@ paths:
                         primaryProtocol:
                           type: string
                           enum:
+                            - checks
+                            - ai
+                            - authentication
                             - storage
                             - experimentation
-                            - ai
+                            - messaging
                             - observability
                             - video
-                            - authentication
                             - workflow
-                            - checks
                             - logDrain
                             - traceDrain
-                            - messaging
                             - other
                         metadataSchema:
                           properties:
@@ -281,70 +287,64 @@ paths:
                                           - input
                                       description:
                                         type: string
-                                      minLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      maxLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      pattern:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      default:
-                                        type: string
                                       enum:
                                         items:
                                           type: string
                                         type: array
+                                      maxLength:
+                                        type: number
+                                      minLength:
+                                        type: number
+                                      pattern:
+                                        type: string
+                                      default:
+                                        type: string
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -386,49 +386,58 @@ paths:
                                         type: number
                                       description:
                                         type: string
-                                      default:
+                                      exclusiveMaximum:
                                         type: number
                                       exclusiveMinimum:
                                         type: number
-                                      exclusiveMaximum:
+                                      default:
                                         type: number
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -468,43 +477,55 @@ paths:
                                         type: string
                                       default:
                                         type: boolean
+                                        enum:
+                                          - false
+                                          - true
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -534,14 +555,6 @@ paths:
                                         type: string
                                         enum:
                                           - array
-                                      ui:control:
-                                        type: string
-                                        enum:
-                                          - slider
-                                      ui:steps:
-                                        items:
-                                          type: number
-                                        type: array
                                       items:
                                         properties:
                                           type:
@@ -563,49 +576,66 @@ paths:
                                         required:
                                           - type
                                         type: object
+                                      ui:control:
+                                        type: string
+                                        enum:
+                                          - slider
+                                      ui:steps:
+                                        items:
+                                          type: number
+                                        type: array
                                       description:
                                         type: string
-                                      minItems:
-                                        type: number
                                       maxItems:
+                                        type: number
+                                      minItems:
                                         type: number
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -631,10 +661,10 @@ paths:
                                           type: number
                                         type: array
                                     required:
+                                      - items
                                       - type
                                       - ui:control
                                       - ui:steps
-                                      - items
                                     type: object
                                   - properties:
                                       type:
@@ -654,101 +684,101 @@ paths:
                                               type: string
                                             disabled:
                                               oneOf:
-                                                - type: boolean
                                                 - properties:
                                                     expr:
                                                       type: string
                                                   required:
                                                     - expr
                                                   type: object
+                                                - type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                                 - type: string
                                                   enum:
                                                     - update
                                                     - create
                                             hidden:
                                               oneOf:
-                                                - type: boolean
                                                 - properties:
                                                     expr:
                                                       type: string
                                                   required:
                                                     - expr
                                                   type: object
+                                                - type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                                 - type: string
                                                   enum:
                                                     - update
                                                     - create
                                           required:
-                                            - value
                                             - label
+                                            - value
                                           type: object
                                         type: array
                                       description:
-                                        type: string
-                                      minLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      maxLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      pattern:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      default:
                                         type: string
                                       enum:
                                         items:
                                           type: string
                                         type: array
+                                      maxLength:
+                                        type: number
+                                      minLength:
+                                        type: number
+                                      pattern:
+                                        type: string
+                                      default:
+                                        type: string
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -781,10 +811,6 @@ paths:
                                         type: string
                                         enum:
                                           - array
-                                      ui:control:
-                                        type: string
-                                        enum:
-                                          - multi-select
                                       items:
                                         properties:
                                           type:
@@ -794,26 +820,11 @@ paths:
                                           description:
                                             type: string
                                           minLength:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: number
                                           maxLength:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: number
                                           pattern:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: string
                                           default:
                                             type: string
                                           enum:
@@ -823,6 +834,10 @@ paths:
                                         required:
                                           - type
                                         type: object
+                                      ui:control:
+                                        type: string
+                                        enum:
+                                          - multi-select
                                       ui:options:
                                         items:
                                           properties:
@@ -832,78 +847,93 @@ paths:
                                               type: string
                                             disabled:
                                               oneOf:
-                                                - type: boolean
                                                 - properties:
                                                     expr:
                                                       type: string
                                                   required:
                                                     - expr
                                                   type: object
+                                                - type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                                 - type: string
                                                   enum:
                                                     - update
                                                     - create
                                             hidden:
                                               oneOf:
-                                                - type: boolean
                                                 - properties:
                                                     expr:
                                                       type: string
                                                   required:
                                                     - expr
                                                   type: object
+                                                - type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                                 - type: string
                                                   enum:
                                                     - update
                                                     - create
                                           required:
-                                            - value
                                             - label
+                                            - value
                                           type: object
                                         type: array
                                       description:
                                         type: string
-                                      minItems:
-                                        type: number
                                       maxItems:
+                                        type: number
+                                      minItems:
                                         type: number
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -935,9 +965,9 @@ paths:
                                           type: string
                                         type: array
                                     required:
+                                      - items
                                       - type
                                       - ui:control
-                                      - items
                                       - ui:options
                                     type: object
                                   - properties:
@@ -959,70 +989,72 @@ paths:
                                                   type: string
                                                 disabled:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                                 hidden:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                               required:
-                                                - value
                                                 - label
+                                                - value
                                               type: object
-                                            - type: object
-                                              properties:
-                                                __@BRAND@647815:
-                                                  type: object
-                                              required:
-                                                - __@BRAND@647815
+                                            - type: string
                                             - properties:
                                                 value:
-                                                  type: object
-                                                  properties:
-                                                    __@BRAND@647815:
-                                                      type: object
-                                                  required:
-                                                    - __@BRAND@647815
+                                                  type: string
                                                 disabled:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                                 hidden:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
@@ -1033,70 +1065,64 @@ paths:
                                         type: array
                                       description:
                                         type: string
-                                      minLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      maxLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      pattern:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      default:
-                                        type: string
                                       enum:
                                         items:
                                           type: string
                                         type: array
+                                      maxLength:
+                                        type: number
+                                      minLength:
+                                        type: number
+                                      pattern:
+                                        type: string
+                                      default:
+                                        type: string
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -1129,10 +1155,6 @@ paths:
                                         type: string
                                         enum:
                                           - array
-                                      ui:control:
-                                        type: string
-                                        enum:
-                                          - multi-vercel-region
                                       items:
                                         properties:
                                           type:
@@ -1142,26 +1164,11 @@ paths:
                                           description:
                                             type: string
                                           minLength:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: number
                                           maxLength:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: number
                                           pattern:
-                                            type: object
-                                            properties:
-                                              __@BRAND@647815:
-                                                type: object
-                                            required:
-                                              - __@BRAND@647815
+                                            type: string
                                           default:
                                             type: string
                                           enum:
@@ -1171,6 +1178,10 @@ paths:
                                         required:
                                           - type
                                         type: object
+                                      ui:control:
+                                        type: string
+                                        enum:
+                                          - multi-vercel-region
                                       ui:options:
                                         items:
                                           oneOf:
@@ -1181,70 +1192,72 @@ paths:
                                                   type: string
                                                 disabled:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                                 hidden:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                               required:
-                                                - value
                                                 - label
+                                                - value
                                               type: object
-                                            - type: object
-                                              properties:
-                                                __@BRAND@647815:
-                                                  type: object
-                                              required:
-                                                - __@BRAND@647815
+                                            - type: string
                                             - properties:
                                                 value:
-                                                  type: object
-                                                  properties:
-                                                    __@BRAND@647815:
-                                                      type: object
-                                                  required:
-                                                    - __@BRAND@647815
+                                                  type: string
                                                 disabled:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
                                                         - create
                                                 hidden:
                                                   oneOf:
-                                                    - type: boolean
                                                     - properties:
                                                         expr:
                                                           type: string
                                                       required:
                                                         - expr
                                                       type: object
+                                                    - type: boolean
+                                                      enum:
+                                                        - false
+                                                        - true
                                                     - type: string
                                                       enum:
                                                         - update
@@ -1255,47 +1268,56 @@ paths:
                                         type: array
                                       description:
                                         type: string
-                                      minItems:
-                                        type: number
                                       maxItems:
+                                        type: number
+                                      minItems:
                                         type: number
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -1320,26 +1342,16 @@ paths:
                                         type: string
                                       default:
                                         items:
-                                          type: object
-                                          properties:
-                                            __@BRAND@647815:
-                                              type: object
-                                          required:
-                                            - __@BRAND@647815
+                                          type: string
                                         type: array
                                       example:
                                         items:
-                                          type: object
-                                          properties:
-                                            __@BRAND@647815:
-                                              type: object
-                                          required:
-                                            - __@BRAND@647815
+                                          type: string
                                         type: array
                                     required:
+                                      - items
                                       - type
                                       - ui:control
-                                      - items
                                       - ui:options
                                     type: object
                                   - properties:
@@ -1353,70 +1365,64 @@ paths:
                                           - domain
                                       description:
                                         type: string
-                                      minLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      maxLength:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      pattern:
-                                        type: object
-                                        properties:
-                                          __@BRAND@647815:
-                                            type: object
-                                        required:
-                                          - __@BRAND@647815
-                                      default:
-                                        type: string
                                       enum:
                                         items:
                                           type: string
                                         type: array
+                                      maxLength:
+                                        type: number
+                                      minLength:
+                                        type: number
+                                      pattern:
+                                        type: string
+                                      default:
+                                        type: string
                                       ui:label:
                                         type: string
                                       ui:read-only:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:hidden:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
                                               - create
                                       ui:disabled:
                                         oneOf:
-                                          - type: boolean
                                           - properties:
                                               expr:
                                                 type: string
                                             required:
                                               - expr
                                             type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
                                           - type: string
                                             enum:
                                               - update
@@ -1444,41 +1450,95 @@ paths:
                                       - ui:control
                                     type: object
                                   - properties:
-                                      value:
-                                        type: object
+                                      type:
+                                        type: string
+                                        enum:
+                                          - string
+                                      ui:control:
+                                        type: string
+                                        enum:
+                                          - git-namespace
+                                      description:
+                                        type: string
+                                      ui:label:
+                                        type: string
+                                      ui:read-only:
+                                        oneOf:
+                                          - properties:
+                                              expr:
+                                                type: string
+                                            required:
+                                              - expr
+                                            type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
+                                          - type: string
+                                            enum:
+                                              - update
+                                              - create
+                                      ui:hidden:
+                                        oneOf:
+                                          - properties:
+                                              expr:
+                                                type: string
+                                            required:
+                                              - expr
+                                            type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
+                                          - type: string
+                                            enum:
+                                              - update
+                                              - create
+                                      ui:disabled:
+                                        oneOf:
+                                          - properties:
+                                              expr:
+                                                type: string
+                                            required:
+                                              - expr
+                                            type: object
+                                          - type: boolean
+                                            enum:
+                                              - false
+                                              - true
+                                          - type: string
+                                            enum:
+                                              - update
+                                              - create
+                                      ui:description:
+                                        oneOf:
+                                          - type: string
+                                          - properties:
+                                              expr:
+                                                type: string
+                                            required:
+                                              - expr
+                                            type: object
+                                      ui:formatted-value:
                                         properties:
-                                          __@BRAND@647815:
-                                            type: object
+                                          expr:
+                                            type: string
                                         required:
-                                          - __@BRAND@647815
-                                      disabled:
-                                        oneOf:
-                                          - type: boolean
-                                          - properties:
-                                              expr:
-                                                type: string
-                                            required:
-                                              - expr
-                                            type: object
-                                          - type: string
-                                            enum:
-                                              - update
-                                              - create
-                                      hidden:
-                                        oneOf:
-                                          - type: boolean
-                                          - properties:
-                                              expr:
-                                                type: string
-                                            required:
-                                              - expr
-                                            type: object
-                                          - type: string
-                                            enum:
-                                              - update
-                                              - create
+                                          - expr
+                                        type: object
+                                      ui:placeholder:
+                                        type: string
+                                      git:providers:
+                                        items:
+                                          type: string
+                                          enum:
+                                            - github
+                                            - gitlab
+                                            - bitbucket
+                                        type: array
                                     required:
-                                      - value
+                                      - type
+                                      - ui:control
                                     type: object
                               type: object
                             required:
@@ -1486,20 +1546,19 @@ paths:
                                 type: string
                               type: array
                           required:
-                            - type
                             - properties
+                            - type
                           type: object
                       required:
                         - id
-                        - slug
+                        - metadataSchema
                         - name
                         - protocols
-                        - metadataSchema
+                        - slug
                       type: object
                     type: array
-              integration:
-                allOf:
-                  - properties:
+                  integration:
+                    properties:
                       id:
                         type: string
                       slug:
@@ -1508,103 +1567,38 @@ paths:
                         type: string
                     required:
                       - id
-                      - slug
                       - name
+                      - slug
                     type: object
-              configuration:
-                allOf:
-                  - properties:
-                      id:
-                        type: string
+                  configuration:
+                    type: object
                     required:
                       - id
-                    type: object
-            requiredProperties:
-              - products
-              - integration
-              - configuration
-        examples:
-          example:
-            value:
-              products:
-                - id: <string>
-                  slug: <string>
-                  name: <string>
-                  protocols:
-                    storage:
-                      status: disabled
-                      repl:
-                        enabled: true
-                        supportsReadOnlyMode: true
-                        welcomeMessage: <string>
-                    experimentation:
-                      status: disabled
-                      edgeConfigSyncingSupport: true
-                    ai:
-                      status: disabled
-                    authentication:
-                      status: disabled
-                    observability:
-                      status: disabled
-                    video:
-                      status: disabled
-                    workflow:
-                      status: disabled
-                    checks:
-                      status: disabled
-                    logDrain:
-                      status: disabled
-                      endpoint: <string>
-                      headers: {}
-                      format: json
-                    traceDrain:
-                      status: disabled
-                      endpoint: <string>
-                      headers: {}
-                      format: json
-                    messaging:
-                      status: disabled
-                    other:
-                      status: disabled
-                  primaryProtocol: storage
-                  metadataSchema:
-                    type: object
-                    properties: {}
-                    required:
-                      - <string>
-              integration:
-                id: <string>
-                slug: <string>
-                name: <string>
-              configuration:
-                id: <string>
-        description: List of products available for this integration configuration
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '500': {}
-  deprecated: false
-  type: path
+                    properties:
+                      id:
+                        type: string
+                required:
+                  - configuration
+                  - integration
+                  - products
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '500':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

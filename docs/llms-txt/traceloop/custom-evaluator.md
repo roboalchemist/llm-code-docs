@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/evaluators/custom-evaluator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Evaluators
 
 > Define an evaluator for your specific needs 
@@ -38,8 +42,3 @@ This allows you to refine and correct the evaluator prompt before saving the fin
 ## Execute Evaluator
 
 Evaluators can be executed in [playground columns](../playgrounds/columns/column-management) and in [experiments through the SDK](../experiments/running-from-code).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

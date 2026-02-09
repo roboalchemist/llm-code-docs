@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/observability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Observability
 
 Lunary has powerful observability features that lets you record and analyze your LLM calls.
@@ -156,8 +160,3 @@ If a wrapped tool is executed inside a wrapped agent, the tool will be automatic
     ```
   </Tab>
 </Tabs>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

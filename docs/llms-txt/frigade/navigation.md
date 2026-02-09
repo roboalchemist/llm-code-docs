@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/navigation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Navigation
 
 Frigade supports the ability to route users to different pages in your application through the `primaryButtonUri` and `secondaryButtonUri` props defined in the [Flow configuration](/component/tour#flow-configuration).
@@ -14,7 +18,7 @@ Overriding the default navigation handler is different depending on your React f
 
 ## Next.js App and Pages Router
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 import { useRouter } from 'next/navigation'; // or 'next/router' if using Pages Router
 
@@ -39,7 +43,7 @@ const App = () => {
 
 ## React Router
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 import { useHistory } from 'react-router-dom';
 

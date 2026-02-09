@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/identities/gcp-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GCP Auth
 
 > Learn how to authenticate with Infisical for services on Google Cloud Platform

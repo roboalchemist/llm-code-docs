@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/sentry-error-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Track errors with Sentry
 
 > This example demonstrates how to track errors with Sentry using Trigger.dev.
@@ -13,9 +17,12 @@ Automatically send errors and source maps to your Sentry project from your Trigg
 * A [Sentry](https://sentry.io) account and project
 * A [Trigger.dev](https://trigger.dev) account and project
 
-## Build configuration
+## Setup
 
-To send errors to Sentry when there are errors in your tasks, you'll need to add this build configuration to your `trigger.config.ts` file. This will then run every time you deploy your project.
+This setup involves two files:
+
+1. **`trigger.config.ts`** - Configures the build to upload source maps to Sentry during deployment
+2. **`trigger/init.ts`** - Initializes Sentry and registers the error tracking hook at runtime
 
 <Note>
   You will need to set the `SENTRY_AUTH_TOKEN` and `SENTRY_DSN` environment variables. You can find
@@ -25,11 +32,14 @@ To send errors to Sentry when there are errors in your tasks, you'll need to add
   dashboard](https://cloud.trigger.dev), under environment variables in your project's sidebar.
 </Note>
 
-```ts trigger.config.ts theme={null}
+### Build configuration
+
+Add this build configuration to your `trigger.config.ts` file. This uses the Sentry esbuild plugin to upload source maps every time you deploy your project.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { esbuildPlugin } from "@trigger.dev/build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";
-import * as Sentry from "@sentry/node";
 
 export default defineConfig({
   project: "<project ref>",
@@ -47,23 +57,6 @@ export default defineConfig({
       ),
     ],
   },
-  init: async () => {
-    Sentry.init({
-      defaultIntegrations: false,
-      // The Data Source Name (DSN) is a unique identifier for your Sentry project.
-      dsn: process.env.SENTRY_DSN,
-      // Update this to match the environment you want to track errors for
-      environment: process.env.NODE_ENV === "production" ? "production" : "development",
-    });
-  },
-  onFailure: async ({ payload, error, ctx }) => {
-    Sentry.captureException(error, {
-      extra: {
-        payload,
-        ctx,
-      },
-    });
-  },
 });
 ```
 
@@ -73,13 +66,46 @@ export default defineConfig({
   deploying). You can use pre-built extensions or create your own.
 </Note>
 
+### Runtime initialization
+
+Create a `trigger/init.ts` file to initialize Sentry and register the global `onFailure` hook. This file is automatically loaded when your tasks execute.
+
+```ts trigger/init.ts theme={"theme":"css-variables"}
+import { tasks } from "@trigger.dev/sdk";
+import * as Sentry from "@sentry/node";
+
+// Initialize Sentry
+Sentry.init({
+  defaultIntegrations: false,
+  // The Data Source Name (DSN) is a unique identifier for your Sentry project.
+  dsn: process.env.SENTRY_DSN,
+  // Update this to match the environment you want to track errors for
+  environment: process.env.NODE_ENV === "production" ? "production" : "development",
+});
+
+// Register a global onFailure hook to capture errors
+tasks.onFailure(({ payload, error, ctx }) => {
+  Sentry.captureException(error, {
+    extra: {
+      payload,
+      ctx,
+    },
+  });
+});
+```
+
+<Note>
+  Learn more about [global lifecycle hooks](/tasks/overview#global-lifecycle-hooks) and the
+  [`init.ts` file](/tasks/overview#init-ts).
+</Note>
+
 ## Testing that errors are being sent to Sentry
 
 To test that errors are being sent to Sentry, you need to create a task that will fail.
 
 This task takes no payload, and will throw an error.
 
-```ts trigger/sentry-error-test.ts theme={null}
+```ts trigger/sentry-error-test.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const sentryErrorTest = task({
@@ -99,15 +125,15 @@ export const sentryErrorTest = task({
 After creating the task, deploy your project.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>

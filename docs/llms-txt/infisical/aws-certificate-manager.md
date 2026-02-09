@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/aws-certificate-manager.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Certificate Manager
 
 > Learn how to configure an AWS Certificate Manager Certificate Sync for Infisical PKI.
@@ -39,6 +43,7 @@
 
     * **Enable Removal of Expired/Revoked Certificates**: If enabled, Infisical will remove certificates from the destination if they are no longer active in Infisical.
     * **Preserve ARN on Renewal**: If enabled, Infisical will sync renewed certificates to the destination under the same ARN as the original synced certificate instead of creating a new certificate with a new ARN.
+    * **Include Root CA**: If enabled, the Root CA certificate will be included in the certificate chain when syncing to AWS Certificate Manager. If disabled, only intermediate certificates will be included.
     * **Certificate Name Schema** (Optional): Customize how certificate tags are generated in AWS Certificate Manager. Must include `{{certificateId}}` as a placeholder for the certificate ID to ensure proper certificate identification and management. If not specified, defaults to `Infisical-{{certificateId}}`.
     * **Auto-Sync Enabled**: If enabled, certificates will automatically be synced when changes occur. Disable to enforce manual syncing only.
 
@@ -70,7 +75,7 @@
 
     ```bash Request theme={"dark"}
     curl --request POST \
-    --url https://app.infisical.com/api/v1/pki/syncs/aws-certificate-manager \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/aws-certificate-manager \
     --header 'Authorization: Bearer <access-token>' \
     --header 'Content-Type: application/json' \
     --data '{
@@ -87,6 +92,7 @@
         "syncOptions": {
             "canRemoveCertificates": true,
             "preserveArnOnRenewal": true,
+            "includeRootCa": false,
             "certificateNameSchema": "myapp-{{certificateId}}"
         },
         "destinationConfig": {
@@ -111,6 +117,7 @@
             "syncOptions": {
                 "canRemoveCertificates": true,
                 "preserveArnOnRenewal": true,
+                "includeRootCa": false,
                 "certificateNameSchema": "myapp-{{certificateId}}"
             },
             "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",

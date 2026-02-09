@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/durability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Durable Storage
 
 > This article explains the persistence provided by Upstash databases.

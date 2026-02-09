@@ -1,108 +1,104 @@
 # Source: https://docs.fireworks.ai/api-reference/get-model-upload-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Model Upload Endpoint
+
+
 
 ## OpenAPI
 
 ````yaml post /v1/accounts/{account_id}/models/{model_id}:getUploadEndpoint
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/models/{model_id}:getUploadEndpoint
-  method: post
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/models/{model_id}:getUploadEndpoint:
+    post:
+      tags:
+        - Gateway
+      summary: Get Model Upload Endpoint
+      operationId: Gateway_GetModelUploadEndpoint
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-        model_id:
+            type: string
+        - name: model_id
+          in: path
+          required: true
+          description: The Model Id
           schema:
-            - type: string
-              required: true
-              description: The Model Id
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              filenameToSize:
-                allOf:
-                  - type: object
-                    additionalProperties:
-                      type: string
-                      format: int64
-                    description: A mapping from the file name to its size in bytes.
-              enableResumableUpload:
-                allOf:
-                  - type: boolean
-                    description: If true, enable resumable upload instead of PUT.
-              readMask:
-                allOf:
-                  - type: string
-                    description: >-
-                      The fields to be returned in the response. If empty or
-                      "*", all fields will be returned.
-            required: true
-            refIdentifier: '#/components/schemas/GatewayGetModelUploadEndpointBody'
-            requiredProperties:
-              - filenameToSize
-        examples:
-          example:
-            value:
-              filenameToSize: {}
-              enableResumableUpload: true
-              readMask: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              filenameToSignedUrls:
-                allOf:
-                  - type: object
-                    additionalProperties:
-                      type: string
-                    title: Signed URLs for uploading model files
-              filenameToUnsignedUris:
-                allOf:
-                  - type: object
-                    additionalProperties:
-                      type: string
-                    description: >-
-                      Unsigned URIs (e.g. s3://bucket/key, gs://bucket/key) for
-                      uploading model files.
-
-                      Returned when the caller has permission to upload to the
-                      URIs.
-            refIdentifier: '#/components/schemas/gatewayGetModelUploadEndpointResponse'
-        examples:
-          example:
-            value:
-              filenameToSignedUrls: {}
-              filenameToUnsignedUris: {}
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayGetModelUploadEndpointBody'
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayGetModelUploadEndpointResponse'
 components:
-  schemas: {}
+  schemas:
+    GatewayGetModelUploadEndpointBody:
+      type: object
+      properties:
+        filenameToSize:
+          type: object
+          additionalProperties:
+            type: string
+            format: int64
+          description: A mapping from the file name to its size in bytes.
+        enableResumableUpload:
+          type: boolean
+          description: If true, enable resumable upload instead of PUT.
+        readMask:
+          type: string
+          description: >-
+            The fields to be returned in the response. If empty or "*", all
+            fields will be returned.
+      required:
+        - filenameToSize
+    gatewayGetModelUploadEndpointResponse:
+      type: object
+      properties:
+        filenameToSignedUrls:
+          type: object
+          additionalProperties:
+            type: string
+          title: Signed URLs for uploading model files
+        filenameToUnsignedUris:
+          type: object
+          additionalProperties:
+            type: string
+          description: >-
+            Unsigned URIs (e.g. s3://bucket/key, gs://bucket/key) for uploading
+            model files.
+
+            Returned when the caller has permission to upload to the URIs.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

@@ -1,62 +1,78 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/find-a-project-by-id-or-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Find a project by id or name
 
 > Get the information for a specific project by passing either the project `id` or `name` in the URL.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v9/projects/{idOrName}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v9/projects/{idOrName}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v9/projects/{idOrName}:
+    get:
+      tags:
+        - projects
+      summary: Find a project by id or name
+      description: >-
+        Get the information for a specific project by passing either the project
+        `id` or `name` in the URL.
+      operationId: getProject
+      parameters:
+        - name: idOrName
+          description: The unique project identifier or the project name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique project identifier or the project name
-            - type: boolean
-              required: true
-              description: The unique project identifier or the project name
-      query:
-        teamId:
+            description: The unique project identifier or the project name
+            oneOf:
+              - type: string
+              - type: boolean
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              integrations:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: The project information
+          content:
+            application/json:
+              schema:
+                properties:
+                  integrations:
+                    items:
                       properties:
                         installationId:
                           type: string
@@ -82,12 +98,10 @@ paths:
                       type: object
                       description: Integration installation enabled on the project.
                     type: array
-              accountId:
-                allOf:
-                  - type: string
-              analytics:
-                allOf:
-                  - properties:
+                  accountId:
+                    type: string
+                  analytics:
+                    properties:
                       id:
                         type: string
                       canceledAt:
@@ -106,13 +120,17 @@ paths:
                         nullable: true
                         type: number
                     required:
-                      - id
                       - disabledAt
                       - enabledAt
+                      - id
                     type: object
-              speedInsights:
-                allOf:
-                  - properties:
+                  appliedCve55182Migration:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  speedInsights:
+                    properties:
                       id:
                         type: string
                       enabledAt:
@@ -123,31 +141,34 @@ paths:
                         type: number
                       hasData:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       paidAt:
                         type: number
                     required:
                       - id
                     type: object
-              autoExposeSystemEnvs:
-                allOf:
-                  - type: boolean
-              autoAssignCustomDomains:
-                allOf:
-                  - type: boolean
-              autoAssignCustomDomainsUpdatedBy:
-                allOf:
-                  - type: string
-              buildCommand:
-                allOf:
-                  - nullable: true
+                  autoExposeSystemEnvs:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  autoAssignCustomDomains:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  autoAssignCustomDomainsUpdatedBy:
                     type: string
-              commandForIgnoringBuildStep:
-                allOf:
-                  - nullable: true
+                  buildCommand:
+                    nullable: true
                     type: string
-              connectConfigurations:
-                allOf:
-                  - nullable: true
+                  commandForIgnoringBuildStep:
+                    nullable: true
+                    type: string
+                  connectConfigurations:
+                    nullable: true
                     items:
                       properties:
                         envId:
@@ -155,16 +176,22 @@ paths:
                             - type: string
                             - type: string
                               enum:
-                                - preview
                                 - production
+                                - preview
                         connectConfigurationId:
                           type: string
                         dc:
                           type: string
                         passive:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                         buildsEnabled:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                         aws:
                           properties:
                             subnetIds:
@@ -174,42 +201,42 @@ paths:
                             securityGroupId:
                               type: string
                           required:
-                            - subnetIds
                             - securityGroupId
+                            - subnetIds
                           type: object
                         createdAt:
                           type: number
                         updatedAt:
                           type: number
                       required:
-                        - envId
-                        - connectConfigurationId
-                        - passive
                         - buildsEnabled
+                        - connectConfigurationId
                         - createdAt
+                        - envId
+                        - passive
                         - updatedAt
                       type: object
                     type: array
-              connectConfigurationId:
-                allOf:
-                  - nullable: true
+                  connectConfigurationId:
+                    nullable: true
                     type: string
-              connectBuildsEnabled:
-                allOf:
-                  - type: boolean
-              passiveConnectConfigurationId:
-                allOf:
-                  - nullable: true
+                  connectBuildsEnabled:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  passiveConnectConfigurationId:
+                    nullable: true
                     type: string
-              createdAt:
-                allOf:
-                  - type: number
-              customerSupportCodeVisibility:
-                allOf:
-                  - type: boolean
-              crons:
-                allOf:
-                  - properties:
+                  createdAt:
+                    type: number
+                  customerSupportCodeVisibility:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  crons:
+                    properties:
                       enabledAt:
                         type: number
                         description: >-
@@ -250,28 +277,32 @@ paths:
                           type: object
                         type: array
                     required:
-                      - enabledAt
-                      - disabledAt
-                      - updatedAt
-                      - deploymentId
                       - definitions
+                      - deploymentId
+                      - disabledAt
+                      - enabledAt
+                      - updatedAt
                     type: object
-              dataCache:
-                allOf:
-                  - properties:
+                  dataCache:
+                    properties:
                       userDisabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       storageSizeBytes:
                         nullable: true
                         type: number
                       unlimited:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                     required:
                       - userDisabled
                     type: object
-              deploymentExpiration:
-                allOf:
-                  - nullable: true
+                  deploymentExpiration:
+                    nullable: true
                     properties:
                       expirationDays:
                         type: number
@@ -305,20 +336,19 @@ paths:
                       the project level, but we also maintain an instance of
                       this at the team level as a default policy that gets
                       applied to new projects.
-              devCommand:
-                allOf:
-                  - nullable: true
+                  devCommand:
+                    nullable: true
                     type: string
-              directoryListing:
-                allOf:
-                  - type: boolean
-              installCommand:
-                allOf:
-                  - nullable: true
+                  directoryListing:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  installCommand:
+                    nullable: true
                     type: string
-              env:
-                allOf:
-                  - items:
+                  env:
+                    items:
                       properties:
                         target:
                           oneOf:
@@ -339,18 +369,26 @@ paths:
                         type:
                           type: string
                           enum:
+                            - secret
                             - system
                             - encrypted
                             - plain
                             - sensitive
-                            - secret
                         sunsetSecretId:
                           type: string
                           description: >-
-                            This is used to identiy variables that have been
+                            This is used to identify variables that have been
                             migrated from type secret to sensitive.
+                        legacyValue:
+                          type: string
+                          description: >-
+                            Legacy now-encryption ciphertext, present after
+                            migration swaps value/vsmValue
                         decrypted:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                         value:
                           type: string
                         vsmValue:
@@ -391,8 +429,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -402,8 +440,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -413,8 +451,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -424,8 +462,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -435,8 +473,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -446,8 +484,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -457,8 +495,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -468,8 +506,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -479,8 +517,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -490,8 +528,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -501,8 +539,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -512,8 +550,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -523,8 +561,8 @@ paths:
                                 storeId:
                                   type: string
                               required:
-                                - type
                                 - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -540,11 +578,11 @@ paths:
                                 integrationConfigurationId:
                                   type: string
                               required:
-                                - type
-                                - storeId
+                                - integrationConfigurationId
                                 - integrationId
                                 - integrationProductId
-                                - integrationConfigurationId
+                                - storeId
+                                - type
                               type: object
                             - properties:
                                 type:
@@ -554,8 +592,8 @@ paths:
                                 projectId:
                                   type: string
                               required:
-                                - type
                                 - projectId
+                                - type
                               type: object
                         internalContentHint:
                           nullable: true
@@ -571,8 +609,8 @@ paths:
                                 encrypted with a special key to make decryption
                                 possible in the subscriber Lambda.
                           required:
-                            - type
                             - encryptedValue
+                            - type
                           type: object
                           description: >-
                             Similar to `contentHints`, but should not be exposed
@@ -584,14 +622,13 @@ paths:
                             type: string
                           type: array
                       required:
+                        - key
                         - type
                         - value
-                        - key
                       type: object
                     type: array
-              customEnvironments:
-                allOf:
-                  - items:
+                  customEnvironments:
+                    items:
                       properties:
                         id:
                           type: string
@@ -604,8 +641,8 @@ paths:
                         type:
                           type: string
                           enum:
-                            - preview
                             - production
+                            - preview
                             - development
                           description: >-
                             The type of environment (production, preview, or
@@ -626,8 +663,8 @@ paths:
                               type: string
                               description: The pattern to match against branch names
                           required:
-                            - type
                             - pattern
+                            - type
                           type: object
                           description: >-
                             Configuration for matching git branches to this
@@ -648,9 +685,9 @@ paths:
                                 nullable: true
                                 type: number
                                 enum:
-                                  - 307
                                   - 301
                                   - 302
+                                  - 307
                                   - 308
                               gitBranch:
                                 nullable: true
@@ -664,6 +701,9 @@ paths:
                                 type: number
                               verified:
                                 type: boolean
+                                enum:
+                                  - false
+                                  - true
                                 description: >-
                                   `true` if the domain is verified for use with
                                   the project. If `false` it will not be used as
@@ -681,10 +721,10 @@ paths:
                                     reason:
                                       type: string
                                   required:
-                                    - type
                                     - domain
-                                    - value
                                     - reason
+                                    - type
+                                    - value
                                   type: object
                                   description: >-
                                     A list of verification challenges, one of
@@ -708,8 +748,8 @@ paths:
                                   `verification.domain` will be checked for a
                                   TXT record matching `verification.value`.
                             required:
-                              - name
                               - apexName
+                              - name
                               - projectId
                               - verified
                             type: object
@@ -728,19 +768,18 @@ paths:
                           type: number
                           description: Timestamp when the environment was last updated
                       required:
+                        - createdAt
                         - id
                         - slug
                         - type
-                        - createdAt
                         - updatedAt
                       type: object
                       description: >-
                         Internal representation of a custom environment with all
                         required properties
                     type: array
-              framework:
-                allOf:
-                  - nullable: true
+                  framework:
+                    nullable: true
                     type: string
                     enum:
                       - blitzjs
@@ -782,6 +821,7 @@ paths:
                       - zola
                       - hydrogen
                       - vite
+                      - tanstack-start
                       - vitepress
                       - vuepress
                       - parcel
@@ -795,21 +835,30 @@ paths:
                       - hono
                       - express
                       - h3
+                      - koa
                       - nestjs
+                      - elysia
                       - fastify
                       - xmcp
-              gitForkProtection:
-                allOf:
-                  - type: boolean
-              gitLFS:
-                allOf:
-                  - type: boolean
-              id:
-                allOf:
-                  - type: string
-              ipBuckets:
-                allOf:
-                  - items:
+                      - python
+                      - ruby
+                      - rust
+                      - node
+                      - services
+                  gitForkProtection:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  gitLFS:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  id:
+                    type: string
+                  ipBuckets:
+                    items:
                       properties:
                         bucket:
                           type: string
@@ -819,12 +868,9 @@ paths:
                         - bucket
                       type: object
                     type: array
-              latestDeployments:
-                allOf:
-                  - items:
+                  latestDeployments:
+                    items:
                       properties:
-                        id:
-                          type: string
                         alias:
                           items:
                             type: string
@@ -834,42 +880,9 @@ paths:
                           oneOf:
                             - type: number
                             - type: boolean
-                        aliasError:
-                          nullable: true
-                          properties:
-                            code:
-                              type: string
-                            message:
-                              type: string
-                          required:
-                            - code
-                            - message
-                          type: object
-                        aliasFinal:
-                          nullable: true
-                          type: string
-                        automaticAliases:
-                          items:
-                            type: string
-                          type: array
-                        branchMatcher:
-                          properties:
-                            type:
-                              type: string
                               enum:
-                                - endsWith
-                                - startsWith
-                                - equals
-                              description: The type of matching to perform
-                            pattern:
-                              type: string
-                              description: The pattern to match against branch names
-                          required:
-                            - type
-                            - pattern
-                          type: object
-                        buildingAt:
-                          type: number
+                                - false
+                                - true
                         builds:
                           items:
                             properties:
@@ -883,23 +896,6 @@ paths:
                               - use
                             type: object
                           type: array
-                        checksConclusion:
-                          type: string
-                          enum:
-                            - succeeded
-                            - failed
-                            - skipped
-                            - canceled
-                        checksState:
-                          type: string
-                          enum:
-                            - registered
-                            - running
-                            - completed
-                        connectBuildsEnabled:
-                          type: boolean
-                        connectConfigurationId:
-                          type: string
                         createdAt:
                           type: number
                         createdIn:
@@ -922,83 +918,30 @@ paths:
                             - uid
                             - username
                           type: object
-                        deletedAt:
-                          type: number
                         deploymentHostname:
+                          type: string
+                        name:
                           type: string
                         forced:
                           type: boolean
-                        name:
+                          enum:
+                            - false
+                            - true
+                        id:
                           type: string
                         meta:
                           additionalProperties:
                             type: string
                           type: object
-                        monorepoManager:
-                          nullable: true
-                          type: string
-                        oidcTokenClaims:
-                          properties:
-                            iss:
-                              type: string
-                            sub:
-                              type: string
-                            scope:
-                              type: string
-                            aud:
-                              type: string
-                            owner:
-                              type: string
-                            owner_id:
-                              type: string
-                            project:
-                              type: string
-                            project_id:
-                              type: string
-                            environment:
-                              type: string
-                          required:
-                            - iss
-                            - sub
-                            - scope
-                            - aud
-                            - owner
-                            - owner_id
-                            - project
-                            - project_id
-                            - environment
-                          type: object
                         plan:
                           type: string
-                          enum:
-                            - pro
-                            - enterprise
-                            - hobby
-                        previewCommentsEnabled:
-                          type: boolean
-                          description: >-
-                            Whether or not preview comments are enabled for the
-                            deployment
-                          example: false
                         private:
                           type: boolean
-                        readyAt:
-                          type: number
+                          enum:
+                            - false
+                            - true
                         readyState:
                           type: string
-                          enum:
-                            - BUILDING
-                            - ERROR
-                            - INITIALIZING
-                            - QUEUED
-                            - READY
-                            - CANCELED
-                        readySubstate:
-                          type: string
-                          enum:
-                            - STAGED
-                            - ROLLING
-                            - PROMOTED
                         requestedAt:
                           type: number
                         target:
@@ -1009,20 +952,21 @@ paths:
                           type: string
                         type:
                           type: string
-                          enum:
-                            - LAMBDAS
                         url:
                           type: string
                         userId:
                           type: string
                         withCache:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                       required:
-                        - id
                         - createdAt
                         - createdIn
                         - creator
                         - deploymentHostname
+                        - id
                         - name
                         - plan
                         - private
@@ -1032,9 +976,8 @@ paths:
                         - userId
                       type: object
                     type: array
-              link:
-                allOf:
-                  - oneOf:
+                  link:
+                    oneOf:
                       - properties:
                           org:
                             type: string
@@ -1081,14 +1024,17 @@ paths:
                             type: number
                           sourceless:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           productionBranch:
                             type: string
                         required:
-                          - org
-                          - type
-                          - gitCredentialId
-                          - productionBranch
                           - deployHooks
+                          - gitCredentialId
+                          - org
+                          - productionBranch
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1136,14 +1082,17 @@ paths:
                             type: string
                           sourceless:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           productionBranch:
                             type: string
                         required:
-                          - type
-                          - org
-                          - gitCredentialId
-                          - productionBranch
                           - deployHooks
+                          - gitCredentialId
+                          - org
+                          - productionBranch
+                          - type
                         type: object
                       - properties:
                           org:
@@ -1193,15 +1142,18 @@ paths:
                             type: number
                           sourceless:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           productionBranch:
                             type: string
                         required:
-                          - org
-                          - type
-                          - host
-                          - gitCredentialId
-                          - productionBranch
                           - deployHooks
+                          - gitCredentialId
+                          - host
+                          - org
+                          - productionBranch
+                          - type
                         type: object
                       - properties:
                           projectId:
@@ -1255,18 +1207,21 @@ paths:
                             type: number
                           sourceless:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           productionBranch:
                             type: string
                         required:
+                          - deployHooks
+                          - gitCredentialId
+                          - productionBranch
                           - projectId
                           - projectName
                           - projectNameWithNamespace
                           - projectNamespace
                           - projectUrl
                           - type
-                          - gitCredentialId
-                          - productionBranch
-                          - deployHooks
                         type: object
                       - properties:
                           name:
@@ -1311,38 +1266,39 @@ paths:
                             type: number
                           sourceless:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           productionBranch:
                             type: string
                         required:
+                          - deployHooks
+                          - gitCredentialId
                           - name
-                          - slug
                           - owner
+                          - productionBranch
+                          - slug
                           - type
                           - uuid
                           - workspaceUuid
-                          - gitCredentialId
-                          - productionBranch
-                          - deployHooks
                         type: object
-              microfrontends:
-                allOf:
-                  - oneOf:
+                  microfrontends:
+                    oneOf:
                       - properties:
                           isDefaultApp:
                             type: boolean
+                            enum:
+                              - true
                           updatedAt:
                             type: number
                             description: >-
                               Timestamp when the microfrontends settings were
                               last updated.
                           groupIds:
-                            items:
-                              oneOf:
-                                - type: string
-                                - type: string
-                            maxItems: 2
-                            minItems: 2
                             type: array
+                            items:
+                              type: string
+                            minItems: 1
                             description: >-
                               The group IDs of microfrontends that this project
                               belongs to. Each microfrontend project must belong
@@ -1350,6 +1306,8 @@ paths:
                               microfrontends that are used together.
                           enabled:
                             type: boolean
+                            enum:
+                              - true
                             description: >-
                               Whether microfrontends are enabled for this
                               project.
@@ -1360,22 +1318,45 @@ paths:
                               default path in preview links when a domain for
                               this microfrontend is shown in the UI. Includes
                               the leading slash, e.g. `/docs`
+                          freeProjectForLegacyLimits:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether the project was part of the legacy limits
+                              for hobby and pro-trial before billing was added.
+                              This field is only set when the team is upgraded
+                              to a paid plan and we are backfilling the
+                              subscription status. We cap the subscription to 2
+                              projects and set this field for the 3rd project.
+                              When this field is set, the project is not charged
+                              for and we do not call any billing APIs for this
+                              project.
                         required:
+                          - enabled
+                          - groupIds
                           - isDefaultApp
                           - updatedAt
-                          - groupIds
-                          - enabled
                         type: object
                       - properties:
                           isDefaultApp:
                             type: boolean
+                            enum:
+                              - false
                           routeObservabilityToThisProject:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether observability data should be routed to
                               this microfrontend project or a root project.
                           doNotRouteWithMicrofrontendsRouting:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether to add microfrontends routing to aliases.
                               This means domains in this project will route as a
@@ -1386,13 +1367,10 @@ paths:
                               Timestamp when the microfrontends settings were
                               last updated.
                           groupIds:
-                            items:
-                              oneOf:
-                                - type: string
-                                - type: string
-                            maxItems: 2
-                            minItems: 2
                             type: array
+                            items:
+                              type: string
+                            minItems: 1
                             description: >-
                               The group IDs of microfrontends that this project
                               belongs to. Each microfrontend project must belong
@@ -1400,6 +1378,8 @@ paths:
                               microfrontends that are used together.
                           enabled:
                             type: boolean
+                            enum:
+                              - true
                             description: >-
                               Whether microfrontends are enabled for this
                               project.
@@ -1410,34 +1390,54 @@ paths:
                               default path in preview links when a domain for
                               this microfrontend is shown in the UI. Includes
                               the leading slash, e.g. `/docs`
+                          freeProjectForLegacyLimits:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether the project was part of the legacy limits
+                              for hobby and pro-trial before billing was added.
+                              This field is only set when the team is upgraded
+                              to a paid plan and we are backfilling the
+                              subscription status. We cap the subscription to 2
+                              projects and set this field for the 3rd project.
+                              When this field is set, the project is not charged
+                              for and we do not call any billing APIs for this
+                              project.
                         required:
-                          - updatedAt
-                          - groupIds
                           - enabled
+                          - groupIds
+                          - updatedAt
                         type: object
                       - properties:
                           updatedAt:
                             type: number
                           groupIds:
-                            items:
-                              oneOf: []
-                            maxItems: 0
-                            minItems: 0
                             type: array
+                            items: {}
+                            minItems: 0
+                            maxItems: 0
                           enabled:
                             type: boolean
+                            enum:
+                              - false
+                          freeProjectForLegacyLimits:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
                         required:
-                          - updatedAt
-                          - groupIds
                           - enabled
+                          - groupIds
+                          - updatedAt
                         type: object
-              name:
-                allOf:
-                  - type: string
-              nodeVersion:
-                allOf:
-                  - type: string
+                  name:
+                    type: string
+                  nodeVersion:
+                    type: string
                     enum:
+                      - 24.x
                       - 22.x
                       - 20.x
                       - 18.x
@@ -1446,9 +1446,8 @@ paths:
                       - 12.x
                       - 10.x
                       - 8.10.x
-              optionsAllowlist:
-                allOf:
-                  - nullable: true
+                  optionsAllowlist:
+                    nullable: true
                     properties:
                       paths:
                         items:
@@ -1462,28 +1461,35 @@ paths:
                     required:
                       - paths
                     type: object
-              outputDirectory:
-                allOf:
-                  - nullable: true
+                  outputDirectory:
+                    nullable: true
                     type: string
-              passwordProtection:
-                allOf:
-                  - nullable: true
+                  passwordProtection:
+                    nullable: true
                     type: object
-              productionDeploymentsFastLane:
-                allOf:
-                  - type: boolean
-              publicSource:
-                allOf:
-                  - nullable: true
+                  productionDeploymentsFastLane:
                     type: boolean
-              resourceConfig:
-                allOf:
-                  - properties:
+                    enum:
+                      - false
+                      - true
+                  publicSource:
+                    nullable: true
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  resourceConfig:
+                    properties:
                       elasticConcurrencyEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       fluid:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       functionDefaultRegions:
                         items:
                           type: string
@@ -1498,6 +1504,9 @@ paths:
                           - performance
                       functionZeroConfigFailover:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       buildMachineType:
                         type: string
                         enum:
@@ -1505,12 +1514,22 @@ paths:
                           - turbo
                       isNSNBDisabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
+                      buildQueue:
+                        properties:
+                          configuration:
+                            type: string
+                            enum:
+                              - SKIP_NAMESPACE_QUEUE
+                              - WAIT_FOR_NAMESPACE_QUEUE
+                        type: object
                     type: object
                     required:
                       - functionDefaultRegions
-              rollbackDescription:
-                allOf:
-                  - properties:
+                  rollbackDescription:
+                    properties:
                       userId:
                         type: string
                         description: The user who rolled back the project.
@@ -1526,18 +1545,17 @@ paths:
                         type: number
                         description: Timestamp of when the rollback was requested.
                     required:
+                      - createdAt
+                      - description
                       - userId
                       - username
-                      - description
-                      - createdAt
                     type: object
                     description: >-
                       Description of why a project was rolled back, and by whom.
                       Note that lastAliasRequest contains the from/to details of
                       the rollback.
-              rollingRelease:
-                allOf:
-                  - nullable: true
+                  rollingRelease:
+                    nullable: true
                     properties:
                       target:
                         type: string
@@ -1558,6 +1576,9 @@ paths:
                               example: 25
                             requireApproval:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether or not this stage requires manual
                                 approval to proceed
@@ -1570,6 +1591,9 @@ paths:
                               example: 600
                             linearShift:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether to linearly shift traffic over the
                                 duration of this stage
@@ -1590,6 +1614,9 @@ paths:
                           always have targetPercentage: 100.
                       canaryResponseHeader:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether the request served by a canary deployment
                           should return a header indicating a canary was served.
@@ -1601,13 +1628,18 @@ paths:
                     description: >-
                       Project-level rolling release configuration that defines
                       how deployments should be gradually rolled out
-              defaultResourceConfig:
-                allOf:
-                  - properties:
+                  defaultResourceConfig:
+                    properties:
                       elasticConcurrencyEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       fluid:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       functionDefaultRegions:
                         items:
                           type: string
@@ -1622,6 +1654,9 @@ paths:
                           - performance
                       functionZeroConfigFailover:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       buildMachineType:
                         type: string
                         enum:
@@ -1629,36 +1664,84 @@ paths:
                           - turbo
                       isNSNBDisabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
+                      buildQueue:
+                        properties:
+                          configuration:
+                            type: string
+                            enum:
+                              - SKIP_NAMESPACE_QUEUE
+                              - WAIT_FOR_NAMESPACE_QUEUE
+                        type: object
                     type: object
                     required:
                       - functionDefaultRegions
-              rootDirectory:
-                allOf:
-                  - nullable: true
+                  rootDirectory:
+                    nullable: true
                     type: string
-              serverlessFunctionZeroConfigFailover:
-                allOf:
-                  - type: boolean
-              skewProtectionBoundaryAt:
-                allOf:
-                  - type: number
-              skewProtectionMaxAge:
-                allOf:
-                  - type: number
-              skipGitConnectDuringLink:
-                allOf:
-                  - type: boolean
-              sourceFilesOutsideRootDirectory:
-                allOf:
-                  - type: boolean
-              enableAffectedProjectsDeployments:
-                allOf:
-                  - type: boolean
-              ssoProtection:
-                allOf:
-                  - nullable: true
+                  serverlessFunctionZeroConfigFailover:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  skewProtectionBoundaryAt:
+                    type: number
+                  skewProtectionMaxAge:
+                    type: number
+                  skewProtectionAllowedDomains:
+                    items:
+                      type: string
+                    type: array
+                  skipGitConnectDuringLink:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  staticIps:
+                    properties:
+                      builds:
+                        type: boolean
+                        enum:
+                          - false
+                          - true
+                      enabled:
+                        type: boolean
+                        enum:
+                          - false
+                          - true
+                      regions:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                      - builds
+                      - enabled
+                      - regions
+                    type: object
+                  sourceFilesOutsideRootDirectory:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  enableAffectedProjectsDeployments:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  ssoProtection:
+                    nullable: true
                     properties:
                       deploymentType:
+                        type: string
+                        enum:
+                          - preview
+                          - all
+                          - prod_deployment_urls_and_all_previews
+                          - all_except_custom_domains
+                      cve55182MigrationAppliedFrom:
+                        nullable: true
                         type: string
                         enum:
                           - preview
@@ -1668,13 +1751,10 @@ paths:
                     required:
                       - deploymentType
                     type: object
-              targets:
-                allOf:
-                  - additionalProperties:
+                  targets:
+                    additionalProperties:
                       nullable: true
                       properties:
-                        id:
-                          type: string
                         alias:
                           items:
                             type: string
@@ -1684,42 +1764,9 @@ paths:
                           oneOf:
                             - type: number
                             - type: boolean
-                        aliasError:
-                          nullable: true
-                          properties:
-                            code:
-                              type: string
-                            message:
-                              type: string
-                          required:
-                            - code
-                            - message
-                          type: object
-                        aliasFinal:
-                          nullable: true
-                          type: string
-                        automaticAliases:
-                          items:
-                            type: string
-                          type: array
-                        branchMatcher:
-                          properties:
-                            type:
-                              type: string
                               enum:
-                                - endsWith
-                                - startsWith
-                                - equals
-                              description: The type of matching to perform
-                            pattern:
-                              type: string
-                              description: The pattern to match against branch names
-                          required:
-                            - type
-                            - pattern
-                          type: object
-                        buildingAt:
-                          type: number
+                                - false
+                                - true
                         builds:
                           items:
                             properties:
@@ -1733,23 +1780,6 @@ paths:
                               - use
                             type: object
                           type: array
-                        checksConclusion:
-                          type: string
-                          enum:
-                            - succeeded
-                            - failed
-                            - skipped
-                            - canceled
-                        checksState:
-                          type: string
-                          enum:
-                            - registered
-                            - running
-                            - completed
-                        connectBuildsEnabled:
-                          type: boolean
-                        connectConfigurationId:
-                          type: string
                         createdAt:
                           type: number
                         createdIn:
@@ -1772,83 +1802,30 @@ paths:
                             - uid
                             - username
                           type: object
-                        deletedAt:
-                          type: number
                         deploymentHostname:
+                          type: string
+                        name:
                           type: string
                         forced:
                           type: boolean
-                        name:
+                          enum:
+                            - false
+                            - true
+                        id:
                           type: string
                         meta:
                           additionalProperties:
                             type: string
                           type: object
-                        monorepoManager:
-                          nullable: true
-                          type: string
-                        oidcTokenClaims:
-                          properties:
-                            iss:
-                              type: string
-                            sub:
-                              type: string
-                            scope:
-                              type: string
-                            aud:
-                              type: string
-                            owner:
-                              type: string
-                            owner_id:
-                              type: string
-                            project:
-                              type: string
-                            project_id:
-                              type: string
-                            environment:
-                              type: string
-                          required:
-                            - iss
-                            - sub
-                            - scope
-                            - aud
-                            - owner
-                            - owner_id
-                            - project
-                            - project_id
-                            - environment
-                          type: object
                         plan:
                           type: string
-                          enum:
-                            - pro
-                            - enterprise
-                            - hobby
-                        previewCommentsEnabled:
-                          type: boolean
-                          description: >-
-                            Whether or not preview comments are enabled for the
-                            deployment
-                          example: false
                         private:
                           type: boolean
-                        readyAt:
-                          type: number
+                          enum:
+                            - false
+                            - true
                         readyState:
                           type: string
-                          enum:
-                            - BUILDING
-                            - ERROR
-                            - INITIALIZING
-                            - QUEUED
-                            - READY
-                            - CANCELED
-                        readySubstate:
-                          type: string
-                          enum:
-                            - STAGED
-                            - ROLLING
-                            - PROMOTED
                         requestedAt:
                           type: number
                         target:
@@ -1859,20 +1836,21 @@ paths:
                           type: string
                         type:
                           type: string
-                          enum:
-                            - LAMBDAS
                         url:
                           type: string
                         userId:
                           type: string
                         withCache:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                       required:
-                        - id
                         - createdAt
                         - createdIn
                         - creator
                         - deploymentHostname
+                        - id
                         - name
                         - plan
                         - private
@@ -1882,296 +1860,52 @@ paths:
                         - userId
                       type: object
                     type: object
-              transferCompletedAt:
-                allOf:
-                  - type: number
-              transferStartedAt:
-                allOf:
-                  - type: number
-              transferToAccountId:
-                allOf:
-                  - type: string
-              transferredFromAccountId:
-                allOf:
-                  - type: string
-              updatedAt:
-                allOf:
-                  - type: number
-              live:
-                allOf:
-                  - type: boolean
-              enablePreviewFeedback:
-                allOf:
-                  - nullable: true
+                  transferCompletedAt:
+                    type: number
+                  transferStartedAt:
+                    type: number
+                  transferToAccountId:
+                    type: string
+                  transferredFromAccountId:
+                    type: string
+                  updatedAt:
+                    type: number
+                  live:
                     type: boolean
-              enableProductionFeedback:
-                allOf:
-                  - nullable: true
+                    enum:
+                      - false
+                      - true
+                  enablePreviewFeedback:
+                    nullable: true
                     type: boolean
-              permissions:
-                allOf:
-                  - properties:
-                      aliasProject:
+                    enum:
+                      - false
+                      - true
+                  enableProductionFeedback:
+                    nullable: true
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  permissions:
+                    properties:
+                      oauth2Connection:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      aliasProtectionBypass:
+                      user:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      buildMachine:
+                      userConnection:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      connectConfigurationLink:
+                      userSudo:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      dataCacheNamespace:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deployment:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentBuildLogs:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentCheck:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentCheckPreview:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentCheckReRunFromProductionBranch:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentProductionGit:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentV0:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentPreview:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentPrivate:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentPromote:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      deploymentRollback:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      edgeCacheNamespace:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      environments:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      job:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      logs:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      logsPreset:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      observabilityData:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      onDemandBuild:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      onDemandConcurrency:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      optionsAllowlist:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      passwordProtection:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      productionAliasProtectionBypass:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      project:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectAccessGroup:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectAnalyticsSampling:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectAnalyticsUsage:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectCheck:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectCheckRun:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectDeploymentExpiration:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectDeploymentHook:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectDomain:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectDomainCheckConfig:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectDomainMove:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectEnvVars:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectEnvVarsProduction:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectEnvVarsUnownedByIntegration:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectFlags:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectFromV0:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectId:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectIntegrationConfiguration:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectLink:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectMember:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectMonitoring:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectOIDCToken:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectPermissions:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectProductionBranch:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectProtectionBypass:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectRollingRelease:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectSupportCase:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectSupportCaseComment:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectTier:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectTransfer:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectTransferOut:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      projectUsage:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      seawallConfig:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      sharedEnvVarConnection:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      skewProtection:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      analytics:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      trustedIps:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      v0Chat:
-                        items:
-                          $ref: '#/components/schemas/ACLAction'
-                        type: array
-                      webAnalytics:
+                      webAuthn:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
@@ -2184,6 +1918,10 @@ paths:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
                       alerts:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      alertRules:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
@@ -2296,6 +2034,10 @@ paths:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
                       connectConfiguration:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      buildMachineDefault:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
@@ -2583,6 +2325,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
+                      organizationDomain:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
                       passwordProtectionInvoiceItem:
                         items:
                           $ref: '#/components/schemas/ACLAction'
@@ -2640,6 +2386,10 @@ paths:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
                       secret:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      securityPlusConfiguration:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
@@ -2755,36 +2505,287 @@ paths:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      oauth2Connection:
+                      aliasProject:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      user:
+                      aliasProtectionBypass:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      userConnection:
+                      buildMachine:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      userSudo:
+                      connectConfigurationLink:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
-                      webAuthn:
+                      dataCacheNamespace:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deployment:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentBuildLogs:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentCheck:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentCheckPreview:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentCheckReRunFromProductionBranch:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentProductionGit:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentV0:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentPreview:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentPrivate:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentPromote:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      deploymentRollback:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      edgeCacheNamespace:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      environments:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      job:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      logs:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      logsPreset:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      observabilityData:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      onDemandBuild:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      onDemandConcurrency:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      optionsAllowlist:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      passwordProtection:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      productionAliasProtectionBypass:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      project:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectAccessGroup:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectAnalyticsSampling:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectAnalyticsUsage:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectCheck:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectCheckRun:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDeploymentExpiration:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDeploymentHook:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDeploymentProtectionStrict:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDomain:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDomainCheckConfig:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectDomainMove:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectEnvVars:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectEnvVarsProduction:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectEnvVarsUnownedByIntegration:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectFlags:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectFlagsProduction:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectFromV0:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectId:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectIntegrationConfiguration:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectLink:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectMember:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectMonitoring:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectOIDCToken:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectPermissions:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectProductionBranch:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectProtectionBypass:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectRollingRelease:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectSupportCase:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectSupportCaseComment:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectTier:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectTransfer:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectTransferOut:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      projectUsage:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      seawallConfig:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      sharedEnvVarConnection:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      skewProtection:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      analytics:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      trustedIps:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      v0Chat:
+                        items:
+                          $ref: '#/components/schemas/ACLAction'
+                        type: array
+                      webAnalytics:
                         items:
                           $ref: '#/components/schemas/ACLAction'
                         type: array
                     type: object
-              lastRollbackTarget:
-                allOf:
-                  - nullable: true
+                  lastRollbackTarget:
+                    nullable: true
                     type: object
-              lastAliasRequest:
-                allOf:
-                  - nullable: true
+                  lastAliasRequest:
+                    nullable: true
                     properties:
                       fromDeploymentId:
+                        nullable: true
                         type: string
                       toDeploymentId:
                         type: string
@@ -2812,14 +2813,13 @@ paths:
                           - rollback
                     required:
                       - fromDeploymentId
-                      - toDeploymentId
                       - jobStatus
                       - requestedAt
+                      - toDeploymentId
                       - type
                     type: object
-              protectionBypass:
-                allOf:
-                  - additionalProperties:
+                  protectionBypass:
+                    additionalProperties:
                       oneOf:
                         - properties:
                             createdAt:
@@ -2835,11 +2835,11 @@ paths:
                             configurationId:
                               type: string
                           required:
+                            - configurationId
                             - createdAt
                             - createdBy
-                            - scope
                             - integrationId
-                            - configurationId
+                            - scope
                           type: object
                         - properties:
                             createdAt:
@@ -2850,25 +2850,45 @@ paths:
                               type: string
                               enum:
                                 - automation-bypass
+                            isEnvVar:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
+                              description: >-
+                                When there was only one bypass, it was
+                                automatically set as an env var on deployments.
+                                With multiple bypasses, there is always one
+                                bypass that is selected as the default, and gets
+                                set as an env var on deployments. As this is a
+                                new field, undefined means that the bypass is
+                                the env var. If there are any automation
+                                bypasses, exactly one must be the env var.
+                            note:
+                              type: string
+                              description: >-
+                                Optional note about the bypass to be displayed
+                                in the UI
                           required:
                             - createdAt
                             - createdBy
                             - scope
                           type: object
                     type: object
-              hasActiveBranches:
-                allOf:
-                  - type: boolean
-              trustedIps:
-                allOf:
-                  - nullable: true
+                  hasActiveBranches:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  trustedIps:
+                    nullable: true
                     oneOf:
                       - properties:
                           deploymentType:
                             type: string
                             enum:
-                              - preview
                               - production
+                              - preview
                               - all
                               - prod_deployment_urls_and_all_previews
                               - all_except_custom_domains
@@ -2889,38 +2909,42 @@ paths:
                               - additional
                               - exclusive
                         required:
-                          - deploymentType
                           - addresses
+                          - deploymentType
                           - protectionMode
                         type: object
                       - properties:
                           deploymentType:
                             type: string
                             enum:
-                              - preview
                               - production
+                              - preview
                               - all
                               - prod_deployment_urls_and_all_previews
                               - all_except_custom_domains
                         required:
                           - deploymentType
                         type: object
-              gitComments:
-                allOf:
-                  - properties:
+                  gitComments:
+                    properties:
                       onPullRequest:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: Whether the Vercel bot should comment on PRs
                       onCommit:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: Whether the Vercel bot should comment on commits
                     required:
-                      - onPullRequest
                       - onCommit
+                      - onPullRequest
                     type: object
-              gitProviderOptions:
-                allOf:
-                  - properties:
+                  gitProviderOptions:
+                    properties:
                       createDeployments:
                         type: string
                         enum:
@@ -2934,6 +2958,9 @@ paths:
                           instead
                       disableRepositoryDispatchEvents:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether the Vercel bot should not automatically create
                           GitHub repository-dispatch events on deployment
@@ -2941,21 +2968,24 @@ paths:
                           https://vercel.com/docs/git/vercel-for-github#repository-dispatch-events
                       requireVerifiedCommits:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether the project requires commits to be signed
                           before deployments will be created.
                     required:
                       - createDeployments
                     type: object
-              paused:
-                allOf:
-                  - type: boolean
-              concurrencyBucketName:
-                allOf:
-                  - type: string
-              webAnalytics:
-                allOf:
-                  - properties:
+                  paused:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  concurrencyBucketName:
+                    type: string
+                  webAnalytics:
+                    properties:
                       id:
                         type: string
                       disabledAt:
@@ -2966,18 +2996,25 @@ paths:
                         type: number
                       hasData:
                         type: boolean
+                        enum:
+                          - true
                     required:
                       - id
                     type: object
-              security:
-                allOf:
-                  - properties:
+                  security:
+                    properties:
                       attackModeEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       attackModeUpdatedAt:
                         type: number
                       firewallEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       firewallUpdatedAt:
                         type: number
                       attackModeActiveUntil:
@@ -2987,10 +3024,19 @@ paths:
                         type: number
                       firewallSeawallEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       ja3Enabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       ja4Enabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       firewallBypassIps:
                         items:
                           type: string
@@ -2998,16 +3044,35 @@ paths:
                       managedRules:
                         nullable: true
                         properties:
-                          bot_filter:
+                          vercel_ruleset:
                             properties:
                               active:
                                 type: boolean
+                                enum:
+                                  - false
+                                  - true
                               action:
                                 type: string
                                 enum:
                                   - log
-                                  - challenge
                                   - deny
+                                  - challenge
+                            required:
+                              - active
+                            type: object
+                          bot_filter:
+                            properties:
+                              active:
+                                type: boolean
+                                enum:
+                                  - false
+                                  - true
+                              action:
+                                type: string
+                                enum:
+                                  - log
+                                  - deny
+                                  - challenge
                             required:
                               - active
                             type: object
@@ -3015,12 +3080,15 @@ paths:
                             properties:
                               active:
                                 type: boolean
+                                enum:
+                                  - false
+                                  - true
                               action:
                                 type: string
                                 enum:
                                   - log
-                                  - challenge
                                   - deny
+                                  - challenge
                             required:
                               - active
                             type: object
@@ -3028,28 +3096,37 @@ paths:
                             properties:
                               active:
                                 type: boolean
+                                enum:
+                                  - false
+                                  - true
                               action:
                                 type: string
                                 enum:
                                   - log
-                                  - challenge
                                   - deny
+                                  - challenge
                             required:
                               - active
                             type: object
                         required:
-                          - bot_filter
                           - ai_bots
+                          - bot_filter
                           - owasp
+                          - vercel_ruleset
                         type: object
                       botIdEnabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                     type: object
-              oidcTokenConfig:
-                allOf:
-                  - properties:
+                  oidcTokenConfig:
+                    properties:
                       enabled:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether or not to generate OpenID Connect JSON Web
                           Tokens.
@@ -3062,25 +3139,27 @@ paths:
                           - team: `https://oidc.vercel.com/[team_slug]` -
                           global: `https://oidc.vercel.com`
                     type: object
-              tier:
-                allOf:
-                  - type: string
+                  tier:
+                    type: string
                     enum:
                       - standard
                       - advanced
                       - critical
-              features:
-                allOf:
-                  - properties:
+                  features:
+                    properties:
                       webAnalytics:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                     type: object
-              v0:
-                allOf:
-                  - type: boolean
-              abuse:
-                allOf:
-                  - properties:
+                  v0:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  abuse:
+                    properties:
                       scanner:
                         type: string
                       history:
@@ -3097,11 +3176,11 @@ paths:
                             at:
                               type: number
                           required:
-                            - scanner
-                            - reason
+                            - at
                             - by
                             - byId
-                            - at
+                            - reason
+                            - scanner
                           type: object
                         type: array
                       updatedAt:
@@ -3124,13 +3203,21 @@ paths:
                             type: string
                           comment:
                             type: string
+                          ineligibleForAppeal:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
                           isCascading:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                         required:
                           - action
+                          - createdAt
                           - reason
                           - statusCode
-                          - createdAt
                         type: object
                       blockHistory:
                         items:
@@ -3152,13 +3239,21 @@ paths:
                                   type: string
                                 comment:
                                   type: string
+                                ineligibleForAppeal:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 isCascading:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                               required:
                                 - action
+                                - createdAt
                                 - reason
                                 - statusCode
-                                - createdAt
                               type: object
                             - properties:
                                 action:
@@ -3173,8 +3268,16 @@ paths:
                                   type: string
                                 comment:
                                   type: string
+                                ineligibleForAppeal:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 isCascading:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                               required:
                                 - action
                                 - createdAt
@@ -3216,8 +3319,8 @@ paths:
                                                       - eq
                                                     type: object
                                                 required:
-                                                  - type
                                                   - key
+                                                  - type
                                                   - value
                                                 type: object
                                               - properties:
@@ -3262,13 +3365,21 @@ paths:
                                   type: string
                                 comment:
                                   type: string
+                                ineligibleForAppeal:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 isCascading:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                               required:
                                 - action
-                                - route
-                                - reason
                                 - createdAt
+                                - reason
+                                - route
                               type: object
                             - properties:
                                 action:
@@ -3307,8 +3418,8 @@ paths:
                                                       - eq
                                                     type: object
                                                 required:
-                                                  - type
                                                   - key
+                                                  - type
                                                   - value
                                                 type: object
                                               - properties:
@@ -3353,46 +3464,33 @@ paths:
                                   type: string
                                 comment:
                                   type: string
+                                ineligibleForAppeal:
+                                  type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 isCascading:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                               required:
                                 - action
-                                - route
                                 - createdAt
+                                - route
                               type: object
                         type: array
                       interstitial:
                         type: boolean
-                      interstitialHistory:
-                        items:
-                          properties:
-                            action:
-                              type: string
-                              enum:
-                                - add-interstitial
-                                - remove-interstitial
-                            createdAt:
-                              type: number
-                            caseId:
-                              type: string
-                            reason:
-                              type: string
-                            actor:
-                              type: string
-                            comment:
-                              type: string
-                          required:
-                            - action
-                            - createdAt
-                          type: object
-                        type: array
+                        enum:
+                          - false
+                          - true
                     required:
                       - history
                       - updatedAt
                     type: object
-              internalRoutes:
-                allOf:
-                  - items:
+                  internalRoutes:
+                    items:
                       oneOf:
                         - properties:
                             src:
@@ -3424,8 +3522,8 @@ paths:
                                           - eq
                                         type: object
                                     required:
-                                      - type
                                       - key
+                                      - type
                                       - value
                                     type: object
                                   - properties:
@@ -3461,843 +3559,83 @@ paths:
                             - mitigate
                           type: object
                     type: array
-            requiredProperties:
-              - accountId
-              - directoryListing
-              - id
-              - name
-              - nodeVersion
-              - resourceConfig
-              - defaultResourceConfig
-        examples:
-          example:
-            value:
-              integrations:
-                - installationId: icfg_3bwCLgxL8qt5kjRLcv2Dit7F
-                  resources:
-                    - externalResourceId: <string>
-              accountId: <string>
-              analytics:
-                id: <string>
-                canceledAt: 123
-                disabledAt: 123
-                enabledAt: 123
-                paidAt: 123
-                sampleRatePercent: 123
-                spendLimitInDollars: 123
-              speedInsights:
-                id: <string>
-                enabledAt: 123
-                disabledAt: 123
-                canceledAt: 123
-                hasData: true
-                paidAt: 123
-              autoExposeSystemEnvs: true
-              autoAssignCustomDomains: true
-              autoAssignCustomDomainsUpdatedBy: <string>
-              buildCommand: <string>
-              commandForIgnoringBuildStep: <string>
-              connectConfigurations:
-                - envId: <string>
-                  connectConfigurationId: <string>
-                  dc: <string>
-                  passive: true
-                  buildsEnabled: true
-                  aws:
-                    subnetIds:
-                      - <string>
-                    securityGroupId: <string>
-                  createdAt: 123
-                  updatedAt: 123
-              connectConfigurationId: <string>
-              connectBuildsEnabled: true
-              passiveConnectConfigurationId: <string>
-              createdAt: 123
-              customerSupportCodeVisibility: true
-              crons:
-                enabledAt: 123
-                disabledAt: 123
-                updatedAt: 123
-                deploymentId: <string>
-                definitions:
-                  - host: vercel.com
-                    path: /api/crons/sync-something?hello=world
-                    schedule: 0 0 * * *
-              dataCache:
-                userDisabled: true
-                storageSizeBytes: 123
-                unlimited: true
-              deploymentExpiration:
-                expirationDays: 123
-                expirationDaysProduction: 123
-                expirationDaysCanceled: 123
-                expirationDaysErrored: 123
-                deploymentsToKeep: 123
-              devCommand: <string>
-              directoryListing: true
-              installCommand: <string>
-              env:
-                - target:
-                    - production
-                  type: system
-                  sunsetSecretId: <string>
-                  decrypted: true
-                  value: <string>
-                  vsmValue: <string>
-                  id: <string>
-                  key: <string>
-                  configurationId: <string>
-                  createdAt: 123
-                  updatedAt: 123
-                  createdBy: <string>
-                  updatedBy: <string>
-                  gitBranch: <string>
-                  edgeConfigId: <string>
-                  edgeConfigTokenId: <string>
-                  contentHint:
-                    type: redis-url
-                    storeId: <string>
-                  internalContentHint:
-                    type: flags-secret
-                    encryptedValue: <string>
-                  comment: <string>
-                  customEnvironmentIds:
-                    - <string>
-              customEnvironments:
-                - id: <string>
-                  slug: <string>
-                  type: preview
-                  description: <string>
-                  branchMatcher:
-                    type: endsWith
-                    pattern: <string>
-                  domains:
-                    - name: <string>
-                      apexName: <string>
-                      projectId: <string>
-                      redirect: <string>
-                      redirectStatusCode: 307
-                      gitBranch: <string>
-                      customEnvironmentId: <string>
-                      updatedAt: 123
-                      createdAt: 123
-                      verified: true
-                      verification:
-                        - type: <string>
-                          domain: <string>
-                          value: <string>
-                          reason: <string>
-                  currentDeploymentAliases:
-                    - <string>
-                  createdAt: 123
-                  updatedAt: 123
-              framework: blitzjs
-              gitForkProtection: true
-              gitLFS: true
-              id: <string>
-              ipBuckets:
-                - bucket: <string>
-                  supportUntil: 123
-              latestDeployments:
-                - id: <string>
-                  alias:
-                    - <string>
-                  aliasAssigned: 123
-                  aliasError:
-                    code: <string>
-                    message: <string>
-                  aliasFinal: <string>
-                  automaticAliases:
-                    - <string>
-                  branchMatcher:
-                    type: endsWith
-                    pattern: <string>
-                  buildingAt: 123
-                  builds:
-                    - use: <string>
-                      src: <string>
-                      dest: <string>
-                  checksConclusion: succeeded
-                  checksState: registered
-                  connectBuildsEnabled: true
-                  connectConfigurationId: <string>
-                  createdAt: 123
-                  createdIn: <string>
-                  creator:
-                    email: <string>
-                    githubLogin: <string>
-                    gitlabLogin: <string>
-                    uid: <string>
-                    username: <string>
-                  deletedAt: 123
-                  deploymentHostname: <string>
-                  forced: true
-                  name: <string>
-                  meta: {}
-                  monorepoManager: <string>
-                  oidcTokenClaims:
-                    iss: <string>
-                    sub: <string>
-                    scope: <string>
-                    aud: <string>
-                    owner: <string>
-                    owner_id: <string>
-                    project: <string>
-                    project_id: <string>
-                    environment: <string>
-                  plan: pro
-                  previewCommentsEnabled: false
-                  private: true
-                  readyAt: 123
-                  readyState: BUILDING
-                  readySubstate: STAGED
-                  requestedAt: 123
-                  target: <string>
-                  teamId: <string>
-                  type: LAMBDAS
-                  url: <string>
-                  userId: <string>
-                  withCache: true
-              link:
-                org: <string>
-                repoOwnerId: 123
-                repo: <string>
-                repoId: 123
-                type: github
-                createdAt: 123
-                deployHooks:
-                  - createdAt: 123
-                    id: <string>
-                    name: <string>
-                    ref: <string>
-                    url: <string>
-                gitCredentialId: <string>
-                updatedAt: 123
-                sourceless: true
-                productionBranch: <string>
-              microfrontends:
-                isDefaultApp: true
-                updatedAt: 123
-                groupIds:
-                  - <string>
-                enabled: true
-                defaultRoute: <string>
-              name: <string>
-              nodeVersion: 22.x
-              optionsAllowlist:
-                paths:
-                  - value: <string>
-              outputDirectory: <string>
-              passwordProtection: {}
-              productionDeploymentsFastLane: true
-              publicSource: true
-              resourceConfig:
-                elasticConcurrencyEnabled: true
-                fluid: true
-                functionDefaultRegions:
-                  - <string>
-                functionDefaultTimeout: 123
-                functionDefaultMemoryType: standard_legacy
-                functionZeroConfigFailover: true
-                buildMachineType: enhanced
-                isNSNBDisabled: true
-              rollbackDescription:
-                userId: <string>
-                username: <string>
-                description: <string>
-                createdAt: 123
-              rollingRelease:
-                target: production
-                stages:
-                  - targetPercentage: 25
-                    requireApproval: false
-                    duration: 600
-                    linearShift: false
-                canaryResponseHeader: false
-              defaultResourceConfig:
-                elasticConcurrencyEnabled: true
-                fluid: true
-                functionDefaultRegions:
-                  - <string>
-                functionDefaultTimeout: 123
-                functionDefaultMemoryType: standard_legacy
-                functionZeroConfigFailover: true
-                buildMachineType: enhanced
-                isNSNBDisabled: true
-              rootDirectory: <string>
-              serverlessFunctionZeroConfigFailover: true
-              skewProtectionBoundaryAt: 123
-              skewProtectionMaxAge: 123
-              skipGitConnectDuringLink: true
-              sourceFilesOutsideRootDirectory: true
-              enableAffectedProjectsDeployments: true
-              ssoProtection:
-                deploymentType: preview
-              targets: {}
-              transferCompletedAt: 123
-              transferStartedAt: 123
-              transferToAccountId: <string>
-              transferredFromAccountId: <string>
-              updatedAt: 123
-              live: true
-              enablePreviewFeedback: true
-              enableProductionFeedback: true
-              permissions:
-                aliasProject:
-                  - create
-                aliasProtectionBypass:
-                  - create
-                buildMachine:
-                  - create
-                connectConfigurationLink:
-                  - create
-                dataCacheNamespace:
-                  - create
-                deployment:
-                  - create
-                deploymentBuildLogs:
-                  - create
-                deploymentCheck:
-                  - create
-                deploymentCheckPreview:
-                  - create
-                deploymentCheckReRunFromProductionBranch:
-                  - create
-                deploymentProductionGit:
-                  - create
-                deploymentV0:
-                  - create
-                deploymentPreview:
-                  - create
-                deploymentPrivate:
-                  - create
-                deploymentPromote:
-                  - create
-                deploymentRollback:
-                  - create
-                edgeCacheNamespace:
-                  - create
-                environments:
-                  - create
-                job:
-                  - create
-                logs:
-                  - create
-                logsPreset:
-                  - create
-                observabilityData:
-                  - create
-                onDemandBuild:
-                  - create
-                onDemandConcurrency:
-                  - create
-                optionsAllowlist:
-                  - create
-                passwordProtection:
-                  - create
-                productionAliasProtectionBypass:
-                  - create
-                project:
-                  - create
-                projectAccessGroup:
-                  - create
-                projectAnalyticsSampling:
-                  - create
-                projectAnalyticsUsage:
-                  - create
-                projectCheck:
-                  - create
-                projectCheckRun:
-                  - create
-                projectDeploymentExpiration:
-                  - create
-                projectDeploymentHook:
-                  - create
-                projectDomain:
-                  - create
-                projectDomainCheckConfig:
-                  - create
-                projectDomainMove:
-                  - create
-                projectEnvVars:
-                  - create
-                projectEnvVarsProduction:
-                  - create
-                projectEnvVarsUnownedByIntegration:
-                  - create
-                projectFlags:
-                  - create
-                projectFromV0:
-                  - create
-                projectId:
-                  - create
-                projectIntegrationConfiguration:
-                  - create
-                projectLink:
-                  - create
-                projectMember:
-                  - create
-                projectMonitoring:
-                  - create
-                projectOIDCToken:
-                  - create
-                projectPermissions:
-                  - create
-                projectProductionBranch:
-                  - create
-                projectProtectionBypass:
-                  - create
-                projectRollingRelease:
-                  - create
-                projectSupportCase:
-                  - create
-                projectSupportCaseComment:
-                  - create
-                projectTier:
-                  - create
-                projectTransfer:
-                  - create
-                projectTransferOut:
-                  - create
-                projectUsage:
-                  - create
-                seawallConfig:
-                  - create
-                sharedEnvVarConnection:
-                  - create
-                skewProtection:
-                  - create
-                analytics:
-                  - create
-                trustedIps:
-                  - create
-                v0Chat:
-                  - create
-                webAnalytics:
-                  - create
-                accessGroup:
-                  - create
-                agent:
-                  - create
-                alerts:
-                  - create
-                aliasGlobal:
-                  - create
-                analyticsSampling:
-                  - create
-                analyticsUsage:
-                  - create
-                apiKey:
-                  - create
-                apiKeyAiGateway:
-                  - create
-                apiKeyOwnedBySelf:
-                  - create
-                oauth2Application:
-                  - create
-                vercelAppInstallation:
-                  - create
-                vercelAppInstallationRequest:
-                  - create
-                auditLog:
-                  - create
-                billingAddress:
-                  - create
-                billingInformation:
-                  - create
-                billingInvoice:
-                  - create
-                billingInvoiceEmailRecipient:
-                  - create
-                billingInvoiceLanguage:
-                  - create
-                billingPlan:
-                  - create
-                billingPurchaseOrder:
-                  - create
-                billingRefund:
-                  - create
-                billingTaxId:
-                  - create
-                blob:
-                  - create
-                blobStoreTokenSet:
-                  - create
-                budget:
-                  - create
-                cacheArtifact:
-                  - create
-                cacheArtifactUsageEvent:
-                  - create
-                codeChecks:
-                  - create
-                concurrentBuilds:
-                  - create
-                connect:
-                  - create
-                connectConfiguration:
-                  - create
-                dataCacheBillingSettings:
-                  - create
-                defaultDeploymentProtection:
-                  - create
-                domain:
-                  - create
-                domainAcceptDelegation:
-                  - create
-                domainAuthCodes:
-                  - create
-                domainCertificate:
-                  - create
-                domainCheckConfig:
-                  - create
-                domainMove:
-                  - create
-                domainPurchase:
-                  - create
-                domainRecord:
-                  - create
-                domainTransferIn:
-                  - create
-                drain:
-                  - create
-                edgeConfig:
-                  - create
-                edgeConfigItem:
-                  - create
-                edgeConfigSchema:
-                  - create
-                edgeConfigToken:
-                  - create
-                endpointVerification:
-                  - create
-                event:
-                  - create
-                fileUpload:
-                  - create
-                flagsExplorerSubscription:
-                  - create
-                gitRepository:
-                  - create
-                imageOptimizationNewPrice:
-                  - create
-                integration:
-                  - create
-                integrationAccount:
-                  - create
-                integrationConfiguration:
-                  - create
-                integrationConfigurationProjects:
-                  - create
-                integrationConfigurationRole:
-                  - create
-                integrationConfigurationTransfer:
-                  - create
-                integrationDeploymentAction:
-                  - create
-                integrationEvent:
-                  - create
-                integrationLog:
-                  - create
-                integrationResource:
-                  - create
-                integrationResourceReplCommand:
-                  - create
-                integrationResourceSecrets:
-                  - create
-                integrationSSOSession:
-                  - create
-                integrationStoreTokenSet:
-                  - create
-                integrationVercelConfigurationOverride:
-                  - create
-                integrationPullRequest:
-                  - create
-                ipBlocking:
-                  - create
-                jobGlobal:
-                  - create
-                logDrain:
-                  - create
-                marketplaceBillingData:
-                  - create
-                marketplaceExperimentationEdgeConfigData:
-                  - create
-                marketplaceExperimentationItem:
-                  - create
-                marketplaceInstallationMember:
-                  - create
-                marketplaceInvoice:
-                  - create
-                marketplaceSettings:
-                  - create
-                Monitoring:
-                  - create
-                monitoringAlert:
-                  - create
-                monitoringChart:
-                  - create
-                monitoringQuery:
-                  - create
-                monitoringSettings:
-                  - create
-                notificationCustomerBudget:
-                  - create
-                notificationDeploymentFailed:
-                  - create
-                notificationDomainConfiguration:
-                  - create
-                notificationDomainExpire:
-                  - create
-                notificationDomainMoved:
-                  - create
-                notificationDomainPurchase:
-                  - create
-                notificationDomainRenewal:
-                  - create
-                notificationDomainTransfer:
-                  - create
-                notificationDomainUnverified:
-                  - create
-                NotificationMonitoringAlert:
-                  - create
-                notificationPaymentFailed:
-                  - create
-                notificationPreferences:
-                  - create
-                notificationStatementOfReasons:
-                  - create
-                notificationUsageAlert:
-                  - create
-                observabilityConfiguration:
-                  - create
-                observabilityFunnel:
-                  - create
-                observabilityNotebook:
-                  - create
-                openTelemetryEndpoint:
-                  - create
-                ownEvent:
-                  - create
-                passwordProtectionInvoiceItem:
-                  - create
-                paymentMethod:
-                  - create
-                permissions:
-                  - create
-                postgres:
-                  - create
-                postgresStoreTokenSet:
-                  - create
-                previewDeploymentSuffix:
-                  - create
-                projectTransferIn:
-                  - create
-                proTrialOnboarding:
-                  - create
-                rateLimit:
-                  - create
-                redis:
-                  - create
-                redisStoreTokenSet:
-                  - create
-                remoteCaching:
-                  - create
-                repository:
-                  - create
-                samlConfig:
-                  - create
-                secret:
-                  - create
-                sensitiveEnvironmentVariablePolicy:
-                  - create
-                sharedEnvVars:
-                  - create
-                sharedEnvVarsProduction:
-                  - create
-                space:
-                  - create
-                spaceRun:
-                  - create
-                storeTransfer:
-                  - create
-                supportCase:
-                  - create
-                supportCaseComment:
-                  - create
-                team:
-                  - create
-                teamAccessRequest:
-                  - create
-                teamFellowMembership:
-                  - create
-                teamGitExclusivity:
-                  - create
-                teamInvite:
-                  - create
-                teamInviteCode:
-                  - create
-                teamJoin:
-                  - create
-                teamMemberMfaStatus:
-                  - create
-                teamMicrofrontends:
-                  - create
-                teamOwnMembership:
-                  - create
-                teamOwnMembershipDisconnectSAML:
-                  - create
-                token:
-                  - create
-                usage:
-                  - create
-                usageCycle:
-                  - create
-                vercelRun:
-                  - create
-                vercelRunExec:
-                  - create
-                vpcPeeringConnection:
-                  - create
-                webAnalyticsPlan:
-                  - create
-                webhook:
-                  - create
-                webhook-event:
-                  - create
-                oauth2Connection:
-                  - create
-                user:
-                  - create
-                userConnection:
-                  - create
-                userSudo:
-                  - create
-                webAuthn:
-                  - create
-              lastRollbackTarget: {}
-              lastAliasRequest:
-                fromDeploymentId: <string>
-                toDeploymentId: <string>
-                fromRollingReleaseId: <string>
-                jobStatus: succeeded
-                requestedAt: 123
-                type: promote
-              protectionBypass: {}
-              hasActiveBranches: true
-              trustedIps:
-                deploymentType: preview
-                addresses:
-                  - value: <string>
-                    note: <string>
-                protectionMode: additional
-              gitComments:
-                onPullRequest: true
-                onCommit: true
-              gitProviderOptions:
-                createDeployments: enabled
-                disableRepositoryDispatchEvents: true
-                requireVerifiedCommits: true
-              paused: true
-              concurrencyBucketName: <string>
-              webAnalytics:
-                id: <string>
-                disabledAt: 123
-                canceledAt: 123
-                enabledAt: 123
-                hasData: true
-              security:
-                attackModeEnabled: true
-                attackModeUpdatedAt: 123
-                firewallEnabled: true
-                firewallUpdatedAt: 123
-                attackModeActiveUntil: 123
-                firewallConfigVersion: 123
-                firewallSeawallEnabled: true
-                ja3Enabled: true
-                ja4Enabled: true
-                firewallBypassIps:
-                  - <string>
-                managedRules:
-                  bot_filter:
-                    active: true
-                    action: log
-                  ai_bots:
-                    active: true
-                    action: log
-                  owasp:
-                    active: true
-                    action: log
-                botIdEnabled: true
-              oidcTokenConfig:
-                enabled: true
-                issuerMode: team
-              tier: standard
-              features:
-                webAnalytics: true
-              v0: true
-              abuse:
-                scanner: <string>
-                history:
-                  - scanner: <string>
-                    reason: <string>
-                    by: <string>
-                    byId: <string>
-                    at: 123
-                updatedAt: 123
-                block:
-                  action: blocked
-                  reason: <string>
-                  statusCode: 123
-                  createdAt: 123
-                  caseId: <string>
-                  actor: <string>
-                  comment: <string>
-                  isCascading: true
-                blockHistory:
-                  - action: blocked
-                    reason: <string>
-                    statusCode: 123
-                    createdAt: 123
-                    caseId: <string>
-                    actor: <string>
-                    comment: <string>
-                    isCascading: true
-                interstitial: true
-                interstitialHistory:
-                  - action: add-interstitial
-                    createdAt: 123
-                    caseId: <string>
-                    reason: <string>
-                    actor: <string>
-                    comment: <string>
-              internalRoutes:
-                - src: <string>
-                  status: 123
-        description: The project information
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                  hasDeployments:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  dismissedToasts:
+                    items:
+                      properties:
+                        key:
+                          type: string
+                        dismissedAt:
+                          type: number
+                        action:
+                          type: string
+                          enum:
+                            - delete
+                            - cancel
+                            - accept
+                        value:
+                          nullable: true
+                          oneOf:
+                            - type: string
+                            - type: number
+                            - properties:
+                                previousValue:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                      enum:
+                                        - false
+                                        - true
+                                currentValue:
+                                  oneOf:
+                                    - type: string
+                                    - type: number
+                                    - type: boolean
+                                      enum:
+                                        - false
+                                        - true
+                              required:
+                                - currentValue
+                                - previousValue
+                              type: object
+                            - type: boolean
+                              enum:
+                                - false
+                                - true
+                      required:
+                        - action
+                        - dismissedAt
+                        - key
+                        - value
+                      type: object
+                    type: array
+                  protectedSourcemaps:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                required:
+                  - accountId
+                  - defaultResourceConfig
+                  - directoryListing
+                  - id
+                  - name
+                  - nodeVersion
+                  - resourceConfig
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
   schemas:
     ACLAction:
@@ -4311,5 +3649,10 @@ components:
       description: >-
         Enum containing the actions that can be performed against a resource.
         Group operations are included.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

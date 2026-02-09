@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun --filter
 
 > Select packages by pattern in a monorepo using the --filter flag
@@ -97,6 +101,31 @@ Filters respect your [workspace configuration](/pm/workspaces): If you have a `p
 # in src/bar: runs myscript in src/foo, no need to cd!
 bun run --filter foo myscript
 ```
+
+### Parallel and sequential mode
+
+Combine `--filter` or `--workspaces` with `--parallel` or `--sequential` to run scripts across workspace packages with Foreman-style prefixed output:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Run "build" in all matching packages concurrently
+bun run --parallel --filter '*' build
+
+# Run "build" in all workspace packages sequentially
+bun run --sequential --workspaces build
+
+# Run glob-matched scripts across all packages
+bun run --parallel --filter '*' "build:*"
+
+# Continue running even if one package's script fails
+bun run --parallel --no-exit-on-error --filter '*' test
+
+# Run multiple scripts across all packages
+bun run --parallel --filter '*' build lint
+```
+
+Each line of output is prefixed with the package and script name (e.g. `pkg-a:build | ...`). Without `--filter`/`--workspaces`, the prefix is just the script name (e.g. `build | ...`). When a package's `package.json` has no `name` field, the relative path from the workspace root is used instead.
+
+Use `--if-present` with `--workspaces` to skip packages that don't have the requested script instead of erroring.
 
 ### Dependency Order
 

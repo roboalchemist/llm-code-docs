@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/cookbooks/blog-social-media-generator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Blog Post & Social Media Generator
 
 > Learn both sequential and parallel processing in one workflow. Generate blog articles from topics and create optimized social media posts for multiple platforms.
@@ -196,8 +200,3 @@ Requirements:
 - No hashtags or limit to 3 professional ones
 - Include a call-to-action to read the full article
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

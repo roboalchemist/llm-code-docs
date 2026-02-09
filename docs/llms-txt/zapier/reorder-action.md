@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/reorder-action.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reorder or remove action
 
 > Whenever a user selects your app's integration in a Zapier action step, they'll see every _create_ and _search_ action in your integration. 

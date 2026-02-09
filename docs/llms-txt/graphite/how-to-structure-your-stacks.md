@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/how-to-structure-your-stacks.md
 
-# How To Structure A Stack
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## How To Structure A Stack
 
 > Five helpful frameworks for breaking up large changes into stacked PRs.
 

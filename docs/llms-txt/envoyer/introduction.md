@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Welcome to Envoyer, a zero downtime deployment service for PHP.
@@ -55,7 +59,7 @@
 [Laravel Forge](https://forge.laravel.com) now offers a first-party integration with Envoyer. [Learn more](https://blog.laravel.com/forge-zero-downtime-deployments).
 
 <Frame>
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/envoyer/images/forge-envoyer-integration-header.png" alt="Laravel Forge x Envoyer" />
+    <img src="https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=dbd13839cb1d1075169a79bfef643bf6" alt="Laravel Forge x Envoyer" data-og-width="4000" width="4000" data-og-height="2250" height="2250" data-path="images/forge-envoyer-integration-header.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=280&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=7810704a7d6ade168376cad4439c3451 280w, https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=560&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=5bfef3dc206e168222106dd11a62f31f 560w, https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=840&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=410d4e4682810c8fa0ed92658dcd897c 840w, https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=1100&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=c9766b44d0e6bfcf0ca624e483b8263b 1100w, https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=1650&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=bfcfa5f19762feae02fe670e8a91860b 1650w, https://mintcdn.com/envoyer/t2bz6kuyoDJvJvYR/images/forge-envoyer-integration-header.png?w=2500&fit=max&auto=format&n=t2bz6kuyoDJvJvYR&q=85&s=2211294ca639f38c62b2e8746d4ab469 2500w" />
 </Frame>
 
 ## Envoyer IP Addresses

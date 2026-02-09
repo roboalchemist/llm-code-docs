@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/analytics/forecasted-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # (Beta) Forecasted usage
 
 ## Overview
@@ -16,7 +20,13 @@ The forecasting system uses a machine learning pipeline that trains multiple mod
 
 ### Data-driven predictions
 
-The ML pipeline use historical usage data, grouped by billable metric, subscription, charge, and charge filter to identify patterns and trends and train ML models. It then generates forecasts 12 months ahead at monthly granularity. As a rule of thumb, the forecasts are updated in the first 2 weeks of the month.
+The ML pipeline uses historical usage data, grouped by billable metric, subscription, charge, and charge filter to identify patterns and trends and train ML models.
+
+The target variable to forecast is future paid usage, as opposed to just invoiced usage which may or may not be eventually paid.
+
+The model generates forecasts for 12 months ahead at monthly granularity.
+
+As a rule of thumb, the forecasts are updated in the first 2 weeks of the month.
 
 ### Forecasting methods
 
@@ -46,9 +56,13 @@ All trained model forecasts include three scenarios:
 
 This probabilistic approach helps you understand the range of possible outcomes and plan accordingly.
 
+### Subscription growth
+
+We explicitly model the growth in the number of subscriptions using the historical data of your organization.
+
 ### Limitations
 
-The models forecast the future usage amounts for a subset of all potential future revenue sources. The forecasting currently does not take into account new customer growth or product launches directly.
+The models forecast the future usage amounts for a subset of all potential future revenue sources. For example, it doesn't explicitly account for new business products and features.
 Recently created and unused/deleted billable metrics and charges can be excluded from the forecasts.
 
 ## Filtering options

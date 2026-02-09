@@ -2,16 +2,13 @@
 
 # Get Webhook Signing Keys
 
-```
-GET 
-/v1/webhooks/:webhookId/keys
-```
+Copy page
 
 This endpoint returns the signing keys of a Webhook identified by the `webhookId`.
 
 Signing keys are used for ensuring the Webhook requests you receive are actually sent by ConfigCat.
 
-[Here](https://configcat.com/docs/docs/advanced/notifications-webhooks/.md#verifying-webhook-requests) you can read more about Webhook request verification.
+[Here](https://configcat.com/docs/advanced/notifications-webhooks.md#verifying-webhook-requests) you can read more about Webhook request verification.
 
 ## Request[​](#request "Direct link to Request")
 

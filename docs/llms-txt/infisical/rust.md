@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/sdks/languages/rust.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Rust SDK
 
 If you're working with Rust, the official Infisical Rust SDK package is the easiest way to fetch and work with secrets for your application.

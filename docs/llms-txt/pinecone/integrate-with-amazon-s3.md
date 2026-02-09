@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/operations/integrations/integrate-with-amazon-s3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate with Amazon S3
 
 > Set up Amazon S3 integrationfor data import and audit logs.

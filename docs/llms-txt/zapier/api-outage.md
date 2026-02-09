@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/api-outage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 > Zapier recognizes that temporary unavailability is sometimes inevitable for your API.
 
 # null

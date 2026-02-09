@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/managing-source-code.md
 
-# II - Managing source code
+# Managing source code
 
 **Learn how to manage your Actor's source code more efficiently by integrating it with a GitHub repository. This is standard on the Apify platform.**
 
@@ -12,7 +12,7 @@ In this brief lesson, we'll discuss how to better manage an Actor's source code.
 
 Thus far, every time we've updated our code on the Apify platform, we've used the `apify push` CLI command; however, this can be problematic for a few reasons - mainly because, if someone else wants to make a change to/maintain your code, they don't have access to it, as it is on your local machine.
 
-If you're not yet familiar with Git, please get familiar with it through the https://git-scm.com/docs, then take a quick moment to read about https://docs.apify.com/platform/integrations/github.md in the Apify docs.
+If you're not yet familiar with Git, please get familiar with it through the [Git documentation](https://git-scm.com/docs), then take a quick moment to read about [GitHub integration](https://docs.apify.com/platform/integrations/github.md) in the Apify docs.
 
 Also, try to explore the **Multifile editor** in one of the Actors you developed in the previous lessons before moving forward.
 
@@ -22,7 +22,7 @@ Also, try to explore the **Multifile editor** in one of the Actors you developed
 2. In Git, what is the difference between **pushing** changes and making a **pull request**?
 3. Based on your knowledge and experience, is the `apify push` command worth using (in your opinion)?
 
-https://docs.apify.com/academy/expert-scraping-with-apify/solutions/managing-source.md
+[Answers](https://docs.apify.com/academy/expert-scraping-with-apify/solutions/managing-source.md)
 
 ## Our task
 
@@ -30,7 +30,7 @@ First, we must initialize a GitHub repository (you can use Gitlab if you like, b
 
 ## Integrating GitHub source code
 
-First, let's create a repository. This can be done https://kbroman.org/github_tutorial/pages/init.html, but in this lesson, we'll do it by creating the remote repository on GitHub's website:
+First, let's create a repository. This can be done [in a number of ways](https://kbroman.org/github_tutorial/pages/init.html), but in this lesson, we'll do it by creating the remote repository on GitHub's website:
 
 ![Create a new GitHub repo](/assets/images/github-new-repo-1e45ed3d75fdb3672b6253b016e1186d.png)
 
@@ -62,4 +62,4 @@ It's also important to know that GitHub/Gitlab repository integration is standar
 
 ## Next up
 
-https://docs.apify.com/academy/expert-scraping-with-apify/tasks-and-storage.md, you'll learn about the different ways to store scraped data, as well as how to utilize a cool feature to run pre-configured Actors.
+[Next up](https://docs.apify.com/academy/expert-scraping-with-apify/tasks-and-storage.md), you'll learn about the different ways to store scraped data, as well as how to utilize a cool feature to run pre-configured Actors.

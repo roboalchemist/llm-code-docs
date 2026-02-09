@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/new-cap.md
 ---
-# eslint/new-cap&#x20;
 
 ### What it does
 
@@ -38,7 +37,7 @@ function foo(arg) {
 Examples of **incorrect** code for this rule with the default `{ "newIsCap": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": true }]*/
+/* new-cap: ["error", { "newIsCap": true }] */
 
 var friend = new person();
 ```
@@ -46,7 +45,7 @@ var friend = new person();
 Examples of **correct** code for this rule with the default `{ "newIsCap": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": true }]*/
+/* new-cap: ["error", { "newIsCap": true }] */
 
 var friend = new Person();
 ```
@@ -54,7 +53,7 @@ var friend = new Person();
 Examples of **correct** code for this rule with the `{ "newIsCap": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": false }]*/
+/* new-cap: ["error", { "newIsCap": false }] */
 
 var friend = new person();
 ```
@@ -62,7 +61,7 @@ var friend = new person();
 Examples of **incorrect** code for this rule with the default `{ "capIsNew": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": true }]*/
+/* new-cap: ["error", { "capIsNew": true }] */
 
 var colleague = Person();
 ```
@@ -70,7 +69,7 @@ var colleague = Person();
 Examples of **correct** code for this rule with the default `{ "capIsNew": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": true }]*/
+/* new-cap: ["error", { "capIsNew": true }] */
 
 var colleague = new Person();
 ```
@@ -78,7 +77,7 @@ var colleague = new Person();
 Examples of **correct** code for this rule with the `{ "capIsNew": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": false }]*/
+/* new-cap: ["error", { "capIsNew": false }] */
 
 var colleague = Person();
 ```
@@ -86,7 +85,7 @@ var colleague = Person();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptions": ["events"] }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptions": ["events"] }]*/
+/* new-cap: ["error", { "newIsCapExceptions": ["events"] }] */
 
 var events = require("events");
 
@@ -96,7 +95,7 @@ var emitter = new events();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "^person\\.." }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptionPattern": "^person\\.." }]*/
+/* new-cap: ["error", { "newIsCapExceptionPattern": "^person\\.." }] */
 
 var friend = new person.acquaintance();
 
@@ -106,7 +105,7 @@ var bestFriend = new person.friend();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "\\.bar$" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptionPattern": "\\.bar$" }]*/
+/* new-cap: ["error", { "newIsCapExceptionPattern": "\\.bar$" }] */
 
 var friend = new person.bar();
 ```
@@ -114,7 +113,7 @@ var friend = new person.bar();
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptions": ["Person"] }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptions": ["Person"] }]*/
+/* new-cap: ["error", { "capIsNewExceptions": ["Person"] }] */
 
 function foo(arg) {
   return Person(arg);
@@ -124,7 +123,7 @@ function foo(arg) {
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^person\\.." }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "^person\\.." }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "^person\\.." }] */
 
 var friend = person.Acquaintance();
 var bestFriend = person.Friend();
@@ -133,7 +132,7 @@ var bestFriend = person.Friend();
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "\\.Bar$" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "\\.Bar$" }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "\\.Bar$" }] */
 
 foo.Bar();
 ```
@@ -141,7 +140,7 @@ foo.Bar();
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^Foo" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "^Foo" }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "^Foo" }] */
 
 var x = Foo(42);
 
@@ -155,7 +154,7 @@ var z = Foo.Bar(42);
 Examples of **incorrect** code for this rule with the default `{ "properties": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": true }]*/
+/* new-cap: ["error", { "properties": true }] */
 
 var friend = new person.acquaintance();
 ```
@@ -163,7 +162,7 @@ var friend = new person.acquaintance();
 Examples of **correct** code for this rule with the default `{ "properties": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": true }]*/
+/* new-cap: ["error", { "properties": true }] */
 
 var friend = new person.Acquaintance();
 ```
@@ -171,7 +170,7 @@ var friend = new person.Acquaintance();
 Examples of **correct** code for this rule with the `{ "properties": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": false }]*/
+/* new-cap: ["error", { "properties": false }] */
 
 var friend = new person.acquaintance();
 ```
@@ -179,7 +178,7 @@ var friend = new person.acquaintance();
 Examples of **incorrect** code for this rule with the default `{ "newIsCap": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": true }]*/
+/* new-cap: ["error", { "newIsCap": true }] */
 
 var friend = new person();
 ```
@@ -187,7 +186,7 @@ var friend = new person();
 Examples of **correct** code for this rule with the default `{ "newIsCap": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": true }]*/
+/* new-cap: ["error", { "newIsCap": true }] */
 
 var friend = new Person();
 ```
@@ -195,7 +194,7 @@ var friend = new Person();
 Examples of **correct** code for this rule with the `{ "newIsCap": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCap": false }]*/
+/* new-cap: ["error", { "newIsCap": false }] */
 
 var friend = new person();
 ```
@@ -203,7 +202,7 @@ var friend = new person();
 Examples of **incorrect** code for this rule with the default `{ "capIsNew": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": true }]*/
+/* new-cap: ["error", { "capIsNew": true }] */
 
 var colleague = Person();
 ```
@@ -211,7 +210,7 @@ var colleague = Person();
 Examples of **correct** code for this rule with the default `{ "capIsNew": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": true }]*/
+/* new-cap: ["error", { "capIsNew": true }] */
 
 var colleague = new Person();
 ```
@@ -219,7 +218,7 @@ var colleague = new Person();
 Examples of **correct** code for this rule with the `{ "capIsNew": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNew": false }]*/
+/* new-cap: ["error", { "capIsNew": false }] */
 
 var colleague = Person();
 ```
@@ -227,7 +226,7 @@ var colleague = Person();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptions": ["events"] }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptions": ["events"] }]*/
+/* new-cap: ["error", { "newIsCapExceptions": ["events"] }] */
 
 var events = require("events");
 
@@ -237,7 +236,7 @@ var emitter = new events();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "^person\\.." }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptionPattern": "^person\\.." }]*/
+/* new-cap: ["error", { "newIsCapExceptionPattern": "^person\\.." }] */
 
 var friend = new person.acquaintance();
 
@@ -247,7 +246,7 @@ var bestFriend = new person.friend();
 Examples of additional **correct** code for this rule with the `{ "newIsCapExceptionPattern": "\\.bar$" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "newIsCapExceptionPattern": "\\.bar$" }]*/
+/* new-cap: ["error", { "newIsCapExceptionPattern": "\\.bar$" }] */
 
 var friend = new person.bar();
 ```
@@ -257,7 +256,7 @@ Examples of additional **correct** code for this rule with the `{ "capIsNewExcep
 ::: correct
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptions": ["Person"] }]*/
+/* new-cap: ["error", { "capIsNewExceptions": ["Person"] }] */
 
 function foo(arg) {
   return Person(arg);
@@ -267,7 +266,7 @@ function foo(arg) {
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^person\\.." }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "^person\\.." }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "^person\\.." }] */
 
 var friend = person.Acquaintance();
 var bestFriend = person.Friend();
@@ -276,7 +275,7 @@ var bestFriend = person.Friend();
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "\\.Bar$" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "\\.Bar$" }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "\\.Bar$" }] */
 
 foo.Bar();
 ```
@@ -284,7 +283,7 @@ foo.Bar();
 Examples of additional **correct** code for this rule with the `{ "capIsNewExceptionPattern": "^Foo" }` option:
 
 ```js
-/*eslint new-cap: ["error", { "capIsNewExceptionPattern": "^Foo" }]*/
+/* new-cap: ["error", { "capIsNewExceptionPattern": "^Foo" }] */
 
 var x = Foo(42);
 
@@ -296,7 +295,7 @@ var z = Foo.Bar(42);
 Examples of **incorrect** code for this rule with the default `{ "properties": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": true }]*/
+/* new-cap: ["error", { "properties": true }] */
 
 var friend = new person.acquaintance();
 ```
@@ -304,7 +303,7 @@ var friend = new person.acquaintance();
 Examples of **correct** code for this rule with the default `{ "properties": true }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": true }]*/
+/* new-cap: ["error", { "properties": true }] */
 
 var friend = new person.Acquaintance();
 ```
@@ -312,7 +311,7 @@ var friend = new person.Acquaintance();
 Examples of **correct** code for this rule with the `{ "properties": false }` option:
 
 ```js
-/*eslint new-cap: ["error", { "properties": false }]*/
+/* new-cap: ["error", { "properties": false }] */
 
 var friend = new person.acquaintance();
 ```
@@ -331,7 +330,7 @@ default: `true`
 
 ### capIsNewExceptionPattern
 
-type: `string | null`
+type: `string`
 
 A regex pattern to match exceptions for functions with names starting with an uppercase letter.
 
@@ -353,7 +352,7 @@ default: `true`
 
 ### newIsCapExceptionPattern
 
-type: `string | null`
+type: `string`
 
 A regex pattern to match exceptions for constructor names starting with an uppercase letter.
 

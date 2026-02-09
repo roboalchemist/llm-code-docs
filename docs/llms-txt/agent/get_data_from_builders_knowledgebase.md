@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/get_data_from_builders_knowledgebase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Data from Builder's Knowledge Base
 
 ## Overview

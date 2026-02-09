@@ -1,93 +1,84 @@
 # Source: https://docs.tavus.io/api-reference/documents/delete-document.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Document
 
 > Delete a specific document
 
+Delete a document and its associated data using its unique identifier.
+
+
 ## OpenAPI
 
 ````yaml delete /v2/documents/{document_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/documents/{document_id}
-  method: delete
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path:
-        document_id:
+  /v2/documents/{document_id}:
+    delete:
+      tags:
+        - Documents
+      summary: Delete Document
+      description: |
+        Delete a document and its associated data using its unique identifier.
+      operationId: deleteDocument
+      parameters:
+        - in: path
+          name: document_id
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the document to delete
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Document deleted successfully
-        examples: {}
-        description: Document deleted successfully
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+            type: string
+          description: The unique identifier of the document to delete
+      responses:
+        '204':
+          description: NO CONTENT - Document deleted successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message
-                    example: Invalid or missing authentication
-        examples:
-          example:
-            value:
-              error: Invalid or missing authentication
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    description: The error message
-                    example: Access denied
-        examples:
-          example:
-            value:
-              error: Access denied
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+                    example: Invalid access token
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message
                     example: Document not found
-        examples:
-          example:
-            value:
-              error: Document not found
-        description: Not Found
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

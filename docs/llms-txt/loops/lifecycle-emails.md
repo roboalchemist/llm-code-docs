@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/lifecycle-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up customer lifecycle emails in Loops
 
 > How to send onboarding, dunning and churn emails to your customers with Loops.
@@ -57,7 +61,7 @@ You will enter the [loop builder](/loop-builder). Click on the **Contact updated
 
 1. Select the "Subscription Status" property from the **When** dropdown.
 2. The **Changes from** dropdown should have "Any value" selected.
-3. Netx you need to specify wheat value Loops should look out for to enter users into the loop.
+3. Next you need to specify what value Loops should look out for to enter users into the loop.
    For example, for onboarding emails, you can choose "is empty" from the **To** dropdown. For re-activation emails select "Equals" from the **To** dropdown and enter a relevant value like "Canceled".
 4. **Trigger time** should be set to "Every time"; this will make sure users are entered into the loop every time that the Subscription Status value matches.
 

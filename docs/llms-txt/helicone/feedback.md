@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Feedback
 
 When building AI applications, you need real-world signals about response quality to improve prompts, catch regressions, and understand what users find helpful. User Feedback lets you collect positive/negative ratings on LLM responses, enabling data-driven improvements to your AI systems based on actual user satisfaction.

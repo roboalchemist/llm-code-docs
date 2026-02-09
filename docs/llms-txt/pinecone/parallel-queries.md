@@ -1,13 +1,17 @@
 # Source: https://docs.pinecone.io/troubleshooting/parallel-queries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parallel queries
 
-There are many approaches to perform parallel queries in your application, from using the Python SDK to making REST calls. Below is one example of an approach using multi-threaded, asynchronous requests in Python. For guidance on using `asyncio` for single-threaded, asynchronous requests in Python, see [Asyncio support](/reference/python-sdk#asyncio-support).
+There are many approaches to perform parallel queries in your application, from using the Python SDK to making REST calls. Below is one example of an approach using multi-threaded, asynchronous requests in Python. For guidance on using `asyncio` for single-threaded, asynchronous requests in Python, see [Async requests](/reference/sdks/python/overview#async-requests).
 
 This example assumes the following:
 
 * You have a 1536-dimension serverless index called `docs-example`.
-* You have the [Pinecone Python SDK](/reference/python-sdk) and [`concurrent.futures`](https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures) and [`numpy`](https://numpy.org/) packages installed.
+* You have the [Pinecone Python SDK](/reference/sdks/python/overview) and [`concurrent.futures`](https://docs.python.org/3/library/concurrent.futures.html#module-concurrent.futures) and [`numpy`](https://numpy.org/) packages installed.
 
 ```python  theme={null}
 import os

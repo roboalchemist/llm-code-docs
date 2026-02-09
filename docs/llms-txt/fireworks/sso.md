@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/accounts/sso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom SSO
 
 > Set up custom Single Sign-On (SSO) authentication for Fireworks AI
@@ -81,6 +85,12 @@ If you have an enterprise account, Fireworks supports bringing your own identity
     Note down the "metadata url" for your newly created application. You will need to provide this to your Fireworks AI representative to complete your account set up.
   </Step>
 </Steps>
+
+## Just-In-Time (JIT) user provisioning
+
+JIT user provisioning automatically creates user accounts when they sign in through SSO for the first time. When enabled, users who authenticate through your identity provider are automatically added to your Fireworks account without requiring manual user creation.
+
+To enable JIT user provisioning, use the [`--enable-jit-user-provisioning`](/tools-sdks/firectl/commands/identity-provider-create) flag when creating your identity provider with firectl.
 
 ## Troubleshooting
 

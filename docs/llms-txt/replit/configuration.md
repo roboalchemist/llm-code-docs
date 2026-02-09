@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-app/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit App Configuration
 
 > Learn how to configure your Replit App using .replit and replit.nix files to manage dependencies, run commands, environment variables, and deployment settings.
@@ -267,31 +271,20 @@ ignorePorts = true
   **Interpreter configuration** has been deprecated and is no longer available in Replit. Instead, you are encouraged to use the `Run` commands to configure how scripts and applications are executed within your Replit App environment.
 </Note>
 
-## Networking and extensions
+## Port configuration
 
-| **Configuration** | **Key**                                       | **Value/Example**                                      | **Description**                                                                                                       |
-| ----------------- | --------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| ports             | <a name="localPort" />`localPort`             | `localPort = 3000`                                     | Port that Replit binds to an external port.                                                                           |
-| ports             | <a name="externalPort" />`externalPort`       | `externalPort = 80`                                    | Publicly accessible port linked to the `localPort`.                                                                   |
-| extension         | <a name="isExtension" />`isExtension`         | `isExtension = true`                                   | Specifies whether a Replit App is a workspace extension.                                                              |
-| extension         | <a name="extensionID" />`extensionID`         | `extensionID = "492a5fcd-f090-4356-ace8-50755e8deb2b"` | Determines if a Replit App is attached to a specific extension. Automatically filled when publishing a new extension. |
-| extension         | <a name="buildCommand" />`buildCommand`       | `buildCommand = "npm run build"`                       | Command to bundle the extension into a static directory for uploading.                                                |
-| extension         | <a name="outputDirectory" />`outputDirectory` | `outputDirectory = "./dist"`                           | Path to the static directory used to render the Extension relative to the Replit App's root directory.                |
+| **Configuration** | **Key**                                 | **Value/Example**   | **Description**                                     |
+| ----------------- | --------------------------------------- | ------------------- | --------------------------------------------------- |
+| ports             | <a name="localPort" />`localPort`       | `localPort = 3000`  | Port that Replit binds to an external port.         |
+| ports             | <a name="externalPort" />`externalPort` | `externalPort = 80` | Publicly accessible port linked to the `localPort`. |
 
-### Example `.replit` configuration file for managing networking and extensions
+### Example `.replit` configuration file for managing ports
 
 ```toml  theme={null}
 # Networking configuration to expose your application on specific ports
 [[ports]]
 localPort = 3000
 externalPort = 80
-
-# Extension settings to define and manage a workspace extension
-[extension]
-isExtension = true
-extensionID = "492a5fcd-f090-4356-ace8-50755e8deb2b"
-buildCommand = "npm run build"
-outputDirectory = "./dist"
 ```
 
 ## Accessing Replit App environment metadata

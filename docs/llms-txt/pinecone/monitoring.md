@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/monitoring.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor performance
 
 > Monitor performance metrics in the Pinecone console or with Prometheus or Datadog.
@@ -63,22 +67,49 @@ For more configuration details, see the [Prometheus docs](https://prometheus.io/
 
 The following metrics are available when you integrate Pinecone with Prometheus:
 
-| Name                                   | Type    | Description                                                                                                    |
-| :------------------------------------- | :------ | :------------------------------------------------------------------------------------------------------------- |
-| `pinecone_db_record_total`             | gauge   | The total number of records in the index.                                                                      |
-| `pinecone_db_op_upsert_total`          | counter | The number of [upsert](/guides/index-data/upsert-data) requests made to an index.                              |
-| `pinecone_db_op_upsert_duration_total` | counter | The total time taken processing upsert requests for an index in milliseconds.                                  |
-| `pinecone_db_op_query_total`           | counter | The number of [query](/guides/search/search-overview) requests made to an index.                               |
-| `pinecone_db_op_query_duration_total`  | counter | The total time taken processing [query](/guides/search/search-overview) requests for an index in milliseconds. |
-| `pinecone_db_op_fetch_total`           | counter | The number of [fetch](/guides/manage-data/fetch-data) requests made to an index.                               |
-| `pinecone_db_op_fetch_duration_total`  | counter | The total time taken processing fetch requests for an index in milliseconds.                                   |
-| `pinecone_db_op_update_total`          | counter | The number of [update](/guides/manage-data/update-data) requests made to an index.                             |
-| `pinecone_db_op_update_duration_total` | counter | The total time taken processing update requests for an index in milliseconds.                                  |
-| `pinecone_db_op_delete_total`          | counter | The number of [delete](/guides/manage-data/delete-data) requests made to an index.                             |
-| `pinecone_db_op_delete_duration_total` | counter | The total time taken processing delete requests for an index in milliseconds.                                  |
-| `pinecone_db_write_unit_total`         | counter | The total number of [write units](/guides/manage-cost/understanding-cost#write-units) consumed by an index.    |
-| `pinecone_db_read_unit_total`          | counter | The total number of [read units](/guides/manage-cost/understanding-cost#read-units) consumed by an index.      |
-| `pinecone_db_storage_size_bytes`       | gauge   | The total size of the index in bytes.                                                                          |
+<div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-4">
+  <Tabs>
+    <Tab title="Metrics">
+      | Name                                 | Type    | Description                                                                                                 |
+      | :----------------------------------- | :------ | :---------------------------------------------------------------------------------------------------------- |
+      | `pinecone_db_record_total`           | gauge   | The total number of records in the index.                                                                   |
+      | `pinecone_db_storage_size_bytes`     | gauge   | The total size of the index in bytes.                                                                       |
+      | `pinecone_db_op_upsert_count`        | counter | The number of [upsert](/guides/index-data/upsert-data) requests.                                            |
+      | `pinecone_db_op_upsert_duration_sum` | counter | The total time taken processing [upsert](/guides/index-data/upsert-data) requests in milliseconds.          |
+      | `pinecone_db_op_query_count`         | counter | The number of [query](/guides/search/search-overview) requests.                                             |
+      | `pinecone_db_op_query_duration_sum`  | counter | The total time taken processing [query](/guides/search/search-overview) requests in milliseconds.           |
+      | `pinecone_db_op_fetch_count`         | counter | The number of [fetch](/guides/manage-data/fetch-data) requests.                                             |
+      | `pinecone_db_op_fetch_duration_sum`  | counter | The total time taken processing [fetch](/guides/manage-data/fetch-data) requests in milliseconds.           |
+      | `pinecone_db_op_update_count`        | counter | The number of [update](/guides/manage-data/update-data) requests.                                           |
+      | `pinecone_db_op_update_duration_sum` | counter | The total time taken processing [update](/guides/manage-data/update-data) requests in milliseconds.         |
+      | `pinecone_db_op_delete_count`        | counter | The number of [delete](/guides/manage-data/delete-data) requests.                                           |
+      | `pinecone_db_op_delete_duration_sum` | counter | The total time taken processing [delete](/guides/manage-data/delete-data) requests in milliseconds.         |
+      | `pinecone_db_write_unit_count`       | counter | The total number of [write units](/guides/manage-cost/understanding-cost#write-units) consumed by an index. |
+      | `pinecone_db_read_unit_count`        | counter | The total number of [read units](/guides/manage-cost/understanding-cost#read-units) consumed by an index.   |
+    </Tab>
+
+    <Tab title="Metric name migration">
+      Some metric names changed on December 19, 2025. The following metrics were renamed:
+
+      | Previous name (before Dec 19, 2025)    | Current name                                 |
+      | :------------------------------------- | :------------------------------------------- |
+      | `pinecone_db_record_total`             | `pinecone_db_record_total` (no change)       |
+      | `pinecone_db_storage_size_bytes`       | `pinecone_db_storage_size_bytes` (no change) |
+      | `pinecone_db_op_upsert_total`          | `pinecone_db_op_upsert_count`                |
+      | `pinecone_db_op_upsert_duration_total` | `pinecone_db_op_upsert_duration_sum`         |
+      | `pinecone_db_op_query_total`           | `pinecone_db_op_query_count`                 |
+      | `pinecone_db_op_query_duration_total`  | `pinecone_db_op_query_duration_sum`          |
+      | `pinecone_db_op_fetch_total`           | `pinecone_db_op_fetch_count`                 |
+      | `pinecone_db_op_fetch_duration_total`  | `pinecone_db_op_fetch_duration_sum`          |
+      | `pinecone_db_op_update_total`          | `pinecone_db_op_update_count`                |
+      | `pinecone_db_op_update_duration_total` | `pinecone_db_op_update_duration_sum`         |
+      | `pinecone_db_op_delete_total`          | `pinecone_db_op_delete_count`                |
+      | `pinecone_db_op_delete_duration_total` | `pinecone_db_op_delete_duration_sum`         |
+      | `pinecone_db_write_unit_total`         | `pinecone_db_write_unit_count`               |
+      | `pinecone_db_read_unit_total`          | `pinecone_db_read_unit_count`                |
+    </Tab>
+  </Tabs>
+</div>
 
 ### Metric labels
 
@@ -90,6 +121,7 @@ Each metric contains the following labels:
 | `cloud`         | Cloud where the index is deployed: `aws`, `gcp`, or `azure`. |
 | `region`        | Region where the index is deployed.                          |
 | `capacity_mode` | Type of index: `serverless` or `byoc`.                       |
+| `instance`      | Server instance (only available for counter metrics).        |
 
 ### Example queries
 
@@ -105,26 +137,26 @@ Return the total number of records in Pinecone index `docs-example`:
 pinecone_db_record_total{index_name="docs-example"}
 ```
 
-Return the total number of upsert requests per index:
+For each index, return the total number of upsert requests per second:
 
 ```shell  theme={null}
-sum by (index_name) (pinecone_db_op_upsert_total)
+sum by (index_name) (rate(pinecone_db_op_upsert_count[5m]))
 ```
 
-Return the average processing time in millisconds for upsert requests per index:
+Return the average processing time in milliseconds for upsert requests per index:
 
 ```shell  theme={null}
-sum by (index_name) (pinecone_db_op_upsert_duration_total/pinecone_db_op_upsert_total) 
+(sum by (index_name) (rate(pinecone_db_op_upsert_duration_sum[1m])))/(sum by (index_name) (rate(pinecone_db_op_upsert_count[1m])))
 ```
 
-Return the total read units consumed per index:
+For each index, return the total number of read units consumed per second:
 
 ```shell  theme={null}
-sum by (index_name) (pinecone_db_read_unit_total)
+sum by (index_name) (rate(pinecone_db_read_unit_count[5m]))
 ```
 
-Return the total write units consumed for the Pinecone index `docs-example`:
+Return the total write units consumed per second for the Pinecone index `docs-example`:
 
 ```shell  theme={null}
-pinecone_db_write_unit_total{index_name="docs-example"}
+sum (rate(pinecone_db_write_unit_count{index_name="docs-example"}[5m]))
 ```

@@ -8,11 +8,11 @@
 
 ## What is the Vercel AI SDK
 
-https://ai-sdk.dev/ is the TypeScript toolkit designed to help developers build AI-powered applications and agents with React, Next.js, Vue, Svelte, Node.js, and more.
+[Vercel AI SDK](https://ai-sdk.dev/) is the TypeScript toolkit designed to help developers build AI-powered applications and agents with React, Next.js, Vue, Svelte, Node.js, and more.
 
 Explore Vercel AI SDK
 
-For more in-depth details, check out https://ai-sdk.dev/docs/introduction.
+For more in-depth details, check out [Vercel AI SDK documentation](https://ai-sdk.dev/docs/introduction).
 
 ## How to use Apify with Vercel AI SDK
 
@@ -20,7 +20,7 @@ Apify is a marketplace of ready-to-use web scraping and automation tools, AI age
 
 ### Prerequisites
 
-* *Apify API token*: To use Apify Actors in Vercel AI SDK, you need an Apify API token. To obtain your token check https://docs.apify.com/platform/integrations/api.
+* *Apify API token*: You need an Apify API token set as the `APIFY_TOKEN` environment variable. To obtain your token check [Apify documentation](https://docs.apify.com/platform/integrations/api).
 
 * *Node.js packages*: Install the following Node.js packages:
 
@@ -42,11 +42,7 @@ import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 ```
 
 
-Connect to the Apify MCP server and get all available tools for the AI agent:
-
-Required setup
-
-Make sure to set the `APIFY_TOKEN` environment variable with your Apify API token before running the code.
+Connect to the Apify MCP server and get all available tools for the AI agent. You can use the [UI configurator](https://mcp.apify.com/) to select your tools visually and generate the configuration code below:
 
 
 ```
@@ -70,7 +66,7 @@ Create Apify OpenRouter LLM provider so we can run the AI agent:
 
 Single token
 
-By using the https://apify.com/apify/openrouter you don't need to provide a separate API key for OpenRouter or any other LLM provider. Only your Apify token is needed. All token costs go to your Apify account.
+By using the [Apify OpenRouter](https://apify.com/apify/openrouter) you don't need to provide a separate API key for OpenRouter or any other LLM provider. Only your Apify token is needed. All token costs go to your Apify account.
 
 
 ```
@@ -109,9 +105,9 @@ await mcpClient.close();
 
 ## Resources
 
-* https://docs.apify.com/platform/actors
-* https://ai-sdk.dev/docs/introduction
-* https://blog.apify.com/what-are-ai-agents/
-* https://mcp.apify.com
-* https://docs.apify.com/platform/integrations/mcp
-* https://apify.com/apify/openrouter
+* [Apify Actors](https://docs.apify.com/platform/actors)
+* [Vercel AI SDK documentation](https://ai-sdk.dev/docs/introduction)
+* [What are AI agents?](https://blog.apify.com/what-are-ai-agents/)
+* [Apify MCP Server](https://mcp.apify.com)
+* [Apify MCP Server documentation](https://docs.apify.com/platform/integrations/mcp)
+* [Apify OpenRouter proxy](https://apify.com/apify/openrouter)

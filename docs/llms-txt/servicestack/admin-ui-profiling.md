@@ -8,10 +8,10 @@ The Request Logging & Profiling UIs bring an invaluable new level of observabili
 
 <lite-youtube class="w-full mx-4 my-4" width="560" height="315" videoid="LgQHTSHSk1g" style="background-image: url('https://img.youtube.com/vi/LgQHTSHSk1g/maxresdefault.jpg')"></lite-youtube>
 
-The quickest way to enable access to these new features is to [mix](/mix-tool) in the profiling configuration:
+The quickest way to enable access to these new features to your App is with:
 
 ::: sh 
-x mix profiling
+npx add-in profiling
 :::
 
 Which will add the [Modular Startup](/modular-startup) configuration to your Host project that registers both Request Logging & Profiling features when running your App in [DebugMode](/debugging#debugmode) (i.e. Development):
@@ -35,15 +35,20 @@ public class ConfigureProfiling : IHostingStartup
 Whilst Request Logs can be added with:
 
 ::: sh 
-x mix requestlogs
+npx add-in requestlogs
 :::
 
-Or if you prefer to store Request Logs in an SQLite database then use the following command:
+Or if you prefer to store Request Logs in an SQLite database:
 
 ::: sh 
-x mix sqlitelogs
+npx add-in sqlitelogs
 :::
 
+Or to store Request Logs in PostgreSQL, SQL Server or MySql:
+
+::: sh 
+npx add-in db-requestlogs
+:::
 
 The default configuration looks at providing useful information during development, where the response request bodies are captured in the Request Logger and the StackTrace is captured on the important events where they can be useful.
 
@@ -167,7 +172,7 @@ HttpClient profiling is implemented a little differently then other events in th
 
 ### JsonApiClient Profiling
 
-Although we're able to provide richer profiling for our .NET 8+ [JsonApiClient](/csharp-client#jsonapiclient) which has access to typed Request DTOs for submitting API Requests:
+Although we're able to provide richer profiling for our .NET 10+ [JsonApiClient](/csharp-client#jsonapiclient) which has access to typed Request DTOs for submitting API Requests:
 
 <div class="block flex justify-center items-center">
     <img class="max-w-screen-md" src="/img/pages/admin-ui/profiling-client-api-request.png">

@@ -1,13 +1,5 @@
 # Source: https://docs.upsun.com/development/local/tethered.md
 
-# Source: https://docs.upsun.com/guides/django/local/tethered.md
-
-# Source: https://docs.upsun.com/development/local/tethered.md
-
-# Source: https://docs.upsun.com/guides/django/local/tethered.md
-
-# Source: https://docs.upsun.com/development/local/tethered.md
-
 # Tethered local development
 
 To test changes locally, you can connect your locally running web server

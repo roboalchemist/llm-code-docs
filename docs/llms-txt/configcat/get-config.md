@@ -2,10 +2,7 @@
 
 # Get Config
 
-```
-GET 
-/v1/configs/:configId
-```
+Copy page
 
 This endpoint returns the metadata of a Config identified by the `configId`.
 

@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/cascade/workflows.md
 
-# Source: https://docs.windsurf.com/windsurf/cascade/workflows.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/workflows.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/workflows.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/workflows.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/workflows.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/workflows.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Workflows
+
+> Create reusable Cascade workflows as markdown files to automate repetitive tasks like deployments, PR reviews, and code formatting with slash commands.
 
 Workflows enable users to define a series of steps to guide Cascade through a repetitive set of tasks, such as deploying a service or responding to PR comments.
 
@@ -120,3 +114,46 @@ There are a myriad of use cases for Workflows, such as:
 <Card title="/security-scan">
   Integrate and trigger security vulnerability scans on your codebase as part of the CI/CD pipeline or on demand.
 </Card>
+
+## System-Level Workflows (Enterprise)
+
+Enterprise organizations can deploy system-level workflows that are available globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide development processes, deployment procedures, and compliance workflows.
+
+System-level workflows are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/workflows/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/workflows/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\workflows\*.md
+```
+
+Place your workflow files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### Workflow Precedence
+
+When workflows with the same name exist at multiple levels, system-level workflows take the highest precedence:
+
+1. **System** (highest priority) - Organization-wide workflows deployed by IT
+2. **Workspace** - Project-specific workflows in `.windsurf/workflows/`
+3. **Global** - User-defined workflows
+4. **Built-in** - Default workflows provided by Windsurf
+
+This means that if an organization deploys a system-level workflow with a specific name, it will override any workspace, global, or built-in workflow with the same name.
+
+In the Cascade UI, system-level workflows are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level workflows should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>

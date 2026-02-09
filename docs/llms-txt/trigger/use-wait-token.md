@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/realtime/react-hooks/use-wait-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # useWaitToken
 
 > Use the useWaitToken hook to complete a wait token from a React component
 
 We've added a new `useWaitToken` react hook that allows you to complete a wait token from a React component, using a Public Access Token.
 
-```ts backend.ts theme={null}
+```ts backend.ts theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 // Somewhere in your code, you'll need to create the token and then pass the token ID and the public token to the frontend
@@ -22,7 +26,7 @@ return {
 
 Now you can use the `useWaitToken` hook in your frontend code:
 
-```tsx frontend.tsx theme={null}
+```tsx frontend.tsx theme={"theme":"css-variables"}
 import { useWaitToken } from "@trigger.dev/react-hooks";
 
 export function MyComponent({ publicToken, tokenId }: { publicToken: string; tokenId: string }) {

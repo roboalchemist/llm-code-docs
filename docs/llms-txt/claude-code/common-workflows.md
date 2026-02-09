@@ -1,10 +1,14 @@
 # Source: https://code.claude.com/docs/en/common-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Common workflows
 
-> Learn about common workflows with Claude Code.
+> Step-by-step guides for exploring codebases, fixing bugs, refactoring, testing, and other everyday tasks with Claude Code.
 
-Each task in this document includes clear instructions, example commands, and best practices to help you get the most from Claude Code.
+This page covers practical workflows for everyday development: exploring unfamiliar code, debugging, refactoring, writing tests, creating PRs, and managing sessions. Each section includes example prompts you can adapt to your own projects. For higher-level patterns and tips, see [Best practices](/en/best-practices).
 
 ## Understand new codebases
 
@@ -83,6 +87,7 @@ Suppose you need to locate code related to a specific feature or functionality.
 
   * Be specific about what you're looking for
   * Use domain language from the project
+  * Install a [code intelligence plugin](/en/discover-plugins#code-intelligence) for your language to give Claude precise "go to definition" and "find references" navigation
 </Tip>
 
 ***
@@ -223,7 +228,7 @@ Suppose you want to use specialized AI subagents to handle specific tasks more e
 
 ## Use Plan Mode for safe code analysis
 
-Plan Mode instructs Claude to create a plan by analyzing the codebase with read-only operations, perfect for exploring codebases, planning complex changes, or reviewing code safely.
+Plan Mode instructs Claude to create a plan by analyzing the codebase with read-only operations, perfect for exploring codebases, planning complex changes, or reviewing code safely. In Plan Mode, Claude uses [`AskUserQuestion`](/en/settings#tools-available-to-claude) to gather requirements and clarify your goals before proposing a plan.
 
 ### When to use Plan Mode
 
@@ -271,6 +276,8 @@ Claude analyzes the current implementation and create a comprehensive plan. Refi
 > What about backward compatibility?
 > How should we handle database migration?
 ```
+
+<Tip>Press `Ctrl+G` to open the plan in your default text editor, where you can edit it directly before Claude proceeds.</Tip>
 
 ### Configure Plan Mode as default
 
@@ -325,40 +332,40 @@ For comprehensive coverage, ask Claude to identify edge cases you might have mis
 
 ## Create pull requests
 
-Suppose you need to create a well-documented pull request for your changes.
+You can create pull requests by asking Claude directly ("create a pr for my changes") or by using the `/commit-push-pr` skill, which commits, pushes, and opens a PR in one step.
+
+```
+> /commit-push-pr
+```
+
+If you have a Slack MCP server configured and specify channels in your CLAUDE.md (for example, "post PR URLs to #team-prs"), the skill automatically posts the PR URL to those channels.
+
+For more control over the process, guide Claude through it step-by-step or [create your own skill](/en/skills):
 
 <Steps>
   <Step title="Summarize your changes">
     ```
-    > summarize the changes I've made to the authentication module 
+    > summarize the changes I've made to the authentication module
     ```
   </Step>
 
-  <Step title="Generate a pull request with Claude">
+  <Step title="Generate a pull request">
     ```
-    > create a pr 
+    > create a pr
     ```
   </Step>
 
   <Step title="Review and refine">
     ```
-    > enhance the PR description with more context about the security improvements 
-    ```
-  </Step>
-
-  <Step title="Add testing details">
-    ```
-    > add information about how these changes were tested 
+    > enhance the PR description with more context about the security improvements
     ```
   </Step>
 </Steps>
 
-<Tip>
-  Tips:
+When you create a PR using `gh pr create`, the session is automatically linked to that PR. You can resume it later with `claude --from-pr <number>`.
 
-  * Ask Claude directly to make a PR for you
-  * Review Claude's generated PR before submitting
-  * Ask Claude to highlight potential risks or considerations
+<Tip>
+  Review Claude's generated PR before submitting and ask Claude to highlight potential risks or considerations.
 </Tip>
 
 ## Handle documentation
@@ -456,6 +463,7 @@ Suppose you need to work with images in your codebase, and you want Claude's hel
   * Include screenshots of errors, UI designs, or diagrams for better context
   * You can work with multiple images in a conversation
   * Image analysis works with diagrams, screenshots, mockups, and more
+  * When Claude references images (for example, `[Image #1]`), `Cmd+Click` (Mac) or `Ctrl+Click` (Windows/Linux) the link to open the image in your default viewer
 </Tip>
 
 ***
@@ -503,38 +511,25 @@ Use @ to quickly include files or directories without waiting for Claude to read
 
 ## Use extended thinking (thinking mode)
 
-[Extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) reserves a portion of the total output token budget for Claude to reason through complex problems step-by-step. This reasoning is visible in verbose mode, which you can toggle on with `Ctrl+O`.
+[Extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) is enabled by default, reserving a portion of the output token budget (up to 31,999 tokens) for Claude to reason through complex problems step-by-step. This reasoning is visible in verbose mode, which you can toggle on with `Ctrl+O`.
 
 Extended thinking is particularly valuable for complex architectural decisions, challenging bugs, multi-step implementation planning, and evaluating tradeoffs between different approaches. It provides more space for exploring multiple solutions, analyzing edge cases, and self-correcting mistakes.
 
 <Note>
-  Sonnet 4.5 and Opus 4.5 have thinking enabled by default. All other models have thinking disabled by default. Use `/model` to view or switch your current model.
+  Phrases like "think", "think hard", "ultrathink", and "think more" are interpreted as regular prompt instructions and don't allocate thinking tokens.
 </Note>
 
-You can configure thinking mode for Claude Code in two ways:
+### Configure thinking mode
 
-| Scope                             | How to enable                                                                        | Details                                                                                                                                          |
-| --------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Global default**                | Use `/config` to toggle thinking mode on                                             | Sets your default across all projects.<br />Saved as `alwaysThinkingEnabled` in `~/.claude/settings.json`                                        |
-| **Environment variable override** | Set [`MAX_THINKING_TOKENS`](/en/settings#environment-variables) environment variable | When set, applies a custom token budget to all requests, overriding your thinking mode configuration. Example: `export MAX_THINKING_TOKENS=1024` |
+Thinking is enabled by default, but you can adjust or disable it.
 
-### Per-request thinking with `ultrathink`
-
-You can include `ultrathink` as a keyword in your message to enable thinking for a single request:
-
-```
-> ultrathink: design a caching layer for our API
-```
-
-Note that `ultrathink` both allocates the thinking budget AND semantically signals to Claude to reason more thoroughly, which may result in deeper thinking than necessary for your task.
-
-The `ultrathink` keyword only works when `MAX_THINKING_TOKENS` is not set. When `MAX_THINKING_TOKENS` is configured, it takes priority and controls the thinking budget for all requests.
-
-Other phrases like "think", "think hard", and "think more" are interpreted as regular prompt instructions and don't allocate thinking tokens.
+| Scope                  | How to configure                                                                     | Details                                                                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Toggle shortcut**    | Press `Option+T` (macOS) or `Alt+T` (Windows/Linux)                                  | Toggle thinking on/off for the current session. May require [terminal configuration](/en/terminal-config) to enable Option key shortcuts |
+| **Global default**     | Use `/config` to toggle thinking mode                                                | Sets your default across all projects.<br />Saved as `alwaysThinkingEnabled` in `~/.claude/settings.json`                                |
+| **Limit token budget** | Set [`MAX_THINKING_TOKENS`](/en/settings#environment-variables) environment variable | Limit the thinking budget to a specific number of tokens. Example: `export MAX_THINKING_TOKENS=10000`                                    |
 
 To view Claude's thinking process, press `Ctrl+O` to toggle verbose mode and see the internal reasoning displayed as gray italic text.
-
-See the [token budget section below](#how-extended-thinking-token-budgets-work) for detailed budget information and cost implications.
 
 ### How extended thinking token budgets work
 
@@ -548,13 +543,13 @@ A larger thinking token budget provides:
 
 Token budgets for thinking mode:
 
-* When thinking is **enabled** (via `/config` or `ultrathink`), Claude can use up to **31,999 tokens** from your output budget for internal reasoning
-* When thinking is **disabled**, Claude uses **0 tokens** for thinking
+* When thinking is **enabled**, Claude can use up to **31,999 tokens** from your output budget for internal reasoning
+* When thinking is **disabled** (via toggle or `/config`), Claude uses **0 tokens** for thinking
 
-**Custom token budgets:**
+**Limit the thinking budget:**
 
-* You can set a custom thinking token budget using the [`MAX_THINKING_TOKENS` environment variable](/en/settings#environment-variables)
-* This takes highest priority and overrides the default 31,999 token budget
+* Use the [`MAX_THINKING_TOKENS` environment variable](/en/settings#environment-variables) to cap the thinking budget
+* When set, this value limits the maximum tokens Claude can use for thinking
 * See the [extended thinking documentation](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) for valid token ranges
 
 <Warning>
@@ -565,51 +560,84 @@ Token budgets for thinking mode:
 
 ## Resume previous conversations
 
-Suppose you've been working on a task with Claude Code and need to continue where you left off in a later session.
+When starting Claude Code, you can resume a previous session:
 
-Claude Code provides two options for resuming previous conversations:
+* `claude --continue` continues the most recent conversation in the current directory
+* `claude --resume` opens a conversation picker or resumes by name
+* `claude --from-pr 123` resumes sessions linked to a specific pull request
 
-* `--continue` to automatically continue the most recent conversation
-* `--resume` to display a conversation picker
+From inside an active session, use `/resume` to switch to a different conversation.
+
+Sessions are stored per project directory. The `/resume` picker shows sessions from the same git repository, including worktrees.
+
+### Name your sessions
+
+Give sessions descriptive names to find them later. This is a best practice when working on multiple tasks or features.
 
 <Steps>
-  <Step title="Continue the most recent conversation">
-    ```bash  theme={null}
-    claude --continue
+  <Step title="Name the current session">
+    Use `/rename` during a session to give it a memorable name:
+
+    ```
+    > /rename auth-refactor
     ```
 
-    This immediately resumes your most recent conversation without any prompts.
+    You can also rename any session from the picker: run `/resume`, navigate to a session, and press `R`.
   </Step>
 
-  <Step title="Continue in non-interactive mode">
+  <Step title="Resume by name later">
+    From the command line:
+
     ```bash  theme={null}
-    claude --continue --print "Continue with my task"
+    claude --resume auth-refactor
     ```
 
-    Use `--print` with `--continue` to resume the most recent conversation in non-interactive mode, perfect for scripts or automation.
-  </Step>
+    Or from inside an active session:
 
-  <Step title="Show conversation picker">
-    ```bash  theme={null}
-    claude --resume
     ```
-
-    This displays an interactive conversation selector with a clean list view showing:
-
-    * Session summary (or initial prompt)
-    * Metadata: time elapsed, message count, and git branch
-
-    Use arrow keys to navigate and press Enter to select a conversation. Press Esc to exit.
+    > /resume auth-refactor
+    ```
   </Step>
 </Steps>
+
+### Use the session picker
+
+The `/resume` command (or `claude --resume` without arguments) opens an interactive session picker with these features:
+
+**Keyboard shortcuts in the picker:**
+
+| Shortcut  | Action                                            |
+| :-------- | :------------------------------------------------ |
+| `↑` / `↓` | Navigate between sessions                         |
+| `→` / `←` | Expand or collapse grouped sessions               |
+| `Enter`   | Select and resume the highlighted session         |
+| `P`       | Preview the session content                       |
+| `R`       | Rename the highlighted session                    |
+| `/`       | Search to filter sessions                         |
+| `A`       | Toggle between current directory and all projects |
+| `B`       | Filter to sessions from your current git branch   |
+| `Esc`     | Exit the picker or search mode                    |
+
+**Session organization:**
+
+The picker displays sessions with helpful metadata:
+
+* Session name or initial prompt
+* Time elapsed since last activity
+* Message count
+* Git branch (if applicable)
+
+Forked sessions (created with `/rewind` or `--fork-session`) are grouped together under their root session, making it easier to find related conversations.
 
 <Tip>
   Tips:
 
-  * Conversation history is stored locally on your machine
-  * Use `--continue` for quick access to your most recent conversation
-  * Use `--resume` when you need to select a specific past conversation
-  * When resuming, you'll see the entire conversation history before continuing
+  * **Name sessions early**: Use `/rename` when starting work on a distinct task—it's much easier to find "payment-integration" than "explain this function" later
+  * Use `--continue` for quick access to your most recent conversation in the current directory
+  * Use `--resume session-name` when you know which session you need
+  * Use `--resume` (without a name) when you need to browse and select
+  * For scripts, use `claude --continue --print "prompt"` to resume in non-interactive mode
+  * Press `P` in the picker to preview a session before resuming it
   * The resumed conversation starts with the same model and configuration as the original
 
   How it works:
@@ -618,22 +646,6 @@ Claude Code provides two options for resuming previous conversations:
   2. **Message Deserialization**: When resuming, the entire message history is restored to maintain context
   3. **Tool State**: Tool usage and results from the previous conversation are preserved
   4. **Context Restoration**: The conversation resumes with all previous context intact
-
-  Examples:
-
-  ```bash  theme={null}
-  # Continue most recent conversation
-  claude --continue
-
-  # Continue most recent conversation with a specific prompt
-  claude --continue --print "Show me our progress"
-
-  # Show conversation picker
-  claude --resume
-
-  # Continue most recent conversation in non-interactive mode
-  claude --continue --print "Run the tests again"
-  ```
 </Tip>
 
 ***
@@ -792,115 +804,6 @@ Suppose you need Claude's output in a specific format, especially when integrati
 
 ***
 
-## Create custom slash commands
-
-Claude Code supports custom slash commands that you can create to quickly execute specific prompts or tasks.
-
-For more details, see the [Slash commands](/en/slash-commands) reference page.
-
-### Create project-specific commands
-
-Suppose you want to create reusable slash commands for your project that all team members can use.
-
-<Steps>
-  <Step title="Create a commands directory in your project">
-    ```bash  theme={null}
-    mkdir -p .claude/commands
-    ```
-  </Step>
-
-  <Step title="Create a Markdown file for each command">
-    ```bash  theme={null}
-    echo "Analyze the performance of this code and suggest three specific optimizations:" > .claude/commands/optimize.md 
-    ```
-  </Step>
-
-  <Step title="Use your custom command in Claude Code">
-    ```
-    > /optimize 
-    ```
-  </Step>
-</Steps>
-
-<Tip>
-  Tips:
-
-  * Command names are derived from the filename (for example, `optimize.md` becomes `/optimize`)
-  * You can organize commands in subdirectories (for example, `.claude/commands/frontend/component.md` creates `/component` with "(project:frontend)" shown in the description)
-  * Project commands are available to everyone who clones the repository
-  * The Markdown file content becomes the prompt sent to Claude when the command is invoked
-</Tip>
-
-### Add command arguments with \$ARGUMENTS
-
-Suppose you want to create flexible slash commands that can accept additional input from users.
-
-<Steps>
-  <Step title="Create a command file with the $ARGUMENTS placeholder">
-    ```bash  theme={null}
-    echo 'Find and fix issue #$ARGUMENTS. Follow these steps: 1.
-    Understand the issue described in the ticket 2. Locate the relevant code in
-    our codebase 3. Implement a solution that addresses the root cause 4. Add
-    appropriate tests 5. Prepare a concise PR description' >
-    .claude/commands/fix-issue.md 
-    ```
-  </Step>
-
-  <Step title="Use the command with an issue number">
-    In your Claude session, use the command with arguments.
-
-    ```
-    > /fix-issue 123 
-    ```
-
-    This replaces \$ARGUMENTS with "123" in the prompt.
-  </Step>
-</Steps>
-
-<Tip>
-  Tips:
-
-  * The \$ARGUMENTS placeholder is replaced with any text that follows the command
-  * You can position \$ARGUMENTS anywhere in your command template
-  * Other useful applications: generating test cases for specific functions, creating documentation for components, reviewing code in particular files, or translating content to specified languages
-</Tip>
-
-### Create personal slash commands
-
-Suppose you want to create personal slash commands that work across all your projects.
-
-<Steps>
-  <Step title="Create a commands directory in your home folder">
-    ```bash  theme={null}
-    mkdir -p ~/.claude/commands 
-    ```
-  </Step>
-
-  <Step title="Create a Markdown file for each command">
-    ```bash  theme={null}
-    echo "Review this code for security vulnerabilities, focusing on:" >
-    ~/.claude/commands/security-review.md 
-    ```
-  </Step>
-
-  <Step title="Use your personal custom command">
-    ```
-    > /security-review 
-    ```
-  </Step>
-</Steps>
-
-<Tip>
-  Tips:
-
-  * Personal commands show "(user)" in their description when listed with `/help`
-  * Personal commands are only available to you and not shared with your team
-  * Personal commands work across all your projects
-  * You can use these for consistent workflows across different codebases
-</Tip>
-
-***
-
 ## Ask Claude about its capabilities
 
 Claude has built-in access to its documentation and can answer questions about its own features and limitations.
@@ -916,7 +819,7 @@ Claude has built-in access to its documentation and can answer questions about i
 ```
 
 ```
-> what slash commands are available?
+> what skills are available?
 ```
 
 ```
@@ -947,11 +850,20 @@ Claude has built-in access to its documentation and can answer questions about i
 
 ## Next steps
 
-<Card title="Claude Code reference implementation" icon="code" href="https://github.com/anthropics/claude-code/tree/main/.devcontainer">
-  Clone our development container reference implementation.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Best practices" icon="lightbulb" href="/en/best-practices">
+    Patterns for getting the most out of Claude Code
+  </Card>
 
+  <Card title="How Claude Code works" icon="gear" href="/en/how-claude-code-works">
+    Understand the agentic loop and context management
+  </Card>
 
----
+  <Card title="Extend Claude Code" icon="puzzle-piece" href="/en/features-overview">
+    Add skills, hooks, MCP, subagents, and plugins
+  </Card>
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt
+  <Card title="Reference implementation" icon="code" href="https://github.com/anthropics/claude-code/tree/main/.devcontainer">
+    Clone our development container reference implementation
+  </Card>
+</CardGroup>

@@ -2,17 +2,9 @@
 
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
 
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/logging-data-to-galileo.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/logging-data-to-galileo.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/logging-data-to-galileo.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Logging Data | Natural Language Inference in Galileo
 
@@ -94,7 +86,7 @@ Simply install: `pip install --upgrade dataquality`
 
 and use!
 
-```py
+```py  theme={null}
 
 import dataquality as dq
 
@@ -104,7 +96,7 @@ dq.auto(hf_data="emotion")
 
 You can also provide data as files or pandas dataframes
 
-```py
+```py  theme={null}
 
 import pandas as pd
 from sklearn.datasets import fetch_20newsgroups

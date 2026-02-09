@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-unneeded-ternary.md
 ---
-# eslint/no-unneeded-ternary&#x20;
 
 ### What it does
 

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/turns/vad.md
 
-# Source: https://docs.livekit.io/agents/build/turns/vad.md
-
-LiveKit docs › Building voice agents › Turn detection & interruptions › Silero VAD plugin
+LiveKit docs › Logic & Structure › Turn detection & interruptions › Silero VAD plugin
 
 ---
 
@@ -12,11 +10,11 @@ LiveKit docs › Building voice agents › Turn detection & interruptions › Si
 
 ## Overview
 
-The Silero VAD plugin provides voice activity detection (VAD) that contributes to accurate [turn detection](https://docs.livekit.io/agents/build/turns.md) in voice AI applications.
+The Silero VAD plugin provides voice activity detection (VAD) that contributes to accurate [turn detection](https://docs.livekit.io/agents/logic/turns.md) in voice AI applications.
 
 VAD is a crucial component for voice AI applications as it helps determine when a user is speaking versus when they are silent. This enables natural turn-taking in conversations and helps optimize resource usage by only performing speech-to-text while the user speaks.
 
-LiveKit recommends using the Silero VAD plugin in combination with the custom [turn detector model](https://docs.livekit.io/agents/build/turns/turn-detector.md) for the best performance.
+LiveKit recommends using the Silero VAD plugin in combination with the custom [turn detector model](https://docs.livekit.io/agents/logic/turns/turn-detector.md) for the best performance.
 
 ## Quick reference
 
@@ -35,7 +33,7 @@ Install the Silero VAD plugin.
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[silero]~=1.2"
+uv add "livekit-agents[silero]~=1.3"
 
 ```
 
@@ -198,11 +196,11 @@ The following resources provide more information about using the LiveKit Silero 
 
 - **[Silero VAD project](https://github.com/snakers4/silero-vad)**: The open source VAD model that powers the LiveKit Silero VAD plugin.
 
-- **[Transcriber](https://github.com/livekit-examples/python-agents-examples/tree/main/pipeline-stt/transcriber.py)**: An example using standalone VAD and STT outside of an `AgentSession`.
+- **[Transcriber](https://docs.livekit.io/recipes/transcriber.md)**: An example using standalone VAD and STT outside of an `AgentSession`.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:05.195Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/turns/vad.md](https://docs.livekit.io/agents/build/turns/vad.md).
+This document was rendered at 2026-02-03T03:24:56.930Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/turns/vad.md](https://docs.livekit.io/agents/logic/turns/vad.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

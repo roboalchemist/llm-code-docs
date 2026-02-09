@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/agents/models/avatar.md
 
-LiveKit docs › Models › Virtual avatars › Overview
+LiveKit docs › Models › Virtual avatar › Overview
 
 ---
 
-# Virtual avatar plugins
+# Virtual avatar models overview
 
 > Guides for adding virtual avatars to your agents.
 
@@ -12,22 +12,24 @@ LiveKit docs › Models › Virtual avatars › Overview
 
 Virtual avatars add lifelike video output for your voice AI agents. You can integrate a variety of providers to LiveKit Agents with just a few lines of code.
 
-## Available plugins
+### Plugins
 
 The following plugins are available. Choose a plugin from this list for a step-by-step guide:
 
 | Provider | Python | Node.js |
 | -------- | ------ | ------- |
-| [Anam](https://docs.livekit.io/agents/models/avatar/plugins/anam.md) | ✓ | — |
-| [Beyond Presence](https://docs.livekit.io/agents/models/avatar/plugins/bey.md) | ✓ | — |
+| [Anam](https://docs.livekit.io/agents/models/avatar/plugins/anam.md) | ✓ | ✓ |
+| [Beyond Presence](https://docs.livekit.io/agents/models/avatar/plugins/bey.md) | ✓ | ✓ |
 | [bitHuman](https://docs.livekit.io/agents/models/avatar/plugins/bithuman.md) | ✓ | — |
 | [Hedra](https://docs.livekit.io/agents/models/avatar/plugins/hedra.md) | ✓ | — |
+| [LemonSlice](https://docs.livekit.io/agents/models/avatar/plugins/lemonslice.md) | ✓ | — |
+| [LiveAvatar](https://docs.livekit.io/agents/models/avatar/plugins/liveavatar.md) | ✓ | — |
 | [Simli](https://docs.livekit.io/agents/models/avatar/plugins/simli.md) | ✓ | — |
 | [Tavus](https://docs.livekit.io/agents/models/avatar/plugins/tavus.md) | ✓ | — |
 
 Have another provider in mind? LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
 
-## How it works
+## Usage
 
 The virtual avatar plugins work with the `AgentSession` class automatically. The plugin adds a separate participant, the avatar worker, to the room. The agent session sends its audio output to the avatar worker instead of to the room, which the avatar worker uses to publish synchronized audio + video tracks to the room and the end user.
 
@@ -39,13 +41,13 @@ To add a virtual avatar:
 4. Start the avatar session, passing in the `AgentSession` instance
 5. Start the `AgentSession` with audio output disabled (the audio is sent to the avatar session instead)
 
-## Sample code
+### Sample code
 
 Here is an example using [Hedra Realtime Avatars](https://docs.livekit.io/agents/models/avatar/plugins/hedra.md):
 
 ```python
 from livekit import agents
-from livekit.agents import AgentServer, AgentSession, RoomOutputOptions
+from livekit.agents import AgentServer, AgentSession
 from livekit.plugins import hedra
 
 server = AgentServer()
@@ -65,7 +67,7 @@ async def my_agent(ctx: agents.JobContext):
 
    # Start your agent session with the user
    await session.start(
-      # ... room, agent, room_input_options, etc....
+      # ... room, agent, room_options, etc....
    )
 
 ```
@@ -129,7 +131,7 @@ The following [frontend starter apps](https://docs.livekit.io/agents/start/front
 
 ---
 
-This document was rendered at 2025-11-18T23:55:15.574Z.
+This document was rendered at 2026-02-03T03:25:06.722Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/avatar.md](https://docs.livekit.io/agents/models/avatar.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,12 +1,16 @@
 # Source: https://bun.com/docs/guides/test/testing-library.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Testing Library with Bun
 
 You can use [Testing Library](https://testing-library.com/) with Bun's test runner.
 
 ***
 
-As a prerequisite to using Testing Library you will need to install [Happy Dom](https://github.com/capricorn86/happy-dom). ([see Bun's Happy DOM guide for more information](https://bun.sh/guides/test/happy-dom)).
+As a prerequisite to using Testing Library you will need to install [Happy Dom](https://github.com/capricorn86/happy-dom). ([see Bun's Happy DOM guide for more information](/guides/test/happy-dom)).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add -D @happy-dom/global-registrator
@@ -22,7 +26,7 @@ bun add -D @testing-library/react @testing-library/dom @testing-library/jest-dom
 
 ***
 
-Next you will need to create a preload script for Happy DOM and for Testing Library. For more details about the Happy DOM setup script see [Bun's Happy DOM guide](https://bun.sh/guides/test/happy-dom).
+Next you will need to create a preload script for Happy DOM and for Testing Library. For more details about the Happy DOM setup script see [Bun's Happy DOM guide](/guides/test/happy-dom).
 
 ```ts happydom.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { GlobalRegistrator } from "@happy-dom/global-registrator";
@@ -74,7 +78,7 @@ declare module "bun:test" {
 
 You should now be able to use Testing Library in your tests
 
-```ts matchers.d.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx myComponent.test.tsx icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
 import { screen, render } from "@testing-library/react";
 import { MyComponent } from "./myComponent";
@@ -88,4 +92,4 @@ test("Can use Testing Library", () => {
 
 ***
 
-Refer to the [Testing Library docs](https://testing-library.com/), [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](https://bun.sh/docs/test/dom) for complete documentation on writing browser tests with Bun.
+Refer to the [Testing Library docs](https://testing-library.com/), [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](/test/dom) for complete documentation on writing browser tests with Bun.

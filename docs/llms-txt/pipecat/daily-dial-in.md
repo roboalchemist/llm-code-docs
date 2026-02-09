@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-in.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily PSTN Dial-in
 
 > Using Daily's Transport to receive calls from external SIP Addresses and PSTN numbers
@@ -116,7 +120,6 @@ async def bot(runner_args: RunnerArguments):
             dialin_settings=dialin_settings,
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         )
     )
 
@@ -141,8 +144,3 @@ customer = await get_customer_by_phone(caller_phone)
 <Card title="Daily PSTN Dial-in Bot" icon="phone" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in">
   Full implementation with STT, LLM, TTS, and caller personalization
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -29,7 +29,7 @@ Apify provides a complete platform for building and deploying AI agents with the
 
 ### Step 1: Define the use case
 
-This tutorial creates a social media analysis agent that analyzes Instagram posts based on user queries using the https://apify.com/apify/instagram-scraper.
+This tutorial creates a social media analysis agent that analyzes Instagram posts based on user queries using the [Instagram Scraper Actor](https://apify.com/apify/instagram-scraper).
 
 *Example:*
 
@@ -48,7 +48,7 @@ Define the input format (URL, JSON configuration, or text query) and output form
 *Example output:*
 
 * Text response with insights
-* Data stored in Apify https://docs.apify.com/platform/storage/dataset.md
+* Data stored in Apify [Dataset](https://docs.apify.com/platform/storage/dataset.md)
 
 Agent memory
 
@@ -147,7 +147,7 @@ Define the dataset schema in `.actor/dataset_schema.json`. This helps structure 
 
 ### Step 6: Configure tools
 
-The Instagram post scraper tool is implemented using the https://apify.com/apify/instagram-scraper. The tool returns structured output as Pydantic models defined in `src/models.py`:
+The Instagram post scraper tool is implemented using the [Instagram Scraper Actor](https://apify.com/apify/instagram-scraper). The tool returns structured output as Pydantic models defined in `src/models.py`:
 
 
 ```
@@ -276,7 +276,7 @@ Apify's pay-per-event (PPE) pricing model allows charging users based on specifi
 
 How pay-per-event pricing works
 
-If you want more details about PPE pricing, refer to our https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md.
+If you want more details about PPE pricing, refer to our [PPE documentation](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md).
 
 ### Step 1: Define chargeable events
 
@@ -315,7 +315,7 @@ await Actor.charge({
 
 ### Step 4: Publish the agent
 
-Before making your agent public on https://apify.com/store, complete the following checklist:
+Before making your agent public on [Apify Store](https://apify.com/store), complete the following checklist:
 
 * Update README with usage instructions.
 * Validate `input_schema.json` and `dataset_schema.json`.

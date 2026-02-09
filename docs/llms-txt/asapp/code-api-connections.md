@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connect-apis/code-api-connections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Code API Connections
 
 > Create custom API connections using JavaScript code
 
 Code-based API connections allow you to create custom integrations with any external API using JavaScript. This enables you to support any authentication flow or API structure that your external systems require.
 
-You will implement a function that takes a request as input and returns the response that will be sent to the GenerativeAgent. This allows you to transform data, handle complex authentication flows, and integrate with any external system.
+You will implement a function that takes a request as input and returns the response that GenerativeAgent will receive. This allows you to transform data, handle complex authentication flows, and integrate with any external system.
 
 ## Before You Begin
 
@@ -37,7 +41,7 @@ Before you begin, you will need:
   </Step>
 
   <Step title="Set Up Allowed Domains">
-    Code-based API connections are restricted to an explicit whitelist of domains as a security measure. You need to add each domain that your code will reach out to.
+    Code-based API connections restrict access to an explicit whitelist of domains as a security measure. You need to add each domain that your code will reach out to.
 
     1. In the **Basic Settings** tab, specify allowed domains for any API calls your code needs to make
     2. Click **Add Domain** and enter URLs (e.g., `api.example.com`)
@@ -53,7 +57,7 @@ Before you begin, you will need:
     Store and manage environment variables to be used in your code. This is often used to store data that will change between environments, such as URLs for the API call you will be making.
 
     <Note>
-      Environment variables support storing **Secret** values which are encrypted when stored in the database. However, for API credentials and authentication data, we strongly recommend using **Authentication Methods** instead, as they provide better security and easier management.
+      Environment variables support storing **Secret** values which the system encrypts when stored in the database. However, for API credentials and authentication data, we strongly recommend using **Authentication Methods** instead, as they provide better security and easier management.
     </Note>
 
     1. In the **Environment Variables** settings tab, add any variables your code needs.
@@ -110,7 +114,7 @@ Before you begin, you will need:
     1. Publish the API connection. This will save your code and make it available as a new version.
 
        <Note>
-         There is not separate Save vs Publish functionality. You must directly publish any changes to your code.
+         The system does not provide separate Save vs Publish functionality. You must directly publish any changes to your code.
        </Note>
     2. It will now be available for use in your GenerativeAgent tasks and functions. If you have an existing function that uses this API connection, you will need to update it to use the new version.
     3. Test the integration end-to-end to ensure it works as expected
@@ -161,7 +165,7 @@ This example takes a last name and confirmation code as input for an airline reb
 
 ## Response Schema
 
-The response schema (`schemas/response.json`) defines the structure of data that your function must return. This is the response that is shown to GenerativeAgent.
+The response schema (`schemas/response.json`) defines the structure of data that your function must return. This is the response that GenerativeAgent receives.
 
 Add the variables you want as output. Ensure the name and description of each variable is easy for GenerativeAgent to understand.
 
@@ -371,7 +375,7 @@ In order to properly propagate errors to ASAPP, you must throw an `asappUtilitie
 
 ### Context Data
 
-When an API Connection is executed, there may be context data from the ASAPP system and this is available to you in the `context` object.
+When you execute an API Connection, the ASAPP system may provide context data available to you in the `context` object.
 
 ```javascript  theme={null}
 const contextData = asappUtilities.getContextData();
@@ -570,6 +574,6 @@ export async function handleRequest(request) {
 
 ## Additional Libraries
 
-Currently, code-based API connections support the core ASAPP Utilities library and does not allow use of third-party libraries e.g. using `require()` or `import` statements.
+Currently, code-based API connections support the core ASAPP Utilities library and do not allow the use of third-party libraries e.g., using `require()` or `import` statements.
 
 If you require additional third-party libraries or tools for your integration, reach out to your ASAPP account team to discuss your specific needs.

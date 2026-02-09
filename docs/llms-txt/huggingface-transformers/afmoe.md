@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/afmoe.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/afmoe.md
 
 # AFMoE
 
@@ -20,7 +20,7 @@ The model supports extended context lengths with RoPE embeddings and includes al
 > [!TIP]
 > AFMoE is particularly well-suited for scenarios requiring efficient scaling through sparsity while maintaining strong performance. The shared experts provide a stable computation baseline while routed experts enable model capacity scaling.
 
-The example below demonstrates how to generate text with AFMoE using [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel).
+The example below demonstrates how to generate text with AFMoE using [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel).
 
 ```py
 import torch
@@ -87,17 +87,17 @@ All attention layers include Q/K normalization and output gating for improved tr
 
 #### transformers.AfmoeConfig[[transformers.AfmoeConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/afmoe/configuration_afmoe.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/afmoe/configuration_afmoe.py#L24)
 
-This is the configuration class to store the configuration of a [AfmoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/afmoe#transformers.AfmoeModel). It is used to instantiate an
+This is the configuration class to store the configuration of a [AfmoeModel](/docs/transformers/v5.0.0/en/model_doc/afmoe#transformers.AfmoeModel). It is used to instantiate an
 AFMoE model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of [arcee-ai/Trinity-Mini](https://huggingface.co/arcee-ai/Trinity-Mini).
 
 AFMoE is an Adaptive Feedforward MoE (Mixture of Experts) model with token-choice routing, shared experts, and a
 hybrid attention mechanism combining sliding window and full attention patterns.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 ```python
@@ -115,7 +115,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 200192) : Vocabulary size of the AFMoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [AfmoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/afmoe#transformers.AfmoeModel).
+vocab_size (`int`, *optional*, defaults to 200192) : Vocabulary size of the AFMoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [AfmoeModel](/docs/transformers/v5.0.0/en/model_doc/afmoe#transformers.AfmoeModel).
 
 hidden_size (`int`, *optional*, defaults to 2048) : Dimension of the hidden representations.
 
@@ -141,19 +141,19 @@ num_dense_layers (`int`, *optional*, defaults to 1) : Number of initial dense la
 
 **Parameters:**
 
-config ([AfmoeForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/afmoe#transformers.AfmoeForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([AfmoeForCausalLM](/docs/transformers/v5.0.0/en/model_doc/afmoe#transformers.AfmoeForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([AfmoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/afmoe#transformers.AfmoeConfig)) and inputs.
+elements depending on the configuration ([AfmoeConfig](/docs/transformers/v5.0.0/en/model_doc/afmoe#transformers.AfmoeConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.

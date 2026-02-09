@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/react-pdf.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate a PDF using react-pdf and save it to R2
 
 > This example will show you how to generate a PDF using Trigger.dev.
@@ -12,7 +16,7 @@ This example demonstrates how to use Trigger.dev to generate a PDF using [react-
 
 <Info> This example must be a .tsx file to use React components.</Info>
 
-```ts trigger/generateResumePDF.tsx theme={null}
+```ts trigger/generateResumePDF.tsx theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { renderToBuffer, Document, Page, Text, View } from "@react-pdf/renderer";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
@@ -78,7 +82,7 @@ export const generateResumePDF = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "text": "Hello, world!"
 }

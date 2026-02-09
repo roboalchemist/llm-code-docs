@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/versioning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Versioning
 
 > We use atomic versioning to ensure that started tasks are not affected by changes to the task code.
@@ -24,6 +28,8 @@ Versions numbers are incremented each time a new version is created for that dat
 ## Version locking
 
 When a task run starts it is locked to the latest version of the code (for that environment). Once locked it won't change versions, even if you deploy new versions. This is to ensure that a task run is not affected by changes to the code.
+
+Delayed runs are locked to the version that's active when they begin executing, not when they're enqueued.
 
 ### Child tasks and version locking
 

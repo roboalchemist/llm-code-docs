@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/faq/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Frequently Asked Questions
 
 <Accordion title="What is Tavily?">
@@ -108,8 +112,3 @@
   3. Integrate it into your application using our Python or Node.js SDK.
   4. Start retrieving real-time search results!
 </Accordion>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

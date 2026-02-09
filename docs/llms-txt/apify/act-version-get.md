@@ -9,13 +9,17 @@ https://api.apify.com/v2/acts/:actorId/versions/:versionNumber
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorVersionClientAsync#getGets a  that contains all the details about a specific version of an Actor.
+Gets a  that contains all the details about a specific version of an Actor.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

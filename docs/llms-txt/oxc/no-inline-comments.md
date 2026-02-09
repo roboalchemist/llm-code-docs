@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-inline-comments.md
 ---
-# eslint/no-inline-comments&#x20;
 
 ### What it does
 
@@ -40,7 +39,7 @@ This rule accepts a configuration object with the following properties:
 
 ### ignorePattern
 
-type: `string | null`
+type: `string`
 
 A regex pattern to ignore certain inline comments.
 

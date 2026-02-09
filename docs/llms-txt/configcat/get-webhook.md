@@ -2,10 +2,7 @@
 
 # Get Webhook
 
-```
-GET 
-/v1/webhooks/:webhookId
-```
+Copy page
 
 This endpoint returns the metadata of a Webhook identified by the `webhookId`.
 

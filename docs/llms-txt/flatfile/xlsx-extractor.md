@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/xlsx-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Excel Extractor
 
 > Parse various Excel file formats (.xls, .xlsx, .xlsm, .xlsb, .xltx, .xltm) and extract structured data with support for header detection, merged cells, and hierarchical spreadsheets.
@@ -10,7 +14,7 @@ The Excel Extractor plugin is designed to parse various Excel file formats (.xls
 
 Install the Excel Extractor plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-xlsx-extractor
 ```
 
@@ -43,7 +47,7 @@ The Excel Extractor accepts the following configuration options:
 
 Default configuration:
 
-```javascript
+```javascript  theme={null}
 {
   algorithm: 'default',
   rowsToSearch: 10
@@ -71,7 +75,7 @@ Configure treatment of merged cells with these options:
 ## Usage Examples
 
 <CodeGroup>
-  ```javascript JavaScript - Basic Usage
+  ```javascript JavaScript - Basic Usage theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
 
@@ -80,7 +84,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Basic Usage
+  ```typescript TypeScript - Basic Usage theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
   import type { FlatfileListener } from '@flatfile/listener';
@@ -94,7 +98,7 @@ Configure treatment of merged cells with these options:
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript - Configuration
+  ```javascript JavaScript - Configuration theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
 
@@ -110,7 +114,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Configuration
+  ```typescript TypeScript - Configuration theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
   import type { FlatfileListener } from '@flatfile/listener';
@@ -131,7 +135,7 @@ Configure treatment of merged cells with these options:
 ### Advanced Header Detection
 
 <CodeGroup>
-  ```javascript JavaScript - Specific Rows
+  ```javascript JavaScript - Specific Rows theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
 
@@ -147,7 +151,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Specific Rows
+  ```typescript TypeScript - Specific Rows theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
   import type { FlatfileListener } from '@flatfile/listener';
@@ -168,7 +172,7 @@ Configure treatment of merged cells with these options:
 ### Merged Cell Handling
 
 <CodeGroup>
-  ```javascript JavaScript - Merged Cells
+  ```javascript JavaScript - Merged Cells theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
 
@@ -189,7 +193,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Merged Cells
+  ```typescript TypeScript - Merged Cells theme={null}
   import { listener } from '@flatfile/listener';
   import { ExcelExtractor } from '@flatfile/plugin-xlsx-extractor';
   import type { FlatfileListener } from '@flatfile/listener';
@@ -215,7 +219,7 @@ Configure treatment of merged cells with these options:
 ### Direct Parser Usage
 
 <CodeGroup>
-  ```javascript JavaScript - Direct Parser
+  ```javascript JavaScript - Direct Parser theme={null}
   import * as fs from 'fs';
   import { excelParser } from '@flatfile/plugin-xlsx-extractor';
 
@@ -232,7 +236,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Direct Parser
+  ```typescript TypeScript - Direct Parser theme={null}
   import * as fs from 'fs';
   import { excelParser } from '@flatfile/plugin-xlsx-extractor';
   import type { WorkbookCapture } from '@flatfile/plugin-xlsx-extractor';
@@ -258,7 +262,7 @@ Configure treatment of merged cells with these options:
 ### Large File Handling
 
 <CodeGroup>
-  ```javascript JavaScript - Error Handling
+  ```javascript JavaScript - Error Handling theme={null}
   import { excelParser } from '@flatfile/plugin-xlsx-extractor';
 
   async function parseLargeFile(buffer) {
@@ -275,7 +279,7 @@ Configure treatment of merged cells with these options:
   }
   ```
 
-  ```typescript TypeScript - Error Handling
+  ```typescript TypeScript - Error Handling theme={null}
   import { excelParser } from '@flatfile/plugin-xlsx-extractor';
   import type { WorkbookCapture } from '@flatfile/plugin-xlsx-extractor';
 
@@ -299,7 +303,7 @@ Configure treatment of merged cells with these options:
 
 Enable debug mode for detailed logging:
 
-```javascript
+```javascript  theme={null}
 ExcelExtractor({
   debug: true
 })

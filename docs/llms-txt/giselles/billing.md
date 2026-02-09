@@ -2,123 +2,82 @@
 
 # Source: https://docs.giselles.ai/en/faq/account-billing/billing.md
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/billing.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.giselles.ai/en/faq/account-billing/billing.md
+# Billing FAQ
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/billing.md
+> Frequently asked questions about billing and payments for Giselle
 
-# Source: https://docs.giselles.ai/en/faq/account-billing/billing.md
+## What payment methods are accepted?
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/billing.md
+Giselle uses Stripe for payment processing, which supports major credit cards and other payment methods available in your region.
 
-# Source: https://docs.giselles.ai/en/faq/account-billing/billing.md
+## How do I access my billing information?
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/billing.md
+Pro plan team admins can access billing information from [Team Settings](https://studio.giselles.ai/settings/team). Click the "Manage Subscription" button to open the Stripe billing portal where you can:
 
-# Source: https://docs.giselles.ai/en/faq/account-billing/billing.md
+* View and update payment methods
+* View billing history and invoices
+* Manage Subscription billing information
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/billing.md
+## How does billing work?
 
-# Billing
+Giselle Pro plan uses a combination of:
 
-> Manage your personal account billing and payments
+* **Base subscription fee**: A fixed monthly or annual fee for the Pro plan
+* **Usage-based billing**: Charged based on AI model usage
 
-## Payment Guide
+## When am I charged?
 
-This guide explains how Giselle's pricing system works, including subscription management, billing cycles, and secure payments. Giselle uses [Stripe](https://stripe.com) for simplified billing to ensure safe and reliable transactions.
+You are charged at the beginning of each billing period. Usage-based charges from the previous period are included in your invoice.
 
-***
+## How do I view my invoices?
 
-## How to Access Billing Settings
+Access the Stripe billing portal from [Team Settings](https://studio.giselles.ai/settings/team) by clicking "Manage Subscription". Your complete invoice history is available there.
 
-After logging in, you can access　[Settings > Team > Billing](https://studio.giselles.ai/settings/team/billing) by selecting "Billing" from the sidebar menu.
+## How do I update my payment method?
 
-From this page, you can access the dedicated billing portal provided by Stripe.
-In the Stripe billing portal, you can:
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Manage Subscription" to open the Stripe billing portal
+3. Manage Subscription your payment method in the portal
 
-View your current subscription details
-Update your payment method
-View invoice history
-Cancel your subscription
+## What happens if my payment fails?
 
-Subscription cancellation is possible through the Stripe management screen. You cannot cancel directly from the Giselle management interface.
+If a payment fails, Stripe will automatically retry the payment. You can also update your payment method in the billing portal to resolve payment issues.
 
-***
+## How do I cancel my subscription?
 
-## About the Billing Cycle
+To cancel your Pro subscription:
 
-* Subscriptions are billed on a monthly recurring basis, starting from your subscription date
-* Your subscription automatically renews on the same day each month (e.g., May 5)
-* Payments are processed automatically through your registered payment method
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Manage Subscription" to open the Stripe billing portal
+3. Cancel your subscription in the portal
 
-***
+Your subscription will remain active until the end of the current billing period.
 
-## Current Plans and Pricing
+## What happens when I cancel my subscription?
 
-For detailed information about our current plans and pricing options, please visit [Our Pricing page](https://giselles.ai/pricing)
+When you cancel:
 
-Alternatively, you can refer to our documentation at [Plan](plan) for comprehensive plan details and feature comparisons.
+* Your subscription remains active until the end of the current billing period
+* A final invoice is generated for any usage during the last billing cycle
+* After cancellation, your team reverts to the Free plan
+* Team membership is adjusted (only the earliest admin remains)
 
-For any specific pricing questions not covered on these pages, please contact our support team.
+## Can I get a refund?
 
-***
+For refund requests, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai).
 
-## How AI Model Usage is Billed
+## How is usage-based billing calculated?
 
-* The Free Plan includes 30 minutes of AI usage per month (limited-time offer)
-* The Pro Plan includes unlimited AI model usage during the promotional period
-* Users will be notified one month before the promotion ends
+AI model usage (text generation, image generation) is metered and reported to Stripe throughout your billing period. Your invoice will reflect the actual usage during the billing period.
 
-***
+## Where can I see my current usage?
 
-## How to View and Download Invoices
+You can view your usage from [Team Settings > Usage](https://studio.giselles.ai/settings/team/usage).
 
-You can view and download your invoice history in the Stripe billing portal. Each invoice shows:
+## Where can I see pay-as-you-go charges for AI models?
 
-* Date of payment
-* Amount charged
-* Payment status
-* Description of services
-
-From the Stripe portal, you can download both invoices and receipts for your records or accounting purposes. Simply locate the invoice you need and use the download options provided.
-
-***
-
-## How to Update Payment Method
-
-To update your payment information:
-
-1. Go to the [Billing section](https://studio.giselles.ai/settings/team/billing) in Settings
-2. Access the Stripe billing portal
-3. Look for the "Payment Method" section
-4. Modify your payment details, where you can:
-   * Update your credit card information
-   * Change to a different payment method
-
-All changes to your payment information will be securely processed and stored by Stripe.
-
-***
-
-## How to Cancel a Subscription
-
-To cancel your subscription:
-
-1. Go to [Billing settings](https://studio.giselles.ai/settings/team/billing)
-2. Click "Cancel subscription"
-3. Review the cancellation information
-4. Click the "Cancel subscription" button to confirm
-
-Your subscription will remain active until the end of your current billing period. If you change your mind before the end date, you can renew your subscription.
-
-***
-
-## Payment Processing
-
-* All payments are processed securely through Stripe
-* Supported payment methods include major credit cards
-* Payment information is stored securely by Stripe, not by Giselle
-
-If you have questions not covered in this guide or encounter any billing-related issues, please contact: **[support@giselles.ai](mailto:support@giselles.ai)**
-
-Include your account information and a description of your issue for prompt assistance.
+You can view the detailed breakdown of pay-as-you-go charges for additional AI model usage in the Stripe billing portal. Access it by clicking "Manage Subscription" in [Team Settings](https://studio.giselles.ai/settings/team). The portal shows your usage-based billing details alongside your subscription charges.

@@ -21,7 +21,7 @@ Async variant of `StatusMessageWatcher` that is logging in task.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__aenter__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L464)\_\_aenter\_\_
+### [**](#__aenter__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L464)\_\_aenter\_\_
 
 * **async **\_\_aenter\_\_**(): Self
 
@@ -31,7 +31,7 @@ Async variant of `StatusMessageWatcher` that is logging in task.
 
   #### Returns Self
 
-### [**](#__aexit__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L469)\_\_aexit\_\_
+### [**](#__aexit__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L469)\_\_aexit\_\_
 
 * **async **\_\_aexit\_\_**(exc\_type, exc\_val, exc\_tb): None
 
@@ -47,7 +47,7 @@ Async variant of `StatusMessageWatcher` that is logging in task.
 
   #### Returns None
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L432)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L432)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, run\_client, to\_logger, check\_period): None
 
@@ -73,7 +73,7 @@ Async variant of `StatusMessageWatcher` that is logging in task.
 
   #### Returns None
 
-### [**](#start)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L446)start
+### [**](#start)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L446)start
 
 * ****start**(): Task
 
@@ -83,7 +83,7 @@ Async variant of `StatusMessageWatcher` that is logging in task.
 
   #### Returns Task
 
-### [**](#stop)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L453)stop
+### [**](#stop)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L453)stop
 
 * **async **stop**(): None
 

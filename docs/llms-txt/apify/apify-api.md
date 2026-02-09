@@ -6,13 +6,13 @@
 
 ***
 
-https://docs.apify.com/api/v2.md is your ticket to the Apify platform without even needing to access the https://console.apify.com?asrc=developers_portal web-interface. The API is organized around RESTful HTTP endpoints.
+[Apify's API](https://docs.apify.com/api/v2.md) is your ticket to the Apify platform without even needing to access the [Apify Console](https://console.apify.com?asrc=developers_portal) web-interface. The API is organized around RESTful HTTP endpoints.
 
 In this lesson, we'll be learning how to use the Apify API to call an Actor and view its results. We'll be using the Actor we created in the previous lesson, so if you haven't already gotten that one set up, go ahead do that before moving forward if you'd like to follow along.
 
 ## Finding your endpoint
 
-Within one of your Actors on the https://console.apify.com?asrc=developers_portal (we'll use the **adding-actor** from the previous lesson), click on the **API** button in the top right-hand corner:
+Within one of your Actors on the [Apify Console](https://console.apify.com?asrc=developers_portal) (we'll use the **adding-actor** from the previous lesson), click on the **API** button in the top right-hand corner:
 
 ![The \&quot;API\&quot; button on an Actor\&#39;s page on the Apify Console](/assets/images/api-tab-1fb75598685ed64e58605cd51734d19c.jpg)
 
@@ -28,7 +28,7 @@ Single endpoint
 
 In this lesson, we'll only be focusing on this one endpoint, as it is the most popularly used one, however, don't let this limit your curiosity! Take a look at the other endpoints in the **API** window to learn about everything you can do to your Actor programmatically.
 
-Now, let's move over to our favorite HTTP client (in this lesson we'll use https://docs.apify.com/academy/tools/insomnia.md in order to prepare and send the request).
+Now, let's move over to our favorite HTTP client (in this lesson we'll use [Insomnia](https://insomnia.rest/) in order to prepare and send the request, but you can use [Postman](https://www.postman.com/), [Bruno](https://www.usebruno.com/), [Httpie](https://httpie.io/) or any other client you like).
 
 ## Providing input
 
@@ -46,11 +46,11 @@ https://api.apify.com/v2/acts/YOUR_USERNAME~adding-actor/run-sync-get-dataset-it
 ```
 
 
-Additional parameters can be passed to this endpoint. You can learn about them in our https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post.md
+Additional parameters can be passed to this endpoint. You can learn about them in our [API documentation](https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post.md)
 
 Token security
 
-Network components can record visited URLs, so it's more secure to send the token as a HTTP header, not as a parameter. The header should look like `Authorization: Bearer YOUR_TOKEN`. Popular HTTP clients, such as https://docs.apify.com/academy/tools/postman.md or https://docs.apify.com/academy/tools/insomnia.md, provide a convenient way to configure the Authorization header for all your API requests.
+Network components can record visited URLs, so it's more secure to send the token as a HTTP header, not as a parameter. The header should look like `Authorization: Bearer YOUR_TOKEN`. Popular HTTP clients, such as Postman or Insomnia, provide a convenient way to configure the Authorization header for all your API requests.
 
 ## Sending the request
 
@@ -70,8 +70,8 @@ And there it is! The Actor was run with our inputs of **num1** and **num2**, the
 
 ## Apify API's many features
 
-What we've done in this lesson only scratches the surface of what the Apify API can do. Right from Insomnia, or from any HTTP client, you can manage https://docs.apify.com/api/v2/storage-datasets.md and https://docs.apify.com/api/v2/storage-key-value-stores.md, add to https://docs.apify.com/api/v2/storage-request-queues.md, https://docs.apify.com/api/v2/act-put.md, and much more! Basically, whatever you can do on the platform's web interface, you also do through the API.
+What we've done in this lesson only scratches the surface of what the Apify API can do. Right from Insomnia, or from any HTTP client, you can manage [datasets](https://docs.apify.com/api/v2/storage-datasets.md) and [key-value stores](https://docs.apify.com/api/v2/storage-key-value-stores.md), add to [request queues](https://docs.apify.com/api/v2/storage-request-queues.md), [update Actors](https://docs.apify.com/api/v2/act-put.md), and much more! Basically, whatever you can do on the platform's web interface, you also do through the API.
 
 ## Next up
 
-https://docs.apify.com/academy/getting-started/apify-client.md, we'll be learning about how to use Apify's JavaScript and Python clients to interact with the API right within our code.
+[Next up](https://docs.apify.com/academy/getting-started/apify-client.md), we'll be learning about how to use Apify's JavaScript and Python clients to interact with the API right within our code.

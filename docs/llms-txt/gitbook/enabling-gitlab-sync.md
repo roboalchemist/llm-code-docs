@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/getting-started/git-sync/enabling-gitlab-sync.md
-
-# Source: https://gitbook.com/docs/documentation/fr/getting-started/git-sync/enabling-gitlab-sync.md
-
-# Source: https://gitbook.com/docs/getting-started/git-sync/enabling-gitlab-sync.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/getting-started/git-sync/enabling-gitlab-sync.md
 
 # Source: https://gitbook.com/docs/documentation/zh/getting-started/git-sync/enabling-gitlab-sync.md
 

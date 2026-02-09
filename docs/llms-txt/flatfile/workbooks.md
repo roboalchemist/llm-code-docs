@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/workbooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workbooks
 
 > Database-like containers with type-strict Blueprints for data import
@@ -29,7 +33,7 @@ The following examples demonstrate the configuration of isolated Workbooks, whic
 
 This example configures a single [Workbook](/core-concepts/workbooks) with a single [Sheet](/core-concepts/sheets) containing two [Fields](/core-concepts/fields).
 
-```javascript
+```javascript  theme={null}
 const customerWorkbook = {
   name: "Customer Import",
   description: "Import and validate customer data",
@@ -60,7 +64,7 @@ const customerWorkbook = {
 
 This example configures a [Workbook](/core-concepts/workbooks) with three [Sheets](/core-concepts/sheets) containing several [Fields](/core-concepts/fields) each.
 
-```javascript
+```javascript  theme={null}
 const ecommerceWorkbook = {
   name: "E-commerce Data Import",
   description: "Import customers, products, and orders",
@@ -119,7 +123,7 @@ This example configures a [Workbook](/core-concepts/workbooks) with three [Actio
   on them. For more, see [Using Actions](/guides/using-actions)
 </Note>
 
-```javascript
+```javascript  theme={null}
 const workbookWithActions = {
   name: "Advanced Customer Import",
   sheets: [customerSheet, productsSheet],
@@ -169,7 +173,7 @@ For comprehensive metadata usage patterns, see our [metadata guide](/guides/util
 
 Add contextual information:
 
-```javascript
+```javascript  theme={null}
 const metadataWorkbook = {
   name: "Q1 2024 Customer Import",
   description: "Quarterly customer data migration for Q1 2024",
@@ -188,7 +192,7 @@ const metadataWorkbook = {
 
 Workbooks can be assigned [namespaces](/guides/namespaces-and-filters) to enable granular event filtering and isolation within the same space:
 
-```javascript
+```javascript  theme={null}
 const workbook = {
   name: 'Employee Data Processing',
   namespace: 'staging', // Simple string namespace
@@ -220,12 +224,12 @@ The following example defines four Workbooks (**Marketing Data**, **Sales Report
 <Tabs>
   <Tab title="Screenshot">
     <Frame caption="An example of Workbooks grouped by Folder">
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/workbook-folders.png" />
+      <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=245dff5efc3c7465eafd22ebe1cb682e" data-og-width="1776" width="1776" data-og-height="1646" height="1646" data-path="core-concepts/assets/workbook-folders.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=d0119393a6a065c0b5fee4edafab7c86 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ea5aafd9004d81c70048055864b3f10d 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=bc3bca9a6e896db7016922ebc7652f4e 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f57d4e934ba953a4ff1f31ba839b51c3 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=37047f3eb6df8a524d2f4fe564e43ef1 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/workbook-folders.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=09d50759d5a8197ec6d759bbec2dcdf1 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Blueprints">
-    ```javascript
+    ```javascript  theme={null}
     // Analytics folder
     const marketingDataWorkbook = {
       name: "Marketing Data", 

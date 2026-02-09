@@ -1,6 +1,10 @@
 # Source: https://docs.baseten.co/development/chain/design.md
 
-# Architecture & Design
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Architecture and design
 
 > How to structure your Chainlets
 

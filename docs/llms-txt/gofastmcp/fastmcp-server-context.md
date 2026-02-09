@@ -1,12 +1,32 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # context
 
 # `fastmcp.server.context`
 
 ## Functions
 
-### `set_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L94" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `set_transport` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L86" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+set_transport(transport: TransportType) -> Token[TransportType | None]
+```
+
+Set the current transport type. Returns token for reset.
+
+### `reset_transport` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L93" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+reset_transport(token: Token[TransportType | None]) -> None
+```
+
+Reset transport to previous value.
+
+### `set_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L123" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_context(context: Context) -> Generator[Context, None, None]
@@ -14,14 +34,14 @@ set_context(context: Context) -> Generator[Context, None, None]
 
 ## Classes
 
-### `LogData` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L70" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `LogData` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L99" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Data object for passing log arguments to client-side handlers.
 
 This provides an interface to match the Python standard library logging,
 for compatibility with structured logging.
 
-### `Context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L103" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `Context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L132" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Context object providing access to MCP capabilities.
 
@@ -49,25 +69,29 @@ async def my_tool(x: int, ctx: Context) -> str:
     request_id = ctx.request_id
     client_id = ctx.client_id
 
-    # Manage state across the request
-    ctx.set_state("key", "value")
-    value = ctx.get_state("key")
+    # Manage state across the session (persists across requests)
+    await ctx.set_state("key", "value")
+    value = await ctx.get_state("key")
 
     return str(x)
 ```
 
 State Management:
-Context objects maintain a state dictionary that can be used to store and share
-data across middleware and tool calls within a request. When a new context
-is created (nested contexts), it inherits a copy of its parent's state, ensuring
-that modifications in child contexts don't affect parent contexts.
+Context provides session-scoped state that persists across requests within
+the same MCP session. State is automatically keyed by session, ensuring
+isolation between different clients.
+
+State set during `on_initialize` middleware will persist to subsequent tool
+calls when using the same session object (STDIO, SSE, single-server HTTP).
+For distributed/serverless HTTP deployments where different machines handle
+the init and tool calls, state is isolated by the mcp-session-id header.
 
 The context parameter name can be anything as long as it's annotated with Context.
 The context is optional - tools that don't need it can omit the parameter.
 
 **Methods:**
 
-#### `fastmcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L155" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `fastmcp` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L190" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 fastmcp(self) -> FastMCP
@@ -75,17 +99,59 @@ fastmcp(self) -> FastMCP
 
 Get the FastMCP instance.
 
-#### `request_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L184" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `request_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L249" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-request_context(self) -> RequestContext[ServerSession, Any, Request]
+request_context(self) -> RequestContext[ServerSession, Any, Request] | None
 ```
 
 Access to the underlying request context.
 
-If called outside of a request context, this will raise a ValueError.
+Returns None when the MCP session has not been established yet.
+Returns the full RequestContext once the MCP session is available.
 
-#### `report_progress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L194" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+For HTTP request access in middleware, use `get_http_request()` from fastmcp.server.dependencies,
+which works whether or not the MCP session is available.
+
+Example in middleware:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+async def on_request(self, context, call_next):
+    ctx = context.fastmcp_context
+    if ctx.request_context:
+        # MCP session available - can access session_id, request_id, etc.
+        session_id = ctx.session_id
+    else:
+        # MCP session not available yet - use HTTP helpers
+        from fastmcp.server.dependencies import get_http_request
+        request = get_http_request()
+    return await call_next(context)
+```
+
+#### `lifespan_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L278" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+lifespan_context(self) -> dict[str, Any]
+```
+
+Access the server's lifespan context.
+
+Returns the context dict yielded by the server's lifespan function.
+Returns an empty dict if no lifespan was configured or if the MCP
+session is not yet established.
+
+Example:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+@server.tool
+def my_tool(ctx: Context) -> str:
+    db = ctx.lifespan_context.get("db")
+    if db:
+        return db.query("SELECT 1")
+    return "No database connection"
+```
+
+#### `report_progress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L300" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 report_progress(self, progress: float, total: float | None = None, message: str | None = None) -> None
@@ -98,10 +164,10 @@ Report progress for the current operation.
 * `progress`: Current progress value e.g. 24
 * `total`: Optional total value e.g. 100
 
-#### `list_resources` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L221" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `list_resources` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L354" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_resources(self) -> list[MCPResource]
+list_resources(self) -> list[SDKResource]
 ```
 
 List all available resources from the server.
@@ -110,10 +176,10 @@ List all available resources from the server.
 
 * List of Resource objects available on the server
 
-#### `list_prompts` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L229" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `list_prompts` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L370" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-list_prompts(self) -> list[MCPPrompt]
+list_prompts(self) -> list[SDKPrompt]
 ```
 
 List all available prompts from the server.
@@ -122,7 +188,7 @@ List all available prompts from the server.
 
 * List of Prompt objects available on the server
 
-#### `get_prompt` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L237" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `get_prompt` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L386" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_prompt(self, name: str, arguments: dict[str, Any] | None = None) -> GetPromptResult
@@ -139,10 +205,10 @@ Get a prompt by name with optional arguments.
 
 * The prompt result
 
-#### `read_resource` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L251" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `read_resource` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L405" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-read_resource(self, uri: str | AnyUrl) -> list[ReadResourceContents]
+read_resource(self, uri: str | AnyUrl) -> ResourceResult
 ```
 
 Read a resource by URI.
@@ -153,9 +219,9 @@ Read a resource by URI.
 
 **Returns:**
 
-* The resource content as either text or bytes
+* ResourceResult with contents
 
-#### `log` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L262" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `log` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L421" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 log(self, message: str, level: LoggingLevel | None = None, logger_name: str | None = None, extra: Mapping[str, Any] | None = None) -> None
@@ -173,7 +239,18 @@ Messages sent to Clients are also logged to the `fastmcp.server.context.to_clien
 * `logger_name`: Optional logger name
 * `extra`: Optional mapping for additional arguments
 
-#### `client_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L291" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `transport` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L450" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+transport(self) -> TransportType | None
+```
+
+Get the current transport type.
+
+Returns the transport type used to run this server: "stdio", "sse",
+or "streamable-http". Returns None if called outside of a server context.
+
+#### `client_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L459" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 client_id(self) -> str | None
@@ -181,7 +258,7 @@ client_id(self) -> str | None
 
 Get the client ID if available.
 
-#### `request_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L300" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `request_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L468" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 request_id(self) -> str
@@ -189,7 +266,9 @@ request_id(self) -> str
 
 Get the unique ID for this request.
 
-#### `session_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L305" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Raises RuntimeError if MCP request context is not available.
+
+#### `session_id` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L481" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 session_id(self) -> str
@@ -206,7 +285,7 @@ the same client session.
 * The session ID for StreamableHTTP transports, or a generated ID
 * for other transports.
 
-#### `session` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L349" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `session` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L538" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 session(self) -> ServerSession
@@ -214,7 +293,9 @@ session(self) -> ServerSession
 
 Access to the underlying session for advanced usage.
 
-#### `debug` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L354" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Raises RuntimeError if MCP request context is not available.
+
+#### `debug` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L551" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 debug(self, message: str, logger_name: str | None = None, extra: Mapping[str, Any] | None = None) -> None
@@ -224,7 +305,7 @@ Send a `DEBUG`-level message to the connected MCP Client.
 
 Messages sent to Clients are also logged to the `fastmcp.server.context.to_client` logger with a level of `DEBUG`.
 
-#### `info` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L370" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `info` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L567" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 info(self, message: str, logger_name: str | None = None, extra: Mapping[str, Any] | None = None) -> None
@@ -234,7 +315,7 @@ Send a `INFO`-level message to the connected MCP Client.
 
 Messages sent to Clients are also logged to the `fastmcp.server.context.to_client` logger with a level of `DEBUG`.
 
-#### `warning` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L386" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `warning` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L583" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 warning(self, message: str, logger_name: str | None = None, extra: Mapping[str, Any] | None = None) -> None
@@ -244,7 +325,7 @@ Send a `WARNING`-level message to the connected MCP Client.
 
 Messages sent to Clients are also logged to the `fastmcp.server.context.to_client` logger with a level of `DEBUG`.
 
-#### `error` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L402" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `error` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L599" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 error(self, message: str, logger_name: str | None = None, extra: Mapping[str, Any] | None = None) -> None
@@ -254,7 +335,7 @@ Send a `ERROR`-level message to the connected MCP Client.
 
 Messages sent to Clients are also logged to the `fastmcp.server.context.to_client` logger with a level of `DEBUG`.
 
-#### `list_roots` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L418" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `list_roots` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L615" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 list_roots(self) -> list[Root]
@@ -262,64 +343,172 @@ list_roots(self) -> list[Root]
 
 List the roots available to the server, as indicated by the client.
 
-#### `send_tool_list_changed` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L423" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `send_notification` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L620" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-send_tool_list_changed(self) -> None
+send_notification(self, notification: mcp.types.ServerNotificationType) -> None
 ```
 
-Send a tool list changed notification to the client.
+Send a notification to the client immediately.
 
-#### `send_resource_list_changed` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L427" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+**Args:**
+
+* `notification`: An MCP notification instance (e.g., ToolListChangedNotification())
+
+#### `close_sse_stream` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L630" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-send_resource_list_changed(self) -> None
+close_sse_stream(self) -> None
 ```
 
-Send a resource list changed notification to the client.
+Close the current response stream to trigger client reconnection.
 
-#### `send_prompt_list_changed` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L431" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+When using StreamableHTTP transport with an EventStore configured, this
+method gracefully closes the HTTP connection for the current request.
+The client will automatically reconnect (after `retry_interval` milliseconds)
+and resume receiving events from where it left off via the EventStore.
+
+This is useful for long-running operations to avoid load balancer timeouts.
+Instead of holding a connection open for minutes, you can periodically close
+and let the client reconnect.
+
+#### `sample_step` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L669" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-send_prompt_list_changed(self) -> None
+sample_step(self, messages: str | Sequence[str | SamplingMessage]) -> SampleStep
 ```
 
-Send a prompt list changed notification to the client.
+Make a single LLM sampling call.
 
-#### `sample` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L435" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+This is a stateless function that makes exactly one LLM call and optionally
+executes any requested tools. Use this for fine-grained control over the
+sampling loop.
+
+**Args:**
+
+* `messages`: The message(s) to send. Can be a string, list of strings,
+  or list of SamplingMessage objects.
+* `system_prompt`: Optional system prompt for the LLM.
+* `temperature`: Optional sampling temperature.
+* `max_tokens`: Maximum tokens to generate. Defaults to 512.
+* `model_preferences`: Optional model preferences.
+* `tools`: Optional list of tools the LLM can use.
+* `tool_choice`: Tool choice mode ("auto", "required", or "none").
+* `execute_tools`: If True (default), execute tool calls and append results
+  to history. If False, return immediately with tool\_calls available
+  in the step for manual execution.
+* `mask_error_details`: If True, mask detailed error messages from tool
+  execution. When None (default), uses the global settings value.
+  Tools can raise ToolError to bypass masking.
+
+**Returns:**
+
+* SampleStep containing:
+* * .response: The raw LLM response
+* * .history: Messages including input, assistant response, and tool results
+* * .is\_tool\_use: True if the LLM requested tool execution
+* * .tool\_calls: List of tool calls (if any)
+* * .text: The text content (if any)
+
+#### `sample` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L740" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-sample(self, messages: str | Sequence[str | SamplingMessage], system_prompt: str | None = None, include_context: IncludeContext | None = None, temperature: float | None = None, max_tokens: int | None = None, model_preferences: ModelPreferences | str | list[str] | None = None) -> TextContent | ImageContent | AudioContent
+sample(self, messages: str | Sequence[str | SamplingMessage]) -> SamplingResult[ResultT]
+```
+
+Overload: With result\_type, returns SamplingResult\[ResultT].
+
+#### `sample` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L755" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+sample(self, messages: str | Sequence[str | SamplingMessage]) -> SamplingResult[str]
+```
+
+Overload: Without result\_type, returns SamplingResult\[str].
+
+#### `sample` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L769" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+sample(self, messages: str | Sequence[str | SamplingMessage]) -> SamplingResult[ResultT] | SamplingResult[str]
 ```
 
 Send a sampling request to the client and await the response.
 
-Call this method at any time to have the server request an LLM
-completion from the client. The client must be appropriately configured,
-or the request will error.
+This method runs to completion automatically. When tools are provided,
+it executes a tool loop: if the LLM returns a tool use request, the tools
+are executed and the results are sent back to the LLM. This continues
+until the LLM provides a final text response.
 
-#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L519" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+When result\_type is specified, a synthetic `final_response` tool is
+created. The LLM calls this tool to provide the structured response,
+which is validated against the result\_type and returned as `.result`.
+
+For fine-grained control over the sampling loop, use sample\_step() instead.
+
+**Args:**
+
+* `messages`: The message(s) to send. Can be a string, list of strings,
+  or list of SamplingMessage objects.
+* `system_prompt`: Optional system prompt for the LLM.
+* `temperature`: Optional sampling temperature.
+* `max_tokens`: Maximum tokens to generate. Defaults to 512.
+* `model_preferences`: Optional model preferences.
+* `tools`: Optional list of tools the LLM can use. Accepts plain
+  functions or SamplingTools.
+* `result_type`: Optional type for structured output. When specified,
+  a synthetic `final_response` tool is created and the LLM's
+  response is validated against this type.
+* `mask_error_details`: If True, mask detailed error messages from tool
+  execution. When None (default), uses the global settings value.
+  Tools can raise ToolError to bypass masking.
+
+**Returns:**
+
+* SamplingResult\[T] containing:
+* * .text: The text representation (raw text or JSON for structured)
+* * .result: The typed result (str for text, parsed object for structured)
+* * .history: All messages exchanged during sampling
+
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L830" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 elicit(self, message: str, response_type: None) -> AcceptedElicitation[dict[str, Any]] | DeclinedElicitation | CancelledElicitation
 ```
 
-#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L531" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L842" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 elicit(self, message: str, response_type: type[T]) -> AcceptedElicitation[T] | DeclinedElicitation | CancelledElicitation
 ```
 
-#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L541" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L852" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 elicit(self, message: str, response_type: list[str]) -> AcceptedElicitation[str] | DeclinedElicitation | CancelledElicitation
 ```
 
-#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L550" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L862" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-elicit(self, message: str, response_type: type[T] | list[str] | None = None) -> AcceptedElicitation[T] | AcceptedElicitation[dict[str, Any]] | AcceptedElicitation[str] | DeclinedElicitation | CancelledElicitation
+elicit(self, message: str, response_type: dict[str, dict[str, str]]) -> AcceptedElicitation[str] | DeclinedElicitation | CancelledElicitation
+```
+
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L872" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+elicit(self, message: str, response_type: list[list[str]]) -> AcceptedElicitation[list[str]] | DeclinedElicitation | CancelledElicitation
+```
+
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L884" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+elicit(self, message: str, response_type: list[dict[str, dict[str, str]]]) -> AcceptedElicitation[list[str]] | DeclinedElicitation | CancelledElicitation
+```
+
+#### `elicit` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L896" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+elicit(self, message: str, response_type: type[T] | list[str] | dict[str, dict[str, str]] | list[list[str]] | list[dict[str, dict[str, str]]] | None = None) -> AcceptedElicitation[T] | AcceptedElicitation[dict[str, Any]] | AcceptedElicitation[str] | AcceptedElicitation[list[str]] | DeclinedElicitation | CancelledElicitation
 ```
 
 Send an elicitation request to the client and await the response.
@@ -345,26 +534,93 @@ Clients must send an empty object ("{}")in response.
   type or dataclass or BaseModel. If it is a primitive type, an
   object schema with a single "value" field will be generated.
 
-#### `get_http_request` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L641" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_http_request(self) -> Request
-```
-
-Get the active starlette request.
-
-#### `set_state` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L656" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_state` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L957" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_state(self, key: str, value: Any) -> None
 ```
 
-Set a value in the context state.
+Set a value in the session-scoped state store.
 
-#### `get_state` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L660" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Values persist across requests within the same MCP session.
+The key is automatically prefixed with the session identifier.
+State expires after 1 day to prevent unbounded memory growth.
+
+#### `get_state` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L971" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_state(self, key: str) -> Any
 ```
 
-Get a value from the context state. Returns None if the key is not found.
+Get a value from the session-scoped state store.
+
+Returns None if the key is not found.
+
+#### `delete_state` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L980" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+delete_state(self, key: str) -> None
+```
+
+Delete a value from the session-scoped state store.
+
+#### `enable_components` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L997" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+enable_components(self) -> None
+```
+
+Enable components matching criteria for this session only.
+
+Session rules override global transforms. Rules accumulate - each call
+adds a new rule to the session. Later marks override earlier ones
+(Visibility transform semantics).
+
+Sends notifications to this session only: ToolListChangedNotification,
+ResourceListChangedNotification, and PromptListChangedNotification.
+
+**Args:**
+
+* `names`: Component names or URIs to match.
+* `keys`: Component keys to match (e.g., {"tool\:my_tool@v1"}).
+* `version`: Component version spec to match.
+* `tags`: Tags to match (component must have at least one).
+* `components`: Component types to match (e.g., {"tool", "prompt"}).
+* `match_all`: If True, matches all components regardless of other criteria.
+
+#### `disable_components` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L1035" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+disable_components(self) -> None
+```
+
+Disable components matching criteria for this session only.
+
+Session rules override global transforms. Rules accumulate - each call
+adds a new rule to the session. Later marks override earlier ones
+(Visibility transform semantics).
+
+Sends notifications to this session only: ToolListChangedNotification,
+ResourceListChangedNotification, and PromptListChangedNotification.
+
+**Args:**
+
+* `names`: Component names or URIs to match.
+* `keys`: Component keys to match (e.g., {"tool\:my_tool@v1"}).
+* `version`: Component version spec to match.
+* `tags`: Tags to match (component must have at least one).
+* `components`: Component types to match (e.g., {"tool", "prompt"}).
+* `match_all`: If True, matches all components regardless of other criteria.
+
+#### `reset_visibility` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/context.py#L1073" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+reset_visibility(self) -> None
+```
+
+Clear all session visibility rules.
+
+Use this to reset session visibility back to global defaults.
+
+Sends notifications to this session only: ToolListChangedNotification,
+ResourceListChangedNotification, and PromptListChangedNotification.

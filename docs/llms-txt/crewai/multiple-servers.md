@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/mcp/multiple-servers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connecting to Multiple MCP Servers
 
 > Learn how to use MCPServerAdapter in CrewAI to connect to multiple MCP servers simultaneously and aggregate their tools.

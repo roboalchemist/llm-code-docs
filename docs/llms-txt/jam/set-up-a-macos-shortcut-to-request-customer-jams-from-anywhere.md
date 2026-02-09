@@ -1,3 +1,5 @@
+# Source: https://jam.dev/docs/guides/set-up-a-macos-shortcut-to-request-customer-jams-from-anywhere.md
+
 # Source: https://jam.dev/docs/jam-for-customer-support/set-up-a-macos-shortcut-to-request-customer-jams-from-anywhere.md
 
 # Set up a macOS shortcut to request Customer Jams from anywhere

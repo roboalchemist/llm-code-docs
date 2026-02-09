@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/dashboard/single-sign-on.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Single Sign-on (SSO)
 
 > Smartcar offers SSO through your identity provider (IdP) for Enterprise customers.

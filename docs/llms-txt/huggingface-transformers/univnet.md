@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/univnet.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/univnet.md
 
 # UnivNet
 
@@ -13,9 +13,9 @@ The abstract from the paper is the following:
 
 Tips:
 
-- The `noise_sequence` argument for [UnivNetModel.forward()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel.forward) should be standard Gaussian noise (such as from `torch.randn`) of shape `([batch_size], noise_length, model.config.model_in_channels)`, where `noise_length` should match the length dimension (dimension 1) of the `input_features` argument. If not supplied, it will be randomly generated; a `torch.Generator` can be supplied to the `generator` argument so that the forward pass can be reproduced. (Note that [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) will return generated noise by default, so it shouldn't be necessary to generate `noise_sequence` manually.)
-- Padding added by [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) can be removed from the [UnivNetModel](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel) output through the `UnivNetFeatureExtractor.batch_decode()` method, as shown in the usage example below.
-- Padding the end of each waveform with silence can reduce artifacts at the end of the generated audio sample. This can be done by supplying `pad_end = True` to [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__). See [this issue](https://github.com/seungwonpark/melgan/issues/8) for more details.
+- The `noise_sequence` argument for [UnivNetModel.forward()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel.forward) should be standard Gaussian noise (such as from `torch.randn`) of shape `([batch_size], noise_length, model.config.model_in_channels)`, where `noise_length` should match the length dimension (dimension 1) of the `input_features` argument. If not supplied, it will be randomly generated; a `torch.Generator` can be supplied to the `generator` argument so that the forward pass can be reproduced. (Note that [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) will return generated noise by default, so it shouldn't be necessary to generate `noise_sequence` manually.)
+- Padding added by [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) can be removed from the [UnivNetModel](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel) output through the `UnivNetFeatureExtractor.batch_decode()` method, as shown in the usage example below.
+- Padding the end of each waveform with silence can reduce artifacts at the end of the generated audio sample. This can be done by supplying `pad_end = True` to [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__). See [this issue](https://github.com/seungwonpark/melgan/issues/8) for more details.
 
 Usage Example:
 
@@ -54,16 +54,16 @@ To the best of my knowledge, there is no official code release, but an unofficia
 
 #### transformers.UnivNetConfig[[transformers.UnivNetConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/univnet/configuration_univnet.py#L23)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/univnet/configuration_univnet.py#L23)
 
-This is the configuration class to store the configuration of a [UnivNetModel](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [UnivNetModel](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel). It is used to instantiate a
 UnivNet vocoder model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the UnivNet
 [dg845/univnet-dev](https://huggingface.co/dg845/univnet-dev) architecture, which corresponds to the 'c32'
 architecture in [maum-ai/univnet](https://github.com/maum-ai/univnet/blob/master/config/default_c32.yaml).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -82,11 +82,11 @@ Example:
 
 **Parameters:**
 
-model_in_channels (`int`, *optional*, defaults to 64) : The number of input channels for the UnivNet residual network. This should correspond to `noise_sequence.shape[1]` and the value used in the [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) class.
+model_in_channels (`int`, *optional*, defaults to 64) : The number of input channels for the UnivNet residual network. This should correspond to `noise_sequence.shape[1]` and the value used in the [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) class.
 
 model_hidden_channels (`int`, *optional*, defaults to 32) : The number of hidden channels of each residual block in the UnivNet residual network.
 
-num_mel_bins (`int`, *optional*, defaults to 100) : The number of frequency bins in the conditioning log-mel spectrogram. This should correspond to the value used in the [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) class.
+num_mel_bins (`int`, *optional*, defaults to 100) : The number of frequency bins in the conditioning log-mel spectrogram. This should correspond to the value used in the [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) class.
 
 resblock_kernel_sizes (`tuple[int]` or `list[int]`, *optional*, defaults to `[3, 3, 3]`) : A tuple of integers defining the kernel sizes of the 1D convolutional layers in the UnivNet residual network. The length of `resblock_kernel_sizes` defines the number of resnet blocks and should match that of `resblock_stride_sizes` and `resblock_dilation_sizes`.
 
@@ -110,17 +110,17 @@ leaky_relu_slope (`float`, *optional*, defaults to 0.2) : The angle of the negat
 
 #### transformers.UnivNetFeatureExtractor[[transformers.UnivNetFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/univnet/feature_extraction_univnet.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/univnet/feature_extraction_univnet.py#L29)
 
 Constructs a UnivNet feature extractor.
 
 This class extracts log-mel-filter bank features from raw speech using the short time Fourier Transform (STFT). The
 STFT implementation follows that of TacoTron 2 and Hifi-GAN.
 
-This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
+This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
 most of the main methods. Users should refer to this superclass for more information regarding those methods.
 
-__call__transformers.UnivNetFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/univnet/feature_extraction_univnet.py#L286[{"name": "raw_speech", "val": ": typing.Union[numpy.ndarray, list[float], list[numpy.ndarray], list[list[float]]]"}, {"name": "sampling_rate", "val": ": typing.Optional[int] = None"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = True"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "truncation", "val": ": bool = True"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_noise", "val": ": bool = True"}, {"name": "generator", "val": ": typing.Optional[numpy.random._generator.Generator] = None"}, {"name": "pad_end", "val": ": bool = False"}, {"name": "pad_length", "val": ": typing.Optional[int] = None"}, {"name": "do_normalize", "val": ": typing.Optional[str] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
+__call__transformers.UnivNetFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/univnet/feature_extraction_univnet.py#L286[{"name": "raw_speech", "val": ": numpy.ndarray | list[float] | list[numpy.ndarray] | list[list[float]]"}, {"name": "sampling_rate", "val": ": int | None = None"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = True"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "truncation", "val": ": bool = True"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_noise", "val": ": bool = True"}, {"name": "generator", "val": ": numpy.random._generator.Generator | None = None"}, {"name": "pad_end", "val": ": bool = False"}, {"name": "pad_length", "val": ": int | None = None"}, {"name": "do_normalize", "val": ": str | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
   The sequence or batch of sequences to be padded. Each sequence can be a numpy array, a list of float
   values, a list of numpy arrays or a list of list of float values. Must be mono channel audio, not
   stereo, i.e. single float per timestep.
@@ -128,7 +128,7 @@ __call__transformers.UnivNetFeatureExtractor.__call__https://github.com/huggingf
   The sampling rate at which the `raw_speech` input was sampled. It is strongly recommended to pass
   `sampling_rate` at the forward call to prevent silent errors and allow automatic speech recognition
   pipeline.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) --
   Select a strategy to pad the input `raw_speech` waveforms (according to the model's padding side and
   padding index) among:
 
@@ -150,7 +150,7 @@ __call__transformers.UnivNetFeatureExtractor.__call__https://github.com/huggingf
   This is especially useful to enable the use of Tensor Cores on NVIDIA hardware with compute capability
   `>= 7.5` (Volta), or on TPUs which benefit from having sequence lengths be a multiple of 128.
 - **return_noise** (`bool`, *optional*, defaults to `True`) --
-  Whether to generate and return a noise waveform for use in [UnivNetModel.forward()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel.forward).
+  Whether to generate and return a noise waveform for use in [UnivNetModel.forward()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel.forward).
 - **generator** (`numpy.random.Generator`, *optional*, defaults to `None`) --
   An optional `numpy.random.Generator` random number generator to use when generating noise.
 - **pad_end** (`bool`, *optional*, defaults to `False`) --
@@ -169,7 +169,7 @@ __call__transformers.UnivNetFeatureExtractor.__call__https://github.com/huggingf
 
   [What are attention masks?](../glossary#attention-mask)
 
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.np.array` objects.
@@ -183,15 +183,15 @@ feature_size (`int`, *optional*, defaults to 1) : The feature dimension of the e
 
 sampling_rate (`int`, *optional*, defaults to 24000) : The sampling rate at which the audio files should be digitalized expressed in hertz (Hz).
 
-padding_value (`float`, *optional*, defaults to 0.0) : The value to pad with when applying the padding strategy defined by the `padding` argument to [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__). Should correspond to audio silence. The `pad_end` argument to `__call__` will also use this padding value.
+padding_value (`float`, *optional*, defaults to 0.0) : The value to pad with when applying the padding strategy defined by the `padding` argument to [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__). Should correspond to audio silence. The `pad_end` argument to `__call__` will also use this padding value.
 
 do_normalize (`bool`, *optional*, defaults to `False`) : Whether to perform Tacotron 2 normalization on the input. Normalizing can help to significantly improve the performance for some models.
 
 num_mel_bins (`int`, *optional*, defaults to 100) : The number of mel-frequency bins in the extracted spectrogram features. This should match `UnivNetModel.config.num_mel_bins`.
 
-hop_length (`int`, *optional*, defaults to 256) : The direct number of samples between sliding windows. Otherwise referred to as "shift" in many papers. Note that this is different from other audio feature extractors such as [SpeechT5FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speecht5#transformers.SpeechT5FeatureExtractor) which take the `hop_length` in ms.
+hop_length (`int`, *optional*, defaults to 256) : The direct number of samples between sliding windows. Otherwise referred to as "shift" in many papers. Note that this is different from other audio feature extractors such as [SpeechT5FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speecht5#transformers.SpeechT5FeatureExtractor) which take the `hop_length` in ms.
 
-win_length (`int`, *optional*, defaults to 1024) : The direct number of samples for each sliding window. Note that this is different from other audio feature extractors such as [SpeechT5FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speecht5#transformers.SpeechT5FeatureExtractor) which take the `win_length` in ms.
+win_length (`int`, *optional*, defaults to 1024) : The direct number of samples for each sliding window. Note that this is different from other audio feature extractors such as [SpeechT5FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speecht5#transformers.SpeechT5FeatureExtractor) which take the `win_length` in ms.
 
 win_function (`str`, *optional*, defaults to `"hann_window"`) : Name for the window function used for windowing, must be accessible via `torch.{win_function}`
 
@@ -203,7 +203,7 @@ fmin (`float`, *optional*, defaults to 0.0) : Minimum mel frequency in Hz.
 
 fmax (`float`, *optional*) : Maximum mel frequency in Hz. If not set, defaults to `sampling_rate / 2`.
 
-mel_floor (`float`, *optional*, defaults to 1e-09) : Minimum value of mel frequency banks. Note that the way [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) uses `mel_floor` is different than in [transformers.audio_utils.spectrogram()](/docs/transformers/v5.0.0rc1/en/internal/audio_utils#transformers.audio_utils.spectrogram).
+mel_floor (`float`, *optional*, defaults to 1e-09) : Minimum value of mel frequency banks. Note that the way [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) uses `mel_floor` is different than in [transformers.audio_utils.spectrogram()](/docs/transformers/v5.0.0/en/internal/audio_utils#transformers.audio_utils.spectrogram).
 
 center (`bool`, *optional*, defaults to `False`) : Whether to pad the waveform so that frame `t` is centered around time `t * hop_length`. If `False`, frame `t` will start at time `t * hop_length`.
 
@@ -215,21 +215,21 @@ normalize_min (`float`, *optional*, defaults to -11.512925148010254) : The min v
 
 normalize_max (`float`, *optional*, defaults to 2.3143386840820312) : The max value used for Tacotron 2-style linear normalization. The default is the original value from the Tacotron 2 implementation.
 
-model_in_channels (`int`, *optional*, defaults to 64) : The number of input channels to the [UnivNetModel](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel) model. This should match `UnivNetModel.config.model_in_channels`.
+model_in_channels (`int`, *optional*, defaults to 64) : The number of input channels to the [UnivNetModel](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel) model. This should match `UnivNetModel.config.model_in_channels`.
 
 pad_end_length (`int`, *optional*, defaults to 10) : If padding the end of each waveform, the number of spectrogram frames worth of samples to append. The number of appended samples will be `pad_end_length * hop_length`.
 
-return_attention_mask (`bool`, *optional*, defaults to `True`) : Whether or not [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__) should return `attention_mask`.
+return_attention_mask (`bool`, *optional*, defaults to `True`) : Whether or not [__call__()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__) should return `attention_mask`.
 
 ## UnivNetModel[[transformers.UnivNetModel]]
 
 #### transformers.UnivNetModel[[transformers.UnivNetModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/univnet/modeling_univnet.py#L427)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/univnet/modeling_univnet.py#L426)
 
 The bare Univnet Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -237,10 +237,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.UnivNetModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/univnet/modeling_univnet.py#L471[{"name": "input_features", "val": ": FloatTensor"}, {"name": "noise_sequence", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "padding_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "generator", "val": ": typing.Optional[torch._C.Generator] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`) --
+forwardtransformers.UnivNetModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/univnet/modeling_univnet.py#L470[{"name": "input_features", "val": ": FloatTensor"}, {"name": "noise_sequence", "val": ": torch.FloatTensor | None = None"}, {"name": "padding_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "generator", "val": ": torch._C.Generator | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor). See [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__) for details (`processor_class` uses
-  [UnivNetFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) for processing audios).
+  [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor). See [UnivNetFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor.__call__) for details (`processor_class` uses
+  [UnivNetFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetFeatureExtractor) for processing audios).
 - **noise_sequence** (`torch.FloatTensor`, *optional*) --
   Tensor containing a noise sequence of standard Gaussian noise. Can be batched and of shape `(batch_size,
   sequence_length, config.model_in_channels)`, or un-batched and of shape (sequence_length,
@@ -257,15 +257,15 @@ forwardtransformers.UnivNetModel.forwardhttps://github.com/huggingface/transform
   A [torch generator](https://pytorch.org/docs/stable/generated/torch.Generator.html) to make generation
   deterministic.
   return_dict:
-  Whether to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) subclass instead of a plain tuple.
+  Whether to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) subclass instead of a plain tuple.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.univnet.modeling_univnet.UnivNetModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.univnet.modeling_univnet.UnivNetModelOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.univnet.modeling_univnet.UnivNetModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.univnet.modeling_univnet.UnivNetModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([UnivNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetConfig)) and inputs.
+elements depending on the configuration ([UnivNetConfig](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetConfig)) and inputs.
 
 - **waveforms** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Batched 1D (mono-channel) output audio waveforms.
 - **waveform_lengths** (`torch.FloatTensor` of shape `(batch_size,)`) -- The batched length in samples of each unpadded waveform in `waveforms`.
-The [UnivNetModel](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetModel) forward method, overrides the `__call__` special method.
+The [UnivNetModel](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -293,7 +293,7 @@ Example:
 
 **Parameters:**
 
-config ([UnivNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([UnivNetConfig](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -301,7 +301,7 @@ config ([UnivNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transf
 
 A `transformers.models.univnet.modeling_univnet.UnivNetModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([UnivNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/univnet#transformers.UnivNetConfig)) and inputs.
+elements depending on the configuration ([UnivNetConfig](/docs/transformers/v5.0.0/en/model_doc/univnet#transformers.UnivNetConfig)) and inputs.
 
 - **waveforms** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Batched 1D (mono-channel) output audio waveforms.
 - **waveform_lengths** (`torch.FloatTensor` of shape `(batch_size,)`) -- The batched length in samples of each unpadded waveform in `waveforms`.

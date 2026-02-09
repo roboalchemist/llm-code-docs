@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/azure-entra-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure Entra Id
 
 > Learn how to dynamically generate Azure Entra Id user credentials.

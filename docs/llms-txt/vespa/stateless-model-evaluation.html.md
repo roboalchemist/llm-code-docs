@@ -10,7 +10,7 @@ An example application package can be found at in the[model-evaluation system te
 
 ### The model evaluation tag
 
-To enable both the REST API and the Java API, add the `model-evaluation` tag inside the [container](../jdisc) clusters where it is needed in [services.xml](../reference/applications/services/services.html):
+To enable both the REST API and the Java API, add the `model-evaluation` tag inside the [container](../applications/containers.html) clusters where it is needed in [services.xml](../reference/applications/services/services.html):
 
 ```
 <container>
@@ -171,7 +171,7 @@ ONNX models are evaluated using [ONNX Runtime](https://onnxruntime.ai/). Vespa p
 
 Since stateless model evaluation is based on auto-discovery of models under the`models` directory in the application package, the above would only be needed for models that should not use the default settings, or should run on a GPU.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

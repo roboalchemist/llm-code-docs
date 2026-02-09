@@ -226,8 +226,8 @@ if (!response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Trunk**.
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
+3. Select **Create new trunk**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -325,7 +325,7 @@ const trunk = sipClient.createSipInboundTrunk(
 For an executable example, replace the `trunk` in the [Inbound trunk example](#inbound-trunk-example) with the following;
 
 ```python
-  trunk = SIPInboundTrunkInfo(
+  trunk = api.SIPInboundTrunkInfo(
     name = "My trunk",
     numbers = ["+15105550100"],
     allowed_numbers = ["+13105550100", "+17145550100"]
@@ -405,8 +405,8 @@ if (!response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Trunk**.
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
+3. Select **Create new trunk**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -467,13 +467,12 @@ console.log(rules);
 import asyncio
 
 from livekit import api
-from livekit.protocol.sip import ListSIPInboundTrunkRequest
 
 async def main():
   livekit_api = api.LiveKitAPI()
 
   rules = await livekit_api.sip.list_sip_inbound_trunk(
-    ListSIPInboundTrunkRequest()
+    api.ListSIPInboundTrunkRequest()
   )
   print(f"{rules}")
 
@@ -569,7 +568,7 @@ if (!response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
 3. The **Inbound** section lists all inbound trunks.
 
 ## Update inbound trunk
@@ -652,8 +651,8 @@ from livekit.protocol.models import ListUpdate
 async def main():
   livekit_api = api.LiveKitAPI()
   
-  # To update specific trunk fields, use the update_sip_inbound_trunk_fields method.
-  trunk = await livekit_api.sip.update_sip_inbound_trunk_fields(
+  # To update specific trunk fields, use the update_inbound_trunk_fields method.
+  trunk = await livekit_api.sip.update_inbound_trunk_fields(
     trunk_id = "<sip-trunk-id>",
     numbers = ListUpdate(add=['+15105550100']),         # Add to existing list
     allowed_numbers = ["+13105550100", "+17145550100"], # Replace existing list
@@ -814,22 +813,20 @@ await main();
 
 **Python**:
 
-To replace an existing trunk, edit the previous example by adding the import line,`trunk` and calling the `update_sip_inbound_trunk` function:
+To replace an existing trunk, edit the previous example by adding the import line,`trunk` and calling the `update_inbound_trunk` function:
 
 ```python
-from livekit.protocol.sip import SIPInboundTrunkInfo
-
 async def main():
   livekit_api = api.LiveKitAPI()
 
-  trunk = SIPInboundTrunkInfo(
+  trunk = api.SIPInboundTrunkInfo(
       numbers = ['+15105550100'],
       allowed_numbers = ["+13105550100", "+17145550100"],
       name = "My replaced inbound trunk",
   )
 
   # This takes positional parameters
-  trunk = await livekit_api.sip.update_sip_inbound_trunk("<sip-trunk-id>", trunk)
+  trunk = await livekit_api.sip.update_inbound_trunk("<sip-trunk-id>", trunk)
 
 ```
 
@@ -874,7 +871,7 @@ Replacing an inbound trunk is not supported in Kotlin.
 
 **LiveKit Cloud**:
 
-1. Sign in to the **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config) page.
+1. Sign in to the **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks) page.
 2. Navigate to the **Inbound** section.
 3. Find the inbound trunk you want to replace → select the more (**⋮**) menu → select **Configure trunk**.
 4. Copy and paste the following text into the editor:
@@ -899,7 +896,7 @@ Replacing an inbound trunk is not supported in Kotlin.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:35.876Z.
+This document was rendered at 2026-02-03T03:25:12.403Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/accepting-calls/inbound-trunk.md](https://docs.livekit.io/telephony/accepting-calls/inbound-trunk.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

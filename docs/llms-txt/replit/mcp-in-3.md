@@ -1,24 +1,12 @@
 # Source: https://docs.replit.com/tutorials/mcp-in-3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Learn about MCP in 3 minutes
 
 > Learn how to use Model Context Protocol (MCP) to give AI models access to tools, data sources, and real-world capabilities in just 3 minutes.
-
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
-
-<AuthorCard />
 
 ## Why AI models need MCP to connect with the real world
 

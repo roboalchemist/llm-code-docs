@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-log-drain-create-papertrail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible log_drain:create:papertrail
 
 This command lets you create a [Log Drain](/core-concepts/observability/logs/log-drains/overview) to forward your container logs to Papertrail.

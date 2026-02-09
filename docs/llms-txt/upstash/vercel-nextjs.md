@@ -2,276 +2,468 @@
 
 # Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
 
-# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Next.js
 
-This guide provides step-by-step instructions on how to use and deploy Upstash Workflow with Next.js.
+QStash is a robust message queue and task-scheduling service that integrates perfectly with Next.js. This guide will show you how to use QStash in your Next.js projects, including a quickstart and a complete example.
 
-<Columns cols={2}>
-  <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-js/tree/main/examples/nextjs" horizontal>
-    You can find the project source code on GitHub.
-  </Card>
+## Quickstart
 
-  <Card title="Deploy With Vercel" icon="triangle" iconType="sharp-solid" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fupstash%2Fworkflow-js%2Ftree%2Fmain%2Fworkflow%2Fnextjs&env=QSTASH_TOKEN&envDescription=You%20can%20access%20this%20variable%20from%20Upstash%20Console%2C%20under%20QStash%20page.%20&project-name=workflow-nextjs&repository-name=workflow-nextjs&demo-title=Upstash%20Workflow%20Example&demo-description=A%20Next.js%20application%20utilizing%20Upstash%20Workflow" horizontal>
-    Deploy the project to Vercel with a single click.
-  </Card>
-</Columns>
+At its core, each QStash message contains two pieces of information:
 
-## Prerequisites
+* URL (which endpoint to call)
+* Request body (e.g. IDs of items you want to process)
 
-* Node.js and npm (or another package manager) installed.
+The following endpoint could be used to upload an image and then asynchronously queue a processing task to optimize the image in the background.
 
-You can integrate Upstash Workflow into an existing Next.js app, or follow [this guide](https://nextjs.org/docs/app/getting-started/installation) to create a new Next.js project from scratch.
-
-## Step 1: Installation
-
-Run the following command to install the Upstash Workflow SDK in your Next.js app.
-
-<Tabs>
-  <Tab title="npm">
-    ```bash  theme={"system"}
-    npm install @upstash/workflow
-    ```
-  </Tab>
-
-  <Tab title="pnpm">
-    ```bash  theme={"system"}
-    pnpm install @upstash/workflow
-    ```
-  </Tab>
-
-  <Tab title="bun">
-    ```bash  theme={"system"}
-    bun add @upstash/workflow
-    ```
-  </Tab>
-</Tabs>
-
-## Step 2: Run the development server
-
-Upstash Workflow is built on top of Upstash QStash.
-
-In a production environment, your application connects to the managed QStash servers hosted by Upstash.
-This ensures that requests are delivered reliably, securely, and at scale without requiring you to run and maintain your own infrastructure.
-
-For local development, you don't need to depend on the managed QStash servers. Instead, you can run a local QStash server directly on your machine.
-This local server behaves just like the production version but does not require external network calls.
-
-Start the local server with:
-
-<Tabs>
-  <Tab title="npm">
-    ```bash  theme={"system"}
-    npx @upstash/qstash-cli dev
-    ```
-  </Tab>
-
-  <Tab title="pnpm">
-    ```bash  theme={"system"}
-    pnpx @upstash/qstash-cli dev
-    ```
-  </Tab>
-</Tabs>
-
-When the server starts, it will print the credentials.
-You'll need these values in the next step to connect your Next.js app to QStash.
-
-You can enable local mode in the Upstash Workflow dashboard to use the UI while developing locally.
-
-<Frame>
-  <img src="https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=894b9d6a3d2dff99bed21683c3c01cd7" alt="Enable local mode on dashboard" data-og-width="2758" width="2758" data-og-height="1864" height="1864" data-path="img/qstash-workflow/local-dev.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=280&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=c408f8a396e346fc6bf86ce33f6453aa 280w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=560&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=b7c0049c3a1839305582c18b129192a5 560w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=840&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=85086a3a005d121cf4051e3ac405b1b0 840w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=1100&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=ba2c2aeb93018bf368c662d6424fc52d 1100w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=1650&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=35927ba49e0412a5658b869ee582b0c1 1650w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/local-dev.png?w=2500&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=8f4dd395f0da6319f1d412b654749366 2500w" />
-</Frame>
-
-## Step 3: Configure Environment Variables
-
-Next, you need to configure your Next.js app to connect with the local QStash server by setting environment variables.
-
-In the root of your project, create a `.env.local` file (or update your existing one) and add the values printed by the QStash local server:
-
-```txt  theme={"system"}
-QSTASH_URL="http://127.0.0.1:8080"
-QSTASH_TOKEN="eyJVc2VySUQiOiJkZWZhdWx0VXNlciIsIlBhc3N3b3JkIjoiZGVmYXVsdFBhc3N3b3JkIn0="
-QSTASH_CURRENT_SIGNING_KEY="sig_7kYjw48mhY7kAjqNGcy6cr29RJ6r"
-QSTASH_NEXT_SIGNING_KEY="sig_5ZB6DVzB1wjE8S6rZ7eenA8Pdnhs"
-```
-
-<Tip>
-  For production, replace these with your actual credentials from the Upstash Workflow dashboard.
-</Tip>
-
-## Step 3: Create a Workflow Endpoint
-
-With your environment ready, the next step is to define your first workflow endpoint.
-
-In Upstash Workflow, every workflow is exposed as an endpoint.
-Every endpoint you expose using the SDK’s `serve()` function acts as a workflow that can be triggered independently.
-
-In Next.js, these endpoints are implemented as **API routes**.
-
-Create the file according to your router setup:
-
-* App Router → put the endpoint under `app/api`
-* Pages Router → put the endpoint under `pages/api`
-
-<Tabs>
-  <Tab title="App router">
-    ```typescript app/api/workflow/route.ts theme={"system"}
-    import { serve } from "@upstash/workflow/nextjs"
-
-    export const { POST } = serve(
-      async (context) => {
-        await context.run("initial-step", () => {
-          console.log("initial step ran")
-        })
-
-        await context.run("second-step", () => {
-          console.log("second step ran")
-        })
-      }
-    )
-    ```
-  </Tab>
-
-  <Tab title="App router with request object">
-    ```typescript app/api/workflow/route.ts theme={"system"}
-    import { serve } from "@upstash/workflow/nextjs";
-    import { NextRequest } from "next/server";
-
-    export const POST = async (request: NextRequest) => {
-      // do something with the native request object
-      const { POST: handler } = serve(async (context) => {
-        // Your workflow steps
-      });
-
-      return await handler(request);
-    }
-    ```
-  </Tab>
-
-  <Tab title="Pages Router">
-    ```typescript src/pages/api/workflow.ts theme={"system"}
-    import { servePagesRouter } from "@upstash/workflow/nextjs";
-
-    const { handler } = servePagesRouter<string>(
-      async (context) => {
-        await context.run("initial-step", () => {
-          console.log("initial step ran")
-        })
-
-        await context.run("second-step", () => {
-          console.log("second step ran")
-        })
-      }
-    )
-    export default handler;
-    ```
-  </Tab>
-
-  <Tab title="Pages Router with request object">
-    ```typescript src/pages/api/workflow.ts theme={"system"}
-    import type { NextApiRequest, NextApiResponse } from "next";
-    import { servePagesRouter } from "@upstash/workflow/nextjs";
-
-    export default async function handler(
-      req: NextApiRequest,
-      res: NextApiResponse
-    ) {
-      // do something with the native request object
-      const { handler } = servePagesRouter(
-        async (context) => {
-          // Your workflow steps
-        }
-      )
-
-      await handler(req, res)
-    }
-    ```
-  </Tab>
-</Tabs>
-
-## Step 4: Run the Workflow Endpoint
-
-Once your endpoint is defined, the next step is to trigger a workflow run.
-
-You can start a new workflow run using the `trigger()` function from the Upstash Workflow SDK.
-
-```javascript  theme={"system"}
-import { Client } from "@upstash/workflow";
+```tsx upload-image/route.ts theme={"system"}
+import { Client } from "@upstash/qstash"
+import { NextResponse } from "next/server"
 
 const client = new Client({ token: process.env.QSTASH_TOKEN! })
 
-const { workflowRunId } = await client.trigger({
-  url: `http://localhost:3000/api/workflow`,
-  retries: 3,
-  keepTriggerConfig: true,
-});
+export const POST = async (req: Request) => {
+  // Image uploading logic
+
+  // 👇 Once uploading is done, queue an image processing task
+  const result = await client.publishJSON({
+    url: "https://your-api-endpoint.com/process-image",
+    body: { imageId: "123" },
+  })
+
+  return NextResponse.json({
+    message: "Image queued for processing!",
+    qstashMessageId: result.messageId,
+  })
+}
 ```
 
-<Info>
-  The `trigger()` function should typically be called from a server-side action (not directly in client-side code) to keep your credentials secure.
-</Info>
+Note that the URL needs to be publicly available for QStash to call, either as a deployed project or by [developing with QStash locally](/qstash/howto/local-tunnel).
 
-Check the Upstash Workflow dashboard to view logs of your workflow run:
+Because QStash calls our image processing task, we get automatic retries whenever the API throws an error. These retries make our function very reliable. We also let the user know immediately that their image has been successfully queued.
+
+Now, let's **receive the QStash message** in our image processing endpoint:
+
+```tsx process-image/route.ts theme={"system"}
+import { verifySignatureAppRouter } from "@upstash/qstash/nextjs"
+
+// 👇 Verify that this messages comes from QStash
+export const POST = verifySignatureAppRouter(async (req: Request) => {
+  const body = await req.json()
+  const { imageId } = body as { imageId: string }
+
+  // Image processing logic, i.e. using sharp
+
+  return new Response(`Image with id "${imageId}" processed successfully.`)
+})
+```
+
+```bash .env theme={"system"}
+# Copy all three from your QStash dashboard
+QSTASH_TOKEN=
+QSTASH_CURRENT_SIGNING_KEY=
+QSTASH_NEXT_SIGNING_KEY=
+```
+
+Just like that, we set up a reliable and asynchronous image processing system in Next.js. The same logic works for email queues, reliable webhook processing, long-running report generations and many more.
+
+## Example project
+
+* Create an Upstash account and get your [QStash token](https://console.upstash.com/qstash)
+* Node.js installed
+
+<Steps>
+  <Step titleSize="h3" title="Create Next.js app and install QStash">
+    ```bash  theme={"system"}
+    npx create-next-app@latest qstash-bg-job
+    ```
+
+    ```bash  theme={"system"}
+    cd qstash-bg-job
+    ```
+
+    ```bash  theme={"system"}
+    npm install @upstash/qstash
+    ```
+
+    ```bash  theme={"system"}
+    npm run dev
+    ```
+  </Step>
+
+  <Step titleSize="h3" title="Create UI">
+    After removing the default content in `src/app/page.tsx`, let's create a simple UI to trigger the background job
+    using a button.
+
+    ```tsx src/app/page.tsx theme={"system"}
+    "use client"
+
+    export default function Home() {
+      return (
+        <main className="flex h-lvh items-center justify-center">
+          <button
+            onClick={handleClick}
+            className="btn btn-primary w-1/2 h-56 bg-green-500 text-xl sm:text-3xl rounded-lg hover:bg-green-600"
+          >
+            Start Background Job
+          </button>
+        </main>
+      )
+    }
+    ```
+
+    <Accordion title="Beautiful">
+      <Frame>
+        <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=db902e71fc22c50749ebfc8795aa4337" alt="Quickstart UI" data-og-width="1918" width="1918" data-og-height="1126" height="1126" data-path="img/qstash/quickstart-qstash-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=6cffcb8f93df2c5b612bdcbcefa176cc 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=1566f155c0e7e02185836f266dd6de60 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=895da26a22dc02c86dd9e7cc9816f3e5 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=c8f35545af51da14f0abe4b34c6134a7 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=d5110f84aed75b824851c3763c0996c4 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-ui.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=0b4ab5ed36ba8de483d5ef1753edbc23 2500w" />
+      </Frame>
+    </Accordion>
+  </Step>
+
+  <Step titleSize="h3" title="Start Background Job">
+    We can use QStash to start a background job by calling the `publishJSON` method.
+    In this example, we're using Next.js server actions, but you can also use route handlers.
+
+    Since we don't have our public API endpoint yet, we can use [Request Catcher](https://requestcatcher.com/) to test the background job.
+    This will eventually be replaced with our own API endpoint.
+
+    ```ts src/app/actions.ts theme={"system"}
+    "use server"
+    import { Client } from "@upstash/qstash"
+
+    const qstashClient = new Client({
+      // Add your token to a .env file
+      token: process.env.QSTASH_TOKEN!,
+    })
+
+    export async function startBackgroundJob() {
+      await qstashClient.publishJSON({
+        url: "https://firstqstashmessage.requestcatcher.com/test",
+        body: {
+          hello: "world",
+        },
+      })
+    }
+    ```
+
+    Now let's invoke the `startBackgroundJob` function when the button is clicked.
+
+    ```tsx src/app/page.tsx theme={"system"}
+    "use client"
+    import { startBackgroundJob } from "@/app/actions"
+
+    export default function Home() {
+      async function handleClick() {
+        await startBackgroundJob()
+      }
+
+      return (
+        <main className="flex h-lvh items-center justify-center">
+          <button
+            onClick={handleClick}
+            className="btn btn-primary w-1/2 h-56 bg-green-500 text-xl sm:text-3xl rounded-lg hover:bg-green-600"
+          >
+            Start Background Job
+          </button>
+        </main>
+      )
+    }
+    ```
+
+    To test the background job, click the button and check the Request Catcher for the incoming request.
+
+    <Accordion title="Verification screenshots">
+      <Frame>
+        <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=f68c3043856bf77c5e55786a54d57cd7" data-og-width="1456" width="1456" data-og-height="580" height="580" data-path="img/qstash/reqcatcher.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=84c76a371ea1a6af224a61c7897176e4 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=337d1aa2277b60b314a69122ba24bfa0 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=f8d5a20e4e1a735bb579791f474d891b 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=2fcbc86f518555b08b306ff0d4c64045 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=f5f8791bc3df089e26bac1e742505b9c 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/reqcatcher.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=26a972e97932d8f03f8183da39996063 2500w" />
+      </Frame>
+
+      You can also head over to [Upstash Console](https://console.upstash.com/qstash) and go to the
+      `Logs` tab where you can see your message activities.
+
+      <Frame>
+        <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=beb5fcdfa587a89b438d2db22938f6df" data-og-width="2026" width="2026" data-og-height="660" height="660" data-path="img/qstash/log.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=acfc44f8f71fec5480334c50076ba5f6 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=46be420ad548bc8d1549ac4eb572ad46 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=506308270b92f95e63fb412cb14835ca 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=b51df20dcd9047a2f1c8043db306e1b1 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=5482ee85fa85b78af2d8eab873024a00 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/log.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=3800e49a97e6c19fcdadef691c25dcd9 2500w" />
+      </Frame>
+    </Accordion>
+  </Step>
+
+  <Step titleSize="h3" title="Create your own endpoint">
+    Now that we know QStash is working, let's create our own endpoint to handle a background job. This
+    is the endpoint that will be invoked by QStash.
+
+    This job will be responsible for sending 10 requests, each with a 500ms delay. Since we're deploying
+    to Vercel, we have to be cautious of the [time limit for serverless functions](https://vercel.com/docs/functions/runtimes#max-duration).
+
+    ```ts src/app/api/long-task/route.ts theme={"system"}
+    export async function POST(request: Request) {
+      const data = await request.json()
+
+      for (let i = 0; i < 10; i++) {
+        await fetch("https://firstqstashmessage.requestcatcher.com/test", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        })
+        await new Promise((resolve) => setTimeout(resolve, 500))
+      }
+
+      return Response.json({ success: true })
+    }
+    ```
+
+    Now let's update our `startBackgroundJob` function to use our new endpoint.
+
+    There's 1 problem: our endpoint is not public. We need to make it public so that QStash can call it.
+    We have 2 options:
+
+    1. Deploy our application to a platform like Vercel and use the public URL.
+    2. Create a [local tunnel](/qstash/howto/local-tunnel) to test the endpoint locally.
+
+    For the purpose, of this tutorial, I'll deploy the application to Vercel, but
+    feel free to use a local tunnel if you prefer.
+
+    <Accordion title="Deploying to Vercel">
+      There are many ways to [deploy to Vercel](https://vercel.com/docs/deployments/overview), but
+      I'm going to use the Vercel CLI.
+
+      ```bash  theme={"system"}
+      npm install -g vercel
+      ```
+
+      ```bash  theme={"system"}
+      vercel
+      ```
+
+      Once deployed, you can find the public URL in the Vercel dashboard.
+    </Accordion>
+
+    Now that we have a public URL, we can update the URL.
+
+    ```ts src/app/actions.ts theme={"system"}
+    "use server"
+    import { Client } from "@upstash/qstash"
+
+    const qstashClient = new Client({
+      token: process.env.QSTASH_TOKEN!,
+    })
+
+    export async function startBackgroundJob() {
+      await qstashClient.publishJSON({
+        // Replace with your public URL
+        url: "https://qstash-bg-job.vercel.app/api/long-task",
+        body: {
+          hello: "world",
+        },
+      })
+    }
+    ```
+
+    And voila! You've created a Next.js app that calls a long-running background job using QStash.
+  </Step>
+
+  <Step title="Error catching and security">
+    QStash is a great way to handle background jobs, but it's important to remember that it's a public
+    API. This means that anyone can call your endpoint. Make sure to add security measures to your endpoint
+    to ensure that QStash is the sender of the request.
+
+    Luckily, our SDK provides a way to verify the sender of the request. Make sure to get your signing keys
+    from the QStash console and add them to your environment variables. The `verifySignatureAppRouter` will try to
+    load `QSTASH_CURRENT_SIGNING_KEY` and `QSTASH_NEXT_SIGNING_KEY` from the environment. If one of them is missing,
+    an error is thrown.
+
+    ```ts src/app/api/long-task/route.ts theme={"system"}
+    import { verifySignatureAppRouter } from "@upstash/qstash/nextjs"
+
+    async function handler(request: Request) {
+      const data = await request.json()
+
+      for (let i = 0; i < 10; i++) {
+        await fetch("https://firstqstashmessage.requestcatcher.com/test", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        })
+        await new Promise((resolve) => setTimeout(resolve, 500))
+      }
+
+      return Response.json({ success: true })
+    }
+
+    export const POST = verifySignatureAppRouter(handler)
+    ```
+
+    Let's also add error catching to our action and a loading state to our UI.
+
+    <CodeGroup>
+      ```ts src/app/actions.ts theme={"system"}
+      "use server"
+      import { Client } from "@upstash/qstash";
+
+      const qstashClient = new Client({
+        token: process.env.QSTASH_TOKEN!,
+      });
+
+      export async function startBackgroundJob() {
+        try {
+          const response = await qstashClient.publishJSON({
+            "url": "https://qstash-bg-job.vercel.app/api/long-task",
+            body: {
+              "hello": "world"
+            }
+          });
+          return response.messageId;
+        } catch (error) {
+          console.error(error);
+          return null;
+        }
+      }
+      ```
+
+      ```tsx src/app/page.tsx theme={"system"}
+      "use client"
+      import { startBackgroundJob } from "@/app/actions";
+      import { useState } from "react";
+
+      export default function Home() {
+        const [loading, setLoading] = useState(false);
+        const [msg, setMsg] = useState("");
+
+        async function handleClick() {
+          setLoading(true);
+          const messageId = await startBackgroundJob();
+          if (messageId) {
+            setMsg(`Started job with ID ${messageId}`);
+          } else {
+            setMsg("Failed to start background job");
+          }
+          setLoading(false);
+        }
+
+        return (
+          <main className="flex flex-col h-lvh items-center justify-center">
+            <button onClick={handleClick} disabled={loading} className="btn btn-primary w-1/2 h-56 bg-green-500 text-xl sm:text-3xl rounded-lg hover:bg-green-600 disabled:bg-gray-500">
+              Start Background Job
+            </button>
+
+            {loading && <div className="text-2xl mt-8">Loading...</div>}
+            {msg && <p className="text-center text-lg">{msg}</p>}
+          </main>
+        );
+      }
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Result
+
+We have now created a Next.js app that calls a long-running background job using QStash!
+Here's the app in action:
 
 <Frame>
-  <img src="https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=e3f20497f5d50f6bfec30b4ed8ee90ff" alt="Debug a workflow run on UI" data-og-width="2758" width="2758" data-og-height="1864" height="1864" data-path="img/qstash-workflow/run-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=280&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=96c8fe0b3cb3662f3e41398a382cecbf 280w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=560&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=14594dfb7ed28e821056fabb40097a70 560w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=840&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=8f1b7a01cea89106d227d1d0372a1cc2 840w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=1100&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=9af11ef94799753afbd2c1c0953e76c3 1100w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=1650&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=be5d6a683aabc669a23a571e9c32bf1a 1650w, https://mintcdn.com/upstash/fkAt_mKC7aEhsSVz/img/qstash-workflow/run-view.png?w=2500&fit=max&auto=format&n=fkAt_mKC7aEhsSVz&q=85&s=5e629fdf6f7dec028a97a9ce467030ba 2500w" />
+  <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/nextjs-quickstart-result-gif.gif?s=a49ea8f2c7d3ffdf062005939591030b" alt="Quickstart Result Gif" data-og-width="1000" width="1000" data-og-height="550" height="550" data-path="img/qstash/nextjs-quickstart-result-gif.gif" data-optimize="true" data-opv="3" />
 </Frame>
 
-<Tip>
-  Inside the `trigger()` call, you need to provide the URL of your workflow endpoint:
+We can also view the logs on Vercel and QStash
 
-  * Local development → use the URL where your app is running, for example: [http://localhost:3000/api/PATH](http://localhost:3000/api/PATH)
-  * Production → use the URL of your deployed app, for example: [https://yourapp.com/api/PATH](https://yourapp.com/api/PATH)
+<Accordion title="Logs">
+  Vercel
 
-  To avoid hardcoding URLs, you can define a `BASE_URL` constant and set it based on the environment.
-  A common pattern is to check an environment variable that only exists in production:
+  <Frame>
+    <img src="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=6bebdd8a99667f5859444d537ccb1a1e" alt="Vercel Logs" data-og-width="503" width="503" data-og-height="747" height="747" data-path="img/qstash/vercel-log-quickstart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=280&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=eef02e2b49c43aee744b06431900d37d 280w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=560&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=3d27f2f8f59089ef66aefe0fc4aea1de 560w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=840&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=aa64ae73ab4daaa1532d1f0ec4b0f6f1 840w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=1100&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=d77bcfae328148308a73fb5651d53349 1100w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=1650&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=51de3010830efa5558a6a0018c0532bc 1650w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/qstash/vercel-log-quickstart.png?w=2500&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=38c17b368f928e4e84a0266b52c9edb8 2500w" />
+  </Frame>
 
-  ```javascript  theme={"system"}
-  const BASE_URL = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : `http://localhost:3000`
+  QStash
 
-  const { workflowRunId } = await client.trigger({
-    url: `${BASE_URL}/api/workflow`,
-    retries: 3,
-    keepTriggerConfig: true,
-  });
+  <Frame>
+    <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=6c91cb9d180d8a4e3d6e7420e8d5f815" alt="Vercel Logs" data-og-width="2034" width="2034" data-og-height="650" height="650" data-path="img/qstash/quickstart-qstash-result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=5197cff2e8c3726ed4e0f7a8df50ca6e 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=8cd1d3456f09b96489013d93086bf552 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=3dd0bf0918c3cb8f6d9999943785454b 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=6942e47bcacbdd8c59c745c92eba9d47 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=649dd318670c87d30f5138616cac7350 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/quickstart-qstash-result.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=0f4a0564876d76c63c51b6b0e4cbd6b3 2500w" />
+  </Frame>
+</Accordion>
+
+And the code for the 3 files we created:
+
+<CodeGroup>
+  ```tsx src/app/page.tsx theme={"system"}
+  "use client"
+  import { startBackgroundJob } from "@/app/actions";
+  import { useState } from "react";
+
+  export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+
+    async function handleClick() {
+      setLoading(true);
+      const messageId = await startBackgroundJob();
+      if (messageId) {
+        setMsg(`Started job with ID ${messageId}`);
+      } else {
+        setMsg("Failed to start background job");
+      }
+      setLoading(false);
+    }
+
+    return (
+      <main className="flex flex-col h-lvh items-center justify-center">
+        <button onClick={handleClick} disabled={loading} className="btn btn-primary w-1/2 h-56 bg-green-500 text-xl sm:text-3xl rounded-lg hover:bg-green-600 disabled:bg-gray-500">
+          Start Background Job
+        </button>
+
+        {loading && <div className="text-2xl mt-8">Loading...</div>}
+        {msg && <p className="text-center text-lg">{msg}</p>}
+      </main>
+    );
+
+  }
+
   ```
-</Tip>
 
-## Step 5: Deploying to Production
+  ```ts src/app/actions.ts theme={"system"}
+  "use server"
+  import { Client } from "@upstash/qstash";
 
-You now have everything you need to deploy your application to production! 🎉
+  const qstashClient = new Client({
+    token: process.env.QSTASH_TOKEN!,
+  });
 
-Before deploying, make sure your configuration no longer relies on local development settings:
+  export async function startBackgroundJob() {
+    try {
+      const response = await qstashClient.publishJSON({
+        "url": "https://qstash-bg-job.vercel.app/api/long-task",
+        body: {
+          "hello": "world"
+        }
+      });
+      return response.messageId;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+  ```
 
-* **Workflow URL**: Update the `trigger()` call to use your production domain (see the tip above for using a dynamic `BASE_URL`).
-* **Credentials**: Replace local QStash credentials with your production tokens.
-* **Environment Variables**: Verify that all required variables are set correctly in your deployment environment.
+  ```ts src/app/api/long-task/route.ts theme={"system"}
+  import { verifySignatureAppRouter } from "@upstash/qstash/nextjs"
 
-## Next Steps
+  async function handler(request: Request) {
+    const data = await request.json()
 
-Now that you've created and deployed your first workflow, here are some recommended guides to continue learning:
+    for (let i = 0; i < 10; i++) {
+      await fetch("https://firstqstashmessage.requestcatcher.com/test", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      })
+      await new Promise((resolve) => setTimeout(resolve, 500))
+    }
 
-1. **[Learn the Workflow API](/workflow/basics/context)**: Dive deeper into the full API surface and advanced capabilities.
+    return Response.json({ success: true })
+  }
 
-2. **[Configure Workflow Runs](/workflow/basics/client)**: Learn how to configure workflow execution to fit your app's needs.
+  export const POST = verifySignatureAppRouter(handler)
+  ```
+</CodeGroup>
 
-3. **[Handle Failures](/workflow/howto/failures)**: Understand how to detect and recover from failed workflow runs.
+Now, go ahead and try it out for yourself! Try using some of the other features of QStash, like
+[schedules](/qstash/features/schedules), [callbacks](/qstash/features/callbacks), and [URL Groups](/qstash/features/url-groups).

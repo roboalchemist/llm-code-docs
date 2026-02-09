@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/ai-agents/mcp-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lago MCP Server
 
 > Connect Lago live data, models, and billing logic to any AI system, bringing billing context and interactions everywhere.
@@ -51,8 +55,3 @@ Once configured, you can ask Claude natural language questions about your billin
 
 The list of available commands and their descriptions can be found in the [Lago MCP Server GitHub repository](https://github.com/getlago/lago-agent-toolkit?tab=readme-ov-file#available-tools).
 You can contribute to the project by adding more commands or improving existing ones.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/auto-search-as-default.md
+# Source: https://exa.ai/docs/changelog/auto-search-as-default.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Auto search as Default
 
@@ -33,8 +37,3 @@ result = exa.search_and_contents("hottest AI startups", type="neural")
 We're confident this update will significantly improve your search experience. If you have any questions or want to chat about how this might impact your specific use case, please reach out to [hello@exa.ai](mailto:hello@exa.ai).
 
 We can't wait for you to try out the new Auto search as default!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

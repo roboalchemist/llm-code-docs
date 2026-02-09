@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/prompt-a-voice.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt your own voice
 
 > You can head to the Voices tab to create, from a prompt, the voice of your dreams
@@ -64,8 +68,3 @@ Here are some information you can give:
 | Movie Trailer Voice            | Dramatic voice, used to build anticipation in movie trailers, typically associated with action or thrillers                                                                                                                       |   |
 | Southern Woman                 | An older woman with a thick Southern accent. She is sweet and sarcastic.                                                                                                                                                          |   |
 | Evil Ogre                      | A massive evil ogre speaking at a quick pace. He has a silly and resonant tone.                                                                                                                                                   |   |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.argil.ai/llms.txt

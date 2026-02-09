@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/which-path-to-executable-bin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the path to an executable bin file
 
 `Bun.which` is a utility function to find the absolute path of an executable file. It is similar to the `which` command in Unix-like systems.
@@ -12,4 +16,4 @@ Bun.which("bun"); // => "/home/user/.bun/bin/bun"
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-which) for complete documentation.
+See [Docs > API > Utils](/runtime/utils#bun-which) for complete documentation.

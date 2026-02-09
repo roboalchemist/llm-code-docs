@@ -1,8 +1,12 @@
 # Source: https://resend.com/docs/knowledge-base/what-if-my-domain-is-not-verifying.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What if my domain is not verifying?
 
-> Learn what steps to take when your domain doesn't seem to verifying.
+> Learn what steps to take when your domain doesn't seem to be verifying.
 
 Verifying a domain involves a few steps:
 
@@ -22,6 +26,13 @@ When this process is completed correctly, your domain will often verify within 1
 
 When your domain doesn't verify as expected, it's typically due to DNS configuration issues. This guide will help you troubleshoot and resolve common verification problems.
 
+<Tip>
+  Resend provides real-time DNS validation when viewing your domain details.
+  When viewing your domain, you'll see specific error messages and visual
+  indicators highlighting any issues with your DNS records in case you've added
+  them incorrectly.
+</Tip>
+
 ### Incorrect DNS records
 
 Usually when a domain doesn't verify, it's because the DNS records were not added correctly. Here's how to check:
@@ -29,7 +40,9 @@ Usually when a domain doesn't verify, it's because the DNS records were not adde
 1. Confirm that you've added all required records (DKIM, SPF, and MX)
 2. Verify that the records are added at the correct location (the `send` subdomain, not the root domain)
 3. Check that record values match exactly what Resend generated for you
-4. Use a DNS lookup tool like [dns.email](https://dns.email) to verify your records are publicly visible
+4. Look for red wavy underlines on the domain details page (these indicate specific DNS record errors)
+
+<img src="https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=f86be9e2a150af3c29aca6c69689842a" alt="Check for errors in the domain details page" data-og-width="2344" width="2344" data-og-height="1666" height="1666" data-path="images/domain-not-verifying-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=280&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=d9ad15411d6cd8010513b9b1d9c7d046 280w, https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=560&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=7ce30ca6f631637a8123be14b14b7d05 560w, https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=840&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=b7828ea5308cb12f7431f0699c60ca75 840w, https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=1100&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=54baaba8dbe9b5c09793bbdf1b270736 1100w, https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=1650&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=4e63b72a510798d06bb3b9ee0d632800 1650w, https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?w=2500&fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=e2072543870dd07f18f6c9a4f71599e5 2500w" />
 
 ### DNS provider auto-appending domain names
 
@@ -65,6 +78,21 @@ If your domain's DNS is managed in multiple places (e.g., Vercel, Cloudflare, yo
 
 **How to check:** Run a nameserver lookup for your domain using a tool like [dns.email](https://dns.email) to see which provider actually controls your DNS. Add the Resend records at that provider, not elsewhere.
 
+### Region mismatch errors
+
+If your MX records point to a different AWS region than where your domain is configured, you'll see a "region-mismatch" error. This happens when:
+
+* Your domain is configured in one region (e.g., `us-east-1`)
+* But your MX record points to a different region (e.g., `eu-west-1`)
+
+**Solution:** Update your MX record to match the region shown in your Resend domain configuration. The correct MX record value is displayed in the DNS records table on your domain details page.
+
+### Multiple regions detected
+
+If you have multiple MX records pointing to different AWS regions, you'll see a "multiple-regions" error. All MX records for a domain must point to the same region.
+
+**Solution:** Remove any MX records pointing to incorrect regions, keeping only the one that matches your domain's configured region.
+
 ### DKIM record value mismatches
 
 The DKIM record must match exactly what Resend generated. Common mistakes include:
@@ -74,7 +102,7 @@ The DKIM record must match exactly what Resend generated. Common mistakes includ
 3. Adding SPF information to the DKIM record
 4. Not copying the entire value
 
-Always copy and paste the exact value from Resend's domain configuration page.
+Always copy and paste the exact value from Resend's domain configuration page. If there's a mismatch, you'll see a red wavy underline on the incorrect value.
 
 ### DNS Propagation
 

@@ -1,91 +1,70 @@
 # Source: https://docs.baseten.co/reference/management-api/models/deletes-a-model-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete models
+
+
 
 ## OpenAPI
 
 ````yaml delete /v1/models/{model_id}
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/models/{model_id}
-  method: delete
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/models/{model_id}:
     parameters:
-      path:
-        model_id:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: bash
-        source: |
-          curl --request DELETE \
-          --url https://api.baseten.co/v1/models/{model_id} \
-          --header "Authorization: Api-Key $BASETEN_API_KEY"
-      - lang: python
-        source: |-
-          import requests
-          import os
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-          url = "https://api.baseten.co/v1/models/{model_id}"
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-          response = requests.request(
-              "DELETE",
-              url,
-              headers=headers,
-              json={}
-          )
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: Unique identifier of the model
-                    title: Id
-                    type: string
-              deleted:
-                allOf:
-                  - description: Whether the model was deleted
-                    title: Deleted
-                    type: boolean
-            title: ModelTombstoneV1
-            description: A model tombstone.
-            refIdentifier: '#/components/schemas/ModelTombstoneV1'
-            requiredProperties:
-              - id
-              - deleted
-        examples:
-          example:
-            value:
-              id: <string>
-              deleted: true
-        description: A model tombstone.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/model_id'
+    delete:
+      summary: Deletes a model by ID
+      responses:
+        '200':
+          description: A model tombstone.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelTombstoneV1'
 components:
-  schemas: {}
+  parameters:
+    model_id:
+      schema:
+        type: string
+      name: model_id
+      in: path
+      required: true
+  schemas:
+    ModelTombstoneV1:
+      description: A model tombstone.
+      properties:
+        id:
+          description: Unique identifier of the model
+          title: Id
+          type: string
+        deleted:
+          description: Whether the model was deleted
+          title: Deleted
+          type: boolean
+      required:
+        - id
+        - deleted
+      title: ModelTombstoneV1
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

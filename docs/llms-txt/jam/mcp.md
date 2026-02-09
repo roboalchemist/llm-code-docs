@@ -143,6 +143,28 @@ Once you make the above changes, make sure to restart Cursor to use Jam.
 
 </details>
 
+<details>
+
+<summary>OpenCode</summary>
+
+1. Edit your `opencode.json`:&#x20;
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp"
+    }
+  }
+}
+```
+
+2. Run `opencode mcp auth jam` to start oauth2 authorization flow
+
+</details>
+
 {% hint style="info" %}
 Jam MCP is backwards compatible with the deprecated [HTTP+SSE transport](https://modelcontextprotocol.io/specification/2024-11-05/basic/transports#http-with-sse)&#x20;
 {% endhint %}

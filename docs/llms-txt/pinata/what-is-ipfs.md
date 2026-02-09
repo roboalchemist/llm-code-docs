@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/ipfs-101/what-is-ipfs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is IPFS?
 
 [IPFS](https://ipfs.io) (Inter-Planetary File System) is a peer-to-peer distributed file system that is used primarily for data that can't be stored on a blockchain. Unlike HTTP, a more standard file sharing protocol, IPFS has special properties that make it ideal for a decentralized data model that works in tandem with blockchains. Some of those abilities include:

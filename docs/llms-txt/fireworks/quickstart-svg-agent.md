@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/quickstart-svg-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remote Agent Quickstart
 
 > Train an SVG drawing agent running in a remote environment
@@ -54,6 +58,8 @@ OPENAI_API_KEY=your-openai-key-here
 
 The create process below automatically reads and uploads these secrets to Fireworks.
 
+For more details on Fireworks Secret Management usage, please refer to [using secret in evaluator](/fine-tuning/using-secret-in-evaluator).
+
 ## 2. Test your evaluator locally
 
 Test your evaluator locally before launching training, to verify everything works with your rollout processor.
@@ -89,6 +95,62 @@ If you want to use a local development Vercel server instead, see [Local Develop
 * If you don't need Docker, `ep local-test` will run `pytest` on your host machine by default.
 * You can ignore the `Dockerfile` and force host execution with: `ep local-test --ignore-docker`.
 
+<Accordion title="Dockerfile constraints for RFT evaluators">
+  RFT evaluators run in sandboxed environments. Your Dockerfile must follow these constraints:
+
+  **Base image:**
+
+  * Only Debian-based images are supported (e.g., Debian, Ubuntu, or `python:3.x-slim`)
+  * Alpine, CentOS, and other non-Debian distros are not supported
+  * If no Dockerfile is provided, the system uses a default Python environment with common packages pre-installed
+
+  **Supported instructions:**
+
+  * `FROM`: Base image (required, only one allowed)
+  * `RUN`: Execute commands
+  * `COPY` / `ADD`: Copy files into the image
+  * `WORKDIR`: Set working directory
+  * `USER`: Set the user
+  * `ENV`: Set environment variables
+  * `CMD` / `ENTRYPOINT`: Set the start command
+  * `ARG`: Build-time variables
+
+  **Unsupported features:**
+
+  | Feature                | Status                                    |
+  | ---------------------- | ----------------------------------------- |
+  | Non-Debian base images | ❌ Not supported (no Alpine, CentOS, etc.) |
+  | Multi-stage builds     | ❌ Not supported (only one `FROM` allowed) |
+  | `EXPOSE`               | ⚠️ Ignored                                |
+  | `VOLUME`               | ⚠️ Ignored                                |
+
+  **Example Dockerfile:**
+
+  ```dockerfile  theme={null}
+  FROM python:3.11-slim
+
+  WORKDIR /app
+
+  # Install system dependencies
+  RUN apt-get update && apt-get install -y \
+      chromium \
+      && rm -rf /var/lib/apt/lists/*
+
+  # Install Python dependencies
+  COPY requirements.txt .
+  RUN pip install --no-cache-dir -r requirements.txt
+
+  # Copy evaluator code
+  COPY . .
+
+  CMD ["pytest", "-vs"]
+  ```
+
+  <Warning>
+    Multi-stage Dockerfiles will fail during the evaluator build. Use a single `FROM` instruction and install all dependencies in one stage.
+  </Warning>
+</Accordion>
+
 ### Expected Test Output
 
 Navigate to [http://localhost:8000](http://localhost:8000) to see the Eval Protocol UI.
@@ -113,7 +175,6 @@ To kickoff training, simply do:
 ```bash  theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/qwen3-0p6b \
-  --epochs 8 \
   --chunk-size 10
 ```
 
@@ -134,7 +195,6 @@ This command:
 ```bash  theme={null}
 eval-protocol create rft \
   --base-model accounts/fireworks/models/qwen3-0p6b \
-  --epochs 8 \
   --chunk-size 10 \
   --force
 ```

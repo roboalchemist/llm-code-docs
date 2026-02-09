@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/help/prosupport.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Professional Support
 
 For all Upstash products, we manage everything for you and let you focus on more important things. If you ever need further help, our dedicated Professional Support team are here to ensure you get the most out of our platform, whether you’re just starting or scaling to new heights.
@@ -38,7 +42,9 @@ As a Professional Support Customer, below are the **two methods** to reach out t
 
 You will see a chatbox on the bottom right when viewing Upstash console, docs and website. Once you initiate a chat, Professional Support customers will be prompted to select a severity level:
 
-<img noZoom width="300" height="100" src="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=a1ad636c47b05611214a0345e11eec3e" data-og-width="802" data-og-height="1416" data-path="img/pro-support/image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=280&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=6bb402a261987a15b1604dcfa54ff470 280w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=560&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=ae7b14d8bd3dbd6afb46f4e905775077 560w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=840&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=770709aaad824a69682bf5a447b90fea 840w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=1100&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=33e039a3c90eae07f1b846103599f69f 1100w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=1650&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=bef88e175b5406a533f63297db51aa29 1650w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=2500&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=4690e136e4a80b000f38612935603b0a 2500w" />
+<Frame>
+  <img src="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=a1ad636c47b05611214a0345e11eec3e" width="400" data-og-width="802" data-og-height="1416" data-path="img/pro-support/image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=280&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=6bb402a261987a15b1604dcfa54ff470 280w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=560&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=ae7b14d8bd3dbd6afb46f4e905775077 560w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=840&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=770709aaad824a69682bf5a447b90fea 840w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=1100&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=33e039a3c90eae07f1b846103599f69f 1100w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=1650&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=bef88e175b5406a533f63297db51aa29 1650w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/pro-support/image.png?w=2500&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=4690e136e4a80b000f38612935603b0a 2500w" />
+</Frame>
 
 <Note>
   To be able to see these options in chat, remember to sign into your Upstash Account first.

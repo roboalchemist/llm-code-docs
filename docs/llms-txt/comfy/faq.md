@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/partner-nodes/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQs about Partner Nodes
 
 > Some FAQs you may encounter when using Partner Nodes.
@@ -50,7 +54,7 @@ This article addresses common questions regarding the use of Partner nodes.
   </Accordion>
 
   <Accordion title="Can credits go negative?">
-    Credits cannot go negative, so please ensure you have enough credits before making the corresponding API calls.
+    Credits are not intended to be used as a negative balance or credit line. However, due to race conditions where partner nodes don't always report costs before execution, a single execution may consume more credits than your remaining balance and temporarily result in a negative balance after completion. When your balance is negative, you will not be able to run Partner Nodes until you top up and restore a positive balance. Please ensure you have enough credits before making API calls.
   </Accordion>
 
   <Accordion title="Where can I check usage and expenses?">

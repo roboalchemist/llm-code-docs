@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/guide/why.md
 
-# Source: https://vitest.dev/guide/browser/why.md
-
-# Source: https://vitest.dev/guide/why.md
-
 ---
 url: /guide/why.md
 ---

@@ -4,11 +4,7 @@
 
 Open ID Connect plugin for Better Auth that allows you to have your own OIDC provider.
 
-***
 
-title: OIDC Provider
-description: Open ID Connect plugin for Better Auth that allows you to have your own OIDC provider.
----------------------------------------------------------------------------------------------------
 
 <Callout type="warn">
   This plugin will soon be deprecated in favor of the [OAuth Provider Plugin](/docs/plugins/oauth-provider).
@@ -38,7 +34,7 @@ The **OIDC Provider Plugin** enables you to build and manage your own OpenID Con
   <Step>
     ### Mount the Plugin
 
-    Add the OIDC plugin to your auth config. See [OIDC Configuration](#oidc-configuration) on how to configure the plugin.
+    Add the OIDC plugin to your auth config. See [Configuration Section](#configuration) on how to configure the plugin.
 
     ```ts title="auth.ts"
     import { betterAuth } from "better-auth";
@@ -60,7 +56,7 @@ The **OIDC Provider Plugin** enables you to build and manage your own OpenID Con
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -106,7 +102,7 @@ The **OIDC Provider Plugin** enables you to build and manage your own OpenID Con
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -180,6 +176,7 @@ Once installed, you can utilize the OIDC Provider to manage authentication flows
 
 To register a new OIDC client, use the `oauth2.register` method on the client or `auth.api.registerOAuthApplication` on the server.
 
+
 ### Client Side
 
 ```ts
@@ -226,60 +223,61 @@ const data = await auth.api.registerOAuthApplication({
 
 ```ts
 type registerOAuthApplication = {
-    /**
-     * A list of redirect URIs. 
-     */
-    redirect_uris: string[] = ["https://client.example.com/callback"]
-    /**
-     * The authentication method for the token endpoint. 
-     */
-    token_endpoint_auth_method?: "none" | "client_secret_basic" | "client_secret_post" = "client_secret_basic"
-    /**
-     * The grant types supported by the application. 
-     */
-    grant_types?: ("authorization_code" | "implicit" | "password" | "client_credentials" | "refresh_token" | "urn:ietf:params:oauth:grant-type:jwt-bearer" | "urn:ietf:params:oauth:grant-type:saml2-bearer")[] = ["authorization_code"]
-    /**
-     * The response types supported by the application. 
-     */
-    response_types?: ("code" | "token")[] = ["code"]
-    /**
-     * The name of the application. 
-     */
-    client_name?: string = "My App"
-    /**
-     * The URI of the application. 
-     */
-    client_uri?: string = "https://client.example.com"
-    /**
-     * The URI of the application logo. 
-     */
-    logo_uri?: string = "https://client.example.com/logo.png"
-    /**
-     * The scopes supported by the application. Separated by spaces. 
-     */
-    scope?: string = "profile email"
-    /**
-     * The contact information for the application. 
-     */
-    contacts?: string[] = ["admin@example.com"]
-    /**
-     * The URI of the application terms of service. 
-     */
-    tos_uri?: string = "https://client.example.com/tos"
-    /**
-     * The URI of the application privacy policy. 
-     */
-    policy_uri?: string = "https://client.example.com/policy"
-    /**
-     * The URI of the application JWKS. 
-     */
-    jwks_uri?: string = "https://client.example.com/jwks"
-    /**
-     * The JWKS of the application. 
-     */
-    jwks?: Record<string, any> = {"keys": [{"kty": "RSA", "alg": "RS256", "use": "sig", "n": "...", "e": "..."
+      /**
+       * A list of redirect URIs. 
+       */
+      redirect_uris: string[] = ["https://client.example.com/callback"]
+      /**
+       * The authentication method for the token endpoint. 
+       */
+      token_endpoint_auth_method?: "none" | "client_secret_basic" | "client_secret_post" = "client_secret_basic"
+      /**
+       * The grant types supported by the application. 
+       */
+      grant_types?: ("authorization_code" | "implicit" | "password" | "client_credentials" | "refresh_token" | "urn:ietf:params:oauth:grant-type:jwt-bearer" | "urn:ietf:params:oauth:grant-type:saml2-bearer")[] = ["authorization_code"]
+      /**
+       * The response types supported by the application. 
+       */
+      response_types?: ("code" | "token")[] = ["code"]
+      /**
+       * The name of the application. 
+       */
+      client_name?: string = "My App"
+      /**
+       * The URI of the application. 
+       */
+      client_uri?: string = "https://client.example.com"
+      /**
+       * The URI of the application logo. 
+       */
+      logo_uri?: string = "https://client.example.com/logo.png"
+      /**
+       * The scopes supported by the application. Separated by spaces. 
+       */
+      scope?: string = "profile email"
+      /**
+       * The contact information for the application. 
+       */
+      contacts?: string[] = ["admin@example.com"]
+      /**
+       * The URI of the application terms of service. 
+       */
+      tos_uri?: string = "https://client.example.com/tos"
+      /**
+       * The URI of the application privacy policy. 
+       */
+      policy_uri?: string = "https://client.example.com/policy"
+      /**
+       * The URI of the application JWKS. 
+       */
+      jwks_uri?: string = "https://client.example.com/jwks"
+      /**
+       * The JWKS of the application. 
+       */
+      jwks?: Record<string, any> = {"keys": [{"kty": "RSA", "alg": "RS256", "use": "sig", "n": "...", "e": "..."
 }
 ```
+
 
 <Callout>
   This endpoint supports [RFC7591](https://datatracker.ietf.org/doc/html/rfc7591) compliant client registration.

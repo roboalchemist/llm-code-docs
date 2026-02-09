@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/data/text-streams.md
 
-# Source: https://docs.livekit.io/home/client/data/text-streams.md
-
-LiveKit docs › LiveKit SDKs › Realtime text & data › Sending text
+LiveKit docs › Data › Sending text
 
 ---
 
@@ -14,7 +12,7 @@ LiveKit docs › LiveKit SDKs › Realtime text & data › Sending text
 
 Text streams provide a simple way to send text between participants in realtime, supporting use cases such as chat, streamed LLM responses, and more. Each individual stream is associated with a topic, and you must register a handler to receive incoming streams for that topic. Streams can target specific participants or the entire room.
 
-To send other kinds of data, use [byte streams](https://docs.livekit.io/home/client/data/byte-streams.md) instead.
+To send other kinds of data, use [byte streams](https://docs.livekit.io/transport/data/byte-streams.md) instead.
 
 ## Sending all at once
 
@@ -573,15 +571,15 @@ LiveKit does not include long-term persistence for text streams. All data is tra
 
 ## Chat components
 
-LiveKit provides pre-built React components for common text streaming use cases like chat. For details, see the [Chat component](https://docs.livekit.io/reference/components/react/component/chat.md) and [useChat hook](https://docs.livekit.io/reference/components/react/hook/usechat.md).
+LiveKit provides prebuilt React components for common text streaming use cases like chat. For details, see the [Chat component](https://docs.livekit.io/reference/components/react/component/chat.md) and [useChat hook](https://docs.livekit.io/reference/components/react/hook/usechat.md).
 
 > ℹ️ **Note**
 > 
-> Streams are a simple and powerful way to send text, but if you need precise control over individual packet behavior, the lower-level [data packets](https://docs.livekit.io/home/client/data/packets.md) API may be more appropriate.
+> Streams are a simple and powerful way to send text, but if you need precise control over individual packet behavior, the lower-level [data packets](https://docs.livekit.io/transport/data/packets.md) API may be more appropriate.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:51.775Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/data/text-streams.md](https://docs.livekit.io/home/client/data/text-streams.md).
+This document was rendered at 2026-02-03T03:25:18.718Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/data/text-streams.md](https://docs.livekit.io/transport/data/text-streams.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

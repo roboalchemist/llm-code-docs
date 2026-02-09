@@ -1,16 +1,8 @@
 # Source: https://docs.pipecat.ai/client/react-native/api-reference.md
 
-# Source: https://docs.pipecat.ai/client/ios/api-reference.md
-
-# Source: https://docs.pipecat.ai/client/android/api-reference.md
-
-# Source: https://docs.pipecat.ai/client/react-native/api-reference.md
-
-# Source: https://docs.pipecat.ai/client/ios/api-reference.md
-
-# Source: https://docs.pipecat.ai/client/android/api-reference.md
-
-# Source: https://docs.pipecat.ai/client/react-native/api-reference.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference
 
@@ -22,8 +14,3 @@
 
   **Just ensure you use the appropriate transport layer for React Native.**
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

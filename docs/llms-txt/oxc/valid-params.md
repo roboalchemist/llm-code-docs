@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/valid-params.md
 ---
-# promise/valid-params&#x20;
 
 ### What it does
 

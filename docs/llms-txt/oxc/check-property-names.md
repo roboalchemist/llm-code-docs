@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/check-property-names.md
 ---
-# jsdoc/check-property-names&#x20;
 
 ### What it does
 

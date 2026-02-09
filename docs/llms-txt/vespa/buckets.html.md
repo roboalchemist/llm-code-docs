@@ -98,7 +98,7 @@ The effect of this is that documents sharing a location will be spread across no
 
 Buckets exist in the _default_ or _global_ bucket space.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

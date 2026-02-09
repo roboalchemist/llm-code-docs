@@ -2,6 +2,8 @@
 
 # Config V2 Migration Guide
 
+Copy page
+
 This guide will help you migrate from Config V1 to Config V2.
 
 ## What is Config V2?[​](#what-is-config-v2 "Direct link to What is Config V2?")
@@ -10,7 +12,7 @@ This guide will help you migrate from Config V1 to Config V2.
 
 **Config V2 supports all the features of V1**, so you can continue using those, but **it offers interesting new features as well**. However, you won't be able to use the new features with the V1 versions of the Dashboard, Public Management API and SDKs.
 
-Read more about the new features in the [Config V2 Overview](https://configcat.com/docs/docs/advanced/config-v2/.md).
+Read more about the new features in the [Config V2 Overview](https://configcat.com/docs/advanced/config-v2.md).
 
 ## A few things to consider before migration[​](#a-few-things-to-consider-before-migration "Direct link to A few things to consider before migration")
 
@@ -37,7 +39,7 @@ It's important to note that the V2 config will be created with the same settings
 
 In your application, upgrade the ConfigCat SDK to the latest version. Old versions of the SDK will not be able to access the new config. Make sure you upgrade every application that uses the migrated V2 config.
 
-Here is a list of the SDKs that support Config V2: [See the supported SDK versions.](https://configcat.com/docs/docs/advanced/config-v2-sdk-compatibility/.md)
+Here is a list of the SDKs that support Config V2: [See the supported SDK versions.](https://configcat.com/docs/advanced/config-v2-sdk-compatibility.md)
 
 ### Step 3: Update the ConfigCat SDK Key[​](#step-3-update-the-configcat-sdk-key "Direct link to Step 3: Update the ConfigCat SDK Key")
 

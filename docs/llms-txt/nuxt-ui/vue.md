@@ -6,169 +6,151 @@
 
 # Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
+# Installation
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
+> Learn how to install and configure Nuxt UI in your Vue application, compatible with both plain Vite and Inertia.
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
+> [!NOTE]
+> See: /docs/getting-started/installation/nuxt
+> Looking for the Nuxt version?
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
+## Setup
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
+### Add to a Vue project
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
+Install the Nuxt UI package
+```bash
+pnpm add @nuxt/ui tailwindcss
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
-
-# Internationalization (i18n)
-
-> Nuxt UI supports 50+ locales and multi-directional (LTR/RTL) internationalization.
-
-<callout className="hidden" icon="i-logos-nuxt-icon" to="/docs/getting-started/integrations/i18n/nuxt">
-
-Looking for the **Nuxt** version?
-
-</callout>
-
-## Usage
-
-<note to="/docs/components/app">
-
-Nuxt UI provides an **App** component that wraps your app to provide global configurations.
-
-</note>
-
-### Locale
-
-Use the `locale` prop with the locale you want to use from `@nuxt/ui/locale`:
-
-```vue [App.vue]
-<script setup lang="ts">
-import { fr } from '@nuxt/ui/locale'
-</script>
-
-<template>
-  <UApp :locale="fr">
-    <RouterView />
-  </UApp>
-</template>
 ```
 
-### Custom locale
+```bash
+yarn add @nuxt/ui tailwindcss
 
-You can create your own locale using the `defineLocale` composable:
+```
 
-```vue [App.vue]
-<script setup lang="ts">
-import type { Messages } from '@nuxt/ui'
-import { defineLocale } from '@nuxt/ui/composables/defineLocale.js'
+```bash
+npm install @nuxt/ui tailwindcss
 
-const locale = defineLocale<Messages>({
-  name: 'My custom locale',
-  code: 'en',
-  dir: 'ltr',
-  messages: {
-    // implement pairs
-  }
+```
+
+```bash
+bun add @nuxt/ui tailwindcss
+
+```
+Add the Nuxt UI Vite plugin in your vite.config.ts
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui()
+  ]
 })
-</script>
 
-<template>
-  <UApp :locale="locale">
-    <RouterView />
-  </UApp>
-</template>
 ```
 
-<tip>
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+import laravel from 'laravel-vite-plugin'
 
-Look at the `code` parameter, there you need to pass the iso code of the language. Example:
-
-- `hi` Hindi (language)
-- `de-AT`: German (language) as used in Austria (region)
-
-</tip>
-
-### Extend locale
-
-You can customize an existing locale by overriding its `messages` or `code` using the `extendLocale` composable:
-
-```vue [App.vue]
-<script setup lang="ts">
-import { en } from '@nuxt/ui/locale'
-import { extendLocale } from '@nuxt/ui/composables/defineLocale.js'
-
-const locale = extendLocale(en, {
-  code: 'en-GB',
-  messages: {
-    commandPalette: {
-      placeholder: 'Search a component...'
-    }
-  }
+export default defineConfig({
+  plugins: [
+    laravel({
+      input: ['resources/js/app.ts'],
+      refresh: true
+    }),
+    vue({
+      template: {
+        transformAssetUrls: {
+          base: null,
+          includeAbsolute: false
+        }
+      }
+    }),
+    ui({
+      router: 'inertia'
+    })
+  ]
 })
-</script>
 
-<template>
-  <UApp :locale="locale">
-    <RouterView />
-  </UApp>
-</template>
 ```
 
-### Dynamic locale
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+import adonisjs from '@adonisjs/vite/client'
+import inertia from '@adonisjs/inertia/client'
 
-To dynamically switch between languages, you can use the [Vue I18n](https://vue-i18n.intlify.dev/) plugin.
+export default defineConfig({
+  plugins: [
+    adonisjs({
+      entrypoints: ['inertia/app/app.ts'],
+      reload: ['resources/views/**/*.edge']
+    }),
+    inertia(),
+    vue(),
+    ui({
+      router: 'inertia'
+    })
+  ]
+})
 
-<steps level="4">
-
-#### Install the Vue I18n package
-
-<code-group sync="pm">
-
-```bash [pnpm]
-pnpm add vue-i18n@11
 ```
+> [!TIP]
+> Nuxt UI registers `unplugin-auto-import` and `unplugin-vue-components`, which will generate `auto-imports.d.ts` and `components.d.ts` type declaration files. You will likely want to gitignore these, and add them to your `tsconfig`.
+> ```json
+> {
+>   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "auto-imports.d.ts", "components.d.ts"]
+> }
+> 
+> ```
+> 
+> ```bash
+> # Auto-generated type declarations
+> auto-imports.d.ts
+> components.d.ts
+> 
+> ```
 
-```bash [yarn]
-yarn add vue-i18n@11
-```
+> [!TIP]
+> Internally, Nuxt UI relies on custom alias to resolve the theme types. If you're using TypeScript, you should add an alias to your `tsconfig` to enable auto-completion in your `vite.config.ts`.
+> ```json
+> {
+>   "compilerOptions": {
+>     "paths": {
+>       "#build/ui": [
+>         "./node_modules/.nuxt-ui/ui"
+>       ]
+>     }
+>   }
+> }
+> 
+> ```
+> 
+> ```json
+> {
+>   "compilerOptions": {
+>     "paths": {
+>       "#build/ui/*": [
+>         "./node_modules/.nuxt-ui/ui/*"
+>       ]
+>     }
+>   }
+> }
+> 
+> ```
 
-```bash [npm]
-npm install vue-i18n@11
-```
-
-```bash [bun]
-bun add vue-i18n@11
-```
-
-</code-group>
-
-#### Use the Vue I18n plugin in your `main.ts`
-
-```ts [main.ts]
+Use the Nuxt UI Vue plugin
+```ts
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { createI18n } from 'vue-i18n'
 import ui from '@nuxt/ui/vue-plugin'
 import App from './App.vue'
 
@@ -179,83 +161,657 @@ const router = createRouter({
   history: createWebHistory()
 })
 
-const i18n = createI18n({
-  legacy: false,
-  locale: 'en',
-  availableLocales: ['en', 'de'],
-  messages: {
-    en: {
-      // ...
-    },
-    de: {
-      // ...
-    }
-  }
-})
-
 app.use(router)
-app.use(i18n)
 app.use(ui)
 
 app.mount('#app')
+
 ```
 
-#### Set the `locale` prop using `useI18n`
+```ts
+import type { DefineComponent } from 'vue'
+import { createInertiaApp } from '@inertiajs/vue3'
+import ui from '@nuxt/ui/vue-plugin'
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import { createApp, h } from 'vue'
 
-```vue [App.vue]
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import * as locales from '@nuxt/ui/locale'
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel x Nuxt UI'
 
-const { locale } = useI18n()
-</script>
-
-<template>
-  <UApp :locale="locales[locale]">
-    <RouterView />
-  </UApp>
-</template>
-```
-
-</steps>
-
-### Dynamic direction
-
-Each locale has a `dir` property which will be used by the `App` component to set the directionality of all components.
-
-In a multilingual application, you might want to set the `lang` and `dir` attributes on the `<html>` element dynamically based on the user's locale, which you can do with the [useHead](https://unhead.unjs.io/usage/composables/use-head) composable:
-
-```vue [App.vue]
-<script setup lang="ts">
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useHead } from '@unhead/vue'
-import * as locales from '@nuxt/ui/locale'
-
-const { locale } = useI18n()
-
-const lang = computed(() => locales[locale.value].code)
-const dir = computed(() => locales[locale.value].dir)
-
-useHead({
-  htmlAttrs: {
-    lang,
-    dir
+createInertiaApp({
+  title: title => (title ? `${title} - ${appName}` : appName),
+  resolve: name =>
+    resolvePageComponent(
+      `./pages/${name}.vue`,
+      import.meta.glob<DefineComponent>('./pages/**/*.vue')
+    ),
+  setup({ el, App, props, plugin }) {
+    createApp({ render: () => h(App, props) })
+      .use(plugin)
+      .use(ui)
+      .mount(el)
   }
 })
-</script>
 
+```
+
+```ts
+import type { DefineComponent } from 'vue'
+import { createInertiaApp } from '@inertiajs/vue3'
+import ui from '@nuxt/ui/vue-plugin'
+import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { createApp, h } from 'vue'
+
+const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS x Nuxt UI'
+
+createInertiaApp({
+  title: title => (title ? `${title} - ${appName}` : appName),
+  resolve: name =>
+    resolvePageComponent(
+      `../pages/${name}.vue`,
+      import.meta.glob<DefineComponent>('../pages/**/*.vue')
+    ),
+  setup({ el, App, props, plugin }) {
+    createApp({ render: () => h(App, props) })
+      .use(plugin)
+      .use(ui)
+      .mount(el)
+  }
+})
+
+```
+Import Tailwind CSS and Nuxt UI in your CSS
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+```
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+```
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+```
+> [!TIP]
+> Import the CSS file in your entrypoint.
+> ```ts
+> import './assets/main.css'
+> 
+> import { createApp } from 'vue'
+> import { createRouter, createWebHistory } from 'vue-router'
+> import ui from '@nuxt/ui/vue-plugin'
+> import App from './App.vue'
+> 
+> const app = createApp(App)
+> 
+> const router = createRouter({
+>   routes: [],
+>   history: createWebHistory()
+> })
+> 
+> app.use(router)
+> app.use(ui)
+> 
+> app.mount('#app')
+> 
+> ```
+> 
+> ```ts
+> import '../css/app.css'
+> import type { DefineComponent } from 'vue'
+> import { createInertiaApp } from '@inertiajs/vue3'
+> import ui from '@nuxt/ui/vue-plugin'
+> import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+> import { createApp, h } from 'vue'
+> 
+> const appName = import.meta.env.VITE_APP_NAME || 'Laravel x Nuxt UI'
+> 
+> createInertiaApp({
+>   title: title => (title ? `${title} - ${appName}` : appName),
+>   resolve: name =>
+>     resolvePageComponent(
+>       `./pages/${name}.vue`,
+>       import.meta.glob<DefineComponent>('./pages/**/*.vue')
+>     ),
+>   setup({ el, App, props, plugin }) {
+>     createApp({ render: () => h(App, props) })
+>       .use(plugin)
+>       .use(ui)
+>       .mount(el)
+>   }
+> })
+> 
+> ```
+> 
+> ```ts
+> import '../css/app.css'
+> import type { DefineComponent } from 'vue'
+> import { createInertiaApp } from '@inertiajs/vue3'
+> import ui from '@nuxt/ui/vue-plugin'
+> import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+> import { createApp, h } from 'vue'
+> 
+> const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS x Nuxt UI'
+> 
+> createInertiaApp({
+>   title: title => (title ? `${title} - ${appName}` : appName),
+>   resolve: name =>
+>     resolvePageComponent(
+>       `../pages/${name}.vue`,
+>       import.meta.glob<DefineComponent>('../pages/**/*.vue')
+>     ),
+>   setup({ el, App, props, plugin }) {
+>     createApp({ render: () => h(App, props) })
+>       .use(plugin)
+>       .use(ui)
+>       .mount(el)
+>   }
+> })
+> 
+> ```
+
+::
+
+> [!NOTE]
+> It's recommended to install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension for VSCode and add the following settings:
+> ```json
+> {
+>   "files.associations": {
+>     "*.css": "tailwindcss"
+>   },
+>   "editor.quickSuggestions": {
+>     "strings": "on"
+>   },
+>   "tailwindCSS.classAttributes": ["class", "ui"],
+>   "tailwindCSS.experimental.classRegex": [
+>     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+>   ]
+> }
+> 
+> ```
+
+#### Wrap your app with App component
+
+```vue
 <template>
-  <UApp :locale="locales[locale]">
+  <UApp>
     <RouterView />
   </UApp>
 </template>
+
 ```
 
-## Supported languages
+```vue
+<template>
+  <UApp>
+    <!-- Your content goes here -->
+  </UApp>
+</template>
 
-<supported-languages>
+```
 
+```vue
+<template>
+  <UApp>
+    <!-- Your content goes here -->
+  </UApp>
+</template>
 
+```
 
-</supported-languages>
+> [!NOTE]
+> See: /docs/components/app
+> The `App` component sets up global config and is required for Toast, Tooltip and programmatic overlays.
+
+#### Add the `isolate` class to your root container
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuxt UI</title>
+  </head>
+  <body>
+    <div id="app" class="isolate"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+
+```
+
+```blade
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @inertiaHead
+    @vite('resources/js/app.ts')
+  </head>
+  <body>
+    <div class="isolate">
+        @inertia
+    </div>
+  </body>
+</html>
+
+```
+
+```edge
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @inertiaHead()
+    @vite(['inertia/app/app.ts', `inertia/pages/${page.component}.vue`])
+  </head>
+  <body>
+    @inertia({ class: 'isolate' })
+  </body>
+</html>
+
+```
+
+> [!NOTE]
+> This ensures styles are scoped to your app and prevents issues with overlays and stacking contexts.
+
+::
+
+### Use a Vue template
+
+To quickly get started with Nuxt UI, you can use the [starter template](https://github.com/nuxt-ui-templates/starter-vue) by running:
+
+```bash [Terminal]
+npm create nuxt@latest -- --no-modules -t ui-vue
+```
+
+You can also get started with one of our [official templates](/templates):
+
+**Starter**
+A minimal template to get started with Nuxt UI.
+
+**Dashboard**
+A dashboard template with multi-column layout for building sophisticated admin interfaces.
+
+**Starter Adonis**
+A minimal Nuxt UI template for AdonisJS using Inertia.js.
+
+**Starter Laravel**
+A minimal Nuxt UI template for Laravel using Inertia.js.
+
+You can use the `Use this template` button on GitHub to create a new repository or use the CLI:
+
+```bash
+npm create nuxt@latest -- --no-modules -t ui-vue
+
+```
+
+```bash
+npm create nuxt@latest -- --no-modules -t ui-vue/dashboard
+
+```
+
+## Options
+
+You can customize Nuxt UI by providing options in your `vite.config.ts`.
+
+### `prefix`
+
+Use the `prefix` option to change the prefix of the components.
+
+- Default: `U`
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      prefix: 'Nuxt'
+    })
+  ]
+})
+```
+
+### `ui`
+
+Use the `ui` option to provide configuration for Nuxt UI.
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      ui: {
+        colors: {
+          primary: 'green',
+          neutral: 'slate'
+        }
+      }
+    })
+  ]
+})
+```
+
+### `colorMode`
+
+Use the `colorMode` option to enable or disable the color mode integration from `@vueuse/core`.
+
+- Default: `true`
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      colorMode: false
+    })
+  ]
+})
+```
+
+### `theme.colors`
+
+Use the `theme.colors` option to define the dynamic color aliases used to generate components theme.
+
+- Default: `['primary', 'secondary', 'success', 'info', 'warning', 'error']`
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      theme: {
+        colors: ['primary', 'error']
+      }
+    })
+  ]
+})
+```
+
+> [!TIP]
+> See: /docs/getting-started/theme/design-system#colors
+> Learn more about color customization and theming in the Theme section.
+
+### `theme.transitions`
+
+Use the `theme.transitions` option to enable or disable transitions on components.
+
+- Default: `true`
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      theme: {
+        transitions: false
+      }
+    })
+  ]
+})
+```
+
+> [!NOTE]
+> This option adds the `transition-colors` class on components with hover or active states.
+
+### `theme.defaultVariants`
+
+Use the `theme.defaultVariants` option to override the default `color` and `size` variants for components.
+
+- Default: `{ color: 'primary', size: 'md' }`
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      theme: {
+        defaultVariants: {
+          color: 'neutral',
+          size: 'sm'
+        }
+      }
+    })
+  ]
+})
+```
+
+### `theme.prefix` `4.2+`
+
+Use the `theme.prefix` option to configure the same prefix you set on your Tailwind CSS import. This ensures Nuxt UI components use the correct prefixed utility classes and CSS variables.
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      theme: {
+        prefix: 'tw'
+      }
+    })
+  ]
+})
+
+```
+
+```css
+@import "tailwindcss" prefix(tw);
+@import "@nuxt/ui";
+
+```
+
+This will automatically prefix all Tailwind utility classes and CSS variables in Nuxt UI component themes:
+
+```html
+<!-- Without prefix -->
+<button class="px-2 py-1 text-xs hover:bg-primary/75">Button</button>
+
+<!-- With prefix: tw -->
+<button class="tw:px-2 tw:py-1 tw:text-xs tw:hover:bg-primary/75">Button</button>
+```
+
+> [!NOTE]
+> See: https://tailwindcss.com/docs/styling-with-utility-classes#using-the-prefix-option
+> Learn more about using a prefix in the Tailwind CSS documentation.
+
+### `router` `4.3+`
+
+Use the `router` option to configure routing integration. This is useful for applications that don't use `vue-router`, such as Electron apps, MPAs, or frameworks like [Inertia.js](https://inertiajs.com/) or [Hybridly](https://hybridly.dev/).
+
+- Default: `true`
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Value
+    </th>
+    
+    <th>
+      Description
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          true
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      Uses <code>
+        vue-router
+      </code>
+      
+       for navigation with <code>
+        RouterLink
+      </code>
+      
+       component.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          false
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      Disables routing integration, links render as plain <code>
+        <a>
+      </code>
+      
+       tags.
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sMK4o">
+          '
+        </span>
+        
+        <span class="sfazB">
+          inertia
+        </span>
+        
+        <span class="sMK4o">
+          '
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      Uses Inertia.js for navigation with its <code>
+        Link
+      </code>
+      
+       component.
+    </td>
+  </tr>
+</tbody>
+</table>
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      router: false
+    })
+  ]
+})
+```
+
+> [!TIP]
+> You can provide custom navigation logic for frameworks like Hybridly by setting `router: false` in the Vite config and passing a function when installing the Vue plugin:
+> ```ts
+> import ui from '@nuxt/ui/vue-plugin'
+> import { router } from 'hybridly'
+> 
+> app.use(ui, {
+>   router: (event, { href, external }) => {
+>     if (external) {
+>       return
+>     }
+> 
+>     event.preventDefault()
+> 
+>     router.navigate({ url: href })
+>   }
+> })
+> 
+> ```
+
+> [!NOTE]
+> When set to `false` or `'inertia'`, `vue-router` is not required as a dependency.
+
+### `scanPackages` `4.3+`
+
+Use the `scanPackages` option to specify additional npm packages that should be scanned for components using Nuxt UI. This is useful when you have a shared component library that uses Nuxt UI components internally.
+
+```ts [vite.config.ts]
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui({
+      scanPackages: ['@my-org/ui-components']
+    })
+  ]
+})
+```
+
+> [!NOTE]
+> By default, only `@nuxt/ui` is scanned. Use this option when your external packages contain Vue components that use Nuxt UI.
+
+## Continuous releases
+
+Nuxt UI uses [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new) for continuous preview releases, providing developers with instant access to the latest features and bug fixes without waiting for official releases.
+
+Automatic preview releases are created for all commits and PRs to the `v4` branch. Use them by replacing your package version with the specific commit hash or PR number.
+
+```diff [package.json]
+{
+  "dependencies": {
+-   "@nuxt/ui": "^4.0.0",
++   "@nuxt/ui": "https://pkg.pr.new/@nuxt/ui@4c96909",
+  }
+}
+```
+
+> [!NOTE]
+> pkg.pr.new will automatically comment on PRs with the installation URL, making it easy to test changes.

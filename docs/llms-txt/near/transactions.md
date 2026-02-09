@@ -2,18 +2,6 @@
 
 # Source: https://docs.near.org/protocol/transactions.md
 
-# Source: https://docs.near.org/api/rpc/transactions.md
-
-# Source: https://docs.near.org/protocol/transactions.md
-
-# Source: https://docs.near.org/api/rpc/transactions.md
-
-# Source: https://docs.near.org/protocol/transactions.md
-
-# Source: https://docs.near.org/api/rpc/transactions.md
-
-# Source: https://docs.near.org/protocol/transactions.md
-
 ---
 id: transactions
 title: Transactions

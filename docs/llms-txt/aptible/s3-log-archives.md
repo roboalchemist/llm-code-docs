@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/observability/logs/s3-log-archives.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log Archiving to S3
 
 <Info> S3 Log Archiving is currently in limited beta release and is only available on the [Enterprise plan](https://www.aptible.com/pricing). Please note that this feature is subject to limited availability while in the beta release stage. </Info>

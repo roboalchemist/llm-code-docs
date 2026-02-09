@@ -1,227 +1,92 @@
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/research-finder/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/financial-news-tracker/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/fact-checker-cli/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/disease-qa/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/discord-py-bot/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/daily-knowledge-bot/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/examples/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/articles/openai-agents-integration/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-with-persistence/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
+# Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/README.md
 
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
+# Memory Management
 
-# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
+> Advanced conversation memory solutions using LlamaIndex for persistent, context-aware applications
 
-# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
+# Memory Management with LlamaIndex and Perplexity Sonar API
 
-# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
+## Overview
 
-# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
+This article explores advanced solutions for preserving conversational memory in applications powered by large language models (LLMs). The goal is to enable coherent multi-turn conversations by retaining context across interactions, even when constrained by the model's token limit.
 
-# Source: https://docs.perplexity.ai/cookbook/examples/README.md
+## Problem Statement
 
-# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
+LLMs have a limited context window, making it challenging to maintain long-term conversational memory. Without proper memory management, follow-up questions can lose relevance or hallucinate unrelated answers.
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
+## Approaches
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
+Using LlamaIndex, we implemented two distinct strategies for solving this problem:
 
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
+### 1. **Chat Summary Memory Buffer**
 
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
+* **Goal**: Summarize older messages to fit within the token limit while retaining key context.
+* **Approach**:
+  * Uses LlamaIndex's `ChatSummaryMemoryBuffer` to truncate and summarize conversation history dynamically.
+  * Ensures that key details from earlier interactions are preserved in a compact form.
+* **Use Case**: Ideal for short-term conversations where memory efficiency is critical.
+* **Implementation**: [View the complete guide →](chat-summary-memory-buffer/)
 
-# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
+### 2. **Persistent Memory with LanceDB**
 
-# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
+* **Goal**: Enable long-term memory persistence across sessions.
+* **Approach**:
+  * Stores conversation history as vector embeddings in LanceDB.
+  * Retrieves relevant historical context using semantic search and metadata filters.
+  * Integrates Perplexity's Sonar API for generating responses based on retrieved context.
+* **Use Case**: Suitable for applications requiring long-term memory retention and contextual recall.
+* **Implementation**: [View the complete guide →](chat-with-persistence/)
 
-# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
+## Directory Structure
 
-# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
-
-# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
-
-# Academic Research Finder CLI
-
-> A command-line tool that uses Perplexity's Sonar API to find and summarize academic literature
-
-# Academic Research Finder CLI
-
-A command-line tool that uses Perplexity's Sonar API to find and summarize academic literature (research papers, articles, etc.) related to a given question or topic.
-
-## Features
-
-* Takes a natural language question or topic as input, ideally suited for academic inquiry.
-* Leverages Perplexity Sonar API, guided by a specialized prompt to prioritize scholarly sources (e.g., journals, conference proceedings, academic databases).
-* Outputs a concise summary based on the findings from academic literature.
-* Lists the primary academic sources used, aiming to include details like authors, year, title, publication, and DOI/link when possible.
-* Supports different Perplexity models (defaults to `sonar-pro`).
-* Allows results to be output in JSON format.
-
-## Installation
-
-### 1. Install required dependencies
-
-Ensure you are using the Python environment you intend to run the script with (e.g., `python3.10` if that's your target).
-
-```bash  theme={null}
-# Install from requirements file (recommended)
-pip install -r requirements.txt
-
-# Or install manually
-pip install requests
+```
+articles/memory-management/
+├── chat-summary-memory-buffer/   # Implementation of summarization-based memory
+├── chat-with-persistence/        # Implementation of persistent memory with LanceDB
 ```
 
-### 2. Make the script executable (Optional)
+## Getting Started
 
-```bash  theme={null}
-chmod +x research_finder.py
-```
-
-Alternatively, you can run the script using `python3 research_finder.py ...`.
-
-## API Key Setup
-
-The tool requires a Perplexity API key (`PPLX_API_KEY`) to function. You can provide it in one of these ways (checked in this order):
-
-1. **As a command-line argument:**
+1. Clone the repository:
    ```bash  theme={null}
-   python3 research_finder.py "Your query" --api-key YOUR_API_KEY
+   git clone https://github.com/your-repo/api-cookbook.git
+   cd api-cookbook/articles/memory-management
    ```
-2. **As an environment variable:**
-   ```bash  theme={null}
-   export PPLX_API_KEY=YOUR_API_KEY
-   python3 research_finder.py "Your query"
-   ```
-3. **In a file:** Create a file named `pplx_api_key`, `.pplx_api_key`, `PPLX_API_KEY`, or `.PPLX_API_KEY` in the *same directory as the script* or in the *current working directory* containing just your API key.
-   ```bash  theme={null}
-   echo "YOUR_API_KEY" > .pplx_api_key
-   chmod 600 .pplx_api_key # Optional: restrict permissions
-   python3 research_finder.py "Your query"
-   ```
+2. Follow the README in each subdirectory for setup instructions and usage examples.
 
-## Usage
+## Key Benefits
 
-Run the script from the `sonar-use-cases/research_finder` directory or provide the full path.
+* **Context Window Management**: 43% reduction in token usage through summarization
+* **Conversation Continuity**: 92% context retention across sessions
+* **API Compatibility**: 100% success rate with Perplexity message schema
+* **Production Ready**: Scalable architectures for enterprise applications
 
-```bash  theme={null}
-# Basic usage
-python3 research_finder.py "What are the latest advancements in quantum computing?"
+## Contributions
 
-# Using a specific model
-python3 research_finder.py "Explain the concept of Large Language Models" --model sonar-small-online
+If you have found another way to tackle the same issue using LlamaIndex please feel free to open a PR! Check out our [CONTRIBUTING.md](https://github.com/ppl-ai/api-cookbook/blob/main/CONTRIBUTING.md) file for more guidance.
 
-# Getting output as JSON
-python3 research_finder.py "Summarize the plot of Dune Part Two" --json
-
-# Using a custom system prompt file
-python3 research_finder.py "Benefits of renewable energy" --prompt-file /path/to/your/custom_prompt.md
-
-# Using an API key via argument
-python3 research_finder.py "Who won the last FIFA World Cup?" --api-key sk-...
-
-# Using the executable (if chmod +x was used)
-./research_finder.py "Latest news about Mars exploration"
-```
-
-### Arguments
-
-* `query`: (Required) The research question or topic (enclose in quotes if it contains spaces).
-* `-m`, `--model`: Specify the Perplexity model (default: `sonar-pro`).
-* `-k`, `--api-key`: Provide the API key directly.
-* `-p`, `--prompt-file`: Path to a custom system prompt file.
-* `-j`, `--json`: Output the results in JSON format.
-
-## Example Output (Human-Readable - *Note: Actual output depends heavily on the query and API results*)
-
-```
-Initializing research assistant for query: "Recent studies on transformer models in NLP"...
-Researching in progress...
-
-✅ Research Complete!
-
-📝 SUMMARY:
-Recent studies on transformer models in Natural Language Processing (NLP) continue to explore architectural improvements, efficiency optimizations, and new applications. Key areas include modifications to the attention mechanism (e.g., sparse attention, linear attention) to handle longer sequences more efficiently, techniques for model compression and knowledge distillation, and applications beyond text, such as in computer vision and multimodal tasks. Research also focuses on understanding the internal workings and limitations of large transformer models.
-
-🔗 SOURCES:
-  1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems, 30. (arXiv:1706.03762)
-  2. Tay, Y., Dehghani, M., Bahri, D., & Metzler, D. (2020). Efficient transformers: A survey. arXiv preprint arXiv:2009.06732.
-  3. Beltagy, I., Peters, M. E., & Cohan, A. (2020). Longformer: The long-document transformer. arXiv preprint arXiv:2004.05150.
-  4. Rogers, A., Kovaleva, O., & Rumshisky, A. (2020). A primer in bertology: What we know about how bert works. Transactions of the Association for Computational Linguistics, 8, 842-866. (arXiv:2002.12327)
-```
-
-## Limitations
-
-* The ability of the Sonar API to consistently prioritize and access specific academic databases or extract detailed citation information (like DOIs) may vary. The quality depends on the API's search capabilities and the structure of the source websites.
-* The script performs basic parsing to separate summary and sources; complex or unusual API responses might not be parsed perfectly. Check the raw response in case of issues.
-* Queries that are too broad or not well-suited for academic search might yield less relevant results.
-* Error handling for API rate limits or specific API errors could be more granular.
+***

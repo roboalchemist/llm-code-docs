@@ -1,190 +1,230 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/run-task.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Task
 
 > Executes a task in a browser session. The task can be run with a specific version or the latest version.
 Optionally, you can provide an existing session ID or let the system create a new one.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/task/run
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task/run
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              taskId:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: Task identifier
-              version:
-                allOf:
-                  - type: string
-                    pattern: ^(draft|latest|\d+)$
-                    description: Version to run (draft, latest, or version number)
-              async:
-                allOf:
-                  - type: boolean
-                    description: Whether to run the task asynchronously.
-              overrideBrowserConfiguration:
-                allOf:
-                  - $ref: '#/components/schemas/SessionConfig'
-                    description: Override browser configuration for this execution
-              inputs:
-                allOf:
-                  - type: object
-                    additionalProperties:
-                      type: string
-                    patternProperties:
-                      ^ANCHOR_.*$:
-                        type: string
-                    description: >-
-                      Environment variables for task execution (keys must start
-                      with ANCHOR_)
-            required: true
-            refIdentifier: '#/components/schemas/RunTaskRequest'
-            requiredProperties:
-              - taskId
-        examples:
-          runTask:
-            summary: Run a task with specific version
-            value:
-              taskId: 550e8400-e29b-41d4-a716-446655440000
-              version: '1'
-              inputs:
-                ANCHOR_TARGET_URL: https://example.com
-                ANCHOR_MAX_PAGES: '10'
-          runTaskLatest:
-            summary: Run task with latest version
-            value:
-              taskId: 550e8400-e29b-41d4-a716-446655440000
-              version: latest
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      success:
-                        type: boolean
-                        description: Whether the task executed successfully
-                      async:
-                        type: boolean
-                        description: Whether the task was executed asynchronously
-                      message:
-                        type: string
-                        description: Execution result message
-                      taskId:
-                        type: string
-                        format: uuid
-                        description: Task identifier
-                      executionTime:
-                        type: number
-                        description: >-
-                          Execution duration in milliseconds (only present in
-                          sync mode)
-                      output:
-                        type: string
-                        description: Task execution output (only present in sync mode)
-                      error:
-                        type: string
-                        description: >-
-                          Error message if execution failed (only present in
-                          sync mode)
-                      executionResultId:
-                        type: string
-                        format: uuid
-                        description: >-
-                          Execution result identifier for tracking and polling
-                          (present in async mode)
-                    required:
-                      - success
-                      - async
-                      - message
-                      - taskId
-            refIdentifier: '#/components/schemas/RunTaskResponse'
-        examples:
-          example:
-            value:
-              data:
-                success: true
-                async: true
-                message: <string>
-                taskId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                executionTime: 123
-                output: <string>
-                error: <string>
-                executionResultId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-        description: Task executed successfully
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task or session not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task execution failed
-  deprecated: false
-  type: path
+  /v1/task/run:
+    post:
+      tags:
+        - Tasks
+      summary: Run Task
+      description: >
+        Executes a task in a browser session. The task can be run with a
+        specific version or the latest version.
+
+        Optionally, you can provide an existing session ID or let the system
+        create a new one.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunTaskRequest'
+            examples:
+              runTask:
+                summary: Run a task with specific version
+                value:
+                  taskId: 550e8400-e29b-41d4-a716-446655440000
+                  version: '1'
+                  inputs:
+                    ANCHOR_TARGET_URL: https://example.com
+                    ANCHOR_MAX_PAGES: '10'
+              runTaskLatest:
+                summary: Run task with latest version
+                value:
+                  taskId: 550e8400-e29b-41d4-a716-446655440000
+                  version: latest
+      responses:
+        '200':
+          description: Task executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunTaskResponse'
+        '404':
+          description: Task or session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Task execution failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    RunTaskRequest:
+      type: object
+      properties:
+        taskId:
+          type: string
+          format: uuid
+          description: Task identifier
+        version:
+          type: string
+          pattern: ^(draft|latest|\d+)$
+          description: Version to run (draft, latest, or version number)
+        sessionId:
+          type: string
+          format: uuid
+          description: Optional existing browser session ID to use for task execution
+        async:
+          type: boolean
+          description: Whether to run the task asynchronously.
+        overrideBrowserConfiguration:
+          $ref: '#/components/schemas/SessionConfig'
+          description: Override browser configuration for this execution
+        inputs:
+          type: object
+          additionalProperties:
+            type: string
+          patternProperties:
+            ^ANCHOR_.*$:
+              type: string
+          description: >-
+            Environment variables for task execution (keys must start with
+            ANCHOR_)
+        cleanupSessions:
+          type: boolean
+          description: >-
+            Whether to cleanup browser sessions after task execution. Defaults
+            to true.
+          default: true
+      required:
+        - taskId
+    RunTaskResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            success:
+              type: boolean
+              description: Whether the task executed successfully
+            async:
+              type: boolean
+              description: Whether the task was executed asynchronously
+            message:
+              type: string
+              description: Execution result message
+            taskId:
+              type: string
+              format: uuid
+              description: Task identifier
+            executionTime:
+              type: number
+              description: Execution duration in milliseconds (only present in sync mode)
+            output:
+              type: string
+              description: Task execution output (only present in sync mode)
+            error:
+              type: string
+              description: Error message if execution failed (only present in sync mode)
+            executionResultId:
+              type: string
+              format: uuid
+              description: >-
+                Execution result identifier for tracking and polling (present in
+                async mode)
+          required:
+            - success
+            - async
+            - message
+            - taskId
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SessionConfig:
+      type: object
+      description: Session-related configurations.
+      properties:
+        initial_url:
+          type: string
+          format: uri
+          description: >-
+            The URL to navigate to when the browser session starts. If not
+            provided, the browser will load an empty page.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            Custom labels to categorize and identify browser sessions. Useful
+            for filtering, organizing, and tracking sessions across your
+            workflows.
+          example:
+            - production
+            - scraping
+            - customer-123
+        recording:
+          type: object
+          description: Configuration for session recording.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable video recording of the browser session.
+                Defaults to `true`.
+        proxy:
+          $ref: '#/components/schemas/ProxyConfig'
+        timeout:
+          type: object
+          description: Timeout configurations for the browser session.
+          properties:
+            max_duration:
+              type: integer
+              description: >-
+                Maximum time (in minutes) the session can run before
+                automatically terminating. Defaults to `20`. Set to `-1` to
+                disable this limit.
+            idle_timeout:
+              type: integer
+              description: >-
+                Time (in minutes) the session waits for new connections after
+                all others are closed before stopping. Defaults to `5`. Set to
+                `-1` to disable this limit.
+        live_view:
+          type: object
+          description: Configuration for live viewing the browser session.
+          properties:
+            read_only:
+              type: boolean
+              description: >-
+                Enable or disable read-only mode for live viewing. Defaults to
+                `false`.
     ProxyConfig:
       description: |
         Proxy Documentation available at [Proxy Documentation](/advanced/proxy)
@@ -290,6 +330,156 @@ components:
         - username
         - password
         - active
+    AnchorProxyCountryCode:
+      type: string
+      title: anchor_proxy
+      enum:
+        - af
+        - al
+        - dz
+        - ad
+        - ao
+        - as
+        - ag
+        - ar
+        - am
+        - aw
+        - au
+        - at
+        - az
+        - bs
+        - bh
+        - bb
+        - by
+        - be
+        - bz
+        - bj
+        - bm
+        - bo
+        - ba
+        - br
+        - bg
+        - bf
+        - cm
+        - ca
+        - cv
+        - td
+        - cl
+        - co
+        - cg
+        - cr
+        - ci
+        - hr
+        - cu
+        - cy
+        - cz
+        - dk
+        - dm
+        - do
+        - ec
+        - eg
+        - sv
+        - ee
+        - et
+        - fo
+        - fi
+        - fr
+        - gf
+        - pf
+        - ga
+        - gm
+        - ge
+        - de
+        - gh
+        - gi
+        - gr
+        - gd
+        - gp
+        - gt
+        - gg
+        - gn
+        - gw
+        - gy
+        - ht
+        - hn
+        - hu
+        - is
+        - in
+        - ir
+        - iq
+        - ie
+        - il
+        - it
+        - jm
+        - jp
+        - jo
+        - kz
+        - kw
+        - kg
+        - lv
+        - lb
+        - ly
+        - li
+        - lt
+        - lu
+        - mk
+        - ml
+        - mt
+        - mq
+        - mr
+        - mx
+        - md
+        - mc
+        - me
+        - ma
+        - nl
+        - nz
+        - ni
+        - ng
+        - 'no'
+        - pk
+        - pa
+        - py
+        - pe
+        - ph
+        - pl
+        - pt
+        - pr
+        - qa
+        - ro
+        - lc
+        - sm
+        - sa
+        - sn
+        - rs
+        - sc
+        - sl
+        - sk
+        - si
+        - so
+        - za
+        - kr
+        - es
+        - sr
+        - se
+        - ch
+        - sy
+        - st
+        - tw
+        - tj
+        - tg
+        - tt
+        - tn
+        - tr
+        - tc
+        - ua
+        - ae
+        - us
+        - uy
+        - uz
+        - ve
+        - ye
+      default: us
     ResidentialCountryCode:
       type: string
       title: anchor_residential
@@ -775,200 +965,11 @@ components:
         - ve
         - ye
       default: us
-    AnchorProxyCountryCode:
-      type: string
-      title: anchor_proxy
-      enum:
-        - af
-        - al
-        - dz
-        - ad
-        - ao
-        - as
-        - ag
-        - ar
-        - am
-        - aw
-        - au
-        - at
-        - az
-        - bs
-        - bh
-        - bb
-        - by
-        - be
-        - bz
-        - bj
-        - bm
-        - bo
-        - ba
-        - br
-        - bg
-        - bf
-        - cm
-        - ca
-        - cv
-        - td
-        - cl
-        - co
-        - cg
-        - cr
-        - ci
-        - hr
-        - cu
-        - cy
-        - cz
-        - dk
-        - dm
-        - do
-        - ec
-        - eg
-        - sv
-        - ee
-        - et
-        - fo
-        - fi
-        - fr
-        - gf
-        - pf
-        - ga
-        - gm
-        - ge
-        - de
-        - gh
-        - gi
-        - gr
-        - gd
-        - gp
-        - gt
-        - gg
-        - gn
-        - gw
-        - gy
-        - ht
-        - hn
-        - hu
-        - is
-        - in
-        - ir
-        - iq
-        - ie
-        - il
-        - it
-        - jm
-        - jp
-        - jo
-        - kz
-        - kw
-        - kg
-        - lv
-        - lb
-        - ly
-        - li
-        - lt
-        - lu
-        - mk
-        - ml
-        - mt
-        - mq
-        - mr
-        - mx
-        - md
-        - mc
-        - me
-        - ma
-        - nl
-        - nz
-        - ni
-        - ng
-        - 'no'
-        - pk
-        - pa
-        - py
-        - pe
-        - ph
-        - pl
-        - pt
-        - pr
-        - qa
-        - ro
-        - lc
-        - sm
-        - sa
-        - sn
-        - rs
-        - sc
-        - sl
-        - sk
-        - si
-        - so
-        - za
-        - kr
-        - es
-        - sr
-        - se
-        - ch
-        - sy
-        - st
-        - tw
-        - tj
-        - tg
-        - tt
-        - tn
-        - tr
-        - tc
-        - ua
-        - ae
-        - us
-        - uy
-        - uz
-        - ve
-        - ye
-      default: us
-    SessionConfig:
-      type: object
-      description: Session-related configurations.
-      properties:
-        initial_url:
-          type: string
-          format: uri
-          description: >-
-            The URL to navigate to when the browser session starts. If not
-            provided, the browser will load an empty page.
-        recording:
-          type: object
-          description: Configuration for session recording.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable video recording of the browser session.
-                Defaults to `true`.
-        proxy:
-          $ref: '#/components/schemas/ProxyConfig'
-        timeout:
-          type: object
-          description: Timeout configurations for the browser session.
-          properties:
-            max_duration:
-              type: integer
-              description: >-
-                Maximum amount of time (in minutes) for the browser to run
-                before terminating. Defaults to `20`.
-            idle_timeout:
-              type: integer
-              description: >-
-                The amount of time (in minutes) the browser session waits for
-                new connections after all others are closed before stopping.
-                Defaults to `5`.
-        live_view:
-          type: object
-          description: Configuration for live viewing the browser session.
-          properties:
-            read_only:
-              type: boolean
-              description: >-
-                Enable or disable read-only mode for live viewing. Defaults to
-                `false`.
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

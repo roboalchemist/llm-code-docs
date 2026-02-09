@@ -18,7 +18,9 @@ poetry add daytona
 
 ## Getting Started
 
-Here's a simple example to help you get started with the Daytona Python SDK:
+### Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment. The following snippet is an example "Hello World" program that runs securely inside a Daytona Sandbox.
 
     ```python
     from daytona import Daytona
@@ -58,7 +60,7 @@ Here's a simple example to help you get started with the Daytona Python SDK:
 
 ## Configuration
 
-The SDK can be configured using environment variables or by passing options to the constructor:
+The Daytona SDK can be configured using environment variables or by passing options to the constructor:
 
     ```python
     from daytona import Daytona, DaytonaConfig
@@ -68,7 +70,7 @@ The SDK can be configured using environment variables or by passing options to t
 
     # Using explicit configuration
     config = DaytonaConfig(
-        api_key="your-api-key",
+        api_key="YOUR_API_KEY",
         api_url="https://app.daytona.io/api",
         target="us"
     )
@@ -90,7 +92,7 @@ The SDK can be configured using environment variables or by passing options to t
 
         # Using explicit configuration
         config = DaytonaConfig(
-            api_key="your-api-key",
+            api_key="YOUR_API_KEY",
             api_url="https://app.daytona.io/api",
             target="us"
         )
@@ -101,3 +103,5 @@ The SDK can be configured using environment variables or by passing options to t
     if __name__ == "__main__":
         asyncio.run(main())
     ```
+
+For more information on configuring the Daytona SDK, see [configuration](https://www.daytona.io/docs/en/configuration.md).

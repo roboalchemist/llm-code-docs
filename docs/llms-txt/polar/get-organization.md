@@ -1,262 +1,128 @@
 # Source: https://polar.sh/docs/api-reference/customer-portal/get-organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Organization
 
 > Get a customer portal's organization by slug.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/customer-portal/organizations/{slug}
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customer-portal/organizations/{slug}
-  method: get
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path:
-        slug:
+  /v1/customer-portal/organizations/{slug}:
+    get:
+      tags:
+        - customer_portal
+        - organizations
+        - public
+      summary: Get Organization
+      description: Get a customer portal's organization by slug.
+      operationId: customer_portal:organizations:get
+      parameters:
+        - name: slug
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Slug
-              description: The organization slug.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.Organizations.Get(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerOrganization != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
-
-
-          with Polar() as polar:
-
-              res = polar.customer_portal.organizations.get(slug="<value>")
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar();
-
-          async function run() {
-            const result = await polar.customerPortal.organizations.get({
-              slug: "<value>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-
-          $sdk = Polar\Polar::builder()->build();
-
-
-
-          $response = $sdk->customerPortal->organizations->get(
-              slug: '<value>'
-          );
-
-          if ($response->customerOrganization !== null) {
-              // handle response
-          }
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              organization:
-                allOf:
-                  - $ref: '#/components/schemas/Organization'
-              products:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/CustomerProduct'
-                    type: array
-                    title: Products
-            title: CustomerOrganization
-            description: Schema of an organization and related data for customer portal.
-            refIdentifier: '#/components/schemas/CustomerOrganization'
-            requiredProperties:
-              - organization
-              - products
-        examples:
-          example:
-            value:
-              organization:
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-                id: 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                name: <string>
-                slug: <string>
-                avatar_url: <string>
-                email: <string>
-                website: <string>
-                socials:
-                  - platform: x
-                    url: <string>
-                status: created
-                details_submitted_at: '2023-11-07T05:31:56Z'
-                feature_settings:
-                  issue_funding_enabled: false
-                  seat_based_pricing_enabled: false
-                  revops_enabled: false
-                subscription_settings:
-                  allow_multiple_subscriptions: true
-                  allow_customer_updates: true
-                  proration_behavior: invoice
-                notification_settings:
-                  new_order: true
-                  new_subscription: true
-                customer_email_settings:
-                  order_confirmation: true
-                  subscription_cancellation: true
-                  subscription_confirmation: true
-                  subscription_cycled: true
-                  subscription_past_due: true
-                  subscription_revoked: true
-                  subscription_uncanceled: true
-                  subscription_updated: true
-              products:
-                - id: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  modified_at: '2023-11-07T05:31:56Z'
-                  trial_interval: day
-                  trial_interval_count: 123
-                  name: <string>
-                  description: <string>
-                  recurring_interval: day
-                  recurring_interval_count: 123
-                  is_recurring: true
-                  is_archived: true
-                  organization_id: <string>
-                  prices:
-                    - created_at: '2023-11-07T05:31:56Z'
-                      modified_at: '2023-11-07T05:31:56Z'
-                      id: <string>
-                      amount_type: <string>
-                      is_archived: true
-                      product_id: <string>
-                      type: <string>
-                      recurring_interval: day
-                      price_currency: <string>
-                      price_amount: 123
-                      legacy: true
-                  benefits:
-                    - id: <string>
-                      created_at: '2023-11-07T05:31:56Z'
-                      modified_at: '2023-11-07T05:31:56Z'
-                      type: custom
-                      description: <string>
-                      selectable: true
-                      deletable: true
-                      organization_id: <string>
-                  medias:
-                    - id: <string>
-                      organization_id: <string>
-                      name: <string>
-                      path: <string>
-                      mime_type: <string>
-                      size: 123
-                      storage_version: <string>
-                      checksum_etag: <string>
-                      checksum_sha256_base64: <string>
-                      checksum_sha256_hex: <string>
-                      last_modified_at: '2023-11-07T05:31:56Z'
-                      version: <string>
-                      service: <string>
-                      is_uploaded: true
-                      created_at: '2023-11-07T05:31:56Z'
-                      size_readable: <string>
-                      public_url: <string>
-        description: Successful Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: Organization not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            description: The organization slug.
+            title: Slug
+          description: The organization slug.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrganizationData'
+        '404':
+          description: Organization not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - {}
 components:
   schemas:
-    BenefitPublic:
+    CustomerOrganizationData:
       properties:
-        id:
+        organization:
+          $ref: '#/components/schemas/CustomerOrganization'
+        products:
+          items:
+            $ref: '#/components/schemas/CustomerProduct'
+          type: array
+          title: Products
+      type: object
+      required:
+        - organization
+        - products
+      title: CustomerOrganizationData
+      description: Schema of an organization and related data for customer portal.
+    ResourceNotFound:
+      properties:
+        error:
           type: string
-          format: uuid4
-          title: Id
-          description: The ID of the benefit.
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    CustomerOrganization:
+      properties:
         created_at:
           type: string
           format: date-time
@@ -269,47 +135,53 @@ components:
             - type: 'null'
           title: Modified At
           description: Last modification timestamp of the object.
-        type:
-          $ref: '#/components/schemas/BenefitType'
-          description: The type of the benefit.
-        description:
-          type: string
-          title: Description
-          description: The description of the benefit.
-        selectable:
-          type: boolean
-          title: Selectable
-          description: Whether the benefit is selectable when creating a product.
-        deletable:
-          type: boolean
-          title: Deletable
-          description: Whether the benefit is deletable.
-        organization_id:
+        id:
           type: string
           format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the benefit.
+          title: Id
+          description: The ID of the object.
+        name:
+          type: string
+          title: Name
+          description: Organization name shown in checkout, customer portal, emails etc.
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Unique organization slug in checkout, customer portal and credit
+            card statements.
+        avatar_url:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Avatar Url
+          description: Avatar URL shown in checkout, customer portal, emails etc.
+        proration_behavior:
+          $ref: '#/components/schemas/SubscriptionProrationBehavior'
+          description: >-
+            Proration behavior applied when customer updates their subscription
+            from the portal.
+        allow_customer_updates:
+          type: boolean
+          title: Allow Customer Updates
+          description: >-
+            Whether customers can update their subscriptions from the customer
+            portal.
+        customer_portal_settings:
+          $ref: '#/components/schemas/OrganizationCustomerPortalSettings'
+          description: Settings related to the customer portal
       type: object
       required:
-        - id
         - created_at
         - modified_at
-        - type
-        - description
-        - selectable
-        - deletable
-        - organization_id
-      title: BenefitPublic
-    BenefitType:
-      type: string
-      enum:
-        - custom
-        - discord
-        - github_repository
-        - downloadables
-        - license_keys
-        - meter_credit
-      title: BenefitType
+        - id
+        - name
+        - slug
+        - avatar_url
+        - proration_behavior
+        - allow_customer_updates
+        - customer_portal_settings
+      title: CustomerOrganization
     CustomerProduct:
       properties:
         id:
@@ -419,6 +291,60 @@ components:
         - medias
       title: CustomerProduct
       description: Schema of a product for customer portal.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    SubscriptionProrationBehavior:
+      type: string
+      enum:
+        - invoice
+        - prorate
+      title: SubscriptionProrationBehavior
+    OrganizationCustomerPortalSettings:
+      properties:
+        usage:
+          $ref: '#/components/schemas/CustomerPortalUsageSettings'
+        subscription:
+          $ref: '#/components/schemas/CustomerPortalSubscriptionSettings'
+      type: object
+      required:
+        - usage
+        - subscription
+      title: OrganizationCustomerPortalSettings
+    TrialInterval:
+      type: string
+      enum:
+        - day
+        - week
+        - month
+        - year
+      title: TrialInterval
+    SubscriptionRecurringInterval:
+      type: string
+      enum:
+        - day
+        - week
+        - month
+        - year
+      title: SubscriptionRecurringInterval
     LegacyRecurringProductPrice:
       oneOf:
         - $ref: '#/components/schemas/LegacyRecurringProductPriceFixed'
@@ -430,8 +356,28 @@ components:
           custom: '#/components/schemas/LegacyRecurringProductPriceCustom'
           fixed: '#/components/schemas/LegacyRecurringProductPriceFixed'
           free: '#/components/schemas/LegacyRecurringProductPriceFree'
-    LegacyRecurringProductPriceCustom:
+    ProductPrice:
+      oneOf:
+        - $ref: '#/components/schemas/ProductPriceFixed'
+        - $ref: '#/components/schemas/ProductPriceCustom'
+        - $ref: '#/components/schemas/ProductPriceFree'
+        - $ref: '#/components/schemas/ProductPriceSeatBased'
+        - $ref: '#/components/schemas/ProductPriceMeteredUnit'
+      discriminator:
+        propertyName: amount_type
+        mapping:
+          custom: '#/components/schemas/ProductPriceCustom'
+          fixed: '#/components/schemas/ProductPriceFixed'
+          free: '#/components/schemas/ProductPriceFree'
+          metered_unit: '#/components/schemas/ProductPriceMeteredUnit'
+          seat_based: '#/components/schemas/ProductPriceSeatBased'
+    BenefitPublic:
       properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
         created_at:
           type: string
           format: date-time
@@ -444,429 +390,37 @@ components:
             - type: 'null'
           title: Modified At
           description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: custom
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
         type:
+          $ref: '#/components/schemas/BenefitType'
+          description: The type of the benefit.
+        description:
           type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        minimum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Minimum Amount
-          description: The minimum amount the customer can pay.
-        maximum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Maximum Amount
-          description: The maximum amount the customer can pay.
-        preset_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Preset Amount
-          description: The initial amount shown to the customer.
-        legacy:
+          title: Description
+          description: The description of the benefit.
+        selectable:
           type: boolean
-          const: true
-          title: Legacy
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
       type: object
       required:
+        - id
         - created_at
         - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
         - type
-        - recurring_interval
-        - price_currency
-        - minimum_amount
-        - maximum_amount
-        - preset_amount
-        - legacy
-      title: LegacyRecurringProductPriceCustom
-      description: >-
-        A pay-what-you-want recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    LegacyRecurringProductPriceFixed:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: fixed
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        price_amount:
-          type: integer
-          title: Price Amount
-          description: The price in cents.
-        legacy:
-          type: boolean
-          const: true
-          title: Legacy
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - price_currency
-        - price_amount
-        - legacy
-      title: LegacyRecurringProductPriceFixed
-      description: >-
-        A recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    LegacyRecurringProductPriceFree:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: free
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        legacy:
-          type: boolean
-          const: true
-          title: Legacy
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - legacy
-      title: LegacyRecurringProductPriceFree
-      description: >-
-        A free recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    Organization:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The organization ID.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        name:
-          type: string
-          title: Name
-          description: Organization name shown in checkout, customer portal, emails etc.
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Unique organization slug in checkout, customer portal and credit
-            card statements.
-        avatar_url:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Avatar Url
-          description: Avatar URL shown in checkout, customer portal, emails etc.
-        email:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Email
-          description: Public support email.
-        website:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Website
-          description: Official website of the organization.
-        socials:
-          items:
-            $ref: '#/components/schemas/OrganizationSocialLink'
-          type: array
-          title: Socials
-          description: Links to social profiles.
-        status:
-          $ref: '#/components/schemas/Status'
-          description: Current organization status
-        details_submitted_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Details Submitted At
-          description: When the business details were submitted.
-        feature_settings:
-          anyOf:
-            - $ref: '#/components/schemas/OrganizationFeatureSettings'
-            - type: 'null'
-          description: Organization feature settings
-        subscription_settings:
-          $ref: '#/components/schemas/OrganizationSubscriptionSettings'
-          description: Settings related to subscriptions management
-        notification_settings:
-          $ref: '#/components/schemas/OrganizationNotificationSettings'
-          description: Settings related to notifications
-        customer_email_settings:
-          $ref: '#/components/schemas/OrganizationCustomerEmailSettings'
-          description: Settings related to customer emails
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - name
-        - slug
-        - avatar_url
-        - email
-        - website
-        - socials
-        - status
-        - details_submitted_at
-        - feature_settings
-        - subscription_settings
-        - notification_settings
-        - customer_email_settings
-      title: Organization
-    OrganizationCustomerEmailSettings:
-      properties:
-        order_confirmation:
-          type: boolean
-          title: Order Confirmation
-        subscription_cancellation:
-          type: boolean
-          title: Subscription Cancellation
-        subscription_confirmation:
-          type: boolean
-          title: Subscription Confirmation
-        subscription_cycled:
-          type: boolean
-          title: Subscription Cycled
-        subscription_past_due:
-          type: boolean
-          title: Subscription Past Due
-        subscription_revoked:
-          type: boolean
-          title: Subscription Revoked
-        subscription_uncanceled:
-          type: boolean
-          title: Subscription Uncanceled
-        subscription_updated:
-          type: boolean
-          title: Subscription Updated
-      type: object
-      required:
-        - order_confirmation
-        - subscription_cancellation
-        - subscription_confirmation
-        - subscription_cycled
-        - subscription_past_due
-        - subscription_revoked
-        - subscription_uncanceled
-        - subscription_updated
-      title: OrganizationCustomerEmailSettings
-    OrganizationFeatureSettings:
-      properties:
-        issue_funding_enabled:
-          type: boolean
-          title: Issue Funding Enabled
-          description: If this organization has issue funding enabled
-          default: false
-        seat_based_pricing_enabled:
-          type: boolean
-          title: Seat Based Pricing Enabled
-          description: If this organization has seat-based pricing enabled
-          default: false
-        revops_enabled:
-          type: boolean
-          title: Revops Enabled
-          description: If this organization has RevOps enabled
-          default: false
-      type: object
-      title: OrganizationFeatureSettings
-    OrganizationNotificationSettings:
-      properties:
-        new_order:
-          type: boolean
-          title: New Order
-        new_subscription:
-          type: boolean
-          title: New Subscription
-      type: object
-      required:
-        - new_order
-        - new_subscription
-      title: OrganizationNotificationSettings
-    OrganizationSocialLink:
-      properties:
-        platform:
-          $ref: '#/components/schemas/OrganizationSocialPlatforms'
-          description: The social platform of the URL
-        url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Url
-          description: The URL to the organization profile
-      type: object
-      required:
-        - platform
-        - url
-      title: OrganizationSocialLink
-    OrganizationSocialPlatforms:
-      type: string
-      enum:
-        - x
-        - github
-        - facebook
-        - instagram
-        - youtube
-        - tiktok
-        - linkedin
-        - other
-      title: OrganizationSocialPlatforms
-    OrganizationSubscriptionSettings:
-      properties:
-        allow_multiple_subscriptions:
-          type: boolean
-          title: Allow Multiple Subscriptions
-        allow_customer_updates:
-          type: boolean
-          title: Allow Customer Updates
-        proration_behavior:
-          $ref: '#/components/schemas/SubscriptionProrationBehavior'
-      type: object
-      required:
-        - allow_multiple_subscriptions
-        - allow_customer_updates
-        - proration_behavior
-      title: OrganizationSubscriptionSettings
+        - description
+        - selectable
+        - deletable
+        - organization_id
+      title: BenefitPublic
     ProductMediaFileRead:
       properties:
         id:
@@ -959,22 +513,29 @@ components:
         - public_url
       title: ProductMediaFileRead
       description: File to be used as a product media file.
-    ProductPrice:
-      oneOf:
-        - $ref: '#/components/schemas/ProductPriceFixed'
-        - $ref: '#/components/schemas/ProductPriceCustom'
-        - $ref: '#/components/schemas/ProductPriceFree'
-        - $ref: '#/components/schemas/ProductPriceSeatBased'
-        - $ref: '#/components/schemas/ProductPriceMeteredUnit'
-      discriminator:
-        propertyName: amount_type
-        mapping:
-          custom: '#/components/schemas/ProductPriceCustom'
-          fixed: '#/components/schemas/ProductPriceFixed'
-          free: '#/components/schemas/ProductPriceFree'
-          metered_unit: '#/components/schemas/ProductPriceMeteredUnit'
-          seat_based: '#/components/schemas/ProductPriceSeatBased'
-    ProductPriceCustom:
+    CustomerPortalUsageSettings:
+      properties:
+        show:
+          type: boolean
+          title: Show
+      type: object
+      required:
+        - show
+      title: CustomerPortalUsageSettings
+    CustomerPortalSubscriptionSettings:
+      properties:
+        update_seats:
+          type: boolean
+          title: Update Seats
+        update_plan:
+          type: boolean
+          title: Update Plan
+      type: object
+      required:
+        - update_seats
+        - update_plan
+      title: CustomerPortalSubscriptionSettings
+    LegacyRecurringProductPriceFixed:
       properties:
         created_at:
           type: string
@@ -993,6 +554,89 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: fixed
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
+        recurring_interval:
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        price_amount:
+          type: integer
+          title: Price Amount
+          description: The price in cents.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - price_amount
+        - legacy
+      title: LegacyRecurringProductPriceFixed
+      description: >-
+        A recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
+    LegacyRecurringProductPriceCustom:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: custom
@@ -1007,23 +651,23 @@ components:
           title: Product Id
           description: The ID of the product owning the price.
         type:
-          $ref: '#/components/schemas/ProductPriceType'
-          deprecated: true
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
         recurring_interval:
-          anyOf:
-            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
-            - type: 'null'
-          deprecated: true
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
         price_currency:
           type: string
           title: Price Currency
           description: The currency.
         minimum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
+          type: integer
           title: Minimum Amount
-          description: The minimum amount the customer can pay.
+          description: >-
+            The minimum amount the customer can pay. If 0, the price is 'free or
+            pay what you want'. Defaults to 50 cents.
         maximum_amount:
           anyOf:
             - type: integer
@@ -1036,11 +680,16 @@ components:
             - type: 'null'
           title: Preset Amount
           description: The initial amount shown to the customer.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
       type: object
       required:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -1050,8 +699,82 @@ components:
         - minimum_amount
         - maximum_amount
         - preset_amount
-      title: ProductPriceCustom
-      description: A pay-what-you-want price for a product.
+        - legacy
+      title: LegacyRecurringProductPriceCustom
+      description: >-
+        A pay-what-you-want recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
+    LegacyRecurringProductPriceFree:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: free
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
+        recurring_interval:
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - legacy
+      title: LegacyRecurringProductPriceFree
+      description: >-
+        A free recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
     ProductPriceFixed:
       properties:
         created_at:
@@ -1071,6 +794,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: fixed
@@ -1105,6 +833,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -1114,6 +843,90 @@ components:
         - price_amount
       title: ProductPriceFixed
       description: A fixed price for a product.
+    ProductPriceCustom:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: custom
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          $ref: '#/components/schemas/ProductPriceType'
+          deprecated: true
+        recurring_interval:
+          anyOf:
+            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
+            - type: 'null'
+          deprecated: true
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        minimum_amount:
+          type: integer
+          title: Minimum Amount
+          description: >-
+            The minimum amount the customer can pay. If 0, the price is 'free or
+            pay what you want'. Defaults to 50 cents.
+        maximum_amount:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Maximum Amount
+          description: The maximum amount the customer can pay.
+        preset_amount:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Preset Amount
+          description: The initial amount shown to the customer.
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - minimum_amount
+        - maximum_amount
+        - preset_amount
+      title: ProductPriceCustom
+      description: A pay-what-you-want price for a product.
     ProductPriceFree:
       properties:
         created_at:
@@ -1133,6 +946,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: free
@@ -1159,6 +977,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -1166,23 +985,73 @@ components:
         - recurring_interval
       title: ProductPriceFree
       description: A free price for a product.
-    ProductPriceMeter:
+    ProductPriceSeatBased:
       properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
         id:
           type: string
           format: uuid4
           title: Id
-          description: The ID of the object.
-        name:
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
           type: string
-          title: Name
-          description: The name of the meter.
+          const: seat_based
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          $ref: '#/components/schemas/ProductPriceType'
+          deprecated: true
+        recurring_interval:
+          anyOf:
+            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
+            - type: 'null'
+          deprecated: true
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        seat_tiers:
+          $ref: '#/components/schemas/ProductPriceSeatTiers-Output'
+          description: Tiered pricing based on seat quantity
       type: object
       required:
+        - created_at
+        - modified_at
         - id
-        - name
-      title: ProductPriceMeter
-      description: A meter associated to a metered price.
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - seat_tiers
+      title: ProductPriceSeatBased
+      description: A seat-based price for a product.
     ProductPriceMeteredUnit:
       properties:
         created_at:
@@ -1202,6 +1071,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: metered_unit
@@ -1253,6 +1127,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -1265,67 +1140,80 @@ components:
         - meter
       title: ProductPriceMeteredUnit
       description: A metered, usage-based, price for a product, with a fixed unit price.
-    ProductPriceSeatBased:
+    BenefitType:
+      type: string
+      enum:
+        - custom
+        - discord
+        - github_repository
+        - downloadables
+        - license_keys
+        - meter_credit
+      title: BenefitType
+    ProductPriceSource:
+      type: string
+      enum:
+        - catalog
+        - ad_hoc
+      title: ProductPriceSource
+    ProductPriceType:
+      type: string
+      enum:
+        - one_time
+        - recurring
+      title: ProductPriceType
+    ProductPriceSeatTiers-Output:
       properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
+        tiers:
+          items:
+            $ref: '#/components/schemas/ProductPriceSeatTier'
+          type: array
+          minItems: 1
+          title: Tiers
+          description: List of pricing tiers
+        minimum_seats:
+          type: integer
+          title: Minimum Seats
+          description: >-
+            Minimum number of seats required for purchase, derived from first
+            tier.
+        maximum_seats:
           anyOf:
-            - type: string
-              format: date-time
+            - type: integer
             - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
+          title: Maximum Seats
+          description: >-
+            Maximum number of seats allowed for purchase, derived from last
+            tier. None for unlimited.
+      type: object
+      required:
+        - tiers
+        - minimum_seats
+        - maximum_seats
+      title: ProductPriceSeatTiers
+      description: |-
+        List of pricing tiers for seat-based pricing.
+
+        The minimum and maximum seat limits are derived from the tiers:
+        - minimum_seats = first tier's min_seats
+        - maximum_seats = last tier's max_seats (None for unlimited)
+    ProductPriceMeter:
+      properties:
         id:
           type: string
           format: uuid4
           title: Id
-          description: The ID of the price.
-        amount_type:
+          description: The ID of the object.
+        name:
           type: string
-          const: seat_based
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          $ref: '#/components/schemas/ProductPriceType'
-          deprecated: true
-        recurring_interval:
-          anyOf:
-            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
-            - type: 'null'
-          deprecated: true
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        seat_tiers:
-          $ref: '#/components/schemas/ProductPriceSeatTiers'
-          description: Tiered pricing based on seat quantity
+          title: Name
+          description: The name of the meter.
       type: object
       required:
-        - created_at
-        - modified_at
         - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - price_currency
-        - seat_tiers
-      title: ProductPriceSeatBased
-      description: A seat-based price for a product.
+        - name
+      title: ProductPriceMeter
+      description: A meter associated to a metered price.
     ProductPriceSeatTier:
       properties:
         min_seats:
@@ -1343,7 +1231,7 @@ components:
         price_per_seat:
           type: integer
           maximum: 99999999
-          minimum: 50
+          minimum: 0
           title: Price Per Seat
           description: Price per seat in cents for this tier
       type: object
@@ -1352,77 +1240,12 @@ components:
         - price_per_seat
       title: ProductPriceSeatTier
       description: A pricing tier for seat-based pricing.
-    ProductPriceSeatTiers:
-      properties:
-        tiers:
-          items:
-            $ref: '#/components/schemas/ProductPriceSeatTier'
-          type: array
-          minItems: 1
-          title: Tiers
-          description: List of pricing tiers
-      type: object
-      required:
-        - tiers
-      title: ProductPriceSeatTiers
-      description: List of pricing tiers for seat-based pricing.
-    ProductPriceType:
-      type: string
-      enum:
-        - one_time
-        - recurring
-      title: ProductPriceType
-    Status:
-      type: string
-      enum:
-        - created
-        - onboarding_started
-        - under_review
-        - denied
-        - active
-      title: Status
-    SubscriptionProrationBehavior:
-      type: string
-      enum:
-        - invoice
-        - prorate
-      title: SubscriptionProrationBehavior
-    SubscriptionRecurringInterval:
-      type: string
-      enum:
-        - day
-        - week
-        - month
-        - year
-      title: SubscriptionRecurringInterval
-    TrialInterval:
-      type: string
-      enum:
-        - day
-        - week
-        - month
-        - year
-      title: TrialInterval
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

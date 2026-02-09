@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/path-to-file-url.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert an absolute path to a file URL
 
 Use `Bun.pathToFileURL()` to convert an absolute path to a `file://` URL.
@@ -11,4 +15,4 @@ Bun.pathToFileURL("/path/to/file.txt");
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

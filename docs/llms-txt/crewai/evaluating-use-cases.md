@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/concepts/evaluating-use-cases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating Use Cases for CrewAI
 
 > Learn how to assess your AI application needs and choose the right approach between Crews and Flows based on complexity and precision requirements.

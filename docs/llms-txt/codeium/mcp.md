@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/cascade/mcp.md
 
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Model Context Protocol (MCP)
+
+> Configure MCP servers to extend Cascade with custom tools and services using stdio, HTTP, or SSE transports with admin controls for Teams and Enterprise.
 
 **MCP (Model Context Protocol)** is a protocol that enables LLMs to access custom tools and services.
 An MCP client (Cascade, in this case) can make requests to MCP servers to access tools that they provide.
@@ -35,11 +29,12 @@ When you click on an MCP server, simply click `+ Add Server` to expose the serve
   <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=06f96424bd8374333d6969006868456e" data-og-width="1666" width="1666" data-og-height="1388" height="1388" data-path="assets/plugins/mcp-server-templates.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5b2d971d3bf67cc6086400971450795a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7cd83fdadc63dc1ad56e248627b2c3ca 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=10df4adfb6948fdaa90de722bfec030b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c218409460599a4640e7d0561d67828a 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f0a89fdd40125f56652d2a07e36a560f 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d2205e6e71979118c375006caae1e259 2500w" />
 </Frame>
 
-Cascade supports two [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP servers: `stdio` and `http`.
+Cascade supports three [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP
+servers: `stdio`,  `Streamable HTTP`, and `SSE`.
+
+Cascade also supports OAuth for each transport type.
 
 For `http` servers, the URL should reflect that of the endpoint and resemble `https://<your-server-url>/mcp`.
-
-We can also support streamable HTTP transport and MCP Authentication.
 
 <Note>Make sure to press the refresh button after you add a new MCP plugin.</Note>
 
@@ -47,9 +42,7 @@ We can also support streamable HTTP transport and MCP Authentication.
 
 The `~/.codeium/mcp_config.json` file is a JSON file that contains a list of servers that Cascade can connect to.
 
-The JSON should follow the same schema as the config file for Claude Desktop.
-
-Here's an example configuration, which sets up a single server for GitHub:
+Here’s an example configuration, which sets up a single server for GitHub:
 
 ```json  theme={null}
 {
@@ -68,25 +61,51 @@ Here's an example configuration, which sets up a single server for GitHub:
 }
 ```
 
-It's important to note that for HTTP servers, the configuration is slightly different and requires a `serverUrl` field.
+Be sure to provide the required arguments and environment variables for the servers that you want to use.
+
+See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+
+### Remote HTTP MCPs
+
+It's important to note that for remote HTTP MCPs, the configuration is slightly
+different and requires a `serverUrl` or `url` field.
 
 Here's an example configuration for an HTTP server:
 
 ```json  theme={null}
 {
   "mcpServers": {
-    "figma": {
-      "serverUrl": "<your-server-url>/mcp"
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "value"
+      }
     }
   }
 }
 ```
 
-<Note>For Figma Dev Mode MCP server, make sure you have updated to the latest Figma desktop app version to use the new `/mcp` endpoint.</Note>
+### Config Interpolation
 
-Be sure to provide the required arguments and environment variables for the servers that you want to use.
+The `~/.codeium/mcp_config.json` file handles interpolation of
+environment variables in these fields: `command`, `args`, `env`, `serverUrl`, `url`, and
+`headers`.
 
-See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+Here’s an example configuration, which uses an `AUTH_TOKEN` environment variable
+in `headers`.
+
+```json  theme={null}
+{
+  "mcpServers": {
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "Bearer ${env:AUTH_TOKEN}"
+      }
+    }
+  }
+}
+```
 
 ## Admin Controls (Teams & Enterprises)
 
@@ -271,4 +290,4 @@ Remember: Once you whitelist any server, **all other servers are automatically b
 
 * Since MCP tool calls can invoke code written by arbitrary server implementers, we do not assume liability
   for MCP tool call failures. To reiterate:
-* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools) and [resources](https://modelcontextprotocol.io/docs/concepts/resources), not [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
+* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools), [resources](https://modelcontextprotocol.io/docs/concepts/resources), and [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).

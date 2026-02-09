@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/load.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FUNCTION LOAD
 
 > Load a library to Redis.
@@ -65,8 +69,3 @@ The registered functions can be called with the [FCALL](./call.mdx) command.
   console.log(libraryName); // "mylib"
   ```
 </RequestExample>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

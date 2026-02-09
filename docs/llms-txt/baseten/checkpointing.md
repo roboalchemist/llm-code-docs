@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/training/concepts/checkpointing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Checkpointing
 
 > Learn how to use Baseten's checkpointing feature to manage model checkpoints and avoid disk errors during training.
@@ -36,3 +40,7 @@ Baseten will automatically export the [`$BT_CHECKPOINT_DIR`](/reference/sdk/trai
 ## Serving Checkpoints
 
 Once your training is complete, you can serve your model checkpoints using Baseten's serving infrastructure. Learn more about [serving checkpoints](/training/deployment).
+
+<Warning>
+  When you delete a job or project, all undeployed checkpoints are permanently deleted with no archival or recovery option. Deployed checkpoints aren't affected. See [Management](/training/management) for details.
+</Warning>

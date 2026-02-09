@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-app/collaborate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Collaboration
 
 > One of the great parts about Replit is that _everything_ you make can be shared with the world. Since your code is hosted in the cloud, it's as simple as one click!

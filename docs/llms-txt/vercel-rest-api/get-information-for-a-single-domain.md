@@ -1,88 +1,87 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/get-information-for-a-single-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Information for a Single Domain
 
 > Get information for a single domain in an account or team.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v5/domains/{domain}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v5/domains/{domain}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        domain:
+  /v5/domains/{domain}:
+    get:
+      tags:
+        - domains
+      summary: Get Information for a Single Domain
+      description: Get information for a single domain in an account or team.
+      operationId: getDomain
+      parameters:
+        - name: domain
+          description: The name of the domain.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The name of the domain.
-              example: example.com
-      query:
-        teamId:
+            description: The name of the domain.
+            type: string
+            example: example.com
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getDomain
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Domains.GetDomain(ctx, \"example.com\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getDomain
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.domains.getDomain({
-              domain: "example.com",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              domain:
-                allOf:
-                  - properties:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: >-
+            Successful response retrieving an information for a specific
+            domains.
+          content:
+            application/json:
+              schema:
+                properties:
+                  domain:
+                    properties:
                       suffix:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       verified:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: If the domain has the ownership verified.
                         example: true
                       nameservers:
@@ -124,12 +123,15 @@ paths:
                             type: string
                           isDomainReseller:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           id:
                             type: string
                         required:
-                          - username
                           - email
                           - id
+                          - username
                         type: object
                         description: >-
                           An object containing information of the domain
@@ -146,6 +148,10 @@ paths:
                           Whether or not the domain is registered with Name.com.
                           If set to `true`, the domain is registered with
                           Name.com.
+                      name:
+                        type: string
+                        description: The domain name.
+                        example: example.com
                       teamId:
                         nullable: true
                         type: string
@@ -156,10 +162,6 @@ paths:
                           If it was purchased through Vercel, the timestamp in
                           milliseconds when it was purchased.
                         example: 1613602938882
-                      name:
-                        type: string
-                        description: The domain name.
-                        example: example.com
                       createdAt:
                         type: number
                         description: >-
@@ -177,14 +179,11 @@ paths:
                         type: string
                         description: The unique identifier of the domain.
                         example: EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1
-                      orderedAt:
-                        type: number
-                        description: >-
-                          Timestamp in milliseconds at which the domain was
-                          ordered.
-                        example: 1613602938882
                       renew:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Indicates whether the domain is set to automatically
                           renew.
@@ -219,80 +218,38 @@ paths:
                       userId:
                         type: string
                     required:
-                      - suffix
-                      - verified
-                      - nameservers
-                      - intendedNameservers
-                      - creator
-                      - teamId
                       - boughtAt
-                      - name
                       - createdAt
+                      - creator
                       - expiresAt
                       - id
+                      - intendedNameservers
+                      - name
+                      - nameservers
                       - serviceType
+                      - suffix
+                      - teamId
                       - userId
+                      - verified
                     type: object
-            requiredProperties:
-              - domain
-        examples:
-          example:
-            value:
-              domain:
-                suffix: true
-                verified: true
-                nameservers:
-                  - ns1.nameserver.net
-                  - ns2.nameserver.net
-                intendedNameservers:
-                  - ns1.vercel-dns.com
-                  - ns2.vercel-dns.com
-                customNameservers:
-                  - ns1.nameserver.net
-                  - ns2.nameserver.net
-                creator:
-                  id: ZspSRT4ljIEEmMHgoDwKWDei
-                  username: vercel_user
-                  email: demo@example.com
-                registrar: new
-                teamId: <string>
-                boughtAt: 1613602938882
-                name: example.com
-                createdAt: 1613602938882
-                expiresAt: 1613602938882
-                id: EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1
-                orderedAt: 1613602938882
-                renew: true
-                serviceType: zeit.world
-                transferredAt: 1613602938882
-                transferStartedAt: 1613602938882
-                userId: <string>
-        description: Successful response retrieving an information for a specific domains.
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - domain
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

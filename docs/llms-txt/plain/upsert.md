@@ -2,37 +2,60 @@
 
 # Source: https://www.plain.com/docs/graphql/customers/upsert.md
 
-# Source: https://www.plain.com/docs/graphql/tenants/upsert.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://www.plain.com/docs/graphql/customers/upsert.md
+# Upserting customers
 
-# Source: https://www.plain.com/docs/graphql/tenants/upsert.md
+> Learn how to create and update customers programmatically.
 
-# Source: https://www.plain.com/docs/graphql/customers/upsert.md
+Creating and updating customers is handled via a single API called `upsertCustomer`. You will find this name in both our API and our SDKs.
 
-# Source: https://www.plain.com/docs/graphql/tenants/upsert.md
+When you upsert a customer, you define:
 
-# Source: https://www.plain.com/docs/graphql/customers/upsert.md
+1. The identifier: This is the field you'd like to use to select the customer and is one of
+   * `emailAddress`: This is the customer's email address. Within Plain email addresses are unique to customers.
+   * `customerId`: This is Plain's customer ID. Implicitly if you use this as an identifier you will only be updating the customer since the customer can't have an id unless it already exists.
+   * `externalId`: This is the customer's id in your systems. If you previously set this it can be a powerful way of syncing customer details from your backend with Plain.
+2. The customer details you'd like to use if creating the customer.
+3. The customer details you'd like to update if the customer already exists.
 
-# Source: https://www.plain.com/docs/graphql/tenants/upsert.md
+When upserting a customer you will always get back a customer or an error.
 
-# Upserting tenants
+## Upserting a customer
 
-When upserting a tenant you need to specify an `externalId` which matches the id of the tenant in your own backend.
+This operation requires the following permissions:
 
-For example if your product is structured in teams, then when creating a tenant for a team you'd use the team's id as the `externalId`.
+* `customer:create`
+* `customer:edit`
+* `customerGroup:read` (Typescript SDK only)
+* `customerGroupMembership:read` (Typescript SDK only)
 
-To upsert a tenant you need the following permissions:
+This will:
 
-* `tenant:read`
-* `tenant:create`
+* Find a customer with the email '[donald@example.com](mailto:donald@example.com)' (the identifier).
+* If a customer with that email exists will update it (see `onUpdate` below)
+* Otherwise, it will create the customer (see `onCreate` below)
 
 <Tabs>
   <Tab title="Typescript SDK">
-    <Snippet file="typescript-sdk/upsert-tenant.mdx" />
+    <Snippet file="typescript-sdk/upsert-customer.mdx" />
+
+    Running the above would console.log:
+
+    <Snippet file="typescript-sdk/upsert-customer-response.mdx" />
   </Tab>
 
   <Tab title="GraphQL">
-    <Snippet file="graphql/upsert-tenant.mdx" />
+    The GraphQL mutation is the following:
+
+    <Snippet file="graphql/upsert-customer.mdx" />
   </Tab>
 </Tabs>
+
+The value of the `result` type will be:
+
+* `CREATED`: if a customer didn't exist and was created
+* `UPDATED`: if a customer already existed AND the values being updated **were different**.
+* `NOOP`: if a customer already existed AND the values being updated **were the same**

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/observability/health.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Status and health
 
 > Every model deployment in your Baseten workspace has a status to represent its activity and health.

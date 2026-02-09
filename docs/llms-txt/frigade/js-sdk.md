@@ -1,11 +1,15 @@
 # Source: https://docs.frigade.com/guides/custom/js-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JavaScript SDK
 
 You can build components entirely headless using the [Frigade JS SDK](/sdk/js). For instance, to build a simple Checklist component, you can use the `Flow` and `Step` classes to get the data and build the UI. Here's an example of how to do just that:
 
 <CodeGroup>
-  ```js app.js
+  ```js app.js theme={"system"}
   import { Flow, Step } from '@frigade/js';
 
   const flowId = 'flow_RgilNasCrSBQmrVM'; // Replace this with the Flow ID found in the Frigade dashboard
@@ -58,7 +62,7 @@ You can build components entirely headless using the [Frigade JS SDK](/sdk/js). 
   });
   ```
 
-  ```html index.html
+  ```html index.html theme={"system"}
   <div id="checklist"></div>
   ```
 </CodeGroup>

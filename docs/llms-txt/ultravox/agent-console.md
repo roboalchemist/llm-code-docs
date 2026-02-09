@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/quickstart/agent-console.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Quickstart
 
 > Create your first voice AI agent in 2 minutes with the Ultravox Console.
@@ -62,8 +66,3 @@
 1. Learn more about all the ways you can [customize agents](/agents/overview) in Ultravox
 2. Connect your agent to [phone calls](/telephony/overview) or use it in a [web or native app](/apps/overview)
 3. Create a [knowledge base](/tools/rag/overview) (AKA RAG) for your agent to give it specialized knowledge about your product or key topics
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

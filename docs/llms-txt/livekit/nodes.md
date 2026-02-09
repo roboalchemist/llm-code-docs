@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/nodes.md
 
-# Source: https://docs.livekit.io/agents/build/nodes.md
-
-LiveKit docs › Building voice agents › Pipeline nodes & hooks
+LiveKit docs › Logic & Structure › Pipeline nodes & hooks
 
 ---
 
@@ -26,7 +24,7 @@ Lifecycle hooks:
 
 - `on_enter()`: Called after the agent becomes the active agent in a session.
 - `on_exit()`: Called before the agent gives control to another agent in the same session.
-- `on_user_turn_completed()`: Called when the user's [turn](https://docs.livekit.io/agents/build/turns.md) has ended, before the agent's reply.
+- `on_user_turn_completed()`: Called when the user's [turn](https://docs.livekit.io/agents/logic/turns.md) has ended, before the agent's reply.
 
 STT-LLM-TTS pipeline nodes:
 
@@ -94,7 +92,7 @@ The following lifecycle hooks are available for customization.
 
 ### On enter
 
-The `on_enter` node is called when the agent becomes the active agent in a session. Each session can have only one active agent at a time, which can be read from the `session.agent` property. Change the active agent using [Workflows](https://docs.livekit.io/agents/build/workflows.md).
+The `on_enter` node is called when the agent becomes the active agent in a session. Each session can have only one active agent at a time, which can be read from the `session.agent` property. Change the active agent using [Workflows](https://docs.livekit.io/agents/logic/workflows.md).
 
 For example, to greet the user:
 
@@ -123,7 +121,7 @@ async onEnter(): Promise<void> {
 
 ### On exit
 
-The `on_exit` node is called before the agent gives control to another agent in the same session as part of a [workflow](https://docs.livekit.io/agents/build/workflows.md). Use it to save data, say goodbye, or perform other actions and cleanup.
+The `on_exit` node is called before the agent gives control to another agent in the same session as part of a [workflow](https://docs.livekit.io/agents/logic/workflows.md). Use it to save data, say goodbye, or perform other actions and cleanup.
 
 For example, to say goodbye:
 
@@ -152,11 +150,11 @@ async onExit(): Promise<void> {
 
 ### On user turn completed
 
-The `on_user_turn_completed` node is called when the user's [turn](https://docs.livekit.io/agents/build/turns.md) has ended, before the agent's reply. Override this method to modify the content of the turn, cancel the agent's reply, or perform other actions.
+The `on_user_turn_completed` node is called when the user's [turn](https://docs.livekit.io/agents/logic/turns.md) has ended, before the agent's reply. Override this method to modify the content of the turn, cancel the agent's reply, or perform other actions.
 
 > ℹ️ **Realtime model turn detection**
 > 
-> To use the `on_user_turn_completed` node with a [realtime model](https://docs.livekit.io/agents/models/realtime.md), you must configure [turn detection](https://docs.livekit.io/agents/build/turns.md) to occur in your agent instead of within the realtime model.
+> To use the `on_user_turn_completed` node with a [realtime model](https://docs.livekit.io/agents/models/realtime.md), you must configure [turn detection](https://docs.livekit.io/agents/logic/turns.md) to occur in your agent instead of within the realtime model.
 
 The node receives the following parameters:
 
@@ -660,15 +658,15 @@ The following examples demonstrate advanced usage of nodes and hooks:
 
 - **[Chain-of-thought agent](https://docs.livekit.io/recipes/chain-of-thought.md)**: Build an agent for chain-of-thought reasoning using the `llm_node` to clean the text before TTS.
 
-- **[Keyword Detection](https://github.com/livekit-examples/python-agents-examples/blob/main/pipeline-stt/keyword-detection/keyword_detection.py)**: Use the `stt_node` to detect keywords in the user's speech.
+- **[Keyword Detection](https://github.com/livekit-examples/python-agents-examples/blob/main/docs/examples/keyword-detection/keyword_detection.py)**: Use the `stt_node` to detect keywords in the user's speech.
 
-- **[LLM Content Filter](https://github.com/livekit-examples/python-agents-examples/tree/main/pipeline-llm/llm_powered_content_filter.py)**: Implement content filtering in the `llm_node`.
+- **[LLM Content Filter](https://docs.livekit.io/recipes/llm_powered_content_filter.md)**: Implement content filtering in the `llm_node`.
 
 - **[Speedup Output Audio](https://github.com/livekit/agents/blob/main/examples/voice_agents/speedup_output_audio.py)**: Speed up the output audio of an agent with the `tts_node` or `realtime_audio_output_node`.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:04.354Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/nodes.md](https://docs.livekit.io/agents/build/nodes.md).
+This document was rendered at 2026-02-03T03:24:56.455Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/nodes.md](https://docs.livekit.io/agents/logic/nodes.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

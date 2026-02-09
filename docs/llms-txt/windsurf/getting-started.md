@@ -2,29 +2,24 @@
 
 # Source: https://docs.windsurf.com/plugins/getting-started.md
 
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.windsurf.com/plugins/getting-started.md
+# Welcome to Windsurf Plugins
 
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
+> Install and set up Windsurf Plugins for JetBrains, VS Code, Visual Studio, Vim, NeoVim, Jupyter, Chrome, and other IDEs with AI-powered coding assistance.
 
-# Source: https://docs.windsurf.com/plugins/getting-started.md
+**Windsurf Plugins** bring our suite of AI tools to various IDEs and editors, empowering developers to dream bigger by meeting them where they are.
 
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
+<Card title="Teams and Enterprise" icon="users" href="/plugins/accounts/teams-getting-started">
+  Get started with your team!
+</Card>
 
-# Source: https://docs.windsurf.com/plugins/getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
-
-# Welcome to Windsurf
-
-Tomorrow's editor, today.
-
-Windsurf is a next-generation AI IDE built to keep you in the flow. On this page, you'll find instructions on how to install Windsurf on your computer, navigate the onboarding flow, and get started with your first AI-powered project.
-
-<Card
-  title="Cascade"
-  icon={
+<CardGroup cols={3}>
+  <Card
+    title="Cascade"
+    icon={
     <svg
       width="25"
       height="25"
@@ -46,338 +41,519 @@ Windsurf is a next-generation AI IDE built to keep you in the flow. On this page
       />
     </svg>
   }
-  href="/windsurf/cascade"
->
-  Your agentic chatbot that can collaborate with you like never before.
-</Card>
+    href="/plugins/cascade/cascade-overview"
+  >
+    Windsurf's coding agent.
+  </Card>
 
-<CardGroup cols={2}>
-  <Card title="Usage" icon="bars-progress" href="/windsurf/accounts/usage">
+  <Card title="Usage" icon="bars-progress" href="/plugins/accounts/usage">
     Credits and usage.
   </Card>
 
-  <Card title="Terminal" icon="terminal" href="/windsurf/terminal">
-    An upgraded Terminal experience.
+  <Card title="Models" icon="robot" href="/plugins/cascade/models">
+    Models available for use.
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
-  <Card title="MCP" icon="hammer" href="/windsurf/cascade/mcp">
-    MCP servers extend the agent's capabilities.
-  </Card>
-
-  <Card title="Memories" icon="cloud-word" href="/windsurf/cascade/memories">
-    Memories and rules help customize behavior.
-  </Card>
-
-  <Card title="Context Awareness" icon="brain" href="/context-awareness/overview">
-    Instantly understands your codebase.
-  </Card>
-
-  <Card title="Advanced" icon="gears" href="/windsurf/advanced">
-    Advanced configuration options.
-  </Card>
-</CardGroup>
-
-<CardGroup cols={2}>
-  <Card title="Workflows" icon="list" href="/windsurf/cascade/workflows">
-    Automate repetitive trajectories.
-  </Card>
-
-  <Card title="App Deploys" icon="rocket" href="/windsurf/cascade/app-deploys">
-    Deploy applications in one click.
-  </Card>
-</CardGroup>
-
-<Tip> See what's new with Windsurf in our [changelog](https://windsurf.com/changelog)! </Tip>
-
-## Set Up
-
-To get started, please ensure that your device meets the requirements, click the download link, and follow the instructions to install and run Windsurf.
-
-[Click here](#update-windsurf) if you're looking for how to update Windsurf.
-
-<Tabs>
-  <Tab title="Mac">
-    Minimum OS Version: OS X Yosemite
-
-    <a href="https://windsurf.com/windsurf/download_mac" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Mac</button>
-    </a>
-  </Tab>
-
-  <Tab title="Windows">
-    Minimum OS Version: Windows 10
-
-    <a href="https://windsurf.com/windsurf/download" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Windows</button>
-    </a>
-  </Tab>
-
-  <Tab title="Ubuntu">
-    Minimum OS Version: >= 20.04 (or glibc >= 2.31, glibcxx >= 3.4.26)
-
-    <a href="https://windsurf.com/windsurf/download_linux" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Ubuntu</button>
-    </a>
-  </Tab>
-
-  <Tab title="Other Linux distributions">
-    Minimum OS Version: glibc >= 2.28, glibcxx >= 3.4.25
-
-    <a href="https://windsurf.com/windsurf/download_linux" target="_blank" rel="noopener noreferrer">
-      <button style={{width: '170px', backgroundColor: '#34E8BB', color: 'white', padding: '5px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer', fontSize: '0.8rem', display: 'flex', justifyContent: 'center'}}>Download for Linux</button>
-    </a>
-  </Tab>
-</Tabs>
-
-## Onboarding
-
-Once you have Windsurf running, you will see the page below. Let's get started! Note that you can always restart this onboarding flow with the "Reset Onboarding" command.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f8eae97bf290f1badc7b21e0d9566f89" data-og-width="2344" width="2344" data-og-height="1464" height="1464" data-path="assets/windsurf/onboarding/welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=005fb62783dbc69d26ba4a385f631af4 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=14329b88b359c30fbdeeafaf1441d658 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=18079c6db1af8451a06e2fa912375593 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5cbf9997ee5be2bb64bdd84526149cb6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=ab65ebee097953eceab05b38a43e5ad1 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/welcome.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=02cbfbdcbf741d50ecda7fc91a62fa61 2500w" />
-</Frame>
-
-### 1. Select setup flow
-
-If you're coming from VS Code or Cursor, you can easily import your configurations. Otherwise, select "Start fresh". You can also optionally install `windsurf` in PATH such that you can run `windsurf` from your command line.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5696da6d3a63cd10ddcac4575dbf89fd" data-og-width="2064" width="2064" data-og-height="1145" height="1145" data-path="assets/windsurf/onboarding/setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=18b359f2e6bc1d0f47178756d66c2bed 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=ea2bf29ede4c4a0e5d8fdb070378b4ac 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9455bc3d88661425c53ed8161ec8b414 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2548c1e288bb60ebf1d0edd0f340dbea 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=056c36416dd07b786b4ed53fe7a564d3 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/setup.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=092178864dd7fe1c03b2976496e73e38 2500w" />
-</Frame>
-
-<Tabs>
-  <Tab title="Start fresh">
-    Choose your keybindings here, either default VS Code bindings or Vim bindings.
-
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=14c9adde7dd5bb1073108c510934f3cb" data-og-width="2484" width="2484" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/keybind.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=50cd06dba4b9b5bc24ae5a0a8ffaa13c 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c80c971c5a6be4742a8cec4ae39a3154 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2a71d5cd42fa0ae851e30e510e080add 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a8f9325c773c67a7eb6c46f707cc9d1d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=271228fc3ec4a31aae38c987c563a2e4 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/keybind.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8a80c36c3544513a10a7246e7ee163ca 2500w" />
-    </Frame>
-  </Tab>
-
-  <Tab title="Import from VS Code">
-    You can migrate your settings, extensions, or both here.
-
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf14f085ccba168dd02c791f381507b7" data-og-width="2486" width="2486" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/vscode_migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=be0a7d7e959c7d4f17dd9bbab09d93da 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=db53903b9b8dd576e1518817595fbf95 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b8746c6a2666cd70ec6c50243d6ca688 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=df6a9a5097deea2b557cb33faf652b2d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e04a2d1f08d35cc5fca41de9b1526c2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b61712da092e6f78cdf55bb26eafec19 2500w" />
-    </Frame>
-  </Tab>
-
-  <Tab title="Import from Cursor">
-    You can migrate your settings, extensions, or both here.
-
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf14f085ccba168dd02c791f381507b7" data-og-width="2486" width="2486" data-og-height="1378" height="1378" data-path="assets/windsurf/onboarding/vscode_migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=be0a7d7e959c7d4f17dd9bbab09d93da 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=db53903b9b8dd576e1518817595fbf95 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b8746c6a2666cd70ec6c50243d6ca688 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=df6a9a5097deea2b557cb33faf652b2d 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e04a2d1f08d35cc5fca41de9b1526c2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/vscode_migration.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b61712da092e6f78cdf55bb26eafec19 2500w" />
-    </Frame>
-  </Tab>
-</Tabs>
-
-### 2. Choose editor theme
-
-Choose your favorite color theme from these defaults! Don't worry, you can always change this later. Note that if you imported from VS Code, your imported theme will override this.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7bd1ce64f97063988605a7e6bcf3f734" data-og-width="2482" width="2482" data-og-height="1380" height="1380" data-path="assets/windsurf/onboarding/theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6e36c2c32b1e83a9fd15df667da59dc7 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=11966f5933b6c2e9ada918ce1d7c0d0b 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9476b0a4d2ce83ebbf4cf152dda5ccf4 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2b1f53bdae2e265546a75ba30296fbd6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6288fdd29e53109b342ad3ae0d1e76d9 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/theme.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5e54ab80cbec8a5b1566e2b0d1eb7338 2500w" />
-</Frame>
-
-### 3. Sign up / Log in
-
-To use Windsurf, you need to use your Windsurf account or create one if you don't have one. Signing up is completely free!
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e92373636e9415e67b79e5eaeff399be" data-og-width="2346" width="2346" data-og-height="1468" height="1468" data-path="assets/windsurf/onboarding/auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=294b45fb8e516d4167a25fc961f1492f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4dc80b61233742fa5f82cd356d9797a6 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=211852dc25f36bee964445d153bec911 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=0937518814e0b4d554f456a4443157c1 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e71da6a9b23a1ca36a7ef16ca3dcff2c 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/auth.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f7e672f5485b2576a9bd786bbc5c2a3b 2500w" />
-</Frame>
-
-Once you've authenticated correctly, you should see this page. Hit "Open Windsurf" and you're good to go!
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8d8091bca31c571afe1ef5caf9b03459" data-og-width="2348" width="2348" data-og-height="1464" height="1464" data-path="assets/windsurf/onboarding/authenticated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c163b16fd147765d61509069f3c57a5c 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=1e536ad5a679300854270bd6afb5872d 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=88848a858d8d595f133b7d9717c7ec42 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=29794c0b2973bc7fa3d83d8cad5a97d6 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c682364c3ea41ca340b08e7223634a08 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/authenticated.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=f4d1fab9349270cf1e45cdce9b96ccf2 2500w" />
-</Frame>
-
-#### Having Trouble?
-
-If you're having trouble with this authentication flow, you can also log in and manually provide Windsurf with an authentication code.
-
-<Tabs>
-  <Tab title="1. Select &#x22;Having Trouble?&#x22;">
-    Click the "Copy link" button to copy an authentication link to your clipboard and enter this link into your browser.
-
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c4aabe6e213b964e315fbc6940f0c5b0" data-og-width="2478" width="2478" data-og-height="1376" height="1376" data-path="assets/windsurf/onboarding/manual_auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=80e0ce95eae787bde316beece809171f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3e12bcc62cd40a901231ed0df13ec807 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=d8e3243f8e810544e8760b4955473116 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=22c9e1ef6b6e44ee96f5d25ce800fd7c 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7eb3acc5725041e61faff7e38987b1bd 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=e448bba3a8db9737afc21bc0beeab2fb 2500w" />
-    </Frame>
-  </Tab>
-
-  <Tab title="2. Enter Authentication Code">
-    Copy the authentication code displayed in the link and enter it into Windsurf.
-
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=5911333c632d5ded717d685c3ff77cac" data-og-width="1990" width="1990" data-og-height="1858" height="1858" data-path="assets/windsurf/onboarding/manual_auth_onboarding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=43fea2449ae6e1bacb4963ca8ca1032f 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3dc7aa7a77ec0445ff7f703c52fa2a07 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=b4954c56ee344993063a57d90ab7520f 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=56d65f38851aa93dc92a050701124564 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=163193b36e3392e875056ea419964c7e 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/manual_auth_onboarding.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=cf81c5776781f5a045c00188525d9a26 2500w" />
-    </Frame>
-  </Tab>
-</Tabs>
-
-### 4. Let's Surf!
-
-<Frame>
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/onboarding/lets_surf.mp4?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=8f26c1a8770b94a299752d7401149cff" data-path="assets/windsurf/onboarding/lets_surf.mp4" />
-</Frame>
-
-<Card title="Recommended Plugins" icon="puzzle-piece" href="/windsurf/recommended-plugins">
-  Explore some of our recommended plugins to get the most out of Windsurf!
-</Card>
-
-## Update Windsurf
-
-To update Windsurf, you can click on the "Restart to Update ->" button in the top right corner of the menu bar.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=254e39b2e81a7746d82b36387dae2504" data-og-width="600" width="600" data-og-height="66" height="66" data-path="assets/windsurf/update-windsurf.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=3d8ddcf4953bf6e6d473ca409c8339b5 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=57ee243166d1fb0c3f484e42e754e8d6 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=795caa1807eaf8a2ec8f4b17bf45605f 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=0220ef88f8a4255335a85a7a706ae978 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9b6016aea367886fe6bba680cba079e3 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/update-windsurf.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a99b17d4724852271eb9ff1585dda26f 2500w" />
-</Frame>
-
-If you are not seeing this button, you can:
-
-1. Click on your Profile icon dropdown > Check for Updates
-
-2. In the Command Palette (`Cmd/Ctrl+Shift+P`) > "Check for Updates"
-
-## Things to Try
-
-Now that you've successfully opened Windsurf, let's try out some of the features! These are all conveniently accessible from the starting page. :)
-
-<AccordionGroup>
-  <Accordion title="Write with Cascade">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1e48173bc3499c03f11be933a6b45596" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/cascade.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4971f06a1b0db06e584fb6d1ef559e0 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=779260952ff032eb725ead59de3df12f 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=188aa1618c8cbb1d2071fe1c61ab848e 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fbd11dcdb5a734646efbe9c614daa11c 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c41b8d9fc7646a394c6782ec32bd7481 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=90ea2b0b61b99a87656c598c4021b809 2500w" />
-    </Frame>
-
-    On the right side of the IDE, you'll notice a new panel called "Cascade". This is your AI-powered code assistant! You can chat, write code, and run code with Cascade! Learn more about how it works [here](/windsurf/cascade).
-  </Accordion>
-
-  <Accordion title="Generate a project with Cascade">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=876d94d833f7156fb19ced5da29ac3f9" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/cascade_generate.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ffa1ab7d0b8dd0c9fe90aa7d77bf77a9 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=6889dda9cc550bddf283314ab8f9b133 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fb86594ac84530a6702a7537ef69448c 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=05e25b8b725389e3b07bf37fe9eddca8 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=73771a74119b9a4a6866b4319536409f 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade_generate.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=df50412402714a91aee87be93835ef3c 2500w" />
-    </Frame>
-
-    You can create brand new projects with Cascade! Click the "New Project" button to get started.
-  </Accordion>
-
-  <Accordion title="Open Folder / Connect to Remote Server">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=23af27c11317a2d69cb04f092e1da13f" data-og-width="2062" width="2062" data-og-height="1548" height="1548" data-path="assets/windsurf/open_workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=d603279bad581f354e6b43903514b7c1 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=56ece329970c50df74c3cdbe5246ca91 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4183d72c3d95711f349488d9aa2fe706 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=963000e12ded6a54a1bb92254a5c1d8e 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=6f924d832f13ea8129faff2f8efe0afc 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/open_workspace.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2836093ae7dfcd22a42c2b67c7e6aec0 2500w" />
-    </Frame>
-
-    You can open a folder or connect to a remote server via SSH or a local dev container. Learn more [here](/windsurf/advanced).
-  </Accordion>
-
-  <Accordion title="Configure Windsurf Settings">
-    <Frame>
-      <img style={{width: '50%', display: 'block', margin: 'auto'}} src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=4f123cb41fe4557a31249af717324652" data-og-width="754" width="754" data-og-height="986" height="986" data-path="assets/windsurf/windsurf-settings-panel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=580c37ac863ac6d056b9a1d3f49af8eb 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=611c985dd4341ebeea5849ddd0d799c8 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=23e9348bda1251078fafbdc0b3d7d4de 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=139591b7dee7631615f7796a513a57bb 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=2160a7972f2119c212a360dde6774215 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/windsurf-settings-panel.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=46fc8a94ad9db6a25dcb56add2a41b12 2500w" />
-    </Frame>
-
-    Click on the "Windsurf - Settings" button on the bottom right to pop up the settings panel. To access Advanced Settings, click on the button in this panel or select "Windsurf Settings" in the top right profile dropdown.
-  </Accordion>
-
-  <Accordion title="Open Command Palette">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8fb19cd757b7daa72bf441aa71d30a7f" data-og-width="2058" width="2058" data-og-height="1544" height="1544" data-path="assets/windsurf/command_palette.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f26ee32a3ed595e17c26d622f660071a 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4d0161b7ea21da7e8aa9ef9027012b7c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=19ce0df2dca06c79c1e7b67c18683d23 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=09452a389208d7ea9090bb1f1bb26cde 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dfddd4ad6e05a1b309307b3812c0faee 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/command_palette.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d76eba40fdf193ce8452b73c79872786 2500w" />
-    </Frame>
-
-    You can open the command palette with the `⌘+⇧+P` (on Mac) or `Ctrl+Shift+P` (on Windows/Linux) shortcut. Explore the available commands!
-  </Accordion>
-</AccordionGroup>
-
-## Forgot to Import VS Code Configurations?
-
-You can easily import your VS Code/Cursor configuration into Windsurf if you decide to do so after the onboarding process.
-
-Open the command palette (Mac: `⌘+⇧+P`, Windows/Linux: `Ctrl+Shift+P`) and type in the following:
-
-<Tabs>
-  <Tab title="VS Code">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad0b864c3db087628f26d86241d23616" data-og-width="1452" width="1452" data-og-height="404" height="404" data-path="assets/import-vscode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3f4f14bb9d1a267b2db392eadb96a0bf 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b9c0a03c827f00476da27cf7c8332781 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6d190021d5db196d2bba19a75f0db97c 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c2179de3cf831230df52c0fa3fdd536f 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fbd66a97327cae9d6e6f9ef3e9e675cf 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/import-vscode.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a26ade4508041ac54a5824220b28adf9 2500w" />
-    </Frame>
-  </Tab>
-
-  <Tab title="Cursor">
-    <Frame>
-      <img src="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=a96df0b3235675e3713d0bf306170130" data-og-width="1454" width="1454" data-og-height="272" height="272" data-path="assets/windsurf/import-cursor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=280&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=9c5a65d015d3317e1a0ef82198b773db 280w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=560&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c43270598e2c7b8c2076dd1c8a61988c 560w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=840&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=34466e33238f48ad21cb0562d8ac614b 840w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=1100&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=bc477138c32b95bb6fcb393c647a52fb 1100w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=1650&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=7ef71a68b964490ce26e621198c7f4a2 1650w, https://mintcdn.com/codeium/bVGscI7v3lPUsThV/assets/windsurf/import-cursor.png?w=2500&fit=max&auto=format&n=bVGscI7v3lPUsThV&q=85&s=c0d6766df74a3902b395d6120fb2c1c5 2500w" />
-    </Frame>
-  </Tab>
-</Tabs>
-
-## Incompatible Extensions
-
-There are a few extensions that are incompatible with Windsurf. These include other AI code complete extensions and proprietary extensions. You cannot install extensions through any marketplace on Windsurf.
-
-## Custom App Icons (beta)
-
-For paying users of Windsurf, you can choose between different Windsurf icons while it sits in your dock. Currently, this feature is only available for Mac OS, with other operating systems coming soon.
-
-To change your app icon, simply click the profile/settings icon in the top right corner of the editor and select "Customize App Icon".
-
-## Windsurf Next
-
-Windsurf Next is prerelease version of Windsurf which users can choose to opt-in to access the newest features and capabilities as early as possible, even if the features are not fully polished. Features will typically be rolled out to Windsurf Next first, and then into the stable release shortly after.
-
-You can opt-in to Windsurf Next simply by [downloading it here](https://windsurf.com/editor/download-next).
-
-## Uninstall Windsurf
-
-To uninstall Windsurf from your system, follow these steps:
+## Jetbrains
+
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All other plugins are under maintenance mode.
+
+<Note>
+  These steps do not apply for enterprises on a self-hosted plan.
+  If you are an enterprise user, please refer to the instructions in your enterprise portal.
+</Note>
+
+<Note>
+  For remote development environments, use the "Windsurf (Remote Development)" plugin instead. See the [Remote Development section](#remote-development-maintenance-mode) below.
+</Note>
 
 <Steps>
-  <Step title="Close Windsurf">
-    Ensure that Windsurf is not currently running before proceeding with the uninstallation.
+  <Step title="Install Local Plugin">
+    Open the `Plugins` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for the Windsurf plugin, and install it. The plugin loader will prompt you to restart the IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e33799e1448d861a017d76f8c81daab8" data-og-width="1368" width="1368" data-og-height="1052" height="1052" data-path="assets/jetbrains_plugin_install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9fd0638ea39f24f470cd24a8d6e3700a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8c9b4838d07cbb0cb477f49fcf7659f 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=72dc21e16b15c6f2b0e13ceed560f8c4 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e1f9d2bceffa745a5487787382ebbfa4 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=94428045a530787f402d9cfa389729f8 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4f00851b0234e8a481aa9a20c72961f9 2500w" />
+    </Frame>
   </Step>
 
-  <Step title="Delete the Windsurf application">
-    <Tabs>
-      <Tab title="Mac">
-        Drag the Windsurf application from the Applications folder to the Trash.
-      </Tab>
+  <Step title="Wait for Language Server">
+    Upon successful installation, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
 
-      <Tab title="Windows">
-        The application is usually located in one of these folders:
+    You should see a notification on the bottom right to indicate the progress of the download.
 
-        * `C:\Program Files\Windsurf`
-        * `C:\Users\[YourUsername]\AppData\Local\Programs\Windsurf`
-
-        Delete the Windsurf folder from the appropriate location.
-      </Tab>
-
-      <Tab title="Linux">
-        Remove the Windsurf folder from the location where you installed it.
-      </Tab>
-    </Tabs>
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
+    </Frame>
   </Step>
 
-  <Step title="Remove configuration files">
-    <Tabs>
-      <Tab title="Mac/Linux">
-        Delete the Windsurf configuration folder:
+  <Step title="Authorize">
+    Open a project. Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
 
-        ```bash  theme={null}
-        rm -rf ~/.codeium/windsurf
-        ```
-      </Tab>
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
+    </Frame>
 
-      <Tab title="Windows">
-        Delete the Windsurf configuration folder:
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
 
-        ```
-        C:\Users\[YourUsername]\.codeium\windsurf
-        ```
-      </Tab>
-    </Tabs>
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
+    </Frame>
   </Step>
 
-  <Step title="Additional cleanup">
-    <ul>
-      <li>If you installed Windsurf in PATH, remove it from your system's PATH environment variable.</li>
-      <li>If you installed Windsurf using your system's package manager or control panel, you can also use that to uninstall it.</li>
-      <li>Empty your Trash or Recycle Bin to complete the uninstallation.</li>
-    </ul>
+  <Step title="All Done!">
+    You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
+
+    At any point, you can check your status by clicking the status bar widget at the bottom right.
+    If logged in, you will have access to your Windsurf settings and other controls.
+
+    If you'd like early access to new features, click on "Switch to Pre-Release"
+    to try out the [latest pre-release version](https://plugins.jetbrains.com/plugin/20540-windsurf-plugin-for-python-js-java-go--/versions/pre-release)
+    of the plugin.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=88a5e47f629e1845d61e658b5deb78cb" data-og-width="688" width="688" data-og-height="542" height="542" data-path="assets/jetbrains_status_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ca052f2cf4072827fe0180984f6d1d5 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2fbb2d670a421204bc26db5ab2e68ba4 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=129172ac81e47df236bf764927276358 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=16f1bcd9b876b8798efc5c2d40c692e8 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=209654eb653db633278201a472142377 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aac0c027b201204d2e095e6e0729f68 2500w" />
+    </Frame>
   </Step>
 </Steps>
+
+### Remote Development (maintenance mode)
+
+For JetBrains IDEs used in remote development environments, you need to use the separate "Windsurf (Remote Development)" plugin.
+
+This plugin is in maintenance mode. For advanced agentic AI capabilities and cutting-edge features, we strongly recommend using the native Windsurf Editor or the JetBrains local plugin.
+
+#### Requirements
+
+* JetBrains IDE version 2025.1.3 or greater
+
+#### Installation Steps
+
+<Steps>
+  <Step title="Install on Host">
+    Open the `Plugins (Host)` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for **"Windsurf (Remote Development)"** and install it.
+    Restart your IDE when prompted.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d211e58031d19dd7c14625882e105068" data-og-width="1494" width="1494" data-og-height="1110" height="1110" data-path="assets/jetbrains_remote_plugin_install_host.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=414c87310c072979677ba0f40c87ca39 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2730fab386283bcda33d7dd3a4bcc680 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ffc5ed84ab5b76a7988ec43d13d9bd0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b89fbb65563423783a5e3bdc10f1b798 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0bc28c1317b0f8d495bfc8d528103644 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7e116f50fadc495064267b0f28949269 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Install on Client">
+    Open the `Plugins (Client)` menu and search for **"Windsurf (Remote Development)"**.
+    Install the plugin and restart the IDE again.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ab22c1e39b3e2213a042c5b77e9485da" data-og-width="1496" width="1496" data-og-height="1098" height="1098" data-path="assets/jetbrains_remote_plugin_install_client.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db937a60880616dd0bd4a5f596ba92ec 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8dec360498151e89fb91d5f44ed377d3 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1d9289fbf9d8439ee32f6e788d00a4cf 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7dcc7308ca332a6ec3958bb7d0ab4b3e 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e306e9c40b837c5ac92d9dff86383483 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c249ed8f90c6ff91d2893bf5cfb3c0b 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Wait for Language Server">
+    After installing the plugin on the host, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
+
+    You should see a notification on the bottom right to indicate the progress of the download.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize">
+    After the language server download is completed, Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
+    </Frame>
+
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="All Done!">
+    You can now use Windsurf's AI features in your remote development environment.
+  </Step>
+</Steps>
+
+## Older Plugins
+
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All plugins below are under maintenance mode.
+
+<Tabs>
+  <Tab title="Visual Studio Code">
+    <Steps>
+      <Step title="Install Plugin">
+        Find the Windsurf Plugin (formerly Codeium) in the VS Code Marketplace and install it.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=543ab4d80d64932510d9db4378301ec0" data-og-width="3100" width="3100" data-og-height="2300" height="2300" data-path="assets/vscode_extension_page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=fb00864f666577f53b8a181e1b88df08 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0743d2d63420106c444beb5374ec7b3f 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=440c8a34f7c89bbf426e15667655829a 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=83b8a64f44cdbe1cf9efe010b7342956 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=eb7bb2de6afff351cebf2e18acc9cd84 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_extension_page.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f2105aca1cfba29b0204d7d7106ad209 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Authorize">
+        After installation, VS Code with prompt you with a notification in the bottom right corner to log in to Windsurf.
+        Equivalently, you can log in to Windsurf via the profile icon at the bottom of the left sidebar.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=40142fcfc135e01628f5545051b8120a" data-og-width="1870" width="1870" data-og-height="360" height="360" data-path="assets/vscode_login_init_left.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2be3c8e105210bd0e97a58a664f4103a 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=01652fe32e88c74950f06f6672738d3e 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=839e1a7da0b9d1a067df915a4682d7a8 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=cc6ed5cf56bba1a46fa2351ea5ae4129 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=30ac41ca56988bc8be76bfec9e769143 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vscode_login_init_left.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=434c27fe1917b8726a025f1486dcb51b 2500w" />
+        </Frame>
+
+        <Note>If you get an error message indicating that the browser cannot open a link from Visual Studio Code, you may need to update your browser and restart the authorization flow.</Note>
+        If you do not have an account or otherwise are not already logged in online, you will be prompted to create an account or login.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+        </Frame>
+
+        Once you sign in, you will be redirected back to Visual Studio Code via pop-up.
+        <Note>If you are using a browser-based VS Code IDE like GitPod or Codespaces, you will be routed to instructions on how to complete authentication by providing an access token.</Note>
+      </Step>
+
+      <Step title="Wait for Language Server">
+        Once you are signed in, Windsurf will start downloading a language server.
+        This is the program that communicates with our APIs to let you use Windsurf's AI features.
+        The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+        In the meantime, you are free to use VS Code as usual.
+      </Step>
+
+      <Step title="All Done!">
+        You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Vim / Neovim">
+    ### Extension Installation
+
+    <Steps>
+      <Step title="Install Plugin">
+        Follow the **Get Started** instructions in the public [`codeium.vim` repo](https://github.com/Exafunction/codeium.vim). That’s it!
+      </Step>
+    </Steps>
+
+    ### Using Windsurf Plugin
+
+    <Steps>
+      <Step title="Setup">
+        While Windsurf supports many languages, we’ll demonstrate with Python. Create a new file `test.py`.
+      </Step>
+
+      <Step title="From Code">
+        Windsurf can suggest multiple lines of code from a partial function header:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=409f51d6a4a90405ac91cee23edee16b" alt="Snippet one" data-og-width="508" width="508" data-og-height="260" height="260" data-path="assets/vim_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f7cf715f9ca4607000836ad41098c421 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b064ea325a36519a2f081ddd4afc8c88 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=aa4513cd8c1daa07eb8a5473fad0226b 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b56a682eb2e30c81e6904a36b5b72fcd 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=92686ebc384206730389c69594851839 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=31e4005807287bb3951513358bb5a5bc 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Accept Suggestion">
+        Press **Tab** to accept.
+      </Step>
+
+      <Step title="From Comments">
+        Windsurf also understands comments:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=48c14b1d408acb68c97e5dac5c4ed421" alt="Snippet two" data-og-width="712" width="712" data-og-height="392" height="392" data-path="assets/vim_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=2e064f0a8827a48f944eafe210e5c548 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a22b17ea2cb1267b903e984279784a29 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=612bba50ea0377516d3a36fb91fc1d50 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f20f1a31efb451e1b83b4cafeacd4250 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=234f14baa7491420f5d6acd5861b86ad 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/vim_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5da32fd160fe285587e69c53c3e5798a 2500w" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Visual Studio">
+    ### Extension Installation
+
+    <Steps>
+      <Step title="Open Extension Marketplace">
+        In the Visual Studio menu bar, click **Extensions → Manage Extensions**.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=35d03bb50b8499567c41ea93fe8ea178" alt="Manage Extensions" data-og-width="636" width="636" data-og-height="171" height="171" data-path="assets/visual_studio_tutorial/manage_extensions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=416afdc177726f0f9c866b723cfb09fa 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=e6df383e2a067ba6475470d6cbc34a95 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8b672de47a30dae2279447d5071647d5 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=64ef339b35d3e09063b47214e9b27b64 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=82c6fe8c9bdd815b6acd429d0c565d93 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/manage_extensions.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=31660b8e9a9f255853e9c9a92c6c6f07 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Install Windsurf Plugin">
+        In **Manage Extensions**, click **Visual Studio Marketplace**, search for **Windsurf**, then click **Download**.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=1c004b5b2883643ab0724038ae1df460" alt="Install plugin" data-og-width="1413" width="1413" data-og-height="985" height="985" data-path="assets/visual_studio_tutorial/install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a007c5f8382e0817a778134f6694216c 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=862e9691e57566e2aa58c4d75e7a6122 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=a0e1e22639f1cd3f23c34a4711fe6c8c 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=e65588fa8b416221893890e1258f7833 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=9f93244c33e62ced42cd0821621d4f26 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/install.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=d25e02bc6f2eb42835819599d3abc677 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Relaunch Visual Studio">
+        Close the window and relaunch Visual Studio.
+      </Step>
+
+      <Step title="Sign in to Windsurf Plugin">
+        Open or create a project. A browser window will open and prompt you to sign in.
+      </Step>
+
+      <Step title="Create Account">
+        If you don’t have an account yet, you’ll be redirected to create one.
+      </Step>
+
+      <Step title="All Done!">
+        After signing in, you’ll be automatically logged in to Windsurf Plugin in Visual Studio.
+      </Step>
+    </Steps>
+
+    ### Using Windsurf Plugin
+
+    <Steps>
+      <Step title="Setup">
+        While Windsurf supports many languages, we’ll demonstrate with C#. Create or open a C# file.
+      </Step>
+
+      <Step title="From Code">
+        Windsurf can suggest multiple lines of code from a partial function signature:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=3ddaac8fa3871d2e99b4c6dfffc5f789" alt="Suggestion example" data-og-width="1128" width="1128" data-og-height="461" height="461" data-path="assets/visual_studio_tutorial/suggestion.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=1448fac1000c33cdd119f88869c60dd5 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=0e4bc4744a3ed4375adcf78e03ff53eb 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=ab860784ccdd78a51e4543f509462bb5 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6379563a39b42f35c75803f796df1237 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=25be46fdb00bacfa7fa2e0ef4c8bcdd6 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/suggestion.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=6f0edde75be0fcbb96831fc19c9cb24b 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Accept Suggestion">
+        Press **Tab** to accept.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=34e5899a41e604482b545aac8bb0bf8f" alt="After accept" data-og-width="1215" width="1215" data-og-height="514" height="514" data-path="assets/visual_studio_tutorial/post_accept.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=547a8c512319311afde66b85fc384b65 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=5d6c7f779af6634ed38e464734cb7ab4 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=f65b3ac5034af9d806fe00c7d9aaf01e 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=936a5940183e70d7fb3c58272d78a7ff 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=86aabe30bd517678dff634ac3129a674 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/visual_studio_tutorial/post_accept.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=91c5bc89660bc155a52881097e3e5d32 2500w" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Jupyter Notebook">
+    ### Install Windsurf Plugin
+
+    <Steps>
+      <Step title="Install Jupyter Extension">
+        Open a new Jupyter Lab session. In a cell, paste and run `Shift+Enter` the following:
+
+        ```python  theme={null}
+        import sys
+        !{sys.executable} -m pip install -U pip --user
+        !{sys.executable} -m pip install -U codeium-jupyter --user
+        ```
+
+        If you’re inside a virtual environment, run:
+
+        ```python  theme={null}
+        import sys
+        !{sys.executable} -m pip install -U pip
+        !{sys.executable} -m pip install -U codeium-jupyter
+        ```
+
+        When the commands finish, close the notebook and stop the Jupyter server.
+      </Step>
+
+      <Step title="Launch Jupyter">
+        Relaunch Jupyter and open a notebook. Open the settings (<kbd>Ctrl</kbd> + <kbd>,</kbd>) and navigate to the **Windsurf** section. You’ll see fields for an enterprise URL and a token.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9f4d0045130c5c2bebe332eb1d61aeea" alt="Settings UI" data-og-width="1025" width="1025" data-og-height="301" height="301" data-path="assets/jupyter_tutorial/codeium_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=162c3268841b817f01749aee3552dcc9 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e08893da2d05a135e0719e302ab8bbc8 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bae56ae676f7ebd4b861d985c15b6623 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=163443a500f99b4873bf3f38271b5db1 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a4f11966eb9d3a054d82774cb3ee5eb3 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/codeium_settings.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d3cc874ea9e1112e0a8953ec7e454de2 2500w" />
+        </Frame>
+
+        Click **Get Windsurf Authentication Token** and follow the link. Paste the token back into the settings dialog.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a22a4747a45c1f02e43ca6e8cf73c043" alt="Settings menu" data-og-width="330" width="330" data-og-height="89" height="89" data-path="assets/jupyter_tutorial/settings_menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9ff8010f2bab99477dc6143a1c627404 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3615e49192449c2871c742cc6812fa0a 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4164277a320d562ec583876cea600b6b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1ff36ad08f69cc0bde8d590034029758 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d29f63555bbc2cdc2ac54d98d0dc6e72 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/settings_menu.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bb2a9dfeacd4adf7ff4cd9a90a78e1ed 2500w" />
+        </Frame>
+
+        <Note>If you can’t find the Windsurf settings, you likely didn’t restart Jupyter. Stop the server (Ctrl+C) and start it again with <code>jupyter lab</code>.</Note>
+      </Step>
+
+      <Step title="Create Account">
+        If you don’t have a Windsurf account, you’ll be prompted to create one.
+      </Step>
+
+      <Step title="Authenticate">
+        After signing in, copy the token and paste it into the settings dialog.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=51ac326b9b5870e5fdc8ff11c8ce6e8a" alt="Auth token field" data-og-width="818" width="818" data-og-height="326" height="326" data-path="assets/jupyter_tutorial/auth_token_setting.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db97a07d99805d9c8a56f253acbd259f 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4b4f08330a3041594a839d80ec833ddf 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=18c98ae77723fd5bc25f793eff2fcb90 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e974df5acdb06d0d7dadbef21684ccca 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b923ea1ace4ad384ec770bdbaac6a82a 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/auth_token_setting.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a3884bf89040738d3554afa0aac63f64 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="All Done!">
+        You’re all set to use Windsurf Plugin in Jupyter!
+      </Step>
+    </Steps>
+
+    ### Using Windsurf Plugin
+
+    <Steps>
+      <Step title="From Code">
+        Windsurf can suggest multiple lines of code from a partial function header:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ace6fe93ebf37f70b9301a67636f2fd7" alt="Snippet one" data-og-width="1420" width="1420" data-og-height="346" height="346" data-path="assets/jupyter_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5db0e5ae372503b71b2d792aa632fd9b 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5baa7f886ba56d65b421f2e2df295398 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=78745dbc56aef001c0b60bfa7092a06b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e6ce86b48ef7d026e28600dae80aea89 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=77c19d0021a2e43fffe9a28268c8d7cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=33b460e1899dad65fe12aa43689f6fa9 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Accept Suggestion">Press **Tab** to accept.</Step>
+
+      <Step title="From Comments">
+        Windsurf also understands comments:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d657826f2cac6722e9ba2633849b44dc" alt="Snippet two" data-og-width="1741" width="1741" data-og-height="518" height="518" data-path="assets/jupyter_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8094efb944365b016f410708e5854a34 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=425c1d267db9bcfacbbd6d996916368d 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=849f45ba96471b2b53677d80d8eae790 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=611df7d45ea5789a06981329dfcb5dc5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=214e01071dc31a3e44f7ce0633d0a6ab 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jupyter_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9c2459b43729aa7e660731b8ea879366 2500w" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Chrome">
+    ### Install Windsurf
+
+    <Steps>
+      <Step title="Install Chrome Extension">
+        Visit the [Chrome Web Store page](https://chrome.google.com/webstore/detail/codeium/hobjkcpmjhlegmobgonaagepfckjkceh) and click **Add to Chrome**.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9989340a425cba8df53bb8f85dd34813" alt="Chrome Web Store" data-og-width="2070" width="2070" data-og-height="1608" height="1608" data-path="assets/chrome_tutorial/chrome_web_store.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=834cc3bb444ad9ec13a8a989346e666b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6e812133130031e529828fff3f925b14 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6a3736332b19591e34d3782a88f09b12 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=48f83426105236382b48c7f51928db2b 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3751fafd621904917842eaf0f2f2398e 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/chrome_web_store.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=df259a9f0ecf6c7189ac297e9aefdbce 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Pin Extension">
+        Open the extensions dropdown and click the **Pin** icon so the Windsurf icon stays visible.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e291a9235581423bb3434721d89aeddb" alt="Pin extension" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/pin_extension.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a9dd8b598724993cd71c448707c9ab2b 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c215fd00878ef5f2c809f8e2acade79e 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ee817d72513244ad9532d264047cfbbd 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e6130b064d7b038d0d13d38dd1d3d194 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0f4b67a7564baaf43ee4ae9450f1f381 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/pin_extension.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c9ef5340e75b9d05fd524b01f2c57c39 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Sign In">
+        The extension opens a sign-in page automatically. If not, click the extension icon and follow the link.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=b92a046f9481a49030330a057a6d7177" alt="Sign in" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/sign_in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=471978ae434d9be2305be09601c2a7ad 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3704e3bcba6b7aade113cf2ad3398ccf 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9f875919b3bdccc1d3b08275b90ccea5 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=21fd3d55dc25b0bfcc2004cefb67bc3f 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=a951cddb545a99b0de7ddcc390eb7b0d 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/sign_in.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=15b6d1d12cd6bb88a536d565fb7b6a95 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="All Done!">
+        After signing in, the icon turns normal and you’re ready to code. Try [creating a new Colab notebook](https://colab.research.google.com/#create=true).
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=0a3dbc6098340fbda5885248e4f30971" alt="Signed in" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/signed_in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=01dc7f61188923760b5a75f1e2532124 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7ffcf643cbe32654bc80eff70440d75d 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=5d3c9563cbd760cd488223912c9445d3 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6edc863a24ebb25ae271d4918d562852 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6de5eb4216cb63af89d8d18884b07b9b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/signed_in.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4ff317a853324b3144067cb8f1fa3102 2500w" />
+        </Frame>
+      </Step>
+    </Steps>
+
+    ### Using Windsurf
+
+    <Steps>
+      <Step title="From Code">
+        Windsurf can suggest multiple lines of code from a partial function header:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=907e36fdf207886da70c41f1efe7e7b7" alt="Snippet one" data-og-width="1106" width="1106" data-og-height="674" height="674" data-path="assets/chrome_tutorial/snippet_one.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=53b5257099a5bd20c890b67e4080f08f 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=29fa468001dd327293c5a14ee43a5695 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7fc22df136b0461ebc35bb41dfb8af83 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=9e1db1d578ab2168339fce418197fd41 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=3fb969227f2f5d800e4067a49e020079 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_one.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=91802d76fd6c9806f46943604c99339f 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Accept Suggestion">Press **Tab** to accept.</Step>
+
+      <Step title="From Comments">
+        Windsurf also understands comments:
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=db1902f22de4179508f52be5c3c6a93d" alt="Snippet two" data-og-width="1106" width="1106" data-og-height="766" height="766" data-path="assets/chrome_tutorial/snippet_two.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2be18c5a55cb46ccfc9f0ce8a3c002a 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4e93fd3dea87d4bc03835c46b53bf0f3 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=6357d45579279755890cd64528d746dd 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=ab818650cfb3bfae7e55e2c18112414f 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=404add16420561c8841b41fadff1a98b 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/chrome_tutorial/snippet_two.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4a40487f9d3c5bfa9c0eefba4a11ace9 2500w" />
+        </Frame>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Eclipse">
+    ### Extension Installation
+
+    <Steps>
+      <Step title="Drag the Install button">
+        Visit the [Windsurf Plugin page on Eclipse Marketplace](https://marketplace.eclipse.org/content/codeium) and drag the **Install** button to the Eclipse toolbar.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=363884b6bb7b71f1efab7219883a9271" alt="Drag Install button" data-og-width="1430" width="1430" data-og-height="732" height="732" data-path="assets/eclipse_tutorial/drag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=37d5eaf723594c3fd6599c03c297ae20 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a83d8af2d19370650ac88366c0252214 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=44297a3be5cb504566c11c867e17f5c5 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3f9b740b3f5bc0b67a037bf1c403606b 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=02bcaddcb99d549b2d323751ef4fba6c 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/drag.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aedfb377482d2ac03d8d99f55158dfc 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Confirm Selected Features">
+        In the **Confirm Selected Features** prompt, click **Confirm**.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a32ed25242dcb249c11a7b549b879fcf" alt="Confirm features" data-og-width="1192" width="1192" data-og-height="666" height="666" data-path="assets/eclipse_tutorial/confirm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8a134c9e360984f92cbca1ee217ca2f9 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7d08236d876c313f7257c74df221414b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=32a3a79993859fc6ec8ea268333b6767 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f86f1eb16741cbc52b7b21bdf0bcf593 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ac140245225a09c3ab6469b898ed682c 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/confirm.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b0635e1f3b6066136c0731c5eadc9715 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Trust Unsigned Content">
+        In the **Trust Artifacts** prompt, select **Unsigned** and click **Trust**.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e8181502397e14314c82d732bc56bddc" alt="Trust unsigned" data-og-width="1154" width="1154" data-og-height="590" height="590" data-path="assets/eclipse_tutorial/trust.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=47cfb9f8ae6aeab5b9a87d08c0facc48 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1f9478bea57ad783cd3c0f7b446436aa 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=361d411feec0edc856f5dd46437f3512 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5c1459169457ee70f9cc2c82b6faef70 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ea5f60185028fb4b52cdf7087ec0551 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/trust.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a0f54f8feacf2b1e30da3808022c1567 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Restart Eclipse">
+        When prompted, restart Eclipse to complete the installation.
+
+        <Frame>
+          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=237032c3f9306b396c29a8c24bece219" alt="Restart Eclipse" data-og-width="1084" width="1084" data-og-height="242" height="242" data-path="assets/eclipse_tutorial/restart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d6d53e409bcdc6e4f756a6aaf29faba3 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2877868a2b0a70233684ce58a34e0b44 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9e4c0f636cd24e2b12bbe4d5e436070d 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ef483575c3fdf79072e016894621a50 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a4ea8f50dc911e9b5ec2a85f161e0b37 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/eclipse_tutorial/restart.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=722f43d8070574cac6c61d6374fe973b 2500w" />
+        </Frame>
+      </Step>
+
+      <Step title="Create / Sign In">
+        When the browser opens, sign in or create a Windsurf account, then return to Eclipse.
+      </Step>
+
+      <Step title="All Done!">You’re ready to use Windsurf in Eclipse.</Step>
+    </Steps>
+
+    ### Using Windsurf
+
+    <Steps>
+      <Step title="Setup">
+        While Windsurf supports many languages, we’ll demonstrate with Java. Create a new file `Fib.java`.
+      </Step>
+
+      <Step title="From Code">
+        Windsurf can suggest multiple lines of code from a partial function header:
+
+        ```java  theme={null}
+        package test;
+
+        public class Fib {
+
+            public int fib(int n) {
+            }
+
+        }
+        ```
+      </Step>
+
+      <Step title="Accept Suggestion">Press **Tab** to accept.</Step>
+    </Steps>
+  </Tab>
+</Tabs>

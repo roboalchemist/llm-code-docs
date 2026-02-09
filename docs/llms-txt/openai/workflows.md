@@ -5,7 +5,7 @@
 Codex works best when you treat it like a teammate with explicit context and a clear definition of "done."
 This page gives end-to-end workflow examples for the Codex IDE extension, the Codex CLI, and Codex cloud.
 
-If you are new to Codex, read [Prompting](/codex/prompting) first, then come back here for concrete recipes.
+If you are new to Codex, read [Prompting](https://developers.openai.com/codex/prompting) first, then come back here for concrete recipes.
 
 ## How to read these examples
 
@@ -341,7 +341,7 @@ Context notes:
 
 <WorkflowSteps>
 
-1. If you haven't already done so, set up a [Codex cloud environment](/codex/cloud/environments).
+1. If you haven't already done so, set up a [Codex cloud environment](https://developers.openai.com/codex/cloud/environments).
 2. Click on the cloud icon beneath the prompt composer and select your cloud environment.
 3. When you enter the next prompt, Codex creates a new thread in the cloud that carries over the existing thread context (including the plan and any local source changes).
 
@@ -397,7 +397,7 @@ Verification:
 
 Use this when you want review feedback without pulling the branch locally.
 
-Before you can use this, enable Codex **Code review** on your repository. See [Code review](/codex/integrations/github).
+Before you can use this, enable Codex **Code review** on your repository. See [Code review](https://developers.openai.com/codex/integrations/github).
 
 ### GitHub workflow (comment-driven)
 

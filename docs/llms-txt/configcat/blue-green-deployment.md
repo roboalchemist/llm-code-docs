@@ -2,6 +2,8 @@
 
 # Blue/Green Deployment - Streamlining Software Releases
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 In the dynamic realm of software development, deploying updates without disrupting user experience is paramount. Blue/Green Deployment emerges as a strategic method that enables this seamless transition. Let's delve into its mechanics and recognize its significance in software deployment.

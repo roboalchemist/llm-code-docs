@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Expo.
 
-***
 
-title: Expo Integration
-description: Integrate Better Auth with Expo.
----------------------------------------------
 
 Expo is a popular framework for building cross-platform apps with React Native. Better Auth supports both Expo native and web apps.
 
@@ -37,7 +33,7 @@ Expo is a popular framework for building cross-platform apps with React Native. 
 
     Install both the Better Auth package and Expo plugin into your server application.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -80,14 +76,18 @@ Expo is a popular framework for building cross-platform apps with React Native. 
         ```
       </CodeBlockTab>
     </CodeBlockTabs>
+
+    <Callout type="info">
+      If you're using Expo's API Routes, you can follow the step below instead.
+    </Callout>
   </Step>
 
   <Step>
     ## Install Client Dependencies
 
-    You also need to install both the Better Auth package and Expo plugin into your Expo application.
+    * You also need to install both the Better Auth package and Expo plugin into your Expo application.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -108,7 +108,7 @@ Expo is a popular framework for building cross-platform apps with React Native. 
 
       <CodeBlockTab value="npm">
         ```bash
-        npm install better-auth @better-auth/expo 
+        npm install better-auth @better-auth/expo
         ```
       </CodeBlockTab>
 
@@ -131,9 +131,55 @@ Expo is a popular framework for building cross-platform apps with React Native. 
       </CodeBlockTab>
     </CodeBlockTabs>
 
-    If you plan on using our social integrations (Google, Apple etc.) then there are a few more dependencies that are required in your Expo app. In the default Expo template these are already installed so you may be able to skip this step if you have these dependencies already.
+    * And you need to install `expo-network` for network state detection.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
+      <CodeBlockTabsList>
+        <CodeBlockTabsTrigger value="npm">
+          npm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="pnpm">
+          pnpm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="yarn">
+          yarn
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="bun">
+          bun
+        </CodeBlockTabsTrigger>
+      </CodeBlockTabsList>
+
+      <CodeBlockTab value="npm">
+        ```bash
+        npm install expo-network
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="pnpm">
+        ```bash
+        pnpm add expo-network
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="yarn">
+        ```bash
+        yarn add expo-network
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="bun">
+        ```bash
+        bun add expo-network
+        ```
+      </CodeBlockTab>
+    </CodeBlockTabs>
+
+    * <small className="text-xs">(Optional)</small> If you're using the default Expo template, these dependencies are already included, so you can skip this step. Otherwise, if you plan to use our social providers (e.g. Google, Apple), your Expo app requires a few additional dependencies.
+
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -207,7 +253,7 @@ Expo is a popular framework for building cross-platform apps with React Native. 
 
     Make sure you install the `expo-secure-store` package into your Expo app. This is used to store the session data and cookies securely.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -362,7 +408,17 @@ Expo is a popular framework for building cross-platform apps with React Native. 
     module.exports = config;
     ```
 
-    <Callout>In case you don't have a `metro.config.js` file in your project run `npx expo customize metro.config.js`.</Callout>
+    <Callout>
+      In case you don't have a 
+
+      `metro.config.js`
+
+       file in your project run 
+
+      `npx expo customize metro.config.js`
+
+      .
+    </Callout>
 
     If you can't enable `unstable_enablePackageExports` option, you can use [babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver) to manually resolve the paths.
 
@@ -376,9 +432,9 @@ Expo is a popular framework for building cross-platform apps with React Native. 
                     "module-resolver",
                     {
                         alias: {
-                            "better-auth/react": "./node_modules/better-auth/dist/client/react/index.cjs",
-                            "better-auth/client/plugins": "./node_modules/better-auth/dist/client/plugins/index.cjs",
-                            "@better-auth/expo/client": "./node_modules/@better-auth/expo/dist/client.cjs",
+                            "better-auth/react": "./node_modules/better-auth/dist/client/react/index.mjs",
+                            "better-auth/client/plugins": "./node_modules/better-auth/dist/client/plugins/index.mjs",
+                            "@better-auth/expo/client": "./node_modules/@better-auth/expo/dist/client.mjs",
                         },
                     },
                 ],
@@ -387,7 +443,17 @@ Expo is a popular framework for building cross-platform apps with React Native. 
     }
     ```
 
-    <Callout>In case you don't have a `babel.config.js` file in your project run `npx expo customize babel.config.js`.</Callout>
+    <Callout>
+      In case you don't have a 
+
+      `babel.config.js`
+
+       file in your project run 
+
+      `npx expo customize babel.config.js`
+
+      .
+    </Callout>
 
     Don't forget to clear the cache after making changes.
 

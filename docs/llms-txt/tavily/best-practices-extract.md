@@ -1,32 +1,156 @@
 # Source: https://docs.tavily.com/documentation/best-practices/best-practices-extract.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best Practices for Extract
 
-> Learn the best practices for web content extraction process
+> Learn how to optimize content extraction, choose the right approach, and configure parameters for better performance.
 
-## Extracting web content using Tavily
+## Extract Parameters
 
-Efficiently extracting content from web pages is crucial for AI-powered applications. Tavily provides two main approaches to content extraction, each suited for different use cases.
+### Query
 
-### 1. One-step extraction: directly retrieve `raw_content`
+Use query to rerank extracted content chunks based on relevance:
 
-You can extract web content by enabling `include_raw_content = true` when making a Tavily Search API call. This allows you to retrieve both search results and extracted content in a single step.
+```python  theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article"],
+    query="machine learning applications in healthcare"
+)
+```
 
-**However**, this can increase latency because you may extract raw content from sources that are not relevant in the first place.  It's recommended to split the process into two steps: running multiple sub-queries to expand the pool of sources, then curating the most relevant documents based on content snippets or source scores. By extracting raw content from the most relevant sources, you get high-quality RAG documents.
+**When to use query:**
 
-### 2. Two-step process: search, then extract
+* To extract only relevant portions of long documents
+* When you need focused content instead of full page extraction
+* For targeted information retrieval from specific URLs
 
-For better accuracy and customization, we recommend a two-step process:
+> When `query` is provided, chunks are reranked based on relevance to the query.
 
-> #### Step 1: Search
+### Chunks Per Source
 
-Use the Tavily Search API to retrieve relevant web pages, which output URLs.
+Control the amount of content returned per URL to prevent context window explosion:
 
-> #### Step 2: Extract
+```python  theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article"],
+    query="machine learning applications in healthcare",
+    chunks_per_source=3
+)
+```
 
-Use the Tavily Extract API to fetch the full content from the most relevant URLs.
+**Key benefits:**
 
-**Example:**
+* Returns only relevant content snippets (max 500 characters each) instead of full page content
+* Prevents context window from exploding
+* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`
+* Must be between 1 and 5 chunks per source
+
+> `chunks_per_source` is only available when `query` is provided.
+
+**Example with multiple URLs:**
+
+```python  theme={null}
+await tavily_client.extract(
+    urls=[
+        "https://example.com/ml-healthcare",
+        "https://example.com/ai-diagnostics",
+        "https://example.com/medical-ai"
+    ],
+    query="AI diagnostic tools accuracy",
+    chunks_per_source=2
+)
+```
+
+This returns the 2 most relevant chunks from each URL, giving you focused, relevant content without overwhelming your context window.
+
+## Extraction Approaches
+
+### Search with include\_raw\_content
+
+Enable include\_raw\_content=true in Search API calls to retrieve both search results and extracted content simultaneously.
+
+```python  theme={null}
+response = await tavily_client.search(
+    query="AI healthcare applications",
+    include_raw_content=True,
+    max_results=5
+)
+```
+
+**When to use:**
+
+* Quick prototyping
+* Simple queries where search results are likely relevant
+* Single API call convenience
+
+### Direct Extract API
+
+Use the Extract API when you want control over which specific URLs to extract from.
+
+```python  theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article1", "https://example.com/article2"],
+    query="machine learning applications",
+    chunks_per_source=3
+)
+```
+
+**When to use:**
+
+* You already have specific URLs to extract from
+* You want to filter or curate URLs before extraction
+* You need targeted extraction with query and chunks\_per\_source
+
+**Key difference:** The main distinction is control, with Extract you choose exactly which URLs to extract from, while Search with `include_raw_content` extracts from all search results.
+
+## Extract Depth
+
+The `extract_depth` parameter controls extraction comprehensiveness:
+
+| Depth             | Use case                                      |
+| ----------------- | --------------------------------------------- |
+| `basic` (default) | Simple text extraction, faster processing     |
+| `advanced`        | Complex pages, tables, structured data, media |
+
+### Using `extract_depth=advanced`
+
+Best for content requiring detailed extraction:
+
+```python  theme={null}
+await tavily_client.extract(
+    url="https://example.com/complex-page",
+    extract_depth="advanced"
+)
+```
+
+**When to use advanced:**
+
+* Dynamic content or JavaScript-rendered pages
+* Tables and structured information
+* Embedded media and rich content
+* Higher extraction success rates needed
+
+<Note>
+  `extract_depth=advanced` provides better accuracy but increases latency and
+  cost. Use `basic` for simple content.
+</Note>
+
+## Advanced Filtering Strategies
+
+Beyond query-based filtering, consider these approaches for curating URLs before extraction:
+
+| Strategy     | When to use                                    |
+| ------------ | ---------------------------------------------- |
+| Re-ranking   | Use dedicated re-ranking models for precision  |
+| LLM-based    | Let an LLM assess relevance before extraction  |
+| Clustering   | Group similar documents, extract from clusters |
+| Domain-based | Filter by trusted domains before extracting    |
+| Score-based  | Filter search results by relevance score       |
+
+### Example: Score-based filtering
 
 ```python  theme={null}
 import asyncio
@@ -34,60 +158,84 @@ from tavily import AsyncTavilyClient
 
 tavily_client = AsyncTavilyClient(api_key="tvly-YOUR_API_KEY")
 
-async def fetch_and_extract():
-   # Define the queries with search_depth and max_results inside the query dictionary
-   queries = [
-       {"query": "AI applications in healthcare", "search_depth": "advanced", "max_results": 10},
-       {"query": "ethical implications of AI in healthcare", "search_depth": "advanced", "max_results": 10},
-       {"query": "latest trends in machine learning healthcare applications", "search_depth": "advanced",
-        "max_results": 10},
-       {"query": "AI and healthcare regulatory challenges", "search_depth": "advanced", "max_results": 10}
-   ]
+async def filtered_extraction():
+    # Search first
+    response = await tavily_client.search(
+        query="AI healthcare applications",
+        search_depth="advanced",
+        max_results=20
+    )
 
-   # Perform the search queries concurrently, passing the entire query dictionary
-   responses = await asyncio.gather(*[tavily_client.search(**q) for q in queries])
+    # Filter by relevance score (>0.5)
+    relevant_urls = [
+        result['url'] for result in response.get('results', [])
+        if result.get('score', 0) > 0.5
+    ]
 
-   # Filter URLs with a score greater than 0.5. Alternatively, you can use a re-ranking model or an LLM to identify the most relevant sources, or cluster your documents and extract content only from the most relevant cluster
-   relevant_urls = []
-   for response in responses:
-       for result in response.get('results', []):
-           if result.get('score', 0) > 0.5:
-               relevant_urls.append(result.get('url'))
+    # Extract from filtered URLs with targeted query
+    extracted_data = await tavily_client.extract(
+        urls=relevant_urls,
+        query="machine learning diagnostic tools",
+        chunks_per_source=3,
+        extract_depth="advanced"
+    )
 
-   # Extract content from the relevant URLs
-   extracted_data = await asyncio.gather(*(tavily_client.extract(url) for url in relevant_urls))
+    return extracted_data
 
-   # Print the extracted content
-   for data in extracted_data:
-       print(data)
-
-# Run the function
-asyncio.run(fetch_and_extract())
+asyncio.run(filtered_extraction())
 ```
 
-#### **Pros of two-Step extraction**
+## Integration with Search
 
-✅ **More control** – Extract only from selected URLs.
+### Optimal workflow
 
-✅ **Higher accuracy** – Filter out irrelevant results before extraction.
+* **Search** to discover relevant URLs
+* **Filter** by relevance score, domain, or content snippet
+* **Re-rank** if needed using specialized models
+* **Extract** from top-ranked sources with query and chunks\_per\_source
+* **Validate** extracted content quality
+* **Process** for your RAG or AI application
 
-✅ **Advanced extraction capabilities** – Using `search_depth = "advanced"`.
+### Example end-to-end pipeline
 
-#### **Cons of two-step extraction**
+```python  theme={null}
+async def content_pipeline(topic):
+    # 1. Search with sub-queries
+    queries = generate_subqueries(topic)
+    responses = await asyncio.gather(
+        *[tavily_client.search(**q) for q in queries]
+    )
 
-❌ slightly more expensive.
+    # 2. Filter and aggregate
+    urls = []
+    for response in responses:
+        urls.extend([
+            r['url'] for r in response['results']
+            if r['score'] > 0.5
+        ])
 
-### Using advanced extraction
+    # 3. Deduplicate
+    urls = list(set(urls))[:20]  # Top 20 unique URLs
 
-Using `extract_depth = "advanced"` in the Extract API allows for more comprehensive content retrieval. This mode is particularly useful when dealing with:
+    # 4. Extract with error handling
+    extracted = await asyncio.gather(
+        *(tavily_client.extract(url, extract_depth="advanced") for url in urls),
+        return_exceptions=True
+    )
 
-* **Complex web pages** with dynamic content, embedded media, or structured data.
-* **Tables and structured information** that require accurate parsing.
-* **Higher success rates**.
+    # 5. Filter successful extractions
+    return [e for e in extracted if not isinstance(e, Exception)]
+```
 
-> If precision and depth are priorities for your application, `extract_depth = "advanced"` is the recommended choice.
+## Summary
 
+1. **Use query and chunks\_per\_source** for targeted, focused extraction
+2. **Choose Extract API** when you need control over which URLs to extract from
+3. **Filter URLs** before extraction using scores, re-ranking, or domain trust
+4. **Choose appropriate extract\_depth** based on content complexity
+5. **Process URLs concurrently** with async operations for better performance
+6. **Implement error handling** to manage failed extractions gracefully
+7. **Validate extracted content** before downstream processing
+8. **Optimize costs** by extracting only necessary content with chunks\_per\_source
 
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt
+> Start with query and chunks\_per\_source for targeted extraction. Filter URLs strategically, extract with appropriate depth, and handle errors gracefully for production-ready pipelines.

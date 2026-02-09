@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/enrollment-methods/api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Certificate Enrollment via API
 
 ## Concept
@@ -25,7 +29,7 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
       </Step>
 
       <Step title="Issue a certificate">
-        To create a certificate, head to your Project > Certificates > Certificates and press **Issue**.
+        To create a certificate, head to your Project > Certificates > Certificate Requests and press **Request**.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-issue.png" alt="pki certificates" />
 
@@ -57,13 +61,13 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/certificate-profiles' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/certificate-profiles' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
               "projectId": "<project-id>",
               "caId": "<ca-id>",
-              "certificateTemplateId": "<certificate-template-id>",
+              "certificatePolicyId": "<certificate-policy-id>",
               "slug": "my-api-profile",
               "description": "Certificate profile for API enrollment",
               "enrollmentType": "API",
@@ -82,7 +86,7 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
             "id": "550e8400-e29b-41d4-a716-446655440000",
             "projectId": "65f0a4b0-c123-4567-8901-23456789abcd",
             "caId": "550e8400-e29b-41d4-a716-446655440000",
-            "certificateTemplateId": "660f1234-e29b-41d4-a716-446655440001",
+            "certificatePolicyId": "660f1234-e29b-41d4-a716-446655440001",
             "slug": "my-api-profile",
             "description": "Certificate profile for API enrollment",
             "enrollmentType": "API",
@@ -95,32 +99,34 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
       </Step>
 
       <Step title="Issue a certificate">
-        To issue a certificate against the certificate profile, make an API request to the [Issue Certificate](/api-reference/endpoints/certificates/issue-certificate) API endpoint.
+        To issue a certificate against the certificate profile, make an API request to the [Issue Certificate](/api-reference/endpoints/certificates/create-certificate) API endpoint.
 
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v3/pki/certificates/issue-certificate' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/certificates' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
               "profileId": "<certificate-profile-id>",
-              "commonName": "service.acme.com",
-              "ttl": "1y",
-              "signatureAlgorithm": "RSA-SHA256",
-              "keyAlgorithm": "RSA_2048",
-              "keyUsages": ["digital_signature", "key_encipherment"],
-              "extendedKeyUsages": ["server_auth"],
-              "altNames": [
-                  {
-                      "type": "DNS",
-                      "value": "service.acme.com"
-                  },
-                  {
-                      "type": "DNS",
-                      "value": "www.service.acme.com"
-                  }
-              ]
+              "attributes": {
+                  "commonName": "service.acme.com",
+                  "ttl": "1y",
+                  "signatureAlgorithm": "RSA-SHA256",
+                  "keyAlgorithm": "RSA_2048",
+                  "keyUsages": ["digital_signature", "key_encipherment"],
+                  "extendedKeyUsages": ["server_auth"],
+                  "altNames": [
+                      {
+                          "type": "DNS",
+                          "value": "service.acme.com"
+                      },
+                      {
+                          "type": "DNS",
+                          "value": "www.service.acme.com"
+                      }
+                  ]
+              }
           }'
         ```
 
@@ -128,31 +134,36 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
 
         ```bash Response theme={"dark"}
         {
-          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "certificateChain": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "issuingCaCertificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...\n-----END PRIVATE KEY-----",
-          "serialNumber": "123456789012345678",
-          "certificateId": "880h3456-e29b-41d4-a716-446655440003"
+          "certificate": {
+            "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "certificateChain": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "issuingCaCertificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC...\n-----END PRIVATE KEY-----",
+            "serialNumber": "123456789012345678",
+            "certificateId": "880h3456-e29b-41d4-a716-446655440003"
+          },
+          "certificateRequestId": "..."
         }
         ```
 
         <Note>
-          Make sure to store the `privateKey` as it is only returned once here at the time of certificate issuance. The `certificate` and `certificateChain` will remain accessible and can be retrieved at any time.
+          Note: If the certificate is available to be issued immediately, the `certificate` field in the response will contain the certificate data. If issuance is delayed (for example, due to pending approval or additional processing), the `certificate` field will be `null` and you can use the `certificateRequestId` to poll for status or retrieve the certificate when it is ready using the [Get Certificate Request](/api-reference/endpoints/certificates/certificate-request) API endpoint.
         </Note>
 
-        If you have an external private key, you can also issue a certificate by making an API request containing a pem-encoded CSR (Certificate Signing Request) to the [Sign Certificate](/api-reference/endpoints/certificates/sign-certificate) API endpoint.
+        If you have an external private key, you can also issue a certificate by making an API request containing a pem-encoded CSR (Certificate Signing Request) to the same [Issue Certificate](/api-reference/endpoints/certificates/create-certificate) API endpoint.
 
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v3/pki/certificates/sign-certificate' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/certificates' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
               "profileId": "<certificate-profile-id>",
               "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIICvDCCAaQCAQAwdzELMAkGA1UEBhMCVVMxDTALBgNVBAgMBE9oaW8...\n-----END CERTIFICATE REQUEST-----",
-              "ttl": "1y"
+              "attributes": {
+                  "ttl": "1y"
+              }
           }'
         ```
 
@@ -160,11 +171,14 @@ In the following steps, we explore how to issue a X.509 certificate using the AP
 
         ```bash Response theme={"dark"}
         {
-          "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "certificateChain": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "issuingCaCertificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
-          "serialNumber": "123456789012345679",
-          "certificateId": "990i4567-e29b-41d4-a716-446655440004"
+          "certificate": {
+            "certificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "certificateChain": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "issuingCaCertificate": "-----BEGIN CERTIFICATE-----\nMIIEpDCCAowCCQD...\n-----END CERTIFICATE-----",
+            "serialNumber": "123456789012345679",
+            "certificateId": "990i4567-e29b-41d4-a716-446655440004"
+          },
+          "certificateRequestId": "..."
         }
         ```
       </Step>

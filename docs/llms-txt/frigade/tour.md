@@ -1,15 +1,27 @@
 # Source: https://docs.frigade.com/component/tour.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tour
 
 > Guide users through a specific product flow or feature
 
 <Frame>
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/tour.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0fddc17d2f8f39376b145d04b2fd5a65"
     style={{
     width: "350px",
   }}
+    data-og-width="424"
+    width="424"
+    data-og-height="474"
+    height="474"
+    data-path="images/components/tour.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=19698c121504d03cb0087d27569c094a 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=10a84940d932fddb1d2057272c4ae76c 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=55e95fb2d752d6577c57a9c4734ce3d7 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c34245df4477cf0e4b0bc42b233ff9b4 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5f4075c13d7a0859543ef464dc728a3c 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/tour.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1a0b7a870cde45e653cbc2fcfee27ef3 2500w"
   />
 </Frame>
 
@@ -44,7 +56,7 @@ The `Tour` component is a sequential walkthrough designed to guide users through
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from "@frigade/react";
 
     const App = () => {

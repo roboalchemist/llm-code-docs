@@ -247,7 +247,7 @@ The rationale for using absolute distribution keys rather than relative ordering
 - A relative ordering means that removing—or just reordering—a single node from the configuration can potentially lead to a full redistribution of all data within that group, not just \( \frac{1}{N\_g} \) of the data. Imagine for instance moving a node from being first in the group to being the last. 
 - If we require nodes with the same relative index in each group to store the same data set (i.e. a row-column strategy), this immediately suffers in failure scenarios even when just a single node becomes unavailable. Data coverage in the group remains reduced until the node is replaced, as no other nodes can take over responsibility for the data. This is because removing the node leads to the problem in the previous point, where a disproportionally large amount of data must be moved due to the relative ordering changing. With the ideal state algorithm, the remaining nodes in the group will transparently assume ownership of the data, with each node receiving an expected \( \frac{1}{N\_g - 1} \) of the unavailable node's buckets. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

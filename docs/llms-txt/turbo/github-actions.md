@@ -1,11 +1,13 @@
 # Source: https://turbo.build/guides/ci-vendors/github-actions.md
 
 # GitHub Actions
-Description: Learn how to use GitHub Actions with Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Steps, Step } from '#components/steps';
-import { Callout } from '#components/callout';
+<CopyPrompt
+  title="Set up GitHub Actions CI for Turborepo"
+  prompt={
+  "Set up GitHub Actions CI for this Turborepo.\n1) Create a CI workflow file at .github/workflows/ci.yml\n2) Configure caching for my package manager\n3) Set up Remote Caching with Vercel (optional)\n\nWalk me through each step."
+}
+/>
 
 The following example shows how to use Turborepo with [GitHub Actions](https://github.com/features/actions).
 
@@ -28,7 +30,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**", "other-output-dirs/**"],
@@ -43,7 +45,7 @@ And a `turbo.json`:
 
 Create a file called `.github/workflows/ci.yml` in your repository with the following contents:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```yaml title=".github/workflows/ci.yml"
     name: CI
@@ -221,7 +223,7 @@ Create a file called `.github/workflows/ci.yml` in your repository with the foll
             run: bun run test
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## Remote Caching with Vercel Remote Cache
 
@@ -237,7 +239,7 @@ To use Remote Caching, retrieve the team and token for the Remote Cache for your
   <Step>
     Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-    ![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+        <img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
     Copy the value to a safe place. You'll need it in a moment.
   </Step>
@@ -245,19 +247,19 @@ To use Remote Caching, retrieve the team and token for the Remote Cache for your
   <Step>
     Go to your GitHub repository settings and click on the **Secrets** and then **Actions** tab. Create a new secret called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-    ![GitHub Secrets](/images/docs/github-actions-secrets.png)
-    ![GitHub Secrets Create](/images/docs/github-actions-create-secret.png)
+        <img alt="GitHub Secrets" src={__img1} placeholder="blur" />
+        <img alt="GitHub Secrets Create" src={__img2} placeholder="blur" />
   </Step>
 
   <Step>
     Create a new repository variable (click the **Variables** tab) called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       Using a repository variable rather than a secret will keep GitHub Actions from
       censoring your team name in log output.
     </Callout>
 
-    ![GitHub Repository Variables](/images/docs/vercel-team-repo-var.png)
+        <img alt="GitHub Repository Variables" src={__img3} placeholder="blur" />
   </Step>
 
   <Step>
@@ -342,7 +344,7 @@ The following steps show how you could use [actions/cache](https://github.com/ac
             uses: actions/setup-node@v4
             with:
               node-version: 20
-              cache: 'npm'
+              cache: "npm"
 
           - name: Install dependencies
             run: npm install
@@ -352,3 +354,7 @@ The following steps show how you could use [actions/cache](https://github.com/ac
     ```
   </Step>
 </Steps>
+
+---
+
+[View full sitemap](/sitemap.md)

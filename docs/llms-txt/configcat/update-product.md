@@ -2,10 +2,7 @@
 
 # Update Product
 
-```
-PUT 
-/v1/products/:productId
-```
+Copy page
 
 This endpoint updates a Product identified by the `productId` parameter.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/realtime-api/event-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Event Schema
 
 > Reference for all events emitted by the Fireflies.ai Realtime API

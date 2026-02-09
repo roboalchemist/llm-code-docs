@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/get-v1prompt-2025-id-promptid-versionid-inputs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Prompt Inputs
 
 > Get the inputs used for a specific prompt version in a request

@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/create-variants.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to create product variants
 
 > Learn how create product variants in Polar and how customers can easily switch between them in the customer portal.

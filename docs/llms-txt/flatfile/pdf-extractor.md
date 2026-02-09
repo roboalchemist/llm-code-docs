@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/pdf-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PDF Extractor Plugin
 
 > Extract tabular data from PDF files and convert them to CSV format using the pdftables.com service
@@ -10,7 +14,7 @@ The PDF Extractor plugin is designed to process PDF files uploaded to Flatfile. 
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-pdf-extractor
 ```
 
@@ -31,7 +35,7 @@ By default, the plugin operates with debugging messages turned off. It will list
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // listener.js
     import { pdfExtractorPlugin } from "@flatfile/plugin-pdf-extractor";
 
@@ -45,7 +49,7 @@ By default, the plugin operates with debugging messages turned off. It will list
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // listener.ts
     import { FlatfileListener } from "@flatfile/listener";
     import { pdfExtractorPlugin } from "@flatfile/plugin-pdf-extractor";
@@ -64,7 +68,7 @@ By default, the plugin operates with debugging messages turned off. It will list
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // listener.js
     import { pdfExtractorPlugin } from "@flatfile/plugin-pdf-extractor";
 
@@ -81,7 +85,7 @@ By default, the plugin operates with debugging messages turned off. It will list
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // listener.ts
     import { FlatfileListener } from "@flatfile/listener";
     import { pdfExtractorPlugin } from "@flatfile/plugin-pdf-extractor";
@@ -118,7 +122,7 @@ The plugin has built-in error handling and will log errors to the console. Commo
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // Enable debug mode to see detailed error messages
     listener.use(
       pdfExtractorPlugin({
@@ -130,7 +134,7 @@ The plugin has built-in error handling and will log errors to the console. Commo
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // Enable debug mode to see detailed error messages
     listener.use(
       pdfExtractorPlugin({

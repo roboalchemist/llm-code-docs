@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/neo4j.md
 
-# Source: https://docs.unstructured.io/ui/destinations/neo4j.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/neo4j.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/neo4j.md
-
-# Source: https://docs.unstructured.io/ui/destinations/neo4j.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/neo4j.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/neo4j.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Neo4j
 
@@ -46,8 +38,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -101,7 +92,7 @@ The requirements are as follows.
 
 ## Graph Output
 
-The graph ouput of the Neo4j destination connector is represented in the following diagram:
+The graph output of the Neo4j destination connector is represented in the following diagram:
 
 ```mermaid  theme={null}
 graph BT
@@ -226,11 +217,11 @@ WHERE chunk.id = '731508bf53637ce4431fe93f6028ebdf'
 RETURN element, relationship, chunk
 ```
 
-Additionally, for the [Unstructured UI](/ui/overview) and [Unstructured Workflow Endpoint](/api-reference/workflow/),
+Additionally, for the [Unstructured UI](/ui/overview) and [Unstructured API's workflow operations](/api-reference/workflow/),
 when a [Named entity recognition (NER)](/ui/enriching/ner) DAG node is added to a custom workflow,
 any recognized entities are output as `Entity` nodes in the graph.
 
-This additional graph ouput of the Neo4j destination connector is represented in the following diagram:
+This additional graph output of the Neo4j destination connector is represented in the following diagram:
 
 ```mermaid  theme={null}
 graph TD

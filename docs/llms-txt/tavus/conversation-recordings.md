@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/quickstart/conversation-recordings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Conversation Recordings
 
 > Enable conversation recording and store it in your S3 bucket for on-demand access.
@@ -108,5 +112,19 @@ Ensure that you have the following:
     <Note>
       You can access the recording file in your S3 bucket.
     </Note>
+  </Step>
+
+  <Step title="Step 4: Start Recording via Frontend Code" titleSize="h3">
+    `enable_recording` (from Step 2 above) allows recording to be possible, but it doesn't start recording automatically. To begin and end recordings, end users must do it manually (start/stop recording button in the UI) or you can trigger it through frontend code.
+
+    You can use frontend code via Daily's SDK to start-recording. To ensure recordings are generated consistently, be sure to wait for the `joined-meeting` event first.
+
+    ```javascript  theme={null}
+    const call = Daily.createCallObject();
+
+    call.on('joined-meeting', () => {
+      call.startRecording(); // room must have enable_recording set
+    });
+    ```
   </Step>
 </Steps>

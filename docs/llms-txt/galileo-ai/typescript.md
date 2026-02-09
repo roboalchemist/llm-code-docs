@@ -2,21 +2,9 @@
 
 # Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
 
-# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # TypeScript Client Reference | Galileo Evaluate
 
@@ -43,7 +31,7 @@ GALILEO_PASSWORD="Your Password"
 
 ## Log Workflows
 
-```TypeScript
+```TypeScript  theme={null}
 import { GalileoEvaluateWorkflow } from "@rungalileo/galileo";
 
 // Initialize and create project

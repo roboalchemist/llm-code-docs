@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/tasks/schemaTask.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # schemaTask
 
 > Define tasks with a runtime payload schema and validate the payload before running the task.
@@ -8,7 +12,7 @@ The `schemaTask` function allows you to define a task with a runtime payload sch
 
 ## Usage
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -33,7 +37,7 @@ const myTask = schemaTask({
 
 When you trigger the task directly, the payload will be validated against the schema before the [run](/runs) is created:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { tasks } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 
@@ -52,7 +56,7 @@ We will also validate the payload every time before the task is run, so you can 
 
 Certain schema libraries, like Zod, split their type inference into "schema in" and "schema out". This means that you can define a single schema that will produce different types when triggering the task and when running the task. For example, you can define a schema that has a default value for a field, or a string coerced into a date:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -71,7 +75,7 @@ const myTask = schemaTask({
 
 In this case, the trigger payload type is `{ name?: string, age: number; dob: string }`, but the run payload type is `{ name: string, age: number; dob: Date }`. So you can trigger the task with a payload like this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await myTask.trigger({ age: 30, dob: "2020-01-01" }); // this is valid
 await myTask.trigger({ name: "Alice", age: 30, dob: "2020-01-01" }); // this is also valid
 ```
@@ -80,7 +84,7 @@ await myTask.trigger({ name: "Alice", age: 30, dob: "2020-01-01" }); // this is 
 
 The `ai.tool` function allows you to create an AI tool from an existing `schemaTask` to use with the Vercel [AI SDK](https://vercel.com/docs/ai-sdk):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { ai } from "@trigger.dev/sdk/ai";
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -115,7 +119,7 @@ export const myAiTask = schemaTask({
 
 You can also pass the `experimental_toToolResultContent` option to the `ai.tool` function to customize the content of the tool result:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { Sandbox } from "@e2b/code-interpreter";
 import { ai } from "@trigger.dev/sdk/ai";
@@ -182,7 +186,7 @@ export const chartTool = ai.tool(chartTask, {
 
 You can access the current tool execution options inside the task run function using the `ai.currentToolOptions()` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { ai } from "@trigger.dev/sdk/ai";
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
@@ -214,7 +218,7 @@ See the [AI SDK tool execution options docs](https://sdk.vercel.ai/docs/ai-sdk-c
 
 You can use the [Zod](https://zod.dev) schema library to define your schema. The schema will be validated using Zod's `parse` function.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -232,7 +236,7 @@ export const zodTask = schemaTask({
 
 ### Yup
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as yup from "yup";
 
@@ -250,7 +254,7 @@ export const yupTask = schemaTask({
 
 ### Superstruct
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { object, string } from "superstruct";
 
@@ -268,7 +272,7 @@ export const superstructTask = schemaTask({
 
 ### ArkType
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { type } from "arktype";
 
@@ -286,7 +290,7 @@ export const arktypeTask = schemaTask({
 
 ### @effect/schema
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as Schema from "@effect/schema/Schema";
 
@@ -306,7 +310,7 @@ export const effectTask = schemaTask({
 
 ### runtypes
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import * as T from "runtypes";
 
@@ -324,7 +328,7 @@ export const runtypesTask = schemaTask({
 
 ### valibot
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 
 import * as v from "valibot";
@@ -348,7 +352,7 @@ export const valibotTask = schemaTask({
 
 ### typebox
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { Type } from "@sinclair/typebox";
 import { wrap } from "@typeschema/typebox";
@@ -371,7 +375,7 @@ export const typeboxTask = schemaTask({
 
 You can also define a custom parser function that will be called with the payload before the task is run. The parser function should return the parsed payload or throw an error if the payload is invalid.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 
 export const customParserTask = schemaTask({

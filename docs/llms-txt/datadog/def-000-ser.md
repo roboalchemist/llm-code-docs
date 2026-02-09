@@ -1,0 +1,30 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-ser.md
+
+---
+title: AWS Lambda function resource-based policy modified by IAM user
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > AWS Lambda function resource-based
+  policy modified by IAM user
+---
+
+# AWS Lambda function resource-based policy modified by IAM user
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+## Goal{% #goal %}
+
+Detect when an AWS Lambda function resource-based policy is modified by an IAM user. An attacker might modify an AWS Lambda function's resource-based policy in order to maintain persistence or allow its invocation from an external account.
+
+## Strategy{% #strategy %}
+
+This rule lets you monitor the [`AddPermission`](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html) CloudTrail API call to detect when an AWS Lambda Function's resource-based policy is modified.
+
+## Triage and response{% #triage-and-response %}
+
+1. Determine whether the IAM user: `{{@userIdentity.arn}}` is expected to update the Lambda function within the `@requestParameters.functionName` attribute.
+1. Investigate the `{{@responseElements.statement}}` attribute for policy modification details.
+1. If the action is legitimate, consider including the user in a suppression list. See [Best practices for creating detection rules with Datadog Cloud SIEM](https://www.datadoghq.com/blog/writing-datadog-security-detection-rules/#fine-tune-security-signals-to-reduce-noise) for more information.
+1. If the action shouldn't have happened:
+   - Contact the user: `{{@userIdentity.arn}}` and see if they made the API call.
+   - Use the Cloud SIEM - User Investigation dashboard to see if the user `{{@userIdentity.arn}}` has taken other actions.
+   - Use the Cloud SIEM - IP Investigation dashboard to see if there's more traffic from the IP `{{@network.client.ip}}`.
+1. If the results of the triage indicate that an attacker has taken the action, begin your company's incident response process as well as an investigation.

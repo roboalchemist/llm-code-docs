@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/gpu-indexing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GPU-Powered Vector Indexing
 
 > Accelerate IVF and HNSW index builds with GPU acceleration in LanceDB.
@@ -63,8 +67,3 @@ to enable GPU training on your device.
 
 If you encounter the error `AssertionError: Torch not compiled with CUDA enabled`,
 you need to [install PyTorch with CUDA support](https://pytorch.org/get-started/locally/).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

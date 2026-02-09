@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/text/pattern-pair-aggregator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PatternPairAggregator
 
 > Text aggregator that identifies and processes content between pattern pairs in streaming text
@@ -234,18 +238,19 @@ async def spell_out_text(text: str, type: str) -> str:
 # is applied
 tts.add_text_transformer(spell_out_text, "credit_card")
 
-# RTVI processor and observer with a text transformer to obfuscate
-# credit card numbers in the bot's output.
-async def obfuscate_credit_card(text: str, type: str) -> str:
+# RTVI is automatically enabled. Use rtvi_observer_params to add
+# a text transformer that obfuscates credit card numbers in client output.
+from pipecat.processors.frameworks.rtvi import RTVIObserverParams
+
+def obfuscate_credit_card(text: str, type: str) -> str:
     return "XXXX-XXXX-XXXX-" + text[-4:]
 
-rtviIn = RTVIProcessor()
-rtviOut = RTVIObserver(rtviIn)
-rtviOut.add_bot_output_transformer(obfuscate_credit_card, "credit_card")
-
-# add the llm_text_processor to your pipeline after the llm and before the tts
-#   rtviIn -> llm -> llm_text_processor -> tts
-# add rtviOut as an observer to your pipeline task
+task = PipelineTask(
+    pipeline,  # llm -> llm_text_processor -> tts
+    rtvi_observer_params=RTVIObserverParams(
+        bot_output_transforms=[("credit_card", obfuscate_credit_card)],
+    ),
+)
 ```
 
 ## How It Works
@@ -278,8 +283,3 @@ flowchart TD
 * Patterns are processed in the order they appear in the text
 * Handlers are called when complete patterns are found
 * Patterns can span multiple sentences of text, but be aware that encoding many "reasoning" tokens may slow down the LLM response
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

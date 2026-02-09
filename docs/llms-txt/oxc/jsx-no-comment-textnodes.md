@@ -3,15 +3,17 @@
 ---
 url: /docs/guide/usage/linter/rules/react/jsx-no-comment-textnodes.md
 ---
-# react/jsx-no-comment-textnodes&#x20;
 
 ### What it does
 
-This rule prevents comment strings (e.g. beginning with `//` or `/*`) from being accidentally injected as a text node in JSX statements.
+This rule prevents comment strings (e.g. beginning with `//` or `/*`) from being
+accidentally injected as a text node in JSX statements.
 
 ### Why is this bad?
 
-In JSX, any text node that is not wrapped in curly braces is considered a literal string to be rendered. This can lead to unexpected behavior when the text contains a comment.
+In JSX, any text node that is not wrapped in curly braces is considered
+a literal string to be rendered. This can lead to unexpected behavior
+when the text contains a comment.
 
 ### Examples
 

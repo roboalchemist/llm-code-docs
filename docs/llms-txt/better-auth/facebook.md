@@ -4,11 +4,7 @@
 
 Facebook provider setup and usage.
 
-***
 
-title: Facebook
-description: Facebook provider setup and usage.
------------------------------------------------
 
 <Steps>
   <Step>

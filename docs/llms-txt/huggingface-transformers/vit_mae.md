@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/vit_mae.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/vit_mae.md
 
 # ViTMAE
 
@@ -9,7 +9,7 @@ You can find all the original ViTMAE checkpoints under the [AI at Meta](https://
 > [!TIP]
 > Click on the ViTMAE models in the right sidebar for more examples of how to apply ViTMAE to vision tasks.
 
-The example below demonstrates how to reconstruct the missing pixels with the [ViTMAEForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining) class.
+The example below demonstrates how to reconstruct the missing pixels with the [ViTMAEForPreTraining](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining) class.
 
 ```python
 import torch
@@ -36,26 +36,26 @@ reconstruction = outputs.logits
 
 ## Notes
 
-- ViTMAE is typically used in two stages. Self-supervised pretraining with [ViTMAEForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining), and then discarding the decoder and fine-tuning the encoder. After fine-tuning, the weights can be plugged into a model like [ViTForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTForImageClassification).
-- Use [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor) for input preparation.
+- ViTMAE is typically used in two stages. Self-supervised pretraining with [ViTMAEForPreTraining](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining), and then discarding the decoder and fine-tuning the encoder. After fine-tuning, the weights can be plugged into a model like [ViTForImageClassification](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTForImageClassification).
+- Use [ViTImageProcessor](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessor) for input preparation.
 
 ## Resources
 
-- Refer to this [notebook](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViTMAE/ViT_MAE_visualization_demo.ipynb) to learn how to visualize the reconstructed pixels from [ViTMAEForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining).
+- Refer to this [notebook](https://github.com/NielsRogge/Transformers-Tutorials/blob/master/ViTMAE/ViT_MAE_visualization_demo.ipynb) to learn how to visualize the reconstructed pixels from [ViTMAEForPreTraining](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining).
 
 ## ViTMAEConfig[[transformers.ViTMAEConfig]]
 
 #### transformers.ViTMAEConfig[[transformers.ViTMAEConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vit_mae/configuration_vit_mae.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vit_mae/configuration_vit_mae.py#L23)
 
-This is the configuration class to store the configuration of a [ViTMAEModel](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEModel). It is used to instantiate an ViT
+This is the configuration class to store the configuration of a [ViTMAEModel](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEModel). It is used to instantiate an ViT
 MAE model according to the specified arguments, defining the model architecture. Instantiating a configuration with
 the defaults will yield a similar configuration to that of the ViT
 [facebook/vit-mae-base](https://huggingface.co/facebook/vit-mae-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -116,11 +116,11 @@ norm_pix_loss (`bool`, *optional*, defaults to `False`) : Whether or not to trai
 
 #### transformers.ViTMAEModel[[transformers.ViTMAEModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vit_mae/modeling_vit_mae.py#L554)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vit_mae/modeling_vit_mae.py#L552)
 
 The bare Vit Mae Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -128,31 +128,31 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ViTMAEModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vit_mae/modeling_vit_mae.py#L570[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "noise", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.ViTMAEModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vit_mae/modeling_vit_mae.py#L568[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "noise", "val": ": torch.FloatTensor | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor). See [ViTImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor) for processing images).
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast). See [ViTImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast) for processing images).
 - **noise** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mainly used for testing purposes to control randomness and maintain the reproducibility
 - **interpolate_pos_encoding** (`bool`, *optional*, default `False`) --
   Whether to interpolate the pre-trained position encodings. This is mainly used to use the model on higher
   resolution images.0`transformers.models.vit_mae.modeling_vit_mae.ViTMAEModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.vit_mae.modeling_vit_mae.ViTMAEModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
+elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **last_hidden_state** (`torch.FloatTensor | None.last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Tensor indicating which patches are masked (1) and which are not (0).
 - **ids_restore** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) -- Tensor containing the original index of the (shuffled) masked patches.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ViTMAEModel](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEModel) forward method, overrides the `__call__` special method.
+The [ViTMAEModel](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -163,10 +163,12 @@ Examples:
 ```python
 >>> from transformers import AutoImageProcessor, ViTMAEModel
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/vit-mae-base")
 >>> model = ViTMAEModel.from_pretrained("facebook/vit-mae-base")
@@ -178,7 +180,7 @@ Examples:
 
 **Parameters:**
 
-config ([ViTMAEModel](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ViTMAEModel](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -186,16 +188,16 @@ config ([ViTMAEModel](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transfor
 
 A `transformers.models.vit_mae.modeling_vit_mae.ViTMAEModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
+elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **last_hidden_state** (`torch.FloatTensor | None.last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Tensor indicating which patches are masked (1) and which are not (0).
 - **ids_restore** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) -- Tensor containing the original index of the (shuffled) masked patches.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -205,14 +207,14 @@ elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.
 
 #### transformers.ViTMAEForPreTraining[[transformers.ViTMAEForPreTraining]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vit_mae/modeling_vit_mae.py#L740)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vit_mae/modeling_vit_mae.py#L740)
 
 The ViTMAE Model transformer with the decoder on top for self-supervised pre-training.
 
 Note that we provide a script to pre-train this model on custom data in our [examples
 directory](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-pretraining).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -220,32 +222,32 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ViTMAEForPreTraining.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vit_mae/modeling_vit_mae.py#L862[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "noise", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.ViTMAEForPreTraining.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vit_mae/modeling_vit_mae.py#L862[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "noise", "val": ": torch.FloatTensor | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor). See [ViTImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor) for processing images).
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast). See [ViTImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast) for processing images).
 - **noise** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mainly used for testing purposes to control randomness and maintain the reproducibility
 - **interpolate_pos_encoding** (`bool`, *optional*, default `False`) --
   Whether to interpolate the pre-trained position encodings. This is mainly used to use the model on higher
   resolution images.0`transformers.models.vit_mae.modeling_vit_mae.ViTMAEForPreTrainingOutput` or `tuple(torch.FloatTensor)`A `transformers.models.vit_mae.modeling_vit_mae.ViTMAEForPreTrainingOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
+elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`) -- Pixel reconstruction loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, patch_size ** 2 * num_channels)`) -- Pixel reconstruction logits.
 - **mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Tensor indicating which patches are masked (1) and which are not (0).
 - **ids_restore** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) -- Tensor containing the original index of the (shuffled) masked patches.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ViTMAEForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining) forward method, overrides the `__call__` special method.
+The [ViTMAEForPreTraining](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEForPreTraining) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -256,10 +258,12 @@ Examples:
 ```python
 >>> from transformers import AutoImageProcessor, ViTMAEForPreTraining
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read())).convert("RGB")
 
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/vit-mae-base")
 >>> model = ViTMAEForPreTraining.from_pretrained("facebook/vit-mae-base")
@@ -273,7 +277,7 @@ Examples:
 
 **Parameters:**
 
-config ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ViTMAEConfig](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -281,17 +285,17 @@ config ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transfo
 
 A `transformers.models.vit_mae.modeling_vit_mae.ViTMAEForPreTrainingOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
+elements depending on the configuration ([ViTMAEConfig](/docs/transformers/v5.0.0/en/model_doc/vit_mae#transformers.ViTMAEConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`) -- Pixel reconstruction loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, patch_size ** 2 * num_channels)`) -- Pixel reconstruction logits.
 - **mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Tensor indicating which patches are masked (1) and which are not (0).
 - **ids_restore** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) -- Tensor containing the original index of the (shuffled) masked patches.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

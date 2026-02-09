@@ -12,7 +12,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#isSecret)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L103)optionalisSecret
+### [**](#isSecret)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L139)optionalisSecret
 
 **isSecret?
 
@@ -20,7 +20,7 @@
 
 : boolean
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L101)optionalname
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L137)optionalname
 
 **name?
 
@@ -28,7 +28,7 @@
 
 : string
 
-### [**](#value)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L102)optionalvalue
+### [**](#value)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L138)optionalvalue
 
 **value?
 

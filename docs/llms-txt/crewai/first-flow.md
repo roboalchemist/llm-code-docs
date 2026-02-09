@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/flows/first-flow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build Your First Flow
 
 > Learn how to create structured, event-driven workflows with precise control over execution.

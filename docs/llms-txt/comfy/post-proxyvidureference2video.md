@@ -1,226 +1,229 @@
 # Source: https://docs.comfy.org/api-reference/api-nodes/post-proxyvidureference2video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Post proxyvidureference2video
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi post /proxy/vidu/reference2video
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /proxy/vidu/reference2video
-  method: post
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              aspect_ratio:
-                allOf:
-                  - type: string
-              callback_url:
-                allOf:
-                  - type: string
-              duration:
-                allOf:
-                  - format: int32
-                    type: integer
-              enhance:
-                allOf:
-                  - type: boolean
-              images:
-                allOf:
-                  - items:
-                      type: string
-                    type: array
-              model:
-                allOf:
-                  - type: string
-              movement_amplitude:
-                allOf:
-                  - enum:
-                      - auto
-                      - small
-                      - medium
-                      - large
-                    type: string
-              priority:
-                allOf:
-                  - format: int32
-                    type: integer
-              prompt:
-                allOf:
-                  - type: string
-              resolution:
-                allOf:
-                  - type: string
-              seed:
-                allOf:
-                  - format: int32
-                    type: integer
-              style:
-                allOf:
-                  - enum:
-                      - general
-                      - anime
-                    type: string
-            required: true
-            refIdentifier: '#/components/schemas/ViduTaskRequest'
-        examples:
-          example:
-            value:
-              aspect_ratio: <string>
-              callback_url: <string>
-              duration: 123
-              enhance: true
-              images:
-                - <string>
-              model: <string>
-              movement_amplitude: auto
-              priority: 123
-              prompt: <string>
-              resolution: <string>
-              seed: 123
-              style: general
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              aspect_ratio:
-                allOf:
-                  - type: string
-              created_at:
-                allOf:
-                  - format: date-time
-                    type: string
-              credits:
-                allOf:
-                  - format: int32
-                    type: integer
-              duration:
-                allOf:
-                  - format: int32
-                    type: integer
-              images:
-                allOf:
-                  - items:
-                      type: string
-                    type: array
-              model:
-                allOf:
-                  - type: string
-              movement_amplitude:
-                allOf:
-                  - enum:
-                      - auto
-                      - small
-                      - medium
-                      - large
-                    type: string
-              prompt:
-                allOf:
-                  - type: string
-              resolution:
-                allOf:
-                  - type: string
-              seed:
-                allOf:
-                  - format: int32
-                    type: integer
-              state:
-                allOf:
-                  - $ref: '#/components/schemas/ViduState'
-              style:
-                allOf:
-                  - enum:
-                      - general
-                      - anime
-                    type: string
-              task_id:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ViduTaskReply'
-            requiredProperties:
-              - task_id
-              - state
-              - credits
-        examples:
-          example:
-            value:
-              aspect_ratio: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              credits: 123
-              duration: 123
-              images:
-                - <string>
-              model: <string>
-              movement_amplitude: auto
-              prompt: <string>
-              resolution: <string>
-              seed: 123
-              state: created
-              style: general
-              task_id: <string>
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - &ref_0
-                    description: >-
-                      Optional detailed information about the error or hints for
-                      resolving it.
-                    items:
-                      type: string
-                    type: array
-              message:
-                allOf:
-                  - &ref_1
-                    description: A clear and concise description of the error.
-                    type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Error 4xx/5xx
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Error 4xx/5xx
-  deprecated: false
-  type: path
+  /proxy/vidu/reference2video:
+    post:
+      tags:
+        - API Nodes
+        - Released
+      operationId: ViduReference2Video
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViduTaskRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViduTaskReply'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error 4xx/5xx
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error 4xx/5xx
 components:
   schemas:
+    ViduTaskRequest:
+      properties:
+        aspect_ratio:
+          type: string
+        audio:
+          description: >-
+            Enable direct audio-video generation capability (default true for q3
+            model)
+          type: boolean
+        audio_type:
+          description: >-
+            Audio type when audio is true: all (sound effects + vocals),
+            speech_only, sound_effect_only. Ineffective for q3 model
+          enum:
+            - all
+            - speech_only
+            - sound_effect_only
+          type: string
+        bgm:
+          description: Add background music to generated video (ineffective for q3 model)
+          type: boolean
+        callback_url:
+          description: Callback URL for task status updates
+          type: string
+        duration:
+          description: >-
+            Video duration in seconds. viduq3-pro: 1-16, viduq2-pro-fast: 1-10,
+            viduq2-pro/turbo: 1-8
+          format: int32
+          type: integer
+        enhance:
+          type: boolean
+        images:
+          description: Images for img2video (accepts 1 image as start frame)
+          items:
+            type: string
+          type: array
+        is_rec:
+          description: Use recommended prompt (consumes additional 10 credits)
+          type: boolean
+        meta_data:
+          description: Metadata identification, JSON format string for custom metadata
+          type: string
+        model:
+          description: >-
+            Model name: viduq3-pro, viduq2-pro-fast, viduq2-pro, viduq2-turbo,
+            viduq1, viduq1-classic, vidu2.0
+          type: string
+        movement_amplitude:
+          description: >-
+            Movement amplitude of objects in frame (ineffective for q2, q3
+            models)
+          enum:
+            - auto
+            - small
+            - medium
+            - large
+          type: string
+        off_peak:
+          description: Off peak mode (lower cost, tasks generated within 48 hours)
+          type: boolean
+        payload:
+          description: Transparent transmission parameters (max 1048576 characters)
+          type: string
+        priority:
+          format: int32
+          type: integer
+        prompt:
+          description: Text prompt for video generation (max 2000 characters)
+          type: string
+        resolution:
+          description: >-
+            Resolution: 360p, 540p, 720p, 1080p, 2K (availability depends on
+            model and duration)
+          type: string
+        seed:
+          description: Random seed (defaults to random if not specified)
+          format: int32
+          type: integer
+        style:
+          enum:
+            - general
+            - anime
+          type: string
+        voice_id:
+          description: Voice ID for audio (ineffective for q3 model)
+          type: string
+        watermark:
+          description: Add watermark to video (default false)
+          type: boolean
+        wm_position:
+          description: >-
+            Watermark position: 1 (top left), 2 (top right), 3 (bottom right,
+            default), 4 (bottom left)
+          format: int32
+          type: integer
+        wm_url:
+          description: Watermark image URL (uses default watermark if not provided)
+          type: string
+      type: object
+    ViduTaskReply:
+      properties:
+        aspect_ratio:
+          type: string
+        bgm:
+          description: Whether background music was added
+          type: boolean
+        created_at:
+          format: date-time
+          type: string
+        credits:
+          format: int32
+          type: integer
+        duration:
+          format: int32
+          type: integer
+        images:
+          items:
+            type: string
+          type: array
+        model:
+          type: string
+        movement_amplitude:
+          enum:
+            - auto
+            - small
+            - medium
+            - large
+          type: string
+        off_peak:
+          description: Off peak mode status
+          type: boolean
+        payload:
+          description: Transparent transmission parameters
+          type: string
+        prompt:
+          type: string
+        resolution:
+          type: string
+        seed:
+          format: int32
+          type: integer
+        state:
+          $ref: '#/components/schemas/ViduState'
+        style:
+          enum:
+            - general
+            - anime
+          type: string
+        task_id:
+          type: string
+        watermark:
+          description: Whether watermark was added
+          type: boolean
+      required:
+        - task_id
+        - state
+        - credits
+      type: object
+    Error:
+      properties:
+        details:
+          description: >-
+            Optional detailed information about the error or hints for resolving
+            it.
+          items:
+            type: string
+          type: array
+        message:
+          description: A clear and concise description of the error.
+          type: string
+      type: object
     ViduState:
       enum:
         - created

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/python_realtime_chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a Real-Time Chat Application with Serverless Redis
 
 In this tutorial, we will build a real-time chat application using Flask and SocketIO, leveraging Upstash Redis for efficient message handling. Redis, being a fast, in-memory data store, provides an ideal backbone for real-time messaging systems due to its low latency and support for Pub/Sub messaging patterns.

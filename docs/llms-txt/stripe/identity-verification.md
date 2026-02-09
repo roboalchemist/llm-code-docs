@@ -113,12 +113,12 @@ See the table below for a description of the business structure that you can use
 
 See the table below for descriptions of the different business structures that you can use to classify a `company`.
 
-| Business structure           | Description                                                                                                                                                                                                                                                                                                                    |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `private_corporation`        | A business incorporated as a legal entity under the laws of Germany that’s privately owned. It doesn’t have shares that can be traded on a public stock exchange and it’s registered with the commercial register (Handelsregister). For example, limited liability company (GmbH) or entrepreneur company (UG).               |
-| `public_corporation`         | A business incorporated as a legal entity under the laws of Germany. Ownership shares of this corporation can be traded on a public stock exchange and it’s registered with the commercial register (Handelsregister). For example, a joint-stock company (AG).                                                                |
-| `incorporated_partnership`   | A business jointly owned by two or more people that’s created through a partnership agreement on a commercial scale and it’s registered with the commercial register (Handelsregister). Eg. General partnership (OHG), Limited partnership (KG), Limited Liability, Company & Compagnie Kommanditgesellschaft (GmbH & Co, KG). |
-| `unincorporated_partnership` | A business jointly owned by two or more people that’s created through a partnership agreement and it’s not registered with a public register. For example, society under civil law (GbR) or partnership company (PartG).                                                                                                       |
+| Business structure           | Description                                                                                                                                                                                                                                                                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `private_corporation`        | A business incorporated as a legal entity under the laws of Germany that’s privately owned. It doesn’t have shares that can be traded on a public stock exchange and it’s registered with the commercial register (Handelsregister). For example, limited liability company (GmbH) or entrepreneur company (UG).                        |
+| `public_corporation`         | A business incorporated as a legal entity under the laws of Germany. Ownership shares of this corporation can be traded on a public stock exchange and it’s registered with the commercial register (Handelsregister). For example, a joint-stock company (AG).                                                                         |
+| `incorporated_partnership`   | A business jointly owned by two or more people that’s created through a partnership agreement on a commercial scale and it’s registered with the commercial register (Handelsregister). For example, General partnership (OHG), Limited partnership (KG), Limited Liability, Company & Compagnie Kommanditgesellschaft (GmbH & Co, KG). |
+| `unincorporated_partnership` | A business jointly owned by two or more people that’s created through a partnership agreement and it’s not registered with a public register. For example, society under civil law (GbR) or partnership company (PartG).                                                                                                                |
 
 ### Non-profits
 
@@ -204,6 +204,27 @@ The following table describes the business structures that you can use to classi
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `incorporated_non_profit`   | An incorporated non-profit organisation in the United Kingdom. This includes charitable companies limited by guarantee.                                                                 |
 | `unincorporated_non_profit` | An unincorporated non-profit organisation in the United Kingdom. This includes non-profit organisations and charities operating under an unincorporated association or trust structure. |
+
+#### Country - Hong Kong (HK)
+
+### Companies
+
+The following table describes the business structures that you can use to classify a for-profit `company`.
+
+| Business structure    | Description                                                                                                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `private_company`     | A registered entity (such as a PLC, Ltd., or LLC) that’s legally separate from its owners. It doesn’t have shares that are traded on a public stock exchange. |
+| `private_partnership` | A business jointly owned by two or more people that’s created through a partnership agreement (such as a GP, LP, or LLP).                                     |
+| `sole_proprietorship` | Business activities conducted by a natural person rather than a separate, registered legal entity.                                                            |
+
+### Non-profits
+
+The following table describes the business structures that you can use to classify a `non_profit`.
+
+| Business structure          | Description                                                                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `incorporated_non_profit`   | An incorporated non-profit organisation in Hong Kong. This includes charitable companies limited by guarantee and societies.                            |
+| `unincorporated_non_profit` | An unincorporated non-profit organisation in Hong Kong. This includes loosely organised groups where an individual is responsible for the organisation. |
 
 #### Country - United States (US)
 

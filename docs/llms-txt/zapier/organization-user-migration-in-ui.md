@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/news/2025/organization-user-migration-in-ui.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migration UI now supports individual and organization-level migrations
 
 > Enhanced migration UI with granular control options for individual and organization-level migrations.

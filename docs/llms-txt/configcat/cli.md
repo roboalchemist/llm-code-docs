@@ -2,13 +2,15 @@
 
 # Command Line Interface (CLI)
 
-The [ConfigCat Command Line Interface (CLI)](https://github.com/configcat/cli) allows you to interact with the [Public Management API](https://configcat.com/docs/docs/api/reference/configcat-public-management-api/.md) via the command line. It supports most functionality found on the ConfigCat Dashboard. You can manage ConfigCat resources like Feature Flags, Targeting / Percentage rules, Products, Configs, Environments, and more.
+Copy page
 
-The CLI also has the ability to [scan your source code](https://configcat.com/docs/docs/advanced/code-references/overview/.md) for feature flag and setting usage and upload the found code references to ConfigCat.
+The [ConfigCat Command Line Interface (CLI)](https://github.com/configcat/cli) allows you to interact with the [Public Management API](https://configcat.com/docs/api/reference/configcat-public-management-api.md) via the command line. It supports most functionality found on the ConfigCat Dashboard. You can manage ConfigCat resources like Feature Flags, Targeting / Percentage rules, Products, Configs, Environments, and more.
 
-Finally, the CLI provides a few useful utilities, such as validating a config JSON file, downloading one from the ConfigCat CDN by SDK Key, etc. These can come in handy when you use [flag overrides](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#flag-overrides) in your application.
+The CLI also has the ability to [scan your source code](https://configcat.com/docs/advanced/code-references/overview.md) for feature flag and setting usage and upload the found code references to ConfigCat.
 
-```
+Finally, the CLI provides a few useful utilities, such as validating a config JSON file, downloading one from the ConfigCat CDN by SDK Key, etc. These can come in handy when you use [flag overrides](https://configcat.com/docs/sdk-reference/js/overview.md#flag-overrides) in your application.
+
+```text
 configcat
   This is the Command Line Tool of ConfigCat.
   ConfigCat is a hosted feature flag service: https://configcat.com
@@ -38,12 +40,15 @@ Commands:
   t, tag                       Manage Tags
   k, sdk-key                   List SDK Keys
   scan <directory>             Scan files for Feature Flag & Setting usages
+  eval                         Evaluate feature flags. In case of a single feature flag, by default, the command
+                               writes only the evaluated value to the output. In case of multiple feature flags, the
+                               command writes a table if no other format is specified
   config-json                  Config JSON-related utilities
-  w, workspace                 Manage the CLI workspace. When set, the CLI's interactive mode
-                               filters Product and Config selectors by the values set in the
-                               workspace
+  w, workspace                 Manage the CLI workspace. When set, the CLI's interactive mode filters Product and
+                               Config selectors by the values set in the workspace
 
 Use "configcat [command] -?" for more information about a command.
+
 ```
 
 ## Reference[​](#reference "Direct link to Reference")
@@ -62,83 +67,93 @@ You can install the CLI on multiple operating systems using the following source
 
 Install the CLI with [Homebrew](https://brew.sh) from [ConfigCat's tap](https://github.com/configcat/homebrew-tap) by executing the following command:
 
-```
+```bash
 brew tap configcat/tap
 brew install configcat
+
 ```
 
 **Snap (Linux)**
 
 Install the CLI with [Snapcraft](https://snapcraft.io) by executing the following command:
 
-```
+```bash
 sudo snap install configcat
+
 ```
 
 **Scoop (Windows)**
 
 Install the CLI with [Scoop](https://scoop.sh) from [ConfigCat's bucket](https://github.com/configcat/scoop-configcat) by executing the following command:
 
-```
+```bash
 scoop bucket add configcat https://github.com/configcat/scoop-configcat
 scoop install configcat
+
 ```
 
 **Chocolatey (Windows)**
 
 Install the CLI with [Chocolatey](https://chocolatey.org/) by executing the following command:
 
-```
+```powershell
 choco install configcat
+
 ```
 
 **.NET tool / NuGet.org**
 
 The CLI can be installed as a [.NET tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) via the .NET SDK.
 
-```
+```bash
 dotnet tool install -g configcat-cli
+
 ```
 
 After installing, you can execute the CLI using the `configcat` command:
 
-```
+```bash
 configcat scan "/repository" --print --config-id <CONFIG-ID>
+
 ```
 
 **Docker**
 
 The CLI can be executed from a [Docker](https://www.docker.com/) image.
 
-```
+```bash
 docker pull configcat/cli
+
 ```
 
 An example of how to scan a repository for feature flag & setting references with the docker image.
 
-```
+```bash
 docker run --rm \
     --env CONFIGCAT_API_HOST=<API-HOST> \
     --env CONFIGCAT_API_USER=<API-USER> \
     --env CONFIGCAT_API_PASS=<API-PASSWORD> \
     -v /path/to/repository:/repository \
   configcat/cli scan "/repository" --print --config-id <CONFIG-ID>
+
 ```
 
 **Install Script**
 
 On Unix platforms, you can install the CLI by executing an install script.
 
-```
+```bash
 curl -fsSL "https://raw.githubusercontent.com/configcat/cli/main/scripts/install.sh" | bash
+
 ```
 
 By default, the script downloads the OS specific artifact from the latest [GitHub Release](https://github.com/configcat/cli/releases) with `curl` and moves it into the `/usr/local/bin` directory.
 
 It might happen that you don't have permissions to write into `/usr/local/bin`, then you should execute the install script with `sudo`.
 
-```
+```bash
 curl -fsSL "https://raw.githubusercontent.com/configcat/cli/main/scripts/install.sh" | sudo bash
+
 ```
 
 The script accepts the following input parameters:
@@ -157,20 +172,23 @@ Available **architecture** values for macOS: `x64`, `arm64`.
 
 *Custom installation directory*:
 
-```
+```bash
 curl -fsSL "https://raw.githubusercontent.com/configcat/cli/main/scripts/install.sh" | bash -s -- -d=/path/to/install
+
 ```
 
 *Install a different version*:
 
-```
+```bash
 curl -fsSL "https://raw.githubusercontent.com/configcat/cli/main/scripts/install.sh" | bash -s -- -v=1.4.2
+
 ```
 
 *Install with custom architecture*:
 
-```
+```bash
 curl -fsSL "https://raw.githubusercontent.com/configcat/cli/main/scripts/install.sh" | bash -s -- -a=arm
+
 ```
 
 **Standalone executables**
@@ -211,7 +229,7 @@ The CLI supports both interactive and argument driven execution. When no argumen
 
 The same operation with command arguments would look like this:
 
-```
+```bash
 configcat flag-v2 create \
   --config-id <config-id> \
   --name "My awesome feature" \
@@ -220,6 +238,7 @@ configcat flag-v2 create \
   --type boolean \
   --tag-ids <tag-id-1> <tag-id-2> \
   --init-values-per-environment <environment-id>:<initial-value> \
+
 ```
 
 info
@@ -228,12 +247,13 @@ Each `create` command writes the newly created resource's ID to the standard out
 
 Example:
 
-```
+```bash
 #!/bin/bash
 
 ORGANIZATION_ID="<your-organization-id>"
 PRODUCT_ID=$(configcat product create -o $ORGANIZATION_ID -n "<product-name>")
 CONFIG_ID=$(configcat config create -p $PRODUCT_ID -n "<config-name>")
+
 ```
 
 info
@@ -242,7 +262,7 @@ You can change the output format of several commands' result to JSON with the `-
 
 ## Scan & upload code references[​](#scan--upload-code-references "Direct link to Scan & upload code references")
 
-The CLI has the ability to scan your source code for feature flag and setting usage and upload the found code references to ConfigCat. You can read more about this feature [here](https://configcat.com/docs/docs/advanced/code-references/overview/.md).
+The CLI has the ability to scan your source code for feature flag and setting usage and upload the found code references to ConfigCat. You can read more about this feature [here](https://configcat.com/docs/advanced/code-references/overview.md).
 
 ## Examples[​](#examples "Direct link to Examples")
 
@@ -254,7 +274,13 @@ The following example shows how you can create a feature flag in a specific conf
 
 ![create flag](/docs/assets/cli/cli-flag-create.gif)
 
-### Value update[​](#value-update "Direct link to Value update")
+### Evaluate feature flags[​](#evaluate-feature-flags "Direct link to Evaluate feature flags")
+
+The following example shows how you can evaluate one or more feature flags.
+
+![evaluate flags](/docs/assets/cli/cli-eval.gif)
+
+### Feature flag value update[​](#feature-flag-value-update "Direct link to Feature flag value update")
 
 The following example shows how you can update the value of a feature flag in a specific environment.
 

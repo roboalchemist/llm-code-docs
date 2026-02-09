@@ -59,7 +59,7 @@ The resources must match a node flavor in[AWS](https://cloud.vespa.ai/en/referen
 | --- | --- | --- | --- |
 | **vcpu** | float or range | 2 | CPU (virtual threads) |
 | **memory** | float or range, each followed by a byte unit, such as "Gb" | 8 Gb in container clusters, 16 Gb in content clusters | Memory |
-| **disk** | float or range, each followed by a byte unit, such as "Gb" | 50 in container clusters, 300 in content clusters | Disk space. To fit core dumps/heap dumps, the disk space should be larger than 3 x memory size for content nodes, 2 x memory size for container nodes. |
+| **disk** | float or range, each followed by a byte unit, such as "Gb" | 50 in container clusters, 300 in content clusters | Disk space. To fit core dumps/heap dumps, the disk space should be larger than 3 x memory size for content nodes, 2 x memory size for container nodes. If disk size is not explicitly specified, Vespa Cloud chooses a default disk size. The default may be automatically increased to satisfy the minimum disk-to-memory ratio. When both disk and memory are explicitly specified, Vespa Cloud enforces the same minimum ratios. |
 | **storage-type** | string (enum) | `any` | The type of storage to use. This is useful to specify local storage when network storage provides insufficient io operations or too noisy io performance: 
 - `local`: Node-local storage is required.
 - `remote`: Network storage must be used.
@@ -139,7 +139,7 @@ Most elements in _services.xml_ accept a sub-element named _config_._config_ ele
 
 Some features are configurable using XML files in subdirectories of the application package. This means that the configuration found in these XML files will be used as if it was inlined in _services.xml_. This is supported for [search chains](search.html#chain),[docproc chains](docproc.html) and[routing tables](../../../writing/document-routing.html#routing-services).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

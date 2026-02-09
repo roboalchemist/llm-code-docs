@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/dlt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # dlt
 
 export const PyPlatformsDltPipeline = "# Import necessary modules\nimport dlt\nfrom rest_api import rest_api_source\n\n# Configure the REST API source\nmovies_source = rest_api_source(\n    {\n        \"client\": {\n            \"base_url\": \"https://www.omdbapi.com/\",\n            \"auth\": {  # authentication strategy for the OMDb API\n                \"type\": \"api_key\",\n                \"name\": \"apikey\",\n                \"api_key\": dlt.secrets[\n                    \"sources.rest_api.api_token\"\n                ],  # read API credentials directly from secrets.toml\n                \"location\": \"query\",\n            },\n            \"paginator\": {  # pagination strategy for the OMDb API\n                \"type\": \"page_number\",\n                \"base_page\": 1,\n                \"total_path\": \"totalResults\",\n                \"maximum_page\": 5,\n            },\n        },\n        \"resources\": [  # list of API endpoints to request\n            {\n                \"name\": \"movie_search\",\n                \"endpoint\": {\n                    \"path\": \"/\",\n                    \"params\": {\n                        \"s\": \"godzilla\",\n                        \"type\": \"movie\",\n                    },\n                },\n            }\n        ],\n    }\n)\n\nif __name__ == \"__main__\":\n    # Create a pipeline object\n    pipeline = dlt.pipeline(\n        pipeline_name=\"movies_pipeline\",\n        destination=\"lancedb\",  # this tells dlt to load the data into LanceDB\n        dataset_name=\"movies_data_pipeline\",\n    )\n\n    # Run the pipeline\n    load_info = pipeline.run(movies_source)\n\n    # pretty print the information on data that was loaded\n    print(load_info)\n";
@@ -99,8 +103,3 @@ In this example, we will be fetching movie information from the [Open Movie Data
    ```
 
 For more information and advanced usage of dlt's LanceDB integration, read [the dlt documentation](https://dlthub.com/docs/dlt-ecosystem/destinations/lancedb).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

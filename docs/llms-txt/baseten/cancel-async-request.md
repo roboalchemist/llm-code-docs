@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/cancel-async-request.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async cancel request
 
 > Use this endpoint to cancel a queued async request.
@@ -51,7 +55,7 @@ Only `QUEUED` requests may be canceled.
 Calls to the cancel async request status endpoint are limited to **20 requests per second**. If this limit is exceeded, subsequent requests will receive a 429 status code.
 
 <RequestExample>
-  ```py Python (Model) theme={"system"}
+  ```python Python (Model) theme={"system"}
   import requests
   import os
 
@@ -70,7 +74,7 @@ Calls to the cancel async request status endpoint are limited to **20 requests p
   print(resp.json())
   ```
 
-  ```py Python (Chain) theme={"system"}
+  ```python Python (Chain) theme={"system"}
   import requests
   import os
 

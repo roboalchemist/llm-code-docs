@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/vim/setup-augment/vim-keyboard-shortcuts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Commands and shortcuts for Vim and Neovim
 
 > Augment flexibly integrates with your editor to provide keyboard shortcuts for common actions. Customize your keymappings to quickly accept suggestions and chat with Augment.

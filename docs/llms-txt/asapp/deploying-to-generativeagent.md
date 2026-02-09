@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/deploying-to-generativeagent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploying to GenerativeAgent
 
 > Learn how to deploy GenerativeAgent.
@@ -18,7 +22,7 @@ The GenerativeAgent UI offers the following environments to deploy, undeploy, or
 
 * **Draft**: In this environment, you can try out any article or API connection.
 * **Sandbox**: This environment works as a staging version to test GenerativeAgent's responses. You can test the behavior of GenerativeAgent and how it performs tasks or calls functions before deploying to a live environment.
-* **Production**: When you deploy to this version, the GenerativeAgent will be live in collaborating in the flows and taking over tasks within your Production environments.
+* **Production**: When you deploy to this version, GenerativeAgent will be live in collaborating in the flows and taking over tasks within your Production environments.
 
 For any version or environment, you can deploy Articles. API Connections are tested via Trial Mode.
 
@@ -62,7 +66,7 @@ To Deploy Content to Sandbox or Production environments:
 2. Write any Release Notes that you deem necessary.
 3. For Resource, select Knowledge Base.
 4. You will be prompted with a list of all resources pulled from your file. Choose the content you want to upload to the Knowledge Base Tooling.
-5. Click on Deploy and the content will be saved in the new version.
+5. Click on Deploy and the system will save the content in the new version.
 
 You can now see a list of all recently deployed content.
 
@@ -105,11 +109,11 @@ When you create an API Connection, it will automatically be available for Genera
 
 ASAPP safely deploys new API use cases to production via Trial Mode.
 
-Trial Mode is configured in a way that if there are multiple APIs configured for a task or a function, GenerativeAgent is only allowed to call the first API.
+You configure Trial Mode in a way that if there are multiple APIs configured for a task or a function, GenerativeAgent is only allowed to call the first API.
 
 After GenerativeAgent calls an API, it will immediately escalate to an agent. This way to observe GenerativeAgent's behavior after the API call.
 
-Once you and your ASAPP Team are confident that GenerativeAgent is correctly using API Connections, GenerativeAgent is given full access to use the Connection. After that, Functional Testing is started on the next API Connection.
+Once you and your ASAPP Team are confident that GenerativeAgent is correctly using API Connections, you give GenerativeAgent full access to use the Connection. After that, you start Functional Testing on the next API Connection.
 
 ## Rollbacks
 
@@ -117,19 +121,19 @@ Rollback involves reverting a deployed resource to a previous version or state. 
 
 ### Undeployment
 
-Undeployment is restricted to individual resources (a task, a function, or an article). It is possible to remove resources from specific environments without deploying any version of them. Undeploying a resource does not change the state of the draft, and the latest modification of the draft is still considered the latest version.
+Undeployment is restricted to individual resources (a task, a function, or an article). It is possible to remove resources from specific environments without deploying any version of them. Undeploying a resource does not change the state of the draft, and the system still considers the latest modification of the draft as the latest version.
 
 Undeploying also generates a new line item within the deployment history. If a resource is critical for the functioning of other resources or services, undeployment is blocked to prevent system failures or disruptions.
 
 ### Edit History
 
-Each resource has a history of all modifications. Edit History can be used to restore a resource to a past version.
+Each resource has a history of all modifications. You can use Edit History to restore a resource to a past version.
 
 ### Resource Deletion
 
-Deleting a resource results in the resource becoming inaccessible and invisible on the list. Deletion is prohibited if there are any dependencies, such as a function being utilized by a task. Deletion of deployed resources is not permitted until the resource is undeployed from all the dependent environments to ensure uninterrupted service.
+Deleting a resource results in the resource becoming inaccessible and invisible on the list. The system prohibits deletion if there are any dependencies, such as a task utilizing a function. The system does not permit deletion of deployed resources until the resource is undeployed from all the dependent environments to ensure uninterrupted service.
 
-If a resource is critical for the functioning of other resources or services, deletion is blocked to prevent system failures or disruptions.
+If a resource is critical for the functioning of other resources or services, the system blocks deletion to prevent system failures or disruptions.
 
 ## Next Steps
 

@@ -4,9 +4,11 @@
 
 Learn about bank transfers and managing payments with the customer balance.
 Available in: EU, GB, JP, MX, US
-To turn on bank transfer payments, go to your [Payment methods settings](https://dashboard.stripe.com/settings/payment_methods).
-
 Bank transfers provide a safe way for customers to send money over bank rails. When accepting bank transfers with Stripe, you provide customers with a virtual bank account number that they can push money to from their own online bank interface or in-person bank branch. Stripe uses this virtual account number to automate reconciliation and prevent exposing your real account details to customers.
+
+> #### Turn on bank transfers
+> 
+> To turn on bank transfer payments, go to your [Payment methods settings](https://dashboard.stripe.com/settings/payment_methods).
 
 ## Bank transfer methods
 
@@ -73,12 +75,12 @@ Offering payments to a local bank account with a customer’s local currency hel
 ### Implement cross-border payments
 
 To accept cross-border payments, create an additional bank transfers account under the customer with the relevant currency. This generates the relevant funding instructions.
-![Add a payment method](https://b.stripecdn.com/docs-statics-srv/assets/payment-methods-add.566463d538eb9f0e714db1f13abcc458.png)
 
-Add a payment method
-![Add a bank transfer account](https://b.stripecdn.com/docs-statics-srv/assets/add-bank-transfer-account.0e869fea5fbcb29d17aa1060435eaa7f.png)
-
-Add a bank transfer account
+1. In the **Customers** page of the [Dashboard](https://dashboard.stripe.com/customers), choose the customer to enable cross-border payments for.
+1. In the **Payment Methods** section, click Add (+) and choose **Add a bank transfer account**.
+1. In the editor, choose the currency to charge the customer in for their bank transfer payments.
+1. Choose which country to present the specified currency to the customer.
+1. Click **Add**.
 
 ## Refunds 
 
@@ -108,19 +110,10 @@ You can determine the sender details of an incoming bank transfer through either
 1. In the [Dashboard](https://dashboard.stripe.com/customers), go to the customer’s page.
 1. Under **Payment Methods**, expand the cash balance tab.
 1. Open the Cash Balance page by clicking **View balance details**.
-![Payment methods section](https://b.stripecdn.com/docs-statics-srv/assets/payment-methods-section.98d98636d90fbf8ea6e5834dcdde1133.png)
-
-Payment methods section
 
 On the cash balance page, the **Transactions** section displays a list of the customer’s incoming and outgoing cash balance transactions.
-![List of all customer cash balance transactions](https://b.stripecdn.com/docs-statics-srv/assets/transactions-list.f8e2bee93047bd6c85021cfb3db52348.png)
-
-List of all customer cash balance transactions
 
 Incoming transfers have type **Funding**. Find the transfer you’re interested in and open its details page by clicking its description.
-![Funding details sender information](https://b.stripecdn.com/docs-statics-srv/assets/funding-details-sender-info.b78a278b7f04e003480c0d4308af206b.png)
-
-Funding details sender information
 
 #### API
 
@@ -207,9 +200,9 @@ const customerCashBalanceTransaction = await stripe
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CustomerCashBalanceTransactionRetrieveParams{
   Customer: stripe.String("cus_xxxxxxx"),
-  Transaction: stripe.String("ccsbtxn_xxxx"),
 }
-result, err := sc.V1CustomerCashBalanceTransactions.Retrieve(context.TODO(), params)
+result, err := sc.V1CustomerCashBalanceTransactions.Retrieve(
+  context.TODO(), "ccsbtxn_xxxx", params)
 ```
 
 ```dotnet

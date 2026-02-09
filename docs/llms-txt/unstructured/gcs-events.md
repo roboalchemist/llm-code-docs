@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/gcs-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Cloud Storage event triggers
 
 You can use Google Cloud Storage events, such as adding new files to—or updating existing files within—Google Cloud Storage buckets, to automatically run Unstructured ETL+ workflows
@@ -7,7 +11,7 @@ that rely on those buckets as sources. This enables a no-touch approach to havin
 
 This example shows how to automate this process by adding a custom [Google Apps Script](https://developers.google.com/apps-script) project in your Google account. This project runs
 a script on a regular time interval. This script automatically checks for new or updated files within the specified Google Cloud Storage bucket. If the script
-detects at least one new or updated file, it then calls the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to automatically run the
+detects at least one new or updated file, it then calls the [Unstructured API's workflow operations](/api-reference/workflow/overview) to automatically run the
 specified corresponding Unstructured ETL+ workflow in your Unstructured account.
 
 <Note>
@@ -50,10 +54,10 @@ To use this example, you will need the following:
      c. Follow the on-screen instructions to finish generating the key.<br />
      d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
 
-* The Unstructured Workflow Endpoint URL for your account, as follows:
+* The Unstructured API's workflow operations URL for your account, as follows:
 
   1. In the Unstructured UI, click **API Keys** on the sidebar.<br />
-  2. Note the value of the **Unstructured Workflow Endpoint** field.
+  2. Note the value of the **Unstructured API's workflow operations** field.
 
 * A Google Cloud Storage source connector in your Unstructured account. [Learn how](/ui/sources/google-cloud).
 

@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/knowledge-agents/knowledge-base.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge Base
 
 > Train your knowledge agent with custom knowledge from documents, websites, videos, and more

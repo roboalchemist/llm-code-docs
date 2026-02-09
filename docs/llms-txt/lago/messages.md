@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/webhooks/messages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Messages
 
 > Below is a list of the event types we currently send. Please note that additional event types may be introduced in the future, so your code should be flexible enough to accommodate new types as they arise. Our objective is to maintain a consistent and predictable event structure, making it easier to integrate and handle messages, along with the objects they affect.

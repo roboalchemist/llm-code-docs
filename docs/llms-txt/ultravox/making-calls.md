@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/agents/making-calls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Making Calls
 
 > Start conversations using agents or direct call configuration.
@@ -175,8 +179,3 @@ const continueFromPriorCall = async (priorCallId) => {
     Learn to monitor, troubleshoot, and optimize your voice conversations
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

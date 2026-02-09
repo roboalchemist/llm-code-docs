@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint.md
-
 # SharePoint
 
 - [Pre-requisites](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/pre-requisites.md)

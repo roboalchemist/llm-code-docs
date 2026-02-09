@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/development/roadmap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roadmap
 
 > Our plans for evolving Model Context Protocol
@@ -16,7 +20,7 @@ For more context on our release timeline and governance process, read our [blog 
 
 We value community participation! Each section links to relevant discussions where you can learn more and contribute your thoughts.
 
-For a technical view of our standardization process, visit the [Standards Track](https://github.com/orgs/modelcontextprotocol/projects/2/views/2) on GitHub, which tracks how proposals progress toward inclusion in the official [MCP specification](https://spec.modelcontextprotocol.io).
+For a technical view of our standardization process, visit the [Standards Track](https://github.com/orgs/modelcontextprotocol/projects/2/views/2) on GitHub, which tracks how proposals progress toward inclusion in the official [MCP specification](https://modelcontextprotocol.io/specification/).
 
 ## Priority Areas for the Next Release
 

@@ -4,751 +4,419 @@
 
 # Source: https://trigger.dev/docs/realtime/backend/streams.md
 
-# Source: https://trigger.dev/docs/tasks/streams.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
+# Streams
 
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
+> Read and consume real-time streaming data from your tasks in your backend
 
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
-
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
-
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Realtime Streams
-
-> Stream data in realtime from your Trigger.dev tasks to your frontend or backend applications.
-
-Realtime Streams allow you to pipe streaming data from your Trigger.dev tasks to your frontend or backend applications in real-time. This is perfect for use cases like streaming AI completions, progress updates, or any continuous data flow.
+The Streams API allows you to read streaming data from your Trigger.dev tasks in your backend code. This is particularly useful for consuming AI/LLM outputs, progress updates, or any other real-time data that your tasks emit.
 
 <Note>
-  Streams v2 requires SDK version **4.1.0 or later**. Make sure to upgrade your `@trigger.dev/sdk`
-  and `@trigger.dev/react-hooks` packages to use these features. If you're on an earlier version,
-  see the [metadata.stream()](/runs/metadata#stream) documentation.
+  To learn how to emit streams from your tasks, see our [Realtime Streams](/tasks/streams) documentation. For frontend applications using React, see our [React hooks streams documentation](/realtime/react-hooks/streams).
 </Note>
 
-## Overview
+## Reading streams
 
-Streams v2 is a major upgrade that provides:
+### Using defined streams (Recommended)
 
-* **Unlimited stream length** (previously capped at 2000 chunks)
-* **Unlimited active streams per run** (previously 5)
-* **Improved reliability** with automatic resumption on connection loss
-* **28-day stream retention** (previously 1 day)
-* **Multiple client streams** can pipe to a single stream
-* **Enhanced dashboard visibility** for viewing stream data in real-time
+The recommended approach is to use [defined streams](/tasks/streams#defining-typed-streams-recommended) for full type safety:
 
-## Enabling Streams v2
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-Streams v2 is **automatically enabled** when triggering runs from the SDK using 4.1.0 or later. If you aren't triggering via the SDK, you'll need to explicitly enable v2 streams via setting the `x-trigger-realtime-streams-version=v2` header when triggering the task.
+async function consumeStream(runId: string) {
+  // Read from the defined stream
+  const stream = await aiStream.read(runId);
 
-If you'd like to **opt-out** of the v2 streams, you can see so in one of the following two ways:
+  let fullText = "";
 
-### Option 1: Configure the SDK
+  for await (const chunk of stream) {
+    console.log("Received chunk:", chunk); // chunk is typed!
+    fullText += chunk;
+  }
 
-```ts  theme={null}
-import { auth } from "@trigger.dev/sdk";
-
-auth.configure({
-  future: {
-    v2RealtimeStreams: false,
-  },
-});
+  console.log("Final text:", fullText);
+}
 ```
 
-### Option 2: Environment Variable
+### Direct stream reading
 
-Set the `TRIGGER_V2_REALTIME_STREAMS=0` environment variable in your backend code (where you trigger tasks).
+If you prefer not to use defined streams, you can read directly by specifying the stream key:
 
-## Limits Comparison
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
 
-| Limit                            | Streams v1 | Streams v2 |
-| -------------------------------- | ---------- | ---------- |
-| Maximum stream length            | 2000       | Unlimited  |
-| Number of active streams per run | 5          | Unlimited  |
-| Maximum streams per run          | 10         | Unlimited  |
-| Maximum stream TTL               | 1 day      | 28 days    |
-| Maximum stream size              | 10MB       | 300 MiB    |
+async function consumeStream(runId: string) {
+  // Read from a stream by key
+  const stream = await streams.read<string>(runId, "ai-output");
 
-## Quick Start
-
-The recommended workflow for using Realtime Streams v2:
-
-1. **Define your streams** in a shared location using `streams.define()`
-2. **Use the defined stream** in your tasks with `.pipe()`, `.append()`, or `.writer()`
-3. **Read from the stream** using `.read()` or the `useRealtimeStream` hook in React
-
-This approach gives you full type safety, better code organization, and easier maintenance as your application grows.
-
-## Defining Typed Streams (Recommended)
-
-The recommended way to work with streams is to define them once with `streams.define()`. This allows you to specify the chunk type and stream ID in one place, and then reuse that definition throughout your codebase with full type safety.
-
-### Creating a Defined Stream
-
-Define your streams in a shared location (like `app/streams.ts` or `trigger/streams.ts`):
-
-```ts  theme={null}
-import { streams, InferStreamType } from "@trigger.dev/sdk";
-
-// Define a stream with a specific type
-export const aiStream = streams.define<string>({
-  id: "ai-output",
-});
-
-// Export the type for use in frontend components
-export type AIStreamPart = InferStreamType<typeof aiStream>;
+  for await (const chunk of stream) {
+    console.log("Received chunk:", chunk);
+  }
+}
 ```
 
-You can define streams for any JSON-serializable type:
+### Reading from the default stream
 
-```ts  theme={null}
-import { streams, InferStreamType } from "@trigger.dev/sdk";
-import { UIMessageChunk } from "ai";
+Every run has a default stream, so you can omit the stream key:
 
-// Stream for AI UI message chunks
-export const aiStream = streams.define<UIMessageChunk>({
-  id: "ai",
-});
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
 
-// Stream for progress updates
-export const progressStream = streams.define<{ step: string; percent: number }>({
-  id: "progress",
-});
+async function consumeDefaultStream(runId: string) {
+  // Read from the default stream
+  const stream = await streams.read<string>(runId);
 
-// Stream for simple text
-export const logStream = streams.define<string>({
-  id: "logs",
-});
-
-// Export types
-export type AIStreamPart = InferStreamType<typeof aiStream>;
-export type ProgressStreamPart = InferStreamType<typeof progressStream>;
-export type LogStreamPart = InferStreamType<typeof logStream>;
+  for await (const chunk of stream) {
+    console.log("Received chunk:", chunk);
+  }
+}
 ```
 
-### Using Defined Streams in Tasks
+## Stream options
 
-Once defined, you can use all stream methods on your defined stream:
+The `read()` method accepts several options for controlling stream behavior:
 
-```ts  theme={null}
-import { task } from "@trigger.dev/sdk";
-import { aiStream } from "./streams";
+### Timeout
 
-export const streamTask = task({
-  id: "stream-task",
-  run: async (payload: { prompt: string }) => {
-    // Get a stream from an AI service, database, etc.
-    const stream = await getAIStream(payload.prompt);
+Set a timeout to stop reading if no data is received within a specified time:
 
-    // Pipe the stream using your defined stream
-    const { stream: readableStream, waitUntilComplete } = aiStream.pipe(stream);
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-    // Option A: Iterate over the stream locally
-    for await (const chunk of readableStream) {
+async function consumeWithTimeout(runId: string) {
+  const stream = await aiStream.read(runId, {
+    timeoutInSeconds: 120, // Wait up to 2 minutes for data
+  });
+
+  try {
+    for await (const chunk of stream) {
       console.log("Received chunk:", chunk);
     }
-
-    // Option B: Wait for the stream to complete
-    await waitUntilComplete();
-
-    return { message: "Stream completed" };
-  },
-});
-```
-
-#### Reading from a Stream
-
-Use the defined stream's `read()` method to consume data from anywhere (frontend, backend, or another task):
-
-```ts  theme={null}
-import { aiStream } from "./streams";
-
-const stream = await aiStream.read(runId);
-
-for await (const chunk of stream) {
-  console.log(chunk); // chunk is typed as the stream's chunk type
+  } catch (error) {
+    if (error.name === "TimeoutError") {
+      console.log("Stream timed out");
+    }
+  }
 }
 ```
 
-With options:
+### Start index
 
-```ts  theme={null}
-const stream = await aiStream.read(runId, {
-  timeoutInSeconds: 60, // Stop if no data for 60 seconds
-  startIndex: 10, // Start from the 10th chunk
-});
-```
+Resume reading from a specific chunk index (useful for reconnection scenarios):
 
-#### Appending to a Stream
-
-Use the defined stream's `append()` method to add a single chunk:
-
-```ts  theme={null}
-import { task } from "@trigger.dev/sdk";
-import { aiStream, progressStream, logStream } from "./streams";
-
-export const appendTask = task({
-  id: "append-task",
-  run: async (payload) => {
-    // Append to different streams with full type safety
-    await logStream.append("Processing started");
-    await progressStream.append({ step: "Initialization", percent: 0 });
-
-    // Do some work...
-
-    await progressStream.append({ step: "Processing", percent: 50 });
-    await logStream.append("Step 1 complete");
-
-    // Do more work...
-
-    await progressStream.append({ step: "Complete", percent: 100 });
-    await logStream.append("All steps complete");
-  },
-});
-```
-
-#### Writing Multiple Chunks
-
-Use the defined stream's `writer()` method for more complex stream writing:
-
-```ts  theme={null}
-import { task } from "@trigger.dev/sdk";
-import { logStream } from "./streams";
-
-export const writerTask = task({
-  id: "writer-task",
-  run: async (payload) => {
-    const { waitUntilComplete } = logStream.writer({
-      execute: ({ write, merge }) => {
-        // Write individual chunks
-        write("Chunk 1");
-        write("Chunk 2");
-
-        // Merge another stream
-        const additionalStream = ReadableStream.from(["Chunk 3", "Chunk 4", "Chunk 5"]);
-        merge(additionalStream);
-      },
-    });
-
-    await waitUntilComplete();
-  },
-});
-```
-
-### Using Defined Streams in React
-
-Defined streams work seamlessly with the `useRealtimeStream` hook:
-
-```tsx  theme={null}
-"use client";
-
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
-import { aiStream } from "@/app/streams";
-
-export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
-  // Pass the defined stream directly - full type safety!
-  const { parts, error } = useRealtimeStream(aiStream, runId, {
-    accessToken,
-    timeoutInSeconds: 600,
-  });
-
-  if (error) return <div>Error: {error.message}</div>;
-  if (!parts) return <div>Loading...</div>;
-
-  return (
-    <div>
-      {parts.map((part, i) => (
-        <span key={i}>{part}</span>
-      ))}
-    </div>
-  );
-}
-```
-
-## Direct Stream Methods (Without Defining)
-
-<Warning>
-  We strongly recommend using `streams.define()` instead of direct methods. Defined streams provide
-  better organization, full type safety, and make it easier to maintain your codebase as it grows.
-</Warning>
-
-If you have a specific reason to avoid defined streams, you can use stream methods directly by specifying the stream key each time.
-
-### Direct Piping
-
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
-
-export const directStreamTask = task({
-  id: "direct-stream",
-  run: async (payload: { prompt: string }) => {
-    const stream = await getAIStream(payload.prompt);
-
-    // Specify the stream key directly
-    const { stream: readableStream, waitUntilComplete } = streams.pipe("ai-output", stream);
-
-    await waitUntilComplete();
-  },
-});
-```
-
-### Direct Reading
-
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-// Specify the stream key when reading
-const stream = await streams.read(runId, "ai-output");
+async function resumeStream(runId: string, lastChunkIndex: number) {
+  // Start reading from the chunk after the last one we received
+  const stream = await aiStream.read(runId, {
+    startIndex: lastChunkIndex + 1,
+  });
 
-for await (const chunk of stream) {
-  console.log(chunk);
+  for await (const chunk of stream) {
+    console.log("Received chunk:", chunk);
+  }
 }
 ```
 
-### Direct Appending
+### Abort signal
 
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
+Use an `AbortSignal` to cancel stream reading:
 
-export const directAppendTask = task({
-  id: "direct-append",
-  run: async (payload) => {
-    // Specify the stream key each time
-    await streams.append("logs", "Processing started");
-    await streams.append("progress", "50%");
-    await streams.append("logs", "Complete");
-  },
-});
-```
-
-### Direct Writing
-
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
-
-export const directWriterTask = task({
-  id: "direct-writer",
-  run: async (payload) => {
-    const { waitUntilComplete } = streams.writer("output", {
-      execute: ({ write, merge }) => {
-        write("Chunk 1");
-        write("Chunk 2");
-      },
-    });
-
-    await waitUntilComplete();
-  },
-});
-```
-
-## Default Stream
-
-Every run has a "default" stream, allowing you to skip the stream key entirely. This is useful for simple cases where you only need one stream per run.
-
-Using direct methods:
-
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
-
-export const defaultStreamTask = task({
-  id: "default-stream",
-  run: async (payload) => {
-    const stream = getDataStream();
-
-    // No stream key needed - uses "default"
-    const { waitUntilComplete } = streams.pipe(stream);
-
-    await waitUntilComplete();
-  },
-});
-
-// Reading from the default stream
-const readStream = await streams.read(runId);
-```
-
-## Targeting Different Runs
-
-You can pipe streams to parent, root, or any other run using the `target` option. This works with both defined streams and direct methods.
-
-### With Defined Streams
-
-```ts  theme={null}
-import { task } from "@trigger.dev/sdk";
-import { logStream } from "./streams";
-
-export const childTask = task({
-  id: "child-task",
-  run: async (payload, { ctx }) => {
-    const stream = getDataStream();
-
-    // Pipe to parent run
-    logStream.pipe(stream, { target: "parent" });
-
-    // Pipe to root run
-    logStream.pipe(stream, { target: "root" });
-
-    // Pipe to self (default behavior)
-    logStream.pipe(stream, { target: "self" });
-
-    // Pipe to a specific run ID
-    logStream.pipe(stream, { target: payload.otherRunId });
-  },
-});
-```
-
-### With Direct Methods
-
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
-
-export const childTask = task({
-  id: "child-task",
-  run: async (payload, { ctx }) => {
-    const stream = getDataStream();
-
-    // Pipe to parent run
-    streams.pipe("output", stream, { target: "parent" });
-
-    // Pipe to root run
-    streams.pipe("output", stream, { target: "root" });
-
-    // Pipe to a specific run ID
-    streams.pipe("output", stream, { target: payload.otherRunId });
-  },
-});
-```
-
-## Streaming from Outside a Task
-
-If you specify a `target` run ID, you can pipe streams from anywhere (like a Next.js API route):
-
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
-import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
+import { aiStream } from "./trigger/streams";
 
-export async function POST(req: Request) {
-  const { messages, runId } = await req.json();
+async function consumeWithCancellation(runId: string) {
+  const controller = new AbortController();
 
-  const result = streamText({
-    model: openai("gpt-4o"),
-    messages,
+  // Cancel after 30 seconds
+  setTimeout(() => controller.abort(), 30000);
+
+  const stream = await aiStream.read(runId, {
+    signal: controller.signal,
   });
 
-  // Pipe AI stream to a Trigger.dev run
-  const { stream } = streams.pipe("ai-stream", result.toUIMessageStream(), {
-    target: runId,
-  });
+  try {
+    for await (const chunk of stream) {
+      console.log("Received chunk:", chunk);
 
-  return new Response(stream as any, {
-    headers: { "Content-Type": "text/event-stream" },
-  });
+      // Optionally abort based on content
+      if (chunk.includes("STOP")) {
+        controller.abort();
+      }
+    }
+  } catch (error) {
+    if (error.name === "AbortError") {
+      console.log("Stream was cancelled");
+    }
+  }
 }
 ```
 
-## React Hook
+### Combining options
 
-Use the `useRealtimeStream` hook to subscribe to streams in your React components.
+You can combine multiple options:
 
-### With Defined Streams (Recommended)
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-```tsx  theme={null}
-"use client";
+async function advancedStreamConsumption(runId: string) {
+  const controller = new AbortController();
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
-import { aiStream } from "@/app/streams";
-
-export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
-  // Pass the defined stream directly for full type safety
-  const { parts, error } = useRealtimeStream(aiStream, runId, {
-    accessToken,
-    timeoutInSeconds: 600,
-    onData: (chunk) => {
-      console.log("New chunk:", chunk); // chunk is typed!
-    },
+  const stream = await aiStream.read(runId, {
+    timeoutInSeconds: 300, // 5 minute timeout
+    startIndex: 0, // Start from the beginning
+    signal: controller.signal, // Allow cancellation
   });
 
-  if (error) return <div>Error: {error.message}</div>;
-  if (!parts) return <div>Loading...</div>;
-
-  return (
-    <div>
-      {parts.map((part, i) => (
-        <span key={i}>{part}</span>
-      ))}
-    </div>
-  );
+  try {
+    for await (const chunk of stream) {
+      console.log("Received chunk:", chunk);
+    }
+  } catch (error) {
+    if (error.name === "AbortError") {
+      console.log("Stream was cancelled");
+    } else if (error.name === "TimeoutError") {
+      console.log("Stream timed out");
+    } else {
+      console.error("Stream error:", error);
+    }
+  }
 }
 ```
 
-### With Direct Stream Keys
+## Practical examples
 
-If you prefer not to use defined streams, you can specify the stream key directly:
+### Reading AI streaming responses
 
-```tsx  theme={null}
-"use client";
+Here's a complete example of consuming an AI stream from your backend:
 
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-export function StreamViewer({ accessToken, runId }: { accessToken: string; runId: string }) {
-  const { parts, error } = useRealtimeStream<string>(runId, "ai-output", {
-    accessToken,
-    timeoutInSeconds: 600,
+async function consumeAIStream(runId: string) {
+  const stream = await aiStream.read(runId, {
+    timeoutInSeconds: 300, // AI responses can take time
   });
 
-  if (error) return <div>Error: {error.message}</div>;
-  if (!parts) return <div>Loading...</div>;
+  let fullResponse = "";
+  const chunks: string[] = [];
 
-  return (
-    <div>
-      {parts.map((part, i) => (
-        <span key={i}>{part}</span>
-      ))}
-    </div>
-  );
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+    fullResponse += chunk;
+
+    // Process each chunk as it arrives
+    console.log("Chunk received:", chunk);
+
+    // Could send to websocket, SSE, etc.
+    // await sendToClient(chunk);
+  }
+
+  console.log("Stream complete!");
+  console.log("Total chunks:", chunks.length);
+  console.log("Full response:", fullResponse);
+
+  return { fullResponse, chunks };
 }
 ```
 
-### Using Default Stream
+### Reading multiple streams
 
-```tsx  theme={null}
-// Omit stream key to use the default stream
-const { parts, error } = useRealtimeStream<string>(runId, {
-  accessToken,
-});
+If a task emits multiple streams, you can read them concurrently or sequentially:
+
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream, progressStream } from "./trigger/streams";
+
+async function consumeMultipleStreams(runId: string) {
+  // Read streams concurrently
+  const [aiData, progressData] = await Promise.all([
+    consumeStream(aiStream, runId),
+    consumeStream(progressStream, runId),
+  ]);
+
+  return { aiData, progressData };
+}
+
+async function consumeStream<T>(
+  streamDef: { read: (runId: string) => Promise<AsyncIterableStream<T>> },
+  runId: string
+): Promise<T[]> {
+  const stream = await streamDef.read(runId);
+  const chunks: T[] = [];
+
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+
+  return chunks;
+}
 ```
 
-### Hook Options
+### Piping streams to HTTP responses
 
-```tsx  theme={null}
-const { parts, error } = useRealtimeStream(streamDef, runId, {
-  accessToken: "pk_...", // Required: Public access token
-  baseURL: "https://api.trigger.dev", // Optional: Custom API URL
-  timeoutInSeconds: 60, // Optional: Timeout (default: 60)
-  startIndex: 0, // Optional: Start from specific chunk
-  throttleInMs: 16, // Optional: Throttle updates (default: 16ms)
-  onData: (chunk) => {}, // Optional: Callback for each chunk
-});
-```
+You can pipe streams directly to HTTP responses for server-sent events (SSE):
 
-## Complete Example: AI Streaming
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
+import type { NextRequest } from "next/server";
 
-### Define the stream
+export async function GET(request: NextRequest) {
+  const runId = request.nextUrl.searchParams.get("runId");
 
-```ts  theme={null}
-// app/streams.ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
-import { UIMessageChunk } from "ai";
+  if (!runId) {
+    return new Response("Missing runId", { status: 400 });
+  }
 
-export const aiStream = streams.define<UIMessageChunk>({
-  id: "ai",
-});
-
-export type AIStreamPart = InferStreamType<typeof aiStream>;
-```
-
-### Create the task
-
-```ts  theme={null}
-// trigger/ai-task.ts
-import { task } from "@trigger.dev/sdk";
-import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
-import { aiStream } from "@/app/streams";
-
-export const generateAI = task({
-  id: "generate-ai",
-  run: async (payload: { prompt: string }) => {
-    const result = streamText({
-      model: openai("gpt-4o"),
-      prompt: payload.prompt,
-    });
-
-    const { waitUntilComplete } = aiStream.pipe(result.toUIMessageStream());
-
-    await waitUntilComplete();
-
-    return { success: true };
-  },
-});
-```
-
-### Frontend component
-
-```tsx  theme={null}
-// components/ai-stream.tsx
-"use client";
-
-import { useRealtimeStream } from "@trigger.dev/react-hooks";
-import { aiStream } from "@/app/streams";
-
-export function AIStream({ accessToken, runId }: { accessToken: string; runId: string }) {
-  const { parts, error } = useRealtimeStream(aiStream, runId, {
-    accessToken,
+  const stream = await aiStream.read(runId, {
     timeoutInSeconds: 300,
   });
 
-  if (error) return <div>Error: {error.message}</div>;
-  if (!parts) return <div>Loading...</div>;
+  // Create a readable stream for SSE
+  const encoder = new TextEncoder();
+  const readableStream = new ReadableStream({
+    async start(controller) {
+      try {
+        for await (const chunk of stream) {
+          // Format as SSE
+          const data = `data: ${JSON.stringify({ chunk })}\n\n`;
+          controller.enqueue(encoder.encode(data));
+        }
+        controller.close();
+      } catch (error) {
+        controller.error(error);
+      }
+    },
+  });
 
-  return (
-    <div className="prose">
-      {parts.map((part, i) => (
-        <span key={i}>{part}</span>
-      ))}
-    </div>
-  );
+  return new Response(readableStream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive",
+    },
+  });
 }
 ```
 
-## Migration from v1
+### Implementing retry logic
 
-If you're using the old `metadata.stream()` API, here's how to migrate to the recommended v2 approach:
+Handle transient errors with retry logic:
 
-### Step 1: Define Your Streams
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-Create a shared streams definition file:
+async function consumeStreamWithRetry(
+  runId: string,
+  maxRetries = 3
+): Promise<string[]> {
+  let lastChunkIndex = 0;
+  const allChunks: string[] = [];
+  let attempt = 0;
 
-```ts  theme={null}
-// app/streams.ts or trigger/streams.ts
-import { streams, InferStreamType } from "@trigger.dev/sdk";
+  while (attempt < maxRetries) {
+    try {
+      const stream = await aiStream.read(runId, {
+        startIndex: lastChunkIndex,
+        timeoutInSeconds: 120,
+      });
 
-export const myStream = streams.define<string>({
-  id: "my-stream",
-});
+      for await (const chunk of stream) {
+        allChunks.push(chunk);
+        lastChunkIndex++;
+      }
 
-export type MyStreamPart = InferStreamType<typeof myStream>;
+      // Success! Break out of retry loop
+      break;
+    } catch (error) {
+      attempt++;
+
+      if (attempt >= maxRetries) {
+        throw new Error(`Failed after ${maxRetries} attempts: ${error.message}`);
+      }
+
+      console.log(`Retry attempt ${attempt} after error:`, error.message);
+
+      // Wait before retrying (exponential backoff)
+      await new Promise((resolve) => setTimeout(resolve, 1000 * Math.pow(2, attempt)));
+    }
+  }
+
+  return allChunks;
+}
 ```
 
-### Step 2: Update Your Tasks
+### Processing streams in chunks
 
-Replace `metadata.stream()` with the defined stream's `pipe()` method:
+Process streams in batches for efficiency:
 
-```ts  theme={null}
-// Before (v1)
-import { metadata, task } from "@trigger.dev/sdk";
+```ts  theme={"theme":"css-variables"}
+import { streams } from "@trigger.dev/sdk";
+import { aiStream } from "./trigger/streams";
 
-export const myTask = task({
-  id: "my-task",
-  run: async (payload) => {
-    const stream = getDataStream();
-    await metadata.stream("my-stream", stream);
-  },
-});
+async function processStreamInBatches(runId: string, batchSize = 10) {
+  const stream = await aiStream.read(runId);
+
+  let batch: string[] = [];
+
+  for await (const chunk of stream) {
+    batch.push(chunk);
+
+    if (batch.length >= batchSize) {
+      // Process the batch
+      await processBatch(batch);
+      batch = [];
+    }
+  }
+
+  // Process remaining chunks
+  if (batch.length > 0) {
+    await processBatch(batch);
+  }
+}
+
+async function processBatch(chunks: string[]) {
+  console.log(`Processing batch of ${chunks.length} chunks`);
+  // Do something with the batch
+  // e.g., save to database, send to queue, etc.
+}
 ```
 
-```ts  theme={null}
-// After (v2 - Recommended)
-import { task } from "@trigger.dev/sdk";
-import { myStream } from "./streams";
+## Using with `runs.subscribeToRun()`
 
-export const myTask = task({
-  id: "my-task",
-  run: async (payload) => {
-    const stream = getDataStream();
+For more advanced use cases where you need both the run status and streams, you can use the `runs.subscribeToRun()` method with `.withStreams()`:
 
-    // Don't await - returns immediately
-    const { waitUntilComplete } = myStream.pipe(stream);
+```ts  theme={"theme":"css-variables"}
+import { runs } from "@trigger.dev/sdk";
+import type { myTask } from "./trigger/myTask";
 
-    // Optionally wait for completion
-    await waitUntilComplete();
-  },
-});
+async function subscribeToRunAndStreams(runId: string) {
+  for await (const update of runs.subscribeToRun<typeof myTask>(runId).withStreams()) {
+    switch (update.type) {
+      case "run":
+        console.log("Run update:", update.run.status);
+        break;
+      case "default":
+        console.log("Stream chunk:", update.chunk);
+        break;
+    }
+  }
+}
 ```
 
-### Step 3: Update Your Frontend
-
-Use the defined stream with `useRealtimeStream`:
-
-```tsx  theme={null}
-// Before
-const { parts, error } = useRealtimeStream<string>(runId, "my-stream", {
-  accessToken,
-});
-```
-
-```tsx  theme={null}
-// After
-import { myStream } from "@/app/streams";
-
-const { parts, error } = useRealtimeStream(myStream, runId, {
-  accessToken,
-});
-```
-
-### Alternative: Direct Methods (Not Recommended)
-
-If you prefer not to use defined streams, you can use direct methods:
-
-```ts  theme={null}
-import { streams, task } from "@trigger.dev/sdk";
-
-export const myTask = task({
-  id: "my-task",
-  run: async (payload) => {
-    const stream = getDataStream();
-    const { waitUntilComplete } = streams.pipe("my-stream", stream);
-    await waitUntilComplete();
-  },
-});
-```
-
-## Reliability Features
-
-Streams v2 includes automatic reliability improvements:
-
-* **Automatic resumption**: If a connection is lost, both appending and reading will automatically resume from the last successful chunk
-* **No data loss**: Network issues won't cause stream data to be lost
-* **Idempotent operations**: Duplicate chunks are automatically handled
-
-These improvements happen automatically - no code changes needed.
-
-## Dashboard Integration
-
-Streams are now visible in the Trigger.dev dashboard, allowing you to:
-
-* View stream data in real-time as it's generated
-* Inspect historical stream data for completed runs
-* Debug streaming issues with full visibility into chunk delivery
-
-<video src="https://content.trigger.dev/streams-v2-dashboard.mp4" controls muted autoPlay loop />
-
-## Best Practices
-
-1. **Always use `streams.define()`**: Define your streams in a shared location for better organization, type safety, and code reusability. This is the recommended approach for all streams.
-2. **Export stream types**: Use `InferStreamType` to export types for your frontend components
-3. **Handle errors gracefully**: Always check for errors when reading streams in your UI
-4. **Set appropriate timeouts**: Adjust `timeoutInSeconds` based on your use case (AI completions may need longer timeouts)
-5. **Target parent runs**: When orchestrating with child tasks, pipe to parent runs for easier consumption
-6. **Throttle frontend updates**: Use `throttleInMs` in `useRealtimeStream` to prevent excessive re-renders
-7. **Use descriptive stream IDs**: Choose clear, descriptive IDs like `"ai-output"` or `"progress"` instead of generic names
-
-## Troubleshooting
-
-### Stream not appearing in dashboard
-
-* Ensure you've enabled Streams v2 via the future flag or environment variable
-* Verify your task is actually writing to the stream
-* Check that the stream key matches between writing and reading
-
-### Stream timeout errors
-
-* Increase `timeoutInSeconds` in your `read()` or `useRealtimeStream()` calls
-* Ensure your stream source is actively producing data
-* Check network connectivity between your application and Trigger.dev
-
-### Missing chunks
-
-* With v2, chunks should never be lost due to automatic resumption
-* Verify you're reading from the correct stream key
-* Check the `startIndex` option if you're not seeing expected chunks
+<Note>
+  For most use cases, we recommend using `streams.read()` with defined streams for better type safety and clearer code. Use `runs.subscribeToRun().withStreams()` only when you need to track both run status and stream data simultaneously.
+</Note>

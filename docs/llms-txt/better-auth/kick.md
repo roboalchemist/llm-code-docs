@@ -4,11 +4,7 @@
 
 Kick provider setup and usage.
 
-***
 
-title: Kick
-description: Kick provider setup and usage.
--------------------------------------------
 
 <Steps>
   <Step>

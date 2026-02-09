@@ -1,12 +1,46 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/hono.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hono
 
 > Payments and Checkouts made dead simple with Hono
 
-```bash  theme={null}
-pnpm install @polar-sh/hono zod
-```
+## Examples
+
+* [With Hono and Cloudflare Workers](https://github.com/polarsource/examples/tree/main/with-hono-cloudflare-workers)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/hono
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 

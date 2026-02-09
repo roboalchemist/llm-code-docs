@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/ffmpeg-video-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Video processing with FFmpeg
 
 > These examples show you how to process videos in various ways using FFmpeg with Trigger.dev.
@@ -15,7 +19,7 @@ export const packages_0 = "ffmpeg"
 
 To use these example tasks, you'll first need to add our FFmpeg extension to your project configuration like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -50,7 +54,7 @@ This task demonstrates how to use FFmpeg to compress a video, reducing its file 
 
 ### Task code
 
-```ts trigger/ffmpeg-compress-video.ts theme={null}
+```ts trigger/ffmpeg-compress-video.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -143,7 +147,7 @@ export const ffmpegCompressVideo = task({
 
 To test this task, use this payload structure:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -162,7 +166,7 @@ This task demonstrates how to use FFmpeg to extract audio from a video, convert 
 
 ### Task code
 
-```ts trigger/ffmpeg-extract-audio.ts theme={null}
+```ts trigger/ffmpeg-extract-audio.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -257,7 +261,7 @@ To test this task, use this payload structure:
   will fail.
 </Warning>
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -275,7 +279,7 @@ This task demonstrates how to use FFmpeg to generate a thumbnail from a video at
 
 ### Task code
 
-```ts trigger/ffmpeg-generate-thumbnail.ts theme={null}
+```ts trigger/ffmpeg-generate-thumbnail.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import ffmpeg from "fluent-ffmpeg";
@@ -362,7 +366,7 @@ export const ffmpegGenerateThumbnail = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "videoUrl": "<video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }

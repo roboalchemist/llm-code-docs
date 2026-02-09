@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/webhooks/events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Events
 
 > Our webhook events and in which context they are useful
@@ -8,57 +12,67 @@
 
 ### Checkout
 
-<Card title="checkout.created" icon="link" href="/api-reference/webhooks/checkout.created" horizontal />
+<Columns cols={2}>
+  <Card title="checkout.created" icon="link" href="/api-reference/webhooks/checkout.created" horizontal />
 
-<Card title="checkout.updated" icon="link" href="/api-reference/webhooks/checkout.updated" horizontal />
+  <Card title="checkout.updated" icon="link" href="/api-reference/webhooks/checkout.updated" horizontal />
+</Columns>
 
 ### Customers
 
-<Card title="customer.created" icon="link" href="/api-reference/webhooks/customer.created" horizontal>
-  Fired when a new customer has been created.
-</Card>
+<Columns cols={2}>
+  <Card title="customer.created" icon="link" href="/api-reference/webhooks/customer.created" horizontal>
+    Fired when a new customer has been created.
+  </Card>
 
-<Card title="customer.updated" icon="link" href="/api-reference/webhooks/customer.updated" horizontal>
-  Fired when a customer has been updated.
-</Card>
+  <Card title="customer.updated" icon="link" href="/api-reference/webhooks/customer.updated" horizontal>
+    Fired when a customer has been updated.
+  </Card>
 
-<Card title="customer.deleted" icon="link" href="/api-reference/webhooks/customer.deleted" horizontal>
-  Fired when a customer has been deleted.
-</Card>
+  <Card title="customer.deleted" icon="link" href="/api-reference/webhooks/customer.deleted" horizontal>
+    Fired when a customer has been deleted.
+  </Card>
 
-<Card title="customer.state_changed" icon="link" href="/api-reference/webhooks/customer.state_changed" horizontal>
-  Fired when a customer's state has changed. Includes active subscriptions and
-  granted benefits.
-</Card>
+  <Card title="customer.state_changed" icon="link" href="/api-reference/webhooks/customer.state_changed" horizontal>
+    Fired when a customer's state has changed. Includes active subscriptions and
+    granted benefits.
+  </Card>
+</Columns>
 
 ### Subscriptions
 
 In order to properly implement logic for handling subscriptions, you should look into the following events.
 
-<Card title="subscription.created" icon="link" href="/api-reference/webhooks/subscription.created" horizontal>
-  Fired when a new subscription has been created.
-</Card>
+<Columns cols={2}>
+  <Card title="subscription.created" icon="link" href="/api-reference/webhooks/subscription.created" horizontal>
+    Fired when a new subscription has been created.
+  </Card>
 
-<Card title="subscription.updated" icon="link" href="/api-reference/webhooks/subscription.updated" horizontal>
-  Use this event if you want to handle cancellations, un-cancellations, etc. The
-  updated event is a catch-all event for `subscription.active` ,
-  `subscription.canceled`, `subscription.uncanceled` and `subscription.revoked`.
-</Card>
+  <Card title="subscription.active" icon="link" href="/api-reference/webhooks/subscription.active" horizontal />
 
-<Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal>
-  In case you want to do logic when a subscription is renewed, you should listen
-  to `order.created` and the `billing_reason` field. It can be `purchase`,
-  `subscription_create`, `subscription_cycle` and `subscription_update`.
-  `subscription_cycle` is used when subscriptions renew.
-</Card>
+  <Card title="subscription.uncanceled" icon="link" href="/api-reference/webhooks/subscription.uncanceled" horizontal />
 
-<Card title="subscription.active" icon="link" href="/api-reference/webhooks/subscription.active" horizontal />
+  <Card title="subscription.canceled" icon="link" href="/api-reference/webhooks/subscription.canceled" horizontal />
 
-<Card title="subscription.canceled" icon="link" href="/api-reference/webhooks/subscription.canceled" horizontal />
+  <Card title="subscription.past_due" icon="link" href="/api-reference/webhooks/subscription.past_due" horizontal>
+    Fired when a subscription payment has failed. The customer can recover by updating their payment method.
+  </Card>
 
-<Card title="subscription.uncanceled" icon="link" href="/api-reference/webhooks/subscription.uncanceled" horizontal />
+  <Card title="subscription.updated" icon="link" href="/api-reference/webhooks/subscription.updated" horizontal>
+    Use this event if you want to handle cancellations, un-cancellations, etc. The
+    updated event is a catch-all event for `subscription.active`,
+    `subscription.canceled`, `subscription.uncanceled`, `subscription.past_due` and `subscription.revoked`.
+  </Card>
 
-<Card title="subscription.revoked" icon="link" href="/api-reference/webhooks/subscription.revoked" horizontal />
+  <Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal>
+    In case you want to do logic when a subscription is renewed, you should listen
+    to `order.created` and the `billing_reason` field. It can be `purchase`,
+    `subscription_create`, `subscription_cycle` and `subscription_update`.
+    `subscription_cycle` is used when subscriptions renew.
+  </Card>
+
+  <Card title="subscription.revoked" icon="link" href="/api-reference/webhooks/subscription.revoked" horizontal />
+</Columns>
 
 #### Cancellation Sequences
 
@@ -114,44 +128,56 @@ Shortly after the initial renewal events, the platform will trigger a payment fo
 
 Both events will contain the same order data, with the order status changed to `paid`.
 
-### Order
+### Orders
 
-<Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal />
+<Columns cols={2}>
+  <Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal />
 
-<Card title="order.paid" icon="link" href="/api-reference/webhooks/order.paid" horizontal />
+  <Card title="order.paid" icon="link" href="/api-reference/webhooks/order.paid" horizontal />
 
-<Card title="order.updated" icon="link" href="/api-reference/webhooks/order.updated" horizontal />
+  <Card title="order.updated" icon="link" href="/api-reference/webhooks/order.updated" horizontal />
 
-<Card title="order.refunded" icon="link" href="/api-reference/webhooks/order.refunded" horizontal />
+  <Card title="order.refunded" icon="link" href="/api-reference/webhooks/order.refunded" horizontal />
+</Columns>
 
 ### Refunds
 
-<Card title="refund.created" icon="link" href="/api-reference/webhooks/refund.created" horizontal />
+<Columns cols={2}>
+  <Card title="refund.created" icon="link" href="/api-reference/webhooks/refund.created" horizontal />
 
-<Card title="refund.updated" icon="link" href="/api-reference/webhooks/refund.updated" horizontal />
+  <Card title="refund.updated" icon="link" href="/api-reference/webhooks/refund.updated" horizontal />
+</Columns>
 
 ### Benefit Grants
 
-<Card title="benefit_grant.created" icon="link" href="/api-reference/webhooks/benefit_grant.created" horizontal />
+<Columns cols={2}>
+  <Card title="benefit_grant.created" icon="link" href="/api-reference/webhooks/benefit_grant.created" horizontal />
 
-<Card title="benefit_grant.updated" icon="link" href="/api-reference/webhooks/benefit_grant.updated" horizontal />
+  <Card title="benefit_grant.updated" icon="link" href="/api-reference/webhooks/benefit_grant.updated" horizontal />
 
-<Card title="benefit_grant.revoked" icon="link" href="/api-reference/webhooks/benefit_grant.revoked" horizontal />
+  <Card title="benefit_grant.revoked" icon="link" href="/api-reference/webhooks/benefit_grant.revoked" horizontal />
+</Columns>
 
 ## Organization Events
 
 ### Benefits
 
-<Card title="benefit.created" icon="link" href="/api-reference/webhooks/benefit.created" horizontal />
+<Columns cols={2}>
+  <Card title="benefit.created" icon="link" href="/api-reference/webhooks/benefit.created" horizontal />
 
-<Card title="benefit.updated" icon="link" href="/api-reference/webhooks/benefit.updated" horizontal />
+  <Card title="benefit.updated" icon="link" href="/api-reference/webhooks/benefit.updated" horizontal />
+</Columns>
 
 ### Products
 
-<Card title="product.created" icon="link" href="/api-reference/webhooks/product.created" horizontal />
+<Columns cols={2}>
+  <Card title="product.created" icon="link" href="/api-reference/webhooks/product.created" horizontal />
 
-<Card title="product.updated" icon="link" href="/api-reference/webhooks/product.updated" horizontal />
+  <Card title="product.updated" icon="link" href="/api-reference/webhooks/product.updated" horizontal />
+</Columns>
 
 ### Organization
 
-<Card title="organization.updated" icon="link" href="/api-reference/webhooks/organization.updated" horizontal />
+<Columns cols={2}>
+  <Card title="organization.updated" icon="link" href="/api-reference/webhooks/organization.updated" horizontal />
+</Columns>

@@ -2,21 +2,9 @@
 
 # Source: https://docs.zapier.com/mcp/usage/overview.md
 
-# Source: https://docs.zapier.com/platform/build-cli/overview.md
-
-# Source: https://docs.zapier.com/mcp/usage/overview.md
-
-# Source: https://docs.zapier.com/platform/build-cli/overview.md
-
-# Source: https://docs.zapier.com/mcp/usage/overview.md
-
-# Source: https://docs.zapier.com/platform/build-cli/overview.md
-
-# Source: https://docs.zapier.com/mcp/usage/overview.md
-
-# Source: https://docs.zapier.com/platform/build-cli/overview.md
-
-# Source: https://docs.zapier.com/mcp/usage/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Usage & Billing Overview
 
@@ -52,7 +40,7 @@ Interested in piloting developer tools for deeper integration? [Contact our team
 <Warning>
   **Enterprise Users**: Zapier MCP is not enabled by default on Enterprise
   accounts. If you'd still like to beta test Zapier MCP, reach out
-  [here](https://mcpp.zapier.app/enterprise-access).
+  to your account manager.
 </Warning>
 
 ## How Usage is Calculated

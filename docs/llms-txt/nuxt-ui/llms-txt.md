@@ -19,19 +19,13 @@ We provide LLMs.txt routes to help AI tools access our documentation:
 
 ## Choosing the Right File
 
-<note icon="i-lucide-info">
-
-**Most users should start with /llms.txt** - it contains all essential information and works with standard LLM context windows. Use `/llms-full.txt` only if you need comprehensive implementation examples and your AI tool supports large contexts (200K+ tokens).
-
-</note>
+> [!NOTE]
+> Most users should start with `/llms.txt` - it contains all essential information and works with standard LLM context windows. Use `/llms-full.txt` only if you need comprehensive implementation examples and your AI tool supports large contexts (200K+ tokens).
 
 ## Important usage notes
 
-<warning icon="i-lucide-alert-triangle">
-
-**@-symbol must be typed manually** - When using tools like Cursor or Windsurf, the `@` symbol must be typed by hand in the chat interface. Copy-pasting breaks the tool's ability to recognize it as a context reference.
-
-</warning>
+> [!WARNING]
+> @-symbol must be typed manually - When using tools like Cursor or Windsurf, the `@` symbol must be typed by hand in the chat interface. Copy-pasting breaks the tool's ability to recognize it as a context reference.
 
 ## Usage with AI Tools
 

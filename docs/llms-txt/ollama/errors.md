@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/api/errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors
 
 ## Status codes

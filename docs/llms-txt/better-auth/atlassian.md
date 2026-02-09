@@ -4,11 +4,7 @@
 
 Atlassian provider setup and usage.
 
-***
 
-title: Atlassian
-description: Atlassian provider setup and usage.
-------------------------------------------------
 
 <Steps>
   <Step>

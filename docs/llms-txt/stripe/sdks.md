@@ -53,3 +53,7 @@ We use the [semantic versioning standard](https://docs.stripe.com/sdks/versionin
 [Stripe Postman collection](https://www.postman.com/stripedev/workspace/stripe-developers/overview)
 
 [Stripe OpenAPI specification](https://github.com/stripe/openapi)
+
+## Infrastructure as code 
+
+[Stripe Terraform provider](https://docs.stripe.com/terraform.md)

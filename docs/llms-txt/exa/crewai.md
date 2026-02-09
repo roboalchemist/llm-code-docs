@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/crewai.md
+# Source: https://exa.ai/docs/reference/crewai.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # CrewAI
 
@@ -177,8 +181,3 @@ In this guide, we'll create a crew of two agents that generate a newsletter base
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

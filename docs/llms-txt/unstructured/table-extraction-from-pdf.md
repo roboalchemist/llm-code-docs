@@ -1,11 +1,15 @@
 # Source: https://docs.unstructured.io/examplecode/codesamples/apioss/table-extraction-from-pdf.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Table extraction from PDF
 
 > This section describes two methods for extracting tables from PDF files.
 
 <Note>
-  This sample code utilizes the [Unstructured Open Source](/open-source/introduction/overview "Open Source") library and also provides an alternative method the utilizing the [Unstructured Partition Endpoint](/api-reference/partition/overview).
+  This sample code utilizes the [Unstructured Open Source](/open-source/introduction/overview "Open Source") library and also provides an alternative method the utilizing the legacy [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview).
 </Note>
 
 ## Method 1: Using partition\_pdf
@@ -33,7 +37,7 @@ print(tables[0].metadata.text_as_html)
 
 ## Method 2: Using Auto Partition or Unstructured API
 
-By default, table extraction from all file types is enabled. To extract tables from PDFs and images using [Auto Partition](/open-source/core-functionality/partitioning#partition) or [Unstructured API parameters](/api-reference/partition/api-parameters) simply set `strategy` parameter to `hi_res`.
+By default, table extraction from all file types is enabled. To extract tables from PDFs and images using [Auto Partition](/open-source/core-functionality/partitioning#partition) or [Unstructured API parameters](/api-reference/legacy-api/partition/api-parameters) simply set `strategy` parameter to `hi_res`.
 
 **Usage: Auto Partition**
 

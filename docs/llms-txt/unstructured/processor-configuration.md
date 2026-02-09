@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/ingestion/ingest-configuration/processor-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Processor configuration
 
 A common process configuration plays a pivotal role in overseeing the entire ingest process, encompassing various aspects to ensure efficiency and reliability. This configuration includes parameters for managing a pool of workers, which allows for parallelization of the ingest process to maximize throughput. Additionally, it addresses the storage and retrieval of intermediate results, supporting caching strategies that enable replayability in case of errors or interruptions. By configuring worker pools, the process can efficiently handle multiple tasks concurrently, enhancing performance. Furthermore, saving intermediate results allows for the resumption of the process from a known state, reducing data loss and ensuring robustness in the face of unexpected errors or system failures. This comprehensive configuration promotes an organized and resilient approach to data ingestion, improving overall system reliability and efficiency.

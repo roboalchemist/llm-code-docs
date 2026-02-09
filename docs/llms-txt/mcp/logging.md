@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/server/utilities/logging.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/server/utilities/logging.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Logging
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol (MCP) provides a standardized way for servers to send
 structured log messages to clients. Clients can control logging verbosity by setting

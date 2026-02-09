@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-accessor-recursion.md
 ---
-# unicorn/no-accessor-recursion&#x20;
 
 ### What it does
 

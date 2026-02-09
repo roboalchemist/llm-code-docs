@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/features/resumablequery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resumable Query
 
 When searching for approximate nearest neighbors of a vector with regular query API,

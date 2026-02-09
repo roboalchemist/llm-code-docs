@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/customers/customer-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer metadata
 
 ## Add metadata on customer

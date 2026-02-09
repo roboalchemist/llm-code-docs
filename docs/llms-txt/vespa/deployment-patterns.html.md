@@ -161,7 +161,7 @@ Note: The include-feature can not be used in combination with [deployment varian
 - [Zones](zones.html)
 - [Routing](endpoint-routing.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

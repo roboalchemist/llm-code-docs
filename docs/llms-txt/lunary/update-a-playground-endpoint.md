@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/playground-endpoints/update-a-playground-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update a playground endpoint
 
 > Update an existing playground endpoint
@@ -36,19 +40,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: c60bcce1-007d-42a9-a781-400e0c45ac07
+              $ref: 31a68629-cdb7-4daf-9513-a3ecd607266c
       responses:
         '200':
           description: Endpoint updated successfully
           content:
             application/json:
               schema:
-                $ref: de2e1fa8-21f2-491c-ba89-61f1f6d017c0
+                $ref: 4bd06036-0e5a-4d67-ba4b-2f5fbdb818ed
         '404':
           description: Endpoint not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/language-filtering-default.md
+# Source: https://exa.ai/docs/changelog/language-filtering-default.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Added Language Filtering
 
@@ -31,8 +35,3 @@ When you search, Exa automatically:
 This update makes search results much more useful, especially if you work with content in multiple languages. The filtering works particularly well and has shown big improvements in our testing.
 
 If you have any questions about this update, please reach out to [hello@exa.ai](mailto:hello@exa.ai).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

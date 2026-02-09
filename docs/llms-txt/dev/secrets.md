@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Store secrets with Vault
 
 > Store API keys, passwords, and credentials securely with Vault in Agent Builder. Reference secrets in blueprints and Python code.

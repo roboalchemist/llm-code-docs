@@ -1,13 +1,5 @@
 # Source: https://docs.upsun.com/domains/cdn/fastly.md
 
-# Source: https://docs.upsun.com/guides/ibexa/fastly.md
-
-# Source: https://docs.upsun.com/domains/cdn/fastly.md
-
-# Source: https://docs.upsun.com/guides/ibexa/fastly.md
-
-# Source: https://docs.upsun.com/domains/cdn/fastly.md
-
 # Set up your Fastly CDN
 
 You can [use a CDN](https://docs.upsun.com/domains/cdn.md) to deliver your site's content to users more quickly.

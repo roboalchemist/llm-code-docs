@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/pythoncode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python code
 
 Runs custom Python code. Useful for logic not covered by existing blocks.
@@ -139,14 +143,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>The event handler execution was successful.</td>
+      <td>The code executed successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>The event handler execution wasn't successful.</td>
+      <td>There was an error executing the code.</td>
     </tr>
   </tbody>
 </table>

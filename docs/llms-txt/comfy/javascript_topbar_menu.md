@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_topbar_menu.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Topbar Menu
 
 The Topbar Menu API allows extensions to add custom menu items to the ComfyUI's top menu bar. This is useful for providing access to advanced features or less frequently used commands.

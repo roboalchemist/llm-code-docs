@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/evaluation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🔬 Evaluation
 
 ## Overview
@@ -22,7 +26,7 @@ Currently, we provide support for following evaluation metrics:
 
 Here is a basic example of running evaluation:
 
-```python example.py
+```python example.py theme={null}
 from embedchain import App
 
 app = App()
@@ -49,7 +53,7 @@ We use OpenAI's `gpt-4` model as default LLM model for automatic evaluation. Hen
 
 In order to evaluate your RAG application, you have to setup a dataset. A data point in the dataset consists of `questions`, `contexts`, `answer`. Here is an example of how to create a dataset for evaluation:
 
-```python
+```python  theme={null}
 from embedchain.utils.eval import EvalData
 
 data = [
@@ -86,7 +90,7 @@ Once you have created your dataset, you can run evaluation on the dataset by pic
 
 For example, you can run evaluation on context relevancy metric using the following code:
 
-```python
+```python  theme={null}
 from embedchain.evaluation.metrics import ContextRelevance
 metric = ContextRelevance()
 score = metric.evaluate(dataset)
@@ -114,7 +118,7 @@ context_relevance_score = num_relevant_sentences_in_context / num_of_sentences_i
 
 You can run the context relevancy evaluation with the following simple code:
 
-```python
+```python  theme={null}
 from embedchain.evaluation.metrics import ContextRelevance
 
 metric = ContextRelevance()
@@ -127,7 +131,7 @@ In the above example, we used sensible defaults for the evaluation. However, you
 
 Here is a more advanced example of how to pass a custom evaluation config for evaluating on context relevance metric:
 
-```python
+```python  theme={null}
 from embedchain.config.evaluation.base import ContextRelevanceConfig
 from embedchain.evaluation.metrics import ContextRelevance
 
@@ -166,7 +170,7 @@ answer_relevancy_score = mean(cosine_similarity(generated_questions, original_qu
 
 You can run the answer relevancy evaluation with the following simple code:
 
-```python
+```python  theme={null}
 from embedchain.evaluation.metrics import AnswerRelevance
 
 metric = AnswerRelevance()
@@ -177,7 +181,7 @@ print(score)
 
 In the above example, we used sensible defaults for the evaluation. However, you can also configure the evaluation metric as per your needs using the `AnswerRelevanceConfig` class. Here is a more advanced example where you can provide your own evaluation config:
 
-```python
+```python  theme={null}
 from embedchain.config.evaluation.base import AnswerRelevanceConfig
 from embedchain.evaluation.metrics import AnswerRelevance
 
@@ -223,7 +227,7 @@ groundedness_score = (sum of all verdicts) / (total # of claims)
 
 You can run the groundedness evaluation with the following simple code:
 
-```python
+```python  theme={null}
 from embedchain.evaluation.metrics import Groundedness
 metric = Groundedness()
 score = metric.evaluate(dataset)    # dataset from above
@@ -233,7 +237,7 @@ print(score)
 
 In the above example, we used sensible defaults for the evaluation. However, you can also configure the evaluation metric as per your needs using the `GroundednessConfig` class. Here is a more advanced example where you can configure the evaluation config:
 
-```python
+```python  theme={null}
 from embedchain.config.evaluation.base import GroundednessConfig
 from embedchain.evaluation.metrics import Groundedness
 
@@ -268,7 +272,7 @@ You can also create your own evaluation metric by extending the `BaseMetric` cla
   You must provide the `name` of your custom metric in the `__init__` method of your class. This name will be used to identify your metric in the evaluation report.
 </Note>
 
-```python
+```python  theme={null}
 from typing import Optional
 
 from embedchain.config.base_config import BaseConfig

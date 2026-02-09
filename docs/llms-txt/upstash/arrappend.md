@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.ARRAPPEND
 
@@ -30,12 +16,12 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
-  The path of the array.
+<ParamField body="path" type="str" required>
+  The path of the array. `$` is the root.
 </ParamField>
 
 <ParamField body="value" type="...TValue[]" required>
@@ -44,12 +30,12 @@
 
 ## Response
 
-<ResponseField type="integer[]" required>
+<ResponseField type="List[int]" required>
   The length of the array after the appending.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.json.arrappend("key", "$.path.to.array", "a");
+  ```py Example theme={"system"}
+  redis.json.arrappend("key", "$.path.to.array", "a")
   ```
 </RequestExample>

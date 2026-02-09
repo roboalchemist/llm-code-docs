@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/BasicScheduler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BasicScheduler - ComfyUI Built-in Node Documentation
 
 > The BasicScheduler node is used to compute a sequence of sigma values for diffusion models based on the provided scheduler, model, and denoising parameters.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/language_support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Language support
 
 > Palmyra LLM supports 30+ languages including Arabic, French, Spanish, Hindi, and Chinese. View MMLU and BLEU benchmark scores for multilingual text generation.

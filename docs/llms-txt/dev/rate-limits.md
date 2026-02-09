@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/api-reference/rate-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand rate limits
 
 > Understand API rate limits for Writer endpoints. Learn about RPM and TPM limits, best practices, and retry strategies for optimal performance.

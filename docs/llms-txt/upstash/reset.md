@@ -10,85 +10,32 @@
 
 # Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/reset.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Reset
 
-The `reset` method allows you to clear all vectors and metadata from a particular
-namespace or all namespaces of an index.
+## Reset Command for Python SDK
 
-## Arguments
+The `reset` method allows you to clear all documents from a particular index.
 
-There are two arguments available. You should only pass one of them:
+### Response
 
-<ResponseField name="namespace" type="string">
-  Specifies a namespace to reset. Leave empty for the default namespace.
+<ResponseField name="Response" type="string" required>
+  `'Success'` if the database is successfully reset.
 </ResponseField>
-
-<ResponseField name="all" type="true | undefined">
-  Whether to reset all namespaces. Can only be set to `true`.
-</ResponseField>
-
-## Response
-
-`'Success'` if the index is successfully resetted.
 
 <RequestExample>
-  ```typescript Basic theme={"system"}
-  const responseReset = await index.reset();
-  // 'Successful'
-  ```
+  ```python  theme={"system"}
+  from upstash_search import Search
 
-  ```typescript All Namespaces theme={"system"}
-  const responseReset = await index.reset({ all: true });
-  // 'Successful'
+  client = Search(
+      url="<UPSTASH_SEARCH_REST_URL>",
+      token="<UPSTASH_SEARCH_REST_TOKEN>",
+  )
+
+  index = client.index("movies")
+  index.reset()
   ```
 </RequestExample>

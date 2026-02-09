@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GETBIT
 
@@ -26,22 +12,22 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the bitset
 </ParamField>
 
-<ParamField body="offset" type="integer" required>
+<ParamField body="offset" type="int" required>
   Specify the offset at which to get the bit.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The bit value stored at offset.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const bit = await redis.getbit(key, 4);
+  ```py Example theme={"system"}
+  bit = redis.getbit(key, 4)
   ```
 </RequestExample>

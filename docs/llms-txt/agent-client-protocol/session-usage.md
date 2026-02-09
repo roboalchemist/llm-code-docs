@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/session-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Usage and Context Status
 
 * Author(s): [@ahmedhesham6](https://github.com/ahmedhesham6)
@@ -321,8 +325,3 @@ For agents that only provide usage during active prompting, the client UI may no
 * 2025-12-13: Changed from `session/status` request method to `session/update` notification with `sessionUpdate: "context_update"`. Made `cost` optional and removed `remaining` field (clients can compute as `size - used`). This approach provides more flexibility for agents and follows the same pattern as other dynamic session properties.
 * 2025-12-17: Renamed `reasoning_tokens` to `thought_tokens` for consistency with ACP terminology. Removed `percentage` field (clients can compute as `used / size * 100`).
 * 2025-12-19: Renamed `sessionUpdate: "context_update"` to `sessionUpdate: "usage_update"` to better reflect the payload semantics (includes both context window info and cumulative cost).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

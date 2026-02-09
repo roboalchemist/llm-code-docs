@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/quickstart/use-via-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Quick Start
 
 This page is a quick start using code. For a quick start using an Integration (Make, Langchain, CrewAI, etc.) [click here](/quickstart/use-via-api).

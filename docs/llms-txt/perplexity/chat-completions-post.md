@@ -1,807 +1,1137 @@
 # Source: https://docs.perplexity.ai/api-reference/chat-completions-post.md
 
-# Chat Completions
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Generates a model's response for the given chat conversation.
+# Create Chat Completion
+
+> Generate a chat completion response for the given conversation.
+
+
 
 ## OpenAPI
 
 ````yaml post /chat/completions
+openapi: 3.1.0
+info:
+  title: Perplexity AI API
+  description: Perplexity AI API
+  version: 0.1.0
+servers: []
+security: []
 paths:
-  path: /chat/completions
-  method: post
-  servers:
-    - url: https://api.perplexity.ai
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              model:
-                allOf:
-                  - title: Model
-                    type: string
-                    enum:
-                      - sonar
-                      - sonar-pro
-                      - sonar-deep-research
-                      - sonar-reasoning
-                      - sonar-reasoning-pro
-                    description: >-
-                      The name of the model that will complete your prompt.
-                      Choose from our available Sonar models: sonar (lightweight
-                      search), sonar-pro (advanced search), sonar-deep-research
-                      (exhaustive research), sonar-reasoning (fast reasoning),
-                      or sonar-reasoning-pro (premier reasoning).
-                    example: sonar-deep-research
-                    x-openai-compatible: true
-              messages:
-                allOf:
-                  - title: Messages
-                    type: array
-                    description: A list of messages comprising the conversation so far.
-                    x-openai-compatible: true
-                    items:
-                      $ref: '#/components/schemas/ChatCompletionsMessage'
-                    example:
-                      - role: system
-                        content: Be precise and concise.
-                      - role: user
-                        content: How many stars are there in our galaxy?
-              search_mode:
-                allOf:
-                  - title: Search Mode
-                    type: string
-                    enum:
-                      - academic
-                      - sec
-                      - web
-                    default: web
-                    description: >-
-                      Controls search mode: 'academic' prioritizes scholarly
-                      sources, 'sec' prioritizes SEC filings, 'web' uses general
-                      web search. See [academic
-                      guide](https://docs.perplexity.ai/guides/academic-filter-guide)
-                      and [SEC
-                      guide](https://docs.perplexity.ai/guides/sec-guide).
-                    x-openai-compatible: false
-              reasoning_effort:
-                allOf:
-                  - title: Reasoning Effort
-                    type: string
-                    enum:
-                      - low
-                      - medium
-                      - high
-                    description: >-
-                      **Perplexity-Specific**: Controls how much computational
-                      effort the AI dedicates to each query for deep research
-                      models. 'low' provides faster, simpler answers with
-                      reduced token usage, 'medium' offers a balanced approach,
-                      and 'high' delivers deeper, more thorough responses with
-                      increased token usage. This parameter directly impacts the
-                      amount of reasoning tokens consumed. **WARNING: This
-                      parameter is ONLY applicable for sonar-deep-research.**
-                      Defaults to 'medium' when used with sonar-deep-research.
-              max_tokens:
-                allOf:
-                  - title: Max Tokens
-                    type: integer
-                    description: >-
-                      **OpenAI Compatible**: The maximum number of completion
-                      tokens returned by the API. Controls the length of the
-                      model's response. If the response would exceed this limit,
-                      it will be truncated. Higher values allow for longer
-                      responses but may increase processing time and costs.
-              temperature:
-                allOf:
-                  - title: Temperature
-                    type: number
-                    default: 0.2
-                    description: >-
-                      The amount of randomness in the response, valued between 0
-                      and 2. Lower values (e.g., 0.1) make the output more
-                      focused, deterministic, and less creative. Higher values
-                      (e.g., 1.5) make the output more random and creative. Use
-                      lower values for factual/information retrieval tasks and
-                      higher values for creative applications.
-                    minimum: 0
-                    maximum: 2
-                    exclusiveMaximum: true
-                    x-openai-compatible: true
-              top_p:
-                allOf:
-                  - title: Top P
-                    type: number
-                    default: 0.9
-                    description: >-
-                      **OpenAI Compatible**: The nucleus sampling threshold,
-                      valued between 0 and 1. Controls the diversity of
-                      generated text by considering only the tokens whose
-                      cumulative probability exceeds the top_p value. Lower
-                      values (e.g., 0.5) make the output more focused and
-                      deterministic, while higher values (e.g., 0.95) allow for
-                      more diverse outputs. Often used as an alternative to
-                      temperature.
-              language_preference:
-                allOf:
-                  - title: Language Preference
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Specifies the preferred language
-                      for the chat completion response (i.e., English, Korean,
-                      Spanish, etc.) of the response content. This parameter is
-                      supported only by the `sonar` and `sonar-pro` models.
-                      Using it with other models is on a best-effort basis and
-                      may not produce consistent results.
-              search_domain_filter:
-                allOf:
-                  - title: Search Domain Filter
-                    type: array
-                    description: >-
-                      A list of domains to limit search results to. Currently
-                      limited to 20 domains for Allowlisting and Denylisting.
-                      For Denylisting, add a `-` at the beginning of the domain
-                      string. More information about this
-                      [here](https://docs.perplexity.ai/guides/search-domain-filters).
-                    x-openai-compatible: false
-              return_images:
-                allOf:
-                  - title: Return Images
-                    type: boolean
-                    default: false
-                    description: >-
-                      **Perplexity-Specific**: Determines whether search results
-                      should include images.
-              return_related_questions:
-                allOf:
-                  - title: Return Related Questions
-                    type: boolean
-                    default: false
-                    description: >-
-                      **Perplexity-Specific**: Determines whether related
-                      questions should be returned.
-              search_recency_filter:
-                allOf:
-                  - title: Recency Filter
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Filters search results based on
-                      time (e.g., 'week', 'day').
-              search_after_date_filter:
-                allOf:
-                  - title: Search After Date Filter
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Filters search results to only
-                      include content published after this date. Format should
-                      be %m/%d/%Y (e.g. 3/1/2025)
-              search_before_date_filter:
-                allOf:
-                  - title: Search Before Date Filter
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Filters search results to only
-                      include content published before this date. Format should
-                      be %m/%d/%Y (e.g. 3/1/2025)
-              last_updated_after_filter:
-                allOf:
-                  - title: Last Updated After Filter
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Filters search results to only
-                      include content last updated after this date. Format
-                      should be %m/%d/%Y (e.g. 3/1/2025)
-              last_updated_before_filter:
-                allOf:
-                  - title: Last Updated Before Filter
-                    type: string
-                    description: >-
-                      **Perplexity-Specific**: Filters search results to only
-                      include content last updated before this date. Format
-                      should be %m/%d/%Y (e.g. 3/1/2025)
-              top_k:
-                allOf:
-                  - title: Top K
-                    type: number
-                    default: 0
-                    description: >-
-                      **OpenAI Compatible**: The number of tokens to keep for
-                      top-k filtering. Limits the model to consider only the k
-                      most likely next tokens at each step. Lower values (e.g.,
-                      20) make the output more focused and deterministic, while
-                      higher values allow for more diverse outputs. A value of 0
-                      disables this filter. Often used in conjunction with top_p
-                      to control output randomness.
-              stream:
-                allOf:
-                  - title: Streaming
-                    type: boolean
-                    default: false
-                    description: >-
-                      **OpenAI Compatible**: Determines whether to stream the
-                      response incrementally.
-              presence_penalty:
-                allOf:
-                  - title: Presence Penalty
-                    type: number
-                    default: 0
-                    description: >-
-                      **OpenAI Compatible**: Positive values increase the
-                      likelihood of discussing new topics. Applies a penalty to
-                      tokens that have already appeared in the text, encouraging
-                      the model to talk about new concepts. Values typically
-                      range from 0 (no penalty) to 2.0 (strong penalty). Higher
-                      values reduce repetition but may lead to more off-topic
-                      text.
-              frequency_penalty:
-                allOf:
-                  - title: Frequency Penalty
-                    type: number
-                    default: 0
-                    description: >-
-                      **OpenAI Compatible**: Decreases likelihood of repetition
-                      based on prior frequency. Applies a penalty to tokens
-                      based on how frequently they've appeared in the text so
-                      far. Values typically range from 0 (no penalty) to 2.0
-                      (strong penalty). Higher values (e.g., 1.5) reduce
-                      repetition of the same words and phrases. Useful for
-                      preventing the model from getting stuck in loops.
-              response_format:
-                allOf:
-                  - title: Response Format
-                    type: object
-                    description: Enables structured JSON output formatting.
-                    x-openai-compatible: true
-              disable_search:
-                allOf:
-                  - title: Disable Search
-                    type: boolean
-                    default: false
-                    description: >-
-                      **Perplexity-Specific**: When set to true, disables web
-                      search completely and the model will only use its training
-                      data to respond. This is useful when you want
-                      deterministic responses without external information. More
-                      information about this
-                      [here](https://docs.perplexity.ai/guides/search-control-guide#disabling-search-completely).
-                    x-openai-compatible: false
-              enable_search_classifier:
-                allOf:
-                  - title: Enable Search Classifier
-                    type: boolean
-                    default: false
-                    description: >-
-                      **Perplexity-Specific**: Enables a classifier that decides
-                      if web search is needed based on your query. See more
-                      [here](https://docs.perplexity.ai/guides/search-control-guide#search-classifier).
-                    x-openai-compatible: false
-              web_search_options:
-                allOf:
-                  - title: Web Search Options
-                    type: object
-                    description: >-
-                      **Perplexity-Specific**: Configuration for using web
-                      search in model responses.
-                    properties:
-                      search_context_size:
-                        title: Search Context Size
-                        type: string
-                        default: low
-                        enum:
-                          - low
-                          - medium
-                          - high
-                        description: >-
-                          Determines how much search context is retrieved for
-                          the model. Options are: `low` (minimizes context for
-                          cost savings but less comprehensive answers), `medium`
-                          (balanced approach suitable for most queries), and
-                          `high` (maximizes context for comprehensive answers
-                          but at higher cost).
-                      user_location:
-                        title: Location of the user.
-                        type: object
-                        description: >-
-                          To refine search results based on geography, you can
-                          specify an approximate user location. For best
-                          accuracy, we recommend providing as many fields as
-                          possible including city and region.
-                        properties:
-                          latitude:
-                            title: Latitude
-                            type: number
-                            description: The latitude of the user's location.
-                          longitude:
-                            title: Longitude
-                            type: number
-                            description: The longitude of the user's location.
-                          country:
-                            title: Country
-                            type: string
-                            description: >-
-                              The two letter ISO country code of the user's
-                              location.
-                          region:
-                            title: Region
-                            type: string
-                            description: >-
-                              The region/state/province of the user's location
-                              (e.g., 'California', 'Ontario', 'Île-de-France').
-                          city:
-                            title: City
-                            type: string
-                            description: >-
-                              The city name of the user's location (e.g., 'San
-                              Francisco', 'New York City', 'Paris').
-                      image_search_relevance_enhanced:
-                        title: Image Search Relevance Enhanced
-                        type: boolean
-                        default: false
-                        description: >-
-                          When enabled, improves the relevance of image search
-                          results to the user query. Enhanced images will be
-                          streamed in later chunks of the response.
-                    example:
-                      search_context_size: high
-              media_response:
-                allOf:
-                  - title: Media Response
-                    type: object
-                    description: >-
-                      **Perplexity-Specific**: Configuration for controlling
-                      media content in responses, such as videos and images. Use
-                      the overrides property to enable specific media types.
-                    x-openai-compatible: false
-                    properties:
-                      overrides:
-                        $ref: '#/components/schemas/MediaResponseOverrides'
-                    example:
-                      overrides:
-                        return_videos: true
-                        return_images: true
-            required: true
-            title: ChatCompletionsRequest
-            refIdentifier: '#/components/schemas/ChatCompletionsRequest'
-            requiredProperties:
-              - model
-              - messages
-        examples:
-          example:
-            value:
-              model: sonar-deep-research
-              messages:
-                - role: system
-                  content: Be precise and concise.
-                - role: user
-                  content: How many stars are there in our galaxy?
-              search_mode: web
-              reasoning_effort: low
-              max_tokens: 123
-              temperature: 0.2
-              top_p: 0.9
-              language_preference: <string>
-              search_domain_filter:
-                - <any>
-              return_images: false
-              return_related_questions: false
-              search_recency_filter: <string>
-              search_after_date_filter: <string>
-              search_before_date_filter: <string>
-              last_updated_after_filter: <string>
-              last_updated_before_filter: <string>
-              top_k: 0
-              stream: false
-              presence_penalty: 0
-              frequency_penalty: 0
-              response_format: {}
-              disable_search: false
-              enable_search_classifier: false
-              web_search_options:
-                search_context_size: high
-              media_response:
-                overrides:
-                  return_videos: true
-                  return_images: true
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - title: ID
-                    type: string
-                    description: A unique identifier for the chat completion.
-              model:
-                allOf:
-                  - title: Model
-                    type: string
-                    description: The model that generated the response.
-              created:
-                allOf:
-                  - title: Created Timestamp
-                    type: integer
-                    description: >-
-                      The Unix timestamp (in seconds) of when the chat
-                      completion was created.
-              usage:
-                allOf:
-                  - $ref: '#/components/schemas/UsageInfo'
-              object:
-                allOf:
-                  - title: Object Type
-                    type: string
-                    default: chat.completion
-                    description: The type of object, which is always `chat.completion`.
-              choices:
-                allOf:
-                  - title: Choices
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ChatCompletionsChoice'
-                    description: >-
-                      A list of chat completion choices. Can be more than one if
-                      `n` is greater than 1.
-              search_results:
-                allOf:
-                  - title: Search Results
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ApiPublicSearchResult'
-                    nullable: true
-                    description: A list of search results related to the response.
-              videos:
-                allOf:
-                  - title: Videos
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/VideoResult'
-                    nullable: true
-                    description: >-
-                      A list of video results when
-                      media_response.overrides.return_videos is enabled.
-                      Contains video URLs and metadata.
-            title: ChatCompletionsResponseJson
-            refIdentifier: '#/components/schemas/ChatCompletionsResponseJson'
-            requiredProperties:
-              - id
-              - model
-              - created
-              - usage
-              - object
-              - choices
-        examples:
-          example:
-            value:
-              id: <string>
-              model: <string>
-              created: 123
-              usage:
-                prompt_tokens: 123
-                completion_tokens: 123
-                total_tokens: 123
-                search_context_size: <string>
-                citation_tokens: 123
-                num_search_queries: 123
-                reasoning_tokens: 123
-              object: chat.completion
-              choices:
-                - index: 123
-                  finish_reason: stop
-                  message:
-                    content: <string>
-                    role: system
-              search_results:
-                - title: <string>
-                  url: <string>
-                  date: '2023-12-25'
-              videos:
-                - url: <string>
-                  thumbnail_url: <string>
-                  thumbnail_width: 123
-                  thumbnail_height: 123
-                  duration: 123
-        description: OK
-      text/event-stream:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - title: ID
-                    type: string
-                    description: A unique identifier for the chat completion chunk.
-              model:
-                allOf:
-                  - title: Model
-                    type: string
-                    description: The model that generated the response.
-              created:
-                allOf:
-                  - title: Created Timestamp
-                    type: integer
-                    description: >-
-                      The Unix timestamp (in seconds) of when the chat
-                      completion chunk was created.
-              object:
-                allOf:
-                  - title: Object Type
-                    type: string
-                    default: chat.completion.chunk
-                    description: >-
-                      The type of object, which is always
-                      `chat.completion.chunk`.
-              choices:
-                allOf:
-                  - title: Choices
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ChatCompletionsChunkChoice'
-                    description: >-
-                      A list of chat completion choices. Can be more than one if
-                      `n` is greater than 1.
-            title: ChatCompletionsResponseEventStream
-            refIdentifier: '#/components/schemas/ChatCompletionsResponseEventStream'
-            requiredProperties:
-              - id
-              - model
-              - created
-              - object
-              - choices
-        examples:
-          example:
-            value:
-              id: <string>
-              model: <string>
-              created: 123
-              object: chat.completion.chunk
-              choices:
-                - index: 123
-                  finish_reason: stop
-                  delta:
-                    content: <string>
-                    role: system
-        description: OK
-  deprecated: false
-  type: path
+  /chat/completions:
+    post:
+      summary: Create Chat Completion
+      description: Generate a chat completion response for the given conversation.
+      operationId: chat_completions_chat_completions_post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiChatCompletionsRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - HTTPBearer: []
 components:
   schemas:
-    ChatCompletionsMessage:
-      title: Message
-      type: object
-      required:
-        - content
-        - role
+    ApiChatCompletionsRequest:
       properties:
-        content:
-          title: Message Content
-          oneOf:
+        max_tokens:
+          anyOf:
+            - type: integer
+              maximum: 128000
+              exclusiveMinimum: 0
+            - type: 'null'
+          title: Max Tokens
+        'n':
+          anyOf:
+            - type: integer
+              maximum: 10
+              minimum: 1
+            - type: 'null'
+          title: 'N'
+        model:
+          type: string
+          title: Model
+        stream:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Stream
+          default: false
+        stop:
+          anyOf:
             - type: string
-              description: The text contents of the message.
-            - type: array
-              items:
-                $ref: '#/components/schemas/ChatCompletionsMessageContentChunk'
-              description: An array of content parts for multimodal messages.
-          description: >-
-            The contents of the message in this turn of conversation. Can be a
-            string or an array of content parts.
-        role:
-          title: Role
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Stop
+        cum_logprobs:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Cum Logprobs
+        logprobs:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Logprobs
+        top_logprobs:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Top Logprobs
+        best_of:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Best Of
+        response_metadata:
+          anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          title: Response Metadata
+        response_format:
+          anyOf:
+            - $ref: '#/components/schemas/ResponseFormatText'
+            - $ref: '#/components/schemas/ResponseFormatJSONSchema'
+            - $ref: '#/components/schemas/ResponseFormatRegex'
+            - type: 'null'
+          title: Response Format
+        diverse_first_token:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Diverse First Token
+        _inputs:
+          anyOf:
+            - items:
+                type: integer
+              type: array
+            - type: 'null'
+          title: Inputs
+        _prompt_token_length:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Prompt Token Length
+        messages:
+          items:
+            $ref: '#/components/schemas/ChatMessage-Input'
+          type: array
+          title: Messages
+        tools:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ToolSpec'
+              type: array
+            - type: 'null'
+          title: Tools
+        tool_choice:
+          anyOf:
+            - type: string
+              enum:
+                - none
+                - auto
+                - required
+            - type: 'null'
+          title: Tool Choice
+        parallel_tool_calls:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Parallel Tool Calls
+        web_search_options:
+          $ref: '#/components/schemas/WebSearchOptions'
+        search_mode:
+          anyOf:
+            - type: string
+              enum:
+                - web
+                - academic
+                - sec
+            - type: 'null'
+          title: Search Mode
+        return_images:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Return Images
+        return_related_questions:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Return Related Questions
+        num_search_results:
+          type: integer
+          title: Num Search Results
+          default: 10
+        num_images:
+          type: integer
+          title: Num Images
+          default: 5
+        enable_search_classifier:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Enable Search Classifier
+        disable_search:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Disable Search
+        search_domain_filter:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Search Domain Filter
+        search_language_filter:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Search Language Filter
+        search_tenant:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Search Tenant
+        ranking_model:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Ranking Model
+        latitude:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Latitude
+        longitude:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Longitude
+        country:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Country
+        search_recency_filter:
+          anyOf:
+            - type: string
+              enum:
+                - hour
+                - day
+                - week
+                - month
+                - year
+            - type: 'null'
+          title: Search Recency Filter
+        search_after_date_filter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Search After Date Filter
+        search_before_date_filter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Search Before Date Filter
+        last_updated_before_filter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Last Updated Before Filter
+        last_updated_after_filter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Last Updated After Filter
+        image_format_filter:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Image Format Filter
+        image_domain_filter:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Image Domain Filter
+        safe_search:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Safe Search
+          default: true
+        file_workspace_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: File Workspace Id
+        updated_before_timestamp:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Updated Before Timestamp
+        updated_after_timestamp:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Updated After Timestamp
+        search_internal_properties:
+          anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          title: Search Internal Properties
+        use_threads:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Use Threads
+        thread_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Thread Id
+        stream_mode:
           type: string
           enum:
-            - system
-            - user
-            - assistant
-          description: The role of the speaker in this conversation.
-    ChatCompletionsMessageContentChunk:
-      title: ChatCompletionsMessageContentChunk
+            - full
+            - concise
+          title: Stream Mode
+          default: full
+        _debug_pro_search:
+          type: boolean
+          title: Debug Pro Search
+          default: false
+        has_image_url:
+          type: boolean
+          title: Has Image Url
+          default: false
+        reasoning_effort:
+          anyOf:
+            - type: string
+              enum:
+                - minimal
+                - low
+                - medium
+                - high
+            - type: 'null'
+          title: Reasoning Effort
+        language_preference:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Language Preference
+        user_original_query:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: User Original Query
+        _force_new_agent:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Force New Agent
       type: object
+      required:
+        - model
+        - messages
+      title: ApiChatCompletionsRequest
+    CompletionResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        model:
+          type: string
+          title: Model
+        created:
+          type: integer
+          title: Created
+        usage:
+          anyOf:
+            - $ref: '#/components/schemas/UsageInfo'
+            - type: 'null'
+        object:
+          type: string
+          title: Object
+          default: chat.completion
+        choices:
+          items:
+            $ref: '#/components/schemas/Choice'
+          type: array
+          title: Choices
+        citations:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Citations
+        search_results:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ApiPublicSearchResult'
+              type: array
+            - type: 'null'
+          title: Search Results
+        type:
+          anyOf:
+            - $ref: '#/components/schemas/CompletionResponseType'
+            - type: 'null'
+        status:
+          anyOf:
+            - $ref: '#/components/schemas/CompletionResponseStatus'
+            - type: 'null'
+      type: object
+      required:
+        - id
+        - model
+        - created
+        - choices
+      title: CompletionResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ResponseFormatText:
       properties:
         type:
-          title: Content Part Type
           type: string
-          enum:
-            - text
-            - image_url
-          description: The type of the content part.
-        text:
-          title: Text Content
-          type: string
-          description: The text content of the part.
-        image_url:
-          title: Image URL Content
-          type: object
-          properties:
-            url:
-              title: Image URL
-              type: string
-              format: uri
-              description: URL for the image (base64 encoded data URI or HTTPS).
-          required:
-            - url
-          description: An object containing the URL of the image.
-        file_url:
-          title: File URL Content
-          type: object
-          properties:
-            url:
-              title: File URL
-              type: string
-              format: uri
-              description: URL for the file (base64 encoded data URI or HTTPS).
-          required:
-            - url
-          description: An object containing the URL of the file.
-        file_name:
-          title: File Name
-          type: string
-          description: The name of the file being referenced.
-          example: document.pdf
+          const: text
+          title: Type
+      type: object
       required:
         - type
-      description: Represents a part of a multimodal message content.
-    MediaResponseOverrides:
-      title: MediaResponseOverrides
-      type: object
-      description: >-
-        Configuration overrides for controlling specific types of media content
-        in API responses.
+      title: ResponseFormatText
+    ResponseFormatJSONSchema:
       properties:
-        return_videos:
-          title: Return Videos
-          type: boolean
-          default: false
-          description: >-
-            When set to true, enables video content to be returned in the
-            response. Videos will be included as part of the response structure
-            with URL and metadata.
-        return_images:
-          title: Return Images (Override)
-          type: boolean
-          default: false
-          description: >-
-            When set to true, enables image content to be returned in the
-            response. This overrides the top-level return_images parameter when
-            used within media_response.overrides.
-    VideoResult:
-      title: VideoResult
+        type:
+          type: string
+          const: json_schema
+          title: Type
+        json_schema:
+          $ref: '#/components/schemas/JSONSchema'
       type: object
-      description: Represents a video result returned when video content is enabled.
-      properties:
-        url:
-          title: Video URL
-          type: string
-          format: uri
-          description: The URL of the video.
-        thumbnail_url:
-          title: Thumbnail URL
-          type: string
-          format: uri
-          nullable: true
-          description: The URL of the video thumbnail image.
-        thumbnail_width:
-          title: Thumbnail Width
-          type: integer
-          nullable: true
-          description: The width of the thumbnail image in pixels.
-        thumbnail_height:
-          title: Thumbnail Height
-          type: integer
-          nullable: true
-          description: The height of the thumbnail image in pixels.
-        duration:
-          title: Duration
-          type: integer
-          nullable: true
-          description: The duration of the video in seconds.
       required:
-        - url
-    UsageInfo:
-      title: UsageInfo
+        - type
+        - json_schema
+      title: ResponseFormatJSONSchema
+    ResponseFormatRegex:
+      properties:
+        type:
+          type: string
+          const: regex
+          title: Type
+        regex:
+          $ref: '#/components/schemas/RegexSchema'
       type: object
+      required:
+        - type
+        - regex
+      title: ResponseFormatRegex
+    ChatMessage-Input:
+      properties:
+        role:
+          $ref: '#/components/schemas/ChatMessageRole'
+        content:
+          anyOf:
+            - type: string
+            - items:
+                anyOf:
+                  - $ref: '#/components/schemas/ChatMessageContentTextChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentImageChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentFileChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentPDFChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentVideoChunk'
+              type: array
+              title: Structured Content
+            - type: 'null'
+          title: Content
+        reasoning_steps:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ReasoningStep-Input'
+              type: array
+            - type: 'null'
+          title: Reasoning Steps
+        tool_calls:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ToolCall'
+              type: array
+            - type: 'null'
+          title: Tool Calls
+        tool_call_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Tool Call Id
+      type: object
+      required:
+        - role
+        - content
+      title: ChatMessage
+    ToolSpec:
+      properties:
+        type:
+          type: string
+          const: function
+          title: Type
+        function:
+          $ref: '#/components/schemas/FunctionSpec'
+      type: object
+      required:
+        - type
+        - function
+      title: ToolSpec
+    WebSearchOptions:
+      properties:
+        search_context_size:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+          title: Search Context Size
+          default: low
+        search_type:
+          anyOf:
+            - type: string
+              enum:
+                - fast
+                - pro
+                - auto
+            - type: 'null'
+          title: Search Type
+        user_location:
+          anyOf:
+            - $ref: '#/components/schemas/UserLocation'
+            - type: 'null'
+        image_results_enhanced_relevance:
+          type: boolean
+          title: Image Results Enhanced Relevance
+          default: false
+      type: object
+      title: WebSearchOptions
+    UsageInfo:
       properties:
         prompt_tokens:
+          type: integer
           title: Prompt Tokens
-          type: integer
         completion_tokens:
+          type: integer
           title: Completion Tokens
-          type: integer
         total_tokens:
+          type: integer
           title: Total Tokens
-          type: integer
         search_context_size:
+          anyOf:
+            - type: string
+            - type: 'null'
           title: Search Context Size
-          type: string
-          nullable: true
         citation_tokens:
+          anyOf:
+            - type: integer
+            - type: 'null'
           title: Citation Tokens
-          type: integer
-          nullable: true
         num_search_queries:
-          title: Number of Search Queries
-          type: integer
-          nullable: true
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Num Search Queries
         reasoning_tokens:
+          anyOf:
+            - type: integer
+            - type: 'null'
           title: Reasoning Tokens
-          type: integer
-          nullable: true
+        cost:
+          $ref: '#/components/schemas/Cost'
+      type: object
       required:
         - prompt_tokens
         - completion_tokens
         - total_tokens
-    ChatCompletionsChoice:
-      title: ChatCompletionsChoice
-      type: object
+        - cost
+      title: UsageInfo
+    Choice:
       properties:
         index:
-          title: Index
           type: integer
+          title: Index
         finish_reason:
+          anyOf:
+            - type: string
+              enum:
+                - stop
+                - length
+            - type: 'null'
           title: Finish Reason
-          type: string
-          enum:
-            - stop
-            - length
-          nullable: true
         message:
-          $ref: '#/components/schemas/ChatCompletionsMessage'
+          $ref: '#/components/schemas/ChatMessage-Output'
+        delta:
+          $ref: '#/components/schemas/ChatMessage-Output'
+      type: object
       required:
         - index
         - message
-    ChatCompletionsChunkChoice:
-      title: ChatCompletionsChunkChoice
-      type: object
-      properties:
-        index:
-          title: Index
-          type: integer
-        finish_reason:
-          title: Finish Reason
-          type: string
-          enum:
-            - stop
-            - length
-          nullable: true
-        delta:
-          $ref: '#/components/schemas/ChatCompletionsMessage'
-      required:
-        - index
         - delta
+      title: Choice
     ApiPublicSearchResult:
-      title: ApiPublicSearchResult
-      type: object
       properties:
         title:
+          type: string
           title: Title
-          type: string
         url:
-          title: URL
           type: string
-          format: uri
+          title: Url
         date:
+          anyOf:
+            - type: string
+            - type: 'null'
           title: Date
+        last_updated:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Last Updated
+        snippet:
           type: string
-          format: date
-          nullable: true
+          title: Snippet
+          default: ''
+        source:
+          type: string
+          enum:
+            - web
+            - attachment
+          title: Source
+          default: web
+      type: object
       required:
         - title
         - url
+      title: ApiPublicSearchResult
+    CompletionResponseType:
+      type: string
+      enum:
+        - message
+        - info
+        - end_of_stream
+      title: CompletionResponseType
+    CompletionResponseStatus:
+      type: string
+      enum:
+        - PENDING
+        - COMPLETED
+      title: CompletionResponseStatus
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    JSONSchema:
+      properties:
+        schema:
+          additionalProperties: true
+          type: object
+          title: Schema
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+          default: schema
+        description:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Description
+        strict:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Strict
+          default: true
+      type: object
+      required:
+        - schema
+      title: JSONSchema
+    RegexSchema:
+      properties:
+        regex:
+          type: string
+          title: Regex
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+        description:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Description
+        strict:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Strict
+      type: object
+      required:
+        - regex
+      title: RegexSchema
+    ChatMessageRole:
+      type: string
+      enum:
+        - system
+        - user
+        - assistant
+        - tool
+      title: ChatMessageRole
+      description: Chat roles enum
+    ChatMessageContentTextChunk:
+      properties:
+        type:
+          type: string
+          const: text
+          title: Type
+        text:
+          type: string
+          title: Text
+      type: object
+      required:
+        - type
+        - text
+      title: ChatMessageContentTextChunk
+    ChatMessageContentImageChunk:
+      properties:
+        type:
+          type: string
+          const: image_url
+          title: Type
+        image_url:
+          anyOf:
+            - $ref: '#/components/schemas/URL'
+            - type: string
+          title: Image Url
+      type: object
+      required:
+        - type
+        - image_url
+      title: ChatMessageContentImageChunk
+    ChatMessageContentFileChunk:
+      properties:
+        type:
+          type: string
+          const: file_url
+          title: Type
+        file_url:
+          anyOf:
+            - $ref: '#/components/schemas/URL'
+            - type: string
+          title: File Url
+        file_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: File Name
+      type: object
+      required:
+        - type
+        - file_url
+      title: ChatMessageContentFileChunk
+    ChatMessageContentPDFChunk:
+      properties:
+        type:
+          type: string
+          const: pdf_url
+          title: Type
+        pdf_url:
+          anyOf:
+            - $ref: '#/components/schemas/URL'
+            - type: string
+          title: Pdf Url
+      type: object
+      required:
+        - type
+        - pdf_url
+      title: ChatMessageContentPDFChunk
+    ChatMessageContentVideoChunk:
+      properties:
+        type:
+          type: string
+          const: video_url
+          title: Type
+        video_url:
+          anyOf:
+            - $ref: '#/components/schemas/VideoURL'
+            - type: string
+          title: Video Url
+      type: object
+      required:
+        - type
+        - video_url
+      title: ChatMessageContentVideoChunk
+    ReasoningStep-Input:
+      properties:
+        thought:
+          type: string
+          title: Thought
+        type:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Type
+        web_search:
+          anyOf:
+            - $ref: '#/components/schemas/WebSearchStepDetails'
+            - type: 'null'
+        fetch_url_content:
+          anyOf:
+            - $ref: '#/components/schemas/FetchUrlContentStepDetails'
+            - type: 'null'
+        execute_python:
+          anyOf:
+            - $ref: '#/components/schemas/ExecutePythonStepDetails'
+            - type: 'null'
+      type: object
+      required:
+        - thought
+      title: ReasoningStep
+      description: Reasoning step wrapper class
+    ToolCall:
+      properties:
+        id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Id
+        type:
+          anyOf:
+            - type: string
+              const: function
+            - type: 'null'
+          title: Type
+        function:
+          anyOf:
+            - $ref: '#/components/schemas/ToolCallFunction'
+            - type: 'null'
+      type: object
+      title: ToolCall
+    FunctionSpec:
+      properties:
+        name:
+          type: string
+          title: Name
+        description:
+          type: string
+          title: Description
+        parameters:
+          $ref: '#/components/schemas/ParameterSpec'
+        strict:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Strict
+      type: object
+      required:
+        - name
+        - description
+        - parameters
+      title: FunctionSpec
+    UserLocation:
+      properties:
+        latitude:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Latitude
+        longitude:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Longitude
+        country:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Country
+        city:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: City
+        region:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Region
+      type: object
+      title: UserLocation
+    Cost:
+      properties:
+        input_tokens_cost:
+          type: number
+          title: Input Tokens Cost
+        output_tokens_cost:
+          type: number
+          title: Output Tokens Cost
+        reasoning_tokens_cost:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Reasoning Tokens Cost
+        request_cost:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Request Cost
+        citation_tokens_cost:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Citation Tokens Cost
+        search_queries_cost:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Search Queries Cost
+        total_cost:
+          type: number
+          title: Total Cost
+      type: object
+      required:
+        - input_tokens_cost
+        - output_tokens_cost
+        - total_cost
+      title: Cost
+    ChatMessage-Output:
+      properties:
+        role:
+          $ref: '#/components/schemas/ChatMessageRole'
+        content:
+          anyOf:
+            - type: string
+            - items:
+                anyOf:
+                  - $ref: '#/components/schemas/ChatMessageContentTextChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentImageChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentFileChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentPDFChunk'
+                  - $ref: '#/components/schemas/ChatMessageContentVideoChunk'
+              type: array
+              title: Structured Content
+            - type: 'null'
+          title: Content
+        reasoning_steps:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ReasoningStep-Output'
+              type: array
+            - type: 'null'
+          title: Reasoning Steps
+        tool_calls:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/ToolCall'
+              type: array
+            - type: 'null'
+          title: Tool Calls
+        tool_call_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Tool Call Id
+      type: object
+      required:
+        - role
+        - content
+      title: ChatMessage
+    URL:
+      properties:
+        url:
+          type: string
+          title: Url
+      type: object
+      required:
+        - url
+      title: URL
+    VideoURL:
+      properties:
+        url:
+          type: string
+          title: Url
+        frame_interval:
+          anyOf:
+            - type: string
+            - type: integer
+          title: Frame Interval
+          default: 25
+      type: object
+      required:
+        - url
+      title: VideoURL
+    WebSearchStepDetails:
+      properties:
+        search_results:
+          items:
+            $ref: '#/components/schemas/ApiPublicSearchResult'
+          type: array
+          title: Search Results
+        search_keywords:
+          items:
+            type: string
+          type: array
+          title: Search Keywords
+      type: object
+      required:
+        - search_results
+        - search_keywords
+      title: WebSearchStepDetails
+      description: Web search step details wrapper class
+    FetchUrlContentStepDetails:
+      properties:
+        contents:
+          items:
+            $ref: '#/components/schemas/ApiPublicSearchResult'
+          type: array
+          title: Contents
+      type: object
+      required:
+        - contents
+      title: FetchUrlContentStepDetails
+      description: Fetch url content step details wrapper class
+    ExecutePythonStepDetails:
+      properties:
+        code:
+          type: string
+          title: Code
+        result:
+          type: string
+          title: Result
+      type: object
+      required:
+        - code
+        - result
+      title: ExecutePythonStepDetails
+      description: Code generation step details wrapper class
+    ToolCallFunction:
+      properties:
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+        arguments:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Arguments
+      type: object
+      title: ToolCallFunction
+    ParameterSpec:
+      properties:
+        type:
+          type: string
+          title: Type
+        properties:
+          additionalProperties: true
+          type: object
+          title: Properties
+        required:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Required
+        additional_properties:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Additional Properties
+      type: object
+      required:
+        - type
+        - properties
+      title: ParameterSpec
+    ReasoningStep-Output:
+      properties:
+        thought:
+          type: string
+          title: Thought
+        type:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Type
+        web_search:
+          anyOf:
+            - $ref: '#/components/schemas/WebSearchStepDetails'
+            - type: 'null'
+        fetch_url_content:
+          anyOf:
+            - $ref: '#/components/schemas/FetchUrlContentStepDetails'
+            - type: 'null'
+        execute_python:
+          anyOf:
+            - $ref: '#/components/schemas/ExecutePythonStepDetails'
+            - type: 'null'
+      type: object
+      required:
+        - thought
+      title: ReasoningStep
+      description: Reasoning step wrapper class
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
 
 ````

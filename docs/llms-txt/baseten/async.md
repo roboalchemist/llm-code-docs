@@ -1,268 +1,53 @@
 # Source: https://docs.baseten.co/inference/async.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async inference
 
 > Run asynchronous inference on deployed models
 
-Async requests are a "fire and forget" way of executing model inference requests. Instead of waiting for a response from a model, making an async request queues the request, and immediately returns with a request identifier. Optionally, async request results are sent via a `POST` request to a user-defined webhook upon completion.
-
-Use async requests for:
-
-* Long-running inference tasks that may otherwise hit request timeouts.
-* Batched inference jobs.
-* Prioritizing certain inference requests.
+Async inference is a *fire and forget* pattern for model requests. Instead of
+waiting for a response, you receive a request ID immediately while inference
+runs in the background. When complete, results are delivered to your webhook
+endpoint.
 
 <Note>
-  Async fast facts:
-
-  * Async requests can be made to any model—**no model code changes necessary**.
-  * Async requests can remain queued for up to 72 hours and run for up to 1 hour.
-  * Async requests are **not** compatible with streaming model output.
-  * Async request inputs and model outputs are **not** stored after an async request has been completed. Instead, model outputs will be sent to your webhook via a `POST` request.
+  Async requests work with any deployed model, no code changes are required.
+  Requests can queue for up to 72 hours and run for up to 1 hour. Async inference is not
+  compatible with streaming output.
 </Note>
+
+Use async inference for:
+
+* **Long-running tasks** that would otherwise hit request timeouts.
+* **Batch processing** where you don't need immediate responses.
+* **Priority queuing** to serve VIP customers faster.
+
+<Warning>
+  Baseten does not store model outputs. If webhook delivery fails after all retries,
+  your data is lost. See [Webhook delivery](#webhook-delivery) for mitigation
+  strategies.
+</Warning>
 
 ## Quick start
 
-There are two ways to use async inference:
+<Steps>
+  <Step title="Set up a webhook endpoint">
+    Create an HTTPS endpoint to receive results.
+    Use [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point, or deploy to any service that can receive POST requests.
+  </Step>
 
-1. Provide a webhook endpoint where model outputs will be sent via a `POST` request. If providing a webhook, you can **use async inference on any model, without making any changes to your model code**.
-2. Inside your Truss' `model.py`, save prediction results to cloud storage. If a webhook endpoint is provided, your model outputs will also be sent to your webhook.
+  <Step title="Make an async request">
+    Call your model's `/async_predict` endpoint with your webhook URL:
 
-Note that Baseten **does not** store model outputs. If you do not wish to use a webhook, your `model.py` must write model outputs to a cloud storage bucket or database as part of its implementation.
-
-<Tabs>
-  <Tab title="Quick start with webhook">
-    <Steps>
-      <Step title="Setup webhook endpoint">
-        Set up a webhook endpoint for handling completed async requests. Since Baseten doesn't store model outputs, model outputs from async requests will be sent to your webhook endpoint.
-
-        Before creating your first async request, try running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Check out [this example webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-        We recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point.
-
-        <iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-      </Step>
-
-      <Step title="Schedule an async predict request">
-        Call `/async_predict` on your model. The body of an `/async_predict` request includes the model input in `model_input` field, with the addition of a webhook endpoint (from the previous step) in the `webhook_endpoint` field.
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""  # Replace this with your model ID
-        webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        # Call the async_predict endpoint of the production deployment
-        resp = requests.post(
-            f"https://model-{model_id}.api.baseten.co/production/async_predict",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"},
-            json={
-                "model_input": {"prompt": "hello world!"},
-                "webhook_endpoint": webhook_endpoint
-                # Optional fields for priority, max_time_in_queue_seconds, etc
-            },
-        )
-
-        print(resp.json())
-        ```
-
-        Save the `request_id` from the `/async_predict` response to check its status or cancel it.
-
-        ```json 201 theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba"
-        }
-        ```
-
-        See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
-      </Step>
-
-      <Step title="Check async predict results">
-        Using the `request_id` saved from the previous step, check the status of your async predict request:
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""
-        request_id = ""
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        resp = requests.get(
-            f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"}
-        )
-
-        print(resp.json())
-        ```
-
-        Once your model has finished executing the request, the async predict result will be sent to your webhook in a `POST` request.
-
-        ```json  theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba",
-          "model_id": "my_model_id",
-          "deployment_id": "my_deployment_id",
-          "type": "async_request_completed",
-          "time": "2024-04-30T01:01:08.883423Z",
-          "data": {
-            "my_model_output": "hello world!"
-          },
-          "errors": []
-        }
-        ```
-      </Step>
-
-      <Step title="Secure your webhook">
-        We strongly recommend securing the requests sent to your webhooks to validate that they are from Baseten.
-
-        For instructions, see our [guide to securing async requests](/inference/async#securing-async-inference).
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="Quick start with saving model outputs">
-    <Steps>
-      <Step title="Update your model to save prediction results">
-        Update your Truss's `model.py` to save prediction results to cloud storage, such as S3 or GCS. We recommend implementing this in your model's `postprocess()` method, which will run on CPU after the prediction has completed.
-      </Step>
-
-      <Step title="Setup webhook endpoint">
-        Optionally, set up a webhook endpoint so Baseten can notify you when your async request completes.
-
-        Before creating your first async request, try running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Check out [this example webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-        We recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point.
-
-        <iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-      </Step>
-
-      <Step title="Schedule an async predict request">
-        Call `/async_predict` on your model. The body of an `/async_predict` request includes the model input in `model_input` field, with the addition of a webhook endpoint (from the previous step) in the `webhook_endpoint` field.
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""  # Replace this with your model ID
-        webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        # Call the async_predict endpoint of the production deployment
-        resp = requests.post(
-            f"https://model-{model_id}.api.baseten.co/production/async_predict",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"},
-            json={
-                "model_input": {"prompt": "hello world!"},
-                "webhook_endpoint": webhook_endpoint
-                # Optional fields for priority, max_time_in_queue_seconds, etc
-            },
-        )
-
-        print(resp.json())
-        ```
-
-        Save the `request_id` from the `/async_predict` response to check its status or cancel it.
-
-        ```json 201 theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba"
-        }
-        ```
-
-        See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
-      </Step>
-
-      <Step title="Check async predict results">
-        Using the `request_id` saved from the previous step, check the status of your async predict request:
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""
-        request_id = ""
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        resp = requests.get(
-            f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"}
-        )
-
-        print(resp.json())
-        ```
-
-        Once your model has finished executing the request, the async predict result will be sent to your webhook in a `POST` request.
-
-        ```json  theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba",
-          "model_id": "my_model_id",
-          "deployment_id": "my_deployment_id",
-          "type": "async_request_completed",
-          "time": "2024-04-30T01:01:08.883423Z",
-          "data": {
-            "my_model_output": "hello world!"
-          },
-          "errors": []
-        }
-        ```
-      </Step>
-
-      <Step title="Secure your webhook">
-        We strongly recommend securing the requests sent to your webhooks to validate that they are from Baseten.
-
-        For instructions, see our [guide to securing async requests](/inference/async#securing-async-inference).
-      </Step>
-    </Steps>
-  </Tab>
-</Tabs>
-
-<Tip>
-  **Chains**: this guide is written for Truss models, but
-  [Chains](/development/chain/overview) support async inference likewise. An
-  Chain entrypoint can be invoked via its `async_run_remote` endpoint, e.g.
-  `https://chain-{chain_id}.api.baseten.co/production/async_run_remote`. The
-  internal Chainlet-Chainlet call will still run synchronously.
-</Tip>
-
-## User guide
-
-### Configuring the webhook endpoint
-
-Configure your webhook endpoint to handle `POST` requests with [async predict results](/inference/async#processing-async-predict-results). We require that webhook endpoints use HTTPS.
-
-We recommend running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Try running [this webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-For local development, we recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point. This code validates the webhook request and logs the payload.
-
-<iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-
-### Making async requests
-
-<Tabs>
-  <Tab title="Production deployment">
-    ```py Python theme={"system"}
+    ```python  theme={"system"}
     import requests
     import os
 
-    model_id = ""  # Replace this with your model ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
+    model_id = "YOUR_MODEL_ID"
+    webhook_endpoint = "YOUR_WEBHOOK_ENDPOINT"
     baseten_api_key = os.environ["BASETEN_API_KEY"]
 
     # Call the async_predict endpoint of the production deployment
@@ -271,261 +56,411 @@ For local development, we recommend using [this Repl](https://replit.com/@basete
         headers={"Authorization": f"Api-Key {baseten_api_key}"},
         json={
             "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
+            "webhook_endpoint": webhook_endpoint,
+            # "priority": 0,
+            # "max_time_in_queue_seconds": 600,
         },
     )
 
     print(resp.json())
     ```
-  </Tab>
 
-  <Tab title="Development deployment">
-    ```py Python theme={"system"}
-    import requests
-    import os
+    You'll receive a `request_id` immediately.
+  </Step>
 
-    model_id = ""  # Replace this with your model ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+  <Step title="Receive results">
+    When inference completes, Baseten sends a POST request to your webhook with the model output.
+    See [Webhook payload](#webhook-payload) for the response format.
+  </Step>
+</Steps>
 
-    # Call the async_predict endpoint of the development deployment
-    resp = requests.post(
-        f"https://model-{model_id}.api.baseten.co/development/async_predict",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"},
-        json={
-            "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
-        },
-    )
+<Tip>
+  **Chains** support async inference through `async_run_remote`.
+  Inference requests to the entrypoint are queued, but internal Chainlet-to-Chainlet calls run synchronously.
+</Tip>
 
-    print(resp.json())
-    ```
-  </Tab>
+## How async works
 
-  <Tab title="Other published deployments">
-    ```py Python theme={"system"}
-    import requests
-    import os
+Async inference decouples request submission from processing, letting you queue work without waiting for results.
 
-    model_id = ""  # Replace this with your model ID
-    deployment_id = "" # Replace this with your deployment ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+### Request lifecycle
 
-    # Call the async_predict endpoint of the given deployment
-    resp = requests.post(
-        f"https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/async_predict",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"},
-        json={
-            "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
-        },
-    )
+When you submit an async request:
 
-    print(resp.json())
-    ```
-  </Tab>
-</Tabs>
+1. You call `/async_predict` and immediately receive a `request_id`.
+2. Your request enters a queue managed by the Async Request Service.
+3. A background worker picks up your request and calls your model's predict endpoint.
+4. Your model runs inference and returns a response.
+5. Baseten sends the response to your webhook URL using POST.
 
-Create an async request by calling a model's `/async_predict` endpoint. See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
+The `max_time_in_queue_seconds` parameter controls how long a request waits
+before expiring. It defaults to 10 minutes but can extend to 72 hours.
 
-### Getting and canceling async requests
+### Autoscaling behavior
 
-<Tabs>
-  <Tab title="Get async request details">
-    <Info> You may get the status of an async request for up to 1 hour after the request has been completed. </Info>
+The async queue is decoupled from model scaling. Requests queue successfully
+even when your model has zero replicas.
 
-    ```py Python theme={"system"}
-    import requests
-    import os
+When your model is scaled to zero:
 
-    model_id = ""
-    request_id = ""
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+1. Your request enters the queue while the model has no running replicas.
+2. The queue processor attempts to call your model, triggering the autoscaler.
+3. Your request waits while the model cold-starts.
+4. Once the model is ready, inference runs and completes.
+5. Baseten delivers the result to your webhook.
 
-    resp = requests.get(
-        f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"}
-    )
+If the model doesn't become ready within `max_time_in_queue_seconds`, the
+request expires with status `EXPIRED`. Set this parameter to account for your
+model's startup time. For models with long cold starts, consider keeping minimum
+replicas running using
+[autoscaling settings](/deployment/autoscaling).
 
-    print(resp.json())
-    ```
-  </Tab>
+### Async priority
 
-  <Tab title="Cancel async request">
-    ```py Python theme={"system"}
-    import requests
-    import os
+Async requests are subject to two levels of priority: how they compete with sync
+requests for model capacity, and how they're ordered relative to other async
+requests in the queue.
 
-    model_id = ""
-    request_id = ""
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+#### Sync vs async concurrency
 
-    resp = requests.delete(
-        f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"}
-    )
+Sync and async requests share your model's concurrency pool, controlled by
+`predict_concurrency` in your model configuration:
 
-    print(resp.json())
-    ```
-  </Tab>
-</Tabs>
+```yaml config.yaml theme={"system"}
+runtime:
+  predict_concurrency: 10
+```
 
-Manage async requests using the [get async request API endpoint](/reference/inference-api/status-endpoints/get-async-request-status) and the [cancel async request API endpoint](/reference/inference-api/predict-endpoints/cancel-async-request).
+The `predict_concurrency` setting defines how many requests your model can
+process simultaneously per replica. When both sync and async requests are in
+flight, sync requests take priority. The queue processor monitors your model's
+capacity and backs off when it receives 429 responses, ensuring sync traffic
+isn't starved.
 
-### Processing async predict results
+For example, if your model has `predict_concurrency=10` and 8 sync requests are
+running, only 2 slots remain for async requests. The remaining async requests
+stay queued until capacity frees up.
 
-Baseten does not store async predict results. Ensure that prediction outputs are either processed by your webhook, or saved to cloud storage in your model code (for example, in your model's `postprocess` method).
+#### Async queue priority
 
-If a webhook endpoint was provided in the `/async_predict` request, the async predict results will be sent in a `POST` request to the webhook endpoint. Errors in executing the async prediction will be included in the `errors` field of the async predict result.
+Within the async queue itself, you can control processing order using the
+`priority` parameter. This is useful for serving specific requests faster or
+ensuring critical batch jobs run before lower-priority work.
 
-Async predict result schema:
+```python  theme={"system"}
+import requests
+import os
 
-* `request_id` (string): the ID of the completed async request. This matches the `request_id` field of the `/async_predict` response.
-* `model_id` (string): the ID of the model that executed the request
-* `deployment_id` (string): the ID of the deployment that executed the request
-* `type` (string): the type of the async predict result. This will always be `"async_request_completed"`, even in error cases.
-* `time` (datetime): the time in UTC at which the request was sent to the webhook
-* `data` (dict or string): the prediction output
-* `errors` (list): any errors that occurred in processing the async request
+model_id = "YOUR_MODEL_ID"
+webhook_endpoint = "YOUR_WEBHOOK_URL"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
 
-Example async predict result:
+resp = requests.post(
+    f"https://model-{model_id}.api.baseten.co/production/async_predict",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"},
+    json={
+        "webhook_endpoint": webhook_endpoint,
+        "model_input": {"prompt": "hello world!"},
+        "priority": 0,
+    },
+)
+
+print(resp.json())
+```
+
+The `priority` parameter accepts values 0, 1, or 2. Lower values indicate higher
+priority: a request with `priority: 0` is processed before requests with
+`priority: 1` or `priority: 2`. If you don't specify a priority, requests
+default to priority 1.
+
+Use priority 0 sparingly for truly urgent requests. If all requests are marked
+priority 0, the prioritization has no effect.
+
+## Webhooks
+
+Baseten delivers async results to your webhook endpoint when inference completes.
+
+### Request format
+
+When inference completes, Baseten sends a POST request to your webhook with these headers and body:
+
+```text  theme={"system"}
+POST /your-webhook-path HTTP/2.0
+Content-Type: application/json
+X-BASETEN-REQUEST-ID: 9876543210abcdef1234567890fedcba
+X-BASETEN-SIGNATURE: v1=abc123...
+```
+
+The `X-BASETEN-REQUEST-ID` header contains the request ID for correlating webhooks with your original requests.
+The `X-BASETEN-SIGNATURE` header is only included if a [webhook secret](#secure-webhooks) is configured.
+
+<Note>
+  Webhook endpoints must use HTTPS (except `localhost` for development). Baseten
+  supports HTTP/2 and HTTP/1.1 connections.
+</Note>
 
 ```json  theme={"system"}
 {
   "request_id": "9876543210abcdef1234567890fedcba",
-  "model_id": "my_model_id",
-  "deployment_id": "my_deployment_id",
+  "model_id": "abc123",
+  "deployment_id": "def456",
   "type": "async_request_completed",
   "time": "2024-04-30T01:01:08.883423Z",
-  "data": {
-    "my_model_output": "hello world!"
-  },
+  "data": { "output": "model response here" },
   "errors": []
 }
 ```
 
+The body contains the `request_id` matching your original `/async_predict`
+response, along with `model_id` and `deployment_id` identifying which deployment
+ran the request. The `data` field contains your model output, or `null` if an
+error occurred. The `errors` array is empty on success, or contains error
+objects on failure.
+
+### Webhook delivery
+
+<Warning>
+  If all delivery attempts fail, your model output is permanently lost.
+</Warning>
+
+Baseten delivers webhooks on a best-effort basis with automatic retries:
+
+| Setting         | Value                      |
+| --------------- | -------------------------- |
+| Total attempts  | 3 (1 initial + 2 retries). |
+| Backoff         | 1 second, then 4 seconds.  |
+| Timeout         | 10 seconds per attempt.    |
+| Retryable codes | 500, 502, 503, 504.        |
+
+**To prevent data loss:**
+
+1. **Save outputs in your model.** Use the `postprocess()` function to write to
+   cloud storage:
+
+```python  theme={"system"}
+import json
+import boto3
+
+class Model:
+  # ...
+    def postprocess(self, model_output):
+        s3 = boto3.client("s3")
+        s3.put_object(
+            Bucket="my-bucket",
+            Key=f"outputs/{self.context.get('request_id')}.json",
+            Body=json.dumps(model_output)
+        )
+        return model_output
+```
+
+This will process your model output and save it to your desired location.
+
+The `postprocess` method runs after inference completes. Use
+`self.context.get('request_id')` to access the async request ID for correlating
+outputs with requests.
+
+2. **Use a reliable endpoint.** Deploy your webhook to a highly available
+   service like a cloud function or message queue.
+
+### Secure webhooks
+
+Create a webhook secret in the
+[Secrets tab](https://app.baseten.co/settings/secrets) to verify requests are
+from Baseten.
+
+When configured, Baseten includes an `X-BASETEN-SIGNATURE` header:
+
+```text  theme={"system"}
+X-BASETEN-SIGNATURE: v1=abc123...
+```
+
+To validate, compute an HMAC-SHA256 of the request body using your secret and compare:
+
+```python  theme={"system"}
+import hashlib
+import hmac
+
+def verify_signature(body: bytes, signature: str, secret: str) -> bool:
+    expected = hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
+    actual = signature.replace("v1=", "").split(",")[0]
+    return hmac.compare_digest(expected, actual)
+```
+
+The function computes an HMAC-SHA256 hash of the raw request body using your
+webhook secret. It extracts the signature value after `v1=` and uses
+`compare_digest` for timing-safe comparison to prevent timing attacks.
+
+Rotate secrets periodically. During rotation, both old and new secrets remain
+valid for 24 hours.
+
+## Manage requests
+
+You can check the status of async requests or cancel them while they're queued.
+
+### Check request status
+
+To check the status of an async request, call the status endpoint with your request ID:
+
+```python  theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+request_id = "YOUR_REQUEST_ID"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.get(
+    f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"}
+)
+
+print(resp.json())
+```
+
+Status is available for 1 hour after completion. See the
+[status API reference](/reference/inference-api/status-endpoints/get-async-request-status)
+for details.
+
+| Status           | Description                                      |
+| ---------------- | ------------------------------------------------ |
+| `QUEUED`         | Waiting in queue.                                |
+| `IN_PROGRESS`    | Currently processing.                            |
+| `SUCCEEDED`      | Completed successfully.                          |
+| `FAILED`         | Failed after retries.                            |
+| `EXPIRED`        | Exceeded `max_time_in_queue_seconds`.            |
+| `CANCELED`       | Canceled by user.                                |
+| `WEBHOOK_FAILED` | Inference succeeded but webhook delivery failed. |
+
+### Cancel a request
+
+Only `QUEUED` requests can be canceled. To cancel a request, call the cancel
+endpoint with your request ID:
+
+```python  theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+request_id = "YOUR_REQUEST_ID"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.delete(
+    f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"}
+)
+
+print(resp.json())
+```
+
+For more information, see the [cancel async request API reference](/reference/inference-api/predict-endpoints/cancel-async-request).
+
+## Error codes
+
+When inference fails, the webhook payload returns an `errors` array:
+
+```json  theme={"system"}
+{
+  "errors": [{ "code": "MODEL_PREDICT_ERROR", "message": "Details here" }]
+}
+```
+
+| Code                    | HTTP    | Description                     | Retried |
+| ----------------------- | ------- | ------------------------------- | ------- |
+| `MODEL_NOT_READY`       | 400     | Model is loading or starting.   | Yes     |
+| `MODEL_DOES_NOT_EXIST`  | 404     | Model or deployment not found.  | No      |
+| `MODEL_INVALID_INPUT`   | 422     | Invalid input format.           | No      |
+| `MODEL_PREDICT_ERROR`   | 500     | Exception in `model.predict()`. | Yes     |
+| `MODEL_UNAVAILABLE`     | 502/503 | Model crashed or scaling.       | Yes     |
+| `MODEL_PREDICT_TIMEOUT` | 504     | Inference exceeded timeout.     | Yes     |
+
+### Inference retries
+
+When inference fails with a retryable error, Baseten automatically retries the
+request using exponential backoff. Configure this behavior with
+`inference_retry_config`:
+
+```python  theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+webhook_endpoint = "YOUR_WEBHOOK_URL"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.post(
+    f"https://model-{model_id}.api.baseten.co/production/async_predict",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"},
+    json={
+        "model_input": {"prompt": "hello world!"},
+        "webhook_endpoint": webhook_endpoint,
+        "inference_retry_config": {
+            "max_attempts": 3,
+            "initial_delay_ms": 1000,
+            "max_delay_ms": 5000
+        }
+    },
+)
+
+print(resp.json())
+```
+
+| Parameter          | Range    | Default | Description                                      |
+| ------------------ | -------- | ------- | ------------------------------------------------ |
+| `max_attempts`     | 1-10     | 3       | Total inference attempts including the original. |
+| `initial_delay_ms` | 0-10,000 | 1000    | Delay before the first retry (ms).               |
+| `max_delay_ms`     | 0-60,000 | 5000    | Maximum delay between retries (ms).              |
+
+Retries use exponential backoff with a multiplier of 2. With the default
+configuration, delays progress as: 1s → 2s → 4s → 5s (capped at `max_delay_ms`).
+
+Only requests that fail with retryable error codes (500, 502, 503, 504) are
+retried. Non-retryable errors like invalid input (422) or model not found (404)
+fail immediately.
+
+<Note>
+  Inference retries are distinct from [webhook delivery retries](#webhook-delivery).
+  Inference retries happen when calling your model fails. Webhook retries happen
+  when delivering results to your endpoint fails.
+</Note>
+
+## Rate limits
+
+There are rate limits for the async predict endpoint and the status polling endpoint.
+If you exceed these limits, you will receive a 429 status code.
+
+| Endpoint                                     | Limit                               |
+| -------------------------------------------- | ----------------------------------- |
+| Predict endpoint requests (`/async_predict`) | 12,000 requests/minute (org-level). |
+| Status polling                               | 20 requests/second.                 |
+| Cancel request                               | 20 requests/second.                 |
+
+Use webhooks instead of polling to avoid status endpoint limits. Contact
+[support@baseten.co](mailto:support@baseten.co) to request increases.
+
 ## Observability
 
-Metrics for async request execution are available on the [Metrics tab](/observability/metrics#async-queue-metrics) of your model dashboard.
+Async metrics are available on the
+[Metrics tab](/observability/metrics#async-queue-metrics) of your model
+dashboard:
 
-* Async requests are included in inference latency and volume metrics.
-* A time in async queue chart displays the time an async predict request spent in the `QUEUED` state before getting processed by the model.
-* A async queue size chart displays the current number of queued async predict requests.
+* **Inference latency/volume**: includes async requests.
+* **Time in async queue**: time spent in `QUEUED` state.
+* **Async queue size**: number of queued requests.
 
-<Frame caption="The time in async queue chart.">
+<Frame caption="Async queue metrics in the dashboard">
   <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1dad9805fe14469dcec6d4a34de6177d" data-og-width="1183" width="1183" data-og-height="674" height="674" data-path="images/async-metrics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=45f877ef07f77b697b8c32b29fd89ace 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=0eff92e843c7801b7fe1c708ae424df9 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=bac3852551a0194b12cdd376a3221a1d 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5c44d8f82786d4fd3511f9cbca34d1ea 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=47e9439cda73a7709776ad4a8c802562 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c4400b8e7eec5caaacd4dd23ba2f922f 2500w" />
 </Frame>
 
-# Securing async inference
+## Resources
 
-Since async predict results are sent to a webhook available to anyone over the internet with the endpoint, you'll want to have some verification that these results sent to the webhook are actually coming from Baseten.
+For more information and resources, see the following:
 
-We recommend leveraging webhook signatures to secure webhook payloads and ensure they are from Baseten.
+<CardGroup cols={2}>
+  <Card title="Webhook starter code" icon="code" href="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code">
+    Fork this Repl to quickly set up a webhook endpoint for testing async inference.
+  </Card>
 
-This is a two-step process:
-
-1. Create a webhook secret.
-2. Validate a webhook signature sent as a header along with the webhook request payload.
-
-## Creating webhook secrets
-
-Webhook secrets can be generated via the [Secrets tab](https://app.baseten.co/settings/secrets).
-
-<Frame caption="Generate a webhook secret with the &#x22;Add webhook secret&#x22; button.">
-  <img src="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=21bbb82f4d935acb8d2bef093976ee5c" data-og-width="1276" width="1276" data-og-height="387" height="387" data-path="images/webhook-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=280&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=6363c0d708393aae40a2dea2552fef05 280w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=560&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=9d8e6ca890928b6b17c06fc964c8d07d 560w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=840&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=35f91f3f4cf3ab3c91a23be8e65c20ac 840w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=1100&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=1eddd1a9b52b0d959bb7108772933973 1100w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=1650&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=42d2b29476c3e1e3ef2ac11b5f7eb73a 1650w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=2500&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=19a19ea3aec8c1d8854bf61f23c7893e 2500w" />
-</Frame>
-
-A webhook secret looks like:
-
-```
-whsec_AbCdEf123456GhIjKlMnOpQrStUvWxYz12345678
-```
-
-Ensure this webhook secret is saved securely. It can be viewed at any time and [rotated if necessary](/inference/async#creating-webhook-secrets) in the Secrets tab.
-
-## Validating webhook signatures
-
-If a webhook secret exists, Baseten will include a webhook signature in the `"X-BASETEN-SIGNATURE"` header of the webhook request so you can verify that it is coming from Baseten.
-
-A Baseten signature header looks like:
-
-`"X-BASETEN-SIGNATURE": "v1=signature"`
-
-Where `signature` is an [HMAC](https://docs.python.org/3.12/library/hmac.html#module-hmac) generated using a [SHA-256](https://en.wikipedia.org/wiki/SHA-2) hash function calculated over the whole async predict result and signed using a webhook secret.
-
-If multiple webhook secrets are active, a signature will be generated using each webhook secret. In the example below, the newer webhook secret was used to create `newsignature` and the older (soon to expire) webhook secret was used to create `oldsignature`.
-
-`"X-BASETEN-SIGNATURE": "v1=newsignature,v1=oldsignature"`
-
-To validate a Baseten signature, we recommend the following. A full Baseten signature validation example can be found in [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#validation.py).
-
-<Steps>
-  <Step title="Compare timestamps">
-    Compare the async predict result timestamp with the current time and decide if it was received within an acceptable tolerance window.
-
-    ```python  theme={"system"}
-    TIMESTAMP_TOLERANCE_SECONDS = 300
-
-    # Check timestamp in async predict result against current time to ensure its within our tolerance
-    if (datetime.now(timezone.utc) -
-        async_predict_result.time).total_seconds() > TIMESTAMP_TOLERANCE_SECONDS:
-      logging.error(
-          f"Async predict result was received after {TIMESTAMP_TOLERANCE_SECONDS} seconds and is considered stale, Baseten signature was not validated."
-      )
-    ```
-  </Step>
-
-  <Step title="Recompute Baseten signature">
-    Recreate the Baseten signature using webhook secret(s) and the async predict result.
-
-    ```python  theme={"system"}
-    WEBHOOK_SECRETS = [] # Add your webhook secrets here
-
-    async_predict_result_json = async_predict_result.model_dump_json()
-
-    # We recompute expected Baseten signatures with each webhook secret
-    for webhook_secret in WEBHOOK_SECRETS:
-      for actual_signature in baseten_signature.replace("v1=", "").split(","):
-        expected_signature = hmac.digest(
-            webhook_secret.encode("utf-8"),
-            async_predict_result_json.encode("utf-8"),
-            hashlib.sha256,
-        ).hex()
-    ```
-  </Step>
-
-  <Step title="Compare signatures">
-    Compare the expected Baseten signature with the actual computed signature using [`compare_digest`](https://docs.python.org/3/library/hmac.html#hmac.compare_digest), which will return a boolean representing whether the signatures are indeed the same.
-
-    ```python  theme={"system"}
-    hmac.compare_digest(expected_signature, actual_signature)
-    ```
-  </Step>
-</Steps>
-
-## Keeping webhook secrets secure
-
-<Tip> We recommend periodically rotating webhook secrets. </Tip>
-
-In the event that a webhook secret is exposed, you're able to rotate or remove it.
-
-Rotating a secret in the UI will set the existing webhook secret to expire in 24 hours, and generate a new webhook secret. During this period, Baseten will include multiple signatures in the signature headers.
-
-Removing webhook secrets could cause your signature validation to fail. Recreate a webhook secret after deleting and ensure your signature validation code is up to date with the new webhook secret.
-
-## FAQs
-
-### Can I run sync and async requests on the same model?
-
-Yes, you can run both sync and async requests on the same model. Sync requests always take priority over async requests. Keep the following in mind:
-
-* **Rate Limits**: Ensure you adhere to rate limits, as they apply to async requests. [Learn more](/reference/inference-api/predict-endpoints/environments-async-predict#rate-limits)
-* **Concurrency**: Both sync and async requests count toward the total number of concurrent requests. [Learn more](/development/model/performance/concurrency)
+  <Card title="Webhook secrets" icon="key" href="https://app.baseten.co/settings/secrets">
+    Configure webhook secrets in your Baseten settings to secure webhook delivery.
+  </Card>
+</CardGroup>

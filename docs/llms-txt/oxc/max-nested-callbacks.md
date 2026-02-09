@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/max-nested-callbacks.md
 ---
-# eslint/max-nested-callbacks&#x20;
 
 ### What it does
 

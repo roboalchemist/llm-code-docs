@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/walkthroughs/Prompting.md
+# Source: https://exa.ai/docs/websets/dashboard/walkthroughs/Prompting.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prompting Websets
 
@@ -15,8 +19,3 @@ Websets is a web research agent designed to find a perfect list of results that 
 * Describing in detail the type of results you'd like. Common descriptors include location, size, theme, industry, qualifiers (e.g. have ISO certification, know rust), past experience etc.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rkXVtvVkqGs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

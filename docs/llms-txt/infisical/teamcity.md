@@ -2,21 +2,9 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/cloud/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/cloud/teamcity.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # TeamCity Connection
 
@@ -76,7 +64,7 @@ Infisical supports connecting to TeamCity using Access Tokens.
       <Tab title="Infisical UI">
         1. Navigate to App Connections
 
-           In your Infisical dashboard, navigate to the **App Connections** page in the desired project.
+           In your Infisical dashboard, navigate to the **Integrations** tab in the desired project, then select **App Connections**.
            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
         2. Add Connection
 

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/optimize/pdf-exports.md
+# Source: https://www.mintlify.com/docs/optimize/pdf-exports.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PDF exports
 
@@ -13,7 +17,7 @@ export const DownloadPDFButton = () => {
 
 
 <Info>
-  PDF exports are available on [Custom plans](https://mintlify.com/pricing).
+  PDF exports are available on [Enterprise plans](https://mintlify.com/pricing).
 </Info>
 
 You can export your docs as a single PDF file for offline viewing. The PDF will contain all the content in the docs, including images and links, and a navigable table of contents.

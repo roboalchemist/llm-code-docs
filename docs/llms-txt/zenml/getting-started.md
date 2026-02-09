@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/api-reference/oss-api/getting-started.md
 
-# Source: https://docs.zenml.io/api-reference/pro-api/getting-started.md
-
-# Source: https://docs.zenml.io/api-reference/oss-api/getting-started.md
-
 # Getting Started
 
 The ZenML OSS server is a FastAPI application, therefore the OpenAPI-compliant docs are available at `/docs` or `/redoc` of your ZenML server:

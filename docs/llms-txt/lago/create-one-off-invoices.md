@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/one-off-invoices/create-one-off-invoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Issue one-off invoices
 
 > One-off invoices allow you to bill immediately one or several add-ons to a customer.  This guide will show you how to create a one-off invoice for a specific customer using the add-ons.

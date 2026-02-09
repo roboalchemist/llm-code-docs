@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/variables/variable-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Types of variables
 
 > There are two types of variables: System Variable and Custom Variable. Learn how to use them in your chatbot.

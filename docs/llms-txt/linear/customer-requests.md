@@ -52,7 +52,7 @@ In most cases, customers will be created automatically through an integration at
 
 #### Manually
 
-If your organization does not use these integrations, you can create Customers manually instead. To do so, open the command menu with `CMD + K`, then type `customer`, then `Return`
+If your organization does not use these integrations, you can create Customers manually instead. To do so, open the command menu with `CMD + K`, then type `Create new customer`, then `Return`
 
 ## Customer requests
 

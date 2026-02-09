@@ -1,0 +1,90 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-thy.md
+
+---
+title: Verify User Who Owns Backup gshadow File
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > Verify User Who Owns Backup gshadow
+  File
+---
+
+# Verify User Who Owns Backup gshadow File
+ 
+## Description{% #description %}
+
+To properly set the owner of `/etc/gshadow-`, run the command:
+
+```
+$ sudo chown root /etc/gshadow- 
+```
+
+## Rationale{% #rationale %}
+
+The `/etc/gshadow-` file is a backup of `/etc/gshadow`, and as such, it contains group password hashes. Protection of this file is critical for system security.
+
+## Remediation{% #remediation %}
+
+### Shell script{% #shell-script %}
+
+The following script can be run on the host to remediate the issue.
+
+```bash
+#!/bin/bash
+
+if id "0" >/dev/null 2>&1; then
+  newown="0"
+fi
+if [[ -z ${newown} ]]; then
+  echo "0 is not a defined user on the system"
+  exit 1
+fi
+chown $newown /etc/gshadow-
+```
+
+### Ansible playbook{% #ansible-playbook %}
+
+The following playbook can be run with Ansible to remediate the issue.
+
+```gdscript3
+- name: Set the file_owner_backup_etc_gshadow_newown variable if represented by uid
+  set_fact:
+    file_owner_backup_etc_gshadow_newown: '0'
+  tags:
+  - NIST-800-53-AC-6 (1)
+  - PCI-DSS-Req-8.7
+  - configure_strategy
+  - file_owner_backup_etc_gshadow
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+
+- name: Test for existence /etc/gshadow-
+  stat:
+    path: /etc/gshadow-
+  register: file_exists
+  tags:
+  - NIST-800-53-AC-6 (1)
+  - PCI-DSS-Req-8.7
+  - configure_strategy
+  - file_owner_backup_etc_gshadow
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+
+- name: Ensure owner on /etc/gshadow-
+  file:
+    path: /etc/gshadow-
+    owner: '{{ file_owner_backup_etc_gshadow_newown }}'
+  when: file_exists.stat is defined and file_exists.stat.exists
+  tags:
+  - NIST-800-53-AC-6 (1)
+  - PCI-DSS-Req-8.7
+  - configure_strategy
+  - file_owner_backup_etc_gshadow
+  - low_complexity
+  - low_disruption
+  - medium_severity
+  - no_reboot_needed
+```

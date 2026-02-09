@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/how-to/manage-api-tokens.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Manage API Access Tokens and Refresh Tokens
 
 > Best practices for securely storing, refreshing, and rotating Smartcar API tokens.

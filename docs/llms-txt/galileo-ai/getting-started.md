@@ -10,41 +10,9 @@
 
 # Source: https://docs.galileo.ai/api-reference/getting-started.md
 
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/multi-label-text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/api-reference/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/multi-label-text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/api-reference/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/getting-started.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/multi-label-text-classification/getting-started.md
-
-# Source: https://docs.galileo.ai/api-reference/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference | Getting Started with Galileo
 
@@ -62,7 +30,7 @@ If you know the URL that you use to access the Galileo console, you can replace 
 
 To verify the base URL of your Galileo API instance, you can send a `GET` request to the [`healthcheck` endpoint](/api-reference/health/healthcheck).
 
-```bash
+```bash  theme={null}
 curl -X GET https://api.galileo.myenterprise.com/v1/healthcheck
 ```
 
@@ -74,7 +42,7 @@ For interacting with our public endpoints, you can use any of the following meth
 
 To use your [API key](/galileo/gen-ai-studio-products/galileo-evaluate/quickstart#getting-an-api-key) to authenticate your requests, include the key in the HTTP headers for your requests.
 
-```json
+```json  theme={null}
 { "Galileo-API-Key": "<my-api-key>" }
 ```
 
@@ -82,7 +50,7 @@ To use your [API key](/galileo/gen-ai-studio-products/galileo-evaluate/quickstar
 
 To use HTTP Basic Auth to authenticate your requests, include your username and password in the HTTP headers for your requests.
 
-```json
+```json  theme={null}
 { "Authorization": "Basic <base64encode(<my-galileo-username>:<my-galileo-password>)>" }
 ```
 
@@ -90,7 +58,7 @@ To use HTTP Basic Auth to authenticate your requests, include your username and 
 
 To use a JWT token to authenticate your requests, include the token in the HTTP headers for your requests.
 
-```json
+```json  theme={null}
 { "Authorization": "Bearer <my-jwt-token>" }
 ```
 

@@ -329,7 +329,7 @@ In this tutorial we have looked at using a simple _linear_ ranking function. Ves
 - [Ranking with LightGBM Models](../../ranking/lightgbm)
 - [Ranking with ONNX Models](../../ranking/onnx)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

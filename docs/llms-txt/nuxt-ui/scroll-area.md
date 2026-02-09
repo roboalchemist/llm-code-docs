@@ -83,11 +83,9 @@ const items = Array.from({ length: 30 }, (_, i) => ({
 </template>
 ```
 
-<tip to="#with-default-slot">
-
-You can also use the default slot without the `items` prop to render custom scrollable content directly.
-
-</tip>
+> [!TIP]
+> See: #with-default-slot
+> You can also use the default slot without the `items` prop to render custom scrollable content directly.
 
 ### Orientation
 
@@ -126,11 +124,8 @@ const items = Array.from({ length: 30 }, (_, i) => ({
 
 Use the `virtualize` prop to render only the items currently in view, significantly boosting performance when working with large datasets.
 
-<note>
-
-When virtualization is **enabled**, customize spacing via the `virtualize` prop options like `gap`, `paddingStart`, and `paddingEnd`. Otherwise, use the `ui` prop to apply classes like `gap p-4` on the `viewport` slot.
-
-</note>
+> [!NOTE]
+> When virtualization is enabled, customize spacing via the `virtualize` prop options like `gap`, `paddingStart`, and `paddingEnd`. Otherwise, use the `ui` prop to apply classes like `gap p-4` on the `viewport` slot.
 
 ```vue [ScrollAreaVirtualizeExample.vue]
 <script setup lang="ts">
@@ -224,11 +219,8 @@ const items = Array.from({ length: 1000 }).map((_, index) => {
 </template>
 ```
 
-<tip>
-
-For optimal performance, set `estimateSize` close to your average item height. Increasing `overscan` improves scrolling smoothness but renders more off-screen items.
-
-</tip>
+> [!TIP]
+> For optimal performance, set `estimateSize` close to your average item height. Increasing `overscan` improves scrolling smoothness but renders more off-screen items.
 
 ### With responsive lanes
 
@@ -464,7 +456,7 @@ interface ScrollAreaProps {
   /**
    * Array of items to render.
    */
-  items?: unknown[] | undefined;
+  items?: T[] | undefined;
   /**
    * Enable virtualization for large lists.
    * @default "false"
@@ -641,8 +633,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

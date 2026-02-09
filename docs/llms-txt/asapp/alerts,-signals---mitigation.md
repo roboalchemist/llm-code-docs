@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/alerts,-signals---mitigation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Alerts, Signals & Mitigation
 
 > Use alerts, signals, and mitigation measures to improve agent task efficiency.
 
 To improve user focus and task efficiency, ASAPP elevates various alerts and signals within Live Insights.
 
-These alerts notify users when performance is degrading, when events are detected, or when high queue mitigation measures can be activated based on volume.
+These alerts notify users when performance is degrading, when the system detects events, or when high queue mitigation measures can be activated based on volume.
 
 ## Type of Alerts
 
@@ -16,7 +20,7 @@ These alerts notify users when performance is degrading, when events are detecte
 
 Live Insights displays four alert types:
 
-1. **Metric Highlighting**: Highlights metrics that are above their target threshold within Live Insights. You can see the highlights on the Overview page, as well as within single queues and queue groups. The alert will persist until the metric's performance returns below its threshold.
+1. **Metric Highlighting**: Highlights metrics that are above their target threshold within Live Insights. The system shows the highlights on the Overview page, as well as within single queues and queue groups. The alert will persist until the metric's performance returns below its threshold.
 2. **Event-based Alerts**: Detects and records events per conversation and displays them in the conversation activity table.
 3. **High Queue Mitigation**: Activates when the queue volume exceeds the target threshold. When active, you can use mitigation measures to reduce queue volume impacts.
 4. **High Effort Issue**: Indicates when a high effort issue is awaiting assignment and is currently blocking other issues from being assigned.
@@ -33,13 +37,13 @@ The alert persists until the metric's performance returns below its threshold.
 
 Where metrics are highlighted:
 
-1. **Conversation performance**: You can highlight both 'average handle time' and 'average response time'.
+1. **Conversation performance**: The system can highlight both 'average handle time' and 'average response time'.
 2. **Agent performance**: 'Time in status', 'average handle time', and 'average response time'.
-3. **Queue performance**: You can highlight queue-level metrics within a single queue, queue groups, or on the Overview page.
+3. **Queue performance**: The system can highlight queue-level metrics within a single queue, queue groups, or on the Overview page.
 
 ## Event-based Alerts
 
-Events are generated from actions taken by agents, customers or you.
+Agents, customers, or you generate events from actions taken.
 
 Live Insights detects and records these events and displays them alongside conversation data, within the 'alert' column.
 
@@ -47,7 +51,7 @@ Live Insights detects and records these events and displays them alongside conve
   <img src="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=e8eae575ac6a12a0ffb7b1ffaea3faab" data-og-width="1698" width="1698" data-og-height="594" height="594" data-path="images/messaging-platform/insights-manager/event-based-alerts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=280&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=a857e29fcdc5c7717c594f0f08ff074c 280w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=560&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=2db89ca270a368b5fd3fd29811f0d87d 560w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=840&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=66a2904939fdd00538e6c64707ded821 840w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=1100&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=4058f135c4d1dd9203d262acd1c86545 1100w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=1650&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=100c9b5b62ce0747c2fb547d61975b59 1650w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/event-based-alerts.png?w=2500&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=66611e03058df58d633863489d28a20b 2500w" />
 </Frame>
 
-1. **Conversation events**: These events are related to a unique conversation. The events can be generated from agent actions or your actions.
+1. **Conversation events**: These events are related to a unique conversation. Agent actions or your actions can generate the events.
    * **Customer transfers**: When an agent transfers a customer, Live Insights displays an alert next to the conversation.
    * **Whisper sent**: When you send a whisper message to an agent, Live Insights records and displays the event next to the conversation.
 2. **Agent events**: These events impact the agent workload and help you contextualize agent performance. Live Insights displays the events for all targeted agents, within the Agent Performance panel.
@@ -114,7 +118,7 @@ Live Insights highlights metrics when they reach past a threshold defined for th
 
       <td class="td leftcol">
         <ul>
-          <li><p>Estimated Wait Time messaging is replaced with a custom message.</p></li>
+          <li><p>The system replaces Estimated Wait Time messaging with a custom message.</p></li>
           <li><p>Routing & assignment rules remain unchanged.</p></li>
         </ul>
       </td>
@@ -131,7 +135,7 @@ Live Insights highlights metrics when they reach past a threshold defined for th
       <td class="td leftcol">
         <ul>
           <li><p>Estimated Wait Time messaging is replaced with a custom message alerting users the queue is currently closed due to high volume.</p></li>
-          <li><p>Assignment to the queue is paused.</p></li>
+          <li><p>The system pauses assignment to the queue.</p></li>
           <li><p>Users currently in the queue remain in the queue.</p></li>
           <li><p>To time out users waiting in the queue, please contact ASAPP.</p></li>
         </ul>
@@ -148,7 +152,7 @@ Live Insights highlights metrics when they reach past a threshold defined for th
 
 1. **Mitigation menu options**: When available, Live Insights displays a menu on the relevant queue card in the Overview, as well as on the 'Performance' page of single queues and queue groups. To view those options, click the **menu** icon. The menu icon only displays when you highlight 'Queued'.
 2. **Select mitigation**: Based on the severity level, Live Insights displays different mitigation options. Select an **option** to activate it. To remove the mitigation behavior, select **Default behavior**.
-3. **Mitigation applied**: When you select a mitigation option, it is indicated on the queue card or on the Performance page.
+3. **Mitigation applied**: When you select a mitigation option, the system indicates it on the queue card or on the Performance page.
 
 ## High Effort Issues
 
@@ -160,7 +164,7 @@ This feature dynamically adjusts how many concurrent issues an agent should hand
 
 ASAPP will route customers based on the expected effort of their issue. All issues, by default, will have an effort of 1.
 
-Any issue with an effort value greater than 1 will be considered "high effort". Reach out to your ASAPP Implementation team to configure high effort rules for your program.
+Any issue with an effort value greater than 1 becomes "high effort". Reach out to your ASAPP Implementation team to configure high effort rules for your program.
 
 ## Feature Definition
 

@@ -4,17 +4,29 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/quickstart.md
 
-# Source: https://docs.unstructured.io/ui/quickstart.md
-
-# Source: https://docs.unstructured.io/api-reference/quickstart.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/partition/quickstart.md
-
-# Source: https://docs.unstructured.io/ui/quickstart.md
-
-# Source: https://docs.unstructured.io/api-reference/partition/quickstart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Unstructured API Quickstart
+
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
 
 <Tip>
   Do you want to run this quickstart without modifying your local machine?
@@ -26,18 +38,18 @@
   focuses only on a limited set of Unstructured's full capabilities. To unlock the full feature set, as well as use Unstructured to do
   large-scale batch processing of multiple files and semi-structured data that are stored in remote locations,
   [skip over](/api-reference/workflow/overview#quickstart) to an expanded, advanced version of this quickstart that uses the
-  Unstructured Workflow Endpoint instead.
+  Unstructured API's workflow operations instead.
 </Tip>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0EogKNU_BPU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
-The following code shows how to use the [Unstructured Python SDK](/api-reference/partition/sdk-python)
+The following code shows how to use the [Unstructured Python SDK](/api-reference/legacy-api/partition/sdk-python)
 to have Unstructured process one or more local files by using
-the [Unstructured Partition Endpoint](/api-reference/partition/overview).
+the [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview).
 
 To run this code, you will need the following:
 
-* An Unstructured account and an Unstructured API key for your account. [Learn how](/api-reference/partition/overview#get-started).
+* An Unstructured account and an Unstructured API key for your account. [Learn how](/api-reference/legacy-api/partition/overview#get-started).
 
 * Python 3.9 or higher installed on your local machine.
 
@@ -67,6 +79,27 @@ To run this code, you will need the following:
     </Note>
 
   * For the `output_dir` parameter, specify a string that contains the path to the directory on your local machine that you want Unstructured to send its JSON output files. If the specified directory does not exist at that location, the code will create the missing directory for you. This path can be relative or absolute.
+
+  <Note>
+    If you choose to run this code in a notebook (such as a Google Colab notebook), you must do the following first to avoid
+    nested event loop errors:
+
+    1. Install the `nest_asyncio` Python package, by running the following command from a notebook cell:
+
+       ```python  theme={null}
+       !pip install nest_asyncio
+       ```
+
+    2. Import the `nest_asyncio` package and then enable nested event loops, by running the following code from a notebook cell:
+
+       ```python  theme={null}
+       import nest_asyncio
+
+       nest_asyncio.apply()
+       ```
+
+    After completing these two steps, you can then run the following code as normal.
+  </Note>
 
 ## Sample code
 
@@ -156,10 +189,10 @@ if __name__ == "__main__":
 ## Next steps
 
 This quickstart shows how to use the Unstructured Partition Endpoint, which is intended for rapid prototyping of
-some of Unstructured's [partitioning](/api-reference/partition/partitioning) strategies, with limited support for [chunking](/api-reference/partition/chunking).
+some of Unstructured's [partitioning](/api-reference/legacy-api/partition/partitioning) strategies, with limited support for [chunking](/api-reference/legacy-api/partition/chunking).
 It is designed to work only with processing of local files.
 
-Take your code to the next level by switching over to the [Unstructured Workflow Endpoint](/api-reference/workflow/overview)
+Take your code to the next level by switching over to the [Unstructured API's workflow operations](/api-reference/workflow/overview)
 for production-level scenarios, file processing in batches, files and data in remote locations, full support for [chunking](/ui/chunking),
 generating [embeddings](/ui/embedding), applying post-transform [enrichments](/ui/enriching/overview),
 using the latest and highest-performing models, and much more.

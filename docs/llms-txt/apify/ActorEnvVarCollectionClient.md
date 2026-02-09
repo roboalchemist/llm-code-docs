@@ -2,19 +2,34 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorEnvVarCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorEnvVarCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorEnvVarCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
-
 # ActorEnvVarCollectionClient<!-- -->
+
+Client for managing the collection of environment variables for an Actor version.
+
+Environment variables are key-value pairs that are available to the Actor during execution. This client provides methods to list and create environment variables.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const actorClient = client.actor('my-actor-id');
+  const versionClient = actorClient.version('0.1');
+
+  // List all environment variables
+  const envVarsClient = versionClient.envVars();
+  const { items } = await envVarsClient.list();
+
+  // Create a new environment variable
+  const newEnvVar = await envVarsClient.create({
+    name: 'MY_VAR',
+    value: 'my-value',
+    isSecret: false
+  });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/development/actor-definition/environment-variables>
 
 ### Hierarchy
 
@@ -42,25 +57,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceCollectionClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceCollectionClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceCollectionClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -70,7 +85,7 @@ Inherited from ResourceCollectionClient.httpClient
 
 Inherited from ResourceCollectionClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -80,19 +95,19 @@ Inherited from ResourceCollectionClient.id
 
 Inherited from ResourceCollectionClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceCollectionClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceCollectionClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -102,7 +117,7 @@ Inherited from ResourceCollectionClient.resourcePath
 
 Inherited from ResourceCollectionClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -110,11 +125,15 @@ Inherited from ResourceCollectionClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_env_var_collection.ts#L37)create
+### [**](#create)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_env_var_collection.ts#L77)create
 
 * ****create**(actorEnvVar): Promise<[ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actors/environment-variable-collection/create-environment-variable>
+- Creates a new environment variable for this Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-env-vars-post>
 
   ***
 
@@ -122,18 +141,40 @@ Inherited from ResourceCollectionClient.url
 
   * ##### actorEnvVar: [ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md)
 
+    The environment variable data.
+
   #### Returns Promise<[ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md)>
 
-### [**](#list)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_env_var_collection.ts#L22)list
+  The created environment variable object.
 
-* ****list**(options): Promise<[ActorEnvVarListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorEnvVarListResult)>
+### [**](#list)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_env_var_collection.ts#L64)list
 
-- <https://docs.apify.com/api/v2#/reference/actors/environment-variable-collection/get-list-of-environment-variables>
+* ****list**(\_options): Promise<[ActorEnvVarListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorEnvVarListResult)> & AsyncIterable<[ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md), any, any>
+
+- Lists all environment variables of this Actor version.
+
+  Awaiting the return value (as you would with a Promise) will result in a single API call. The amount of fetched items in a single API call is limited.
+
+  ```
+  const paginatedList = await client.list();
+  ```
+
+  Asynchronous iteration is also supported. This will fetch additional pages if needed until all items are retrieved.
+
+  ```
+  for await (const singleItem of client.list()) {...}
+  ```
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-env-vars-get>
 
   ***
 
   #### Parameters
 
-  * ##### options: [ActorEnvVarCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvVarCollectionListOptions.md) = <!-- -->{}
+  * ##### \_options: [ActorEnvVarCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvVarCollectionListOptions.md) = <!-- -->{}
 
-  #### Returns Promise<[ActorEnvVarListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorEnvVarListResult)>
+  #### Returns Promise<[ActorEnvVarListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorEnvVarListResult)> & AsyncIterable<[ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md), any, any>
+
+  A paginated iterator of environment variables.

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/reference-architectures/aws-ecs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS ECS (HA)
 
 > Reference architecture for self-hosting Infisical on AWS ECS

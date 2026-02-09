@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/evaluating-tools.md
 
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating Tools For Stacking
 
 > Learn about the differences between Graphite and other tools for stacking pull requests.
@@ -86,4 +91,4 @@ Sapling does a great job of building a platform that supports the use of stacked
 
 ## Get in touch
 
-Want to know how Graphite compares to a software you're considering or currently using? Reach out to us at [support@graphite.dev](mailto:support@graphite.dev)
+Want to know how Graphite compares to a software you're considering or currently using? [Reach out to us!](https://graphite.com/contact-us)

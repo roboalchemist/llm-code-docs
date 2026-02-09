@@ -80,23 +80,15 @@ Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Color
 
@@ -150,15 +142,15 @@ interface SwitchProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * Display an icon when the switch is checked.
    */
-  checkedIcon?: string | object | undefined;
+  checkedIcon?: any;
   /**
    * Display an icon when the switch is unchecked.
    */
-  uncheckedIcon?: string | object | undefined;
+  uncheckedIcon?: any;
   label?: string | undefined;
   description?: string | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; container?: ClassNameValue; thumb?: ClassNameValue; icon?: ClassNameValue; wrapper?: ClassNameValue; label?: ClassNameValue; description?: ClassNameValue; } | undefined;
@@ -171,18 +163,18 @@ interface SwitchProps {
    */
   disabled?: boolean | undefined;
   /**
+   * The value given as data when submitted with a `name`.
+   */
+  value?: string | undefined;
+  id?: string | undefined;
+  /**
    * The name of the field. Submitted with its owning form as part of a name/value pair.
    */
   name?: string | undefined;
-  id?: string | undefined;
   /**
    * When `true`, indicates that the user must set the value before the owning form can be submitted.
    */
   required?: boolean | undefined;
-  /**
-   * The value given as data when submitted with a `name`.
-   */
-  value?: string | undefined;
   autofocus?: Booleanish | undefined;
   form?: string | undefined;
   formaction?: string | undefined;
@@ -197,11 +189,9 @@ interface SwitchProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes">
-
-This component also supports all native `<button>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+> This component also supports all native `<button>` HTML attributes.
 
 ### Slots
 
@@ -334,9 +324,10 @@ export default defineAppConfig({
         },
         disabled: {
           true: {
-            base: 'cursor-not-allowed opacity-75',
-            label: 'cursor-not-allowed opacity-75',
-            description: 'cursor-not-allowed opacity-75'
+            root: 'opacity-75',
+            base: 'cursor-not-allowed',
+            label: 'cursor-not-allowed',
+            description: 'cursor-not-allowed'
           }
         }
       },
@@ -351,8 +342,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

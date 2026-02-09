@@ -4,6 +4,108 @@
 
 Stay up to date with the latest features, improvements, and fixes in ZenML OSS.
 
+## 0.93.2 (2026-01-29)
+
+See what's new and improved in version 0.93.2.
+
+![ZenML 0.93.2](https://public-flavor-logos.s3.eu-central-1.amazonaws.com/projects/4.jpg)
+
+#### 🎨 Dashboard Enhancements
+
+The ZenML Dashboard now provides better visibility into your pipelines and infrastructure:
+
+* **Download Pipeline Code**: You can now download the code used for a pipeline snapshot directly from the dashboard. A new Download button appears in the "Code Path" section on both the Pipeline Run details page and the Step details sheet, making it easy to retrieve and review the exact code that was executed. [PR #4401](https://github.com/zenml-io/zenml/pull/4401), [PR #989](https://github.com/zenml-io/zenml-dashboard/pull/989)
+* **Exception Information Display**: When dynamic pipeline runs fail, the dashboard now displays detailed exception information, helping you quickly diagnose and troubleshoot issues. [PR #4395](https://github.com/zenml-io/zenml/pull/4395), [PR #990](https://github.com/zenml-io/zenml-dashboard/pull/990)
+* **Stack & Component Labels**: Labels attached to stacks and components are now visible in the dashboard, making it easier to organize and identify your infrastructure resources. [PR #992](https://github.com/zenml-io/zenml-dashboard/pull/992)
+
+#### 🔄 Dynamic Pipeline Improvements
+
+Dynamic pipelines are now more robust and easier to work with:
+
+* **Proper Environment Configuration**: The pipeline environment is now correctly set while running the entrypoint function of dynamic pipelines, ensuring consistent behavior across different execution contexts. [PR #4420](https://github.com/zenml-io/zenml/pull/4420)
+
+#### 🤖 Developer Experience
+
+* **Claude Code Plugin**: A new ZenML Quick Wins skill for Claude Code helps you implement MLOps best practices directly in your AI-assisted coding workflow. The plugin is available through the Claude Code plugin marketplace and includes comprehensive documentation for multiple AI coding tools. [PR #4426](https://github.com/zenml-io/zenml/pull/4426)
+
+<details>
+
+<summary>Fixed</summary>
+
+**🚀 Performance & Scalability**
+
+* **Artifact Download Fix**: Resolved an issue where artifact version downloads were failing due to incorrect RBAC checks on the download endpoint. [PR #4401](https://github.com/zenml-io/zenml/pull/4401)
+
+</details>
+
+[View full release on GitHub](https://github.com/zenml-io/zenml/releases/tag/0.93.2)
+
+***
+
+## 0.93.1 (2026-01-14)
+
+See what's new and improved in version 0.93.1.
+
+![ZenML 0.93.1](https://public-flavor-logos.s3.eu-central-1.amazonaws.com/projects/3.jpg)
+
+#### 🎛️ Schedule Management Enhancements
+
+You can now **pause and resume pipeline schedules** directly from the CLI, giving you better control over automated pipeline executions. Use the new commands to activate or deactivate schedules on demand:
+
+```bash
+zenml pipeline schedule deactivate <schedule_id>
+zenml pipeline schedule activate <schedule_id>
+```
+
+Currently available for the Kubernetes orchestrator. [PR #4328](https://github.com/zenml-io/zenml/pull/4328)
+
+Schedules now support **archiving** as a soft-delete operation. When you delete a schedule, it's archived instead of permanently removed, preserving historical references so your pipeline runs maintain their schedule associations. [PR #4339](https://github.com/zenml-io/zenml/pull/4339)
+
+#### 🖥️ Dashboard Improvements
+
+**Stack Management**: You can now update existing stacks directly from the UI without having to delete and recreate them. A new dedicated stack update page lets you add or replace stack components (orchestrators, artifact stores, container registries, etc.) efficiently. [PR #978](https://github.com/zenml-io/zenml-dashboard/pull/978)
+
+**Step Cache Management**: View and manage step cache expiration directly from the step details panel. The cache expiration field shows when a step's cache will expire (or "Never" if no expiration is set), with expired caches clearly marked. You can also manually invalidate a step's cache with a single click. [PR #976](https://github.com/zenml-io/zenml-dashboard/pull/976)
+
+**Enhanced Logs Experience**: Pipeline runs now have a dedicated logs page with a sidebar for navigating between run-level and step logs. The new logs viewer features virtualized rendering for better performance with large outputs, search and filtering capabilities, and step duration display. [PR #985](https://github.com/zenml-io/zenml-dashboard/pull/985)
+
+#### ⚡ Performance & Reliability
+
+**Kubernetes Orchestrator Improvements**: The Kubernetes orchestrator now runs more efficiently with configurable DAG runner workers, optimized cache candidate fetching, and better error handling for failed step pods. [PR #4368](https://github.com/zenml-io/zenml/pull/4368)
+
+**Database Backup Speed**: A new mydumper/myloader backup strategy delivers dramatically faster operations:
+
+* **30x faster** database backups
+* **2.5x faster** database restores
+* **10x lower** storage space requirements
+
+[PR #4358](https://github.com/zenml-io/zenml/pull/4358)
+
+#### 🚀 Orchestrator Features
+
+**AzureML Dynamic Pipelines**: Dynamic pipelines are now fully supported on the AzureML orchestrator, expanding your options for flexible pipeline execution. [PR #4363](https://github.com/zenml-io/zenml/pull/4363)
+
+**Kubernetes Init Container Templating**: When configuring init containers for the Kubernetes orchestrator, you can now use an `"{{ image }}"` placeholder that will be automatically replaced with the actual orchestration/step container image. [PR #4361](https://github.com/zenml-io/zenml/pull/4361)
+
+<details>
+
+<summary>Fixed</summary>
+
+* Fixed per-step compute settings not being applied correctly [PR #4362](https://github.com/zenml-io/zenml/pull/4362)
+* Fixed database migration script to handle pipelines with zero runs [PR #4360](https://github.com/zenml-io/zenml/pull/4360)
+* Fixed working directory in dynamic pipeline containers (was `/zenml` instead of `/app`) [PR #4379](https://github.com/zenml-io/zenml/pull/4379)
+* Fixed pipeline run status updates in `CONTINUE_ON_FAILURE` execution mode [PR #4379](https://github.com/zenml-io/zenml/pull/4379)
+* Fixed component setting shortcut keys when running snapshots [PR #4379](https://github.com/zenml-io/zenml/pull/4379)
+* Improved error messages during source validation and for string type annotations [PR #4359](https://github.com/zenml-io/zenml/pull/4359)
+* Fixed log storage in Kubernetes orchestrator by propagating context vars to DAG runner threads [PR #4359](https://github.com/zenml-io/zenml/pull/4359)
+* Pipeline source code now included for runs triggered by snapshots/deployments [PR #4359](https://github.com/zenml-io/zenml/pull/4359)
+
+</details>
+
+[View full release on GitHub](https://github.com/zenml-io/zenml/releases/tag/0.93.1)
+
+***
+
 ## 0.93.0 (2025-12-16)
 
 See what's new and improved in version 0.93.0.

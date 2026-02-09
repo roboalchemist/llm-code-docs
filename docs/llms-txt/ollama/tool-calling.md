@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/capabilities/tool-calling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool calling
 
 Ollama supports tool calling (also known as function calling) which allows a model to invoke tools and incorporate their results into its replies.
@@ -15,7 +19,7 @@ Also known as "single-shot" tool calling.
     ```shell  theme={"system"}
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
-      "messages": [{"role": "user", "content": "What's the temperature in New York?"}],
+      "messages": [{"role": "user", "content": "What is the temperature in New York?"}],
       "stream": false,
       "tools": [
         {
@@ -42,7 +46,7 @@ Also known as "single-shot" tool calling.
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
       "messages": [
-        {"role": "user", "content": "What's the temperature in New York?"},
+        {"role": "user", "content": "What is the temperature in New York?"},
         {
           "role": "assistant",
           "tool_calls": [
@@ -93,7 +97,7 @@ Also known as "single-shot" tool calling.
       }
       return temperatures.get(city, "Unknown")
 
-    messages = [{"role": "user", "content": "What's the temperature in New York?"}]
+    messages = [{"role": "user", "content": "What is the temperature in New York?"}]
 
     # pass functions directly as tools in the tools list or as a JSON schema
     response = chat(model="qwen3", messages=messages, tools=[get_temperature], think=True)
@@ -151,7 +155,7 @@ Also known as "single-shot" tool calling.
       },
     ]
 
-    const messages = [{ role: 'user', content: "What's the temperature in New York?" }]
+    const messages = [{ role: 'user', content: "What is the temperature in New York?" }]
 
     const response = await ollama.chat({
       model: 'qwen3',
@@ -616,7 +620,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
       return temperatures.get(city, 'Unknown')
 
 
-    messages = [{'role': 'user', 'content': "What's the temperature in New York?"}]
+    messages = [{'role': 'user', 'content': "What is the temperature in New York?"}]
 
     while True:
       stream = chat(
@@ -691,7 +695,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
     }
 
     async function agentLoop() {
-      const messages = [{ role: 'user', content: "What's the temperature in New York?" }]
+      const messages = [{ role: 'user', content: "What is the temperature in New York?" }]
 
       while (true) {
         const stream = await ollama.chat({

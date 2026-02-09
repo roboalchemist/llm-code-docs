@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/advanced/reverse-proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reverse Proxy and Custom Domains
 
 A reverse proxy allows you to use your own domain when sending data to and from Frigade. To set up a reverse proxy, you need to create a `CNAME` record in your DNS settings.
@@ -10,7 +14,7 @@ Then, when instantiating Frigade in your application with the `<Frigade.Provider
 
 For a more in depth guide on how to set up a reverse proxy, check out [this guide](https://posthog.com/docs/advanced/proxy) from Posthog.
 
-```jsx
+```jsx  theme={"system"}
 import * as Frigade from '@frigade/react';
 
 const App = () => (

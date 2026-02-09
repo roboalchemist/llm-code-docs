@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/core-concepts/tracking-data-segments.md
 
-# Source: https://docs.aporia.com/core-concepts/tracking-data-segments.md
-
-# Source: https://docs.aporia.com/v1/core-concepts/tracking-data-segments.md
-
 # Tracking Data Segments
 
 Sometimes looking over our entire data doesn't supply us with enough insights to understand what is best to do. We need the ability to break our data into smaller pieces to reach valuable and sharp insights.

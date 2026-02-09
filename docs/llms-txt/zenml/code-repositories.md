@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/concepts/code-repositories.md
 
-# Source: https://docs.zenml.io/api-reference/oss-api/oss-api/code-repositories.md
-
-# Source: https://docs.zenml.io/concepts/code-repositories.md
-
 # Code Repositories
 
 A code repository in ZenML refers to a remote storage location for your code. Some commonly known code repository platforms include [GitHub](https://github.com/) and [GitLab](https://gitlab.com/).

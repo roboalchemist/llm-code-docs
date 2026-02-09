@@ -4,7 +4,6 @@
 url: >-
   /docs/guide/usage/linter/rules/typescript/no-unnecessary-boolean-literal-compare.md
 ---
-# typescript/no-unnecessary-boolean-literal-compare&#x20;
 
 ### What it does
 

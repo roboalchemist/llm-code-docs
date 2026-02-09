@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/card-issuance/atm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ATM
 
 > A guide to Automated Teller Machines (ATM).

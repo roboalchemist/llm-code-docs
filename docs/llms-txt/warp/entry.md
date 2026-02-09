@@ -28,4 +28,4 @@ Command History Demo
 
 ## YAML Workflows
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-e4870de99dab35a374dd44479208db26bf03e0b3%2Fyaml_workflows_demo.gif?alt=media" alt=""><figcaption><p>YAML Workflows Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-e4870de99dab35a374dd44479208db26bf03e0b3%2Fyaml_workflows_demo.gif?alt=media" alt=""><figcaption><p>YAML Workflows Demo</p></figcaption></figure>

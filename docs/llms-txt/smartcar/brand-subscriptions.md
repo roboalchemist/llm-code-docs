@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/brand-subscriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Brand Subscription Information
 
 > Below you can find the connected service name for each brand as well as any specific subscription packages needed to connect to the vehicle via Smartcar.
@@ -74,7 +78,7 @@
 
 * Owners that use a username to login to their connected services app will need to migrate to using their email address under account settings in their Ford Pass or Lincoln Way portal.
 
-### Onstar
+### OnStar
 
 * Chevy Bolts MY 2020+ come with the **EV Mobile Command** service included for 5 years with the purchase of a new vehicle. Location data is not included in the package. Bolt owners will need to also subscribe to **Remote Access** to be able to get access to location data.
 * For all other OnStar accounts, we require the modern **Remote Access** plan as our base subscription. This plan comes with the **Vehicle Status** feature set, which is what enables our remote access to data from cars.
@@ -92,8 +96,8 @@
 
 ### Uconnect
 
-* For all Uconnect accounts, we require the ability to interact with vehicle information through the UConnect portal
-* A Uconnect account may have access to Mopar, but not all Mopar accounts have access to UConnect. If a user can see information in Mopar but not UConnect, they’ll need to reach out to UConnect support to set up the right UConnect plan for their vehicle.
+* For all Uconnect accounts, we require the ability to interact with vehicle information through the Uconnect portal
+* A Uconnect account may have access to Mopar, but not all Mopar accounts have access to Uconnect. If a user can see information in Mopar but not Uconnect, they'll need to reach out to Uconnect support to set up the right Uconnect plan for their vehicle.
 * 2021+ Jeeps have their own connected service - Jeep Connect
 * 2022+ Rams have their own connected service - Ram Connect
 * 2022+ Jeep Wagoneers have their own connected service - Wagoneer Connect

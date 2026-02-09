@@ -2,10 +2,7 @@
 
 # Get Integration
 
-```
-GET 
-/v1/integrations/:integrationId
-```
+Copy page
 
 This endpoint returns the metadata of an Integration identified by the `integrationId`.
 

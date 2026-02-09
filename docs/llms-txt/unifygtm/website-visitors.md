@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/signals/website-visitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Website Visitor Intent
 
 > Start revealing the companies and people visiting your website.

@@ -4,7 +4,7 @@
 title: AutoQuery RDBMS
 ---
 
-AutoQuery RDBMS enables the rapid development of high-performance, fully-queryable typed RDBMS data-driven services with just a POCO Request DTO class definition and [supports most major RDBMS](/ormlite/#ormlite-rdbms-providers) courtesy of building on [OrmLite's high-performance RDBMS-agnostic API's](https://github.com/ServiceStack/ServiceStack.OrmLite).
+AutoQuery RDBMS enables the rapid development of high-performance, fully-queryable typed RDBMS data-driven services with just a POCO Request DTO class definition and [supports most major RDBMS](/ormlite/#ormlite-rdbms-providers).
 
 ### AutoQuery Services are ServiceStack Services
 
@@ -17,23 +17,22 @@ In addition to leveraging ServiceStack's existing functionality, maximizing re-u
 Like ServiceStack's [other composable features](/plugins), the AutoQuery Feature is enabled by registering a Plugin, e.g:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature { MaxLimit = 100 });
+services.AddPlugin(new AutoQueryFeature { MaxLimit = 100 });
 ```
 
 Which is all that's needed to enable the AutoQuery feature. The AutoQueryFeature is inside [ServiceStack.Server](https://servicestack.net/download#get-started) NuGet package which contains value-added features that utilize either OrmLite and Redis which can be added to your project with:
 
 :::copy
-`<PackageReference Include="ServiceStack.Server" Version="8.*" />`
+`<PackageReference Include="ServiceStack.Server" Version="10.*" />`
 :::
 
-If you don't have OrmLite configured it can be registered with a 1-liner by specifying your preferred DialectProvider and Connection String:
+If you don't have OrmLite configured it can be registered with a 1-liner by specifying your preferred provider and Connection String:
 
 ```csharp
-container.Register<IDbConnectionFactory>(
-    new OrmLiteConnectionFactory(":memory:", SqliteDialect.Provider));
+services.AddOrmLite(options => options.UseSqlite(connString));
 ```
 
-The above config registers an In Memory Sqlite database although as the AutoQuery test suite works in all [supported RDBMS providers](https://github.com/ServiceStack/ServiceStack.OrmLite/#download) you're free to use your registered DB of choice.
+The above config registers an In Memory Sqlite database although as the AutoQuery test suite works in all [supported RDBMS providers](/ormlite/) you're free to use your registered DB of choice.
 
 The `MaxLimit` option ensures each query returns a maximum limit of **100** rows.
 
@@ -62,7 +61,9 @@ That's all the code needed! Which we can now call using the ideal route:
 and because it's a just regular Request DTO, we also get an end-to-end typed API for free with:
 
 ```csharp
-var movies = client.Get(new FindMovies { Ratings = new[]{"G","PG-13"} })
+var movies = client.Get(new FindMovies { 
+    Ratings = ["G","PG-13"]
+})
 ```
 
 Whilst that gives us the ideal API we want, the minimum code required is to just declare a new Request DTO with the table you wish to query:
@@ -146,7 +147,7 @@ Dictionary<string,string> queryArgs = Request.GetRequestParams();
 var q = AutoQuery.CreateQuery(dto, queryArgs, Request, db);
 ```
 
-Which constructs an [OrmLite SqlExpression](https://github.com/ServiceStack/ServiceStack.OrmLite/#examples) 
+Which constructs an [OrmLite SqlExpression](/ormlite/) 
 from typed properties on the Request DTO as well as any untyped key/value pairs on the HTTP Requests 
 **QueryString** or **FormData**.
 
@@ -203,7 +204,7 @@ In the example above we're returning only a subset of results. Unmatched propert
 
 ## Returning Nested Related Results
 
-AutoQuery also takes advantage of [OrmLite's References Support](https://github.com/ServiceStack/ServiceStack.OrmLite/#reference-support-poco-style) which lets you return related child records that are annotated with `[Reference]` attribute, e.g:
+AutoQuery also takes advantage of [OrmLite's References Support](/ormlite/reference-support) which lets you return related child records that are annotated with `[Reference]` attribute, e.g:
 
 ```csharp
 public class QueryRockstars : QueryDb<Rockstar> {}
@@ -222,7 +223,7 @@ public class Rockstar
 
 ## Joining Tables
 
-AutoQuery lets us take advantage of OrmLite's recent [support for JOINs in typed SqlExpressions](https://github.com/ServiceStack/ServiceStack.OrmLite/#typed-sqlexpression-support-for-joins) 
+AutoQuery lets us take advantage of OrmLite's recent [support for JOINs in typed SqlExpressions](/ormlite/typed-joins) 
 
 We can tell AutoQuery to join on multiple tables using the `IJoin<T1,T2>` interface marker:
 
@@ -235,9 +236,9 @@ public class QueryRockstarAlbums
 }
 ```
 
-The above example tells AutoQuery to query against an **INNER JOIN** of the `Rockstar` and `RockstarAlbum` tables using [OrmLite's reference conventions](https://github.com/ServiceStack/ServiceStack.OrmLite/#reference-conventionst) that's implicit between both tables.
+The above example tells AutoQuery to query against an **INNER JOIN** of the `Rockstar` and `RockstarAlbum` tables using [OrmLite's reference conventions](/ormlite/reference-support) that's implicit between both tables.
 
-The Request DTO lets us query against fields across the joined tables where each field is matched with the [first table containing the field](https://github.com/ServiceStack/ServiceStack.OrmLite/#selecting-multiple-columns-across-joined-tables). You can match against fields using the fully qualified `{Table}{Field}` convention, e.g. `RockstarAlbumName` queries against the `RockstarAlbum`.`Name` column.
+The Request DTO lets us query against fields across the joined tables where each field is matched with the [first table containing the field](/ormlite/dynamic-result-sets). You can match against fields using the fully qualified `{Table}{Field}` convention, e.g. `RockstarAlbumName` queries against the `RockstarAlbum`.`Name` column.
 
 This mapping of fields also applies to the Response DTO where now `RockstarAlbumName` from the above `CustomRockstar` type will be populated:
 
@@ -441,51 +442,55 @@ public class QueryRockstars : QueryDb<Rockstar> {}
 The built-in conventions allow using convention-based naming to query fields with expected behavior using self-describing properties. To explore this in more detail lets look at what built-in conventions are defined:
 
 ```csharp
-const string GreaterThanOrEqualFormat = "{Field} >= {Value}";
-const string GreaterThanFormat =        "{Field} >  {Value}";
-const string LessThanFormat =           "{Field} <  {Value}";
-const string LessThanOrEqualFormat =    "{Field} <= {Value}";
-const string NotEqualFormat =           "{Field} <> {Value}";
-const string IsNull =                   "{Field} IS NULL";
-const string IsNotNull =                "{Field} IS NOT NULL";
+GreaterThanOrEqual = "{Field} >= {Value}";
+GreaterThan =        "{Field} >  {Value}";
+LessThan =           "{Field} <  {Value}";
+LessThanOrEqual =    "{Field} <= {Value}";
+NotEqual =           "{Field} <> {Value}";
+IsNull =             "{Field} IS NULL";
+IsNotNull =          "{Field} IS NOT NULL";
 
-ImplicitConventions = new Dictionary<string, string> 
+ImplicitConventions = new()
 {
-    {"%Above%",         GreaterThanFormat},
-    {"Begin%",          GreaterThanFormat},
-    {"%Beyond%",        GreaterThanFormat},
-    {"%Over%",          GreaterThanFormat},
-    {"%OlderThan",      GreaterThanFormat},
-    {"%After%",         GreaterThanFormat},
-    {"OnOrAfter%",      GreaterThanOrEqualFormat},
-    {"%From%",          GreaterThanOrEqualFormat},
-    {"Since%",          GreaterThanOrEqualFormat},
-    {"Start%",          GreaterThanOrEqualFormat},
-    {"%Higher%",        GreaterThanOrEqualFormat},
-    {">%",              GreaterThanOrEqualFormat},
-    {"%>",              GreaterThanFormat},
-    {"%!",              NotEqualFormat},
-    {"<>%",             NotEqualFormat},
+    {"%Above%",         GreaterThan},
+    {"Begin%",          GreaterThan},
+    {"%Beyond%",        GreaterThan},
+    {"%Over%",          GreaterThan},
+    {"%OlderThan",      GreaterThan},
+    {"%After%",         GreaterThan},
+    {"OnOrAfter%",      GreaterThanOrEqual},
+    {"%From%",          GreaterThanOrEqual},
+    {"Since%",          GreaterThanOrEqual},
+    {"Start%",          GreaterThanOrEqual},
+    {"%Higher%",        GreaterThanOrEqual},
+    {"Min%",            GreaterThanOrEqual},
+    {"Minimum%",        GreaterThanOrEqual},
+    {">%",              GreaterThanOrEqual},
+    {"%>",              GreaterThan},
+    {"%!",              NotEqual},
+    {"<>%",             NotEqual},
 
-    {"%GreaterThanOrEqualTo%", GreaterThanOrEqualFormat},
-    {"%GreaterThan%",          GreaterThanFormat},
-    {"%LessThan%",             LessThanFormat},
-    {"%LessThanOrEqualTo%",    LessThanOrEqualFormat},
-    {"%NotEqualTo",            NotEqualFormat},
+    {"Behind%",         LessThan},
+    {"%Below%",         LessThan},
+    {"%Under%",         LessThan},
+    {"%Lower%",         LessThan},
+    {"%Before%",        LessThan},
+    {"%YoungerThan",    LessThan},
+    {"OnOrBefore%",     LessThanOrEqual},
+    {"End%",            LessThanOrEqual},
+    {"Stop%",           LessThanOrEqual},
+    {"To%",             LessThanOrEqual},
+    {"Until%",          LessThanOrEqual},
+    {"Max%",            LessThanOrEqual},
+    {"Maximum%",        LessThanOrEqual},
+    {"%<",              LessThanOrEqual},
+    {"<%",              LessThan},
 
-    {"Behind%",         LessThanFormat},
-    {"%Below%",         LessThanFormat},
-    {"%Under%",         LessThanFormat},
-    {"%Lower%",         LessThanFormat},
-    {"%Before%",        LessThanFormat},
-    {"%YoungerThan",    LessThanFormat},
-    {"OnOrBefore%",     LessThanOrEqualFormat},
-    {"End%",            LessThanOrEqualFormat},
-    {"Stop%",           LessThanOrEqualFormat},
-    {"To%",             LessThanOrEqualFormat},
-    {"Until%",          LessThanOrEqualFormat},
-    {"%<",              LessThanOrEqualFormat},
-    {"<%",              LessThanFormat},
+    {"%GreaterThanOrEqualTo%", GreaterThanOrEqual},
+    {"%GreaterThan%",          GreaterThan},
+    {"%LessThan%",             LessThan},
+    {"%LessThanOrEqualTo%",    LessThanOrEqual},
+    {"%NotEqualTo",            NotEqual},
 
     {"Like%",           "UPPER({Field}) LIKE UPPER({Value})"},
     {"%In",             "{Field} IN ({Values})"},
@@ -499,7 +504,7 @@ ImplicitConventions = new Dictionary<string, string>
     {"%IsNotNull",      IsNotNull},
 };
 
-EndsWithConventions = new Dictionary<string, QueryDbFieldAttribute>
+EndsWithConventions = new()
 {
     { "StartsWith", new QueryDbFieldAttribute { 
           Template= "UPPER({Field}) LIKE UPPER({Value})", 
@@ -660,19 +665,19 @@ Which is why we recommend formalizing your conventions you want to allow before 
 When publishing your API, you can also assert that only explicit conventions are ever used by disabling untyped implicit conventions support with:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature { EnableUntypedQueries = false });
+services.AddPlugin(new AutoQueryFeature { EnableUntypedQueries = false });
 ```
 
 ## Raw SQL Filters
 
 It's also possible to specify Raw SQL Filters. Whilst offering greater flexibility they also suffer from many of the problems that OData's expressions have. 
 
-Raw SQL Filters also don't benefit from limiting matching to declared fields and auto-escaping and quoting of values although they're still validated against OrmLite's [IllegalSqlFragmentTokens](https://github.com/ServiceStack/ServiceStack.OrmLite/blob/master/src/ServiceStack.OrmLite/OrmLiteUtilExtensions.cs#L172) to protect against SQL Injection attacks. But as they still allow calling SQL Functions, Raw SqlFilters shouldn't be enabled when accessible by untrusted parties unless they've been configured to use a [Named OrmLite DB Connection](https://github.com/ServiceStack/ServiceStack.OrmLite/#multi-nested-database-connections) which is read-only and locked-down so that it only has access to what it's allowed to.
+Raw SQL Filters also don't benefit from limiting matching to declared fields and auto-escaping and quoting of values although they're still validated against OrmLite's [IllegalSqlFragmentTokens](https://github.com/ServiceStack/ServiceStack/blob/d0b6acf38cc45c16d229df66b82183644e0aee3c/ServiceStack.OrmLite/src/ServiceStack.OrmLite/OrmLiteUtils.cs#L501) to protect against SQL Injection attacks. But as they still allow calling SQL Functions, Raw SqlFilters shouldn't be enabled when accessible by untrusted parties unless they've been configured to use a [Named OrmLite DB Connection](/ormlite/multi-database-connections) which is read-only and locked-down so that it only has access to what it's allowed to.
 
 If safe to do so, RawSqlFilters can be enabled with:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature { 
+services.AddPlugin(new AutoQueryFeature { 
     EnableRawSqlFilters = true,
     UseNamedConnection = "readonly",
     IllegalSqlFragmentTokens = { "ProtectedSqlFunction" },
@@ -807,7 +812,7 @@ client.Get(new QueryRockstars { Skip=10, Take=20, OrderByDesc="Id" });
 Or remove the default behavior with:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature { 
+services.AddPlugin(new AutoQueryFeature { 
     OrderByPrimaryKeyOnPagedQuery = false 
 });
 ```
@@ -857,7 +862,7 @@ With the richer semantics available in queries, we've been able to enhance the S
 
 ```csharp
 var results = client.GetLazy(new QueryMovies { 
-    Ratings = new[]{"G","PG-13"}
+    Ratings = ["G","PG-13"]
 }).ToList();
 ```
 
@@ -865,7 +870,7 @@ Since GetLazy returns a lazy `IEnumerable<T>` sequence it can also be used withi
 
 ```csharp
 var top250 = client.GetLazy(new QueryMovies { 
-        Ratings = new[]{ "G", "PG-13" } 
+        Ratings = ["G","PG-13"]
     })
     .Take(250)
     .ConvertTo(x => x.Title);
@@ -963,7 +968,7 @@ AVG, COUNT, FIRST, LAST, MAX, MIN, SUM
 Which can be added to or removed from by modifying `SqlAggregateFunctions` collection, e.g, you can allow usage of a `CustomAggregate` SQL Function with:
 
 ```cs
-Plugins.Add(new AutoQueryFeature { 
+services.AddPlugin(new AutoQueryFeature { 
     SqlAggregateFunctions = { "CustomAggregate" }
 })
 ```
@@ -1040,7 +1045,7 @@ var response = client.Get(new MyQuery { Include = "Total" });
 Alternatively you can always have the Total returned in every request with:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature {
+services.AddPlugin(new AutoQueryFeature {
     IncludeTotal = true
 })
 ```
@@ -1052,7 +1057,7 @@ AutoQuery combines all other aggregate functions like `Total` and executes them 
 ### Hybrid AutoQuery Services
 
 AutoQuery Services can be easily enhanced by creating a custom Service implementation that modifies the `SqlExpression` Query that AutoQuery auto populates from the incoming request. In addition to using OrmLite's typed API to perform standard DB queries you can also take advantage of advanced RDBMS features with custom SQL fragments. As an example we'll look at the implementation of [techstacks.io](https://github.com/NetCoreApps/TechStacks) fundamental 
-[QueryPosts Service](https://github.com/NetCoreApps/TechStacks/blob/master/src/TechStacks.ServiceInterface/PostPublicServices.cs) 
+[QueryPosts Service](https://github.com/NetCoreApps/TechStacks/blob/master/TechStacks.ServiceInterface/PostPublicServices.cs) 
 which powers every Post feed in TechStacks where its custom implementation inherits all queryable functionality of its `QueryDb<Post>` AutoQuery Service and adds high-level functionality for `AnyTechnologyIds` and `Is` custom high-level properties that's used to query multiple columns behind-the-scenes.
 
 In addition to inheriting all default Querying functionality in a `QueryDb<Post>` AutoQuery Service, the custom implementation also:
@@ -1087,7 +1092,7 @@ public class PostPublicServices(IAutoQueryDb autoQuery) : Service
 
         q.Where(x => x.Deleted == null);
         
-        var states = request.Is ?? TypeConstants.EmptyStringArray;
+        var states = request.Is ?? [];
         if (states.Contains("closed") || states.Contains("completed") || states.Contains("declined"))
             q.And(x => x.Status == "closed");
         else
@@ -1206,7 +1211,7 @@ public class MyReportingServices(IAutoQueryDb autoQuery) : Service
 The Aggregate functions feature is built on the new `ResponseFilters` support in AutoQuery which provides a new extensibility option enabling customization and additional metadata to be attached to AutoQuery Responses. As the Aggregate Functions support is itself a Response Filter in can disabled by clearing them:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature {
+services.AddPlugin(new AutoQueryFeature {
     ResponseFilters = new List<Action<QueryFilterContext>>()
 })
 ```
@@ -1238,7 +1243,7 @@ class Command
 With this we could add basic calculator functionality to AutoQuery with the custom Response Filter below:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature {
+services.AddPlugin(new AutoQueryFeature {
     ResponseFilters = {
         ctx => {
             var supportedFns = new Dictionary<string, Func<int, int, int>>(StringComparer.OrdinalIgnoreCase)
@@ -1356,7 +1361,7 @@ var autoQuery = new AutoQueryFeature()
       q.And(x => x.LastName.EndsWith("son"))
   );
 
-Plugins.Add(autoQuery);
+services.AddPlugin(autoQuery);
 ```
 
 Registering an interface like `IFilterRockstars` is especially useful as it enables applying custom logic to a number of different Query Services sharing the same interface. 
@@ -1387,7 +1392,7 @@ public abstract class MyAutoQueryServiceBase : AutoQueryServiceBase
 Then tell AutoQuery to use your base class instead, e.g:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature { 
+services.AddPlugin(new AutoQueryFeature { 
     AutoQueryServiceBaseType = typeof(MyAutoQueryServiceBase)
 });
 ```
@@ -1416,7 +1421,7 @@ All AutoQuery CRUD operations support auto batch implementations which will by d
 By default it will generate AutoBatch implementations for all CRUD operations and can be changed to only generate implementations for specific CRUD operations by changing:
 
 ```csharp
-Plugins.Add(new AutoQueryFeature {
+services.AddPlugin(new AutoQueryFeature {
     GenerateAutoBatchImplementationsFor = new() { AutoCrudOperation.Create }
 });
 ```

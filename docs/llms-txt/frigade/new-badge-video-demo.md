@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/guides/new-badge-video-demo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guide: Build a 'New' Badge
 
 > In this video, we show you how to build a 'New' badge with React and Frigade.

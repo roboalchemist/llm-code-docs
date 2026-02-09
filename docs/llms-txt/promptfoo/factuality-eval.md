@@ -1,262 +1,318 @@
 # Source: https://www.promptfoo.dev/docs/guides/factuality-eval/
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-guides/factuality-eval" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Evaluating factuality | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-guides-factuality-eval--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-guides-factuality-eval--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/guides/factuality-eval/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Evaluating factuality | Promptfoo"><meta data-rh="true" name="description" content="How to evaluate the factual accuracy of LLM outputs against reference information using promptfoo&#x27;s factuality assertion"><meta data-rh="true" property="og:description" content="How to evaluate the factual accuracy of LLM outputs against reference information using promptfoo&#x27;s factuality assertion"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/guides/factuality-eval/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/guides/factuality-eval/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/guides/factuality-eval/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Guides","item":"https://www.promptfoo.dev/docs/category/guides"},{"@type":"ListItem","position":2,"name":"Evaluating factuality","item":"https://www.promptfoo.dev/docs/guides/factuality-eval"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+# Evaluating factuality
 
+## What is factuality and why is it important?
 
+Factuality is the measure of how accurately an LLM's response aligns with established facts or reference information. Simply put, it answers the question: "Is what the AI saying actually true?"
 
+**A concrete example:**
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+> **Question:** "What is the capital of France?"
+> **AI response:** "The capital of France is Paris, which has been the country's capital since 987 CE."
+> **Reference fact:** "Paris is the capital of France."
+>
+> In this case, the AI response is factually accurate (it includes the correct capital) but adds additional information about when Paris became the capital.
 
+As LLMs become increasingly integrated into critical applications, ensuring they provide factually accurate information is essential for:
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+- **Building trust:** Users need confidence that AI responses are reliable and truthful. For example, a financial advisor chatbot that gives incorrect information about tax laws could cause users to make costly mistakes and lose trust in your service.
+- **Reducing misinformation:** Factually incorrect AI outputs can spread misinformation at scale. For instance, a healthcare bot incorrectly stating that a common vaccine is dangerous could influence thousands of patients to avoid important preventative care.
+- **Supporting critical use cases:** Applications in healthcare, finance, education, and legal domains require high factual accuracy. A legal assistant that misrepresents case law precedents could lead to flawed legal strategies with serious consequences.
+- **Improving model selection:** Comparing factuality across models helps choose the right model for your application. A company might discover that while one model is more creative, another has 30% better factual accuracy for technical documentation.
+- **Identifying hallucinations:** Factuality evaluation helps detect when models "make up" information. For example, discovering that your product support chatbot fabricates non-existent troubleshooting steps 15% of the time would be a critical finding.
 
+promptfoo's factuality evaluation enables you to systematically measure how well your model outputs align with reference facts, helping you identify and address issues before they reach users.
 
+## Quick Start: Try it today
 
+The fastest way to get started with factuality evaluation is to use our pre-built TruthfulQA example:
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/installation/"><span title="Install Promptfoo" class="linkLabel_fEdy">Install Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/getting-started/"><span title="Getting Started" class="linkLabel_fEdy">Getting Started</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/configuration/"><span title="Configuration" class="categoryLinkLabel_ufhF">Configuration</span></a><button aria-label="Collapse sidebar category &#x27;Configuration&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/guide/"><span title="Guide" class="linkLabel_fEdy">Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/reference/"><span title="Reference" class="linkLabel_fEdy">Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/prompts/"><span title="Prompts" class="linkLabel_fEdy">Prompts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/test-cases/"><span title="Test Cases" class="linkLabel_fEdy">Test Cases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/outputs/"><span title="Output Formats" class="linkLabel_fEdy">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/chat/"><span title="Chat threads" class="linkLabel_fEdy">Chat threads</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/datasets/"><span title="Dataset generation" class="linkLabel_fEdy">Dataset generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/scenarios/"><span title="Scenarios" class="linkLabel_fEdy">Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/caching/"><span title="Caching" class="linkLabel_fEdy">Caching</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/telemetry/"><span title="Telemetry" class="linkLabel_fEdy">Telemetry</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tracing/"><span title="Tracing" class="linkLabel_fEdy">Tracing</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/usage/"><span title="Usage" class="categoryLinkLabel_ufhF">Usage</span></a><button aria-label="Expand sidebar category &#x27;Usage&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/configuration/expected-outputs/"><span title="Assertions &amp; metrics" class="categoryLinkLabel_ufhF">Assertions &amp; metrics</span></a><button aria-label="Expand sidebar category &#x27;Assertions &amp; metrics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/providers/"><span title="Providers" class="categoryLinkLabel_ufhF">Providers</span></a><button aria-label="Expand sidebar category &#x27;Providers&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/integrations/"><span title="Integrations" class="categoryLinkLabel_ufhF">Integrations</span></a><button aria-label="Expand sidebar category &#x27;Integrations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/red-teaming/"><span title="Red teaming" class="categoryLinkLabel_ufhF">Red teaming</span></a><button aria-label="Collapse sidebar category &#x27;Red teaming&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/code-scanning/"><span title="Code scanning" class="categoryLinkLabel_ufhF">Code scanning</span></a><button aria-label="Expand sidebar category &#x27;Code scanning&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--active" href="/docs/category/guides/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a><button aria-label="Collapse sidebar category &#x27;Guides&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/testing-llm-chains/"><span title="Testing LLM chains" class="linkLabel_fEdy">Testing LLM chains</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/guides/factuality-eval/"><span title="Evaluating factuality" class="linkLabel_fEdy">Evaluating factuality</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-rag/"><span title="Evaluating RAG pipelines" class="linkLabel_fEdy">Evaluating RAG pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/hle-benchmark/"><span title="HLE Benchmark" class="linkLabel_fEdy">HLE Benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-coding-agents/"><span title="Evaluate Coding Agents" class="linkLabel_fEdy">Evaluate Coding Agents</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/azure-vs-openai/"><span title="OpenAI vs Azure benchmark" class="linkLabel_fEdy">OpenAI vs Azure benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/building-trust-in-ai-with-portkey-and-promptfoo/"><span title="Building trust in AI with Portkey and Promptfoo" class="linkLabel_fEdy">Building trust in AI with Portkey and Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/chatbase-redteam/"><span title="Red teaming a Chatbase Chatbot" class="linkLabel_fEdy">Red teaming a Chatbase Chatbot</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/choosing-best-gpt-model/"><span title="Choosing the best GPT model" class="linkLabel_fEdy">Choosing the best GPT model</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/claude-vs-gpt/"><span title="Claude 3.7 vs GPT-4.1" class="linkLabel_fEdy">Claude 3.7 vs GPT-4.1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/cohere-command-r-benchmark/"><span title="Cohere Command-R benchmarks" class="linkLabel_fEdy">Cohere Command-R benchmarks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/compare-llama2-vs-gpt/"><span title="Llama vs GPT benchmark" class="linkLabel_fEdy">Llama vs GPT benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/dbrx-benchmark/"><span title="DBRX benchmarks" class="linkLabel_fEdy">DBRX benchmarks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/deepseek-benchmark/"><span title="Deepseek benchmark" class="linkLabel_fEdy">Deepseek benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaling-with-harmbench/"><span title="Evaluating LLM safety with HarmBench" class="linkLabel_fEdy">Evaluating LLM safety with HarmBench</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-crewai/"><span title="Red teaming a CrewAI Agent" class="linkLabel_fEdy">Red teaming a CrewAI Agent</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-elevenlabs/"><span title="Evaluating ElevenLabs voice AI" class="linkLabel_fEdy">Evaluating ElevenLabs voice AI</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-json/"><span title="Evaluating JSON outputs" class="linkLabel_fEdy">Evaluating JSON outputs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-langgraph/"><span title="Evaluate LangGraph" class="linkLabel_fEdy">Evaluate LangGraph</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-llm-temperature/"><span title="Choosing the right temperature for your LLM" class="linkLabel_fEdy">Choosing the right temperature for your LLM</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-openai-assistants/"><span title="Evaluating OpenAI Assistants" class="linkLabel_fEdy">Evaluating OpenAI Assistants</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/evaluate-replicate-lifeboat/"><span title="Evaluating Replicate Lifeboat" class="linkLabel_fEdy">Evaluating Replicate Lifeboat</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gemini-vs-gpt/"><span title="Gemini vs GPT" class="linkLabel_fEdy">Gemini vs GPT</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gemma-vs-llama/"><span title="Gemma vs Llama" class="linkLabel_fEdy">Gemma vs Llama</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gemma-vs-mistral/"><span title="Gemma vs Mistral/Mixtral" class="linkLabel_fEdy">Gemma vs Mistral/Mixtral</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/google-cloud-model-armor/"><span title="Testing Model Armor" class="linkLabel_fEdy">Testing Model Armor</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gpt-3.5-vs-gpt-4/"><span title="GPT 3.5 vs GPT 4" class="linkLabel_fEdy">GPT 3.5 vs GPT 4</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gpt-4-vs-gpt-4o/"><span title="GPT-4o vs GPT-4.1-mini" class="linkLabel_fEdy">GPT-4o vs GPT-4.1-mini</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gpt-4.1-vs-gpt-4o-mmlu/"><span title="GPT-4.1 vs GPT-4o MMLU" class="linkLabel_fEdy">GPT-4.1 vs GPT-4o MMLU</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/gpt-vs-o1/"><span title="gpt-5 vs o1" class="linkLabel_fEdy">gpt-5 vs o1</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/langchain-prompttemplate/"><span title="Using LangChain PromptTemplate with Promptfoo" class="linkLabel_fEdy">Using LangChain PromptTemplate with Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/llama2-uncensored-benchmark-ollama/"><span title="Uncensored Llama2 benchmark" class="linkLabel_fEdy">Uncensored Llama2 benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="How to red team LLM applications" class="linkLabel_fEdy">How to red team LLM applications</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/mistral-magistral-aime2024/"><span title="Magistral AIME2024 Benchmark" class="linkLabel_fEdy">Magistral AIME2024 Benchmark</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/mistral-vs-llama/"><span title="Mistral vs Llama" class="linkLabel_fEdy">Mistral vs Llama</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/mixtral-vs-gpt/"><span title="Mixtral vs GPT" class="linkLabel_fEdy">Mixtral vs GPT</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/multimodal-red-team/"><span title="Multi-Modal Red Teaming" class="linkLabel_fEdy">Multi-Modal Red Teaming</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/phi-vs-llama/"><span title="Phi vs Llama" class="linkLabel_fEdy">Phi vs Llama</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/prevent-llm-hallucinations/"><span title="Preventing hallucinations" class="linkLabel_fEdy">Preventing hallucinations</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/qwen-benchmark/"><span title="Qwen vs Llama vs GPT" class="linkLabel_fEdy">Qwen vs Llama vs GPT</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/sandboxed-code-evals/"><span title="Sandboxed Evaluations of LLM-Generated Code" class="linkLabel_fEdy">Sandboxed Evaluations of LLM-Generated Code</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/testing-guardrails/"><span title="Testing Guardrails" class="linkLabel_fEdy">Testing Guardrails</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/text-to-sql-evaluation/"><span title="Evaluating LLM text-to-SQL performance" class="linkLabel_fEdy">Evaluating LLM text-to-SQL performance</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/enterprise/"><span title="Enterprise" class="categoryLinkLabel_ufhF">Enterprise</span></a><button aria-label="Expand sidebar category &#x27;Enterprise&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/contributing/"><span title="Contributing" class="linkLabel_fEdy">Contributing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/write-for-promptfoo/"><span title="Write for Promptfoo" class="linkLabel_fEdy">Write for Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/faq/"><span title="FAQ" class="linkLabel_fEdy">FAQ</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/releases/"><span title="Release Notes" class="linkLabel_fEdy">Release Notes</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/guides/"><span>Guides</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Evaluating factuality</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Evaluating factuality</h1></header>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="what-is-factuality-and-why-is-it-important">What is factuality and why is it important?<a href="#what-is-factuality-and-why-is-it-important" class="hash-link" aria-label="Direct link to What is factuality and why is it important?" title="Direct link to What is factuality and why is it important?" translate="no">​</a></h2>
-<p>Factuality is the measure of how accurately an LLM&#x27;s response aligns with established facts or reference information. Simply put, it answers the question: &quot;Is what the AI saying actually true?&quot;</p>
-<p><strong>A concrete example:</strong></p>
-<blockquote>
-<p><strong>Question:</strong> &quot;What is the capital of France?&quot;<br>
-<strong>AI response:</strong> &quot;The capital of France is Paris, which has been the country&#x27;s capital since 987 CE.&quot;<br>
-<strong>Reference fact:</strong> &quot;Paris is the capital of France.&quot;</p>
-<p>In this case, the AI response is factually accurate (it includes the correct capital) but adds additional information about when Paris became the capital.</p>
-</blockquote>
-<p>As LLMs become increasingly integrated into critical applications, ensuring they provide factually accurate information is essential for:</p>
-<ul>
-<li class="">
-<p><strong>Building trust</strong>: Users need confidence that AI responses are reliable and truthful. <em>For example, a financial advisor chatbot that gives incorrect information about tax laws could cause users to make costly mistakes and lose trust in your service.</em></p>
-</li>
-<li class="">
-<p><strong>Reducing misinformation</strong>: Factually incorrect AI outputs can spread misinformation at scale. <em>For instance, a healthcare bot incorrectly stating that a common vaccine is dangerous could influence thousands of patients to avoid important preventative care.</em></p>
-</li>
-<li class="">
-<p><strong>Supporting critical use cases</strong>: Applications in healthcare, finance, education, and legal domains require high factual accuracy. <em>A legal assistant that misrepresents case law precedents could lead to flawed legal strategies with serious consequences.</em></p>
-</li>
-<li class="">
-<p><strong>Improving model selection</strong>: Comparing factuality across models helps choose the right model for your application. <em>A company might discover that while one model is more creative, another has 30% better factual accuracy for technical documentation.</em></p>
-</li>
-<li class="">
-<p><strong>Identifying hallucinations</strong>: Factuality evaluation helps detect when models &quot;make up&quot; information. <em>For example, discovering that your product support chatbot fabricates non-existent troubleshooting steps 15% of the time would be a critical finding.</em></p>
-</li>
-</ul>
-<p>promptfoo&#x27;s factuality evaluation enables you to systematically measure how well your model outputs align with reference facts, helping you identify and address issues before they reach users.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="quick-start-try-it-today">Quick Start: Try it today<a href="#quick-start-try-it-today" class="hash-link" aria-label="Direct link to Quick Start: Try it today" title="Direct link to Quick Start: Try it today" translate="no">​</a></h2>
-<p>The fastest way to get started with factuality evaluation is to use our pre-built TruthfulQA example:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Initialize the example - this command creates a new directory with all necessary files</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest init </span><span class="token parameter variable" style="color:#36acaa">--example</span><span class="token plain"> huggingface-dataset-factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Change into the newly created directory</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">cd</span><span class="token plain"> huggingface-dataset-factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Run the evaluation - this executes the factuality tests using the models specified in the config</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># View the results in an interactive web interface</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo view</span><br></span></code></pre></div></div>
-<p>What these commands do:</p>
-<ol>
-<li class="">The first command initializes a new project using our huggingface-dataset-factuality example template</li>
-<li class="">The second command navigates into the project directory</li>
-<li class="">The third command runs the factuality evaluation against the TruthfulQA dataset</li>
-<li class="">The final command opens the results in your browser for analysis</li>
-</ol>
-<p>This example:</p>
-<ul>
-<li class="">Fetches the TruthfulQA dataset (designed to test model truthfulness)</li>
-<li class="">Creates test cases with built-in factuality assertions</li>
-<li class="">Compares model outputs against reference answers</li>
-<li class="">Provides detailed factuality scores and analysis</li>
-</ul>
-<p>You can easily customize it by:</p>
-<ul>
-<li class="">Uncommenting additional providers in <code>promptfooconfig.yaml</code> to test more models</li>
-<li class="">Adjusting the prompt template to change how questions are asked</li>
-<li class="">Modifying the factuality scoring weights to match your requirements</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="how-factuality-evaluation-works">How factuality evaluation works<a href="#how-factuality-evaluation-works" class="hash-link" aria-label="Direct link to How factuality evaluation works" title="Direct link to How factuality evaluation works" translate="no">​</a></h2>
-<p>promptfoo implements a structured factuality evaluation methodology based on <a href="https://github.com/openai/evals/blob/main/evals/registry/modelgraded/fact.yaml" target="_blank" rel="noopener noreferrer" class="">OpenAI&#x27;s evals</a>, using the <a class="" href="/docs/configuration/expected-outputs/#model-assisted-eval-metrics"><code>factuality</code></a> assertion type.</p>
-<p>The model-graded factuality check takes the following three inputs:</p>
-<ul>
-<li class=""><strong>Prompt</strong>: prompt sent to the LLM</li>
-<li class=""><strong>Output</strong>: text produced by the LLM</li>
-<li class=""><strong>Reference</strong>: the ideal LLM output, provided by the author of the eval</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="key-terminology-explained">Key terminology explained<a href="#key-terminology-explained" class="hash-link" aria-label="Direct link to Key terminology explained" title="Direct link to Key terminology explained" translate="no">​</a></h3>
-<p>The evaluation classifies the relationship between the LLM output and the reference into one of five categories:</p>
-<ul>
-<li class="">
-<p><strong>A</strong>: Output is a subset of the reference and is fully consistent with it</p>
-<ul>
-<li class=""><em>Example: If the reference is &quot;Paris is the capital of France and has a population of 2.1 million,&quot; a subset would be &quot;Paris is the capital of France&quot; — it contains less information but is fully consistent</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>B</strong>: Output is a superset of the reference and is fully consistent with it</p>
-<ul>
-<li class=""><em>Example: If the reference is &quot;Paris is the capital of France,&quot; a superset would be &quot;Paris is the capital of France and home to the Eiffel Tower&quot; — it adds accurate information while maintaining consistency</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>C</strong>: Output contains all the same details as the reference</p>
-<ul>
-<li class=""><em>Example: If the reference is &quot;The Earth orbits the Sun,&quot; and the output is &quot;The Sun is orbited by the Earth&quot; — same information, different wording</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>D</strong>: Output and reference disagree</p>
-<ul>
-<li class=""><em>Example: If the reference is &quot;Paris is the capital of France,&quot; but the output claims &quot;Lyon is the capital of France&quot; — this is a factual disagreement</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>E</strong>: Output and reference differ, but differences don&#x27;t affect factuality</p>
-<ul>
-<li class=""><em>Example: If the reference is &quot;The distance from Earth to the Moon is 384,400 km,&quot; and the output says &quot;The Moon is about 384,000 km from Earth&quot; — the small difference doesn&#x27;t materially affect factuality</em></li>
-</ul>
-</li>
-</ul>
-<p>By default, categories A, B, C, and E are considered passing (with customizable scores), while category D (disagreement) is considered failing.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="creating-a-basic-factuality-evaluation">Creating a basic factuality evaluation<a href="#creating-a-basic-factuality-evaluation" class="hash-link" aria-label="Direct link to Creating a basic factuality evaluation" title="Direct link to Creating a basic factuality evaluation" translate="no">​</a></h2>
-<p>To set up a simple factuality evaluation for your LLM outputs:</p>
-<ol>
-<li class=""><strong>Create a configuration file</strong> with a factuality assertion:</li>
-</ol>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">promptfooconfig.yaml</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">|</span><span class="token scalar string" style="color:#e3116c"></span><br></span><span class="token-line" style="color:#393A34"><span class="token scalar string" style="color:#e3116c">    Please answer the following question accurately:</span><br></span><span class="token-line" style="color:#393A34"><span class="token scalar string" style="color:#e3116c">    Question: What is the capital of {{location}}?</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">vars</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">location</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> California</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">assert</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">value</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> The capital of California is Sacramento</span><br></span></code></pre></div></div>
-<ol start="2">
-<li class=""><strong>Run your evaluation</strong>:</li>
-</ol>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo view</span><br></span></code></pre></div></div>
-<p>This will produce a report showing how factually accurate your model&#x27;s responses are compared to the reference answers.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="comparing-multiple-models">Comparing Multiple Models<a href="#comparing-multiple-models" class="hash-link" aria-label="Direct link to Comparing Multiple Models" title="Direct link to Comparing Multiple Models" translate="no">​</a></h2>
-<p>Factuality evaluation is especially useful for comparing how different models perform on the same facts:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">promptfooconfig.yaml</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">5</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> anthropic</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">claude</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">sonnet</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">20250929</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> google</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gemini</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">2.0</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">flash</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">|</span><span class="token scalar string" style="color:#e3116c"></span><br></span><span class="token-line" style="color:#393A34"><span class="token scalar string" style="color:#e3116c">    Question: What is the capital of {{location}}?</span><br></span><span class="token-line" style="color:#393A34"><span class="token scalar string" style="color:#e3116c">    Please answer accurately.</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">vars</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">location</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> California</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">assert</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">value</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> The capital of California is Sacramento</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">vars</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">location</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> New York</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">assert</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">value</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Albany is the capital of New York</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="evaluating-on-external-datasets">Evaluating On External Datasets<a href="#evaluating-on-external-datasets" class="hash-link" aria-label="Direct link to Evaluating On External Datasets" title="Direct link to Evaluating On External Datasets" translate="no">​</a></h2>
-<p>For comprehensive evaluation, you can run factuality tests against external datasets like TruthfulQA, which we covered in the Quick Start section.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="creating-your-own-dataset-integration">Creating Your Own Dataset Integration<a href="#creating-your-own-dataset-integration" class="hash-link" aria-label="Direct link to Creating Your Own Dataset Integration" title="Direct link to Creating Your Own Dataset Integration" translate="no">​</a></h3>
-<p>You can integrate any dataset by:</p>
-<ol>
-<li class=""><strong>Create a dataset loader</strong>: Use JavaScript/TypeScript to fetch and format your dataset</li>
-<li class=""><strong>Add factuality assertions</strong>: Include a factuality assertion in each test case</li>
-<li class=""><strong>Reference in your config</strong>:</li>
-</ol>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//your_dataset_loader.ts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">generate_tests</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="crafting-effective-reference-answers">Crafting Effective Reference Answers<a href="#crafting-effective-reference-answers" class="hash-link" aria-label="Direct link to Crafting Effective Reference Answers" title="Direct link to Crafting Effective Reference Answers" translate="no">​</a></h2>
-<p>The quality of your reference answers is crucial for accurate factuality evaluation. Here are specific guidelines:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="what-makes-a-good-reference-answer">What makes a good reference answer?<a href="#what-makes-a-good-reference-answer" class="hash-link" aria-label="Direct link to What makes a good reference answer?" title="Direct link to What makes a good reference answer?" translate="no">​</a></h3>
-<ol>
-<li class="">
-<p><strong>Clarity</strong>: State the fact directly and unambiguously</p>
-<ul>
-<li class=""><em>Good: &quot;The capital of France is Paris.&quot;</em></li>
-<li class=""><em>Avoid: &quot;As everyone knows, the beautiful city of Paris serves as the capital of the magnificent country of France.&quot;</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>Precision</strong>: Include necessary details without extraneous information</p>
-<ul>
-<li class=""><em>Good: &quot;Water freezes at 0 degrees Celsius at standard atmospheric pressure.&quot;</em></li>
-<li class=""><em>Avoid: &quot;Water, H2O, freezes at 0 degrees Celsius, which is also 32 degrees Fahrenheit, creating ice that floats.&quot;</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>Verifiability</strong>: Ensure your reference is backed by authoritative sources</p>
-<ul>
-<li class=""><em>Good: &quot;According to the World Health Organization, the COVID-19 pandemic was declared on March 11, 2020.&quot;</em></li>
-<li class=""><em>Avoid: &quot;The COVID pandemic started sometime in early 2020.&quot;</em></li>
-</ul>
-</li>
-<li class="">
-<p><strong>Completeness</strong>: Include all essential parts of the answer</p>
-<ul>
-<li class=""><em>Good: &quot;The three branches of the U.S. federal government are executive, legislative, and judicial.&quot;</em></li>
-<li class=""><em>Avoid: &quot;The U.S. government has three branches.&quot;</em></li>
-</ul>
-</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="common-pitfalls-to-avoid">Common pitfalls to avoid<a href="#common-pitfalls-to-avoid" class="hash-link" aria-label="Direct link to Common pitfalls to avoid" title="Direct link to Common pitfalls to avoid" translate="no">​</a></h3>
-<ol>
-<li class=""><strong>Subjective statements</strong>: Avoid opinions or judgments in reference answers</li>
-<li class=""><strong>Temporally dependent facts</strong>: Be careful with time-sensitive information</li>
-<li class=""><strong>Ambiguous wording</strong>: Ensure there&#x27;s only one way to interpret the statement</li>
-<li class=""><strong>Unnecessary complexity</strong>: Keep references simple enough for clear evaluation</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="customizing-the-evaluation">Customizing the Evaluation<a href="#customizing-the-evaluation" class="hash-link" aria-label="Direct link to Customizing the Evaluation" title="Direct link to Customizing the Evaluation" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="selecting-the-grading-provider">Selecting the Grading Provider<a href="#selecting-the-grading-provider" class="hash-link" aria-label="Direct link to Selecting the Grading Provider" title="Direct link to Selecting the Grading Provider" translate="no">​</a></h3>
-<p>By default, promptfoo uses <code>gpt-5</code> for grading. To specify a different grading model:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic"># Set the provider for grading factuality</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">5</span><br></span></code></pre></div></div>
-<p>You can also override it per assertion:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">assert</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">value</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> The capital of California is Sacramento</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> anthropic</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">claude</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">sonnet</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">20250929</span><br></span></code></pre></div></div>
-<p>Or via the command line:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--grader</span><span class="token plain"> openai:gpt-5</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="customizing-scoring-weights">Customizing Scoring Weights<a href="#customizing-scoring-weights" class="hash-link" aria-label="Direct link to Customizing Scoring Weights" title="Direct link to Customizing Scoring Weights" translate="no">​</a></h3>
-<p>Tailor the factuality scoring to your specific requirements:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">factuality</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">subset</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1.0</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Category A: Output is a subset of reference</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">superset</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.8</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Category B: Output is a superset of reference</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">agree</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1.0</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Category C: Output contains all the same details</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">disagree</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.0</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Category D: Output and reference disagree</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">differButFactual</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0.7</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Category E: Differences don&#x27;t affect factuality</span><br></span></code></pre></div></div>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="understanding-the-default-scoring-weights">Understanding the default scoring weights<a href="#understanding-the-default-scoring-weights" class="hash-link" aria-label="Direct link to Understanding the default scoring weights" title="Direct link to Understanding the default scoring weights" translate="no">​</a></h4>
-<p>By default, promptfoo uses a simple binary scoring system:</p>
-<ul>
-<li class="">Categories A, B, C, and E are assigned a score of 1.0 (pass)</li>
-<li class="">Category D (disagree) is assigned a score of 0.0 (fail)</li>
-</ul>
-<p><strong>When to use custom weights:</strong></p>
-<ul>
-<li class="">Decrease <code>superset</code> if you&#x27;re concerned about models adding potentially incorrect information</li>
-<li class="">Reduce <code>differButFactual</code> if precision in wording is important for your application</li>
-<li class="">Adjust <code>subset</code> downward if comprehensive answers are required</li>
-</ul>
-<p>A score of 0 means fail, while any positive score is considered passing. The score values can be used for ranking and comparing model outputs.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="customizing-the-evaluation-prompt">Customizing the Evaluation Prompt<a href="#customizing-the-evaluation-prompt" class="hash-link" aria-label="Direct link to Customizing the Evaluation Prompt" title="Direct link to Customizing the Evaluation Prompt" translate="no">​</a></h3>
-<p>For complete control over how factuality is evaluated, customize the prompt:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">rubricPrompt</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">|</span><span class="token scalar string" style="color:#e3116c"></span><br></span><span class="token-line" style="color:#393A34"><span class="token scalar string" style="color:#e3116c">      You are an expert factuality evaluator. Compare these two answers:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">Question</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">input</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">Reference answer</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">ideal</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">Submitted answer</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">completion</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      Determine if the submitted answer is factually consistent with the reference answer.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">Choose one option</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">A</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Submitted answer is a subset of reference (fully consistent)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">B</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Submitted answer is a superset of reference (fully consistent)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">C</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Submitted answer contains same details as reference</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">D</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Submitted answer disagrees with reference</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">E</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> Answers differ but differences don&#x27;t affect factuality</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">Respond with JSON</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token key atrule" style="color:#00a4db">&quot;category&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;LETTER&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">&quot;reason&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;explanation&quot;</span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<p>You must implement the following template variables:</p>
-<ul>
-<li class=""><code>{{input}}</code>: The original prompt/question</li>
-<li class=""><code>{{ideal}}</code>: The reference answer (from the <code>value</code> field)</li>
-<li class=""><code>{{completion}}</code>: The LLM&#x27;s actual response (provided automatically by promptfoo)</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="response-formats">Response Formats<a href="#response-formats" class="hash-link" aria-label="Direct link to Response Formats" title="Direct link to Response Formats" translate="no">​</a></h2>
-<p>The factuality checker supports two response formats:</p>
-<ol>
-<li class="">
-<p><strong>JSON format</strong> (primary and recommended):</p>
-<div class="language-json codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-json codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;category&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;A&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;reason&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;The submitted answer is a subset of the expert answer and is fully consistent with it.&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-</li>
-<li class="">
-<p><strong>Single Letter</strong> (legacy format):</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">(A) The submitted answer is a subset of the expert answer and is fully consistent with it.</span><br></span></code></pre></div></div>
-</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices" translate="no">​</a></h2>
-<p>When setting up factuality evaluations:</p>
-<ol>
-<li class=""><strong>Choose reference answers carefully</strong>: They should be accurate, clear, and comprehensive</li>
-<li class=""><strong>Consider multiple providers</strong>: Different models may excel at different types of factual knowledge</li>
-<li class=""><strong>Customize scoring weights</strong>: Adjust based on your application&#x27;s tolerance for different types of factual issues</li>
-<li class=""><strong>Use a strong grader</strong>: More capable models generally provide more reliable factuality assessments</li>
-<li class=""><strong>Test with known examples</strong>: Validate your setup with questions where you know the correct answers</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="see-also">See Also<a href="#see-also" class="hash-link" aria-label="Direct link to See Also" title="Direct link to See Also" translate="no">​</a></h2>
-<ul>
-<li class=""><a class="" href="/docs/configuration/expected-outputs/model-graded/">Model-graded metrics</a> for more evaluation options</li>
-<li class=""><a class="" href="/docs/configuration/expected-outputs/model-graded/factuality/">Factuality assertion reference</a></li>
-<li class=""><a href="https://github.com/promptfoo/promptfoo/tree/main/examples/huggingface-dataset-factuality" target="_blank" rel="noopener noreferrer" class="">TruthfulQA example on GitHub</a> - Complete code for the TruthfulQA factuality evaluation example</li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/guides/factuality-eval.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/configuration/testing-llm-chains/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Testing LLM chains</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/guides/evaluate-rag/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Evaluating RAG pipelines</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-is-factuality-and-why-is-it-important" class="table-of-contents__link toc-highlight">What is factuality and why is it important?</a></li><li><a href="#quick-start-try-it-today" class="table-of-contents__link toc-highlight">Quick Start: Try it today</a></li><li><a href="#how-factuality-evaluation-works" class="table-of-contents__link toc-highlight">How factuality evaluation works</a><ul><li><a href="#key-terminology-explained" class="table-of-contents__link toc-highlight">Key terminology explained</a></li></ul></li><li><a href="#creating-a-basic-factuality-evaluation" class="table-of-contents__link toc-highlight">Creating a basic factuality evaluation</a></li><li><a href="#comparing-multiple-models" class="table-of-contents__link toc-highlight">Comparing Multiple Models</a></li><li><a href="#evaluating-on-external-datasets" class="table-of-contents__link toc-highlight">Evaluating On External Datasets</a><ul><li><a href="#creating-your-own-dataset-integration" class="table-of-contents__link toc-highlight">Creating Your Own Dataset Integration</a></li></ul></li><li><a href="#crafting-effective-reference-answers" class="table-of-contents__link toc-highlight">Crafting Effective Reference Answers</a><ul><li><a href="#what-makes-a-good-reference-answer" class="table-of-contents__link toc-highlight">What makes a good reference answer?</a></li><li><a href="#common-pitfalls-to-avoid" class="table-of-contents__link toc-highlight">Common pitfalls to avoid</a></li></ul></li><li><a href="#customizing-the-evaluation" class="table-of-contents__link toc-highlight">Customizing the Evaluation</a><ul><li><a href="#selecting-the-grading-provider" class="table-of-contents__link toc-highlight">Selecting the Grading Provider</a></li><li><a href="#customizing-scoring-weights" class="table-of-contents__link toc-highlight">Customizing Scoring Weights</a></li><li><a href="#customizing-the-evaluation-prompt" class="table-of-contents__link toc-highlight">Customizing the Evaluation Prompt</a></li></ul></li><li><a href="#response-formats" class="table-of-contents__link toc-highlight">Response Formats</a></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a></li><li><a href="#see-also" class="table-of-contents__link toc-highlight">See Also</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+```bash
+# Initialize the example - this command creates a new directory with all necessary files
+npx promptfoo@latest init --example huggingface-dataset-factuality
+
+# Change into the newly created directory
+cd huggingface-dataset-factuality
+
+# Run the evaluation - this executes the factuality tests using the models specified in the config
+npx promptfoo eval
+
+# View the results in an interactive web interface
+npx promptfoo view
+```
+
+What these commands do:
+
+1. The first command initializes a new project using our huggingface-dataset-factuality example template.
+2. The second command navigates into the project directory.
+3. The third command runs the factuality evaluation against the TruthfulQA dataset.
+4. The final command opens the results in your browser for analysis.
+
+This example:
+
+- Fetches the TruthfulQA dataset (designed to test model truthfulness).
+- Creates test cases with built-in factuality assertions.
+- Compares model outputs against reference answers.
+- Provides detailed factuality scores and analysis.
+
+You can easily customize it by:
+
+- Uncommenting additional providers in `promptfooconfig.yaml` to test more models.
+- Adjusting the prompt template to change how questions are asked.
+- Modifying the factuality scoring weights to match your requirements.
+
+## How factuality evaluation works
+
+promptfoo implements a structured factuality evaluation methodology based on [OpenAI's evals](https://github.com/openai/evals/blob/main/evals/registry/modelgraded/fact.yaml), using the [`factuality`](/docs/configuration/expected-outputs/#model-assisted-eval-metrics) assertion type.
+
+The model-graded factuality check takes the following three inputs:
+
+- **Prompt**: prompt sent to the LLM.
+- **Output**: text produced by the LLM.
+- **Reference**: the ideal LLM output, provided by the author of the eval.
+
+### Key terminology explained
+
+The evaluation classifies the relationship between the LLM output and the reference into one of five categories:
+
+- **A**: Output is a subset of the reference and is fully consistent with it.
+  - _Example: If the reference is "Paris is the capital of France and has a population of 2.1 million," a subset would be "Paris is the capital of France" — it contains less information but is fully consistent._
+- **B**: Output is a superset of the reference and is fully consistent with it.
+  - _Example: If the reference is "Paris is the capital of France," a superset would be "Paris is the capital of France and home to the Eiffel Tower" — it adds accurate information while maintaining consistency._
+- **C**: Output contains all the same details as the reference.
+  - _Example: If the reference is "The Earth orbits the Sun," and the output is "The Sun is orbited by the Earth" — same information, different wording._
+- **D**: Output and reference disagree.
+  - _Example: If the reference is "Paris is the capital of France," but the output claims "Lyon is the capital of France" — this is a factual disagreement._
+- **E**: Output and reference differ, but differences don't affect factuality.
+  - _Example: If the reference is "The distance from Earth to the Moon is 384,400 km," and the output says "The Moon is about 384,000 km from Earth" — the small difference doesn't materially affect factuality._
+
+By default, categories A, B, C, and E are considered passing (with customizable scores), while category D (disagreement) is considered failing.
+
+## Creating a basic factuality evaluation
+
+To set up a simple factuality evaluation for your LLM outputs:
+
+1. **Create a configuration file** with a factuality assertion:
+
+```yaml
+promptfooconfig.yaml
+```
+
+```yaml
+providers:
+  - openai:gpt-5-mini
+prompts:
+  - |  
+    Please answer the following question accurately:  
+    Question: What is the capital of {{location}}?  
+tests:
+  - vars:  
+      location: California  
+    assert:  
+      - type: factuality  
+        value: The capital of California is Sacramento
+```
+
+2. **Run your evaluation**:
+
+```bash
+npx promptfoo eval
+npx promptfoo view
+```
+
+This will produce a report showing how factually accurate your model's responses are compared to the reference answers.
+
+## Comparing Multiple Models
+
+Factuality evaluation is especially useful for comparing how different models perform on the same facts:
+
+```yaml
+promptfooconfig.yaml
+```
+
+```yaml
+providers:
+  - openai:gpt-5-mini
+  - openai:5
+  - anthropic:claude-sonnet-4-5-20250929
+  - google:gemini-2.0-flash
+prompts:
+  - |  
+    Question: What is the capital of {{location}}?  
+    Please answer accurately.  
+tests:
+  - vars:  
+      location: California  
+    assert:  
+      - type: factuality  
+        value: The capital of California is Sacramento  
+  - vars:  
+      location: New York  
+    assert:  
+      - type: factuality  
+        value: Albany is the capital of New York
+```
+
+## Evaluating On External Datasets
+
+For comprehensive evaluation, you can run factuality tests against external datasets like TruthfulQA, which we covered in the Quick Start section.
+
+### Creating Your Own Dataset Integration
+
+You can integrate any dataset by:
+
+1. **Create a dataset loader**: Use JavaScript/TypeScript to fetch and format your dataset.
+2. **Add factuality assertions**: Include a factuality assertion in each test case.
+3. **Reference in your config**:
+
+```yaml
+tests: file://your_dataset_loader.ts:generate_tests
+```
+
+## Crafting Effective Reference Answers
+
+The quality of your reference answers is crucial for accurate factuality evaluation. Here are specific guidelines:
+
+### What makes a good reference answer?
+
+1. **Clarity**: State the fact directly and unambiguously.
+   - _Good: "The capital of France is Paris."_
+   - _Avoid: "As everyone knows, the beautiful city of Paris serves as the capital of the magnificent country of France."_
+2. **Precision**: Include necessary details without extraneous information.
+   - _Good: "Water freezes at 0 degrees Celsius at standard atmospheric pressure."_
+   - _Avoid: "Water, H2O, freezes at 0 degrees Celsius, which is also 32 degrees Fahrenheit, creating ice that floats."_
+3. **Verifiability**: Ensure your reference is backed by authoritative sources.
+   - _Good: "According to the World Health Organization, the COVID-19 pandemic was declared on March 11, 2020."_
+   - _Avoid: "The COVID pandemic started sometime in early 2020."_
+4. **Completeness**: Include all essential parts of the answer.
+   - _Good: "The three branches of the U.S. federal government are executive, legislative, and judicial."_
+   - _Avoid: "The U.S. government has three branches."_
+
+### Common pitfalls to avoid
+
+1. **Subjective statements**: Avoid opinions or judgments in reference answers.
+2. **Temporally dependent facts**: Be careful with time-sensitive information.
+3. **Ambiguous wording**: Ensure there's only one way to interpret the statement.
+4. **Unnecessary complexity**: Keep references simple enough for clear evaluation.
+
+## Customizing the Evaluation
+
+### Selecting the Grading Provider
+
+By default, promptfoo uses `gpt-5` for grading. To specify a different grading model:
+
+```yaml
+defaultTest:
+  options:
+    # Set the provider for grading factuality
+    provider: openai:gpt-5
+```
+
+You can also override it per assertion:
+
+```yaml
+assert:
+  - type: factuality  
+    value: The capital of California is Sacramento  
+    provider: anthropic:claude-sonnet-4-5-20250929
+```
+
+Or via the command line:
+
+```bash
+promptfoo eval --grader openai:gpt-5
+```
+
+### Customizing Scoring Weights
+
+Tailor the factuality scoring to your specific requirements:
+
+```yaml
+defaultTest:
+  options:
+    factuality:
+      subset: 1.0 # Category A: Output is a subset of reference
+      superset: 0.8 # Category B: Output is a superset of reference
+      agree: 1.0 # Category C: Output contains all the same details
+      disagree: 0.0 # Category D: Output and reference disagree
+      differButFactual: 0.7 # Category E: Differences don't affect factuality
+```
+
+#### Understanding the default scoring weights
+
+By default, promptfoo uses a simple binary scoring system:
+
+- Categories A, B, C, and E are assigned a score of 1.0 (pass).
+- Category D (disagree) is assigned a score of 0.0 (fail).
+
+**When to use custom weights:**
+
+- Decrease `superset` if you're concerned about models adding potentially incorrect information.
+- Reduce `differButFactual` if precision in wording is important for your application.
+- Adjust `subset` downward if comprehensive answers are required.
+
+A score of 0 means fail, while any positive score is considered passing. The score values can be used for ranking and comparing model outputs.
+
+### Customizing the Evaluation Prompt
+
+For complete control over how factuality is evaluated, customize the prompt:
+
+```yaml
+defaultTest:
+  options:
+    rubricPrompt: |  
+      You are an expert factuality evaluator. Compare these two answers:  
+      Question: {{input}}  
+      Reference answer: {{ideal}}  
+      Submitted answer: {{completion}}  
+      Determine if the submitted answer is factually consistent with the reference answer.  
+      Choose one option:  
+      A: Submitted answer is a subset of reference (fully consistent)  
+      B: Submitted answer is a superset of reference (fully consistent)  
+      C: Submitted answer contains same details as reference  
+      D: Submitted answer disagrees with reference  
+      E: Answers differ but differences don't affect factuality  
+      Respond with JSON: {{category}} {{reason}}
+```
+
+You must implement the following template variables:
+
+- `{{input}}`: The original prompt/question.
+- `{{ideal}}`: The reference answer (from the `value` field).
+- `{{completion}}`: The LLM's actual response (provided automatically by promptfoo).
+
+## Response Formats
+
+The factuality checker supports two response formats:
+
+1. **JSON format** (primary and recommended):
+
+```json
+{
+  "category": "A",
+  "reason": "The submitted answer is a subset of the expert answer and is fully consistent with it."
+}
+```
+
+2. **Single Letter** (legacy format):
+
+```text
+(A) The submitted answer is a subset of the expert answer and is fully consistent with it.
+```
+
+## Best Practices
+
+When setting up factuality evaluations:
+
+1. **Choose reference answers carefully**: They should be accurate, clear, and comprehensive.
+2. **Consider multiple providers**: Different models may excel at different types of factual knowledge.
+3. **Customize scoring weights**: Adjust based on your application's tolerance for different types of factual issues.
+4. **Use a strong grader**: More capable models generally provide more reliable factuality assessments.
+5. **Test with known examples**: Validate your setup with questions where you know the correct answers.
+
+## See Also
+
+- [Model-graded metrics](/docs/configuration/expected-outputs/model-graded/) for more evaluation options.
+- [Factuality assertion reference](/docs/configuration/expected-outputs/model-graded/factuality/)
+- [TruthfulQA example on GitHub](https://github.com/promptfoo/promptfoo/tree/main/examples/huggingface-dataset-factuality) - Complete code for the TruthfulQA factuality evaluation example.

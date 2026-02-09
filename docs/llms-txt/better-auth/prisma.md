@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Prisma.
 
-***
 
-title: Prisma
-description: Integrate Better Auth with Prisma.
------------------------------------------------
 
 Prisma ORM is an open-source database toolkit that simplifies database access and management in applications by providing a type-safe query builder and an intuitive data modeling interface.
 
@@ -45,24 +41,33 @@ your database schema based on your Better Auth configuration and plugins.
   <thead>
     <tr className="border-b">
       <th>
-        <p className="font-bold text-[16px] mb-1">Prisma Schema Generation</p>
+        <p className="font-bold text-[16px] mb-1">
+          Prisma Schema Generation
+        </p>
       </th>
 
       <th>
-        <p className="font-bold text-[16px] mb-1">Prisma Schema Migration</p>
+        <p className="font-bold text-[16px] mb-1">
+          Prisma Schema Migration
+        </p>
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr className="h-10">
-      <td>â Supported</td>
-      <td>â Not Supported</td>
+      <td>
+        â Supported
+      </td>
+
+      <td>
+        â Not Supported
+      </td>
     </tr>
   </tbody>
 </table>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

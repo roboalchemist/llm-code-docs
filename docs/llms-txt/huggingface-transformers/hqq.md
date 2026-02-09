@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/hqq.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/hqq.md
 
 # HQQ
 
@@ -14,7 +14,7 @@ pip install hqq
 
 You can choose to either replace all the linear layers in a model with the same quantization config or dedicate a specific quantization config for specific linear layers.
 
-Quantize a model by creating a [HqqConfig](/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.HqqConfig) and specifying the `nbits` and `group_size` to replace for all the linear layers ([torch.nn.Linear](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html)) of the model.
+Quantize a model by creating a [HqqConfig](/docs/transformers/v5.0.0/en/main_classes/quantization#transformers.HqqConfig) and specifying the `nbits` and `group_size` to replace for all the linear layers ([torch.nn.Linear](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html)) of the model.
 
 ``` py
 import torch
@@ -29,7 +29,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-Quantize a model by creating a dictionary specifying the `nbits` and `group_size` for the linear layers to quantize. Pass them to [HqqConfig](/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.HqqConfig) and set which layers to quantize with the config. This approach is especially useful for quantizing mixture-of-experts (MoEs) because they are less affected ly lower quantization settings.
+Quantize a model by creating a dictionary specifying the `nbits` and `group_size` for the linear layers to quantize. Pass them to [HqqConfig](/docs/transformers/v5.0.0/en/main_classes/quantization#transformers.HqqConfig) and set which layers to quantize with the config. This approach is especially useful for quantizing mixture-of-experts (MoEs) because they are less affected ly lower quantization settings.
 
 ``` py
 q4_config = {'nbits':4, 'group_size':64}

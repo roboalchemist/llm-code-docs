@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/manual-logger-streaming.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Logger with Streaming
 
 > Learn how to use Helicone's Manual Logger to track streaming LLM responses

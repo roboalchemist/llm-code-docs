@@ -8,24 +8,24 @@
 
 ## What is Agno?
 
-https://docs.agno.com/ is an open-source framework for building intelligent AI agents. It provides a flexible architecture to create agents with custom tools, enabling seamless integration with external services like Apify for tasks such as web scraping, data extraction and automation.
+[Agno](https://docs.agno.com/) is an open-source framework for building intelligent AI agents. It provides a flexible architecture to create agents with custom tools, enabling seamless integration with external services like Apify for tasks such as web scraping, data extraction and automation.
 
 Agno documentation
 
-Check out the https://docs.agno.com/introduction for more details on building AI agents.
+Check out the [Agno documentation](https://docs.agno.com/introduction) for more details on building AI agents.
 
 ## How to use Apify with Agno
 
-This guide shows how to integrate Apify Actors with Agno to empower your AI agents with real-time web data. We'll use the https://apify.com/apify/rag-web-browser Actor to fetch web content and the https://apify.com/compass/crawler-google-places Actor to extract location-based data. It is very easy to use with any other Actor by just passing the name of the Actor. See and choose from thousands of Actors in the https://apify.com/store.
+This guide shows how to integrate Apify Actors with Agno to empower your AI agents with real-time web data. We'll use the [RAG Web Browser](https://apify.com/apify/rag-web-browser) Actor to fetch web content and the [Google Places Crawler](https://apify.com/compass/crawler-google-places) Actor to extract location-based data. It is very easy to use with any other Actor by just passing the name of the Actor. See and choose from thousands of Actors in the [Apify Store](https://apify.com/store).
 
 ### Prerequisites
 
-* *Apify API token*: Obtain your API token from the https://console.apify.com/account/integrations.
-* *OpenAI API key*: Get your API key from the https://platform.openai.com/account/api-keys.
+* *Apify API token*: Obtain your API token from the [Apify console](https://console.apify.com/account/integrations).
+* *OpenAI API key*: Get your API key from the [OpenAI platform](https://platform.openai.com/account/api-keys).
 
 Alternative LLM providers
 
-While our examples use OpenAI, Agno supports other LLM providers as well. You'll need to adjust the environment variables and configuration according to your chosen provider. Check out the https://docs.agno.com/models/introduction for details on supported providers and configuration.
+While our examples use OpenAI, Agno supports other LLM providers as well. You'll need to adjust the environment variables and configuration according to your chosen provider. Check out the [Agno models documentation](https://docs.agno.com/models/introduction) for details on supported providers and configuration.
 
 * *Python environment*: Ensure Python is installed (version 3.8+ recommended).
 * *Required packages*: Install the following dependencies in your terminal:
@@ -117,7 +117,7 @@ This agent will fetch travel-related data and restaurant recommendations, provid
 
 Apify Store
 
-Browse the https://apify.com/store to find additional Actors for tasks like social media scraping, e-commerce data extraction, or news aggregation.
+Browse the [Apify Store](https://apify.com/store) to find additional Actors for tasks like social media scraping, e-commerce data extraction, or news aggregation.
 
 ### Available Apify tools
 
@@ -131,9 +131,9 @@ Agno supports any Apify Actor via the ApifyTools class. You can specify a single
 
 ## Resources
 
-* https://blog.apify.com/how-to-build-an-ai-agent/
-* https://docs.agno.com
-* https://docs.apify.com
-* https://docs.apify.com/actors
-* https://apify.com/store
-* https://docs.agno.com/tools/toolkits/others/apify#apify
+* [How to build an AI Agent](https://blog.apify.com/how-to-build-an-ai-agent/)
+* [Agno Framework Documentation](https://docs.agno.com)
+* [Apify Platform Documentation](https://docs.apify.com)
+* [Apify Actor Documentation](https://docs.apify.com/actors)
+* [Apify Store - Browse available Actors](https://apify.com/store)
+* [Agno Apify Toolkit Documentation](https://docs.agno.com/tools/toolkits/others/apify#apify)

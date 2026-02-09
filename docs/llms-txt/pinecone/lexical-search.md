@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/search/lexical-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lexical search
 
 > Perform keyword-based search on sparse indexes
@@ -181,7 +185,7 @@ For example, the following code converts the query “What is AAPL's outlook, co
   curl "https://$INDEX_HOST/records/namespaces/example-namespace/search" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "query": {
             "inputs": { "text": "What is AAPL'\''s outlook, considering both product launches and market conditions?" },
@@ -409,9 +413,12 @@ To search a sparse index with a sparse vector representation of a query, use the
 * `top_k`: The number of results to return.
 * `include_values`: Whether to include the vector values of the matching records in the response. Defaults to `false`.
 * `include_metadata`: Whether to include the metadata of the matching records in the response. Defaults to `false`.
-  <Note>
-    When querying with `top_k` over 1000, avoid returning vector data or metadata for optimal performance.
-  </Note>
+
+<Note>
+  When querying with `top_k` over 1000, for optimal performance set `include_values=false` and `include_metadata=false` to return only IDs and scores.
+
+  Since vectors values are retrieved from object storage, include them in your query results only when you need them (especially with higher `top_k` values). For details, see [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed).
+</Note>
 
 For example, the following code uses a sparse vector representation of the query "What is AAPL's outlook, considering both product launches and market conditions?" to search for the 3 most similar vectors in the `example-namespace` namespace:
 
@@ -573,7 +580,7 @@ For example, the following code uses a sparse vector representation of the query
   curl "https://$INDEX_HOST/query" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "sparseVector": {
               "values": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
@@ -889,9 +896,12 @@ When you search with a record ID, Pinecone uses the sparse vector associated wit
 * `top_k`: The number of results to return.
 * `include_values`: Whether to include the vector values of the matching records in the response. Defaults to `false`.
 * `include_metadata`: Whether to include the metadata of the matching records in the response. Defaults to `false`.
-  <Note>
-    When querying with `top_k` over 1000, avoid returning vector data or metadata for optimal performance.
-  </Note>
+
+<Note>
+  When querying with `top_k` over 1000, for optimal performance set `include_values=false` and `include_metadata=false` to return only IDs and scores.
+
+  Since vectors values are retrieved from object storage, include them in your query results only when you need them (especially with higher `top_k` values). For details, see [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed).
+</Note>
 
 For example, the following code uses an ID to search for the 3 records in the `example-namespace` namespace that best match the sparse vector in the record:
 
@@ -1029,7 +1039,7 @@ For example, the following code uses an ID to search for the 3 records in the `e
   curl "https://$INDEX_HOST/query" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "id": "rec2",
           "namespace": "example-namespace",
@@ -1064,7 +1074,7 @@ INDEX_HOST="INDEX_HOST"
 curl "https://$INDEX_HOST/records/namespaces/example-namespace/search" \
   -H "Content-Type: application/json" \
   -H "Api-Key: $PINECONE_API_KEY" \
-  -H "X-Pinecone-API-Version: unstable" \
+  -H "X-Pinecone-Api-Version: unstable" \
   -d '{
         "query": {
           "inputs": { "text": "What is the current outlook for Tesla stock performance?" },

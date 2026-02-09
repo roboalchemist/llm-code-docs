@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/aws.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Bedrock
 
 export const PyEmbeddingAwsUsage = "import tempfile\nfrom pathlib import Path\n\nimport lancedb\nimport pandas as pd\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\n\nmodel = get_registry().get(\"bedrock-text\").create()\n\nclass TextModel(LanceModel):\n    text: str = model.SourceField()\n    vector: Vector(model.ndims()) = model.VectorField()\n\ndf = pd.DataFrame({\"text\": [\"hello world\", \"goodbye world\"]})\ndb = lancedb.connect(str(Path(tempfile.mkdtemp()) / \"bedrock-demo\"))\ntbl = db.create_table(\"test\", schema=TextModel, mode=\"overwrite\")\n\ntbl.add(df)\nrs = tbl.search(\"hello\").limit(1).to_pandas()\nprint(rs.head())\n";
@@ -43,8 +47,3 @@ Usage Example:
     {PyEmbeddingAwsUsage}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

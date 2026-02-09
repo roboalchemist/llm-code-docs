@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/resp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JSON.RESP
 
 > Return the value at the path in Redis serialization protocol format.
@@ -10,8 +14,8 @@
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="str" default="$">
-  The path of the object.
+<ParamField body="path" type="str" required>
+  The path of the object. `$` is the root.
 </ParamField>
 
 ## Response

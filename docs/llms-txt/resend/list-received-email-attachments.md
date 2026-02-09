@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/list-received-email-attachments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Attachments
 
 > Retrieve a list of attachments from a received email.
@@ -69,7 +73,7 @@ export const QueryParams = ({type, isRequired}) => {
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -79,7 +83,7 @@ export const QueryParams = ({type, isRequired}) => {
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->receiving->attachments->list(
@@ -87,7 +91,7 @@ export const QueryParams = ({type, isRequired}) => {
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -97,7 +101,7 @@ export const QueryParams = ({type, isRequired}) => {
   )
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -107,7 +111,7 @@ export const QueryParams = ({type, isRequired}) => {
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -117,14 +121,14 @@ export const QueryParams = ({type, isRequired}) => {
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	attachments, err := client.Emails.Receiving.ListAttachmentsWithContext(
+  	client.Emails.Receiving.ListAttachmentsWithContext(
   		context.TODO(),
   		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
   	)
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{list_opts::ListOptions, Resend, Result};
 
   #[tokio::main]
@@ -143,7 +147,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -157,7 +161,7 @@ export const QueryParams = ({type, isRequired}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -166,14 +170,14 @@ export const QueryParams = ({type, isRequired}) => {
   Console.WriteLine( "Nr Attachments={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/emails/receiving/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "has_more": false,

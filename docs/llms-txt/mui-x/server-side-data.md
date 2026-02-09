@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/server-side-data.md
 
-# Source: https://mui.com/x/react-data-grid/tutorials/server-side-data.md
-
-# Source: https://mui.com/x/react-data-grid/server-side-data.md
-
 # Data Grid - Server-side data
 
 Learn how to work with server-side data in the Data Grid using the Data Source layer.

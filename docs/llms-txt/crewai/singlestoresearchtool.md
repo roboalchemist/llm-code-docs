@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/database-data/singlestoresearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SingleStore Search Tool
 
 > The `SingleStoreSearchTool` safely executes SELECT/SHOW queries on SingleStore with pooling.

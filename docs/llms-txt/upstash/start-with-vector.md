@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/start-with-vector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Start with Vector
 
 > Perform queries that can be resumed to fetch additional results.

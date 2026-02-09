@@ -4,11 +4,7 @@
 
 Spotify provider setup and usage.
 
-***
 
-title: Spotify
-description: Spotify provider setup and usage.
-----------------------------------------------
 
 <Steps>
   <Step>

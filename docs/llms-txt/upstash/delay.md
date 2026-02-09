@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/features/delay.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delay
 
 When publishing a message, you can delay it for a certain amount of time before

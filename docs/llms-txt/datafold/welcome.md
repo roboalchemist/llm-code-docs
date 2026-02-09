@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/welcome.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Welcome
 
 > Datafold is the unified platform proactive data quality that combines automated data testing, data reconciliation, and observability to help data teams prevent data quality issues and accelerate their development velocity.

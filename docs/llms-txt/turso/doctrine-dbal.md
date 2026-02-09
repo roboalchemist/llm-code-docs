@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/php/orm/doctrine-dbal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turso + Doctrine DBAL
 
 > Set up Turso in your PHP + Doctrine DBAL project in minutes

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/autonomy-level.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Autonomy Level
 
 > Control Agent's level of autonomy (how often it reviews its code & makes changes without intervention).

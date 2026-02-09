@@ -2,6 +2,8 @@
 
 # ActorStats<!-- -->
 
+Statistics about Actor usage and activity.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -17,34 +19,50 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#lastRunStartedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L314)lastRunStartedAt
+### [**](#lastRunStartedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L515)lastRunStartedAt
 
 **lastRunStartedAt: Date
 
-### [**](#totalBuilds)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L307)totalBuilds
+Timestamp when the last run was started
+
+### [**](#totalBuilds)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L501)totalBuilds
 
 **totalBuilds: number
 
-### [**](#totalMetamorphs)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L313)totalMetamorphs
+Total number of builds created for this Actor
+
+### [**](#totalMetamorphs)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L513)totalMetamorphs
 
 **totalMetamorphs: number
 
-### [**](#totalRuns)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L308)totalRuns
+Total number of times this Actor was used via metamorph
+
+### [**](#totalRuns)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L503)totalRuns
 
 **totalRuns: number
 
-### [**](#totalUsers)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L309)totalUsers
+Total number of times this Actor has been run
+
+### [**](#totalUsers)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L505)totalUsers
 
 **totalUsers: number
 
-### [**](#totalUsers30Days)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L311)totalUsers30Days
+Total number of unique users who have run this Actor
+
+### [**](#totalUsers30Days)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L509)totalUsers30Days
 
 **totalUsers30Days: number
 
-### [**](#totalUsers7Days)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L310)totalUsers7Days
+Number of unique users in the last 30 days
+
+### [**](#totalUsers7Days)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L507)totalUsers7Days
 
 **totalUsers7Days: number
 
-### [**](#totalUsers90Days)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L312)totalUsers90Days
+Number of unique users in the last 7 days
+
+### [**](#totalUsers90Days)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L511)totalUsers90Days
 
 **totalUsers90Days: number
+
+Number of unique users in the last 90 days

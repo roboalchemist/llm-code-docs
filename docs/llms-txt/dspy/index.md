@@ -36,158 +36,6 @@
 
 # Source: https://dspy.ai/index.md
 
-# Source: https://dspy.ai/tutorials/observability/index.md
-
-# Source: https://dspy.ai/tutorials/deployment/index.md
-
-# Source: https://dspy.ai/api/primitives/Example/index.md
-
-# Source: https://dspy.ai/api/signatures/Signature/index.md
-
-# Source: https://dspy.ai/api/modules/ReAct/index.md
-
-# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
-
-# Source: https://dspy.ai/api/modules/Predict/index.md
-
-# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
-
-# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
-
-# Source: https://dspy.ai/learn/optimization/overview/index.md
-
-# Source: https://dspy.ai/tutorials/agents/index.md
-
-# Source: https://dspy.ai/tutorials/classification/index.md
-
-# Source: https://dspy.ai/tutorials/rag/index.md
-
-# Source: https://dspy.ai/learn/programming/language_models/index.md
-
-# Source: https://dspy.ai/learn/programming/modules/index.md
-
-# Source: https://dspy.ai/learn/programming/signatures/index.md
-
-# Source: https://dspy.ai/learn/programming/overview/index.md
-
-# Source: https://dspy.ai/cheatsheet/index.md
-
-# Source: https://dspy.ai/index.md
-
-# Source: https://dspy.ai/tutorials/observability/index.md
-
-# Source: https://dspy.ai/tutorials/deployment/index.md
-
-# Source: https://dspy.ai/api/primitives/Example/index.md
-
-# Source: https://dspy.ai/api/signatures/Signature/index.md
-
-# Source: https://dspy.ai/api/modules/ReAct/index.md
-
-# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
-
-# Source: https://dspy.ai/api/modules/Predict/index.md
-
-# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
-
-# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
-
-# Source: https://dspy.ai/learn/optimization/overview/index.md
-
-# Source: https://dspy.ai/tutorials/agents/index.md
-
-# Source: https://dspy.ai/tutorials/classification/index.md
-
-# Source: https://dspy.ai/tutorials/rag/index.md
-
-# Source: https://dspy.ai/learn/programming/language_models/index.md
-
-# Source: https://dspy.ai/learn/programming/modules/index.md
-
-# Source: https://dspy.ai/learn/programming/signatures/index.md
-
-# Source: https://dspy.ai/learn/programming/overview/index.md
-
-# Source: https://dspy.ai/cheatsheet/index.md
-
-# Source: https://dspy.ai/index.md
-
-# Source: https://dspy.ai/tutorials/observability/index.md
-
-# Source: https://dspy.ai/tutorials/deployment/index.md
-
-# Source: https://dspy.ai/api/primitives/Example/index.md
-
-# Source: https://dspy.ai/api/signatures/Signature/index.md
-
-# Source: https://dspy.ai/api/modules/ReAct/index.md
-
-# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
-
-# Source: https://dspy.ai/api/modules/Predict/index.md
-
-# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
-
-# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
-
-# Source: https://dspy.ai/learn/optimization/overview/index.md
-
-# Source: https://dspy.ai/tutorials/agents/index.md
-
-# Source: https://dspy.ai/tutorials/classification/index.md
-
-# Source: https://dspy.ai/tutorials/rag/index.md
-
-# Source: https://dspy.ai/learn/programming/language_models/index.md
-
-# Source: https://dspy.ai/learn/programming/modules/index.md
-
-# Source: https://dspy.ai/learn/programming/signatures/index.md
-
-# Source: https://dspy.ai/learn/programming/overview/index.md
-
-# Source: https://dspy.ai/cheatsheet/index.md
-
-# Source: https://dspy.ai/index.md
-
-# Source: https://dspy.ai/tutorials/observability/index.md
-
-# Source: https://dspy.ai/tutorials/deployment/index.md
-
-# Source: https://dspy.ai/api/primitives/Example/index.md
-
-# Source: https://dspy.ai/api/signatures/Signature/index.md
-
-# Source: https://dspy.ai/api/modules/ReAct/index.md
-
-# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
-
-# Source: https://dspy.ai/api/modules/Predict/index.md
-
-# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
-
-# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
-
-# Source: https://dspy.ai/learn/optimization/overview/index.md
-
-# Source: https://dspy.ai/tutorials/agents/index.md
-
-# Source: https://dspy.ai/tutorials/classification/index.md
-
-# Source: https://dspy.ai/tutorials/rag/index.md
-
-# Source: https://dspy.ai/learn/programming/language_models/index.md
-
-# Source: https://dspy.ai/learn/programming/modules/index.md
-
-# Source: https://dspy.ai/learn/programming/signatures/index.md
-
-# Source: https://dspy.ai/learn/programming/overview/index.md
-
-# Source: https://dspy.ai/cheatsheet/index.md
-
-# Source: https://dspy.ai/index.md
-
 # *Programming*—not prompting—*LMs*
 
 DSPy is a declarative framework for building modular AI software. It allows you to **iterate fast on structured code**, rather than brittle strings, and offers algorithms that **compile AI programs into effective prompts and weights** for your language models, whether you're building simple classifiers, sophisticated RAG pipelines, or Agent loops.
@@ -206,7 +54,7 @@ You can authenticate by setting the `OPENAI_API_KEY` env variable or passing `ap
 
 ```
 import dspy
-lm = dspy.LM("openai/gpt-4o-mini", api_key="YOUR_OPENAI_API_KEY")
+lm = dspy.LM("openai/gpt-5-mini", api_key="YOUR_OPENAI_API_KEY")
 dspy.configure(lm=lm)
 ```
 
@@ -526,7 +374,7 @@ tp = dspy.MIPROv2(metric=dspy.evaluate.SemanticF1(decompositional=True), auto="m
 optimized_rag = tp.compile(RAG(), trainset=trainset, max_bootstrapped_demos=2, max_labeled_demos=2)
 ```
 
-For a complete RAG example that you can run, start this [tutorial](tutorials/rag/). It improves the quality of a RAG system over a subset of StackExchange communities by 10% relative gain.
+For a complete RAG example that you can run, start this [tutorial](https://dspy.ai/tutorials/rag/index.md). It improves the quality of a RAG system over a subset of StackExchange communities by 10% relative gain.
 
 Click to show dataset setup code.
 
@@ -592,4 +440,4 @@ Compared to monolithic LMs, DSPy's modular paradigm enables a large community to
 
 The DSPy research effort started at Stanford NLP in Feb 2022, building on what we had learned from developing early [compound LM systems](https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/) like [ColBERT-QA](https://arxiv.org/abs/2007.00814), [Baleen](https://arxiv.org/abs/2101.00436), and [Hindsight](https://arxiv.org/abs/2110.07752). The first version was released as [DSP](https://arxiv.org/abs/2212.14024) in Dec 2022 and evolved by Oct 2023 into [DSPy](https://arxiv.org/abs/2310.03714). Thanks to [250 contributors](https://github.com/stanfordnlp/dspy/graphs/contributors), DSPy has introduced tens of thousands of people to building and optimizing modular LM programs.
 
-Since then, DSPy's community has produced a large body of work on optimizers, like [MIPROv2](https://arxiv.org/abs/2406.11695), [BetterTogether](https://arxiv.org/abs/2407.10930), and [LeReT](https://arxiv.org/abs/2410.23214), on program architectures, like [STORM](https://arxiv.org/abs/2402.14207), [IReRa](https://arxiv.org/abs/2401.12178), and [DSPy Assertions](https://arxiv.org/abs/2312.13382), and on successful applications to new problems, like [PAPILLON](https://arxiv.org/abs/2410.17127), [PATH](https://arxiv.org/abs/2406.11706), [WangLab@MEDIQA](https://arxiv.org/abs/2404.14544), [UMD's Prompting Case Study](https://arxiv.org/abs/2406.06608), and [Haize's Red-Teaming Program](https://blog.haizelabs.com/posts/dspy/), in addition to many open-source projects, production applications, and other [use cases](community/use-cases/).
+Since then, DSPy's community has produced a large body of work on optimizers, like [MIPROv2](https://arxiv.org/abs/2406.11695), [BetterTogether](https://arxiv.org/abs/2407.10930), and [LeReT](https://arxiv.org/abs/2410.23214), on program architectures, like [STORM](https://arxiv.org/abs/2402.14207), [IReRa](https://arxiv.org/abs/2401.12178), and [DSPy Assertions](https://arxiv.org/abs/2312.13382), and on successful applications to new problems, like [PAPILLON](https://arxiv.org/abs/2410.17127), [PATH](https://arxiv.org/abs/2406.11706), [WangLab@MEDIQA](https://arxiv.org/abs/2404.14544), [UMD's Prompting Case Study](https://arxiv.org/abs/2406.06608), and [Haize's Red-Teaming Program](https://blog.haizelabs.com/posts/dspy/), in addition to many open-source projects, production applications, and other [use cases](https://dspy.ai/community/use-cases/index.md).

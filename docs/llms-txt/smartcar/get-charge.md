@@ -2,17 +2,9 @@
 
 # Source: https://smartcar.com/docs/api-reference/audi/get-charge.md
 
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge.md
-
-# Source: https://smartcar.com/docs/api-reference/audi/get-charge.md
-
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge.md
-
-# Source: https://smartcar.com/docs/api-reference/audi/get-charge.md
-
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge.md
-
-# Source: https://smartcar.com/docs/api-reference/audi/get-charge.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Audi: Charge Status
 

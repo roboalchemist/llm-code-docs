@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/identify-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # IdentityFilter
 
 > Processor that passes all frames through without modification
@@ -60,8 +64,3 @@ graph LR
 * Useful in testing parallel pipelines
 * Can serve as a placeholder or base class
 * Zero overhead in normal operation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

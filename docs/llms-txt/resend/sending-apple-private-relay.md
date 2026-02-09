@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/sending-apple-private-relay.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to prevent bounces with @privaterelay.appleid.com recipients?
 
 > Sending to Apple Private Email Relay requires specific configuration steps to ensure your emails get delivered

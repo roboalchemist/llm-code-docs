@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/custom-properties.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Properties
 
 When building AI applications, you often need to track and analyze requests by different dimensions like project, feature, or workflow stage. Custom Properties let you tag LLM requests with metadata, enabling advanced filtering, cost analysis per user or feature, and performance tracking across different parts of your application.

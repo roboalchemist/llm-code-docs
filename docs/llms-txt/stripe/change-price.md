@@ -10,6 +10,10 @@ You can also implement the [customer portal](https://docs.stripe.com/customer-ma
 
 When a customer changes their subscription, you must change the subscription item to reflect the new selection. For example, a customer might upgrade to a premium tier or downgrade to a basic tier, prompting you to replace the underlying price of that subscription item. You can do this using a few different methods.
 
+> #### Compare Customers v1 and Accounts v2 references
+> 
+> If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 ## Retrieve the identifiers
 
 Regardless of the method you choose, you need to provide identifiers for the objects you’re updating. Use the [list subscriptions](https://docs.stripe.com/api/subscriptions/list.md) method with a relevant filter (such as the customer ID) to find the subscription and item to update.
@@ -241,9 +245,8 @@ params := &stripe.SubscriptionUpdateParams{
       Price: stripe.String("{{NEW_PRICE_ID}}"),
     },
   },
-  SubscriptionExposedID: stripe.String("sub_xxxxxxxxx"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(context.TODO(), "sub_xxxxxxxxx", params)
 ```
 
 ```dotnet
@@ -387,9 +390,8 @@ params := &stripe.SubscriptionUpdateParams{
     },
     &stripe.SubscriptionUpdateItemParams{Price: stripe.String("{{NEW_PRICE_ID}}")},
   },
-  SubscriptionExposedID: stripe.String("sub_xxxxxxxxx"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(context.TODO(), "sub_xxxxxxxxx", params)
 ```
 
 ```dotnet
@@ -492,11 +494,8 @@ const subscriptionItem = await stripe.subscriptionItems.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionItemUpdateParams{
-  Price: stripe.String("{{NEW_PRICE_ID}}"),
-  Item: stripe.String("si_xxxxxxxxx"),
-}
-result, err := sc.V1SubscriptionItems.Update(context.TODO(), params)
+params := &stripe.SubscriptionItemUpdateParams{Price: stripe.String("{{NEW_PRICE_ID}}")}
+result, err := sc.V1SubscriptionItems.Update(context.TODO(), "si_xxxxxxxxx", params)
 ```
 
 ```dotnet
@@ -644,9 +643,8 @@ params := &stripe.SubscriptionUpdateParams{
       ClearUsage: stripe.Bool(true),
     },
   },
-  SubscriptionExposedID: stripe.String("sub_xxxxxxxxx"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(context.TODO(), "sub_xxxxxxxxx", params)
 ```
 
 ```dotnet

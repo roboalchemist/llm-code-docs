@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/code-repositories.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate with Code Repositories
 
 > Connect your code repositories with Datafold.

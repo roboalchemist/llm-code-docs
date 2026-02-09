@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/replit-workspace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > The Replit workspace is an environment where you can create apps and write code in a single browser tab without any installation or setup. From the workspace, you can create, run, and publish your apps from any device.
@@ -44,7 +48,7 @@ The workspace offers the following powerful development features:
 * Customizable **Run** button actions in the [**Workflow**](/replit-workspace/workflows/) tool
 * Real-time [collaboration](/replit-workspace/workspace-features/multiplayer/) with teammates over the network
 * Seamless [publishing](/category/replit-deployments/) to cloud services and database integration
-* AI-powered tools, [Agent](/replitai/agent/) and [Assistant](/replitai/assistant/), for project setup, feature development, and debugging.
+* AI-powered tools like [Agent](/replitai/agent/) for project setup, feature development, and debugging.
 
 ## Use cases
 

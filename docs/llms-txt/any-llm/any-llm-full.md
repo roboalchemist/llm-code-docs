@@ -16,11 +16,21 @@ This file contains all documentation pages concatenated for easy consumption by 
 
 <!-- Source: index.md -->
 
+---
+schema:
+  type: "SoftwareSourceCode"
+  name: "any-llm"
+  description: "A Python library providing a single interface to different LLM providers including OpenAI, Anthropic, Mistral, and more"
+  programmingLanguage: "Python"
+  codeRepository: "https://github.com/mozilla-ai/any-llm"
+  license: "https://github.com/mozilla-ai/any-llm/blob/main/LICENSE"
+---
+
 <p align="center">
   <picture>
     <img src="./images/any-llm-logo.png" width="20%" alt="any-llm logo"/>
   </picture>
-      <p align="center">  <b>Stop rewriting code for every LLM provider </b></p>
+      <p align="center">  <b>One interface. Every LLM. </b></p>
 </p>
 
 `any-llm` is a Python library providing a single interface to different llm providers.
@@ -47,7 +57,7 @@ print(response)
 
 ### Why any-llm
   - Switch providers in one line
-  - Consistent error handling across providers
+  - Unified exception handling across providers
   - Simple API, powerful features
 
 [View supported providers →](#./providers.md)
@@ -72,17 +82,10 @@ Features: real-time streaming responses, multiple provider support, and collapsi
 **Direct API Functions** (recommended for simple use cases):
 - [completion](#./api/completion.md) - Chat completions with any provider
 - [embedding](#./api/embedding.md) - Text embeddings
-- [responses](#./api/responses.md) - OpenAI-style Responses API
+- [responses](#./api/responses.md) - [OpenResponses](https://www.openresponses.org/) API for agentic AI systems
 
 **AnyLLM Class** (recommended for advanced use cases):
 - [Provider API](#./api/any_llm.md) - Lower-level provider interface with metadata access and reusability
-
-### Error Handling
-
-`any-llm` provides custom exceptions to indicate common errors like missing API keys
-and parameters that are unsupported by a specific provider.
-
-For more details on exceptions, see the [exceptions API documentation](#./api/exceptions.md).
 
 ## For AI Systems
 
@@ -98,19 +101,42 @@ This documentation is available in two AI-friendly formats:
 
 <!-- Source: quickstart.md -->
 
-## Quickstart
+---
+schema:
+  type: "HowTo"
+  name: "How to Install and Use any-llm"
+  description: "Step-by-step guide to installing any-llm and making your first API call with Python"
+  totalTime: "PT5M"
+  tool:
+    - "Python 3.11 or newer"
+    - "pip package manager"
+  supply:
+    - "API key from your chosen LLM provider"
+  steps:
+    - name: "Install any-llm"
+      text: "Install any-llm with your chosen providers using pip. Use the all option to install support for all providers."
+      url: "https://mozilla-ai.github.io/any-llm/quickstart/#installation"
+    - name: "Set up API keys"
+      text: "Configure your provider's API key as an environment variable. Make sure you have the appropriate environment variable set for your chosen provider."
+      url: "https://mozilla-ai.github.io/any-llm/quickstart/#api-keys"
+    - name: "Make your first completion call"
+      text: "Import the completion function from any-llm and create your first API call with your chosen model and provider"
+      url: "https://mozilla-ai.github.io/any-llm/quickstart/#your-first-api-call"
+---
 
-### Requirements
+
+## Requirements
 
 - Python 3.11 or newer
 - API keys for your chosen LLM provider
 
-### Installation
+## Installation
+
 ```bash
 pip install any-llm-sdk[all]  # Install with all provider support
 ```
 
-#### Installing Specific Providers
+### Installing Specific Providers
 
 If you want to install a specific provider from our [supported providers](#./providers.md):
 
@@ -121,34 +147,15 @@ pip install any-llm-sdk[ollama]   # For Ollama provider
 pip install any-llm-sdk[mistral,ollama]
 ```
 
-#### Library Integration
+### Library Integration
 
 If you're building a library, install just the base package (`pip install any-llm-sdk`) and let your users install provider dependencies.
 
 > **API Keys:** Set your provider's API key as an environment variable (e.g., `export MISTRAL_API_KEY="your-key"`) or pass it directly using the `api_key` parameter.
 
-### Your First API Call 
+## APIs
 
-```python
-import os
-
-from any_llm import completion
-
-# Make sure you have the appropriate API key set
-api_key = os.environ.get('MISTRAL_API_KEY')
-if not api_key:
-    raise ValueError("Please set MISTRAL_API_KEY environment variable")
-
-# Recommended: separate provider and model parameters
-response = completion(
-    model="mistral-small-latest",
-    provider="mistral",
-    messages=[{"role": "user", "content": "Hello!"}]
-)
-print(response.choices[0].message.content)
-```
-
-### Advanced: Using the AnyLLM Class
+### Using the AnyLLM Class
 
 For applications making multiple requests with the same provider, use the `AnyLLM` class to avoid repeated provider instantiation:
 
@@ -175,7 +182,28 @@ print(f"Supports streaming: {metadata.streaming}")
 print(f"Supports tools: {metadata.completion}")
 ```
 
-#### When to Choose Which Approach
+### API Call
+
+```python
+import os
+
+from any_llm import completion
+
+# Make sure you have the appropriate API key set
+api_key = os.environ.get('MISTRAL_API_KEY')
+if not api_key:
+    raise ValueError("Please set MISTRAL_API_KEY environment variable")
+
+# Recommended: separate provider and model parameters
+response = completion(
+    model="mistral-small-latest",
+    provider="mistral",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+print(response.choices[0].message.content)
+```
+
+### When to Choose Which Approach
 
 **Use Direct API Functions (`completion`, `acompletion`) when:**
 
@@ -190,7 +218,7 @@ print(f"Supports tools: {metadata.completion}")
 
 **Finding model names:** Check the [providers page](#./providers.md) for provider IDs, or use the [`list_models`](#./api/list_models.md) API to see available models for your provider.
 
-### Streaming
+## Streaming
 
 For the [providers that support streaming](#./providers.md), you can enable it by passing `stream=True`:
 
@@ -207,7 +235,7 @@ for chunk in completion(
     output += chunk_content
 ```
 
-### Embeddings
+## Embeddings
 
 [`embedding`][any_llm.embedding] and [`aembedding`][any_llm.aembedding] allow you to create vector embeddings from text using the same unified interface across providers.
 
@@ -228,7 +256,7 @@ print(f"Embedding vector length: {len(embedding_vector)}")
 print(f"Tokens used: {result.usage.total_tokens}")
 ```
 
-### Tools
+## Tools
 
 `any-llm` supports tool calling for providers that support it. You can pass a list of tools where each tool is either:
 
@@ -245,7 +273,7 @@ def get_weather(location: str, unit: str = "F") -> str:
         location: The city or location to get weather for
         unit: Temperature unit, either 'C' or 'F'
 
-    Returns: 
+    Returns:
         Current weather description
     """
     return f"Weather in {location} is sunny and 75{unit}!"
@@ -263,12 +291,79 @@ any-llm automatically converts your Python functions to OpenAI tools format. Fun
 - Type annotations for all parameters
 - A return type annotation
 
+## Exception Handling
+
+The `any-llm` package provides a unified exception hierarchy that works consistently across all LLM providers.
+
+### Enabling Unified Exceptions
+
+!!! info "Opt-in Feature"
+    Unified exception handling is currently **opt-in**. Set the `ANY_LLM_UNIFIED_EXCEPTIONS` environment variable to enable it:
+
+```bash
+export ANY_LLM_UNIFIED_EXCEPTIONS=1
+```
+
+When enabled, provider-specific exceptions are automatically converted to `any-llm` exception types. When disabled (default), the original provider exceptions are raised with a deprecation warning.
+
+### Basic Usage
+
+```python
+from any_llm import completion
+from any_llm.exceptions import (
+    RateLimitError,
+    AuthenticationError,
+    ProviderError,
+    AnyLLMError,
+)
+
+try:
+    response = completion(
+        model="gpt-4",
+        provider="openai",
+        messages=[{"role": "user", "content": "Hello!"}]
+    )
+except RateLimitError as e:
+    print(f"Rate limited: {e.message}")
+except AuthenticationError as e:
+    print(f"Auth failed: {e.message}")
+except ProviderError as e:
+    print(f"Provider error: {e.message}")
+except AnyLLMError as e:
+    print(f"Error: {e.message}")
+```
+
+### Accessing Original Exceptions
+
+All unified exceptions preserve the original provider exception for debugging:
+
+```python
+from any_llm.exceptions import RateLimitError
+
+messages = [{"role": "user", "content": "Hello!"}]
+
+try:
+    response = completion(model="gpt-4", provider="openai", messages=messages)
+except RateLimitError as e:
+    print(f"Provider: {e.provider_name}")
+    print(f"Original exception: {type(e.original_exception)}")
+```
+
 
 ---
 
 ## providers.md
 
 <!-- Source: providers.md -->
+
+---
+schema:
+  type: "TechArticle"
+  name: "Supported Providers - any-llm"
+  description: "Complete list of LLM providers supported by any-llm including OpenAI, Anthropic, Mistral, and more"
+  datePublished: "2024-03-15"
+  dateModified: "2024-11-18"
+---
 
 # Supported Providers
 
@@ -279,11 +374,12 @@ Provider source code can be found in the [`src/any_llm/providers/`](https://gith
 
 !!! note "Legend"
 
-    - **Reasoning (Completions)**: Provider can return reasoning traces alongside the assistant message via the completions and/or streaming endpoints. This does not indicate whether the provider offers separate "reasoning models".See [this](https://github.com/mozilla-ai/any-llm/issues/95)
+    - **Key**: Environment variable for the API key (e.g., `OPENAI_API_KEY`).
+    - **Base**: Environment variable for a custom API base URL (e.g., `OPENAI_BASE_URL`). Useful for proxies or self-hosted endpoints.
+    - **Reasoning (Completions)**: Provider can return reasoning traces alongside the assistant message via the completions and/or streaming endpoints. This does not indicate whether the provider offers separate "reasoning models". See [this](https://github.com/mozilla-ai/any-llm/issues/95) discussion for more information.
     - **Streaming (Completions)**: Provider can stream completion results back as an iterator.
-    discussion for more information.
     - **Image (Completions)**: Provider supports passing an `image_data` parameter for vision capabilities, as defined by the OpenAI spec [here](https://platform.openai.com/docs/api-reference/chat/create#chat_create-messages).
-    - **Responses API**: Provider supports the Responses API variant for text generation.  See [this](https://github.com/mozilla-ai/any-llm/issues/26) to follow along with our implementation effort.
+    - **OpenResponses API**: Provider supports the [OpenResponses](https://www.openresponses.org/) specification for agentic AI systems. See the [Responses API docs](#api/responses.md) for usage details.
     - **List Models API**: Provider supports listing available models programmatically via the `list_models()` function. This allows you to discover what models are available from the provider at runtime, which can be useful for dynamic model selection or validation.
 
 
@@ -309,13 +405,29 @@ Provider source code can be found in the [`src/any_llm/providers/`](https://gith
 
 <!-- Source: api/responses.md -->
 
-## Responses
+## OpenResponses API
+
+The Responses API in any-llm implements the [OpenResponses](https://www.openresponses.org/) specification—an open-source standard for building multi-provider, interoperable LLM interfaces for agentic AI systems.
+
+!!! info "Learn More"
+
+    - [OpenResponses Specification](https://www.openresponses.org/specification)
+    - [OpenResponses Reference](https://www.openresponses.org/reference)
+    - [HuggingFace Responses API Guide](https://huggingface.co/docs/inference-providers/guides/responses-api)
+
+### Return Types
+
+The `responses()` and `aresponses()` functions return different types depending on the provider's level of OpenResponses compliance:
+
+| Return Type | When Returned |
+|-------------|---------------|
+| `openresponses_types.ResponseResource` | Providers fully compliant with the OpenResponses specification |
+| `openai.types.responses.Response` | Providers using OpenAI's native Responses API (not yet fully OpenResponses-compliant) |
+| `Iterator[dict]` / `AsyncIterator[dict]` | When `stream=True` is set |
 
 
-!!! warning
-
-    This API is experimental and subject to changes based upon our experience as we integrate additional providers.
-    Use with caution.
+Both `ResponseResource` and `Response` share a similar structure, so in many cases
+you can access common fields like `output` without type checking.
 
 ::: any_llm.api.responses
 ::: any_llm.api.aresponses
@@ -351,9 +463,12 @@ Provider source code can be found in the [`src/any_llm/providers/`](https://gith
 
 <!-- Source: api/exceptions.md -->
 
-## Exceptions
+# Exception Handling
 
 ::: any_llm.exceptions
+    options:
+      show_root_heading: false
+      heading_level: 3
 
 
 ---
@@ -422,9 +537,12 @@ Data models and types for completion operations.
 
 <!-- Source: api/types/responses.md -->
 
-## Response Types
+## OpenResponses Types
 
-Data models and types for API responses.
+Data models and types for the [OpenResponses](https://www.openresponses.org/) API specification.
+
+For the full OpenResponses type definitions, see the [openresponses-types](https://pypi.org/project/openresponses-types/) package documentation.
+
 
 ::: any_llm.types.responses
 
@@ -466,6 +584,147 @@ Data models and types for provider operations.
 Data models and types for batch operations.
 
 ::: any_llm.types.batch
+
+
+---
+
+## platform/overview.md
+
+<!-- Source: platform/overview.md -->
+
+# Managed Platform Overview
+
+## What is the any-llm Managed Platform?
+
+The any-llm managed platform is a cloud-hosted service that provides secure API key vaulting and usage tracking for all your LLM providers. Instead of managing multiple provider API keys across your codebase, you get a single virtual key that works with any supported provider while keeping your credentials encrypted and your usage tracked.
+
+The managed platform is available at [any-llm.ai](https://any-llm.ai).
+
+## Why use the Managed Platform?
+
+Managing LLM API keys and tracking costs across multiple providers is challenging:
+
+- **Security risks**: API keys scattered across `.env` files, CI/CD pipelines, and developer machines
+- **No visibility**: Difficult to track spending across OpenAI, Anthropic, Google, and other providers
+- **Key rotation pain**: Updating keys means touching multiple systems and codebases
+- **No performance insights**: No easy way to measure latency, throughput, or reliability
+
+The managed platform solves these problems:
+
+- **Secure Key Vault**: Your provider API keys are encrypted client-side before storage—we never see your raw keys
+- **Single Virtual Key**: One `ANY_LLM_KEY` works across all providers
+- **Usage Analytics**: Track tokens, costs, and performance metrics without logging prompts or responses
+- **Zero Infrastructure**: No servers to deploy, no databases to manage
+
+## How it works
+
+The managed platform acts as a secure credential manager and usage tracker. Here's the flow:
+
+1. **You add provider keys** to the platform dashboard (keys are encrypted in your browser before upload)
+2. **You get a virtual key** (`ANY_LLM_KEY`) that represents your project
+3. **Your application** uses the `PlatformProvider` with your virtual key
+4. **The SDK** authenticates with the platform, retrieves and decrypts your provider key client-side
+5. **Your request** goes directly to the LLM provider (OpenAI, Anthropic, etc.)
+6. **Usage metadata** (tokens, model, latency) is reported back—never your prompts or responses
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          Your Application                               │
+│                                                                         │
+│   from any_llm import completion                                        │
+│   completion(provider="platform", model="openai:gpt-4", ...)            │
+└──────────────────────────────┬──────────────────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        any-llm SDK (PlatformProvider)                   │
+│                                                                         │
+│  1. Authenticate with platform using ANY_LLM_KEY                        │
+│  2. Receive encrypted provider key                                      │
+│  3. Decrypt provider key locally (client-side)                          │
+│  4. Make request directly to provider                                   │
+│  5. Report usage metadata (tokens, latency) to platform                 │
+└────────────────┬─────────────────────────────────────┬──────────────────┘
+                 │                                     │
+                 ▼                                     ▼
+┌─────────────────────────────┐       ┌────────────────────────────────────┐
+│   any-llm Managed Platform  │       │        LLM Provider                │
+│                             │       │   (OpenAI, Anthropic, etc.)        │
+│  • Encrypted key storage    │       │                                    │
+│  • Usage tracking           │       │   Your prompts/responses go        │
+│  • Cost analytics           │       │   directly here—never through      │
+│  • Performance metrics      │       │   our platform                     │
+└─────────────────────────────┘       └────────────────────────────────────┘
+```
+
+## Key Features
+
+### Client-Side Encryption
+
+Your provider API keys are encrypted in your browser using XChaCha20-Poly1305 before being sent to our servers. The encryption key is derived from your account credentials and never leaves your device. This means:
+
+- We cannot read your provider API keys
+- Even if our database were compromised, your keys remain encrypted
+- You maintain full control over your credentials
+
+
+### Privacy-First Usage Tracking
+
+The platform tracks usage metadata to provide cost and performance insights:
+
+**What we track for you:**
+
+- Token counts (input and output)
+- Model name and provider
+- Request timestamps
+- Performance metrics (latency, throughput)
+
+**What we never track:**
+
+- Your prompts
+- Model responses
+- Any content from your conversations
+
+### Project Organization
+
+Organize your usage by project, team, or environment:
+
+- Create separate projects for development, staging, and production
+- Track costs per project
+- Set up different provider keys per project
+
+## Platform vs. Gateway
+
+any-llm offers two solutions for managing LLM access. Choose the one that fits your needs:
+
+| Feature | Managed Platform | Self-Hosted Gateway |
+|---------|-----------------|---------------------|
+| **Deployment** | Cloud-hosted (no infrastructure) | Self-hosted (Docker + Postgres) |
+| **Key Storage** | Client-side encrypted vault | Your own configuration |
+| **Budget Enforcement** | Coming soon | Built-in |
+| **User Management** | Per-project | Full user/key management |
+| **Request Routing** | Direct to provider, no proxy | Through your gateway |
+| **Best For** | Teams wanting zero-ops key management and usage tracking| Organizations needing full control |
+
+You can also use both together—store your provider keys in the managed platform and use them in a self-hosted gateway deployment.
+
+## Current Status
+
+The any-llm managed platform is in **open beta**. During the beta:
+
+- **Free access** to all features
+- Core encryption and key management are **production-ready**
+- Dashboard UX and advanced features are being refined
+- Feedback is welcome at [any-llm.ai](https://any-llm.ai)
+
+## Getting Started
+
+Ready to try the managed platform?
+
+1. Create an account at [any-llm.ai](https://any-llm.ai)
+2. Add your provider API keys
+3. Get your virtual key
+4. Make your first request
 
 
 ---
@@ -610,7 +869,11 @@ When running any-llm-gateway, it must have a few things configured:
 1. `DATABASE_URL`. The gateway relies upon a postgres database for storage.
 1. Provider Keys. The gateway connects to providers (Mistral, AWS, Vertex, Azure, etc) using credentials that must be set.
 
-For the purposes of the quickstart we will use the included `docker/docker-compose.yml`, but you can customize the file to your own requirements.
+### Create a project directory
+```bash 
+mkdir any-llm-gateway
+cd any-llm-gateway
+```
 
 ### Generate  master key
 
@@ -623,15 +886,13 @@ Save the output of this command, you'll need it in the next steps.
 
 ### Configure providers 
 
-Copy the example `docker/config.example.yml` file to `docker/config.yml`
+Create a file name `config.yml` and paste the below content:
 
-```bash
-cp docker/config.example.yml docker/config.yml
-```
-
-At a minimum you'll need to fill out the value for the master_key, and also enter credential information for at least one provider. You can browse supported providers [here](https://mozilla-ai.github.io/any-llm/providers/). If you would like to track usage cost, you'll also need to configure model pricing, as explained in the config template file.
+> **Action** :  At a minimum you'll need to fill out the master_key, and also enter credential information for at least one provider. You can browse supported providers [here](https://mozilla-ai.github.io/any-llm/providers/). If you would like to track usage cost, you'll also need to configure model pricing, as explained in the [config template file](https://raw.githubusercontent.com/mozilla-ai/any-llm/main/docker/config.example.yml).
 
 ```yaml
+database_url: "postgresql://gateway:gateway@postgres:5432/gateway"
+
 master_key: 09kS0xTiz6JqO....
 
 providers:
@@ -645,16 +906,61 @@ models:
     output_price_per_million: 0.60
 ```
 
+### Set up Docker Configuration 
+
+Create a file named `docker-compose.yml` with the following content.
+
+<detail> 
+<summary> Click to view docker-compose.yml content </summary>
+
+```yaml 
+services:
+  gateway:
+    # Use the official production image
+    image: ghcr.io/mozilla-ai/any-llm/gateway:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config.yml:/app/config.yml
+      # UNCOMMENT the next line ONLY if using Google Vertex AI (requires service_account.json)
+      # - ./service_account.json:/app/service_account.json
+    command: ["any-llm-gateway", "serve", "--config", "/app/config.yml"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=gateway
+      - POSTGRES_PASSWORD=gateway
+      - POSTGRES_DB=gateway
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gateway"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+</detail>
+
+**Alternatively**, you can download the file directly from the repository: 
+
+```bash 
+curl -o docker-compose.yml https://raw.githubusercontent.com/mozilla-ai/any-llm/main/docker/docker-compose.yml
+```
 
 ### Start the gateway
 
-Run the docker-compose file, ensuring that your config.yml is located in the same directory as the docker-compose.yml file (`docker/config.yml`).
-
-The default setting is to build the gateway from source, but see the docker-compose.yml file comment to see how to use a published version of any-llm-gateway instead of the source code.
-
 ```bash
 # From project root directory
-docker-compose -f docker/docker-compose.yml up -d --build
+docker compose up -d
 ```
 
 ````bash
@@ -668,7 +974,7 @@ curl http://localhost:8000/health
 ### View Logs 
 
 ```bash
-docker-compose -f docker/docker-compose.yml logs -f
+docker compose logs -f
 ```
 
 
@@ -686,7 +992,7 @@ export GATEWAY_MASTER_KEY=YOUR_MASTER_KEY
 
 ### Create a user
 
-In order to track usage, we must first create a user so that we can associate our completion request with them.
+To track usage, we must first create a user so that to associate our completion request.
 
 ```bash
 curl -s -X POST http://localhost:8000/v1/users \
@@ -826,8 +1132,6 @@ You'll notice that the user does not have a budget attached, which means that we
 
 ## Next Steps
 
-
-
 - **[Configuration](#configuration.md)** - Configure providers, pricing, and other settings
 - **[Authentication](#authentication.md)** - Learn about master keys and virtual API keys
 - **[Budget Management](#budget-management.md)** - Set spending limits and track costs
@@ -850,6 +1154,25 @@ any-llm-gateway offers two authentication methods, each designed for different u
 | **Master Key** | Internal services, admin operations, trusted environments | Single key with full access | Requires manual user specification |
 | **Virtual API Keys** | External apps, per-user access, customer-facing services | Multiple scoped keys | Automatic per-key tracking |
 
+### Supported Headers
+
+The gateway accepts authentication via two headers:
+
+- **`X-AnyLLM-Key`** (preferred): The gateway's native authentication header
+- **`Authorization`**: Standard HTTP authorization header for OpenAI client compatibility
+
+Both headers use the `Bearer <token>` format. When both headers are present, `X-AnyLLM-Key` takes precedence.
+
+Using the `Authorization` header allows you to use the gateway with OpenAI-compatible clients without modification:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:8000/v1",
+    api_key="your-master-key-or-virtual-key",  # Sent as Authorization: Bearer ...
+)
+```
 
 ## Master Key 
 The master key is the root credential for your gateway installation. It has unrestricted access to all gateway operations and should be treated with the same security as your production database credentials.
@@ -1133,7 +1456,7 @@ database_url: "postgresql://gateway:gateway@localhost:5432/gateway_db"
 #Master key for admin access
 master_key: "your-secure-master-key"
 
-## LLM Provider Credentials 
+## LLM Provider Credentials
 providers:
   openai:
     api_key: "${OPENAI_API_KEY}"
@@ -1201,14 +1524,35 @@ curl -X POST http://localhost:8000/v1/pricing \
   }'
 ```
 
-This is useful for:  
-- Updating pricing without restarting the gateway  
-- Managing pricing in production environments  
-- Adjusting rates as provider pricing changes  
+This is useful for:
+- Updating pricing without restarting the gateway
+- Managing pricing in production environments
+- Adjusting rates as provider pricing changes
 
-**Important notes:**  
-- Database pricing takes precedence - config only sets initial values  
+**Important notes:**
+- Database pricing takes precedence - config only sets initial values
 - If pricing for the model already exists in the database, config values are ignored (with a warning logged)
+
+## Provider Client Args
+
+You can set additional arguments to provider clients via the `client_args` configuration. These arguments are passed directly to the provider's client initialization, enabling custom headers, timeouts, and other provider-specific options.
+
+```yaml
+providers:
+  openai:
+    api_key: "${OPENAI_API_KEY}"
+    client_args:
+      custom_headers:
+        X-Custom-Header: "custom-value"
+      timeout: 60
+```
+
+Common use cases:
+- **Custom headers**: Pass additional headers to the provider (e.g., for proxy authentication or request tracing)
+- **Timeouts**: Configure connection and request timeouts
+- **Provider-specific options**: Pass any additional arguments supported by the provider's client
+
+The available `client_args` options depend on the provider. See the [any-llm provider documentation](https://mozilla-ai.github.io/any-llm/providers/) for provider-specific options.
 
 ## Next Steps
 

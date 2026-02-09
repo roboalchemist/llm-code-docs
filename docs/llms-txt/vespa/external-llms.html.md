@@ -93,7 +93,7 @@ By default, this particular client connects to the OpenAI service, but can be us
 - **Q: Can I use the OpenAI client for retrieving embeddings?**
   - A: No, currently, only the [Chat Completion API](https://platform.openai.com/docs/api-reference/chat) is supported.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

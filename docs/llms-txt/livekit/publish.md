@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/publish.md
 
-# Source: https://docs.livekit.io/home/client/tracks/publish.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Camera & microphone
+LiveKit docs › Media › Camera & microphone
 
 ---
 
@@ -410,7 +408,7 @@ The [`AVSynchronizer`](https://docs.livekit.io/reference/python/v1/livekit/rtc/i
 
 ---
 
-This document was rendered at 2025-11-18T23:54:50.376Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/publish.md](https://docs.livekit.io/home/client/tracks/publish.md).
+This document was rendered at 2026-02-03T03:25:15.738Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/publish.md](https://docs.livekit.io/transport/media/publish.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

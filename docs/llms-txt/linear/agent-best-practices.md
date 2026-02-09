@@ -13,9 +13,23 @@ Upon receiving the `created` webhook, your agent should respond immediately with
 > 
 > Follow-up activities after the first response can still be sent for up to 30 minutes before the session is considered stale. Note that this stale state is recoverable by sending another agent activity.
 
-If your agent is delegated to work on an issue that is not in a `started`, `completed`, or `canceled` status type, move the issue to the first status in `started` when your agent begins work.
+If your agent is delegated to work on an issue that is not in a `started`, `completed`, or `canceled` status type, move the issue to the first status in `started` when your agent begins work. You can fetch this by querying the team’s workflow states filtered by `type: { eq: "started" }`, and selecting the one with the lowest `position`:
 
-If your agent is working on implementation and no Issue.delegate is currently set, it should set itself as the delegate to make the agent's role in the issue more explicit. 
+```graphql
+query TeamStartedStatuses($teamId: String!) {
+  team(id: $teamId) {
+    states(filter: { type: { eq: "started" } }) {
+      nodes {
+        id
+        name
+        position
+      }
+    }
+  }
+}
+```
+
+If your agent is working on implementation and no `Issue.delegate` is currently set, it should set itself as the delegate to make the agent's role in the issue more explicit. 
 
 When work is complete, emit an `AgentActivity` with type `response`; or if you require additional actions from the user, emit an `AgentActivity` with type `elicitation` or `error`. We will automatically create a comment under the comment thread as well.
 
@@ -199,4 +213,4 @@ The new `actor=app` actor type works quite differently at the core to our legacy
 
 ## Feedback, requests, questions
 
-Please join the **#api-agents** channel in our [community Slack](https://linear.app/join-slack) to provide feedback on this guide, request API's, and interact with other engineers developing agentic integrations.
+Please join the **#api** channel in our [community Slack](https://linear.app/join-slack) to provide feedback on this guide, request API's, and interact with other engineers developing agentic integrations.

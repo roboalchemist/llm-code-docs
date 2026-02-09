@@ -60,10 +60,10 @@ Fetch a single document from the database by its [GenericId](/api/modules/values
 
 #### Parameters[​](#parameters "Direct link to Parameters")
 
-| Name    | Type                                                         | Description                                                                                   |
-| ------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `table` | `NonUnion`<`TableName`>                                      | The name of the table to fetch the document from.                                             |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+| Name    | Type                                                                     | Description                                                                                   |
+| ------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table to fetch the document from.                                             |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
 
 #### Returns[​](#returns "Direct link to Returns")
 

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/button-has-type.md
 ---
-# react/button-has-type&#x20;
 
 ### What it does
 

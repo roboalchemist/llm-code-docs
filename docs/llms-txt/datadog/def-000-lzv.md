@@ -1,0 +1,23 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-lzv.md
+
+---
+title: >-
+  RDS event subscriptions should be configured to notify for critical database
+  security group events
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > RDS event subscriptions should be
+  configured to notify for critical database security group events
+---
+
+# RDS event subscriptions should be configured to notify for critical database security group events
+ 
+## Description{% #description %}
+
+This control ensures existing Amazon RDS event subscriptions for database parameter groups have notifications enabled for `configuration change` and `failure` events. The control skips if no RDS DB event subscriptions exist in your account. The control fails if an event subscription exists but does not include the required categories.
+
+RDS event notifications leverage Amazon SNS to alert you about changes in the availability or configuration of your RDS resources, enabling quick response. For further details on RDS event notifications, refer to the [Using Amazon RDS event notification section in the Amazon RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html).
+
+## Remediation{% #remediation %}
+
+To subscribe to RDS event notifications, refer to the [Subscribing to Amazon RDS event notification section in the Amazon RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Subscribing.html).

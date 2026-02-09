@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tavily MCP Server
 
 > Tavily MCP Server allows you to use the Tavily API in your MCP clients.
@@ -64,7 +68,7 @@ Get your Tavily API key from [tavily.com](https://www.tavily.com/).
 
 ### Connect to Cursor
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=tavily-remote-mcp\&config=eyJjb21tYW5kIjoibnB4IC15IG1jcC1yZW1vdGUgaHR0cHM6Ly9tY3AudGF2aWx5LmNvbS9tY3AvP3RhdmlseUFwaUtleT08eW91ci1hcGkta2V5PiJ9)
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=tavily-remote-mcp\&config=eyJjb21tYW5kIjoibnB4IC15IG1jcC1yZW1vdGUgaHR0cHM6Ly9tY3AudGF2aWx5LmNvbS9tY3AvP3RhdmlseUFwaUtleT08eW91ci1hcGkta2V5PiIsImVudiI6e319)
 
 Click the ⬆️ Add to Cursor ⬆️ button, this will do most of the work for you but you will still need to edit the configuration to add your API-KEY. You can get a Tavily API key [here](https://www.tavily.com/).
 
@@ -133,6 +137,50 @@ mcp-remote is a lightweight bridge that lets MCP clients that can only talk to l
     }
 }
 ```
+
+### OAuth Authentication
+
+The Tavily Remote MCP server supports secure OAuth authentication, allowing you to connect and authorize seamlessly with compatible clients.
+
+<AccordionGroup>
+  <Accordion title="Using MCP Inspector" icon="magnifying-glass">
+    Open the MCP Inspector and click "Open Auth Settings". Select the OAuth flow and complete these steps:
+
+    1. Metadata discovery
+    2. Client registration
+    3. Preparing authorization
+    4. Request authorization and obtain the authorization code
+    5. Token request
+    6. Authentication complete
+
+    Once finished, you will receive an access token that lets you securely make authenticated requests to the Tavily Remote MCP server.
+  </Accordion>
+
+  <Accordion title="Using Other MCP Clients" icon="plug">
+    You can configure your MCP client to use OAuth without including your Tavily API key in the URL. For example, in Cursor's `mcp.json`:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "tavily-remote-mcp": {
+          "command": "npx mcp-remote https://mcp.tavily.com/mcp",
+          "env": {}
+        }
+      }
+    }
+    ```
+
+    If you need to clear stored OAuth credentials and reauthenticate, run:
+
+    ```bash  theme={null}
+    rm -rf ~/.mcp-auth
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  After successful OAuth authentication, your default API key (if set) will be used for all operations; otherwise, the first available key will be used. OAuth authentication is optional—you can still use API key authentication at any time by including your Tavily API key in the URL query parameter (`?tavilyApiKey=...`) or by setting it in the Authorization header.
+</Note>
 
 Alternatively, you can also run the MCP server locally.
 
@@ -325,8 +373,3 @@ Alternatively, you can also run the MCP server locally.
     For Claude Desktop
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

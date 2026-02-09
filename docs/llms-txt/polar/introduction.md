@@ -14,53 +14,9 @@
 
 # Source: https://polar.sh/docs/api-reference/introduction.md
 
-# Source: https://polar.sh/docs/merchant-of-record/introduction.md
-
-# Source: https://polar.sh/docs/introduction.md
-
-# Source: https://polar.sh/docs/integrate/oauth2/introduction.md
-
-# Source: https://polar.sh/docs/guides/introduction.md
-
-# Source: https://polar.sh/docs/features/usage-based-billing/introduction.md
-
-# Source: https://polar.sh/docs/features/cost-insights/introduction.md
-
-# Source: https://polar.sh/docs/features/benefits/introduction.md
-
-# Source: https://polar.sh/docs/api-reference/introduction.md
-
-# Source: https://polar.sh/docs/merchant-of-record/introduction.md
-
-# Source: https://polar.sh/docs/introduction.md
-
-# Source: https://polar.sh/docs/integrate/oauth2/introduction.md
-
-# Source: https://polar.sh/docs/guides/introduction.md
-
-# Source: https://polar.sh/docs/features/usage-based-billing/introduction.md
-
-# Source: https://polar.sh/docs/features/cost-insights/introduction.md
-
-# Source: https://polar.sh/docs/features/benefits/introduction.md
-
-# Source: https://polar.sh/docs/api-reference/introduction.md
-
-# Source: https://polar.sh/docs/merchant-of-record/introduction.md
-
-# Source: https://polar.sh/docs/introduction.md
-
-# Source: https://polar.sh/docs/integrate/oauth2/introduction.md
-
-# Source: https://polar.sh/docs/guides/introduction.md
-
-# Source: https://polar.sh/docs/features/usage-based-billing/introduction.md
-
-# Source: https://polar.sh/docs/features/cost-insights/introduction.md
-
-# Source: https://polar.sh/docs/features/benefits/introduction.md
-
-# Source: https://polar.sh/docs/api-reference/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Overview
 

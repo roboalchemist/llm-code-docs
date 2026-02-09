@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/gateways/gateway-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gateway Deployment
 
 > Complete guide to deploying Infisical Gateways including network configuration and firewall requirements
@@ -144,7 +148,7 @@ To successfully deploy an Infisical Gateway for use, follow these steps in order
         ```
 
         <Info>
-          By default, the gateway connects to the most optimal relay. Use the `--relay` flag to manually specify a different relay server.
+          By default, the gateway connects to the most optimal relay. Use the `--target-relay-name` flag to manually specify a different relay server.
         </Info>
 
         <Warning>
@@ -194,7 +198,7 @@ To successfully deploy an Infisical Gateway for use, follow these steps in order
         ```
 
         <Info>
-          By default, the gateway connects to the most optimal relay. Use the `--relay` flag to manually specify a different relay server.
+          By default, the gateway connects to the most optimal relay. Use the `--target-relay-name` flag to manually specify a different relay server.
         </Info>
       </Tab>
     </Tabs>

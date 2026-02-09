@@ -1,46 +1,45 @@
 # Source: https://docs.squared.ai/api-reference/models/delete-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Model
+
+
 
 ## OpenAPI
 
 ````yaml DELETE /api/v1/models/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/models/{id}
-  method: delete
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/models/{id}:
+    delete:
+      tags:
+        - Models
+      summary: Deletes a model
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Model deleted
-        examples: {}
-        description: Model deleted
-  deprecated: false
-  type: path
+            type: integer
+      responses:
+        '204':
+          description: Model deleted
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

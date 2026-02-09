@@ -4,18 +4,6 @@
 
 # Source: https://docs.vespa.ai/en/learn/tutorials/index.html.md
 
-# Source: https://docs.vespa.ai/index.html.md
-
-# Source: https://docs.vespa.ai/en/performance/index.html.md
-
-# Source: https://docs.vespa.ai/en/learn/tutorials/index.html.md
-
-# Source: https://docs.vespa.ai/index.html.md
-
-# Source: https://docs.vespa.ai/en/performance/index.html.md
-
-# Source: https://docs.vespa.ai/en/learn/tutorials/index.html.md
-
 # Tutorials and use cases
 
  
@@ -79,7 +67,7 @@ The [HTTP API tutorial](http-api.html) shows how to build a custom HTTP API in a
 
 There are many examples and starting applications on[GitHub](https://github.com/vespa-engine/sample-apps/)and [Pyvespa examples](https://vespa-engine.github.io/pyvespa/index.html).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -2,10 +2,6 @@
 
 # Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-checker/what-is-the-kaisar-checker-node/faqs.md
 
-# Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-checker/how-to-purchase-checker-nodes/faqs.md
-
-# Source: https://docs.kaisar.io/kaisar-network/kaisar-architecture/products/kaisar-onenode/kaisar-checker/what-is-the-kaisar-checker-node/faqs.md
-
 # FAQs
 
 * **What are Checker Nodes?**

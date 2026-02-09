@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/overview-cvi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > CVI enables real-time, human-like video interactions through configurable lifelike replicas.
@@ -75,25 +79,31 @@ Here’s how the layers work together:
     [Click here to learn how to configure the Perception layer.](/sections/conversational-video-interface/persona/perception)
   </Accordion>
 
-  <Accordion title="3. Speech Recognition (STT)" icon="ear-listen">
-    Powered by **Sparrow**, this layer transcribes user speech in real time with lexical and semantic awareness. It enables smart, natural turn-taking through fast, intelligent interruptions.
+  <Accordion title="3. Conversational Flow" icon="comments">
+    Controls the natural dynamics of conversation, including turn-taking and interruptibility. Uses **Sparrow** for intelligent turn detection, enabling the replica to decide when to speak and when to listen.
+
+    [Click here to learn how to configure the Conversational Flow layer.](/sections/conversational-video-interface/persona/conversational-flow)
+  </Accordion>
+
+  <Accordion title="4. Speech Recognition (STT)" icon="ear-listen">
+    This layer transcribes user speech in real time with lexical and semantic awareness.
 
     [Click here to learn how to configure the Speech Recognition (STT) layer.](/sections/conversational-video-interface/persona/stt)
   </Accordion>
 
-  <Accordion title="4. Large Language Model (LLM)" icon="brain">
+  <Accordion title="5. Large Language Model (LLM)" icon="brain">
     Processes the user's transcribed speech and visual input using a low-latency LLM. Tavus provides ultra-low latency optimized LLMs or lets you integrate your own.
 
     [Click here to learn how to configure the Large Language Model (LLM) layer.](/sections/conversational-video-interface/persona/llm)
   </Accordion>
 
-  <Accordion title="5. Text-to-Speech (TTS)" icon="volume-high">
+  <Accordion title="6. Text-to-Speech (TTS)" icon="volume-high">
     Converts the LLM response into speech using the supported TTS Engines (Cartesia **(Default)**, ElevenLabs).
 
     [Click here to learn how to configure the Text-to-Speech (TTS) layer.](/sections/conversational-video-interface/persona/tts)
   </Accordion>
 
-  <Accordion title="6. Realtime Replica" icon="face-smile">
+  <Accordion title="7. Realtime Replica" icon="face-smile">
     Delivers a high-quality, synchronized digital human response using Tavus's real-time avatar engine powered by **Phoenix**.
 
     [Click here to learn more about the Replica layer.](/sections/replica/overview)

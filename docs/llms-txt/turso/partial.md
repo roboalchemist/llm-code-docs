@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sync/partial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partial sync
 
 > Sync only what you need. Faster cold starts and lower bandwidth by lazily fetching database pages on demand.
@@ -251,8 +255,3 @@ This reduces the number of future on-demand fetches and helps avoid stalls durin
 
   Using both together can provide the best performance for real-world workloads.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.turso.tech/llms.txt

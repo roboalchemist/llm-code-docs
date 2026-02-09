@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/user/request-an-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Submit Agent Requests in Agent.ai
 
 Have an idea for a new agent? Head to the [Request an Agent](https://agent.ai/suggest-an-agent) page to suggest it. You can also get there from the profile navigation menu.

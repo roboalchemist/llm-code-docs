@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/user-help.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create help documentation for your users
 
 > We encourage you to publish help documentation about using your Zapier integration on your own website. Having guides on your site gives users a seamless experience when they're already exploring your product, and allows you to tailor the documentation to your branding. While Zapier's support team will help users troubleshoot issues, having detailed help docs on your site enables users to self-serve and address common questions on their own.

@@ -61,5 +61,5 @@ email_struct = Struct(name="email", fields=[
     schema.document.add_structs(email_struct)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

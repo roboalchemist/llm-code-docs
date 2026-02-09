@@ -1,96 +1,86 @@
 # Source: https://upstash.com/docs/devops/developer-api/vector/list_indices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Indices
 
 > This endpoint returns the data related to all indices of an account as a list.
 
+
+
 ## OpenAPI
 
 ````yaml devops/developer-api/openapi.yml get /vector/index
+openapi: 3.0.4
+info:
+  title: Developer API - Upstash
+  description: >-
+    This is a documentation to specify Developer API endpoints based on the
+    OpenAPI 3.0 specification.
+  contact:
+    name: Support Team
+    email: support@upstash.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.upstash.com/v2
+security: []
+tags:
+  - name: redis
+    description: Manage redis databases.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: teams
+    description: Manage teams and team members.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: vector
+    description: Manage vector indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: search
+    description: Manage search indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: qstash
+    description: Manage QStash.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+externalDocs:
+  description: Find out more about Upstash
+  url: https://upstash.com/
 paths:
-  path: /vector/index
-  method: get
-  servers:
-    - url: https://api.upstash.com/v2
-  request:
-    security:
-      - title: basicAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/VectorIndex'
-        examples:
-          example:
-            value:
-              - customer_id: example@upstash.com
-                id: 0639864f-ece6-429c-8118-86a287b0e808
-                name: myindex
-                similarity_function: COSINE
-                dimension_count: 384
-                embedding_model: BGE_SMALL_EN_V1_5
-                sparse_embedding_model: BM25
-                endpoint: glowing-baboon-15797-us1
-                token: >-
-                  QkZGAsWp2tdW0tdC0zNzM1LWV1MkFkNQzB1ExUb3hOekF0TVRJbFpMDNLVSm1GZw==
-                read_only_token: >-
-                  QkZGRk1heGSKC0MtdRlZC0zNzM1LWTj3pAV0Wm1aZ01p05qY3RNR0U0TkRtRt2s9azJU
-                type: fixed
-                region: us-east-1
-                max_vector_count: 5210000
-                max_daily_updates: 1000000
-                max_daily_queries: 1000000
-                max_monthly_bandwidth: -1
-                max_writes_per_second: 1000
-                max_query_per_second: 1000
-                max_reads_per_request: 1000
-                max_writes_per_request: 1000
-                max_total_metadata_size: 53687091200
-                reserved_price: 60
-                creation_time: 1753207106
-                index_type: DENSE
-                throughput_vector:
-                  - x: 2025-09-04 14:55:00.000 +0000 UTC
-                    'y': 0
-                  - x: 2025-09-04 14:56:00.000 +0000 UTC
-                    'y': 0
-        description: Indices retrieved successfully
-  deprecated: false
-  type: path
-  xMint:
-    href: /devops/developer-api/vector/list_indices
+  /vector/index:
+    get:
+      tags:
+        - vector
+      summary: List Indices
+      description: >-
+        This endpoint returns the data related to all indices of an account as a
+        list.
+      operationId: listIndices
+      responses:
+        '200':
+          description: Indices retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VectorIndex'
+      security:
+        - basicAuth: []
 components:
   schemas:
-    TimeSeriesData:
-      type: object
-      properties:
-        x:
-          type: string
-          description: Timestamp when measurement was taken
-          example: 2023-05-22 10:59:23.426 +0000 UTC
-        'y':
-          type: number
-          description: The measured value
-          example: 320
-      required:
-        - x
-        - 'y'
     VectorIndex:
       type: object
       properties:
@@ -128,11 +118,6 @@ components:
             - BGE_BASE_EN_V1_5
             - BGE_LARGE_EN_V1_5
             - BGE_M3
-            - BERT_BASE_UNCASED
-            - UAE_LARGE_V1
-            - ALL_MINILM_L6_V2
-            - MXBAI_EMBED_LARGE_V1
-            - BM25
           example: BGE_SMALL_EN_V1_5
         sparse_embedding_model:
           type: string
@@ -167,7 +152,7 @@ components:
           enum:
             - eu-west-1
             - us-east-1
-            - us-central-1
+            - us-central1
           example: us-east-1
         max_vector_count:
           type: number
@@ -251,5 +236,23 @@ components:
               'y': 0
       xml:
         name: vectorIndex
+    TimeSeriesData:
+      type: object
+      properties:
+        x:
+          type: string
+          description: Timestamp when measurement was taken
+          example: 2023-05-22 10:59:23.426 +0000 UTC
+        'y':
+          type: number
+          description: The measured value
+          example: 320
+      required:
+        - x
+        - 'y'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
 
 ````

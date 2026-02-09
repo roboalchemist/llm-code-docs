@@ -3,17 +3,18 @@
 # Managing State
 
 ## Managing State in ChatGPT Apps
+
 This guide explains how to manage state for custom UI components rendered inside ChatGPT when building an app using the Apps SDK and an MCP server. You’ll learn how to decide where each piece of state belongs and how to persist it across renders and conversations.
 
 ## Overview
 
 State in a ChatGPT app falls into three categories:
 
-| State type | Owned by | Lifetime | Examples |
-|---|---|---|---|
-| **Business data (authoritative)** | MCP server or backend service | Long-lived | Tasks, tickets, documents |
-| **UI state (ephemeral)** | The widget instance inside ChatGPT | Only for the active widget | Selected row, expanded panel, sort order |
-| **Cross-session state (durable)** | Your backend or storage | Cross-session and cross-conversation | Saved filters, view mode, workspace selection |
+| State type                        | Owned by                           | Lifetime                             | Examples                                      |
+| --------------------------------- | ---------------------------------- | ------------------------------------ | --------------------------------------------- |
+| **Business data (authoritative)** | MCP server or backend service      | Long-lived                           | Tasks, tickets, documents                     |
+| **UI state (ephemeral)**          | The widget instance inside ChatGPT | Only for the active widget           | Selected row, expanded panel, sort order      |
+| **Cross-session state (durable)** | Your backend or storage            | Cross-session and cross-conversation | Saved filters, view mode, workspace selection |
 
 Place every piece of state where it belongs so the UI stays consistent and the chat matches the expected intent.
 
@@ -83,9 +84,9 @@ const server = new Server({
           structuredContent: {
             type: "taskList",
             tasks: Array.from(tasks.values()),
-          }
+          },
         };
-      }
+      },
     },
     add_task: {
       description: "Add a new task",
@@ -96,13 +97,14 @@ const server = new Server({
 
         // Always return updated authoritative state
         return this.tools.get_tasks.run({});
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 server.start();
 ```
+
 ---
 
 ## 2. UI State (Ephemeral)
@@ -126,7 +128,7 @@ Because the host persists widget state asynchronously, there is nothing to `awai
 
 ### Example (React component)
 
-This example assumes you copied the `useWidgetState` helper from the [ChatGPT UI guide](/apps-sdk/build/chatgpt-ui) (or defined it yourself) and are importing it from your project.
+This example assumes you copied the `useWidgetState` helper from the [ChatGPT UI guide](https://developers.openai.com/apps-sdk/build/chatgpt-ui) (or defined it yourself) and are importing it from your project.
 
 ```tsx
 
@@ -212,9 +214,9 @@ setState({
   modelContent: "Check out the latest updated image",
   privateContent: {
     currentView: "image-viewer",
-    filters: ["crop", "sharpen"]
+    filters: ["crop", "sharpen"],
   },
-  imageIds: ["file_123", "file_456"]
+  imageIds: ["file_123", "file_456"],
 });
 ```
 
@@ -222,17 +224,17 @@ Only file IDs you uploaded with `window.openai.uploadFile` or received via file 
 
 ---
 
-## 3. Cross-session state 
+## 3. Cross-session state
 
 Preferences that must persist across conversations, devices, or sessions should be stored in your backend.
 
-Apps SDK handles conversation state automatically, but most real-world apps also need durable storage. You might cache fetched data, keep track of user preferences, or persist artifacts created inside a component. Choosing to add a storage layer adds additional capabilities, but also complexity. 
+Apps SDK handles conversation state automatically, but most real-world apps also need durable storage. You might cache fetched data, keep track of user preferences, or persist artifacts created inside a component. Choosing to add a storage layer adds additional capabilities, but also complexity.
 
 ## Bring your own backend
 
 If you already run an API or need multi-user collaboration, integrate with your existing storage layer. In this model:
 
-- Authenticate the user via OAuth (see [Authentication](/apps-sdk/build/auth)) so you can map ChatGPT identities to your internal accounts.
+- Authenticate the user via OAuth (see [Authentication](https://developers.openai.com/apps-sdk/build/auth)) so you can map ChatGPT identities to your internal accounts.
 - Use your backend’s APIs to fetch and mutate data. Keep latency low; users expect components to render in a few hundred milliseconds.
 - Return sufficient structured content so the model can understand the data even if the component fails to load.
 
@@ -270,7 +272,11 @@ export function PreferencesForm({ userId, initialPreferences }) {
   return (
     <form>
       {/* form fields bound to formState */}
-      <button type="button" disabled={isSaving} onClick={() => savePreferences(formState)}>
+      <button
+        type="button"
+        disabled={isSaving}
+        onClick={() => savePreferences(formState)}
+      >
         {isSaving ? "Saving…" : "Save preferences"}
       </button>
     </form>
@@ -287,24 +293,30 @@ export function PreferencesForm({ userId, initialPreferences }) {
 
 // Helpers that call your existing backend API
 async function readPreferences(userId) {
-  const response = await request(`https://api.example.com/users/${userId}/preferences`, {
-    method: "GET",
-    headers: { Authorization: `Bearer ${process.env.API_TOKEN}` }
-  });
+  const response = await request(
+    `https://api.example.com/users/${userId}/preferences`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },
+    }
+  );
   if (response.statusCode === 404) return {};
   if (response.statusCode >= 400) throw new Error("Failed to load preferences");
   return await response.body.json();
 }
 
 async function writePreferences(userId, preferences) {
-  const response = await request(`https://api.example.com/users/${userId}/preferences`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${process.env.API_TOKEN}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(preferences)
-  });
+  const response = await request(
+    `https://api.example.com/users/${userId}/preferences`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(preferences),
+    }
+  );
   if (response.statusCode >= 400) throw new Error("Failed to save preferences");
   return await response.body.json();
 }
@@ -316,19 +328,21 @@ const server = new Server({
       async run({ userId }) {
         const preferences = await readPreferences(userId);
         return { structuredContent: { type: "preferences", preferences } };
-      }
+      },
     },
     set_preferences: {
       inputSchema: jsonSchema.object({
         userId: jsonSchema.string(),
-        preferences: jsonSchema.object({})
+        preferences: jsonSchema.object({}),
       }),
       async run({ userId, preferences }) {
         const updated = await writePreferences(userId, preferences);
-        return { structuredContent: { type: "preferences", preferences: updated } };
-      }
-    }
-  }
+        return {
+          structuredContent: { type: "preferences", preferences: updated },
+        };
+      },
+    },
+  },
 });
 ```
 

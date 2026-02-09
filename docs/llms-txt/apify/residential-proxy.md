@@ -6,27 +6,27 @@
 
 ***
 
-Residential proxies use IP addresses assigned by Internet Service Providers to the homes and offices of actual users. Unlike https://docs.apify.com/platform/proxy/datacenter-proxy.md, traffic from residential proxies is indistinguishable from that of legitimate users.
+Residential proxies use IP addresses assigned by Internet Service Providers to the homes and offices of actual users. Unlike [datacenter proxies](https://docs.apify.com/platform/proxy/datacenter-proxy.md), traffic from residential proxies is indistinguishable from that of legitimate users.
 
 This solution allows you to access a larger pool of servers than datacenter proxy. This makes it a better option in cases when you need a large number of different IP addresses.
 
-Residential proxies support https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation and .
+Residential proxies support [IP address rotation](https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation) and .
 
-**Pricing is based on data traffic**. It is measured for each connection made and displayed on your https://console.apify.com/proxy/usage in the Apify Console.
+**Pricing is based on data traffic**. It is measured for each connection made and displayed on your [proxy usage dashboard](https://console.apify.com/proxy/usage) in the Apify Console.
 
 ## Connecting to residential proxy
 
-Connecting to residential proxy works the same way as https://docs.apify.com/platform/proxy/datacenter-proxy.md, with two differences.
+Connecting to residential proxy works the same way as [datacenter proxy](https://docs.apify.com/platform/proxy/datacenter-proxy.md), with two differences.
 
-1. The `groups` https://docs.apify.com/platform/proxy/usage.md#username-parameters should always specify `RESIDENTIAL`.
+1. The `groups` [username parameter](https://docs.apify.com/platform/proxy/usage.md#username-parameters) should always specify `RESIDENTIAL`.
 
 2. You can specify the country in which you want your proxies to be.
 
 ### How to set a proxy group
 
-When using https://docs.apify.com/platform/proxy/datacenter-proxy.md, specify the `groups` parameter in the https://docs.apify.com/platform/proxy/usage.md#username-parameters as `groups-RESIDENTIAL`.
+When using [standard libraries and languages](https://docs.apify.com/platform/proxy/datacenter-proxy.md), specify the `groups` parameter in the [username](https://docs.apify.com/platform/proxy/usage.md#username-parameters) as `groups-RESIDENTIAL`.
 
-For example, your **proxy URL** when using the https://www.npmjs.com/package/got-scraping JavaScript library will look like this:
+For example, your **proxy URL** when using the [got-scraping](https://www.npmjs.com/package/got-scraping) JavaScript library will look like this:
 
 
 ```
@@ -34,7 +34,7 @@ const proxyUrl = 'http://groups-RESIDENTIAL:<YOUR_PROXY_PASSWORD>@proxy.apify.co
 ```
 
 
-In the https://docs.apify.com/sdk.md you set the **groups** in your proxy configuration:
+In the [Apify SDK](https://docs.apify.com/sdk.md) you set the **groups** in your proxy configuration:
 
 * JavaScript
 * Python
@@ -67,9 +67,9 @@ async def main():
 
 ### How to set a proxy country
 
-When using https://docs.apify.com/platform/proxy/datacenter-proxy.md, specify the `country` parameter in the https://docs.apify.com/platform/proxy/usage.md#username-parameters as `country-COUNTRY-CODE`.
+When using [standard libraries and languages](https://docs.apify.com/platform/proxy/datacenter-proxy.md), specify the `country` parameter in the [username](https://docs.apify.com/platform/proxy/usage.md#username-parameters) as `country-COUNTRY-CODE`.
 
-For example, your `username` parameter when using https://docs.python.org/3/ will look like this:
+For example, your `username` parameter when using [Python 3](https://docs.python.org/3/) will look like this:
 
 
 ```
@@ -77,7 +77,7 @@ username = "groups-RESIDENTIAL,country-JP"
 ```
 
 
-In the https://docs.apify.com/sdk.md you set the country in your proxy configuration using two-letter https://laendercode.net/en/2-letter-list.html. Specify the groups as `RESIDENTIAL`, then add a `countryCode`/`country_code` parameter:
+In the [Apify SDK](https://docs.apify.com/sdk.md) you set the country in your proxy configuration using two-letter [country codes](https://laendercode.net/en/2-letter-list.html). Specify the groups as `RESIDENTIAL`, then add a `countryCode`/`country_code` parameter:
 
 * JavaScript
 * Python
@@ -114,9 +114,9 @@ async def main():
 
 ## Session persistence
 
-When using residential proxy with the `session` https://docs.apify.com/platform/proxy/usage.md#sessions set in the https://docs.apify.com/platform/proxy/usage.md#username-parameters, a single IP address is assigned to the **session ID** provided after you make the first request.
+When using residential proxy with the `session` [parameter](https://docs.apify.com/platform/proxy/usage.md#sessions) set in the [username](https://docs.apify.com/platform/proxy/usage.md#username-parameters), a single IP address is assigned to the **session ID** provided after you make the first request.
 
-**Session IDs represent IP addresses. Therefore, you can manage the IP addresses you use by managing sessions.** \[https://docs.apify.com/platform/proxy/usage.md#sessions]
+**Session IDs represent IP addresses. Therefore, you can manage the IP addresses you use by managing sessions.** \[[More info](https://docs.apify.com/platform/proxy/usage.md#sessions)]
 
 This IP/session ID combination is persisted for 1 minute. Each subsequent request resets the expiration time to 1 minute.
 
@@ -124,26 +124,26 @@ If the proxy server becomes unresponsive or the session expires, a new IP addres
 
 > If you really need to persist the same session, you can try sending some data using that session (e.g. every 20 seconds) to keep it alive.<br />Providing the connection is not interrupted, this will let you keep the IP address for longer.
 
-To learn more about https://docs.apify.com/platform/proxy/usage.md#sessions and https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation, see the proxy https://docs.apify.com/platform/proxy.md.
+To learn more about [sessions](https://docs.apify.com/platform/proxy/usage.md#sessions) and [IP address rotation](https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation), see the proxy [overview page](https://docs.apify.com/platform/proxy.md).
 
 ## Tips to keep in mind
 
-https://docs.apify.com/platform/proxy.md proxies are less predictable than https://docs.apify.com/platform/proxy/datacenter-proxy.md proxies and are priced differently (by number of IPs vs traffic used). Because of this, there are some important things to consider before using residential proxy in your solutions.
+[Residential](https://docs.apify.com/platform/proxy.md) proxies are less predictable than [datacenter](https://docs.apify.com/platform/proxy/datacenter-proxy.md) proxies and are priced differently (by number of IPs vs traffic used). Because of this, there are some important things to consider before using residential proxy in your solutions.
 
 ### Control traffic used by automated browsers
 
 Residential proxy is priced by data traffic used. Thus, it's easy to quickly use up all your prepaid traffic. In particular, when accessing websites with large files loaded on every page.
 
-To reduce your traffic use, we recommend using the `blockRequests()` function of https://crawlee.dev/api/playwright-crawler/namespace/playwrightUtils#blockRequests/https://crawlee.dev/api/puppeteer-crawler/namespace/puppeteerUtils#blockRequests (depending on the library used).
+To reduce your traffic use, we recommend using the `blockRequests()` function of [playwrightUtils](https://crawlee.dev/api/playwright-crawler/namespace/playwrightUtils#blockRequests)/[puppeteerUtils](https://crawlee.dev/api/puppeteer-crawler/namespace/puppeteerUtils#blockRequests) (depending on the library used).
 
 ### Connected proxy speed variation
 
-Each host on the residential proxy network uses a different device. They have different network speeds and different latencies. This means that requests made with one https://docs.apify.com/platform/proxy/usage.md#sessions can be extremely fast, while another request with a different session can be extremely slow. The difference can range from a few milliseconds to a few seconds.
+Each host on the residential proxy network uses a different device. They have different network speeds and different latencies. This means that requests made with one [session](https://docs.apify.com/platform/proxy/usage.md#sessions) can be extremely fast, while another request with a different session can be extremely slow. The difference can range from a few milliseconds to a few seconds.
 
-If your solution requires quickly loaded content, the best option is to set a https://docs.apify.com/platform/proxy/usage.md#sessions, try a small request and see if the response time is acceptable. If it is, you can use this session for other requests. Otherwise, repeat the attempt with a different session.
+If your solution requires quickly loaded content, the best option is to set a [session](https://docs.apify.com/platform/proxy/usage.md#sessions), try a small request and see if the response time is acceptable. If it is, you can use this session for other requests. Otherwise, repeat the attempt with a different session.
 
 ### Connection interruptions
 
 While sessions are persistent, they can be destroyed at any time if the host devices are turned off or disconnected.
 
-For this problem there is no easy solution. One option is to not use residential proxy for larger requests (and use https://docs.apify.com/platform/proxy/datacenter-proxy.md proxy instead). If you have no other choice, expect that interruptions might happen and write your solution with this in mind.
+For this problem there is no easy solution. One option is to not use residential proxy for larger requests (and use [datacenter](https://docs.apify.com/platform/proxy/datacenter-proxy.md) proxy instead). If you have no other choice, expect that interruptions might happen and write your solution with this in mind.

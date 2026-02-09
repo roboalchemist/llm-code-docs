@@ -1,8 +1,30 @@
 # Source: https://agentclientprotocol.com/updates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Updates
 
 > Updates and announcements about the Agent Client Protocol
+
+<Update label="January 15, 2026" tags={["RFD"]}>
+  ## Rust SDK based on SACP RFD moves to Draft stage
+
+  The RFD for basing the Rust SDK on SACP has been moved to Draft stage. Please review the [RFD](./rfds/rust-sdk-v1) for more information on the current proposal and provide feedback as work on the implementation begins.
+</Update>
+
+<Update label="January 15, 2025" tags={["RFD"]}>
+  ## Session Config Options RFD moves to Preview stage
+
+  The RFD for adding more generic Session Config Options to the protocol has been moved to Preview stage. Please review the [RFD](./rfds/session-config-options) for more information on the current proposal and provide feedback before the feature is stabilized.
+</Update>
+
+<Update label="January 14, 2026" tags={["RFD"]}>
+  ## Authentication Methods RFD moves to Draft stage
+
+  The RFD for creating additional types of authentication methods has been moved to Draft stage. Please review the [RFD](./rfds/auth-methods) for more information on the current proposal and provide feedback as work on the implementation begins.
+</Update>
 
 <Update label="January 1, 2026" tags={["RFD"]}>
   ## Agent Registry RFD moves to Draft stage
@@ -79,8 +101,3 @@
 
   This is being introduced as an optional field for now for backwards compatibility. It is possible it will be made into a required field in a future version of the protocol, like MCP, so that both sides can count on this information being available.
 </Update>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

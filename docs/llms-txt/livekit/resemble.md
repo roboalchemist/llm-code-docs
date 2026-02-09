@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/tts/plugins/resemble.md
 
-LiveKit docs › Models › Text-to-speech (TTS) › Plugins › Resemble AI
+LiveKit docs › Models › TTS › Plugins › Resemble
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a brief overview of the Resemble AI TTS plugin. For more i
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[resemble]~=1.2"
+uv add "livekit-agents[resemble]~=1.3"
 
 ```
 
@@ -75,7 +75,7 @@ The following resources provide more information about using Resemble AI with Li
 
 ---
 
-This document was rendered at 2025-11-18T23:55:14.368Z.
+This document was rendered at 2026-02-03T03:25:05.722Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/plugins/resemble.md](https://docs.livekit.io/agents/models/tts/plugins/resemble.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

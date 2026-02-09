@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/api-reference/data-diffs/list-data-diffs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List data diffs
 
 > All fields support multiple items, using just comma delimiter
@@ -12,307 +16,191 @@ Date fields also support ranges using the following syntax:
 - ``DATETIME1<<DATETIME2`` = between DATETIME1 and DATETIME2
 - ``DATE1<<DATE2`` = between DATE1 and DATE2
 
+
+
 ## OpenAPI
 
 ````yaml get /api/v1/datadiffs
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/datadiffs
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
+  /api/v1/datadiffs:
+    get:
+      tags:
+        - Data diffs
+      summary: List data diffs
+      description: |-
+        All fields support multiple items, using just comma delimiter
+        Date fields also support ranges using the following syntax:
+
+        - ``<DATETIME`` = before DATETIME
+        - ``>DATETIME`` = after DATETIME
+        - ``DATETIME`` = between DATETIME and DATETIME + 1 MINUTE
+        - ``DATE`` = start of that DATE until DATE + 1 DAY
+        - ``DATETIME1<<DATETIME2`` = between DATETIME1 and DATETIME2
+        - ``DATE1<<DATE2`` = between DATE1 and DATE2
+      operationId: list_datadiffs_api_v1_datadiffs_get
+      parameters:
+        - in: query
+          name: page
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page
-              default: 1
-        page_size:
+            default: 1
+            title: Page
+            type: integer
+        - in: query
+          name: page_size
+          required: false
           schema:
-            - type: integer
-              required: false
-              title: Page Size
-              default: 100
-        sort_order:
+            default: 100
+            title: Page Size
+            type: integer
+        - in: query
+          name: sort_order
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - asc
-                - desc
-              required: false
-              title: ApiSortOrder
-        order_by:
+            $ref: '#/components/schemas/ApiSortOrder'
+            default: asc
+        - in: query
+          name: order_by
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - id
-                - user_id
-                - user_name
-                - data_source1_id
-                - data_source2_id
-                - table1
-                - table2
-                - query1
-                - query2
-                - pk_columns
-                - include_columns
-                - exclude_columns
-                - time_column
-                - time_aggregate
-                - filter1
-                - filter2
-                - done
-                - time_interval_start
-                - time_interval_end
-                - created_at
-                - updated_at
-                - diff_stats_pks
-                - diff_stats_rows
-                - diff_stats_values
-                - stats.match_ratio
-                - tags
-                - source
-                - status
-                - bisection_factor
-                - bisection_threshold
-                - ci_type
-                - ci_run_id
-                - pr_user_id
-                - pr_username
-                - pr_user_email
-                - pr_user_display_name
-                - pr_num
-                - pr_branch
-                - monitor_id
-                - data_app_type
-                - data_app_data_source_id
-                - data_app_model1_id
-                - data_app_model2_id
-                - data_app_model1_name
-                - data_app_model2_name
-                - user_ref
-                - result
-                - archived
-                - purged
-                - kind
-              required: false
-              title: ApiSortFilters
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              count:
-                allOf:
-                  - title: Count
-                    type: integer
-              page:
-                allOf:
-                  - title: Page
-                    type: integer
-              page_size:
-                allOf:
-                  - title: Page Size
-                    type: integer
-              results:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ApiDataDiffFull'
-                    title: Results
-                    type: array
-              total_pages:
-                allOf:
-                  - title: Total Pages
-                    type: integer
-            title: ApiDataDiffPage
-            refIdentifier: '#/components/schemas/ApiDataDiffPage'
-            requiredProperties:
-              - page
-              - page_size
-              - count
-              - total_pages
-              - results
-        examples:
-          example:
-            value:
-              count: 123
-              page: 123
-              page_size: 123
-              results:
-                - affected_columns:
-                    - <string>
-                  algorithm: join
-                  archived: false
-                  bisection_factor: 123
-                  bisection_threshold: 123
-                  ci_base_branch: <string>
-                  ci_pr_branch: <string>
-                  ci_pr_num: 123
-                  ci_pr_sha: <string>
-                  ci_pr_url: <string>
-                  ci_pr_user_display_name: <string>
-                  ci_pr_user_email: <string>
-                  ci_pr_user_id: <string>
-                  ci_pr_username: <string>
-                  ci_run_id: 123
-                  ci_sha_url: <string>
-                  column_mapping:
-                    - - <any>
-                  columns_to_compare:
-                    - <string>
-                  compare_duplicates: true
-                  created_at: '2023-11-07T05:31:56Z'
-                  data_app_metadata:
-                    data_app_id: 123
-                    data_app_model1_id: <string>
-                    data_app_model1_name: <string>
-                    data_app_model2_id: <string>
-                    data_app_model2_name: <string>
-                    data_app_model_type: <string>
-                    meta_data: {}
-                  data_app_type: <string>
-                  data_source1_id: 123
-                  data_source1_session_parameters: {}
-                  data_source2_id: 123
-                  data_source2_session_parameters: {}
-                  diff_stats:
-                    diff_duplicate_pks: 123
-                    diff_null_pks: 123
-                    diff_pks: 123
-                    diff_ratio: 123
-                    diff_rows: 123
-                    diff_rows_count: 123
-                    diff_rows_number: 123
-                    diff_schema: 123
-                    diff_values: 123
-                    errors: 123
-                    exclusive_ratio: 123
-                    match_ratio: 123
-                    rows_added: 123
-                    rows_removed: 123
-                    sampled: true
-                    table_a_row_count: 123
-                    table_b_row_count: 123
-                    version: <string>
-                  diff_tolerance: 123
-                  diff_tolerances_per_column:
-                    - column_name: <string>
-                      tolerance_mode: absolute
-                      tolerance_value: 123
-                  done: true
-                  download_limit: 123
-                  exclude_columns:
-                    - <string>
-                  execute_as_user: true
-                  file1: <string>
-                  file1_options:
-                    delimiter: <string>
-                    file_type: csv
-                    skip_head_rows: 123
-                    skip_tail_rows: 123
-                  file2: <string>
-                  file2_options:
-                    delimiter: <string>
-                    file_type: <string>
-                    skip_head_rows: 123
-                    skip_tail_rows: 123
-                  filter1: <string>
-                  filter2: <string>
-                  finished_at: '2023-11-07T05:31:56Z'
-                  id: 123
-                  include_columns:
-                    - <string>
-                  kind: in_db
-                  materialization_destination_id: 123
-                  materialize_dataset1: true
-                  materialize_dataset2: true
-                  materialize_without_sampling: true
-                  monitor_error:
-                    error_type: <string>
-                    error_value: <string>
-                  monitor_id: 123
-                  monitor_state: ok
-                  per_column_diff_limit: 123
-                  pk_columns:
-                    - <string>
-                  purged: false
-                  query1: <string>
-                  query2: <string>
-                  result: error
-                  result_revisions: {}
-                  result_statuses: {}
-                  run_profiles: true
-                  runtime: 123
-                  sampling_confidence: 123
-                  sampling_ratio: 123
-                  sampling_threshold: 123
-                  sampling_tolerance: 123
-                  source: interactive
-                  status: needs_confirmation
-                  table1:
-                    - <string>
-                  table2:
-                    - <string>
-                  table_modifiers:
-                    - case_insensitive_strings
-                  tags:
-                    - <string>
-                  temp_schema_override:
-                    - <string>
-                  time_aggregate: minute
-                  time_column: <string>
-                  time_interval_end: '2023-11-07T05:31:56Z'
-                  time_interval_start: '2023-11-07T05:31:56Z'
-                  time_travel_point1: 123
-                  time_travel_point2: 123
-                  tolerance_mode: absolute
-                  updated_at: '2023-11-07T05:31:56Z'
-                  user_id: 123
-              total_pages: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            $ref: '#/components/schemas/ApiSortFilters'
+            default: id
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDataDiffPage'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    ApiSortOrder:
+      enum:
+        - asc
+        - desc
+      title: ApiSortOrder
+      type: string
+    ApiSortFilters:
+      enum:
+        - id
+        - user_id
+        - user_name
+        - data_source1_id
+        - data_source2_id
+        - table1
+        - table2
+        - query1
+        - query2
+        - pk_columns
+        - include_columns
+        - exclude_columns
+        - time_column
+        - time_aggregate
+        - filter1
+        - filter2
+        - done
+        - time_interval_start
+        - time_interval_end
+        - created_at
+        - updated_at
+        - diff_stats_pks
+        - diff_stats_rows
+        - diff_stats_values
+        - stats.match_ratio
+        - tags
+        - source
+        - status
+        - bisection_factor
+        - bisection_threshold
+        - ci_type
+        - ci_run_id
+        - pr_user_id
+        - pr_username
+        - pr_user_email
+        - pr_user_display_name
+        - pr_num
+        - pr_branch
+        - monitor_id
+        - data_app_type
+        - data_app_data_source_id
+        - data_app_model1_id
+        - data_app_model2_id
+        - data_app_model1_name
+        - data_app_model2_name
+        - user_ref
+        - result
+        - archived
+        - purged
+        - kind
+      title: ApiSortFilters
+      type: string
+    ApiDataDiffPage:
+      properties:
+        count:
+          title: Count
+          type: integer
+        page:
+          title: Page
+          type: integer
+        page_size:
+          title: Page Size
+          type: integer
+        results:
+          items:
+            $ref: '#/components/schemas/ApiDataDiffFull'
+          title: Results
+          type: array
+        total_pages:
+          title: Total Pages
+          type: integer
+      required:
+        - page
+        - page_size
+        - count
+        - total_pages
+        - results
+      title: ApiDataDiffPage
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ApiDataDiffFull:
       properties:
         affected_columns:
@@ -398,11 +286,11 @@ components:
         column_mapping:
           anyOf:
             - items:
-                items:
-                  - type: string
-                  - type: string
                 maxItems: 2
                 minItems: 2
+                prefixItems:
+                  - type: string
+                  - type: string
                 type: array
               type: array
             - type: 'null'
@@ -452,6 +340,11 @@ components:
               type: object
             - type: 'null'
           title: Data Source2 Session Parameters
+        datetime_tolerance:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Datetime Tolerance
         diff_stats:
           anyOf:
             - $ref: '#/components/schemas/DiffStats'
@@ -629,6 +522,7 @@ components:
                 - different
                 - missing-pks
                 - identical
+                - empty
               type: string
             - type: 'null'
           title: Result
@@ -660,6 +554,11 @@ components:
             - type: number
             - type: 'null'
           title: Sampling Confidence
+        sampling_max_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Sampling Max Rows
         sampling_ratio:
           anyOf:
             - type: number
@@ -777,45 +676,26 @@ components:
         - kind
       title: ApiDataDiffFull
       type: object
-    CSVFileOptions:
+    ValidationError:
       properties:
-        delimiter:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Delimiter
-        file_type:
-          const: csv
-          default: csv
-          title: File Type
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
           type: string
-        skip_head_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Skip Head Rows
-        skip_tail_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Skip Tail Rows
-      title: CSVFileOptions
-      type: object
-    ColumnTolerance:
-      properties:
-        column_name:
-          title: Column Name
+        type:
+          title: Error Type
           type: string
-        tolerance_mode:
-          $ref: '#/components/schemas/ToleranceModeEnum'
-        tolerance_value:
-          title: Tolerance Value
-          type: number
       required:
-        - column_name
-        - tolerance_value
-        - tolerance_mode
-      title: ColumnTolerance
+        - loc
+        - msg
+        - type
+      title: ValidationError
       type: object
     DiffAlgorithm:
       enum:
@@ -825,186 +705,6 @@ components:
         - fetch_and_join
       title: DiffAlgorithm
       type: string
-    DiffKind:
-      enum:
-        - in_db
-        - cross_db
-      title: DiffKind
-      type: string
-    DiffStats:
-      properties:
-        diff_duplicate_pks:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Duplicate Pks
-        diff_null_pks:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Null Pks
-        diff_pks:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Pks
-        diff_ratio:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Ratio
-        diff_rows:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Rows
-        diff_rows_count:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Diff Rows Count
-        diff_rows_number:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Rows Number
-        diff_schema:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Schema
-        diff_values:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Diff Values
-        errors:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Errors
-        exclusive_ratio:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Exclusive Ratio
-        match_ratio:
-          anyOf:
-            - type: number
-            - type: 'null'
-          title: Match Ratio
-        rows_added:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Rows Added
-        rows_removed:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Rows Removed
-        sampled:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Sampled
-        table_a_row_count:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Table A Row Count
-        table_b_row_count:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Table B Row Count
-        version:
-          title: Version
-          type: string
-      required:
-        - version
-      title: DiffStats
-      type: object
-    ExcelFileOptions:
-      properties:
-        file_type:
-          const: excel
-          default: excel
-          title: File Type
-          type: string
-        sheet:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Sheet
-        skip_head_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Skip Head Rows
-        skip_tail_rows:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Skip Tail Rows
-      title: ExcelFileOptions
-      type: object
-    JobSource:
-      enum:
-        - interactive
-        - demo_signup
-        - manual
-        - api
-        - ci
-        - schedule
-        - auto
-      title: JobSource
-      type: string
-    JobStatus:
-      enum:
-        - needs_confirmation
-        - needs_authentication
-        - waiting
-        - processing
-        - done
-        - failed
-        - cancelled
-      title: JobStatus
-      type: string
-    MonitorRunState:
-      enum:
-        - ok
-        - alert
-        - error
-        - learning
-        - checking
-        - created
-        - skipped
-        - cancelled
-      title: MonitorRunState
-      type: string
-    ParquetFileOptions:
-      properties:
-        file_type:
-          const: parquet
-          default: parquet
-          title: File Type
-          type: string
-      title: ParquetFileOptions
-      type: object
-    QueryError:
-      properties:
-        error_type:
-          title: Error Type
-          type: string
-        error_value:
-          title: Error Value
-          type: string
-      required:
-        - error_type
-        - error_value
-      title: QueryError
-      type: object
     TDataDiffDataAppMetadata:
       properties:
         data_app_id:
@@ -1043,6 +743,216 @@ components:
         - meta_data
       title: TDataDiffDataAppMetadata
       type: object
+    DiffStats:
+      properties:
+        diff_duplicate_pks:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Duplicate Pks
+        diff_null_pks:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Null Pks
+        diff_pks:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Pks
+        diff_rows:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Rows
+        diff_rows_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Diff Rows Count
+        diff_rows_number:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Rows Number
+        diff_schema:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Schema
+        diff_values:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Diff Values
+        errors:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Errors
+        match_ratio:
+          anyOf:
+            - type: number
+            - type: 'null'
+          title: Match Ratio
+        rows_added:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Rows Added
+        rows_removed:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Rows Removed
+        sampled:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Sampled
+        table_a_row_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Table A Row Count
+        table_b_row_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Table B Row Count
+        version:
+          title: Version
+          type: string
+      required:
+        - version
+      title: DiffStats
+      type: object
+    ColumnTolerance:
+      properties:
+        column_name:
+          title: Column Name
+          type: string
+        tolerance_mode:
+          $ref: '#/components/schemas/ToleranceModeEnum'
+        tolerance_value:
+          title: Tolerance Value
+          type: number
+      required:
+        - column_name
+        - tolerance_value
+        - tolerance_mode
+      title: ColumnTolerance
+      type: object
+    CSVFileOptions:
+      properties:
+        delimiter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Delimiter
+        file_type:
+          const: csv
+          default: csv
+          title: File Type
+          type: string
+        skip_head_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Skip Head Rows
+        skip_tail_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Skip Tail Rows
+      title: CSVFileOptions
+      type: object
+    ExcelFileOptions:
+      properties:
+        file_type:
+          const: excel
+          default: excel
+          title: File Type
+          type: string
+        sheet:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Sheet
+        skip_head_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Skip Head Rows
+        skip_tail_rows:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Skip Tail Rows
+      title: ExcelFileOptions
+      type: object
+    ParquetFileOptions:
+      properties:
+        file_type:
+          const: parquet
+          default: parquet
+          title: File Type
+          type: string
+      title: ParquetFileOptions
+      type: object
+    DiffKind:
+      enum:
+        - in_db
+        - cross_db
+      title: DiffKind
+      type: string
+    QueryError:
+      properties:
+        error_type:
+          title: Error Type
+          type: string
+        error_value:
+          title: Error Value
+          type: string
+      required:
+        - error_type
+        - error_value
+      title: QueryError
+      type: object
+    MonitorRunState:
+      enum:
+        - ok
+        - alert
+        - error
+        - learning
+        - checking
+        - created
+        - skipped
+        - cancelled
+      title: MonitorRunState
+      type: string
+    JobSource:
+      enum:
+        - interactive
+        - demo_signup
+        - manual
+        - api
+        - ci
+        - schedule
+        - auto
+      title: JobSource
+      type: string
+    JobStatus:
+      enum:
+        - needs_confirmation
+        - needs_authentication
+        - waiting
+        - processing
+        - done
+        - failed
+        - cancelled
+      title: JobStatus
+      type: string
     TableModifiers:
       enum:
         - case_insensitive_strings
@@ -1064,26 +974,11 @@ components:
         - relative
       title: ToleranceModeEnum
       type: string
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          title: Location
-          type: array
-        msg:
-          title: Message
-          type: string
-        type:
-          title: Error Type
-          type: string
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
-      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

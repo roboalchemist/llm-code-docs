@@ -358,7 +358,7 @@ group = '(', { space }, ( or | and | not | group | leaf ),
 expression = ( or | and | not | group | leaf ) ;
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

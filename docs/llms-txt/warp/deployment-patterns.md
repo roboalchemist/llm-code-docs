@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/platform/deployment-patterns.md
+# Source: https://docs.warp.dev/agent-platform/platform/deployment-patterns.md
 
 # Deployment Patterns
 

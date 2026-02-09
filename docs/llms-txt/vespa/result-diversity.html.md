@@ -102,5 +102,5 @@ Setting the [collapsefield](../reference/api/query.html#collapsefield) parameter
 
 Using collapsefield is a cheap option when results only contains a small number of duplicates on average, since it defers all diversification work until the end. When there may be many duplicates, using either the diversify tag or grouping should be preferred.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

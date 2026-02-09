@@ -1,26 +1,10 @@
 # Source: https://dev.writer.com/home/quickstart.md
 
-# Source: https://dev.writer.com/framework/quickstart.md
-
 # Source: https://dev.writer.com/agent-builder/quickstart.md
 
-# Source: https://dev.writer.com/home/quickstart.md
-
-# Source: https://dev.writer.com/framework/quickstart.md
-
-# Source: https://dev.writer.com/agent-builder/quickstart.md
-
-# Source: https://dev.writer.com/home/quickstart.md
-
-# Source: https://dev.writer.com/framework/quickstart.md
-
-# Source: https://dev.writer.com/agent-builder/quickstart.md
-
-# Source: https://dev.writer.com/home/quickstart.md
-
-# Source: https://dev.writer.com/framework/quickstart.md
-
-# Source: https://dev.writer.com/agent-builder/quickstart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Agent Builder Quickstart
 

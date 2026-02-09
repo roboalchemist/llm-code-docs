@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-django-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using Django with SMTP
 
 > Learn how to integrate Django with Resend SMTP.
@@ -16,20 +20,20 @@ To get the most out of this guide, you'll need to:
 
 Create and activate your new virtualenv.
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 virtualenv venv
 source venv/bin/activate
 ```
 
 Install dependencies.
 
-```sh  theme={null}
+```sh  theme={"theme":{"light":"github-light","dark":"vesper"}}
 pip install -r requirements.txt
 ```
 
 Set your `RESEND_API_KEY` environment variable by running.
 
-```sh  theme={null}
+```sh  theme={"theme":{"light":"github-light","dark":"vesper"}}
 export RESEND_API_KEY="re_xxxxxxxxx"
 ```
 
@@ -37,7 +41,7 @@ export RESEND_API_KEY="re_xxxxxxxxx"
 
 Set the necessary attributes in your `settings.py` file.
 
-```py  theme={null}
+```py  theme={"theme":{"light":"github-light","dark":"vesper"}}
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 RESEND_SMTP_PORT = 587
 RESEND_SMTP_USERNAME = 'resend'
@@ -46,7 +50,7 @@ RESEND_SMTP_HOST = 'smtp.resend.com'
 
 Use Django's `get_connection` and `EmailMessage`
 
-```py  theme={null}
+```py  theme={"theme":{"light":"github-light","dark":"vesper"}}
 import os
 from django.conf import settings
 from django.http import JsonResponse

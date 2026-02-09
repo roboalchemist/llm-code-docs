@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/tutorials/gradio-application.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create and Deploy RAG Applications with Gradio
 
 In this tutorial, we'll demonstrate how to use Gradio to build an interactive Semantic Search and Question Answering app using Hugging Face embeddings, Upstash Vector, and LangChain. Users can enter a question, and the app will retrieve relevant information and provide an answer.

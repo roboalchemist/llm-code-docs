@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/agent-observability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor agent performance
 
 > Monitor agent performance with session logs and observability metrics in AI Studio. Track usage, analyze conversations, and debug agent behavior.
@@ -15,11 +19,11 @@ You can also view [global usage and spend](/home/observability) for your organiz
 
 ## Session logs
 
-<Info>
-  Session logs are only available to [organization admins](/home/account_management). Logs are only available for custom [no-code agents](/no-code/introduction) and are not yet available for Ask Writer or prebuilt agents.
-</Info>
-
 Organization admins can choose to retain logs from agent sessions. When enabled, you can view the logs for an agent for the given retention period.
+
+<Info>
+  Session logs are only available to [organization admins](https://support.writer.com). Logs are available for custom [no-code agents](/no-code/introduction) and [Writer Agent](https://support.writer.com/article/235-ask-writer), but are not yet available for prebuilt agents.
+</Info>
 
 ### Enable session logging
 
@@ -35,7 +39,7 @@ Whenever someone updates an agent's session log settings, all organization admin
 
 ### View session logs
 
-To view session logs, navigate to specific agent from the [AI Studio homepage](https://app.writer.com/aistudio). Select the **Observability** tab from the top of the page and then select the **Session logs** view. Click on an individual session to view the logs.
+To view session logs, navigate to [AI Studio](https://app.writer.com/aistudio) and select **Agents** from the left sidebar. Select an agent from the list, then select the **Observability** tab from the top of the page and choose the **Session logs** view. Click on an individual session to view the logs.
 
 <img src="https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=15c696097203e5901807243dcfb52d63" alt="Session logs tab in AI Studio" data-og-width="3346" width="3346" data-og-height="884" height="884" data-path="images/home/agent-session-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=280&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=a7b698e3372390bec6f1f42354caa7d7 280w, https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=560&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=c395ce2df2cd8e6fa85b44242182a240 560w, https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=840&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=85d0dbcb56f9d742e319c7f55de0d152 840w, https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=1100&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=7c42aa4c9b2be08bf34f965ed828e473 1100w, https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=1650&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=786244119b3eadffb442ed02495ef9a1 1650w, https://mintcdn.com/writer/Ph7gAl4exSh0IC1l/images/home/agent-session-logs.png?w=2500&fit=max&auto=format&n=Ph7gAl4exSh0IC1l&q=85&s=ebb4b178617997b743d37b93370b5229 2500w" />
 
@@ -57,8 +61,14 @@ Agent observability provides a detailed view of an agent's engagement, performan
 
 These metrics are only available for deployed agents.
 
-To view metrics for deployed agents, navigate to the specific agent from the [AI Studio homepage](https://app.writer.com/aistudio). Select the **Observability** tab from the top of the page and then choose the specific metric you want to view.
+To view metrics for deployed agents, navigate to [AI Studio](https://app.writer.com/aistudio) and select **Agents** from the left sidebar. Select an agent from the list, then select the **Observability** tab from the top of the page and choose the specific metric you want to view.
 
 * **Engagement metrics**: Show the top five users for the agent over the specified time period and the total number of user interactions for the agent.
 * **Performance metrics**: Show the average response time as well as the P90, P95, and P99 response times for the agent over the specified time period. It also shows the response codes broken down by `200`, `400`, and `500` status codes.
 * **Usage metrics**: Show the total number of tokens and the total spend for the agent over the specified time period.
+
+## Next steps
+
+* [Track platform-wide usage and spend](/home/observability) across all agents in your organization
+* [Export telemetry data](/home/integrations/openllmetry) to your existing observability tools via OpenLLMetry
+* [Configure guardrails](/home/guardrails) to enforce content policies across your agents

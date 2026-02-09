@@ -79,7 +79,7 @@ In addition to supporting writes, the document/v1 HTTP API can also return singl
 
 #### Next: [Querying](querying.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

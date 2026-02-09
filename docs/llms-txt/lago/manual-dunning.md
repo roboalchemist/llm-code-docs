@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/dunning/manual-dunning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual dunning
 
 > Dunning refers to the process of communicating with customers to remind them of overdue invoices and attempt to recover the outstanding amounts.

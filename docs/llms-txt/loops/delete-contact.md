@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/delete-contact.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete contact
 
 > Delete a contact by email address or user ID.

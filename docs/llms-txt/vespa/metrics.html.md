@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/operations/metrics/metrics.html.md
 
-# Source: https://docs.vespa.ai/en/operations/metrics.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/metrics.html.md
-
-# Source: https://docs.vespa.ai/en/operations/metrics.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/metrics.html.md
-
 # Metrics Reference
 
  
@@ -56,5 +48,5 @@ A metric set is a collection of metrics which can be referenced for convenience.
 - [Clustercontroller Metrics Reference](clustercontroller.html)
 - [Sentinel Metrics Reference](sentinel.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

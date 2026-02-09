@@ -131,8 +131,12 @@
 
 #### Linguistics and text processing
 
-- [Linguistics](/en/linguistics/linguistics.html)
-- [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+- Linguistics 
+  - [Linguistics Overview](/en/linguistics/linguistics.html)
+  - [Default (OpenNLP) linguistics](/en/linguistics/linguistics-opennlp.html)
+  - [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+  - [Custom linguistics](/en/linguistics/linguistics-custom.html)
+
 - [Query rewriting](/en/linguistics/query-rewriting.html)
 - [Troubleshooting character encoding](/en/linguistics/troubleshooting-encoding.html)
 
@@ -182,6 +186,7 @@
   - [AWS getting started](/en/operations/enclave/aws-getting-started.html)
   - [AWS architecture](/en/operations/enclave/aws-architecture.html)
   - [Azure getting started](/en/operations/enclave/azure-getting-started.html)
+  - [Azure architecture](/en/operations/enclave/azure-architecture.html)
   - [GCP getting started](/en/operations/enclave/gcp-getting-started.html)
   - [GCP architecture](/en/operations/enclave/gcp-architecture.html)
   - [Log archive](/en/operations/enclave/archive.html)
@@ -224,6 +229,17 @@
   - [Container](/en/operations/self-managed/container.html)
   - [Monitoring](/en/operations/self-managed/monitoring.html)
 
+- Kubernetes 
+  - [Vespa on Kubernetes](/en/operations/kubernetes/vespa-on-kubernetes.html)
+  - [Architecture](/en/operations/kubernetes/architecture.html)
+  - [Vespa on Kubernetes](/en/operations/kubernetes/installation.html)
+  - [Lifecycle Operations for Vespa on Kubernetes](/en/operations/kubernetes/operations.html)
+  - [Enable TLS Encryption for Vespa on Kubernetes](/en/operations/kubernetes/tls.html)
+  - [Monitor a Vespa on Kubernetes Deployment](/en/operations/kubernetes/monitoring.html)
+  - [Configure Log Collections](/en/operations/kubernetes/logging.html)
+  - [Configure External Access Layer for Vespa on Kubernetes](/en/operations/kubernetes/ingress.html)
+  - [Provide Custom Overrides](/en/operations/kubernetes/custom-overrides-podtemplate.html)
+
 #### Security
 
 - [Security overview](/en/security/security.html)
@@ -245,6 +261,7 @@
 
 - E-commerce 
   - [Multi-currency filtering](/en/modules/e-commerce/multi-currency-filtering.html)
+  - [Saved search notifications](/en/modules/e-commerce/saved-search.html)
 
 #### Reference
 
@@ -371,7 +388,7 @@
   - [Vespa 8](/en/reference/release-notes/vespa8.html)
   - [Vespa 9 (upcoming)](/en/reference/release-notes/vespa9.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

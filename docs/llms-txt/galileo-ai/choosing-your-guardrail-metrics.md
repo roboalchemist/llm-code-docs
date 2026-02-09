@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/how-to/choosing-your-guardrail-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Choosing Your Guardrail Metrics
 
 > Select and understand guardrail metrics in Galileo Observe to effectively evaluate your LLM applications, utilizing both industry-standard and proprietary metrics.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/structured-output.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Receive structured outputs
 
 ## Overview

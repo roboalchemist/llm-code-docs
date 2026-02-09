@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/account-management/billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Billing
 
 The billing page is where you can upgrade your account, view your current usage, or make changes to your billing info.

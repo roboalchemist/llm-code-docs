@@ -6,9 +6,9 @@
 
 ***
 
-https://aws.amazon.com/bedrock/ is a fully managed service that provides access to large language models (LLMs), allowing users to create and manage retrieval-augmented generative (RAG) pipelines, and create AI agents to plan and perform actions. AWS Bedrock supports a wide range of models from providers such as A21 Labs, Anthropic, Cohere, Meta, and Mistral AI. These models are designed to handle complex, multistep tasks across systems, knowledge bases, and APIs, making them versatile for various use cases.
+[Amazon Bedrock](https://aws.amazon.com/bedrock/) is a fully managed service that provides access to large language models (LLMs), allowing users to create and manage retrieval-augmented generative (RAG) pipelines, and create AI agents to plan and perform actions. AWS Bedrock supports a wide range of models from providers such as A21 Labs, Anthropic, Cohere, Meta, and Mistral AI. These models are designed to handle complex, multistep tasks across systems, knowledge bases, and APIs, making them versatile for various use cases.
 
-In this tutorial, we’ll demonstrate how to create and use AWS Bedrock AI agent and integrate it with Apify Actors. The AI agent will be configured to either answer questions from an internal LLM knowledge or to leverage the https://apify.com/apify/rag-web-browser to perform internet searches for relevant information. This approach enables the agent to provide more comprehensive and accurate responses by combining internal knowledge with real-time data from the web.
+In this tutorial, we’ll demonstrate how to create and use AWS Bedrock AI agent and integrate it with Apify Actors. The AI agent will be configured to either answer questions from an internal LLM knowledge or to leverage the [RAG Web Browser](https://apify.com/apify/rag-web-browser) to perform internet searches for relevant information. This approach enables the agent to provide more comprehensive and accurate responses by combining internal knowledge with real-time data from the web.
 
 ## AWS Bedrock AI agents
 
@@ -17,10 +17,10 @@ Amazon Bedrock allows you to create AI agents powered by large language models t
 Before getting started, ensure you have:
 
 * An active AWS Account.
-* An Apify account and an https://docs.apify.com/platform/integrations/api#api-token.
-* Granted access to any Large Language Model from Amazon Bedrock. To add access to a LLM, follow this https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html. We'll use **Anthropic Claude 3.5 Sonnet** in this example.
+* An Apify account and an [API token](https://docs.apify.com/platform/integrations/api#api-token).
+* Granted access to any Large Language Model from Amazon Bedrock. To add access to a LLM, follow this [guide](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html). We'll use **Anthropic Claude 3.5 Sonnet** in this example.
 
-The overall process for creating an agent includes the following https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html:
+The overall process for creating an agent includes the following [steps](https://docs.aws.amazon.com/bedrock/latest/userguide/agents.html):
 
 * Provide a name and description for the agent.
 * Specify instructions for the agent.
@@ -80,11 +80,11 @@ For this example, use the following settings:
 
 ![AWS-Bedrock-Agent-Builder-Create-Action](/assets/images/aws-bedrock-agent-builder-create-action-cdca260e1099e97663d98613fb0b6c0d.png)
 
-In the in-line editor, paste the OpenAPI schema of the https://raw.githubusercontent.com/apify/rag-web-browser/refs/heads/master/docs/standby-openapi-3.0.0.json. At this point, the Agent is almost ready to integrate with Apify. Save the action to create a new, empty Lambda function. The final step is to update the Lambda function to implement the OpenAPI schema and enable real-time web search capabilities.
+In the in-line editor, paste the OpenAPI schema of the [RAG Web Browser](https://raw.githubusercontent.com/apify/rag-web-browser/refs/heads/master/docs/standby-openapi-3.0.0.json). At this point, the Agent is almost ready to integrate with Apify. Save the action to create a new, empty Lambda function. The final step is to update the Lambda function to implement the OpenAPI schema and enable real-time web search capabilities.
 
 #### Step 3: Lambda function
 
-1. Open the Lambda function you created and copy-paste the https://raw.githubusercontent.com/apify/rag-web-browser/refs/heads/master/docs/aws-lambda-call-rag-web-browser.py.
+1. Open the Lambda function you created and copy-paste the [Python lambda function](https://raw.githubusercontent.com/apify/rag-web-browser/refs/heads/master/docs/aws-lambda-call-rag-web-browser.py).
 
 2. Replace `APIFY_API_TOKEN` in the code with your Apify API token. Alternatively, store the token as an environment variable:
 
@@ -134,6 +134,6 @@ When integrating agent in AWS Bedrock, you may encounter some limitations and is
 
 ## Resources
 
-* https://aws.amazon.com/bedrock/agents/
-* https://github.com/build-on-aws/amazon-bedrock-agents-quickstart
-* https://apify.com/apify/rag-web-browser
+* [Amazon Bedrock Agents](https://aws.amazon.com/bedrock/agents/)
+* [Amazon Bedrock Agents Quickstart](https://github.com/build-on-aws/amazon-bedrock-agents-quickstart)
+* [Apify - RAG Web Browser](https://apify.com/apify/rag-web-browser)

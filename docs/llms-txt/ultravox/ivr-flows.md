@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/ivr-flows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling IVR Flows
 
 > Build interactive voice response systems with keypad input and DTMF tones.
@@ -66,8 +70,3 @@ Note: the `playDtmfSounds` tool uses an [automatic parameter](/tools/custom/para
 * Enabling quick responses through keypad input
 * Collecting numeric input (e.g., account numbers, PIN codes)
 * Building hybrid voice/keypad interfaces
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

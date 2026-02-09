@@ -15,8 +15,6 @@ You can choose between two types of collections:
 1. Native collections (e.g. `Array`, `Map`, `Set`), provided by the language
 2. SDK collections (e.g. `IterableMap`, `Vector`), provided by the NEAR SDK
 
-Understanding how the contract stores and loads both types of collections is crucial to decide which one to use.
-
 :::tip Native vs SDK Collections
 
 Use native collections for small amounts of data that need to be accessed altogether, and SDK collections for large amounts of data that do not need to be accessed altogether.
@@ -25,23 +23,58 @@ If your collection has up to 100 entries, it's acceptable to use the native coll
 
 :::
 
-<details>
+---
 
-<summary> How the State is Handled </summary>
+## Storage Management
 
 Each time the contract is executed, the first thing it will do is to read the values and [deserialize](./serialization.md) them into memory, and after the function finishes, it will [serialize](./serialization.md) and write the values back to the database.
 
 For native collections, the contract will fully load the collection into memory before any method executes. This happens even if the method you invoke does not use the collection. Know that this will have impact on GAS you spend for methods in your contract.
 
+<details>
+
+<summary> Storage Cost </summary>
+
+Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
+
+- If more data is added the **storage increases ↑**, and your contract's **balance decreases ↓**.
+- If data is deleted the **storage decreases ↓**, and your contract's **balance increases ↑**.
+
+Currently, it costs approximately **1 Ⓝ** to store **100kb** of data.
+
 </details>
+
+<details>
+
+<summary> Storage Constraints on NEAR </summary>
+
+For storing data on-chain it’s important to keep in mind the following:
+
+- There is a 4mb limit on how much you can upload at once
+
+Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used.
+
+Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.
+
+</details>
+
+:::caution
+
+Your contract will panic if you try to store data but don't have NEAR to cover its storage cost
+
+:::
+
+:::danger
+
+Be mindful of potential [small deposit attacks](../security/storage.md)
+
+:::
 
 ---
 
 ## Native Collections
 
-Native collections are those provided by the language:
-- JS: `Array`, `Set`, `Map`, `Object` ...
-- Rust: `Vector`, `HashMap`, `Set` ...
+Native collections are those provided by the language, such as `Array`, `Map`, `Set` in Javascript, or `Vec`, `HashMap`, `HashSet` in Rust.
 
 All entries in a native collection are **serialized into a single value** and **stored together** into the state. This means that every time a function execute, the SDK will read and **deserialize all entries** in the native collection.
 
@@ -71,8 +104,6 @@ As the native collection grows, deserializing it from memory will cost more and 
 
 The NEAR SDKs expose collections that are optimized for random access of large amounts of data. SDK collections are instantiated using a "prefix", which is used as an index to split the data into chunks. This way, SDK collections can defer reading and writing to the store until needed.
 
-These collections are built to have an interface similar to native collections.
-
 <details>
 
 <summary> Serialization & Storage Example </summary>
@@ -81,83 +112,10 @@ The sdk array `[1,2,3,4]` with prefix `"p"` will be stored as the string `"p"` i
 
 </details>
 
+<details>
 
-:::tip when to use them
+<summary> SDK Collections' Features </summary>
 
-SDK collections are useful when you are planning to store large amounts of data that do not need to be accessed all together
-
-:::
-
-<hr class="subsection" />
-
-### Exposed Collections
-
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-| SDK Collection | Native Equivalent | Description                                                                                                                                                                                      |
-|----------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Vector`       | `Array`           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                            |
-| `LookupSet`    | `Set`             | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.     |
-| `UnorderedSet` | `Set`             | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                    |
-| `LookupMap`    | `Map`             | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable. |
-| `UnorderedMap` | `Map`             | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                      |
-
-</TabItem>
-
-<TabItem value="rust" label="🦀 Rust">
-
-| SDK collection                                | `std`&nbsp;equivalent             | Description                                                                                                                                                                                       |
-|-----------------------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `store::Vector<T>`                            | `Vec<T>`                          | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                             |
-| <code>store::LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code> | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contain any metadata about the elements in the map, so it is not iterable.  |
-| <code>store::IterableMap`<K,&nbsp;V>`</code>  | <code>HashMap`<K,&nbsp;V>`</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                       |
-| <code>store::UnorderedMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code> | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                       |
-| `store::LookupSet<T>`                         | `HashSet<T>`                      | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.      |
-| `store::IterableSet<T>`                       | `HashSet<T>`                      | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                     |
-| `store::UnorderedSet<T>`                      | `HashSet<T>`                      | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                     |
-
-</TabItem>
-
-<TabItem value="rust-legacy" label="🦀 Rust (legacy)">
-
-:::info Note
-
-The `near_sdk::collections` is now deprecated in favor of `near_sdk::store`. To use `near_sdk::collections` you will have to use the [`legacy` feature](https://github.com/near-examples/storage-examples/blob/2a138a6e8915e08ce76718add3e36c04c2ea2fbb/collections-rs/legacy/Cargo.toml#L11).
-
-:::
-
-| SDK collection                                     | `std`&nbsp;equivalent              | Description                                                                                                                                                                                                                                        |
-|----------------------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `collections::Vector<T>`                            | `Vec<T>`                           | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                                                                                              |
-| <code>collections::LookupMap`<K,&nbsp;V>`</code>    | <code>HashMap`<K,&nbsp;V>`</code>  | This structure behaves as a thin wrapper around the key-value storage available to contracts. This structure does not contairn any metadata about the elements in the map, so it is not iterable.                                                  |
-| <code>collections::UnorderedMap`<K,&nbsp;V>`</code> | <code>HashMap`<K,&nbsp;V>`</code>  | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements in the data structure.                                                                                                                        |
-| <code>collections::TreeMap`<K,&nbsp;V>`</code>      | <code>BTreeMap`<K,&nbsp;V>`</code> | An ordered equivalent of `UnorderedMap`. The underlying implementation is based on an [AVL tree](https://en.wikipedia.org/wiki/AVL_tree). This structure should be used when a consistent order is needed or accessing the min/max keys is needed. |
-| `collections::LookupSet<T>`                         | `HashSet<T>`                       | A set, which is similar to `LookupMap` but without storing values, can be used for checking the unique existence of values. This structure is not iterable and can only be used for lookups.                                                       |
-| `collections::UnorderedSet<T>`                      | `HashSet<T>`                       | An iterable equivalent of `LookupSet` which stores additional metadata for the elements contained in the set.                                                                                                                                      |
-| `collections::LazyOption<T>`                       | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                  |
-</TabItem>
-
-<TabItem value="python" label="🐍 Python">
-
-| SDK Collection | Native Equivalent | Description                                                                                                                                                                         |
-| -------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Vector`       | `list`            | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                               |
-| `LookupMap`    | `dict`            | A non-iterable key-value store. This structure does not track keys for iteration, so it is optimized for lookups but cannot provide collection operations like keys or values.      |
-| `UnorderedMap` | `dict`            | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements and supports dictionary-like operations such as keys(), values(), and items(). |
-| `IterableMap`  | `dict`            | An alias for `UnorderedMap` provided for compatibility with Rust SDK naming conventions.                                                                                            |
-| `LookupSet`    | `set`             | A non-iterable set of unique values. This structure cannot be iterated over and can only be used for membership testing.                                                            |
-| `UnorderedSet` | `set`             | An iterable equivalent of `LookupSet` which stores additional metadata to allow iteration over the values in the set.                                                               |
-| `IterableSet`  | `set`             | An alias for `UnorderedSet` provided for compatibility with Rust SDK naming conventions.                                                                                            |
-| `TreeMap`      | `SortedDict`      | An ordered key-value store where keys are maintained in sorted order. Provides operations for range queries, finding nearest keys, and efficient min/max operations.                |
-
-</TabItem>
-
-</Tabs>
-
-<hr class="subsection" />
-
-### Features
 | Type           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
 |----------------|:--------:|:----------------:|:-------------------------:|:---------------:|
 | `Vector`       |    ✅     |        ✅         |             ✅             |        ✅        |
@@ -169,9 +127,11 @@ The `near_sdk::collections` is now deprecated in favor of `near_sdk::store`. To 
 | `IterableMap`  |    ✅     |        ✅         |                           |        ✅        |
 | `TreeMap`      |    ✅     |        ✅         |             ✅             |        ✅        |
 
-<hr class="subsection" />
+</details>
 
-### Complexity
+<details>
+
+<summary> SDK Collections' Time Complexities </summary>
 
 | Type           | Access |  Insert  |  Delete  |  Search  | Traverse | Clear |
 |----------------|:------:|:--------:|:--------:|:--------:|:--------:|:-----:|
@@ -186,11 +146,15 @@ The `near_sdk::collections` is now deprecated in favor of `near_sdk::store`. To 
 _\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
 _\*\* - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
 
----
+</details>
 
-## SDK Collections Cookbook
+These collections are built to have an interface similar to native collections.
 
-Let's see how to use the SDK collections in practice
+:::tip when to use them
+
+SDK collections are useful when you are planning to store large amounts of data that do not need to be accessed all together
+
+:::
 
 <hr class="subsection" />
 
@@ -199,40 +163,6 @@ Let's see how to use the SDK collections in practice
 All structures need to be initialized using a **unique `prefix`**, which will be used to index the collection's values in the account's state
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    
-    ```
-  static schema = {
-    greeting: "string",
-    big: BigInt,
-    vector: { class: Vector, value: "number" },
-    lookup_set: { class: LookupSet, value: "number" },
-    unordered_set: { class: UnorderedSet, value: "number" },
-    lookup_map: { class: LookupMap, value: "number" },
-    unordered_map: { class: UnorderedMap, value: "number" },
-    nested: { class: UnorderedMap, value: { class: UnorderedMap, value: "number" } }
-  };
-
-  greeting: string = 'Hello';
-  big: bigint = BigInt(0);
-  vector: Vector<number> = new Vector<number>('uid-1');
-  lookup_set: LookupSet<number> = new LookupSet<number>('uid-2');
-  unordered_set: UnorderedSet<number> = new UnorderedSet<number>('uid-3');
-  lookup_map: LookupMap<number> = new LookupMap<number>('uid-4');
-  unordered_map: UnorderedMap<number> = new UnorderedMap<number>('uid-5');
-  nested: UnorderedMap<UnorderedMap<number>> = new UnorderedMap<UnorderedMap<number>>('uid-6');
-
-  @view({}) // This method is read-only and can be called for free
-```
-
-:::tip
-
-Do not forget to use the `schema` to define how your contract's state is structured
-
-:::
-
-  </TabItem>
-
   <TabItem value="rust" label="🦀 Rust">
     ```
 // Define the contract structure
@@ -270,46 +200,37 @@ impl Default for StorageExample {
 
   </TabItem>
 
-  <TabItem value="rust-legacy" label="🦀 Rust (legacy)">
+  <TabItem value="js" label="🌐 JavaScript">
+    
     ```
-#[near(contract_state)]
-#[derive(PanicOnDefault)]
-pub struct StorageExample {
-    pub vector: Vector<i32>,
-    pub lookup_set: LookupSet<i32>,
-    pub unordered_set: UnorderedSet<i32>,
-    pub lookup_map: LookupMap<String, i32>,
-    pub unordered_map: UnorderedMap<String, i32>,
-    pub tree_map: TreeMap<String, i32>,
-    pub nested: LookupMap<String, Vector<i32>>,
-    pub lazy_option: LazyOption<u8>,
-}
+  static schema = {
+    greeting: "string",
+    big: BigInt,
+    vector: { class: Vector, value: "number" },
+    lookup_set: { class: LookupSet, value: "number" },
+    unordered_set: { class: UnorderedSet, value: "number" },
+    lookup_map: { class: LookupMap, value: "number" },
+    unordered_map: { class: UnorderedMap, value: "number" },
+    nested: { class: UnorderedMap, value: { class: UnorderedMap, value: "number" } }
+  };
 
-// collections cannot have a default implementation
-#[near]
-impl StorageExample {
-    #[init]
-    pub fn init() -> Self {
-        Self {
-            vector: Vector::new(Prefix::Vector),
-            lookup_set: LookupSet::new(Prefix::LookupSet),
-            unordered_set: UnorderedSet::new(Prefix::UnorderedSet),
-            lookup_map: LookupMap::new(Prefix::LookupMap),
-            unordered_map: UnorderedMap::new(Prefix::UnorderedMap),
-            tree_map: TreeMap::new(Prefix::TreeMap),
-            nested: LookupMap::new(Prefix::Root),
-            lazy_option: LazyOption::new(Prefix::LazyOption, Some(&LARGE_VALUE)),
-        }
-    }
-}
+  greeting: string = 'Hello';
+  big: bigint = BigInt(0);
+  vector: Vector<number> = new Vector<number>('uid-1');
+  lookup_set: LookupSet<number> = new LookupSet<number>('uid-2');
+  unordered_set: UnorderedSet<number> = new UnorderedSet<number>('uid-3');
+  lookup_map: LookupMap<number> = new LookupMap<number>('uid-4');
+  unordered_map: UnorderedMap<number> = new UnorderedMap<number>('uid-5');
+  nested: UnorderedMap<UnorderedMap<number>> = new UnorderedMap<UnorderedMap<number>>('uid-6');
 
+  @view({}) // This method is read-only and can be called for free
 ```
 
-  :::tip
+:::tip
 
-  Notice how we use `enums` to ensure all collections have a different prefix. Another advantage of using `enums` is that they are serialized into a single `byte` prefix. 
+Do not forget to use the `schema` to define how your contract's state is structured
 
-  :::
+:::
 
   </TabItem>
 
@@ -365,37 +286,6 @@ Be careful of not using the same prefix in two collections, otherwise, their sto
 Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    ```
-  // Vector
-  @call({})
-  push_vector({ value }: { value: number }) {
-    this.vector.push(value);
-  }
-
-  @view({})
-  get_vector({ index }: { index: number }): number {
-    return this.vector.get(index);
-  }
-
-  @call({})
-  replace_vector({ index, value }: { index: number, value: number }) {
-    this.vector.replace(index, value);
-  }
-
-  @view({})
-  len_vector(): number {
-    return this.vector.length;
-  }
-
-  @view({})
-  iter_vector({ from_index, limit }: { from_index: number, limit: number }) {
-    return this.vector.toArray().slice(from_index, limit);
-  }
-
-  // LookupSet
-```
-  </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     ```
 #[near]
@@ -427,35 +317,35 @@ impl StorageExample {
 
 ```
   </TabItem>
-  <TabItem value="rust-legacy" label="🦀 Rust (legacy)">
+  <TabItem value="js" label="🌐 JavaScript">
     ```
-#[near]
-impl StorageExample {
-    pub fn vec_push(&mut self, value: i32) {
-        self.vector.push(&value);
-    }
+  // Vector
+  @call({})
+  push_vector({ value }: { value: number }) {
+    this.vector.push(value);
+  }
 
-    pub fn vec_get(&self, index: U64) -> i32 {
-        self.vector.get(index.into()).expect("Expected value")
-    }
+  @view({})
+  get_vector({ index }: { index: number }): number {
+    return this.vector.get(index);
+  }
 
-    pub fn vec_replace(&mut self, index: U64, value: i32) {
-        self.vector.replace(index.into(), &value);
-    }
+  @call({})
+  replace_vector({ index, value }: { index: number, value: number }) {
+    this.vector.replace(index, value);
+  }
 
-    pub fn vec_len(&self) -> U64 {
-        U64(self.vector.len())
-    }
+  @view({})
+  len_vector(): number {
+    return this.vector.length;
+  }
 
-    pub fn vec_iter(&self, from_index: i32, limit: i32) -> Vec<i32> {
-        self.vector
-            .iter()
-            .skip(from_index as usize)
-            .take(limit as usize)
-            .collect()
-    }
-}
+  @view({})
+  iter_vector({ from_index, limit }: { from_index: number, limit: number }) {
+    return this.vector.toArray().slice(from_index, limit);
+  }
 
+  // LookupSet
 ```
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -498,6 +388,30 @@ class VectorExample:
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+    ```
+#[near]
+impl StorageExample {
+    pub fn insert_map(&mut self, key: String, value: i32) {
+        self.lookup_map.insert(key, value);
+    }
+
+    pub fn remove_map(&mut self, key: String) {
+        self.lookup_map.remove(&key);
+    }
+
+    pub fn get_map(&self, key: String) -> i32 {
+        self.lookup_map[&key]
+    }
+
+    pub fn contains_key_map(&self, key: String) -> bool {
+        self.lookup_map.contains_key(&key)
+    }
+}
+
+#[cfg(test)]
+```
+  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
     ```
   // LookupMap
@@ -522,30 +436,6 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   }
 
   // UnorderedMap
-```
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-    ```
-#[near]
-impl StorageExample {
-    pub fn insert_map(&mut self, key: String, value: i32) {
-        self.lookup_map.insert(key, value);
-    }
-
-    pub fn remove_map(&mut self, key: String) {
-        self.lookup_map.remove(&key);
-    }
-
-    pub fn get_map(&self, key: String) -> i32 {
-        self.lookup_map[&key]
-    }
-
-    pub fn contains_key_map(&self, key: String) -> bool {
-        self.lookup_map.contains_key(&key)
-    }
-}
-
-#[cfg(test)]
 ```
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -588,32 +478,6 @@ class LookupMapExample:
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    ```
-  // UnorderedMap
-  @call({})
-  insert_unordered_map({ key, value }: { key: string, value: number }) {
-    this.unordered_map.set(key, value);
-  }
-
-  @call({})
-  remove_unordered_map({ key }: { key: string }) {
-    this.unordered_map.remove(key);
-  }
-
-  @view({})
-  get_unordered_map({ key }: { key: string }): number {
-    return this.unordered_map.get(key);
-  }
-
-  @view({})
-  iter_unordered_map({ from_index, limit }: { from_index: number, limit: number }) {
-    return this.unordered_map.toArray().slice(from_index, limit);
-  }
-
-  // Nested
-```
-  </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     ```
 #[near]
@@ -643,6 +507,32 @@ impl StorageExample {
     }
 }
 
+```
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
+    ```
+  // UnorderedMap
+  @call({})
+  insert_unordered_map({ key, value }: { key: string, value: number }) {
+    this.unordered_map.set(key, value);
+  }
+
+  @call({})
+  remove_unordered_map({ key }: { key: string }) {
+    this.unordered_map.remove(key);
+  }
+
+  @view({})
+  get_unordered_map({ key }: { key: string }): number {
+    return this.unordered_map.get(key);
+  }
+
+  @view({})
+  iter_unordered_map({ from_index, limit }: { from_index: number, limit: number }) {
+    return this.unordered_map.toArray().slice(from_index, limit);
+  }
+
+  // Nested
 ```
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -690,6 +580,27 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
 
 <Tabs groupId="code-tabs">
 
+  <TabItem value="rust" label="🦀 Rust">
+      ```
+#[near]
+impl StorageExample {
+    pub fn insert_set(&mut self, value: i32) {
+        self.lookup_set.insert(value);
+    }
+
+    pub fn remove_set(&mut self, value: i32) {
+        self.lookup_set.remove(&value);
+    }
+
+    pub fn contains_set(&self, value: i32) -> bool {
+        self.lookup_set.contains(&value)
+    }
+}
+
+#[cfg(test)]
+```
+  </TabItem>
+
   <TabItem value="js" label="🌐 JavaScript">
     ```
   // LookupSet
@@ -709,27 +620,6 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
   }
 
   // UnorderedSet
-```
-  </TabItem>
-
-  <TabItem value="rust" label="🦀 Rust">
-      ```
-#[near]
-impl StorageExample {
-    pub fn insert_set(&mut self, value: i32) {
-        self.lookup_set.insert(value);
-    }
-
-    pub fn remove_set(&mut self, value: i32) {
-        self.lookup_set.remove(&value);
-    }
-
-    pub fn contains_set(&self, value: i32) -> bool {
-        self.lookup_set.contains(&value)
-    }
-}
-
-#[cfg(test)]
 ```
   </TabItem>
   
@@ -775,32 +665,6 @@ class LookupSetExample:
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    ```
-  // UnorderedSet
-  @call({})
-  insert_unordered_set({ value }: { value: number }) {
-    this.unordered_set.set(value);
-  }
-
-  @call({})
-  remove_unordered_set({ value }: { value: number }) {
-    this.unordered_set.remove(value);
-  }
-
-  @view({})
-  contains_unordered_set({ value }: { value: number }): boolean {
-    return this.unordered_set.contains(value);
-  }
-
-  @view({})
-  iter_unordered_set({ from_index, limit }: { from_index: number, limit: number }) {
-    return this.unordered_set.toArray().slice(from_index, limit);
-  }
-
-  // LookupMap
-```
-  </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     ```
 #[near]
@@ -827,6 +691,32 @@ impl StorageExample {
 }
 
 #[cfg(test)]
+```
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
+    ```
+  // UnorderedSet
+  @call({})
+  insert_unordered_set({ value }: { value: number }) {
+    this.unordered_set.set(value);
+  }
+
+  @call({})
+  remove_unordered_set({ value }: { value: number }) {
+    this.unordered_set.remove(value);
+  }
+
+  @view({})
+  contains_unordered_set({ value }: { value: number }): boolean {
+    return this.unordered_set.contains(value);
+  }
+
+  @view({})
+  iter_unordered_set({ from_index, limit }: { from_index: number, limit: number }) {
+    return this.unordered_set.toArray().slice(from_index, limit);
+  }
+
+  // LookupMap
 ```
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -935,17 +825,6 @@ class TreeMapExample:
   </TabItem>
 </Tabs>
 
-<hr class="subsection" />
-
-### LazyOption (Legacy)
-
-LazyOptions are great to store large values (i.e. a wasm file), since its value will not be read from storage until it is interacted with.
-
-It acts like an `Option` that can either hold a value or not and also requires a unique prefix (a key in this case)
-like other persistent collections.
-
-Compared to other collections, `LazyOption` only allows you to initialize the value during initialization.
-
 ---
 
 ## Nesting Collections
@@ -953,6 +832,47 @@ Compared to other collections, `LazyOption` only allows you to initialize the va
 When nesting SDK collections, be careful to **use different prefixes** for all collections, including the nested ones.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+
+    ```
+#[near]
+impl StorageExample {
+    pub fn insert_nested(&mut self, key: String, value: i32) {
+        if self.nested.contains_key(&key) {
+            let vector = self.nested.get_mut(&key).expect("Wrong key");
+            vector.push(value);
+        } else {
+            let mut vector = Vector::new(Prefix::Nested(key.clone()));
+            vector.push(value);
+            self.nested.insert(key, vector);
+        }
+    }
+
+    pub fn remove_nested(&mut self, key: String) {
+        let vector = self.nested.get_mut(&key).expect("Wrong key");
+        vector.clear();
+        self.nested.remove(&key);
+    }
+
+    pub fn get_nested(&self, key: String) -> Vec<&i32> {
+        self.nested[&key].iter().collect()
+    }
+
+    pub fn contains_key_nested(&self, key: String) -> bool {
+        self.nested.contains_key(&key)
+    }
+}
+
+```
+
+  :::tip
+
+  Notice how we use `enums` that take a `String` argument to ensure all collections have a different prefix
+
+  :::
+
+  </TabItem>
+
   <TabItem value="js" label="🌐 JavaScript">
 
     ```
@@ -1002,47 +922,6 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
   }
 }
 ```
-
-  </TabItem>
-
-  <TabItem value="rust" label="🦀 Rust">
-
-    ```
-#[near]
-impl StorageExample {
-    pub fn insert_nested(&mut self, key: String, value: i32) {
-        if self.nested.contains_key(&key) {
-            let vector = self.nested.get_mut(&key).expect("Wrong key");
-            vector.push(value);
-        } else {
-            let mut vector = Vector::new(Prefix::Nested(key.clone()));
-            vector.push(value);
-            self.nested.insert(key, vector);
-        }
-    }
-
-    pub fn remove_nested(&mut self, key: String) {
-        let vector = self.nested.get_mut(&key).expect("Wrong key");
-        vector.clear();
-        self.nested.remove(&key);
-    }
-
-    pub fn get_nested(&self, key: String) -> Vec<&i32> {
-        self.nested[&key].iter().collect()
-    }
-
-    pub fn contains_key_nested(&self, key: String) -> bool {
-        self.nested.contains_key(&key)
-    }
-}
-
-```
-
-  :::tip
-
-  Notice how we use `enums` that take a `String` argument to ensure all collections have a different prefix
-
-  :::
 
   </TabItem>
   
@@ -1174,65 +1053,6 @@ m = IterableSet::new(b"l");
 assert!(!m.contains(&1));
 ```
 
-<hr class="subsection" />
-
-### Nesting Errors
-
-By extension of the error-prone patterns to avoid mentioned in the [collections section](./collections.md#error-prone-patterns), it is important to keep in mind how these bugs can easily be introduced into a contract when using nested collections.
-
-Some issues for more context:
-- https://github.com/near/near-sdk-rs/issues/560
-- https://github.com/near/near-sdk-rs/issues/703
-
-The following cases are the most commonly encountered bugs that cannot be restricted at the type level (only relevant for `near_sdk::collections`, not `near_sdk::store`):
-
-```rust
-use near_sdk::borsh::{self, BorshSerialize};
-use near_sdk::collections::{LookupMap, UnorderedSet};
-use near_sdk::BorshStorageKey;
-
-#[derive(BorshStorageKey, BorshSerialize)]
-pub enum StorageKey {
-    Root,
-    Nested(u8),
-}
-
-// Bug 1: Nested collection is removed without clearing its own state.
-let mut root: LookupMap<u8, UnorderedSet<String>> = LookupMap::new(StorageKey::Root);
-let mut nested = UnorderedSet::new(StorageKey::Nested(1));
-nested.insert(&"test".to_string());
-root.insert(&1, &nested);
-
-// Remove inserted collection without clearing its sub-state.
-let mut _removed = root.remove(&1).unwrap();
-
-// This line would fix the bug:
-// _removed.clear();
-
-// This collection will now be in an inconsistent state if an empty UnorderedSet is put
-// in the same entry of `root`.
-root.insert(&1, &UnorderedSet::new(StorageKey::Nested(1)));
-let n = root.get(&1).unwrap();
-assert!(n.is_empty());
-assert!(n.contains(&"test".to_string()));
-
-// Bug 2: Nested collection is modified without updating the collection itself in the outer collection.
-//
-// This is fixed at the type level in `near_sdk::store` because the values are modified
-// in-place and guarded by regular Rust borrow-checker rules.
-root.insert(&2, &UnorderedSet::new(StorageKey::Nested(2)));
-
-let mut nested = root.get(&2).unwrap();
-nested.insert(&"some value".to_string());
-
-// This line would fix the bug:
-// root.insert(&2, &nested);
-
-let n = root.get(&2).unwrap();
-assert!(n.is_empty());
-assert!(n.contains(&"some value".to_string()));
-```
-
 </TabItem>
 </Tabs>
 
@@ -1245,20 +1065,6 @@ contain more elements than the amount of gas available to read them all.
 In order to expose them all through view calls, we can use pagination.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
-
-    ```ts
-      /// Returns multiple elements from the `UnorderedMap`.
-      /// - `from_index` is the index to start from.
-      /// - `limit` is the maximum number of elements to return.
-      @view({})
-      get_updates({ from_index, limit }: { from_index: number, limit:number }) {
-        return this.status_updates.toArray().slice(from_index, limit);
-      }
-    ```
-  </TabItem>
-
   <TabItem value="rust" label="🦀 Rust">
     With Rust this can be done using iterators with [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) and [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html). This will only load elements from storage within the range.
 
@@ -1284,6 +1090,20 @@ In order to expose them all through view calls, we can use pagination.
       }
     ```
 
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
+
+    ```ts
+      /// Returns multiple elements from the `UnorderedMap`.
+      /// - `from_index` is the index to start from.
+      /// - `limit` is the maximum number of elements to return.
+      @view({})
+      get_updates({ from_index, limit }: { from_index: number, limit:number }) {
+        return this.status_updates.toArray().slice(from_index, limit);
+      }
+    ```
   </TabItem>
 
   <TabItem value="python" label="🐍 Python">
@@ -1312,44 +1132,3 @@ In order to expose them all through view calls, we can use pagination.
     ```
   </TabItem>
 </Tabs>
-
----
-
-## Storage Cost
-
-Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
-
-- If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
-- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**.
-
-Currently, it costs approximately **1 Ⓝ** to store **100kb** of data.
-
-:::info
-
-You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 * 5 = 325 bits from the original (64 + 4) * 8 = 544 bits. This is a 40% reduction in storage costs
-
-:::
-
-:::caution
-
-Your contract will panic if you try to store data but don't have NEAR to cover its storage cost
-
-:::
-
-:::warning
-
-Be mindful of potential [small deposit attacks](../security/storage.md)
-
-:::
-
----
-
-## Storage Constraints on NEAR
-
-For storing data on-chain it’s important to keep in mind the following:
-
-- There is a 4mb limit on how much you can upload at once
-
-Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100kb of storage used.
-
-Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.

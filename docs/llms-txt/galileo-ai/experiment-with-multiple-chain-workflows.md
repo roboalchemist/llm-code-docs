@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/experiment-with-multiple-chain-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Experiment with Multiple Workflows
 
 > If you're building a multi-step workflow or chain (e.g. a RAG system, an Agent, or a chain) and want to experiment with multiple combinations of parameters or your versions at once, Chain Sweeps are your friend.
@@ -10,7 +14,7 @@ First, you'll need to wrap your workflow or chain in a function. This function s
 
 Here we create a function `rag_chain_executor` utilizing our workflow logging integration.
 
-```py
+```py  theme={null}
 import promptquality as pq
 from promptquality import EvaluateRun
 
@@ -48,7 +52,7 @@ def rag_chain_executor(chunk_size: int, chunk_overlap: int, model_name: str) -> 
 
 Alertnatively we can create the function `rag_chain_executor` utilizing a LangChain integration.
 
-```py
+```py  theme={null}
 
 import promptquality as pq
 
@@ -92,7 +96,7 @@ def rag_chain_executor(chunk_size: int, chunk_overlap: int, model_name: str) -> 
 
 Finally, call pq.sweep() with your chain's wrapper function and a dict containing all the different params you'd like to run your chain over:
 
-```py
+```py  theme={null}
 
 pq.sweep(
     rag_chain_executor,

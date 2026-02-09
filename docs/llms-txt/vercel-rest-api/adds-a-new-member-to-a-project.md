@@ -1,218 +1,142 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projectmembers/adds-a-new-member-to-a-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adds a new member to a project.
 
 > Adds a new member to the project.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/projects/{idOrName}/members
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{idOrName}/members
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/projects/{idOrName}/members:
+    post:
+      tags:
+        - projectMembers
+      summary: Adds a new member to a project.
+      description: Adds a new member to the project.
+      operationId: addProjectMember
+      parameters:
+        - name: idOrName
+          description: The ID or name of the Project.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID or name of the Project.
-              example: prj_pavWOn1iLObbXLRiwVvzmPrTWyTf
-      query:
-        teamId:
+            type: string
+            description: The ID or name of the Project.
+            example: prj_pavWOn1iLObbXLRiwVvzmPrTWyTf
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              uid:
-                allOf:
-                  - &ref_0
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+                - role
+              oneOf:
+                - required:
+                    - uid
+                - required:
+                    - username
+                - required:
+                    - email
+              properties:
+                uid:
+                  type: string
+                  maxLength: 256
+                  example: ndlgr43fadlPyCtREAqxxdyFK
+                  description: >-
+                    The ID of the team member that should be added to this
+                    project.
+                username:
+                  type: string
+                  maxLength: 256
+                  example: example
+                  description: >-
+                    The username of the team member that should be added to this
+                    project.
+                email:
+                  type: string
+                  format: email
+                  example: entity@example.com
+                  description: >-
+                    The email of the team member that should be added to this
+                    project.
+                role:
+                  type: string
+                  example: ADMIN
+                  description: The project role of the member that will be added.
+                  enum:
+                    - ADMIN
+                    - PROJECT_VIEWER
+                    - PROJECT_DEVELOPER
+        required: true
+      responses:
+        '200':
+          description: Responds with the project ID on success.
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
                     type: string
-                    maxLength: 256
-                    example: ndlgr43fadlPyCtREAqxxdyFK
-                    description: >-
-                      The ID of the team member that should be added to this
-                      project.
-              username:
-                allOf:
-                  - &ref_1
-                    type: string
-                    maxLength: 256
-                    example: example
-                    description: >-
-                      The username of the team member that should be added to
-                      this project.
-              email:
-                allOf:
-                  - &ref_2
-                    type: string
-                    format: email
-                    example: entity@example.com
-                    description: >-
-                      The email of the team member that should be added to this
-                      project.
-              role:
-                allOf:
-                  - &ref_3
-                    type: string
-                    enum:
-                      - ADMIN
-                      - PROJECT_DEVELOPER
-                      - PROJECT_VIEWER
-                    example: ADMIN
-                    description: The project role of the member that will be added.
-            required: true
-            requiredProperties:
-              - role
-              - uid
-            additionalProperties: false
-          - type: object
-            properties:
-              uid:
-                allOf:
-                  - *ref_0
-              username:
-                allOf:
-                  - *ref_1
-              email:
-                allOf:
-                  - *ref_2
-              role:
-                allOf:
-                  - *ref_3
-            required: true
-            requiredProperties:
-              - role
-              - username
-            additionalProperties: false
-          - type: object
-            properties:
-              uid:
-                allOf:
-                  - *ref_0
-              username:
-                allOf:
-                  - *ref_1
-              email:
-                allOf:
-                  - *ref_2
-              role:
-                allOf:
-                  - *ref_3
-            required: true
-            requiredProperties:
-              - role
-              - email
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              uid: ndlgr43fadlPyCtREAqxxdyFK
-              username: example
-              email: entity@example.com
-              role: ADMIN
-    codeSamples:
-      - label: addProjectMember
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.ProjectMembers.AddProjectMember(ctx, \"prj_pavWOn1iLObbXLRiwVvzmPrTWyTf\", nil, nil, vercel.Pointer(operations.CreateAddProjectMemberRequestBodyAddProjectMemberRequestBody1(\n        operations.AddProjectMemberRequestBody1{\n            UID: \"ndlgr43fadlPyCtREAqxxdyFK\",\n            Username: vercel.String(\"example\"),\n            Email: vercel.String(\"entity@example.com\"),\n            Role: operations.RequestBodyRoleAdmin,\n        },\n    )))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: addProjectMember
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.projectMembers.addProjectMember({
-              idOrName: "prj_pavWOn1iLObbXLRiwVvzmPrTWyTf",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                uid: "ndlgr43fadlPyCtREAqxxdyFK",
-                username: "example",
-                email: "entity@example.com",
-                role: "ADMIN",
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-            description: Responds with the project ID on success.
-            requiredProperties:
-              - id
-        examples:
-          example:
-            value:
-              id: <string>
-        description: Responds with the project ID on success.
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '500': {}
-  deprecated: false
-  type: path
+                required:
+                  - id
+                type: object
+                description: Responds with the project ID on success.
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '500':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

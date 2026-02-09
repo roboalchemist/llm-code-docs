@@ -49,8 +49,8 @@ We first copy the `package.json`, `package-lock.json` files , and install the de
 Further optimization tips
 
 * We recommend using as few layers as possible in your Docker images. This helps to reduce overall image sizes and improve build times.
-* Use the https://github.com/wagoodman/dive CLI tool to analyze the layers of a built Docker image. This tool provides insights into the composition of each layer, allowing you to understand what was added and helps you find ways to minimize their size.
+* Use the [dive](https://github.com/wagoodman/dive) CLI tool to analyze the layers of a built Docker image. This tool provides insights into the composition of each layer, allowing you to understand what was added and helps you find ways to minimize their size.
 
 ### Use standardized images to accelerate Actor startup times
 
-Using one of https://github.com/apify/apify-actor-docker, can accelerate the Actor startup time. These images are cached on each worker machine, so only the layers you added in your Actor's https://docs.apify.com/platform/actors/development/actor-definition/dockerfile.md need to be pulled.
+Using one of [Apify's standardized images](https://github.com/apify/apify-actor-docker), can accelerate the Actor startup time. These images are cached on each worker machine, so only the layers you added in your Actor's [Dockerfile](https://docs.apify.com/platform/actors/development/actor-definition/dockerfile.md) need to be pulled.

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/capitalized-comments.md
 ---
-# eslint/capitalized-comments&#x20;
 
 ### What it does
 
@@ -33,51 +32,85 @@ Examples of **correct** code for this rule with the default `"always"` option:
 
 ## Configuration
 
-This rule accepts a configuration object with the following properties:
+Configuration for the capitalized-comments rule.
 
-### block
+The first element specifies whether comments should `"always"` or `"never"`
+begin with a capital letter. The second element is an optional object
+containing additional options.
 
-type: `object | null`
+### The 1st option
 
-#### block.ignoreConsecutiveComments
+type: `"always" | "never"`
 
-type: `boolean | null`
+### The 2nd option
 
-#### block.ignoreInlineComments
+This option is an object with the following properties:
 
-type: `boolean | null`
+#### block
 
-#### block.ignorePattern
+type: `object`
 
-type: `string | null`
+Configuration options specific to block comments.
 
-### ignoreConsecutiveComments
+##### block.ignoreConsecutiveComments
 
-type: `boolean | null`
+type: `boolean`
 
-### ignoreInlineComments
+If true, consecutive comments will be ignored after the first comment.
 
-type: `boolean | null`
+##### block.ignoreInlineComments
 
-### ignorePattern
+type: `boolean`
 
-type: `string | null`
+If true, inline comments (comments in the middle of code) will be ignored.
 
-### line
+##### block.ignorePattern
 
-type: `object | null`
+type: `string`
 
-#### line.ignoreConsecutiveComments
+A regex pattern. Comments that match the pattern will not cause violations.
 
-type: `boolean | null`
+#### ignoreConsecutiveComments
 
-#### line.ignoreInlineComments
+type: `boolean`
 
-type: `boolean | null`
+If true, consecutive comments will be ignored after the first comment.
 
-#### line.ignorePattern
+#### ignoreInlineComments
 
-type: `string | null`
+type: `boolean`
+
+If true, inline comments (comments in the middle of code) will be ignored.
+
+#### ignorePattern
+
+type: `string`
+
+A regex pattern. Comments that match the pattern will not cause violations.
+
+#### line
+
+type: `object`
+
+Configuration options specific to line comments.
+
+##### line.ignoreConsecutiveComments
+
+type: `boolean`
+
+If true, consecutive comments will be ignored after the first comment.
+
+##### line.ignoreInlineComments
+
+type: `boolean`
+
+If true, inline comments (comments in the middle of code) will be ignored.
+
+##### line.ignorePattern
+
+type: `string`
+
+A regex pattern. Comments that match the pattern will not cause violations.
 
 ## How to use
 

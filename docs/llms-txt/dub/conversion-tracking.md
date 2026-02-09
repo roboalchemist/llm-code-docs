@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/client-side/features/conversion-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client-side conversion tracking
 
 > Learn how to use the @dub/analytics script to track conversion events on the client-side
@@ -222,7 +226,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
 
 Once the analytics script is installed, you can start tracking lead events in your application on the client-side.
 
-### Track leads from URL query parameters
+### Track leads from URL query parameters (recommended)
 
 If you redirect users to a thank-you page after a successful action, you can track leads by reading query parameters from the URL.
 
@@ -399,7 +403,7 @@ Ensure the event is triggered **only after the backend confirms the action was c
 
 Once the analytics script is installed, you can start tracking sale events in your application on the client-side.
 
-### Track sales from URL query parameters
+### Track sales from URL query parameters (recommended)
 
 If you redirect users to a confirmation page after a successful purchase, you can track sales by reading query parameters from the URL.
 
@@ -535,26 +539,28 @@ You can also track sales directly when users complete a checkout form on your we
       </form>
 
       <script>
-        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-          e.preventDefault();
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Track the sale event
-          dubAnalytics.trackSale({
-            eventName: "Purchase",
-            customerExternalId: "cus_RBfbD57H", // can also be customer email
-            amount: 5000, // $50.00
-            invoiceId: "in_1MtHbELkdIwH",
+            // Track the sale event
+            dubAnalytics.trackSale({
+              eventName: "Purchase",
+              customerExternalId: "cus_RBfbD57H", // can also be customer email
+              amount: 5000, // $50.00
+              invoiceId: "in_1MtHbELkdIwH",
 
-            // Additional props for direct sale tracking (without prior lead event):
-            // clickId: "cm3w...", // Read from dub_id cookie
-            // customerName: "John Doe",
-            // customerEmail: "john@example.com",
-            // customerAvatar: "https://example.com/avatar.jpg",
-            // currency: "usd",
-            // paymentProcessor: "stripe",
-            // metadata: { plan: "pro" },
+              // Additional props for direct sale tracking (without prior lead event):
+              // clickId: "cm3w...", // Read from dub_id cookie
+              // customerName: "John Doe",
+              // customerEmail: "john@example.com",
+              // customerAvatar: "https://example.com/avatar.jpg",
+              // currency: "usd",
+              // paymentProcessor: "stripe",
+              // metadata: { plan: "pro" },
+            });
           });
-        });
       </script>
     </body>
   </html>

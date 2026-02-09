@@ -4,11 +4,7 @@
 
 Better Auth API.
 
-***
 
-title: API
-description: Better Auth API.
------------------------------
 
 When you create a new Better Auth instance, it provides you with an `api` object. This object exposes every endpoint that exists in your Better Auth instance. And you can use this to interact with Better Auth server side.
 

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/stripe-webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Trigger a task from Stripe webhook events
 
 > This example demonstrates how to handle Stripe webhook events using Trigger.dev.
@@ -28,7 +32,7 @@ First you'll need to create a [Stripe webhook](https://stripe.com/docs/webhooks)
 Here are examples of how you can set up a handler using different frameworks:
 
 <CodeGroup>
-  ```ts Next.js theme={null}
+  ```ts Next.js theme={"theme":"css-variables"}
   // app/api/stripe-webhook/route.ts
   import { NextResponse } from "next/server";
   import { tasks } from "@trigger.dev/sdk";
@@ -78,7 +82,7 @@ Here are examples of how you can set up a handler using different frameworks:
   }
   ```
 
-  ```ts Remix theme={null}
+  ```ts Remix theme={"theme":"css-variables"}
   // app/webhooks.stripe.ts
   import { type ActionFunctionArgs, json } from "@remix-run/node";
   import type { stripeCheckoutCompleted } from "src/trigger/stripe-webhook";
@@ -124,7 +128,7 @@ Here are examples of how you can set up a handler using different frameworks:
 
 This task is triggered when a `checkout.session.completed` event is received from Stripe.
 
-```ts trigger/stripe-checkout-completed.ts theme={null}
+```ts trigger/stripe-checkout-completed.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import type stripe from "stripe";
 

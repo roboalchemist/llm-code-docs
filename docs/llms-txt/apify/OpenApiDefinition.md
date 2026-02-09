@@ -2,6 +2,10 @@
 
 # OpenApiDefinition<!-- -->
 
+OpenAPI specification for an Actor.
+
+Defines the Actor's API interface in OpenAPI 3.0 format, useful for integration with tools like ChatGPT plugins and other API consumers.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -14,7 +18,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#components)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L174)components
+### [**](#components)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L286)components
 
 **components: { schemas: {} }
 
@@ -24,7 +28,7 @@
 
 
 
-### [**](#info)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L166)info
+### [**](#info)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L278)info
 
 **info: { description?
 
@@ -43,11 +47,11 @@
 * ##### optionalversion?<!-- -->: string
 * ##### x-build-id: string
 
-### [**](#openapi)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L165)openapi
+### [**](#openapi)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L277)openapi
 
 **openapi: string
 
-### [**](#paths)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L173)paths
+### [**](#paths)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L285)paths
 
 **paths:
 
@@ -59,6 +63,6 @@
 
 
 
-### [**](#servers)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L172)servers
+### [**](#servers)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L284)servers
 
 **servers: { url: string }\[]

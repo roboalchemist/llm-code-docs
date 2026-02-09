@@ -4,17 +4,17 @@
 
 ## Apify Scraper for LLMs
 
-Apify Scraper for LLMs from https://apify.com is a web browsing module for OpenAI Assistants, RAG pipelines, and AI agents. It can query Google Search, scrape the top results, and return page content as Markdown for downstream AI processing.
+Apify Scraper for LLMs from [Apify](https://apify.com) is a web browsing module for OpenAI Assistants, RAG pipelines, and AI agents. It can query Google Search, scrape the top results, and return page content as Markdown for downstream AI processing.
 
-To use these modules, you need an https://console.apify.com and an https://docs.apify.com/platform/integrations/api#api-token. You can find your token in the Apify Console under **Settings > Integrations**. After connecting, you can automate content extraction and integrate results into your AI workflows.
+To use these modules, you need an [Apify account](https://console.apify.com) and an [API token](https://docs.apify.com/platform/integrations/api#api-token). You can find your token in the Apify Console under **Settings > Integrations**. After connecting, you can automate content extraction and integrate results into your AI workflows.
 
 ## Connect Apify Scraper for LLMs
 
-1. Create an account at https://console.apify.com/. You can sign up using your email, Gmail, or GitHub account.
+1. Create an account at [Apify](https://console.apify.com/). You can sign up using your email, Gmail, or GitHub account.
 
    ![Make interface showing API token field and connection name field for Apify integration setup](/assets/images/rag-signup-e6bc62ebf159bbe6d4b19eaffb677af8.png)
 
-2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the token, go to **https://console.apify.com/settings/integrations** in the Apify Console.
+2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the token, go to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)** in the Apify Console.
 
    ![Apify Console sign-up page with email, Gmail, and GitHub sign-up options](/assets/images/apify-console-token-for-make-cf75dbeb5effdcab9bc204cee94cdb6a.png)
 
@@ -179,11 +179,11 @@ To get the best search results, use specific keywords and operators, and exclude
 
 There are other native Make Apps powered by Apify. You can check out Apify Scraper for:
 
-* https://docs.apify.com/platform/integrations/make/tiktok.md
-* https://docs.apify.com/platform/integrations/make/search.md
-* https://docs.apify.com/platform/integrations/make/maps.md
-* https://docs.apify.com/platform/integrations/make/youtube.md
-* https://docs.apify.com/platform/integrations/make/ai-crawling.md
-* https://docs.apify.com/platform/integrations/make/amazon.md
+* [TikTok Data](https://docs.apify.com/platform/integrations/make/tiktok.md)
+* [Google Search](https://docs.apify.com/platform/integrations/make/search.md)
+* [Google Maps Emails Data](https://docs.apify.com/platform/integrations/make/maps.md)
+* [YouTube Data](https://docs.apify.com/platform/integrations/make/youtube.md)
+* [AI crawling](https://docs.apify.com/platform/integrations/make/ai-crawling.md)
+* [Amazon](https://docs.apify.com/platform/integrations/make/amazon.md)
 
-And more! Because you can access any of thousands of our scrapers on Apify Store by using the https://www.make.com/en/integrations/apify.
+And more! Because you can access any of thousands of our scrapers on Apify Store by using the [general Apify connections](https://www.make.com/en/integrations/apify).

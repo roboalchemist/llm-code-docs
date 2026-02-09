@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/summary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Summary
 
 > AI generated summary of the meeting.

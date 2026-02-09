@@ -22,11 +22,15 @@ Use the `default-value` prop to set the initial value when you do not need to co
 </template>
 ```
 
-<note>
+**Nuxt:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/nuxt#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The time format is determined by the `locale` prop of the App component.
 
-This component relies on the [`@internationalized/date`](https://react-spectrum.adobe.com/internationalized/date/index.html) package which provides objects and functions for representing and manipulating dates and times in a locale-aware manner.
-
-</note>
+**Vue:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/vue#locale
+> This component uses the `@internationalized/date` package for locale-aware formatting. The time format is determined by the `locale` prop of the App component.
 
 ### Hour Cycle
 
@@ -48,11 +52,8 @@ Use the `color` prop to change the color of the InputTime.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -84,11 +85,8 @@ Use the `icon` prop to show an [Icon](/docs/components/icon) inside the InputTim
 </template>
 ```
 
-<note>
-
-Use the `leading` and `trailing` props to set the icon position or the `leading-icon` and `trailing-icon` props to set a different icon for each position.
-
-</note>
+> [!NOTE]
+> Use the `leading` and `trailing` props to set the icon position or the `leading-icon` and `trailing-icon` props to set a different icon for each position.
 
 ### Avatar
 
@@ -156,22 +154,10 @@ interface InputTimeProps {
    */
   autofocusDelay?: number | undefined;
   ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; segment?: ClassNameValue; } | undefined;
-  /**
-   * The default value for the calendar
-   */
-  defaultValue?: TimeValue | undefined;
-  /**
-   * The default placeholder date
-   */
-  defaultPlaceholder?: TimeValue | undefined;
-  /**
-   * The placeholder date, which is used to determine what time to display when no time is selected. This updates as the user navigates the field
-   */
-  placeholder?: TimeValue | undefined;
-  /**
-   * The controlled checked state of the field. Can be bound as `v-model`.
-   */
-  modelValue?: TimeValue | null | undefined;
+  defaultValue?: Time | CalendarDateTime | ZonedDateTime;
+  defaultPlaceholder?: Time | CalendarDateTime | ZonedDateTime;
+  placeholder?: Time | CalendarDateTime | ZonedDateTime;
+  modelValue?: null | Time | CalendarDateTime | ZonedDateTime;
   /**
    * The hour cycle used for formatting times. Defaults to the local preference
    */
@@ -181,6 +167,10 @@ interface InputTimeProps {
    */
   step?: DateStep | undefined;
   /**
+   * Whether to enforce snapping the value to the nearest step increment after input. Defaults to `false`.
+   */
+  stepSnapping?: boolean | undefined;
+  /**
    * The granularity to use for formatting times. Defaults to minute if a Time is provided, otherwise defaults to minute. The field will render segments for each part of the date up to and including the specified granularity
    */
   granularity?: "hour" | "minute" | "second" | undefined;
@@ -188,14 +178,8 @@ interface InputTimeProps {
    * Whether or not to hide the time zone segment of the field
    */
   hideTimeZone?: boolean | undefined;
-  /**
-   * The maximum date that can be selected
-   */
-  maxValue?: TimeValue | undefined;
-  /**
-   * The minimum date that can be selected
-   */
-  minValue?: TimeValue | undefined;
+  maxValue?: Time | CalendarDateTime | ZonedDateTime;
+  minValue?: Time | CalendarDateTime | ZonedDateTime;
   /**
    * Whether or not the time field is disabled
    */
@@ -219,7 +203,7 @@ interface InputTimeProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -231,7 +215,7 @@ interface InputTimeProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -239,7 +223,7 @@ interface InputTimeProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -247,7 +231,7 @@ interface InputTimeProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
 }
 ```
 
@@ -303,14 +287,8 @@ export default defineAppConfig({
       },
       variants: {
         fieldGroup: {
-          horizontal: {
-            root: 'group has-focus-visible:z-[1]',
-            base: 'group-not-only:group-first:rounded-e-none group-not-only:group-last:rounded-s-none group-not-last:group-not-first:rounded-none'
-          },
-          vertical: {
-            root: 'group has-focus-visible:z-[1]',
-            base: 'group-not-only:group-first:rounded-b-none group-not-only:group-last:rounded-t-none group-not-last:group-not-first:rounded-none'
-          }
+          horizontal: 'not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1]',
+          vertical: 'not-only:first:rounded-b-none not-only:last:rounded-t-none not-last:not-first:rounded-none focus-visible:z-[1]'
         },
         size: {
           xs: {
@@ -606,8 +584,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

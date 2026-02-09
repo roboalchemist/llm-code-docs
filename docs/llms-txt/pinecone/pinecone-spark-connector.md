@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/reference/tools/pinecone-spark-connector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Spark-Pinecone connector
 
 Use the [`spark-pinecone` connector](https://github.com/pinecone-io/spark-pinecone/) to efficiently create, ingest, and update [vector embeddings](https://www.pinecone.io/learn/vector-embeddings/) at scale with [Databricks and Pinecone](/integrations/databricks).

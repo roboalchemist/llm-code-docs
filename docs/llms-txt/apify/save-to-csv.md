@@ -1,18 +1,20 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/save-to-csv.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/save-to-csv.md
-
 # Saving results to CSV
 
 **Learn how to save the results of your scraper's collected data to a CSV file that can be opened in Excel, Google Sheets, or any other spreadsheets program.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-In the last lesson, we were able to extract data about all the on-sale products from https://warehouse-theme-metal.myshopify.com/collections/sales. That's great. But we ended up with results printed to the terminal, which is not very useful for further processing. In this lesson, we'll learn how to save that data into a CSV file that you can then open in Excel or Google Sheets.
+In the last lesson, we were able to extract data about all the on-sale products from [Warehouse Store](https://warehouse-theme-metal.myshopify.com/collections/sales). That's great. But we ended up with results printed to the terminal, which is not very useful for further processing. In this lesson, we'll learn how to save that data into a CSV file that you can then open in Excel or Google Sheets.
 
 ## Converting to CSV
 
-It might look like a big programming challenge to transform a JavaScript object into a CSV, but thanks to npm, this is going to be a walk in the park. Google search **json to csv npm**. You will find that there's a library called https://www.npmjs.com/package/json2csv that can convert a JavaScript object to CSV format with a single function call. *Perfect!*
+It might look like a big programming challenge to transform a JavaScript object into a CSV, but thanks to npm, this is going to be a walk in the park. Google search **json to csv npm**. You will find that there's a library called [json2csv](https://www.npmjs.com/package/json2csv) that can convert a JavaScript object to CSV format with a single function call. *Perfect!*
 
 To install `json2csv`, run this command in your terminal. You need to be in the project's folder - the folder which has the `package.json` file.
 
@@ -153,4 +155,4 @@ This marks the end of the **Basics of data extraction** section of Web scraping 
 
 ## Next up
 
-Next up are the https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md. You already know how to build a scraper that finds all the products on sale in the https://warehouse-theme-metal.myshopify.com/collections/sales. In the https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md section you will learn how to open individual product pages of those products and scrape information that's not available on the listing page, like SKUs, descriptions or reviews.
+Next up are the [Basics of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md). You already know how to build a scraper that finds all the products on sale in the [Warehouse Store](https://warehouse-theme-metal.myshopify.com/collections/sales). In the [Basics of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md) section you will learn how to open individual product pages of those products and scrape information that's not available on the listing page, like SKUs, descriptions or reviews.

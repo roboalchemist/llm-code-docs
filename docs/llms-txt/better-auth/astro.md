@@ -6,11 +6,7 @@
 
 Better Auth Astro example.
 
-***
 
-title: Astro Example
-description: Better Auth Astro example.
----------------------------------------
 
 This is an example of how to use Better Auth with Astro. It uses Solid for building the components.
 

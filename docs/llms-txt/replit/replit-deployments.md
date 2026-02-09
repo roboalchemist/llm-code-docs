@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/replit-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > Share your Replit Apps with the world in just a few clicks.
@@ -93,6 +97,8 @@ Publishing offers the following convenient features:
 * **Analytics**: Track visitor data and other metrics for your published app.
 * **Monitoring tools**: View your published app status and configuration.
 * **Access controls**: Control who can see your app with a single click. Available only for **Teams** members.
+* **Badge settings**: Core users can manage the "Made with Replit" badge in Publishing settings. If you published an app while on the Starter plan that include the badge, it may take a couple minutes to update your app to remove the badge after you upgrade.
+* **Feedback collection**: Enable feedback on your published app to gather insights from your users.
 
 ## How it works
 

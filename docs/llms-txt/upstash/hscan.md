@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HSCAN
 
@@ -26,61 +12,41 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="cursor" type="number">
+<ParamField body="cursor" type="int" required>
   The cursor, use `0` in the beginning and then use the returned cursor for subsequent calls.
 </ParamField>
 
-<ParamField body="options" type="Object">
-  <ParamField body="match" type="string">
-    Glob-style pattern to filter by field names.
-  </ParamField>
+<ParamField body="match" type="str">
+  Glob-style pattern to filter by field names.
+</ParamField>
 
-  <ParamField body="count" type="number">
-    Number of fields to return per call.
-  </ParamField>
+<ParamField body="count" type="int">
+  Number of fields to return per call.
 </ParamField>
 
 ## Response
 
-<ResponseField type="[number, string[]]" required>
-  The new cursor and the fields array in format `[field, value, field, value]`.
+<ResponseField type="Tuple[number, List[str]]" required>
+  The new cursor and the fields.
   If the new cursor is `0` the iteration is complete.
 </ResponseField>
 
 <RequestExample>
-  ```ts Basic theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas"
-   });
-  const [newCursor, fields] = await redis.hscan("key", 0);
-  console.log(newCursor); // likely `0` since this is a very small hash
-  console.log(fields); // ["id", 1, "username", "chronark", "name", "andreas"]
-  ```
+  ```py Basic theme={"system"}
+  # Get all members of a hash.
 
-  ```ts Match theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas",
-  });
-  const [newCursor, fields] = await redis.hscan("key", 0, { match: "user*" });
-  console.log(newCursor); // likely `0` since this is a very small hash
-  console.log(fields); // ["username", "chronark"]
-  ```
+  cursor = 0
+  results = []
 
-  ```ts Count theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas",
-  });
-  const [newCursor, fields] = await redis.hscan("key", 0, { count: 2 });
-  console.log(fields); // ["id", 1, "name", "andreas", "username", "chronark"]
+  while True:
+      cursor, keys = redis.hscan("myhash", cursor, match="*")
+
+      results.extend(keys)
+      if cursor == 0:
+          break
   ```
 </RequestExample>

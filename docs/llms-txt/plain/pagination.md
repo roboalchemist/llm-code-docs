@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/pagination.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pagination
 
 Our GraphQL API follows the [Relay pagination spec](https://relay.dev/graphql/connections.htm).
@@ -19,7 +23,7 @@ Endpoints which return paginated results will return a `pageInfo` object along w
   <Tab title="Typescript SDK">
     <Snippet file="typescript-sdk/page-info-after.mdx" />
 
-    Notice how we use the cursor information from the first page to fetch the second page. The returned `pageInfo` looks as follows:
+    Notice how we use the cursor information from the first page to fetch the second page. The returned `firstPage.data` looks as follows:
 
     <Snippet file="typescript-sdk/page-info-response.mdx" />
   </Tab>

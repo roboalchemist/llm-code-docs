@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/claude-code-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Agent SDK setup guide
 
 > Build AI agents that can read files, run commands, and edit code using the Claude Agent SDK and Trigger.dev.
@@ -15,7 +19,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
 
 <Steps>
   <Step title="Install the Claude Agent SDK">
-    ```bash npm theme={null}
+    ```bash npm theme={"theme":"css-variables"}
     npm install @anthropic-ai/claude-agent-sdk
     ```
   </Step>
@@ -23,7 +27,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
   <Step title="Configure trigger.config.ts">
     Add the SDK to the `external` array so it's not bundled:
 
-    ```ts trigger.config.ts theme={null}
+    ```ts trigger.config.ts theme={"theme":"css-variables"}
     import { defineConfig } from "@trigger.dev/sdk";
 
     export default defineConfig({
@@ -44,7 +48,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
   <Step title="Set your API key">
     Add your Anthropic API key to your environment variables. The SDK reads it automatically.
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     ANTHROPIC_API_KEY=sk-ant-...
     ```
 
@@ -54,7 +58,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
   <Step title="Create your first agent task">
     This example creates a task where Claude generates code in an empty workspace. The agent will create files based on your prompt:
 
-    ```ts trigger/claude-agent.ts theme={null}
+    ```ts trigger/claude-agent.ts theme={"theme":"css-variables"}
     import { query } from "@anthropic-ai/claude-agent-sdk";
     import { schemaTask, logger } from "@trigger.dev/sdk";
     import { mkdtemp, rm, readdir } from "node:fs/promises";
@@ -107,7 +111,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
   </Step>
 
   <Step title="Run the dev server">
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     npx trigger.dev@latest dev
     ```
   </Step>
@@ -115,7 +119,7 @@ The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) g
   <Step title="Test your agent">
     Go to the Trigger.dev dashboard, find your `code-generator` task, and trigger it with a test payload:
 
-    ```json  theme={null}
+    ```json  theme={"theme":"css-variables"}
     {
       "prompt": "Create a Node.js project with a fibonacci.ts file containing a function to calculate fibonacci numbers, and a fibonacci.test.ts file with tests."
     }
@@ -144,7 +148,7 @@ The agent continues until it completes the task or reaches `maxTurns`.
 
 ### Available tools
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 allowedTools: [
   "Task", // Planning and task management
   "Glob", // Find files by pattern
@@ -182,8 +186,3 @@ allowedTools: [
 * [Claude Agent SDK docs](https://platform.claude.com/docs/en/agent-sdk/overview) – Official Anthropic documentation
 * [Trigger.dev Realtime](/realtime/overview) – Stream agent progress to your frontend
 * [Waitpoints](/wait) – Add human-in-the-loop approval steps
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://trigger.dev/docs/llms.txt

@@ -9,13 +9,17 @@ https://api.apify.com/v2/schedules/:scheduleId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ScheduleClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/ScheduleClient#getGets the schedule object with all details.
+Gets the schedule object with all details.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

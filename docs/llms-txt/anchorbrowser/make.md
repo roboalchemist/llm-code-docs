@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/make.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Make
 
 > Integrate Anchor Browser with Make (formerly Integromat) for no-code automation workflows

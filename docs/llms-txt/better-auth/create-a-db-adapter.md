@@ -4,11 +4,7 @@
 
 Learn how to create a custom database adapter for Better-Auth
 
-***
 
-title: Create a Database Adapter
-description: Learn how to create a custom database adapter for Better-Auth
---------------------------------------------------------------------------
 
 Learn how to create a custom database adapter for Better-Auth using `createAdapterFactory`.
 
@@ -218,7 +214,9 @@ parameters:
 * `where`: The `where` clause to update the records by.
 * `update`: The data to update the records with.
 
-<Callout>Make sure to return the number of records that were updated.</Callout>
+<Callout>
+  Make sure to return the number of records that were updated.
+</Callout>
 
 ```ts title="Example"
 updateMany: async ({ model, where, update }) => {
@@ -252,7 +250,9 @@ parameters:
 * `model`: The model/table name that the records will be deleted from.
 * `where`: The `where` clause to delete the records by.
 
-<Callout>Make sure to return the number of records that were deleted.</Callout>
+<Callout>
+  Make sure to return the number of records that were deleted.
+</Callout>
 
 ```ts title="Example"
 deleteMany: async ({ model, where }) => {
@@ -272,7 +272,9 @@ parameters:
 * `select`: The `select` clause to return.
 * `join`: Optional join configuration to fetch related records in a single query.
 
-<Callout>Make sure to return the data that is found in the database.</Callout>
+<Callout>
+  Make sure to return the data that is found in the database.
+</Callout>
 
 ```ts title="Example"
 findOne: async ({ model, where, select, join }) => {
@@ -320,7 +322,9 @@ parameters:
 * `model`: The model/table name that the records will be counted in.
 * `where`: The `where` clause to count the records by.
 
-<Callout>Make sure to return the number of records that were counted.</Callout>
+<Callout>
+  Make sure to return the number of records that were counted.
+</Callout>
 
 ```ts title="Example"
 count: async ({ model, where }) => {

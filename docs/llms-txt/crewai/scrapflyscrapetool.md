@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/scrapflyscrapetool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scrapfly Scrape Website Tool
 
 > The `ScrapflyScrapeWebsiteTool` leverages Scrapfly's web scraping API to extract content from websites in various formats.

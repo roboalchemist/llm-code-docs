@@ -62,7 +62,7 @@ In your [create an Account Session](https://docs.stripe.com/api/account_sessions
 ```curl
 curl https://api.stripe.com/v1/account_sessions \
   -u "<<YOUR_SECRET_KEY>>:" \
-  -H "Stripe-Version: {{STRIPE_API_VERSION}}; embedded_connect_beta=v2;" \
+  -H "Stripe-Version: 2026-01-28.preview; embedded_connect_beta=v2;" \
   -d account="{{CONNECTEDACCOUNT_ID}}" \
   -d "components[capital_financing_promotion][enabled]"=true
 ```
@@ -72,7 +72,7 @@ curl https://api.stripe.com/v1/account_sessions \
 # See your keys here: https://dashboard.stripe.com/apikeys
 client = Stripe::StripeClient.new(
   "<<YOUR_SECRET_KEY>>",
-  stripe_version: '{{STRIPE_API_VERSION}}; embedded_connect_beta=v2;',
+  stripe_version: '2026-01-28.preview; embedded_connect_beta=v2;',
 )
 
 account_session = client.v1.account_sessions.create({
@@ -93,7 +93,7 @@ account_session = client.v1.account_sessions.create(
     "account": "{{CONNECTEDACCOUNT_ID}}",
     "components": {"capital_financing_promotion": {"enabled": True}},
   },
-  {"stripe_version": "{{STRIPE_API_VERSION}}; embedded_connect_beta=v2;"},
+  {"stripe_version": "2026-01-28.preview; embedded_connect_beta=v2;"},
 )
 ```
 
@@ -103,7 +103,7 @@ account_session = client.v1.account_sessions.create(
 // This example uses the beta SDK. See https://github.com/stripe/stripe-php#public-preview-sdks
 $stripe = new \Stripe\StripeClient([
   'api_key' => '<<YOUR_SECRET_KEY>>',
-  'stripe_version' => '{{STRIPE_API_VERSION}}; embedded_connect_beta=v2;',
+  'stripe_version' => '2026-01-28.preview; embedded_connect_beta=v2;',
 ]);
 
 $accountSession = $stripe->accountSessions->create([
@@ -144,7 +144,7 @@ const stripe = require('stripe')(
   '<<YOUR_SECRET_KEY>>',
   {
     // @ts-ignore overrides the pinned API version
-    apiVersion: '{{STRIPE_API_VERSION}}; embedded_connect_beta=v2;',
+    apiVersion: '2026-01-28.preview; embedded_connect_beta=v2;',
   }
 );
 
@@ -180,15 +180,21 @@ result, err := sc.V1AccountSessions.Create(context.TODO(), params)
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-dotnet#public-preview-sdks
 // Only public preview releases of stripe-dotnet support setting the beta version. See https://github.com/stripe/stripe-dotnet/blob/master/README.md#public-preview-sdks for more information.
 StripeConfiguration.AddBetaVersion("embedded_connect_beta", "v2");
 
 var options = new AccountSessionCreateOptions
 {
     Account = "{{CONNECTEDACCOUNT_ID}}",
-    Components = new AccountSessionComponentsOptions(),
+    Components = new AccountSessionComponentsOptions
+    {
+        CapitalFinancingPromotion = new AccountSessionComponentsCapitalFinancingPromotionOptions
+        {
+            Enabled = true,
+        },
+    },
 };
-options.AddExtraParam("components[capital_financing_promotion][enabled]", true);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.AccountSessions;
 AccountSession accountSession = service.Create(options);

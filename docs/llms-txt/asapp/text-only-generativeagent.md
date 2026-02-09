@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/text-only-generativeagent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Direct API Integration
 
 You have the option to integrate with GenerativeAgent using the our APIs to directly provide the conversation transcript. This may be helpful if you:

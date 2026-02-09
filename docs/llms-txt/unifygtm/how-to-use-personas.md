@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/tutorials/how-to-use-personas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Define Personas
 
 > Create personas to prospect and reach out to your ideal buyers.

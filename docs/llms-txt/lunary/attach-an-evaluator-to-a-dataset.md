@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/datasets-v2/attach-an-evaluator-to-a-dataset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attach an evaluator to a dataset
 
 
@@ -174,7 +178,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/providers/aws-bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Bedrock
 
 > Add AI models from AWS Bedrock to use in AI Studio agents
@@ -158,8 +162,3 @@ If a model shows as unhealthy in AI Studio:
 * [Add external models](/home/external-models): Learn about managing external models in AI Studio
 * [Choose a model](/home/models-overview): Compare Palmyra models with external provider models
 * [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock/): Explore Bedrock's full capabilities
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

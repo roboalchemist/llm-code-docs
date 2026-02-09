@@ -43,7 +43,7 @@ order by price asc, release_date desc
 import field advertiser_ref.name as advertiser_name {}
 ```
 
-The other field option is _index_ - use [index](proton.html#index) for fields used for [text search](../querying/text-matching.html), with [stemming](../linguistics/linguistics.html#stemming) and [normalization](../linguistics/linguistics.html#normalization).
+The other field option is _index_ - use [index](proton.html#index) for fields used for [text search](../querying/text-matching.html), with [stemming](../linguistics/linguistics-opennlp.html#stemming) and [normalization](../linguistics/linguistics-opennlp.html#normalization).
 
 An attribute is an in-memory data structure. Attributes speed up query execution and [document updates](../writing/partial-updates.html), trading off memory. As data structures are regularly optimized, consider both static and temporary resource usage - see [attribute memory usage](#attribute-memory-usage) below. Use attributes in document summaries to limit access to storage to generate result sets.
 
@@ -308,7 +308,7 @@ The document meta store scales linearly with number of documents - using approxi
 
 The above is for the _ready_ documents, also check _removed_ and _notready_ - refer to [sub-databases](proton.html#sub-databases).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

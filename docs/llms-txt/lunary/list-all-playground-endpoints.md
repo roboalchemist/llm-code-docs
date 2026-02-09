@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/playground-endpoints/list-all-playground-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all playground endpoints
 
 > Get all playground endpoints for the current project
@@ -31,10 +35,6 @@ paths:
             application/json:
               schema:
                 type: array
-                items: dd22a2be-a870-4bd5-97c6-8d704192e21f
+                items: 4a64c960-207b-449f-bbf0-b58fc245fd47
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

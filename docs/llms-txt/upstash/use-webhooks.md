@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/howto/use-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 This guide explains how to handle webhooks effectively in your Upstash Workflow applications. We'll walk through:

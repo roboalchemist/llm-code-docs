@@ -46,4 +46,4 @@ For long-running commands that take up the full screen, the sticky header only s
 Sticky Command Header Demo
 {% endembed %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-242f19a3d854b7d78baad1fbfab7eb39e99406c9%2Fsticky-header-toggle-active-demo.gif?alt=media&#x26;token=149d5628-3b7c-4548-ad83-03bb98f807d5" alt=""><figcaption><p>Toggle active header and Jump to bottom of block demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-242f19a3d854b7d78baad1fbfab7eb39e99406c9%2Fsticky-header-toggle-active-demo.gif?alt=media" alt=""><figcaption><p>Toggle active header and Jump to bottom of block demo</p></figcaption></figure>

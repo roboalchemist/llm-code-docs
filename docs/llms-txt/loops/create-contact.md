@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/create-contact.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create contact
 
 > Create a new contact with an email address and any other contact properties.

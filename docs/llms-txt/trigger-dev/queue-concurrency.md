@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/queue-concurrency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Concurrency & Queues
 
 > Configure what you want to happen when there is more than one run at a time.
@@ -28,7 +32,7 @@ By default, all tasks have an unbounded concurrency limit, limited only by the o
 
 You can set the concurrency limit for a task by setting the `concurrencyLimit` property on the task's queue. This limits the number of runs that can be executing at any one time:
 
-```ts /trigger/one-at-a-time.ts theme={null}
+```ts /trigger/one-at-a-time.ts theme={"theme":"css-variables"}
 // This task will only run one at a time
 export const oneAtATime = task({
   id: "one-at-a-time",
@@ -47,7 +51,7 @@ This is useful if you need to control access to a shared resource, like a databa
 
 As well as putting queue settings directly on a task, you can define a queue and reuse it across multiple tasks. This allows you to share the same concurrency limit:
 
-```ts /trigger/queue.ts theme={null}
+```ts /trigger/queue.ts theme={"theme":"css-variables"}
 export const myQueue = queue({
   name: "my-queue",
   concurrencyLimit: 1,
@@ -78,7 +82,7 @@ When you trigger a task you can override the default queue. This is really usefu
 
 The task and queue definition:
 
-```ts /trigger/override-concurrency.ts theme={null}
+```ts /trigger/override-concurrency.ts theme={"theme":"css-variables"}
 const paidQueue = queue({
   name: "paid-users",
   concurrencyLimit: 10,
@@ -98,7 +102,7 @@ export const generatePullRequest = task({
 
 Triggering from your backend and overriding the queue:
 
-```ts app/api/push/route.ts theme={null}
+```ts app/api/push/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -128,7 +132,7 @@ You can do this by using `concurrencyKey`. It creates a copy of the queue for ea
 
 Your backend code:
 
-```ts app/api/pr/route.ts theme={null}
+```ts app/api/pr/route.ts theme={"theme":"css-variables"}
 import { generatePullRequest } from "~/trigger/override-concurrency";
 
 export async function POST(request: Request) {
@@ -162,7 +166,7 @@ export async function POST(request: Request) {
 
 When you trigger a task that has subtasks, the subtasks will not inherit the queue from the parent task. Unless otherwise specified, subtasks will run on their own queue
 
-```ts /trigger/subtasks.ts theme={null}
+```ts /trigger/subtasks.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   run: async (payload) => {
@@ -204,7 +208,7 @@ For example, if you have a queue with a `concurrencyLimit` of 1:
 
 When a parent task triggers and waits for a subtask on a different queue, the parent task will checkpoint and release its concurrency slot once it reaches the wait point. This prevents environment deadlocks where all concurrency slots would be occupied by waiting tasks.
 
-```ts /trigger/waiting.ts theme={null}
+```ts /trigger/waiting.ts theme={"theme":"css-variables"}
 export const parentTask = task({
   id: "parent-task",
   queue: {

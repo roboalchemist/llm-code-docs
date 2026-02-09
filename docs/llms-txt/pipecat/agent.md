@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/cli/cloud/agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # agent
 
 > Manage agent deployments
@@ -186,6 +190,8 @@ pipecat cloud agent list [OPTIONS]
 
 Lists active sessions for a specified agent. When there are no active sessions, it suggests how to start a new session.
 
+When used with the `--id` option, displays detailed information about a specific session including CPU and memory usage with sparkline visualizations and percentile summaries.
+
 **Usage:**
 
 ```shell  theme={null}
@@ -199,6 +205,10 @@ pipecat cloud agent sessions [ARGS] [OPTIONS]
 </ParamField>
 
 **Options:**
+
+<ParamField path="--id / -i" type="string">
+  Session ID to view detailed metrics for. When provided, displays CPU and memory usage statistics including sparkline visualizations and percentile summaries (p50, p90, p99).
+</ParamField>
 
 <ParamField path="--organization / -o" type="string">
   Organization to list sessions for. If not provided, uses the current
@@ -228,8 +238,3 @@ pipecat cloud agent delete [ARGS] [OPTIONS]
 <ParamField path="--force / -f" type="string">
   Do not prompt for confirmation before deleting the agent.
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

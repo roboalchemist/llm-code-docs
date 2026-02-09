@@ -53,7 +53,7 @@ Don't worry if you don't know Svelte yet! You can ignore all the nice features S
 
 ## Alternatives to SvelteKit
 
-You can also use Svelte directly with Vite by running `npm create vite@latest` and selecting the `svelte` option. With this, `npm run build` will generate HTML, JS, and CSS files inside the `dist` directory using [vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte). In most cases, you will probably need to [choose a routing library](/packages#routing) as well.
+You can also use Svelte directly with Vite via [vite-plugin-svelte](https://github.com/sveltejs/vite-plugin-svelte) by running `npm create vite@latest` and selecting the `svelte` option (or, if working with an existing project, adding the plugin to your `vite.config.js` file). With this, `npm run build` will generate HTML, JS, and CSS files inside the `dist` directory. In most cases, you will probably need to [choose a routing library](/packages#routing) as well.
 
 >[!NOTE] Vite is often used in standalone mode to build [single page apps (SPAs)](../kit/glossary#SPA), which you can also [build with SvelteKit](../kit/single-page-apps).
 
@@ -61,9 +61,10 @@ There are also [plugins for other bundlers](/packages#bundler-plugins), but we r
 
 ## Editor tooling
 
-The Svelte team maintains a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode), and there are integrations with various other [editors](https://sveltesociety.dev/resources#editor-support) and tools as well.
+The Svelte team maintains a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode), and there are integrations with various other [editors](https://sveltesociety.dev/collection/editor-support-c85c080efc292a34) and tools as well.
 
-You can also check your code from the command line using [sv check](https://github.com/sveltejs/cli).
+You can also check your code from the command line using [`npx sv check`](https://svelte.dev/docs/cli/sv-check).
+
 
 ## Getting help
 
@@ -1188,6 +1189,8 @@ You can, of course, separate the type declaration from the annotation:
 
 > [!NOTE] Interfaces for native DOM elements are provided in the `svelte/elements` module (see [Typing wrapper components](typescript#Typing-wrapper-components))
 
+If your component exposes [snippet](snippet) props like `children`, these should be typed using the `Snippet` interface imported from `'svelte'` — see [Typing snippets](snippet#Typing-snippets) for examples.
+
 Adding types is recommended, as it ensures that people using your component can easily discover which props they should provide.
 
 
@@ -1215,7 +1218,7 @@ This is useful for linking elements via attributes like `for` and `aria-labelled
 
 Ordinarily, props go one way, from parent to child. This makes it easy to understand how data flows around your app.
 
-In Svelte, component props can be _bound_, which means that data can also flow _up_ from child to parent. This isn't something you should do often, but it can simplify your code if used sparingly and carefully.
+In Svelte, component props can be _bound_, which means that data can also flow _up_ from child to parent. This isn't something you should do often — overuse can make your data flow unpredictable and your components harder to maintain — but it can simplify your code if used sparingly and carefully.
 
 It also means that a state proxy can be _mutated_ in the child.
 
@@ -1623,7 +1626,9 @@ Additional conditions can be added with `{:else if expression}`, optionally endi
 {#each expression as name, index}...{/each}
 ```
 
-Iterating over values can be done with an each block. The values in question can be arrays, array-like objects (i.e. anything with a `length` property), or iterables like `Map` and `Set` — in other words, anything that can be used with `Array.from`.
+Iterating over values can be done with an each block. The values in question can be arrays, array-like objects (i.e. anything with a `length` property), or iterables like `Map` and `Set`— in other words, anything that can be used with `Array.from`.
+
+If the value is `null` or `undefined`, it is treated the same as an empty array (which will cause [else blocks](#Else-blocks) to be rendered, where applicable).
 
 ```svelte
 <h1>Shopping list</h1>
@@ -4492,7 +4497,7 @@ Svelte 4 contained hooks that ran before and after the component as a whole was 
 </script>
 ```
 
-Instead of `beforeUpdate` use `$effect.pre` and instead of `afterUpdate` use `$effect` instead - these runes offer more granular control and only react to the changes you're actually interested in.
+Instead of `beforeUpdate` use `$effect.pre` and instead of `afterUpdate` use `$effect` instead — these runes offer more granular control and only react to the changes you're actually interested in.
 
 ### Chat window example
 
@@ -4661,7 +4666,7 @@ In Svelte, when you want to render asynchronous content data on the server, you 
 <h1>{user.name}</h1>
 ```
 
-That's silly, though. If we've already done the hard work of getting the data on the server, we don't want to get it again during hydration on the client. `hydratable` is a low-level API built to solve this problem. You probably won't need this very often -- it will be used behind the scenes by whatever datafetching library you use. For example, it powers [remote functions in SvelteKit](/docs/kit/remote-functions).
+That's silly, though. If we've already done the hard work of getting the data on the server, we don't want to get it again during hydration on the client. `hydratable` is a low-level API built to solve this problem. You probably won't need this very often — it will be used behind the scenes by whatever datafetching library you use. For example, it powers [remote functions in SvelteKit](/docs/kit/remote-functions).
 
 To fix the example above:
 
@@ -4707,6 +4712,64 @@ All data returned from a `hydratable` function must be serializable. But this do
 {await promises.one}
 {await promises.two}
 ```
+
+## CSP
+
+`hydratable` adds an inline `<script>` block to the `head` returned from `render`. If you're using [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) (CSP), this script will likely fail to run. You can provide a `nonce` to `render`:
+
+```js
+/// file: server.js
+import { render } from 'svelte/server';
+import App from './App.svelte';
+// ---cut---
+const nonce = crypto.randomUUID();
+
+const { head, body } = await render(App, {
+	csp: { nonce }
+});
+```
+
+This will add the `nonce` to the script block, on the assumption that you will later add the same nonce to the CSP header of the document that contains it:
+
+```js
+/// file: server.js
+let response = new Response();
+let nonce = 'xyz123';
+// ---cut---
+response.headers.set(
+  'Content-Security-Policy',
+  `script-src 'nonce-${nonce}'`
+ );
+```
+
+It's essential that a `nonce` — which, British slang definition aside, means 'number used once' — is only used when dynamically server rendering an individual response.
+
+If instead you are generating static HTML ahead of time, you must use hashes instead:
+
+```js
+/// file: server.js
+import { render } from 'svelte/server';
+import App from './App.svelte';
+// ---cut---
+const { head, body, hashes } = await render(App, {
+	csp: { hash: true }
+});
+```
+
+`hashes.script` will be an array of strings like `["sha256-abcd123"]`. As with `nonce`, the hashes should be used in your CSP header:
+
+```js
+/// file: server.js
+let response = new Response();
+let hashes = { script: ['sha256-xyz123'] };
+// ---cut---
+response.headers.set(
+  'Content-Security-Policy',
+  `script-src ${hashes.script.map((hash) => `'${hash}'`).join(' ')}`
+ );
+```
+
+We recommend using `nonce` over hash if you can, as `hash` will interfere with streaming SSR in the future.
 
 # Testing
 
@@ -5002,7 +5065,7 @@ E2E (short for 'end to end') tests allow you to test your full application throu
 
 You can use the Svelte CLI to [setup Playwright](/docs/cli/playwright) either during project creation or later on. You can also [set it up with `npm init playwright`](https://playwright.dev/docs/intro). Additionally, you may also want to install an IDE plugin such as [the VS Code extension](https://playwright.dev/docs/getting-started-vscode) to be able to execute tests from inside your IDE.
 
-If you've run `npm init playwright` or are not using Vite, you may need to adjust the Playwright config to tell Playwright what to do before running the tests - mainly starting your application at a certain port. For example:
+If you've run `npm init playwright` or are not using Vite, you may need to adjust the Playwright config to tell Playwright what to do before running the tests — mainly starting your application at a certain port. For example:
 
 ```js
 /// file: playwright.config.js
@@ -5379,7 +5442,10 @@ The inner Svelte component is destroyed in the next tick after the `disconnected
 When constructing a custom element, you can tailor several aspects by defining `customElement` as an object within `<svelte:options>` since Svelte 4. This object may contain the following properties:
 
 - `tag: string`: an optional `tag` property for the custom element's name. If set, a custom element with this tag name will be defined with the document's `customElements` registry upon importing this component.
-- `shadow`: an optional property that can be set to `"none"` to forgo shadow root creation. Note that styles are then no longer encapsulated, and you can't use slots
+- `shadow`: an optional property to modify shadow root properties. It accepts the following values:
+  - `"none"`: No shadow root is created. Note that styles are then no longer encapsulated, and you can't use slots.
+  - `"open"`: Shadow root is created with the `mode: "open"` option.
+  - [`ShadowRootInit`](https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#options): You can pass a settings object that will be passed to `attachShadow()` when shadow root is created.
 - `props`: an optional property to modify certain details and behaviors of your component's properties. It offers the following settings:
   - `attribute: string`: To update a custom element's prop, you have two alternatives: either set the property on the custom element's reference as illustrated above or use an HTML attribute. For the latter, the default attribute name is the lowercase property name. Modify this by assigning `attribute: "<desired name>"`.
   - `reflect: boolean`: By default, updated prop values do not reflect back to the DOM. To enable this behavior, set `reflect: true`.
@@ -5391,7 +5457,11 @@ When constructing a custom element, you can tailor several aspects by defining `
 <svelte:options
 	customElement={{
 		tag: 'custom-element',
-		shadow: 'none',
+		shadow: {
+			mode: import.meta.env.DEV ? 'open' : 'closed',
+			clonable: true,
+			// ...
+		},
 		props: {
 			name: { reflect: true, type: 'Number', attribute: 'element-index' }
 		},
@@ -5579,7 +5649,7 @@ Transitions are now local by default to prevent confusion around page navigation
 {/if}
 ```
 
-To make transitions global, add the `|global` modifier - then they will play when _any_ control flow block above is created/destroyed. The migration script will do this automatically for you. ([#6686](https://github.com/sveltejs/svelte/issues/6686))
+To make transitions global, add the `|global` modifier — then they will play when _any_ control flow block above is created/destroyed. The migration script will do this automatically for you. ([#6686](https://github.com/sveltejs/svelte/issues/6686))
 
 ## Default slot bindings
 
@@ -5592,10 +5662,10 @@ Default slot bindings are no longer exposed to named slots and vice versa:
 
 <Nested let:count>
 	<p>
-		count in default slot - is available: {count}
+		count in default slot — is available: {count}
 	</p>
 	<p slot="bar">
-		count in bar slot - is not available: {count}
+		count in bar slot — is not available: {count}
 	</p>
 </Nested>
 ```
@@ -5691,7 +5761,7 @@ Each preprocessor must also have a name. ([#8618](https://github.com/sveltejs/sv
 
 Version 5 comes with an overhauled syntax and reactivity system. While it may look different at first, you'll soon notice many similarities. This guide goes over the changes in detail and shows you how to upgrade. Along with it, we also provide information on _why_ we did these changes.
 
-You don't have to migrate to the new syntax right away - Svelte 5 still supports the old Svelte 4 syntax, and you can mix and match components using the new syntax with components using the old and vice versa. We expect many people to be able to upgrade with only a few lines of code changed initially. There's also a [migration script](#Migration-script) that helps you with many of these steps automatically.
+You don't have to migrate to the new syntax right away — Svelte 5 still supports the old Svelte 4 syntax, and you can mix and match components using the new syntax with components using the old and vice versa. We expect many people to be able to upgrade with only a few lines of code changed initially. There's also a [migration script](#Migration-script) that helps you with many of these steps automatically.
 
 ## Reactivity syntax changes
 
@@ -5710,7 +5780,7 @@ In Svelte 4, a `let` declaration at the top level of a component was implicitly 
 Nothing else changes. `count` is still the number itself, and you read and write directly to it, without a wrapper like `.value` or `getCount()`.
 
 > [!DETAILS] Why we did this
-> `let` being implicitly reactive at the top level worked great, but it meant that reactivity was constrained - a `let` declaration anywhere else was not reactive. This forced you to resort to using stores when refactoring code out of the top level of components for reuse. This meant you had to learn an entirely separate reactivity model, and the result often wasn't as nice to work with. Because reactivity is more explicit in Svelte 5, you can keep using the same API outside the top level of components. Head to [the tutorial](/tutorial) to learn more.
+> `let` being implicitly reactive at the top level worked great, but it meant that reactivity was constrained — a `let` declaration anywhere else was not reactive. This forced you to resort to using stores when refactoring code out of the top level of components for reuse. This meant you had to learn an entirely separate reactivity model, and the result often wasn't as nice to work with. Because reactivity is more explicit in Svelte 5, you can keep using the same API outside the top level of components. Head to [the tutorial](/tutorial) to learn more.
 
 ### $: → $derived/$effect
 
@@ -5807,7 +5877,7 @@ In Svelte 5, the `$props` rune makes this straightforward without any additional
 
 ## Event changes
 
-Event handlers have been given a facelift in Svelte 5. Whereas in Svelte 4 we use the `on:` directive to attach an event listener to an element, in Svelte 5 they are properties like any other (in other words - remove the colon):
+Event handlers have been given a facelift in Svelte 5. Whereas in Svelte 4 we use the `on:` directive to attach an event listener to an element, in Svelte 5 they are properties like any other (in other words — remove the colon):
 
 ```svelte
 <script>
@@ -5841,7 +5911,7 @@ Since they're just properties, you can use the normal shorthand syntax...
 
 In Svelte 4, components could emit events by creating a dispatcher with `createEventDispatcher`.
 
-This function is deprecated in Svelte 5. Instead, components should accept _callback props_ - which means you then pass functions as properties to these components:
+This function is deprecated in Svelte 5. Instead, components should accept _callback props_ — which means you then pass functions as properties to these components:
 
 ```svelte
 <!--- file: App.svelte --->
@@ -6149,7 +6219,7 @@ In Svelte 4, you would pass data to a `<slot />` and then retrieve it with `let:
 
 ## Migration script
 
-By now you should have a pretty good understanding of the before/after and how the old syntax relates to the new syntax. It probably also became clear that a lot of these migrations are rather technical and repetitive - something you don't want to do by hand.
+By now you should have a pretty good understanding of the before/after and how the old syntax relates to the new syntax. It probably also became clear that a lot of these migrations are rather technical and repetitive — something you don't want to do by hand.
 
 We thought the same, which is why we provide a migration script to do most of the migration automatically. You can upgrade your project by using `npx sv migrate svelte-5`. This will do the following things:
 
@@ -6681,7 +6751,7 @@ There are online forums and chats which are a great place for discussion about b
 
 ## Are there any third-party resources?
 
-Svelte Society maintains a [list of books and videos](https://sveltesociety.dev/resources).
+Svelte Society maintains a [list of books and videos](https://sveltesociety.dev/collection/a-list-of-books-and-courses-ac01dd10363184fa).
 
 ## How can I get VS Code to syntax-highlight my .svelte files?
 
@@ -6732,7 +6802,7 @@ There are several [UI component libraries](/packages#component-libraries) as wel
 
 ## How do I test Svelte apps?
 
-How your application is structured and where logic is defined will determine the best way to ensure it is properly tested. It is important to note that not all logic belongs within a component - this includes concerns such as data transformation, cross-component state management, and logging, among others. Remember that the Svelte library has its own test suite, so you do not need to write tests to validate implementation details provided by Svelte.
+How your application is structured and where logic is defined will determine the best way to ensure it is properly tested. It is important to note that not all logic belongs within a component — this includes concerns such as data transformation, cross-component state management, and logging, among others. Remember that the Svelte library has its own test suite, so you do not need to write tests to validate implementation details provided by Svelte.
 
 A Svelte application will typically have three different types of tests: Unit, Component, and End-to-End (E2E).
 
@@ -6754,7 +6824,7 @@ Some resources for getting started with testing:
 
 ## Is there a router?
 
-The official routing library is [SvelteKit](/docs/kit). SvelteKit provides a filesystem router, server-side rendering (SSR), and hot module reloading (HMR) in one easy-to-use package. It shares similarities with Next.js for React and Nuxt.js for Vue.
+The official routing library is [SvelteKit](/docs/kit). SvelteKit provides a filesystem router, server-side rendering (SSR), and hot module reloading (HMR) in one easy-to-use package. It shares similarities with Next.js for React and Nuxt.js for Vue. SvelteKit also supports hash-based routing for client-side applications.
 
 However, you can use any router library. A sampling of available routers are highlighted [on the packages page](/packages#routing).
 
@@ -8238,7 +8308,9 @@ import {
 	compileModule,
 	migrate,
 	parse,
+	parseCss,
 	preprocess,
+	print,
 	walk
 } from 'svelte/compiler';
 ```
@@ -8360,6 +8432,22 @@ function parse(
 
 
 
+## parseCss
+
+The parseCss function parses a CSS stylesheet, returning its abstract syntax tree.
+
+<div class="ts-block">
+
+```dts
+function parseCss(
+	source: string
+): Omit<AST.CSS.StyleSheet, 'attributes' | 'content'>;
+```
+
+</div>
+
+
+
 ## preprocess
 
 The preprocess function provides convenient hooks for arbitrarily transforming component source code.
@@ -8377,6 +8465,31 @@ function preprocess(
 		  }
 		| undefined
 ): Promise<Processed>;
+```
+
+</div>
+
+
+
+## print
+
+`print` converts a Svelte AST node back into Svelte source code.
+It is primarily intended for tools that parse and transform components using the compiler’s modern AST representation.
+
+`print(ast)` requires an AST node produced by parse with modern: true, or any sub-node within that modern AST.
+The result contains the generated source and a corresponding source map.
+The output is valid Svelte, but formatting details such as whitespace or quoting may differ from the original.
+
+<div class="ts-block">
+
+```dts
+function print(
+	ast: AST.SvelteNode,
+	options?: Options | undefined
+): {
+	code: string;
+	map: any;
+};
 ```
 
 </div>
@@ -8450,7 +8563,11 @@ namespace AST {
 		css?: 'injected';
 		customElement?: {
 			tag?: string;
-			shadow?: 'open' | 'none';
+			shadow?:
+				| 'open'
+				| 'none'
+				| ObjectExpression
+				| undefined;
 			props?: Record<
 				string,
 				{
@@ -8540,7 +8657,7 @@ namespace AST {
 	}
 
 	/** An `animate:` directive */
-	export interface AnimateDirective extends BaseNode {
+	export interface AnimateDirective extends BaseAttribute {
 		type: 'AnimateDirective';
 		/** The 'x' in `animate:x` */
 		name: string;
@@ -8549,7 +8666,7 @@ namespace AST {
 	}
 
 	/** A `bind:` directive */
-	export interface BindDirective extends BaseNode {
+	export interface BindDirective extends BaseAttribute {
 		type: 'BindDirective';
 		/** The 'x' in `bind:x` */
 		name: string;
@@ -8561,7 +8678,7 @@ namespace AST {
 	}
 
 	/** A `class:` directive */
-	export interface ClassDirective extends BaseNode {
+	export interface ClassDirective extends BaseAttribute {
 		type: 'ClassDirective';
 		/** The 'x' in `class:x` */
 		name: 'class';
@@ -8570,7 +8687,7 @@ namespace AST {
 	}
 
 	/** A `let:` directive */
-	export interface LetDirective extends BaseNode {
+	export interface LetDirective extends BaseAttribute {
 		type: 'LetDirective';
 		/** The 'x' in `let:x` */
 		name: string;
@@ -8583,7 +8700,7 @@ namespace AST {
 	}
 
 	/** An `on:` directive */
-	export interface OnDirective extends BaseNode {
+	export interface OnDirective extends BaseAttribute {
 		type: 'OnDirective';
 		/** The 'x' in `on:x` */
 		name: string;
@@ -8603,7 +8720,7 @@ namespace AST {
 	}
 
 	/** A `style:` directive */
-	export interface StyleDirective extends BaseNode {
+	export interface StyleDirective extends BaseAttribute {
 		type: 'StyleDirective';
 		/** The 'x' in `style:x` */
 		name: string;
@@ -8617,7 +8734,8 @@ namespace AST {
 
 	// TODO have separate in/out/transition directives
 	/** A `transition:`, `in:` or `out:` directive */
-	export interface TransitionDirective extends BaseNode {
+	export interface TransitionDirective
+		extends BaseAttribute {
 		type: 'TransitionDirective';
 		/** The 'x' in `transition:x` */
 		name: string;
@@ -8631,7 +8749,7 @@ namespace AST {
 	}
 
 	/** A `use:` directive */
-	export interface UseDirective extends BaseNode {
+	export interface UseDirective extends BaseAttribute {
 		type: 'UseDirective';
 		/** The 'x' in `use:x` */
 		name: string;
@@ -8639,8 +8757,9 @@ namespace AST {
 		expression: null | Expression;
 	}
 
-	interface BaseElement extends BaseNode {
+	export interface BaseElement extends BaseNode {
 		name: string;
+		name_loc: SourceLocation;
 		attributes: Array<
 			Attribute | SpreadAttribute | Directive | AttachTag
 		>;
@@ -8767,9 +8886,13 @@ namespace AST {
 		body: Fragment;
 	}
 
-	export interface Attribute extends BaseNode {
-		type: 'Attribute';
+	export interface BaseAttribute extends BaseNode {
 		name: string;
+		name_loc: SourceLocation | null;
+	}
+
+	export interface Attribute extends BaseAttribute {
+		type: 'Attribute';
 		/**
 		 * Quoted/string values are represented by an array, even if they contain a single expression like `"{x}"`
 		 */
@@ -10127,7 +10250,7 @@ function on<Type extends keyof WindowEventMap>(
 	type: Type,
 	handler: (
 		this: Window,
-		event: WindowEventMap[Type]
+		event: WindowEventMap[Type] & { currentTarget: Window }
 	) => any,
 	options?: AddEventListenerOptions | undefined
 ): () => void;
@@ -10143,7 +10266,9 @@ function on<Type extends keyof DocumentEventMap>(
 	type: Type,
 	handler: (
 		this: Document,
-		event: DocumentEventMap[Type]
+		event: DocumentEventMap[Type] & {
+			currentTarget: Document;
+		}
 	) => any,
 	options?: AddEventListenerOptions | undefined
 ): () => void;
@@ -10162,7 +10287,9 @@ function on<
 	type: Type,
 	handler: (
 		this: Element,
-		event: HTMLElementEventMap[Type]
+		event: HTMLElementEventMap[Type] & {
+			currentTarget: Element;
+		}
 	) => any,
 	options?: AddEventListenerOptions | undefined
 ): () => void;
@@ -10181,7 +10308,9 @@ function on<
 	type: Type,
 	handler: (
 		this: Element,
-		event: MediaQueryListEventMap[Type]
+		event: MediaQueryListEventMap[Type] & {
+			currentTarget: Element;
+		}
 	) => any,
 	options?: AddEventListenerOptions | undefined
 ): () => void;
@@ -11602,6 +11731,7 @@ function render<
 					props?: Omit<Props, '$$slots' | '$$events'>;
 					context?: Map<any, any>;
 					idPrefix?: string;
+					csp?: Csp;
 				}
 			]
 		: [
@@ -11612,6 +11742,7 @@ function render<
 					props: Omit<Props, '$$slots' | '$$events'>;
 					context?: Map<any, any>;
 					idPrefix?: string;
+					csp?: Csp;
 				}
 			]
 ): RenderOutput;
@@ -12678,7 +12809,7 @@ Cyclical dependency detected: %cycle%
 ### const_tag_invalid_placement
 
 ```
-`{@const}` must be the immediate child of `{#snippet}`, `{#if}`, `{:else if}`, `{:else}`, `{#each}`, `{:then}`, `{:catch}`, `<svelte:fragment>`, `<svelte:boundary` or `<Component>`
+`{@const}` must be the immediate child of `{#snippet}`, `{#if}`, `{:else if}`, `{:else}`, `{#each}`, `{:then}`, `{:catch}`, `<svelte:fragment>`, `<svelte:boundary>` or `<Component>`
 ```
 
 ### const_tag_invalid_reference
@@ -13008,6 +13139,12 @@ Expected an identifier
 
 ```
 Expected identifier or destructure pattern
+```
+
+### expected_tag
+
+```
+Expected 'html', 'render', 'attach', 'const', or 'debug'
 ```
 
 ### expected_token
@@ -13581,7 +13718,7 @@ Value must be %list%, if specified
 ### svelte_options_invalid_customelement
 
 ```
-"customElement" must be a string literal defining a valid custom element name or an object of the form { tag?: string; shadow?: "open" | "none"; props?: { [key: string]: { attribute?: string; reflect?: boolean; type: .. } } }
+"customElement" must be a string literal defining a valid custom element name or an object of the form { tag?: string; shadow?: "open" | "none" | `ShadowRootInit`; props?: { [key: string]: { attribute?: string; reflect?: boolean; type: .. } } }
 ```
 
 ### svelte_options_invalid_customelement_props
@@ -13593,8 +13730,10 @@ Value must be %list%, if specified
 ### svelte_options_invalid_customelement_shadow
 
 ```
-"shadow" must be either "open" or "none"
+"shadow" must be either "open", "none" or `ShadowRootInit` object.
 ```
+
+See https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#options for more information on valid shadow root constructor options
 
 ### svelte_options_invalid_tagname
 
@@ -15064,6 +15203,12 @@ Cause:
 %stack%
 ```
 
+### invalid_csp
+
+```
+`csp.nonce` was set while `csp.hash` was `true`. These options cannot be used simultaneously.
+```
+
 ### lifecycle_function_unavailable
 
 ```
@@ -15451,7 +15596,7 @@ Hydration failed because the initial UI does not match what was rendered on the 
 
 This warning is thrown when Svelte encounters an error while hydrating the HTML from the server. During hydration, Svelte walks the DOM, expecting a certain structure. If that structure is different (for example because the HTML was repaired by the DOM because of invalid HTML), then Svelte will run into issues, resulting in this warning.
 
-During development, this error is often preceeded by a `console.error` detailing the offending HTML, which needs fixing.
+During development, this error is often preceded by a `console.error` detailing the offending HTML, which needs fixing.
 
 ### invalid_raw_snippet_render
 
@@ -15911,7 +16056,7 @@ The following modifiers are available:
 
 - `preventDefault` — calls `event.preventDefault()` before running the handler
 - `stopPropagation` — calls `event.stopPropagation()`, preventing the event reaching the next element
-- `stopImmediatePropagation` - calls `event.stopImmediatePropagation()`, preventing other listeners of the same event from being fired.
+- `stopImmediatePropagation` — calls `event.stopImmediatePropagation()`, preventing other listeners of the same event from being fired.
 - `passive` — improves scrolling performance on touch/wheel events (Svelte will add it automatically where it's safe to do so)
 - `nonpassive` — explicitly set `passive: false`
 - `capture` — fires the handler during the _capture_ phase instead of the _bubbling_ phase
@@ -16475,7 +16620,7 @@ Try editing the files to get a feel for how everything works.
 
 ## Editor setup
 
-We recommend using [Visual Studio Code (aka VS Code)](https://code.visualstudio.com/download) with [the Svelte extension](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode), but [support also exists for numerous other editors](https://sveltesociety.dev/resources#editor-support).
+We recommend using [Visual Studio Code (aka VS Code)](https://code.visualstudio.com/download) with [the Svelte extension](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode), but [support also exists for numerous other editors](https://sveltesociety.dev/collection/editor-support-c85c080efc292a34).
 
 # Project types
 
@@ -16610,7 +16755,7 @@ If you added [Vitest](https://vitest.dev) when you set up your project, your uni
 
 ### static
 
-Any static assets that should be served as-is, like `robots.txt` or `favicon.png`, go in here.
+Any static assets that should be served without any alteration to the name — such as `robots.txt` — go in here. It's generally preferable to minimize the number of assets in `static/` and instead `import` them. Using an `import` allows [Vite's built-in handling](images#Vite's-built-in-handling) to give a unique name to an asset based on a hash of its contents so that it can be cached.
 
 ### tests
 
@@ -19291,12 +19436,15 @@ In the case of `radio` and `checkbox` inputs that all belong to the same field, 
 import * as v from 'valibot';
 import { form } from '$app/server';
 // ---cut---
+export const operatingSystems = /** @type {const} */ (['windows', 'mac', 'linux']);
+export const languages = /** @type {const} */ (['html', 'css', 'js']);
+
 export const survey = form(
 	v.object({
-		operatingSystem: v.picklist(['windows', 'mac', 'linux']),
-		languages: v.optional(v.array(v.picklist(['html', 'css', 'js'])), [])
+		operatingSystem: v.picklist(operatingSystems),
+		languages: v.optional(v.array(v.picklist(languages)), []),
 	}),
-	(data) => { /* ... */ }
+	(data) => { /* ... */ },
 );
 ```
 
@@ -19304,7 +19452,7 @@ export const survey = form(
 <form {...survey}>
 	<h2>Which operating system do you use?</h2>
 
-	{#each ['windows', 'mac', 'linux'] as os}
+	{#each operatingSystems as os}
 		<label>
 			<input {...survey.fields.operatingSystem.as('radio', os)}>
 			{os}
@@ -19313,7 +19461,7 @@ export const survey = form(
 
 	<h2>Which languages do you write code in?</h2>
 
-	{#each ['html', 'css', 'js'] as language}
+	{#each languages as language}
 		<label>
 			<input {...survey.fields.languages.as('checkbox', language)}>
 			{language}
@@ -19331,17 +19479,17 @@ Alternatively, you could use `select` and `select multiple`:
 	<h2>Which operating system do you use?</h2>
 
 	<select {...survey.fields.operatingSystem.as('select')}>
-		<option>windows</option>
-		<option>mac</option>
-		<option>linux</option>
+		{#each operatingSystems as os}
+			<option>{os}</option>
+		{/each}
 	</select>
 
 	<h2>Which languages do you write code in?</h2>
 
 	<select {...survey.fields.languages.as('select multiple')}>
-		<option>html</option>
-		<option>css</option>
-		<option>js</option>
+		{#each languages as language}
+			<option>{language}</option>
+		{/each}
 	</select>
 
 	<button>submit</button>
@@ -19352,7 +19500,10 @@ Alternatively, you could use `select` and `select multiple`:
 
 ### Programmatic validation
 
-In addition to declarative schema validation, you can programmatically mark fields as invalid inside the form handler using the `invalid` function. This is useful for cases where you can't know if something is valid until you try to perform some action. Just like `redirect` or `error`, `invalid` throws. It expects a list of strings (for issues relating to the form as a whole) or standard-schema-compliant issues (for those relating to a specific field). Use the `issue` parameter for type-safe creation of such issues:
+In addition to declarative schema validation, you can programmatically mark fields as invalid inside the form handler using the `invalid` helper from `@sveltejs/kit`. This is useful for cases where you can't know if something is valid until you try to perform some action.
+
+- It throws just like `redirect` or `error`
+- It accepts multiple arguments that can be strings (for issues relating to the form as a whole — these will only show up in `fields.allIssues()`) or standard-schema-compliant issues (for those relating to a specific field). Use the `issue` parameter for type-safe creation of such issues:
 
 ```js
 /// file: src/routes/shop/data.remote.js
@@ -19381,12 +19532,6 @@ export const buyHotcakes = form(
 	}
 );
 ```
-
-The `invalid` function works as both a function and a proxy:
-
-- Call `invalid(issue1, issue2, ...issueN)` to throw a validation error
-- If an issue is a `string`, it applies to the form as a whole (and will show up in `fields.allIssues()`)
-- Use `invalid.fieldName(message)` to create an issue for a specific field. Like `fields` this is type-safe and you can use regular property access syntax to create issues for deeply nested objects (e.g. `invalid.profile.email('Email already exists')` or `invalid.items[0].qty('Insufficient stock')`)
 
 ### Validation
 
@@ -19716,37 +19861,56 @@ Some forms may be repeated as part of a list. In this case you can create separa
 {/each}
 ```
 
-### buttonProps
+### Multiple submit buttons
 
-By default, submitting a form will send a request to the URL indicated by the `<form>` element's [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form#attributes_for_form_submission) attribute, which in the case of a remote function is a property on the form object generated by SvelteKit.
+It's possible for a `<form>` to have multiple submit buttons. For example, you might have a single form that allows you to log in or register depending on which button was clicked.
 
-It's possible for a `<button>` inside the `<form>` to send the request to a _different_ URL, using the [`formaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#formaction) attribute. For example, you might have a single form that allows you to log in or register depending on which button was clicked.
-
-This attribute exists on the `buttonProps` property of a form object:
+To accomplish this, add a field to your schema for the button value, and use `as('submit', value)` to bind it:
 
 ```svelte
 <!--- file: src/routes/login/+page.svelte --->
 <script>
-	import { login, register } from '$lib/auth';
+	import { loginOrRegister } from '$lib/auth';
 </script>
 
-<form {...login}>
+<form {...loginOrRegister}>
 	<label>
 		Your username
-		<input {...login.fields.username.as('text')} />
+		<input {...loginOrRegister.fields.username.as('text')} />
 	</label>
 
 	<label>
 		Your password
-		<input {...login.fields._password.as('password')} />
+		<input {...loginOrRegister.fields._password.as('password')} />
 	</label>
 
-	<button>login</button>
-	<button {...register.buttonProps}>register</button>
+	<button {...loginOrRegister.fields.action.as('submit', 'login')}>login</button>
+	<button {...loginOrRegister.fields.action.as('submit', 'register')}>register</button>
 </form>
 ```
 
-Like the form object itself, `buttonProps` has an `enhance` method for customizing submission behaviour.
+In your form handler, you can check which button was clicked:
+
+```js
+/// file: $lib/auth.js
+import * as v from 'valibot';
+import { form } from '$app/server';
+
+export const loginOrRegister = form(
+	v.object({
+		username: v.string(),
+		_password: v.string(),
+		action: v.picklist(['login', 'register'])
+	}),
+	async ({ username, _password, action }) => {
+		if (action === 'login') {
+			// handle login
+		} else {
+			// handle registration
+		}
+	}
+);
+```
 
 ## command
 
@@ -19972,8 +20136,6 @@ export const getPost = prerender(
 	}
 );
 ```
-
-> [!NOTE] Svelte does not yet support asynchronous server-side rendering, so it's likely that you're only calling remote functions from the browser, rather than during prerendering. Because of this, you will need to use `inputs`, for now. We're actively working on this roadblock.
 
 By default, prerender functions are excluded from your server bundle, which means that you cannot call them with any arguments that were _not_ prerendered. You can set `dynamic: true` to change this behaviour:
 
@@ -20299,6 +20461,10 @@ The number of seconds to wait before forcefully closing any remaining connection
 ### `IDLE_TIMEOUT`
 
 When using systemd socket activation, `IDLE_TIMEOUT` specifies the number of seconds after which the app is automatically put to sleep when receiving no requests. If not set, the app runs continuously. See [Socket activation](#Socket-activation) for more details.
+
+### `KEEP_ALIVE_TIMEOUT` and `HEADERS_TIMEOUT`
+
+The number of seconds for [`keepAliveTimeout`](https://nodejs.org/api/http.html#serverkeepalivetimeout) and [`headersTimeout`](https://nodejs.org/api/http.html#serverheaderstimeout).
 
 ## Options
 
@@ -20736,13 +20902,11 @@ Preferences for the emulated `platform.env` local bindings. See the [getPlatform
 
 Whether to render a plaintext 404.html page or a rendered SPA fallback page for non-matching asset requests.
 
-For Cloudflare Workers, the default behaviour is to return a null-body 404-status response for non-matching assets requests. However, if the [`assets.not_found_handling`](https://developers.cloudflare.com/workers/static-assets/routing/#2-not_found_handling) Wrangler configuration setting is set to `"404-page"`, this page will be served if a request fails to match an asset. If `assets.not_found_handling` is set to `"single-page-application"`, the adapter will render a SPA fallback index.html page regardless of the `fallback` option specified.
+For Cloudflare Workers, the default behaviour is to return a null-body 404-status response for non-matching assets requests. However, if the [`assets.not_found_handling`](https://developers.cloudflare.com/workers/static-assets/routing/#2-not_found_handling) Wrangler configuration setting is set to `"404-page"`, this page will be served if a request fails to match an asset. If `assets.not_found_handling` is set to `"single-page-application"`, the adapter will render a SPA fallback `index.html` page regardless of the `fallback` option specified.
 
 For Cloudflare Pages, this page will only be served when a request that matches an entry in `routes.exclude` fails to match an asset.
 
-Most of the time `plaintext` is sufficient, but if you are using `routes.exclude` to manually
-exclude a set of prerendered pages without exceeding the 100 route limit, you may wish to
-use `spa` instead to avoid showing an unstyled 404 page to users.
+Most of the time `plaintext` is sufficient, but if you are using `routes.exclude` to manually exclude a set of prerendered pages without exceeding the 100 route limit, you may wish to use `spa` instead to avoid showing an unstyled 404 page to users.
 
 See Cloudflare Pages' [Not Found behaviour](https://developers.cloudflare.com/pages/configuration/serving-pages/#not-found-behavior) for more info.
 
@@ -20770,7 +20934,7 @@ When building for Cloudflare Workers, this adapter expects to find a [Wrangler c
 {
 	"name": "<any-name-you-want>",
 	"main": ".svelte-kit/cloudflare/_worker.js",
-	"compatibility_date": "2025-01-01",
+	"compatibility_date": "<YYYY-MM-DD>",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare",
@@ -20780,7 +20944,7 @@ When building for Cloudflare Workers, this adapter expects to find a [Wrangler c
 
 ### Deployment
 
-Please follow the [framework guide](https://developers.cloudflare.com/workers/frameworks/framework-guides/svelte/) for Cloudflare Workers to begin.
+You can use the Wrangler CLI to deploy your application by running `npx wrangler deploy` or use the [Cloudflare Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/) to enable automatic builds and deployments on push.
 
 ## Cloudflare Pages
 
@@ -20855,7 +21019,7 @@ export {};
 
 Cloudflare specific values in the `platform` property are emulated during dev and preview modes. Local [bindings](https://developers.cloudflare.com/workers/wrangler/configuration/#bindings) are created based on your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/) and are used to populate `platform.env` during development and preview. Use the adapter config [`platformProxy` option](#Options-platformProxy) to change your preferences for the bindings.
 
-For testing the build, you should use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) version 4. Once you have built your site, run `wrangler dev .svelte-kit/cloudflare` if you're testing for Cloudflare Workers or `wrangler pages dev .svelte-kit/cloudflare` for Cloudflare Pages.
+For testing the build, you should use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) version 4. Once you have built your site, run `wrangler dev .svelte-kit/cloudflare/_worker.js` if you're testing for Cloudflare Workers or `wrangler pages dev .svelte-kit/cloudflare` for Cloudflare Pages.
 
 ## Headers and redirects
 
@@ -21394,6 +21558,10 @@ When a new version of your app is deployed, assets belonging to the previous ver
 Cookie-based skew protection comes with one caveat: if a user has multiple versions of your app open in multiple tabs, requests from older versions will be routed to the newer one, meaning they will fall back to SvelteKit's built-in skew protection.
 
 ## Notes
+
+### Vercel utilities
+
+If you need Vercel-specific utilities like `waitUntil`, use the package [`@vercel/functions`](https://vercel.com/docs/functions/functions-api-reference/vercel-functions-package).
 
 ### Vercel functions
 
@@ -23888,7 +24056,7 @@ This will cause packages to be downloaded into a local node_modules directory bu
 
 ## `vitePreprocess`
 
-Including [`vitePreprocess`](https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/preprocess.md) in your project will allow you to use the various flavors of CSS that Vite supports: PostCSS, SCSS, Less, Stylus, and SugarSS. If you set your project up with TypeScript it will be included by default:
+[`vitePreprocess`](https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/preprocess.md) preprocesses `<style>` and `<script>` tags in `.svelte` files.
 
 ```js
 // svelte.config.js
@@ -23896,13 +24064,29 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: [vitePreprocess()]
+  preprocess: [
+    vitePreprocess({
+      style: true,      // default value
+      script: false     // default value
+    })
+  ]
 };
 
 export default config;
 ```
 
-You will also need to use a preprocessor if you're using TypeScript with Svelte 4. TypeScript is supported natively in Svelte 5 if you're using only the type syntax. To use more complex TypeScript syntax in Svelte 5, you will need still need a preprocessor and can use `vitePreprocess({ script: true })`.
+### `style`
+
+Use `vitePreprocess()` to enable CSS preprocessors in `<style>` tags: PostCSS, SCSS, Less, Stylus, and SugarSS.
+
+### `script`
+
+Use `vitePreprocess({ script: true })` if: 
+- your project is before Svelte 5
+- you are using advanced TypeScript features that emit code _(check [`vitePreprocess`](https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/preprocess.md) documentation)_
+
+> [!NOTE]
+TypeScript is supported natively in Svelte 5, so if you are using Svelte 5 and you don't need to use advanced TypeScript features that emit code, you probably don't need to use `vitePreprocess`.
 
 ## Add-ons
 
@@ -24410,7 +24594,7 @@ We've written and published a few different SvelteKit sites as examples:
 - [A HackerNews clone](https://github.com/sveltejs/sites/tree/master/sites/hn.svelte.dev)
 - [`svelte.dev`](https://github.com/sveltejs/svelte.dev)
 
-SvelteKit users have also published plenty of examples on GitHub, under the [#sveltekit](https://github.com/topics/sveltekit) and [#sveltekit-template](https://github.com/topics/sveltekit-template) topics, as well as on [the Svelte Society site](https://sveltesociety.dev/templates?category=sveltekit). Note that these have not been vetted by the maintainers and may not be up to date.
+SvelteKit users have also published plenty of examples on GitHub, under the [#sveltekit](https://github.com/topics/sveltekit) and [#sveltekit-template](https://github.com/topics/sveltekit-template) topics, as well as on [the Svelte Society site](https://sveltesociety.dev/recipe/sveltekit-templates-and-examples-e789ed397e7f38fc). Note that these have not been vetted by the maintainers and may not be up to date.
 
 ## Support
 
@@ -26929,35 +27113,7 @@ type RemoteForm<
 	/** The number of pending submissions */
 	get pending(): number;
 	/** Access form fields using object notation */
-	fields: RemoteFormFields<Input>;
-	/** Spread this onto a `<button>` or `<input type="submit">` */
-	buttonProps: {
-		type: 'submit';
-		formmethod: 'POST';
-		formaction: string;
-		onclick: (event: Event) => void;
-		/** Use the `enhance` method to influence what happens when the form is submitted. */
-		enhance(
-			callback: (opts: {
-				form: HTMLFormElement;
-				data: Input;
-				submit: () => Promise<void> & {
-					updates: (
-						...queries: Array<
-							RemoteQuery<any> | RemoteQueryOverride
-						>
-					) => Promise<void>;
-				};
-			}) => void | Promise<void>
-		): {
-			type: 'submit';
-			formmethod: 'POST';
-			formaction: string;
-			onclick: (event: Event) => void;
-		};
-		/** The number of pending submissions */
-		get pending(): number;
-	};
+	fields: RemoteFormFieldsRoot<Input>;
 };
 ```
 
@@ -28690,6 +28846,16 @@ type HttpMethod =
 
 </div>
 
+## IsAny
+
+<div class="ts-block">
+
+```dts
+type IsAny<T> = 0 extends 1 & T ? true : false;
+```
+
+</div>
+
 ## Logger
 
 <div class="ts-block">
@@ -29558,7 +29724,7 @@ function invalidate(
 
 ## invalidateAll
 
-Causes all `load` functions belonging to the currently active page to re-run. Returns a `Promise` that resolves when the page is subsequently updated.
+Causes all `load` and `query` functions belonging to the currently active page to re-run. Returns a `Promise` that resolves when the page is subsequently updated.
 
 <div class="ts-block">
 
@@ -30522,7 +30688,7 @@ import { PUBLIC_BASE_URL } from '$env/static/public';
 
 # $lib
 
-SvelteKit automatically makes files under `src/lib` available using the `$lib` import alias. You can change which directory this alias points to in your [config file](configuration#files).
+SvelteKit automatically makes files under `src/lib` available using the `$lib` import alias.
 
 ```svelte
 <!--- file: src/lib/Component.svelte --->
@@ -30733,8 +30899,6 @@ const config = {
 	}
 };
 ```
-
-> [!NOTE] The built-in `$lib` alias is controlled by `config.kit.files.lib` as it is used for packaging.
 
 > [!NOTE] You will need to run `npm run dev` to have SvelteKit automatically generate the required alias configuration in `jsconfig.json` or `tsconfig.json`.
 
@@ -31112,6 +31276,25 @@ remoteFunctions?: boolean;
 </div>
 
 Whether to enable the experimental remote functions feature. This feature is not yet stable and may be changed or removed at any time.
+
+</div>
+</div>
+<div class="ts-block-property">
+
+```ts
+// @noErrors
+forkPreloads?: boolean;
+```
+
+<div class="ts-block-property-details">
+
+<div class="ts-block-property-bullets">
+
+- <span class="tag">default</span> `false`
+
+</div>
+
+Whether to enable the experimental forked preloading feature using Svelte's fork API.
 
 </div>
 </div>
@@ -32376,6 +32559,8 @@ Which project template to use:
 - `minimal` — barebones scaffolding for your new app
 - `demo` — showcase app with a word guessing game that works without JavaScript
 - `library` — template for a Svelte library, set up with `svelte-package`
+  <!-- TODO: JYC: Uncomment this when the addon template is ready -->
+  <!-- - `addon` — template for a community add-on, ready to be tested & published -->
 
 ### `--types <option>`
 
@@ -32420,20 +32605,6 @@ Prevents installing dependencies.
 
 Skip checking whether the target directory is empty.
 
-<!-- ## Programmatic interface
-
-```js
-// TODO: this gives type checking errors in the docs site when not commented out. Need to release sv, install it in the site, and uncomment this.
-// import { create } from 'sv';
-
-// // todo: check if this is right
-// create(cwd, {
-// 	// add your options here
-// 	// todo: list available option
-// });
-```
--->
-
 # sv add
 
 `sv add` updates an existing project with new functionality.
@@ -32460,6 +32631,13 @@ Path to the root of your Svelte(Kit) project.
 
 Even if some files are dirty, no prompt will be shown
 
+### `--no-download-check`
+
+Skip all download confirmation prompts
+
+> [!IMPORTANT]
+> Svelte maintainers have not reviewed community add-ons for malicious code. Use at your discretion
+
 ### `--install <package-manager>`
 
 Installs dependencies with a specified package manager:
@@ -32476,8 +32654,6 @@ Prevents installing dependencies
 
 ## Official add-ons
 
-<!-- TODO: it'd be nice for this to live on the "add-ons" page, but we first need svelte.dev to support making pages from headings -->
-
 - [`devtools-json`](devtools-json)
 - [`drizzle`](drizzle)
 - [`eslint`](eslint)
@@ -32491,6 +32667,61 @@ Prevents installing dependencies
 - [`sveltekit-adapter`](sveltekit-adapter)
 - [`tailwindcss`](tailwind)
 - [`vitest`](vitest)
+
+## Community add-ons
+
+> [!NOTE]
+> Community add-ons are currently **experimental**. The API may change. Don't use them in production yet!
+
+> [!NOTE]
+> Svelte maintainers have not reviewed community add-ons for malicious code!
+
+You can find [community add-ons on npm](https://www.npmjs.com/search?q=keywords%3Asv-add) by searching for `keywords:sv-add`.
+
+### How to install a community add-on
+
+```sh
+npx sv add [PROTOCOL][COMMUNITY_ADDON]
+```
+
+You can:
+
+- mix and match official and community add-ons
+- use the interactive prompt or give args to the cli
+- use the `--add` option in the `create` command
+
+```sh
+npx sv add eslint "@supacool"
+```
+
+```sh
+npx sv create --add eslint "@supacool"
+```
+
+### Package Protocols
+
+```sh
+# Scoped package: @org (preferred), we will look for @org/sv
+npx sv add "@supacool"
+
+# Regular npm package (with or without scope)
+npx sv add my-cool-addon
+
+# Local add-on
+npx sv add file:../path/to/my-addon
+```
+
+### How to create a community add-on
+
+To start on a good track, create your add-on with the `addon` template.
+
+```sh
+npx sv create --template addon [path]
+```
+
+In your new add-on directory, check out the `README.md` and `CONTRIBUTING.md` to get started.
+
+Then you can continue with the [API docs](/docs/cli/add-on) to start building your add-on. You can also have a look at the [official addons source code](https://github.com/sveltejs/cli/tree/main/packages/sv/lib/addons) to get some inspiration on what can be done.
 
 # sv check
 
@@ -32704,7 +32935,7 @@ Upgrades a pre-release SvelteKit app to use the filesystem routing conventions i
 The `devtools-json` add-on installs [`vite-plugin-devtools-json`](https://github.com/ChromeDevTools/vite-plugin-devtools-json/), which is a Vite plugin for generating a Chromium DevTools project settings file on-the-fly in the development server. This file is served from `/.well-known/appspecific/com.chrome.devtools.json` and tells Chromium browsers where your project's source code lives so that you can use [the workspaces feature](https://developer.chrome.com/docs/devtools/workspaces) to edit source files in the browser.
 
 > [!NOTE]
-> Installing the plugin enables the feature for all users connecting to the dev server with a Chromium browser, and allows the browser to read and write all files within the directory. If using Chrome's AI Assistance feature, this may also result in data being sent to Google.
+> Installing the plugin enables the feature for all users connecting to the dev server with a Chromium browser, and allows the browser to read and write all files within the directory. If you are using Chrome's AI Assistance feature, this may also result in data being sent to Google.
 
 ## Alternatives
 
@@ -32995,6 +33226,14 @@ Which SvelteKit adapter to use:
 npx sv add sveltekit-adapter="adapter:node"
 ```
 
+### cloudflare target
+
+Whether to deploy to Cloudflare Workers or Pages. Only available for `cloudflare` adapter.
+
+```sh
+npx sv add sveltekit-adapter="adapter:cloudflare+cfTarget:workers"
+```
+
 # tailwindcss
 
 [Tailwind CSS](https://tailwindcss.com/) allows you to rapidly build modern websites without ever leaving your HTML.
@@ -33040,6 +33279,156 @@ npx sv add vitest
 - the relevant packages installed and scripts added to your `package.json`
 - client/server-aware testing setup for Svelte in your Vite config file
 - demo tests
+
+# add-on
+
+> [!NOTE]
+> Community add-ons are currently **experimental**. The API may change. Don't use them in production yet!
+
+This guide covers how to create, test, and publish community add-ons for `sv`.
+
+## Quick start
+
+The easiest way to create an add-on is using the addon template:
+
+```sh
+npx sv create --template addon my-addon
+cd my-addon
+```
+
+## Add-on structure
+
+Typically, an add-on looks like this:
+
+_hover keywords in the code to have some more context_
+
+```js
+import { defineAddon, defineAddonOptions, parse, svelte } from 'sv/core';
+
+// Define options that will be prompted to the user (or passed as arguments)
+const options = defineAddonOptions()
+	.add('who', {
+		question: 'To whom should the addon say hello?',
+		type: 'string' // boolean | number | select | multiselect
+	})
+	.build();
+
+// your add-on definition, the entry point
+export default defineAddon({
+	id: 'your-addon-name',
+
+	options,
+
+	// preparing step, check requirements and dependencies
+	setup: ({ dependsOn }) => {
+		dependsOn('tailwindcss');
+	},
+
+	// actual execution of the addon
+	run: ({ kit, cancel, sv, options }) => {
+		if (!kit) return cancel('SvelteKit is required');
+
+		// Add "Hello [who]!"" to the root page
+		sv.file(kit.routesDirectory + '/+page.svelte', (content) => {
+			const { ast, generateCode } = parse.svelte(content);
+
+			svelte.addFragment(ast, `<p>Hello ${options.who}!</p>`);
+
+			return generateCode();
+		});
+	}
+});
+```
+
+## Development with `file:` protocol
+
+While developing your add-on, you can test it locally using the `file:` protocol:
+
+```sh
+# In your test project
+npx sv add file:../path/to/my-addon
+```
+
+This allows you to iterate quickly without publishing to npm.
+
+## Testing with `sv/testing`
+
+The `sv/testing` module provides utilities for testing your add-on:
+
+```js
+import { test, expect } from 'vitest';
+import { setupTest } from 'sv/testing';
+import addon from './index.js';
+
+test('adds hello message', async () => {
+	const { content } = await setupTest({
+		addon,
+		options: { who: 'World' },
+		files: {
+			'src/routes/+page.svelte': '<h1>Welcome</h1>'
+		}
+	});
+
+	expect(content('src/routes/+page.svelte')).toContain('Hello World!');
+});
+```
+
+## Publishing to npm
+
+### Package structure
+
+Your add-on must have `sv` as a dependency in `package.json`:
+
+```json
+{
+	"name": "@your-org/sv",
+	"version": "1.0.0",
+	"type": "module",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"dependencies": {
+		"sv": "^0.11.0"
+	},
+	"keywords": ["sv-add"]
+}
+```
+
+> [!NOTE]
+> Add the `sv-add` keyword so users can discover your add-on on npm.
+
+### Export options
+
+Your package can export the add-on in two ways:
+
+1. **Default export** (recommended for dedicated add-on packages):
+
+   ```json
+   {
+   	"exports": {
+   		".": "./dist/index.js"
+   	}
+   }
+   ```
+
+2. **`/sv` export** (for packages that have other functionality):
+   ```json
+   {
+   	"exports": {
+   		".": "./dist/main.js",
+   		"./sv": "./dist/addon.js"
+   	}
+   }
+   ```
+
+### Naming conventions
+
+- **Scoped packages**: Use `@your-org/sv` as the package name. Users can then install with just `npx sv add @your-org`.
+- **Regular packages**: Any name works. Users install with `npx sv add your-package-name`.
+
+## Version compatibility
+
+Your add-on should specify the minimum `sv` version it requires in `package.json`. If a user's `sv` version has a different major version than what your add-on was built for, they will see a compatibility warning.
 # Start of Svelte MCP documentation
 
 
@@ -33133,6 +33522,27 @@ command = "npx"
 args = ["-y", "@sveltejs/mcp"]
 ```
 
+## Copilot CLI
+
+Use the Copilot CLI to interactively add the MCP server:
+
+```bash
+/mcp add
+```
+
+Alternatively, create or edit `~/.copilot/mcp-config.json` and add the following configuration:
+
+```json
+{
+	"mcpServers": {
+		"svelte": {
+			"command": "npx",
+			"args": ["-y", "@sveltejs/mcp"]
+		}
+	}
+}
+```
+
 ## Gemini CLI
 
 To include the local MCP version in Gemini CLI, simply run the following command:
@@ -33145,7 +33555,7 @@ The `[scope]` must be `user`, `project` or `local`.
 
 ## OpenCode
 
-Run the command:
+You can automatically configure the MCP server using the [OpenCode plugin](opencode-plugin) (recommended). If you prefer to configure the MCP server manually, run:
 
 ```bash
 opencode mcp add
@@ -33243,6 +33653,8 @@ claude mcp add -t http -s [scope] svelte https://mcp.svelte.dev/mcp
 
 You can choose your preferred `scope` (it must be `user`, `project` or `local`) and `name`.
 
+If you prefer you can also install the `svelte` plugin in [the Svelte Claude Code Marketplace](plugin) that will give you both the remote server and useful [skills](skills).
+
 ## Claude Desktop
 
 - Open Settings > Connectors
@@ -33261,6 +33673,26 @@ experimental_use_rmcp_client = true
 url = "https://mcp.svelte.dev/mcp"
 ```
 
+## Copilot CLI
+
+Use the Copilot CLI to interactively add the MCP server:
+
+```bash
+/mcp add
+```
+
+Alternatively, create or edit `~/.copilot/mcp-config.json` and add the following configuration:
+
+```json
+{
+	"mcpServers": {
+		"svelte": {
+			"url": "https://mcp.svelte.dev/mcp"
+		}
+	}
+}
+```
+
 ## Gemini CLI
 
 To use the remote MCP server with Gemini CLI, simply run the following command:
@@ -33273,7 +33705,7 @@ The `[scope]` must be `user` or `project`.
 
 ## OpenCode
 
-Run the command:
+You can automatically configure the MCP server using the [OpenCode plugin](opencode-plugin) (recommended). If you prefer to configure the MCP server manually, run:
 
 ```bash
 opencode mcp add
@@ -33388,7 +33820,7 @@ This prompt should be used whenever you are asking the model to work on a Svelte
 	<summary>Copy the prompt</summary>
 
 ```md
-You are a Svelte expert tasked to build components and utilities for Svelte developers. If you need documentation for anything related to Svelte you can invoke the tool `get_documentation` with one of the following paths:
+You are a Svelte expert tasked to build components and utilities for Svelte developers. If you need documentation for anything related to Svelte you can invoke the tool `get-documentation` with one of the following paths. However: before invoking the `get-documentation` tool, try to answer the users query using your own knowledge and the `svelte-autofixer` tool. Be mindful of how many section you request, since it is token-intensive!
 <available-docs>
 
 - title: Overview, use_cases: project setup, creating new svelte apps, scaffolding, cli tools, initializing projects, path: cli/overview
@@ -33410,6 +33842,7 @@ You are a Svelte expert tasked to build components and utilities for Svelte deve
 - title: sveltekit-adapter, use_cases: deployment, production builds, hosting setup, choosing deployment platform, configuring adapters, static site generation, node server, vercel, cloudflare, netlify, path: cli/sveltekit-adapter
 - title: tailwindcss, use_cases: project setup, styling, css framework, rapid prototyping, utility-first css, design systems, responsive design, adding tailwind to svelte, path: cli/tailwind
 - title: vitest, use_cases: testing, unit tests, component testing, test setup, quality assurance, ci/cd pipelines, test-driven development, path: cli/vitest
+- title: add-on, use_cases: use title and path to estimate use case, path: cli/add-on
 - title: Introduction, use_cases: learning sveltekit, project setup, understanding framework basics, choosing between svelte and sveltekit, getting started with full-stack apps, path: kit/introduction
 - title: Creating a project, use_cases: project setup, starting new sveltekit app, initial development environment, first-time sveltekit users, scaffolding projects, path: kit/creating-a-project
 - title: Project types, use_cases: deployment, project setup, choosing adapters, ssg, spa, ssr, serverless, mobile apps, desktop apps, pwa, offline apps, browser extensions, separate backend, docker containers, path: kit/project-types
@@ -33483,6 +33916,11 @@ You are a Svelte expert tasked to build components and utilities for Svelte deve
 - title: Tools, use_cases: use title and path to estimate use case, path: mcp/tools
 - title: Resources, use_cases: use title and path to estimate use case, path: mcp/resources
 - title: Prompts, use_cases: use title and path to estimate use case, path: mcp/prompts
+- title: Overview, use_cases: use title and path to estimate use case, path: mcp/plugin
+- title: Skill, use_cases: use title and path to estimate use case, path: mcp/skill
+- title: Subagent, use_cases: use title and path to estimate use case, path: mcp/subagent
+- title: Overview, use_cases: use title and path to estimate use case, path: mcp/opencode-plugin
+- title: Subagent, use_cases: use title and path to estimate use case, path: mcp/opencode-subagent
 - title: Overview, use_cases: always, any svelte project, getting started, learning svelte, introduction, project setup, understanding framework basics, path: svelte/overview
 - title: Getting started, use_cases: project setup, starting new svelte project, initial installation, choosing between sveltekit and vite, editor configuration, path: svelte/getting-started
 - title: .svelte files, use_cases: always, any svelte project, component creation, project setup, learning svelte basics, path: svelte/svelte-files
@@ -33529,6 +33967,7 @@ You are a Svelte expert tasked to build components and utilities for Svelte deve
 - title: Context, use_cases: shared state, avoiding prop drilling, component communication, theme providers, user context, authentication state, configuration sharing, deeply nested components, path: svelte/context
 - title: Lifecycle hooks, use_cases: component initialization, cleanup tasks, timers, subscriptions, dom measurements, chat windows, autoscroll features, migration from svelte 4, path: svelte/lifecycle-hooks
 - title: Imperative component API, use_cases: project setup, client-side rendering, server-side rendering, ssr, hydration, testing, programmatic component creation, tooltips, dynamic mounting, path: svelte/imperative-component-api
+- title: Hydratable data, use_cases: use title and path to estimate use case, path: svelte/hydratable
 - title: Testing, use_cases: testing, quality assurance, unit tests, integration tests, component tests, e2e tests, vitest setup, playwright setup, test automation, path: svelte/testing
 - title: TypeScript, use_cases: typescript setup, type safety, component props typing, generic components, wrapper components, dom type augmentation, project configuration, path: svelte/typescript
 - title: Custom elements, use_cases: web components, custom elements, component library, design system, framework-agnostic components, embedding svelte in non-svelte apps, shadow dom, path: svelte/custom-elements
@@ -33568,6 +34007,8 @@ You are a Svelte expert tasked to build components and utilities for Svelte deve
 
 </available-docs>
 
+These are the available documentation sections that `list-sections` will return, you do not need to call it again.
+
 Every time you write a Svelte component or a Svelte module you MUST invoke the `svelte-autofixer` tool providing the code. The tool will return a list of issues or suggestions. If there are any issues or suggestions you MUST fix them and call the tool again with the updated code. You MUST keep doing this until the tool returns no issues or suggestions. Only then you can return the code to the user.
 
 This is the task you will work on:
@@ -33578,5 +34019,173 @@ This is the task you will work on:
 
 If you are not writing the code into a file, once you have the final version of the code ask the user if it wants to generate a playground link to quickly check the code in it and if it answer yes call the `playground-link` tool and return the url to the user nicely formatted. The playground link MUST be generated only once you have the final version of the code and you are ready to share it, it MUST include an entry point file called `App.svelte` where the main component should live. If you have multiple files to include in the playground link you can include them all at the root.
 ```
+
+</details>
+
+# Overview
+
+The open source [repository](https://github.com/sveltejs/mcp) containing the code for the MCP server is also a Claude Code Marketplace plugin.
+
+The marketplace allows you to install the `svelte` plugin which will give you the remote MCP server, [skills](skills) to instruct the LLM on how to properly write Svelte 5 code, and a specialized agent for editing Svelte files.
+
+If possible, we recommend that you instruct the LLM to execute MCP calls with the agent (you can explicitly mention an agent in your message to delegate work to it) when creating or editing `.svelte` files or `.svelte.ts`/`.svelte.js` modules as it helps save context by handling Svelte-specific tasks more efficiently.
+
+## Installation
+
+To add the repository as a marketplace, launch Claude Code and type the following:
+
+```bash
+/plugin marketplace add sveltejs/mcp
+```
+
+Then, install the Svelte plugin:
+
+```bash
+/plugin install svelte
+```
+
+# Subagent
+
+The Svelte plugin includes a specialized subagent called `svelte-file-editor` designed for creating, editing, and reviewing Svelte files.
+
+## Benefits
+
+The subagent has access to its own context window, allowing it to fetch the documentation, iterate with the `svelte-autofixer` tool and write to the file system without wasting context in the main agent.
+
+The delegation should happen automatically when appropriate, but you can also explicitly request the subagent be used for Svelte-related tasks.
+
+# Overview
+
+OpenCode has a [plugin system](https://opencode.ai/docs/plugins/) that allows developers to add MCP servers, agents and commands programmatically. Svelte has an OpenCode plugin published under `@sveltejs/opencode`.
+
+## Installation
+
+To install the plugin in OpenCode you can edit your [OpenCode config]() (either the global or the local one), adding `@sveltejs/opencode` to the list of plugins.
+
+```json
+{
+	"$schema": "https://opencode.ai/config.json",
+	"plugin": ["@sveltejs/opencode"]
+}
+```
+
+That's it! You now have the Svelte MCP server, [skills](skills), and the [file editor subagent](opencode-subagent) configured for you.
+
+## Configuration
+
+The default configuration for the Svelte OpenCode plugin looks like this...
+
+```json
+{
+	"$schema": "https://raw.githubusercontent.com/sveltejs/mcp/refs/heads/main/packages/opencode/schema.json",
+	"mcp": {
+		"type": "remote",
+		"enabled": true
+	},
+	"subagent": {
+		"enabled": true
+	},
+	"skills": {
+		"enabled": true
+	}
+}
+```
+
+...but if you prefer, you can enable only the subagent, only the MCP, only the skills, or configure the kind of MCP server you want to use (`local` or `remote`).
+
+You can place this file in `~/.config/opencode/svelte.json` or, if you have an `OPENCODE_CONFIG_DIR` environment variable specified, at `$OPENCODE_CONFIG_DIR/svelte.json`.
+
+# Subagent
+
+The Svelte plugin includes a specialized subagent called `svelte-file-editor` designed for creating, editing, and reviewing Svelte files.
+
+## Benefits
+
+The subagent has access to its own context window, allowing it to fetch the documentation, iterate with the `svelte-autofixer` tool and write to the file system without wasting context in the main agent.
+
+The delegation should happen automatically when appropriate, but you can also explicitly request the subagent be used for Svelte-related tasks.
+
+# Overview
+
+This is the list of available skills provided by the Svelte MCP package. Skills are sets of instructions that AI agents can load on-demand to help with specific tasks.
+
+Skills are available in both the Claude Code plugin (installed via the marketplace) and the OpenCode plugin (`@sveltejs/opencode`). They can also be manually installed in your `.claude/skills/` or `.opencode/skills/` folder.
+
+You can download the latest skills from the [releases page](https://github.com/sveltejs/mcp/releases) or find them in the [`plugins/svelte/skills`](https://github.com/sveltejs/mcp/tree/main/plugins/svelte/skills) folder.
+
+## `svelte-code-writer`
+
+CLI tools for Svelte 5 documentation lookup and code analysis. MUST be used whenever creating or editing any Svelte component (.svelte) or Svelte module (.svelte.ts/.svelte.js). If possible, this skill should be executed within the svelte-file-editor agent for optimal results.
+
+<a href="https://github.com/sveltejs/mcp/releases?q=svelte-code-writer" target="_blank" rel="noopener noreferrer">Open Releases page</a>
+
+<details>
+	<summary>View skill content</summary>
+
+<!-- prettier-ignore-start -->
+````markdown
+# Svelte 5 Code Writer
+
+## CLI Tools
+
+You have access to `@sveltejs/mcp` CLI for Svelte-specific assistance. Use these commands via `npx`:
+
+### List Documentation Sections
+
+```bash
+npx @sveltejs/mcp list-sections
+```
+
+Lists all available Svelte 5 and SvelteKit documentation sections with titles and paths.
+
+### Get Documentation
+
+```bash
+npx @sveltejs/mcp get-documentation "<section1>,<section2>,..."
+```
+
+Retrieves full documentation for specified sections. Use after `list-sections` to fetch relevant docs.
+
+**Example:**
+
+```bash
+npx @sveltejs/mcp get-documentation "$state,$derived,$effect"
+```
+
+### Svelte Autofixer
+
+```bash
+npx @sveltejs/mcp svelte-autofixer "<code_or_path>" [options]
+```
+
+Analyzes Svelte code and suggests fixes for common issues.
+
+**Options:**
+
+- `--async` - Enable async Svelte mode (default: false)
+- `--svelte-version` - Target version: 4 or 5 (default: 5)
+
+**Examples:**
+
+```bash
+# Analyze inline code (escape $ as \$)
+npx @sveltejs/mcp svelte-autofixer '<script>let count = \$state(0);</script>'
+
+# Analyze a file
+npx @sveltejs/mcp svelte-autofixer ./src/lib/Component.svelte
+
+# Target Svelte 4
+npx @sveltejs/mcp svelte-autofixer ./Component.svelte --svelte-version 4
+```
+
+**Important:** When passing code with runes (`$state`, `$derived`, etc.) via the terminal, escape the `$` character as `\$` to prevent shell variable substitution.
+
+## Workflow
+
+1. **Uncertain about syntax?** Run `list-sections` then `get-documentation` for relevant topics
+2. **Reviewing/debugging?** Run `svelte-autofixer` on the code to detect issues
+3. **Always validate** - Run `svelte-autofixer` before finalizing any Svelte component
+````
+<!-- prettier-ignore-end -->
 
 </details>

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/prompt-labels-create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Prompt Template Label
 
 Create a release label for a prompt template version.
@@ -76,7 +80,3 @@ paths:
                   - prompt_version_id
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

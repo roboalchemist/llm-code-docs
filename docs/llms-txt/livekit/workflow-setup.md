@@ -2,10 +2,6 @@
 
 # Source: https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md
 
-# Source: https://docs.livekit.io/telephony/making-calls/workflow-setup.md
-
-# Source: https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md
-
 LiveKit docs › Accepting calls › Workflow & setup
 
 ---
@@ -59,7 +55,7 @@ See the following guide to create an AI agent to receive inbound calls.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:35.719Z.
+This document was rendered at 2026-02-03T03:25:12.234Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md](https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

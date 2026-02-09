@@ -1,6 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/track-branches.md
 
-# Track Branches
+> **Documentation Index**
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Track Branches
 
 > Learn how to track git branches with the Graphite CLI.
 
@@ -44,7 +48,7 @@ Because of the "restacking" model, it is always safe to update your branches wit
 
 If you use `git` instead of `gt` to create a branch, you must let `gt` know what its parent is with `gt track`. It prompts you to select a parent for the current branch from the branch's `git` history:
 
-```bash Terminal theme={null}
+```bash
 # Ensure the branch you want to track has the desired parent in its history
 # In this case, we want to stack our branch `first_branch` on `main`
 git checkout first_branch
@@ -59,7 +63,7 @@ gt tr
 
 If there is more than one potential parent for the `first_branch`, you'll be prompted to select one:
 
-```bash Terminal theme={null}
+```bash
 ? Select a parent for first_branch (autocomplete or arrow keys) ›
 ❯   last_branch
     some_other_branch
@@ -68,7 +72,7 @@ If there is more than one potential parent for the `first_branch`, you'll be pro
 
 If you want to track a specific branch that already exists, you can pass the branch name as an argument to `branch track`:
 
-```bash Terminal theme={null}
+```bash
 gt track <DESIRED_BRANCH>
 ```
 

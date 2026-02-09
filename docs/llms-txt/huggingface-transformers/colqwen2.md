@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/colqwen2.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/colqwen2.md
 
 # ColQwen2
 
@@ -150,7 +150,7 @@ processor = ColQwen2Processor.from_pretrained(model_name)
 
 ## Notes
 
-- [score_retrieval()](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Processor.score_retrieval) returns a 2D tensor where the first dimension is the number of queries and the second dimension is the number of images. A higher score indicates more similarity between the query and image.
+- `score_retrieval()` returns a 2D tensor where the first dimension is the number of queries and the second dimension is the number of images. A higher score indicates more similarity between the query and image.
 - Unlike ColPali, ColQwen2 supports arbitrary image resolutions and aspect ratios, which means images are not resized into fixed-size squares. This preserves more of the original input signal.
 - Larger input images generate longer multi-vector embeddings, allowing users to adjust image resolution to balance performance and memory usage.
 
@@ -158,7 +158,7 @@ processor = ColQwen2Processor.from_pretrained(model_name)
 
 #### transformers.ColQwen2Config[[transformers.ColQwen2Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/configuration_colqwen2.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/colqwen2/configuration_colqwen2.py#L27)
 
 Configuration class to store the configuration of a `ColQ2en2ForRetrieval`. It is used to instantiate an instance
 of `ColQwen2ForRetrieval` according to the specified arguments, defining the model architecture following the methodology
@@ -167,8 +167,8 @@ from the "ColPali: Efficient Document Retrieval with Vision Language Models" pap
 Instantiating a configuration with the defaults will yield a similar configuration to the vision encoder used by the pre-trained
 ColQwen2-v1.0 model, e.g. [vidore/colqwen2-v1.0-hf](https://huggingface.co/vidore/colqwen2-v1.0-hf).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -191,23 +191,24 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.ColQwen2Processor[[transformers.ColQwen2Processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/processing_colqwen2.py#L48)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/colqwen2/processing_colqwen2.py#L48)
 
-Constructs a ColQwen2 processor which wraps a Qwen2VLProcessor and special methods to process images and queries, as
-well as to compute the late-interaction retrieval score.
+Constructs a ColQwen2Processor which wraps a image processor and a tokenizer into a single processor.
 
-[ColQwen2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Processor) offers all the functionalities of [Qwen2VLProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_vl#transformers.Qwen2VLProcessor). See the `__call__()`
-for more information.
+[ColQwen2Processor](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2Processor) offers all the functionalities of [Qwen2VLImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessorFast) and [Qwen2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/qwen2#transformers.Qwen2Tokenizer). See the
+[~Qwen2VLImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessorFast) and [~Qwen2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/qwen2#transformers.Qwen2Tokenizer) for more information.
 
-process_imagestransformers.ColQwen2Processor.process_imageshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/processing_colqwen2.py#L264[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.colqwen2.processing_colqwen2.ColQwen2ProcessorKwargs]"}]- **images** (`PIL.Image.Image`, `np.ndarray`, `torch.Tensor`, `list[PIL.Image.Image]`, `list[np.ndarray]`, `list[torch.Tensor]`) --
-  The image or batch of images to be prepared. Each image can be a PIL image, NumPy array or PyTorch
-  tensor. In case of a NumPy array/PyTorch tensor, each image should be of shape (C, H, W), where C is a
-  number of channels, H and W are image height and width.
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+__call__transformers.ColQwen2Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/colqwen2/processing_colqwen2.py#L76[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.colqwen2.processing_colqwen2.ColQwen2ProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors of a particular framework. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
-  - `'np'`: Return NumPy `np.ndarray` objects.0[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+  - `'np'`: Return NumPy `np.ndarray` objects.0[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 - **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
@@ -215,97 +216,35 @@ process_imagestransformers.ColQwen2Processor.process_imageshttps://github.com/hu
   `None`).
 - **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
-Prepare for the model one or several image(s). This method is a wrapper around the `__call__` method of the ColQwen2Processor's
-`ColQwen2Processor.__call__()`.
-
-This method forwards the `images` and `kwargs` arguments to the image processor.
-
 **Parameters:**
 
-image_processor ([Qwen2VLImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessor), *optional*) : The image processor is a required input.
+image_processor (`Qwen2VLImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([Qwen2TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2#transformers.Qwen2Tokenizer), *optional*) : The tokenizer is a required input.
+tokenizer (`Qwen2Tokenizer`) : The tokenizer is a required input.
 
-chat_template (`str`, *optional*) : A Jinja template which will be used to convert lists of messages in a chat into a tokenizable string.
+chat_template (`str`) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
-visual_prompt_prefix (`str`, *optional*) : A string that gets tokenized and prepended to the image tokens.
+visual_prompt_prefix (`str`, *optional*, defaults to `"user\nDescribe the image."`) : A string that gets tokenized and prepended to the image tokens.
 
-query_prefix (`str`, *optional*) : A prefix to be used for the query.
+query_prefix (`str`, *optional*, defaults to `"Query : "`): A prefix to be used for the query.
 
 **Returns:**
 
-`[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)`
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
-A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 - **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
   `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
   `None`).
 - **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
-#### process_queries[[transformers.ColQwen2Processor.process_queries]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/processing_colqwen2.py#L297)
-
-Prepare for the model one or several texts. This method is a wrapper around the `__call__` method of the ColQwen2Processor's
-`ColQwen2Processor.__call__()`.
-
-This method forwards the `text` and `kwargs` arguments to the tokenizer.
-
-**Parameters:**
-
-text (`str`, `list[str]`, `list[list[str]]`) : The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings (pretokenized string). If the sequences are provided as list of strings (pretokenized), you must set `is_split_into_words=True` (to lift the ambiguity with a batch of sequences).
-
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors of a particular framework. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return NumPy `np.ndarray` objects.
-
-**Returns:**
-
-`[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)`
-
-A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
-
-- **input_ids** -- List of token ids to be fed to a model.
-- **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
-  `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
-  `None`).
-#### score_retrieval[[transformers.ColQwen2Processor.score_retrieval]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/processing_colqwen2.py#L329)
-
-Compute the late-interaction/MaxSim score (ColBERT-like) for the given multi-vector
-query embeddings (`qs`) and passage embeddings (`ps`). For ColQwen2, a passage is the
-image of a document page.
-
-Because the embedding tensors are multi-vector and can thus have different shapes, they
-should be fed as:
-(1) a list of tensors, where the i-th tensor is of shape (sequence_length_i, embedding_dim)
-(2) a single tensor of shape (n_passages, max_sequence_length, embedding_dim) -> usually
-obtained by padding the list of tensors.
-
-**Parameters:**
-
-query_embeddings (`Union[torch.Tensor, list[torch.Tensor]`) : Query embeddings.
-
-passage_embeddings (`Union[torch.Tensor, list[torch.Tensor]`) : Passage embeddings.
-
-batch_size (`int`, *optional*, defaults to 128) : Batch size for computing scores.
-
-output_dtype (`torch.dtype`, *optional*, defaults to `torch.float32`) : The dtype of the output tensor. If `None`, the dtype of the input embeddings is used.
-
-output_device (`torch.device` or `str`, *optional*, defaults to "cpu") : The device of the output tensor.
-
-**Returns:**
-
-``torch.Tensor``
-
-A tensor of shape `(n_queries, n_passages)` containing the scores. The score
-tensor is saved on the "cpu" device.
 
 ## ColQwen2ForRetrieval[[transformers.ColQwen2ForRetrieval]]
 
 #### transformers.ColQwen2ForRetrieval[[transformers.ColQwen2ForRetrieval]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/modeling_colqwen2.py#L109)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/colqwen2/modeling_colqwen2.py#L107)
 
 Following the ColPali approach, ColQwen2 leverages VLMs to construct efficient multi-vector embeddings directly
 from document images (“screenshots”) for document retrieval. The model is trained to maximize the similarity
@@ -318,7 +257,7 @@ a single model that can take into account both the textual and visual content (l
 ColQwen2 is part of the ColVision model family, which was introduced with ColPali in the following paper:
 [*ColPali: Efficient Document Retrieval with Vision Language Models*](https://huggingface.co/papers/2407.01449).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -326,11 +265,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ColQwen2ForRetrieval.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/colqwen2/modeling_colqwen2.py#L127[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "image_grid_thw", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.ColQwen2ForRetrieval.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/colqwen2/modeling_colqwen2.py#L125[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "image_grid_thw", "val": ": torch.LongTensor | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -349,8 +288,8 @@ forwardtransformers.ColQwen2ForRetrieval.forwardhttps://github.com/huggingface/t
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -375,11 +314,11 @@ forwardtransformers.ColQwen2ForRetrieval.forwardhttps://github.com/huggingface/t
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [Qwen2VLImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessor). See [Qwen2VLImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([ColQwen2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Processor) uses
-  [Qwen2VLImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessor) for processing images).
+  [Qwen2VLImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessorFast). See [Qwen2VLImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([ColQwen2Processor](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2Processor) uses
+  [Qwen2VLImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/qwen2_vl#transformers.Qwen2VLImageProcessorFast) for processing images).
 - **image_grid_thw** (`torch.LongTensor` of shape `(num_images, 3)`, *optional*) --
   The temporal, height and width of feature shape of each image in LLM.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
@@ -387,24 +326,24 @@ forwardtransformers.ColQwen2ForRetrieval.forwardhttps://github.com/huggingface/t
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.colqwen2.modeling_colqwen2.ColQwen2ForRetrievalOutput` or `tuple(torch.FloatTensor)`A `transformers.models.colqwen2.modeling_colqwen2.ColQwen2ForRetrievalOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ColQwen2Config](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Config)) and inputs.
+elements depending on the configuration ([ColQwen2Config](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **embeddings** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- The embeddings of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ColQwen2ForRetrieval](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2ForRetrieval) forward method, overrides the `__call__` special method.
+The [ColQwen2ForRetrieval](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2ForRetrieval) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -417,7 +356,7 @@ Example:
 
 **Parameters:**
 
-config ([ColQwen2Config](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ColQwen2Config](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -425,19 +364,19 @@ config ([ColQwen2Config](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#tran
 
 A `transformers.models.colqwen2.modeling_colqwen2.ColQwen2ForRetrievalOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ColQwen2Config](/docs/transformers/v5.0.0rc1/en/model_doc/colqwen2#transformers.ColQwen2Config)) and inputs.
+elements depending on the configuration ([ColQwen2Config](/docs/transformers/v5.0.0/en/model_doc/colqwen2#transformers.ColQwen2Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **embeddings** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- The embeddings of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

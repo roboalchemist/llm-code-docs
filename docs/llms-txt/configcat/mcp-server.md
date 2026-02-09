@@ -2,11 +2,13 @@
 
 # MCP Server
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) is an open protocol that standardizes how applications provide context to large language models (LLMs). The ConfigCat MCP server lets you manage feature flags and configurations via the Public Management API seamlessly from AI tools. It also enables your code editor to understand your feature flags, integrate the appropriate ConfigCat SDK into your project or even create new feature flags directly in your codebase.
 
-Your browser does not support the video tag. You can download the video here: [mcp-demo.mp4](https://configcat.com/docs/docs/assets/mcp/mcp-demo.mp4).
+Your browser does not support the video tag. You can download the video here: [mcp-demo.mp4](https://configcat.com/docs/assets/mcp/mcp-demo.mp4).
 
 ## Features[​](#features "Direct link to Features")
 
@@ -47,7 +49,7 @@ The MCP server's configuration includes the following environment variables:
 3. Click **Add Custom MCP**
 4. Add (or merge) the snippet below into your JSON settings:
 
-```
+```json
 {
   "mcpServers": {
     "ConfigCat": {
@@ -60,6 +62,7 @@ The MCP server's configuration includes the following environment variables:
     }
   }
 }
+
 ```
 
 5. **Save** – the server will start on demand.
@@ -68,7 +71,7 @@ The MCP server's configuration includes the following environment variables:
 1) Install [VS Code](https://code.visualstudio.com/) and [GitHub Copilot](https://code.visualstudio.com/docs/copilot/setup)
 2) Create a `.vscode/mcp.json` file in your project root with the following content:
 
-```
+```json
 {
   "servers": {
     "ConfigCat": {
@@ -81,6 +84,7 @@ The MCP server's configuration includes the following environment variables:
     }
   }
 }
+
 ```
 
 3. Save the settings file. The MCP server should now be available in VS Code.
@@ -91,7 +95,7 @@ The MCP server's configuration includes the following environment variables:
 3) Click **Edit Config**
 4) In `claude_desktop_config.json` add:
 
-```
+```json
 {
   "mcpServers": {
     "ConfigCat": {
@@ -104,6 +108,7 @@ The MCP server's configuration includes the following environment variables:
     }
   }
 }
+
 ```
 
 5. **Save** & restart Claude Desktop.
@@ -152,5 +157,5 @@ or
 
 * [ConfigCat MCP server GitHub repository](https://github.com/configcat/mcp-server)
 * [ConfigCat MCP server available tools](https://github.com/configcat/mcp-server?tab=readme-ov-file#available-tools)
-* [Management API Reference](https://configcat.com/docs/docs/api/reference/configcat-public-management-api/.md)
+* [Management API Reference](https://configcat.com/docs/api/reference/configcat-public-management-api.md)
 * [How to Manage Feature Flags with ConfigCat's MCP Server - Blog post](https://configcat.com/blog/mcp-server-feature-flags/)

@@ -2,17 +2,9 @@
 
 # Source: https://loops.so/docs/integrations/supabase.md
 
-# Source: https://loops.so/docs/smtp/supabase.md
-
-# Source: https://loops.so/docs/integrations/supabase.md
-
-# Source: https://loops.so/docs/smtp/supabase.md
-
-# Source: https://loops.so/docs/integrations/supabase.md
-
-# Source: https://loops.so/docs/smtp/supabase.md
-
-# Source: https://loops.so/docs/integrations/supabase.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Supabase
 
@@ -37,7 +29,7 @@ With Supabase, you can keep your user data synced to Loops so you can send email
 
 ## Supported events
 
-We accept the following database events for the "Users" table:
+We accept the following database events for the `auth.users` table:
 
 * `INSERT`
 * `UPDATE`
@@ -53,8 +45,26 @@ For `INSERT` and `UPDATE` events, we sync the following Supabase data to your Lo
 
 * User ID
 * Email address
+* First and last name (optional)
 
 We use the IDs of Supabase users to match contacts in your Loops audience. If the user ID is not found in Loops, we will create a new contact.
+
+First and last names are populated from metadata in the `auth.users` table. Key names should be `first_name` and `last_name`.
+
+```javascript  theme={"dark"}
+const { data, error } = await supabase.auth.signUp({
+  email: 'test@example.com',
+  password: 'example-password',
+  options: {
+    data: {
+      first_name: 'John',
+      last_name: 'Doe',
+    },
+  },
+})
+```
+
+More information about metadata in Supabase can be found in the [Supabase documentation](https://supabase.com/docs/guides/auth/managing-user-data?queryGroups=language\&language=js#adding-and-retrieving-user-metadata).
 
 `DELETE` events can be used to delete or unsubscribe your Supabase users from your Loops audience.
 

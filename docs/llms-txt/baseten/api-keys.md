@@ -1,71 +1,88 @@
-# Source: https://docs.baseten.co/observability/api-keys.md
+# Source: https://docs.baseten.co/organization/api-keys.md
 
-# Best practices for API keys
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Securely access your Baseten models
+# API keys
 
-API keys enable secure access to Baseten models for:
+> Authenticate requests to Baseten for deployment, inference, and management.
 
-* **Model deployment** via Truss CLI
-* **Inference API calls** (`truss predict`, `/wake` requests)
-* **Model management** via the [management API](/reference/management-api/overview)
-* **Metrics export** via the `/metrics` endpoint
+API keys authenticate your requests to Baseten. You need an API key to:
 
-You can create and revoke API keys from your [Baseten account](https://app.baseten.co/settings/api_keys).
+* Deploy models, Chains, and training projects with the Truss CLI.
+* Call model endpoints for inference.
+* Use the management API.
 
-## API key scope: Personal vs Workspace
+## API key types
 
-There are two types of API keys on Baseten:
+Baseten supports two types of API keys:
 
-**Personal API Keys:**
+**Personal API keys** are tied to your user account. Actions performed with a personal key are attributed to you. Use personal keys for local development and testing.
 
-* Tied to a user account.
-* Inherit full workspace permissions.
-* Actions are linked to the specific user.
+**Team API keys** are not tied to an individual user. When your organization has [teams](/organization/teams) enabled, team keys can be scoped to a specific team. Team keys can have different permission levels:
 
-**Workspace API Keys:**
+* **Full access** - Deploy models, call endpoints, and manage resources.
+* **Inference only** - Call model endpoints but cannot deploy or manage.
+* **Metrics only** - Export metrics but cannot deploy or call models.
 
-* Shared across a workspace.
-* Can have full access or be restricted to specific models.
+Use team keys for CI/CD pipelines, production applications, and shared automation.
 
-<Note>Use personal keys for testing and workspace keys for automation and production.</Note>
+<Note>
+  If your organization uses [teams](/organization/teams), Team Admins can create team API keys scoped to their team. See [Teams](/organization/teams) for more information.
+</Note>
 
-## Using API keys with Truss
+## Create an API key
 
-Add your API key to `~/.trussrc` for authentication:
+To create an API key:
 
-```sh ~/.trussrc theme={"system"}
-[baseten]
-remote_provider = baseten
-api_key = abcdefgh.1234567890ABCDEFGHIJKL1234567890
-remote_url = https://app.baseten.co
+1. Navigate to [API keys](https://app.baseten.co/settings/api_keys) in your account settings.
+2. Select **Create API key**.
+3. Choose **Personal** or **Team** key type.
+4. Enter a name for the key (lowercase letters, numbers, and hyphens only).
+5. For team keys, select the permission level.
+6. Select **Next**.
+
+Copy the key immediately, you won't be able to view it again.
+
+## Use API keys with the CLI
+
+The first time you run `truss push`, the CLI prompts you for your API key and saves it to `~/.trussrc`:
+
+```
+$ truss push --watch
+💻 Let's add a Baseten remote!
+🤫 Quietly paste your API_KEY:
+💾 Remote config `baseten` saved to `~/.trussrc`.
 ```
 
-If rotating keys, update the file with the new key.
-
-### Using API keys with endpoints
-
-Include the API key in request headers:
+To manually configure or update your API key, edit `~/.trussrc`:
 
 ```sh  theme={"system"}
-curl -X POST https://app.baseten.co/models/MODEL_ID/predict \
--H 'Authorization: Api-Key abcdefgh.1234567890ABCDEFGHIJKL1234567890' \
--d 'MODEL_INPUT'
+[baseten]
+remote_provider = baseten
+api_key = YOUR_API_KEY
 ```
 
-Or in Python:
+## Use API keys with endpoints
 
-```python  theme={"system"}
-headers = {"Authorization": "Api-Key abcdefgh.1234567890ABCDEFGHIJKL1234567890"}
-```
+To call model endpoints with your API key, see [Call your model](/inference/calling-your-model).
 
-## Tips for managing API keys
+## Manage API keys
 
-Best practices for API key use apply to your Baseten API keys:
+The [API keys page](https://app.baseten.co/settings/api_keys) shows all your keys with their creation date and last used timestamp. Use this information to identify unused keys.
 
-* Always store API keys securely.
-* Never commit API keys to your codebase.
-* Never share or leak API keys in notebooks or screenshots.
-* Name your API keys to keep them organized.
+To rename a key, select the pencil icon next to the key name.
 
-The [API key list on your Baseten account](https://app.baseten.co/settings/api_keys) shows when each key was first created and last used. Rotate API keys regularly and remove any unused API keys to reduce the risk of accidental leaks.
+To rotate a key, create a new key, update your applications to use it, then revoke the old key.
+
+To revoke a key, select the trash icon next to the key. Revoked keys cannot be restored.
+
+You can also manage API keys programmatically with the [REST API](/reference/management-api/api-keys/creates-an-api-key).
+
+### Security recommendations
+
+* Store API keys in environment variables or secret managers, not in code.
+* Never commit API keys to version control.
+* Use team keys with minimal permissions for production applications.
+* Rotate keys periodically and revoke unused keys.

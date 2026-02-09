@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/servicetokens/list-service_tokens.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List service_tokens
 
 > List out all service_tokens. The service_tokens are sorted by creation date, with the most recently-created service_tokens coming first
@@ -267,7 +271,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

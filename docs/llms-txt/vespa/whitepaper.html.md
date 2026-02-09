@@ -196,7 +196,7 @@ Vespa is released up to 4 times a week, and we strive to keep all applications a
 
 Any unexpected production issue, including security incidents, is handled through our incident management process. Non-security incidents are announced through our console. Security incidents are communicated directly to affected customers. A post-mortem review process is initiated after every incident. In the event of a potential security breach, a forensic investigation is conducted.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

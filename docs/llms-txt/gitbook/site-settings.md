@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-settings.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-settings.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/site-settings.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/site-settings.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-settings.md
 
@@ -16,7 +12,7 @@
 Certain customization features are only available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0iwL31qTpzsWqGlbhlM1%2F18_07_25_publishing-documentation-site-settings.svg?alt=media&#x26;token=d79833ca-192f-4fea-838a-a27067b71c76" alt="A GitBook screenshot showing site settings"><figcaption><p>Update the settings for your published documentation.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4boLIj6LJFZ1HCGx58DW%2F25_01_06_site_settings%402x.png?alt=media&#x26;token=1b7f4162-0170-49e1-afb1-62a578b874c3" alt="A GitBook screenshot showing site settings"><figcaption><p>Update the settings for your published documentation.</p></figcaption></figure>
 
 ### General
 
@@ -106,7 +102,7 @@ Publish your content on a subdirectory (e.g. `yourcompany.com/docs`). See [#gitb
 
 <details>
 
-<summary>PDF export <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>PDF export <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Let your visitors to export your GitBook as PDF. See [pdf-export](https://gitbook.com/docs/collaboration/pdf-export "mention") for more info.
 
@@ -114,7 +110,7 @@ Let your visitors to export your GitBook as PDF. See [pdf-export](https://gitboo
 
 <details>
 
-<summary>Page ratings <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>Page ratings <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Choose whether or not visitors to your published content can leave a rating on each page to let you know how they feel about it. They’ll be able to choose a sad, neutral, or happy face.
 
@@ -126,7 +122,7 @@ You can review the results of these ratings by opening the [**Insights**](https:
 
 <details>
 
-<summary>Choose the AI experience <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>Choose the AI experience <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Let your site visitors ask GitBook anything with AI search or the GitBook assistant. See [ai-search](https://gitbook.com/docs/publishing-documentation/ai-search "mention") for more info.
 
@@ -134,7 +130,7 @@ Let your site visitors ask GitBook anything with AI search or the GitBook assist
 
 <details>
 
-<summary>Extend it with MCP connectors <mark style="background-color:purple;">Ultimate</mark> </summary>
+<summary>Extend it with MCP connectors <mark style="background-color:purple;">Ultimate</mark></summary>
 
 Configure MCP servers that the AI assistant can use when answering user questions inside your docs. See [#how-do-i-use-gitbook-ai](https://gitbook.com/docs/ai-search#how-do-i-use-gitbook-ai "mention") for more info.
 

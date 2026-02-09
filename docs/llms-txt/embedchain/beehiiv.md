@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/beehiiv.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🐝 Beehiiv
 
 To add any Beehiiv data sources to your app, just add the base url as the source and set the data\_type to `beehiiv`.
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

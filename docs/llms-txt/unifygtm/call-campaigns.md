@@ -2,21 +2,9 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/nooks/call-campaigns.md
 
-# Source: https://docs.unifygtm.com/reference/integrations/orum/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/nooks/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/orum/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/nooks/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/orum/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/nooks/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/orum/call-campaigns.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/nooks/call-campaigns.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Running Call Campaigns with Nooks
 

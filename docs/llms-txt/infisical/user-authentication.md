@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/user-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Authentication
 
 > Browse and search through all available user authentication methods for Infisical.
@@ -69,15 +73,15 @@ export const UserAuthenticationBrowser = () => {
     "description": "Learn how to configure Keycloak SAML SSO for user authentication in Infisical.",
     "category": "SSO"
   }, {
-    "name": "Okta",
+    "name": "Okta OIDC",
     "slug": "okta-oidc-sso",
-    "path": "/documentation/platform/sso/okta",
+    "path": "/documentation/platform/sso/okta-oidc",
     "description": "Learn how to configure Okta OIDC SSO for user authentication in Infisical.",
     "category": "SSO"
   }, {
     "name": "Okta SAML",
     "slug": "okta-saml-sso",
-    "path": "/documentation/platform/sso/okta-saml",
+    "path": "/documentation/platform/sso/okta",
     "description": "Learn how to configure Okta SAML SSO for user authentication in Infisical.",
     "category": "SSO"
   }, {

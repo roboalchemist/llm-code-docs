@@ -4,12 +4,6 @@
 
 # Source: https://ast-grep.github.io/catalog/yaml.md
 
-# Source: https://ast-grep.github.io/reference/yaml.md
-
-# Source: https://ast-grep.github.io/cheatsheet/yaml.md
-
-# Source: https://ast-grep.github.io/catalog/yaml.md
-
 ---
 url: /catalog/yaml.md
 ---

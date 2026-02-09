@@ -6,7 +6,7 @@
 
 ***
 
-With https://zapier.com/apps/apify/integrations, you can connect your Apify Actors to Slack, Trello, Google Sheets, Dropbox, Salesforce, and loads more.
+With [Apify integration for Zapier](https://zapier.com/apps/apify/integrations), you can connect your Apify Actors to Slack, Trello, Google Sheets, Dropbox, Salesforce, and loads more.
 
 Your Zapier workflows can start Apify Actors or tasks, fetch items from a dataset, set and get records from key-value stores, or find Actor or task runs.
 
@@ -16,8 +16,8 @@ You can use the Zapier integration to trigger a workflow whenever an Actor or a 
 
 To use the Apify integration on Zapier, you will need to:
 
-* Have an https://console.apify.com/.
-* Have a https://zapier.com/.
+* Have an [Apify account](https://console.apify.com/).
+* Have a [Zapier account](https://zapier.com/).
 
 ### Step 1: Create Zap and find Apify on Zapier
 
@@ -113,13 +113,13 @@ Once you are happy with the test, you can publish the Zap. When it is turned on,
 
 ### Set Key-Value Store Record
 
-> Sets a value to a https://docs.apify.com/platform/storage/key-value-store.md.
+> Sets a value to a [Key-value store](https://docs.apify.com/platform/storage/key-value-store.md).
 
 ## Searches
 
 ### Fetch Dataset Items
 
-> Retrieves items from a https://docs.apify.com/platform/storage/dataset.md.
+> Retrieves items from a [dataset](https://docs.apify.com/platform/storage/dataset.md).
 
 ### Find Last Actor Run
 
@@ -131,6 +131,6 @@ Once you are happy with the test, you can publish the Zap. When it is turned on,
 
 ### Get Key-Value Store Record
 
-> Retrieves value from a https://docs.apify.com/platform/storage/key-value-store.md.
+> Retrieves value from a [Key-value store](https://docs.apify.com/platform/storage/key-value-store.md).
 
-If you have any questions or need help, feel free to reach out to us on our https://discord.com/invite/jyEM2PRvMU.
+If you have any questions or need help, feel free to reach out to us on our [developer community on Discord](https://discord.com/invite/jyEM2PRvMU).

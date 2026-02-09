@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/operation.md
 
-# Source: https://docs.slatejs.org/api/operations/operation.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/operation.md
-
-# Source: https://docs.slatejs.org/api/operations/operation.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/operation.md
-
 # Operation
 
 An operation is the lowest-level description of a specific change to a part of Slate's value. They are designed to be collaborative-editing friendly.

@@ -16,7 +16,7 @@ Upgrading to the Payment Sheet gives you access to:
 - The [Appearance API](https://docs.stripe.com/elements/appearance-api.md?platform=ios), which allows you to customize the look and feel to match your app
 ![Example of benefits gained when migrating from Basic Integration to Payment Sheet](https://b.stripecdn.com/docs-statics-srv/assets/mobile-bi-migration-to-mpe.df130554a0f82a3a3c84a6602944f823.png)
 
-In iOS, [Basic Integration](https://docs.stripe.com/mobile/ios/basic.md) includes:
+In iOS, Basic Integration includes:
 
 - `STPCustomerContext`
 - `STPPaymentContext`
@@ -24,7 +24,7 @@ In iOS, [Basic Integration](https://docs.stripe.com/mobile/ios/basic.md) include
 - `STPAddCardViewController`
 - `STPShippingAddressViewController`
 
-In Android, [Basic Integration](https://docs.stripe.com/mobile/android/basic.md) includes:
+In Android, Basic Integration includes:
 
 - `CustomerSession`
 - `PaymentSession`
@@ -48,7 +48,7 @@ Use the following integration guides to implement the Payment Sheet on a checkou
 - [iOS Integration](https://docs.stripe.com/payments/accept-a-payment-deferred.md?platform=ios&type=payment&integration=paymentsheet-flowcontroller)
 - [Android Integration](https://docs.stripe.com/payments/accept-a-payment-deferred.md?platform=android&type=payment&integration=paymentsheet-flowcontroller)
 
-The integration guides linked above differ from the default Payment Sheet [integration guide](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios) in a few important ways.
+The integration guides linked above differ from the default Payment Sheet [integration guide](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=ios) in a few important ways.
 
 ### Flow Controller
 
@@ -69,7 +69,7 @@ Use the following integration guides to implement the Payment Sheet in a wallet 
 - [iOS Integration](https://docs.stripe.com/payments/accept-a-payment-deferred.md?platform=ios&type=setup&integration=paymentsheet)
 - [Android Integration](https://docs.stripe.com/payments/accept-a-payment-deferred.md?platform=android&type=setup&integration=paymentsheet)
 
-The integration guides linked above differ from the default Payment Sheet [integration guide](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios) in a few important ways.
+The integration guides linked above differ from the default Payment Sheet [integration guide](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=ios) in a few important ways.
 
 ### Intent creation time
 

@@ -8,8 +8,7 @@ Learn how to generate a data-driven optimization matrix that ranks database issu
 
 {% stepper %}
 {% step %}
-
-### Intro
+**Intro**
 
 This tutorial teaches you how to prompt Warp to audit and optimize your **database performance** automatically.
 
@@ -17,16 +16,14 @@ It analyzes SQL queries, identifies common inefficiencies, and generates a **pri
 {% endstep %}
 
 {% step %}
-
-### The Problem
+**The Problem**
 
 When you tell AI to “optimize a query,” that could mean *anything* — faster, safer, or simpler.\
 Instead, use Warp to clarify intent and return measurable outcomes.
 {% endstep %}
 
 {% step %}
-
-### The Prompt
+**The Prompt**
 
 Paste this into Warp’s AI input:
 
@@ -293,8 +290,7 @@ Warp will locate all SQL usage, test each query, and score them using explain-pl
 {% endstep %}
 
 {% step %}
-
-### Review the Matrix
+**Review the Matrix**
 
 The output includes:
 

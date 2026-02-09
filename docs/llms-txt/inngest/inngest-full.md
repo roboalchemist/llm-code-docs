@@ -31,7 +31,7 @@ The Inngest MCP server runs locally with your dev server and requires no externa
 The MCP server is automatically available when you start the Inngest dev server:
 
 ```bash
-npx inngest-cli@latest dev
+npx --ignore-scripts=false inngest-cli@latest dev
 ```
 
 The MCP endpoint will be available at `http://127.0.0.1:8288/mcp`
@@ -264,7 +264,7 @@ The AI can:
 ### Common Issues
 
 **MCP server not found**
-- Ensure the Inngest dev server is running: `npx inngest-cli@latest dev`
+- Ensure the Inngest dev server is running: `npx --ignore-scripts=false inngest-cli@latest dev`
 - Verify the MCP endpoint is accessible: `curl http://127.0.0.1:8288/mcp`
 - Check your MCP client configuration
 
@@ -396,7 +396,7 @@ Use the curl command to sync from your machine or automate the process within a 
 Send a PUT request to your application's serve endpoint using the following command:
 
 ```shell
-curl -X PUT https://<your-app>.com/api/inngest
+curl -X PUT https://<your-app>.com/api/inngest --fail-with-body
 ```
 
 <Callout>
@@ -1008,206 +1008,6 @@ You can pass multiple paths by adding their path information to each Vercel proj
 ## Manually syncing apps
 
 While we strongly recommend our Vercel integration, you can still use Inngest by manually telling Inngest that you've deployed updated functions. You can sync your app [via the Inngest UI](/docs/apps/cloud#sync-a-new-app-in-inngest-cloud) or [via our API with a curl request](/docs/apps/cloud#curl-command).
-
-# Inngest Dev Server
-Source: https://www.inngest.com/docs/dev-server
-
-The Inngest dev server is an [open source](https://github.com/inngest/inngest) environment that:
-
-1. Runs a fast, in-memory version of Inngest on your machine
-2. Provides a browser interface for sending events and viewing events and function runs
-
-![Dev Server Demo](/assets/docs/local-development/dev-server-demo-2025-01-15.gif)
-
-You can start the dev server with a single command. The dev server will attempt to find an Inngest `serve` API endpoint by scanning ports and endpoints that are commonly used for this purpose (See "[Auto-discovery](#auto-discovery)"). Alternatively, you can specify the URL of the `serve` endpoint:
-
-<CodeGroup>
-```shell {{ title: "npx (npm)" }}
-npx inngest-cli@latest dev
-# You can specify the URL of your development `serve` API endpoint
-npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
-```
-```shell {{ title: "Docker" }}
-docker run -p 8288:8288 inngest/inngest \
-  inngest dev -u http://host.docker.internal:3000/api/inngest
-```
-</CodeGroup>
-
-You can now open the dev server's browser interface on [`http://localhost:8288`](http://localhost:8288). For more information about developing with Docker, see the [Docker guide](/docs/guides/development-with-docker).
-
-### Connecting apps to the Dev Server
-
-There are two ways to connect apps to the Dev Server:
-
-1. **Automatically**: The Dev Server will attempt to "auto-discover" apps running on common ports and endpoints (See "[Auto-discovery](#auto-discovery)").
-2. **Manually**: You scan explicitly add the URL of the app to the Dev Server using one of the following options:
-    - Using the CLI `-u` param (ex. `npx inngest-cli@latest dev -u http://localhost:3000/api/inngest`)
-    - Adding the URL in the Dev Server Apps page. You can edit the URL or delete a manually added app at any point in time
-    - Using the `inngest.json` (or similar) configuration file (See "[Configuration file](#configuration-file)")
-
-![Dev Server demo manually syncing an app](/assets/docs/local-development/dev-server-apps-demo-2025-01-15.gif)
-
-<Tip>
-  The dev server does "auto-discovery" which scans popular ports and endpoints like `/api/inngest` and `/.netlify/functions/inngest`. **If you would like to disable auto-discovery, pass the `--no-discovery` flag to the `dev` command**. Learn more about [this below](#auto-discovery)
-</Tip>
-
-### How functions are loaded by the Dev Server
-
-The dev server polls your app locally for any new or changed functions. Then as events are sent, the dev server calls your functions directly, just as Inngest would do in production over the public internet.
-
-[IMAGE]
-
-## Testing functions
-
-### Invoke via UI
-
-From the Functions tab, you can quickly test any function by click the "Invoke" button and providing the data for your payload in the modal that pops up there. This is the easiest way to directly call a specific function:
-
-[IMAGE]
-
-### Sending events to the Dev Server
-
-There are different ways that you can send events to the dev server when testing locally:
-
-1. Using the Inngest SDK
-2. Using the "Test Event" button in the Dev Server's interface
-3. Via HTTP request (e.g. curl)
-
-#### Using the Inngest SDK
-
-When using the Inngest SDK locally, it tries to detect if the dev server is running on your machine. If it's running, the event will be sent there.
-
-<CodeGroup>
-```ts {{ title: "Node.js" }}
-new Inngest({ id: "my_app" });
-await inngest.send({
-  name: "user.avatar.uploaded",
-  data: { url: "https://a-bucket.s3.us-west-2.amazonaws.com/..." },
-});
-```
-
-```python {{ title: "Python" }}
-from inngest import Inngest
-
-inngest_client = inngest.Inngest(app_id="my_app")
-await inngest_client.send(
-  name="user.avatar.uploaded",
-  data={"url": "https://a-bucket.s3.us-west-2.amazonaws.com/..."},
-)
-```
-
-```go {{ title: "Go" }}
-!snippet:path=snippets/go/docs/examples/devserver/main.go
-```
-</CodeGroup>
-**Note** - During local development, you can use a dummy value for your [`INNGEST_EVENT_KEY`](/docs/sdk/environment-variables#inngest-event-key?ref=local-development) environment variable. The dev server does not validate keys locally.
-
-#### Using the "Test Event" button
-
-The dev server's interface also has a "Test Event" button on the top right that enables you to enter any JSON event payload and send it manually. This is useful for testing out different variants of event payloads with your functions.
-
-[IMAGE]
-
-#### Via HTTP request
-
-All events are sent to Inngest using a simple HTTP API with a JSON body. Here is an example of a curl request to the local dev server's `/e/<EVENT_KEY>` endpoint running on the default port of `8228` using a dummy event key of `123`:
-
-```shell
-curl -X POST -v "http://localhost:8288/e/123" \
-  -d '{
-    "name": "user.avatar.uploaded",
-    "data": { "url": "https://a-bucket.s3.us-west-2.amazonaws.com/..." }
-  }'
-```
-
-<Callout>
-  💡 Since you can send events via HTTP, this means you can send events with any programming language or from your favorite testing tools like Postman.
-</Callout>
-
-## Configuration file
-
-When using lots of configuration options or specifying multiple `-u` flags for a project, you can choose to configure the CLI via `inngest.json` configuration file. The `dev` command will start in your current directory and walk up directories until it finds a file. `yaml`, `yml`, `toml`, or `properties` file formats and extensions are also supported. You can list all options with `dev --help`. Here is an example file specifying two app urls and the `no-discovery` option:
-
-<CodeGroup>
-```json {{ title: "inngest.json" }}
-{
-  "sdk-url": [
-    "http://localhost:3000/api/inngest",
-    "http://localhost:3030/api/inngest"
-  ],
-  "no-discovery": true
-}
-```
-```yaml {{ title: "inngest.yaml" }}
-sdk-url:
-  - "http://localhost:3000/api/inngest"
-  - "http://localhost:3030/api/inngest"
-no-discovery: true
-```
-</CodeGroup>
-
-## Inngest SDK debug endpoint
-
-The [SDK's `serve` API endpoint](/docs/learn/serving-inngest-functions) will return some diagnostic information for your server configuration when sending a `GET` request. You can do this via `curl` command or by opening the URL in the browser.
-
-Here is an example of a curl request to an Inngest app running at `http://localhost:3000/api/inngest`:
-
-```sh
-$ curl -s http://localhost:3000/api/inngest | jq
-{
-  "message": "Inngest endpoint configured correctly.",
-  "hasEventKey": false,
-  "hasSigningKey": false,
-  "functionsFound": 1
-}
-```
-
-## Auto-discovery
-
-The dev server will automatically detect and connect to apps running on common ports and endpoints. You can disable auto-discovery by passing the `--no-discovery` flag to the `dev` command:
-
-```sh
-npx inngest-cli@latest dev --no-discovery -u http://localhost:3000/api/inngest
-```
-
-<CodeGroup>
-```plaintext {{ title: "Common endpoints" }}
-/api/inngest
-/x/inngest
-/.netlify/functions/inngest
-/.redwood/functions/inngest
-```
-
-```plaintext {{ title: "Common ports" }}
-80, 443,
-// Rails, Express & Next/Nuxt/Nest routes
-3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010,
-// Django
-5000,
-// Vite/SvelteKit
-5173,
-// Other common ports
-8000, 8080, 8081, 8888,
-// Redwood
-8910, 8911, 8912, 8913, 8914, 8915,
-// Cloudflare Workers
-8787,
-```
-</CodeGroup>
-
-## Flags 
-
-`inngest-cli dev` command supports the following flags:
-
-| **Long form**  | **Short form** | **Type** | **Default value**                 | **Description**                       |
-|:--------------:|:--------------:|:--------:|:---------------------------------:|:-------------------------------------:|
-| --config       | -              | string   | -                                 | Path to an Inngest configuration file |
-| --help         | -h             | -        | -                                 | Output the help information           |
-| --host         | -              | string   | http://localhost                  | Inngest server host                   |
-| --no-discovery | -              | boolean  | false                             | Disable app auto-discovery            |
-| --no-poll      | -              | boolean  | false                             | Disable polling of apps for updates   |
-| --port         | -p             | int      | 8288                              | Inngest server port                   |
-| --sdk-url      | -u             | strings  | http://localhost:3000/api/inngest | App serve URLs to sync                |
 
 # Event format and structure
 Source: https://www.inngest.com/docs/events/_event-format-and-structure
@@ -2505,6 +2305,14 @@ Make durable HTTP requests within an Inngest function.
 Use Realtime to stream updates from one to multiple Inngest functions or to implement a Human in the Loop mechanism.
 </Card>
 
+<Card
+  href={"/docs/examples/open-telemetry"}
+  icon={<RiBarChart2Fill fill={"black"} className="h-6 w45 fill-carbon-700/10 stroke-carbon-700 transition-colors duration-300 group-hover:stroke-carbon-900 dark:fill-white/10 dark:stroke-carbon-400 dark:group-hover:fill-indigo-300/10 dark:group-hover:stroke-indigo-400" />}
+  title={'Setup OpenTelemetry with Inngest'}
+>
+  Forward your application's OpenTelemetry traces to Inngest Traces
+</Card>
+
 </CardGroup>
 
 ## Middleware
@@ -2623,6 +2431,132 @@ inngest.createFunction(
   }
 );
 ```
+
+# Set up OpenTelemetry with Inngest <VersionBadge version="TypeScript only" />
+Source: https://www.inngest.com/docs/examples/open-telemetry
+Description: Enrich your Inngest Traces with your application's OpenTelemetry traces
+
+Inngest's [Extended Traces](/docs/platform/monitor/traces#extended-traces) enables you to forward your application OpenTelemetry traces into
+Inngest's Traces for a unified observability and debugging experience, both in the DevServer and Platform.
+
+This guide covers how to **set up OpenTelemetry with Inngest Traces** and how to **create custom spans**.
+
+## Set up Inngest Extended Traces with an existing OpenTelemetry client
+
+If your application already uses an OpenTelemetry client, the Inngest `extendedTracesMiddleware()` should be configured properly to
+capture your application traces while not registering the Node.js instrumentations twice.
+
+Here's a Node.js application OpenTelemetry setup (_exporting traces via OTLP_) using Inngest Extended Traces:
+
+```ts tracing.ts
+inngest = new Inngest({
+  id: "nodejs-open-telemetry-example",
+  name: "NodeJS Open Telemetry Example",
+  // set to "off" if your OTel client has some `instrumentations` configured
+  middleware: [extendedTracesMiddleware({ behaviour: "auto" })],
+});
+
+// Configure OTLP endpoint for Jaeger using the HTTP exporter
+// Jaeger typically accepts OTLP HTTP on http://localhost:4318/v1/traces
+// Override via OTEL_EXPORTER_OTLP_ENDPOINT or OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+new OTLPTraceExporter({
+  url:
+    process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+    process.env.OTEL_EXPORTER_OTLP_ENDPOINT ||
+    "http://localhost:4318/v1/traces",
+});
+
+new NodeSDK({
+  traceExporter: traceExporter,
+  spanProcessors: [new InngestSpanProcessor(inngest)],
+  // Set service name for Jaeger
+  serviceName: "nodejs-open-telemetry-example",
+});
+
+sdk.start();
+
+console.log("OpenTelemetry SDK started");
+console.log(
+  `Tracing endpoint: ${
+    process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+    process.env.OTEL_EXPORTER_OTLP_ENDPOINT ||
+    "http://localhost:4318/v1/traces"
+  }`
+);
+```
+
+This setup is the most robust as it won't force you to follow a strict import order to get your OTel and Inngest Tracing to work together.
+With this setup, your application OTel traces (e.g., Express API) will continue to be exported to your OTLP compatible ingestor (e.g., Jaeger) while
+the Inngest Extended Traces will be forwarded to the Inngest DevServer or Platform.
+
+<Callout>
+
+**Which Extended Traces `behaviour` mode should I use?**
+
+If your current OpenTelemetry setup includes some auto instrumentations (e.g., `@opentelemetry/auto-instrumentations-node`), set the `behaviour` mode to `"off"` to avoid duplicated traces.
+
+If you'd like to benefit from database queries and HTTP request traces in your Inngest Traces, set `behaviour` to `"auto"`.
+
+</Callout>
+
+## Set up Inngest Extended Traces WITHOUT an existing OpenTelemetry client
+
+Setting up Inngest Extended Traces without an existing OpenTelemetry client only requires adding the `extendedTracesMiddleware()`
+to your Inngest client as follows:
+
+ ```ts client.ts
+// Create your client the same as you would normally
+inngest = new Inngest({
+  id: "my-app",
+  middleware: [extendedTracesMiddleware()]
+});
+```
+
+This configuration will enrich your Inngest Traces with database queries and HTTP request spans.
+
+## How to create custom spans with Inngest Extended Traces
+
+Once Inngest Extended Traces is properly set up in your application, your Inngest workflow will receive an additional `tracer` argument:
+
+```ts workflow.ts
+userOnboarding = inngest.createFunction(
+  { id: "user-onboarding" },
+  { event: "user.onboarding" },
+  async ({ event, step, tracer }) => {
+    //  ...
+  }
+);
+```
+
+The `tracer` object is an `@opentelemetry/api`'s `Tracer` instance enabling you to create custom traces as follows:
+
+```ts workflow.ts
+userOnboarding = inngest.createFunction(
+  { id: "user-onboarding" },
+  { event: "user.onboarding" },
+  async ({ event, step, tracer }) => {
+    await step.run("create-user", async () => {
+        // ...
+    });
+
+    await step.run("send-welcome-email", async () => {
+        tracer.startActiveSpan("call-email-service", async (span) => {
+        span.setAttributes({ name, email });
+
+        await sendEmail({ name, email })
+
+        span.end();
+      });
+    });
+  }
+);
+```
+
+Using `tracer.startActiveSpan()`, we create a custom `call-email-service` span to track the performance of the external `sendEmail()` service.
+
+Our custom span is properly displayed within our Inngest workflow run Traces:
+
+![The user-onboarding run displays Inngest Traces featuring the call-email-service custom span](/assets/docs/examples/open-telemetry/custom-span.png)
 
 # Realtime: Stream updates from Inngest functions
 Source: https://www.inngest.com/docs/examples/realtime
@@ -3174,10 +3108,19 @@ The dev server will automatically detect and connect to apps running on common p
 You can disable auto-discovery by passing the `--no-discovery` flag to the `dev` command:
 
 ```sh
-npx inngest-cli@latest dev --no-discovery
+npx --ignore-scripts=false inngest-cli@latest dev --no-discovery
 ```
 
 Learn more about this in the [dev server](/docs/dev-server#auto-discovery) docs.
+
+## Why doesn't the Dev Server do anything when I start it?
+
+If the Dev Server command (`npx inngest-cli dev`) doesn't do anything, it might be because you've disabled npm install scripts. Try clearing your npm cache and rerunning the Dev Server command with `--ignore-scripts=false`:
+
+```sh
+$ rm -rf ~/.npm/_npx/*
+$ npx --ignore-scripts=false inngest-cli dev
+```
 
 # Event payload format
 Source: https://www.inngest.com/docs/features/events-triggers/event-format
@@ -3382,7 +3325,7 @@ import {
 Inngest functions are triggered asynchronously by **events** coming from various sources, including:
 
 <CardGroup cols={2}>
-  <Card title="Your application" icon={<RiCloudLine className="text-basis h-4 w-4" />} href={'/docs/events'}>
+  <Card title="Your application" icon={<RiCloudLine className="text-basis h-4 w-4" />} href="/docs/events">
     Send an event from your application’s backend with the Inngest SDK.
   </Card>
   <Card title="Cron schedule" icon={<RiTimeLine className="text-basis h-4 w-4" />} href={'/docs/guides/scheduled-functions'}>
@@ -3883,7 +3826,7 @@ Function runs that are cancelled may require additional work like database clean
 
 See [this complete example](/docs/examples/cleanup-after-function-cancellation) for how to use this event within your system to cleanup after a function run is cancelled.
 
-# Failure handlers <VersionBadge version="TypeScript only" />
+# Failure handlers
 Source: https://www.inngest.com/docs/features/inngest-functions/error-retries/failure-handlers
 
 If your function exhausts all of its retries, it will be marked as "Failed." You can handle this circumstance by either providing an [`onFailure/on_failure`](/docs/reference/functions/handling-failures) handler when defining your function, or by listening for the [`inngest/function.failed`](/docs/reference/system-events/inngest-function-failed) system event.
@@ -3894,8 +3837,11 @@ The first approach is function-specific, while the second covers all function fa
 
 The example below checks if a user's subscription is valid a total of six times. If you can't check the subscription after all retries, you'll unsubscribe the user:
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSelector options={[{ key: "typescript", title: "TypeScript" }, { key: "python", title: "Python" }, { key: "go", title: "Go" }]}>
+
+<GuideSection show="typescript">
+
+```ts
 /* Option 1: give the inngest function an `onFailure` handler. */
 inngest.createFunction(
   {
@@ -3917,7 +3863,11 @@ inngest.createFunction(
 );
 ```
 
-```python {{ title: "Python" }}
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 # Option 1: give the inngest function an [`on_failure`] handler.
 async def update_subscription_failed(ctx: inngest.Context):
     # if the subscription check fails after all retries, unsubscribe the user
@@ -3943,6 +3893,11 @@ async def update_subscription(ctx: Context):
 async def global_failure_handler(ctx: Context):
     pass # handle all failures, e.g. to send to sentry
 ```
+
+</GuideSection>
+
+<GuideSection show="go">
+
 ```go
 // the Go SDK doesn't have native way to define failure handlers,
 // but you can define one by create a new function that uses
@@ -3993,7 +3948,10 @@ f := inngestgo.CreateFunction(
 // 3. Join them with a hyphen:
 // event.data.function_id == 'my-app-account-created'
 ```
-</CodeGroup>
+
+</GuideSection>
+
+</GuideSelector>
 
 <Callout>
   To handle cancelled function runs, checkout out [this example](/docs/examples/cleanup-after-function-cancellation) that uses the [`inngest/function.cancelled`](/docs/reference/system-events/inngest-function-cancelled) system event.
@@ -4506,8 +4464,11 @@ By default, in _addition_ to the **initial attempt**, Inngest will retry a funct
 
 For the function below, if the database write fails then it'll be retried up to 4 times until it succeeds:
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSelector options={[{ key: "typescript", title: "TypeScript" }, { key: "python", title: "Python" }, { key: "go", title: "Go" }]}>
+
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   { id: "click-recorder" },
   { event: "app/button.clicked" },
@@ -4516,7 +4477,12 @@ inngest.createFunction(
   },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{ID: "click-recorder"},
@@ -4527,7 +4493,12 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-```py {{ title: "Python" }}
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 @inngest_client.create_function(
     fn_id="click-recorder",
     trigger=inngest.TriggerEvent(event="app/button.clicked"),
@@ -4535,12 +4506,14 @@ inngestgo.CreateFunction(
 def record_click(ctx: inngest.Context) -> None:
     db.clicks.insert_one(ctx.event.data)
 ```
-</CodeGroup>
+
+</GuideSection>
 
 You can configure the number of `retries` by specifying it in your function configuration. Setting the value to `0` will disable retries.
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   {
     id: "click-recorder",
@@ -4550,7 +4523,12 @@ inngest.createFunction(
   async ({ event, step, attempt }) => { /* ... */ },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{
@@ -4564,7 +4542,12 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-```py {{ title: "Python" }}
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 @inngest_client.create_function(
     fn_id="click-recorder",
     retries=10,  # choose how many retries you'd like
@@ -4573,7 +4556,8 @@ inngestgo.CreateFunction(
 def click_recorder(ctx: inngest.Context) -> None:
     # ...
 ```
-</CodeGroup>
+
+</GuideSection>
 
 You can customize the behavior of your function based on the number of retries using the `attempt` argument. `attempt` is passed in the function handler's context and is zero-indexed, meaning the first attempt is `0`, the second is `1`, and so on. The `attempt` is incremented every time the function throws an error and is retried, and is reset when steps complete. This allows you to handle attempt numbers differently in each step.
 
@@ -4587,8 +4571,9 @@ A function can be broken down into multiple steps, where each step is individual
 
 In the example below, both the "_get-data_" and "_save-data_" steps each get their own set of 4 retries (5 total attempts including the initial attempt). If the "_save-data_" step fails all 5 attempts, it doesn't affect the retry count of the "_get-data_" step - they are completely independent.
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   { id: "sync-systems" },
   { event: "auto/sync.request" },
@@ -4605,7 +4590,12 @@ inngest.createFunction(
   },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{ID: "sync-systems"},
@@ -4631,7 +4621,12 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-```py {{ title: "Python" }}
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 @inngest_client.create_function(
     fn_id="sync-systems",
     trigger=inngest.TriggerEvent(event="auto/sync.request"),
@@ -4643,7 +4638,8 @@ def sync_systems(ctx: inngest.ContextSync) -> None:
     # Can also be retried up to 4 times
     ctx.step.run("Save data", db.syncs.insert_one, data)
 ```
-</CodeGroup>
+
+</GuideSection>
 
 <Callout>
 **Important:** Each step gets its own independent retry counter. You can configure the number of [`retries`](/docs/reference/functions/create#inngest-create-function-configuration-trigger-handler-inngest-function) for each function. This excludes the initial attempt. A retry count of `4` means that **each individual step** will be attempted up to 5 times (1 initial attempt + 4 retries).
@@ -4657,8 +4653,9 @@ You can throw a [non-retriable error](/docs/reference/typescript/functions/error
 
 This is useful for when you know an error is permanent and want to stop all execution. In this example, the user doesn't exist, so there's no need to continue to email them.
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   { id: "user-weekly-digest" },
   { event: "user/weekly.digest.requested" },
@@ -4681,7 +4678,12 @@ inngest.createFunction(
   },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{ID: "user-weekly-digest"},
@@ -4708,7 +4710,12 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-```py {{ title: "Python" }}
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 from inngest.errors import NonRetriableError
 
 @inngest_client.create_function(
@@ -4725,7 +4732,8 @@ def user_weekly_digest(ctx: inngest.ContextSync) -> None:
 
     ctx.step.run("send-digest", send_digest, user["email"])
 ```
-</CodeGroup>
+
+</GuideSection>
 
 ## Customizing retry times
 
@@ -4733,7 +4741,8 @@ Retries are executed with exponential back-off with some jitter, but it's also p
 
 In this example, an external API provided `Retry-After` header with information on when requests can be made again, so you can tell Inngest to retry your function then.
 
-<CodeGroup>
+<GuideSection show="typescript">
+
 ```ts
 inngest.createFunction(
   { id: "send-welcome-notification" },
@@ -4756,6 +4765,11 @@ inngest.createFunction(
   },
 );
 ```
+
+</GuideSection>
+
+<GuideSection show="go">
+
 ```go
 inngestgo.CreateFunction(
 	client,
@@ -4778,7 +4792,12 @@ inngestgo.CreateFunction(
 	}
 )
 ```
-```py {{ title: "Python" }}
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
 import inngest
 from src.inngest.client import inngest_client
 
@@ -4795,7 +4814,10 @@ def send_welcome_notification(ctx: inngest.ContextSync) -> None:
 	if not success and retryAfter is not None:
 		raise inngest.RetryAfterError("Hit Twilio rate limit", retryAfter)
 ```
-</CodeGroup>
+
+</GuideSection>
+
+</GuideSelector>
 
 # Rollbacks
 Source: https://www.inngest.com/docs/features/inngest-functions/error-retries/rollbacks
@@ -4806,8 +4828,11 @@ If a step failure isn't handled, the error will bubble up to the function itself
 
 Below is an attempt to use DALL-E to generate an image from a prompt, and to fall back to Midjourney if it fails. Remember that these calls are split over separate requests, making the code much more durable against timeouts, transient errors, and these dependencies on external APIs.
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSelector options={[{ key: "typescript", title: "TypeScript" }, { key: "go", title: "Go" }]}>
+
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   { id: "generate-result" },
   { event: "prompt.created" },
@@ -4837,7 +4862,12 @@ inngest.createFunction(
   },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{ID: "generate-result"},
@@ -4877,35 +4907,16 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-{/* ```py {{ title: "Python" }}
-@inngest_client.create_function(
-    fn_id="generate-result",
-    trigger=inngest.TriggerEvent(event="prompt.created"),
-)
-def generate_result(ctx: inngest.ContextSync) -> None:
-    image_url = None
-    via = None
 
-    try:
-        image_url = ctx.step.run("generate-image-dall-e", open_api_call_to_generate_image)
-        via = "dall-e"
-    except Exception as err:
-        image_url = ctx.step.run("generate-image-midjourney", midjourney_call_to_generate_image)
-        via = "midjourney"
-
-    def _notify_user() -> None:
-        pusher.trigger(ctx.event.data["channelID"], "image-result", {"imageURL": image_url, "via": via})
-
-    ctx.step.run("notify-user", _notify_user)
-``` */}
-</CodeGroup>
+</GuideSection>
 
 ### Simple rollbacks
 
 With this pattern, it's possible to assign a small rollback for each step, making sure that every action is safe regardless of how many steps are being run.
 
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
+<GuideSection show="typescript">
+
+```ts
 inngest.createFunction(
   { id: "add-data" },
   { event: "app/row.data.added" },
@@ -4931,7 +4942,12 @@ inngest.createFunction(
   },
 );
 ```
-```go {{ title: "Go" }}
+
+</GuideSection>
+
+<GuideSection show="go">
+
+```go
 inngestgo.CreateFunction(
 	client,
 	inngestgo.FunctionOpts{ID: "add-data"},
@@ -4961,29 +4977,10 @@ inngestgo.CreateFunction(
 	},
 )
 ```
-{/* ```py {{ title: "Python" }}
-@inngest_client.create_function(
-    fn_id="add-data",
-    trigger=inngest.TriggerEvent(event="app/row.data.added"),
-)
-def add_data(ctx: inngest.ContextSync) -> None:
-    # ignore the error - this step is fine if it fails
-    try:
-        ctx.step.run("Non-critical step", update_metric)
-    except Exception:
-        pass
 
-    # Add a rollback to a step
-    try:
-        ctx.step.run("Create row", create_row_and_add_detail, ctx.event.data["rowId"], ctx.event.data["entry"])
-    except Exception as err:
-        ctx.step.run("Rollback row creation", remove_row, ctx.event.data["rowId"])
+</GuideSection>
 
-def create_row_and_add_detail(row_id, entry):
-    create_row(row_id)
-    add_detail(entry)
-``` */}
-</CodeGroup>
+</GuideSelector>
 
 # Fetch: performing API requests or fetching data <VersionBadge version="TypeScript only" />
 Source: https://www.inngest.com/docs/features/inngest-functions/steps-workflows/fetch
@@ -6054,146 +6051,6 @@ Explore the following guide for a step-by-step overview of a complete workflow r
     icon={<GoIcon className="text-basis" />}
   >
     Steps API reference
-  </Card>
-
-</CardGroup>
-
-# Inngest Functions
-Source: https://www.inngest.com/docs/features/inngest-functions
-
-import {
-  RiGitPullRequestFill,
-  RiGuideFill,
-  RiTimeLine,
-  RiCalendarLine,
-  RiMistFill,
-} from "@remixicon/react";
-
-Inngest functions enable developers to run reliable background logic, from background jobs to complex workflows.
-An Inngest Function is composed of 3 main parts that provide robust tools for retrying, scheduling, and coordinating complex sequences of operations:
-
-<CardGroup cols={3}>
-  <Card title="Triggers" icon={<EventIcon className="text-basis h-4 w-4"/>} href={'/docs/features/events-triggers'}>
-    A list of Events, Cron schedules or webhook events that trigger Function runs.
-  </Card>
-  <Card title="Flow Control" icon={<RiGitPullRequestFill className="rotate-90 text-basis h-4 w-4" />} href={'/docs/guides/flow-control'}>
-    Control how Function runs get distributed in time with Concurrency, Throttling and more.
-  </Card>
-  <Card title="Steps" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/features/inngest-functions/steps-workflows'}>
-    Transform your Inngest Function into a workflow with retriable checkpoints.
-  </Card>
-</CardGroup>
-
-<CodeGroup>
-```ts {{ title: "TypeScript" }}
-inngest.createFunction({
-    id: "sync-systems",
-    // Easily add Throttling with Flow Control
-    throttle: { limit: 3, period: "1min"},
-  },
-  // A Function is triggered by events
-  { event: "auto/sync.request" },
-  async ({ step }) => {
-    // step is retried if it throws an error
-    await step.run("get-data", async () => {
-      return getDataFromExternalSource();
-    });
-
-    // Steps can reuse data from previous ones
-    await step.run("save-data", async () => {
-      return db.syncs.insertOne(data);
-    });
-  }
-);
-```
-```py {{ title: "Python" }}
-@inngest_client.create_function(
-    fn_id="sync-systems",
-    # A Function is triggered by events
-    trigger=inngest.TriggerEvent(event="auto/sync.request"),
-    # Easily add Throttling with Flow Control
-    throttle=inngest.Throttle(
-        count=2, period=datetime.timedelta(minutes=1)
-    ),
-)
-def sync_systems(ctx: inngest.ContextSync) -> None:
-    # step is retried if it throws an error
-    data = ctx.step.run("Get data", get_data_from_external_source)
-
-    # Steps can reuse data from previous ones
-    ctx.step.run("Save data", db.syncs.insert_one, data)
-```
-```go {{ title: "Go" }}
-!snippet:path=snippets/go/docs/functions/sync_systems_function.go
-```
-</CodeGroup>
-
-{/* 
-Increase your Inngest Functions durability by leveraging:
-
-- **[Retries features](/docs/guides/error-handling)** - Configure a custom retry policy, handle rollbacks and idempotency.
-- **[Cancellation features](/docs/features/inngest-functions/cancellation)** - Dynamically or manually cancel in-progress runs to prevent unnecessary work.
-- **[Versioning best practices](/docs/learn/versioning)** - Strategies to gracefully introducing changes in your Inngest Functions.
- */}
-
-## Using Inngest Functions
-
-Start using Inngest Functions by using the pattern that fits your use case:
-
-<CardGroup cols={2}>
-  <Card title="Background jobs" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/guides/multi-step-functions'}>
-    Run long-running tasks  out of the critical path of a request.
-  </Card>
-  <Card title="Delayed Functions" icon={<RiCalendarLine className="text-basis h-4 w-4"/>} href={'/docs/guides/delayed-functions'}>
-    Schedule Functions that run in the future.
-  </Card>
-  <Card title="Cron Functions" icon={<RiTimeLine className="text-basis h-4 w-4"/>} href={'/docs/guides/scheduled-functions'}>
-    Build Inngest Functions as CRONs.
-  </Card>
-  <Card title="Workflows" icon={<RiMistFill className="text-basis h-4 w-4"/>} href={'/docs/features/inngest-functions/steps-workflows'}>
-    Start creating worflows by leveraging Inngest Function Steps.
-  </Card>
-</CardGroup>
-
-## Learn more about Functions and Steps
-
-Functions and Steps are powered by Inngest's Durable Execution Engine. Learn about its inner working by reading the following guides:
-
-<CardGroup cols={1}>
-  <Card title="How Functions are executed" icon={<RiMistFill className="text-basis h-4 w-4"/>} href={'/docs/learn/how-functions-are-executed'}>
-    A deep dive into Inngest's Durable Execution Engine with a step-by-step workflow run example.
-  </Card>
-  <Card title="Thinking in Steps" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/guides/multi-step-functions'}>
-    Discover by example how steps enable more reliable and flexible functions with step-level error handling, conditional steps and waits.
-  </Card>
-</CardGroup>
-
-## SDK References
-
-<CardGroup cols={3}>
-
-  <Card 
-    href={"/docs/reference/typescript"}
-    title={"TypeScript SDK"}
-    icon={<TypeScriptIcon className="text-basis"/>}
-  >
-  API reference
-  </Card>
-
-  <Card 
-    href={"/docs/reference/python"}
-    title={"Python SDK"}
-    icon={<PythonIcon className="text-basis"/>}
-  >
-    API reference
-  </Card>
-
-  <Card 
-    href={"https://pkg.go.dev/github.com/inngest/inngestgo@v0.9.0/step"}
-    title={"Go SDK"}
-    icon={<GoIcon className="text-basis"/>}
-  >
-    Go API reference
   </Card>
 
 </CardGroup>
@@ -8135,7 +7992,7 @@ await step.invoke("start-process", {
 });
 ```
 
-You can optionally provide `schemas`, which are a collection of [Zod](https://zod.dev) schemas used to provide typing to the input and output of the referenced function.
+You can optionally provide `schemas`, which are a collection of [Standard Schemas](https://standardschema.dev/) used to provide typing to the input and output of the referenced function.
 
 <Callout>
 In the future, this will also _validate_ the input and output.
@@ -8188,10 +8045,10 @@ await step.invoke("start-process", {
 
           <Properties nested>
                <Property name="data" type="zod">
-                    The [Zod](https://zod.dev) schema to use to provide typing to the `data` payload required by the referenced function.
+                    The [Standard Schema](https://standardschema.dev/) to use to provide typing to the `data` payload required by the referenced function.
                </Property>
                <Property name="return" type="zod">
-                    The [Zod](https://zod.dev) schema to use to provide typing to the return value of the referenced function when invoked.
+                    The [Standard Schema](https://standardschema.dev/) to use to provide typing to the return value of the referenced function when invoked.
                </Property>
           </Properties>
      </Property>
@@ -8200,8 +8057,7 @@ await step.invoke("start-process", {
 # Next.js Quick Start
 Source: https://www.inngest.com/docs/getting-started/nextjs-quick-start
 
-description =
-  `Get started with Inngest in this ten-minute Next.js tutorial`
+description = `Get started with Inngest in this ten-minute Next.js tutorial`
 
 In this tutorial you will add Inngest to a Next.js app to see how easy it can be to build complex workflows.
 
@@ -8281,7 +8137,7 @@ Next, start the [Inngest Dev Server](/docs/local-development#inngest-dev-server)
 
 <CodeGroup>
 ```shell {{ title: "npm" }}
-npx inngest-cli@latest dev
+npx --ignore-scripts=false inngest-cli@latest dev
 ```
 ```shell {{ title: "yarn" }}
 yarn dlx inngest-cli@latest dev
@@ -8290,7 +8146,7 @@ yarn dlx inngest-cli@latest dev
 pnpm dlx inngest-cli@latest dev
 ```
 ```shell {{ title: "bun" }}
-npx inngest-cli@latest dev
+npx --ignore-scripts=false inngest-cli@latest dev
 ```
 </CodeGroup>
 
@@ -8304,7 +8160,7 @@ npx inngest-cli@latest dev
 <CodeGroup>
 
 ```bash {{ language: 'js' }}
-$ npx inngest-cli@latest dev
+$ npx --ignore-scripts=false inngest-cli@latest dev
 
 12:33PM INF executor > service starting
 12:33PM INF runner > starting event stream backend=redis
@@ -8622,8 +8478,7 @@ You can also read more:
 # Node.js Quick Start
 Source: https://www.inngest.com/docs/getting-started/nodejs-quick-start
 
-description =
-  `Get started with Inngest in this ten-minute JavaScript tutorial`
+description = `Get started with Inngest in this ten-minute JavaScript tutorial`
 
 In this tutorial you will add Inngest to a Node.js app to easily run background tasks and build complex workflows.
 
@@ -8715,7 +8570,7 @@ Next, start the [Inngest Dev Server](/docs/local-development#inngest-dev-server)
 
 <CodeGroup>
 ```shell {{ title: "npm" }}
-npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
+npx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest
 ```
 ```shell {{ title: "yarn" }}
 yarn dlx inngest-cli@latest dev -u http://localhost:3000/api/inngest
@@ -8724,7 +8579,7 @@ yarn dlx inngest-cli@latest dev -u http://localhost:3000/api/inngest
 pnpm dlx inngest-cli@latest dev -u http://localhost:3000/api/inngest
 ```
 ```shell {{ title: "bun" }}
-npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
+bunx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest
 ```
 </CodeGroup>
 
@@ -8738,7 +8593,7 @@ npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
 <CodeGroup>
 
 ```bash {{ language: 'js' }}
-$ npx inngest-cli@latest dev -u http://localhost:3000/api/inngest
+$ npx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest
 
 12:33PM INF executor > service starting
 12:33PM INF runner > starting event stream backend=redis
@@ -8950,6 +8805,7 @@ You will now send an event from within your server from a `/api/hello` `GET` end
 
 <GuideSection show="express">
 ```ts {{ filename: "./index.ts" }}
+express();
 app.use(express.json());
 app.use("/api/inngest", serve({ client: inngest, functions }));
 
@@ -9025,8 +8881,7 @@ You can also read more:
 # Python Quick Start
 Source: https://www.inngest.com/docs/getting-started/python-quick-start
 
-description =
-  `Get started with Inngest in this ten-minute Python tutorial`
+description = `Get started with Inngest in this ten-minute Python tutorial`
 
 {/* This is a duplicate of /docs/reference/python/overview/quick-start.mdx, which will soon be deleted*/}
 
@@ -9122,7 +8977,7 @@ Start the Dev Server:
 
 <CodeGroup>
 ```sh {{ title: "npx (npm)" }}
-npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
+npx --ignore-scripts=false inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
 ```
 ```sh {{ title: "Docker" }}
 docker run -p 8288:8288 inngest/inngest \
@@ -10036,61 +9891,13 @@ Debounce delays function execution until a series of events are no longer receiv
 ```ts {{ title: 
 
 TypeScript" }}
-export default inngest.createFunction(
-  {
-    id: "handle-webhook",
-    debounce: {
-      key: "event.data.account_id",
-      period: "5m",
-      timeout: "10m",
-    },
-  },
-  { event: "intercom/company.updated" },
-  async ({ event, step }) => {
-    // This function will only be scheduled 5 minutes after events are no longer received with the same
-    // `event.data.account_id` field.
-    //
-    // `event` will be the last event in the series received.
-  }
-);
+!snippet:path=snippets/ts/v3/debounce/basic.ts
 ```
 ```go {{ title: "Go" }}
-inngestgo.CreateFunction(
-	client,
-	inngestgo.FunctionOpts{
-		ID: "handle-webhook",
-		Debounce: &inngestgo.ConfigDebounce{
-			Key:     "event.data.account_id",
-			Period:  "5m",
-			Timeout: "10m",
-		},
-	},
-	inngestgo.EventTrigger("intercom/company.updated", nil),
-	func(ctx context.Context, input inngestgo.Input[map[string]any]) (any, error) {
-		// This function will only be scheduled 5 minutes after events are no longer received with the same
-		// `event.data.account_id` field.
-		//
-		// `event` will be the last event in the series received.
-		return nil, nil
-	},
-)
+!snippet:path=snippets/go/v0_11/debounce/basic.go
 ```
 ```py {{ title: "Python" }}
-@inngest.create_function(
-    fn_id="handle-webhook",
-    debounce=inngest.Debounce(
-        key="event.data.account_id",
-        period=datetime.timedelta(minutes=5),
-        timeout=datetime.timedelta(minutes=10)
-    ),
-    trigger=inngest.Trigger(event="intercom/company.updated")
-)
-async def handle_webhook(ctx: inngest.Context):
-    // This function will only be scheduled 5 minutes after events are no longer received with the same
-    // `event.data.account_id` field.
-    //
-    // `event` will be the last event in the series received.
-    pass
+!snippet:path=snippets/py/v0_5/debounce/basic.py
 ```
 </CodeGroup>
 
@@ -10290,82 +10097,6 @@ instead of using the queue to manage your code's timing.  This keeps your logic 
 
 Inngest *stops the function from running* for whatever time is specified.  When you call `step.sleep` or `step.sleepUntil` the function automatically stops running any future work. The function then tells the Inngest executor that it should be re-invoked at a future time.  We re-call the function at the next step, skipping any previous work.  This is how we bypass serverless function time limits and work across server restarts or redeploys.
 
-# Development with Docker
-Source: https://www.inngest.com/docs/guides/development-with-docker
-Description: Learn how to develop locally with Inngest and Docker.
-
-Inngest provides a Docker image that you can use to run the Inngest Dev Server within a container. This is useful when running Inngest locally or in a CI/CD environment.
-
-This guide will explain how to run Inngest using Docker or [Docker Compose](#docker-compose).
-
-## Docker image
-
-The [`inngest/inngest`](https://hub.docker.com/r/inngest/inngest) image is available on Docker Hub. Regular updates are made to this image, so we recommend pulling the latest version. You can find the latest version release on [our Github repo](https://github.com/inngest/inngest/releases).
-
-```bash
-docker pull inngest/inngest
-```
-
-## Standalone Docker container
-
-Docker can be useful for running the Inngest Dev Server in a standalone container. This is useful if you do not want to use the `npx inngest-cli@latest` method to run the Dev Server.
-
-To run the Inngest container, you'll need to:
-
-1. Expose the Dev Server port (default is `8288`).
-2. Use the `inngest dev` command with the `-u` flag to specify the URL where Inngest can find your app.
-
-In this example command, our app is running on the host machine on port `3000`. We use the `host.docker.internal` hostname to connect to the host machine from within the Docker container. For ease of reading, the command is broken up into multiple lines.
-
-```bash
-docker run -p 8288:8288 \
-  inngest/inngest \
-  inngest dev -u http://host.docker.internal:3000/api/inngest
-```
-
-You will then be able to access the Inngest Dev Server on your host machine at `http://localhost:8288` or whatever hostname you have configured. You may need to adjust the hostname for your app if you are using a different Docker network setup.
-
-<Callout>
-  If you decide to run the Dev Server on another port, you will need to set the `INNGEST_BASE_URL` environment variable in your app to point to the correct port. This value defaults to `http://localhost:8288`.
-</Callout>
-
-## Docker Compose
-
-If you're using [Docker Compose](https://docs.docker.com/compose/) to run your services locally, you can easily add Inngest to your local environment. Here's an example `docker-compose.yml` file that includes Inngest:
-
-```yaml {{ filename: "docker-compose.yaml" }}
-services:
-  app:
-    build: ./app
-    environment:
-      - INNGEST_DEV=1
-      - INNGEST_BASE_URL=http://inngest:8288
-    ports:
-      - '3000:3000'
-  inngest:
-    image: inngest/inngest:v0.27.0
-    command: 'inngest dev -u http://app:3000/api/inngest'
-    ports:
-      - '8288:8288'
-```
-
-In this example, we have two services: `app` and `inngest`. The `app` service is your application, and the `inngest` service is the Inngest Dev Server. There are a few key configurations to note:
-
-* The `INNGEST_DEV=1` environment variable tells the Inngest SDK it should connect to the Dev Server*.
-* The `INNGEST_BASE_URL=http://inngest:8288` environment variable tells the Inngest SDK where the Dev Server is running. In our example, the `inngest` service is running on port `8288` (the default Dev Server port).
-* The `command: 'inngest dev -u http://app:3000/api/inngest'` command tells the Dev Server where to find your app within the Docker network. In this example, the `app` service is running on port `3000`.
-* The `ports` configuration exposes the Dev Server on port `8288` so you can view this on your host machine in the browser.
-
-\* - The `INNGEST_DEV` environment variable was added to the TypeScript SDK in version 3.14. Prior to this version, you can set `NODE_ENV=development` to force the SDK to connect to the Dev Server.
-
-## Further reference
-
-* [Local development](/docs/local-development)
-* [Dev Server source code on GitHub](https://github.com/inngest/inngest)
-* [`inngest/inngest` Docker image on Docker Hub](https://hub.docker.com/r/inngest/inngest)
-* [TypeScript SDK Environment variable reference](/docs/sdk/environment-variables)
-* [Python SDK Environment variable reference](/docs/reference/python/overview/env-vars)
-
 # Errors & Retries
 Source: https://www.inngest.com/docs/guides/error-handling
 Description: Learn how to handle errors and failures in your Inngest functions.'
@@ -10452,7 +10183,7 @@ First, set up a `/signup` route handler to send an event to Inngest when a user 
 
 ```ts {{ filename: "app/routes/signup/route.ts" }}
 export async function POST(request: Request) {
-  // NOTE - this code is simplified for the of the example:
+  // NOTE - this code is simplified for the example:
   await request.json();
   await createUser({ email, password });
   await createSession(user.id);
@@ -10551,65 +10282,12 @@ First, set up a `/signup` route handler to send an event to Inngest when a user 
 
 <CodeGroup>
 
-```ts {{ title: "Flask route" }}
-from flask import Flask, request, redirect
-from src.inngest.client import inngest_client
-
-app = Flask(__name__)
-
-@app.route('/signup', methods=['POST'])
-async def signup():
-    // NOTE - this code is simplified for the example:
-    data = await request.get_json()
-    email = data['email']
-    password = data['password']
-    
-    user = await create_user(email=email, password=password)
-    await create_session(user.id)
-
-    // Send an event to Inngest
-    await inngest_client.send(
-        name="app/user.signup",
-        data={
-            "user": {
-                "id": user.id,
-                "email": user.email
-            }
-        }
-    )
-
-    return redirect('https://myapp.com/dashboard')
+```py {{ title: "Flask route" }}
+!snippet:path=snippets/py/v0_5/fan_out_jobs/flask_route.py
 ```
 
-```ts {{ title: "FastAPI route" }}
-from fastapi import FastAPI, Request, Response
-from fastapi.responses import RedirectResponse
-from src.inngest.client import inngest_client
-
-app = FastAPI()
-
-@app.post("/signup")
-async def signup(request: Request):
-    # NOTE - this code is simplified for the example:
-    data = await request.json()
-    email = data['email']
-    password = data['password']
-    
-    user = await create_user(email=email, password=password)
-    await create_session(user.id)
-
-    # Send an event to Inngest
-    await inngest_client.send(
-        name="app/user.signup",
-        data={
-            "user": {
-                "id": user.id,
-                "email": user.email
-            }
-        }
-    )
-
-    return RedirectResponse(url="https://myapp.com/dashboard")
+```py {{ title: "FastAPI route" }}
+!snippet:path=snippets/py/v0_5/fan_out_jobs/fast_api_route.py
 ```
 
 </CodeGroup>
@@ -10619,33 +10297,7 @@ Now, with this event, any function using `"app/user.signup"` as its event trigge
 Next, define two functions: `sendWelcomeEmail` and `startStripeTrial`. As you can see below, both functions use the same event trigger, but perform different work.
 
 ```py {{ filename: "inngest/functions.py" }}
-@inngest_client.create_function(
-    fn_id="send-welcome-email",
-    trigger=inngest.TriggerEvent(event="app/user.signup"),
-)
-async def send_welcome_email(ctx: inngest.Context) -> None:
-    await step.run("send-email", lambda: send_email(
-        email=ctx.event.data["user"]["email"],
-        template="welcome"
-    ))
-
-@inngest_client.create_function(
-    fn_id="start-stripe-trial", 
-    trigger=inngest.TriggerEvent(event="app/user.signup"),
-)
-async def start_stripe_trial(
-    ctx: inngest.Context,
-    step: inngest.Step,
-) -> None:
-    customer = await step.run("create-customer", lambda: stripe.Customer.create(
-        email=ctx.event.data["user"]["email"]
-    ))
-    
-    await step.run("create-subscription", lambda: stripe.Subscription.create(
-        customer=customer.id,
-        items=[{"price": "price_1MowQULkdIwHu7ixraBm864M"}],
-        trial_period_days=14
-    ))
+!snippet:path=snippets/py/v0_5/fan_out_jobs/functions.py
 ```
 
 You've now successfully implemented fan-out in our application. Each function will run independently and in parallel. If one function fails, the others will not be disrupted.
@@ -11359,10 +11011,10 @@ A log statement outside of `step` function could end up running multiple times, 
 
 ```ts {{ title: "example-fn.ts" }}
 async ({ event, step }) => {
-  logger.info("something") // this can be run three times
+  console.log("something") // this can be run three times
 
   await step.run("fn", () => {
-    logger.info("something else") // this will always be run once
+    console.log("something else") // this will always be run once
   })
 
   await step.run(...)
@@ -11373,14 +11025,13 @@ We provide a thin wrapper over existing logging tools, and export it to Inngest 
 
 ## Usage
 
-A `logger` object is available within all Inngest functions. You can use it with the logger of your choice,
-or if absent, `logger` will default to use `console`.
+A `logger` object is available within all Inngest functions as a handler argument. You can use it with the logger of your choice, or if absent, `logger` will default to use `console`.
 
 ```ts
 inngest.createFunction(
   { id: "my-awesome-function" },
   { event: "func/awesome" },
-  async ({ event, step, logger }) => {
+  async ({ event, step, logger }) => { // <== logger is available as an argument
     logger.info("starting function", { metadataKey: "metadataValue" });
 
     await step.run("do-something", () => {
@@ -11391,6 +11042,10 @@ inngest.createFunction(
   }
 );
 ```
+
+<Tip>
+We recommend using a logger library that supports a child logger `.child()` implementation which automatically adds function runtime metadata to your logs. Read more about [enriched logs with function metadata](#enriched-logs-with-function-metadata) for more details.
+</Tip>
 
 The exported logger provides the following interface methods:
 
@@ -11407,12 +11062,27 @@ These are very typical interfaces and are also on the [RFC5424 guidelines](https
 
 ## Using your preferred logger
 
-Running `console.log` is good for local development, but you probably want something more when running workloads in Production.
+While `console.log` may be good enough for local development, other logging libraries provide more features that are suitable for production use.
 
-The following is an example using [winston][winston] as the logger to be passed into Inngest functions.
+The following examples use [winston][winston] for the logging library, including a basic example and an example with a Datadog transport.
 
-<CodeGroup filename="inngest/client.ts">
-```ts
+<CodeGroup>
+```ts {{ title: "Winston basic example" }}
+winston.createLogger({
+  level: "info",
+  exitOnError: false,
+  format: winston.format.json(),
+  transports: [new winston.transports.Console()],
+});
+
+// Pass `logger` to the Inngest client, and this winston logger will be accessible within functions
+inngest = new Inngest({
+  id: "my-awesome-app",
+  logger: logger,
+  // ...
+});
+```
+```ts {{ title: "Winston with Datadog transport" }}
 /// Assuming we're deploying to Vercel.
 /// Other providers likely have their own pre-defined environment variables you can use.
 process.env.VERCEL_ENV || "development";
@@ -11441,19 +11111,24 @@ inngest = new Inngest({
 ```
 </CodeGroup>
 
-## How it works
+## Enriched logs with function metadata
 
-There is a built-in [logging middleware](/docs/reference/middleware/examples#logging) that provides a good default to work
-with.
+If the logger library supports a child logger `.child()` implementation, the built-in middleware will utilize it to add function runtime metadata to your logs automatically:
 
-### child logger
+- Function name
+- Event name
+- Run ID
 
-If the logger library supports a child logger `.child()` implementation, the built-in middleware will utilize it to add
-function runtime metadata for you:
-
-- function name
-- event name
-- run ID
+```ts {{ title: "Example usage with Winston logger" }}
+await step.run("summarize-content", async ({ step, logger }) => {
+  logger.info("calling Claude", { max_tokens: 1000 });
+});
+```
+```json {{ title: "Example log output" }}
+{"eventName":"inngest/function.invoked","functionName":"Summarize content via GPT-4",
+"level":"info","max_tokens":1000,"message":"Querying vector database",
+"runID":"01KB7YQXYNPEX3XB257A3RQDRX"}
+```
 
 ## Loggers supported
 
@@ -11468,6 +11143,10 @@ The following is a list of loggers we're aware of that work, but is not an exhau
 - [npmlog](https://github.com/npm/npmlog) (doesn't have `.debug()` but has a way to add custom levels)
 - [Tracer](https://github.com/baryon/tracer)
 - [Signale](https://github.com/klaudiosinani/signale)
+
+## Customizing the logger
+
+The built-in logger is implemented using [middleware](/docs/features/middleware). You can create your own middleware to customize the logger to your needs. See the [logging middleware example](/docs/reference/middleware/examples#logging) for more details.
 
 [winston]: https://github.com/winstonjs/winston
 
@@ -11658,7 +11337,7 @@ dailyReminder = async (req) => {
 );
 ```
 
-The above example task has a Schedule configured to the Mergent [**Schedules Dashboard**](https://app.mergent.co/) at `0 0 * * *` (every day at midnight).
+The above example task has a Schedule configured to the Mergent Schedules Dashboard at `0 0 * * *` (every day at midnight).
 
 Inngest enables you to configure your CRON interval directly from the code:
 
@@ -12993,7 +12672,7 @@ Voilà! You've created a dynamic marketing drip campaign where subsequent emails
 During local development with Inngest, you can use the Inngest Dev Server to run and test your functions on your own machine. To start the server, in your project directory run the following command:
 
 ```bash
-npx inngest-cli@latest dev
+npx --ignore-scripts=false inngest-cli@latest dev
 ```
 
 In your browser open [http://localhost:8288](http://localhost:8288/) to see the development UI.
@@ -13712,25 +13391,6 @@ def fn(ctx: inngest.ContextSync) -> None:
   )
 ```
 
-At this time, Inngest does not have stable support for `asyncio.gather` or `asyncio.wait`. If you'd like to try out experimental support, use the `_experimental_execution` option when creating your function:
-
-```py
-@client.create_function(
-  fn_id="my-fn",
-  trigger=inngest.TriggerEvent(event="my-event"),
-  _experimental_execution=True,
-)
-def fn(ctx: inngest.ContextSync) -> None:
-  user_id = ctx.event.data["user_id"]
-
-  (updated_user, sent_email) = asyncio.gather(
-    asyncio.create_task(ctx.step.run("update-user", update_user, user_id)),
-    asyncio.create_task(ctx.step.run("send-email", send_email, user_id)),
-  )
-```
-
-When using `asyncio.wait`, `asyncio.FIRST_COMPLETED` is supported. However, `asyncio.FIRST_EXCEPTION` is not supported due to the way Inngest interrupts the execution of the function.
-
 ## Optimizing parallel step performance
 
 By default, parallel steps require 2 requests per step to your application. If you have many parallel steps (e.g., hundreds), this can lead to:
@@ -13930,7 +13590,8 @@ inngestgo.CreateFunction(
 	},
 	inngestgo.EventTrigger("ai/summary.requested", nil),
 	func(ctx context.Context, input inngestgo.Input[map[string]any]) (any, error) {
-		// This function will be throttled to 1 run per 5 seconds for a given event payload with matching user_id
+		// This function will be throttled to 1 run per 5 seconds for a given event payload with matching user_id,
+		// while the one-time burst allows 2 extra runs to start within 5 seconds, after which no more runs are accepted for 5 seconds.
 		return nil, nil
 	},
 )
@@ -13948,7 +13609,8 @@ inngestgo.CreateFunction(
   trigger=inngest.Trigger(event="ai/summary.requested")
 )
 async def synchronize_data(ctx: inngest.Context):
-    ```
+        # while the one-time burst allows 2 extra runs to start within 5 seconds, after which no more runs are accepted for 5 seconds.
+```
 
 </CodeGroup>
 
@@ -13958,12 +13620,19 @@ You can configure throttling on each function using the optional `throttle` para
 
 - `limit`: The total number of runs allowed to start within the given `period`.
 - `period`: The period within the limit will be applied.
-- `burst`: The number of runs allowed to start in the given window in a single burst. This defaults to 1, which ensures that requests are smoothed amongst the given `period`.
+- `burst`: The number of runs allowed to start in the given window in a single burst on top of `limit`.
 - `key`: An optional expression which returns a throttling key using event data. This allows you to apply unique throttle limits specific to a user.
+
+<Callout>
+  GCRA breaks down the provided `period` into smaller windows based on the `limit`.
+  Without bursts, GCRA will admit a single request for every window. Inngest may attempt to start multiple pending function runs in a short time window, so to guarantee maximum throughput, we start `limit + burst` function runs in each window, which allows all requests to start within the configured `period`.
+
+This is required as background jobs do not arrive at the same rate as the events triggering them.
+</Callout>
 
 **Configuration information**
 
-- The rate limit smooths requests in the given period, allowing `limit/period` requests a second.
+- Using throttle ensures that within a window of the given `period`, at most `limit + burst` runs may start.
 - Period must be between `1s` and `7d`, or between 1 second and 7 days. The minimum granularity is one second.
 - Throttling is currently applied per function. Two functions with the same key have two separate limits.
 - Every request is evenly weighted and counts as a single unit in the rate limiter.
@@ -15082,6 +14751,122 @@ This is a non-exhaustive list of CEL [helpers](https://github.com/google/cel-spe
 
 You can test out expressions on [Undistro's CEL Playground](https://playcel.undistro.io/). It's a great way to quickly test out more complex expressions, especially with conditional returns.
 
+# Improve Performance
+Source: https://www.inngest.com/docs/improve-performance
+Description: Solutions to reduce latency
+
+Inngest offers two complementary approaches to reduce latency in your functions: **Checkpointing** for faster step execution, and **Connect** for persistent, low-latency connections between your app and Inngest.
+
+---
+
+## Checkpointing
+
+Checkpointing is a performance optimization for Inngest functions that executes steps eagerly rather than waiting on internal orchestration.
+
+### Differences in Execution Models
+
+The [Inngest default execution model](/docs/learn/how-functions-are-executed) is a complete handoff to the Inngest Platform, where an HTTP request is performed to store the execution state upon each step completion, leading to inter-step latency.
+
+Checkpointing uses the SDK to orchestrate steps and run them on the client side, resulting in the immediate execution of subsequent synchronous steps (ex, `step.run()`) in a function. As steps execute, checkpointing requests are sent to Inngest to keep track of progress when an async step is met (ex, `step.sleep()`).
+
+With the standard execution model, Inngest orchestrates your function by making network round-trips between each step. This is reliable, but adds latency.
+
+Checkpointing flips this: the SDK orchestrates steps on the client-side (_on your server_) and executes them immediately. As steps completed, checkpoint messages are sent to Inngest to track progress. The result is dramatically lower latency — ideal for real-time AI workflows.
+
+### Failures and Retries
+
+What happens when something goes wrong? If a step fails and needs to retry, the execution engine falls back to standard orchestration to handle it properly. You get speed when things work, and safety when they don't.
+
+### Checkpointing Setup
+
+<GuideSelector
+  options={[
+    { key: "typescript", title: "TypeScript" },
+    { key: "go", title: "Go" },
+  ]}
+>
+
+<GuideSection show="typescript">
+
+To enable checkpointing:
+
+1. Install `inngest@3.46.0` or higher
+2. Set `checkpointing: true` on your Inngest client
+
+```ts
+inngest = new Inngest({
+  id: "my-app",
+  checkpointing: true,
+});
+
+</GuideSection>
+
+<GuideSection show="go">
+
+To enable checkpointing:
+
+1. Install the checkpoint package:
+
+```shell
+go get github.com/inngest/inngestgo/pkg/checkpoint
+```
+
+2. Set `Checkpoint` on your function options:
+
+```go
+import (
+  "github.com/inngest/inngestgo"
+  "github.com/inngest/inngestgo/pkg/checkpoint"
+)
+
+_, err := inngestgo.CreateFunction(
+  client,
+  inngestgo.FunctionOpts{
+    ID:         "my-function",
+    Name:       "My Function",
+    Checkpoint: checkpoint.ConfigSafe,
+  },
+  // ... triggers and handler
+)
+```
+
+</GuideSection>
+
+</GuideSelector>
+
+---
+
+## Connect
+
+The `connect` API allows your app to create an outbound persistent connection to Inngest (_workers-style approach_). This is another way to reduce latency — by keeping a WebSocket connection open rather than making HTTP requests for each step.
+
+### Performance Benefits
+
+Compared to the standard [`serve`](/docs/learn/serving-inngest-functions) approach, `connect` offers:
+
+- **Lowest latency** — Persistent connections eliminate the overhead of establishing new HTTP connections for each step.
+- **Simpler long running steps** — Step execution is not bound by platform HTTP timeouts.
+- **Elastic horizontal scaling** — Easily add more capacity by running additional workers.
+- **Ideal for container runtimes** — Deploy on Kubernetes or ECS without the need of a load balancer for inbound traffic.
+
+### How It Works
+
+The `connect` API establishes a persistent WebSocket connection to Inngest. Each connection can handle executing multiple functions and steps concurrently. Each app can create multiple connections to Inngest enabling horizontal scaling.
+
+Key features include:
+
+- **Automatic re-connections** — The connection will automatically reconnect if it is closed.
+- **Graceful shutdown** — The connection gracefully shuts down when the app receives a termination signal (`SIGTERM`). New steps won't be accepted, but existing steps are allowed to complete.
+- **Worker-level maximum concurrency (Coming soon)** — Each worker can configure the maximum number of concurrent steps it can handle, allowing Inngest to distribute load across multiple workers.
+
+<Info>
+  **WebSocket connection and HTTP fallback** — While a WebSocket connection is open, the worker sends and receives all step results via WebSocket. When the connection closes, the worker falls back to the HTTP API to send any remaining step results.
+</Info>
+
+### Getting Started with Connect
+
+For full setup instructions, requirements, deployment guides, and lifecycle management, see the [Connect documentation](/docs/setup/connect).
+
 # Inngest Documentation
 Source: https://www.inngest.com/docs/index
 
@@ -15468,48 +15253,72 @@ More information on Durable Execution in Inngest:
 
 # Inngest Functions
 Source: https://www.inngest.com/docs/learn/inngest-functions
-Description: Learn what Inngest functions are and of what they are capable.';
 
-# Inngest Functions
+import {
+  RiGitPullRequestFill,
+  RiGuideFill,
+  RiTimeLine,
+  RiCalendarLine,
+  RiMistFill,
+} from "@remixicon/react";
 
-Inngest functions enable developers to run reliable background logic, from background jobs to complex workflows. They provide robust tools for retrying, scheduling, and coordinating complex sequences of operations.
+Inngest functions enable developers to run reliable background logic, from background jobs to complex workflows.
+An Inngest Function is composed of 3 main parts that provide robust tools for retrying, scheduling, and coordinating complex sequences of operations:
 
-This page covers components of an Inngest function, as well as introduces different kinds of functions. If you'd like to learn more about Inngest's execution model, check the [
+<CardGroup cols={3}>
+  <Card title="Triggers" icon={<EventIcon className="text-basis h-4 w-4"/>} href={'/docs/features/events-triggers'}>
+    A list of Events, Cron schedules or webhook events that trigger Function runs.
+  </Card>
+  <Card title="Flow Control" icon={<RiGitPullRequestFill className="rotate-90 text-basis h-4 w-4" />} href={'/docs/guides/flow-control'}>
+    Control how Function runs get distributed in time with Concurrency, Throttling and more.
+  </Card>
+  <Card title="Steps" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/features/inngest-functions/steps-workflows'}>
+    Transform your Inngest Function into a workflow with retriable checkpoints.
+  </Card>
+</CardGroup>
 
-How Inngest functions are executed"](/docs/learn/how-functions-are-executed) page.
-
-#
-<GuideSelector
-  options={[
-    { key: "typescript", title: "TypeScript" },
-    { key: "go", title: "Go" },
-    { key: "python", title: "Python" },
-  ]}
->
-
-Let's have a look at the following Inngest function:
+<GuideSelector options={[{ key: "typescript", title: "TypeScript" }, { key: "python", title: "Python" }, { key: "go", title: "Go" }]}>
 
 <GuideSection show="typescript">
 
 ```ts
-export default inngest.createFunction(
-  // config
-  { id: "import-product-images" },
-  // trigger (event or cron)
-  { event: "shop/product.imported" },
-  // handler function
-  async ({ event, step }) => {
-    // Here goes the business logic
-    // By wrapping code in steps, it will be retried automatically on failure
-    await step.run("copy-images-to-s3", async () => {
-      return copyAllImagesToS3(event.data.imageURLs);
+inngest.createFunction({
+    id: "sync-systems",
+    // Easily add Throttling with Flow Control
+    throttle: { limit: 3, period: "1min"},
+  },
+  // A Function is triggered by events
+  { event: "auto/sync.request" },
+  async ({ step }) => {
+    // step is retried if it throws an error
+    await step.run("get-data", async () => {
+      return getDataFromExternalSource();
     });
-    // You can include numerous steps in your function
-    await step.run('resize-images', async () => {
-      await resizer.bulk({ urls: s3Urls, quality: 0.9, maxWidth: 1024 });
-    })
+
+    // Steps can reuse data from previous ones
+    await step.run("save-data", async () => {
+      return db.syncs.insertOne(data);
+    });
   }
 );
+```
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+@inngest_client.create_function(
+    id="sync-systems",
+    # trigger (event or cron)
+    trigger=inngest.TriggerEvent(event="auto/sync.request"),
+)
+def sync_systems(ctx: inngest.ContextSync) -> None:
+    # step is retried if it throws an error
+    data = ctx.step.run("Get data", get_data_from_external_source)
+
+    # Steps can reuse data from previous ones
+    ctx.step.run("Save data", db.syncs.insert_one, data)
 ```
 
 </GuideSection>
@@ -15517,214 +15326,82 @@ export default inngest.createFunction(
 <GuideSection show="go">
 
 ```go
-!snippet:path=snippets/go/docs/functions/import_product_images_function.go
+!snippet:path=snippets/go/docs/functions/sync_systems_function.go
 ```
 
 </GuideSection>
-
-<GuideSection show="python">
-
-```py
-import inngest
-from src.inngest.client import inngest_client
-
-@inngest_client.create_function(
-    # config
-    id="import-product-images",
-    # trigger (event or cron)
-    trigger=inngest.Trigger(event="shop/product.imported")
-)
-async def import_product_images(ctx: inngest.Context):
-    # Here goes the business logic
-    # By wrapping code in steps, it will be retried automatically on failure
-    s3_urls = await ctx.step.run(
-        "copy-images-to-s3",
-        lambda: copy_all_images_to_s3(ctx.event.data["imageURLs"])
-    )
-
-    # You can include numerous steps in your function
-    await ctx.step.run(
-        "resize-images",
-        lambda: resizer.bulk(
-            urls=s3_urls,
-            quality=0.9,
-            max_width=1024
-        )
-    )
-```
-
-</GuideSection>
-
-The above code can be explained as:
-> This Inngest function is called `import-product-images`. When an event called `shop/product.imported` is received, run two steps: `copy-images-to-s3` and `resize-images`.
-
-Let's have a look at each of this function's components.
-
-{/* <Callout>
-💡 You can test Inngest functions using standard tooling such as Jest or Mocha. To do so, export the job code and run standard unit tests.
-</Callout> */}
-
-<GuideSection show="typescript">
-
-### Config
-
-The first parameter of the `createFunction` method specifies Inngest function's configuration. In the above example, the `id` is specified, which will be used to identify the function in the Inngest system.
-
-You can see this ID in the [Inngest Dev Server's](/docs/local-development) function list:
-
-[IMAGE]
-
-You can also provide other [configuration options](/docs/reference/functions/create#configuration), such as `concurrency`, `throttle`, `debounce`, `rateLimit`, `priority`, `batchEvents`, or `idempotency` (learn more about [Flow Control](/docs/guides/flow-control)). You can also specify how many times the function will retry, what callback function will run on failure, and when to cancel the function.
-
-### Trigger
-
-Inngest functions are designed to be triggered by events or crons (schedules). Events can be [sent from your own code](/docs/events) or received from third party webhooks or API requests. When an event is received, it triggers a corresponding function to execute the tasks defined in the function handler (see the ["Handler" section](#handler) below).
-
-Each function needs at least one trigger. However, you can also work with [multiple triggers](/docs/guides/multiple-triggers) to invoke your function whenever any of the events are received or cron schedule occurs.
-
-### Handler
-
-A "handler" is the core function that defines what should happen when the function is triggered.
-
-The handler receives context, which includes the event data, tools for managing execution flow, or logging configuration. Let's take a closer look at them.
-
-#### `event`
-
-Handler has access to the data which you pass when sending events to Inngest via [`inngest.send()`](/docs/reference/events/send) or [`step.sendEvent()`](/docs/reference/functions/step-send-event).
-
-You can see this in the example above in the `event` parameter.
-
-#### `step`
-[Inngest steps](/docs/learn/inngest-steps) are fundamental building blocks in Inngest functions. They are used to manage execution flow. Each step is a discrete task, which can be executed, retried, and recovered independently, without re-executing other successful steps.
-
-It's helpful to think of steps as code-level transactions.  If your handler contains several independent tasks, it's good practice to [wrap each one in a step](/docs/guides/multi-step-functions).
-In this way, you can manage complex state easier and if any task fails, it will be retried independently from others.
-
-There are several step methods available at your disposal, for example, `step.run`, `step.sleep()`, or `step.waitForEvent()`.
-
-In the example above, the handler contains two steps: `copy-images-to-s3` and `resize-images`.
-
-</GuideSection>
-<GuideSection show="go">
-
-### Config
-
-The first parameter of the `createFunction` method specifies Inngest function's configuration. In the above example, the `id` is specified, which will be used to identify the function in the Inngest system.
-
-You can see this ID in the [Inngest Dev Server's](/docs/local-development) function list:
-
-[IMAGE]
-
-You can also provide other [configuration options](https://pkg.go.dev/github.com/inngest/inngestgo#CreateFunction), such as `Concurrency`, `Throttle`, `Debounce`, `RateLimit`, `Priority`, `BatchEvents`, or `Idempotency` (learn more about [Flow Control](/docs/guides/flow-control)). You can also specify how many times the function will retry, what callback function will run on failure, and when to cancel the function.
-
-### Trigger
-
-Inngest functions are designed to be triggered by events or crons (schedules). Events can be [sent from your own code](/docs/events) or received from third party webhooks or API requests. When an event is received, it triggers a corresponding function to execute the tasks defined in the function handler (see the ["Handler" section](#handler) below).
-
-Each function needs at least one trigger. However, you can also work with [multiple triggers](/docs/guides/multiple-triggers) to invoke your function whenever any of the events are received or cron schedule occurs.
-
-### Handler
-
-A "handler" is the core function that defines what should happen when the function is triggered.
-
-The handler receives context, which includes the event data, tools for managing execution flow, or logging configuration. Let's take a closer look at them.
-
-#### `event`
-
-Handler has access to the data which you pass when sending events to Inngest via [`inngest.Send()`](https://pkg.go.dev/github.com/inngest/inngestgo#Send).
-
-You can see this in the example above in the `event` parameter.
-
-#### `step`
-[Inngest steps](/docs/learn/inngest-steps) are fundamental building blocks in Inngest functions. They are used to manage execution flow. Each step is a discrete task, which can be executed, retried, and recovered independently, without re-executing other successful steps.
-
-It's helpful to think of steps as code-level transactions.  If your handler contains several independent tasks, it's good practice to [wrap each one in a step](/docs/guides/multi-step-functions).
-In this way, you can manage complex state easier and if any task fails, it will be retried independently from others.
-
-There are several step methods available at your disposal, for example, `step.Run`, `step.Sleep()`, or `step.WaitForEvent()`.
-
-In the example above, the handler contains two steps: `copy-images-to-s3` and `resize-images`.
-
-</GuideSection>
-
-<GuideSection show="python">
-
-### Config
-
-The first parameter of the `createFunction` method specifies Inngest function's configuration. In the above example, the `id` is specified, which will be used to identify the function in the Inngest system.
-
-You can see this ID in the [Inngest Dev Server's](/docs/local-development) function list:
-
-[IMAGE]
-
-You can also provide other [configuration options](/docs/reference/python/functions/create), such as `concurrency`, `throttle`, `debounce`, `rateLimit`, `priority`, `batchEvents`, or `idempotency` (learn more about [Flow Control](/docs/guides/flow-control)). You can also specify how many times the function will retry, what callback function will run on failure, and when to cancel the function.
-
-### Trigger
-
-Inngest functions are designed to be triggered by events or crons (schedules). Events can be [sent from your own code](/docs/events) or received from third party webhooks or API requests. When an event is received, it triggers a corresponding function to execute the tasks defined in the function handler (see the ["Handler" section](#handler) below).
-
-Each function needs at least one trigger. However, you can also work with [multiple triggers](/docs/guides/multiple-triggers) to invoke your function whenever any of the events are received or cron schedule occurs.
-
-### Handler
-
-A "handler" is the core function that defines what should happen when the function is triggered.
-
-The handler receives context, which includes the event data, tools for managing execution flow, or logging configuration. Let's take a closer look at them.
-
-#### `event`
-
-Handler has access to the data which you pass when sending events to Inngest via [`inngest.send()`](/docs/reference/python/client/send) or [`step.send_event()`](/docs/reference/python/functions/step-send-event).
-
-You can see this in the example above in the `event` parameter.
-
-#### `step`
-[Inngest steps](/docs/learn/inngest-steps) are fundamental building blocks in Inngest functions. They are used to manage execution flow. Each step is a discrete task, which can be executed, retried, and recovered independently, without re-executing other successful steps.
-
-It's helpful to think of steps as code-level transactions.  If your handler contains several independent tasks, it's good practice to [wrap each one in a step](/docs/guides/multi-step-functions).
-In this way, you can manage complex state easier and if any task fails, it will be retried independently from others.
-
-There are several step methods available at your disposal, for example, `step.run`, `step.sleep()`, or `step.wait_for_event()`.
-
-In the example above, the handler contains two steps: `copy-images-to-s3` and `resize-images`.
-
-</GuideSection>
-
-## Kinds of Inngest functions
-
-### <a href="/docs/guides/background-jobs" className="flex items-center gap-4"><IconConcurrency size="2rem"/> Background functions</a> {{anchor: false}}
-
-Long tasks can be executed outside the critical path of the main flow, which improves app's performance and reliability. Perfect for communicating with third party APIs or executing long-running code.
-
-### <a href="/docs/guides/scheduled-functions" className="flex items-center gap-4"><IconConcurrency size="2rem"/> Scheduled functions</a> {{anchor: false}}
-
-Inngest's scheduled functions enable you to run tasks automatically at specified intervals using cron schedules. These functions ensure consistent and timely execution without manual intervention. Perfect for routine operations like sending weekly reports or clearing caches.
-
-### <a href="/docs/guides/delayed-functions" className="flex items-center gap-4"><IconConcurrency size="2rem"/> Delayed functions</a> {{anchor: false}}
-
-You can enqueue an Inngest function to run at a specific time in the future. The task will be executed exactly when needed without manual intervention. Perfect for actions like sending follow-up emails or processing delayed orders.
-
-### <a href="/docs/guides/multi-step-functions" className="flex items-center gap-4"><IconConcurrency size="2rem"/> Step functions</a> {{anchor: false}}
-
-Step functions allow you to create complex workflows. You can coordinate between multiple steps, including waiting for other events, delaying execution, or running code conditionally based on previous steps or incoming events. Each [step](/docs/learn/inngest-steps) is individually retriable, making the workflow robust against failures. Ideal for scenarios like onboarding flows or conditional notifications.
-
-### <a href="/docs/guides/fan-out-jobs" className="flex items-center gap-4"><IconConcurrency size="2rem"/> Fan-out functions</a> {{anchor: false}}
-
-Inngest's fan-out jobs enable a single event to trigger multiple functions simultaneously. Ideal for parallel processing tasks, like sending notifications to multiple services or processing data across different systems.
-
-## Invoking functions directly
-
-You can [call an Inngest function directly](/docs/guides/invoking-functions-directly) from within your event-driven system by using `step.invoke()`, even across different Inngest SDKs.
-
-This is useful when you need to break down complex workflows into simpler, manageable parts or when you want to leverage existing functionality without duplicating code. Direct invocation is ideal for orchestrating dependent tasks, handling complex business logic, or improving code maintainability and readability.
-
-## Further reading
-
-- [Quick Start guide](/docs/getting-started/nextjs-quick-start?ref=docs-inngest-functions): learn how to build complex workflows.
-- ["How Inngest functions are executed"](/docs/learn/how-functions-are-executed): learn more about Inngest's execution model.
-- ["Inngest steps"](/docs/learn/inngest-steps): understand building Inngest's blocks.
-- ["Flow Control"](/docs/guides/flow-control): learn how to manage execution within Inngest functions.
 
 </GuideSelector>
+
+{/* 
+Increase your Inngest Functions durability by leveraging:
+
+- **[Retries features](/docs/guides/error-handling)** - Configure a custom retry policy, handle rollbacks and idempotency.
+- **[Cancellation features](/docs/features/inngest-functions/cancellation)** - Dynamically or manually cancel in-progress runs to prevent unnecessary work.
+- **[Versioning best practices](/docs/learn/versioning)** - Strategies to gracefully introducing changes in your Inngest Functions.
+ */}
+
+## Using Inngest Functions
+
+Start using Inngest Functions by using the pattern that fits your use case:
+
+<CardGroup cols={2}>
+  <Card title="Background jobs" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/guides/background-jobs'}>
+    Run long-running tasks out of the critical path of a request.
+  </Card>
+  <Card title="Delayed Functions" icon={<RiCalendarLine className="text-basis h-4 w-4"/>} href={'/docs/guides/delayed-functions'}>
+    Schedule Functions that run in the future.
+  </Card>
+  <Card title="Cron Functions" icon={<RiTimeLine className="text-basis h-4 w-4"/>} href={'/docs/guides/scheduled-functions'}>
+    Build Inngest Functions as CRONs.
+  </Card>
+  <Card title="Workflows" icon={<RiMistFill className="text-basis h-4 w-4"/>} href={'/docs/guides/multi-step-functions'}>
+    Start creating workflows by leveraging Inngest Function Steps.
+  </Card>
+</CardGroup>
+
+## Learn more about Functions and Steps
+
+Functions and Steps are powered by Inngest's Durable Execution Engine. Learn about its inner working by reading the following guides:
+
+<CardGroup cols={1}>
+  <Card title="How Functions are executed" icon={<RiMistFill className="text-basis h-4 w-4"/>} href={'/docs/learn/how-functions-are-executed'}>
+    A deep dive into Inngest's Durable Execution Engine with a step-by-step workflow run example.
+  </Card>
+  <Card title="Thinking in Steps" icon={<RiGuideFill className="text-basis h-4 w-4"/>} href={'/docs/guides/multi-step-functions'}>
+    Discover by example how steps enable more reliable and flexible functions with step-level error handling, conditional steps and waits.
+  </Card>
+</CardGroup>
+
+## SDK References
+
+<CardGroup cols={3}>
+
+  <Card 
+    href={"/docs/reference/typescript"}
+    title={"TypeScript SDK"}
+    icon={<TypeScriptIcon className="text-basis"/>}
+  >
+  API reference
+  </Card>
+
+  <Card 
+    href={"/docs/reference/python"}
+    title={"Python SDK"}
+    icon={<PythonIcon className="text-basis"/>}
+  >
+    API reference
+  </Card>
+
+  <Card 
+    href={"https://pkg.go.dev/github.com/inngest/inngestgo@v0.9.0/step"}
+    title={"Go SDK"}
+    icon={<GoIcon className="text-basis"/>}
+  >
+    Go API reference
+  </Card>
+
+</CardGroup>
 
 # Inngest Steps
 Source: https://www.inngest.com/docs/learn/inngest-steps
@@ -15734,6 +15411,8 @@ import { GuideSelector, GuideSection } from
 How Inngest functions are executed"](/docs/learn/how-functions-are-executed) page.
 
 #
+The first argument of every Inngest step method is an `id`. Each step is treated as a discrete task which can be individually retried, debugged, or recovered. Inngest uses the ID to memoize step state across function versions.
+
 <GuideSelector
   options={[
     { key: "typescript", title: "TypeScript" },
@@ -15743,8 +15422,6 @@ How Inngest functions are executed"](/docs/learn/how-functions-are-executed) pag
 >
 
 <GuideSection show="typescript">
-
-The first argument of every Inngest step method is an `id`. Each step is treated as a discrete task which can be individually retried, debugged, or recovered. Inngest uses the ID to memoize step state across function versions.
 
 ```typescript
 export default inngest.createFunction(
@@ -15762,145 +15439,9 @@ export default inngest.createFunction(
 );
 ```
 
-The ID is also used to identify the function in the Inngest system.
-
-Inngest's SDK also records a counter for each unique step ID.  The counter increases every time the same step is called.  This allows you to run the same step in a loop, without changing the ID.
-
-<Callout>
-Please note that each step is executed as **a separate HTTP request**. To ensure efficient and correct execution, place any non-deterministic logic (such as DB calls or API calls) within a `step.run()` call.
-</Callout>
-
-## Available Step Methods
-
-### <a href="/docs/reference/functions/step-run" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.run()</pre></a> {{anchor: false}}
-
-This method executes a defined piece of code.
-Code within `step.run()` is automatically retried if it throws an error. When `step.run()` finishes successfully, the response is saved in the function run state  and the step will not re-run.
-
-Use it to run synchronous or asynchronous code as a retriable step in your function.
-
-```typescript
-export default inngest.createFunction(
-  { id: "import-product-images" },
-  { event: "shop/product.imported" },
-  async ({ event, step }) => {
-    // Here goes the business logic
-    // By wrapping code in steps, it will be retried automatically on failure
-    await step.run("copy-images-to-s3", async () => {
-      return copyAllImagesToS3(event.data.imageURLs);
-    });
-  }
-);
-```
-
-<Callout>
-`step.run()` acts as a code-level transaction.  The entire step must succeed to complete.
-</Callout>
-
-### <a href="/docs/reference/functions/step-sleep" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.sleep()</pre></a> {{anchor: false}}
-
-This method pauses execution for a specified duration. Even though it seems like a `setInterval`, your function does not run for that time (you don't use any compute). Inngest handles the scheduling for you. Use it to add delays or to wait for a specific amount of time before proceeding. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
-
-```typescript
-export default inngest.createFunction(
-  { id: "send-delayed-email" },
-  { event: "app/user.signup" },
-  async ({ event, step }) => {
-    await step.sleep("wait-a-couple-of-days", "2d");
-    // Do something else
-  }
-);
-```
-
-### <a href="/docs/reference/functions/step-sleep-until" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.sleepUntil()</pre></a> {{anchor: false}}
-
-This method pauses execution until a specific date time. Any date time string in the format accepted by the Date object, for example `YYYY-MM-DD` or `YYYY-MM-DDHH:mm:ss`. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
-
-```typescript
-export default inngest.createFunction(
-  { id: "send-scheduled-reminder" },
-  { event: "app/reminder.scheduled" },
-  async ({ event, step }) => {
-    new Date(event.data.remind_at);
-    await step.sleepUntil("wait-for-the-date", date);
-    // Do something else
-  }
-);
-```
-
-### <a href="/docs/reference/functions/step-wait-for-event" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.waitForEvent()</pre></a> {{anchor: false}}
-
-This method pauses the execution until a specific event is received.
-
-```typescript
-export default inngest.createFunction(
-  { id: "send-onboarding-nudge-email" },
-  { event: "app/account.created" },
-  async ({ event, step }) => {
-    await step.waitForEvent(
-      "wait-for-onboarding-completion",
-      { event: "app/onboarding.completed", timeout: "3d", if: "event.data.userId == async.data.userId" }
-    );
-    // Do something else
-  }
-);
-```
-
-### <a href="/docs/reference/functions/step-invoke" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.invoke()</pre></a> {{anchor: false}}
-
-This method is used to asynchronously call another Inngest function ([written in any language SDK](/blog/cross-language-support-with-new-sdks)) and handle the result. Invoking other functions allows you to easily re-use functionality and compose them to create more complex workflows or map-reduce type jobs.
-
-This method comes with its own configuration, which enables defining specific settings like concurrency limits.
-
-```typescript
-// A function we will call in another place in our app
-inngest.createFunction(
-  { id: "compute-square" },
-  { event: "calculate/square" },
-  async ({ event }) => {
-    return { result: event.data.number * event.data.number }; // Result typed as { result: number }
-  }
-);
-
-// In this function, we'll call `computeSquare`
-inngest.createFunction(
-  { id: "main-function" },
-  { event: "main/event" },
-  async ({ step }) => {
-    await step.invoke("compute-square-value", {
-      function: computeSquare,
-      data: { number: 4 }, // input data is typed, requiring input if it's needed
-    });
-
-    return `Square of 4 is ${square.result}.`; // square.result is typed as number
-  }
-);
-```
-
-### <a href="/docs/reference/functions/step-send-event" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.sendEvent()</pre></a> {{anchor: false}}
-
-This method sends events to Inngest to invoke functions with a matching event. Use `sendEvent()` when you want to trigger other functions, but you do not need to return the result. It is useful for example in [fan-out functions](/docs/guides/fan-out-jobs).
-
-```typescript
-export default inngest.createFunction(
-  { id: "user-onboarding" },
-  { event: "app/user.signup" },
-  async ({ event, step }) => {
-    // Do something
-    await step.sendEvent("send-activation-event", {
-      name: "app/user.activated",
-      data: { userId: event.data.userId },
-    });
-    // Do something else
-  }
-);
-```
-
 </GuideSection>
 
 <GuideSection show="go">
-
-The first argument of every Inngest step method is an `id`. Each step is treated as a discrete task which can be individually retried, debugged, or recovered. Inngest uses the ID to memoize step state across function versions.
 
 ```go
 import (
@@ -15932,9 +15473,34 @@ inngestgo.CreateFunction(
 )
 ```
 
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+import inngest
+from src.inngest.client import inngest_client
+
+@inngest_client.create_function(
+    fn_id="import-product-images",
+    event="shop/product.imported"
+)
+async def import_product_images(ctx: inngest.Context):
+    uploaded_image_urls = await ctx.step.run(
+        # step ID
+        "copy-images-to-s3",
+        # other arguments, in this case: a handler
+        lambda: copy_all_images_to_s3(ctx.event.data["image_urls"])
+    )
+```
+
+</GuideSection>
+
+</GuideSelector>
+
 The ID is also used to identify the function in the Inngest system.
 
-Inngest's SDK also records a counter for each unique step ID.  The counter increases every time the same step is called.  This allows you to run the same step in a loop, without changing the ID.
+Inngest's SDK also records a counter for each unique step ID. The counter increases every time the same step is called. This allows you to run the same step in a loop, without changing the ID.
 
 <Callout>
 Please note that each step is executed as **a separate HTTP request**. To ensure efficient and correct execution, place any non-deterministic logic (such as DB calls or API calls) within a `step.run()` call.
@@ -15942,12 +15508,39 @@ Please note that each step is executed as **a separate HTTP request**. To ensure
 
 ## Available Step Methods
 
-### <a href="https://pkg.go.dev/github.com/inngest/inngestgo@v0.7.4/step#Run" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.Run()</pre></a> {{anchor: false}}
+<GuideSelector
+  options={[
+    { key: "typescript", title: "TypeScript" },
+    { key: "go", title: "Go" },
+    { key: "python", title: "Python" },
+  ]}
+>
 
-This method executes a defined piece of code.
-Code within `step.Run()` is automatically retried if it throws an error. When `step.Run()` finishes successfully, the response is saved in the function run state  and the step will not re-run.
+### step.run()
+
+This method executes a defined piece of code. Code within `step.run()` is automatically retried if it throws an error. When `step.run()` finishes successfully, the response is saved in the function run state and the step will not re-run.
 
 Use it to run synchronous or asynchronous code as a retriable step in your function.
+
+<GuideSection show="typescript">
+
+```typescript
+export default inngest.createFunction(
+  { id: "import-product-images" },
+  { event: "shop/product.imported" },
+  async ({ event, step }) => {
+    // Here goes the business logic
+    // By wrapping code in steps, it will be retried automatically on failure
+    await step.run("copy-images-to-s3", async () => {
+      return copyAllImagesToS3(event.data.imageURLs);
+    });
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
 
 ```go
 import (
@@ -15976,13 +15569,55 @@ inngestgo.CreateFunction(
 )
 ```
 
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+import inngest
+from src.inngest.client import inngest_client
+
+@inngest_client.create_function(
+    fn_id="import-product-images",
+    event="shop/product.imported"
+)
+async def import_product_images(ctx: inngest.Context):
+    # Here goes the business logic
+    # By wrapping code in steps, it will be retried automatically on failure
+    uploaded_image_urls = await ctx.step.run(
+        # step ID
+        "copy-images-to-s3",
+        # other arguments, in this case: a handler
+        lambda: copy_all_images_to_s3(ctx.event.data["image_urls"])
+    )
+```
+
+</GuideSection>
+
 <Callout>
-`step.Run()` acts as a code-level transaction.  The entire step must succeed to complete.
+`step.run()` acts as a code-level transaction. The entire step must succeed to complete.
 </Callout>
 
-### <a href="https://pkg.go.dev/github.com/inngest/inngestgo@v0.7.4/step#Sleep" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.Sleep()</pre></a> {{anchor: false}}
+### step.sleep()
 
-This method pauses execution for a specified duration. Inngest handles the scheduling for you. Use it to add delays or to wait for a specific amount of time before proceeding. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
+This method pauses execution for a specified duration. Even though it seems like a `setInterval`, your function does not run for that time (you don't use any compute). Inngest handles the scheduling for you. Use it to add delays or to wait for a specific amount of time before proceeding. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
+
+<GuideSection show="typescript">
+
+```typescript
+export default inngest.createFunction(
+  { id: "send-delayed-email" },
+  { event: "app/user.signup" },
+  async ({ event, step }) => {
+    await step.sleep("wait-a-couple-of-days", "2d");
+    // Do something else
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
 
 ```go
 import (
@@ -16004,9 +15639,93 @@ inngestgo.CreateFunction(
 )
 ```
 
-### <a href="https://pkg.go.dev/github.com/inngest/inngestgo@v0.7.4/step#WaitForEvent" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.WaitForEvent()</pre></a> {{anchor: false}}
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+import inngest
+from src.inngest.client import inngest_client
+
+@inngest_client.create_function(
+    fn_id="send-delayed-email",
+    trigger=inngest.TriggerEvent(event="app/user.signup")
+)
+async def send_delayed_email(ctx: inngest.Context):
+    await ctx.step.sleep("wait-a-couple-of-days", datetime.timedelta(days=2))
+    # Do something else
+```
+
+</GuideSection>
+
+### step.sleepUntil() / step.sleep_until()
+
+This method pauses execution until a specific date time. Any date time string in the format accepted by the Date object, for example `YYYY-MM-DD` or `YYYY-MM-DDHH:mm:ss`. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
+
+<GuideSection show="typescript">
+
+```typescript
+export default inngest.createFunction(
+  { id: "send-scheduled-reminder" },
+  { event: "app/reminder.scheduled" },
+  async ({ event, step }) => {
+    new Date(event.data.remind_at);
+    await step.sleepUntil("wait-for-the-date", date);
+    // Do something else
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
+
+Go SDK does not have a `sleepUntil` method. Use `step.Sleep()` with a calculated duration instead.
+
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+import inngest
+from src.inngest.client import inngest_client
+from datetime import datetime
+
+@inngest_client.create_function(
+    fn_id="send-scheduled-reminder",
+    trigger=inngest.TriggerEvent(event="app/reminder.scheduled")
+)
+async def send_scheduled_reminder(ctx: inngest.Context):
+    date = datetime.fromisoformat(ctx.event.data["remind_at"])
+    await ctx.step.sleep_until("wait-for-the-date", date)
+    # Do something else
+```
+
+</GuideSection>
+
+### step.waitForEvent() / step.wait_for_event()
 
 This method pauses the execution until a specific event is received.
+
+<GuideSection show="typescript">
+
+```typescript
+export default inngest.createFunction(
+  { id: "send-onboarding-nudge-email" },
+  { event: "app/account.created" },
+  async ({ event, step }) => {
+    await step.waitForEvent(
+      "wait-for-onboarding-completion",
+      { event: "app/onboarding.completed", timeout: "3d", if: "event.data.userId == async.data.userId" }
+    );
+    // Do something else
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
 
 ```go
 import (
@@ -16050,11 +15769,66 @@ inngestgo.CreateFunction(
 )
 ```
 
-### <a href="https://pkg.go.dev/github.com/inngest/inngestgo@v0.7.4/step#Invoke" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.Invoke()</pre></a> {{anchor: false}}
+</GuideSection>
+
+<GuideSection show="python">
+
+```python
+import inngest
+from src.inngest.client import inngest_client
+
+@inngest_client.create_function(
+    fn_id="send-onboarding-nudge-email",
+    trigger=inngest.TriggerEvent(event="app/account.created")
+)
+async def send_onboarding_nudge_email(ctx: inngest.Context):
+    onboarding_completed = await ctx.step.wait_for_event(
+      "wait-for-onboarding-completion",
+      event="app/wait_for_event.fulfill",
+      if_exp="event.data.user_id == async.data.user_id",
+      timeout=datetime.timedelta(days=1),
+    );
+    # Do something else
+```
+
+</GuideSection>
+
+### step.invoke()
 
 This method is used to asynchronously call another Inngest function ([written in any language SDK](/blog/cross-language-support-with-new-sdks)) and handle the result. Invoking other functions allows you to easily re-use functionality and compose them to create more complex workflows or map-reduce type jobs.
 
 This method comes with its own configuration, which enables defining specific settings like concurrency limits.
+
+<GuideSection show="typescript">
+
+```typescript
+// A function we will call in another place in our app
+inngest.createFunction(
+  { id: "compute-square" },
+  { event: "calculate/square" },
+  async ({ event }) => {
+    return { result: event.data.number * event.data.number }; // Result typed as { result: number }
+  }
+);
+
+// In this function, we'll call `computeSquare`
+inngest.createFunction(
+  { id: "main-function" },
+  { event: "main/event" },
+  async ({ step }) => {
+    await step.invoke("compute-square-value", {
+      function: computeSquare,
+      data: { number: 4 }, // input data is typed, requiring input if it's needed
+    });
+
+    return `Square of 4 is ${square.result}.`; // square.result is typed as number
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
 
 ```go
 import (
@@ -16101,129 +15875,6 @@ inngestgo.CreateFunction(
 
 <GuideSection show="python">
 
-The first argument of every Inngest step method is an `id`. Each step is treated as a discrete task which can be individually retried, debugged, or recovered. Inngest uses the ID to memoize step state across function versions.
-
-```python
-import inngest
-from src.inngest.client import inngest_client
-
-@inngest_client.create_function(
-    fn_id="import-product-images",
-    event="shop/product.imported"
-)
-async def import_product_images(ctx: inngest.Context):
-    uploaded_image_urls = await ctx.step.run(
-        # step ID
-        "copy-images-to-s3",
-        # other arguments, in this case: a handler
-        lambda: copy_all_images_to_s3(ctx.event.data["image_urls"])
-    )
-```
-
-The ID is also used to identify the function in the Inngest system.
-
-Inngest's SDK also records a counter for each unique step ID.  The counter increases every time the same step is called.  This allows you to run the same step in a loop, without changing the ID.
-
-<Callout>
-Please note that each step is executed as **a separate HTTP request**. To ensure efficient and correct execution, place any non-deterministic logic (such as DB calls or API calls) within a `step.run()` call.
-</Callout>
-
-## Available Step Methods
-
-### <a href="/docs/reference/python/steps/run" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.run()</pre></a> {{anchor: false}}
-
-This method executes a defined piece of code.
-Code within `step.run()` is automatically retried if it throws an error. When `step.run()` finishes successfully, the response is saved in the function run state  and the step will not re-run.
-
-Use it to run synchronous or asynchronous code as a retriable step in your function.
-
-```python
-import inngest
-from src.inngest.client import inngest_client
-
-@inngest_client.create_function(
-    fn_id="import-product-images",
-    event="shop/product.imported"
-)
-async def import_product_images(ctx: inngest.Context):
-    # Here goes the business logic
-    # By wrapping code in steps, it will be retried automatically on failure
-    uploaded_image_urls = await ctx.step.run(
-        # step ID
-        "copy-images-to-s3",
-        # other arguments, in this case: a handler
-        lambda: copy_all_images_to_s3(ctx.event.data["image_urls"])
-    )
-```
-
-<Callout>
-`step.run()` acts as a code-level transaction.  The entire step must succeed to complete.
-</Callout>
-
-### <a href="/docs/reference/python/steps/sleep" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.sleep()</pre></a> {{anchor: false}}
-
-This method pauses execution for a specified duration. Inngest handles the scheduling for you. Use it to add delays or to wait for a specific amount of time before proceeding. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
-
-```python
-import inngest
-from src.inngest.client import inngest_client
-
-@inngest_client.create_function(
-    fn_id="send-delayed-email",
-    trigger=inngest.Trigger(event="app/user.signup")
-)
-async def send_delayed_email(ctx: inngest.Context):
-    await ctx.step.sleep("wait-a-couple-of-days", datetime.timedelta(days=2))
-    # Do something else
-```
-
-### <a href="/docs/reference/python/steps/sleep-until" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.sleep_until()</pre></a> {{anchor: false}}
-
-This method pauses execution until a specific date time. Any date time string in the format accepted by the Date object, for example `YYYY-MM-DD` or `YYYY-MM-DDHH:mm:ss`. At maximum, functions can sleep for a year (seven days for the [free tier plans](/pricing)).
-
-```python
-import inngest
-from src.inngest.client import inngest_client
-from datetime import datetime
-
-@inngest_client.create_function(
-    fn_id="send-scheduled-reminder",
-    trigger=inngest.Trigger(event="app/reminder.scheduled")
-)
-async def send_scheduled_reminder(ctx: inngest.Context):
-    date = datetime.fromisoformat(ctx.event.data["remind_at"])
-    await ctx.step.sleep_until("wait-for-the-date", date)
-    # Do something else
-```
-
-### <a href="/docs/reference/python/steps/wait-for-event" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.wait_for_event()</pre></a> {{anchor: false}}
-
-This method pauses the execution until a specific event is received.
-
-```python
-import inngest
-from src.inngest.client import inngest_client
-
-@inngest_client.create_function(
-    fn_id="send-onboarding-nudge-email",
-    trigger=inngest.Trigger(event="app/account.created")
-)
-async def send_onboarding_nudge_email(ctx: inngest.Context):
-    onboarding_completed = await ctx.step.wait_for_event(
-      "wait-for-onboarding-completion",
-      event="app/wait_for_event.fulfill",
-      if_exp="event.data.user_id == async.data.user_id",
-      timeout=datetime.timedelta(days=1),
-    );
-    # Do something else
-```
-
-### <a href="/docs/reference/python/steps/invoke" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.invoke()</pre></a> {{anchor: false}}
-
-This method is used to asynchronously call another Inngest function ([written in any language SDK](/blog/cross-language-support-with-new-sdks)) and handle the result. Invoking other functions allows you to easily re-use functionality and compose them to create more complex workflows or map-reduce type jobs.
-
-This method comes with its own configuration, which enables defining specific settings like concurrency limits.
-
 ```python
 import inngest
 from src.inngest.client import inngest_client
@@ -16249,9 +15900,38 @@ async def fn_2(ctx: inngest.Context) -> None:
     print(output)
 ```
 
-### <a href="/docs/reference/python/steps/send-event" className="flex items-center gap-4"><IconConcurrency size="2rem"/><pre>step.send_event()</pre></a> {{anchor: false}}
+</GuideSection>
 
-This method sends events to Inngest to invoke functions with a matching event. Use `send_event()` when you want to trigger other functions, but you do not need to return the result. It is useful for example in [fan-out functions](/docs/guides/fan-out-jobs).
+### step.sendEvent() / step.send_event()
+
+This method sends events to Inngest to invoke functions with a matching event. Use `sendEvent()` when you want to trigger other functions, but you do not need to return the result. It is useful for example in [fan-out functions](/docs/guides/fan-out-jobs).
+
+<GuideSection show="typescript">
+
+```typescript
+export default inngest.createFunction(
+  { id: "user-onboarding" },
+  { event: "app/user.signup" },
+  async ({ event, step }) => {
+    // Do something
+    await step.sendEvent("send-activation-event", {
+      name: "app/user.activated",
+      data: { userId: event.data.userId },
+    });
+    // Do something else
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
+
+Go SDK does not have a dedicated `step.sendEvent()` method. Use the Inngest client's `Send()` method within a `step.Run()` instead.
+
+</GuideSection>
+
+<GuideSection show="python">
 
 ```python
 import inngest
@@ -16263,7 +15943,6 @@ from src.inngest.client import inngest_client
 )
 async def fn(ctx: inngest.Context) -> list[str]:
     return await ctx.step.send_event("send", inngest.Event(name="foo"))
-
 ```
 
 </GuideSection>
@@ -16276,14 +15955,15 @@ async def fn(ctx: inngest.Context) -> list[str]:
 - ["How Inngest functions are executed"](/docs/learn/how-functions-are-executed): Learn more about Inngest's execution model, including how steps are handled.
 - Docs guide: ["Multi-step functions"](/docs/guides/multi-step-functions).
 
-# Functions in REST Endpoints
+# Durable Endpoints <VersionBadge version="Go only" />
 Source: https://www.inngest.com/docs/learn/rest-endpoints
-Description: Learn how to run Inngest functions in REST Endpoints.';
+Description: Learn how to create Durable Endpoints with Inngest';
 
-# Functions in REST Endpoints
+# Durable Endpoints <VersionBadge version=
+
+Go only" />
 
 The latest versions of Inngest SDKs allow you to use steps directly within REST endpoints, allowing you to build resumable, durable workflows in any existing endpoint, triggered by your users.
-
 
 <Info>
   REST Endpoint support is currently in developer preview. Some details including APIs are still subject to change during this period. Read more about the [developer preview here](#developer-preview).
@@ -16299,16 +15979,12 @@ REST Endpoint support allows you to:
 * Deploy anywhere your code currently runs
 * Execute functions with low latency
 
-
-## Quick start
-
+#
 In order to start using steps within your API endpoints, you must first set up middleware to intercept HTTP requests.
 
 <GuideSelector
   options={[
-    { key: 
-
-go", title: "Go" },
+    { key: "go", title: "Go" },
   ]}>
 
 <GuideSection show="go">
@@ -16372,7 +16048,8 @@ func handleUsers(w http.ResponseWriter, r *http.Request) {
 
 </GuideSelector>
 
-#
+## How it works
+
 REST Support works by applying middleware that tracks each HTTP request to your API endpoints.  This is the lifecycle of a REST API:
 
 1. Set up the Inngest request manager, which tracks runs of functions 
@@ -16996,7 +16673,7 @@ firebase emulators:start
 Please note that you'll need to start your Inngest Local Dev Server with the `-u` flag to match our Firebase Cloud Function's custom path  as follows:
 
 ```bash
-npx inngest-cli@latest dev -u http://127.0.0.1:5001/inngest-firebase-functions/us-central1/inngest
+npx --ignore-scripts=false inngest-cli@latest dev -u http://127.0.0.1:5001/inngest-firebase-functions/us-central1/inngest
 ```
 
 _The above command example features a project named `inngest-firebase-functions` deployed on the `us-central1` region_.
@@ -17404,12 +17081,16 @@ Add the following to `./src/routes/api/inngest.ts`:
 <CodeGroup>
 ```ts 
 serve({ client: inngest, functions });
-    
-ServerRoute = createServerFileRoute('/api/inngest').methods({
-  GET: async ({ request }) => handler(request),
-  POST: async ({ request }) => handler(request),
-  PUT: async ({ request }) => handler(request)
-})
+
+Route = createFileRoute("/api/inngest")({
+  server: {
+    handlers: {
+      GET: async ({ request }) => handler(request),
+      POST: async ({ request }) => handler(request),
+      PUT: async ({ request }) => handler(request),
+    },
+  },
+});
 
 ```
 </CodeGroup>
@@ -17635,30 +17316,273 @@ import {
 
 Inngest's tooling makes it easy to develop your functions locally with any framework using the Inngest Dev Server.
 
-The [Inngest Dev Server](/docs/dev-server) is a fully-featured and [open-source](https://github.com/inngest/inngest) local version of the [Inngest Platform](/docs/platform/deployment) enabling a seamless transition from your local development to feature, staging and production environments.
+The Inngest Dev Server is a fully-featured and [open-source](https://github.com/inngest/inngest) local version of the [Inngest Platform](/docs/platform/deployment) enabling a seamless transition from your local development to feature, staging and production environments.
 
-![The Inngest Dev Server on the Functions page](/assets/docs/features/local-development/DevServer-functions.png)
+![Dev Server Demo](/assets/docs/local-development/dev-server-demo-2025-01-15.gif)
 
-Get started with your favorite setup:
+## Getting started
 
-<CardGroup cols={2}>
-  <Card title="Inngest Dev Server" icon={<InngestIcon className="text-basis h-4 w-4"/>} href={'/docs/dev-server'}>
-    Start Inngest locally with a single command.
-  </Card>
-  <Card title="Development with Docker" icon={<RiFunctionLine className="text-basis h-4 w-4"/>} href={'/docs/guides/development-with-docker'}>
-    Run Inngest locally using Docker or Docker Compose.
-  </Card>
-</CardGroup>
+You can start the dev server with a single command. The dev server will attempt to find an Inngest `serve` API endpoint by scanning ports and endpoints that are commonly used for this purpose (See "[Auto-discovery](#auto-discovery)"). Alternatively, you can specify the URL of the `serve` endpoint:
 
-## Development Flow with Inngest
+<CodeGroup>
+```shell {{ title: "npx (npm)" }}
+npx --ignore-scripts=false inngest-cli@latest dev
+# You can specify the URL of your development `serve` API endpoint
+npx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest
+```
+```shell {{ title: "Docker" }}
+docker run -p 8288:8288 inngest/inngest \
+  inngest dev -u http://host.docker.internal:3000/api/inngest
+```
+</CodeGroup>
 
-The Inngest Dev Server provides all the features available in the Inngest Platform, guaranteeing a smooth transition from local dev to production environments.
+You can now open the dev server's browser interface on [`http://localhost:8288`](http://localhost:8288).
+
+## Connecting apps to the Dev Server
+
+There are two ways to connect apps to the Dev Server:
+
+1. **Automatically**: The Dev Server will attempt to "auto-discover" apps running on common ports and endpoints (See "[Auto-discovery](#auto-discovery)").
+2. **Manually**: You scan explicitly add the URL of the app to the Dev Server using one of the following options:
+    - Using the CLI `-u` param (ex. `npx --ignore-scripts=false inngest-cli@latest dev -u http://localhost:3000/api/inngest`)
+    - Adding the URL in the Dev Server Apps page. You can edit the URL or delete a manually added app at any point in time
+    - Using the `inngest.json` (or similar) configuration file (See "[Configuration file](#configuration-file)")
+
+![Dev Server demo manually syncing an app](/assets/docs/local-development/dev-server-apps-demo-2025-01-15.gif)
+
+<Tip>
+  The dev server does "auto-discovery" which scans popular ports and endpoints like `/api/inngest` and `/.netlify/functions/inngest`. **If you would like to disable auto-discovery, pass the `--no-discovery` flag to the `dev` command**. Learn more about [this below](#auto-discovery)
+</Tip>
+
+### How functions are loaded by the Dev Server
+
+The dev server polls your app locally for any new or changed functions. Then as events are sent, the dev server calls your functions directly, just as Inngest would do in production over the public internet.
+
+[IMAGE]
+
+## Testing functions
+
+### Invoke via UI
+
+From the Functions tab, you can quickly test any function by click the "Invoke" button and providing the data for your payload in the modal that pops up there. This is the easiest way to directly call a specific function:
+
+[IMAGE]
+
+### Sending events to the Dev Server
+
+There are different ways that you can send events to the dev server when testing locally:
+
+1. Using the Inngest SDK
+2. Using the "Test Event" button in the Dev Server's interface
+3. Via HTTP request (e.g. curl)
+
+#### Using the Inngest SDK
+
+When using the Inngest SDK locally, it tries to detect if the dev server is running on your machine. If it's running, the event will be sent there.
+
+<CodeGroup>
+```ts {{ title: "Node.js" }}
+new Inngest({ id: "my_app" });
+await inngest.send({
+  name: "user.avatar.uploaded",
+  data: { url: "https://a-bucket.s3.us-west-2.amazonaws.com/..." },
+});
+```
+
+```python {{ title: "Python" }}
+from inngest import Inngest
+
+inngest_client = inngest.Inngest(app_id="my_app")
+await inngest_client.send(
+  name="user.avatar.uploaded",
+  data={"url": "https://a-bucket.s3.us-west-2.amazonaws.com/..."},
+)
+```
+
+```go {{ title: "Go" }}
+!snippet:path=snippets/go/docs/examples/devserver/main.go
+```
+</CodeGroup>
+**Note** - During local development, you can use a dummy value for your [`INNGEST_EVENT_KEY`](/docs/sdk/environment-variables#inngest-event-key?ref=local-development) environment variable. The dev server does not validate keys locally.
+
+#### Using the "Test Event" button
+
+The dev server's interface also has a "Test Event" button on the top right that enables you to enter any JSON event payload and send it manually. This is useful for testing out different variants of event payloads with your functions.
+
+[IMAGE]
+
+#### Via HTTP request
+
+All events are sent to Inngest using a simple HTTP API with a JSON body. Here is an example of a curl request to the local dev server's `/e/<EVENT_KEY>` endpoint running on the default port of `8228` using a dummy event key of `123`:
+
+```shell
+curl -X POST -v "http://localhost:8288/e/123" \
+  -d '{
+    "name": "user.avatar.uploaded",
+    "data": { "url": "https://a-bucket.s3.us-west-2.amazonaws.com/..." }
+  }'
+```
+
+<Callout>
+  💡 Since you can send events via HTTP, this means you can send events with any programming language or from your favorite testing tools like Postman.
+</Callout>
+
+## Configuration file
+
+When using lots of configuration options or specifying multiple `-u` flags for a project, you can choose to configure the CLI via `inngest.json` configuration file. The `dev` command will start in your current directory and walk up directories until it finds a file. `yaml`, `yml`, `toml`, or `properties` file formats and extensions are also supported. You can list all options with `dev --help`. Here is an example file specifying two app urls and the `no-discovery` option:
+
+<CodeGroup>
+```json {{ title: "inngest.json" }}
+{
+  "sdk-url": [
+    "http://localhost:3000/api/inngest",
+    "http://localhost:3030/api/inngest"
+  ],
+  "no-discovery": true
+}
+```
+```yaml {{ title: "inngest.yaml" }}
+sdk-url:
+  - "http://localhost:3000/api/inngest"
+  - "http://localhost:3030/api/inngest"
+no-discovery: true
+```
+</CodeGroup>
+
+## Inngest SDK debug endpoint
+
+The [SDK's `serve` API endpoint](/docs/learn/serving-inngest-functions) will return some diagnostic information for your server configuration when sending a `GET` request. You can do this via `curl` command or by opening the URL in the browser.
+
+Here is an example of a curl request to an Inngest app running at `http://localhost:3000/api/inngest`:
+
+```sh
+$ curl -s http://localhost:3000/api/inngest | jq
+{
+  "message": "Inngest endpoint configured correctly.",
+  "hasEventKey": false,
+  "hasSigningKey": false,
+  "functionsFound": 1
+}
+```
+
+## Auto-discovery
+
+The dev server will automatically detect and connect to apps running on common ports and endpoints. You can disable auto-discovery by passing the `--no-discovery` flag to the `dev` command:
+
+```sh
+npx --ignore-scripts=false inngest-cli@latest dev --no-discovery -u http://localhost:3000/api/inngest
+```
+
+<CodeGroup>
+```plaintext {{ title: "Common endpoints" }}
+/api/inngest
+/x/inngest
+/.netlify/functions/inngest
+/.redwood/functions/inngest
+```
+
+```plaintext {{ title: "Common ports" }}
+80, 443,
+// Rails, Express & Next/Nuxt/Nest routes
+3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010,
+// Django
+5000,
+// Vite/SvelteKit
+5173,
+// Other common ports
+8000, 8080, 8081, 8888,
+// Redwood
+8910, 8911, 8912, 8913, 8914, 8915,
+// Cloudflare Workers
+8787,
+```
+</CodeGroup>
+
+## CLI flags
+
+`inngest-cli dev` command supports the following flags:
+
+| **Long form**  | **Short form** | **Type** | **Default value**                 | **Description**                       |
+|:--------------:|:--------------:|:--------:|:---------------------------------:|:-------------------------------------:|
+| --config       | -              | string   | -                                 | Path to an Inngest configuration file |
+| --help         | -h             | -        | -                                 | Output the help information           |
+| --host         | -              | string   | http://localhost                  | Inngest server host                   |
+| --no-discovery | -              | boolean  | false                             | Disable app auto-discovery            |
+| --no-poll      | -              | boolean  | false                             | Disable polling of apps for updates   |
+| --port         | -p             | int      | 8288                              | Inngest server port                   |
+| --sdk-url      | -u             | strings  | http://localhost:3000/api/inngest | App serve URLs to sync                |
+
+## Development with Docker
+
+Inngest provides a Docker image that you can use to run the Inngest Dev Server within a container. This is useful when running Inngest locally or in a CI/CD environment.
+
+### Docker image
+
+The [`inngest/inngest`](https://hub.docker.com/r/inngest/inngest) image is available on Docker Hub. Regular updates are made to this image, so we recommend pulling the latest version. You can find the latest version release on [our Github repo](https://github.com/inngest/inngest/releases).
+
+```bash
+docker pull inngest/inngest
+```
+
+### Standalone Docker container
+
+Docker can be useful for running the Inngest Dev Server in a standalone container. This is useful if you do not want to use the `npx --ignore-scripts=false inngest-cli@latest` method to run the Dev Server.
+
+To run the Inngest container, you'll need to:
+
+1. Expose the Dev Server port (default is `8288`).
+2. Use the `inngest dev` command with the `-u` flag to specify the URL where Inngest can find your app.
+
+In this example command, our app is running on the host machine on port `3000`. We use the `host.docker.internal` hostname to connect to the host machine from within the Docker container. For ease of reading, the command is broken up into multiple lines.
+
+```bash
+docker run -p 8288:8288 \
+  inngest/inngest \
+  inngest dev -u http://host.docker.internal:3000/api/inngest
+```
+
+You will then be able to access the Inngest Dev Server on your host machine at `http://localhost:8288` or whatever hostname you have configured. You may need to adjust the hostname for your app if you are using a different Docker network setup.
+
+<Callout>
+  If you decide to run the Dev Server on another port, you will need to set the `INNGEST_BASE_URL` environment variable in your app to point to the correct port. This value defaults to `http://localhost:8288`.
+</Callout>
+
+### Docker Compose
+
+If you're using [Docker Compose](https://docs.docker.com/compose/) to run your services locally, you can easily add Inngest to your local environment. Here's an example `docker-compose.yml` file that includes Inngest:
+
+```yaml {{ filename: "docker-compose.yaml" }}
+services:
+  app:
+    build: ./app
+    environment:
+      - INNGEST_DEV=1
+      - INNGEST_BASE_URL=http://inngest:8288
+    ports:
+      - '3000:3000'
+  inngest:
+    image: inngest/inngest:v0.27.0
+    command: 'inngest dev -u http://app:3000/api/inngest'
+    ports:
+      - '8288:8288'
+```
+
+In this example, we have two services: `app` and `inngest`. The `app` service is your application, and the `inngest` service is the Inngest Dev Server. There are a few key configurations to note:
+
+* The `INNGEST_DEV=1` environment variable tells the Inngest SDK it should connect to the Dev Server*.
+* The `INNGEST_BASE_URL=http://inngest:8288` environment variable tells the Inngest SDK where the Dev Server is running. In our example, the `inngest` service is running on port `8288` (the default Dev Server port).
+* The `command: 'inngest dev -u http://app:3000/api/inngest'` command tells the Dev Server where to find your app within the Docker network. In this example, the `app` service is running on port `3000`.
+* The `ports` configuration exposes the Dev Server on port `8288` so you can view this on your host machine in the browser.
+
+\* - The `INNGEST_DEV` environment variable was added to the TypeScript SDK in version 3.14. Prior to this version, you can set `NODE_ENV=development` to force the SDK to connect to the Dev Server.
+
+## Development flow
 
 Developing with Inngest looks as it follows:
 
-1. [Configure the Inngest SDK in your application](/docs/sdk/overview)
-2. [Connecting the Inngest Dev Server to your local application](/docs/learn/inngest-functions)
-3. Develop your Inngest Functions with [Steps](/docs/learn/inngest-steps), [Flow Control](/docs/guides/flow-control) and [more](/docs/features/inngest-functions)
+1. Configure the Inngest SDK in your application
+2. [Connecting the Inngest Dev Server to your local application](#connecting-apps-to-the-dev-server)
+3. Develop your Inngest Functions with [Steps](/docs/learn/inngest-steps), [Flow Control](/docs/guides/flow-control) and [more](/docs/learn/inngest-functions)
 5. _(Optional) - Configure Preview environments with [our Vercel Integration](/docs/deploy/vercel)_
 
 <ImageTheme
@@ -17682,12 +17606,9 @@ Deploying your application to preview, staging and production environments does 
   alt={'When deployed, your application communicates with the Inngest Platform.'}
 />
 
-## CLI and SDKs
+## SDKs
 
 <CardGroup cols={1}>
-  {/* <Card title="Inngest CLI" icon={<RiTerminalBoxLine className="text-basis" />} href={'/todo'}>
-    Explore the options to configure the Inngest Dev Server
-  </Card> */}
   <Card title="TypeScript SDK" icon={<TypeScriptIcon className="text-basis"/>} href={'/docs/reference/typescript'}>
     Setup the Inngest SDK in your TypeScript application.
   </Card>
@@ -17712,14 +17633,18 @@ Deploying your application to preview, staging and production environments does 
     External webhooks from Stripe and Clerk must go through a tunnel solution (such as [ngrok](https://ngrok.com/) or [localtunnel](https://theboroer.github.io/localtunnel-www/)) to reach the Dev Server.
   </Card>
   <Card title="Are Crons supported locally?" icon={<RiQuestionLine />}>
-    Yes. You can also trigger a function at any time by [using the "Invoke" button from the Dev Server Functions list view](/docs/dev-server).
+    Yes. You can also trigger a function at any time by using the "Invoke" button from the Dev Server Functions list view.
   </Card>
-  {/* <Card title="The Dev Server does not locate my local application" icon={<RiQuestionLine />}>
-    Please take a look at our [Dev Server Troubleshooting guide](#).
-  </Card> */}
 </CardGroup>
 
 Find more answers in our [Discord community](/discord).
+
+## Further reference
+
+* [Dev Server source code on GitHub](https://github.com/inngest/inngest)
+* [`inngest/inngest` Docker image on Docker Hub](https://hub.docker.com/r/inngest/inngest)
+* [TypeScript SDK Environment variable reference](/docs/sdk/environment-variables)
+* [Python SDK Environment variable reference](/docs/reference/python/overview/env-vars)
 
 # Deployment
 Source: https://www.inngest.com/docs/platform/deployment
@@ -17775,7 +17700,7 @@ Inngest accounts all have multiple environments that help support your entire so
 -   **Production Environment** for all of your production applications, functions and event data.
 -   [**Branch Environments**](#branch-environments) are sandbox environments that enables developers on your team to test your changes specific to current Git feature branch. These are designed to work with platforms that support branch-based deployment previews like Vercel or Netlify.
 -   [**Custom Environments**](#custom-environments) are used to create shared, non-production environments like staging, QA, or canary.
--   [**Local Environment**](/docs/local-development) leverages the Inngest Dev Server (`npx inngest-cli@latest dev`) to test and debug functions on your own machine.
+-   [**Local Environment**](/docs/local-development) leverages the Inngest Dev Server (`npx --ignore-scripts=false inngest-cli@latest dev`) to test and debug functions on your own machine.
 
 The key things that you need to know about environments:
 
@@ -18146,8 +18071,11 @@ Inngest Insights allows you to query and analyze your event data using SQL direc
 ## Overview
 
 Insights provides an in-app SQL editor and query interface where you can:
+- **Use AI to generate queries** - Describe what you want in plain English and let the Insights AI write the SQL for you
 - Query event data using familiar SQL syntax
 - Save and reuse common queries
+- Share them with your team
+- Browse your event schemas directly in the editor
 - Analyze patterns in your event triggers
 - Extract business intelligence from your workflows
 
@@ -18166,12 +18094,38 @@ We have several pre-built query templates to help you get started exploring your
 ![Getting Started Templates View](/assets/docs/platform/monitor/insights/insights_template_view.png)
 
 #
+Insights AI helps you generate SQL queries using natural language. Instead of writing SQL manually, you can describe what you want to analyze and the assistant will create the query for you.
+
+### How it works
+
+Simply describe what you want to query in plain English, and Insights AI will:
+
+1. **Match events** - Analyze your prompt and identify the most relevant events from your account to use in the query
+2. **Write the query** - Generate a properly formatted SQL query based on your event schemas
+3. **Summarize results** - Provide a natural language summary of your query results
+
+### Example prompts
+
+- "Show me all failed functions in the last 24 hours"
+- "Count orders by user for the past week"
+- "What are the most common event types?"
+- "Find all events where the amount is greater than 100"
+
+The generated query is automatically inserted into the SQL editor and executed, so you can see results immediately and further refine the query if needed.
+
+<Info>
+  Insights AI is built using Inngest's own [Realtime API](/docs/features/realtime), [AgentKit](https://agentkit.inngest.com), and durable execution with checkpointing.
+</Info>
+
+## SQL Editor
+
 The Insights interface includes a full-featured SQL editor where you can:
 
 - Write and execute SQL queries against your event data
 - Save frequently used queries for later access
 - View query results in an organized table format
 - Access query history and templates from the sidebar
+- Autocomplete for writing sql and choosing events 
 
 ![Sql Editor View](/assets/docs/platform/monitor/insights/insights_sql_editor.png)
 
@@ -18197,6 +18151,18 @@ Refer to [pricing plans](/pricing) for data retention limits.
 
 - Current page limit: **1000 rows**
 - Future updates will support larger result sets through async data exports
+
+## Schema Explorer
+
+The Schema Explorer, located on the right side, enables you to explore the fields available to write your Insight query. Browse and search your event schemas without leaving the editor. 
+
+The two types of schemas you will notice are: 
+- Common Schemas - Standard fields across all events (`id`, `name`, `ts`, etc.) 
+- Event-specific schemas - The structure of each event type's `data` payload
+
+Search is also available for more efficient filtering of fields. After you have located the field you want, you can click to copy and paste it into your SQL editor. 
+
+![Schema Explorer](/assets/docs/platform/monitor/insights/insights_schema_explorer.png)
 
 ## SQL Support
 
@@ -18285,7 +18251,16 @@ LIMIT 10;
 
 ## Saved Queries
 
-You can save frequently used queries for quick access. Queries are only saved private for you to use; they are not shared across your Inngest organization.
+You can save frequently used queries for quick access. Saved queries are private to you by default.
+
+### Shared Queries
+
+Some queries are valuable to the whole organization, and now you can more easily share those across your organization. Once you save a query, you can select the actions dropdown and share it with your organization.
+
+Shared queries will be added to a `Shared queries` navigation dropdown within the Insights Sidebar. 
+
+![Share With Org](/assets/docs/platform/monitor/insights/insights_share_with_org.png)
+![Shared Queries Navigation](/assets/docs/platform/monitor/insights/insights_shared_queries.png)
 
 ## Roadmap
 
@@ -18924,7 +18899,7 @@ Each AI Trace display detailed metadata, including:
 
 ### Get started
 
-AI Traces are automatically enabled when using `step.ai.infer()` from the TypeScript Python SDK.
+AI Traces are automatically enabled when using `step.ai.infer()` from the TypeScript or Python SDK.
 
 <div className="flex items-end justify-start">
 Button: Get started with AI Inference steps
@@ -20019,7 +19994,7 @@ The `createFunction` method accepts a series of arguments to define your functio
         The period within which the `limit` will be applied.
       </Property>
       <Property name="burst" type="number">
-        The number of runs allowed to start in the given window in a single burst. This defaults to 1, which ensures that requests are smoothed amongst the given `period`.
+        The number of additional runs allowed to start in the given window in a single burst. This is added on top of the limit, which ensures high throughput within the period.
       </Property>
       <Property name="key" type="string">
         A unique expression for which to apply the throttle limit to. The expression is evaluated for each triggering event and will be applied for each unique value. Read [our guide to writing expressions](/docs/guides/writing-expressions) for more info.
@@ -20166,7 +20141,7 @@ The `createFunction` method accepts a series of arguments to define your functio
 
 </Properties>
 
-{/* TODO - Document fns arg */}
+{/*TODO - Document fns arg*/}
 
 ### Trigger
 
@@ -22526,7 +22501,7 @@ $ curl https://test-fast-api-fastapi-app.modal.run/api/inngest
 
 Start the Dev Server, specifying the FastAPI app's Inngest endpoint:
 ```sh
-npx inngest-cli@latest dev -u https://test-fast-api-fastapi-app.modal.run/api/inngest --no-discovery
+npx --ignore-scripts=false inngest-cli@latest dev -u https://test-fast-api-fastapi-app.modal.run/api/inngest --no-discovery
 ```
 
 In your browser, navigate to `http://127.0.0.1:8288/apps`. Your app should be successfully synced.
@@ -22976,13 +22951,6 @@ inngest_client = inngest.Inngest(
 
 - [End-to-end encryption](https://github.com/inngest/inngest-py/tree/main/pkg/inngest_encryption)
 - [Sentry](https://github.com/inngest/inngest-py/blob/main/pkg/inngest/inngest/experimental/sentry_middleware.py)
-
-# undefined
-Source: https://www.inngest.com/docs/reference/python/migrations/example
-
-```py
-!path=snippets/py/example.py#L8-L13
-```
 
 # Python SDK migration guide: v0.3 to v0.4
 Source: https://www.inngest.com/docs/reference/python/migrations/v0.3-to-v0.4
@@ -24341,6 +24309,20 @@ new Inngest({
 });
 ```
 
+## Advanced Usage
+
+<CardGroup cols={1}>
+
+<Card
+  href={"/docs/examples/open-telemetry"}
+  icon={<RiBarChart2Fill fill={"black"} className="h-6 w45 fill-carbon-700/10 stroke-carbon-700 transition-colors duration-300 group-hover:stroke-carbon-900 dark:fill-white/10 dark:stroke-carbon-400 dark:group-hover:fill-indigo-300/10 dark:group-hover:stroke-indigo-400" />}
+  title={'Setup an OpenTelemetry client with Inngest or create custom spans'}
+>
+  Follow this guide to learn how to add Inngest Extended Traces to an existing OpenTelemetry configuration or to create custom spans.
+</Card>
+
+</CardGroup>
+
 ### Serverless
 
 If you're using serverless, the entrypoint of your app will likely be the file
@@ -24414,7 +24396,6 @@ inngest = new Inngest({
   ],
 });
 
-```ts
 // Then when you create your provider, pass the client to it
 new BasicTracerProvider({
   // Add the span processor when creating your provider
@@ -25901,7 +25882,7 @@ In this same vein, we've also refactored some configuration options when creatin
 - `serve()`
   - **✅ Added `baseUrl`** - Sets the URL to communicate with Inngest in one place, e.g. `"http://localhost:8288"`. Synonymous with setting the `INNGEST_BASE_URL` environment variable above or using `baseUrl` when creating the client.
   - **🛑 Removed `inngestBaseUrl`** - Set `baseUrl` instead.
-  - **🛑 Removed `landingPage`** - The landing page for the SDK was deprecated in v2. Use the Inngest Dev Server instead via `npx inngest-cli@latest dev`.
+  - **🛑 Removed `landingPage`** - The landing page for the SDK was deprecated in v2. Use the Inngest Dev Server instead via `npx --ignore-scripts=false inngest-cli@latest dev`.
 
 ## Handling in-progress runs triggered from v2
 
@@ -26646,7 +26627,7 @@ docker run -p 8288:8288 -p 8289:8289 -e INNGEST_EVENT_KEY=abcd -e INNGEST_SIGNIN
 ```
 </CodeGroup>
 
-This will start the Inngest server on the default port `8288` and use the default configuration, including SQLite for persistence.
+This will start the Inngest server on the default port `8288` and use the default configuration, including SQLite for persistence. Additionally, the Connect gateway will be available on port `8289`.
 
 ##
 Configuring the server can be done via command-line flags, environment variables, or a configuration file.
@@ -26661,7 +26642,7 @@ By default, the server will:
 To securely configure your server, create your event and signing keys using whatever format you choose and start the Inngest server using them. You can also pass them via environment variable (see below):
 
 <Callout>
-The signing key must be a valid hexadecimal string with an even number of characters. You can generate a secure signing key using: 
+The signing key must be a valid hexadecimal string with an even number of characters. You can generate a secure signing key using:
 ```plaintext
 openssl rand -hex 32
 ```
@@ -26784,8 +26765,8 @@ services:
     image: inngest/inngest
     command: "inngest start"
     ports:
-      - "8288:8288"
-      - "8289:8289"
+      - "8288:8288" # APIs and Dashboard
+      - "8289:8289" # Connect WebSocket gateway
     environment:
       - INNGEST_EVENT_KEY=your_event_key_here # Must be hex string with even number of chars
       - INNGEST_SIGNING_KEY=your_signing_key_here # Must be hex string with even number of chars
@@ -26889,6 +26870,122 @@ Planned features for self-hosting include:
 To suggest additional features, please submit feedback on our [public roadmap](https://roadmap.inngest.com/roadmap).
 
 Check out [the source code on GitHub](https://github.com/inngest/inngest) to file issues or submit pull requests.
+
+# Checkpointing
+Source: https://www.inngest.com/docs/setup/checkpointing
+
+Checkpointing is a performance optimization for Inngest functions that executes steps eagerly rather than waiting on internal orchestration. The result is dramatically lower latency — ideal for real-time AI workflows.
+
+## Minimum Requirements
+
+### Language
+
+- **TypeScript**: SDK `3.46.0` or higher.
+- **Go**: SDK version `v0.15.0`.
+
+## Getting Started
+
+<GuideSelector
+  options={[
+    { key: "typescript", title: "TypeScript" },
+    { key: "go", title: "Go" },
+  ]}
+>
+
+<GuideSection show="typescript">
+
+To enable checkpointing:
+
+1. Install `inngest@3.46.0` or higher
+2. Set `checkpointing: true` on your Inngest client or on individual functions
+
+**For all functions:**
+
+```ts
+inngest = new Inngest({
+  id: "my-app",
+  checkpointing: true,
+});
+```
+
+**Per-function:**
+
+```ts
+myFunction = inngest.createFunction(
+  {
+    id: "my-function",
+    checkpointing: true,
+  },
+  { event: "app/my.event" },
+  async ({ step }) => {
+    // steps here will be checkpointed
+  }
+);
+```
+
+</GuideSection>
+
+<GuideSection show="go">
+
+To enable checkpointing:
+
+1. Install the checkpoint package:
+
+```shell
+go get github.com/inngest/inngestgo/pkg/checkpoint
+```
+
+2. Set `Checkpoint` on your function options:
+
+```go
+import (
+  "github.com/inngest/inngestgo"
+  "github.com/inngest/inngestgo/pkg/checkpoint"
+)
+
+_, err := inngestgo.CreateFunction(
+  client,
+  inngestgo.FunctionOpts{
+    ID:         "my-function",
+    Name:       "My Function",
+    Checkpoint: checkpoint.ConfigSafe,
+  },
+  // ... triggers and handler
+)
+```
+
+</GuideSection>
+
+</GuideSelector>
+
+## How Does It Work?
+
+The [Inngest default execution model](/docs/learn/how-functions-are-executed) is a complete handoff to the Inngest Platform, where an HTTP request is performed to store the execution state upon each step completion, leading to inter-step latency.
+
+![With and Without Checkpointing](/assets/docs/checkpointing/checkpointing_with_without.png)
+
+Checkpointing uses the SDK orchestrates steps on the client-side (_on your server_) and executes them immediately. As steps complete, checkpoint messages are sent to Inngest to track progress. The result is dramatically lower latency — ideal for real-time AI workflows.
+
+![Inngest Workflow Execution](/assets/docs/checkpointing/checkpointing_inngest_workflow.jpg)
+
+### Failures and Retries
+
+What happens when something goes wrong? If a step fails and needs to retry, the execution engine falls back to standard orchestration to handle it properly. You get speed when things work, and safety when they don't.
+
+## Beta
+
+Checkpointing is currently in beta, here are some limitations to be aware of:
+
+- **Parallel step execution** — When a function branches into parallel steps, execution switches to standard orchestration for the remainder of the run. Checkpointing does not resume after parallel execution.
+- **Limited configuration options** — Customization of checkpointing buffer size and buffer timeout is not yet available.
+
+| Feature | Supported |
+|---------|-----------|
+| Local development | ✅ |
+| Self-hosted Inngest | ✅ |
+| Inngest Cloud | ✅ |
+
+Read the [release phases](/docs/release-phases) for more details.
 
 # Connect
 Source: https://www.inngest.com/docs/setup/connect
@@ -27087,7 +27184,7 @@ No signing or event keys are required in local development mode.
       appVersion: process.env.RENDER_GIT_COMMIT,
     })
     ```
-    ```ts { {title: "Fly.io" }}
+    ```ts {{ title: "Fly.io" }}
     // Fly includes a machine version env var at runtime.
     // https://fly.io/docs/machines/runtime-environment/
     new Inngest({
@@ -27139,17 +27236,14 @@ No signing or event keys are required in local development mode.
     </CodeGroup>
   </Step>
   <Step title="Set the max concurrency (recommended)">
-    The `maxConcurrency` option is used to limit the number of concurrent steps that can be executed by the worker instance. This allows Inngest to distribute load across multiple workers and not overload a single worker.
-
-    <Warning>
-      The `maxConcurrency` option is not yet supported. It will be supported in a future release before general availability.
-    </Warning>
+    The `maxWorkerConcurrency` option is used to limit the number of concurrent steps that can be executed by the worker instance.
+    This allows Inngest to distribute load across multiple workers and not overload a single worker.
 
     <CodeGroup>
     ```ts
     await connect({
       apps: [...],
-      maxConcurrency: 100,
+      maxWorkerConcurrency: 10,
     })
     ```
     </CodeGroup>
@@ -27362,6 +27456,140 @@ readinessProbe:
   failureThreshold: 3
 ```
 
+## Worker concurrency
+
+{/* TODO: Mention minimum supported version for this feature */}
+
+Worker concurrency is supported in the following versions of the SDK:
+- **TypeScript**: SDK `3.45.1` or higher.
+- **Go**: SDK `0.14.3` or higher.
+- **Python**: SDK `0.5.12` or higher.
+
+Each worker can configure the maximum number of concurrent steps it can execute simultaneously using the `maxWorkerConcurrency` option.
+This allows you to control resource usage and prevent a single worker from being overwhelmed with too many concurrent requests.
+
+By default, there is no limit on concurrent step execution. The worker will accept as many steps as Inngest sends to it.
+
+When you set `maxWorkerConcurrency`, Inngest will distribute load across multiple workers based on their available capacity.
+Workers with available capacity will receive more work, while workers at their limit will not receive additional steps until capacity becomes available.
+
+Inngest uses the `instanceId` to track the `maxWorkerConcurrency` for each worker.
+This means that if you have multiple workers with the same `instanceId`, they will share the same `maxWorkerConcurrency` limit.
+
+Inngest considers the `maxWorkerConcurrency` from the latest connection request.
+This means that if you update the `maxWorkerConcurrency` after a worker is connected and create a new connection, the worker's `maxWorkerConcurrency` will be updated to the new limit.
+
+**Benefits:**
+- Prevents worker resource exhaustion (CPU, memory, connections)
+- Enables predictable resource allocation per worker
+- Helps with horizontal scaling over both homogeneous and heterogenous workers
+
+{/* TODO: Uncomment when we have intelligent load balancing
+- Allows Inngest to intelligently distribute load across your worker fleet
+- Helps with horizontal scaling by ensuring even distribution
+*/}
+
+<CodeGroup>
+```ts
+await connect({
+  apps: [{ client: inngest, functions }],
+  instanceId: "example-worker",
+  maxWorkerConcurrency: 10, // Max 10 concurrent steps on this worker
+})
+```
+```go
+conn, err := inngestgo.Connect(ctx, inngestgo.ConnectOpts{
+  InstanceID:           inngestgo.Ptr("example-worker"),
+  MaxWorkerConcurrency: inngestgo.Ptr(int64(10)), // Max 10 concurrent steps
+  Apps:                 []inngestgo.Client{client},
+})
+```
+```python
+asyncio.run(
+    connect(
+        apps=[(client, functions)],
+        instance_id="example-worker",
+        max_worker_concurrency=10,  # Max 10 concurrent steps
+    ).start()
+)
+```
+</CodeGroup>
+
+**Environment variable:**
+
+You can also set the maximum worker concurrency via the `INNGEST_CONNECT_MAX_WORKER_CONCURRENCY` environment variable.
+This is useful for configuring concurrency without changing code.
+
+```bash
+INNGEST_CONNECT_MAX_WORKER_CONCURRENCY=100
+```
+
+If both the option and environment variable are set, the option takes precedence.
+
+**Default behavior:**
+
+If `maxWorkerConcurrency` is not set (or set to `0`), there is no limit on concurrent step execution.
+Inngest will send as many steps as limited by your account's concurrency limit.
+
+### Connection-level concurrency
+
+You can set a different `maxWorkerConcurrency` for each connection from the same worker by specifying a unique `instanceId` for each connection.
+This will allow you to have different `maxWorkerConcurrency` limits for different connections.
+
+Due to different `instanceId` value, Inngest will consider each connection as a separate worker and will not share the same `maxWorkerConcurrency` limit.
+
+<CodeGroup>
+```ts
+// Connection 1 with different concurrency limit
+await connect({
+  apps: [{ client: inngest, functions }],
+  instanceId: "worker-1-conn-1",
+  maxWorkerConcurrency: 50,
+})
+
+// Connection 2 with different concurrency limit
+await connect({
+  apps: [{ client: inngest, functions }],
+  instanceId: "worker-1-conn-2",
+  maxWorkerConcurrency: 20,
+})
+```
+```go
+// Connection 1 with different concurrency limit
+conn1, err := inngestgo.Connect(ctx, inngestgo.ConnectOpts{
+  InstanceID:           inngestgo.Ptr("worker-1-conn-1"),
+  MaxWorkerConcurrency: inngestgo.Ptr(int64(50)),
+  Apps:                 []inngestgo.Client{client},
+})
+
+// Connection 2 with different concurrency limit
+conn2, err := inngestgo.Connect(ctx, inngestgo.ConnectOpts{
+  InstanceID:           inngestgo.Ptr("worker-1-conn-2"),
+  MaxWorkerConcurrency: inngestgo.Ptr(int64(20)),
+  Apps:                 []inngestgo.Client{client},
+})
+```
+```python
+# Connection 1 with different concurrency limit
+asyncio.run(
+    connect(
+        apps=[(client, functions)],
+        instance_id="worker-1-conn-1",
+        max_worker_concurrency=50,
+    ).start()
+)
+
+# Connection 2 with different concurrency limit
+asyncio.run(
+    connect(
+        apps=[(client, functions)],
+        instance_id="worker-1-conn-2",
+        max_worker_concurrency=20,
+    ).start()
+)
+```
+</CodeGroup>
+
 ## Self hosted Inngest
 
 <Info>
@@ -27415,7 +27643,6 @@ Read the [release phases](/docs/release-phases) for more details.
 
 During the developer preview, there are some limitations to using `connect` to be aware of. Please [contact us](https://app.inngest.com/support) if you'd like clarity on any of the following:
 
-* **Worker-level maximum concurrency** - This is not yet supported. When completed, each worker can configure the maximum number of concurrent steps it can handle. This allows Inngest to distribute load across multiple workers and not overload a single worker.
 * **Reconnection policy is not configurable** - The SDK will attempt to reconnect to Inngest an infinite number of times. We will expose a configurable reconnection policy in the future.
 
 # Streaming
@@ -27462,8 +27689,7 @@ This is not recommended, but is an escape hatch if you know that streaming is su
 # TypeScript
 Source: https://www.inngest.com/docs/typescript
 
-description =
-  `Learn the Inngest SDK's type safe features with TypeScript`
+description = `Learn the Inngest SDK's type safe features with TypeScript`
 
 The Inngest SDK leverages the full power of TypeScript, providing you with some awesome benefits when handling events:
 

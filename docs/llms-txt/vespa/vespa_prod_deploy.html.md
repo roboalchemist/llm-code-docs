@@ -16,7 +16,7 @@ This commands uploads an application package to Vespa Cloud and deploys it to th
 
 Nodes are allocated to the application according to resources specified in services.xml.
 
-For more information about production deployments in Vespa Cloud see:[https://docs.vespa.ai/en/cloud/production-deployment.html](https://docs.vespa.ai/en/cloud/production-deployment.html)[https://docs.vespa.ai/en/cloud/automated-deployments.html](https://docs.vespa.ai/en/cloud/automated-deployments.html)
+For more information about production deployments in Vespa Cloud see:[https://docs.vespa.ai/en/operations/production-deployment.html](https://docs.vespa.ai/en/operations/production-deployment.html)[https://docs.vespa.ai/en/operations/automated-deployments.html](https://docs.vespa.ai/en/operations/automated-deployments.html)
 
 ```
 vespa prod deploy [application-directory-or-file] [flags]
@@ -57,7 +57,7 @@ $ vespa prod deploy
 
 - [vespa prod](vespa_prod.html) - Deploy an application package to production in Vespa Cloud
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

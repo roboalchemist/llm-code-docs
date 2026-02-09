@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/ford/set-charge-schedule-by-location.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Schedule by Location
 
 > Set all schedules for the specified charging location.

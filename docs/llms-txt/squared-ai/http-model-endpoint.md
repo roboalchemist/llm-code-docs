@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/ai-ml-sources/http-model-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTP Model Source Connector
 
 > Guide on how to configure the HTTP Model Connector on the AI Squared platform

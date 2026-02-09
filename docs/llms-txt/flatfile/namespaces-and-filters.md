@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/namespaces-and-filters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Namespaces and Filters
 
 > Isolate and organize your Flatfile Listeners using namespace filtering and advanced Event filtering patterns
@@ -40,7 +44,7 @@ The most common namespace pattern is creating separate [Apps](/core-concepts/app
 Namespaces are set when creating an App via the [Flatfile Dashboard](https://platform.flatfile.com/dashboard):
 
 <Frame caption="App settings modal with namespace field (&#x22;example-app&#x22;)">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/app-settings.png" width="600" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c1d2cb160c8805bf59bdd3d227e76691" width="600" data-og-width="1134" data-og-height="1184" data-path="core-concepts/assets/app-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f9da65cc68a4a0c3a3b9b8fc5e5a7527 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=0d49bd55b7128cdcbd960b6859a0ca24 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b2c8d3655c15b03b6fa3c49bc0b9da23 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=87b0a59a9a75131d6fe1c2f426adebd2 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=427ce1de51e04f3f71388b13ca6d64e1 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e659471afc4a7382d067776173080d44 2500w" />
 </Frame>
 
 Let's walk through an example of routing events to different Listeners based on the App namespace.
@@ -80,7 +84,7 @@ This pattern allows each App to have completely different:
 * Integration behaviors
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   export default function (listener) {
     // Customer Portal - External customer data import
     listener.namespace('space:customer-portal', (customerListener) => {
@@ -105,7 +109,7 @@ This pattern allows each App to have completely different:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
 
   export default function (listener: FlatfileListener) {
@@ -157,7 +161,7 @@ Beyond App-level namespacing, you can also apply namespaces directly to individu
 Assign a namespace when creating a Space via the API:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   const templateSpace = await api.spaces.create({
     name: "Template Manager",
     namespace: "templates", // Simple string identifier
@@ -165,7 +169,7 @@ Assign a namespace when creating a Space via the API:
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { Flatfile } from '@flatfile/api';
 
   const templateSpace = await api.spaces.create({
@@ -187,7 +191,7 @@ This example shows how to set the namespace based on the Space name, allowing yo
 </Note>
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Set namespace based on space name patterns
   listener.on("job:ready", { job: "space:configure" }, async (event) => {
     const { jobId, spaceId } = event.context;
@@ -228,7 +232,7 @@ This example shows how to set the namespace based on the Space name, allowing yo
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
   import { Flatfile } from '@flatfile/api';
 
@@ -280,7 +284,7 @@ For complete Space configuration examples, see [Creating Spaces](/core-concepts/
 Use `listener.namespace()` to filter Events from Spaces with specific namespaces. This will provide a new, filtered Listener object scoped to your callback function:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
     // Listen to Events from customer portal Spaces
     listener.namespace('space:customer-portal', (customerPortalListener) => {
       customerPortalListener.use(applyCustomerBranding);
@@ -305,7 +309,7 @@ Use `listener.namespace()` to filter Events from Spaces with specific namespaces
     });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
 
   // Listen to Events from customer portal Spaces
@@ -342,7 +346,7 @@ This example configures a structure with two Workbooks in the same Space, with a
 #### Setting Workbook Namespaces
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   const workbook = {
     name: 'Employee Data Processing',
     namespace: 'staging', // Simple string namespace
@@ -350,7 +354,7 @@ This example configures a structure with two Workbooks in the same Space, with a
   };
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { Workbook } from '@flatfile/api';
 
   const workbook: Workbook = {
@@ -362,7 +366,7 @@ This example configures a structure with two Workbooks in the same Space, with a
 </CodeGroup>
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   const workbook = {
     name: 'Employee Data Processing: ',
     namespace: 'production', // Simple string namespace
@@ -370,7 +374,7 @@ This example configures a structure with two Workbooks in the same Space, with a
   };
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { Workbook } from '@flatfile/api';
 
   const workbook: Workbook = {
@@ -386,7 +390,7 @@ This example configures a structure with two Workbooks in the same Space, with a
 Events from Workbooks with namespaces are filtered using the `workbook:namespace` pattern.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   listener.use(configureAllWorkbooks);
   listener.use(validateData);
 
@@ -402,7 +406,7 @@ Events from Workbooks with namespaces are filtered using the `workbook:namespace
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
 
   listener.use(configureAllWorkbooks);
@@ -428,7 +432,7 @@ The `listener.namespace()` function can accept an array of namespace patterns as
 You can also mix different namespace types in the same array. The Listener in this example will receive Events from both the `space:admin-tools` and `workbook:critical-data` namespaces:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Listen to events from specific Spaces and Workbooks
   listener.namespace(['space:admin-tools', 'workbook:critical-data'], (adminCriticalListener) => {
     adminCriticalListener.use(enableHighSecurityMode);
@@ -437,7 +441,7 @@ You can also mix different namespace types in the same array. The Listener in th
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
 
   // Listen to events from specific Spaces and Workbooks
@@ -484,7 +488,7 @@ First, create two Apps via the [Flatfile Dashboard](https://platform.flatfile.co
     Each App requires different field structures for their invoice and order processing, so we define App-specific Blueprint configurations. See the next tab for the Listener Configuration.
 
     <CodeGroup>
-      ```javascript JavaScript
+      ```javascript JavaScript theme={null}
       // Customer Portal Blueprint configurations
       const customerInvoiceWorkbook = {
         name: "Customer Invoice Processing",
@@ -544,7 +548,7 @@ First, create two Apps via the [Flatfile Dashboard](https://platform.flatfile.co
       };
       ```
 
-      ```typescript TypeScript
+      ```typescript TypeScript theme={null}
       import { Flatfile } from '@flatfile/api';
 
       // Customer Portal Blueprint configurations
@@ -618,7 +622,7 @@ First, create two Apps via the [Flatfile Dashboard](https://platform.flatfile.co
     </Note>
 
     <CodeGroup>
-      ```javascript JavaScript
+      ```javascript JavaScript theme={null}
       import { configureSpace } from '@flatfile/plugin-space-configure';
 
       export default function (listener) {
@@ -662,7 +666,7 @@ First, create two Apps via the [Flatfile Dashboard](https://platform.flatfile.co
       }
       ```
 
-      ```typescript TypeScript
+      ```typescript TypeScript theme={null}
       import { FlatfileListener } from '@flatfile/listener';
       import { Flatfile } from '@flatfile/api';
       import { configureSpace } from '@flatfile/plugin-space-configure';
@@ -723,7 +727,7 @@ The `listener.filter()` method creates filtered Listener instances that only res
 The most fundamental use of `listener.filter()` is to respond to specific Events based on simple criteria. This approach is useful when you want different processing logic for different types of Jobs or Events within the same namespace, without creating separate Event handlers for each case.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // With callback function for multiple handlers
   listener.filter({ sheet: 'contacts' }, (contactsListener) => {
     contactsListener.on('commit:created', async (event) => {
@@ -746,7 +750,7 @@ The most fundamental use of `listener.filter()` is to respond to specific Events
     });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   // With callback function for multiple handlers
@@ -779,7 +783,7 @@ Filters support wildcard patterns using `*` to match partial values. This may be
 This example filters for `commit:created` events that were initiated by [Jobs](/core-concepts/jobs) rather than users. When a Job causes changes to your data (commits), the `actorId` in the event context will be the job ID (starting with `"us_jb"`):
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Use wildcard to filter for events initiated by jobs (actorId starts with "us_jb")
   listener
     .filter({actorId: "us_jb*"}) // note the * wildcard
@@ -791,7 +795,7 @@ This example filters for `commit:created` events that were initiated by [Jobs](/
     });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   // Use wildcard to filter for events initiated by jobs (actorId starts with "us_jb")
@@ -811,7 +815,7 @@ This example filters for `commit:created` events that were initiated by [Jobs](/
 You can also chain multiple filters along with namespaces to isolate highly specific events. This example shows how to combine a namespace with two filters to handle failed submit jobs for third-party integrations:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Progressive filtering for highly specific event targeting
   listener
     .namespace('space:third-party-integrations')
@@ -823,7 +827,7 @@ You can also chain multiple filters along with namespaces to isolate highly spec
     });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   // Progressive filtering for highly specific event targeting

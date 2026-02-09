@@ -1,214 +1,436 @@
 # Source: https://www.promptfoo.dev/docs/usage/troubleshooting/
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-usage/troubleshooting" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Troubleshooting | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-usage-troubleshooting--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-usage-troubleshooting--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/usage/troubleshooting/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Troubleshooting | Promptfoo"><meta data-rh="true" name="description" content="Debug and resolve common promptfoo issues with solutions for memory optimization, API configuration, Node.js errors, and native builds in your LLM testing pipeline"><meta data-rh="true" property="og:description" content="Debug and resolve common promptfoo issues with solutions for memory optimization, API configuration, Node.js errors, and native builds in your LLM testing pipeline"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/usage/troubleshooting/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/usage/troubleshooting/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/usage/troubleshooting/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Usage","item":"https://www.promptfoo.dev/docs/category/usage"},{"@type":"ListItem","position":2,"name":"Troubleshooting","item":"https://www.promptfoo.dev/docs/usage/troubleshooting"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+# Troubleshooting
 
+## Log Files and Debugging
 
+Before troubleshooting specific issues, you can access detailed logs to help diagnose problems:
 
+- **View logs directly**: Log files are stored in your config directory at `~/.promptfoo/logs` by default
+- **Custom log directory**: Set the `PROMPTFOO_LOG_DIR` environment variable to write logs to a different directory (e.g., `PROMPTFOO_LOG_DIR=./logs promptfoo eval`)
+- **Export logs for sharing**: Use `promptfoo export logs` to create a compressed archive of your log files for debugging or support
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+### Live Debug Toggle
 
+During `promptfoo redteam run`, you can toggle debug logging on and off in real-time without restarting:
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+- **Press `v`** at any time to toggle verbose/debug output
+- Works only in interactive terminal mode (not in CI or when output is piped)
+- Useful for investigating issues mid-run without overwhelming log output
 
+When you start a scan, you'll see:
 
+```
+  Tip: Press v to toggle debug output
+```
 
+Press `v` to enable debug logs and see detailed API requests, provider responses, and grading results. Press `v` again to return to clean output.
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/installation/"><span title="Install Promptfoo" class="linkLabel_fEdy">Install Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/getting-started/"><span title="Getting Started" class="linkLabel_fEdy">Getting Started</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/configuration/"><span title="Configuration" class="categoryLinkLabel_ufhF">Configuration</span></a><button aria-label="Collapse sidebar category &#x27;Configuration&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/guide/"><span title="Guide" class="linkLabel_fEdy">Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/reference/"><span title="Reference" class="linkLabel_fEdy">Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/prompts/"><span title="Prompts" class="linkLabel_fEdy">Prompts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/test-cases/"><span title="Test Cases" class="linkLabel_fEdy">Test Cases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/outputs/"><span title="Output Formats" class="linkLabel_fEdy">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/chat/"><span title="Chat threads" class="linkLabel_fEdy">Chat threads</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/datasets/"><span title="Dataset generation" class="linkLabel_fEdy">Dataset generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/scenarios/"><span title="Scenarios" class="linkLabel_fEdy">Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/caching/"><span title="Caching" class="linkLabel_fEdy">Caching</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/telemetry/"><span title="Telemetry" class="linkLabel_fEdy">Telemetry</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tracing/"><span title="Tracing" class="linkLabel_fEdy">Tracing</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--active" href="/docs/category/usage/"><span title="Usage" class="categoryLinkLabel_ufhF">Usage</span></a><button aria-label="Collapse sidebar category &#x27;Usage&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/command-line/"><span title="Command line" class="linkLabel_fEdy">Command line</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/node-package/"><span title="Node package" class="linkLabel_fEdy">Node package</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/web-ui/"><span title="Web viewer" class="linkLabel_fEdy">Web viewer</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/sharing/"><span title="Sharing" class="linkLabel_fEdy">Sharing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/self-hosting/"><span title="Self-hosting" class="linkLabel_fEdy">Self-hosting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/usage/troubleshooting/"><span title="Troubleshooting" class="linkLabel_fEdy">Troubleshooting</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/configuration/expected-outputs/"><span title="Assertions &amp; metrics" class="categoryLinkLabel_ufhF">Assertions &amp; metrics</span></a><button aria-label="Expand sidebar category &#x27;Assertions &amp; metrics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/providers/"><span title="Providers" class="categoryLinkLabel_ufhF">Providers</span></a><button aria-label="Expand sidebar category &#x27;Providers&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/integrations/"><span title="Integrations" class="categoryLinkLabel_ufhF">Integrations</span></a><button aria-label="Expand sidebar category &#x27;Integrations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/red-teaming/"><span title="Red teaming" class="categoryLinkLabel_ufhF">Red teaming</span></a><button aria-label="Collapse sidebar category &#x27;Red teaming&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/code-scanning/"><span title="Code scanning" class="categoryLinkLabel_ufhF">Code scanning</span></a><button aria-label="Expand sidebar category &#x27;Code scanning&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/guides/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a><button aria-label="Expand sidebar category &#x27;Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/enterprise/"><span title="Enterprise" class="categoryLinkLabel_ufhF">Enterprise</span></a><button aria-label="Expand sidebar category &#x27;Enterprise&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/contributing/"><span title="Contributing" class="linkLabel_fEdy">Contributing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/write-for-promptfoo/"><span title="Write for Promptfoo" class="linkLabel_fEdy">Write for Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/faq/"><span title="FAQ" class="linkLabel_fEdy">FAQ</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/releases/"><span title="Release Notes" class="linkLabel_fEdy">Release Notes</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/usage/"><span>Usage</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Troubleshooting</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Troubleshooting</h1></header>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="log-files-and-debugging">Log Files and Debugging<a href="#log-files-and-debugging" class="hash-link" aria-label="Direct link to Log Files and Debugging" title="Direct link to Log Files and Debugging" translate="no">​</a></h2>
-<p>Before troubleshooting specific issues, you can access detailed logs to help diagnose problems:</p>
-<ul>
-<li class=""><strong>View logs directly</strong>: Log files are stored in your config directory at <code>~/.promptfoo/logs</code> by default</li>
-<li class=""><strong>Custom log directory</strong>: Set the <code>PROMPTFOO_LOG_DIR</code> environment variable to write logs to a different directory (e.g., <code>PROMPTFOO_LOG_DIR=./logs promptfoo eval</code>)</li>
-<li class=""><strong>Export logs for sharing</strong>: Use <code>promptfoo export logs</code> to create a compressed archive of your log files for debugging or support</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="live-debug-toggle">Live Debug Toggle<a href="#live-debug-toggle" class="hash-link" aria-label="Direct link to Live Debug Toggle" title="Direct link to Live Debug Toggle" translate="no">​</a></h3>
-<p>During <code>promptfoo redteam run</code>, you can toggle debug logging on and off in real-time without restarting:</p>
-<ul>
-<li class=""><strong>Press <code>v</code></strong> at any time to toggle verbose/debug output</li>
-<li class="">Works only in interactive terminal mode (not in CI or when output is piped)</li>
-<li class="">Useful for investigating issues mid-run without overwhelming log output</li>
-</ul>
-<p>When you start a scan, you&#x27;ll see:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">  Tip: Press v to toggle debug output</span><br></span></code></pre></div></div>
-<p>Press <code>v</code> to enable debug logs and see detailed API requests, provider responses, and grading results. Press <code>v</code> again to return to clean output.</p>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_pbrs"><p>This is especially helpful when a scan seems stuck or you want to understand what&#x27;s happening with a specific test case.</p></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="out-of-memory-error">Out of memory error<a href="#out-of-memory-error" class="hash-link" aria-label="Direct link to Out of memory error" title="Direct link to Out of memory error" translate="no">​</a></h2>
-<p>If you have a large number of tests or your tests have large outputs, you may encounter an out of memory error. There are several ways to handle this:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="basic-setup">Basic setup<a href="#basic-setup" class="hash-link" aria-label="Direct link to Basic setup" title="Direct link to Basic setup" translate="no">​</a></h3>
-<p>Follow <strong>all</strong> of these steps:</p>
-<ol>
-<li class="">Do not use the <code>--no-write</code> flag. We need to write to disk to avoid memory issues.</li>
-<li class="">Use the <code>--no-table</code> flag.</li>
-<li class=""><strong>Use JSONL format</strong>: <code>--output results.jsonl</code></li>
-</ol>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_pbrs"><p>JSONL format processes results in batches, avoiding memory limits that cause JSON export to fail on large datasets.</p></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="granular-memory-optimization">Granular memory optimization<a href="#granular-memory-optimization" class="hash-link" aria-label="Direct link to Granular memory optimization" title="Direct link to Granular memory optimization" translate="no">​</a></h3>
-<p>You can selectively strip out heavy data from the results using environment variables:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Strip prompt text (useful if your prompts contain large amounts of text or images)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_STRIP_PROMPT_TEXT</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Strip model outputs (useful if your model generates large responses)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_STRIP_RESPONSE_OUTPUT</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Strip test variables (useful if your test cases contain large datasets)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_STRIP_TEST_VARS</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Strip grading results (useful if you&#x27;re using model-graded assertions)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_STRIP_GRADING_RESULT</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Strip metadata (useful if you&#x27;re storing large amounts of custom metadata)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_STRIP_METADATA</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span></code></pre></div></div>
-<p>You can use any combination of these variables to optimize memory usage while preserving the data you need.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="increase-nodejs-memory-limit">Increase Node.js memory limit<a href="#increase-nodejs-memory-limit" class="hash-link" aria-label="Direct link to Increase Node.js memory limit" title="Direct link to Increase Node.js memory limit" translate="no">​</a></h3>
-<p>If you&#x27;re still encountering memory issues after trying the above options, you can increase the amount of memory available to promptfoo by setting the <code>NODE_OPTIONS</code> environment variable:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># 8192 MB is 8 GB. Set this to an appropriate value for your machine.</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">NODE_OPTIONS</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;--max-old-space-size=8192&quot;</span><span class="token plain"> npx promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="object-template-handling">Object template handling<a href="#object-template-handling" class="hash-link" aria-label="Direct link to Object template handling" title="Direct link to Object template handling" translate="no">​</a></h2>
-<p>When working with complex data structures in templates, you might encounter issues with how objects are displayed or accessed in your prompts and grading rubrics.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="object-object-appears-in-outputs"><code>[object Object]</code> appears in outputs<a href="#object-object-appears-in-outputs" class="hash-link" aria-label="Direct link to object-object-appears-in-outputs" title="Direct link to object-object-appears-in-outputs" translate="no">​</a></h3>
-<p>If you see <code>[object Object]</code> in your LLM outputs or grading results, this means JavaScript objects are being converted to their string representation without proper serialization. By default, promptfoo automatically stringifies objects to prevent this issue.</p>
-<p><strong>Example problem:</strong></p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Product: {{product}}&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">vars</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">product</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">name</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Headphones&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">price</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">99.99</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Results in: &quot;Product: [object Object]&quot; in outputs</span><br></span></code></pre></div></div>
-<p><strong>Default solution:</strong> Objects are automatically converted to JSON strings:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">Product: {&quot;name&quot;:&quot;Headphones&quot;,&quot;price&quot;:99.99}</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="accessing-object-properties-in-templates">Accessing object properties in templates<a href="#accessing-object-properties-in-templates" class="hash-link" aria-label="Direct link to Accessing object properties in templates" title="Direct link to Accessing object properties in templates" translate="no">​</a></h3>
-<p>If you need to access specific properties of objects in your templates (like <code>{{ product.name }}</code>), you can enable direct object access:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_DISABLE_OBJECT_STRINGIFY</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-<p>With this setting enabled, you can use object property access in templates:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Product: {{ product.name }} costs ${{ product.price }}&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Results in: &quot;Product: Headphones costs $99.99&quot;</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="when-to-use-each-approach">When to use each approach<a href="#when-to-use-each-approach" class="hash-link" aria-label="Direct link to When to use each approach" title="Direct link to When to use each approach" translate="no">​</a></h3>
-<p><strong>Use default behavior (stringified objects) when:</strong></p>
-<ul>
-<li class="">You want objects as JSON strings in your prompts</li>
-<li class="">Working with existing templates that expect JSON strings</li>
-<li class="">You need maximum compatibility and don&#x27;t want to see <code>[object Object]</code></li>
-</ul>
-<p><strong>Use object property access (<code>PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true</code>) when:</strong></p>
-<ul>
-<li class="">You need to access specific properties like <code>{{ product.name }}</code></li>
-<li class="">Building new templates designed for object navigation</li>
-<li class="">Working with complex nested data structures</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="nodejs-version-mismatch-error">Node.js version mismatch error<a href="#nodejs-version-mismatch-error" class="hash-link" aria-label="Direct link to Node.js version mismatch error" title="Direct link to Node.js version mismatch error" translate="no">​</a></h2>
-<p>When running <code>npx promptfoo@latest</code>, you might encounter this error:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">Error: The module &#x27;/path/to/node_modules/better-sqlite3/build/Release/better_sqlite3.node&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">was compiled against a different Node.js version using</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">NODE_MODULE_VERSION 115. This version of Node.js requires</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">NODE_MODULE_VERSION 127. Please try re-compiling or re-installing</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">the module (for instance, using `npm rebuild` or `npm install`).</span><br></span></code></pre></div></div>
-<p>This happens because promptfoo uses native code modules (like better-sqlite3) that need to be compiled specifically for your Node.js version.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="solution-remove-npx-cache-and-reinstall">Solution: Remove npx cache and reinstall<a href="#solution-remove-npx-cache-and-reinstall" class="hash-link" aria-label="Direct link to Solution: Remove npx cache and reinstall" title="Direct link to Solution: Remove npx cache and reinstall" translate="no">​</a></h3>
-<p>To fix this issue, run this single command:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">rm</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-rf</span><span class="token plain"> ~/.npm/_npx </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> npx </span><span class="token parameter variable" style="color:#36acaa">-y</span><span class="token plain"> promptfoo@latest</span><br></span></code></pre></div></div>
-<p>This removes any cached npm packages in the npx cache directory and forces a fresh download and installation of promptfoo, ensuring the native modules are compiled correctly for your current Node.js version.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="native-build-failures">Native build failures<a href="#native-build-failures" class="hash-link" aria-label="Direct link to Native build failures" title="Direct link to Native build failures" translate="no">​</a></h2>
-<p>Some dependencies like <a href="https://github.com/WiseLibs/better-sqlite3" target="_blank" rel="noopener noreferrer" class="">better-sqlite3</a> include native code that must compile locally. Ensure your machine has a C/C++ build toolchain:</p>
-<ul>
-<li class=""><strong>Ubuntu/Debian</strong>: <code>sudo apt-get install build-essential</code></li>
-<li class=""><strong>macOS</strong>: <code>xcode-select --install</code></li>
-<li class=""><strong>Windows</strong>: <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/" target="_blank" rel="noopener noreferrer" class="">Visual Studio Build Tools</a></li>
-</ul>
-<p>If the prebuilt binaries fail, force a local build:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> --build-from-source</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># or</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> rebuild</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="openai-api-key-is-not-set">OpenAI API key is not set<a href="#openai-api-key-is-not-set" class="hash-link" aria-label="Direct link to OpenAI API key is not set" title="Direct link to OpenAI API key is not set" translate="no">​</a></h2>
-<p>If you&#x27;re using OpenAI, set the <code>OPENAI_API_KEY</code> environment variable or add <code>apiKey</code> to the provider config.</p>
-<p>If you&#x27;re not using OpenAI but still receiving this message, you probably have some <a class="" href="/docs/configuration/expected-outputs/model-graded/">model-graded metric</a> such as <code>llm-rubric</code> or <code>similar</code> that requires you to <a class="" href="/docs/configuration/expected-outputs/model-graded/#overriding-the-llm-grader">override the grader</a>.</p>
-<p>Follow the instructions to override the grader, e.g., using the <code>defaultTest</code> property:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">text</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> azureopenai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">chat</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4o</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">deployment</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token key atrule" style="color:#00a4db">apiHost</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> xxx.openai.azure.com</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">embedding</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> azureopenai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">embeddings</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">text</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">embedding</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">ada</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">002</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">deployment</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token key atrule" style="color:#00a4db">apiHost</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> xxx.openai.azure.com</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="pythonjavascript-tool-files-require-function-name">Python/JavaScript tool files require function name<a href="#pythonjavascript-tool-files-require-function-name" class="hash-link" aria-label="Direct link to Python/JavaScript tool files require function name" title="Direct link to Python/JavaScript tool files require function name" translate="no">​</a></h2>
-<p>If you see errors like <code>Python files require a function name</code> when loading tools from Python or JavaScript files, you need to specify the function name that returns the tool definitions.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="solution">Solution<a href="#solution" class="hash-link" aria-label="Direct link to Solution" title="Direct link to Solution" translate="no">​</a></h3>
-<p>Python and JavaScript tool files must specify a function name using the <code>file://path:function_name</code> format:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">promptfooconfig.yaml</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">chat</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4.1</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic"># Correct - specifies function name</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">tools</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//./tools.py</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">get_tools</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic"># or for JavaScript/TypeScript</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">tools</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//./tools.js</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">getTools</span><br></span></code></pre></div></div>
-<p>The function must return a tool definitions array (can be synchronous or asynchronous):</p>
-<div class="language-python codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">tools.py</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-python codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">get_tools</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token string" style="color:#e3116c">&quot;type&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;function&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token string" style="color:#e3116c">&quot;function&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token string" style="color:#e3116c">&quot;name&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;get_current_weather&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token string" style="color:#e3116c">&quot;description&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Get the current weather in a given location&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token string" style="color:#e3116c">&quot;parameters&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    </span><span class="token string" style="color:#e3116c">&quot;type&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;object&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    </span><span class="token string" style="color:#e3116c">&quot;properties&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                        </span><span class="token string" style="color:#e3116c">&quot;location&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                            </span><span class="token string" style="color:#e3116c">&quot;type&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;string&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                            </span><span class="token string" style="color:#e3116c">&quot;description&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;The city and state, e.g. San Francisco, CA&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                        </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    </span><span class="token string" style="color:#e3116c">&quot;required&quot;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;location&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre></div></div>
-<div class="language-javascript codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">tools.js</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-javascript codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">getTools</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token literal-property property" style="color:#36acaa">type</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;function&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token keyword" style="color:#00009f">function</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token literal-property property" style="color:#36acaa">name</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;get_current_weather&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token literal-property property" style="color:#36acaa">description</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Get the current weather in a given location&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token literal-property property" style="color:#36acaa">parameters</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token literal-property property" style="color:#36acaa">type</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;object&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token literal-property property" style="color:#36acaa">properties</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token literal-property property" style="color:#36acaa">location</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">              </span><span class="token literal-property property" style="color:#36acaa">type</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;string&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">              </span><span class="token literal-property property" style="color:#36acaa">description</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;The city and state, e.g. San Francisco, CA&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token literal-property property" style="color:#36acaa">required</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;location&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">module</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">exports </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> getTools </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="how-to-triage-stuck-evals">How to triage stuck evals<a href="#how-to-triage-stuck-evals" class="hash-link" aria-label="Direct link to How to triage stuck evals" title="Direct link to How to triage stuck evals" translate="no">​</a></h2>
-<p>When running evals, you may encounter timeout errors, especially when using local providers or when running many concurrent requests. Here&#x27;s how to fix them:</p>
-<p><strong>Common use cases:</strong></p>
-<ul>
-<li class="">Ensure evaluations complete within a time limit (useful for CI/CD)</li>
-<li class="">Handle custom providers or providers that get stuck</li>
-<li class="">Prevent runaway costs from long-running evaluations</li>
-</ul>
-<p>You can control two settings: timeout for individual test cases and timeout for the entire evaluation.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="quick-fixes">Quick fixes<a href="#quick-fixes" class="hash-link" aria-label="Direct link to Quick fixes" title="Direct link to Quick fixes" translate="no">​</a></h3>
-<p><strong>Set timeouts for individual requests and total evaluation time:</strong></p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_EVAL_TIMEOUT_MS</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">30000</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># 30 seconds per request</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_MAX_EVAL_TIME_MS</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">300000</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># 5 minutes total limit</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-<p>You can also set these values in your <code>.env</code> file or Promptfoo config file:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">promptfooconfig.yaml</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">env</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">PROMPTFOO_EVAL_TIMEOUT_MS</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">30000</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">PROMPTFOO_MAX_EVAL_TIME_MS</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">300000</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="debugging-python">Debugging Python<a href="#debugging-python" class="hash-link" aria-label="Direct link to Debugging Python" title="Direct link to Debugging Python" translate="no">​</a></h2>
-<p>When using custom Python providers, prompts, hooks, assertions, etc., you may need to debug your Python code. Here are some tips to help you troubleshoot issues:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="viewing-python-output">Viewing Python output<a href="#viewing-python-output" class="hash-link" aria-label="Direct link to Viewing Python output" title="Direct link to Viewing Python output" translate="no">​</a></h3>
-<p>To see the output from your Python script, including print statements, set the <code>LOG_LEVEL</code> environment variable to <code>debug</code> when running your eval:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">LOG_LEVEL</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">debug npx promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-<p>Alternatively, you can use the <code>--verbose</code> flag:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--verbose</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="using-the-python-debugger-pdb">Using the Python debugger (pdb)<a href="#using-the-python-debugger-pdb" class="hash-link" aria-label="Direct link to Using the Python debugger (pdb)" title="Direct link to Using the Python debugger (pdb)" translate="no">​</a></h3>
-<p>Promptfoo now supports native Python debugging with pdb. To enable it:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_PYTHON_DEBUG_ENABLED</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span></code></pre></div></div>
-<p>Then add breakpoints in your Python code:</p>
-<div class="language-python codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-python codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> pdb</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">call_api</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">prompt</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> options</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> context</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    pdb</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">set_trace</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Debugger will pause here</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic"># Your code...</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="python-installation-and-path-issues">Python Installation and Path Issues<a href="#python-installation-and-path-issues" class="hash-link" aria-label="Direct link to Python Installation and Path Issues" title="Direct link to Python Installation and Path Issues" translate="no">​</a></h3>
-<p>If you encounter errors like <code>spawn py -3 ENOENT</code> or <code>Python 3 not found</code>, promptfoo cannot locate your Python installation. Here&#x27;s how to resolve this:</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="setting-a-custom-python-path">Setting a Custom Python Path<a href="#setting-a-custom-python-path" class="hash-link" aria-label="Direct link to Setting a Custom Python Path" title="Direct link to Setting a Custom Python Path" translate="no">​</a></h4>
-<p>Use the <code>PROMPTFOO_PYTHON</code> environment variable to specify your Python executable:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Windows (if Python is installed at a custom location)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_PYTHON</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">C:</span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain">Python</span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain">3_11</span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain">python.exe</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># macOS/Linux</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_PYTHON</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/usr/local/bin/python3</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Then run your evaluation</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="per-provider-python-configuration">Per-Provider Python Configuration<a href="#per-provider-python-configuration" class="hash-link" aria-label="Direct link to Per-Provider Python Configuration" title="Direct link to Per-Provider Python Configuration" translate="no">​</a></h4>
-<p>You can also set the Python path for specific providers in your config:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;file://my_provider.py&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">pythonExecutable</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> /path/to/specific/python</span><br></span></code></pre></div></div>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="windows-specific-issues">Windows-Specific Issues<a href="#windows-specific-issues" class="hash-link" aria-label="Direct link to Windows-Specific Issues" title="Direct link to Windows-Specific Issues" translate="no">​</a></h4>
-<p>On Windows, promptfoo tries to detect Python in this order:</p>
-<ol>
-<li class=""><code>PROMPTFOO_PYTHON</code> environment variable (if set)</li>
-<li class="">Provider-specific <code>pythonExecutable</code> config (if set)</li>
-<li class=""><strong>Windows smart detection</strong>: Uses <code>where python</code> command and filters out Microsoft Store stubs</li>
-<li class=""><code>python -c &quot;import sys; print(sys.executable)&quot;</code> (to get the actual Python path)</li>
-<li class="">Common fallback commands: <code>python</code>, <code>python3</code>, <code>py -3</code>, <code>py</code></li>
-</ol>
-<p>If you don&#x27;t have the Python launcher (<code>py.exe</code>) installed but have Python directly, make sure the <code>python</code> command works from your command line. If not, either:</p>
-<ul>
-<li class="">Add your Python installation directory to your PATH</li>
-<li class="">Set <code>PROMPTFOO_PYTHON</code> to the full path of your <code>python.exe</code></li>
-</ul>
-<p><strong>Common Windows Python locations:</strong></p>
-<ul>
-<li class="">Microsoft Store: <code>%USERPROFILE%\AppData\Local\Microsoft\WindowsApps\python.exe</code></li>
-<li class="">Direct installer: <code>C:\Python3X\python.exe</code> (where X is the version)</li>
-<li class="">Anaconda: <code>C:\Users\YourName\anaconda3\python.exe</code></li>
-</ul>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-your-python-configuration">Testing Your Python Configuration<a href="#testing-your-python-configuration" class="hash-link" aria-label="Direct link to Testing Your Python Configuration" title="Direct link to Testing Your Python Configuration" translate="no">​</a></h4>
-<p>To verify your Python is correctly configured:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Test that promptfoo can find your Python</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">python </span><span class="token parameter variable" style="color:#36acaa">-c</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;import sys; print(sys.executable)&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># If this works but promptfoo still has issues, set PROMPTFOO_PYTHON:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_PYTHON</span><span class="token operator" style="color:#393A34">=</span><span class="token variable" style="color:#36acaa">$(</span><span class="token variable" style="color:#36acaa">python </span><span class="token variable parameter variable" style="color:#36acaa">-c</span><span class="token variable" style="color:#36acaa"> </span><span class="token variable string" style="color:#e3116c">&quot;import sys; print(sys.executable)&quot;</span><span class="token variable" style="color:#36acaa">)</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="handling-errors">Handling errors<a href="#handling-errors" class="hash-link" aria-label="Direct link to Handling errors" title="Direct link to Handling errors" translate="no">​</a></h3>
-<p>If you encounter errors in your Python script, the error message and stack trace will be displayed in the promptfoo output. Make sure to check this information for clues about what might be going wrong in your code.</p>
-<p>Remember that promptfoo runs your Python script in a separate process, so some standard debugging techniques may not work as expected. Using logging and remote debugging as described above are the most reliable ways to troubleshoot issues in your Python providers.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="debugging-the-database">Debugging the Database<a href="#debugging-the-database" class="hash-link" aria-label="Direct link to Debugging the Database" title="Direct link to Debugging the Database" translate="no">​</a></h2>
-<ol>
-<li class="">
-<p>Set environment variables:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_ENABLE_DATABASE_LOGS</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">LOG_LEVEL</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">debug</span><br></span></code></pre></div></div>
-</li>
-<li class="">
-<p>Run your command:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo </span><span class="token builtin class-name">eval</span><br></span></code></pre></div></div>
-</li>
-<li class="">
-<p>Disable logging when done:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">unset</span><span class="token plain"> PROMPTFOO_ENABLE_DATABASE_LOGS</span><br></span></code></pre></div></div>
-</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="finding-log-files">Finding log files<a href="#finding-log-files" class="hash-link" aria-label="Direct link to Finding log files" title="Direct link to Finding log files" translate="no">​</a></h2>
-<p>Promptfoo logs errors and verbose logs to <code>~/.promptfoo/logs</code> by default.</p>
-<p>Change the location by setting <code>PROMPTFOO_LOG_DIR</code> to a different directory.</p>
-<p>For each run an error log and a debug log will be created.</p></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/usage/troubleshooting.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/usage/self-hosting/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Self-hosting</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/configuration/expected-outputs/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Assertions &amp; metrics</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#log-files-and-debugging" class="table-of-contents__link toc-highlight">Log Files and Debugging</a><ul><li><a href="#live-debug-toggle" class="table-of-contents__link toc-highlight">Live Debug Toggle</a></li></ul></li><li><a href="#out-of-memory-error" class="table-of-contents__link toc-highlight">Out of memory error</a><ul><li><a href="#basic-setup" class="table-of-contents__link toc-highlight">Basic setup</a></li><li><a href="#granular-memory-optimization" class="table-of-contents__link toc-highlight">Granular memory optimization</a></li><li><a href="#increase-nodejs-memory-limit" class="table-of-contents__link toc-highlight">Increase Node.js memory limit</a></li></ul></li><li><a href="#object-template-handling" class="table-of-contents__link toc-highlight">Object template handling</a><ul><li><a href="#object-object-appears-in-outputs" class="table-of-contents__link toc-highlight"><code>[object Object]</code> appears in outputs</a></li><li><a href="#accessing-object-properties-in-templates" class="table-of-contents__link toc-highlight">Accessing object properties in templates</a></li><li><a href="#when-to-use-each-approach" class="table-of-contents__link toc-highlight">When to use each approach</a></li></ul></li><li><a href="#nodejs-version-mismatch-error" class="table-of-contents__link toc-highlight">Node.js version mismatch error</a><ul><li><a href="#solution-remove-npx-cache-and-reinstall" class="table-of-contents__link toc-highlight">Solution: Remove npx cache and reinstall</a></li></ul></li><li><a href="#native-build-failures" class="table-of-contents__link toc-highlight">Native build failures</a></li><li><a href="#openai-api-key-is-not-set" class="table-of-contents__link toc-highlight">OpenAI API key is not set</a></li><li><a href="#pythonjavascript-tool-files-require-function-name" class="table-of-contents__link toc-highlight">Python/JavaScript tool files require function name</a><ul><li><a href="#solution" class="table-of-contents__link toc-highlight">Solution</a></li></ul></li><li><a href="#how-to-triage-stuck-evals" class="table-of-contents__link toc-highlight">How to triage stuck evals</a><ul><li><a href="#quick-fixes" class="table-of-contents__link toc-highlight">Quick fixes</a></li></ul></li><li><a href="#debugging-python" class="table-of-contents__link toc-highlight">Debugging Python</a><ul><li><a href="#viewing-python-output" class="table-of-contents__link toc-highlight">Viewing Python output</a></li><li><a href="#using-the-python-debugger-pdb" class="table-of-contents__link toc-highlight">Using the Python debugger (pdb)</a></li><li><a href="#python-installation-and-path-issues" class="table-of-contents__link toc-highlight">Python Installation and Path Issues</a></li><li><a href="#handling-errors" class="table-of-contents__link toc-highlight">Handling errors</a></li></ul></li><li><a href="#debugging-the-database" class="table-of-contents__link toc-highlight">Debugging the Database</a></li><li><a href="#finding-log-files" class="table-of-contents__link toc-highlight">Finding log files</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+**tip**
+
+This is especially helpful when a scan seems stuck or you want to understand what's happening with a specific test case.
+
+## Out of memory error
+
+If you have a large number of tests or your tests have large outputs, you may encounter an out of memory error. There are several ways to handle this:
+
+### Basic setup
+
+Follow **all** of these steps:
+
+1. Do not use the `--no-write` flag. We need to write to disk to avoid memory issues.
+2. Use the `--no-table` flag.
+3. **Use JSONL format**: `--output results.jsonl`
+
+**tip**
+
+JSONL format processes results in batches, avoiding memory limits that cause JSON export to fail on large datasets.
+
+### Granular memory optimization
+
+You can selectively strip out heavy data from the results using environment variables:
+
+```bash
+# Strip prompt text (useful if your prompts contain large amounts of text or images)
+export PROMPTFOO_STRIP_PROMPT_TEXT=true
+
+# Strip model outputs (useful if your model generates large responses)
+export PROMPTFOO_STRIP_RESPONSE_OUTPUT=true
+
+# Strip test variables (useful if your test cases contain large datasets)
+export PROMPTFOO_STRIP_TEST_VARS=true
+
+# Strip grading results (useful if you're using model-graded assertions)
+export PROMPTFOO_STRIP_GRADING_RESULT=true
+
+# Strip metadata (useful if you're storing large amounts of custom metadata)
+export PROMPTFOO_STRIP_METADATA=true
+```
+
+You can use any combination of these variables to optimize memory usage while preserving the data you need.
+
+### Increase Node.js memory limit
+
+If you're still encountering memory issues after trying the above options, you can increase the amount of memory available to promptfoo by setting the `NODE_OPTIONS` environment variable:
+
+```bash
+# 8192 MB is 8 GB. Set this to an appropriate value for your machine.
+NODE_OPTIONS="--max-old-space-size=8192" npx promptfoo eval
+```
+
+## Object template handling
+
+When working with complex data structures in templates, you might encounter issues with how objects are displayed or accessed in your prompts and grading rubrics.
+
+### `[object Object]` appears in outputs
+
+If you see `[object Object]` in your LLM outputs or grading results, this means JavaScript objects are being converted to their string representation without proper serialization. By default, promptfoo automatically stringifies objects to prevent this issue.
+
+**Example problem:**
+
+```yaml
+prompts:
+  - "Product: {{product}}"
+tests:
+  - vars:
+      product:
+        name: "Headphones"
+        price: 99.99
+# Results in: "Product: [object Object]" in outputs
+```
+
+**Default solution:** Objects are automatically converted to JSON strings:
+
+```
+Product: {"name":"Headphones","price":99.99}
+```
+
+### Accessing object properties in templates
+
+If you need to access specific properties of objects in your templates (like `{{ product.name }}`), you can enable direct object access:
+
+```bash
+export PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true
+promptfoo eval
+```
+
+With this setting enabled, you can use object property access in templates:
+
+```yaml
+prompts:
+  - "Product: {{ product.name }} costs ${{ product.price }}"
+# Results in: "Product: Headphones costs $99.99"
+```
+
+### When to use each approach
+
+**Use default behavior (stringified objects) when:**
+
+- You want objects as JSON strings in your prompts
+- Working with existing templates that expect JSON strings
+- You need maximum compatibility and don't want to see `[object Object]`
+
+**Use object property access (`PROMPTFOO_DISABLE_OBJECT_STRINGIFY=true`) when:**
+
+- You need to access specific properties like `{{ product.name }}`
+- Building new templates designed for object navigation
+- Working with complex nested data structures
+
+## Node.js version mismatch error
+
+When running `npx promptfoo@latest`, you might encounter this error:
+
+```
+Error: The module '/path/to/node_modules/better-sqlite3/build/Release/better_sqlite3.node'
+was compiled against a different Node.js version using
+NODE_MODULE_VERSION 115. This version of Node.js requires
+NODE_MODULE_VERSION 127. Please try re-compiling or re-installing
+the module (for instance, using `npm rebuild` or `npm install`).
+```
+
+This happens because promptfoo uses native code modules (like better-sqlite3) that need to be compiled specifically for your Node.js version.
+
+### Solution: Remove npx cache and reinstall
+
+To fix this issue, run this single command:
+
+```bash
+rm -rf ~/.npm/_npx && npx -y promptfoo@latest
+```
+
+This removes any cached npm packages in the npx cache directory and forces a fresh download and installation of promptfoo, ensuring the native modules are compiled correctly for your current Node.js version.
+
+## Native build failures
+
+Some dependencies like [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) include native code that must compile locally. Ensure your machine has a C/C++ build toolchain:
+
+- **Ubuntu/Debian**: `sudo apt-get install build-essential`
+- **macOS**: `xcode-select --install`
+- **Windows**: [Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+
+If the prebuilt binaries fail, force a local build:
+
+```bash
+npm install --build-from-source
+# or
+npm rebuild
+```
+
+## OpenAI API key is not set
+
+If you're using OpenAI, set the `OPENAI_API_KEY` environment variable or add `apiKey` to the provider config.
+
+If you're not using OpenAI but still receiving this message, you probably have some [model-graded metric](/docs/configuration/expected-outputs/model-graded/) such as `llm-rubric` or `similar` that requires you to [override the grader](/docs/configuration/expected-outputs/model-graded/#overriding-the-llm-grader).
+
+Follow the instructions to override the grader, e.g., using the `defaultTest` property:
+
+```yaml
+defaultTest:
+  options:
+    provider:
+      text:
+        id: azureopenai:chat:gpt-4o-deployment
+        config:
+          apiHost: xxx.openai.azure.com
+      embedding:
+        id: azureopenai:embeddings:text-embedding-ada-002-deployment
+        config:
+          apiHost: xxx.openai.azure.com
+```
+
+## Python/JavaScript tool files require function name
+
+If you see errors like `Python files require a function name` when loading tools from Python or JavaScript files, you need to specify the function name that returns the tool definitions.
+
+### Solution
+
+Python and JavaScript tool files must specify a function name using the `file://path:function_name` format:
+
+**promptfooconfig.yaml**
+
+```yaml
+providers:
+  - id: openai:chat:gpt-4.1-mini
+    config:
+      # Correct - specifies function name
+      tools: file://./tools.py:get_tools
+      # or for JavaScript/TypeScript
+      tools: file://./tools.js:getTools
+```
+
+The function must return a tool definitions array (can be synchronous or asynchronous):
+
+**tools.py**
+
+```python
+def get_tools():
+    return [
+        {
+            "type": "function",
+            "function": {
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA"
+                        }
+                    },
+                    "required": ["location"]
+                }
+            }
+        }
+    ]
+```
+
+**tools.js**
+
+```javascript
+function getTools() {
+  return [
+    {
+      type: "function",
+      function: {
+        name: "get_current_weather",
+        description: "Get the current weather in a given location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g. San Francisco, CA"
+            }
+          },
+          required: ["location"]
+        }
+      },
+    },
+  ];
+}
+
+module.exports = { getTools };
+```
+
+## How to triage stuck evals
+
+When running evals, you may encounter timeout errors, especially when using local providers or when running many concurrent requests. Here's how to fix them:
+
+**Common use cases:**
+
+- Ensure evaluations complete within a time limit (useful for CI/CD)
+- Handle custom providers or providers that get stuck
+- Prevent runaway costs from long-running evaluations
+
+You can control two settings: timeout for individual test cases and timeout for the entire evaluation.
+
+### Quick fixes
+
+**Set timeouts for individual requests and total evaluation time:**
+
+```bash
+export PROMPTFOO_EVAL_TIMEOUT_MS=30000  # 30 seconds per request
+export PROMPTFOO_MAX_EVAL_TIME_MS=300000  # 5 minutes total limit
+
+npx promptfoo eval
+```
+
+You can also set these values in your `.env` file or Promptfoo config file:
+
+**promptfooconfig.yaml**
+
+```yaml
+env:
+  PROMPTFOO_EVAL_TIMEOUT_MS: 30000
+  PROMPTFOO_MAX_EVAL_TIME_MS: 300000
+```
+
+## Debugging Python
+
+When using custom Python providers, prompts, hooks, assertions, etc., you may need to debug your Python code. Here are some tips to help you troubleshoot issues:
+
+### Viewing Python output
+
+To see the output from your Python script, including print statements, set the `LOG_LEVEL` environment variable to `debug` when running your eval:
+
+```bash
+LOG_LEVEL=debug npx promptfoo eval
+```
+
+Alternatively, you can use the `--verbose` flag:
+
+```bash
+npx promptfoo eval --verbose
+```
+
+### Using the Python debugger (pdb)
+
+Promptfoo now supports native Python debugging with pdb. To enable it:
+
+```bash
+export PROMPTFOO_PYTHON_DEBUG_ENABLED=true
+```
+
+Then add breakpoints in your Python code:
+
+```python
+import pdb
+
+def call_api(prompt, options, context):
+    pdb.set_trace()  # Debugger will pause here
+    # Your code...
+```
+
+### Python Installation and Path Issues
+
+If you encounter errors like `spawn py -3 ENOENT` or `Python 3 not found`, promptfoo cannot locate your Python installation. Here's how to resolve this:
+
+#### Setting a Custom Python Path
+
+Use the `PROMPTFOO_PYTHON` environment variable to specify your Python executable:
+
+```bash
+# Windows (if Python is installed at a custom location)
+export PROMPTFOO_PYTHON=C:\Python\3_11\python.exe
+
+# macOS/Linux
+export PROMPTFOO_PYTHON=/usr/local/bin/python3
+
+# Then run your evaluation
+npx promptfoo eval
+```
+
+#### Per-Provider Python Configuration
+
+You can also set the Python path for specific providers in your config:
+
+```yaml
+providers:
+  - id: file://my_provider.py
+    config:
+      pythonExecutable: /path/to/specific/python
+```
+
+#### Windows-Specific Issues
+
+On Windows, promptfoo tries to detect Python in this order:
+
+1. `PROMPTFOO_PYTHON` environment variable (if set)
+2. Provider-specific `pythonExecutable` config (if set)
+3. **Windows smart detection**: Uses `where python` command and filters out Microsoft Store stubs
+4. `python -c "import sys; print(sys.executable)"` (to get the actual Python path)
+5. Common fallback commands: `python`, `python3`, `py -3`, `py`
+
+If you don't have the Python launcher (`py.exe`) installed but have Python directly, make sure the `python` command works from your command line. If not, either:
+
+- Add your Python installation directory to your PATH
+- Set `PROMPTFOO_PYTHON` to the full path of your `python.exe`
+
+**Common Windows Python locations:**
+
+- Microsoft Store: `%USERPROFILE%\AppData\Local\Microsoft\WindowsApps\python.exe`
+- Direct installer: `C:\Python3X\python.exe` (where X is the version)
+- Anaconda: `C:\Users\YourName\anaconda3\python.exe`
+
+#### Testing Your Python Configuration
+
+To verify your Python is correctly configured:
+
+```bash
+# Test that promptfoo can find your Python
+python -c "import sys; print(sys.executable)"
+
+# If this works but promptfoo still has issues, set PROMPTFOO_PYTHON:
+export PROMPTFOO_PYTHON=$(python -c "import sys; print(sys.executable)")
+```
+
+### Handling errors
+
+If you encounter errors in your Python script, the error message and stack trace will be displayed in the promptfoo output. Make sure to check this information for clues about what might be going wrong in your code.
+
+Remember that promptfoo runs your Python script in a separate process, so some standard debugging techniques may not work as expected. Using logging and remote debugging as described above are the most reliable ways to troubleshoot issues in your Python providers.
+
+## Debugging the Database
+
+1. Set environment variables:
+   ```bash
+   export PROMPTFOO_ENABLE_DATABASE_LOGS=true
+   export LOG_LEVEL=debug
+   ```
+2. Run your command:
+   ```bash
+   npx promptfoo eval
+   ```
+3. Disable logging when done:
+   ```bash
+   unset PROMPTFOO_ENABLE_DATABASE_LOGS
+   ```
+
+## Finding log files
+
+Promptfoo logs errors and verbose logs to `~/.promptfoo/logs` by default.
+
+Change the location by setting `PROMPTFOO_LOG_DIR` to a different directory.
+
+For each run an error log and a debug log will be created.

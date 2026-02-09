@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hset.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hset.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HSET
 
@@ -26,26 +12,39 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="fields" type="{ [fieldName]: TValue }" required>
+<ParamField body="field" type="str">
+  Field to set
+</ParamField>
+
+<ParamField body="value" type="str">
+  Value to set
+</ParamField>
+
+<ParamField body="values" type="Dict[str, Any]">
   An object of fields and their values.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of fields that were added.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas"
-    });
+  ```py Single theme={"system"}
+  # Set a single field
+  assert redis.hset("myhash", "field1", "Hello") == 1
+  ```
+
+  ```py Multiple theme={"system"}
+  # Set multiple fields
+  assert redis.hset("myhash", values={
+    "field1": "Hello",
+    "field2": "World"
+  }) == 2
   ```
 </RequestExample>

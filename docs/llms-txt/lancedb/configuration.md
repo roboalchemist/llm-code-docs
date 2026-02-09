@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/storage/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuring Cloud Storage in LanceDB
 
 > Configure LanceDB to use S3, GCS, Azure Blob, and S3-compatible object stores with environment variables or storage options.
@@ -234,8 +238,3 @@ Tigris exposes an S3-compatible API. Configure the endpoint and region:
 </CodeGroup>
 
 Environment variables `AWS_ENDPOINT=https://t3.storage.dev` and `AWS_DEFAULT_REGION=auto` achieve the same configuration.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

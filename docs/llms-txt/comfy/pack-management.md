@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/manager/pack-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom nodes (new UI)
 
 > Install, update, and manage custom nodes with ComfyUI-Manager using the new interface
@@ -69,8 +73,3 @@ To uninstall an installed node, select the corresponding node, then click the **
 
 2. Why can't I find the option to install via git?
    For security and stability of the ComfyUI user system, the new UI does not support installing nodes via git. Please refer to [Manually install custom nodes](/installation/install_custom_node) to learn how to manually install custom nodes.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

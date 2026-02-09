@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/connect-environments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remote Environment Setup
 
 > Implement the /init endpoint to run evaluations in your infrastructure

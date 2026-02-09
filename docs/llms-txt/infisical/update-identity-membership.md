@@ -2,151 +2,136 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/update-identity-membership.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/update-identity-membership.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/update-identity-membership.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Update Identity Membership
 
 > Update project identity memberships
 
+
+
 ## OpenAPI
 
 ````yaml PATCH /api/v1/projects/{projectId}/identity-memberships/{identityId}
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v1/projects/{projectId}/identity-memberships/{identityId}
-  method: patch
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path:
-        projectId:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the project to update the identity membership for.
-        identityId:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the machine identity to update the membership for.
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              roles:
-                allOf:
-                  - type: array
-                    items:
-                      anyOf:
-                        - type: object
-                          properties:
-                            role:
-                              type: string
-                              description: >-
-                                The role slug to assign to the newly created
-                                identity project membership.
-                            isTemporary:
-                              type: boolean
-                              enum:
-                                - false
-                              default: false
-                              description: >-
-                                Whether the assigned role is temporary. If
-                                isTemporary is set true, must provide
-                                temporaryMode, temporaryRange and
-                                temporaryAccessStartTime.
-                          required:
-                            - role
-                          additionalProperties: false
-                        - type: object
-                          properties:
-                            role:
-                              type: string
-                              description: >-
-                                The role slug to assign to the newly created
-                                identity project membership.
-                            isTemporary:
-                              type: boolean
-                              enum:
-                                - true
-                              description: >-
-                                Whether the assigned role is temporary. If
-                                isTemporary is set true, must provide
-                                temporaryMode, temporaryRange and
-                                temporaryAccessStartTime.
-                            temporaryMode:
-                              type: string
-                              enum:
-                                - relative
-                              description: Type of temporary expiry.
-                            temporaryRange:
-                              type: string
-                              description: >-
-                                Expiry time for temporary access. In relative
-                                mode it could be 1s, 2m ,3h, etc.
-                            temporaryAccessStartTime:
-                              type: string
-                              format: date-time
-                              description: Time to which the temporary access starts.
-                          required:
-                            - role
-                            - isTemporary
-                            - temporaryMode
-                            - temporaryRange
-                            - temporaryAccessStartTime
-                          additionalProperties: false
-                    minItems: 1
-                    description: >-
-                      A list of role slugs to assign to the identity project
-                      membership.
-            required: true
-            requiredProperties:
-              - roles
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              roles:
-                - role: <string>
-                  isTemporary: false
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              roles:
-                allOf:
-                  - type: array
+  /api/v1/projects/{projectId}/identity-memberships/{identityId}:
+    patch:
+      tags:
+        - Project Identities
+      description: Update project identity memberships
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: projectId
+          required: true
+          description: The ID of the project to update the identity membership for.
+        - schema:
+            type: string
+          in: path
+          name: identityId
+          required: true
+          description: The ID of the machine identity to update the membership for.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roles:
+                  type: array
+                  items:
+                    anyOf:
+                      - type: object
+                        properties:
+                          role:
+                            type: string
+                            description: >-
+                              The role slug to assign to the newly created
+                              identity project membership.
+                          isTemporary:
+                            type: boolean
+                            enum:
+                              - false
+                            default: false
+                            description: >-
+                              Whether the assigned role is temporary. If
+                              isTemporary is set true, must provide
+                              temporaryMode, temporaryRange and
+                              temporaryAccessStartTime.
+                        required:
+                          - role
+                        additionalProperties: false
+                      - type: object
+                        properties:
+                          role:
+                            type: string
+                            description: >-
+                              The role slug to assign to the newly created
+                              identity project membership.
+                          isTemporary:
+                            type: boolean
+                            enum:
+                              - true
+                            description: >-
+                              Whether the assigned role is temporary. If
+                              isTemporary is set true, must provide
+                              temporaryMode, temporaryRange and
+                              temporaryAccessStartTime.
+                          temporaryMode:
+                            type: string
+                            enum:
+                              - relative
+                            description: Type of temporary expiry.
+                          temporaryRange:
+                            type: string
+                            description: >-
+                              Expiry time for temporary access. In relative mode
+                              it could be 1s, 2m ,3h, etc.
+                          temporaryAccessStartTime:
+                            type: string
+                            format: date-time
+                            description: Time to which the temporary access starts.
+                        required:
+                          - role
+                          - isTemporary
+                          - temporaryMode
+                          - temporaryRange
+                          - temporaryAccessStartTime
+                        additionalProperties: false
+                  minItems: 1
+                  description: >-
+                    A list of role slugs to assign to the identity project
+                    membership.
+              required:
+                - roles
+              additionalProperties: false
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roles:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -192,229 +177,155 @@ paths:
                         - createdAt
                         - updatedAt
                       additionalProperties: false
-            requiredProperties:
-              - roles
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              roles:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  role: <string>
-                  projectMembershipId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  customRoleId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  isTemporary: false
-                  temporaryMode: <string>
-                  temporaryRange: <string>
-                  temporaryAccessStartTime: '2023-11-07T05:31:56Z'
-                  temporaryAccessEndTime: '2023-11-07T05:31:56Z'
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - roles
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/use-thread-of-thought-prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Thread-of-Thought prompting
 
 > Maintain a coherent line of reasoning between LLM interactions by building on previous ideas. 

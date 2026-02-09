@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
 
-# Source: https://docs.apify.com/platform/integrations/make/tiktok.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-
-# Source: https://docs.apify.com/platform/integrations/make/tiktok.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-
-# Source: https://docs.apify.com/platform/integrations/make/tiktok.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-
 # Gumloop - TikTok Actor integration
 
 Get TikTok hashtag videos, profile videos, followers, video details, and search results in Gumloop.
@@ -73,6 +61,6 @@ You can pull the following types of data from TikTok using Gumloop’s TikTok no
 
 ## Other integrations
 
-* https://docs.apify.com/platform/integrations/gumloop/instagram.md
-* https://docs.apify.com/platform/integrations/gumloop/youtube.md
-* https://docs.apify.com/platform/integrations/gumloop/maps.md
+* [Instagram](https://docs.apify.com/platform/integrations/gumloop/instagram.md)
+* [YouTube](https://docs.apify.com/platform/integrations/gumloop/youtube.md)
+* [Google Maps](https://docs.apify.com/platform/integrations/gumloop/maps.md)

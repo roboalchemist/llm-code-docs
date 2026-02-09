@@ -114,7 +114,7 @@ You'll receive your first payment within 30 days of your first successful referr
 
 To join the Apify Affiliate Program:
 
-1. Sign up through the https://apify.com/partners/affiliate
+1. Sign up through the [Apify Affiliate program page](https://apify.com/partners/affiliate)
 2. Access your unique tracking links and promotional materials
 3. Start sharing with your network
 4. Monitor your referrals and earnings through the dashboard

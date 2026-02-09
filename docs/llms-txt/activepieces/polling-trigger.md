@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/piece-reference/triggers/polling-trigger.md
 
-# Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/polling-trigger.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Polling Trigger
 
@@ -36,7 +38,7 @@ The library will detect new items based on the timestamp.
 The polling object's generic type consists of the props value and the object type.
 
 ```typescript  theme={null}
-const polling: Polling<{ authentication: OAuth2PropertyValue, object: string }> = {
+const polling: Polling<Polling<AppConnectionValueForAuthProperty<typeof auth>> = {
   strategy: DedupeStrategy.TIMEBASED,
   items: async ({ propsValue, lastFetchEpochMS }) => {
     // Todo implement the logic to fetch the items
@@ -57,7 +59,7 @@ The library will detect new items after the last item ID.
 The polling object's generic type consists of the props value and the object type
 
 ```typescript  theme={null}
-const polling: Polling<{ authentication: AuthProps}> = {
+const polling: Polling<AppConnectionValueForAuthProperty<typeof auth>, Record<string,any>> = {
     strategy: DedupeStrategy.LAST_ITEM,
     items: async ({ propsValue }) => {
         // Implement the logic to fetch the items

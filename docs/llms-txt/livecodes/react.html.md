@@ -2,14 +2,6 @@
 
 # Source: https://livecodes.io/docs/sdk/react.html.md
 
-# Source: https://livecodes.io/docs/languages/react.html.md
-
-# Source: https://livecodes.io/docs/sdk/react.html.md
-
-# Source: https://livecodes.io/docs/languages/react.html.md
-
-# Source: https://livecodes.io/docs/sdk/react.html.md
-
 # React SDK
 
 import LiveCodes from '../../src/components/LiveCodes.tsx';

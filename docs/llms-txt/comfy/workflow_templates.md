@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/workflow_templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workflow templates
 
 If you have example workflow files associated with your custom nodes
@@ -30,3 +34,5 @@ Under `ComfyUI-MyCustomNodeModule/example_workflows/` directory:
 * `My_example_workflow_2.json`
 
 In this example ComfyUI's template browser shows a category called `ComfyUI-MyCustomNodeModule` with two items, one of which has a thumbnail.
+
+For a real-world example, see [ComfyUI-Impact-Pack's example\_workflows folder](https://github.com/ltdrdata/ComfyUI-Impact-Pack/tree/Main/example_workflows).

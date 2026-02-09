@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/vector-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vector Indexes
 
 > Build and optimize vector indexes in LanceDB using IVF-PQ, HNSW, and binary indexes.
@@ -30,11 +34,11 @@ LanceDB offers two main vector indexing algorithms: **Inverted File (IVF)** and 
 
 ### Option 1: Self-Hosted Indexing
 
-**Manual, Sync or Async:** If using LanceDB Open Source, you will have to build indexes manually, as well as reindex and tune indexing parameters. The Python SDK lets you do this *sychronously and asychronously*.
+**Manual, Sync or Async:** If using LanceDB Open Source, you will have to build indexes manually, as well as reindex and tune indexing parameters. The Python SDK lets you do this *synchronously and asynchronously*.
 
 ### Option 2: Automated Indexing
 
-**Automatic and Async:** Indexing is automatic in LanceDB Cloud/Enterprise. As soon as data is updated, our system automates index optimization. *This is done asychronously*.
+**Automatic and Async:** Indexing is automatic in LanceDB Cloud/Enterprise. As soon as data is updated, our system automates index optimization. *This is done asynchronously*.
 
 Here is what happens in the background - when a table contains a single vector column named `vector`, LanceDB automatically:
 
@@ -202,8 +206,3 @@ To wait until all data is fully indexed, you can specify the `wait_timeout` para
     {VectorIndexCheckStatus}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

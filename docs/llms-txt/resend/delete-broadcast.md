@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/broadcasts/delete-broadcast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Broadcast
 
 > Remove an existing broadcast.
@@ -43,7 +47,7 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -53,13 +57,13 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->broadcasts->remove('559ac32e-9ef5-46fb-82a1-b76b840c0f7b');
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -67,7 +71,7 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
   resend.Broadcasts.remove(id="559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -75,15 +79,19 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
   Resend::Broadcasts.remove("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  removed, _ := client.Broadcasts.Remove("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	client.Broadcasts.Remove("559ac32e-9ef5-46fb-82a1-b76b840c0f7b")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -99,13 +107,13 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   RemoveBroadcastResponseSuccess data = resend.broadcasts().remove("559ac32e-9ef5-46fb-82a1-b76b840c0f7b");
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -113,14 +121,14 @@ You can only delete broadcasts that are in the `draft` status. In addition, if y
   await resend.BroadcastDeleteAsync( new Guid( "559ac32e-9ef5-46fb-82a1-b76b840c0f7b" ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X DELETE 'https://api.resend.com/broadcasts/559ac32e-9ef5-46fb-82a1-b76b840c0f7b' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "broadcast",
     "id": "559ac32e-9ef5-46fb-82a1-b76b840c0f7b",

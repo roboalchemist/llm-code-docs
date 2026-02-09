@@ -54,5 +54,5 @@ $ echo "override VESPA_HOSTNAME localhost" >> $VESPA_HOME/conf/vespa/default-env
 
 Running Java unit tests won't pick up settings in `default-env.txt` and will default to "localhost" if `VESPA_HOSTNAME` isn't set in the environment.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

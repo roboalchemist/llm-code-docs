@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/glossary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier Glossary
 
 * **Zapier**: An integration platform that connects over 7,000+ web apps and APIs together into [multi-step, automated, customizable workflows](/platform/quickstart/how-zapier-works). When an event happens in one app, Zapier can tell another app to perform (or do) a particular action.

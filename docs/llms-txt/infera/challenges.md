@@ -1,5 +1,9 @@
 # Source: https://docs.infera.org/challenges.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Challenges and Solutions
 
 ## Challenges
@@ -8,14 +12,14 @@
 
 New models are developed in secret and most users has little or no influence in the ethics or the decisions powering the LLMs. With the current standard of centralized decision making with ai models, users have no impact on the development and direction of the model, but the model has a direct impact on users themselves.
 
-1.  **Limiting Freedom of Speech** \
-    The current regime of available LLMs are heavily censored within the industry. Infera Network aims to build an LLM for all to use and contribute to - without censorship.
+1. **Limiting Freedom of Speech** \
+   The current regime of available LLMs are heavily censored within the industry. Infera Network aims to build an LLM for all to use and contribute to - without censorship.
 
-2.  **Manipulation of Information** \
-    Due to non-deterministic nature of LLMs they have been historically centralized for “safety” reasons.
+2. **Manipulation of Information** \
+   Due to non-deterministic nature of LLMs they have been historically centralized for “safety” reasons.
 
-3.  **Impact on Innovation** \
-    By limiting the use cases of AI through censorship, we hold back innovation. Uncensored AI will push the world forward.
+3. **Impact on Innovation** \
+   By limiting the use cases of AI through censorship, we hold back innovation. Uncensored AI will push the world forward.
 
 ### GPU usage for AI inference
 
@@ -47,12 +51,12 @@ Decentralizing inference through networked GPUs offers a transformative approach
 
 Transitioning to a decentralized model is straightforward, relying on readily available tools and a clear methodology:
 
-1.  **Requests Allocation:** \
-    Infera will distribute requests from the mempool to ecosystem nodes in a randomized manner, ensuring each request is handled by at least three different nodes to foster redundancy and reliability.
-2.  **Output Verification:** \
-    Outputs from nodes will be assessed using a semantic similarity score to evaluate their accuracy. Outputs that surpass a specific threshold will be deemed verified, ensuring high-quality responses.
-3.  **Settlement and Response:** \
-    Verified responses will be conclusively recorded on the blockchain, with a randomly selected response sent back to the requester, completing the cycle of decentralized inference.
+1. **Requests Allocation:** \
+   Infera will distribute requests from the mempool to ecosystem nodes in a randomized manner, ensuring each request is handled by at least three different nodes to foster redundancy and reliability.
+2. **Output Verification:** \
+   Outputs from nodes will be assessed using a semantic similarity score to evaluate their accuracy. Outputs that surpass a specific threshold will be deemed verified, ensuring high-quality responses.
+3. **Settlement and Response:** \
+   Verified responses will be conclusively recorded on the blockchain, with a randomly selected response sent back to the requester, completing the cycle of decentralized inference.
 
 ### Unlocking Latent GPU Supply
 

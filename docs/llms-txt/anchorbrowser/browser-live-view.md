@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/browser-live-view.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedded Browser Live UI
 
 > Embed interactive browser sessions directly into your application
@@ -90,9 +94,9 @@ To prevent the end user from interacting with the browser, add the `style="point
 </iframe>
 ```
 
-<Info>
+<Note>
   This feature is available for both headful and headless modes.
-</Info>
+</Note>
 
 ## Headless Mode
 

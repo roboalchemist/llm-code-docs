@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Feedback Tracking
 
 Use feedback tracking for:
@@ -68,8 +72,3 @@ To remove feedback, simply pass `null` as the feedback data.
 ```js  theme={null}
 lunary.trackFeedback(message.id, { thumb: null })
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

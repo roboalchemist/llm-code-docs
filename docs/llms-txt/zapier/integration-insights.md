@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/integration-insights.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration insights definitions
 
 > Integration quality on Zapier boils down to two main pillars: **Health** and **Depth**.

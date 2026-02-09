@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/qwen2_audio.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/qwen2_audio.md
 
 # Qwen2Audio
 
@@ -206,16 +206,16 @@ response = processor.batch_decode(generate_ids, skip_special_tokens=True, clean_
 
 #### transformers.Qwen2AudioConfig[[transformers.Qwen2AudioConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/configuration_qwen2_audio.py#L119)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/configuration_qwen2_audio.py#L118)
 
-This is the configuration class to store the configuration of a [Qwen2AudioForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioForConditionalGeneration). It is used to instantiate an
+This is the configuration class to store the configuration of a [Qwen2AudioForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioForConditionalGeneration). It is used to instantiate an
 Qwen2-Audio model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the Qwen2-Audio.
 
 e.g. [Qwen/Qwen2-Audio-7B](https://huggingface.co/Qwen/Qwen2-Audio-7B)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -250,17 +250,17 @@ audio_token_index (`int`, *optional*, defaults to 151646) : The image token inde
 
 #### transformers.Qwen2AudioEncoderConfig[[transformers.Qwen2AudioEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/configuration_qwen2_audio.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/configuration_qwen2_audio.py#L23)
 
-This is the configuration class to store the configuration of a [Qwen2AudioEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioEncoder). It is used to instantiate a
+This is the configuration class to store the configuration of a [Qwen2AudioEncoder](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioEncoder). It is used to instantiate a
 Qwen2-Audio audio encoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the audio encoder of the Qwen2-Audio
 architecture.
 
 e.g. [Qwen/Qwen2-Audio-7B](https://huggingface.co/Qwen/Qwen2-Audio-7B)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -309,20 +309,20 @@ max_source_positions (`int`, *optional*, defaults to 1500) : The maximum sequenc
 
 #### transformers.Qwen2AudioProcessor[[transformers.Qwen2AudioProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/processing_qwen2_audio.py#L37)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/processing_qwen2_audio.py#L36)
 
-Constructs a Qwen2Audio processor which wraps a Qwen2Audio feature extractor and a Qwen2Audio tokenizer into a single processor.
+Constructs a Qwen2AudioProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-[Qwen2AudioProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioProcessor) offers all the functionalities of [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [Qwen2TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2#transformers.Qwen2Tokenizer). See the
-`__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[Qwen2AudioProcessor](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioProcessor) offers all the functionalities of [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [Qwen2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/qwen2#transformers.Qwen2Tokenizer). See the
+[~WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [~Qwen2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/qwen2#transformers.Qwen2Tokenizer) for more information.
 
 **Parameters:**
 
-feature_extractor ([WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor), *optional*) : The feature extractor is a required input.
+feature_extractor (`WhisperFeatureExtractor`) : The feature extractor is a required input.
 
-tokenizer ([Qwen2TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2#transformers.Qwen2Tokenizer), *optional*) : The tokenizer is a required input.
+tokenizer (`Qwen2Tokenizer`) : The tokenizer is a required input.
 
-chat_template (`Optional[str]`, *optional*) : The Jinja template to use for formatting the conversation. If not provided, the default chat template is used.
+chat_template (`str`) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
 audio_token (`str`, *optional*, defaults to `""`) : The token to use for audio tokens.
 
@@ -334,11 +334,11 @@ audio_eos_token (`str`, *optional*, defaults to `""`) : The token to use for aud
 
 #### transformers.Qwen2AudioEncoder[[transformers.Qwen2AudioEncoder]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L267)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L265)
 
 The audio model from Qwen2Audio without any head or projection on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -346,7 +346,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Qwen2AudioEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L319[{"name": "input_features", "val": ""}, {"name": "attention_mask", "val": " = None"}, {"name": "output_attentions", "val": " = None"}, {"name": "output_hidden_states", "val": " = None"}, {"name": "return_dict", "val": " = None"}, {"name": "**kwargs", "val": ""}]- **attention_mask** (`torch.Tensor`)`, *optional*) --
+forwardtransformers.Qwen2AudioEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L316[{"name": "input_features", "val": ""}, {"name": "attention_mask", "val": " = None"}, {"name": "output_attentions", "val": " = None"}, {"name": "output_hidden_states", "val": " = None"}, {"name": "return_dict", "val": " = None"}, {"name": "**kwargs", "val": ""}]- **attention_mask** (`torch.Tensor`)`, *optional*) --
   Qwen2Audio does not support masking of the `input_features`, this argument is preserved for compatibility,
   but it is not used. By default the silence in the input log mel spectrogram are ignored.
 - **output_attentions** (`bool`, *optional*) --
@@ -356,21 +356,21 @@ forwardtransformers.Qwen2AudioEncoder.forwardhttps://github.com/huggingface/tran
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors
   for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0
 
 **Parameters:**
 
-config ([Qwen2AudioEncoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Qwen2AudioEncoderConfig](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 ## Qwen2AudioForConditionalGeneration[[transformers.Qwen2AudioForConditionalGeneration]]
 
 #### transformers.Qwen2AudioForConditionalGeneration[[transformers.Qwen2AudioForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L435)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L432)
 
 The QWEN2AUDIO model which consists of a audio backbone and a language model.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -378,17 +378,17 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Qwen2AudioForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L673[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "feature_attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Qwen2AudioForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen2_audio/modeling_qwen2_audio.py#L672[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "feature_attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([Qwen2AudioProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioProcessor) uses
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([Qwen2AudioProcessor](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioProcessor) uses
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -410,8 +410,8 @@ forwardtransformers.Qwen2AudioForConditionalGeneration.forwardhttps://github.com
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -436,35 +436,35 @@ forwardtransformers.Qwen2AudioForConditionalGeneration.forwardhttps://github.com
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.qwen2_audio.modeling_qwen2_audio.Qwen2AudioCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.qwen2_audio.modeling_qwen2_audio.Qwen2AudioCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Qwen2AudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) and inputs.
+elements depending on the configuration ([Qwen2AudioConfig](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- Pre-computed hidden-states that can be used to speed up auto-regressive (sequential) decoding. There are
   two sets of pre-computed hidden-states: key and values states in the self-attention blocks.
   The `past_key_values` are returned when `use_cache=True` is passed or when `config.use_cache=True`.
-  It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance.
+  It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance.
 
   If `past_key_values` are used, the user can optionally input only the last `input_ids` (those
   that don't have their past key value states given to this model) of shape `(batch_size, 1)` instead of
   all `input_ids` of shape `(batch_size, sequence_length)`.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **attention_mask** (`torch.FloatTensor`, *optional*) -- Attentions mask, used to update attention mask and position_ids.
-The [Qwen2AudioForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [Qwen2AudioForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -495,7 +495,7 @@ Example:
 
 **Parameters:**
 
-config ([Qwen2AudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Qwen2AudioConfig](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -503,23 +503,23 @@ config ([Qwen2AudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio
 
 A `transformers.models.qwen2_audio.modeling_qwen2_audio.Qwen2AudioCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Qwen2AudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) and inputs.
+elements depending on the configuration ([Qwen2AudioConfig](/docs/transformers/v5.0.0/en/model_doc/qwen2_audio#transformers.Qwen2AudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- Pre-computed hidden-states that can be used to speed up auto-regressive (sequential) decoding. There are
   two sets of pre-computed hidden-states: key and values states in the self-attention blocks.
   The `past_key_values` are returned when `use_cache=True` is passed or when `config.use_cache=True`.
-  It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance.
+  It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance.
 
   If `past_key_values` are used, the user can optionally input only the last `input_ids` (those
   that don't have their past key value states given to this model) of shape `(batch_size, 1)` instead of
   all `input_ids` of shape `(batch_size, sequence_length)`.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

@@ -38,8 +38,116 @@ Audio assets from this endpoint can be used as background music in your videos. 
 Source: https://docs.argil.ai/api-reference/endpoint/avatars.create
 
 post /avatars
-Creates a new Avatar by uploading source videos and launches training. The process is asynchronous - the avatar will initially be created with 'NOT_TRAINED' status and will transition to 'TRAINING' then 'IDLE' once ready.
+Creates a new avatar.
 
+
+## Overview
+
+Create a new avatar from an image. Supports both URL and base64-encoded image formats. If no `voiceId` is provided, a voice design will be automatically created from the image.
+
+## Request Body
+
+```json theme={null}
+{
+  "type": "IMAGE",
+  "name": "<avatar_name>",
+  "datasetImage": {
+    "url": "https://example.com/avatar-image.jpg", // OR
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANS..."
+  },
+  "voiceId": "<voice_id>",
+  "extras": {
+    "custom_key": "custom_value"
+  }
+}
+```
+
+### Image Requirements
+
+* **Format**: PNG, JPEG, or WEBP
+* **Resolution**: Between 720p (1280x720 or 720x1280) and 4K (3840x2160 or 2160x3840)
+* **Aspect Ratio**: Must be exactly 16:9 (landscape) or 9:16 (portrait)
+* **Max Size**: 10MB
+* **Protocol**: HTTPS URLs only (for `url` field)
+
+### Optional Fields
+
+* `voiceId`: UUID of an existing voice to use. If not provided, a voice design will be automatically created from the image.
+* `extras`: Custom metadata dictionary (max 10 key-value pairs, 256 characters each)
+
+## Response
+
+Returns the created Avatar object. The avatar will be created with `TRAINING` status and transition to `IDLE` when ready.
+
+## Avatar Status
+
+After creating an avatar, it will be in the `TRAINING` status. The avatar typically becomes ready (status changes to `IDLE`) within **30 seconds**.
+
+**Important**: Before creating videos with a newly created avatar, you must ensure the avatar status is `IDLE`. You have two options:
+
+### Option 1: Poll Avatar Status
+
+Periodically check the avatar status using the [GET /avatars/](/api-reference/endpoint/avatars.get) endpoint until the status is `IDLE`:
+
+```bash theme={null}
+curl -X GET https://api.argil.ai/v1/avatars/{avatar_id} \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+### Option 2: Use Webhook Events (Recommended)
+
+Subscribe to the `AVATAR_TRAINING_SUCCESS` webhook event to receive a notification when the avatar is ready. This is the recommended approach as it avoids polling and provides real-time updates.
+
+Learn more about setting up webhooks: [AVATAR\_TRAINING\_SUCCESS Event](/pages/webhook-events/avatar-training-success)
+
+## Cost
+
+Each image avatar created from API will cost **2 credits**.
+
+
+# Create a new Avatar
+Source: https://docs.argil.ai/api-reference/endpoint/avatars.create.video
+
+post /avatars
+Creates a new avatar.
+
+
+<Warning>
+  **This endpoint is deprecated.** Video-based avatar creation will be removed
+  in a future version. Please use [image-based avatar
+  creation](/api-reference/endpoint/avatars.create) instead.
+</Warning>
+
+## Overview
+
+Create a new avatar from a video. This method requires both a dataset video and a consent video.
+
+<Warning>
+  **Deprecation Notice**: This video-based avatar creation method is deprecated
+  and will be removed in a future API version. Migrate to image-based avatar
+  creation for better performance and simpler workflow.
+</Warning>
+
+### Video Requirements
+
+**Dataset Video:**
+
+* Duration: 1-5 minutes
+* Format: MP4 or MOV
+* Resolution: Between 720p and 4K
+* Max size: 1.5GB
+* Protocol: HTTPS only
+
+**Consent Video:**
+
+* Duration: 30 seconds or less
+* Format: MP4 or MOV
+* Max size: 100MB
+* Protocol: HTTPS only
+
+### Optional Fields
+
+* `extras`: Custom metadata dictionary (max 10 key-value pairs, 256 characters each)
 
 
 # Get an Avatar by id
@@ -55,6 +163,14 @@ Source: https://docs.argil.ai/api-reference/endpoint/avatars.list
 
 get /avatars
 Returns an array of Avatar objects available for the user
+
+
+
+# Export subtitles for a video project
+Source: https://docs.argil.ai/api-reference/endpoint/subtitles.export
+
+get /subtitles/videos/{videoProjectId}/export
+Exports subtitles for a video project in VTT or ASS format. The subtitles can optionally include styling information.
 
 
 
@@ -174,7 +290,7 @@ Create, manage and safely store your Argil's credentials
     From the UI, click on `New API key` and follow the process.
 
     <Frame>
-      <img src="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=9b2425b5bb6269a0f906860fa26fe4aa" style={{ borderRadius: "0.5rem" }} data-og-width="1576" width="1576" data-og-height="419" height="419" data-path="images/api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=280&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=bad0eb248a6d3d131202b3d0a7ec33f4 280w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=560&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=949fc3af500b7ef591cba3f8ce9a348a 560w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=840&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=6d273bbb7c65a663400c7fef9be04f87 840w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=1100&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=95c5bc649f11eb9c7307a2546f82c6a8 1100w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=1650&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=bbe26c5fd2f43377887d5d4d74ba2c30 1650w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/api-key.png?w=2500&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=64f400cf311a3453b409c54729b1fc51 2500w" />
+      <img />
     </Frame>
   </Step>
 
@@ -221,9 +337,9 @@ Source: https://docs.argil.ai/pages/get-started/introduction
 Welcome to Argil's API documentation
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=cb59bfa370195ca2f8c50d3f4c42033f" style={{ borderRadius: "8px" }} alt="Hero Light" data-og-width="2880" width="2880" data-og-height="1000" height="1000" data-path="images/doc-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=280&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=c9f5bfea812f10ad20785287348fbd67 280w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=560&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=959daf0204155c29b29d7a92dc7ba64e 560w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=840&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=fb7236b2ee85d307a0a042ce94c89588 840w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1100&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=2e6d3dae1db2840caa5dc2ffa2d3af95 1100w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1650&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=f8addb860df00cf38d494769d80a9e5d 1650w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=2500&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=a2164cbc061288750af2d081fb94e91a 2500w" />
+  <img alt="Hero Light" />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=cb59bfa370195ca2f8c50d3f4c42033f" style={{ borderRadius: "8px" }} alt="Hero Dark" data-og-width="2880" width="2880" data-og-height="1000" height="1000" data-path="images/doc-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=280&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=c9f5bfea812f10ad20785287348fbd67 280w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=560&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=959daf0204155c29b29d7a92dc7ba64e 560w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=840&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=fb7236b2ee85d307a0a042ce94c89588 840w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1100&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=2e6d3dae1db2840caa5dc2ffa2d3af95 1100w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1650&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=f8addb860df00cf38d494769d80a9e5d 1650w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=2500&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=a2164cbc061288750af2d081fb94e91a 2500w" />
+  <img alt="Hero Dark" />
 </Frame>
 
 This service allows content creators to seamlessly integrate video generation capabilities into their workflow, leveraging their AI Clone for personalized videos creation. Whether you're looking to enhance your social media presence, boost user engagement, or offer personalized content, Argil makes it simple and efficient.
@@ -232,7 +348,7 @@ This service allows content creators to seamlessly integrate video generation ca
 
 Get started with Argil's API by setting up your credentials and generate your first avatar video using our API service.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Manage API Keys" icon="key" href="/pages/get-started/credentials">
     Create, manage and safely store your Argil's credentials
   </Card>
@@ -320,7 +436,7 @@ Start automating your content creation workflow
       * A gestureSlug to select which gesture from the avatar should be used for the moment.
     </Tip>
 
-    ```mermaid  theme={null}
+    ```mermaid theme={null}
     flowchart TB
         subgraph video["Video {name}"]
             direction LR
@@ -406,7 +522,7 @@ The `AVATAR_GENERATION_FAILED` event is triggered when an avatar training proces
 
 When this event triggers, the following data is sent to your callback URL:
 
-```json  theme={null}
+```json theme={null}
 {
   "event": "AVATAR_TRAINING_FAILED",
   "data": {
@@ -435,7 +551,7 @@ The `AVATAR_TRAINING_SUCCESS` event is triggered when an avatar training process
 
 When this event triggers, the following data is sent to your callback URL:
 
-```json  theme={null}
+```json theme={null}
 {
   "event": "AVATAR_TRAINING_SUCCESS",
   "data": {
@@ -533,7 +649,7 @@ The `VIDEO_GENERATION_FAILED` event is triggered when a video generation process
 
 When this event triggers, the following data is sent to your callback URL:
 
-```json  theme={null}
+```json theme={null}
 {
   "event": "VIDEO_GENERATION_FAILED",
   "data": {
@@ -563,7 +679,7 @@ The `VIDEO_GENERATION_SUCCESS` event is triggered when a video generation proces
 
 When this event triggers, the following data is sent to your callback URL:
 
-```json  theme={null}
+```json theme={null}
 {
   "event": "VIDEO_GENERATION_SUCCESS",
   "data": {
@@ -593,7 +709,7 @@ When you created an account using Google Sign up, you will have a possibility to
   If you see a merger prompt during login, **click on "continue"** to proceed.
 </Warning>
 
-<img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=fd457934fa07b883aa55a008dc1df662" alt="" data-og-width="634" width="634" data-og-height="806" height="806" data-path="images/Captured’écran2025-01-03à00.17.22.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=87c83b2bbec8a2344a27569e48759c1f 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=28e496c4b61bde631f75ea567ebc9194 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=f5f0936391018944bd3b52ac6a103c96 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=dd51a76a4d5b088373ff306dff8aa4c4 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=f753075c1ab8ee17780497594c9c6c8a 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-03a%CC%8000.17.22.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=ea5c2afc527ffdeb6e62a4a8951fad6d 2500w" />
+<img alt="" />
 
 It means that you created your account with Google then via normal email for a second account but with the same address. This creates two different accounts that you need to merge.
 
@@ -625,8 +741,8 @@ Earn money by referring users to Argil
 
 ### Join Our Affiliate Program
 
-<CardGroup cols="1">
-  <Card title="Start Earning Now" icon="rocket" href="https://argil.getrewardful.com/signup">
+<CardGroup>
+  <Card title="Start Earning Now" icon="rocket" href="https://argil.tolt.io/login">
     Click here to join the Argil Affiliate Program and start earning up to €5k/month
   </Card>
 </CardGroup>
@@ -637,7 +753,7 @@ Earn money by referring users to Argil
 
 ### How it works
 
-Get 30% of your affiliates' generated revenue for 12 months by sharing your unique referral link. You get paid every first week of the month, no minimum threshold required.
+Get 30% of your affiliates' generated revenue for 12 months by sharing your unique referral link. You get paid 15 days after the end of the previous month, with a \$50 minimum threshold.
 
 ### Getting started
 
@@ -645,11 +761,11 @@ Get 30% of your affiliates' generated revenue for 12 months by sharing your uniq
 2. Fill out the required information
 3. Receive your unique referral link
 4. Share your link with your network
-5. [Track earnings in your dashboard](https://argil.getrewardful.com/)
+5. [Track earnings in your dashboard](https://argil.tolt.io)
 
 ### Earnings
 
-<CardGroup cols="2">
+<CardGroup>
   <Card title="Revenue Share" icon="money-bill">
     30% commission per referral with potential earnings up to €5k/month
   </Card>
@@ -665,7 +781,7 @@ Get 30% of your affiliates' generated revenue for 12 months by sharing your uniq
 
 ### Managing your account
 
-1. Access dashboard at argil.getrewardful.com
+1. Access dashboard at [argil.getrewardful.com](https://argil.tolt.io/login)
 2. View revenue overview with filters
 3. Track referred users and earnings
 4. Monitor payment status
@@ -679,6 +795,42 @@ Get 30% of your affiliates' generated revenue for 12 months by sharing your uniq
 <Warning>
   Always disclose your affiliate relationship when promoting Argil
 </Warning>
+
+
+# Animate An Image
+Source: https://docs.argil.ai/resources/animate-an-image
+
+Turn a single image into a short video with first and last frame
+
+Bring any static image to life with AI-generated motion. Define start and end frames, describe the animation you want, and generate dynamic video content in seconds.
+
+## How it works
+
+1. **Upload your first frame** — Drop your starting image (or pick a sample)
+2. **Upload your last frame** (optional) — Drop your ending image to guide the animation direction
+3. **Write your prompt** — Describe what you want to see (e.g., "Camera slowly zooms in, leaves blowing in the wind")
+4. **Generate video** — Choose your model and render
+
+## Available models
+
+| Model        | Style                     |
+| :----------- | :------------------------ |
+| Sora 2       | Cinematic, photorealistic |
+| VEO 3.1      | Versatile, natural motion |
+| Seedance 1.5 | Stylized, artistic        |
+
+## Settings
+
+* **Duration** — 8s shot by default
+* **Aspect ratio** — 9:16 (vertical), 16:9 (horizontal), 1:1 (square)
+* **Sound** — Toggle on/off
+
+## Tips
+
+* Use high-quality images for better results
+* Last frame is optional but helps guide motion direction
+* Keep prompts simple and focused on one type of movement
+* Add assets via "+ Add assets" to reference specific elements in your prompt
 
 
 # API - Pricing
@@ -712,19 +864,19 @@ All prices below apply to all clients that are on a **Classic plan or above.**
 </Note>
 
 <AccordionGroup>
-  <Accordion title="Can I avoid paying for voice?" defaultOpen="false">
+  <Accordion title="Can I avoid paying for voice?">
     Yes, we have a partnership with [Elevenlabs](https://elevenlabs.io/) for voice. If you have an account there with your voices, you can link your Elevenlabs account to Argil (see how here) and you will not pay for voice using the API.
   </Accordion>
 
-  <Accordion title="What is the &#x22;avatar royalty&#x22;?" defaultOpen="false">
+  <Accordion title="What is the &#x22;avatar royalty&#x22;?">
     At Argil, we are commited to give our actors (generic avatars) their fair share - we thus have a royalty system in place with them. By measure of transparency and since it may evolve, we're adding it as a separate pricing for awareness.
   </Accordion>
 
-  <Accordion title="Why do I need to subscribe to a plan for the API?" defaultOpen="false">
+  <Accordion title="Why do I need to subscribe to a plan for the API?">
     We make it simpler for clients to use any of our products by sharing their credits regardless of what platform they use - we thus require to create an account to use our API.
   </Accordion>
 
-  <Accordion title="How to buy credits?" defaultOpen="false">
+  <Accordion title="How to buy credits?">
     To buy credits, just go to app.argil.ai. On the bottom left, click on "get more" or "upgrade" and you will be able to buy more credits from there.
   </Accordion>
 </AccordionGroup>
@@ -749,7 +901,7 @@ Transforming article into videos yields <u>major benefits</u> and is extremely s
 
 <Steps>
   <Step title="Pick the article-to-video template">
-        <img src="https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=fd289d3246714c63e3f34e8a1ca626ea" alt="Captured’écran2025 10 23à15 30 39 Pn" data-og-width="524" width="524" data-og-height="142" height="142" data-path="images/Captured’écran2025-10-23à15.30.39.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=280&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=9a24cfa6c00a708a2d35b3e714d0c4cd 280w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=560&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=9b04b24adff8afa845df4f4d8a3a7930 560w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=840&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=ad03038fc2d6c4d16de0bf2beea66d59 840w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=1100&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=59992612c6cc534b715803d77d42eb6c 1100w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=1650&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=1a66097503da52647e796be3c6a55261 1650w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.39.png?w=2500&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=c58cdeec08df55a1da180ae4f8860c20 2500w" />
+    <img alt="Captured’écran2025 10 23à15 30 39 Pn" />
   </Step>
 
   <Step title="Paste the link of your article and choose the format">
@@ -757,7 +909,7 @@ Transforming article into videos yields <u>major benefits</u> and is extremely s
   </Step>
 
   <Step title="Pick the avatar of your choice">
-        <img src="https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=80ce8a5a9e8ce9fbc22afd6178e5c043" alt="Captured’écran2025 10 23à15 30 15 Pn" data-og-width="497" width="497" data-og-height="303" height="303" data-path="images/Captured’écran2025-10-23à15.30.15.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=280&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=a6b191eb49155291e94f2b3c0724af34 280w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=560&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=340615f8280e6358cf3515f2f251874f 560w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=840&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=3884e191f2b49801040b1230e0897937 840w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=1100&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=fb13ec8125bdc184569d49ee5ff40713 1100w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=1650&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=44fc1c3323ca6d6981c9befc69f138c8 1650w, https://mintcdn.com/argil/bb8X9WKnnGHAPpTE/images/Captured%E2%80%99e%CC%81cran2025-10-23a%CC%8015.30.15.png?w=2500&fit=max&auto=format&n=bb8X9WKnnGHAPpTE&q=85&s=46a0f0e3fe2fb0fb484624b0c53a7b5d 2500w" />
+    <img alt="Captured’écran2025 10 23à15 30 15 Pn" />
   </Step>
 
   <Step title="Review the generated script and media">
@@ -771,7 +923,7 @@ Transforming article into videos yields <u>major benefits</u> and is extremely s
 
 ### Frequently asked questions
 
-<Accordion title="Can I use Article to video via API?" defaultOpen="false">
+<Accordion title="Can I use Article to video via API?">
   Yes you can! See our API documentation
 </Accordion>
 
@@ -811,7 +963,7 @@ Two ways to use audio instead of text to generate a video:
   Supported audio formats are **mp3, wav, m4a** with a maximum size of **50mb**.
 </Warning>
 
-<CardGroup cols="2">
+<CardGroup>
   <Card title="Upload audio file" icon="upload">
     Upload your pre-recorded audio file and let our AI transcribe it automatically
   </Card>
@@ -827,412 +979,31 @@ Two ways to use audio instead of text to generate a video:
   After uploading, our AI will transcribe your audio and let you transform your voice while preserving emotions and tone.
 </Tip>
 
-<img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=5f73d92b9de2eab01aaf921b13a326ce" alt="" data-og-width="872" width="872" data-og-height="238" height="238" data-path="images/Captured’écran2025-01-02à23.42.08.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=9ceeafc6c587eb859ecfba9ad0727e51 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=1f4d41aaf009043f1ff91d88a4fbb8ea 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=ff32737330cbff371f86e91c396ff1b3 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=9f069fdbace34c13864a8277b379e20a 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=7cd60ba3340bf7f77e1699141a91bbd8 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-01-02a%CC%8023.42.08.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=4d1efbb1fb64da894813257344fa65e2 2500w" />
+<img alt="" />
 
 
-# B-roll & medias
-Source: https://docs.argil.ai/resources/brolls
-
-
-
-### Adding B-rolls or medias to a clip
-
-To enrich your videos, you can add image or video B-rolls to your video - they can be placed automatically by our algorithm or you can place them yourself on a specific clip. You can also upload your own media.&#x20;
-
-<Tip>
-  Toggling "Auto b-rolls" in the script screen will automatically populate your video with B-rolls in places that our AI magic editing finds the most relevant&#x20;
-</Tip>
-
-### There are 4 types of B-rolls&#x20;
-
-<Warning>
-  Supported formats for uploads are **jpg, png, mov, mp4** with a maximum size of **50mb.**
-  You can use websites such as [freeconvert](https://www.freeconvert.com/) if your image/video is in the wrong format or too heavy.
-</Warning>
-
-<CardGroup cols="2">
-  <Card title="AI image" icon="image">
-    This will generate an AI image in a style fitting the script, for that specific moment. It will take into account the whole video and the other B-rolls in order to place the most accurate one.&#x20;
-  </Card>
-
-  <Card title="Stock video" icon="video">
-    This will find a small stock video of the right format and place it on your video
-  </Card>
-
-  <Card title="Google images" icon="google">
-    This will search google for the most relevant image to add to this moment
-  </Card>
-
-  <Card title="Upload image/video" icon="upload">
-    In case you wish to add your own image or video. Supported formats are jpg, png mp4 mov
-  </Card>
-</CardGroup>
-
-### Adding a B-roll or media to a clip
-
-<Tip>
-  A B-roll or media
-</Tip>
-
-<Steps>
-  <Step title="Click on the right clip">
-    Choose the clip you want to add the B-roll to and click on it. A small box will appear with a media icon. Click on it.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2024-12-31at11.18.05.png" alt="" />
-  </Step>
-
-  <Step title="Choose the type of B-roll you want to add">
-    At the top, pick the type of B-roll you wish to add.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2024-12-31at11.23.13.png" alt="" />
-  </Step>
-
-  <Step title="Shuffle until satisfied">
-    If the first image isn't satisfactory, press the shuffle (left icon) until you like the results. Each B-roll can be shuffled 3 times.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2024-12-31at11.38.46.png" alt="" />
-  </Step>
-
-  <Step title="Adjust settings">
-    You can pick 2 settings: display and length
-
-    1. Display: this will either display the image **in front of your avatar** or **behind your avatar**. Very convenient when you wish to have yourself speaking
-
-    2. Length: if the moment is too long
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2024-12-31at11.41.10.png" alt="" />
-  </Step>
-
-  <Step title="Add media">
-    When you're happy with the preview, don't forget to click "Add media" to add the b-roll to this clip! You can then preview the video.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2024-12-31at11.38.46.png" alt="" />
-  </Step>
-</Steps>
-
-### B-roll options
-
-<AccordionGroup>
-  <Accordion title="Display (placing b-roll behind avatar)" defaultOpen={false}>
-    Sometimes, you may want your avatar to be visible and speaking while showing the media - in order to do this, the **display** option is available.&#x20;
-
-    1. Display "front" will place the image **in front** of your avatar, thus hiding it
-
-    2. Display "back" will place the image **behind** your avatar, showing it speaking while the image is playing
-  </Accordion>
-
-  <Accordion title="Length" defaultOpen={false}>
-    If the clip is too long, you may wish that the b-roll doesn't display for its full length. For this, an option exists to **cut the b-roll in half** of its duration. Just click on "Length: 1/2". We will add more options in the future.
-
-    Note that for dynamic and engaging videos, we advise to avoid making specific clips too long - see our editing tips below&#x20;
-  </Accordion>
-</AccordionGroup>
-
-<Card title="Editing tips" icon="bolt" horizontal={1}>
-  Check out our editing tips to make your video the most engaging possible
-</Card>
-
-### **Deleting a B-roll**
-
-To remove the B-roll from this clip, simply click on the b-roll to open the popup then press the 🗑️ trash icon in the popup.&#x20;
-
-
-# Captions
-Source: https://docs.argil.ai/resources/captions
-
-
-
-Captions are a crucial part of a video - among other topics, it allows viewers to watch them on mobile without sound or understand the video better.
-
-/
-
-### Adding captions from a script
-
-<Tip>
-  Make sure to enable "Auto-captions" on the script page before generating the preview to avoid generating them later
-</Tip>
-
-<Steps>
-  <Step title="Toggle the captions in the right sidebar">
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.47.30.png" alt="" />
-  </Step>
-
-  <Step title="Pick style, size and position">
-    Click on the "CC" icon to open the styling page and pick your preferences.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.48.34.png" alt="" />
-  </Step>
-
-  <Step title="Preview the results">
-    Preview the results by clicking play and make sure the results work well
-  </Step>
-
-  <Step title="Re-generate captions if you edit text">
-    If you changed the text after generating captions, note that a new icon appears with 2 blue arrows. Click on it to <u>re-generate captions</u> after editing text.
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.55.59.png" alt="" />
-  </Step>
-</Steps>
-
-### Editing captions for Audio-to-video
-
-If you uploaded an audio instead of typing a script, we use a different way to generate captions <u>since we don't have an original text to pull from</u>. As such, this method contains more error.
-
-<Steps>
-  <Step title="Preview the captions to see if there are typos">
-    Depending on the
-  </Step>
-
-  <Step title="Click on the audio segment that has inaccurate captions">
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.53.10.png" alt="" />
-  </Step>
-
-  <Step title="Click on the word you wish to fix, correct it, then save">
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.54.34.png" alt="" />
-  </Step>
-
-  <Step title="Don't forget to re-generate captions!">
-    Click on the 2 blue arrows that appeared to regenerate captions with the new text
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at15.55.59.png" alt="" />
-  </Step>
-</Steps>
-
-### Frequently asked questions
-
-<AccordionGroup>
-  <Accordion title="How do I fix a typo in captions?" defaultOpen="false">
-    If the captions are not working, you're probably using a video input and our algorithm got the transcript wrong - just click "edit text" on the right segment, change the incorrect words, save, then re-generate captions.
-  </Accordion>
-
-  <Accordion title="Do captions work in any language?" defaultOpen="false">
-    Yes, captions work in any language
-  </Accordion>
-</AccordionGroup>
-
-
-# Contact Support & Community
-Source: https://docs.argil.ai/resources/contactsupport
-
-Get help from the support and the community here
-
-<div data-tf-live="01JGXDX8VPGNCBWGMMQ75DDKPV" />
-
-<div data-tf-live="01JGXDX8VPGNCBWGMMQ75DDKPV" />
-
-<script src="//embed.typeform.com/next/embed.js" />
-
-<script src="//embed.typeform.com/next/embed.js" />
-
-<Card title="Send us an email" icon="inbox" color="purple" horizontal={200} href="mailto:support@argil.ai">
-  Click on here to send us an email ([support@argil.ai](mailto:support@argil.ai))
-</Card>
-
-<Card title="Join our community on Discord!" icon="robot" color="purple" horizontal={200} href="https://discord.gg/E4E3WFVzTw">
-  Learn from our hundreds of other users and use cases
-</Card>
-
-
-# Create an avatar from scratch
-Source: https://docs.argil.ai/resources/create-an-avatar
-
-There are two ways to create an avatar: a picture or a generation in the builder. Let's see the differences and how to create the two of them. We will also see how to pick your voice. 
-
-<img src="https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=444cd30e8800bd69839830e30f3c916f" alt="Personal avatar VS AI influencer" data-og-width="824" width="824" data-og-height="654" height="654" data-path="images/Captured’écran2025-10-14à15.20.19.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=280&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=571a8f9ef412d5a5681d9b2b43434f2b 280w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=560&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=dc3d3f278f234573857f77b3c76935a1 560w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=840&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=2eb54831c4a3d107c4e77852191af39a 840w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=1100&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=f96900c9710ec9a7044a80fb74f78608 1100w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=1650&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=5e7035f48842318e9d9ae85e5d503400 1650w, https://mintcdn.com/argil/aljDgH83krSQCQxS/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8015.20.19.png?w=2500&fit=max&auto=format&n=aljDgH83krSQCQxS&q=85&s=b6117fbe3c65da59a3871e4df926c748 2500w" />
-
-### Personal avatar VS AI influencer
-
-A personal avatar is based on your own image or picture. An AI influencer is created using your own prompts. You can directly add images or products to your AI influencer whereas it comes in a second step for the personal avatar.
-
-### How to create a great personal avatar?
-
-The picture you should take of yourself needs to check the following boxes:
-
-1. **Have great lighting (put yourself in front of a window)**
-
-2. **Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence**
-
-3. **All of your face should be within the frame**
-
-4. **The closer you are to the camera, the better the output will be**
-
-<Tip>
-  The pictures that work best are with a single human-like face. Avoid animals or multiple people on screen (even on posters).
-</Tip>
-
-### How to generate a great AI influencer?
-
-To create an AI influencer, you have to take care of the avatar itself and then of the setup. Lastly, you'll be able to add products or clothes to your avatar.
-
-**Appearance**\
-You have three toggles to pick from (age, gender, ethnicity) and then it is all prompting. The more details you give, the better the output will be. Don't be afraid to give it 10 to 30 lines of prompt.
-
-<img src="https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=70943ae785b88230d2de473574a35d76" alt="Captured’écran2025 10 14à17 45 48 Pn" data-og-width="678" width="678" data-og-height="466" height="466" data-path="images/Captured’écran2025-10-14à17.45.48.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=280&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=c4e87c3c96c3b2ee53d6a417e301b7c4 280w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=560&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=d921085d20f6d88e0edf424d168bb955 560w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=840&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=bcdd490918f6126f8156caa212835043 840w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=1100&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=347219f3451db7900e8bc9f504e504dd 1100w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=1650&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=ee58fe9ad473973891be34bb9b5bd2ef 1650w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.48.png?w=2500&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=3e61f73aaf9e8f9bbb06234e0736eb91 2500w" />
-
-**Background**\
-You have two toggles to pick from (camera angle and time of day) and then it is all prompting. The more details you give, the better the output will be. Don't be afraid to give it 10 to 30 lines of prompt.
-
-<img src="https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=8d6de04fe2d15f20e84b7f8b0d5f3e64" alt="Captured’écran2025 10 14à17 45 56 Pn" data-og-width="654" width="654" data-og-height="504" height="504" data-path="images/Captured’écran2025-10-14à17.45.56.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=280&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=a45eab722717785e0a4aedbf530b16a2 280w, https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=560&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=e472549bcdb3296a2d47ee5b49b41f7b 560w, https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=840&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=71a6333b5bf866aa538927fc0204fdd2 840w, https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=1100&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=00029cbfb7550998169e1be2840db80a 1100w, https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=1650&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=678bd5c3a0c9dc6a8c6edf1d42895c02 1650w, https://mintcdn.com/argil/7gDn7rrSfU6wHIeu/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.45.56.png?w=2500&fit=max&auto=format&n=7gDn7rrSfU6wHIeu&q=85&s=ea78d9d0edb476c22390c5431b9106ba 2500w" />
-
-**Assets: products, logos and clothes**\
-Here you can drop images of clothes, logos or products you want in the frame with your avatar. Be aware that you can always create an avatar without anything and add more styles later with the objects of your choice. \
-Without prompting, we'll go with what seems to make the most sense. A bottle will be held by the avatar. But you can prompt it to define where the assets are located.
-
-\
-<u>Example:</u>\
-You drop an image of a sweater as well as logo. The prompt can be "make that person wear the sweater and put the logo on the sweater".
-
-<img src="https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=027ae974a8c7ec3cce2897513b981a66" alt="Captured’écran2025 10 14à17 48 36 Pn" data-og-width="684" width="684" data-og-height="392" height="392" data-path="images/Captured’écran2025-10-14à17.48.36.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=280&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=63d13c47363782987f6055f7f2426984 280w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=560&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=3d3c5db079f577e313dab06beacd82da 560w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=840&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=7ad7982c250ca5da3bd16aa35402a30d 840w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=1100&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=5b8d128c17a2e6fd7936eb92ff77275c 1100w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=1650&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=88029daac113a3ff6dfac8aff71bfbd1 1650w, https://mintcdn.com/argil/dnk2g0B7n5WICRFW/images/Captured%E2%80%99e%CC%81cran2025-10-14a%CC%8017.48.36.png?w=2500&fit=max&auto=format&n=dnk2g0B7n5WICRFW&q=85&s=a41c3ac971f2d6685a9d19bd766761a3 2500w" />
-
-
-# Creating avatar styles
-Source: https://docs.argil.ai/resources/create-avatar-styles
-
-What does it mean to add styles and how to add styles to your avatar
-
-### What is a style?
-
-Styles are keeping your face appearance while putting you in different environments, actions, or clothes. You can full prompt the style you want for your avatar. Each time you upload an image, we offer you a range of avatar styles you can pick from.
-
-<Tip>
-  You can edit any style, like the color of a shirt or a hair cut. [Learn how here.](https://docs.argil.ai/resources/edit-avatar-styles)
-</Tip>
-
-### How to create a style?
-
-When you are in the avatar tab, you can either hover over avatar cards and click on "New style" or click on the avatar image and then click on "New syle".
-
-Then you will be able to describe in full where you want to be standing, what you are wearing, the light, etc.
-
-Last step is to pick whether you want a vertical avatar or a horizontal one.
-
-<Expandable title="Example of prompt">
-  "is in a crowded restaurant, with a formal suit. The light is a bit dark. We can see from the chest to the head, hands are visible."
-</Expandable>
-
-### How to use "Vary "and "Use settings"?
-
-<img src="https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=d43ff6d1fbb5a1ac06202a4781083fb9" alt="Captured’écran2025 10 15à14 50 15 Pn" data-og-width="968" width="968" data-og-height="98" height="98" data-path="images/Captured’écran2025-10-15à14.50.15.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=280&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=00d3885d90174741196d6f64cf1d6638 280w, https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=560&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=908d1d2b6ded8341180380505d6e9c14 560w, https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=840&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=9b28c5389620f49120378e74a7ff4a66 840w, https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=1100&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=7e74481795d817c0f6dbde43bd6627e8 1100w, https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=1650&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=c9ebcc22b4c8aeee19625e440ef82e97 1650w, https://mintcdn.com/argil/YEO4oKxniKA5ClEl/images/Captured%E2%80%99e%CC%81cran2025-10-15a%CC%8014.50.15.png?w=2500&fit=max&auto=format&n=YEO4oKxniKA5ClEl&q=85&s=ce0c542117ee594bf9e74d42e80fbe0a 2500w" />
-
-Once you get a result, you can click on "Vary" to obtain a slightly different version of the image you obtained.
-
-Once you have created a range of styles that appear on the history on the right, you can pick any of them and get the description your wrote by clicking on "Use settings".
-
-
-# Deleting your account
-Source: https://docs.argil.ai/resources/delete-account
-
-How to delete your account
-
-<Warning>
-  Deleting your account will delete **all projects, videos, drafts, and avatars you have trained**. If you create a new account, you will have to **use up a new avatar training** to train every avatar.
-</Warning>
-
-If you are 100% sure that you want to delete your account and never come back to your avatars & videos in the future, please contact us at [support@argil.ai](mailto:support@argil.ai) and mention your account email address. We will delete it in the next 720 days.
-
-
-# Edit the style of your avatar
-Source: https://docs.argil.ai/resources/edit-avatar-styles
-
-How to create different styles and variations for your avatar
-
-### What does "Edit style" do?
-
-Variations allow you to add any product to your avatar or simply edit any aspect of the picture, whether it is the color of a shirt, the position of the hands or the background.
-
-<u>Major benefits:</u>
-
-* if you have created a style your are 95% satisfied with, you can still edit it later within Argil
-* you can develop a whole branding easily around your avatar
-
-**In the "Avatars" tab section, you can click on any avatar > click on "Edit style".**
-
-Then you can add your instructions to operate slight variations of your avatar like these:
-
-<Check>
-  Examples:
-
-  "change the color of this car to red", "zoom out on this picture", "change the haircut to a ponytail".
-</Check>
-
-
-# Editing tips
-Source: https://docs.argil.ai/resources/editingtips
-
-Some tips regarding a good editing and improving the quality of the video results
-
-Editing will transform a boring video into a really engaging one. Thankfully, you can use our many features to **very quickly** make a video more engaging.
-
-<Tip>
-  Cutting your sentences in 2 paragraphs and playing with zooms & B-rolls is the easiest way to add dynamism to your video - and increase engagement metrics
-</Tip>
-
-### Use zooms wisely
-
-Zooms add heavy emphasis to anything you say. We <u>advise to cut your sentences in 2 to add zooms</u>. Think of it as the video version of adding underlining or bold to a part of your sentence to make it more impactful.
-
-Instead of this:
-
-```
-And at the end of his conquest, he was named king
-```
-
-Prefer a much more dynamic and heavy
-
-```
-And at the end of his conquest
-[zoom in] He was named king
-```
-
-### Make shorter clips
-
-In the TikTok era, we are used to dynamic editing - an avatar speaking for 20 seconds with nothing else on screen will have the viewer bored.
-
-Prefer <u>cutting your scripts in short sentences</u>, or even cutting the sentences in 2 to add a zoom, a camera angles or a B-roll.
-
-### Add more B-rolls
-
-B-rolls and media will enrich the purpose of your video - thankfully, <u>you don't need to prompt to add a B-roll</u> on Argil. Simply click the "shuffle" button to rotate until you find a good one.
-
-<Note>
-  B-rolls will take the length of the clip you append it to. If it is too long, toggle the "1/2" button on it to make it shorter
-</Note>
-
-<Card title="Use a &#x22;Pro voice&#x22;" icon="robot" color="purple" href="https://docs.argil.ai/resources/voices-and-provoices">
-  To have a voice <u>that respects your tone and emotion</u>, we advise recording a "pro voice" and linking it to your avatar.
-</Card>
-
-<Card title="Record your voice instead of typing text" icon="volume" color="purple" horizontal={false} href="https://docs.argil.ai/resources/audio-and-voicetovoice">
-  It is much easier to record your voice than to film yourself, and <u>voice to video gives the best results</u>. You can <u>transform your voice into any avatar's voice</u>, and our "AI cleanup" will remove background noises and echo.
-</Card>
-
-<Card title="Add music" icon="music" color="purple" horizontal={false} href="https://docs.argil.ai/resources/music">
-  Music is the final touch of your masterpiece. It will add intensity and emotions to the message you convey.
-</Card>
-
-
-# Fictions - Veo 3 & Hailuo
-Source: https://docs.argil.ai/resources/fictions
+# Avatar actions
+Source: https://docs.argil.ai/resources/avatar-actions
 
 You can now create your own medias and videos with VEO3 or Hailuo directly integrated into Argil using your own avatars or Argil's licensed avatars. It also integrates Nano Banana.
 
-\*\*Fictions allow you to fully prompt 8 second-clips using the latest AI video models with a frame of reference. It will also apply the voice you picked. \*\*
+<Info>
+  Fictions allow you to fully prompt 8 second-clips using the latest AI video models with a frame of reference. It will also apply the voice you picked.
+</Info>
 
 ## **Video tutorial (text tutorial below)**
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/pfKuPcGov_w" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="YouTube video player" />
 
 ## How to create a Fiction video?
 
 <Steps>
   <Step title="Select the Fictions menu">
-        <img src="https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=4e9c1216acaf3e1202139fadfe43eb2d" alt="Captured’écran2025 09 03à17 01 32 Pn" data-og-width="662" width="662" data-og-height="311" height="311" data-path="images/Captured’écran2025-09-03à17.01.32.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=280&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=d3de342dd2d4689c015fe42f3197b4da 280w, https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=560&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=212648a201e4a4d21dda215052b5f613 560w, https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=840&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=a4f1c07a3659e6ad247e8d4b6fbafbc6 840w, https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=1100&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=d91f215d3df10a356ec1a0f0f41590a8 1100w, https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=1650&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=b4bbb6ffa92fbfb83025ab4df8201c8b 1650w, https://mintcdn.com/argil/9nM_cOQ-qGGd-4XH/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.01.32.png?w=2500&fit=max&auto=format&n=9nM_cOQ-qGGd-4XH&q=85&s=4df8e7b5e01db2626566ded8ea8e4d72 2500w" />
+    <img alt="Captured’écran2026 01 22à19 45 53" />
   </Step>
 
   <Step title="Upload your image or pick an avatar from the list">
     You can put in any picture of your choice or pick from the list of avatars from the platform (your own or Argil's). We will keep the different characteristics of the face being sent so you can be sure the ressemblance stays here!
-
-        <img src="https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=ef014b6906126cef91495b38bed8124a" alt="Captured’écran2025 09 03à17 08 59 Pn" data-og-width="516" width="516" data-og-height="76" height="76" data-path="images/Captured’écran2025-09-03à17.08.59.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=280&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=fcf1c65c9cad3efcd9a2f34aa9d17a0e 280w, https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=560&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=67fec0d09bcfdfa4feae579e11797f9d 560w, https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=840&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=895019e3274807023066368ab13ec29a 840w, https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=1100&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=b07679a5d3f6df80fc6ccc959f400aa3 1100w, https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=1650&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=a6168637a60053edb57fd561ffa1c8a8 1650w, https://mintcdn.com/argil/_UxAuUsDhcKhuPsl/images/Captured%E2%80%99e%CC%81cran2025-09-03a%CC%8017.08.59.png?w=2500&fit=max&auto=format&n=_UxAuUsDhcKhuPsl&q=85&s=1191c2aef526e6164200de0b296564a0 2500w" />
   </Step>
 
   <Step title="Add your outfit and product">
@@ -1270,7 +1041,7 @@ You can now create your own medias and videos with VEO3 or Hailuo directly integ
 
 Each video is automatically stored in the "Assets" section of Argil. They can be used in any video project created on the platform later on using the "play video" icon like shown below.
 
-<img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=982efbafc416c35e9f8c3be934b9d721" alt="Captured’écran2025 08 20à00 29 33 Pn" data-og-width="738" width="738" data-og-height="172" height="172" data-path="images/Captured’écran2025-08-20à00.29.33.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=5e74a1b61a508171df261369dc38751c 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=399b056c52c26173d846fdcc4eea84e6 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=2df07627f12183e266a7e8ddbb021535 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=10bb2123c85369f67c4d211d87c3682c 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=3d796886716d34d24fc1555ce7a2715d 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-08-20a%CC%8000.29.33.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=3a1db06f9fb50e4bd6b323e18ae5331e 2500w" />
+<img alt="Captured’écran2025 08 20à00 29 33 Pn" />
 
 <Tip>
   If you want to reuse those shots in your avatar videos, they will appear in the "assets" tab and saty available in the studio when uploading files.
@@ -1321,6 +1092,491 @@ Each video is automatically stored in the "Assets" section of Argil. They can be
 </Accordion>
 
 
+# B-roll & medias
+Source: https://docs.argil.ai/resources/brolls
+
+
+
+### Adding B-rolls or medias to a clip
+
+To enrich your videos, you can add image or video B-rolls to your video - they can be placed automatically by our algorithm or you can place them yourself on a specific clip. You can also upload your own media.
+
+<Tip>
+  Toggling "Auto b-rolls" in the script screen will automatically populate your video with B-rolls in places that our AI magic editing finds the most relevant
+</Tip>
+
+### There are 4 types of B-rolls
+
+<Warning>
+  Supported formats for uploads are **jpg, png, mov, mp4** with a maximum size of **50mb.** You can use websites such as [freeconvert](https://www.freeconvert.com/) if your image/video is in the wrong format or too heavy.
+</Warning>
+
+<CardGroup>
+  <Card title="AI image" icon="image">
+    This will generate an AI image in a style fitting the script, for that specific moment. It will take into account the whole video and the other B-rolls in order to place the most accurate one.
+  </Card>
+
+  <Card title="Stock video" icon="video">
+    This will find a small stock video of the right format and place it on your video
+  </Card>
+
+  <Card title="Google images" icon="google">
+    This will search google for the most relevant image to add to this moment
+  </Card>
+
+  <Card title="Upload image/video" icon="upload">
+    In case you wish to add your own image or video. Supported formats are jpg, png mp4 mov
+  </Card>
+</CardGroup>
+
+### Adding a B-roll or media to a clip
+
+<Tip>
+  A B-roll or media
+</Tip>
+
+<Steps>
+  <Step title="Click on the right clip">
+    Choose the clip you want to add the B-roll to and click on it. A small box will appear with a media icon. Click on it.
+  </Step>
+
+  <Step title="Choose the type of B-roll you want to add">
+    At the top, pick the type of B-roll you wish to add.
+  </Step>
+
+  <Step title="Shuffle until satisfied">
+    If the first image isn't satisfactory, press the shuffle (left icon) until you like the results. Each B-roll can be shuffled 3 times.
+  </Step>
+
+  <Step title="Adjust settings">
+    You can pick 2 settings: display and length
+
+    1. Display: this will either display the image **in front of your avatar** or **behind your avatar**. Very convenient when you wish to have yourself speaking
+    2. Length: if the moment is too long
+  </Step>
+
+  <Step title="Add media">
+    When you're happy with the preview, don't forget to click "Add media" to add the b-roll to this clip! You can then preview the video.
+  </Step>
+</Steps>
+
+### B-roll options
+
+<AccordionGroup>
+  <Accordion title="Display (placing b-roll behind avatar)">
+    Sometimes, you may want your avatar to be visible and speaking while showing the media - in order to do this, the **display** option is available.
+
+    1. Display "front" will place the image **in front** of your avatar, thus hiding it
+    2. Display "back" will place the image **behind** your avatar, showing it speaking while the image is playing
+  </Accordion>
+
+  <Accordion title="Length">
+    If the clip is too long, you may wish that the b-roll doesn't display for its full length. For this, an option exists to **cut the b-roll in half** of its duration. Just click on "Length: 1/2". We will add more options in the future.
+
+    Note that for dynamic and engaging videos, we advise to avoid making specific clips too long - see our editing tips below
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Editing tips" icon="bolt">
+  Check out our editing tips to make your video the most engaging possible
+</Card>
+
+### **Deleting a B-roll**
+
+To remove the B-roll from this clip, simply click on the b-roll to open the popup then press the 🗑️ trash icon in the popup.
+
+
+# Captions
+Source: https://docs.argil.ai/resources/captions
+
+
+
+Captions are a crucial part of a video - among other topics, it allows viewers to watch them on mobile without sound or understand the video better.
+
+/
+
+### Adding captions from a script
+
+<Tip>
+  Make sure to enable "Auto-captions" on the script page before generating the preview to avoid generating them later
+</Tip>
+
+<Steps>
+  <Step title="Toggle the captions in the right sidebar" />
+
+  <Step title="Pick style, size and position">
+    Click on the "CC" icon to open the styling page and pick your preferences.
+  </Step>
+
+  <Step title="Preview the results">
+    Preview the results by clicking play and make sure the results work well
+  </Step>
+</Steps>
+
+### Editing captions for Audio-to-video
+
+If you uploaded an audio instead of typing a script, we use a different way to generate captions <u>since we don't have an original text to pull from</u>. As such, this method contains more error.
+
+<Steps>
+  <Step title="Preview the captions to see if there are typos" />
+
+  <Step title="Click on the audio segment that has inaccurate captions" />
+
+  <Step title="Click on the word you wish to fix, correct it, then save" />
+</Steps>
+
+### Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="How do I fix a typo in captions?">
+    If the captions are not working, you're probably using a video input and our algorithm got the transcript wrong - just click "edit text" on the right segment, change the incorrect words, save, then re-generate captions.
+  </Accordion>
+
+  <Accordion title="Do captions work in any language?">
+    Yes, captions work in any language
+  </Accordion>
+</AccordionGroup>
+
+
+# Contact Support & Community
+Source: https://docs.argil.ai/resources/contactsupport
+
+Get help from the support and the community here
+
+<div />
+
+<div />
+
+<script />
+
+<script />
+
+<Card title="Send us an email" icon="inbox" href="mailto:support@argil.ai">
+  Click on here to send us an email ([support@argil.ai](mailto:support@argil.ai))
+</Card>
+
+<Card title="Join our community on Discord!" icon="robot" href="https://discord.gg/E4E3WFVzTw">
+  Learn from our hundreds of other users and use cases
+</Card>
+
+
+# Copy the style of an image
+Source: https://docs.argil.ai/resources/copy-a-style
+
+Transform any visual into your AI Avatar setup (clothes, background, etc.)
+
+Copy Style from Image lets you recreate any visual style from any image, screenshot, or reference while keeping your avatar's face and identity intact.
+
+The AI extracts visual elements (background, clothing, lighting, composition) from your reference image and applies them to your chosen avatar, preserving facial identity while transforming everything else.
+
+## How It Works
+
+Select your avatar, provide a style reference, and the AI analyzes the background, clothing, lighting, and composition. Your avatar is then placed into this reconstructed scene, maintaining facial consistency while adopting all visual characteristics from your reference.
+
+### Step-by-Step
+
+**Step 1:** Select the avatar you want to use, your own or any from Argil's public library.
+
+**Step 2:** Choose your style reference by uploading any image or browsing the 100+ pre-made setups in Argil's style library.
+
+### Accepted References
+
+Movie screenshots, social media content, professional photography, artwork, stock photos, personal photos. Any image, any format, any source.
+
+### Tips for Best Results
+
+Use high-quality, well-lit images with distinct visual elements. Horizontal images with centered subjects work best for video format.
+
+## Frequently Asked Questions
+
+### What is Copy Style from Image in Argil?
+
+Copy Style from Image is an Argil feature that transfers the visual style of any reference image onto your AI avatar. The avatar keeps its facial identity while adopting the background, clothing, lighting, and overall aesthetic from your chosen reference image.
+
+### Can I use any image as a style reference?
+
+Yes, Copy Style accepts any image regardless of source, format, or genre. You can use movie screenshots, social media posts, professional photos, artwork, stock images, or personal photographs. Alternatively, you can choose from over 100 pre-made setups directly in Argil.
+
+### Does Copy Style change my avatar's face?
+
+No, your avatar's face and identity remain completely preserved. Only the surrounding elements—background, clothing, lighting, and scene composition—are transformed to match your reference image.
+
+### What image formats are supported?
+
+Argil supports all common image formats including JPG, PNG, WebP, and GIF (first frame). Screenshots from any device or application are also accepted.
+
+### Can I use Copy Style with public avatars?
+
+Absolutely. You can apply style references to any avatar you have access to, including your personal avatars and any avatar from Argil's public library.
+
+### How long does style generation take?
+
+Style transfer typically completes within seconds, depending on the complexity of the reference image and current server load.
+
+### What makes a good reference image?
+
+The best reference images have clear visual elements, good lighting, and distinct backgrounds or clothing. Higher resolution images generally produce better results, though the AI can work with most quality levels.
+
+
+# Create a video
+Source: https://docs.argil.ai/resources/create-a-video
+
+You can create a video from scratch or start with one of your templates. 
+
+## Get started with this tutorial video (text below)
+
+<iframe title="YouTube video player" />
+
+<Steps>
+  <Step title="Pick your avatar">
+    Chose among our public avatars (horizontal and vertical format) and using the different tags.  You can chose among normal or pro avatars\* (available on the pro plan). And of course, you can pick your own!
+  </Step>
+
+  <Step title="Enter your script or prompt">
+    Two ways of entering info:
+
+    * write a script or prompt
+    * upload an audio or directly record yourself talking on the app
+  </Step>
+
+  <Step title="Magic editing: pick your options">
+    You can chose your voice, toggle captions, [pick a B-rolls type](https://docs.argil.ai/resources/brolls) and layouts ([doc here](https://docs.argil.ai/resources/layouts)). You can pick a background music to have a pre-edited video rapidly. \
+    And you can modify all of those in the studio.
+  </Step>
+
+  <Step title="Preview and edit your video">
+    You can press the “Play” button to preview the video. You can edit your script, B-rolls, captions, background, voice, music and body language.\
+    **Note that lipsync hasn’t been generated yet. That's why the image remains still.**
+  </Step>
+
+  <Step title="Generate the video">
+    This is when you spend some of your credits to generate the lipsync of the avatar. This process takes between 5 and 15 minutes depending on the length of the video and your plan. Pro plans have a faster generation time.
+  </Step>
+</Steps>
+
+## FAQ:
+
+* \*Pro avatars are higher quality and usually offer more diversity in the scenes.
+* The maximum for video duration is 60 paragraphs and each one has a limit of 500 characters. If you maximize everything, you can get to 10 to 15 minutes depending on the avatar talking speed.
+* You can edit your script or cut it without having to regenerate it
+* Choosing dynamic splitting will allow you to create more paragphs.
+
+
+# Create an avatar from scratch
+Source: https://docs.argil.ai/resources/create-an-avatar
+
+There are two ways to create an avatar: a picture or a generation in the builder. Let's see the differences and how to create the two of them. We will also see how to pick your voice. 
+
+## Quick video tutorial
+
+<iframe title="YouTube video player" />
+
+### Personal avatar VS AI influencer
+
+A personal avatar is based on your own image or picture. An AI influencer is created using your own prompts. You can directly add images or products to your AI influencer whereas it comes in a second step for the personal avatar. A small difference is that an AI influencer costs credits to generate.
+
+### How to create a great personal avatar?
+
+The picture you should take of yourself needs to check the following boxes:
+
+1. **Have great lighting (put yourself in front of a window)**
+2. **Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence**
+3. **All of your face should be within the frame**
+4. **The closer you are to the camera, the better the output will be**
+5. **Please upload 720p minimum, 1080p ideally**
+
+<Expandable title="Example of pictures you need to input">
+  <img alt="1MM Fue XB Ca Dk3v7ag BWLY" />
+
+  <img alt="Enhanced Image (9) 2" />
+
+  <img alt="Hq ZMMQ D9ai Xn Ss2m FJ E" />
+</Expandable>
+
+<Tip>
+  The pictures that work best are with a single human-like face. Avoid animals or multiple people on screen (even on posters).
+</Tip>
+
+### How to generate a great AI influencer?
+
+To create an AI influencer, you have to take care of the avatar itself and then of the setup. Lastly, you'll be able to add products or clothes to your avatar.
+
+**Appearance**\
+You have three toggles to pick from (age, gender, ethnicity) and then it is all prompting. The more details you give, the better the output will be. Don't be afraid to give it 10 to 30 lines of prompt.
+
+<img alt="Captured’écran2025 10 14à17 45 48 Pn" />
+
+**Background**\
+You have two toggles to pick from (camera angle and time of day) and then it is all prompting. The more details you give, the better the output will be. Don't be afraid to give it 10 to 30 lines of prompt.
+
+<img alt="Captured’écran2025 10 14à17 45 56 Pn" />
+
+**Assets: products, logos and clothes**\
+Here you can drop images of clothes, logos or products you want in the frame with your avatar. Be aware that you can always create an avatar without anything and add more styles later with the objects of your choice. \
+Without prompting, we'll go with what seems to make the most sense. A bottle will be held by the avatar. But you can prompt it to define where the assets are located.
+
+\
+<u>Example:</u>\
+You drop an image of a sweater as well as logo. The prompt can be "make that person wear the sweater and put the logo on the sweater".
+
+<img alt="Captured’écran2025 10 14à17 48 36 Pn" />
+
+
+# Creating avatar styles
+Source: https://docs.argil.ai/resources/create-avatar-styles
+
+What does it mean to add styles and how to add styles to your avatar
+
+### What is a style?
+
+Styles are keeping your face appearance while putting you in different environments, actions, or clothes. You can full prompt the style you want for your avatar. Each time you upload an image, we offer you a range of avatar styles you can pick from.
+
+<Tip>
+  You can edit any style, like the color of a shirt or a hair cut. [Learn how here.](https://docs.argil.ai/resources/edit-avatar-styles)
+</Tip>
+
+### How to create a style?
+
+When you are in the avatar tab, you can either hover over avatar cards and click on "New style" or click on the avatar image and then click on "New syle".
+
+Then you will be able to describe in full where you want to be standing, what you are wearing, the light, etc.
+
+Last step is to pick whether you want a vertical avatar or a horizontal one and pay a few credits to generate the image.
+
+<Expandable title="Example of prompt">
+  "is in a crowded restaurant, with a formal suit. The light is a bit dark. We can see from the chest to the head, hands are visible."
+</Expandable>
+
+### How to use "Vary "and "Use settings"?
+
+<img alt="Captured’écran2025 10 15à14 50 15 Pn" />
+
+Once you get a result, you can click on "Vary" to obtain a slightly different version of the image you obtained.
+
+Once you have created a range of styles that appear on the history on the right, you can pick any of them and get the description your wrote by clicking on "Use settings".
+
+
+# Public avatars and pro avatars
+Source: https://docs.argil.ai/resources/create-your-own-ai-clone/public-avatars
+
+What is the difference between normal public and pro avatars. 
+
+**Public Avatars (Stock Avatars)**
+
+Public avatars are pre-trained characters, ready to use, ideal for getting started quickly without having to film a training video. You can use a range of tags to get the avatars that you like the best (age, accessories, etc.).
+
+**Included in the free plan:** Access to basic avatars to test the platform.
+
+**Pro Avatars (Custom Avatars)**
+
+Pro avatars are some of the best looking avatar on the platform. They benefit from Pro voices that are already attached to them as well. \
+These are only available on the Pro plan.
+
+
+# Deleting your account
+Source: https://docs.argil.ai/resources/delete-account
+
+How to delete your account
+
+<Warning>
+  Deleting your account will delete **all projects, videos, drafts, and avatars you have trained**. If you create a new account, you will have to **use up a new avatar training** to train every avatar.
+</Warning>
+
+If you are 100% sure that you want to delete your account and never come back to your avatars & videos in the future, please contact us at [support@argil.ai](mailto:support@argil.ai) and mention your account email address. We will delete it in the next 720 days.
+
+
+# Edit the style of your avatar
+Source: https://docs.argil.ai/resources/edit-avatar-styles
+
+How to create different styles and variations for your avatar
+
+### What does "Edit style" do?
+
+Variations allow you to add any product to your avatar or simply edit any aspect of the picture, whether it is the color of a shirt, the position of the hands or the background.
+
+<u>Major benefits:</u>
+
+* if you have created a style your are 95% satisfied with, you can still edit it later within Argil
+* you can develop a whole branding easily around your avatar
+
+**In the "Avatars" tab section, you can click on any avatar > click on "Edit style".**
+
+<Columns>
+  <Card title="1) Click on edit style">
+    <img alt="Captured’écran2025 12 17à19 51 28" />
+  </Card>
+
+  <Card title="2) Prompt the avatar changes">
+    Ask in a natural languages the changes you want. You can go into a lot of details.
+
+    <Check>
+      Examples:
+
+      "change the color of this car to red", "zoom out on this picture", "change the haircut to a ponytail".
+    </Check>
+
+    <img alt="Capture D’écran 2025 12 17 À 19 52 55" />
+  </Card>
+</Columns>
+
+Keep in mind that each iteration will cost you 10 credits and that you can only keep one style change for now.
+
+
+# Editing tips
+Source: https://docs.argil.ai/resources/editingtips
+
+Some tips regarding a good editing and improving the quality of the video results
+
+Editing will transform a boring video into a really engaging one. Thankfully, you can use our many features to **very quickly** make a video more engaging.
+
+<Tip>
+  Cutting your sentences in 2 paragraphs and playing with zooms & B-rolls is the easiest way to add dynamism to your video - and increase engagement metrics
+</Tip>
+
+### Use zooms wisely
+
+Zooms add heavy emphasis to anything you say. We <u>advise to cut your sentences in 2 to add zooms</u>. Think of it as the video version of adding underlining or bold to a part of your sentence to make it more impactful.
+
+Instead of this:
+
+```
+And at the end of his conquest, he was named king
+```
+
+Prefer a much more dynamic and heavy
+
+```
+And at the end of his conquest
+[zoom in] He was named king
+```
+
+### Make shorter clips
+
+In the TikTok era, we are used to dynamic editing - an avatar speaking for 20 seconds with nothing else on screen will have the viewer bored.
+
+Prefer <u>cutting your scripts in short sentences</u>, or even cutting the sentences in 2 to add a zoom, a camera angles or a B-roll.
+
+### Add more B-rolls
+
+B-rolls and media will enrich the purpose of your video - thankfully, <u>you don't need to prompt to add a B-roll</u> on Argil. Simply click the "shuffle" button to rotate until you find a good one.
+
+<Note>
+  B-rolls will take the length of the clip you append it to. If it is too long, toggle the "1/2" button on it to make it shorter
+</Note>
+
+<Card title="Use a &#x22;Pro voice&#x22;" icon="robot" href="https://docs.argil.ai/resources/voices-and-provoices">
+  To have a voice <u>that respects your tone and emotion</u>, we advise recording a "pro voice" and linking it to your avatar.
+</Card>
+
+<Card title="Record your voice instead of typing text" icon="volume" href="https://docs.argil.ai/resources/audio-and-voicetovoice">
+  It is much easier to record your voice than to film yourself, and <u>voice to video gives the best results</u>. You can <u>transform your voice into any avatar's voice</u>, and our "AI cleanup" will remove background noises and echo.
+</Card>
+
+<Card title="Add music" icon="music" href="https://docs.argil.ai/resources/music">
+  Music is the final touch of your masterpiece. It will add intensity and emotions to the message you convey.
+</Card>
+
+
 # Getting started with Argil
 Source: https://docs.argil.ai/resources/introduction
 
@@ -1329,124 +1585,102 @@ Here's how to start leveraging video avatars to reach your goals
 Welcome to Argil! Argil is your content creator sidekick that uses AI avatars to generate engaging videos in a few clicks.
 
 <Note>
-  For high-volume API licenses, please pick a [call slot here](https://calendly.com/laodis-argil/15min) - otherwise check the [API pricings here](https://docs.argil.ai/resources/api-pricings)
+  For high-volume API licenses, please pick a [call slot here](https://calendly.com/adrien-argil/argil-onboarding-call) - otherwise check the [API pricings here](https://docs.argil.ai/resources/api-pricings)
 </Note>
 
 ## Getting Started
 
-<Card title="Create your account" icon="user" color="purple" href="https://app.argil.ai/">
+<Card title="Create your account" icon="user" href="https://app.argil.ai/">
   Create a free account to start generating AI videos
 </Card>
 
-<Card title="Watch this full video tutorial to get the best out of Argil" icon="clapperboard-play" color="#9e0983" href="https://youtu.be/raWKq7SwD6k?si=bBUYMDpKst9lVtSg" />
+<Card title="Watch this full video tutorial to get the best out of Argil" icon="clapperboard-play" href="https://youtu.be/raWKq7SwD6k?si=bBUYMDpKst9lVtSg" />
 
 ## Setup Your Account
 
-<CardGroup cols={2}>
-  <Card title="Sign up and sign in" icon="user-plus" color="purple" href="/resources/sign-up-sign-in">
+<CardGroup>
+  <Card title="Sign up and sign in" icon="user-plus" href="/resources/sign-up-sign-in">
     Create your account and sign in to access all features
   </Card>
 
-  <Card title="Choose your plan" icon="credit-card" color="purple" href="/resources/subscription-and-plans">
+  <Card title="Choose your plan" icon="credit-card" href="/resources/subscription-and-plans">
     Select a subscription plan that fits your needs
   </Card>
 </CardGroup>
 
 ## Create Your First Video
 
-<CardGroup cols={2}>
-  <Card title="Create a video" icon="video" color="purple" href="/resources/create-a-video">
+<CardGroup>
+  <Card title="Create a video" icon="video" href="/resources/create-a-video">
     Start creating your first AI-powered video
   </Card>
 
-  <Card title="Write your script" icon="pen" color="purple" href="/resources/create-a-video#writing-script">
+  <Card title="Write your script" icon="pen" href="/resources/create-a-video#writing-script">
     Create your first text script for the video
   </Card>
 
-  <Card title="Record your voice" icon="microphone" color="purple" href="/resources/audio-and-voicetovoice">
+  <Card title="Create the best voice possible" icon="microphone" href="https://docs.argil.ai/resources/voices-and-provoices">
     Record and transform your voice into any avatar's voice
   </Card>
 
-  <Card title="Production settings" icon="sliders" color="purple" href="/resources/create-a-video#production-settings">
+  <Card title="Learn the main features and tips" icon="sliders" href="https://docs.argil.ai/resources/editingtips">
     Configure your video production settings
   </Card>
 
-  <Card title="Use templates" icon="copy" color="purple" href="/resources/article-to-video">
+  <Card title="Use templates" icon="copy" href="/resources/article-to-video">
     Generate a video quickly by pasting an article link
   </Card>
-</CardGroup>
 
-## Control Your Avatar
-
-<CardGroup cols={2}>
-  <Card title="Body language" icon="person-walking" color="purple" href="/resources/body-language">
-    Add natural movements and gestures to your avatar
-  </Card>
-
-  <Card title="Camera control" icon="camera" color="purple" href="/resources/cameras-angles">
-    Master camera angles and zoom effects
-  </Card>
+  ##
 </CardGroup>
 
 ## Make Your Video Dynamic
 
-<CardGroup cols={2}>
-  <Card title="Add media" icon="photo-film" color="purple" href="/resources/brolls">
+<CardGroup>
+  <Card title="Add media" icon="photo-film" href="/resources/brolls">
     Enhance your video with B-rolls and media
   </Card>
 
-  <Card title="Add captions" icon="closed-captioning" color="purple" href="/resources/captions">
+  <Card title="Add captions" icon="closed-captioning" href="/resources/captions">
     Make your content accessible with captions
   </Card>
 
-  <Card title="Add music" icon="music" color="purple" href="/resources/music">
+  <Card title="Add music" icon="music" href="/resources/music">
     Set the mood with background music
   </Card>
 
-  <Card title="Editing tips" icon="wand-magic-sparkles" color="purple" href="/resources/editingtips">
-    Learn pro editing techniques
+  <Card title="Store your assets" icon="wand-magic-sparkles" href="https://docs.argil.ai/resources/assets">
+    Store videos/images you use the most
   </Card>
 </CardGroup>
 
 ## Train Your Avatar
 
-<CardGroup cols={2}>
-  <Card title="Create avatar" icon="user-plus" color="purple" href="/resources/create-avatar-from-image">
+<CardGroup>
+  <Card title="Create avatar" icon="user-plus" href="/resources/create-an-avatar">
     Create a custom avatar from scratch
   </Card>
 
-  <Card title="Training tips" icon="graduation-cap" color="purple" href="/resources/training-tips">
-    Learn best practices for avatar training
-  </Card>
-
-  <Card title="Style & camera" icon="camera-retro" color="purple" href="/resources/styles-and-cameras">
-    Add custom styles and camera angles
-  </Card>
-
-  <Card title="Body language" icon="person-rays" color="purple" href="/resources/create-body-language">
-    Add expressive movements to your avatar
-  </Card>
-
-  <Card title="Voice setup" icon="microphone-lines" color="purple" href="/resources/link-a-voice">
+  <Card title="Voice setup" icon="microphone-lines" href="/resources/link-a-voice">
     Link and customize your avatar's voice
   </Card>
 </CardGroup>
 
 ## Manage Your Account
 
-<CardGroup cols={2}>
-  <Card title="Account settings" icon="gear" color="purple" href="/resources/account-settings">
+<CardGroup>
+  <Card title="Account settings" icon="gear" href="/resources/account-settings">
     Configure your account preferences
   </Card>
 
-  <Card title="Affiliate program" icon="handshake" color="purple" href="/resources/affiliates">
+  <Card title="Affiliate program" icon="handshake" href="/resources/affiliates">
     Join our affiliate program
   </Card>
 </CardGroup>
 
 ## Developers
 
-<Card title="API Documentation" icon="code" color="purple" href="/resources/api-pricings">
+<Card title="API Documentation" icon="code" href="https://docs.argil.ai/pages/get-started/introduction">
   Access our API documentation and pricing
 </Card>
 
@@ -1473,13 +1707,13 @@ Create more engaging social media video with our magic editor that let's you swi
       Picking "Auto" will put a mix of different settings.
     </Info>
 
-        <img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=f326b0207ed2339885298782d160302b" alt="Captured’écran2025 06 18à14 23 28 Pn" data-og-width="400" width="400" data-og-height="420" height="420" data-path="images/Captured’écran2025-06-18à14.23.28.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=b18eb4aa31fed8fa1fa925fbada706c2 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=336c40730c83725fb98cff08862ccac4 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=a8db727ccf4d4439aa923b62c5b4b5b5 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=dfbe821cf5981c7a1a5a27ff674c2c3c 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=0a9cf8935a01eb54641a705b50c20379 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.23.28.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=c25e97804639d5e6bdee972712f6e2c1 2500w" />
+    <img alt="Captured’écran2025 06 18à14 23 28 Pn" />
   </Step>
 
   <Step title="In the studio editor, edit each individual media layout">
     You can click on any media and change the independant settings for each of them. Then if you want to apply that change to all your medias, click on "apply to all medias".
 
-        <img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=f5bb7172dec53795feb9476e8b097f68" alt="Captured’écran2025 06 18à14 24 30 Pn" data-og-width="372" width="372" data-og-height="760" height="760" data-path="images/Captured’écran2025-06-18à14.24.30.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=44858089a7f68c67794c3288e2c2309e 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=624e86a41b9a8a7287e4376e5b3cd000 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=c3619a7901be7b9047e7a69f1065cb67 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=cb2c8172296ae7c2521f85f4978f62d9 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=30452fda31b83cdff47917dee1e77809 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-06-18a%CC%8014.24.30.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=53459dd441638f9ee20d6aa8a45fad56 2500w" />
+    <img alt="Captured’écran2025 06 18à14 24 30 Pn" />
   </Step>
 </Steps>
 
@@ -1503,7 +1737,7 @@ Change the default voice of your avatar
   </Step>
 </Steps>
 
-<Card title="Learn More About Voices" icon="microphone" href="/resources/voices-and-provoices" style={{width: "200px", color: "#741FFF", display: "flex", alignItems: "center"}}>
+<Card title="Learn More About Voices" icon="microphone" href="/resources/voices-and-provoices">
   Discover voice settings and pro voices
 </Card>
 
@@ -1561,6 +1795,10 @@ How to upgrade, downgrade and cancel your subscription
 2. Go to "Settings"
 3. Go to "Cancel"
 
+### Can I pause my subscription ?
+
+No, but if you cancel and come back later, you will still have access to all your projects and avatars.
+
 
 # Moderated content
 Source: https://docs.argil.ai/resources/moderated-content
@@ -1568,7 +1806,7 @@ Source: https://docs.argil.ai/resources/moderated-content
 Here are the current rules we apply to the content we moderate. 
 
 <Info>
-  Note that content restrictions only apply to Argil’s avatars. If you wish to generate content outside of our restrictions, please train your own avatar ([see how](https://docs.argil.ai/resources/training-tips))
+  Note that content restrictions only apply to Argil’s avatars. If you wish to generate content outside of our restrictions, please train your own avatar ([see how](https://docs.argil.ai/resources/create-an-avatar))
 </Info>
 
 <Warning>
@@ -1578,9 +1816,8 @@ Here are the current rules we apply to the content we moderate.
 On Argil, to protect our customers and to comply with our “safe synthetic content guidelines”, we prevent some content to be generated. There are 3 scenarios:
 
 * Video generated with **your** avatar: no content is restricted
-* Video generated with **Argil’s human avatars**: submitted to content restrictions (see below)
-
-***
+* Video generated with **Argil’s human avatars (Argil Legacy)**: submitted to content restrictions (see below)
+* Video generated with **Argil's AI generated avatars (Argil Atom)**: submitted to less content restrictions (the restrictions below with an \* will not apply to Atom avatars).
 
 ### Here’s an exhaustive list of content that is restricted:
 
@@ -1645,11 +1882,11 @@ You will not use the Platform to generate, upload, or share any content that is 
 
 **Banned:** Harassment includes targeted attacks, threats, or content meant to humiliate an individual. Persistent, unwanted commentary or personal attacks against a specific person also fall under this banned category.
 
-### **Misinformation** and fake news
+### **Misinformation** and fake news\*
 
 **Banned:** Misinformation is flagged when it spreads false narratives as facts, especially on topics like health, science, or current events. Conspiracy theories or fabricated claims that could mislead or harm the audience are strictly not allowed.
 
-### **Sensitive Political Topics**
+### **Political Topics\***
 
 **Banned:** Content is banned when it incites unrest, promotes illegal political actions, or glorifies controversial figures without nuance. Content that polarizes communities or compromises public safety through biased narratives is flagged.
 
@@ -1657,15 +1894,45 @@ You will not use the Platform to generate, upload, or share any content that is 
 
 **Why do we restrict content?**
 
-We have very strong contracts in place with our actors that are used as Argil’s avatars.
+We have very strong contracts in place with our actors that are used as Argil’s avatars (Argil Legacy avatars) and prefer to be too strict with these cases in terms of content moderated.
 
 If you think that a video has been wrongly flagged, please send an email to [support@argil.ai](mailto:support@argil.ai) (**and ideally include the transcript of said video**).
 
-*Please note that Argil created a feature on the platform to automatically filter the generation of prohibited content, but this feature can be too strict and in some cases doesn’t work.*
+*Please note that Argil created a feature on the platform to automatically filter the generation of prohibited content, but this feature can be too strict and in some cases doesn’t work as AI comprehension of context and tone can be faulty.*
 
 ### Users that violate these guidelines may see the immediate termination of their access to the Platform and a permanent ban from future use.
 
 \*not moderated if you are using a fictional avatar
+
+
+# Motion Control
+Source: https://docs.argil.ai/resources/motion-control
+
+Transfer real movements from a video to your avatar
+
+Extract body movements from any reference video and apply them to your static avatar photo. Perfect for dance content, expressive presentations, and recreating trending videos.
+
+## How it works
+
+1. **Import motion video** — Upload a video of someone moving or dancing
+2. **Upload avatar photo** — Static image of your avatar (full body recommended)
+3. **Generate** — System extracts movements and applies them to your avatar
+
+## What gets transferred
+
+* ✓ Body position and gestures
+* ✓ Arm movements
+* ✓ Head motion
+* ✓ Walking and dancing
+* ✗ Voice/audio (add separately)
+* ✗ Hand finger details (approximate)
+
+## Tips
+
+* Use well-lit motion videos with full body visible
+* Stable camera, single person in frame
+* Match avatar starting pose roughly to motion video
+* Smooth movements transfer better than jerky ones
 
 
 # Music
@@ -1673,33 +1940,27 @@ Source: https://docs.argil.ai/resources/music
 
 
 
-Music is a great way to add more emotion to your video and is extremely simple to add.&#x20;
+Music is a great way to add more emotion to your video and is extremely simple to add.
 
-### How to add music&#x20;
+### How to add music
 
 <Steps>
   <Step title="Step 1">
-    On the side bar, click on "None" under "Music"&#x20;
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at11.40.38.png" alt="" />
+    On the side bar, click on "None" under "Music"
   </Step>
 
   <Step title="Step 2">
     Preview musics by pressing the play button and setting the volume
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at11.43.44.png" alt="" />
   </Step>
 
   <Step title="Step 3">
-    When you found the perfect symphony for your video, click on it and click the "back" button to the main menu ; you can then preview the video with your Music&#x20;
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/argil/Screenshot2025-01-02at11.41.26.png" alt="" />
+    When you found the perfect symphony for your video, click on it and click the "back" button to the main menu ; you can then preview the video with your Music
   </Step>
 </Steps>
 
 ### Can I add my own music?
 
-Not yet - we will be adding this feature shortly.&#x20;
+Not yet - we will be adding this feature shortly.
 
 
 # Pay-as-you-go credits explained
@@ -1711,7 +1972,7 @@ Prices for additional avatars (clones and influencers) and credits purchases
   You can purchase as much Pay-as-you-go credits as you wish. **They never expire.**
 </Tip>
 
-<Card title="Purchase your additionnal credits here" href="https://app.argil.ai/?workspaceSettingsModalOpen=true" cta="Click here to access the shop">
+<Card title="Purchase your additionnal credits here" href="https://app.argil.ai/?workspaceSettingsModalOpen=true">
   You can purchase as many pay-as-you-go credits as you wish. They never expire.
 </Card>
 
@@ -1732,6 +1993,164 @@ If you do a 30 sec video with 2 video B-rolls with one of our licenced avatars t
 \*For legacy users (before 20th of october 2025): Argil v1 costs 60 credits for 3 minutes
 
 
+# Product Interaction
+Source: https://docs.argil.ai/resources/product-interaction
+
+Show your avatar physically holding and using products
+
+## How it works
+
+1. **Upload your product** — Drop image in the Product zone (controller, phone, bottle, etc.)
+2. **Select your avatar** — Drop in the Avatar zone (full body works best)
+3. **Describe the interaction** — E.g., "Avatar holding the controller and pressing buttons"
+4. **Generate** — AI creates realistic product manipulation
+
+## vs Product Presentation
+
+| Flow                    | Avatar behavior                               |
+| :---------------------- | :-------------------------------------------- |
+| Product Presentation    | Speaks about product, makes a video out of it |
+| **Product Interaction** | Physically holds and uses product             |
+
+## Tips
+
+* Use avatars with visible hands and arms
+* Small, hand-held products work best
+* Keep interactions simple (holding, showing, using)
+* Remove product background for cleaner results
+
+
+# Product Presentation
+Source: https://docs.argil.ai/resources/product-presentation
+
+Create videos with an avatar presenting your product
+
+Generate professional product videos where an AI avatar talks about your product. Choose between a scripted approach with Atom or creative prompt-driven scenes with VEO.
+
+## How it works
+
+1. **Upload your product image** — Clear photo, no background works best
+2. **Select your avatar** — Pick from the library or use your own
+3. **Add your content** — Write a script (Atom) or a creative prompt (VEO)
+4. **Generate** — Choose your model and render
+
+## Atom vs VEO
+
+| Model   | Input           | Avatar behavior                    |
+| :------ | :-------------- | :--------------------------------- |
+| Atom    | Text script     | Speaks exactly what you write      |
+| VEO 3.1 | Creative prompt | Interacts dynamically with product |
+
+## Prompt example (VEO)
+
+```
+Avatar holding @Product and promoting its hand-made craft, with @Image as video background
+```
+
+Use `@Product` and `@Image` tags to reference your uploaded assets.
+
+## Tips
+
+* Atom for clear, controlled messaging
+* VEO for dynamic scenes and visual storytelling
+* Remove product background for cleaner compositing
+* Keep scripts under 2 minutes for best results
+
+
+# Product Visual
+Source: https://docs.argil.ai/resources/product-visual
+
+
+
+## How it works
+
+1. **Upload your product image** — Clear photo, transparent background recommended
+2. **Write your visual prompt** — Describe motion and lighting (e.g., "Slow rotation with soft studio lighting")
+3. **Choose your model** — Sora 2 (cinematic), VEO 3 (versatile), or Resonance 1.5 (stylized)
+4. **Generate** — Wait for your video to render
+
+## Model comparison
+
+| Model         | Style     | Best for               |
+| :------------ | :-------- | :--------------------- |
+| Sora 2        | Cinematic | Premium brand content  |
+| VEO 3         | Natural   | General product videos |
+| Resonance 1.5 | Artistic  | Creative campaigns     |
+
+## Tips
+
+* Use images with no background for cleaner results
+* Describe camera motion clearly (rotation, zoom, reveal)
+* Start with VEO 3, upgrade to Sora 2 for final versions
+
+
+# Prompt your own voice
+Source: https://docs.argil.ai/resources/prompt-a-voice
+
+You can head to the Voices tab to create, from a prompt, the voice of your dreams
+
+The prompt is the foundation of your voice. In general, more descriptive and granular prompts tend to yield more accurate and nuanced results.
+
+Here are some information you can give:
+
+### Audio
+
+* “Low-fidelity audio”
+* “Poor audio quality”
+* “Sounds like a voicemail”
+* “Muffled and distant, like on an old tape recorder”
+
+### \*\*Age and Tone/Timbre \*\*
+
+<Columns>
+  <Card title="Tone/Timbre">
+    * “Deep” / “low-pitched”
+    * “Smooth” / “rich”
+    * “Gravelly” / “raspy”
+    * “Nasally” / “shrill”
+    * “Airy” / “breathy”
+    * “Booming” / “resonant”
+  </Card>
+
+  <Card title="Age">
+    * “Adolescent male” / “adolescent female”
+    * “Young adult” / “in their 20s” / “early 30s”
+    * “Middle-aged man” / “woman in her 40s”
+    * “Elderly man” / “older woman” / “man in his 80s”
+  </Card>
+</Columns>
+
+### Pacing examples
+
+* “Speaking quickly” / “at a fast pace”
+* “At a normal pace” / “speaking normally”
+* “Speaking slowly” / “with a slow rhythm”
+* “Deliberate and measured pacing”
+* “Drawn out, as if savoring each word”
+* “With a hurried cadence, like they’re in a rush”
+* “Relaxed and conversational pacing”
+* “Rhythmic and musical in pace”
+* “Erratic pacing, with abrupt pauses and bursts”
+
+### Accents
+
+* “A middle-aged man with a thick French accent”
+* “A young woman with a slight Southern drawl”
+* “An old man with a heavy Eastern European accent”
+* “A cheerful woman speaking with a crisp British accent”
+* “A younger male with a soft Irish lilt”
+
+### Here are some examples
+
+| Female Sports Commentator      | A high-energy female sports commentator with a thick British accent, passionately delivering play-by-play coverage of a football match in a very quick pace. Her voice is lively, enthusiastic, and fully immersed in the action. |   |
+| :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | - |
+| Drill Sergeant                 | An army drill sergeant shouting at his team of soldiers. He sounds angry and is speaking at a fast pace.                                                                                                                          |   |
+| Relatable British Entrepreneur | Excellent audio quality. A man in his 30s to early 40s with a thick British accent speaking at a natural pace like he’s talking to a friend.                                                                                      |   |
+| Movie Trailer Voice            | Dramatic voice, used to build anticipation in movie trailers, typically associated with action or thrillers                                                                                                                       |   |
+| Southern Woman                 | An older woman with a thick Southern accent. She is sweet and sarcastic.                                                                                                                                                          |   |
+| Evil Ogre                      | A massive evil ogre speaking at a quick pace. He has a silly and resonant tone.                                                                                                                                                   |   |
+
+
 # Sign up & sign in
 Source: https://docs.argil.ai/resources/sign-up-sign-in
 
@@ -1741,7 +2160,7 @@ Create and access your Argil account
 
 Choose your preferred sign-up method to create your Argil account.
 
-<CardGroup cols="2">
+<CardGroup>
   <Card title="Email Sign Up" icon="envelope">
     Create an account using your email address and password.
   </Card>
@@ -1790,7 +2209,7 @@ Choose your preferred sign-up method to create your Argil account.
 ### Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Gmail Issues" defaultOpen={false}>
+  <Accordion title="Gmail Issues">
     * Check email validity
 
     * Verify permissions
@@ -1798,11 +2217,11 @@ Choose your preferred sign-up method to create your Argil account.
     * Clear browser cache
   </Accordion>
 
-  <Accordion title="Password Reset" defaultOpen={false}>
+  <Accordion title="Password Reset">
     Click "Forgot Password?" and follow email instructions
   </Accordion>
 
-  <Accordion title="Account Verification" defaultOpen={false}>
+  <Accordion title="Account Verification">
     Check spam folder or click "Resend Verification Email"
   </Accordion>
 </AccordionGroup>
@@ -1827,44 +2246,41 @@ What are the different plans available, how to upgrade, downgrade and cancel a s
 
 ## Available Plans
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Classic Plan - $39/month" href="https://app.argil.ai">
     1,500 credits per month
 
-    * 10 avatar styles
-    * \
-      100+ Argil avatars
+    * 10 avatar styles\*
+    * 100+ Argil avatars
     * Magic editing\
       Fictions playground (Veo3, Hailuo,...)
     * API access
   </Card>
 
   <Card title="Pro Plan - $149/month" href="https://app.argil.ai">
-    6,000 minutes per month
+    6,000 credits per month
 
-    * Unlimited Avatar styles
+    * Unlimited Avatar styles\*
     * Style editing
-    *
     * All classic features
     * Fast generation
   </Card>
 
-  <Card title="Scale Plan - $499/month" horizontal={false} href="app.argil.ai">
-    ### 6,000 minutes per month
+  <Card title="Scale Plan - $499/month" href="app.argil.ai">
+    18 000 credits per month
 
-    * Unlimited Avatar styles
+    * Unlimited Avatar styles\*
     * 3 workspace seats included
-    *
     * All classic and pro features
     * Fastest support
     * Priority support
   </Card>
 
-  <Card title="Entreprise plan - 1000$+/month" href="mailto:entreprise@argil.ai">
-    ### Early access to features and models
+  <Card title="Entreprise plan - $1000+/month" href="mailto:entreprise@argil.ai">
+    **Early access to features and models**
 
-    * Unlimited video minutes
-    * Unlimited avatar trainings
+    * Custom credit limits
+    * Unlimited avatar styles\*
     * Custom avatar development
     * Dedicated support team
     * Custom integrations
@@ -1876,20 +2292,20 @@ What are the different plans available, how to upgrade, downgrade and cancel a s
 
 You can purchase more credits by clicking on the bottom left of your screen "Upgrade" or "Get more". That window will pop up where you can purchase your extra credits.
 
-### <img src="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=05d05dd8fdb5b871aaf60585710cd70f" alt="Captured’écran2025 04 24à14 10 51 Pn" data-og-width="1529" width="1529" data-og-height="754" height="754" data-path="images/Captured’écran2025-04-24à14.10.51.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=280&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=10d2134be6e216c85045f06819a7af61 280w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=560&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=bde01e6da28621af85b1e30f5a56043f 560w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=840&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=4f726e285c70aaea069d0145a5cd9675 840w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=1100&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=afd40c218d304752dcc37090e0c1ed16 1100w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=1650&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=e9ebf6caaf461472d9f7f2483674e89f 1650w, https://mintcdn.com/argil/-UAhf1yAWS2oQpVh/images/Captured%E2%80%99e%CC%81cran2025-04-24a%CC%8014.10.51.png?w=2500&fit=max&auto=format&n=-UAhf1yAWS2oQpVh&q=85&s=c222509662b5138713b03855c39eefe4 2500w" />
+\*unlimited styles is an amount of slot, generating an image or a style will costs a few credits each time
 
 ### Frequently Asked Questions
 
 <AccordionGroup>
-  <Accordion title="What happens when I upgrade my plan?" defaultOpen="false">
+  <Accordion title="What happens when I upgrade my plan?">
     When you upgrade to the Pro plan, you'll immediately get access to all the features included in the plan as well as a full top up of your credits. If you used all your classic credits and upgrade to pro, you will get back 6000 credits. Your billing will be adjusted according to the prorata. 
   </Accordion>
 
-  <Accordion title="Can I switch plans at any time?" defaultOpen="false">
+  <Accordion title="Can I switch plans at any time?">
     Yes, you can upgrade or downgrade your plan at any time by going to your "Workspace" then "settings" and then "manage plan".
   </Accordion>
 
-  <Accordion title="Will I lose my existing content when changing plans?" defaultOpen="false">
+  <Accordion title="Will I lose my existing content when changing plans?">
     No, your existing content will remain intact when changing plans. However, if you downgrade, you won't be able to create new content using Pro or Scale only features.
   </Accordion>
 </AccordionGroup>
@@ -1913,33 +2329,39 @@ You can create any voice in the "voices" panel section > "+create voice" on the 
   * be careful not to have outside noise or microphone crackles while you record
 </Tip>
 
-<iframe src="https://youtube.com/embed/Nd0xlSrzWOo" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Voice creation when creating an avatar
 
 If you are creating an avatar, you will be presented with three options: - **select a voice :** which is from your own library, from the voices you already have
 
 * **create my voice:** upload any audio file of yourself talking
-* \*\*generate my voice: \*\*pick among three voices created for you according to the person we see on your image
+* **generate my voice:** pick among three voices created for you according to the person we see on your image
 
 <Tip>
   Don't hesitate to edit your voices in the "voices" section in order to increase the speed to 1.05 or 1.1. This can make all of your videos more entertaining.
 </Tip>
 
-## Elevenlabs instant and pro voices settings
+### What are public pro voices ?
+
+Some of the voices of our public library are pro voices. They are only available for Pro plan users and are also found on Pro avatars.
+
+If you are on a Pro plan, you can use any avatar and simply switch the voice with a Pro voice of your choice in the Some of the voices of our public library are pro voices. They are only available for Pro plan users.
+
+## Elevenlabs instant and Elevenlabs pro voices settings
 
 <Note>
   If you use ElevenLabs for voice generation, don't hesitate to visit the [ElevenLabs documentation](https://elevenlabs.io/docs/speech-synthesis/voice-settings).
 </Note>
 
-<CardGroup cols="2">
-  <Card title="Standard Voices" icon="microphone" color="purple">
+<CardGroup>
+  <Card title="Standard Voices" icon="microphone">
     * Stability: 50-80
     * Similarity: 60-100
     * Style: Varies by voice tone
   </Card>
 
-  <Card title="Pro Voices" icon="microphone-lines" color="purple">
+  <Card title="Pro Voices" icon="microphone-lines">
     * Stability: 70-100
     * Similarity: 80-100
     * Style: Varies by voice tone
@@ -1960,7 +2382,7 @@ If you are creating an avatar, you will be presented with three options: - **sel
 3. Paste API key in "voices" > "ElevenLabs" on Argil
 4. Click "synchronize" after adding new voices
 
-<Card title="Link Your Voice" icon="link" color="purple" href="/resources/link-a-voice">
+<Card title="Link Your Voice" icon="link" href="/resources/link-a-voice">
   Learn how to link voices to your avatar
 </Card>
 
@@ -1970,7 +2392,7 @@ We currently support about 30 different languages via Elevenlabs: English (USA),
 
 [Click here to see the full list.  ](https://help.elevenlabs.io/hc/en-us/articles/13313366263441-What-languages-do-you-support)
 
-## Create Pro Voice
+## Create an Elevenlabs Pro Voice
 
 Pro voices offer hyper-realistic voice cloning for maximum authenticity. While you are limited to only 1 pro voice per elevenlabs account, you can connect multiple accounts to Argil.
 
@@ -1980,10 +2402,10 @@ Pro voices offer hyper-realistic voice cloning for maximum authenticity. While y
 4. Edit avatar to link your Pro voice
 
 <Frame>
-  <iframe src="https://www.loom.com/embed/f083b2f5b86f4971851d158009d60772?sid=bc9df527-2dba-45c1-bee7-dc81870770c7" frameBorder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen style={{ width:"100%",height:"400px" }} />
+  <iframe />
 </Frame>
 
-<Card title="Voice Transformation" icon="wand-magic-sparkles" color="purple" href="/resources/audio-and-voicetovoice">
+<Card title="Voice Transformation" icon="wand-magic-sparkles" href="/resources/audio-and-voicetovoice">
   Learn about voice transformation features
 </Card>
 

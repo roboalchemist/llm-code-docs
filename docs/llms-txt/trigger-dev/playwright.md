@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/config/extensions/playwright.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Playwright
 
 > Use the playwright build extension to use Playwright with Trigger.dev
@@ -18,7 +22,7 @@ If you are using [Playwright](https://playwright.dev/), you should use the Playw
 
 You can use it for a simple Playwright setup like this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -45,7 +49,7 @@ export default defineConfig({
 
 ### Custom browsers and version
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -66,7 +70,7 @@ export default defineConfig({
 
 By default, browsers are run in headless mode. If you need to run browsers with a UI (for example, for debugging), set `headless: false`. This will automatically set up a virtual display using Xvfb.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { playwright } from "@trigger.dev/build/extensions/playwright";
 
@@ -91,13 +95,39 @@ The extension sets the following environment variables during the build:
 * `PLAYWRIGHT_SKIP_BROWSER_VALIDATION`: Set to `1` to skip browser validation at runtime
 * `DISPLAY`: Set to `:99` if `headless: false` (for Xvfb)
 
+## Troubleshooting
+
+### Browser download failures
+
+If you encounter errors during the build process related to browser downloads (e.g., "failed to solve: process did not complete successfully: exit code: 9"), this is a known issue with certain Playwright versions.
+
+**Workaround:** Revert Playwright to version `1.40.0` in your project dependencies. You can specify this version explicitly in your config:
+
+```ts  theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+import { playwright } from "@trigger.dev/build/extensions/playwright";
+
+export default defineConfig({
+  project: "<project ref>",
+  build: {
+    extensions: [
+      playwright({
+        version: "1.40.0",
+      }),
+    ],
+  },
+});
+```
+
+For more details, see [GitHub issue #2440](https://github.com/triggerdotdev/trigger.dev/issues/2440#issuecomment-3815104376).
+
 ## Managing browser instances
 
 To prevent issues with waits and resumes, you can use middleware and locals to manage the browser instance. This will ensure the browser is available for the whole run, and is properly cleaned up on waits, resumes, and after the run completes.
 
 Here's an example using `chromium`, but you can adapt it for other browsers:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { logger, tasks, locals } from "@trigger.dev/sdk";
 import { chromium, type Browser } from "playwright";
 
@@ -145,7 +175,7 @@ tasks.onResume("playwright-browser", async () => {
 
 You can then use `getBrowser()` in your task's `run` function to access the browser instance:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const playwrightTestTask = task({
   id: "playwright-test",
   run: async () => {

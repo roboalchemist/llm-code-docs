@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrating from Audiences to Segments
 
 > Learn how to migrate from Audiences to Segments

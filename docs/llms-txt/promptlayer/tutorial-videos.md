@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/tutorial-videos.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tutorial Videos
 
 These tutorial videos will walk you through key features and help you get up and running quickly.
@@ -80,8 +84,3 @@ For more in-depth information, check out our comprehensive documentation:
 * [Evaluation Guide](https://docs.promptlayer.com/onboarding-guides/evaluation)
 * [Agentic Workflows Guide](https://docs.promptlayer.com/onboarding-guides/agentic-workflows)
 * [Observability Guide](https://docs.promptlayer.com/onboarding-guides/observability)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

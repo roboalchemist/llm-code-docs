@@ -2,6 +2,10 @@
 
 # Source: https://www.traceloop.com/docs/datasets/sdk-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDK usage
 
 > Access your managed datasets with the Traceloop SDK
@@ -219,8 +223,3 @@ Dataset versions and history can be viewed in the UI. Versioning allows you to r
   const publishedVersion = await myDataset.publish();
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

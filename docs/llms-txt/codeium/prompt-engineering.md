@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/best-practices/prompt-engineering.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Engineering
+
+> Best practices for crafting effective prompts to get high-quality code from Windsurf, including clear objectives, context, and constraints.
 
 If you're reading this, you're probably someone that already understands some of the use cases and limitations of LLMs. The better prompt and context that provide to the model, the better the outcome will be.
 

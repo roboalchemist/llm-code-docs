@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/meme-generator-human-in-the-loop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Meme generator with human-in-the-loop approval
 
 > This example project creates memes using OpenAI's DALL-E 3 with a human-in-the-loop approval workflow built using Trigger.dev waitpoint tokens.

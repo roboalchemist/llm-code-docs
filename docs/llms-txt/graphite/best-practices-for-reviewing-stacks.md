@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/best-practices-for-reviewing-stacks.md
 
+> ## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best Practices For Reviewing Stacked PRs
 
 > Learn best practices to keep in mind when reviewing PRs in a stack.

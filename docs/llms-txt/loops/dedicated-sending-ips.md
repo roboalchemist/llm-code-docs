@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/dedicated-sending-ips.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List dedicated sending IP addresses
 
 > Retrieve a list of Loops' dedicated sending IP addresses.

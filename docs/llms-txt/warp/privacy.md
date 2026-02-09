@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/privacy/privacy.md
+# Source: https://docs.warp.dev/support-and-community/privacy-and-security/privacy.md
 
 # Privacy
 
@@ -11,7 +11,7 @@ If you have any questions about any of this, please don’t hesitate to reach ou
 Our philosophy is complete transparency and control over any data leaving your machine. This means you can:
 
 * Read a complete list of [all the telemetry events](#exhaustive-telemetry-table) that get sent for app analytics
-* Monitor telemetry in real-time with Warp's native [Network Log](https://docs.warp.dev/privacy/network-log)
+* Monitor telemetry in real-time with Warp's native [Network Log](https://docs.warp.dev/support-and-community/privacy-and-security/network-log)
 * [Opt out](#how-to-disable-telemetry-and-crash-reporting) of telemetry at any time
 
 ## What telemetry data does Warp collect and why?
@@ -21,7 +21,7 @@ Warp collects high-level telemetry and usage data to discover product quality is
 If you haven't opted out of "Help improve Warp", we may collect:
 
 1. High level product usage and analytics data to analyze feature uptake and usage patterns. See the [Exhaustive Telemetry Table](#exhaustive-telemetry-table) for the full list of tracked events below. These are all high level metrics and do not include any user generated content.
-2. AI interactions and console inputs that power our [AI features](https://github.com/warpdotdev/gitbook/blob/main/docs/agents/README.md). Warp unconditionally applies [Secret Redaction](https://docs.warp.dev/privacy/secret-redaction) in all AI interactions to ensure that any sensitive data is *never* collected or sent to third parties.
+2. AI interactions and console inputs that power our [AI features](https://docs.warp.dev/agent-platform/agent/). Warp unconditionally applies [Secret Redaction](https://docs.warp.dev/support-and-community/privacy-and-security/secret-redaction) in all AI interactions to ensure that any sensitive data is *never* collected or sent to third parties.
 
 All users can opt-out of this any time and still continue using all of Warp (including AI features).
 
@@ -31,14 +31,14 @@ Business and Enterprise plans are covered by our Zero Data Retention (ZDR) agree
 
 Selling usage data will never be part of Warp's business model. This data is used solely to improve the end-user experience. Warp uses Sentry for crash reporting and Rudderstack for app analytics.
 
-You can read our [full privacy policy](https://www.warp.dev/privacy/policy) as well as [how Warp handles security](https://www.warp.dev/security).
+You can read our [full privacy policy](https://www.warp.dev/privacy-and-security/policy) as well as [how Warp handles security](https://www.warp.dev/security).
 
 ### How to disable telemetry and crash reporting
 
-1. Navigate to `Settings > Privacy`, or open the [Command Palette](https://docs.warp.dev/terminal/command-palette) and search for "privacy"
+1. Navigate to `Settings > Privacy`, or open the [Command Palette](https://docs.warp.dev/terminal/command-palette/) and search for "privacy"
 2. Toggle off "Help improve Warp", "Send crash reports", or both
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-116d317ee1e18758b3ade1657c8d68977cff58cc%2Fprivacy-settings-after-signup.png?alt=media" alt=""><figcaption><p>Privacy Settings</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-116d317ee1e18758b3ade1657c8d68977cff58cc%2Fprivacy-settings-after-signup.png?alt=media" alt=""><figcaption><p>Privacy Settings</p></figcaption></figure>
 
 With telemetry disabled, no console interactions are ever persisted on Warp's servers. Each request contains a `X-Warp-Telemetry-Enabled` header to specify whether telemetry is disabled, and even if this is missing from the request, our server assumes it's disabled.
 
@@ -56,7 +56,7 @@ Deletion jobs run every 24 hours, so if you deleted your account and want to sig
 {% endhint %}
 
 {% hint style="warning" %}
-If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admin, the deletion flow will require that you assign a team member as the new admin.
+If you're a [Team](https://docs.warp.dev/warp/knowledge-and-collaboration/teams) admin, the deletion flow will require that you assign a team member as the new admin.
 {% endhint %}
 
 ### Exhaustive Telemetry Table
@@ -95,6 +95,15 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `Agent Mode Setup Project Scoped Rules Action`             | User clicked a button in the Agent Mode setup project scoped rules step                                                                                           |
 | `Agent Mode.Setup Codebase Context Action`                 | User clicked a button in the Agent Mode setup codebase context step                                                                                               |
 | `Agent Predict`                                            | Completed an Agent Predict prediction                                                                                                                             |
+| `AgentManagement.DismissSetupGuide`                        | User dismissed the ambient agent setup guide                                                                                                                      |
+| `AgentManagement.NavigateToConversation`                   | User navigated to an interactive conversation from agent management                                                                                               |
+| `AgentManagement.OpenSession`                              | User opened an ambient session from agent management view                                                                                                         |
+| `AgentManagement.OpenSetupGuide`                           | User opened the ambient agent setup guide                                                                                                                         |
+| `AgentManagement.SetupGuideDocsLink`                       | User clicked a docs URL in the setup guide                                                                                                                        |
+| `AgentManagement.SetupGuideStepCopy`                       | User copied a workflow step from the setup guide                                                                                                                  |
+| `AgentManagement.SetupGuideStepRun`                        | User ran a workflow step from the setup guide                                                                                                                     |
+| `AgentManagement.SpawnNewLocalAgent`                       | User spawned a new local agent from agent management                                                                                                              |
+| `AgentManagement.ViewToggled`                              | User toggled the agent management view open or closed                                                                                                             |
 | `AgentMode.AISuggestedAgentModeWorkflowAdded`              | User created an AI suggested Agent Mode workflow                                                                                                                  |
 | `AgentMode.AttachedContext`                                | Attached block as context to an Agent Mode query                                                                                                                  |
 | `AgentMode.AttachedImages`                                 | Attached images to an Agent Mode query                                                                                                                            |
@@ -102,7 +111,6 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `AgentMode.ClickedEntrypoint`                              | Clicked on an Agent Mode entrypoint                                                                                                                               |
 | `AgentMode.Code.DiffHunksNavigated`                        | Agent Mode Code diff hunks navigated                                                                                                                              |
 | `AgentMode.Code.DiffMatchFailed`                           | Failed to match code diff                                                                                                                                         |
-| `AgentMode.Code.EditReverted`                              | User reverted an accepted Agent Mode edit                                                                                                                         |
 | `AgentMode.Code.FileExceededContextLimit`                  | File from AI exceeded context limit                                                                                                                               |
 | `AgentMode.Code.FilesNavigated`                            | Agent Mode Code files navigated                                                                                                                                   |
 | `AgentMode.Code.InvalidFile`                               | File(s) in code diff could not be found                                                                                                                           |
@@ -113,6 +121,7 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `AgentMode.CreatedAIBlock`                                 | Created an AI block in agent mode                                                                                                                                 |
 | `AgentMode.Error`                                          | Received an error when getting Agent Mode response                                                                                                                |
 | `AgentMode.ExecutedWarpDrivePrompt`                        | Executed a saved prompt.                                                                                                                                          |
+| `AgentMode.ExitedShellProcess`                             | An agent-requested command caused the shell process to exit                                                                                                       |
 | `AgentMode.FileGlob.Failed`                                | The file glob tool failed to complete                                                                                                                             |
 | `AgentMode.FileGlob.Succeeded`                             | The file glob tool completed successfully                                                                                                                         |
 | `AgentMode.FullEmbedCodebaseContextSearch.Failed`          | Failed to search full embed codebase context                                                                                                                      |
@@ -130,15 +139,22 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `AgentMode.RequestRetrySucceeded`                          | Agent Mode request succeeded after retrying following an initial error                                                                                            |
 | `AgentMode.SearchCodebase.RepoUnavailable`                 | Tried to use the Search Codebase tool on a repo that is unavailable                                                                                               |
 | `AgentMode.SearchCodebase.Requested`                       | Ran the Search Codebase tool                                                                                                                                      |
+| `AgentMode.SetupCreateEnvironmentAction`                   | User clicked a button in the Agent Mode setup create environment step                                                                                             |
 | `AgentMode.ShowedSuggestedAgentModeWorkflowModal`          | Showed the suggested Agent Mode workflow modal to the user                                                                                                        |
 | `AgentMode.ShowedSuggestedWorkflowChip`                    | Showed the Suggested Agent Mode workflow chip to the user                                                                                                         |
-| `AgentMode.SuggestCreatePlanResult`                        | User accepted or rejected the suggestion to create a plan                                                                                                         |
 | `AgentMode.SurfacedCitations`                              | Agent mode used and cited external sources that were used in its response                                                                                         |
 | `AgentMode.SyncCodebaseContext.BuildTree.Failed`           | Failed to build merkle tree for codebase context                                                                                                                  |
 | `AgentMode.SyncCodebaseContext.BuildTree.Success`          | Successfully built merkle tree for codebase context                                                                                                               |
 | `AgentMode.SyncCodebaseContext.Failed`                     | Failed to sync codebase context                                                                                                                                   |
 | `AgentMode.SyncCodebaseContext.Success`                    | Successfully synced codebase context                                                                                                                              |
 | `AgentMode.ToggleAutoDetectionSetting`                     | Toggled the setting that enables or disables natural language auto-detection in the input.                                                                        |
+| `AgentTip Clicked`                                         | User clicked a link or action in an Agent Tip                                                                                                                     |
+| `AgentTip Shown`                                           | Selected an Agent Tip to show in the Agent Mode status bar                                                                                                        |
+| `AgentView.Entered`                                        | User entered the Agent View                                                                                                                                       |
+| `AgentView.Exited`                                         | User exited the Agent View                                                                                                                                        |
+| `AgentView.InlineConversationMenuItemSelected`             | User selected an item from the inline conversation menu                                                                                                           |
+| `AgentView.InlineConversationMenuOpened`                   | User opened the inline conversation menu in Agent View                                                                                                            |
+| `AgentView.ShortcutsViewToggled`                           | User toggled the shortcuts view in Agent View                                                                                                                     |
 | `AgenticOnboarding.BlockSelected`                          | Selected an agentic onboarding block to execute                                                                                                                   |
 | `Anonymous User Attempted Login-Gated Feature`             | Anonymous user attempted to access a login-gated feature                                                                                                          |
 | `Anonymous User Expiration Lockout`                        | An anonymous user opened Warp after their conversion deadline and was locked out                                                                                  |
@@ -166,18 +182,25 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `CLI Subagent Control State Changed`                       | Control state changed in CLI subagent (agent in control, agent blocked, user in control, or agent tagged in)                                                      |
 | `CLI Subagent Input Dismissed`                             | User dismissed the input in the CLI subagent                                                                                                                      |
 | `CLI Subagent Responses Toggled`                           | User toggled the visibility of agent responses in CLI subagent                                                                                                    |
+| `CLI.Execute.Agent.Config.Create`                          | Created an agent configuration from the Warp CLI                                                                                                                  |
+| `CLI.Execute.Agent.Config.Delete`                          | Deleted an agent configuration from the Warp CLI                                                                                                                  |
+| `CLI.Execute.Agent.Config.Get`                             | Got agent configuration details from the Warp CLI                                                                                                                 |
+| `CLI.Execute.Agent.Config.List`                            | Listed agent configurations from the Warp CLI                                                                                                                     |
+| `CLI.Execute.Agent.Config.Update`                          | Updated an agent configuration from the Warp CLI                                                                                                                  |
 | `CLI.Execute.Agent.Profile.List`                           | Listed agent profiles from the Warp CLI                                                                                                                           |
 | `CLI.Execute.Agent.Run`                                    | Ran an agent from the Warp CLI                                                                                                                                    |
 | `CLI.Execute.Agent.RunAmbient`                             | Ran an ambient agent from the Warp CLI                                                                                                                            |
 | `CLI.Execute.Environment.Create`                           | Created a cloud environment from the Warp CLI                                                                                                                     |
 | `CLI.Execute.Environment.Delete`                           | Deleted a cloud environment from the Warp CLI                                                                                                                     |
 | `CLI.Execute.Environment.Get`                              | Got cloud environment details from the Warp CLI                                                                                                                   |
+| `CLI.Execute.Environment.Image.List`                       | Listed available base images from the Warp CLI                                                                                                                    |
 | `CLI.Execute.Environment.List`                             | Listed cloud environments from the Warp CLI                                                                                                                       |
 | `CLI.Execute.Environment.Update`                           | Updated a cloud environment from the Warp CLI                                                                                                                     |
 | `CLI.Execute.Integration.Create`                           | Created an integration from the Warp CLI                                                                                                                          |
 | `CLI.Execute.Integration.List`                             | Listed integrations from the Warp CLI                                                                                                                             |
 | `CLI.Execute.Integration.Update`                           | Updated an integration from the Warp CLI                                                                                                                          |
 | `CLI.Execute.Login`                                        | Logged in via the Warp CLI                                                                                                                                        |
+| `CLI.Execute.Logout`                                       | Logged out via the Warp CLI                                                                                                                                       |
 | `CLI.Execute.MCP.List`                                     | Listed MCP servers from the Warp CLI                                                                                                                              |
 | `CLI.Execute.Model.List`                                   | Listed models from the Warp CLI                                                                                                                                   |
 | `CLI.Execute.Provider.List`                                | Listed providers from the Warp CLI                                                                                                                                |
@@ -195,6 +218,10 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `CLI.Execute.Secret.Update`                                | Updated a secret from the Warp CLI                                                                                                                                |
 | `CLI.Execute.Task.Get`                                     | Got status of task from the Warp CLI                                                                                                                              |
 | `CLI.Execute.Task.List`                                    | Listed tasks from the Warp CLI                                                                                                                                    |
+| `CLIAgentFooter.ImageAttached`                             | User attached an image from the CLI agent footer                                                                                                                  |
+| `CLIAgentFooter.SettingToggled`                            | User toggled the CLI agent footer setting                                                                                                                         |
+| `CLIAgentFooter.Shown`                                     | CLI agent footer was shown to the user                                                                                                                            |
+| `CLIAgentFooter.VoiceInputUsed`                            | User used voice input from the CLI agent footer                                                                                                                   |
 | `Changed invite view option`                               | Toggled between link and invite for invite                                                                                                                        |
 | `Clicked Continue Conversation Button`                     | User clicked the Continue Conversation button in a block footer                                                                                                   |
 | `Clicked Reset to Defaults Button in Settings Import`      | Reset the imported settings in the settings import onboarding block                                                                                               |
@@ -221,6 +248,8 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `CodeReview.PaneStateChanged`                              | Code review pane minimized or maximized                                                                                                                           |
 | `CodeReview.RevertHunkClicked`                             | Revert hunk button clicked                                                                                                                                        |
 | `CodeReview.ReviewSubmitted`                               | Inline code review submitted to agent                                                                                                                             |
+| `CodexModal.Opened`                                        | User opened the Codex modal                                                                                                                                       |
+| `CodexModal.UseCodexClicked`                               | User clicked 'Use Codex' in the Codex modal                                                                                                                       |
 | `Command Correction Event`                                 | Accepted command correction                                                                                                                                       |
 | `Command File Run`                                         | Opened a .cmd or unix executable file and ran it directly in Warp                                                                                                 |
 | `Command Palette Search Accepted`                          | Accepted a command palette search result                                                                                                                          |
@@ -242,6 +271,10 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `Context Menu: Find Within Blocks`                         | Clicked "find within blocks" in context menu                                                                                                                      |
 | `Context Menu: Initiate Block Sharing`                     | Opened "Share" modal via context menu                                                                                                                             |
 | `Context Menu: Reinput Commands`                           | Clicked "reinput commands" in context menu                                                                                                                        |
+| `ConversationList.ItemDeleted`                             | Deleted a conversation from the conversation list                                                                                                                 |
+| `ConversationList.ItemOpened`                              | Opened a conversation from the conversation list                                                                                                                  |
+| `ConversationList.LinkCopied`                              | Copied a conversation link from the conversation list                                                                                                             |
+| `ConversationList.Opened`                                  | Opened the conversation list view in the left panel                                                                                                               |
 | `Copied Shared Session Link`                               | Copied a shared session link                                                                                                                                      |
 | `Copy Block Sharing Link`                                  | Clicked "Share block..." in context menu                                                                                                                          |
 | `Copy Invite Link`                                         | Clicked "Copy Link" on Referral Modal                                                                                                                             |
@@ -280,6 +313,8 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `Generate Metadata For Workflow Error`                     | Failed to generate metadata for a workflow using Warp AI                                                                                                          |
 | `Generate Metadata For Workflow Success`                   | Successfully generated metadata for a workflow using Warp AI                                                                                                      |
 | `Get Started Skip to Terminal`                             | User clicked skip to terminal from get started view                                                                                                               |
+| `Global Search Opened`                                     | Opened the global search view                                                                                                                                     |
+| `Global Search Query Started`                              | Started a global search (warp\_ripgrep) search                                                                                                                    |
 | `ITerm Profile has Multiple Hotkeys`                       | Attempted to import an iTerm profile that contained multiple hotkey window bindings                                                                               |
 | `Identified Antivirus Software`                            | Identified running antivirus software on the user's machine                                                                                                       |
 | `Image Received`                                           | Received an image through an image protocol over the pty                                                                                                          |
@@ -464,6 +499,7 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `Toggle Secret Redaction`                                  | Toggled on/off the setting for Secret Redaction - attempts to redact secrets and sensitive information                                                            |
 | `Toggle Settings Sync`                                     | Toggle Settings Sync                                                                                                                                              |
 | `Toggle SharedBlock Title Generation`                      | Toggled on/off the shared block title generation setting                                                                                                          |
+| `Toggle Show Agent Tips`                                   | Toggled the Show Agent Tips setting in AI settings                                                                                                                |
 | `Toggle Show Block Dividers`                               | Enabled or disabled the Show Block Dividers Button                                                                                                                |
 | `Toggle Sticky Command Header in Active Pane`              | Expanded or collapsed the sticky command header in the active pane                                                                                                |
 | `Toggle Sync Inputs Across All Panes in All Tabs`          | Enable the synchronization of the Input Editor's buffer to all the panes in all the tabs                                                                          |
@@ -505,8 +541,17 @@ If you're a [Team](https://docs.warp.dev/knowledge-and-collaboration/teams) admi
 | `Workflow Selected`                                        | Selected workflow and populated into the Input Editor                                                                                                             |
 | `Zero State Prompt Suggestion Used`                        | Used a zero state prompt suggestion                                                                                                                               |
 | `experiments.client.enroll_client`                         | Client assigned to A/B test                                                                                                                                       |
-| `onboarding_completed`                                     | User completed the onboarding flow                                                                                                                                |
+| `onboarding_callout_completed`                             | User completed the callout flow                                                                                                                                   |
+| `onboarding_callout_displayed`                             | A callout was displayed to the user                                                                                                                               |
+| `onboarding_callout_next`                                  | User clicked next on a callout                                                                                                                                    |
+| `onboarding_folder_selected`                               | User selected a folder                                                                                                                                            |
+| `onboarding_folder_selection_started`                      | User started folder selection                                                                                                                                     |
+| `onboarding_get_started_clicked`                           | User clicked the Get Started button                                                                                                                               |
+| `onboarding_setting_changed`                               | User changed a setting during onboarding                                                                                                                          |
+| `onboarding_slide_navigated_back`                          | User navigated to the previous slide                                                                                                                              |
+| `onboarding_slide_navigated_next`                          | User navigated to the next slide                                                                                                                                  |
 | `onboarding_slide_viewed`                                  | User viewed a slide in the onboarding flow                                                                                                                        |
+| `onboarding_slides_completed`                              | User completed the onboarding slides                                                                                                                              |
 | `onboarding_started`                                       | User started the onboarding flow                                                                                                                                  |
 | `perf_metrics.memory_usage_high`                           | Total application memory usage exceeded a significant threshold                                                                                                   |
 | `perf_metrics.resource_usage`                              | Periodic report on application resource usage statistics                                                                                                          |

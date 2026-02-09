@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/people-search-launch.md
+# Source: https://exa.ai/docs/changelog/people-search-launch.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introducing Exa People Search
 
@@ -68,8 +72,3 @@ The new `people` category provides:
 ## Need Help?
 
 If you have questions about migrating from the `linkedin` category or want to learn more about optimizing your people search queries, reach out to [hello@exa.ai](mailto:hello@exa.ai). We're here to help you get the most out of Exa People Search!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

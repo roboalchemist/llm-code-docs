@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/llms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🤖 Large language models (LLMs)
 
 ## Overview
@@ -50,7 +54,7 @@ To use OpenAI LLM models, you have to set the `OPENAI_API_KEY` environment varia
 
 Once you have obtained the key, you can use it like this:
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 
@@ -64,7 +68,7 @@ app.query("What is OpenAI?")
 If you are looking to configure the different parameters of the LLM, you can do so by loading the app using a [yaml config](https://github.com/embedchain/embedchain/blob/main/configs/chroma.yaml) file.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -74,7 +78,7 @@ If you are looking to configure the different parameters of the LLM, you can do 
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: openai
     config:
@@ -91,7 +95,7 @@ If you are looking to configure the different parameters of the LLM, you can do 
 Embedchain supports OpenAI [Function calling](https://platform.openai.com/docs/guides/function-calling) with a single function. It accepts inputs in accordance with the [Langchain interface](https://python.langchain.com/docs/modules/model_io/chat/function_calling#legacy-args-functions-and-function_call).
 
 <Accordion title="Pydantic Model">
-  ```python
+  ```python  theme={null}
   from pydantic import BaseModel
 
   class multiply(BaseModel):
@@ -103,7 +107,7 @@ Embedchain supports OpenAI [Function calling](https://platform.openai.com/docs/g
 </Accordion>
 
 <Accordion title="Python function">
-  ```python
+  ```python  theme={null}
   def multiply(a: int, b: int) -> int:
       """Multiply two integers together.
 
@@ -116,7 +120,7 @@ Embedchain supports OpenAI [Function calling](https://platform.openai.com/docs/g
 </Accordion>
 
 <Accordion title="OpenAI tool dictionary">
-  ```python
+  ```python  theme={null}
   multiply = {
     "type": "function",
     "function": {
@@ -146,7 +150,7 @@ Embedchain supports OpenAI [Function calling](https://platform.openai.com/docs/g
 
 With any of the previous inputs, the OpenAI LLM can be queried to provide the appropriate arguments for the function.
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 from embedchain.llm.openai import OpenAILlm
@@ -164,7 +168,7 @@ result = app.query("What is the result of 125 multiplied by fifteen?")
 To use Google AI model, you have to set the `GOOGLE_API_KEY` environment variable. You can obtain the Google API key from the [Google Maker Suite](https://makersuite.google.com/app/apikey)
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -182,7 +186,7 @@ To use Google AI model, you have to set the `GOOGLE_API_KEY` environment variabl
       print(response)
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: google
     config:
@@ -206,7 +210,7 @@ To use Google AI model, you have to set the `GOOGLE_API_KEY` environment variabl
 To use Azure OpenAI model, you have to set some of the azure openai related environment variables as given in the code block below:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -218,7 +222,7 @@ To use Azure OpenAI model, you have to set some of the azure openai related envi
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: azure_openai
     config:
@@ -244,7 +248,7 @@ You can find the list of models and deployment name on the [Azure OpenAI Platfor
 To use anthropic's model, please set the `ANTHROPIC_API_KEY` which you find on their [Account Settings Page](https://console.anthropic.com/account/keys).
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -254,7 +258,7 @@ To use anthropic's model, please set the `ANTHROPIC_API_KEY` which you find on t
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: anthropic
     config:
@@ -270,7 +274,7 @@ To use anthropic's model, please set the `ANTHROPIC_API_KEY` which you find on t
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[cohere]'
 ```
 
@@ -279,7 +283,7 @@ Set the `COHERE_API_KEY` as environment variable which you can find on their [Ac
 Once you have the API key, you are all set to use it with Embedchain.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -289,7 +293,7 @@ Once you have the API key, you are all set to use it with Embedchain.
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: cohere
     config:
@@ -304,7 +308,7 @@ Once you have the API key, you are all set to use it with Embedchain.
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[together]'
 ```
 
@@ -313,7 +317,7 @@ Set the `TOGETHER_API_KEY` as environment variable which you can find on their [
 Once you have the API key, you are all set to use it with Embedchain.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -323,7 +327,7 @@ Once you have the API key, you are all set to use it with Embedchain.
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: together
     config:
@@ -339,7 +343,7 @@ Once you have the API key, you are all set to use it with Embedchain.
 Setup Ollama using [https://github.com/jmorganca/ollama](https://github.com/jmorganca/ollama)
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   os.environ["OLLAMA_HOST"] = "http://127.0.0.1:11434"
   from embedchain import App
@@ -348,7 +352,7 @@ Setup Ollama using [https://github.com/jmorganca/ollama](https://github.com/jmor
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: ollama
     config:
@@ -371,7 +375,7 @@ Setup Ollama using [https://github.com/jmorganca/ollama](https://github.com/jmor
 Setup vLLM by following instructions given in [their docs](https://docs.vllm.ai/en/latest/getting_started/installation.html).
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -379,7 +383,7 @@ Setup vLLM by following instructions given in [their docs](https://docs.vllm.ai/
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: vllm
     config:
@@ -396,7 +400,7 @@ Setup vLLM by following instructions given in [their docs](https://docs.vllm.ai/
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[clarifai]'
 ```
 
@@ -405,7 +409,7 @@ set the `CLARIFAI_PAT` as environment variable which you can find in the [securi
 Now you are all set with exploring Embedchain.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -424,7 +428,7 @@ Now you are all set with exploring Embedchain.
   Head to [Clarifai Platform](https://clarifai.com/explore/models?page=1\&perPage=24\&filterData=%5B%7B%22field%22%3A%22use_cases%22%2C%22value%22%3A%5B%22llm%22%5D%7D%5D) to browse various State-of-the-Art LLM models for your use case.
   For passing model inference parameters use `model_kwargs` argument in the config file. Also you can use `api_key` argument to pass `CLARIFAI_PAT` in the config.
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
    provider: clarifai
    config:
@@ -443,21 +447,21 @@ Now you are all set with exploring Embedchain.
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[opensource]'
 ```
 
 GPT4all is a free-to-use, locally running, privacy-aware chatbot. No GPU or internet required. You can use this with Embedchain using the following code:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load llm configuration from config.yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: gpt4all
     config:
@@ -479,7 +483,7 @@ First, set `JINACHAT_API_KEY` in environment variable which you can obtain from 
 Once you have the key, load the app using the config yaml file:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -488,7 +492,7 @@ Once you have the key, load the app using the config yaml file:
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: jina
     config:
@@ -503,7 +507,7 @@ Once you have the key, load the app using the config yaml file:
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[huggingface-hub]'
 ```
 
@@ -520,7 +524,7 @@ You can load the LLMs from Hugging Face using three ways:
 To load the model from Hugging Face Hub, use the following code:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -548,7 +552,7 @@ To load the model from Hugging Face Hub, use the following code:
 If you want to load the locally downloaded model from Hugging Face, you can do so by following the code provided below:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   config = {
@@ -575,7 +579,7 @@ You can also use [Hugging Face Inference Endpoints](https://huggingface.co/docs/
 Then, load the app using the config yaml file:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   config = {
@@ -604,7 +608,7 @@ Llama2 is integrated through [Replicate](https://replicate.com/).  Set `REPLICAT
 Once you have the token, load the app using the config yaml file:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -614,7 +618,7 @@ Once you have the token, load the app using the config yaml file:
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: llama2
     config:
@@ -631,14 +635,14 @@ Once you have the token, load the app using the config yaml file:
 Setup Google Cloud Platform application credentials by following the instruction on [GCP](https://cloud.google.com/docs/authentication/external/set-up-adc). Once setup is done, use the following code to create an app using VertexAI as provider:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load llm configuration from config.yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: vertexai
     config:
@@ -653,7 +657,7 @@ Setup Google Cloud Platform application credentials by following the instruction
 Obtain the Mistral AI api key from their [console](https://console.mistral.ai/).
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   os.environ["MISTRAL_API_KEY"] = "xxx"
 
   app = App.from_config(config_path="config.yaml")
@@ -670,7 +674,7 @@ Obtain the Mistral AI api key from their [console](https://console.mistral.ai/).
   # You have asked me several times already which companies Elon Musk owns, specifically Tesla, SpaceX, Boring Company, Twitter, and X.
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: mistralai
     config:
@@ -696,7 +700,7 @@ Obtain the Mistral AI api key from their [console](https://console.mistral.ai/).
 ### Usage
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -705,7 +709,7 @@ Obtain the Mistral AI api key from their [console](https://console.mistral.ai/).
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: aws_bedrock
     config:
@@ -737,7 +741,7 @@ In order to use LLMs from Groq, go to their [platform](https://console.groq.com/
 Set the API key as `GROQ_API_KEY` environment variable or pass in your app configuration to use the model as given below in the example.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -790,7 +794,7 @@ Generate an API key from their dashboard. Set the API key as `NVIDIA_API_KEY` en
 Below is an example of how to use LLM model and embedding model from NVIDIA AI:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -844,7 +848,7 @@ The list of paid LLMs that support token usage are:
 Here is an example of how to use token usage:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   os.environ["OPENAI_API_KEY"] = "xxx"
 
   app = App.from_config(config_path="config.yaml")
@@ -871,7 +875,7 @@ Here is an example of how to use token usage:
   # }
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: openai
     config:

@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/general/contributing.md
 
-# Source: https://docs.slatejs.org/general/contributing.md
-
-# Source: https://docs.slatejs.org/v0.47/general/contributing.md
-
-# Source: https://docs.slatejs.org/general/contributing.md
-
-# Source: https://docs.slatejs.org/v0.47/general/contributing.md
-
 # Contributing
 
 Want to contribute to Slate? That would be awesome!

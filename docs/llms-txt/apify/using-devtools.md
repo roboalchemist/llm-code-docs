@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/using-devtools.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/using-devtools.md
-
 # Finding elements with DevTools
 
 **Learn how to use browser DevTools, CSS selectors, and JavaScript via the DevTools console to extract data from a website.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-With the knowledge of the basics of DevTools we can finally try doing something more practical - extracting data from a website. Let's try collecting the on-sale products from the https://warehouse-theme-metal.myshopify.com/. We will use https://docs.apify.com/academy/concepts/css-selectors.md, JavaScript, and DevTools to achieve this task.
+With the knowledge of the basics of DevTools we can finally try doing something more practical - extracting data from a website. Let's try collecting the on-sale products from the [Warehouse store](https://warehouse-theme-metal.myshopify.com/). We will use CSS selectors, JavaScript, and DevTools to achieve this task.
 
 > **Why use a Shopify demo and not a real e-commerce store like Amazon?** Because real websites are usually bulkier, littered with promotions, and they change very often. Many have multiple versions of pages, and you never know in advance which one you will get. It will be important to learn how to deal with these challenges in the future, but for this beginner course, we want to have a light and stable environment.
 >
@@ -16,7 +18,7 @@ With the knowledge of the basics of DevTools we can finally try doing something 
 
 ## Getting structured data from HTML
 
-When you open up the https://warehouse-theme-metal.myshopify.com/collections/sales, you'll see that there's a grid of products on the page with names and pictures of products. We will learn how to extract all this information.
+When you open up the [Sales section of Warehouse](https://warehouse-theme-metal.myshopify.com/collections/sales), you'll see that there's a grid of products on the page with names and pictures of products. We will learn how to extract all this information.
 
 ![Warehouse store with DevTools open](/assets/images/devtools-collection-warehouse-9ab5f52429a865e8965f889abd5e2180.png)
 
@@ -38,7 +40,7 @@ Now that we know how the parent element looks, we can extract its data, includin
 
 ## Selecting elements in Console
 
-We know how to find an element manually using the DevTools, but that's not very useful for automated scraping. We need to tell the computer how to find it as well. We can do that using JavaScript and CSS selectors. The function to do that is called https://docs.apify.com/academy/concepts/querying-css-selectors.md and it will find the first element in the page's HTML matching the provided https://docs.apify.com/academy/concepts/css-selectors.md.
+We know how to find an element manually using the DevTools, but that's not very useful for automated scraping. We need to tell the computer how to find it as well. We can do that using JavaScript and CSS selectors. The function to do that is called `document.querySelector()` and it will find the first element in the page's HTML matching the provided CSS selector.
 
 For example `document.querySelector('div')` will find the first `<div>` element. And `document.querySelector('.my-class')` (notice the period `.`) will find the first element with the class `my-class`, such as `<div class="my-class">` or `<p class="my-class">`.
 
@@ -64,7 +66,7 @@ When we look more closely by hovering over the result in the Console, we find th
 
 ![Hover over a query result](/assets/images/devtools-collection-query-hover-06b6ee753dee883803dc079bf2abecf1.png)
 
-We need a different function: https://docs.apify.com/academy/concepts/querying-css-selectors.md (notice the `All` at the end). This function does not find only the first element, but all the elements that match the provided selector.
+We need a different function: `document.querySelectorAll()` (notice the `All` at the end). This function does not find only the first element, but all the elements that match the provided selector.
 
 Run the following function in the Console:
 
@@ -101,7 +103,7 @@ const subwoofer = products[2];
 ```
 
 
-> If you're wondering what an array is or what `products[2]` means, read the https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays.
+> If you're wondering what an array is or what `products[2]` means, read the [JavaScript arrays basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays).
 
 Now that we have the subwoofer saved in a variable, run another command in the Console to print its text:
 
@@ -165,7 +167,7 @@ It worked, but the price was not alone in the result. We extracted it together w
 When it comes to data cleaning, there are two main approaches you can take. It's beneficial to understand both, as one approach may be feasible in a given situation while the other is not.
 
 1. Remove the elements that add noise to your data from the selection. Then extract the pre-cleaned data.
-2. Extract the data with noise. Use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions or other text manipulation techniques to parse the data and keep only the parts we're interested in.
+2. Extract the data with noise. Use [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) or other text manipulation techniques to parse the data and keep only the parts we're interested in.
 
 First, let's look at **removing the noise before extraction**. When you look closely at the element that contains the price, you'll see that it includes another `<span>` element with the text **Sale price**. This `<span>` is what adds noise to our data, and we have to get rid of it.
 
@@ -219,4 +221,4 @@ price.textContent.match(/((\d+,?)+.?(\d+)?)/)[0];
 
 ## Next up
 
-This concludes our lesson on extracting and cleaning data using DevTools. Using CSS selectors, we were able to find the HTML element that contains data about our favorite Sony subwoofer and then extract the data. In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/devtools-continued.md, we will learn how to extract information not only about the subwoofer, but about all the products on the page.
+This concludes our lesson on extracting and cleaning data using DevTools. Using CSS selectors, we were able to find the HTML element that contains data about our favorite Sony subwoofer and then extract the data. In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/devtools-continued.md), we will learn how to extract information not only about the subwoofer, but about all the products on the page.

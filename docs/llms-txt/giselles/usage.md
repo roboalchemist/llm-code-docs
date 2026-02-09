@@ -2,57 +2,43 @@
 
 # Source: https://docs.giselles.ai/en/guides/learn-about/usage.md
 
-# Source: https://docs.giselles.ai/en/guides/settings/team/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/learn-about/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/team/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/learn-about/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/team/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/learn-about/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/team/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/learn-about/usage.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/team/usage.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Usage
 
-> Monitor and manage your team's AI app usage
-
-<Info>
-  You can access the Usage page by navigating to [Settings > Team > Usage](https://studio.giselles.ai/settings/team/usage).
-</Info>
+> Monitor and manage your team's resource usage
 
 ## Usage Overview
 
-Monitor your team's AI app usage clearly and efficiently. Recently, we've transitioned from calculating usage based on minutes to a credit-based system.
+Giselle monitors and manages your team's use of its features and resources to ensure optimal performance and availability.
 
 ### Resource Metrics
 
-Giselle tracks your team's AI app runtime in minutes for informational purposes only. This monitoring currently does not directly relate to your billing, as billing is now calculated through credits.
+Giselle internally tracks detailed metrics related to AI model utilization, distinguishing between Free and Pro plan allocations.
 
 ## Usage Limits
 
-Your subscription plan includes AI model usage credits each month:
+Each subscription plan has defined usage limits to maintain consistent service levels.
 
-* **Free Plan**: 30 minutes per month (limited-time promotion)
-* **Pro Plan**: Unlimited usage during the promotional period
+### Current Plan Limits
 
-Note: App runtime displayed in minutes is separate from your actual billed credits.
+Subscription plans include:
+
+* **Free plan**: Limited-time offer of 30 minutes of AI model usage
+* **Pro plan**: $20/month with $20 of AI credits included each month. Additional usage is billed at cost plus 10% markup
+* **Team plan**: Contact sales for pricing. All Pro plan features plus team collaboration capabilities
+* **Team member seats**: 1 user for Free and Pro plans; multiple users available with Team plans (contact sales for pricing)
 
 ## Usage Reports
 
-Detailed logs of recent app activities, including start time, end time, and total duration, are provided for easy tracking.
+Giselle generates detailed internal reports on resource usage for analysis and planning.
 
 ## Usage Monitoring
 
-<Warning>
-  Giselle continuously updates app usage throughout the day. We are currently transitioning from time-based to credit-based monitoring. Parts of the previous UI remain and might cause confusion.
-</Warning>
+Giselle regularly reviews usage data to ensure accuracy. The usage information displayed in the system is updated throughout the day, but discrepancies may occur due to API issues or other technical factors affecting the AI model.
 
-If you find anything unclear or have concerns regarding your usage, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai).
+If Giselle detects significant inconsistencies or unusual patterns in your usage data, the support team may contact you directly. Likewise, if you notice any discrepancies or have questions about your reported usage, please don't hesitate to reach out to the support team at [support@giselles.ai](mailto:support@giselles.ai).
+
+Giselle is continuously improving its monitoring systems to provide you with the most accurate and up-to-date information possible.

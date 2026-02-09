@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/status-endpoints/get-async-request-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async request
 
 > Use this endpoint to get the status of an async request.
@@ -179,7 +183,7 @@ Calls to the get async request status endpoint are limited to **20 requests per 
 To avoid hitting this rate limit, we recommend [configuring a webhook endpoint](/inference/async#configuring-the-webhook-endpoint) to receive async predict results instead of frequently polling this endpoint for async request statuses.
 
 <RequestExample>
-  ```py Python (Model) theme={"system"}
+  ```python Python (Model) theme={"system"}
   import requests
   import os
 
@@ -196,7 +200,7 @@ To avoid hitting this rate limit, we recommend [configuring a webhook endpoint](
   print(resp.json())
   ```
 
-  ```py Python (Chain) theme={"system"}
+  ```python Python (Chain) theme={"system"}
   import requests
   import os
 

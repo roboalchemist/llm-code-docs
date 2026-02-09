@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error handling
 
 > Handle errors with retry logic and best practices.
@@ -92,9 +96,9 @@ See the [Node.js SDK documentation](https://sdk.pinecone.io/typescript/) for mor
 
 For SDK-specific error handling patterns, see the documentation for your language:
 
-* [Go SDK](/reference/go-sdk)
-* [Java SDK](/reference/java-sdk)
-* [.NET SDK](/reference/dotnet-sdk)
+* [Go SDK](/reference/sdks/go/overview)
+* [Java SDK](/reference/sdks/java/overview)
+* [.NET SDK](/reference/sdks/dotnet/overview)
 
 ## Implement retry logic
 
@@ -197,6 +201,10 @@ except Exception as e:
 When you receive a 429 error, you're being rate-limited. See [Rate limits](/reference/api/database-limits#rate-limits) for current limits.
 
 Rate limits help protect your applications and maintain the health of the serverless infrastructure. **Most limits can be adjusted upon request**—if you need higher limits to scale, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket) with details about your use case.
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 **Best practices**:
 

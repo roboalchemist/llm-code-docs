@@ -17,12 +17,14 @@ Graphite provides both a CLI tool and web dashboard for managing pull request st
 The documentation here is extracted from Graphite's official LLM-friendly documentation files following the [llms.txt](https://llmstxt.org/) standard. We download both formats:
 
 ### 1. Individual Files (91 files)
+
 Individual markdown files for each documentation page, ideal for:
 - Efficient context management (load only what you need)
 - Targeted documentation lookup
 - Reduced token usage in LLM contexts
 
 ### 2. Comprehensive File
+
 - `graphite-full.md` - Complete Graphite documentation in a single file (~600KB)
 - Useful for full-context searches and comprehensive reference
 
@@ -31,6 +33,7 @@ Individual markdown files for each documentation page, ideal for:
 The documentation covers:
 
 ### Core Topics
+
 - **Getting Started**: Installation, authentication, basic workflows
 - **Stacked PRs**: Creating, managing, and collaborating on stacked pull requests
 - **CLI Commands**: Complete reference for all `gt` commands
@@ -40,6 +43,7 @@ The documentation covers:
 - **Merge Queues**: Automated PR merging and testing
 
 ### Advanced Features
+
 - Multi-trunk support
 - Branch reordering and rebasing
 - Team collaboration workflows

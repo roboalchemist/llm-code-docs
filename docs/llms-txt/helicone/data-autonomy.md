@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/data-autonomy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Security & Privacy
 
 > Helicone ensures top-tier data security and privacy through our SOC2 compliant cloud solution, with options for enhanced control and data ownership.

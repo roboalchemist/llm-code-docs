@@ -50,7 +50,7 @@ $ vespa auth cert add -a my-tenant.my-app.my-instance path/to/application/packag
 
 - [vespa auth cert](vespa_auth_cert.html) - Create a new self-signed certificate for authentication with Vespa Cloud data plane
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

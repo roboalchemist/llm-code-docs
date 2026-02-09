@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/restrict-template-expressions.md
 ---
-# typescript/restrict-template-expressions&#x20;
 
 ### What it does
 

@@ -1,9 +1,10 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-includes.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-includes.md
 
 ---
 url: /docs/guide/usage/linter/rules/typescript/prefer-includes.md
 ---
-# typescript/prefer-includes&#x20;
 
 ### What it does
 

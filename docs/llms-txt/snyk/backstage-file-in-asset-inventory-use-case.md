@@ -4,7 +4,7 @@
 
 After you finish configuring the [Backstage catalog](https://docs.snyk.io/developer-tools/scm-integrations/application-context-for-scm-integrations/..#backstage-file-for-scm-integrations), Snyk Essentials starts enriching your repository assets (the [All Assets](https://docs.snyk.io/manage-assets/manage-assets#inventory-menu) tab from the Inventory layout) with the data found in the backstage `catalog-info.yaml` file.
 
-Use the Backstage catalog to enrich the repository assets and to define the component entity. For this type of situation, a component is defined as a software component, like a service, repository, website, library, and so on.
+Use the backstage catalog to enrich the repository assets and to define the component entity. For this type of situation, a component is defined as a software component, like a service, repository, website, library, and so on.&#x20;
 
 Components have several attributes and most of them are optional:
 
@@ -15,7 +15,7 @@ Components have several attributes and most of them are optional:
 * `Metadata.name` (mandatory) - represents the name of the component.
 * `Metadata.title` (optional) - represents the name of the component.
 
-The Backstage data is dynamic and may change over time:
+The backstage data is dynamic and may change over time:
 
 * If new commits or updates are made to the `catalog-info.yaml` file, then Snyk Essentials updates the asset attribute for that specific repository asset.
 * If the`catalog-info.yaml` file is removed from the repository, then Snyk Essentials deletes the asset attribute from that specific repository assets.
@@ -30,7 +30,7 @@ Depending on the selection you made on the Integration configuration menu, only 
 
 ## Asset Summary tab and the backstage file
 
-The Asset Summary tab shows the six Backstage attributes that are configured in the Integrations page only if you choose to integrate with Backstage.
+The Asset Summary tab shows the six backstage attributes that are configured in the Integrations page only if you choose to integrate with Backstage.
 
 ## Asset Attributes tab and the backstage file
 

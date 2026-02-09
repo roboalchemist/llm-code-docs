@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/getting-started/concepts/client-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client Ecosystem
 
 > Get an overview of the CLI, SDKs, agents, APIs, and integrations that interact with Infisical.
@@ -24,7 +28,7 @@ Infisical offers a non-exhaustive set of clients and interfaces to support a wid
 
 * [External Secrets Operator (ESO)](https://external-secrets.io/latest/provider/infisical): Allows Infisical to act as a backend provider for syncing secrets into Kubernetes `Secret` objects using the widely adopted External Secrets Operator.
 
-* [Kubernetes PKI Issuer](/documentation/platform/pki/pki-issuer): A controller that issues X.509 certificates from Infisical PKI using the cert-manager Issuer and Certificate CRDs.
+* [Kubernetes cert-manager](/documentation/platform/pki/k8s-cert-manager): A controller that issues X.509 certificates from Infisical using the [ACME enrollment method](/documentation/platform/pki/enrollment-methods/acme) configured on a [certificate profile](/documentation/platform/pki/certificates/profiles) using the cert-manager Issuer and Certificate CRDs.
 
 * [Secret Syncs](/integrations/secret-syncs/overview): Native integrations to forward secrets to services like GitHub, GitLab, AWS Secrets Manager, Vercel, and more.
 

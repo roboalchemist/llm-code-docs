@@ -4,12 +4,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/accessibility.md
 
-# Source: https://mui.com/x/react-data-grid/accessibility.md
-
-# Source: https://mui.com/x/react-tree-view/accessibility.md
-
-# Source: https://mui.com/x/react-date-pickers/accessibility.md
-
 ---
 productId: x-date-pickers
 title: Date and Time Pickers - Accessibility

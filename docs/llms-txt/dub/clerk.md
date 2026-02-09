@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/conversions/leads/clerk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clerk
 
 > Learn how to track lead conversion events with Clerk and Dub

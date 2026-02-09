@@ -1,50 +1,78 @@
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
-
 # Source: https://docs.fireworks.ai/api-reference/delete-deployment.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.fireworks.ai/api-reference/delete-deployment.md
+# Delete Deployment
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
 
-# Source: https://docs.fireworks.ai/api-reference/delete-deployment.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
+## OpenAPI
 
-# Source: https://docs.fireworks.ai/api-reference/delete-deployment.md
+````yaml delete /v1/accounts/{account_id}/deployments/{deployment_id}
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/deployments/{deployment_id}:
+    delete:
+      tags:
+        - Gateway
+      summary: Delete Deployment
+      operationId: Gateway_DeleteDeployment
+      parameters:
+        - name: hard
+          description: If true, this will perform a hard deletion.
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: ignoreChecks
+          description: >-
+            If true, this will ignore checks and force the deletion of a
+            deployment that is currently
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
+            deployed and is in use.
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
+          schema:
+            type: string
+        - name: deployment_id
+          in: path
+          required: true
+          description: The Deployment Id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
-# firectl delete deployment
-
-> Deletes a deployment.
-
-```
-firectl delete deployment [flags]
-```
-
-### Examples
-
-```
-firectl delete deployment my-deployment
-firectl delete deployment accounts/my-account/deployments/my-deployment
-```
-
-### Flags
-
-```
-      --hard                    Hard delete the deployment
-  -h, --help                    help for deployment
-      --ignore-checks           Skip checking if the deployment is in use before deleting
-      --wait                    Wait until the deployment is deleted.
-      --wait-timeout duration   Maximum time to wait when using --wait flag. (default 1h0m0s)
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
+````

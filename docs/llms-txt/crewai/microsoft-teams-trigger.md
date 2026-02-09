@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/microsoft-teams-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Teams Trigger
 
 > Kick off crews from Microsoft Teams chat activity
@@ -9,7 +13,8 @@
 Use the Microsoft Teams trigger to start automations whenever a new chat is created. Common patterns include summarizing inbound requests, routing urgent messages to support teams, or creating follow-up tasks in other systems.
 
 <Tip>
-  Confirm Microsoft Teams is connected under **Tools & Integrations** and enabled in the **Triggers** tab for your deployment.
+  Confirm Microsoft Teams is connected under **Tools & Integrations** and
+  enabled in the **Triggers** tab for your deployment.
 </Tip>
 
 ## Enabling the Microsoft Teams Trigger
@@ -51,7 +56,9 @@ crewai triggers run microsoft_teams/teams_message_created
 The `crewai triggers run` command will execute your crew with a complete Teams payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_teams/teams_message_created` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_teams/teams_message_created` (not `crewai
+    run`) to simulate trigger execution during development. After deployment, your
+  crew will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting

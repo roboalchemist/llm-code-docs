@@ -8,19 +8,15 @@
 
 The ChangelogVersion component provides a flexible way to display an `<article>` element with customizable content including title, description, image, etc.
 
-<code-preview>
-<u-changelog-version :authors="[{"name":"Benjamin Canac","description":"@benjamincanac","avatar":{"src":"https://github.com/benjamincanac.png"},"to":"https://x.com/benjamincanac","target":"_blank"},{"name":"Sebastien Chopin","description":"@atinux","avatar":{"src":"https://github.com/atinux.png"},"to":"https://x.com/atinux","target":"_blank"},{"name":"Hugo Richard","description":"@hugorcd__","avatar":{"src":"https://github.com/hugorcd.png"},"to":"https://x.com/hugorcd__","target":"_blank"}]" :ui="{"container":"max-w-lg"}" className="w-full" date="2025-03-12" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" target="_blank" title="Introducing Nuxt UI v3" to="https://nuxt.com/blog/nuxt-ui-v3">
+```vue
+<template>
+  <u-changelog-version :authors=[{"name":"Benjamin Canac","description":"@benjamincanac","avatar":{"src":"https://github.com/benjamincanac.png"},"to":"https://x.com/benjamincanac","target":"_blank"},{"name":"Sebastien Chopin","description":"@atinux","avatar":{"src":"https://github.com/atinux.png"},"to":"https://x.com/atinux","target":"_blank"},{"name":"Hugo Richard","description":"@hugorcd__","avatar":{"src":"https://github.com/hugorcd.png"},"to":"https://x.com/hugorcd__","target":"_blank"}] :ui={"container":"max-w-lg"} date=2025-03-12 description=Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility. image=https://nuxt.com/assets/blog/nuxt-ui-v3.png target=_blank title=Introducing Nuxt UI v3 to=https://nuxt.com/blog/nuxt-ui-v3 />
+</template>
+```
 
-
-
-</u-changelog-version>
-</code-preview>
-
-<tip to="/docs/components/changelog-versions">
-
-Use the [`ChangelogVersions`](/docs/components/changelog-versions) component to display multiple changelog versions in a timeline with an indicator bar on the left.
-
-</tip>
+> [!TIP]
+> See: /docs/components/changelog-versions
+> Use the `ChangelogVersions` component to display multiple changelog versions in a timeline with an indicator bar on the left.
 
 ### Title
 
@@ -38,7 +34,7 @@ Use the `description` prop to display the description of the ChangelogVersion.
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." />
 </template>
 ```
 
@@ -46,15 +42,12 @@ Use the `description` prop to display the description of the ChangelogVersion.
 
 Use the `date` prop to display the date of the ChangelogVersion.
 
-<tip>
-
-The date is automatically formatted to the [current locale](/docs/getting-started/integrations/i18n/nuxt#locale). You can either pass a `Date` object or a string.
-
-</tip>
+> [!TIP]
+> The date is automatically formatted to the [current locale](/docs/getting-started/integrations/i18n/nuxt#locale). You can either pass a `Date` object or a string.
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" />
 </template>
 ```
 
@@ -64,7 +57,7 @@ Use the `badge` prop to display a [Badge](/docs/components/badge) on the Changel
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" badge="Release" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" badge="Release" />
 </template>
 ```
 
@@ -72,7 +65,7 @@ You can pass any property from the [Badge](/docs/components/badge#props) compone
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" />
 </template>
 ```
 
@@ -80,15 +73,12 @@ You can pass any property from the [Badge](/docs/components/badge#props) compone
 
 Use the `image` prop to display an image in the BlogPost.
 
-<note>
-
-If [`@nuxt/image`](https://image.nuxt.com/get-started/installation) is installed, the `<NuxtImg>` component will be used instead of the native `img` tag.
-
-</note>
+> [!NOTE]
+> If [`@nuxt/image`](https://image.nuxt.com/get-started/installation) is installed, the `<NuxtImg>` component will be used instead of the native `img` tag.
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" />
 </template>
 ```
 
@@ -106,8 +96,12 @@ Use the `authors` prop to display a list of [User](/docs/components/user) in the
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
 
 ```vue
+<script setup lang="ts">
+import type { UserProps } from '@nuxt/ui'
+</script>
+
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" />
 </template>
 ```
 
@@ -117,7 +111,7 @@ You can pass any property from the [`<NuxtLink>`](https://nuxt.com/docs/api/comp
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" to="https://nuxt.com/blog/nuxt-ui-v3" target="_blank" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" to="https://nuxt.com/blog/nuxt-ui-v3" target="_blank" />
 </template>
 ```
 
@@ -127,15 +121,12 @@ Use the `indicator` prop to hide the indicator dot on the left. Defaults to `tru
 
 ```vue
 <template>
-  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" :indicator="false" />
+  <UChangelogVersion title="Introducing Nuxt UI v3" description="Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility." date="2025-03-12" image="https://nuxt.com/assets/blog/nuxt-ui-v3.png" :indicator="false" />
 </template>
 ```
 
-<note>
-
-When the `indicator` prop is `false`, the date will be displayed over the title.
-
-</note>
+> [!NOTE]
+> When the `indicator` prop is `false`, the date will be displayed over the title.
 
 ## Examples
 
@@ -166,9 +157,9 @@ We've transitioned from [Headless UI](https://headlessui.com/) to [Reka UI](http
 - **Future-Proof Development**: Benefit from Reka UI's growing popularity and continuous improvements
 - **First-Class Accessibility**: Built-in accessibility features aligned with our commitment to inclusive design
 
-### 🚀 Tailwind CSS v4 Integration
+### 🚀 Tailwind CSS Integration
 
-Nuxt UI now leverages the latest [Tailwind CSS v4](https://tailwindcss.com), delivering:
+Nuxt UI now leverages the latest [Tailwind CSS](https://tailwindcss.com), delivering:
 
 - **Exceptional Performance**: Full builds up to 5× faster, with incremental builds over 100× faster
 - **Streamlined Toolchain**: Built-in import handling, vendor prefixing, and syntax transforms with zero additional tooling
@@ -199,7 +190,7 @@ This release represents thousands of hours of work from our team and the communi
 
 const version = {
   title: 'Introducing Nuxt UI v3',
-  description: 'Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS v4 support, and full Vue compatibility.',
+  description: 'Nuxt UI v3 is out! After 1500+ commits, this major redesign brings improved accessibility, Tailwind CSS support, and full Vue compatibility.',
   date: '2025-03-12T00:00:00.000Z',
   badge: 'Release',
   to: 'https://nuxt.com/blog/nuxt-ui-v3',
@@ -265,7 +256,7 @@ interface ChangelogVersionProps {
    * @default "true"
    */
   indicator?: boolean | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | undefined;
   ui?: { root?: ClassNameValue; container?: ClassNameValue; header?: ClassNameValue; meta?: ClassNameValue; date?: ClassNameValue; badge?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; imageWrapper?: ClassNameValue; image?: ClassNameValue; authors?: ClassNameValue; footer?: ClassNameValue; indicator?: ClassNameValue; dot?: ClassNameValue; dotInner?: ClassNameValue; } | undefined;
@@ -329,7 +320,11 @@ export default defineAppConfig({
         },
         to: {
           true: {
-            image: 'transform transition-transform duration-200 group-hover/changelog-version-image:scale-105'
+            title: [
+              'has-focus-visible:ring-2 has-focus-visible:ring-primary rounded-xs',
+              'transition'
+            ],
+            image: 'transform transition-transform duration-200 group-hover/changelog-version-image:scale-105 group-has-focus-visible/changelog-version-image:scale-105'
           }
         },
         hidden: {
@@ -345,8 +340,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

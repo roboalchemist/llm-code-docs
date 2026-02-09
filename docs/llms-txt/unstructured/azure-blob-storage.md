@@ -6,24 +6,16 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/azure-blob-storage.md
 
-# Source: https://docs.unstructured.io/ui/sources/azure-blob-storage.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.unstructured.io/ui/destinations/azure-blob-storage.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/azure-blob-storage.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/azure-blob-storage.md
-
-# Source: https://docs.unstructured.io/ui/sources/azure-blob-storage.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/azure-blob-storage.md
-
-# Azure
+# Azure Blob Storage
 
 <Note>
   If you're new to Unstructured, read this note first.
 
-  Before you can create a source connector, you must first sign in to your Unstructured account:
+  Before you can create a destination connector, you must first sign in to your Unstructured account:
 
   * If you do not already have an Unstructured account, [sign up for free](https://unstructured.io/?modal=try-for-free).
     After you sign up, you are automatically signed in to your new Unstructured **Let's Go** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
@@ -32,7 +24,7 @@
     [https://platform.unstructured.io](https://platform.unstructured.io). For other types of **Business** accounts, see your Unstructured account administrator for sign-in instructions,
     or email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
 
-  After you sign in, the [Unstructured user interface](/ui/overview) (UI) appears, which you use to get your Unstructured API key, as follows:
+  After you sign in, the [Unstructured user interface](/ui/overview) (UI) appears, which you use to get your Unstructured API key.
 
   1. After you sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business** account, click **API Keys** on the sidebar.<br />
 
@@ -45,22 +37,21 @@
 
   4. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
 
-  After you create the source connector, add it along with a
-  [destination connector](/api-reference/workflow/destinations/overview) to a [workflow](/api-reference/workflow/overview#workflows).
+  After you create the destination connector, add it along with a
+  [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
-  You can also create source connectors with the Unstructured user interface (UI).
-  [Learn how](/ui/sources/overview).
+  You can also create destination connectors with the Unstructured user interface (UI).
+  [Learn how](/ui/destinations/overview).
 
   If you need help, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
 
-  You are now ready to start creating a source connector! Keep reading to learn how.
+  You are now ready to start creating a destination connector! Keep reading to learn how.
 </Note>
 
-Ingest your files into Unstructured from Azure Blob Storage.
+Send processed data from Unstructured to Azure Blob Storage.
 
 The requirements are as follows.
 
@@ -103,27 +94,24 @@ Here are some more details about these requirements:
 
   <iframe width="560" height="315" src="https://www.youtube.com/embed/muMmcwVfFqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
-To create an Azure Blob Storage source connector, see the following examples.
+To create an Azure Blob Storage destination connector, see the following examples.
 
 <CodeGroup>
   ```python Python SDK theme={null}
   import os
 
   from unstructured_client import UnstructuredClient
-  from unstructured_client.models.operations import CreateSourceRequest
-  from unstructured_client.models.shared import CreateSourceConnector
+  from unstructured_client.models.operations import CreateDestinationRequest
+  from unstructured_client.models.shared import CreateDestinationConnector
 
   with UnstructuredClient(api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")) as client:
-      response = client.sources.create_source(
-          request=CreateSourceRequest(
-              create_source_connector=CreateSourceConnector(
+      response = client.sources.create_destination(
+          request=CreateDestinationRequest(
+              create_destination_connector=CreateDestinationConnector(
                   name="<name>",
                   type="azure",
                   config={
                       "remote_url": "az://<container-name>/<path/to/file/or/folder>",
-                      "recursive": <True|False>,
-
-                      # For anonymous authentication, omit the following auth keys.
                       
                       # For SAS token authentication:
                       # "account_name": "<account-name>",
@@ -140,12 +128,12 @@ To create an Azure Blob Storage source connector, see the following examples.
           )
       )
 
-      print(response.source_connector_information)
+      print(response.destination_connector_information)
   ```
 
   ```bash curl theme={null}
   curl --request 'POST' --location \
-  "$UNSTRUCTURED_API_URL/sources" \
+  "$UNSTRUCTURED_API_URL/destinations" \
   --header 'accept: application/json' \
   --header "unstructured-api-key: $UNSTRUCTURED_API_KEY" \
   --header 'content-type: application/json' \
@@ -155,11 +143,7 @@ To create an Azure Blob Storage source connector, see the following examples.
       "type": "azure",
       "config": {
           "remote_url": "az://<container-name>/<path/to/file/or/folder>",
-          "recursive": <true|false>,
-      
-          # For anonymous authentication, do not set any of the 
-          # following fields.
-
+          
           # For SAS token authentication:
           "account_name": "<account-name>",
           "sas_token": "<sas-token>"

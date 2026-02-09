@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/sdk-major-version-changes.md
+# Source: https://exa.ai/docs/changelog/sdk-major-version-changes.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SDK changes: highlights removed and contents returned by default
 
@@ -33,8 +37,3 @@ The `use_autoprompt` field has been deprecated and removed from all API response
 ## Need Help?
 
 If you have questions about upgrading or need help with migration, please reach out to [hello@exa.ai](mailto:hello@exa.ai). We're here to help ensure a smooth transition to the new major version.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-virtual-key-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Virtual Key Status
 
 > Indicates if a vehicle has the appropriate virtual key installed. See [Tesla - What's New](https://smartcar.com/docs/help/oem-integrations/tesla/whats-new#if-your-application-issues-commands) for more details on Tesla's virtual key requirements.

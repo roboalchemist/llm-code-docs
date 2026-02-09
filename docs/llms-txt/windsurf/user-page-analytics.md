@@ -2,23 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get User Page Analytics
 
-> Retrieve user activity data from the teams page
+> Retrieve user activity statistics including names, emails, last activity times, and active days from the teams page.
 
 ## Overview
 
@@ -96,6 +86,10 @@ https://server.codeium.com/api/v1/UserPageAnalytics
     <ResponseField name="lastCommandUsageTime" type="string">
       The most recent timestamp the command modality was used in RFC 3339 format
     </ResponseField>
+
+    <ResponseField name="teamStatus" type="string">
+      The user's team membership status. Possible values: `USER_TEAM_STATUS_UNSPECIFIED`, `USER_TEAM_STATUS_PENDING`, `USER_TEAM_STATUS_APPROVED`, `USER_TEAM_STATUS_REJECTED`. Note that the API returns all users regardless of team status, while the Manage Members UI only shows approved users.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -109,21 +103,24 @@ https://server.codeium.com/api/v1/UserPageAnalytics
       "email": "alice@windsurf.com",
       "lastUpdateTime": "2024-10-10T22:56:10.771591Z",
       "apiKey": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-      "activeDays": 178
+      "activeDays": 178,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Bob",
       "email": "bob@windsurf.com",
       "lastUpdateTime": "2024-10-10T18:11:23.980237Z",
       "apiKey": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
-      "activeDays": 462
+      "activeDays": 462,
+      "teamStatus": "USER_TEAM_STATUS_APPROVED"
     },
     {
       "name": "Charlie",
       "email": "charlie@windsurf.com",
       "lastUpdateTime": "2024-10-10T16:43:46.117870Z",
       "apiKey": "cccccccc-cccc-cccc-cccc-cccccccccccc",
-      "activeDays": 237
+      "activeDays": 237,
+      "teamStatus": "USER_TEAM_STATUS_PENDING"
     }
   ]
 }

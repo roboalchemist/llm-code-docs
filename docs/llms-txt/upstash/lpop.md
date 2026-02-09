@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LPOP
 
@@ -26,32 +12,32 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="count" type="integer">
+<ParamField body="count" type="int">
   How many elements to pop. If not specified, a single element is popped.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue | TValue[] | null" required>
+<ResponseField type="str | List[str] None" required>
   The popped element(s). If `count` was specified, an array of elements is
-  returned, otherwise a single element is returned. If the list is empty, `null`
+  returned, otherwise a single element is returned. If the list is empty, `None`
   is returned.
 </ResponseField>
 
 <RequestExample>
-  ```ts Single  theme={"system"}
-  await redis.rpush("key", "a", "b", "c"); 
-  const element = await redis.lpop("key");
-  console.log(element); // "a"
+  ```py Single  theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
+
+  assert redis.lpop("mylist") == "one"
   ```
 
-  ```ts Multiple  theme={"system"}
-  await redis.rpush("key", "a", "b", "c"); 
-  const element = await redis.lpop("key", 2);
-  console.log(element); // ["a", "b"]
+  ```py Multiple theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
+
+  assert redis.lpop("mylist", 2) == ["one", "two"]
   ```
 </RequestExample>

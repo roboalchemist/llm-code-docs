@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/sentiment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sentiment Analysis Plugin
 
 > Automatically analyze sentiment in text fields and add sentiment scores and categories to your Flatfile records
@@ -10,7 +14,7 @@ This plugin analyzes the sentiment of text within specified fields of records in
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-enrich-sentiment
 ```
 
@@ -46,7 +50,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { enrichSentiment } from '@flatfile/plugin-enrich-sentiment';
 
@@ -62,7 +66,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { enrichSentiment } from '@flatfile/plugin-enrich-sentiment';
 
@@ -82,7 +86,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { enrichSentiment } from '@flatfile/plugin-enrich-sentiment';
 
@@ -99,7 +103,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { enrichSentiment } from '@flatfile/plugin-enrich-sentiment';
 
@@ -120,7 +124,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // This example shows how to use the exported helper functions
     // inside a custom recordHook for more fine-grained control.
     import { FlatfileListener } from '@flatfile/listener';
@@ -150,7 +154,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // This example shows how to use the exported helper functions
     // inside a custom recordHook for more fine-grained control.
     import { FlatfileListener } from '@flatfile/listener';
@@ -184,7 +188,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { analyzeSentiment } from '@flatfile/plugin-enrich-sentiment';
 
     const analysis = analyzeSentiment("Flatfile is an amazing tool!");
@@ -193,7 +197,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { analyzeSentiment } from '@flatfile/plugin-enrich-sentiment';
 
     const analysis = analyzeSentiment("Flatfile is an amazing tool!");

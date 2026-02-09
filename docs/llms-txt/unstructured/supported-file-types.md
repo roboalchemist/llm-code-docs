@@ -6,21 +6,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/supported-file-types.md
 
-# Source: https://docs.unstructured.io/ui/supported-file-types.md
-
-# Source: https://docs.unstructured.io/open-source/introduction/supported-file-types.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/supported-file-types.md
-
-# Source: https://docs.unstructured.io/api-reference/supported-file-types.md
-
-# Source: https://docs.unstructured.io/ui/supported-file-types.md
-
-# Source: https://docs.unstructured.io/open-source/introduction/supported-file-types.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/supported-file-types.md
-
-# Source: https://docs.unstructured.io/api-reference/supported-file-types.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Supported file types
 

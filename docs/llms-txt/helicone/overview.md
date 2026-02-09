@@ -12,43 +12,9 @@
 
 # Source: https://docs.helicone.ai/features/advanced-usage/prompts/overview.md
 
-# Source: https://docs.helicone.ai/integrations/overview.md
-
-# Source: https://docs.helicone.ai/guides/prompt-engineering/overview.md
-
-# Source: https://docs.helicone.ai/guides/overview.md
-
-# Source: https://docs.helicone.ai/getting-started/self-host/overview.md
-
-# Source: https://docs.helicone.ai/gateway/overview.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/overview.md
-
-# Source: https://docs.helicone.ai/features/advanced-usage/prompts/overview.md
-
-# Source: https://docs.helicone.ai/integrations/overview.md
-
-# Source: https://docs.helicone.ai/guides/prompt-engineering/overview.md
-
-# Source: https://docs.helicone.ai/guides/overview.md
-
-# Source: https://docs.helicone.ai/getting-started/self-host/overview.md
-
-# Source: https://docs.helicone.ai/gateway/overview.md
-
-# Source: https://docs.helicone.ai/features/advanced-usage/prompts/overview.md
-
-# Source: https://docs.helicone.ai/integrations/overview.md
-
-# Source: https://docs.helicone.ai/guides/prompt-engineering/overview.md
-
-# Source: https://docs.helicone.ai/guides/overview.md
-
-# Source: https://docs.helicone.ai/getting-started/self-host/overview.md
-
-# Source: https://docs.helicone.ai/gateway/overview.md
-
-# Source: https://docs.helicone.ai/features/advanced-usage/prompts/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prompt Management Overview
 

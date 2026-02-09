@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/usecases/ai-interviewer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Interviewer
 
 > Engage with the AI Interviewer persona to run structured, conversational interview simulations.
@@ -24,11 +28,10 @@
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "high",
+      "replica_interruptibility": "low"
     }
   }
 }
@@ -41,7 +44,7 @@ This predefined persona is configured to conduct consistent and scalable candida
 * **System Prompt**: Provides detailed behavioral guidance to maintain a natural, spoken-word tone that is professional and supportive.
 * **Model Layers**:
   * **Perception Configuration**: Uses `raven-0` perception model to monitor candidate behavior and environment for visual cues like distraction or nervousness.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with high turn-taking patience to allow candidates time to think and respond, and low replica interruptibility for professional, uninterrupted interview flow.
 
 ## Create a Conversation with the AI Interviewer Persona
 

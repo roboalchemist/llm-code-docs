@@ -22,12 +22,12 @@ quickly [apply gists](/mix-tool) to your project enabled by ServiceStack's effor
 
 ## Step 2: Selecting a template
 
-Importantly, the dotnet tools lets you create [.NET 8, .NET Framework](/dotnet-new) and [ASP.NET Core on .NET Framework](/templates/corefx) projects.
-Unless you're restricted to working with .NET Framework you'll want to start with a [.NET 8 project template](/templates/dotnet-new#usage), for this example
+Importantly, the dotnet tools lets you create [.NET 10, .NET Framework](/dotnet-new) and [ASP.NET Core on .NET Framework](/templates/corefx) projects.
+Unless you're restricted to working with .NET Framework you'll want to start with a [.NET 10 project template](/templates/dotnet-new#usage), for this example
 we'll start with the Empty [web](https://github.com/NetCoreTemplates/web) template which implicitly uses the folder name for the Project Name:
 
 :::sh
-x new web WebApp
+npx create-net web WebApp
 :::
 
 ## Step 3: Run your project
@@ -246,11 +246,10 @@ const api = client.api(new Hello({ name: props.name }))
 Compare and contrast with other major SPA JavaScript Frameworks:
 
  - [Vue 3 HelloApi.mjs](https://github.com/NetCoreTemplates/blazor-vue/blob/main/MyApp/wwwroot/posts/components/HelloApi.mjs)
- - [Vue SSG using swrClient](https://github.com/NetCoreTemplates/vue-ssg/blob/main/ui/src/components/HelloApi.vue)
+ - [Vue HelloApi.vue](https://github.com/NetCoreTemplates/vue-spa/blob/main/MyApp.Client/src/_posts/components/HelloApi.vue)
  - [Next.js with swrClient](https://github.com/NetCoreTemplates/nextjs/blob/main/ui/components/intro.tsx)
  - [React HelloApi.tsx](https://github.com/NetCoreTemplates/react-spa/blob/master/MyApp/src/components/Home/HelloApi.tsx)
  - [Angular HelloApi.ts](https://github.com/NetCoreTemplates/angular-spa/blob/master/MyApp/src/app/home/HelloApi.ts)
- - [Svelte Home.svelte](https://github.com/NetCoreTemplates/svelte-spa/blob/master/MyApp/src/components/Home.svelte)
 
 ### Web, Mobile and Desktop Apps
 

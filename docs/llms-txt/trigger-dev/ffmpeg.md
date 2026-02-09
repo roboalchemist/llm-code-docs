@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/ffmpeg.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FFmpeg
 
 > Use the ffmpeg build extension to include FFmpeg in your project
 
 You can add the `ffmpeg` build extension to your build process:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 
@@ -25,7 +29,7 @@ By default, this will install the version of `ffmpeg` that is available in the D
 
 If you need FFmpeg 7.x, you can pass `{ version: "7" }` to the extension. This will install a static build of FFmpeg 7.x instead of using the Debian package:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 

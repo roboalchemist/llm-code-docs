@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/voices-and-provoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Voice creation & Settings
 
 > Configure voice settings and set up pro voices for your avatars and learn about supported languages. 
@@ -24,13 +28,19 @@ You can create any voice in the "voices" panel section > "+create voice" on the 
 If you are creating an avatar, you will be presented with three options: - **select a voice :** which is from your own library, from the voices you already have
 
 * **create my voice:** upload any audio file of yourself talking
-* \*\*generate my voice: \*\*pick among three voices created for you according to the person we see on your image
+* **generate my voice:** pick among three voices created for you according to the person we see on your image
 
 <Tip>
   Don't hesitate to edit your voices in the "voices" section in order to increase the speed to 1.05 or 1.1. This can make all of your videos more entertaining.
 </Tip>
 
-## Elevenlabs instant and pro voices settings
+### What are public pro voices ?
+
+Some of the voices of our public library are pro voices. They are only available for Pro plan users and are also found on Pro avatars.
+
+If you are on a Pro plan, you can use any avatar and simply switch the voice with a Pro voice of your choice in the Some of the voices of our public library are pro voices. They are only available for Pro plan users.
+
+## Elevenlabs instant and Elevenlabs pro voices settings
 
 <Note>
   If you use ElevenLabs for voice generation, don't hesitate to visit the [ElevenLabs documentation](https://elevenlabs.io/docs/speech-synthesis/voice-settings).
@@ -74,7 +84,7 @@ We currently support about 30 different languages via Elevenlabs: English (USA),
 
 [Click here to see the full list.  ](https://help.elevenlabs.io/hc/en-us/articles/13313366263441-What-languages-do-you-support)
 
-## Create Pro Voice
+## Create an Elevenlabs Pro Voice
 
 Pro voices offer hyper-realistic voice cloning for maximum authenticity. While you are limited to only 1 pro voice per elevenlabs account, you can connect multiple accounts to Argil.
 

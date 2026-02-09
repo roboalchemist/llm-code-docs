@@ -1,165 +1,60 @@
 # Source: https://docs.baseten.co/reference/management-api/deployments/gets-all-deployments-of-a-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get all model deployments
+
+
 
 ## OpenAPI
 
 ````yaml get /v1/models/{model_id}/deployments
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/models/{model_id}/deployments
-  method: get
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/models/{model_id}/deployments:
     parameters:
-      path:
-        model_id:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: bash
-        source: |
-          curl --request GET \
-          --url https://api.baseten.co/v1/models/{model_id}/deployments \
-          --header "Authorization: Api-Key $BASETEN_API_KEY"
-      - lang: python
-        source: |-
-          import requests
-          import os
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-          url = "https://api.baseten.co/v1/models/{model_id}/deployments"
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-          response = requests.request(
-              "GET",
-              url,
-              headers=headers,
-              json={}
-          )
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              deployments:
-                allOf:
-                  - description: A list of deployments of a model
-                    items:
-                      $ref: '#/components/schemas/DeploymentV1'
-                    title: Deployments
-                    type: array
-            title: DeploymentsV1
-            description: A list of deployments of a model.
-            refIdentifier: '#/components/schemas/DeploymentsV1'
-            requiredProperties:
-              - deployments
-        examples:
-          example:
-            value:
-              deployments:
-                - id: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  name: <string>
-                  model_id: <string>
-                  is_production: true
-                  is_development: true
-                  status: BUILDING
-                  active_replica_count: 123
-                  autoscaling_settings:
-                    min_replica: 123
-                    max_replica: 123
-                    autoscaling_window: 123
-                    scale_down_delay: 123
-                    concurrency_target: 123
-                    target_utilization_percentage: 123
-                  instance_type_name: <string>
-                  environment: <string>
-        description: A list of deployments of a model.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/model_id'
+    get:
+      summary: Gets all deployments of a model
+      responses:
+        '200':
+          description: A list of deployments of a model.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentsV1'
 components:
+  parameters:
+    model_id:
+      schema:
+        type: string
+      name: model_id
+      in: path
+      required: true
   schemas:
-    AutoscalingSettingsV1:
-      description: Autoscaling settings for a deployment.
+    DeploymentsV1:
+      description: A list of deployments of a model.
       properties:
-        min_replica:
-          description: Minimum number of replicas
-          title: Min Replica
-          type: integer
-        max_replica:
-          description: Maximum number of replicas
-          title: Max Replica
-          type: integer
-        autoscaling_window:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Timeframe of traffic considered for autoscaling decisions
-          title: Autoscaling Window
-        scale_down_delay:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Waiting period before scaling down any active replica
-          title: Scale Down Delay
-        concurrency_target:
-          description: Number of requests per replica before scaling up
-          title: Concurrency Target
-          type: integer
-        target_utilization_percentage:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Target utilization percentage for scaling up/down.
-          title: Target Utilization Percentage
+        deployments:
+          description: A list of deployments of a model
+          items:
+            $ref: '#/components/schemas/DeploymentV1'
+          title: Deployments
+          type: array
       required:
-        - min_replica
-        - max_replica
-        - autoscaling_window
-        - scale_down_delay
-        - concurrency_target
-        - target_utilization_percentage
-      title: AutoscalingSettingsV1
+        - deployments
+      title: DeploymentsV1
       type: object
-    DeploymentStatusV1:
-      description: The status of a deployment.
-      enum:
-        - BUILDING
-        - DEPLOYING
-        - DEPLOY_FAILED
-        - LOADING_MODEL
-        - ACTIVE
-        - UNHEALTHY
-        - BUILD_FAILED
-        - BUILD_STOPPED
-        - DEACTIVATING
-        - INACTIVE
-        - FAILED
-        - UPDATING
-        - SCALED_TO_ZERO
-        - WAKING_UP
-      title: DeploymentStatusV1
-      type: string
     DeploymentV1:
       description: A deployment of a model.
       properties:
@@ -228,5 +123,83 @@ components:
         - environment
       title: DeploymentV1
       type: object
+    DeploymentStatusV1:
+      description: The status of a deployment.
+      enum:
+        - BUILDING
+        - DEPLOYING
+        - DEPLOY_FAILED
+        - LOADING_MODEL
+        - ACTIVE
+        - UNHEALTHY
+        - BUILD_FAILED
+        - BUILD_STOPPED
+        - DEACTIVATING
+        - INACTIVE
+        - FAILED
+        - UPDATING
+        - SCALED_TO_ZERO
+        - WAKING_UP
+      title: DeploymentStatusV1
+      type: string
+    AutoscalingSettingsV1:
+      description: Autoscaling settings for a deployment.
+      properties:
+        min_replica:
+          description: Minimum number of replicas
+          title: Min Replica
+          type: integer
+        max_replica:
+          description: Maximum number of replicas
+          title: Max Replica
+          type: integer
+        autoscaling_window:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Timeframe of traffic considered for autoscaling decisions
+          title: Autoscaling Window
+        scale_down_delay:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Waiting period before scaling down any active replica
+          title: Scale Down Delay
+        concurrency_target:
+          description: Number of requests per replica before scaling up
+          title: Concurrency Target
+          type: integer
+        target_utilization_percentage:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Target utilization percentage for scaling up/down.
+          title: Target Utilization Percentage
+        target_in_flight_tokens:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: null
+          description: >-
+            Target number of in-flight tokens for autoscaling decisions. Early
+            access only.
+          title: Target In Flight Tokens
+      required:
+        - min_replica
+        - max_replica
+        - autoscaling_window
+        - scale_down_delay
+        - concurrency_target
+        - target_utilization_percentage
+      title: AutoscalingSettingsV1
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

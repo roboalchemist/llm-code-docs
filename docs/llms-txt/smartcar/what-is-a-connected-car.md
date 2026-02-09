@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/what-is-a-connected-car.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is a Connected Car?
 
 > Learn about how to build applications that connect to millions of vehicles around the world.

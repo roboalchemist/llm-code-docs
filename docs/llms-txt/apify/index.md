@@ -8,36 +8,6 @@
 
 # Source: https://docs.apify.com/api/client/js/index.md
 
-# Source: https://docs.apify.com/cli/index.md
-
-# Source: https://docs.apify.com/sdk/python/index.md
-
-# Source: https://docs.apify.com/sdk/js/index.md
-
-# Source: https://docs.apify.com/api/client/python/index.md
-
-# Source: https://docs.apify.com/api/client/js/index.md
-
-# Source: https://docs.apify.com/cli/index.md
-
-# Source: https://docs.apify.com/sdk/python/index.md
-
-# Source: https://docs.apify.com/sdk/js/index.md
-
-# Source: https://docs.apify.com/api/client/python/index.md
-
-# Source: https://docs.apify.com/api/client/js/index.md
-
-# Source: https://docs.apify.com/cli/index.md
-
-# Source: https://docs.apify.com/sdk/python/index.md
-
-# Source: https://docs.apify.com/sdk/js/index.md
-
-# Source: https://docs.apify.com/api/client/python/index.md
-
-# Source: https://docs.apify.com/api/client/js/index.md
-
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
 [![](/api/client/js/img/apify_sdk.svg)![](/api/client/js/img/apify_sdk_white.svg)](https://docs.apify.com)
@@ -60,10 +30,12 @@
 [Open source](https://docs.apify.com/open-source)
 
 * [Crawlee](https://crawlee.dev)
-* [Got Scraping](https://github.com/apify/got-scraping)
 * [Fingerprint Suite](https://github.com/apify/fingerprint-suite)
-* [Apify on GitHub](https://github.com/apify)
+* [impit](https://github.com/apify/impit)
+* [MCP CLI](https://github.com/apify/mcp-cli)
 * [Actor whitepaper](https://whitepaper.actor)
+* [proxy-chain](https://github.com/apify/proxy-chain)
+* [Apify on GitHub](https://github.com/apify)
 
 [Discord](https://discord.com/invite/jyEM2PRvMU "Chat on Discord")[Go to Console](https://console.apify.com)
 
@@ -71,10 +43,10 @@
 
 [Docs](https://docs.apify.com/api/client/js/api/client/js/docs.md)[Reference](https://docs.apify.com/api/client/js/api/client/js/reference.md)[Changelog](https://docs.apify.com/api/client/js/api/client/js/docs/changelog.md)[GitHub](https://github.com/apify/apify-client-js)
 
-[2.19.1](https://docs.apify.com/api/client/js/api/client/js/docs.md)
+[2.22.0](https://docs.apify.com/api/client/js/api/client/js/docs.md)
 
 * [Next](https://docs.apify.com/api/client/js/api/client/js/docs/next)
-* [2.19.1](https://docs.apify.com/api/client/js/api/client/js/docs.md)
+* [2.22.0](https://docs.apify.com/api/client/js/api/client/js/docs.md)
 
 # Apify API client for JavaScript
 

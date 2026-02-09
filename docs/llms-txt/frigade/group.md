@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/hooks/group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # useGroup
 
 The `useGroup()` hook enables you to add properties and send tracking events to the current group.
@@ -18,7 +22,7 @@ The hook contains the following methods:
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useGroup } from '@frigade/react';
 
 function MyComponent() {

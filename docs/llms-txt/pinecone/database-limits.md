@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/reference/api/database-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pinecone Database limits
 
 This page describes different types of limits for Pinecone Database.
@@ -12,18 +16,66 @@ Rate limits help protect your applications from misuse and maintain the health o
 
 Rate limits vary based on [pricing plan](https://www.pinecone.io/pricing/) and apply to [serverless indexes](/guides/index-data/indexing-overview) only.
 
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
+
+### Data plane operations: request-per-second limits
+
+Pinecone enforces rate limits on the number of API requests per second at the namespace level for data plane operations (query, upsert, delete, and update). These limits provide protection against excessive request rates.
+
+#### Affected operations
+
+The following operations are subject to request-per-second rate limiting:
+
+| Operation | Scope         | Limit |
+| --------- | ------------- | ----- |
+| Query     | Per namespace | 100   |
+| Upsert    | Per namespace | 100   |
+| Delete    | Per namespace | 100   |
+| Update    | Per namespace | 100   |
+
+#### Error response
+
+When you exceed the request-per-second limit, you'll receive an HTTP `429 - TOO_MANY_REQUESTS` response. The error message indicates which operation exceeded the limit and includes the namespace name and limit value. See the individual limit sections below for specific error message formats.
+
+#### How request-per-second limits work with limits on read and write units
+
+Request-per-second limits are enforced in addition to existing read unit and write unit limits. Requests must not exceed any applicable limits:
+
+* Index-level limits - read and write unit limits, per index
+* Namespace-level limits - read and write unit limits, per namespace
+* Request-per-second limits - requests per second, per namespace
+
+If any limit is exceeded, the request fails with a 429 error.
+
+#### Recommendations
+
+If you're hitting request-per-second limits:
+
+1. Implement retry logic. Use exponential backoff to handle rate limit errors gracefully. See [Error Handling Guide](/guides/production/error-handling#implement-retry-logic).
+2. Pace your requests. Add client-side rate limiting to stay under limits.
+3. Consider [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes), which don't have request-per-second limits and provide dedicated capacity for high-throughput workloads.
+4. If you need higher limits, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket) with details about your use case.
+
+### All rate limits
+
 | Metric                                                                                                        | Starter plan   | Standard plan  | Enterprise plan |
 | :------------------------------------------------------------------------------------------------------------ | :------------- | :------------- | :-------------- |
 | [Read units per month per project](#read-units-per-month-per-project)                                         | 1,000,000      | Unlimited      | Unlimited       |
 | [Write units per month per project](#write-units-per-month-per-project)                                       | 2,000,000      | Unlimited      | Unlimited       |
 | [Upsert size per second per namespace](#upsert-size-per-second-per-namespace)                                 | 50 MB          | 50 MB          | 50 MB           |
 | [Query read units per second per index](#query-read-units-per-second-per-index)                               | 2,000          | 2,000          | 2,000           |
+| [Query requests per second per namespace](#query-requests-per-second-per-namespace)                           | 100            | 100            | 100             |
 | [Update records per second per namespace](#update-records-per-second-per-namespace)                           | 100            | 100            | 100             |
+| [Update requests per second per namespace](#update-requests-per-second-per-namespace)                         | 100            | 100            | 100             |
 | [Update by metadata requests per second per namespace](#update-by-metadata-requests-per-second-per-namespace) | 5              | 5              | 5               |
 | [Update by metadata requests per second per index](#update-by-metadata-requests-per-second-per-index)         | 500            | 500            | 500             |
+| [Upsert requests per second per namespace](#upsert-requests-per-second-per-namespace)                         | 100            | 100            | 100             |
 | [Fetch requests per second per index](#fetch-requests-per-second-per-index)                                   | 100            | 100            | 100             |
 | [List requests per second per index](#list-requests-per-second-per-index)                                     | 200            | 200            | 200             |
 | [Describe index stats requests per second per index](#describe-index-stats-requests-per-second-per-index)     | 100            | 100            | 100             |
+| [Delete requests per second per namespace](#delete-requests-per-second-per-namespace)                         | 100            | 100            | 100             |
 | [Delete records per second per namespace](#delete-records-per-second-per-namespace)                           | 5,000          | 5,000          | 5,000           |
 | [Delete records per second per index](#delete-records-per-second-per-index)                                   | 5,000          | 5,000          | 5,000           |
 | [Delete by metadata requests per second per namespace](#delete-by-metadata-requests-per-second-per-namespace) | 5              | 5              | 5               |
@@ -54,6 +106,10 @@ To check how close you are to the monthly read unit limit for a project, do the 
 2. Select the project.
 3. Select any index in the project.
 4. Look under **Starter Usage**.
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 ### Write units per month per project
 
@@ -109,6 +165,30 @@ To handle this limit, [implement retry logic with exponential backoff](/guides/p
 
 To check how many read units a query consumes, [check the query response](/guides/manage-cost/monitor-usage-and-costs#read-units).
 
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
+
+### Query requests per second per namespace
+
+| Starter plan | Standard plan | Enterprise plan |
+| ------------ | ------------- | --------------- |
+| 100          | 100           | 100             |
+
+When you reach the per second [query](/guides/search/search-overview) limit for a namespace in an index, additional queries will fail and return a `429 - TOO_MANY_REQUESTS` status with the following error:
+
+```
+Request failed. You've reached the query QPS limit for namespace {namespace_name} ({limit} QPS). Pace your queries,
+consider Dedicated Read Nodes for your index, or contact Pinecone Support
+(https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
+```
+
+To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
+
 ### Update records per second per namespace
 
 | Starter plan | Standard plan | Enterprise plan |
@@ -120,6 +200,20 @@ When you reach the per second [update](/guides/manage-data/update-data) limit fo
 ```
 Request failed. You've reached the max update records per second for namespace <namespace name>. 
 Pace your update requests or contact Pinecone Support (https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
+```
+
+To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
+### Update requests per second per namespace
+
+| Starter plan | Standard plan | Enterprise plan |
+| ------------ | ------------- | --------------- |
+| 100          | 100           | 100             |
+
+When you reach the per second [update](/guides/manage-data/update-data) request limit for a namespace in an index, additional update requests will fail and return a `429 - TOO_MANY_REQUESTS` status with the following error:
+
+```
+Request failed. You've reached the update QPS limit for namespace {namespace_name} ({limit} QPS). Pace your update requests or contact Pinecone Support (https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
 ```
 
 To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
@@ -152,6 +246,20 @@ Request failed. You've reached the max update by metadata requests per second fo
 
 To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
 
+### Upsert requests per second per namespace
+
+| Starter plan | Standard plan | Enterprise plan |
+| ------------ | ------------- | --------------- |
+| 100          | 100           | 100             |
+
+When you reach the per second [upsert](/guides/index-data/upsert-data) request limit for a namespace in an index, additional upsert requests will fail and return a `429 - TOO_MANY_REQUESTS` status with the following error:
+
+```
+Request failed. You've reached the upsert QPS limit for namespace {namespace_name} ({limit} QPS). Pace your upsert requests or contact Pinecone Support (https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
+```
+
+To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
 ### Fetch requests per second per index
 
 | Starter plan | Standard plan | Enterprise plan |
@@ -166,6 +274,10 @@ Pace your fetch requests or contact Pinecone Support (https://app.pinecone.io/or
 ```
 
 To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 ### List requests per second per index
 
@@ -182,6 +294,10 @@ Pace your list requests or contact Pinecone Support (https://app.pinecone.io/org
 
 To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
 
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
+
 ### Describe index stats requests per second per index
 
 | Starter plan | Standard plan | Enterprise plan |
@@ -193,6 +309,20 @@ When you reach the per second [describe index stats](/reference/api/2024-10/data
 ```
 Request failed. You've reached the max describe_index_stats requests per second for index <index>. 
 Pace your describe_index_stats requests or contact Pinecone Support (https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
+```
+
+To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
+### Delete requests per second per namespace
+
+| Starter plan | Standard plan | Enterprise plan |
+| ------------ | ------------- | --------------- |
+| 100          | 100           | 100             |
+
+When you reach the per second [delete](/guides/manage-data/delete-data) request limit for a namespace in an index, additional delete requests will fail and return a `429 - TOO_MANY_REQUESTS` status with the following error:
+
+```
+Request failed. You've reached the delete QPS limit for namespace {namespace_name} ({limit} QPS). Pace your delete requests or contact Pinecone Support (https://app.pinecone.io/organizations/-/settings/support/ticket) to request a higher limit.
 ```
 
 To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic). If you need a higher limit for your use case, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
@@ -323,6 +453,25 @@ To continue using this model, upgrade your plan.
 ```
 
 To increase this limit, [upgrade your plan](/guides/organizations/manage-billing/upgrade-billing-plan) or [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+
+### Inference requests per second or minute, per project
+
+| Metric                        | Starter plan | Standard plan | Enterprise plan |
+| :---------------------------- | :----------- | :------------ | :-------------- |
+| Inference requests per second | 100          | 100           | 100             |
+| Inference requests per minute | 2000         | 2000          | 2000            |
+
+When you reach the per second or per minute request limit, inference requests will fail and return a `429 - TOO_MANY_REQUESTS` status with the following error:
+
+```
+Request failed. You've reached the max inference requests per second (<limit>) for the current project.
+```
+
+<Note>
+  This error indicates per second or per minute, as applicable.
+</Note>
+
+To handle this limit, [implement retry logic with exponential backoff](/guides/production/error-handling#implement-retry-logic).
 
 ## Object limits
 
@@ -472,7 +621,7 @@ Operation limits are restrictions on the size, number, or other characteristics 
 The query result size is affected by the dimension of the dense vectors and whether or not dense vector values and metadata are included in the result.
 
 <Tip>
-  If a query fails due to exceeding the 4MB result size limit, choose a lower `top_k` value, or use `include_metadata=False` or `include_values=False` to exclude metadata or values from the result.
+  If a query fails due to exceeding the 4MB result size limit, choose a lower `top_k` value, or use `include_metadata=False` or `include_values=False` to exclude metadata or values from the result. For better performance, especially with higher `top_k` values, avoid including vector values unless you need them.
 </Tip>
 
 ### Fetch limits
@@ -486,6 +635,33 @@ The query result size is affected by the dimension of the dense vectors and whet
 | Metric                            | Limit |
 | :-------------------------------- | :---- |
 | Max record IDs per delete request | 1,000 |
+
+### Metadata filter limits
+
+The following limits apply to [metadata filter expressions](/guides/search/filter-by-metadata#metadata-filter-expressions) used in query, delete, update, and fetch operations.
+
+| Limit                                       | Value  | Description                                                                                                                                                                                                      |
+| :------------------------------------------ | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Maximum values per `$in` or `$nin` operator | 10,000 | Each `$in` or `$nin` operator accepts up to 10,000 values in its array. This limit applies per operator—if you have multiple `$in` operators in a single filter, each is independently limited to 10,000 values. |
+
+When you exceed this limit, the request will fail and return a `400 - BAD_REQUEST` error.
+
+#### Rationale
+
+Large `$in` operators can impact query performance and cost. Filters with thousands of values increase request payload size and end-to-end latency. Additionally, using large filters typically indicates a shared namespace architecture, which increases query costs—queries scan the entire namespace regardless of filters.
+
+#### Alternative approaches
+
+If you need to filter by more than 10,000 values, consider these alternatives:
+
+* **Use namespaces for tenant isolation**: Instead of filtering by tenant IDs within a single namespace, create separate namespaces for each tenant or tenant group. This can also reduce query costs. See [Design for multi-tenancy](/guides/index-data/data-modeling#design-for-multi-tenancy).
+* **Use broader access control groups**: Instead of filtering by individual user IDs, filter by organization, project, or role. This reduces the number of values in your `$in` filter. See [Design for multi-tenancy](/guides/index-data/data-modeling#use-access-control-groups-instead-of-individual-ids).
+* **Post-filter client-side**: Retrieve a larger top K without filtering (for example, top 1000), then filter results client-side.
+* **Run multiple queries**: Split your filter into multiple queries with smaller `$in` operators and combine the results client-side.
+
+<Tip>
+  To avoid hitting this limit in production, validate the size of your `$in` and `$nin` arrays in your application code before making the request to Pinecone.
+</Tip>
 
 ## Identifier limits
 

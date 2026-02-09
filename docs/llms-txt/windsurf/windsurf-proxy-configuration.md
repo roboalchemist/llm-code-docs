@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/windsurf-proxy-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy Configuration in Windsurf Editor
 
-> Configure HTTP/HTTPS proxy settings for Windsurf Editor in corporate and enterprise networks
+> Configure HTTP/HTTPS proxy settings for Windsurf Editor in corporate networks. Includes auto-detect, manual configuration, and SSH remote proxy setup.
 
 Some corporate and enterprise networks route traffic through HTTP/HTTPS proxies. Windsurf Editor needs to reach a few external services (for sign-in and AI features), so you may need to configure a proxy before things work reliably.
 

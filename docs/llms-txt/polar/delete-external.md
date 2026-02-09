@@ -1,169 +1,135 @@
 # Source: https://polar.sh/docs/api-reference/customers/delete-external.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Customer by External ID
 
 > Delete a customer by external ID.
 
 Immediately cancels any active subscriptions and revokes any active benefits.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
+
+
 
 ## OpenAPI
 
 ````yaml delete /v1/customers/external/{external_id}
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customers/external/{external_id}
-  method: delete
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: access token
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                You can generate an **Organization Access Token** from your
-                organization's settings.
-          cookie: {}
-    parameters:
-      path:
-        external_id:
+  /v1/customers/external/{external_id}:
+    delete:
+      tags:
+        - customers
+        - public
+        - mcp
+      summary: Delete Customer by External ID
+      description: >-
+        Delete a customer by external ID.
+
+
+        Immediately cancels any active subscriptions and revokes any active
+        benefits.
+
+
+        Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
+
+        **Scopes**: `customers:write`
+      operationId: customers:delete_external
+      parameters:
+        - name: external_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: External Id
-              description: The customer external ID.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Customers.DeleteExternal(ctx, \"<id>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
-
-
-          with Polar(
-              access_token="<YOUR_BEARER_TOKEN_HERE>",
-          ) as polar:
-
-              polar.customers.delete_external(external_id="<id>")
-
-              # Use the SDK ...
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar({
-            accessToken: process.env["POLAR_ACCESS_TOKEN"] ?? "",
-          });
-
-          async function run() {
-            await polar.customers.deleteExternal({
-              externalId: "<id>",
-            });
-
-
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-
-          $sdk = Polar\Polar::builder()
-              ->setSecurity(
-                  '<YOUR_BEARER_TOKEN_HERE>'
-              )
-              ->build();
-
-
-
-          $response = $sdk->customers->deleteExternal(
-              externalId: '<id>'
-          );
-
-          if ($response->statusCode === 200) {
-              // handle response
-          }
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Customer deleted.
-        examples: {}
-        description: Customer deleted.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: Customer not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            description: The customer external ID.
+            title: External Id
+          description: The customer external ID.
+        - name: anonymize
+          in: query
+          required: false
+          schema:
+            type: boolean
+            description: >-
+              If true, also anonymize the customer's personal data for GDPR
+              compliance.
+            default: false
+            title: Anonymize
+          description: >-
+            If true, also anonymize the customer's personal data for GDPR
+            compliance.
+      responses:
+        '204':
+          description: Customer deleted.
+        '404':
+          description: Customer not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    ResourceNotFound:
+      properties:
+        error:
+          type: string
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -185,5 +151,12 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

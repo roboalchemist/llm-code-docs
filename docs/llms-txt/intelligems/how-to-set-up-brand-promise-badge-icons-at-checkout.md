@@ -8,10 +8,10 @@ Launching a Brand Promises Badge Block is one of the most effective ways to buil
 
 ### Who is this for
 
-This experience is designed for **all visitors** — it should display for 100% of checkout traffic.\
+This Personalization is designed for **all visitors** — it should display for 100% of checkout traffic.\
 Every shopper benefits from seeing your core brand promises and trust signals, regardless of audience segment or channel.
 
-### What this Experience does
+### What this Personalization does
 
 This experience adds a block to your Shopify checkout page. Each badge features an icon, title, and subtitle, allowing you to communicate up to six key brand promises in a clean, visual layout.
 
@@ -23,7 +23,7 @@ This example includes:
 
 ### When to use it
 
-Create a Checkout Experience with your unique brand promises when you want to:
+Create a Checkout Personalization with your unique brand promises when you want to:
 
 * Reinforce trust and brand credibility at checkout
 * Ease buyer hesitation and reduce abandonment
@@ -31,18 +31,18 @@ Create a Checkout Experience with your unique brand promises when you want to:
 * Replace or supplement third-party “trust badge” apps with a native Intelligems solution\\
 
 {% hint style="success" %}
-**Pro Tip:** A Checkout Experience can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
+**Pro Tip:** A Checkout Personalization can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
 {% endhint %}
 
 ### Why it matters
 
 Checkout is the highest-intent stage of the customer journey. Small messages of reassurance can drive measurable conversion improvements by helping shoppers feel confident about their purchase and your brand.
 
-## How to Set Up This Checkout Experience in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
+## How to Set Up This Checkout Personalization in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
 
 {% embed url="<https://www.loom.com/share/baa07973375a4c9688acb9d79f77d56c?sid=5728fe22-7b59-4d24-8be5-165b3a87a901>" %}
 
-1. Go to Experiences > **Checkout**
+1. Go to Personalizations > **Checkout**
 2. Select **Trust badge**
 3. Add a **Block name**
 4. Rename the **Location ID** to be descriptive
@@ -67,8 +67,8 @@ Checkout is the highest-intent stage of the customer journey. Small messages of 
 12. You can update the content, launch a different Theme or Template, and update styles or javascript
 13. Add **Targeting** to choose which shoppers you want to see this block. It will be set to all visitors by default.
 14. **Save** your Experience
-15. **Preview** your Checkout Experience on desktop and mobile
-16. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+15. **Preview** your Checkout Personalization on desktop and mobile
+16. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
 
 {% hint style="info" %}

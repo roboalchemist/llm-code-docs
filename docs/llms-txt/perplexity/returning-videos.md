@@ -1,12 +1,20 @@
-# Source: https://docs.perplexity.ai/guides/returning-videos.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/media/returning-videos.md
 
-# Returning Videos with Sonar
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Returning Videos
 
 > Learn how to return videos in API responses using media_response overrides with raw HTTP requests
 
 ## Overview
 
-Sonar models can return videos as part of their responses to provide rich multimedia content that enhances the information delivered. You can control video returns using the `media_response` parameter with `overrides` to specify when videos should be included in responses.
+Grounded LLMs can return videos as part of their responses to provide rich multimedia content that enhances the information delivered. You can control video returns using the `media_response` parameter with `overrides` to specify when videos should be included in responses.
+
+<Info>
+  The `return_videos` feature is currently only available in the Chat Completions API.
+</Info>
 
 <Note>
   Use the `media_response.overrides.return_videos` parameter to control when videos are returned in API responses.

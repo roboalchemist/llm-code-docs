@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/deployment/render.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy a Bun application on Render
 
 [Render](https://render.com/) is a cloud platform that lets you flexibly build, deploy, and scale your apps.

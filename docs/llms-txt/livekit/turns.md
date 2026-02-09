@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/agents/logic/turns.md
 
-# Source: https://docs.livekit.io/agents/build/turns.md
-
-LiveKit docs › Building voice agents › Turn detection & interruptions › Overview
+LiveKit docs › Logic & Structure › Turn detection & interruptions › Overview
 
 ---
 
-# Turn detection and interruptions
+# Turns overview
 
 > Guide to managing conversation turns in voice AI.
 
@@ -17,6 +15,8 @@ Turn detection is the process of determining when a user begins or ends their "t
 Most turn detection techniques rely on voice activity detection (VAD) to detect periods of silence in user input. The agent applies heuristics to the VAD data to perform phrase endpointing, which determines the end of a sentence or thought. The agent can use endpoints alone or apply more contextual analysis to determine when a turn is complete.
 
 Effective turn detection and interruption management is essential to great voice AI experiences.
+
+[Video: LiveKit Turn Detector Plugin](https://youtu.be/OZG0oZKctgw)
 
 ## Turn detection
 
@@ -162,7 +162,7 @@ You can control the user's turn with `session.interrupt()`, `session.clear_user_
 > 
 > This is different from toggling audio input/output for [text-only sessions](https://docs.livekit.io/agents/build/text.md#text-only-sessions).
 
-For instance, you can use this to implement a push-to-talk interface. Here is a simple example using [RPC](https://docs.livekit.io/home/client/data/rpc.md) methods that the frontend can call:
+For instance, you can use this to implement a push-to-talk interface. Here is a simple example using [RPC](https://docs.livekit.io/transport/data/rpc.md) methods that the frontend can call:
 
 **Python**:
 
@@ -241,7 +241,7 @@ A more complete example is available here:
 
 ### Reducing background noise
 
-[Enhanced noise cancellation](https://docs.livekit.io/home/cloud/noise-cancellation.md) is available in LiveKit Cloud and improves the quality of turn detection and speech-to-text (STT) for voice AI apps. You can add background noise and voice cancellation to your agent by adding it to the `room_input_options` when you start your agent session. To learn how to enable it, see the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+[Enhanced noise cancellation](https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md) is available in LiveKit Cloud and improves the quality of turn detection and speech-to-text (STT) for voice AI apps. You can add background noise and voice cancellation to your agent by adding it to the [room options](https://docs.livekit.io/agents/logic/sessions.md#room-options) when you start your agent session. To learn how to enable it, see the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
 ## Interruptions
 
@@ -249,7 +249,7 @@ The framework pauses the agent's speech whenever it detects user speech in the i
 
 > ℹ️ **Disabling interruptions**
 > 
-> You can disable user interruptions when [scheduling speech](https://docs.livekit.io/agents/build/audio.md#initiating-speech) using the `say()` or `generate_reply()` methods by setting `allow_interruptions=False`.
+> You can disable user interruptions when [scheduling speech](https://docs.livekit.io/agents/build/audio.md#manual) using the `say()` or `generate_reply()` methods by setting `allow_interruptions=False`.
 
 To explicitly interrupt the agent, call the `interrupt()` method on the handle or session at any time. This can be performed even when `allow_interruptions` is set to `False`.
 
@@ -299,7 +299,7 @@ The following parameters related to turn detection and interruptions are availab
 
 - **`min_endpointing_delay`** _(float)_ (optional) - Default: `0.5`: The number of seconds to wait before considering the turn complete. The session uses this delay when no turn detector model is present, or when the model indicates a likely turn boundary.
 
-- **`max_endpointing_delay`** _(float)_ (optional) - Default: `6.0`: The maximum time to wait for the user to speak after the turn detector model indicates the user is likely to continue speaking. This parameter has no effect without the turn detector model.
+- **`max_endpointing_delay`** _(float)_ (optional) - Default: `3.0`: The maximum time to wait for the user to speak after the turn detector model indicates the user is likely to continue speaking. This parameter has no effect without the turn detector model.
 
 - **`false_interruption_timeout`** _(float)_ (optional) - Default: `2.0`: The time (in seconds) to wait before signaling a false interruption. If no transcribed speech is generated during this period, an `agent_false_interruption` event is emitted and the agent resumes speaking from where it left off if `resume_false_interruption` is `True`.
 
@@ -381,7 +381,7 @@ session.on(voice.AgentSessionEventTypes.AgentStateChanged, (ev) => {
 
 ---
 
-This document was rendered at 2025-11-18T23:55:04.699Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/turns.md](https://docs.livekit.io/agents/build/turns.md).
+This document was rendered at 2026-02-03T03:24:56.623Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/turns.md](https://docs.livekit.io/agents/logic/turns.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

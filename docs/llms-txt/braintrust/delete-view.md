@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/views/delete-view.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete view
 
 > Delete a view object by its id
@@ -152,10 +156,12 @@ components:
             - prompts
             - tools
             - scorers
+            - classifiers
             - logs
-            - agents
             - monitor
-            - for_review
+            - for_review_project_log
+            - for_review_experiments
+            - for_review_datasets
             - null
           description: Type of object that the view corresponds to.
         name:
@@ -446,7 +452,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

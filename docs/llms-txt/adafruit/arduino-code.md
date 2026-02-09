@@ -1,5 +1,3 @@
-# Source: https://learn.adafruit.com/2-2-tft-display/arduino-code.md
-
 # Source: https://learn.adafruit.com/12mm-led-pixels/arduino-code.md
 
 # Source: https://learn.adafruit.com/character-lcds/arduino-code.md
@@ -12,137 +10,127 @@
 
 # Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
 
-# Source: https://learn.adafruit.com/12mm-led-pixels/arduino-code.md
-
-# Source: https://learn.adafruit.com/character-lcds/arduino-code.md
-
-# Source: https://learn.adafruit.com/tsl2561/arduino-code.md
-
-# Source: https://learn.adafruit.com/photocells/arduino-code.md
-
-# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
-
-# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
-
-# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
-
-# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
-
-# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
-
-# MAX31855 Thermocouple
+# Adafruit INA219 Current Sensor Breakout
 
 ## Arduino Code
 
-If you're using an AD595 interface chip, you can simply connect the voltage output to an analog input on your microcontroller and do some basic math to multiply the 10 mV/°C input into numerical output.![](https://cdn-learn.adafruit.com/assets/assets/000/000/366/medium800/temperature_attached.jpg?1396762479)
+Programming the Adafruit INA219 breakout board in Arduino, using the many boards that have I2C, is simple using our library:
 
-If you're planning to use the MAX6675/MAX31855, there's a little more work to be done. First off, Vin and GND must connect to a 3-5V supply. Then the three data pins must connect to digital IO pins:
-
-- **CLK&nbsp;** (clock) is an input to the MAX6675/MAX31855 (output from microcontroller) which indicates when to present another bit of data
-- **DO&nbsp;** (data out) is an output from the MAX6675/MAX31855 (input to the microcontroller) which carries each bit of data
-- **CS&nbsp;** (chip select) is an input to the MAX6675/MAX31855 (output from the microcontroller) which tells the chip when its time to read the thermocouple and output more data.
-
-In the beginning of our sketches, we define these pins. For our examples **DO** connects to digital 3, **CS** connects to digital 4, and **CLK** connects to pin 5  
-![](https://cdn-learn.adafruit.com/assets/assets/000/001/303/medium800/temperature_cap.jpg?1396770831)
-
-If you are using the MAX31855 v1.0 in a noisy environment, you may need to add a 0.01uF capacitor across the thermocouple leads.  
-  
-The MAX31855 does not support grounded thermocouples - if the sensor touches ground the chip will return an error
-
-# Arduino Library
-
-If you have an older MAX6675 breakout, download the&nbsp; **Adafruit MAX6675&nbsp;** library from the Arduino library manager.
-
-If you have the newer MAX31855 breakout, download the&nbsp; **Adafruit MAX31855** library from the Arduino library manager.
+## Install the Library
 
 Open up the Arduino library manager:
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/084/483/medium800/temperature___humidity_1library_manager_menu.png?1574049141)
+![](https://cdn-learn.adafruit.com/assets/assets/000/084/184/medium800/adafruit_products_library_manager_menu.png?1573769885)
 
-If you have a MAX6675 breakout, search for the&nbsp; **MAX6675&nbsp;** library and install it
+Search for the&nbsp; **Adafruit INA219** &nbsp;library and install it
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/084/484/medium800/temperature___humidity_max6675.png?1574049287)
-
-If you have the MAX31855 breakout, search for the&nbsp; **Adafruit MAX31855&nbsp;** library and install it
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/084/486/medium800/temperature___humidity_max31855.png?1574049373)
-
-Open up the **File**** -\> ****Examples-\>MAX6675/Adafruit\_MAX31855**** -\> ****serialthermocouple** sketch and upload it to your Arduino. Once uploaded, open up the serial port monitor to display the current temperatures in both Celsius and Fahrenheit.
+![](https://cdn-learn.adafruit.com/assets/assets/000/084/185/medium800/adafruit_products_ina219.png?1573770005)
 
 We also have a great tutorial on Arduino library installation at:  
 [http://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use](http://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use "Link: http://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use")
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/368/medium800/temperature_maxtest.gif?1447975488)
+## Load the Example
 
-As you can see, its pretty simple to use the library, simply tell the sensor object what the clock, chip select and data pins are, then call&nbsp;**readCelsius()** or&nbsp;**readFahrenheit()**&nbsp;to get a floating point result.
+- **Select**"_File -\> Examples -\> Adafruit\_INA219 -\> getcurrent_"
+- The "getcurrent" example code should open in a new IDE window.
 
-# Adding a Display
-A common request is to have the temperature output onto [a 'classic' character LCD such as the ones in this tutorial](http://learn.adafruit.com/character-lcds).  
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/369/medium800/temperature_LCDThermocouple.jpg?1396762511)
+&nbsp;
 
-For this wiring, we connected **CLK** to digital **3** , **CS** to digital **4** and **DO** to digital **5.** Once you get it working, you can change the pin connections in the sketch  
-  
-We have an example sketch for this as well. [First get the LCD working by following our tutorial](http://learn.adafruit.com/character-lcds). Now load up the new sketch **File-\>Examples**** -\> ****MAX31855**** \> ****lcdthermocouple** and plug in the thermocouple module as we did in the serial thermocouple test, you'll see the internal temperature and the thermocouple temperature displayed in Celsius
+![](https://cdn-learn.adafruit.com/assets/assets/000/002/433/medium800/adafruit_products_example.png?1396783084)
 
-- [Previous Page](https://learn.adafruit.com/thermocouple/wiring-a-thermocouple.md)
-- [Next Page](https://learn.adafruit.com/thermocouple/python-circuitpython.md)
+## Run it
 
-## Primary Products
+- **Click** on the upload button in the IDE. When it is "done uploading"
+- **Open** your Serial Monitor and set the speed to 115200 baud.
 
-### Adafruit Universal Thermocouple Amplifier MAX31856 Breakout
+The output should appear similar to the sample below:
 
-[Adafruit Universal Thermocouple Amplifier MAX31856 Breakout](https://www.adafruit.com/product/3263)
-Thermocouples are very sensitive, requiring a good amplifier with a cold-compensation reference, as well as calculations to handle any non-linearities. For a long time we've [suggested our MAX31855K breakout, which works great but is only for...](https://www.adafruit.com/products/269)
+![](https://cdn-learn.adafruit.com/assets/assets/000/002/426/medium800/adafruit_products_CurrentCapture.png?1396783003)
 
-In Stock
-[Buy Now](https://www.adafruit.com/product/3263)
-[Related Guides to the Product](https://learn.adafruit.com/products/3263/guides)
+## Customize it
+
+You can adapt, expand or modify the example code&nbsp;to suit your project requirements. &nbsp;For a detailed description of the available library functions, see the **Library Reference** on the next page.
+
+- [Previous Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/wiring.md)
+- [Next Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/library-reference.md)
 
 ## Featured Products
 
-### Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)
+### INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max
 
-[Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)](https://www.adafruit.com/product/269)
-Thermocouples are very sensitive, requiring a good amplifier with a cold-compensation reference. The MAX31855K does everything for you, and can be easily interfaced with any microcontroller, even one without an analog input. This breakout board has the chip itself, a 3.3V regulator with 10uF...
+[INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max](https://www.adafruit.com/product/904)
+This breakout board will solve all your power-monitoring problems. Instead of struggling with two multimeters, you can just use the handy INA219 chip on this breakout to both measure both the high side voltage and DC current draw over I2C with ±1% precision.
+
+**Please...**
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/904)
+[Related Guides to the Product](https://learn.adafruit.com/products/904/guides)
+### STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long
+
+[STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long](https://www.adafruit.com/product/4210)
+This 4-wire cable is a little over 100mm / 4" long and fitted with JST-SH female 4-pin connectors on both ends. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert and remove.
+
+<a...></a...>
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/4210)
+[Related Guides to the Product](https://learn.adafruit.com/products/4210/guides)
+### STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable
+
+[STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable](https://www.adafruit.com/product/4209)
+This 4-wire cable is a little over 150mm / 6" long and fitted with JST-SH female 4-pin connectors on one end and premium Dupont male headers on the other. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert...
 
 Out of Stock
-[Buy Now](https://www.adafruit.com/product/269)
-[Related Guides to the Product](https://learn.adafruit.com/products/269/guides)
-### Thermocouple Type-K Glass Braid Insulated
+[Buy Now](https://www.adafruit.com/product/4209)
+[Related Guides to the Product](https://learn.adafruit.com/products/4209/guides)
+### Premium Male/Male Jumper Wires - 40 x 6" (150mm)
 
-[Thermocouple Type-K Glass Braid Insulated](https://www.adafruit.com/product/270)
-Thermocouples are best used for measuring temperatures that can go above 100 °C. This is a bare wires bead-probe which can measure air or surface temperatures. Most inexpensive thermocouples have a vinyl covering which can melt at around 200 °C, this one uses a fiberglass braid so it...
+[Premium Male/Male Jumper Wires - 40 x 6" (150mm)](https://www.adafruit.com/product/758)
+Handy for making wire harnesses or jumpering between headers on PCB's. These premium jumper wires are 6" (150mm) long and come in a 'strip' of 40 (4 pieces of each of ten rainbow colors). They have 0.1" male header contacts on either end and fit cleanly next to each other...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/758)
+[Related Guides to the Product](https://learn.adafruit.com/products/758/guides)
+### Full Sized Premium Breadboard - 830 Tie Points
+
+[Full Sized Premium Breadboard - 830 Tie Points](https://www.adafruit.com/product/239)
+This is a 'full-size' premium quality breadboard, 830 tie points. Good for small and medium projects. It's 2.2" x 7" (5.5 cm x 17 cm) with a standard double-strip in the middle and two power rails on both sides. You can pull the power rails off easily to make the...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/270)
-[Related Guides to the Product](https://learn.adafruit.com/products/270/guides)
-### Thermocouple Type-K Glass Braid Insulated Stainless Steel Tip
+[Buy Now](https://www.adafruit.com/product/239)
+[Related Guides to the Product](https://learn.adafruit.com/products/239/guides)
+### Adafruit INA219 FeatherWing
 
-[Thermocouple Type-K Glass Braid Insulated Stainless Steel Tip](https://www.adafruit.com/product/3245)
-Thermocouples are best used for measuring temperatures that can go above 100°C. This is a bare wires stainless-steel tip probe which can measure air or surface temperatures. Most inexpensive thermocouples have a vinyl covering which can melt at around 200°C, this one uses a fiberglass...
+[Adafruit INA219 FeatherWing](https://www.adafruit.com/product/3650)
+The **INA219 FeatherWing** makes power-monitoring problems a thing of the past. Instead of struggling with two multimeters, you can just use the handy INA219&nbsp;chip on this breakout to&nbsp;measure both the high side voltage and DC current draw over I2C with 1% precision....
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/3245)
-[Related Guides to the Product](https://learn.adafruit.com/products/3245/guides)
+[Buy Now](https://www.adafruit.com/product/3650)
+[Related Guides to the Product](https://learn.adafruit.com/products/3650/guides)
+### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
+
+[Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
+We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;for our own projects. The processor has plenty of GPIO, Analog inputs, hardware UART SPI and I2C, timers and PWM galore - just enough for most simple projects. When we need to go small, we use a <a...></a...>
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/50)
+[Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
 
 ## Related Guides
 
-- [Google Docs Sensor Logging From Your PC](https://learn.adafruit.com/gdocs-sensor-logging-from-your-pc.md)
-- [Calibrating Sensors](https://learn.adafruit.com/calibrating-sensors.md)
-- [CircuitPython Libraries on Linux and the 96Boards DragonBoard 410c](https://learn.adafruit.com/circuitpython-libraries-on-linux-and-the-96boards-dragonboard-410c.md)
-- [Connecting the MAX31855 Thermocouple Amplifier breakout to an Electric Imp](https://learn.adafruit.com/connecting-the-max31855-thermocouple-amplifier-breakout-to-an-electric-imp.md)
-- [ Analog IC Insights On-the-Go by Maxim Integrated](https://learn.adafruit.com/maxim-app.md)
-- [Adafruit 1-Wire Thermocouple Amplifier - MAX31850K](https://learn.adafruit.com/adafruit-1-wire-thermocouple-amplifier-max31850k.md)
-- [Adding a Single Board Computer to Blinka](https://learn.adafruit.com/adding-a-single-board-computer-to-blinka.md)
-- [MicroPython Hardware: SPI Devices](https://learn.adafruit.com/micropython-hardware-spi-devices.md)
-- [CircuitPython I2C and SPI Under the Hood](https://learn.adafruit.com/circuitpython-basics-i2c-and-spi.md)
-- [MAX31855 Thermocouple Sensor Python Library](https://learn.adafruit.com/max31855-thermocouple-python-library.md)
-- [Adafruit FT232H With SPI & I2C Devices](https://learn.adafruit.com/adafruit-ft232h-with-spi-and-i2c-libraries.md)
-- [MLX90640 Thermal Camera with Image Recording](https://learn.adafruit.com/mlx90640-thermal-image-recording.md)
-- [EZ Make Oven](https://learn.adafruit.com/ez-make-oven.md)
-- [Adafruit BME680](https://learn.adafruit.com/adafruit-bme680-humidity-temperature-barometic-pressure-voc-gas.md)
-- [My Mini Race Car](https://learn.adafruit.com/my-mini-race-car.md)
+- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
+- [WiFi Controlled Mobile Robot](https://learn.adafruit.com/wifi-controlled-mobile-robot.md)
+- [Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors.md)
+- [Geofencing with the FONA 808 & Adafruit IO](https://learn.adafruit.com/geofencing-with-the-fona-808-and-adafruit-io.md)
+- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
+- [Adafruit CC3000 WiFi and Xively](https://learn.adafruit.com/adafruit-cc3000-wifi-and-xively.md)
+- [Adafruit AirLift Shield - ESP32 WiFi Co-Processor](https://learn.adafruit.com/adafruit-airlift-shield-esp32-wifi-co-processor.md)
+- [Wave Shield Talking Clock](https://learn.adafruit.com/wave-shield-talking-clock.md)
+- [Ladyada's Learn Arduino - Lesson #0](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-0.md)
+- [2.2" TFT Display](https://learn.adafruit.com/2-2-tft-display.md)
+- [LED Lightbox](https://learn.adafruit.com/led-lightbox.md)
+- [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
+- [How to Choose a Microcontroller](https://learn.adafruit.com/how-to-choose-a-microcontroller.md)
+- [Arduino Lesson 16. Stepper Motors](https://learn.adafruit.com/adafruit-arduino-lesson-16-stepper-motors.md)
+- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)

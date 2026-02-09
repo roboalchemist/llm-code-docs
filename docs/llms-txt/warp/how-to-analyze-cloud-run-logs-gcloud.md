@@ -8,8 +8,7 @@ Learn how to use Warp to retrieve, organize, and analyze production logs from yo
 
 {% stepper %}
 {% step %}
-
-### Setting the Context
+**Setting the Context**
 
 Open Warp and enable **voice input** (optional) for hands-free prompting.
 
@@ -30,8 +29,7 @@ and highlight the most concerning errors to investigate.
 {% endstep %}
 
 {% step %}
-
-### Warp’s Agent in Action
+**Warp’s Agent in Action**
 
 After you hit Enter:
 
@@ -42,8 +40,7 @@ After you hit Enter:
   {% endstep %}
 
 {% step %}
-
-### Automated Analysis
+**Automated Analysis**
 
 Warp’s agent generates a **Python script** on the fly to:
 
@@ -64,8 +61,7 @@ You can view or fast-forward execution, or stop the process at any point.
 {% endstep %}
 
 {% step %}
-
-### Reviewing Results
+**Reviewing Results**
 
 Warp outputs a readable histogram and highlights anomalies.\
 For example:

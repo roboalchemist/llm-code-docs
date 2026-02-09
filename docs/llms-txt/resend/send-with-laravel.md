@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-laravel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Laravel
 
 > Learn how to send your first email using Laravel.
@@ -23,7 +27,7 @@ Prefer watching a video? Check out this video walkthrough below.
 
 First, install Resend for Laravel using the Composer package manager:
 
-```bash Composer theme={null}
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
 composer require resend/resend-laravel
 ```
 
@@ -33,15 +37,28 @@ composer require resend/resend-laravel
 
 Next, you should configure your Resend API key in your application's `.env` file:
 
-```ini .env theme={null}
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 RESEND_API_KEY=re_xxxxxxxxx
 ```
+
+<Note>
+  If you've upgraded your Laravel project from an older version (pre-5.5) and haven't enabled auto service provider discovery, you'll need to manually register the Resend service provider. Add the provider to the `providers` array in your `config/app.php` file:
+
+  ```php config/app.php theme={"theme":{"light":"github-light","dark":"vesper"}}
+  'providers' => [
+      // ... other providers
+      Resend\Laravel\ResendServiceProvider::class,
+  ],
+  ```
+
+  Without this registration, the Facade may reference the core Resend PHP client instead of the Resend Laravel library, causing unexpected behavior.
+</Note>
 
 ### Mail driver
 
 To use Resend as your mail driver, first create a new mailer definition, in the `mailers` array within your application's `config/mail.php` configuration file:
 
-```php mail.php theme={null}
+```php mail.php theme={"theme":{"light":"github-light","dark":"vesper"}}
 'resend' => [
     'transport' => 'resend',
 ],
@@ -49,7 +66,7 @@ To use Resend as your mail driver, first create a new mailer definition, in the 
 
 Next, update your application's `.env` file to use the Resend mail driver:
 
-```ini .env theme={null}
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 MAIL_MAILER=resend
 MAIL_FROM_ADDRESS=onboarding@resend.dev
 MAIL_FROM_NAME=Acme
@@ -61,7 +78,7 @@ Resend for Laravel provides two convenient ways to send emails, using Laravel's 
 
 ### Using the Mail Facade
 
-```php OrderShipmentController.php theme={null}
+```php OrderShipmentController.php theme={"theme":{"light":"github-light","dark":"vesper"}}
 <?php
 
 namespace App\Http\Controllers;
@@ -93,7 +110,7 @@ class OrderShipmentController extends Controller
 
 ### Using the Resend Facade
 
-```php OrderShipmentController.php theme={null}
+```php OrderShipmentController.php theme={"theme":{"light":"github-light","dark":"vesper"}}
 <?php
 
 namespace App\Http\Controllers;
@@ -137,7 +154,7 @@ By default, Resend for Laravel includes a webhook controller to respond to the `
 Register your publicly accessible HTTPS URL in the Resend dashboard.
 
 <Tip>
-  For develoment, you can create a tunnel to your localhost server using a tool like
+  For development, you can create a tunnel to your localhost server using a tool like
   [ngrok](https://ngrok.com/download) or [VS Code Port Forwarding](https://code.visualstudio.com/docs/debugtest/port-forwarding). These tools serve your local dev environment at a public URL you can use to test your local webhook endpoint.
 
   Example: `https://example123.ngrok.io/api/webhook`
@@ -149,7 +166,7 @@ Register your publicly accessible HTTPS URL in the Resend dashboard.
 
 Webhook requests from Resend need to bypass Laravel's CSRF protection. Be sure to list the URI as an exception in your application's `App\Http\Middleware\VerifyCsrfToken` middleware or list the route outside of the web middleware group:
 
-```php  theme={null}
+```php  theme={"theme":{"light":"github-light","dark":"vesper"}}
 protected $except = [
     'resend/*',
 ];

@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/faq/hide-chatbot-on-specific-pages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to hide the chatbot on specific pages
 
 > Learn how to set the visibility of your chatbot on specific pages.

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/intro/basics/cli/templates.md
 
-# Source: https://docs.livekit.io/home/cli/templates.md
-
-LiveKit docs › LiveKit CLI › App templates
+LiveKit docs › Understanding LiveKit › LiveKit CLI › App templates
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › LiveKit CLI › App templates
 
 > ℹ️ **Note**
 > 
-> Before starting, make sure you have created a LiveKit Cloud account, [installed the LiveKit CLI](https://docs.livekit.io/home/cli.md), and have authenticated or manually configured your LiveKit Cloud project of choice.
+> Before starting, make sure you have created a LiveKit Cloud account, [installed the LiveKit CLI](https://docs.livekit.io/intro/basics/cli.md), and have authenticated or manually configured your LiveKit Cloud project of choice.
 
 The LiveKit CLI can help you bootstrap applications from a number of convenient template repositories, using your project credentials to set up required environment variables and other configuration automatically. To create an application from a template, run the following:
 
@@ -40,13 +38,13 @@ The `--template` flag may be omitted to see a list of all available templates, o
 
 > 💡 **Tip**
 > 
-> If you're looking to explore LiveKit's [Agents](https://docs.livekit.io/agents.md) framework, or want to prototype your app against a prebuilt frontend or token server, check out [Sandboxes](https://docs.livekit.io/home/cloud/sandbox.md).
+> If you're looking to explore LiveKit's [Agents](https://docs.livekit.io/agents.md) framework, or want to prototype your app against a prebuilt frontend or token server, check out [Sandboxes](https://docs.livekit.io/deploy/admin/sandbox.md).
 
 For more information on templates, see the [LiveKit Template Index](https://github.com/livekit-examples/index?tab=readme-ov-file).
 
 ---
 
-This document was rendered at 2025-11-18T23:54:55.583Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cli/templates.md](https://docs.livekit.io/home/cli/templates.md).
+This document was rendered at 2026-02-03T03:24:52.121Z.
+For the latest version of this document, see [https://docs.livekit.io/intro/basics/cli/templates.md](https://docs.livekit.io/intro/basics/cli/templates.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

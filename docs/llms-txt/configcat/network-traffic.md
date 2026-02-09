@@ -2,6 +2,8 @@
 
 # Network Traffic
 
+Copy page
+
 Network Traffic refers to the data transmitted between your applications and ConfigCat CDN. It includes the requests made to fetch feature flags and settings.
 
 Generally speaking, the Network Traffic is proportional to:
@@ -66,7 +68,7 @@ Runs on the customer's own servers. We suggest [contacting ConfigCat's engineeri
 
 ### Delete the old feature flags and unused Targeting Rules[​](#delete-the-old-feature-flags-and-unused-targeting-rules "Direct link to Delete the old feature flags and unused Targeting Rules")
 
-If you have a large number of feature flags and Targeting Rules in a config, you can reduce the size of the `config JSON` by deleting the old ones. The [Zombie Flags](https://configcat.com/docs/docs/zombie-flags/.md) feature can help you finding stale feature flags.
+If you have a large number of feature flags and Targeting Rules in a config, you can reduce the size of the `config JSON` by deleting the old ones. The [Zombie Flags](https://configcat.com/docs/zombie-flags.md) feature can help you finding stale feature flags.
 
 ### Avoid keeping lots of data in the comparison value of Targeting Rules or segments[​](#avoid-keeping-lots-of-data-in-the-comparison-value-of-targeting-rules-or-segments "Direct link to Avoid keeping lots of data in the comparison value of Targeting Rules or segments")
 
@@ -82,7 +84,7 @@ If you have a large number of feature flags, you can reduce the size of the `con
 
 ### Use the ConfigCat Proxy to cache/proxy config JSON downloads[​](#use-the-configcat-proxy-to-cacheproxy-config-json-downloads "Direct link to Use the ConfigCat Proxy to cache/proxy config JSON downloads")
 
-The [ConfigCat Proxy](https://configcat.com/docs/docs/advanced/proxy/proxy-overview/.md) allows you to host a feature flag evaluation and config JSON proxy/cache service within your own infrastructure.<br /><!-- -->The [CDN proxy](https://configcat.com/docs/docs/advanced/proxy/endpoints/.md#cdn-proxy) feature allows you to proxy/cache config JSON downloads, and the ConfigCat SDKs can be routed to the ConfigCat Proxy running in your own infrastructure greatly reducing network traffic.
+The [ConfigCat Proxy](https://configcat.com/docs/advanced/proxy/proxy-overview.md) allows you to host a feature flag evaluation and config JSON proxy/cache service within your own infrastructure.<br /><!-- -->The [CDN proxy](https://configcat.com/docs/advanced/proxy/endpoints.md#cdn-proxy) feature allows you to proxy/cache config JSON downloads, and the ConfigCat SDKs can be routed to the ConfigCat Proxy running in your own infrastructure greatly reducing network traffic.
 
 ### Purchase additional network traffic[​](#purchase-additional-network-traffic "Direct link to Purchase additional network traffic")
 

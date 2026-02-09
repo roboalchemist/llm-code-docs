@@ -2,306 +2,77 @@
 
 # Source: https://docs.upsun.com/create-apps/image-properties/hooks.md
 
-# Source: https://docs.upsun.com/create-apps/hooks.md
+# hooks
 
-# Source: https://docs.upsun.com/create-apps/image-properties/hooks.md
 
-# Source: https://docs.upsun.com/create-apps/hooks.md
+A hooks dictionary that defines which commands run at different stages in the build and deploy process.
 
-# Use build and deploy hooks
+Optional in [single-runtime](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#primary-application-properties) and [composable](https://docs.upsun.com/create-apps/app-reference/composable-image.md#primary-application-properties) images.
 
-As your app goes through the [build and deploy process](https://docs.upsun.com/learn/overview/build-deploy.md),
-you might want to run custom commands.
-These might include compiling the app, setting the configuration for services based on variables, and rebuilding search indexes.
-Do these tasks using one of [three hooks](https://docs.upsun.com/create-apps/hooks/hooks-comparison.md).
+There are three different hooks that run as part of the process of building and deploying your app.
+These are places where you can run custom scripts.
+They are: the `build` hook, the `deploy` hook, and the `post_deploy` hook.
+Only the `build` hook is run for [worker instances](https://docs.upsun.com/create-apps/image-properties/workers.md), while [web instances](https://docs.upsun.com/create-apps/image-properties/web.md) run all three.
 
-The following example goes through each of these hooks for a multi-app project
+The process is ordered as:
 
-- Next.js acts as the frontend container, `client`
-- Drupal serves data as the backend container, `api`
+ - Variables accessible at build time become available.
+ - The ``build`` hook is run.
+ - The file system is changed to read only, except for any [mounts](https://docs.upsun.com/create-apps/image-properties/mounts.md).
+ - The app container starts. Variables accessible at runtime and services become available.
+ - The ``deploy`` hook is run.
+ - The app container begins accepting requests.
+ - The ``post_deploy`` hook is run.
 
-Configuration for [both applications](https://docs.upsun.com../multi-app.md) resides in a single [`.upsun/config.yaml` configuration file](https://docs.upsun.com...md).
-Be sure to notice the `source.root` property for each.
-## Build dependencies
+Note that if an environment changes by no code changes, only the last step is run.
+If you want the entire process to run, see how
+to [manually trigger builds](https://docs.upsun.com/development/troubleshoot.md#manually-trigger-builds).
 
-The Next.js app uses Yarn for dependencies, which need to be installed.
-Installing dependencies requires writing to disk and doesn't need any relationships with other services.
-This makes it perfect for a `build` hook.
+### Writable directories during build
 
-In this case, the app has two sets of dependencies:
+During the `build` hook, there are three writeable directories:
 
-* For the main app
-* For a script to test connections between the apps
+- `PLATFORM_APP_DIR`:
+  Where your code is checked out and the working directory when the `build` hook starts.
+  Becomes the app that gets deployed.
+- `PLATFORM_CACHE_DIR`:
+  Persists between builds, but isn't deployed.
+  Shared by all builds on all branches.
+- `/tmp`:
+  Isn't deployed and is wiped between each build.
+  Note that `PLATFORM_CACHE_DIR` is mapped to `/tmp`
+  and together they offer about 8 GB of free space.
 
-Create your `build` hook to install them all:
+### Hook failure
 
-1. Create a `build` hook in your [app configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md):
+Each hook is executed as a single script, so they're considered to have failed only if the final command in them fails.
+To cause them to fail on the first failed command, add `set -e` to the beginning of the hook.
 
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-       hooks:
-         build: |
-           set -e
-   ```
+If a `build` hook fails for any reason, the build is aborted and the deploy doesn't happen.
+Note that this only works for `build` hooks --
+if other hooks fail, the app is still deployed.
 
-   The hook has two parts so far:
+#### Automated testing
 
-   * The `|` means the lines that follow can contain a series of commands.
-     They aren't interpreted as new YAML properties.
-   * Adding `set -e` means that the hook fails if _any_ of the commands in it fails.
-     Without this setting, the hook fails only if its _final_ command fails.
+It’s preferable that you set up and run automated tests in a dedicated CI/CD tool.
+Relying on Upsun hooks for such tasks can prove difficult.
 
-     If a `build` hook fails for any reason, the build is aborted and the deploy doesn't happen.
-     Note that this only works for `build` hooks.
-     If other hooks fail, the deploy still happens.
-2. Install your top-level dependencies inside this `build` hook:
+During the `build` hook, you can halt the deployment on a test failure but the following limitations apply:
 
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-       hooks:
-         build: |
-           set -e
-           yarn --frozen-lockfile
-   ```
+- Access to services such as databases, Redis, Vault KMS, and even writable mounts is disabled.
+  So any testing that relies on it is sure to fail.
+- If you haven’t made changes to your app, an existing build image is reused and the build hook isn’t run.
+- Test results are written into your app container, so they might get exposed to a third party.
 
-   This installs all the dependencies for the main app.
+During the `deploy` hook, you can access services but **you can’t halt the deployment based on a test failure**.
+Note that there are other downsides:
 
-## Configure Drush and Drupal
+- Your app container is read-only during the deploy hook,
+  so if your tests need to write reports and other information, you need to create a file mount for them.
+- Your app can only be deployed once the deploy hook has been completed.
+  Therefore, running automated testing via the deploy hook generates slower deployments.
+- Your environment isn’t available externally during the deploy hook.
+  Unit and integration testing might work without the environment being available,
+  but you can’t typically perform end-to-end testing until after the environment is up and available.
 
-The example uses [Drush](https://www.drush.org/latest/) to handle routine tasks.
-For its configuration, Drush needs the URL of the site.
-That means the configuration can't be done in the `build` hook.
-During the `build` hook, the site isn't yet deployed and so there is no URL to use in the configuration.
-(The [`PLATFORM_ROUTES` variable](https://docs.upsun.com../../development/variables/use-variables.md#use-provided-variables) isn't available.)
-
-Add the configuration during the `deploy` hook.
-This way you can access the URL before the site accepts requests (unlike in the `post_deploy` hook).
-
-The script also prepares your environment to handle requests,
-such as by [rebuilding the cache](https://www.drush.org/latest/commands/cache_rebuild/)
-and [updating the database](https://www.drush.org/latest/commands/updatedb/).
-Because these steps should be done before the site accepts request, they should be in the `deploy` hook.
-
-All of this configuration and preparation can be handled in a bash script.
-
-1. Copy the [preparation script from the Upsun Fixed template](https://github.com/platformsh-templates/nextjs-drupal/blob/master/api/platformsh-scripts/hooks.deploy.sh)
-   into a file called `hooks.deploy.sh` in a `api/platformsh-scripts` directory.
-   Note that hooks are executed using the dash shell, not the bash shell used by SSH logins.
-2. Copy the [Drush configuration script from the template](https://github.com/platformsh-templates/nextjs-drupal/blob/master/api/drush/platformsh_generate_drush_yml.php)
-   into a `drush/platformsh_generate_drush_yml.php` file.
-3. Set a [mount](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
-   Unlike in the `build` hook, in the `deploy` hook the system is generally read-only.
-   So create a mount where you can write the Drush configuration:
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     api:
-       source:
-         root: api
-
-       mounts:
-         /.drush:
-           source: storage
-           source_path: 'drush'
-   ```
-
-4. Add a `deploy` hook that runs the preparation script:
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     api:
-       source:
-         root: api
-
-       mounts:
-         /.drush:
-           source: storage
-           source_path: 'drush'
-
-       hooks:
-         deploy: !include
-           type: string
-           path: platformsh-scripts/hooks.deploy.sh
-   ```
-
-   This `!include` syntax tells the hook to process the script as if it were included in the YAML file directly.
-   This helps with longer and more complicated scripts.
-
-## Get data from Drupal to Next.js
-
-This Next.js app generates a static site.
-Often, you would generate the site for Next.js in a `build` hook.
-In this case, you first need to get data from Drupal to Next.js.
-
-This means you need to wait until Drupal is accepting requests
-and there is a relationship between the two apps.
-So the `post_deploy` hook is the perfect place to build your Next.js site.
-
-You can also redeploy the site every time content changes in Drupal.
-On redeploys, only the `post_deploy` hook runs,
-meaning the Drupal build is reused and Next.js is built again.
-So you don't have to rebuild Drupal but you still get fresh content.
-
-1. Set a relationship for Next.js with Drupal.
-   This allows the Next.js app to make requests and receive data from the Drupal app.
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-
-       relationships:
-         api:
-           service: 'api'
-           endpoint: 'http'
-   ```
-
-2. Set [mounts](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
-   Like the [`deploy` hook](#configure-drush-and-drupal), the `post_deploy` hook has a read-only file system.
-   Create mounts for your Next.js files:
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-
-       mounts:
-         /.cache:
-           source: tmp
-           source_path: 'cache'
-         /.next:
-           source: storage
-           source_path: 'next'
-         /.pm2:
-           source: storage
-           source_path: 'pm2'
-         deploy:
-           source: storage
-           service: files
-           source_path: deploy
-   ```
-
-3. Add a `post_deploy` hook that first tests the connection between the apps:
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-       hooks:
-         post_deploy: |
-           . deploy/platformsh.environment
-           cd platformsh-scripts/test && yarn debug
-   ```
-
-   Note that you could add `set -e` here, but even if the job fails, the build/deployment itself can still be counted as successful.
-
-4. Then build the Next.js site:
-
-   ```yaml  {location=".upsun/config.yaml"}
-   applications:
-     client:
-       source:
-         root: client
-       hooks:
-         post_deploy: |
-           . deploy/platformsh.environment
-           cd platformsh-scripts/test && yarn debug
-           cd $PLATFORM_APP_DIR && yarn build
-   ```
-
-   The `$PLATFORM_APP_DIR` variable represents the app root and can always get you back there.
-
-## Final hooks
-
-```yaml  {location=".upsun/config.yaml"}
-applications:
-  api:
-    # The runtime the app uses.
-    type: 'php:8.5'
-
-    dependencies:
-      php:
-        composer/composer: '^2'
-
-    # The relationships of the app with services or other apps.
-    relationships:
-      database:
-        service: 'db'
-        endpoint: 'mysql'
-      redis:
-        service: 'cache'
-        endpoint: 'redis'
-
-    # The hooks executed at various points in the lifecycle of the app.
-    hooks:
-      deploy: !include
-      type: string
-      path: platformsh-scripts/hooks.deploy.sh
-
-    # The 'mounts' describe writable, persistent filesystem mounts in the app.
-    mounts:
-      /.drush:
-        source: storage
-        source_path: 'drush'
-      /drush-backups:
-        source: storage
-        source_path: 'drush-backups'
-      deploy:
-        source: service
-        service: files
-        source_path: deploy
-  client:
-    # The type key specifies the language and version for your app.
-    type: 'nodejs:24'
-
-    dependencies:
-      nodejs:
-        yarn: "1.22.17"
-        pm2: "5.2.0"
-
-    build:
-      flavor: none
-
-    relationships:
-      api:
-        service: 'api'
-        endpoint: 'http'
-
-    # The hooks that are triggered when the package is deployed.
-    hooks:
-      build: |
-        set -e
-        yarn --frozen-lockfile # Install dependencies for the main app
-        cd platformsh-scripts/test
-        yarn --frozen-lockfile # Install dependencies for the testing script
-      # Next.js's build is delayed to the post_deploy hook, when Drupal is available for requests.
-      post_deploy: |
-        . deploy/platformsh.environment
-        cd platformsh-scripts/test && yarn debug
-        cd $PLATFORM_APP_DIR && yarn build
-
-    mounts:
-        /.cache:
-            source: tmp
-            source_path: 'cache'
-        /.next:
-            source: storage
-            source_path: 'next'
-        /.pm2:
-            source: storage
-            source_path: 'pm2'
-        deploy:
-            source: storage
-            service: files
-            source_path: deploy
-```
 

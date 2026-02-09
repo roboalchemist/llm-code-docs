@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/phobert.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/phobert.md
 
 # PhoBERT
 
@@ -41,14 +41,14 @@ configuration classes and their parameters. PhoBERT-specific tokenizer is docume
 
 #### transformers.PhobertTokenizer[[transformers.PhobertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L51)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L49)
 
 Construct a PhoBERT tokenizer. Based on Byte-Pair-Encoding.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-add_from_filetransformers.PhobertTokenizer.add_from_filehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L327[{"name": "f", "val": ""}]
+add_from_filetransformers.PhobertTokenizer.add_from_filehttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L325[{"name": "f", "val": ""}]
 
 Loads a pre-existing dictionary from a text file and adds its symbols to this instance.
 
@@ -73,7 +73,7 @@ pad_token (`str`, *optional*, defaults to `""`) : The token used for padding, fo
 mask_token (`str`, *optional*, defaults to `""`) : The token used for masking values. This is the token used when training this model with masked language modeling. This is the token which the model will try to predict.
 #### build_inputs_with_special_tokens[[transformers.PhobertTokenizer.build_inputs_with_special_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L146)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L144)
 
 Build model inputs from a sequence or a pair of sequence for sequence classification tasks by concatenating and
 adding special tokens. A PhoBERT sequence has the following format:
@@ -94,12 +94,12 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### convert_tokens_to_string[[transformers.PhobertTokenizer.convert_tokens_to_string]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L293)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L291)
 
 Converts a sequence of tokens (string) in a single string.
 #### create_token_type_ids_from_sequences[[transformers.PhobertTokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L200)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L198)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. PhoBERT does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -117,7 +117,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### get_special_tokens_mask[[transformers.PhobertTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phobert/tokenization_phobert.py#L172)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phobert/tokenization_phobert.py#L170)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.

@@ -1,6 +1,6 @@
 # Source: https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/increase-consistency.md
 
-# Increase output consistency (JSON mode)
+# Increase output consistency
 
 ---
 

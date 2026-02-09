@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/metered-vs-recurring.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metered vs Recurring
 
 > Usage-based charges can be either metered or recurring

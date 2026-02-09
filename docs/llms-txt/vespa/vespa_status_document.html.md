@@ -97,7 +97,7 @@ $ vespa status document
 
 - [vespa status](vespa_status.html) - Verify that a service is ready to use (query by default)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

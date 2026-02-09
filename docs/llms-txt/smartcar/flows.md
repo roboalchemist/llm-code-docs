@@ -1,8 +1,12 @@
 # Source: https://smartcar.com/docs/connect/advanced-config/flows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Flows
 
-> Connect can be launched with three different workflows (defult, single select, and single select with VIN). Depending on your use case and what information you  have about the vehicle ahead of a launching Connect, you may be able to leverage one of these flows for a more streamlined Connect experience.
+> Connect can be launched with three different workflows (default, single select, and single select with VIN). Depending on your use case and what information you  have about the vehicle ahead of a launching Connect, you may be able to leverage one of these flows for a more streamlined Connect experience.
 
 <Tabs>
   <Tab title="Default" defaultOpen="true">

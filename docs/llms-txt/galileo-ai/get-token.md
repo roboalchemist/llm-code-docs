@@ -1,121 +1,95 @@
 # Source: https://docs.galileo.ai/api-reference/auth/get-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Token
+
+
 
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json get /v1/token
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json get /v1/token
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/token
-  method: get
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            Galileo-API-Key:
-              type: apiKey
-          cookie: {}
-      - title: OAuth2PasswordBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: oauth2
-          cookie: {}
-      - title: HTTPBasic
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        organization_id:
+  /v1/token:
+    get:
+      tags:
+        - auth
+      summary: Get Token
+      operationId: get_token_v1_token_get
+      parameters:
+        - name: organization_id
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Organization Id
-              format: uuid4
-            - type: 'null'
-              required: false
-              title: Organization Id
-        organization_slug:
+            anyOf:
+              - type: string
+                format: uuid4
+              - type: 'null'
+            title: Organization Id
+        - name: organization_slug
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Organization Slug
-            - type: 'null'
-              required: false
-              title: Organization Slug
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              access_token:
-                allOf:
-                  - type: string
-                    title: Access Token
-              token_type:
-                allOf:
-                  - type: string
-                    title: Token Type
-                    default: bearer
-              expires_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Expires At
-            title: GetTokenResponse
-            refIdentifier: '#/components/schemas/GetTokenResponse'
-            requiredProperties:
-              - access_token
-              - expires_at
-        examples:
-          example:
-            value:
-              access_token: <string>
-              token_type: bearer
-              expires_at: '2023-11-07T05:31:56Z'
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Organization Slug
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTokenResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
+        - OAuth2PasswordBearer: []
+        - HTTPBasic: []
 components:
   schemas:
+    GetTokenResponse:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: bearer
+        expires_at:
+          type: string
+          format: date-time
+          title: Expires At
+      type: object
+      required:
+        - access_token
+        - expires_at
+      title: GetTokenResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -137,5 +111,19 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: Galileo-API-Key
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://api.staging.galileo.ai/login
+    HTTPBasic:
+      type: http
+      scheme: basic
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 You can add secrets (aka environment variables) to your application and to your previews. They are saved encrypted into Coolify's database.

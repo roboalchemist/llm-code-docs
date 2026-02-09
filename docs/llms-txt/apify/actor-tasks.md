@@ -2,7 +2,7 @@
 
 # Actor tasks - Introduction
 
-The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks. For more information, see the https://docs.apify.com/platform/actors/running/tasks.
+The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks. For more information, see the [Actor tasts documentation](https://docs.apify.com/platform/actors/running/tasks).
 
 note
 
@@ -10,66 +10,66 @@ For all the API endpoints that accept the `actorTaskId` parameter to specify a t
 
 Some of the API endpoints return run objects. If any such run object contains usage in dollars, your effective unit pricing at the time of query has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.
 
-You can learn more about platform usage in the https://docs.apify.com/platform/actors/running/usage-and-resources#usage.
+You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/actor-tasks-get.md
+## [Get list of tasks](https://docs.apify.com/api/v2/actor-tasks-get.md)
 
-https://docs.apify.com/api/v2/actor-tasks-get.md
+[/actor-tasks](https://docs.apify.com/api/v2/actor-tasks-get.md)
 
-## https://docs.apify.com/api/v2/actor-tasks-post.md
+## [Create task](https://docs.apify.com/api/v2/actor-tasks-post.md)
 
-https://docs.apify.com/api/v2/actor-tasks-post.md
+[/actor-tasks](https://docs.apify.com/api/v2/actor-tasks-post.md)
 
-## https://docs.apify.com/api/v2/actor-task-get.md
+## [Get task](https://docs.apify.com/api/v2/actor-task-get.md)
 
-https://docs.apify.com/api/v2/actor-task-get.md
+[/actor-tasks/{actorTaskId}](https://docs.apify.com/api/v2/actor-task-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-put.md
+## [Update task](https://docs.apify.com/api/v2/actor-task-put.md)
 
-https://docs.apify.com/api/v2/actor-task-put.md
+[/actor-tasks/{actorTaskId}](https://docs.apify.com/api/v2/actor-task-put.md)
 
-## https://docs.apify.com/api/v2/actor-task-delete.md
+## [Delete task](https://docs.apify.com/api/v2/actor-task-delete.md)
 
-https://docs.apify.com/api/v2/actor-task-delete.md
+[/actor-tasks/{actorTaskId}](https://docs.apify.com/api/v2/actor-task-delete.md)
 
-## https://docs.apify.com/api/v2/actor-task-input-get.md
+## [Get task input](https://docs.apify.com/api/v2/actor-task-input-get.md)
 
-https://docs.apify.com/api/v2/actor-task-input-get.md
+[/actor-tasks/{actorTaskId}/input](https://docs.apify.com/api/v2/actor-task-input-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-input-put.md
+## [Update task input](https://docs.apify.com/api/v2/actor-task-input-put.md)
 
-https://docs.apify.com/api/v2/actor-task-input-put.md
+[/actor-tasks/{actorTaskId}/input](https://docs.apify.com/api/v2/actor-task-input-put.md)
 
-## https://docs.apify.com/api/v2/actor-task-webhooks-get.md
+## [Get list of webhooks](https://docs.apify.com/api/v2/actor-task-webhooks-get.md)
 
-https://docs.apify.com/api/v2/actor-task-webhooks-get.md
+[/actor-tasks/{actorTaskId}/webhooks](https://docs.apify.com/api/v2/actor-task-webhooks-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-runs-get.md
+## [Get list of task runs](https://docs.apify.com/api/v2/actor-task-runs-get.md)
 
-https://docs.apify.com/api/v2/actor-task-runs-get.md
+[/actor-tasks/{actorTaskId}/runs](https://docs.apify.com/api/v2/actor-task-runs-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-runs-post.md
+## [Run task](https://docs.apify.com/api/v2/actor-task-runs-post.md)
 
-https://docs.apify.com/api/v2/actor-task-runs-post.md
+[/actor-tasks/{actorTaskId}/runs](https://docs.apify.com/api/v2/actor-task-runs-post.md)
 
-## https://docs.apify.com/api/v2/actor-task-run-sync-get.md
+## [Run task synchronously](https://docs.apify.com/api/v2/actor-task-run-sync-get.md)
 
-https://docs.apify.com/api/v2/actor-task-run-sync-get.md
+[/actor-tasks/{actorTaskId}/run-sync](https://docs.apify.com/api/v2/actor-task-run-sync-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-run-sync-post.md
+## [Run task synchronously](https://docs.apify.com/api/v2/actor-task-run-sync-post.md)
 
-https://docs.apify.com/api/v2/actor-task-run-sync-post.md
+[/actor-tasks/{actorTaskId}/run-sync](https://docs.apify.com/api/v2/actor-task-run-sync-post.md)
 
-## https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-get.md
+## [Run task synchronously and get dataset items](https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-get.md)
 
-https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-get.md
+[/actor-tasks/{actorTaskId}/run-sync-get-dataset-items](https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-get.md)
 
-## https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-post.md
+## [Run task synchronously and get dataset items](https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-post.md)
 
-https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-post.md
+[/actor-tasks/{actorTaskId}/run-sync-get-dataset-items](https://docs.apify.com/api/v2/actor-task-run-sync-get-dataset-items-post.md)
 
-## https://docs.apify.com/api/v2/actor-task-runs-last-get.md
+## [Get last run](https://docs.apify.com/api/v2/actor-task-runs-last-get.md)
 
-https://docs.apify.com/api/v2/actor-task-runs-last-get.md
+[/actor-tasks/{actorTaskId}/runs/last](https://docs.apify.com/api/v2/actor-task-runs-last-get.md)

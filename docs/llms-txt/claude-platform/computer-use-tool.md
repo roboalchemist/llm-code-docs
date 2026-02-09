@@ -10,6 +10,8 @@ Claude can interact with computer environments through the computer use tool, wh
 Computer use is currently in beta and requires a [beta header](/docs/en/api/beta-headers):
 - `"computer-use-2025-11-24"` for Claude Opus 4.5
 - `"computer-use-2025-01-24"` for Claude Sonnet 4.5, Haiku 4.5, Opus 4.1, Sonnet 4, Opus 4, and Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations))
+
+Please reach out through our [feedback form](https://forms.gle/H6UFuXaaLywri9hz6) to share your feedback on this feature.
 </Note>
 
 ## Overview
@@ -42,13 +44,16 @@ Older tool versions are not guaranteed to be backwards-compatible with newer mod
 
 ## Security considerations
 
-<Warning>
-Computer use is a beta feature with unique risks distinct from standard API features. These risks are heightened when interacting with the internet. To minimize risks, consider taking precautions such as:
+Computer use is a beta feature with unique risks distinct from standard API features. These risks are heightened when interacting with the internet.
 
-1. Use a dedicated virtual machine or container with minimal privileges to prevent direct system attacks or accidents.
-2. Avoid giving the model access to sensitive data, such as account login information, to prevent information theft.
-3. Limit internet access to an allowlist of domains to reduce exposure to malicious content.
-4. Ask a human to confirm decisions that may result in meaningful real-world consequences as well as any tasks requiring affirmative consent, such as accepting cookies, executing financial transactions, or agreeing to terms of service.
+<Warning>
+To minimize risks, consider taking precautions such as:
+
+1. Using a dedicated virtual machine or container with minimal privileges to prevent direct system attacks or accidents.
+2. Avoiding giving the model access to sensitive data, such as account login information, to prevent information theft.
+3. Limiting internet access to an allowlist of domains to reduce exposure to malicious content.
+4. Asking a human to confirm decisions that may result in meaningful real-world consequences as well as any tasks requiring affirmative consent, such as accepting cookies, executing financial transactions, or agreeing to terms of service.
+</Warning>
 
 In some circumstances, Claude will follow commands found in content even if it conflicts with the user's instructions. For example, Claude instructions on webpages or contained in images may override instructions or cause Claude to make mistakes. We suggest taking precautions to isolate Claude from sensitive data and actions to avoid risks related to prompt injection.
 
@@ -57,8 +62,6 @@ We've trained the model to resist these prompt injections and have added an extr
 We still suggest taking precautions to isolate Claude from sensitive data and actions to avoid risks related to prompt injection.
 
 Finally, please inform end users of relevant risks and obtain their consent prior to enabling computer use in your own products.
-
-</Warning>
 
 <Card
   title="Computer use reference implementation"
@@ -162,19 +165,19 @@ The example above shows all three tools being used together, which requires the 
 
 <Steps>
   <Step
-    title="1. Provide Claude with the computer use tool and a user prompt"
+    title="Provide Claude with the computer use tool and a user prompt"
     icon="tool"
   >
     - Add the computer use tool (and optionally other tools) to your API request.
     - Include a user prompt that requires desktop interaction, e.g., "Save a picture of a cat to my desktop."
   </Step>
-  <Step title="2. Claude decides to use the computer use tool" icon="wrench">
+  <Step title="Claude decides to use the computer use tool" icon="wrench">
     - Claude assesses if the computer use tool can help with the user's query.
     - If yes, Claude constructs a properly formatted tool use request.
     - The API response has a `stop_reason` of `tool_use`, signaling Claude's intent.
   </Step>
   <Step
-    title="3. Extract tool input, evaluate the tool on a computer, and return results"
+    title="Extract tool input, evaluate the tool on a computer, and return results"
     icon="computer"
   >
     - On your end, extract the tool name and input from Claude's request.
@@ -182,7 +185,7 @@ The example above shows all three tools being used together, which requires the 
     - Continue the conversation with a new `user` message containing a `tool_result` content block.
   </Step>
   <Step
-    title="4. Claude continues calling computer use tools until it's completed the task"
+    title="Claude continues calling computer use tools until it's completed the task"
     icon="arrows-clockwise"
   >
     - Claude analyzes the tool results to determine if more tool use is needed or the task has been completed.
@@ -356,7 +359,7 @@ Available in Claude 4 models and Claude Sonnet 3.7:
 - **right_click**, **middle_click** - Additional mouse buttons
 - **double_click**, **triple_click** - Multiple clicks
 - **left_mouse_down**, **left_mouse_up** - Fine-grained click control
-- **hold_key** - Hold a key while performing other actions
+- **hold_key** - Hold down a key for a specified duration (in seconds)
 - **wait** - Pause between actions
 
 **Enhanced actions (`computer_20251124`)**
@@ -401,6 +404,46 @@ Available in Claude Opus 4.5:
 
 </section>
 
+<section title="Modifier keys with click and scroll actions">
+
+To hold modifier keys (like Shift, Ctrl, or Alt) while performing click or scroll actions, use the `text` parameter on those actions. This is different from `hold_key`, which simply holds a key for a duration without performing other actions.
+
+```json
+// Shift+click (e.g., for selecting a range of items)
+{
+  "action": "left_click",
+  "coordinate": [500, 300],
+  "text": "shift"
+}
+
+// Ctrl+click (e.g., for multi-select on Windows/Linux)
+{
+  "action": "left_click",
+  "coordinate": [500, 300],
+  "text": "ctrl"
+}
+
+// Cmd+click (e.g., for multi-select on macOS)
+{
+  "action": "left_click",
+  "coordinate": [500, 300],
+  "text": "super"
+}
+
+// Shift+scroll (e.g., for horizontal scrolling)
+{
+  "action": "scroll",
+  "coordinate": [500, 400],
+  "scroll_direction": "down",
+  "scroll_amount": 3,
+  "text": "shift"
+}
+```
+
+The `text` parameter in click/scroll actions accepts modifier keys like `shift`, `ctrl`, `alt`, and `super` (for the Command/Windows key).
+
+</section>
+
 ### Tool parameters
 
 | Parameter | Required | Description |
@@ -411,10 +454,6 @@ Available in Claude Opus 4.5:
 | `display_height_px` | Yes | Display height in pixels |
 | `display_number` | No | Display number for X11 environments |
 | `enable_zoom` | No | Enable zoom action (`computer_20251124` only). Set to `true` to allow Claude to zoom into specific screen regions. Default: `false` |
-
-<Warning>
-Keep display resolution at or below 1280x800 (WXGA) for best performance. Higher resolutions may cause accuracy issues due to [image resizing](/docs/en/build-with-claude/vision#evaluate-image-size).
-</Warning>
 
 <Note>
 **Important**: The computer use tool must be explicitly executed by your application - Claude cannot execute it directly. You are responsible for implementing the screenshot capture, mouse movements, keyboard inputs, and other actions based on Claude's requests.
@@ -822,6 +861,74 @@ If an action fails to execute:
 
 </section>
 
+#### Handle coordinate scaling for higher resolutions
+
+The API constrains images to a maximum of 1568 pixels on the longest edge and approximately 1.15 megapixels total (see [image resizing](/docs/en/build-with-claude/vision#evaluate-image-size) for details). For example, a 1512x982 screen gets downsampled to approximately 1330x864. Claude analyzes this smaller image and returns coordinates in that space, but your tool executes clicks in the original screen space.
+
+This can cause Claude's click coordinates to miss their targets unless you handle the coordinate transformation.
+
+To fix this, resize screenshots yourself and scale Claude's coordinates back up:
+
+<CodeGroup>
+```python Python
+import math
+
+def get_scale_factor(width, height):
+    """Calculate scale factor to meet API constraints."""
+    long_edge = max(width, height)
+    total_pixels = width * height
+
+    long_edge_scale = 1568 / long_edge
+    total_pixels_scale = math.sqrt(1_150_000 / total_pixels)
+
+    return min(1.0, long_edge_scale, total_pixels_scale)
+
+# When capturing screenshot
+scale = get_scale_factor(screen_width, screen_height)
+scaled_width = int(screen_width * scale)
+scaled_height = int(screen_height * scale)
+
+# Resize image to scaled dimensions before sending to Claude
+screenshot = capture_and_resize(scaled_width, scaled_height)
+
+# When handling Claude's coordinates, scale them back up
+def execute_click(x, y):
+    screen_x = x / scale
+    screen_y = y / scale
+    perform_click(screen_x, screen_y)
+```
+
+```typescript TypeScript
+const MAX_LONG_EDGE = 1568;
+const MAX_PIXELS = 1_150_000;
+
+function getScaleFactor(width: number, height: number): number {
+  const longEdge = Math.max(width, height);
+  const totalPixels = width * height;
+
+  const longEdgeScale = MAX_LONG_EDGE / longEdge;
+  const totalPixelsScale = Math.sqrt(MAX_PIXELS / totalPixels);
+
+  return Math.min(1.0, longEdgeScale, totalPixelsScale);
+}
+
+// When capturing screenshot
+const scale = getScaleFactor(screenWidth, screenHeight);
+const scaledWidth = Math.floor(screenWidth * scale);
+const scaledHeight = Math.floor(screenHeight * scale);
+
+// Resize image to scaled dimensions before sending to Claude
+const screenshot = captureAndResize(scaledWidth, scaledHeight);
+
+// When handling Claude's coordinates, scale them back up
+function executeClick(x: number, y: number): void {
+  const screenX = x / scale;
+  const screenY = y / scale;
+  performClick(screenX, screenY);
+}
+```
+</CodeGroup>
+
 #### Follow implementation best practices
 
 <section title="Use appropriate display resolution">
@@ -839,6 +946,7 @@ When returning screenshots to Claude:
 - Encode screenshots as base64 PNG or JPEG
 - Consider compressing large screenshots to improve performance
 - Include relevant metadata like timestamp or display state
+- If using higher resolutions, ensure coordinates are accurately scaled
 
 </section>
 

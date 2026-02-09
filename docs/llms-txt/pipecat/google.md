@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/stt/google.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/google.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/google.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/google.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/google.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Google
 
@@ -59,8 +55,3 @@ Before using Google Cloud STT services, you need:
 
 * `GOOGLE_APPLICATION_CREDENTIALS`: Path to your service account key file (recommended)
 * Or use Application Default Credentials for cloud deployments
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

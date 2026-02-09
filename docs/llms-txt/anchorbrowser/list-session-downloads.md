@@ -1,133 +1,97 @@
 # Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/list-session-downloads.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Session Downloads
 
 > Retrieves metadata of files downloaded during a browser session. Requires a valid API key for authentication.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/sessions/{session_id}/downloads
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{session_id}/downloads
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        session_id:
+  /v1/sessions/{session_id}/downloads:
+    get:
+      tags:
+        - Browser Sessions
+      summary: List Session Downloads
+      description: >-
+        Retrieves metadata of files downloaded during a browser session.
+        Requires a valid API key for authentication.
+      parameters:
+        - in: path
+          name: session_id
+          required: true
+          description: >-
+            The unique identifier of the browser session to retrieve downloads
+            for.
           schema:
-            - type: string
-              required: true
-              description: >-
-                The unique identifier of the browser session to retrieve
-                downloads for.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      count:
-                        type: integer
-                        description: Total number of downloads
-                      items:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/DownloadItem'
-            refIdentifier: '#/components/schemas/DownloadListResponse'
-        examples:
-          example:
-            value:
-              data:
-                count: 123
-                items:
-                  - id: <string>
-                    file_link: <string>
-                    original_download_url: <string>
-                    origin_url: <string>
-                    suggested_file_name: <string>
-                    original_file_name: <string>
-                    duration: 123
-                    size: 123
-                    created_at: '2023-11-07T05:31:56Z'
-        description: A list of download metadata associated with the browser session.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid or missing API key.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: The browser session or its downloads metadata could not be found.
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Too many requests, please try again later.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A list of download metadata associated with the browser session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DownloadListResponse'
+        '401':
+          description: Invalid or missing API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: The browser session or its downloads metadata could not be found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests, please try again later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    DownloadListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total number of downloads
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/DownloadItem'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     DownloadItem:
       type: object
       properties:
@@ -164,5 +128,11 @@ components:
           type: string
           format: date-time
           description: The timestamp when the file record was created.
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

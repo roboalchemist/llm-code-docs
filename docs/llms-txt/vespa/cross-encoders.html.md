@@ -258,7 +258,7 @@ The `best_input` uses a tensor join between the `closest(embedding)` tensor and 
 
 This tensor is used in the other Transformer-related functions (`tokenTypeIds tokenAttentionMask tokenInputIds`) as the document tokens.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

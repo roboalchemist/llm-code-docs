@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/datasets/importing-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Importing Request Logs
 
 >  Search and filter your past LLM requests to inspect your responses and build a training dataset.
@@ -7,10 +11,10 @@
 Logged requests will be visible on your project's [Request Logs](https://app.openpipe.ai/p/BRZFEx50Pf/request-logs?filterData=%7B%22shown%22%3Atrue%2C%22filters%22%3A%5B%7B%22id%22%3A%221706912835890%22%2C%22field%22%3A%22request%22%2C%22comparator%22%3A%22CONTAINS%22%2C%22value%22%3A%22You+are+an+expert%22%7D%2C%7B%22id%22%3A%221706912850914%22%2C%22field%22%3A%22response%22%2C%22comparator%22%3A%22NOT_CONTAINS%22%2C%22value%22%3A%22As+an+AI+language+model%22%7D%2C%7B%22id%22%3A%221706912861496%22%2C%22field%22%3A%22model%22%2C%22comparator%22%3A%22%3D%22%2C%22value%22%3A%22gpt-4-0613%22%7D%2C%7B%22id%22%3A%221706912870230%22%2C%22field%22%3A%22tags.prompt_id%22%2C%22comparator%22%3A%22CONTAINS%22%2C%22value%22%3A%22redaction%22%7D%5D%7D) page.
 You can filter your logs by completionId, model, custom tags, and more to narrow down your results.
 
-<Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/features/log-filters.png)</Frame>
+<Frame><img src="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=73769966132c8ba4e236c5d730078f68" alt="" data-og-width="2326" width="2326" data-og-height="1482" height="1482" data-path="images/features/log-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=280&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=e1b3f8778c4e0e90482cf27011a79756 280w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=560&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=c508cfdfd7d46a23c29d9b0475aaea44 560w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=840&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=d806eb490aa9b028568940db8071721e 840w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=1100&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=86a65c8c217fcf4322de587fad352925 1100w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=1650&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=751fa836b812ab6b16a159d318df45b2 1650w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/log-filters.png?w=2500&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=6fbd30bda11141654e611dc92fc46ffa 2500w" /></Frame>
 
 Once you've found a set of data that you'd like to train on, import those logs into the dataset of your choice.
 
-<Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/features/importing-logs.png)</Frame>
+<Frame><img src="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=ec9931dd27b907d15779cf05417d0229" alt="" data-og-width="2334" width="2334" data-og-height="1322" height="1322" data-path="images/features/importing-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=280&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=9207c29574e6610c5b642a4561c329c0 280w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=560&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=b29816cbb8bd1de59cdaa89df8467873 560w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=840&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=83472d84d87507926c48066c4037893a 840w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=1100&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=3b06fe00f59b2e680e6b5032d261dfec 1100w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=1650&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=0bc2e6e7dc67864263c436168251a6b5 1650w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/importing-logs.png?w=2500&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=b7d24882388fd6ad4095fea4d5f15c01 2500w" /></Frame>
 
 After your data has been saved to your dataset, [kicking off a training job](/features/fine-tuning) is straightforward.

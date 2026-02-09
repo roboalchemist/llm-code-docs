@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/receiving/get-email-content.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Email Content
 
 > Get the body and headers of a received email.
@@ -18,7 +22,7 @@ After receiving the webhook event, call the [Receiving API](/api-reference/email
 
 Here's an example in a Next.js application:
 
-```js app/api/events/route.ts theme={null}
+```js app/api/events/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';

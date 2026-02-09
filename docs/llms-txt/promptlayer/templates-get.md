@@ -1,10 +1,22 @@
 # Source: https://docs.promptlayer.com/reference/templates-get.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Prompt Template
 
 Retrieve a prompt template using either the `prompt_name` or `prompt_id`. Optionally, specify `version` (version number) or `label` (release label like "prod") to retrieve a specific version. If not specified, the latest version is returned.
 
 PromptLayer will try to read the model provider from the parameters you attached to the prompt template. You can optionally pass in a `provider` to override the one set in the Prompt Registry. This will return LLM-specific arguments that can be passed directly into your LLM client. To format the template with input variables, use `input_variables`.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `llm_kwargs` object in the response is provider-specific and its structure may change without notice as LLM providers update their APIs (e.g., Provider's system message format changing from string to an array).
+
+  For stable, provider-agnostic prompt data, use `prompt_template` instead of `llm_kwargs`. Do not hard-code assumptions about `llm_kwargs` structure in production applications.
+</Warning>
 
 
 ## OpenAPI
@@ -159,7 +171,10 @@ components:
           description: >-
             When you optionally specify `provider` in the body, `llm_kwargs`
             will be returned for that specific provider and you can pass these
-            kwargs to the provider's API directly.
+            kwargs to the provider's API directly. **Important:** This object's
+            structure is provider-specific and may change without notice as LLM
+            providers update their APIs. For stable, provider-agnostic prompt
+            data, use `prompt_template` instead.
         version:
           type: integer
           title: Version
@@ -875,7 +890,3 @@ components:
       title: ToolCall
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

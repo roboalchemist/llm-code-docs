@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/getting-started.md
 
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Welcome to Windsurf Plugins
+
+> Install and set up Windsurf Plugins for JetBrains, VS Code, Visual Studio, Vim, NeoVim, Jupyter, Chrome, and other IDEs with AI-powered coding assistance.
 
 **Windsurf Plugins** bring our suite of AI tools to various IDEs and editors, empowering developers to dream bigger by meeting them where they are.
 
@@ -61,149 +55,157 @@
   </Card>
 </CardGroup>
 
-## Plugin Set Up
+## Jetbrains
 
-Our plugins for Visual Studio Code and JetBrains are our most popular plugins.
-The installation steps for these two are given below.
-For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, and more, visit [our download page](https://windsurf.com/download) to get started.
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All other plugins are under maintenance mode.
 
 <Note>
   These steps do not apply for enterprises on a self-hosted plan.
   If you are an enterprise user, please refer to the instructions in your enterprise portal.
 </Note>
 
+<Note>
+  For remote development environments, use the "Windsurf (Remote Development)" plugin instead. See the [Remote Development section](#remote-development-maintenance-mode) below.
+</Note>
+
+<Steps>
+  <Step title="Install Local Plugin">
+    Open the `Plugins` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for the Windsurf plugin, and install it. The plugin loader will prompt you to restart the IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e33799e1448d861a017d76f8c81daab8" data-og-width="1368" width="1368" data-og-height="1052" height="1052" data-path="assets/jetbrains_plugin_install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9fd0638ea39f24f470cd24a8d6e3700a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8c9b4838d07cbb0cb477f49fcf7659f 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=72dc21e16b15c6f2b0e13ceed560f8c4 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e1f9d2bceffa745a5487787382ebbfa4 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=94428045a530787f402d9cfa389729f8 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4f00851b0234e8a481aa9a20c72961f9 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Wait for Language Server">
+    Upon successful installation, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
+
+    You should see a notification on the bottom right to indicate the progress of the download.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize">
+    Open a project. Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
+    </Frame>
+
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="All Done!">
+    You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
+
+    At any point, you can check your status by clicking the status bar widget at the bottom right.
+    If logged in, you will have access to your Windsurf settings and other controls.
+
+    If you'd like early access to new features, click on "Switch to Pre-Release"
+    to try out the [latest pre-release version](https://plugins.jetbrains.com/plugin/20540-windsurf-plugin-for-python-js-java-go--/versions/pre-release)
+    of the plugin.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=88a5e47f629e1845d61e658b5deb78cb" data-og-width="688" width="688" data-og-height="542" height="542" data-path="assets/jetbrains_status_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ca052f2cf4072827fe0180984f6d1d5 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2fbb2d670a421204bc26db5ab2e68ba4 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=129172ac81e47df236bf764927276358 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=16f1bcd9b876b8798efc5c2d40c692e8 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=209654eb653db633278201a472142377 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aac0c027b201204d2e095e6e0729f68 2500w" />
+    </Frame>
+  </Step>
+</Steps>
+
+### Remote Development (maintenance mode)
+
+For JetBrains IDEs used in remote development environments, you need to use the separate "Windsurf (Remote Development)" plugin.
+
+This plugin is in maintenance mode. For advanced agentic AI capabilities and cutting-edge features, we strongly recommend using the native Windsurf Editor or the JetBrains local plugin.
+
+#### Requirements
+
+* JetBrains IDE version 2025.1.3 or greater
+
+#### Installation Steps
+
+<Steps>
+  <Step title="Install on Host">
+    Open the `Plugins (Host)` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
+    Search for **"Windsurf (Remote Development)"** and install it.
+    Restart your IDE when prompted.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d211e58031d19dd7c14625882e105068" data-og-width="1494" width="1494" data-og-height="1110" height="1110" data-path="assets/jetbrains_remote_plugin_install_host.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=414c87310c072979677ba0f40c87ca39 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2730fab386283bcda33d7dd3a4bcc680 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ffc5ed84ab5b76a7988ec43d13d9bd0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b89fbb65563423783a5e3bdc10f1b798 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0bc28c1317b0f8d495bfc8d528103644 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7e116f50fadc495064267b0f28949269 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Install on Client">
+    Open the `Plugins (Client)` menu and search for **"Windsurf (Remote Development)"**.
+    Install the plugin and restart the IDE again.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ab22c1e39b3e2213a042c5b77e9485da" data-og-width="1496" width="1496" data-og-height="1098" height="1098" data-path="assets/jetbrains_remote_plugin_install_client.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db937a60880616dd0bd4a5f596ba92ec 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8dec360498151e89fb91d5f44ed377d3 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1d9289fbf9d8439ee32f6e788d00a4cf 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7dcc7308ca332a6ec3958bb7d0ab4b3e 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e306e9c40b837c5ac92d9dff86383483 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c249ed8f90c6ff91d2893bf5cfb3c0b 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Wait for Language Server">
+    After installing the plugin on the host, Windsurf will begin downloading a language server.
+    This is the program that communicates with our APIs to let you use Windsurf's AI features.
+    The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
+    In the meantime, you are free to use your IDE as usual.
+
+    You should see a notification on the bottom right to indicate the progress of the download.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="Authorize">
+    After the language server download is completed, Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
+    Equivalently, click the widget at the right of the bottom status bar and select the login option there.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
+    </Frame>
+
+    If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
+    </Frame>
+
+    Once you have logged in online, the webpage will indicate that you can return to your IDE.
+
+    <Frame>
+      <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
+    </Frame>
+  </Step>
+
+  <Step title="All Done!">
+    You can now use Windsurf's AI features in your remote development environment.
+  </Step>
+</Steps>
+
+## Older Plugins
+
+We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+All plugins below are under maintenance mode.
+
 <Tabs>
-  <Tab title="JetBrains">
-    <Note>
-      For remote development environments, use the "Windsurf (Remote Development)" plugin instead. See the [Remote Development section](#remote-development) below.
-    </Note>
-
-    <Steps>
-      <Step title="Install Plugin">
-        Open the `Plugins` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
-        Search for the Windsurf plugin, and install it. The plugin loader will prompt you to restart the IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e33799e1448d861a017d76f8c81daab8" data-og-width="1368" width="1368" data-og-height="1052" height="1052" data-path="assets/jetbrains_plugin_install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9fd0638ea39f24f470cd24a8d6e3700a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b8c9b4838d07cbb0cb477f49fcf7659f 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=72dc21e16b15c6f2b0e13ceed560f8c4 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e1f9d2bceffa745a5487787382ebbfa4 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=94428045a530787f402d9cfa389729f8 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_plugin_install.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4f00851b0234e8a481aa9a20c72961f9 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Wait for Language Server">
-        Upon successful installation, Windsurf will begin downloading a language server.
-        This is the program that communicates with our APIs to let you use Windsurf's AI features.
-        The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
-        In the meantime, you are free to use your IDE as usual.
-
-        You should see a notification on the bottom right to indicate the progress of the download.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Authorize">
-        Open a project. Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
-        Equivalently, click the widget at the right of the bottom status bar and select the login option there.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
-        </Frame>
-
-        If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
-        </Frame>
-
-        Once you have logged in online, the webpage will indicate that you can return to your IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="All Done!">
-        You can now enjoy Windsurf's rich AI featureset: Autocomplete, Chat, Command, and more.
-
-        At any point, you can check your status by clicking the status bar widget at the bottom right.
-        If logged in, you will have access to your Windsurf settings and other controls.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=88a5e47f629e1845d61e658b5deb78cb" data-og-width="688" width="688" data-og-height="542" height="542" data-path="assets/jetbrains_status_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6ca052f2cf4072827fe0180984f6d1d5 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2fbb2d670a421204bc26db5ab2e68ba4 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=129172ac81e47df236bf764927276358 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=16f1bcd9b876b8798efc5c2d40c692e8 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=209654eb653db633278201a472142377 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_status_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4aac0c027b201204d2e095e6e0729f68 2500w" />
-        </Frame>
-      </Step>
-    </Steps>
-
-    ## Remote Development
-
-    For JetBrains IDEs used in remote development environments, you need to use the separate "Windsurf (Remote Development)" plugin.
-
-    ### Requirements
-
-    * JetBrains IDE version 2025.1.3 or greater
-
-    ### Installation Steps
-
-    <Steps>
-      <Step title="Install on Host">
-        Open the `Plugins (Host)` menu in your JetBrains IDE. The shortcut for this is `⌘+,` on Mac and `Ctrl+,` on Linux/Windows. It is also accessible from the settings menu.
-        Search for **"Windsurf (Remote Development)"** and install it.
-        Restart your IDE when prompted.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d211e58031d19dd7c14625882e105068" data-og-width="1494" width="1494" data-og-height="1110" height="1110" data-path="assets/jetbrains_remote_plugin_install_host.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=414c87310c072979677ba0f40c87ca39 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=2730fab386283bcda33d7dd3a4bcc680 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=3ffc5ed84ab5b76a7988ec43d13d9bd0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b89fbb65563423783a5e3bdc10f1b798 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0bc28c1317b0f8d495bfc8d528103644 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_host.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7e116f50fadc495064267b0f28949269 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Install on Client">
-        Open the `Plugins (Client)` menu and search for **"Windsurf (Remote Development)"**.
-        Install the plugin and restart the IDE again.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ab22c1e39b3e2213a042c5b77e9485da" data-og-width="1496" width="1496" data-og-height="1098" height="1098" data-path="assets/jetbrains_remote_plugin_install_client.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db937a60880616dd0bd4a5f596ba92ec 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8dec360498151e89fb91d5f44ed377d3 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1d9289fbf9d8439ee32f6e788d00a4cf 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7dcc7308ca332a6ec3958bb7d0ab4b3e 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e306e9c40b837c5ac92d9dff86383483 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_remote_plugin_install_client.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c249ed8f90c6ff91d2893bf5cfb3c0b 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Wait for Language Server">
-        After installing the plugin on the host, Windsurf will begin downloading a language server.
-        This is the program that communicates with our APIs to let you use Windsurf's AI features.
-        The download usually takes ten to twenty seconds, but the download speed may depend on your internet connection.
-        In the meantime, you are free to use your IDE as usual.
-
-        You should see a notification on the bottom right to indicate the progress of the download.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=83c47b7eb7dc9329b628a46e8907def2" data-og-width="1174" width="1174" data-og-height="158" height="158" data-path="assets/jetbrains_ls_download_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=e61bb008da3ab29782aceef44a2e9d88 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=6eeba8339ea901196394bf1912132cef 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1c65098e81553ff68bf4bff80eb976a0 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23a76b659007fe928a2cf6ff314a68e5 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=25969302c3a2abbbb60a2daa80bccd25 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_ls_download_bar.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f04b9995097d675928760a7e546d5713 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="Authorize">
-        After the language server download is completed, Windsurf should prompt you to log in with a notification popup at the bottom right linking you to an online login page.
-        Equivalently, click the widget at the right of the bottom status bar and select the login option there.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=bfa992229c936db6bf7a8127db88f45a" data-og-width="690" width="690" data-og-height="230" height="230" data-path="assets/jetbrains_login_widget.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=09182ac0963790dec8622fb99e34beb0 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7fe6b1876ddc3720f719d04300ea5f55 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=9d30ffe36b2a622968d83d90d2ea6d5b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=93f54e0d9ccbc80f9b7d66e6a6378e14 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ad5d4305bcec8771cf038bde807640b0 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/jetbrains_login_widget.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=df3653940d8c5336400baa666cf9e47b 2500w" />
-        </Frame>
-
-        If you do not have an account or otherwise are not already logged in online, you will be prompted to login.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=672f1635e88f7046b5eb4b3105a2df7a" data-og-width="1896" width="1896" data-og-height="1442" height="1442" data-path="assets/login_prompt_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=db65794f3cc9d2d96e9749cfb9b80483 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=1e2030393a08040b3edce944b1003b7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=b26d305a7c779494bb0ed0163a5b8357 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=89f1408e2589cef146bbf5dbe02a50a3 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=fa96ee1301840a5549005389757324cd 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_prompt_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=8d5b9aaeaf0f0c2fd75ee1bd12a9e849 2500w" />
-        </Frame>
-
-        Once you have logged in online, the webpage will indicate that you can return to your IDE.
-
-        <Frame>
-          <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d7984d21a30dec05af01c3cd7e7b8f7c" data-og-width="1702" width="1702" data-og-height="450" height="450" data-path="assets/login_successful_webpage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d8eca1dc4cfeb08312bf679c0697631d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=23cd31e8b0d21511fb91807ee653f899 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=beb4a54dac8a5dac142434ca28da5620 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=0c06cd132ae347e4237a2952c4c41dce 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=65828b581f20e71d39c398c1309b0056 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/login_successful_webpage.png?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=98db7a38bf6b302ba716262e7241266d 2500w" />
-        </Frame>
-      </Step>
-
-      <Step title="All Done!">
-        You can now use Windsurf's AI features in your remote development environment.
-      </Step>
-    </Steps>
-  </Tab>
-
   <Tab title="Visual Studio Code">
     <Steps>
       <Step title="Install Plugin">
@@ -247,7 +249,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Vim / Neovim">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Install Plugin">
@@ -255,7 +257,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="Setup">
@@ -285,7 +287,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Visual Studio">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Open Extension Marketplace">
@@ -321,7 +323,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="Setup">
@@ -347,7 +349,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Jupyter Notebook">
-    ## Install Windsurf Plugin
+    ### Install Windsurf Plugin
 
     <Steps>
       <Step title="Install Jupyter Extension">
@@ -403,7 +405,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf Plugin
+    ### Using Windsurf Plugin
 
     <Steps>
       <Step title="From Code">
@@ -427,7 +429,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Chrome">
-    ## Install Windsurf
+    ### Install Windsurf
 
     <Steps>
       <Step title="Install Chrome Extension">
@@ -463,7 +465,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       </Step>
     </Steps>
 
-    ## Using Windsurf
+    ### Using Windsurf
 
     <Steps>
       <Step title="From Code">
@@ -487,7 +489,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
   </Tab>
 
   <Tab title="Eclipse">
-    ## Extension Installation
+    ### Extension Installation
 
     <Steps>
       <Step title="Drag the Install button">
@@ -529,7 +531,7 @@ For other IDEs and editors like Eclipse, Visual Studio, Neovim, Google Colab, an
       <Step title="All Done!">You’re ready to use Windsurf in Eclipse.</Step>
     </Steps>
 
-    ## Using Windsurf
+    ### Using Windsurf
 
     <Steps>
       <Step title="Setup">

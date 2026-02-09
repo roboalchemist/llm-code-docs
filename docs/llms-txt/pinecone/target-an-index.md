@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/target-an-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Target an index
 
 > Target an index by host or name for data operations such as upsert and query.
@@ -274,7 +278,7 @@ To get an index host from the Pinecone API, use the [`describe_index`](/referenc
 
   curl -i -X GET "https://api.pinecone.io/indexes/docs-example-curl" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
 
   # Response:
   # {

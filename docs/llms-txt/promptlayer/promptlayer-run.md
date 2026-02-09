@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/running-requests/promptlayer-run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run
 
 The `run()` method is a core function of the PromptLayer SDK, allowing you to execute prompts and interact with various LLM providers using a unified interface.
@@ -174,7 +178,15 @@ When streaming is enabled, each chunk includes both the raw streaming response a
 
 ### Overriding Model Parameters
 
-You can also override `provider` and `model` at runtime to choose a different LLM provider or model. This is useful if you want to use a different provider than the one specified in the prompt template. PromptLayer will automatically return the corrent `llm_kwargs` for the specified provider and model with default values for the parameters corresponding to the `provider` and `model`.
+You can also override `provider` and `model` at runtime to choose a different LLM provider or model. This is useful if you want to use a different provider than the one specified in the prompt template. PromptLayer will automatically return the correct `llm_kwargs` for the specified provider and model with default values for the parameters corresponding to the `provider` and `model`.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `llm_kwargs` and `raw_response` objects have provider-specific structures that may change as LLM providers update their APIs. PromptLayer passes through the native format required by each provider.
+
+  For stable, provider-agnostic prompt data, use `prompt_blueprint.prompt_template` instead of relying on the structure of provider-specific objects.
+</Warning>
 
 <CodeGroup>
   ```python Python SDK theme={null}
@@ -197,8 +209,3 @@ You can also override `provider` and `model` at runtime to choose a different LL
 <Tip>
   Make sure to set both `model` and `provider` in order to run the request against correct LLM provider with correct parameters.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

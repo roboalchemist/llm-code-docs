@@ -144,27 +144,24 @@ You can also use the `active-class` and `inactive-class` props to customize the 
 </template>
 ```
 
-<tip>
-
-You can configure these styles globally in your `app.config.ts` file under the `ui.button.variants.active` key.
-
-```ts
-export default defineAppConfig({
-  ui: {
-    button: {
-      variants: {
-        active: {
-          true: {
-            base: 'font-bold'
-          }
-        }
-      }
-    }
-  }
-})
-```
-
-</tip>
+> [!TIP]
+> You can configure these styles globally in your `app.config.ts` file under the `ui.button.variants.active` key.
+> ```ts
+> export default defineAppConfig({
+>   ui: {
+>     button: {
+>       variants: {
+>         active: {
+>           true: {
+>             base: 'font-bold'
+>           }
+>         }
+>       }
+>     }
+>   }
+> })
+> 
+> ```
 
 ### Loading
 
@@ -234,23 +231,15 @@ Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -322,7 +311,7 @@ interface ButtonProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -334,7 +323,7 @@ interface ButtonProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -342,7 +331,7 @@ interface ButtonProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -350,11 +339,11 @@ interface ButtonProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * Route Location the link should navigate to when clicked on.
    */
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   /**
    * Class to apply when the link is active
    */
@@ -375,47 +364,6 @@ interface ButtonProps {
    * Calls `router.replace` instead of `router.push`.
    */
   replace?: boolean | undefined;
-  /**
-   * An alias for `to`. If used with `to`, `href` will be ignored
-   */
-  href?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
-  /**
-   * Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases
-   */
-  external?: boolean | undefined;
-  /**
-   * Where to display the linked URL, as the name for a browsing context.
-   */
-  target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
-  /**
-   * A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links.
-   */
-  rel?: (string & {}) | "noopener" | "noreferrer" | "nofollow" | "sponsored" | "ugc" | null | undefined;
-  /**
-   * If set to true, no rel attribute will be added to the link
-   */
-  noRel?: boolean | undefined;
-  /**
-   * A class to apply to links that have been prefetched.
-   */
-  prefetchedClass?: string | undefined;
-  /**
-   * When enabled will prefetch middleware, layouts and payloads of links in the viewport.
-   */
-  prefetch?: boolean | undefined;
-  /**
-   * Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.
-   */
-  prefetchOn?: "visibility" | "interaction" | Partial<{ visibility: boolean; interaction: boolean; }> | undefined;
-  /**
-   * Escape hatch to disable `prefetch` attribute.
-   */
-  noPrefetch?: boolean | undefined;
-  /**
-   * An option to either add or remove trailing slashes in the `href` for this specific link.
-   * Overrides the global `trailingSlash` option if provided.
-   */
-  trailingSlash?: "append" | "remove" | undefined;
   autofocus?: Booleanish | undefined;
   disabled?: boolean | undefined;
   form?: string | undefined;
@@ -430,9 +378,21 @@ interface ButtonProps {
    */
   type?: "reset" | "submit" | "button" | undefined;
   download?: any;
+  /**
+   * An alias for `to`. If used with `to`, `href` will be ignored
+   */
+  href?: string | kt | Tt | undefined;
   hreflang?: string | undefined;
   media?: string | undefined;
   ping?: string | undefined;
+  /**
+   * A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links.
+   */
+  rel?: "noopener" | "noreferrer" | "nofollow" | "sponsored" | "ugc" | (string & {}) | null | undefined;
+  /**
+   * Where to display the linked URL, as the name for a browsing context.
+   */
+  target?: (string & {}) | "_blank" | "_parent" | "_self" | "_top" | null | undefined;
   referrerpolicy?: HTMLAttributeReferrerPolicy | undefined;
   /**
    * The element or component this component should render as when not a link.
@@ -458,20 +418,45 @@ interface ButtonProps {
    * The class to apply when the link is inactive.
    */
   inactiveClass?: string | undefined;
+  /**
+   * Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases
+   */
+  external?: boolean | undefined;
+  /**
+   * If set to true, no rel attribute will be added to the link
+   */
+  noRel?: boolean | undefined;
+  /**
+   * A class to apply to links that have been prefetched.
+   */
+  prefetchedClass?: string | undefined;
+  /**
+   * When enabled will prefetch middleware, layouts and payloads of links in the viewport.
+   */
+  prefetch?: boolean | undefined;
+  /**
+   * Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.
+   */
+  prefetchOn?: "visibility" | "interaction" | Partial<{ visibility: boolean; interaction: boolean; }> | undefined;
+  /**
+   * Escape hatch to disable `prefetch` attribute.
+   */
+  noPrefetch?: boolean | undefined;
+  /**
+   * An option to either add or remove trailing slashes in the `href` for this specific link.
+   * Overrides the global `trailingSlash` option if provided.
+   */
+  trailingSlash?: "remove" | "append" | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes" target="_blank">
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+> This component also supports all native `<button>` HTML attributes.
 
-This component also supports all native `<button>` HTML attributes.
-
-</callout>
-
-<callout icon="i-simple-icons-github" to="https://github.com/nuxt/ui/blob/v4/src/runtime/components/Link.vue#L13">
-
-The `Button` component extends the `Link` component. Check out the source code on GitHub.
-
-</callout>
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/src/runtime/components/Link.vue#L13
+> The `Button` component extends the `Link` component. Check out the source code on GitHub.
 
 ### Slots
 
@@ -848,8 +833,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

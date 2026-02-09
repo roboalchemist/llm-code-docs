@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/docxsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DOCX RAG Search
 
 > The `DOCXSearchTool` is a RAG tool designed for semantic searching within DOCX documents.

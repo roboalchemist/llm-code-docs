@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/configuration/requirements.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hardware requirements
 
 > Find out the minimal requirements for operating Infisical.

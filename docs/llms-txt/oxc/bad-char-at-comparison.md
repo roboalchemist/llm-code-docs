@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/bad-char-at-comparison.md
 ---
-# oxc/bad-char-at-comparison&#x20;
 
 ### What it does
 

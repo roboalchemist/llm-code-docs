@@ -174,7 +174,7 @@ $ vespa feed mind/vespa_user_embeddings.json --target http://localhost:8080
 $ vespa feed mind/vespa_news_embeddings.json --target http://localhost:8080
 ```
 
-Once the feeding jobs finishes, the index is ready to be used, we can verify that we have 28,603 news documents and 5000 user documents:
+Once the feeding jobs finishes, the index is ready to be used, we can verify that we have 65238 news documents and 94057 user documents:
 
 ```
 $ sleep 20
@@ -280,7 +280,7 @@ This script first retrieves the user embedding using an HTTP `GET` query to Vesp
 
 Here, you can see the `nearestNeighbor` search operator being set up so that the query parameter `user_embedding` will be searched against the `embedding` document field. The tensor for the `user_embedding` is in the `ranking.features.query(user_embedding)` parameter. Recall from above that we set a query profile type for this exact query parameter, so Vespa knows what to expect here.
 
-When Vespa receives this query, it scans linearly through all documents (28603 if you are using the MIND DEMO dataset), and scores them using the `recommendation` rank profile we set up above. Recall that we ask Vespa to convert the problem from maximum inner product to a nearest distance problem by using the `dotproduct` distance metric; in this case `distance` ranking feature just outputs the negative dotproduct.
+When Vespa receives this query, it scans linearly through all documents, and scores them using the `recommendation` rank profile we set up above. Recall that we ask Vespa to convert the problem from maximum inner product to a nearest distance problem by using the `dotproduct` distance metric; in this case `distance` ranking feature just outputs the negative dotproduct.
 
 With a distance search, we want to find the smallest distances. However, Vespa sorts the final results by decreasing rank score. To get the expected rank order, Vespa provides the `closeness` feature which in this case is just the dotproduct directly.
 
@@ -316,7 +316,7 @@ If you recall, Vespa returned something like the following when searching for si
     },
     "coverage": {
       "coverage": 100,
-      "documents": 28603,
+      "documents": 65238,
       "full": true,
       "nodes": 1,
       "results": 1,
@@ -324,7 +324,7 @@ If you recall, Vespa returned something like the following when searching for si
     }
 ```
 
-Here, `coverage` shows that Vespa did scan through all 28603 documents. The interesting piece here is the `totalCount`. This number is the number of times a document has been put in the top 10 results during this linear scan.
+Here, `coverage` shows that Vespa did scan through all 65238 documents. The interesting piece here is the `totalCount`. This number is the number of times a document has been put in the top 10 results during this linear scan.
 
 Let's switch to using approximate nearest-neighbors by adding `index` to the embedding field in `news.sd`:
 
@@ -369,7 +369,7 @@ schema news {
         field embedding type tensor<float>(d0[50]) {
             indexing: attribute | index
             attribute {
-                distance-metric: euclidean
+                distance-metric: dotproduct
             }
         }
     }
@@ -428,7 +428,7 @@ $ ./src/python/user_search.py U33527 10
     },
     "coverage": {
       "coverage": 100,
-      "documents": 28603,
+      "documents": 65238,
       "full": true,
       "nodes": 1,
       "results": 1,
@@ -474,7 +474,7 @@ As a note, strict filters that filter away a large part of the corpus would enta
 
 We now have a basic recommendation system up and running. We can query for a user, retrieve the embedding vector and use that for querying the news articles. Right now, this means two calls to Vespa. In the [next part of the tutorial](news-6-recommendation-with-searchers.html), we will introduce `searchers`, which allows for custom logic during query processing inside the Vespa cluster, requiring only one pass from the client to Vespa.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

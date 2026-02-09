@@ -1,60 +1,108 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/pydantic-ai.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/pydantic-ai.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pydantic AI
 
-[Pydantic AI](https://ai.pydantic.dev) is a Python agent framework built on Pydantic. Braintrust traces Pydantic AI applications using OpenTelemetry to capture agent interactions, tool calls, and performance metrics.
+[Pydantic AI](https://ai.pydantic.dev) is a Python agent framework built on Pydantic. Braintrust provides native integration to trace Pydantic AI agents, capturing inputs, outputs, tool calls, and performance metrics.
 
 ## Setup
 
-Install the [Braintrust Python SDK with OpenTelemetry support](/integrations/sdk-integrations/opentelemetry#python-sdk-configuration) and the Braintrust Pydantic AI integration:
+Install the Braintrust SDK and Pydantic AI:
 
-<CodeGroup>
-  ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-  pip install "braintrust[otel]" pydantic-ai
-  ```
-</CodeGroup>
-
-Configure your environment variables:
-
-```bash title=".env" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-BRAINTRUST_API_KEY=your-api-key
-BRAINTRUST_PARENT=project_name:my-otel-project
-
-# If you are self-hosting Braintrust, set the URL of your hosted dataplane. You can omit this otherwise.
-# BRAINTRUST_API_URL=https://api.braintrust.dev
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+pip install braintrust pydantic-ai
 ```
 
-## Trace with Pydantic AI
+## Trace Pydantic AI agents
 
-Configure OpenTelemetry with Braintrust's span processor and enable instrumentation on your agents:
+Use `setup_pydantic_ai()` to automatically instrument all Pydantic AI agents and direct API calls:
 
-```python title="pydantic-ai-braintrust.py" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+from braintrust.wrappers.pydantic_ai import setup_pydantic_ai
+from pydantic_ai import Agent
+
+# Initialize Braintrust tracing for Pydantic AI
+setup_pydantic_ai(project_name="my-pydantic-project")
+
+# Use agents as normal - they're automatically traced
+agent = Agent("openai:gpt-4o", system_prompt="You are a helpful assistant.")
+result = await agent.run("What is the capital of France?")
+```
+
+This automatically traces:
+
+* **Agent runs**: `agent.run()`, `agent.run_sync()`, `agent.run_stream()`, and `agent.run_stream_sync()`
+* **Direct API calls**: `model_request()`, `model_request_sync()`, and streaming variants
+* **Model interactions**: Individual LLM calls made by agents
+* **Tool calls**: Any tools defined on your agents
+
+### Example with tools and streaming
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+from braintrust.wrappers.pydantic_ai import setup_pydantic_ai
+from pydantic_ai import Agent, ModelSettings
+
+setup_pydantic_ai(project_name="my-pydantic-project")
+
+agent = Agent(
+    "openai:gpt-4o",
+    model_settings=ModelSettings(max_tokens=500),
+)
+
+@agent.tool_plain
+def get_weather(city: str) -> str:
+    """Get the current weather for a city."""
+    return f"22°C and sunny in {city}"
+
+# Streaming is fully traced, including time-to-first-token
+async with agent.run_stream("What's the weather in Paris?") as result:
+    async for text in result.stream_text(delta=True):
+        print(text, end="", flush=True)
+```
+
+### Using with existing spans
+
+If you already have a Braintrust span context (e.g., from `@traced` or `start_span`), Pydantic AI traces will nest under it:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+from braintrust import traced
+from braintrust.wrappers.pydantic_ai import setup_pydantic_ai
+from pydantic_ai import Agent
+
+setup_pydantic_ai(project_name="my-pydantic-project")
+
+agent = Agent("openai:gpt-4o")
+
+@traced
+async def my_workflow(question: str):
+    # Agent traces appear as children of this span
+    result = await agent.run(question)
+    return result.output
+```
+
+## Alternative: OpenTelemetry integration
+
+You can also use Braintrust's [OpenTelemetry support](/integrations/sdk-integrations/opentelemetry) with Pydantic AI's built-in instrumentation:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 from braintrust.otel import BraintrustSpanProcessor
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
-from pydantic_ai.agent import Agent
+from pydantic_ai import Agent
 
-# Configure the global OTel tracer provider
 provider = TracerProvider()
 trace.set_tracer_provider(provider)
-
-# Send spans to Braintrust
 provider.add_span_processor(BraintrustSpanProcessor())
 
-# Enable instrumentation on all agents
 Agent.instrument_all()
-
-agent = Agent(...)
 ```
 
-This automatically sends all agent interactions, tool calls, and performance metrics to Braintrust.
+This requires `pip install "braintrust[otel]"`. See the [OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry) for more details.
 
 ## Resources
 
 * [Pydantic AI documentation](https://ai.pydantic.dev)
-* [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Braintrust tracing guide](/guides/tracing)

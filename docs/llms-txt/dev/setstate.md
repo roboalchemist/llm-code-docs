@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/setstate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set state
 
 Stores a value in the Agent's state. Use to remember data across steps.
@@ -117,7 +121,7 @@ To access specific fields of the JSON data, use the state syntax, for example `@
         <span>-</span>
       </td>
 
-      <td>Set the variable here and use it across your agent</td>
+      <td>Set the variable here and use it across your agent.</td>
 
       <td>
         <span>-</span>
@@ -191,14 +195,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the function doesn't raise an Exception.</td>
+      <td>The state was updated successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error updating the state.</td>
     </tr>
   </tbody>
 </table>

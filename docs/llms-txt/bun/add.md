@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/install/add.md
 
-# Source: https://bun.com/docs/pm/cli/add.md
-
-# Source: https://bun.com/docs/guides/install/add.md
-
-# Source: https://bun.com/docs/pm/cli/add.md
-
-# Source: https://bun.com/docs/guides/install/add.md
-
-# Source: https://bun.com/docs/pm/cli/add.md
-
-# Source: https://bun.com/docs/guides/install/add.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Add a dependency
 
@@ -53,4 +45,4 @@ bun add zod@next
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

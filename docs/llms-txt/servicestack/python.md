@@ -54,7 +54,7 @@ if __name__ == '__main__':
 Create `main.py` with the above Python Example: 
 
 ```bash
-$ x mix todoworld-python
+$ npx add-in todoworld-python
 ```
 Run example:
 
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 Override `main.py` with the above Python Example: 
 
 ```bash
-$ x mix todoworld-python-ssl
+$ npx add-in todoworld-python-ssl
 ```
 
 Run example:

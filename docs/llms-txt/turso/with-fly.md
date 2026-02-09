@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/embedded-replicas/with-fly.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedded Replicas on Fly
 
 > Deploy a JavaScript app using [Turso embedded replicas](/features/embedded-replicas) to [Fly.io](https://www.fly.io/).

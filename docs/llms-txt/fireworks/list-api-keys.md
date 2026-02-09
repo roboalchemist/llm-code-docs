@@ -1,121 +1,112 @@
 # Source: https://docs.fireworks.ai/api-reference/list-api-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List API Keys
+
+
 
 ## OpenAPI
 
 ````yaml get /v1/accounts/{account_id}/users/{user_id}/apiKeys
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/users/{user_id}/apiKeys
-  method: get
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/users/{user_id}/apiKeys:
+    get:
+      tags:
+        - Gateway
+      summary: List API Keys
+      operationId: Gateway_ListApiKeys
+      parameters:
+        - name: pageSize
+          description: >-
+            Number of API keys to return in the response. Pagination support to
+            be added.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-        user_id:
+            type: integer
+            format: int32
+        - name: pageToken
+          description: >-
+            Token for fetching the next page of results. Pagination support to
+            be added.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The User Id
-      query:
-        pageSize:
+            type: string
+        - name: filter
+          description: Field for filtering results.
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: >-
-                Number of API keys to return in the response. Pagination support
-                to be added.
-        pageToken:
+            type: string
+        - name: orderBy
+          description: Field for ordering results.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                Token for fetching the next page of results. Pagination support
-                to be added.
-        filter:
+            type: string
+        - name: readMask
+          description: >-
+            The fields to be returned in the response. If empty or "*", all
+            fields will be returned.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Field for filtering results.
-        orderBy:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: false
-              description: Field for ordering results.
-        readMask:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The User Id
           schema:
-            - type: string
-              required: false
-              description: >-
-                The fields to be returned in the response. If empty or "*", all
-                fields will be returned.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              apiKeys:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      $ref: '#/components/schemas/gatewayApiKey'
-                    description: List of API keys retrieved.
-              nextPageToken:
-                allOf:
-                  - type: string
-                    title: >-
-                      Token for fetching the next page of results. Pagination
-                      support to be added.
-
-                      TODO: Implement pagination
-              totalSize:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The total number of API keys.
-            refIdentifier: '#/components/schemas/gatewayListApiKeysResponse'
-        examples:
-          example:
-            value:
-              apiKeys:
-                - keyId: <string>
-                  displayName: <string>
-                  key: <string>
-                  createTime: '2023-11-07T05:31:56Z'
-                  secure: true
-                  email: <string>
-                  prefix: <string>
-                  expireTime: '2023-11-07T05:31:56Z'
-              nextPageToken: <string>
-              totalSize: 123
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayListApiKeysResponse'
 components:
   schemas:
+    gatewayListApiKeysResponse:
+      type: object
+      properties:
+        apiKeys:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewayApiKey'
+            type: object
+          description: List of API keys retrieved.
+        nextPageToken:
+          type: string
+          title: >-
+            Token for fetching the next page of results. Pagination support to
+            be added.
+
+            TODO: Implement pagination
+        totalSize:
+          type: integer
+          format: int32
+          description: The total number of API keys.
     gatewayApiKey:
       type: object
       properties:
@@ -166,5 +157,13 @@ components:
           description: >-
             Timestamp indicating when the API key will expire. If not set, the
             key never expires.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/spans-bulk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Spans Bulk
 
 Create multiple spans in bulk with optional log request for each span. This endpoint is used for creating observability spans from telemetry data.
@@ -31,8 +35,8 @@ When included, the `log_request` field creates a request log associated with the
 * **model** (string, required): The model name
 * **input** (object, required): The input template (chat or completion format)
 * **output** (object, required): The output template (chat or completion format)
-* **request\_start\_time** (datetime, required): ISO format datetime
-* **request\_end\_time** (datetime, required): ISO format datetime
+* **request\_start\_time** (datetime, optional): ISO format datetime. If omitted, defaults to the parent span's `start_time`.
+* **request\_end\_time** (datetime, optional): ISO format datetime. If omitted, defaults to the parent span's `end_time`.
 * **parameters** (object, optional): Model parameters used
 * **tags** (array\[string], optional): Tags to associate with the request
 * **metadata** (object, optional): Metadata key-value pairs
@@ -54,6 +58,8 @@ Returns a JSON object with:
 * **request\_logs** (array, optional): Array of created request log objects (only present if log\_request was provided)
 
 ## Example Request
+
+### With explicit request times
 
 ```json  theme={null}
 {
@@ -121,10 +127,71 @@ Returns a JSON object with:
 }
 ```
 
+### With inherited span times
+
+When `request_start_time` and `request_end_time` are omitted, they are automatically inherited from the span's `start_time` and `end_time`:
+
+```json  theme={null}
+{
+  "spans": [
+    {
+      "name": "llm_call",
+      "context": {
+        "trace_id": "d4b5e2a1-3c8f-4e9a-b7d6-1a2b3c4d5e6f",
+        "span_id": "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+        "trace_state": ""
+      },
+      "kind": "SpanKind.INTERNAL",
+      "parent_id": null,
+      "start_time": 1630000000000000000,
+      "end_time": 1630000001000000000,
+      "status": {
+        "status_code": "StatusCode.OK",
+        "description": "OK"
+      },
+      "attributes": {},
+      "resource": {
+        "attributes": {
+          "service.name": "my-app"
+        },
+        "schema_url": ""
+      },
+      "log_request": {
+        "provider": "openai",
+        "model": "gpt-3.5-turbo",
+        "input": {
+          "type": "chat",
+          "messages": [
+            {
+              "role": "user",
+              "content": [{"type": "text", "text": "Hello!"}]
+            }
+          ]
+        },
+        "output": {
+          "type": "chat",
+          "messages": [
+            {
+              "role": "assistant",
+              "content": [{"type": "text", "text": "Hi there!"}]
+            }
+          ]
+        },
+        "prompt_name": "greeting_prompt",
+        "prompt_version_number": 1,
+        "input_tokens": 5,
+        "output_tokens": 3
+      }
+    }
+  ]
+}
+```
+
 ## Notes
 
 * Spans with names "openai.OpenAI" or "anthropic.Anthropic" are excluded from processing
 * When `log_request` is provided, the created request log will be associated with the span via the span\_id
+* If `request_start_time` or `request_end_time` is omitted from `log_request`, the value is inherited from the parent span's `start_time` or `end_time` (converted from nanoseconds). This avoids requiring you to redundantly set both span and request log times.
 * If a prompt\_name is specified but not found, the span will still be created but the log\_request creation will be skipped for that span
 * All operations are atomic - if any span creation fails, the entire batch is rolled back
 
@@ -479,6 +546,81 @@ components:
             - type: 'null'
           default: null
           title: Api Type
+        status:
+          type: string
+          enum:
+            - SUCCESS
+            - WARNING
+            - ERROR
+          default: SUCCESS
+          title: Status
+          description: >-
+            Request status.
+
+
+            | Value | Description |
+
+            |-------|-------------|
+
+            | `SUCCESS` | Request completed successfully (default) |
+
+            | `WARNING` | Request succeeded but had issues (e.g., retries,
+            degraded response) |
+
+            | `ERROR` | Request failed |
+        error_type:
+          anyOf:
+            - type: string
+              enum:
+                - PROVIDER_TIMEOUT
+                - PROVIDER_QUOTA_LIMIT
+                - PROVIDER_RATE_LIMIT
+                - PROVIDER_AUTH_ERROR
+                - PROVIDER_ERROR
+                - TEMPLATE_RENDER_ERROR
+                - VARIABLE_MISSING_OR_EMPTY
+                - UNKNOWN_ERROR
+            - type: 'null'
+          default: null
+          title: Error Type
+          description: >-
+            Categorized error type.
+
+
+            | Value | Description | Allowed Statuses |
+
+            |-------|-------------|------------------|
+
+            | `PROVIDER_RATE_LIMIT` | Rate limit hit on provider API | WARNING,
+            ERROR |
+
+            | `PROVIDER_QUOTA_LIMIT` | Account quota or spending limit exceeded
+            | WARNING, ERROR |
+
+            | `VARIABLE_MISSING_OR_EMPTY` | Required template variable was
+            missing or empty | WARNING |
+
+            | `PROVIDER_TIMEOUT` | Request timed out | ERROR |
+
+            | `PROVIDER_AUTH_ERROR` | Authentication failed with provider |
+            ERROR |
+
+            | `PROVIDER_ERROR` | General provider-side error | ERROR |
+
+            | `TEMPLATE_RENDER_ERROR` | Failed to render prompt template | ERROR
+            |
+
+            | `UNKNOWN_ERROR` | Uncategorized error | WARNING, ERROR |
+        error_message:
+          anyOf:
+            - type: string
+              maxLength: 1024
+            - type: 'null'
+          default: null
+          title: Error Message
+          description: >-
+            Detailed error message describing what went wrong. Maximum 1024
+            characters.
       required:
         - provider
         - model
@@ -1128,7 +1270,3 @@ components:
       title: ToolCall
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

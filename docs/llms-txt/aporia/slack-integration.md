@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/integrations/slack-integration.md
 
-# Source: https://docs.aporia.com/integrations/slack-integration.md
-
-# Source: https://docs.aporia.com/v1/integrations/slack-integration.md
-
 # Slack
 
 You can integrate Aporia with Slack to receive alerts and notifications directly to your Slack workspace.

@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/troubleshooting/truncated-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Truncated Logs
 
 > Understanding and resolving truncated flow run logs
@@ -33,8 +37,3 @@ AP_MAX_FILE_SIZE_MB=50
 <Info>
   **Future Improvement:** There is a planned enhancement to change this limit from per-log-file to per-step, which will provide more granular control over log sizes. This feature is currently in the planning phase.
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

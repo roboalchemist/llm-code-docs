@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/persona/llm-tool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Calling for LLM
 
 > Set up tool calling to trigger functions from user speech using Tavus-hosted or custom LLMs.
@@ -68,7 +72,7 @@ Here’s an example of tool calling in the `llm` layers:
 
 ```json LLM Layer [expandable] theme={null}
 "llm": {
-  "model": "tavus-llama-4",
+  "model": "tavus-gpt-oss",
   "tools": [
     {
       "type": "function",

@@ -1,10 +1,10 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/reference/environment_variables.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/reference/environment_variables.md
 
 # Environment Variables
 
 ## HF_ENABLE_PARALLEL_LOADING
 
-By default this is disabled. Enables the loading of torch and safetensor based weights to be loaded in parallel. Can decrease the time to load large models significantly, often times producing speed ups around ~50%.
+By default, this option is disabled. When enabled, it allows Torch and Safetensors weight files to be loaded in parallel during model initialization. This can significantly reduce the time required to load large, multi-shard models, often resulting in speedups of around ~50% in supported environments.
 
 Can be set to a string equal to `"false"` or `"true"`. e.g. `os.environ["HF_ENABLE_PARALLEL_LOADING"] = "true"`.
 

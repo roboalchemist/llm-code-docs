@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-scans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security Scans
 
 > Learn about application vulnerability scanning provided by Aptible

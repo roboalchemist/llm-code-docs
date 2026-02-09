@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/reference/other/egress/examples.md
 
-# Source: https://docs.livekit.io/home/egress/examples.md
-
-LiveKit docs › Recording & export › Examples
+LiveKit docs › Other › Egress › Egress examples
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › Recording & export › Examples
 
 ## Recording room composite as HLS
 
-This example records a [room composite](https://docs.livekit.io/home/egress/composite-recording.md#roomcomposite-egress) layout as HLS segments to an S3-compatible bucket.
+This example records a [room composite](https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md#roomcomposite-egress) layout as HLS segments to an S3-compatible bucket.
 
 **LiveKit CLI**:
 
@@ -242,7 +240,7 @@ public class Main {
 
 ## Recording web in portrait
 
-This example records a [web page](https://docs.livekit.io/home/egress/composite-recording.md#web-egress) in portrait mode to Google Cloud Storage, streaming to RTMP.
+This example records a [web page](https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md#web-egress) in portrait mode to Google Cloud Storage, streaming to RTMP.
 
 Portrait orientation can be specified by either using a `preset` option or setting `advanced` options. Egress automatically resizes the Chrome compositor to your specified resolution. However, keep in mind the following requirements:
 
@@ -465,7 +463,7 @@ public void startEgress() throws IOException {
 
 ## SRT streaming with thumbnails
 
-This example streams an [individual participant](https://docs.livekit.io/home/egress/participant.md) to an SRT server, generating thumbnails every 5 seconds. Thumbnails are stored in Azure Blob Storage.
+This example streams an [individual participant](https://docs.livekit.io/transport/media/ingress-egress/egress/participant.md) to an SRT server, generating thumbnails every 5 seconds. Thumbnails are stored in Azure Blob Storage.
 
 **LiveKit CLI**:
 
@@ -1162,11 +1160,11 @@ public void startEgress() throws IOException {
 
 ## Stop an active egress
 
-To stop an active egress, see the API reference for [StopEgress](https://docs.livekit.io/home/egress/api.md#stopegress) for examples.
+To stop an active egress, see the API reference for [StopEgress](https://docs.livekit.io/reference/other/egress/api.md#stopegress) for examples.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:58.132Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/examples.md](https://docs.livekit.io/home/egress/examples.md).
+This document was rendered at 2026-02-03T03:25:27.281Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/other/egress/examples.md](https://docs.livekit.io/reference/other/egress/examples.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

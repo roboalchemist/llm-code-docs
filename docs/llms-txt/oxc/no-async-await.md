@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/no-async-await.md
 ---
-# oxc/no-async-await&#x20;
 
 ### What it does
 

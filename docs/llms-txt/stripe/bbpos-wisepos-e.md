@@ -125,15 +125,20 @@ The BBPOS WisePOS E software consists of four components: the reader application
 
 | Countries                    | Reader     | Firmware            | Configuration           | ROM     |
 | ---------------------------- | ---------- | ------------------- | ----------------------- | ------- |
-| US                           | `2.37.2.0` | `5.00.01.43`        | `szzz_us_v19`           | `1.8.4` |
-| CA                           | `2.37.2.0` | `5.00.01.43`        | `szzz_ca_v17`           | `1.8.4` |
-| AU                           | `2.37.2.0` | `5.00.01.43.eftpos` | `szzz_prod_au_v11`      | `1.8.4` |
-| MYNZ                         | `2.37.2.0` | `5.00.01.43`        | `szzz_prod_apac_on_v4`  | `1.8.4` |
-| SG                           | `2.37.2.0` | `5.00.01.43`        | `szzz_prod_apac_off_v4` | `1.8.4` |
-| GBIEFI                       | `2.37.2.0` | `5.00.01.43`        | `szzz_prod_eu_off_v11`  | `1.8.4` |
-| ATBEDKFRITDENLESSECZLUPTCHNO | `2.37.2.0` | `5.00.01.43`        | `szzz_prod_eu_on_v7`    | `1.8.4` |
+| US                           | `2.38.2.0` | `5.00.01.43`        | `szzz_us_v19`           | `1.8.4` |
+| CA                           | `2.38.2.0` | `5.00.01.43`        | `szzz_ca_v17`           | `1.8.4` |
+| AU                           | `2.38.2.0` | `5.00.01.43.eftpos` | `szzz_prod_au_v11`      | `1.8.4` |
+| MYNZ                         | `2.38.2.0` | `5.00.01.43`        | `szzz_prod_apac_on_v4`  | `1.8.4` |
+| SG                           | `2.38.2.0` | `5.00.01.43`        | `szzz_prod_apac_off_v4` | `1.8.4` |
+| GBIEFI                       | `2.38.2.0` | `5.00.01.43`        | `szzz_prod_eu_off_v11`  | `1.8.4` |
+| ATBEDKFRITDENLESSECZLUPTCHNO | `2.38.2.0` | `5.00.01.43`        | `szzz_prod_eu_on_v7`    | `1.8.4` |
 
 ### Reader software changelog
+
+#### 2026-01-13 (version 2.38.2.0)
+
+- General bug fixes and improvements.
+- Added a fix to always play payment audio tones at correct volume regardless of device volume.
 
 #### 2025-11-12 (version 2.37.2.0)
 
@@ -222,7 +227,7 @@ The BBPOS WisePOS E software consists of four components: the reader application
 - Added support for Accessible PIN payments.
 - Fixed a race condition bug that caused contactless payments to fail with the error “Underlying request took too long. Please check your local network.”
 - Fixed a bug where a Norwegian card showed Swedish text.
-- Fixed a bug where accessiblity mode did not read out the “Incorrect PIN entered” message.
+- Fixed a bug where accessibility mode did not read out the “Incorrect PIN entered” message.
 
 #### 2024-06-25 (version 2.24.2.0)
 

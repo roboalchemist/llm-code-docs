@@ -4,13 +4,13 @@ The Daytona SDK provides comprehensive file system operations through the `fs` m
 
 ## Basic Operations
 
-Daytona SDK provides an option to interact with the file system in Sandboxes. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+Daytona SDK provides an option to interact with the file system in Sandboxes using Python, TypeScript, and Ruby. You can perform various operations like listing files, creating directories, reading and writing files, and more.
 
 File operations assume you are operating in the Sandbox user's home directory (e.g. `workspace` implies `/home/[username]/workspace`). Use a leading `/` when providing absolute paths.
 
 ### Listing Files and Directories
 
-Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.
+Daytona SDK provides an option to list files and directories in a Sandbox using Python, TypeScript, and Ruby.
 
 ```python
 # List files in a directory
@@ -35,12 +35,24 @@ files.forEach(file => {
 })
 ```
 
+```ruby
+# List files in a directory
+files = sandbox.fs.list_files('workspace')
 
-See: [list_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemlist_files), [listFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#listfiles)
+files.each do |file|
+  puts "Name: #{file.name}"
+  puts "Is directory: #{file.is_dir}"
+  puts "Size: #{file.size}"
+  puts "Modified: #{file.mod_time}"
+end
+```
+
+
+See: [list_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemlist_files), [listFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#listfiles), [list_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#list_files)
 
 ### Creating Directories
 
-Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.
+Daytona SDK provides an option to create directories with specific permissions using Python, TypeScript, and Ruby.
 
 ```python
 # Create with specific permissions
@@ -51,12 +63,17 @@ sandbox.fs.create_folder("workspace/new-dir", "755")
 await sandbox.fs.createFolder("workspace/new-dir", "755")
 ```
 
+```ruby
+# Create with specific permissions
+sandbox.fs.create_folder('workspace/new-dir', '755')
+```
 
-See: [create_folder (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemcreate_folder), [createFolder (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#createfolder)
+
+See: [create_folder (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemcreate_folder), [createFolder (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#createfolder), [create_folder (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#create_folder)
 
 ### Uploading Files
 
-Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
+Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python, TypeScript, and Ruby.
 
 #### Uploading a Single File
 
@@ -74,8 +91,14 @@ const fileContent = Buffer.from('Hello, World!')
 await sandbox.fs.uploadFile(fileContent, "data.txt")
 ```
 
+```ruby
+# Upload a single file
+content = 'Hello, World!'
+sandbox.fs.upload_file(content, 'data.txt')
+```
 
-See: [upload_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_file), [uploadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfile)
+
+See: [upload_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_file), [uploadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfile), [upload_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#upload_file)
 
 #### Uploading Multiple Files
 
@@ -127,7 +150,19 @@ await sandbox.fs.uploadFiles(files)
 ```
 
 
-See: [upload_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_files), [uploadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfiles)
+```ruby
+# Upload multiple files at once
+files = [
+  Daytona::FileUpload.new('Content of file 1', 'data/file1.txt'),
+  Daytona::FileUpload.new('Content of file 2', 'data/file2.txt'),
+  Daytona::FileUpload.new('{"key": "value"}', 'config/settings.json')
+]
+
+sandbox.fs.upload_files(files)
+```
+
+
+See: [upload_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_files), [uploadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfiles), [upload_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#upload_files)
 
 ### Downloading Files
 
@@ -154,7 +189,21 @@ console.log('File content:', downloadedFile.toString())
 ```
 
 
-See: [download_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_file), [downloadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfile)
+```ruby
+
+# Download file and get a Tempfile reference
+file = sandbox.fs.download_file('file1.txt')
+
+# Read the content
+puts "File content: #{file.open.read}"
+
+# Or download and save to a specific path
+sandbox.fs.download_file('file1.txt', 'local_file.txt')
+
+```
+
+
+See: [download_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_file), [downloadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfile), [download_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#download_file)
 
 #### Downloading Multiple Files
 
@@ -194,7 +243,25 @@ results.forEach(result => {
 })
 ```
 
-See: [download_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_files), [downloadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfiles)
+```ruby
+# Download multiple files at once
+files = [
+  Daytona::FileDownloadRequest.new(source: 'data/file1.txt'), # No destination - download to memory
+  Daytona::FileDownloadRequest.new(source: 'data/file2.txt', destination: 'local_file2.txt') # Download to local file
+]
+
+results = sandbox.fs.download_files(files)
+
+results.each do |result|
+  if result.error
+    puts "Error downloading #{result.source}: #{result.error}"
+  elsif result.result
+    puts "Downloaded #{result.source} to #{result.result}"
+  end
+end
+```
+
+See: [download_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_files), [downloadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfiles), [download_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#download_files)
 
 ### Deleting files
 
@@ -211,7 +278,14 @@ await sandbox.fs.deleteFile("workspace/file.txt")
 ```
 
 
-See: [delete_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdelete_file), [deleteFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#deletefile)
+```ruby
+
+sandbox.fs.delete_file('workspace/file.txt')
+
+```
+
+
+See: [delete_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdelete_file), [deleteFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#deletefile), [delete_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#delete_file)
 
 ## Advanced Operations
 
@@ -219,7 +293,7 @@ Daytona SDK provides advanced file system operations like file permissions, sear
 
 ### File Permissions
 
-Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.
+Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python, TypeScript, and Ruby.
 
 ```python
 # Set file permissions
@@ -241,11 +315,21 @@ console.log(`Permissions: ${fileInfo.permissions}`)
 ```
 
 
-See: [set_file_permissions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemset_file_permissions), [setFilePermissions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#setfilepermissions)
+```ruby
+# Set file permissions
+sandbox.fs.set_file_permissions('workspace/file.txt', '644')
+
+# Get file permissions
+file_info = sandbox.fs.get_file_info('workspace/file.txt')
+puts "Permissions: #{file_info.permissions}"
+```
+
+
+See: [set_file_permissions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemset_file_permissions), [setFilePermissions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#setfilepermissions), [set_file_permissions (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#set_file_permissions)
 
 ### File Search and Replace
 
-Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.
+Daytona SDK provides an option to search for text in files and replace text in files using Python, TypeScript, and Ruby.
 
 ```python
 # Search for text in files; if a folder is specified, the search is recursive
@@ -289,4 +373,22 @@ await sandbox.fs.replaceInFiles(
 ```
 
 
-See: [find_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemfind_files), [replace_in_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemreplace_in_files), [findFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#findfiles), [replaceInFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#replaceinfiles)
+```ruby
+# Search for text in files; if a folder is specified, the search is recursive
+results = sandbox.fs.find_files('workspace/src', 'text-of-interest')
+results.each do |match|
+  puts "Absolute file path: #{match.file}"
+  puts "Line number: #{match.line}"
+  puts "Line content: #{match.content}"
+end
+
+# Replace text in files
+sandbox.fs.replace_in_files(
+  files: ['workspace/file1.txt', 'workspace/file2.txt'],
+  pattern: 'old_text',
+  new_value: 'new_text'
+)
+```
+
+
+See: [find_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemfind_files), [replace_in_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemreplace_in_files), [findFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#findfiles), [replaceInFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#replaceinfiles), [find_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#find_files), [replace_in_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#replace_in_files)

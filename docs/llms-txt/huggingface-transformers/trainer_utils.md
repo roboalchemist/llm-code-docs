@@ -1,8 +1,8 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/trainer_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/trainer_utils.md
 
 # Utilities for Trainer
 
-This page lists all the utility functions used by [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer).
+This page lists all the utility functions used by [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer).
 
 Most of those are only useful if you are studying the code of the Trainer in the library.
 
@@ -10,7 +10,7 @@ Most of those are only useful if you are studying the code of the Trainer in the
 
 #### transformers.EvalPrediction[[transformers.EvalPrediction]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_utils.py#L149)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_utils.py#L149)
 
 Evaluation output (always contains labels), to be used to compute metrics.
 
@@ -26,20 +26,20 @@ losses (`np.ndarray`, *optional*) : Loss values computed during evaluation.
 
 #### transformers.IntervalStrategy[[transformers.IntervalStrategy]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_utils.py#L221)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_utils.py#L221)
 
 An enumeration.
 
 #### transformers.enable_full_determinism[[transformers.enable_full_determinism]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_utils.py#L67)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_utils.py#L67)
 
 Helper function for reproducible behavior during distributed training. See
 https://pytorch.org/docs/stable/notes/randomness.html for pytorch
 
 #### transformers.set_seed[[transformers.set_seed]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_utils.py#L93)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_utils.py#L93)
 
 Helper function for reproducible behavior to set the seed in `random`, `numpy`, `torch` (if installed).
 
@@ -51,7 +51,7 @@ deterministic (`bool`, *optional*, defaults to `False`) : Whether to use determi
 
 #### transformers.torch_distributed_zero_first[[transformers.torch_distributed_zero_first]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_pt_utils.py#L248)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_pt_utils.py#L248)
 
 Decorator to make all processes in distributed training wait for each local_master to do something.
 
@@ -63,7 +63,7 @@ local_rank (`int`) : The rank of the local process.
 
 #### transformers.trainer_callback.CallbackHandler[[transformers.trainer_callback.CallbackHandler]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_callback.py#L424)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_callback.py#L429)
 
 Internal class that just calls the list of callbacks in order.
 
@@ -71,7 +71,7 @@ Internal class that just calls the list of callbacks in order.
 
 #### transformers.HfArgumentParser[[transformers.HfArgumentParser]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/hf_argparser.py#L111)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/hf_argparser.py#L111)
 
 This subclass of `argparse.ArgumentParser` uses type hints on dataclasses to generate arguments.
 
@@ -79,7 +79,7 @@ The class is designed to play well with the native argparse. In particular, you 
 arguments to the parser after initialization and you'll get the output back after parsing as an additional
 namespace. Optional: To create sub argument groups use the `_argument_group_name` attribute in the dataclass.
 
-parse_args_into_dataclassestransformers.HfArgumentParser.parse_args_into_dataclasseshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/hf_argparser.py#L272[{"name": "args", "val": " = None"}, {"name": "return_remaining_strings", "val": " = False"}, {"name": "look_for_args_file", "val": " = True"}, {"name": "args_filename", "val": " = None"}, {"name": "args_file_flag", "val": " = None"}]- **args** --
+parse_args_into_dataclassestransformers.HfArgumentParser.parse_args_into_dataclasseshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/hf_argparser.py#L272[{"name": "args", "val": " = None"}, {"name": "return_remaining_strings", "val": " = False"}, {"name": "look_for_args_file", "val": " = True"}, {"name": "args_filename", "val": " = None"}, {"name": "args_file_flag", "val": " = None"}]- **args** --
   List of strings to parse. The default is taken from sys.argv. (same as argparse.ArgumentParser)
 - **return_remaining_strings** --
   If true, also return a list of remaining argument strings.
@@ -116,7 +116,7 @@ kwargs (`dict[str, Any]`, *optional*) : Passed to `argparse.ArgumentParser()` in
 - The potential list of remaining argument strings. (same as argparse.ArgumentParser.parse_known_args)
 #### parse_dict[[transformers.HfArgumentParser.parse_dict]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/hf_argparser.py#L358)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/hf_argparser.py#L358)
 
 Alternative helper method that does not use `argparse` at all, instead uses a dict and populating the dataclass
 types.
@@ -134,7 +134,7 @@ allow_extra_keys (`bool`, *optional*, defaults to `False`) : Defaults to False. 
 - the dataclass instances in the same order as they were passed to the initializer.
 #### parse_json_file[[transformers.HfArgumentParser.parse_json_file]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/hf_argparser.py#L386)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/hf_argparser.py#L386)
 
 Alternative helper method that does not use `argparse` at all, instead loading a json file and populating the
 dataclass types.
@@ -152,7 +152,7 @@ allow_extra_keys (`bool`, *optional*, defaults to `False`) : Defaults to False. 
 - the dataclass instances in the same order as they were passed to the initializer.
 #### parse_yaml_file[[transformers.HfArgumentParser.parse_yaml_file]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/hf_argparser.py#L410)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/hf_argparser.py#L408)
 
 Alternative helper method that does not use `argparse` at all, instead loading a yaml file and populating the
 dataclass types.
@@ -173,7 +173,7 @@ allow_extra_keys (`bool`, *optional*, defaults to `False`) : Defaults to False. 
 
 #### transformers.debug_utils.DebugUnderflowOverflow[[transformers.debug_utils.DebugUnderflowOverflow]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/debug_utils.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/debug_utils.py#L27)
 
 This debug class helps detect and understand where the model starts getting very large or very small, and more
 importantly `nan` or `inf` weight and activation elements.

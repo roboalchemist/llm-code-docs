@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/kms-configuration/gcp-kms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GCP Key Management Service
 
 > Learn how to manage encryption using GCP KMS

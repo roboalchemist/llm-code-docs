@@ -4,17 +4,17 @@
 
 ## Apify Scraper for Amazon Data
 
-The Amazon Scraper module from https://apify.com allows you to extract product, search, or category data from Amazon.
+The Amazon Scraper module from [Apify](https://apify.com) allows you to extract product, search, or category data from Amazon.
 
-To use the module, you need an https://console.apify.com and an https://docs.apify.com/platform/integrations/api#api-token, which you can find in the Apify Console under **Settings > Integrations**. After connecting, you can automate data extraction and incorporate the results into your workflows.
+To use the module, you need an [Apify account](https://console.apify.com) and an [API token](https://docs.apify.com/platform/integrations/api#api-token), which you can find in the Apify Console under **Settings > Integrations**. After connecting, you can automate data extraction and incorporate the results into your workflows.
 
 ## Connect Apify Scraper for Amazon Data modules to Make
 
-1. Create an account at https://console.apify.com/. You can sign up using your email, Gmail, or GitHub account.
+1. Create an account at [Apify](https://console.apify.com/). You can sign up using your email, Gmail, or GitHub account.
 
    ![Sign up page](/assets/images/image-dfc813ec1133c63789d9ee81a0e21a5f.png)
 
-2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **https://console.apify.com/settings/integrations** in the Apify Console.
+2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)** in the Apify Console.
 
    ![Apify Console token for Make.png](/assets/images/apify-console-token-for-make-cf75dbeb5effdcab9bc204cee94cdb6a.png)
 
@@ -38,7 +38,7 @@ After connecting the app, you can use the Search module as a native scraper to e
 
 ### Extract Amazon data
 
-Get data via https://apify.com/junglee/free-amazon-product-scraper. Fill in the URLs of products, searches, or categories you want to gather information about.
+Get data via [Apify's Amazon Scraper](https://apify.com/junglee/free-amazon-product-scraper). Fill in the URLs of products, searches, or categories you want to gather information about.
 
 For Amazon URLs, you can extract:
 
@@ -240,10 +240,10 @@ Category data sample
 
 There are other native Make Apps powered by Apify. You can check out Apify Scraper for:
 
-* https://docs.apify.com/platform/integrations/make/tiktok.md
-* https://docs.apify.com/platform/integrations/make/search.md
-* https://docs.apify.com/platform/integrations/make/maps.md
-* https://docs.apify.com/platform/integrations/make/youtube.md
-* https://docs.apify.com/platform/integrations/make/ai-crawling.md
+* [TikTok Data](https://docs.apify.com/platform/integrations/make/tiktok.md)
+* [Google Search](https://docs.apify.com/platform/integrations/make/search.md)
+* [Google Maps Emails Data](https://docs.apify.com/platform/integrations/make/maps.md)
+* [YouTube Data](https://docs.apify.com/platform/integrations/make/youtube.md)
+* [AI crawling](https://docs.apify.com/platform/integrations/make/ai-crawling.md)
 
-And more! Because you can access any of thousands of our scrapers on Apify Store by using the https://www.make.com/en/integrations/apify.
+And more! Because you can access any of thousands of our scrapers on Apify Store by using the [general Apify connections](https://www.make.com/en/integrations/apify).

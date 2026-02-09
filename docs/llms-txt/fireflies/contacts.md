@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/query/contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contacts
 
 > Querying list of contacts
@@ -132,8 +136,3 @@ query Contacts {
     Querying list of users
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/main_classes/optimizer_schedules.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/main_classes/optimizer_schedules.md
 
 # Optimization
 
@@ -12,7 +12,7 @@ The `.optimization` module provides:
 
 #### transformers.Adafactor[[transformers.Adafactor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L687)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L687)
 
 AdaFactor pytorch implementation can be used as a drop in replacement for Adam original fairseq code:
 https://github.com/pytorch/fairseq/blob/master/fairseq/optim/adafactor.py
@@ -46,7 +46,7 @@ Others reported the following combination to work well:
 Adafactor(model.parameters(), scale_parameter=True, relative_step=True, warmup_init=True, lr=None)
 ```
 
-When using `lr=None` with [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) you will most likely need to use `AdafactorSchedule`
+When using `lr=None` with [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) you will most likely need to use `AdafactorSchedule`
 
 scheduler as following:
 
@@ -76,7 +76,7 @@ optimizer = Adafactor(
 )
 ```
 
-steptransformers.Adafactor.stephttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L832[{"name": "closure", "val": " = None"}]- **closure** (callable, optional) -- A closure that reevaluates the model
+steptransformers.Adafactor.stephttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L832[{"name": "closure", "val": " = None"}]- **closure** (callable, optional) -- A closure that reevaluates the model
   and returns the loss.0
 
 Performs a single optimization step
@@ -109,28 +109,28 @@ warmup_init (`bool`, *optional*, defaults to `False`) : Time-dependent learning 
 
 #### transformers.SchedulerType[[transformers.SchedulerType]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/trainer_utils.py#L391)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/trainer_utils.py#L391)
 
-Scheduler names for the parameter `lr_scheduler_type` in [TrainingArguments](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.TrainingArguments).
-By default, it uses "linear". Internally, this retrieves `get_linear_schedule_with_warmup` scheduler from [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer).
+Scheduler names for the parameter `lr_scheduler_type` in [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments).
+By default, it uses "linear". Internally, this retrieves `get_linear_schedule_with_warmup` scheduler from [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer).
 Scheduler types:
-- "linear" = [get_linear_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_linear_schedule_with_warmup)
-- "cosine" = [get_cosine_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_cosine_schedule_with_warmup)
-- "cosine_with_restarts" = [get_cosine_with_hard_restarts_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_cosine_with_hard_restarts_schedule_with_warmup)
-- "polynomial" = [get_polynomial_decay_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_polynomial_decay_schedule_with_warmup)
-- "constant" =  [get_constant_schedule()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_constant_schedule)
-- "constant_with_warmup" = [get_constant_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_constant_schedule_with_warmup)
-- "inverse_sqrt" = [get_inverse_sqrt_schedule()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_inverse_sqrt_schedule)
-- "reduce_lr_on_plateau" = [get_reduce_on_plateau_schedule()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_reduce_on_plateau_schedule)
-- "cosine_with_min_lr" = [get_cosine_with_min_lr_schedule_with_warmup()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_cosine_with_min_lr_schedule_with_warmup)
-- "cosine_warmup_with_min_lr" = [get_cosine_with_min_lr_schedule_with_warmup_lr_rate()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_cosine_with_min_lr_schedule_with_warmup_lr_rate)
-- "warmup_stable_decay" = [get_wsd_schedule()](/docs/transformers/v5.0.0rc1/en/main_classes/optimizer_schedules#transformers.get_wsd_schedule)
+- "linear" = [get_linear_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_linear_schedule_with_warmup)
+- "cosine" = [get_cosine_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_cosine_schedule_with_warmup)
+- "cosine_with_restarts" = [get_cosine_with_hard_restarts_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_cosine_with_hard_restarts_schedule_with_warmup)
+- "polynomial" = [get_polynomial_decay_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_polynomial_decay_schedule_with_warmup)
+- "constant" =  [get_constant_schedule()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_constant_schedule)
+- "constant_with_warmup" = [get_constant_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_constant_schedule_with_warmup)
+- "inverse_sqrt" = [get_inverse_sqrt_schedule()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_inverse_sqrt_schedule)
+- "reduce_lr_on_plateau" = [get_reduce_on_plateau_schedule()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_reduce_on_plateau_schedule)
+- "cosine_with_min_lr" = [get_cosine_with_min_lr_schedule_with_warmup()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_cosine_with_min_lr_schedule_with_warmup)
+- "cosine_warmup_with_min_lr" = [get_cosine_with_min_lr_schedule_with_warmup_lr_rate()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_cosine_with_min_lr_schedule_with_warmup_lr_rate)
+- "warmup_stable_decay" = [get_wsd_schedule()](/docs/transformers/v5.0.0/en/main_classes/optimizer_schedules#transformers.get_wsd_schedule)
 
 ### get_scheduler[[transformers.get_scheduler]]
 
 #### transformers.get_scheduler[[transformers.get_scheduler]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L593)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L593)
 
 Unified API to get any scheduler from its name.
 
@@ -150,7 +150,7 @@ scheduler_specific_kwargs (`dict`, *optional*) : Extra parameters for schedulers
 
 #### transformers.get_constant_schedule[[transformers.get_constant_schedule]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L36)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L36)
 
 Create a schedule with a constant learning rate, using the learning rate set in optimizer.
 
@@ -168,7 +168,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_constant_schedule_with_warmup[[transformers.get_constant_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L77)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L77)
 
 Create a schedule with a constant learning rate preceded by a warmup period during which the learning rate
 increases linearly between 0 and the initial lr set in the optimizer.
@@ -189,7 +189,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_cosine_schedule_with_warmup[[transformers.get_cosine_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L140)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L140)
 
 Create a schedule with a learning rate that decreases following the values of the cosine function between the
 initial lr set in the optimizer to 0, after a warmup period during which it increases linearly between 0 and the
@@ -215,7 +215,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_cosine_with_hard_restarts_schedule_with_warmup[[transformers.get_cosine_with_hard_restarts_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L185)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L185)
 
 Create a schedule with a learning rate that decreases following the values of the cosine function between the
 initial lr set in the optimizer to 0, with several hard restarts, after a warmup period during which it increases
@@ -241,7 +241,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_cosine_with_min_lr_schedule_with_warmup[[transformers.get_cosine_with_min_lr_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L334)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L334)
 
 Create a schedule with a learning rate that decreases following the values of the cosine function between the
 initial lr set in the optimizer to min_lr, after a warmup period during which it increases linearly between 0 and the
@@ -271,7 +271,7 @@ min_lr_rate (`float`, *optional*) : The minimum learning rate as a ratio of the 
 
 #### transformers.get_cosine_with_min_lr_schedule_with_warmup_lr_rate[[transformers.get_cosine_with_min_lr_schedule_with_warmup_lr_rate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L411)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L411)
 
 Create a schedule with a learning rate that decreases following the values of the cosine function between the
 initial lr set in the optimizer to min_lr, after a warmup period during which it increases linearly between 0 and the
@@ -303,7 +303,7 @@ warmup_lr_rate (`float`, *optional*) : The minimum learning rate as a ratio of t
 
 #### transformers.get_linear_schedule_with_warmup[[transformers.get_linear_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L104)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L104)
 
 Create a schedule with a learning rate that decreases linearly from the initial lr set in the optimizer to 0, after
 a warmup period during which it increases linearly from 0 to the initial lr set in the optimizer.
@@ -326,7 +326,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_polynomial_decay_schedule_with_warmup[[transformers.get_polynomial_decay_schedule_with_warmup]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L239)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L239)
 
 Create a schedule with a learning rate that decreases as a polynomial decay from the initial lr set in the
 optimizer to end lr defined by *lr_end*, after a warmup period during which it increases linearly from 0 to the
@@ -358,7 +358,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_inverse_sqrt_schedule[[transformers.get_inverse_sqrt_schedule]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L293)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L293)
 
 Create a schedule with an inverse square-root learning rate, from the initial lr set in the optimizer, after a
 warmup period which increases lr linearly from 0 to the initial lr set in the optimizer.
@@ -381,7 +381,7 @@ last_epoch (`int`, *optional*, defaults to -1) : The index of the last epoch whe
 
 #### transformers.get_reduce_on_plateau_schedule[[transformers.get_reduce_on_plateau_schedule]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L53)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L53)
 
 Create a schedule with a constant learning rate that decreases when a metric has stopped improving.
 
@@ -399,7 +399,7 @@ kwargs (`dict`, *optional*) : Extra parameters to be passed to the scheduler. Se
 
 #### transformers.get_wsd_schedule[[transformers.get_wsd_schedule]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/optimization.py#L505)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/optimization.py#L505)
 
 Create a schedule with a learning rate that has three stages:
 1. warmup: increase from min_lr_ratio times the initial learning rate to the initial learning rate following a warmup_type.

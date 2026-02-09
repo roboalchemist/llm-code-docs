@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/pdf-to-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turn a PDF into an image using MuPDF
 
 > This example will show you how to turn a PDF into an image using MuPDF and Trigger.dev.
@@ -14,7 +18,7 @@ This example demonstrates how to use Trigger.dev to turn a PDF into a series of 
 
 To use this example, add these build settings below to your `trigger.config.ts` file. They ensure that the `mutool` and `curl` packages are installed when you deploy your task. You can learn more about this and see more build settings [here](/config/extensions/aptGet).
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 export default defineConfig({
   project: "<project ref>",
   // Your other config settings...
@@ -26,7 +30,7 @@ export default defineConfig({
 
 ## Task code
 
-```ts trigger/pdfToImage.ts theme={null}
+```ts trigger/pdfToImage.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { execSync } from "child_process";
@@ -92,7 +96,7 @@ export const pdfToImage = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "pdfUrl": "https://pdfobject.com/pdf/sample.pdf",
   "documentId": "unique-document-id"

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/signals/tractionbattery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TractionBattery Signals
 
 ### Is Heater Active
@@ -68,7 +72,7 @@ An object containing the gross battery capacity and a list of multiple available
       "description": null
     }
   ],
-  "unit": "kWhr"
+  "unit": "kWh"
 }
 ```
 

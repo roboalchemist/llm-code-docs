@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/fsdp_qlora.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/fsdp_qlora.md
 
 # FSDP-QLoRA
 
@@ -11,9 +11,9 @@ This guide provides a brief guide on how bitsandbytes supports storing quantized
 
 ## Quantized data storage
 
-FSDP only supports sharding float data types which can be problematic because quantized weights are typically stored as integer data types (uint8). bitsandbytes doesn't have this problem because it uses `StoreChar` to read and write quantized weights regardless of the data type storage. This makes it simple to add a `quant_storage` parameter to the [Linear4bit](/docs/bitsandbytes/v0.49.0/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) and [Params4bit](/docs/bitsandbytes/v0.49.0/en/reference/nn/linear4bit#bitsandbytes.nn.Params4bit) classes and set it to `torch.uint8` to maintain backward compatibility with the codebase. With the `quant_storage` parameter, you can select any of the FSDP supported data types to shard [Linear4bit](/docs/bitsandbytes/v0.49.0/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) with such as bfloat16, float16 or float32.
+FSDP only supports sharding float data types which can be problematic because quantized weights are typically stored as integer data types (uint8). bitsandbytes doesn't have this problem because it uses `StoreChar` to read and write quantized weights regardless of the data type storage. This makes it simple to add a `quant_storage` parameter to the [Linear4bit](/docs/bitsandbytes/v0.49.1/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) and [Params4bit](/docs/bitsandbytes/v0.49.1/en/reference/nn/linear4bit#bitsandbytes.nn.Params4bit) classes and set it to `torch.uint8` to maintain backward compatibility with the codebase. With the `quant_storage` parameter, you can select any of the FSDP supported data types to shard [Linear4bit](/docs/bitsandbytes/v0.49.1/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) with such as bfloat16, float16 or float32.
 
-You'll typically access and configure this option from [transformers.BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.BitsAndBytesConfig) by setting the `bnb_4bit_quant_storage` parameter. It is very **important** the `quant_storage` data type matches the data types used throughout the model because FSDP can only wrap layers and modules that have the *same floating data type*. Making sure the data types are aligned will ensure the model is correctly sharded.
+You'll typically access and configure this option from [transformers.BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc2/en/main_classes/quantization#transformers.BitsAndBytesConfig) by setting the `bnb_4bit_quant_storage` parameter. It is very **important** the `quant_storage` data type matches the data types used throughout the model because FSDP can only wrap layers and modules that have the *same floating data type*. Making sure the data types are aligned will ensure the model is correctly sharded.
 
 > [!TIP]
 > The `compute_dtype` is the data type used for computation inside the CUDA kernel, where the 4-bit quantized weights are unpacked from the data type in `quant_storage` and dequantized to `compute_dtype`. We recommend using torch.bfloat16 (if available on your hardware) for better numerical stability.
@@ -52,7 +52,7 @@ Before you begin, make sure you have the latest libraries installed.
 pip install -U bitsandbytes accelerate transformers peft trl
 ```
 
-The important change that enables FSDP-QLoRA training is the `bnb_4bit_quant_storage` parameter in the [BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.BitsAndBytesConfig) class. This allows you to set the storage data type of the quantized weights to a float data type.
+The important change that enables FSDP-QLoRA training is the `bnb_4bit_quant_storage` parameter in the [BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc2/en/main_classes/quantization#transformers.BitsAndBytesConfig) class. This allows you to set the storage data type of the quantized weights to a float data type.
 
 ```py
 from transformers import BitsAndBytesConfig
@@ -66,7 +66,7 @@ bnb_config = BitsAndBytesConfig(
 )
 ```
 
-Pass the [BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.BitsAndBytesConfig) to a model to set it up for FSDP-QLoRA. You should set the `torch_dtype` parameter to match `bnb_4bit_quant_storage` so that the [Linear4bit](/docs/bitsandbytes/v0.49.0/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) layers are wrapped identically to the `Linear` layers. If the storage types do not match, then each [Linear4bit](/docs/bitsandbytes/v0.49.0/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) layer is wrapped individually.
+Pass the [BitsAndBytesConfig](https://huggingface.co/docs/transformers/v5.0.0rc2/en/main_classes/quantization#transformers.BitsAndBytesConfig) to a model to set it up for FSDP-QLoRA. You should set the `torch_dtype` parameter to match `bnb_4bit_quant_storage` so that the [Linear4bit](/docs/bitsandbytes/v0.49.1/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) layers are wrapped identically to the `Linear` layers. If the storage types do not match, then each [Linear4bit](/docs/bitsandbytes/v0.49.1/en/reference/nn/linear4bit#bitsandbytes.nn.Linear4bit) layer is wrapped individually.
 
 ```py
 from transformers import AutoModelForCausalLM
@@ -93,7 +93,7 @@ peft_config = LoraConfig(
 )
 ```
 
-Now you can pass everything to the [SFTTrainer](https://huggingface.co/docs/trl/v0.26.0/en/sft_trainer#trl.SFTTrainer) for training.
+Now you can pass everything to the [SFTTrainer](https://huggingface.co/docs/trl/v0.26.2/en/sft_trainer#trl.SFTTrainer) for training.
 
 ```py
 from trl import SFTTrainer

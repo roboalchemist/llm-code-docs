@@ -305,6 +305,13 @@ This is equivalent to providing both the -B/--before and -A/--after flags with t
 
 Print help (see a summary with '-h')
 
+## Exit codes
+
+The program exits with status code:
+
+* **0**: at least one line matches
+* **1**: no matches found
+
 ---
 
 ---
@@ -546,6 +553,13 @@ This flag turns off the specified RULE\_ID. You can disable multiple rules by us
 ### `-h, --help`
 
 Print help (see a summary with '-h')
+
+## Exit codes
+
+The program exits with status code:
+
+* **1**: if at least one rule matches
+* **0**: if no rules match
 
 ---
 
@@ -873,7 +887,7 @@ ast-grep 0.38.3+ supports string style transformations to simplify rule writing.
 The above example can be simplified to one-line style like:
 
 ```yaml
-transfrom:
+transform:
   NEW_VAR: replace($VAR_NAME, replace=regex, by=replacement)
   ANOTHER_NEW_VAR: substring($NEW_VAR, startChar=1, endChar=-1)
 ```
@@ -2761,7 +2775,7 @@ IntelliJ Structural Search Replace is not a standalone tool, but a feature of th
 
 * Currently, IntelliJ IDEA supports the structural search and replace for Java, Kotlin and Groovy.
 
-## [Shisho](https://docs.shisho.dev/shisho)
+## [Shisho](https://github.com/flatt-security/shisho)
 
 Shisho is a new and promising tool that uses code patterns to search and manipulate code in various languages.
 
@@ -3095,6 +3109,14 @@ files: ['src/**/*.js']
 ✅ Glob `files` patterns to include files for the rule.
 
 ```yaml
+files:
+  - glob: 'README.md'
+    caseInsensitive: true
+```
+
+✅ Use object syntax for case-insensitive glob matching.
+
+```yaml
 ignores: ['test/**/*.js']
 ```
 
@@ -3138,7 +3160,7 @@ id: no-console-log
 
 Specify the language to parse and the file extension to include in matching.
 
-Valid values are: `C`, `Cpp`, `CSharp`, `Css`, `Go`, `Html`, `Java`, `JavaScript`, `Kotlin`, `Lua`, `Python`, `Rust`, `Scala`, `Swift`, `Thrift`, `Tsx`, `TypeScript`
+Valid values are: `Bash`, `C`, `Cpp`, `CSharp`, `Css`, `Elixir`, `Go`, `Haskell`, `Hcl`, `Html`, `Java`, `JavaScript`, `Json`, `Kotlin`, `Lua`, `Nix`, `Php`, `Python`, `Ruby`, `Rust`, `Scala`, `Solidity`, `Swift`, `Tsx`, `TypeScript`, `Yaml`
 
 **Example:**
 
@@ -3351,17 +3373,43 @@ Please also see [label guide](/guide/project/lint-rule.html#customize-code-highl
 
 ### `files`
 
-* type: `Array<String>`
+* type: `Array<Glob>`
 * required: false
 
 Glob patterns to specify that the rule only applies to matching files. It is tested if `ignores` does not exist or a file does not match any `ignores` glob.
 
+Each item in the array can be either:
+
+* A **string**: a simple glob pattern
+* An **object** with the following fields:
+  * `glob` (required): the glob pattern string
+  * `caseInsensitive` (optional): whether the glob matching is case insensitive. Defaults to `false`.
+
 **Example:**
 
 ```yaml
+# Simple string globs
 files:
   - src/**/*.js
   - src/**/*.ts
+```
+
+```yaml
+# Object syntax with case-insensitive matching
+files:
+  - glob: '*.ts'
+    caseInsensitive: true
+  - glob: 'README.md'
+    caseInsensitive: true
+```
+
+```yaml
+# Mixed formats
+files:
+  - '*.ts'                          # simple string
+  - glob: 'README.md'               # object with case-insensitive
+    caseInsensitive: true
+  - 'src/**/*.tsx'                  # simple string
 ```
 
 :::warning Don't add `./`
@@ -3372,18 +3420,29 @@ Paths in `files` are relative to the project root directory, that is, `sgconfig.
 
 ### `ignores`
 
-* type: `Array<String>`
+* type: `Array<Glob>`
 * required: false
+
+Glob patterns that exclude rules from applying to files. A file is tested against `ignores` list before matching `files`.
+
+Like `files`, each item can be either a string or an object with `glob` and `caseInsensitive` fields.
 
 **Example:**
 
 ```yaml
+# Simple string globs
 ignores:
   - test/**/*.js
   - test/**/*.ts
 ```
 
-Glob patterns that exclude rules from applying to files. A file is tested against `ignores` list before matching `files`.
+```yaml
+# With case-insensitive matching
+ignores:
+  - 'test/**'
+  - glob: 'BUILD'
+    caseInsensitive: true
+```
 
 A typical globing process works as follows:
 
@@ -4486,12 +4545,12 @@ Once you have rustup installed, you can install rust by running:
 rustup install stable
 ```
 
-You also need  [pre-commit](https://pre-commit.com/) to setup git hooks for type checking, formatting and clippy.
+You also need  [prek](https://github.com/j178/prek) to setup git hooks for type checking, formatting and clippy.
 
-Run pre-commit install to set up the git hook scripts.
+Run prek install to set up the git hook scripts.
 
 ```bash
-pre-commit install
+prek install
 ```
 
 Optionally, you can also install [nodejs](https://github.com/Schniz/fnm) and [yarn](https://yarnpkg.com/) for napi binding development.
@@ -6701,7 +6760,7 @@ A `Matcher` can be one of the three types: `string`, `number` or `object`.
 
 * `string` is parsed as a [pattern](/guide/pattern-syntax.html). e.g. `'console.log($A)'`
 
-* `number` is interpreted as the node's kind. In tree-sitter, an AST node's type is represented by a number called kind id. Different syntax node has different kind ids. You can convert a kind name like `function` to the numeric representation by calling the `kind` function. e.g. `kind('function', Lang.JavaScript)`.
+* `number` is interpreted as the node's kind. In tree-sitter, an AST node's type is represented by a number called kind id. Different syntax node has different kind ids. You can convert a kind name like `function` to the numeric representation by calling the `kind` function. e.g. `kind(Lang.JavaScript, 'function')`.
 
 * A `NapiConfig` has a similar type of [config object](/reference/yaml.html). See details below.
 
@@ -7372,6 +7431,7 @@ The table below lists all languages that are supported by ast-grep.
 |Elixir | `ex`, `elixir` | `ex`, `exs`|
 |Go | `go`, `golang` | `go`|
 |Haskell | `hs`, `haskell` | `hs`|
+|Hcl | `hcl` | `hcl`|
 |Html | `html` | `html`, `htm`, `xhtml`|
 |Java | `java` | `java`|
 |JavaScript | `javascript`, `js`, `jsx` | `cjs`, `js`, `mjs`, `jsx`|
@@ -7438,6 +7498,66 @@ let a = 123 // [!code ++]
 ### Contributed by
 
 [Author Name](https://your-social.link)
+
+---
+
+---
+url: /catalog/ruby/detect-path-traversal.md
+---
+## Detect Path Traversal Vulnerability in Rails
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InJ1YnkiLCJxdWVyeSI6IiIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoiYXN0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcGF0aC10cmF2ZXJzYWxcbm1lc3NhZ2U6IFBvdGVudGlhbCBQYXRoIFRyYXZlcnNhbCB2dWxuZXJhYmlsaXR5IGRldGVjdGVkLiBVc2VyIGlucHV0IGlzIGJlaW5nIHVzZWQgdG8gY29uc3RydWN0IGZpbGUgcGF0aHMgd2l0aG91dCB2YWxpZGF0aW9uLlxuc2V2ZXJpdHk6IGhpbnRcbmxhbmd1YWdlOiBSdWJ5XG5ub3RlOiB8XG4gIFBhdGggVHJhdmVyc2FsIChEaXJlY3RvcnkgVHJhdmVyc2FsKSBvY2N1cnMgd2hlbiB1c2VyIGlucHV0IGlzIHVzZWQgdG8gY29uc3RydWN0IGZpbGUgcGF0aHNcbiAgd2l0aG91dCBwcm9wZXIgdmFsaWRhdGlvbi4gVGhpcyBhbGxvd3MgYXR0YWNrZXJzIHRvIGFjY2VzcyBmaWxlcyBvdXRzaWRlIHRoZSBpbnRlbmRlZCBkaXJlY3RvcnkuXG4gIFZhbGlkYXRlIGFuZCBzYW5pdGl6ZSBmaWxlIHBhdGhzLCBhbmQgdXNlIEZpbGUuYmFzZW5hbWUoKSBvciBzaW1pbGFyIGZ1bmN0aW9ucy5cblxucnVsZTpcbiAgYW55OlxuICAgIC0gcGF0dGVybjogUmFpbHMucm9vdC5qb2luKCQkJCwgJFZBUiwgJCQkKVxuICAgIC0gcGF0dGVybjogRmlsZS5qb2luKCQkJCwgJFZBUiwgJCQkKVxuICAgIC0gcGF0dGVybjogc2VuZF9maWxlICRWQVIiLCJzb3VyY2UiOiIjIOaknOWHuuOBleOCjOOCi+OCs+ODvOODieS+i1xuIyDjg5Hjgr/jg7zjg7MxOiBSYWlscy5yb290LmpvaW4gd2l0aCB2YXJpYWJsZVxuUmFpbHMucm9vdC5qb2luKCd1cGxvYWRzJywgcGFyYW1zWzpmaWxlbmFtZV0pXG5SYWlscy5yb290LmpvaW4oJ2RhdGEnLCB1c2VyX2lucHV0LCAnZmlsZS50eHQnKVxuXG4jIOODkeOCv+ODvOODszI6IEZpbGUuam9pbiB3aXRoIHZhcmlhYmxlXG5GaWxlLmpvaW4oJy92YXIvd3d3JywgcGFyYW1zWzpwYXRoXSlcbkZpbGUuam9pbihiYXNlX3BhdGgsIHVzZXJfaWQsIGZpbGVuYW1lKVxuXG4jIOODkeOCv+ODvOODszM6IHNlbmRfZmlsZSB3aXRoIHZhcmlhYmxlXG5zZW5kX2ZpbGUgcGFyYW1zWzpmaWxlXVxuc2VuZF9maWxlIHVzZXIuZG9jdW1lbnRfcGF0aCJ9)
+
+### Description
+
+Path Traversal (Directory Traversal) occurs when user input is used to construct file paths without proper validation. This allows attackers to access files outside the intended directory by using special characters like `../` to navigate the filesystem.
+
+This rule detects common path traversal patterns in Rails applications where user-controlled variables are used in:
+
+* `Rails.root.join()` - Building file paths relative to the Rails application root
+* `File.join()` - Constructing file paths
+* `send_file` - Sending files to users
+
+To prevent path traversal vulnerabilities, always validate and sanitize file paths, use `File.basename()` to extract only the filename, or use allowlists for permitted files.
+
+### YAML
+
+```yaml
+id: path-traversal
+message: Potential Path Traversal vulnerability detected. User input is being used to construct file paths without validation.
+severity: hint
+language: Ruby
+note: |
+  Path Traversal (Directory Traversal) occurs when user input is used to construct file paths
+  without proper validation. This allows attackers to access files outside the intended directory.
+  Validate and sanitize file paths, and use File.basename() or similar functions.
+
+rule:
+  any:
+    - pattern: Rails.root.join($$$, $VAR, $$$)
+    - pattern: File.join($$$, $VAR, $$$)
+    - pattern: send_file $VAR
+```
+
+### Example
+
+```rb {2,3,6,7,10,11}
+# Pattern 1: Rails.root.join with variable
+Rails.root.join('uploads', params[:filename])
+Rails.root.join('data', user_input, 'file.txt')
+
+# Pattern 2: File.join with variable
+File.join('/var/www', params[:path])
+File.join(base_path, user_id, filename)
+
+# Pattern 3: send_file with variable
+send_file params[:file]
+send_file user.document_path
+```
+
+### Contributed by
+
+[sora fs0414](https://x.com/_fs0414) from this [blog post](https://fs0414.hatenablog.com/entry/2025/11/02/032114)
 
 ---
 
@@ -7629,11 +7749,13 @@ There are a lot of tricks to improve performance when using `napi`. The mantra i
 `parseAsync` can take advantage of NodeJs' libuv thread pool to parse code in parallel threads. This can be faster than the sync version `parse` when handling a lot of code.
 
 ```ts
-import { js } from '@ast-grep/napi';
+import { Lang, parse, parseAsync } from '@ast-grep/napi'
 // only one thread parsing
-const root = js.parse('console.log("hello world")')
+const ast = parse(Lang.JavaScript, 'console.log("hello world")')
+const root = ast.root()
 // better, can use multiple threads
-const root = await js.parseAsync('console.log("hello world")')
+const ast2 = await parseAsync(Lang.JavaScript, 'console.log("hello world")')
+const root2 = ast2.root()
 ```
 
 This is especially useful when you are using ast-grep in bundlers where the main thread is busy with other CPU intensive tasks.
@@ -7674,7 +7796,7 @@ const nodes = root.findAll({kind: 'member_expression'})
 
 ## Prefer `findInFiles` when possible
 
-If you have a lot of files to parse and want to maximize your programs' performance, ast-grep's language object provides a `findInFiles` function that parses multiple files and searches relevant nodes in parallel Rust threads.
+If you have a lot of files to parse and want to maximize your programs' performance, ast-grep provides a `findInFiles` function that parses multiple files and searches relevant nodes in parallel Rust threads.
 
 APIs we showed above all require parsing code in Rust and pass the `SgRoot` back to JavaScript.
 This incurs foreign function communication overhead and only utilizes the single main JavaScript thread.
@@ -7685,6 +7807,8 @@ The function signature of `findInFiles` is as follows:
 
 ```ts
 export function findInFiles(
+  /** the language to parse */
+  lang: Lang,
   /** specify the file path and matcher */
   config: FindConfig,
   /** callback function for found nodes in a file */
@@ -7757,15 +7881,20 @@ function countedPromise<F extends Callback>(func: F) {
 Example of using `findInFiles`
 
 ```ts
-let fileCount = await js.findInFiles({
+import { Lang, findInFiles } from '@ast-grep/napi'
+
+let fileCount = await findInFiles(Lang.JavaScript, {
   paths: ['relative/path/to/code'],
   matcher: {
     rule: {kind: 'member_expression'}
   },
 }, (err, n) => {
-  t.is(err, null)
-  t.assert(n.length > 0)
-  t.assert(n[0].text().includes('.'))
+  if (err) {
+    console.error(err)
+    return
+  }
+  console.log(`Found ${n.length} nodes`)
+  console.log(n[0].text())
 })
 ```
 
@@ -10121,7 +10250,7 @@ The produced `NEW_VAR` will contain the transformed nodes from both rewriters. [
 Using multiple rewriters can make you dynamically apply different rewriting logic to different sub nodes, based on the matching rules.
 :::
 
-In case multiple rewriters match the same sub node, the rewriter that appears first in the `rewriters` list will be applied first. Therefore, ***the order of rewriters in the `rewriters` list matters.***
+In case multiple rewriters match the same sub node, only the matching rewriter that appears first in the `rewriters` list will be applied. Therefore, ***the order of rewriters in the `rewriters` list matters.***
 
 ## Use Alternative Joiner
 
@@ -10272,6 +10401,61 @@ not_list.no_match { |v| v.even? }
 ### Contributed by
 
 [Herrington Darkholme](https://twitter.com/hd_nvim)
+
+## Detect Path Traversal Vulnerability in Rails
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InJ1YnkiLCJxdWVyeSI6IiIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoiYXN0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcGF0aC10cmF2ZXJzYWxcbm1lc3NhZ2U6IFBvdGVudGlhbCBQYXRoIFRyYXZlcnNhbCB2dWxuZXJhYmlsaXR5IGRldGVjdGVkLiBVc2VyIGlucHV0IGlzIGJlaW5nIHVzZWQgdG8gY29uc3RydWN0IGZpbGUgcGF0aHMgd2l0aG91dCB2YWxpZGF0aW9uLlxuc2V2ZXJpdHk6IGhpbnRcbmxhbmd1YWdlOiBSdWJ5XG5ub3RlOiB8XG4gIFBhdGggVHJhdmVyc2FsIChEaXJlY3RvcnkgVHJhdmVyc2FsKSBvY2N1cnMgd2hlbiB1c2VyIGlucHV0IGlzIHVzZWQgdG8gY29uc3RydWN0IGZpbGUgcGF0aHNcbiAgd2l0aG91dCBwcm9wZXIgdmFsaWRhdGlvbi4gVGhpcyBhbGxvd3MgYXR0YWNrZXJzIHRvIGFjY2VzcyBmaWxlcyBvdXRzaWRlIHRoZSBpbnRlbmRlZCBkaXJlY3RvcnkuXG4gIFZhbGlkYXRlIGFuZCBzYW5pdGl6ZSBmaWxlIHBhdGhzLCBhbmQgdXNlIEZpbGUuYmFzZW5hbWUoKSBvciBzaW1pbGFyIGZ1bmN0aW9ucy5cblxucnVsZTpcbiAgYW55OlxuICAgIC0gcGF0dGVybjogUmFpbHMucm9vdC5qb2luKCQkJCwgJFZBUiwgJCQkKVxuICAgIC0gcGF0dGVybjogRmlsZS5qb2luKCQkJCwgJFZBUiwgJCQkKVxuICAgIC0gcGF0dGVybjogc2VuZF9maWxlICRWQVIiLCJzb3VyY2UiOiIjIOaknOWHuuOBleOCjOOCi+OCs+ODvOODieS+i1xuIyDjg5Hjgr/jg7zjg7MxOiBSYWlscy5yb290LmpvaW4gd2l0aCB2YXJpYWJsZVxuUmFpbHMucm9vdC5qb2luKCd1cGxvYWRzJywgcGFyYW1zWzpmaWxlbmFtZV0pXG5SYWlscy5yb290LmpvaW4oJ2RhdGEnLCB1c2VyX2lucHV0LCAnZmlsZS50eHQnKVxuXG4jIOODkeOCv+ODvOODszI6IEZpbGUuam9pbiB3aXRoIHZhcmlhYmxlXG5GaWxlLmpvaW4oJy92YXIvd3d3JywgcGFyYW1zWzpwYXRoXSlcbkZpbGUuam9pbihiYXNlX3BhdGgsIHVzZXJfaWQsIGZpbGVuYW1lKVxuXG4jIOODkeOCv+ODvOODszM6IHNlbmRfZmlsZSB3aXRoIHZhcmlhYmxlXG5zZW5kX2ZpbGUgcGFyYW1zWzpmaWxlXVxuc2VuZF9maWxlIHVzZXIuZG9jdW1lbnRfcGF0aCJ9)
+
+### Description
+
+Path Traversal (Directory Traversal) occurs when user input is used to construct file paths without proper validation. This allows attackers to access files outside the intended directory by using special characters like `../` to navigate the filesystem.
+
+This rule detects common path traversal patterns in Rails applications where user-controlled variables are used in:
+
+* `Rails.root.join()` - Building file paths relative to the Rails application root
+* `File.join()` - Constructing file paths
+* `send_file` - Sending files to users
+
+To prevent path traversal vulnerabilities, always validate and sanitize file paths, use `File.basename()` to extract only the filename, or use allowlists for permitted files.
+
+### YAML
+
+```yaml
+id: path-traversal
+message: Potential Path Traversal vulnerability detected. User input is being used to construct file paths without validation.
+severity: hint
+language: Ruby
+note: |
+  Path Traversal (Directory Traversal) occurs when user input is used to construct file paths
+  without proper validation. This allows attackers to access files outside the intended directory.
+  Validate and sanitize file paths, and use File.basename() or similar functions.
+
+rule:
+  any:
+    - pattern: Rails.root.join($$$, $VAR, $$$)
+    - pattern: File.join($$$, $VAR, $$$)
+    - pattern: send_file $VAR
+```
+
+### Example
+
+```rb {2,3,6,7,10,11}
+# Pattern 1: Rails.root.join with variable
+Rails.root.join('uploads', params[:filename])
+Rails.root.join('data', user_input, 'file.txt')
+
+# Pattern 2: File.join with variable
+File.join('/var/www', params[:path])
+File.join(base_path, user_id, filename)
+
+# Pattern 3: send_file with variable
+send_file params[:file]
+send_file user.document_path
+```
+
+### Contributed by
+
+[sora fs0414](https://x.com/_fs0414) from this [blog post](https://fs0414.hatenablog.com/entry/2025/11/02/032114)
 
 ---
 
@@ -12143,7 +12327,7 @@ transform:
 ```
 
 :::tip Pro tip
-You can use regular expression capture groups in the `replace` field and refer to them in the `by` field. See [replace guide](/guide/rewrite-code.html#rewrite-with-regex-capture-groups)
+You can use regular expression capture groups in the `replace` field and refer to them in the `by` field. See [replace guide](/guide/rewrite/transform.html#rewrite-with-regex-capture-groups)
 :::
 
 ## `substring`
@@ -13705,63 +13889,6 @@ void test_func() {
 ---
 
 ---
-url: /catalog/cpp/find-struct-inheritance.md
----
-## Find Struct Inheritance
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiUGF0Y2giLCJsYW5nIjoiY3BwIiwicXVlcnkiOiJzdHJ1Y3QgJFNPTUVUSElORzogICRJTkhFUklUU19GUk9NIHsgJCQkQk9EWTsgfSIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoic21hcnQiLCJzZWxlY3RvciI6IiIsImNvbmZpZyI6IiIsInNvdXJjZSI6InN0cnVjdCBGb286IEJhciB7fTtcblxuc3RydWN0IEJhcjogQmF6IHtcbiAgaW50IGEsIGI7XG59In0=)
-
-### Description
-
-ast-grep's pattern is AST based. A code snippet like `struct $SOMETHING:  $INHERITS` will not work because it does not have a correct AST structure. The correct pattern should spell out the full syntax like `struct $SOMETHING: $INHERITS { $$$BODY; }`.
-
-Compare the ast structure below to see the difference, especially the `ERROR` node. You can also use the playground's pattern panel to debug.
-
-:::code-group
-
-```shell [Wrong Pattern]
-ERROR
-  $SOMETHING
-  base_class_clause
-    $INHERITS
-```
-
-```shell [Correct Pattern]
-struct_specifier
-  $SOMETHING
-  base_class_clause
-    $INHERITS
-  field_declaration_list
-    field_declaration
-      $$$BODY
-```
-
-:::
-
-If it is not possible to write a full pattern, [YAML rule](/guide/rule-config.html) is a better choice.
-
-### Pattern
-
-```shell
-ast-grep --lang cpp --pattern '
-struct $SOMETHING: $INHERITS { $$$BODY; }'
-```
-
-### Example
-
-```cpp {1-3}
-struct Bar: Baz {
-  int a, b;
-}
-```
-
-### Contributed by
-
-Inspired by this [tweet](https://x.com/techno_bog/status/1885421768384331871)
-
----
-
----
 url: /catalog/c/yoda-condition.md
 ---
 ## Rewrite Check to Yoda Condition&#x20;
@@ -13879,6 +14006,63 @@ sprintf(buf1, "%s", Text_String(TXT_WAITING_FOR_CONNECTIONS));
 ---
 
 ---
+url: /catalog/cpp/find-struct-inheritance.md
+---
+## Find Struct Inheritance
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiUGF0Y2giLCJsYW5nIjoiY3BwIiwicXVlcnkiOiJzdHJ1Y3QgJFNPTUVUSElORzogICRJTkhFUklUU19GUk9NIHsgJCQkQk9EWTsgfSIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoic21hcnQiLCJzZWxlY3RvciI6IiIsImNvbmZpZyI6IiIsInNvdXJjZSI6InN0cnVjdCBGb286IEJhciB7fTtcblxuc3RydWN0IEJhcjogQmF6IHtcbiAgaW50IGEsIGI7XG59In0=)
+
+### Description
+
+ast-grep's pattern is AST based. A code snippet like `struct $SOMETHING:  $INHERITS` will not work because it does not have a correct AST structure. The correct pattern should spell out the full syntax like `struct $SOMETHING: $INHERITS { $$$BODY; }`.
+
+Compare the ast structure below to see the difference, especially the `ERROR` node. You can also use the playground's pattern panel to debug.
+
+:::code-group
+
+```shell [Wrong Pattern]
+ERROR
+  $SOMETHING
+  base_class_clause
+    $INHERITS
+```
+
+```shell [Correct Pattern]
+struct_specifier
+  $SOMETHING
+  base_class_clause
+    $INHERITS
+  field_declaration_list
+    field_declaration
+      $$$BODY
+```
+
+:::
+
+If it is not possible to write a full pattern, [YAML rule](/guide/rule-config.html) is a better choice.
+
+### Pattern
+
+```shell
+ast-grep --lang cpp --pattern '
+struct $SOMETHING: $INHERITS { $$$BODY; }'
+```
+
+### Example
+
+```cpp {1-3}
+struct Bar: Baz {
+  int a, b;
+}
+```
+
+### Contributed by
+
+Inspired by this [tweet](https://x.com/techno_bog/status/1885421768384331871)
+
+---
+
+---
 url: /catalog/go/defer-func-call-antipattern.md
 ---
 ## Detect problematic defer statements with function calls
@@ -13987,6 +14171,49 @@ func TestAbs(t *testing.T) {
 ---
 
 ---
+url: /catalog/go/match-function-call.md
+---
+## Match Function Call in Golang
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJhd2FpdCAkQSIsInJld3JpdGUiOiJ0cnkge1xuICAgIGF3YWl0ICRBXG59IGNhdGNoKGUpIHtcbiAgICAvLyB0b2RvXG59IiwiY29uZmlnIjoicnVsZTpcbiAgcGF0dGVybjpcbiAgICBjb250ZXh0OiAnZnVuYyB0KCkgeyBmbXQuUHJpbnRsbigkJCRBKSB9J1xuICAgIHNlbGVjdG9yOiBjYWxsX2V4cHJlc3Npb25cbiIsInNvdXJjZSI6ImZ1bmMgbWFpbigpIHtcbiAgICBmbXQuUHJpbnRsbihcIk9LXCIpXG59In0=)
+
+### Description
+
+One of the common questions of ast-grep is to match function calls in Golang.
+
+A plain pattern like `fmt.Println($A)` will not work. This is because Golang syntax also allows type conversions, e.g. `int(3.14)`, that look like function calls. Tree-sitter, ast-grep's parser, will prefer parsing `func_call(arg)` as a type conversion instead of a call expression.
+
+To avoid this ambiguity, ast-grep lets us write a [contextual pattern](/guide/rule-config/atomic-rule.html#pattern), which is a pattern inside a larger code snippet.
+We can use `context` to write a pattern like this: `func t() { fmt.Println($A) }`. Then, we can use the selector `call_expression` to match only function calls.
+
+Please also read the [deep dive](/advanced/pattern-parse.html) on [ambiguous pattern](/advanced/pattern-parse.html#ambiguous-pattern-code).
+
+### YAML
+
+```yaml
+id: match-function-call
+language: go
+rule:
+  pattern:
+    context: 'func t() { fmt.Println($A) }'
+    selector: call_expression
+```
+
+### Example
+
+```go{2}
+func main() {
+    fmt.Println("OK")
+}
+```
+
+### Contributed by
+
+Inspired by [QuantumGhost](https://github.com/QuantumGhost) from [ast-grep/ast-grep#646](https://github.com/ast-grep/ast-grep/issues/646)
+
+---
+
+---
 url: /catalog/go/match-package-import.md
 ---
 ## Match package import in Golang
@@ -14043,49 +14270,6 @@ func main() {
 ### Contributed by
 
 [Sudesh Gutta](https://github.com/sudeshgutta)
-
----
-
----
-url: /catalog/go/match-function-call.md
----
-## Match Function Call in Golang
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJhd2FpdCAkQSIsInJld3JpdGUiOiJ0cnkge1xuICAgIGF3YWl0ICRBXG59IGNhdGNoKGUpIHtcbiAgICAvLyB0b2RvXG59IiwiY29uZmlnIjoicnVsZTpcbiAgcGF0dGVybjpcbiAgICBjb250ZXh0OiAnZnVuYyB0KCkgeyBmbXQuUHJpbnRsbigkJCRBKSB9J1xuICAgIHNlbGVjdG9yOiBjYWxsX2V4cHJlc3Npb25cbiIsInNvdXJjZSI6ImZ1bmMgbWFpbigpIHtcbiAgICBmbXQuUHJpbnRsbihcIk9LXCIpXG59In0=)
-
-### Description
-
-One of the common questions of ast-grep is to match function calls in Golang.
-
-A plain pattern like `fmt.Println($A)` will not work. This is because Golang syntax also allows type conversions, e.g. `int(3.14)`, that look like function calls. Tree-sitter, ast-grep's parser, will prefer parsing `func_call(arg)` as a type conversion instead of a call expression.
-
-To avoid this ambiguity, ast-grep lets us write a [contextual pattern](/guide/rule-config/atomic-rule.html#pattern), which is a pattern inside a larger code snippet.
-We can use `context` to write a pattern like this: `func t() { fmt.Println($A) }`. Then, we can use the selector `call_expression` to match only function calls.
-
-Please also read the [deep dive](/advanced/pattern-parse.html) on [ambiguous pattern](/advanced/pattern-parse.html#ambiguous-pattern-code).
-
-### YAML
-
-```yaml
-id: match-function-call
-language: go
-rule:
-  pattern:
-    context: 'func t() { fmt.Println($A) }'
-    selector: call_expression
-```
-
-### Example
-
-```go{2}
-func main() {
-    fmt.Println("OK")
-}
-```
-
-### Contributed by
-
-Inspired by [QuantumGhost](https://github.com/QuantumGhost) from [ast-grep/ast-grep#646](https://github.com/ast-grep/ast-grep/issues/646)
 
 ---
 
@@ -15164,6 +15348,83 @@ let width = (lines + num).checked_ilog10().unwrap_or(0) + 1; // [!code ++]
 ---
 
 ---
+url: /catalog/rust/rewrite-indoc-macro.md
+---
+## Rewrite `indoc!` macro&#x20;
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiUGF0Y2giLCJsYW5nIjoicnVzdCIsInF1ZXJ5IjoiaW5kb2MhIHsgciNcIiQkJEFcIiMgfSIsInJld3JpdGUiOiJgJCQkQWAiLCJzdHJpY3RuZXNzIjoicmVsYXhlZCIsInNlbGVjdG9yIjoiIiwiY29uZmlnIjoicnVsZTogXG4gYW55OlxuIC0gcGF0dGVybjogJFYgPT09ICRTRU5TRVRJVkVXT1JEXG4gLSBwYXR0ZXJuOiAkU0VOU0VUSVZFV09SRCA9PT0gJFZcbmNvbnN0cmFpbnRzOlxuICBTRU5TRVRJVkVXT1JEOlxuICAgIHJlZ2V4OiBwYXNzd29yZCIsInNvdXJjZSI6ImZuIG1haW4oKSB7XG4gICAgaW5kb2MhIHtyI1wiXG4gICAgICAgIC5mb28ge1xuICAgICAgICAgICAgb3JkZXI6IDE7XG4gICAgICAgIH1cbiAgICBcIiN9O1xufSJ9)
+
+### Description
+
+This example, created from [a Tweet](https://x.com/zack_overflow/status/1885065128590401551), shows a refactoring operation being performed on Rust source code. The changes involve removing `indoc!` macro declarations while preserving the CSS-like content within them.
+
+Previously, the same refactor is implemented by a *unreadable monster regex* in vim syntax.
+
+:::details Click to see the original regex (neovim, btw)
+
+```vimscript
+:%s/\v(indoc!|)(| )([|\{)r#"(([^#]+|\n+)+)"#/`\4`
+```
+
+I have to confess that I don't understand this regex even if I use neovim, btw.
+
+Let Claude break it down piece by piece:
+
+* `:%s/` - Vim substitution command for all lines
+* `\v` - Very magic mode in vim for simpler regex syntax
+* `(indoc!|)` - First capture group: matches either "indoc!" or nothing
+* `(| )` - Second capture group: matches either empty string or a space
+* `([|\{)` - Third capture group: matches either `[` or `{`
+* `r#"` - Matches literal `r#"` (Rust raw string delimiter)
+* `(([^#]+|\n+)+)` - Fourth capture group (nested):
+  * `[^#]+` - One or more non-# characters
+  * `|\n+` - OR one or more newlines
+  * Outer `()+` makes this repeat one or more times
+* `"#` - Matches the closing raw string delimiter
+* \`\4\` - Replaces with the fourth capture group wrapped in backticks
+
+This regex is designed to find Rust raw string literals (possibly wrapped in `indoc!` macro), capture their content, and replace the entire match with just the content wrapped in backticks. It's more precise than my previous explanation and matches the pattern you're showing.
+
+:::
+
+### Pattern
+
+```shell
+ast-grep --pattern 'indoc! { r#"$$$A"# }' --rewrite '`$$$A`' sgtest.rs
+```
+
+### Example
+
+```rs {2-6}
+fn main() {
+    indoc! {r#"
+        .foo {
+            order: 1;
+        }
+    "#};
+}
+```
+
+### Diff
+
+```rs
+fn main() {
+    indoc! {r#" // [!code --]
+    `.foo {    // [!code ++]
+        order: 1;
+    }
+    "#}; // [!code --]
+        `; // [!code ++]
+}
+```
+
+### Contributed by
+
+[Zack in SF](https://x.com/zack_overflow)
+
+---
+
+---
 url: /catalog/rust/redundant-unsafe-function.md
 ---
 ## Unsafe Function Without Unsafe Block
@@ -15253,79 +15514,47 @@ Inspired by [@hd\_nvim's Tweet](https://x.com/hd_nvim/status/1992810384072585397
 ---
 
 ---
-url: /catalog/rust/rewrite-indoc-macro.md
+url: /catalog/tsx/avoid-nested-links.md
 ---
-## Rewrite `indoc!` macro&#x20;
+## Avoid nested links
 
-* [Playground Link](/playground.html#eyJtb2RlIjoiUGF0Y2giLCJsYW5nIjoicnVzdCIsInF1ZXJ5IjoiaW5kb2MhIHsgciNcIiQkJEFcIiMgfSIsInJld3JpdGUiOiJgJCQkQWAiLCJzdHJpY3RuZXNzIjoicmVsYXhlZCIsInNlbGVjdG9yIjoiIiwiY29uZmlnIjoicnVsZTogXG4gYW55OlxuIC0gcGF0dGVybjogJFYgPT09ICRTRU5TRVRJVkVXT1JEXG4gLSBwYXR0ZXJuOiAkU0VOU0VUSVZFV09SRCA9PT0gJFZcbmNvbnN0cmFpbnRzOlxuICBTRU5TRVRJVkVXT1JEOlxuICAgIHJlZ2V4OiBwYXNzd29yZCIsInNvdXJjZSI6ImZuIG1haW4oKSB7XG4gICAgaW5kb2MhIHtyI1wiXG4gICAgICAgIC5mb28ge1xuICAgICAgICAgICAgb3JkZXI6IDE7XG4gICAgICAgIH1cbiAgICBcIiN9O1xufSJ9)
+* [Playground Link](https://ast-grep.github.io/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiaWYgKCRBKSB7ICQkJEIgfSIsInJld3JpdGUiOiJpZiAoISgkQSkpIHtcbiAgICByZXR1cm47XG59XG4kJCRCIiwic3RyaWN0bmVzcyI6InNtYXJ0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogbm8tbmVzdGVkLWxpbmtzXG5sYW5ndWFnZTogdHN4XG5zZXZlcml0eTogZXJyb3JcbnJ1bGU6XG4gIHBhdHRlcm46IDxhICQkJD4kJCRBPC9hPlxuICBoYXM6XG4gICAgcGF0dGVybjogPGEgJCQkPiQkJDwvYT5cbiAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6ImZ1bmN0aW9uIENvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgPGEgaHJlZj0nL2Fub3RoZXJkZXN0aW5hdGlvbic+TmVzdGVkIGxpbmshPC9hPlxuICA8L2E+O1xufVxuZnVuY3Rpb24gT2theUNvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgSSBhbSBqdXN0IGEgbGluay5cbiAgPC9hPjtcbn0ifQ==)
 
 ### Description
 
-This example, created from [a Tweet](https://x.com/zack_overflow/status/1885065128590401551), shows a refactoring operation being performed on Rust source code. The changes involve removing `indoc!` macro declarations while preserving the CSS-like content within them.
+React will produce a warning message if you nest a link element inside of another link element. This rule will catch this mistake!
 
-Previously, the same refactor is implemented by a *unreadable monster regex* in vim syntax.
+### YAML
 
-:::details Click to see the original regex (neovim, btw)
-
-```vimscript
-:%s/\v(indoc!|)(| )([|\{)r#"(([^#]+|\n+)+)"#/`\4`
-```
-
-I have to confess that I don't understand this regex even if I use neovim, btw.
-
-Let Claude break it down piece by piece:
-
-* `:%s/` - Vim substitution command for all lines
-* `\v` - Very magic mode in vim for simpler regex syntax
-* `(indoc!|)` - First capture group: matches either "indoc!" or nothing
-* `(| )` - Second capture group: matches either empty string or a space
-* `([|\{)` - Third capture group: matches either `[` or `{`
-* `r#"` - Matches literal `r#"` (Rust raw string delimiter)
-* `(([^#]+|\n+)+)` - Fourth capture group (nested):
-  * `[^#]+` - One or more non-# characters
-  * `|\n+` - OR one or more newlines
-  * Outer `()+` makes this repeat one or more times
-* `"#` - Matches the closing raw string delimiter
-* \`\4\` - Replaces with the fourth capture group wrapped in backticks
-
-This regex is designed to find Rust raw string literals (possibly wrapped in `indoc!` macro), capture their content, and replace the entire match with just the content wrapped in backticks. It's more precise than my previous explanation and matches the pattern you're showing.
-
-:::
-
-### Pattern
-
-```shell
-ast-grep --pattern 'indoc! { r#"$$$A"# }' --rewrite '`$$$A`' sgtest.rs
+```yaml
+id: no-nested-links
+language: tsx
+severity: error
+rule:
+  pattern: <a $$$>$$$A</a>
+  has:
+    pattern: <a $$$>$$$</a>
+    stopBy: end
 ```
 
 ### Example
 
-```rs {2-6}
-fn main() {
-    indoc! {r#"
-        .foo {
-            order: 1;
-        }
-    "#};
+```tsx {1-5}
+function Component() {
+  return <a href='/destination'>
+    <a href='/anotherdestination'>Nested link!</a>
+  </a>;
 }
-```
-
-### Diff
-
-```rs
-fn main() {
-    indoc! {r#" // [!code --]
-    `.foo {    // [!code ++]
-        order: 1;
-    }
-    "#}; // [!code --]
-        `; // [!code ++]
+function OkayComponent() {
+  return <a href='/destination'>
+    I am just a link.
+  </a>;
 }
 ```
 
 ### Contributed by
 
-[Zack in SF](https://x.com/zack_overflow)
+[Tom MacWright](https://macwright.com/)
 
 ---
 
@@ -15374,51 +15603,6 @@ fix: "{$A ? $B : null}"
 ### Contributed by
 
 [Herrington Darkholme](https://twitter.com/hd_nvim), inspired by [@Brooooook\_lyn](https://twitter.com/Brooooook_lyn/status/1666637274757595141)
-
----
-
----
-url: /catalog/tsx/avoid-nested-links.md
----
-## Avoid nested links
-
-* [Playground Link](https://ast-grep.github.io/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiaWYgKCRBKSB7ICQkJEIgfSIsInJld3JpdGUiOiJpZiAoISgkQSkpIHtcbiAgICByZXR1cm47XG59XG4kJCRCIiwic3RyaWN0bmVzcyI6InNtYXJ0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogbm8tbmVzdGVkLWxpbmtzXG5sYW5ndWFnZTogdHN4XG5zZXZlcml0eTogZXJyb3JcbnJ1bGU6XG4gIHBhdHRlcm46IDxhICQkJD4kJCRBPC9hPlxuICBoYXM6XG4gICAgcGF0dGVybjogPGEgJCQkPiQkJDwvYT5cbiAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6ImZ1bmN0aW9uIENvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgPGEgaHJlZj0nL2Fub3RoZXJkZXN0aW5hdGlvbic+TmVzdGVkIGxpbmshPC9hPlxuICA8L2E+O1xufVxuZnVuY3Rpb24gT2theUNvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgSSBhbSBqdXN0IGEgbGluay5cbiAgPC9hPjtcbn0ifQ==)
-
-### Description
-
-React will produce a warning message if you nest a link element inside of another link element. This rule will catch this mistake!
-
-### YAML
-
-```yaml
-id: no-nested-links
-language: tsx
-severity: error
-rule:
-  pattern: <a $$$>$$$A</a>
-  has:
-    pattern: <a $$$>$$$</a>
-    stopBy: end
-```
-
-### Example
-
-```tsx {1-5}
-function Component() {
-  return <a href='/destination'>
-    <a href='/anotherdestination'>Nested link!</a>
-  </a>;
-}
-function OkayComponent() {
-  return <a href='/destination'>
-    I am just a link.
-  </a>;
-}
-```
-
-### Contributed by
-
-[Tom MacWright](https://macwright.com/)
 
 ---
 
@@ -15473,6 +15657,64 @@ function Component() {
 ### Contributed by
 
 [Herrington Darkholme](https://twitter.com/hd_nvim)
+
+---
+
+---
+url: /catalog/tsx/rename-svg-attribute.md
+---
+## Rename SVG Attribute&#x20;
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiIiwicmV3cml0ZSI6IiIsInN0cmljdG5lc3MiOiJyZWxheGVkIiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcmV3cml0ZS1zdmctYXR0cmlidXRlXG5sYW5ndWFnZTogdHN4XG5ydWxlOlxuICBwYXR0ZXJuOiAkUFJPUFxuICByZWdleDogKFthLXpdKyktKFthLXpdKVxuICBraW5kOiBwcm9wZXJ0eV9pZGVudGlmaWVyXG4gIGluc2lkZTpcbiAgICBraW5kOiBqc3hfYXR0cmlidXRlXG50cmFuc2Zvcm06XG4gIE5FV19QUk9QOlxuICAgIGNvbnZlcnQ6XG4gICAgICBzb3VyY2U6ICRQUk9QXG4gICAgICB0b0Nhc2U6IGNhbWVsQ2FzZVxuZml4OiAkTkVXX1BST1AiLCJzb3VyY2UiOiJjb25zdCBlbGVtZW50ID0gKFxuICA8c3ZnIHdpZHRoPVwiMTAwXCIgaGVpZ2h0PVwiMTAwXCIgdmlld0JveD1cIjAgMCAxMDAgMTAwXCI+XG4gICAgPHBhdGggZD1cIk0xMCAyMCBMMzAgNDBcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgZmlsbC1vcGFjaXR5PVwiMC41XCIgLz5cbiAgPC9zdmc+XG4pIn0=)
+
+### Description
+
+[SVG](https://en.wikipedia.org/wiki/SVG)(Scalable Vector Graphics)s' hyphenated names are not compatible with JSX syntax in React. JSX requires [camelCase naming](https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things) for attributes.
+For example, an SVG attribute like `stroke-linecap` needs to be renamed to `strokeLinecap` to work correctly in React.
+
+### YAML
+
+```yaml
+id: rewrite-svg-attribute
+language: tsx
+rule:
+  pattern: $PROP            # capture in metavar
+  regex: ([a-z]+)-([a-z])   # hyphenated name
+  kind: property_identifier
+  inside:
+    kind: jsx_attribute     # in JSX attribute
+transform:
+  NEW_PROP:                 # new property name
+    convert:                # use ast-grep's convert
+      source: $PROP
+      toCase: camelCase     # to camelCase naming
+fix: $NEW_PROP
+```
+
+### Example
+
+```tsx {3}
+const element = (
+  <svg width="100" height="100" viewBox="0 0 100 100">
+    <path d="M10 20 L30 40" stroke-linecap="round" fill-opacity="0.5" />
+  </svg>
+)
+```
+
+### Diff
+
+```ts
+const element = (
+  <svg width="100" height="100" viewBox="0 0 100 100">
+    <path d="M10 20 L30 40" stroke-linecap="round" fill-opacity="0.5" /> // [!code --]
+    <path d="M10 20 L30 40" strokeLinecap="round" fillOpacity="0.5" />   // [!code ++]
+  </svg>
+)
+```
+
+### Contributed by
+
+Inspired by [SVG Renamer](https://admondtamang.medium.com/introducing-svg-renamer-your-solution-for-react-svg-attributes-26503382d5a8)
 
 ---
 
@@ -15583,64 +15825,6 @@ const Component = () => {
 ### Contributed by
 
 Inspired by [Aiden Bai](https://twitter.com/aidenybai)
-
----
-
----
-url: /catalog/tsx/rename-svg-attribute.md
----
-## Rename SVG Attribute&#x20;
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiIiwicmV3cml0ZSI6IiIsInN0cmljdG5lc3MiOiJyZWxheGVkIiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcmV3cml0ZS1zdmctYXR0cmlidXRlXG5sYW5ndWFnZTogdHN4XG5ydWxlOlxuICBwYXR0ZXJuOiAkUFJPUFxuICByZWdleDogKFthLXpdKyktKFthLXpdKVxuICBraW5kOiBwcm9wZXJ0eV9pZGVudGlmaWVyXG4gIGluc2lkZTpcbiAgICBraW5kOiBqc3hfYXR0cmlidXRlXG50cmFuc2Zvcm06XG4gIE5FV19QUk9QOlxuICAgIGNvbnZlcnQ6XG4gICAgICBzb3VyY2U6ICRQUk9QXG4gICAgICB0b0Nhc2U6IGNhbWVsQ2FzZVxuZml4OiAkTkVXX1BST1AiLCJzb3VyY2UiOiJjb25zdCBlbGVtZW50ID0gKFxuICA8c3ZnIHdpZHRoPVwiMTAwXCIgaGVpZ2h0PVwiMTAwXCIgdmlld0JveD1cIjAgMCAxMDAgMTAwXCI+XG4gICAgPHBhdGggZD1cIk0xMCAyMCBMMzAgNDBcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgZmlsbC1vcGFjaXR5PVwiMC41XCIgLz5cbiAgPC9zdmc+XG4pIn0=)
-
-### Description
-
-[SVG](https://en.wikipedia.org/wiki/SVG)(Scalable Vector Graphics)s' hyphenated names are not compatible with JSX syntax in React. JSX requires [camelCase naming](https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things) for attributes.
-For example, an SVG attribute like `stroke-linecap` needs to be renamed to `strokeLinecap` to work correctly in React.
-
-### YAML
-
-```yaml
-id: rewrite-svg-attribute
-language: tsx
-rule:
-  pattern: $PROP            # capture in metavar
-  regex: ([a-z]+)-([a-z])   # hyphenated name
-  kind: property_identifier
-  inside:
-    kind: jsx_attribute     # in JSX attribute
-transform:
-  NEW_PROP:                 # new property name
-    convert:                # use ast-grep's convert
-      source: $PROP
-      toCase: camelCase     # to camelCase naming
-fix: $NEW_PROP
-```
-
-### Example
-
-```tsx {3}
-const element = (
-  <svg width="100" height="100" viewBox="0 0 100 100">
-    <path d="M10 20 L30 40" stroke-linecap="round" fill-opacity="0.5" />
-  </svg>
-)
-```
-
-### Diff
-
-```ts
-const element = (
-  <svg width="100" height="100" viewBox="0 0 100 100">
-    <path d="M10 20 L30 40" stroke-linecap="round" fill-opacity="0.5" /> // [!code --]
-    <path d="M10 20 L30 40" strokeLinecap="round" fillOpacity="0.5" />   // [!code ++]
-  </svg>
-)
-```
-
-### Contributed by
-
-Inspired by [SVG Renamer](https://admondtamang.medium.com/introducing-svg-renamer-your-solution-for-react-svg-attributes-26503382d5a8)
 
 ---
 
@@ -15831,58 +16015,6 @@ my_func("./unrelated_path_string")
 ---
 
 ---
-url: /catalog/typescript/find-import-usage.md
----
-## Find Import Usage
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InR5cGVzY3JpcHQiLCJxdWVyeSI6IiIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoicmVsYXhlZCIsInNlbGVjdG9yIjoiIiwiY29uZmlnIjoicnVsZTpcbiAgIyB0aGUgdXNhZ2VcbiAga2luZDogaWRlbnRpZmllclxuICBwYXR0ZXJuOiAkTU9EXG4gICMgaXRzIHJlbGF0aW9uc2hpcCB0byB0aGUgcm9vdFxuICBpbnNpZGU6XG4gICAgc3RvcEJ5OiBlbmRcbiAgICBraW5kOiBwcm9ncmFtXG4gICAgIyBhbmQgYmFjayBkb3duIHRvIHRoZSBpbXBvcnQgc3RhdGVtZW50XG4gICAgaGFzOlxuICAgICAga2luZDogaW1wb3J0X3N0YXRlbWVudFxuICAgICAgIyBhbmQgZGVlcGVyIGludG8gdGhlIGltcG9ydCBzdGF0ZW1lbnQgbG9va2luZyBmb3IgdGhlIG1hdGNoaW5nIGlkZW50aWZpZXJcbiAgICAgIGhhczpcbiAgICAgICAgc3RvcEJ5OiBlbmRcbiAgICAgICAga2luZDogaW1wb3J0X3NwZWNpZmllclxuICAgICAgICBwYXR0ZXJuOiAkTU9EICMgc2FtZSBwYXR0ZXJuIGFzIHRoZSB1c2FnZSBpcyBlbmZvcmNlZCBoZXJlIiwic291cmNlIjoiaW1wb3J0IHsgTW9uZ29DbGllbnQgfSBmcm9tICdtb25nb2RiJztcbmNvbnN0IHVybCA9ICdtb25nb2RiOi8vbG9jYWxob3N0OjI3MDE3JztcbmFzeW5jIGZ1bmN0aW9uIHJ1bigpIHtcbiAgY29uc3QgY2xpZW50ID0gbmV3IE1vbmdvQ2xpZW50KHVybCk7XG59XG4ifQ==)
-
-### Description
-
-It is common to find the usage of an imported module in a codebase. This rule helps you to find the usage of an imported module in your codebase.
-The idea of this rule can be broken into several parts:
-
-* Find the use of an identifier `$MOD`
-* To find the import, we first need to find the root file of which `$MOD` is  `inside`
-* The `program` file `has` an `import` statement
-* The `import` statement `has` the identifier `$MOD`
-
-### YAML
-
-```yaml
-id: find-import-usage
-language: typescript
-rule:
-  kind: identifier # ast-grep requires a kind
-  pattern: $MOD   # the identifier to find
-  inside: # find the root
-    stopBy: end
-    kind: program
-    has: # and has the import statement
-      kind: import_statement
-      has: # look for the matching identifier
-        stopBy: end
-        kind: import_specifier
-        pattern: $MOD # same pattern as the usage is enforced here
-```
-
-### Example
-
-```ts {4}
-import { MongoClient } from 'mongodb';
-const url = 'mongodb://localhost:27017';
-async function run() {
-  const client = new MongoClient(url);
-}
-```
-
-### Contributed by
-
-[Steven Love](https://github.com/StevenLove)
-
----
-
----
 url: /catalog/typescript/migrate-xstate-v5.md
 ---
 ## Migrate XState to v5 from v4&#x20;
@@ -15983,6 +16115,58 @@ const actor = createActor(specificMachine, { // [!code ++]
 ### Contributed by
 
 Inspired by [XState's blog](https://stately.ai/blog/2023-12-01-xstate-v5).
+
+---
+
+---
+url: /catalog/typescript/find-import-usage.md
+---
+## Find Import Usage
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InR5cGVzY3JpcHQiLCJxdWVyeSI6IiIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoicmVsYXhlZCIsInNlbGVjdG9yIjoiIiwiY29uZmlnIjoicnVsZTpcbiAgIyB0aGUgdXNhZ2VcbiAga2luZDogaWRlbnRpZmllclxuICBwYXR0ZXJuOiAkTU9EXG4gICMgaXRzIHJlbGF0aW9uc2hpcCB0byB0aGUgcm9vdFxuICBpbnNpZGU6XG4gICAgc3RvcEJ5OiBlbmRcbiAgICBraW5kOiBwcm9ncmFtXG4gICAgIyBhbmQgYmFjayBkb3duIHRvIHRoZSBpbXBvcnQgc3RhdGVtZW50XG4gICAgaGFzOlxuICAgICAga2luZDogaW1wb3J0X3N0YXRlbWVudFxuICAgICAgIyBhbmQgZGVlcGVyIGludG8gdGhlIGltcG9ydCBzdGF0ZW1lbnQgbG9va2luZyBmb3IgdGhlIG1hdGNoaW5nIGlkZW50aWZpZXJcbiAgICAgIGhhczpcbiAgICAgICAgc3RvcEJ5OiBlbmRcbiAgICAgICAga2luZDogaW1wb3J0X3NwZWNpZmllclxuICAgICAgICBwYXR0ZXJuOiAkTU9EICMgc2FtZSBwYXR0ZXJuIGFzIHRoZSB1c2FnZSBpcyBlbmZvcmNlZCBoZXJlIiwic291cmNlIjoiaW1wb3J0IHsgTW9uZ29DbGllbnQgfSBmcm9tICdtb25nb2RiJztcbmNvbnN0IHVybCA9ICdtb25nb2RiOi8vbG9jYWxob3N0OjI3MDE3JztcbmFzeW5jIGZ1bmN0aW9uIHJ1bigpIHtcbiAgY29uc3QgY2xpZW50ID0gbmV3IE1vbmdvQ2xpZW50KHVybCk7XG59XG4ifQ==)
+
+### Description
+
+It is common to find the usage of an imported module in a codebase. This rule helps you to find the usage of an imported module in your codebase.
+The idea of this rule can be broken into several parts:
+
+* Find the use of an identifier `$MOD`
+* To find the import, we first need to find the root file of which `$MOD` is  `inside`
+* The `program` file `has` an `import` statement
+* The `import` statement `has` the identifier `$MOD`
+
+### YAML
+
+```yaml
+id: find-import-usage
+language: typescript
+rule:
+  kind: identifier # ast-grep requires a kind
+  pattern: $MOD   # the identifier to find
+  inside: # find the root
+    stopBy: end
+    kind: program
+    has: # and has the import statement
+      kind: import_statement
+      has: # look for the matching identifier
+        stopBy: end
+        kind: import_specifier
+        pattern: $MOD # same pattern as the usage is enforced here
+```
+
+### Example
+
+```ts {4}
+import { MongoClient } from 'mongodb';
+const url = 'mongodb://localhost:27017';
+async function run() {
+  const client = new MongoClient(url);
+}
+```
+
+### Contributed by
+
+[Steven Love](https://github.com/StevenLove)
 
 ---
 
@@ -16453,8 +16637,8 @@ ast-grep supports a wide range of programming languages. Here is a list of notab
 |Server Side Programming| `Go`, `Java`, `Python`, `C-sharp`|
 |Web Development| `JS(X)`, `TS(X)`, `HTML`, `CSS`|
 |Mobile App Development| `Kotlin`, `Swift`|
-|Configuration | `Json`, `YAML`|
-|Scripting, Protocols, etc.| `Lua`, `Thrift`|
+|Configuration | `Json`, `YAML`, `Hcl`|
+|Scripting, Protocols, etc.| `Lua`, `Nix`|
 
 Thanks to [tree-sitter](https://tree-sitter.github.io/tree-sitter/), a popular parser generator library, ast-grep manages to support [many languages](/reference/languages) out of the box!
 

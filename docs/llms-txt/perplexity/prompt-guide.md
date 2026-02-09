@@ -1,10 +1,14 @@
-# Source: https://docs.perplexity.ai/guides/prompt-guide.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/prompting/prompt-guide.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prompt Guide
 
 ## System Prompt
 
-You can use the system prompt to provide instructions related to style, tone, and language of the response.
+You can use the system prompt (Chat Completions) or instructions (Agentic Research API) to provide instructions related to style, tone, and language of the response.
 
 <Warning>
   The real-time search component of our models does not attend to the system prompt.
@@ -27,13 +31,59 @@ Steps:
 
 ## User Prompt
 
-You should use the user prompt to pass in the actual query for which you need an answer for. The user prompt will be used to kick off a real-time web search to make sure the answer has the latest and the most relevant information needed.
+You should use the user prompt (Chat Completions) or input (Agentic Research API) to pass in the actual query for which you need an answer. The user prompt/input will be used to kick off a real-time web search to make sure the answer has the latest and the most relevant information needed.
 
 **Example of a user prompt**
 
 ```
 What are the best sushi restaurants in the world currently?
 ```
+
+## API Examples
+
+<Tabs>
+  <Tab title="Agentic Research API">
+    ```python  theme={null}
+    from perplexity import Perplexity
+
+    client = Perplexity()
+
+    response = client.responses.create(
+        preset="pro-search",
+        input="What are the best sushi restaurants in the world currently?",
+        instructions="You are a helpful AI assistant. Provide concise, well-researched answers."
+    )
+
+
+    print(response.output_text)
+            break
+    ```
+  </Tab>
+
+  <Tab title="Chat Completions API">
+    ```python  theme={null}
+    from perplexity import Perplexity
+
+    client = Perplexity()
+
+    completion = client.chat.completions.create(
+        model="sonar-pro",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful AI assistant. Provide concise, well-researched answers."
+            },
+            {
+                "role": "user",
+                "content": "What are the best sushi restaurants in the world currently?"
+            }
+        ]
+    )
+
+    print(completion.choices[0].message.content)
+    ```
+  </Tab>
+</Tabs>
 
 # Web Search Models: General Prompting Guidelines
 
@@ -310,10 +360,6 @@ When you want to control search behavior—such as limiting sources, filtering b
 </CardGroup>
 
 ### Advanced Techniques
-
-<Tip>
-  We recommend for users *not* to tune language parameters such as `temperature`, as the default settings for these have already been optimized.
-</Tip>
 
 <CardGroup cols={1}>
   <Card title="Parameter Optimization">

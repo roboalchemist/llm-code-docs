@@ -1,12 +1,11 @@
 # Source: https://rspack.dev/plugins/rspack/subresource-integrity-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # SubresourceIntegrityPlugin
 
-<ApiMeta specific={['Rspack']} addedVersion="1.2.4" />
-
+[Added in v1.7.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.7.0)Rspack only
 The `rspack.SubresourceIntegrityPlugin` is a plugin for enabling Subresource Integrity in Rspack.
+
+> In versions 1.2.4 to 1.6.8, you can use `rspack.experiments.SubresourceIntegrityPlugin`.
 
 ## What is SRI
 
@@ -153,8 +152,8 @@ as the Rspack `output.crossOriginLoading` configuration option.
 
 ### hashFuncNames
 
-* **Type:** `Array<"sha256" | "sha384" | "sha512">`
-* **Default:** `["sha384"]`
+- **Type:** `Array<"sha256" | "sha384" | "sha512">`
+- **Default:** `["sha384"]`
 
 An array of strings, each specifying the name of a hash function to be
 used for calculating integrity hash values. Only supports `sha256`, `sha384`, and `sha512` yet.
@@ -163,20 +162,20 @@ used for calculating integrity hash values. Only supports `sha256`, `sha384`, an
 
 ### enabled
 
-* **Type:** `"auto" | boolean`
+- **Type:** `"auto" | boolean`
 
-* **Default:** `"auto"`
+- **Default:** `"auto"`
 
-* `auto` is the default value, which means the plugin is enabled when [Rspack mode](/config/mode.md) is `production` or `none`, and disabled when it is `development`.
+- `auto` is the default value, which means the plugin is enabled when [Rspack mode](/config/mode.md) is `production` or `none`, and disabled when it is `development`.
 
-* `true` means the plugin is enabled in any mode.
+- `true` means the plugin is enabled in any mode.
 
-* `false` means the plugin is disabled in any mode.
+- `false` means the plugin is disabled in any mode.
 
 ### htmlPlugin
 
-* **Type:** `string`
-* **Default:** `"HtmlRspackPlugin"`
+- **Type:** `string`
+- **Default:** `"HtmlRspackPlugin"`
 
 The path to the HTML plugin, defaults to `"HtmlRspackPlugin"` which means the native HTML plugin of Rspack. If you are using the `html-webpack-plugin`, you can set this option to the path of it. It is recommended to set the absolute path to make sure the plugin can be found.
 
@@ -184,5 +183,5 @@ The path to the HTML plugin, defaults to `"HtmlRspackPlugin"` which means the na
 
 You can find more information about Subresource Integrity in the following resources:
 
-* [webpack-subresource-integrity](https://github.com/waysact/webpack-subresource-integrity/blob/main/webpack-subresource-integrity/README.md)
-* [MDN: Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
+- [webpack-subresource-integrity](https://github.com/waysact/webpack-subresource-integrity/blob/main/webpack-subresource-integrity/README.md)
+- [MDN: Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)

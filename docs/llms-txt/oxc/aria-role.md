@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsx_a11y/aria-role.md
 ---
-# jsx\_a11y/aria-role&#x20;
 
 ### What it does
 

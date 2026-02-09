@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/data-sources/snowflake.md
 
-# Source: https://docs.aporia.com/data-sources/snowflake.md
-
-# Source: https://docs.aporia.com/v1/data-sources/snowflake.md
-
 # Snowflake
 
 This guide describes how to connect Aporia to a Snowflake data source in order to monitor a new ML Model in production.&#x20;

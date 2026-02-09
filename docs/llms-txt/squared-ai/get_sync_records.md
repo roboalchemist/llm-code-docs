@@ -1,60 +1,68 @@
 # Source: https://docs.squared.ai/api-reference/sync_records/get_sync_records.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Sync Records
 
 > Retrieves a list of sync records for a specific sync run, optionally filtered by status.
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}/sync_records
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}/sync_records
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        sync_id:
+  /api/v1/syncs/{sync_id}/sync_runs/{sync_run_id}/sync_records:
+    get:
+      tags:
+        - SyncRecords
+      summary: List sync records for a specific sync run
+      description: >-
+        Retrieves a list of sync records for a specific sync run, optionally
+        filtered by status.
+      operationId: getSyncRecords
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: The ID of the sync to list records for.
-        sync_run_id:
+            type: integer
+          description: The ID of the sync to list records for.
+        - name: sync_run_id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: The ID of the sync run to list records for.
-      query:
-        status:
+            type: integer
+          description: The ID of the sync run to list records for.
+        - name: status
+          in: query
           schema:
-            - type: string
-              description: Optional status to filter the sync records by.
-        page:
+            type: string
+          description: Optional status to filter the sync records by.
+        - name: page
+          in: query
           schema:
-            - type: integer
-              description: Page number for pagination.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: integer
+          description: Page number for pagination.
+      responses:
+        '200':
+          description: A JSON array of sync records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -98,9 +106,8 @@ paths:
                             updated_at:
                               type: string
                               format: date-time
-              links:
-                allOf:
-                  - type: object
+                  links:
+                    type: object
                     properties:
                       self:
                         type: string
@@ -110,65 +117,35 @@ paths:
                         format: uri
                       prev:
                         type: string
-                        nullable: true
                         format: uri
+                        nullable: true
                       next:
                         type: string
-                        nullable: true
                         format: uri
+                        nullable: true
                       last:
                         type: string
                         format: uri
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  type: sync_records
-                  attributes:
-                    sync_id: 123
-                    sync_run_id: 123
-                    record:
-                      id: 123
-                      state: <string>
-                      last_name: <string>
-                      first_name: <string>
-                      phone_number: 123
-                      email_address: <string>
-                    status: <string>
-                    action: <string>
-                    error: <string>
-                    created_at: '2023-11-07T05:31:56Z'
-                    updated_at: '2023-11-07T05:31:56Z'
-              links:
-                self: <string>
-                first: <string>
-                prev: <string>
-                next: <string>
-                last: <string>
-        description: A JSON array of sync records
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '404':
+          description: SyncRun not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     example: SyncRun not found
-              status:
-                allOf:
-                  - type: string
+                  status:
+                    type: string
                     example: not_found
-        examples:
-          example:
-            value:
-              message: SyncRun not found
-              status: not_found
-        description: SyncRun not found
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

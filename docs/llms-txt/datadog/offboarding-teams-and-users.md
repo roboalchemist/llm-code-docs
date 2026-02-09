@@ -1,0 +1,77 @@
+# Source: https://docs.datadoghq.com/incident_response/on-call/guides/offboarding-teams-and-users.md
+
+---
+title: Offboarding teams and users from Datadog On-Call
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Incident Response > On-Call > On-Call Guides > Offboarding teams and
+  users from Datadog On-Call
+---
+
+# Offboarding teams and users from Datadog On-Call
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+Datadog charges for users who are active in On-Call, specifically those who are in schedules, escalation policies, or have notification preferences configured. When team members leave your organization or no longer need On-Call access, you'll want to remove them to avoid unnecessary charges.
+
+This guide shows you how to:
+
+- Identify which users are being charged for On-Call
+- Remove users from schedules and escalation policies
+- Clean up notification preferences and team memberships
+- Ensure coverage gaps don't disrupt your incident response
+
+**Who should use this guide**
+
+This guide is for administrators and team leads who manage Datadog On-Call billing and user access.
+
+## Offboarding Teams{% #offboarding-teams %}
+
+If you no longer need a Datadog Team in On-Call, you can quickly offboard it. The team will remain in Datadog, but it will no longer appear as a pageable entity in On-Call.
+
+Go to On-Call, pick the team to offboard, and scroll to the *Danger Zone*. Confirm offboarding. The team and its assets (schedules, escalation policies) stay intactâthey're just removed from On-Call.
+
+## Offboarding users{% #offboarding-users %}
+
+Datadog charges for users who are actively configured in On-Call. Before removing anyone, identify which users are currently being billed by checking if they have:
+
+- **Schedule assignments**: Users assigned to any On-Call schedule
+- **Escalation policy membership**: Users included in escalation policies (either directly or as team members)
+- **Notification preferences**: Users with On-Call notification methods configured (SMS, voice, push notifications)
+
+You can find this information in the On-Call settings for each team and by reviewing individual user profiles. This is also available in the Plan & Usage page, specifically under "Seat Management".
+
+### Replace coverage before removing users{% #replace-coverage-before-removing-users %}
+
+Before removing users from On-Call, make sure someone else can handle their responsibilities to avoid gaps in incident response.
+
+### Update schedules{% #update-schedules %}
+
+For each schedule where the departing user is assigned:
+
+1. **Find replacement coverage**: Assign another team member to cover their shifts
+1. **Update the schedule**: Replace the departing user with the new person
+1. **Check for gaps**: Make sure all time slots are still covered
+
+### Update escalation policies{% #update-escalation-policies %}
+
+If the departing user is in any escalation policies:
+
+1. **Replace individual assignments**: Remove the user and add their replacement
+1. **Use team-based escalation**: Consider escalating to teams instead of individuals
+1. **Test the changes**: Make sure escalations still work properly
+
+### Remove user notification preferences{% #remove-user-notification-preferences %}
+
+If the user is still part of your organization you can ask them to remove their Notification Preferences in their On-Call profile by visiting **On-Call > Settings > My On-Call Profile**.
+
+As an admin, you can also manage this yourself by navigating to **On-Call > Settings > Notification Preferences**. Find the appropriate user and remove their notification preferences as needed. You will need the "On-Call Admin" permission to perform this.
+
+**Note**, Notification Preferences make a user pageable and therefore billable. Having only contact methods (for example, push notifications) defined is a non-billable action and won't incur charges.

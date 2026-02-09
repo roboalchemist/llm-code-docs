@@ -1,7 +1,6 @@
 # Source: https://turbo.build/messages/package-task-in-single-package-workspace.md
 
 # Package task in single-package workspace error
-Description: Learn more about errors with package tasks in single-package workspaces.
 
 ## Why this error occurred
 
@@ -33,3 +32,7 @@ Remove the package name from the task declaration.
 ```
 
 Alternatively, if you would like to have multiple packages, you can [specify the workspaces in your repository](/docs/getting-started/add-to-existing-repository).
+
+---
+
+[View full sitemap](/sitemap.md)

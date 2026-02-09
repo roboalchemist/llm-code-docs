@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/provide-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/provide-plugin/](https://webpack.js.org/plugins/provide-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/provide-plugin/" />
 
 # ProvidePlugin
 
@@ -43,7 +48,7 @@ For importing the default export of an ES2015 module, you have to specify the de
 
 ## Options
 
-* **Type:** `Record<string, string | string[]>`
+- **Type:** `Record<string, string | string[]>`
 
 ## Examples
 

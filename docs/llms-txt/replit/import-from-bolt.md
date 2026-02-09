@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/import-from-bolt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import from Bolt
 
 > Learn how to import Bolt projects into Replit by exporting to GitHub first, then importing with Agent assistance.
@@ -66,8 +70,7 @@ You can ask Agent to help build out functionality, add secrets, and recreate dat
 During the import process, {setupDescription_0}.
 If your app doesn't run as expected, Replit offers the following workspace tools to help you resolve the issues:
 
-* **[Agent](/replitai/agent)**: Use AI to add new features and refine your imported project
-* **[Assistant](/replitai/assistant)**: Get help with code questions and debugging
+* **[Agent](/replitai/agent)**: Use AI to add new features, refine your imported project, and get help with code questions
 * **[Secrets](/replit-workspace/workspace-features/secrets)**: Add your API keys and environment variables
 * **[Workflows](/replit-workspace/workflows)**: Configure the Run button to your preferred command
 

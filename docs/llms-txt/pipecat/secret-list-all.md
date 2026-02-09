@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-list-all.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List All Secret Sets
 
 > Retrieve a list of all secret sets in your organization with their name and secret type.
@@ -101,7 +105,3 @@ components:
         Authorization header.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

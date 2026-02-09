@@ -1,61 +1,46 @@
 # Source: https://docs.livekit.io/telephony/accepting-calls.md
 
-# Source: https://docs.livekit.io/sip/accepting-calls.md
-
-LiveKit docs › Accepting calls › Workflow
+LiveKit docs › Accepting calls › Overview
 
 ---
 
-# Accepting inbound calls
+# Accepting calls overview
 
-> Workflow and configuration guide for accepting inbound calls.
+> An overview of accepting inbound calls with LiveKit telephony.
 
-## Inbound call workflow
+## Overview
 
-When an inbound call is received, LiveKit SIP receives a text-based INVITE request. This can come from either your SIP trunking provider or through a LiveKit phone number. For third-party SIP providers, the SIP service first verifies authorization to use the trunk. This can vary based on the LiveKit trunk configuration. If you're using LiveKit Phone Numbers, no inbound trunk configuration or verification is required.
+Accept inbound calls and route them to LiveKit rooms. Configure inbound trunks, dispatch rules, and workflows to handle incoming calls and connect callers with agents or other participants.
 
-The SIP service then looks for a matching dispatch rule. If there's a matching dispatch rule, a SIP participant is created for the caller and put into a LiveKit room. Depending on the dispatch rule, other participants (for example, a voice agent or other users) might join the room.
+> ℹ️ **Simplified inbound calling**
+> 
+> LiveKit Phone Numbers provide a simple setup process that only requires purchasing a phone number and creating a dispatch rule. To learn more, see [LiveKit Phone Numbers](https://docs.livekit.io/telephony/start/phone-numbers.md).
 
-The following diagram shows the inbound call workflow.
+## Accepting calls components
 
-![Inbound SIP workflow](/images/sip/inbound-sip-workflow.svg)
+Set up inbound call handling with trunks, dispatch rules, and provider-specific configurations.
 
-1. User dials the SIP trunking provider phone number or a LiveKit Phone Number.
-2. LiveKit SIP receives the INVITE request:
+| Component | Description | Use cases |
+| **Workflow & setup** | Overview of the inbound call workflow, from receiving an INVITE request to creating SIP participants and routing to rooms. | Understanding call flow, setting up inbound call handling, and learning how dispatch rules route calls to rooms. |
+| **Inbound trunk** | Configure inbound trunks to accept incoming calls from SIP providers, with options to restrict calls by IP address or phone number. | Accepting calls from SIP providers, restricting inbound calls to specific sources, and configuring trunk authentication. |
+| **Dispatch rule** | Create dispatch rules that control how callers are added as SIP participants and routed to rooms, including agent dispatch configuration. | Routing calls to specific rooms, configuring agent dispatch, and customizing how SIP participants join rooms. |
+| **Twilio Voice integration** | Accept inbound calls using Twilio programmable voice with TwiML and Twilio conferencing integration. | Twilio Voice integration, TwiML-based call routing, and Twilio conferencing features. |
 
-- For third-party SIP providers: Authenticates trunk credentials and checks if the call is allowed based on the inbound trunk configuration.
-- For LiveKit Phone Numbers: Skip to the next step.
-3. LiveKit SIP finds a matching dispatch rule.
-4. LiveKit server creates a SIP participant for the caller and places them in a LiveKit room (per the dispatch rule).
-5. User hears dial tone until LiveKit SIP responds to the call:
+## In this section
 
-- If the dispatch rule has a pin, prompts the user with "Please enter room pin and press hash to confirm." If the pin is incorrect, the call is disconnected with a tone. If the pin is correct, the user is prompted to enter the room.
-- User continues to hear a dial tone until another participant publishes tracks to the room.
+Read more about accepting calls.
 
-## Setup for accepting calls
+- **[Workflow & setup](https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md)**: Overview of the inbound call workflow and setup process.
 
-LiveKit Phone Numbers provide a simple setup process that only requires purchasing a phone number and creating a dispatch rule.
+- **[Inbound trunk](https://docs.livekit.io/telephony/accepting-calls/inbound-trunk.md)**: Create and configure inbound trunks to accept incoming calls from SIP providers.
 
-1. **Purchase a LiveKit Phone Number**
+- **[Dispatch rule](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md)**: Configure dispatch rules to route calls to rooms.
 
-Purchase a phone number through [LiveKit Phone Numbers](https://docs.livekit.io/sip/cloud/phone-numbers.md).
-2. **Create a dispatch rule**
-
-Create a [dispatch rule](https://docs.livekit.io/sip/dispatch-rule.md). The dispatch rules dictate how SIP participants and LiveKit rooms are created for incoming calls. The rules can include whether a caller needs to enter a pin code to join a room and any custom metadata or attributes to be added to SIP participants.
-
-### Using a third-party SIP provider
-
-Third-party SIP providers require both an inbound trunk and a dispatch rule for proper authentication and call routing. To set up a third-party SIP provider, see the [SIP trunk setup](https://docs.livekit.io/sip/quickstarts/configuring-sip-trunk.md)  guide.
-
-## Next steps
-
-See the following guide to create an AI agent to receive inbound calls.
-
-- **[Voice AI telephony guide](https://docs.livekit.io/agents/start/telephony.md)**: Create an AI agent to receive inbound calls.
+- **[Twilio Voice integration](https://docs.livekit.io/telephony/accepting-calls/inbound-twilio.md)**: Accept inbound calls using Twilio programmable voice.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:20.071Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/accepting-calls.md](https://docs.livekit.io/sip/accepting-calls.md).
+This document was rendered at 2026-02-03T03:25:12.094Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/accepting-calls.md](https://docs.livekit.io/telephony/accepting-calls.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

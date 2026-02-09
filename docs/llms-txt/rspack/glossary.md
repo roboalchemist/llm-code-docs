@@ -12,7 +12,7 @@ An asset is a resource that is used in your application, such as images, fonts, 
 
 An "asset module" is a special module type used to process static assets, such as pictures, fonts, videos, etc.
 
-* [Asset modules](/guide/features/asset-module.md)
+- [Asset modules](/guide/features/asset-module.md)
 
 ## async chunk
 
@@ -26,16 +26,16 @@ Historically bundlers produced a single output file called a "bundle." The conce
 
 Bundle splitting is a technique that allows you to split or merge your code into multiple bundles, which is useful for parallel request and better browser caching, it's not used for reducing the initialize bundle size.
 
-* [Code splitting](/guide/optimization/code-splitting.md)
+- [Code splitting](/guide/optimization/code-splitting.md)
 
 ## built-in module type
 
 In Rspack, built-in module types refer to module types that can be supported without relying on loaders or plugins, such as JavaScript, CSS, JSON, Assets, etc. However, module types that require loaders or plugins to support, such as TypeScript, HTML, Markdown, YAML, etc., are not built-in module types.
 
-* [Asset modules](/guide/features/asset-module.md)
-* [CSS](/guide/tech/css.md)
-* [JSON](/guide/tech/json.md)
-* [rules\[\].type](/config/module-rules.md#rulestype)
+- [Asset modules](/guide/features/asset-module.md)
+- [CSS](/guide/tech/css.md)
+- [JSON](/guide/tech/json.md)
+- [rules\[\].type](/config/module-rules.md#rulestype)
 
 ## chunk
 
@@ -49,7 +49,7 @@ Chunk graph is a data structure that represents the relationship between chunks.
 
 Code splitting is a technique that allows you to split your code into multiple chunks, and only load the necessary chunks when the application is running. This can help you reduce the size of the initial bundle and speed up the application load time.
 
-* [Code splitting](/guide/optimization/code-splitting.md)
+- [Code splitting](/guide/optimization/code-splitting.md)
 
 ## dependency
 
@@ -63,7 +63,7 @@ Initial chunk is a [chunk](#chunk) that is loaded synchronously, including the e
 
 In bundling terminology, a loader is like a plugin but specifically tasked with transforming module content. For example, we can use a loader to transform a TypeScript module into a JavaScript module, or to transform a CSS module into a JavaScript module that injects the CSS into the page.
 
-* [Loader](/guide/features/loader.md)
+- [Loader](/guide/features/loader.md)
 
 ## module
 
@@ -73,7 +73,7 @@ An application can be split into multiple files called modules, which may be Jav
 
 A module's type determines how it will be parsed and handled by the bundler. For example, we can tell Rspack that the module is a JavaScript module by specifying the module type as JavaScript, and Rspack will use the JavaScript parser to parse the module. If the specified module type is CSS, then Rspack will use a CSS parser to parse the module.
 
-* [rules\[\].type](/config/module-rules.md#rulestype)
+- [rules\[\].type](/config/module-rules.md#rulestype)
 
 ## module specifier
 
@@ -87,7 +87,7 @@ import { foo } from './modules/foo.js';
 
 Module resolution is the process of calculating the file path indicated by a module specifier. For example, an import statement includes a module specifier, and Rspack will use the module resolution algorithm to find the corresponding file path.
 
-* [Module resolution](/guide/features/module-resolution.md)
+- [Module resolution](/guide/features/module-resolution.md)
 
 ## module graph
 
@@ -103,22 +103,22 @@ The module graph is a graph data structure that represents relationships between
 
 A plugin is a program module that can be used to extend the functionality of Rspack by means of extensibility hooks. It can be used to customize the build process, or to integrate with other tools. Rspack provides lots of hooks which you can use to customize the build process.
 
-* [Plugin](/guide/features/plugin.md)
+- [Plugin](/guide/features/plugin.md)
 
 ## runtime
 
 The runtime is all the code Rspack needs to connect your modularized application while it's running in the browser or other environments. It contains the loading and resolving logic needed to connect your modules as they interact.
 
-* [optimization.runtimeChunk](/config/optimization.md#optimizationruntimechunk)
+- [optimization.runtimeChunk](/config/optimization.md#optimizationruntimechunk)
 
 ## scope hoisting
 
 Scope hoisting is a technique that concat modules into a single scope when possible, rather than wrapping each module in a separate function. It can make minification more effective and improve runtime performance by reduce module lookup cost.
 
-* [optimization.concatenateModules](/config/optimization.md#optimizationconcatenatemodules)
+- [optimization.concatenateModules](/config/optimization.md#optimizationconcatenatemodules)
 
 ## tree shaking
 
 Tree shaking is a technique that allows you to remove unused code from your bundle. It a form of compiler dead code elimination, with a focus on minimizing processing of dead code. Compilers like Rspack will accomplish this by analyzing the static structure of your code, and then removing the unused code.
 
-* [Tree shaking](/guide/optimization/tree-shaking.md)
+- [Tree shaking](/guide/optimization/tree-shaking.md)

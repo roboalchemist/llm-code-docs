@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/drizzle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Drizzle setup guide
 
 > This guide will show you how to set up Drizzle ORM with Trigger.dev
@@ -27,25 +31,31 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -56,15 +66,15 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -106,7 +116,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
       that includes `name`, `age` and `email` fields.
     </Note>
 
-    ```ts /trigger/drizzle-add-new-user.ts theme={null}
+    ```ts /trigger/drizzle-add-new-user.ts theme={"theme":"css-variables"}
     import { eq } from "drizzle-orm";
     import { task } from "@trigger.dev/sdk";
     import { users } from "src/db/schema";
@@ -135,7 +145,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
 
     It is marked as an external to ensure that it is not bundled into the task's bundle, and instead will be installed and loaded from `node_modules` at runtime.
 
-    ```js /trigger.config.js theme={null}
+    ```js /trigger.config.js theme={"theme":"css-variables"}
     import { defineConfig } from "@trigger.dev/sdk";
 
     export default defineConfig({
@@ -152,15 +162,15 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
     Once the build configuration is added, you can now deploy your task using the Trigger.dev CLI.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest deploy
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest deploy
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest deploy
       ```
     </CodeGroup>
@@ -191,7 +201,7 @@ Follow these steps if you don't already have Trigger.dev set up in your project.
   <Step title="Running your task">
     To test this task, go to the 'test' page in the Trigger.dev dashboard and run the task with the following payload:
 
-    ```json  theme={null}
+    ```json  theme={"theme":"css-variables"}
     {
       "name": "<a-name>", // e.g. "John Doe"
       "age": "<an-age>", // e.g. 25

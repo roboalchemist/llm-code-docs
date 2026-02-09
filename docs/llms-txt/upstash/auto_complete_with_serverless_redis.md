@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/auto_complete_with_serverless_redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Autocomplete API with Serverless Redis
 
 This tutorial implements an autocomplete API powered by serverless Redis. See

@@ -1,15 +1,19 @@
-# Source: https://mintlify.com/docs/editor/configurations.md
+# Source: https://www.mintlify.com/docs/editor/configurations.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configurations
 
 > Configure pages, navigation elements, and media using configuration sheets.
 
-Configure your documentation site's branding, appearance, and features from the Configurations panel in the web editor.
+Configure your documentation site's branding, appearance, and features from the **Configurations** panel in the web editor.
 
 <Frame>
-  <img src="https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=a66c59348948e9c8ab51c9785dd4cc9f" alt="Configurations settings in the sidebar in light mode." className="block dark:hidden" data-og-width="414" width="414" data-og-height="250" height="250" data-path="images/editor/configurations-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=280&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=c937cec65184d1f3eddae3779dda2981 280w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=560&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=606c9cdc706fd2f5d372acd7b87ae16c 560w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=840&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=1bfa666bbb10e96ad8e589a9d0068aad 840w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=1100&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=5173d6b9dc0939d4d00ef1bb18ee17c6 1100w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=1650&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=c338f56cfda50904b989fb5dc129798f 1650w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-light.png?w=2500&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=10f2553c34a867dffe53602590a2c952 2500w" />
+  <img src="https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=81542317fdddce57b43dcfa05b176c64" alt="Configurations settings in the sidebar in light mode." className="block dark:hidden" data-og-width="1930" width="1930" data-og-height="1046" height="1046" data-path="images/editor/configurations-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=280&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=250c65c08ac1d3e5c58b2e0baa70a3d2 280w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=560&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=eb6e3628008d69125b072878f4fdbfe9 560w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=840&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=98d9d2134db0bd27656813f1cb1cae89 840w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=1100&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=f511d308a531e46cb87011a10450774b 1100w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=1650&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=4af5e22705515646eb1a6abfd21d7aff 1650w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-light.png?w=2500&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=571285270d2bd19e1203ff7df76f2a3b 2500w" />
 
-  <img src="https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=4b2d8023b34848d15ec90893ef0e081b" alt="Configurations settings in the sidebar in dark mode." className="hidden dark:block" data-og-width="414" width="414" data-og-height="250" height="250" data-path="images/editor/configurations-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=280&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=87abc4d6f95d5fd6ce4fe5f5c7eba7cf 280w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=560&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=80a76b0b61a140500040bc460c1ad8a2 560w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=840&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=6b899d926112cccc1374b25edaf714ce 840w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=1100&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=3e5ce136f2151a6dbb13275905191f15 1100w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=1650&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=fcddc9416c6bd2f8ba0571bf1f5827b0 1650w, https://mintcdn.com/mintlify/SuQEK9bgpZedn8cX/images/editor/configurations-dark.png?w=2500&fit=max&auto=format&n=SuQEK9bgpZedn8cX&q=85&s=b9302fa18cbcee68ad66ad15136bc397 2500w" />
+  <img src="https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=c49c482193cc072ec2c55bd072382943" alt="Configurations settings in the sidebar in dark mode." className="hidden dark:block" data-og-width="1930" width="1930" data-og-height="1046" height="1046" data-path="images/editor/configurations-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=280&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=474a723108289b909065d1caad7d68c6 280w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=560&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=851a0d01d444229f5b1a1cd71873267c 560w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=840&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=0151ec0b8cc21cc0764f4b13b437ae8e 840w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=1100&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=2164c55c22b8b4412c1a575a20c89f6a 1100w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=1650&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=7bf82efd78b665f0c06ce942f825c4e6 1650w, https://mintcdn.com/mintlify/jISy-KDPfnBIRyDx/images/editor/configurations-dark.png?w=2500&fit=max&auto=format&n=jISy-KDPfnBIRyDx&q=85&s=96a286d2f71cdc82166319deccd3913f 2500w" />
 </Frame>
 
 ## Brand your site
@@ -77,6 +81,15 @@ Customize the search experience.
 
 * **Search placeholder**: The text that appears in the search box before users type. Default is "Search or ask...".
 
+## Configure API specifications
+
+Add [OpenAPI](/api-playground/openapi-setup) or [AsyncAPI](/api-playground/asyncapi-setup) specification files to document endpoints.
+
+* **OpenAPI specs**: Upload an OpenAPI specification file or enter a URL to an external OpenAPI file.
+* **AsyncAPI specs**: Upload an AsyncAPI specification file or enter a URL to an external AsyncAPI file.
+* **Playground display**: Choose to display the [interactive API playground](/api-playground/overview#visibility-modes), simple API playground, or no API playground.
+* **Proxy server**: Enable or disable the proxy server for API requests.
+
 ## Add analytics and integrations
 
 Connect analytics and third-party tools to your documentation.
@@ -96,17 +109,3 @@ Additional integrations:
 
 * **Telemetry**: Enable or disable usage telemetry
 * **Cookies**: Set custom cookie key and value pairs
-
-## Configure API documentation
-
-Set up interactive API references.
-
-* **OpenAPI specs**: Link to your OpenAPI/Swagger specification files.
-* **AsyncAPI specs**: Link to your AsyncAPI specification files for asynchronous APIs.
-* **Playground display**: Control how the API playground appears.
-* **Proxy server**: Configure a proxy server for API requests from the playground.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/add-team.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invite team members to your integration
 
 > Integrations do not have a dedicated owner, instead they are managed by a team that can be modified as needed. Add team members to your integration to collaborate, contribute, and view analytics data for your integration on the Developer Platform. Your integration team can have up to 200 team members, regardless of whether your integration is Private or Public.

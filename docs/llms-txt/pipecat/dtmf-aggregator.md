@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/dtmf-aggregator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DTMFAggregator
 
 > Aggregates DTMF (phone keypad) input into meaningful sequences for LLM processing
@@ -170,8 +174,3 @@ The aggregator gracefully handles:
 2. **Timeout Configuration**: Use shorter timeouts (1-2s) for rapid entry, longer (3-5s) for menu selection
 3. **Termination Strategy**: Use `#` for confirmation, `*` for cancel/back operations
 4. **Pipeline Placement**: Always place before the user context aggregator to ensure proper frame ordering
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

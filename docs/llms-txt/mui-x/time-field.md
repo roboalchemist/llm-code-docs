@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/time-field.md
 
-# Source: https://mui.com/x/api/date-pickers/time-field.md
-
-# Source: https://mui.com/x/react-date-pickers/time-field.md
-
 ---
 productId: x-date-pickers
 title: React Time Field component

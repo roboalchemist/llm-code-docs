@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/using-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Actions
 
 > Trigger custom operations based on user input
@@ -25,7 +29,7 @@ Generally, [Workbook](#workbook-actions), [Sheet](#sheet-actions), [Field](#fiel
 
   For example: With the [Job Handler](/plugins/job-handler) plugin, the 35-line [File Action Listener](#listener-implementation-4) defined below would be implemented simply as:
 
-  ```typescript
+  ```typescript  theme={null}
   listener.use(jobHandler("file:logFileContents", async ({ context: { fileId, jobId } }, tick) => {
     const file = await api.files.get(fileId);
     tick(10, "Getting started.");
@@ -43,7 +47,7 @@ Generally, [Workbook](#workbook-actions), [Sheet](#sheet-actions), [Field](#fiel
 ## Workbook Actions
 
 <Frame caption="Two Workbook Actions: A primary action (Submit to API) and a secondary action (Download XML)">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/workbook-actions.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c18065d33049e87c68609265d6bb4d5a" width="610" data-og-width="2108" data-og-height="1054" data-path="guides/assets/workbook-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ffb1e05162f48c85c312f253f0e711c7 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=998a004f172bca7d941f323a19edba8f 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=0f7fb545bcfee06fb17d5b8b21e6b8ee 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=6b03b918e5d3e93b0f3a8ac3d98468c2 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=3ad7999bf436dfce83a272842167fff2 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/workbook-actions.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f5b0bdb5978115d3bd01af9d9e27d34a 2500w" />
 </Frame>
 
 Once a user has extracted and mapped data into a Workbook, it may be more efficient to run an operation on the entire dataset rather than making atomic transformations at the record- or field-level.
@@ -67,7 +71,7 @@ If you configure `trackChanges: true`, it will disable your actions until all co
 
 First, configure your action in your Blueprint:
 
-```javascript
+```javascript  theme={null}
 // Add this to your workbook configuration
 actions: [
   {
@@ -96,7 +100,7 @@ settings: {
 
 Next, create a listener to handle the `job:ready` event for your action.
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "workbook:submitToAPI" },
@@ -163,7 +167,7 @@ listener.on(
 ## Sheet Actions
 
 <Frame caption="Two Sheet Actions: A primary action (Populate...) and a secondary action (Validate...)">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/sheet-actions.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5675d4fcdc21753bc8aec0419f322b5b" width="610" data-og-width="2112" data-og-height="1056" data-path="guides/assets/sheet-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=42047c37a4be2cce25560774055926cd 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=bbdd78cf502b06169cfc0a7f866a17bd 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=08f9c4b38d863512e2445aae6b816a60 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c35579fe871b8c89cc429a5d348ee852 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=fe0284b2cc739fac865ef69b22b0566d 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/sheet-actions.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a744fd95ec947d681451b3f9819e0ffc 2500w" />
 </Frame>
 
 Each Sheet has built-in Actions like download.
@@ -178,7 +182,7 @@ If you configure `primary: true` on an Action, it creates a top-level button as 
 
 First, configure your action on your Blueprint. Add the action configuration to your sheet definition:
 
-```javascript
+```javascript  theme={null}
 sheets : [
   {
     name: "Users",
@@ -208,7 +212,7 @@ sheets : [
 
 Next, listen for a `job:ready` and filter on the `domain` (sheet) and the `operation` of where the action was placed. Be sure to complete the job when it's done.
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "sheet:populateHealthScores" },
@@ -245,7 +249,7 @@ Sheet Actions are powerful because they can operate on different subsets of data
 
 When a Sheet Action job is created, it receives a `query` object in the job's subject that specifies which records to process:
 
-```javascript
+```javascript  theme={null}
 // Job subject structure for Sheet Actions
 {
   type: "collection", 
@@ -291,7 +295,7 @@ When a Sheet Action job is created, it receives a `query` object in the job's su
 
 #### Implementation Example
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready", 
   { job: "sheet:processData" },
@@ -339,7 +343,7 @@ Your custom Sheet Actions automatically inherit this same context-aware behavior
 ## Field Actions
 
 <Frame caption="Example Field Action dropdown in column header (Capitalize All Values)">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/field-action.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=d47f0d582aac6342d83901fe12047f05" width="610" data-og-width="1448" data-og-height="838" data-path="guides/assets/field-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a0a677d4a4f4adb27f0fc38a5b553930 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ad6a5f4c81c1a41ac70cb2c5f00385d9 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5c000d3285292113dfd56615eacf6356 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=57364c7f0b738d5ca8a35a957b1fdb7a 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=d201a86cac558102b80d3a552c09a7b5 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/field-action.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f2495595a29bdb75bb03c7d234343de9 2500w" />
 </Frame>
 
 Field-mounted actions are operations that can be performed on individual columns/fields within a Sheet. They appear as options in the dropdown menu when you click on a column header.
@@ -363,7 +367,7 @@ The `primary` property does not affect the UI for Field actions.
 
 First, configure your field action in your Blueprint by adding it to the field definition:
 
-```javascript
+```javascript  theme={null}
 // Add this to your field configuration within a sheet
 {
   key: "firstName",
@@ -385,7 +389,7 @@ First, configure your field action in your Blueprint by adding it to the field d
 
 Next, create a listener to handle the `job:ready` event for your field action. Field actions use the `sheet:operationName` job pattern and provide field context through the job's subject parameters.
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "sheet:capitalize" },
@@ -463,7 +467,7 @@ Field actions have several unique characteristics:
 ## Document Actions
 
 <Frame caption="Example Document Action">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/document-action.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=8d3a39c31360ace5cd05d126d649935a" width="610" data-og-width="1478" data-og-height="628" data-path="guides/assets/document-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e7f7e428d260c458651a9ef3b5352cd2 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=498e61a0b644eb4c069904ff7b698073 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a8bcec46029fd0f73e96e0051aff3813 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=8b9e3ed0f6344e614be489de20f8a172 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ecce004f145d059f3cd4486281ce70aa 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/document-action.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b0577962c8ec9580a76c0b73dbc7b3e1 2500w" />
 </Frame>
 
 Document-mounted actions are similar to Workbook-mounted actions. They appear in the top right corner of your Document.
@@ -476,7 +480,7 @@ If you configure `primary: true` on an Action, it will be highlighted in the Doc
 
 Define Document-mounted Actions using the `actions` parameter when you create a Document.
 
-```typescript
+```typescript  theme={null}
 import api from "@flatfile/api";
 
 export default function flatfileEventListener(listener) {
@@ -512,7 +516,7 @@ export default function flatfileEventListener(listener) {
 
 In your listener, listen for the job's event and perform your desired operations.
 
-```typescript
+```typescript  theme={null}
 export default function flatfileEventListener(listener) {
   listener.on(
     "job:ready",
@@ -551,7 +555,7 @@ export default function flatfileEventListener(listener) {
 ## File Actions
 
 <Frame caption="Example File Action (Log File Metadata)">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/file-action.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a19153d16a11cacc4a2ad2cda72bb653" width="610" data-og-width="2338" data-og-height="804" data-path="guides/assets/file-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=7d2a3db78b7873b8fd665358d75ccf76 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=4c39a9b440e0ee57546b65619c8bfeb6 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ea9db5dd6b027d4664c0a709f554112f 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=d91373134f3f7b417ec7329e760e83bf 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=188f6d0c0c13f1b2112cd90a01dcda9a 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/file-action.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a84566de04d7e52869634dd330660921 2500w" />
 </Frame>
 
 Each file has built-in actions like Delete and Download.
@@ -566,7 +570,7 @@ You can attach additional actions to a File by listening for file events and upd
 
 First, listen for a `file:ready` event and add one or more actions to the file.
 
-```typescript
+```typescript  theme={null}
 listener.on("file:created", async ({ context: { fileId } }) => {
   const file = await api.files.get(fileId);
   const actions = file.data?.actions || [];
@@ -589,7 +593,7 @@ listener.on("file:created", async ({ context: { fileId } }) => {
 
 Next, listen for `job:ready` and filter on the `domain` (file) and the `operation` of where the Action was placed. Be sure to complete the job when it's done.
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "file:logFileContents" },
@@ -666,7 +670,7 @@ listener.on(
 
 An Action with all of the above properties would look like this:
 
-```javascript
+```javascript  theme={null}
 {
   operation: 'my-action',
   label: 'My Action',
@@ -682,7 +686,7 @@ An Action with all of the above properties would look like this:
 ## Input Forms
 
 <Frame caption="Example Input Form">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/guides/assets/input-form.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=6ae2e24a2ea4a307412fcdb84fa16069" width="610" data-og-width="1302" data-og-height="780" data-path="guides/assets/input-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=24254faed402326a94e8847c551eb3ae 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=77c3850908418868bae8c144380cdabe 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=51ab07d7ac88343755d697e67614dc8c 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ac73917701f3ae1557801111b0f5bf09 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=453f93439f3919adf6fb3d1d6128b933 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/guides/assets/input-form.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=bce41b6e14934f3df7fb2e1c68f9ab6a 2500w" />
 </Frame>
 
 When initiating an action, there may be instances where additional information is required from the end user to successfully complete the intended task. For example, you might want to enable users to specify the name of the file they intend to export.
@@ -733,7 +737,7 @@ In such cases, if you configure input fields for your action, a secondary dialog
 
 First, configure your action to have an inputForm on your Blueprint. These will appear once the action button is clicked.
 
-```javascript
+```javascript  theme={null}
 actions: [
   {
     operation: "submitActionFg",
@@ -775,7 +779,7 @@ actions: [
 
 Next, listen for a `job:ready` and filter on the `job` you'd like to process. Grab the data entered in the form from the job itself and leverage it as required for your use case.
 
-```typescript
+```typescript  theme={null}
 import api from "@flatfile/api";
 
 export default async function (listener) {
@@ -827,7 +831,7 @@ export default async function (listener) {
 1. Adding a `hasAllValid` constraint on an Action will disable a Workbook Action when there are invalid records.
 2. Adding a `hasData` on an Action will disable a Workbook Action when there are no records.
 
-```javascript
+```javascript  theme={null}
 actions: [
   {
     operation: 'submitActionFg',
@@ -845,7 +849,7 @@ actions: [
 
 Adding a constraint of `hasSelection` on an Action will disable a Sheet Action when no records in the Sheet are selected.
 
-```javascript
+```javascript  theme={null}
 sheets : [
   {
     name: "Sheet Name",
@@ -877,7 +881,7 @@ These messages will be displayed as tooltips when users hover over an action, pr
 
 Simply add a messages property to your action configuration. This property should be an array of objects, each specifying a message type and its content.
 
-```javascript
+```javascript  theme={null}
   actions: [
     {
       operation: 'duplicate',

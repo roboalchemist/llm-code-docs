@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/servers/auth/oidc-proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OIDC Proxy
 
 > Bridge OIDC providers to work seamlessly with MCP's authentication flow.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.4" />
@@ -197,6 +198,20 @@ mcp = FastMCP(name="My Server", auth=auth)
     )
     ```
   </ParamField>
+
+  <ParamField body="require_authorization_consent" type="bool" default="True">
+    Whether to require user consent before authorizing MCP clients. When enabled (default), users see a consent screen that displays which client is requesting access. See [OAuthProxy documentation](/servers/auth/oauth-proxy#confused-deputy-attacks) for details on confused deputy attack protection.
+  </ParamField>
+
+  <ParamField body="consent_csp_policy" type="str | None" default="None">
+    Content Security Policy for the consent page.
+
+    * `None` (default): Uses the built-in CSP policy with appropriate directives for form submission
+    * Empty string `""`: Disables CSP entirely (no meta tag rendered)
+    * Custom string: Uses the provided value as the CSP policy
+
+    This is useful for organizations that have their own CSP policies and need to override or disable FastMCP's built-in CSP directives.
+  </ParamField>
 </Card>
 
 ### Using Built-in Providers
@@ -225,31 +240,25 @@ OAuth scopes are configured with `required_scopes` to automatically request the 
 
 Dynamic clients created by the proxy will automatically include these scopes in their authorization requests.
 
-## Environment Configuration
+## Production Configuration
 
-<VersionBadge version="2.13.0" />
-
-For production deployments, configure the OIDC proxy through environment variables instead of hardcoding credentials:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Specify the provider implementation
-export FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.auth0.Auth0Provider
-
-# Provider-specific credentials
-export FASTMCP_SERVER_AUTH_AUTH0_CONFIG_URL=https://.../.well-known/openid-configuration
-export FASTMCP_SERVER_AUTH_AUTH0_CLIENT_ID=tv2ObNgaZAWWhhycr7Bz1LU2mxlnsmsB
-export FASTMCP_SERVER_AUTH_AUTH0_CLIENT_SECRET=vPYqbjemq...
-export FASTMCP_SERVER_AUTH_AUTH0_AUDIENCE=https://...
-export FASTMCP_SERVER_AUTH_AUTH0_BASE_URL=https://localhost:8000
-```
-
-With environment configuration, your server code simplifies to:
+For production deployments, load sensitive credentials from environment variables:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
 from fastmcp import FastMCP
+from fastmcp.server.auth.providers.auth0 import Auth0Provider
 
-# Authentication automatically configured from environment
-mcp = FastMCP(name="My Server")
+# Load secrets from environment variables
+auth = Auth0Provider(
+    config_url=os.environ.get("AUTH0_CONFIG_URL"),
+    client_id=os.environ.get("AUTH0_CLIENT_ID"),
+    client_secret=os.environ.get("AUTH0_CLIENT_SECRET"),
+    audience=os.environ.get("AUTH0_AUDIENCE"),
+    base_url=os.environ.get("BASE_URL", "https://localhost:8000")
+)
+
+mcp = FastMCP(name="My Server", auth=auth)
 
 @mcp.tool
 def protected_tool(data: str) -> str:
@@ -259,3 +268,5 @@ def protected_tool(data: str) -> str:
 if __name__ == "__main__":
     mcp.run(transport="http", port=8000)
 ```
+
+This keeps secrets out of your codebase while maintaining explicit configuration.

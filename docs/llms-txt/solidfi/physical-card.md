@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/card-issuance/physical-card.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Physical Card
 
 > A guide to Physical Cards

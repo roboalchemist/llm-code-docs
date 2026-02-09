@@ -3,11 +3,13 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-redundant-should-component-update.md
 ---
-# react/no-redundant-should-component-update&#x20;
 
 ### What it does
 
 Disallow usage of `shouldComponentUpdate` when extending `React.PureComponent`.
+
+Note that usage of `PureComponent` is
+[not recommended in modern React](https://react.dev/reference/react/PureComponent).
 
 ### Why is this bad?
 

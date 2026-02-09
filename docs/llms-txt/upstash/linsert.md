@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LINSERT
 
@@ -26,31 +12,31 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="direction" type="before | after" required>
+<ParamField body="direction" type="&#x22;BEFORE&#x22; | &#x22;AFTER&#x22;" required>
   Whether to insert the element before or after pivot.
 </ParamField>
 
-<ParamField body="pivot" type="TValue" required>
+<ParamField body="pivot" type="Any" required>
   The element to insert before or after.
 </ParamField>
 
-<ParamField body="value" type="TValue" required>
+<ParamField body="value" type="Any" required>
   The element to insert.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The list length after insertion, `0` when the list doesn't exist or `-1` when pivot was not found.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.rpush("key", "a", "b", "c");
-  await redis.linsert("key", "before", "b", "x");
+  ```py Example theme={"system"}
+  redis.rpush("key", "a", "b", "c")
+  redis.linsert("key", "before", "b", "x")
   ```
 </RequestExample>

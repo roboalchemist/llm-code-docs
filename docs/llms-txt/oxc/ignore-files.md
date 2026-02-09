@@ -1,91 +1,53 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/ignore-files.md
 
----
-url: /docs/guide/usage/linter/ignore-files.md
-description: Control which files Oxlint lints.
----
+# Source: https://oxc.rs/docs/guide/usage/formatter/ignore-files.md
 
+---
+url: /docs/guide/usage/formatter/ignore-files.md
+---
 # Ignore files
 
-Large repositories contain files that should not be linted, such as build output, vendored code, snapshots, or generated artifacts. Oxlint provides a predictable ignore model that works well in monorepos and CI.
-
-> \[!TIP]
-> It is strongly recommended to use `"ignorePatterns"` in `.oxlintrc.json` for ignoring files rather than a separate ignore file. This ensures that every developer will have the same ignores across all tools and commands running oxlint, especially IDE/editor integrations. It also keeps your configuration centralized to one file.
-
-## Default ignores
-
-Oxlint automatically ignores:
-
-* `.git` directories
-* Minified files containing `.min.`, `-min.`, or `_min.` in the file name
-* Files matched by `.gitignore` (global gitignore files are not respected)
-
-Hidden files are not automatically ignored.
+Oxfmt provides several ways to exclude files from formatting.
 
 ## `ignorePatterns`
 
-The recommended approach is to define ignores in `.oxlintrc.json` using `ignorePatterns`. This keeps ignores close to the configuration they belong to and works naturally with nested configs.
+The recommended way to ignore files. Add to `.oxfmtrc.json`:
 
-Patterns are resolved relative to the configuration file.
-
-```jsonc [.oxlintrc.json]
+```json [.oxfmtrc.json]
 {
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "ignorePatterns": ["dist/**", "coverage/**", "vendor/**", "test/snapshots/**"],
-  "rules": {
-    // ...
-  },
+  "ignorePatterns": ["dist/**", "*.min.js"]
 }
 ```
 
-In monorepos, nested configs can ignore package specific output without affecting the rest of the repository.
+* Uses `.gitignore` syntax
+* Paths are resolved relative to the directory containing the Oxfmt config file
+* Formatter-specific and independent of Git
 
-## `.eslintignore`
+Files matching `ignorePatterns` **cannot be formatted**, even if explicitly specified.
 
-Oxlint also supports `.eslintignore` for compatibility with existing ESLint setups. Existing `.eslintignore` files can remain in place during migration. The syntax is compatible with `.gitignore`, including comments and negation patterns.
+## `.gitignore`
 
-New projects should prefer `"ignorePatterns"` in `.oxlintrc.json`, and we strongly recommend moving over to `"ignorePatterns"` soon after migrating, if not during migration.
+Oxfmt respects `.gitignore` files in the current directory tree.
 
-## Ignore from the command line
+* Global gitignore and parent `.gitignore` files are not read
+* A `.git` directory is not required
 
-CLI flags are useful for one-off changes in CI or local debugging.
+Files ignored by `.gitignore` **can still be formatted** if explicitly specified.
 
-Use a custom ignore file:
+## VCS directories and `node_modules`
 
-```bash
-oxlint --ignore-path path/to/ignorefile
-```
+Ignored by default: `.git`, `.svn`, `.jj`, `node_modules`
 
-Add additional ignore patterns:
+Use `--with-node-modules` to include `node_modules`.
 
-```bash
-oxlint --ignore-pattern 'dist/**' --ignore-pattern 'coverage/**'
-```
+## Lock files
 
-Quote patterns to avoid shell glob expansion.
+`package-lock.json`, `pnpm-lock.yaml`, etc. are always ignored.
 
-## Unignoring files
+## `.prettierignore`
 
-Ignore files support negation patterns, which allow a directory to be ignored while keeping specific files.
+Supported for Prettier compatibility. Uses `.gitignore` syntax.
 
-To ignore everything under `build/` except one file, ignore the contents rather than the directory itself:
+Files in `.prettierignore` cannot be formatted, even when explicitly specified.
 
-```jsonc [.oxlintrc.json]
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "ignorePatterns": ["build/**/*", "!build/keep.js"],
-  "rules": {
-    // ...
-  },
-}
-```
-
-This keeps traversal possible while still ignoring almost everything.
-
-## Disable ignoring
-
-To disable all ignore behavior, including ignore files and CLI ignore options, use `--no-ignore`:
-
-```bash
-oxlint --no-ignore
-```
+For new projects, prefer `ignorePatterns`.

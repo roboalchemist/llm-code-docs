@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/agent-context/using-to-add-context.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/agent-context/using-to-add-context.md
 
 # Using @ to Add Context
 
@@ -12,13 +12,13 @@ Attaching context with @ works in **both natural language mode** (when interacti
 
 **Note**: the search in the @-context menu is always relative to the root of the Git repository, even when you're working in a subdirectory. This means you can reference *any* file or folder tracked in the repo, regardless of the current working directory.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d7cba00e669cdcfc69701594c81b3953d75b62a3%2Fat-context.png?alt=media" alt=""><figcaption><p>Using the @ symbol to search for and attach a file or folder from the project root.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-d7cba00e669cdcfc69701594c81b3953d75b62a3%2Fat-context.png?alt=media" alt=""><figcaption><p>Using the @ symbol to search for and attach a file or folder from the project root.</p></figcaption></figure>
 
-Additionally, no codebase indexing (via [codebase-context](https://docs.warp.dev/code/codebase-context "mention")) is required — file search is available immediately in any Git-initialized directory. The search also respects `.gitignore` rules and will exclude ignored files from the results.
+Additionally, no codebase indexing (via [Codebase Context](https://docs.warp.dev/code/codebase-context)) is required — file search is available immediately in any Git-initialized directory. The search also respects `.gitignore` rules and will exclude ignored files from the results.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6d78304b9065ad3e81f8064a769dca86e5fde610%2Fat-context-app.png?alt=media" alt=""><figcaption><p>Filtering files using @app to locate files containing “app” in their name or path.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-6d78304b9065ad3e81f8064a769dca86e5fde610%2Fat-context-app.png?alt=media" alt=""><figcaption><p>Filtering files using @app to locate files containing “app” in their name or path.</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6fa227e2f327c03cb4d1486bbaeef05e4c00c6ad%2Fat-context-styles.png?alt=media" alt=""><figcaption><p>Referencing a folder or all files within it by typing @styles.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-6fa227e2f327c03cb4d1486bbaeef05e4c00c6ad%2Fat-context-styles.png?alt=media" alt=""><figcaption><p>Referencing a folder or all files within it by typing @styles.</p></figcaption></figure>
 
 ### Referencing code symbols
 
@@ -32,9 +32,9 @@ If you type something like `@main`, Warp will surface a matching `main()` functi
 
 Warp Drive objects are another way to attach context with **@**. You can reference:
 
-* [workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows "mention") — parameterized commands you can name and save in Warp with descriptions and arguments.
-* [notebooks](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/notebooks "mention") — runnable documentation consisting of markdown text and list elements, code blocks, and runnable shell snippets that can be automatically executed in your terminal session.
-* [rules](https://docs.warp.dev/knowledge-and-collaboration/rules "mention") — reusable guidelines and constraints that inform how Agents respond to your prompts/
+* [Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows) — parameterized commands you can name and save in Warp with descriptions and arguments.
+* [Notebooks](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/notebooks) — runnable documentation consisting of markdown text and list elements, code blocks, and runnable shell snippets that can be automatically executed in your terminal session.
+* [Rules](https://docs.warp.dev/knowledge-and-collaboration/rules) — reusable guidelines and constraints that inform how Agents respond to your prompts/
 
 When you select one of these objects, Warp inserts a reference token into your prompt. The contents of the object are then automatically passed as context to the Agent.
 

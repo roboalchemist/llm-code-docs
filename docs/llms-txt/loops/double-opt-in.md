@@ -1,8 +1,8 @@
 # Source: https://loops.so/docs/contacts/double-opt-in.md
 
-# Source: https://loops.so/docs/guides/double-opt-in.md
-
-# Source: https://loops.so/docs/contacts/double-opt-in.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Double opt-in
 
@@ -31,7 +31,7 @@ When double opt-in is enabled:
         Unsubscribed contacts do not count towards [your plan's
         limits](https://loops.so/pricing).
       </Tip>
-   3. If they don't respond, the contact continues to appear as "Pending".
+   3. If they don't respond, the contact continues to appear as "Pending". Pending contacts are not automatically removed. You can manually delete them if needed.
 
 <img src="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=54b94d444db42035aa13af3f5dbffc26" alt="Double opt-in confirmation page" data-og-width="2280" width="2280" data-og-height="1673" height="1673" data-path="images/opt-in-confirmation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=280&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=d5b3f634405dc35cf19d6c47bc017883 280w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=560&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=c278937923511171c99d3083a50e6eb3 560w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=840&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=40c39b411993357bf604d4c85e1957bc 840w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=1100&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=72bb954eb750cf66bde3d96653a1af18 1100w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=1650&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=55bde662ab49e96796e20f85868fa5f2 1650w, https://mintcdn.com/loops/GrzDLwrUithgQO_4/images/opt-in-confirmation.png?w=2500&fit=max&auto=format&n=GrzDLwrUithgQO_4&q=85&s=c4e7eca538c4803064a0ac6cff24d49b 2500w" />
 

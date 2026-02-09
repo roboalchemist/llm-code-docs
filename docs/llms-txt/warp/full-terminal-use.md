@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/full-terminal-use.md
+# Source: https://docs.warp.dev/agent-platform/agent/full-terminal-use.md
 
 # Full Terminal Use
 
@@ -12,7 +12,7 @@ The agent can see the live terminal buffer (terminal state), write to the PTY to
 
 With Full Terminal Use, Warp’s agent can attach to interactive tools like `psql`, `vim`, `python`, `gdb`, `top`, or your dev server, read the terminal output as it changes, and interact with the application as if you were typing.
 
-You can either ask the agent to start an interactive program, or you can start it yourself and then tag the agent in once the tool is already running. In both cases, the agent sees the same terminal buffer (and PYT session) you do and can act on it.
+You can either ask the agent to start an interactive program, or you can start it yourself and then tag the agent in once the tool is already running. In both cases, the agent sees the same terminal buffer (and PTY session) you do and can act on it.
 
 ## How Full Terminal Use works
 
@@ -36,7 +36,7 @@ You can either ask the agent to run an interactive command, or start one manuall
 Tagging in the agent.
 {% endembed %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-2f8585e1281b597d7fce11f32ba026c6fd20d0d0%2Ffull-terminal-use-npm.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-2f8585e1281b597d7fce11f32ba026c6fd20d0d0%2Ffull-terminal-use-npm.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Warp attaches the agent to the running command so it can see and control the terminal buffer.
 
@@ -61,14 +61,14 @@ You can swap control at any time.
 * Use the Takeover control to stop the agent from typing or performing any actions.
 * The shell stays open, and you can type directly into the same session.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-efa5d3dd7fffc6ef7c28b2aa51829950bcf75fb5%2Ffull-terminal-use-takeover.png?alt=media" alt="" width="310"><figcaption><p>Option to take over from agent in the footer.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-efa5d3dd7fffc6ef7c28b2aa51829950bcf75fb5%2Ffull-terminal-use-takeover.png?alt=media" alt="" width="310"><figcaption><p>Option to take over from agent in the footer.</p></figcaption></figure>
 
 **Hand back control**
 
 * When you’re ready for the agent to continue, click the control again.
 * The agent resumes where you left off, with full access to the current terminal state.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-77a908698b93f516dee09dfcdd7d768fbc900d26%2Ffull-terminal-use-handoff.png?alt=media" alt=""><figcaption><p>Option to hand-off to the agent in the conversation footer.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-77a908698b93f516dee09dfcdd7d768fbc900d26%2Ffull-terminal-use-handoff.png?alt=media" alt=""><figcaption><p>Option to hand-off to the agent in the conversation footer.</p></figcaption></figure>
 
 This makes it easy to:
 
@@ -108,9 +108,9 @@ Each time the agent wants to take an action inside an interactive shell, you’l
 * Refine the request with `CTRL + C`, which clears the proposed action and lets you follow up with a different query.
 * Take over manually with `CMD + I`, which stops the agent from issuing any further PTY writes until you hand control back.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6ae5c11e62b4d454af2fe00031e96501cfee50d3%2Fallow-refine-takeover.png?alt=media" alt=""><figcaption><p>Allow, Refine, or Take over an agent response.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-6ae5c11e62b4d454af2fe00031e96501cfee50d3%2Fallow-refine-takeover.png?alt=media" alt=""><figcaption><p>Allow, Refine, or Take over an agent response.</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-947c49794d86c393955e932adf7bb718d390a5d7%2Ffull-terminal-use-options.png?alt=media" alt="" width="375"><figcaption><p>Ability to accept or auto-approve future interactions.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-947c49794d86c393955e932adf7bb718d390a5d7%2Ffull-terminal-use-options%20(2).png?alt=media" alt="" width="375"><figcaption><p>Ability to accept or auto-approve future interactions.</p></figcaption></figure>
 
 This lets you tighten or loosen control for the current task:
 
@@ -119,7 +119,7 @@ This lets you tighten or loosen control for the current task:
 
 #### Global permission settings
 
-You can configure global defaults from your [agent-profiles-permissions](https://docs.warp.dev/agents/using-agents/agent-profiles-permissions "mention") settings:
+You can configure global defaults from your [Agent Profiles & Permissions](https://docs.warp.dev/agent-platform/agent/using-agents/agent-profiles-permissions) settings:
 
 * **Ask on first write**: The first write to a shell process requires approval. After that, all subsequent writes for that specific process/command will be approved.
 * **Always ask**: Every write to the shell process from the agent requires your explicit approval.
@@ -128,12 +128,12 @@ You can configure global defaults from your [agent-profiles-permissions](https:/
 These settings apply to every session that uses Full Terminal Use. You can still override them on a per-session basis when prompted. For example, you can enable **auto-approval** for similar commands in the current session using the fast-forward control, or switch to a **different AI profile** with its own permission settings for that conversation.
 
 {% hint style="info" %}
-**Note**: All [Secret Redaction](https://docs.warp.dev/privacy/secret-redaction) features still apply during Full Terminal Use, so sensitive values in your environment or output remain protected.
+**Note**: All [Secret Redaction](https://docs.warp.dev/support-and-community/privacy-and-security/secret-redaction) features still apply during Full Terminal Use, so sensitive values in your environment or output remain protected.
 {% endhint %}
 
 ### AI credits usage
 
-All AI interactions from Full Terminal Use consume [ai-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits "mention"), including understanding your natural language requests, planning and generating terminal commands, interpreting and summarizing command output, and iterating on commands in long-running sessions.
+All AI interactions from Full Terminal Use consume [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits), including understanding your natural language requests
 
 Credits are consumed in a similar way as other Warp AI actions that use the same model and a similar context size.
 

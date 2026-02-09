@@ -4,11 +4,7 @@
 
 A concise guide to contributing to BetterAuth
 
-***
 
-title: Contributing to BetterAuth
-description: A concise guide to contributing to BetterAuth
-----------------------------------------------------------
 
 Thank you for your interest in contributing to Better Auth! This guide is a concise guide to contributing to Better Auth.
 
@@ -77,11 +73,14 @@ Once you have an idea of what you want to contribute, you can start making chang
     ### 1. Create a new branch
 
     ```bash
-    # Make sure you're on main
-    git checkout main
+    # Add upstream remote (if not already added)
+    git remote add upstream https://github.com/better-auth/better-auth.git
+
+    # Make sure you're on canary
+    git checkout canary
 
     # Pull latest changes
-    git pull upstream main
+    git pull upstream canary
 
     # Create and switch to a new branch
     git checkout -b feature/your-feature-name

@@ -1,19 +1,23 @@
 # Source: https://docs.embedchain.ai/components/vector-databases/pinecone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pinecone
 
 ## Overview
 
 Install pinecone related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'pinecone-client pinecone-text'
 ```
 
 In order to use Pinecone as vector database, set the environment variable `PINECONE_API_KEY` which you can find on [Pinecone dashboard](https://app.pinecone.io/).
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # Load pinecone configuration from yaml file
@@ -22,7 +26,7 @@ In order to use Pinecone as vector database, set the environment variable `PINEC
   app = App.from_config(config_path="serverless_config.yaml")
   ```
 
-  ```yaml pod_config.yaml
+  ```yaml pod_config.yaml theme={null}
   vectordb:
     provider: pinecone
     config:
@@ -37,7 +41,7 @@ In order to use Pinecone as vector database, set the environment variable `PINEC
             - "hash"
   ```
 
-  ```yaml serverless_config.yaml
+  ```yaml serverless_config.yaml theme={null}
   vectordb:
     provider: pinecone
     config:
@@ -63,7 +67,7 @@ In order to use Pinecone as vector database, set the environment variable `PINEC
 
 Here is an example of how you can do hybrid search using Pinecone as a vector database through Embedchain.
 
-```python
+```python  theme={null}
 import os
 
 from embedchain import App

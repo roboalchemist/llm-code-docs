@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/integrations/strands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Writer with AWS Strands Agents
 
 Writer's models are available on [AWS Strands Agents](https://strandsagents.com/latest/).

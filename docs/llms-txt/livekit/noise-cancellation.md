@@ -1,14 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/noise-cancellation.md
 
-# Source: https://docs.livekit.io/home/cloud/noise-cancellation.md
-
-# Source: https://docs.livekit.io/home/client/tracks/noise-cancellation.md
-
-# Source: https://docs.livekit.io/home/cloud/noise-cancellation.md
-
-# Source: https://docs.livekit.io/home/client/tracks/noise-cancellation.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Noise & echo cancellation
+LiveKit docs › Media › Noise & echo cancellation
 
 ---
 
@@ -22,13 +14,13 @@ Your user's microphone is likely to pick up undesirable audio including backgrou
 
 LiveKit includes default outbound noise and echo cancellation based on the underlying open source WebRTC implementations of [`echoCancellation`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/echoCancellation) and [`noiseSuppression`](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/noiseSuppression). You can adjust these settings with the `AudioCaptureOptions` type in the LiveKit SDKs during connection.
 
-LiveKit Cloud includes [enhanced noise cancellation](https://docs.livekit.io/home/cloud/noise-cancellation.md) for the best possible audio quality, including a background voice cancellation (BVC) model that is optimized for voice AI applications.
+LiveKit Cloud includes [enhanced noise cancellation](https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md) for the best possible audio quality, including a background voice cancellation (BVC) model that is optimized for voice AI applications.
 
 To hear the effects of the various noise removal options, play the samples below:
 
 ---
 
-This document was rendered at 2025-11-18T23:54:51.254Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/noise-cancellation.md](https://docs.livekit.io/home/client/tracks/noise-cancellation.md).
+This document was rendered at 2026-02-03T03:25:16.377Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/noise-cancellation.md](https://docs.livekit.io/transport/media/noise-cancellation.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,14 +1,6 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content/authenticated-access.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/authenticated-access.md
 
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/adaptive-content/enabling-adaptive-content/authenticated-access.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content/authenticated-access.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content/authenticated-access.md
 
@@ -30,7 +22,7 @@ This feature is available on the [Ultimate site plan](https://www.gitbook.com/pr
 
 Authenticated access allows you to publish your content while requiring authentication from any visitors who want to view it. When enabled, GitBook lets your authentication provider handle who has access to the content.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FlwfYBtUnP8SnBPbsOZEi%2Fvisitor-authentication.svg?alt=media&#x26;token=23e3c844-fffa-48b6-969e-63afd309d69a" alt="A screenshot showing a login screen for docs behind authenticated access"><figcaption><p>Add a sign in to your published documentation.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FhtkyhDNCjMpzhHtUkBSe%2F26_01_06_authenticated_access%402x.png?alt=media&#x26;token=6ea5554b-c8d6-43ab-b94e-12646fa01451" alt="A screenshot showing a login screen for docs behind authenticated access"><figcaption><p>Add a sign in to your published documentation.</p></figcaption></figure>
 
 ### Use cases
 

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/markdown-contents-as-default.md
+# Source: https://exa.ai/docs/changelog/markdown-contents-as-default.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Markdown Contents as Default
 
@@ -38,8 +42,3 @@ In all cases, we remove extraneous data, advertisements, navigation elements, an
 If you have any questions about this change or need help adapting your implementation, please reach out to [hello@exa.ai](mailto:hello@exa.ai).
 
 We're excited for you to experience the improved content quality with markdown as the default!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/dify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dify
 
 > Tavily is now available for no-code integration through Dify.
@@ -67,8 +71,3 @@ For a detailed walkthrough, check out this blog post:
 * **Enable an Agentic Workflow** – Leverage an LLM to dynamically generate and refine queries for Tavily.
 
 ***
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

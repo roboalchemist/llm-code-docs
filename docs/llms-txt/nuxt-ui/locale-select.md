@@ -8,29 +8,18 @@
 
 The LocaleSelect component extends the [SelectMenu](/docs/components/select-menu) component, so you can pass any property such as `color`, `variant`, `size`, etc.
 
-<framework-only>
-<template v-slot:nuxt="">
-<note to="/docs/getting-started/integrations/i18n/nuxt">
+**Nuxt:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/nuxt
+> This component is meant to be used with the i18n system. Learn more about it in the guide.
 
-This component is meant to be used with the **i18n** system. Learn more about it in the guide.
+**Vue:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/vue
+> This component is meant to be used with the i18n system. Learn more about it in the guide.
 
-</note>
-</template>
-
-<template v-slot:vue="">
-<note to="/docs/getting-started/integrations/i18n/vue">
-
-This component is meant to be used with the **i18n** system. Learn more about it in the guide.
-
-</note>
-</template>
-</framework-only>
-
-<warning>
-
-The flags are displayed using Unicode characters. This may result in a different display, e.g. Microsoft Edge under Windows displays the ISO 3166-1 alpha-2 code instead, as no flag icons are shipped with the OS fonts.
-
-</warning>
+> [!WARNING]
+> The flags are displayed using Unicode characters. This may result in a different display, e.g. Microsoft Edge under Windows displays the ISO 3166-1 alpha-2 code instead, as no flag icons are shipped with the OS fonts.
 
 ### Locales
 
@@ -64,12 +53,8 @@ const locale = ref('en')
 
 ### Dynamic locale
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
+**Nuxt:**
 You can use it with Nuxt i18n:
-
 ```vue
 <script setup lang="ts">
 import * as locales from '@nuxt/ui/locale'
@@ -84,16 +69,11 @@ const { locale, setLocale } = useI18n()
     @update:model-value="setLocale($event)"
   />
 </template>
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
+**Vue:**
 You can use it with Vue i18n:
-
 ```vue
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
@@ -109,11 +89,8 @@ const { locale, setLocale } = useI18n()
     @update:model-value="setLocale($event)"
   />
 </template>
-```
 
-</div>
-</template>
-</framework-only>
+```
 
 ## API
 
@@ -135,7 +112,7 @@ interface LocaleSelectProps {
    */
   avatar?: AvatarProps | undefined;
   size?: "md" | "xs" | "sm" | "lg" | "xl" | undefined;
-  ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; value?: ClassNameValue; placeholder?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; input?: ClassNameValue; focusScope?: ClassNameValue; } | undefined;
+  ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; value?: ClassNameValue; placeholder?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; input?: ClassNameValue; focusScope?: ClassNameValue; trailingClear?: ClassNameValue; } | undefined;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -143,7 +120,7 @@ interface LocaleSelectProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   color?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   autofocus?: boolean | undefined;
   /**
@@ -157,7 +134,7 @@ interface LocaleSelectProps {
   formnovalidate?: Booleanish | undefined;
   formtarget?: string | undefined;
   /**
-   * The controlled open state of the Combobox. Can be binded with with `v-model:open`.
+   * The controlled open state of the Combobox. Can be binded with `v-model:open`.
    */
   open?: boolean | undefined;
   /**
@@ -173,9 +150,17 @@ interface LocaleSelectProps {
    */
   resetSearchTermOnSelect?: boolean | undefined;
   /**
+   * When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)
+   */
+  resetModelValueOnClear?: boolean | undefined;
+  /**
    * When `true`, hover over item will trigger highlight
    */
   highlightOnHover?: boolean | undefined;
+  /**
+   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over how objects are compared.
+   */
+  by?: string | ((a: Locale<any>[], b: Locale<any>[]) => boolean) | undefined;
   /**
    * The value of the SelectMenu when initially rendered. Use when you do not need to control the state of the SelectMenu.
    */
@@ -201,11 +186,20 @@ interface LocaleSelectProps {
   /**
    * The icon displayed to open the menu.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when an item is selected.
    */
-  selectedIcon?: string | object | undefined;
+  selectedIcon?: any;
+  /**
+   * Display a clear button to reset the model value.
+   * Can be an object to pass additional props to the Button.
+   */
+  clear?: boolean | Partial<Omit<ButtonProps, LinkPropsKeys>> | undefined;
+  /**
+   * The icon displayed in the clear button.
+   */
+  clearIcon?: any;
   /**
    * The content of the menu.
    */
@@ -222,7 +216,7 @@ interface LocaleSelectProps {
    * Enable virtualization for large lists.
    * Note: when enabled, all groups are flattened into a single list due to a limitation of Reka UI (https://github.com/unovue/reka-ui/issues/1885).
    */
-  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | undefined; } | undefined;
+  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | ((index: number) => number) | undefined; } | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the value instead of the object itself.
    * @default "\"code\""
@@ -237,6 +231,7 @@ interface LocaleSelectProps {
    * When `items` is an array of objects, select the field to use as the description.
    */
   descriptionKey?: GetItemKeys<Locale<any>[]> | undefined;
+  modelModifiers?: Omit<ModelModifiers<string>, "lazy"> | undefined;
   /**
    * Highlight the ring color like a focus state.
    */
@@ -261,7 +256,7 @@ interface LocaleSelectProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -269,14 +264,10 @@ interface LocaleSelectProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
 }
 ```
 
 ## Changelog
 
-<component-changelog prefix="locale">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

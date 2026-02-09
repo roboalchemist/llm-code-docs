@@ -9,13 +9,17 @@ https://api.apify.com/v2/webhooks/:webhookId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/WebhookClient#deleteDeletes a webhook.
+Deletes a webhook.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

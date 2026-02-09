@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/dump-restore-mysql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dump and restore MySQL
 
 The goal of this guide is to dump the data from one MySQL [Database](/core-concepts/managed-databases/managing-databases/overview) and restore it to another. This is generally done to upgrade to a new MySQL version but can be used in any situation where data needs to be migrated to a new Database instance.

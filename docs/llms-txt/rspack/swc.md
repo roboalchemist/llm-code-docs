@@ -94,8 +94,8 @@ The API options accepted by the above APIs are passed to SWC.
 
 You can learn more about configuration options in the SWC official documentation:
 
-* [SWC Transform API](https://swc.rs/docs/usage/core#transform) - Code transform options
-* [SWC Minify API](https://swc.rs/docs/usage/core#minify) - Code minify options
+- [SWC Transform API](https://swc.rs/docs/usage/core#transform) - Code transform options
+- [SWC Minify API](https://swc.rs/docs/usage/core#minify) - Code minify options
 
 ```ts
 declare namespace rspack {

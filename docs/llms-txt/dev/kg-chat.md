@@ -1,10 +1,14 @@
 # Source: https://dev.writer.com/home/kg-chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use a Knowledge Graph in a chat
 
 > Query Knowledge Graphs during chat completions with tool calling. Reference multiple graphs and configure query parameters for accurate responses.
 
-This guide demonstrates how to send questions to a [Knowledge Graph](/home/knowledge-graph) during a [chat completion](/home/chat-completion). Knowledge Graph chat is a predefined tool you can use to reference a Knowledge Graph when users chat with a Palmyra LLM.
+This guide demonstrates how to send questions to a [Knowledge Graph](/home/knowledge-graph) during a [chat completion](/home/chat-completion). Knowledge Graph chat is a predefined tool you can use to reference a Knowledge Graph during a chat.
 
 <Note>
   You need an API key to access the Writer API. Get an API key by following the steps in the [API quickstart](/home/quickstart).

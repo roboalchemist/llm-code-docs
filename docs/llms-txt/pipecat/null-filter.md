@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/null-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # NullFilter
 
 > Processor that blocks all frames except system frames
@@ -63,8 +67,3 @@ graph TD
 * Useful for testing, debugging, and creating conditional pipelines
 * Minimal overhead as it performs simple type checking
 * Can be used to temporarily disable parts of a pipeline
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

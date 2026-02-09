@@ -1,10 +1,10 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/tokenization_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/tokenization_utils.md
 
 # Utilities for Tokenizers
 
 This page lists all the utility functions used by the tokenizers, mainly the class
-[PreTrainedTokenizerBase](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase) that implements the common methods between
-[PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) and [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend).
+[PreTrainedTokenizerBase](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase) that implements the common methods between
+[PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) and [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend).
 
 Most of those are only useful if you are studying the code of the tokenizers in the library.
 
@@ -12,7 +12,7 @@ Most of those are only useful if you are studying the code of the tokenizers in 
 
 #### transformers.PreTrainedTokenizerBase[[transformers.PreTrainedTokenizerBase]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L964)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L959)
 
 Base class for all tokenizer backends.
 
@@ -31,7 +31,7 @@ Class attributes (overridden by derived classes)
 - **truncation_side** (`str`) -- The default value for the side on which the model should have truncation
   applied. Should be `'right'` or `'left'`.
 
-__call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2469[{"name": "text", "val": ": Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput], None] = None"}, {"name": "text_pair", "val": ": Optional[Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput]]] = None"}, {"name": "text_target", "val": ": Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput], None] = None"}, {"name": "text_pair_target", "val": ": Optional[Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput]]] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": Union[bool, str, PaddingStrategy] = False"}, {"name": "truncation", "val": ": Union[bool, str, TruncationStrategy, None] = None"}, {"name": "max_length", "val": ": Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "is_split_into_words", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": Optional[int] = None"}, {"name": "padding_side", "val": ": Optional[str] = None"}, {"name": "return_tensors", "val": ": Optional[Union[str, TensorType]] = None"}, {"name": "return_token_type_ids", "val": ": Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "tokenizer_kwargs", "val": ": Optional[dict[str, Any]] = None"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`, *optional*) --
+__call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2464[{"name": "text", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_pair", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_target", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_pair_target", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | TruncationStrategy | None = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "is_split_into_words", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "tokenizer_kwargs", "val": ": dict[str, Any] | None = None"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`, *optional*) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
   (pretokenized string). If the sequences are provided as list of strings (pretokenized), you must set
   `is_split_into_words=True` (to lift the ambiguity with a batch of sequences).
@@ -56,7 +56,7 @@ __call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingf
   `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
   automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
   automatically.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -65,7 +65,7 @@ __call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingf
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -102,7 +102,7 @@ __call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingf
 - **padding_side** (`str`, *optional*) --
   The side on which the model should have padding applied. Should be selected between ['right', 'left'].
   Default value is picked from the class attribute of the same name.
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -127,13 +127,13 @@ __call__transformers.PreTrainedTokenizerBase.__call__https://github.com/huggingf
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
 - **verbose** (`bool`, *optional*, defaults to `True`) --
   Whether or not to print more information and warnings.
-- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -162,7 +162,7 @@ sequences.
 
 **Parameters:**
 
-model_max_length (`int`, *optional*) : The maximum length (in number of tokens) for the inputs to the transformer model. When the tokenizer is loaded with [from_pretrained()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.from_pretrained), this will be set to the value stored for the associated model in `max_model_input_sizes` (see above). If no value is provided, will default to VERY_LARGE_INTEGER (`int(1e30)`).
+model_max_length (`int`, *optional*) : The maximum length (in number of tokens) for the inputs to the transformer model. When the tokenizer is loaded with [from_pretrained()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.from_pretrained), this will be set to the value stored for the associated model in `max_model_input_sizes` (see above). If no value is provided, will default to VERY_LARGE_INTEGER (`int(1e30)`).
 
 padding_side (`str`, *optional*) : The side on which the model should have padding applied. Should be selected between ['right', 'left']. Default value is picked from the class attribute of the same name.
 
@@ -192,9 +192,9 @@ split_special_tokens (`bool`, *optional*, defaults to `False`) : Whether or not 
 
 **Returns:**
 
-`[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)`
+`[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)`
 
-A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -219,7 +219,7 @@ A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transfo
 - **length** -- The length of the inputs (when `return_length=True`)
 #### add_special_tokens[[transformers.PreTrainedTokenizerBase.add_special_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1105)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1100)
 
 Add a dictionary of special tokens (eos, pad, cls, etc.) to the encoder and link them to class attributes. If
 special tokens are NOT in the vocabulary, they are added to it (indexed starting from the last index of the
@@ -228,7 +228,7 @@ current vocabulary).
 When adding new tokens to the vocabulary, you should make sure to also resize the token embedding matrix of the
 model so that its embedding matrix matches the tokenizer.
 
-In order to do that, please use the [resize_token_embeddings()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.resize_token_embeddings) method.
+In order to do that, please use the [resize_token_embeddings()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.resize_token_embeddings) method.
 
 Using `add_special_tokens` will ensure your special tokens can be used in several ways:
 
@@ -238,7 +238,7 @@ Using `add_special_tokens` will ensure your special tokens can be used in severa
   makes it easy to develop model-agnostic training and fine-tuning scripts.
 
 When possible, special tokens are already registered for provided pretrained models (for instance
-[BertTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/electra#transformers.BertTokenizer) `cls_token` is already registered to be `'[CLS]'` and XLM's one is also registered to be
+[BertTokenizer](/docs/transformers/v5.0.0/en/model_doc/bert#transformers.BertTokenizer) `cls_token` is already registered to be `'[CLS]'` and XLM's one is also registered to be
 `''`).
 
 Examples:
@@ -271,7 +271,7 @@ replace_extra_special_tokens (`bool`, *optional*, defaults to `True`) : If `True
 Number of tokens added to the vocabulary.
 #### add_tokens[[transformers.PreTrainedTokenizerBase.add_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1210)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1205)
 
 #TODO remove this from here! PreTrainedTOkeniuzerBase should be agnostic of AddedToken.
 
@@ -304,7 +304,7 @@ special_tokens (`bool`, *optional*, defaults to `False`) : Specifies if the toke
 Number of tokens added to the vocabulary.
 #### apply_chat_template[[transformers.PreTrainedTokenizerBase.apply_chat_template]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3026)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L3017)
 
 Converts a list of dictionaries with `"role"` and `"content"` keys to a list of token
 ids. This method is intended for use with chat models, and will read the tokenizer's chat_template attribute to
@@ -326,15 +326,15 @@ continue_final_message (bool, *optional*) : If this is set, the chat will be for
 
 tokenize (`bool`, defaults to `True`) : Whether to tokenize the output. If `False`, the output will be a string.
 
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Select a strategy to pad the returned sequences (according to the model's padding side and padding index) among:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Select a strategy to pad the returned sequences (according to the model's padding side and padding index) among:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
 
 truncation (`bool`, defaults to `False`) : Whether to truncate sequences at the maximum length. Has no effect if tokenize is `False`.
 
 max_length (`int`, *optional*) : Maximum length (in tokens) to use for padding or truncation. Has no effect if tokenize is `False`. If not specified, the tokenizer's `max_length` attribute will be used as a default.
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors of a particular framework. Has no effect if tokenize is `False`. Acceptable values are: - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return NumPy `np.ndarray` objects.
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors of a particular framework. Has no effect if tokenize is `False`. Acceptable values are: - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return NumPy `np.ndarray` objects.
 
-return_dict (`bool`, defaults to `False`) : Whether to return a dictionary with named outputs. Has no effect if tokenize is `False`.
+return_dict (`bool`, defaults to `True`) : Whether to return a dictionary with named outputs. Has no effect if tokenize is `False`.
 
 tokenizer_kwargs (`dict[str : Any]`, *optional*): Additional kwargs to pass to the tokenizer.
 
@@ -351,7 +351,7 @@ output is ready to pass to the model, either directly or via methods like `gener
 set, will return a dict of tokenizer outputs instead.
 #### batch_decode[[transformers.PreTrainedTokenizerBase.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2938)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2929)
 
 Convert a list of lists of token ids into a list of strings by calling decode.
 
@@ -375,7 +375,7 @@ kwargs (additional keyword arguments, *optional*) : Will be passed to the underl
 The list of decoded sentences.
 #### convert_ids_to_tokens[[transformers.PreTrainedTokenizerBase.convert_ids_to_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1494)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1489)
 
 Converts a single index or a sequence of indices in a token or a sequence of tokens, using the vocabulary and
 added tokens.
@@ -393,7 +393,7 @@ skip_special_tokens (`bool`, *optional*, defaults to `False`) : Whether or not t
 The decoded token(s).
 #### convert_tokens_to_ids[[transformers.PreTrainedTokenizerBase.convert_tokens_to_ids]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1478)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1473)
 
 Converts a token string (or a sequence of tokens) in a single integer id (or a sequence of ids), using the
 vocabulary.
@@ -409,7 +409,7 @@ tokens (`str` or `list[str]`) : One or several token(s) to convert to token id(s
 The token id or list of token ids.
 #### convert_tokens_to_string[[transformers.PreTrainedTokenizerBase.convert_tokens_to_string]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2877)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2868)
 
 Converts a sequence of tokens in a single string. The most simple way to do it is `" ".join(tokens)` but we
 often want to remove sub-word tokenization artifacts at the same time.
@@ -425,7 +425,7 @@ tokens (`list[str]`) : The token to join in a string.
 The joined tokens.
 #### decode[[transformers.PreTrainedTokenizerBase.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2890)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2881)
 
 Converts a sequence of ids into a string, or a list of sequences into a list of strings,
 using the tokenizer and vocabulary with options to remove special tokens and clean up
@@ -449,7 +449,7 @@ The decoded string for a single sequence, or a list of decoded strings for a
 batch of sequences.
 #### encode[[transformers.PreTrainedTokenizerBase.encode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2283)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2278)
 
 Converts a string to a sequence of ids (integer), using the tokenizer and vocabulary.
 
@@ -463,9 +463,9 @@ text_pair (`str`, `list[str]` or `list[int]`, *optional*) : Optional second sequ
 
 add_special_tokens (`bool`, *optional*, defaults to `True`) : Whether or not to add special tokens when encoding the sequences. This will use the underlying `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens automatically.
 
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence is provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence is provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
 
-truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
+truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
 
 max_length (`int`, *optional*) : Controls the maximum length to use by one of the truncation/padding parameters.  If left unset or set to `None`, this will use the predefined model maximum length if a maximum length is required by one of the truncation/padding parameters. If the model has no specific maximum input length (like XLNet) truncation/padding to a maximum length will be deactivated.
 
@@ -477,7 +477,7 @@ pad_to_multiple_of (`int`, *optional*) : If set will pad the sequence to a multi
 
 padding_side (`str`, *optional*) : The side on which the model should have padding applied. Should be selected between ['right', 'left']. Default value is picked from the class attribute of the same name.
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects. 
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects. 
 
 - ****kwargs** : Passed along to the `.tokenize()` method.
 
@@ -488,7 +488,7 @@ return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/f
 The tokenized ids of the text.
 #### encode_message_with_chat_template[[transformers.PreTrainedTokenizerBase.encode_message_with_chat_template]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3198)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L3189)
 
 Tokenize a single message. This method is a convenience wrapper around `apply_chat_template` that allows you
 to tokenize messages one by one. This is useful for things like token-by-token streaming.
@@ -514,9 +514,9 @@ conversation_history (`list[dict]`, *optional*) : A list of dicts with "role" an
 A list of token ids representing the tokenized message.
 #### from_pretrained[[transformers.PreTrainedTokenizerBase.from_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1512)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1505)
 
-Instantiate a [PreTrainedTokenizerBase](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase) (or a derived class) from a predefined
+Instantiate a [PreTrainedTokenizerBase](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase) (or a derived class) from a predefined
 tokenizer.
 
 Passing `token=True` is required when you want to use a private model.
@@ -546,7 +546,7 @@ assert tokenizer.unk_token == ""
 
 **Parameters:**
 
-pretrained_model_name_or_path (`str` or `os.PathLike`) : Can be either:  - A string, the *model id* of a predefined tokenizer hosted inside a model repo on huggingface.co. - A path to a *directory* containing vocabulary files required by the tokenizer, for instance saved using the [save_pretrained()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained) method, e.g., `./my_model_directory/`. - (**Deprecated**, not applicable to all derived classes) A path or url to a single saved vocabulary file (if and only if the tokenizer only requires a single vocabulary file like Bert or XLNet), e.g., `./my_model_directory/vocab.txt`.
+pretrained_model_name_or_path (`str` or `os.PathLike`) : Can be either:  - A string, the *model id* of a predefined tokenizer hosted inside a model repo on huggingface.co. - A path to a *directory* containing vocabulary files required by the tokenizer, for instance saved using the [save_pretrained()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained) method, e.g., `./my_model_directory/`. - (**Deprecated**, not applicable to all derived classes) A path or url to a single saved vocabulary file (if and only if the tokenizer only requires a single vocabulary file like Bert or XLNet), e.g., `./my_model_directory/vocab.txt`.
 
 cache_dir (`str` or `os.PathLike`, *optional*) : Path to a directory in which a downloaded predefined tokenizer vocabulary files should be cached if the standard cache should not be used.
 
@@ -569,7 +569,7 @@ trust_remote_code (`bool`, *optional*, defaults to `False`) : Whether or not to 
 kwargs (additional keyword arguments, *optional*) : Will be passed to the Tokenizer `__init__` method. Can be used to set special tokens like `bos_token`, `eos_token`, `unk_token`, `sep_token`, `pad_token`, `cls_token`, `mask_token`, `extra_special_tokens`. See parameters in the `__init__` for more details.
 #### get_chat_template[[transformers.PreTrainedTokenizerBase.get_chat_template]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3258)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L3249)
 
 Retrieve the chat template string used for tokenizing chat messages. This template is used
 internally by the `apply_chat_template` method and can also be used externally to retrieve the model's chat
@@ -588,7 +588,7 @@ tools (`list[Dict]`, *optional*) : A list of tools (callable functions) that wil
 The chat template string.
 #### get_special_tokens_mask[[transformers.PreTrainedTokenizerBase.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330)
 
 Retrieve sequence ids from a token list that has no special tokens added.
 
@@ -610,7 +610,7 @@ already_has_special_tokens : Whether the sequence is already formatted with spec
 1 for a special token, 0 for a sequence token.
 #### get_vocab[[transformers.PreTrainedTokenizerBase.get_vocab]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1466)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1461)
 
 Returns the vocabulary as a dictionary of token to index.
 
@@ -624,7 +624,7 @@ vocab.
 The vocabulary.
 #### pad[[transformers.PreTrainedTokenizerBase.pad]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2622)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2615)
 
 Pad a single encoded input or a batch of encoded inputs up to predefined length or to the max sequence length
 in the batch.
@@ -641,9 +641,9 @@ PyTorch tensors, you will lose the specific device of your tensors however.
 
 **Parameters:**
 
-encoded_inputs ([BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding), list of [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding), `dict[str, list[int]]`, `dict[str, list[list[int]]` or `list[dict[str, list[int]]]`) : Tokenized inputs. Can represent one input ([BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) or `dict[str, list[int]]`) or a batch of tokenized inputs (list of [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding), *dict[str, list[list[int]]]* or *list[dict[str, list[int]]]*) so you can use this method during preprocessing as well as in a PyTorch Dataloader collate function.  Instead of `list[int]` you can have tensors (numpy arrays, or PyTorch tensors), see the note above for the return type.
+encoded_inputs ([BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding), list of [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding), `dict[str, list[int]]`, `dict[str, list[list[int]]` or `list[dict[str, list[int]]]`) : Tokenized inputs. Can represent one input ([BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) or `dict[str, list[int]]`) or a batch of tokenized inputs (list of [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding), *dict[str, list[list[int]]]* or *list[dict[str, list[int]]]*) so you can use this method during preprocessing as well as in a PyTorch Dataloader collate function.  Instead of `list[int]` you can have tensors (numpy arrays, or PyTorch tensors), see the note above for the return type.
 
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) : Select a strategy to pad the returned sequences (according to the model's padding side and padding index) among:  - `True` or `'longest'` (default): Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'`: No padding (i.e., can output a batch with sequences of different lengths).
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) : Select a strategy to pad the returned sequences (according to the model's padding side and padding index) among:  - `True` or `'longest'` (default): Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'`: No padding (i.e., can output a batch with sequences of different lengths).
 
 max_length (`int`, *optional*) : Maximum length of the returned list and optionally padding length (see above).
 
@@ -653,12 +653,12 @@ padding_side (`str`, *optional*) : The side on which the model should have paddi
 
 return_attention_mask (`bool`, *optional*) : Whether to return the attention mask. If left to the default, will return the attention mask according to the specific tokenizer's default, defined by the `return_outputs` attribute.  [What are attention masks?](../glossary#attention-mask)
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects.
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects.
 
 verbose (`bool`, *optional*, defaults to `True`) : Whether or not to print more information and warnings.
 #### parse_response[[transformers.PreTrainedTokenizerBase.parse_response]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3367)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L3358)
 
 Converts an output string created by generating text from a model into a parsed message dictionary.
 This method is intended for use with chat models, and will read the tokenizer's `response_schema` attribute to
@@ -674,7 +674,7 @@ response (`str`) : The output string generated by the model. This can be either 
 schema (`Union[list, dict]`, *optional*) : A response schema that indicates the expected output format and how parsing should be performed. If not provided, the tokenizer's `response_schema` attribute will be used.
 #### push_to_hub[[transformers.PreTrainedTokenizerBase.push_to_hub]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/utils/hub.py#L711)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/hub.py#L711)
 
 Upload the tokenizer files to the 🤗 Model Hub.
 
@@ -713,7 +713,7 @@ max_shard_size (`int` or `str`, *optional*, defaults to `"50GB"`) : Only applica
 tags (`list[str]`, *optional*) : List of tags to push on the Hub.
 #### register_for_auto_class[[transformers.PreTrainedTokenizerBase.register_for_auto_class]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3006)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2997)
 
 Register this class with a given auto class. This should only be used for custom tokenizers as the ones in the
 library are already mapped with `AutoTokenizer`.
@@ -723,14 +723,14 @@ library are already mapped with `AutoTokenizer`.
 auto_class (`str` or `type`, *optional*, defaults to `"AutoTokenizer"`) : The auto class to register this new tokenizer with.
 #### save_chat_templates[[transformers.PreTrainedTokenizerBase.save_chat_templates]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L3312)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L3303)
 
 Writes chat templates out to the save directory if we're using the new format, and removes them from
 the tokenizer config if present. If we're using the legacy format, it doesn't write any files, and instead
 writes the templates to the tokenizer config in the correct format.
 #### save_pretrained[[transformers.PreTrainedTokenizerBase.save_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2053)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2047)
 
 Save the full tokenizer state.
 
@@ -750,7 +750,7 @@ filename_prefix (`str`, *optional*) : A prefix to add to the names of the files 
 
 push_to_hub (`bool`, *optional*, defaults to `False`) : Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the repository you want to push to with `repo_id` (will default to the name of `save_directory` in your namespace).
 
-kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
+kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
 
 **Returns:**
 
@@ -759,7 +759,7 @@ kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed alo
 The files saved.
 #### save_vocabulary[[transformers.PreTrainedTokenizerBase.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2245)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2240)
 
 Save only the vocabulary of the tokenizer (vocabulary + added tokens).
 
@@ -779,7 +779,7 @@ filename_prefix (`str`, *optional*) : An optional prefix to add to the named of 
 Paths to the files saved.
 #### tokenize[[transformers.PreTrainedTokenizerBase.tokenize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2263)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2258)
 
 Converts a string into a sequence of tokens, replacing unknown tokens with the `unk_token`.
 
@@ -791,7 +791,7 @@ pair (`str`, *optional*) : A second sequence to be encoded with the first.
 
 add_special_tokens (`bool`, *optional*, defaults to `False`) : Whether or not to add the special tokens associated with the corresponding model.
 
-kwargs (additional keyword arguments, *optional*) : Will be passed to the underlying model specific encode method. See details in [__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__)
+kwargs (additional keyword arguments, *optional*) : Will be passed to the underlying model specific encode method. See details in [__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__)
 
 **Returns:**
 
@@ -803,14 +803,14 @@ The list of tokens.
 
 #### transformers.tokenization_utils_base.TruncationStrategy[[transformers.tokenization_utils_base.TruncationStrategy]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L154)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L153)
 
-Possible values for the `truncation` argument in [PreTrainedTokenizerBase.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__). Useful for tab-completion in
+Possible values for the `truncation` argument in [PreTrainedTokenizerBase.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__). Useful for tab-completion in
 an IDE.
 
 #### transformers.CharSpan[[transformers.CharSpan]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L166)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L165)
 
 Character span in the original string.
 
@@ -822,7 +822,7 @@ end (`int`) : Index of the character following the last character in the origina
 
 #### transformers.TokenSpan[[transformers.TokenSpan]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L179)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L178)
 
 Token span in an encoded string (list of tokens).
 

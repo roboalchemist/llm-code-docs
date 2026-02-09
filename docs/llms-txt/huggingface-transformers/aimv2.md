@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/aimv2.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/aimv2.md
 
 # AIMv2
 
@@ -62,15 +62,15 @@ probs = outputs.logits_per_image.softmax(dim=-1)
 
 #### transformers.Aimv2Config[[transformers.Aimv2Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/configuration_aimv2.py#L215)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/configuration_aimv2.py#L207)
 
-[Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config) is the configuration class to store the configuration of a [Aimv2Model](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Model). It is used to
+[Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config) is the configuration class to store the configuration of a [Aimv2Model](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Model). It is used to
 instantiate a AIMv2 model according to the specified arguments, defining the text model and vision model configs.
 Instantiating a configuration with the defaults will yield a similar configuration to that of the AIMv2
 [apple/aimv2-large-patch14-224-lit](https://huggingface.co/apple/aimv2-large-patch14-224-lit) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -98,9 +98,9 @@ Example:
 
 **Parameters:**
 
-text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Aimv2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextConfig).
+text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Aimv2TextConfig](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextConfig).
 
-vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Aimv2VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionConfig).
+vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Aimv2VisionConfig](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionConfig).
 
 projection_dim (`int`, *optional*, defaults to 512) : Dimensionality of text and vision projection layers.
 
@@ -112,19 +112,19 @@ kwargs (*optional*) : Dictionary of keyword arguments.
 
 #### transformers.Aimv2TextConfig[[transformers.Aimv2TextConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/configuration_aimv2.py#L130)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/configuration_aimv2.py#L127)
 
-This is the configuration class to store the configuration of a [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel). It is used to instantiate a
 AIMv2 text encoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the text encoder of the AIMv2
 [apple/aimv2-large-patch14-224-lit](https://huggingface.co/apple/aimv2-large-patch14-224-lit) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 49408) : Vocabulary size of the AIMv2 text model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Aimv2Model](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Model).
+vocab_size (`int`, *optional*, defaults to 49408) : Vocabulary size of the AIMv2 text model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Aimv2Model](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Model).
 
 hidden_size (`int`, *optional*, defaults to 768) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -144,10 +144,6 @@ mlp_bias (`bool`, *optional*, defaults to `False`) : Whether to add a bias to th
 
 hidden_act (`str` or `function`, *optional*, defaults to `"silu"`) : The non-linear activation function (function or string) in the encoder and pooler. If string, `"gelu"`, `"relu"`, `"selu"` and `"gelu_new"` `"quick_gelu"` are supported.
 
-pad_token_id (`int`, *optional*, defaults to 1) : The id of the padding token in the vocabulary.
-
-bos_token_id (`int`, *optional*, defaults to 49406) : The id of the beginning-of-sequence token in the vocabulary.
-
 eos_token_id (`int`, *optional*, defaults to 49407) : The id of the end-of-sequence token in the vocabulary.
 
 max_position_embeddings (`int`, *optional*, defaults to 77) : The maximum sequence length that this model might ever be used with. Typically set this to something large just in case (e.g., 512 or 1024 or 2048).
@@ -158,15 +154,15 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Aimv2VisionConfig[[transformers.Aimv2VisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/configuration_aimv2.py#L31)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/configuration_aimv2.py#L28)
 
-This is the configuration class to store the configuration of a [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel). It is used to instantiate a
 AIMv2 vision encoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the vision encoder of the AIMv2
 [apple/aimv2-large-patch14-224](https://huggingface.co/apple/aimv2-large-patch14-224) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -219,11 +215,11 @@ is_native (`str`, *optional*, defaults to `False`) : Whether to use ckpt trained
 
 #### transformers.Aimv2Model[[transformers.Aimv2Model]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L580)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L585)
 
 The bare Aimv2 Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -231,11 +227,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Aimv2Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L679[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Aimv2Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L682[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
@@ -257,11 +253,11 @@ elements depending on the configuration (`None`) and inputs.
   similarity scores.
 - **logits_per_text** (`torch.FloatTensor` of shape `(text_batch_size, image_batch_size)`) -- The scaled dot product scores between `text_embeds` and `image_embeds`. This represents the text-image
   similarity scores.
-- **text_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The text embeddings obtained by applying the projection layer to the pooled output of [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel).
-- **image_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The image embeddings obtained by applying the projection layer to the pooled output of [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel).
-- **text_model_output** (`.text_model_output`, defaults to `None`) -- The output of the [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel).
-- **vision_model_output** (`.vision_model_output`, defaults to `None`) -- The output of the [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel).
-The [Aimv2Model](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Model) forward method, overrides the `__call__` special method.
+- **text_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The text embeddings obtained by applying the projection layer to the pooled output of [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel).
+- **image_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The image embeddings obtained by applying the projection layer to the pooled output of [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel).
+- **text_model_output** (`.text_model_output`, defaults to `None`) -- The output of the [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel).
+- **vision_model_output** (`.vision_model_output`, defaults to `None`) -- The output of the [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel).
+The [Aimv2Model](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Model) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -271,14 +267,16 @@ Examples:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, Aimv2Model
 
 >>> model = Aimv2Model.from_pretrained("apple/aimv2-large-patch14-224-lit")
 >>> processor = AutoProcessor.from_pretrained("apple/aimv2-large-patch14-224-lit")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> inputs = processor(
 ...     text=["a photo of a cat", "a photo of a dog"], images=image, return_tensors="pt", padding=True
@@ -291,7 +289,7 @@ Examples:
 
 **Parameters:**
 
-config ([Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -306,33 +304,44 @@ elements depending on the configuration (`None`) and inputs.
   similarity scores.
 - **logits_per_text** (`torch.FloatTensor` of shape `(text_batch_size, image_batch_size)`) -- The scaled dot product scores between `text_embeds` and `image_embeds`. This represents the text-image
   similarity scores.
-- **text_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The text embeddings obtained by applying the projection layer to the pooled output of [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel).
-- **image_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The image embeddings obtained by applying the projection layer to the pooled output of [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel).
-- **text_model_output** (`.text_model_output`, defaults to `None`) -- The output of the [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel).
-- **vision_model_output** (`.vision_model_output`, defaults to `None`) -- The output of the [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel).
+- **text_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The text embeddings obtained by applying the projection layer to the pooled output of [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel).
+- **image_embeds** (`torch.FloatTensor` of shape `(batch_size, output_dim`) -- The image embeddings obtained by applying the projection layer to the pooled output of [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel).
+- **text_model_output** (`.text_model_output`, defaults to `None`) -- The output of the [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel).
+- **vision_model_output** (`.vision_model_output`, defaults to `None`) -- The output of the [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel).
+#### get_text_features[[transformers.Aimv2Model.get_text_features]]
 
-## Aimv2VisionModel[[transformers.Aimv2VisionModel]]
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L608)
 
-#### transformers.Aimv2VisionModel[[transformers.Aimv2VisionModel]]
+Examples:
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L424)
+```python
+>>> import torch
+>>> from transformers import AutoTokenizer, Aimv2Model
 
-The Vision model from AIMv2 without any head or projection on top.
+>>> model = Aimv2Model.from_pretrained("openai/aimv2-vit-base-patch32")
+>>> tokenizer = AutoTokenizer.from_pretrained("openai/aimv2-vit-base-patch32")
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
-library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
-etc.)
+>>> inputs = tokenizer(["a photo of a cat", "a photo of a dog"], padding=True, return_tensors="pt")
 
-This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/nn.html#torch.nn.Module) subclass.
-Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
-and behavior.
+>>> with torch.inference_mode():
+...     text_features = model.get_text_features(**inputs)
+```
 
-forwardtransformers.Aimv2VisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L449[{"name": "pixel_values", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`` of shape `(batch_size, num_channels, image_size, image_size)`) --
-  The tensors corresponding to the input images. Pixel values can be obtained using
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor). See [CLIPImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([CLIPProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPProcessor) uses
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor) for processing images).0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+**Parameters:**
+
+input_ids (`torch.Tensor` of shape `(batch_size, sequence_length)`) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+
+attention_mask (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
+
+position_ids (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of positions of each input sequence tokens in the position embeddings. Selected in the range `[0, config.n_positions - 1]`.  [What are position IDs?](../glossary#position-ids)
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -348,7 +357,96 @@ elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Aimv2VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionModel) forward method, overrides the `__call__` special method.
+#### get_image_features[[transformers.Aimv2Model.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L644)
+
+Examples:
+
+```python
+>>> import torch
+>>> from transformers import AutoProcessor, Aimv2Model
+>>> from transformers.image_utils import load_image
+
+>>> model = Aimv2Model.from_pretrained("openai/aimv2-vit-base-patch32")
+>>> processor = AutoProcessor.from_pretrained("openai/aimv2-vit-base-patch32")
+
+>>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+>>> image = load_image(url)
+
+>>> inputs = processor(images=image, return_tensors="pt")
+
+>>> with torch.inference_mode():
+...     image_features = model.get_image_features(**inputs)
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([CLIPProcessor](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPProcessor) uses [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).
+
+interpolate_pos_encoding (`bool`, *optional*, defaults to `False`) : Whether to interpolate the pre-trained position encodings.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+
+## Aimv2VisionModel[[transformers.Aimv2VisionModel]]
+
+#### transformers.Aimv2VisionModel[[transformers.Aimv2VisionModel]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L427)
+
+The Vision model from AIMv2 without any head or projection on top.
+
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
+etc.)
+
+This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/nn.html#torch.nn.Module) subclass.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
+and behavior.
+
+forwardtransformers.Aimv2VisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L452[{"name": "pixel_values", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`` of shape `(batch_size, num_channels, image_size, image_size)`) --
+  The tensors corresponding to the input images. Pixel values can be obtained using
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([CLIPProcessor](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPProcessor) uses
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+The [Aimv2VisionModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -358,14 +456,16 @@ Examples:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, Siglip2VisionModel
 
 >>> model = Aimv2VisionModel.from_pretrained("apple/aimv2-large-patch14-native")
 >>> processor = AutoProcessor.from_pretrained("apple/aimv2-large-patch14-native")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> inputs = processor(images=image, return_tensors="pt")
 
@@ -376,15 +476,15 @@ Examples:
 
 **Parameters:**
 
-config ([Aimv2VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Aimv2VisionConfig](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -405,11 +505,11 @@ elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0
 
 #### transformers.Aimv2TextModel[[transformers.Aimv2TextModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L499)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L504)
 
 The text model from AIMv2 without any head or projection on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -417,11 +517,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Aimv2TextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/aimv2/modeling_aimv2.py#L524[{"name": "input_ids", "val": ""}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.Aimv2TextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/aimv2/modeling_aimv2.py#L529[{"name": "input_ids", "val": ""}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -430,9 +530,9 @@ forwardtransformers.Aimv2TextModel.forwardhttps://github.com/huggingface/transfo
   - 1 for tokens that are **not masked**,
   - 0 for tokens that are **masked**.
 
-  [What are attention masks?](../glossary#attention-mask)0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  [What are attention masks?](../glossary#attention-mask)0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -448,7 +548,7 @@ elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Aimv2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextModel) forward method, overrides the `__call__` special method.
+The [Aimv2TextModel](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -456,15 +556,15 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Aimv2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Aimv2TextConfig](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0rc1/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
+elements depending on the configuration ([Aimv2Config](/docs/transformers/v5.0.0/en/model_doc/aimv2#transformers.Aimv2Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing

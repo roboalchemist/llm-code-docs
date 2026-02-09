@@ -14,22 +14,22 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#attempt)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L27)attempt
+### [**](#attempt)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L27)attempt
 
 **attempt: ContextVar\[int | None]
 
-### [**](#client_method)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L28)client\_method
+### [**](#client_method)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L28)client\_method
 
 **client\_method: ContextVar\[str | None]
 
-### [**](#method)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L29)method
+### [**](#method)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L29)method
 
 **method: ContextVar\[str | None]
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L30)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L30)resource\_id
 
 **resource\_id: ContextVar\[str | None]
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L31)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L31)url
 
 **url: ContextVar\[str | None]

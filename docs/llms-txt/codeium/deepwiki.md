@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/deepwiki.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DeepWiki
+
+> Get AI-powered explanations of code symbols with DeepWiki. Hover over functions, variables, and classes to understand unfamiliar code in your codebase.
 
 We've implemented [Devin's DeepWiki feature](https://docs.devin.ai/work-with-devin/deepwiki) inside of the Windsurf Editor. Use it to get up to speed on unfamiliar parts of your codebase.
 

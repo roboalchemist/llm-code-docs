@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/EvalionVoiceAgentEval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating voice AI agents with Evalion
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/EvalionVoiceAgentEval/EvalionVoiceAgentEvaluation.ipynb) by [Marc Vergara Ferrer](https://www.linkedin.com/in/marc-vergara-b72472144/), [Miguel Andres](https://www.linkedin.com/in/gueles/) on 2024-12-05</div>
@@ -690,8 +694,3 @@ For more agent cookbooks, check out:
 
 * [Evaluating a voice agent](/cookbook/recipes/VoiceAgent) with OpenAI Realtime API
 * [Building reliable AI agents](/cookbook/recipes/AgentWhileLoop) with tool calling
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/deploy-metric-drain-with-terraform.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy Metric Drain with Terraform
 
 Deploying [Metric Drains](/core-concepts/observability/metrics/metrics-drains/overview) with [Aptible's Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest) is relativley straight-forward, with some minor configuration exceptions. Aptible's Terraform Provider uses the Aptible CLI for authorization and authentication, so please run `aptible login` before we get started.

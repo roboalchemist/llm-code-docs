@@ -12,7 +12,7 @@ NoSQL [DynamoDB](https://aws.amazon.com/dynamodb/).
 ## First class support for reusable, code-first POCOs
 
 PocoDynamo is conceptually similar to ServiceStack's other code-first
-[OrmLite](https://github.com/ServiceStack/ServiceStack.OrmLite) and 
+[OrmLite](/ormlite/) and 
 [Redis](https://github.com/ServiceStack/ServiceStack.Redis) clients by providing a high-fidelity, managed client that enhances
 AWSSDK's low-level [IAmazonDynamoDB client](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/UsingAWSsdkForDotNet.html), 
 with rich, native support for intuitively mapping your re-usable code-first POCO Data models into 
@@ -141,7 +141,7 @@ configurations, related items, conventions, aliases, dep-free data annotation at
 PocoDynamo is contained in ServiceStack's AWS NuGet package:
 
 :::copy
-`<PackageReference Include="ServiceStack.Aws" Version="8.*" />`
+`<PackageReference Include="ServiceStack.Aws" Version="10.*" />`
 :::
  
 > PocoDynamo has a 10 Tables [free-quota usage](https://servicestack.net/download#free-quotas) limit which can be unlocked with a [commercial license key](https://servicestack.net/pricing).

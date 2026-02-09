@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/self-closing-comp.md
 ---
-# react/self-closing-comp&#x20;
 
 ### What it does
 

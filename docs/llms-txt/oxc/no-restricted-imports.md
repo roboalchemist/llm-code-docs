@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-restricted-imports.md
 ---
-# eslint/no-restricted-imports&#x20;
 
 ### What it does
 
@@ -24,7 +23,7 @@ and provide a higher maintenance cost of two dependencies when one would suffice
 Examples of **incorrect** code for this rule:
 
 ```js
-/*eslint no-restricted-imports: ["error", "disallowed-import"]"*/
+/* no-restricted-imports: ["error", "disallowed-import"] */
 
 import foo from "disallowed-import";
 export * from "disallowed-import";
@@ -33,7 +32,7 @@ export * from "disallowed-import";
 Examples of **correct** code for this rule:
 
 ```js
-/*eslint no-restricted-imports: ["error", "fs"]*/
+/* no-restricted-imports: ["error", "fs"] */
 
 import crypto from "crypto";
 export * from "bar";
@@ -48,10 +47,10 @@ The custom message will be displayed as a help text for the user.
 Examples of **incorrect** code for this rule:
 
 ```js
-/*eslint no-restricted-imports: ["error", {
+/* no-restricted-imports: ["error", {
   "name": "disallowed-import",
   "message": "Please use 'allowed-import' instead"
-}]*/
+}] */
 
 import foo from "disallowed-import";
 ```
@@ -67,7 +66,7 @@ This is an object option whose value is an array containing the names of the mod
 Examples of **incorrect** code for `paths`:
 
 ```js
-/*eslint no-restricted-imports: ["error", { "paths": ["cluster"] }]*/
+/* no-restricted-imports: ["error", { "paths": ["cluster"] }] */
 
 import cluster from "cluster";
 ```
@@ -97,13 +96,13 @@ Specifying `"default"` string inside the `importNames` array will restrict the d
 Examples of **incorrect** code for this rule:
 
 ```js
-/*eslint no-restricted-imports: ["error", { paths: [{
+/* no-restricted-imports: ["error", { paths: [{
   "name": "foo",
   "importNames": ["default"]
 }, {
   "name": "bar",
   "importNames": ["Baz"]
-}]}]*/
+}]}] */
 
 import DisallowedObject from "foo";
 import { Baz } from "far";
@@ -119,11 +118,11 @@ Note: `allowImportNames` cannot be used in combination with `importNames`.
 Examples of **incorrect** code for this rule:
 
 ```js
-/*eslint no-restricted-imports: ["error", { paths: [{
+/* no-restricted-imports: ["error", { paths: [{
   "name": "foo",
   "allowImportNames": ["AllowedObject"],
   "message": "Please use only 'AllowedObject' from 'foo'."
-}]}]*/
+}]}] */
 
 import { DisallowedObject } from "foo";
 ```
@@ -135,10 +134,10 @@ Whether to allow type-only imports for a path. Default: `false`.
 Examples of **incorrect** code for this rule:
 
 ```typescript
-/*eslint no-restricted-imports: ["error", { paths: [{
+/* no-restricted-imports: ["error", { paths: [{
   "name": "foo",
   "allowTypeImports": true
-}]}]*/
+}]}] */
 
 import foo from "import-foo";
 export { Foo } from "import-foo";
@@ -147,10 +146,10 @@ export { Foo } from "import-foo";
 Examples of **correct** code for this rule:
 
 ```typescript
-/*eslint no-restricted-imports: ["error", { paths: [{
+/* no-restricted-imports: ["error", { paths: [{
   "name": "foo",
   "allowTypeImports": true
-}]}]*/
+}]}] */
 
 import type foo from "import-foo";
 export type { Foo } from "import-foo";
@@ -194,7 +193,7 @@ You can also use regular expressions to restrict modules (see the `regex` option
 Examples of **incorrect** code for `patterns` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { "patterns": ["lodash/*"] }]*/
+/* no-restricted-imports: ["error", { "patterns": ["lodash/*"] }] */
 
 import pick from "lodash/pick";
 ```
@@ -202,7 +201,7 @@ import pick from "lodash/pick";
 Examples of **correct** code for `patterns` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { "patterns": ["crypto/*"] }]*/
+/* no-restricted-imports: ["error", { "patterns": ["crypto/*"] }] */
 
 import crypto from "crypto";
 ```
@@ -217,10 +216,10 @@ Either of the `group` or `regex` properties is required when using the `patterns
 Examples of **incorrect** code for `group` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   group: ["lodash/*"],
   message: "Please use the default import from 'lodash' instead."
-}]}]*/
+}]}] */
 
 import pick from "lodash/pick";
 ```
@@ -237,9 +236,9 @@ like Lookahead and Lookbehinds.
 Examples of **incorrect** code for `regex` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   regex: "@app/(api|enums).*",
-}]}]*/
+}]}] */
 
 import Foo from "@app/api";
 import Bar from "@app/api/bar";
@@ -261,11 +260,11 @@ In this case, the specified names apply only to the associated `group` or `regex
 Examples of **incorrect** code for `importNames` in `patterns`:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   group: ["utils/*"],
   importNames: ['isEmpty'],
   message: "Use 'isEmpty' from lodash instead."
-}]}]*/
+}]}] */
 
 import { isEmpty } from "utils/collection-utils";
 ```
@@ -284,11 +283,11 @@ This option allows you to use regex patterns to restrict import names.
 Examples of **incorrect** code for `importNamePattern` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   group: ["foo/*"],
   importNamePattern: '^(is|has)',
   message: "Use 'is*' and 'has*' functions from baz/bar instead"
-}]}]*/
+}]}] */
 
 import { isSomething, hasSomething } from "foo/bar";
 ```
@@ -312,10 +311,10 @@ Note: `allowImportNamePattern` cannot be used in combination with `importNames`,
 Examples of **incorrect** code for `allowImportNamePattern` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   group: ["utils/*"],
   allowImportNamePattern: '^has'
-}]}]*/
+}]}] */
 
 import { isEmpty } from "utils/collection-utils";
 ```
@@ -323,10 +322,10 @@ import { isEmpty } from "utils/collection-utils";
 Examples of **correct** code for `allowImportNamePattern` option:
 
 ```js
-/*eslint no-restricted-imports: ["error", { patterns: [{
+/* no-restricted-imports: ["error", { patterns: [{
   group: ["utils/*"],
   allowImportNamePattern: '^is'
-}]}]*/
+}]}] */
 
 import { isEmpty } from "utils/collection-utils";
 ```

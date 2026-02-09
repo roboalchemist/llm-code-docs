@@ -36,6 +36,6 @@ COPY --chown=myuser:myuser . ./
 ```
 
 
-where `myuser` is the user and group defined by the `USER`  instruction in the base Docker image. To learn more, see https://docs.docker.com/reference/dockerfile/#copy.
+where `myuser` is the user and group defined by the `USER`  instruction in the base Docker image. To learn more, see [Dockerfile documentation](https://docs.docker.com/reference/dockerfile/#copy).
 
 Hope this helps!

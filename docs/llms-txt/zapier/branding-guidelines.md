@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/branding-guidelines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration branding guidelines
 
 > When creating your integration, you'll add your app’s name, logo, description, category, and primary brand color. Consistent branding is essential for helping users recognize and discover your app on Zapier.
@@ -100,8 +104,6 @@ Write a short description (up to 160 characters) of your app’s core features a
 ## Category
 
 Select the category that best fits your app's core features and use case. If your app includes features from multiple categories, choose the category that best describes your app's primary use case today.
-
-Can't find an existing category that represents your app? Let us know! Suggest a category you'd like to see added to our app directory by [submitting this form](https://integration-branding.zapier.app/suggest).
 
 You may update your app's category in the future if needed, so do not select a category that fits your future ambitions for the app instead of its features today. Additionally, do not select a category that applies only to a secondary feature in your app or a narrow category that does not cover your app's broader focus.
 
@@ -237,10 +239,6 @@ Zapier uses the primary color as the background color in your app's Zapier App D
 
   <Accordion title="How can I become a Premium integration?">
     Being classified as a Premium app isn't something we currently offer to partner-owned integrations. The justification as to why a Zapier-owned integration might be classed as Premium varies, but is often due to an increased cost on our end to be able to offer that integration. Only users on a paid Zapier plan can use Premium integrations, which helps to ensure we can continue to invest in the development of that integration.
-  </Accordion>
-
-  <Accordion title="Can I suggest a new category?">
-    [Submit this form](https://integration-branding.zapier.app/suggest) to suggest a new category. Our team will review all submissions for consideration. If we move forward with adding your suggestion as a category, we'll notify you via email.
   </Accordion>
 </AccordionGroup>
 

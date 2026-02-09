@@ -1,15 +1,27 @@
 # Source: https://docs.frigade.com/component/announcement.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Announcement
 
 > Communicate information or drive action via modal-based announcements
 
 <Frame className="h-96 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/announcement.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1feb6c3c3162ad5dcfb671cee05b2720"
     style={{
     width: "350px",
   }}
+    data-og-width="470"
+    width="470"
+    data-og-height="533"
+    height="533"
+    data-path="images/components/announcement.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=fa0489f75065c31f350c1bae87fb694d 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9c312391ce3bead7af2a56d8091fba32 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=160d89e44ac348fcd7acda99c3c72fd1 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=aecd9e5384c9c04f4d4088a4e118c861 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1d46eb5279067aa5749f69eca67d26e7 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/announcement.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d2621dab38c40ab54856d4019ca57730 2500w"
   />
 </Frame>
 
@@ -49,7 +61,7 @@ The `Announcement` component is a flexible communication tool that’s perfect f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

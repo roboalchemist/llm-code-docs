@@ -2,10 +2,7 @@
 
 # Create User
 
-```
-POST 
-/v2/:organizationId/Users
-```
+Copy page
 
 This endpoint creates a new user with the given attributes.
 

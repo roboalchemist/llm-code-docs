@@ -1,184 +1,141 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/quickstart.md
 
+# Source: https://oxc.rs/docs/guide/usage/formatter/quickstart.md
+
 ---
-url: /docs/guide/usage/linter/quickstart.md
-description: Install Oxlint and learn the common workflows.
+url: /docs/guide/usage/formatter/quickstart.md
+description: Install Oxfmt and learn the common workflows.
 ---
 
 # Quickstart
 
-This page shows the recommended setup for Oxlint and the most common workflows, with copy-paste commands.
+Recommended setup and common workflows.
 
 ## Install
 
-Install Oxlint as a dev dependency:
+Install `oxfmt` as a dev dependency:
 
-```sh
-pnpm add -D oxlint
+::: code-group
+
+```sh [npm]
+$ npm add -D oxfmt
 ```
 
-Add lint commands to `package.json`:
+```sh [pnpm]
+$ pnpm add -D oxfmt
+```
 
-```json
+```sh [yarn]
+$ yarn add -D oxfmt
+```
+
+```sh [bun]
+$ bun add -D oxfmt
+```
+
+:::
+
+Add scripts to `package.json`:
+
+```json [package.json]
 {
   "scripts": {
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   }
 }
 ```
 
-Run it:
+Format files:
 
 ```sh
-pnpm run lint
+pnpm run fmt
 ```
 
-Apply fixes:
+Check formatting without writing files:
 
 ```sh
-pnpm run lint:fix
+pnpm run fmt:check
 ```
 
 ## Usage
 
-For the complete list of options, see the [CLI reference](/docs/guide/usage/linter/cli.html).
-
 ```sh
-oxlint [OPTIONS] [PATH]...
+oxfmt [OPTIONS] [PATH]...
 ```
 
-If `PATH` is omitted, Oxlint lints the current working directory.
+Running `oxfmt` without arguments formats the current directory (equivalent to `prettier --write .`).
+
+CLI options like `--no-semi` are not supported. Use the configuration file instead to ensure consistent settings across CLI and editor integrations.
+
+Globs in positional paths are not expanded (rely on your shell). However, `!`-prefixed exclude paths support glob expansion.
+
+For the complete list of options, see the [CLI reference](/docs/guide/usage/formatter/cli.html).
 
 ## Common workflows
 
-### Pre-commit with [lint-staged](https://github.com/lint-staged/lint-staged)
+### Pre-commit with lint-staged
 
-```json
+```json [package.json]
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,mjs,cjs}": "pnpm run lint"
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   }
 }
 ```
 
+`--no-error-on-unmatched-pattern` prevents errors when no files match the pattern.
+
 ### Create a config file
 
-Initialize the `.oxlintrc.json` config with default values:
+Initialize `.oxfmtrc.json` with defaults:
 
 ```sh
-oxlint --init
+oxfmt --init
 ```
 
-Then run Oxlint:
+### Migrate from Prettier
 
 ```sh
-oxlint
+oxfmt --migrate prettier
 ```
 
-::: tip
-If you are migrating from ESLint, use [`@oxlint/migrate`](https://github.com/oxc-project/oxlint-migrate) to generate an Oxlint config from your existing ESLint flat file config.
-:::
+See [migrate from prettier](./migrate-from-prettier) for details.
 
-### Fix problems
-
-Apply safe fixes:
+### List files that differ
 
 ```sh
-oxlint --fix
+oxfmt --list-different
 ```
 
-Apply suggestions (may change program behavior):
+This is useful for configuring [files to ignore](./ignore-files).
+
+### Piping file contents
 
 ```sh
-oxlint --fix-suggestions
+echo 'const   x   =   1' | oxfmt --stdin-filepath test.ts
 ```
 
-Apply dangerous fixes and suggestions:
+Prints `const x = 1;`
 
-```sh
-oxlint --fix-dangerously
+### Node.js API
+
+```ts
+import { format, type FormatOptions } from "oxfmt";
+
+const input = `let a=42;`;
+const options: FormatOptions = {
+  semi: false,
+};
+
+const { code } = await format("a.js", input, options);
+console.log(code); // "let a = 42"
 ```
-
-See [Automatic fixes](/docs/guide/usage/linter/automatic-fixes) for guidance on when to use each mode.
-
-### Ignore files
-
-Use an explicit ignore file:
-
-```sh
-oxlint --ignore-path .oxlintignore
-```
-
-Add ignore patterns from the command line:
-
-```sh
-oxlint --ignore-pattern "dist/**" --ignore-pattern "*.min.js"
-```
-
-Disable ignore handling:
-
-```sh
-oxlint --no-ignore
-```
-
-See [Ignore files](/docs/guide/usage/linter/ignore-files).
-
-### Fail CI reliably
-
-Only report errors:
-
-```sh
-oxlint --quiet
-```
-
-Fail if any warnings are found:
-
-```sh
-oxlint --deny-warnings
-```
-
-Fail if warnings exceed a threshold:
-
-```sh
-oxlint --max-warnings 0
-```
-
-See [CI setup](/docs/guide/usage/linter/ci).
-
-### Use machine-readable output
-
-Select an output format:
-
-```sh
-oxlint -f json
-```
-
-Available formats include: `default`, `json`, `unix`, `checkstyle`, `github`, `gitlab`, `junit`, `stylish`.
-
-### Inspect the effective configuration
-
-Print the configuration that would be used for a file:
-
-```sh
-oxlint --print-config path/to/file.ts
-```
-
-### List available rules
-
-List registered rules, including those enabled by your current oxlint config:
-
-```sh
-oxlint --rules
-```
-
-The full list is in the [Rules reference](/docs/guide/usage/linter/rules).
 
 ## Next steps
 
-* Configure rules, plugins, and ignores: [Configuration](/docs/guide/usage/linter/config)
-* [Setup editors](/docs/guide/usage/linter/editors)
-* [Setup CI](/docs/guide/usage/linter/ci)
-* Learn advanced features: [Multi-file analysis](/docs/guide/usage/linter/multi-file-analysis), [Type-aware linting](/docs/guide/usage/linter/type-aware), [JS plugins](/docs/guide/usage/linter/js-plugins)
-
-- [CLI reference](/docs/guide/usage/linter/cli)
+* [Change configuration](./config)
+* [Setup editors](./editors)
+* [Setup CI](./ci)
+* Learn advanced features: [sorting](./sorting), [embedded formatting](./embedded-formatting)
+* Check [CLI reference](./cli)

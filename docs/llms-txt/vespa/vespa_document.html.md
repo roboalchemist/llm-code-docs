@@ -12,11 +12,11 @@ Issue a single document operation to Vespa
 
 Issue a single document operation to Vespa.
 
-The operation must be on the format documented in[https://docs.vespa.ai/en/reference/document-json-format.html#document-operations](https://docs.vespa.ai/en/reference/document-json-format.html#document-operations)
+The operation must be on the format documented in[https://docs.vespa.ai/en/reference/schemas/document-json-format.html#document-operations](https://docs.vespa.ai/en/reference/schemas/document-json-format.html#document-operations)
 
 When this returns successfully, the document is guaranteed to be visible in any subsequent get or query operation.
 
-To feed with high throughput, [https://docs.vespa.ai/en/reference/vespa-cli/vespa\_feed.html](https://docs.vespa.ai/en/reference/vespa-cli/vespa_feed.html)should be used instead of this.
+To feed with high throughput, [https://docs.vespa.ai/en/reference/clients/vespa-cli/vespa\_feed.html](https://docs.vespa.ai/en/reference/clients/vespa-cli/vespa_feed.html)should be used instead of this.
 
 ```
 vespa document json-file [flags]
@@ -59,7 +59,7 @@ $ vespa document src/test/resources/A-Head-Full-of-Dreams.json
 - [vespa document remove](vespa_document_remove.html) - Removes a document from Vespa
 - [vespa document update](vespa_document_update.html) - Modifies some fields of an existing document
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

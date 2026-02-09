@@ -1,18 +1,21 @@
 # Source: https://www.activepieces.com/docs/build-pieces/piece-reference/authentication.md
 
-# Source: https://www.activepieces.com/docs/developers/piece-reference/authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Piece Auth
 
 > Learn about piece authentication
 
-Piece authentication is used to gather user credentials and securely store them for future use in different flows. The authentication must be defined as the `auth` parameter in the `createPiece`, `createTrigger`, and `createAction` functions.
+Piece authentication is used to gather user credentials and securely store them for future use in different flows.
+The authentication must be defined as the `auth` parameter in the `createPiece`, `createTrigger`, and `createAction` functions.
 
 This requirement ensures that the type of authentication can be inferred correctly in triggers and actions.
 
-<Tip>
-  Friendly Tip: Only at most one authentication is allowed per piece.
-</Tip>
+<Warning>
+  The auth parameter for `createPiece`, `createTrigger`, and `createAction` functions can take an array, but you cannot have more than one auth property of the same type, i.e two OAUTH2 properties.
+</Warning>
 
 ### Secret Text
 

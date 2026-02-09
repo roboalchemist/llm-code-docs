@@ -2,21 +2,9 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/windmill.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/windmill.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/windmill.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/windmill.md
-
-# Source: https://infisical.com/docs/integrations/cloud/windmill.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/windmill.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/windmill.md
-
-# Source: https://infisical.com/docs/integrations/cloud/windmill.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/windmill.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Windmill Connection
 
@@ -69,7 +57,7 @@ Ensure the user generating the access token has the required role and permission
   <Tab title="Infisical UI">
     <Steps>
       <Step title="Navigate to App Connections">
-        In your Infisical dashboard, navigate to the **App Connections** page in the desired project.
+        In your Infisical dashboard, navigate to the **Integrations** tab in the desired project, then select **App Connections**.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
       </Step>

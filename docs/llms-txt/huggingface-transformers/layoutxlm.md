@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/layoutxlm.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/layoutxlm.md
 
 # LayoutXLM
 
@@ -32,7 +32,7 @@ model = LayoutLMv2Model.from_pretrained("microsoft/layoutxlm-base")
 ```
 
 Note that LayoutXLM has its own tokenizer, based on
-[LayoutXLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer)/[LayoutXLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer). You can initialize it as
+[LayoutXLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer)/[LayoutXLMTokenizerFast](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer). You can initialize it as
 follows:
 
 ```python
@@ -41,9 +41,9 @@ from transformers import LayoutXLMTokenizer
 tokenizer = LayoutXLMTokenizer.from_pretrained("microsoft/layoutxlm-base")
 ```
 
-Similar to LayoutLMv2, you can use [LayoutXLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMProcessor) (which internally applies
-[LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor) and
-[LayoutXLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer)/[LayoutXLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer) in sequence) to prepare all
+Similar to LayoutLMv2, you can use [LayoutXLMProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMProcessor) (which internally applies
+[LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor) and
+[LayoutXLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer)/[LayoutXLMTokenizerFast](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer) in sequence) to prepare all
 data for the model.
 
 As LayoutXLM's architecture is equivalent to that of LayoutLMv2, one can refer to [LayoutLMv2's documentation page](layoutlmv2) for all tips, code examples and notebooks.
@@ -52,15 +52,15 @@ As LayoutXLM's architecture is equivalent to that of LayoutLMv2, one can refer t
 
 #### transformers.LayoutXLMConfig[[transformers.LayoutXLMConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/modular_layoutxlm.py#L19)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/modular_layoutxlm.py#L18)
 
 This is the configuration class to store the configuration of a `LayoutXLMModel`. It is used to instantiate an
 LayoutXLM model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the LayoutXLM
 [microsoft/layoutxlm-base](https://huggingface.co/microsoft/layoutxlm-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -137,16 +137,16 @@ detectron2_config_args (`dict`, *optional*) : Dictionary containing the configur
 
 #### transformers.LayoutXLMTokenizer[[transformers.LayoutXLMTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L143)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L140)
 
 Construct a "fast" LayoutXLM tokenizer (backed by HuggingFace's *tokenizers* library). Adapted from
-[RobertaTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer) and [XLNetTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/xlnet#transformers.XLNetTokenizer). Based on
+[RobertaTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer) and [XLNetTokenizer](/docs/transformers/v5.0.0/en/model_doc/xlnet#transformers.XLNetTokenizer). Based on
 [BPE](https://huggingface.co/docs/tokenizers/python/latest/components.html?highlight=BPE#models).
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-__call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L420[{"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]]"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "padding_side", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`) --
+__call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L413[{"name": "text", "val": ": str | list[str] | list[list[str]]"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string, a list of strings
   (words of a single example or questions of a batch of examples) or a list of list of strings (batch of
   words).
@@ -160,7 +160,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 
 - **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
   Whether or not to encode the sequences with the special tokens relative to their model.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -169,7 +169,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -198,7 +198,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 - **pad_to_multiple_of** (`int`, *optional*) --
   If set will pad the sequence to a multiple of the provided value. This is especially useful to enable
   the use of Tensor Cores on NVIDIA hardware with compute capability `>= 7.5` (Volta).
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -222,13 +222,13 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
 - **verbose** (`bool`, *optional*, defaults to `True`) --
   Whether or not to print more information and warnings.
-- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -292,9 +292,9 @@ additional_special_tokens (`list[str]`, *optional*, defaults to `["NOTUSED", "NO
 
 **Returns:**
 
-`[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)`
+`[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)`
 
-A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -322,7 +322,7 @@ A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transfo
 - **length** -- The length of the inputs (when `return_length=True`).
 #### build_inputs_with_special_tokens[[transformers.LayoutXLMTokenizer.build_inputs_with_special_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L903)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L892)
 
 Build model inputs from a sequence or a pair of sequence for sequence classification tasks by concatenating and
 adding special tokens. An XLM-RoBERTa sequence has the following format:
@@ -343,7 +343,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### get_special_tokens_mask[[transformers.LayoutXLMTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330)
 
 Retrieve sequence ids from a token list that has no special tokens added.
 
@@ -365,7 +365,7 @@ already_has_special_tokens : Whether the sequence is already formatted with spec
 1 for a special token, 0 for a sequence token.
 #### create_token_type_ids_from_sequences[[transformers.LayoutXLMTokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L929)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L918)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. XLM-RoBERTa does
 not make use of token type ids, therefore a list of zeros is returned.
@@ -383,22 +383,22 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### save_vocabulary[[transformers.LayoutXLMTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 
 ## LayoutXLMTokenizerFast[[transformers.LayoutXLMTokenizer]]
 
 #### transformers.LayoutXLMTokenizer[[transformers.LayoutXLMTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L143)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L140)
 
 Construct a "fast" LayoutXLM tokenizer (backed by HuggingFace's *tokenizers* library). Adapted from
-[RobertaTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer) and [XLNetTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/xlnet#transformers.XLNetTokenizer). Based on
+[RobertaTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer) and [XLNetTokenizer](/docs/transformers/v5.0.0/en/model_doc/xlnet#transformers.XLNetTokenizer). Based on
 [BPE](https://huggingface.co/docs/tokenizers/python/latest/components.html?highlight=BPE#models).
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-__call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L420[{"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]]"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "padding_side", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`) --
+__call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/tokenization_layoutxlm.py#L413[{"name": "text", "val": ": str | list[str] | list[list[str]]"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string, a list of strings
   (words of a single example or questions of a batch of examples) or a list of list of strings (batch of
   words).
@@ -412,7 +412,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 
 - **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
   Whether or not to encode the sequences with the special tokens relative to their model.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -421,7 +421,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -450,7 +450,7 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 - **pad_to_multiple_of** (`int`, *optional*) --
   If set will pad the sequence to a multiple of the provided value. This is especially useful to enable
   the use of Tensor Cores on NVIDIA hardware with compute capability `>= 7.5` (Volta).
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -474,13 +474,13 @@ __call__transformers.LayoutXLMTokenizer.__call__https://github.com/huggingface/t
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
 - **verbose** (`bool`, *optional*, defaults to `True`) --
   Whether or not to print more information and warnings.
-- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -544,9 +544,9 @@ additional_special_tokens (`list[str]`, *optional*, defaults to `["NOTUSED", "NO
 
 **Returns:**
 
-`[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)`
+`[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)`
 
-A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -577,33 +577,131 @@ A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transfo
 
 #### transformers.LayoutXLMProcessor[[transformers.LayoutXLMProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/processing_layoutxlm.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/processing_layoutxlm.py#L24)
 
-Constructs a LayoutXLM processor which combines a LayoutXLM image processor and a LayoutXLM tokenizer into a single
-processor.
+Constructs a LayoutXLMProcessor which wraps a image processor and a tokenizer into a single processor.
 
-[LayoutXLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMProcessor) offers all the functionalities you need to prepare data for the model.
+[LayoutXLMProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMProcessor) offers all the functionalities of [LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor) and [LayoutXLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer). See the
+[~LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor) and [~LayoutXLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer) for more information.
 
-It first uses [LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor) to resize document images to a fixed size, and optionally applies OCR to
-get words and normalized bounding boxes. These are then provided to [LayoutXLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer) or
-[LayoutXLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer), which turns the words and bounding boxes into token-level `input_ids`,
-`attention_mask`, `token_type_ids`, `bbox`. Optionally, one can provide integer `word_labels`, which are turned
-into token-level `labels` for token classification tasks (such as FUNSD, CORD).
+__call__transformers.LayoutXLMProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutxlm/processing_layoutxlm.py#L28[{"name": "images", "val": ""}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (``) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **text_pair** (`str, list[str] or list[int]`, *optional*) --
+  Optional second sequence to be encoded. This can be a string, a list of strings (tokenized string using
+  the `tokenize` method) or a list of integers (tokenized string ids using the `convert_tokens_to_ids`
+  method).
+- **boxes** (`list[list[int]] or list[list[list[int]]]`, *optional*) --
+  Word-level bounding boxes. Each bounding box should be normalized to be on a 0-1000 scale.
+- **word_labels** (`list[int] or list[list[int]]`, *optional*) --
+  Word-level integer labels (for token classification tasks such as FUNSD, CORD).
+- **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to add special tokens when encoding the sequences. This will use the underlying
+  `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
+  automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
+  automatically.
+- **padding** (bool, str or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+  Activates and controls padding. Accepts the following values:
 
-__call__transformers.LayoutXLMProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutxlm/processing_layoutxlm.py#L49[{"name": "images", "val": ""}, {"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]] = None"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]
+  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
+    sequence is provided).
+  - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum
+    acceptable input length for the model if that argument is not provided.
+  - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
+    lengths).
+- **truncation** (bool, str or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*) --
+  Activates and controls truncation. Accepts the following values:
 
-This method first forwards the `images` argument to `~LayoutLMv2ImagePrpcessor.__call__`. In case
-`LayoutLMv2ImagePrpcessor` was initialized with `apply_ocr` set to `True`, it passes the obtained words and
-bounding boxes along with the additional arguments to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer.__call__) and returns the output,
-together with resized `images`. In case `LayoutLMv2ImagePrpcessor` was initialized with `apply_ocr` set to
-`False`, it passes the words (`text`/``text_pair`) and `boxes` specified by the user along with the additional
-arguments to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer.__call__) and returns the output, together with resized `images``.
+  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
+    to the maximum acceptable input length for the model if that argument is not provided. This will
+    truncate token by token, removing a token from the longest sequence in the pair if a pair of
+    sequences (or a batch of pairs) is provided.
+  - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths
+    greater than the model maximum admissible input size).
+- **max_length** (`int`, *optional*) --
+  Controls the maximum length to use by one of the truncation/padding parameters.
 
-Please refer to the docstring of the above two methods for more information.
+  If left unset or set to `None`, this will use the predefined model maximum length if a maximum length
+  is required by one of the truncation/padding parameters. If the model has no specific maximum input
+  length (like XLNet) truncation/padding to a maximum length will be deactivated.
+- **stride** (`int`, *optional*, defaults to `0`) --
+  If set to a number along with `max_length`, the overflowing tokens returned when
+  `return_overflowing_tokens=True` will contain some tokens from the end of the truncated sequence
+  returned to provide some overlap between truncated and overflowing sequences. The value of this
+  argument defines the number of overlapping tokens.
+- **pad_to_multiple_of** (`int`, *optional*) --
+  If set will pad the sequence to a multiple of the provided value. Requires `padding` to be activated.
+  This is especially useful to enable using Tensor Cores on NVIDIA hardware with compute capability
+  `>= 7.5` (Volta).
+- **return_token_type_ids** (`bool`, *optional*) --
+  Whether to return token type IDs. If left to the default, will return the token type IDs according to
+  the specific tokenizer's default, defined by the `return_outputs` attribute.
+
+  [What are token type IDs?](../glossary#token-type-ids)
+- **return_attention_mask** (`bool`, *optional*) --
+  Whether to return the attention mask. If left to the default, will return the attention mask according
+  to the specific tokenizer's default, defined by the `return_outputs` attribute.
+
+  [What are attention masks?](../glossary#attention-mask)
+- **return_overflowing_tokens** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return overflowing token sequences. If a pair of sequences of input ids (or a batch
+  of pairs) is provided with `truncation_strategy = longest_first` or `True`, an error is raised instead
+  of returning overflowing tokens.
+- **return_special_tokens_mask** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return special tokens mask information.
+- **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return `(char_start, char_end)` for each token.
+
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  Python's tokenizer, this method will raise `NotImplementedError`.
+- **return_length** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return the lengths of the encoded inputs.
+- **verbose** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to print more information and warnings.
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 **Parameters:**
 
-image_processor (`LayoutLMv2ImageProcessor`, *optional*) : An instance of [LayoutLMv2ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ImageProcessor). The image processor is a required input.
+image_processor (`LayoutLMv2ImageProcessor`) : The image processor is a required input.
 
-tokenizer (`LayoutXLMTokenizer` or `LayoutXLMTokenizerFast`, *optional*) : An instance of [LayoutXLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer) or [LayoutXLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutxlm#transformers.LayoutXLMTokenizer). The tokenizer is a required input.
+tokenizer (`LayoutXLMTokenizer`) : The tokenizer is a required input.
+
+**Returns:**
+
+````
+
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 

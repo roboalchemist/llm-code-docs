@@ -95,17 +95,17 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-tracing</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-logging</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-metrics</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -157,17 +157,17 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-tracing</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-logging</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-metrics</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -230,9 +230,9 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-logging:1.20.1'
-        aspect 'software.amazon.lambda:powertools-tracing:1.20.1'
-        aspect 'software.amazon.lambda:powertools-metrics:1.20.1'
+        aspect 'software.amazon.lambda:powertools-logging:1.20.2'
+        aspect 'software.amazon.lambda:powertools-tracing:1.20.2'
+        aspect 'software.amazon.lambda:powertools-metrics:1.20.2'
     }
 
     sourceCompatibility = 11
@@ -258,9 +258,9 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-logging:1.20.1'
-        aspect 'software.amazon.lambda:powertools-tracing:1.20.1'
-        aspect 'software.amazon.lambda:powertools-metrics:1.20.1'
+        aspect 'software.amazon.lambda:powertools-logging:1.20.2'
+        aspect 'software.amazon.lambda:powertools-tracing:1.20.2'
+        aspect 'software.amazon.lambda:powertools-metrics:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -864,7 +864,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-logging</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -908,7 +908,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-logging</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -957,7 +957,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-logging:1.20.1'
+        aspect 'software.amazon.lambda:powertools-logging:1.20.2'
     }
 
     sourceCompatibility = 11
@@ -976,7 +976,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-logging:1.20.1'
+        aspect 'software.amazon.lambda:powertools-logging:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -1522,7 +1522,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-metrics</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -1566,7 +1566,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-metrics</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -1615,7 +1615,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-metrics:1.20.1'
+        aspect 'software.amazon.lambda:powertools-metrics:1.20.2'
     }
 
     sourceCompatibility = 11
@@ -1634,7 +1634,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-metrics:1.20.1'
+        aspect 'software.amazon.lambda:powertools-metrics:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -1880,7 +1880,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-tracing</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -1924,7 +1924,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-tracing</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -1973,7 +1973,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-tracing:1.20.1'
+        aspect 'software.amazon.lambda:powertools-tracing:1.20.2'
     }
 
     sourceCompatibility = 11
@@ -1992,7 +1992,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-tracing:1.20.1'
+        aspect 'software.amazon.lambda:powertools-tracing:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -2363,7 +2363,7 @@ We simply add `powertools-batch` to our build dependencies. Note - if you are us
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-batch</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -2376,7 +2376,7 @@ We simply add `powertools-batch` to our build dependencies. Note - if you are us
     }
 
     dependencies {
-        implementation 'software.amazon.lambda:powertools-batch:1.20.1'
+        implementation 'software.amazon.lambda:powertools-batch:1.20.2'
     }
 
 ```
@@ -2832,7 +2832,7 @@ To install this utility, add the following dependency to your project.
 <dependency>
     <groupId>software.amazon.lambda</groupId>
     <artifactId>powertools-cloudformation</artifactId>
-    <version>1.20.1</version>
+    <version>1.20.2</version>
 </dependency>
 
 ```
@@ -2840,7 +2840,7 @@ To install this utility, add the following dependency to your project.
 ```
  dependencies {
     ...
-    implementation 'software.amazon.lambda:powertools-cloudformation:1.20.1'
+    implementation 'software.amazon.lambda:powertools-cloudformation:1.20.2'
 }
 
 ```
@@ -3132,7 +3132,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-idempotency</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -3176,7 +3176,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-idempotency</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -3225,7 +3225,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-idempotency:1.20.1'
+        aspect 'software.amazon.lambda:powertools-idempotency:1.20.2'
     }
 
     sourceCompatibility = 11 // or higher
@@ -3244,7 +3244,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-idempotency:1.20.1'
+        aspect 'software.amazon.lambda:powertools-idempotency:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -4373,7 +4373,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-large-messages</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -4417,7 +4417,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-large-messages</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -4466,7 +4466,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-large-messages:1.20.1'
+        aspect 'software.amazon.lambda:powertools-large-messages:1.20.2'
     }
 
     sourceCompatibility = 11 // or higher
@@ -4485,7 +4485,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-large-messages:1.20.1'
+        aspect 'software.amazon.lambda:powertools-large-messages:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -4689,7 +4689,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-parameters</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -4733,7 +4733,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-parameters</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -4782,7 +4782,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-parameters:1.20.1'
+        aspect 'software.amazon.lambda:powertools-parameters:1.20.2'
     }
 
     sourceCompatibility = 11 // or higher
@@ -4801,7 +4801,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-parameters:1.20.1'
+        aspect 'software.amazon.lambda:powertools-parameters:1.20.2'
     }
 
     sourceCompatibility = 1.8
@@ -5252,7 +5252,7 @@ repositories {
 
 dependencies {
     ...
-    aspect 'software.amazon.lambda:powertools-parameters:1.20.1'
+    aspect 'software.amazon.lambda:powertools-parameters:1.20.2'
     implementation 'org.aspectj:aspectjrt:1.9.19'
 }
 
@@ -5275,7 +5275,7 @@ This module contains a set of utilities you may use in your Lambda functions, to
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-serialization</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -5283,7 +5283,7 @@ This module contains a set of utilities you may use in your Lambda functions, to
 ```
 
 ```
-implementation 'software.amazon.lambda:powertools-serialization:1.20.1'
+implementation 'software.amazon.lambda:powertools-serialization:1.20.2'
 
 ```
 
@@ -5713,7 +5713,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-validation</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -5757,7 +5757,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     <dependency>
         <groupId>software.amazon.lambda</groupId>
         <artifactId>powertools-validation</artifactId>
-        <version>1.20.1</version>
+        <version>1.20.2</version>
     </dependency>
     ...
 </dependencies>
@@ -5806,7 +5806,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-validation:1.20.1'
+        aspect 'software.amazon.lambda:powertools-validation:1.20.2'
     }
 
     sourceCompatibility = 11 // or higher
@@ -5825,7 +5825,7 @@ Depending on your version of Java (either Java 1.8 or 11+), the configuration sl
     }
 
     dependencies {
-        aspect 'software.amazon.lambda:powertools-validation:1.20.1'
+        aspect 'software.amazon.lambda:powertools-validation:1.20.2'
     }
 
     sourceCompatibility = 1.8

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/legacy-scripting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scripting in converted legacy Web Builder integrations
 
 > This guide provides instructions on editing and maintaining existing scripting methods for legacy web builder integrations that have been converted to either the Platform UI or Platform CLI.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/performance-degradation.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/performance-degradation.md
-
-# Source: https://docs.aporia.com/v1/monitors/performance-degradation.md
-
 # Performance Degradation
 
 ### Why Monitor Performance Degradation?

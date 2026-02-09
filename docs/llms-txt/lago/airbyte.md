@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/data/airbyte.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Airbyte (ETL)
 
 Airbyte is an open-source **data integration platform** used as an ETL. With this integration, you can connect Lago billing data to any warehouses.

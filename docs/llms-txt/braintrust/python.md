@@ -1,10 +1,22 @@
-# Source: https://braintrust.dev/docs/reference/sdks/python.md
+# Source: https://braintrust.dev/docs/reference/sdks/python/0.5.3/python.md
+
+# Source: https://braintrust.dev/docs/reference/sdks/python/0.4.3/python.md
+
+# Source: https://braintrust.dev/docs/reference/sdks/python/0.3.15/python.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Python SDK
 
-> Python API reference for Braintrust SDK
+> Python API reference for Braintrust SDK v0.3.15
 
 For complete Python documentation, examples, and API reference, please see the [Braintrust SDK on GitHub](https://github.com/braintrustdata/braintrust-sdk).
+
+## Requirements
+
+* Python 3.10 or higher
 
 ## Installation
 
@@ -426,6 +438,10 @@ Invoke a Braintrust function, returning a `BraintrustStream` or the value as a p
   The name of the project containing the function to invoke.
 </ParamField>
 
+<ParamField path="project_id" type="Optional[str]">
+  The ID of the project to use for execution context (API keys, project defaults, etc.).
+</ParamField>
+
 <ParamField path="slug" type="Optional[str]">
   The slug of the function to invoke.
 </ParamField>
@@ -441,6 +457,16 @@ Invoke a Braintrust function, returning a `BraintrustStream` or the value as a p
 <ParamField path="messages" type="Optional[List[Any]]">
   Additional OpenAI-style messages to add to the prompt (only works for llm functions).
 </ParamField>
+
+<ParamField path="context" type="Optional[InvokeContext]">
+  Context for functions that operate on spans/traces (e.g., facets). Should contain
+</ParamField>
+
+<ParamField path="context.object_type" type="Literal['project_logs', 'experiment', 'dataset', 'playground_logs']" required />
+
+<ParamField path="context.object_id" type="str" required />
+
+<ParamField path="context.scope" type="InvokeScope" required />
 
 <ParamField path="metadata" type="Optional[Dict[str, Any]]">
   Additional metadata to add to the span. This will be logged as the `metadata` field in the span.
@@ -1290,6 +1316,18 @@ Primary implementation of the `Span` interface. See the `Span` interface for ful
 
 `__init__()`, `id()`, `set_attributes()`, `log()`, `log_internal()`, `log_feedback()`, `start_span()`, `end()`, `export()`, `link()`, `permalink()`, `close()`, `flush()`, `set_current()`, `unset_current()`
 
+### SpanScope
+
+Scope for operating on a single span.
+
+<span class="text-sm">Properties</span>
+
+<ParamField path="type" type="Literal['span']" />
+
+<ParamField path="id" type="str" />
+
+<ParamField path="root_span_id" type="str" />
+
 ### SyncScorerLike
 
 Protocol for synchronous scorers that implement the callable interface. This is the most common interface and is used when no async version is available.
@@ -1320,6 +1358,16 @@ Builder to create a tool in Braintrust.
 
 `__init__()`, `create()`
 
+### TraceScope
+
+Scope for operating on an entire trace.
+
+<span class="text-sm">Properties</span>
+
+<ParamField path="type" type="Literal['trace']" />
+
+<ParamField path="root_span_id" type="str" />
+
 ### TracedMessageStream
 
 TracedMessageStream wraps both sync and async message streams. Obviously only one makes sense at a time
@@ -1327,8 +1375,3 @@ TracedMessageStream wraps both sync and async message streams. Obviously only on
 <span class="text-sm">Methods</span>
 
 `__init__()`
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secrets
 
 > The Secrets workspace tool lets you securely store sensitive information your app needs as encrypted environment variables.

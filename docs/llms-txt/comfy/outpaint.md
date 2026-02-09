@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/basic/outpaint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Outpainting Workflow Example
 
 > This guide will introduce you to the outpainting workflow in ComfyUI and walk you through an outpainting example

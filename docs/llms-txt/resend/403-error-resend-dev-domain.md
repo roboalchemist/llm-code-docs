@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 403 Error Using resend.dev Domain
 
 > Learn how to resolve a 403 error when using the resend.dev domain to send emails to recipients other than your own.
@@ -49,8 +53,3 @@ If you've verified your domain and updated your API request but you're still get
 2. Ensure the domain in your API request's `from` field uses your verified domain (not `resend.dev`).
 3. Make sure you're not trying to send to your own email address when using `resend.dev`.
 4. [Contact Resend support](https://resend.com/help) with details about your error.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://resend.com/docs/llms.txt

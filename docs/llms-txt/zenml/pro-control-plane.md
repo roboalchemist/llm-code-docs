@@ -4,6 +4,75 @@
 
 Stay up to date with the latest features, improvements, and fixes in ZenML Pro.
 
+## 0.13.0 (2026-01-30)
+
+See what's new and improved in version 0.13.0.
+
+![ZenML Pro 0.13.0](https://public-flavor-logos.s3.eu-central-1.amazonaws.com/projects/5.jpg)
+
+#### Stack Management Improvements
+
+Users can now **update existing stacks directly from the UI** without needing to delete and recreate them. A new dedicated stack update page allows you to modify stack configurations, add new components, or replace existing ones (orchestrators, artifact stores, container registries, etc.). Access the update functionality from the stack detail sheet or the stacks dropdown menu for more efficient stack management.
+
+#### Enhanced Artifact Version Experience
+
+The Artifact Version view has been completely revamped with a new unified detail page featuring a modern 3-panel layout. Navigate through artifact versions with a searchable, paginated list on the left panel, while viewing detailed version information in the center and right panels. Tag display and management have been improved across all artifact-related screens, and existing deep links continue to work seamlessly via automatic redirects.
+
+#### Dedicated Logs Viewer
+
+Pipeline runs now feature a **standalone logs page** with a dedicated URL, making debugging and monitoring much easier. The new logs viewer includes:
+
+* A sidebar for navigating between run-level logs and individual step logs
+* Virtualized rendering for better performance with large log outputs
+* Built-in search and filtering capabilities
+* Step duration display in the sidebar for quick performance insights
+
+#### Team and Role Management for Invitations
+
+Invitations are now more flexible and powerful:
+
+* **Assign roles to invitations**: Instead of a single static role, you can now assign multiple roles to invitations, just like with users and teams. When the invitation is accepted, those roles are automatically transferred to the new user account.
+* **Add invitations to teams**: Invitations can now be added to teams directly. Once accepted, the user automatically becomes a member of the assigned team, streamlining the onboarding process.
+
+#### Generic OAuth2/OIDC Integration
+
+ZenML Pro now supports **generic OAuth2/OIDC authentication** for on-premises deployments, allowing integration with any OAuth2/OIDC-compliant identity provider such as Google, GitHub, Azure AD, or Keycloak. This provides greater flexibility in authentication options beyond Auth0, which remains available as an optional integration when configured.
+
+> **Compatibility:** Requires ZenML Server and SDK v0.85.0 or later.
+
+***
+
+## 0.12.22 (2026-01-14)
+
+See what's new and improved in version 0.12.22.
+
+![ZenML Pro 0.12.22](https://public-flavor-logos.s3.eu-central-1.amazonaws.com/projects/4.jpg)
+
+#### Stack Management
+
+You can now update existing stacks directly from the UI without needing to delete and recreate them. A new dedicated stack update page allows you to modify stack configurations, add new components, or replace existing ones (orchestrators, artifact stores, container registries, etc.). Access the update functionality from the stack detail sheet or the stacks dropdown menu.
+
+#### Artifact Version View
+
+The artifact version experience has been completely revamped with a new unified detail view:
+
+* **Three-panel layout**: Navigate through a searchable, paginated list of versions in the left panel, view detailed version information in the center, and access related metadata on the right
+* **Improved tag management**: Better tag display and management across all artifact-related screens
+* **Seamless navigation**: Existing deep links continue to work through automatic redirects
+
+#### Logs Viewer
+
+Pipeline run logs are now easier to navigate and debug:
+
+* **Dedicated logs page**: Each pipeline run has a standalone logs page with a direct URL for easy sharing and bookmarking
+* **Sidebar navigation**: Quickly switch between run-level logs and individual step logs, with step duration information displayed for each step
+* **Enhanced performance**: Virtualized rendering handles large log outputs smoothly
+* **Search and filter**: Find specific log entries quickly with built-in search and filtering capabilities
+
+> **Compatibility:** Requires ZenML Server and SDK v0.85.0 or later.
+
+***
+
 ## 0.12.19 (2025-11-19)
 
 See what's new and improved in version 0.12.19.

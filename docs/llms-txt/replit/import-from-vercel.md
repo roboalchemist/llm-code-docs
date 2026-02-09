@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/import-from-vercel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import from Vercel
 
 > Learn how to import Vercel projects into Replit by linking your GitHub repository and letting Agent handle the setup.
@@ -65,8 +69,7 @@ The following items from your Vercel project are not automatically imported:
 During the import process, {setupDescription_0}.
 If your app doesn't run as expected, Replit offers the following workspace tools to help you resolve the issues:
 
-* **[Agent](/replitai/agent)**: Use AI to add new features and refine your imported project
-* **[Assistant](/replitai/assistant)**: Get help with code questions and debugging
+* **[Agent](/replitai/agent)**: Use AI to add new features, refine your imported project, and get help with code questions
 * **[Secrets](/replit-workspace/workspace-features/secrets)**: Add your API keys and environment variables
 * **[Workflows](/replit-workspace/workflows)**: Configure the Run button to your preferred command
 

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/private-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Private Deployments
 
 > Control access to your published app without any code configuration.

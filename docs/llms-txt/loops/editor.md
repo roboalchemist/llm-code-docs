@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/editor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adding content
 
 > Learn how to edit emails in the Loops email editor.
@@ -84,7 +88,7 @@ When adding dynamic content like contact properties to [personalize emails](/cre
 
 ### Images
 
-As well as adding from the toolbar or the `+` icon, you can drag or paste images into the editor.
+As well as adding from the toolbar or the `+` icon, you can drag or paste images into the editor. Images must be under 4 MB in size.
 
 Add a link to an image by selecting the element and then clicking the `+` button in the **Link** editor panel on the right.
 
@@ -160,6 +164,10 @@ By default marketing emails (campaigns and loops) have opens and link tracking e
 If you want to disable click tracking on individual links in your emails, click the icon in the editor panel.
 
 <img src="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=1d985f0522dff0337dbb2071dc8a29ac" alt="Disable tracking" data-og-width="2280" width="2280" data-og-height="1089" height="1089" data-path="images/disable-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=280&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=718a08280ba333a4b435e598fef5798f 280w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=560&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=6cbd4646172ffb44a802f060d10bc4be 560w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=840&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=3ccccb2aa047e185a80a948f1ecf259f 840w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=1100&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=8cdeed89188f73fd5ba4b425151de7eb 1100w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=1650&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=348a52b77e218ac287892633391601f9 1650w, https://mintcdn.com/loops/I7MiNuGd9K5dwTEQ/images/disable-tracking.png?w=2500&fit=max&auto=format&n=I7MiNuGd9K5dwTEQ&q=85&s=964d6f9ae2b3f921446b3129e482634f 2500w" />
+
+<Warning>
+  We do not support deeplinks prepended with `ms-word:` as they are blocked by Gmail and other inbox providers. We recommend linking to a non-deeplink landing page instead. This may also be the case with other deeplinks in certain situations—you'll know if that's the case as the link will seem unclickable.
+</Warning>
 
 ### Dividers
 

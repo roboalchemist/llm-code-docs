@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/collaboration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Collaboration
 
 > How to enable agents to work together, delegate tasks, and communicate effectively within CrewAI teams.

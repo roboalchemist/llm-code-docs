@@ -12,7 +12,7 @@ Source: https://docs.duendesoftware.com/llms-full.txt
 
 Install templates
 
-Install the Duende templates to get started quickly.
+Install the [Duende templates](/identityserver/overview/packaging/#templates) to get started quickly.
 
 Terminal
 
@@ -171,7 +171,12 @@ Hereâs a sample client assertion service using the Microsoft JWT library:
             var descriptor = new SecurityTokenDescriptor
             {
                 Issuer = options1.ClientId!.ToString(),
-                Audience = options1.TokenEndpoint!.ToString(),
+
+
+                // Set the audience to the url of identity server. Do not use the tokenurl to build the autority.
+                Audience = "https://--url-to-authority-here--",
+
+
                 Expires = DateTime.UtcNow.AddMinutes(1),
                 SigningCredentials = GetSigningCredential(),
 
@@ -241,7 +246,10 @@ Hereâs a sample client assertion service using the Microsoft JWT library:
             var descriptor = new SecurityTokenDescriptor
             {
                 Issuer = options1.ClientId,
-                Audience = options1.TokenEndpoint,
+
+
+                // Set the audience to the url of identity server. Do not use the tokenurl to build the autority.
+                Audience = "https://--url-to-authority-here--",
                 Expires = DateTime.UtcNow.AddMinutes(1),
                 SigningCredentials = GetSigningCredential(),
 
@@ -283,6 +291,12 @@ Hereâs a sample client assertion service using the Microsoft JWT library:
     }
   }
   ```
+
+Note
+
+You need to explicitly set the `Audience` to the authorization serverâs issuer URL (usually the URL of identity server).
+
+Donât set the audience to the `TokenUrl`. Setting the `Audience` value to the token endpoint leaves you vulnerable to these vulnerabilities: (CVE-2025-27370/CVE-2025-27371).
 -----
 # Customizing Client Credentials Token Management
 
@@ -625,7 +639,7 @@ The client registration object has two additional properties to customize the HT
 
 Program.cs
 
-```cs
+```csharp
 services.AddClientCredentialsTokenManagement(options =>
     {
         options.CacheLifetimeBuffer = 60;
@@ -685,7 +699,7 @@ Hereâs a sample configuring the key in an application using `AddOpenIdConne
 
 Program.cs
 
-```cs
+```csharp
 services.AddOpenIdConnectAccessTokenManagement(options =>
 {
     options.DPoPJsonWebKey = jwk;
@@ -696,7 +710,7 @@ Similarly, for an application using `AddClientCredentialsTokenManagement`, it wo
 
 Program.cs
 
-```cs
+```csharp
 services.AddClientCredentialsTokenManagement()
    .AddClient("client_name", options =>
    {
@@ -821,13 +835,15 @@ services.AddHttpClient<YourTypedHttpClient>()
     .AddDefaultAccessTokenResiliency()
     .AddHttpMessageHandler(provider =>
     {
-        var yourCustomTokenRetriever = new CustomTokenRetriever();
+        var yourCustomTokenRetriever = new CustomTokenRetriever(...);
 
 
         var logger = provider.GetRequiredService<ILogger<AccessTokenRequestHandler>>();
         var dPoPProofService = provider.GetRequiredService<IDPoPProofService>();
         var dPoPNonceStore = provider.GetRequiredService<IDPoPNonceStore>();
-        var accessTokenHandler = new AccessTokenRequestHandler(
+
+
+        return new AccessTokenRequestHandler(
             tokenRetriever: yourCustomTokenRetriever,
             dPoPNonceStore: dPoPNonceStore,
             dPoPProofService: dPoPProofService,
@@ -888,11 +904,14 @@ public class MultiTenantTokenRequestCustomizer(
 }
 ```
 
-Register the customizer as part of the call to the `Add*Handler` methods.
+An instance of the `ITokenRequestCustomizer` implementation can be registered as part of the call to the `Add*Handler` methods:
 
 Program.cs
 
 ```csharp
+var customizer = new MultiTenantTokenRequestCustomizer(tenantResolver, tenantConfigStore);
+
+
 // Client Credentials Token Handler
 services.AddHttpClient("client-credentials-token-http-client")
         .AddClientCredentialsTokenHandler(customizer,
@@ -909,10 +928,37 @@ services.AddHttpClient("client-access-token-http-client")
         .AddClientAccessTokenHandler(customizer);
 ```
 
+If you require access to services from the service provider, you can use the `Add*Handler` method overloads that accept a factory delegate:
+
+Program.cs
+
+```csharp
+builder.Services.AddScoped<MultiTenantTokenRequestCustomizer>();
+
+
+// Client Credentials Token Handler
+services.AddHttpClient("client-credentials-token-http-client")
+        .AddClientCredentialsTokenHandler(
+            serviceProvider => serviceProvider.GetRequiredService<MultiTenantTokenRequestCustomizer>(),
+            ClientCredentialsClientName.Parse("pure-client-credentials"));
+
+
+// User Access Token Handler
+services.AddHttpClient("user-access-token-http-client")
+        .AddUserAccessTokenHandler(
+            serviceProvider => serviceProvider.GetRequiredService<MultiTenantTokenRequestCustomizer>());
+
+
+// Client Access Token Handler
+services.AddHttpClient("client-access-token-http-client")
+        .AddClientAccessTokenHandler(
+            serviceProvider => serviceProvider.GetRequiredService<MultiTenantTokenRequestCustomizer>());
+```
+
 When to use ITokenRequestCustomizer vs ITokenRetriever
 
-* Use **ITokenRequestCustomizer** when you need to modify token request parameters (scopes, resources, audiences) based on request context
-* Use **ITokenRetriever** when you need to replace the entire token acquisition logic with a custom flow
+* Use `ITokenRequestCustomizer` when you need to modify token request parameters (scopes, resources, audiences) based on request context
+* Use `ITokenRetriever` when you need to replace the entire token acquisition logic with a custom flow
 
 ### Additional Use Cases
 
@@ -923,6 +969,35 @@ Beyond multi-tenancy, `ITokenRequestCustomizer` can be used for:
 * Dynamically setting scopes based on the target API endpoint
 * Adding audience or resource parameters based on request headers or route data
 * Implementing per-request token parameter logic without changing the core retrieval flow
+-----
+# Logging
+
+> Documentation for logging configuration and usage in Duende Access Token Management, including log levels and Serilog setup
+
+Duende Access Token Management uses the standard logging facilities provided by ASP.NET Core. You generally do not need to perform any extra configuration, as it will use the logging provider you have already configured for your application.
+
+For general information on how to configure logging, setting up Serilog, and understanding log levels in Duende products, see our [Logging Fundamentals](/general/logging/) guide.
+
+The Microsoft [documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging) has a good introduction and description of the built-in logging providers.
+
+## Log Levels
+
+[Section titled âLog Levelsâ](#log-levels)
+
+You can control the log output for Duende Access Token Management specifically by configuring the `Duende.AccessTokenManagement` namespace in your logging configuration. For example, to enable debug logging for Access Token Management while keeping other logs at a higher level, you can modify your `appsettings.json`:
+
+appsettings.json
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Duende.AccessTokenManagement": "Debug"
+    }
+  }
+}
+```
 -----
 # Customizing User Token Management
 
@@ -1076,16 +1151,17 @@ public class OidcEvents : OpenIdConnectEvents
 
     public override async Task TokenValidated(TokenValidatedContext context)
     {
-        var exp = DateTimeOffset.UtcNow.AddSeconds(Double.Parse(context.TokenEndpointResponse!.ExpiresIn));
+        var exp = DateTimeOffset.UtcNow.AddSeconds(double.Parse(context.TokenEndpointResponse!.ExpiresIn));
 
 
         await _store.StoreTokenAsync(context.Principal!, new UserToken
         {
-            AccessToken = context.TokenEndpointResponse.AccessToken,
-            AccessTokenType = context.TokenEndpointResponse.TokenType,
+            AccessToken = AccessToken.Parse(context.TokenEndpointResponse.AccessToken),
+            AccessTokenType = AccessTokenType.Parse(context.TokenEndpointResponse.TokenType),
+            RefreshToken = RefreshToken.Parse(context.TokenEndpointResponse.RefreshToken),
+            Scope = Scope.Parse(context.TokenEndpointResponse.Scope),
+            IdentityToken = IdentityToken.Parse(context.TokenEndpointResponse.IdToken),
             Expiration = exp,
-            RefreshToken = context.TokenEndpointResponse.RefreshToken,
-            Scope = context.TokenEndpointResponse.Scope
         });
 
 
@@ -1104,7 +1180,7 @@ If youâve registered your token store with `AddBlazorServerAccessTokenManag
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddUserAccessTokenHttpClient("demoApiClient", configureClient: client =>
 {
     client.BaseAddress = new Uri("https://demo.duendesoftware.com/api/");
@@ -1814,7 +1890,7 @@ The source code for the BFF framework can be found on GitHub. Builds are distrib
 
 [Section titled âGetting Startedâ](#getting-started)
 
-Currently, the most recent version is 4 (preview 2). If youâre upgrading from a previous version, please check our [upgrade guides](/bff/upgrading).
+If youâre upgrading from a previous version, please check our [upgrade guides](/bff/upgrading).
 
 If youâre starting a new BFF project, consider the following startup guides:
 
@@ -2117,9 +2193,9 @@ A single BFF setup consists of:
 2. A BFF host, that will take care of the OpenID Connect login flows.
 3. An API surface, exposed and protected by the BFF.
 
-With the BFF Multi-frontend support, you can logically host multiple of these BFF Setups in a single host. The concept of a single frontend (with OpenID Connect configuration, an API surface and a browser based app) is now codified inside the BFF. By using a flexible frontend selection mechanism (using Origins or Paths to distinguish), itâs possible to create very flexible setups.
+With the BFF Multi-frontend support, you can logically host multiple of these BFF Setups in a single host. The concept of a single frontend (with OpenID Connect configuration, an API surface and a browser based app) is now codified inside the BFF. By using a flexible frontend selection mechanism (using Hosts or Paths to distinguish), itâs possible to create very flexible setups.
 
-The BFF dynamically configures the aspnet core authentication pipeline according to recommended practices. For example, when doing Origin based routing, it will configure the cookies using the most secure settings and with the prefix [`__Host`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie).
+The BFF dynamically configures the aspnet core authentication pipeline according to recommended practices. For example, when doing Host based routing, it will configure the cookies using the most secure settings and with the prefix [`__Host`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie).
 
 Frontends can be added or removed dynamically from the system, without having to restart the system. You can do this via configuration (for example by modifying a configuration file) or programmatically.
 
@@ -2155,7 +2231,7 @@ To achieve this, the BFF automatically configures the ASP.NET Core pipeline:
 
 ![BFF Multi-Frontend Pipeline](/_astro/bff_multi_frontend_pipeline.CgQTXVlD_21LGAV.svg)
 
-1. `FrontendSelectionMiddleware` - This middleware performs the frontend selection by seeing which frontendâs selection criteria best matches the incoming request route. Itâs possible to mix both path based routing origin based routing, so the most specific will be selected.
+1. `FrontendSelectionMiddleware` - This middleware performs the frontend selection by seeing which frontendâs selection criteria best matches the incoming request route. Itâs possible to mix both path based routing and host based routing, so the most specific will be selected.
 2. `PathMappingMiddleware` - If you use path mapping, in the selected frontend, then it will automatically map the frontendâs path so none of the subsequent middlewares know (or need to care) about this fact.
 3. `OpenIdCallbackMiddleware` - To dynamically perform the OpenID Connect authentication without explicitly adding each frontend as a scheme, we inject a middleware that will handle the OpenID Connect callbacks. This only kicks in for dynamic frontends.
 4. Your own applications logic is executed in this part of the pipeline. For example, calling `.UseAuthentication(), .UseRequestLogging()`, etc.
@@ -2325,6 +2401,102 @@ Note
 
 BFF V4 has built-in support for proxying the index.html from a CDN.
 -----
+# Diagnostics
+
+> Overview of Duende Backend for Frontend (BFF) diagnostic capabilities including logging and OpenTelemetry integration to assist with monitoring and troubleshooting
+
+## Logging
+
+[Section titled âLoggingâ](#logging)
+
+Duende Backend for Frontend (BFF) offers several diagnostics possibilities. It uses the standard logging facilities provided by ASP.NET Core, so you donât need to do any extra configuration to benefit from rich logging functionality, including support for multiple logging providers. See the Microsoft [documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging) for a good introduction on logging.
+
+BFF follows the standard logging levels defined by the .NET logging framework, and uses the Microsoft guidelines for when certain log levels are used.
+
+For general information on how to configure logging in Duende products, see our [Logging Fundamentals](/general/logging/) guide.
+
+### Configuration
+
+[Section titled âConfigurationâ](#configuration)
+
+Logs are typically written under the `Duende.Bff` category, with more concrete categories for specific components.
+
+To get detailed logs from the BFF middleware with the `Microsoft.Extensions.Logging` framework, you can configure your `appsettings.json` to enable `Debug` level logs for the `Duende.Bff` namespace:
+
+appsettings.json
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Duende.Bff": "Debug"
+    }
+  }
+}
+```
+
+Multiple frontends
+
+When using [multiple frontends and the `FrontendSelectionMiddleware`](/bff/architecture/multi-frontend/), log messages are written in a log scope that contains a `frontend` property with the name of the frontend for which the log message was emitted.
+
+## OpenTelemetry v4.0
+
+[Section titled âOpenTelemetry âv4.0](#opentelemetry)
+
+OpenTelemetry provides a single standard for collecting and exporting telemetry data, such as metrics, logs, and traces.
+
+To start emitting OpenTelemetry data in Duende Backend for Frontend (BFF), you need to:
+
+* add the OpenTelemetry libraries to your BFF host and client applications
+* start collecting traces and metrics from the various BFF sources (and other sources such as ASP.NET Core, the `HttpClient`, etc.)
+
+The following configuration adds the OpenTelemetry configuration to your service setup, and exports data to an [OTLP exporter](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/observability-with-otel):
+
+Program.cs
+
+```csharp
+var openTelemetry = builder.Services.AddOpenTelemetry();
+
+
+openTelemetry.ConfigureResource(r => r
+    .AddService(builder.Environment.ApplicationName));
+
+
+openTelemetry.WithMetrics(metrics =>
+    {
+        metrics.AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddRuntimeInstrumentation()
+            .AddMeter(BffMetrics.MeterName);
+    });
+
+
+openTelemetry.WithTracing(tracing =>
+    {
+        tracing.AddSource(builder.Environment.ApplicationName)
+            .AddAspNetCoreInstrumentation()
+            // Uncomment the following line to enable gRPC instrumentation
+            // (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
+            //.AddGrpcClientInstrumentation()
+            .AddHttpClientInstrumentation();
+    });
+
+
+openTelemetry.UseOtlpExporter();
+```
+
+## Metrics
+
+[Section titled âMetricsâ](#metrics)
+
+OpenTelemetry metrics are run-time measurements are typically used to show graphs on a dashboard, to inspect overall application health, or to set up monitoring rules.
+
+The BFF host emits metrics from several sources, and collects these through the `Duende.Bff` meter:
+
+* `session.started` - a counter that communicates the number of sessions started
+* `session.ended` - a counter that communicates the number of sessions ended
+-----
 # BFF Extensibility
 
 > Overview of the extensibility points available in Duende.BFF for customizing session management, HTTP forwarding, and data storage
@@ -2364,7 +2536,7 @@ var client = new HttpMessageInvoker(new SocketsHttpHandler
 
 If you want to customize the HTTP client you can implement the `IForwarderHttpClientFactory` interface, e.g.:
 
-```cs
+```csharp
 public class MyInvokerFactory : IForwarderHttpClientFactory
 {
     public HttpMessageInvoker CreateClient(ForwarderHttpClientContext context)
@@ -2389,7 +2561,7 @@ public class MyInvokerFactory : IForwarderHttpClientFactory
 
 â¦and override our registration:
 
-```cs
+```csharp
 services.AddSingleton<IForwarderHttpClientFactory, MyInvokerFactory>();
 ```
 
@@ -2516,7 +2688,7 @@ You can add your own implementation by overriding the default after calling `Add
   }
   ```
 
-  You can customize the behavior of the endpoints either by implementing the appropriate interface. The [default implementations](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.0/bff/src/Bff/Endpoints/Internal) can serve as a starting point for your own implementation.
+  You can customize the behavior of the endpoints by implementing the appropriate interface. The [default implementations](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal) can serve as a starting point for your own implementation.
 
   If you want to extend the default behavior of a management endpoint, you can add a custom endpoint and call the original endpoint implementation:
 
@@ -2565,25 +2737,52 @@ You can add your own implementation by overriding the default after calling `Add
 -----
 # BFF Back-Channel Logout Endpoint Extensibility
 
-The back-channel logout endpoint has several extensibility points organized into two interfaces. The `IBackChannelLogoutEndpoint` is the top-level abstraction that processes requests to the endpoint. This service can be used to add custom request processing logic or to change how it validates incoming requests. When the back-channel logout endpoint receives a valid request, it revokes sessions using the `ISessionRevocationService`.
+The back-channel logout endpoint has several extensibility points organized into two interfaces. The `IBackchannelLogoutEndpoint` is the top-level abstraction that processes requests to the endpoint. This service can be used to add custom request processing logic or to change how it validates incoming requests. When the back-channel logout endpoint receives a valid request, it revokes sessions using the `ISessionRevocationService`.
+
+Caution
+
+In BFF V3, the `IBackchannelLogoutEndpoint` interface is called `IBackchannelLogoutService` instead.
 
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-You can add custom logic to the endpoint by implementing the `IBackChannelLogoutEndpoint` .
+* V4
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+  You can customize the behavior of the back-channel logout endpoint by implementing the `ProcessRequestAsync` method of the `IBackchannelLogoutEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultBackchannelLogoutEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public class CustomizedBackChannelLogoutService : IBackChannelLogoutEndpoint
-{
-    public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-    {
-        // Custom logic here
-    }
-}
-```
+  If you want to extend the default behavior of the back-channel logout endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.BackChannelLogoutPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<IBackchannelLogoutEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultBackchannelLogoutService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
+    // Custom logic here
+
+
+    return base.ProcessRequestAsync(context);
+  }
+  ```
 
 ## Session Revocation
 
@@ -2595,42 +2794,99 @@ The back-channel logout service will call the registered session revocation serv
 
 The BFF diagnostics endpoint can be customized by implementing the `IDiagnosticsEndpoint`.
 
+Caution
+
+In BFF V3, the `IDiagnosticsEndpoint` interface is called `IDiagnosticsService` instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the diagnostics endpoint by implementing the `ProcessRequestAsync` method of the `IDiagnosticsEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultDiagnosticsEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the diagnostics endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.DiagnosticsPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<IDiagnosticsEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultDiagnosticsService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
-}
-```
+
+
+    return base.ProcessRequestAsync(context);
+  }
+  ```
 -----
 # BFF Login Endpoint Extensibility
 
 The BFF login endpoint has extensibility points in two interfaces. The `ILoginEndpoint` is the top-level abstraction that processes requests to the endpoint. This service can be used to add custom request processing logic. The `IReturnUrlValidator` ensures that the `returnUrl` parameter passed to the login endpoint is safe to use.
 
+Caution
+
+In BFF V3, the `ILoginEndpoint` interface is called `ILoginService` instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the login endpoint by implementing the `ProcessRequestAsync` method of the `ILoginEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultLoginEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the login endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.LoginPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<ILoginEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultLoginService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
 
 
     return base.ProcessRequestAsync(context);
-}
-```
+  }
+  ```
 
 ## Return URL Validation
 
@@ -2642,23 +2898,50 @@ To prevent open redirector attacks, the `returnUrl` parameter to the login endpo
 
 The BFF logout endpoint has extensibility points in two interfaces. The `ILogoutEndpoint` is the top-level abstraction that processes requests to the endpoint. This service can be used to add custom request processing logic. The `IReturnUrlValidator` ensures that the `returnUrl` parameter passed to the logout endpoint is safe to use.
 
+Caution
+
+In BFF V3, the `ILogoutEndpoint` interface is called `ILogoutService` instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the logout endpoint by implementing the `ProcessRequestAsync` method of the `ILogoutEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultLogoutEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the logout endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.LogoutPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<ILogoutEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultSilentLoginCallbackService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
 
 
     return base.ProcessRequestAsync(context);
-}
-```
+  }
+  ```
 
 ## Return URL Validation
 
@@ -2670,72 +2953,164 @@ To prevent open redirector attacks, the `returnUrl` parameter to the logout endp
 
 The BFF silent login endpoint can be customized by implementing the `ISilentLoginEndpoint`.
 
+Caution
+
+In BFF V3, the `ISilentLoginEndpoint` interface is called `ISilentLoginService` instead.
+
+Danger
+
+The silent login endpoint has been marked as obsolete in BFF V4 and will be removed in a future version. To handle silent login in the future, pass the `prompt=none` parameter on to the login endpoint instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the silent login endpoint by implementing the `ProcessRequestAsync` method of the `ISilentLoginEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultSilentLoginEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the silent login endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.SilentLoginPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<ISilentLoginEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultSilentLoginService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
 
 
     return base.ProcessRequestAsync(context);
-}
-```
+  }
+  ```
 -----
 # BFF Silent Login Callback Extensibility
 
 The BFF silent login callback endpoint can be customized by implementing the `ISilentLoginCallbackEndpoint`.
 
+Caution
+
+In BFF V3, the `ISilentLoginCallbackEndpoint` interface is called `ISilentLoginCallbackService` instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the silent login callback endpoint by implementing the `ProcessRequestAsync` method of the `ISilentLoginCallbackEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultSilentLoginCallbackEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the silent login callback endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.SilentLoginCallbackPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<ISilentLoginCallbackEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultSilentLoginCallbackService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
 
 
     return base.ProcessRequestAsync(context);
-}
-```
+  }
+  ```
 -----
 # BFF User Endpoint Extensibility
 
 The BFF user endpoint can be customized by implementing the `IUserEndpoint`.
 
+Caution
+
+In BFF V3, the `IUserEndpoint` interface is called `IUserService` instead.
+
 ## Request Processing
 
 [Section titled âRequest Processingâ](#request-processing)
 
-`ProcessRequestAsync` is the top-level function called in the endpoint service and can be used to add arbitrary logic to the endpoint.
+* V4
 
-For example, you could take whatever actions you need before normal processing of the request like this:
+  You can customize the behavior of the user endpoint by implementing the `ProcessRequestAsync` method of the `IUserEndpoint` interface. The [default implementation](https://github.com/DuendeSoftware/products/tree/releases/bff/4.0.x/bff/src/Bff/Endpoints/Internal/DefaultUserEndpoint.cs) can serve as a starting point for your own implementation.
 
-```csharp
-public Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
-{
+  If you want to extend the default behavior of the user endpoint, you can instead add a custom endpoint and call the original endpoint implementation:
+
+  Program.cs
+
+  ```csharp
+  var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  app.MapGet(bffOptions.UserPath, async (HttpContext context, CancellationToken ct) =>
+  {
+    // Custom logic before calling the original endpoint implementation
+    var endpointProcessor = context.RequestServices.GetRequiredService<IUserEndpoint>();
+    await endpointProcessor.ProcessRequestAsync(context, ct);
+    // Custom logic after calling the original endpoint implementation
+  });
+  ```
+
+* V3
+
+  `ProcessRequestAsync` is the top-level function called in the endpoint service `DefaultUserService`, and can be used to add arbitrary logic to the endpoint.
+
+  For example, you could take whatever actions you need before normal processing of the request like this:
+
+  ```csharp
+  public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  {
     // Custom logic here
-}
-```
+
+
+    return base.ProcessRequestAsync(context);
+  }
+  ```
 
 ### Enriching User Claims
 
 [Section titled âEnriching User Claimsâ](#enriching-user-claims)
 
-There are several ways how you can enrich the claims for a specific user.
+There are several ways how you can enrich the claims for a specific user, depending on where the required data comes from.
 
-The most robust way would be to implement a custom `IClaimsTransformation`.
+#### Claims Transformations
+
+[Section titled âClaims Transformationsâ](#claims-transformations)
+
+To enrich claims for a user, you can implement a custom `IClaimsTransformation`. Claims transformation executes as part of the authentication process.
 
 ```csharp
 services.AddScoped<IClaimsTransformation, CustomClaimsTransformer>();
@@ -2760,6 +3135,69 @@ public class CustomClaimsTransformer : IClaimsTransformation
 ```
 
 See the [Claims Transformation](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/claims?view=aspnetcore-9.0) topic in the ASP.NET Core documentation for more information.
+
+#### User Endpoint Claims Enricher v4.0
+
+[Section titled âUser Endpoint Claims Enricher âv4.0](#user-endpoint-claims-enricher)
+
+User claims can be enriched by implementing the `IUserEndpointClaimsEnricher` interface. This interface is specific to the user endpoint and runs after authentication.
+
+Because this runs within the user endpoint request, you can access the current HTTP context to retrieve the userâs access token. We recommend using the [`GetUserAccessTokenAsync`](/accesstokenmanagement/web-apps/#http-context-extension-methods) extension method from `Duende.AccessTokenManagement.OpenIdConnect`, as it will automatically handle refreshing the token if it has expired.
+
+Program.cs
+
+```csharp
+builder.Services.AddTransient<IUserEndpointClaimsEnricher, CustomUserEndpointClaimsEnricher>();
+```
+
+CustomUserEndpointClaimsEnricher.cs
+
+```csharp
+using Duende.Bff;
+using Duende.Bff.Endpoints;
+using Duende.AccessTokenManagement.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication;
+
+
+public class CustomUserEndpointClaimsEnricher : IUserEndpointClaimsEnricher
+{
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+    public CustomUserEndpointClaimsEnricher(IHttpContextAccessor httpContextAccessor)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+
+    public async Task<IReadOnlyList<ClaimRecord>> EnrichClaimsAsync(
+        AuthenticateResult authenticateResult,
+        IReadOnlyList<ClaimRecord> claims,
+        CancellationToken ct = default)
+    {
+        var newClaims = claims.ToList();
+
+
+        // Get the access token using the extension method
+        // This will automatically handle token refreshing if needed
+        var token = await _httpContextAccessor.HttpContext.GetUserAccessTokenAsync(cancellationToken: ct);
+
+
+        if (!string.IsNullOrEmpty(token.AccessToken))
+        {
+             // Call external API using the access token
+             // ...
+        }
+
+
+        // Add custom claims
+        newClaims.Add(new ClaimRecord("custom_data", "some value"));
+
+
+        return newClaims;
+    }
+}
+```
 -----
 # Session Management
 
@@ -2771,69 +3209,143 @@ Server-side sessions enable secure and efficient storage of session data, allowi
 
 [Section titled âUser Session Storeâ](#user-session-store)
 
-If using the server-side sessions feature, you will need to have a store for the session data. An Entity Framework Core based implementation of this store is provided. If you wish to use some other type of store, then you can implement the *IUserSessionStore* interface:
+If using the server-side sessions feature, you will need to have a store for the session data. An Entity Framework Core based implementation of this store is provided.
 
-```csharp
-/// <summary>
-/// User session store
-/// </summary>
-public interface IUserSessionStore
-{
-    /// <summary>
-    /// Retrieves a user session
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task<UserSession?> GetUserSessionAsync(string key, CancellationToken cancellationToken = default);
+If you wish to use some other type of store, can implement the `IUserSessionStore` interface:
 
+* Duende BFF v4
 
-    /// <summary>
-    /// Creates a user session
-    /// </summary>
-    /// <param name="session"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task CreateUserSessionAsync(UserSession session, CancellationToken cancellationToken = default);
+  ```csharp
+  /// <summary>
+  /// User session store
+  /// </summary>
+  public interface IUserSessionStore
+  {
+      /// <summary>
+      /// Retrieves a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task<UserSession?> GetUserSessionAsync(UserSessionKey key, CT ct = default);
 
 
-    /// <summary>
-    /// Updates a user session
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="session"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task UpdateUserSessionAsync(string key, UserSessionUpdate session, CancellationToken cancellationToken = default);
+      /// <summary>
+      /// Creates a user session
+      /// </summary>
+      /// <param name="session"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task CreateUserSessionAsync(UserSession session, CT ct = default);
 
 
-    /// <summary>
-    /// Deletes a user session
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task DeleteUserSessionAsync(string key, CancellationToken cancellationToken = default);
+      /// <summary>
+      /// Updates a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="session"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task UpdateUserSessionAsync(UserSessionKey key, UserSessionUpdate session, CT ct = default);
 
 
-    /// <summary>
-    /// Queries user sessions based on the filter.
-    /// </summary>
-    /// <param name="filter"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task<IReadOnlyCollection<UserSession>> GetUserSessionsAsync(UserSessionsFilter filter, CancellationToken cancellationToken = default);
+      /// <summary>
+      /// Deletes a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task DeleteUserSessionAsync(UserSessionKey key, CT ct = default);
 
 
-    /// <summary>
-    /// Deletes user sessions based on the filter.
-    /// </summary>
-    /// <param name="filter"></param>
-    /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
-    /// <returns></returns>
-    Task DeleteUserSessionsAsync(UserSessionsFilter filter, CancellationToken cancellationToken = default);
-}
-```
+      /// <summary>
+      /// Queries user sessions based on the filter.
+      /// </summary>
+      /// <param name="partitionKey">The partition key to use</param>
+      /// <param name="filter"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task<IReadOnlyCollection<UserSession>> GetUserSessionsAsync(PartitionKey partitionKey, UserSessionsFilter filter, CT ct = default);
+
+
+      /// <summary>
+      /// Deletes user sessions based on the filter.
+      /// </summary>
+      /// <param name="partitionKey">The partition key</param>
+      /// <param name="filter"></param>
+      /// <param name="ct">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task DeleteUserSessionsAsync(PartitionKey partitionKey, UserSessionsFilter filter, CT ct = default);
+  }
+  ```
+
+  Do not store `UserSession` directly
+
+  Your `IUserSessionStore` implementation is expected to implement custom code to roundtrip the data from the user session to the underlying storage mechanism. You should not rely on existing serializers, such as `System.Text.Json` or `Newtonsoft.Json`, to serialize the `UserSession` object.
+
+* Duende BFF v3
+
+  ```csharp
+  /// <summary>
+  /// User session store
+  /// </summary>
+  public interface IUserSessionStore
+  {
+      /// <summary>
+      /// Retrieves a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task<UserSession?> GetUserSessionAsync(string key, CancellationToken cancellationToken = default);
+
+
+      /// <summary>
+      /// Creates a user session
+      /// </summary>
+      /// <param name="session"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task CreateUserSessionAsync(UserSession session, CancellationToken cancellationToken = default);
+
+
+      /// <summary>
+      /// Updates a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="session"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task UpdateUserSessionAsync(string key, UserSessionUpdate session, CancellationToken cancellationToken = default);
+
+
+      /// <summary>
+      /// Deletes a user session
+      /// </summary>
+      /// <param name="key"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task DeleteUserSessionAsync(string key, CancellationToken cancellationToken = default);
+
+
+      /// <summary>
+      /// Queries user sessions based on the filter.
+      /// </summary>
+      /// <param name="filter"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task<IReadOnlyCollection<UserSession>> GetUserSessionsAsync(UserSessionsFilter filter, CancellationToken cancellationToken = default);
+
+
+      /// <summary>
+      /// Deletes user sessions based on the filter.
+      /// </summary>
+      /// <param name="filter"></param>
+      /// <param name="cancellationToken">A token that can be used to request cancellation of the asynchronous operation.</param>
+      /// <returns></returns>
+      Task DeleteUserSessionsAsync(UserSessionsFilter filter, CancellationToken cancellationToken = default);
+  }
+  ```
 
 Once you have an implementation, you can register it when you enable server-side sessions:
 
@@ -2848,7 +3360,7 @@ builder.Services.AddBff()
 
 [Section titled âUser Session Store Cleanupâ](#user-session-store-cleanup)
 
-The *IUserSessionStoreCleanup* interface is used to model cleaning up expired sessions.
+The `IUserSessionStoreCleanup` interface is used to model cleaning up expired sessions.
 
 ```csharp
 /// <summary>
@@ -3039,40 +3551,30 @@ Your Embedded endpoints can leverage services like the HTTP client factory and D
 
 The following is a simplified example showing how Embedded endpoints can get managed access tokens and use them to make requests to remote APIs.
 
-MyApiController.cs
+Program.cs
 
 ```csharp
-[Route("myApi")]
-public class MyApiController : ControllerBase
+app.MapGet("/myApi", async (IHttpClientFactory httpClientFactory, HttpContext context) =>
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    var id = context.Request.Query["id"];
 
 
-    public MyApiController(IHttpClientFactory httpClientFactory)
-    {
-        _httpClientFactory = httpClientFactory;
-    }
+    // create HTTP client
+    var client = httpClientFactory.CreateClient();
 
 
-    public async Task<IActionResult> Get(string id)
-    {
-        // create HTTP client
-        var client = _httpClientFactory.CreateClient();
+    // get current user access token and set it on HttpClient
+    var token = await context.GetUserAccessTokenAsync();
+    client.SetBearerToken(token);
 
 
-        // get current user access token and set it on HttpClient
-        var token = await HttpContext.GetUserAccessTokenAsync();
-        client.SetBearerToken(token);
+    // call remote API
+    var response = await client.GetAsync($"https://remoteServer/remoteApi?id={id}");
 
 
-        // call remote API
-        var response = await client.GetAsync($"https://remoteServer/remoteApi?id={id}");
-
-
-        // maybe process response and return to frontend
-        return new JsonResult(await response.Content.ReadAsStringAsync());
-    }
-}
+    // maybe process response and return to frontend
+    return Results.Text(await response.Content.ReadAsStringAsync());
+});
 ```
 
 The example above is simplified to demonstrate the way that you might obtain a token. Embedded endpoints will typically enforce constraints on the way the API is called, aggregate multiple calls, or perform other business logic. Embedded endpoints that merely forward requests from the frontend to the remote API may not be needed at all. Instead, you could proxy the requests through the BFF using either the [simple http forwarder](/bff/fundamentals/apis/remote/) or [YARP](/bff/fundamentals/apis/yarp/).
@@ -3607,7 +4109,7 @@ The value of the header is not important, but its presence, combined with the co
 
 You can add the anti-forgery protection to all YARP routes by calling the *AsBffApiEndpoint* extension method:
 
-```cs
+```csharp
 app.MapReverseProxy()
     .AsBffApiEndpoint();
 
@@ -3638,7 +4140,7 @@ If you need more fine-grained control over which routes should enforce the anti-
 
 This is also possible in code:
 
-```cs
+```csharp
 yarpBuilder.LoadFromMemory(
     new[]
     {
@@ -3666,7 +4168,7 @@ To enforce the presence of the anti-forgery headers, you need to add a middlewar
 
 Program.cs
 
-```cs
+```csharp
 app.MapReverseProxy(proxyApp =>
 {
     proxyApp.UseAntiforgeryCheck();
@@ -4083,7 +4585,7 @@ To overcome this issue, a single BFF instance can support multiple frontends. Ea
 * Define its own OpenID Connect configuration
 * Define its own Cookie settings
 * Define its own API surface
-* Be identified either via path based routing and/or origin selection.
+* Be identified either via path based routing and/or host selection.
 
 Adding additional frontends to the BFF has very little impact on the performance on the BFF itself, but keep in mind that the traffic for all the frontends is proxied through the BFF.
 
@@ -4165,12 +4667,16 @@ Each frontend can have custom OpenID Connect configuration and Cookie Configurat
 
 [Section titled âFrontend Selectionâ](#frontend-selection)
 
-Each request to a frontend has to be uniquely defined by either its path, its origin or a combination of the two. If you specify neither, then itâs considered the default frontend.
+Each request to a frontend has to be uniquely defined by either its path, its host or a combination of the two. If you specify neither, then itâs considered the default frontend.
+
+Note
+
+With âhostâ, we mean the combination of the schema (http/https), the domain (app1.example.com) and the port. The BFF frontend selection middleware uses the HTTP Host header to select a matching frontend.
 
 Frontends are matched using the following algorithm:
 
-1. **Selection by both origin and path:** If there is a frontend that matches both the origin AND has the most specific match to a path, itâs selected.
-2. **Selection by origin only:** Then, if there is a frontend with only origins configured and it matches the path, itâs selected.
+1. **Selection by both host and path:** If there is a frontend that matches both the host AND has the most specific match to a path, itâs selected.
+2. **Selection by host only:** Then, if there is a frontend with only hosts configured and it matches the path, itâs selected.
 3. **Selection by path only:** Then, if there is a frontend with a matching path specified, itâs selected.
 4. **Default frontend:** Then, if there is a default frontend configured, itâs selected.
 
@@ -4342,8 +4848,7 @@ The configuration supports dynamic reloading (so any new frontend added / remove
 * `matchingPath` The path prefix for requests routed to this frontend.\
   Example: `"/from-config"`
 
-* `matchingHostHeader` The origin to match for this frontend.\
-  Example: `"https://localhost:5005"`
+* `matchingHostHeader` The host to match for this frontend. Example: `"https://localhost:5005"`
 
 * `oidc` OIDC settings specific to this frontend.\
   Type: OidcConfiguration object (see below).
@@ -5262,7 +5767,13 @@ The default implementation stores the session in-memory. This is useful for test
 
 [Section titled âUsing Entity Framework for the Server-Side Session Storeâ](#using-entity-framework-for-the-server-side-session-store)
 
-To use the EF session store, install the `Duende.BFF.EntityFramework` NuGet package and register it by calling `AddEntityFrameworkServerSideSessions`, like this:
+To use the EF session store, install the `Duende.BFF.EntityFramework` NuGet package:
+
+```bash
+dotnet add package Duende.BFF.EntityFramework
+```
+
+Next, you can register the session store by calling `AddEntityFrameworkServerSideSessions`, like this:
 
 ```csharp
 var cn = _configuration.GetConnectionString("db");
@@ -5293,7 +5804,7 @@ builder.Services.AddDbContextPool<SessionDbContext>(opt =>
 
 
 builder.Services.AddBff()
-    .AddEntityFrameworkServerSideSessionsServices<SessionDbContext>()
+    .AddEntityFrameworkServerSideSessionsServices<SessionDbContext, IBffServicesBuilder>()
 ```
 
 Note, youâll still need to let the server side session store know about the `SessionDbContext` by calling `AddEntityFrameworkServerSideSessions` with the `SessionDbContext` implementation as a generic argument.
@@ -5399,20 +5910,20 @@ Duende.BFF includes an automatic token management feature. This uses the access 
 
 For most scenarios, there is no additional configuration necessary. The token management will infer the configuration and token endpoint URL from the metadata of the OpenID Connect provider.
 
-The easiest way to retrieve the current access token is to use an extension method on *HttpContext*:
+The easiest way to retrieve the current access token is to use an extension method on `HttpContext`:
 
 ```csharp
 var token = await HttpContext.GetUserAccessTokenAsync();
 ```
 
-You can then use the token to set it on an *HttpClient* instance:
+You can then use the token to set it on an `HttpClient`instance:
 
 ```csharp
 var client = new HttpClient();
 client.SetBearerToken(token);
 ```
 
-We recommend to leverage the *HttpClientFactory* to fabricate HTTP clients that are already aware of the token management plumbing. For this you would register a named client in your application startup e.g. like this:
+We recommend to use the `HttpClientFactory` to create HTTP clients that are already aware of the token management plumbing. For this you would register a named client in your application startup e.g. like this:
 
 Program.cs
 
@@ -5427,31 +5938,18 @@ builder.Services.AddUserAccessTokenHttpClient("apiClient", configureClient: clie
 And then retrieve a client instance like this:
 
 ```csharp
-[Route("myApi")]
-public class MyApiController : ControllerBase
+app.MapGet("/myApi", async (IHttpClientFactory httpClientFactory, HttpContext context) =>
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    // create HTTP client with automatic token management
+    var client = httpClientFactory.CreateClient("apiClient");
 
 
-    public MyController(IHttpClientFactory httpClientFactory)
-    {
-        _httpClientFactory = httpClientFactory;
-    }
+    // call remote API
+    var response = await client.GetAsync("remoteApi");
 
 
-    public async Task<IActionResult> Get(string id)
-    {
-        // create HTTP client with automatic token management
-        var client = _httpClientFactory.CreateClient("apiClient");
-
-
-        // call remote API
-        var response = await client.GetAsync("remoteApi");
-
-
-        // rest omitted
-    }
-}
+    // rest omitted
+});
 ```
 
 If you prefer to use typed clients, you can do that as well:
@@ -5464,17 +5962,16 @@ services.AddHttpClient<MyTypedApiClient>(client =>
 }).AddUserAccessTokenHandler();
 ```
 
-And then use that client, for example like this on a controllerâs action method:
+And then use that client, for example like this on an endpoint:
 
 ```csharp
-public async Task<IActionResult> CallApiAsUserTyped(
-    [FromServices] MyTypedClient client)
+app.MapGet("/myApi", async (MyTypedClient client) =>
 {
     var response = await client.GetData();
 
 
     // rest omitted
-}
+});
 ```
 
 The client will internally always try to use a current and valid access token. If for any reason this is not possible, the 401 status code will be returned to the caller.
@@ -5503,7 +6000,7 @@ This will invalidate the refresh token at the token service.
 
 > A collection of getting started guides to start with the BFF
 
-Currently, the most recent version is 4 (preview 2). If youâre upgrading from a previous version, please check our [upgrade guides](/bff/upgrading).
+Currently, the most recent version is v4. If youâre upgrading from a previous version, please check our [upgrade guides](/bff/upgrading).
 
 If youâre starting a new BFF project, consider the following startup guides:
 
@@ -6596,6 +7093,46 @@ dotnet add package Duende.BFF.Yarp
 
   You will also need to run the Entity Framework migrations to create the necessary tables.
 -----
+# Getting Started - Templates
+
+> A guide on how to install the BFF project templates.
+
+Project templates for Duende BFF are shipped as part of the Duende .NET project templates. Refer the [templates documentation](/identityserver/overview/packaging/#templates) for more information on how to install the templates.
+
+## Available templates
+
+[Section titled âAvailable templatesâ](#available-templates)
+
+### BFF Remote API
+
+[Section titled âBFF Remote APIâ](#bff-remote-api)
+
+```shell
+dotnet new duende-bff-remoteapi
+```
+
+Creates a basic JavaScript-based BFF host that configures and invokes a [remote API via the BFF proxy](/bff/fundamentals/apis/remote/).
+
+### BFF Local API
+
+[Section titled âBFF Local APIâ](#bff-local-api)
+
+```shell
+dotnet new duende-bff-localapi
+```
+
+Creates a basic JavaScript-based BFF host that invokes a [local API](/bff/fundamentals/apis/local/) co-hosted with the BFF.
+
+### BFF Blazor
+
+[Section titled âBFF Blazorâ](#bff-blazor)
+
+```shell
+dotnet new duende-bff-blazor
+```
+
+Creates a Blazor application that [uses the interactive auto render mode](/bff/fundamentals/blazor/), and secures the application across all render modes consistently using Duende.BFF.Blazor.
+-----
 # Backend For Frontend (BFF) Samples
 
 > A collection of sample applications demonstrating how to use the BFF security framework with different frontend technologies.
@@ -6907,10 +7444,6 @@ Duende BFF Security Framework v4.0 is a significant release that includes:
 
 The extensibility approach has been drastically changed, and many `virtual` methods containing implementation logic are now internal instead.
 
-Duende BFF Security Framework v4 is still in preview
-
-The Duende BFF Security Framework v4 is still in preview. This version (and associated documentation) is still evolving.
-
 ## Upgrading
 
 [Section titled âUpgradingâ](#upgrading)
@@ -6958,6 +7491,88 @@ The required token type configuration in YARP has also changed slightly. It uses
 
 [Section titled âExtending The BFFâ](#extending-the-bff)
 
+#### Service To Endpoint Updates
+
+[Section titled âService To Endpoint Updatesâ](#service-to-endpoint-updates)
+
+Service interfaces and their default implementations have been renamed and have changed, resulting in an updated extensibility model:
+
+* Generally, the interfaces have been renamed, e.g. from `IUserService` to `IUserEndpoint`.
+
+* Default implementation is now internal, but can be used when overriding the endpoint:
+
+  ```diff
+  -public class MyUserService : DefaultUserService
+  -{
+      -public override Task ProcessRequestAsync(HttpContext context, CancellationToken ct)
+  -    {
+          // Custom logic here
+
+
+          -return base.ProcessRequestAsync(context);
+  -    }
+  -}
+
+
+  +var bffOptions = app.Services.GetRequiredService<IOptions<BffOptions>>().Value;
+
+
+  +app.MapGet(bffOptions.UserPath, async (HttpContext context, CancellationToken ct) =>
+  +{
+      // ... custom logic before calling the endpoint implementation ...
+
+
+      +var endpointProcessor = context.RequestServices.GetRequiredService<IUserEndpoint>();
+      +await endpointProcessor.ProcessRequestAsync(context, ct);
+
+
+      // ... custom logic after calling the  endpoint implementation ...
+  +});
+  ```
+
+For more information, see the [endpoints documentation](/bff/extensibility/management/).
+
+#### Custom Session Store
+
+[Section titled âCustom Session Storeâ](#custom-session-store)
+
+If you have a custom implementation of `IUserSessionStore`, the interface has changed to support multiple frontends.
+
+In all methods, the `string key` has been replaced with a strongly typed `UserSessionKey` struct, which contains the `PartitionKey` and `SessionId`:
+
+* `PartitionKey` - Corresponds to the frontend name (or `ApplicationName` in V3).
+* `SessionId` - The userâs session identifier.
+
+```diff
+public class MySessionStore : IUserSessionStore
+{
+    -public Task<UserSession> GetUserSessionAsync(string key, CancellationToken cancellationToken)
++    public Task<UserSession> GetUserSessionAsync(UserSessionKey key, CancellationToken cancellationToken)
+    {
+        // ...
+    }
+
+
+    // ...
+}
+```
+
+Also see [related database changes and migrations](#server-side-sessions-database-migrations).
+
+#### Access Token Retrieval
+
+[Section titled âAccess Token Retrievalâ](#access-token-retrieval)
+
+The `HttpContext.GetUserAccessTokenAsync` extension method has been removed from the `Duende.Bff` namespace. You should now use the extension method from the `Duende.AccessTokenManagement.OpenIdConnect` namespace.
+
+```csharp
+using Duende.AccessTokenManagement.OpenIdConnect;
+
+
+// ...
+var token = await HttpContext.GetUserAccessTokenAsync();
+```
+
 #### Simplified Wireup Without Explicit Authentication Setup
 
 [Section titled âSimplified Wireup Without Explicit Authentication Setupâ](#simplified-wireup-without-explicit-authentication-setup)
@@ -6971,6 +7586,8 @@ services.AddBff()
         options.Authority = "your authority";
         options.ClientId = "your client id";
         options.ClientSecret = "secret";
+
+
         // ... other OpenID Connect options.
     }
     .ConfigureCookies(options => {
@@ -7253,9 +7870,9 @@ A mechanism for sender-constraining OAuth 2.0 tokens via a proof-of-possession m
 
 A single deployment acts as a single OpenID Connect / OAuth authority hosted at a single URL. It can consist of multiple physical or virtual nodes for load-balancing or fail-over purposes.
 
-## Multiple Deployment
+## Multiple Deployments
 
-[Section titled âMultiple Deploymentâ](#multiple-deployment)
+[Section titled âMultiple Deploymentsâ](#multiple-deployments)
 
 Can be either completely independent single deployments, or a single deployment that acts as multiple authorities.
 
@@ -7277,43 +7894,214 @@ Online [developer community forum](https://github.com/DuendeSoftware/community/d
 
 [Section titled âPriority Developer Supportâ](#priority-developer-support)
 
+**License: Enterprise**
+
 Helpdesk system with guaranteed response time for Duende Software product issues and bugs.
 
 [More Details ](https://duendesoftware.com/license/PrioritySupportLicense.pdf)Download the Priority Support License PDF
 -----
 # Licensing
 
-> Details about Duende IdentityServer licensing requirements, editions, configuration options, and trial mode functionality
+> Details about Duende IdentityServer and BFF licensing requirements, editions, configuration options, and trial mode functionality.
 
-Duende IdentityServer requires a license for production use, with three editions available (Starter, Business, and Enterprise) that offer various features based on organizational needs. Licenses can be configured via a file system, programmatic startup, or external configuration services like Azure Key Vault, with trial mode available for development and testing. Learn more about each in the following sections.
+Duende products, except for our [open source tools](https://duendesoftware.com/products/opensource), require a license for production use. The [Duende Software website](https://duendesoftware.com/) provides an overview of different products and license editions.
 
-Note
+Licenses can be configured via a file system, programmatic startup, or external configuration services like Azure Key Vault, with trial mode available for development and testing.
+
+## IdentityServer
+
+[Section titled âIdentityServerâ](#identityserver)
+
+Duende IdentityServer requires a license for production use, with three editions available (Starter, Business, and Enterprise) that offer various features based on organizational needs. A [community edition](https://duendesoftware.com/products/communityedition/) is available as well.
+
+Free for development
 
 IdentityServer is [free](#trial-mode) for development, testing and personal projects, but production use requires a [license](https://duendesoftware.com/products/identityserver).
 
-## Editions
+### Editions
 
 [Section titled âEditionsâ](#editions)
 
 There are three license editions which include different [features](https://duendesoftware.com/products/features).
 
-### Starter Edition
+#### Starter Edition
 
 [Section titled âStarter Editionâ](#starter-edition)
 
-The Starter edition includes the core OIDC and OAuth protocol implementation. This is an economical option that is a good fit for organizations with basic needs. Itâs also a great choice if you have an aging IdentityServer4 implementation that needs to be updated and licensed. The Starter edition includes all the features that were part of IdentityServer4, along with support for the latest .NET releases, improved observability through OTEL support, and years of bug fixes and enhancements.
+The Starter edition includes the core OIDC and OAuth protocol implementation. This is an economical option that is a good fit for organizations with basic needs. Itâs also a great choice if you have an aging [IdentityServer4 implementation that needs to be updated](/identityserver/upgrades/identityserver4-to-duende-identityserver-v7/) and licensed. The Starter edition includes all the features that were part of IdentityServer4, along with support for the latest .NET releases, improved observability through [OpenTelemetry support](/identityserver/diagnostics/otel/), and years of bug fixes and enhancements.
 
-### Business Edition
+#### Business Edition
 
 [Section titled âBusiness Editionâ](#business-edition)
 
 The Business edition adds additional features that go beyond the core protocol support included in the Starter edition. This is a popular license because it adds the most commonly needed tools and features outside a basic protocol implementation. Feature highlights include support for server side sessions and automatic signing key management.
 
-### Enterprise Edition
+#### Enterprise Edition
 
 [Section titled âEnterprise Editionâ](#enterprise-edition)
 
 Finally, the Enterprise edition includes everything in the Business edition and adds support for features that are typically used by enterprises with particularly complex architectures or that handle particularly sensitive data. Highlights include resource isolation, the OpenId Connect CIBA flow, and dynamic federation. This is the best option when you have a specific threat model or architectural need for these features.
+
+### Redistribution
+
+[Section titled âRedistributionâ](#redistribution)
+
+If you want to redistribute Duende IdentityServer to your customers as part of a product, you can use our [redistributable license](https://duendesoftware.com/products/identityserverredist).
+
+### License Validation and Logging
+
+[Section titled âLicense Validation and Loggingâ](#license-validation-and-logging)
+
+The license is validated at startup and during runtime. All license validation is self-contained and does not leave the host. There are no outbound network calls related to license validation.
+
+#### Startup Validation
+
+[Section titled âStartup Validationâ](#startup-validation)
+
+At startup, IdentityServer first checks for a license. If there is no license configured, IdentityServer logs a warning indicating that a license is required in a production deployment and enters [Trial Mode](#trial-mode).
+
+Next, assuming a license is configured, IdentityServer compares its configuration to the license. If there are discrepancies between the license and the configuration, IdentityServer will write log messages indicating the nature of the problem.
+
+#### Runtime Validation
+
+[Section titled âRuntime Validationâ](#runtime-validation)
+
+Most common licensing issues, such as expiration of the license or configuring more clients than are included in the license do not prevent IdentityServer from functioning. We trust our customers, and we donât want a simple oversight to cause an outage. However, some features will be disabled at runtime if your license does not include them, including:
+
+* [Server Side Sessions](/identityserver/ui/server-side-sessions/)
+* [Demonstrating Proof-of-Possession (DPoP)](/identityserver/tokens/pop/)
+* [Resource Isolation](/identityserver/fundamentals/resources/isolation/)
+* [Pushed Authorization Requests (PAR)](/identityserver/tokens/par/)
+* [Dynamic Identity Providers](/identityserver/ui/login/dynamicproviders/)
+* [Client Initiated Backchannel Authentication (CIBA)](/identityserver/ui/ciba/)
+
+Again, the absence of a license is permitted for development and testing, and therefore does not disable any of these features. Similarly, using an expired license that includes those features does not cause those features to be disabled.
+
+Tip
+
+When rolling over to a renewed license, you can configure the new license before the old license expires. While the expiration timestamp of a license is used to validate a license is active, the start date is an administrative data point IdentityServer does not take into account for license validation. In other words, you can safely configure the new license before the old one lapses.
+
+#### Trial Mode
+
+[Section titled âTrial Modeâ](#trial-mode)
+
+Using IdentityServer without a license is considered Trial Mode. In Trial Mode, all enterprise features are enabled. Trial Mode is limited to 500 protocol requests. This includes all HTTP requests that IdentityServer itself handles, such as requests for the discovery, authorize, and token endpoints. UI requests, such as the login page, are not included in this limit. Beginning in IdentityServer 7.1, IdentityServer will log a warning when the trial mode threshold is exceeded:
+
+```text
+You are using IdentityServer in trial mode and have exceeded the trial
+threshold of 500 requests handled by IdentityServer. In a future version,
+you will need to restart the server or configure a license key to continue testing.
+```
+
+In a future version, IdentityServer will shut down at that time instead.
+
+Note
+
+When operating non-production environments, such as development, test, or QA, without a valid license key, you may run into this trial mode limitation.
+
+To prevent your non-production IdentityServer from shutting down in the future, you can use your production license key. IdentityServer is [free](#trial-mode) for development, testing and personal projects, and we support using your production license in these environments when trial mode is not sufficient.
+
+If you have feedback on trial mode, or specific use cases where youâd prefer other options, please [open a community discussion](https://github.com/DuendeSoftware/community/discussions).
+
+#### Redistribution
+
+[Section titled âRedistributionâ](#redistribution-1)
+
+We understand that when IdentityServer is redistributed, log messages from the licensing system are not likely to be very useful to your redistribution customers. For that reason, in a redistribution the severity of log messages from the license system is turned all the way down to the trace level.
+
+We also appreciate that it might be cumbersome to deploy updated licenses in this scenario, especially if the deployment of your software does not coincide with the duration of the IdentityServer license. In that situation, we ask that you update the license key at the next deployment of your software to your redistribution customers. Of course, you are always responsible for ensuring that your license is renewed.
+
+#### Log Severity
+
+[Section titled âLog Severityâ](#log-severity)
+
+The severity of the log messages described above depend on the nature of the message and the type of license.
+
+| Type of Message               | Standard License | Redistribution License (development\*) | Redistribution License (production\*) |
+| ----------------------------- | ---------------- | -------------------------------------- | ------------------------------------- |
+| Startup, missing license      | Warning          | Warning                                | Warning                               |
+| Startup, license details      | Debug            | Debug                                  | Trace                                 |
+| Startup, valid license notice | Informational    | Informational                          | Trace                                 |
+| Startup, violations           | Error            | Error                                  | Trace                                 |
+| Runtime, violations           | Error            | Error                                  | Trace                                 |
+
+\* as determined by `IHostEnvironment.IsDevelopment()`
+
+## BFF Security Framework
+
+[Section titled âBFF Security Frameworkâ](#bff-security-framework)
+
+The Duende BFF Security Framework requires a license for production use, with two editions available (Starter and Enterprise) that offer various features based on organizational needs.
+
+Trial mode
+
+Duende BFF has a [limited trial mode](#bff-trial-mode) for development and testing. For small organizations or personal projects, consider the [community edition](https://duendesoftware.com/products/communityedition/). For production use, a [license](https://duendesoftware.com/products/bff) is required.
+
+### Editions
+
+[Section titled âEditionsâ](#editions-1)
+
+BFF is a library designed to enhance the security of browser-based applications by moving authentication flows to the server side. The Duende BFF Security Framework requires a license for production use, and is available in two editions that [include different functionality](https://duendesoftware.com/products/bff) based on organizational needs.
+
+### Redistribution
+
+[Section titled âRedistributionâ](#redistribution-2)
+
+If you want to redistribute Duende BFF to your customers as part of a product, please [reach out to sales](https://duendesoftware.com/contact/sales).
+
+### License Validation and Logging
+
+[Section titled âLicense Validation and Loggingâ](#license-validation-and-logging-1)
+
+The BFF license is validated during runtime. All license validation is self-contained and does not leave the host. There are no outbound network calls related to license validation.
+
+#### BFF v3.1+ Runtime Validation
+
+[Section titled âBFF v3.1+ Runtime Validationâ](#bff-v31-runtime-validation)
+
+BFF v3.1 does not technically enforce the presence of a license key. At runtime, if no license is present, an error message will be logged.
+
+#### BFF v4 Runtime Validation
+
+[Section titled âBFF v4 Runtime Validationâ](#bff-v4-runtime-validation)
+
+BFF v4 requires a valid license in production environments. When no license is present, the system operates in [trial mode](#bff-trial-mode) with a limitation of maximum of five sessions per host (not technically enforced) with any excess resulting in error logging.
+
+Trial mode is also enabled when the license could not be validated, for example when the signature validation fails.
+
+When an expired license is used, the system will continue to function with only a warning written to the logs, and not fall back to trial mode.
+
+#### BFF Trial Mode
+
+[Section titled âBFF Trial Modeâ](#bff-trial-mode)
+
+Using BFF without a license is considered Trial Mode. Whenrunning in Trial Mode, you will see the following error logged on startup:
+
+```text
+You do not have a valid license key for the Duende software.
+BFF will run in trial mode. This is allowed for development and testing scenarios.
+
+
+If you are running in production you are required to have a licensed version.
+Please start a conversation with us: https://duende.link/l/bff/contact
+```
+
+In Trial Mode, BFF will be limited to a maximum of five (5) sessions per host. Sessions exceeding the limit will cause the host to log an error for every consecutive authenticated session:
+
+```text
+BFF is running in trial mode. The maximum number of allowed authenticated sessions (5) has been exceeded.
+
+
+See https://duende.link/l/bff/trial for more information.
+```
+
+The trial mode session limit is not distributed or shared across multiple nodes.
+
+Note
+
+When operating non-production environments, such as development, test, or QA, without a valid license key, you may run into this trial mode limitation.
+
+If you require a larger number of sessions, we support using your production license in these environments when trial mode is not enough.
 
 ## License Key
 
@@ -7326,28 +8114,50 @@ The license key can be configured in one of two ways:
 
 You can also use other configuration sources such as Azure Key Vault, by using the programmatic approach.
 
-Note
+Redistributable license
 
-If you want to redistribute Duende IdentityServer as part of a product to your customers, you can use our [redistributable license](https://duendesoftware.com/products/identityserverredist). To include the license key with your product, we recommend loading it at startup from an embedded resource.
+If you use our [redistributable license](https://duendesoftware.com/products/identityserverredist), we recommend loading the license at startup from an embedded resource.
+
+We consider the license key to be private to your organization, but not necessarily a secret. If youâre using private source control that is scoped to your organization, storing your license key within it is acceptable.
 
 ### File System
 
 [Section titled âFile Systemâ](#file-system)
 
-IdentityServer looks for a file named `Duende_License.key` in the [ContentRootPath](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostenvironment.contentrootpath?view=dotnet-plat-ext-8.0#microsoft-extensions-hosting-ihostenvironment-contentrootpath). If present, the content of the file will be used as the license key.
-
-We consider the license key to be private to your organization, but not necessarily a secret. If youâre using private source control that is scoped to your organization, storing your license key within it is acceptable.
+Duende products like IdentityServer and the BFF Security Framework look for a file named `Duende_License.key` in the [ContentRootPath](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostenvironment.contentrootpath?#microsoft-extensions-hosting-ihostenvironment-contentrootpath) of your application. If present, the content of the file will be used as the license key.
 
 ### Startup
 
 [Section titled âStartupâ](#startup)
 
-If you prefer to load the license key programmatically, you can do so in your startup code. This allows you to use the ASP.NET configuration system to load the license key from any [configuration provider](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#cp), including environment variables, appsettings.json, an external configuration service such as Azure App Configuration, etc.
+If you prefer to load the license key programmatically, you can do so in your startup code. This allows you to use the ASP.NET configuration system to load the license key from any [configuration provider](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0#cp), including environment variables, `appsettings.json`, external configuration services such as Azure App Configuration, Azure Key Vault, etc.
+
+#### IdentityServer
+
+[Section titled âIdentityServerâ](#identityserver-1)
 
 The `AddIdentityServer` method accepts a lambda expression to configure various options in your IdentityServer, including the `LicenseKey`. Set the value of this property to the content of the license key file.
 
+Program.cs
+
 ```csharp
 builder.Services.AddIdentityServer(options =>
+{
+    // the content of the license key file
+    options.LicenseKey = "eyJhbG...";
+});
+```
+
+#### BFF Security Framework
+
+[Section titled âBFF Security Frameworkâ](#bff-security-framework-1)
+
+The `AddBff` method accepts a lambda expression to configure various options in your BFF host, including the `LicenseKey`. Set the value of this property to the content of the license key file.
+
+Program.cs
+
+```csharp
+builder.Services.AddBff(options =>
 {
     // the content of the license key file
     options.LicenseKey = "eyJhbG...";
@@ -7358,9 +8168,11 @@ builder.Services.AddIdentityServer(options =>
 
 [Section titled âAzure Key Vaultâ](#azure-key-vault)
 
-When deploying IdentityServer to Microsoft Azure, you can make use of [Azure Key Vault](https://azure.microsoft.com/products/key-vault/) to load the IdentityServer license key at startup.
+When deploying your application to Microsoft Azure, you can make use of [Azure Key Vault](https://azure.microsoft.com/products/key-vault/) to load the Duende license key at startup.
 
-Similarly to setting the license key programmatically, you can use the `AddIdentityServer` method and use the overload that accepts a lambda expression to configure the `LicenseKey` property for your IdentityServer.
+Similarly to setting the license key programmatically, you can use the `AddIdentityServer` or `AddBff` method, and use the overload that accepts a lambda expression to configure the `LicenseKey` property.
+
+Program.cs
 
 ```csharp
 var keyVaultUrl = new Uri("https://<YourKeyVaultName>.vault.azure.net/");
@@ -7383,84 +8195,158 @@ builder.Services.AddIdentityServer(options =>
 });
 ```
 
-If you are using [Azure App Configuration](https://azure.microsoft.com/products/app-configuration/), you can use a similar approach to load the license key into your IdentityServer host.
+If you are using [Azure App Configuration](https://azure.microsoft.com/products/app-configuration/), you can use a similar approach to load the license key into your application host.
+-----
+# Logging Fundamentals
 
-## License Validation and Logging
+> General guidance on configuring logging for Duende Software products using Microsoft.Extensions.Logging and Serilog.
 
-[Section titled âLicense Validation and Loggingâ](#license-validation-and-logging)
+All Duende Software products (IdentityServer, Backend for Frontend (BFF), Access Token Management, etc.) use the standard logging facilities provided by ASP.NET Core (`Microsoft.Extensions.Logging`). This means they integrate seamlessly with whatever logging provider you choose for your application.
 
-The license is validated at startup and during runtime. All license validation is self-contained and does not leave the host. There are no outbound calls related to license validation.
+This guide provides general instructions for setting up logging that apply to all our products.
 
-### Startup Validation
+## Log Levels
 
-[Section titled âStartup Validationâ](#startup-validation)
+[Section titled âLog Levelsâ](#log-levels)
 
-At startup, IdentityServer first checks for a license. If there is no license configured, IdentityServer logs a warning indicating that a license is required in a production deployment and enters [Trial Mode](#trial-mode).
+We adhere to the standard Microsoft guidelines for log levels. Understanding these levels helps you configure the appropriate verbosity for your environment.
 
-Next, assuming a license is configured, IdentityServer compares its configuration to the license. If there are discrepancies between the license and the configuration, IdentityServer will write log messages indicating the nature of the problem.
+* **`Trace`**
 
-### Runtime Validation
+  * **Usage:** Extremely detailed information for troubleshooting complex issues.
+  * **Production:** **Do not enable** in production unless specifically instructed for diagnostics. May contain sensitive data (e.g., token hashes, PII).
 
-[Section titled âRuntime Validationâ](#runtime-validation)
+* **`Debug`**
 
-Most common licensing issues, such as expiration of the license or configuring more clients than is included in the license do not prevent IdentityServer from functioning. We trust our customers, and we donât want a simple oversight to cause an outage. However, some features will be disabled at runtime if your license does not include them, including:
+  * **Usage:** Internal flow details, useful for understanding *why* a decision was made (e.g., policy evaluation, token validation steps).
+  * **Production:** Generally disabled in production, but safe to enable temporarily for deeper investigation.
 
-* Server Side Sessions
-* DPoP
-* Resource Isolation
-* PAR
-* Dynamic Identity Providers
-* CIBA
+* **`Information`**
 
-Again, the absence of a license is permitted for development and testing, and therefore does not disable any of these features. Similarly, using an expired license that includes those features does not cause those features to be disabled.
+  * **Usage:** High-level events tracking the general flow (e.g., âRequest startedâ, âToken issuedâ).
+  * **Production:** Often the default level for production.
 
-Tip
+* **`Warning`**
+  * **Usage:** Unexpected events that didnât stop the application but might require investigation (e.g., âInvalid client configuration detectedâ).
 
-When rolling over to a renewed license, you can configure the new license before the old license expires. While the expiration timestamp of a license is used to validate a license is active, the start date is an administrative data point IdentityServer does not take into account for license validation. In other words, you can safely configure the new license before the old one lapses.
+* **`Error`**
+  * **Usage:** Exceptions and errors that cannot be handled gracefully.
 
-### Trial Mode
+* **`Critical`**
+  * **Usage:** Failures that require immediate attention (e.g., âSigning key not foundâ).
 
-[Section titled âTrial Modeâ](#trial-mode)
+## Setup for Microsoft.Extensions.Logging
 
-Using IdentityServer without a license is considered Trial Mode. In Trial Mode, all enterprise features are enabled. Trial Mode is limited to 500 protocol requests. This includes all HTTP requests that IdentityServer itself handles, such as requests for the discovery, authorize, and token endpoints. UI requests, such as the login page, are not included in this limit. Beginning in IdentityServer 7.1, IdentityServer will log a warning when the trial mode threshold is exceeded:
+[Section titled âSetup for Microsoft.Extensions.Loggingâ](#setup-for-microsoftextensionslogging)
 
-```text
-You are using IdentityServer in trial mode and have exceeded the trial
-threshold of 500 requests handled by IdentityServer. In a future version,
-you will need to restart the server or configure a license key to continue testing.
+This is the default logging provider for ASP.NET Core. If you havenât configured a third-party logger, this is what you are using.
+
+You can configure log levels in your `appsettings.json` file. To get detailed logs from Duende products, you often want to set the `Duende` namespace (or specific sub-namespaces) to `Debug`.
+
+appsettings.json
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      // Enable Debug logs for all Duende products
+      "Duende": "Debug"
+    }
+  }
+}
 ```
 
-In a future version, IdentityServer will shut down at that time instead.
+## Setup for Serilog
 
-Note
+[Section titled âSetup for Serilogâ](#setup-for-serilog)
 
-When operating non-production environments, such as development, test, or QA, without a valid license key, you may run into this trial mode limitation.
+[Serilog](https://serilog.net) is a popular structured logging library for .NET. We highly recommend it for its flexibility and rich sink ecosystem (Console, File, Seq, Elasticsearch, etc.).
 
-To prevent your non-production IdentityServer from shutting down in the future, you can use your production license key. IdentityServer is [free](#trial-mode) for development, testing and personal projects, and we support using your production license in these environments when trial mode is not sufficient.
+### 1. Installation
 
-If you have feedback on trial mode, or specific use cases where youâd prefer other options, please [open a community discussion](https://github.com/DuendeSoftware/community/discussions).
+[Section titled â1. Installationâ](#1-installation)
 
-## Redistribution
+Install the necessary packages:
 
-[Section titled âRedistributionâ](#redistribution)
+```bash
+dotnet add package Serilog.AspNetCore
+```
 
-We understand that when IdentityServer is redistributed, log messages from the licensing system are not likely to be very useful to your redistribution customers. For that reason, in a redistribution the severity of log messages from the license system is turned all the way down to the trace level. We also appreciate that it might be cumbersome to deploy updated licenses in this scenario, especially if the deployment of your software does not coincide with the duration of the IdentityServer license. In that situation, we ask that you update the license key at the next deployment of your software to your redistribution customers. Of course, you are always responsible for ensuring that your license is renewed.
+### 2. Configuration In `Program.cs`
 
-## Log Severity
+[Section titled â2. Configuration In Program.csâ](#2-configuration-in-programcs)
 
-[Section titled âLog Severityâ](#log-severity)
+Configure Serilog early in your application startup to capture all logs, including startup errors.
 
-The severity of the log messages described above depend on the nature of the message and the type of license.
+Program.cs
 
-| Type of Message               | Standard License | Redistribution License (development\*) | Redistribution License (production\*) |
-| ----------------------------- | ---------------- | -------------------------------------- | ------------------------------------- |
-| Startup, missing license      | Warning          | Warning                                | Warning                               |
-| Startup, license details      | Debug            | Debug                                  | Trace                                 |
-| Startup, valid license notice | Informational    | Informational                          | Trace                                 |
-| Startup, violations           | Error            | Error                                  | Trace                                 |
-| Runtime, violations           | Error            | Error                                  | Trace                                 |
+```csharp
+using Serilog;
 
-\* as determined by `IHostEnvironment.IsDevelopment()`
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+// Configure Serilog
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+    .Enrich.FromLogContext()
+    .ReadFrom.Configuration(ctx.Configuration));
+
+
+var app = builder.Build();
+
+
+app.UseSerilogRequestLogging(); // Optional: cleaner HTTP request logging
+
+
+// ... rest of your pipeline
+```
+
+### 3. Configuration In `appsettings.json`
+
+[Section titled â3. Configuration In appsettings.jsonâ](#3-configuration-in-appsettingsjson)
+
+You can then control log levels via `appsettings.json`. This approach allows you to change log levels without recompiling your code.
+
+```json
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information",
+        "System": "Warning",
+        // Enable detailed logging for Duende products
+        "Duende": "Debug"
+      }
+    }
+  }
+}
+```
+
+## Troubleshooting Specific Products
+
+[Section titled âTroubleshooting Specific Productsâ](#troubleshooting-specific-products)
+
+If you are debugging a specific component, you can target its namespace to reduce noise.
+
+| Product                     | Namespace                      |
+| --------------------------- | ------------------------------ |
+| **IdentityServer**          | `Duende.IdentityServer`        |
+| **BFF**                     | `Duende.Bff`                   |
+| **Access Token Management** | `Duende.AccessTokenManagement` |
+
+Example `appsettings.json` for debugging only BFF interactions:
+
+```json
+"Duende.Bff": "Debug",
+"Duende.IdentityServer": "Information"
+```
 -----
 # Security Best Practices
 
@@ -7701,7 +8587,7 @@ Duende IdentityServer v7
 
 | Version | Release Date     | Supported .NET Platforms | Support End-of-Life |
 | ------- | ---------------- | ------------------------ | ------------------- |
-| 7.4     | (December 2025)  | .NET 10                  | November 14, 2028   |
+| 7.4     | December 2, 2025 | .NET 10                  | November 14, 2028   |
 |         |                  | .NET 9                   | November 10, 2026   |
 |         |                  | .NET 8                   | November 10, 2026   |
 | 7.3     | August 14, 2025  | .NET 9                   | November 10, 2026   |
@@ -7748,21 +8634,21 @@ Duende IdentityServer v5 is no longer supported.
 
 Duende BFF v4
 
-| Version | Release Date    | Supported .NET Platforms | Support End-of-Life |
-| ------- | --------------- | ------------------------ | ------------------- |
-| 4.0     | (December 2025) | .NET 10                  | November 14, 2028   |
-|         |                 | .NET 9                   | November 10, 2026   |
-|         |                 | .NET 8                   | November 10, 2026   |
+| Version | Release Date     | Supported .NET Platforms | Support End-of-Life |
+| ------- | ---------------- | ------------------------ | ------------------- |
+| 4.0     | December 2, 2025 | .NET 10                  | November 14, 2028   |
+|         |                  | .NET 9                   | November 10, 2026   |
+|         |                  | .NET 8                   | November 10, 2026   |
 
 Duende BFF v3
 
-| Version | Release Date    | Supported .NET Platforms | Support End-of-Life |
-| ------- | --------------- | ------------------------ | ------------------- |
-| 3.1     | (December 2025) | .NET 10                  | November 14, 2028   |
-|         |                 | .NET 9                   | November 10, 2026   |
-|         |                 | .NET 8                   | November 10, 2026   |
-| 3.0     | March 17, 2025  | .NET 9                   | November 10, 2026   |
-|         |                 | .NET 8                   | November 10, 2026   |
+| Version | Release Date     | Supported .NET Platforms | Support End-of-Life |
+| ------- | ---------------- | ------------------------ | ------------------- |
+| 3.1     | December 2, 2025 | .NET 10                  | November 14, 2028   |
+|         |                  | .NET 9                   | November 10, 2026   |
+|         |                  | .NET 8                   | November 10, 2026   |
+| 3.0     | March 17, 2025   | .NET 9                   | November 10, 2026   |
+|         |                  | .NET 8                   | November 10, 2026   |
 
 Duende BFF v2
 
@@ -7804,7 +8690,7 @@ Duende BFF v1 is no longer supported.
 
 > Duende.IdentityModel for OpenID Connect and OAuth 2.0 related protocol operations, providing object models and utilities for identity-related operations
 
-The `Duende.IdentityModel` package is the base library for OpenID Connect and OAuth 2.0 related protocol operations. It provides an object model to interact with the endpoints defined in the various OAuth and OpenId Connect specifications. The types included represent the requests and responses, in addition to extension methods to invoke requests constants defined in the specifications, such as standard scope, claim, and parameter names, and other convenience methods for performing common identity related operations.
+The `Duende.IdentityModel` package is the base library for OpenID Connect and OAuth 2.0 related protocol operations. It provides an object model to interact with the endpoints defined in the various OAuth and OpenId Connect specifications. The types included represent the requests and responses, and constants defined in the specifications, such as standard scope, claim, and parameter names. The library also contains extension methods to invoke requests and other convenience methods for performing common identity related operations.
 
 [GitHub Repository ](https://github.com/DuendeSoftware/foss/tree/main/identity-model)View the source code for this library on GitHub.
 
@@ -8013,7 +8899,7 @@ The `IBrowser` implementation is specific to the platform and environment and mu
 
 For a simple example, the following code shows how to use the [SystemBrowser](https://github.com/DuendeSoftware/foss/blob/main/identity-model-oidc-client/clients/ConsoleClientWithBrowser/SystemBrowser.cs) to invoke a browser on the host desktop platform. The `SystemBrowser` is a naive implementation that uses the [System.Diagnostics.Process](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.process) class to start the system default browser.
 
-```cs
+```csharp
 var options = new OidcClientOptions
 {
     Authority = "https://demo.duendesoftware.com",
@@ -8029,7 +8915,7 @@ var client = new OidcClient(options);
 
 Once the `IBrowser` is configured, the `LoginAsync` method can be invoked to start the authentication flow.
 
-```cs
+```csharp
 var result = await client.LoginAsync();
 ```
 
@@ -8041,7 +8927,11 @@ Setting the `Browser` property reduces the need to process browser respones and 
 
 `OidcClient` logs errors, warnings, and diagnostic information using `Microsoft.Extensions.Logging.ILogger`, the standard .NET logging library.
 
-```cs
+You can use any logging provider to store your logs however you like, by setting the `LoggerFactory` property on `OidcClientOptions`:
+
+Program.cs
+
+```csharp
 using Duende.IdentityModel;
 using Duende.IdentityModel.OidcClient;
 
@@ -8069,20 +8959,9 @@ var app = builder.Build();
 var client = app.Services.GetService<OidcClient>();
 ```
 
-You can use any logging provider to store your logs however you like, by setting the `LoggerFactory` property on `OidcClientOptions`.
+Using this approach, you can use other logging frameworks, like [Serilog](https://github.com/serilog/serilog-extensions-hosting) for example.
 
-For example, you could configure [Serilog](https://github.com/serilog/serilog-extensions-hosting) like this:
-
-```csharp
-var serilog = new LoggerConfiguration()
-    .MinimumLevel.Verbose()
-    .Enrich.FromLogContext()
-    .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}")
-    .CreateLogger();
-
-
-options.LoggerFactory.AddSerilog(serilog);
-```
+For general information on how to configure logging in .NET applications, see our [Logging Fundamentals](/general/logging/) guide.
 
 ## Log Levels
 
@@ -8096,6 +8975,8 @@ The `OidcClient` logs at the following levels:
 * `Error`
 
 You can set the log level in your `appsettings.json` by modifying the following snippet.
+
+appsettings.json
 
 ```json
 {
@@ -8466,7 +9347,7 @@ While in theory you could now call `Prepare` (which internally sets the headers,
 
 Equally, a protocol response has a corresponding `ProtocolResponse` implementation that parses the status codes and response content. The following code snippet would parse the raw HTTP response from a token endpoint and turn it into a `TokenResponse` object:
 
-```cs
+```csharp
 var tokenResponse = await ProtocolResponse
     .FromHttpResponseAsync<TokenResponse>(httpResponse);
 ```
@@ -8481,7 +9362,7 @@ For each protocol interaction, an extension method for `HttpMessageInvoker` (tha
 
 It is your responsibility to set up and manage the lifetime of the `HttpClient`, e.g. manually:
 
-```cs
+```csharp
 var client = new HttpClient();
 
 
@@ -8496,7 +9377,7 @@ var response = await client.RequestClientCredentialsTokenAsync(
 
 You might want to use other techniques to obtain an `HttpClient`, e.g. via the HTTP client factory:
 
-```cs
+```csharp
 var client = HttpClientFactory.CreateClient("my_named_token_client");
 
 
@@ -8525,7 +9406,7 @@ We recommend only changing the Client Credential Style if youâre experienci
 
 Any request type implementing `ProtocolRequest` has the ability to configure the client credential style, which specifies how the client will transmit the client ID and secret. `ClientCredentialStyle` options include `PostBody` and the default value of `AuthorizationHeader`.
 
-```cs
+```csharp
 var client = HttpClientFactory.CreateClient("my_named_token_client");
 
 
@@ -8929,7 +9810,7 @@ Encoding can be done using the `EncodeToString` method:
 using System.Buffers.Text;
 
 
-var bytes = Encoding.UTF8.GetBytes("some string);
+var bytes = Encoding.UTF8.GetBytes("some string");
 var encodedString = Base64Url.EncodeToString(bytes);
 ```
 
@@ -10047,7 +10928,7 @@ You could achieve the same by using either Microsoftâs `JwtBearer` handler.
 
 Start by registering your API as an `ApiScope`, (or resource) e.g.:
 
-```cs
+```csharp
 var scopes = new List<ApiScope>
 {
     // local API
@@ -10057,7 +10938,7 @@ var scopes = new List<ApiScope>
 
 â¦and give your clients access to this API, e.g.:
 
-```cs
+```csharp
 new Client
 {
     // rest omitted
@@ -10073,13 +10954,22 @@ To enable token validation for local APIs, add the following to your IdentitySer
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddLocalApiAuthentication();
+```
+
+To protect an API endpoint, call `RequireAuthorization` with the `LocalApi.PolicyName` policy:
+
+```csharp
+app.MapGet("/localApi", () =>
+{
+    // omitted
+}).RequireAuthorization(LocalApi.PolicyName);
 ```
 
 To protect an API controller, decorate it with an `Authorize` attribute using the `LocalApi.PolicyName` policy:
 
-```cs
+```csharp
 [Route("localApi")]
 [Authorize(LocalApi.PolicyName)]
 public class LocalApiController : ControllerBase
@@ -10101,7 +10991,7 @@ You can also add your endpoints to the discovery document if you want, e.g.like 
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(options =>
 {
     options.Discovery.CustomEntries.Add("local_api", "~/localapi");
@@ -10112,7 +11002,7 @@ builder.Services.AddIdentityServer(options =>
 
 [Section titled âAdvancedâ](#advanced)
 
-Under the covers, the `AddLocalApiAuthentication` helper does a couple of things:
+Under the hood, the `AddLocalApiAuthentication` helper does a couple of things:
 
 * adds an authentication handler that validates incoming tokens using IdentityServerâs built-in token validation engine (the name of this handler is `IdentityServerAccessToken` or `IdentityServerConstants.LocalApi.AuthenticationScheme`
 * configures the authentication handler to require a scope claim inside the access token of value `IdentityServerApi`
@@ -10120,13 +11010,12 @@ Under the covers, the `AddLocalApiAuthentication` helper does a couple of things
 
 This covers the most common scenarios. You can customize this behavior in the following ways:
 
-* Add the authentication handler yourself by calling `services.AddAuthentication().AddLocalApi(...)`
-  * this way you can specify the required scope name yourself, or (by specifying no scope at all) accept any token from the current IdentityServer instance
+* Add the authentication handler yourself by calling `services.AddAuthentication().AddLocalApi(...)`. This way you can specify the required scope name yourself, or (by specifying no scope at all) accept any token from the current IdentityServer instance
 * Do your own scope validation/authorization in your controllers using custom policies or code, e.g.:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(IdentityServerConstants.LocalApi.PolicyName, policy =>
@@ -10146,7 +11035,7 @@ You can provide a callback to transform the claims of the incoming token after v
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddLocalApiAuthentication(principal =>
 {
     principal.Identities.First().AddClaim(new Claim("additional_claim", "additional_value"));
@@ -10166,7 +11055,7 @@ The access token will include additional claims that can be used for authorizati
 
 In ASP.NET core, the contents of the JWT payload get transformed into claims and packaged up in a `ClaimsPrincipal`. So you can always write custom validation or authorization logic in C#:
 
-```cs
+```csharp
 public IActionResult Get()
 {
     var isAllowed = User.HasClaim("scope", "read");
@@ -10180,7 +11069,7 @@ For better encapsulation and re-use, consider using the ASP.NET Core [authorizat
 
 With this approach, you would first turn the claim requirement(s) into a named policy:
 
-```cs
+```csharp
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("read_access", policy =>
@@ -10190,48 +11079,35 @@ builder.Services.AddAuthorization(options =>
 
 â¦and then enforce it, e.g. using the routing table:
 
-```cs
+```csharp
 app.MapControllers().RequireAuthorization("read_access");
 ```
 
-â¦or imperatively inside the controller:
+â¦or imperatively inside the endpoint handler:
 
-```cs
-public class DataController : ControllerBase
+```csharp
+app.MapGet("/", async (IAuthorizationService authz, ClaimsPrincipal user) =>
 {
-    IAuthorizationService _authz;
+    var allowed = await authz.AuthorizeAsync(user, "read_access");
 
 
-    public DataController(IAuthorizationService authz)
+    if (!allowed.Succeeded)
     {
-        _authz = authz;
+        return Results.Forbid();
     }
 
 
-    public async Task<IActionResult> Get()
-    {
-        var allowed = _authz.CheckAccess(User, "read_access");
-
-
-        // rest omitted
-    }
-}
+    // rest omitted
+});
 ```
 
 â¦ or declaratively:
 
-```cs
-public class DataController : ControllerBase
+```csharp
+app.MapGet("/", () =>
 {
-    [Authorize("read_access")]
-    public async Task<IActionResult> Get()
-    {
-        var allowed = authz.CheckAccess(User, "read_access");
-
-
-        // rest omitted
-    }
-}
+    // rest omitted
+}).RequireAuthorization("read_access");
 ```
 
 #### Scope Claim Format
@@ -10242,7 +11118,7 @@ Historically, Duende IdentityServer emitted the `scope` claims as an array in th
 
 The newer *JWT Profile for OAuth* [spec](/identityserver/overview/specs/) mandates that the scope claim is a single space delimited string. You can switch the format by setting the `EmitScopesAsSpaceDelimitedStringInJwt` on the [options](/identityserver/reference/options/). But this means that the code consuming access tokens might need to be adjusted. The following code can do a conversion to the *multiple claims* format that .NET prefers:
 
-```cs
+```csharp
 namespace IdentityModel.AspNetCore.AccessTokenValidation;
 
 
@@ -10317,7 +11193,7 @@ If you are using a [mutual TLS connection](/identityserver/tokens/pop/#mutual-tl
 
 You can do so with custom middleware like this:
 
-```cs
+```csharp
 // normal token validation happens here
 app.UseAuthentication();
 
@@ -10331,7 +11207,7 @@ app.UseAuthorization();
 
 Here, `UseConfirmationValidation` is an extension method that registers the middleware that performs the necessary validation:
 
-```cs
+```csharp
 public static class ConfirmationValidationExtensions
 {
     public static IApplicationBuilder UseConfirmationValidation(this IApplicationBuilder app, ConfirmationValidationMiddlewareOptions options = default)
@@ -10343,7 +11219,7 @@ public static class ConfirmationValidationExtensions
 
 And this is the actual middleware that validates the `cnf` claim:
 
-```cs
+```csharp
 // this middleware validates the cnf claim (if present) against the thumbprint of the X.509 client certificate for the current client
 public class ConfirmationValidationMiddleware
 {
@@ -10444,7 +11320,7 @@ dotnet add package Duende.AspnetCore.Authentication.JwtBearer
 
 With this package, the configuration necessary in your startup can be as simple as this:
 
-```cs
+```csharp
 // adds the normal JWT bearer validation
 builder.Services.AddAuthentication("token")
     .AddJwtBearer("token", options =>
@@ -10484,7 +11360,7 @@ First you need to add a reference to the authentication handler in your API proj
 
 If all you care about is making sure that an access token comes from your trusted IdentityServer, the following snippet shows the typical JWT validation configuration for ASP.NET Core:
 
-```cs
+```csharp
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -10529,7 +11405,7 @@ If you designed your APIs around the concept of [API resources](/identityserver/
 
 If you want to express in your API, that only access tokens for the `api1` audience (aka API resource name) are accepted, change the above code snippet to:
 
-```cs
+```csharp
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -10540,6 +11416,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
     });
 ```
+
+Dynamic Proof-of-Possession (DPoP) validation
+
+You can make use of the [JwtBearer Extensions](/identityserver/apis/aspnetcore/confirmation/#validating-dpop) to validate Dynamic Proof-of-Possession (DPoP) access tokens in ASP.NET Core.
 -----
 # Reference Tokens
 
@@ -10701,6 +11581,89 @@ The `IUserProfileService` interface has two methods that IdentityServer uses to 
 
 Alternatively, you can use the `duende-is-aspid` [template](/identityserver/overview/packaging/#templates) to create a starter IdentityServer host project configured to use ASP.NET Identity. See the [Quickstart Documentation](/identityserver/quickstarts/5-aspnetid/) for a detailed walkthrough.
 -----
+# Authentication Schemes and Cookies
+
+> Understanding the authentication schemes and cookies used by Duende IdentityServer, especially when integrated with ASP.NET Identity.
+
+Authentication in ASP.NET Core is organized into [authentication schemes](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/#authentication-scheme). A scheme is a name that corresponds to an authentication handler and its configuration options. IdentityServer relies on several specific schemes for different purposes, and understanding them is crucial, especially when integrating with ASP.NET Identity.
+
+## Cookie Schemes
+
+[Section titled âCookie Schemesâ](#cookie-schemes)
+
+When a user logs in, their identity is established and persisted across requests using a cookie. IdentityServer uses a primary authentication cookie to track the userâs session.
+
+### Standalone IdentityServer
+
+[Section titled âStandalone IdentityServerâ](#standalone-identityserver)
+
+When using IdentityServer without ASP.NET Identity, the default cookie scheme is named `"idsrv"`, though we recommend using the constant `IdentityServerConstants.DefaultCookieAuthenticationScheme` in your code if you ever need it.
+
+The default cookie scheme is configured by default in `AddIdentityServer()`, which sets up the cookie authentication handler with this scheme name. This cookie is essential for:
+
+* maintaining the userâs authenticated session
+* supporting single sign-on (SSO)
+* managing sign-out
+
+### With ASP.NET Identity
+
+[Section titled âWith ASP.NET Identityâ](#with-aspnet-identity)
+
+When you integrate ASP.NET Identity, for example using `AddAspNetIdentity<TUser>()`, the configuration changes to align with ASP.NET Identityâs defaults.
+
+In this scenario, the main authentication cookie scheme is not `"idsrv"`. Instead, it uses the ASP.NET Identity default scheme name: `"Identity.Application"` (or the `IdentityConstants.ApplicationScheme` constant).
+
+This is a common point of confusion. ASP.NET Identity registers its own cookie handlers, and `AddAspNetIdentity` configures IdentityServer to use them. This means:
+
+1. **Login UI:** When you call `HttpContext.SignInAsync`, you must use the correct scheme. If you use the `SignInManager<TUser>` provided by ASP.NET Identity, it automatically uses `"Identity.Application"`.
+2. **Configuration:** If you need to configure cookie options (like expiration or sliding expiration), you must configure the options for `"Identity.Application"`, not `"idsrv"`.
+
+Program.cs
+
+```csharp
+services.ConfigureApplicationCookie(options =>
+{
+    // The default ("Identity.Application")
+    options.Cookie.Name = IdentityConstants.ApplicationScheme;
+
+
+    // Configure other options here...
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+    options.SlidingExpiration = true;
+});
+```
+
+## Other Important Schemes
+
+[Section titled âOther Important Schemesâ](#other-important-schemes)
+
+Besides the main application cookie, IdentityServer uses other schemes for specific features.
+
+### External Authentication (e.g., Google, OIDC)
+
+[Section titled âExternal Authentication (e.g., Google, OIDC)â](#external-authentication-eg-google-oidc)
+
+When a user signs in with an external provider (like Google or another OIDC provider), the result of that remote authentication is temporarily stored in an âexternalâ cookie. This allows your login logic to read the claims from the external provider before fully signing the user into your main local session.
+
+IdentityServer always uses the `"idsrv.external"` scheme here, available in the `IdentityServerConstants.ExternalCookieAuthenticationScheme` constant.
+
+### Check Session Cookie
+
+[Section titled âCheck Session Cookieâ](#check-session-cookie)
+
+IdentityServer session management requires a separate cookie to monitor the session state without sending the large authentication cookie. The [User Session Service](/identityserver/reference/services/user-session-service/) manages this cookie.
+
+* **Default Name:** `"idsrv.session"` (Constant: `IdentityServerConstants.DefaultCheckSessionCookieName`).
+
+Note this cookie is not marked as `HttpOnly`, so it can be accessed in client-side code. The JavaScript code that is required to check user sessions in the background also requires access to this cookie, and needs it to be `HttpOnly`.
+
+## Common Pitfalls
+
+[Section titled âCommon Pitfallsâ](#common-pitfalls)
+
+* **Mixing Schemes:** Attempting to `SignOutAsync("idsrv")` when ASP.NET Identity is in use will have no effect on the actual `"Identity.Application"` cookie, leaving the user logged in. Always use the constants or the helper services (like `SignInManager`) that match your configuration.
+* **Cookie Configuration:** Setting options on the default authentication scheme (which might differ from the effective cookie scheme) or configuring the wrong named options instance will result in settings (like `Cookie.SameSite` or `ExpireTimeSpan`) being ignored.
+-----
 # Configuration API
 
 > Documentation for the Configuration API endpoints that enable management and configuration of IdentityServer implementations
@@ -10713,7 +11676,9 @@ The Configuration API is a collection of endpoints that allow for management and
 
 Currently, the Configuration API supports the [Dynamic Client Registration](/identityserver/configuration/dcr/) protocol.
 
-The Configuration API is part of the [Duende IdentityServer](https://duendesoftware.com/products/identityserver) Business Edition or higher. The same [license](https://duendesoftware.com/products/identityserver#pricing) and [special offers](https://duendesoftware.com/specialoffers) apply.
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 The Configuration API source code is available [on GitHub](https://github.com/DuendeSoftware/products/tree/main/identity-server/src/Configuration).
 
@@ -10772,7 +11737,7 @@ To host the Configuration API separately from IdentityServer, you will need to c
 
    Note
 
-   The Configuration API feature is included in the Duende IdentityServer Business edition license and higher. Use the same license key for IdentityServer and the Configuration API.
+   This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver). Configure the same license key for IdentityServer and the Configuration API.
 
 4. **Add and configure the client configuration store**
 
@@ -11011,7 +11976,7 @@ Custom implementations of the stores must be registered in the ASP.NET Core serv
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddClientStore<YourCustomClientStore>()
     .AddCorsPolicyService<YourCustomCorsPolicyService>()
@@ -11029,7 +11994,7 @@ Duende IdentityServer provides [convenience methods](/identityserver/reference/d
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddClientStore<YourCustomClientStore>()
     .AddCorsPolicyService<YourCustomCorsPolicyService>()
@@ -11045,7 +12010,7 @@ The duration of the data in the default cache is configurable on the [IdentitySe
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(options => {
     options.Caching.ClientStoreExpiration = TimeSpan.FromMinutes(5);
     options.Caching.ResourceStoreExpiration = TimeSpan.FromMinutes(5);
@@ -11254,7 +12219,7 @@ Custom implementations of `IPersistedGrantStore`, and/or `IDeviceFlowStore` must
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer();
 
 
@@ -11302,7 +12267,7 @@ To register a custom signing key store in the ASP.NET Core service provider, the
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddSigningKeyStore<YourCustomStore>();
 ```
@@ -11347,7 +12312,7 @@ To register a custom server-side session store in the ASP.NET Core service provi
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddServerSideSessions()
     .AddServerSideSessionStore<YourCustomStore>();
@@ -11357,7 +12322,7 @@ There is also an overloaded version of a `AddServerSideSessions` that will perfo
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddServerSideSessions<YourCustomStore>();
 ```
@@ -11372,7 +12337,7 @@ When using the EntityFramework Core operational store, it will be necessary to i
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddServerSideSessions()
     .AddOperationalStore(options =>
@@ -11468,7 +12433,7 @@ A typical IdentityServer implementation should include data protection configura
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddDataProtection()
   // Choose an extension method for key persistence, such as
   // PersistKeysToFileSystem, PersistKeysToDbContext,
@@ -11732,11 +12697,11 @@ IdentityServer offers multiple diagnostics possibilities. The logs contains deta
 
 [Read More](/identityserver/diagnostics/logging/)
 
-## Open Telemetry
+## OpenTelemetry
 
-[Section titled âOpen Telemetryâ](#open-telemetry)
+[Section titled âOpenTelemetryâ](#opentelemetry)
 
-Open Telemetry is the new standard way of emitting diagnostics information from a process and IdentityServer supports Traces (.NET Activities), Metrics and Logs.
+OpenTelemetry is a standard way of emitting diagnostics information from a process and IdentityServer supports Traces (.NET Activities), Metrics and Logs.
 
 [Read More](/identityserver/diagnostics/otel/)
 
@@ -11744,7 +12709,7 @@ Open Telemetry is the new standard way of emitting diagnostics information from 
 
 [Section titled âEventsâ](#events)
 
-The eventing system was created as an extension point to integrate with application monitoring systems (APM). They used to have their own different APIs so IdentityServer only provided events that could be used to call the APMâs APIs. Thanks to Open Telemetry there is now a standardized way to emit diagnostic information from a process. The events may eventually be deprecated and removed.
+The eventing system was created as an extension point to integrate with application monitoring systems (APM). They used to have their own different APIs so IdentityServer only provided events that could be used to call the APMâs APIs. Thanks to OpenTelemetry there is now a standardized way to emit diagnostic information from a process. The events may eventually be deprecated and removed.
 
 [Read More](/identityserver/diagnostics/events/)
 -----
@@ -11890,7 +12855,7 @@ When using [Serilog](https://serilog.net/), you can configure a separate file lo
 
 * In code
 
-  In the `UseSerilog()` extension methodâs configuration builder, you can add a file logger that filters log messages and only emits those from the `Duende.IdentityServer.Diagnostics.Summary` category.
+  In the `AddSerilog()` extension methodâs configuration builder, you can add a file logger that filters log messages and only emits those from the `Duende.IdentityServer.Diagnostics.Summary` category.
 
   The console logger (or another default logger you are using) can be configured to exclude this category.
 
@@ -11898,10 +12863,10 @@ When using [Serilog](https://serilog.net/), you can configure a separate file lo
 
   ```csharp
   // ...
-  builder.Host.UseSerilog((context, services, configuration) =>
+  builder.Services.AddSerilog((services, configuration) =>
   {
     configuration
-        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Configuration(builder.Configuration)
         .ReadFrom.Services(services)
         .Enrich.FromLogContext()
         .MinimumLevel.Debug()
@@ -12796,7 +13761,7 @@ Events are not turned on by default - but can be globally configured when `AddId
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(options =>
 {
     options.Events.RaiseSuccessEvents = true;
@@ -12807,7 +13772,7 @@ builder.Services.AddIdentityServer(options =>
 
 To emit an event use the `IEventService` from the ASP.NET Core service provider and call the `RaiseAsync` method, e.g.:
 
-```cs
+```csharp
 public async Task<IActionResult> Login(LoginInputModel model)
 {
     if (_users.ValidateCredentials(model.Username, model.Password))
@@ -12831,7 +13796,7 @@ Our default event sink will serialize the event class to JSON and forward it to 
 
 The following example uses [Seq](https://getseq.net) to emit events:
 
-```cs
+```csharp
 public class SeqEventSink : IEventSink
 {
     private readonly Logger _log;
@@ -12925,7 +13890,7 @@ You can create your own events and emit them via our infrastructure.
 
 You need to derive from our base `Event` class which injects contextual information like activity ID, timestamp, etc. Your derived class can then add arbitrary data fields specific to the event context::
 
-```cs
+```csharp
 public class UserLoginFailureEvent : Event
 {
     public UserLoginFailureEvent(string username, string error)
@@ -12947,9 +13912,15 @@ public class UserLoginFailureEvent : Event
 
 > Documentation for logging configuration and usage in Duende IdentityServer, including log levels and Serilog setup
 
-Duende IdentityServer uses the standard logging facilities provided by ASP.NET Core. You donât need to do any extra configuration.
+Duende IdentityServer uses the standard logging facilities provided by ASP.NET Core. You donât need to do any extra configuration to benefit from rich logging functionality.
 
-The Microsoft [documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging) has a good intro and a description of the built-in logging providers.
+For general information on how to configure logging, setting up Serilog, and understanding log levels in Duende products, see our [Logging Fundamentals](/general/logging/) guide.
+
+## Configuration
+
+[Section titled âConfigurationâ](#configuration)
+
+Logs are typically written under the `Duende.IdentityServer` category.
 
 We are roughly following the Microsoft guidelines for usage of log levels:
 
@@ -12977,167 +13948,26 @@ We are roughly following the Microsoft guidelines for usage of log levels:
 
   For failures that require immediate attention. Examples: missing store implementation, invalid key materialâ¦
 
-Note
+To get detailed logs from IdentityServer, you can configure your `appsettings.json` to enable `Debug` or `Information` level logs for the `Duende.IdentityServer` namespace:
 
-In production, logging might produce too much data. It is recommended you either turn it off, or default to the `Warning` level. Have a look at [events](/identityserver/diagnostics/events/) for more high-level production instrumentation.
-
-### Setup for Microsoft.Extensions.Logging
-
-[Section titled âSetup for Microsoft.Extensions.Loggingâ](#setup-for-microsoftextensionslogging)
-
-.NET provides a logging abstraction interface found in the [`Microsoft.Extensions.Logging`](https://www.nuget.org/packages/Microsoft.Extensions.Logging) package and is the default logging provider for ASP.NET Core.
-
-If you prefer to use Microsoftâs logging option, you can remove references to Serilog and fall back to the default logging implementation. Duende IdentityServer already uses the `ILogger` interface, and will use any implementation registered with the services collection.
-
-Below you will find a modified version of the in-memory Duende IdentityServer sample. You can use it as a guide to adapt your own instance of Duende IdentityServer to use Microsoftâs logging implementation..
-
-```csharp
-using System.Globalization;
-using System.Text;
-using Duende.IdentityServer.Licensing;
-
-
-// App1 contains WebApplicationBuilder extension methods
-// update according to your application's namespace
-using App1;
-
-
-var builder = WebApplication.CreateBuilder(args);
-
-
-var app = builder
-    // WebApplicationBuilder extension methods
-    .ConfigureServices()
-    .ConfigurePipeline();
-
-
-try
-{
-    app.Logger.LogInformation("Starting up");
-
-
-    if (app.Environment.IsDevelopment())
-    {
-        app.Lifetime.ApplicationStopping.Register(() =>
-        {
-            var usage = app.Services.GetRequiredService<LicenseUsageSummary>();
-
-
-            app.Logger.LogInformation(Summary(usage));
-        });
-    }
-
-
-    app.Run();
-}
-catch (Exception ex) when (ex is not HostAbortedException)
-{
-    app.Logger.LogCritical(ex, "Host terminated unexpectedly");
-}
-finally
-{
-    app.Logger.LogInformation("Shut down complete");
-}
-
-
-static string Summary(LicenseUsageSummary usage)
-{
-    var sb = new StringBuilder();
-    sb.AppendLine("IdentityServer Usage Summary:");
-    sb.AppendLine(CultureInfo.InvariantCulture, $"  License: {usage.LicenseEdition}");
-    var features = usage.FeaturesUsed.Count > 0 ? string.Join(", ", usage.FeaturesUsed) : "None";
-    sb.AppendLine(CultureInfo.InvariantCulture, $"  Business and Enterprise Edition Features Used: {features}");
-    sb.AppendLine(CultureInfo.InvariantCulture, $"  {usage.ClientsUsed.Count} Client Id(s) Used");
-    sb.AppendLine(CultureInfo.InvariantCulture, $"  {usage.IssuersUsed.Count} Issuer(s) Used");
-
-
-    return sb.ToString();
-}
-```
-
-You will also need to modify the `appSettings.json` file to include the `Logging` section:
+appsettings.json
 
 ```json
 {
   "Logging": {
     "LogLevel": {
       "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information",
       "Duende.IdentityServer": "Information"
-    }
-  },
-  "AllowedHosts": "*"
-}
-```
-
-Learn more about configuring logging in .NET applications by reading the [Microsoft documentation on logging fundamentals](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-9.0#configure-logging). As youâll see in the Microsoft documentation, configuring logging can be very involved and target different log levels, which can be useful for troubleshooting.
-
-### Setup For Serilog
-
-[Section titled âSetup For Serilogâ](#setup-for-serilog)
-
-[Serilog](https://serilog.net) is a trusted and popular logging library for .NET applications. It is highly configurable, and at Duende, we think it is a **great alternative** to the default logging implementation, especially for .NET developers looking for more control over their logging configuration. Additionally, ASP.NET Core developers can use the [Serilog.AspNetCore](https://github.com/serilog/serilog-aspnetcore) for better integration with ASP.NET Core applications.
-
-Program.cs
-
-```csharp
-Activity.DefaultIdFormat = ActivityIdFormat.W3C;
-
-
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-    .MinimumLevel.Override("System", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
-    .Enrich.FromLogContext()
-    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
-    .CreateLogger();
-
-
-builder.Logging.AddSeriLog();
-```
-
-You can also use ASP.NET Coreâs configuration pattern to configure Serilog using `appsettings.json` and other configuration sources. To do so, you first need to tell Serilog to read its configuration from the `IConfiguration` root:
-
-Program.cs
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-
-builder.Host.UseSerilog((ctx, lc) => lc
-    .WriteTo.Console(
-        outputTemplate:
-        "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
-        formatProvider: CultureInfo.InvariantCulture)
-    .Enrich.FromLogContext()
-    .ReadFrom.Configuration(ctx.Configuration));
-```
-
-Then, in your `appsettings.json` file, you can set the default minimum log level and log level overrides like so:
-
-appsettings.json
-
-```json
-{
-  "Serilog": {
-    "MinimumLevel": {
-      "Default": "Debug",
-      "Override": {
-        "Microsoft": "Warning",
-        "Microsoft.Hosting.Lifetime": "Information",
-        "Microsoft.AspNetCore.Authentication": "Debug",
-        "System": "Warning",
-        "Duende": "Verbose" // As an example, we've enabled more verbose logging for the Duende.* namespace
-      }
     }
   }
 }
 ```
 
-## Filtering Exceptions
+Note
+
+In production, logging might produce too much data. It is recommended you either turn it off, or default to the `Warning` level. Have a look at [events](/identityserver/diagnostics/events/) for more high-level production instrumentation.
+
+### Filtering Exceptions
 
 [Section titled âFiltering Exceptionsâ](#filtering-exceptions)
 
@@ -13196,7 +14026,7 @@ Added in Duende IdentityServer v6.1 and expanded in v7.0
 
 [OpenTelemetry](https://opentelemetry.io) is a collection of tools, APIs, and SDKs for generating and collecting telemetry data (metrics, logs, and traces). This is very useful for analyzing software performance and behavior, especially in highly distributed systems.
 
-.NET 8 comes with first class support for Open Telemetry. IdentityServer emits traces, metrics, and logs.
+.NET 8 comes with first class support for OpenTelemetry. IdentityServer emits traces, metrics, and logs.
 
 ### Metrics
 
@@ -13222,18 +14052,18 @@ This is an example of distributed traces from a web application calling an API (
 
 [Section titled âSetupâ](#setup)
 
-To start emitting Otel tracing and metrics information you need
+To start emitting OpenTelemetry tracing and metrics information you need to:
 
-* add the Otel libraries to your IdentityServer and client applications
+* add the OpenTelemetry libraries to your IdentityServer and client applications
 * start collecting traces and Metrics from the various IdentityServer sources (and other sources e.g. ASP.NET Core)
 
 For development a simple option is to export the tracing information to the console and use the Prometheus exporter to create a human-readable `/metrics` endpoint for the metrics.
 
-Add the Open Telemetry configuration to your service setup.
+Add the OpenTelemetry configuration to your service setup.
 
 Program.cs
 
-```cs
+```csharp
 var openTelemetry = builder.Services.AddOpenTelemetry();
 
 
@@ -13261,8 +14091,8 @@ Add the Prometheus exporter to the pipeline
 
 Program.cs
 
-```cs
-// Map /metrics that displays Otel data in human-readable form.
+```csharp
+// Map /metrics that displays OpenTelemetry data in human-readable form.
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 ```
 
@@ -13276,7 +14106,7 @@ Tip
 
 Added in Duende IdentityServer v7.0
 
-OpenTelemetry metrics are run-time measurements that are intended to provide an indication of overall health and are typically used to show graphs on a dashboard or to set up monitoring rules. When that monitoring reveals issues, traces and logs are used to investigate further. Open Telemetry monitoring tools often provide features to find the traces and logs corresponding to certain metrics.
+OpenTelemetry metrics are run-time measurements that are intended to provide an indication of overall health and are typically used to show graphs on a dashboard or to set up monitoring rules. When that monitoring reveals issues, traces and logs are used to investigate further. OpenTelemetry monitoring tools often provide features to find the traces and logs corresponding to certain metrics.
 
 IdentityServer emits metrics from the IdentityServer middleware and services. Our quick start for the UI also [contains metrics](#metrics-in-the-ui) that can be used as a starting point for monitoring UI events. The metric counters that IdentityServer emits are designed to not contain any sensitive information. They are often tagged to indicate the source of the events.
 
@@ -13594,7 +14424,7 @@ Hereâs e.g. the output for a request to the discovery endpoint:
 
 ![Honeycomb UI showing traces for discovery document endpoint](/_astro/otel_disco.BBgm8ly2_Z2pEf51.webp)
 
-When multiple applications send their traces to the same OTel server, this becomes super useful for following e.g. authentication flows over service boundaries.
+When multiple applications send their traces to the same OpenTelemetry server, this becomes super useful for following e.g. authentication flows over service boundaries.
 
 The following screenshot shows the ASP.NET Core OpenID Connect authentication handler redeeming the authorization code:
 
@@ -13681,7 +14511,7 @@ The `RequestedClaimTypes` property of the `ProfileDataRequestContext` contains t
 
 If your profile service extends the `DefaultProfileService`, you can use its `AddRequestedClaims` method to add only requested and approved claims. The intent is that your profile service can retrieve claim data and then filter that claim data based on what was requested by the client. For example:
 
-```cs
+```csharp
 public class SampleProfileService : DefaultProfileService
 {
     public virtual async Task GetProfileDataAsync(ProfileDataRequestContext context)
@@ -13708,7 +14538,7 @@ public class SampleProfileService : DefaultProfileService
 
 We generally recommend emitting claims based on the requested claim types, as that respects the scopes and resources requested by the client and gives the end user an opportunity to consent to this sharing of information. However, if you have claims that donât need to follow such rules, such as claims that are an integral part of the userâs identity and that are needed in most scenarios, they can be added by directly updating the `context.IssuedClaims` collection. For example:
 
-```cs
+```csharp
 public class SampleProfileService : DefaultProfileService
 {
     public virtual async Task GetProfileDataAsync(ProfileDataRequestContext context)
@@ -13747,7 +14577,7 @@ When the profile service is called for requests to the [userinfo endpoint](/iden
 
 Client claims are a set of pre-defined claims that are emitted in access tokens. They are defined on a per-client basis, meaning that each client can have its own unique set of client claims. The following shows an example of a client that is associated with a certain customer in your system:
 
-```cs
+```csharp
 var client = new Client
 {
     ClientId = "client",
@@ -13801,7 +14631,7 @@ The details vary, but you typically define the following common settings for a c
 
 In this scenario no interactive user is present - a service (i.e. the client) wants to communicate with an API (i.e. the resource that supports the scope):
 
-```cs
+```csharp
 public class Clients
 {
     public static IEnumerable<Client> Get()
@@ -13828,7 +14658,7 @@ public class Clients
 
 Interactive applications (e.g. web applications or native desktop/mobile applications) use the authorization code flow. This flow gives you the best security because the access tokens are transmitted via back-channel calls only (and gives you access to refresh tokens):
 
-```cs
+```csharp
 var interactiveClient = new Client
 {
     ClientId = "interactive",
@@ -13893,7 +14723,7 @@ Then pass the configuration section to the `AddInMemoryClients` method:
 
 Program.cs
 
-```cs
+```csharp
 AddInMemoryClients(configuration.GetSection("IdentityServer:Clients"))
 ```
 -----
@@ -13905,7 +14735,7 @@ You add the Duende IdentityServer engine to any ASP.NET Core application by addi
 
 Note
 
-While technically you could share the ASP.NET Core host between Duende IdentityServer, clients or APIs. We recommend putting your IdentityServer into a separate application.
+While technically you could share the ASP.NET Core host between Duende IdentityServer, clients or APIs, we recommend putting your IdentityServer into a separate application.
 
 ## Dependency Injection System
 
@@ -13915,7 +14745,7 @@ You add the necessary services to the ASP.NET Core service provider by calling `
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     // ...
@@ -13928,7 +14758,7 @@ The builder object has a number of extension methods to add additional services 
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer()
     .AddInMemoryClients(Config.Clients)
     .AddInMemoryIdentityResources(Config.IdentityResources)
@@ -13937,13 +14767,20 @@ var idsvrBuilder = builder.Services.AddIdentityServer()
 
 The above is using the in-memory stores, but we also support EntityFramework-based implementations and custom stores. See [here](/identityserver/data) for more information.
 
+Note
+
+The `AddIdentityServer` extensions method also adds the required authentication services (it calls `AddAuthentication` internally). If you want to configure the authentication options, or be explicit about which services are registered, you can use the `AddAuthentication` (and `AddAuthorization`) extension method directly:
+
+Program.cs
+
+```csharp
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+```
+
 ## Request Pipeline
 
 [Section titled âRequest Pipelineâ](#request-pipeline)
-
-Note
-
-`UseIdentityServer` includes a call to `UseAuthentication`, so itâs not necessary to have both.
 
 You need to add the Duende IdentityServer middleware to the pipeline by calling `UseIdentityServer`.
 
@@ -13953,7 +14790,8 @@ This would be a very typical minimal pipeline:
 
 Program.cs
 
-```cs
+```csharp
+var app = builder.Build();
 app.UseStaticFiles();
 
 
@@ -13964,6 +14802,14 @@ app.UseAuthorization();
 
 app.MapDefaultControllerRoute();
 ```
+
+Note
+
+`UseIdentityServer` includes a call to `UseAuthentication`, so itâs not necessary to have both.
+
+However, IdentityServer does not include a call to `UseAuthorization`. You will need to add `UseAuthorization` (after `UseIdentityServer`/`UseAuthentication`) to include the authorization middleware into your pipeline. This will enable you to use various authorization features in your application.
+
+If you use the Duende UI template and its various pages, the use of `UseAuthorization` is required.
 -----
 # Key Management
 
@@ -13986,7 +14832,9 @@ Automatic Key Management follows best practices for handling signing key materia
 * announcement of upcoming new keys
 * maintenance of retired keys
 
-Automatic Key Management is included in [IdentityServer](https://duendesoftware.com/products/identityserver) Business Edition or higher.
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ### Configuration
 
@@ -14006,7 +14854,7 @@ All of these options are configurable in the `KeyManagement` options. For exampl
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     // new key every 30 days
@@ -14041,7 +14889,7 @@ If you are deploying in a load balanced environment and wish to use the `FileSys
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     // set path to store keys
@@ -14067,7 +14915,7 @@ Note
 
 *X.509 certificates* have an expiration date, but IdentityServer does not use this data to validate the certificate and throw an exception. If a certificate has expired then you must decide whether to continue using it or replace it with a new certificate.
 
-```cs
+```csharp
 options.KeyManagement.SigningAlgorithms = new[]
 {
     // RS256 for older clients (with additional X.509 wrapping)
@@ -14091,7 +14939,7 @@ When you register multiple signing algorithms, the first in the list will be the
 
 [Section titled âStatic Key Managementâ](#static-key-management)
 
-Instead of using [Automatic Key Management](#automatic-key-management), IdentityServerâs signing keys can be set manually. Automatic Key Management is generally recommended, but if you want to explicitly control your keys statically, or you have a license that does not include the feature (e.g. the Starter Edition), you will need to manually manage your keys. With static configuration you are responsible for secure storage, loading and rotation of keys.
+Instead of using [Automatic Key Management](#automatic-key-management), IdentityServerâs signing keys can be set manually. Automatic Key Management is generally recommended, but if you want to explicitly control your keys statically, or you have a license that does not include the feature, you will need to manually manage your keys. With static configuration you are responsible for secure storage, loading and rotation of keys.
 
 ## Disabling Key Management
 
@@ -14101,7 +14949,7 @@ The automatic key management feature can be disabled by setting the `Enabled` fl
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = false;
@@ -14164,7 +15012,7 @@ Signing keys are added with the [`AddSigningCredential`](/identityserver/referen
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer();
 var key = LoadKeyFromVault(); // (Your code here)
 idsvrBuilder.AddSigningCredential(key, SecurityAlgorithms.RsaSha256);
@@ -14251,7 +15099,7 @@ First, announce a new key that will be used for signing in the future. During th
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = false;
@@ -14274,7 +15122,7 @@ Next, start signing tokens with the new key, but continue to publish the public 
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = false;
@@ -14295,7 +15143,7 @@ Again, you need to wait to proceed to phase 3. The delay here is typically short
 
 Once enough time has passed that there are no unexpired tokens signed with the old key, it is safe to completely remove the old key.
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = false;
@@ -14328,7 +15176,7 @@ The migration path from manual to automatic keys is a three-phase process, simil
 
 First, enable automatic key management while continuing to register your old key as the signing credential. In this phase, the new automatically managed key will be announced so that as client apps and APIs update their caches, they get the new key. IdentityServer will continue to sign keys with your old static key.
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = true;
@@ -14347,7 +15195,7 @@ Wait until all APIs and applications have updated their signing key caches, and 
 
 Next, switch to using the new automatically managed keys for signing, but still keep the old key for validation purposes.
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = true;
@@ -14366,7 +15214,7 @@ Keep the old key as a validation key until all tokens signed with that key are e
 
 Now the static key configuration can be removed entirely.
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.KeyManagement.Enabled = true;
@@ -14643,7 +15491,7 @@ In Duende IdentityServer, the `ApiResource` class allows for some additional org
 
 Letâs use the following scope definition as an example:
 
-```cs
+```csharp
 public static IEnumerable<ApiScope> GetApiScopes()
 {
     return new List<ApiScope>
@@ -14667,7 +15515,7 @@ public static IEnumerable<ApiScope> GetApiScopes()
 
 With `ApiResource` you can now create two logical APIs and their corresponding scopes:
 
-```cs
+```csharp
 public static readonly IEnumerable<ApiResource> GetApiResources()
 {
     return new List<ApiResource>
@@ -14749,7 +15597,7 @@ Client requests: *`manage`*:
 
 You can specify that an access token for an API resource (regardless of which scope is requested) should contain additional user claims.
 
-```cs
+```csharp
 var customerResource = new ApiResource("customer", "Customer API")
     {
         Scopes = { "customer.read", "customer.contact", "manage", "enumerate" },
@@ -14792,7 +15640,7 @@ Your APIs might have certain requirements for the cryptographic algorithm used t
 
 The following sample sets `PS256` as the required signing algorithm for the `invoices` API:
 
-```cs
+```csharp
 var invoiceApi = new ApiResource("invoice", "Invoice API")
     {
         Scopes = { "invoice.read", "invoice.pay", "manage", "enumerate" },
@@ -14805,6 +15653,12 @@ var invoiceApi = new ApiResource("invoice", "Invoice API")
 Note
 
 Make sure that you have configured your IdentityServer for the required signing algorithm. See [here](/identityserver/fundamentals/key-management/) for more details.
+
+### Resource Isolation
+
+[Section titled âResource Isolationâ](#resource-isolation)
+
+See [Resource Isolation](/identityserver/fundamentals/resources/isolation/) for more details on how to use the `resource` parameter to request a token with scopes for a specific resource.
 -----
 # API Scopes
 
@@ -14826,7 +15680,7 @@ Letâs model something very simple - a system that has three logical operati
 
 You can define them using the `ApiScope` class:
 
-```cs
+```csharp
 public static IEnumerable<ApiScope> GetApiScopes()
 {
     return new List<ApiScope>
@@ -14840,7 +15694,7 @@ public static IEnumerable<ApiScope> GetApiScopes()
 
 You can then assign the scopes to various clients, e.g.:
 
-```cs
+```csharp
 var webViewer = new Client
 {
     ClientId = "web_viewer",
@@ -14892,7 +15746,7 @@ Be aware, that scopes are purely for authorizing clients, not users. In other wo
 
 You can add more identity information about the user to the access token. The additional claims added are based on the scope requested. The following scope definition tells the configuration system that when a `write` scope gets granted the `user_level` claim should be added to the access token:
 
-```cs
+```csharp
 var writeScope = new ApiScope(
     name: "write",
     displayName: "Write your data.",
@@ -14913,7 +15767,7 @@ Sometimes scopes have a certain structure, e.g. a scope name with an additional 
 
 In this case you would create a scope without the parameter part and assign that name to a client, but in addition provide some logic to parse the structure of the scope at runtime using the `IScopeParser` interface or by deriving from our default implementation, e.g.:
 
-```cs
+```csharp
 public class ParameterizedScopeParser : DefaultScopeParser
 {
     public ParameterizedScopeParser(ILogger<DefaultScopeParser> logger) : base(logger)
@@ -14960,7 +15814,7 @@ public class ParameterizedScopeParser : DefaultScopeParser
 
 You then have access to the parsed value throughout the pipeline, e.g. in the profile service:
 
-```cs
+```csharp
 public class HostProfileService : IProfileService
 {
     public override async Task GetProfileDataAsync(ProfileDataRequestContext context)
@@ -14986,7 +15840,7 @@ One of them is actually mandatory, the `openid` scope, which tells the provider 
 
 This is how you could define the openid scope in code:
 
-```cs
+```csharp
 public static IEnumerable<IdentityResource> GetIdentityResources()
 {
     return new List<IdentityResource>
@@ -15001,7 +15855,7 @@ public static IEnumerable<IdentityResource> GetIdentityResources()
 
 But since this is one of the standard scopes from the spec you can shorten that to:
 
-```cs
+```csharp
 public static IEnumerable<IdentityResource> GetIdentityResources()
 {
     return new List<IdentityResource>
@@ -15017,7 +15871,7 @@ See the [reference](/identityserver/reference/models/identity-resource/) section
 
 The following example shows a custom identity resource called `profile` that represents the display name, email address and website claim:
 
-```cs
+```csharp
 public static IEnumerable<IdentityResource> GetIdentityResources()
 {
     return new List<IdentityResource>
@@ -15032,7 +15886,7 @@ public static IEnumerable<IdentityResource> GetIdentityResources()
 
 Once the resource is defined, you can give access to it to a client via the `AllowedScopes` option (other properties omitted):
 
-```cs
+```csharp
 var client = new Client
 {
     ClientId = "client",
@@ -15060,19 +15914,37 @@ IdentityServer will then use the scope names to create a list of requested claim
 
 Note
 
-This is an Enterprise Edition feature.
+This feature is part of the [Duende IdentityServer Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
-OAuth itself only knows about scopes - the (API) resource concept does not exist from a pure protocol point of view. This means that all the requested scope and audience combination get merged into a single access token. This has a couple of downsides:
+OAuth itself only knows about scopes - the (API) resource concept does not exist from a pure protocol point of view. This means that all the requested scope and audience combination get merged into a single access token.
 
-* tokens can become very powerful (and big)
-  * if such a token leaks, it allows access to multiple resources
+This has a couple of downsides:
 
-* resources within that single token might have conflicting settings, e.g.
+* Tokens can become very powerful (and large)
+  * If such a token leaks, it allows access to multiple resources
 
-  * user claims of all resources share the same token
-  * resource specific processing like signing or encryption algorithms conflict
+* Resources within that single token might have conflicting settings, e.g.
 
-* without sender-constraints, a resource could potentially re-use (or abuse) a token to call another contained resource directly
+  * User claims of all resources share the same token
+  * Resource-specific processing like signing or encryption algorithms conflict
+
+* Without sender-constraints, a resource could potentially re-use (or abuse) a token to call another contained resource directly
+
+### Audience Ambiguity
+
+[Section titled âAudience Ambiguityâ](#audience-ambiguity)
+
+In a system with multiple APIs (e.g., Shipping, Invoicing and Inventory APIs), a single token often lists all of them as valid audiences.
+
+```json
+{
+  "iss": "https://demo.duendesoftware.com",
+  "aud": ["invoice_api", "shipping_api", "inventory_api"],
+  "scope": ["invoice.read", "shipping.write", "inventory.read"]
+}
+```
+
+This violates the Principle of Least Privilege. If this token is leaked from the Inventory API, it can be used to call the Invoice API.
 
 To solve this problem [RFC 8707](https://tools.ietf.org/html/rfc8707) adds another request parameter for the authorize and token endpoint called `resource`. This allows requesting a token for a specific resource (in other words - making sure the audience claim has a single value only, and all scopes belong to that single resource).
 
@@ -15125,9 +15997,9 @@ Thus resulting in an access token like this (some details omitted):
 
 ```json
 {
-    "aud": [ "urn:invoice" ],
-    "scope": "read",
-    "client_id": "client"
+  "aud": ["urn:invoice"],
+  "scope": "read",
+  "client_id": "client"
 }
 ```
 
@@ -15232,6 +16104,84 @@ Instead, `RequireResourceIndicator` controls **when** the resourceâs URI is
 
 * When `RequireResourceIndicator` is `false` (the default): IdentityServer **automatically includes** the APIâs resource URI in the tokenâs audience if any of the resourceâs scopes are requested, even if the `resource` parameter was not sent in the request or didnât contain the resource URI.
 * When `RequireResourceIndicator` is `true`: The APIâs resource URI will **only** be included in the audience **if the client explicitly includes the resource URI** via the `resource` parameter when requesting the token.
+
+## .NET Client Implementation
+
+[Section titled â.NET Client Implementationâ](#net-client-implementation)
+
+While the examples above show the underlying HTTP protocol, .NET clients can use the Duende libraries to handle resource indicators easily.
+
+### Machine-to-Machine (Worker)
+
+[Section titled âMachine-to-Machine (Worker)â](#machine-to-machine-worker)
+
+When using `Duende.IdentityModel` for client credentials, you can pass the `resource` parameter using the `Parameters` dictionary:
+
+```csharp
+using Duende.IdentityModel.Client;
+
+
+var client = new HttpClient();
+
+
+var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+{
+    Address = "https://demo.duendesoftware.com/connect/token",
+    ClientId = "invoice_worker",
+    ClientSecret = "secret",
+
+
+    // The scope defines the permission
+    Scope = "invoice.read",
+
+
+    // The parameter defines the target (RFC 8707)
+    Parameters = { { "resource", "urn:invoices" } }
+});
+```
+
+### ASP.NET Core
+
+[Section titled âASP.NET Coreâ](#aspnet-core)
+
+For interactive applications using the standard OpenID Connect handler, use the `Resource` property on `OpenIdConnectOptions`:
+
+```csharp
+.AddOpenIdConnect(options =>
+{
+    options.Authority = "https://demo.duendesoftware.com";
+    options.ClientId = "interactive_app";
+
+
+    options.Scope.Add("invoice.read");
+
+
+    // Explicitly set the target resource here
+    options.Resource = "urn:invoices";
+
+
+    options.ResponseType = "code";
+    options.SaveTokens = true;
+});
+```
+
+Note that while the RFC allows multiple `resource` parameters, the Microsoft OpenID Connect handler only supports a single resource value here.
+
+For dynamic scenarios (e.g. multi-tenant), you can set the resource parameter in the `OnRedirectToIdentityProvider` event:
+
+```csharp
+options.Events.OnRedirectToIdentityProvider = context =>
+{
+    var tenantSpecificResource = DetermineResource(context);
+
+
+    // Overwrite or set the 'resource' parameter
+    context.ProtocolMessage.SetParameter("resource", tenantSpecificResource);
+
+
+    return Task.CompletedTask;
+};
+```
 -----
 # Users and Logging In
 
@@ -15362,10 +16312,6 @@ The licensed and supported libraries can be accessed via NuGet:
 
 Contains Duende templates for the `dotnet` CLI to help jump-start your Duende-powered solutions.
 
-Note
-
-You may have a previous version of Duende templates (`Duende.IdentityServer.Templates`) installed on your machine. Please uninstall the template package and install the latest version.
-
 You can install the templates using the following command:
 
 Terminal
@@ -15392,6 +16338,17 @@ Duende IdentityServer with ASP.NET Core Identity            duende-is-aspid     
 Duende IdentityServer with Entity Framework Stores          duende-is-ef          [C#]      Web/Duende/IdentityServer
 Duende IdentityServer with In-Memory Stores and Test Users  duende-is-inmem       [C#]      Web/Duende/IdentityServer
 Duende IdentityServer                                       duende-is             [C#]      Web/Duende/IdentityServer
+```
+
+Note
+
+You may have a previous version of Duende templates (`Duende.Templates`) installed on your machine. To uninstall the previous template package, and install the latest version, use the following command:
+
+Terminal
+
+```bash
+dotnet new uninstall Duende.Templates
+dotnet new install Duende.Templates
 ```
 
 ## Template Descriptions
@@ -15620,6 +16577,12 @@ This template includes several third-party dependencies:
 The **Duende IdentityServer with ASP.NET Core Identity** template integrates with ASP.NET Identity to provide you with an instance of Duende IdentityServer that has a user store powered by the Microsoft library.
 
 [Please read our ASP.NET Identity documentation](/identityserver/aspnet-identity/), to learn more about this integration.
+
+### BFF Templates
+
+[Section titled âBFF Templatesâ](#bff-templates)
+
+For Duende BFF template description, refer the [Duende BFF project templates](/bff/getting-started/templates/).
 -----
 # More Reading Resources
 
@@ -15665,6 +16628,10 @@ On the main page you can find instructions on how to configure your client and h
 > A comprehensive list of supported OpenID Connect and OAuth 2.x specifications implemented in Duende IdentityServer
 
 Duende IdentityServer implements the following specifications:
+
+Note
+
+Some specifications are only available in the [Duende IdentityServer Business or Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ## OpenID Connect
 
@@ -15822,7 +16789,14 @@ They will be used as a starting point for the various tutorials.
 
 Note
 
-You may have a previous version of Duende templates (`Duende.IdentityServer.Templates`) installed on your machine. Please uninstall the template package and install the latest version.
+You may have a previous version of Duende templates (`Duende.Templates`) installed on your machine. To uninstall the previous template package, and install the latest version, use the following command:
+
+Terminal
+
+```bash
+dotnet new uninstall Duende.Templates
+dotnet new install Duende.Templates
+```
 
 [YouTube video player](https://www.youtube.com/embed/cxYmODQHErM)
 -----
@@ -15866,7 +16840,14 @@ dotnet new install Duende.Templates
 
 Note
 
-You may have a previous version of Duende templates (`Duende.IdentityServer.Templates`) installed on your machine. Please uninstall the template package and install the latest version.
+You may have a previous version of Duende templates (`Duende.Templates`) installed on your machine. To uninstall the previous template package, and install the latest version, use the following command:
+
+Terminal
+
+```bash
+dotnet new uninstall Duende.Templates
+dotnet new install Duende.Templates
+```
 
 ## Create The Solution And IdentityServer Project
 
@@ -16257,7 +17238,7 @@ You can now enforce this policy at various levels, e.g.:
 
 Add the policy to the identity endpoint in `src/Api/Program.cs`:
 
-```cs
+```csharp
 app.MapGet("identity", (ClaimsPrincipal user) => user.Claims.Select(c => new { c.Type, c.Value }))
     .RequireAuthorization("ApiScope");
 ```
@@ -16778,7 +17759,7 @@ Register and configure the services for the OpenId Connect handler in`src/Identi
 
 HostingExtensions.cs
 
-```cs
+```csharp
 builder.Services.AddAuthentication()
     .AddOpenIdConnect("oidc", "Sign-in with demo.duendesoftware.com", options =>
     {
@@ -16834,7 +17815,7 @@ Add the following to `ConfigureServices` in `src/IdentityServer/HostingExtension
 
 HostingExtensions.cs
 
-```cs
+```csharp
 builder.Services.AddAuthentication()
     .AddGoogleOpenIdConnect(
         authenticationScheme: GoogleOpenIdConnectDefaults.AuthenticationScheme,
@@ -17776,88 +18757,132 @@ Given the variety of requirements and different approaches to using ASP.NET Core
 
 > Learn how to build secure Blazor WebAssembly applications using the Duende BFF security framework and integrate them with IdentityServer.
 
-Similar to JavaScript SPAs, you can build Blazor WASM applications with and without a backend. Not having a backend has all the security disadvantages we discussed already in the JavaScript quickstart.
+Blazor applications can be set up using different interactivity modes:
 
-If you are building Blazor WASM apps that do not deal with sensitive data and you want to use the no-backend approach, have a look at the standard Microsoft templates, which are using this style.
+* Static
+* Server
+* WebAssembly
+* Auto
 
-In this quickstart we will focus on how to build a Blazor WASM application using our Duende.BFF security framework. You can find the full source code [here](https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/Quickstarts/7_Blazor)
+Projects using the static or server modes can be configured just like any other ASP.NET Core application. We covered that in the [interactive applications](/identityserver/quickstarts/2-interactive/) quickstart.
+
+Similar to JavaScript SPAs, you can build Blazor WebAssembly applications with and without a backend. Not having a backend has all the security disadvantages we discussed already in the [JavaScript quickstart](/identityserver/quickstarts/javascript-clients/).
+
+So in this quickstart we will focus on how to build a Blazor WebAssembly application using our Duende.BFF security framework. You can find the full source code [here](https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/Quickstarts/7_Blazor).
+
+The âautoâ interactivity mode requires a mix of server-side authentication and authentication with a BFF. This is more complex than we want this quickstart to be. But we have a [template with annotations](https://github.com/DuendeSoftware/products/tree/main/bff/templates/src/BffBlazorAutoRenderMode) that helps with that. Before diving into that however, we recommend you first follow this quickstart first.
 
 Note
 
-To keep things simple, we will utilize our demo IdentityServer instance hosted at <https://demo.duendesoftware.com>. We will provide more details on how to configure a Blazor client in your own IdentityServer at then end.
+To keep things simple, we will use our demo IdentityServer instance hosted at <https://demo.duendesoftware.com>. We will provide more details on how to configure a Blazor client in your own IdentityServer at the end.
 
 ## Setting Up The Project
 
 [Section titled âSetting Up The Projectâ](#setting-up-the-project)
 
-The .NET 6 CLI includes a Blazor WASM with backend template. Create the directory where you want to work in, and run the following command:
+The .NET CLI includes a template that sets up a standalone Blazor WebAssembly project. Create the directory where you want to work in, and run the following command:
 
 ```plaintext
-dotnet new blazorwasm --hosted
+dotnet new blazorwasm -n BlazorWasm
 ```
 
-This will create three projects - server, client and shared.
+Now create a backend that will host the BFF.
 
-## Configuring The Backend
-
-[Section titled âConfiguring The Backendâ](#configuring-the-backend)
-
-First add the following package references to the server project:
-
-```xml
-<ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.0"/>
-    <PackageReference Include="Duende.BFF" Version="1.1.0"/>
-</ItemGroup>
+```plaintext
+dotnet new web -n BFF
 ```
 
-Next, we will add OpenID Connect and OAuth support to the backend. For this we are adding the Microsoft OpenID Connect authentication handler for the protocol interactions with the token service, and the cookie authentication handler for managing the resulting authentication session. See [here](/bff/fundamentals/session/handlers/) for more background information.
+And if youâre using Visual Studio or Rider, create a solution file and add the projects:
+
+```plaintext
+dotnet new sln -n BlazorQuickstart
+dotnet sln add BlazorWasm/BlazorWasm.csproj
+dotnet sln add BFF/BFF.csproj
+```
+
+Open the solution in your IDE or if you use Visual Studio Code open the directory where you created the solution file.
+
+## Configuring The BFF
+
+[Section titled âConfiguring The BFFâ](#configuring-the-bff)
+
+In the BFF project, add a reference to the BlazorWasm project and modify `Program.cs` as follows:
+
+Program.cs
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+
+app.MapStaticAssets();
+app.MapFallbackToFile("index.html");
+app.Run();
+```
+
+When you run just the BFF project now, you should see the Blazor application running. The call to `MapFallbackToFile` renders the entry point of the Blazor application in the browser. Itâs important that both projects run on the same site because the session cookie weâll use has the samesite=strict flag to protect against CSRF attacks.
+
+Add the following package references to the BFF project:
+
+* [Microsoft.AspNetCore.Authentication.OpenIdConnect](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OpenIdConnect)
+* [Duende.BFF](https://www.nuget.org/packages/Duende.BFF)
+
+Next, we will add OpenID Connect and OAuth support to the BFF. For this we are adding the Microsoft OpenID Connect authentication handler for the protocol interactions with IdentityServer, and the cookie authentication handler for managing the resulting authentication session. See [here](/bff/fundamentals/session/handlers/) for more background information.
 
 The BFF services provide the logic to invoke the authentication plumbing from the frontend (more about this later).
 
-Add the following snippet to your `Program.cs` above the call to `builder.Build();`
+Add the following snippet to your `Program.cs` just before the call to `builder.Build();`
 
 * Duende BFF v4
 
   Program.cs
 
-  ```cs
+  ```csharp
+  builder.Services.AddAuthorization();
+  builder.Services.AddCascadingAuthenticationState();
   builder.Services
       .AddBff()
-      .ConfigureOpenIdConnect(options =>
-      {
-          options.Authority = "https://demo.duendesoftware.com";
+          .ConfigureOpenIdConnect(options =>
+          {
+              options.Authority = "https://demo.duendesoftware.com";
 
 
-          options.ClientId = "interactive.confidential";
-          options.ClientSecret = "secret";
-          options.ResponseType = "code";
-          options.ResponseMode = "query";
+              options.ClientId = "interactive.confidential";
+              options.ClientSecret = "secret";
+              options.ResponseType = "code";
+              options.ResponseMode = "query";
 
 
-          options.Scope.Clear();
-          options.Scope.Add("openid");
-          options.Scope.Add("profile");
-          options.Scope.Add("api");
-          options.Scope.Add("offline_access");
+              options.Scope.Clear();
+              options.Scope.Add("openid");
+              options.Scope.Add("profile");
+              options.Scope.Add("api");
+              options.Scope.Add("offline_access");
 
 
-          options.MapInboundClaims = false;
-          options.GetClaimsFromUserInfoEndpoint = true;
-          options.SaveTokens = true;
-      }
-      .ConfigureCookies(options =>
-      {
-          options.Cookie.Name = "__Host-blazor";
-          options.Cookie.SameSite = SameSiteMode.Strict;
-      });
+              options.MapInboundClaims = false;
+              options.ClaimActions.MapAll();
+              options.GetClaimsFromUserInfoEndpoint = true;
+              options.SaveTokens = true;
+
+
+              options.TokenValidationParameters.NameClaimType = "name";
+              options.TokenValidationParameters.RoleClaimType = "role";
+          })
+          .ConfigureCookies(options =>
+          {
+              options.Cookie.Name = "__Host-blazor";
+              options.Cookie.SameSite = SameSiteMode.Strict;
+          });
   ```
 
 * Duende BFF v3
 
   Program.cs
 
-  ```cs
+  ```csharp
+  builder.Services.AddAuthorization();
+  builder.Services.AddCascadingAuthenticationState();
   builder.Services.AddBff();
 
 
@@ -17892,16 +18917,21 @@ Add the following snippet to your `Program.cs` above the call to `builder.Build(
 
 
           options.MapInboundClaims = false;
+          options.ClaimActions.MapAll();
           options.GetClaimsFromUserInfoEndpoint = true;
           options.SaveTokens = true;
+
+
+          options.TokenValidationParameters.NameClaimType = "name";
+          options.TokenValidationParameters.RoleClaimType = "role";
       });
   ```
 
-The last step is to add the required middleware for authentication, authorization and BFF session management. Add the following snippet after the call to `UseRouting`:
+The last step is to add the required middleware for authentication, authorization and BFF session management. Add the following snippet before the call to `MapStaticAssets`:
 
 Program.cs
 
-```cs
+```csharp
 app.UseAuthentication();
 app.UseBff();
 app.UseAuthorization();
@@ -17910,7 +18940,7 @@ app.UseAuthorization();
 app.MapBffManagementEndpoints();
 ```
 
-Finally you can run the server project. This will start the host, which will in turn deploy the Blazor application to your browser.
+Now run the BFF project again. **Be sure to use https.**
 
 Try to manually invoke the BFF login endpoint on `/bff/login` - this should bring you to the demo IdentityServer. After login (e.g. using bob/bob), the browser will return to the Blazor application.
 
@@ -17920,67 +18950,49 @@ In other words, the fundamental authentication plumbing is already working. Now 
 
 [Section titled âModifying The Frontend (Part 1)â](#modifying-the-frontend-part-1)
 
-A couple of steps are necessary to add the security and identity plumbing to a Blazor application.
+A couple of steps are necessary to add the security and identity plumbing to the Blazor application.
 
-*`a)`* Add the authentication/authorization related package to the client project file:
+*`a)`* Install the NuGet package [âMicrosoft.AspNetCore.Components.WebAssembly.Authenticationâ](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/).
 
-```xml
-<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0"/>
-```
+*`b)`* Add a using statement to `_Imports.razor` in the BlazorWasm project:
 
-*`b)`* Add a using statement to `_Imports.razor` to bring the above package in scope:
-
-```cs
+```csharp
 @using Microsoft.AspNetCore.Components.Authorization
 ```
 
-*`c)`* To propagate the current authentication state to all pages in your Blazor client, you add a special component called `CascadingAuthenticationState` to your application. This is done by wrapping the Blazor router with that component in `App.razor`:
+*`c)`* To propagate the current authentication state to all pages in the Blazor client, a component called `CascadingAuthenticationState` is used. Wrap the Router component in the file `App.razor` with it:
 
-```xml
+```razor
 <CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
+    <Router AppAssembly="@typeof(App).Assembly" NotFoundPage="typeof(Pages.NotFound)">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
-            <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
-        <NotFound>
-            <PageTitle>Not found</PageTitle>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p role="alert">Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </NotFound>
     </Router>
 </CascadingAuthenticationState>
 ```
 
-*`d)`* Last but not least, we will add some conditional rendering to the layout page to be able to trigger login/logout and displaying the current user name when logged in. This is achieved by using the `AuthorizeView` component in `MainLayout.razor`:
+*`d)`* Last but not least, we will add some conditional rendering to the layout page to be able to trigger login/logout and displaying the current user name when logged in. This is achieved by using the `AuthorizeView` component in `MainLayout.razor`. Replace the contents of the `<main>` with this:
 
 ```razor
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
-
-    <div class="main">
+    <main>
         <div class="top-row px-4">
             <AuthorizeView>
                 <Authorized>
                     <strong>Hello, @context.User.Identity.Name!</strong>
-                    <a href="@context.User.FindFirst(" bff:logout_url")?.Value">Log out
-                </a>
-            </Authorized>
-            <NotAuthorized>
-                <a href="bff/login">Log in</a>
-            </NotAuthorized>
-        </AuthorizeView>
-    </div>
-
-
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+                    <a href="@context.User.FindFirst("bff:logout_url")?.Value">Log out
+                    </a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="bff/login">Log in</a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
 ```
 
 When you now run the Blazor application, you will see the following error in your browser console:
@@ -17992,175 +19004,26 @@ crit: Microsoft.AspNetCore.Components.WebAssembly.Rendering.WebAssemblyRenderer[
 
 `CascadingAuthenticationState` is an abstraction over an arbitrary authentication system. It internally relies on a service called `AuthenticationStateProvider` to return the required information about the current authentication state and the information about the currently logged on user.
 
-This component needs to be implemented, and thatâs what weâll do next.
+A special version of this component, aware of the BFF, has to be added, and thatâs what weâll do next.
 
 ## Modifying The Frontend (Part 2)
 
 [Section titled âModifying The Frontend (Part 2)â](#modifying-the-frontend-part-2)
 
-The BFF library has a server-side component that allows querying the current authentication session and state ( see [here](/bff/fundamentals/session/management/user/)). We will now add a Blazor `AuthenticationStateProvider` that will internally use this endpoint.
+The BFF library we just configured includes an endpoint that allows the Blazor application to query the current authentication session and state (see [here](/bff/fundamentals/session/management/user/)). We will now add a Blazor `AuthenticationStateProvider` that will internally use this endpoint. It is included in our NuGet package âDuende.BFF.Blazor.Clientâ.
 
-Add a file with the following content:
+In the BlazorWasm.Client project:
 
-```cs
-using System.Net;
-using System.Net.Http.Json;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Components.Authorization;
+* Add the NuGet package [âDuende.BFF.Blazor.Clientâ](https://www.nuget.org/packages/Duende.BFF.Blazor.Client/).
+* In `Program.cs`, just before the call to `builder.Build().RunAsync();`, add the following code:
 
-
-namespace Blazor6.Client.BFF;
-
-
-public class BffAuthenticationStateProvider
-    : AuthenticationStateProvider
-{
-    private static readonly TimeSpan UserCacheRefreshInterval
-        = TimeSpan.FromSeconds(60);
-
-
-    private readonly HttpClient _client;
-    private readonly ILogger<BffAuthenticationStateProvider> _logger;
-
-
-    private DateTimeOffset _userLastCheck
-        = DateTimeOffset.FromUnixTimeSeconds(0);
-    private ClaimsPrincipal _cachedUser
-        = new ClaimsPrincipal(new ClaimsIdentity());
-
-
-    public BffAuthenticationStateProvider(
-        HttpClient client,
-        ILogger<BffAuthenticationStateProvider> logger)
-    {
-        _client = client;
-        _logger = logger;
-    }
-
-
-    public override async Task<AuthenticationState> GetAuthenticationStateAsync()
-    {
-        return new AuthenticationState(await GetUser());
-    }
-
-
-    private async ValueTask<ClaimsPrincipal> GetUser(bool useCache = true)
-    {
-        var now = DateTimeOffset.Now;
-        if (useCache && now < _userLastCheck + UserCacheRefreshInterval)
-        {
-            _logger.LogDebug("Taking user from cache");
-            return _cachedUser;
-        }
-
-
-        _logger.LogDebug("Fetching user");
-        _cachedUser = await FetchUser();
-        _userLastCheck = now;
-
-
-        return _cachedUser;
-    }
-
-
-    record ClaimRecord(string Type, object Value);
-
-
-    private async Task<ClaimsPrincipal> FetchUser()
-    {
-        try
-        {
-            _logger.LogInformation("Fetching user information.");
-            var response = await _client.GetAsync("bff/user?slide=false");
-
-
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var claims = await response.Content.ReadFromJsonAsync<List<ClaimRecord>>();
-
-
-                var identity = new ClaimsIdentity(
-                    nameof(BffAuthenticationStateProvider),
-                    "name",
-                    "role");
-
-
-                foreach (var claim in claims)
-                {
-                    identity.AddClaim(new Claim(claim.Type, claim.Value.ToString()));
-                }
-
-
-                return new ClaimsPrincipal(identity);
-            }
-        }
-        catch (Exception ex)
-        {
-            _logger.LogWarning(ex, "Fetching user failed.");
-        }
-
-
-        return new ClaimsPrincipal(new ClaimsIdentity());
-    }
-}
+```csharp
+builder.Services.AddBffBlazorClient();
 ```
 
-â¦and register it in the clientâs `Program.cs`:
+If you restart the application again, the logon/logoff logic should work now. In addition, you can display the contents of the session on the main page by replacing the code in `Home.razor` with this:
 
-Program.cs
-
-```cs
-builder.Services.AddAuthorizationCore();
-builder.Services.AddScoped<AuthenticationStateProvider, BffAuthenticationStateProvider>();
-```
-
-If you run the server app now again, you will see a different error:
-
-Terminal
-
-```bash
-fail: Duende.Bff.Endpoints.BffMiddleware[1]
-      Anti-forgery validation failed. local path: '/bff/user'
-```
-
-This is due to the antiforgery protection that is applied automatically to the management endpoints in the BFF host. To properly secure the call, you need to add a static `X-CSRF` header to the call. See [here](/bff/fundamentals/apis/local/) for more background information.
-
-This can be easily accomplished by a delegating handler that can be plugged into the default HTTP client used by the Blazor frontend. Letâs first add the handler:
-
-```cs
-public class AntiforgeryHandler : DelegatingHandler
-{
-    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-    {
-        request.Headers.Add("X-CSRF", "1");
-        return base.SendAsync(request, cancellationToken);
-    }
-}
-```
-
-â¦and register it in the clientâs `Program.cs` (overriding the standard HTTP client configuration; requires package Microsoft.Extensions.Http):
-
-Program.cs
-
-```cs
-// HTTP client configuration
-builder.Services.AddTransient<AntiforgeryHandler>();
-
-
-builder.Services.AddHttpClient("backend", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-    .AddHttpMessageHandler<AntiforgeryHandler>();
-builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("backend"));
-```
-
-This requires an additional reference in the client project:
-
-```plaintext
-<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-```
-
-If you restart the application again, the logon/logoff logic should work now. In addition you can display the contents of the session on the main page by adding this code to `Index.razor`:
-
-```plaintext
+```razor
 @page "/"
 
 
@@ -18183,50 +19046,56 @@ If you restart the application again, the logon/logoff logic should work now. In
 </AuthorizeView>
 ```
 
-## Securing The Local API
+The claims you see on the page are coming from the user endpoint on the BFF and the `AuthenticationStateProvider` we just registered with the call to `AddBffBlazorClient` takes care of polling the endpoint.
 
-[Section titled âSecuring The Local APIâ](#securing-the-local-api)
+## Securing a Local API Endpoint
 
-The standard Blazor template contains an API endpoint (`WeatherForecastController.cs`). Try invoking the weather page from the UI. It works both in logged in and anonymous state. We want to change the code to make sure, that only authenticated users can call the API.
+[Section titled âSecuring a Local API Endpointâ](#securing-a-local-api-endpoint)
 
-The standard way in ASP.NET Core would be to add an authorization requirement to the endpoint, either on the controller/action or via the endpoint routing, e.g.:
+Right now the BFF project doesnât contain any endpoints. Letâs create a simple one that will be used by the Blazor application.
 
-```cs
-app.MapControllers()
-        .RequireAuthorization();
+*`a)`* Observe the `Weather.razor` page in the BlazorWasm project. In `OnInitializedAsync`, it fetches data from a file.
+
+*`b)`* Move the file wwwwroot/sample-data/weather.json to the root of the BFF project.
+
+*`c)`* In the `Program.cs` file of the BFF project, just above the `MapFallbackToFile` call, add the following code:
+
+Program.cs
+
+```csharp
+app.MapGet("/api/data", async () =>
+{
+    var json = await File.ReadAllTextAsync("weather.json");
+    return Results.Content(json, "application/json");
+}).RequireAuthorization().AsBffApiEndpoint();
 ```
 
-When you now try to invoke the API anonymously, you will see the following error in the browser console:
+`RequireAuthorization` is ASP.NET Coreâs standard way to make sure a user is authenticated before accessing a given endpoint. `AsBffApiEndpoint` is an extension method provided by the BFF library that adds anti-forgery protection to the endpoint and returns the expected 401 response when the user is not authenticated.
 
-```plaintext
-Access to fetch at 'https://demo.duendesoftware.com/connect/authorize?client_id=...[shortened]... (redirected from 'https://localhost:5002/WeatherForecast') from origin 'https://localhost:5002' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+The anti-forgery protection consists of the requirement to include an `X-CSRF` HTTP header with each request.
+
+*`d)`* In the `Program.cs` file of the BlazorWasm project, replace the registration of the `HttpClient` with the following:
+
+Program.cs
+
+```csharp
+builder.Services.AddTransient<HttpClient>(sp =>
+{
+    var client = new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) };
+    client.DefaultRequestHeaders.Add("X-CSRF", "1");
+    return client;
+});
 ```
 
-This happens because the ASP.NET Core authentication plumbing is triggering a redirect to the OpenID Connect provider for authentication. What we really want in that case is an API friendly status code - 401 in this scenario.
+Alternatively, a [handler](https://duendesoftware.com/blog/20250902-dotnet-httpclient-and-delegating-handlers) can be created and used with the `HttpClient` instance.
 
-This is one of the features of the BFF middleware, but you need to mark the endpoint as a BFF API endpoint for that to take effect:
-
-```cs
-app.MapControllers()
-        .RequireAuthorization()
-        .AsBffApiEndpoint();
-```
-
-After making this change, you should see a much better error message:
-
-```plaintext
-Response status code does not indicate success: 401 (Unauthorized).
-```
-
-The client code can properly respond to this, e.g. triggering a login redirect.
-
-When you logon now and call the API, you can put a breakpoint server-side and inspect that the API controller has access to the claims of the authenticated user via the `.User` property.
+And with this in place, the application should be able to fetch data from the API endpoint when the Weather page is shown.
 
 ## Setting Up A Blazor BFF client In IdentityServer
 
 [Section titled âSetting Up A Blazor BFF client In IdentityServerâ](#setting-up-a-blazor-bff-client-in-identityserver)
 
-In essence a BFF client is âjustâ a normal authorization code flow client:
+In essence, a BFF client is âjustâ a normal authorization code flow client:
 
 * use the code grant type
 * set a client secret
@@ -18236,7 +19105,7 @@ In essence a BFF client is âjustâ a normal authorization code flow cli
 
 Below is a typical code snippet for the client definition:
 
-```cs
+```csharp
 var bffClient = new Client
 {
     ClientId = "bff",
@@ -18262,16 +19131,6 @@ var bffClient = new Client
     AllowedScopes = { "openid", "profile", "remote_api" }
 };
 ```
-
-## Further Experiments
-
-[Section titled âFurther Experimentsâ](#further-experiments)
-
-Our Blazor BFF [sample](/bff/samples/#blazor-wasm) is based on this Quickstart. In addition it shows concepts like
-
-* better organization with components
-* reacting to logout
-* using the authorize attribute to trigger automatic redirects to the login page
 -----
 # Building Browser-Based Client Applications
 
@@ -18281,7 +19140,7 @@ When building browser-based or SPA applications using javascript, there are two 
 
 Browser-based applications **with a backend** are more secure, making it the recommended style. This style uses the [âBackend For Frontendâ pattern](https://duendesoftware.com/blog/20210326-bff), or âBFFâ for short, which relies on the backend host to implement all the security protocol interactions with the token server. The `Duende.BFF` library is used in [this quickstart](/identityserver/quickstarts/javascript-clients/js-with-backend/) to easily support the BFF pattern.
 
-Browser-based applications **without a backend** need to do all the security protocol interactions on the client-side, including driving user authentication and token requests, session and token management, and token storage. This leads to more complex JavaScript, cross-browser incompatibilities, and a considerably higher attack surface. Since this style inherently needs to store security sensitive artifacts (like tokens) in JavaScript reachable locations, this style is not recommended. **Consequently, we donât offer a quickstart for this style**.
+Browser-based applications **without a backend** need to do all the security protocol interactions on the client-side, including driving user authentication and token requests, session and token management, and token storage. This leads to more complex JavaScript, cross-browser incompatibilities, and a considerably higher attack surface. Since this style inherently needs to store security sensitive artifacts (like tokens) in JavaScript reachable locations, **this style is not recommended**.
 
 As the [âOAuth 2.0 for Browser-Based Appsâ IETF/OAuth working group BCP document](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-browser-based-apps) says:
 
@@ -18395,7 +19254,7 @@ Add the following to `src/JavaScriptClient/Program.cs`:
           options.GetClaimsFromUserInfoEndpoint = true;
           options.MapInboundClaims = false;
       }
-      .ConfigureCookies()
+      .ConfigureCookies(options => options.Cookie.SameSite = SameSiteMode.Strict)
       .AddRemoteApis();
 
 
@@ -18457,7 +19316,7 @@ Similarly, the middleware pipeline for this application will resemble the WebCli
 
 Program.cs
 
-```cs
+```csharp
 var app = builder.Build();
 
 
@@ -18628,7 +19487,7 @@ Now that the client application is ready to go, you need to define a configurati
 
 In the IdentityServer project locate the client configuration in `src/IdentityServer/Config.cs`. Add a new `Client` to the list for your new JavaScript application. Because this client uses the BFF pattern, the configuration will be very similar to the Web client. In addition, requesting the offline\_access scope should be allowed for this client. It should have the configuration listed below:
 
-```cs
+```csharp
 // JavaScript BFF client
 new Client
 {
@@ -18693,7 +19552,7 @@ Local APIs can be defined using controllers or with [Minimal API Route Handlers]
 
 Add a handler to `src/JavaScriptClient/Program.cs` for the local API:
 
-```cs
+```csharp
 [Authorize]
 static IResult LocalIdentityHandler(ClaimsPrincipal user)
 {
@@ -18712,7 +19571,7 @@ Local APIs often make requests to remote APIs that are authorized with the user�
 
 Next, you need to register both the local API and the BFF proxy for the remote API in the ASP.NET Core routing system. Add the code below to the endpoint configuration code in `src/JavaScriptClient/Program.cs`.
 
-```cs
+```csharp
   app.MapBffManagementEndpoints();
 
 
@@ -18726,7 +19585,7 @@ Next, you need to register both the local API and the BFF proxy for the remote A
 
 
   app.MapRemoteBffApiEndpoint("/remote", new Uri("https://localhost:6001"))
-      .WithAccessToken(Duende.Bff.AccessTokenManagement.RequiredTokenType.User);
+      .WithAccessToken(RequiredTokenType.User);
 ```
 
 The call to the `AsBffApiEndpoint()` fluent helper method adds BFF support to the local APIs. This includes anti-forgery protection and suppressing login redirects on authentication failures and instead returning 401 and 403 status codes under the appropriate circumstances.
@@ -18820,7 +19679,7 @@ We recommend you do the quickstarts in order. If youâd like to start here, 
 
 This quickstart will show how to build a browser-based JavaScript client application without a backend. This means your application has no server-side code that can support the frontend application code, and thus all OpenID Connect/OAuth protocol interactions occur from the JavaScript code running in the browser. Also, invoking the API will be performed directly from the JavaScript in the browser.
 
-This design adds complexity (and thus security concerns) to your application, so consider if the [âBFFâ pattern](/identityserver/quickstarts/javascript-clients/js-with-backend/) might be a better choice.
+**This design has security concerns. It is no longer recommended.** See [overview](/identityserver/quickstarts/javascript-clients/) for details. The current best practice uses the [âBFFâ pattern](/identityserver/quickstarts/javascript-clients/js-with-backend/).
 
 In this quickstart the user will log in to IdentityServer, invoke an API with an access token issued by IdentityServer, and logout of IdentityServer. All of this will be driven from the JavaScript running in the browser.
 
@@ -18828,7 +19687,7 @@ In this quickstart the user will log in to IdentityServer, invoke an API with an
 
 [Section titled âNew Project For The JavaScript Clientâ](#new-project-for-the-javascript-client)
 
-Create a new project for the JavaScript application. Beyond being able to serve your applicationâs html and javascript, there are no requirements on the backend. You could use anything from an empty ASP.NET Core application to a Node.js application. This quickstart will use an ASP.NET Core application.
+Create a new project for the JavaScript application. Beyond being able to serve your applicationâs HTML and javascript, there are no requirements on the backend. You could use anything from an empty ASP.NET Core application to a Node.js application. This quickstart will use an ASP.NET Core application.
 
 Create a new ASP.NET Core web application and add it to the solution by running the following commands from the `src` directory:
 
@@ -18869,7 +19728,7 @@ Given that this project is designed to run client-side, all we need ASP.NET Core
 
 Register the static file middleware in `src/JavaScriptClient/Program.cs`. The entire file should look like this:
 
-```cs
+```csharp
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -19066,7 +19925,7 @@ Now that the client application is ready to go, you need to define a configurati
 
 In the IdentityServer project locate the client configuration in `src/IdentityServer/Config.cs`. Add a new `Client` to the list for your new JavaScript application. It should have the configuration listed below:
 
-```cs
+```csharp
 // JavaScript Client
 new Client
 {
@@ -19102,7 +19961,7 @@ Add the CORS service to the dependency injection system in `src/Api/Program.cs`:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddCors(options =>
 {
     // this defines a CORS policy called "default"
@@ -19119,7 +19978,7 @@ Then add the CORS middleware to the pipeline in `src/Api/Program.cs`.
 
 Program.cs
 
-```cs
+```csharp
 app.UseHttpsRedirection();
 app.UseCors("default");
 ```
@@ -19565,7 +20424,7 @@ The steps are invoked in the same order as they appear in this table.
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer();
 ```
 
@@ -19761,7 +20620,7 @@ You set the options at startup time in your `AddConfigurationStore` method:
 
 Program.cs
 
-```cs
+```csharp
 var builder = services.AddIdentityServer()
     .AddConfigurationStore(options =>
     {
@@ -19846,7 +20705,7 @@ You set the options at startup time in your `AddOperationalStore` method:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddOperationalStore(options =>
     {
@@ -20051,7 +20910,7 @@ GET /connect/authorize?
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically create authorize request URLs from .NET code.
 
-```cs
+```csharp
 var ru = new RequestUrl("https://demo.duendesoftware.com/connect/authorize");
 
 
@@ -20169,7 +21028,7 @@ Cache-Control: no-store
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20188,7 +21047,7 @@ var cibaResponse = await client.RequestBackchannelAuthenticationAsync(new Backch
 
 And with a successful response, it can be used to poll the token endpoint:
 
-```cs
+```csharp
 while (true)
 {
     var response = await client.RequestBackchannelAuthenticationTokenAsync(new BackchannelAuthenticationTokenRequest
@@ -20251,7 +21110,7 @@ POST /connect/deviceauthorization
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20350,7 +21209,7 @@ This can be helpful when configuring IdentityServer in a multi-tenant scenario w
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 var client = new HttpClient();
 
 
@@ -20389,7 +21248,7 @@ GET /connect/endsession?id_token_hint=...&post_logout_redirect_uri=http%3A%2F%2F
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically create end sessions request URLs from .NET code.
 
-```cs
+```csharp
 var ru = new RequestUrl("https://demo.duendesoftware.com/connect/end_session");
 
 
@@ -20505,7 +21364,7 @@ A successful response will return a status code of 200 and has a `Content-Type: 
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20573,7 +21432,7 @@ token=...&token_type_hint=refresh_token
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20691,7 +21550,7 @@ CONTENT-TYPE application/x-www-form-urlencoded
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20745,7 +21604,7 @@ Content-Type: application/json
 
 You can use the [Duende IdentityModel](/identitymodel/) client library to programmatically interact with the protocol endpoint from .NET code.
 
-```cs
+```csharp
 using Duende.IdentityModel.Client;
 
 
@@ -20867,7 +21726,7 @@ Then pass the configuration section to the `AddInMemoryApiResource` method:
 
 Program.cs
 
-```cs
+```csharp
 idsvrBuilder.AddInMemoryApiResources(configuration.GetSection("IdentityServer:ApiResources"))
 ```
 -----
@@ -20941,7 +21800,7 @@ Then pass the configuration section to the `AddInMemoryApiScopes` method:
 
 Program.cs
 
-```cs
+```csharp
 idsvrBuilder.AddInMemoryApiScopes(configuration.GetSection("IdentityServer:ApiScopes"))
 ```
 -----
@@ -21001,7 +21860,7 @@ Models the information to initiate a user login request for [CIBA](/identityserv
 
 The `Client` class models an OpenID Connect or OAuth 2.0 client - e.g. a native application, a web application or a JS-based application.
 
-```cs
+```csharp
 public static IEnumerable<Client> Get()
 {
     return new List<Client>
@@ -21357,7 +22216,7 @@ The `GrantValidationResult` class models the outcome of grant validation for [ex
 
 It models either a successful validation result with claims (e.g. subject ID) or an invalid result with an error code and message, e.g.:
 
-```cs
+```csharp
 public class ExtensionGrantValidator : IExtensionGrantValidator
 {
     public Task ValidateAsync(ExtensionGrantValidationContext context)
@@ -21388,7 +22247,7 @@ public class ExtensionGrantValidator : IExtensionGrantValidator
 
 It also allows passing additional custom values that will be included in the token response, e.g.:
 
-```cs
+```csharp
 context.Result = new GrantValidationResult(
     subject: "818727",
     authenticationMethod: "custom",
@@ -21419,7 +22278,7 @@ This will result in the following token response:
 
 This class models an identity resource.
 
-```cs
+```csharp
 public static readonly IEnumerable<IdentityResource> IdentityResources =
     new[]
     {
@@ -21635,7 +22494,7 @@ Developers can use the license usage summary to determine if their organization 
 
 Parses a secret from the raw HTTP request.
 
-```cs
+```csharp
 public interface ISecretParser
 {
     /// <summary>
@@ -21668,7 +22527,7 @@ public interface ISecretParser
 
 Represents a parsed secret.
 
-```cs
+```csharp
 /// <summary>
 /// Represents a secret extracted from the HttpContext
 /// </summary>
@@ -21719,7 +22578,7 @@ The parsed secret is forwarded to the registered secret validator. The validator
 
 Validates a parsed secret.
 
-```cs
+```csharp
 public interface ISecretValidator
 {
     /// <summary>Validates a secret</summary>
@@ -21746,7 +22605,7 @@ You set the options when registering IdentityServer at startup time, using a lam
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     // configure options here..
@@ -21979,7 +22838,7 @@ If you want to take full control over the rendering of the discovery and jwks do
 
 Program.cs
 
-```cs
+```csharp
 var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 {
     options.Discovery.CustomEntries.Add("my_setting", "foo");
@@ -21994,7 +22853,7 @@ var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 
 * **`ExpandRelativePathsInCustomEntries`** Expands paths in custom entries that begin with â\~/â into absolute paths below the IdentityServer base address. Defaults to true. In the following example, if IdentityServerâs base address is `https://localhost:5001`, then `my_custom_endpoint`âs value will be expanded to `https://localhost:5001/custom`.
 
-```cs
+```csharp
 options.Discovery.CustomEntries.Add("my_custom_endpoint", "~/custom");
 ```
 
@@ -22342,7 +23201,7 @@ OAuth device flow settings. Available on the `DeviceFlow` property of the `Ident
 
 Program.cs
 
-```cs
+```csharp
 var builder = services.AddIdentityServer(options =>
 {
     options.MutualTls.Enabled = true;
@@ -22606,7 +23465,7 @@ The `IHttpResponseWriter` interface is the contract for services that can produc
 
 [Section titled âDuende.IdentityServer.Hosting.IHttpResponseWriterâ](#duendeidentityserverhostingihttpresponsewriter)
 
-```cs
+```csharp
 /// <summary>
 /// Contract for a service that writes appropriate http responses for <see
 /// cref="IEndpointResult"/> objects.
@@ -22625,7 +23484,7 @@ public interface IHttpResponseWriter<in T>
 
 [Section titled âDuende.IdentityServer.Hosting.IEndpointResultâ](#duendeidentityserverhostingiendpointresult)
 
-```cs
+```csharp
 /// <summary>
 /// An <see cref="IEndpointResult"/> is the object model that describes the
 /// results that will returned by one of the protocol endpoints provided by
@@ -23105,7 +23964,7 @@ The above methods return various models.
 
 Provides access to a userâs grants.
 
-```cs
+```csharp
     /// <summary>
     /// Implements persisted grant logic
     /// </summary>
@@ -23134,7 +23993,7 @@ Provides access to a userâs grants.
 
 [Section titled âGrantâ](#grant)
 
-```cs
+```csharp
     /// <summary>
     /// Models a grant the user has given.
     /// </summary>
@@ -23205,7 +24064,7 @@ Provides access to a userâs grants.
 
 Encapsulates retrieval of user claims from a data source of your choice. See [here](/identityserver/samples/ui/#custom-profile-service) for a sample.
 
-```cs
+```csharp
 /// <summary>
 /// This interface allows IdentityServer to connect to your user and profile store.
 /// </summary>
@@ -23306,7 +24165,7 @@ Models the request to determine if the user is currently allowed to obtain token
 
 All refresh token handling is implemented in the `DefaultRefreshTokenService` (which is the default implementation of the `IRefreshTokenService` interface):
 
-```cs
+```csharp
 public interface IRefreshTokenService
 {
     /// <summary>
@@ -23346,7 +24205,7 @@ See also: [Refreshing a token](/identityserver/tokens/refresh/)
 
 When using [server-side sessions](/identityserver/ui/server-side-sessions/), the `ISessionManagementService` provides an administrative feature to query those sessions and terminate those sessions (including associated tokens, consents, and triggering back-channel logout to the clients).
 
-```cs
+```csharp
 /// <summary>
 /// Session management service
 /// </summary>
@@ -23367,7 +24226,7 @@ public interface ISessionManagementService
 
 `QuerySessionsAsync` allows for returning paged results of `UserSession` data based on the optional `SessionQuery` filter.
 
-```cs
+```csharp
 /// <summary>
 /// Results from querying user sessions from session management service.
 /// </summary>
@@ -23424,7 +24283,7 @@ public class UserSession
 
 `RemoveSessionsAsync` will terminate server-side sessions based on `SubjectId` and/or `SessionId`, and allow for fine-grained flags for what to revoke and/or notify.
 
-```cs
+```csharp
 /// <summary>
 /// Models the information to remove a user's session data.
 /// </summary>
@@ -23606,7 +24465,7 @@ IdentityServer provides default in-memory implementations of these stores for de
 
 Used to store backchannel login requests (for [CIBA](/identityserver/ui/ciba/)).
 
-```cs
+```csharp
 /// <summary>
 /// Interface for the backchannel authentication request store
 /// </summary>
@@ -23653,7 +24512,7 @@ public interface IBackChannelAuthenticationRequestStore
 
 [Section titled âBackChannelAuthenticationRequestâ](#backchannelauthenticationrequest)
 
-```cs
+```csharp
 /// <summary>
 /// Models a backchannel authentication request.
 /// </summary>
@@ -23762,7 +24621,7 @@ public class BackChannelAuthenticationRequest
 
 Used to dynamically load client configuration.
 
-```cs
+```csharp
 /// <summary>
 /// Retrieval of client configuration
 /// </summary>
@@ -23787,7 +24646,7 @@ public interface IClientStore
 
 Used to determine if CORS requests are allowed to certain protocol endpoints.
 
-```cs
+```csharp
 /// <summary>
 /// Service that determines if CORS is allowed.
 /// </summary>
@@ -23812,7 +24671,7 @@ public interface ICorsPolicyService
 
 Models storage of grants for the device flow.
 
-```cs
+```csharp
 /// <summary>
 /// Interface for the device flow store
 /// </summary>
@@ -23863,7 +24722,7 @@ public interface IDeviceFlowStore
 
 [Section titled âDeviceCodeâ](#devicecode)
 
-```cs
+```csharp
 /// <summary>
 /// Represents data needed for device flow.
 /// </summary>
@@ -23970,7 +24829,7 @@ public class DeviceCode
 
 Used to dynamically load [identity provider configuration](/identityserver/reference/models/idp/).
 
-```cs
+```csharp
 /// <summary>
 /// Interface to model storage of identity providers.
 /// </summary>
@@ -24078,7 +24937,7 @@ Some grants can set a `ConsumedTime` when they are used. This applies to grants 
 
 [Section titled âPersistedGrantFilterâ](#persistedgrantfilter)
 
-```cs
+```csharp
 /// <summary>
 /// Represents a filter used when accessing the persisted grants store.
 /// Setting multiple properties is interpreted as a logical 'AND' to further filter the query.
@@ -24129,7 +24988,7 @@ public class PersistedGrantFilter
 
 The types of persisted grants are defined by the `IdentityServerConstants.PersistedGrantTypes` constants:
 
-```cs
+```csharp
 public static class PersistedGrantTypes
 {
     public const string AuthorizationCode = "authorization_code";
@@ -24152,7 +25011,7 @@ The pushed authorization request store is responsible for creating, retrieving, 
 
 [Section titled âDuende.IdentityServer.Stores.IPushedAuthorizationRequestStoreâ](#duendeidentityserverstoresipushedauthorizationrequeststore)
 
-```cs
+```csharp
 /// <summary>
 /// The interface for a service that stores pushed authorization requests.
 /// </summary>
@@ -24197,7 +25056,7 @@ public interface IPushedAuthorizationRequestStore
 
 [Section titled âDuende.IdentityServer.Models.PushedAuthorizationRequestâ](#duendeidentityservermodelspushedauthorizationrequest)
 
-```cs
+```csharp
 /// <summary>
 /// Represents a persisted Pushed Authorization Request.
 /// </summary>
@@ -24242,7 +25101,7 @@ public class PushedAuthorizationRequest
 
 Used to dynamically load resource configuration.
 
-```cs
+```csharp
 /// <summary>
 /// Resource retrieval
 /// </summary>
@@ -24289,7 +25148,7 @@ public interface IResourceStore
 
 Used to persist usersâ authentication session data when using the [server-side sessions feature](/identityserver/ui/server-side-sessions/).
 
-```cs
+```csharp
 /// <summary>
 /// User session store
 /// </summary>
@@ -24346,7 +25205,7 @@ public interface IServerSideSessionStore
 
 [Section titled âServerSideSessionâ](#serversidesession)
 
-```cs
+```csharp
 /// <summary>
 /// A user session
 /// </summary>
@@ -24415,7 +25274,7 @@ The `Ticket` property contains a copy of all the values (and more) and is consid
 
 [Section titled âSessionFilterâ](#sessionfilter)
 
-```cs
+```csharp
 /// <summary>
 /// Filter to query user sessions
 /// </summary>
@@ -24438,7 +25297,7 @@ public class SessionFilter
 
 [Section titled âSessionQueryâ](#sessionquery)
 
-```cs
+```csharp
 /// <summary>
 /// Filter to query all user sessions
 /// </summary>
@@ -24485,7 +25344,7 @@ public class SessionQuery
 
 [Section titled âQueryResultâ](#queryresult)
 
-```cs
+```csharp
 /// <summary>
 /// Query result for paged data
 /// </summary>
@@ -24545,7 +25404,7 @@ public class QueryResult<T>
 
 Used to dynamically load client configuration.
 
-```cs
+```csharp
 /// <summary>
 /// Interface to model storage of serialized keys.
 /// </summary>
@@ -24579,7 +25438,7 @@ public interface ISigningKeyStore
 
 [Section titled âSerializedKeyâ](#serializedkey)
 
-```cs
+```csharp
 /// <summary>
 /// Serialized key.
 /// </summary>
@@ -24712,7 +25571,7 @@ Models the result of a CIBA login request.
 
 Allows running custom code as part of the authorization issuance pipeline at the authorization endpoint.
 
-```cs
+```csharp
 /// <summary>
 /// Allows inserting custom validation logic into authorize requests
 /// </summary>
@@ -24742,7 +25601,7 @@ public interface ICustomAuthorizeRequestValidator
 
 Allows running custom code as part of the token issuance pipeline at the token endpoint.
 
-```cs
+```csharp
 /// <summary>
 /// Allows inserting custom validation logic into token requests
 /// </summary>
@@ -24861,7 +25720,7 @@ Models the result of a DPoP proof token validation.
 
 Use an implementation of this interface to handle [extension grants](/identityserver/tokens/extension-grants/).
 
-```cs
+```csharp
 public interface IExtensionGrantValidator
 {
     /// <summary>
@@ -24893,7 +25752,7 @@ The instance of the extension grant validator gets registered with:
 
 Program.cs
 
-```cs
+```csharp
 builder.AddExtensionGrantValidator<MyValidator>();
 ```
 -----
@@ -24907,7 +25766,7 @@ The source code for the samples is in our [GitHub repository](https://github.com
 
 [Samples Source Code on GitHub ](https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7)GitHub Repository for the Duende IdentityServer samples
 
-Most of the samples include both their own IdentityServer implementation and the clients and APIs needed to demonstrate the illustrated functionality. The [*Basics*](/identityserver/samples/basics/) samples use a [shared IdentityServer implementation](https://github.com/DuendeSoftware/Samples/tree/main/IdentityServer/v7/Basics/IdentityServer). Some samples use our public [demo instance of IdentityServer](https://demo.duendesoftware.com/).
+Most of the samples include both their own IdentityServer implementation and the clients and APIs needed to demonstrate the illustrated functionality. The [*Basics*](/identityserver/samples/basics/) samples use a [shared IdentityServer implementation](https://github.com/DuendeSoftware/samples/tree/main/IdentityServer/v7/IdentityServerHost). Some samples use our public [demo instance of IdentityServer](https://demo.duendesoftware.com/).
 
 ## Feedback
 
@@ -24958,10 +25817,6 @@ In the client application:
 [Section titled âASP.NET Identity Passkey â.NET 10](#aspnet-identity-passkey)
 
 This sample shows how to port passkey support from a .NET 10 Blazor App project template into Duende IdentityServer.
-
-.NET 10 preview 7
-
-This sample was written using the functionality available in .NET 10 preview 7. The final .NET 10 release may provide a different API surface.
 
 It is based on the [*Duende IdentityServer with ASP.NET Core Identity*](/identityserver/overview/packaging/#duende-identityserver-with-aspnet-core-identity) project template, and adds the necessary changes to support passkey authentication:
 
@@ -25113,6 +25968,14 @@ This sample is only relevant if youâre using .NET 8 or lower.
 > A collection of client technology samples demonstrating how to connect different platforms like .NET 4.8 WebForms, MVC, and .NET MAUI to IdentityServer.
 
 This section contains a collection of samples demonstrating various client technologies connecting to Duende IdentityServer.
+
+### Model Context Protocol (MCP) Client
+
+[Section titled âModel Context Protocol (MCP) Clientâ](#model-context-protocol-mcp-client)
+
+This sample shows how to secure a Model Context Protocol (MCP) client using OpenID Connect and OAuth 2.0.
+
+[Model Context Protocol (MCP) Client Sample ](https://github.com/DuendeSoftware/samples/tree/main/IdentityServer/v7/McpDemo)GitHub Repository for the Model Context Protocol (MCP) Client Sample
 
 ### .NET 4.8 Clients
 
@@ -26107,7 +26970,7 @@ For example, in `ConfigureServices`:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddSingleton<ICorsPolicyService>((container) =>
 {
     var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
@@ -26158,7 +27021,7 @@ This allows you to
 
 The following example emits additional claims and changes the token lifetime on-the-fly based on a granted scope.
 
-```cs
+```csharp
 public class TransactionScopeTokenRequestValidator : ICustomTokenRequestValidator
 {
     public Task ValidateAsync(CustomTokenRequestValidationContext context)
@@ -26192,7 +27055,7 @@ You can register your implementation like this:
 
 Program.cs
 
-```cs
+```csharp
 idsvrBuilder.AddCustomTokenRequestValidator<TransactionScopeTokenRequestValidator>();
 ```
 -----
@@ -26654,28 +27517,19 @@ While the FAPI 2.0 allows for choice in securing communication between the autho
 
 Sometimes, extensibility code running on your IdentityServer needs access tokens to call other APIs. In this case it is not necessary to use the protocol endpoints. The tokens can be issued internally.
 
-`IIdentityServerTools` is a collection of useful internal tools that you might need when writing extensibility code for IdentityServer. To use it, inject it into your code, e.g. a controller::
+`IIdentityServerTools` is a collection of useful internal tools that you might need when writing extensibility code for IdentityServer. To use it, inject it into your code, e.g. an endpoint:
 
-```cs
-public MyController(IIdentityServerTools tools)
+```csharp
+app.MapGet("/myAction", async (IIdentityServerTools tools) =>
 {
-    _tools = tools;
-}
-```
-
-The `IssueJwtAsync` method allows creating JWT tokens using the IdentityServer token creation engine. The `IssueClientJwtAsync` is an easier version of that for creating tokens for server-to-server communication (e.g. when you have to call an IdentityServer protected API from your code):
-
-```cs
-public async Task<IActionResult> MyAction()
-{
-    var token = await _tools.IssueClientJwtAsync(
+    var token = await tools.IssueClientJwtAsync(
         clientId: "client_id",
         lifetime: 3600,
         audiences: new[] { "backend.api" });
 
 
     // more code
-}
+});
 ```
 
 The `IIdentityServerTools` interface was added in v7 to allow mocking. Previous versions referenced the `IdentityServerTools` implementation class directly.
@@ -26694,7 +27548,7 @@ You can either transmit them by value or by reference to the authorize endpoint 
 
 Duende IdentityServer requires the request JWTs to be signed. We support X509 certificates and JSON web keys, e.g.:
 
-```cs
+```csharp
 var client = new Client
 {
     ClientId = "foo",
@@ -26732,7 +27586,7 @@ You can customize the HTTP client used for this outgoing connection, e.g. to add
 
 Program.cs
 
-```cs
+```csharp
 idsvrBuilder.AddJwtRequestUriHttpClient(client =>
 {
     client.Timeout = TimeSpan.FromSeconds(30);
@@ -26781,11 +27635,15 @@ The use of PAR is encouraged by the [FAPI working group](https://openid.net/wg/f
 
 [Section titled âLicensingâ](#licensing)
 
-Duende.IdentityServer includes support for PAR in the Business Edition or higher license. In the starter edition, PAR requests will not be processed and instead log errors. If you have a starter edition license, you should disable the `EnablePushedAuthorizationEndpoint` flag so that discovery indicates that your IdentityServer does not support PAR:
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
+
+In the Starter edition, PAR requests will not be processed and instead log errors. If you have a starter edition license, you should disable the `EnablePushedAuthorizationEndpoint` flag so that discovery indicates that your IdentityServer does not support PAR:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(options =>
 {
     options.Endpoints.EnablePushedAuthorizationEndpoint = false;
@@ -27097,7 +27955,13 @@ var idsvrBuilder = builder.Services.AddIdentityServer(options =>
 
 **Version:** >=6.3
 
-[DPoP](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) is a security measure that addresses token replay attacks by making it difficult for attackers to use stolen tokens. Support for DPoP is included in [IdentityServer](https://duendesoftware.com/products/identityserver) Enterprise Edition. DPoP specifies how to bind an asymmetric key stored within a JSON Web Key (JWK) to an access token. With this enabled your IdentityServer will embed the thumbprint of the public key JWK into the access token via the cnf claim, e.g.:
+[DPoP](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) is a security measure that addresses token replay attacks by making it difficult for attackers to use stolen tokens.
+
+Note
+
+This feature is part of the [Duende IdentityServer Enterprise Edition](https://duendesoftware.com/products/identityserver).
+
+DPoP specifies how to bind an asymmetric key stored within a JSON Web Key (JWK) to an access token. With this enabled your IdentityServer will embed the thumbprint of the public key JWK into the access token via the cnf claim, e.g.:
 
 ```json
 {
@@ -27200,7 +28064,7 @@ The consumer of the token must use the [introspection](/identityserver/reference
 
 You can set the clientâs token type using the following client setting:
 
-```cs
+```csharp
 client.AccessTokenType = AccessTokenType.Reference;
 ```
 
@@ -27210,7 +28074,7 @@ client.AccessTokenType = AccessTokenType.Reference;
 
 The introspection endpoint requires authentication - since the client of an introspection endpoint is typically an API, you configure the secret on the `ApiResource`:
 
-```cs
+```csharp
     var api = new ApiResource("api1")
     {
         ApiSecrets = { new Secret("secret".Sha256()) }
@@ -27591,7 +28455,7 @@ You only need to configure it in your startup code:
 
 Program.cs
 
-```cs
+```csharp
 using Microsoft.IdentityModel.Tokens;
 
 
@@ -27924,7 +28788,11 @@ When dealing with external authentication, you may want to implement `OnTicketRe
 
 [Section titled âUse Server-side Sessionsâ](#use-server-side-sessions)
 
-If you have a Business Edition or higher license for IdentityServer, then you can use [server-side sessions](/identityserver/ui/server-side-sessions) to store the userâs session data in a data store instead of in the cookie. This will greatly reduce the size of the cookie while allowing you to store more data in the session.
+You can use [server-side sessions](/identityserver/ui/server-side-sessions) to store the userâs session data in a data store instead of in the cookie. This will greatly reduce the size of the cookie while allowing you to store more data in the session.
+
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ### Implement a Custom `ITicketStore` to Reduce Cookie Size
 
@@ -28115,6 +28983,100 @@ If you donât explicitly use the `X509KeyStorageFlags.MachineKeySet` flag va
 
 When an application runs without an active user profile, any private key material stored in a user profile canât be accessed. Even loading a certificate can fail, since the load operation could attempt to store the private key material in the user profile.
 -----
+# Export HAR Files for Analyzing Client-Side Interactions
+
+> Documentation for creating HAR files, and how they can be used for client-side diagnostics.
+
+[HTTP Archive (HAR)](https://en.wikipedia.org/wiki/HAR_\(file_format\)) files are logs of network interactions made by a web browser. They contain headers, request bodies, response payloads, and even sensitive information like cookie values sent and received for each interaction.
+
+Do not share sensitive information
+
+Before sharing HAR files you should ensure they do not contain any sensitive information. You can sanitize a file by following the [steps below](#sanitize-a-har-file).
+
+## When To Use A HAR File
+
+[Section titled âWhen To Use A HAR Fileâ](#when-to-use-a-har-file)
+
+Because HAR files are traces of all network interactions within the browser, they are commonly shared with another party to help diagnose issues. A common scenario is when there are multiple services involved with a use case. You can imagine an application where a user logs in to a site with Duende IdentityServer on the backend, and an external IdP storing the user account. That scenario has three distinct applications and the HAR file is used to trace if/when certain cookies are set within the login flow.
+
+## HAR File Considerations
+
+[Section titled âHAR File Considerationsâ](#har-file-considerations)
+
+* Consider using an **incognito window** of your browser.
+  * If you do, close all browser incognito instances you may have open and then open a new window to ensure the cache is cleared.
+* Preserve the log across page navigation.
+  * If you are navigating to different pages (ex: logging in to a site with OAuth redirects), then any network calls made before the last redirect will be lost. Preserving the logs across page navigation aids in diagnosing issues. The below steps include instructions to preserve network logs while navigating across multiple pages.
+* Generate HAR files with sensitive data.
+  * It is helpful to know that certain fields are have been set, but not necessarily the actual value. Some browsers will exclude sensitive data in HAR file exports by default. The below steps include instructions to enable sensitive data in HAR file exports for browsers that do not include it by default.
+
+## Generating A HAR File
+
+[Section titled âGenerating A HAR Fileâ](#generating-a-har-file)
+
+Generating a HAR file involves steps using your web browser and its associated developer tools. The browser-specific steps outlined below are all similar to each other. Other browsers will have similar steps.
+
+### Google Chrome
+
+[Section titled âGoogle Chromeâ](#google-chrome)
+
+1. Open the browser dev tools <https://developer.chrome.com/docs/devtools/open>.
+2. In the dev tools, click on the Settings icon. Under the Network category, enable âAllow to generate HAR with sensitive dataâ.
+3. In the dev tools, navigate to the Network tab and enable the âPreserve logâ checkbox.
+4. In the browser, visit the page(s) and perform the steps that trigger the issue.
+5. In the Network tab of the dev tools, click the down arrow and select the âExport HAR (with sensitive data)â¦â option to export the HAR file and save it locally.
+
+### Safari
+
+[Section titled âSafariâ](#safari)
+
+1. Enable the Web Inspector, and open it <https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features>.
+2. In the Web Inspector in the Developer menu, navigate to the Network tab. Click the âFilterâ button and enable âPreserve Logâ.
+3. In the browser, visit the page(s) and perform the steps that trigger the issue.
+4. In the Web Inspector, click âExportâ to export the HAR file and save it locally.
+
+### Firefox
+
+[Section titled âFirefoxâ](#firefox)
+
+1. Open the browser dev tools <https://firefox-source-docs.mozilla.org/devtools-user>.
+2. In the dev tools, navigate to the Network tab, click the Network Settings icon, and enable âPersist Logsâ.
+3. In the browser, visit the page(s) and perform the steps that trigger the issue.
+4. In the Network tab of the dev tools, click the Network Settings icon, and select âSave All As Harâ to save it locally.
+
+### Microsoft Edge
+
+[Section titled âMicrosoft Edgeâ](#microsoft-edge)
+
+1. Open the browser dev tools <https://learn.microsoft.com/en-us/microsoft-edge/devtools/overview>.
+2. In the dev tools, click on the ellipsis icon, then select âSettingsâ. Under the Network category, enable âAllow to generate HAR with sensitive dataâ.
+3. In the dev tools, navigate to the Network tab and enable the âPreserve logâ checkbox.
+4. In the browser, visit the page(s) and perform the steps that trigger the issue.
+5. In the Network tab of the dev tools, click the down arrow and select the âExport HAR (with sensitive data)â¦â option to export the HAR file and save it locally.
+
+## Viewing A HAR File
+
+[Section titled âViewing A HAR Fileâ](#viewing-a-har-file)
+
+HAR files are JSON files with a specific file extension. You can open one with any text editor you would normally open JSON files with. You can also import the HAR file into your browser dev tools to visualize it the same way you could see network interactions before exporting the file.
+
+## Sanitize A HAR File
+
+[Section titled âSanitize A HAR Fileâ](#sanitize-a-har-file)
+
+Before sharing your HAR file with anyone, you should remove any sensitive data. You can do this manually by opening the HAR file with any JSON text editor and removing the sensitive data. We recommend replacing the data with a placeholder rather than deleting the entry. When diagnosing issues, itâs helpful to know whether a field was set.
+
+## Practice
+
+[Section titled âPracticeâ](#practice)
+
+If you would like to practice with a small sample, you can login to the Duende Demo Server and generate a HAR file from those interactions.
+
+1. In your browser, navigate to <https://demo.duendesoftware.com/Account/Login>.
+2. With your browser and dev tools open, the log being preserved, and the ability to export a HAR file with sensitive data, login to the site using one of the built-in users.
+3. Export the HAR file with sensitive data.
+4. Explore the HAR file JSON with a text editor or import it into your browser dev tools.
+-----
 # User Interaction
 
 > Overview of IdentityServer's user interaction architecture, explaining how the UI is separated from the core engine to enable customization of login, logout, consent, and error pages for various authentication scenarios.
@@ -28200,11 +29162,9 @@ A number of third-party projects and products have created IdentityServer Admin 
 
 Duende IdentityServer supports the [Client-Initiated Backchannel Authentication Flow](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html) (also known as CIBA). CIBA is one of the requirements to support the [Financial-grade API](https://openid.net/wg/fapi/) compliance.
 
-CIBA is included in [IdentityServer](https://duendesoftware.com/products/identityserver) Enterprise Edition.
-
 Note
 
-Duende IdentityServer supports the [`poll`](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5) mode to allow a client to obtain the results of a backchannel login request.
+This feature is part of the [Duende IdentityServer Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 Normally when using OpenID Connect, a user accesses a client application on the same device they use to login to the OpenID Connect provider. For example, a user (via the browser) uses a web app (the client) and that same browser is redirected for the user to login at IdentityServer (the OpenID Connect provider), and this all takes place on the userâs device (e.g. their computer). Another example would be that a user uses a mobile app (the client), and it launches the browser for the user to login at IdentityServer (the OpenID Connect provider), and this all takes place on the userâs device (e.g. their mobile phone).
 
@@ -28219,6 +29179,10 @@ A nice feature of this workflow is that the user does not enter their credential
 Below is a diagram that shows the high level steps involved with the CIBA workflow and the supporting services involved.
 
 ![Showing how CIBA works in diagram form](/_astro/ciba.BA2ptLwD_RTl3d.svg)
+
+Note
+
+Duende IdentityServer supports the [`poll`](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#rfc.section.5) mode to allow a client to obtain the results of a backchannel login request.
 
 * **Step 1**: IdentityServer exposes a [backchannel authentication request endpoint](/identityserver/reference/endpoints/ciba/) that the client uses to initiate the CIBA workflow.
 
@@ -28479,7 +29443,7 @@ When IdentityServer needs to show the login page, it redirects the user to a con
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(opt => {
     opt.UserInteraction.LoginUrl = "/path/to/login";
 })
@@ -28489,7 +29453,7 @@ If no `LoginUrl` is set, IdentityServer will infer it from the `LoginPath` of yo
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddAuthentication()
     .AddCookie("cookie-handler-with-custom-path", options =>
     {
@@ -28501,7 +29465,7 @@ If you are using ASP.NET Identity, configure its cookie authentication handler l
 
 Program.cs
 
-```cs
+```csharp
 builder.Services
     .AddIdentityServer()
     .AddAspNetIdentity<ApplicationUser>();
@@ -28534,7 +29498,11 @@ It is unnecessary (and discouraged) for your login page logic to parse the `retu
 
 > Documentation for IdentityServer's Dynamic Identity Providers feature, which enables configuring external authentication providers from a store at runtime without performance penalties or application recompilation.
 
-Dynamic Identity Providers are a scalable solution for managing authentication with lots of external providers, without incurring performance penalties or requiring application recompilation. This feature, included in the [Enterprise Edition](/general/licensing/#enterprise-edition) of Duende IdentityServer, enables providers to be configured dynamically from a store at runtime.
+Dynamic Identity Providers are a scalable solution for managing authentication with lots of external providers, without incurring performance penalties or requiring application recompilation. This feature enables providers to be configured dynamically from a store at runtime.
+
+Note
+
+This feature is part of the [Duende IdentityServer Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ## Dynamic Identity Providers
 
@@ -28545,8 +29513,6 @@ Authentication handlers for external providers are typically added into your Ide
 The authentication handler architecture in ASP.NET Core was not designed to have many statically registered authentication handlers registered in the service container and Dependency Injection (DI) system. At some point you will incur a performance penalty for having too many of them.
 
 Duende IdentityServer provides support for dynamic configuration of authentication handlers loaded from a store. Dynamic configuration addresses the performance concern and allows changes to the configuration to a running server.
-
-Support for Dynamic Identity Providers is included in the [Duende IdentityServer](https://duendesoftware.com/products/identityserver) Enterprise Edition.
 
 ## Store And Configuration Data
 
@@ -29361,7 +30327,7 @@ This is the cshtml for the login Razor Page:
 
 And this is the code behind for the login Razor Page:
 
-```cs
+```csharp
 namespace Sample.Pages.Account
 {
     public class LoginModel : PageModel
@@ -29483,7 +30449,7 @@ There are some claims beyond `sub` that can be issued by your login page to capt
 
 While you can create the `ClaimsPrincipal` yourself, you can alternatively use IdentityServer extension methods and the `IdentityServerUser` class to make this easier:
 
-```cs
+```csharp
 var user = new IdentityServerUser("unique_id_for_your_user")
 {
     DisplayName = user.Username
@@ -29572,7 +30538,7 @@ The IIS integration layer will configure a Windows authentication handler into t
 
 This is done in `ConfigureServices` (details vary depending on in-proc vs out-of-proc hosting)::
 
-```cs
+```csharp
 // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
 builder.Services.Configure<IISOptions>(iis =>
 {
@@ -29595,7 +30561,7 @@ This will send the `Www-Authenticate` header back to the browser which will then
 
 The principal will have information like user and group SID and the Windows account name. The following snippet shows how to trigger authentication, and if successful convert the information into a standard `ClaimsPrincipal` for the temp-Cookie approach::
 
-```cs
+```csharp
 private async Task<IActionResult> ChallengeWindowsAsync(string returnUrl)
 {
     // see if windows auth has already been requested and succeeded
@@ -29670,7 +30636,7 @@ When IdentityServer needs to show the logout page, it redirects the user to a co
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(opt => {
     opt.UserInteraction.LogoutUrl = "/path/to/logout";
 })
@@ -29680,7 +30646,7 @@ If no `LogoutUrl` is set, IdentityServer will infer it from the `LogoutPath` of 
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddAuthentication()
     .AddCookie("cookie-handler-with-custom-path", options =>
     {
@@ -29692,7 +30658,7 @@ If you are using ASP.NET Identity, configure its cookie authentication handler l
 
 Program.cs
 
-```cs
+```csharp
 builder.Services
     .AddIdentityServer()
     .AddAspNetIdentity<ApplicationUser>();
@@ -29801,15 +30767,19 @@ Once the user is signed out of the external provider and then redirected back, t
 
 Federated sign-out is the situation where a user has used an external identity provider to log into IdentityServer, and then the user logs out of that external identity provider via a workflow unknown to IdentityServer. When the user signs out, it will be useful for IdentityServer to be notified so that it can sign the user out of IdentityServer and all the applications that use IdentityServer.
 
-Not all external identity providers support federated sign-out, but those that do will provide a mechanism to notify clients that the user has signed out. This notification usually comes in the form of a request in an `<iframe>` from the external identity providerâs âlogged outâ page. IdentityServer must then notify all of its clients (as discussed [here](/identityserver/ui/logout)), also typically in the form of a request in an `<iframe>` from within the external identity providerâs `<iframe>`.
+Not all external identity providers support federated sign-out, but those that do will provide a mechanism to notify clients that the user has signed out. This notification usually comes in the form of a request in an `<iframe>` from the external identity providerâs âlogged outâ page. IdentityServer must then notify all of its clients (as discussed [here](/identityserver/ui/logout)), also typically in the form of a request in an `<iframe>` (i.e. via Front-Channel Logout) from within the external identity providerâs `<iframe>`.
+
+Note
+
+To configure federated sign-out from an external identity provider, please refer to the documentation for your specific external identity provider. When using an OpenID Connect identity provider, this is typically configured using the front-channel logout URI.
 
 What makes federated sign-out a special case (when compared to a normal [logout](/identityserver/ui/logout)) is that the federated sign-out request is not to the normal sign-out endpoint in IdentityServer. In fact, each external IdentityProvider will have a different endpoint into your IdentityServer host. This is due to that fact that each external identity provider might use a different protocol, and each middleware listens on different endpoints.
 
 The net effect of all these factors is that there is no âlogged outâ page being rendered as we would on the normal sign-out workflow, which means we are missing the sign-out notifications to IdentityServerâs clients. We must add code for each of these federated sign-out endpoints to render the necessary notifications to achieve federated sign-out.
 
-Fortunately IdentityServer already contains this code. When requests come into IdentityServer and invoke the handlers for external authentication providers, IdentityServer detects if these are federated signout requests and if they are it will automatically render the same `<iframe>` as [described here for logout](/identityserver/ui/logout).
+Fortunately IdentityServer already contains this code. When requests come into IdentityServer and invoke the handlers for external authentication providers, IdentityServer detects if these are federated sign-out requests and if they are it will automatically render the same `<iframe>` as [described here for logout](/identityserver/ui/logout).
 
-In short, federated signout is automatically supported.
+In short, federated sign-out is automatically supported.
 -----
 # Logout Context
 
@@ -30043,7 +31013,9 @@ By default, this cookie is self-contained which means it contains all the state 
 
 IdentityServer provides a server-side session feature, which extends the ASP.NET Core cookie authentication handler to maintain this state in a server-side store, rather than putting it all into the cookie itself. This implementation is specifically designed for IdentityServer to allow for more protocol related features, such as querying for active sessions based on subject id or session id, and revoking artifacts from protocol workflows as part of that session.
 
-Support for Server Side Sessions is included in [IdentityServer](https://duendesoftware.com/products/identityserver) Business Edition or higher.
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ## Session Management
 
@@ -30063,7 +31035,7 @@ To enable server-side sessions, use the `AddServerSideSessions` extension method
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer()
     .AddServerSideSessions();
 ```
@@ -30092,7 +31064,7 @@ For example:
 
 Program.cs
 
-```cs
+```csharp
 builder.Services.AddIdentityServer(options => {
     options.ServerSideSessions.UserDisplayNameClaimType = "name"; // or "email" perhaps
 }).AddServerSideSessions();
@@ -30310,7 +31282,7 @@ Use the `QuerySessionsAsync` API to access a paged list of user sessions. You ca
 
 For example:
 
-```cs
+```csharp
 var userSessions = await _sessionManagementService.QuerySessionsAsync(new SessionQuery
 {
     CountRequested = 10,
@@ -30323,7 +31295,7 @@ The results returned contains the matching usersâ session data, and paging 
 
 This paging information contains a `ResultsToken` and allows subsequent requests for next or previous pages (set `RequestPriorResults` to true for the previous page, otherwise the next page is assumed):
 
-```cs
+```csharp
 // this requests the first page
 var userSessions = await _sessionManagementService.QuerySessionsAsync(new SessionQuery
 {
@@ -30356,7 +31328,7 @@ To terminate session(s) for a user, use the `RemoveSessionsAsync` API. This acce
 
 An example to revoke everything for current sessions for subject id `12345` might be:
 
-```cs
+```csharp
 await _sessionManagementService.RemoveSessionsAsync(new RemoveSessionsContext {
     SubjectId = "12345"
 });
@@ -30364,7 +31336,7 @@ await _sessionManagementService.RemoveSessionsAsync(new RemoveSessionsContext {
 
 Or to just revoke all refresh tokens for current sessions for subject id `12345` might be:
 
-```cs
+```csharp
 await _sessionManagementService.RemoveSessionsAsync(new RemoveSessionsContext {
     SubjectId = "12345",
     RevokeTokens = true,
@@ -30442,10 +31414,22 @@ Then continue with âUpgrading from version 6.3â below.
 [Section titled âUpgrading from version 6.3â](#upgrading-from-version-63)
 
 Follow the [upgrade guide version 6.3 - 7.0](/identityserver/upgrades/v6_3-to-v7_0/)
------
-# IdentityServer4 to Duende IdentityServer v7.3
 
-This upgrade guide covers upgrading from IdentityServer4 to Duende IdentityServer v7.3. IdentityServer4 reached its end of life (EOL) on December 13, 2022. It is strongly advised to migrate to Duende IdentityServer.
+## Upgrading from IdentityServer4 to Duende IdentityServer
+
+[Section titled âUpgrading from IdentityServer4 to Duende IdentityServerâ](#upgrading-from-identityserver4-to-duende-identityserver)
+
+See [IdentityServer4 to Duende IdentityServer](/identityserver/upgrades/identityserver4-to-duende-identityserver-v7/).
+-----
+# IdentityServer4 to Duende IdentityServer v7.4
+
+This upgrade guide covers upgrading from IdentityServer4 to Duende IdentityServer v7.4. IdentityServer4 reached its end of life (EOL) on December 13, 2022. It is strongly advised to migrate to Duende IdentityServer.
+
+IdentityServer4 Migration Analysis
+
+Start your upgrade with this step-by-step migration guide, and use our automated [IdentityServer4 Migration Analysis Tool](/identityserver/upgrades/identityserver4-upgrade-analysis/) tool to help identify important aspects of your upgrade to Duende IdentityServer.
+
+We also offer a [free IdentityServer4 upgrade assessment](https://duendesoftware.com/upgrade-identityserver4) to walk you through your upgrade path.
 
 Depending on your current version of IdentityServer4, different steps may be required. You can determine the version of IdentityServer4 by running the `dotnet list` command at the root of your IdentityServer host project, or using NuGet tooling in Visual Studio or JetBrains Rider.
 
@@ -30796,7 +31780,7 @@ Upgrading from IdentityServer4 v4.x to Duende IdentityServer consists of several
 
 [Section titled âStep 1: Update the .NET Versionâ](#step-1-update-the-net-version)
 
-In this guide, weâll update to .NET 8 LTS. If your application targets a newer .NET version, you can use that newer version for the IdentityServer host as well.
+In this guide, weâll update to .NET 10 LTS.
 
 Update the IdentityServer target framework:
 
@@ -30804,7 +31788,7 @@ Update the IdentityServer target framework:
 
 ```diff
 <TargetFramework>netcoreapp3.1</TargetFramework>
-<TargetFramework>net8.0</TargetFramework>
+<TargetFramework>net10.0</TargetFramework>
 ```
 
 Some of your project dependencies may need updating as part of changing the target framework. For example, `Microsoft.EntityFrameworkCore.SqlServer` and `Microsoft.AspNetCore.Authentication.Google` will need to be updated to the version matching your target framework.
@@ -30821,6 +31805,7 @@ Breaking changes in .NET
 * [Breaking changes in .NET 7](https://learn.microsoft.com/en-us/dotnet/core/compatibility/7.0)
 * [Breaking changes in .NET 8](https://learn.microsoft.com/en-us/dotnet/core/compatibility/8.0)
 * [Breaking changes in .NET 9](https://learn.microsoft.com/en-us/dotnet/core/compatibility/9.0)
+* [Breaking changes in .NET 10](https://learn.microsoft.com/en-us/dotnet/core/compatibility/10.0)
 
 ASP.NET Core migration guides
 
@@ -30828,6 +31813,7 @@ ASP.NET Core migration guides
 * [Migrate from ASP.NET Core 6.0 to 7.0](https://learn.microsoft.com/en-us/aspnet/core/migration/60-70)
 * [Migrate from ASP.NET Core 7.0 to 8.0](https://learn.microsoft.com/en-us/aspnet/core/migration/70-80)
 * [Migrate from ASP.NET Core 8.0 to 9.0](https://learn.microsoft.com/en-us/aspnet/core/migration/80-90)
+* [Migrate from ASP.NET Core 9.0 to 10.0](https://learn.microsoft.com/en-us/aspnet/core/migration/90-to-100)
 
 ### Step 2: Update NuGet Packages
 
@@ -30839,7 +31825,7 @@ Update the IdentityServer4 dependencies in your IdentityServer host project to D
 
 ```diff
 <PackageReference Include="IdentityServer4" Version="4.1.2" />
-<PackageReference Include="Duende.IdentityServer" Version="7.3.0" />
+<PackageReference Include="Duende.IdentityServer" Version="7.4.3" />
 ```
 
 Youâll need to make a similar change for all IdentityServer4 packages, including `IdentityServer4.EntityFramework` and `IdentityServer4.AspNetIdentity`. For example:
@@ -30848,7 +31834,7 @@ Youâll need to make a similar change for all IdentityServer4 packages, incl
 
 ```diff
 <PackageReference Include="IdentityServer4.EntityFramework" Version="4.1.2" />
-<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.3.0" />
+<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.4.3" />
 ```
 
 The IdentityModel package was renamed to Duende IdentityModel and needs updating if you reference it directly:
@@ -30857,7 +31843,7 @@ The IdentityModel package was renamed to Duende IdentityModel and needs updating
 
 ```diff
 <PackageReference Include="IdentityModel" Version="x.y.z" />
-<PackageReference Include="Duende.IdentityModel" Version="7.0.0" />
+<PackageReference Include="Duende.IdentityModel" Version="8.0.0" />
 ```
 
 ### Step 3: Update Namespaces
@@ -30962,8 +31948,6 @@ Youâll need to create two database migrations that update the database sche
 
 [Section titled âStep 6: Migrate Signing Keys âOptional](#step-6-migrate-signing-keys)
 
-If your IdentityServer4 implementation is using a signing key, consider using [automatic key management](/identityserver/fundamentals/key-management/) which is included in the Business license.
-
 Determine if you are using a custom signing key
 
 In `Startup.cs`, look for a call to `AddSigningCredential()` that uses key material such as an `X509Certificate2`.
@@ -30972,6 +31956,12 @@ Client apps and APIs typically cache the key material published from IdentitySer
 
 * If you can restart all client apps and APIs that depend on your current signing key, you can remove the old signing key and start to use automatic key management. A restart reloads the discovery document and the new signing key.
 * If you can not restart client apps and APIs, check the [manual and automatic key rotation topics](/identityserver/fundamentals/key-management/#manual-key-rotation) to learn how to announce new signing key material while still supporting the old signing key for a period of time.
+
+If your IdentityServer4 implementation is using a signing key, consider using [automatic key management](/identityserver/fundamentals/key-management/).
+
+Note
+
+This feature is part of the [Duende IdentityServer Business and Enterprise Edition](https://duendesoftware.com/products/identityserver).
 
 ### Step 7: Verify Data Protection Configuration Optional
 
@@ -31021,13 +32011,21 @@ var app = builder.Build();
 
 
 // ...
-var applicationName = app.Services
-    .GetRequiredService<IOptions<DataProtectionOptions>>()
-    .Value.ApplicationDiscriminator;
+var applicationName = "";
+var applicationDiscriminatorService = app.Services.GetService<IApplicationDiscriminator>();
+if (applicationDiscriminatorService != null)
+{
+    applicationName = applicationDiscriminatorService.Discriminator;
+}
+var dataProtectionOptions = app.Services.GetService<IOptions<DataProtectionOptions>>();
+if (dataProtectionOptions != null && dataProtectionOptions.Value.ApplicationDiscriminator != null)
+{
+    dataProtectionApplicationDiscriminator = dataProtectionOptions.Value.ApplicationDiscriminator;
+}
 
 
 // applicationName is now the (auto-generated?) application name
-// - you can use it in your upgraded IdentityServer version
+// - you can use its value in your upgraded IdentityServer version
 ```
 
 ### Step 8: Validate Your Deployment
@@ -31068,9 +32066,93 @@ As part of your upgrade from IdentityServer4 to Duende IdentityServer, we recomm
 * [The `SendLogoutNotificationAsync` method has been removed from the `DefaultBackChannelLogoutService` class](/identityserver/upgrades/v7_2-to-v7_3/#the-sendlogoutnotificationasync-method-has-been-removed-from-the-defaultbackchannellogoutservice-class)
 * [Client `Secret` is now required for Clients with `ClientCredentials` grant](/identityserver/upgrades/v7_2-to-v7_3/#client-secret-is-now-required-for-clients-with-clientcredentials-grant)
 -----
-# IdentityServer4 v3.1 to Duende IdentityServer v6
+# IdentityServer4 to Duende IdentityServer - Migration Analysis Tool
 
-This upgrade guide covers upgrading from IdentityServer4 v3.1.x to Duende IdentityServer v6. This upgrade is more complex because the configuration object model had some non-trivial changes from IdentityServer4 v3 to IdentityServer4 v4.
+To help assist in planning the [migration of an IdentityServer4 implementation to Duende IdentityServer](/identityserver/upgrades/identityserver4-to-duende-identityserver-v7/), we provide a utility that [analyzes the current configuration of your current IdentityServer4](https://raw.githubusercontent.com/DuendeSoftware/docs.duendesoftware.com/refs/heads/main/src/content/docs/identityserver/upgrades/code/MigrationAnalysisController.cs). It inspects the running instance to provide specific recommendations and highlights potential compatibility issues during the upgrade and migration process.
+
+Note that the data provided is informative and should not be considered a complete migration plan.
+
+Note
+
+We also offer a [free IdentityServer4 upgrade assessment](https://duendesoftware.com/upgrade-identityserver4) to walk you through your upgrade path.
+
+## Installation
+
+[Section titled âInstallationâ](#installation)
+
+This Migration Analysis tool is provided as a single file, [`MigrationAnalysisController.cs`](https://raw.githubusercontent.com/DuendeSoftware/docs.duendesoftware.com/refs/heads/main/src/content/docs/identityserver/upgrades/code/MigrationAnalysisController.cs), which can be [downloaded](https://raw.githubusercontent.com/DuendeSoftware/docs.duendesoftware.com/refs/heads/main/src/content/docs/identityserver/upgrades/code/MigrationAnalysisController.cs) and added directly to any existing IdentityServer4 project. It does not require a separate library or complex installation process.
+
+The toolâs code was deliberately kept rudimentary and compatible with earlier C# versions to ensure maximum compatibility with older projects.
+
+The controller is designed to inspect client configurations from:
+
+1. **In-Memory Clients**
+2. **Entity Framework Core** (standard `IdentityServer4.EntityFramework` stores)
+
+If your implementation uses a custom store for client configuration, you will need to modify the controller code (specifically in the constructor) to manually wire up the retrieval of your client data so it can be included in the analysis.
+
+Security warning
+
+To make use of the tool, you must update the authorization logic in the `Index()` method. Authorization is in place to ensure that only a user with the necessary claims can access the report for your environment. This is extremely important when deploying the migration analysis tool to your production environment.
+
+The default implementation contains a placeholder check that verifies if your username is `"scott"`:
+
+MigrationAnalysisController.cs
+
+```csharp
+// Verify user is allowed to access this page
+if (User.Identity == null || User.Identity.Name != "scott")
+{
+    return Unauthorized();
+}
+```
+
+You must replace this with checks for specific user characteristics (e.g., role, claim, or username) to ensure that only authorized users can access this sensitive information.
+
+## Usage
+
+[Section titled âUsageâ](#usage)
+
+To use the tool:
+
+1. Ensure the IdentityServer4 host is running.
+2. Navigate to the `/MigrationAnalysis` endpoint of your IdentityServer4 host in your browser (e.g., `https://localhost:5001/MigrationAnalysis`).
+3. Ensure you are logged in with a user that meets the security criteria defined in the `Index()` method.
+
+## Analysis Report
+
+[Section titled âAnalysis Reportâ](#analysis-report)
+
+The Analysis page provides a table with the following data points and recommendations:
+
+* **.NET Version:** Checks the runtime version and recommends upgrading to the latest LTS if needed.
+
+* **IdentityServer4 Version:** Verifies the current version. Migration to Duende IdentityServer typically requires being on IdentityServer4 v4.x first.
+
+* **Clients:** Provides information about interactive and non-interactive clients. This information is important for [determining the appropriate license edition for Duende IdentityServer](https://duendesoftware.com/products/identityserver/).
+
+* **Issuer URI:** Reports the current issuer URI, if configured.
+
+* **Signing Credential Store:** Identifies the type of store used for signing credentials and checks for compatibility.
+
+* **Signing Key:** Displays the current Key ID and links to documentation on migrating signing keys.
+
+* **Data Protection:**
+
+  * **Application Name:** Checks if the Application Discriminator is set, which is crucial for key isolation.
+  * **Repository Type:** Verifies where keys are stored (e.g., XML repository) to ensure they are persisted correctly in production.
+
+* **Authentication Schemes:** Lists all registered authentication handlers and highlights those that might not be compatible with newer ASP.NET Core versions.
+
+![IdentityServer4 to Duende IdentityServer migration analysis](/_astro/migration-analysis.C1NNOK0S_Z26yTgB.webp)
+
+With this information, you can [start your IdentityServer4 to Duende IdentityServer migration](/identityserver/upgrades/identityserver4-to-duende-identityserver-v7/) more informed.
+-----
+# IdentityServer4 v3.1 to IdentityServer4 v4.1
+
+This upgrade guide covers upgrading from IdentityServer4 v3.1.x to IdentityServer4 v4.1.x.
+
+If you are on IdentityServer4 v3 this upgrade is necessary before moving on to Duende IdentityServer versions. The upgrade is relatively complex because the configuration object model had some non-trivial changes from IdentityServer4 v3 to IdentityServer4 v4.
 
 In short, in IdentityServer4 v3 there was a parent-child relationship between the ApiResources and the ApiScopes. Then in IdentityServer4 v4 the ApiScopes was promoted to be its own top-level configuration. This meant that the child collection under the ApiResources was renamed to ApiResourcesScopes and it contained a reference to the new top-level ApiScopes.
 
@@ -32316,12 +33398,16 @@ Thatâs it. Of course, at this point you can and should test that your Ident
 -----
 # Duende IdentityServer v7.3 to v7.4
 
-This upgrade guide covers upgrading from Duende IdentityServer v7.3 to v7.4 ([release notes](https://github.com/DuendeSoftware/products/releases/tag/is-7.4.0-rc.1)).
+This upgrade guide covers upgrading from Duende IdentityServer v7.3 to v7.4 ([release notes](https://github.com/DuendeSoftware/products/releases/tag/is-7.4.0)).
 
-IdentityServer 7.4.0 is a significant release that includes:
+IdentityServer 7.4 is a significant release that includes:
 
 * Support for [.NET 10](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-10/overview)
 * Support for OAuth 2.0 Authorization Server Metadata ([RFC 8414](https://www.rfc-editor.org/rfc/rfc8414.html))
+* Add service for diagnostic data byÂ [@josephdecock](https://github.com/josephdecock)Â inÂ [#2252](https://github.com/DuendeSoftware/products/pull/2252)
+* Trigger Back Channel Logout Earlier in Pipeline byÂ [@bhazen](https://github.com/bhazen)Â inÂ [#2258](https://github.com/DuendeSoftware/products/pull/2258)
+* Enable Customizing ErrorMessage on Redirect to Error Page byÂ [@bhazen](https://github.com/bhazen)Â inÂ [#2263](https://github.com/DuendeSoftware/products/pull/2263)
+* Better DCR Support for Public Clients byÂ [@bhazen](https://github.com/bhazen)Â inÂ [#2264](https://github.com/DuendeSoftware/products/pull/2264)
 * New Callback option for path detection in Dynamic Providers
 * Improved UI locales support
 * Support for custom parameters in the Authorize Redirect Uri
@@ -32333,6 +33419,8 @@ There are no schema changes needed for IdentityServer 7.4. Small code changes ma
 
 * Removed public unused class `Duende.IdentityServer.Models.DiscoveryDocument`
 * Marked static properties referring to counters in `Telemetry.cs` as `readonly`
+
+Note that `Duende.IdentityServer.EntityFramework.Storage` now depends on Entity Framework Core 9.x in the `net8.0` target framework, which should be fully supported on both .NET 8 and .NET 9. .NET 10 projects will use Entity Framework Core 10.x.
 
 ## Step 1: Update NuGet package
 
@@ -32347,7 +33435,7 @@ In your IdentityServer host project, update the version of the NuGet. For exampl
 would change to:
 
 ```xml
-<PackageReference Include="Duende.IdentityServer" Version="7.4.0-rc.1" />
+<PackageReference Include="Duende.IdentityServer" Version="7.4.3" />
 ```
 
 ## Step 2: Breaking Changes

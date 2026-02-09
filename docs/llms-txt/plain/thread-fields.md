@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/threads/thread-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Thread fields
 
 Thread fields allow you to extend Plain's thread data model. The thread fields which you want to support have to conform to a schema configured in **Settings** → **Thread fields**.

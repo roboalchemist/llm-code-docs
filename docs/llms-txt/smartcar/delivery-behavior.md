@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/webhooks/delivery-behavior.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delivery Behavior
 
 > HTTP delivery mechanics, retry policies, timeouts, and ordering guarantees
@@ -421,7 +425,31 @@ While Smartcar delivers each event at least once, duplicates can occur due to:
   **Most duplicates are caused by slow or failed responses.** If your endpoint takes longer than 15 seconds to respond or returns a non-2xx status code, Smartcar will retry the delivery. Always return a 2xx response quickly to minimize duplicates.
 </Warning>
 
-Always implement idempotent processing using the unique `eventId`. See [Idempotency & Deduplication](/integrations/webhooks/best-practices#implement-idempotency) for implementation patterns.
+#### Rare Edge Case: Multiple Deliveries During Confirmation
+
+In extremely rare circumstances, you may receive multiple deliveries for the same error **even when responding quickly**. This can occur when:
+
+1. Smartcar detects a vehicle error (e.g., expired authorization)
+2. A webhook delivery is initiated to your endpoint
+3. **While confirming delivery**, the same error is detected again (e.g., another API request encounters the same expired authorization)
+4. This triggers a second, independent delivery with a **different `eventId`**
+
+**Key characteristics:**
+
+* Happens during a narrow time window (typically milliseconds to seconds)
+* Results in **different `eventId` values** for what is logically the same error condition
+* Each delivery is a legitimate, distinct event from Smartcar's perspective
+* Most common with `VEHICLE_ERROR` events when multiple operations encounter the same error state
+
+**How to handle this:**
+
+If your application is sensitive to duplicate error notifications (e.g., sending user alerts), implement additional deduplication. Use a combination of `userId`, `vehicleId`, error `code`, and a time window (2-5 minutes) in addition to standard `eventId` deduplication.
+
+<Info>
+  **This edge case is rare in practice.** Most applications won't need special handling beyond standard `eventId` deduplication.
+</Info>
+
+Always implement idempotent processing using the unique `eventId` for standard deduplication. See [Reliability Best Practices](/integrations/webhooks/best-practices/reliability#implement-idempotency) for implementation patterns.
 
 ## Latency & Timing
 
@@ -578,8 +606,3 @@ For detailed implementation guidance, see our comprehensive [Best Practices Guid
     Step-by-step guide to implementing a webhook endpoint
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

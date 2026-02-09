@@ -1,3 +1,9 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/automatic-documentation-suggestions/connecting-a-source.md
+
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/automatic-documentation-suggestions/connecting-a-source.md
+
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/automatic-documentation-suggestions/connecting-a-source.md
+
 # Source: https://gitbook.com/docs/gitbook-agent/automatic-documentation-suggestions/connecting-a-source.md
 
 # Connecting a source

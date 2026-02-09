@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/serverless-index-connection-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Serverless index connection errors
 
 ## Problem
@@ -16,7 +20,7 @@ Request failed to reach Pinecone while calling https://controller.us-west-2.pine
 
 ## Solution
 
-Upgrade to the latest [Python](https://github.com/pinecone-io/pinecone-python-client/blob/main/README.md) or [Node.js](https://sdk.pinecone.io/typescript/) client and try again:
+Upgrade to the latest [Python](https://github.com/pinecone-io/pinecone-python-client) or [Node.js](https://sdk.pinecone.io/typescript/) client and try again:
 
 <CodeGroup>
   ```python Python theme={null}

@@ -36,7 +36,7 @@ Quick Start Guide](https://docs.isaacsim.omniverse.nvidia.com/latest/index.html)
 
 Learn how robotics simulation helps developers virtually train, test, and validate robots, and the advantages of a simulation-first approach.
 
-[Leran More](https://www.nvidia.com/en-us/use-cases/robotics-simulation/)
+[Learn More](https://www.nvidia.com/en-us/use-cases/robotics-simulation/)
 
 ### Isaac Sim Courses  
 
@@ -49,7 +49,7 @@ Gain a foundational understanding of core robotics concepts and explore essentia
 Stay informed with our [recurring Office Hours](https://addevent.com/calendar/ae483892) that cover in-depth topics with experts and customers using Isaac Sim.
 
 [Watch the  
- Livestreams](https://www.youtube.com/@NVIDIAOmniverse/streams)
+ Livestreams](https://www.youtube.com/watch?v=ybtJxQbj2NE&amp;list=PL3jK4xNnlCVewIu3MAcrP3HbvVUmKWNpS)
 
 * * *
 
@@ -76,7 +76,7 @@ Access over 1,000 [SimReady](https://www.nvidia.com/en-us/glossary/simready/) 3D
 
 ### Bootstrap AI Model Development
 
-Bootstrap AI model training with [synthetic data generation](https://www.nvidia.com/en-us/use-cases/synthetic-data/), where data is limited or restricted. Developers can further use this data to augment with [Cosmos™ world foundation models](https://www.nvidia.com/en-us/ai/cosmos/) and post-train vision-language-action models such as [GR00T N1.5](/isaac/gr00t).
+Bootstrap AI model training with [synthetic data generation](https://www.nvidia.com/en-us/use-cases/synthetic-data/), where data is limited or restricted. Developers can further use this data to augment with NVIDIA [Cosmos™ world foundation models](https://www.nvidia.com/en-us/ai/cosmos/) and post-train vision-language-action models such as [GR00T N1.5](/isaac/gr00t).
 
 ### Render Real-World Data in Simulation
 
@@ -122,7 +122,7 @@ Engage with the Isaac Sim community by joining the NVIDIA forum. Find answers fo
 
 [NVIDIA Cosmos](http://www.nvidia.com/en-us/ai/cosmos) is a platform comprising state-of-the-art generative [world foundation models](https://www.nvidia.com/en-us/glossary/world-models/), advanced tokenizers, guardrails, and an accelerated video processing pipeline built to accelerate the development of [physical AI](https://www.nvidia.com/en-us/glossary/physical-ai/) systems such as autonomous vehicles and robots.
 
-[Get Started With NVIDIA Cosmos](/cosmos)
+[Get Started With NVIDIA Cosmos](https://nvidia-cosmos.github.io/cosmos-cookbook/)
 
  ![A decorative image of accessing hands-on labs with NVIDIA LaunchPad](https://developer.download.nvidia.com/images/isaac/sim/nvidia-isaac-lab-1920x1080.jpg)
 ### NVIDIA Isaac™ Lab  
@@ -155,6 +155,14 @@ Turn real world sensor data into interactive simulation using 3D Gaussian Splatt
 - 
 
 [3DGUT: Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting](https://research.nvidia.com/labs/toronto-ai/3DGUT/)
+
+- 
+
+[Reconstruct a Scene in NVIDIA Isaac Sim Using Only a Smartphone](/blog/reconstruct-a-scene-in-nvidia-isaac-sim-using-only-a-smartphone/)
+
+- 
+
+[Simulate Robotic Environments Faster with NVIDIA Isaac Sim and World Labs Marble](/blog/simulate-robotic-environments-faster-with-nvidia-isaac-sim-and-world-labs-marble)
 
 ### Realistic Physics Simulation  
 
@@ -194,6 +202,10 @@ Generate training data by randomizing attributes like lighting, reflection, colo
 
 - 
 
+[Build Synthetic Data Pipelines to Train Smarter Robots](/blog/build-synthetic-data-pipelines-to-train-smarter-robots-with-nvidia-isaac-sim/)
+
+- 
+
 [Scaling Action Recognition Models With Synthetic Data Blog](https://developer.nvidia.com/blog/scaling-action-recognition-models-with-synthetic-data/)
 
 ### ROS Support  
@@ -204,7 +216,7 @@ Get support for custom ROS messages that allow standalone scripting to manually 
 
 - 
 
-[UDF Importer Getting Started Guide](https://docs.isaacsim.omniverse.nvidia.com/latest/importer_exporter/ext_isaacsim_asset_importer_urdf.html)
+[URDF Importer Getting Started Guide](https://docs.isaacsim.omniverse.nvidia.com/latest/importer_exporter/ext_isaacsim_asset_importer_urdf.html)
 
 ### Robotics Learning
 
@@ -289,7 +301,7 @@ Learn how to simulate and validate your robot stack with ROS 2 packages using NV
 
 ## FAQ
 
-Yes, Isaac Sim is free to use, licensed as open source under Apache 2.0 and available on GitHub. With Isaac Sim, we also include NVIDIA Omniverse™, which can be used for free with Isaac Sim under the [NVIDIA Isaac Sim Additional Software and Materials License](https://www.nvidia.com/en-us/agreements/enterprise-software/isaac-sim-additional-software-and-materials-license/).
+Yes, Isaac Sim is free to use, licensed as open source under Apache 2.0 and available on GitHub. With Isaac Sim which can be used for free with Isaac Sim under the [NVIDIA Isaac Sim Additional Software and Materials License](https://www.nvidia.com/en-us/agreements/enterprise-software/isaac-sim-additional-software-and-materials-license/).
 
 Yes, ISVs can integrate Isaac Sim into their software solutions with Omniverse Kit. While Isaac Sim is open-source and can be distributed freely, distribution of Omniverse Kit requires a separate license with NVIDIA, which is available via an Omniverse Enterprise subscription. This license grants the rights to redistribute, sublicense and and support Omniverse Kit as part of Isaac Sim within your product.
 

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/kubernetes-csi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kubernetes CSI
 
 > How to use the Infisical Kubernetes CSI provider to inject secrets directly into Kubernetes pods.

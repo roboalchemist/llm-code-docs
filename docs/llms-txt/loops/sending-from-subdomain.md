@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/sending-from-subdomain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Subdomains vs root domains
 
 > Most email services (including Loops) prefer sending emails from subdomains (hey.company.com) over root domains (company.com).

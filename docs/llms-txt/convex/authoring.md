@@ -75,7 +75,7 @@ Components can be distributed and installed as NPM packages, enabling you to sha
 Get started with a new project using the [component template](https://github.com/get-convex/templates/tree/main/template-component):
 
 ```
-npm create convex@latest -- --component
+npx create-convex@latest --component
 ```
 
 Follow the CLI's instructions to get started and keep the component's generated code up-to-date. [See below for more information on building and publishing NPM package components.](#building-and-publishing-npm-package-components)
@@ -90,7 +90,7 @@ Note: in general, components should be composed or designed to be extended expli
 
 ## Hello world[​](#hello-world "Direct link to Hello world")
 
-To try adding a new function, create a file `helloWorld.ts` in your component's folder (e.g. `src/component/helloWorld.ts` in the template):
+To try adding a new function, create a file `hello.ts` in your component's folder (e.g. `src/component/hello.ts` in the template):
 
 ./path/to/component/hello.ts
 

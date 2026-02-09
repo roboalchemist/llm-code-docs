@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/deepseek.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DeepSeek AI Integration
 
 > Connect Helicone with DeepSeek AI, a platform that provides powerful language models including MoE and Code models for various AI applications.

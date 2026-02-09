@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/dash0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Dash0 and OpenLLMetry
 
 <Frame>
@@ -14,8 +18,3 @@ TRACELOOP_HEADERS="Authorization=Bearer <YOUR_AUTH_TOKEN>"
 ```
 
 For more information check out the [documentation](https://www.dash0.com/documentation/dash0/get-started/sending-data-to-dash0).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

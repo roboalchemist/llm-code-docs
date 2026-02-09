@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/python-threads.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Usage with Threads (Python)
 
 > How to use OpenLLMetry with `ThreadPoolExecutor` and other thread-based libraries.
@@ -31,8 +35,3 @@ for i in range(3):
 ```
 
 Also check out the [full example](https://github.com/traceloop/openllmetry/blob/main/packages/sample-app/sample_app/thread_pool_example.py).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

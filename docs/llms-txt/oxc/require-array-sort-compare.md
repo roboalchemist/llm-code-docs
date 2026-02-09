@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/require-array-sort-compare.md
 ---
-# typescript/require-array-sort-compare&#x20;
 
 ### What it does
 

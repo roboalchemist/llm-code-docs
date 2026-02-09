@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-explorer/profile.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Profile
 
 > View a data profile that summarizes key table and column-level statistics, and any upstream dependencies.

@@ -26,28 +26,28 @@ This is Zapier's public API documentation site built with Mintlify. The docs are
 
 ### Local Development
 
-```bash  theme={null}
+```bash theme={null}
 # Install dependencies
-npm i
+pnpm i
 
 # Run locally
-npm run dev
+pnpm run dev
 ```
 
 ### Build and Quality Checks
 
-```bash  theme={null}
+```bash theme={null}
 # Format TypeScript files
-npm run format
+pnpm run format
 
 # Compile TypeScript
-npm run compile
+pnpm run compile
 
 # Full build process (format + compile + scriptify)
-npm run build
+pnpm run build
 
 # Check for broken links
-npx mintlify broken-links
+pnpx mintlify broken-links
 ```
 
 ### Pre-commit Hook
@@ -107,7 +107,7 @@ The pre-commit hook automatically:
 ## Testing and Validation
 
 * Run `mintlify dev` for local development server
-* Use `npx mintlify broken-links` to check for broken internal links
+* Use `pnpx mintlify broken-links` to check for broken internal links
 * The pre-commit hook validates route configurations automatically
 * Python script `check_redirects.py` can validate external links against localhost:3000
 
@@ -117,58 +117,28 @@ Source: https://docs.zapier.com/index
 
 
 
-<div class="hero-container">
-  <div class="hero-text">
-    <h1
-      style={{
-      fontSize: "3.5rem",
-      fontWeight: "bold",
-      marginBottom: "1rem",
-    }}
-    >
+<div>
+  <div>
+    <h1>
       Build with Zapier
     </h1>
 
-    <h3
-      style={{
-      fontSize: "1.5rem",
-      marginBottom: "1rem",
-    }}
-    >
+    <h3>
       Explore the documentation for Developer Platform, Powered by Zapier, and
       Zapier MCP.
     </h3>
   </div>
 
-  <video autoPlay muted loop playsInline className="aspect-video hero-video" src="https://framerusercontent.com/assets/rOWbX3oZetZ0NpxzV5Bp4sBeVIE.mp4" />
+  <video />
 </div>
 
-<div
-  style={{
-  padding: "1rem 1rem",
-}}
->
-  <h3
-    class="justify-center"
-    style={{
-    fontSize: "2rem",
-    fontWeight: "bold",
-    marginBottom: "2rem",
-    textAlign: "center",
-  }}
-  >
+<div>
+  <h3>
     Browse by product
   </h3>
 
-  <div
-    style={{
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "0.5rem",
-  }}
-  >
-    <CardGroup cols={3}>
+  <div>
+    <CardGroup>
       <Card title="Platform Documentation" href="/platform/home" icon="play">
         Build a Zapier Integration
       </Card>
@@ -296,7 +266,7 @@ Connect your AI to thousands of apps with the [Model Context Protocol](https://m
 
 Zapier MCP (Model Context Protocol) is a standardized way to connect AI assistants to thousands of apps and services. It enables your AI to take real actions—like sending messages, creating tasks, or updating records—using natural language commands.
 
-<Columns cols={2}>
+<Columns>
   <Card title="For Non-Developers">
     Connect Anthropic's [Claude](https://claude.ai/) to Zapier's 8,000+ app
     integrations without writing code. Just describe what you want in natural
@@ -339,7 +309,7 @@ Interested in piloting developer tools for deeper integration? [Contact our team
 <Warning>
   **Enterprise Users**: Zapier MCP is not enabled by default on Enterprise
   accounts. If you'd still like to beta test Zapier MCP, reach out
-  [here](https://mcpp.zapier.app/enterprise-access).
+  to your account manager.
 </Warning>
 
 ## Get Started
@@ -348,7 +318,7 @@ Ready to get started? [Follow our quickstart guide](/mcp/quickstart) to connect 
 
 ## Popular Tools
 
-<CardGroup cols={4}>
+<CardGroup>
   <Card title="Slack" icon="slack" href="https://zapier.com/mcp/slack">
     Send messages, create channels, update status
   </Card>
@@ -420,7 +390,7 @@ This guide will help you connect your AI assistant to Zapier MCP and run your fi
 <Warning>
   **Enterprise Users**: Zapier MCP is not enabled by default on Enterprise
   accounts. If you'd still like to beta test Zapier MCP, reach out
-  [here](https://mcpp.zapier.app/enterprise-access).
+  to your account manager.
 </Warning>
 
 ## Prerequisites
@@ -494,7 +464,7 @@ Now you can use natural language to interact with your connected apps:
 
 ### Personal Productivity
 
-```text  theme={null}
+```text theme={null}
 "Check my unread emails from today and summarize the important ones"
 "Create a reminder in Todoist to prepare for tomorrow's presentation"
 "Add this week's expenses to my tracking spreadsheet"
@@ -502,7 +472,7 @@ Now you can use natural language to interact with your connected apps:
 
 ### Team Collaboration
 
-```text  theme={null}
+```text theme={null}
 "Post a message in #general about the server maintenance tonight"
 "Create a meeting invite for the team sync next Monday at 2 PM"
 "Update the project status in Notion to 'In Review'"
@@ -510,7 +480,7 @@ Now you can use natural language to interact with your connected apps:
 
 ### Content Creation
 
-```text  theme={null}
+```text theme={null}
 "Draft a blog post about AI productivity tips and save it to Google Docs"
 "Schedule a tweet for tomorrow morning about our new feature"
 "Create a new page in Confluence for the API documentation"
@@ -530,7 +500,7 @@ Now you can use natural language to interact with your connected apps:
 
 Have the LLM perform multiple actions in sequence:
 
-```text  theme={null}
+```text theme={null}
 "Find all emails from clients today, summarize them, and create tasks for any that need follow-up"
 ```
 
@@ -538,7 +508,7 @@ Have the LLM perform multiple actions in sequence:
 
 Have the LLM make decisions based on results:
 
-```text  theme={null}
+```text theme={null}
 "Check if I have any meetings this afternoon. If not, schedule time for deep work"
 ```
 
@@ -546,7 +516,7 @@ Have the LLM make decisions based on results:
 
 Have the LLM process data between actions:
 
-```text  theme={null}
+```text theme={null}
 "Get my recent expenses from the spreadsheet and create a summary report in Notion"
 ```
 
@@ -616,7 +586,7 @@ Interested in piloting developer tools for deeper integration? [Contact our team
 <Warning>
   **Enterprise Users**: Zapier MCP is not enabled by default on Enterprise
   accounts. If you'd still like to beta test Zapier MCP, reach out
-  [here](https://mcpp.zapier.app/enterprise-access).
+  to your account manager.
 </Warning>
 
 ## How Usage is Calculated
@@ -629,7 +599,7 @@ Zapier MCP is available to all accounts. One Zapier MCP tool call uses **two tas
 
 Each successful API call to an external service counts as one tool call:
 
-```text  theme={null}
+```text theme={null}
 Examples that use 1 tool call each:
 - "Send a message to Slack"
 - "Create a row in Google Sheets"
@@ -653,7 +623,7 @@ These operations are free and don't count against your limit:
 
 Some operations may use multiple tool calls:
 
-```text  theme={null}
+```text theme={null}
 "Add 5 rows to a spreadsheet" = 5 tool calls
 "Send emails to 3 people" = 3 tool calls
 "Search and update 10 records" = 11 tool calls (1 search + 10 updates)
@@ -664,7 +634,8 @@ Some operations may use multiple tool calls:
 ### Check Current Usage
 
 Visit [mcp.zapier.com](https://mcp.zapier.com) to see usage across all servers.
-<img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=7de5553096e4d9e4ba8fb117d22d8b35" alt="Usage" data-og-width="502" width="502" data-og-height="318" height="318" data-path="images/mcp/usage.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=fb143d1ce159d30752ec521623b5a5d4 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ede549ad6c1d4130fe8b389993529aa6 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=99e6bfc5481839d1cc61409bc33cf8e2 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=893054f8a485ab25a48f487547dfe35d 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=91ad1d42b2b9cde8a5bba4f67f1099ea 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/mcp/usage.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=18e20e9baccba9eca706a19a588bb5b2 2500w" />
+
+<img alt="Usage" />
 
 ### Usage Notifications
 
@@ -800,7 +771,7 @@ The `z.generateCallbackUrl()` will return a callback URL your app can `POST` to 
 
 For example, in your `perform` you might do:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   // something like this url:
   // https://zapier.com/hooks/callback/123/abcdef01-2345-6789-abcd-ef0123456789/abcdef0123456789abcdef0123456789abcdef01/
@@ -820,7 +791,7 @@ const perform = async (z, bundle) => {
 
 And in your own `/api/slow-job` view (or more likely, an async job) you'd make this request to Zapier when the long-running job completes to populate `bundle.cleanedRequest`:
 
-```http  theme={null}
+```http theme={null}
 POST /hooks/callback/123/abcdef01-2345-6789-abcd-ef0123456789/abcdef0123456789abcdef0123456789abcdef01/ HTTP/1.1
 Host: zapier.com
 Content-Type: application/json
@@ -828,7 +799,7 @@ Content-Type: application/json
 {"foo":"bar"}
 ```
 
-> We recommend using `bundle.meta.isLoadingSample` to determine if the execution is happening in the foreground (IE: during Zap setup) as using `z.generateCallbackUrl()` can be inappropriate given the disconnect. Instead, wait for the long running request without generating a callback, or if you must, return stubbed data.
+> Callbacks are fully supported during sample testing in the Zap Editor, including `performResume` execution. However, when possible, it's preferable to avoid using callbacks during sampling (check `bundle.meta.isLoadingSample`) for a better testing experience.
 
 By default the payload `POST`ed to the callback URL will augment the data returned from the initial `perform` to compose the final value.
 
@@ -840,7 +811,7 @@ If you need to customize what the final value should be you can define a `perfor
 
 * `bundle.rawRequest` is the full request object corresponding to `bundle.cleanedRequest`
 
-```js  theme={null}
+```js theme={null}
 const performResume = async (z, bundle) => {
   // this will give a final value of: {"hello": "world", "foo": "bar"}
   // which is the default behavior when a custom `performResume` is not
@@ -850,8 +821,6 @@ const performResume = async (z, bundle) => {
 ```
 
 > The app will have a maximum of 30 days to `POST` to the callback URL. If a user deletes or modifies the Zap or Task in the meantime, we will not resume the task.
-
-> `performResume` will only run when the Zap runs live, and cannot be tested in the Zap Editor when configuring the Zap. It is possible to use `bundle.meta.isLoadingSample` to load a fixed sample to allow users to test a step that includes `performResume`.
 
 Some considerations:
 
@@ -875,7 +844,7 @@ This object holds the user's auth details and the data for the API requests.
 
 `bundle.inputData` is user-provided data for this particular run of the trigger/search/create, as defined by the [`inputFields`](/platform/build-cli/input-fields). For example:
 
-```js  theme={null}
+```js theme={null}
 {
   createdBy: 'his name is Bobby Flay',
   style: 'he cooks mediterranean',
@@ -887,7 +856,7 @@ This object holds the user's auth details and the data for the API requests.
 
 `bundle.inputDataRaw` is like `bundle.inputData`, but before processing such as interpreting friendly datetimes and rendering `{{curlies}}`:
 
-```js  theme={null}
+```js theme={null}
 {
   createdBy: 'his name is {{123__chef_name}}',
   style: 'he cooks {{456__style}}',
@@ -919,7 +888,7 @@ You'll usually want to use `bundle.inputData` instead.
 
 Here's an example of a polling trigger that is also used to power a dynamic dropdown:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   const params = { per_page: 100 }; // poll for the most recent 100 teams
 
@@ -994,7 +963,7 @@ This the URL to which you should send hook data. It'll look something like [`htt
 
 For example:
 
-```js  theme={null}
+```js theme={null}
 const subscribeHook = async (z, bundle) => {
   const options = {
     url: "https://57b20fb546b57d1100a3c405.mockapi.io/api/hooks",
@@ -1054,6 +1023,45 @@ It is a user-provided data for a particular run of a `create` action in the buff
 It contains an idempotency `id` provided to the `create` action to identify each run's data in the buffered data.
 
 
+# Download the source code of a CLI integration
+Source: https://docs.zapier.com/platform/build-cli/download-source-code
+
+If at any point you do not have the source code for your CLI integration and need it to make changes, you can download a zip file of the source code directly from the Platform UI.
+
+## Prerequisites
+
+Before doing this, you would have to ensure that:
+
+* You are an admin for the integration. If you are not, you can have an admin [invite you](https://docs.zapier.com/platform/manage/add-team) to be a member of the integration team.
+* Your dev environment meets the [requirements for running Platform CLI](https://docs.zapier.com/platform/build-cli/overview#requirements) with the proper version of Node.js installed.
+* You have installed the Platform CLI tool in your local environment and set up your authentication.
+
+```bash theme={null}
+# install the CLI globally
+npm install -g zapier-platform-cli
+
+# setup auth to Zapier's platform with a deploy key
+zapier-platform login
+```
+
+## Downloading the source code
+
+The steps to downloading the source code are:
+
+1. Log in to the Platform UI and access the CLI integration for which you would like to get the source code.
+2. On the sidebar, click on “Advanced”.
+3. Go to the “View Source” section.
+4. Click the “Download” button
+
+![](https://cdn.zappy.app/7f1ed0ccac3d28a4dd4cb046560add1c.png)
+
+Note that, after getting the source code, you would need to go into the directory and run the `npm install` command in order to install all the libraries needed for your integration. Then you can start making changes to the integration code, following our [best practices](https://docs.zapier.com/platform/build-cli/overview).
+
+***
+
+[*Need help? Tell us about your problem and we'll connect you with the right resource or contact support.*](https://developer.zapier.com/contact)
+
+
 # Dynamic dropdowns
 Source: https://docs.zapier.com/platform/build-cli/dynamic-dropdowns
 
@@ -1067,7 +1075,7 @@ Our solution is to present users a dropdown that is populated by making a live A
 
 To define one you include the `dynamic` property on the `inputFields` object. The value for the property is a dot-separated *string* concatenation.
 
-```js  theme={null}
+```js theme={null}
 //...
 issue: {
   key: 'issue',
@@ -1103,7 +1111,7 @@ The dot-separated string concatenation follows this pattern:
 
 In the above code example the dynamic property makes reference to a trigger with a key of project. Assuming the project trigger returns an array of objects and each object contains an id and name key, i.e.
 
-```js  theme={null}
+```js theme={null}
 [
   { id: "1", name: "First Option", dateCreated: "01/01/2000" },
   { id: "2", name: "Second Option", dateCreated: "01/01/2000" },
@@ -1166,7 +1174,7 @@ const App = {
 
 In some cases you will need to power a dynamic dropdown but do not want to make the Trigger available to the end user. Here it is best practice to create the trigger and set `hidden: true` on it's display object.
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   triggers: {
@@ -1196,7 +1204,7 @@ You can have multiple dynamic dropdowns in a single trigger or action. In some c
 
 The example below illustrates a 'New Worksheet' trigger that populates a dynamic dropdown input field to select a worksheet:
 
-```js  theme={null}
+```js theme={null}
 {
   key: "worksheet",
   // ...
@@ -1219,7 +1227,7 @@ The example below illustrates a 'New Worksheet' trigger that populates a dynamic
 
 Assume there is another `New Records` trigger with `Spreadsheet` and `Worksheet` dynamic dropdown input fields, which have keys `spreadsheet_id` and `worksheet_id` respectively. The selected spreadsheet value is available via `bundle.inputData.spreadsheet_id` to be used by the `Worksheet` trigger.
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   triggers: {
@@ -1267,7 +1275,7 @@ const App = {
 
 If you want your trigger to perform specific scripting for a dynamic dropdown you will need to make use of `bundle.meta.isFillingDynamicDropdown`. This can be useful if need to make use of [pagination](/platform/build-cli/faqs#whats-the-deal-with-pagination-when-is-it-used-and-how-does-it-work) in the dynamic dropdown to load more options.
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   resources: {
@@ -1343,7 +1351,7 @@ In the definition of the input field, configure `search` with a value of `<searc
 
 Here's an example:
 
-```js  theme={null}
+```js theme={null}
 {
     key: 'project_id',
     required: true,
@@ -1363,7 +1371,7 @@ zapier-platform-core v18 introduced a new flag named `cleanInputData`. This flag
 
 By default, the `cleanInputData` flag defaults to true, which matches the behavior of all versions prior to v18. Starting with v18, we encourage you to **explicitly set this flag to false**, either globally in `App.flags` or per trigger/action in the `operation` object. For example:
 
-```javascript  theme={null}
+```javascript theme={null}
 const App = {
   flags: {
     cleanInputData: false, // global flag (defaults to true if not set)
@@ -1389,7 +1397,7 @@ const App = {
 
 When `cleanInputData` is true, Zapier removes any empty values **recursively** from `bundle.inputData` before passing it to your `perform*` (including `perform`, `performList`, `performGet`, etc) functions. For example, given the following input data:
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "Chocolate Cake",
   "description": "",
@@ -1404,7 +1412,7 @@ When `cleanInputData` is true, Zapier removes any empty values **recursively** f
 
 The resulting `bundle.inputData` passed to your `perform` function would be:
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "Chocolate Cake",
   "tags": ["dessert"]
@@ -1415,7 +1423,7 @@ The resulting `bundle.inputData` passed to your `perform` function would be:
 
 When `cleanInputData` is false, Zapier preserves all empty values in `bundle.inputData`. Using the same example input data above, the resulting `bundle.inputData` would be:
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "Chocolate Cake",
   "description": "",
@@ -1466,7 +1474,7 @@ Not natively, but it can! Users have reported that the following `npm` modules a
 
 Since core v10, it's possible for [shorthand requests](/platform/build-cli/overview#shorthand-http-requests) to parse XML. Use an `afterResponse` [middleware](/platform/build-cli/overview#using-http-middleware) that sets `response.data` to the parsed XML:
 
-```js  theme={null}
+```js theme={null}
 const xml = require("pixl-xml");
 
 const App = {
@@ -1483,13 +1491,13 @@ const App = {
 };
 ```
 
-<a id="paging" />
+<a />
 
 ### What's the deal with pagination? When is it used and how does it work?
 
 Moved to [paging](/platform/build-cli/overview#paging).
 
-<a id="dedup" />
+<a />
 
 ### How does deduplication work?
 
@@ -1505,7 +1513,7 @@ There's a more in-depth explanation [here](/platform/build/deduplication).
 
 For deduplication to work, we need to be able to identify and use a unique field. In older, legacy Zapier Web Builder integrations, we guessed if `id` wasn't present. In order to ensure we don't guess wrong, we now require that the developers send us an `id` field. If your objects have a differently-named unique field, feel free to adapt this snippet and ensure this test passes:
 
-```js  theme={null}
+```js theme={null}
 // ...
 let items = response.data.items; // or response.json.items if you're using core v9 or older
 return items.map((item) => {
@@ -1516,7 +1524,7 @@ return items.map((item) => {
 
 Since v15.6.0, instead of using the default `id` field, you can also define one or more `outputFields` as `primary`. For example:
 
-```js  theme={null}
+```js theme={null}
 {
   triggers: {
     recipe: {
@@ -1555,7 +1563,7 @@ InvalidParameterValueException An error occurred (InvalidParameterValueException
 7. Run `zapier-platform promote YOUR_NEW_VERSION` (or deprecated `zapier promote YOUR_NEW_VERSION`) (from step 2)
 8. Migrate your users from the previous version (`zapier migrate OLD_VERSION YOUR_NEW_VERSION`)
 
-<a id="analytics" />
+<a />
 
 ### What Analytics are Collected?
 
@@ -1651,67 +1659,39 @@ The only Action for this app is to upload the file, given a `bundle.inputData.fi
 First, install the sample Zapier app `zapier-platform init . --template=files` (or deprecated `zapier init . --template=files`) and `zapier-platform push` (or deprecated `zapier push`) it to Zapier. If you've not worked with the CLI before, start by checking out the [tutorial](/platform/quickstart/cli-tutorial).
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=10d35a904ff0f4836b4e445a619df79d" data-og-width="1071" width="1071" data-og-height="479" height="479" data-path="images/c3e87ca1ba18ce915d23dedf055e61af.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4135cbfedbf6a9aaefcab2d067491f3d 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=73e08f93aed1d523b9d6da06ef99d713 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=89e584e85cb5423476b2bf9798c617f4 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=261c5a722f5c14b0963dcba1abacc090 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e7cea3b885e0a5bceb3fbcee0ec13c8c 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c3e87ca1ba18ce915d23dedf055e61af.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=93274d6e080e731523551de2176a6b3f 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=83472d9bfe96a547cad21c61653cdbce" data-og-width="1080" width="1080" data-og-height="701" height="701" data-path="images/914893706d089af76bb445b3d885908d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=1ed23bdcaf4f6dc0613128ecf8ac772f 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=bff25734ecfcfedd3807944c9a3ca367 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=53bf9878deeac4ef6a07a2631166a10b 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=69c70898db5c7f666655964c8d414dc1 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5dfe4033d37254bbd79cdffecbe1eae1 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/914893706d089af76bb445b3d885908d.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=922365f8e5df329e7c5769f30a014cba 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Here's how the integration looks in [Zapier's developer dashboard](https://developer.zapier.com/). Add an optional icon to it if you like.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0cc2ce559e3906821574c90b478b53a1" data-og-width="1692" width="1692" data-og-height="1137" height="1137" data-path="images/13df6356d05b5bb3e4533666bbfcc680.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3b4bf4b3388c20e82c63516e8cc65e2a 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=247a1360aabe87444ca8d1ea92bb57aa 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f0ad1fa14c6346ec611a7d40d30ac87b 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0c0c75e95cbf66f7038371dfeca51bb3 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8c1778ceaa98dbc754b29298d5aa6a9b 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13df6356d05b5bb3e4533666bbfcc680.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=338816d2d19b58af940f5ec3793b4b3f 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Next, we'll want to add a Zap. Open the [Zap editor](https://zapier.com/editor), and select your integration's trigger.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ad94a5d340972a980db194ffd993dedf" data-og-width="1573" width="1573" data-og-height="1121" height="1121" data-path="images/50a4c0399eef2728b1f3e2b67f7fb916.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9682569fb026f203e97b8425ba4ed089 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8f4da6aa16f6c0e3164f010c4e5701b4 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b840edca5a60c09200fb340a3b3e4451 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9d02fc1430b91379f2ee122de2601495 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a033cc77ec3e3d8879f9238b250d5a8f 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50a4c0399eef2728b1f3e2b67f7fb916.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ce12bcff6a58215fb4fdf086b8f6bad2 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Select continue - you'll notice this app has no authentication, as the file urls are accessible without it. Select `Test trigger` to see the three sample urls pulled in and hydrated pointer for each.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dedd6fb4edb2061c445fcabed545aa23" data-og-width="970" width="970" data-og-height="772" height="772" data-path="images/c68b2539d72c6c72da2ba3c35c9cef8d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ba515ed83ab0cda6f498f34df780c118 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=101251b05381b92bb939c47f6e5ecdcf 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=fb704998935e56923ed8670132db62ed 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=07a1a4d79812468decf4cc564561a936 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3790217c4cbb8000c6dcc7df23b3e9f2 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c68b2539d72c6c72da2ba3c35c9cef8d.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7005f5f2a3b0507dcb8f257d1179b3c4 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Now let's add the `Upload File` action to the Zap. Normally, we wouldn't want a setup like this (trigger off of new file / create a new file), because it would result in a [Zap loop](https://help.zapier.com/hc/en-us/articles/8496232045453-Zap-is-stuck-in-a-loop). But this is just a test—and be sure to turn the Zap off shortly after it's turned on.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c76608ff473d956595054f6719156bac" data-og-width="1695" width="1695" data-og-height="1043" height="1043" data-path="images/28ed4762db06d0dd95563a4480a8dc36.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=df80c5d936777979014ede3646007da4 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=eff7ed0aa924138d8ffcf160ac8af6c0 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f7ced1fe6d4b3388bd7f1672ddaa247b 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=743e7232dcef5feac04738200a800400 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=075d483c30e6791a98e4c63a831336c2 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/28ed4762db06d0dd95563a4480a8dc36.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=27b247a53ce6bb1e6d2595d1fabde7bb 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3a16e4f5f30cb955af593c47a4ee0dca" data-og-width="1719" width="1719" data-og-height="891" height="891" data-path="images/dd56ad225973829fbdc9fa1bcec5a2da.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9050a94b080e92a9b23bd58fc259d34b 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ccfc37d05711284e847622fb7efad98f 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8fabf0b73700cc335dfd1c6e4cf5e8c3 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5d2c678eb06c097400a1b21ac636bcc6 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c95109a2eef0868a1cd822400360d83b 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dd56ad225973829fbdc9fa1bcec5a2da.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=33d2a6285a57c48e2d62cc9b94e9b043 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Above, you'll see the string that prompts Zapier to hydrate a file. When the Zap runner encounters a string like this, Zapier will call the defined hydration function with the proper arguments.
@@ -1719,11 +1699,7 @@ Above, you'll see the string that prompts Zapier to hydrate a file. When the Zap
 After selecting `Test step`, you will see three new requests show in the `Monitoring` [tab of your integration](/platform/build/test-monitoring):
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e084b9bc3a34e78973ceb97756f4f9c7" data-og-width="1711" width="1711" data-og-height="1014" height="1014" data-path="images/97152cd0012be0e7c35385a4f4b3f50a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=48a2cd0b6dd14759e3aeeefc1f91fd56 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0f986f6d9c081b8dc72db24a9f3c6468 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=30292addeccb46d7d023e6f2f74c3cec 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=145d824f440c6f9928d407971ace7aa9 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=7535af80f727cf9b510ddd78512d7835 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/97152cd0012be0e7c35385a4f4b3f50a.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9190ab40e96e10c36b36bb355eccc152 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 The POST at the top was from the upload itself. The GET requests retrieve the file from the pointer provided by the trigger.
@@ -1731,11 +1707,7 @@ The POST at the top was from the upload itself. The GET requests retrieve the fi
 Now the Zap is ready to be turned on!
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=261a8ce8336471b12eaf6b3ca2e52db6" data-og-width="1660" width="1660" data-og-height="1156" height="1156" data-path="images/81cac4d9b52b6a76194d5af91949bfef.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7baf5c609075011af57b7855265c5309 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5e7c122d839f8abcd1c32d2f37066a2c 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f58284babd57e3a10befc5c63089fcae 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=73af5c56b7f9eae5ebda04ceca16cc2d 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=983e90d7e4f67ba72c63ecc5ee2283d4 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81cac4d9b52b6a76194d5af91949bfef.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b891ad3408f6138eac0cb63cfd837740 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 In this example app integration, the trigger will not run automatically due to the hard coded file urls used for illustrative purposes. Once you replace the `fileURLs` in the trigger `perform`, with a request to your API that returns the triggering file, you'll be able to test this out fully.
@@ -1743,6 +1715,122 @@ In this example app integration, the trigger will not run automatically due to t
 ***
 
 *Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
+
+
+# Unauthorized Access to Zapier NPM Packages
+Source: https://docs.zapier.com/platform/build-cli/inc-547
+
+
+
+**Note: No action is needed from Zapier users**, only from Zapier developers using one of the npm package versions listed below.
+
+All Zapier products are operating as expected and there is no indication of data loss or leak.
+
+## Timeline
+
+* At 5:50AM UTC on 11/24/2025, Zapier became aware that a subset of our npm packages had unauthorized modifications made to them in an apparent supply chain compromise.
+* The unauthorized core platform packages were unpublished by 10:30AM UTC.
+* The rest were deprecated by 2:03PM UTC.
+
+Please [see this link](https://status.zapier.com/incidents/01KAV9DDHMYT7R6MFHSB8C09E3#updates) for the most up-to-date information.
+
+The list of Zapier npm packages impacted and versions is below along with instructions on how to mitigate impact if you are a Zapier developer.
+
+For Zapier developers, the npm packages listed below were compromised and should not be downloaded or used. They have been unpublished and deprecated from npm and are no longer available. You can find updates here on the Zapier Status Page.
+
+The compromised packages below are used for developing Zapier platform integrations and other Zapier connectors. Please do not install and do not push integration changes using these versions.
+
+## Platform UI developers
+
+If your integration is built on the Platform UI rather than the CLI, check the Versions page of your integration. The Platform Version column will show which package version your integration uses - as long as this is **not** one of versions 18.0.2, 18.0.3, or 18.0.4, your integration is not affected.
+
+<Frame>
+  <img alt="" />
+</Frame>
+
+This is a quick and easy way to confirm you are not affected. Please also note that we have not seen any integrations using the affected versions despite continued monitoring, and the affected npm package versions have been deprecated and unpublished so that they cannot be used.
+
+## Platform CLI developers
+
+### Recommendation for developers
+
+* What to do if you have downloaded any impacted packages?
+  * Re-install the latest version of the package with `npm i <package-name>@latest` (the latest version not impacted will be grabbed).
+    * For instance, `npm i zapier-platform-core@latest`
+  * Include “-g” for global installation
+    * For instance, `npm i -g zapier-platform-cli@latest`
+* How to get the latest “good” package?
+  * Run `npm i <package-name>@latest`
+    * For instance, `npm i zapier-platform-core@latest`
+* Make sure no impacted versions are cached:
+  * Run `npm cache clean --force`
+  * Remove any local `node_modules` files
+    * Run `rm -rf node_modules`
+  * Remove package-lock.json to ensure fresh package version resolution
+    * Run `rm -f package-lock.json`
+
+### Recommendation for partners who maintain integrations
+
+For integration developers, do not push new versions with these packages installed in the timeframe above \[5:50AM UTC to 2:03PM UTC].
+
+If you already pushed a new version with these packages installed, please rotate secrets and private keys with updated values using `zapier env` or through [developer.zapier.com](https://developer.zapier.com).
+
+### Additional questions
+
+If you have any additional questions, you can reach out to Developer Support here: [https://developer.zapier.com/contact](https://developer.zapier.com/contact).
+
+### List of affected packages
+
+* [zapier-platform-cli](https://www.npmjs.com/package/zapier-platform-cli)	18.0.2
+* [zapier-platform-cli](https://www.npmjs.com/package/zapier-platform-cli)	18.0.3
+* [zapier-platform-cli](https://www.npmjs.com/package/zapier-platform-cli)	18.0.4
+* [zapier-platform-core](https://www.npmjs.com/package/zapier-platform-core)	18.0.2
+* [zapier-platform-core](https://www.npmjs.com/package/zapier-platform-core)	18.0.3
+* [zapier-platform-core](https://www.npmjs.com/package/zapier-platform-core)	18.0.4
+* [zapier-platform-legacy-scripting-runner](https://www.npmjs.com/package/zapier-platform-legacy-scripting-runner)	4.0.2
+* [zapier-platform-legacy-scripting-runner](https://www.npmjs.com/package/zapier-platform-legacy-scripting-runner)	4.0.3
+* [zapier-platform-legacy-scripting-runner](https://www.npmjs.com/package/zapier-platform-legacy-scripting-runner)	4.0.4
+* [zapier-platform-schema](https://www.npmjs.com/package/zapier-platform-schema)	18.0.2
+* [zapier-platform-schema](https://www.npmjs.com/package/zapier-platform-schema)	18.0.3
+* [zapier-platform-schema](https://www.npmjs.com/package/zapier-platform-schema)	18.0.4
+* [@zapier/ai-actions](https://www.npmjs.com/package/@zapier/ai-actions)	0.1.18
+* [@zapier/ai-actions](https://www.npmjs.com/package/@zapier/ai-actions)	0.1.19
+* [@zapier/ai-actions](https://www.npmjs.com/package/@zapier/ai-actions)	0.1.20
+* [@zapier/ai-actions-react](https://www.npmjs.com/package/@zapier/ai-actions-react)	0.1.12
+* [@zapier/ai-actions-react](https://www.npmjs.com/package/@zapier/ai-actions-react)	0.1.13
+* [@zapier/ai-actions-react](https://www.npmjs.com/package/@zapier/ai-actions-react)	0.1.14
+* [@zapier/babel-preset-zapier](https://www.npmjs.com/package/@zapier/babel-preset-zapier)	6.4.1
+* [@zapier/babel-preset-zapier](https://www.npmjs.com/package/@zapier/babel-preset-zapier)	6.4.2
+* [@zapier/babel-preset-zapier](https://www.npmjs.com/package/@zapier/babel-preset-zapier)	6.4.3
+* [@zapier/browserslist-config-zapier](https://www.npmjs.com/package/@zapier/browserslist-config-zapier)	1.0.3
+* [@zapier/browserslist-config-zapier](https://www.npmjs.com/package/@zapier/browserslist-config-zapier)	1.0.4
+* [@zapier/browserslist-config-zapier](https://www.npmjs.com/package/@zapier/browserslist-config-zapier)	1.0.5
+* [@zapier/eslint-plugin-zapier](https://www.npmjs.com/package/@zapier/eslint-plugin-zapier)	11.0.3
+* [@zapier/eslint-plugin-zapier](https://www.npmjs.com/package/@zapier/eslint-plugin-zapier)	11.0.4
+* [@zapier/eslint-plugin-zapier](https://www.npmjs.com/package/@zapier/eslint-plugin-zapier)	11.0.5
+* [@zapier/mcp-integration](https://www.npmjs.com/package/@zapier/mcp-integration)	3.0.1
+* [@zapier/mcp-integration](https://www.npmjs.com/package/@zapier/mcp-integration)	3.0.2
+* [@zapier/mcp-integration](https://www.npmjs.com/package/@zapier/mcp-integration)	3.0.3
+* [@zapier/secret-scrubber](https://www.npmjs.com/package/@zapier/secret-scrubber)	1.1.3
+* [@zapier/secret-scrubber](https://www.npmjs.com/package/@zapier/secret-scrubber)	1.1.4
+* [@zapier/secret-scrubber](https://www.npmjs.com/package/@zapier/secret-scrubber)	1.1.5
+* [@zapier/spectral-api-ruleset](https://www.npmjs.com/package/@zapier/spectral-api-ruleset)	1.9.1
+* [@zapier/spectral-api-ruleset](https://www.npmjs.com/package/@zapier/spectral-api-ruleset)	1.9.2
+* [@zapier/spectral-api-ruleset](https://www.npmjs.com/package/@zapier/spectral-api-ruleset)	1.9.3
+* [@zapier/stubtree](https://www.npmjs.com/package/@zapier/stubtree)	0.1.2
+* [@zapier/stubtree](https://www.npmjs.com/package/@zapier/stubtree)	0.1.3
+* [@zapier/stubtree](https://www.npmjs.com/package/@zapier/stubtree)	0.1.4
+* [@zapier/zapier-sdk](https://www.npmjs.com/package/@zapier/stubtree)	0.15.5
+* [@zapier/zapier-sdk](https://www.npmjs.com/package/@zapier/stubtree)	0.15.6
+* [@zapier/zapier-sdk](https://www.npmjs.com/package/@zapier/stubtree)	0.15.7
+* [redux-router-kit](https://www.npmjs.com/package/redux-router-kit)	1.2.2
+* [redux-router-kit](https://www.npmjs.com/package/redux-router-kit)	1.2.3
+* [redux-router-kit](https://www.npmjs.com/package/redux-router-kit)	1.2.4
+* [zapier-async-storage](https://www.npmjs.com/package/zapier-async-storage)	1.0.1
+* [zapier-async-storage](https://www.npmjs.com/package/zapier-async-storage)	1.0.2
+* [zapier-async-storage](https://www.npmjs.com/package/zapier-async-storage)	1.0.3
+* [zapier-scripts](https://www.npmjs.com/package/zapier-scripts)	7.8.3
+* [zapier-scripts](https://www.npmjs.com/package/zapier-scripts)	7.8.4
 
 
 # Input Field Configuration
@@ -1754,7 +1842,7 @@ On each trigger, search, or create in the `operation` directive, you can provide
 
 Those fields have various options you can provide. Here is a brief example:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   creates: {
@@ -1807,7 +1895,7 @@ In some cases, you may need to provide dynamically-generated fields - especially
 
 > A function that returns a list of dynamic fields cannot include additional functions in that list to call for dynamic fields.
 
-```js  theme={null}
+```js theme={null}
 const recipeFields = async (z, bundle) => {
   const response = await z.request("https://example.com/api/v2/fields.json");
 
@@ -1847,7 +1935,7 @@ const App = {
 
 Additionally, if there is a field that affects the generation of dynamic fields, you can set the property `altersDynamicFields: true`. This informs the Zapier UI whenever the value of that field changes, the input fields need to be recomputed. For example, imagine the selection on a static dropdown called "Dessert Type" determining whether the function generating dynamic fields includes the field "With Sprinkles?" or not. If the value in one input field affects others, this is an important property to set.
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   key: "dessert",
   noun: "Dessert",
@@ -1911,7 +1999,7 @@ You can see examples of computed fields in the [OAuth2](/platform/build-cli/over
 
 When your action needs to accept an array of items, you can include an input field with the `children` attribute. The `children` attribute accepts a list of [fields](https://github.com/zapier/zapier-platform/blob/main/packages/schema/docs/build/schema.md#fieldschema) that can be input for each item in this array.
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   operation: {
@@ -1951,7 +2039,7 @@ Since [version 15.19.0](https://github.com/zapier/zapier-platform/blob/963737b72
 
 This context storage is particularly useful when using dynamically-generated fields, as you may want to use this extra data to change certain logic in the `perform` method of your triggers or actions.
 
-```js  theme={null}
+```js theme={null}
 const fetchStringOrDatetimeFields = async (z, bundle) => {
   // Should return an array like [{'key':'field_1'},{'key':'field_2_datetime'}]
   const response = await z.request("https://example.com/api/v2/fields.json");
@@ -1988,7 +2076,7 @@ const App = {
         inputFields: [fetchStringOrDatetimeFields],
         perform: async (z, bundle) => {
           for (const [key, value] of Object.entries(bundle.inputData)) {
-            const fieldMeta = bundle.meta[key] || {};
+            const fieldMeta = bundle.meta.inputFields[key] || {};
 
             if (fieldMeta.internalType === "datetime") {
               // process value as a datetime
@@ -2019,7 +2107,7 @@ To group an input field, a property `group` is set in the input field object ref
 
 Take the following, for example;
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   creates: {
@@ -2066,9 +2154,7 @@ const App = {
 Here is the visual outcome of the input fields grouping in the Zap editor for the above example;
 
 <Frame>
-  <img src="https://cdn.zappy.app/ad54ae22892557eab7ff84c3b8d279ab.png" />
-
-  {" "}
+  <img />
 </Frame>
 
 
@@ -2104,7 +2190,7 @@ This features:
 2. JSON and form body de-serialization.
 3. Automatic non-2xx error raising.
 
-```js  theme={null}
+```js theme={null}
 const triggerShorthandRequest = {
   url: "https://{{bundle.authData.subdomain}}.example.com/v2/api/recipes.json",
   method: "GET",
@@ -2142,7 +2228,7 @@ Use this when you need full control over the request/response. For example:
 
 To make a manual request, pass your [request options](#http-request-options) to `z.request()` then use the resulting [response object](#http-response-object) to return the data you want:
 
-```js  theme={null}
+```js theme={null}
 const listRecipes = async (z, bundle) => {
   // Custom processing of bundle.inputData would go here...
 
@@ -2191,7 +2277,7 @@ If you use a placeholder like `${process.env.VAR}` at the module level (e.g., in
 
 If you're not familiar with template literals, know that `const val = "a" + b + "c"` is essentially the same as:
 
-```js  theme={null}
+```js theme={null}
 const val = `a${b}c`;
 ```
 
@@ -2203,7 +2289,7 @@ const val = `a${b}c`;
 
 To POST or PUT data to your API you can do this:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   triggers: {
@@ -2255,7 +2341,7 @@ To process all HTTP requests in a certain way, use the `beforeRequest` and `afte
 
 Middleware functions go in your app definition:
 
-```js  theme={null}
+```js theme={null}
 const addHeader = (request, z, bundle) => {
   request.headers["my-header"] = "from zapier";
   return request;
@@ -2327,7 +2413,7 @@ If you're using core v10.x and above, you don't need to manually handle `respons
 
 However, you can disable automatic error throwing by setting `skipThrowForStatus` on the request object:
 
-```js  theme={null}
+```js theme={null}
 // Disable automatic error throwing on the request object
 const perform = async (z, bundle) => {
   const response = await z.request({
@@ -2345,7 +2431,7 @@ const perform = async (z, bundle) => {
 
 Since your `afterResponse` runs before the built-in `throwForStatus` middleware, you can also "hijack" the error response in your `afterResponse`. For example, if the API uses a status code ≥ 400 that should not be treated as an error, you can do this:
 
-```js  theme={null}
+```js theme={null}
 // Don't throw an error when response status is 456
 const disableAutoThrowOn456 = (response, z) => {
   if (response.status === 456) {
@@ -2370,7 +2456,7 @@ This means you'd **never** see a 401 response in your `afterResponse` middleware
 
 We added the built-in `throwForStaleAuth` middleware because we've seen developers' `afterResponse` unintentionally "swallow" the 401 response and prevent the auth refresh from happening. For example, if you had an `afterResponse` middleware on v11.x as follows, `autoRefresh` would not work:
 
-```js  theme={null}
+```js theme={null}
 // BAD: Don't do this on v10 and v11, because it swallows 401 responses!
 const handleError = (response, z) => {
   if (response.status >= 400) {
@@ -2393,7 +2479,7 @@ This means in ≥ v18 you'd never see a 429 response in your `afterResponse` mid
 
 To set `throwForThrottlingEarly` globally, add it to `App.flags`:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   flags: {
     // Globally disable the built-in throwForThrottling middleware.
@@ -2406,7 +2492,7 @@ const App = {
 
 To set `throwForThrottlingEarly` per request, add it to the `z.request()` options:
 
-```js  theme={null}
+```js theme={null}
 // Your afterResponse can see 429s
 const response = await z.request({
   url: "https://example.com/api",
@@ -2416,7 +2502,7 @@ const response = await z.request({
 
 If you disable `throwForThrottlingEarly` or use v17.x and below, make sure you don't unintentionally swallow 429 responses in your `afterResponse` middleware. For example, the following code would prevent Zapier from retrying the request:
 
-```js  theme={null}
+```js theme={null}
 // BAD: Don't do this prior to v18 if you want Zapier to retry 429s!
 const handleError = (response, z) => {
   if (response.status >= 400) {
@@ -2453,7 +2539,7 @@ const App = {
 * `skipThrowForStatus` (*added in v10.0.0*): don't call `response.throwForStatus()` before resolving the request with `response`. See [HTTP Response Object](#http-response-object).
 * `throwForThrottlingEarly` (*added in v18.0.0*): set to `false` to disable the built-in `throwForThrottling` middleware that throws `z.errors.ThrottledError` on `429 Too Many Requests` responses. See [HTTP middleware](#using-http-middleware) for more details. Default is `true`.
 
-```js  theme={null}
+```js theme={null}
 const response = await z.request({
   url: "https://example.com",
   method: "POST",
@@ -2493,7 +2579,7 @@ Additionally, if `request.raw` is `true`, the raw response has the following pro
 * `json()`: Get the response content as an object, if `options.raw = true` and content is JSON (returns a promise). `undefined` in non-raw requests.
 * `body`: A stream available only if you provide `options.raw = true`.
 
-```js  theme={null}
+```js theme={null}
 const response = await z.request({
   // options
 });
@@ -2532,7 +2618,7 @@ Source: https://docs.zapier.com/platform/build-cli/overview
 
 Zapier is a platform for creating integrations and workflows. This CLI is your gateway to creating custom applications on the Zapier platform.
 
-This doc describes the latest CLI version (**18.0.0**), as of this writing. If you're using an older version of the CLI, you may want to check out these historical releases:
+This doc describes the latest CLI version (**18.1.0**), as of this writing. If you're using an older version of the CLI, you may want to check out these historical releases:
 
 * CLI Docs: [16.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-cli@16.5.1/packages/cli/README.md), [15.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-cli@15.19.0/packages/cli/README.md)
 * CLI Command Reference: [17.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-cli@17.9.1/packages/cli/docs/cli.md), [16.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-cli@16.5.1/packages/cli/docs/cli.md), [15.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-cli@15.19.0/packages/cli/docs/cli.md)
@@ -2572,7 +2658,7 @@ Alternatively, you can change your local node version with tools such as [nvm](h
 
 First up is installing the CLI and setting up your auth to create a working "Zapier Example" integration. It will be private to you and visible in your live [Zap Editor](https://zapier.com/app/editor).
 
-```bash  theme={null}
+```bash theme={null}
 # install the CLI globally
 npm install -g zapier-platform-cli
 
@@ -2592,7 +2678,7 @@ zapier-platform login
 
 Your Zapier CLI should be installed and ready to go at this point. Next up, we'll create our first integration!
 
-```bash  theme={null}
+```bash theme={null}
 # Create a directory with the minimum required files
 # (deprecated) zapier init example-app
 zapier-platform init example-app
@@ -2607,7 +2693,7 @@ zapier-platform init example-app
   here](https://github.com/zapier/zapier-platform/tree/main/example-apps).
 </Info>
 
-```bash  theme={null}
+```bash theme={null}
 # Go into the new directory
 cd example-app
 
@@ -2617,7 +2703,7 @@ npm install
 
 Depending on the authentication method for your integration, you'll also likely need to set your `CLIENT_ID` and `CLIENT_SECRET` as environment variables. These are the consumer key and secret in OAuth1 terminology.
 
-```bash  theme={null}
+```bash theme={null}
 # Setting the environment variables on Zapier.com
 # (deprecated) zapier env:set 1.0.0 CLIENT_ID=1234
 # (deprecated) zapier env:set 1.0.0 CLIENT_SECRET=abcd
@@ -2627,7 +2713,7 @@ zapier-platform env:set 1.0.0 CLIENT_SECRET=abcd
 
 You should now have a working local integration. You can run several local commands to try it out.
 
-```bash  theme={null}
+```bash theme={null}
 # Run the local tests
 # the same as npm test, but adds some extra things to the environment
 # (deprecated) zapier test
@@ -2636,7 +2722,7 @@ zapier-platform test
 
 Next, you'll probably want to upload integration to Zapier itself so you can start testing live.
 
-```bash  theme={null}
+```bash theme={null}
 # Push your integration to Zapier
 # (deprecated) zapier push
 zapier-platform push
@@ -2652,7 +2738,7 @@ zapier-platform push
 
 Creating an Integration can be done entirely locally and they are fairly simple Node.js apps using the standard Node environment and should be completely testable. However, a local integration stays local until you `zapier-platform register`.
 
-```bash  theme={null}
+```bash theme={null}
 # make your folder
 mkdir zapier-example
 cd zapier-example
@@ -2703,7 +2789,7 @@ $ tree .
 
 The core definition of your `App` will look something like this, and is what your `index.js` should provide as the *only* export:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // both version strings are required
   version: require("./package.json").version,
@@ -2744,7 +2830,7 @@ The [Zapier Platform Schema](https://github.com/zapier/zapier-platform/blob/main
 
 Registering your Integration with Zapier is a necessary first step which only enables basic administrative functions. It should happen before `zapier-platform push` which is to used to actually expose an Integration Version in the Zapier interface and editor.
 
-```bash  theme={null}
+```bash theme={null}
 # register your integration
 # (deprecated) zapier register "Zapier Example"
 zapier-platform register "Zapier Example"
@@ -2772,7 +2858,7 @@ If you'd like to manage your **Integration**, use these commands:
 
 If you have an existing Zapier [legacy Web Builder integration](/platform/manage/versions-legacy), you can use it as a template to kickstart your local integration.
 
-```bash  theme={null}
+```bash theme={null}
 # Convert an existing Web Builder integration to a CLI integration in the my-app directory
 # Integration ID 1234 is from URL https://zapier.com/developer/builder/app/1234/development
 # (deprecated) zapier convert 1234 my-app
@@ -2788,7 +2874,7 @@ Your CLI integration will be created and you can continue working on it.
 
 Introduced in v8.2.0, you are able to convert new integrations built in Zapier Platform UI to CLI.
 
-```bash  theme={null}
+```bash theme={null}
 # the --version flag is what denotes this command is interacting with a Visual Builder integration
 # zapier convert <INTEGRATION> --version <INTEGRATION> <PATH>
 zapier convert 1234 --version 1.0.1 my-app
@@ -2812,7 +2898,7 @@ Useful if your integration requires two pieces of information to authenticate: `
 
 If your integration uses Basic auth with an encoded API key rather than a username and password, like `Authorization: Basic APIKEYHERE:x`, consider the [Custom](#custom) authentication method instead.
 
-```js  theme={null}
+```js theme={null}
 const authentication = {
   type: "basic",
   // "test" could also be a function
@@ -2838,7 +2924,7 @@ The setup and user experience of Digest Auth is identical to Basic Auth. Users p
 
 <Info>
   To create a new integration with digest authentication, run `zapier init [your
-    integration name] --template digest-auth`. You can also review an example of
+      integration name] --template digest-auth`. You can also review an example of
   that code
   [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/digest-auth).
 </Info>
@@ -2850,7 +2936,7 @@ The setup and user experience of Digest Auth is identical to Basic Auth. Users p
   to get the server nonce.
 </Info>
 
-```js  theme={null}
+```js theme={null}
 const getConnectionLabel = (z, bundle) => {
   // bundle.inputData will contain what the "test" URL (or function) returns
   return bundle.inputData.username;
@@ -2880,12 +2966,12 @@ Custom auth is most commonly used for integrations that authenticate with API ke
 
 <Info>
   To create a new integration with custom authentication, run `zapier init [your
-    integration name] --template custom-auth`. You can also review an example of
+      integration name] --template custom-auth`. You can also review an example of
   that code
   [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/custom-auth).
 </Info>
 
-```js  theme={null}
+```js theme={null}
 const authentication = {
   type: "custom",
   // "test" could also be a function
@@ -2935,7 +3021,7 @@ Session auth gives you the ability to exchange some user-provided data for some 
   [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/session-auth).
 </Info>
 
-```js  theme={null}
+```js theme={null}
 const getSessionKey = async (z, bundle) => {
   const response = await z.request({
     method: "POST",
@@ -3010,7 +3096,7 @@ Zapier's [OAuth1](https://oauth.net/1/) implementation matches [X](https://devel
 
 <Info>
   To create a new integration with OAuth1, run `zapier init [your integration
-    name] --template oauth1-trello`. You can also check out
+      name] --template oauth1-trello`. You can also check out
   [oauth1-trello](https://github.com/zapier/zapier-platform/tree/main/example-apps/oauth1-trello),
   [oauth1-tumblr](https://github.com/zapier/zapier-platform/tree/main/example-apps/oauth1-tumblr),
   and
@@ -3040,7 +3126,7 @@ You are required to define:
 
 You'll also likely need to set your `CLIENT_ID` and `CLIENT_SECRET` as environment variables. These are the consumer key and secret in OAuth1 terminology.
 
-```bash  theme={null}
+```bash theme={null}
 # setting the environment variables on Zapier.com
 $ zapier-platform env:set 1.0.0 CLIENT_ID=1234
 $ zapier-platform env:set 1.0.0 CLIENT_SECRET=abcd
@@ -3051,7 +3137,7 @@ $ CLIENT_ID=1234 CLIENT_SECRET=abcd zapier test
 
 Your auth definition would look something like this:
 
-```js  theme={null}
+```js theme={null}
 const _ = require("lodash");
 
 const authentication = {
@@ -3143,7 +3229,7 @@ Zapier's [OAuth2](https://oauth.net/2/) implementation is based on the `authoriz
 
 <Info>
   To create a new integration with OAuth2, run `zapier init [your integration
-    name] --template oauth2`. You can also check out [our working example
+      name] --template oauth2`. You can also check out [our working example
   integration](https://github.com/zapier/zapier-platform/tree/main/example-apps/oauth2).
 </Info>
 
@@ -3172,7 +3258,7 @@ If the access token has a limited life and you want to refresh the token when it
 
 You'll also likely want to set your `CLIENT_ID` and `CLIENT_SECRET` as environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 # setting the environment variables on Zapier.com
 $ zapier-platform env:set 1.0.0 CLIENT_ID=1234
 $ zapier-platform env:set 1.0.0 CLIENT_SECRET=abcd
@@ -3183,7 +3269,7 @@ $ CLIENT_ID=1234 CLIENT_SECRET=abcd zapier test
 
 Your auth definition would look something like this:
 
-```js  theme={null}
+```js theme={null}
 const authentication = {
   type: "oauth2",
   test: {
@@ -3281,7 +3367,7 @@ The OAuth2 PKCE flow uses the same flow as OAuth2 but adds a few extra parameter
 
 Your auth definition would look something like this:
 
-```js  theme={null}
+```js theme={null}
 const authentication = {
   type: "oauth2",
   test: {
@@ -3383,7 +3469,7 @@ Taking the following steps prevents the potential for an attacker to access your
 
 Example code for handling subdomain validation:
 
-```js  theme={null}
+```js theme={null}
 const refreshAccessToken = async (z, bundle) => {
   // --- UPDATE: add your validation for the subdomain field before using it ---
   if (!/^[a-z0-9-]+$/.test(bundle.authData.yourSubdomainField)) {
@@ -3417,7 +3503,7 @@ A `resource` is a representation (as a JavaScript object) of one of the REST res
 endpoint for working with recipes; you can define a recipe resource in your integration that will tell Zapier how to do create,
 read, and search operations on that resource.
 
-```js  theme={null}
+```js theme={null}
 const Recipe = {
   // `key` is the unique identifier the Zapier backend references
   key: "recipe",
@@ -3435,7 +3521,7 @@ const Recipe = {
 
 The quickest way to create a resource is with the `zapier-platform scaffold` command:
 
-```bash  theme={null}
+```bash theme={null}
 zapier scaffold resource "Recipe"
 ```
 
@@ -3461,7 +3547,7 @@ For now, let's focus on two:
 
 Here is a complete example of what the list method might look like
 
-```js  theme={null}
+```js theme={null}
 const Recipe = {
   key: "recipe",
   // ...
@@ -3483,7 +3569,7 @@ The method is made up of two properties, a `display` and an `operation`. The `di
 
 Adding a create method looks very similar.
 
-```js  theme={null}
+```js theme={null}
 const Recipe = {
   key: "recipe",
   // ...
@@ -3522,7 +3608,7 @@ new records in your system (add a recipe to the catalog).
 
 The definition for each of these follows the same structure. Here is an example of a trigger:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   // ...
   triggers: {
@@ -3560,7 +3646,7 @@ You can find more details on the definition for each by looking at the [Trigger 
 
 <Info>
   To add a trigger, search, or create to an existing integration, run `zapier
-    scaffold [trigger|search|create] [noun]` to create the necessary files to your
+      scaffold [trigger|search|create] [noun]` to create the necessary files to your
   project. For example, `zapier scaffold trigger post` will create a new trigger
   called "New Post".
 </Info>
@@ -3581,7 +3667,7 @@ When a trigger function returns an empty array, the Zap will not trigger. For RE
 
 In cases where Zapier needs to show an example record to the user, but we are unable to get a live example from the API, Zapier will fallback to this hard-coded sample. This should reflect the data structure of the Trigger's perform method, and have dummy values that we can show to any user.
 
-```js  theme={null}
+```js theme={null}
 ,sample: {
   dummydata_field1: 'This will be compared against your perform method output'
   style: 'mediterranean'
@@ -3616,7 +3702,7 @@ Custom/Dynamic Output Fields are defined in the same way as [Custom/Dynamic Inpu
 
 To define an Output Field for a nested field use `{{parent}}__{{key}}`. For children (line item) fields use `{{parent}}[]{{key}}`.
 
-```js  theme={null}
+```js theme={null}
 const recipeOutputFields = async (z, bundle) => {
   const response = await z.request("https://example.com/api/v2/fields.json");
 
@@ -3716,7 +3802,7 @@ Similar to the general `perform` function accepting two arguments, [`z`](/platfo
 
 Here is an example of a Buffered Create action:
 
-```js  theme={null}
+```js theme={null}
 const performBuffer = async (z, bufferedBundle) => {
   // Grab the line items, preserving the order
   const rows = bufferedBundle.buffer.map(({ inputData }) => {
@@ -3824,7 +3910,7 @@ module.exports = {
 
 An Integration Version is related to a specific Integration but is an "immutable" implementation of your integration. This makes it easy to run multiple versions for multiple users concurrently. The Integration Version is pulled from the version within the `package.json`. To create a new Integration Version, update the version number in that file. By default, **every Integration Version is private** but you can `zapier-platform promote` it to production for use by over 1 million Zapier users.
 
-```bash  theme={null}
+```bash theme={null}
 # push your integration version to Zapier
 zapier push
 
@@ -3856,7 +3942,7 @@ A simple `zapier-platform push` will only create the Integration Version in your
 
 This is how you would share your integration with friends, co-workers or clients. This is perfect for quality assurance, testing with active users or just sharing any app you like.
 
-```bash  theme={null}
+```bash theme={null}
 # sends an email this user to let them view the integration version 1.0.0 in the UI privately
 zapier-platform users:add user@example.com 1.0.0
 
@@ -3872,7 +3958,7 @@ Promotion is how you would share your integration with every one of the 1 millio
 
 If this isn't the first time you've promoted your integration - you might have users on older versions. You can `zapier-platform migrate` to either move users over (which can be dangerous if you have breaking changes). Or, you can `zapier-platform deprecate` to give users some time to move over themselves.
 
-```bash  theme={null}
+```bash theme={null}
 # promote your integration version to all Zapier users
 zapier promote 1.0.1
 
@@ -3904,7 +3990,7 @@ made to one version's environment will not affect the other versions.
 
 To define an environment variable, use the `env` command:
 
-```bash  theme={null}
+```bash theme={null}
 # Will set the environment variable on Zapier.com
 zapier env:set 1.0.0 MY_SECRET_VALUE=1234
 
@@ -3914,7 +4000,7 @@ zapier env:set 1.0.0 MY_OTHER_VALUE='the_$ecret'
 
 You will likely also want to set the value locally for testing.
 
-```bash  theme={null}
+```bash theme={null}
 export MY_SECRET_VALUE=1234
 ```
 
@@ -3932,7 +4018,7 @@ MY_SECRET_VALUE=1234
 
 And then in your `test/basic.js` file:
 
-```js  theme={null}
+```js theme={null}
 const zapier = require("zapier-platform-core");
 
 should("some tests", () => {
@@ -3944,20 +4030,20 @@ should("some tests", () => {
 
 <Info>
   This is a popular way to provide `process.env.ACCESS_TOKEN ||
-    bundle.authData.access_token` for convenient testing.
+      bundle.authData.access_token` for convenient testing.
 </Info>
 
 <Info>
   Variables defined via `zapier-platform env:set` will *always* be uppercased.
   For example, you would access the variable defined by `zapier env:set 1.0.0
-    foo_bar=1234` with `process.env.FOO_BAR`.
+      foo_bar=1234` with `process.env.FOO_BAR`.
 </Info>
 
 ### Accessing Environment Variables
 
 To view existing environment variables, use the `env` command.
 
-```bash  theme={null}
+```bash theme={null}
 # Will print a table listing the variables for this version
 zapier env:get 1.0.0
 ```
@@ -3966,7 +4052,7 @@ Within your integration, you can access the environment via the standard `proces
 
 For example, you can access the `process.env` in your perform functions and in templates:
 
-```js  theme={null}
+```js theme={null}
 const listExample = async (z, bundle) => {
   const httpOptions = {
     headers: {
@@ -4031,7 +4117,7 @@ Both `window` and `limit` are required and others are optional. By default, thro
 
 Here is a typical usage of the throttle configuration:
 
-```js  theme={null}
+```js theme={null}
 const App = {
   version: require("./package.json").version,
   platformVersion: require("zapier-platform-core").version,
@@ -4120,7 +4206,7 @@ The method `z.dehydrate(func, inputData, cacheExpiration)` has two required argu
 
 Here is an example that pulls in extra data for a movie:
 
-```js  theme={null}
+```js theme={null}
 const getMovieDetails = async (z, bundle) => {
   const url = `https://example.com/movies/${bundle.inputData.id}.json`;
   const response = await z.request(url);
@@ -4183,19 +4269,19 @@ And in future steps of the Zap - if Zapier encounters a pointer as returned by `
 
 As you've seen, the usual call to dehydrate will assign the result to an object property:
 
-```js  theme={null}
+```js theme={null}
 movie.details = z.dehydrate(getMovieDetails, { id: movie.id }, 3600);
 ```
 
 In this example, all of the movie details will be located in the `details` property (e.g. `details.releaseDate`) after hydration occurs. But what if you want these results available at the top-level (e.g. `releaseDate`)? Zapier supports a specific keyword for this scenario:
 
-```js  theme={null}
+```js theme={null}
 movie.$HOIST$ = z.dehydrate(getMovieDetails, { id: movie.id }, 3600);
 ```
 
 Using `$HOIST$` as the key will signal to Zapier that the results should be merged into the object containing the `$HOIST$` key. You can also use this to merge your hydrated data into a property containing "partial" data that exists before dehydration occurs:
 
-```js  theme={null}
+```js theme={null}
 movie.details = {
   title: movie.title,
   $HOIST$: z.dehydrate(getMovieDetails, { id: movie.id }, 3600),
@@ -4226,7 +4312,7 @@ It can be expensive to download and stream files or they can require complex han
 
 The interface `z.stashFile(bufferStringStream, [knownLength], [filename], [contentType])` takes a single required argument - the extra three arguments will be automatically populated in most cases. Here's a full example:
 
-```js  theme={null}
+```js theme={null}
 const content = "Hello world!";
 const url = await z.stashFile(
   content,
@@ -4240,7 +4326,7 @@ z.console.log(url);
 
 Most likely you'd want to stream from another URL - note the usage of `z.request({raw: true})`:
 
-```js  theme={null}
+```js theme={null}
 const fileRequest = z.request({
   url: "https://example.com/file.pdf",
   raw: true,
@@ -4260,7 +4346,7 @@ z.console.log(url);
 
 See a full example with dehydration/hydration wired in correctly:
 
-```js  theme={null}
+```js theme={null}
 const stashPDFfunction = (z, bundle) => {
   // use standard auth to request the file
   const filePromise = z.request({
@@ -4315,7 +4401,7 @@ module.exports = App;
 
 <Info>
   To create a new integration for handling files, run `zapier init [your
-    integration name] --template files`. You can also check out our working
+      integration name] --template files`. You can also check out our working
   example integration
   [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/files).
 </Info>
@@ -4334,7 +4420,7 @@ Note that by default, this command will only fetch logs associated to your user.
 
 For advanced logging options, including the option to fetch logs for other users or specific integration versions, look at the help for the logs command:
 
-```bash  theme={null}
+```bash theme={null}
 zapier help logs
 ```
 
@@ -4342,7 +4428,7 @@ zapier help logs
 
 To manually print a log statement in your code, use `z.console.log`:
 
-```js  theme={null}
+```js theme={null}
 z.console.log("Here are the input fields", bundle.inputData);
 ```
 
@@ -4352,7 +4438,7 @@ The `z.console` object has all the same methods and works just like the Node.js 
 
 To see your `z.console.log` logs, do:
 
-```bash  theme={null}
+```bash theme={null}
 zapier logs --type=console
 ```
 
@@ -4360,7 +4446,7 @@ zapier logs --type=console
 
 To see the bundle logs, do:
 
-```bash  theme={null}
+```bash theme={null}
 zapier logs --type=bundle
 ```
 
@@ -4368,7 +4454,7 @@ zapier logs --type=bundle
 
 If you are using [shorthand HTTP requests](/platform/build-cli/making-http-requests#shorthand-http-requests) or the `z.request()` method that we provide, HTTP logging is handled automatically for you. For example:
 
-```js  theme={null}
+```js theme={null}
 z.request("https://57b20fb546b57d1100a3c405.mockapi.io/api/recipes").then(
   (res) => {
     // do whatever you like, this request is already getting logged! :-D
@@ -4383,13 +4469,13 @@ HTTP logging will often work with other methods of making requests as well, but 
 
 To see the HTTP logs, do:
 
-```bash  theme={null}
+```bash theme={null}
 zapier logs --type=http
 ```
 
 To see detailed HTTP logs, including data such as headers and request and response bodies, do:
 
-```bash  theme={null}
+```bash theme={null}
 zapier logs --type=http --detailed
 ```
 
@@ -4488,7 +4574,7 @@ If a response receives a status code of 429 and is not caught, Zapier will re-at
 The delay can be customized by the server response containing a specific
 [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) header in your error response or with a specified time delay in seconds using a `ThrottledError`:
 
-```js  theme={null}
+```js theme={null}
 const yourAfterResponse = (resp) => {
   if (resp.status === 429) {
     throw new z.errors.ThrottledError("message here", 60); // Zapier will retry in 60 seconds
@@ -4507,7 +4593,7 @@ Paging is **only used when a trigger is part of a dynamic dropdown**. Depending 
 
 Paging is a lot like a regular trigger except the range of items returned is dynamic. The most common example of this is when you can pass a `offset` parameter:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   const response = await z.request({
     url: "https://example.com/api/list.json",
@@ -4522,7 +4608,7 @@ const perform = async (z, bundle) => {
 
 If your API uses cursor-based paging instead of an offset, you can use `z.cursor.get` and `z.cursor.set`:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   let cursor;
 
@@ -4563,7 +4649,7 @@ Lastly, you need to set `canPaginate` to `true` in your polling definition (per 
 
 You can iterate over pages in a polling trigger, though there are caveats. Your entire function only gets 30 seconds to run. HTTP requests are costly, so paging through a list may time out (which you should avoid at all costs).
 
-```js  theme={null}
+```js theme={null}
 // some async call
 const makeCall = (z, start, limit) => {
   return z.request({
@@ -4611,7 +4697,7 @@ module.exports = {
 
 If you need to do more requests conditionally based on the results of an HTTP call (such as the "next URL" param or similar value), using `async/await` (as shown in the example below) is a good way to go. If you go this route, only page as far as you need to. Keep an eye on the polling [guidelines](/platform/build/deduplication), namely the part about only iterating until you hit items that have probably been seen in a previous poll.
 
-```js  theme={null}
+```js theme={null}
 // a hypothetical API where payloads are big so we want to heavily limit how much comes back
 // we want to only return items created in the last hour
 
@@ -4655,39 +4741,243 @@ const asyncExample = async (z, bundle) => {
 
 ## Testing
 
+<a />
+
+<a />
+
+<a />
+
+<a />
+
+<a />
+
+<a />
+
+<a />
+
+<a />
+
+Moved to [Testing and Debugging](/platform/build-cli/testing-and-debugging).
+
+## Using `npm` Modules
+
+Use `npm` [modules](https://docs.npmjs.com/) just like you would use them in any other node app, for example:
+
+```bash theme={null}
+npm install --save jwt
+```
+
+And then `package.json` will be updated, and you can use them like anything else:
+
+```js theme={null}
+const jwt = require("jwt");
+```
+
+During the `zapier-platform build` or `zapier-platform push` step, we'll copy all your code to a temporary folder and do a fresh re-install of modules.
+
+<Info>
+  If your package isn't being pushed correctly (IE: you get "Error: Cannot find module 'whatever'" in production), try adding the `--disable-dependency-detection` flag to `zapier-platform push`.
+
+  You can also try adding a `includeInBuild` array property (with paths to include, which will be evaluated to RegExp, with a case insensitive flag) to your `.zapierapprc` file, to make it look like:
+
+  ```json theme={null}
+  {
+    "id": 1,
+    "key": "App1",
+    "includeInBuild": ["test.txt", "testing.json"]
+  }
+  ```
+</Info>
+
+<Tip>
+  Since v17.3.1, `zapier-platform build` and `zapier-platform push` provide a
+  `--skip-npm-install` flag to skip the `npm install` step and build directly
+  from the current project directory without copying files to a temporary
+  folder. Try `zapier build --skip-npm-install` or `zapier push   --skip-npm-install` to build faster.
+</Tip>
+
+<Warning>
+  Do not use compiled libraries unless you're sure they're runnable in AWS
+  Lambda Node.js runtime. Or you could follow the Docker instructions below to
+  build on the AWS AMI `ami-4fffc834`.
+</Warning>
+
+## Building Native Packages with Docker
+
+Unfortunately if you are developing on a macOS or Windows box you won't be able to build native libraries locally. If you try and push locally build native modules, you'll get runtime errors during usage. However, you can use Docker and Docker Compose to do this in a pinch. Make sure you have all the necessary Docker programs installed and follow along.
+
+First, create your `Dockerfile`:
+
+```Dockerfile theme={null}
+FROM amazonlinux:2017.03.1.20170812
+
+RUN yum install zip findutils wget gcc44 gcc-c++ libgcc44 cmake -y
+
+RUN wget https://nodejs.org/dist/v8.10.0/node-v8.10.0.tar.gz && \
+    tar -zxvf node-v8.10.0.tar.gz && \
+    cd node-v8.10.0 && \
+    ./configure && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf node-v8.10.0 node-v8.10.0.tar.gz
+
+RUN npm i -g zapier-platform-cli
+
+WORKDIR /app
+```
+
+And finally, create your `docker-compose.yml` file:
+
+```yml theme={null}
+version: "3.4"
+
+services:
+  pusher:
+    build: .
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules:delegated
+      - ~/.zapierrc:/root/.zapierrc
+    command: 'bash -c "npm i && zapier push"'
+    environment:
+      ZAPIER_DEPLOY_KEY: ${ZAPIER_DEPLOY_KEY}
+
+volumes:
+  node_modules:
+```
+
+<Info>
+  Watch out for your `package-lock.json` file, if it exists for local install it
+  might incorrectly pin a native version.
+</Info>
+
+Now you should be able to run `docker-compose run pusher` and see the build and push successfully complete!
+
+## Using Transpilers
+
+If you would like to use a transpiler like `babel`, you can add a script named `_zapier-build` to your `package.json`, which will be run during `zapier-platform build`,
+`zapier-platform push`, and `zapier upload`. See the following example:
+
+```json theme={null}
+{
+  "scripts": {
+    "zapier-dev": "babel src --out-dir lib --watch",
+    "_zapier-build": "babel src --out-dir lib"
+  }
+}
+```
+
+Then, you can have your fancy ES7 code in `src/*` and a root `index.js` like this:
+
+```js theme={null}
+module.exports = require("./lib");
+```
+
+And work with commands like this:
+
+```bash theme={null}
+# watch and recompile
+npm run zapier-dev
+
+# tests should work fine
+zapier test
+
+# every build ensures a fresh build
+zapier push
+```
+
+There are a lot of details left out - check out the full example integration [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/babel).
+
+<Info>
+  We recommend using `zapier init .` to create an integration - you’ll be
+  presented with a list of currently available example templates to start with.
+</Info>
+
+## Command Line Tab Completion
+
+Introduced in v9.1.0, the `zapier autocomplete` command shows instructions for generating command line autocomplete.
+
+Follow those instructions to enable completion for `zapier` commands and flags!
+
+## The Zapier Platform Packages
+
+The Zapier Platform consists of 3 npm packages that are released simultaneously.
+
+* [`zapier-platform-cli`](https://github.com/zapier/zapier-platform/tree/main/packages/cli) is the code that powers the `zapier-platform` command. You use it most commonly with the `test`, `scaffold`, and `push` commands. It's installed with `npm install -g zapier-platform-cli` and does not correspond to a particular integration.
+* [`zapier-platform-core`](https://github.com/zapier/zapier-platform/tree/main/packages/core) is what allows your integration to interact with Zapier. It holds the `z` object and integration tester code. Your integration depends on a specific version of `zapier-platform-core` in the `package.json` file. It's installed via `npm install` along with the rest of your integrations's dependencies.
+* [`zapier-platform-schema`](https://github.com/zapier/zapier-platform/tree/main/packages/schema) enforces integration structure behind the scenes. It's a dependency of `core`, so it will be installed automatically.
+
+To learn more about the structure of the code (especially if you're interested in contributing), check out the `ARCHITECTURE.md` file(s).
+
+### Updating These Packages
+
+The Zapier platform and its tools are under active development. While you don't need to install every release, we release new versions because they are better than the last. We do our best to adhere to [Semantic Versioning](https://semver.org/) wherein we won't break your code unless there's a `major` release. Otherwise, we're just fixing bugs (`patch`) and adding features (`minor`).
+
+Broadly speaking, all releases will continue to work indefinitely. While you never *have* to upgrade your integration's `zapier-platform-core` dependency, we recommend keeping an eye on [Platform News](/platform/news) to see what new features and bug fixes are available.
+
+For more info about which Node versions are supported, see [the faq](/platform/build-cli/faqs#how-do-i-manually-set-the-node-js-version-to-run-my-integration-with).
+
+The most recently released version of `cli` and `core` is **18.1.0**. You can see the versions you're working with by running `zapier -v`.
+
+To update `cli`, run `npm install -g zapier-platform-cli@latest`.
+
+To update the version of `core` your integration depends on, set the `zapier-platform-core` dependency in your `package.json` to a version listed [here](https://www.npmjs.com/package/zapier-platform-core?activeTab=versions) and reinstall your dependencies (either `yarn` or `npm install`).
+
+For maximum compatibility, keep the versions of `cli` and `core` in sync.
+
+
+# Testing and debugging
+Source: https://docs.zapier.com/platform/build-cli/testing-and-debugging
+
+Test your integration using `invoke` command and unit tests. Debug locally using a step-by-step debugger.
+
 There are several ways to test your Zapier integration:
 
-* You can use the `zapier invoke` command to invoke a trigger, search, create, or an auth operation locally.
+* You can use the `zapier-platform invoke` command to invoke a trigger, search, create, or an authentication method locally or remotely.
 * You can write unit tests for your Zapier integration that run locally, outside of the Zapier editor.
 * You can run these tests in a CI tool like [Travis](https://travis-ci.com/).
 
-### Using `zapier invoke` Command
+### Using `zapier-platform invoke` Command
 
 *Added in v15.17.0.*
 
-The `zapier invoke <ACTION_TYPE> <ACTION_KEY>` CLI command emulates how the Zapier production environment would invoke your integration. Since it runs code locally, it's a fast way to debug and test interactively without needing to deploy the code to Zapier.
+The `zapier-platform invoke <ACTION_TYPE> <ACTION_KEY>` CLI command emulates how the Zapier production environment would invoke your integration. Since it runs code locally, it's a fast way to debug and test interactively without needing to deploy the code to Zapier.
 
 Its general execution flow involves calling `operation.inputFields` of an action, resolving the input data to the expected types, and then calling the `operation.perform` method.
 
-[`zapier invoke --help`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#invoke) has detailed documentation, but here's a quick rundown:
+[`zapier-platform invoke --help`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#invoke) has detailed documentation, but here's a quick rundown:
 
-```bash  theme={null}
-# Initialize auth data in .env file
-zapier invoke auth start
+```bash theme={null}
+# Initialize auth data in .env file locally
+zapier-platform invoke auth start
 
 # Refresh auth data (for OAuth2 or Session auth)
-zapier invoke auth refresh
+zapier-platform invoke auth refresh
 
 # Test your auth data in .env
-zapier invoke auth test
-zapier invoke auth label
+zapier-platform invoke auth test
+zapier-platform invoke auth label
 
 # Invoke a polling trigger
-zapier invoke trigger new_recipe
+zapier-platform invoke trigger new_recipe
 
 # Invoke a create action
-zapier invoke create add_recipe --inputData '{"name": "Pancakes"}'
-zapier invoke create add_recipe --inputData @file.json
+zapier-platform invoke create add_recipe --inputData '{"name": "Pancakes"}'
+zapier-platform invoke create add_recipe --inputData @file.json
+```
+
+Starting in v18.1.0, you can use `zapier-platform invoke --remote` (or `-r`) to invoke your integration code remotely in Zapier's production environment.
+
+```bash theme={null}
+# Invoke your integration code remotely (will ask you which action to run)
+zapier-platform invoke -r
+
+# Test auth data remotely (will ask you to select a connected account)
+zapier-platform invoke -r auth test
+
+# Invoke a polling trigger remotely
+zapier-platform invoke -r trigger new_recipe
 ```
 
 ### Writing Unit Tests
@@ -4695,11 +4985,10 @@ zapier invoke create add_recipe --inputData @file.json
 From v10 of `zapier-platform-cli`, we recommend using the [Jest](https://jestjs.io/) testing framework. After running `zapier-platform init` you should find an example test to start from in the `test` directory.
 
 <Info>
-  On v9, the recommendation was [Mocha](https://mochajs.org/). You can still use
-  Mocha if you prefer.
+  Before v10, `zapier-platform init` project templates used [Mocha](https://mochajs.org/) for the test framework. Now we recommend Jest.
 </Info>
 
-```js  theme={null}
+```js theme={null}
 /* globals describe, expect, test */
 
 const zapier = require("zapier-platform-core");
@@ -4738,7 +5027,7 @@ describe("triggers", () => {
 
 Introduced in `core@11.1.0`, `appTester` can now run arbitrary functions:
 
-```js  theme={null}
+```js theme={null}
 /* globals describe, expect, test */
 
 const zapier = require("zapier-platform-core");
@@ -4791,7 +5080,7 @@ describe("triggers", () => {
 
 It's useful to test your code without actually hitting any external services. [Nock](https://github.com/node-nock/nock) is a Node.js utility that intercepts requests before they ever leave your computer. You can specify a response code, body, headers, and more. It works out of the box with `z.request` by setting up your `nock` before calling `appTester`.
 
-```js  theme={null}
+```js theme={null}
 /* globals describe, expect, test */
 
 const zapier = require("zapier-platform-core");
@@ -4838,8 +5127,8 @@ Here's more info about nock and its usage in the [README](https://github.com/nod
 
 To run all your tests do:
 
-```bash  theme={null}
-zapier test
+```bash theme={null}
+zapier-platform test
 ```
 
 <Info>
@@ -4850,7 +5139,7 @@ zapier test
 
 The best way to store sensitive values (like API keys, OAuth secrets, or passwords) is in an `.env` (or `.environment`, see below note) file ([learn more](https://github.com/motdotla/dotenv#faq)). Then, you can include the following before your tests run:
 
-```js  theme={null}
+```js theme={null}
 const zapier = require("zapier-platform-core");
 zapier.tools.env.inject(); // inject() can take a filename; defaults to ".env"
 
@@ -4867,16 +5156,16 @@ zapier.tools.env.inject(); // inject() can take a filename; defaults to ".env"
 
 Additionally, you can provide them dynamically at runtime:
 
-```bash  theme={null}
-CLIENT_ID=1234 CLIENT_SECRET=abcd zapier test
+```bash theme={null}
+CLIENT_ID=1234 CLIENT_SECRET=abcd zapier-platform test
 ```
 
 Or, `export` them explicitly and place them into the environment:
 
-```bash  theme={null}
+```bash theme={null}
 export CLIENT_ID=1234
 export CLIENT_SECRET=abcd
-zapier test
+zapier-platform test
 ```
 
 ### Testing in Your CI
@@ -4887,12 +5176,12 @@ Behind the scenes `zapier-platform test` does a standard `npm test`, which could
 
 This makes it straightforward to integrate into your testing interface. For example, if you want to test with [Travis CI](https://travis-ci.com/), the `.travis.yml` would look something like this:
 
-```yaml  theme={null}
+```yaml theme={null}
 language: node_js
 node_js:
   - "v22"
 before_script: npm install -g zapier-platform-cli
-script: CLIENT_ID=1234 CLIENT_SECRET=abcd zapier test
+script: CLIENT_ID=1234 CLIENT_SECRET=abcd zapier-platform test
 ```
 
 You can substitute `zapier-platform test` with `npm test`, or a direct call to `node_modules/.bin/jest`. We recommend putting environment variables directly into the configuration screens Jenkins, Travis, or other services provide.
@@ -4913,7 +5202,7 @@ This will tell `node` to inspect the `jest` processes, which is exactly what we 
 
 Next, add a `debugger;` statement somewhere in your code, probably in a `perform` method:
 
-```js  theme={null}
+```js theme={null}
 // triggers on a new pizza with a certain tag
 const perform = async (z, bundle) => {
   const response = await z.request({
@@ -4954,173 +5243,6 @@ After a few seconds, you'll see your code, the `debugger` statement, and info ab
 
 Debugging combined with thorough unit tests will hopefully equip you in keeping your Zapier integration in smooth working order.
 
-## Using `npm` Modules
-
-Use `npm` [modules](https://docs.npmjs.com/) just like you would use them in any other node app, for example:
-
-```bash  theme={null}
-npm install --save jwt
-```
-
-And then `package.json` will be updated, and you can use them like anything else:
-
-```js  theme={null}
-const jwt = require("jwt");
-```
-
-During the `zapier-platform build` or `zapier-platform push` step, we'll copy all your code to a temporary folder and do a fresh re-install of modules.
-
-<Info>
-  If your package isn't being pushed correctly (IE: you get "Error: Cannot find module 'whatever'" in production), try adding the `--disable-dependency-detection` flag to `zapier-platform push`.
-
-  You can also try adding a `includeInBuild` array property (with paths to include, which will be evaluated to RegExp, with a case insensitive flag) to your `.zapierapprc` file, to make it look like:
-
-  ```json  theme={null}
-  {
-    "id": 1,
-    "key": "App1",
-    "includeInBuild": ["test.txt", "testing.json"]
-  }
-  ```
-</Info>
-
-<Tip>
-  Since v17.3.1, `zapier-platform build` and `zapier-platform push` provide a
-  `--skip-npm-install` flag to skip the `npm install` step and build directly
-  from the current project directory without copying files to a temporary
-  folder. Try `zapier build --skip-npm-install` or `zapier push   --skip-npm-install` to build faster.
-</Tip>
-
-<Warning>
-  Do not use compiled libraries unless you're sure they're runnable in AWS
-  Lambda Node.js runtime. Or you could follow the Docker instructions below to
-  build on the AWS AMI `ami-4fffc834`.
-</Warning>
-
-## Building Native Packages with Docker
-
-Unfortunately if you are developing on a macOS or Windows box you won't be able to build native libraries locally. If you try and push locally build native modules, you'll get runtime errors during usage. However, you can use Docker and Docker Compose to do this in a pinch. Make sure you have all the necessary Docker programs installed and follow along.
-
-First, create your `Dockerfile`:
-
-```Dockerfile  theme={null}
-FROM amazonlinux:2017.03.1.20170812
-
-RUN yum install zip findutils wget gcc44 gcc-c++ libgcc44 cmake -y
-
-RUN wget https://nodejs.org/dist/v8.10.0/node-v8.10.0.tar.gz && \
-    tar -zxvf node-v8.10.0.tar.gz && \
-    cd node-v8.10.0 && \
-    ./configure && \
-    make && \
-    make install && \
-    cd .. && \
-    rm -rf node-v8.10.0 node-v8.10.0.tar.gz
-
-RUN npm i -g zapier-platform-cli
-
-WORKDIR /app
-```
-
-And finally, create your `docker-compose.yml` file:
-
-```yml  theme={null}
-version: "3.4"
-
-services:
-  pusher:
-    build: .
-    volumes:
-      - .:/app
-      - node_modules:/app/node_modules:delegated
-      - ~/.zapierrc:/root/.zapierrc
-    command: 'bash -c "npm i && zapier push"'
-    environment:
-      ZAPIER_DEPLOY_KEY: ${ZAPIER_DEPLOY_KEY}
-
-volumes:
-  node_modules:
-```
-
-<Info>
-  Watch out for your `package-lock.json` file, if it exists for local install it
-  might incorrectly pin a native version.
-</Info>
-
-Now you should be able to run `docker-compose run pusher` and see the build and push successfully complete!
-
-## Using Transpilers
-
-If you would like to use a transpiler like `babel`, you can add a script named `_zapier-build` to your `package.json`, which will be run during `zapier-platform build`,
-`zapier-platform push`, and `zapier upload`. See the following example:
-
-```json  theme={null}
-{
-  "scripts": {
-    "zapier-dev": "babel src --out-dir lib --watch",
-    "_zapier-build": "babel src --out-dir lib"
-  }
-}
-```
-
-Then, you can have your fancy ES7 code in `src/*` and a root `index.js` like this:
-
-```js  theme={null}
-module.exports = require("./lib");
-```
-
-And work with commands like this:
-
-```bash  theme={null}
-# watch and recompile
-npm run zapier-dev
-
-# tests should work fine
-zapier test
-
-# every build ensures a fresh build
-zapier push
-```
-
-There are a lot of details left out - check out the full example integration [here](https://github.com/zapier/zapier-platform/tree/main/example-apps/babel).
-
-<Info>
-  We recommend using `zapier init .` to create an integration - you’ll be
-  presented with a list of currently available example templates to start with.
-</Info>
-
-## Command Line Tab Completion
-
-Introduced in v9.1.0, the `zapier autocomplete` command shows instructions for generating command line autocomplete.
-
-Follow those instructions to enable completion for `zapier` commands and flags!
-
-## The Zapier Platform Packages
-
-The Zapier Platform consists of 3 npm packages that are released simultaneously.
-
-* [`zapier-platform-cli`](https://github.com/zapier/zapier-platform/tree/main/packages/cli) is the code that powers the `zapier-platform` command. You use it most commonly with the `test`, `scaffold`, and `push` commands. It's installed with `npm install -g zapier-platform-cli` and does not correspond to a particular integration.
-* [`zapier-platform-core`](https://github.com/zapier/zapier-platform/tree/main/packages/core) is what allows your integration to interact with Zapier. It holds the `z` object and integration tester code. Your integration depends on a specific version of `zapier-platform-core` in the `package.json` file. It's installed via `npm install` along with the rest of your integrations's dependencies.
-* [`zapier-platform-schema`](https://github.com/zapier/zapier-platform/tree/main/packages/schema) enforces integration structure behind the scenes. It's a dependency of `core`, so it will be installed automatically.
-
-To learn more about the structure of the code (especially if you're interested in contributing), check out the `ARCHITECTURE.md` file(s).
-
-### Updating These Packages
-
-The Zapier platform and its tools are under active development. While you don't need to install every release, we release new versions because they are better than the last. We do our best to adhere to [Semantic Versioning](https://semver.org/) wherein we won't break your code unless there's a `major` release. Otherwise, we're just fixing bugs (`patch`) and adding features (`minor`).
-
-Broadly speaking, all releases will continue to work indefinitely. While you never *have* to upgrade your integration's `zapier-platform-core` dependency, we recommend keeping an eye on [Platform News](/platform/news) to see what new features and bug fixes are available.
-
-For more info about which Node versions are supported, see [the faq](/platform/build-cli/faqs#how-do-i-manually-set-the-node-js-version-to-run-my-integration-with).
-
-The most recently released version of `cli` and `core` is **18.0.0**. You can see the versions you're working with by running `zapier -v`.
-
-To update `cli`, run `npm install -g zapier-platform-cli@latest`.
-
-To update the version of `core` your integration depends on, set the `zapier-platform-core` dependency in your `package.json` to a version listed [here](https://www.npmjs.com/package/zapier-platform-core?activeTab=versions) and reinstall your dependencies (either `yarn` or `npm install`).
-
-For maximum compatibility, keep the versions of `cli` and `core` in sync.
-
 
 # TypeScript integrations
 Source: https://docs.zapier.com/platform/build-cli/typescript-integrations
@@ -5148,7 +5270,7 @@ Note that all TypeScript templates now default to ESM.
 
 For example, for Basic Auth:
 
-```shell  theme={null}
+```shell theme={null}
 # (deprecated) $ zapier init my-app --template basic-auth --language typescript
 $ zapier-platform init my-app --template basic-auth --language typescript
 $ cd my-app
@@ -5171,7 +5293,7 @@ To add triggers, creates, and searches, you can then run `zapier-platform scaffo
 The scaffold command will automatically detect you're using TypeScript, and create the
 correct code accordingly:
 
-```shell  theme={null}
+```shell theme={null}
 # (deprecated) $ zapier scaffold trigger contact
 # (deprecated) $ zapier scaffold create contact
 $ zapier-platform scaffold trigger contact
@@ -5201,7 +5323,7 @@ automatically infer the types of all of the input fields specified.
 
 This looks like:
 
-```ts  theme={null}
+```ts theme={null}
 import {
   defineInputFields,
   defineXyz, // i.e. defineTrigger, defineCreate, defineSearch.
@@ -5235,7 +5357,7 @@ searches. To make this easier, there is also a singular
 These can be put somewhere in the `src/` directory, and then imported by
 the actions that need them.
 
-```ts  theme={null}
+```ts theme={null}
 // ./src/inputFields.ts
 import { defineInputField } from "zapier-platform-core";
 
@@ -5269,7 +5391,7 @@ The example below shows a dynamic input field that is used to optionally
 include a custom subject field when a prior boolean input field is set
 to `true`.
 
-```ts  theme={null}
+```ts theme={null}
 import { defineInputField, defineInputFields } from "zapier-platform-core";
 
 const customSubjectField = defineInputField((z, bundle) => {
@@ -5312,7 +5434,7 @@ are derived from data returned from an API. In this case, known inputs
 are preserved, but the `bundle.inputData` property will consider any
 other properties as `unknown`.
 
-```ts  theme={null}
+```ts theme={null}
 // Unknown dynamic input fields example
 
 import { defineInputField, defineInputFields } from "zapier-platform-core";
@@ -5373,7 +5495,7 @@ bundle's `inputData` property. These Perform types should use
 `satisfies XyzPerform<typeof inputFields>` to enforce the correct types but
 preserve the return type information.
 
-```ts  theme={null}
+```ts theme={null}
 import type { PollingTriggerPerform } from "zapier-platform-core";
 
 const perform = (async (z, bundle) => {
@@ -5385,7 +5507,7 @@ In most cases though, input data is derived from the array of input fields,
 which can be passed directly to the perform functions to be automatically
 inferred:
 
-```ts  theme={null}
+```ts theme={null}
 import type { PollingTriggerPerform } from "zapier-platform-core";
 
 const inputFields = defineInputFields([
@@ -5425,7 +5547,7 @@ object. Wrapping it with `defineApp` will help to check its structure.
 Otherwise it's a normal integration, and you register Auth, middleware,
 hydrators, Triggers, Creates, and Searches all the same way!
 
-```ts  theme={null}
+```ts theme={null}
 import { defineApp, version as platformVersion } from "zapier-platform-core";
 import packageJson from "../package.json" with { type: "json" };
 
@@ -5460,7 +5582,7 @@ named `src/authentication.ts`. It uses a `satisfies Authentication`
 constraint to check its structure, and does **not** use a `define`
 helper.
 
-```ts  theme={null}
+```ts theme={null}
 // ./src/authentication.ts
 
 import type { Authentication } from "zapier-platform-core";
@@ -5504,7 +5626,7 @@ that are typed as `BeforeRequestMiddleware` or
 `AfterResponseMiddleware` types. They are registered in the same way as
 in JavaScript integrations in `/src/index.ts`.
 
-```ts  theme={null}
+```ts theme={null}
 // ./src/middleware.ts
 
 import type { BeforeRequestMiddleware } from "zapier-platform-core";
@@ -5530,7 +5652,7 @@ Triggers, Creates, and Searches are now recommended to define their
 inputs and perform functions as separate objects, and composed together
 in the `define` helper that is default export from the file.
 
-```ts  theme={null}
+```ts theme={null}
 // ./src/triggers/pollingTrigger.ts
 
 import {
@@ -5581,7 +5703,7 @@ export default defineTrigger({
 The `tsconfig.json` file configures the TypeScript compiler. Below are
 settings that are recommended for developing TypeScript integrations.
 
-```ts  theme={null}
+```ts theme={null}
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -5609,7 +5731,7 @@ Every Zap starts with a single trigger that watches for new or updated data, sta
 Zapier actions create or update a single item in your app through API calls that include multiple details from user customized [input fields](/platform/build/add-fields).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8d087aba0e45602060e48467c914ad96" alt="Zapier Action Visual Builder" data-og-width="980" width="980" data-og-height="963" height="963" data-path="images/57f28534d180f2a642ebe0be2e236c32.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=fcb42b22591c1cfc20c85323cb1f6682 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=4628c816fb5c92963a108793de53ea4f 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bd4690eb95577fb50bb8b489f413a97d 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=68dff5405dda6e90297729bc8ae58039 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3f659de5dbd9b8916071de4cd90d7d20 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/57f28534d180f2a642ebe0be2e236c32.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=57e6ab931ccad477f916e80ccde1ad7f 2500w" />
+  <img alt="Zapier Action Visual Builder" />
 </Frame>
 
 Zaps can have one or more actions.
@@ -5661,11 +5783,7 @@ When building in the Platform UI, you'll use the Input Designer to create the fo
 The Input Designer works similarly to other form builder tools, building a form that lives inside the Platform UI. Add fields to your form for each bit of data your app needs from users. Use the same name for items as used in your app's UI. Configure each field's settings, then reorder them to match the logical order users would add or view data in your app.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=53af2bb246c983285df12df9d692f093" data-og-width="1194" width="1194" data-og-height="881" height="881" data-path="images/524b9300c044809eb13eb732d7a50f9d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=161054f9c705b011b1f6bbfc0a1ba21f 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c2b497d76f609b6746dcf5b82590849d 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=06df16a57648f0fc29cb44c92b196673 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=121ff5a88087dcc16f05d2a7f617ce74 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9c8a212301baedb4d8f7b27ee3c02da6 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/524b9300c044809eb13eb732d7a50f9d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=907660a32928726fcb4954f906ff4bc7 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Actions require an input form, as they always need a way for users to send data to your app's API to find, update, or create a new object. An input form is optional for triggers.
@@ -5714,11 +5832,7 @@ An email app like MailChimp requires an email address to add a new email subscri
 Check the *Required* option on those fields if your trigger or action step requires any data to make the API request. Zapier will show a red `(required)` label beside the field name in the Zap editor, and will not let users complete the Zap step without adding data to that field.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=d356c0f27a97db67d250c7dfa8ef71e7" data-og-width="1197" width="1197" data-og-height="130" height="130" data-path="images/f8d0fd74582dc7c5997248516ad50d4f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=737b237913aad346fa4211fa03478019 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=0c6eef365f77db31c6cb9c21e5a94cdc 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=49d1b0056849829e5ca4a46d35dd0f74 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a1476ead555a8b45db720d79334cd116 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a0bd3616462cb7e7ca66fc6c3c582758 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f8d0fd74582dc7c5997248516ad50d4f.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=00e21c7f260a4d21e7207f4d536c407f 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Include a description on required fields to let users know exactly what type of data they should add to this field. Never mark fields as required if the integration could work without them.
@@ -5728,11 +5842,7 @@ Include a description on required fields to let users know exactly what type of 
 If users could add multiple entries in the same field, check the *Allows Multiples* option.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e59bd33504a8edd9c7feb73048573a1d" data-og-width="1207" width="1207" data-og-height="194" height="194" data-path="images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c58be0cb90e1aa285aab1d2c10864a6c 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7bc3ea5bc778edceee9dbfb69cc311f1 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d74004cf53886b4a2a6ac9c347bca16f 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3100e961e2e265401f01c9a8bf326e56 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8185fcd41cbf0385254df39549c6e86c 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4c2a6ad55c12f6e3079e50f5d38e6c.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=f64aa424b90c702814aa6873e4090d29 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 That will add another entry row to allow the user to input another entry for that field. An [array containing a comma separated list of entries](/images/95938b473edfee13663161ee3c8e5ea4.webp) is sent in the API request. Never ask users to type in a comma separated list, rather use this functionality.
@@ -5744,11 +5854,7 @@ For each [dynamic field](/platform/build/dynamic-field) in your integration, Zap
 Check the *Alters Dynamic Fields* option, to have Zapier automatically recompute any dynamic fields in your Zapier integration anytime this field is changed. Do not check the *Alters Dynamic Fields* option unless the field is needed for your integrations' dynamic fields.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=bfaabf3eedbd28f78c1d98b5287c5752" data-og-width="1864" width="1864" data-og-height="230" height="230" data-path="images/f89ed93d7233d0473b435156b31a1a8a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=943e4b1948de205565a25e6360934793 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=35b997d4ed2c258668c8434ee46938a4 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4ef300c72a51893a79691ce3de6a033a 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=92e32efc1c0f17e96c7b48c8c2f8b195 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=da47657e5f6225cfbf170056c58e948c 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f89ed93d7233d0473b435156b31a1a8a.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=8e50038c3d537903907cfc4ab013538a 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Only dropdowns support *Alters Dynamic Fields*.
@@ -5760,11 +5866,7 @@ Only dropdowns support *Alters Dynamic Fields*.
 To offer users pre-set options to choose from in a field, set your field type as `String`, then check the *Dropdown* option.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=141731b49bd37638fc7be93aae78b2de" data-og-width="1197" width="1197" data-og-height="609" height="609" data-path="images/4f65bd28634d7709cac0ba84f2fa73d3.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2b1e53d74e5bee0de2482bf910c39f11 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=500c6a457986accd52e36922932f2cc1 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d92282972abd15c5102d3ee641b81a1b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=61d198d528c056569c54ef88bd50fa05 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=630cb15e240473affacd2b6f4f90d9bc 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f65bd28634d7709cac0ba84f2fa73d3.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=89a58301d00c2c9a0cc1d54897e22b2c 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 You'll see the default *Static* selected, or *Dynamic*. To add a Static menu of choices, type the options in a comma separated list, with quotes around each item and square brackets around the set, such as:
@@ -5778,18 +5880,14 @@ Enter the fields as used in your API, as Zapier will pass the exact value users 
 If your API requires different values for the field than the text you want to show to users inside the dropdown menu in Zapier, make a key value pair that includes the value to send to your API, the sample value to show users ([should be the same as the value](https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#fieldchoicewithlabelschema)), and a user-friendly label.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=fd8037a8df8f5258abe7c3faf7f7ed53" data-og-width="1187" width="1187" data-og-height="714" height="714" data-path="images/101618614c22bd4bd453c365db753db9.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b9bfdb0c46d475c79e01900f784303dc 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=861bca6782362d70429e986351f2cba1 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=7bce78a4e07ec78f49f8f864680ffe19 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3904c3adc808f38f48c11dbbae9771f0 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=185825fb4a23a4007a9020e0ee9067bd 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/101618614c22bd4bd453c365db753db9.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ffb5087fee491cbdd74db6add1f43697 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 To do that, add each menu item inside an object (curly brackets); with the sample, value, and label comma separated. List the item first and the value second, both wrapped in quotes. Separate each menu item with commas, and wrap the whole set in an array (square brackets).
 
 For example, if your API expects a value of `1` or `2`, but `1` actually means `pork` and `2` actually means `fish` to a user, you could use the following code to add the dropdown menu pictured:
 
-```JSON  theme={null}
+```JSON theme={null}
 [
   {
     "sample": "1",
@@ -5807,19 +5905,11 @@ For example, if your API expects a value of `1` or `2`, but `1` actually means `
 Alternatively, you can also use the syntax of `value:label`, which shows to users as follows:
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=efe0445cc3a0071f6a07e2ed33e99966" data-og-width="569" width="569" data-og-height="311" height="311" data-path="images/b1892fb8ea92e7d21ec0b356f7e3330b.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a4e11b463883d633be37837e70072b7f 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a608204bcbbc2354a6725afc2dfc21a6 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=34b55a7ee181cde584b4a1ec51f7050e 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8b20ab03278deadf6b36543ccff80bda 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=49d561de3f8ace2c63c7de134894ce51 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b1892fb8ea92e7d21ec0b356f7e3330b.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f998a7740749a9eabd7f6b7f6a4aaa84 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e196304e185e26651ccb9f504f072cab" data-og-width="595" width="595" data-og-height="494" height="494" data-path="images/886425bb6592ab9e4141b15e3cc001ec.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=de6c97f3ae60284af77ed4c8d9cb7c15 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4f757bb9e91188ded3d3bcd5174b69c4 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=98d0906d0f7a8ed6a158e47e3e79a2b8 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=777c1b71ab6b74250b30b1d51b96ba7a 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2aae3382a9f4cd1585ab17e28b96b268 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/886425bb6592ab9e4141b15e3cc001ec.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=238b36ad8975f128cae31d99d364f884 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 #### Dynamic Dropdown
@@ -5833,11 +5923,7 @@ The best way to make a dynamic dropdown is to use a dedicated trigger to fetch t
 Create a new trigger, with a key, name, and noun. This trigger is usually configured to not be seen by users but you may wish to include a description for your internal team's awareness. In the *Visibility in Editor* field, select `Hidden` to hide this trigger from your app's trigger list in Zapier.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a8c18a735b6775e091bed85a6384b6c3" data-og-width="2016" width="2016" data-og-height="1106" height="1106" data-path="images/36d19e02a566c61c3df00e7b6987daf1.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8d31dfe7ca7b8885b58d634505081d89 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4678c5d6ed15ba8442cb153c2f6cf05b 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c3770e203a8f05d094be1c779e10cae9 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8f1c95ade8d2f804ca322a748e7f9b8a 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=17bbb15a3d7a1677cd22dff04122bb7c 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/36d19e02a566c61c3df00e7b6987daf1.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9787277be8bae3d43c665f93f03ae4c2 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 You can also use an existing, visible trigger to power a dynamic dropdown if applicable.
@@ -5847,21 +5933,13 @@ Skip the *Input Designer* tab, as the dynamic dropdown cannot require any user i
 Select the *API Configuration* tab, and add the API call where Zapier can fetch the data from your API. For standard Zapier triggers, you would use an API call that fetches new or updated items. For dynamic dropdowns, instead use an API call that pulls in a list of the items that the user can select from.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=152db0774ce38f004a80ee7ffc0d6a42" data-og-width="2012" width="2012" data-og-height="1171" height="1171" data-path="images/e7dd5bf7e40caa03989e754ca518d14c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9d891f34546a3371fdf07be4fe15f46b 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6a3087907ddaffe9b11ba885b2d2304e 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4309e550b996e59a866cc8dcd8e9e240 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e71226f8e1d9404af84ea9c2ec671f65 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4c520c1a2c79e98a34274a0be40c81ed 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e7dd5bf7e40caa03989e754ca518d14c.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1f715377d2aa10c818137a2324deff97 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 API calls will usually require additional configuration to pull in data in the order that makes most sense in your menu. You may want to sort options in the order they were added or updated, or want to have the API fetch more items at once than the default. Set these parameters from the *Show Options* menu.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d194412471d7e04f93bf45b2dbad1da7" data-og-width="1110" width="1110" data-og-height="736" height="736" data-path="images/81be9d8ede3b19a8d4b5f58125575076.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b2a8dc28d92d4edd0bcf15395b6ba679 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=25809e894a044e2adf480529ca2ec295 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=09002ee599a5a1f8ca9e86284856c091 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=82f524fc6be3fa77f104f2a47354a812 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=660650fd343671ecc5f640a4555dbec1 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81be9d8ede3b19a8d4b5f58125575076.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5699942173cd58d953410831f94d2fac 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 If your API supports pagination, you can allow users to load additional data in
@@ -5878,11 +5956,7 @@ Zapier shows the data in the dropdown menu in the order your API sends it to Zap
 Define the fields from this hidden trigger that you need to use in the dynamic dropdown input field. To do so, test your trigger and identify the output fields needed, adding them to the *Output Fields* list at the end of your settings page. Include at least a field with the data that Zapier needs to send to your API in the action (for example `id`), along with a field that includes a user-friendly `name` for the data in that field.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c9bcf29c1ac7656817105bd18648c2c4" data-og-width="1192" width="1192" data-og-height="819" height="819" data-path="images/3023ea97191fbcf90222dcf42a46035d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a41031c9bd0c581ada3b9479d4a6c14f 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6de7662c6f5cb34479ad3b7b699f5e2c 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=0f4e6b7bc60703ffeb0732001a484c0b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=79dfd930604b53e0484e51060c0eba3c 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=53f5c3ab3d8ac9c0e4918d0672eb1424 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3023ea97191fbcf90222dcf42a46035d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=07a88164ebb1d393a0e8b2ddaf08b81a 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 **2. Add an input field with dynamic fields**
@@ -5890,11 +5964,7 @@ Define the fields from this hidden trigger that you need to use in the dynamic d
 To use the data from the hidden trigger you've configured, add a new input field to the trigger/action you're working on, and set the label, key, and other details as normal. Check the *Dropdown* box and select the *Dynamic* toggle. Choose the hidden trigger you've configured for this menu in the *Dropdown Source* option.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=8acc17f999ff42fa3bcb4432efb273dc" data-og-width="1661" width="1661" data-og-height="987" height="987" data-path="images/f2a8c7071bf4e96e5a44073999b4ccf5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=d5cb30f3e44b987fd5869441d28e77ec 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=44424fa6dd4d0243e9d56d0b8cf0d7ee 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=81424aea75266a58628de4374b08f77e 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ddf4e7228255c091e519cbf1987dde61 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4e85144c6b8bbc1e2ca5e51534474b9a 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f2a8c7071bf4e96e5a44073999b4ccf5.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=9bff94747e7b0948c9ca5afbbc14aadf 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Select the field with the data your API needs for this action in the *Field Name* menu, and the field with a human-friendly name for the data in the *Field Label* menu. The [preview will indicate the presence of the field](/images/4780bb34f2f3d24062d2eb556ed1e3a9.webp), but you will need to use your trigger/action in a Zap to test the menu and pull in real data.
@@ -5902,11 +5972,7 @@ Select the field with the data your API needs for this action in the *Field Name
 When this trigger/action is selected in a Zap, the user will see a dropdown as Zapier polls your API for the data from that hidden trigger, parse the entries and extract the fields you specified, showing them in a user-friendly dropdown menu. The human-friendly name will be in larger, darker text, and the value to be sent to the API in smaller, lighter text.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=28d976949d4cfda846e23158f8fa460d" data-og-width="946" width="946" data-og-height="571" height="571" data-path="images/afacb9fb44654908ec3d9e6803b728ee.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a3d0da3226fc669690c1debf8124f401 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=dc41ee9d0a861a01c9eff52b3825fbe7 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e62fbfcabd7f9c6f7c29e84a39204c85 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=63290ab58b4b7b7cf55baeb32c36abdb 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d8bd20b30ac154e26480e25ad5c2e039 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/afacb9fb44654908ec3d9e6803b728ee.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=be1d37c40dd3a9b472459e43ead0aefe 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 It is important to provide the API value (example `id`) for users to know what type of data the field expects. Users can also choose to [enter a custom value](/images/f72a12759a3b3b391025f6500f6c7904.webp)
@@ -5917,32 +5983,24 @@ and map data from other Zap steps into this field. Being able to see what type o
 Dynamic Dropdown menus can optionally include an additional *Add a Search Step* button beside the dropdown menu. This lets users dynamically select the correct item from a dynamic field based on input from previous Zap steps.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8d184cb309a33716984c7fcc9967a193" data-og-width="1663" width="1663" data-og-height="965" height="965" data-path="images/51ef24ac9ee90dd393e695ec75601532.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9c563c7f2d0f704799030305e7b6c421 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8598e08d9d527e0905c7f9b4d3ec8832 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d34457951b8dd95cebb65013723e14a1 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d6a49180bead4e375b14c9262184c25d 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3fc90c8db3cf60541d88465d82e0760d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51ef24ac9ee90dd393e695ec75601532.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f625c77b9ab73e3b66363f9c2d225558 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 You'll need to add a [Search Action](/platform/build/action#how-to-add-a-search-action) to find the items used in this dropdown menu. Then check the *Add a search to this field* option under the dynamic dropdown you've built, choose that action, and enter the ID of the field from that trigger that Zapier needs to pass with this API call (which should include the same data as the *Field Name* you selected before for the dynamic menu).
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8d17c93d9ada402bc484f523c16f35a2" data-og-width="1194" width="1194" data-og-height="1133" height="1133" data-path="images/3f6203d975653bcd004dccb5f15424ed.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ed33ec6a5e35767a79f83929e5749d58 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=abf794a0b70267f5f159f2a764636053 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7fd0196454a22e428c5ab709ab58c5c1 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=76d80b10bf5e435ad37a4e67d019a0ad 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c994a53e5407f9ce2dc0a0440d1d22c8 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f6203d975653bcd004dccb5f15424ed.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9ef46add0bc4ad81f6da8ad118c4507b 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 When users click or add a search step in their Zap, Zapier will add a new search step before this action step.
 
-<video controls src="https://cdn.zappy.app/b6a7e1ac915b668e12c53b0d08f8330c.mp4" />
+<video />
 
 This allows the user to enter the details to search for the item they need, and Zapier will automatically map the correct output value from that search to this dynamic dropdown field [as a custom value](https://help.zapier.com/hc/en-us/articles/8496241696141-Add-custom-values-to-dropdown-menu-fields-in-Zaps#01H7FR09FBWT481ZJ77VVR0HBR).
 
 We have a video tutorial on Dynamic Dropdowns which you can view here:
 
-<video controls src="https://cdn.zappy.app/3fe97302eb51e6059bc56bf974c29916.mp4" />
+<video />
 
 ## Reorder input fields
 
@@ -5951,32 +6009,24 @@ Reordering input fields in triggers or actions can help improve readability and 
 List the most important, required fields first, with less important, optional fields near the bottom. Have related fields (such as first and last name) near each other. Ordering fields in Zapier similar to the order of fields in any input forms in your app will increase ease of use.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6e3ec9a86e764dc12c5f1a902de18567" data-og-width="2197" width="2197" data-og-height="1155" height="1155" data-path="images/08bf5a61391edb66c9a5f5bad37e2889.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=698470d469adc15aa3a5a4849a9c2f4a 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3777b02df778e9f0c1e3045ae6db3c8f 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f412f5862b8ff5274ef3b145f55cae56 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a0cdb3406d949f67224b070395415bda 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=d0aa44840264d78852c4f421ae9a47ca 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08bf5a61391edb66c9a5f5bad37e2889.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=926758cae21a740ee7c5a0ce840fc158 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 In your trigger or action settings:
 
 1. Click the **Input Designer** tab.
 2. In the *Sort* column, click the **up**
+
    <Frame>
-     {" "}
-
-     <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=c5f4cf239bd59432a1e52ed39a71b4c1" data-og-width="75" width="75" data-og-height="75" height="75" data-path="images/7b756b685e0e7f9759e8f7e1ed700aca.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9f995580f7b996df5fd14446ae90d3cc 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=cae3be8b53c3d1e0048c517672e5746f 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f9bd0a9c4b64b4b0a4e9dbdda8c26020 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b7321130eec0989a1b004b08514eee7f 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=248c4a8be1e1b7d0b52bb69267347d82 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7b756b685e0e7f9759e8f7e1ed700aca.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0e95d97288c2d7b3e999f8b496b8e2f6 2500w" />
-
-     {" "}
+     <img />
    </Frame>
+
    or **down**
+
    <Frame>
-     {" "}
-
-     <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=70382b05424873bf651df7de5105ea69" data-og-width="75" width="75" data-og-height="75" height="75" data-path="images/f596f26128d01efe179c4340f0d17f84.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f79517c6a6fbd2235370e7bda2036a80 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=6688c813893f7fe9a6fd0e08d9073a85 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=da6eb43e730f7edfde78134c9be95312 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=1cd98ad27ee7577ff90829ca295c0098 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=c939d7457b0cf6a61b40a4cbb50455c2 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f596f26128d01efe179c4340f0d17f84.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=6b479c6dde793f84b8d26cc6207e5100 2500w" />
-
-     {" "}
+     <img />
    </Frame>
+
    arrow to move the fields to the order you want in the Form Editor screen.
 3. The preview on the right shows how the finished form looks to users inside Zapier.
 4. A pop-up message will appear to confirm your changes have been saved.
@@ -5988,7 +6038,7 @@ Make sure to delete only unnecessary fields, as a previous version of the input 
 In your trigger or action settings:
 
 1. Click the **Input Designer** tab.
-2. Click the **gear icon** <Frame> <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=90f5100da9529e84d415ac118dbe3ba4" data-og-width="75" width="75" data-og-height="75" height="75" data-path="images/1397c67b31689803185dca4e04858e37.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f6a28bb7d3f02d06c8ec6e5eee086018 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a249b9d107827460d1449f9328d58b2b 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=01a8e4d9dd4cdc819e8f5a5b093b33a0 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5b670584405d27dd0c5868c718d3aeeb 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=77d8736dedefb49555363e4746c9a8f2 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1397c67b31689803185dca4e04858e37.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=eeaa01759e7362f58cbc1a8c4ddd633f 2500w" /> </Frame> beside the input field you want to delete.
+2. Click the **gear icon** <Frame> <img /> </Frame> beside the input field you want to delete.
 3. Click **Delete**.
 4. Click **Confirm** to remove the input field from your integration.
 5. A pop-up message will appear to confirm your changes have been saved.
@@ -6003,10 +6053,8 @@ Source: https://docs.zapier.com/platform/build/apikeyauth
 
 API Key authentication passes along a user-entered API Key with every API call. In your Zapier integration using API Key authentication, the API key—and optionally any other data your API needs—is included every time a Zap step runs.
 
-<Frame caption="_Example API Key auth screen for users inside Zapier_">
-  <img src="https://cdn.zapier.com/storage/photos/19467b7d1852276b766b373373fd069c.png" />
-
-  {" "}
+<Frame>
+  <img />
 </Frame>
 
 Use API Key authentication if your API primarily uses an API key to identify accounts, especially with apps for weather, maps, content verification, file conversion, and other data tools that require a key for access to the service but do not contain user-specific content.
@@ -6018,17 +6066,13 @@ Since API Key authentication allows you to create a custom input form, you can u
 * Open the *Authentication* tab in Zapier visual builder and select *API key*.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2e5d137f8601b55d85f058ffafa55227" data-og-width="1663" width="1663" data-og-height="989" height="989" data-path="images/283f4595d4e25caee8256b2727eebb6d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=575cb1b107ea9a2aaa6279803eb37bf7 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2abb10d7365855e43c74955c05eceb92 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e247e65aded8e4d037e5972e4e47f83a 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=00a3f9f783ecda3a9e108bf338bb265c 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3a438e6ba2f826c7dbc3be7ba5cc42e3 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/283f4595d4e25caee8256b2727eebb6d.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f84498d84b10c1858e97dfe841e33294 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * Add authentication input fields where users will enter their API key and any other required authentication details. Check your API documentation for what fields are required, including user or account names, domains, and more. Note any details users may need on how to find that data in your app. API keys especially are often hidden under settings menus and you'll need to include those details in your input form's help text.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f5d9f5418a6aa2ebb8915f4a5554c0de" data-og-width="1662" width="1662" data-og-height="861" height="861" data-path="images/8de37a192b7d50162a7a115281d4a388.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b476e0649595ba1d2d8a29c32e2c828b 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3b9dc6cc3061e8db63d13c2cee93ab92 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3ee75154a9e608bb64702f5877344b02 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a9fcf927fee32fefe2a070d0cad48d26 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=09e84f4e1691a206a7989414b08c2b0e 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8de37a192b7d50162a7a115281d4a388.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4200f4c491bf9ccf2b6c98d59b1541fa 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * Click the *Add Fields* button and fill in the details for your field. Add the most commonly needed fields first, in the order users expect, as you cannot reorder fields once added.
@@ -6036,9 +6080,7 @@ Since API Key authentication allows you to create a custom input form, you can u
 * Add the required *Key*, the name your API uses to reference this field.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=68565e8f3b9dd930f567d18bc3c10695" data-og-width="809" width="809" data-og-height="953" height="953" data-path="images/d122ac64a68b926bacd5b4e0954ead2c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=22596829701be303d5359c1cf4599db3 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1afb9b044cd259599431321e5e8ec07f 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6443ffd82142ce4b212bef31bf9c66ef 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3c33306ac09985c02c82d65d0c91bbbc 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=77fae4039bc613818f1b903f1e37cd9b 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d122ac64a68b926bacd5b4e0954ead2c.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7c3d08b6bbda231e5a15460170dedcda 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * Fill in the optional fields, as appropriate, especially the *Label*:
@@ -6062,9 +6104,7 @@ Since API Key authentication allows you to create a custom input form, you can u
 * Each input field is listed with its label, key, type, and required status in your authentication settings. Click the field to edit it, or click the gear icon and select *Delete* to remove a field.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=846d103968c6022f385d3d34d4224eef" data-og-width="1661" width="1661" data-og-height="934" height="934" data-path="images/b27d364f2dd6ef2c1701c8b094a7ada0.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0161594ae93a743406a38f153b88a564 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=54ead4faf2960803ef3894fb4f628c91 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=60f26394a067ab3c8438193c9cb5ea14 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=46c366c9bacddf829282938d104a1a2e 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=08de3b4f9f82ae3703d30737ec327e84 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b27d364f2dd6ef2c1701c8b094a7ada0.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3ebb3fa89d278b42ae4b48d2f50ae2a8 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * Once you've added all the input fields to your authentication form, select *Continue*
@@ -6072,10 +6112,9 @@ Since API Key authentication allows you to create a custom input form, you can u
 ## 2. Add a Test API Request
 
 * Add an API call to your API that requires no configuration, typically a `/user` or `/me` call. Add the URL for the API call, and set the call type, typically a `GET`. This will test the user-entered API key and any other credentials to ensure it enables a successful API call to your app.
-  <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=54479020e92ff9fed161d6ffdfd839bf" data-og-width="1193" width="1193" data-og-height="662" height="662" data-path="images/c4c58979ddcf7eb8a462ac5ff7a37348.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=af88d59468aae26d047f0dd13f273d0c 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8b6315db68b24526d85ad3d1c130b204 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ca64b9cc52f500967c346e4536e2d66a 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=52407188adaebe1dfe5ceba7c1fd10f4 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=568516103832627742de762afea26e24 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c4c58979ddcf7eb8a462ac5ff7a37348.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7c8115146e0622ff63eea930b81d1d85 2500w" />
 
-    {" "}
+  <Frame>
+    <img />
   </Frame>
 
 * The API key and any additional input fields are automatically included in the URL Params and the HTTP Headers. Click *Show Options* to remove the details where they are not needed. It is typically not recommended to pass any sensitive information such as the API key in the URL Params. Passing it through the headers or even the body is preferable.
@@ -6083,9 +6122,7 @@ Since API Key authentication allows you to create a custom input form, you can u
 * To customize the test API request, select *Switch to Code Mode* and write custom JavaScript code to handle your test API call and the response parsing as needed. The first time you click the toggle, Zapier will convert your API call to code. If you switch back to Form Mode though, Zapier will not convert your code changes to the Form mode, nor will any subsequent changes in the form be added to your code.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=60b00e6f53911bfec11f6e2fb18b17fc" data-og-width="1189" width="1189" data-og-height="713" height="713" data-path="images/b5f336f8d8642f04d99d584f04c4e334.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e4b7e88c8acd2cd7f07ff16974fc39e3 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=684ee45846eb9529ba51da5c4e201d55 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5c7423ec453d147d5d3377ff89c35c74 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5c9f7cc51efc474fd0963e85e3fb77a8 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fbcf2bc30090f2899adc36624f4da4de 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b5f336f8d8642f04d99d584f04c4e334.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b0015e518c10df592394e314ef9734b1 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## 3. Configure a Connection Label
@@ -6118,22 +6155,20 @@ All Zapier integrations that can access or add private data for users require au
 
 Zapier supports the following five authentication schemes in the Platform UI, each with their own settings:
 
-<CardGroup cols={3}>
-  <Card title="API Key" icon="key" href="/platform/build/apikeyauth" horizontal />
+<CardGroup>
+  <Card title="API Key" icon="key" href="/platform/build/apikeyauth" />
 
-  <Card title="OAuth v2" icon="lock" href="/platform/build/oauth" horizontal />
+  <Card title="OAuth v2" icon="lock" href="/platform/build/oauth" />
 
-  <Card title="Session Auth" icon="user-clock" href="/platform/build/sessionauth" horizontal />
+  <Card title="Session Auth" icon="user-clock" href="/platform/build/sessionauth" />
 
-  <Card title="Basic Auth" icon="user-lock" href="/platform/build/basicauth" horizontal />
+  <Card title="Basic Auth" icon="user-lock" href="/platform/build/basicauth" />
 
-  <Card title="Digest Auth" icon="shield-halved" href="/platform/build/digestauth" horizontal />
+  <Card title="Digest Auth" icon="shield-halved" href="/platform/build/digestauth" />
 </CardGroup>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=39c1c497e30e7a2c1e6acfeb58170d4d" data-og-width="1660" width="1660" data-og-height="994" height="994" data-path="images/37e7829169eb2e07278d512c174cd708.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=02eea25bdf9733be0d4968092c456a48 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d07c05208b33ff23328440c849ab5615 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=24301f9a1f53eb3e439fb99b016b97d1 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e0b358820175669eb55d6744039e87de 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=24661831f847c93784d69684c14ffb54 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/37e7829169eb2e07278d512c174cd708.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a3d2a45f920185776349a56dcd71a16e 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Where possible, OAuth v2 authentication is the preferred scheme to simplify a user's account connection and minimize set up time. During the authentication flow via Zapier, a familiar popup window appears from your app to select their account or log in, then verify the connection. This fits the flow most modern apps use for integration authentication.
@@ -6153,9 +6188,7 @@ You cannot change an integration's authentication scheme directly. First, remove
 To remove a Zapier integration's authentication scheme in the Platform UI, open the *Authentication* page. Click the gear icon beside the existing authentication scheme, click *Delete*, then confirm to remove the authentication.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=23b7aafea9fb5d8cd6e38080d1d9132c" data-og-width="1663" width="1663" data-og-height="473" height="473" data-path="images/a616ced2f22bdf0873b0f910fc238424.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a15aed6e5f90bac2e1a501ee7b042899 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=030957afc4a7bf87ec38df375f4a7424 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=08bd92d56a86b307eda0713244f72f71 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3449c9895e6428cffdd5fb4d4fa57586 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2208ae5fdf1fe4c25a9d2f70e86bcd4a 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a616ced2f22bdf0873b0f910fc238424.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=1e2e9b75dcf368e20ec293c64c02063a 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Then add your app's new authentication scheme to the Zapier integration instead.
@@ -6167,17 +6200,13 @@ Then add your app's new authentication scheme to the Zapier integration instead.
 When the test API call to verify users' credentials is unsuccessful, an error message shows in the Test section of your Zapier integration. Zapier shows a simplified error message in the *Response* tab by default.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a1b0f0c7beb2e917d0cc4056cc9870dd" data-og-width="1111" width="1111" data-og-height="271" height="271" data-path="images/f6e4616d8e457f2ccf8dd872b2a15aac.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ba2c362c3c4f1404ca648e7d21457315 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a562778565155fcc15f51a05ce526565 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ecb4ec9a8f18a10cab99beadcbcdfff7 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=5292da66a17474bf9c65ccb65bab13d4 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e2a758b2bc658163e80bdac496dfd7b5 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f6e4616d8e457f2ccf8dd872b2a15aac.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=be78c3ff018f5cddb72b7addd8366f94 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 The original API response with the full error message is shown in the *HTTP* tab under *Response Content*.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1b1a35f0c4389076917fe1df345aeedd" data-og-width="1101" width="1101" data-og-height="905" height="905" data-path="images/2598ca338518d55cb41cebc2116bd1af.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a1d1ffac2fd3d3e214997853e14daf41 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=bfbe8a16daac7d2eed30b8fcafb4da08 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=02802d42f5e523ed25bb6e66a553cf2f 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=111f08833b68b8f632a0ab66fe79e7a0 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1cab6cf9d6beae4c1e9bf432bb1a54d6 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2598ca338518d55cb41cebc2116bd1af.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e173110426edeb79b47adbc041cb00fc 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 The most common errors include:
@@ -6188,10 +6217,9 @@ The standard HTTP 404 `Not Found` error is commonly returned when:
 
 * Test API endpoint URL is incorrect
 * Test API call method is incorrect
-  <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7ac89a2a066b1b2de1a91b61305f4c67" data-og-width="1103" width="1103" data-og-height="259" height="259" data-path="images/4b268ddfa326ee23cb902d05acc6ac10.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=0ad04353b7180ba81fac0c4c3f9953a9 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=439fa3ac45e18335307234efbb96140c 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=032fd7858e0cccf915d3c40bf34c9178 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a774341cad414d8778038840b9906ff7 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5c01377704315e8ac0a798bebedee89a 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b268ddfa326ee23cb902d05acc6ac10.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3335e054eb86b0285c9dee0121db9c0c 2500w" />
 
-    {" "}
+  <Frame>
+    <img />
   </Frame>
 
 Verify both the API endpoint URL and the call method (typically `GET`). Ensure both are set to what your API expects, then click the *Save & Continue* button, and click the *Test Connected Account* button again.
@@ -6205,9 +6233,7 @@ The standard HTTP 401 `Unauthorized` or HTTP 403 `Forbidden` error is commonly r
 Try authenticating your app user account with Zapier again. Click *Connect an Account*, add credentials for an active account on the app, then try the test again.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=695cfe97d25783afa5ff2339c9599959" data-og-width="1102" width="1102" data-og-height="259" height="259" data-path="images/e8dd16ccd395d9c466d81ce669510296.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=88a8fbc6913c1f0efce8e738df08930b 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ca0e2802a020a5fd6243828f5cd2547a 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3b72f947ef712fde7c9dfdf098f7fd16 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4bab41c436f8f58512334d54dd380259 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3dd7190b6e688ea1854bf76d70ebe064 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e8dd16ccd395d9c466d81ce669510296.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=6e24eb09811d5b01b3f6337ba2eaa9bf 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### 400
@@ -6220,9 +6246,7 @@ The standard HTTP 400 `Bad Request` error is often returned when:
 Check the full error message from the error or Zapier's testing logs to see if it lists why the call failed, then correct that part of your authentication flow. Verify each part of your authentication flow is entered correctly, including the request headers, URL parameters, and request body for each part of your authentication flow.
 
 <Frame>
-  <img src="https://cdn.zapier.com/storage/photos/91579ed613b77fb803ff52fb900b093b.png" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Error Parsing Response
@@ -6231,10 +6255,9 @@ The *Error Parsing Response* error is commonly returned when:
 
 * API returns non-standard and especially non-JSON output
 * Test API endpoint URL is incorrect
-  <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ef08506ec833e958710bca9a3583164c" data-og-width="1102" width="1102" data-og-height="279" height="279" data-path="images/7dc661d47076c1114b2581289646de48.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ec3c083b88a698a560bf1bed1abbba9f 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=81bbdd0a6647559192a2395660b527ed 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=27b25e10602fb237237f118c3c032d10 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=268bc865bbdbb2c6cc032e80cf21c2de 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b55067c8a00695f5e1da6f499d81e427 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7dc661d47076c1114b2581289646de48.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5d1e26af49ed4f8dc949fb86de501f8a 2500w" />
 
-    {" "}
+  <Frame>
+    <img />
   </Frame>
 
 Verify the test API URL is entered correctly. If a normal webpage URL is entered in the test field, the site will return its raw HTML content to Zapier and that will likely result in this error. If you do change the URL, click *Save & Continue*, then test your connection again.
@@ -6253,9 +6276,7 @@ Check your Zapier test logs to see if it shows which URL timed out, then verify 
 If the request seems to be successful but the task still times out, your API call may be taking too long to respond, or could be returning more data than Zapier can parse within the time limit. Use a testing API call in authentication that returns as little data as possible, such as a `/me` call that returns the connected user's account data. Or, if your API supports pagination and/or filtering, enable that and have the API return only the most recent result. Then test again to ensure the call works successfully.
 
 <Frame>
-  <img src="https://cdn.zapier.com/storage/photos/2bc7541d4859785d23a64dc5caceec22.png" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### 500
@@ -6263,9 +6284,7 @@ If the request seems to be successful but the task still times out, your API cal
 The HTTP 500 error is the default, unformatted error that may be returned without specifying what went wrong or why. If you encounter this error, check the API endpoint URL that gave the error, and verify your API call is configured correctly with the expected URL params, HTTP headers, and Request Body.
 
 <Frame>
-  <img src="https://cdn.zapier.com/storage/photos/22eb6cbc2c965dc196a3646511deeb7d.png" />
-
-  {" "}
+  <img />
 </Frame>
 
 ***
@@ -6278,10 +6297,8 @@ Source: https://docs.zapier.com/platform/build/basicauth
 
 APIs using Basic Authentication will authenticate users with a username and password. In your Zapier integration using Basic Auth, Zapier includes the username and password credentials in the API request bundle every time Zapier polls an API endpoint for new data or posts new data to an API endpoint.
 
-<Frame caption="Example Basic Auth screen for users inside Zapier">
-  <img src="https://cdn.zapier.com/storage/photos/8987788036a5a70072c9e75c4911ff6a.png" />
-
-  {" "}
+<Frame>
+  <img />
 </Frame>
 
 Use Basic Auth if your API requires a username and password or other basic fields, needs no special configuration, and specifically if your API leverages “[HTTP Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)”. For further customization of your login flow or to request additional data from users, [API Key authentication](https://platform.zapier.com/docs/apikey) may be a better fit.
@@ -6291,9 +6308,7 @@ Use Basic Auth if your API requires a username and password or other basic field
 * Open the *Authentication* tab in Zapier visual builder and select *Basic Auth*.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=76c5a71655c5f40258ba5d9e30633475" data-og-width="1663" width="1663" data-og-height="995" height="995" data-path="images/a8f5698b7c1fd2556eb6b6dc0a983155.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=dfbd1b55221e5cd875ef0e5d28fac975 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=419df885d9602bba3caf69d437fbadb3 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=bf20681013dbd135e5382d272b95dd7f 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f35d9793fce655d45dd6cb370b0c98c7 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=083b09beb5fb2e5f153bab7974dc362a 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8f5698b7c1fd2556eb6b6dc0a983155.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=63c9483cf30bd1c83d8853f3fab8811f 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * The pre-built input form for Basic Authentication includes a username and password field already.
@@ -6301,9 +6316,7 @@ Use Basic Auth if your API requires a username and password or other basic field
 * Add additional fields if your API documentation requires it by selecting *Add Fields* and fill in the details for your field. Add the most commonly needed fields first, in the order users expect, as you cannot reorder fields once added.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b13d1e91b4e3a365ef224be2bdf3aa4f" data-og-width="1660" width="1660" data-og-height="805" height="805" data-path="images/c17e6838cf27ed5704f561c75625864f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5a8c8dbbb0b2f9dffbde08cf8b2c2db3 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6c3ef65a75f0306d445b0cb3f533735b 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e57dc5368febee56d46ad0f0d94cdb5e 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d45feea4d09bd12c03432d072ad98945 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b20b0253ec343709b32a94f88db4106f 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c17e6838cf27ed5704f561c75625864f.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=653af986eb2022502e05eb01396fd9e0 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * Add the required *Key*, the name your API uses to reference this field.
@@ -6323,9 +6336,7 @@ Use Basic Auth if your API requires a username and password or other basic field
 – **Default Value**: Include a value for this field to be used as a fallback. For optional fields, the default value is set on initial connection creation and used in the API call instead of missing or null values every time the Zap runs. For required fields, this value is used during connection creation, but not when the Zap runs (Zapier raises an error for missing/null values instead).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=7d9d8a384472618cdbf2ff3b1f994b62" data-og-width="812" width="812" data-og-height="943" height="943" data-path="images/f4346b3456ea0080862db2eae7108050.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f1b3464bd717e7596ae64f85b41d45d6 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=0aac8df9619442b597369699c37c0f50 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=1ea199e9b3997369fd05f59d16c44180 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f82e648f09a4a85e112f3693d1532bd1 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=74c5cbc08789e3185e4c0a61a4a3c089 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f4346b3456ea0080862db2eae7108050.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4cda2d815fbfb39931c97a217c7cb687 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * Input fields marked as password and all authentication fields with sensitive, private data such as both username and password from Basic Auth are automatically censored at runtime. These values are stored in the Auth bundle and used in API calls, but are replaced in Zapier's logs with a censored value like this `:censored:6:82a3be9927:`. Due to this, it is not possible to view the exact tokens or keys in Zapier's logs. To verify that the same token as was returned by the authentication, is being used in subsequent API calls; you can compare censored value characters, for example `:censored:6:82a3be9927:` would have the same value ending in 9927 when used in a subsequent call.
@@ -6335,9 +6346,7 @@ Use Basic Auth if your API requires a username and password or other basic field
 * Each input field is listed with its label, key, type, and required status in your authentication settings. Click the field to edit it, or click the gear icon and select *Delete* to remove a field.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3bad5c9e07efa54da259d47ed44204ee" data-og-width="1657" width="1657" data-og-height="879" height="879" data-path="images/a207e9be179e401dadfa9d5422e4df5c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2ac26769f1354eeaf1b563c347cea0c5 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a3ae18a6822b670124171b5b08e5fd8a 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a747ac16a5de360cf8ee1971f850449c 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a4462a0abfcd668ccca724e1e4d72213 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=284260b2b534688cc6f2c39e42908a47 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a207e9be179e401dadfa9d5422e4df5c.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c6f196d0397126bcfbbac8f0e3b3b550 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * Once you've added all the input fields to your authentication form, select *Continue*
@@ -6349,16 +6358,13 @@ Use Basic Auth if your API requires a username and password or other basic field
 * The username and password input fields are automatically included in the URL Params and the HTTP Headers. Click *Show Options* to remove the details where they are not needed. It is typically not recommended to pass any sensitive information such as the password in the URL Params. Passing it through the headers or even the body is preferable.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=33aa28bec80a965147478f6aa2cf5399" data-og-width="1119" width="1119" data-og-height="481" height="481" data-path="images/a910a8114e18b545a93bf1e2e735e5a1.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c7d62c73275d6d8cb373b74bb073afc4 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f46b5c04999cfd6c2c6b45db155ff854 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=98da3a58548a93a176ad121cc97205a8 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=70108b24e63cf9fcd217e8103f9698da 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6dd2dbb0ff6f9b98d13773e135623fba 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a910a8114e18b545a93bf1e2e735e5a1.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6afefd2e600afc467930c44f3a2d65dc 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * To customize the test API request, select *Switch to Code Mode* and write custom JavaScript code to handle your test API call and the response parsing as needed. The first time you click the toggle, Zapier will convert your API call to code. If you switch back to Form Mode though, Zapier will not convert your code changes to the Form Mode, nor will any subsequent changes in the form be added to your code.
-  <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=6b3989129c365ec47a9160a2c0fa2fa4" data-og-width="1105" width="1105" data-og-height="526" height="526" data-path="images/6ec17f1acd3def0addad6dfc9167acec.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7e19cb3ef64210cee3ed562e73afdd91 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3227f531df0f438157bdc604d22cfadd 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f56325e79bc9d0861c8b3e4fb50722a7 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e7915b454a6d6aff680947f4c790cac6 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b1fcc092565a1d50b3d13546e9359ae3 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6ec17f1acd3def0addad6dfc9167acec.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5309233a82c942b7863c143853f6e72b 2500w" />
 
-    {" "}
+  <Frame>
+    <img />
   </Frame>
 
 ## 3. Configure a Connection Label
@@ -6544,7 +6550,7 @@ The first function to implement is the `subscribeHook` function which provides t
 * `url` should be `bundle.targetUrl` which is an URL Zapier automatically generates for each activated Zap.
 * Any other data you want to send from any [inputFields](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#input-fields)
 
-```js  theme={null}
+```js theme={null}
 const subscribeHook = (z, bundle) => {
   const data = {
     url: bundle.targetUrl,
@@ -6565,7 +6571,7 @@ const subscribeHook = (z, bundle) => {
 
 This function is called in the `performSubscribe` method on the module for the Trigger:
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   // Other data about the Trigger, e.g. key, name, etc. omitted
   performSubscribe: subscribeHook,
@@ -6580,7 +6586,7 @@ Some APIs require webhook subscriptions to include an expiration date in the sub
 
 In this example, the API requires an `expirationDateTime` to be specified when creating the subscription, with a maximum duration of 24 hours. The subscription response includes this expiration, which we map to `expiration_date` for Zapier to monitor:
 
-```js  theme={null}
+```js theme={null}
 // Max number of minutes for a subscription to be active before requiring reauthorization
 const MAX_SUBSCRIPTION_DURATION = 1440; // 24 hours
 
@@ -6622,7 +6628,7 @@ The next function to implement is the `unsubscribeHook` function which will be c
 
 Include the following parameters:
 
-```js  theme={null}
+```js theme={null}
 const unsubscribeHook = (z, bundle) => {
   // bundle.subscribeData contains the parsed response JSON from the subscribe request.
   const hookId = bundle.subscribeData.id;
@@ -6638,7 +6644,7 @@ const unsubscribeHook = (z, bundle) => {
 
 This function is called in the `performUnsubscribe` method on the module for the Trigger:
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   // Other data about the Trigger, e.g. key, name, etc. omitted
   performUnsubscribe: unsubscribeHook,
@@ -6651,7 +6657,7 @@ A REST Hook trigger missing a Subscribe or Unsubscribe function, is presented to
 
 The next function to implement is the `perform` function which is called each time your app delivers a notification payload to Zapier. This is what actually triggers the Zap. Typically, you would simply return the cleaned request in an array. The data returned by the request [must be an array](https://github.com/zapier/zapier-platform/blob/master/packages/cli/README.md#return-types).
 
-```js  theme={null}
+```js theme={null}
 const parseHookPayload = (z, bundle) => {
   // bundle.cleanedRequest will include the parsed JSON object (if it's not a
   // test poll) and also a .querystring property with the URL's query string.
@@ -6670,7 +6676,7 @@ const parseHookPayload = (z, bundle) => {
 
 followed by:
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   // Other data about the Trigger, e.g. key, name, etc. omitted
   perform: parseHookPayload,
@@ -6685,7 +6691,7 @@ Most commonly this is a GET request to an endpoint of your API which will provid
 
 Response data returned must be an array, even if the array contains only one object. It must have the exact same schema as the data delivered via webhook when a trigger event happens otherwise fields mapped from this sample in subsequent steps of a Zap will break when it runs live.
 
-```js  theme={null}
+```js theme={null}
 const getFallbackSample = (z, bundle) => {
   // For the test poll, you should get some real data, to aid the setup process.
   const options = {
@@ -6702,7 +6708,7 @@ const getFallbackSample = (z, bundle) => {
 
 followed by:
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   // Other data about the Trigger, e.g. key, name, etc. omitted
   performList: getFallbackSample,
@@ -6745,7 +6751,9 @@ Source: https://docs.zapier.com/platform/build/code-mode
 
 
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9b7cee390540952e249074b3491a152d" alt="" data-og-width="931" width="931" data-og-height="472" height="472" data-path="images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b476565cc36bb5074b8858fc046237f1 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=636b7e79d0b016b41158f5a4f55fab6a 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=26396bd5d60775e2652bb8951b8739c3 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=28f14c577100092e0a6cefdbf3899150 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8d9c3da67b794e1ebd3f361d1dd998c2 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1fa2f12c1c41a49f3d7aeff4d2706f7c.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b6cafa48352f9982eda88d5cc316b0c1 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 In the Platform UI, when building your authentication, triggers and actions, you will create each component of your integration using Form Mode. However if you need to add further customization to your API calls, you can use Code Mode.
 
@@ -6765,7 +6773,9 @@ Code Mode is available to use in the API request settings:
 * For authentications, Code Mode is in the *Configure a Test Request & Connection Label* setting. Note, for OAuth v2, Code Mode is in the *OAuth v2 Endpoint Configuration* setting.
 * For triggers and actions, Code Mode is in the *API Configuration* setting.
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b770c78ccbc78049e03cfb20ad9eb434" alt="" data-og-width="932" width="932" data-og-height="566" height="566" data-path="images/554f0c395459b37fd34312566feac891.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=802b5fcd220ab652ba3c69e280377733 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a2d19cd86d9e2075963db7c87b19708c 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7323a11e3baf083fd61c44f564f742d8 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d05145c65dbbf8a3a7f27ee84ea68d76 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=345d1b142cf3a0365132982d9f7947f7 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/554f0c395459b37fd34312566feac891.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2752da071fb1803b29299727df9d8da4 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 Changes made in Code Mode are not saved automatically. Once you have added the code you want, click **Save & Continue**.
 
@@ -6802,7 +6812,7 @@ When working in Code Mode, it's important to handle errors correctly so that Zap
 
 **Don't**
 
-```javascript  theme={null}
+```javascript theme={null}
 if (response.status === 401) {
   throw new Error("Authentication failed. Please reconnect your account.");
 }
@@ -6810,7 +6820,7 @@ if (response.status === 401) {
 
 **Do**
 
-```javascript  theme={null}
+```javascript theme={null}
 if (response.status === 401) {
   throw new z.errors.RefreshAuthError();
 }
@@ -6828,28 +6838,28 @@ If you switch back to Form Mode, click **Switch to Form Mode**. Your previous Fo
 
 Here are some resources that will be helpful when using the code mode:
 
-<CardGroup cols={3}>
-  <Card title="HTTP Request Options" icon="gear" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#http-request-options" />
+<CardGroup>
+  <Card title="HTTP Request Options" icon="gear" href="https://docs.zapier.com/platform/build-cli/overview#http-request-options" />
 
-  <Card title="HTTP Response Object" icon="file-code" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#http-response-object" />
+  <Card title="HTTP Response Object" icon="file-code" href="https://docs.zapier.com/platform/build-cli/overview#http-response-object" />
 
-  <Card title="HTTP Requests" icon="server" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#making-http-requests" />
+  <Card title="HTTP Requests" icon="server" href="https://docs.zapier.com/platform/build-cli/overview#making-http-requests" />
 
-  <Card title="Dynamic Dropdowns" icon="list" horizontal={false} href="https://docs.zapier.com/platform/build-cli/dynamic-dropdowns" />
+  <Card title="Dynamic Dropdowns" icon="list" href="https://docs.zapier.com/platform/build-cli/dynamic-dropdowns" />
 
-  <Card title="Return Types" icon="code" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#return-types" />
+  <Card title="Return Types" icon="code" href="https://docs.zapier.com/platform/build-cli/overview#return-types" />
 
-  <Card title="Bundle Object" icon="box" horizontal={false} href="https://docs.zapier.com/platform/build-cli/core#bundle-object" />
+  <Card title="Bundle Object" icon="box" href="https://docs.zapier.com/platform/build-cli/core#bundle-object" />
 
-  <Card title="Environment Variables" icon="leaf" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#defining-environment-variables" />
+  <Card title="Environment Variables" icon="leaf" href="https://docs.zapier.com/platform/build-cli/overview#defining-environment-variables" />
 
-  <Card title="Placeholders vs Template Literals" icon="code" horizontal={false} href="https://docs.zapier.com/platform/build-cli/faqs#when-to-use-placeholders-or-curlies%3F" />
+  <Card title="Placeholders vs Template Literals" icon="code" href="https://docs.zapier.com/platform/build-cli/faqs#when-to-use-placeholders-or-curlies%3F" />
 
-  <Card title="Error Handling" icon="triangle-exclamation" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#error-handling" />
+  <Card title="Error Handling" icon="triangle-exclamation" href="https://docs.zapier.com/platform/build-cli/overview#error-handling" />
 
-  <Card title="Error Response Handling" icon="bug" horizontal={false} href="https://docs.zapier.com/platform/build-cli/overview#error-response-handling" />
+  <Card title="Error Response Handling" icon="bug" href="https://docs.zapier.com/platform/build-cli/overview#error-response-handling" />
 
-  <Card title="Schema Docs" icon="book" horizontal>
+  <Card title="Schema Docs" icon="book">
     [14.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-schema@14.1.2/packages/schema/docs/build/schema.md)
 
     [13.x](https://github.com/zapier/zapier-platform/blob/zapier-platform-schema@13.0.0/packages/schema/docs/build/schema.md)
@@ -6890,7 +6900,7 @@ The computed field option only supports session and OAuth v2 authentication.
 10. You can then reference the field in any subsequent API call from the input bundle. In [Code Mode](/platform/build/code-mode), you replace `field` with your field key in this text `{{bundle.authData.field}}`
 
 <Frame>
-  <img src="https://cdn.zappy.app/9ac5ede3a88928989a3f91590a611282.png" alt="Code example shows how a computed field appears in the Zapier Platform" />
+  <img alt="Code example shows how a computed field appears in the Zapier Platform" />
 </Frame>
 
 ***
@@ -6940,7 +6950,7 @@ Zapier users can authenticate multiple accounts for any app. By default, every n
 A connection label in the integration authentication options adds optional text as the name of each account connection to help users distinguish between their authenticated accounts.
 
 <Frame>
-  <img src="https://cdn.zappy.app/b2612dc2bf60454eea4ae37335638bf5.png" />
+  <img />
 </Frame>
 
 ## Prerequisites
@@ -6993,18 +7003,18 @@ A connection label in the integration authentication options adds optional text 
 
    When writing code for the connection label, fields are not pulled up to the top level of the `bundle` object - use `bundle.authData` for auth input fields, or `bundle.inputData` for fields returned from the test API request. For example, your code might look like this:
 
-```bash  theme={null}
+```bash theme={null}
 return bundle.authData.username;
 ```
 
-```bash  theme={null}
+```bash theme={null}
 This is equivalent to using `{{username}}` in the regular string mode.
 
 Add custom data to Zapier's console log with the `z.console.log` function to assist with testing and monitoring your app authentication.
 ```
 
 <Frame>
-  <img src="https://cdn.zappy.app/c099e1aaa7a6bbe1674cc830aed68573.png" />
+  <img />
 </Frame>
 
 ***
@@ -7021,7 +7031,7 @@ Source: https://docs.zapier.com/platform/build/create
 
 * Open the *Actions* tab in Zapier's Platform UI from the sidebar on the left, and select **Add Action**, selecting your action type. New actions are *create* type by default, and they add new data or update existing data to your app.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=f94246156d3c8129b14bff4442f5b015" alt="Zapier visual builder action settings" data-og-width="1568" width="1568" data-og-height="949" height="949" data-path="images/c845778e65b58839d1fac151d805bb55.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=2215d897369534d4d430b113c6a6b5dc 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=88e96517548bf6f23b4a3e9f50ff2823 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=274cec891bec0591cae18be9d63a4946 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=41fbe1960f75362970c9f08413740047 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6a79f1fcb63f2f45a05e031f18778d64 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c845778e65b58839d1fac151d805bb55.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=2fa6acc22864c367fba89805e1d516ad 2500w" />
+    <img alt="Zapier visual builder action settings" />
   </Frame>
 
 <Info>
@@ -7067,7 +7077,7 @@ If your API call expects input data in the core URL, reference any input field's
 The defaults on all other settings work for most basic API calls. If you need to configure more options, click *Show Options* to add URL Params, HTTP Headers, set your action to omit empty parameters, or customize the request body. Alternately, switch to [Code Mode](/platform/build/code-mode) to write custom JavaScript code for your action.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6e4c996e984315b3c1a5bccedb9ee1da" alt="Zapier action API configuration" data-og-width="1509" width="1509" data-og-height="1202" height="1202" data-path="images/1b33f697838f7a4e160d4aa8ef3c6d93.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0b8deca9811c3aed3fbcefdcbad6657b 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=bcb21432bf41c716893aef65c76818d3 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=20a69bc356105eeaafcda58fa8820c87 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e0f2610baba5975e88ff74a3a4e1de36 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=d2b149d5ce30add13f4f8f4feb8d9f26 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1b33f697838f7a4e160d4aa8ef3c6d93.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0e54222b92a3047443512103b4471876 2500w" />
+  <img alt="Zapier action API configuration" />
 </Frame>
 
 ## 4. Test your API request
@@ -7099,7 +7109,7 @@ The API endpoint must list new or updated items in an array sorted in reverse ch
 
 For example, say your endpoint for new items returns a list of tasks:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 7,
@@ -7124,7 +7134,7 @@ Active Zaps then [poll at an interval](https://help.zapier.com/hc/en-us/articles
 
 Now let's say the user created a new task:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "id": 8,
@@ -7175,7 +7185,7 @@ In older, [legacy Zapier Web Builder apps](/platform/manage/versions-legacy), Za
 
 By default, Zapier uses the field with the key `id` as the primary key if no `outputFields` has `primary: true`. The `id` field would be required in this case. Otherwise, your trigger would run into an error at runtime. If your API's items have a differently-named unique field, adapt this code snippet to ensure this test passes:
 
-```javascript  theme={null}
+```javascript theme={null}
 // ...
 let items = response.data.items; // or response.json.items if you're using core v9 or older
 return items.map((item) => {
@@ -7190,7 +7200,7 @@ Alternatively, if you're using the CLI, you can use non-id fields as the primary
 
 When triggering on updated items, you'll want to define the `id` field to be used for deduplication. Assuming your task API has an endpoint that can return tasks sorted by `updatedAt` in descending direction, here's example code to incorporate the `updatedAt` value with the `id`, so that Zapier recognizes a new update as a new item. Assuming that you have configured `options` with the appropriate API request URL and parameters:
 
-```javascript  theme={null}
+```javascript theme={null}
 return z.request(options).then((response) => {
   response.throwForStatus();
   const results = response.json;
@@ -7217,9 +7227,7 @@ Source: https://docs.zapier.com/platform/build/digestauth
 Digest Auth prompts users to enter their username and password, optionally along with any additional data your API requires for authentication. Zapier makes an unauthenticated API call to get the nonce from your server, and uses it to encrypt and pass the authentication data to your server with each API call.
 
 <Frame>
-  <img src="https://cdn.zapier.com/storage/photos/3c842632d017aa50ba6470201d02f416.png" />
-
-  {" "}
+  <img />
 </Frame>
 
 Use Digest Auth if your API uses the [RFC 7616](https://tools.ietf.org/html/rfc7616) authentication standard, where users enter their username and password to be passed encrypted to your API with the nonce key your app sends to Zapier on the first API call.
@@ -7229,9 +7237,7 @@ Use Digest Auth if your API uses the [RFC 7616](https://tools.ietf.org/html/rfc7
 * Open the *Authentication* tab in Zapier visual builder and select *Digest Auth*.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3f585eb99a48c5832e835e2823ab1c0a" data-og-width="1661" width="1661" data-og-height="993" height="993" data-path="images/fccd6ab8ba9c837158907d39eef1f288.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=27a2f9a68f117cfe0c58dd948f0b1d3e 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ccfc3d72f9f0caefa2294564cd75a0e0 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=22dc2a6eb8fe4f2101613da9456a2fd7 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e161e9ab46018ca461368cdd7a150fe9 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=87a5277b7695c77302c3639469dc484d 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fccd6ab8ba9c837158907d39eef1f288.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=26173de2a8b7a0316b98b1feb4e1009c 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * The pre-built input form includes username and password fields already.
@@ -7239,9 +7245,7 @@ Use Digest Auth if your API uses the [RFC 7616](https://tools.ietf.org/html/rfc7
 * Add additional fields if your API documentation requires it by selecting *Add Fields* and fill in the details for your field. Add the most commonly needed fields first, in the order users expect, as you cannot reorder fields once added.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f69ac0b41f6aa42af69513ca4b40b129" data-og-width="809" width="809" data-og-height="953" height="953" data-path="images/680696e6c2d79b837600c5d1e32c9d40.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=92007cae1f0799a8544613b66bfc8920 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8e039221cc7384f7038357975b817383 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9d91b56b455ff5afc79de88a1c4957e2 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=04d82f7040e37b665115700c7d6d21d8 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b8723568708fe2aec259c9f08726fec5 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/680696e6c2d79b837600c5d1e32c9d40.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1399d89b0a5c42b708512868c40aa3f3 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 * Add the required *Key*, the name your API uses to reference this field.
@@ -7265,9 +7269,7 @@ Use Digest Auth if your API uses the [RFC 7616](https://tools.ietf.org/html/rfc7
 * Each input field is listed with its label, key, type, and required status in your authentication settings. Click the field to edit it, or click the gear icon and select *Delete* to remove a field.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7d77c58be665b908cc11ba28ce254e6c" data-og-width="1661" width="1661" data-og-height="831" height="831" data-path="images/573a3eb19a884c44fd67b9fa421c3bf4.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=192e251bc9eac88d52825ada905efbf8 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=41fdcb1646d53e372674cc1d213df4e7 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3be67df472e84c135d4d606f707db3fb 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f6e4e765b67db7abdfbdf190175d9746 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=04fec4258fc45c1987426186437a5dbf 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=26adb2cacbf9c46a4899561759efb039 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## 2. Add a Test API Request
@@ -7277,9 +7279,7 @@ Use Digest Auth if your API uses the [RFC 7616](https://tools.ietf.org/html/rfc7
 * The Digest input fields you configured earlier are automatically included in the URL Params and the HTTP Headers. Click *Show Options* to remove the details where they are not needed or add any custom URL params or HTTP headers your API requires. It is typically not recommended to pass any sensitive information such as the password in the URL Params. Passing it through the headers or even the body is preferable.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=44196d010c89f7ac616a81974d0b329a" data-og-width="1193" width="1193" data-og-height="435" height="435" data-path="images/503eeb14514aa854ae06ba956b6c572c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=173af93a32933cf95e45db3e77a37c7c 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=209531223f0058d729b41e992ba8695b 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=57d105450123557a1e50822f2fb6beba 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a6982a8df0dc31a0562ac385a8860933 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b97a8df21162e0cda304d6903dda876d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/503eeb14514aa854ae06ba956b6c572c.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e7061aff48205e358d984b932cf51b3c 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * To customize the test API request, select *Switch to Code Mode* and write custom JavaScript code to handle your test API call and the response parsing as needed. The first time you click the toggle, Zapier will [convert your API call to code](/platform/build/code-mode). If you switch back to Form Mode though, Zapier will not convert your code changes to the Form Mode, nor will any subsequent changes in the form be added to your code.
@@ -7327,7 +7327,7 @@ In the [Platform UI](https://zapier.com/app/developer):
 </Info>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e78f6bb0c16c45024388416a0436c420" data-og-width="1663" width="1663" data-og-height="958" height="958" data-path="images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8cb1f064e0fa9dc3ed267288c3d98feb 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=dda1db88d388ea113060aa8648fbb076 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=89e6f614134d66da1012dbceb60b14a9 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5e5729bb70b77e8e832640f4ca4cb976 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e04611fa69e0dbdf6ef2cc69ae8950b7 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/8177dce9ee77e014b8fe65f4f6d6e5ba.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0b4eb841c158267355ab64ea638219bf 2500w" />
+  <img />
 </Frame>
 
 ## Create a dynamic field based on previous input field data
@@ -7381,7 +7381,7 @@ If using OAuth v2 Authentication, the client ID and client secret fields are res
 ## 1. Add environment variables
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3d1885847d0989a8bacd244426d21ed5" alt="Add Zapier environment variables" data-og-width="1641" width="1641" data-og-height="874" height="874" data-path="images/52c80699c321084eaaf7b387c47bd438.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d15fbd8a9f678e429ea1dc5502154dfe 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=de9e68d1d66c25cadc0bdb4d16147cf1 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=707d7bb84ae1a5684a82ed2f55ca6b8a 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c0ff7b42ac17c49db240c47c83df4adb 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1fd93c9d3493b4d3c0709e4dbd062780 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/52c80699c321084eaaf7b387c47bd438.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2144865b685e6d5f138b0e9d84996b49 2500w" />
+  <img alt="Add Zapier environment variables" />
 </Frame>
 
 To add environment variables:
@@ -7394,16 +7394,16 @@ To add environment variables:
 
 ## 2. Reference environment variables
 
-<Frame caption="Use environment variables in Zapier's API call forms or in custom code">
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f47960e259bbcdfe9dcfe3df90703c15" alt="Use Zapier environment variable" data-og-width="1643" width="1643" data-og-height="1089" height="1089" data-path="images/226591ede97cbcde75481b38fa0cd64f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=81a0d315ea86367ff2b2619f351643da 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4a6fe7d7331901da3e0f26ac4bd957ed 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a364ffe0a4ad654b3f1efc28573de09d 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2f047e1c1b69ede585a65b7249d64668 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6a65e0356c5f63b91807826d06798e3b 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/226591ede97cbcde75481b38fa0cd64f.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=748ca48dabb268a42e914860a4dc9539 2500w" />
+<Frame>
+  <img alt="Use Zapier environment variable" />
 </Frame>
 
 Use environment variables in any Zapier integration API call through the form's *Show Options* link, selecting *Request Body*, *URL Params* or *HTTP Headers* as your API expects. Reference the environment variable you've configured under *Advanced*, in the form with the following text, replacing `YOUR_KEY` with your actual key: `{{process.env.YOUR_KEY}}` Zapier will then replace that variable with the value for that key from your *Advanced* settings and will use the correct value every time if you change it in the future. You can also reference environment variables in custom code if you switch your API call to code mode.
 
 ## 3. Change environment variables
 
-<Frame caption="You can change environment variable values, but not the original keys">
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=84c082c98087567732feb2b9dc2c1585" alt="Edit Zapier Environment Variables" data-og-width="1009" width="1009" data-og-height="759" height="759" data-path="images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6d351a3e662b2da17c426df9e60c92dc 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d23f9da6d284c4c055fdb6e03b12d8d3 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1a9c18c6799e40b41616d48f289ac18b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=240df58b331015bc70039f49f8456c3b 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=0be7cf8d1b26e2344ecb03a890794a1b 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2bbe32e1bcfd77c62a75fce5be6eb03a.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d21c83ce223ff1e286a4dab611dc66c3 2500w" />
+<Frame>
+  <img alt="Edit Zapier Environment Variables" />
 </Frame>
 
 It is possible to change your environment variables in a new version of your integration, or when switching from dev to production endpoints for the release of your integration to the public.
@@ -7428,14 +7428,14 @@ If you want to be able to work with both environments in development in one vers
 * Set another environment variable for the domain you want to work with. For example, `key: ENVFLAG / value: staging`
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a097f2fd4a6a5b1ec79a0109c0fd44f9" data-og-width="826" width="826" data-og-height="209" height="209" data-path="images/e2820a532b072401560d6c6afd7c90f8.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a6585c241ab879073698238cfde3d4c6 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8f6f8ea7d548f797dee14661b0731d88 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=785b1a822ae7f44ad7f65e94f9a0a4ad 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7f1dcdd77f57ac353c8ca069bff8e681 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8afdb744ea8ebb50b1750b2beb456c8d 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e2820a532b072401560d6c6afd7c90f8.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c786cc66c878b5d0d2f04994ca71aa54 2500w" />
+    <img />
   </Frame>
 
 * Throughout the app, in [Code Mode](/platform/build/code-mode), check the value of the latter variable and conditionally reference the corresponding domain environment variable.
 
 For example:
 
-```js  theme={null}
+```js theme={null}
 let domain;
 
 if (process.env.ENVFLAG === "staging") {
@@ -7465,11 +7465,11 @@ However, once a version is pushed to production, the variables are fixed, so in 
 Certain apps need to allow users to select the domain during authentication. To do so, create an [input field in the authentication form](/platform/build/oauth#optional-input-form), allowing the user to pick which domain they want their connection to interact with.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5647ba840162768dd95a9d4a5617a0e2" data-og-width="1100" width="1100" data-og-height="576" height="576" data-path="images/8da73bce1eb9f7b20c018be357c765b1.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=107df914bfc07e66a0641bde93112cb1 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2b7a2550d14adff94f7afe70b59a8eb8 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3d1b6803b1493b8382b63acf2dc3f193 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e8df3764645defa8da3cf7d728d2951a 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=bda08c6d6ed1d3559ba2d961d50b03ea 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8da73bce1eb9f7b20c018be357c765b1.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e78616f1f59145b65cfd09ccefcb4c9c 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=d94fce1fb66f4f52ab80f66acf544187" data-og-width="1068" width="1068" data-og-height="345" height="345" data-path="images/10bd5195508ba9d9cc43e711504f96be.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=bd8ffbc3783409a6462aadcc018cc826 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c211d3b69e6d7563d121aed47cd3f98f 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=56a9284af8fb6dacad4019af0edcbb39 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=cd8397ff5eb9bdd78034eb2348a94422 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=91836b910099077385025874ab3146ac 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/10bd5195508ba9d9cc43e711504f96be.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6ead9a4adb6daf758a88e88dc454a078 2500w" />
+  <img />
 </Frame>
 
 Reference the user's selection with `{{bundle.authData.env_url}}` throughout the integration to conditionally call the corresponding domain.
@@ -7478,7 +7478,7 @@ Reference the user's selection with `{{bundle.authData.env_url}}` throughout the
 
 You can refer to this video on using environment variables:
 
-<video controls src="https://cdn.zappy.app/cb768909f391c96e8814d77c2eece503.mp4" />
+<video />
 
 ***
 
@@ -7495,31 +7495,19 @@ When you add a polling trigger or search action to your integration, the Zapier 
 For example, for a “Find Issue” search action with GitHub's API, we might start with a `https://api.github.com/repos/{{bundle.inputData.owner}}/ {{bundle.inputData.repo}}/issues/{{bundle.inputData.issue_number}}` request:
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ac6fb4a8108d66b02e9f5eb3f1108b79" data-og-width="1229" width="1229" data-og-height="401" height="401" data-path="images/a5516cc30abee4f84a58ac5b7b3dfc76.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=181d5f8ed1a4834f42aecb516dd28bad 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fb3de565cad30d410cf9f1e381a0cfff 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4fd59ea13e4912aff678fdfaab7d8d2e 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=56667e8d7c3e6730035590e1ec536249 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=72d88c1658d8e0d9e4801471d239a4f4 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a5516cc30abee4f84a58ac5b7b3dfc76.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9aa8fada58471e9535482c0c12639091 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 When tested, Zapier will show an error message `Results must be an array, got: object,`
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=06cde1cd6e874a8c397be273e4f0dfba" data-og-width="1215" width="1215" data-og-height="925" height="925" data-path="images/2461b0e7f49ecf5aed90d429a59ad2bf.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e56c0570cef6f1b0e2d2ad4fa95c959a 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2e4888ce1fe6516daffbc6df96be8c6a 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3c277e1c029c7d274f3546b4b16b559b 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b530f7cd65b30cdb9b4f41adeaa7c631 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2ab85cf67b5dd6564c46e3b3a3cc04b1 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2461b0e7f49ecf5aed90d429a59ad2bf.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=50b740fe11f5f3765c00cb09d7056873 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 Check the API response in the HTTP tab of the *[Test your API Request](/platform/build/test-triggers-actions)* section, and you'll see an *object* that contains the array of items we need was returned, not the array itself:
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a3f9044ec76524e9aaf2e40b1106610f" data-og-width="1144" width="1144" data-og-height="961" height="961" data-path="images/d569e3a05f643a9a199b5d85dc4a4fc2.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3dbcbe9acffc6ed09b31dcc65c326b6a 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=bf6111bb07423dd66b4e3421e06eebf6 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1b20e4de819e2dfb7b053e99640e3434 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dfb1b4e46acaabdf7bf02cc0002c6c41 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=649b5c26cab3cbf716a9637e838f9726 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d569e3a05f643a9a199b5d85dc4a4fc2.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=cc14b95e01cb623287fb4be973d40add 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## Solution
@@ -7529,11 +7517,7 @@ Instead, return that array of channels to Zapier. To do that switch to [Code Mod
 For this request, wrap the response with an array instead of the default `return results`, to have Zapier return an array of issues.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2f57c7632c52f98e5e00237ebda532b9" data-og-width="1223" width="1223" data-og-height="705" height="705" data-path="images/3bec13fa502f47ff1e5f9bfded052b4d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=00e639fe1a1d8ae563102ecb4921957a 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9d819cd03d78c743906ebb7d10acc66b 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=54be3c08c0e669f357783b15bab9e9c7 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=21ad460a9aad3defa1a0946a97724f96 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d2e3256d2d558a840e490dbc6f96d82d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3bec13fa502f47ff1e5f9bfded052b4d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=df7f3fbb6a1bac8cc4851b105c6189f0 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 > Remember: [Code Mode](/platform/build/code-mode) is a toggle; if you switch back to Form Mode your code will be ignored!
@@ -7541,12 +7525,32 @@ For this request, wrap the response with an array instead of the default `return
 Now, retest the request and it should run successfully.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a1dd806729d99a6828aabf6bca218018" data-og-width="1226" width="1226" data-og-height="644" height="644" data-path="images/af56c7fed5183aed462d2e7efbf78f8c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6b67a4d1a22e1a4351b03423e17d40a5 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b43498ac63db770042f47fc7a38519ad 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=33d35366fa066fc7c8ba28603b6ed7f8 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=bc5159e0c2b2aea78cc7be9220cc633d 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5263dc5241ae18f299c629c6cf1bb121 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/af56c7fed5183aed462d2e7efbf78f8c.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4ebafdd3d5cb9d3e5820a22bb8c7f030 2500w" />
-
-  {" "}
+  <img />
 </Frame>
+
+***
+
+*Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
+
+
+# Error: Cannot retrieve App******CLIAPI@*** app
+Source: https://docs.zapier.com/platform/build/error-cannot-retrieve-app
+
+
+
+## Error shown
+
+When attempting to use a Zap that has a private integration in a Team and Enterprise Zapier account, the private integration step could show an error that says:
+
+`Cannot retrieve App******CLIAPI@*** app`
+
+This occurs in Team and Enterprise Zapier accounts, and it happens when the private integration has not been explicitly [shared](/platform/manage/sharing) with the Zap owner.
+
+This can happen if the Zap changes ownership, or if the Zap owner was removed from using the private integration, after it has been previously shared with them.
+
+## Solution
+
+To resolve this, an integration admin would need to [share](/platform/manage/sharing) the private integration with the owner of the Zap so that they have access to use the private integration on their Zaps.
 
 ***
 
@@ -7604,11 +7608,7 @@ If the data included in the webhook needs to be transformed, or includes multipl
 If your webhook already provides an array, remove the wrapping array that Zapier includes by default and simply return `bundle.cleanedRequest`.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5b01893a07e0712d9a9c6b0bd88b09a5" data-og-width="1128" width="1128" data-og-height="257" height="257" data-path="images/26459a11e1630fe8318c341bf598ab5a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=326c133f6757328cfe1ef5ec673036db 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=707540f0962881ed328a378cc01a93ee 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5515e4e50baf48ee6a9df3704843bbaf 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6022055aefa1ccabe4128fdbf8f28ae5 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9b0ce179d1f9459cf6381d5aa74899fb 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/26459a11e1630fe8318c341bf598ab5a.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=89759ed54b0753698a001d66729ad853 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ***
@@ -7639,10 +7639,10 @@ To enable `skipThrowForStatus`:
 You'll need to add error handling script to your authentication, triggers, actions that could encounter the error using [Code Mode](/platform/build/code-mode).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b285f7641f30a2f81d132c906407fcd2" data-og-width="1028" width="1028" data-og-height="169" height="169" data-path="images/9553266cb5a5ab7804d3f9ac1a9eed60.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ab42d5913795cfa392418016121225eb 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8ba9c4f4f1f960550960258a3a7aa5b9 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b2721e95ec64372b32be8b6352353a06 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=17ab4af6f3cac8ea0121753f248dc3b4 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=784b41a2901df8e27e91c2ab21763825 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=963e0c05bd4e8aed027069e050be5964 2500w" />
+  <img />
 </Frame>
 
-```js  theme={null}
+```js theme={null}
 return z.request(options).then((response) => {
   if (response.status === 404) {
     throw new z.errors.Error(
@@ -7661,7 +7661,7 @@ Learn more about [general error handling in Zapier](https://github.com/zapier/za
 
 You can refer to this video on implementing error handling:
 
-<video controls src="https://cdn.zappy.app/dc5abf26e1f5b3e64d85361bb0d498b1.mp4" />
+<video />
 
 ***
 
@@ -7688,11 +7688,7 @@ Input fields are most commonly used and include 9 types that look and act differ
 The default input field, which accepts text input. Typically used to gather individual text values such as a name or email address.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=75a75564c241ae5e778b60086221d99a" data-og-width="864" width="864" data-og-height="115" height="115" data-path="images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=565b71a81691eb9d7f29b046e04ec6a2 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d8ff44c8e96601b6323758940662842d 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0aeb4d048b63e6ace8c733788caa7c8b 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=96e0cf58b083229f2b7934fa7ba3e2e1 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=322e2edae90dfd4f81350957a2ac8c5b 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6abd9f3b9048e4a0b8010c79ac78ca7.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0a4893cf1974a8f13a69669d21960b0b 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Text
@@ -7700,11 +7696,7 @@ The default input field, which accepts text input. Typically used to gather indi
 Displays large, `<textarea>`-style entry box, accepts longer text input. Often used to enter notes.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9fd742f373cf0bee907af2e704799363" data-og-width="853" width="853" data-og-height="146" height="146" data-path="images/6936573528e1c7dc72b33e5b8178aac7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7a3e5ca588985aeaadf7b025eb205ab2 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b574809d86cc60f011d16fbba93b0d10 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=005ea0e822ca6de9d66c607471e39dfc 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0c2d262e4a0ba0692157f192114bf62b 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=09457306c3fc079e90380345bbd86c5c 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6936573528e1c7dc72b33e5b8178aac7.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5887a229f880977a0025bdad5f92fe97 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Integer
@@ -7712,11 +7704,7 @@ Displays large, `<textarea>`-style entry box, accepts longer text input. Often u
 Accepts integer number values, shown with a `1 2 3` tag beside the field in Zaps. Typically used along with a dropdown type field to select ID numbers for objects in your app, also used to gather whole numbers.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c2ce0ebf49e2b4be72823fe614d07e96" data-og-width="849" width="849" data-og-height="108" height="108" data-path="images/4c3d21a485c1329720209fa9ee1664f7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=eff43171ec853df2ae9af4c580a10244 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ed1d32a909fc4fcd58cb227841791eab 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a849fb80d31652febeb9f24565253d30 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=483f34b389dfe3166289d6c156b6f098 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b761d57e7fac5af2cb29d5ef6ac0f466 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4c3d21a485c1329720209fa9ee1664f7.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9c19d4954c56f7c3680a6df73052f5e7 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Number
@@ -7724,11 +7712,7 @@ Accepts integer number values, shown with a `1 2 3` tag beside the field in Zaps
 Accepts any numeric value, including decimal numbers, shown with a `1.0` tag beside the field in Zaps.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=41bb697c95de4f6f790a3e80e56d5de3" data-og-width="859" width="859" data-og-height="110" height="110" data-path="images/0d149da9dd979e6aa0a628a1a4abf2b7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4e744d32495c3ba94ed918294b9b8e31 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f5f275254b9e0f99318a93ec7272c8b1 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5ca9dfc64a8560df5e330cbfccbd251a 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b4f780f5e178a4fa3deed33356e02773 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=edc9cf6f2797bb183dc21edab05f58e6 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0d149da9dd979e6aa0a628a1a4abf2b7.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=7bf71296b6dfb9e81511cb65ba09623c 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Boolean
@@ -7736,11 +7720,7 @@ Accepts any numeric value, including decimal numbers, shown with a `1.0` tag bes
 Allows users to select between `yes` and `no` values in a dropdown in their Zap to send a corresponding `1` or `0` in the request to your app's API.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=184838a24c803e7750dd6cc7942919bf" data-og-width="857" width="857" data-og-height="109" height="109" data-path="images/da36e8486e9aec5d685650be5c5b194d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6a1c52dbe6c81dcb9c898c9bb50afbfb 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c11f066f7c4ed48c7de5781873af6975 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e3644dfe264b419232c0cd863c974e22 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e573156803d9238a7e13900b7d9e5de2 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d728e53e49712e976889a6dbf2bd0398 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/da36e8486e9aec5d685650be5c5b194d.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ba646e609dcb1309df288ee39989a9c4 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Datetime
@@ -7748,11 +7728,7 @@ Allows users to select between `yes` and `no` values in a dropdown in their Zap 
 Accepts both [precise and human-readable date-time values](https://help.zapier.com/hc/en-us/articles/8496259603341-Different-field-types-in-Zaps#date-time-fields-0-0). Sends an [ISO-formatted](https://www.iso.org/iso-8601-date-and-time-format.html) time string in the request to your app's API.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bfb643023965f7e64a095a4a28be3063" data-og-width="857" width="857" data-og-height="104" height="104" data-path="images/68097e2927567b360f9fb9b65647369c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=da9efb4779e4a4ff62273bee10b20006 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=27521306f658c84086ebd89bfd8100aa 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=dd3bc8156999f313b3a1ec06d5966a19 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2d0479245b2c43fefad10d5e93199d87 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=49ee30f21a68e6601bc3fc89cb6b8b5c 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/68097e2927567b360f9fb9b65647369c.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=207c2fb706762779655fac55322eefcb 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Password
@@ -7760,11 +7736,7 @@ Accepts both [precise and human-readable date-time values](https://help.zapier.c
 Displays entered characters as hidden, accepts text input, just like standard string fields. Does not accept input from previous steps.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=034216ca93726c749c9926931f526f9b" data-og-width="858" width="858" data-og-height="106" height="106" data-path="images/872c6d1ce250bb054460643701df646a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7357da95bdcf6e0dfbdfe10f4387487c 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2253788af7cc3fe4322ccaa820072a48 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=6a8a9776e63247c52383e0a228e1e44f 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=81a1c68636141863fcea8bed919acd66 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=13068cda5516bccb1dc71e67381e8a21 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/872c6d1ce250bb054460643701df646a.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=67748422cfc79d923dea5153af5325e2 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Dictionary
@@ -7772,11 +7744,7 @@ Displays entered characters as hidden, accepts text input, just like standard st
 Users enter their own value sets, with a plain text name followed by a String field to enter or map data from previous Zap steps. Click the + button on the right to add additional dictionary field entries.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=83b0be87d987dcf5aea53749c3a8e153" data-og-width="856" width="856" data-og-height="164" height="164" data-path="images/74689dc7f73a75c3cf5ab9b858f651b1.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d8cfe2539991ff9f494665e63200964b 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b8332b2652cd553d0ee06c640be625fc 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7f7a211a07ba9082146c843f03887dea 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ff394a8ced1287e560b0118e6ddddd3e 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9223c9ba2d56dc130d452bea0a041b38 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/74689dc7f73a75c3cf5ab9b858f651b1.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0237571201543a7fb47bed82dad8c0d1 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ### Copy
@@ -7784,11 +7752,7 @@ Users enter their own value sets, with a plain text name followed by a String fi
 Does not allow users enter data and is not passed to your app's API. Shows the Help Text field copy in a display-only formatted note, with no input field. Supports [Markdown](https://zapier.com/blog/beginner-ultimate-guide-markdown/). Typically used for important notices to users.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a0b22d1597239aa770b85f622e5ecb92" data-og-width="856" width="856" data-og-height="91" height="91" data-path="images/eebc20fad3362197a0448edd8a52e27e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=8e5547d59172327ad9242cac68af4ed0 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=082b84d99c0396232395c085f08ec77b 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ecb154d4cc57c5fb18e75550446a3279 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=d86d45b84c6dfdb7b540d050e610eeaa 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=fa7957d219d70c53295948af1ff3e090 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/eebc20fad3362197a0448edd8a52e27e.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b6f2e5fc501e17892dba8523cc0a60b3 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## Dynamic fields
@@ -7818,21 +7782,13 @@ With Form Mode you can:
 By default, the configured authentication is included as HTTP Headers, which you can modify if needed.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d593853850d8a3fa87705b688a7951df" data-og-width="1021" width="1021" data-og-height="831" height="831" data-path="images/e380a04c42f0332d57df4fd0d1532590.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9b6bf47505c9a3befbf6dddcf23c82a8 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4275b9bfd2b2f1a9c04a0b11cabbd40a 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d91d557b5a42cfc6caee46eeba56aa34 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a65519bfafb21226c6e1f94386934a63 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ae02e66c99a79f5b9e7e4267de784fe6 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e380a04c42f0332d57df4fd0d1532590.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=93cb6d8791d594fa8cd403eb511174f0 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 By default, any Input fields are included as URL Params. To instead include them within the API endpoint, use format \`\` where `fieldkey` is the key of the input field.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f0e96346159ab83c34db7ea1897370a4" data-og-width="1010" width="1010" data-og-height="825" height="825" data-path="images/fdc8807e9b6d41427d937d1362f20fbd.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=c7847322a51a5709b36909fe2da5fab9 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=85a7c1f4a4116a2f7fd8d5db779cbda3 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ea3e4162658260e6a418c3e5b207a31f 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=163008947b2ea62a2f3fee11b5c2ad1d 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=18a167da790b10d7e55b1d48bcb8383b 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fdc8807e9b6d41427d937d1362f20fbd.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f2f5ce320550201e8069500b996feaf6 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 When the request runs, Zapier parses JSON-encoded responses into individual output fields to use in subsequent Zap steps.
@@ -7900,7 +7856,7 @@ If no input data is needed for this trigger's endpoint, continue.
 On the API Configuration page, select **REST Hook** as the trigger type, and complete each section.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=940424284f026fcc0e37d7aedf2f9187" data-og-width="1500" width="1500" data-og-height="1505" height="1505" data-path="images/0368aeae12e11ec59688d10a7ef69d8c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b891d9a2e983f1f619f7ee093e1dd836 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1d7098b77ba72fa374c9f54ed63102bb 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a6f4b47f4e58eb8ff1ede8bafa306fcb 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8008a79d349dfdc67f4bf508d3921b31 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f2f8492a12171fae81f03644ddd6a82e 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0368aeae12e11ec59688d10a7ef69d8c.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=849d4297f27ad7920ea91922173afc68 2500w" />
+  <img />
 </Frame>
 
 REST Hook triggers are marked as *Instant* [in the Zap editor](/images/f510859bf90c0e341bc94997a75f9626.webp).
@@ -7922,7 +7878,7 @@ The webhook URL can be accessed via `{{bundle.targetUrl}}`.
 For example, for Gitlab's API `url` is used as the key for the `{{bundle.targetUrl}}` value that contains the webhook URL to send data to.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=873391e85be79eeb5d2725bf4db864b1" data-og-width="958" width="958" data-og-height="592" height="592" data-path="images/8b7941e3092850bd7edf331cb78b5659.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2d2f1a04d864504af5ecd9eca965d1b5 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=eeada93d272d2bf8696c9c910093f65c 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=af7e5b3cdcfb314c43c028a12205ec31 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=978f2db4a0799f104e5fc7948d387f09 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=85f517782c506deec47b27100a798767 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b7941e3092850bd7edf331cb78b5659.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b24567ec3c0ff565f290c58fd618a65d 2500w" />
+  <img />
 </Frame>
 
 If you need to customize the subscription request, select *Switch to Code Mode* and [write custom JavaScript code](/platform/build/code-mode) to handle the API call and the response parsing as needed.
@@ -7936,7 +7892,7 @@ This request, usually a DELETE, is how Zapier notifies your API when it is no lo
 Click on the *Show Options* dropdown to add data to the Request Body or HTTP Headers that is needed by your API for a successful unsubscription. Note that you'll need to make sure the keys here match what your API expects. When Zapier sends the request to your API to unsubscribe the webhook, it can reference any data that was returned from your API during the Subscribe request and was stored in `bundle.subscribeData`.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=749c4aed694f4a7e0ad171a2060659e6" data-og-width="960" width="960" data-og-height="277" height="277" data-path="images/44615176b56966a90101067d719b09ad.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=db501884843f1099faf828e9f7e7973f 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c6872ec56b8d1af0bbb1b005fe514ac0 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2d85c1c774b66b3986198f52184d3e8b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c38fad78f22b2139aa8661fd40dcc9e0 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=feebb38f96f652c6cdf16c960199de82 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/44615176b56966a90101067d719b09ad.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=56a89e0b0222f38aa19c1fd83837f58e 2500w" />
+  <img />
 </Frame>
 
 A REST Hook trigger missing a Subscribe or Unsubscribe endpoint, is presented to users as a [Static Webhook](/images/3b35908a6a0c232087b5da807cf9d6fb.webp). Static hooks are [not supported in public integrations](/platform/publish/integration-checks-reference#d017---static-hook-is-discouraged), but they could be used if the integration intends to remain private.
@@ -7982,7 +7938,7 @@ Define sample data and output fields following [the guide](/platform/build/sampl
 
 You can refer to this video on REST Hook triggers:
 
-<video controls src="https://cdn.zappy.app/b8511ab881f3ad50a9465a1732501cf8.mp4" />
+<video />
 
 ***
 
@@ -8049,18 +8005,26 @@ To add a line item group to an action:
 Your new Line Item groups will show up in the Zap editor as a separate block with the different line item input fields within:
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=19eb1b25cc5a5ca74214b338d930d9f4" data-og-width="880" width="880" data-og-height="626" height="626" data-path="images/41f81ef42d5101767810a9ffc5626e95.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e8b84bfa15c94b386f99f32f7a5083d6 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3ca36a334aa9ada7872d6db4783c5704 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=906b1180708828e4983c3e5d7b8e8065 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=760221ad9b81c53ead582ac0dd639cf8 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4875e8603320d269d07e5dd163e6326a 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41f81ef42d5101767810a9ffc5626e95.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d538c5679f926300880307faff13253a 2500w" />
+  <img />
 </Frame>
 
 Users will need to map line item values from earlier steps in their Zap into the fields within the line item group. They would be sent to your API as an array of individual objects. Users cannot input comma separated values into a line item field, they need to be provided from the trigger or a prior action in line item format for them to be sent this way.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8e0d1a3652b2391fd142a95a0954cbaf" data-og-width="931" width="931" data-og-height="232" height="232" data-path="images/533efc7f7719fa85587f72b04204371f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9459fdf850001f0b72521c51b3762449 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3488e91261bd732bf7c9a5122dc8b6bb 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=319af94b3fe20412bc1eae2f0d983e2a 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=97c07b8d93a20761fdf43b196d9a8231 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=c05eeba801d369b3c74e1ff6dff5b608 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/533efc7f7719fa85587f72b04204371f.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f45b0f001bc163ed6a465d3a1c7005f7 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c55426420b374b83be9c550631815943" data-og-width="356" width="356" data-og-height="149" height="149" data-path="images/a7bad08984545eb39e96ed2782660737.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ab0cfdb124597fcb5c778fe1d9aa462f 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a9769bd18599214aec8bedefc0598e59 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=473ec41d9bdba15f1a507ad6280144ec 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d4de9e21d8d32a2ea9b571f6cbbe4671 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e4f9f382443c128a7f95c121587641bd 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0b87bf389239980d036a4f04ad062fe5 2500w" />
+  <img />
 </Frame>
+
+## Testing the Line Item Group
+
+Once you've added a line item group to your action, you can test how it works in a Zap. To do this, send line items from a previous step in the Zap into the line item fields in your integration.
+
+If you don’t have an app that outputs line items, you can use the Formatter by Zapier integration to [create line items](https://help.zapier.com/hc/en-us/articles/8496275165709-Create-line-items-in-Zaps#h_01JAFJE6KV6AKW36BQ63YJ40W3). Then, map the output fields from the Formatter step into the line item group fields in your action.
+
+You can use the [Monitoring](https://docs.zapier.com/platform/build/test-monitoring#monitoring) page on the Platform UI to view the API request. This helps you verify that values are passed as expected in the API request.
 
 ***
 
@@ -8075,7 +8039,7 @@ OAuth v2 authentication matches in appearance the login process users expect fro
 The user interaction with authenticating Zapier typically takes place in full on the app's own site, helping users easily connect accounts without needing to share account credentials or look up API keys.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8d854417e8a740bd42ba22258303fe9c" data-og-width="793" width="793" data-og-height="547" height="547" data-path="images/520541acfeeb0e0a812944e599852756.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=41ca9bb9e4a4fa27683242e6c16d3f54 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=aef8f179556ba3859bc7a71d8414ad51 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=03e07484b5bc076059718e887aeb18bd 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=dd82df0fecc21be7ef2a2ad65f6b3ac0 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=afd8390a0e915d7dae98f07b335d1106 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/520541acfeeb0e0a812944e599852756.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=28ec1d61b83a20e729ad52a27e3bce69 2500w" />
+  <img />
 </Frame>
 
 The user will see a familar window from your app showing either a login screen or if they're already logged in, an account selector where they don't need to enter credentials. Once they authorize Zapier access, the app will return an access token that Zapier uses in future API calls.
@@ -8091,7 +8055,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 * Open the *Authentication* tab in Zapier visual builder and select *OAuth v2*.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e4b77bf922e99ab59643af05ae2e6a37" data-og-width="1660" width="1660" data-og-height="990" height="990" data-path="images/e89518edce251293ff42ae0f186c0efb.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ec7620bdb484c62e6ccb63779f17bf03 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=cd2b9e7f33f5360d120fcbdccbbe521b 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a0b63cc0fac8264aaa83883f02d35375 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b6f92e2a5d814bde7db2ae2f28626dd0 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=419da8dfb1e8717cf3838794578995e0 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e89518edce251293ff42ae0f186c0efb.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f95e6301ba16136593959a537aafd228 2500w" />
+  <img />
 </Frame>
 
 ### Optional input form
@@ -8101,7 +8065,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 * Add those additional fields by selecting *Add Fields* and fill in the details for any field requiring user input. This will show a form to users with the fields you've added before redirecting them to your authorization URL.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=16a4d4f4a2bf007e01f04e39b7558d7f" data-og-width="801" width="801" data-og-height="943" height="943" data-path="images/3603f9715129250a93ecfcf78d4b5f17.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d93fdf6bb914a8592bdd0fd2ff4523e4 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a509159672c9f93858c41106c85c8928 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9453bfb7723673889bbc7ec0d283e375 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8c8f126ea0600df8f18fecfd06467356 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=30b354f0a58caafe4bb5c5d4e311054f 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3603f9715129250a93ecfcf78d4b5f17.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=133113198caf8c3506d7118b7f18e525 2500w" />
+  <img />
 </Frame>
 
 * Two types of fields are available when building an OAuth v2 input form. Standard Fields, work much like other form fields with Zapier's [input form](/platform/build/field-definitions) in triggers and actions. [Computed Fields](/platform/build/computed-fields) make sure specific fields are returned by your app's authentication API call response.
@@ -8127,7 +8091,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 * Each input field is listed with its label, key, type, and required status in your authentication settings. Click the field to edit it, or click the gear icon and select *Delete* to remove a field.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7d77c58be665b908cc11ba28ce254e6c" data-og-width="1661" width="1661" data-og-height="831" height="831" data-path="images/573a3eb19a884c44fd67b9fa421c3bf4.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=192e251bc9eac88d52825ada905efbf8 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=41fdcb1646d53e372674cc1d213df4e7 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3be67df472e84c135d4d606f707db3fb 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f6e4e765b67db7abdfbdf190175d9746 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=04fec4258fc45c1987426186437a5dbf 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/573a3eb19a884c44fd67b9fa421c3bf4.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=26adb2cacbf9c46a4899561759efb039 2500w" />
+  <img />
 </Frame>
 
 * For computed fields, available in OAuth v2 and Session Auth only, review [computed fields documentation](/platform/build/computed-fields).
@@ -8136,7 +8100,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 
 * Open your app's application, integration, or API settings, and add a new application for your OAuth integration with Zapier. From the Zapier Platform UI's Authentication *Copy your OAuth Redirect URL* section, copy the OAuth Redirect URL and add it to your application's integration settings.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=327cb7285b5fa41793a7e1a296e5a002" data-og-width="1205" width="1205" data-og-height="294" height="294" data-path="images/b3e6b9ca7657ba02e4864ec28ab74951.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3c42b2d8448d737e6beb494b6fd77ad0 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=efb56235eb5e5d4a52ea197564f2375e 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9b74842eb93cf740426f32fd271a1ce3 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=47b009b7d1006ce8ab696a8b41adb47e 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=17ca9667056e5abc9aeb905816e6d3d6 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b3e6b9ca7657ba02e4864ec28ab74951.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b66c47e343ecdc498748b1cd283021b0 2500w" />
+    <img />
   </Frame>
 * To reference the redirect URL inside your Zapier integration, use the following code:
 
@@ -8146,7 +8110,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 
 * Zapier provides built-in support for [PKCE](https://oauth.net/2/pkce/#credentials) (Proof Key for Code Exchange and pronounced “pick-see”), an extension to the authorization code flow that adds a layer of protection against security vulnerabilities. The code generation and exchange steps of the flow occur automatically by Zapier when enabled.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f17deca63b9d3475bb124a7d0f094fd0" data-og-width="841" width="841" data-og-height="484" height="484" data-path="images/124a3c00d8bc37dadd953f19451205a5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=97cc8e2eacfe0ea8c2be154e0ad6a041 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5df22f97bb371c938280517778431d6e 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ce5a986825978bb14691127319a5405c 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=cea87be029c132b3eb688a0b6484a73d 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5cb91a3754471b41a8f44cfd01656ea1 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/124a3c00d8bc37dadd953f19451205a5.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ab53430ce9923fa89ecb7a8cb9bdf5e5 2500w" />
+    <img />
   </Frame>
 
 ### Add Application Credentials to Zapier
@@ -8154,7 +8118,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 * In your application's settings, you'll receive credentials that Zapier will use to verify itself to your app — typically called a *Client ID* and *Client Secret*, though they may have a slightly different name. Copy that data from your app, then in Step 3 of your Zapier OAuth configuration, paste those items in their respective fields. Zapier will use that data along with the authorization URL to receive the request token.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a3acc0b0c06b5573d6105eadfc003b47" data-og-width="1138" width="1138" data-og-height="452" height="452" data-path="images/ba093465f009bf6b417d55b2166c4324.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d190b5898e04aead975a5ef98a532dec 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=98a57e5c8730533d7419f9c7c38c9d29 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8c4c930f267acbbd46d38b3c33a7ca45 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9a4b24c5c3772b2e088d8642a63a4fe9 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b90bcab8b18d6cab87d6eb3d3b7d70f1 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/ba093465f009bf6b417d55b2166c4324.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d49a5e8fc397098ee8ae03c13a138f2a 2500w" />
+    <img />
   </Frame>
 
 * Click *Save & Continue* to save your progress so far.
@@ -8165,7 +8129,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 
 * Add your application's Authorization URL, where Zapier will redirect users to authenticate with your app. Copy this URL from your application or integration settings where you copied the client ID and secret previously, or from your app's API page.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c0d921615a3d14056db8ce392491a8d2" data-og-width="1187" width="1187" data-og-height="618" height="618" data-path="images/1920c552acfc0cc03089feb2e9ada029.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0c10931348fae4f5527d56f14189e5d6 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=7b29f958f2a7e1dfc517f9443aa640c8 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8090b1d5acfbff0adcc0b13e30ed98d3 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=68e9a35669a03a04fc92bbb0ebe7b79e 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4151e6db539c55a6c5ceb2981b65ad57 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1920c552acfc0cc03089feb2e9ada029.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1590e4aa25dd4dc9b0e9e42adefbf36b 2500w" />
+    <img />
   </Frame>
 * By default, Zapier will pass the client ID, state, redirect URI, and a standard `code` response type as URL Params in the request to the authorization url. If you need to change that, click the *Show Options* button and add any additional call details needed.
 
@@ -8176,7 +8140,7 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 * Add your app's Access Token Request URL from your API documentation, typically with a `POST` call.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e040531b66f2bcbd2590eb3eb5a659ff" data-og-width="1201" width="1201" data-og-height="672" height="672" data-path="images/517f20c1a33012af96b18036332371eb.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2a7c5385476ba0b668f1907257b68df3 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=46c97ce5d45a2c800eda2806e8e1060e 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4b0145dbe555375706a955fa2db5fe9a 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ed87b04161b37ba1d909ffc8ed06696f 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=502199d730a492409939989d763f031d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/517f20c1a33012af96b18036332371eb.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d48c709951c5659a585c3d4a57d63233 2500w" />
+  <img />
 </Frame>
 
 * By default, Zapier will pass the client ID, client secret, authorization code, redirect URI, and a standard `authorization_code` grant type in the API request body with the access token request. If you need to change that, click the *Show Options* button and add any additional call details needed.
@@ -8191,13 +8155,13 @@ If your integration requires OAuth v1 authentication, use the [Platform CLI](/pl
 
 * Add an API call to your API that requires no configuration, typically a `/user` or `/me` call. Add the URL for the API call, and set the call type, typically a `GET`. This will test the user-entered credentials to ensure it enables a successful API call to your app.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f123d333790ad9bafbca2658497de4b2" data-og-width="1191" width="1191" data-og-height="643" height="643" data-path="images/48cdb444eab9a329023b3e991bfa0da9.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=fd9535058ad7a82a0878db14b11f7cc7 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=638f99b24ab97a5e88c6a2ad49f88c03 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3b30d037a93cfffdb458a6ec8914ff9c 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7be560211ce323c45f6d234369299a62 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3dbd63fd314f7e61f3d48feb4a2d53ef 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/48cdb444eab9a329023b3e991bfa0da9.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8af82a06048b821fdf7e6fff1efe1816 2500w" />
+    <img />
   </Frame>
 
 * The access token is included with the API call by default, as it will with all subsequent API calls, but if your API requires any additional configuration, click the *Show Options* button and add any options needed for a successful API call.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3015fe558fb79410b99eaaa16e75bbed" data-og-width="1192" width="1192" data-og-height="548" height="548" data-path="images/f9d47ff9bd4af168dcb4c4811a1e184d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=129e90ba6e196fed8bf6e30d1ee3e326 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b5b57fcd1e74bac9c431890a036563fa 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f5da9ad32c240aae479454cd7793f402 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4a8444669dbd01741d553c9a5b03f7c4 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=749625c0a59f44701f50bab38f3f0e15 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9d47ff9bd4af168dcb4c4811a1e184d.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=8373e1a03b523aa3436c73fb37795f29 2500w" />
+    <img />
   </Frame>
 
 * To customize the test API request, select *Switch to Code Mode* and write custom JavaScript code to handle your test API call and the response parsing as needed. The first time you click the toggle, Zapier will [convert your API call to code](/platform/build/code-mode). If you switch back to Form Mode though, Zapier will not convert your code changes to the Form Mode, nor will any subsequent changes in the form be added to your code.
@@ -8214,7 +8178,7 @@ Connect a valid user account to [test authentication](/platform/build/test-auth)
 
 You can also refer to this video on implementing OAuth v2 in your Zapier integration:
 
-<video controls src="https://cdn.zappy.app/29ccff3273d1ae57e276f7acc44d1cfc.mp4" />
+<video />
 
 ***
 
@@ -8278,11 +8242,7 @@ By default, Zapier triggers fetch new or recently updated data to start Zaps, an
 These triggers used for populating dynamic dropdown fields will often find dozens or hundreds of items. Many APIs let you split the results into pages. The first API call will return the first set of results — often 20 to 100. The items from this result would be seen as options in the dynamic dropdown field. If you want additional entries, you can make a new API call requesting page 2 and get the next set of results, iterating through the pages until the API has sent every possible option.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=da18230fd58c644c3ecfe9ad14e48191" data-og-width="958" width="958" data-og-height="1016" height="1016" data-path="images/f59291e5a74d1977648850f84513e33e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=9bc8c64ca4d948e93fc9f217b2b95d73 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b71a371e9c7e921f03362a3cfec5ad32 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=fea9924b13021855d0ddcaa0cc69cd2c 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=aedaf366f969c7c05c0136a8e2031998 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=bf545a1dfef50d8d26170dac03be8c9f 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f59291e5a74d1977648850f84513e33e.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e5688b3cfa1663dc2cca686dc75c4bc2 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## 1. Enable pagination
@@ -8294,36 +8254,25 @@ These triggers used for populating dynamic dropdown fields will often find dozen
 * In the **Configure your API Request** section, select the **Support Paging** checkbox, which should only be applied to triggers built to power dynamic dropdown menus. This enables Zapier's `bundle.meta.page` value which tracks the pages Zapier has loaded, along with a Load more option in the user-facing Zapier editor's dropdown menus.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=75d9a8ec4b6064ebfd0c1c63ef1ffbf2" data-og-width="905" width="905" data-og-height="153" height="153" data-path="images/4680b6dd27b3db71b8364177e351fdd5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a57d369b922354377a9f0f0e7fbdae9f 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b9ddb139e3b17466482ef177c22a84b1 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7c053bdef45096f4054b9742b32b5e8b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3489dd4ab1e0e25f3b25d050caad271e 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=304ddda4339b7c193b740434fce480ed 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4680b6dd27b3db71b8364177e351fdd5.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3f161ee4cf5d1a086ae98eac8be42b93 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * In the API Endpoint section, click *Show Options* to include `bundle.meta.page` in your API call as Zapier does not include that automatically, then add a new URL Param for your API's paging option (or optionally add it to your HTTP Headers if your API expects the paging value there). Use the page request field name from your API on the left, and `{{bundle.meta.page}}` on the right to have Zapier pull in the correct page value.
+
   <Frame>
-    {" "}
-
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=7d940f4c2046a93fdf63fdde774cb269" data-og-width="1504" width="1504" data-og-height="1411" height="1411" data-path="images/2492cb37ec953861cceaf243c0625285.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=036f4bfd1760ca31ce2712f59c33a05c 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=d080f580bd5cc1a81e496574cad8095f 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f224813cb1a5424306024611f0d480fa 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5ed8dfcfef37abe2e1c28d1f8080420e 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=08280eca90ea31d4ede9f4a77bb3e087 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/2492cb37ec953861cceaf243c0625285.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8ef6c59f3dcf23dae5e6f1b30feef2a7 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 Note that Zapier's `bundle.meta.page` value uses zero-based numbering. The first time Zapier fetches data from your API, it uses a page value of 0, followed by 1 the second time, and so on. If your API expects the first API call to request page 1, with 2 for the second page and so on, you'll need to [switch to code mode](/platform/build/code-mode) and add `+ 1` to `bundle.meta.page`. So pagination in the code would look like the below (substituting `page` with the correct field name your API uses for pagination):
 
 `'page': bundle.meta.page + 1`
 
-<img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e3afbcd2509fecfca972875e7d816688" alt="Zapier pagination code mode" data-og-width="956" width="956" data-og-height="648" height="648" data-path="images/8e7923caa73ff68ea6061d61ad37e451.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9cb66ca46f2f8105b5160f94faefd4ef 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=265e7604b18ecf1910294457531908b6 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6f52cb871e2f414ffce01f170f1b67b8 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=679c7fc69d054dcd5ae499d0277c8bd9 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8f538cfc140d1220df85fe601ff1aa3f 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7923caa73ff68ea6061d61ad37e451.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d3fd7747b7f764d5c7a06efabbf7f2da 2500w" />
+<img alt="Zapier pagination code mode" />
 
 * Test the API Request in the Platform UI and check the HTTP tab to see the request Zapier sent your app. Zapier should show a `page=0` value (or the correct term for pages in your API) under the Request Params header by default, or `page=1` if you're customizing the page requests to start at 1.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=92751d2cb36ff4d37ebdda80dd7f0af5" data-og-width="1047" width="1047" data-og-height="1138" height="1138" data-path="images/78b76bad2188b7594325c2c6bb85f121.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=57b6378888c21f5dc99627de2d953e3e 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3df2c5343c713c0693899ec199a7fa42 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=c9d69103fc45439fc2360beaf9d5b7d0 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d2553d50b4ee98779dcac7d88f4ebe8f 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=41528b8a144f5d6666e967c4e1c1645e 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/78b76bad2188b7594325c2c6bb85f121.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=583487f05abd9f323760819fafbb6a2f 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ## 2. Test pagination
@@ -8333,21 +8282,13 @@ To test your paginating trigger:
 * Build an action in the Platform UI that uses this trigger in a dynamic dropdown.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=11c5023c9ee0e99f90066878e8b2f666" data-og-width="2014" width="2014" data-og-height="1943" height="1943" data-path="images/d7d14e885062e466c4bcbbab8dcfd535.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3530e7a7c043ccb0b986e406a87ea00c 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=918ce0374a78a8765876fb4a0c14ea59 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b84b500a8ab884d9cd9b31ce3d22875b 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=21382586e8c8d0c5ecd0e0a8aed1aa6d 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=43769ac63f40fe3fb71ae0bab1ffa9aa 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7d14e885062e466c4bcbbab8dcfd535.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5c1e61ff8d9c1a406053f02e5194b2dd 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 * Make a new Zap in the user-facing Zap editor that uses your action with the dynamic dropdown field. Click the dropdown field, scroll to the end, and click the **Load More** button. Repeat until it loads the last options, which will show a *We couldn't find any more choices* prompt.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0dec03879cf03f4a92eced7f2b381d49" data-og-width="1546" width="1546" data-og-height="1290" height="1290" data-path="images/b2d1a5bf597c95f8615ca009ee7d66c6.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9a7bad827dbd92c23f0e8f46222b9888 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=51038ac5fac8d39ff6cde01603fc1e62 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2667b39bd9a54cfecefa2eadf201c734 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=813d3d964306635ec3a5bc23da36376b 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=23c12cd7c0f0c16ed381307b1bd3dd6d 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b2d1a5bf597c95f8615ca009ee7d66c6.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=86593a3ae72faa2279642e336b738fd8 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 ***
@@ -8396,7 +8337,7 @@ If no input data is needed for this trigger's endpoint, continue.
 Platform UI selects a *Polling* trigger type by default.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=a7cd8f0c4cb9f6b8d593d5df97d62857" data-og-width="1508" width="1508" data-og-height="1085" height="1085" data-path="images/0f08230cffa8a3a568d4847e35e42d0c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=eee7455cecff64b51db475409cfa841e 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=572780f82dca320888e7bd2cda976264 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=350d740ee4cdb1ec4a75aea68f1ab1de 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4110ffb8f44e99717392e12d1addf6a7 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=50f3ccd29403025f2866bfa7fe1e6d7c 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0f08230cffa8a3a568d4847e35e42d0c.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5eb8723bbdcd194640e09c6124e51ba1 2500w" />
+  <img />
 </Frame>
 
 Enter your API URL in the *API Endpoint* field. If your API URL requires specific data in the URL path, enter the following text in the URL where your API expects that data, replacing `key` with the input field key containing the relevant input field you created in the previous step:
@@ -8460,7 +8401,7 @@ Whenever a user selects your app's integration in a Zapier action step, they'll 
 Zapier shows *create* actions first, followed by *search* actions. Within the Create and Search sections, actions are listed in alphabetical order and this order cannot be changed.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1488bfcd2c6f77cbceb30ae769ca41ab" alt="Actions inside Zapier" data-og-width="1552" width="1552" data-og-height="884" height="884" data-path="images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2c014d2852fd99c0f37f5e0359d55dd7 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=23372baffbf682a32b40cd064f0405bf 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9f01a35a4757845a0b5a5fdfbc6a374d 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=76e5fe5877bb3900c2872a1de2f0a7d0 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a4b1244f6632921a1875c1f9c3ec4f87 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5d3c2e8f9f6cf0f6daadd3ee97fa5e80.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8eec3464f406c03bfc5fb049e110508d 2500w" />
+  <img alt="Actions inside Zapier" />
 </Frame>
 
 If you don't want an action to be shown, you can change the action's visibility at any time.
@@ -8488,7 +8429,7 @@ To remove an action:
 4. Click on the ellipses for the action you wish to remove, and click **Delete**.
 5. On the confirmation prompt, click **Delete**
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=56d28c6094e1c5658e8bd80caf255562" alt="Remove Zapier action" data-og-width="1507" width="1507" data-og-height="873" height="873" data-path="images/809321da0cd78edef6f464eb1f803855.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=75ff126afb9f45c8817dd0110b59d5be 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=6e1745dd7dffd8423e43e379efb8cfcd 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=fc79226c8a2b29ef34104aae124ad2ae 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9dd131c5fe6418ee672d86eef8556eae 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8ef68dc2fbb2f6246adaf489b60fe277 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/809321da0cd78edef6f464eb1f803855.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a81cbe86b4823b06b7957b39c378812d 2500w" />
+     <img alt="Remove Zapier action" />
    </Frame>
 
 ***
@@ -8514,7 +8455,7 @@ To change a trigger's visibility:
 5. Scroll to the bottom of the page to the **Visibility in Editor** and select `Hidden` if you want to keep users from being able to select the trigger.
 6. Users with that trigger selected in their existing Zaps would continue to be able to use it, but if they edit the Zap and select a different trigger, they will not be able to select the `Hidden` trigger again.
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=09d0e1802fc6f6c6b050164b676af8be" data-og-width="1110" width="1110" data-og-height="151" height="151" data-path="images/51c3b8911b5384ddf03b9dbfffd40050.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4f7edd81515b34de3b04617d5f593573 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4371328bf9764b089c8831eacc678020 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5be24525eb9ebe7914828afba0857af5 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=64378966277429eac07adc91e78e89ab 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7d04150d484097aefb61d79fbba98e0d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/51c3b8911b5384ddf03b9dbfffd40050.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=20de795110c752ff086aeede809bfbb8 2500w" />
+     <img />
    </Frame>
 
 ## Removing triggers
@@ -8531,7 +8472,7 @@ To remove a trigger:
 4. Click on the ellipses for the trigger you wish to remove, and click **Delete**.
 5. On the confirmation prompt, click **Delete**
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e89f8cb3e55bdaf517e8c145fe58156d" data-og-width="1025" width="1025" data-og-height="395" height="395" data-path="images/fc65459abad8ac60504f6085078bb361.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=bfa9be40075af761912fcbe136f5ca77 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=30ac31bccdc39c543a79a42fc0b22675 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=9f92cc3b3aa686f490f6648ba46c9604 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3f2febb29d93735de5d1a7c26cc988d8 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f65497ed924e62cc45993b5578480fdd 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc65459abad8ac60504f6085078bb361.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=786367a012852e00758026bc8bf84cb4 2500w" />
+     <img />
    </Frame>
 
 Deleted triggers cannot be restored.
@@ -8547,24 +8488,24 @@ Source: https://docs.zapier.com/platform/build/requesttemplate
 The Request Template is a request editor that lets users set static values that apply to all requests made by this integration. Users can configure the URL params, HTTP headers and request body. This is the perfect place to set authentication fields.
 
 <Frame>
-  <img src="https://cdn.zappy.app/987abd7e65935ecb581fd356b45fb4bc.png" />
+  <img />
 </Frame>
 
 Adding input fields to the Authentication Fields also writes the fields to the Request Template.
 
 <Frame>
-  <img src="https://cdn.zappy.app/8cfafbc546e1693fa1e517ccc14a96ab.png" />
+  <img />
 </Frame>
 
 By adding fields to the Request Template, they will also show up in the request builder of trigger and actions. The applicable fields for authorization in triggers and actions under Options would then be disabled with help text. You'll need to access the Request Template under Advanced Settings to make changes to them.
 
 <Frame>
-  <img src="https://cdn.zappy.app/a3ba1e8593946e7e99a361afe291050e.png" />
+  <img />
 </Frame>
 
 You can refer to this video on using Request Template:
 
-<video controls src="https://cdn.zappy.app/f64c9c062e3fbf4b691dcde0b560c19f.mp4" />
+<video />
 
 ***
 
@@ -8597,7 +8538,7 @@ Line items are used to present multiple items associated with a single transacti
 
 For example, a Create Order action returning an order with multiple items might look like this:
 
-```js  theme={null}
+```js theme={null}
 order = {
   name: "Zap Zaplar",
   total_cost: 25.96,
@@ -8679,11 +8620,11 @@ In the Zap editor, Zapier will attempt to retrieve or create existing data to te
 Users can also opt to skip those test steps. In both cases, Zapier shows the sample data instead, to allow users to map fields correctly in subsequent Zap steps.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2ce7bce78f120c45697b475c8d987fbc" data-og-width="1662" width="1662" data-og-height="996" height="996" data-path="images/05e9be8a62a663f42ab25cf2b17591b8.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e37eb1a34d62ea2528ba168c8218e806 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0d9346ca55f6d0491f8ec485ec99e270 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=cda1f6c1001576c5377cec9f2fa6b473 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5445914c51550ec836f81d6c15075a7a 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2113c102803d7a103745d07c73507577 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/05e9be8a62a663f42ab25cf2b17591b8.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3640bc270846d74f119ad734f98e1598 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=761bf06e868e40177ec963bab965394b" data-og-width="1194" width="1194" data-og-height="1268" height="1268" data-path="images/42353c3702ca94af6000e3efb926a3f2.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6a078afa63d5bea4e6f63b026ffbabf8 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f8b2fc4d3cef106e468f7cb637a0fdf4 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c4ffc1cd2088efacc1b0fc6f66f2b5b0 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=36c0eddfb908b0e94d5be3bd74ec1bda 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=98d83cd04647b6d3dc38c83fa9c77dfe 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/42353c3702ca94af6000e3efb926a3f2.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=921dc811a24c62704f72606544edb075 2500w" />
+  <img />
 </Frame>
 
 Sample data must be JSON-formatted and use the same field names as your app's
@@ -8696,7 +8637,7 @@ Only include fields that are present every time a Zap runs. If a field is provid
 
 If that mapped field is then not available when a user's Zap runs, the action field will be empty, causing errors or unexpected results for users. For example, suppose your sample data looks like this:
 
-```JSON  theme={null}
+```JSON theme={null}
 {
   "id": 1,
   "first_name": "Jane",
@@ -8708,7 +8649,7 @@ If that mapped field is then not available when a user's Zap runs, the action fi
 
 A user might map the `job_title` information into a required field in another app, such as a CRM. Then, when the Zap runs, `job_title` is only included in the live result if it happens to be available, and the data the Zap receives looks like this:
 
-```JSON  theme={null}
+```JSON theme={null}
 {
   "id": 5,
   "first_name": "Jacob",
@@ -8738,7 +8679,7 @@ In your trigger or action settings:
 For example, if you use GitHub's API to watch for new issues, the API calls the issue name `title`. Users may expect that field to be called *Issue* or *Issue Title*, so you could define the Output Field as having the name *Issue Title*, rather than the default transformation of “Title”.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9ba0f73c6bc4c3dc94c2f638f88498e6" data-og-width="1693" width="1693" data-og-height="1649" height="1649" data-path="images/293b09e9593b591de3c735988f1a5f19.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8d8fe8a447ea8a9a76baaed504915bf0 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5fbd18351bbbfb415744f7ed24fe14cc 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1cd7862c6ed8340cbd26930eb305d851 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=52bb9ee1d20a4c41cfe197a270704f43 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c531d652dd51d1859e212fef696cff2a 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/293b09e9593b591de3c735988f1a5f19.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=aa49213b2a732b069f6faa53e75cdcee 2500w" />
+  <img />
 </Frame>
 
 ***
@@ -8755,7 +8696,7 @@ Source: https://docs.zapier.com/platform/build/search
 
 * Open the *Actions* tab in Zapier's Platform UI from the sidebar on the left, and select **Add Action**, selecting your action type. New actions are *create* type by default, and add new data or update existing data to your app.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4461ae46885268b178266a66593cd5be" alt="Zapier Search action settings" data-og-width="809" width="809" data-og-height="723" height="723" data-path="images/3e47ad8a26c30fb761fdd60390d8705e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=86b47d082e0b46bbcbc1d35119285bbf 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=44313664d713e8e65cdc09864125325a 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=04463d389b32e49c33c62a2a7a1bd803 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9fb9e66a8c975f2e4d0d1f91b37545ee 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ce403f78dc6a2ef8de887ed3dd2c33ba 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3e47ad8a26c30fb761fdd60390d8705e.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b3a9aa7292e5ee609ce2e6ce87903e03 2500w" />
+    <img alt="Zapier Search action settings" />
   </Frame>
 
 <Info>
@@ -8829,13 +8770,13 @@ When adding a _search_ action type, you'll see the option to _Pair an existing s
 * Select the relevant action from the *Create Action* menu and add a new label that Zapier will show on this step if users choose to have the action create new items as well.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1a52c08c51162ee379c2ab71d50aaea9" data-og-width="1167" width="1167" data-og-height="420" height="420" data-path="images/41334f793dfce14d21e6c35361179721.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=adf94fb86e11b476eb52cd5dbf9b7fdc 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7259dae09954d932591b5c6369a0e678 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6e3fa3b6e60e39b2755de578be564e15 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a39deac38b8a4ca67f7ffda3dff3220a 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a919d8a40c67f9e16dbb1f34eeaa9d1d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/41334f793dfce14d21e6c35361179721.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=cb7e66c3f45e7b44a248fd1e58472772 2500w" />
+  <img />
 </Frame>
 
 * When users use the search action in a Zap, Zapier will show your core *search* action settings that you set in the *Input Designer* by default. Then, if users click the checkbox to create an item if nothing is found, Zapier will load the *create* action's input fields inside the search action so users can fill both out.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6e15bfdf617783b558cc13de77a798fc" data-og-width="1546" width="1546" data-og-height="1717" height="1717" data-path="images/32ba8f867d02cf60cb6c344a0447b5a5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3ff5c8625beb27f2369440bfb32b68c0 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=561a4aa020a442326133c8d24846fb39 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5ed15549c6b0de5b2d9f7438eda61c9e 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5fd12d4ba8ca3968d34e1a684271b141 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6652fbe412c47225767f8ff8442b346d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/32ba8f867d02cf60cb6c344a0447b5a5.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=09ced71a989489fb1054f550906bcfeb 2500w" />
+    <img />
   </Frame>
 
 * Configure the rest of your search action as normal, including the [Test API Request](/platform/build/test-triggers-actions) and [Output](/platform/build/sample-data) sections.
@@ -8853,7 +8794,7 @@ Session authentication has elements of Basic authentication — where Zapier req
 It is similar to cookie-based authentication in your browser, only here the “cookie” is an auth token stored by Zapier.
 
 <Frame>
-  <img src="https://cdn.zapier.com/storage/photos/7c7092a2311cf217298cb3e3f5735385.png" />
+  <img />
 </Frame>
 
 Use Session authentication with your Zapier integration if your API is designed for session-, cookie-, or token-based authentication.
@@ -8862,7 +8803,7 @@ Use Session authentication with your Zapier integration if your API is designed 
 
 * Open the *Authentication* tab in Zapier visual builder and select *Session Auth*.
   <Frame>
-    <img src="https://cdn.zappy.app/2453d5aa12c5aa4fe02beae9d85f6786.png" />
+    <img />
   </Frame>
 
 * Session auth does not include any default input fields. Add the fields required by your API by selecting *Add Fields* and fill in the details for each field. Add the most commonly needed fields first, in the order users expect, as you cannot reorder fields once added.
@@ -8896,7 +8837,7 @@ Use Session authentication with your Zapier integration if your API is designed 
 * Add the token exchange request URL and select the HTTP method. Zapier will automatically include the data from the input fields in the API request body. If your API expects the data in the URL Params or HTTP headers instead, or requires additional data, click *Show Options* and add the details your API call needs. It is typically not recommended to pass any sensitive information such as the password in the URL Params. Passing it through the headers or the body is preferable.
 
   <Frame>
-    <img src="https://cdn.zappy.app/70908a4341146b3df38c9a3169f68cfb.png" />
+    <img />
   </Frame>
 
 * To customize the token exchange request, select *Switch to Code Mode* and write custom JavaScript code to handle the API call and the response parsing as needed. The first time you click the toggle, Zapier will [convert your API call to code](/platform/build/code-mode). If you switch back to Form Mode though, Zapier will not convert your code changes to the Form Mode, nor will any subsequent changes in the form be added to your code.
@@ -8914,7 +8855,7 @@ Use Session authentication with your Zapier integration if your API is designed 
 * Click *Show Options*, then add the access token to your API call's URL Params or HTTP Headers as needed. It is typically not recommended to pass any sensitive information such as the password in the URL Params. Passing it through the headers or the body is preferable. The Access Token will be in the `bundle.authData`, and typically be referenced as `{{bundle.authData.access_token}}`, `{{bundle.authData.sessionToken}}`, or a similar field, depending on how your token exchange response includes the token.
 
 <Frame>
-  <img src="https://cdn.zappy.app/bf9711293b10af85200fb8d7bfe21e39.png" />
+  <img />
 </Frame>
 
 ## 4. Configure a Connection Label
@@ -8955,6 +8896,15 @@ Review our documentation on how the [static IP address functions within Zapier](
 
    * **For published integrations:** [Contact Zapier Support](https://developer.zapier.com/contact) to enable static IP addresses for your integration. The turnaround time is typically within 1 business day.
 
+## Testing the Static IP in the Platform UI
+
+Static IP addresses are only used for requests sent from paid Zapier accounts (Pro, Teams, or Enterprise plans). This applies to testing within the Platform UI as well.
+
+When testing an authentication, trigger, or action from the Platform UI:
+
+* If the integration team member running the test is part of a paid Zapier account, the request will be sent using Zapier’s static IP addresses.
+* If the integration team member is on a free Zapier account and not part of a Team or Enterprise plan, the request will not use static IP addresses.
+
 ***
 
 *Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
@@ -8982,7 +8932,7 @@ When adding a subdomain input field, commonly used in OAuth implementations, add
 * Update the *Access Token Request* and related sections under the *OAuth v2 Endpoint Configuration* options, using the [Code Mode](/platform/build/code-mode) editor.
 * Example code for handling subdomain validation in integrations built using the Platform UI, via Code Mode:
 
-```js  theme={null}
+```js theme={null}
 // --- UPDATE: add your validation for the subdomain field before using it ---
 if (!/^[a-z0-9-]+$/.test(bundle.authData.yourSubdomainField)) {
   throw new Error(
@@ -9012,7 +8962,7 @@ return z.request(options).then((response) => {
 * If you're using OAuth-based authentications, update the `getAccessToken` and optional `refreshAccessToken` configuration methods. If the integration uses [shorthand HTTP requests](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#shorthand-http-requests), switching to [manual HTTP requests](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#manual-http-requests) will allow you to perform this manual subdomain validation.
 * Example code for handling subdomain validation in integrations built using the Platform CLI:
 
-```js  theme={null}
+```js theme={null}
 const refreshAccessToken = async (z, bundle) => {
   // --- UPDATE: add your validation for the subdomain field before using it ---
   if (!/^[a-z0-9-]+$/.test(bundle.authData.yourSubdomainField)) {
@@ -9062,7 +9012,7 @@ Testing a user's authentication is crucially important, as it is later used to t
 3. Successful authentication shows a green check and a *Request Successful* message at the top of the dialog.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a52fda38121be30f371421ffe834466f" data-og-width="1239" width="1239" data-og-height="539" height="539" data-path="images/60ebf09a1442345cc5d86b44440eb11c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ddf5264f31d4746b8febb155400edac1 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d7f5a33cf68a5ca222617dcee853af8c 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=64edaeb283691e6fc0587e95c5ba23eb 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=788f5d4739d72a240e3125b19990bfae 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9e43d9f9cde248aaa40e2dcf982d2026 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/60ebf09a1442345cc5d86b44440eb11c.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=c4be7e7009ee3df04095feb21c3cca5c 2500w" />
+  <img />
 </Frame>
 
 4. The *Response* tab shows the JSON data response from your API, with each field and its data listed.
@@ -9076,7 +9026,7 @@ Testing a user's authentication is crucially important, as it is later used to t
 8. Check each tab to ensure the expected data came through - it is possible to have an unsuccessful API call come through as successful if your API returns a message without an HTTP error code. Check the Response to make sure it includes the data expected from this API call, and if anything is incorrect, check the HTTP tab to help diagnose where things went wrong.
 
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=60ddc617e6a3492a97070c411992152d" data-og-width="1239" width="1239" data-og-height="784" height="784" data-path="images/dacbdf7561aa6d2a78e599f12b80a325.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8fc8a46a67ed257b4f5e4ceb9d99e47f 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5c32729a9886d591c17624dbd0083c7f 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=502834fcf9af8c5912f10f57a6f38b43 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e6ba564eda78583e422205b6dd66c7fd 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=895511ffdf1bc7c854f65d57059cfe65 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/dacbdf7561aa6d2a78e599f12b80a325.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=eae28d4d7b7a8cf6d4a78aaf795419c6 2500w" />
+     <img />
    </Frame>
 
 9. Clean up and remove older testing accounts from your core Zapier account. Open your [Zapier *Connected Accounts*](https://zapier.com/app/connections) page, and find your app's name (you may need to use the search box or `CMD`+`F` (Mac) or `Ctrl`+`F` (PC)). Click the app name. Once on the app's connections page, identify the connection to remove and click the three dots, then *Delete*, and confirm the deletion. Repeat for each subsequent testing account you added to clean up your authentication list.
@@ -9084,11 +9034,11 @@ Testing a user's authentication is crucially important, as it is later used to t
    Then refresh your integration page in the Platform UI, and you'll only see the authentications that were not deleted.
 
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=851d89dbac45d0ae610ddaf438ea71c7" data-og-width="1246" width="1246" data-og-height="562" height="562" data-path="images/943cd7b0ee2ada32492c834157a2eccb.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9617cebb41b80e095eba3d06ad339a62 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=287be3e83303ece19f56c3d4d9530b7a 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=1e50509411fb10da4478fe8c346eff5f 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f1f5ff0012d24d2801f7e71f47cce656 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0832f7b311c5485c4240bc966067a4f2 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/943cd7b0ee2ada32492c834157a2eccb.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=cd3a3e133e668ba4eb5aeafcfec4b12c 2500w" />
+     <img />
    </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f52b4c4122537436aecbbdd48dd78bdf" data-og-width="1056" width="1056" data-og-height="468" height="468" data-path="images/b31f5c7f712c1a585e727b729248615a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f89fd402bfb8cece2c752b58de20b940 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9ba2bea7b41c15a054d58745ba3eaab8 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c78cd4414b39b624a79907185daf0c01 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c1df7576e1c5ffb8749de744798b4a99 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=695051fdf4044485de1408a0c3e6ef32 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b31f5c7f712c1a585e727b729248615a.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=21ad1d5064b260f1938d01e7e5dc46d8 2500w" />
+  <img />
 </Frame>
 
 10. A caveat of testing in the Platform UI is that tokens are not saved in the Zapier database, so if you are testing the access/refresh token mechanism, make sure to test in a Zap in your account to avoid connections expiring or being marked as invalid.
@@ -9104,7 +9054,7 @@ Source: https://docs.zapier.com/platform/build/test-monitoring
 Testing inside the Platform UI is crucial during the building process. To ensure users can benefit from your integration's features, it is equally crucial to test your integration within the Zap editor. This is the best way to notice details that might have been overlooked while building your integration.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=101500de5caeeacb04e6357280080ef7" data-og-width="1189" width="1189" data-og-height="880" height="880" data-path="images/4f69910e7b7d5fb9325d0e36579bca5a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=267ed1b10ca39372c3c0d3f4031bf84b 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=501f7db68980f91ce21cf153235dc570 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1b66c09cc2de6b761926adf2bc34db73 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=902618734b2e309b310f8ee31822881a 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d276bd4bef100eb3a52ca2c641e86b6b 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4f69910e7b7d5fb9325d0e36579bca5a.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b7697611956009de6b5634485435c333 2500w" />
+  <img />
 </Frame>
 
 ## Prerequisites
@@ -9136,7 +9086,7 @@ Use the *Monitoring* page in the Platform UI to ensure that test Zaps and the ex
 Adjust the Chart Filter for the correct timeframe, then click on any data point in the chart to see the any error messages and logs which should help you troubleshoot further. You can also filter by log type and by user email.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=812b72748738bea86528b4618d7c30f5" data-og-width="1487" width="1487" data-og-height="621" height="621" data-path="images/8e7113b876e9dd37b71722fee763cf3e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2091c0df0e4ccc5e97dfed331f443999 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=082a906757bd8d9cdff54fd54ae59fd3 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f71551a7e49f2df2d6b3f20ff7a9f88a 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9ea4c52be9060a71f80dc9f7ea516c1f 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=3e34022990f4ce32288677c7c1c9898a 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8e7113b876e9dd37b71722fee763cf3e.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b1ed4008d4c2fd76dce03d0d083b6b23 2500w" />
+  <img />
 </Frame>
 
 To manually print a log statement you can see in Monitoring, use `z.console.log` in Code Mode:
@@ -9145,7 +9095,7 @@ To manually print a log statement you can see in Monitoring, use `z.console.log`
 
 You can also refer to this video on using the Monitoring tool:
 
-<video controls src="https://cdn.zappy.app/4f1d37c1ff6cb690c3ff9c9fa6afe701.mp4" />
+<video />
 
 ## User testing
 
@@ -9183,7 +9133,7 @@ You may want to use the canary tool when adding a new feature, or fixing a bug. 
 
 ### Usage Examples
 
-```bash  theme={null}
+```bash theme={null}
 # Create a canary routing 10% of traffic for 1 hour (3600 seconds)
 zapier-platform canary:create 1.0.0 1.1.0 -p 10 -d 3600
 
@@ -9259,7 +9209,7 @@ While canary testing, monitor these key metrics:
     Yes, you can extend the duration by stopping the existing canary with
     `zapier-platform canary:delete` (or deprecated `zapier canary:delete`), then
     re-running `zapier-platform canary:create` (or deprecated `zapier
-        canary:create`) with a new duration.
+            canary:create`) with a new duration.
   </Accordion>
 
   <Accordion title="How do I monitor the canary test?">
@@ -9296,7 +9246,7 @@ Source: https://docs.zapier.com/platform/build/test-triggers-actions
 Once authentication is tested, trigger and action steps are easy to test inside Zapier visual builder. Set up the trigger or action settings and API calls, then as the last step the familiar _Test Your API Response_ box appears. It will show any accounts you added to your integration previously during the authentication testing.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8c69f83aa34235dab770a0040740f48c" data-og-width="1242" width="1242" data-og-height="713" height="713" data-path="images/b8bd7bcad203fd0473c25a64dd2203c6.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=499624aa7764f65d359603754c0efa22 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9398e817771daf66d51085e92a8b79f9 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c1f6b42a8678a687a800ad66a68d0f8c 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=79a630b84f4279d764bfd87e05158bed 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ea9e6d1b50ade5f6cfc449430e843fb7 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b8bd7bcad203fd0473c25a64dd2203c6.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4c883238958490e9860e69f5eb73cce5 2500w" />
+  <img />
 </Frame>
 
 ## Prerequisites
@@ -9343,7 +9293,7 @@ Source: https://docs.zapier.com/platform/build/trigger
 Every Zap has a single trigger. Triggers are how your app's users can start automated workflows whenever an item is added or updated in your app. New or updated contacts, database records, blog posts, subscribers, form entries and project tasks, are examples of items that can be used to trigger a Zap.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ce88478d74047e140ab9b50ba779ba3d" data-og-width="971" width="971" data-og-height="853" height="853" data-path="images/024547d6df8622335ca65456c6d0a11c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=49fce4fde3cdbb7e04cada069a57b1ba 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b1815985e5002eb13a04b5e0ab27bef9 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c5d0ec732c9b76ea4a2cdcf6086e9e4d 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b0ae43109dfc576fb54483e47cc7ff43 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=761411e58bfa77889341d25568c72fa8 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/024547d6df8622335ca65456c6d0a11c.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=f00d430e8e732c1faa298c2a9fd1c260 2500w" />
+  <img />
 </Frame>
 
 Triggers only watch for new data and typically send no or little data to your app. They are often quicker to set up than Zapier [actions](/platform/build/action).
@@ -9485,7 +9435,7 @@ In the ***Create Company*** action, instead of presenting an overwhelming number
 The fields chosen are then retrieved by the Zap editor for user editing. This helps in both making sure the request can be accomplished within the time and size limits, and making sure the user can easily find the custom fields important to their specific workflow.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b02eb4ac0554100aa96ff00a68ab8f16" data-og-width="637" width="637" data-og-height="344" height="344" data-path="images/4ac409c47f194303c54adff79fcd693f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=95df1e169bde66df3c9a732ee3858319 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4a5299088cd2ac3fe821626c2e09451e 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=68ea9afcaa3c595b063a24eae873eaf8 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=c5aa025f214275ab07fa3aa7d5c03714 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=dc20bd7e371a18b752db182f01b21870 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4ac409c47f194303c54adff79fcd693f.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=52773014cceb7a8a10a2908db04794e4 2500w" />
+  <img />
 </Frame>
 
 ***
@@ -9516,11 +9466,7 @@ Add a specific `Retry-After` header to your 429 response, or specify a timed del
 More on the retry [here](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#handling-throttled-requests). The user will see a [Waiting/Scheduled](https://help.zapier.com/hc/en-us/articles/20505304170637-Review-Zap-run-statuses) message in Zap history instead of an error while the limit is still in place.
 
 <Frame>
-  {" "}
-
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1efe774c999092e898ff473deb283210" data-og-width="718" width="718" data-og-height="182" height="182" data-path="images/0933736266259b11771a0eba0aff23ce.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5648e106738b551a9531a4330f74c1c4 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=91e720fce8d3dc1ba2df5852aa0f7b10 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=365e7c3da8f442332a0adc7731fe47e1 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2dcb7d7771c55c11fb9fb9e45139f0a4 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=19f9b96f452b8dd6c2630f3a9cff516f 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0933736266259b11771a0eba0aff23ce.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=80c99b3fe9caa31bb4a9a19d5617fb19 2500w" />
-
-  {" "}
+  <img />
 </Frame>
 
 If implementing a `ThrottledError`, you could consider implementing a jitter for handling 429 errors, that could look something like this to randomize the frequency of the retries as well:
@@ -9662,12 +9608,9 @@ Each time a Zap executes, the trigger's `perform` method must finish processing 
 ### Errors user will see if constraint is hit
 
 * User will receive an email with an error message, usually with *“Trigger partner failure”* in the message text. An example of the email sent when the trigger errors due to a timeout:
+
   <Frame>
-    {" "}
-
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=58d5d7032cf2ec925770bcfaef679bde" data-og-width="761" width="761" data-og-height="377" height="377" data-path="images/0247e40bb198cd439e63cdfb6cc58bdb.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3e4ee08abc5a99b0820b180242d594e7 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=fe3a124ad70a082e47dc12047a66d7b5 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c1f14fae0f8d8297ae0df2352fcee932 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1ed0e9b41d373d13a76ca081c11b48f2 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=63d85afef2da78304181cd6455ec00e3 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/0247e40bb198cd439e63cdfb6cc58bdb.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4bac5be56102ce633757de704c463f83 2500w" />
-
-    {" "}
+    <img />
   </Frame>
 
 ### Best practices
@@ -9849,10 +9792,10 @@ Admins have the ability to assign dedicated marketing and technical contacts on 
 3. Click either “Set marketing contact” or “Set technical contact”
 4. Users will be tagged with the role they are assigned
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bb27c2b5f6320b8637ebe0be2723afc0" data-og-width="1676" width="1676" data-og-height="533" height="533" data-path="images/6e7b628f49cccb820ea693b224619da8.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=cc8d9546b8a8ba418b94e7cf9faeb9fb 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0a2edd1358588df39e22c8c17566613c 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=09fe12e54a8c50e6067f6bab75542a7c 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=73c6ec7cdf375f348b60d2963b15f0e0 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=249a10550fdcf71ca566a923e98f823c 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6e7b628f49cccb820ea693b224619da8.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d24fb661f6b3a6953878ad0ac6c312ae 2500w" />
+     <img />
    </Frame>
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4093bd573256d69250cc6188dc33de02" data-og-width="1677" width="1677" data-og-height="455" height="455" data-path="images/473075ad407c94a93cbccd1504173268.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=0ee01eda1df35fd1647c5dd0da916d09 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=70173f47c974a2cbc996f87a3a896fab 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2d290b31db09c03131a84fbac999853e 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e900c1eacb1dde64874120d401518d22 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=6bd89e8129e16356a116720422654a8f 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/473075ad407c94a93cbccd1504173268.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=20ec54085e816d93bfcb2149154a02bc 2500w" />
+     <img />
    </Frame>
 
 ### Notes
@@ -9867,7 +9810,7 @@ Admins have the ability to assign dedicated marketing and technical contacts on 
 * The user assigned as the marketing contact will be shown as the contact on invite sharing pages
 * A user assigned as either the marketing or technical contact cannot be removed from the integration team. To remove a user from an integration team, you will first need to assign the marketing/technical contact role to another user
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=532ce4663285155de62a3e5fa755f19a" data-og-width="1728" width="1728" data-og-height="804" height="804" data-path="images/defb445b2a2807fd2c6d0e45dde346b5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=232defb521f1d3a006be25ee7db52bcd 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4ee28576a3b123e21cc6eeb1c9cae454 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=26dfbc1e55f491ea38a7a03185c1e21f 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d0cc28c40e13f100e5eff59d767024d9 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9bc2591c7596e58061982864238c6e11 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/defb445b2a2807fd2c6d0e45dde346b5.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=73a5be8783669fcb00c2d9d84ce27894 2500w" />
+    <img />
   </Frame>
 
 ## Manage email subscriptions relating to your integration
@@ -9908,7 +9851,7 @@ If you want to ensure that your team members receive partner marketing emails:
 
 You can refer to this video on managing integration team members:
 
-<video controls src="https://cdn.zappy.app/35d8f277f1d2c8beba5cef57262bad99.mp4" />
+<video />
 
 ***
 
@@ -9942,7 +9885,7 @@ When building in the [CLI](https://github.com/zapier/zapier-platform/blob/main/p
 
 This allows you to write a single script that applies across the entire integration to detect a specific error from the API, and act accordingly. For example, if the API's outage duration is known, you could catch 503 responses during the `afterResponse` middleware and throw a [`ThrottledError`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#handling-throttled-requests) like this:
 
-```js  theme={null}
+```js theme={null}
 const yourAfterResponse = (resp) => {
   if (resp.status === 503) {
     throw new z.errors.ThrottledError(
@@ -9962,7 +9905,7 @@ When building in the [UI](https://developer.zapier.com/), custom error handling 
 
 For example:
 
-```js  theme={null}
+```js theme={null}
 const options = {
   url: `https://example.app/api/endpoint`,
   skipThrowForStatus: true,
@@ -9988,7 +9931,7 @@ return z.request(options).then((response) => {
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=5c6af7c1711d92128de8834271dc7903" data-og-width="1570" width="1570" data-og-height="903" height="903" data-path="images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e7db02b07260c4c08925e9c8b60d7a84 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=774d28d3e2bc27f98b4fcd0c863436af 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=8fb7b6e0cc991b9d3dfe4bf537947dd0 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=2aa8f1fca7a3777e6e438fc360a69aa4 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=3d06e1c8ff53e821ad714dae44547208 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f9f04386f19f0e9f7f107ea8d0d6e3b7.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a2d0fa394fc65c1ade48dd032ad9a2c9 2500w" />
+  <img />
 </Frame>
 
 > **Note:** Integrations built with the Zapier Platform UI can enable the *skipThrowForStatus* toggle under [Advanced/Settings](/platform/build/errors) to On to use [`skipThrowForStatus:true`](https://cdn.zappy.app/8ac6af91f6b27c4a473d566f1534b27e.png) on every request
@@ -9999,7 +9942,7 @@ The `ThrottledError(message,delay)` method accepts two input parameters; a custo
 
 Include a Retry-After header with responses provided by your API during downtime, to specify the amount of time until the service is expected to be back online and Zapier should retry the request. Your [custom error handling script](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#error-response-handling) can read this header and pass it to the delay parameter for `ThrottledError()`, like this:
 
-```js  theme={null}
+```js theme={null}
 if (response.status === 503) {
   const delay = response.getHeader("retry-after");
   const message = `Service is temporarily unavailable. Retrying in ${delay} seconds.`;
@@ -10012,7 +9955,7 @@ if (response.status === 503) {
 For periods of scheduled maintenance, a status of an app (API) as “unhealthy” can be set between a specific start and end time on request. A “Scheduled Maintenance” message will then be posted to our [status page](https://status.zapier.com) for [example](https://status.zapier.com/incidents/njgw7lrhn5hs).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e0ba135b569542bd15a8fbc9e6c989f1" data-og-width="1556" width="1556" data-og-height="308" height="308" data-path="images/2ae85a1cd6d00981ed30af8eede5938b.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=36b6c52d6329c8141ff78a4e22646103 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7be26de353598f9479c90ba96787b726 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f2708da7a22acfd774cc99f978d48b2b 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=23709ed46b71f9a54a1dceacc5964bbb 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a36c2ebaac1b22edfa493386af0bdd1d 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ae85a1cd6d00981ed30af8eede5938b.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=bd59717eea6756f2463dca23da460de4 2500w" />
+  <img />
 </Frame>
 
 The app will also have a status of “unhealthy” on the [*App Status* tab.](https://status.zapier.com/#app-status)
@@ -10066,10 +10009,10 @@ If your API endpoint requires a different property for authentication, think abo
 For example, let's say you have a form field input with the key `API-KEY`and are sending the field's value to your API using the same property name of `API-KEY`.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=129a0860b6aeb5862331af556cf50d9f" data-og-width="1149" width="1149" data-og-height="211" height="211" data-path="images/daef0487a89a2cbb17ec719cbbd50577.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=da45571ca1e498a0eb6c0c41b34f73a8 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=18394c29c1dd9618cab3719f6acbaa25 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b29ffa808763979e03dc777f32926967 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=61d77861eeb3034bda25b6b813c9aa42 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b61513c96d65abf64357a1337b97dc93 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/daef0487a89a2cbb17ec719cbbd50577.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e555644c48b3ca8296c2d268d65daa58 2500w" />
+  <img />
 </Frame>
 
-```bash  theme={null}
+```bash theme={null}
 headers: {
   "API-KEY": bundle.authData.api_key; // original
 }
@@ -10078,10 +10021,10 @@ headers: {
 Next, your API changes and expects the request property to be `X-API-KEY` instead. You can change the request property key (left) as needed. But still refer to the original form field input (right).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b92ffe70c46b27082fe3b1f3649c8f00" data-og-width="1150" width="1150" data-og-height="207" height="207" data-path="images/bf4cdfe3183752e0e57707001260e9e3.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=34477804eac8165fd12bb0a319d87dd8 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3ec0cb4d593ca92b9f2c1ca1c5ee0b45 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=21dc5c320a794cc3ecc071c4f609af1f 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=06a1132fc59e1e5cfb2a866f43f17a94 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=97fe8d0611e360f464a7df99cf409cc4 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/bf4cdfe3183752e0e57707001260e9e3.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=91f9bd80353162beb9322780406008f7 2500w" />
+  <img />
 </Frame>
 
-```bash  theme={null}
+```bash theme={null}
 headers: {
   "X-API-KEY": bundle.authData.api_key; // new - request key and field key can differ
 }
@@ -10117,7 +10060,7 @@ For example in the case of updated API endpoints for geographical region or site
 
 In this example code, the default URL for US region is updated when the user selects AU or CA when authenticating.
 
-```js  theme={null}
+```js theme={null}
 let baseURL = "theUsApiBaseUrl";
 switch (authData.region) {
   case "AU":
@@ -10140,38 +10083,53 @@ switch (authData.region) {
 # Change authentication type
 Source: https://docs.zapier.com/platform/manage/auth-scheme
 
-If your API's authentication method changes, you would need to change the method Zapier uses to authenticate user accounts.
+If your API's authentication method changes, you’ll also need to update how Zapier authenticates user accounts in your integration.
 
 ## Impact to users
 
-Changing the authentication type (e.g., Basic Auth, API Key, or OAuth) of an integration is regarded as a breaking change. Notably, migration is impracticable since all pre-existing connected accounts would stop working if migrated. Users would need to make a new connection to your integration and manually modify each of their Zaps.
+Changing your integration's authentication type (e.g., Basic Auth, API Key, or OAuth) is considered a **breaking change**. Zapier does not currently support automatic migration between different auth types. This means that users would need to make a new connection to your integration and manually modify each of their Zaps.
 
-However, if your integration meets the following conditions, you can use the [contact form](https://developer.zapier.com/contact) to request support for migrating connected accounts between authentication types:
-
-1. Your integration is public.
-2. You have an API endpoint or can otherwise programmatically exchange data of the old type (e.g. an API key) for the new type (e.g. an OAuth2 access and refresh token).
-3. The API endpoints that the integration actions use, can work with both the old and new auth type, at least for a few months until the old type may be sunset.
-4. Exchanging e.g. an API key for an OAuth2 access token doesn't immediately invalidate the API key, and thus break other connected accounts that may still use it.
+Because of this implication, any authentication change should be planned carefully to minimize disruption.
 
 ## Best practices
 
-**Creating a New Version**
+**If you must change your authentication method**, we recommend the following:
 
-* [Clone](/platform/manage/clone) your app, generating a new version.
-* [Remove](/platform/build/auth#how-to-remove-or-change-zapier-integration-authentication-scheme) the existing authentication method and incorporate the new one.
-* Once configured, [promote](/platform/manage/promote) this version, making it available for new users to select during the connection of your integration to Zapier.
+### Designing a Smooth Transition
 
-**Managing Existing Users**
+1. Ensure your API can support both the old and new auth methods during the transition period.
+2. Avoid immediately invalidating the old authentication credentials (e.g., API keys) after issuing new ones, so users aren’t abruptly disconnected.
 
-* If users with existing authentications can retain their connection using the old method, enabling them to stick to the old version is recommended.
-* However, they will be prompted to form a new connection for any new Zaps since only the promoted version is available during a name-based app search.
+### Creating a New Version
 
-**Deprecating legacy authentication scheme**
+* [Clone](/platform/manage/clone) your integration to create a new version.
+* [Remove](/platform/build/auth#how-to-remove-or-change-zapier-integration-authentication-scheme) the current authentication method and implement the new one.
+* Once tested and ready, [promote](/platform/manage/promote) this new version so new users connect using the updated auth type.
 
-* If existing authentications are set to be non-functional in the future, then [Deprecation](/platform/manage/deprecate) is required.
-* Be mindful that this can be notably disruptive for our mutual users and thus should be considered carefully.
+### Managing Existing Users
 
-> NOTE: this method is not possible with apps built in the legacy web builder. To update the authentication, you would need to update all triggers/actions/searches as well; as deleting the authentication method and re-adding it in the new builder would not be compatible with existing triggers/actions/searches built in the legacy web builder.
+* If the old auth method can continue working for a while, keep the older version available. This allows users to maintain their existing connections temporarily.
+* New Zaps will always default to the promoted version, so users will be asked to reconnect using the new auth type when setting up new workflows.
+
+## What to do before changing auth types
+
+Changing your integration’s authentication type has broad impact. Please [contact us](https://developer.zapier.com/contact) as early as possible to let us know your plans.
+
+While we can’t currently guarantee support for migrating user accounts across auth types, starting the conversation early allows us to:
+
+* Better understand your use case
+* Provide tailored guidance
+* Coordinate timing to reduce disruption for your users
+
+## Deprecating legacy authentication scheme
+
+If you plan to discontinue support for the old authentication method:
+
+* You’ll need to [deprecate](/platform/manage/deprecate) the integration version that uses it.
+* Be aware this may be disruptive for users and should be carefully planned.
+* Make sure users are informed and given ample time to transition.
+
+> NOTE: This process is not supported for apps built in the legacy web builder. To update the authentication method, you must rebuild all triggers, actions, and searches in the new builder. Simply deleting and re-adding the authentication method will not work with components built in the legacy builder.
 
 ***
 
@@ -10262,7 +10220,7 @@ In cases where a trigger/action/search's custom code needs to be rewritten or a 
 Deleting a trigger/action/search in a new version is a breaking change - which would prevent migration of your users to the new version. Updating an existing trigger/action/search's custom code would allow for migration but break users' Zaps if the output changes.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b7073d22f1f7e8c5609ca814fef723d7" data-og-width="960" width="960" data-og-height="131" height="131" data-path="images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7220216e5e90bbcd8a1fb00af5431e67 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2771b32bc9959d31c131351ae33a420e 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3b8651ca7ddecb8e50bb829f3a7f1432 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=955848a1e0f9de7452d0a233d0d3c2ee 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5b7924dc33b3beeccf5a5cda341cc330 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/65326a8f5fff0f9640c0d6fdc59dfa3b.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=fc551f3ad010fdf20edd99019c7a7a21 2500w" />
+  <img />
 </Frame>
 
 The triggers, actions, and searches are identified by their **key**, such as `new_contact` or `create_post`, so if you remove that key from the app's definition, or change it (possible in CLI apps only), this message appears when you attempt to migrate.
@@ -10272,13 +10230,13 @@ The triggers, actions, and searches are identified by their **key**, such as `ne
 * If you have already renamed the **key** (possible in CLI apps only) for a trigger/action/search, you'll need to switch it back to the previous **key** to proceed with migrating users.
 * If you need to remove a trigger/action/search, change its visibility to **hidden** instead. Use the Visibility Options dropdown in the [UI](https://platform.zapier.com/polling-trigger#1-add-the-trigger-settings), or the `hidden` key in the [CLI](https://github.com/zapier/zapier-platform/blob/main/packages/schema/docs/build/schema.md#basicdisplayschema).
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0d2ce685b278df28cb54fd170d49f81a" data-og-width="1794" width="1794" data-og-height="157" height="157" data-path="images/73990d8049572347aea87fc304173ecc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3fe3aea82bb491faba7fe3c7287c1365 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=31eaec17b9dbf467aa48f9603fe4a798 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1ad6f7891fa906803462c350e9bc1fbf 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5b4de0e650746d0dddd88ea199863b47 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=52081dd1441bf88bab059a82c7eb4f22 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/73990d8049572347aea87fc304173ecc.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bd7ce7f955135ddfe78b3ff306d97414 2500w" />
+    <img />
   </Frame>
 
 Migrated Zaps that used the hidden trigger/action/search will now show it as Deprecated in the Zap editor, but will continue to function as long as the endpoints remain valid.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b7258386513897200439dfde2ca147b8" data-og-width="942" width="942" data-og-height="388" height="388" data-path="images/61a2ac6095433d278bc412c2e59408fc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e895226795e7689e29321fb76c02fe51 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=4a47a8b136c53ac24f2d00a779f89ef5 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d4fc25d039ae01310597a31ba0c49754 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a7a866a3183db7c53ac2a506730a2f10 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2114650e4c0e74fd118516ed65d8ebb8 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/61a2ac6095433d278bc412c2e59408fc.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=78d41a01ebadcd48905be2253e715452 2500w" />
+  <img />
 </Frame>
 
 Once a user selects a different trigger/action/search when editing their Zap, they will not be able to retrieve the hidden one. New users will not see any `hidden` trigger/action/search as available for selection.
@@ -10286,7 +10244,7 @@ Once a user selects a different trigger/action/search when editing their Zap, th
 * If you need to add a new trigger/action/search that replaces the hidden one, create a duplicate and give it a new **key** (such as appending `_v2` on the end), and keep the Name and Description the same if the functionality for a user is the same.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a1d9ea12d1b7bcaa6c9aba9c31298b31" data-og-width="1889" width="1889" data-og-height="995" height="995" data-path="images/6231ec2b53271c7d83672f6ed232d0e3.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d04be1b34a08735270295e939bef154a 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5fcead4c66b3f0dc4f0759a61ece3210 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=12876c0ee37625aee27d75d5c3bf93a7 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3ca9cea171c022477dccb201202cf586 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a76cb87b4c2882c071c55422ce91df05 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6231ec2b53271c7d83672f6ed232d0e3.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f45f40d674cf946848a9cf512d9b0a28 2500w" />
+    <img />
   </Frame>
 
 * This way existing Zaps continue to work once migrated with the previous (and now hidden) definition, and new Zaps will only be able to select the new definition.
@@ -10309,7 +10267,7 @@ The benefits of this approach are:
 * You can add a user-friendly message to the exception that users will see in both Zaps Runs on the [Zap History](https://help.zapier.com/hc/en-us/articles/8496291148685-View-and-manage-your-Zap-history) and also in email error notifications, e.g. *This function has been deprecated and is no longer available.*
 * Here's an example of how a custom error message would be displayed on an action in the Zap History:
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=4688d76ee858a965b34bf1664dce444c" data-og-width="1014" width="1014" data-og-height="445" height="445" data-path="images/50807aad2a2e2ecda9044a524dafba8c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9f2e5eba0253d986e2316f94d8c4b8bc 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f3dc11366123bb9f743bea3550f70fc8 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=932cec23d9788de600aecaf34a34cc38 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e21500def9c6491b6ec0a35de9d7a4cc 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ebe17ed39a4cb6ca912fcb55308cad36 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/50807aad2a2e2ecda9044a524dafba8c.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=42d74d0cef7c8585778000b659b83958 2500w" />
+    <img />
   </Frame>
 
 ***
@@ -10368,6 +10326,269 @@ This is a breaking change. Edits to an existing trigger's type will cause your u
 *Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
 
 
+# Integration CI Pipelines using Changesets and Snapshot Versions
+Source: https://docs.zapier.com/platform/manage/changeset-workflow
+
+Use changesets with snapshot versions to set up an automated pipeline for integration version updates.
+
+<Note>
+  Changesets are a third-party npm package and therefore only available to Platform CLI integrations.
+</Note>
+
+This guide suggests some ways to automate version management and deployment for Zapier integrations using CI pipelines and changesets. Instead of manually updating version numbers and pushing snapshot versions, you can use automated workflows to handle these tasks consistently and reliably.
+
+## Benefits of Automation
+
+Automating your versioning and deployment workflow provides several advantages:
+
+* **Consistency**: Version bumps follow semantic versioning rules automatically
+* **Speed**: Deploy snapshot versions for testing without manual intervention
+* **LLM Integration**: Changesets are easier for AI tools to work with, compared to manual version number bumps
+* **Reduced Errors**: Eliminate mistakes from manual version number updates
+* **Team Collaboration**: Multiple developers can work in parallel without worrying about conflicting version bumps
+
+## What are Changesets?
+
+[Changesets](https://github.com/changesets/changesets) is a tool for managing versioning and changelogs in monorepos and single-package projects. Instead of manually editing `package.json` and `CHANGELOG.md`, developers create small markdown files that describe their changes and specify the version bump type (patch, minor, or major).
+
+When you're ready to release, changesets processes these files to:
+
+* Bump version numbers in `package.json`
+* Generate changelog entries
+* Remove the processed changeset files
+
+This workflow separates "what changed" from "when to release," making it easier to batch changes and coordinate releases.
+
+## The Complete Workflow
+
+This guide covers four automated jobs we recommend adding, and how they can work together.
+
+<Note>
+  We recognize all codebases and CI flows are different. These are the jobs we've found most useful in our integration development, but feel free to pick and choose from these jobs per your workflow needs.
+</Note>
+
+1. **Snapshot Deployment**: Deploys labeled snapshot versions to Zapier for testing
+2. **Integration Validation**: Validates your integration code, configuration, and optional changelog format as you go
+3. **Changeset Validation**: Verifies changeset files are properly formatted and version numbers haven't been manually changed
+4. **Changeset Processing**: Processes changesets to update versions and changelogs
+
+## Common Integration Patterns
+
+### Pattern 1: Continuous Snapshot Deployment
+
+Deploy snapshot versions on every commit to a pull request for easy testing:
+
+* Snapshot deployment runs on every PR commit
+* Uses branch name as the snapshot label
+* Enables immediate testing of changes without waiting for version releases
+
+### Pattern 2: Pull Request Validation
+
+Run validation jobs on pull requests to catch issues early:
+
+* Integration validation runs on any PR to verify code and configuration
+* Changeset validation runs only when changeset files are added or modified
+
+### Pattern 3: Pre-Publication Processing
+
+Process changesets before publishing:
+
+* Changeset processing runs before publishing your integration version (when changeset files exist)
+* Updates version numbers and changelogs in preparation for release
+
+## Job 1: Snapshot Deployment
+
+### Purpose
+
+Deploys labeled snapshot versions to Zapier using the `zapier push --snapshot` command. This enables testing specific branches or features without creating official version releases. Running this on every PR commit allows for continuous testing of changes.
+
+### What It Does
+
+```yaml theme={null}
+- name: Deploy snapshot version
+  script:
+    - Extract snapshot label from branch name (max 12 characters)
+    - Install dependencies
+    - Run `zapier push --snapshot LABEL`
+```
+
+The `zapier push --snapshot LABEL` command:
+
+* Creates a version labeled `0.0.0-LABEL`
+* Deploys this version to Zapier
+* Enables testing without affecting production versions
+
+Please reference [documentation for the `zapier push --snapshot` flag here.](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#push)
+
+### When to Run
+
+* On every commit to a pull request for continuous testing
+* On feature branches for testing
+* Manually triggered for specific branches
+* Based on branch name patterns or labels
+
+Consider allowing this job to fail without blocking the pipeline, as snapshot deployments are often optional.
+
+***
+
+## Job 2: Integration Validation
+
+### Purpose
+
+Validates your integration code and configuration using the `zapier validate` command. This catches common issues with authentication, triggers, actions, and other integration components before deployment. Optionally, you can also validate that your `CHANGELOG.md` format is compatible with changesets.
+
+### What It Does
+
+```yaml theme={null}
+- name: Validate integration
+  script:
+    - Install dependencies
+    - Run `zapier validate`
+    - Optionally check CHANGELOG.md format for changesets compatibility
+```
+
+Please reference [documentation on the `zapier validate` command here](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#validate).
+
+### When to Run
+
+* On every pull request
+* As part of your standard test suite
+* Before processing any changesets
+* Before publishing your integration version
+
+### Additional Considerations
+
+If you're using changesets, you may also want to validate that your `CHANGELOG.md` format is compatible. Changesets expects the file to start with an H1 header (e.g., `# App Name`) that is not a version number.
+
+```yaml theme={null}
+- name: Validate CHANGELOG format (optional)
+  script:
+    - Check that CHANGELOG.md starts with an H1 header
+    - Verify the H1 header is not a version number (e.g., not "# 1.2.3")
+```
+
+***
+
+## Job 3: Changeset Validation
+
+### Purpose
+
+Validates that changesets are properly formatted and ensures developers haven't manually modified version numbers in `package.json`. This prevents double version bumps (one manual, one from changesets).
+
+### What It Does
+
+```yaml theme={null}
+- name: Validate changesets
+  script:
+    - Compare current package.json version with previous commit
+    - Fail if version number has changed manually
+    - Run `npx changeset status` to validate changeset format
+    - Confirm changeset references the correct app/package
+```
+
+The `npx changeset status` command:
+
+* Lists all pending changesets
+* Shows which packages will be affected
+* Validates changeset file format
+* Does not fail if no changesets exist
+
+### When to Run
+
+* On pull requests that add or modify changeset files
+* Before publishing your integration version
+* Use CI rules to only trigger when `.changeset/*.md` files change
+
+### Additional Considerations
+
+* This job requires access to git history to compare versions
+* Ensure the CI checkout isn't in a detached HEAD state
+
+***
+
+## Job 4: Changeset Processing
+
+### Purpose
+
+Processes all pending changesets to update version numbers and changelogs before publishing your integration version. This prepares your integration for release by consolidating all pending changes.
+
+### What It Does
+
+```yaml theme={null}
+- name: Process changesets
+  script:
+    - Run `npx changeset version`
+    - Review updated files (package.json, CHANGELOG.md)
+```
+
+The `npx changeset version` command:
+
+* Reads all pending changeset files
+* Bumps version numbers in `package.json` based on changeset types
+* Updates `CHANGELOG.md` with new entries
+* Deletes processed changeset files
+
+### When to Run
+
+* Before publishing your integration version (when changesets exist)
+* Manually triggered for release preparation
+* As part of your release workflow
+* Use CI rules to only trigger when `.changeset/*.md` files exist
+
+### Additional Considerations
+
+* Run this job when you're ready to prepare a new version for publication
+* Review the updated version number and changelog entries before publishing
+* You can run this locally or as part of a CI workflow
+* After processing, use `zapier push` to publish the new version to Zapier
+
+***
+
+## Setting Up Changesets
+
+To use these workflows, follow the instructions in the [Changesets Github repo](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md) to set up Changesets in your codebase.
+
+## Creating a Changeset
+
+Developers create changesets using:
+
+```bash theme={null}
+npx changeset add
+```
+
+This interactive CLI prompts for:
+
+* Which packages are changing
+* The version bump type (patch, minor, major)
+* A description of the changes
+
+The tool creates a markdown file in `.changeset/` with this information.
+
+## Example: Complete Workflow in Action
+
+1. Developer creates a feature branch and makes changes
+2. Developer pushes the branch and opens a pull request
+3. CI runs **snapshot deployment** on every commit, pushing version `0.0.0-LABEL` to Zapier
+4. Team can immediately test the snapshot version as development continues
+5. Developer runs `npx changeset add` and creates a changeset file describing the changes
+6. CI runs **integration validation** and **changeset validation** on the PR
+7. After PR approval, changes are merged
+8. When ready to publish a new version, team runs **changeset processing**, which:
+   * Updates version in `package.json`
+   * Adds entry to `CHANGELOG.md`
+   * Deletes the changeset file
+9. Team reviews the updated version and changelog, then uses `zapier push` to publish the version
+
+***
+
+## Additional Resources
+
+* [Changesets Documentation](https://github.com/changesets/changesets)
+* [Changesets CLI Reference](https://github.com/changesets/changesets/blob/main/packages/cli/README.md)
+* [Zapier CLI Documentation](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md)
+* [Zapier Labeled Versions](https://docs.zapier.com/platform/manage/labeled-versions)
+
+
 # Clone a version
 Source: https://docs.zapier.com/platform/manage/clone
 
@@ -10382,7 +10603,7 @@ Cloning allows you to duplicate an existing version of your integration. This is
 3. In the *Manage* section in the left sidebar, click **Versions**.
 4. On your existing version, click the **three dots icon**
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=474baae7334a3792216fdb05aa9d46c1" data-og-width="224" width="224" data-og-height="447" height="447" data-path="images/7ff6381b55b013ebfc2bdda0e4662676.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=cb46fff8ec67fa2457d985d648cd54c0 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e313abdf303e9a672cf855f5546d969e 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9f1f849596f400d6d4dc3a9e3abfd734 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f3bb4c8724bbc9a7c0155fb7513ee2a3 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=4a8f21a16dc8a3f9968988cdd215dc53 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=990e0ffa1867e0efb6f556ab42643f54 2500w" />
+     <img />
    </Frame>
 5. From the dropdown menu, select **Clone**.
 6. The *Clone Version* dialog box will appear. In the dropdown field, select which **version** you want to clone your existing version too.
@@ -10398,7 +10619,7 @@ Now you can make edits and improvements to your integration.
 
 You can refer to this video on cloning an integration version:
 
-<video controls src="https://cdn.zappy.app/be796f184a0787c5cd848fb8c9dbd8ed.mp4" />
+<video />
 
 ***
 
@@ -10454,7 +10675,9 @@ After your version has been deprecated, you have the option to delete versions e
 
 Deletion is also only possible when 0 users remain on a version. The count of users on the *Versions* page includes live Zaps only. If you're seeing the error `Unable to delete app version`, this can be caused by users on that version not included in the visible count (paused Zaps, app authentications for example).
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=22d014a182a3169a62238e8e2e23a318" alt="" data-og-width="776" width="776" data-og-height="505" height="505" data-path="images/1722db1a2658ec77e47f5d4de58720ff.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e4b04fc08b3d5bd2359037176fa4327b 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=abcc0d49596c98ff451558450f541318 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0ff51ad08a85ed43317eecc42b815a3d 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=5ba0e06e24da18df13bcb59510de9b13 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=46f877d0b86b65e0d51048a6b9041158 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1722db1a2658ec77e47f5d4de58720ff.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=351d94908be937998cdf9ebbff9e42a4 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 ***
 
@@ -10479,7 +10702,7 @@ Consider all the user clicks on Zap Templates surfaced in your embeds. The embed
 In your integration's *Insights*, along with activation rate, see a funnel-view of users who signed up for Zapier, created Zaps, enabled Zaps, and activated Zaps from Zap Templates in your embeds.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0d17b8b3d20666df7d6df2afff9cbeb0" data-og-width="1296" width="1296" data-og-height="601" height="601" data-path="images/896a5e4d56f2c86ba3909b669abf5d0c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=dbe86b1b4030edfa3d0c32a465fab05c 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=876f400879ca01900d7671f2688f6438 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=deb058cdf094aab5b6ba0a09e5a8fa6a 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=793463a151c2fecad87104680ebc3916 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=43932f1294f8f2de52e8cf8a348c7e9b 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/896a5e4d56f2c86ba3909b669abf5d0c.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5b511fac179e4f7ff922f6c14d6bb81b 2500w" />
+  <img />
 </Frame>
 
 A low activation doesn't necessarily mean something is broken. Both your integration and embed(s) could be implemented correctly and in good health, but you could still be seeing low activation rates. Embed insights can help identify where in their journey users are hitting challenges with activating, whether it's the Zapier sign up, Zap setup or enablement stage.
@@ -10576,12 +10799,12 @@ When you build and maintain your app in the UI, custom error handling can still 
 In the UI, `skipThrowForStatus` is set from the [Advanced tab](/platform/build/errors). This allows for custom error handling for status codes above 400. Note that 401 status codes will throw a `RefreshAuthError` [regardless](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#user-content-error-response-handling).
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=acd34d15af28dc49d78a67346dfcdb01" data-og-width="1936" width="1936" data-og-height="560" height="560" data-path="images/8cafa443c6e5844d6881f2690e4f34c5.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c3bfa8c5a934b900e67ad36b6c735830 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0da66fc6b18bf35ba30fc626585b9633 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d69fed3862dd26668922a904eb2f3422 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2009bdc547e42035dd710080c94c2282 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fd834639612ab443971cce9afb074e7d 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8cafa443c6e5844d6881f2690e4f34c5.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8b98f7475d21a33f97a1704e98291269 2500w" />
+  <img />
 </Frame>
 
 Once set, you can add [error handling](https://github.com/zapier/zapier-platform/blob/main/packages/cli/README.md#general-errors) when in Code Mode within the API Configuration for each trigger/action/search.
 
-```js  theme={null}
+```js theme={null}
 return z.request(options).then((response) => {
   if (response.status === 404) {
     throw new z.errors.Error(
@@ -10595,7 +10818,7 @@ return z.request(options).then((response) => {
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b285f7641f30a2f81d132c906407fcd2" data-og-width="1028" width="1028" data-og-height="169" height="169" data-path="images/9553266cb5a5ab7804d3f9ac1a9eed60.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ab42d5913795cfa392418016121225eb 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8ba9c4f4f1f960550960258a3a7aa5b9 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b2721e95ec64372b32be8b6352353a06 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=17ab4af6f3cac8ea0121753f248dc3b4 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=784b41a2901df8e27e91c2ab21763825 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9553266cb5a5ab7804d3f9ac1a9eed60.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=963e0c05bd4e8aed027069e050be5964 2500w" />
+  <img />
 </Frame>
 
 ***
@@ -10679,13 +10902,13 @@ Create a new directory for your Zapier project and from the command line `cd` in
 Your integration ID can be found in the browser location bar in the Platform UI:
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=93dce6bc0fabc8c2f550ed39ac979173" data-og-width="1389" width="1389" data-og-height="359" height="359" data-path="images/c5e0c7f17a5ab52d9661e134394e9cc7.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c9b9f88301a497d05a9de06e5fd36be7 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9969cba093b39efc92dee7ebc2c4c4fd 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dffdc1759884577ea97bcd0ea596c1ad 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ea5f74b3565c71a199d444d61aeb9337 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c801ae890f0fe590cee07072d2bc2fc1 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c5e0c7f17a5ab52d9661e134394e9cc7.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b4602c22b977bf00abd3d1ddc29a5085 2500w" />
+  <img />
 </Frame>
 
 Similarly, your version can be found there, and elsewhere throughout the Platform UI:
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=695e85cc93afd1c9973425c3fdf278b7" data-og-width="1390" width="1390" data-og-height="334" height="334" data-path="images/e31dd202b5e64bbcb13fc8b200518d17.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d642a6883593065e00e9c71c129f6303 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=991f3c81a9a2c7e1a934f56779d3b905 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=569134916b105d8b048e24fd24f208f2 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c6f5d904567cc6b1a831ffadb850e9de 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=0ac5ecbb8077d2dc5cc75f9b09cbf073 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e31dd202b5e64bbcb13fc8b200518d17.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b61bd5d961e51520a665b35f347041ea 2500w" />
+  <img />
 </Frame>
 
 Using this example, to create our project in the current directory our command would be:
@@ -10792,10 +11015,10 @@ Form field input keys do not necessarily need to match the properties expected b
 Let's say you have a form field input with the key `first_name` (right) and are sending the field's value to your API using a property with the same name, `first_name` (left):
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1b2c72947c043b94a206a8d4019abdf0" data-og-width="723" width="723" data-og-height="142" height="142" data-path="images/cf7d34d12c1a1c42f75a89815409d20e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dc3ecc67468dbb20f0276057b0242508 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c19aafd9fb692aaf85ab2013e93a199b 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ca920916a0439841026f36ce559fdfa6 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a9349a2b18340b3d84b5a7569a409e21 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=7ce291b1ab4d0bf8f55f7f43c54790a8 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf7d34d12c1a1c42f75a89815409d20e.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=66c12c404ce5ebe9379edfa890cce53b 2500w" />
+  <img />
 </Frame>
 
-```bash  theme={null}
+```bash theme={null}
 body: {
   first_name: bundle.inputData.first_name; // original
 }
@@ -10804,10 +11027,10 @@ body: {
 Then, your API changes and expects the request property to be `firstname` (one word) instead. As shown below, you can change the request property key (left) as needed (`firstname`) while still referring to the form field input (right) based on its original key (`first_name`):
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=7b9d3749c41fc928367fdbb130b048ed" data-og-width="684" width="684" data-og-height="138" height="138" data-path="images/b6b1776d964f52eed12d64ff264b8cac.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4a338292eda3e343f841fc11a492f559 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=93c874a0b41f9602d5959e212b2e2cd2 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=212ce579712794d365f3eae0275d5f1b 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=247b46894363d3b640a409695b35f9c1 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=dfdba22c1321f6af8da95fe64f6b24e0 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b6b1776d964f52eed12d64ff264b8cac.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5e2bc635799791cc5c32902491273042 2500w" />
+  <img />
 </Frame>
 
-```bash  theme={null}
+```bash theme={null}
 body: {
   firstname: bundle.inputData.first_name; // new - request key and field key can differ
 }
@@ -10821,7 +11044,7 @@ We recommend that you design the trigger or action to handle both the old and ne
 
 Using the same example above, let's say that instead of hardcoding your request properties, you were spreading `bundle.inputData` into the body of the API request, so there was a one-to-one relationship between field keys and request properties.
 
-```bash  theme={null}
+```bash theme={null}
 body: {
   ...bundle.inputData // original - request keys tied to field keys
 }
@@ -10831,7 +11054,7 @@ Instead of changing form field input keys, you can use Code Mode (Platform UI) o
 
 For example, below, we create a new object, payload, with all the fields from `bundle.inputData` AND the updated property, `firstname`. Then we delete the old property, `first_name`, and send the updated object in the request:
 
-```js  theme={null}
+```js theme={null}
 // copy bundle, add updated property
 const payload = { ...bundle.inputData, firstname: bundle.inputData.first_name };
 
@@ -10933,7 +11156,7 @@ You can create a labeled version in two ways:
 
 **Option 1: Use the `--snapshot` flag** (recommended for quick iteration)
 
-```bash  theme={null}
+```bash theme={null}
 zapier-platform push --snapshot JIRA-1234
 ```
 
@@ -10944,7 +11167,7 @@ zapier-platform push --snapshot JIRA-1234
 
 **Option 2: Set version in `package.json`** (recommended for CI/CD workflows)
 
-```json  theme={null}
+```json theme={null}
 {
   "version": "0.0.0-JIRA-1234"
 }
@@ -10989,7 +11212,7 @@ When your changes are ready to ship:
 
 2. Update the version in your `package.json` to remove the label:
 
-```json  theme={null}
+```json theme={null}
 {
   "version": "1.0.1"
 }
@@ -10997,7 +11220,7 @@ When your changes are ready to ship:
 
 3. Push the new version:
 
-```bash  theme={null}
+```bash theme={null}
 zapier-platform push
 ```
 
@@ -11046,7 +11269,7 @@ When multiple engineers are working on the same integration using many labeled v
 
 For example:
 
-```bash  theme={null}
+```bash theme={null}
 # Rebase from main to get latest code
 git rebase main
 
@@ -11120,7 +11343,7 @@ In the [Platform UI](https://zapier.com/app/developer):
 1. In the *Manage* section in the left sidebar, click your **Versions**.
 2. On your existing version, click the **three dots icon**
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=474baae7334a3792216fdb05aa9d46c1" data-og-width="224" width="224" data-og-height="447" height="447" data-path="images/7ff6381b55b013ebfc2bdda0e4662676.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=cb46fff8ec67fa2457d985d648cd54c0 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e313abdf303e9a672cf855f5546d969e 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9f1f849596f400d6d4dc3a9e3abfd734 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f3bb4c8724bbc9a7c0155fb7513ee2a3 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=4a8f21a16dc8a3f9968988cdd215dc53 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7ff6381b55b013ebfc2bdda0e4662676.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=990e0ffa1867e0efb6f556ab42643f54 2500w" />
+     <img />
    </Frame>
 3. Click **Migrate**
 4. The *Versioning* sidebar will appear on the right hand side. You'll need to specify:
@@ -11146,7 +11369,7 @@ For Platform CLI users, it's possible to perform full or partial migrations usin
 
 **Examples**
 
-```bash  theme={null}
+```bash theme={null}
 # migrate 100% of your users between version 1.0.0 over to 1.0.1
 # (deprecated) zapier migrate 1.0.0 1.0.1
 zapier-platform migrate 1.0.0 1.0.1
@@ -11247,8 +11470,6 @@ Matrix Key:
 * Breaking Change: A modification to the integration which renders existing Zaps incompatible with the new version
 * Depends: A modification which may render existing Zaps incompatible with the new version, depending on the implementation
 * <p>
-    {" "}
-
     <Icon icon="check" /> : A modification to the integration which renders
     existing Zaps compatible with the new version
   </p>
@@ -11314,7 +11535,7 @@ Prior to promoting a version, run the [automated validation checks](/platform/pu
 3. In the *Manage* section in the left sidebar, click your **Versions**.
 4. On the version you want to promote, click the **three dots icon**
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=65fca4fae14dd38db561fb8c1a28c8a7" data-og-width="1319" width="1319" data-og-height="512" height="512" data-path="images/2ee11c82946187818a9622c4b4bf65bc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8014625e5be9021b5cbb016f0ff50337 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=383c216798748ad493caf1ee7960a306 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=bddaeadd15fed4c60378631d73a9df3c 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b16c070f2b96648dfc4c22839cd69387 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8c84248f9c2fec740940d3bf46d0171c 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2ee11c82946187818a9622c4b4bf65bc.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=56be6d3f26151e67c5871926d8f5b069 2500w" />
+     <img />
    </Frame>
    and **Promote**.
 5. Fill in the [changelog form](/platform/manage/user-feedback#3-close-resolved-issues) and click **Promote**. Selecting specific features added and bugs fixed will automatically queue up the issue(s) to be reviewed by our internal team for closure.
@@ -11341,7 +11562,7 @@ By following these steps, you can seamlessly promote a new version of your integ
 
 You can refer to this video on promoting a version:
 
-<video controls src="https://cdn.zappy.app/ecc8ac28dd942caa1621f8ca623a2500.mp4" />
+<video />
 
 ***
 
@@ -11471,7 +11692,7 @@ Source: https://docs.zapier.com/platform/manage/user-feedback
 For public integrations, Zapier's Support team logs user requests and reported problems in Zapier's issue tracker, that your team can see from the _Bug & Feature Requests_ page in the Manage section.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e7fbb91abbaac20b1e330d9199c38dba" data-og-width="1116" width="1116" data-og-height="726" height="726" data-path="images/b986eef73a1558ee3e121cf5d985339a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8b46ae19cfc6cdd714b1b3065dd8d521 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c0a62ceb54868db35ccb681178ad95a0 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c3898345a573e128cb43ca8b1689b980 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3c21f0e7a0793b2481f58fd203840e5b 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=91c59d6bff09b0c7f07f7133523159e0 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/b986eef73a1558ee3e121cf5d985339a.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a0feb9275fd3efc55f8d72bc4b04e704 2500w" />
+  <img />
 </Frame>
 
 Problems with your public integration, authentication and API calls will be logged as `bug`, while new functionality users request for your app integration will be logged as `feature request`. You have the ability to filter open `bugs` and `feature requests` to view issues by individual Trigger or Action.
@@ -11490,8 +11711,8 @@ Problems with your public integration, authentication and API calls will be logg
 
 Maintaining accurate issue statuses during regular triage and review of your integration's issues is critical for keeping your integration healthy. Not only do statuses help your team track progress and build roadmaps, but they also signal your engagement and prompt reviews for fixed issues to the Zapier team.
 
-<Frame caption="Click on &#x22;Enter Fullscreen&#x22; for a better demo experience.">
-  <iframe src="https://on.driveway.app/guides/zEVVdGE/embed" width="100%" height="420px" />
+<Frame>
+  <iframe />
 </Frame>
 
 Available statuses:
@@ -11518,7 +11739,7 @@ Plus, any of the statuses above can sync right into your preferred issue-trackin
 
 * Reply to the Zapier team about the issue within the *Bugs & Feature Requests* page to keep communications consistent for both your team and ours. These issues and comments are not visible to affected users; and users will only be notified when an issue is verified as closed/resolved by Zapier Support.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=537afce872634a55b669b511e394d610" data-og-width="1135" width="1135" data-og-height="1020" height="1020" data-path="images/2f7af76046895c4b4f053a1b1ce9781d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9798bb8b18f13f432eb94b5795573faf 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=d2cb37cc618ce25f8c24726dd8357a64 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=173606b0c3ea55125b01b9a797c48997 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1d1a292471614954a5645bc160d175c9 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8ea19e5b2c2c4c7437b75a517c9b4f03 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/2f7af76046895c4b4f053a1b1ce9781d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=30ceeb7c175bda929d0ea8379df35e93 2500w" />
+    <img />
   </Frame>
 
 * Lowering your count of issues will help improve your integration's [health score](/platform/publish/partner-program#integration-health-score) and increase your tier in the [Partner Program](https://zapier.com/platform/partner-program). The more you maintain a bug-free, quality integration, the more essential your product becomes to your users' workflows. This sets you up to reduce churn, drive account upgrades, and increase customer lifetime value.
@@ -11540,7 +11761,7 @@ Any reported issue with no updates from you, Zapier Support, or end users for a 
 * Whenever a new version of your integration is promoted via the UI, you'll be prompted with a changelog form asking you to identify which feature requests or bugs were resolved and to provide a user-facing description of the changes. Issues identified in the changelog will automatically be queued for review by our Support team and closed once resolution is confirmed. Promoting via the CLI doesn't currently support changelogs.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ed305a2344d79b09f0c04e49e57622bf" data-og-width="357" width="357" data-og-height="335" height="335" data-path="images/8afba17ecfb25faf6b87597e2cd54387.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a3a09442ba892ad92f740f810215177d 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=67154d254ce4089b5638821353eafd99 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6ee728f07886d2d76bdfb9c340238ed6 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=83fb9b5a155567de3b48fbf3094e5b7d 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=308788bd3aff949689a1545768a39917 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8afba17ecfb25faf6b87597e2cd54387.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8af705940b724d9e6232fef5bc0095cc 2500w" />
+  <img />
 </Frame>
 
 * You can also request issues to be closed manually by updating their statuses to `Done`. Make sure updates are promoted to the latest version of your integration, and users are migrated if possible before marking issues before marking issues as `Done`, as it will be reviewed by a Zapier support member. See the [`Utilizing issue statuses` section](/platform/manage/user-feedback#utilizing-issue-statuses) below for more details and best practices.
@@ -11579,7 +11800,7 @@ Here are some Zap templates to help you get started using Zapier Issue Manager.
 * [See all the metrics tracked](/platform/manage/integration-insights) in this table, or access them for any integration you are an Admin or Collaborator on from the *Dashboard* tab of the Platform UI. Insights include important data on both the integration's growth and usage, such as monthly active users, retention rates, and Zap usage by triggers and actions.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=34d7075787a0698e39841236e047a731" data-og-width="1248" width="1248" data-og-height="634" height="634" data-path="images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6543d136e816b11fde36db2d481f1093 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a0df21805a0bf1bb8f14a30cfe66691e 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=2f8ab5f031c13f44a3b76b7a5678c0e9 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c1d607bd7e401b67946d0d0a739a5b6f 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dead2800a49e4edd82cafbe499bba3e3 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a182d40d59de8d8dbc6684f4d7d734ba 2500w" />
+    <img />
   </Frame>
 
 * Filter growth metrics by the last X number of days to identify trends and changes in user activity in correlation to marketing initiatives, integration changes, and product updates like [embedding Zapier](https://platform.zapier.com/embed/full-zapier-experience).
@@ -11608,7 +11829,7 @@ When you create a new integration version in Zapier, it goes through different l
 * Deprecated
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=2c6b310070a1add4abeb7f214b308373" data-og-width="1504" width="1504" data-og-height="850" height="850" data-path="images/d01e24e8-227f-4530-8ca7-956c5164d235.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b0942e25503fd5b0cc991074499190bc 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a830128d45860242fb79afc6fc0cbbe1 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=9e1860c0d6f47e2f283d6fb937d290fe 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3c9a800281e9df9f78a0c5c57adc439c 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3853d80f2f8cd75f612ecb71ea2ce7d3 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d01e24e8-227f-4530-8ca7-956c5164d235.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=b23f2481f50c6a3dff9f732ca2567a0f 2500w" />
+  <img />
 </Frame>
 
 ## Private
@@ -11739,7 +11960,9 @@ To manage your versions:
 
 This page shows a list of all versions of the integration, along with status, number of active users and active Zaps on each. For public integrations will also show the changelogs input when a new version is promoted.
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a3e3165b6461c8fc5b2ff5a69ca9bc91" alt="" data-og-width="1185" width="1185" data-og-height="803" height="803" data-path="images/b443129368e61bdaa86c6f5a741fbe8a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=705ce8eb0c80893ab8edff51827fb563 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6c5904f307ecd5b4ec84e931f4f0a333 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=acce758b69f819d49db97b2b38e5432c 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=02c0aeb84143e96f8f53ffd7e5e1e5df 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5bed4a0c0c403955059b21b3a38e8e57 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b443129368e61bdaa86c6f5a741fbe8a.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=65c5e757b1688659d310439ed81a5bf9 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 Learn more on:
 
@@ -11783,7 +12006,9 @@ For private integrations, you can either invite the users to the new version via
 
 To make sure that existing Zaps can continue to work consistently, the Developer Platform only allows you to edit versions that have a private status and have fewer than 5 users. Versions that are public or have more than 5 users will show a warning message prompting you to clone the version instead.
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c95eecca846390ac131465d25ddb0edf" alt="" data-og-width="1179" width="1179" data-og-height="188" height="188" data-path="images/8b5cbf5a37ce60ba89eb555c0429eca6.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=edba2a5efd284df7f5731002b3f61f7d 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=7f7a14aee25bf1bfbde3c4c5fc69f1bb 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=291102bc217fc3edc22435017eabadeb 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=632e4db57a09183612fe4663371aceda 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=89b4ccabd13cc3abf32675938d52247e 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b5cbf5a37ce60ba89eb555c0429eca6.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9068bdd52050dac8193248f079b0a555 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 When making integration updates in newer versions, consider the potential impact on user migration and existing Zaps. Ensuring your API and app integration on Zapier remains backwards compatible is crucial to [avoid disruption to users](/platform/manage/planning-changes).
 
@@ -11806,7 +12031,7 @@ Source: https://docs.zapier.com/platform/manage/versions-legacy
 ## Legacy API configuration settings
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f46261c306c0632647f5b8f93bc98471" data-og-width="1775" width="1775" data-og-height="1049" height="1049" data-path="images/69285c90f9e37fc2803a06beb1395946.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a28c5dcca462b71bf5f43e0409b048f0 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1510664ba4ddd0bcb9d9559fd05c99f1 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=64beb7ba5375ec9a66ac9712388285e5 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e132860ebc6561e41c53c35b3fdcc0a8 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5b113d22a79ca9d8dfdf91d2f25505ed 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/69285c90f9e37fc2803a06beb1395946.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=89eebb2bc54d3dd0cc8c8949e49c70f7 2500w" />
+  <img />
 </Frame>
 
 Converted legacy Web Builder integrations have slightly different API Configuration tabs for authentication, triggers, and actions then integrations (and new triggers or actions) built in Platform UI. In new integrations, each API field will let you set the API call settings in a form, or switch to [Code Mode](/platform/build/code-mode) to add custom JavaScript code for that call and its response parsing. In converted integrations, however, you will see static text fields for each API call URL. If you need to customize the API call or response bundle parsing, you will need to do so from the [Legacy Scripting](https://platform.zapier.com/legacy/scripting) settings.
@@ -11825,7 +12050,7 @@ Your converted integration looks a little different than if you'd started it fro
 Where you added custom scripting code, the `z.legacyScripting` will call these functions to drive your triggers, actions, and authentication transactions.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7fddd4d53f6806974c8ee20b8520748f" data-og-width="1153" width="1153" data-og-height="730" height="730" data-path="images/79bb2a1ea31a301f286e07e209994dcd.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2738020d344022230df294fc702b5a42 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=38acf7ca486b351a96a4fbca144e1a78 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=847a8732d57ca403a89f39420d0a743a 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=6619ca3f1e81d7968ef7b2cda32d60a5 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ea57a5d8e7316314ab802d7ab20f1868 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79bb2a1ea31a301f286e07e209994dcd.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=40766dbdc969937ba9b8800df5841682 2500w" />
+  <img />
 </Frame>
 
 You can edit this code as before, this time in a redesigned editor that does not take up your full screen. Be sure to click **Save** after editing your integration code, as Zapier does not auto-save changes.
@@ -11859,7 +12084,7 @@ The following applies when you're building *new* triggers and actions, and worki
 When you're writing custom scripting code in the new platform the scope of that code is local to that trigger or action. This makes it easier to understand when a request will be handled by custom code, or simply configuring a request for default request handling. It also means you can't easily share code between different triggers and actions. For that, have a look at moving to the Zapier CLI, which is geared toward teams, projects with custom code, projects that need 3rd party libraries, etc.
 
 <Frame>
-  <video controls autoplay muted loop src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27b0a08799b047fc9db1ed204d030377.mp4?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=7b0566c3ac41137809518a8ba9e8c8ea" data-path="images/27b0a08799b047fc9db1ed204d030377.mp4" />
+  <video />
 </Frame>
 
 > **Tip**: A handy way to understand this is to have a look at the [schema](https://github.com/zapier/zapier-platform/blob/main/packages/schema/docs/build/schema.md) of the integration definition you're building. [Here](https://github.com/zapier/zapier-platform/blob/main/packages/schema/docs/build/schema.md#basicpollingoperationschema) you'll see the structure of the definition of a polling trigger. Notice that the `perform` field takes a request configuration object, or it simply takes a Javascript function. The Platform UI reflects this. When you configure an API interaction, you use the Form Mode to configure a request, or you use Code Mode to write a function to be called instead.
@@ -11873,13 +12098,13 @@ In the legacy Web Builder, you could write custom code that ran before the reque
 A big difference in the API of the new environment is that the request API is asynchronous, using promises rather than synchronous requests or callbacks. For developers new to Javascript promises this can be a small stumbling block. We recommend spending a few minutes getting familiar with how promises work in general. The `z.request` library works very similarly to the promise-based Fetch API, so most articles and tutorials about that apply to working with custom code in Zapier's environment.
 
 <CardGroup>
-  <Card title="Using promises(MDN)" icon="link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" horizontal />
+  <Card title="Using promises(MDN)" icon="link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" />
 
-  <Card title="JavaScript Promises in Depth(Egghead.io)" icon="js" href="https://egghead.io/courses/javascript-promises-in-depth" horizontal />
+  <Card title="JavaScript Promises in Depth(Egghead.io)" icon="js" href="https://egghead.io/courses/javascript-promises-in-depth" />
 
-  <Card title="Using Fetch(MDN)" icon="link" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" horizontal />
+  <Card title="Using Fetch(MDN)" icon="link" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" />
 
-  <Card title="Re-introduction to JavaScript(MDN)" icon="js" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" horizontal />
+  <Card title="Re-introduction to JavaScript(MDN)" icon="js" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" />
 </CardGroup>
 
 ### No libraries included
@@ -11932,73 +12157,74 @@ Source: https://docs.zapier.com/platform/news
 
 Changelogs and occasional tips
 
-{/* To add an entry here, write a post in platform/news/<year> and run `npm run render-news` */}
+We post updates and tips about the Developer Platform here. These formats are also available:
 
-We post updates and tips about the Developer Platform here. Subscribe to our [RSS feed](/platform/news.xml) to stay informed.
+* Subscribe to our [RSS feed](/platform/news.xml) to stay informed
+* Read the [single page view](/platform/news/single-page) if you prefer to search and scroll
 
-<Card title="What's changed in v18.0.1" icon="newspaper" href="/platform/news/2025/v18.0.1" horizontal>
+<Card title="What's changed in v18.1.1" icon="newspaper" href="/platform/news/2026/v18.1.1">
+  Bug fix for missing HTTP error logs and security updates.
+
+  *Released: 2026-01-29*
+</Card>
+
+<Card title="What's changed in v18.1.0" icon="newspaper" href="/platform/news/2026/v18.1.0">
+  New `invoke --remote` flag and a fix on package manager detection.
+
+  *Released: 2026-01-19*
+</Card>
+
+<Card title="What's changed in v18.0.7" icon="newspaper" href="/platform/news/2026/v18.0.7">
+  Publishing process improvements, refactoring, and `sample` field added to dynamic `outputFields`.
+
+  *Released: 2026-01-07*
+</Card>
+
+<Card title="What's changed in v18.0.6" icon="newspaper" href="/platform/news/2025/v18.0.6">
+  Package manager detection from `zapier build`
+
+  *Released: 2025-12-24*
+</Card>
+
+<Card title="What's changed in v18.0.5" icon="newspaper" href="/platform/news/2025/v18.0.5">
+  A security fix on the CLI.
+
+  *Released: 2025-12-10*
+</Card>
+
+<Card title="Incident: Unauthorized Access to Zapier NPM Packages" icon="newspaper" href="/platform/news/2025/npm-package-sec-inc">
+  Please review the enclosed list of packages and recommendations for Zapier developers.
+
+  *Released: 2025-11-24*
+</Card>
+
+<Card title="What's changed in v18.0.1" icon="newspaper" href="/platform/news/2025/v18.0.1">
   Bug fixes for npx resolution and TypeScript typing for line items.
 
   *Released: 2025-11-05*
 </Card>
 
-<Card title="What's changed in v18.0.0" icon="newspaper" href="/platform/news/2025/v18.0.0" horizontal>
+<Card title="What's changed in v18.0.0" icon="newspaper" href="/platform/news/2025/v18.0.0">
   Node.js 22 support, new throttling middleware, and a new CLI executable name `zapier-platform`.
 
   *Released: 2025-10-30*
 </Card>
 
-<Card title="What's changed in v17.9.1" icon="newspaper" href="/platform/news/2025/v17.9.1" horizontal>
+<Card title="What's changed in v17.9.1" icon="newspaper" href="/platform/news/2025/v17.9.1">
   Bug fix for zapier push and dependency updates.
 
   *Released: 2025-10-28*
 </Card>
 
-<Card title="Self-serve static IP for private integrations" icon="newspaper" href="/platform/news/2025/static-ip-self-serve" horizontal>
+<Card title="Self-serve static IP for private integrations" icon="newspaper" href="/platform/news/2025/static-ip-self-serve">
   Developers can now enable static IP addresses for private integrations directly in Platform UI without contacting support.
 
   *Released: 2025-10-21*
 </Card>
 
-<Card title="Labeled Versions now available in CLI and Platform UI" icon="newspaper" href="/platform/news/2025/labeled-versions" horizontal>
-  Integration version numbers can now include a label, to enable you to develop and test changes without committing to a [semantic version number](/platform/manage/versions#version-numbering) until you're ready.
-
-  *Released: 2025-10-21*
-</Card>
-
-<Card title="What's changed in v17.9.0" icon="newspaper" href="/platform/news/2025/v17.9.0" horizontal>
-  Bugfix for snapshot flag, improvements for `zapier env`.
-
-  *Released: 2025-10-20*
-</Card>
-
-<Card title="What's changed in v17.8.0" icon="newspaper" href="/platform/news/2025/v17.8.0" horizontal>
-  Added flexibility for Search Pagination and cleaning up some dependencies. Zapier push now supports snapshot publishing.
-
-  *Released: 2025-10-07*
-</Card>
-
-<Card title="Migration UI now supports individual and organization-level migrations" icon="newspaper" href="/platform/news/2025/organization-user-migration-in-ui" horizontal>
-  Enhanced migration UI with granular control options for individual and organization-level migrations.
-
-  *Released: 2025-10-02*
-</Card>
-
-<Card title="What's changed in v17.7.2" icon="newspaper" href="/platform/news/2025/v17.7.2" horizontal>
-  Fixed issues with typing and semver restriction.
-
-  *Released: 2025-09-17*
-</Card>
-
-<Card title="What's changed in v17.7.1" icon="newspaper" href="/platform/news/2025/v17.7.1" horizontal>
-  Improved `zapier scaffold`, `zapier init`, `zapier validate`, and `zapier invoke auth`. Also fixed issues with uncensored sensitive information and field grouping schema.
-
-  *Released: 2025-09-10*
-</Card>
-
 ***
 
-Looking for older news? [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)
+Looking for older news? [2026](/platform/news/2026), [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)
 
 
 # No more manual handling of 4xx errors in refreshAccessToken
@@ -12035,7 +12261,7 @@ This is how Zapier handles a stale connection:
 
 You don't need to handle 4xx error responses in `refreshAccessToken` anymore. For example, you might have been catching 4xx errors in `refreshAccessToken` by enabling `skipThrowForStatus` and throwing `ExpiredAuthError`:
 
-```js  theme={null}
+```js theme={null}
 const refreshAccessToken = async (z, bundle) => {
   const response = await z.request({
     url: "https://example.com/token/refresh",
@@ -12064,7 +12290,7 @@ const refreshAccessToken = async (z, bundle) => {
 
 This is no longer necessary. Now you can simplify your code as follows and let the platform handle it:
 
-```js  theme={null}
+```js theme={null}
 const refreshAccessToken = async (z, bundle) => {
   const response = await z.request({
     url: "https://example.com/token/refresh",
@@ -12091,147 +12317,163 @@ Source: https://docs.zapier.com/platform/news/2025/index
 
 
 
-{/* To add an entry here, write a post in platform/news/<year> and run `npm run render-news` */}
+<Card title="What's changed in v18.0.6" icon="newspaper" href="/platform/news/2025/v18.0.6">
+  Package manager detection from `zapier build`
 
-<Card title="What's changed in v18.0.1" icon="newspaper" href="/platform/news/2025/v18.0.1" horizontal>
+  *Released: 2025-12-24*
+</Card>
+
+<Card title="What's changed in v18.0.5" icon="newspaper" href="/platform/news/2025/v18.0.5">
+  A security fix on the CLI.
+
+  *Released: 2025-12-10*
+</Card>
+
+<Card title="Incident: Unauthorized Access to Zapier NPM Packages" icon="newspaper" href="/platform/news/2025/npm-package-sec-inc">
+  Please review the enclosed list of packages and recommendations for Zapier developers.
+
+  *Released: 2025-11-24*
+</Card>
+
+<Card title="What's changed in v18.0.1" icon="newspaper" href="/platform/news/2025/v18.0.1">
   Bug fixes for npx resolution and TypeScript typing for line items.
 
   *Released: 2025-11-05*
 </Card>
 
-<Card title="What's changed in v18.0.0" icon="newspaper" href="/platform/news/2025/v18.0.0" horizontal>
+<Card title="What's changed in v18.0.0" icon="newspaper" href="/platform/news/2025/v18.0.0">
   Node.js 22 support, new throttling middleware, and a new CLI executable name `zapier-platform`.
 
   *Released: 2025-10-30*
 </Card>
 
-<Card title="What's changed in v17.9.1" icon="newspaper" href="/platform/news/2025/v17.9.1" horizontal>
+<Card title="What's changed in v17.9.1" icon="newspaper" href="/platform/news/2025/v17.9.1">
   Bug fix for zapier push and dependency updates.
 
   *Released: 2025-10-28*
 </Card>
 
-<Card title="Self-serve static IP for private integrations" icon="newspaper" href="/platform/news/2025/static-ip-self-serve" horizontal>
+<Card title="Self-serve static IP for private integrations" icon="newspaper" href="/platform/news/2025/static-ip-self-serve">
   Developers can now enable static IP addresses for private integrations directly in Platform UI without contacting support.
 
   *Released: 2025-10-21*
 </Card>
 
-<Card title="Labeled Versions now available in CLI and Platform UI" icon="newspaper" href="/platform/news/2025/labeled-versions" horizontal>
+<Card title="Labeled Versions now available in CLI and Platform UI" icon="newspaper" href="/platform/news/2025/labeled-versions">
   Integration version numbers can now include a label, to enable you to develop and test changes without committing to a [semantic version number](/platform/manage/versions#version-numbering) until you're ready.
 
   *Released: 2025-10-21*
 </Card>
 
-<Card title="What's changed in v17.9.0" icon="newspaper" href="/platform/news/2025/v17.9.0" horizontal>
+<Card title="What's changed in v17.9.0" icon="newspaper" href="/platform/news/2025/v17.9.0">
   Bugfix for snapshot flag, improvements for `zapier env`.
 
   *Released: 2025-10-20*
 </Card>
 
-<Card title="What's changed in v17.8.0" icon="newspaper" href="/platform/news/2025/v17.8.0" horizontal>
+<Card title="What's changed in v17.8.0" icon="newspaper" href="/platform/news/2025/v17.8.0">
   Added flexibility for Search Pagination and cleaning up some dependencies. Zapier push now supports snapshot publishing.
 
   *Released: 2025-10-07*
 </Card>
 
-<Card title="Migration UI now supports individual and organization-level migrations" icon="newspaper" href="/platform/news/2025/organization-user-migration-in-ui" horizontal>
+<Card title="Migration UI now supports individual and organization-level migrations" icon="newspaper" href="/platform/news/2025/organization-user-migration-in-ui">
   Enhanced migration UI with granular control options for individual and organization-level migrations.
 
   *Released: 2025-10-02*
 </Card>
 
-<Card title="What's changed in v17.7.2" icon="newspaper" href="/platform/news/2025/v17.7.2" horizontal>
+<Card title="What's changed in v17.7.2" icon="newspaper" href="/platform/news/2025/v17.7.2">
   Fixed issues with typing and semver restriction.
 
   *Released: 2025-09-17*
 </Card>
 
-<Card title="What's changed in v17.7.1" icon="newspaper" href="/platform/news/2025/v17.7.1" horizontal>
+<Card title="What's changed in v17.7.1" icon="newspaper" href="/platform/news/2025/v17.7.1">
   Improved `zapier scaffold`, `zapier init`, `zapier validate`, and `zapier invoke auth`. Also fixed issues with uncensored sensitive information and field grouping schema.
 
   *Released: 2025-09-10*
 </Card>
 
-<Card title="No more manual handling of 4xx errors in refreshAccessToken" icon="lightbulb-on" href="/platform/news/2025/4xx-errors-refreshAccessToken" horizontal>
+<Card title="No more manual handling of 4xx errors in refreshAccessToken" icon="lightbulb-on" href="/platform/news/2025/4xx-errors-refreshAccessToken">
   We now automatically handle 4xx error responses when refreshing OAuth2 access tokens.
 
   *Effective: 2025-09-08*
 </Card>
 
-<Card title="What's changed in v17.7.0" icon="newspaper" href="/platform/news/2025/v17.7.0" horizontal>
+<Card title="What's changed in v17.7.0" icon="newspaper" href="/platform/news/2025/v17.7.0">
   This update lays groundwork for Search Pagination, which will allow Search steps to paginate through results so that the most relevant results can be returned. However, this is not yet supported by any Zapier products.
 
   *Released: 2025-08-22*
 </Card>
 
-<Card title="What's changed in v17.6.0" icon="newspaper" href="/platform/news/2025/v17.6.0" horizontal>
+<Card title="What's changed in v17.6.0" icon="newspaper" href="/platform/news/2025/v17.6.0">
   Global `console` object and account filtering for `zapier canary`.
 
   *Released: 2025-08-11*
 </Card>
 
-<Card title="What's changed in v17.5.0" icon="newspaper" href="/platform/news/2025/v17.5.0" horizontal>
+<Card title="What's changed in v17.5.0" icon="newspaper" href="/platform/news/2025/v17.5.0">
   Global `errors`, bug fixes with `zapier build` and auth field types.
 
   *Released: 2025-07-30*
 </Card>
 
-<Card title="What's changed in v17.4.0" icon="newspaper" href="/platform/news/2025/v17.4.0" horizontal>
+<Card title="What's changed in v17.4.0" icon="newspaper" href="/platform/news/2025/v17.4.0">
   Regression bug fixes with `zapier build`, support for compression of large input bundles.
 
   *Released: 2025-07-23*
 </Card>
 
-<Card title="What's changed in v17.3.1" icon="newspaper" href="/platform/news/2025/v17.3.1" horizontal>
+<Card title="What's changed in v17.3.1" icon="newspaper" href="/platform/news/2025/v17.3.1">
   Regression bug fixes with `zapier build`.
 
   *Released: 2025-07-17*
 </Card>
 
-<Card title="What's changed in v17.3.0" icon="newspaper" href="/platform/news/2025/v17.3.0" horizontal>
+<Card title="What's changed in v17.3.0" icon="newspaper" href="/platform/news/2025/v17.3.0">
   Revamped `zapier build` and input field grouping.
 
   *Released: 2025-07-01*
 </Card>
 
-<Card title="What's changed in v17.2.0" icon="newspaper" href="/platform/news/2025/v17.2.0" horizontal>
+<Card title="What's changed in v17.2.0" icon="newspaper" href="/platform/news/2025/v17.2.0">
   Improved large bundle handling.
 
   *Released: 2025-06-11*
 </Card>
 
-<Card title="What's changed in v17.1.0" icon="newspaper" href="/platform/news/2025/v17.1.0" horizontal>
+<Card title="What's changed in v17.1.0" icon="newspaper" href="/platform/news/2025/v17.1.0">
   Improved `zapier convert` and `zapier deprecate`.
 
   *Released: 2025-06-10*
 </Card>
 
-<Card title="What's changed in v17.0.4" icon="newspaper" href="/platform/news/2025/v17.0.4" horizontal>
+<Card title="What's changed in v17.0.4" icon="newspaper" href="/platform/news/2025/v17.0.4">
   Fixed a bug in `zapier build`.
 
   *Released: 2025-06-03*
 </Card>
 
-<Card title="What's changed in v17.0.3" icon="newspaper" href="/platform/news/2025/v17.0.3" horizontal>
+<Card title="What's changed in v17.0.3" icon="newspaper" href="/platform/news/2025/v17.0.3">
   Bug fixes on `zapier build`, `{{curlies}}` replacement, and more.
 
   *Released: 2025-05-30*
 </Card>
 
-<Card title="What's changed in v17.0.2" icon="newspaper" href="/platform/news/2025/v17.0.2" horizontal>
+<Card title="What's changed in v17.0.2" icon="newspaper" href="/platform/news/2025/v17.0.2">
   Windows and ESM bugs.
 
   *Released: 2025-05-19*
 </Card>
 
-<Card title="What's changed in v17.0.1" icon="newspaper" href="/platform/news/2025/v17.0.1" horizontal>
+<Card title="What's changed in v17.0.1" icon="newspaper" href="/platform/news/2025/v17.0.1">
   Fixed a regression bug on `zapier build` and the oauth2 template in `zapier init`.
 
   *Released: 2025-05-14*
 </Card>
 
-<Card title="What's changed in v17.0.0" icon="newspaper" href="/platform/news/2025/v17.0.0" horizontal>
+<Card title="What's changed in v17.0.0" icon="newspaper" href="/platform/news/2025/v17.0.0">
   ES module support, more complete typing, no more `{{curlies}}` in shorthand requests.
 
   *Released: 2025-05-12*
@@ -12250,6 +12492,22 @@ Integration version numbers can now include a label, to enable you to develop an
 * 🎉 [Labeled Versions](https://docs.zapier.com/platform/manage/labeled-versions) are now publicly available!
   * Versions like `2.0.0-beta` can be used for testing and avoiding version collisions during parallel development
   * More flexible "snapshot" versions like `0.0.0-my-feature` can be used to push integration updates without committing to a semantic version number
+
+
+# Incident: Unauthorized Access to Zapier NPM Packages
+Source: https://docs.zapier.com/platform/news/2025/npm-package-sec-inc
+
+Please review the enclosed list of packages and recommendations for Zapier developers.
+
+*Released: 2025-11-24*
+
+## Unauthorized Access to Zapier npm Packages
+
+**Note: No action is needed from Zapier users**, only from Zapier developers using one of the NPM package versions listed [on this page](/platform/build-cli/inc-547). See that link for detailed mitigation recommendations.
+
+All Zapier products are operating as expected and there is no indication of data loss or leak.
+
+Please [see this link](https://status.zapier.com/incidents/01KAV9DDHMYT7R6MFHSB8C09E3#updates) for the most up-to-date information.
 
 
 # Migration UI now supports individual and organization-level migrations
@@ -12320,7 +12578,7 @@ Check out the [typescript-esm](https://github.com/zapier/zapier-platform/tree/82
 
 Calling `z.request()` with `{{bundle.*}}` or `{{process.env.*}}` will now result in an error. For example:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   const response = await z.request({
     url: "https://{{bundle.authData.subdomain}}.example.com",
@@ -12331,7 +12589,7 @@ const perform = async (z, bundle) => {
 
 This will result in an error in v17. Instead, you must use [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) i.e. `${var}`:
 
-```js  theme={null}
+```js theme={null}
 const perform = async (z, bundle) => {
   const response = await z.request({
     url: `https://${bundle.authData.subdomain}.example.com`,
@@ -12342,7 +12600,7 @@ const perform = async (z, bundle) => {
 
 However, `{{curly backets}}` are still (and have to be) allowed in other places, including `operation.lock.key`. They are also allowed (actually required) in usage of shorthand requests:
 
-```js  theme={null}
+```js theme={null}
 {
   operation: {
     perform: {
@@ -12556,7 +12814,7 @@ Input Field Grouping:
 
 * 💅 `zapier build` supports npm/yarn/pnpm workspaces and runs faster ([#1052](https://github.com/zapier/zapier-platform/pull/1052))
 * 🐛 Fix a bug where `zapier build` can select the wrong entry point of a dependency ([#1052](https://github.com/zapier/zapier-platform/pull/1052) - [c004298](https://github.com/zapier/zapier-platform/pull/1052/commits/c004298a1b61b7de777f3c8222949c7d38d8826f))
-* :scroll: Update docs for new days before deprecation and sending emails ([#1056](https://github.com/zapier/zapier-platform/pull/1056))
+* 📜 Update docs for new days before deprecation and sending emails ([#1056](https://github.com/zapier/zapier-platform/pull/1056))
 
 ## core
 
@@ -12898,6 +13156,724 @@ None!
 None!
 
 
+# What's changed in v18.0.5
+Source: https://docs.zapier.com/platform/news/2025/v18.0.5
+
+A security fix on the CLI.
+
+*Released: 2025-12-10*
+
+<Info>We're releasing v18.0.5, skipping comprimised versions v18.0.2, v18.0.3, and v18.0.4, due to the prior [security incident](/platform/news/2025/npm-package-sec-inc).</Info>
+
+This release fixes a potential security vulnerability in the `build` command related to zip file decompression.
+
+## cli
+
+* 🐛 Remove problematic decompress-tar dependency ([#1202](https://github.com/zapier/zapier-platform/pull/1202))
+
+## core
+
+None!
+
+## schema
+
+None!
+
+## misc
+
+* 🔨 Switch to pnpm as package manager and task runner ([#1204](https://github.com/zapier/zapier-platform/pull/1204))
+
+
+# What's changed in v18.0.6
+Source: https://docs.zapier.com/platform/news/2025/v18.0.6
+
+Package manager detection from `zapier build`
+
+*Released: 2025-12-24*
+
+The `zapier build` command was harcoded to use `npm install`. As alternate package managers gain adoption, the `zapier build` command will respect your app's package manager of choice.
+It does this by checking the `packageManager` on the package.json file. If it is not defined, it will look for any relevant lock files. If still, none is defined, then will fallback to `npm`.
+
+If you are familiar with using `zapier build` with the flag `--skip-npm-install`, this flag has been renamed to `--skip-dep-install`, but will continue to still work as an alias. In the future, we will remove the `--skip-npm-install` flag.
+
+## cli
+
+* 💅 CLI build respects the integration's package manager ([#1216](https://github.com/zapier/zapier-platform/pull/1216))
+
+## core
+
+None!
+
+## schema
+
+None!
+
+## misc
+
+* 🔨 Bump tmp from 0.2.4 to 0.2.5 ([#1207](https://github.com/zapier/zapier-platform/pull/1207))
+* 🔨 Bump form-data from 4.0.4 to 4.0.5 ([#1208](https://github.com/zapier/zapier-platform/pull/1208))
+
+
+# Platform News in 2026
+Source: https://docs.zapier.com/platform/news/2026/index
+
+
+
+<Card title="What's changed in v18.1.1" icon="newspaper" href="/platform/news/2026/v18.1.1">
+  Bug fix for missing HTTP error logs and security updates.
+
+  *Released: 2026-01-29*
+</Card>
+
+<Card title="What's changed in v18.1.0" icon="newspaper" href="/platform/news/2026/v18.1.0">
+  New `invoke --remote` flag and a fix on package manager detection.
+
+  *Released: 2026-01-19*
+</Card>
+
+<Card title="What's changed in v18.0.7" icon="newspaper" href="/platform/news/2026/v18.0.7">
+  Publishing process improvements, refactoring, and `sample` field added to dynamic `outputFields`.
+
+  *Released: 2026-01-07*
+</Card>
+
+
+# What's changed in v18.0.7
+Source: https://docs.zapier.com/platform/news/2026/v18.0.7
+
+Publishing process improvements, refactoring, and `sample` field added to dynamic `outputFields`.
+
+*Released: 2026-01-07*
+
+In response to the previous [Shai-Hulud incident](/platform/build-cli/inc-547), we're changing our package publishing process to improve security. This release also includes a schema extension that allows `outputFields` to have a `sample` field. Lastly, we've refactored the `invoke` command to make upcoming enhancements easier.
+
+## cli
+
+* 🔨 Refactor `invoke` command ([#1217](https://github.com/zapier/zapier-platform/pull/1217))
+
+## core
+
+None!
+
+## schema
+
+* 🎉 Allow a `sample` field to be provided for dynamic `outputFields` ([#1211](https://github.com/zapier/zapier-platform/pull/1211))
+
+## misc
+
+* 🔨 Add publish job in CI ([#1212](https://github.com/zapier/zapier-platform/pull/1212), [#1223](https://github.com/zapier/zapier-platform/pull/1223))
+
+
+# What's changed in v18.1.0
+Source: https://docs.zapier.com/platform/news/2026/v18.1.0
+
+New `invoke --remote` flag and a fix on package manager detection.
+
+*Released: 2026-01-19*
+
+The `zapier-platform invoke` command now supports a **remote mode**. By adding a `--remote` (`-r` for short) flag to the `invoke` command, such as:
+
+```
+zapier-platform invoke -r
+```
+
+... all invocations, including trigger/action invocation itself, input field definitions, and dynamic dropdown choices, will be executed remotely by the Zapier production environment. This means:
+
+* The integration version you want to test has to be deployed first.
+* The invocation results and the bundle payload passed to your integration code will match what you see in live production, which is great for testing.
+* Remote mode is slower than local mode (without the `-r` flag).
+
+Read more about the three different modes in the [`zapier-platform invoke --help`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#invoke) documentation.
+
+We also fixed an issue where the `build` and `test` commands were not correctly detecting package managers (like npm, yarn, pnpm, or bun) when your integration was part of a monorepo. Now, the CLI doesn't just look in the current directory for package manager indicators (like `package-lock.json` for npm), but also checks parent directories up to four levels up.
+
+## cli
+
+* 🎉 Add `--remote` flag to `invoke` command ([#1220](https://github.com/zapier/zapier-platform/pull/1220))
+* 🐛 Fix package manager detection in `build` and `test` commands to include parent directories ([#1225](https://github.com/zapier/zapier-platform/pull/1225))
+
+## core
+
+None!
+
+## schema
+
+None!
+
+## misc
+
+* 📜 Improve internal development docs ([#1221](https://github.com/zapier/zapier-platform/pull/1221))
+
+
+# What's changed in v18.1.1
+Source: https://docs.zapier.com/platform/news/2026/v18.1.1
+
+Bug fix for missing HTTP error logs and security updates.
+
+*Released: 2026-01-29*
+
+Main change introduced here is fixing missing HTTP error logs that were prematurely lost during a Lambda invocation.
+
+## cli
+
+None!
+
+## core
+
+* 🐛 Restore missing HTTP error logs ([#1227](https://github.com/zapier/zapier-platform/pull/1227))
+
+## schema
+
+None!
+
+## misc
+
+* 🔨 Bump lodash from 4.17.21 to 4.17.23 across the board ([#1228](https://github.com/zapier/zapier-platform/pull/1228), [#1229](https://github.com/zapier/zapier-platform/pull/1229), [#1230](https://github.com/zapier/zapier-platform/pull/1230), [#1231](https://github.com/zapier/zapier-platform/pull/1231), [#1233](https://github.com/zapier/zapier-platform/pull/1233), [#1234](https://github.com/zapier/zapier-platform/pull/1234), [#1235](https://github.com/zapier/zapier-platform/pull/1235))
+
+
+# Platform News (Single Page)
+Source: https://docs.zapier.com/platform/news/single-page
+
+Recent changelogs and tips on a single page
+
+## What's changed in v18.1.1
+
+*Released: 2026-01-29*
+
+Main change introduced here is fixing missing HTTP error logs that were prematurely lost during a Lambda invocation.
+
+**cli**
+
+None!
+
+**core**
+
+* 🐛 Restore missing HTTP error logs ([#1227](https://github.com/zapier/zapier-platform/pull/1227))
+
+**schema**
+
+None!
+
+**misc**
+
+* 🔨 Bump lodash from 4.17.21 to 4.17.23 across the board ([#1228](https://github.com/zapier/zapier-platform/pull/1228), [#1229](https://github.com/zapier/zapier-platform/pull/1229), [#1230](https://github.com/zapier/zapier-platform/pull/1230), [#1231](https://github.com/zapier/zapier-platform/pull/1231), [#1233](https://github.com/zapier/zapier-platform/pull/1233), [#1234](https://github.com/zapier/zapier-platform/pull/1234), [#1235](https://github.com/zapier/zapier-platform/pull/1235))
+
+***
+
+## What's changed in v18.1.0
+
+*Released: 2026-01-19*
+
+The `zapier-platform invoke` command now supports a **remote mode**. By adding a `--remote` (`-r` for short) flag to the `invoke` command, such as:
+
+```
+zapier-platform invoke -r
+```
+
+... all invocations, including trigger/action invocation itself, input field definitions, and dynamic dropdown choices, will be executed remotely by the Zapier production environment. This means:
+
+* The integration version you want to test has to be deployed first.
+* The invocation results and the bundle payload passed to your integration code will match what you see in live production, which is great for testing.
+* Remote mode is slower than local mode (without the `-r` flag).
+
+Read more about the three different modes in the [`zapier-platform invoke --help`](https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md#invoke) documentation.
+
+We also fixed an issue where the `build` and `test` commands were not correctly detecting package managers (like npm, yarn, pnpm, or bun) when your integration was part of a monorepo. Now, the CLI doesn't just look in the current directory for package manager indicators (like `package-lock.json` for npm), but also checks parent directories up to four levels up.
+
+**cli**
+
+* 🎉 Add `--remote` flag to `invoke` command ([#1220](https://github.com/zapier/zapier-platform/pull/1220))
+* 🐛 Fix package manager detection in `build` and `test` commands to include parent directories ([#1225](https://github.com/zapier/zapier-platform/pull/1225))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+**misc**
+
+* 📜 Improve internal development docs ([#1221](https://github.com/zapier/zapier-platform/pull/1221))
+
+***
+
+## What's changed in v18.0.7
+
+*Released: 2026-01-07*
+
+In response to the previous [Shai-Hulud incident](/platform/build-cli/inc-547), we're changing our package publishing process to improve security. This release also includes a schema extension that allows `outputFields` to have a `sample` field. Lastly, we've refactored the `invoke` command to make upcoming enhancements easier.
+
+**cli**
+
+* 🔨 Refactor `invoke` command ([#1217](https://github.com/zapier/zapier-platform/pull/1217))
+
+**core**
+
+None!
+
+**schema**
+
+* 🎉 Allow a `sample` field to be provided for dynamic `outputFields` ([#1211](https://github.com/zapier/zapier-platform/pull/1211))
+
+**misc**
+
+* 🔨 Add publish job in CI ([#1212](https://github.com/zapier/zapier-platform/pull/1212), [#1223](https://github.com/zapier/zapier-platform/pull/1223))
+
+***
+
+## What's changed in v18.0.6
+
+*Released: 2025-12-24*
+
+The `zapier build` command was harcoded to use `npm install`. As alternate package managers gain adoption, the `zapier build` command will respect your app's package manager of choice.
+It does this by checking the `packageManager` on the package.json file. If it is not defined, it will look for any relevant lock files. If still, none is defined, then will fallback to `npm`.
+
+If you are familiar with using `zapier build` with the flag `--skip-npm-install`, this flag has been renamed to `--skip-dep-install`, but will continue to still work as an alias. In the future, we will remove the `--skip-npm-install` flag.
+
+**cli**
+
+* 💅 CLI build respects the integration's package manager ([#1216](https://github.com/zapier/zapier-platform/pull/1216))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+**misc**
+
+* 🔨 Bump tmp from 0.2.4 to 0.2.5 ([#1207](https://github.com/zapier/zapier-platform/pull/1207))
+* 🔨 Bump form-data from 4.0.4 to 4.0.5 ([#1208](https://github.com/zapier/zapier-platform/pull/1208))
+
+***
+
+## What's changed in v18.0.5
+
+*Released: 2025-12-10*
+
+<Info>We're releasing v18.0.5, skipping comprimised versions v18.0.2, v18.0.3, and v18.0.4, due to the prior [security incident](/platform/news/2025/npm-package-sec-inc).</Info>
+
+This release fixes a potential security vulnerability in the `build` command related to zip file decompression.
+
+**cli**
+
+* 🐛 Remove problematic decompress-tar dependency ([#1202](https://github.com/zapier/zapier-platform/pull/1202))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+**misc**
+
+* 🔨 Switch to pnpm as package manager and task runner ([#1204](https://github.com/zapier/zapier-platform/pull/1204))
+
+***
+
+## Incident: Unauthorized Access to Zapier NPM Packages
+
+*Released: 2025-11-24*
+
+**Unauthorized Access to Zapier npm Packages**
+
+**Note: No action is needed from Zapier users**, only from Zapier developers using one of the NPM package versions listed [on this page](/platform/build-cli/inc-547). See that link for detailed mitigation recommendations.
+
+All Zapier products are operating as expected and there is no indication of data loss or leak.
+
+Please [see this link](https://status.zapier.com/incidents/01KAV9DDHMYT7R6MFHSB8C09E3#updates) for the most up-to-date information.
+
+***
+
+## What's changed in v18.0.1
+
+*Released: 2025-11-05*
+
+This release addresses an npx resolution issue introduced in v18.0.0 and fixes TypeScript typing for nested input fields when working with line items.
+
+**cli**
+
+* 🐛 Fix npx resolution issue with dual binary entries ([#1191](https://github.com/zapier/zapier-platform/pull/1191))
+
+**core**
+
+* 🐛 Fix children input types when line items are present ([#1188](https://github.com/zapier/zapier-platform/pull/1188))
+
+**schema**
+
+None!
+
+**misc**
+
+None!
+
+***
+
+## What's changed in v18.0.0
+
+*Released: 2025-10-30*
+
+Version 18.0.0 is a **BREAKING CHANGE** release that contains several important upgrades and changes. Here is a brief breakdown of the main changes (**❗ denotes a breaking change**):
+
+**❗ Node.js 22 Support**
+
+Zapier Platform v18 runs on Node.js 22 runtime. This is a breaking change as it may affect compatibility with older Node.js versions and dependencies.
+
+**❗ Schema Changes**
+
+The `skipCleanArrayInputData` experimental flag has been replaced with `cleanInputData`. This provides more consistent data cleaning behavior across the platform. This change is breaking **only if** you're using `skipCleanArrayInputData`.
+See [cleanInputData flag documentation](/platform/build-cli/empty-values-in-input-data) for more details on how to configure this behavior.
+
+**❗ New Throttling Middleware**
+
+A new `throwForThrottling` middleware has been added to prevent `afterResponse` middleware from suppressing 429 (throttling) responses. This ensures proper handling of rate limiting scenarios. This change is breaking **if** you want to handle 429 responses in your `afterResponse`. See [v18.x and above: the built-in `throwForThrottling` middleware](/platform/build-cli/making-http-requests#v18-x-and-above%3A-the-built-in-throwforthrottling-middleware) for how to handle 429s yourself.
+
+**New Executable Name `zapier-platform`**
+
+The CLI now includes a new executable name `zapier-platform` while deprecating the old `zapier` command. Both will work for now, but `zapier-platform` is the recommended command going forward.
+
+***
+
+Apart from these major changes, here are the detailed release notes for this release (**note that ❗ denotes a breaking change**):
+
+**cli**
+
+* 🎉 Add executable name `zapier-platform` and deprecate `zapier` ([#1181](https://github.com/zapier/zapier-platform/pull/1181))
+* 🔨 Update outdated dependencies with security vulnerabilities ([#1111](https://github.com/zapier/zapier-platform/pull/1111))
+* 🔨 Apply prettier formatting to generated auth files since gen.fs.write bypasses transform streams
+* 🔨 Add ESM wrapper improvements for better module support
+
+**core**
+
+* ❗ Add Node.js 22 support ([#1078](https://github.com/zapier/zapier-platform/pull/1078))
+* 🎉 Add `throwForThrottling` middleware with backward-compatible default behavior ([#1151](https://github.com/zapier/zapier-platform/pull/1151))
+* 🐛 Add better error message for 413 responses ([#1110](https://github.com/zapier/zapier-platform/pull/1110))
+
+**schema**
+
+* ❗ Replace `skipCleanArrayInputData` with `cleanInputData` ([#1183](https://github.com/zapier/zapier-platform/pull/1183))
+* 🔨 Add global `cleanInputData` flag for consistent data cleaning behavior
+
+**misc**
+
+* ❗ Major dependency updates across all packages ([#1079](https://github.com/zapier/zapier-platform/pull/1079))
+* 🔨 Update CI configuration for Node.js 22 support
+* 🔨 Pin exact xmldom version for security
+
+***
+
+## What's changed in v17.9.1
+
+*Released: 2025-10-28*
+
+This release addresses a bug in the `zapier push` command and includes dependency updates.
+
+**cli**
+
+* 🐛 Fix issue where zapier push fail if the app wasn't built already (may have affected ESM builds) ([#1187](https://github.com/zapier/zapier-platform/pull/1187))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+**misc**
+
+* 🔨 Bump vite from 6.3.6 to 6.4.1 ([#1185](https://github.com/zapier/zapier-platform/pull/1185))
+
+***
+
+## Self-serve static IP for private integrations
+
+*Released: 2025-10-21*
+
+**Self-serve static IP for private integrations**
+
+* 🎉 [Static IP](https://docs.zapier.com/platform/build/static-ip) can now be enabled by team members for private integrations:
+  * **Platform UI toggle**: Navigate to the Settings tab on the Advanced page to enable static IP addresses for your private integration without contacting support.
+  * **Published integrations**: Continue to contact Zapier Support to enable static IP for published integrations.
+
+***
+
+## Labeled Versions now available in CLI and Platform UI
+
+*Released: 2025-10-21*
+
+**Labeled Versions**
+
+* 🎉 [Labeled Versions](https://docs.zapier.com/platform/manage/labeled-versions) are now publicly available!
+  * Versions like `2.0.0-beta` can be used for testing and avoiding version collisions during parallel development
+  * More flexible "snapshot" versions like `0.0.0-my-feature` can be used to push integration updates without committing to a semantic version number
+
+***
+
+## What's changed in v17.9.0
+
+*Released: 2025-10-20*
+
+This release fixes an issue with validation for labeled versions, and improves failures on `zapier env:set`.
+
+**cli**
+
+* 🐛 Validate snapshot labels for 12 chars instead of 18 ([#1182](https://github.com/zapier/zapier-platform/pull/1182))
+* 💅 Display failure reasons for env:set ([#1180](https://github.com/zapier/zapier-platform/pull/1180))
+
+**core**
+
+None!
+
+**schema**
+
+None!
+
+***
+
+## What's changed in v17.8.0
+
+*Released: 2025-10-07*
+
+Aside from some clean up work, this release adds support for natural snapshots to `zapier push`. This is currently only supported internally but look out for a public release soon!
+
+**cli**
+
+* 💅 `zapier push` supports natural snapshots ([#1172](https://github.com/zapier/zapier-platform/pull/1172))
+* 🐛 Address `punycode` deprecation warning by removing `node-fetch` ([#1171](https://github.com/zapier/zapier-platform/pull/1171))
+* 📜 Fix incorrect docs in `zapier migrate` ([#1169](https://github.com/zapier/zapier-platform/pull/1169))
+
+**core**
+
+* 🐛 Allow null and undefined values for `page_token` in `SearchResult` ([#1168](https://github.com/zapier/zapier-platform/pull/1168))
+* 🐛 Allow undefined value for `paging_token` ([#1166](https://github.com/zapier/zapier-platform/pull/1166))
+
+**misc**
+
+* 📜 Direct developers to Platform News ([#1174](https://github.com/zapier/zapier-platform/pull/1174))
+
+***
+
+## Migration UI now supports individual and organization-level migrations
+
+*Released: 2025-10-02*
+
+**Migration via the Platform UI**
+
+* 🎉 [Email-based migration](https://docs.zapier.com/platform/manage/migrate#migrate-users-to-new-version-with-platform-ui) now supports two scopes:
+  * **Individual**: Migrates only private Zaps under the user's individual account (equivalent to the `--user` flag of the `zapier migrate` CLI command)
+  * **Organization**: Migrates all Zaps including shared resources across organization accounts (equivalent to the `--account` flag of the `zapier migrate` CLI command)
+
+***
+
+## What's changed in v17.7.2
+
+*Released: 2025-09-17*
+
+**cli**
+
+* 🐛 Allows deleting old non-semver versions and blocks pushes to non-semver versions ([#1160](https://github.com/zapier/zapier-platform/pull/1160))
+* 🐛 Integration check displays failure icon if errors are present ([#1159](https://github.com/zapier/zapier-platform/pull/1159))
+
+**core**
+
+* 🐛 Adds paging\_token to bundle.meta types ([#1157](https://github.com/zapier/zapier-platform/pull/1157))
+
+**misc**
+
+* 🔨 Bump vite from 6.3.5 to 6.3.6 ([#1156](https://github.com/zapier/zapier-platform/pull/1156))
+* 🔨 Improve types ([#1162](https://github.com/zapier/zapier-platform/pull/1162), [#1164](https://github.com/zapier/zapier-platform/pull/1164), [#1165](https://github.com/zapier/zapier-platform/pull/1165))
+
+***
+
+## What's changed in v17.7.1
+
+*Released: 2025-09-10*
+
+**cli**
+
+* 🐛 Fix `zapier scaffold` failing when app object contains spread elements ([#1115](https://github.com/zapier/zapier-platform/pull/1115))
+* 🐛 Fix `zapier invoke auth` may append to last line without a newline ([#1138](https://github.com/zapier/zapier-platform/pull/1138))
+* 🐛 Fix `zapier scaffold` to use `.js` extension for TS imports ([#1123](https://github.com/zapier/zapier-platform/pull/1123))
+* 🐛 Fix `zapier scaffold` to handle shorthand property syntax ([#1125](https://github.com/zapier/zapier-platform/pull/1125))
+* 💅 `zapier validate` now runs `_zapier-build` before validation by default ([#1130](https://github.com/zapier/zapier-platform/pull/1130))
+* 💅 Add `dev` script to `package.json` of typescript templates generated by `zapier init` ([#1128](https://github.com/zapier/zapier-platform/pull/1128))
+* 💅 Improve `zapier init` to list only templates that support selected module and language ([#1146](https://github.com/zapier/zapier-platform/pull/1146))
+
+**core**
+
+* 🐛 Censor sensitive info in `ResponseError` ([#1147](https://github.com/zapier/zapier-platform/pull/1147))
+
+**schema**
+
+* 🐛 Fix `InputFieldGroupsSchema` to have its properties displayed ([#1143](https://github.com/zapier/zapier-platform/pull/1143))
+* 🧪 Allow to skip cleaning arrays in `inputData` via `skipCleanArrayInputData` ([#1153](https://github.com/zapier/zapier-platform/pull/1153))
+* 🔨 Support version with label (ongoing work) ([#1093](https://github.com/zapier/zapier-platform/pull/1093))
+
+***
+
+## No more manual handling of 4xx errors in refreshAccessToken
+
+*Effective: 2025-09-08*
+
+We made a change to how we handle error responses when refreshing OAuth2 access tokens.
+
+**Old behavior**
+
+When an app gives an error response (status code 4xx or 5xx) while refreshing the OAuth2 access token, Zapier keeps retrying the Zap step indefinitely or until it hits a certain limit, depending on the user's settings.
+
+**New behavior**
+
+When an app encounter a 4xx error response (except for the ones listed below) while refreshing the access token, Zapier will mark the connect as stale, and send an email telling the user to reconnect.
+
+Exceptions: The following 4xx errors often indicate a temporary issue so they still have the same behavior as before:
+
+* 408 (Request Timeout)
+* 409 (Conflict)
+* 423 (Locked)
+* 425 (Too Early)
+* 429 (Too Many Requests)
+
+This is how Zapier handles a stale connection:
+
+* If the stale connection is used by a trigger step, the trigger polling system will skip polling when the scheduled time comes.
+* If the stale connection is used by an action step, the Zap run will be put on hold until the user reconnects and replays the run.
+
+**What does it mean to you?**
+
+You don't need to handle 4xx error responses in `refreshAccessToken` anymore. For example, you might have been catching 4xx errors in `refreshAccessToken` by enabling `skipThrowForStatus` and throwing `ExpiredAuthError`:
+
+```js theme={null}
+const refreshAccessToken = async (z, bundle) => {
+  const response = await z.request({
+    url: "https://example.com/token/refresh",
+    method: "POST",
+    body: {
+      refresh_token: bundle.authData.refresh_token,
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      grant_type: "refresh_token",
+    },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    skipThrowForStatus: true,
+  });
+
+  if (response.status >= 400 && response.status < 500) {
+    throw new z.errors.ExpiredAuthError(
+      "Authentication issue. Please reconnect.",
+    );
+  }
+
+  return response.data;
+};
+```
+
+This is no longer necessary. Now you can simplify your code as follows and let the platform handle it:
+
+```js theme={null}
+const refreshAccessToken = async (z, bundle) => {
+  const response = await z.request({
+    url: "https://example.com/token/refresh",
+    method: "POST",
+    body: {
+      refresh_token: bundle.authData.refresh_token,
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      grant_type: "refresh_token",
+    },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+  return response.data;
+};
+```
+
+No need to upgrade zapier-platform-core; this change is implemented in the Zapier backend.
+
+***
+
+## What's changed in v17.7.0
+
+*Released: 2025-08-22*
+
+**cli**
+
+* 🐛 Fix `zapier pull` error "listFiles is not a function" ([#1113](https://github.com/zapier/zapier-platform/pull/1113))
+* 🐛 Fix `zapier invoke auth` writing object values to `.env` as `[object Object]` ([#1107](https://github.com/zapier/zapier-platform/pull/1107))
+* 💅 Add logic to `zapier build` to handle the case where the app directory has symlinks to files on a different drive ([#1106](https://github.com/zapier/zapier-platform/pull/1106))
+* 🎉 `zapier invoke` supports testing Search Pagination with a `paging_token` flag ([#1082](https://github.com/zapier/zapier-platform/pull/1082))
+
+**core**
+
+* 🎉 Foundational support for Search Pagination ([#1082](https://github.com/zapier/zapier-platform/pull/1082))
+
+**schema**
+
+* 🎉 Schema support for Search Pagination ([#1082](https://github.com/zapier/zapier-platform/pull/1082))
+
+**misc**
+
+* 💅 Enable Windows in Github Actions CI ([#1106](https://github.com/zapier/zapier-platform/pull/1106))
+* 💅 Add Claude, Copilot, and Cursor instructions/rules ([#1107](https://github.com/zapier/zapier-platform/pull/1107))
+* 🔨 Bump `tmp` from 0.2.3 to 0.2.4 ([#1100](https://github.com/zapier/zapier-platform/pull/1100))
+* 🔨 Bump `sha.js` from 2.4.11 to 2.4.12 ([#1116](https://github.com/zapier/zapier-platform/pull/1116))
+
+***
+
+## What's changed in v17.6.0
+
+*Released: 2025-08-11*
+
+**cli**
+
+* 💅 Add user and account filters to canary ([#1066](https://github.com/zapier/zapier-platform/pull/1066))
+
+**core**
+
+* 💅 Export `console` from zapier-platform-core ([#1077](https://github.com/zapier/zapier-platform/pull/1077), [#1102](https://github.com/zapier/zapier-platform/pull/1102))
+* 🐛 Allow safe `authData` keys to be logged uncensored ([#1097](https://github.com/zapier/zapier-platform/pull/1097))
+
+**schema**
+
+None!
+
+***
+
+## What's changed in v17.5.0
+
+*Released: 2025-07-30*
+
+**cli**
+
+* 🐛 Fix missing `bundle.inputDataRaw` in invoke command ([#1072](https://github.com/zapier/zapier-platform/pull/1072))
+* 🐛 Fix error `'No loader is configured for ".node" files'` on `zapier build` ([#1094](https://github.com/zapier/zapier-platform/pull/1094))
+* 🔨 Refactor `zapier init` to move auth befores/afters into `middleware.js` instead of `authentication.js` ([#1073](https://github.com/zapier/zapier-platform/pull/1073))
+
+**core**
+
+* 💅 Export errors from `zapier-platform-core` ([#1075](https://github.com/zapier/zapier-platform/pull/1075))
+* 🔨 Update `form-data` from `4.0.1` to `4.0.4` ([#1096](https://github.com/zapier/zapier-platform/pull/1096))
+
+**schema**
+
+* 💅 Expanded `AuthFieldSchema` with additional field types:
+  * Added support for the `integer` type ([#1095](https://github.com/zapier/zapier-platform/pull/1095)).
+  * Added support for the `text` type ([#1098](https://github.com/zapier/zapier-platform/pull/1098)).
+
+***
+
+Looking for older news? [2026](/platform/news/2026), [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)
+
+
 # Add or modify integration branding and details
 Source: https://docs.zapier.com/platform/publish/add-or-modify-branding
 
@@ -12906,13 +13882,13 @@ When creating a new integration in the Platform UI from the link `https://develo
 ## Platform UI
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1c0b86b963286ac33b191987a4b73abb" data-og-width="1240" width="1240" data-og-height="926" height="926" data-path="images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=90d90f8adfbdda401bd9d2aec791aa51 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=1d41456410d8a90af61cc438aa6b6a59 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=65163a46e7b3cd25548bf6b24e47fc68 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=99a2307abda988b09748e4b546729c58 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dd5b40bb558761cc537e73e0e792449c 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d98fc9b3e4aa9f5813f3f8f4cff70c98.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=43d4579d4692c064befc6c05fea54466 2500w" />
+  <img />
 </Frame>
 
 It is also required to complete the Intended Audience, your role and the app's category.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a18a9fba329f783ecf4537484deb99a8" data-og-width="1229" width="1229" data-og-height="445" height="445" data-path="images/4e7b51a2339a6ba997c9a0a1a74561aa.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=31b7969b72a6ed3c6f00d8bfb49dbe1e 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=660819e9182869666c685fe5a3dd8d8a 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=e06c0db7a7764da27efd873bdf110ae4 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=79ee1b079113d4125ea49478eba9f126 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=65f4f69b5ab2e43351a8c60de4f46f1f 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4e7b51a2339a6ba997c9a0a1a74561aa.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7422193797a00431778f603aaa7410a6 2500w" />
+  <img />
 </Frame>
 
 ## Platform CLI
@@ -12920,7 +13896,7 @@ It is also required to complete the Intended Audience, your role and the app's c
 When creating a new integration in the Platform CLI, you can optionally add the app name, description, and homepage URL to the `package.json` file. The rest of your app's branding needs to be added in the Platform UI once you `zapier-platform push` (or deprecated `zapier push`) your integration for the first time.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6c42b8becc03c63ec094e506950b4974" data-og-width="1118" width="1118" data-og-height="712" height="712" data-path="images/08131a9df7402a098098ce7de7ed8197.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b2314af77d5e508d6fe2cf3f0e983fa4 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=0d346e3b072b1caeb696793cfdd70f48 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b0246ee575a3d1f3384fa95748e034a3 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=2615c769fd8bd7c0ba1891aa3a7e3b34 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ea3791888bbeb361fd9241b6da53530b 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/08131a9df7402a098098ce7de7ed8197.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=071a3db8968bef2617ab54fd9b8d4a78 2500w" />
+  <img />
 </Frame>
 
 Build your integration locally first. Once you've added your app's core details, authentication, triggers, and actions, push your integration to Zapier with a `zapier-platform push` (or deprecated `zapier push`) command. Zapier will use the name you added in the CLI integration settings, along with a placeholder icon for your app.
@@ -12928,7 +13904,7 @@ Build your integration locally first. Once you've added your app's core details,
 Next, add your app's branding via the Platform UI at [developer.zapier.com/](https://developer.zapier.com/). There you will see every Zapier integration you've built. The *My integrations* section includes every app you've added via Zapier's Platform UI or CLI. Look for the integration you built with Zapier CLI and select.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=29d017e36489ccc4c7be6aede8dda02e" data-og-width="1112" width="1112" data-og-height="691" height="691" data-path="images/21501f70d3d15a341e6dc7ea90690ee6.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4e4d4f35468ebb331fec80a0b57ab4d9 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8ee72db2e083b157fc92b4015b2f7c75 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=182d73bc7370e33e9b7e556c858f3f4e 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=896d75a11bb9f81183f59f0cc5bd0c55 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1bf18f6dbae57f85f43228800b19244b 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8dea0230e169713a920dd11c732bae74 2500w" />
+  <img />
 </Frame>
 
 Only the branding for your CLI-built app can be edited in the UI; authentication, triggers, and actions must be edited in your local environment and pushed to Zapier.
@@ -12942,7 +13918,7 @@ To edit branding, select the gear icon in the upper left hand corner near your a
 For integrations in `private` status, branding can be updated anytime on the Integration Settings page. Access Integration Settings by clicking the gear icon to the right of the integration name.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=12197dbd29b30bc5082920c589c9b115" data-og-width="1093" width="1093" data-og-height="754" height="754" data-path="images/cf718800abff0d3a5905e92bb8c3bc90.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=647acbc4ccfb0bd78a71b41bbc7d8b7e 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=d78e4fe5028c0bdeeec165177bf9c20d 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3a923dc3cd6425394f9b4396dc7a1eda 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=42d544c663209237fdbd4ca88663b66c 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5794cceb65e70b1388a498a30210a047 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/cf718800abff0d3a5905e92bb8c3bc90.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c27df54f6e4714cf2f82e354f96d4b2b 2500w" />
+  <img />
 </Frame>
 
 ### Public/Beta integrations
@@ -12952,7 +13928,7 @@ For integrations in `public` or `beta` status, branding changes need to be proce
 The app ID and your Zapier account email will automatically populate into the form. Provide only the details you want updated on your integration's directory page, and submit the form. You'll receive a confirmation email of your submission, and the Partner Support team will process the changes within 1 business day. You'll receive a second email confirming once the changes have been made.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=6df6b1068374445d62121db832c2151d" data-og-width="1105" width="1105" data-og-height="571" height="571" data-path="images/13cb72133173c8add77496c62d0a4079.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b9dcb865c397b7eeab2e4385756787f5 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=18847a28bf582a23fe95b4852989d25d 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=e6c4175c1ef0d9e66c526e092fb1335d 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9f3be3b731de029c5bc20964673598e1 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=765d92f6fcb3b3c2ac8a975189eb1086 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/13cb72133173c8add77496c62d0a4079.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ab87773d59597a9dd90c158b569701aa 2500w" />
+  <img />
 </Frame>
 
 ***
@@ -13179,7 +14155,7 @@ Source: https://docs.zapier.com/platform/publish/branding-cli
 When you make a new integration in Zapier CLI, you can add the app's name, description, and homepage to the `package.json` file.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b8d3978e083577ea421edcb2f4f7ca9e" data-og-width="800" width="800" data-og-height="439" height="439" data-path="images/5373ba1686dbea3e9d942b56101a5b40.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=953aec7e058e99a7cebde561ae703885 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=63a2d17f8f903f2f45823b930c5551e2 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d5f572971242cf9b37d6a00fbd1ac152 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d901278c17892036261bd7547f43fc2e 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ec9b34551d1932358947ab9b89c8b88b 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5373ba1686dbea3e9d942b56101a5b40.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=22be15d63488489c3961cb834718939b 2500w" />
+  <img />
 </Frame>
 
 The rest of your app's branding needs to be added in Zapier's online Platform UI.
@@ -13189,7 +14165,7 @@ Focus first on building your integration. When you've added your app's core deta
 Then, before launching your integration, add your app's branding via Zapier's Platform UI at [zapier.com/app/developer](https://zapier.com/app/developer). There you will see every Zapier integration you've built. The top *Integrations* section includes every app you've added via Zapier's Platform UI or CLI. Look for the integration you built with Zapier CLI and click its name.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=29d017e36489ccc4c7be6aede8dda02e" data-og-width="1112" width="1112" data-og-height="691" height="691" data-path="images/21501f70d3d15a341e6dc7ea90690ee6.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=4e4d4f35468ebb331fec80a0b57ab4d9 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8ee72db2e083b157fc92b4015b2f7c75 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=182d73bc7370e33e9b7e556c858f3f4e 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=896d75a11bb9f81183f59f0cc5bd0c55 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1bf18f6dbae57f85f43228800b19244b 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/21501f70d3d15a341e6dc7ea90690ee6.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=8dea0230e169713a920dd11c732bae74 2500w" />
+  <img />
 </Frame>
 
 You can't edit authentication, triggers, and actions in Zapier's Platform UI for integrations built with Zapier's CLI. But you can edit branding.
@@ -13212,8 +14188,8 @@ When creating your integration, you'll add your app’s name, logo, description,
 
 The journey starts at the [Zapier app directory](https://zapier.com/apps/), where apps are ranked by popularity and category. Users search for new apps and integrations here.
 
-<Frame caption="App Directory listings help users discover new ways to connect apps">
-  <img src="https://cdn.zappy.app/13ce36334d97ddf10fa31c896d19a6de.png" />
+<Frame>
+  <img />
 </Frame>
 
 Each integration gets its own app profile page on Zapier, where your branding
@@ -13225,13 +14201,13 @@ App profiles feature [Zap Templates](https://platform.zapier.com/publish/zap-tem
 Inside Zapier's account dashboard, the *Start with a template* section shows Zap Templates for apps users have connected to their accounts.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a3188bec110a4e76b99fc240192eb8e4" data-og-width="1211" width="1211" data-og-height="245" height="245" data-path="images/4b85f4fa4dde1779ffcb11652db92814.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9272d46bc6ca284699262f7a1da48b36 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7bbc4d2d9126b85733b2bc76847e6c31 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=de823f2e40cfbd90183346ffe8b9980c 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1b16581b753324886eeb41bf64891fa3 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=60629bc2d5feb1ad813c71a08981886a 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/4b85f4fa4dde1779ffcb11652db92814.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3c584303e362d4b0b0c61092228cefba 2500w" />
+  <img />
 </Frame>
 
 In the Zap editor, your app’s logo and name appear when users select apps to connect.
 
-<Frame caption="Zap Editor app selector">
-  <img src="https://cdn.zappy.app/9a28eb87b287ee52b23c7aee61066207.png" />
+<Frame>
+  <img />
 </Frame>
 
 Follow these guidelines to ensure consistent, effective branding for your Zapier integration:
@@ -13282,14 +14258,14 @@ Please provide a bigger version if you have one available. If your icon is not s
 
 **Example**:
 
-<Frame caption="Evernote icon on Zapier">
-  <img src="https://cdn.zappy.app/e1ac0809ac62bfd74330479dc22c9038.png" />
+<Frame>
+  <img />
 </Frame>
 
 Evernote's elephant icon is included in a transparent square rectangle.
 
-<Frame caption="Todoist icon on Zapier">
-  <img src="https://cdn.zappy.app/47de5413e9b17530628040488ddd868c.png" />
+<Frame>
+  <img />
 </Frame>
 
 Todoist's icon includes transparent, rounded corners.
@@ -13306,8 +14282,6 @@ Write a short description (up to 160 characters) of your app’s core features a
 ## Category
 
 Select the category that best fits your app's core features and use case. If your app includes features from multiple categories, choose the category that best describes your app's primary use case today.
-
-Can't find an existing category that represents your app? Let us know! Suggest a category you'd like to see added to our app directory by [submitting this form](https://integration-branding.zapier.app/suggest).
 
 You may update your app's category in the future if needed, so do not select a category that fits your future ambitions for the app instead of its features today. Additionally, do not select a category that applies only to a secondary feature in your app or a narrow category that does not cover your app's broader focus.
 
@@ -13412,8 +14386,8 @@ We offer a variety of categories for you to list your integration in. Each top-l
 
 When you release your Zapier integration to the public, Zapier requires your app's primary color. The primary color is the main color used in your app's logo or branding.
 
-<Frame caption="Gmail primary colors in App Directory">
-  <img src="https://cdn.zappy.app/bef595e339362f712a227679316d1357.png" />
+<Frame>
+  <img />
 </Frame>
 
 Do not use pure white (`#FFFFFF`) as the color, as overlaid text would be unreadable. If your logo is black and white, use the next most common color from your branding.
@@ -13433,7 +14407,7 @@ Zapier uses the primary color as the background color in your app's Zapier App D
     Yes, you can. Submit the Rebrand Form located at the top of the Settings page for your integration in the [Developer platform](https://developer.zapier.com).
 
     <Frame>
-      <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1a92e84b5d34d162bb9460b64dd00de5" data-og-width="1885" width="1885" data-og-height="367" height="367" data-path="images/45d5c80072008f65856e8304a6394866.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=748c7dd976c739a1bab3f34ce7bd19bb 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=dca1cc19527e51bc55a4c03cc2f381d1 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3536d5380e500bb9bb284c67ab3c6f06 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=b0572f51dc211a03296557fd73b73e17 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=f8017c98dcb500cc58d867dd380cc712 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/45d5c80072008f65856e8304a6394866.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=58f41feb01f5973111c4a205b24e32a8 2500w" />
+      <img />
     </Frame>
   </Accordion>
 
@@ -13443,10 +14417,6 @@ Zapier uses the primary color as the background color in your app's Zapier App D
 
   <Accordion title="How can I become a Premium integration?">
     Being classified as a Premium app isn't something we currently offer to partner-owned integrations. The justification as to why a Zapier-owned integration might be classed as Premium varies, but is often due to an increased cost on our end to be able to offer that integration. Only users on a paid Zapier plan can use Premium integrations, which helps to ensure we can continue to invest in the development of that integration.
-  </Accordion>
-
-  <Accordion title="Can I suggest a new category?">
-    [Submit this form](https://integration-branding.zapier.app/suggest) to suggest a new category. Our team will review all submissions for consideration. If we move forward with adding your suggestion as a category, we'll notify you via email.
   </Accordion>
 </AccordionGroup>
 
@@ -13822,18 +14792,16 @@ You don't need to know the implication of the initial capitial letter. But if yo
 
 When the checks are run, we'll give a brief blurb summarizing the violation (with a check ID) along with a link to this page. This will act as a full reference explaining each error and giving examples for each.
 
-{/* See platform/README.md for instructions. */}
-
 ***
 
-## <span id="A001">A001 - A Connected Account Exists</span>
+## <span>A001 - A Connected Account Exists</span>
 
 To ensure you've tested auth, we require you to set up at least one connected
 account.
 
 ***
 
-## <span id="C001">C001 - Try To Avoid Hiding/Removing Public Triggers/Searches/Creates</span>
+## <span>C001 - Try To Avoid Hiding/Removing Public Triggers/Searches/Creates</span>
 
 During promotion, we compare features of your currently public version with your soon-to-be-public version.
 
@@ -13841,7 +14809,7 @@ When you hide/remove a trigger in a new version, Zap Templates that use that tri
 
 ***
 
-## <span id="C002">C002 - Try To Avoid Removing Input Fields</span>
+## <span>C002 - Try To Avoid Removing Input Fields</span>
 
 During promotion, we compare features of your currently public version with your soon-to-be-public version.
 
@@ -13849,7 +14817,7 @@ When you change/remove the `key` property of an `input_field`, Zap Templates tha
 
 ***
 
-## <span id="C003">C003 - Try To Avoid Removing Sample Data</span>
+## <span>C003 - Try To Avoid Removing Sample Data</span>
 
 During promotion, we compare features of your currently public version with your soon-to-be-public version.
 
@@ -13857,7 +14825,7 @@ When you change/remove the `key` property of an item in your `sample`, Zap Templ
 
 ***
 
-## <span id="D001">D001 - Input Fields Should Be Insensitive</span>
+## <span>D001 - Input Fields Should Be Insensitive</span>
 
 Input fields collect user-provided values. They must not contain sensitive
 credentials such as API keys, tokens, secrets, or passwords.
@@ -13886,7 +14854,7 @@ anything auth related should be put into an auth field instead.
 
 ***
 
-## <span id="D002">D002 - Provide Link in Help Text for Auth Fields</span>
+## <span>D002 - Provide Link in Help Text for Auth Fields</span>
 
 It's often not obvious where a user can find their API credentials for a service. If
 you use a pasted API key as an authentication method, it's strongly encouraged that
@@ -13907,7 +14875,7 @@ Website Dashboard to find your API Key.
 
 ***
 
-## <span id="D003">D003 - Connection Label Should Be Valid</span>
+## <span>D003 - Connection Label Should Be Valid</span>
 
 A Connection Label helps a customer remember which account they connected.
 It should be short and easily identifiable, and must not contain sensitive
@@ -13920,7 +14888,7 @@ function, but you should never use sensitive fields.
 
 For instance, if a successful run of the auth test returns the following data:
 
-```js  theme={null}
+```js theme={null}
 {
   "name": "Malcom Reynolds",
   "email": "youcanttaketheskyfromme@serenity.com",
@@ -13959,7 +14927,7 @@ The most important role of the label is to uniquely identify the connection.
 
 ***
 
-## <span id="D004">D004 - ID Fields Should Have Dynamic Dropdowns</span>
+## <span>D004 - ID Fields Should Have Dynamic Dropdowns</span>
 
 We've found that instead of instructing users to paste an item `id` into Zapier,
 providing them with a [dynamic dropdown](https://platform.zapier.com/reference/cli-docs#dynamic-dropdowns)
@@ -13973,7 +14941,7 @@ Read more about implementing dynamic dropdowns below:
 
 ***
 
-## <span id="D005">D005 - Dynamic Dropdown Connects to a Non-Existing Trigger</span>
+## <span>D005 - Dynamic Dropdown Connects to a Non-Existing Trigger</span>
 
 [Dynamic dropdowns](https://platform.zapier.com/reference/cli-docs#dynamic-dropdowns)
 allow you to connect an input field to an existing trigger. The dropdown won't work
@@ -13981,7 +14949,7 @@ if the trigger key you specify doesn't exist.
 
 ***
 
-## <span id="D006">D006 - REST Hook Trigger Needs a Polling URL</span>
+## <span>D006 - REST Hook Trigger Needs a Polling URL</span>
 
 When users are setting up a hook-based (aka instant) Trigger, it's important to have
 a polling fallback. For example, imagine a Zap that triggers on a new Slack message.
@@ -14001,7 +14969,7 @@ or unexpected results for users.
 Let's walk through an example. Say we have a `New Contact` REST Hook trigger. When a
 new contact is created, Zapier gets a webhook that looks like this:
 
-```js  theme={null}
+```js theme={null}
 {
   "id": 1,
   "firstName": "Bruce",
@@ -14013,7 +14981,7 @@ new contact is created, Zapier gets a webhook that looks like this:
 The accompanying polling URL would look something like `https://site.com/contacts/list`
 and return:
 
-```js  theme={null}
+```js theme={null}
 {
   "results": [
     {
@@ -14046,7 +15014,7 @@ this.
 
 ***
 
-## <span id="D007">D007 - All URLs Should Be HTTPS</span>
+## <span>D007 - All URLs Should Be HTTPS</span>
 
 When handling customer data (which all Zapier functions do), it's strongly
 encouraged that all communication take place securely. Using SSL is a big part of
@@ -14057,19 +15025,19 @@ If you need help setting up an SSL certificate for your API, we suggest
 
 <Icon icon="xmark" /> an example of an **incorrect** setup:
 
-```text  theme={null}
+```text theme={null}
 http://example.com/messages/subscribe
 ```
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```text  theme={null}
+```text theme={null}
 https://example.com/messages/subscribe
 ```
 
 ***
 
-## <span id="D008">D008 - Invalid Markdown Link</span>
+## <span>D008 - Invalid Markdown Link</span>
 
 A valid markdown link consists of a pair of square brackets with the link text
 paired with a pair of parentheses that have the link itself. See the
@@ -14106,14 +15074,14 @@ trigger/action/search and the help text for any fields that might have bad links
 
 ***
 
-## <span id="D009">D009 - Requires at Least One Search Field</span>
+## <span>D009 - Requires at Least One Search Field</span>
 
 When making a search step, it's important to have a field to search by. Common
 examples for searching for a user are by name, email, and username.
 
 ***
 
-## <span id="D010">D010 - Missing Primary Key Fields in Static Sample Data</span>
+## <span>D010 - Missing Primary Key Fields in Static Sample Data</span>
 
 For polling triggers, the deduper uses the primary key field(s) to decide if it's
 seen an object before. You can define one or more output fields as the primary key.
@@ -14129,7 +15097,7 @@ the live polling results in the Zap History.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   // The deduper uses `id` field by default if no output fields are `primary`.
   // So this sample should have an `id` field for it to pass.
@@ -14140,7 +15108,7 @@ the live polling results in the Zap History.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // `contact_id` is set as `primary`, but it's missing in the sample
   "sample": {
@@ -14156,7 +15124,7 @@ the live polling results in the Zap History.
 
 <Icon icon="check" /> examples of a **correct** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   "sample": {
     "id": 4,
@@ -14165,7 +15133,7 @@ the live polling results in the Zap History.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // This example defines `contact_id` as the unique primary key.
   "sample": {
@@ -14179,7 +15147,7 @@ the live polling results in the Zap History.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // If multiple fields are unique together, you can set them as `primary`.
   "sample": {
@@ -14197,14 +15165,14 @@ the live polling results in the Zap History.
 
 ***
 
-## <span id="D011">D011 - Redundant Help Text</span>
+## <span>D011 - Redundant Help Text</span>
 
 Help text is optional and meant to provide non-obvious information or links for the
 user. If the label and help text are the same, they are considered redundant.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   "label": "Subdomain",
   "help_text": "subdomain"
@@ -14213,7 +15181,7 @@ user. If the label and help text are the same, they are considered redundant.
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   "label": "Subdomain",
   "help_text": "Where you (and your users) can access your forms, e.g., https://<SUBDOMAIN>.typeform.com"
@@ -14222,7 +15190,7 @@ user. If the label and help text are the same, they are considered redundant.
 
 ***
 
-## <span id="D012">D012 - Static Sample Is Required</span>
+## <span>D012 - Static Sample Is Required</span>
 
 When a user sets up a trigger or action (create or search), they need sample data to
 be returned in order to have fields available to map in the subsequent steps. If
@@ -14237,7 +15205,7 @@ See [Sample Data](https://platform.zapier.com/build/sample-data) for more detail
 
 ***
 
-## <span id="D013">D013 - Connects to a Non-Existing Search</span>
+## <span>D013 - Connects to a Non-Existing Search</span>
 
 [Search-Powered Fields](https://platform.zapier.com/reference/cli-docs#search-powered-fields)
 prompt users to set up a search step to populate the value of the field. It won't
@@ -14245,14 +15213,14 @@ work if the search key you specify doesn't exist.
 
 ***
 
-## <span id="D014">D014 - Search Connector can't be combined with certain other features.</span>
+## <span>D014 - Search Connector can't be combined with certain other features.</span>
 
 The type must be string, number, or integer.
 The list, dict and children properties cannot be used.
 
 <Icon icon="xmark" /> an example of an **incorrect** setup:
 
-```js  theme={null}
+```js theme={null}
 {
   "key": "update_thing",
   "list": true,
@@ -14262,7 +15230,7 @@ The list, dict and children properties cannot be used.
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   "key": "update_thing",
   "search": "thing.id",
@@ -14272,14 +15240,14 @@ The list, dict and children properties cannot be used.
 
 ***
 
-## <span id="D015">D015 - Search-Or-Create Connects to a Non-Existing Action/Search</span>
+## <span>D015 - Search-Or-Create Connects to a Non-Existing Action/Search</span>
 
 The search or create key you specify in `searchOrCreates` must reference to an
 existing search or action. Otherwise, it won't work.
 
 ***
 
-## <span id="D016">D016 - Consists Only a Static Webhook</span>
+## <span>D016 - Consists Only a Static Webhook</span>
 
 A REST Hook trigger missing a Subscribe or Unsubscribe endpoint, is presented to
 users as a [Static Webhook](https://cdn.zappy.app/3b35908a6a0c232087b5da807cf9d6fb.png).
@@ -14291,7 +15259,7 @@ more triggers/searches/actions.
 
 ***
 
-## <span id="D017">D017 - Static Hook Is Discouraged</span>
+## <span>D017 - Static Hook Is Discouraged</span>
 
 When a REST Hook trigger is missing a Subscribe or Unsubscribe endpoint, it is
 presented to users as a [Static Webhook](https://cdn.zappy.app/3b35908a6a0c232087b5da807cf9d6fb.png).
@@ -14302,7 +15270,7 @@ type instead.
 
 ***
 
-## <span id="D018">D018 - Titlecased Label</span>
+## <span>D018 - Titlecased Label</span>
 
 In order to have a consistent style across trigger/action/search labels, they're
 required to be presented in title case. If you fail this check, a passing version of
@@ -14322,7 +15290,7 @@ New Contact
 
 ***
 
-## <span id="D021">D021 - Trigger Description Requirements</span>
+## <span>D021 - Trigger Description Requirements</span>
 
 Trigger descriptions must start with `Triggers when ` and end with a `.`.
 
@@ -14344,7 +15312,7 @@ Triggers when there's a new contact.
 
 ***
 
-## <span id="D022">D022 - Creates Should Try to Have Static Input Fields</span>
+## <span>D022 - Creates Should Try to Have Static Input Fields</span>
 
 When making Zap Templates, it's helpful to have input fields that are common
 for all users. Without any, it's hard to create templates. If possible,
@@ -14352,7 +15320,7 @@ add some static input fields that all users will be able to use.
 
 ***
 
-## <span id="D023">D023 - ISO-8601 Date/Time Format in Static Sample</span>
+## <span>D023 - ISO-8601 Date/Time Format in Static Sample</span>
 
 To ensure Zapier can correctly parse dates and times, you should always use ISO-8601
 format to represent dates or times. Timezone info should also be present if it
@@ -14392,7 +15360,7 @@ in the Zap History.
 
 ***
 
-## <span id="D024">D024 - Static Sample Respects Output Field Definition</span>
+## <span>D024 - Static Sample Respects Output Field Definition</span>
 
 If you define output fields for a trigger/action/search, they should be consistent
 with the static sample data. The specific checks are:
@@ -14422,7 +15390,7 @@ output fields: [
 
 ***
 
-## <span id="D025">D025 - URLs Should Not Be Dangerous URIs</span>
+## <span>D025 - URLs Should Not Be Dangerous URIs</span>
 
 In order to help prevent reflective cross-site-scripting (XSS) attacks on Zapier
 customers, we require that URLs inside the app definition do not match potentially
@@ -14432,19 +15400,19 @@ Read more about XSS in the [OWASP Cheat Sheet](https://cheatsheetseries.owasp.or
 
 <Icon icon="xmark" /> an example of an **incorrect** setup:
 
-```text  theme={null}
+```text theme={null}
 javascript:alert('XSS');//
 ```
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```text  theme={null}
+```text theme={null}
 https://example.com
 ```
 
 ***
 
-## <span id="D026">D026 - Manual domain validation recommended if using "inputFormat" or domain-related authentication fields</span>
+## <span>D026 - Manual domain validation recommended if using "inputFormat" or domain-related authentication fields</span>
 
 When utilizing authentication fields which allow a user to input their own domain or subdomain,
 we strongly recommend performing [manual validation](https://platform.zapier.com/build/subdomain-validation)
@@ -14453,7 +15421,7 @@ could be used to redirect users into unexpected domains.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```javascript  theme={null}
+```javascript theme={null}
 // No subdomain validation, trusting the user input
 const response = await z.request({
   url: `https://${bundle.authData.yourSubdomainField}.mydomain.com/oauth/token`,
@@ -14463,7 +15431,7 @@ const response = await z.request({
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```javascript  theme={null}
+```javascript theme={null}
 // Manual validation step to ensure the subdomain matches your requirements
 if (!/^[a-z0-9-]+$/.test(bundle.authData.yourSubdomainField)) {
   throw new Error(
@@ -14479,7 +15447,7 @@ const response = await z.request({
 
 ***
 
-## <span id="D027">D027 - Not Using Latest Platform Version</span>
+## <span>D027 - Not Using Latest Platform Version</span>
 
 The integration is not using the latest platform core version. Consider upgrading to the
 latest version to get the newest features, bug fixes, and security updates.
@@ -14489,7 +15457,7 @@ to the latest version and run `zapier-platform test` (or deprecated `zapier test
 
 ***
 
-## <span id="D028">D028 - Clean Input Data Enabled</span>
+## <span>D028 - Clean Input Data Enabled</span>
 
 The integration has `cleanInputData` set to true, which causes the platform to
 automatically remove empty values `(null, '', [], {})` from `bundle.inputData`.
@@ -14499,7 +15467,7 @@ depend on array positions.
 
 This can be set globally in the app flags or per-action in the operation definition:
 
-```javascript  theme={null}
+```javascript theme={null}
 const App = {
   flags: {
     cleanInputData: false, // global flag
@@ -14516,7 +15484,7 @@ const App = {
 
 ***
 
-## <span id="E001">E001 - Environment Variables have changed between versions</span>
+## <span>E001 - Environment Variables have changed between versions</span>
 
 During promotion or migration, be sure to confirm that any environment variable
 changes are intentional and won't cause runtime problems. Remember that changes to
@@ -14525,13 +15493,13 @@ variables of other versions of the same integration.
 
 ***
 
-## <span id="L001">L001 - Version Is Deprecated</span>
+## <span>L001 - Version Is Deprecated</span>
 
 You can't promote a deprecated version.
 
 ***
 
-## <span id="L002">L002 - Version Was Already Submitted</span>
+## <span>L002 - Version Was Already Submitted</span>
 
 You can't submit a version you've already submitted. If your integration was pushed
 back and you want to resubmit for another review, you should make changes on a
@@ -14539,14 +15507,14 @@ back and you want to resubmit for another review, you should make changes on a
 
 ***
 
-## <span id="L003">L003 - Version Is Already Production</span>
+## <span>L003 - Version Is Already Production</span>
 
 This could happen if you're attempting to promote a version that is already in
 production.
 
 ***
 
-## <span id="L004">L004 - Changes From Partners Are Blocked</span>
+## <span>L004 - Changes From Partners Are Blocked</span>
 
 This is necessary when Zapier team pushes changes to a partner-owned integration.
 Partners would have to coordinate with Zapier team via [partners@zapier.com](mailto:partners@zapier.com)
@@ -14554,7 +15522,7 @@ to lift the restriction for subsequent changes from them.
 
 ***
 
-## <span id="M001">M001 - App Category Is Required</span>
+## <span>M001 - App Category Is Required</span>
 
 To correctly categorize your integration on Zapier, please choose the category that
 fits best your app. You can specify a category for your integration in the
@@ -14562,7 +15530,7 @@ Integration Settings page.
 
 ***
 
-## <span id="M002">M002 - Description Is Invalid</span>
+## <span>M002 - Description Is Invalid</span>
 
 Your app's description is a place to talk about your app, not ours! Even if we
 really like your app, you're not allowed to say "Zapier" in your app's
@@ -14592,7 +15560,7 @@ Google Translate is a service that translates text from one language into anothe
 
 ***
 
-## <span id="M003">M003 - Role Must Be Employee or Contractor</span>
+## <span>M003 - Role Must Be Employee or Contractor</span>
 
 For your integration to go public, you must be employed or hired by the company who
 makes the app used in the integration. Go to the Integration Settings page
@@ -14600,7 +15568,7 @@ to select your role.
 
 ***
 
-## <span id="M004">M004 - Invalid Logo</span>
+## <span>M004 - Invalid Logo</span>
 
 Your app's logo will be used all over the site in square containers and in various
 sizes. To ensure it looks good at all sizes, the logo image must be:
@@ -14614,7 +15582,7 @@ To resize an image or convert an image to PNG, you can use this
 
 ***
 
-## <span id="M005">M005 - Admin Team Member Email Domain Matches App Domain</span>
+## <span>M005 - Admin Team Member Email Domain Matches App Domain</span>
 
 To ensure that this integration is being submitted by the app owner we require that
 one of the Admin team members listed on the project have an email address with the
@@ -14625,14 +15593,14 @@ requirement.
 
 ***
 
-## <span id="M006">M006 - Homepage URL Must Be Present</span>
+## <span>M006 - Homepage URL Must Be Present</span>
 
 Each app must have a homepage URL. You can add the homepage
 URL at `https://developer.zapier.com/app/APP_ID/version/APP_VERSION/settings`.
 
 ***
 
-## <span id="M007">M007 - Public Integration Already Exists</span>
+## <span>M007 - Public Integration Already Exists</span>
 
 We only allow one public integration in our app directory for a given app. If a
 public integration with the same title already exists, we won't approve your
@@ -14642,7 +15610,7 @@ new integration.
 
 ***
 
-## <span id="S001">S001 - 3 Users with a live Zap</span>
+## <span>S001 - 3 Users with a live Zap</span>
 
 To verify user demand, there should be at least 3 users who have a live Zap using
 this integration. "Live" means the Zaps are switched on with at least one successful
@@ -14653,7 +15621,7 @@ before publication.
 
 ***
 
-## <span id="S002">S002 - One Live Zap for Each Trigger/Search/Action</span>
+## <span>S002 - One Live Zap for Each Trigger/Search/Action</span>
 
 To ensure any show-stopping bugs are worked out, every visible trigger/search/action
 of your integration should have a live Zap that demonstrates it works. "Live" means
@@ -14669,14 +15637,14 @@ extension.
 
 ***
 
-## <span id="S003">S003 - Live Version Count Limit</span>
+## <span>S003 - Live Version Count Limit</span>
 
 You can't have more than 100 previous or current production versions with live Zaps.
 To continue, migrate users on older versions to a newer version.
 
 ***
 
-## <span id="T001">T001 - One Successful Zap Run for Each Trigger/Search/Action</span>
+## <span>T001 - One Successful Zap Run for Each Trigger/Search/Action</span>
 
 There must be at least one successful Zap run for each visible trigger/action/search
 in your app.
@@ -14692,7 +15660,7 @@ Learn more about the Zap History [here](https://help.zapier.com/hc/en-us/article
 
 ***
 
-## <span id="T002">T002 - Missing Primary Key Fields in Live Polling Results</span>
+## <span>T002 - Missing Primary Key Fields in Live Polling Results</span>
 
 For polling triggers, the deduper uses the primary key field(s) to decide if it's
 seen an object before. You can define one or more output fields as the primary key.
@@ -14712,7 +15680,7 @@ accounts.
 
 <Icon icon="xmark" /> examples of an **incorrect** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   // The deduper uses `id` field by default if no output fields are `primary`.
   // So this sample should have an `id` field for it to pass.
@@ -14725,7 +15693,7 @@ accounts.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // `contact_id` is set as `primary`, but it's missing in the result
   "<live_polling_result>": {
@@ -14741,7 +15709,7 @@ accounts.
 
 <Icon icon="check" /> examples of a **correct** implementation:
 
-```js  theme={null}
+```js theme={null}
 {
   "<live_result_result>": {
     "id": 4,
@@ -14750,7 +15718,7 @@ accounts.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // This example defines `contact_id` as the unique primary key.
   "<live_polling_result>": {
@@ -14764,7 +15732,7 @@ accounts.
 }
 ```
 
-```js  theme={null}
+```js theme={null}
 {
   // If multiple fields are unique together, you can set them as `primary`.
   "<live_polling_result>": {
@@ -14782,7 +15750,7 @@ accounts.
 
 ***
 
-## <span id="T003">T003 - ISO-8601 Date/Time Format in Zap History</span>
+## <span>T003 - ISO-8601 Date/Time Format in Zap History</span>
 
 To ensure Zapier can correctly parse dates and times, you should always use ISO-8601
 format to represent dates or times. Timezone info should also be present if it
@@ -14826,7 +15794,7 @@ accounts.
 
 ***
 
-## <span id="T004">T004 - Static Sample Contains a Subset of Keys from Live Result</span>
+## <span>T004 - Static Sample Contains a Subset of Keys from Live Result</span>
 
 Static samples provide Zapier users and partners a way to preview and map fields
 for a trigger or action without actually making a request to your API. It's
@@ -14843,14 +15811,14 @@ these accounts.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```json  theme={null}
+```json theme={null}
 static: {"id": 1, "email": "john@example.com"}
 live: {"id": 2, "name": "Alice"}
 ```
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```json  theme={null}
+```json theme={null}
 static: {"id": 1, "name": "John"}
 live: {"id": 2, "name": "Alice", "email": "alice@example.com"}
 ```
@@ -14859,7 +15827,7 @@ See [Sample Data](https://platform.zapier.com/build/sample-data) for more detail
 
 ***
 
-## <span id="T005">T005 - Live Trigger Result Respects Output Field Definition</span>
+## <span>T005 - Live Trigger Result Respects Output Field Definition</span>
 
 This check takes the latest run from the [Zap History](https://zapier.com/app/history)
 and verifies whether the trigger result conforms to the output fields for the
@@ -14874,7 +15842,7 @@ Zaps in these accounts.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```json  theme={null}
+```json theme={null}
 live result: {"id": "1"}
 output fields: [
     {"key":  "id", "type": "integer"},
@@ -14884,7 +15852,7 @@ output fields: [
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```json  theme={null}
+```json theme={null}
 live result: {"id": 1, "email": "john@example.com"}
 output fields: [
     {"key":  "id", "type": "integer"},
@@ -14896,7 +15864,7 @@ See [Sample Data](https://platform.zapier.com/build/sample-data) for more detail
 
 ***
 
-## <span id="T006">T006 - Polling Sample Contains a Subset of Keys from Live Result</span>
+## <span>T006 - Polling Sample Contains a Subset of Keys from Live Result</span>
 
 For REST Hook triggers, we require you to provide a `Perform List` URL (check
 `D006`) so that users can retrieve a real data sample in the Zap editor. This is
@@ -14923,14 +15891,14 @@ in these accounts.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```json  theme={null}
+```json theme={null}
 polling sample: {"id": 1, "email": "john@example.com"}
 live: {"id": 2, "name": "Alice"}
 ```
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```json  theme={null}
+```json theme={null}
 polling sample: {"id": 1, "name": "John"}
 live: {"id": 2, "name": "Alice", "email": "alice@example.com"}
 ```
@@ -14939,14 +15907,14 @@ See [Sample Data](https://platform.zapier.com/build/sample-data) for more detail
 
 ***
 
-## <span id="U001">U001 - Developer Terms of Service</span>
+## <span>U001 - Developer Terms of Service</span>
 
 You must agree to the latest Developer Terms of Service in order to proceed. Go to
 [Developer Home](https://developer.zapier.com) to agree.
 
 ***
 
-## <span id="Z001">Z001 - Polling Sample Respects Output Field Definition</span>
+## <span>Z001 - Polling Sample Respects Output Field Definition</span>
 
 For REST Hook triggers, we require you to provide a `Perform List` URL (check
 `D006`) so that users can pull a live sample in the Zap editor. This is called a
@@ -14964,7 +15932,7 @@ integration admins, so build your test Zaps in these accounts.
 
 <Icon icon="xmark" /> an example of an **incorrect** implementation:
 
-```json  theme={null}
+```json theme={null}
 polling sample: {"id": "1"}
 output fields: [
     {"key":  "id", "type": "integer"},
@@ -14974,7 +15942,7 @@ output fields: [
 
 <Icon icon="check" /> an example of a **correct** implementation:
 
-```json  theme={null}
+```json theme={null}
 polling sample: {"id": 1, "email": "john@example.com"}
 output fields: [
     {"key":  "id", "type": "integer"},
@@ -14996,42 +15964,35 @@ When your Zapier integration meets these requirements, it will pass the review f
 
 Please review these requirements carefully before submitting to ensure your integration is compliant. Integrations and their associated apps must meet all requirements to be published.
 
-**Important**: integrations for prohibited apps will be removed from the platform. Integrations for restricted apps or that do not meet all requirements will be allowed to remain [private](/platform/quickstart/private-vs-public-integrations).
+**Important**: integrations for prohibited apps will be removed from the platform. Integrations for restricted apps or that do not meet all requirements will be allowed to remain [private](/platform/quickstart/private-vs-public-integrations). Also, per our Platform Terms, your integration and app’s compliance with third-party terms is your responsibility, and we expect our partners to ensure their compliance.
 
 Work through each section and ask the [PublishBot](https://publishbot.zapier.app/) or write in via the [contact form](https://developer.zapier.com/contact) for any questions.
 
 ## Key considerations
 
 * Because the Zapier Platform is always changing and improving to keep up with the needs of our customers, this is a living document.
-
 * If you prefer your integration to be accessible to a limited group of users, or if the Zapier integration review requirements do not align with your needs, you might want to consider maintaining your integration as private. Learn more about [private vs public integrations](/platform/quickstart/private-vs-public-integrations).
-
 * We encourage diversity on the Zapier Platform, provided your integration respects users with varying viewpoints and ensures a high-quality user experience. Any integration found to contain or exhibit behavior deemed inappropriate, discriminatory, or crossing acceptable boundaries will be rejected.
-
 * We reserve the right to reject publishing requests or to remove users and integrations from the Zapier Platform if we believe these requirements, the [Platform Agreement](https://zapier.com/platform/tos), or our [Terms of Service](https://zapier.com/legal/terms-of-service) have not been met. This includes attempts to exploit the review process, illicitly acquire user data, or manipulate test users.
 
 ## Sections
 
-<CardGroup cols={3}>
-  <Card title="Prohibited Integrations" icon="ban" href="/publish/integration-publishing-requirements#1-prohibited-integrations" horizontal />
+<CardGroup>
+  <Card title="Prohibited Integrations" icon="ban" href="/publish/integration-publishing-requirements#1-prohibited-integrations" />
 
-  <Card title="Restricted Integrations" icon="triangle-exclamation" href="/publish/integration-publishing-requirements#2-restricted-integrations" horizontal />
+  <Card title="Restricted Integrations" icon="triangle-exclamation" href="/publish/integration-publishing-requirements#2-restricted-integrations" />
 
-  <Card title="Ownership and Permissions" icon="user-shield" href="/publish/integration-publishing-requirements#3-ownership-and-permissions" horizontal />
+  <Card title="Ownership and Permissions" icon="user-shield" href="/publish/integration-publishing-requirements#3-ownership-and-permissions" />
 
-  {" "}
+  <Card title="Data Security and Privacy" icon="lock" href="/publish/integration-publishing-requirements#4-data-security-and-user-privacy" />
 
-  <Card title="Data Security and Privacy" icon="lock" href="/publish/integration-publishing-requirements#4-data-security-and-user-privacy" horizontal />
+  <Card title="Quality and Functionality" icon="circle-check" href="/publish/integration-publishing-requirements#5-quality-and-functionality" />
 
-  <Card title="Quality and Functionality" icon="circle-check" href="/publish/integration-publishing-requirements#5-quality-and-functionality" horizontal />
+  <Card title="Integration Listing" icon="list" href="/publish/integration-publishing-requirements#6-integration-listing" />
 
-  {" "}
+  <Card title="Support" icon="headset" href="/publish/integration-publishing-requirements#7-support" />
 
-  <Card title="Integration Listing" icon="list" href="/publish/integration-publishing-requirements#6-integration-listing" horizontal />
-
-  <Card title="Support" icon="headset" href="/publish/integration-publishing-requirements#7-support" horizontal />
-
-  <Card title="Submission Process" icon="paper-plane" href="/publish/integration-publishing-requirements#8-submission-process" horizontal />
+  <Card title="Submission Process" icon="paper-plane" href="/publish/integration-publishing-requirements#8-submission-process" />
 </CardGroup>
 
 ## 1. Prohibited integrations
@@ -15067,11 +16028,8 @@ Apps/integrations should not include content that is discriminatory, defamatory,
 Integrations must not attempt to bypass, evade, or otherwise interfere with controls or restrictions imposed by websites, APIs, or other services. This includes, but is not limited to:
 
 * CAPTCHA solving
-
 * Bot detection evasion
-
 * Geo-restriction workarounds
-
 * Accessing gated/protected content without proper authorization
 
 If your app includes such functionality, you must provide evidence of compliance with applicable legal requirements. Zapier may reject or remove integrations that expose non-compliant circumvention features through Zapier.
@@ -15125,7 +16083,9 @@ For security reasons, all API endpoints used by an integration (including authen
 
 ### 4.3 Integration stores credentials securely
 
-Do not hard code credentials such as API Keys, Client IDs, Client Secrets, etc. into your integration. Use the appropriate section in the Platform UI (e.g. Application Credentials) or use [environment variables](/platform/build/env) instead.
+Do not hard code credentials such as API Keys, Client IDs, Client Secrets, etc. into your integration. Use the appropriate section in the Platform UI (e.g. Application Credentials) or use [environment variables](/platform/build/env) instead.\
+\
+When using [environment variables](/platform/build/env), you can store credentials that are used only in the authentication process (such as a Client ID and Client Secret, which are used only in requesting an access token in an OAuth v2 authentication). However, do not store tokens or authentication credentials included in every API request from the integration.
 
 ## 5. Quality and functionality
 
@@ -15217,7 +16177,7 @@ At our discretion, we reserve the right to reject publishing requests or to remo
 
 ***
 
-*Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
+[*Need help? Tell us about your problem and we'll connect you with the right resource or contact support.*](https://developer.zapier.com/contact)
 
 
 # Integration success strategies
@@ -15253,7 +16213,7 @@ Keep users engaged inside your own platform by embedding the Zapier experience i
 **Jotform case study:** Jotform makes it easy for users to connect their forms to other apps to send form responses. Within every form builder, users have the ability to search for integrations, discover popular use cases, and build and edit Zaps all without leaving Jotform.
 
 <Frame>
-  <img src="https://cdn.zappy.app/bc91c44477f97c9f7104b9ca690cd7cf.gif" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15268,7 +16228,7 @@ From tool tips to testimonials, make sure your newest customers know it's possib
 **Base CRM case study:** Base CRM shares a customer story in their onboarding sequence to help new users picture automation magic in their own work. The result? Stickier users right from the get-go.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5adafd7d0b7606bd24ef5ae743d9b4cd" data-og-width="1528" width="1528" data-og-height="1012" height="1012" data-path="images/9b1c3ac4d870456e5f4ceedc85159878.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2bcf34af2be93577c7c9f2b68a8a8f7d 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=656d6e3b9ee1bc01ad3309c637323704 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=01c76280dfe0440e39608f85533aae13 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e414248f0b9d664f6de187db2913b106 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b94d1b2c1be0351b582b645558c1d1fe 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/9b1c3ac4d870456e5f4ceedc85159878.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6588c85cf1744037516c458e2822eece 2500w" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15283,7 +16243,7 @@ As your product evolves, your integration should, too. An up-to-date, bug-free i
 **Thinkific case study:** As Thinkific's feature set grows, they improve their Zapier integration, too. By promoting these updates in blog posts and product newsletters, existing users learn how to power up their workflows and new users discover Zapier automation.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6d2bbb87224bb872e3db5858a0dd1d07" data-og-width="1440" width="1440" data-og-height="870" height="870" data-path="images/945be106295dfa438f9479275f492eff.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=834bacf301fb60e768f8f1012ec8eebc 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=25c37db890a5c074196e55996618da94 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9cbbfd69d0f62bf3fbd945eb9c6f8d2b 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=431d896f5133e7100f2d7f2cfe8b2b02 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=f32a2754d71e750d5d76d5ee5fbb8c72 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/945be106295dfa438f9479275f492eff.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=86b80865ef47e14265892e4e7caec9a1 2500w" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15299,11 +16259,11 @@ Chances are, your users are searching your marketplace for the apps they want to
 **Any.do and Wufoo case studies:** Any.do uses our plug-and-play Workflow Element to show off a huge library of integrations enabled by Zapier, while Wufoo powers its integration marketplace with our Workflow API. This way, you're providing users and prospects the widest selection of apps to search through when they're looking for integrations to connect.
 
 <Frame>
-  <img src="https://cdn.zappy.app/1ba8ac90ca98401b0234f04ee188e8fd.gif" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://cdn.zappy.app/5771591ec4d63017651c1b62849a0778.png" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15330,7 +16290,7 @@ Make sure your users aren't left empty-handed. When search results in your marke
 **Help Scout case study:** Help Scout prompts users to search for the integrations they want. When a search result comes up empty, a short snippet of default text suggests Zapier.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=42c44b8d383463097a1bc111de8c6038" data-og-width="1286" width="1286" data-og-height="680" height="680" data-path="images/c6e2f18f1054a28e75a975cd9c3f99f8.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c3541ee0f1c47a29d79738ba7315c089 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=11b55bba29b065bb64289c93459b052d 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c90e10e40dc3e00dc446713f0f8abb38 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8dbbc6114322394bb34b655160976f25 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=99f6a96747c283864724133029de4be6 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/c6e2f18f1054a28e75a975cd9c3f99f8.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a190c3433a11fd946d9408211851b37d 2500w" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15351,7 +16311,7 @@ Zero in on the users most likely to adopt automation into their everyday work. W
 **Autopilot case study:** Autopilot celebrates when users activate a chat feature, then suggests Zapier as a solution for automated contact management.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=794ccfe6e6d1296529e54f445a96ab95" data-og-width="344" width="344" data-og-height="448" height="448" data-path="images/5a6b1f983bc431286a2e1501b50a8257.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=eadbe5d0343bb7cf18cd9113341362cf 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ecb785a07b1ea84314073aa651ffbea7 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=a0793b7e37b1de89600fe7297a97f3a0 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=761178568189a430563ecee4e596cd7c 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f1b36d2555b843d62484848ad6a2a9ad 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5a6b1f983bc431286a2e1501b50a8257.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=13f7f1c68830f0da5b8e97ef6a16ac21 2500w" />
+  <img />
 </Frame>
 
 > **Do this yourself by:**
@@ -15384,7 +16344,9 @@ Learn more about the [benefits available in each tier](https://zapier.com/develo
 
 Your tier in the Zapier Partner Program is determined by your integration's number of active users and health score.
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=36b1975a0a32e4324e1828593f3b2a9c" alt="" data-og-width="951" width="951" data-og-height="768" height="768" data-path="images/ea9bb3a0229584725b56c474c1f7bf0e.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ebea2aab6d24c60a0d72c42a85d38420 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a95f9931656989655fbff9fdea72e4f3 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e03d67bcb7591beb279e15f49aacfd86 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f1df36a2d04faac80a177f01c518aa96 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e188c654ea29108ff490ec29fe5c246e 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/ea9bb3a0229584725b56c474c1f7bf0e.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=149f39c75cf4909534fd022a15cb3403 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 Your tier in the Partner Program is evaluated on a fixed quarterly basis: at the beginning of January, April, July, and October. Your health score is calculated daily in response to your engagement with open bug reports and feature requests.
 
@@ -15395,6 +16357,12 @@ Zapier won't externally share your tier in the Partner Program with anyone, incl
 ### Active users
 
 The active users metric looks at how many people are actively using your Zapier integration this quarter. Since this number accumulates over the quarter, it is normal to see a drop at the beginning of each quarter compared to the end of last quarter.
+
+The minimum number of active users to achieve each tier above Bronze are:
+
+* Silver - 50
+* Gold - 350
+* Platinum - 3,000 OR minimum 350 with a 20% growth rate over last quarter
 
 To increase usage of your Zapier integration, try out [these 10 tactics](/platform/publish/partner-faq).
 
@@ -15411,7 +16379,7 @@ Some feature requests and bugs impact your score more than others. For example, 
 Our goal for all integrations is for them to maintain a “healthy” health score. No tier of the Partner Program requires an “exceptional” health score.
 
 <Frame>
-  <video controls autoplay muted loop src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/1e71ec2a31c0cdecf7880f4ac1f4915d.mp4?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=cba8b543051c9c8c5663a8f5a69fe6ae" data-path="images/1e71ec2a31c0cdecf7880f4ac1f4915d.mp4" />
+  <video />
 </Frame>
 
 To improve your health score, respond to and resolve your outstanding [feature requests and bugs](/platform/manage/user-feedback).
@@ -15427,7 +16395,9 @@ You can view Partner Program metrics in two ways:
 
 As you launch and maintain your integration, monitor and review the insights in the dashboard on a regular cadence. Insights include data on the integration's growth and usage, such as monthly active users, retention rates, and Zap usage by triggers and actions. You can [see all the metrics tracked](/platform/manage/integration-insights) in this table, or access them for any integration you are an Admin or Collaborator on from the “Dashboard” tab of the developer platform.
 
-<Frame><img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=34d7075787a0698e39841236e047a731" alt="" data-og-width="1248" width="1248" data-og-height="634" height="634" data-path="images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6543d136e816b11fde36db2d481f1093 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a0df21805a0bf1bb8f14a30cfe66691e 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=2f8ab5f031c13f44a3b76b7a5678c0e9 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=c1d607bd7e401b67946d0d0a739a5b6f 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=dead2800a49e4edd82cafbe499bba3e3 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d7a53ee12f8fb94a44edbc0f8e3195ea.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a182d40d59de8d8dbc6684f4d7d734ba 2500w" /></Frame>
+<Frame>
+  <img alt="" />
+</Frame>
 
 You can filter most growth metrics by the last X number of days to identify trends and changes in user activity in correlation to marketing initiatives, integration changes, and product updates like [embedding Zapier](https://platform.zapier.com/embed/full-zapier-experience). Usage details for each trigger and action will show which functionalities are the most popular and being effectively utilized. You can easily and safely share access to the insights by [inviting collaborators](/platform/manage/add-team) to the integration without giving them permission to make changes to it.
 
@@ -15512,7 +16482,7 @@ After you've submitted your integration for review, one of our developers will r
 ## 5. Beta phase
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=cf8ad9227b54040eab5d891fc038dd1c" data-og-width="3032" width="3032" data-og-height="1928" height="1928" data-path="images/launch_process.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ae2ffad3ce45f5a31dc595e5c0422044 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=5bc0e4afb6885eed447eb94e523bca60 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=611e50fa2f062297f32c1bc664d52f7f 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=fc98356afe3aacd53bccf00e5e457ca8 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b58ec4aa1c8874d95679a387f2faec51 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=57cd6d6de0e8ffb57f7e7056e4d3f787 2500w" />
+  <img />
 </Frame>
 
 When your integration is approved, Zapier will update your:
@@ -15607,7 +16577,7 @@ Step-up your documentation game. Implementing these essential strategies and tip
 * Community-contributed answers help leverage social proof. When users see that their peers have found solutions helpful, this adds authenticity and credibility to your help docs
 * Highlighting real user experiences demonstrates that your documentation isn't just theoretical— bolstering users' confidence in its effectiveness.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=4f1159ed927ed38765fb5fdda4ec5a1b" data-og-width="1480" width="1480" data-og-height="643" height="643" data-path="images/7fe23e47e3167561307b76c49831c07d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=df8f26b798e63d8b33542de5ee8a509d 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bb160de85ec4f4f129371061b62f581f 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f417c80db6f3783962e40fd8c8d983dc 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=cbaa35c16ddf2eca3a1dda3522498234 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=d6f5dd3c0bd6ca95e6c781aaec6607e3 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/7fe23e47e3167561307b76c49831c07d.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=79bbac21c843d02f5b5399a5b874e4b3 2500w" />
+    <img />
   </Frame>
 
 ### Anticipate user needs
@@ -15627,7 +16597,7 @@ Step-up your documentation game. Implementing these essential strategies and tip
 * Allow users to rate the helpfulness of your articles and provide comments or suggestions for improvement
 * Monitor user feedback regularly and use it to prioritize updates and improvements to your help docs (and integration)
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=8e0eded3258dfd1ad2d132fcfa7936cb" data-og-width="634" width="634" data-og-height="177" height="177" data-path="images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f83dba306c24cc6e73730c1477312881 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1555bd41a5dd3ca911fb3cb37e89fab6 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7bc43133b80a59b32d30969f55cec0a9 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=18475cb09c3bba7e5be0d531c726f141 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1d0c4279ef4dc4b8fba78874edff906d 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6da7b22dad9f82b3543f3cd8f9e7d5dc.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=17636777a9d3e62b19b62161722c280d 2500w" />
+    <img />
   </Frame>
 
 ### Integrate help docs with support channels
@@ -15665,9 +16635,9 @@ Zap templates are ready made Zaps with the apps and core fields pre-selected, fo
 
 [Zapier Agent Templates](https://docs.google.com/document/d/1FfpmGhqE2uMX25TSKpkW8d72U4-n8rjn_ow1Xa_0kM8/edit?usp=sharing) let you build AI-powered workflows that adapt to context and goals in real time. Unlike traditional Zaps, Zapier Agents can reason, make decisions, and dynamically choose the best actions across thousands of apps.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Save new Gmail attachments to Google Drive" href="https://zapier.com/webintent/create-zap?template=192&utm_source=partner&utm_medium=embed&utm_campaign=wfe_custom&provider=&entry-point-location=partner_embed&referer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates&referrer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates">
-    <Icon icon="google-drive" size={21} /> Google Drive <br /><Icon icon="envelope-circle-check" size={21} /> Gmail<br /> <Icon icon="filter" size={21} /> Filter by Zapier
+    <Icon icon="google-drive" /> Google Drive <br /><Icon icon="envelope-circle-check" /> Gmail<br /> <Icon icon="filter" /> Filter by Zapier
 
     <br />
 
@@ -15675,7 +16645,7 @@ Zap templates are ready made Zaps with the apps and core fields pre-selected, fo
   </Card>
 
   <Card title="Collect new Typeform responses as rows on Google Sheets" href="https://zapier.com/webintent/create-zap?template=111&utm_source=partner&utm_medium=embed&utm_campaign=wfe_custom&provider=&entry-point-location=partner_embed&referer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates&referrer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates">
-    <Icon icon="video" size={21} /> Typeform <br /><Icon icon="sheet-plastic" size={21} /> Google Sheets
+    <Icon icon="video" /> Typeform <br /><Icon icon="sheet-plastic" /> Google Sheets
 
     <br />
 
@@ -15683,7 +16653,7 @@ Zap templates are ready made Zaps with the apps and core fields pre-selected, fo
   </Card>
 
   <Card title="Share your new Instagram posts to your Facebook page" href="https://zapier.com/webintent/create-zap?template=162&utm_source=partner&utm_medium=embed&utm_campaign=wfe_custom&provider=&entry-point-location=partner_embed&referer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates&referrer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates">
-    <Icon icon="instagram" size={21} /> Instagram <br /><Icon icon="facebook" size={21} /> Facebook
+    <Icon icon="instagram" /> Instagram <br /><Icon icon="facebook" /> Facebook
 
     <br />
 
@@ -15691,7 +16661,7 @@ Zap templates are ready made Zaps with the apps and core fields pre-selected, fo
   </Card>
 
   <Card title="Create new Trello cards from new Google Calendar events" href="https://zapier.com/webintent/create-zap?template=1495&utm_source=partner&utm_medium=embed&utm_campaign=wfe_custom&provider=&entry-point-location=partner_embed&referer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates&referrer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates">
-    <Icon icon="calendar-days" size={21} /> Google Calendar <br /><Icon icon="trello" size={21} /> Trello
+    <Icon icon="calendar-days" /> Google Calendar <br /><Icon icon="trello" /> Trello
 
     <br />
 
@@ -15699,7 +16669,7 @@ Zap templates are ready made Zaps with the apps and core fields pre-selected, fo
   </Card>
 
   <Card title="Get Slack notifications for new Typeform entries" href="https://zapier.com/webintent/create-zap?template=883&utm_source=partner&utm_medium=embed&utm_campaign=wfe_custom&provider=&entry-point-location=partner_embed&referer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates&referrer=https%3A%2F%2Fplatform.zapier.com%2Fpublish%2Fzap-templates%3Futm_source%3Dpartner%26utm_medium%3Dembed%26utm_campaign%3Dwfe_custom%26referer%3Dhttps%253A%252F%252Fplatform.zapier.com%252Fpublish%252Fzap-templates">
-    <Icon icon="video" size={21} /> Typeform <br /><Icon icon="slack" size={21} /> Slack
+    <Icon icon="video" /> Typeform <br /><Icon icon="slack" /> Slack
 
     <br />
 
@@ -15728,17 +16698,17 @@ To get started, go to Zapier's [Zap template creator](https://zapier.com/webinte
 ### 1. Add a Trigger Step
 
 <Frame>
-  <img src="https://cdn.zappy.app/c43616639a2c889ed88d58cfa74163ae.png" />
+  <img />
 </Frame>
 
 Select the trigger app by selecting it from the "Top Apps" list or searching for the app by name.
 
-> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template.
+> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template. You should also avoid selecting non-promoted versions of public integrations, that is, versions with version numbers or app tags like “Legacy” or “Deprecated”, as that would prevent the Zap template from being published.
 
 Choose the app's trigger from the dropdown that starts your Zap.
 
 <Frame>
-  <img src="https://cdn.zappy.app/ed410d11c8d9eb326499ac28c4adc76b.png" />
+  <img />
 </Frame>
 
 When creating Zap templates, you won’t be able to connect an account. Instead, the Zap template editor will use the sample data provided by the selected method (trigger/action/search). You can view the sample data available on the `Test` pane. If certain fields aren’t available, it’s because the integration developer didn’t include them in the integration’s sample data. While you can still use the method in the Zap template, you might not be able to pre-map fields for users in subsequent action step(s).
@@ -15746,7 +16716,7 @@ When creating Zap templates, you won’t be able to connect an account. Instead,
 If there are input fields to customize the trigger, you may assign a default value or leave the input fields empty. Users will be able to input their own information when setting up the Zap. Once done, click Continue to proceed to the next step.
 
 <Frame>
-  <img src="https://cdn.zappy.app/5ab8df0cab8ee836f144a1874dc3113a.png" />
+  <img />
 </Frame>
 
 ### 2. Add an Action Step
@@ -15754,15 +16724,15 @@ If there are input fields to customize the trigger, you may assign a default val
 Select the action app by selecting it from the "Top Apps" list or searching for the app by name.
 
 <Frame>
-  <img src="https://cdn.zappy.app/c0cbc6d13991ee2e7bf16e62b8199b64.png" />
+  <img />
 </Frame>
 
-> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template.
+> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template. You should also avoid selecting non-promoted versions of public integrations, that is, versions with version numbers or app tags like “Legacy” or “Deprecated”, as that would prevent the Zap template from being published.
 
 Choose the app's action from the dropdown that you want to follow the trigger. Same as the trigger, the Zap template editor will load the sample data available for the selected action.
 
 <Frame>
-  <img src="https://cdn.zappy.app/c0de5ac0d71c4875ca4d86095e114d39.png" />
+  <img />
 </Frame>
 
 > **Note**: If you add a search action following the trigger, you will need to add another action step following the search. This is because Zaps cannot end with a search method (unless it's a dyanmic `find or create` action).
@@ -15770,7 +16740,7 @@ Choose the app's action from the dropdown that you want to follow the trigger. S
 Now for the most crucial part of your Zap template: Where appropriate, map the output fields from the trigger to the input fields in the action. The action step will show input fields that are statically available. Dynamic input fields that populate based on the input of another field will not be available. For the best Zap template experience, add field mapping to as many input fields as possible to help users set up Zaps quickly. For example, you might map Gmail's `Attachment` field to `File` field for Google Drive, as well as `Attachments Filename` to the `File Name` field.
 
 <Frame>
-  <img src="https://cdn.zappy.app/c4bce7e2300f0784e47ff24122d3cc22.png" />
+  <img />
 </Frame>
 
 > **Note**: Custom fields from apps (i.e. fields added by users) will not be available. This is because the Zap template editor is not authenticated with an app account to fetch that data. When users create a Zap from your template, they'll be able to leverage dynamic and custom fields.
@@ -15782,7 +16752,7 @@ Most dropdown menus are used to select folders, projects, and other user-generat
 Zap template action forms include `required` (denoted with a red asterix) and `optional` fields. When users set up your Zap template, they are required to complete `required` fields before turning on the Zap. If you know the best data to map to those fields, add them to make sure your users' Zaps include as much detail as possible.
 
 <Frame>
-  <img src="https://cdn.zappy.app/3a8cbfde0fce0d820c3ca300c7a8ad11.png" />
+  <img />
 </Frame>
 
 > **Note**: Do not enter a value into an input field unless *every* user of the Zap Template would want that value included in the action.
@@ -15790,7 +16760,7 @@ Zap template action forms include `required` (denoted with a red asterix) and `o
 Zapier then shows a `Test` pane, similar to what users see when setting up Zaps. You won't be able to test your action steps when building a Zap template. The `Test` pane will call this out, and default to showing a successful test.
 
 <Frame>
-  <img src="https://cdn.zappy.app/cb93fde8e141a364e4eac48c5e9860a1.png" />
+  <img />
 </Frame>
 
 ### 3. (Optional) Add filters or additional action steps
@@ -15812,7 +16782,7 @@ For example, you could add a filter between the trigger and action step to have 
 > **Note**: Most Zap templates don't need filters, and most filters should be added by users later if required. However, including a filter in a Zap template can be useful if your Zap Template is only useful with a filter to remove extraneous data.
 
 <Frame>
-  <img src="https://cdn.zappy.app/4c6932c029f63c53c437565362a812fb.gif" />
+  <img />
 </Frame>
 
 > **Note**: Paths by Zapier, Code by Zapier, Webhooks by Zapier, Looping by Zapier, and Formatter by Zapier action steps are currently not allowed in Zap templates.
@@ -15822,13 +16792,13 @@ For example, you could add a filter between the trigger and action step to have 
 Once you've finsihed building your Zap template, you can give it a title and description. Click `Submit` in the top-right corner or at the bottom of the `Test` in the last step of your Zap template.
 
 <Frame>
-  <img src="https://cdn.zappy.app/87e26ec05d5f6c18477e950b323c668e.png" />
+  <img />
 </Frame>
 
 After clikcing `Submit`, you will be prompted to provide a title and description for the Zap template.
 
 <Frame>
-  <img src="https://cdn.zappy.app/554732e6af2a4472693af028aab604bc.png" />
+  <img />
 </Frame>
 
 Zap templates are designed to highlight specific use cases and inspire users to automate workflows with popular apps. A clear, compelling title grabs attention and conveys the core idea at a glance, whether users are browsing Zapier or exploring an embedded experience. The description provides more detail, explaining the use case and how the Zap works. Together, the title and description work to spark interest and guide users to quickly set up and activate the Zap.
@@ -15838,7 +16808,7 @@ Zap templates are designed to highlight specific use cases and inspire users to 
 The title clearly and briefly states the apps the Zap connects and the workflow it accomplishes. They include the trigger and action apps and the actions they perform. They use present tense, active voice, and sentence case.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=31ebbac99508af887cc215095daf6426" data-og-width="1000" width="1000" data-og-height="84" height="84" data-path="images/fc6854d9f356bca06d8879a50ef41036.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a186836c29284b8974275679275cfde1 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=7f4eb3c0670af57afd3a4241305b506b 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ca9417c02a16ff1ecb1bb921291b5897 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=5a02b8053b06d57799973395ff91acc8 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=e6733305b75f2617558a2e5e68151c0a 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fc6854d9f356bca06d8879a50ef41036.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=de07ffdb3f85c47b9a0da5e1cf98377b 2500w" />
+  <img />
 </Frame>
 
 Most Zap template titles read something like this: `Add new Gmail emails to Google Sheets as rows`. The title mentions what happens in the trigger app followed by what Zapier does in the action app. Some examples of good titles:
@@ -15912,7 +16882,7 @@ Once you've added your Zap template title and description, click `Save Draft`.
 Now try using the Zap template to make sure it works as expected. Open your [Zap Template dashboard](https://zapier.com/zap-templates/), click the `...` icon beside the Zap template you built, and select `Create Zap`. A new window will open, creating a Zap from the Zap template. Click through each step of the Zap, validate everything works as expcted, and that you can turn the Zap on.
 
 <Frame>
-  <img src="https://cdn.zappy.app/5cb1185389b3f56e70c4dd6df1b455d0.png" />
+  <img />
 </Frame>
 
 ### 5. Submit Zap template for review
@@ -15934,7 +16904,7 @@ When creating a Zap template, you typically map data between steps by selecting 
 * The trigger is in position 1, with subsequent steps numbered sequentially
 
 <Frame>
-  <img src="https://cdn.zappy.app/22a1e4335122c940fad81eb7c4b63b73.png" />
+  <img />
 </Frame>
 
 **Step 2: Determine the field name**
@@ -15948,7 +16918,7 @@ When creating a Zap template, you typically map data between steps by selecting 
 * In this example, we can see Google Calendar > New Event returns the field `eventType`
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8d8193f1b6c9822ec9b8fd19d852c85a" data-og-width="1123" width="1123" data-og-height="666" height="666" data-path="images/d0025c224ba67f6470ef9e2629dce890.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=71eed34b0203f3f6360515b7b05043b8 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=92b0e807e9435eb51ee8877158a35a41 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=118d7c7459f062ad004c0e0dc6f40383 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=af7667b1c641423cf69a618e4f17c991 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=71e5c0654147ab89e729fabcfac6c28a 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d0025c224ba67f6470ef9e2629dce890.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=27786d9f95a8375467b9d098cb7fd6d9 2500w" />
+  <img />
 </Frame>
 
 **Step 3: Combine step position and field name**
@@ -15980,7 +16950,7 @@ Example: the `eventType` field isn't returned in the sample data for Google Cale
 * For example, if the trigger returned the following and you wanted to retrieve the response for question 3, your custom pill would look like this: `{{1__questions__3}}`
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=36b3cc8cf1e731d79d731d315259b0aa" data-og-width="441" width="441" data-og-height="170" height="170" data-path="images/a64282d282a776319c77cc73f7aa504f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a44b57cb86837237c31ec5c0346724db 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a79854dce17ab1cec8b56865695e3040 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fc06b07c392dee56a61664012baee8b5 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2d3b285793f7a96012d314be3c4f5a50 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=9af374965484159188fdd7729075c814 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a64282d282a776319c77cc73f7aa504f.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=72caa3a79bc5c4c8f104339f33ed7ad3 2500w" />
+  <img />
 </Frame>
 
 By following these steps, you should be able to effectively add custom pills to your Zap Templates.
@@ -15994,7 +16964,7 @@ It's not enough to turn your ideal workflows into Zap templates. You need to get
 Your published Zap templates will appear on your directory page. Zap templates are loosely ordered by popularity, helping users easily discover common use-cases. Users can also search for Zap templates that connect your app with another.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=2b23f54ce99b587d41260a176aaf7417" data-og-width="1561" width="1561" data-og-height="1126" height="1126" data-path="images/f56ac65d2c36314bae02f21b00f983e4.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=d011684a11bd1fac53c3d347efc1514f 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a95d509845a45a14b7cb07b172554c77 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=a57778d5b21c74d4fe9ebae6bec3282e 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=22c0f1f6abb32efd514d04e9b2227376 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=4c563aa752cd56be512cc2c43a78f812 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/f56ac65d2c36314bae02f21b00f983e4.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=14c1ae296ed8caf07b981c2be8b4b811 2500w" />
+  <img />
 </Frame>
 
 ## Manage your Zap templates
@@ -16002,7 +16972,7 @@ Your published Zap templates will appear on your directory page. Zap templates a
 Over time, you'll likely make dozens of Zap templates. You can manage them — in draft, review, or publicly available — from your [Zap templates](https://zapier.com/zap-templates/) dashboard alongside Zapier's Developer Platform tools.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7e914a842c2825b310d93ae54928f89c" data-og-width="1762" width="1762" data-og-height="864" height="864" data-path="images/35809b4d266dcfb55f1190cd8224ff1d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=8c34b6c6403188b996edaf21b02b9919 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=fba333f25168d8be0e05c9ed6013789c 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=1f131ee642bb0dbf7ed95da4eaa59cab 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=7171684a5dedf21d2462781a5829d9e8 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=fa37d33797330c3c3d441a6512a06305 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/35809b4d266dcfb55f1190cd8224ff1d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=2d24c819f9fa6a5f2688b3703a2cea49 2500w" />
+  <img />
 </Frame>
 
 Filter through your Zap templates by status on the left sidebar, click a Zap template to edit it, or select the gear icon on the right of a Zap template to copy its public link, test it, or delete it.
@@ -16038,25 +17008,25 @@ While invalid, the Zap template will not be *Public* until it is adjusted to use
     From the [Zap template dashboard](https://developer.zapier.com/zap-templates), click the `...` icon beside the Zap template.
 
     <Frame>
-      <img src="https://cdn.zappy.app/4ecc3d2fd7e0bb36d6563e92e59e4b62.png" />
+      <img />
     </Frame>
 
     From inside the Zap template editor, click the Zap template title at the top of the screen and click and click `Copy Template ID`.
 
     <Frame>
-      <img src="https://cdn.zappy.app/cf8d8199467c30738ded844a8d5caea0.png" />
+      <img />
     </Frame>
 
     If you try to edit a Zap template that is pending reivew or public, the Zap template ID will be shown with a message to contact support.
 
     <Frame>
-      <img src="https://cdn.zappy.app/d481c7921b56eb61edda0bbfc1de1d9c.png" />
+      <img />
     </Frame>
 
     When view a Zap template on Zapier's website, the Zap template ID can be found in the URL.
 
     <Frame>
-      <img src="https://cdn.zappy.app/53d1899904330e18975da3c8478b3128.png" />
+      <img />
     </Frame>
   </Accordion>
 
@@ -16252,7 +17222,7 @@ Visit the “Manage Team” page in the developer platform for your qualifying i
 When your request is approved, you'll continue to log into Zapier using your existing account. Clicking the icon in the top-right corner (1) will allow you to switch between your personal Zapier account (2) and the Zapier Partner Sandbox workspace (3). Your personal account will show the name set on your profile, while the Zapier Partner Sandbox workspace will show a “ZPS” avatar and “App XXX”, where “XXX” is replaced by your app ID.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3c271e4a06d7afe60f1dbb876def264c" data-og-width="2549" width="2549" data-og-height="410" height="410" data-path="images/e68a9ed3f83d64375017a785eaf9e3c2.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=601bce66dc51c7b8c80f3488af98dbbe 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=03e98a70845aca8b499a956da3c176ea 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a329397daf77cd61ca26b225ce26e152 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=03e236270855c9a14d3649573cf20f1a 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=3e1eb1a25620ef1205e715c7e1a9ca47 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e68a9ed3f83d64375017a785eaf9e3c2.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=8deca24caf74aa1f34a7ac3f5aff90fc 2500w" />
+  <img />
 </Frame>
 
 Zaps created in the Zapier Partner Sandbox workspace will have access to premium features. Your personal Zapier account will remain unchanged.
@@ -16341,7 +17311,7 @@ Zaps created in the Zapier Partner Sandbox workspace will have access to premium
     If you exceed the task allowance, you will need to wait for the task usage to reset at the start of the next billing cycle. When viewing the Zapier Partner Sandbox workspace, you can see how many days remain until the usage resets in the bottom-left corner.
 
     <Frame>
-      <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7d43e4ea09dcbeeeb0549dc710fd102c" data-og-width="2543" width="2543" data-og-height="788" height="788" data-path="images/6876f7a7b903b5d89cdbd08e3874437c.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f7c75a8b40119017f42b02b83662cbfa 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=ed33ec7e57e16fdf3e49fc8cadbd23f7 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=751e88bd842860bb1a35cf57711145a0 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=2b17238dace9bebec79c77bdd1c1d68d 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=952bc38db03f3ae2cc51183d24c2e94c 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6876f7a7b903b5d89cdbd08e3874437c.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0edfe1f196cd810a002353707be49ee3 2500w" />
+      <img />
     </Frame>
   </Accordion>
 </AccordionGroup>
@@ -16358,7 +17328,7 @@ Zapier Partner Sandbox is a benefit of our Developer Program which Zapier may, i
 6. Because Zapier Partner Sandbox may only be used for the Purpose, and the Zapier Partner Sandbox workspace is owned and operated by Zapier, you agree not to submit any production data through Zaps created within the Zapier Partner Sandbox workspace. You further agree that for program management purposes, the Zapier Partnerships team has access to Zaps created within the Zapier Partner Sandbox workspace and that you should not have the expectation of privacy that you would with a Zapier customer account.
 7. Zapier Partner Sandbox is provided on an “as-is” basis. Zapier reserves the right to modify, suspend, or discontinue this benefit at any time, with or without notice to you. Zapier may also update these Zapier Partner Sandbox terms at any time, and you can always find the most current version in our platform documentation.
 8. The provisions of Section 3(e) (Beta Release) are incorporated by reference. In particular, Zapier is not and will not be liable for any Zaps or data that run through the Zapier Partner Sandbox workspace. Users acknowledge and assume full responsibility for their Zaps and any associated data stored in the Zapier Partner Sandbox workspace.
-9. Zapier Partner Sandbox permits you to invite other users to the workspace. You may invite members of your integration team to the workspace (who will be asked to agree to these terms as well in order to maintain their access), but please do not add anyone who is not a member of your integration team. Zapier will be auditing membership in the workspace and any non-integration team members will be removed at Zapier's discretion.
+9. Other members of Integration Partner's team may apply for access to the workspace (and will be asked to agree to these terms as well in order to maintain their access). Zapier reserves the right to audit membership to the workspace and remove members at Zapier’s discretion.  Attempts to facilitate unauthorized access to the workspace may result in removal from ZPS.
 
 ***
 
@@ -16372,18 +17342,18 @@ If you don't have the time or resources to dedicate towards developing your own 
 
 ## Featured Solution Partners
 
-<CardGroup cols={3}>
-  <Card title="Left Hook" icon="bolt" horizontal href="https://lefthook.com/opportunities/zapier-public-app/" />
+<CardGroup>
+  <Card title="Left Hook" icon="bolt" href="https://lefthook.com/opportunities/zapier-public-app/" />
 
-  <Card title="DataAutomation" icon="database" horizontal href="https://dataautomation.com/zapier-developer/" />
+  <Card title="DataAutomation" icon="database" href="https://dataautomation.com/zapier-developer/" />
 
-  <Card title="GetUWired" icon="plug" horizontal href="https://www.getuwired.com/zapier-partner-page/" />
+  <Card title="GetUWired" icon="plug" href="https://www.getuwired.com/zapier-partner-page/" />
 
-  <Card title="Mercology" icon="chart-network" horizontal href="https://integration.mercology.net/" />
+  <Card title="Mercology" icon="chart-network" href="https://integration.mercology.net/" />
 
-  <Card title="Connex Digital" icon="link" horizontal href="https://connex.digital/app/zapier/" />
+  <Card title="Connex Digital" icon="link" href="https://connex.digital/app/zapier/" />
 
-  <Card title="Debesis" icon="vr-cardboard" horizontal href="https://debesis.nl/en/zapier-app-directory/" />
+  <Card title="Debesis" icon="vr-cardboard" href="https://debesis.nl/en/zapier-app-directory/" />
 </CardGroup>
 
 If you're looking for additional Solution Partners or help with Zap workflows, contact one of our [Solution Partners](https://zapier.com/partnerdirectory/) who can help you out.
@@ -16512,7 +17482,7 @@ This tutorial walks you through the process of building, testing, and pushing an
 
 * Install the Platform CLI tool
 
-```bash  theme={null}
+```bash theme={null}
   # Install the CLI globally
   npm install -g zapier-platform-cli
 ```
@@ -16521,7 +17491,7 @@ To see a list of all the available commands in Platform CLI, try `zapier help`.
 
 * Next you'll need to identify yourself via the CLI.
 
-```bash  theme={null}
+```bash theme={null}
   # Setup auth to Zapier's platform with a deploy key
   zapier login
 ```
@@ -16532,7 +17502,7 @@ Zapier writes your deploy key to `~/.zapierrc`. You'll want to keep that file sa
 
 Use the `init` command to setup the [needed structure](https://github.com/zapier/zapier-platform/tree/main/example-apps). You'll be presented with a list of available templates to start with.
 
-```bash  theme={null}
+```bash theme={null}
 # Create a directory with the minimum required files and choose a template
 zapier init example-app --template minimal
 # Move into the new directory
@@ -16541,7 +17511,7 @@ cd example-app
 
 Inside the directory, you'll see a few files. `package.json` is a typical requirements file of any Node.js application. It's pre-populated with a few dependencies, most notably the `zapier-platform-core`, which is what makes your app work with the Zapier Platform. There is also an `index.js` file and a test directory (more on those later). Before we go any further, we need to install the dependencies for our app:
 
-```bash  theme={null}
+```bash theme={null}
 npm install
 ```
 
@@ -16562,7 +17532,7 @@ You may see the following in `index.js`:
 
 Add a [**trigger**](/platform/build-cli/overview#triggers-searches-creates) configured to read data from a mock API:
 
-```bash  theme={null}
+```bash theme={null}
 zapier scaffold trigger recipe
 ```
 
@@ -16570,7 +17540,7 @@ The [scaffold](https://github.com/zapier/zapier-platform/blob/main/packages/cli/
 
 Open `triggers/recipe.js` (file created by `zapier scaffold trigger recipe`) and **replace** it with:
 
-```js  theme={null}
+```js theme={null}
 const listRecipes = async (z, bundle) => {
   const response = await z.request(
     "http://57b20fb546b57d1100a3c405.mockapi.io/api/recipes",
@@ -16638,11 +17608,11 @@ As well as defining the trigger, the `scaffold` command has done the following:
 
 `index.js` file now includes:
 
-```bash  theme={null}
+```bash theme={null}
 const getRecipe = require('./triggers/recipe')
 ```
 
-```js  theme={null}
+```js theme={null}
 module.exports = {
   // ...
   triggers: {
@@ -16654,7 +17624,7 @@ module.exports = {
 
 In test/triggers folder, the `recipe.test.js` file was created:
 
-```js  theme={null}
+```js theme={null}
 const App = require("../../index");
 const appTester = zapier.createAppTester(App);
 // read the `.env` file into the environment, if available
@@ -16676,7 +17646,7 @@ describe("triggers.recipe", () => {
 
 You should be able to run the test with `zapier-platform test` (or the deprecated `zapier test`) and see it pass:
 
-```bash  theme={null}
+```bash theme={null}
 # (deprecated) $ zapier test
 $ zapier-platform test
 Validating project locally
@@ -16710,7 +17680,7 @@ To let users tweak the cuisine style of recipes they are triggering on, you can 
 
 In `triggers/recipe.js`, **replace** the file with:
 
-```js  theme={null}
+```js theme={null}
 const listRecipes = async (z, bundle) => {
   const params = {};
   if (bundle.inputData.style) {
@@ -16790,7 +17760,7 @@ $ zapier-platform invoke trigger recipe --inputData '{"style":"style 20"}'
 
 Let's also tweak the test. In test/trigger, replace the `recipe.test.js` file with:
 
-```js  theme={null}
+```js theme={null}
 const zapier = require("zapier-platform-core");
 const App = require("../../index");
 
@@ -16837,7 +17807,7 @@ describe("triggers", () => {
 
 You can run your test again and make sure everything still works:
 
-```js  theme={null}
+```js theme={null}
 zapier test
 ```
 
@@ -16893,21 +17863,21 @@ Authentication is crucial to interacting with most APIs. Zapier supports a numbe
 
 For different types of authentication, see these example apps:
 
-<CardGroup cols={3}>
-  <Card title="OAuth 2" icon="key" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/oauth2" horizontal />
+<CardGroup>
+  <Card title="OAuth 2" icon="key" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/oauth2" />
 
-  <Card title="Basic Auth" icon="lock" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/basic-auth" horizontal />
+  <Card title="Basic Auth" icon="lock" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/basic-auth" />
 
-  <Card title="Session Auth" icon="user-clock" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/session-auth" horizontal />
+  <Card title="Session Auth" icon="user-clock" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/session-auth" />
 
-  <Card title="Digest Auth" icon="shield" href="https://github.com/zapier/zapier-platform/tree/main/example-apps/digest-auth" horizontal />
+  <Card title="Digest Auth" icon="shield" href="https://github.com/zapier/zapier-platform/tree/main/example-apps/digest-auth" />
 
-  <Card title="API Key" icon="key" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/custom-auth" horizontal />
+  <Card title="API Key" icon="key" href="https://github.com/zapier/zapier-platform/tree/master/example-apps/custom-auth" />
 </CardGroup>
 
 Define the `authentication` section for the example app you've built. In `index.js`, **add** the following to `module.exports`:
 
-```js  theme={null}
+```js theme={null}
   authentication: {
     type: 'custom',
     fields: [{ key: 'apiKey', type: 'string' }],
@@ -16927,7 +17897,7 @@ Next, make sure the API key is included in all the requests your app makes.
 
 In `index.js`, **edit** the file to include:
 
-```js  theme={null}
+```js theme={null}
 // Add this helper function above `module.exports`:
 const addApiKeyToHeader = (request, z, bundle) => {
   request.headers["My-Auth-Header"] = bundle.authData.apiKey;
@@ -16943,7 +17913,7 @@ Finally, to ensure the helper function takes effect, it needs to be registered i
 
 In `index.js`, **edit** `module.exports` to also include:
 
-```js  theme={null}
+```js theme={null}
   beforeRequest: [
     addApiKeyToHeader, // new line of code
   ],
@@ -16980,7 +17950,7 @@ $ zapier-platform invoke auth test
 
 Re-push the app to Zapier to deploy the changes:
 
-```bash  theme={null}
+```bash theme={null}
 # (deprecated) zapier push
 zapier-platform push
 ```
@@ -17195,18 +18165,13 @@ Source: https://docs.zapier.com/platform/quickstart/private-vs-public-integratio
 
 When building an integration on the Zapier Platform, you must specify the intended audience.
 
-The intended audience determines whether the integration will be private or public:
+xfThe intended audience determines whether the integration will be private or public:
 
 * Public integration: For access to all Zapier customers and published in the [Zapier App Directory](https://zapier.com/apps).
-
 * Private integration: For personal, internal (e.g. with your team) or controlled-access use.
-
 * Building a private or public integration on the Zapier Platform is free.
-
 * There are no fees for sharing or publishing an integration.
-
 * Users of your integration are responsible for their own Zapier plans and billing.
-
 * Partners do not incur fees as a result of the usage of their integration.
 
 Both private and public integrations can connect to Zapier's app directory of over [7,000+ integrations](https://zapier.com/apps). Depending on your intended audience, there will be different features available and limitations to what the integration can do.
@@ -17229,7 +18194,7 @@ By creating a public integration, you'll have access to these features:
 * [Embed Zap Templates in your product](https://platform.zapier.com/embed/zap-templates).
 * Use [Zapier Issue Manager](/platform/manage/user-feedback#3-consider-zapier-issue-manager) to manage bugs and feature requests.
 * Users of your integration can [share a template of their Zaps](https://help.zapier.com/hc/en-us/articles/8496292155405-Share-a-copy-of-your-Zap).
-* Users of your integration can use [Zapier's ChatGPT plugin](https://help.zapier.com/hc/en-us/articles/14058263394573).
+* Users of your integration can use [**Zapier MCP**](https://help.zapier.com/hc/en-us/articles/36265392843917-Use-Zapier-MCP-with-your-client).
 
 ### Limitations
 
@@ -17248,10 +18213,7 @@ Private integrations are suitable for the following use cases:
 * Create an integration for a staging or testing environment.
 
 <Info>
-  **Note**: We strongly recommend against the use of an independent private
-  integration for staging purposes in the case of an existing public
-  integration. Instead, use a private [version](/platform/manage/versions) for
-  this purpose.
+  **Note**: We strongly recommend against the use of an independent private integration for staging purposes in the case of an existing public integration. Instead, use a private [version](/platform/manage/versions) for this purpose.
 </Info>
 
 By creating a private integration:
@@ -17268,20 +18230,15 @@ If you're building a private integration, there are specific limitations to be a
   * Team and Enterprise plans: 5000 calls every 60 seconds.
   * To increase a private integration rate limit for your users, [upgrade your Zapier plan](https://help.zapier.com/hc/en-us/articles/8496277302157-Change-or-cancel-your-Zapier-plan).
   * To request an increase in the rate limit for your private integration beyond 5000 calls, contact our [Sales team](https://zapier.com/l/contact-sales).
-
 * You can have up to [100 admins and collaborators](/platform/manage/add-team).
-
 * You can invite up to [100 users by email](/platform/manage/sharing#2-invite-users-by-email). There's no limit when [sharing access using a public link](/platform/manage/sharing#1-invite-users-with-a-public-link), but note this access cannot be revoked once a user accepts the invitation link.
-
 * [Embedding](https://platform.zapier.com/embed/overview) Zapier and [Zap templates](/platform/publish/zap-templates) are not supported.
-
 * [Sharing a template of Zaps](https://help.zapier.com/hc/en-us/articles/8496292155405-Share-a-copy-of-your-Zap) is not supported.
-
-* Your app won't appear as an option on [Zapier's ChatGPT plugin](https://help.zapier.com/hc/en-us/articles/14058263394573).
+* Your app won't appear as an option on [**Zapier MCP**](https://help.zapier.com/hc/en-us/articles/36265392843917-Use-Zapier-MCP-with-your-client).
 
 ***
 
-*Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
+[*Need help? Tell us about your problem and we'll connect you with the right resource or contact support.*](https://developer.zapier.com/contact)
 
 
 # Recommended triggers and actions
@@ -17790,16 +18747,16 @@ To add an integration:
 
 [Authentication](/platform/build/auth) defines how Zapier's platform authenticates with the app's API you're connecting to, collecting and storing user data to allow access to their accounts. Zapier supports the following authentication schemes:
 
-<CardGroup cols={3}>
-  <Card title="API Key" icon="key" href="/platform/build/apikeyauth" horizontal />
+<CardGroup>
+  <Card title="API Key" icon="key" href="/platform/build/apikeyauth" />
 
-  <Card title="Basic Authentication" icon="lock" href="/platform/build/basicauth" horizontal />
+  <Card title="Basic Authentication" icon="lock" href="/platform/build/basicauth" />
 
-  <Card title="Digest" icon="shield" href="/platform/build/digestauth" horizontal />
+  <Card title="Digest" icon="shield" href="/platform/build/digestauth" />
 
-  <Card title="OAuth v2" icon="user-lock" href="/platform/build/oauth" horizontal />
+  <Card title="OAuth v2" icon="user-lock" href="/platform/build/oauth" />
 
-  <Card title="Session" icon="id-badge" href="/platform/build/sessionauth" horizontal />
+  <Card title="Session" icon="id-badge" href="/platform/build/sessionauth" />
 </CardGroup>
 
 Refer to the API documentation for the app you're building with to choose the correct authentication scheme for your API. Add the authentication fields for the input form your users will see when connecting their app account to Zapier.
@@ -17881,7 +18838,7 @@ There are two different developer tools to build either private or public integr
 Platform UI is the visual way for users with API experience to build integrations in a web app editor. It allows for some advanced calls and response parsing when using Code mode; but is predominantly designed for builders more comfortable with a visual form editor than working in code.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=cd8f5191491a7c4eeb04100866f0418a" alt="Zapier Platform UI" data-og-width="1717" width="1717" data-og-height="914" height="914" data-path="images/a8c009d1109749b44052922f2a6ec9bc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=99c85c2e25742996c2f8be26bffbf35e 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=065ea8a5fe8325e046c48ab8dc43d2d4 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=b1918d80600bc2cfe9834afab94ab72c 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d9c400b25aaf8d39f44f3e8bdccbf7d6 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=361540b7ae6bc5be5be6c1c581d57b7b 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a8c009d1109749b44052922f2a6ec9bc.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8183d322ceb5c176631b4eb19587af0d 2500w" />
+  <img alt="Zapier Platform UI" />
 </Frame>
 
 To get started, check out the following resources:
@@ -17894,7 +18851,7 @@ To get started, check out the following resources:
 Platform CLI is a terminal-based app that allows builders to scaffold new integrations locally, using standard JavaScript in your local development environment and code editor. It allows for custom coding for API calls, middleware, file support and other advanced functionality. It's the preferred tool for engineers comfortable with a standard development workflow and collaborating in a local environment using GIT version control before pushing integration versions to the Zapier server. Platform CLI can be more difficult to use for non-engineers, but will likely be more efficient for an engineering team.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=1e0561d1b32be830fbf4027d5d82bc38" alt="Zapier Platform UI" data-og-width="850" width="850" data-og-height="491" height="491" data-path="images/27d28a5fdd0c878d7558b4abd4f106ec.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=054ad124c60e44321ded270ef7c5861f 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=49d899f50dec77d60a04f723125c56d7 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=9926d542bdf11dc35d3d2ee6d1c2f455 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=61c72937fd506070ef5d2a7ef8803cd9 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c2ef81b4feb9b69f661b0dfb8cb20848 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/27d28a5fdd0c878d7558b4abd4f106ec.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=deefcc532df1508c449521061c30b478 2500w" />
+  <img alt="Zapier Platform UI" />
 </Frame>
 
 To get started, check out the following resources:
@@ -17991,7 +18948,7 @@ Source: https://docs.zapier.com/platform/quickstart/zapier-integration-structure
 *Dashboard* tab is used to see your Partnership level, active user total count, overall embed status and [integration health score](/platform/publish/partner-program#integration-health-score). You **must** be an [admin or collaborator](/platform/manage/add-team) to view an integration's dashboard.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5626c8e6b6776e53a0f7c1ce973ced46" data-og-width="1811" width="1811" data-og-height="1033" height="1033" data-path="images/3b26f7098360a25ec055ab9be6713e9d.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=93c9793f217d5439dda6d89f531128a7 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=a849b13b6388a7ad13674fa76eadb189 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=75f498f9c3235395da34de9ce7e57bdf 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3dea9faca122f1166e0e78739096576c 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ba928a1f805296a5ce55063d7ea85b0c 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3b26f7098360a25ec055ab9be6713e9d.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=bcd7122edb2eec9bfe81431f71f93136 2500w" />
+  <img />
 </Frame>
 
 ### Insights
@@ -17999,7 +18956,7 @@ Source: https://docs.zapier.com/platform/quickstart/zapier-integration-structure
 *Insights* tab is used to monitor and analyze your integration's growth, usage, and detailed embed metrics. You **must** be an [admin or collaborator](/platform/manage/add-team) to view an integration's insights.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=07d95a36ae2c851fbd46de99cf665b3e" data-og-width="1814" width="1814" data-og-height="1020" height="1020" data-path="images/81930868f966d933d1edb90cc61623bc.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0bc9801dd66df92f4818d24d9798359f 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=06b2b5d8e6dd8af34e72c85124046d30 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3009b62b505a4385b56606299320be48 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=c7f5334026b19fd5f9680da47f585eb8 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=bca2aa794d191a0fea8693d8a0d09b06 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/81930868f966d933d1edb90cc61623bc.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f3e2341e785d59207aa5651082731331 2500w" />
+  <img />
 </Frame>
 
 ### Build
@@ -18149,7 +19106,7 @@ Source: https://docs.zapier.com/platform/reference/cloning-a-version-tutorial
 
 Cloning allows you to duplicate an existing version of your integration. This is particularly useful when you want to introduce new features or fixes without altering the original integration. When a previous version of your integration has more than 5 active users, you will need to clone that version to make modifications.
 
-<video controls src="https://cdn.zappy.app/be796f184a0787c5cd848fb8c9dbd8ed.mp4" />
+<video />
 
 
 # Zapier integration structure for a CRM app
@@ -18175,7 +19132,7 @@ To add a CRM app integration in the Platform UI:
 * Include filter options if your app lets users add custom filters or views. Displaying an optional [dynamic dropdown](/platform/build/field-definitions#dynamic-dropdown) of the user's filters and ordering them by the most recently added is best practice.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f315ca2f286cd983645fb64dc3ba6569" data-og-width="1138" width="1138" data-og-height="901" height="901" data-path="images/6bb177088b4a484c7b72842a05177d5b.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=9801f04e95ce35fa49f1a2b894bdcdff 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=6676d2002264e41c7ea130548fde6cb3 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=1910c41741bb70e477efde3de6e360bc 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=e64534198ea49aeea343a09cc080337c 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=b6b66f22b3e4ece485a9c4c00d499ffd 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/6bb177088b4a484c7b72842a05177d5b.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=17857871e9e8c22652d3232ad62a9bb4 2500w" />
+  <img />
 </Frame>
 
 ## 2. Choose trigger type under API Configuration
@@ -18229,7 +19186,7 @@ To add a CRM app integration in the Platform UI:
 * Offer multiple search key and value options where applicable.
 
 <Frame>
-  <video controls autoplay muted loop src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/8b3b564da528667a3b0fc57fb105edfa.mp4?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fff7a5628ebb655590ead3f397c8e1ae" data-path="images/8b3b564da528667a3b0fc57fb105edfa.mp4" />
+  <video />
 </Frame>
 
 * Prevent deduplication problems for unique fields (such as email) though, by offering only a single search query for that field instead of multiple options. This prevents users from searching on a different field, trying to create a new record, and seeing an error that a record with that email already exists.
@@ -18237,7 +19194,7 @@ To add a CRM app integration in the Platform UI:
 * If a record cannot be found, do not return an error. Instead return a `200` success response with an empty array. That way, users can pair the search with a *Create* action to let users search for records and create them if they don't exist. Users will see a halted exception instead of an error.
 
 <Frame>
-  <video controls autoplay muted loop src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/5e0bd80c41a78719f140e2382454cf99.mp4?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=0df2f03ac6904548de5bbeefd9b40c3d" data-path="images/5e0bd80c41a78719f140e2382454cf99.mp4" />
+  <video />
 </Frame>
 
 \_ Read more about pairing [searches and creates](/platform/build/search-or-create).
@@ -18314,7 +19271,7 @@ Source: https://docs.zapier.com/platform/reference/dictionary-fields-tutorial
 
 Dictionary fields allows your users to directly send an object with their provided value sets to your API.
 
-<video controls src="https://cdn.zappy.app/5ed6823622d754ed797ccbe5cd618d36.mp4" />
+<video />
 
 
 # Creating dynamic dropdown fields
@@ -18322,7 +19279,7 @@ Source: https://docs.zapier.com/platform/reference/dynamic-dropdown-tutorial
 
 Dynamic dropdown fields are useful when users need to select data from an existing list of similar data in their account on your app.
 
-<video controls src="https://cdn.zappy.app/3fe97302eb51e6059bc56bf974c29916.mp4" />
+<video />
 
 
 # Implementing Error Handling
@@ -18330,7 +19287,7 @@ Source: https://docs.zapier.com/platform/reference/error-handling-tutorial
 
 Error handling enables you dictate how your integration should function when certain errors are returned from your API.
 
-<video controls src="https://cdn.zappy.app/dc5abf26e1f5b3e64d85361bb0d498b1.mp4" />
+<video />
 
 
 # Zapier integration structure for a forms app
@@ -18353,7 +19310,7 @@ To add a form or survey app integration in the Platform UI:
 * Create a *New Form Entry/Submission* or *New Survey Response* trigger
 * Use the standard *New* naming pattern to show users that this trigger retrieves new entries, not existing ones.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ab4f5f294a64e2bf0de9d3f138e58015" data-og-width="1215" width="1215" data-og-height="562" height="562" data-path="images/d5a605fafa8aaa679f86bca3655ce0d9.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=0617b3c032121758da13bfc47a67a347 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=babb547659c2ec939040faae307811c4 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=4dd88de20c004d23ab305505d0eaa0c6 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=6da727033116b3b249dff784a797aa36 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=a6347ce566cfe387140266dbc3ea1b9d 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/d5a605fafa8aaa679f86bca3655ce0d9.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=26f01634bbe2501227159326cfa32472 2500w" />
+    <img />
   </Frame>
 
 ## 2. Configure selection of a specific form
@@ -18363,7 +19320,7 @@ To add a form or survey app integration in the Platform UI:
 * Make the selection of a form required so the trigger only watches for results from this one form
 * If you keep the form field optional, it can be used for responses to any form; and you'll need to add help text to let users know what to expect if they do not select a form.
   <Frame>
-    <video controls autoplay muted loop src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/79158aee580d74c8241e1375e73f91db.mp4?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=382e6f66bad0d05792a6a9687c47725d" data-path="images/79158aee580d74c8241e1375e73f91db.mp4" />
+    <video />
   </Frame>
 
 ## 3. Format the responses the trigger receives
@@ -18379,7 +19336,7 @@ To add a form or survey app integration in the Platform UI:
 * Include the question number as a prefix to the label if possible, to help users find specific questions and fields.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e567822a17344d1a8293efb656584521" data-og-width="1098" width="1098" data-og-height="1099" height="1099" data-path="images/ae9c0c297710e3bce8385f5d5a7b468f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=6a7e431ed4826ca66845c7236e5f6cc1 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=8e903624a5b802d8981a0be3f1bb602e 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c4fde68d92a114806ee1ef96d9b053dc 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=33fbc75047ce8235a08c12777814d4b6 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2ede899c8d75f69761dc621ae579fb09 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/ae9c0c297710e3bce8385f5d5a7b468f.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=eef748be28530b846f697bb92eacfd0f 2500w" />
+  <img />
 </Frame>
 
 ### Multiple choice fields
@@ -18389,7 +19346,7 @@ To add a form or survey app integration in the Platform UI:
 * When a multiple choice question is based on a range of values (e.g., from “not really” to “very”), it is useful to return the choice values (such as `1` to `5`) with the actual answer. This can be especially helpful for users wishing to track responses in a spreadsheet.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=b906a8916b696ecda6e33f09eb93fd62" data-og-width="1398" width="1398" data-og-height="410" height="410" data-path="images/033953ce0537c18a6efbe47f783ddf5a.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=db38078acafef39abbe6ef9a33ca101e 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=fe9d2e03bd2d3e305ab9d712943ff168 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=669022babbc748d6393475a96aa67787 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=3f04ca71d7a68ee18cf6660de13de61a 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=238fc14125702a46e1fc505a8d78d0b9 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/033953ce0537c18a6efbe47f783ddf5a.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=c0f6007e702079ea21f1495136aab5ba 2500w" />
+  <img />
 </Frame>
 
 ### Multi-select fields
@@ -18397,18 +19354,18 @@ To add a form or survey app integration in the Platform UI:
 * When users can select multiple responses (like a list of checkboxes) in a form or survey, it can be challenging to use this data within a trigger.
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=9b5c4371bd039d42a4249a1ac7ce2a2a" data-og-width="1160" width="1160" data-og-height="610" height="610" data-path="images/e922d705c9f9d61c46f32b31ba03e53f.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=64fa3224908c337cdecf7f66772612a5 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=87b58ee43fdcc80ea7ad3f8636b82612 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=88e6b7a4a57e96309a314b192f795147 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=86cd5faf92685fdc2e9a59710ad2a0fd 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f6e84a43f1a4ee8c6a9d21253b46bd07 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/e922d705c9f9d61c46f32b31ba03e53f.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=85b0cf76e0d25ce624df0f73f9a65a54 2500w" />
+    <img />
   </Frame>
 
 * When possible, return these responses individually by splitting each individual response to the question into its own field, with a value if it is selected by the responder and a blank value if not selected. This makes mapping Zap steps simpler because users can map all responses into one field separated by the correct delimiter, or can take action on specific responses when they are present with the user of [Filters](https://help.zapier.com/hc/en-us/articles/8496276332557-Add-conditions-to-Zaps-with-filters) or [Paths](https://zapier.com/features/paths).
 
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d507fc81bbf5723b33a14a4f8ddf52db" data-og-width="1270" width="1270" data-og-height="422" height="422" data-path="images/a71b26a4a333fa9cb6b4a8c77607c426.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=4452a7b863562ede0397a239998f7f28 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2026b061335759824e12aabb01e1d348 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=5c9dda4f7403584bab1cffdfcff576b4 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fb76ee308f3a04b5352d84f5294a495a 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=63d4a229e8c123449ead14cc6e677185 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a71b26a4a333fa9cb6b4a8c77607c426.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c85f85c1bd432bfa7fb3e8d9ac3ce4a0 2500w" />
+    <img />
   </Frame>
 
 * Depending on your app's API response fields, you might instead opt to return the question's selected values in a single, comma separated field. Users can then split the values themselves with Zapier's [Formatter](https://help.zapier.com/hc/en-us/articles/8496030096013-How-to-use-Formatter-Functions#using-split-text-0-3) tool, or could map the all the values together to a later step's field.
   <Frame>
-    <img src="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=ea8a558b627fd7e2fdd92e0c6ae25ff8" data-og-width="850" width="850" data-og-height="102" height="102" data-path="images/02fd5f03f00a7e3c6953c95366013473.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=280&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=995831d9ba8cc68b83ae79dbd07e323f 280w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=560&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=82b476ad0cab0adeb63e33d492e93afb 560w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=840&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=05845c50f43414e343c60417f780fb40 840w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=1100&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=70cb5e6c4e6387d0b4552ac389bd604e 1100w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=1650&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=dbfb2c20454e76f6e49cebb60ee99853 1650w, https://mintcdn.com/zapier-82f0e938/1jtyk4mqAs_J-p30/images/02fd5f03f00a7e3c6953c95366013473.webp?w=2500&fit=max&auto=format&n=1jtyk4mqAs_J-p30&q=85&s=663718a755c89f6bc0d3f2e8613fa51f 2500w" />
+    <img />
   </Frame>
 
 ### Date fields
@@ -18418,7 +19375,7 @@ To add a form or survey app integration in the Platform UI:
 * When possible, also include a human-friendly date for the response completion and any other selected dates in the response.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=75e5da3721e65a036658fcbfa04ad9cc" data-og-width="806" width="806" data-og-height="219" height="219" data-path="images/762d2661a3da2d4a689052e316091f42.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=600d34db8b8e9ee0f8b8b8fd1c043a7a 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=04502c4f020650e0a97db6fe27fdc35b 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=5156dcfe3083edb96b0a359b2b949843 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=259c617ad28f05b22c09003394a4b533 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=65b4a7057882464e40b44fcb2b1811cd 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/762d2661a3da2d4a689052e316091f42.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=3cc09e5618171e34b2a0c04186213fde 2500w" />
+  <img />
 </Frame>
 
 ### File attachments
@@ -18473,7 +19430,7 @@ Source: https://docs.zapier.com/platform/reference/implementing-oauth-tutorial
 
 With OAuth v2 authentication, users authenticate to the Zapier integration via the app’s own site, helping them to easily connect accounts without needing to share account credentials or look up API keys.
 
-<video controls src="https://cdn.zappy.app/29ccff3273d1ae57e276f7acc44d1cfc.mp4" />
+<video />
 
 
 # Scripting in converted legacy Web Builder integrations
@@ -18498,7 +19455,7 @@ For integrations converted to Platform UI, you can access and edit these scripti
 3. In the *Build* section in the left sidebar, click **Advanced**.
 4. Click the **Legacy Web Builder** tab.
    <Frame>
-     <img src="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=0ba4ba24a05166212ade13b8e93c5973" data-og-width="1789" width="1789" data-og-height="942" height="942" data-path="images/e776d2b6349552e6347ca2757f4d06c1.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=280&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=573dae44d7f40560af201d5d7f00a0b0 280w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=560&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=5a96b12e610655626bbbc97f18a52ee1 560w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=840&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=416a4ac7076254edf9d4826073f97642 840w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=1100&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=ed720e0c894242f3fa293be73ba46fef 1100w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=1650&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=e549402734d062c1afb9c157ecb3c3fe 1650w, https://mintcdn.com/zapier-82f0e938/2ebL4bG5uJP5JVc0/images/e776d2b6349552e6347ca2757f4d06c1.webp?w=2500&fit=max&auto=format&n=2ebL4bG5uJP5JVc0&q=85&s=14270a155450201cd5ec4ac533b6d5d5 2500w" />
+     <img />
    </Frame>
 
 For integrations converted to Platform CLI, you can access and edit these scripting methods in the **Scripting.js** file. Its default location in the root directory of your CLI integration.
@@ -18507,7 +19464,7 @@ Every converted Web Builder integration will have a root module `Zap` defined in
 
 Below is an example of implementing a method to be a pass-through:
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
   my_trigger_pre_poll: function (bundle) {
     // your code to modify bundle.request before sent
@@ -18532,7 +19489,7 @@ Many of the trigger methods follow a naming pattern of key + method name, where 
 
 Runs before the request to the polling URL can modify the request before it is sent.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_poll: function(bundle) {
 /\*
@@ -18572,7 +19529,7 @@ See [bundle.request](/platform/reference/legacy-scripting#prepared-request-via-b
 
 It runs after Zapier receives a response from the polling URL. Can parse the response to format the data that enters Zapier or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will automatically throw for status codes 4xx and 5xx after the method runs.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_poll: function(bundle) {
 /\*
@@ -18606,7 +19563,7 @@ return [];
 
 It runs in place of pre\_poll and post\_poll. When you get a bundle, you are expected to make the request and return a list of results or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will **not** throw for status codes like 4xx and 5xx automatically!
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_poll: function(bundle) {
 /\*
@@ -18648,7 +19605,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 It runs when Zapier receive a static or subscription hook from your API and can parse the response to format the data that enters Zapier.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_catch_hook: function(bundle) {
 /\*
@@ -18688,7 +19645,7 @@ return []; // or {}
 
 It runs before Zapier subscribes.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 pre_subscribe: function(bundle) {
 /\*
@@ -18729,7 +19686,7 @@ Learn more in [bundle.request](/platform/reference/legacy-scripting#bundle-detai
 
 It runs after Zapier subscribes. It is exclusively for storing results that are needed later for pre\_unsubscribe.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 post_subscribe: function(bundle) {
 /\*
@@ -18764,7 +19721,7 @@ return ""; // or {}, or []
 
 It runs before Zapier unsubscribes.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 pre_unsubscribe: function(bundle) {
 /\*
@@ -18808,7 +19765,7 @@ Learn more in [bundle.request](/platform/reference/legacy-scripting#bundle-detai
 
 It runs before the consuming call.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_hook: function(bundle) {
 /\*
@@ -18845,7 +19802,7 @@ Learn more in [bundle.request](/platform/reference/legacy-scripting#bundle-detai
 
 It runs after Zapier receive a response from the consuming call and can parse the response to format the data that enters Zapier or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will automatically throw for status codes 4xx and 5xx after the method runs.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_hook: function(bundle) {
 /\*
@@ -18882,7 +19839,7 @@ It runs before the request to the custom field URL (if provided).
 
 > Note: Although this method does not end with `result_fields` like there are for [actions](#key_pre_custom_action_fields) and [searches](#key_pre_custom_search_fields) it does in fact define custom fields and labels for the **result** (sample) of the trigger and not for its **Edit Template** step in the Zap editor.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_custom_trigger_fields: function(bundle) {
 /\*
@@ -18923,7 +19880,7 @@ Runs after the response for custom fields is received. Can parse the response to
 
 > Note: Although this method does not end with `result_fields` like there are for [actions](#key_pre_custom_action_fields) and [searches](#key_pre_custom_search_fields) it does in fact define custom fields and labels for the **result** (sample) of the trigger and not for its **Edit Template** step in the Zap Editor.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_custom_trigger_fields: function(bundle) {
 /\*
@@ -18967,7 +19924,7 @@ Action methods follow a naming pattern of key + method name, where key is the ke
 
 Runs before the request to the action URL, can modify the request before it is sent.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_write: function(bundle) {
 /\*
@@ -19010,7 +19967,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after Zapier receive a response from the action endpoint, can modify the response or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically. *Note:* If the action occurs as part of a search-or-create Zap, the output of this method is *not* exactly what the user sees. In that case, the action will be followed up with a request to fetch the written record, and Zapier will present the user with the output from that follow-up request. If you need to modify the returned data in that scenario, use `_post_read_resource`.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_write: function(bundle) {
 /\*
@@ -19043,7 +20000,7 @@ return <object>;
 
 Runs in place of pre*write and post\_write. You get a bundle and are expected to make the request and return the appropriate response or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will **not** throw for status codes like 4xx and 5xx automatically! \_Note:* If the action occurs as part of a search-or-create Zap, the output of this method is *not* exactly what the user sees. In that case, the action will be followed up with a request to fetch the written record, and Zapier will present the user with the output from that follow-up request. If you need to modify the returned data in that scenario, use `_post_read_resource`.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_write: function(bundle, [callback]) {
 /\*
@@ -19088,7 +20045,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs before the request to the custom field URL (if provided).
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_custom_action_fields: function(bundle) {
 /\*
@@ -19127,7 +20084,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after the response for custom fields is received. Can parse the response to format the data that enters Zapier or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_custom_action_fields: function(bundle) {
 /\*
@@ -19167,7 +20124,7 @@ return []; // return fields in the order you want them displayed in the UI. They
 
 Allows you to completely take over the handling of retrieving and processing field metadata for custom action fields. Pre- and Post- methods will not be called if you've implemented this method. This method will be passed a bundle and must return an array of custom field metadata. If a request to an endpoint fails, you will need to throw an exception - the platform will not do it automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {KEY_custom_action_fields: function(bundle) {
 /\*
 Argument:
@@ -19212,7 +20169,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 It allows you to completely take over the handling of retrieving and processing field metadata for custom fields when users are working with *results* of your action in the Zap editor. Pre- and Post- methods will not be called if you've implemented this method. This method will be passed a bundle and must return an array of custom field metadata. If a request to an endpoint fails, you will need to throw an exception - the platform will not do it automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {KEY_custom_action_result_fields: function(bundle) {
 /\*
 Argument:
@@ -19251,7 +20208,7 @@ return []; // return fields in the order you want them displayed in the UI. They
 
 Runs before the request to the custom response fields URL (if provided).
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_custom_action_result_fields: function(bundle) {
 /\*
@@ -19290,7 +20247,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after the response for custom response fields is received. Can parse the response to format the data that enters Zapier or throw an exception [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_custom_action_result_fields: function(bundle) {
 /\*
@@ -19332,7 +20289,7 @@ Search methods follow a naming pattern of key + method name, where key is the ke
 
 Runs before the request to the search URL, can modify the request before it is sent.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_search: function(bundle) {
 /\*
@@ -19373,7 +20330,7 @@ Runs after Zapier receive a response from the search endpoint, can modify the re
 
 > Note we'll only use the first object in the array for now, so if you can add optional fields to help narrow the search down, it's a great idea.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_search: function(bundle) {
 /\*
@@ -19412,7 +20369,7 @@ Runs in place of pre\_search and post\_search. You get a bundle and are expected
 
 > Note we'll only use the first object in the array for now, so if you can add optional fields to help narrow the search down, it's a great idea.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_search: function(bundle, [callback]) {
 /\*
@@ -19451,7 +20408,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs before the request to the custom field URL (if provided).
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_custom_search_fields: function(bundle) {
 /\*
@@ -19491,7 +20448,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after the response for custom fields is received. Can parse the response to format the data that enters Zapier or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_custom_search_fields: function(bundle) {
 /\*
@@ -19530,7 +20487,7 @@ return []; // return fields in the order you want them displayed in the UI. They
 
 Allows you to completely take over the handling of retrieving and processing field metadata for custom search action fields. Pre- and Post- methods will not be called if you've implemented this method. This method will be passed a bundle and must return an array of custom field metadata. If a request to an endpoint fails, you will need to throw an exception - the platform will not do it automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {KEY_custom_search_fields: function(bundle)
 {
 /\*
@@ -19570,7 +20527,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Allows you to completely take over the handling of retrieving and processing field metadata for custom fields when users are working with *results* of your search action in the Zap editor. Pre- and Post- methods will not be called if you've implemented this method. This method will be passed a bundle and must return an array of custom field metadata. If a request to an endpoint fails, you will need to throw an exception - the platform will not do it automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_custom_search_result_fields: function(bundle) {
 /\*
@@ -19605,7 +20562,7 @@ bundle.response.content: <str>
 
 Runs before the request to the custom search result field URL (if provided)
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_custom_search_result_fields: function(bundle) {
 /\*
@@ -19644,7 +20601,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after the response for custom search result fields is received. Can parse the response to format the data that enters Zapier or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_custom_search_result_fields: function(bundle) {
 /\*
@@ -19683,7 +20640,7 @@ return []; // return fields in the order you want them displayed in the UI. They
 
 Runs before Zapier do the request to read an individual resource. Use to modify the request before it is sent.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_pre_read_resource: function(bundle) {
 /\*
@@ -19723,7 +20680,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Runs after Zapier do the request to read an individual resource. Use to modify the data returned or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx after the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_post_read_resource: function(bundle) {
 /\*
@@ -19758,7 +20715,7 @@ return {...};
 
 Runs in place of pre\_read\_resource and post\_read\_resource. You get a bundle and are expected to make the request and return the appropriate response or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will **not** throw for status codes like 4xx and 5xx automatically!
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 KEY_read_resource: function(bundle, [callback]) {
 /\*
@@ -19801,7 +20758,7 @@ Modify the request we'd send to the access token endpoint.
 
 > Be aware that for legacy reasons the request does not follow [RFC6749](https://tools.ietf.org/html/rfc6749#section-4.1.3) and passes the parameters via the query string. If you define `pre_oauthv2_token` then it is up to you correct this if needed. Without the method, Zapier will retry the request conform standards if the API returns an error on the first attempt.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 pre_oauthv2_token: function(bundle) {
 /\*
@@ -19843,7 +20800,7 @@ Learn more about [bundle.request](/platform/reference/legacy-scripting#bundle-de
 
 Modify the response from the access token endpoint or throw an [exception](/platform/reference/legacy-scripting/#available-exceptions). Zapier will throw for status codes 4xx and 5xx **before** the method runs automatically.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 post_oauthv2_token: function(bundle) {
 /\*
@@ -19871,7 +20828,7 @@ return z.JSON.parse(bundle.response.content);
 
 Modify the request we'd send to the refresh token endpoint. Only use if you have set the auth type for your App to be OAuth V2 with Refresh.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 pre_oauthv2_refresh: function(bundle) {
 /\*
@@ -19916,7 +20873,7 @@ Zapier exposes a `get_session_info()` function for APIs that require any form of
 
 > Zapier will only invoke this function on an as-needed basis. It will be called when your API returns a 401 or when you raise an `InvalidSessionException` in your `KEY_post_poll` or `KEY_post_write` functions. Zapier will retry the request if the function returns new session info successfully.
 
-```javascript  theme={null}
+```javascript theme={null}
 Zap = {
 get*session_info: function(bundle) {
 /*
@@ -19942,7 +20899,7 @@ Zapier exposes a `get_connection_label()` function for APIs that need customizat
 
 > Zapier will only invoke this function after the authentication is tested (when a new account is connected, and when the “test” button is pressed).
 
-```javascript  theme={null}
+```javascript theme={null}
 Zap = {
 get*connection_label: function(bundle) {
 /*
@@ -20010,7 +20967,7 @@ When you call `z.request()` without a callback and an error occurs, it will be t
 
 Let's call [http://httpbin.org/get?hello=world](http://httpbin.org/get?hello=world) with a header to tell it Zapier like JSON:
 
-```javascript  theme={null}
+```javascript theme={null}
 var request = {
   method: "GET",
   url: "http://httpbin.org/get",
@@ -20050,7 +21007,7 @@ The `z.JSON.parse` function acts a lot like the native `JSON.parse`, but adds so
 
 `z.JSON.parse(string)`, where `string` is the string representation of a valid JSON object. An error will be thrown if the structure is invalid.
 
-```javascript  theme={null}
+```javascript theme={null}
 var response = z.request({
   method: "GET",
   url: "https://api.someservice.com/me",
@@ -20065,7 +21022,7 @@ var obj = z.JSON.parse(str);
 
 Zapier support both hashing and HMAC hashing.
 
-```javascript  theme={null}
+```javascript theme={null}
 // z.hash(algorithm, string, encoding="hex", input_encoding="binary")
 var hash = z.hash("sha256", "my awesome string");
 
@@ -20090,7 +21047,7 @@ The following hash algorithms are supported:
 
 If you're looking to turn some text to base64 for something like Basic Auth or otherwise, use this simple function available from Node.js:
 
-```javascript  theme={null}
+```javascript theme={null}
 var b64data = btoa("this is my string to turn into base64");
 ```
 
@@ -20100,7 +21057,7 @@ Dehydration is what Zapier calls the creation of a pointer to some data, this is
 
 Hydration is the opposite of dehydration. It is the consumption of a pointer that returns data. Let's show an example!
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 get_contact: function(bundle) {
 /\*
@@ -20144,7 +21101,7 @@ There are two scenarios when `get_contact` will then be called and “hydrated�
 
 Dehydration is what Zapier call the creation of a pointer to data, this is what you'll normally use in triggers to provide binary data out of band to Zapier. The idea is you don't want to download all the attachments from all 100 records in a poll - that would take way too long and would be wasteful. So Zapier offer a handy way to create pointers that Zapier can consume “on-demand”.
 
-```javascript  theme={null}
+```javascript theme={null}
 // you can pass along urls and extra request information
 
 // important: dehydrateFile will not download the file immediately!
@@ -20211,7 +21168,7 @@ The `bundle.url_raw` is simply the unrendered version of the URL with `{% templa
 
 The `bundle.auth_fields` is a javascript object that matches the authentication settings provided by the user when the API is connected. For example, if you have an authentication field of `api_key` and `subdomain` you can expect:
 
-```json  theme={null}
+```json theme={null}
 {
   "api_key": "fc5e038d38a57032085441e7fe7010b0",
   "subdomain": "example"
@@ -20222,7 +21179,7 @@ The `bundle.auth_fields` is a javascript object that matches the authentication 
 
 Both `bundle.trigger_fields` and `bundle.action_fields` are javascript objects that surface the data given by a user to power a part of a zap. This is after rendering `{% templatetag openvariable %}curlies{% templatetag closevariable %}`. These follow the trigger fields or action fields) you define. For example, maybe you have a field with a key `list_id` and `name`:
 
-```json  theme={null}
+```json theme={null}
 {
   "list_id": "1234",
   "name": "Joe Blow"
@@ -20235,7 +21192,7 @@ For actions, this will prune out any fields you chose not to send in the JSON. U
 
 Both `bundle.trigger_fields_raw` or `bundle.action_fields_raw` are javascript objects that surface the data given by a user to power a part of a zap. This is before rendering `{% templatetag openvariable %}curlies{% templatetag closevariable %}`. These follow the trigger fields or action fields you define. For example, maybe you have a field with a key `list_id`:
 
-```json  theme={null}
+```json theme={null}
 {
   "list_id": "1234",
   "name": "{% templatetag openvariable %}first_name{% templatetag closevariable %} {% templatetag openvariable %}last_name{% templatetag closevariable %}"
@@ -20256,7 +21213,7 @@ The `bundle.cleaned_request` is our best guess at the parsed payload. Zapier doe
 
 The `bundle.zap` object contains extra information about the zap (FYI: you may not see this information in debug bundles until the `zap` is referenced at least once in your script):
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "My Fancy Zap Title",
   "live": false,
@@ -20269,7 +21226,7 @@ The `bundle.zap` object contains extra information about the zap (FYI: you may n
 
 You can access the information like this:
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 any_old_pre_poll: function(bundle) {
 var zap = bundle.zap;
@@ -20284,7 +21241,7 @@ return bundle.request;
 
 The `bundle.meta` object contains some runtime information about the Zap which you can use.
 
-```javascript  theme={null}
+```javascript theme={null}
 {
 "frontend": true, // if true, it's being done through the Zap editor/setup
 "prefill": false, // if true, this poll is running as a prefill (dynamic dropdown)
@@ -20310,7 +21267,7 @@ The `bundle.meta` object contains some runtime information about the Zap which y
 
 You can access the information for limited pagination features like this:
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
   any_old_pre_poll: function (bundle) {
     // adds ?page=0 to URL querystring
@@ -20369,7 +21326,7 @@ For session-based APIs only, stale authorization credentials can be refreshed by
 
 > **Note** This code is only valid for the v2 platform. It's incompatible with Platform CLI and Platform UI.
 
-```javascript  theme={null}
+```javascript theme={null}
 "use strict";
 
 var Zap = {
@@ -20438,7 +21395,7 @@ return request;
 
 > **Note** This code is only valid for the v2 platform. It's incompatible with Platform CLI and Platform UI.
 
-```javascript  theme={null}
+```javascript theme={null}
 "use strict";
 
 var Zap = {
@@ -20504,7 +21461,7 @@ return results;
 
 > **Note** This code is only valid for the v2 platform. It's incompatible with Platform CLI and Platform UI.
 
-```javascript  theme={null}
+```javascript theme={null}
 "use strict";
 
 var Zap = {
@@ -20573,7 +21530,7 @@ return json;
 
 > **Note** This code is only valid for the v2 platform. It's incompatible with Platform CLI and Platform UI.
 
-```javascript  theme={null}
+```javascript theme={null}
 "use strict";
 
 var Zap = {
@@ -20645,7 +21602,7 @@ return bundle.request;
 
 Sometimes, a search endpoint will return a successful response despite the search being unsuccessful. To account for this, you need to manipulate the response in a [`_post_search`](#key_post_search) method:
 
-```javascript  theme={null}
+```javascript theme={null}
 // let's say the response content looks like this:
 // {
 // "search_results": {},
@@ -20668,7 +21625,7 @@ var Zap = {
 
 > Heads up! This code is only valid for the v2 platform, and is incompatible with today's [Platform CLI and Platform UI](/platform/quickstart/ui-vs-cli).
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
 pre_subscribe: function(bundle) {
 bundle.request.method = 'POST';
@@ -20699,7 +21656,7 @@ return bundle.request;
 
 **Adding trigger fields to subscription payload**
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
   pre_subscribe: function (bundle) {
     if (Object.keys(bundle.trigger_fields).length) {
@@ -20716,7 +21673,7 @@ var Zap = {
 
 > **Note** This code is only valid for the v2 platform. It's incompatible with Platform CLI and Platform UI.
 
-```javascript  theme={null}
+```javascript theme={null}
 var Zap = {
   get_session_info: function (bundle) {
     var api_key, api_key_request_payload, api_key_response;
@@ -20781,7 +21738,7 @@ Source: https://docs.zapier.com/platform/reference/managing-team-tutorial
 
 Integrations do not have a dedicated owner, instead they are managed by a team that can be modified as needed. Members can be added to a Zapier integration and can also be removed from the integration when needed.
 
-<video controls src="https://cdn.zappy.app/35d8f277f1d2c8beba5cef57262bad99.mp4" />
+<video />
 
 
 # Utilizing the Monitoring Tool
@@ -20789,7 +21746,7 @@ Source: https://docs.zapier.com/platform/reference/monitoring-tool-tutorial
 
 The Monitoring Tool gives you access to logs for requests made to your API by your Zapier integration
 
-<video controls src="https://cdn.zappy.app/4f1d37c1ff6cb690c3ff9c9fa6afe701.mp4" />
+<video />
 
 
 # Zapier integration structure for a project management app
@@ -20813,7 +21770,7 @@ To add a project management app integration in the Platform UI:
 * For apps with many record types, consider including a *New Activity* trigger, with options to let users choose which type of activity should trigger the Zap.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d59c530150415c3c95e7e44e506e584b" data-og-width="1447" width="1447" data-og-height="910" height="910" data-path="images/b34f31e26be51d5581f2a669c62c8d14.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=753016cfd8da5bc5924a2c36dd9020a1 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=fe75c61e9143b126b60623f9856a41d2 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=21d07409ca10d16d94f48458927138c1 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=eb1e1a0acf5e7dd683c8ec830081857d 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=2633c1fdbaff35a5195dfd6865590f5e 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/b34f31e26be51d5581f2a669c62c8d14.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=bc3dcc1e50239169eeb6f917c0d5b3e1 2500w" />
+  <img />
 </Frame>
 
 ![new activity trigger](https://cdn.zappy.app/)
@@ -20825,7 +21782,7 @@ To add a project management app integration in the Platform UI:
 * Allow users to filter which records they want to trigger on. For example, a *New Task* trigger could trigger when tasks are added to any project *or* to one specific project. Include [dynamic dropdowns](/platform/build/field-definitions#dynamic-dropdown) ordered by the most recently added to fetch accounts, projects, lists, and other items users would want to filter.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=66da98aca49ca5e647e9a31318ab5ef5" data-og-width="1203" width="1203" data-og-height="867" height="867" data-path="images/fe08bdcbf666e8f2961f0c2b3932b460.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=836870162bf772e4810382dcc33d6761 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=7b6d2b4b9125a6458022f3afcb28c3a6 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=863b9c88bbefe26d8eed5660910e829c 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=1587ca01b313f4c478119a979bd2097f 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=866f65f89ce9ef011baaf36d3f754837 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/fe08bdcbf666e8f2961f0c2b3932b460.webp?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=f83b64fad664f1b955b2e853aa6cfdca 2500w" />
+  <img />
 </Frame>
 
 * Project management records are linked to other records in your app. If the data is visible for that record in your app, users expect to see it in their Zap as well. For example, a “New Task” trigger should include details about the task's project too.
@@ -20835,7 +21792,7 @@ To add a project management app integration in the Platform UI:
 * If your record API endpoint does not automatically return additional linked data beyond the ID or name of the record, add custom code to your trigger API call to fetch relevant data linked to the record as well.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=0820c0fbad5828b947fb62c30ef942e4" data-og-width="1256" width="1256" data-og-height="1178" height="1178" data-path="images/3f2f5450c1c7981b41a4d2234047bfaa.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=280&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=9f761de531787e04dab4b1953ffaa3f0 280w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=560&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=5d70faaab2237b6ab8d872a7b899e08d 560w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=840&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=33a095b5d8f0c6d37c36e787a3e063de 840w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=1100&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=3b68a933802ab128eb971af384cdee15 1100w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=1650&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=94e2369948f8e6f577a92fa7c20b1385 1650w, https://mintcdn.com/zapier-82f0e938/88BoWUuO1MROWn5-/images/3f2f5450c1c7981b41a4d2234047bfaa.webp?w=2500&fit=max&auto=format&n=88BoWUuO1MROWn5-&q=85&s=ae305156a2db2b40df185e8b941d71cd 2500w" />
+  <img />
 </Frame>
 
 ## 2. Include common search actions
@@ -20847,7 +21804,7 @@ To add a project management app integration in the Platform UI:
 * Offer multiple search key and value options where applicable. For example, a *Find Project* search should let users search by project ID and name. The former is useful for searching based on data in previous steps, where the latter is useful to find projects with human input. Return exact matches first and provide help text to communicate to users how the search matches records to search terms.
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=f32df09e9d61315c1c223b2acf3d27d1" data-og-width="1044" width="1044" data-og-height="747" height="747" data-path="images/542be79e48ccbd6d12e43646690dcebb.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=280&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=7bc5f94b34af295fe46a1b765d746e97 280w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=560&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=576a6f7780b89115670ccac78833b6ae 560w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=840&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=44001f4ceabbf68dfc2b175289d5d18d 840w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=1100&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=74af70a1bc40b66caff6eca928584271 1100w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=1650&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=530b864e6f5018d8cb5f98cdcba7f7d3 1650w, https://mintcdn.com/zapier-82f0e938/MptVjeuYuatFg3LM/images/542be79e48ccbd6d12e43646690dcebb.webp?w=2500&fit=max&auto=format&n=MptVjeuYuatFg3LM&q=85&s=38b9f6676bfc8304dc3074c2b2ab935d 2500w" />
+  <img />
 </Frame>
 
 ## 3. Include common create actions
@@ -20880,7 +21837,7 @@ Source: https://docs.zapier.com/platform/reference/promoting-a-version-tutorial
 
 Promoting a version makes an integration version the new default version for a public integration
 
-<video controls src="https://cdn.zappy.app/ecc8ac28dd942caa1621f8ca623a2500.mp4" />
+<video />
 
 
 # Utilizing Request Template
@@ -20888,7 +21845,7 @@ Source: https://docs.zapier.com/platform/reference/request-template-tutorial
 
 The Request Template is a request editor that lets users set static values that apply to all requests made by this integration.
 
-<video controls src="https://cdn.zappy.app/f64c9c062e3fbf4b691dcde0b560c19f.mp4" />
+<video />
 
 
 # Implementing REST Hook triggers
@@ -20896,7 +21853,7 @@ Source: https://docs.zapier.com/platform/reference/rest-hook-trigger-tutorial
 
 REST Hook triggers runs in near realtime as it involves your app pushing data to Zapier as soon as new data comes into your app.
 
-<video controls src="https://cdn.zappy.app/b8511ab881f3ad50a9465a1732501cf8.mp4" />
+<video />
 
 
 # Schema reference
@@ -20938,7 +21895,7 @@ Source: https://docs.zapier.com/platform/reference/using-environment-variables-t
 
 Environment variables are useful when you have data like an OAuth client ID and secret that you don’t want to commit to source control. Environment variables can also be used as a way to toggle between a staging and production environment during app development and this would be recommended instead of the use of an independent integration for staging purposes.
 
-<video controls src="https://cdn.zappy.app/cb768909f391c96e8814d77c2eece503.mp4" />
+<video />
 
 
 # Embedding the Zapier Workflow Element
@@ -20946,7 +21903,7 @@ Source: https://docs.zapier.com/platform/reference/zapier-workflow-element-tutor
 
 The Zapier Workflow Element is a prebuilt UI component that enables you to suface your Zapier integration and user workflows directly in your app
 
-<video controls src="https://cdn.zappy.app/b5b84608c5b9eb243fbc424c27fa9898.mp4" />
+<video />
 
 
 # Zap Guesser
@@ -20967,8 +21924,8 @@ The Zap Guesser lets you generate a suggested Zap and a pre-filled URL to the Za
 
 You can view our [Workflow Element Documentation](/powered-by-zapier/embedding-zapier/workflow-element) and then visit the [Workflow Element Builder](https://zapier.com/partner/embed/workflow) if you'd like to embed the Workflow Element.
 
-<Frame caption="Leverage the Workflow Element for a no-code, visual experience that integrates directly into your app or site.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/75e9d02f52b27dad2eb383d190236eac.mov" />
+<Frame>
+  <video />
 </Frame>
 
 ## API Usage
@@ -20979,7 +21936,7 @@ To generate a Zap suggestion, send a POST request to the [/v2/guess](/powered-by
 
 Content-Type: application/json
 
-```json  theme={null}
+```json theme={null}
 {
   "description": "Save new leads from Facebook Lead Ads to Google Sheets, and email me the lead in Gmail"
 }
@@ -20987,7 +21944,7 @@ Content-Type: application/json
 
 Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "title": "Save Facebook Lead Ads leads to Google Sheets and send an email",
   "steps": [
@@ -21051,7 +22008,7 @@ you can use the other API endpoints to retrieve your needed information.
 
 **zapier.js**
 
-```js  theme={null}
+```js theme={null}
 /**
  * Ensure the user has a Zapier account and has authorized this
  * site to access it. If not, a log in form or sign up form
@@ -21155,7 +22112,7 @@ current user.
 See the [OAuth 2.0 Token
 Exchange](https://datatracker.ietf.org/doc/html/rfc8693) RFC for more detail.
 
-```js  theme={null}
+```js theme={null}
 const url = new URL(request.url);
 const code = url.searchParams.get("code");
 const token = await EXCHANGE_CODE_FOR_TOKEN(code);
@@ -21169,7 +22126,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/accounts/user-pr
 https://api.zapier.com/schema get /v1/profiles/me
 This endpoint returns the authenticated user information
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `profile` OAuth scope.
 
@@ -21183,11 +22140,7 @@ Runs an action (step) in the third party API, using the provided authentication 
 
 This endpoint is asynchronous, and the response will contain an Action Run ID. You can use the `/v2/action-runs/:id` endpoint to check the status of the run and retrieve the results.
 
-The `authentication` field is optional and may be omitted if the  action does not require an authentication.
-
-The `inputs` field is required and must contain the input values for the action.
-
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `action:run` OAuth scope.
 
@@ -21206,7 +22159,11 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/get-acti
 https://api.zapier.com/schema get /v2/actions
 Fetch the available actions for the provided App. It's typical to filter by type so that only actions that make sense for a particular step are shown. Action IDs may not be reused, see our documentation for how to hardcode a particular action.
 
-#### OAuth
+#### When using Client ID
+
+Simply providing a client ID query parameter is sufficient. If an Authorization header is present, it will be used instead.
+
+#### When using OAuth
 
 This endpoint requires the `zap` OAuth scope.
 
@@ -21218,7 +22175,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/get-choi
 https://api.zapier.com/schema post /v2/actions/{action_id}/inputs/{input_id}/choices
 Get the possible values for a `SELECT` Input Field.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap` OAuth scope.
 
@@ -21229,8 +22186,9 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/get-inpu
 
 https://api.zapier.com/schema post /v2/actions/{action_id}/inputs
 Get the Input Fields for a particular Action, using the provided authentication and inputs. See the fields and fieldsets guide for more information.
+See [our docs](https://docs.zapier.com/powered-by-zapier/zap-creation/fields-and-fieldsets#input-fields) for more information.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap:write` OAuth scope.
 
@@ -21242,7 +22200,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/get-outp
 https://api.zapier.com/schema post /v2/actions/{action_id}/outputs
 Get the Output Fields for a particular Action, using the provided authentication and inputs.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap:write` OAuth scope.
 
@@ -21254,7 +22212,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/retrieve
 https://api.zapier.com/schema get /v2/action-runs/{id}
 Retrieves an Action Run.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `action:run` OAuth scope.
 
@@ -21267,7 +22225,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/step-tes
 https://api.zapier.com/schema post /v2/actions/{action_id}/test
 Tests the action (step) in the third party api, using the provided authentication and inputs.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap:write` OAuth scope.
 
@@ -21288,7 +22246,11 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/apps/get-apps-[v
 https://api.zapier.com/schema get /v2/apps
 This endpoint returns a list of apps sorted by popularity.
 
-#### OAuth
+#### When using Client ID
+
+Simply providing a client ID query parameter is sufficient. If an Authorization header is present, it will be used instead.
+
+#### When using OAuth
 
 This endpoint requires the `zap` OAuth scope.
 
@@ -21305,7 +22267,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/authentications/
 https://api.zapier.com/schema post /v2/authentications
 Creates a new Authentication for the provided App. See our Adding an Authentication guide to get started.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `authentication:write` OAuth scope.
 
@@ -21318,7 +22280,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/authentications/
 https://api.zapier.com/schema get /v2/authentications
 Fetch the available Authentications for the provided App. This will only return Authentications that are owned by the user and not those that are shared with them, since it's not possible to create Zaps with Authentications you don't own.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `authentication` OAuth scope.
 
@@ -21377,7 +22339,7 @@ Errors in the API follow the <a href="https://jsonapi.org/format/#error-objects"
 
 An example error object returned in a response body looks like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -21395,9 +22357,9 @@ An example error object returned in a response body looks like this:
 Other potential error codes that may be returned are:
 
 <CardGroup>
-  <Card title="401 Unauthorized" icon="circle" iconType="solid" color="#dbdb00" />
+  <Card title="401 Unauthorized" icon="circle" />
 
-  <Card title="403 Forbidden" icon="circle" iconType="solid" color="#FF0000" />
+  <Card title="403 Forbidden" icon="circle" />
 </CardGroup>
 
 In all cases the response will be a JSON object with a single key `errors` which will be an array of error objects.
@@ -21452,7 +22414,7 @@ Typical arguments for requests are sent via query params, for more information c
 
 Example:
 
-```bash  theme={null}
+```bash theme={null}
 curl --request GET \
   --url https://stoplight.io/mocks/zapier/public-api/181772442/zaps \
   --header 'Accept: application/vnd.api+json'
@@ -21466,7 +22428,7 @@ Responses for the API follow the <a href="https://jsonapi.org/format/#fetching-r
 
 A successful response will always have a data key, which will be an array of objects depending on the request.
 
-```json  theme={null}
+```json theme={null}
 {
   "data": [
     {
@@ -21525,7 +22487,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/experimental/get
 https://api.zapier.com/schema get /v2/zap-runs
 This endpoint returns runs for the specified Zaps and provides basic yet essential details about their execution. As the initial version, it serves foundational information, with plans for continuous enhancement to expand its capabilities and improve data output over time.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap:runs` OAuth scope.
 
@@ -21616,7 +22578,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/zaps/create-a-za
 https://api.zapier.com/schema post /v2/zaps
 This URL creates a Zap based on the given steps and title.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap:write` OAuth scope.
 
@@ -21629,7 +22591,7 @@ Source: https://docs.zapier.com/powered-by-zapier/api-reference/zaps/get-zaps-[v
 https://api.zapier.com/schema get /v1/zaps
 This endpoint returns a list of Zaps for the authenticated Zapier user.
 
-#### OAuth
+#### When using OAuth
 
 This endpoint requires the `zap` OAuth scope.
 
@@ -21645,9 +22607,9 @@ This endpoint returns a list of Zaps for the authenticated Zapier user.
 The `expand` array can be used to expand selected fields into full objects in the response.  Inputs with keys can
 also be passed to filter Zaps by certain criteria.
 
-#### OAuth
+#### When using OAuth
 
-This endpoint requires the `zap`, `zap:all`, or `zap:account:all` OAuth scope.
+This endpoint requires the `zap`, `zap:all`, or `zap:account:all` OAuth scopes.
 
 This API is [rate limited](/powered-by-zapier/api-reference/rate-limiting).
 
@@ -21798,7 +22760,7 @@ While many API endpoints require a user access token to perform actions on behal
 
     You'll recieve a response that looks like this:
 
-    ```js  theme={null}
+    ```js theme={null}
     HTTP/1.1 200 OK
     Content-Type: multipart/form-data
     Cache-Control: no-store
@@ -21924,7 +22886,7 @@ The Workflow API uses [OAuth 2.0 authentication with the authorization code gran
   <Step title="Initiate the OAuth flow and get the user's permission.">
     Construct a URL like the one below (with your own redirect url, client id, OAuth scopes, etc.) and open a browser to that URL.
 
-    ```js  theme={null}
+    ```js theme={null}
     https://api.zapier.com/v2/authorize
         ?response_type=code
         &client_id={YOUR_CLIENT_ID}
@@ -21946,7 +22908,7 @@ The Workflow API uses [OAuth 2.0 authentication with the authorization code gran
 
     A full example would be:
 
-    ```js  theme={null}
+    ```js theme={null}
     https://api.zapier.com/v2/authorize
       ?response_type=code
       &client_id=5672067294567789354752
@@ -21968,7 +22930,7 @@ The Workflow API uses [OAuth 2.0 authentication with the authorization code gran
 
     For example, the browser would be redirected to:
 
-    ```js  theme={null}
+    ```js theme={null}
     https://your-app.com/redirect
     ?code=dfJ2KuL0vKLRCwQIOL5NDGKQ&H9mlc
     &state=tney4952
@@ -22045,7 +23007,7 @@ The Workflow API uses [OAuth 2.0 authentication with the authorization code gran
 
     You'll recieve a response that looks like this:
 
-    ```js  theme={null}
+    ```js theme={null}
     HTTP/1.1 200 OK
     Content-Type: multipart/form-data
     Cache-Control: no-store
@@ -22145,7 +23107,7 @@ The Workflow API uses [OAuth 2.0 authentication with the authorization code gran
 
     You'll receive a response that looks like this:
 
-    ```js  theme={null}
+    ```js theme={null}
     HTTP/1.1 200 OK
     Content-Type: multipart/form-data
     Cache-Control: no-store
@@ -22372,7 +23334,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     Add this script tag to your HTML `<head>`:
 
-    ```html  theme={null}
+    ```html theme={null}
     <script src="https://mcp.zapier.com/embed/v1/mcp.js"></script>
     ```
 
@@ -22380,7 +23342,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     Add the `<zapier-mcp>` element to your HTML body:
 
-    ```html  theme={null}
+    ```html theme={null}
     <zapier-mcp
 
     embed-id="FILL_IN_YOUR_EMBED_ID"
@@ -22416,7 +23378,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     ### Javascript
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     // Load the MCP embed script
 
     const script = document.createElement("script");
@@ -22461,7 +23423,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     Add the script to your HTML `<head>`:
 
-    ```html  theme={null}
+    ```html theme={null}
     <!-- See the "Vanilla JS" solution if you'd rather use JS to load these -->
     <script src="https://mcp.zapier.com/embed/v1/mcp.js"></script>
     ```
@@ -22611,7 +23573,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     Add the script to your `<head>`:
 
-    ```html  theme={null}
+    ```html theme={null}
     <!-- See the "Vanilla JS" solution if you'd rather use JS to load these -->
     <script src="https://mcp.zapier.com/embed/v1/mcp.js"></script>
     ```
@@ -22688,7 +23650,7 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
     Add the script to your `<head>`:
 
-    ```html  theme={null}
+    ```html theme={null}
     <!-- See the "Vanilla JS" solution if you'd rather use JS to load these -->
     <script src="https://mcp.zapier.com/embed/v1/mcp.js"></script>
     ```
@@ -22756,15 +23718,15 @@ Generate embed code snippets for integrating Zapier MCP into your application.
 
 The `<zapier-mcp>` element supports the following attributes:
 
-<ResponseField name="embed-id" type="string" required>
+<ResponseField name="embed-id" type="string">
   The unique identifier for your embed.
 </ResponseField>
 
-<ResponseField name="width" type="string" default="100%">
+<ResponseField name="width" type="string">
   Width of the embed.
 </ResponseField>
 
-<ResponseField name="height" type="string" default="600px">
+<ResponseField name="height" type="string">
   Height of the embed.
 </ResponseField>
 
@@ -22822,7 +23784,7 @@ User security is paramount. By default, Zapier denies any embedding of our produ
 
 This protects the user from malicious activities like [Clickjacking](https://www.owasp.org/index.php/Clickjacking). :
 
-<Frame caption="If you were to attempt to embed Zapier and the embedding domain was not registered, we would present an error.">
+<Frame>
   ![If you were to attempt to embed Zapier and the embedding domain was not
   registered, we would present an
   error](https://cdn.zappy.app/4fb49db62ac6d5c41df46db7ccf3aab7.png)
@@ -22833,7 +23795,7 @@ This protects the user from malicious activities like [Clickjacking](https://ww
 If you've already embedded our Product, this would have already been captured and your product domains are permitted.
 
 * To add domains, navigate to the Settings tab under the Embed section in the sidebar of your integration's [Platform UI](https://developer.zapier.com/), and add the missing domains under the 'Embedding Domains' section.
-  <Frame caption="Adding Domains within the Zapier Developer Platform.">
+  <Frame>
     ![](https://cdn.zappy.app/da56277eb07303d8ce8ef42cafc8511e.png)
   </Frame>
 
@@ -22887,8 +23849,8 @@ With an embedded Zap editor in your product, your users can create and edit thei
 
 ### Example implementation
 
-<Frame caption="This video shows how Paperform prefills Zaps for their embedded Zap editor with contextual data from the platform, such as the Form ID, to make Zap setup easier for users. By doing so, Paperform reduces the number of clicks it takes for users to publish a Zap and removes mental friction of users needing to remember details for it.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/0625a071fbee914968480b0b58d696a8.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 <Tip>
@@ -22900,7 +23862,7 @@ With an embedded Zap editor in your product, your users can create and edit thei
 
 Use the Workflow API to query the public Zap Templates featuring your integration (using the [`GET /v1/zap-templates` endpoint](/powered-by-zapier/api-reference/zap-templates/get-zap-templates)) and feature them in your product. When a user chooses a Zap template they'd like to try, use the `create_url` value as the source to load in an embedded frame such as:
 
-```js  theme={null}
+```js theme={null}
 <iframe src="https://api.zapier.com/v1/embed/trello/create/113"></iframe>
 ```
 
@@ -22918,7 +23880,7 @@ You can also facilitate a user's Zap creation via URL parameters instead of an e
 
 Use the Workflow API to load a user's Zaps (using the [`GET /v1/zaps` endpoint](/powered-by-zapier/api-reference/zaps/get-zaps-\[v1])). When the user chooses to open or edit a Zap use the the `url` value of the Zap as the source of an embedded frame like this:
 
-```js  theme={null}
+```js theme={null}
 <iframe src="https://zapier.com/editor/123456"></iframe>
 ```
 
@@ -22959,14 +23921,14 @@ The following is an example of a simple pre-filled zap that sends the weather to
 
 `https://api.zapier.com/v1/embed/space-by-zapier/create?steps[0][app]=WeatherCLIAPI@latest&steps[0][action]=today_forecast&steps[0][params][latitude]=40.7127&steps[0][params][longitude]=-74.0059&steps[1][app]=SlackAPI&steps[1][action]=direct_message`
 
-<Card title="Test this pre-filled zap" icon="bolt" href="https://api.zapier.com/v1/embed/space-by-zapier/create?steps[0][app]=WeatherCLIAPI@latest&steps[0][action]=today_forecast&steps[0][params][latitude]=40.7127&steps[0][params][longitude]=-74.0059&steps[1][app]=SlackAPI&steps[1][action]=direct_message" horizontal="true" />
+<Card title="Test this pre-filled zap" icon="bolt" href="https://api.zapier.com/v1/embed/space-by-zapier/create?steps[0][app]=WeatherCLIAPI@latest&steps[0][action]=today_forecast&steps[0][params][latitude]=40.7127&steps[0][params][longitude]=-74.0059&steps[1][app]=SlackAPI&steps[1][action]=direct_message" />
 
 ## Creating pre-filled Zaps using the Zap Generator
 
 The UI-based generator within the [Developer Platform](https://developer.zapier.com/) facilitates constructing pre-filled Zaps. Start by selecting your app and navigating to `Embed` → `Pre-Filled Zaps` and scroll down to the generator.
 
-<Frame caption="Screenshot of pre-Filled Zaps tab">
-  <img src="https://cdn.zappy.app/2a4f9c6de6c525cbcdc1b513ec88c519.png" />
+<Frame>
+  <img />
 </Frame>
 
 <Steps>
@@ -22975,8 +23937,8 @@ The UI-based generator within the [Developer Platform](https://developer.zapier.
     the fields you can pre-fill. If no fields appear, the event has no input
     fields.
 
-    <Frame caption="Screenshot of generator trigger step setup">
-      <img src="https://cdn.zappy.app/87b9c4951d55298780ff209e217bb750.png" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 
@@ -22992,8 +23954,8 @@ The UI-based generator within the [Developer Platform](https://developer.zapier.
       reminder to replace the value at runtime. - If the field is greyed out, it
       requires a complex field value and cannot be pre-filled.
 
-    <Frame caption="Screenshot of prefill input field options">
-      <img src="https://cdn.zappy.app/9e845182506292214c866f3278861e8d.png" />
+    <Frame>
+      <img />
     </Frame>
 
     <Info>
@@ -23034,13 +23996,13 @@ The generator only supports creating 2-step Zaps, but you can construct multi-st
 
 Here's what it would look like in the editor:
 
-<Frame caption="Zap Editor showing `hello` pre-filled into the name field of a new Zap titled Create Card in Trello">
-  <img src="https://cdn.zappy.app/415ac51b31ab86dbf2b1589fe524395c.png" />
+<Frame>
+  <img />
 </Frame>
 
 You can prefill multiple values for the user. In this example `name` and `desc` are prefilled
 
-```js  theme={null}
+```js theme={null}
 
 https://api.zapier.com/v1/embed/trello/create/113
     ?steps[1][params][name]=yoyoyo
@@ -23051,13 +24013,13 @@ https://api.zapier.com/v1/embed/trello/create/113
 * `steps[1][params][name]=yoyoyo`
 * `steps[1][params][desc]=yeehaw`
 
-<Frame caption="Zap Editor showing `yoyoyo` pre-filled into the name field, and `yeehaw` pre-filled into the description field of a new Zap titled Create Card in Trello">
-  <img src="https://cdn.zappy.app/278dc4d00844240ff8289bb0267db63c.png" />
+<Frame>
+  <img />
 </Frame>
 
 You can provide a label for prefill dropdowns as we won't fetch all of the pages of choices until the user opens the dropdown:
 
-```js  theme={null}
+```js theme={null}
 
 https://api.zapier.com/v1/embed/trello/create/113
     ?steps[1][params][board]=1234
@@ -23068,8 +24030,8 @@ https://api.zapier.com/v1/embed/trello/create/113
 * `steps[1][params][board]=1234`
 * `steps[1][meta][parammap][board]=Test`
 
-<Frame caption="Zap Editor showing `Test` pre-filled into the board field of a new Zap titled Create Card in Trello">
-  <img src="https://cdn.zappy.app/ecadae9e61631a7cb1a456b581ab4705.png" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -23084,8 +24046,8 @@ Whether you want to surface pre-built zap templates in your product, allow your 
 
 [Get started with the Workflow Element](https://zapier.com/partner/embed/workflow)
 
-<Frame caption="Workflow Element Demo">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/8aa623bff94e5e85387c6d6afc0b1a48.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Capabilities
@@ -23096,32 +24058,32 @@ The Workflow Element is the easiest and best way to bring automation to your use
 
 Take advantage of Zapier's extensive and industry-leading app directory by embedding a customized version of Zapier's App Directory. Users can search through thousands of available apps to pair with yours and see popular workflows at a glance. Our generator allows you to customize the number of apps that are displayed and allows you to exclude apps by name or by app category.
 
-<Frame caption="Give your users instant access to over 7000 integrations">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/c835acfec476da341ac603d225cd447e.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ### Use
 
 Easily surface pre-built zap templates in your product for your users to use. You can surface the most popular zap templates for your app, or choose specific zap templates to showcase.
 
-<Frame caption="Showcase pre-built zap templates in your user flow">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/01b1d163d5733a8db107ad3fca8ee52e.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ### Create
 
 When clicking on a template or app listing, a modal opens up within your site, prompting users to log in or sign up if they don't have a Zapier account. Enable Quick Account Creation to make this even simpler for users. Once done, the Zap Editor will open on this same modal, and users can create Zaps.
 
-<Frame caption="Allow your user to create and edit Zaps without leaving your products">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/e2228fb4acd30ccb861f365a85411afc.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ### Manage
 
 Once users have created Zaps, they're able to see them directly inside your product. They can view their Zaps and see their status at a glance without ever having to leave your product
 
-<Frame caption="Allow your users to manage their Zaps right from your app">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/edd9b9e0a75ddfbb62fa42cdfad3f64c.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 <Tip>
@@ -23142,7 +24104,7 @@ In order to embed the Workflow Element:
   <Step title="Add your domains">
     The Workflow Element uses iframes, which are blocked by default for security purposes. Provide us with a list of domains you intend to embed it in and we'll permit these specific domains. Head to the [Zapier Developer Platform](https://developer.zapier.com/), find your app and select settings to get started.
 
-    <Frame caption="Adding domains is a required security measure.">
+    <Frame>
       ![Customize your embed](https://cdn.zappy.app/da56277eb07303d8ce8ef42cafc8511e.png)
     </Frame>
   </Step>
@@ -23154,7 +24116,7 @@ In order to embed the Workflow Element:
   <Step title="Customize your embed">
     Using the sidebar panel in the tool, customize your embed. When it's ready, click Generate Code.
 
-    <Frame caption="Use the options on the left panel to customize your embed.">
+    <Frame>
       ![Customize your embed](https://cdn.zappy.app/d6113da7c1934b6e0402453b77f2fb8d.png)
     </Frame>
 
@@ -23164,7 +24126,7 @@ In order to embed the Workflow Element:
   </Step>
 
   <Step title="Copy the code and place the embed anywhere in your product ✨">
-    <Frame caption="As the sample above shows, you can choose from a variety of code samples & guides to copy right over to your product. ">
+    <Frame>
       ![Code generator](https://cdn.zappy.app/72ecc13062e1b04b931ebac5483e4962.png)
     </Frame>
   </Step>
@@ -23344,7 +24306,7 @@ Retrieve Authentications for a specific App, scoped to those owned by the user.
 
 Once you've [selected an App](/powered-by-zapier/api-reference/apps/get-apps-\[v2]), you can fetch the list of Authentications a user owns for that App by making a request to the [`/authentications endpoint`](/powered-by-zapier/api-reference/authentications/get-authentications):
 
-```json  theme={null}
+```json theme={null}
 // GET /authentications?app=81f613aa-c98a-4383-a5fc-195e68647217
 {
   "links": {
@@ -23450,7 +24412,7 @@ To trigger an action, make a `POST` request to [/v2/action-runs/](/powered-by-za
 
 ### Request Example
 
-```http  theme={null}
+```http theme={null}
 POST https://api.zapier.com/v2/action-runs/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
@@ -23475,7 +24437,7 @@ Content-Type: application/json
 
 ### Response Example
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "type": "run",
@@ -23528,8 +24490,8 @@ An **action run** represents a single execution of an action step in a Zapier wo
 
 ## Example / Demo
 
-<Frame caption="See a walkthrough of how to run one-off actions using the WorkflowAPI.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/79ec346f9f76eeb2296461a864d034c7.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ***
@@ -23569,7 +24531,7 @@ To check the outcome of the action, send a `GET` request to [/v2/action-runs/](/
 
 ### Request Example
 
-```http  theme={null}
+```http theme={null}
 GET https://api.zapier.com/v2/action-runs/arun_abc123/
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
@@ -23585,7 +24547,7 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 
 ### Response Example
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "type": "run",
@@ -23660,7 +24622,7 @@ The Create Promotion Enrollment endpoint allows you to enroll a user into an exi
 To enroll a user in a promotion, send a POST request to the [/v2/promotions endpoint](/powered-by-zapier/api-reference/promotions/create-enrollment) with the required parameters in the request body.
 Here’s an example request:
 
-```json  theme={null}
+```json theme={null}
 // POST /v2/promotions
 {
   "promotion_id": "partner_promotion_slug",
@@ -23670,7 +24632,7 @@ Here’s an example request:
 
 Upon successful enrollment, the endpoint returns a JSON response containing the enrollment details.
 
-```json  theme={null}
+```json theme={null}
 {
   "enrollment_id": "partner_promotion_slug:987fcdeb-1a2b-3c4d-5e6f-426614174999"
 }
@@ -23701,12 +24663,12 @@ Source: https://docs.zapier.com/powered-by-zapier/zap-creation/fields-and-fields
 There are two main types of fields to consider when dealing with the Zapier API:
 input fields and output fields:
 
-<Card title="Input fields" icon="inbox-in" iconType="duotone">
+<Card title="Input fields" icon="inbox-in">
   Those that are provided to an Action so that it can run. They are analogous to
   the arguments that a function takes.
 </Card>
 
-<Card title="Output fields" icon="inbox-out" iconType="duotone">
+<Card title="Output fields" icon="inbox-out">
   Those that are returned by an Action. These may then be *mapped* into the
   input fields of a subsequent Action in a Zap.
 </Card>
@@ -23841,7 +24803,7 @@ inputs available for the action will now be different.
 
 ### Invalidation & Dependancy Flow
 
-<Frame caption="The sequencing of inputs can be complex for certain actions, this flow demonstrates how to present these inputs to users.">
+<Frame>
   ![Invalidation & Dependancy
   Flow](https://cdn.zappy.app/9cff01e591e7c205326aa4b6b212c89a.jpg)
 </Frame>
@@ -23866,7 +24828,7 @@ The following variants warrant additional consideration:
 
     This input field:
 
-    ```js  theme={null}
+    ```js theme={null}
     "column_names": {
       "value_type": "ARRAY",
       "items": {
@@ -23877,7 +24839,7 @@ The following variants warrant additional consideration:
 
     would accept this value:
 
-    ```js  theme={null}
+    ```js theme={null}
     "column_names": ["Word", "Definition"]
     ```
   </Accordion>
@@ -23887,7 +24849,7 @@ The following variants warrant additional consideration:
 
     This input field:
 
-    ```js  theme={null}
+    ```js theme={null}
     "dictionary": {
       "value_type": "OBJECT"
     }
@@ -23895,7 +24857,7 @@ The following variants warrant additional consideration:
 
     would accept this value:
 
-    ```js  theme={null}
+    ```js theme={null}
     "dictionary": {
       "apple": "A fruit!",
       "salmon": "A fish!"
@@ -23909,7 +24871,7 @@ The following variants warrant additional consideration:
     of `SELECT` and options should be fetched from `/choices`. See [choices](/powered-by-zapier/zap-creation/fields-and-fieldsets#choices) for more information.
     This input field:
 
-    ```js  theme={null}
+    ```js theme={null}
     {
       "type": "input_field",
       "id": "replace_all_rows",
@@ -23921,7 +24883,7 @@ The following variants warrant additional consideration:
 
     would require a request to `/choices`;
 
-    ```js  theme={null}
+    ```js theme={null}
     // repsonse from POST https://api.zapier.com/v2/actions/core:gq7MXdsdsaaqqDBj/inputs/replace_all_rows/choices
     {
       "id": "False",
@@ -23939,7 +24901,7 @@ The following variants warrant additional consideration:
 
     and ultimately would accept this value:
 
-    ```js  theme={null}
+    ```js theme={null}
     "False"
     ```
 
@@ -23959,7 +24921,7 @@ The following variants warrant additional consideration:
   <Accordion title="Readonly fields">
     These fields are to be presented as text only, and require no input. The
     `description` field contains the text to be presented. `js "format":
-        "READONLY" `
+            "READONLY" `
   </Accordion>
 
   <Accordion title="File fields">
@@ -24137,7 +25099,7 @@ Let's walk through an example of adding a filter step to a workflow. We'll assum
 
 First, we need to find the Filter by Zapier app. You can search for it using the [GET /v2/apps](/powered-by-zapier/api-reference/apps/get-apps-\[v2]) endpoint:
 
-```js  theme={null}
+```js theme={null}
 GET /v2/apps?query=filter
 ```
 
@@ -24179,7 +25141,7 @@ Take note of the app `id`: `e85bcf45-505b-4acb-b7e8-4c3a81d49afb`. We'll use thi
 
 Now that we have the app ID, we can retrieve the filter action using the [GET /v2/actions](/powered-by-zapier/api-reference/actions/get-actions) endpoint with `action_type=FILTER`:
 
-```js  theme={null}
+```js theme={null}
 GET /v2/actions?app=e85bcf45-505b-4acb-b7e8-4c3a81d49afb&action_type=FILTER
 ```
 
@@ -24694,13 +25656,13 @@ The available match rules include:
 
 For example, if your first step has an alias of `gmail_trigger` and outputs a field called `subject`, the key field should be set to:
 
-```js  theme={null}
+```js theme={null}
 "filter_criteria_1_key": "{{gmail_trigger.subject}}"
 ```
 
 In a 2-step workflow (where the alias is optional and implicit), you could use:
 
-```js  theme={null}
+```js theme={null}
 "filter_criteria_1_key": "{{subject}}"
 ```
 
@@ -24910,8 +25872,8 @@ The Workflow API is accessible for all publicly listed integrations.
 
 Check out the recent ZapConnect Session on the Workflow API, discussing features & popular use cases.
 
-<Frame caption="Empower Your Users: Unlock Automation with Zapier's Workflow API, ZapConnect 2024">
-  <video controls className="w-full aspect-video" poster="https://res.cloudinary.com/zapier-media/video/upload/so_1/q_auto/f_auto/v1728050896/ZapConnect%202024/Registration%20page/zapconnect_sizzle-updated-16-9_d1e7br.jpg" src="https://cdn.zappy.app/ea0480447f61a88282cd2a9eaa25d768.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 
@@ -24955,12 +25917,12 @@ This guide walks through the entire process of building an automated workflow fo
 <Info>
   Authenticating with Zapier is required to build alongside this guide. This is
   covered separately
-  [here](/powered-by-zapier/authentication/getting-started).{" "}
+  [here](/powered-by-zapier/authentication/getting-started).
 </Info>
 
 For this guide, let's assume that we want give our users the ability to automate workflows with the (imaginary) apps SuperExampleCRM and PlatformAdManager so that when there is a new lead in SuperExampleCRM, a new engagement report is sent to PlatformAdManager. We need to build a zap in your product with SuperExampleCRM and PlatformAdManager. Zaps are comprised of a series of steps, so in this example our two steps would be:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="First Step" icon="circle-1">
     Whenever there is a new lead in SuperExampleCRM...
   </Card>
@@ -24974,18 +25936,18 @@ For this guide, let's assume that we want give our users the ability to automate
 
 Each Zap step in turn, is comprised of:
 
-<CardGroup cols={1}>
-  <Card title="An Action" icon="person-running-fast" iconType="duotone">
+<CardGroup>
+  <Card title="An Action" icon="person-running-fast">
     An Action is an operation that can be performed against a third-party API;
     such as a `READ` or a `WRITE`.
   </Card>
 
-  <Card title="An Authentication" icon="lock-keyhole" iconType="duotone">
+  <Card title="An Authentication" icon="lock-keyhole">
     An Authentication is a set of user credentials for an App that is stored
     securely by Zapier.
   </Card>
 
-  <Card title="A Group of Inputs" icon="list-check" iconType="duotone">
+  <Card title="A Group of Inputs" icon="list-check">
     Inputs are fields that are provided to an Action so that it can run. They
     are analogous to the arguments that a function takes.
   </Card>
@@ -25007,14 +25969,14 @@ The first thing that we need to do is select an Action for the first step of the
 
 Let's say that the `id` of the SuperExampleCRM app is `4b3920d6-1d5a-4071-b837-9383dc511b80`. Given that id and that the first action of an app will usually have the `action_type` `READ`, we can fetch a list of available actions for the selected app by making a request to the `/actions` endpoint.
 
-```js  theme={null}
+```js theme={null}
 
 GET /actions?app=4b3920d6-1d5a-4071-b837-9383dc511b80&action_type=READ
 ```
 
 Our user can then select one of these Actions that they wish to use as the Trigger for their Zap. For this guide, we'll say that the user chose the "New Lead" Action:
 
-```js  theme={null}
+```js theme={null}
 {
   "id": "core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ",
   "key": "new_lead"
@@ -25035,7 +25997,7 @@ We can make a request to `GET /authentications?app=4b3920d6-1d5a-4071-b837-9383d
 
 For this guide, we'll say that the user chose the authentication with `id` `"49509"`
 
-```js  theme={null}
+```js theme={null}
 {
   "type": "authentication",
   "id": "49509",
@@ -25053,7 +26015,7 @@ In an above step, the user selected the "New Lead" action with id `core:wJ3PxHpN
 
 <CodeGroup>
   ```js Request theme={null}
-  //POST /actions/core:core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ/inputs
+  //POST /actions/core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ/inputs
   {
     "data": {
       "authentication": "49509",
@@ -25151,14 +26113,14 @@ For this guide, we'll say that the user selected `person` from the dropdown.
 
 Selecting an Action for the second step of a Zap follows the same process and uses the same API endpoints as selecting an Action for the first step of a Zap, with the two exceptions that a different App id should be used, and that the `action_type` of the second action will usually be a `WRITE`. In this case, let's say that the id of the PlatformAdManager App is `9c29df46-f9b9-48e2-a879-8f5479d8401d`. We can fetch a list of available actions for PlatformAdManager by making a request to the `/actions` endpoint.
 
-```js  theme={null}
+```js theme={null}
 
 GET /actions?app=9c29df46-f9b9-48e2-a879-8f5479d8401d&action_type=WRITE
 ```
 
 Again, our user can then select one of these Actions that they wish to use. For this guide, we'll say that the user chose the "Create Engagement Report" Action:
 
-```js  theme={null}
+```js theme={null}
 {
   "id": "core:3ZYFzZKkjbDK2AwQopVqrZWL9pK",
   "key": "create_engagement_report"
@@ -25177,7 +26139,7 @@ Selecting an Authentication for the second step of a Zap follows the same proces
 
 Again, our user can select which of the available authentications they would like to use with this Zap. For this guide, we'll say that the user chose the authentication with `id` `"857610"`
 
-```js  theme={null}
+```js theme={null}
 {
   "type": "authentication",
   "id": "857610",
@@ -25376,7 +26338,7 @@ brackets is referring to the previous step.
 This is not the case with Zaps that have more than 2 steps. When you want to reference a step, you
 must declare a (snake-case) **alias** for the step like so:
 
-```diff  theme={null}
+```diff theme={null}
       {
         "action": "core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ",
         "inputs": {
@@ -25451,8 +26413,8 @@ Signups to use Adalo's integration jumped 40% after embedding Zapier with Quick 
 
 ## Example implementation
 
-<Frame caption="This video demonstrates how to implement Quick Account Creation using the Zap template element within Adalo's platform. This provides users with a faster, seamless sign-up experience.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/1f21dbddbc570407248253c13859a5d9.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Prerequisites
@@ -25496,7 +26458,7 @@ If you have an existing Workflow Element embed, you can add the new required fie
 * `sign-up-first-name`
 * `sign-up-last-name`
 
-```html  theme={null}
+```html theme={null}
 <zapier-workflow
   sign-up-email="email_of_your_user@example.com"
   sign-up-first-name="first_name_of_your_user"
@@ -25554,7 +26516,7 @@ This implementation allows a new Zapier account to be created, provides an acce
   <Step>
     Use the URL below to initiate Quick Account Creation, then redirect users to a specified URL:
 
-    ```js  theme={null}
+    ```js theme={null}
 
     https://api.zapier.com/v2/authorize
         ?redirect_uri=<redirect_uri>
@@ -25605,8 +26567,8 @@ Listing a users zaps reveals existing workflows created by users.
 
 ### Example Implementation
 
-<Frame caption="Unbounce uses the /zaps endpoint to display users' Zaps using their integration directly within the Unbounce platform.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/c272eef3c4261c529e8e9e0ce9d5630b.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Fetching a list of Zaps for a user
@@ -25634,12 +26596,10 @@ Listing a users zaps reveals existing workflows created by users.
     otherwise behaves as `zap:all`).
 
     <Info>
-      {" "}
-
       By default, only zaps that contain the authenticating app and that are
       **owned** by the user are returned. Use of the `zap:account:all` scope is
       required to access shared zaps or zaps the user may have permission to
-      view/edit.{" "}
+      view/edit.
     </Info>
   </Step>
 
@@ -25661,8 +26621,8 @@ Listing apps available on Zapier is a simple way to show users all of what's pos
 
 ### Example Implementation
 
-<Frame caption="Jotform uses the /apps endpoint to power their own app directory by intertwining the thousands of public integrations on Zapier's directory with their native integrations.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/a77eb4b1861eb1ad5b04c3975d16ad02.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Fetching a list of Apps available on Zapier
@@ -25702,7 +26662,7 @@ An Action is an operation that can be performed against a third-party API; such 
 
 Once you've [selected an app](/powered-by-zapier/api-reference/apps/get-apps-\[v2]), we can fetch the list of available actions for a selected App by making a request to the [`/actions` endpoint](/powered-by-zapier/api-reference/actions/get-actions):
 
-```js  theme={null}
+```js theme={null}
 // GET /actions?app=4b3920d6-1d5a-4071-b837-9383dc511b80&action_type=READ
 {
   "data": [
@@ -25728,7 +26688,7 @@ Once you've [selected an app](/powered-by-zapier/api-reference/apps/get-apps-\[v
 
 <Info>
   As an example, `READ` and `WRITE` map to *Trigger* and *Action* respectively
-  In the Zapier ecosystem.{" "}
+  In the Zapier ecosystem.
 </Info>
 
 Our user can then select one of these Actions that they wish to use as the Trigger for their Zap. The `id` field is accepted in several other endpoints.
@@ -25753,7 +26713,7 @@ An Authentication is a set of user credentials for an [App](/powered-by-zapier/a
 
 We can fetch a list of Authentications available for an App by making a request to the [`/authentications endpoint`](/powered-by-zapier/api-reference/authentications/get-authentications):
 
-```js  theme={null}
+```js theme={null}
 // GET /authentications?app=4b3920d6-1d5a-4071-b837-9383dc511b80
 {
   "data": [
@@ -25806,7 +26766,7 @@ The best way to use this `links.connect_new_authentication` link is as follows:
   <Step title="From the message, retrieve the new `authentication_id`">
     Afterwards, use that `authentication_id` to continue the workflow.
 
-    ```js  theme={null}
+    ```js theme={null}
     // 1. Open a popup window to the `links.  connect_new_authentication` url.
     const authPopup = window.open(app.links.  connect_new_authentication, '_blank', 'width=1280,height=1024');
     if (!authPopup) {
@@ -26022,7 +26982,7 @@ Looking for an AI-native way to create dynamic workflows? Explore the [Zapier Ag
     Platform](https://developer.zapier.com/), find your app and select settings
     to get started.
 
-    <Frame caption="Adding domains is a required security measure.">
+    <Frame>
       ![Customize your
       embed](https://cdn.zappy.app/da56277eb07303d8ce8ef42cafc8511e.png)
     </Frame>
@@ -26037,7 +26997,7 @@ Looking for an AI-native way to create dynamic workflows? Explore the [Zapier Ag
     Using the sidebar panel in the tool, customize your embed. When it's ready,
     click Generate Code.
 
-    <Frame caption="Use the options on the left panel to customize your embed.">
+    <Frame>
       ![Customize your
       embed](https://cdn.zappy.app/d6113da7c1934b6e0402453b77f2fb8d.png)
     </Frame>
@@ -26052,7 +27012,7 @@ Looking for an AI-native way to create dynamic workflows? Explore the [Zapier Ag
   </Step>
 
   <Step title="Copy the code and place the embed anywhere in your product ✨">
-    <Frame caption="As the sample above shows, you can choose from a variety of code samples & guides to copy right over to your product. ">
+    <Frame>
       ![Code
       generator](https://cdn.zappy.app/72ecc13062e1b04b931ebac5483e4962.png)
     </Frame>
@@ -26078,8 +27038,8 @@ Zap templates are pre-made Zaps that help users discover popular use cases for a
 
 ### Example Implementation
 
-<Frame caption="Wufoo uses the /zap-templates endpoint to retrieve raw data about their Zap Templates to customize the look and feel of how they are surfaced to users within their own integration directory.">
-  <video controls className="w-full aspect-video" src="https://cdn.zappy.app/f25a20ea30b58eec65888744e939a497.mp4" />
+<Frame>
+  <video />
 </Frame>
 
 ## Fetching a list of Zap Templates

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-delete-secret-set.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Entire Secret Set
 
 > Delete an entire secret set by its name. This operation removes the secret set and all associated key-value pairs.
@@ -99,7 +103,3 @@ components:
         Authorization header.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

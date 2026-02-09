@@ -8,19 +8,15 @@
 
 The BlogPost component provides a flexible way to display an `<article>` element with customizable content including title, description, image, etc.
 
-<code-preview>
-<u-blog-post :authors="[{"name":"Anthony Fu","description":"antfu7","avatar":{"src":"https://github.com/antfu.png"},"to":"https://github.com/antfu","target":"_blank"}]" className="w-96" date="2024-11-25" description="Discover Nuxt Icon v1 - a modern, versatile, and customizable icon solution for your Nuxt projects." image="https://nuxt.com/assets/blog/nuxt-icon/cover.png" target="_blank" title="Introducing Nuxt Icon v1" to="https://nuxt.com/blog/nuxt-icon-v1-0">
+```vue
+<template>
+  <u-blog-post :authors=[{"name":"Anthony Fu","description":"antfu7","avatar":{"src":"https://github.com/antfu.png"},"to":"https://github.com/antfu","target":"_blank"}] date=2024-11-25 description=Discover Nuxt Icon v1 - a modern, versatile, and customizable icon solution for your Nuxt projects. image=https://nuxt.com/assets/blog/nuxt-icon/cover.png target=_blank title=Introducing Nuxt Icon v1 to=https://nuxt.com/blog/nuxt-icon-v1-0 />
+</template>
+```
 
-
-
-</u-blog-post>
-</code-preview>
-
-<tip to="/docs/components/blog-posts">
-
-Use the [`BlogPosts`](/docs/components/blog-posts) component to display multiple blog posts in a responsive grid layout.
-
-</tip>
+> [!TIP]
+> See: /docs/components/blog-posts
+> Use the `BlogPosts` component to display multiple blog posts in a responsive grid layout.
 
 ### Title
 
@@ -46,11 +42,8 @@ Use the `description` prop to display the description of the BlogPost.
 
 Use the `date` prop to display the date of the BlogPost.
 
-<tip>
-
-The date is automatically formatted to the [current locale](/docs/getting-started/integrations/i18n/nuxt#locale). You can either pass a `Date` object or a string.
-
-</tip>
+> [!TIP]
+> The date is automatically formatted to the [current locale](/docs/getting-started/integrations/i18n/nuxt#locale). You can either pass a `Date` object or a string.
 
 ```vue
 <template>
@@ -80,11 +73,8 @@ You can pass any property from the [Badge](/docs/components/badge#props) compone
 
 Use the `image` prop to display an image in the BlogPost.
 
-<note>
-
-If [`@nuxt/image`](https://image.nuxt.com/get-started/installation) is installed, the `<NuxtImg>` component will be used instead of the native `img` tag.
-
-</note>
+> [!NOTE]
+> If [`@nuxt/image`](https://image.nuxt.com/get-started/installation) is installed, the `<NuxtImg>` component will be used instead of the native `img` tag.
 
 ```vue
 <template>
@@ -106,6 +96,10 @@ Use the `authors` prop to display a list of [User](/docs/components/user) in the
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
 
 ```vue
+<script setup lang="ts">
+import type { UserProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UBlogPost title="Introducing Nuxt Icon v1" description="Discover Nuxt Icon v1 - a modern, versatile, and customizable icon solution for your Nuxt projects." image="https://nuxt.com/assets/blog/nuxt-icon/cover.png" date="2024-11-25" />
 </template>
@@ -114,6 +108,10 @@ You can pass any property from the [Link](/docs/components/link#props) component
 When the `authors` prop has more than one item, the [AvatarGroup](/docs/components/avatar-group) component is used.
 
 ```vue
+<script setup lang="ts">
+import type { UserProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UBlogPost title="Introducing Nuxt Icon v1" description="Discover Nuxt Icon v1 - a modern, versatile, and customizable icon solution for your Nuxt projects." image="https://nuxt.com/assets/blog/nuxt-icon/cover.png" date="2024-11-25" />
 </template>
@@ -139,11 +137,8 @@ Use the `variant` prop to change the style of the BlogPost.
 </template>
 ```
 
-<note>
-
-The styling will be different wether you provide a `to` prop or an `image`.
-
-</note>
+> [!NOTE]
+> The styling will be different wether you provide a `to` prop or an `image`.
 
 ### Orientation
 
@@ -195,7 +190,7 @@ interface BlogPostProps {
    */
   orientation?: "vertical" | "horizontal" | undefined;
   variant?: "outline" | "soft" | "subtle" | "ghost" | "naked" | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | undefined;
   ui?: { root?: ClassNameValue; header?: ClassNameValue; body?: ClassNameValue; footer?: ClassNameValue; image?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; authors?: ClassNameValue; avatar?: ClassNameValue; meta?: ClassNameValue; date?: ClassNameValue; badge?: ClassNameValue; } | undefined;
@@ -282,10 +277,11 @@ export default defineAppConfig({
         to: {
           true: {
             root: [
+              'has-focus-visible:ring-2 has-focus-visible:ring-primary',
               'transition'
             ],
             image: 'transform transition-transform duration-200 group-hover/blog-post:scale-110',
-            avatar: 'transform transition-transform duration-200 hover:scale-115'
+            avatar: 'transform transition-transform duration-200 hover:scale-115 focus-visible:outline-primary'
           }
         },
         image: {
@@ -360,8 +356,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

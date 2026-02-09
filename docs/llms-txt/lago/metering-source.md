@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/events/metering-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metering ingestion sources
 
 > Here is a list of sources you can use to ingest usage data. Some of these sources are capable of handling up to 15,000 events per second with default settings.
@@ -17,6 +21,12 @@ Here is the list of usage ingestion and metering sources available in the free v
 ## Premium sources
 
 Here is the list of usage ingestion and metering sources available in the premium version of Lago.
+
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  Premium ingestion sources are available upon request only. Please **[contact us](mailto:hello@getlago.com)** to get access to this premium feature.
+</Info>
 
 <CardGroup cols={2}>
   <Card title="AWS Kinesis">

@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/restore-staged-project-level-redirects-to-their-production-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Restore staged project-level redirects to their production version.
 
 > Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
@@ -11,7 +15,7 @@
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/bulk-redirects/restore
 openapi: 3.0.3
 info:
-  title: Vercel SDK
+  title: Vercel REST API & SDK
   description: >-
     The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
     type-safe Typescript SDK that allows you to access the resources and methods
@@ -106,11 +110,17 @@ paths:
                           defaults to an ISO timestamp string.
                       isStaging:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether this version has not been promoted to
                           production yet and is not serving end users.
                       isLive:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: Whether this version is currently live in production.
                       redirectCount:
                         type: number
@@ -121,23 +131,23 @@ paths:
                           The staging link for previewing redirects in this
                           version.
                     required:
+                      - createdBy
                       - id
                       - key
                       - lastModified
-                      - createdBy
                     type: object
                   restored:
-                    type: array
                     items:
                       type: string
+                    type: array
                   failedToRestore:
-                    type: array
                     items:
                       type: string
+                    type: array
                 required:
-                  - version
-                  - restored
                   - failedToRestore
+                  - restored
+                  - version
                 type: object
         '400':
           description: |-
@@ -161,7 +171,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt

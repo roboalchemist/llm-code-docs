@@ -1,274 +1,301 @@
 # Source: https://docs.livekit.io/reference/other/events.md
 
-# Source: https://docs.livekit.io/agents/build/events.md
-
-# Source: https://docs.livekit.io/home/client/events.md
-
-# Source: https://docs.livekit.io/agents/build/events.md
-
-# Source: https://docs.livekit.io/home/client/events.md
-
-LiveKit docs › LiveKit SDKs › Handling events
+LiveKit docs › Other › Events and error handling
 
 ---
 
-# Handling events
+# Events and error handling
 
-> Observe and respond to events in the LiveKit SDK.
-
-## Overview
-
-The LiveKit SDKs use events to communicate with the application changes that are taking place in the room.
-
-There are two kinds of events, **room events** and **participant events**. Room events are emitted from the main `Room` object, reflecting any change in the room. Participant events are emitted from each `Participant`, when that specific participant has changed.
-
-Room events are generally a superset of participant events. As you can see, some events are fired on both `Room` and `Participant`; this is intentional. This duplication is designed to make it easier to componentize your application. For example, if you have a UI component that renders a participant, it should only listen to events scoped to that participant.
-
-## Declarative UI
-
-Event handling can be quite complicated in a realtime, multi-user system. Participants could be joining and leaving, each publishing tracks or muting them. To simplify this, LiveKit offers built-in support for [declarative UI](https://alexsidorenko.com/blog/react-is-declarative-what-does-it-mean/) for most platforms.
-
-With declarative UI you specify the how the UI should look given a particular state, without having to worry about the sequence of transformations to apply. Modern frameworks are highly efficient at detecting changes and rendering only what's changed.
-
-**React**:
-
-We offer a few hooks and components that makes working with React much simpler.
-
-- [useParticipant](https://docs.livekit.io/reference/components/react/hook/useparticipants.md) - maps participant events to state
-- [useTracks](https://docs.livekit.io/reference/components/react/hook/usetracks.md) - returns the current state of the specified audio or video track
-- [VideoTrack](https://docs.livekit.io/reference/components/react/component/videotrack.md) - React component that renders a video track
-- [RoomAudioRenderer](https://docs.livekit.io/reference/components/react/component/roomaudiorenderer.md) - React component that renders the sound of all audio tracks
-
-```tsx
-const Stage = () => {
-  const tracks = useTracks([Track.Source.Camera, Track.Source.ScreenShare]);
-  return (
-    <LiveKitRoom
-      {/* ... */}
-    >
-      // Render all video
-      {tracks.map((track) => {
-        <VideoTrack trackRef={track} />;
-      })}
-      // ...and all audio tracks.
-      <RoomAudioRenderer />
-    </LiveKitRoom>
-  );
-};
-
-function ParticipantList() {
-  // Render a list of all participants in the room.
-  const participants = useParticipants();
-  <ParticipantLoop participants={participants}>
-    <ParticipantName />
-  </ParticipantLoop>;
-}
-
-```
-
----
-
-**SwiftUI**:
-
-Most core objects in the Swift SDK, including `Room`, `Participant`, and `TrackReference`, implement the `ObservableObject` protocol so they are ready-made for use with SwiftUI.
-
-For the simplest integration, the [Swift Components SDK](https://github.com/livekit/components-swift) contains ready-made utilities for modern SwiftUI apps, built on `.environmentObject`:
-
-- `RoomScope` - creates and (optionally) connects to a `Room`, leaving upon dismissal
-- `ForEachParticipant` - iterates each `Participant` in the current room, automatically updating
-- `ForEachTrack` - iterates each `TrackReference` on the current participant, automatically updating
-
-```swift
-struct MyChatView: View {
-    var body: some View {
-        RoomScope(url: /* URL */,
-                  token: /* Token */,
-                  connect: true,
-                  enableCamera: true,
-                  enableMicrophone: true) {
-            VStack {
-                ForEachParticipant { _ in
-                    VStack {
-                        ForEachTrack(filter: .video) { _ in
-                            MyVideoView()
-                                .frame(width: 100, height: 100)
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct MyVideoView: View {
-  @EnvironmentObject private var trackReference: TrackReference
-
-  var body: some View {
-      VideoTrackView(trackReference: trackReference)
-        .frame(width: 100, height: 100)
-  }
-}
-
-```
-
----
-
-**Android Compose**:
-
-The `Room` and `Participant` objects have built-in `Flow` support. Any property marked with a `@FlowObservable` annotation can be observed with the `flow` utility method. It can be used like this:
-
-```kotlin
-@Composable
-fun Content(
-  room: Room
-) {
-  val remoteParticipants by room::remoteParticipants.flow.collectAsState(emptyMap())
-  val remoteParticipantsList = remoteParticipants.values.toList()
-  LazyRow {
-      items(
-          count = remoteParticipantsList.size,
-          key = { index -> remoteParticipantsList[index].sid }
-      ) { index ->
-          ParticipantItem(room = room, participant = remoteParticipantsList[index])
-      }
-  }
-}
-
-@Composable
-fun ParticipantItem(
-    room: Room,
-    participant: Participant,
-) {
-  val videoTracks by participant::videoTracks.flow.collectAsState(emptyList())
-  val subscribedTrack = videoTracks.firstOrNull { (pub) -> pub.subscribed } ?: return
-  val videoTrack = subscribedTrack.second as? VideoTrack ?: return
-
-  VideoTrackView(
-      room = room,
-      videoTrack = videoTrack,
-  )
-}
-
-```
-
----
-
-**Flutter**:
-
-Flutter supports [declarative UI](https://docs.flutter.dev/get-started/flutter-for/declarative) by default. The LiveKit SDK notifies changes in two ways:
-
-- ChangeNotifier - generic notification of changes. This is useful when you are building reactive UI and only care about changes that may impact rendering
-- EventsListener<Event> - listener pattern to listen to specific events (see [events.dart](https://github.com/livekit/client-sdk-flutter/blob/main/lib/src/events.dart))
-
-```dart
-class RoomWidget extends StatefulWidget {
-  final Room room;
-
-  RoomWidget(this.room);
-
-  @override
-  State<StatefulWidget> createState() {
-    return _RoomState();
-  }
-}
-
-class _RoomState extends State<RoomWidget> {
-  late final EventsListener<RoomEvent> _listener = widget.room.createListener();
-
-  @override
-  void initState() {
-    super.initState();
-    // used for generic change updates
-    widget.room.addListener(_onChange);
-
-    // Used for specific events
-    _listener
-      ..on<RoomDisconnectedEvent>((_) {
-        // handle disconnect
-      })
-      ..on<ParticipantConnectedEvent>((e) {
-        print("participant joined: ${e.participant.identity}");
-      })
-  }
-
-  @override
-  void dispose() {
-    // Be sure to dispose listener to stop listening to further updates
-    _listener.dispose();
-    widget.room.removeListener(_onChange);
-    super.dispose();
-  }
-
-  void _onChange() {
-    // Perform computations and then call setState
-    // setState will trigger a build
-    setState(() {
-      // your updates here
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    // Builds a room layout with a main participant in the center, and a row of
-    // participants at the bottom.
-    // ParticipantWidget is located here: https://github.com/livekit/client-sdk-flutter/blob/main/example/lib/widgets/participant.dart
-    body: Column(
-      children: [
-        Expanded(
-            child: participants.isNotEmpty
-                ? ParticipantWidget.widgetFor(participants.first)
-                : Container()),
-        SizedBox(
-          height: 100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: math.max(0, participants.length - 1),
-            itemBuilder: (BuildContext context, int index) => SizedBox(
-              width: 100,
-              height: 100,
-              child: ParticipantWidget.widgetFor(participants[index + 1]),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-```
+> Guides and reference for events and error handling in LiveKit Agents.
 
 ## Events
 
-This table captures a consistent set of events that are available across platform SDKs. In addition to what's listed here, there may be platform-specific events on certain platforms.
+`AgentSession` emits events to notify you of state changes. Each event is emitted with an event object as its sole argument.
 
-| Event | Description | Room Event | Participant Event |
-| **ParticipantConnected** | A RemoteParticipant joins _after_ the local participant. | ✔️ |  |
-| **ParticipantDisconnected** | A RemoteParticipant leaves | ✔️ |  |
-| **Reconnecting** | The connection to the server has been interrupted and it's attempting to reconnect. | ✔️ |  |
-| **Reconnected** | Reconnection has been successful | ✔️ |  |
-| **Disconnected** | Disconnected from room due to the room closing or unrecoverable failure | ✔️ |  |
-| **TrackPublished** | A new track is published to room after the local participant has joined | ✔️ | ✔️ |
-| **TrackUnpublished** | A RemoteParticipant has unpublished a track | ✔️ | ✔️ |
-| **TrackSubscribed** | The LocalParticipant has subscribed to a track | ✔️ | ✔️ |
-| **TrackUnsubscribed** | A previously subscribed track has been unsubscribed | ✔️ | ✔️ |
-| **TrackMuted** | A track was muted, fires for both local tracks and remote tracks | ✔️ | ✔️ |
-| **TrackUnmuted** | A track was unmuted, fires for both local tracks and remote tracks | ✔️ | ✔️ |
-| **LocalTrackPublished** | A local track was published successfully | ✔️ | ✔️ |
-| **LocalTrackUnpublished** | A local track was unpublished | ✔️ | ✔️ |
-| **ActiveSpeakersChanged** | Current active speakers has changed | ✔️ |  |
-| **IsSpeakingChanged** | The current participant has changed speaking status |  | ✔️ |
-| **ConnectionQualityChanged** | Connection quality was changed for a Participant | ✔️ | ✔️ |
-| **ParticipantAttributesChanged** | A participant's attributes were updated | ✔️ | ✔️ |
-| **ParticipantMetadataChanged** | A participant's metadata was updated | ✔️ | ✔️ |
-| **RoomMetadataChanged** | Metadata associated with the room has changed | ✔️ |  |
-| **DataReceived** | Data received from another participant or server | ✔️ | ✔️ |
-| **TrackStreamStateChanged** | Indicates if a subscribed track has been paused due to bandwidth | ✔️ | ✔️ |
-| **TrackSubscriptionPermissionChanged** | One of subscribed tracks have changed track-level permissions for the current participant | ✔️ | ✔️ |
-| **ParticipantPermissionsChanged** | When the current participant's permissions have changed | ✔️ | ✔️ |
+### user_input_transcribed
+
+A `UserInputTranscribedEvent` is emitted when user transcription is available.
+
+#### Properties
+
+- `language`: str
+- `transcript`: str
+- `is_final`: bool
+- `speaker_id`: str | None - Only available if speaker diarization is supported in your STT plugin.
+
+#### Example
+
+**Python**:
+
+```python
+from livekit.agents import UserInputTranscribedEvent
+
+@session.on("user_input_transcribed")
+def on_user_input_transcribed(event: UserInputTranscribedEvent):
+    print(f"User input transcribed: {event.transcript}, "
+          f"language: {event.language}, "
+          f"final: {event.is_final}, "
+          f"speaker id: {event.speaker_id}")
+
+```
 
 ---
 
-This document was rendered at 2025-11-18T23:54:53.150Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/events.md](https://docs.livekit.io/home/client/events.md).
+**Node.js**:
+
+```ts
+import { voice } from '@livekit/agents';
+
+session.on(voice.AgentSessionEventTypes.UserInputTranscribed, (event) => {
+  console.log(`User input transcribed: ${event.transcript}, language: ${event.language}, final: ${event.isFinal}, speaker id: ${event.speakerId}`);
+});
+
+```
+
+### conversation_item_added
+
+A `ConversationItemAddedEvent` is emitted when a item is committed to the chat history. This event is emitted for both user and agent items.
+
+#### Properties
+
+- `item`: [ChatMessage](https://github.com/livekit/agents/blob/3ee369e7783a2588cffecc0725e582cac10efa39/livekit-agents/livekit/agents/llm/chat_context.py#L105)
+
+#### Example
+
+**Python**:
+
+```python
+from livekit.agents import ConversationItemAddedEvent
+from livekit.agents.llm import ImageContent, AudioContent
+
+...
+
+@session.on("conversation_item_added")
+def on_conversation_item_added(event: ConversationItemAddedEvent):
+    print(f"Conversation item added from {event.item.role}: {event.item.text_content}. interrupted: {event.item.interrupted}")
+    # to iterate over all types of content:
+    for content in event.item.content:
+        if isinstance(content, str):
+            print(f" - text: {content}")
+        elif isinstance(content, ImageContent):
+            # image is either a rtc.VideoFrame or URL to the image
+            print(f" - image: {content.image}")
+        elif isinstance(content, AudioContent):
+            # frame is a list[rtc.AudioFrame]
+            print(f" - audio: {content.frame}, transcript: {content.transcript}")
+
+```
+
+---
+
+**Node.js**:
+
+```ts
+import { voice } from '@livekit/agents';
+
+// ...
+
+session.on(voice.AgentSessionEventTypes.ConversationItemAdded, (event) => {
+  console.log(`Conversation item added from ${event.item.role}: ${event.item.textContent}. interrupted: ${event.item.interrupted}`);
+  
+  // to iterate over all types of content:
+  for (const content of event.item.content) {
+    switch (typeof content === 'string' ? 'string' : content.type) {
+      case 'string':
+        console.log(` - text: ${content}`);
+        break;
+      case 'image_content':
+        // image is either a VideoFrame or URL to the image
+        console.log(` - image: ${content.image}`);
+        break;
+      case 'audio_content':
+        // frame is an array of AudioFrame
+        console.log(` - audio: ${content.frame}, transcript: ${content.transcript}`);
+        break;
+    }
+  }
+});
+
+```
+
+### function_tools_executed
+
+`FunctionToolsExecutedEvent` is emitted after all function tools have been executed for a given user input.
+
+#### Methods
+
+- `zipped()` returns a list of tuples of function calls and their outputs.
+
+#### Properties
+
+- `function_calls`: list[[FunctionCall](https://github.com/livekit/agents/blob/3ee369e7783a2588cffecc0725e582cac10efa39/livekit-agents/livekit/agents/llm/chat_context.py#L129)]
+- `function_call_outputs`: list[[FunctionCallOutput](https://github.com/livekit/agents/blob/3ee369e7783a2588cffecc0725e582cac10efa39/livekit-agents/livekit/agents/llm/chat_context.py#L137)]
+
+### metrics_collected
+
+`MetricsCollectedEvent` is emitted when new metrics are available to be reported. For more information on metrics, see [Metrics and usage data](https://docs.livekit.io/deploy/observability/data.md#metrics).
+
+#### Properties
+
+- `metrics`: Union[STTMetrics, LLMMetrics, TTSMetrics, VADMetrics, EOUMetrics]
+
+### speech_created
+
+`SpeechCreatedEvent` is emitted when new agent speech is created. Speech could be created for any of the following reasons:
+
+- the user has provided input
+- `session.say` is used to create agent speech
+- `session.generate_reply` is called to create a reply
+
+#### Properties
+
+- `user_initiated`: str - True if speech was created using public methods like `say` or `generate_reply`
+- `source`: str - "say", "generate_reply", or "tool_response"
+- `speech_handle`: [SpeechHandle](https://docs.livekit.io/agents/build/audio.md#speechhandle) - handle to track speech playout.
+
+### agent_state_changed
+
+`AgentStateChangedEvent` is emitted when the agent's state changes. The `lk.agent.state` attribute on the agent participant is updated to reflect the new state, allowing frontend code to easily respond to changes.
+
+#### Properties
+
+- `old_state`: AgentState
+- `new_state`: AgentState
+
+#### AgentState
+
+The agent could be in one of the following states:
+
+- `initializing` - agent is starting up. this should be brief.
+- `listening` - agent is waiting for user input
+- `thinking` - agent is processing user input
+- `speaking` - agent is speaking
+
+### user_state_changed
+
+`UserStateChangedEvent` is emitted when the user's state changes. This change is driven by the VAD module running on the user's audio input.
+
+#### Properties
+
+- `old_state`: UserState
+- `new_state`: UserState
+
+#### UserState
+
+The user's state can be one of the following:
+
+- `speaking` - VAD detected user has started speaking
+- `listening` - VAD detected the user has stopped speaking
+- `away` - The user hasn't responded for a while (default: 15s). Specify a custom timeout with `AgentSession(user_away_timeout=...)`.
+
+#### Example
+
+- **[Handling idle user](https://github.com/livekit/agents/blob/main/examples/voice_agents/inactive_user.py)**: Check in with the user after they go idle.
+
+### close
+
+The `CloseEvent` is emitted when the AgentSession has closed and the agent is no longer running. This can occur for several reasons:
+
+- The user ended the conversation
+- `session.aclose()` was called
+- The room was deleted, disconnecting the agent
+- An unrecoverable error occurred during the session
+
+#### Properties
+
+- `error`: LLMError | STTError | TTSError | RealtimeModelError | None - The error that caused the session to close, if applicable
+
+## Handling errors
+
+In addition to state changes, it's important to handle errors that may occur during a session. In real-time conversations, inference API failures can disrupt the flow, potentially leaving the agent unable to continue.
+
+### FallbackAdapter
+
+For STT, LLM, and TTS, the Agents framework includes a `FallbackAdapter` that can fall back to secondary providers if the primary one fails.
+
+> ℹ️ **FallbackAdapter support for Node.js**
+> 
+> In Node.js, the `FallbackAdapter` is only available for LLM.
+
+When in use, `FallbackAdapter` handles the following:
+
+- Automatically resubmits the failed request to backup providers when the primary provider fails.
+- Marks the failed provider as unhealthy and stops sending requests to it.
+- Continues to use the backup providers until the primary provider recovers.
+- Periodically checks the primary provider's status in the background.
+
+**Python**:
+
+```python
+from livekit.agents import llm, stt, tts
+from livekit.plugins import assemblyai, deepgram, elevenlabs, openai, groq
+
+session = AgentSession(
+    stt=stt.FallbackAdapter(
+        [
+            assemblyai.STT(),
+            deepgram.STT(),
+        ]
+    ),
+    llm=llm.FallbackAdapter(
+        [
+            openai.responses.LLM(model="gpt-4o"),
+            openai.LLM.with_azure(model="gpt-4o", ...),
+        ]
+    ),
+    tts=tts.FallbackAdapter(
+        [
+            elevenlabs.TTS(...),
+            groq.TTS(...),
+        ]
+    ),
+)
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+import { llm, voice } from '@livekit/agents';
+import * as openai from '@livekit/agents-plugin-openai';
+
+
+const session = new voice.AgentSession({
+  llm: new llm.FallbackAdapter({
+    llms: [
+        new openai.LLM({ model: 'openai/gpt-4o' }),
+        new openai.LLM.withAzure({ model: 'openai/gpt-4o' }),
+    ],
+  }),
+  // ... stt, tts, etc.
+});
+
+```
+
+For a complete example, see the [Node.js example in GitHub](https://github.com/livekit/agents-js/blob/main/examples/src/llm_fallback_adapter.ts).
+
+### Error event
+
+`AgentSession` emits `ErrorEvent` when errors occur during the session. It includes an `error` object with a `recoverable` field indicating whether the session will retry the failed operation.
+
+- If `recoverable` is `True`, the event is informational, and the session will continue as expected.
+- If `recoverable` is `False` (e.g., after exhausting retries), the session requires intervention. You can handle the error—for instance, by using `.say()` to inform the user of an issue.
+
+#### Properties
+
+- `model_config`: dict - a dictionary representing the current model's configuration
+- `error`: [LLMError | STTError | TTSError | RealtimeModelError](https://github.com/livekit/agents/blob/db551d2/livekit-agents/livekit/agents/voice/events.py#L138) - the error that occurred. `recoverable` is a field within `error`.
+- `source`: LLM | STT | TTS | RealtimeModel - the source object responsible for the error
+
+### Example
+
+- **[Error handling](https://github.com/livekit/agents/blob/main/examples/voice_agents/error_callback.py)**: Handling unrecoverable errors with a presynthesized message.
+
+---
+
+This document was rendered at 2026-02-03T03:25:08.125Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/other/events.md](https://docs.livekit.io/reference/other/events.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

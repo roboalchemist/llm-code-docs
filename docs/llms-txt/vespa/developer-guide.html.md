@@ -161,7 +161,7 @@ Developers can also set these parameters in the IDE run configuration to debug s
 
 - To run Java [system and staging tests](../reference/applications/testing-java.html) in an IDE, ensure all API and data plane keys and certificates are configured in the IDE as well; not all IDEs pick up all settings from `pom.xml` correctly: 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -4,11 +4,9 @@
 
 > An accordion-style navigation component for organizing page links.
 
-<warning to="/docs/getting-started/integrations/content">
-
-This component is only available when the `@nuxt/content` module is installed.
-
-</warning>
+> [!WARNING]
+> See: /docs/getting-started/integrations/content
+> This component is only available when the `@nuxt/content` module is installed.
 
 ## Usage
 
@@ -31,6 +29,10 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 Set the `type` prop to `single` to only allow one item to be open at a time. Defaults to `multiple`.
 
 ```vue
+<script setup lang="ts">
+import type { ContentNavigationLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentNavigation type="single" />
 </template>
@@ -41,6 +43,10 @@ Set the `type` prop to `single` to only allow one item to be open at a time. Def
 Use the `color` prop to change the color of the navigation links.
 
 ```vue
+<script setup lang="ts">
+import type { ContentNavigationLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentNavigation color="neutral" />
 </template>
@@ -51,6 +57,10 @@ Use the `color` prop to change the color of the navigation links.
 Use the `variant` prop to change the variant of the navigation links.
 
 ```vue
+<script setup lang="ts">
+import type { ContentNavigationLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentNavigation variant="link" />
 </template>
@@ -63,6 +73,10 @@ Use the `highlight` prop to display a highlighted border for the active link.
 Use the `highlight-color` prop to change the color of the border. It defaults to the `color` prop.
 
 ```vue
+<script setup lang="ts">
+import type { ContentNavigationLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentNavigation highlight highlight-color="primary" color="primary" variant="pill" />
 </template>
@@ -71,6 +85,10 @@ Use the `highlight-color` prop to change the color of the border. It defaults to
 ### Trailing Icon
 
 ```vue
+<script setup lang="ts">
+import type { ContentNavigationLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentNavigation trailing-icon="i-lucide-arrow-up" />
 </template>
@@ -146,7 +164,7 @@ interface ContentNavigationProps {
   /**
    * The icon displayed to toggle the accordion.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
   variant?: "pill" | "link" | undefined;
   /**
@@ -165,7 +183,7 @@ interface ContentNavigationProps {
    * @default "0"
    */
   level?: number | undefined;
-  navigation?: ContentNavigationLink[] | undefined;
+  navigation?: T[] | undefined;
   ui?: { root?: ClassNameValue; content?: ClassNameValue; list?: ClassNameValue; item?: ClassNameValue; listWithChildren?: ClassNameValue; itemWithChildren?: ClassNameValue; trigger?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkTrailing?: ClassNameValue; linkTrailingBadge?: ClassNameValue; linkTrailingBadgeSize?: ClassNameValue; linkTrailingIcon?: ClassNameValue; linkTitle?: ClassNameValue; linkTitleExternalIcon?: ClassNameValue; } | undefined;
   /**
    * When `true`, prevents the user from interacting with the accordion and all its items
@@ -565,8 +583,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog prefix="content">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

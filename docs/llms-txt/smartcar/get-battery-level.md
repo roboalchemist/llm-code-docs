@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/evs/get-battery-level.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Battery Level
 
 > Returns the state of charge and the remaining range of an electric vehicle's high voltage battery.

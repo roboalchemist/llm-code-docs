@@ -11,7 +11,7 @@ Agentic system demo using Postgres with a [real-time sync stack](/blog/2025/08/1
 
 ## Agentic sync
 
-Burn is a multi-user, multi-agent demo app built on [TanStack DB](https://tanstack.com/db) and [Phoenix.Sync](https://hexdocs.pm/phoenix_sync).
+Burn is a multi-user, multi-agent demo app built on [TanStack DB](/products/tanstack-db) and [Phoenix.Sync](https://hexdocs.pm/phoenix_sync).
 
 It shows how to build an agentic system on real-time sync, where:
 
@@ -23,7 +23,7 @@ It shows how to build an agentic system on real-time sync, where:
 
 Agentic memory and shared state are both [just rows in the database](https://pg-memories.netlify.app).
 
-[ TanStack DB](https://tanstack.com/db)
+[ TanStack DB](/products/tanstack-db)
 
 * provides a super fast client store for instant reactivity and local writes
 * with live queries syncing data into standard React components

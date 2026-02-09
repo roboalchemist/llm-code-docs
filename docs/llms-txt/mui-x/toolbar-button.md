@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/api/charts/toolbar-button.md
 
-# Source: https://mui.com/x/api/data-grid/toolbar-button.md
-
-# Source: https://mui.com/x/api/charts/toolbar-button.md
-
 # ToolbarButton API
 
 ## Demos

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/prompttools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PromptTools
 
 [PromptTools](https://github.com/hegelai/prompttools) offers a set of free, open-source tools for testing and experimenting with models, prompts, and configurations. The core idea is to enable developers to evaluate prompts using familiar interfaces like code and notebooks. You can use it to experiment with different configurations of LanceDB, and test how LanceDB integrates with the LLM of your choice.
@@ -9,8 +13,3 @@
 </a>
 
 ![Alt text](https://prompttools.readthedocs.io/en/latest/_images/demo.gif "a title")
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

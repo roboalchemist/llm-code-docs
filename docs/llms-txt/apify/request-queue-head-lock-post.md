@@ -9,7 +9,7 @@ https://api.apify.com/v2/request-queues/:queueId/head/lock
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#list_and_lock_headhttps://docs.apify.com/api/client/js/reference/class/RequestQueueClient#listAndLockHeadReturns the given number of first requests from the queue and locks them for the given time.
+Returns the given number of first requests from the queue and locks them for the given time.
 
 If this endpoint locks the request, no other client or run will be able to get and lock these requests.
 
@@ -20,6 +20,10 @@ The response contains the `hadMultipleClients` boolean field which indicates tha
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

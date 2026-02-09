@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/security/zdr-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zero Data Retention (ZDR) Mode
 
 > Enhanced security mode that disables all video and log recordings to prevent sensitive data retention

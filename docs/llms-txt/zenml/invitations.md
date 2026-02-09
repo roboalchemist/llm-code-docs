@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/api-reference/pro-api/pro-api/invitations.md
 
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/organizations/invitations.md
-
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/invitations.md
-
 # Invitations
 
 {% openapi src="<https://cloudapi.zenml.io/openapi.json>" path="/invitations/{invitation\_id}" method="get" %}

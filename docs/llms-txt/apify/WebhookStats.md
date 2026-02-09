@@ -2,6 +2,8 @@
 
 # WebhookStats<!-- -->
 
+Statistics about webhook usage.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -10,6 +12,6 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#totalDispatches)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook.ts#L122)totalDispatches
+### [**](#totalDispatches)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook.ts#L177)totalDispatches
 
 **totalDispatches: number

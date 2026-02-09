@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/custom-llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom LLM Implementation
 
 > Learn how to create custom LLM implementations in CrewAI.

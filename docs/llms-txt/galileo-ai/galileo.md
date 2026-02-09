@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is Galileo?
 
 > Evaluate, Observe, and Protect your GenAI applications
@@ -32,7 +36,7 @@ Most significantly -- you cannot evaluate what you cannot measure -- Galileo Res
 The GenAI Studio is composed of 3 modules. Each module is powered by the centralized Galileo Guardrail Store.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/intro-image.avif" />
+  <img src="https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=34ee635a282d8508a4e087a195aad4c8" data-og-width="2304" width="2304" data-og-height="896" height="896" data-path="images/intro-image.avif" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=280&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=501f364bbca0c8c988c376e61dd7ecb4 280w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=560&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=d94de904f6fc0bf58eeef798810691ce 560w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=840&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=90d67823497890757ee108a0550eeddf 840w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=1100&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=0efc51a299f6101b21d6ddd516e3ee4d 1100w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=1650&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=87da0bc5758130d71f4053ac83d73a85 1650w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/intro-image.avif?w=2500&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=e6f5faa581bda5c9488dd60e54a9a89c 2500w" />
 </Frame>
 
 <Icon icon="bolt" /> Get started with:

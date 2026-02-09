@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/testing-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing Errors
 
 > By launching Connect in [simulated mode](/docs/connect/advanced-config/modes), you're able to test your application against certain errors.

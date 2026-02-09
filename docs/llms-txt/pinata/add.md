@@ -1,14 +1,12 @@
-# Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
-
-# Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
+# Source: https://docs.pinata.cloud/sdk/x402/cids/add.md
 
 # Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
 
 # Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
 
-# Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
-
-# Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # add
 

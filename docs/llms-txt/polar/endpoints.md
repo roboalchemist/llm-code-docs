@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/webhooks/endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup Webhooks
 
 > Get notifications asynchronously when events occur instead of having to poll for updates
@@ -45,7 +49,7 @@ formatting. Making it a breeze to setup in-chat notifications for your team.
 
       Once you have `ngrok` you can easily start a tunnel:
 
-      ```bash  theme={null}
+      ```bash Terminal theme={null}
       ngrok http 3000
       ```
 

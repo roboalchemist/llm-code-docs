@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LINDEX
 
@@ -28,24 +14,24 @@ The index is zero-based, so 0 means the first element, 1 the second element and 
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="index" type="number" required>
+<ParamField body="index" type="int" required>
   The index of the element to return, zero-based.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue | null" required>
-  The value of the element at index index in the list. If the index is out of range, `null` is returned.
+<ResponseField type="Optional[str]" required>
+  The value of the element at index index in the list. If the index is out of range, `None` is returned.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.rpush("key", "a", "b", "c");
-  const element = await redis.lindex("key", 0);
-  console.log(element); // "a"
+  ```py Example theme={"system"}
+  redis.rpush("key", "a", "b", "c")
+
+  assert redis.lindex("key", 0) == "a"
   ```
 </RequestExample>

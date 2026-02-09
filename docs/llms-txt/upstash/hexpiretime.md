@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpiretime.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpiretime.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpiretime.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HEXPIRETIME
 
@@ -26,18 +12,18 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="fields" type="string | number | (string | number)[]" required>
-  The field(s) to retrieve the expiration time for.
+<ParamField body="fields" type="Union[str, List[str]]" required>
+  The field or list of fields to retrieve the expiration time for.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number[]" required>
-  The expiration time in seconds since the Unix epoch for each field.
+<ResponseField type="List[int]" required>
+  A list of integers representing the expiration time in seconds since the Unix epoch.
 
   * `-2` if the field does not exist in the hash or if the key doesn't exist.
   * `-1` if the field exists but has no associated expiration.
@@ -46,11 +32,10 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("my-key", "my-field", "my-value");
-  await redis.hexpireat("my-key", "my-field", Math.floor(Date.now() / 1000) + 10);
-  const expireTime = await redis.hexpiretime("my-key", "my-field");
+  ```py Example theme={"system"}
+  redis.hset(hash_name, field, value)
+  redis.hexpireat(hash_name, field, int(time.time()) + 10)
 
-  console.log(expireTime); // e.g., [1697059200]
+  assert redis.hexpiretime(hash_name, field) == [1697059200]
   ```
 </RequestExample>

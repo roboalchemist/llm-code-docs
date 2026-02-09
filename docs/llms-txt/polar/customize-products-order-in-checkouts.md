@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/customize-products-order-in-checkouts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Customize Products Order in Checkouts
 
 > Learn how to customize the order in which products appear in checkouts.
@@ -51,7 +55,7 @@
 
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs in the order you want them to appear in the checkout.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkout-links/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -86,7 +90,7 @@
   <Step title="Change the order of products">
     If you want to change the order and make Product 2 appear before Product 1, place Product 2's ID first, followed by Product 1's ID in the API call.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -120,7 +124,7 @@
 
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs in the order you want them to appear in the checkout.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -155,7 +159,7 @@
   <Step title="Change the order of products">
     If you want to change the order and make Product 2 appear before Product 1, place Product 2's ID first, followed by Product 1's ID in the API call.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \

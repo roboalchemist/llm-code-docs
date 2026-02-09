@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/snapshots.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Snapshots
 
 > Learn how to use snapshot testing in Bun to save and compare output between test runs
@@ -33,8 +37,8 @@ your-project/
 
 The snapshot file contains:
 
-```txt title="snapshot file" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://goo.gl/fbAQLP
+```ts title="__snapshots__/snap.test.ts.snap" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Bun Snapshot v1, https://bun.com/docs/test/snapshots
 
 exports[`snap 1`] = `"foo"`;
 ```
@@ -401,7 +405,7 @@ tests/
 
 When snapshots fail, you'll see a diff:
 
-```text title="diff" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```diff title="diff" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 - Expected
 + Received
 

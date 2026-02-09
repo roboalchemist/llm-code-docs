@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/node-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node-API
 
 > Use Bun's Node-API module to build native add-ons to Node.js

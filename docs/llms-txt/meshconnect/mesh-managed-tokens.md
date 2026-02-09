@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/mesh-managed-tokens.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mesh Managed Tokens (MMT)
 
 > This guide explains how to implement Mesh Managed Tokens (MMT), our recommended approach for handling user authentication to create a secure and seamless return user experience.

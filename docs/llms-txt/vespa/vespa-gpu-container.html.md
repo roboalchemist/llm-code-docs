@@ -67,5 +67,5 @@ podman run --detach --name vespa --hostname vespa-container \
 ```
 8. All Nvidia GPUs on the host should now be available inside the container, with devices exposed at `/dev/nvidiaN`. See [stateless model evaluation](../../ranking/stateless-model-evaluation.html#onnx-inference-options) for how to configure the ONNX runtime to use a GPU for computation. Similar for embedding models using GPU, see [embedder onnx reference](../../reference/rag/embedding.html#embedder-onnx-reference-config). 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

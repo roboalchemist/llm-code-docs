@@ -2,22 +2,6 @@
 
 # Source: https://docs.near.org/smart-contracts/anatomy/storage.md
 
-# Source: https://docs.near.org/smart-contracts/security/storage.md
-
-# Source: https://docs.near.org/smart-contracts/anatomy/storage.md
-
-# Source: https://docs.near.org/smart-contracts/security/storage.md
-
-# Source: https://docs.near.org/smart-contracts/anatomy/storage.md
-
-# Source: https://docs.near.org/smart-contracts/security/storage.md
-
-# Source: https://docs.near.org/smart-contracts/anatomy/storage.md
-
-# Source: https://docs.near.org/smart-contracts/security/storage.md
-
-# Source: https://docs.near.org/smart-contracts/anatomy/storage.md
-
 ---
 id: storage
 title: State
@@ -36,7 +20,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 <hr class="subsection" />
 
-<ExplainCode languages="js,rust,python" >
+<ExplainCode languages="rust,js,python" >
 
 <Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
 

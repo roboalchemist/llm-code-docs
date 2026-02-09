@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/credential-protection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credential Protection
 
 Enabling Credential Protection ensures your database credentials are never stored within Upstash infrastructure. This enhances security by making credentials accessible only once—at the moment they are generated.

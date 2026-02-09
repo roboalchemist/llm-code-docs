@@ -2,10 +2,7 @@
 
 # Delete Member from Product
 
-```
-DELETE 
-/v1/products/:productId/members/:userId
-```
+Copy page
 
 This endpoint removes a Member identified by the `userId` from the given Product identified by the `productId` parameter.
 

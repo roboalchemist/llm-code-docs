@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/add-git.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a Git dependency
 
 Bun supports directly adding GitHub repositories as dependencies of your project.
@@ -35,4 +39,4 @@ bun add github:colinhacks/zod
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

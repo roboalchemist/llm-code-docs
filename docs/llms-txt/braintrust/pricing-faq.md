@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/pricing-faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pricing FAQ
 
 > Pricing FAQ
@@ -16,11 +20,11 @@ If you're unsure which option fits your needs or would like to discuss custom re
 
 ### What does processed data mean?
 
-Processed data refers to the data ingested by Braintrust when you create [logs](/core/logs) or [experiments](/core/experiments). This includes inputs, outputs, prompts, metadata, datasets, traces, and any related information. The cumulative size of this data (measured on disk) counts toward your monthly total, calculated from the first day to the last day of each calendar month.
+Processed data refers to the data ingested by Braintrust when you create [logs](/observe/view-logs) or [experiments](/evaluate/run-evaluations). This includes inputs, outputs, prompts, metadata, datasets, traces, and any related information. The cumulative size of this data (measured on disk) counts toward your monthly total, calculated from the first day to the last day of each calendar month.
 
 ### What are scores?
 
-[Scores](/core/functions/scorers) are used to measure the results of offline or online evaluations run in Braintrust. Each time you record a [score](/core/functions/scorers#custom-scorers), the total number of scores counted towards your monthly usage increases by one. Your monthly total is calculated cumulatively from the first to the last day of each calendar month.
+[Scores](/evaluate/write-scorers) are used to measure the results of offline or online evaluations run in Braintrust. Each time you record a [score](/evaluate/write-scorers#custom-scorers), the total number of scores counted towards your monthly usage increases by one. Your monthly total is calculated cumulatively from the first to the last day of each calendar month.
 
 ### What are trace spans?
 
@@ -35,8 +39,3 @@ If you are on the Pro plan, you can track your usage by selecting **View usage d
 The Free plan does not require a credit card to get started. You can upgrade to the Pro plan at any time via the **Upgrade** button in the top-right of your workspace.
 
 When you sign up for the Pro plan, you'll immediately be charged a prorated amount of the monthly \$249 platform fee. For example, if you sign up on the 15th of the month, you'll pay about half of the monthly fee. On the 1st of the following month, you'll be charged the full \$249 fee plus any additional usage-based charges incurred during the previous month. Charges will be processed automatically using the credit card provided at sign-up.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

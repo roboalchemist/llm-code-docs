@@ -10,12 +10,12 @@
 
 To delete an application, use the console:
 
-- navigate to the _application_ view at http://console.vespa.ai/tenant/tenant-name/application where you can find the trash can icon to the far right, as an `ACTION`.
-- navigate to the _deploy_ view at_http://console.vespa.ai/tenant/tenant-name/application/app-name/prod/deploy_.
+- navigate to the _application_ view at https://console.vespa-cloud.com/tenant/tenant-name/application where you can find the trash can icon to the far right, as an `ACTION`.
+- navigate to the _deploy_ view at_https://console.vespa-cloud.com/tenant/tenant-name/application/app-name/prod/deploy_.
 
 ![delete production deployment](/assets/img/console/delete-production-deployment.png)
 
-When the application deployments are deleted, delete the application in the [console](http://console.vespa.ai). Remove the CI job that builds and deploys application packages, if any.
+When the application deployments are deleted, delete the application in the [console](https://console.vespa-cloud.com). Remove the CI job that builds and deploys application packages, if any.
 
 ## Deleting an instance / region
 
@@ -27,5 +27,5 @@ To remove an instance or a deployment to a region from an application:
 
 3. Build and deploy the application package.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

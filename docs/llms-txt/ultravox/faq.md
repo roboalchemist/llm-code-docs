@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQ
 
 > Answers to common questions
@@ -99,8 +103,3 @@ Finally, all calls are rounded up to the [nearest deciminute.](#how-does-ultravo
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

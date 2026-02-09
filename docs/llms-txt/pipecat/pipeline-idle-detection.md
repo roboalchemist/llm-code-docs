@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/pipeline/pipeline-idle-detection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipeline Idle Detection
 
 > Automatically detect and handle idle pipelines with no bot activity
@@ -36,7 +40,6 @@ task = PipelineTask(pipeline)
 # Custom configuration
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     idle_timeout_secs=600,  # 10 minute timeout
     idle_timeout_frames=(BotSpeakingFrame,),  # Only monitor bot speaking
     cancel_on_idle_timeout=False,  # Don't auto-cancel, just notify
@@ -86,7 +89,6 @@ pipeline = Pipeline([...])
 # Configure task with custom idle settings
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     idle_timeout_secs=180,  # 3 minutes
     cancel_on_idle_timeout=False  # Don't auto-cancel
 )
@@ -106,8 +108,3 @@ runner = PipelineRunner()
 
 await runner.run(task)
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

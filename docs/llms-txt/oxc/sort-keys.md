@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/sort-keys.md
 ---
-# eslint/sort-keys&#x20;
 
 ### What it does
 

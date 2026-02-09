@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/flutter/integrations/drift.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Drift + Turso / LibSQL
 
 > Configure `drift` to work with `libsql_dart`

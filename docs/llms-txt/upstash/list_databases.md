@@ -1,99 +1,82 @@
 # Source: https://upstash.com/docs/devops/developer-api/redis/list_databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Databases
 
 > This endpoint list all databases of user.
 
+
+
 ## OpenAPI
 
 ````yaml devops/developer-api/openapi.yml get /redis/databases
+openapi: 3.0.4
+info:
+  title: Developer API - Upstash
+  description: >-
+    This is a documentation to specify Developer API endpoints based on the
+    OpenAPI 3.0 specification.
+  contact:
+    name: Support Team
+    email: support@upstash.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.upstash.com/v2
+security: []
+tags:
+  - name: redis
+    description: Manage redis databases.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: teams
+    description: Manage teams and team members.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: vector
+    description: Manage vector indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: search
+    description: Manage search indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: qstash
+    description: Manage QStash.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+externalDocs:
+  description: Find out more about Upstash
+  url: https://upstash.com/
 paths:
-  path: /redis/databases
-  method: get
-  servers:
-    - url: https://api.upstash.com/v2
-  request:
-    security:
-      - title: basicAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/Database'
-        examples:
-          example:
-            value:
-              - database_id: 96ad0856-03b1-4ee7-9666-e81abd0349e1
-                database_name: MyRedis
-                region: global
-                port: 6379
-                creation_time: 1752649602
-                state: active
-                endpoint: beloved-stallion-58500
-                tls: true
-                db_max_clients: 10000
-                db_max_request_size: 10485760
-                db_disk_threshold: 107374182400
-                db_max_entry_size: 104857600
-                db_memory_threshold: 3221225472
-                db_max_commands_per_second: 10000
-                db_request_limit: 8024278031528737000
-                type: paid
-                budget: 360
-                primary_region: us-east-1
-                primary_members:
-                  - us-east-1
-                all_members:
-                  - us-east-1
-                eviction: false
-                auto_upgrade: false
-                consistent: false
-                modifying_state: ''
-                db_resource_size: L
-                db_type: pebble
-                db_conn_idle_timeout: 21600000000000
-                db_lua_timeout: 250000000
-                db_lua_credits_per_min: 10000000000
-                db_store_max_idle: 900000000000
-                db_max_loads_per_sec: 1000000
-                db_acl_enabled: 'false'
-                db_acl_default_user_status: 'true'
-                db_eviction: false
-                last_plan_upgrade_time: 0
-                replicas: 5
-                customer_id: example@upstash.com
-                daily_backup_enabled: false
-                read_regions:
-                  - us-east-2
-                securityAddons:
-                  ipWhitelisting: false
-                  vpcPeering: false
-                  privateLink: false
-                  tlsMutualAuth: false
-                  encryptionAtRest: false
-                prometheus_enabled: 'false'
-                prod_pack_enabled: false
-        description: OK
-  deprecated: false
-  type: path
-  xMint:
-    href: /devops/developer-api/redis/list_databases
+  /redis/databases:
+    get:
+      tags:
+        - redis
+      summary: List Databases
+      description: This endpoint list all databases of user.
+      operationId: listDatabases
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Database'
+      security:
+        - basicAuth: []
 components:
   schemas:
     Database:
@@ -202,19 +185,24 @@ components:
           type: string
           description: Primary region of the database cluster
           enum:
-            - ap-south-1
-            - ap-southeast-1
-            - ap-southeast-2
-            - ap-northeast-1
-            - eu-west-1
-            - eu-west-2
-            - eu-central-1
             - us-east-1
+            - us-east-2
             - us-west-1
             - us-west-2
-            - us-east-2
-            - sa-east-1
             - ca-central-1
+            - eu-central-1
+            - eu-west-1
+            - eu-west-2
+            - sa-east-1
+            - ap-south-1
+            - ap-northeast-1
+            - ap-southeast-1
+            - ap-southeast-2
+            - af-south-1
+            - us-central1
+            - us-east4
+            - europe-west1
+            - asia-northeast1
           example: us-east-1
         primary_members:
           type: array
@@ -367,5 +355,9 @@ components:
           example: false
       xml:
         name: database
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
 
 ````

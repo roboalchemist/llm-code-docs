@@ -228,7 +228,11 @@ Show or hide the status bar.
 
 ***
 
-### `setNetworkActivityIndicatorVisible()`iOS[​](#setnetworkactivityindicatorvisible-ios "Direct link to setnetworkactivityindicatorvisible-ios")
+### 🗑️ `setNetworkActivityIndicatorVisible()`iOS[​](#️-setnetworkactivityindicatorvisible-ios "Direct link to ️-setnetworkactivityindicatorvisible-ios")
+
+Deprecated
+
+The status bar network activity indicator is not supported in iOS 13 and later. This will be removed in a future release.
 
 tsx
 

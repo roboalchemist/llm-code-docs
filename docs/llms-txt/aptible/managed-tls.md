@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managed TLS
 
 When an [Endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview) requires a Certificate to perform SSL / TLS termination on your behalf, you can opt to let Aptible provision and renew certificates on your behalf. To do so, enable Managed HTTPS when creating your Endpoint. You'll need to provide Aptible with the [Custom Domain](/core-concepts/apps/connecting-to-apps/app-endpoints/custom-domain) name you intend to use so Aptible knows what certificate to provision. Aptible-provisioned certificates are valid for 90 days and are renewed automatically by Aptible.

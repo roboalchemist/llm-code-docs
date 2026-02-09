@@ -2,10 +2,7 @@
 
 # Post values
 
-```
-POST 
-/v2/configs/:configId/environments/:environmentId/values
-```
+Copy page
 
 This endpoint batch updates the Feature Flags and Settings of a Config identified by the `configId` parameter in a specified Environment identified by the `environmentId` parameter.
 
@@ -15,7 +12,7 @@ Only those Feature Flags and Settings are updated which are part of the request,
 
 For example: We have the following resource of a Feature Flag.
 
-```
+```json
 {
   "settingFormulas": [
     {
@@ -45,11 +42,12 @@ For example: We have the following resource of a Feature Flag.
     }
   ]
 }
+
 ```
 
 If we send a batch replace request body as below:
 
-```
+```json
 { 
   "updateFormulas": [
     {
@@ -60,11 +58,12 @@ If we send a batch replace request body as below:
     }
   ]
 }
+
 ```
 
 Then besides that the default value is set to `true`, all Targeting Rules of the related Feature Flag are deleted. So we get a response like this:
 
-```
+```json
 {
   "settingFormulas": [
     {
@@ -79,6 +78,7 @@ Then besides that the default value is set to `true`, all Targeting Rules of the
     }
   ]
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

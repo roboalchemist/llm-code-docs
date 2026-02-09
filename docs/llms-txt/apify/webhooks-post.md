@@ -9,7 +9,7 @@ https://api.apify.com/v2/webhooks
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/WebhookCollectionClientAsync#createhttps://docs.apify.com/api/client/js/reference/class/WebhookCollectionClient#createCreates a new webhook with settings provided by the webhook object passed as JSON in the payload. The response is the created webhook object.
+Creates a new webhook with settings provided by the webhook object passed as JSON in the payload. The response is the created webhook object.
 
 To avoid duplicating a webhook, use the `idempotencyKey` parameter in the request body. Multiple calls to create a webhook with the same `idempotencyKey` will only create the webhook with the first call and return the existing webhook on subsequent calls. Idempotency keys must be unique, so use a UUID or another random string with enough entropy.
 
@@ -49,7 +49,10 @@ To assign the new webhook to an Actor or task, the request body must contain `re
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

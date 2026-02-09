@@ -4,6 +4,10 @@
 
 Use Standard connected accounts to get started using Connect right away, and let Stripe handle the majority of the connected account experience.
 
+> #### Newer Connect integrations
+> 
+> The information on this page applies only to platforms that already use legacy connected account types. If you’re setting up a new Connect platform, or your integration uses the Accounts v2 API, see [Configure the behavior of connected accounts](https://docs.stripe.com/connect/accounts-v2/connected-account-configuration.md) to learn about connected account configurations. If your integration uses the Accounts v1 API, see [Account controller properties](https://docs.stripe.com/connect/migrate-to-controller-properties.md#account-controller-properties).
+
 The process described here is the recommended method for creating standard accounts. If you’re an extension or an application that needs access to an existing account so you can provide services to your users, you can still use [OAuth](https://docs.stripe.com/connect/oauth-reference.md).
 
 A *Standard* connected account is a conventional Stripe account where your connected account has a relationship with Stripe, is able to log in to the [Dashboard](https://dashboard.stripe.com), and can process charges on their own.
@@ -114,7 +118,7 @@ Account account = service.Create(options);
 
 If you’ve already collected information for your connected accounts, you can prefill that information on the `Account` object. You can prefill any account information, including personal and business information, external account information, and so on.
 
-After creating an account, create a [Person](https://docs.stripe.com/api/persons/create.md) with [relationship.representative](https://docs.stripe.com/api/persons/create.md#create_person-relationship-representative) set to `true` to represent the person responsible for opening the account and any account information you want to prefill (for example, their first and last name).
+After creating the `Account`, create a [Person](https://docs.stripe.com/api/persons/create.md) to represent the person responsible for opening the account, with `relationship.representative` set to true and any account information you want to prefill (for example, their first and last name).
 
 ```curl
 curl https://api.stripe.com/v1/accounts/{{ACCOUNT_ID}}/persons \

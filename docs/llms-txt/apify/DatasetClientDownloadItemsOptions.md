@@ -2,6 +2,10 @@
 
 # DatasetClientDownloadItemsOptions<!-- -->
 
+Options for downloading dataset items in a specific format.
+
+Extends [DatasetClientListItemOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientListItemOptions.md) with format-specific options.
+
 ### Hierarchy
 
 * [DatasetClientListItemOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/DatasetClientListItemOptions.md)
@@ -13,6 +17,7 @@
 
 * [**attachment](#attachment)
 * [**bom](#bom)
+* [**chunkSize](#chunkSize)
 * [**clean](#clean)
 * [**delimiter](#delimiter)
 * [**desc](#desc)
@@ -32,7 +37,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#attachment)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L297)optionalattachment
+### [**](#attachment)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L502)optionalattachment
 
 **attachment?
 
@@ -40,7 +45,7 @@
 
 : boolean
 
-### [**](#bom)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L298)optionalbom
+### [**](#bom)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L503)optionalbom
 
 **bom?
 
@@ -48,7 +53,21 @@
 
 : boolean
 
-### [**](#clean)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L266)optionalinheritedclean
+### [**](#chunkSize)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L258)optionalinheritedchunkSize
+
+**chunkSize?
+
+<!-- -->
+
+: number
+
+Inherited from DatasetClientListItemOptions.chunkSize
+
+Maximum number of items returned in one API response. Relevant in the context of asyncIterator, the iterator will fetch results in chunks of this size from API and yield them one by one. It will stop fetching once the limit is reached or once all items from API have been fetched.
+
+Chunk size is usually limited by API. Minimum of those two limits will be used.
+
+### [**](#clean)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L460)optionalinheritedclean
 
 **clean?
 
@@ -58,7 +77,7 @@
 
 Inherited from DatasetClientListItemOptions.clean
 
-### [**](#delimiter)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L299)optionaldelimiter
+### [**](#delimiter)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L504)optionaldelimiter
 
 **delimiter?
 
@@ -66,7 +85,7 @@ Inherited from DatasetClientListItemOptions.clean
 
 : string
 
-### [**](#desc)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L267)optionalinheriteddesc
+### [**](#desc)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L461)optionalinheriteddesc
 
 **desc?
 
@@ -76,7 +95,7 @@ Inherited from DatasetClientListItemOptions.clean
 
 Inherited from DatasetClientListItemOptions.desc
 
-### [**](#fields)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L269)optionalinheritedfields
+### [**](#fields)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L463)optionalinheritedfields
 
 **fields?
 
@@ -86,7 +105,7 @@ Inherited from DatasetClientListItemOptions.desc
 
 Inherited from DatasetClientListItemOptions.fields
 
-### [**](#flatten)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L268)optionalinheritedflatten
+### [**](#flatten)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L462)optionalinheritedflatten
 
 **flatten?
 
@@ -96,7 +115,7 @@ Inherited from DatasetClientListItemOptions.fields
 
 Inherited from DatasetClientListItemOptions.flatten
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L271)optionalinheritedlimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L251)optionalinheritedlimit
 
 **limit?
 
@@ -106,7 +125,9 @@ Inherited from DatasetClientListItemOptions.flatten
 
 Inherited from DatasetClientListItemOptions.limit
 
-### [**](#offset)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L272)optionalinheritedoffset
+Maximum number of entries requested.
+
+### [**](#offset)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L249)optionalinheritedoffset
 
 **offset?
 
@@ -116,7 +137,9 @@ Inherited from DatasetClientListItemOptions.limit
 
 Inherited from DatasetClientListItemOptions.offset
 
-### [**](#omit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L270)optionalinheritedomit
+Position of the first returned entry.
+
+### [**](#omit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L464)optionalinheritedomit
 
 **omit?
 
@@ -126,7 +149,7 @@ Inherited from DatasetClientListItemOptions.offset
 
 Inherited from DatasetClientListItemOptions.omit
 
-### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L277)optionalinheritedsignature
+### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L469)optionalinheritedsignature
 
 **signature?
 
@@ -136,7 +159,7 @@ Inherited from DatasetClientListItemOptions.omit
 
 Inherited from DatasetClientListItemOptions.signature
 
-### [**](#skipEmpty)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L273)optionalinheritedskipEmpty
+### [**](#skipEmpty)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L465)optionalinheritedskipEmpty
 
 **skipEmpty?
 
@@ -146,7 +169,7 @@ Inherited from DatasetClientListItemOptions.signature
 
 Inherited from DatasetClientListItemOptions.skipEmpty
 
-### [**](#skipHeaderRow)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L300)optionalskipHeaderRow
+### [**](#skipHeaderRow)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L505)optionalskipHeaderRow
 
 **skipHeaderRow?
 
@@ -154,7 +177,7 @@ Inherited from DatasetClientListItemOptions.skipEmpty
 
 : boolean
 
-### [**](#skipHidden)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L274)optionalinheritedskipHidden
+### [**](#skipHidden)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L466)optionalinheritedskipHidden
 
 **skipHidden?
 
@@ -164,7 +187,7 @@ Inherited from DatasetClientListItemOptions.skipEmpty
 
 Inherited from DatasetClientListItemOptions.skipHidden
 
-### [**](#unwind)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L275)optionalinheritedunwind
+### [**](#unwind)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L467)optionalinheritedunwind
 
 **unwind?
 
@@ -174,7 +197,7 @@ Inherited from DatasetClientListItemOptions.skipHidden
 
 Inherited from DatasetClientListItemOptions.unwind
 
-### [**](#view)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L276)optionalinheritedview
+### [**](#view)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L468)optionalinheritedview
 
 **view?
 
@@ -184,7 +207,7 @@ Inherited from DatasetClientListItemOptions.unwind
 
 Inherited from DatasetClientListItemOptions.view
 
-### [**](#xmlRoot)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L301)optionalxmlRoot
+### [**](#xmlRoot)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L506)optionalxmlRoot
 
 **xmlRoot?
 
@@ -192,7 +215,7 @@ Inherited from DatasetClientListItemOptions.view
 
 : string
 
-### [**](#xmlRow)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset.ts#L302)optionalxmlRow
+### [**](#xmlRow)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset.ts#L507)optionalxmlRow
 
 **xmlRow?
 

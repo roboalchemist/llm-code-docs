@@ -4,11 +4,7 @@
 
 Better Auth Hooks let you customize BetterAuth's behavior
 
-***
 
-title: Hooks
-description: Better Auth Hooks let you customize BetterAuth's behavior
-----------------------------------------------------------------------
 
 Hooks in Better Auth let you "hook into" the lifecycle and execute custom logic. They provide a way to customize Better Auth's behavior without writing a full plugin.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/wait_for_user_confirmation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait for User Confirmation
 
 ## Overview

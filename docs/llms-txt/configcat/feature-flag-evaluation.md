@@ -2,13 +2,15 @@
 
 # Feature Flag Evaluation
 
-This document offers an in-depth explanation of how the SDK determines the value of a feature flag when executing the `GetValue` function. Understanding this process requires prior knowledge of [targeting concepts](https://configcat.com/docs/docs/targeting/targeting-overview/.md).
+Copy page
+
+This document offers an in-depth explanation of how the SDK determines the value of a feature flag when executing the `GetValue` function. Understanding this process requires prior knowledge of [targeting concepts](https://configcat.com/docs/targeting/targeting-overview.md).
 
 The feature flag's value is determined by:
 
 * The feature flag's rules defined on the Dashboard,
-* The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) provided to the `GetValue` function, and
-* The [default value](https://configcat.com/docs/docs/targeting/targeting-overview/.md#default-value) passed to the `GetValue` function.
+* The [User Object](https://configcat.com/docs/targeting/user-object.md) provided to the `GetValue` function, and
+* The [default value](https://configcat.com/docs/targeting/targeting-overview.md#default-value) passed to the `GetValue` function.
 
 The feature flag's value always comes from exactly one rule, following this algorithm:
 
@@ -16,14 +18,14 @@ The feature flag's value always comes from exactly one rule, following this algo
 
    <!-- -->
 
-   * If the conditions are met, the THEN part determines the value to return. However, if the THEN part contains Percentage Options but the [Percentage Evaluation Attribute](https://configcat.com/docs/docs/targeting/percentage-options/.md#percentage-evaluation-attribute) is missing from the User Object, the SDK will skip the Targeting Rule and continue with the next rule - even though the Targeting Rule's conditions are met.
+   * If the conditions are met, the THEN part determines the value to return. However, if the THEN part contains Percentage Options but the [Percentage Evaluation Attribute](https://configcat.com/docs/targeting/percentage-options.md#percentage-evaluation-attribute) is missing from the User Object, the SDK will skip the Targeting Rule and continue with the next rule - even though the Targeting Rule's conditions are met.
    * If the conditions aren't met, the SDK moves to the next Targeting Rule, or to step 2 (below) if there are no more Targeting Rules.
 
-2. **Evaluation of Percentage Options:** If a Percentage Options rule exists, the SDK executes the [Evaluation of Percentage Options](#evaluation-of-percentage-options) algorithm to determine which Percentage Option applies to the user and returns the value associated with that option. If the [Percentage Evaluation Attribute](https://configcat.com/docs/docs/targeting/percentage-options/.md#percentage-evaluation-attribute) is missing from the User Object, the SDK skips to step 3 (below).
+2. **Evaluation of Percentage Options:** If a Percentage Options rule exists, the SDK executes the [Evaluation of Percentage Options](#evaluation-of-percentage-options) algorithm to determine which Percentage Option applies to the user and returns the value associated with that option. If the [Percentage Evaluation Attribute](https://configcat.com/docs/targeting/percentage-options.md#percentage-evaluation-attribute) is missing from the User Object, the SDK skips to step 3 (below).
 
 3. **Returning simple value:** At this stage, the only remaining "rule" is the simple value specified at the end of the feature flag, which the SDK then returns.
 
-In the event of an unexpected error during evaluation, the SDK returns the [default value](https://configcat.com/docs/docs/targeting/targeting-overview/.md#default-value) passed to the `GetValue` function.
+In the event of an unexpected error during evaluation, the SDK returns the [default value](https://configcat.com/docs/targeting/targeting-overview.md#default-value) passed to the `GetValue` function.
 
 ## Evaluation of a Targeting Rule[​](#evaluation-of-a-targeting-rule "Direct link to Evaluation of a Targeting Rule")
 
@@ -35,7 +37,7 @@ A Targeting Rule matches only when all its conditions evaluate to `true`. In any
 
 ### Evaluation of a User Condition[​](#evaluation-of-a-user-condition "Direct link to Evaluation of a User Condition")
 
-The SDK looks up the comparison attribute (the user attribute referenced by the condition) in the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md). It compares the attribute value to the comparison value that is set on the Dashboard. The comparison is done according to the selected comparator, resulting in a `true` or `false` value. This will be the result of the condition.
+The SDK looks up the comparison attribute (the user attribute referenced by the condition) in the [User Object](https://configcat.com/docs/targeting/user-object.md). It compares the attribute value to the comparison value that is set on the Dashboard. The comparison is done according to the selected comparator, resulting in a `true` or `false` value. This will be the result of the condition.
 
 The result of the condition will be `cannot evaluate` in case the comparison attribute is missing (`null`, `undefined`, `""`) or invalid (not of the type expected by the comparator or not formatted properly). In such cases, the Targeting Rule containing the condition will be skipped, and the evaluation will continue with the next rule.
 
@@ -43,34 +45,34 @@ The result of the condition will be `cannot evaluate` in case the comparison att
 
 Using the same User Object used to evaluate the dependent flag, the SDK evaluates the prerequisite flag (the feature flag referenced by the condition). Then, the result is checked against the comparator. In case the prerequisite flag is not a boolean setting, the result is compared to the comparison value that is set on the Dashboard. The comparison results in a `true` or `false` value. This will be the result of the condition.
 
-In case the prerequisite flag is missing or there is a type mismatch between the return value and the comparison value, the evaluation process stops, and the SDK will return the [default value](https://configcat.com/docs/docs/targeting/targeting-overview/.md#default-value). (Though this can happen only when using the [flag overrides](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#flag-overrides) feature with invalid data.)
+In case the prerequisite flag is missing or there is a type mismatch between the return value and the comparison value, the evaluation process stops, and the SDK will return the [default value](https://configcat.com/docs/targeting/targeting-overview.md#default-value). (Though this can happen only when using the [flag overrides](https://configcat.com/docs/sdk-reference/js/overview.md#flag-overrides) feature with invalid data.)
 
 ### Evaluation of a Segment Condition[​](#evaluation-of-a-segment-condition "Direct link to Evaluation of a Segment Condition")
 
-The SDK looks up the segment referenced by the condition. Then evaluates the condition described by the segment similarly to [User Conditions](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md). Finally, the result is checked against the comparator:
+The SDK looks up the segment referenced by the condition. Then evaluates the condition described by the segment similarly to [User Conditions](https://configcat.com/docs/targeting/targeting-rule/user-condition.md). Finally, the result is checked against the comparator:
 
 * For **IS IN SEGMENT**, the result of the Segment Condition will be the same as the result of the segment itself.
 * For **IS NOT IN SEGMENT**, the result will be negated (i.e. it will be the opposite of the result of the segment).
 
 If the segment evaluates to `cannot evaluate`, so does the Segment Condition.
 
-The evaluation process stops if the referenced segment is missing, and the SDK will return the [default value](https://configcat.com/docs/docs/targeting/targeting-overview/.md#default-value). (Though this can happen only when using the [flag overrides](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#flag-overrides) feature with invalid data.)
+The evaluation process stops if the referenced segment is missing, and the SDK will return the [default value](https://configcat.com/docs/targeting/targeting-overview.md#default-value). (Though this can happen only when using the [flag overrides](https://configcat.com/docs/sdk-reference/js/overview.md#flag-overrides) feature with invalid data.)
 
 ## Evaluation of Percentage Options[​](#evaluation-of-percentage-options "Direct link to Evaluation of Percentage Options")
 
-[Percentage Options](https://configcat.com/docs/docs/targeting/percentage-options/.md) are designed to be *consistent* and *sticky* across all SDKs, which means that users with the same attributes fall in the same group and get the same feature flag value across the supported platforms as long as the percentage split is the same.
+[Percentage Options](https://configcat.com/docs/targeting/percentage-options.md) are designed to be *consistent* and *sticky* across all SDKs, which means that users with the same attributes fall in the same group and get the same feature flag value across the supported platforms as long as the percentage split is the same.
 
-The SDK looks up the [Percentage Evaluation Attribute](https://configcat.com/docs/docs/targeting/percentage-options/.md#percentage-evaluation-attribute) in the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md), then:
+The SDK looks up the [Percentage Evaluation Attribute](https://configcat.com/docs/targeting/percentage-options.md#percentage-evaluation-attribute) in the [User Object](https://configcat.com/docs/targeting/user-object.md), then:
 
 * The SDK creates a hash from the combination of the specific feature flag's key and the Percentage Evaluation Attribute's value (by default, it is the user identifier).
 * The hashing algorithm assigns the user a number between 0 and 99.
 * The assigned number determines which group the user falls into, i.e. which Percentage Option applies to the user.
 
-The fact that the above algorithm is implemented across all SDKs guarantees [stickiness](https://configcat.com/docs/docs/targeting/percentage-options/.md#stickiness), [consistency](https://configcat.com/docs/docs/targeting/percentage-options/.md#consistency) and [randomness](https://configcat.com/docs/docs/targeting/percentage-options/.md#randomness).
+The fact that the above algorithm is implemented across all SDKs guarantees [stickiness](https://configcat.com/docs/targeting/percentage-options.md#stickiness), [consistency](https://configcat.com/docs/targeting/percentage-options.md#consistency) and [randomness](https://configcat.com/docs/targeting/percentage-options.md#randomness).
 
 info
 
-The evaluation process is entirely implemented within the SDKs, meaning your users' sensitive data never leaves your system. The data flow is one-way – from ConfigCat CDN servers to your SDKs – and ConfigCat does not receive or store any attributes of the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) passed to the SDKs. This design prioritizes the privacy and security of user data.
+The evaluation process is entirely implemented within the SDKs, meaning your users' sensitive data never leaves your system. The data flow is one-way – from ConfigCat CDN servers to your SDKs – and ConfigCat does not receive or store any attributes of the [User Object](https://configcat.com/docs/targeting/user-object.md) passed to the SDKs. This design prioritizes the privacy and security of user data.
 
 ### Example scenarios for Percentage Options[​](#example-scenarios-for-percentage-options "Direct link to Example scenarios for Percentage Options")
 

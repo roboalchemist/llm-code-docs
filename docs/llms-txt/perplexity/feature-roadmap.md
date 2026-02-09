@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/feature-roadmap.md
+# Source: https://docs.perplexity.ai/docs/resources/feature-roadmap.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Roadmap
 
@@ -7,6 +11,26 @@
 Our roadmap is shaped by our users - have a feature in mind? Submit your suggestion [here](https://community.perplexity.ai/) and help us build the future of AI together.
 
 <AccordionGroup>
+  <Accordion title="V2 Chat Completions Migration" description="An improvement to your existing API">
+    We're migrating the Chat Completions API to a new v2 endpoint with significantly improved performance:
+
+    * **Same Endpoint**: The `/v2/chat/completions` endpoint maintains full compatibility with the existing API contract
+    * **Reduced Latency**: Approximately 40% lower latency compared to the current endpoint
+    * **Automatic Migration**: Traffic from v1 will automatically be moved to v2 - this change is seamless and no action needs to be taken
+
+    This migration will provide faster response times while maintaining full backward compatibility with your existing integrations.
+  </Accordion>
+
+  <Accordion title="Embeddings API" description="A new API for vector embeddings and semantic search">
+    We're introducing an Embeddings API to enable semantic search and retrieval capabilities:
+
+    * **Text Embeddings**: Generate high-quality vector embeddings from text input
+    * **Semantic Search**: Build applications that can find and retrieve information based on meaning and context
+    * **RAG Applications**: Power retrieval-augmented generation workflows with custom knowledge bases
+
+    This API will enable you to build sophisticated search and retrieval applications that understand semantic relationships between content.
+  </Accordion>
+
   <Accordion title="Video Upload Capabilities" description="Multimodal video processing">
     We're expanding our multimodal capabilities to include video uploads.
 
@@ -37,7 +61,6 @@ Our roadmap is shaped by our users - have a feature in mind? Submit your suggest
     We're expanding our structured outputs capabilities:
 
     * **Universal JSON Support**: JSON structured outputs are now available for all models across all tiers
-    * **Complete Regex Support**: Extending regex pattern support to all models (currently available for `sonar` and `sonar-reasoning`)
     * **Advanced Schema Validation**: Enhanced validation options for more reliable structured data
     * **Output Templates**: Pre-defined templates for common use cases
 
@@ -103,7 +126,7 @@ Our roadmap is shaped by our users - have a feature in mind? Submit your suggest
   <Accordion title="Pro Search Public Release" description="Advanced agentic capabilities for all">
     We're preparing to make Pro Search available to all API users:
 
-    * **Multi-step Reasoning**: Access to the advanced agentic search capabilities currently in beta
+    * **Multi-step Reasoning**: Access to the advanced agentic research capabilities currently in beta
     * **Dynamic Tool Execution**: Automated web searches, URL content fetching, and Python code execution
     * **Intelligent Classification**: Automatic determination of when to use pro search vs fast search based on query complexity
     * **Transparent Reasoning**: Real-time streaming of the model's thought process and tool usage
@@ -172,4 +195,4 @@ Our roadmap is shaped by our users - have a feature in mind? Submit your suggest
 
 This roadmap represents our current development priorities. Features will be released incrementally, with some becoming available in the coming months and others planned for later in the year.
 
-We'll announce new feature availability through our [changelog](/changelog) and via email notifications to API users.
+We'll announce new feature availability through our [changelog](/docs/resources/changelog) and via email notifications to API users.

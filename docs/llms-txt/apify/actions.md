@@ -45,7 +45,7 @@ For security reasons, include a secret token in the webhook URL to ensure that o
 
 Headers template
 
-You can also use https://docs.apify.com/platform/integrations/webhooks/actions.md#headers-template for this purpose.
+You can also use [Headers template](https://docs.apify.com/platform/integrations/webhooks/actions.md#headers-template) for this purpose.
 
 Note that webhook HTTP requests have a timeout of *30 seconds*. If your endpoint performs a time-consuming operation, respond to the request immediately to prevent timeouts before Apify receives the response. To ensure reliable completion of the time-consuming operation, consider using a message queue internally to retry the operation on internal failure.
 
@@ -171,13 +171,13 @@ The description is an optional string that you can add to the webhook. It serves
 | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `userId`    | string | ID of the Apify user who owns the webhook.                                                                                                                               |
 | `createdAt` | string | ISO string date of the webhook's trigger event.                                                                                                                          |
-| `eventType` | string | Type of the trigger event, see https://docs.apify.com/platform/integrations/webhooks/events.md.                                                                          |
-| `eventData` | Object | Data associated with the trigger event, see https://docs.apify.com/platform/integrations/webhooks/events.md.                                                             |
+| `eventType` | string | Type of the trigger event, see [Events](https://docs.apify.com/platform/integrations/webhooks/events.md).                                                                |
+| `eventData` | Object | Data associated with the trigger event, see [Events](https://docs.apify.com/platform/integrations/webhooks/events.md).                                                   |
 | `resource`  | Object | The resource that caused the trigger event.                                                                                                                              |
 | `globals`   | Object | Data available in global context. Contains `dateISO` (date of webhook's trigger event in ISO 8601 format) and `dateUnix` (date of trigger event in Unix time in seconds) |
 
 ### Resource
 
-The `resource` variable represents the triggering system resource. For example, when using the `ACTOR.RUN.SUCCEEDED` event, the resource is the Actor run. The variable will be replaced by the `Object` that you would receive as a response from the relevant API at the moment when the webhook is triggered. For the Actor run resource, it would be the response of the https://docs.apify.com/api/v2/actor-run-get.md API endpoint.
+The `resource` variable represents the triggering system resource. For example, when using the `ACTOR.RUN.SUCCEEDED` event, the resource is the Actor run. The variable will be replaced by the `Object` that you would receive as a response from the relevant API at the moment when the webhook is triggered. For the Actor run resource, it would be the response of the [Get Actor run](https://docs.apify.com/api/v2/actor-run-get.md) API endpoint.
 
-In addition to Actor runs, webhooks also support various events related to Actor builds. In such cases, the resource object will look like the response of the https://docs.apify.com/api/v2/actor-build-get.md API endpoint.
+In addition to Actor runs, webhooks also support various events related to Actor builds. In such cases, the resource object will look like the response of the [Get Actor build](https://docs.apify.com/api/v2/actor-build-get.md) API endpoint.

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/continuous-learning-via-human-feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customizing your LLM-powered metrics via CLHF
 
 > Learn how to customize your LLM-powered metrics with Continuous Learning via Human Feedback.

@@ -2,7 +2,7 @@
 
 # Adding your RapidAPI project to Apify
 
-If you've published an API project on https://rapidapi.com/, you can expand your project's visibility by listing it on Apify Store. This gives you access to Apify's developer community and ecosystem.
+If you've published an API project on [RapidAPI](https://rapidapi.com/), you can expand your project's visibility by listing it on Apify Store. This gives you access to Apify's developer community and ecosystem.
 
 ***
 
@@ -12,13 +12,13 @@ By publishing your API project on Apify, you'll reach thousands of active users 
 
 ## Step-by-step guide
 
-The approach is demonstrated on an app built on top of https://expressjs.com/, but with a few adaptations to the code, any API framework will work.
+The approach is demonstrated on an app built on top of [Express.js](https://expressjs.com/), but with a few adaptations to the code, any API framework will work.
 
-You'll deploy your API as an https://apify.com/actors - a serverless cloud program that runs on the Apify platform. Actors can handle everything from simple automation to running web servers.
+You'll deploy your API as an [Apify Actor](https://apify.com/actors) - a serverless cloud program that runs on the Apify platform. Actors can handle everything from simple automation to running web servers.
 
 ### Prerequisites
 
-You’ll need an https://console.apify.com/sign-in - *it’s free and no credit card is required*. For simple migration and deployment, we recommend installing the Apify CLI:
+You’ll need an [Apify account](https://console.apify.com/sign-in) - *it’s free and no credit card is required*. For simple migration and deployment, we recommend installing the Apify CLI:
 
 
 ```
@@ -28,7 +28,7 @@ curl -fsSL https://apify.com/install-cli.sh | bash
 
 Other ways to install the CLI
 
-Check the https://docs.apify.com/cli/docs/installation for more details and all the options.
+Check the [CLI installation page](https://docs.apify.com/cli/docs/installation) for more details and all the options.
 
 ### Step 1: Initialize the Actor structure
 
@@ -89,7 +89,7 @@ Now, check that your server is running. Check one of your endpoints, for example
 
 ### Step 4: Deploy your Actor to Apify
 
-Now push your Actor to https://console.apify.com/. You’ll be able to do this only if you’re logged in to your Apify account with the CLI. Run `apify info` to check, and if you’re not logged in yet, run `apify login`. This only needs to be done once. To push your project, run the following command:
+Now push your Actor to [Apify Console](https://console.apify.com/). You’ll be able to do this only if you’re logged in to your Apify account with the CLI. Run `apify info` to check, and if you’re not logged in yet, run `apify login`. This only needs to be done once. To push your project, run the following command:
 
 
 ```
@@ -124,7 +124,7 @@ Once you’ve saved the settings, go to the **Standby** tab, and click the **Tes
 
 Ready to monetize your Actor and start earning? Check out these guides:
 
-* https://docs.apify.com/platform/actors/publishing/monetize
-* https://docs.apify.com/platform/actors/publishing/publish
+* [Set up monetization for your Actor](https://docs.apify.com/platform/actors/publishing/monetize)
+* [Publish your Actor on Apify Store](https://docs.apify.com/platform/actors/publishing/publish)
 
 You can also extend your Actor with custom logic and leverage additional Apify platform features, such as storage or web scraping capabilities.

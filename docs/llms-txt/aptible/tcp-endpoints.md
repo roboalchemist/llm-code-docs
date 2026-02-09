@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/tcp-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TCP Endpoints
 
 <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8407205ce22c7fb0282cb866f7f4955d" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/15715dc-tcp-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d620696943f5519117ac8b19d637aa75 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d7636d2d24b7e638df577435dc1e75ff 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=efe62411da4b0f1bcd6837665a344a58 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8dab5aca85ce60c7db6641ea1fe67480 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=523a7b066761dad276ba7bfd5da95e9f 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/15715dc-tcp-endpoints.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5faac17ee276512e0bdbe57b1acc3c26 2500w" />

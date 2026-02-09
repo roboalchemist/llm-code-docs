@@ -1,12 +1,13 @@
 # Source: https://turbo.build/guides/tools/typescript.md
 
 # TypeScript
-Description: Learn how to use TypeScript in a monorepo.
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+<CopyPrompt
+  title="Set up TypeScript in a Turborepo"
+  prompt={
+  "Set up TypeScript in this Turborepo.\n1) Create a shared TypeScript config package\n2) Configure packages to use the shared config\n3) Set up type checking in turbo.json\n\nWalk me through each step."
+}
+/>
 
 TypeScript is an excellent tool in monorepos, allowing teams to safely add types to their JavaScript code. While there is some complexity to getting set up, this guide will walk you through the important parts of a TypeScript setup for most use cases.
 
@@ -28,7 +29,7 @@ TypeScript's `tsconfig.json` sets the configuration for the TypeScript compiler 
 
 This guide will use [`create-turbo`](/docs/reference/create-turbo) as an example.
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -52,7 +53,7 @@ This guide will use [`create-turbo`](/docs/reference/create-turbo) as an example
     bunx create-turbo@latest
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ### Use a base `tsconfig` file
 
@@ -75,9 +76,7 @@ Inside `packages/typescript-config`, you have a few `json` files which represent
 }
 ```
 
-<LinkToDocumentation href="https://www.typescriptlang.org/tsconfig">
-  `tsconfig` options reference
-</LinkToDocumentation>
+<LinkToDocumentation href="https://www.typescriptlang.org/tsconfig" text="tsconfig options reference" />
 
 ### Creating the rest of the package
 
@@ -97,13 +96,13 @@ Inside `package.json`, name the package so it can be referenced in the rest of t
 
 First, install the `@repo/typescript-config` package into your package:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```json title="./apps/web/package.json"
     {
       "devDependencies": {
          "@repo/typescript-config": "workspace:*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -114,7 +113,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -125,7 +124,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -136,12 +135,12 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "workspace:*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 Then, extend the `tsconfig.json` for the package from the `@repo/typescript-config` package. In this example, the `web` package is a Next.js application:
 
@@ -261,11 +260,11 @@ With these two files in place, your editor will now navigate to the original sou
 
 ### Use Node.js subpath imports instead of TypeScript compiler `paths`
 
-It's possible to create absolute imports in your packages using [the TypeScript compiler's `paths` option](https://www.typescriptlang.org/tsconfig#paths), but these paths can cause failed compilation when using [Just-in-Time Packages](https://turborepo.com/docs/core-concepts/internal-packages#just-in-time-packages). [As of TypeScript 5.4](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/#auto-import-support-for-subpath-imports), you can use [Node.js subpath imports](https://nodejs.org/api/packages.html#imports) instead for a more robust solution.
+It's possible to create absolute imports in your packages using [the TypeScript compiler's `paths` option](https://www.typescriptlang.org/tsconfig#paths), but these paths can cause failed compilation when using [Just-in-Time Packages](https://turborepo.dev/docs/core-concepts/internal-packages#just-in-time-packages). [As of TypeScript 5.4](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/#auto-import-support-for-subpath-imports), you can use [Node.js subpath imports](https://nodejs.org/api/packages.html#imports) instead for a more robust solution.
 
 #### Just-in-Time Packages
 
-In [Just-in-Time packages](https://turborepo.com/docs/core-concepts/internal-packages#just-in-time-packages), `imports` must target the source code in the package, since build outputs like `dist` won't be created.
+In [Just-in-Time packages](https://turborepo.dev/docs/core-concepts/internal-packages#just-in-time-packages), `imports` must target the source code in the package, since build outputs like `dist` won't be created.
 
 <Tabs storageKey="ts-imports-jit" items={["package.json", "Source code"]}>
   <Tab value="package.json">
@@ -293,7 +292,7 @@ In [Just-in-Time packages](https://turborepo.com/docs/core-concepts/internal-pac
 
 #### Compiled Packages
 
-In [Compiled packages](https://turborepo.com/docs/core-concepts/internal-packages#compiled-packages), `imports` target the built outputs for the package.
+In [Compiled packages](https://turborepo.dev/docs/core-concepts/internal-packages#compiled-packages), `imports` target the built outputs for the package.
 
 <Tabs storageKey="ts-imports-compiled" items={["package.json", "Source code"]}>
   <Tab value="package.json">
@@ -308,7 +307,7 @@ In [Compiled packages](https://turborepo.com/docs/core-concepts/internal-package
 
   <Tab value="Source code">
     ```tsx title="./packages/ui/button.tsx"
-    import { MY_STRING } from '#utils.js'; // Uses .js extension // [!code highlight]
+    import { MY_STRING } from "#utils.js"; // Uses .js extension // [!code highlight]
 
     export const Button = () => {
       return <button>{MY_STRING}</button>;
@@ -336,3 +335,7 @@ We don't recommend using TypeScript Project References as they introduce both an
 `tsserver` is not able to use different TypeScript versions for different packages in your code editor. Instead, it will discover a specific version and use that everywhere.
 
 This can result in differences between the linting errors that show in your editor and when you run `tsc` scripts to check types. If this is an issue for you, consider [keeping the TypeScript dependency on the same version](/docs/crafting-your-repository/managing-dependencies#keeping-dependencies-on-the-same-version).
+
+---
+
+[View full sitemap](/sitemap.md)

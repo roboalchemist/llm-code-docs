@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/end_statement.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # End If/Else/For Statement
 
 Mark the end of If/Else blocks or For loops - required to close conditional logic or iteration blocks.

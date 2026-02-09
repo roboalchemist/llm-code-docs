@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/source-map-dev-tool-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/source-map-dev-tool-plugin/](https://webpack.js.org/plugins/source-map-dev-tool-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/source-map-dev-tool-plugin/" />
 
 # SourceMapDevToolPlugin
 
@@ -16,82 +21,82 @@ new rspack.SourceMapDevToolPlugin(options);
 
 ### test
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Include source maps for modules based on their extension (defaults to `.js`, `.mjs`, and `.css`).
 
 ### include
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Include source maps for module paths that match the given value.
 
 ### exclude
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Exclude modules that match the given value from source map generation.
 
 ### filename
 
-* **Type:** string
+- **Type:** string
 
 Defines the output filename of the SourceMap (will be inlined if no value is provided).
 
 ### append
 
-* **Type:** `string` `function`
+- **Type:** `string` `function`
 
 Appends the given value to the original asset. Usually the `#sourceMappingURL` comment. `[url]` is replaced with a URL to the source map file. Path parameters are supported: `[chunk]`, `[filename]` and `[contenthash]`. Setting append to false disables the appending.
 
 ### moduleFilenameTemplate
 
-* **Type:** `string`
+- **Type:** `string`
 
 See [`output.devtoolModuleFilenameTemplate`](/config/output.md#outputdevtoolmodulefilenametemplate).
 
 ### fallbackModuleFilenameTemplate
 
-* **Type:** `string`
+- **Type:** `string`
 
 See link above.
 
 ### namespace
 
-* **Type:** `string`
+- **Type:** `string`
 
 See [`output.devtoolNamespace`](/config/output.md#outputdevtoolnamespace).
 
 ### module
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Indicates whether loaders should generate source maps.
 
 ### columns
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Indicates whether column mappings should be used.
 
 ### noSources
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Prevents the source file content from being included in the source map.
 
 ### publicPath
 
-* **Type:** `string`
+- **Type:** `string`
 
 Emits absolute URLs with public path prefix, e.g. `https://example.com/project/`.
 
 ### fileContext
 
-* **Type:** `string`
+- **Type:** `string`
 
 Makes the `[file]` argument relative to this directory.
 
@@ -99,7 +104,7 @@ The `fileContext` option is useful when you want to store source maps in an uppe
 
 ### sourceRoot
 
-* **Type:** `string`
+- **Type:** `string`
 
 Provide a custom value for the `sourceRoot` property in the SourceMap.
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/using-vs-with-postman.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing with Postman
 
 > In this tutorial we'll go over how to use Vehicle Simulator to test out Smartcar using Postman.
@@ -40,7 +44,7 @@ You’ll need a few things to start making API calls with Smartcar and Postman:
 
 ## Smartcar Application Configuration
 
-If you haven’t already signed up for a Smartcar Developer account, you can do so from this [**signup link**](https://dashboard.smartcar.com/signup).
+If you haven’t already signed up for a Smartcar Developer account, you can do so from this [**sign-up link**](https://dashboard.smartcar.com/signup).
 
 * Grab your **Client ID** and **Client Secret** from the Configuration page after you sign in, and copy them to someplace secure. You’ll need those tokens a little later in this setup.
 * Under the Credentials tab for your application, you’ll need to add the following Redirect URIs. This will ensure that Smartcar Connect exits successfully with both Postman’s Native and Web clients.
@@ -54,7 +58,7 @@ http://localhost:8000/exchange
   <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=227ee48bcdd4a1994049717c996deaa4" data-og-width="2000" width="2000" data-og-height="1306" height="1306" data-path="images/help-center/guide-postman/appConfig.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=22525c94a1167dc50c0b7c29f521b75d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=35f84af32748222af74a57f5b8b56a1d 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7aef027c29db70ca3ba0a8ee7e878626 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0efa259095c171610dbabf66573d46e2 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d9bcc2b805c2374762e3e4340d0880e0 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0fb808d66c484339ccf916af71d3a1e3 2500w" />
 </Frame>
 
-Through the Connect flow, you’re able to get consent from vehicle owners to connect their vehicle to your application. Postman provides an easy way to manage oAuth 2.0 flows under the Authorization tab of a Collection. Set up the Configuration Options for either a live or simulated vehicle.
+Through the Connect flow, you’re able to get consent from vehicle owners to connect their vehicle to your application. Postman provides an easy way to manage OAuth 2.0 flows under the Authorization tab of a Collection. Set up the Configuration Options for either a live or simulated vehicle.
 
 <Frame type="simple">
   <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=44585e961f665d2d259993a8ddd4319e" data-og-width="2000" width="2000" data-og-height="2428" height="2428" data-path="images/help-center/guide-postman/authorization.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=46aa2f12046829bd12721516223962fc 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e1564439120f97729c09dfdbb991f128 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c2a4277fff801a484e5119578b772632 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=64c4d2591f0c61bd44dc7652bed92312 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=817af5d94ee6ab342b4429d45d645300 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8a9fc062932e0fc9d38577d3ecd1ec4f 2500w" />
@@ -139,7 +143,7 @@ Hit Use Token. You should see Access Token under Current Token populate with the
 
 <Warning>
   Access tokens are only valid for two hours. If you want to make API requests after it has expired, you'll need to generate a
-  new one by stepping through the Connect Flow again, or through a [token refresh](/api-reference/authorization/token-refresh).
+  new one by stepping through the Connect Flow again, or through a [token refresh](/api-reference/authorization/refreshing-access-token).
 </Warning>
 
 ## Making an API request

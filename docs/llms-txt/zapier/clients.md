@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/mcp/clients.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Zapier MCP integrates with a variety of Model Context Protocol (MCP) clients, allowing you to connect your AI workflows with different development environments and platforms.

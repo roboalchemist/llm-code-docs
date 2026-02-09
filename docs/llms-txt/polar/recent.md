@@ -1,8 +1,52 @@
 # Source: https://polar.sh/docs/changelog/recent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Product Updates
 
 > Stay up to date with the latest changes and improvements to Polar.
+
+<Update label="2025-10-17">
+  ## Ability to update subscription to an updated price of the product
+
+  Merchants can now [update existing subscriptions](https://polar.sh/docs/api-reference/subscriptions/update#subscriptionupdateproduct) from archived pricing schemes to current ones within the same product.
+
+  * Enables migration from grandfathered pricing to current pricing schemes
+  * Prorations calculated using active subscription prices
+  * In the dashboard, a small badge **Upgrade pricing** will indicate that you can update to the same product, but with the new pricing scheme.
+
+  <img class="rounded" src="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=84b0f80f4c5d6c6ede3fb478d93febb9" data-og-width="1026" width="1026" data-og-height="1044" height="1044" data-path="assets/changelog/2025-10-17/update-subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=280&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=3883b6fb1705fb66a6bd711c1d465d29 280w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=560&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=7cba24c5d8795b7fb92361b32162075d 560w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=840&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=9771c2705febeda2b6bcbc5a48b9a36a 840w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=1100&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=775f2d95c6cb9a2c1312a8888f39d84c 1100w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=1650&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=8af4ce16db55fa74f8d65fa1ee55604d 1650w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/update-subscription.png?w=2500&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=7d06860644d6194437a0cf671a6af013 2500w" />
+
+  ## New IP ranges
+
+  From **October 27th, 2025**, [new IP ranges](https://polar.sh/docs/integrate/webhooks/delivery#ip-allowlist) will be added.
+
+  ## Improved Subscription Cancellation Flow
+
+  [Benefits](https://polar.sh/docs/features/benefits/introduction) attached to the subscription [are now automatically revoked](https://github.com/polarsource/polar/pull/7271) when the subscription is canceled.
+
+  ## Ability to specify External ID
+
+  [External ID can now be specified](https://github.com/polarsource/polar/pull/7275) during creation of a customer via the dashboard.
+
+  <img class="border rounded" src="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=4f96d098affca55b7140c26196e16852" data-og-width="1034" width="1034" data-og-height="1030" height="1030" data-path="assets/changelog/2025-10-17/create-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=280&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=c71ce04bc18bfe24a2076b8b3fa85fe7 280w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=560&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=01efa2ee281c648d78f630578f5e0959 560w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=840&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=d86240a390a690e1afa75a64de709274 840w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=1100&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=0e2537c9c9912bcad0cbc7d3f1533656 1100w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=1650&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=72db1acc1262b9d2092c80622b140131 1650w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/create-customer.png?w=2500&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=85fbba7f8319319a35a524599a780cac 2500w" />
+
+  ## Ability to set Return URL for Checkouts and Customer Portal
+
+  A Return URL can now be set while generating a [checkout session](https://polar.sh/docs/api-reference/checkouts/create-session#body-return-url-one-of-0) or a [customer portal session](https://polar.sh/docs/api-reference/customer-portal/sessions/create#body-one-of-0-return-url-one-of-0). This allows you to preserve the context for the end users who visit either if they wish to go back to the application.
+
+  ## Ability to search Customers via their External ID
+
+  The [List Customers API](https://polar.sh/docs/api-reference/customers/list) now accepts Customer's External ID [in the **query** parameter](https://polar.sh/docs/api-reference/customers/list#parameter-one-of-0).
+
+  ## Ability to disable automatic customer emails
+
+  Via the organization settings, you can now disable the emails we automatically send to customers on certain events. This gives you the ability to own the communications with the customers.
+
+  <img class="border rounded" src="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=d64d9fd9fa62439c370ca5a39a62a47a" data-og-width="1660" width="1660" data-og-height="1522" height="1522" data-path="assets/changelog/2025-10-17/email-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=280&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=34406692e3c5ca7e20df5e2b462e9eae 280w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=560&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=b8b8bb4d93d5091951214acb0bde2f3a 560w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=840&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=39502fece8fb05eadc3a000f2a73ae61 840w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=1100&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=103d7726ff4f901bf0d453e285555b5e 1100w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=1650&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=7243575a6645fb7f11c95a80fc559c5e 1650w, https://mintcdn.com/polar/P14Bx1Nt4rA16sHk/assets/changelog/2025-10-17/email-settings.png?w=2500&fit=max&auto=format&n=P14Bx1Nt4rA16sHk&q=85&s=a81081e7c15f762563781a0b2556c9c2 2500w" />
+</Update>
 
 <Update label="2025-10-10">
   ## Launched In-Product Chat Support for Merchants

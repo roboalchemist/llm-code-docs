@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/authenticate-with-github-app.md
 
+> ## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authenticate With GitHub
 
 > Graphite is built on top of GitHub's APIs, so you need to provide Graphite access to your GitHub resources to create, review, and merge PRs.

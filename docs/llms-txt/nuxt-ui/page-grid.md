@@ -50,7 +50,7 @@ You can also use it to display a list of cards in a bento style layout by using 
 const cards = ref([
   {
     title: 'Theme',
-    description: 'Learn how to customize Nuxt UI components using Tailwind CSS v4.',
+    description: 'Learn how to customize Nuxt UI components using Tailwind CSS.',
     icon: 'i-lucide-swatch-book',
     to: '/docs/getting-started/theme/design-system',
     class: 'lg:col-span-2',
@@ -155,8 +155,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # RTVI Observer
 
 > Converting pipeline frames to RTVI protocol messages
@@ -10,32 +14,27 @@ The `RTVIObserver` translates Pipecat's internal pipeline events into standardiz
 
 The `RTVIObserver` primarily serves to convert internal pipeline frames into to client-compatible RTVI messages. It is required for any application using RTVI as the client protocol to ensure proper communication of events such as speech start/stop, user transcript, bot output, metrics, and server messages.
 
-## Adding to a Pipeline
+## Automatic Setup
 
-The observer is attached to a pipeline task along with the RTVI processor:
+`RTVIObserver` is automatically created and attached when you create a `PipelineTask`. No manual setup is required for standard usage.
+
+To customize the observer's behavior, pass `RTVIObserverParams` to the task:
 
 ```python  theme={null}
-# Create the RTVIProcessor
-rtvi = RTVIProcessor()
+from pipecat.processors.frameworks.rtvi import RTVIObserverParams
 
-# Add to pipeline
-pipeline = Pipeline([
-    transport.input(),
-    rtvi,
-    # Other processors...
-])
-
-# Create pipeline task with observer
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
-    observers=[RTVIObserver(rtvi)],  # Add the observer here
+    rtvi_observer_params=RTVIObserverParams(
+        bot_llm_enabled=False,
+        metrics_enabled=False,
+    ),
 )
 ```
 
 ## Configuration
 
-The `RTVIObserver` should be initialized with the RTVIProcessor instance along with an optional set of parameters with the following fields:
+`RTVIObserverParams` accepts the following fields:
 
 <ParamField path="bot_output_enabled" default="True">
   Indicates if bot output messages should be sent.
@@ -151,8 +150,3 @@ The observer maps Pipecat's internal frames to RTVI protocol messages:
 | `LLMContextFrame`           | `RTVIUserLLMTextMessage`                    |
 | `MetricsFrame`              | `RTVIMetricsMessage`                        |
 | `RTVIServerMessageFrame`    | `RTVIServerMessage`                         |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

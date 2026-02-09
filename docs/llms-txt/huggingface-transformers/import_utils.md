@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/import_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/import_utils.md
 
 # Import Utilities
 
@@ -105,10 +105,30 @@ If `prefix` is not None, it will add that prefix to all keys in the returned dic
 
 #### transformers.utils.import_utils.requires[[transformers.utils.import_utils.requires]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/utils/import_utils.py#L2294)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/import_utils.py#L2382)
 
 This decorator enables two things:
 - Attaching a `__backends` tuple to an object to see what are the necessary backends for it
   to execute correctly without instantiating it
 - The '@requires' string is used to dynamically import objects
+
+#### transformers.requires_backends[[transformers.requires_backends]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/import_utils.py#L1901)
+
+Method that automatically raises in case the specified backends are not available. It is often used during class
+
+initialization to ensure the required dependencies are installed:
+
+```py
+requires_backends(self, ["torch"])
+```
+
+The backends should be defined in the `BACKEND_MAPPING` defined in `transformers.utils.import_utils`.
+
+**Parameters:**
+
+obj : object to be checked
+
+backends : list or tuple of backends to check.
 

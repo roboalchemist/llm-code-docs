@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/showcase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🎪 Community showcase
 
 Embedchain community has been super active in creating demos on top of Embedchain. On this page, we showcase all the apps, blogs, videos, and tutorials created by the community. ❤️

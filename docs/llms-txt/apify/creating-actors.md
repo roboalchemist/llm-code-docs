@@ -10,7 +10,7 @@ You can create an Actor in several ways. You can create one from your own source
 
 ## Choose the source
 
-Once you're in Apify Console, go to https://console.apify.com/actors, and click on the **Develop new** button in the top right-hand corner.
+Once you're in Apify Console, go to [Actors](https://console.apify.com/actors), and click on the **Develop new** button in the top right-hand corner.
 
 ![Develop an Actor button](/assets/images/develop-new-actor-a499c8a2618fec73c828ddb4dcbb75b4.png)
 
@@ -25,11 +25,11 @@ You'll be presented with a page featuring two ways to get started with a new Act
 
 ## Creating Actor from existing source code
 
-If you already have your code hosted by a Git provider, you can use it to create an Actor by linking the repository. If you use GitHub, you can use our https://docs.apify.com/platform/integrations/github.md to create an Actor from your public or private repository. You can also use GitLab, Bitbucket or other Git providers or external repositories.
+If you already have your code hosted by a Git provider, you can use it to create an Actor by linking the repository. If you use GitHub, you can use our [GitHub integration](https://docs.apify.com/platform/integrations/github.md) to create an Actor from your public or private repository. You can also use GitLab, Bitbucket or other Git providers or external repositories.
 
 ![Create an Actor from Git repository](/assets/images/create-actor-git-0f6cdca6e156997d67fc7078944c97c9.png)
 
-You can also push your existing code from your local machine using https://docs.apify.com/cli. This is useful when you develop your code locally and then you want to push it to the Apify Console to run the code as an Actor in the cloud. For this option, you'll need the https://docs.apify.com/cli/docs/installation on your machine. By clicking on the **Push your code using the Apify command-line interface (CLI)** button, you will be presented with instructions on how to push your code to the Apify Console.
+You can also push your existing code from your local machine using [Apify CLI](https://docs.apify.com/cli). This is useful when you develop your code locally and then you want to push it to the Apify Console to run the code as an Actor in the cloud. For this option, you'll need the [Apify CLI installed](https://docs.apify.com/cli/docs/installation) on your machine. By clicking on the **Push your code using the Apify command-line interface (CLI)** button, you will be presented with instructions on how to push your code to the Apify Console.
 
 ![Push your code using the Apify CLI](/assets/images/create-actor-cli-4a172ba02eb3aeda5fc286317274f201.png)
 
@@ -51,7 +51,7 @@ You will end up on a template detail page where you can see all the important in
 
 ### Using the template in the Web IDE
 
-By clicking **Use this template** button you will create the Actor in Apify Console and you will be moved to the **Code** tab with the https://docs.apify.com/platform/actors/development/quick-start/web-ide.md where you can see the code of the template and start editing it.
+By clicking **Use this template** button you will create the Actor in Apify Console and you will be moved to the **Code** tab with the [Web IDE](https://docs.apify.com/platform/actors/development/quick-start/web-ide.md) where you can see the code of the template and start editing it.
 
 Web IDE
 
@@ -61,7 +61,7 @@ The Web IDE is a great tool for developing your Actor directly in Apify Console 
 
 ### Using the template locally
 
-If you want to use the template locally, you can again use our https://docs.apify.com/cli to download the template to your local machine.
+If you want to use the template locally, you can again use our [Apify CLI](https://docs.apify.com/cli) to download the template to your local machine.
 
 Local development
 
@@ -88,7 +88,7 @@ apify run
 
 ## Start with scraping single page
 
-This template is a great starting point for web scraping as it extracts data from a single website. It uses https://axios-http.com/docs/intro for downloading the page content and https://cheerio.js.org/ for parsing the HTML from the content.
+This template is a great starting point for web scraping as it extracts data from a single website. It uses [Axios](https://axios-http.com/docs/intro) for downloading the page content and [Cheerio](https://cheerio.js.org/) for parsing the HTML from the content.
 
 Let's see what's inside the **Start with JavaScript** template. The main logic of the template lives in the `src/main.js` file.
 
@@ -140,19 +140,19 @@ The Actor takes the `url` from the input and then:
 3. Extracts headings (H1 - H6) from the page.
 4. Stores the extracted data.
 
-The extracted data is stored in the https://docs.apify.com/platform/storage/dataset.md where you can preview it and download it. We'll show how to do that later in  section.
+The extracted data is stored in the [Dataset](https://docs.apify.com/platform/storage/dataset.md) where you can preview it and download it. We'll show how to do that later in  section.
 
 Customize template
 
 Feel free to play around with the code and add some more features to it. For example, you can extract all the links from the page or extract all the images or completely change the logic of this template.
 
-Keep in mind that this template uses https://docs.apify.com/academy/deploying-your-code/input-schema.md defined in the `.actor/input_schema.json` file and linked to the `.actor/actor.json`. If you want to change the input schema, you need to change it in those files as well.
+Keep in mind that this template uses [input schema](https://docs.apify.com/academy/deploying-your-code/input-schema.md) defined in the `.actor/input_schema.json` file and linked to the `.actor/actor.json`. If you want to change the input schema, you need to change it in those files as well.
 
-Learn more about the Actor input and output https://docs.apify.com/academy/getting-started/inputs-outputs.md.
+Learn more about the Actor input and output [in the next page](https://docs.apify.com/academy/getting-started/inputs-outputs.md).
 
 ## Build the Actor
 
-In order to run the Actor, you need to https://docs.apify.com/platform/actors/development/builds-and-runs/builds.md it first. Click on the **Build** button at the bottom of the page or **Build now** button right under the code editor.
+In order to run the Actor, you need to [build](https://docs.apify.com/platform/actors/development/builds-and-runs/builds.md) it first. Click on the **Build** button at the bottom of the page or **Build now** button right under the code editor.
 
 ![Build the Actor](/assets/images/build-actor-5aaefc12ec3684c08bd92818b88e3576.png)
 
@@ -164,7 +164,7 @@ After you've clicked the **Build** button, it'll take around 5–10 seconds to c
 
 And now we are ready to run the Actor. But before we do that, let's give the Actor some input by going to the `Input` tab.
 
-The input tab is where you can provide the Actor with some meaningful input. In this case, we'll be providing the Actor with a URL to scrape. For now, we'll use the prefilled value of https://apify.com/ (`https://apify.com/`).
+The input tab is where you can provide the Actor with some meaningful input. In this case, we'll be providing the Actor with a URL to scrape. For now, we'll use the prefilled value of [Apify website](https://apify.com/) (`https://apify.com/`).
 
 You can change the website you want to extract the data from by changing the URL in the input field.
 
@@ -184,4 +184,4 @@ And that's it! You've just created your first Actor and extracted data from a we
 
 ## Next up
 
-We've created an Actor, but how can we give it more complex inputs and make it do stuff based on these inputs? This is exactly what we'll be discussing in the https://docs.apify.com/academy/getting-started/inputs-outputs.md's activity.
+We've created an Actor, but how can we give it more complex inputs and make it do stuff based on these inputs? This is exactly what we'll be discussing in the [next lesson](https://docs.apify.com/academy/getting-started/inputs-outputs.md)'s activity.

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/delete-reports-by-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Reports by Name
 
 This endpoint archives all reports with the specified name within the workspace associated with the provided API key.
@@ -55,7 +59,3 @@ paths:
           description: Report not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -125,12 +125,3 @@ Inherited from UpsertOptions.onConflictMergeFields
 : string
 
 Inherited from UpsertOptions.schema
-ema
-
-**schema?
-
-<!-- -->
-
-: string
-
-Inherited from UpsertOptions.schema

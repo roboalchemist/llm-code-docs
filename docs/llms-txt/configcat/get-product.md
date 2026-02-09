@@ -2,10 +2,7 @@
 
 # Get Product
 
-```
-GET 
-/v1/products/:productId
-```
+Copy page
 
 This endpoint returns the metadata of a Product identified by the `productId`.
 

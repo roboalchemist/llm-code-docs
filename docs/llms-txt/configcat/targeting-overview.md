@@ -2,16 +2,18 @@
 
 # Targeting Overview
 
+Copy page
+
 Targeting allows you to enable or disable a feature for specific users or groups of users in your application. Typical use cases are:
 
-* [Beta testing](https://configcat.com/docs/docs/glossary/.md#beta-testing)
-* [A/B testing](https://configcat.com/docs/docs/glossary/.md#ab-testing)
-* [Phased rollouts, canary releases](https://configcat.com/docs/docs/glossary/.md#canary-release)
+* [Beta testing](https://configcat.com/docs/glossary.md#beta-testing)
+* [A/B testing](https://configcat.com/docs/glossary.md#ab-testing)
+* [Phased rollouts, canary releases](https://configcat.com/docs/glossary.md#canary-release)
 
 ## How does it work?[​](#how-does-it-work "Direct link to How does it work?")
 
-1. On the [ConfigCat Dashboard](https://app.configcat.com), you add [Targeting Rules](https://configcat.com/docs/docs/targeting/targeting-rule/targeting-rule-overview/.md) and/or [Percentage Options](https://configcat.com/docs/docs/targeting/percentage-options/.md) to your feature flag.
-2. You pass a [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) to the ConfigCat SDK in your application.
+1. On the [ConfigCat Dashboard](https://app.configcat.com), you add [Targeting Rules](https://configcat.com/docs/targeting/targeting-rule/targeting-rule-overview.md) and/or [Percentage Options](https://configcat.com/docs/targeting/percentage-options.md) to your feature flag.
+2. You pass a [User Object](https://configcat.com/docs/targeting/user-object.md) to the ConfigCat SDK in your application.
 3. The ConfigCat SDK will use the User Object and the rules defined on the Dashboard to determine whether the feature should be enabled for the user.
 
 ## What is what?[​](#what-is-what "Direct link to What is what?")
@@ -30,15 +32,15 @@ Throughout this documentation, we generally use the term *feature flag* to refer
 
 ### Targeting Rule[​](#targeting-rule "Direct link to Targeting Rule")
 
-A *Targeting Rule* consists of a collection of conditions and a value to serve. If the conditions are met (the Targeting Rule *matches*), the value is served, i.e. returned as the result of the feature flag evaluation. More about Targeting Rules [here](https://configcat.com/docs/docs/targeting/targeting-rule/targeting-rule-overview/.md).
+A *Targeting Rule* consists of a collection of conditions and a value to serve. If the conditions are met (the Targeting Rule *matches*), the value is served, i.e. returned as the result of the feature flag evaluation. More about Targeting Rules [here](https://configcat.com/docs/targeting/targeting-rule/targeting-rule-overview.md).
 
 ### Condition[​](#condition "Direct link to Condition")
 
-A *condition* is a logical expression that can be evaluated to true or false. There are three types of conditions: [User Condition](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md), [Flag Condition (Prerequisite)](https://configcat.com/docs/docs/targeting/targeting-rule/flag-condition/.md), [Segment Condition](https://configcat.com/docs/docs/targeting/targeting-rule/segment-condition/.md). For a Targeting Rule to match, all of its conditions must evaluate to true.
+A *condition* is a logical expression that can be evaluated to true or false. There are three types of conditions: [User Condition](https://configcat.com/docs/targeting/targeting-rule/user-condition.md), [Flag Condition (Prerequisite)](https://configcat.com/docs/targeting/targeting-rule/flag-condition.md), [Segment Condition](https://configcat.com/docs/targeting/targeting-rule/segment-condition.md). For a Targeting Rule to match, all of its conditions must evaluate to true.
 
 ### Percentage Options[​](#percentage-options "Direct link to Percentage Options")
 
-*Percentage Options* divide users into groups, each receiving a specific value. The groups are allocated according to the specified percentage split. Percentage Options are often used for A/B testing or phased rollouts. More about Percentage Options [here](https://configcat.com/docs/docs/targeting/percentage-options/.md).
+*Percentage Options* divide users into groups, each receiving a specific value. The groups are allocated according to the specified percentage split. Percentage Options are often used for A/B testing or phased rollouts. More about Percentage Options [here](https://configcat.com/docs/targeting/percentage-options.md).
 
 ### "To all users" / "To all other" / "To unidentified" value[​](#to-all-users--to-all-other--to-unidentified-value "Direct link to \"To all users\" / \"To all other\" / \"To unidentified\" value")
 
@@ -50,7 +52,7 @@ The ConfigCat SDK's feature flag evaluation functions (e.g. `GetValue`) require 
 
 ### User Object[​](#user-object "Direct link to User Object")
 
-A *User Object* is a collection of *user attributes* that describe the properties of a user. Referencing these attributes in conditions allows you to define rules for targeting users. More about the User Object [here](https://configcat.com/docs/docs/targeting/user-object/.md).
+A *User Object* is a collection of *user attributes* that describe the properties of a user. Referencing these attributes in conditions allows you to define rules for targeting users. More about the User Object [here](https://configcat.com/docs/targeting/user-object.md).
 
 ## Examples[​](#examples "Direct link to Examples")
 
@@ -74,7 +76,7 @@ Here is what such a feature flag looks like on the Dashboard:
 
 Here is how we get the value of the feature flag in your application:
 
-```
+```js
 // Create the User Object
 const userObject = {
   // Used by the Percentage Options to split the users into groups
@@ -94,4 +96,5 @@ const value = await configCatClient.getValueAsync(
   // User Object
   userObject,
 );
+
 ```

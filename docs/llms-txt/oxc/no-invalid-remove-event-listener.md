@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-invalid-remove-event-listener.md
 ---
-# unicorn/no-invalid-remove-event-listener&#x20;
 
 ### What it does
 

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/explicit-function-return-type.md
 ---
-# typescript/explicit-function-return-type&#x20;
 
 ### What it does
 

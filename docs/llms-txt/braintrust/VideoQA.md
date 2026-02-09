@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/VideoQA.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating video QA
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/VideoQA/VideoQA.ipynb) by [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-02-18</div>
@@ -280,10 +284,5 @@ After running the evaluation, head over to **Evaluations** in the Braintrust UI 
 ## Next steps
 
 * Learn more about the [MMVU dataset](https://mmvu-benchmark.github.io/)
-* Add [custom scorers](/core/functions/scorers#custom-scorers) to get more granular feedback (like partial credit, or domain-specific checks)
+* Add [custom scorers](/evaluate/write-scorers#custom-scorers) to get more granular feedback (like partial credit, or domain-specific checks)
 * Check out our [prompt chaining agents cookbook](/cookbook/recipes/PromptChaining) if you're building complex AI systems where video classification is just one component
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

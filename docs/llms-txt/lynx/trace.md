@@ -61,3 +61,20 @@ Trace is a multidimensional performance analysis platform:
 <NextSteps.Root>
   <NextSteps.Step href="/guide/devtool/trace/record-trace" title="Record Trace" description="Learn how to record a trace" />
 </NextSteps.Root>
+
+## Compatibility
+
+
+**Compatibility Table**
+**Query:** `devtool.trace`
+
+**Platform Support**
+
+| Platform | Version Added | Notes |
+|----------|---------------|-------|
+| Android | 3.4 | - |
+| iOS | 3.4 | - |
+| HarmonyOS | 3.4 | - |
+
+**Description:** Trace Tool
+

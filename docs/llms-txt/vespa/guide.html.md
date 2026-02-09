@@ -14,7 +14,7 @@ Vespa.ai has a SOC 2 attestation - read more in the [Trust Center](https://trust
 
 ## Data Plane
 
-Data plane is protected using mutual TLS or optionally tokens.
+Data plane requests are protected using mutual TLS, or optionally tokens.
 
 ### Configuring mTLS
 
@@ -126,23 +126,24 @@ public class CustomAclHandler extends ThreadedHttpRequestHandler {
     }
 ```
 
-### Configure tokens
+### Configuring tokens
 
-While mTLS continues to be the recommended option, the application can also be configured to consume token based authentication when mTLS is not available for the client (e.g. in case of edge functions). Note that it is still required to define at least one client for mTLS.
+Application endpoints can also be configured with token based authentication. Note that it is still required to define at least one client for mTLS.
 
  **Note:**  
 Token authentication must be explicitly enabled when used in combination with[Private Endpoints](../operations/private-endpoints.html).
 
-#### Create tokens using the console
+#### Creating tokens using the console
 
-Tokens are managed in the console under **Account \> Tokens**. All tokens are identified by a name, and can contain multiple versions to easily support token rotation. To create a new token:
+Tokens are identified by a name, and can contain multiple versions to easily support token rotation.
 
-1. Click **Add token**
-2. Enter a name for the token, note that this name must also be referenced in the application later.
-3. Select an expiration for the token.
-4. Click add. Remember to copy the token value and store securely. The value is not stored in Vespa Cloud.
+To create a new token:
 
-To add a new version:
+1. In the [console](https://console.vespa.ai) tenant view, open **Account \> Tokens**
+2. Click **Add token**
+3. Enter a name you'll reference in the application later and click **Add**. Remember to copy the token value and store it securely.
+
+To add a new token _version_:
 
 1. Find the existing token, click **Add version**
 2. Select expiration and click **Add**. Copy the token value and store securely.
@@ -153,12 +154,14 @@ To revoke a version:
 
 To manually rotate a token:
 
-1. Add a new token version following the above steps
+1. Add a new token _version_ following the above steps
 2. Revoke the old version when no clients use the old version
 
-#### Application configuration
+#### Application configuration with token endpoints
 
-After creating a token in the console it must be configured for accessing a container cluster, using [clients](../reference/applications/services/container.html#clients) configuration. Below is a simplified example for an application with two container clusters, one for feeding and document access (i.e. read+write), and another for query access (i.e. read) - one token for each:
+After creating a token, it must be configured in your application's services.xml by adding the[clients](../reference/applications/services/container.html#clients) element to your container cluster(s).
+
+Here is an example with multiple container clusters and tokens (you may only have one):
 
 ```
 <container id="documentapi" version="1.0">
@@ -186,11 +189,6 @@ After creating a token in the console it must be configured for accessing a cont
     ...
 </container>
 ```
-
-Notes:
-
-- Some applications use _one_ container cluster, and the settings will then be like the `documentapi` cluster above.
-- If the application also uses the default `security/clients.pem to configure mTLS, a configuration must be added for this, as above.
 
 #### Security recommendations
 
@@ -266,6 +264,30 @@ Many developers prefer interactive tools like[Postman](https://postman.com/). Th
 #### Using Cloudflare Workers
 
 See [Using Cloudflare Workers with Vespa Cloud](cloudflare-workers).
+
+### Different credentials per instance
+
+To use different credentials per [instance](../learn/tenant-apps-instances.html), use [services.xml variants](../operations/deployment-variants.html#services.xml-variants). As an example, use this to have a separate MTLS keypair for production instances (use the same pattern if using tokens.):
+
+```
+<container id="default" version="1.0">
+    <clients>
+        <client id="mtls" permissions="read" deploy:instance="default">
+            <certificate file="security/clients_dev.pem"/>
+        </client>
+        <client id="mtls" permissions="read" deploy:instance="qa">
+            <certificate file="security/clients_qa.pem"/>
+        </client>
+        <client id="mtls" permissions="read" deploy:instance="prod">
+            <certificate file="security/clients_prod.pem"/>
+        </client>
+    </clients>
+    <search/>
+    <document-api/>
+</container>
+```
+
+Depending on the [instance](../operations/automated-deployments.html) deployed to, a different keypair will be used for dataplane access. Use the same mechanism to have a dedicated credential for the [dev](../operations/environments.html#dev) environment, using `deploy:environment="dev"`.
 
 ## Control Plane
 
@@ -350,7 +372,7 @@ $ vespa deploy -z dev.aws-us-east-1c
 
 Vespa Cloud users on paid plans have access to Vespa Cloud Support. For cases where the Vespa Team needs access to the application's data to provide support, the Vespa support personnel can request access after an explicit approval from the customer in the open support case.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -358,8 +380,9 @@ Vespa Cloud users on paid plans have access to Vespa Cloud Support. For cases wh
 - [Data Plane](#data-plane)
 - [Configuring mTLS](#configuring-mtls)
 - [Permissions](#permissions)
-- [Configure tokens](#configure-tokens)
+- [Configuring tokens](#configuring-tokens)
 - [Use endpoints](#use-endpoints)
+- [Different credentials per instance](#different-credentials-per-instance)
 - [Control Plane](#control-plane)
 - [Managing users](#managing-users)
 - [User access to Control Plane](#user-access-to-control-plane)

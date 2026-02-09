@@ -30,18 +30,23 @@ import { PieChart } from '@mui/x-charts-premium';
 | colors | `Array<string> \| func` | `rainbowSurgePalette` | No |  |
 | dataset | `Array<object>` | - | No |  |
 | height | `number` | - | No |  |
+| hiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'pie' }>` | - | No |  |
 | hideLegend | `bool` | - | No |  |
 | highlightedItem | `{ dataIndex?: number, seriesId: number \| string }` | - | No |  |
 | id | `string` | - | No |  |
+| initialHiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'pie' }>` | - | No |  |
 | loading | `bool` | `false` | No |  |
 | localeText | `object` | - | No |  |
 | margin | `number \| { bottom?: number, left?: number, right?: number, top?: number }` | - | No |  |
+| onHiddenItemsChange | `function(hiddenItems: Array<VisibilityIdentifier>) => void` | - | No |  |
 | onHighlightChange | `function(highlightedItem: HighlightItemData \| null) => void` | - | No |  |
 | onItemClick | `func` | - | No |  |
+| onTooltipItemChange | `function(tooltipItem: SeriesItemIdentifier<TSeries> \| null) => void` | - | No |  |
 | showToolbar | `bool` | `false` | No |  |
 | skipAnimation | `bool` | - | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |
+| tooltipItem | `{ dataIndex: number, seriesId: number \| string, type: 'pie' }` | - | No |  |
 | width | `number` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element (SVGSVGElement).

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/models-inference/does-the-api-support-batching-and-load-balancing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Does the API support batching and load balancing?
 
 Current capabilities include:

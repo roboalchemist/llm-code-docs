@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/copyright-claims-takedown-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Copyright claims and takedown requests
 
 > Learn how to submit DMCA takedown requests for copyrighted content or private information on Replit Apps and understand the required documentation process.

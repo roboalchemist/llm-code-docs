@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/emqxintegration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # EMQX - Upstash Redis Integration
 
 EMQX, a robust open-source MQTT message broker, is engineered for scalable, distributed environments, prioritizing high

@@ -1,16 +1,14 @@
 # Source: https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md
 
-# Source: https://docs.livekit.io/sip/dispatch-rule.md
-
 LiveKit docs › Accepting calls › Dispatch rule
 
 ---
 
-# SIP dispatch rule
+# Dispatch rule
 
 > How to create and configure a dispatch rule.
 
-## Introduction
+## Overview
 
 A _dispatch rule_  controls how callers are added as SIP participants in rooms. When an inbound call reaches your SIP trunking provider and is connected to LiveKit, the SIP service authenticates the inbound trunk (if applicable) and looks for a matching dispatch rule. It then uses the rule to dispatch SIP participants to rooms.
 
@@ -18,12 +16,12 @@ The dispatch rule can also include room configuration options that specify which
 
 To create a dispatch rule with the SIP service, use the `CreateSIPDispatchRule` API. It returns a `SIPDispatchRuleInfo` object that describes the dispatch rule.
 
-By default, a dispatch rule matches all your trunks and makes a caller's phone number visible to others in the room. You can modify these defaults using dispatch rule options. For a full list of available options, see the [`CreateSIPDispatchRule`](https://docs.livekit.io/sip/api.md#createsipdispatchrule) API reference.
+By default, a dispatch rule matches all your trunks and makes a caller's phone number visible to others in the room. You can modify these defaults using dispatch rule options. For a full list of available options, see the [`CreateSIPDispatchRule`](https://docs.livekit.io/reference/telephony/sip-api.md#createsipdispatchrule) API reference.
 
 To learn more about, see the following:
 
-- [SIP overview](https://docs.livekit.io/sip.md): General concepts and features.
-- [SIP API](https://docs.livekit.io/sip/api.md): API endpoints and types.
+- [SIP overview](https://docs.livekit.io/telephony.md): General concepts and features.
+- [SIP API](https://docs.livekit.io/reference/telephony/sip-api.md): API endpoints and types.
 
 ## Caller dispatch rule (individual)
 
@@ -240,13 +238,13 @@ if (response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Dispatch rule**.
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
+3. Select **Create new dispatch rule**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
 > 
-> You can also use the **Dispatch rule details** tab to create a dispatch rule. However, the JSON editor allows you to configure all available [parameters](https://docs.livekit.io/sip/api.md#createsipdispatchrule).
+> You can also use the **Dispatch rule details** tab to create a dispatch rule. However, the JSON editor allows you to configure all available [parameters](https://docs.livekit.io/reference/telephony/sip-api.md#createsipdispatchrule).
 5. Copy and paste the following JSON:
 
 ```json
@@ -498,8 +496,8 @@ if (response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Dispatch rule**.
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
+3. Select **Create new dispatch rule**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -633,8 +631,8 @@ Callee dispatch rules can't be created using Kotlin.
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Dispatch rule**.
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
+3. Select **Create new dispatch rule**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -660,7 +658,7 @@ Callee dispatch rules can't be created using Kotlin.
 
 LiveKit participants have an `attributes` field that stores key-value pairs. You can add custom attributes for SIP participants in the dispatch rule. These attributes are inherited by all SIP participants created by the dispatch rule.
 
-To learn more, see [SIP participant attributes](https://docs.livekit.io/sip/sip-participant.md#sip-participant-attributes).
+To learn more, see [SIP participant attributes](https://docs.livekit.io/reference/telephony/sip-participant.md#sip-participant-attributes).
 
 The following examples add two attributes to SIP participants created by this dispatch rule:
 
@@ -772,8 +770,8 @@ Setting participant attributes in dispatch rules is not supported in Kotlin.
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Dispatch rule**.
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
+3. Select **Create new dispatch rule**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -907,8 +905,8 @@ val response = sipClient.createSipDispatchRule(
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Dispatch rule**.
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
+3. Select **Create new dispatch rule**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -932,7 +930,7 @@ val response = sipClient.createSipDispatchRule(
 
 ## Update dispatch rule
 
-Use the [`UpdateSIPDispatchRule`](https://docs.livekit.io/sip/api.md#updatesipdispatchrule) API to update specific fields of a dispatch rule or [replace](#replace-dispatch-rule) a dispatch rule with a new one.
+Use the [`UpdateSIPDispatchRule`](https://docs.livekit.io/reference/telephony/sip-api.md#updatesipdispatchrule) API to update specific fields of a dispatch rule or [replace](#replace-dispatch-rule) a dispatch rule with a new one.
 
 ### Update specific fields of a dispatch rule
 
@@ -1301,7 +1299,7 @@ Replacing a dispatch rule is not supported in Kotlin.
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
 3. Navigate to the **Dispatch rules** section and find the dispatch rule you want to update.
 4. Select the more (**⋮**) menu → select **Edit**.
 5. Select the **JSON editor** tab and copy and paste the following text into the editor:
@@ -1328,7 +1326,7 @@ Replacing a dispatch rule is not supported in Kotlin.
 
 ## List dispatch rules
 
-Use the [`ListSIPDispatchRule`](https://docs.livekit.io/sip/api.md#listsipdispatchrule) API to list all dispatch rules.
+Use the [`ListSIPDispatchRule`](https://docs.livekit.io/reference/telephony/sip-api.md#listsipdispatchrule) API to list all dispatch rules.
 
 **LiveKit CLI**:
 
@@ -1458,12 +1456,12 @@ if (response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
+2. Select **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch).
 3. The **Dispatch rules** section lists all dispatch rules.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:20.478Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/dispatch-rule.md](https://docs.livekit.io/sip/dispatch-rule.md).
+This document was rendered at 2026-02-03T03:25:12.579Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

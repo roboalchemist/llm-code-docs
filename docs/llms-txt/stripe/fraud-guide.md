@@ -4,7 +4,7 @@
 
 Learn best practices for managing fraud as a platform.
 
-Financial Accounts for platforms is a banking-as-a-service API that lets you embed financial services into your platform’s product. With Financial Accounts for platforms (through our partnerships with US domestic banks), you can offer your connected accounts a simple stored-value account that’s directly integrated into your application. It lets them perform financial actions such as sending and receiving funds (through ACH wires), earning cash back, and spending money through a card.
+Financial Accounts for platforms is an embedded finance API that lets you embed financial services into your platform’s product. With Financial Accounts for platforms (through our partnerships with US domestic banks), you can offer your connected accounts a simple stored-value account that’s directly integrated into your application. It lets them perform financial actions such as sending and receiving funds (through ACH wires), earning cash back, and spending money through a card.
 
 - **Business fraud**: A fraudulent actor creates a connected account using a false or stolen identity, with the intent to commit fraud.
 - **Transaction fraud**: A fraudulent actor uses compromised card or financial account information to perform unauthorized activity on a legitimate connected account. On Stripe, transaction fraud appears as unauthorized charges on a Stripe-issued card or unauthorized debits to a Stripe-issued financial account.
@@ -62,7 +62,7 @@ In this example, a fraudulent actor has access to two accounts:
 - A financial account with an attached card at financial institution A, created by the fraudulent actor using a false identity
 - A business account at acquirer B, either created by the fraudulent actor using a different identity, or another party’s legitimate account taken over by the fraudulent actor
 
-1. The fraudulent actor uses the the card issued by institution A to create authorizations with acquirer B that don’t have issuer dispute rights. Examples might include card-present transactions on a chip card or card-not-present transactions that attempt 3D Secure (3DS) or Visa Secure.
+1. The fraudulent actor uses the card issued by institution A to create authorizations with acquirer B that don’t have issuer dispute rights. Examples might include card-present transactions on a chip card or card-not-present transactions that attempt 3D Secure (3DS) or Visa Secure.
 1. The fraudulent actor then uses the account at acquirer B to force-capture or overcapture the authorizations. They might capture a single authorization multiple times.
 1. Acquirer B pays out to the fraudulent actor from the business account.
 1. Institution A can’t dispute the captured amounts with acquirer B, and is left with any negative balance on the card account.

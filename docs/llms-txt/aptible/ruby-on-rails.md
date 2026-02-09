@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/ruby-on-rails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ruby on Rails - Starter Template
 
 > Deploy a starter template Ruby on Rails app on Aptible

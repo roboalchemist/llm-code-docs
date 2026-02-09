@@ -4,7 +4,7 @@
 
 **Note**: 
 
-You can now use the [Upsun composable image (BETA)](https://docs.upsun.com/create-apps/app-reference/composable-image.md) to install runtimes and tools in your application container.
+You can use the [Upsun composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) to install multiple runtimes and tools in your application container.
 When using the composable image, see how you can:
 
  - [Manage PHP extensions](https://docs.upsun.com/create-apps/app-reference/composable-image.md#php-extensions-and-python-packages)
@@ -37,6 +37,8 @@ and turn off those on by default with the `disabled_extensions` key.
 
 | Extension | 5.4 | 5.5 | 5.6 | 7.0 | 7.1 | 7.2 | 7.3 | 7.4 | 8.0 | 8.1 | 8.2 | 8.3 | 8.4 | 8.5 |
 | ``amqp`` |
+
+              Avail
 
               Avail
 
@@ -134,7 +136,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -188,7 +190,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -212,7 +214,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -236,7 +238,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -266,17 +268,15 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
-| ``datadog`` |
-
-              Avail
-
-              Avail
-
 | ``datadog-profiling`` |
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -302,7 +302,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -326,7 +326,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -402,7 +402,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -442,7 +442,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -466,7 +466,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -496,7 +496,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -558,7 +558,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -597,6 +597,16 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
               Avail
+
+              Avail
+
+              Avail
+
+              Avail
+
+              Avail
+
+| ``grpc`` |
 
               Avail
 
@@ -640,7 +650,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -694,9 +704,13 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail with``webp``
 
-              Avail
+              Avail with``webp``
+
+              Avail with``webp``
 
 | ``imap`` |
+
+              Avail
 
               Avail
 
@@ -774,7 +788,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -799,6 +813,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``json`` |
+
+              Avail
 
               Def
 
@@ -898,7 +914,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -923,6 +939,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``memcached`` |
+
+              Avail
 
               Avail
 
@@ -980,7 +998,11 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``msgpack`` |
+
+              Avail
 
               Avail
 
@@ -1020,24 +1042,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
-              Avail
-
 | ``mysqli`` |
 
               Def
@@ -1064,7 +1068,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1094,7 +1098,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1125,6 +1129,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``oauth`` |
+
+              Avail
 
               Avail
 
@@ -1180,29 +1186,31 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Def
+              *
 
-              Avail
+              *
 
-              Def
+              *
+
+              *
 
 | ``openswoole`` |
 
@@ -1213,6 +1221,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``opentelemetry`` |
+
+              Avail
 
               Avail
 
@@ -1246,7 +1256,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1326,7 +1336,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1416,7 +1426,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1445,6 +1455,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``pecl-http`` |
+
+              Avail
 
               Avail
 
@@ -1498,13 +1510,9 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
-
               Def
 
-| ``phpdbg`` |
-
-              Avail
+              Def
 
 | ``pinba`` |
 
@@ -1534,7 +1542,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1542,7 +1550,17 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
+              Avail
+
 | ``protobuf`` |
+
+              Avail
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -1574,12 +1592,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-| ``pthreads`` |
-
-              Avail
-
-              Avail
-
 | ``raphf`` |
 
               Avail
@@ -1598,7 +1610,11 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``rdkafka`` |
+
+              Avail
 
               Avail
 
@@ -1728,7 +1744,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1782,7 +1798,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1806,7 +1822,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1831,6 +1847,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``sourceguardian`` |
+
+              Avail
 
               Avail
 
@@ -1884,7 +1902,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -1909,6 +1927,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``ssh2`` |
+
+              Avail
 
               Avail
 
@@ -1968,12 +1988,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-              Avail
-
-              Avail
-
-              Avail
-
 | ``sysvmsg`` |
 
               Def
@@ -1994,7 +2008,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2018,7 +2032,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2042,7 +2056,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2071,6 +2085,10 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``tideways_xhprof`` |
+
+              Avail
+
+              Avail
 
               Avail
 
@@ -2136,11 +2154,13 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
 | ``uuid`` |
+
+              Avail
 
               Avail
 
@@ -2176,8 +2196,6 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
-              Avail
-
 | ``xcache`` |
 
               Avail
@@ -2185,6 +2203,8 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
 | ``xdebug`` |
+
+              Avail
 
               Avail
 
@@ -2240,7 +2260,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2264,7 +2284,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2318,7 +2338,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 
@@ -2372,6 +2392,8 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Avail
 
+              Avail
+
 | ``zbarcode`` |
 
               Avail
@@ -2381,36 +2403,6 @@ and turn off those on by default with the `disabled_extensions` key.
               Avail
 
               Avail
-
-| ``zendopcache`` |
-
-              Def
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
-
-              *
 
 | ``zip`` |
 
@@ -2432,7 +2424,7 @@ and turn off those on by default with the `disabled_extensions` key.
 
               Def
 
-              Avail
+              Def
 
               Def
 

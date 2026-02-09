@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/knowledge-graph-concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect your data to AI with Knowledge Graph
 
 > Understand graph-based RAG with Knowledge Graph. Learn how content ingestion, graph construction, and query processing deliver accurate AI responses.

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/no-async-endpoint-handlers.md
 ---
-# oxc/no-async-endpoint-handlers&#x20;
 
 ### What it does
 

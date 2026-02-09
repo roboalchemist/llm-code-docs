@@ -1,10 +1,14 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/integration-guides/windows-server-acme.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Windows Server
 
-> Learn how to issue SSL/TLS certificates from Infisical using ACME enrollment on Windows Server with win-acme
+> Learn how to issue TLS certificates from Infisical using ACME enrollment on Windows Server with win-acme
 
-This guide demonstrates how to use Infisical to issue SSL/TLS certificates for your [Windows Server](https://www.microsoft.com/en-us/windows-server) environments.
+This guide demonstrates how to use Infisical to issue TLS certificates for your [Windows Server](https://www.microsoft.com/en-us/windows-server) environments.
 
 It uses [win-acme](https://www.win-acme.com/), a feature-rich [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment) client designed specifically for Windows, to request and renew certificates from Infisical using the [ACME enrollment method](/documentation/platform/pki/enrollment-methods/acme) configured on a [certificate profile](/documentation/platform/pki/certificates/profiles). Win-acme offers excellent integration with IIS, Windows Certificate Store, and various certificate storage options.
 
@@ -29,7 +33,7 @@ Before you begin, make sure you have:
 
     From the ACME configuration, gather the following values:
 
-    * ACME Directory URL: The URL that win-acme will use to communicate with Infisical's ACME server. This takes the form `https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory`.
+    * ACME Directory URL: The URL that win-acme will use to communicate with Infisical's ACME server. This takes the form `https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory`.
     * EAB Key Identifier (KID): A unique identifier that tells Infisical which ACME account is making the request.
     * EAB Secret: A secret key that authenticates your ACME client with Infisical.
 
@@ -70,7 +74,7 @@ Before you begin, make sure you have:
     Run the following win-acme command to request a certificate from Infisical:
 
     ```powershell  theme={"dark"}
-    wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pemfiles --pemfilespath "C:\certificates" --verbose
+    wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pemfiles --pemfilespath "C:\certificates" --verbose
     ```
 
     For guidance on each parameter:
@@ -91,7 +95,7 @@ Before you begin, make sure you have:
       Replace the placeholder values with your actual configuration:
 
       * `example.infisical.com`: Your actual domain name
-      * `https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory`: Your Infisical ACME endpoint from Step 1
+      * `https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory`: Your Infisical ACME endpoint from Step 1
       * `your-eab-key-identifier` and `your-eab-secret`: Your External Account Binding credentials from Step 1
       * `C:\certificates`: Your desired certificate storage location
     </Note>
@@ -105,7 +109,7 @@ Before you begin, make sure you have:
         Store certificates directly in the [Windows Certificate Store](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/certificate-stores) for integration with IIS and other Windows services:
 
         ```powershell  theme={"dark"}
-        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store certificatestore --verbose
+        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store certificatestore --verbose
         ```
       </Tab>
 
@@ -113,7 +117,7 @@ Before you begin, make sure you have:
         Generate [PFX files](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/certutil) with password protection for easy deployment across Windows environments:
 
         ```powershell  theme={"dark"}
-        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pfxfile --pfxfilepath "C:\certificates" --pfxpassword "your-secure-password" --verbose
+        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pfxfile --pfxfilepath "C:\certificates" --pfxpassword "your-secure-password" --verbose
         ```
       </Tab>
 
@@ -121,7 +125,7 @@ Before you begin, make sure you have:
         For IIS Central SSL store integration in high-scale environments:
 
         ```powershell  theme={"dark"}
-        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store centralssl --centralsslstore "C:\CentralSSL" --verbose
+        wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store centralssl --centralsslstore "C:\CentralSSL" --verbose
         ```
       </Tab>
     </Tabs>
@@ -135,7 +139,7 @@ Before you begin, make sure you have:
     Include the `--setuptaskscheduler` parameter in your initial command to automatically create the renewal task:
 
     ```powershell  theme={"dark"}
-    wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pemfiles --pemfilespath "C:\certificates" --setuptaskscheduler --verbose
+    wacs.exe --target manual --host example.infisical.com --baseuri "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" --eab-key-identifier "your-eab-key-identifier" --eab-key "your-eab-secret" --validation selfhosting --store pemfiles --pemfilespath "C:\certificates" --setuptaskscheduler --verbose
     ```
 
     **Option 2: Test manual renewal**

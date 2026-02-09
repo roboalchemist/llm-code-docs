@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/stt/elevenlabs.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/elevenlabs.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/elevenlabs.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/elevenlabs.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/elevenlabs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ElevenLabs
 
@@ -58,8 +54,3 @@ Before using ElevenLabs STT services, you need:
 ### Required Environment Variables
 
 * `ELEVENLABS_API_KEY`: Your ElevenLabs API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,12 +1,14 @@
 # Source: https://docs.chatling.ai/web-widget/display-sources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Display AI sources
 
 > Learn how to enable sources for AI responses.
 
-1. From your chatbot's dashboard, click on the `Appearance` menu.
-
-<img src="https://chatling-assets.b-cdn.net/click-appearance-menu.jpg" alt="Appearance menu" width="250" />
+1. Open the widget designer. To learn how to access it, see [this guide](/web-widget/customize#how-to-customize-the-widget).
 
 2. Go to `Configure`.
 

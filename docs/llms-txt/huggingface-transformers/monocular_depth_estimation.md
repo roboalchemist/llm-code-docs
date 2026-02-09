@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/monocular_depth_estimation.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/tasks/monocular_depth_estimation.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/monocular_depth_estimation.md
 
 # Monocular depth estimation
 
@@ -31,13 +29,14 @@ pip install -q -U transformers
 
 ## Depth estimation pipeline
 
-The simplest way to try out inference with a model supporting depth estimation is to use the corresponding [pipeline()](/docs/transformers/v4.57.3/en/main_classes/pipelines#transformers.pipeline).
+The simplest way to try out inference with a model supporting depth estimation is to use the corresponding [pipeline()](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.pipeline).
 Instantiate a pipeline from a [checkpoint on the Hugging Face Hub](https://huggingface.co/models?pipeline_tag=depth-estimation&sort=downloads):
 
 ```py
->>> from transformers import pipeline, infer_device
+>>> from transformers import pipeline
+from accelerate import Accelerator
 >>> import torch
->>> device = infer_device()
+>>> device = Accelerator().device
 >>> checkpoint = "depth-anything/Depth-Anything-V2-base-hf"
 >>> pipe = pipeline("depth-estimation", model=checkpoint, device=device)
 ```

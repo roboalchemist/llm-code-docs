@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offer-combinations.md
+# Source: https://docs.intelligems.io/offer-personalizations/offer-combinations.md
 
 # Offer Combinations
 

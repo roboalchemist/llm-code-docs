@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/plays/triggers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Play Triggers
 
 > Triggers represent the events and data sources that a Play runs on.

@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
 
-# Source: https://docs.apify.com/platform/integrations/make/instagram.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
-
-# Source: https://docs.apify.com/platform/integrations/make/instagram.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
-
-# Source: https://docs.apify.com/platform/integrations/make/instagram.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
-
 # Gumloop - Instagram Actor integration
 
 Get Instagram profile posts, details, stories, reels, post comments and hashtags, users, and tagged posts in Gumloop.
@@ -78,6 +66,6 @@ You can pull the following types of data from public Instagram accounts using Gu
 
 ## Other integrations
 
-* https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-* https://docs.apify.com/platform/integrations/gumloop/youtube.md
-* https://docs.apify.com/platform/integrations/gumloop/maps.md
+* [TikTok](https://docs.apify.com/platform/integrations/gumloop/tiktok.md)
+* [YouTube](https://docs.apify.com/platform/integrations/gumloop/youtube.md)
+* [Google Maps](https://docs.apify.com/platform/integrations/gumloop/maps.md)

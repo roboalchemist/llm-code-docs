@@ -1,137 +1,99 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieve-multiple-node-versions-in-a-single-request.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve multiple node versions in a single request
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi post /bulk/nodes/versions
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /bulk/nodes/versions
-  method: post
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node_versions:
-                allOf:
-                  - description: List of node ID and version pairs to retrieve
-                    items:
-                      $ref: '#/components/schemas/NodeVersionIdentifier'
-                    type: array
-            required: true
-            refIdentifier: '#/components/schemas/BulkNodeVersionsRequest'
-            requiredProperties:
-              - node_versions
-        examples:
-          example:
-            value:
-              node_versions:
-                - node_id: <string>
-                  version: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node_versions:
-                allOf:
-                  - description: List of retrieved node versions with their status
-                    items:
-                      $ref: '#/components/schemas/BulkNodeVersionResult'
-                    type: array
-            refIdentifier: '#/components/schemas/BulkNodeVersionsResponse'
-            requiredProperties:
-              - node_versions
-        examples:
-          example:
-            value:
-              node_versions:
-                - error_message: <string>
-                  identifier:
-                    node_id: <string>
-                    version: <string>
-                  node_version:
-                    changelog: <string>
-                    comfy_node_extract_status: <string>
-                    createdAt: '2023-11-07T05:31:56Z'
-                    dependencies:
-                      - <string>
-                    deprecated: true
-                    downloadUrl: <string>
-                    id: <string>
-                    node_id: <string>
-                    status: NodeVersionStatusActive
-                    status_reason: <string>
-                    supported_accelerators:
-                      - <string>
-                    supported_comfyui_frontend_version: <string>
-                    supported_comfyui_version: <string>
-                    supported_os:
-                      - <string>
-                    tags:
-                      - <string>
-                    tags_admin:
-                      - <string>
-                    version: <string>
-                  status: success
-        description: Successfully retrieved node versions
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request, invalid input
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+  /bulk/nodes/versions:
+    post:
+      tags:
+        - Registry
+      summary: Retrieve multiple node versions in a single request
+      operationId: GetBulkNodeVersions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkNodeVersionsRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkNodeVersionsResponse'
+          description: Successfully retrieved node versions
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request, invalid input
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    BulkNodeVersionsRequest:
+      properties:
+        node_versions:
+          description: List of node ID and version pairs to retrieve
+          items:
+            $ref: '#/components/schemas/NodeVersionIdentifier'
+          type: array
+      required:
+        - node_versions
+      type: object
+    BulkNodeVersionsResponse:
+      properties:
+        node_versions:
+          description: List of retrieved node versions with their status
+          items:
+            $ref: '#/components/schemas/BulkNodeVersionResult'
+          type: array
+      required:
+        - node_versions
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
+    NodeVersionIdentifier:
+      properties:
+        node_id:
+          description: The unique identifier of the node
+          type: string
+        version:
+          description: The version of the node
+          type: string
+      required:
+        - node_id
+        - version
+      type: object
     BulkNodeVersionResult:
       properties:
         error_message:
@@ -216,18 +178,6 @@ components:
             The version identifier, following semantic versioning. Must be
             unique for the node.
           type: string
-      type: object
-    NodeVersionIdentifier:
-      properties:
-        node_id:
-          description: The unique identifier of the node
-          type: string
-        version:
-          description: The version of the node
-          type: string
-      required:
-        - node_id
-        - version
       type: object
     NodeVersionStatus:
       enum:

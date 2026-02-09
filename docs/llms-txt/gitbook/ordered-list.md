@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/ordered-list.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/ordered-list.md
-
-# Source: https://gitbook.com/docs/creating-content/blocks/ordered-list.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/blocks/ordered-list.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/ordered-list.md
 
@@ -12,7 +8,7 @@
 
 # Ordered lists
 
-Ordered lists, also called numbered lists, help you prioritize items or create a list of steps.&#x20;
+Ordered lists, also called numbered lists, help you prioritize items or create a list of steps.
 
 ### Example of ordered list
 

@@ -59,10 +59,10 @@ Fetch a single document from the database by its [GenericId](/api/modules/values
 
 #### Parameters[​](#parameters "Direct link to Parameters")
 
-| Name    | Type                                                         | Description                                                                                   |
-| ------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `table` | `NonUnion`<`TableName`>                                      | The name of the table to fetch the document from.                                             |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+| Name    | Type                                                                     | Description                                                                                   |
+| ------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table to fetch the document from.                                             |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
 
 #### Returns[​](#returns "Direct link to Returns")
 
@@ -232,8 +232,8 @@ New fields are added. Existing fields are overwritten. Fields set to `undefined`
 
 | Name    | Type                                                                                              | Description                                                                                                                                                                                                             |
 | ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `table` | `NonUnion`<`TableName`>                                                                           | The name of the table the document is in.                                                                                                                                                                               |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                      | The [GenericId](/api/modules/values.md#genericid) of the document to patch.                                                                                                                                             |
+| `table` | `TableName`                                                                                       | The name of the table the document is in.                                                                                                                                                                               |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>>                          | The [GenericId](/api/modules/values.md#genericid) of the document to patch.                                                                                                                                             |
 | `value` | `PatchValue`<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The partial [GenericDocument](/api/modules/server.md#genericdocument) to merge into the specified document. If this new value specifies system fields like `_id`, they must match the document's existing field values. |
 
 #### Returns[​](#returns-5 "Direct link to Returns")
@@ -289,8 +289,8 @@ Replace the value of an existing document, overwriting its old value.
 
 | Name    | Type                                                                                                                                                               | Description                                                                                                                                                    |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `table` | `NonUnion`<`TableName`>                                                                                                                                            | The name of the table the document is in.                                                                                                                      |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                                                                                       | The [GenericId](/api/modules/values.md#genericid) of the document to replace.                                                                                  |
+| `table` | `TableName`                                                                                                                                                        | The name of the table the document is in.                                                                                                                      |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>>                                                                                           | The [GenericId](/api/modules/values.md#genericid) of the document to replace.                                                                                  |
 | `value` | [`WithOptionalSystemFields`](/api/modules/server.md#withoptionalsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The new [GenericDocument](/api/modules/server.md#genericdocument) for the document. This value can omit the system fields, and the database will fill them in. |
 
 #### Returns[​](#returns-7 "Direct link to Returns")
@@ -342,10 +342,10 @@ Delete an existing document.
 
 #### Parameters[​](#parameters-9 "Direct link to Parameters")
 
-| Name    | Type                                                         | Description                                                                  |
-| ------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `table` | `NonUnion`<`TableName`>                                      | The name of the table the document is in.                                    |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to remove. |
+| Name    | Type                                                                     | Description                                                                  |
+| ------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table the document is in.                                    |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to remove. |
 
 #### Returns[​](#returns-9 "Direct link to Returns")
 

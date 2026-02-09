@@ -2,13 +2,9 @@
 
 # Source: https://smartcar.com/docs/connect/re-auth/redirect-to-connect.md
 
-# Source: https://smartcar.com/docs/connect/redirect-to-connect.md
-
-# Source: https://smartcar.com/docs/connect/re-auth/redirect-to-connect.md
-
-# Source: https://smartcar.com/docs/connect/redirect-to-connect.md
-
-# Source: https://smartcar.com/docs/connect/re-auth/redirect-to-connect.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Redirect to Connect
 
@@ -16,6 +12,10 @@ There will be times when a user updates credentials to their connected services 
 again to update your authorization through Smartcar.
 
 You can do this with a streamlined Connect flow using a special re-auth URL with the parameters below.
+
+<Info>
+  Re-authentication is also required when OEMs migrate to new API platforms. See [OEM Migrations and Re-authentication](/connect/re-auth/oem-migrations) to understand when and why these migrations occur, and how to prepare your implementation.
+</Info>
 
 <Tip>
   The [`AUTHENTICATION_FAILED`](/errors/api-errors/connected-services-account-errors#authentication-failed) API error contains a partially constructed re-authentication URL in the `resolution.url` field.

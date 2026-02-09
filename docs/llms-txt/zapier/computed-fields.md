@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/computed-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use computed fields in OAuth or Session Authentication
 
 > When adding a field in your integration's authentication configuration, Zapier offers two field type options; field and computed field. The field option allows users to enter account information needed for authentication.

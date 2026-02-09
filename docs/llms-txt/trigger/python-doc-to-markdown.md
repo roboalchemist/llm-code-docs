@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/python/python-doc-to-markdown.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert documents to markdown using Python and MarkItDown
 
 > Learn how to use Trigger.dev with Python to convert documents to markdown using MarkItDown.
@@ -32,7 +36,7 @@ Convert documents to markdown using Microsoft's [MarkItDown](https://github.com/
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -64,7 +68,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `markdown-converter.py` script with the given document URL as an argument.
 
-```ts src/trigger/convertToMarkdown.ts theme={null}
+```ts src/trigger/convertToMarkdown.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 import * as fs from "fs";
@@ -121,7 +125,7 @@ export const convertToMarkdown = task({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 markitdown[all]
 ```
 
@@ -129,7 +133,7 @@ markitdown[all]
 
 The Python script uses MarkItDown to convert documents to Markdown format.
 
-```python src/python/markdown-converter.py theme={null}
+```python src/python/markdown-converter.py theme={"theme":"css-variables"}
 import json
 import sys
 import os

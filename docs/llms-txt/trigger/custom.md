@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/config/extensions/custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom build extensions
 
 > Customize how your project is built and deployed to Trigger.dev with your own custom build extensions
@@ -19,7 +23,7 @@ Build extensions allow you to hook into the build system and customize the build
 
 Build extensions are added to your `trigger.config.ts` file, with a required `name` and optional build hook functions. Here's a simple example of a build extension that just logs a message when the build starts:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -44,7 +48,7 @@ You can also extract that out into a function instead of defining it inline, in 
   code will work. Make sure it's version matches that of the installed `@trigger.dev/sdk` package.
 </Note>
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { BuildExtension } from "@trigger.dev/build";
 
@@ -71,7 +75,7 @@ function myExtension(): BuildExtension {
 
 This allows the extension to add additional dependencies to the list of externals for the build. This is useful for dependencies that are not included in the bundle, but are expected to be available at runtime.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -93,7 +97,7 @@ export default defineConfig({
 
 This hook runs before the build starts. It receives the `BuildContext` object as an argument.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -113,7 +117,7 @@ export default defineConfig({
 
 If you want to add an esbuild plugin, you must do so in the `onBuildStart` hook. Here's an example of adding a custom esbuild plugin:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -143,7 +147,7 @@ export default defineConfig({
 
 You can use the `BuildContext.target` property to determine if the build is for `dev` or `deploy`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -169,7 +173,7 @@ export default defineConfig({
 
 This hook runs after the build completes. It receives the `BuildContext` object and a `BuildManifest` object as arguments. This is where you can add in one or more `BuildLayer`'s to the context.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -196,7 +200,7 @@ See the [addLayer](#addlayer) documentation for more information on how to use `
 
 Can either be `dev` or `deploy`, matching the CLI command name that is being run.
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest dev # BuildTarget is "dev"
 npx trigger.dev@latest deploy # BuildTarget is "deploy"
 ```
@@ -238,7 +242,7 @@ Resolves a path relative to the project's working directory.
   The path to resolve.
 </ParamField>
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const resolvedPath = context.resolvePath("my-other-dependency");
 ```
 
@@ -305,7 +309,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
 <ParamField path="commands" type="string[]">
   An array of commands to run in the image build container.
 
-  ```ts  theme={null}
+  ```ts  theme={"theme":"css-variables"}
   commands: ["echo 'Hello, world!'"];
   ```
 
@@ -348,7 +352,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
   An object of dependencies to add to the build. The key is the package name and the value is the
   version.
 
-  ```ts  theme={null}
+  ```ts  theme={"theme":"css-variables"}
   dependencies: {
     "my-dependency": "^1.0.0",
   };
@@ -359,7 +363,7 @@ const resolvedPath = context.resolvePath("my-other-dependency");
 
 Add a command that will echo the value of an environment variable:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 context.addLayer({
   id: "my-layer",
   commands: [`echo $MY_ENV_VAR`],
@@ -375,14 +379,14 @@ context.addLayer({
 
 When creating a build extension, you may run into issues with the build process. One thing that can help is turning on `debug` logging when running either `dev` or `deploy`:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest dev --log-level debug
 npx trigger.dev@latest deploy --log-level debug
 ```
 
 Another helpful tool is the `--dry-run` flag on the `deploy` command, which will bundle your project and generate the Containerfile (e.g. the Dockerfile) without actually deploying it. This can help you see what the final image will look like and debug any issues with the build process.
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy --dry-run
 ```
 

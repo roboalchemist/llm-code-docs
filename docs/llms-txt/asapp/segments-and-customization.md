@@ -1,28 +1,30 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/structured-data/segments-and-customization.md
 
-# Source: https://docs.asapp.com/autosummary/structured-data/segments-and-customization.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Segments and Customization
 
 > Learn how to customize the data extracted with Structured Data.
 
-Each business has unique needs and requirement for the type of data they want to extract from their conversations.
+Each business has unique needs and requirements for the type of data they want to extract from their conversations.
 
-We offer out of the box configuration for common use cases but also offer two sets of APIs to for you customize the structured data yourself:
+We offer out-of-the-box configuration for common use cases but also offer two sets of APIs for you to customize the structured data yourself:
 
 * Create custom `structured data fields` to expand the types of data you can extract.
-* Create `segments` to customize which sets of structured data are extracted for a defined type of conversation.
+* Create `segments` to customize which sets of structured data the system extracts for a defined type of conversation.
 
 ## Before you Begin
 
 Before you start integrating to Custom Structured Data Fields and Segments, you need to:
 
 * [Get your API Key Id and Secret](/getting-started/developers)
-* Ensure your API key has been configured to access AutoSummary Configuration APIs. Reach out to your ASAPP team if you unsure.
+* Ensure your API key has been configured to access AI Summary Configuration APIs. Reach out to your ASAPP team if you are unsure.
 
 ## Custom Structured Data Fields
 
-Each structured data you extract is defined by a `structured-data-field`. You would have an initial set of structured data fields set up for you by ASAPP, but you can also query and create custom structured data fields yourself.
+Each structured data you extract is defined by a `structured-data-field`. ASAPP sets up an initial set of structured data fields for you, but you can also query and create custom structured data fields yourself.
 
 To create a custom structured data field, you need to create a new [`structured-data-field`](/apis/configuration/structured-data-fields/create-structured-data-field) object with the following fields:
 
@@ -30,7 +32,7 @@ To create a custom structured data field, you need to create a new [`structured-
 * `name`: The name of the structured data field.
 * `categoryId`: The category of the structured data field. Must be either **OUTCOME** or **CUSTOM**.
 * `type`: The type of the structured data field. Must be either **QUESTION** or **ENTITY**.
-* `question`: The question that will be answered using the context of the conversation.
+* `question`: The question that the system will answer using the context of the conversation.
 * `active`: Whether the structured data field is active.
 
 ```bash  theme={null}
@@ -51,7 +53,7 @@ curl --request POST \
 }'
 ```
 
-A successfully created structured data field will return a `200` and the newly created `structured-data-field` object in the response body.
+A successfully created structured data field returns a `200` status code and the newly created `structured-data-field` object in the response body.
 
 ```json  theme={null}
 {
@@ -67,23 +69,23 @@ A successfully created structured data field will return a `200` and the newly c
 ```
 
 <Note>
-  An inactive structured data field will not be extracted from conversations.
+  The system will not extract an inactive structured data field from conversations.
 </Note>
 
 You can then use the structured data field id to create a segment.
 
 ## Segments
 
-Segments are used to configure which sets of structured data fields are extracted for a defined type of conversation. Segments are defined by two parts:
+Segments configure which sets of structured data fields the system extracts for a defined type of conversation. Segments are defined by two parts:
 
 * A **query** that matches against the conversation metadata and intent.
-* A list of **structured data field ids** that are included in the segment.
+* A list of **structured data field ids** that the segment includes.
 
 When you generate structured data for a conversation, the system follows these steps:
 
 1. Checks the conversation against the queries of all segments
 2. For each matching query:
-   * Extracts the structured data fields defined in that segment
+   * Extracts the structured data fields that the segment defines
 3. If multiple segments match:
    * Combines and extracts all structured data fields from all matching segments
 
@@ -100,7 +102,7 @@ To create a new segment, you need to create a new [`segment`](/apis/configuratio
 * `id`: Your unique identifier for the segment.
 * `name`: The name of the segment.
 * `query`: The [query](#query) that defines which conversations are included in the segment.
-* `structuredDataFieldIds`: The list of structured data field ids that are included in the segment.
+* `structuredDataFieldIds`: The list of structured data field ids that the segment includes.
 
 ```bash  theme={null}
 curl --request POST \
@@ -122,7 +124,7 @@ curl --request POST \
 }'
 ```
 
-A successfully created segment will return a 200 and the newly created segment object in the response body.
+A successfully created segment returns a 200 status code and the newly created segment object in the response body.
 
 ```json  theme={null}
 {
@@ -141,7 +143,7 @@ A successfully created segment will return a 200 and the newly created segment o
 
 ### Query
 
-The segments query defines rules for when a segment should be applied to a conversation. We currently only support a query type of `raw` that uses a SQL-like syntax with a focused set of operators for clear and precise matching.
+The segment's query defines rules for when the system should apply a segment to a conversation. We currently only support a query type of `raw` that uses a SQL-like syntax with a focused set of operators for clear and precise matching.
 
 The query language supports these key elements:
 
@@ -157,7 +159,7 @@ The query language supports these key elements:
 
 #### Available Fields
 
-The data you can query against is the conversation metadata as uploaded as part of [metadata ingestion](/reporting/metadata-ingestion).
+The data you can query against is the conversation metadata that you upload as part of [metadata ingestion](/reporting/metadata-ingestion).
 
 Specifically, you can query against the following fields:
 
@@ -223,7 +225,7 @@ Note that the field values used in these examples are arbitrary and for illustra
 
 ### Global Segment
 
-The **GLOBAL** segment is a special segment that matches all conversations. It is automatically created when you first configure your structured data fields.
+The **GLOBAL** segment is a special segment that matches all conversations. The system automatically creates it when you first configure your structured data fields.
 
 You can update the **GLOBAL** segment to include new structured data fields or modify the query to change the criteria for matching conversations.
 

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction to Aptible
 
 > Learn what Aptible is and why scaling companies use it to host their apps and data in the cloud

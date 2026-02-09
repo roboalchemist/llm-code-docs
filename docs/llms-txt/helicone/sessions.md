@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/sessions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sessions
 
 When building AI agents or complex workflows, your application often makes multiple LLM calls, vector database queries, and tool calls to complete a single task. Sessions group these related requests together, letting you trace the entire agent flow from initial user input to final response in one unified view.

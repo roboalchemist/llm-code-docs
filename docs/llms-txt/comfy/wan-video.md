@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Wan2.1 Video Examples
 
 > This guide demonstrates how to generate videos with first and last frames using Wan2.1 Video in ComfyUI

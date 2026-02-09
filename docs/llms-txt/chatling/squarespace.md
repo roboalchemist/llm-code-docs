@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/installation/squarespace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Squarespace
 
 > Learn how to add Chatling to your Squarespace website

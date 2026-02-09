@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/openai/openai-dalle3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI DALL·E 3 - ComfyUI Native Node Documentation
 
 > Node for generating high-quality images using OpenAI's DALL·E 3 model

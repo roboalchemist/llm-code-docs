@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/keep-customer-data-separate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Keep customer data separate in Pinecone
 
 Some use cases require vectors to be segmented by their customers, either physically or logically. The table below describes three techniques to accomplish this and the pros and cons of considering each:

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/create/code.md
+# Source: https://www.mintlify.com/docs/create/code.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Format code
 
@@ -63,6 +67,26 @@ We use [Shiki](https://shiki.style/) for syntax highlighting and support all ava
 
 Customize code block themes globally using `styling.codeblocks` in your `docs.json` file. Set simple themes like `system` or `dark`, or configure custom [Shiki themes](https://shiki.style/themes) for light and dark modes. See [Settings](/organize/settings#param-styling) for configuration options.
 
+<CodeGroup>
+  ```java Syntax highlighting example theme={null}
+  class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello, World!");
+      }
+  }
+  ```
+
+  ````mdx Format theme={null}
+  ```java Syntax highlighting example
+  class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello, World!");
+      }
+  }
+  ```
+  ````
+</CodeGroup>
+
 <Accordion title="Custom syntax highlighting theme">
   For custom themes, set your theme in `docs.json` to `"css-variables"` and override syntax highlighting colors using CSS variables with the `--mint-` prefix.
 
@@ -103,27 +127,23 @@ Customize code block themes globally using `styling.codeblocks` in your `docs.js
   * `--mint-ansi-bright-magenta`, `--mint-ansi-bright-magenta-dim`
   * `--mint-ansi-bright-cyan`, `--mint-ansi-bright-cyan-dim`
   * `--mint-ansi-bright-white`, `--mint-ansi-bright-white-dim`
+
+  **Custom syntax highlighting**
+
+  Add syntax highlighting for languages not included in Shiki's default set by providing custom TextMate grammar files. Create a JSON file following the [TextMate grammar format](https://macromates.com/manual/en/language_grammars), then reference it in your `docs.json`. You can add multiple custom languages by including additional paths in the array.
+
+  ```json docs.json theme={null}
+  {
+    "styling": {
+      "codeblocks": {
+        "languages": {
+          "custom": ["/languages/my-custom-language.json"]
+        }
+      }
+    }
+  }
+  ```
 </Accordion>
-
-<CodeGroup>
-  ```java Syntax highlighting example theme={null}
-  class HelloWorld {
-      public static void main(String[] args) {
-          System.out.println("Hello, World!");
-      }
-  }
-  ```
-
-  ````mdx Format theme={null}
-  ```java Syntax highlighting example
-  class HelloWorld {
-      public static void main(String[] args) {
-          System.out.println("Hello, World!");
-      }
-  }
-  ```
-  ````
-</CodeGroup>
 
 ### Twoslash
 
@@ -134,7 +154,7 @@ In JavaScript and TypeScript code blocks, use `twoslash` to enable interactive t
   type Pet = "cat" | "dog" | "hamster";
 
   function adoptPet(name: string, type: Pet) {
-  return `${name} the ${type} is now adopted!`;
+    return `${name} the ${type} is now adopted!`;
   }
 
   // Hover to see the inferred types
@@ -374,7 +394,8 @@ Enable text wrapping for long lines using `wrap`. This prevents horizontal scrol
 
 <CodeGroup>
   ```javascript Wrap example wrap theme={null}
-  const greeting = "Hello, World! I am a long line of text that will wrap to the next line.";
+  const greeting =
+    "Hello, World! I am a long line of text that will wrap to the next line.";
   function sayHello() {
     console.log(greeting);
   }
@@ -383,7 +404,8 @@ Enable text wrapping for long lines using `wrap`. This prevents horizontal scrol
 
   ````mdx Format theme={null}
   ```javascript Wrap example wrap
-  const greeting = "Hello, World! I am a long line of text that will wrap to the next line.";
+  const greeting =
+    "Hello, World! I am a long line of text that will wrap to the next line.";
   function sayHello() {
     console.log(greeting);
   }
@@ -445,7 +467,8 @@ Use the `<CodeBlock>` component in custom React components to programmatically r
 </ResponseField>
 
 <ResponseField name="icon" type="string">
-  The icon to display in the code block header. See [Icons](/components/icons) for available options.
+  The icon to display in the code block header. See [Icons](/components/icons)
+  for available options.
 </ResponseField>
 
 <ResponseField name="lines" type="boolean">
@@ -461,17 +484,25 @@ Use the `<CodeBlock>` component in custom React components to programmatically r
 </ResponseField>
 
 <ResponseField name="highlight" type="string">
-  The lines to highlight. Provide a stringified array of numbers. Example: `"[1,3,4,5]"`.
+  The lines to highlight. Provide a stringified array of numbers. Example:
+  `"[1,3,4,5]"`.
 </ResponseField>
 
 <ResponseField name="focus" type="string">
-  The lines to focus on. Provide a stringified array of numbers. Example: `"[1,3,4,5]"`.
+  The lines to focus on. Provide a stringified array of numbers. Example:
+  `"[1,3,4,5]"`.
 </ResponseField>
 
 ### Example
 
 ```jsx  theme={null}
-export const CustomCodeBlock = ({ filename, icon, language, highlight, children }) => {
+export const CustomCodeBlock = ({
+  filename,
+  icon,
+  language,
+  highlight,
+  children,
+}) => {
   return (
     <CodeBlock
       filename={filename}

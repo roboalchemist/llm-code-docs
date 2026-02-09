@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/posterlens.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/posterlens.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PosterLens | Scientific Poster Scanner & Research Assistant
 

@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/playground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Playground
 
 > Run your AI applications in the Playground
@@ -76,8 +80,3 @@ Access your previous runs from [Task History](https://studio.giselles.ai/tasks) 
 * **Use descriptive prompts** to get better results from your apps
 * **Attach relevant files** when your task requires document analysis or image processing
 * **Check the app description** to understand what inputs each app expects
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/overview/welcome.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Welcome
 
 > Your friendliest open source all-in-one automation tool, designed to be extensible.
@@ -41,8 +45,3 @@
 * **🔒 Secure by Design**: Self-hosted and network-gapped for maximum security and control over your data.
 
 * **🧠 Human in Loop**: Delay execution for a period of time or require approval. These are just pieces built on top of the piece framework, and you can build many pieces like that. 🎨
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/how-we-calculate-cost.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How We Calculate Cost
 
 > Learn how Helicone calculates the cost per request for nearly all models, including both streamed and non-streamed requests. Detailed explanations and examples provided.

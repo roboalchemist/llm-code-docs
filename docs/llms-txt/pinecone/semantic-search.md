@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/search/semantic-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Semantic search
 
 > Find semantically similar records using dense vectors.
@@ -182,7 +186,7 @@ For example, the following code searches for the 2 records most semantically rel
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: unstable" \
+    -H "X-Pinecone-Api-Version: unstable" \
     -d '{
           "query": {
               "inputs": {"text": "Disease prevention"},
@@ -364,7 +368,7 @@ To search a dense index with a dense vector representation of a query, use the [
 * The `namespace` to query. To use the default namespace, set the namespace to `"__default__"`.
 * The `vector` parameter with the dense vector values representing your query.
 * The `top_k` parameter with the number of results to return.
-* Optionally, you can set `include_values` and/or `include_metadata` to `true` to include the vector values and/or metadata of the matching records in the response. However, when querying with `top_k` over 1000, avoid returning vector data or metadata for optimal performance.
+* Optionally, you can set `include_values` and/or `include_metadata` to `true` to include the vector values and/or metadata of the matching records in the response. For better performance, especially with higher `top_k` values, avoid including vector values unless you need them. See [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed) for more details.
 
 For example, the following code uses a dense vector representation of the query “Disease prevention” to search for the 3 most semantically similar records in the `example-namespaces` namespace:
 
@@ -506,7 +510,7 @@ For example, the following code uses a dense vector representation of the query 
   curl "https://$INDEX_HOST/query" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "vector": [0.0236663818359375,-0.032989501953125,...,-0.01041412353515625,0.0086669921875],
           "namespace": "example-namespace",
@@ -778,7 +782,7 @@ When you search with a record ID, Pinecone uses the dense vector associated with
 * The `namespace` to query. To use the default namespace, set the namespace to `"__default__"`.
 * The `id` parameter with the unique record ID containing the vector to use as the query.
 * The `top_k` parameter with the number of results to return.
-* Optionally, you can set `include_values` and/or `include_metadata` to `true` to include the vector values and/or metadata of the matching records in the response. However, when querying with `top_k` over 1000, avoid returning vector data or metadata for optimal performance.
+* Optionally, you can set `include_values` and/or `include_metadata` to `true` to include the vector values and/or metadata of the matching records in the response. For better performance, especially with higher `top_k` values, avoid including vector values unless you need them. See [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed) for more details.
 
 For example, the following code uses an ID to search for the 3 records in the `example-namespace` namespace that are most semantically similar to the dense vector in the record:
 
@@ -916,7 +920,7 @@ For example, the following code uses an ID to search for the 3 records in the `e
   curl "https://$INDEX_HOST/query" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "id": "rec2",
           "namespace": "example-namespace",
@@ -929,4 +933,4 @@ For example, the following code uses an ID to search for the 3 records in the `e
 
 ## Parallel queries
 
-Python SDK v6.0.0 and later provide `async` methods for use with [asyncio](https://docs.python.org/3/library/asyncio.html). Async support makes it possible to use Pinecone with modern async web frameworks such as FastAPI, Quart, and Sanic, and can significantly increase the efficiency of running queries in parallel. For more details, see the [Async requests](/reference/python-sdk#async-requests).
+Python SDK v6.0.0 and later provide `async` methods for use with [asyncio](https://docs.python.org/3/library/asyncio.html). Async support makes it possible to use Pinecone with modern async web frameworks such as FastAPI, Quart, and Sanic, and can significantly increase the efficiency of running queries in parallel. For more details, see the [Async requests](/reference/sdks/python/overview#async-requests).

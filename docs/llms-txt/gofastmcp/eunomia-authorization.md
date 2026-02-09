@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/integrations/eunomia-authorization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Eunomia Authorization 🤝 FastMCP
 
 > Add policy-based authorization to your FastMCP servers with Eunomia
@@ -10,7 +14,7 @@ Control which tools, resources and prompts MCP clients can view and execute on y
 
 ## How it Works
 
-Exploiting FastMCP's [Middleware][fastmcp-middleare], the Eunomia middleware intercepts all MCP requests to your server and automatically maps MCP methods to authorization checks.
+Exploiting FastMCP's [Middleware][fastmcp-middleware], the Eunomia middleware intercepts all MCP requests to your server and automatically maps MCP methods to authorization checks.
 
 ### Listing Operations
 
@@ -126,4 +130,4 @@ The middleware will now intercept all MCP requests and check them against your p
 
 [eunomia-mcp-github]: https://github.com/whataboutyou-ai/eunomia/tree/main/pkgs/extensions/mcp
 
-[fastmcp-middleare]: /servers/middleware
+[fastmcp-middleware]: /servers/middleware

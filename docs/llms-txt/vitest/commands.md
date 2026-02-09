@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/browser/commands.md
 
-# Source: https://vitest.dev/api/browser/commands.md
-
-# Source: https://vitest.dev/config/browser/commands.md
-
 ---
 url: /config/browser/commands.md
 ---

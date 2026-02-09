@@ -2,22 +2,21 @@
 
 # Windows
 
-Codex support for Windows is still early, but improving rapidly.
-The easiest way to use Codex on Windows is to [set up the IDE extension](/codex/ide), or [install the CLI](/codex/cli) and run it from PowerShell.
+The easiest way to use Codex on Windows is to [set up the IDE extension](https://developers.openai.com/codex/ide) or [install the CLI](https://developers.openai.com/codex/cli) and run it from PowerShell.
 
-When running natively on Windows, Codex supports a powerful Agent mode which can read files, write files, and run commands in your working folder. Agent mode uses an experimental Windows sandbox to limit filesystem access outside the working folder, as well as to prevent network access without your explicit approval. Use this if you're comfortable with the risks. [Learn more below](#windows-experimental-sandbox).
+When you run Codex natively on Windows, the agent mode uses an experimental Windows sandbox to block filesystem writes outside the working folder and prevent network access without your explicit approval. [Learn more below](#windows-experimental-sandbox).
 
-Alternately, you can install and use [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL2). WSL2 gives you a Linux shell, unix-style semantics, and tooling that match the majority of tasks that our models see in training. Importantly, the Codex sandbox implementation on Linux is mature.
+Instead, you can use [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install) (WSL2). WSL2 gives you a Linux shell, Unix-style semantics, and tooling that match many tasks that models see in training.
 
 ## Windows Subsystem for Linux
 
 ### Launch VS Code from inside WSL
 
-For a detailed walkthrough, follow the [official VS Code WSL tutorial](https://code.visualstudio.com/docs/remote/wsl-tutorial).
+For step-by-step instructions, see the [official VS Code WSL tutorial](https://code.visualstudio.com/docs/remote/wsl-tutorial).
 
 #### Prerequisites
 
-- Windows with WSL installed - we recommend an Ubuntu distribution. Install by shift+clicking on Powershell to open as an Administrator, then running `wsl --install`.
+- Windows with WSL installed. To install WSL, open PowerShell as an administrator, then run `wsl --install` (Ubuntu is a common choice).
 - VS Code with the [WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) installed.
 
 #### Open VS Code from a WSL terminal
@@ -30,7 +29,7 @@ code .
 
 This opens a WSL remote window, installs the VS Code Server if needed, and ensures integrated terminals run in Linux.
 
-#### Confirm you’re connected to WSL
+#### Confirm you're connected to WSL
 
 - Look for the green status bar that shows `WSL: <distro>`.
 - Integrated terminals should display Linux paths (such as `/home/...`) instead of `C:\`.
@@ -40,27 +39,31 @@ This opens a WSL remote window, installs the VS Code Server if needed, and ensur
   echo $WSL_DISTRO_NAME
   ```
 
-  which should print your distribution name.
+  This prints your distribution name.
 
 <DocsTip>
   If you don't see "WSL: ..." in the status bar, press `Ctrl+Shift+P`, pick
-  `WSL: Reopen Folder in WSL`, and keep your repo under `/home/...` (not `C:\`)
-  for best performance.
+  `WSL: Reopen Folder in WSL`, and keep your repository under `/home/...` (not
+  `C:\`) for best performance.
 </DocsTip>
 
-### Using Codex CLI with WSL
+### Use Codex CLI with WSL
 
-Run these commands in an elevated PowerShell or Windows Terminal:
+Run these commands from an elevated PowerShell or Windows Terminal:
 
 ```powershell
 # Install default Linux distribution (like Ubuntu)
 wsl --install
 
-# Start a shell inside of Windows Subsystem for Linux
+# Start a shell inside Windows Subsystem for Linux
 wsl
+```
 
+Then run these commands from your WSL shell:
+
+```bash
 # https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl
-# Install Node.js in WSL
+# Install Node.js in WSL (via nvm)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 # In a new tab or after exiting and running `wsl` again to install Node.js
@@ -73,15 +76,25 @@ codex
 
 ### Working on code inside WSL
 
-- Working in Windows-mounted paths like <code>/mnt/c/...</code> can be slower than when working in them in Windows. Keep your repos under your Linux home directory (like <code>~/code/my-app</code>) for faster I/O and fewer symlink/permission issues:
+- Working in Windows-mounted paths like <code>/mnt/c/...</code> can be slower than working in Windows-native paths. Keep your repositories under your Linux home directory (like <code>~/code/my-app</code>) for faster I/O and fewer symlink and permission issues:
   ```bash
   mkdir -p ~/code && cd ~/code
   git clone https://github.com/your/repo.git
   cd repo
   ```
-- If you need Windows access to files, they’re under <code>\\wsl$\Ubuntu\home\&lt;user&gt;</code> in Explorer.
+- If you need Windows access to files, they're under <code>\\wsl$\Ubuntu\home\&lt;user&gt;</code> in Explorer.
 
-### Troubleshooting & FAQ
+## Windows experimental sandbox
+
+The Windows sandbox support is experimental. How it works:
+
+- Launches commands inside a restricted token derived from an AppContainer profile.
+- Grants only specifically requested filesystem capabilities by attaching capability security identifiers to that profile.
+- Disables outbound network access by overriding proxy-related environment variables and inserting stub executables for common network tools.
+
+Its primary limitation is that it can't prevent file writes, deletions, or creations in any directory where the Everyone SID already has write permissions (for example, world-writable folders). When using the Windows sandbox, Codex scans for folders where Everyone has write access and recommends that you remove that access.
+
+### Troubleshooting and FAQ
 
 #### Installed extension, but it's unresponsive
 
@@ -89,20 +102,20 @@ Your system may be missing C++ development tools, which some native dependencies
 
 - Visual Studio Build Tools (C++ workload)
 - Microsoft Visual C++ Redistributable (x64)
-- With winget: `winget install --id Microsoft.VisualStudio.2022.BuildTools -e`
+- With `winget`, run `winget install --id Microsoft.VisualStudio.2022.BuildTools -e`
 
 Then fully restart VS Code after installation.
 
-#### If it feels slow on large repos
+#### If it feels slow on large repositories
 
-- Make sure you’re not working under <code>/mnt/c</code>. Move the repo to WSL (e.g., <code>~/code/...</code>).
-- Allocate more memory/CPU to WSL if constrained; update WSL to latest:
+- Make sure you're not working under <code>/mnt/c</code>. Move the repository to WSL (for example, <code>~/code/...</code>).
+- Increase memory and CPU for WSL if needed; update WSL to the latest version:
   ```powershell
   wsl --update
   wsl --shutdown
   ```
 
-#### VS Code in WSL can’t find `codex`
+#### VS Code in WSL can't find `codex`
 
 Verify the binary exists and is on PATH inside WSL:
 
@@ -110,4 +123,4 @@ Verify the binary exists and is on PATH inside WSL:
 which codex || echo "codex not found"
 ```
 
-If the binary is not found, try installing by [following the instructions](#install-codex-in-windows-subsystem-for-linux-wsl) earlier in this guide.
+If the binary isn't found, install it by [following the instructions](#use-codex-cli-with-wsl) above.

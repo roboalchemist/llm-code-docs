@@ -2,11 +2,11 @@
 
 # How to handle blocked requests in PuppeteerCrawler
 
-One of the main defense mechanisms websites use to ensure they are not scraped by bots is allowing only a limited number of requests from a specific IP address. That's why Apify provides a https://docs.apify.com/platform/proxy component with intelligent rotation. With a large enough pool of proxies, you can multiply the number of allowed requests per day to cover your crawling needs. Let's look at how we can rotate proxies when using our https://github.com/apify/apify-sdk-js.
+One of the main defense mechanisms websites use to ensure they are not scraped by bots is allowing only a limited number of requests from a specific IP address. That's why Apify provides a [proxy](https://docs.apify.com/platform/proxy) component with intelligent rotation. With a large enough pool of proxies, you can multiply the number of allowed requests per day to cover your crawling needs. Let's look at how we can rotate proxies when using our [JavaScript SDK](https://github.com/apify/apify-sdk-js).
 
 > Getting around website defense mechanisms when crawling.
 
-You can use `handleRequestFunction` to set up proxy rotation for a https://crawlee.dev/api/basic-crawler/class/BasicCrawler. The following example shows how to use a fresh proxy on each request if you make requests through the popular https://www.npmjs.com/package/request-promise npm package:
+You can use `handleRequestFunction` to set up proxy rotation for a [BasicCrawler](https://crawlee.dev/api/basic-crawler/class/BasicCrawler). The following example shows how to use a fresh proxy on each request if you make requests through the popular [request-promise](https://www.npmjs.com/package/request-promise) npm package:
 
 
 ```
@@ -32,7 +32,7 @@ Each time `handleRequestFunction` is executed in this example, requestPromise wi
 
 ## Puppeteer Crawler
 
-With https://docs.apify.com/sdk/js/docs/api/puppeteer-crawler the situation is a little more complicated. That's because you have to restart the browser to change the proxy the browser is using. By default, PuppeteerCrawler restarts the browser every 100 requests, which can lead to a number of requests being wasted because the IP address the browser is using is already blocked by the website.
+With [PuppeteerCrawler](https://docs.apify.com/sdk/js/docs/api/puppeteer-crawler) the situation is a little more complicated. That's because you have to restart the browser to change the proxy the browser is using. By default, PuppeteerCrawler restarts the browser every 100 requests, which can lead to a number of requests being wasted because the IP address the browser is using is already blocked by the website.
 
 The straightforward solution would be to set the 'retireInstanceAfterRequestCount' option to 1. PuppeteerCrawler would then rotate the proxies in the same way as BasicCrawler. While this approach could sometimes be useful for the toughest websites, the price you pay is in performance. Restarting the browser is an expensive operation.
 
@@ -53,7 +53,7 @@ const crawler = new PuppeteerCrawler({
 ```
 
 
-It is really up to a developer to spot if something is wrong with his request. A website can interfere with your crawling in https://docs.apify.com/academy/anti-scraping. Page loading can be cancelled right away, it can timeout, the page can display a captcha, some error or warning message, or the data may be missing or corrupted. The developer can then choose if he will try to handle these problems in the code or focus on receiving the proper data. Either way, if the request went wrong, you should throw a proper error.
+It is really up to a developer to spot if something is wrong with his request. A website can interfere with your crawling in [many ways](https://docs.apify.com/academy/anti-scraping). Page loading can be cancelled right away, it can timeout, the page can display a captcha, some error or warning message, or the data may be missing or corrupted. The developer can then choose if he will try to handle these problems in the code or focus on receiving the proper data. Either way, if the request went wrong, you should throw a proper error.
 
 Now that we know when the request is blocked, we can use the retire() function and continue crawling with a new proxy. Google is one of the most popular websites for scrapers, so let's code a Google search crawler. The two main blocking mechanisms used by Google is either to display their (in)famous 'sorry' captcha or to not load the page at all so we will focus on covering these.
 

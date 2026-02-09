@@ -6,17 +6,17 @@
 
 ***
 
-In a perfect world, every piece of content served on a website would be loaded instantaneously. We don't live in a perfect world though, and often times it can take anywhere between 1/10th of a second to a few seconds to load some content onto a page. Certain elements are also https://docs.apify.com/academy/concepts/dynamic-pages.md, which means that they are not present in the initial HTML and that they are created by scripts or data from API calls.
+In a perfect world, every piece of content served on a website would be loaded instantaneously. We don't live in a perfect world though, and often times it can take anywhere between 1/10th of a second to a few seconds to load some content onto a page. Certain elements are also generated dynamically, which means that they are not present in the initial HTML and that they are created by scripts or data from API calls.
 
 Puppeteer and Playwright don't sit around waiting for a page (or specific elements) to load though - if we tell it to do something with an element that hasn't been rendered yet, it'll start trying to do it (which will result in nasty errors). We've got to tell it to wait.
 
-> For a thorough explanation on how dynamic rendering works, give https://docs.apify.com/academy/concepts/dynamic-pages.md a quick readover, and check out the examples.
+> For a thorough explanation on how dynamic rendering works, give **Dynamic pages** a quick readover, and check out the examples.
 
 Different events and elements can be waited for using the various `waitFor...` methods offered.
 
 ## Elements
 
-In the previous lesson, we ran into an error with Puppeteer due to the fact that we weren't waiting for the `.g a` selector to be present on the page before clicking it. The same error didn't occur in Playwright, because `page.click()` https://playwright.dev/docs/actionability for the element to be visible on the page before clicking it.
+In the previous lesson, we ran into an error with Puppeteer due to the fact that we weren't waiting for the `.g a` selector to be present on the page before clicking it. The same error didn't occur in Playwright, because `page.click()` [automatically waits](https://playwright.dev/docs/actionability) for the element to be visible on the page before clicking it.
 
 Elements with specific selectors can be waited for by using the `page.waitForSelector()` function. Let's use this knowledge to wait for the first result to be present on the page prior to clicking on it:
 
@@ -50,9 +50,9 @@ Now, we won't see the error message anymore, and the first result will be succes
 
 ## Navigation
 
-If we remember properly, after clicking the first result, we want to console log the title of the result's page and save a screenshot into the filesystem. In order to grab a solid screenshot of the loaded page though, we should **wait for navigation** before snapping the image. This can be done with https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-pagewaitfornavigationoptions.
+If we remember properly, after clicking the first result, we want to console log the title of the result's page and save a screenshot into the filesystem. In order to grab a solid screenshot of the loaded page though, we should **wait for navigation** before snapping the image. This can be done with [page.waitForNavigation()](https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-pagewaitfornavigationoptions).
 
-> A navigation is when a new https://docs.apify.com/academy/concepts/dynamic-pages.md happens. First, the `domcontentloaded` event is fired, then the `load` event. `page.waitForNavigation()` will wait for the `load` event to fire.
+> A navigation is when a new page load happens. First, the `domcontentloaded` event is fired, then the `load` event. `page.waitForNavigation()` will wait for the `load` event to fire.
 
 Naively, you might immediately think that this is the way we should wait for navigation after clicking the first result:
 
@@ -63,7 +63,7 @@ await page.waitForNavigation();
 ```
 
 
-Though in theory this is correct, it can result in a race condition in which the page navigates quickly before the `page.waitForNavigation()` function is ever run, which means that once it is finally called, it will hang and wait forever for the https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event to fire even though it already fired. To solve this, we can stick the waiting logic and the clicking logic into a `Promise.all()` call (placing `page.waitForNavigation()` first).
+Though in theory this is correct, it can result in a race condition in which the page navigates quickly before the `page.waitForNavigation()` function is ever run, which means that once it is finally called, it will hang and wait forever for the [load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) to fire even though it already fired. To solve this, we can stick the waiting logic and the clicking logic into a `Promise.all()` call (placing `page.waitForNavigation()` first).
 
 
 ```
@@ -71,7 +71,7 @@ await Promise.all([page.waitForNavigation(), page.click('.g a')]);
 ```
 
 
-Though the line of code above is also valid in Playwright, it is recommended to use https://playwright.dev/docs/api/class-page#page-wait-for-load-state instead of `page.waitForNavigation()`, as it automatically handles the issues being solved by using `Promise.all()`.
+Though the line of code above is also valid in Playwright, it is recommended to use [page.waitForLoadState('load')](https://playwright.dev/docs/api/class-page#page-wait-for-load-state) instead of `page.waitForNavigation()`, as it automatically handles the issues being solved by using `Promise.all()`.
 
 
 ```
@@ -158,4 +158,4 @@ await browser.close();
 
 ## Next up
 
-In the https://docs.apify.com/academy/puppeteer-playwright/page/page-methods.md of the **Opening & controlling a page** section of this course, we'll be learning about various methods on **Page** which aren't related to directly interacting with a page or waiting for stuff, as well as finally adding the final touches to our mini-project (page title grabbing and screenshotting).
+In the [final lesson](https://docs.apify.com/academy/puppeteer-playwright/page/page-methods.md) of the **Opening & controlling a page** section of this course, we'll be learning about various methods on **Page** which aren't related to directly interacting with a page or waiting for stuff, as well as finally adding the final touches to our mini-project (page title grabbing and screenshotting).

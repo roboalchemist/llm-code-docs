@@ -6,22 +6,6 @@
 
 # Source: https://docs.upsun.com/learn/overview.md
 
-# Source: https://docs.upsun.com/dedicated-environments/dedicated-gen-2/overview.md
-
-# Source: https://docs.upsun.com/dedicated-environments/overview.md
-
-# Source: https://docs.upsun.com/integrations/overview.md
-
-# Source: https://docs.upsun.com/learn/overview.md
-
-# Source: https://docs.upsun.com/dedicated-environments/dedicated-gen-2/overview.md
-
-# Source: https://docs.upsun.com/dedicated-environments/overview.md
-
-# Source: https://docs.upsun.com/integrations/overview.md
-
-# Source: https://docs.upsun.com/learn/overview.md
-
 # What is Upsun Fixed?
 
 Upsun is a Cloud Application Platform built especially for continuous deployment.

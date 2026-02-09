@@ -1,4 +1,8 @@
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/activity-logs.md
+# Source: https://infisical.com/docs/documentation/platform/agent-sentinel/activity-logs.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Activity Logs
 
@@ -45,7 +49,7 @@ Every tool invocation through an MCP endpoint creates a log entry containing:
   <Tab title="Infisical UI">
     <Steps>
       <Step title="Navigate to Activity Logs">
-        Head to your Agentic Manager project and select **Activity Logs** from the sidebar.
+        Head to your Agent Sentinel project and select **Activity Logs** from the sidebar.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-activity-logs.png" alt="activity logs" />
       </Step>
@@ -83,15 +87,18 @@ Every tool invocation through an MCP endpoint creates a log entry containing:
   </Accordion>
 
   <Accordion title="Are sensitive data in requests/responses masked?">
-    Infisical supports PII filtering to automatically detect and mask sensitive data in request and response payloads, helping you maintain compliance while preserving audit trail integrity.
+    Infisical supports PII filtering to automatically detect and mask sensitive data in request and response payloads. When enabled on an MCP endpoint, the following PII types can be redacted:
+
+    * **Email addresses** → `[REDACTED_EMAIL]`
+    * **Phone numbers** → `[REDACTED_PHONE]`
+    * **Social Security Numbers** → `[REDACTED_SSN]`
+    * **Credit card numbers** → `[REDACTED_CREDIT_CARD]`
+    * **IP addresses (IPv4 and IPv6)** → `[REDACTED_IP]`
+
+    You can configure PII filtering separately for requests and responses, and select which PII types to detect. See [MCP Endpoints - PII Filtering](/documentation/platform/agent-sentinel/mcp-endpoints#pii-filtering) for configuration details.
   </Accordion>
 
   <Accordion title="Do failed tool invocations get logged?">
     Yes, all tool invocations are logged regardless of success or failure. Failed invocations include error details in the response payload.
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

@@ -1,6 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension.md
 
-# VS Code Extension
+> **Documentation Index**
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## VS Code Extension
 
 > Not a CLI person? Graphite's VS Code extension lets you create and manage stacked pull requests visually, right from your IDE.
 

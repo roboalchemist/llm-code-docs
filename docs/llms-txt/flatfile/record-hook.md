@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/record-hook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Record Hook Plugin
 
 > Execute custom logic on individual data records within a Flatfile Sheet with support for validation, transformation, enrichment, and cleaning.
@@ -19,7 +23,7 @@ The plugin offers two main functions: `recordHook` for processing records one-by
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-record-hook
 ```
 
@@ -58,7 +62,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
 ### Basic Single Record Processing
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { recordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -75,7 +79,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { recordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -96,7 +100,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
 ### Basic Bulk Record Processing
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { bulkRecordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -115,7 +119,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { bulkRecordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
   import { FlatfileRecord } from "@flatfile/hooks";
@@ -139,7 +143,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { bulkRecordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -157,7 +161,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { bulkRecordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
   import { FlatfileRecord } from "@flatfile/hooks";
@@ -180,7 +184,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
 ### Advanced Usage - Email Validation
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { recordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -203,7 +207,7 @@ By default, the plugin processes records for the specified `sheetSlug` after a c
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { recordHook } from "@flatfile/plugin-record-hook";
   import { FlatfileListener } from "@flatfile/listener";
 

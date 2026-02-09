@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/additionalPackages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Additional Packages
 
 > Use the additionalPackages build extension to include additional packages in the build
 
 Import the `additionalPackages` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { additionalPackages } from "@trigger.dev/build/extensions/core";
 
@@ -21,7 +25,7 @@ export default defineConfig({
 
 This allows you to include additional packages in the build that are not automatically included via imports. This is useful if you want to install a package that includes a CLI tool that you want to invoke in your tasks via `exec`. We will try to automatically resolve the version of the package but you can specify the version by using the `@` symbol:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({

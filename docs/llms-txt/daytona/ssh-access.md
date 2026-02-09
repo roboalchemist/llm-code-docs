@@ -34,6 +34,19 @@ console.log(`SSH Token: ${sshAccess.token}`)
 ```
 
 
+
+```ruby
+require 'daytona'
+
+daytona = Daytona::Daytona.new
+sandbox = daytona.get('sandbox-abc123')
+
+# Create SSH access token
+ssh_access = sandbox.create_ssh_access(expires_in_minutes: 60)
+puts "SSH Token: #{ssh_access.token}"
+```
+
+
 ## Connection Command
 
 Once you have your token, connect using:
@@ -89,4 +102,14 @@ await sandbox.revokeSshAccess()
 
 // Revoke specific SSH access for the sandbox
 await sandbox.revokeSshAccess('specific-token')
+```
+
+
+
+```ruby
+# Revoke all SSH access for the sandbox
+sandbox.revoke_ssh_access
+
+# Revoke specific SSH access for the sandbox
+sandbox.revoke_ssh_access(token: 'specific-token')
 ```

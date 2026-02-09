@@ -54,8 +54,8 @@ The total amount of the invoice doesn’t necessarily equal the booked revenue b
 
 This example is based on the following assumptions:
 
-- The invoice and invoice line item finalize on July 14, 2020
-- The invoice line item’s amount is 35 USD, and its service period is from July 21, 2020 to Aug 20, 2020
+- The invoice and invoice line item finalize on July 14, 2025
+- The invoice line item’s amount is 35 USD, and its service period is from July 21, 2025 to Aug 20, 2025
 - The invoice line item’s tax is 4 USD (inclusively)
 
 Even though the invoice’s total amount is 35 USD, the billed revenue would be 31 USD because the tax is 4 USD, as shown in the following revenue waterfall:

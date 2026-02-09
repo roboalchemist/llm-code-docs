@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/credit-notes/credit-note-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credit note metadata
 
 Metadata on a credit\_note object allows you to store additional structured information and context. This is especially useful when integrating Lago with external systems.
@@ -164,8 +168,3 @@ To delete metadata on a credit note:
 1. A maximum of 50 metadata key–value pairs is allowed per credit note.
 2. Keys must be strings of up to 40 characters.
 3. Values must be strings of up to 255 characters.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

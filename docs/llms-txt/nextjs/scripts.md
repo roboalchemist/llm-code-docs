@@ -16,11 +16,16 @@
 
 # Source: https://nextjs.org/docs/pages/guides/scripts.md
 
+# Source: https://nextjs.org/docs/pages/guides/scripts.md
+
+# Source: https://nextjs.org/docs/pages/guides/scripts.md
+
+# Source: https://nextjs.org/docs/app/guides/scripts.md
+
 # Source: https://nextjs.org/docs/app/guides/scripts.md
 
 # How to load and optimize scripts
 @doc-version: 16.0.4
-
 
 ### Layout Scripts
 
@@ -269,9 +274,3 @@ export default function Page() {
   )
 }
 ```
-## API Reference
-
-Learn more about the next/script API.
-
-- [Script Component](/docs/app/api-reference/components/script.md)
-  - Optimize third-party scripts in your Next.js application using the built-in `next/script` Component.

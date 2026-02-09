@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/analytics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Analytics
 
 The Analytics page provides valuable insights into the performance and usage of your application. By leveraging various features and metrics, you can make data-driven decisions to optimize your application and enhance user experience. This documentation will guide you through the different analytics features available.
@@ -26,8 +30,3 @@ You can filter the analytics page using [metadata attributes](/features/prompt-h
 ### Tag Filtering
 
 [Tag filtering](/features/prompt-history/tagging-requests) allows you to categorize and organize your requests based on specific tags you assign. It simplifies the process of analyzing specific groups of requests, making it easier to identify trends and patterns.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

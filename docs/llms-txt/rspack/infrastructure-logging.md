@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/config/infrastructure-logging.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/infrastructureLogging/](https://webpack.js.org/configuration/infrastructureLogging/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/infrastructureLogging/" />
 
 # InfrastructureLogging
 
@@ -10,7 +15,7 @@ Options for infrastructure level logging. Generally used for logs unrelated to t
 
 ## infrastructureLogging.appendOnly
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Append lines to the output instead of updating existing output, useful for status messages. This option is used only when no custom [console](#infrastructureloggingconsole) is provided.
 
@@ -33,7 +38,7 @@ export default {
 
 ## infrastructureLogging.colors
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Enable colorful output for infrastructure level logging. This option is used only when no custom [console](#infrastructureloggingconsole) is provided.
 
@@ -55,8 +60,8 @@ export default {
 
 ## infrastructureLogging.console
 
-* **Type:** `Console`
-* **Default:** `Console`
+- **Type:** `Console`
+- **Default:** `Console`
 
 Customize the console used for infrastructure level logging.
 
@@ -71,8 +76,8 @@ export default {
 
 ## infrastructureLogging.debug
 
-* **Type:** `boolean | RegExp | function(name) => boolean | [string, RegExp, function(name) => boolean]`
-* **Default:** `'false'`
+- **Type:** `boolean | RegExp | function(name) => boolean | [string, RegExp, function(name) => boolean]`
+- **Default:** `'false'`
 
 Enable debug information of specified loggers such as plugins or loaders. Similar to [stats.loggingDebug](/config/stats.md#statsloggingdebug) option but for infrastructure. Defaults to `false`.
 
@@ -88,19 +93,19 @@ export default {
 
 ## infrastructureLogging.level
 
-* **Type:** `'none' | 'error' | 'warn' | 'info' | 'log' | 'verbose'`
-* **Default:** `'info'`
+- **Type:** `'none' | 'error' | 'warn' | 'info' | 'log' | 'verbose'`
+- **Default:** `'info'`
 
 Enable infrastructure logging output. Similar to [stats.logging](/config/stats.md#statslogging) option but for infrastructure. Defaults to `'info'`.
 
 Possible values:
 
-* `'none'` - disable logging
-* `'error'` - errors only
-* `'warn'` - errors and warnings only
-* `'info'` - errors, warnings, and info messages
-* `'log'` - errors, warnings, info messages, log messages, groups, clears. Collapsed groups are displayed in a collapsed state.
-* `'verbose'` - log everything except debug and trace. Collapsed groups are displayed in expanded state.
+- `'none'` - disable logging
+- `'error'` - errors only
+- `'warn'` - errors and warnings only
+- `'info'` - errors, warnings, and info messages
+- `'log'` - errors, warnings, info messages, log messages, groups, clears. Collapsed groups are displayed in a collapsed state.
+- `'verbose'` - log everything except debug and trace. Collapsed groups are displayed in expanded state.
 
 ```js title="rspack.config.mjs"
 export default {
@@ -113,8 +118,8 @@ export default {
 
 ## infrastructureLogging.stream
 
-* **Type:** `NodeJS.WritableStream`
-* **Default:** `process.stderr`
+- **Type:** `NodeJS.WritableStream`
+- **Default:** `process.stderr`
 
 Stream used for logging output. Defaults to `process.stderr`. This option is used only when no custom [console](#infrastructureloggingconsole) is provided.
 

@@ -1,53 +1,126 @@
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
-
 # Source: https://docs.fireworks.ai/api-reference/create-api-key.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.fireworks.ai/api-reference/create-api-key.md
+# Create API Key
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
 
-# Source: https://docs.fireworks.ai/api-reference/create-api-key.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
+## OpenAPI
 
-# Source: https://docs.fireworks.ai/api-reference/create-api-key.md
+````yaml post /v1/accounts/{account_id}/users/{user_id}/apiKeys
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/users/{user_id}/apiKeys:
+    post:
+      tags:
+        - Gateway
+      summary: Create API Key
+      operationId: Gateway_CreateApiKey
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          description: The User Id
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayCreateApiKeyBody'
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayApiKey'
+components:
+  schemas:
+    GatewayCreateApiKeyBody:
+      type: object
+      properties:
+        apiKey:
+          $ref: '#/components/schemas/gatewayApiKey'
+          description: The API key to be created.
+      required:
+        - apiKey
+    gatewayApiKey:
+      type: object
+      properties:
+        keyId:
+          type: string
+          description: >-
+            Unique identifier (Key ID) for the API key, used primarily for
+            deletion.
+          readOnly: true
+        displayName:
+          type: string
+          description: >-
+            Display name for the API key, defaults to "default" if not
+            specified.
+        key:
+          type: string
+          description: >-
+            The actual API key value, only available upon creation and not
+            stored thereafter.
+          readOnly: true
+        createTime:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the API key was created.
+          readOnly: true
+        secure:
+          type: boolean
+          description: >-
+            Indicates whether the plaintext value of the API key is unknown to
+            Fireworks.
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
+            If true, Fireworks does not know this API key's plaintext value. If
+            false, Fireworks does
 
-# firectl create api-key
+            know the plaintext value.
+          readOnly: true
+        email:
+          type: string
+          description: Email of the user who owns this API key.
+          readOnly: true
+        prefix:
+          type: string
+          title: The first few characters of the API key to visually identify it
+          readOnly: true
+        expireTime:
+          type: string
+          format: date-time
+          description: >-
+            Timestamp indicating when the API key will expire. If not set, the
+            key never expires.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
-> Creates an API key for the signed in user or a specified service account user.
-
-```
-firectl create api-key [flags]
-```
-
-### Examples
-
-```
-firectl create api-key
-firectl create api-key --service-account=my-service-account
-firectl create api-key --key-name="Production Key" --service-account=ci-bot
-firectl create api-key --key-name="Temporary Key" --expire-time="2025-12-31 23:59:59"
-```
-
-### Flags
-
-```
-      --expire-time string       If specified, the time at which the API key will automatically expire. Specified in YYYY-MM-DD[ HH:MM:SS] format.
-  -h, --help                     help for api-key
-      --key-name string          The name of the key to be created. Defaults to "default"
-      --service-account string   Admin only: Create API key for the specified service account user
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
+````

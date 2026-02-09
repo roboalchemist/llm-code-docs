@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/gcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Google Cloud and OpenLLMetry
 
 [Google Cloud](https://cloud.google.com/?hl=en), also known as Google Cloud Platform (GCP), is a cloud
@@ -54,8 +58,3 @@ Traceloop.init(
 You can use the [`CloudTraceLoggingSpanExporter`](https://github.com/GoogleCloudPlatform/agent-starter-pack/blob/3dfb0c444aa70a3b0c62313c4cba14f9bc9d1723/src/base_template/app/utils/tracing.py)
 from the [Google Cloud `agent-starter-pack`](https://github.com/GoogleCloudPlatform/agent-starter-pack) as a drop-in replacement for the
 `CloudTraceSpanExporter`. That exporter writes large attributes to Google Cloud Storage and writes a reference URL to Cloud Observability.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

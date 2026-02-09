@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/context.md
+# Source: https://exa.ai/docs/reference/context.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Context (Exa Code)
 
@@ -16,7 +20,7 @@ This endpoint helps eliminate hallucinations in coding agents by providing real,
 
 The Context API excels at finding practical code examples for:
 
-* **Framework usage**: "use Exa search in python and make sure content is always livecrawled"
+* **Framework usage**: "use Exa search in python and request `livecrawl=\"preferred\"` with a 12s `livecrawlTimeout`"
 * **API syntax**: "use correct syntax for vercel ai sdk to call gpt-5 nano asking it how are you"
 * **Development setup**: "how to set up a reproducible Nix Rust development environment"
 * **Library implementation**: "React hooks for state management examples"
@@ -177,8 +181,3 @@ When your coding agent makes a search query, `exa-code` searches over billions o
 You can also use `exa-code` through the [Exa MCP server](https://docs.exa.ai/reference/exa-mcp) for seamless integration with AI coding assistants like Claude, Cursor, and other MCP-compatible clients.
 
 The MCP integration provides the same powerful code context search capabilities directly within your development environment without needing to make direct API calls.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

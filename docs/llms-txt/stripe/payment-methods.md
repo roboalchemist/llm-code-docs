@@ -4,22 +4,6 @@
 
 # Source: https://docs.stripe.com/payments/payment-methods.md
 
-# Source: https://docs.stripe.com/payments/checkout/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/checkout/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/checkout/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/checkout/payment-methods.md
-
-# Source: https://docs.stripe.com/payments/payment-methods.md
-
 # Payment Methods API
 
 Learn more about the API that powers a range of global payment methods.

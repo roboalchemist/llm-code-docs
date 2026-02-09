@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-absolute-path.md
 ---
-# import/no-absolute-path&#x20;
 
 ### What it does
 
@@ -65,7 +64,7 @@ default: `false`
 If set to `true`, dependency paths for AMD-style define and require calls will be resolved:
 
 ```js
-/* eslint import/no-absolute-path: ['error', { commonjs: false, amd: true }] */
+/* import/no-absolute-path: ["error", { "commonjs": false, "amd": true }] */
 define(["/foo"], function (foo) {
   /*...*/
 }); // reported

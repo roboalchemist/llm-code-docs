@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/migration/storybook.md
 
-import { PackageManagerTabs } from '@theme';
-
 # Migrate from Storybook webpack
 
 If you are using React / Vue with [Storybook](https://storybook.js.org/) and building with webpack 5, you can replace the `@storybook/react-webpack5` build with [storybook-rsbuild](https://github.com/rstackjs/storybook-rsbuild), which is implemented based on Rsbuild and uses Rspack as the underlying bundler. It supports out-of-the-box use, and the documentation can be found at [storybook-rsbuild](https://github.com/rstackjs/storybook-rsbuild).
@@ -18,7 +16,26 @@ Storybook Rsbuild requires at least version 8.0 of Storybook. It's highly recomm
 
 First, replace `@storybook/react-webpack5` with [`storybook-react-rsbuild`](https://www.npmjs.com/package/storybook-react-rsbuild) (for Vue projects, use [`storybook-vue3-rsbuild`](https://www.npmjs.com/package/storybook-vue3-rsbuild)), add `@rsbuild/core` and `@rsbuild/plugin-react` (for Vue projects, use `@rsbuild/plugin-vue`).
 
-<PackageManagerTabs command="install storybook-react-rsbuild @rsbuild/core @rsbuild/plugin-react -D" />
+
+```sh [npm]
+npm install storybook-react-rsbuild @rsbuild/core @rsbuild/plugin-react -D
+```
+
+```sh [yarn]
+yarn add storybook-react-rsbuild @rsbuild/core @rsbuild/plugin-react -D
+```
+
+```sh [pnpm]
+pnpm add storybook-react-rsbuild @rsbuild/core @rsbuild/plugin-react -D
+```
+
+```sh [bun]
+bun add storybook-react-rsbuild @rsbuild/core @rsbuild/plugin-react -D
+```
+
+```sh [deno]
+deno add npm:storybook-react-rsbuild npm:@rsbuild/core npm:@rsbuild/plugin-react -D
+```
 
 ## Configure Rsbuild
 

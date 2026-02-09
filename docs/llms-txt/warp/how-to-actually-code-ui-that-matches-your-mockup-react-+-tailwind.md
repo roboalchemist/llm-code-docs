@@ -20,16 +20,14 @@ Although this example uses **React** and **Tailwind**, the same method applies t
 
 {% stepper %}
 {% step %}
-
-### The Problem
+**The Problem**
 
 When designing UI with AI, your intended design often gets lost in translation.\
 AI struggles with visual fidelity — but structured prompts can help fix that.
 {% endstep %}
 
 {% step %}
-
-### The Prompt
+**The Prompt**
 
 Step — Generate full specifications:
 
@@ -90,8 +88,7 @@ Create a pixel-perfect implementation that matches the original design.
 {% endstep %}
 
 {% step %}
-
-### Validate and Iterate
+**Validate and Iterate**
 
 Warp outputs component files and layout structure.\
 You can review spacing, font weights, and responsive behavior directly in preview.
@@ -105,8 +102,7 @@ Tighten vertical spacing between header and subtext.
 {% endstep %}
 
 {% step %}
-
-### Recap
+**Recap**
 
 You’ve learned how to:
 

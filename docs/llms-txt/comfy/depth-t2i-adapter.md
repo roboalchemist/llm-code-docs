@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/controlnet/depth-t2i-adapter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Depth T2I Adapter Usage Example
 
 > This guide will introduce you to the basic concepts of Depth T2I Adapter and demonstrate how to generate corresponding images in ComfyUI

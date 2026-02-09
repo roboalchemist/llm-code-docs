@@ -1,50 +1,219 @@
 # Source: https://gofastmcp.com/development/upgrade-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade Guide
 
 > Migration instructions for upgrading between FastMCP versions
 
-This guide provides migration instructions for breaking changes and major updates when upgrading between FastMCP versions.
+This guide covers breaking changes and migration steps when upgrading FastMCP.
+
+## v3.0.0
+
+Most servers need only one change: update your import from `from mcp.server.fastmcp import FastMCP` to `from fastmcp import FastMCP`. The sections below cover less common breaking changes.
+
+### Breaking Changes
+
+#### WSTransport Removed
+
+Use `StreamableHttpTransport` instead.
+
+#### Auth Provider Environment Variables Removed
+
+Auth providers no longer auto-load configuration. Read them explicitly:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
+
+auth = GitHubProvider(
+    client_id=os.environ["GITHUB_CLIENT_ID"],
+    client_secret=os.environ["GITHUB_CLIENT_SECRET"],
+)
+```
+
+#### Component enable()/disable() Moved to Server
+
+These methods moved from component objects to the server:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+tool = await server.get_tool("my_tool")
+tool.disable()
+
+# After
+server.disable(names={"my_tool"}, components=["tool"])
+```
+
+#### Listing Methods Return Lists
+
+`get_tools()`, `get_resources()`, `get_prompts()`, and `get_resource_templates()` now return lists instead of dicts:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+tools = await server.get_tools()
+tool = tools["my_tool"]
+
+# After
+tools = await server.get_tools()
+tool = next((t for t in tools if t.name == "my_tool"), None)
+```
+
+#### Prompts Use Message Class
+
+Use `Message` instead of `mcp.types.PromptMessage`:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+from mcp.types import PromptMessage, TextContent
+
+@mcp.prompt
+def my_prompt() -> PromptMessage:
+    return PromptMessage(role="user", content=TextContent(type="text", text="Hello"))
+
+# After
+from fastmcp.prompts import Message
+
+@mcp.prompt
+def my_prompt() -> Message:
+    return Message("Hello")
+```
+
+#### Context State Methods Are Async
+
+`ctx.set_state()` and `ctx.get_state()` are now async. State persists across the session:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+ctx.set_state("key", "value")
+value = ctx.get_state("key")
+
+# After
+await ctx.set_state("key", "value")
+value = await ctx.get_state("key")
+```
+
+#### Server Banner Environment Variable Renamed
+
+`FASTMCP_SHOW_CLI_BANNER` is now `FASTMCP_SHOW_SERVER_BANNER`.
+
+#### Metadata Namespace Renamed
+
+The FastMCP metadata namespace changed from `_fastmcp` to `fastmcp`, and metadata is now always included. The `include_fastmcp_meta` parameter has been removed from `FastMCP()` and `to_mcp_tool()`—remove any usage of this parameter.
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+tags = tool.meta.get("_fastmcp", {}).get("tags", [])
+
+# After
+tags = tool.meta.get("fastmcp", {}).get("tags", [])
+```
+
+### Behavior Changes
+
+#### Decorators Return Functions
+
+Decorators now return your original function instead of a component object. This means functions stay callable for testing:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+@mcp.tool
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+greet("World")  # Works! Returns "Hello, World!"
+```
+
+If you relied on the old behavior (treating `greet` as a `FunctionTool`), set `FASTMCP_DECORATOR_MODE=object` for v2 compatibility.
+
+### Deprecated Features
+
+These still work but emit warnings. Update when convenient.
+
+#### mount() prefix → namespace
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Deprecated
+main.mount(subserver, prefix="api")
+
+# New
+main.mount(subserver, namespace="api")
+```
+
+#### include\_tags/exclude\_tags → enable()/disable()
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Deprecated
+mcp = FastMCP("server", exclude_tags={"internal"})
+
+# New
+mcp = FastMCP("server")
+mcp.disable(tags={"internal"})
+```
+
+#### tool\_serializer → ToolResult
+
+Return `ToolResult` from your tools for explicit serialization control instead of using the `tool_serializer` parameter.
+
+#### add\_tool\_transformation() → add\_transform()
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Deprecated
+mcp.add_tool_transformation("name", config)
+
+# New
+from fastmcp.server.transforms import ToolTransform
+mcp.add_transform(ToolTransform({"name": config}))
+```
+
+#### FastMCP.as\_proxy() → create\_proxy()
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Deprecated
+proxy = FastMCP.as_proxy("http://example.com/mcp")
+
+# New
+from fastmcp.server import create_proxy
+proxy = create_proxy("http://example.com/mcp")
+```
+
+## v2.14.0
+
+### OpenAPI Parser Promotion
+
+The experimental OpenAPI parser is now standard. Update imports:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Before
+from fastmcp.experimental.server.openapi import FastMCPOpenAPI
+
+# After
+from fastmcp.server.openapi import FastMCPOpenAPI
+```
+
+### Removed Deprecated Features
+
+* `BearerAuthProvider` → use `JWTVerifier`
+* `Context.get_http_request()` → use `get_http_request()` from dependencies
+* `from fastmcp import Image` → use `from fastmcp.utilities.types import Image`
+* `FastMCP(dependencies=[...])` → use `fastmcp.json` configuration
+* `FastMCPProxy(client=...)` → use `client_factory=lambda: ...`
+* `output_schema=False` → use `output_schema=None`
 
 ## v2.13.0
 
 ### OAuth Token Key Management
 
-The OAuth proxy now issues its own JWT tokens to clients instead of forwarding upstream provider tokens. This improves security by maintaining proper token audience boundaries.
-
-**What changed:**
-
-The OAuth proxy now implements a token factory pattern - it receives tokens from your OAuth provider (GitHub, Google, etc.), encrypts and stores them, then issues its own FastMCP JWT tokens to clients. This requires cryptographic keys for JWT signing and token encryption.
-
-**Default behavior (development):**
-
-By default, FastMCP automatically manages keys based on your platform:
-
-* **Mac/Windows**: Keys are auto-managed via system keyring, surviving server restarts with zero configuration. Suitable **only** for development and local testing.
-* **Linux**: Keys are ephemeral (random salt at startup, regenerated on each restart).
-
-This works fine for development and testing where re-authentication after restart is acceptable.
-
-**For production:**
-
-Production deployments must provide explicit keys and use persistent storage. Add these three things:
+The OAuth proxy now issues its own JWT tokens. For production, provide explicit keys:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 auth = GitHubProvider(
     client_id=os.environ["GITHUB_CLIENT_ID"],
     client_secret=os.environ["GITHUB_CLIENT_SECRET"],
     base_url="https://your-server.com",
-
-    # Explicit keys (required for production)
     jwt_signing_key=os.environ["JWT_SIGNING_KEY"],
-
-    # Persistent network storage (required for production)
-    client_storage=RedisStore(host="redis.example.com", port=6379)
+    client_storage=RedisStore(host="redis.example.com"),
 )
 ```
 
-**More information:**
-
-* [OAuth Token Security](/deployment/http#oauth-token-security) - Complete production setup guide
-* [Key and Storage Management](/servers/auth/oauth-proxy#key-and-storage-management) - Detailed explanation of defaults and production requirements
-* [OAuth Proxy Parameters](/servers/auth/oauth-proxy#configuration-parameters) - Parameter documentation
+See [OAuth Token Security](/deployment/http#oauth-token-security) for details.

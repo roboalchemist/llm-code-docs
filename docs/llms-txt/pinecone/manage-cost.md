@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-cost/manage-cost.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage cost
 
 > Learn strategies for managing cost in Pinecone.
@@ -40,7 +44,15 @@ If your application requires you to isolate the data of each customer/user, cons
 
 ## Commit to annual spend
 
-Users who commit to an annual contract may qualify for discounted rates. To learn more, [contact Pinecone sales](https://www.pinecone.io/contact/).
+Pinecone offers a discount for customers who enroll in an annual plan with an upfront payment. Eligibility requires a minimum annual commitment of \$8,000.
+
+Throughout the contract term, the discount applies to List Price for all Pinecone services, excluding Storage and Support. Any usage that exceeds the prepaid credits will be billed at full List Price and will not qualify for the contractual discount.
+
+Customers on the Standard and Enterprise pay-as-you-go plans may upgrade directly by navigating in the Pinecone console to **[Settings > Billing > Plans](https://app.pinecone.io/organizations/-/settings/billing/plans)**.
+
+<Note>
+  The self-serve annual plan is not available through cloud marketplace billing. To purchase an annual plan through a cloud marketplace, contact [ar@pinecone.io](mailto:ar@pinecone.io).
+</Note>
 
 ## Talk to support
 

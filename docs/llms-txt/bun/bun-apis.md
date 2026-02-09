@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/bun-apis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bun APIs
 
 > Overview of Bun's native APIs available on the Bun global object and built-in modules
@@ -55,5 +59,5 @@ Click the link in the right column to jump to the associated documentation.
 | Stream Processing                | [`Bun.readableStreamTo*()`](/runtime/utils#bun-readablestreamto), `Bun.readableStreamToBytes()`, `Bun.readableStreamToBlob()`, `Bun.readableStreamToFormData()`, `Bun.readableStreamToJSON()`, `Bun.readableStreamToArray()`                                                                                           |
 | Memory & Buffer Management       | `Bun.ArrayBufferSink`, `Bun.allocUnsafe`, `Bun.concatArrayBuffers`                                                                                                                                                                                                                                                     |
 | Module Resolution                | [`Bun.resolveSync()`](/runtime/utils#bun-resolvesync)                                                                                                                                                                                                                                                                  |
-| Parsing & Formatting             | [`Bun.semver`](/runtime/semver), `Bun.TOML.parse`, [`Bun.color`](/runtime/color)                                                                                                                                                                                                                                       |
+| Parsing & Formatting             | [`Bun.semver`](/runtime/semver), `Bun.TOML.parse`, [`Bun.markdown`](/runtime/markdown), [`Bun.color`](/runtime/color)                                                                                                                                                                                                  |
 | Low-level / Internals            | `Bun.mmap`, `Bun.gc`, `Bun.generateHeapSnapshot`, [`bun:jsc`](https://bun.com/reference/bun/jsc)                                                                                                                                                                                                                       |

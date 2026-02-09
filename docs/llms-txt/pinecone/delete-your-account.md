@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/delete-your-account.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete your account
 
 To delete your Pinecone account, you need to remove your user from all organizations and delete any organizations in which you are the sole member.

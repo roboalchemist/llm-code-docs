@@ -1,400 +1,384 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/retrieve-project-domains-by-project-by-id-or-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve project domains by project by id or name
 
 > Retrieve the domains associated with a given project by passing either the project `id` or `name` in the URL.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v9/projects/{idOrName}/domains
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v9/projects/{idOrName}/domains
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v9/projects/{idOrName}/domains:
+    get:
+      tags:
+        - projects
+      summary: Retrieve project domains by project by id or name
+      description: >-
+        Retrieve the domains associated with a given project by passing either
+        the project `id` or `name` in the URL.
+      operationId: getProjectDomains
+      parameters:
+        - name: idOrName
+          description: The unique project identifier or the project name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique project identifier or the project name
-      query:
-        production:
+            description: The unique project identifier or the project name
+            oneOf:
+              - type: string
+        - name: production
+          description: Filters only production domains when set to `true`.
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - 'true'
-                - 'false'
-              required: false
-              description: Filters only production domains when set to `true`.
-              default: 'false'
-        target:
+            default: 'false'
+            description: Filters only production domains when set to `true`.
+            enum:
+              - 'true'
+              - 'false'
+        - name: target
+          description: >-
+            Filters on the target of the domain. Can be either \"production\",
+            \"preview\"
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - production
-                - preview
-              required: false
-              description: >-
-                Filters on the target of the domain. Can be either
-                \"production\", \"preview\"
-        customEnvironmentId:
+            description: >-
+              Filters on the target of the domain. Can be either \"production\",
+              \"preview\"
+            enum:
+              - production
+              - preview
+            type: string
+        - name: customEnvironmentId
+          description: The unique custom environment identifier within the project
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: The unique custom environment identifier within the project
-              example: env_123abc4567
-        gitBranch:
+            description: The unique custom environment identifier within the project
+            type: string
+            example: env_123abc4567
+        - name: gitBranch
+          description: Filters domains based on specific branch.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Filters domains based on specific branch.
-        redirects:
+            description: Filters domains based on specific branch.
+            type: string
+        - name: redirects
+          description: >-
+            Excludes redirect project domains when \"false\". Includes redirect
+            project domains when \"true\" (default).
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - 'true'
-                - 'false'
-              required: false
-              description: >-
-                Excludes redirect project domains when \"false\". Includes
-                redirect project domains when \"true\" (default).
-              default: 'true'
-        redirect:
+            default: 'true'
+            description: >-
+              Excludes redirect project domains when \"false\". Includes
+              redirect project domains when \"true\" (default).
+            enum:
+              - 'true'
+              - 'false'
+        - name: redirect
+          description: Filters domains based on their redirect target.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Filters domains based on their redirect target.
-              example: example.com
-        verified:
+            description: Filters domains based on their redirect target.
+            type: string
+            example: example.com
+        - name: verified
+          description: Filters domains based on their verification status.
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - 'true'
-                - 'false'
-              required: false
-              description: Filters domains based on their verification status.
-        limit:
+            description: Filters domains based on their verification status.
+            enum:
+              - 'true'
+              - 'false'
+        - name: limit
+          description: Maximum number of domains to list from a request (max 100).
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Maximum number of domains to list from a request (max 100).
-              example: 20
-        since:
+            description: Maximum number of domains to list from a request (max 100).
+            type: number
+            example: 20
+        - name: since
+          description: Get domains created after this JavaScript timestamp.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Get domains created after this JavaScript timestamp.
-              example: 1609499532000
-        until:
+            description: Get domains created after this JavaScript timestamp.
+            type: number
+            example: 1609499532000
+        - name: until
+          description: Get domains created before this JavaScript timestamp.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Get domains created before this JavaScript timestamp.
-              example: 1612264332000
-        order:
+            description: Get domains created before this JavaScript timestamp.
+            type: number
+            example: 1612264332000
+        - name: order
+          description: Domains sort order by createdAt
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - ASC
-                - DESC
-              required: false
-              description: Domains sort order by createdAt
-              default: DESC
-        teamId:
+            default: DESC
+            description: Domains sort order by createdAt
+            enum:
+              - ASC
+              - DESC
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getProjectDomains
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.projects.getProjectDomains({
-              idOrName: "<value>",
-              customEnvironmentId: "env_123abc4567",
-              redirect: "example.com",
-              limit: 20,
-              since: 1609499532000,
-              until: 1612264332000,
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              domains:
-                allOf:
-                  - items:
-                      properties:
-                        name:
-                          type: string
-                        apexName:
-                          type: string
-                        projectId:
-                          type: string
-                        redirect:
-                          nullable: true
-                          type: string
-                        redirectStatusCode:
-                          nullable: true
-                          type: number
-                          enum:
-                            - 307
-                            - 301
-                            - 302
-                            - 308
-                        gitBranch:
-                          nullable: true
-                          type: string
-                        customEnvironmentId:
-                          nullable: true
-                          type: string
-                        updatedAt:
-                          type: number
-                        createdAt:
-                          type: number
-                        verified:
-                          type: boolean
-                          description: >-
-                            `true` if the domain is verified for use with the
-                            project. If `false` it will not be used as an alias
-                            on this project until the challenge in
-                            `verification` is completed.
-                        verification:
-                          items:
-                            properties:
-                              type:
-                                type: string
-                              domain:
-                                type: string
-                              value:
-                                type: string
-                              reason:
-                                type: string
-                            required:
-                              - type
-                              - domain
-                              - value
-                              - reason
-                            type: object
-                            description: >-
-                              A list of verification challenges, one of which
-                              must be completed to verify the domain for use on
-                              the project. After the challenge is complete `POST
-                              /projects/:idOrName/domains/:domain/verify` to
-                              verify the domain. Possible challenges: - If
-                              `verification.type = TXT` the
-                              `verification.domain` will be checked for a TXT
-                              record matching `verification.value`.
-                          type: array
-                          description: >-
-                            A list of verification challenges, one of which must
-                            be completed to verify the domain for use on the
-                            project. After the challenge is complete `POST
-                            /projects/:idOrName/domains/:domain/verify` to
-                            verify the domain. Possible challenges: - If
-                            `verification.type = TXT` the `verification.domain`
-                            will be checked for a TXT record matching
-                            `verification.value`.
-                      required:
-                        - name
-                        - apexName
-                        - projectId
-                        - verified
-                      type: object
-                    type: array
-              pagination:
-                allOf:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: Successful response retrieving a list of domains
+          content:
+            application/json:
+              schema:
+                oneOf:
                   - properties:
-                      count:
-                        type: number
-                      next:
-                        nullable: true
-                        type: number
-                      prev:
-                        nullable: true
-                        type: number
+                      domains:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            apexName:
+                              type: string
+                            projectId:
+                              type: string
+                            redirect:
+                              nullable: true
+                              type: string
+                            redirectStatusCode:
+                              nullable: true
+                              type: number
+                              enum:
+                                - 301
+                                - 302
+                                - 307
+                                - 308
+                            gitBranch:
+                              nullable: true
+                              type: string
+                            customEnvironmentId:
+                              nullable: true
+                              type: string
+                            updatedAt:
+                              type: number
+                            createdAt:
+                              type: number
+                            verified:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
+                              description: >-
+                                `true` if the domain is verified for use with
+                                the project. If `false` it will not be used as
+                                an alias on this project until the challenge in
+                                `verification` is completed.
+                            verification:
+                              items:
+                                properties:
+                                  type:
+                                    type: string
+                                  domain:
+                                    type: string
+                                  value:
+                                    type: string
+                                  reason:
+                                    type: string
+                                required:
+                                  - domain
+                                  - reason
+                                  - type
+                                  - value
+                                type: object
+                                description: >-
+                                  A list of verification challenges, one of
+                                  which must be completed to verify the domain
+                                  for use on the project. After the challenge is
+                                  complete `POST
+                                  /projects/:idOrName/domains/:domain/verify` to
+                                  verify the domain. Possible challenges: - If
+                                  `verification.type = TXT` the
+                                  `verification.domain` will be checked for a
+                                  TXT record matching `verification.value`.
+                              type: array
+                              description: >-
+                                A list of verification challenges, one of which
+                                must be completed to verify the domain for use
+                                on the project. After the challenge is complete
+                                `POST
+                                /projects/:idOrName/domains/:domain/verify` to
+                                verify the domain. Possible challenges: - If
+                                `verification.type = TXT` the
+                                `verification.domain` will be checked for a TXT
+                                record matching `verification.value`.
+                          required:
+                            - apexName
+                            - name
+                            - projectId
+                            - verified
+                          type: object
+                        type: array
+                      pagination:
+                        properties:
+                          count:
+                            type: number
+                          next:
+                            nullable: true
+                            type: number
+                          prev:
+                            nullable: true
+                            type: number
+                        required:
+                          - count
+                          - next
+                          - prev
+                        type: object
                     required:
-                      - count
-                      - next
-                      - prev
+                      - domains
+                      - pagination
                     type: object
-            requiredProperties:
-              - domains
-              - pagination
-          - type: object
-            properties:
-              domains:
-                allOf:
-                  - items:
-                      properties:
-                        name:
-                          type: string
-                        apexName:
-                          type: string
-                        projectId:
-                          type: string
-                        redirect:
-                          nullable: true
-                          type: string
-                        redirectStatusCode:
-                          nullable: true
-                          type: number
-                          enum:
-                            - 307
-                            - 301
-                            - 302
-                            - 308
-                        gitBranch:
-                          nullable: true
-                          type: string
-                        customEnvironmentId:
-                          nullable: true
-                          type: string
-                        updatedAt:
-                          type: number
-                        createdAt:
-                          type: number
-                        verified:
-                          type: boolean
-                          description: >-
-                            `true` if the domain is verified for use with the
-                            project. If `false` it will not be used as an alias
-                            on this project until the challenge in
-                            `verification` is completed.
-                        verification:
-                          items:
-                            properties:
-                              type:
-                                type: string
-                              domain:
-                                type: string
-                              value:
-                                type: string
-                              reason:
-                                type: string
-                            required:
-                              - type
-                              - domain
-                              - value
-                              - reason
-                            type: object
-                            description: >-
-                              A list of verification challenges, one of which
-                              must be completed to verify the domain for use on
-                              the project. After the challenge is complete `POST
-                              /projects/:idOrName/domains/:domain/verify` to
-                              verify the domain. Possible challenges: - If
-                              `verification.type = TXT` the
-                              `verification.domain` will be checked for a TXT
-                              record matching `verification.value`.
-                          type: array
-                          description: >-
-                            A list of verification challenges, one of which must
-                            be completed to verify the domain for use on the
-                            project. After the challenge is complete `POST
-                            /projects/:idOrName/domains/:domain/verify` to
-                            verify the domain. Possible challenges: - If
-                            `verification.type = TXT` the `verification.domain`
-                            will be checked for a TXT record matching
-                            `verification.value`.
-                      required:
-                        - name
-                        - apexName
-                        - projectId
-                        - verified
-                      type: object
-                    type: array
-              pagination:
-                allOf:
-                  - $ref: '#/components/schemas/Pagination'
-            requiredProperties:
-              - domains
-              - pagination
-        examples:
-          example:
-            value:
-              domains:
-                - name: <string>
-                  apexName: <string>
-                  projectId: <string>
-                  redirect: <string>
-                  redirectStatusCode: 307
-                  gitBranch: <string>
-                  customEnvironmentId: <string>
-                  updatedAt: 123
-                  createdAt: 123
-                  verified: true
-                  verification:
-                    - type: <string>
-                      domain: <string>
-                      value: <string>
-                      reason: <string>
-              pagination:
-                count: 123
-                next: 123
-                prev: 123
-        description: Successful response retrieving a list of domains
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                  - properties:
+                      domains:
+                        items:
+                          properties:
+                            name:
+                              type: string
+                            apexName:
+                              type: string
+                            projectId:
+                              type: string
+                            redirect:
+                              nullable: true
+                              type: string
+                            redirectStatusCode:
+                              nullable: true
+                              type: number
+                              enum:
+                                - 301
+                                - 302
+                                - 307
+                                - 308
+                            gitBranch:
+                              nullable: true
+                              type: string
+                            customEnvironmentId:
+                              nullable: true
+                              type: string
+                            updatedAt:
+                              type: number
+                            createdAt:
+                              type: number
+                            verified:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
+                              description: >-
+                                `true` if the domain is verified for use with
+                                the project. If `false` it will not be used as
+                                an alias on this project until the challenge in
+                                `verification` is completed.
+                            verification:
+                              items:
+                                properties:
+                                  type:
+                                    type: string
+                                  domain:
+                                    type: string
+                                  value:
+                                    type: string
+                                  reason:
+                                    type: string
+                                required:
+                                  - domain
+                                  - reason
+                                  - type
+                                  - value
+                                type: object
+                                description: >-
+                                  A list of verification challenges, one of
+                                  which must be completed to verify the domain
+                                  for use on the project. After the challenge is
+                                  complete `POST
+                                  /projects/:idOrName/domains/:domain/verify` to
+                                  verify the domain. Possible challenges: - If
+                                  `verification.type = TXT` the
+                                  `verification.domain` will be checked for a
+                                  TXT record matching `verification.value`.
+                              type: array
+                              description: >-
+                                A list of verification challenges, one of which
+                                must be completed to verify the domain for use
+                                on the project. After the challenge is complete
+                                `POST
+                                /projects/:idOrName/domains/:domain/verify` to
+                                verify the domain. Possible challenges: - If
+                                `verification.type = TXT` the
+                                `verification.domain` will be checked for a TXT
+                                record matching `verification.value`.
+                          required:
+                            - apexName
+                            - name
+                            - projectId
+                            - verified
+                          type: object
+                        type: array
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+                    required:
+                      - domains
+                      - pagination
+                    type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
   schemas:
     Pagination:
@@ -422,5 +406,10 @@ components:
         This object contains information related to the pagination of the
         current request, including the necessary parameters to get the next or
         previous page of data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

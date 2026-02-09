@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/v2/api-reference/getting-started/metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metadata
 
 > Solid Platform supports metadata
@@ -8,7 +12,7 @@ The Solid Platform support includes metadata on all the resources.
 
 Metadata takes the form of free-form key-value pairs. You may send metadata when you create an object (POST) and when updating the object (PATCH). If you would like to remove metadata that is already on an object, you can unset it by passing in the key-value pair with an empty string, like this:
 
-```json
+```json  theme={null}
 {
   "key": ""
 }
@@ -19,7 +23,7 @@ Current limitations:
 * Max of 20 keys for any single metadata object
 * Max of 4KB for any single metadata object
 
-```bash EXAMPLE
+```bash EXAMPLE theme={null}
 curl --request POST \
   --url https://api.sandbox.solidfi.com/v2/accounts/sub_account_holder \
   --header 'Content-Type: application/json' \

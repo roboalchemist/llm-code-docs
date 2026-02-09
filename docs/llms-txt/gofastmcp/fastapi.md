@@ -1,28 +1,27 @@
 # Source: https://gofastmcp.com/integrations/fastapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FastAPI 🤝 FastMCP
 
 > Integrate FastMCP with FastAPI applications
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
-
-<Tip>
-  **New in 2.11**: FastMCP is introducing a next-generation OpenAPI parser. The new parser has greatly improved performance and compatibility, and is also easier to maintain. To enable it, set the environment variable `FASTMCP_EXPERIMENTAL_ENABLE_NEW_OPENAPI_PARSER=true`.
-
-  The new parser is largely API-compatible with the existing implementation and will become the default in a future version. We encourage all users to test it and report any issues before it becomes the default.
-</Tip>
 
 FastMCP provides two powerful ways to integrate with FastAPI applications:
 
 1. **[Generate an MCP server FROM your FastAPI app](#generating-an-mcp-server)** - Convert existing API endpoints into MCP tools
 2. **[Mount an MCP server INTO your FastAPI app](#mounting-an-mcp-server)** - Add MCP functionality to your web application
+
+<Note>
+  When generating an MCP server from FastAPI, FastMCP uses OpenAPIProvider (v3.0.0+) under the hood to source tools from your FastAPI app's OpenAPI spec. See [Providers](/servers/providers/overview) to understand how FastMCP sources components.
+</Note>
 
 <Tip>
   Generating MCP servers from OpenAPI is a great way to get started with FastMCP, but in practice LLMs achieve **significantly better performance** with well-designed and curated MCP servers than with auto-converted OpenAPI servers. This is especially true for complex APIs with many endpoints and parameters.
@@ -222,9 +221,6 @@ Because FastMCP's FastAPI integration is based on its [OpenAPI integration](/int
 from fastmcp import FastMCP
 from fastmcp.server.openapi import RouteMap, MCPType
 
-# If using experimental parser, import from experimental module:
-# from fastmcp.experimental.server.openapi import RouteMap, MCPType
-
 # Custom mapping rules
 mcp = FastMCP.from_fastapi(
     app=app,
@@ -393,14 +389,14 @@ def get_user(user_id: int):
 When mounting MCP servers, always pass the lifespan context:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Correct - lifespan passed
-mcp_app = mcp.http_app(path='/mcp')
+# Correct - lifespan passed, path="/" since we mount at /mcp
+mcp_app = mcp.http_app(path="/")
 app = FastAPI(lifespan=mcp_app.lifespan)
-app.mount("/mcp", mcp_app)
+app.mount("/mcp", mcp_app)  # MCP endpoint at /mcp
 
 # Incorrect - missing lifespan
 app = FastAPI()
-app.mount("/mcp", mcp.http_app())  # Session manager won't initialize
+app.mount("/mcp", mcp.http_app(path="/"))  # Session manager won't initialize
 ```
 
 If you're mounting an authenticated MCP server under a path prefix, see [Mounting Authenticated Servers](/deployment/http#mounting-authenticated-servers) for important OAuth routing considerations.
@@ -413,41 +409,31 @@ If you need CORS on your own FastAPI routes, use the sub-app pattern: mount your
 
 ### Combining Lifespans
 
-If your FastAPI app already has a lifespan (for database connections, startup tasks, etc.), you can't simply replace it with the MCP lifespan. Instead, you need to create a new lifespan function that manages both contexts. This ensures that both your app's initialization logic and the MCP server's session manager run properly:
+If your FastAPI app already has a lifespan (for database connections, startup tasks, etc.), you can't simply replace it with the MCP lifespan. Use `combine_lifespans` to run both:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastmcp import FastMCP
+from fastmcp.utilities.lifespan import combine_lifespans
+from contextlib import asynccontextmanager
 
 # Your existing lifespan
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
-    # Startup
     print("Starting up the app...")
-    # Initialize database, cache, etc.
     yield
-    # Shutdown
     print("Shutting down the app...")
 
 # Create MCP server
 mcp = FastMCP("Tools")
-mcp_app = mcp.http_app(path='/mcp')
+mcp_app = mcp.http_app(path="/")
 
 # Combine both lifespans
-@asynccontextmanager
-async def combined_lifespan(app: FastAPI):
-    # Run both lifespans
-    async with app_lifespan(app):
-        async with mcp_app.lifespan(app):
-            yield
-
-# Use the combined lifespan
-app = FastAPI(lifespan=combined_lifespan)
-app.mount("/mcp", mcp_app)
+app = FastAPI(lifespan=combine_lifespans(app_lifespan, mcp_app.lifespan))
+app.mount("/mcp", mcp_app)  # MCP endpoint at /mcp
 ```
 
-This pattern ensures both your app's initialization logic and the MCP server's session manager are properly managed. The key is using nested `async with` statements - the inner context (MCP) will be initialized after the outer context (your app), and cleaned up before it. This maintains the correct initialization and cleanup order for all your resources.
+`combine_lifespans` enters lifespans in order and exits in reverse order.
 
 ### Performance Tips
 

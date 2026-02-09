@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/request-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Request IDs
 
 Every PromptLayer log has a unique PromptLayer Request ID (`pl_id`).
@@ -93,8 +97,3 @@ llm_results = llm.generate(["hello world"])
 for res in llm_results.generations:
     print("pl request id: ", res[0].generation_info["pl_request_id"])
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

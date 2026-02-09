@@ -55,6 +55,8 @@ To use Llama.cpp, navigate to the model card and click "Use this model" and copy
 ./llama-server -hf unsloth/gpt-oss-20b-GGUF:Q4_K_M
 ```
 
+Read our dedicated [llama.cpp + HF doc page](./gguf-llamacpp).
+
 ### Ollama
 
 Ollama is an application that lets you run large language models locally on your computer with a simple command-line interface.
@@ -81,6 +83,9 @@ Jan is an open-source ChatGPT alternative that runs entirely offline with a user
 To use Jan, navigate to the model card and click "Use this model". Jan will open and you can start chatting through the interface.
 
 ### LM Studio
+
+> [!NOTE]
+> Read our dedicated [LM Studio doc page](./lmstudio)
 
 LM Studio is a desktop application that provides an easy way to download, run, and experiment with local LLMs.
 

@@ -25,25 +25,24 @@ print(f"Available models as of {datetime.now().strftime('%Y-%m-%d')}:\n")
 print_columns(sorted([m.id for m in model_list]))
 ```
 
-    Available models as of 2025-11-17:
+    Available models as of 2025-12-18:
 
-    babbage-002                   chatgpt-4o-latest             codex-mini-latest             
-    computer-use-preview          computer-use-preview-2025-03- dall-e-2                      
-    dall-e-3                      davinci-002                   ft:gpt-4o-2024-08-06:answerai 
-    ft:gpt-4o-2024-08-06:answerai ft:gpt-4o-2024-08-06:answerai ft:gpt-4o-mini-2024-07-18:ans 
-    ft:gpt-4o-mini-2024-07-18:ans gpt-3.5-turbo                 gpt-3.5-turbo-0125            
+    babbage-002                   chatgpt-4o-latest             chatgpt-image-latest          
+    codex-mini-latest             dall-e-2                      dall-e-3                      
+    davinci-002                   gpt-3.5-turbo                 gpt-3.5-turbo-0125            
     gpt-3.5-turbo-1106            gpt-3.5-turbo-16k             gpt-3.5-turbo-instruct        
     gpt-3.5-turbo-instruct-0914   gpt-4                         gpt-4-0125-preview            
-    gpt-4-1106-preview            gpt-4-turbo                   gpt-4-turbo-2024-04-09        
-    gpt-4-turbo-preview           gpt-4.1                       gpt-4.1-2025-04-14            
-    gpt-4.1-mini                  gpt-4.1-mini-2025-04-14       gpt-4.1-nano                  
-    gpt-4.1-nano-2025-04-14       gpt-4o                        gpt-4o-2024-05-13             
-    gpt-4o-2024-08-06             gpt-4o-2024-11-20             gpt-4o-audio-preview          
-    gpt-4o-audio-preview-2024-10- gpt-4o-audio-preview-2024-12- gpt-4o-audio-preview-2025-06- 
+    gpt-4-0613                    gpt-4-1106-preview            gpt-4-turbo                   
+    gpt-4-turbo-2024-04-09        gpt-4-turbo-preview           gpt-4.1                       
+    gpt-4.1-2025-04-14            gpt-4.1-mini                  gpt-4.1-mini-2025-04-14       
+    gpt-4.1-nano                  gpt-4.1-nano-2025-04-14       gpt-4o                        
+    gpt-4o-2024-05-13             gpt-4o-2024-08-06             gpt-4o-2024-11-20             
+    gpt-4o-audio-preview          gpt-4o-audio-preview-2024-12- gpt-4o-audio-preview-2025-06- 
     gpt-4o-mini                   gpt-4o-mini-2024-07-18        gpt-4o-mini-audio-preview     
     gpt-4o-mini-audio-preview-202 gpt-4o-mini-realtime-preview  gpt-4o-mini-realtime-preview- 
     gpt-4o-mini-search-preview    gpt-4o-mini-search-preview-20 gpt-4o-mini-transcribe        
-    gpt-4o-mini-tts               gpt-4o-realtime-preview       gpt-4o-realtime-preview-2024- 
+    gpt-4o-mini-transcribe-2025-0 gpt-4o-mini-transcribe-2025-1 gpt-4o-mini-tts               
+    gpt-4o-mini-tts-2025-03-20    gpt-4o-mini-tts-2025-12-15    gpt-4o-realtime-preview       
     gpt-4o-realtime-preview-2024- gpt-4o-realtime-preview-2025- gpt-4o-search-preview         
     gpt-4o-search-preview-2025-03 gpt-4o-transcribe             gpt-4o-transcribe-diarize     
     gpt-5                         gpt-5-2025-08-07              gpt-5-chat-latest             
@@ -51,10 +50,13 @@ print_columns(sorted([m.id for m in model_list]))
     gpt-5-nano                    gpt-5-nano-2025-08-07         gpt-5-pro                     
     gpt-5-pro-2025-10-06          gpt-5-search-api              gpt-5-search-api-2025-10-14   
     gpt-5.1                       gpt-5.1-2025-11-13            gpt-5.1-chat-latest           
-    gpt-5.1-codex                 gpt-5.1-codex-mini            gpt-audio                     
+    gpt-5.1-codex                 gpt-5.1-codex-max             gpt-5.1-codex-mini            
+    gpt-5.2                       gpt-5.2-2025-12-11            gpt-5.2-chat-latest           
+    gpt-5.2-pro                   gpt-5.2-pro-2025-12-11        gpt-audio                     
     gpt-audio-2025-08-28          gpt-audio-mini                gpt-audio-mini-2025-10-06     
-    gpt-image-1                   gpt-image-1-mini              gpt-realtime                  
-    gpt-realtime-2025-08-28       gpt-realtime-mini             gpt-realtime-mini-2025-10-06  
+    gpt-audio-mini-2025-12-15     gpt-image-1                   gpt-image-1-mini              
+    gpt-image-1.5                 gpt-realtime                  gpt-realtime-2025-08-28       
+    gpt-realtime-mini             gpt-realtime-mini-2025-10-06  gpt-realtime-mini-2025-12-15  
     o1                            o1-2024-12-17                 o1-pro                        
     o1-pro-2025-03-19             o3                            o3-2025-04-16                 
     o3-deep-research              o3-deep-research-2025-06-26   o3-mini                       
@@ -70,7 +72,7 @@ print_columns(sorted([m.id for m in model_list]))
 <summary>Exported source</summary>
 
 ``` python
-models = 'gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'o1-preview', 'o1-mini', 'gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-4', 'gpt-4-32k', 'gpt-3.5-turbo', 'gpt-3.5-turbo-instruct', 'o1', 'o3-mini', 'chatgpt-4o-latest', 'o1-pro', 'o3', 'o4-mini', 'gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano'
+models = 'gpt-5.2', 'gpt-5.2-pro', 'gpt-5.2-chat-latest', 'gpt-5.1-codex', 'gpt-5-mini', 'gpt-5-nano', 'o1-preview', 'o1-mini', 'gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-4', 'gpt-4-32k', 'gpt-3.5-turbo', 'gpt-3.5-turbo-instruct', 'o1', 'o3-mini', 'chatgpt-4o-latest', 'o1-pro', 'o3', 'o4-mini', 'gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano'
 ```
 
 </details>
@@ -86,7 +88,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### can_set_temp
 
->  can_set_temp (m)
+``` python
+
+def can_set_temp(
+    m
+):
+
+```
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -127,7 +135,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### can_set_sp
 
->  can_set_sp (m)
+``` python
+
+def can_set_sp(
+    m
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -137,7 +151,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### can_stream
 
->  can_stream (m)
+``` python
+
+def can_stream(
+    m
+):
+
+```
 
 ``` python
 assert can_stream("gpt-4o")
@@ -145,8 +165,11 @@ assert not can_stream("o1-mini")
 ```
 
 ``` python
-model = 'gpt-5-mini'
+model = first(m for m in models if 'mini' in m)
+model
 ```
+
+    'gpt-5-mini'
 
 ## OpenAI SDK
 
@@ -164,7 +187,7 @@ r = cli.create(
 print(r)
 ```
 
-    Response(id='resp_0ed79f1cec3cc2f900691ba4892b6481928066d0cf9ced4b49', created_at=1763419273.0, error=None, incomplete_details=None, instructions=None, metadata={}, model='gpt-5-mini-2025-08-07', object='response', output=[ResponseReasoningItem(id='rs_0ed79f1cec3cc2f900691ba489d8fc8192aa85f992718feb3e', summary=[], type='reasoning', content=None, encrypted_content=None, status=None), ResponseOutputMessage(id='msg_0ed79f1cec3cc2f900691ba48a18508192a9c6dad82fc6283c', content=[ResponseOutputText(annotations=[], text='Nice to meet you, Jeremy. How can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, background=False, conversation=None, max_output_tokens=100, max_tool_calls=None, previous_response_id=None, prompt=None, prompt_cache_key=None, prompt_cache_retention=None, reasoning=Reasoning(effort='minimal', generate_summary=None, summary=None), safety_identifier=None, service_tier='default', status='completed', text=ResponseTextConfig(format=ResponseFormatText(type='text'), verbosity='low'), top_logprobs=0, truncation='disabled', usage=ResponseUsage(input_tokens=8, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=20, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=28), user=None, billing={'payer': 'developer'}, store=True)
+    Response(id='resp_0265a51280da05ce006943fbff17f48193b07e2e882e2f3fed', created_at=1766063103.0, error=None, incomplete_details=None, instructions=None, metadata={}, model='gpt-5-mini-2025-08-07', object='response', output=[ResponseReasoningItem(id='rs_0265a51280da05ce006943fbff642481939bf2e1300bc13f18', summary=[], type='reasoning', content=None, encrypted_content=None, status=None), ResponseOutputMessage(id='msg_0265a51280da05ce006943fbff9e5481938d162f29a6c301a2', content=[ResponseOutputText(annotations=[], text='Hi Jeremy — nice to meet you. How can I help today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, background=False, conversation=None, max_output_tokens=100, max_tool_calls=None, previous_response_id=None, prompt=None, prompt_cache_key=None, prompt_cache_retention=None, reasoning=Reasoning(effort='minimal', generate_summary=None, summary=None), safety_identifier=None, service_tier='default', status='completed', text=ResponseTextConfig(format=ResponseFormatText(type='text'), verbosity='low'), top_logprobs=0, truncation='disabled', usage=In: 8; Out: 20; Total: 28, user=None, billing={'payer': 'openai'}, store=True)
 
 ### Formatting output
 
@@ -192,12 +215,12 @@ def _repr_markdown_(self:Response):
 r
 ```
 
-Nice to meet you, Jeremy. How can I help you today?
+Hi Jeremy — nice to meet you. How can I help today?
 
 <details>
 
-- id: resp_0ed79f1cec3cc2f900691ba4892b6481928066d0cf9ced4b49
-- created_at: 1763419273.0
+- id: resp_0265a51280da05ce006943fbff17f48193b07e2e882e2f3fed
+- created_at: 1766063103.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -205,12 +228,12 @@ Nice to meet you, Jeremy. How can I help you today?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_0ed79f1cec3cc2f900691ba489d8fc8192aa85f992718feb3e’,
+  \[ResponseReasoningItem(id=‘rs_0265a51280da05ce006943fbff642481939bf2e1300bc13f18’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_0ed79f1cec3cc2f900691ba48a18508192a9c6dad82fc6283c’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Nice to meet you,
-  Jeremy. How can I help you today?’, type=‘output_text’,
+  ResponseOutputMessage(id=‘msg_0265a51280da05ce006943fbff9e5481938d162f29a6c301a2’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘Hi Jeremy — nice
+  to meet you. How can I help today?’, type=‘output_text’,
   logprobs=\[\])\], role=‘assistant’, status=‘completed’,
   type=‘message’)\]
 - parallel_tool_calls: True
@@ -241,7 +264,7 @@ Nice to meet you, Jeremy. How can I help you today?
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
   total_tokens=28)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -250,7 +273,7 @@ Nice to meet you, Jeremy. How can I help you today?
 r.usage
 ```
 
-    ResponseUsage(input_tokens=8, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=20, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=28)
+    In: 8; Out: 20; Total: 28
 
 ------------------------------------------------------------------------
 
@@ -260,34 +283,16 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### usage
 
->  usage (inp=0, out=0)
+``` python
+
+def usage(
+    inp:int=0, # Number of prompt tokens
+    out:int=0, # Number of completion tokens
+):
+
+```
 
 *Slightly more concise version of `ResponseUsage`.*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>inp</td>
-<td>int</td>
-<td>0</td>
-<td>Number of prompt tokens</td>
-</tr>
-<tr>
-<td>out</td>
-<td>int</td>
-<td>0</td>
-<td>Number of completion tokens</td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -306,7 +311,7 @@ def usage(inp=0, # Number of prompt tokens
 usage(5)
 ```
 
-    ResponseUsage(input_tokens=5, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=0, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, cached_tokens=0), total_tokens=5)
+    In: 5; Out: 0; Total: 5
 
 ------------------------------------------------------------------------
 
@@ -316,7 +321,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ResponseUsage.\_\_repr\_\_
 
->  ResponseUsage.__repr__ ()
+``` python
+
+def __repr__(
+    
+):
+
+```
 
 *Return repr(self).*
 
@@ -344,7 +355,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ResponseUsage.\_\_add\_\_
 
->  ResponseUsage.__add__ (b)
+``` python
+
+def __add__(
+    b
+):
+
+```
 
 *Add together each of `input_tokens` and `output_tokens`*
 
@@ -374,7 +391,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### wrap_latex
 
->  wrap_latex (text)
+``` python
+
+def wrap_latex(
+    text
+):
+
+```
 
 *Replace OpenAI LaTeX codes with markdown-compatible ones*
 
@@ -401,12 +424,12 @@ r = cli.create(input=[m], model=model, max_output_tokens=400, **rkw)
 r
 ```
 
-Hi Jeremy — how can I help you today?
+Nice to meet you, Jeremy. How can I help you today?
 
 <details>
 
-- id: resp_066ef03f7862205800691ba48bb41081a29fe24bedaae17e2e
-- created_at: 1763419275.0
+- id: resp_0234b44bdd8bf5d2006943fc008fe88190970de1236e42e2f0
+- created_at: 1766063104.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -414,13 +437,14 @@ Hi Jeremy — how can I help you today?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_066ef03f7862205800691ba48c2f4881a2acf01543b4dbe11c’,
+  \[ResponseReasoningItem(id=‘rs_0234b44bdd8bf5d2006943fc00d530819098ee80460a88d72d’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_066ef03f7862205800691ba48ca67881a2840c269a2db188c8’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Hi Jeremy — how
-  can I help you today?’, type=‘output_text’, logprobs=\[\])\],
-  role=‘assistant’, status=‘completed’, type=‘message’)\]
+  ResponseOutputMessage(id=‘msg_0234b44bdd8bf5d2006943fc00ffcc8190b0df6e7599b23188’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘Nice to meet you,
+  Jeremy. How can I help you today?’, type=‘output_text’,
+  logprobs=\[\])\], role=‘assistant’, status=‘completed’,
+  type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -445,11 +469,11 @@ Hi Jeremy — how can I help you today?
 - truncation: disabled
 - usage: ResponseUsage(input_tokens=8,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=16,
+  output_tokens=20,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=24)
+  total_tokens=28)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -458,7 +482,7 @@ Hi Jeremy — how can I help you today?
 print(r)
 ```
 
-    Response(id='resp_066ef03f7862205800691ba48bb41081a29fe24bedaae17e2e', created_at=1763419275.0, error=None, incomplete_details=None, instructions=None, metadata={}, model='gpt-5-mini-2025-08-07', object='response', output=[ResponseReasoningItem(id='rs_066ef03f7862205800691ba48c2f4881a2acf01543b4dbe11c', summary=[], type='reasoning', content=None, encrypted_content=None, status=None), ResponseOutputMessage(id='msg_066ef03f7862205800691ba48ca67881a2840c269a2db188c8', content=[ResponseOutputText(annotations=[], text='Hi Jeremy — how can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, background=False, conversation=None, max_output_tokens=400, max_tool_calls=None, previous_response_id=None, prompt=None, prompt_cache_key=None, prompt_cache_retention=None, reasoning=Reasoning(effort='minimal', generate_summary=None, summary=None), safety_identifier=None, service_tier='default', status='completed', text=ResponseTextConfig(format=ResponseFormatText(type='text'), verbosity='low'), top_logprobs=0, truncation='disabled', usage=In: 8; Out: 16; Total: 24, user=None, billing={'payer': 'developer'}, store=True)
+    Response(id='resp_0234b44bdd8bf5d2006943fc008fe88190970de1236e42e2f0', created_at=1766063104.0, error=None, incomplete_details=None, instructions=None, metadata={}, model='gpt-5-mini-2025-08-07', object='response', output=[ResponseReasoningItem(id='rs_0234b44bdd8bf5d2006943fc00d530819098ee80460a88d72d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None), ResponseOutputMessage(id='msg_0234b44bdd8bf5d2006943fc00ffcc8190b0df6e7599b23188', content=[ResponseOutputText(annotations=[], text='Nice to meet you, Jeremy. How can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')], parallel_tool_calls=True, temperature=1.0, tool_choice='auto', tools=[], top_p=1.0, background=False, conversation=None, max_output_tokens=400, max_tool_calls=None, previous_response_id=None, prompt=None, prompt_cache_key=None, prompt_cache_retention=None, reasoning=Reasoning(effort='minimal', generate_summary=None, summary=None), safety_identifier=None, service_tier='default', status='completed', text=ResponseTextConfig(format=ResponseFormatText(type='text'), verbosity='low'), top_logprobs=0, truncation='disabled', usage=In: 8; Out: 20; Total: 28, user=None, billing={'payer': 'openai'}, store=True)
 
 We can pass more than just text messages to OpenAI. As we’ll see later
 we can also pass images, SDK objects, etc. To handle these different
@@ -478,20 +502,20 @@ msgs
 ```
 
     [{'role': 'user', 'content': "I'm Jeremy"},
-     ResponseReasoningItem(id='rs_066ef03f7862205800691ba48c2f4881a2acf01543b4dbe11c', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseOutputMessage(id='msg_066ef03f7862205800691ba48ca67881a2840c269a2db188c8', content=[ResponseOutputText(annotations=[], text='Hi Jeremy — how can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message'),
+     ResponseReasoningItem(id='rs_0234b44bdd8bf5d2006943fc00d530819098ee80460a88d72d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_0234b44bdd8bf5d2006943fc00ffcc8190b0df6e7599b23188', content=[ResponseOutputText(annotations=[], text='Nice to meet you, Jeremy. How can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message'),
      {'role': 'user', 'content': 'I forgot my name. Can you remind me please?'}]
 
 ``` python
 cli.create(input=msgs, model=model, max_output_tokens=400, **rkw)
 ```
 
-You said your name is Jeremy.
+You told me your name is Jeremy.
 
 <details>
 
-- id: resp_066ef03f7862205800691ba48d381881a2a7551de4b01beaab
-- created_at: 1763419277.0
+- id: resp_0234b44bdd8bf5d2006943fc0198d481909981aa9c1e32488c
+- created_at: 1766063105.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -499,11 +523,11 @@ You said your name is Jeremy.
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_066ef03f7862205800691ba48d847c81a2870ffcea385813eb’,
+  \[ResponseReasoningItem(id=‘rs_0234b44bdd8bf5d2006943fc01ec0881908c7b8f1fea4a4c59’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_066ef03f7862205800691ba48db7b881a2853ab00c72cc912e’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘You said your
+  ResponseOutputMessage(id=‘msg_0234b44bdd8bf5d2006943fc0255948190973533dd978af3ad’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘You told me your
   name is Jeremy.’, type=‘output_text’, logprobs=\[\])\],
   role=‘assistant’, status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
@@ -528,13 +552,13 @@ You said your name is Jeremy.
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=39,
+- usage: ResponseUsage(input_tokens=43,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=13,
+  output_tokens=14,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=52)
+  total_tokens=57)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -551,7 +575,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Client
 
->  Client (model, cli=None, api_key_env=None, base_url=None)
+``` python
+
+def Client(
+    model, cli:NoneType=None, api_key_env:NoneType=None, base_url:NoneType=None
+):
+
+```
 
 *Basic LLM messages client.*
 
@@ -597,7 +627,7 @@ c._r(r)
 c.use
 ```
 
-    In: 8; Out: 16; Total: 24
+    In: 8; Out: 20; Total: 28
 
 ------------------------------------------------------------------------
 
@@ -607,7 +637,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_openai_func
 
->  mk_openai_func (f)
+``` python
+
+def mk_openai_func(
+    f
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -617,7 +653,24 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_tool_choice
 
->  mk_tool_choice (f)
+``` python
+
+def mk_tool_choice(
+    f
+):
+
+```
+
+Our mk_tool_choice converts falsy values to `NOT_GIVEN` which omits the
+value completely from the API call. It treats any string except for
+`'required'|'none'` as tool call and converts it to dictionary
+
+``` python
+  {"type": "function", "function": {"name": f}}
+```
+
+The remaining option `'auto'` is the default, so we simply recommend
+using `None` that translates to `NOT_GIVEN`.
 
 ------------------------------------------------------------------------
 
@@ -627,7 +680,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_stream
 
->  get_stream (o, r, cli, cb=None)
+``` python
+
+def get_stream(
+    o, r, cli, cb:NoneType=None
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -637,300 +696,50 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Client.\_\_call\_\_
 
->  Client.__call__ (msgs:list, sp:str='', maxtok=4096, stream:bool=False,
->                       tools:Optional[list]=None,
->                       tool_choice:Optional[str]=None, cb:<built-
->                       infunctioncallable>=None,
->                       background:Optional[bool]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, conversation:Optional[response_create_p
->                       arams.Conversation]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, include:Optional[List[ResponseIncludabl
->                       e]]|Omit=<openai.Omit object at 0x7f959677c6a0>,
->                       input:Union[str,ResponseInputParam]|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       instructions:Optional[str]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       max_output_tokens:Optional[int]|Omit=<openai.Omit object
->                       at 0x7f959677c6a0>,
->                       max_tool_calls:Optional[int]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       metadata:Optional[Metadata]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, model:ResponsesModel|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       parallel_tool_calls:Optional[bool]|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       previous_response_id:Optional[str]|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       prompt:Optional[ResponsePromptParam]|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       prompt_cache_key:str|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       prompt_cache_retention:"Optional[Literal['in-
->                       memory','24h']]|Omit"=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       reasoning:Optional[Reasoning]|Omit=<openai.Omit object
->                       at 0x7f959677c6a0>,
->                       safety_identifier:str|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, service_tier:"Optional[Literal['auto','
->                       default','flex','scale','priority']]|Omit"=<openai.Omit
->                       object at 0x7f959677c6a0>,
->                       store:Optional[bool]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, stream_options:Optional[response_create
->                       _params.StreamOptions]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       temperature:Optional[float]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       text:ResponseTextConfigParam|Omit=<openai.Omit object at
->                       0x7f959677c6a0>,
->                       top_logprobs:Optional[int]|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, top_p:Optional[float]|Omit=<openai.Omit
->                       object at 0x7f959677c6a0>, truncation:"Optional[Literal[
->                       'auto','disabled']]|Omit"=<openai.Omit object at
->                       0x7f959677c6a0>, user:str|Omit=<openai.Omit object at
->                       0x7f959677c6a0>, extra_headers:Headers|None=None,
->                       extra_query:Query|None=None, extra_body:Body|None=None,
->                       timeout:float|httpx.Timeout|None|NotGiven=NOT_GIVEN)
+``` python
+
+def __call__(
+    msgs:list, # List of messages in the dialog
+    sp:str='', # System prompt
+    maxtok:int=4096, # Maximum tokens
+    stream:bool=False, # Stream response?
+    tools:Optional=None, # List of tools to make available
+    tool_choice:Optional=None, # Forced tool choice
+    cb:callable=None, # Callback after completion
+    background:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    conversation:Optional[response_create_params.Conversation] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    include:Optional[List[ResponseIncludable]] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    input:Union[str, ResponseInputParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    instructions:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_output_tokens:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_tool_calls:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    metadata:Optional[Metadata] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    model:ResponsesModel | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    parallel_tool_calls:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    previous_response_id:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt:Optional[ResponsePromptParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_key:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_retention:Optional[Literal['in-memory', '24h']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    reasoning:Optional[Reasoning] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    safety_identifier:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    service_tier:Optional[Literal['auto', 'default', 'flex', 'scale', 'priority']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    store:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    stream_options:Optional[response_create_params.StreamOptions] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    temperature:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    text:ResponseTextConfigParam | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_logprobs:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_p:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    truncation:Optional[Literal['auto', 'disabled']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    user:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    extra_headers:Headers | None=None, # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_query:Query | None=None, extra_body:Body | None=None,
+    timeout:float | httpx.Timeout | None | NotGiven=NOT_GIVEN
+):
+
+```
 
 *Make a call to LLM.*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>msgs</td>
-<td>list</td>
-<td></td>
-<td>List of messages in the dialog</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td>System prompt</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td>List of tools to make available</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Forced tool choice</td>
-</tr>
-<tr>
-<td>cb</td>
-<td>callable</td>
-<td>None</td>
-<td>Callback after completion</td>
-</tr>
-<tr>
-<td>background</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>conversation</td>
-<td>Optional[response_create_params.Conversation] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>include</td>
-<td>Optional[List[ResponseIncludable]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>input</td>
-<td>Union[str, ResponseInputParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_output_tokens</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_tool_calls</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>Optional[Metadata] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>model</td>
-<td>ResponsesModel | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>parallel_tool_calls</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>previous_response_id</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>Optional[ResponsePromptParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_key</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_retention</td>
-<td>Optional[Literal[‘in-memory’, ‘24h’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>reasoning</td>
-<td>Optional[Reasoning] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>safety_identifier</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>service_tier</td>
-<td>Optional[Literal[‘auto’, ‘default’, ‘flex’, ‘scale’, ‘priority’]] |
-Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>store</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>stream_options</td>
-<td>Optional[response_create_params.StreamOptions] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>temperature</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>text</td>
-<td>ResponseTextConfigParam | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_logprobs</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_p</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>truncation</td>
-<td>Optional[Literal[‘auto’, ‘disabled’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_headers</td>
-<td>Optional</td>
-<td>None</td>
-<td>Use the following arguments if you need to pass additional
-parameters to the API that aren’t available via kwargs.<br>The extra
-values given here take precedence over values defined on the client or
-passed to this method.</td>
-</tr>
-<tr>
-<td>extra_query</td>
-<td>Query | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_body</td>
-<td>Body | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>float | httpx.Timeout | None | NotGiven</td>
-<td>NOT_GIVEN</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -971,12 +780,12 @@ msgs = 'Hi'
 c(msgs)
 ```
 
-Hi — how can I help you today?
+Hi! How can I help you today?
 
 <details>
 
-- id: resp_0de6f9b93aaf7e0400691ba48f7094819fa6eb50bcd2c21be2
-- created_at: 1763419279.0
+- id: resp_065c2e7e7bef6bde006943fc03236c8195b210bffc9db409ef
+- created_at: 1766063107.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -984,10 +793,80 @@ Hi — how can I help you today?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_0de6f9b93aaf7e0400691ba4904244819f8c5919a926063328’,
+  \[ResponseReasoningItem(id=‘rs_065c2e7e7bef6bde006943fc0373d08195b33048fb368515ca’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_0de6f9b93aaf7e0400691ba4916e98819f8ff7670784ac5a1c’,
+  ResponseOutputMessage(id=‘msg_065c2e7e7bef6bde006943fc04b9a081958509334f1f7d9aaf’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘Hi! How can I
+  help you today?’, type=‘output_text’, logprobs=\[\])\],
+  role=‘assistant’, status=‘completed’, type=‘message’)\]
+- parallel_tool_calls: True
+- temperature: 1.0
+- tool_choice: auto
+- tools: \[\]
+- top_p: 1.0
+- background: False
+- conversation: None
+- max_output_tokens: 4096
+- max_tool_calls: None
+- previous_response_id: None
+- prompt: None
+- prompt_cache_key: None
+- prompt_cache_retention: None
+- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
+  summary=None)
+- safety_identifier: None
+- service_tier: default
+- status: completed
+- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
+  verbosity=‘medium’)
+- top_logprobs: 0
+- truncation: disabled
+- usage: ResponseUsage(input_tokens=7,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=79,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
+  total_tokens=86)
+- user: None
+- billing: {‘payer’: ‘openai’}
+- store: True
+
+</details>
+
+``` python
+c.use
+```
+
+    In: 15; Out: 99; Total: 114
+
+``` python
+r = c(msgs, stream=True)
+for o in r: print(o, end='')
+```
+
+    Hi — how can I help you today?
+
+``` python
+r.value
+```
+
+Hi — how can I help you today?
+
+<details>
+
+- id: resp_0fa910a22542c20a006943fc0536708195b5bc51bfb1e09461
+- created_at: 1766063109.0
+- error: None
+- incomplete_details: None
+- instructions: None
+- metadata: {}
+- model: gpt-5-mini-2025-08-07
+- object: response
+- output:
+  \[ResponseReasoningItem(id=‘rs_0fa910a22542c20a006943fc057d6881959dc6d6773a9e11e3’,
+  summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
+  status=None),
+  ResponseOutputMessage(id=‘msg_0fa910a22542c20a006943fc069ef88195b4bbe832ae4bed0a’,
   content=\[ResponseOutputText(annotations=\[\], text=‘Hi — how can I
   help you today?’, type=‘output_text’, logprobs=\[\])\],
   role=‘assistant’, status=‘completed’, type=‘message’)\]
@@ -1019,99 +898,6 @@ Hi — how can I help you today?
   output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
   total_tokens=86)
 - user: None
-- billing: {‘payer’: ‘developer’}
-- store: True
-
-</details>
-
-``` python
-c.use
-```
-
-    In: 15; Out: 95; Total: 110
-
-``` python
-r = c(msgs, stream=True)
-for o in r: print(o, end='')
-```
-
-    Hi — how can I help you today? 
-
-    Here are some things I can do if that helps you decide:
-    - Answer questions or explain concepts
-    - Draft, edit, or summarize text (emails, essays, reports)
-    - Brainstorm ideas (projects, names, topics)
-    - Help with coding, debugging, or math
-    - Translate or proofread
-    - Plan trips, schedules, or workouts
-
-    Or just tell me what you need and I’ll jump in.
-
-``` python
-r.value
-```
-
-Hi — how can I help you today?
-
-Here are some things I can do if that helps you decide: - Answer
-questions or explain concepts - Draft, edit, or summarize text (emails,
-essays, reports) - Brainstorm ideas (projects, names, topics) - Help
-with coding, debugging, or math - Translate or proofread - Plan trips,
-schedules, or workouts
-
-Or just tell me what you need and I’ll jump in.
-
-<details>
-
-- id: resp_0b3414f405d0a98000691ba491e73c81a1ae6fb0fa5be1b907
-- created_at: 1763419281.0
-- error: None
-- incomplete_details: None
-- instructions: None
-- metadata: {}
-- model: gpt-5-mini-2025-08-07
-- object: response
-- output:
-  \[ResponseReasoningItem(id=‘rs_0b3414f405d0a98000691ba49223f081a1ba1f46db0bd49879’,
-  summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
-  status=None),
-  ResponseOutputMessage(id=‘msg_0b3414f405d0a98000691ba49364e081a196006d4fd870cd0a’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Hi — how can I
-  help you today? are some things I can do if that helps you decide:-
-  Answer questions or explain concepts- Draft, edit, or summarize text
-  (emails, essays, reports)- Brainstorm ideas (projects, names, topics)-
-  Help with coding, debugging, or math- Translate or proofread- Plan
-  trips, schedules, or workoutsjust tell me what you need and I’ll jump
-  in.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[\]
-- top_p: 1.0
-- background: False
-- conversation: None
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- prompt_cache_retention: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=‘medium’)
-- top_logprobs: 0
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=7,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=164,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
-  total_tokens=171)
-- user: None
 - store: True
 
 </details>
@@ -1120,25 +906,25 @@ Or just tell me what you need and I’ll jump in.
 len(r.events)
 ```
 
-    104
+    19
 
 ``` python
 c.use
 ```
 
-    In: 22; Out: 259; Total: 281
+    In: 22; Out: 178; Total: 200
 
 ``` python
 c(msgs, sp='Talk like GLaDOS.', **rkw)
 ```
 
-Oh, hello. I suppose you wanted to say something. Go on — make it
-interesting.
+Hello. It’s… delightful that you’ve decided to communicate. State your
+purpose so we may proceed with minimal wasted time.
 
 <details>
 
-- id: resp_000bd80fb2574b5b00691ba496a47481a098cd19747ae4945e
-- created_at: 1763419286.0
+- id: resp_0193b4fcbba4639a006943fc0711c48197bdd2e56dc80b6e6e
+- created_at: 1766063111.0
 - error: None
 - incomplete_details: None
 - instructions: Talk like GLaDOS.
@@ -1146,14 +932,15 @@ interesting.
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_000bd80fb2574b5b00691ba497180c81a0ba3417974bb34f02’,
+  \[ResponseReasoningItem(id=‘rs_0193b4fcbba4639a006943fc0759408197b8630a59417d0a52’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_000bd80fb2574b5b00691ba4973b0881a0a2765d0a594e5167’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Oh, hello. I
-  suppose you wanted to say something. Go on — make it interesting.’,
-  type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
+  ResponseOutputMessage(id=‘msg_0193b4fcbba4639a006943fc0791648197accd6a3c0557678b’,
+  content=\[ResponseOutputText(annotations=\[\], text=“Hello. It’s…
+  delightful that you’ve decided to communicate. State your purpose so
+  we may proceed with minimal wasted time.”, type=‘output_text’,
+  logprobs=\[\])\], role=‘assistant’, status=‘completed’,
+  type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -1178,11 +965,11 @@ interesting.
 - truncation: disabled
 - usage: ResponseUsage(input_tokens=17,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=25,
+  output_tokens=29,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=42)
+  total_tokens=46)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -1231,12 +1018,12 @@ c = Client(model)
 c(msg, **rkw)
 ```
 
-The flowers are purple.
+Light purple (lavender) flowers.
 
 <details>
 
-- id: resp_054dd489ed3e49a700691ba498325c819d8aa117b838886210
-- created_at: 1763419288.0
+- id: resp_06c91e5a9021060d006943fc0859c08194a4697c2a89807169
+- created_at: 1766063112.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -1244,13 +1031,13 @@ The flowers are purple.
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_054dd489ed3e49a700691ba498bf08819d9e1af187eb4dd401’,
+  \[ResponseReasoningItem(id=‘rs_06c91e5a9021060d006943fc08ba9c8194905c9143163f1283’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_054dd489ed3e49a700691ba498c620819d8f58a822b9d269f4’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘The flowers are
-  purple.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
+  ResponseOutputMessage(id=‘msg_06c91e5a9021060d006943fc08e2a48194989a0193da86fdcf’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘Light purple
+  (lavender) flowers.’, type=‘output_text’, logprobs=\[\])\],
+  role=‘assistant’, status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -1275,11 +1062,11 @@ The flowers are purple.
 - truncation: disabled
 - usage: ResponseUsage(input_tokens=107,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=11,
+  output_tokens=14,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=118)
+  total_tokens=121)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -1335,14 +1122,14 @@ tc = [o for o in r.output if isinstance(o, ResponseFunctionToolCall)]
 tc
 ```
 
-    [ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_Dlpla3agsovUqWYMBEtydSRZ', name='sums', type='function_call', id='fc_0b05ac64fb9f2e3300691ba49a52f481a09ac755b15b55aba9', status='completed')]
+    [ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_uZ9bpRTk2Rnr9vMKUGXh5gOZ', name='sums', type='function_call', id='fc_0278bf5ab7665d17006943fc0a0f508194aa69f150e7e7c560', status='completed')]
 
 ``` python
 func = tc[0]
 func
 ```
 
-    ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_Dlpla3agsovUqWYMBEtydSRZ', name='sums', type='function_call', id='fc_0b05ac64fb9f2e3300691ba49a52f481a09ac755b15b55aba9', status='completed')
+    ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_uZ9bpRTk2Rnr9vMKUGXh5gOZ', name='sums', type='function_call', id='fc_0278bf5ab7665d17006943fc0a0f508194aa69f150e7e7c560', status='completed')
 
 ------------------------------------------------------------------------
 
@@ -1352,14 +1139,21 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### call_func_openai
 
->  call_func_openai (func, ns:Optional[collections.abc.Mapping]=None)
+``` python
+
+def call_func_openai(
+    func, ns:Optional=None
+):
+
+```
 
 <details open class="code-fold">
 <summary>Exported source</summary>
 
 ``` python
 def call_func_openai(func, ns:Optional[abc.Mapping]=None):
-    return call_func(func.name, json.loads(func.arguments), ns, raise_on_err=False)
+    try: return call_func(func.name, json.loads(func.arguments), ns, raise_on_err=False)
+    except KeyError as e: return f"Error - tool not defined in the tool_schemas: {func.name}"
 ```
 
 </details>
@@ -1377,40 +1171,119 @@ res
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L178"
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L177"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### allowed_tools
+
+``` python
+
+def allowed_tools(
+    specs:Optional=None, choice:Union=None
+):
+
+```
+
+<details open class="code-fold">
+<summary>Exported source</summary>
+
+``` python
+def _get_name(f):
+    if isinstance(f,str): return f
+    if isinstance(f, dict): return f['name']
+    if callable(f) and hasattr(f, '__name__'): return f.__name__
+
+def allowed_tools(specs:Optional[list]=None, choice:Optional[Union[dict,str]]=None):
+    if choice:
+        choice = mk_tool_choice(choice)
+        if isinstance(choice, dict) and choice['type'] == 'function': 
+            return {choice['function']['name']}
+    return {_get_name(v) for v in specs or []}
+```
+
+</details>
+
+``` python
+allowed_tools([sums, add], 'add')
+```
+
+    {'add'}
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L185"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### limit_ns
+
+``` python
+
+def limit_ns(
+    ns:Optional=None, # Namespace to search for tools
+    specs:Union=None, # List of the tools that are allowed for llm to call, if None no tools are allowed
+    choice:Union=None, # Tool choice as defined by Anthropic API
+):
+
+```
+
+*Filter namespace `ns` to only include tools allowed by `specs` and
+`choice`*
+
+<details open class="code-fold">
+<summary>Exported source</summary>
+
+``` python
+def limit_ns(
+    ns:Optional[abc.Mapping]=None, # Namespace to search for tools
+    specs:Optional[Union[str,abc.Callable]]=None, # List of the tools that are allowed for llm to call, if None no tools are allowed
+    choice:Optional[Union[dict,str]]=None # Tool choice as defined by Anthropic API
+    ):
+    "Filter namespace `ns` to only include tools allowed by `specs` and `choice`"
+    if ns is None: ns = globals()
+    if not isinstance(ns, abc.Mapping): ns = mk_ns(ns)
+    ns = {k:v for k,v in ns.items() if k in allowed_tools(specs, choice)}
+    return ns
+```
+
+</details>
+
+``` python
+limit_ns([sums, add], None, None)
+```
+
+    {}
+
+``` python
+limit_ns([sums, add], ['sums'], None)
+```
+
+    {'sums': <function __main__.sums(a: int, b: int) -> int>}
+
+``` python
+limit_ns([sums, add], ['sums', add], 'add')
+```
+
+    {'add': <function __main__.add(x: int, y: int)>}
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L204"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_toolres
 
->  mk_toolres (r:collections.abc.Mapping,
->                  ns:Optional[collections.abc.Mapping]=None)
+``` python
+
+def mk_toolres(
+    r:Mapping, # Response containing tool use request
+    ns:Optional=None, # Namespace to search for tools
+):
+
+```
 
 *Create a `tool_result` message from response `r`.*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>Mapping</td>
-<td></td>
-<td>Response containing tool use request</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td>Namespace to search for tools</td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -1418,8 +1291,8 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ``` python
 def _toolres(r, ns):
     "Create a result dict from `tcs`."
-    tcs = [o for o in getattr(r, 'output', []) if isinstance(o, ResponseFunctionToolCall)]
     if ns is None: ns = globals()
+    tcs = [o for o in getattr(r, 'output', []) if isinstance(o, ResponseFunctionToolCall)]
     return { tc.call_id: call_func_openai(tc, ns=mk_ns(ns)) for tc in tcs }
 ```
 
@@ -1431,7 +1304,7 @@ def _toolres(r, ns):
 ``` python
 def mk_toolres(
     r:abc.Mapping, # Response containing tool use request
-    ns:Optional[abc.Mapping]=None # Namespace to search for tools
+    ns:Optional[abc.Mapping]=None, # Namespace to search for tools
     ):
     "Create a `tool_result` message from response `r`."
     tr = _toolres(r, ns)
@@ -1450,10 +1323,10 @@ tr
 
     Finding the sum of 604542 and 6458932
 
-    [ResponseReasoningItem(id='rs_0b05ac64fb9f2e3300691ba49a185881a0a14fd49b1ba0543b', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_Dlpla3agsovUqWYMBEtydSRZ', name='sums', type='function_call', id='fc_0b05ac64fb9f2e3300691ba49a52f481a09ac755b15b55aba9', status='completed'),
+    [ResponseReasoningItem(id='rs_0278bf5ab7665d17006943fc09c3e8819499322942022e9de6', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_uZ9bpRTk2Rnr9vMKUGXh5gOZ', name='sums', type='function_call', id='fc_0278bf5ab7665d17006943fc0a0f508194aa69f150e7e7c560', status='completed'),
      {'type': 'function_call_output',
-      'call_id': 'call_Dlpla3agsovUqWYMBEtydSRZ',
+      'call_id': 'call_uZ9bpRTk2Rnr9vMKUGXh5gOZ',
       'output': '7063474'}]
 
 ``` python
@@ -1469,8 +1342,8 @@ res
 
 <details>
 
-- id: resp_0b05ac64fb9f2e3300691ba49b810881a0a17737bf23005f54
-- created_at: 1763419291.0
+- id: resp_0278bf5ab7665d17006943fc0ae8f081949ba1ce578dc4a48b
+- created_at: 1766063114.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -1480,7 +1353,7 @@ res
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseOutputMessage(id=‘msg_0b05ac64fb9f2e3300691ba49c627481a0b80f4cb5db7b9fbb’,
+  \[ResponseOutputMessage(id=‘msg_0278bf5ab7665d17006943fc0b33f081948ac26c67ad12dcef’,
   content=\[ResponseOutputText(annotations=\[\], text=‘604542 +
   6,458,932 = 7,063,474’, type=‘output_text’, logprobs=\[\])\],
   role=‘assistant’, status=‘completed’, type=‘message’)\]
@@ -1517,10 +1390,21 @@ res
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
   total_tokens=177)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
+
+``` python
+tr = mk_toolres(r, ns=limit_ns([sums, add], [sums, add], 'add'))
+tr
+```
+
+    [ResponseReasoningItem(id='rs_0278bf5ab7665d17006943fc09c3e8819499322942022e9de6', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_uZ9bpRTk2Rnr9vMKUGXh5gOZ', name='sums', type='function_call', id='fc_0278bf5ab7665d17006943fc0a0f508194aa69f150e7e7c560', status='completed'),
+     {'type': 'function_call_output',
+      'call_id': 'call_uZ9bpRTk2Rnr9vMKUGXh5gOZ',
+      'output': 'Error - tool not defined in the tool_schemas: sums'}]
 
 This should also work in situations where no tool use is required:
 
@@ -1533,8 +1417,8 @@ Nice to meet you, Jeremy. How can I help you today?
 
 <details>
 
-- id: resp_0aef60f57b7b2a2800691ba49d5ed88195b06058eecd01fcd7
-- created_at: 1763419293.0
+- id: resp_01af5661a0ba543e006943fc0c01ac8196b66f21a944c1337e
+- created_at: 1766063116.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -1544,10 +1428,10 @@ Nice to meet you, Jeremy. How can I help you today?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_0aef60f57b7b2a2800691ba49dd0dc8195accd2091ef50bcef’,
+  \[ResponseReasoningItem(id=‘rs_01af5661a0ba543e006943fc0c4e588196934dd914a099574c’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_0aef60f57b7b2a2800691ba49df7a881959ba9c14b029648f5’,
+  ResponseOutputMessage(id=‘msg_01af5661a0ba543e006943fc0c77d481969ca90d07baa45c08’,
   content=\[ResponseOutputText(annotations=\[\], text=‘Nice to meet you,
   Jeremy. How can I help you today?’, type=‘output_text’,
   logprobs=\[\])\], role=‘assistant’, status=‘completed’,
@@ -1585,7 +1469,7 @@ Nice to meet you, Jeremy. How can I help you today?
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
   total_tokens=116)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -1593,316 +1477,57 @@ Nice to meet you, Jeremy. How can I help you today?
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L192"
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L218"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Client.structured
 
->  Client.structured (msgs:list, tools:Optional[list]=None,
->                         ns:Optional[collections.abc.Mapping]=None, sp:str='',
->                         maxtok=4096, stream:bool=False,
->                         tool_choice:Optional[str]=None, cb:<built-
->                         infunctioncallable>=None,
->                         background:Optional[bool]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, conversation:Optional[response_create
->                         _params.Conversation]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, include:Optional[List[ResponseIncluda
->                         ble]]|Omit=<openai.Omit object at 0x7f959677c6a0>,
->                         input:Union[str,ResponseInputParam]|Omit=<openai.Omit
->                         object at 0x7f959677c6a0>,
->                         instructions:Optional[str]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         max_output_tokens:Optional[int]|Omit=<openai.Omit
->                         object at 0x7f959677c6a0>,
->                         max_tool_calls:Optional[int]|Omit=<openai.Omit object
->                         at 0x7f959677c6a0>,
->                         metadata:Optional[Metadata]|Omit=<openai.Omit object
->                         at 0x7f959677c6a0>,
->                         model:ResponsesModel|Omit=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         parallel_tool_calls:Optional[bool]|Omit=<openai.Omit
->                         object at 0x7f959677c6a0>,
->                         previous_response_id:Optional[str]|Omit=<openai.Omit
->                         object at 0x7f959677c6a0>,
->                         prompt:Optional[ResponsePromptParam]|Omit=<openai.Omit
->                         object at 0x7f959677c6a0>,
->                         prompt_cache_key:str|Omit=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         prompt_cache_retention:"Optional[Literal['in-
->                         memory','24h']]|Omit"=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         reasoning:Optional[Reasoning]|Omit=<openai.Omit object
->                         at 0x7f959677c6a0>,
->                         safety_identifier:str|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, service_tier:"Optional[Literal['auto'
->                         ,'default','flex','scale','priority']]|Omit"=<openai.O
->                         mit object at 0x7f959677c6a0>,
->                         store:Optional[bool]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, stream_options:Optional[response_crea
->                         te_params.StreamOptions]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         temperature:Optional[float]|Omit=<openai.Omit object
->                         at 0x7f959677c6a0>,
->                         text:ResponseTextConfigParam|Omit=<openai.Omit object
->                         at 0x7f959677c6a0>,
->                         top_logprobs:Optional[int]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>,
->                         top_p:Optional[float]|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, truncation:"Optional[Literal['auto','
->                         disabled']]|Omit"=<openai.Omit object at
->                         0x7f959677c6a0>, user:str|Omit=<openai.Omit object at
->                         0x7f959677c6a0>, extra_headers:Headers|None=None,
->                         extra_query:Query|None=None,
->                         extra_body:Body|None=None,
->                         timeout:float|httpx.Timeout|None|NotGiven=NOT_GIVEN)
+``` python
+
+def structured(
+    msgs:list, # Prompt
+    tools:Optional=None, # List of tools to make available to OpenAI model
+    ns:Optional=None, # Namespace to search for tools
+    sp:str='', # System prompt
+    maxtok:int=4096, # Maximum tokens
+    stream:bool=False, # Stream response?
+    tool_choice:Optional=None, # Forced tool choice
+    cb:callable=None, # Callback after completion
+    background:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    conversation:Optional[response_create_params.Conversation] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    include:Optional[List[ResponseIncludable]] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    input:Union[str, ResponseInputParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    instructions:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_output_tokens:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_tool_calls:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    metadata:Optional[Metadata] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    model:ResponsesModel | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    parallel_tool_calls:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    previous_response_id:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt:Optional[ResponsePromptParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_key:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_retention:Optional[Literal['in-memory', '24h']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    reasoning:Optional[Reasoning] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    safety_identifier:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    service_tier:Optional[Literal['auto', 'default', 'flex', 'scale', 'priority']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    store:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    stream_options:Optional[response_create_params.StreamOptions] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    temperature:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    text:ResponseTextConfigParam | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_logprobs:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_p:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    truncation:Optional[Literal['auto', 'disabled']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    user:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    extra_headers:Headers | None=None, # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_query:Query | None=None, extra_body:Body | None=None,
+    timeout:float | httpx.Timeout | None | NotGiven=NOT_GIVEN
+):
+
+```
 
 *Return the value of all tool calls (generally used for structured
 outputs)*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>msgs</td>
-<td>list</td>
-<td></td>
-<td>Prompt</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td>List of tools to make available to OpenAI model</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td>Namespace to search for tools</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td>System prompt</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Forced tool choice</td>
-</tr>
-<tr>
-<td>cb</td>
-<td>callable</td>
-<td>None</td>
-<td>Callback after completion</td>
-</tr>
-<tr>
-<td>background</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>conversation</td>
-<td>Optional[response_create_params.Conversation] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>include</td>
-<td>Optional[List[ResponseIncludable]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>input</td>
-<td>Union[str, ResponseInputParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_output_tokens</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_tool_calls</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>Optional[Metadata] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>model</td>
-<td>ResponsesModel | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>parallel_tool_calls</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>previous_response_id</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>Optional[ResponsePromptParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_key</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_retention</td>
-<td>Optional[Literal[‘in-memory’, ‘24h’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>reasoning</td>
-<td>Optional[Reasoning] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>safety_identifier</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>service_tier</td>
-<td>Optional[Literal[‘auto’, ‘default’, ‘flex’, ‘scale’, ‘priority’]] |
-Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>store</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>stream_options</td>
-<td>Optional[response_create_params.StreamOptions] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>temperature</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>text</td>
-<td>ResponseTextConfigParam | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_logprobs</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_p</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>truncation</td>
-<td>Optional[Literal[‘auto’, ‘disabled’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_headers</td>
-<td>Optional</td>
-<td>None</td>
-<td>Use the following arguments if you need to pass additional
-parameters to the API that aren’t available via kwargs.<br>The extra
-values given here take precedence over values defined on the client or
-passed to this method.</td>
-</tr>
-<tr>
-<td>extra_query</td>
-<td>Query | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_body</td>
-<td>Body | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>float | httpx.Timeout | None | NotGiven</td>
-<td>NOT_GIVEN</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -1961,8 +1586,8 @@ After streaming is complete, `value.output` will contain the tool calls:
 r.value.output
 ```
 
-    [ResponseReasoningItem(id='rs_08c3e97d4ddd09b800691ba4a0aafc8195bd7818f8d7b9ffb4', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_TrwIU2wLr6wVWIaXUwdqIWvg', name='sums', type='function_call', id='fc_08c3e97d4ddd09b800691ba4a0ed808195bb1339b1c870ea41', status='completed')]
+    [ResponseReasoningItem(id='rs_0e3b419c50c1b99f006943fc0f02488190b01c0e4f5473ad74', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_mBzrloUYhxSVlhuJLQx52BJT', name='sums', type='function_call', id='fc_0e3b419c50c1b99f006943fc0f60bc81909d88ed289f143273', status='completed')]
 
 Therefore we can repeat the same process as before, but using the
 `value` attr:
@@ -1975,12 +1600,12 @@ c(mk_msgs(msgs), sp=sysp, tools=tools, **rkw)
 
     Finding the sum of 604542 and 6458932
 
-7063474
+7,063,474
 
 <details>
 
-- id: resp_08c3e97d4ddd09b800691ba4a1b1fc8195b365eedb4fb6427f
-- created_at: 1763419297.0
+- id: resp_0e3b419c50c1b99f006943fc1025148190baac3f22eb1fc289
+- created_at: 1766063120.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -1990,8 +1615,8 @@ c(mk_msgs(msgs), sp=sysp, tools=tools, **rkw)
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseOutputMessage(id=‘msg_08c3e97d4ddd09b800691ba4a216448195a412da0131247b6c’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘7063474’,
+  \[ResponseOutputMessage(id=‘msg_0e3b419c50c1b99f006943fc1079f88190ad05b366136e4ff1’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘7,063,474’,
   type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
   status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
@@ -2023,11 +1648,11 @@ c(mk_msgs(msgs), sp=sysp, tools=tools, **rkw)
 - truncation: disabled
 - usage: ResponseUsage(input_tokens=157,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=7,
+  output_tokens=9,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=164)
+  total_tokens=166)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -2039,84 +1664,27 @@ c(mk_msgs(msgs), sp=sysp, tools=tools, **rkw)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L203"
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L229"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Chat
 
->  Chat (model:Optional[str]=None, cli:Optional[__main__.Client]=None,
->            sp='', tools:Optional[list]=None, hist:list=None,
->            tool_choice:Optional[str]=None,
->            ns:Optional[collections.abc.Mapping]=None, **kw)
+``` python
+
+def Chat(
+    model:Optional=None, # Model to use (leave empty if passing `cli`)
+    cli:Optional=None, # Client to use (leave empty if passing `model`)
+    sp:str='', # Optional system prompt
+    tools:Optional=None, # List of tools to make available
+    hist:list=None, # Initialize history
+    tool_choice:Optional=None, # Forced tool choice
+    ns:Optional=None, # Namespace to search for tools
+    kw:VAR_KEYWORD
+):
+
+```
 
 *OpenAI chat client.*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>model</td>
-<td>Optional</td>
-<td>None</td>
-<td>Model to use (leave empty if passing <code>cli</code>)</td>
-</tr>
-<tr>
-<td>cli</td>
-<td>Optional</td>
-<td>None</td>
-<td>Client to use (leave empty if passing <code>model</code>)</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td>Optional system prompt</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td>List of tools to make available</td>
-</tr>
-<tr>
-<td>hist</td>
-<td>list</td>
-<td>None</td>
-<td>Initialize history</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Forced tool choice</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td>Namespace to search for tools</td>
-</tr>
-<tr>
-<td>kw</td>
-<td>VAR_KEYWORD</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -2155,283 +1723,52 @@ chat.c.use, chat.h
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L226"
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/core.py#L252"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Chat.\_\_call\_\_
 
->  Chat.__call__ (pr=None, stream:bool=False, tools=None, tool_choice=None,
->                     background:Optional[bool]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, conversation:Optional[response_create_par
->                     ams.Conversation]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, include:Optional[List[ResponseIncludable]
->                     ]|Omit=<openai.Omit object at 0x7f959677c6a0>,
->                     input:Union[str,ResponseInputParam]|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>,
->                     instructions:Optional[str]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     max_output_tokens:Optional[int]|Omit=<openai.Omit object
->                     at 0x7f959677c6a0>,
->                     max_tool_calls:Optional[int]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     metadata:Optional[Metadata]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, model:ResponsesModel|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>,
->                     parallel_tool_calls:Optional[bool]|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>,
->                     previous_response_id:Optional[str]|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>,
->                     prompt:Optional[ResponsePromptParam]|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>,
->                     prompt_cache_key:str|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     prompt_cache_retention:"Optional[Literal['in-
->                     memory','24h']]|Omit"=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     reasoning:Optional[Reasoning]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, safety_identifier:str|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>, service_tier:"Optional[Literal[
->                     'auto','default','flex','scale','priority']]|Omit"=<openai
->                     .Omit object at 0x7f959677c6a0>,
->                     store:Optional[bool]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, stream_options:Optional[response_create_p
->                     arams.StreamOptions]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     temperature:Optional[float]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     text:ResponseTextConfigParam|Omit=<openai.Omit object at
->                     0x7f959677c6a0>,
->                     top_logprobs:Optional[int]|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, top_p:Optional[float]|Omit=<openai.Omit
->                     object at 0x7f959677c6a0>, truncation:"Optional[Literal['a
->                     uto','disabled']]|Omit"=<openai.Omit object at
->                     0x7f959677c6a0>, user:str|Omit=<openai.Omit object at
->                     0x7f959677c6a0>, extra_headers:Headers|None=None,
->                     extra_query:Query|None=None, extra_body:Body|None=None,
->                     timeout:float|httpx.Timeout|None|NotGiven=NOT_GIVEN)
+``` python
+
+def __call__(
+    pr:NoneType=None, # Prompt / message
+    stream:bool=False, # Stream response?
+    tools:NoneType=None, # Tools to use
+    tool_choice:NoneType=None, # Required tools to use
+    background:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    conversation:Optional[response_create_params.Conversation] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    include:Optional[List[ResponseIncludable]] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    input:Union[str, ResponseInputParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    instructions:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_output_tokens:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    max_tool_calls:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    metadata:Optional[Metadata] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    model:ResponsesModel | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    parallel_tool_calls:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    previous_response_id:Optional[str] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt:Optional[ResponsePromptParam] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_key:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    prompt_cache_retention:Optional[Literal['in-memory', '24h']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    reasoning:Optional[Reasoning] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    safety_identifier:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    service_tier:Optional[Literal['auto', 'default', 'flex', 'scale', 'priority']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    store:Optional[bool] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    stream_options:Optional[response_create_params.StreamOptions] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    temperature:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    text:ResponseTextConfigParam | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_logprobs:Optional[int] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    top_p:Optional[float] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    truncation:Optional[Literal['auto', 'disabled']] | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    user:str | Omit=<openai.Omit object at 0x7f338c0fc830>,
+    extra_headers:Headers | None=None, # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_query:Query | None=None, extra_body:Body | None=None,
+    timeout:float | httpx.Timeout | None | NotGiven=NOT_GIVEN
+):
+
+```
 
 *Add prompt `pr` to dialog and get a response*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pr</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Prompt / message</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Tools to use</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Required tools to use</td>
-</tr>
-<tr>
-<td>background</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>conversation</td>
-<td>Optional[response_create_params.Conversation] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>include</td>
-<td>Optional[List[ResponseIncludable]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>input</td>
-<td>Union[str, ResponseInputParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_output_tokens</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_tool_calls</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>Optional[Metadata] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>model</td>
-<td>ResponsesModel | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>parallel_tool_calls</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>previous_response_id</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>Optional[ResponsePromptParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_key</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_retention</td>
-<td>Optional[Literal[‘in-memory’, ‘24h’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>reasoning</td>
-<td>Optional[Reasoning] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>safety_identifier</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>service_tier</td>
-<td>Optional[Literal[‘auto’, ‘default’, ‘flex’, ‘scale’, ‘priority’]] |
-Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>store</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>stream_options</td>
-<td>Optional[response_create_params.StreamOptions] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>temperature</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>text</td>
-<td>ResponseTextConfigParam | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_logprobs</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_p</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>truncation</td>
-<td>Optional[Literal[‘auto’, ‘disabled’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f959677c6a0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_headers</td>
-<td>Optional</td>
-<td>None</td>
-<td>Use the following arguments if you need to pass additional
-parameters to the API that aren’t available via kwargs.<br>The extra
-values given here take precedence over values defined on the client or
-passed to this method.</td>
-</tr>
-<tr>
-<td>extra_query</td>
-<td>Query | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_body</td>
-<td>Body | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>float | httpx.Timeout | None | NotGiven</td>
-<td>NOT_GIVEN</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -2452,7 +1789,7 @@ def __call__(self:Chat,
     if not tool_choice: tool_choice = self.tool_choice
     kw = self.kw | kwargs
     def _cb(v):
-        self.last = mk_toolres(v, ns=self.ns)
+        self.last = mk_toolres(v, ns=limit_ns(self.ns, self.tools, tool_choice))
         self.h += self.last
     res = self.c(self.h, sp=self.sp, stream=stream, cb=_cb, tools=tools, **kw)
     return res
@@ -2465,12 +1802,12 @@ chat("I'm Jeremy")
 chat("What's my name?")
 ```
 
-Your name is Jeremy.
+You said your name is Jeremy.
 
 <details>
 
-- id: resp_035c622e9303fba600691ba4a3ec2c8192b023847c0feb78e9
-- created_at: 1763419299.0
+- id: resp_0fad0aabf9d158d7006943fc124d84819785a5290dc6c01b91
+- created_at: 1766063122.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -2480,13 +1817,13 @@ Your name is Jeremy.
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_035c622e9303fba600691ba4a48d28819299726cee46729ecb’,
+  \[ResponseReasoningItem(id=‘rs_0fad0aabf9d158d7006943fc12f2b48197a746f0750976bf02’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_035c622e9303fba600691ba4a4b7188192b44dfccd7d73bcf7’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Your name is
-  Jeremy.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
+  ResponseOutputMessage(id=‘msg_0fad0aabf9d158d7006943fc131c8081979f047c455a339294’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘You said your
+  name is Jeremy.’, type=‘output_text’, logprobs=\[\])\],
+  role=‘assistant’, status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -2509,13 +1846,13 @@ Your name is Jeremy.
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=68,
+- usage: ResponseUsage(input_tokens=64,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=11,
+  output_tokens=13,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=79)
+  total_tokens=77)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -2525,25 +1862,25 @@ chat = Chat(model, sp=sysp, **rkw)
 for o in chat("I'm Jeremy", stream=True): print(o, end='')
 ```
 
-    Nice to meet you, Jeremy. How can I help you today?
+    Hi Jeremy — nice to meet you. How can I help today?
 
 ``` python
 r = chat("What's my name?", stream=True, **rkw)
 for o in r: print(o, end='')
 ```
 
-    Your name is Jeremy.
+    You told me your name is Jeremy.
 
 ``` python
 r.value
 ```
 
-Your name is Jeremy.
+You told me your name is Jeremy.
 
 <details>
 
-- id: resp_08464518fa64a03200691ba4a693808190a7e46bee38560f98
-- created_at: 1763419302.0
+- id: resp_0543b2d5231a1965006943fc14ef008190aaec7f2241f09349
+- created_at: 1766063124.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -2553,13 +1890,13 @@ Your name is Jeremy.
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_08464518fa64a03200691ba4a71cec819093b98378fa21d647’,
+  \[ResponseReasoningItem(id=‘rs_0543b2d5231a1965006943fc153b188190b243d5ebcad39ee6’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_08464518fa64a03200691ba4a743f08190a8c4b9b9f933a435’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Your name is
-  Jeremy.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
+  ResponseOutputMessage(id=‘msg_0543b2d5231a1965006943fc1564bc81909b4a13499aca14fe’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘You told me your
+  name is Jeremy.’, type=‘output_text’, logprobs=\[\])\],
+  role=‘assistant’, status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -2584,9 +1921,9 @@ Your name is Jeremy.
 - truncation: disabled
 - usage: ResponseUsage(input_tokens=68,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=11,
+  output_tokens=14,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=79)
+  total_tokens=82)
 - user: None
 - store: True
 
@@ -2599,11 +1936,11 @@ chat.h
 ```
 
     [{'role': 'user', 'content': "I'm Jeremy"},
-     ResponseReasoningItem(id='rs_08464518fa64a03200691ba4a5ab60819099386e08686aa1d2', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseOutputMessage(id='msg_08464518fa64a03200691ba4a5ce48819095a23194bdaf6184', content=[ResponseOutputText(annotations=[], text='Nice to meet you, Jeremy. How can I help you today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message'),
+     ResponseReasoningItem(id='rs_0543b2d5231a1965006943fc143c408190832fd504f8544e47', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_0543b2d5231a1965006943fc147de8819096cf364e6b837d18', content=[ResponseOutputText(annotations=[], text='Hi Jeremy — nice to meet you. How can I help today?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message'),
      {'role': 'user', 'content': "What's my name?"},
-     ResponseReasoningItem(id='rs_08464518fa64a03200691ba4a71cec819093b98378fa21d647', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseOutputMessage(id='msg_08464518fa64a03200691ba4a743f08190a8c4b9b9f933a435', content=[ResponseOutputText(annotations=[], text='Your name is Jeremy.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
+     ResponseReasoningItem(id='rs_0543b2d5231a1965006943fc153b188190b243d5ebcad39ee6', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_0543b2d5231a1965006943fc1564bc81909b4a13499aca14fe', content=[ResponseOutputText(annotations=[], text='You told me your name is Jeremy.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
 
 ### Chat tool use
 
@@ -2620,21 +1957,17 @@ r = chat(pr)
 r.output
 ```
 
-    Finding the sum of 604542 and 6458932
-
-    [ResponseReasoningItem(id='rs_0ee933694072489500691ba4a859c081a3a60b193960051eb4', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_ebTRKFMiijgOGVfwFhjH5pPL', name='sums', type='function_call', id='fc_0ee933694072489500691ba4a8a8d881a3b3090c7231d8b92d', status='completed')]
+    [ResponseReasoningItem(id='rs_05f8244e8d805b77006943fc16df2c819581d1abf604e76779', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_05f8244e8d805b77006943fc170a848195a62a36f7b5af8774', content=[ResponseOutputText(annotations=[], text='7063474', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
 
 ``` python
 chat()
 ```
 
-7,063,474
+    Finding the sum of 604542 and 6458932
 
-<details>
-
-- id: resp_0ee933694072489500691ba4a944e081a39ad25146ac43735a
-- created_at: 1763419305.0
+- id: resp_05f8244e8d805b77006943fc1815d88195966a897b6bf45f32
+- created_at: 1766063128.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -2644,10 +1977,11 @@ chat()
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseOutputMessage(id=‘msg_0ee933694072489500691ba4a9bc1081a39dc3eebde73ed1d6’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘7,063,474’,
-  type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
+  \[ResponseFunctionToolCall(arguments=‘{“a”:604542,“b”:6458932}’,
+  call_id=‘call_xgNdloSrer0Bze0O7MtyYjyZ’, name=‘sums’,
+  type=‘function_call’,
+  id=‘fc_05f8244e8d805b77006943fc187a9481958e2ec6c71d8c7a4c’,
+  status=‘completed’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -2675,28 +2009,61 @@ chat()
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=157,
+- usage: ResponseUsage(input_tokens=127,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=9,
+  output_tokens=25,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=166)
+  total_tokens=152)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
-</details>
+The [`Chat`](https://AnswerDotAI.github.io/cosette/core.html#chat) class
+automatically validates tool calls against the provided `tools` list. If
+the model attempts to call a tool that isn’t in the allowed set (whether
+due to hallucination or a mismatch between `tools` and `ns`), the tool
+call will fail with an error message rather than executing arbitrary
+code.
+
+This provides an important safety mechanism - even if the model invents
+a function name or tries to call a tool that shouldn’t be available,
+[`Chat`](https://AnswerDotAI.github.io/cosette/core.html#chat) ensures
+only explicitly allowed tools can be executed.
+
+``` python
+chat = Chat(model, sp=sysp, tools=[sums, add], **rkw)
+chat.ns={} # Quick way to simulate call to tool that does not exist in ns or tools
+r = chat(pr)
+r.output
+```
+
+    [ResponseReasoningItem(id='rs_07858df65bb0139a006943fc1979b48194bbeb443a6dc2345c', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_3ilZzNeuNYVwm3NoqKV5DATp', name='sums', type='function_call', id='fc_07858df65bb0139a006943fc19bd788194a11707b54eb3eb61', status='completed')]
+
+``` python
+chat.h
+```
+
+    [{'role': 'user', 'content': 'What is 604542+6458932?'},
+     ResponseReasoningItem(id='rs_07858df65bb0139a006943fc1979b48194bbeb443a6dc2345c', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":604542,"b":6458932}', call_id='call_3ilZzNeuNYVwm3NoqKV5DATp', name='sums', type='function_call', id='fc_07858df65bb0139a006943fc19bd788194a11707b54eb3eb61', status='completed'),
+     {'type': 'function_call_output',
+      'call_id': 'call_3ilZzNeuNYVwm3NoqKV5DATp',
+      'output': 'Error - tool not defined in the tool_schemas: sums'}]
+
+Chat handles image prompts too.
 
 ``` python
 q = "In brief, what color flowers are in this image?"
 chat([img, q])
 ```
 
-Purple
+The flowers are purple.
 
 <details>
 
-- id: resp_0ee933694072489500691ba4ab556481a388a77a6d4dd0c798
-- created_at: 1763419307.0
+- id: resp_07858df65bb0139a006943fc1a3a18819486051bea70b615a4
+- created_at: 1766063130.0
 - error: None
 - incomplete_details: None
 - instructions: You are a helpful assistant. When using tools, be sure
@@ -2706,12 +2073,12 @@ Purple
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_0ee933694072489500691ba4abbd5881a3ac733003839637b8’,
+  \[ResponseReasoningItem(id=‘rs_07858df65bb0139a006943fc1aa2b08194b7f22154fb9c9712’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_0ee933694072489500691ba4abeda481a3a4a19dbed1d05c7f’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Purple’,
-  type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
+  ResponseOutputMessage(id=‘msg_07858df65bb0139a006943fc1acef88194884b2b85ff6d5aba’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘The flowers are
+  purple.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
   status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
@@ -2721,7 +2088,11 @@ Purple
   sum’}, ‘b’: {‘type’: ‘integer’, ‘description’: ‘Second thing to
   sum’}}, ‘required’: \[‘a’, ‘b’\], ‘additionalProperties’: False},
   strict=True, type=‘function’, description=‘Adds a + b.:- type:
-  integer’)\]
+  integer’), FunctionTool(name=‘add’, parameters={‘type’: ‘object’,
+  ‘properties’: {‘x’: {‘type’: ‘integer’, ‘description’: ’‘}, ’y’:
+  {‘type’: ‘integer’, ‘description’: ’‘}}, ’required’: \[‘x’, ‘y’\],
+  ‘additionalProperties’: False}, strict=True, type=‘function’,
+  description=‘adds x and y’)\]
 - top_p: 1.0
 - background: False
 - conversation: None
@@ -2740,13 +2111,13 @@ Purple
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=257,
+- usage: ResponseUsage(input_tokens=277,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=7,
+  output_tokens=11,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=264)
+  total_tokens=288)
 - user: None
-- billing: {‘payer’: ‘developer’}
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -2771,6 +2142,72 @@ chat("Hi.")
 
 ## Other providers
 
+Here’s an example of using the library with OpenRouter:
+
+``` python
+openrouter_c = Client(
+    model="openai/gpt-oss-20b",
+    api_key_env="OPENROUTER_API_KEY",
+    base_url="https://openrouter.ai/api/v1"
+)
+
+openrouter_c("Hello! What's 2+2?")
+```
+
+4
+
+<details>
+
+- id: gen-1766063131-zacuMF6yJHRUIPUXB48G
+- created_at: 1766063131.0
+- error: None
+- incomplete_details: None
+- instructions: None
+- metadata: {}
+- model: openai/gpt-oss-20b
+- object: response
+- output: \[ResponseReasoningItem(id=‘rs_tmp_u56eghazyi9’, summary=\[\],
+  type=‘reasoning’, content=\[Content(text=‘We need to answer: 2+2 = 4.
+  Also maybe friendly.’, type=‘reasoning_text’)\],
+  encrypted_content=None, status=None),
+  ResponseOutputMessage(id=‘msg_tmp_htb9r0aougc’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘4’,
+  type=‘output_text’, logprobs=None)\], role=‘assistant’,
+  status=‘completed’, type=‘message’)\]
+- parallel_tool_calls: True
+- temperature: None
+- tool_choice: auto
+- tools: \[\]
+- top_p: None
+- background: False
+- conversation: None
+- max_output_tokens: 4096
+- max_tool_calls: None
+- previous_response_id: None
+- prompt: None
+- prompt_cache_key: None
+- prompt_cache_retention: None
+- reasoning: None
+- safety_identifier: None
+- service_tier: auto
+- status: None
+- text: None
+- top_logprobs: None
+- truncation: None
+- usage: ResponseUsage(input_tokens=75,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=28,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=12),
+  total_tokens=103, cost=9.35e-06, is_byok=False,
+  cost_details={‘upstream_inference_cost’: None,
+  ‘upstream_inference_input_cost’: 3.75e-06,
+  ‘upstream_inference_output_cost’: 5.6e-06})
+- user: None
+- output_text:
+- store: False
+
+</details>
+
 Here’s an example of using the library with Groq:
 
 ``` python
@@ -2783,120 +2220,10 @@ groq_c = Client(
 groq_c("Hello! What's 2+2?")
 ```
 
-Hello! 2 + 2 equals **4**.
-
-<details>
-
-- id: resp_01kaa21yfhfaja29yr841tz1c9
-- created_at: 1763421780.0
-- error: None
-- incomplete_details: None
-- instructions:
-- metadata: {}
-- model: openai/gpt-oss-20b
-- object: response
-- output: \[ResponseReasoningItem(id=‘resp_01kaa21yfhfajsp0cbvjx0ww5b’,
-  summary=\[\], type=‘reasoning’, content=\[Content(text=‘The user:
-  “Hello! What's 2+2?” It's a straightforward arithmetic question. We
-  need to respond. The policies: no disallowed content. It's fine. Just
-  answer 4. Provide friendly tone.’, type=‘reasoning_text’)\],
-  encrypted_content=None, status=‘completed’),
-  ResponseOutputMessage(id=‘msg_01kaa21yfhfak80c1kcggjhmh4’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Hello! 202f+02f2
-  equals **4**.’, type=‘output_text’, logprobs=None)\],
-  role=‘assistant’, status=‘completed’, type=‘message’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[\]
-- top_p: 1.0
-- background: False
-- conversation: None
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- prompt_cache_retention: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=None)
-- top_logprobs: None
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=79,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=66,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=44),
-  total_tokens=145)
-- user: None
-- store: False
-
-</details>
-
 ``` python
 gchat = Chat(cli=groq_c)
 gchat("Hello! I'm Jeremy")
 ```
-
-Hey Jeremy! 👋 How’s it going? Anything exciting on your radar today or
-something you’d like to chat about?
-
-<details>
-
-- id: resp_01kaa27bsrfxnb5p75bztj84pb
-- created_at: 1763421957.0
-- error: None
-- incomplete_details: None
-- instructions:
-- metadata: {}
-- model: openai/gpt-oss-20b
-- object: response
-- output: \[ResponseReasoningItem(id=‘resp_01kaa27bsrfxnrkywsnwzgd52z’,
-  summary=\[\], type=‘reasoning’, content=\[Content(text=‘The user says
-  “Hello! I'm Jeremy”. They are greeting the assistant. Likely want a
-  friendly response. We should respond politely, maybe ask how they can
-  help. Use friendly tone.’, type=‘reasoning_text’)\],
-  encrypted_content=None, status=‘completed’),
-  ResponseOutputMessage(id=‘msg_01kaa27bsrfxpastb7n905j67d’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Hey Jeremy! 👋
-  How’s it going? Anything exciting on your radar today or something
-  you’d like to chat about?’, type=‘output_text’, logprobs=None)\],
-  role=‘assistant’, status=‘completed’, type=‘message’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[\]
-- top_p: 1.0
-- background: False
-- conversation: None
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- prompt_cache_retention: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=None)
-- top_logprobs: None
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=75,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=73,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=39),
-  total_tokens=148)
-- user: None
-- store: False
-
-</details>
 
 ``` python
 gchat("What's my name?")

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/community-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Community Integrations
 
 > Community-maintained service integrations for Pipecat
@@ -10,22 +14,6 @@ Want to add your integration? See our [Community Integrations Guide](https://git
 
 ***
 
-## Speech-to-Text
-
-Speech-to-Text services receive and audio input and output transcriptions.
-
-| Service                         | Repository | Maintainer(s) |
-| ------------------------------- | ---------- | ------------- |
-| *No community integrations yet* |            |               |
-
-## Large Language Models
-
-LLMs receive text or audio based input and output a streaming text response.
-
-| Service                         | Repository | Maintainer(s) |
-| ------------------------------- | ---------- | ------------- |
-| *No community integrations yet* |            |               |
-
 ## Knowledge Retrieval
 
 Semantic retrieval services enable context-aware search and retrieval of relevant information.
@@ -34,15 +22,44 @@ Semantic retrieval services enable context-aware search and retrieval of relevan
 | -------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
 | [Moss](https://www.usemoss.dev/) | [https://github.com/usemoss/pipecat-moss](https://github.com/usemoss/pipecat-moss) | [Moss](https://github.com/usemoss) |
 
+## Large Language Models
+
+LLMs receive text or audio based input and output a streaming text response.
+
+| Service                          | Repository                                                                                                             | Maintainer(s)                           |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [Anannas AI](https://anannas.ai) | [https://github.com/Anannas-AI/anannas-pipecat-integration](https://github.com/Anannas-AI/anannas-pipecat-integration) | [Haleshot](https://github.com/Haleshot) |
+
+## Observability
+
+Observability services enable telemetry and metrics data to be passed to a Open Telemetry backend or another service.
+
+| Service                                                    | Repository                                                                                                                                                | Maintainer(s)                                                             |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [OpenInference](https://arize-ai.github.io/openinference/) | [openinference-instrumentation-pipecat](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-pipecat) | [Arize-ai](https://github.com/Arize-ai/openinference/graphs/contributors) |
+| [Finchvox](https://finchvox.dev/)                          | [https://github.com/finchvox/finchvox](https://github.com/finchvox/finchvox)                                                                              | [Finchvox](https://github.com/finchvox)                                   |
+
+## Telephony Serializers
+
+Serializers convert between frames and media streams, enabling real-time communication over a websocket.
+
+| Service                          | Repository                                                                               | Maintainer(s)                         |
+| -------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------- |
+| [AwaazAI](https://www.awaaz.ai/) | [https://github.com/awaazde/pipecat-awaazai](https://github.com/awaazde/pipecat-awaazai) | [AwaazAI](https://github.com/awaazde) |
+
 ## Text-to-Speech
 
 Text-to-Speech services receive text input and output audio streams or chunks.
 
-| Service                          | Repository                                                                                         | Maintainer(s)                                 |
-| -------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [Typecast](https://typecast.ai/) | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast) | [neosapience](https://github.com/neosapience) |
+| Service                                                          | Repository                                                                                             | Maintainer(s)                                   |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| [Murf AI](https://murf.ai/api)                                   | [https://github.com/murf-ai/pipecat-murf-tts](https://github.com/murf-ai/pipecat-murf-tts)             | [murf-ai](https://github.com/murf-ai)           |
+| [Pipecat TTS Cache](https://pypi.org/project/pipecat-tts-cache/) | [https://github.com/omChauhanDev/pipecat-tts-cache](https://github.com/omChauhanDev/pipecat-tts-cache) | [omChauhanDev](https://github.com/omChauhanDev) |
+| [Respeecher](https://www.respeecher.com/real-time-tts-api)       | [https://github.com/respeecher/pipecat-respeecher](https://github.com/respeecher/pipecat-respeecher)   | [respeecher](https://github.com/respeecher)     |
+| [Typecast](https://typecast.ai/)                                 | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast)     | [neosapience](https://github.com/neosapience)   |
+| [Voice.ai](https://voice.ai/)                                    | [https://github.com/voice-ai/voice-ai-pipecat-tts](https://github.com/voice-ai/voice-ai-pipecat-tts)   | [voice-ai](https://github.com/voice-ai)         |
 
-# Video
+## Video
 
 Video services enable you to build an avatar where audio and video are synchronized.
 
@@ -50,17 +67,17 @@ Video services enable you to build an avatar where audio and video are synchroni
 | ------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------- |
 | [Beyond Presence](https://www.beyondpresence.ai/) | [https://github.com/bey-dev/pipecat-bey](https://github.com/bey-dev/pipecat-bey) | [bey-dev](https://github.com/bey-dev) |
 
-## Telephony Serializers
+## Image Generation
 
-Serializers convert between frames and media streams, enabling real-time communication over a websocket.
+Image generation services receive text inputs and output images.
 
 | Service                         | Repository | Maintainer(s) |
 | ------------------------------- | ---------- | ------------- |
 | *No community integrations yet* |            |               |
 
-## Image Generation
+## Speech-to-Text
 
-Image generation services receive text inputs and output images.
+Speech-to-Text services receive and audio input and output transcriptions.
 
 | Service                         | Repository | Maintainer(s) |
 | ------------------------------- | ---------- | ------------- |
@@ -73,8 +90,3 @@ Vision services receive a streaming video input and output text describing the v
 | Service                         | Repository | Maintainer(s) |
 | ------------------------------- | ---------- | ------------- |
 | *No community integrations yet* |            |               |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

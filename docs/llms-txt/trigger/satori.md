@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/satori.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate OG Images using Satori
 
 > Learn how to generate dynamic Open Graph images using Satori and Trigger.dev.
@@ -12,7 +16,7 @@ This can be customized and extended however you like, full list of options can b
 
 ## Task code
 
-```tsx trigger/generateOgImage.ts theme={null}
+```tsx trigger/generateOgImage.ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import satori from "satori";
@@ -123,7 +127,7 @@ This image was generated using the above task.
 
 To test this task in the [dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "title": "My Awesome OG image",
   "imageUrl": "<your-image-url>",

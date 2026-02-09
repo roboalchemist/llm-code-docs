@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/projects/heartbeats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Heartbeats
 
 > Learn how to monitor your application's cron jobs.
@@ -18,7 +22,7 @@ If Envoyer does not receive a check-in from your job within the specified monito
 
 If you are manually modifying your server's `/etc/crontab` file to define scheduled tasks, you can simply append a curl request to your Cron command. For example:
 
-```text /etc/crontab
+```text /etc/crontab theme={null}
 * * * * * user php command && curl http://beats.envoyer.io/heartbeat-id
 ```
 
@@ -26,6 +30,6 @@ If you are manually modifying your server's `/etc/crontab` file to define schedu
 
 If you're using Laravel's task scheduler, you may use the `thenPing` method on your scheduled job.
 
-```php app/Console/Kernel.php
+```php app/Console/Kernel.php theme={null}
 $schedule->command('foo')->thenPing('http://beats.envoyer.io/heartbeat-id');
 ```

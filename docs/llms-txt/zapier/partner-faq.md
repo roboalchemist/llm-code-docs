@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/partner-faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration success strategies
 
 > With 8,000+ public integration partners on Zapier, use these 10 tried-and-true tactics from our top partners to skyrocket your growth and earn you more <a href='https://zapier.com/developer-platform/partner-program' target='_blank'>benefits from the Partner Program</a>.

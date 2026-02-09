@@ -1,131 +1,109 @@
 # Source: https://docs.anchorbrowser.io/api-reference/os-level-control/navigate-to-url.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Navigate to URL
 
 > Navigates the browser session to the specified URL
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/sessions/{sessionId}/goto
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{sessionId}/goto
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        sessionId:
+  /v1/sessions/{sessionId}/goto:
+    post:
+      tags:
+        - OS Level Control
+      summary: Navigate to URL
+      description: Navigates the browser session to the specified URL
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: The ID of the browser session
           schema:
-            - type: string
-              required: true
-              description: The ID of the browser session
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              url:
-                allOf:
-                  - type: string
-                    description: The URL to navigate to
-            required: true
-            refIdentifier: '#/components/schemas/NavigateRequestSchema'
-            requiredProperties:
-              - url
-        examples:
-          example:
-            value:
-              url: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: string
-        examples:
-          example:
-            value:
-              status: <string>
-        description: Navigation successful
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid URL or parameters
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                error:
-                  code: 123
-                  message: <string>
-        description: Session not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                error:
-                  code: 123
-                  message: <string>
-        description: Failed to navigate to URL
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NavigateRequestSchema'
+      responses:
+        '200':
+          description: Navigation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+        '400':
+          description: Invalid URL or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to navigate to URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    NavigateRequestSchema:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          description: The URL to navigate to
     ErrorResponse:
       type: object
       properties:
-        error: *ref_0
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

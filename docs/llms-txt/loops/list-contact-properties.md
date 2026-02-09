@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/list-contact-properties.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List contact properties
 
 > Retrieve a list of your account's contact properties.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/google-docs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Docs connector
 
 > Connect WRITER Agent to Google Docs to read, edit, and manage documents

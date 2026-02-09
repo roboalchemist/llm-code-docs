@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-openapi-formatters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # formatters
 
 # `fastmcp.utilities.openapi.formatters`
@@ -107,8 +111,3 @@ Formats the base description string with response, parameter, and request body i
 
 * The formatted description string with additional details about responses, parameters,
 * and the request body.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

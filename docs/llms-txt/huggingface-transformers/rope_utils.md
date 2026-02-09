@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/rope_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/rope_utils.md
 
 # Utilities for Rotary Embedding
 
@@ -67,7 +67,7 @@ config.rope_parameters = {
 
 #### transformers.RopeParameters[[transformers.RopeParameters]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/modeling_rope_utils.py#L575)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/modeling_rope_utils.py#L570)
 
 class dicttransformers.RopeParameters.__call__""
 dict() -> new empty dictionary
@@ -90,7 +90,7 @@ partial_rotary_factor (`float`, *optional*) : The percentage of the query and ke
 
 factor (`float`, *optional*) : Used with all rope types except 'default'. The scaling factor to apply to the RoPE embeddings. In most scaling types, a `factor` of x will enable the model to handle sequences of length x * original maximum pre-trained length.
 
-original_max_position_embeddings (`int`, *optional*) : Used with 'dynamic', 'longrope' and 'llama3'. The original max position embeddings used during pretraining.
+original_max_position_embeddings (`int`, *optional*) : Used with 'yarn', 'longrope' and 'llama3'. The original max position embeddings used during pretraining.
 
 attention_factor (`float`, *optional*) : Used with 'yarn' and 'longrope'. The scaling factor to be applied on the attention computation. If unspecified, it defaults to value recommended by the implementation, using the `factor` field to infer the suggested value.
 

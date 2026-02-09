@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/replit-dot-md.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # replit.md
 
 > `replit.md` is a special file that customizes Agent's behavior in your project. Define your preferences, coding style, and project context to help Agent build exactly what you want.
@@ -303,7 +307,7 @@ While there's no strict character limit for `replit.md`, extremely large files m
 
 ### Context scope
 
-`replit.md` provides context for Agent conversations but doesn't automatically apply to other AI tools like Assistant.
+`replit.md` provides context for Agent conversations but doesn't automatically apply to other AI tools.
 
 ## Next steps
 

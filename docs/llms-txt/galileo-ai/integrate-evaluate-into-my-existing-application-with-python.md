@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/quickstart/integrate-evaluate-into-my-existing-application-with-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate Evaluate Into My Existing Application With Python
 
 > Learn how to integrate Galileo Evaluate into your Python applications, featuring step-by-step guidance and code samples for streamlined integration.
@@ -20,13 +24,13 @@ If you're looking to log your workflows, we provide an interface for uploading y
 
 <Tabs>
   <Tab title="Python">
-    ```py
+    ```py  theme={null}
     import promptquality as pq
 
     pq.login()
     ```
 
-    ```py
+    ```py  theme={null}
     from promptquality import EvaluateRun
 
     metrics = [pq.Scorers.context_adherence_plus, pq.Scorers.prompt_injection]
@@ -34,7 +38,7 @@ If you're looking to log your workflows, we provide an interface for uploading y
     evaluate_run = EvaluateRun(run_name="my_run", project_name="my_project", scorers=metrics)
     ```
 
-    ```py
+    ```py  theme={null}
     # Define your inputs.
     eval_set = [
         "What are hallucinations?",
@@ -51,7 +55,7 @@ If you're looking to log your workflows, we provide an interface for uploading y
 
     Finally, log your Evaluate run to Galileo:
 
-    ```py
+    ```py  theme={null}
     evaluate_run.finish()
     ```
 
@@ -61,7 +65,7 @@ If you're looking to log your workflows, we provide an interface for uploading y
   <Tab title="TypeScript">
     1. Initialize client and create or select your project
 
-    ```TypeScript
+    ```TypeScript  theme={null}
     import { GalileoEvaluateWorkflow } from "@rungalileo/galileo";
 
     // Initialize and create project
@@ -71,7 +75,7 @@ If you're looking to log your workflows, we provide an interface for uploading y
 
     2. Log your workflows
 
-    ```TypeScript
+    ```TypeScript  theme={null}
     // Evaluate dataset
     const evaluateSet = [
       "What are hallucinations?",
@@ -119,7 +123,7 @@ If you're looking to log your workflows, we provide an interface for uploading y
 
     3. Log your Evaluate run to Galileo
 
-    ```TypeScript
+    ```TypeScript  theme={null}
     // Configure run and upload workflows to Galileo
     // Optional: Set run name, tags, registered scorers, and customized scorers
     // Note: If no run name is provided a timestamp will be used
@@ -152,7 +156,7 @@ Before creating a run, you'll want to make sure you have an evaluation set (a se
 
 First, we are going to construct a simple RAG chain with Galileo's documentations stored in a vectorDB using Langchain:
 
-```py
+```py  theme={null}
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.chat_models import ChatOpenAI
@@ -196,14 +200,14 @@ chain = {"context": retriever | format_docs, "question": RunnablePassthrough()} 
 
 Next, you can log in with Galileo:
 
-```py
+```py  theme={null}
 import promptquality as pq
 pq.login({YOUR_GALILEO_URL})
 ```
 
 After that, you can set up the `GalileoPromptCallback`:
 
-```py
+```py  theme={null}
 from promptquality import Scorers
 scorers = [Scorers.context_adherence_basic,
            Scorers.completeness_basic,
@@ -219,7 +223,7 @@ galileo_handler = pq.GalileoPromptCallback(
 
 Finally, you can run the chain experiments across multiple intputs with Galileo Callback:
 
-```py
+```py  theme={null}
 inputs = [
     "What are hallucinations?",
     "What are intrinsic hallucinations?",

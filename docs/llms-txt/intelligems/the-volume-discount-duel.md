@@ -4,7 +4,7 @@
 
 [Experiences](https://github.com/intelligems-io/docs/blob/main/public-docs/getting-started/common-use-cases/offer-test-common-use-cases/broken-reference/README.md) allow you to serve specific discounts and offers to your site visitors. One of these types of Offers is a Volume Discount. While you can have such an Experience on all the time, Intelligems can also help you test which thresholds and discounts drive the most value.
 
-You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 *What this test design might look like:*
 

@@ -2,10 +2,6 @@
 
 # Source: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md
 
-# Source: https://platform.claude.com/docs/en/agent-sdk/quickstart.md
-
-# Source: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md
-
 # Get started with Agent Skills in the API
 
 Learn how to use Agent Skills to create documents with the Claude API in under 10 minutes.
@@ -30,7 +26,7 @@ Pre-built Agent Skills extend Claude's capabilities with specialized expertise f
 - **PDF (pdf)**: Generate PDF documents
 
 <Note>
-**Want to create custom Skills?** See the [Agent Skills Cookbook](https://github.com/anthropics/claude-cookbooks/tree/main/skills) for examples of building your own Skills with domain-specific expertise.
+**Want to create custom Skills?** See the [Agent Skills Cookbook](https://platform.claude.com/cookbook/skills-notebooks-01-skills-introduction) for examples of building your own Skills with domain-specific expertise.
 </Note>
 
 ## Step 1: List available Skills
@@ -565,7 +561,7 @@ Now that you've used pre-built Agent Skills, you can:
   <Card
     title="Agent Skills Cookbook"
     icon="book"
-    href="https://github.com/anthropics/anthropic-cookbook/blob/main/skills/README.md"
+    href="https://platform.claude.com/cookbook/skills-notebooks-01-skills-introduction"
   >
     Explore example Skills and implementation patterns
   </Card>

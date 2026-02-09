@@ -1,12 +1,12 @@
-# Source: https://docs.stripe.com/baas/start-integration/integration-guides/b2b-payments.md
+# Source: https://docs.stripe.com/issuing/integration-guides/b2b-payments.md
 
-# B2B Payments integration guide
+# B2B payments integration guide
 
-Build a B2B Payments integration with Issuing.
+Build a B2B payments integration with Issuing.
 
-Check out our introductory guide to using [BaaS for SaaS Platforms](https://stripe.com/guides/introduction-to-banking-as-a-service).
+Check out our introductory guide to using [embedded finance for SaaS Platforms](https://stripe.com/guides/introduction-to-embedded-finance).
 
-Build a US B2B Payments integration by using Stripe [Issuing](https://docs.stripe.com/issuing/how-issuing-works.md) to create cards for your business, employees, or contractors to make purchases on your behalf.
+Build a US B2B payments integration by using Stripe [Issuing](https://docs.stripe.com/issuing/how-issuing-works.md) to create cards for your business, employees, or contractors to make purchases on your behalf.
 
 By the end of this guide, you’ll know how to:
 
@@ -438,9 +438,9 @@ const card = await stripe.issuing.cards.update(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.IssuingCardUpdateParams{
   Status: stripe.String(stripe.IssuingCardStatusActive),
-  Card: stripe.String("ic_1NvPjF2SSJdH5vn2OVbE7r0b"),
 }
-result, err := sc.V1IssuingCards.Update(context.TODO(), params)
+result, err := sc.V1IssuingCards.Update(
+  context.TODO(), "ic_1NvPjF2SSJdH5vn2OVbE7r0b", params)
 ```
 
 ```dotnet
@@ -749,10 +749,9 @@ const authorization = await stripe.testHelpers.issuing.authorizations.capture(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TestHelpersIssuingAuthorizationCaptureParams{
-  Authorization: stripe.String("{{ISSUINGAUTHORIZATION_ID}}"),
-}
-result, err := sc.V1TestHelpersIssuingAuthorizations.Capture(context.TODO(), params)
+params := &stripe.TestHelpersIssuingAuthorizationCaptureParams{}
+result, err := sc.V1TestHelpersIssuingAuthorizations.Capture(
+  context.TODO(), "{{ISSUINGAUTHORIZATION_ID}}", params)
 ```
 
 ```dotnet

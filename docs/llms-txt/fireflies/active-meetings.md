@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/query/active-meetings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Active Meetings
 
 > Query active meetings in progress
@@ -23,6 +27,17 @@ The active\_meetings query is designed to fetch a list of meetings that are curr
   The email must be valid and belong to a user in the same team as the requester.
 </ParamField>
 
+<ParamField path="states" type="[MeetingState]">
+  Filter active meetings by their state. Accepts an array of [MeetingState](/schema/enum/meeting-state) values.
+
+  **Possible values:**
+
+  * `active`: Meetings that are currently in progress
+  * `paused`: Meetings that have been paused
+
+  If this field is omitted, the query returns meetings in both `active` and `paused` states by default.
+</ParamField>
+
 ## Schema
 
 Fields available to the [ActiveMeeting](/schema/active-meeting) query
@@ -30,8 +45,8 @@ Fields available to the [ActiveMeeting](/schema/active-meeting) query
 ## Usage Example
 
 ```graphql  theme={null}
-query ActiveMeetings($email: String) {
-  active_meetings(input: { email: $email }) {
+query ActiveMeetings($email: String, $states: [MeetingState!]) {
+  active_meetings(input: { email: $email, states: $states }) {
     id
     title
     organizer_email
@@ -39,6 +54,7 @@ query ActiveMeetings($email: String) {
     start_time
     end_time
     privacy
+    state
   }
 }
 ```
@@ -128,14 +144,16 @@ query ActiveMeetings($email: String) {
           "title": "Team Standup",
           "organizer_email": "user@example.com",
           "meeting_link": "https://zoom.us/j/123456789",
-          "start_time": "2024-01-15T10:00:00.000Z"
+          "start_time": "2024-01-15T10:00:00.000Z",
+          "state": "active"
         },
         {
           "id": "meeting-id-2",
           "title": "Client Review",
           "organizer_email": "user@example.com",
           "meeting_link": "https://meet.google.com/abc-defg-hij",
-          "start_time": "2024-01-15T14:30:00.000Z"
+          "start_time": "2024-01-15T14:30:00.000Z",
+          "state": "paused"
         }
       ]
     }

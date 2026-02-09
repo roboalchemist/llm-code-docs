@@ -9,13 +9,17 @@ https://api.apify.com/v2/key-value-stores/:storeId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#deleteDeletes a key-value store.
+Deletes a key-value store.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

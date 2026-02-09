@@ -2,19 +2,19 @@
 
 # OpenAI Agents SDK integration
 
-The *OpenAI Agents Python SDK* enables you to build AI agents powered by OpenAI's language models that can use tools, manage context, and interact with external systems through the https://modelcontextprotocol.io/docs/getting-started/intro. By connecting to the Apify MCP server, your agents can access Apify's extensive library of Actors to perform web scraping, data extraction, and automation tasks in real time.
+The *OpenAI Agents Python SDK* enables you to build AI agents powered by OpenAI's language models that can use tools, manage context, and interact with external systems through the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro). By connecting to the Apify MCP server, your agents can access Apify's extensive library of Actors to perform web scraping, data extraction, and automation tasks in real time.
 
-For more details about the OpenAI Agents SDK, refer to the https://openai.github.io/openai-agents-python/.
+For more details about the OpenAI Agents SDK, refer to the [official documentation](https://openai.github.io/openai-agents-python/).
 
 ## Prerequisites
 
 Before integrating Apify with OpenAI Agents SDK, you'll need:
 
-* *An Apify account* - If you don't have an Apify account already, you can https://console.apify.com/sign-up
+* *An Apify account* - If you don't have an Apify account already, you can [sign up](https://console.apify.com/sign-up)
 
-* *Apify API token* - Get your API token from the **Integrations** section in https://console.apify.com/account#/integrations. This token authorizes the Apify MCP server to run Actors on your behalf. Make sure to keep it secure.
+* *Apify API token* - Get your API token from the **Integrations** section in [Apify Console](https://console.apify.com/account#/integrations). This token authorizes the Apify MCP server to run Actors on your behalf. Make sure to keep it secure.
 
-* *OpenAI API key* - Get your API key from the https://platform.openai.com/account/api-keys. You need this to use OpenAI Agents SDK.
+* *OpenAI API key* - Get your API key from the [OpenAI platform](https://platform.openai.com/account/api-keys). You need this to use OpenAI Agents SDK.
 
 * *Python packages* - Install the required packages:
 
@@ -120,7 +120,7 @@ async with MCPServerStreamableHttp(
 
 Easy configuration
 
-Use the https://mcp.apify.com/ to select your tools in a user interface, then copy the configuration to your code.
+Use the [UI MCP configurator](https://mcp.apify.com/) to select your tools in a user interface, then copy the configuration to your code.
 
 ## Examples
 
@@ -267,13 +267,13 @@ if __name__ == "__main__":
 ```
 
 
-For a comprehensive example with error handling and reporting, refer to the https://apify.com/jiri.spilka/openai-agent-mcp-tester Actor. This Actor automates the testing process using OpenAI agents with a two-agent orchestrator pattern (planner and executor), generating detailed reports with pass/fail status for each tool.
+For a comprehensive example with error handling and reporting, refer to the [OpenAI Agent MCP Tester](https://apify.com/jiri.spilka/openai-agent-mcp-tester) Actor. This Actor automates the testing process using OpenAI agents with a two-agent orchestrator pattern (planner and executor), generating detailed reports with pass/fail status for each tool.
 
 ## Troubleshooting
 
 ### Authentication errors
 
-* *Check your API token*: Verify that your Apify API token is correct. You can find it in the **Integrations** section of the https://console.apify.com/account#/integrations. Without a valid token, the server cannot start Actor runs.
+* *Check your API token*: Verify that your Apify API token is correct. You can find it in the **Integrations** section of the [Apify Console](https://console.apify.com/account#/integrations). Without a valid token, the server cannot start Actor runs.
 * *Set environment variables*: When running your agent, ensure you have set the `APIFY_TOKEN` and `OPENAI_API_KEY` environment variables.
 
 ### Agent execution issues
@@ -283,15 +283,15 @@ For a comprehensive example with error handling and reporting, refer to the http
 
 ## Related integrations
 
-* https://docs.apify.com/platform/integrations/chatgpt.md - Add Apify MCP server as a custom connector in ChatGPT
-* https://docs.apify.com/platform/integrations/openai-assistants.md - Use Apify Actors with OpenAI Assistants API via function calling
+* [ChatGPT integration](https://docs.apify.com/platform/integrations/chatgpt.md) - Add Apify MCP server as a custom connector in ChatGPT
+* [OpenAI Assistants integration](https://docs.apify.com/platform/integrations/openai-assistants.md) - Use Apify Actors with OpenAI Assistants API via function calling
 
 ## Resources
 
-* https://openai.github.io/openai-agents-python/ - Official documentation for the OpenAI Agents SDK
-* https://openai.github.io/openai-agents-python/mcp/ - Learn how to use MCP with OpenAI Agents SDK
-* https://apify.com/jiri.spilka/openai-agent-mcp-tester - A specialized Actor for testing MCP server integration
-* https://github.com/apify/openai-agent-mcp-tester - Source code for the MCP tester Actor
-* https://mcp.apify.com - Interactive configuration tool for the Apify MCP server
-* https://docs.apify.com/platform/integrations/mcp.md - Complete guide to using the Apify MCP server
-* https://modelcontextprotocol.io/ - Learn about the MCP specification
+* [OpenAI Agents Python SDK documentation](https://openai.github.io/openai-agents-python/) - Official documentation for the OpenAI Agents SDK
+* [OpenAI Agents MCP guide](https://openai.github.io/openai-agents-python/mcp/) - Learn how to use MCP with OpenAI Agents SDK
+* [OpenAI Agent MCP Tester Actor](https://apify.com/jiri.spilka/openai-agent-mcp-tester) - A specialized Actor for testing MCP server integration
+* [OpenAI Agent MCP Tester GitHub repository](https://github.com/apify/openai-agent-mcp-tester) - Source code for the MCP tester Actor
+* [Apify MCP server](https://mcp.apify.com) - Interactive configuration tool for the Apify MCP server
+* [Apify MCP documentation](https://docs.apify.com/platform/integrations/mcp.md) - Complete guide to using the Apify MCP server
+* [Model Context Protocol specification](https://modelcontextprotocol.io/) - Learn about the MCP specification

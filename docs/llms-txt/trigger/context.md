@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context
 
 > Get the context of a task run.
@@ -12,7 +16,7 @@ Context (`ctx`) is a way to get information about a run.
 </Note>
 
 <RequestExample>
-  ```typescript Context example theme={null}
+  ```typescript Context example theme={"theme":"css-variables"}
   import { task } from "@trigger.dev/sdk";
 
   export const parentTask = task({

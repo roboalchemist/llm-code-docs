@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/export-activity-reports.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to export Activity Reports
 
 > Learn how to export Activity Reports

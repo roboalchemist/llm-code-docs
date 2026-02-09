@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/seleniumscrapingtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Selenium Scraper
 
 > The `SeleniumScrapingTool` is designed to extract and read the content of a specified website using Selenium.

@@ -38,11 +38,9 @@ Use the `dropzone` prop to enable/disable the droppable area. Defaults to `true`
 
 Use the `interactive` prop to enable/disable the clickable area. Defaults to `true`.
 
-<tip to="#with-files-bottom-slot">
-
-This can be useful when adding a [`Button`](/docs/components/button) component in the `#actions` slot.
-
-</tip>
+> [!TIP]
+> See: #with-files-bottom-slot
+> This can be useful when adding a `Button` component in the `#actions` slot.
 
 ```vue
 <template>
@@ -90,23 +88,15 @@ Use the `icon` prop to set the icon of the FileUpload. Defaults to `i-lucide-upl
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.upload` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.upload` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.upload` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.upload` key.
 
 ### Color
 
@@ -118,11 +108,8 @@ Use the `color` prop to change the color of the FileUpload.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -148,11 +135,8 @@ Use the `size` prop to change the size of the FileUpload.
 
 Use the `layout` prop to change how the files are displayed in the FileUpload. Defaults to `grid`.
 
-<warning>
-
-This prop only works when `variant` is `area`.
-
-</warning>
+> [!WARNING]
+> This prop only works when `variant` is `area`.
 
 ```vue
 <template>
@@ -164,11 +148,8 @@ This prop only works when `variant` is `area`.
 
 Use the `position` prop to change the position of the files in the FileUpload. Defaults to `outside`.
 
-<warning>
-
-This prop only works when `variant` is `area` and when `layout` is `list`.
-
-</warning>
+> [!WARNING]
+> This prop only works when `variant` is `area` and when `layout` is `list`.
 
 ```vue
 <template>
@@ -236,13 +217,13 @@ const schema = z.object({
     )
 })
 
-type schema = z.output<typeof schema>
+type Schema = z.output<typeof schema>
 
-const state = reactive<Partial<schema>>({
+const state = reactive<Partial<Schema>>({
   image: undefined
 })
 
-async function onSubmit(event: FormSubmitEvent<schema>) {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 }
 </script>
@@ -316,9 +297,9 @@ const schema = z.object({
     )
 })
 
-type schema = z.output<typeof schema>
+type Schema = z.output<typeof schema>
 
-const state = reactive<Partial<schema>>({
+const state = reactive<Partial<Schema>>({
   avatar: undefined
 })
 
@@ -326,7 +307,7 @@ function createObjectUrl(file: File): string {
   return URL.createObjectURL(file)
 }
 
-async function onSubmit(event: FormSubmitEvent<schema>) {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 }
 </script>
@@ -403,11 +384,9 @@ const value = ref<File[]>([])
 </template>
 ```
 
-<note to="#interactive">
-
-The `interactive` prop is set to `false` in this example to prevent the default clickable area.
-
-</note>
+> [!NOTE]
+> See: #interactive
+> The `interactive` prop is set to `false` in this example to prevent the default clickable area.
 
 ### With files-top slot
 
@@ -477,7 +456,7 @@ interface FileUploadProps {
   /**
    * The icon to display.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   label?: string | undefined;
   description?: string | undefined;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
@@ -510,7 +489,7 @@ interface FileUploadProps {
   /**
    * @default "false as never"
    */
-  multiple?: boolean | undefined;
+  multiple?: M | undefined;
   /**
    * Reset the file input when the dialog is opened.
    * @default "false"
@@ -531,18 +510,18 @@ interface FileUploadProps {
   /**
    * The icon to display for the file.
    */
-  fileIcon?: string | object | undefined;
+  fileIcon?: any;
   /**
    * Configure the delete button for the file.
    * When `layout` is `grid`, the default is `{ color: 'neutral', variant: 'solid', size: 'xs' }`{lang="ts-type"}
    * When `layout` is `list`, the default is `{ color: 'neutral', variant: 'link' }`{lang="ts-type"}
    * @default "true"
    */
-  fileDelete?: boolean | Partial<ButtonProps> | undefined;
+  fileDelete?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed to delete a file.
    */
-  fileDeleteIcon?: string | object | undefined;
+  fileDeleteIcon?: any;
   /**
    * Show the file preview/list after upload.
    * @default "true"
@@ -555,15 +534,13 @@ interface FileUploadProps {
   formmethod?: string | undefined;
   formnovalidate?: Booleanish | undefined;
   formtarget?: string | undefined;
-  modelValue?: File | File[] | null | undefined;
+  modelValue?: (M extends true ? File[] : File) | null | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">
-
-This component also supports all native `<input>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+> This component also supports all native `<input>` HTML attributes.
 
 ### Slots
 
@@ -596,7 +573,7 @@ interface FileUploadSlots {
  */
 interface FileUploadEmits {
   change: (payload: [event: Event]) => void;
-  update:modelValue: (payload: [value: File | File[] | null | undefined]) => void;
+  update:modelValue: (payload: [value: (M extends true ? File[] : File) | null | undefined]) => void;
 }
 ```
 
@@ -969,8 +946,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

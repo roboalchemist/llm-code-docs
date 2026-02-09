@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-metadata-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Aptible Metadata Variables
 
 Aptible injects the following metadata keys as environment variables:

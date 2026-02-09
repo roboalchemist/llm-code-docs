@@ -1,102 +1,114 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/drains/retrieve-a-list-of-all-drains.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a list of all Drains
 
 > Allows to retrieve the list of Drains of the authenticated team.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/drains
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/drains
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        projectId:
+  /v1/drains:
+    get:
+      tags:
+        - drains
+      summary: Retrieve a list of all Drains
+      description: Allows to retrieve the list of Drains of the authenticated team.
+      operationId: getDrains
+      parameters:
+        - name: projectId
+          in: query
           schema:
-            - type: string
-        includeMetadata:
+            type: string
+        - name: includeMetadata
+          in: query
           schema:
-            - type: boolean
-              default: false
-        teamId:
+            type: boolean
+            default: false
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getDrains
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.drains.getDrains({
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              drains:
-                allOf:
-                  - oneOf:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  drains:
+                    oneOf:
                       - items:
                           properties:
                             id:
                               type: string
-                            ownerId:
-                              type: string
-                            name:
-                              type: string
                             createdAt:
                               type: number
-                            createdFrom:
-                              type: string
-                              enum:
-                                - self-served
-                                - integration
                             updatedAt:
                               type: number
                             projectIds:
                               items:
                                 type: string
                               type: array
+                            name:
+                              type: string
+                            teamId:
+                              nullable: true
+                              type: string
+                            ownerId:
+                              type: string
+                            status:
+                              type: string
+                              enum:
+                                - enabled
+                                - disabled
+                                - errored
+                            firstErrorTimestamp:
+                              type: number
+                            disabledAt:
+                              type: number
+                            disabledBy:
+                              type: string
+                            disabledReason:
+                              type: string
+                              enum:
+                                - disabled-by-owner
+                                - feature-not-available
+                                - account-plan-downgrade
+                                - disabled-by-admin
                             schemas:
                               properties:
                                 log:
@@ -125,19 +137,28 @@ paths:
                                     compression:
                                       type: string
                                       enum:
-                                        - gzip
                                         - none
+                                        - gzip
                                     headers:
                                       additionalProperties:
                                         type: string
                                       type: object
                                     secret:
-                                      type: string
+                                      oneOf:
+                                        - type: string
+                                        - properties:
+                                            kind:
+                                              type: string
+                                              enum:
+                                                - INTEGRATION_SECRET
+                                          required:
+                                            - kind
+                                          type: object
                                   required:
-                                    - type
-                                    - endpoint
                                     - encoding
+                                    - endpoint
                                     - headers
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -161,26 +182,21 @@ paths:
                                         type: string
                                       type: object
                                     secret:
-                                      type: string
+                                      oneOf:
+                                        - type: string
+                                        - properties:
+                                            kind:
+                                              type: string
+                                              enum:
+                                                - INTEGRATION_SECRET
+                                          required:
+                                            - kind
+                                          type: object
                                   required:
-                                    - type
-                                    - endpoint
                                     - encoding
-                                    - headers
-                                  type: object
-                                - properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - syslog
-                                    endpoint:
-                                      type: string
-                                    secret:
-                                      type: string
-                                  required:
-                                    - type
                                     - endpoint
-                                    - secret
+                                    - headers
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -192,9 +208,9 @@ paths:
                                     table:
                                       type: string
                                   required:
-                                    - type
                                     - endpoint
                                     - table
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -206,8 +222,8 @@ paths:
                                       enum:
                                         - vercel-otel-traces-db
                                   required:
-                                    - type
                                     - target
+                                    - type
                                   type: object
                             sampling:
                               items:
@@ -226,36 +242,10 @@ paths:
                                   requestPath:
                                     type: string
                                 required:
-                                  - type
                                   - rate
+                                  - type
                                 type: object
                               type: array
-                            teamId:
-                              nullable: true
-                              type: string
-                            status:
-                              type: string
-                              enum:
-                                - enabled
-                                - disabled
-                                - errored
-                            disabledAt:
-                              type: number
-                            disabledReason:
-                              type: string
-                              enum:
-                                - disabled-by-owner
-                                - feature-not-available
-                                - account-plan-downgrade
-                                - disabled-by-admin
-                            disabledBy:
-                              type: string
-                            firstErrorTimestamp:
-                              type: number
-                            configurationId:
-                              type: string
-                            clientId:
-                              type: string
                             source:
                               oneOf:
                                 - properties:
@@ -280,9 +270,9 @@ paths:
                                     integrationConfigurationId:
                                       type: string
                                   required:
-                                    - kind
-                                    - integrationId
                                     - integrationConfigurationId
+                                    - integrationId
+                                    - kind
                                   type: object
                             filter:
                               type: string
@@ -320,13 +310,29 @@ paths:
                                                 sources:
                                                   items:
                                                     type: string
+                                                    enum:
+                                                      - build
+                                                      - edge
+                                                      - lambda
+                                                      - static
+                                                      - external
+                                                      - firewall
+                                                      - redirect
                                                   type: array
+                                                legacy_excludeCachedStaticAssetLogs:
+                                                  type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                               type: object
                                             deployment:
                                               properties:
                                                 environments:
                                                   items:
                                                     type: string
+                                                    enum:
+                                                      - production
+                                                      - preview
                                                   type: array
                                               type: object
                                           required:
@@ -340,43 +346,62 @@ paths:
                                             text:
                                               type: string
                                           required:
-                                            - type
                                             - text
+                                            - type
                                           type: object
                                   required:
-                                    - version
                                     - filter
+                                    - version
                                   type: object
                           required:
-                            - id
-                            - ownerId
-                            - name
                             - createdAt
-                            - updatedAt
+                            - delivery
+                            - id
+                            - name
+                            - ownerId
+                            - schemas
                             - source
+                            - updatedAt
                           type: object
                         type: array
                       - items:
                           properties:
                             id:
                               type: string
-                            ownerId:
-                              type: string
-                            name:
-                              type: string
                             createdAt:
                               type: number
-                            createdFrom:
-                              type: string
-                              enum:
-                                - self-served
-                                - integration
                             updatedAt:
                               type: number
                             projectIds:
                               items:
                                 type: string
                               type: array
+                            name:
+                              type: string
+                            teamId:
+                              nullable: true
+                              type: string
+                            ownerId:
+                              type: string
+                            status:
+                              type: string
+                              enum:
+                                - enabled
+                                - disabled
+                                - errored
+                            firstErrorTimestamp:
+                              type: number
+                            disabledAt:
+                              type: number
+                            disabledBy:
+                              type: string
+                            disabledReason:
+                              type: string
+                              enum:
+                                - disabled-by-owner
+                                - feature-not-available
+                                - account-plan-downgrade
+                                - disabled-by-admin
                             schemas:
                               properties:
                                 log:
@@ -405,19 +430,28 @@ paths:
                                     compression:
                                       type: string
                                       enum:
-                                        - gzip
                                         - none
+                                        - gzip
                                     headers:
                                       additionalProperties:
                                         type: string
                                       type: object
                                     secret:
-                                      type: string
+                                      oneOf:
+                                        - type: string
+                                        - properties:
+                                            kind:
+                                              type: string
+                                              enum:
+                                                - INTEGRATION_SECRET
+                                          required:
+                                            - kind
+                                          type: object
                                   required:
-                                    - type
-                                    - endpoint
                                     - encoding
+                                    - endpoint
                                     - headers
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -441,26 +475,21 @@ paths:
                                         type: string
                                       type: object
                                     secret:
-                                      type: string
+                                      oneOf:
+                                        - type: string
+                                        - properties:
+                                            kind:
+                                              type: string
+                                              enum:
+                                                - INTEGRATION_SECRET
+                                          required:
+                                            - kind
+                                          type: object
                                   required:
-                                    - type
-                                    - endpoint
                                     - encoding
-                                    - headers
-                                  type: object
-                                - properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - syslog
-                                    endpoint:
-                                      type: string
-                                    secret:
-                                      type: string
-                                  required:
-                                    - type
                                     - endpoint
-                                    - secret
+                                    - headers
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -472,9 +501,9 @@ paths:
                                     table:
                                       type: string
                                   required:
-                                    - type
                                     - endpoint
                                     - table
+                                    - type
                                   type: object
                                 - properties:
                                     type:
@@ -486,8 +515,8 @@ paths:
                                       enum:
                                         - vercel-otel-traces-db
                                   required:
-                                    - type
                                     - target
+                                    - type
                                   type: object
                             sampling:
                               items:
@@ -506,36 +535,10 @@ paths:
                                   requestPath:
                                     type: string
                                 required:
-                                  - type
                                   - rate
+                                  - type
                                 type: object
                               type: array
-                            teamId:
-                              nullable: true
-                              type: string
-                            status:
-                              type: string
-                              enum:
-                                - enabled
-                                - disabled
-                                - errored
-                            disabledAt:
-                              type: number
-                            disabledReason:
-                              type: string
-                              enum:
-                                - disabled-by-owner
-                                - feature-not-available
-                                - account-plan-downgrade
-                                - disabled-by-admin
-                            disabledBy:
-                              type: string
-                            firstErrorTimestamp:
-                              type: number
-                            configurationId:
-                              type: string
-                            clientId:
-                              type: string
                             source:
                               oneOf:
                                 - properties:
@@ -560,9 +563,9 @@ paths:
                                     integrationConfigurationId:
                                       type: string
                                   required:
-                                    - kind
-                                    - integrationId
                                     - integrationConfigurationId
+                                    - integrationId
+                                    - kind
                                   type: object
                             filter:
                               type: string
@@ -600,13 +603,29 @@ paths:
                                                 sources:
                                                   items:
                                                     type: string
+                                                    enum:
+                                                      - build
+                                                      - edge
+                                                      - lambda
+                                                      - static
+                                                      - external
+                                                      - firewall
+                                                      - redirect
                                                   type: array
+                                                legacy_excludeCachedStaticAssetLogs:
+                                                  type: boolean
+                                                  enum:
+                                                    - false
+                                                    - true
                                               type: object
                                             deployment:
                                               properties:
                                                 environments:
                                                   items:
                                                     type: string
+                                                    enum:
+                                                      - production
+                                                      - preview
                                                   type: array
                                               type: object
                                           required:
@@ -620,12 +639,12 @@ paths:
                                             text:
                                               type: string
                                           required:
-                                            - type
                                             - text
+                                            - type
                                           type: object
                                   required:
-                                    - version
                                     - filter
+                                    - version
                                   type: object
                             integrationIcon:
                               type: string
@@ -633,158 +652,58 @@ paths:
                               type: string
                             integrationWebsite:
                               type: string
-                            projectsMetadata:
-                              items:
-                                properties:
-                                  id:
-                                    type: string
-                                  name:
-                                    type: string
-                                  framework:
-                                    nullable: true
-                                    type: string
-                                    enum:
-                                      - blitzjs
-                                      - nextjs
-                                      - gatsby
-                                      - remix
-                                      - react-router
-                                      - astro
-                                      - hexo
-                                      - eleventy
-                                      - docusaurus-2
-                                      - docusaurus
-                                      - preact
-                                      - solidstart-1
-                                      - solidstart
-                                      - dojo
-                                      - ember
-                                      - vue
-                                      - scully
-                                      - ionic-angular
-                                      - angular
-                                      - polymer
-                                      - svelte
-                                      - sveltekit
-                                      - sveltekit-1
-                                      - ionic-react
-                                      - create-react-app
-                                      - gridsome
-                                      - umijs
-                                      - sapper
-                                      - saber
-                                      - stencil
-                                      - nuxtjs
-                                      - redwoodjs
-                                      - hugo
-                                      - jekyll
-                                      - brunch
-                                      - middleman
-                                      - zola
-                                      - hydrogen
-                                      - vite
-                                      - vitepress
-                                      - vuepress
-                                      - parcel
-                                      - fastapi
-                                      - flask
-                                      - fasthtml
-                                      - sanity-v3
-                                      - sanity
-                                      - storybook
-                                      - nitro
-                                      - hono
-                                      - express
-                                      - h3
-                                      - nestjs
-                                      - fastify
-                                      - xmcp
-                                  latestDeployment:
-                                    type: string
-                                required:
-                                  - id
-                                  - name
-                                type: object
-                              type: array
+                            projectAccess:
+                              oneOf:
+                                - properties:
+                                    access:
+                                      type: string
+                                      enum:
+                                        - all
+                                  required:
+                                    - access
+                                  type: object
+                                - properties:
+                                    access:
+                                      type: string
+                                      enum:
+                                        - some
+                                    projectIds:
+                                      items:
+                                        type: string
+                                      type: array
+                                  required:
+                                    - access
+                                    - projectIds
+                                  type: object
                           required:
-                            - id
-                            - ownerId
-                            - name
                             - createdAt
-                            - updatedAt
+                            - delivery
+                            - id
+                            - name
+                            - ownerId
+                            - schemas
                             - source
+                            - updatedAt
                           type: object
                         type: array
-            requiredProperties:
-              - drains
-        examples:
-          example:
-            value:
-              drains:
-                - id: <string>
-                  ownerId: <string>
-                  name: <string>
-                  createdAt: 123
-                  createdFrom: self-served
-                  updatedAt: 123
-                  projectIds:
-                    - <string>
-                  schemas:
-                    log: {}
-                    trace: {}
-                    analytics: {}
-                    speed_insights: {}
-                  delivery:
-                    type: http
-                    endpoint: <string>
-                    encoding: json
-                    compression: gzip
-                    headers: {}
-                    secret: <string>
-                  sampling:
-                    - type: head_sampling
-                      rate: 123
-                      env: production
-                      requestPath: <string>
-                  teamId: <string>
-                  status: enabled
-                  disabledAt: 123
-                  disabledReason: disabled-by-owner
-                  disabledBy: <string>
-                  firstErrorTimestamp: 123
-                  configurationId: <string>
-                  clientId: <string>
-                  source:
-                    kind: self-served
-                  filter: <string>
-                  filterV2:
-                    version: v1
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - drains
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

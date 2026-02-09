@@ -2,10 +2,7 @@
 
 # List Tags
 
-```
-GET 
-/v1/products/:productId/tags
-```
+Copy page
 
 This endpoint returns the list of the Tags in a specified Product, identified by the `productId` parameter.
 

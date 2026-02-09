@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/http/http.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTP
 
 > Learn how to set up a HTTP destination connector in AI Squared to efficiently transfer data to your HTTP destination.

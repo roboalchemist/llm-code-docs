@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/max.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MAX
 
 The max aggregation type selects the highest value of a specified event property from all received events.

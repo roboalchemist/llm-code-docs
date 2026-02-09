@@ -81,7 +81,7 @@ Include the filter in the room input options when starting your agent session:
 
 ```python
 from livekit.plugins import noise_cancellation
-from livekit.agents.voice import room_io
+from livekit.agents import room_io
 
 # ...
 await session.start(
@@ -538,7 +538,7 @@ The Flutter noise filter is currently supported only on iOS, macOS, and Android 
 
 ---
 
-This document was rendered at 2025-12-31T18:29:37.185Z.
+This document was rendered at 2026-02-03T03:25:16.525Z.
 For the latest version of this document, see [https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md](https://docs.livekit.io/transport/media/enhanced-noise-cancellation.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

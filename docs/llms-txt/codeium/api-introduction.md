@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference
 
-> Enterprise API for querying Windsurf usage data and managing configurations
+> Enterprise API for querying Windsurf usage data and managing configurations with service key authentication.
 
 ## Overview
 
@@ -45,9 +37,16 @@ The Windsurf API uses service keys for authentication. Service keys must be incl
 
 ### Required Permissions
 
-All Analytics API endpoints require "Teams Read-only" permissions.
+Different API endpoints require different permissions. Refer to the individual endpoint documentation for the specific permission required:
 
-All Usage API endpoints require "Billing Write" permissions.
+| Endpoint                                                                                                     | Required Permission |
+| ------------------------------------------------------------------------------------------------------------ | ------------------- |
+| [Custom Analytics](/plugins/accounts/api-reference/custom-analytics) (`/Analytics`)                          | Analytics Read      |
+| [User Page Analytics](/plugins/accounts/api-reference/user-page-analytics) (`/UserPageAnalytics`)            | Teams Read-Only     |
+| [Cascade Analytics](/plugins/accounts/api-reference/cascade-analytics) (`/CascadeAnalytics`)                 | Teams Read-Only     |
+| [Set Usage Configuration](/plugins/accounts/api-reference/usage-config) (`/UsageConfig`)                     | Billing Write       |
+| [Get Usage Configuration](/plugins/accounts/api-reference/get-usage-config) (`/GetUsageConfig`)              | Billing Read        |
+| [Get Team Credit Balance](/plugins/accounts/api-reference/get-team-credit-balance) (`/GetTeamCreditBalance`) | Billing Read        |
 
 ### Using Service Keys
 

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/send-test-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send Test Emails
 
 > Simulate different events by sending test emails.
@@ -8,11 +12,11 @@
 
 During development, it's important to test different deliverability scenarios.
 
-> **Example**: When an email hard bounces or is marked as spam, it's important to stop sending emails to the recipient, as continuing to send emails to those addresses will damage your domain reputation. We recommend [creating a webhook endpoint](/dashboard/webhooks/introduction) to capture these events and remove the addresses from your mailing lists.
+> **Example**: When an email hard bounces or is marked as spam, it's important to stop sending emails to the recipient, as continuing to send emails to those addresses will damage your domain reputation. We recommend [creating a webhook endpoint](/webhooks/introduction) to capture these events and remove the addresses from your mailing lists.
 
 When testing, avoid:
 
-* sending to fake email addresess
+* sending to fake email addresses
 * setting up a fake SMTP server
 
 We provide the following test email addresses to help you simulate different email events without damaging your domain reputation. These test emails enable the safe use of Resend's Dashboard, Webhooks, and API when developing your application.
@@ -69,7 +73,24 @@ complained+user2@resend.dev
 complained+user3@resend.dev
 ```
 
+## Test suppressed emails
+
+To test that your emails are being suppressed, you can send an email to:
+
+```
+suppressed@resend.dev
+```
+
+<Info>
+  When using this test email, the suppression reason will indicate the address
+  was previously bounced
+</Info>
+
 ## Using labels effectively
+
+<Warning>
+  The suppressed test email address does not support labeling yet
+</Warning>
 
 The labeling feature allows you to use any string as a label after the `+` symbol. This is particularly useful for:
 

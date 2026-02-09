@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/client-side-mobile/installation-guides/react-native.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # React Native
 
 > How to add the Dub React Native SDK to your React Native project

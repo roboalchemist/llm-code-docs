@@ -62,7 +62,7 @@ These 2 sample command lines use the `audiotestsrc` and `videotestsrc` sources t
 
 ---
 
-This document was rendered at 2025-12-31T18:29:37.490Z.
+This document was rendered at 2026-02-03T03:25:18.278Z.
 For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/ingress/encoders.md](https://docs.livekit.io/transport/media/ingress-egress/ingress/encoders.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

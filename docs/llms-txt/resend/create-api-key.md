@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/api-keys/create-api-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create API key
 
 > Add a new API key to authenticate communications with Resend.
@@ -37,7 +41,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 ## Body Parameters
 
 <ParamField body="name" type="string" required>
-  The API key name.
+  The API key name. Maximum 50 characters.
 </ParamField>
 
 <ParamField body="permission" type="full_access | sending_access">
@@ -52,7 +56,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -60,7 +64,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   const { data, error } = await resend.apiKeys.create({ name: 'Production' });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->apiKeys->create([
@@ -68,7 +72,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -80,7 +84,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.ApiKeys.create(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -91,17 +95,21 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Resend::ApiKeys.create(params)
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
-  params := &resend.CreateApiKeyRequest{
-      Name: "Production",
+  import "github.com/resend/resend-go/v3"
+
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+  	params := &resend.CreateApiKeyRequest{
+  		Name: "Production",
+  	}
+  	client.ApiKeys.Create(params)
   }
-  apiKey, _ := client.ApiKeys.Create(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateApiKeyOptions, Resend, Result};
 
   #[tokio::main]
@@ -117,7 +125,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -133,7 +141,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -142,7 +150,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Token={0}", resp.Content.Token );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/api-keys' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -153,7 +161,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "dacf4072-4119-4d88-932f-6202748ac7c8",
     "token": "re_c1tpEyD8_NKFusih9vKVQknRAQfmFcWCv"

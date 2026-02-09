@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/integrations/pipecat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipecat
 
 > Integrate a Tavus Replica into your Pipecat application as a participant or a video feed for the bot.

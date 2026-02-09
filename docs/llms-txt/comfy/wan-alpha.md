@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan-alpha.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wan-Alpha Tutorial
 
 > Learn how to generate videos with alpha channel transparency using Wan-Alpha in ComfyUI

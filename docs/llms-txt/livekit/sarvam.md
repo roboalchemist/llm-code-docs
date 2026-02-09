@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/sarvam.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/sarvam.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/sarvam.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
-
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Sarvam
+LiveKit docs › Models › STT › Plugins › Sarvam
 
 ---
 
@@ -39,7 +27,7 @@ This section provides a quick reference for the Sarvam STT plugin. For more info
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[sarvam]~=1.2"
+uv add "livekit-agents[sarvam]~=1.3"
 
 ```
 
@@ -92,7 +80,7 @@ The following resources provide more information about using Sarvam with LiveKit
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.873Z.
+This document was rendered at 2026-02-03T03:25:03.751Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/sarvam.md](https://docs.livekit.io/agents/models/stt/plugins/sarvam.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

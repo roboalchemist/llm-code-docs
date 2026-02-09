@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/xlsr_wav2vec2.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/xlsr_wav2vec2.md
 
 # XLSR-Wav2Vec2
 
@@ -28,7 +28,7 @@ Note: Meta (FAIR) released a new version of [Wav2Vec2-BERT 2.0](https://huggingf
 
 - XLSR-Wav2Vec2 is a speech model that accepts a float array corresponding to the raw waveform of the speech signal.
 - XLSR-Wav2Vec2 model was trained using connectionist temporal classification (CTC) so the model output has to be
-  decoded using [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
+  decoded using [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
 
 XLSR-Wav2Vec2's architecture is based on the Wav2Vec2 model, so one can refer to [Wav2Vec2's documentation page](wav2vec2).
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-list-one.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Agent Details
 
 > Retrieve detailed information about a specific agent including its deployment status.
@@ -69,6 +73,9 @@ paths:
                         - voice-starter-secrets
                       krispModels:
                         enabled: false
+                      krispViva:
+                        audioFilters: true
+                        version: '20251010'
                       enableManagedKeys:
                         enabled: false
                   serviceId: c359e1ea-64d6-4bcf-a7c6-28d3bd1c8909
@@ -191,6 +198,16 @@ components:
                         enabled:
                           type: boolean
                           description: Whether Krisp is enabled
+                    krispViva:
+                      type: object
+                      description: Krisp VIVA noise cancellation configuration
+                      properties:
+                        audioFilters:
+                          type: boolean
+                          description: Whether Krisp VIVA audio filters are enabled
+                        version:
+                          type: string
+                          description: Version of the Krisp VIVA models
                     enableManagedKeys:
                       type: object
                       description: Managed API keys configuration
@@ -235,7 +252,3 @@ components:
         Authorization header.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

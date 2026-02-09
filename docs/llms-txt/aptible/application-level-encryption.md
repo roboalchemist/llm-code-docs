@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-encryption/application-level-encryption.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Application-Level Encryption
 
 Aptible's built-in [Database Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/overview) is sufficient to comply with most data regulations, including HIPAA Technical Safeguards 45 C.F.R. § 164.312 (e)(2)(ii), but we strongly recommend also implementing application-level encryption in your App to further protect sensitive data.

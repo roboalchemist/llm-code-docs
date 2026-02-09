@@ -2,10 +2,7 @@
 
 # Get Segment
 
-```
-GET 
-/v1/segments/:segmentId
-```
+Copy page
 
 This endpoint returns the metadata of a Segment identified by the `segmentId`.
 

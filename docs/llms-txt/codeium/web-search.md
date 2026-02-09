@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/cascade/web-search.md
 
-# Source: https://docs.windsurf.com/windsurf/cascade/web-search.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/web-search.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/web-search.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/web-search.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/web-search.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/web-search.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Web and Docs Search
+
+> Enable Cascade to search the web and read documentation pages in real-time using @web and @docs mentions for up-to-date context.
 
 Cascade can now intuitively parse through and chunk up web pages and documentation, providing realtime context to the models. The key way to understand this feature is that Cascade will browse the Internet as a human would.
 

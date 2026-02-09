@@ -11,9 +11,9 @@ Humanloop provides a set of decorators that help you instrument your AI features
 
 | Decorator | Purpose | Creates | Documentation |
 |-----------|---------|---------|---------------|
-| `prompt` | Instrument LLM provider calls | Prompt Logs | [Learn more â](/docs/v5/sdk/decorators/prompt) |
-| `tool` | Define function calling tools | Tool Logs | [Learn more â](/docs/v5/sdk/decorators/tool) |
-| `flow` | Trace multi-step AI features | Flow Log with traces | [Learn more â](/docs/v5/sdk/decorators/flow) |
+| `prompt` | Instrument LLM provider calls | Prompt Logs | [Learn more →](/docs/v5/sdk/decorators/prompt) |
+| `tool` | Define function calling tools | Tool Logs | [Learn more →](/docs/v5/sdk/decorators/tool) |
+| `flow` | Trace multi-step AI features | Flow Log with traces | [Learn more →](/docs/v5/sdk/decorators/flow) |
 
 ## Common Patterns
 

@@ -1,6 +1,6 @@
 # Source: https://documentation.mailgun.com/docs/mailgun/user-manual/subaccounts/subaccounts-features.md
 
-# Summary of Subbacount Features
+# Summary of Subaccount Features
 
 As the primary account, you will have the ability to:
 

@@ -1,8 +1,8 @@
-# Source: https://www.daytona.io/docs/en/inngest-agentkit-coding-agent.md
+# Source: https://www.daytona.io/docs/en/guides/agentkit/inngest-agentkit-coding-agent.md
 
 import { Image } from 'astro:assets'
 
-import notesAppDemo from '../../../assets/docs/images/inngest-agentkit-coding-agent-notes-app-demo.png'
+import notesAppDemo from '../../../../../assets/docs/images/inngest-agentkit-coding-agent-notes-app-demo.png'
 
 This guide demonstrates how to set up and use a fully autonomous coding agent that performs software development tasks in a [Daytona](https://daytona.io) sandbox environment. The agent is built using [AgentKit](https://agentkit.inngest.com/) and leverages Daytona sandboxes for secure, isolated execution. It can create web apps, run tests, execute scripts, and more; automating multi-step workflows based on user prompts.
 

@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/building-pieces/create-action.md
 
-# Source: https://www.activepieces.com/docs/developers/building-pieces/create-action.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create Action
 
@@ -95,7 +97,7 @@ export const gelato = createPiece({
 
 By default, the development setup only builds specific components. Open the file `packages/server/api/.env` and include "gelato" in the `AP_DEV_PIECES`.
 
-For more details, check out the [Piece Development](../development-setup/getting-started) section.
+For more details, check out the [Piece Development](./development-setup) section.
 
 Once you edit the environment variable, restart the backend. The piece will be rebuilt. After this process, you'll need to **refresh** the frontend to see the changes.
 
@@ -106,4 +108,4 @@ Once you edit the environment variable, restart the backend. The piece will be r
 
 To test the action, use the flow builder in Activepieces. It should function as shown in the screenshot.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9d8d8ac84393a2940f18940bb98e2d51" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a7e10b771fad182dc9f6035cb8282de 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=67cf9aa6312c95f8c18222ce488f70d2 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7064d346404be788450611e815206de6 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=559f3e935a86f7cf1dafbb02dbb743db 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=de79af41125ec16aee55d175e99c64de 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5fb31597729b477e3084acf9dca47080 2500w" />
+<img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=fbe58632202341db74909ce0d5428767" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=b665dbb041ff604d0ad7644b2ba1daeb 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=35c487dea20f54e739d8f4a5ef43df17 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=002ea216af3c68a37bb05bffdbf6dc8b 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=412e312b2d70f4717132afd994ecde04 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=7bf7cdbae9e5d6c7376a8b3ecb33069d 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/gelato-action.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=799c7211ce7bdc240960f0e15c1ac76c 2500w" />

@@ -6,21 +6,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/astradb.md
 
-# Source: https://docs.unstructured.io/ui/destinations/astradb.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/astradb.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/astradb.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/astradb.md
-
-# Source: https://docs.unstructured.io/ui/destinations/astradb.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/astradb.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/astradb.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/astradb.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Astra DB
 
@@ -52,8 +40,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -111,8 +98,8 @@ The requirements are as follows.
       but the number of dimensions that are generated does not match the existing collection's embedding settings, the run will fail.
       You must change your Unstructured embedding settings or your existing collection's embedding settings to match, and try the run again.
     * If a collection name is not specified, Unstructured creates a new collection in your keyspace. If Unstructured generates embeddings,
-      the new collections's name will be `u<short-workflow-id>_<short-embedding-model-name>_<number-of-dimensions>`.
-      If Unstructured does not generate embeddings, the new collections's name will be `u<short-workflow-id`.
+      the new collection's name will be `u<short-workflow-id>_<short-embedding-model-name>_<number-of-dimensions>`.
+      If Unstructured does not generate embeddings, the new collection's name will be `u<short-workflow-id`.
 
   For [Unstructured Ingest](/open-source/ingestion/overview):
 
@@ -121,7 +108,7 @@ The requirements are as follows.
 
     * If an existing collection name is specified, and Unstructured generates embeddings,
       but the number of dimensions that are generated does not match the existing collection's embedding settings, the run will fail.
-      You must change your Unstructured embedding settings or your existing collections's embedding settings to match, and try the run again.
+      You must change your Unstructured embedding settings or your existing collection's embedding settings to match, and try the run again.
     * If a collection name is not specified, Unstructured creates a new collection in your keyspace. The new collection's name will be `unstructuredautocreated`.
 
   To create a collection yourself:
@@ -131,8 +118,8 @@ The requirements are as follows.
   c. In the **Collections** list, select **Create collection**.<br />
   d. Enter some **Collection name**.<br />
   e. Turn on **Vector-enabled collection**, if it is not already turned on.<br />
-  f. For **Embedding generation method**, select **Bring my own**.<br />
-  g. For **Dimensions**, enter the number of dimensions for the embedding model that you plan to use.<br />
+  f. Choose a mode for **Embedding generation method**. See [Astra DB generated embeddings](#astra-db-generated-embeddings).<br />
+  g. If you chose **Bring my own**, enter the number of dimensions for the embedding model that you plan to use.<br />
   h. For **Similarity metric**, select **Cosine**.<br />
   i. Click **Create collection**.<br />
 
@@ -158,9 +145,12 @@ To create an Astra DB destination connector, see the following examples.
                       "token": "<token>",
                       "api_endpoint": "<api-endpoint>",
                       "collection_name": "<collection-name>",
-                      "keyspace=": "<keyspace>",
+                      "keyspace": "<keyspace>",
                       "batch_size": <batch-size>,
-                      "flatten_metadata": <True|False>
+                      "flatten_metadata": <True|False>,
+                      "binary_encode_vectors": <True|False>,
+                      "enable_lexical_search": <True|False>,
+                      "astra_generated_embeddings": <True|False>
                   }
               )
           )
@@ -185,7 +175,10 @@ To create an Astra DB destination connector, see the following examples.
           "collection_name": "<collection-name>",
           "keyspace": "<keyspace>",
           "batch_size": <batch-size>,
-          "flatten_metadata": "<true|false>"
+          "flatten_metadata": "<true|false>",
+          "binary_encode_vectors": "<true|false>",
+          "enable_lexical_search": "<true|false>",
+          "astra_generated_embeddings": "<true|false>"
       }
   }'
   ```
@@ -200,3 +193,52 @@ Replace the preceding placeholders as follows:
 * `<keyspace>` - The name of the keyspace in the collection. The default is `default_keyspace` if not otherwise specified.
 * `<batch-size>` - The maximum number of records to send per batch. The default is `20` if not otherwise specified.
 * `flatten_metadata` - Set to `true` to flatten the metadata into each record. Specifically, when flattened, the metadata key values are brought to the top level of the element, and the `metadata` key itself is removed. By default, the metadata is not flattened (`false`).
+* `binary_encode_vectors` - Set to `false` to upload vectors as a list of numbers. By default, vectors are binary encoded before sending (`true`). This is more efficient, but it makes it harder to view and work with vectors in the UI.
+* `enable_lexical_search` - Set to `true` to enable lexical and hybrid search. See [Lexical search](#lexical-search).
+* `astra_generated_embeddings` - Set to `true` to use an Astra vectorize integration for embeddings. See [Astra DB generated embeddings](#astra-db-generated-embeddings).
+
+## Lexical search
+
+When **Enable Lexical Search** is enabled, document text will be inserted into the `$lexical` field for lexical and hybrid search capabilities.
+
+<Note>
+  Your collection must be configured for lexical search, and your database must be in one of the supported AWS regions. For more information, see [Find data with lexicographical matching](https://docs.datastax.com/en/astra-db-serverless/databases/lexical-search.html) in the Astra DB documentation. Otherwise, you will encounter the following error when running a job:
+
+  ` The Collection <keyspace>.<collection> does not have Lexical feature enabled. (LEXICAL_NOT_ENABLED_FOR_COLLECTION) [with 0 inserted ids])`
+</Note>
+
+## Astra DB generated embeddings
+
+When **Astra DB Generated Embeddings** is enabled:
+
+* Your document text will be inserted into the `$vectorize` field.
+* Astra DB will automatically populate the `$vector` field with embeddings.
+* Your workflow **must not** include an embedder node.
+* You **must** have an embedding provider configured for your collection.
+
+When **Astra DB Generated Embeddings** is disabled (the default):
+
+* Unstructured will insert embeddings directly into the `$vector` field
+* Your workflow **must** include an embedder node.
+
+For more information, see [Auto-generate embeddings with vectorize](https://docs.datastax.com/en/astra-db-serverless/databases/embedding-generation.html) in the Astra DB documentation.
+
+### Troubleshooting
+
+You might encounter the following errors when running a job that uses this connector:
+
+**Error**:
+
+`Unable to vectorize data, embedding service not configured for the collection : <collection> (EMBEDDING_SERVICE_NOT_CONFIGURED) [with 0 inserted ids])`
+
+You've enabled **Astra DB Generated Embeddings**, but your collection does not have an embedding provider. Either disable **Astra DB Generated Embeddings** in your connector settings, or recreate your collection with an embedding provider.
+
+**Error**:
+
+`Cannot use Unstructured embeddings and Astra-generated embeddings simultaneously. Please disable Astra generated embeddings or remove the Unstructured embedder.`
+
+**or**:
+
+`No vectors provided. Please enable an Unstructured embedding provider or configure Astra to generate embeddings.`
+
+You must choose either Unstructured or Astra DB embeddings. Configuring neither, or both, is unsupported.

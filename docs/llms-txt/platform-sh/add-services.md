@@ -60,7 +60,7 @@ The following table presents the keys you can define for each service:
 | --------------- | ---------- | ----------------- | ----------- |
 | `type`          | `string`   | Yes               | One of the [available services](#available-services) in the format `type:version`. |
 | `configuration` | dictionary | For some services | Some services have additional specific configuration options that can be defined here, such as specific endpoints. See the given service page for more details. |
-| `relationships` | dictionary | For some services | Some services require a relationship to your app. The content of the dictionary has the same type as the `relationships` dictionary for [app configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships). The `endpoint_name` for apps is always `http`. |
+| `relationships` | dictionary | For some services | Some services require a relationship to your app. The content of the dictionary has the same type as the `relationships` dictionary for [app configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md). The `endpoint_name` for apps is always `http`. |
 
 ##### Resources (CPU, RAM, disk)
 
@@ -97,11 +97,11 @@ applications:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 
     .upsun/config.yaml
 
@@ -182,24 +182,28 @@ Add them to the `type` key of the [service configuration](#1-configure-the-servi
 
 | Service | `type` | Supported versions |
 | ------- | ------ | ------------------ |
-| [Headless Chrome](https://docs.upsun.com/add-services/headless-chrome.md) | `chrome-headless` | 120, 113, 95, 91 |
-| [Elasticsearch](https://docs.upsun.com/add-services/elasticsearch.md) | `elasticsearch` | 8.5, 7.17 |
+| [Headless Chrome](https://docs.upsun.com/add-services/headless-chrome.md) | `chrome-headless` | 120 |
+| [ClickHouse](https://docs.upsun.com/add-services/clickhouse.md) | `clickhouse` | 25.8, 25.3, 24.3, 23.8 |
+| [Elasticsearch](https://docs.upsun.com/add-services/elasticsearch.md) | `elasticsearch` | 7.10 |
+| [Elasticsearch-Enterprise](https://docs.upsun.com/add-services/elasticsearch.md) Premium | `elasticsearch-enterprise` | 7.17, 8.5, 8.19 |
+| [Gotenberg](https://docs.upsun.com/add-services/gotenberg.md) | `gotenberg` | 8 |
 | [InfluxDB](https://docs.upsun.com/add-services/influxdb.md) | `influxdb` | 2.7, 2.3 |
-| [Kafka](https://docs.upsun.com/add-services/kafka.md) | `kafka` | 3.7, 3.6, 3.4, 3.2 |
+| [Kafka](https://docs.upsun.com/add-services/kafka.md) | `kafka` | 3.7 |
 | [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md) | `mariadb` | 11.8, 11.4, 10.11, 10.6 |
-| [Memcached](https://docs.upsun.com/add-services/memcached.md) | `memcached` | 1.6, 1.5, 1.4 |
-| [MongoDB](https://docs.upsun.com/add-services/mongodb.md) | `mongodb` |  |
-| [MongoDB](https://docs.upsun.com/add-services/mongodb.md) Premium | `mongodb-enterprise` | 7.0, 6.0, 5.0, 4.4 |
-| [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md) | `mysql` | 11.0, 10.11, 10.6, 10.5, 10.4, 10.3 |
+| [Memcached](https://docs.upsun.com/add-services/memcached.md) | `memcached` | 1.6 |
+| [Mercure](https://docs.upsun.com/add-services/mercure.md) | `mercure` | 0 |
+| [MongoDB](https://docs.upsun.com/add-services/mongodb.md) | `mongodb` | 4.0 |
+| [MongoDB](https://docs.upsun.com/add-services/mongodb.md) Premium | `mongodb-enterprise` | 7.0 |
+| [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md) | `mysql` | 11.8, 11.4, 10.11, 10.6 |
 | [Network Storage](https://docs.upsun.com/add-services/network-storage.md) | `network-storage` | 1.0 |
 | [OpenSearch](https://docs.upsun.com/add-services/opensearch.md) | `opensearch` | 3, 2 |
-| [Oracle MySQL](https://docs.upsun.com/add-services/mysql.md) | `oracle-mysql` | 8.0, 5.7 |
-| [PostgreSQL](https://docs.upsun.com/add-services/postgresql.md) | `postgresql` | 18, 17, 16, 15, 14, 13, 12 |
-| [RabbitMQ](https://docs.upsun.com/add-services/rabbitmq.md) | `rabbitmq` | 4.1, 4.0, 3.13, 3.12 |
+| [Oracle MySQL](https://docs.upsun.com/add-services/mysql.md) | `oracle-mysql` | 8.4, 8.0 |
+| [PostgreSQL](https://docs.upsun.com/add-services/postgresql.md) | `postgresql` | 18, 17, 16, 15, 14 |
+| [RabbitMQ](https://docs.upsun.com/add-services/rabbitmq.md) | `rabbitmq` | 4.1 |
 | [Redis](https://docs.upsun.com/add-services/redis.md) | `redis` | 8.0, 7.2 |
 | [Solr](https://docs.upsun.com/add-services/solr.md) | `solr` | 9.9, 9.6, 9.4, 9.2, 9.1 |
-| [Valkey](https://docs.upsun.com/add-services/valkey.md) | `valkey` | 8.0 |
-| [Varnish](https://docs.upsun.com/add-services/varnish.md) | `varnish` | 7.6, 7.3, 7.2, 6.0 |
+| [Valkey](https://docs.upsun.com/add-services/valkey.md) | `valkey` | 8.1, 8.0 |
+| [Varnish](https://docs.upsun.com/add-services/varnish.md) | `varnish` | 7.6, 6.0 |
 | [Vault KMS](https://docs.upsun.com/add-services/vault.md) | `vault-kms` | 1.12 |
 
 ### Service versions

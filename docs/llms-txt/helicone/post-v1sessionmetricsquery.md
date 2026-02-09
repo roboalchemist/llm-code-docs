@@ -1,413 +1,203 @@
 # Source: https://docs.helicone.ai/rest/session/post-v1sessionmetricsquery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Query Session Metrics
 
 > Search and analyze session performance metrics
 
+<Warning>
+  <strong>For users in the European Union:</strong> Please use `eu.api.helicone.ai` instead of
+  `api.helicone.ai`.
+</Warning>
+
+
 ## OpenAPI
 
 ````yaml post /v1/session/metrics/query
+openapi: 3.0.0
+info:
+  title: helicone-api
+  version: 1.0.0
+  license:
+    name: MIT
+  contact: {}
+servers:
+  - url: https://api.helicone.ai/
+  - url: http://localhost:8585/
+security: []
 paths:
-  path: /v1/session/metrics/query
-  method: post
-  servers:
-    - url: https://api.helicone.ai/
-    - url: http://localhost:8585/
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              nameContains:
-                allOf:
-                  - type: string
-              timezoneDifference:
-                allOf:
-                  - type: number
-                    format: double
-              pSize:
-                allOf:
-                  - type: string
-                    enum:
-                      - p50
-                      - p75
-                      - p95
-                      - p99
-                      - p99.9
-              useInterquartile:
-                allOf:
-                  - type: boolean
-              timeFilter:
-                allOf:
-                  - $ref: '#/components/schemas/TimeFilterMs'
-              filter:
-                allOf:
-                  - $ref: '#/components/schemas/SessionFilterNode'
-            required: true
-            refIdentifier: '#/components/schemas/SessionMetricsQueryParams'
-            requiredProperties:
-              - nameContains
-              - timezoneDifference
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              nameContains: <string>
-              timezoneDifference: 123
-              pSize: p50
-              useInterquartile: true
-              timeFilter:
-                startTimeUnixMs: 123
-                endTimeUnixMs: 123
-              filter:
-                request_response_rmt:
-                  country_code:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  latency:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  cost:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  provider:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  time_to_first_token:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  status:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  request_created_at:
-                    equals: '2023-11-07T05:31:56Z'
-                    gte: '2023-11-07T05:31:56Z'
-                    lte: '2023-11-07T05:31:56Z'
-                    lt: '2023-11-07T05:31:56Z'
-                    gt: '2023-11-07T05:31:56Z'
-                  response_created_at:
-                    equals: '2023-11-07T05:31:56Z'
-                    gte: '2023-11-07T05:31:56Z'
-                    lte: '2023-11-07T05:31:56Z'
-                    lt: '2023-11-07T05:31:56Z'
-                    gt: '2023-11-07T05:31:56Z'
-                  model:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  user_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  organization_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  node_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  job_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  threat:
-                    equals: true
-                  request_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  prompt_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  completion_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  prompt_cache_read_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  prompt_cache_write_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  total_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  target_url:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  property_key:
-                    equals: <string>
-                  properties: {}
-                  search_properties: {}
-                  scores: {}
-                  scores_column:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  request_body:
-                    contains: <string>
-                  response_body:
-                    contains: <string>
-                  cache_enabled:
-                    equals: true
-                  cache_reference_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  cached:
-                    equals: true
-                  assets:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  helicone-score-feedback:
-                    equals: true
-                  prompt_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  prompt_version:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  request_referrer:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  is_passthrough_billing:
-                    equals: true
-                sessions_request_response_rmt:
-                  session_session_id:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  session_session_name:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-                  session_total_cost:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  session_total_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  session_prompt_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  session_completion_tokens:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  session_total_requests:
-                    not-equals: 123
-                    equals: 123
-                    gte: 123
-                    lte: 123
-                    lt: 123
-                    gt: 123
-                  session_created_at:
-                    equals: '2023-11-07T05:31:56Z'
-                    gte: '2023-11-07T05:31:56Z'
-                    lte: '2023-11-07T05:31:56Z'
-                    lt: '2023-11-07T05:31:56Z'
-                    gt: '2023-11-07T05:31:56Z'
-                  session_latest_request_created_at:
-                    equals: '2023-11-07T05:31:56Z'
-                    gte: '2023-11-07T05:31:56Z'
-                    lte: '2023-11-07T05:31:56Z'
-                    lt: '2023-11-07T05:31:56Z'
-                    gt: '2023-11-07T05:31:56Z'
-                  session_tag:
-                    not-equals: <string>
-                    equals: <string>
-                    like: <string>
-                    ilike: <string>
-                    contains: <string>
-                    not-contains: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/SessionMetrics'
-              error:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-            refIdentifier: '#/components/schemas/ResultSuccess_SessionMetrics_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-              error:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ResultError_string_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              data:
-                session_count:
-                  - range_start: <string>
-                    range_end: <string>
-                    value: 123
-                session_duration:
-                  - range_start: <string>
-                    range_end: <string>
-                    value: 123
-                session_cost:
-                  - range_start: <string>
-                    range_end: <string>
-                    value: 123
-                average:
-                  session_cost:
-                    - average: 123
-                  session_duration:
-                    - average: 123
-                  session_count:
-                    - average: 123
-        description: Ok
-  deprecated: false
-  type: path
+  /v1/session/metrics/query:
+    post:
+      tags:
+        - Session
+      operationId: GetMetrics
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionMetricsQueryParams'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result_SessionMetrics.string_'
+      security:
+        - api_key: []
 components:
   schemas:
+    SessionMetricsQueryParams:
+      properties:
+        nameContains:
+          type: string
+        timezoneDifference:
+          type: number
+          format: double
+        pSize:
+          type: string
+          enum:
+            - p50
+            - p75
+            - p95
+            - p99
+            - p99.9
+        useInterquartile:
+          type: boolean
+        timeFilter:
+          $ref: '#/components/schemas/TimeFilterMs'
+        filter:
+          $ref: '#/components/schemas/SessionFilterNode'
+      required:
+        - nameContains
+        - timezoneDifference
+      type: object
+      additionalProperties: false
+    Result_SessionMetrics.string_:
+      anyOf:
+        - $ref: '#/components/schemas/ResultSuccess_SessionMetrics_'
+        - $ref: '#/components/schemas/ResultError_string_'
+    TimeFilterMs:
+      properties:
+        startTimeUnixMs:
+          type: number
+          format: double
+        endTimeUnixMs:
+          type: number
+          format: double
+      required:
+        - startTimeUnixMs
+        - endTimeUnixMs
+      type: object
+      additionalProperties: false
+    SessionFilterNode:
+      anyOf:
+        - $ref: >-
+            #/components/schemas/FilterLeafSubset_request_response_rmt-or-sessions_request_response_rmt_
+        - $ref: '#/components/schemas/SessionFilterBranch'
+        - type: string
+          enum:
+            - all
+    ResultSuccess_SessionMetrics_:
+      properties:
+        data:
+          $ref: '#/components/schemas/SessionMetrics'
+        error:
+          type: number
+          enum:
+            - null
+          nullable: true
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+    ResultError_string_:
+      properties:
+        data:
+          type: number
+          enum:
+            - null
+          nullable: true
+        error:
+          type: string
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+    FilterLeafSubset_request_response_rmt-or-sessions_request_response_rmt_:
+      $ref: >-
+        #/components/schemas/Pick_FilterLeaf.request_response_rmt-or-sessions_request_response_rmt_
+    SessionFilterBranch:
+      properties:
+        right:
+          $ref: '#/components/schemas/SessionFilterNode'
+        operator:
+          type: string
+          enum:
+            - or
+            - and
+        left:
+          $ref: '#/components/schemas/SessionFilterNode'
+      required:
+        - right
+        - operator
+        - left
+      type: object
+    SessionMetrics:
+      properties:
+        session_count:
+          items:
+            $ref: '#/components/schemas/HistogramRow'
+          type: array
+        session_duration:
+          items:
+            $ref: '#/components/schemas/HistogramRow'
+          type: array
+        session_cost:
+          items:
+            $ref: '#/components/schemas/HistogramRow'
+          type: array
+        average:
+          properties:
+            session_cost:
+              items:
+                $ref: '#/components/schemas/AverageRow'
+              type: array
+            session_duration:
+              items:
+                $ref: '#/components/schemas/AverageRow'
+              type: array
+            session_count:
+              items:
+                $ref: '#/components/schemas/AverageRow'
+              type: array
+          required:
+            - session_cost
+            - session_duration
+            - session_count
+          type: object
+      required:
+        - session_count
+        - session_duration
+        - session_cost
+        - average
+      type: object
+      additionalProperties: false
+    Pick_FilterLeaf.request_response_rmt-or-sessions_request_response_rmt_:
+      properties:
+        request_response_rmt:
+          $ref: '#/components/schemas/Partial_RequestResponseRMTToOperators_'
+        sessions_request_response_rmt:
+          $ref: '#/components/schemas/Partial_SessionsRequestResponseRMTToOperators_'
+      type: object
+      description: From T, pick a set of properties whose keys are in the union K
     HistogramRow:
       properties:
         range_start:
@@ -423,75 +213,15 @@ components:
         - value
       type: object
       additionalProperties: false
-    Partial_TextOperators_:
+    AverageRow:
       properties:
-        not-equals:
-          type: string
-        equals:
-          type: string
-        like:
-          type: string
-        ilike:
-          type: string
-        contains:
-          type: string
-        not-contains:
-          type: string
+        average:
+          type: number
+          format: double
+      required:
+        - average
       type: object
-      description: Make all properties in T optional
-    Partial_NumberOperators_:
-      properties:
-        not-equals:
-          type: number
-          format: double
-        equals:
-          type: number
-          format: double
-        gte:
-          type: number
-          format: double
-        lte:
-          type: number
-          format: double
-        lt:
-          type: number
-          format: double
-        gt:
-          type: number
-          format: double
-      type: object
-      description: Make all properties in T optional
-    Partial_TimestampOperatorsTyped_:
-      properties:
-        equals:
-          type: string
-          format: date-time
-        gte:
-          type: string
-          format: date-time
-        lte:
-          type: string
-          format: date-time
-        lt:
-          type: string
-          format: date-time
-        gt:
-          type: string
-          format: date-time
-      type: object
-      description: Make all properties in T optional
-    Partial_BooleanOperators_:
-      properties:
-        equals:
-          type: boolean
-      type: object
-      description: Make all properties in T optional
-    Partial_VectorOperators_:
-      properties:
-        contains:
-          type: string
-      type: object
-      description: Make all properties in T optional
+      additionalProperties: false
     Partial_RequestResponseRMTToOperators_:
       properties:
         country_code:
@@ -561,9 +291,9 @@ components:
         scores_column:
           $ref: '#/components/schemas/Partial_TextOperators_'
         request_body:
-          $ref: '#/components/schemas/Partial_VectorOperators_'
+          $ref: '#/components/schemas/Partial_TextOperators_'
         response_body:
-          $ref: '#/components/schemas/Partial_VectorOperators_'
+          $ref: '#/components/schemas/Partial_TextOperators_'
         cache_enabled:
           $ref: '#/components/schemas/Partial_BooleanOperators_'
         cache_reference_id:
@@ -608,102 +338,74 @@ components:
           $ref: '#/components/schemas/Partial_TextOperators_'
       type: object
       description: Make all properties in T optional
-    Pick_FilterLeaf.request_response_rmt-or-sessions_request_response_rmt_:
+    Partial_TextOperators_:
       properties:
-        request_response_rmt:
-          $ref: '#/components/schemas/Partial_RequestResponseRMTToOperators_'
-        sessions_request_response_rmt:
-          $ref: '#/components/schemas/Partial_SessionsRequestResponseRMTToOperators_'
-      type: object
-      description: From T, pick a set of properties whose keys are in the union K
-    FilterLeafSubset_request_response_rmt-or-sessions_request_response_rmt_:
-      $ref: >-
-        #/components/schemas/Pick_FilterLeaf.request_response_rmt-or-sessions_request_response_rmt_
-    SessionFilterNode:
-      anyOf:
-        - $ref: >-
-            #/components/schemas/FilterLeafSubset_request_response_rmt-or-sessions_request_response_rmt_
-        - $ref: '#/components/schemas/SessionFilterBranch'
-        - type: string
-          enum:
-            - all
-    SessionFilterBranch:
-      properties:
-        right:
-          $ref: '#/components/schemas/SessionFilterNode'
-        operator:
+        not-equals:
           type: string
-          enum:
-            - or
-            - and
-        left:
-          $ref: '#/components/schemas/SessionFilterNode'
-      required:
-        - right
-        - operator
-        - left
+        equals:
+          type: string
+        like:
+          type: string
+        ilike:
+          type: string
+        contains:
+          type: string
+        not-contains:
+          type: string
       type: object
-    TimeFilterMs:
+      description: Make all properties in T optional
+    Partial_NumberOperators_:
       properties:
-        startTimeUnixMs:
+        not-equals:
           type: number
           format: double
-        endTimeUnixMs:
+        equals:
           type: number
           format: double
-      required:
-        - startTimeUnixMs
-        - endTimeUnixMs
-      type: object
-      additionalProperties: false
-    AverageRow:
-      properties:
-        average:
+        gte:
           type: number
           format: double
-      required:
-        - average
+        lte:
+          type: number
+          format: double
+        lt:
+          type: number
+          format: double
+        gt:
+          type: number
+          format: double
       type: object
-      additionalProperties: false
-    SessionMetrics:
+      description: Make all properties in T optional
+    Partial_TimestampOperatorsTyped_:
       properties:
-        session_count:
-          items:
-            $ref: '#/components/schemas/HistogramRow'
-          type: array
-        session_duration:
-          items:
-            $ref: '#/components/schemas/HistogramRow'
-          type: array
-        session_cost:
-          items:
-            $ref: '#/components/schemas/HistogramRow'
-          type: array
-        average:
-          properties:
-            session_cost:
-              items:
-                $ref: '#/components/schemas/AverageRow'
-              type: array
-            session_duration:
-              items:
-                $ref: '#/components/schemas/AverageRow'
-              type: array
-            session_count:
-              items:
-                $ref: '#/components/schemas/AverageRow'
-              type: array
-          required:
-            - session_cost
-            - session_duration
-            - session_count
-          type: object
-      required:
-        - session_count
-        - session_duration
-        - session_cost
-        - average
+        equals:
+          type: string
+          format: date-time
+        gte:
+          type: string
+          format: date-time
+        lte:
+          type: string
+          format: date-time
+        lt:
+          type: string
+          format: date-time
+        gt:
+          type: string
+          format: date-time
       type: object
-      additionalProperties: false
+      description: Make all properties in T optional
+    Partial_BooleanOperators_:
+      properties:
+        equals:
+          type: boolean
+      type: object
+      description: Make all properties in T optional
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
 
 ````

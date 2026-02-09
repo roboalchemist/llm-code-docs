@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/ai-ml/aimindtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Mind Tool
 
 > The `AIMindTool` is designed to query data sources in natural language.

@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/esbuildPlugin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # esbuild Plugin
 
 > Use the esbuildPlugin build extension to add existing or custom esbuild plugins to your build process
 
 You can easily add existing or custom esbuild plugins to your build process using the `esbuildPlugin` extension:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { esbuildPlugin } from "@trigger.dev/build/extensions";
 import { sentryEsbuildPlugin } from "@sentry/esbuild-plugin";

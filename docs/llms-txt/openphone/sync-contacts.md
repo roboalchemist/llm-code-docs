@@ -1,5 +1,9 @@
 # Source: https://www.quo.com/docs/mdx/guides/sync-contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sync your contacts
 
 > Implement a one-way contact sync from Google Sheets to Quo using Javascript.

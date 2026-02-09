@@ -12,14 +12,14 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#content)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L78)content
+### [**](#content)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L114)content
 
 **content: string
 
-### [**](#format)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L77)format
+### [**](#format)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L113)format
 
 **format: TEXT | BASE64
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L76)name
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L112)name
 
 **name: string

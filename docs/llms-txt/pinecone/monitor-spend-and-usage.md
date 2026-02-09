@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/admin/monitor-spend-and-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor usage and cost
 
 > Set monthly spend alerts and monitor usage across your organization.

@@ -9,7 +9,7 @@ https://api.apify.com/v2/datasets/:datasetId/items
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#stream_itemshttps://docs.apify.com/api/client/js/reference/class/DatasetClient#listItemsReturns data stored in the dataset in a desired format.
+Returns data stored in the dataset in a desired format.
 
 ### Response format
 
@@ -135,6 +135,7 @@ If you specify `desc=1` query parameter, the results are returned in the reverse
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
@@ -145,3 +146,5 @@ If you specify `desc=1` query parameter, the results are returned in the reverse
   **X-Apify-Pagination-Count**
 
   **X-Apify-Pagination-Total**
+
+Bad request - invalid input parameters or request body.

@@ -232,7 +232,7 @@ If successful, the response provides the `InboundTransfer` object. The object in
 > 
 > If you don’t have access, API calls that include same-day ACH features or parameters return an error.
 
-Using same-day ACH enables funds to arrive in the originating financial account within the same business day if the `InboundTransfer` call successfully completes before the [cutoff time](https://docs.stripe.com/financial-accounts/connect/money-movement/timelines.md#bank-partner-timelines--inbound). To use same-day ACH, set the `origin_payment_method_options.us_bank_account.ach.submission` parameter to `same_day`.
+Use same-day ACH so funds arrive in the originating financial account the same business day if the `InboundTransfer` succeeds before the [cutoff time](https://docs.stripe.com/financial-accounts/connect/money-movement/timelines.md#bank-partner-timelines--inbound). Otherwise, funds arrive the following business day. Set the `origin_payment_method_options.us_bank_account.ach.submission` parameter to `same_day`.
 
 #### Fraud risk with same-day ACH availability
 
@@ -405,12 +405,11 @@ const inboundTransfer = await stripe.treasury.inboundTransfers.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryInboundTransferRetrieveParams{
-  ID: stripe.String("{{INBOUND_TRANSFER_ID}}"),
-}
+params := &stripe.TreasuryInboundTransferRetrieveParams{}
 params.AddExpand("financial_account")
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryInboundTransfers.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryInboundTransfers.Retrieve(
+  context.TODO(), "{{INBOUND_TRANSFER_ID}}", params)
 ```
 
 ```dotnet

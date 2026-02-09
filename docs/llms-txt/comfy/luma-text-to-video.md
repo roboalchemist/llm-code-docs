@@ -2,13 +2,9 @@
 
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-text-to-video.md
 
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-text-to-video.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-text-to-video.md
-
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-text-to-video.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-text-to-video.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Luma Text to Video - ComfyUI Native Node Documentation
 

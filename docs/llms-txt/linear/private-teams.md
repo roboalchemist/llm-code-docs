@@ -14,7 +14,7 @@ Create private teams for issues that should only be accessed by certain workspac
 > [!NOTE]
 > If you want a team to be public to all but a particular set of users, consider using the [Guest](https://linear.app/docs/members-roles#guest) role instead of making the team private.
 
-This feature is available on Linear's Business and Enterprise [plans](https://linear.app/pricing). Anyone in the workspace can create a private team or make an existing team private.
+This feature is available on Linear's Business and Enterprise [plans](https://linear.app/pricing). Anyone in the workspace can create a new private team. Only workspace owners, admins, and team owners can change visibility of an existing team.
 
 Private teams are helpful in cases where:
 
@@ -43,7 +43,7 @@ When creating teams from workspace settings, toggle the option **Make team priva
 
 !["Make team private" option when creating a team](https://webassets.linear.app/images/ornj730p/production/acb8f03aac5717df21fd3465d2a4c8f124cac9ef-1378x226.png?q=95&auto=format&dpr=2)
 
-To make an existing team private or vice versa, go to your team's settings (right-click on the team from your sidebar) and then scroll down on the team's settings page to the Danger Zone to make the team private.  
+To make an existing team private or vice versa, go to your team's settings (right-click on the team from your sidebar) and then _Access and permissions > Change team visibility._ 
 
 Any assignees that are not members of the private team will be removed and any subscribers to issues in the newly private team will be unsubscribed.
 

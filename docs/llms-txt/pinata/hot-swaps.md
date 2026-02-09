@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/plugins/hot-swaps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hot Swaps
 
 > Use the Hot Swaps plugin to make one CID map to another

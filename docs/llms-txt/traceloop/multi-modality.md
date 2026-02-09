@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/multi-modality.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multi-Modality Support
 
 > Automatic logging and visualization of multi-modal LLM interactions
@@ -411,8 +415,3 @@ OpenLLMetry automatically detects and logs these content types:
 * Explore [supported models and frameworks](/openllmetry/tracing/supported)
 * Set up [workflow annotations](/openllmetry/tracing/annotations) for complex multi-modal pipelines
 * Configure [Traceloop integration](/openllmetry/integrations/traceloop) to enable multi-modal visualization
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

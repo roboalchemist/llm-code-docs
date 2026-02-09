@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/configure-cmek.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure customer-managed encryption keys
 
 > Use customer-managed encryption keys with AWS KMS.
@@ -206,6 +210,10 @@ In the [AWS console](https://console.aws.amazon.com/console/home), create the KM
 12. Click **Finish**.
 
 13. Copy the **Key ARN** (e.g., `arn:aws:kms:us-east-1:XXXXXXX:key/YYYYYYY`). This will be used to [create a CMEK-enabled project](#create-a-cmek-enabled-project).
+
+    <Note>
+      **AWS KMS automatic key rotation is supported.** Pinecone references the Key ARN, not the underlying key material. As long as the Key ARN remains unchanged and accessible, you can perform key rotations inside AWS KMS without making any changes in Pinecone.
+    </Note>
 
 ### 3. Create a CMEK-enabled project
 

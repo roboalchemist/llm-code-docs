@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/v2-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicles API v2.0 Overview
 
 > Overview of the Smartcar Vehicles API v2.0 and deprecation notice.

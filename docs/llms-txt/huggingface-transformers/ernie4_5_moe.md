@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/ernie4_5_moe.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/ernie4_5_moe.md
 
 # Ernie 4.5 Moe
 
@@ -10,7 +10,7 @@ model with mixture of experts (moe) - one with 21B total, 3B active parameters a
 It uses the standard [Llama](./llama) at its core combined with a specialized MoE based on [Mixtral](./mixtral) with additional shared
 experts.
 
-Other models from the family can be found at [Ernie 4.5](./ernie4_5).
+Other models from the family can be found at [Ernie 4.5](./ernie4_5) and [Ernie 4.5 VL MoE](./ernie4_5_vl_moe).
 
     
 
@@ -144,14 +144,14 @@ The original code can be found [here](https://github.com/PaddlePaddle/ERNIE).
 
 #### transformers.Ernie4_5_MoeConfig[[transformers.Ernie4_5_MoeConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/ernie4_5_moe/configuration_ernie4_5_moe.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/ernie4_5_moe/configuration_ernie4_5_moe.py#L24)
 
-This is the configuration class to store the configuration of a [Ernie4_5_MoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Ernie4_5_MoeModel](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel). It is used to instantiate a
 Ernie 4.5 MoE model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of [baidu/ERNIE-4.5-21B-A3B-PT](https://huggingface.co/baidu/ERNIE-4.5-21B-A3B-PT).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import Ernie4_5_MoeModel, Ernie4_5_MoEConfig
@@ -168,7 +168,7 @@ documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_class
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 103424) : Vocabulary size of the Ernie 4.5 MoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Ernie4_5_MoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel)
+vocab_size (`int`, *optional*, defaults to 103424) : Vocabulary size of the Ernie 4.5 MoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Ernie4_5_MoeModel](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel)
 
 pad_token_id (`int`, *optional*, defaults to 0) : Padding token id.
 
@@ -226,11 +226,11 @@ router_aux_loss_coef (`float`, *optional*, defaults to 0.001) : The aux loss fac
 
 #### transformers.Ernie4_5_MoeModel[[transformers.Ernie4_5_MoeModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L501)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L502)
 
 The bare Ernie4 5 Moe Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -238,11 +238,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Ernie4_5_MoeModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L518[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Ernie4_5_MoeModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L519[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -261,8 +261,8 @@ forwardtransformers.Ernie4_5_MoeModel.forwardhttps://github.com/huggingface/tran
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -281,10 +281,10 @@ forwardtransformers.Ernie4_5_MoeModel.forwardhttps://github.com/huggingface/tran
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.modeling_outputs.MoeModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.MoeModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
+elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -302,7 +302,7 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
 
   Raw router logtis (post-softmax) that are computed by MoE routers, these terms are used to compute the auxiliary
   loss for Mixture of Experts models.
-The [Ernie4_5_MoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel) forward method, overrides the `__call__` special method.
+The [Ernie4_5_MoeModel](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -310,7 +310,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -318,10 +318,10 @@ config ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_
 
 A `transformers.modeling_outputs.MoeModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
+elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -344,11 +344,11 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
 
 #### transformers.Ernie4_5_MoeForCausalLM[[transformers.Ernie4_5_MoeForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L665)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L666)
 
 The Ernie4 5 Moe Model for causal language modeling.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -356,11 +356,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Ernie4_5_MoeForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L683[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_router_logits", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Ernie4_5_MoeForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/ernie4_5_moe/modeling_ernie4_5_moe.py#L684[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_router_logits", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -379,8 +379,8 @@ forwardtransformers.Ernie4_5_MoeForCausalLM.forwardhttps://github.com/huggingfac
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -405,14 +405,14 @@ forwardtransformers.Ernie4_5_MoeForCausalLM.forwardhttps://github.com/huggingfac
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
   This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.modeling_outputs.MoeCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.MoeCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
+elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 
@@ -425,7 +425,7 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
   Raw router logtis (post-softmax) that are computed by MoE routers, these terms are used to compute the auxiliary
   loss for Mixture of Experts models.
 
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -438,7 +438,7 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Ernie4_5_MoeForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeForCausalLM) forward method, overrides the `__call__` special method.
+The [Ernie4_5_MoeForCausalLM](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -451,7 +451,7 @@ Example:
 
 **Parameters:**
 
-config ([Ernie4_5_MoeForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Ernie4_5_MoeForCausalLM](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -459,7 +459,7 @@ config ([Ernie4_5_MoeForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/erni
 
 A `transformers.modeling_outputs.MoeCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
+elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers/v5.0.0/en/model_doc/ernie4_5_moe#transformers.Ernie4_5_MoeConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 
@@ -472,7 +472,7 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
   Raw router logtis (post-softmax) that are computed by MoE routers, these terms are used to compute the auxiliary
   loss for Mixture of Experts models.
 
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -487,7 +487,7 @@ elements depending on the configuration ([Ernie4_5_MoeConfig](/docs/transformers
   heads.
 #### generate[[transformers.Ernie4_5_MoeForCausalLM.generate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/generation/utils.py#L2284)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/generation/utils.py#L2270)
 
 Generates sequences of token ids for models with a language modeling head.
 
@@ -502,7 +502,7 @@ guide](../generation_strategies).
 
 inputs (`torch.Tensor` of varying shape depending on the modality, *optional*) : The sequence used as a prompt for the generation or as model inputs to the encoder. If `None` the method initializes it with `bos_token_id` and a batch size of 1. For decoder-only models `inputs` should be in the format of `input_ids`. For encoder-decoder models *inputs* can represent any of `input_ids`, `input_values`, `input_features`, or `pixel_values`.
 
-generation_config ([GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which has the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
+generation_config ([GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which has the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
 
 logits_processor (`LogitsProcessorList`, *optional*) : Custom logits processors that complement the default logits processors built from arguments and generation config. If a logit processor is passed that is already created with the arguments or a generation config an error is thrown. This feature is intended for advanced users.
 
@@ -520,28 +520,26 @@ negative_prompt_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`
 
 negative_prompt_attention_mask (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Attention_mask for `negative_prompt_ids`.
 
-use_model_defaults (`bool`, *optional*) : When it is `True`, unset parameters in `generation_config` will be set to the model-specific default generation configuration (`model.generation_config`), as opposed to the global defaults (`GenerationConfig()`). If unset, models saved starting from `v4.50` will consider this flag to be `True`.
-
 custom_generate (`str` or `Callable`, *optional*) : One of the following: - `str` (Hugging Face Hub repository name): runs the custom `generate` function defined at `custom_generate/generate.py` in that repository instead of the standard `generate` method. The repository fully replaces the generation logic, and the return type may differ. - `str` (local repository path): same as above but from a local path, `trust_remote_code` not required. - `Callable`: `generate` will perform the usual input preparation steps, then call the provided callable to run the decoding loop. For more information, see [the docs](../../generation_strategies#custom-generation-methods).
 
 kwargs (`dict[str, Any]`, *optional*) : Ad hoc parametrization of `generation_config` and/or additional model-specific kwargs that will be forwarded to the `forward` function of the model. If the model is an encoder-decoder model, encoder specific kwargs should not be prefixed and decoder specific kwargs should be prefixed with *decoder_*.
 
 **Returns:**
 
-`[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) or `torch.LongTensor``
+`[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) or `torch.LongTensor``
 
-A [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) (if `return_dict_in_generate=True`
+A [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) (if `return_dict_in_generate=True`
 or when `config.return_dict_in_generate=True`) or a `torch.LongTensor`.
 
 If the model is *not* an encoder-decoder model (`model.config.is_encoder_decoder=False`), the possible
-[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) types are:
+[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) types are:
 
-- [GenerateDecoderOnlyOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateDecoderOnlyOutput),
-- [GenerateBeamDecoderOnlyOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateBeamDecoderOnlyOutput)
+- [GenerateDecoderOnlyOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateDecoderOnlyOutput),
+- [GenerateBeamDecoderOnlyOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateBeamDecoderOnlyOutput)
 
 If the model is an encoder-decoder model (`model.config.is_encoder_decoder=True`), the possible
-[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) types are:
+[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) types are:
 
-- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput),
-- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
+- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput),
+- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
 

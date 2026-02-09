@@ -127,7 +127,11 @@ If also leveraging [multiphase searching](../applications/searchers.html#multiph
 
 The difference is most pronounced when the corpus is divided onto many content nodes. Consider a case with 7 content nodes, fetching 100 matches from each. These are merged (by relevance score) into a list of 700 hits, and the 100 with the best relevance are selected and _filled_. If you use _match-features_, they need to be calculated for all 700 hits. Compare with _summary-features_, where only the final 100 hits need to be considered for calculating those.
 
-## The "if" function and string equality tests
+## Conditional expressions
+
+Ranking expressions support conditional logic to choose between different sub-expressions based on document attributes, query parameters, or other features. This enables ranking to adapt to different document types, user segments, or business rules within a single rank profile.
+
+### The if function
 
 `if` can be used for other purposes than encoding MLR trained decision trees. One use is to choose different ranking functions for different types of documents in the same search. Ranking expressions are able to do string equality tests, so to choose between different ranking sub-functions based on the value of a string attribute (say, "category"), use an expression like:
 
@@ -148,6 +152,19 @@ if (fieldMatch(business).fieldCompleteness==1, 0.8+document.distance*0.2,
 This function puts all exact matches on business names first, sorted by geographical distance, followed by all shops sorted by title match, followed by everything else sorted by the overall match quality and popularity.
 
 Also see [pin results](multivalue-query-operators.html#pin-results-example) for a comprehensive examples of using a tiered ranking function to pin queries and results.
+
+### The switch function
+
+When comparing many values against the same discriminant value, the `switch` function provides a more readable alternative to deeply nested `if` statements. For example, the nested if expression above can be written more clearly as:
+
+```
+switch (attribute(category)) {
+    case "restaurant":_…restaurant function_,
+    case "hotel":_…hotel function_,
+    default:_…default function_}
+```
+
+Use `switch` when testing a single expression for equality against multiple values. Continue using `if` for different comparison operators or when each condition tests different expressions, such as in the tiering example above. See the [switch function reference](../reference/ranking/ranking-expressions.html#the-switch-function) for details.
 
 ## Using constants
 
@@ -268,7 +285,7 @@ Use a weighted average of the match quality in some fields, multiplied by 1-exp 
   7*attributeMatch(tags).normalizedWeight ) /22 * ( 1 - age(creationtime) )
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -279,7 +296,9 @@ Use a weighted average of the match quality in some fields, multiplied by 1-exp 
 - [Feature contribution functions](#feature-contribution-functions)
 - [Dumping rank features for specific documents](#dumping-rank-features-for-specific-documents)
 - [Accessing feature/function values in results](#accessing-feature-function-values-in-results)
-- [The "if" function and string equality tests](#the-if-function-and-string-equality-tests)
+- [Conditional expressions](#conditional-expressions)
+- [The if function](#the-if-function)
+- [The switch function](#the-switch-function)
 - [Using constants](#using-constants)
 - [Using query variables](#using-query-variables)
 - [Query feature types](#query-feature-types)

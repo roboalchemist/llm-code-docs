@@ -14,11 +14,8 @@ Use the `default-page` prop or the `v-model:page` directive to control the curre
 </template>
 ```
 
-<note>
-
-The Pagination component uses some [`Button`](/docs/components/button) to display the pages, use [`color`](#color), [`variant`](#variant) and [`size`](#size) props to style them.
-
-</note>
+> [!NOTE]
+> The Pagination component uses some [`Button`](/docs/components/button) to display the pages, use [`color`](#color), [`variant`](#variant) and [`size`](#size) props to style them.
 
 ### Total
 
@@ -155,11 +152,8 @@ function to(page: number) {
 </template>
 ```
 
-<note>
-
-In this example we're adding the `#with-links` hash to avoid going to the top of the page.
-
-</note>
+> [!NOTE]
+> In this example we're adding the `#with-links` hash to avoid going to the top of the page.
 
 ## API
 
@@ -177,23 +171,23 @@ interface PaginationProps {
   /**
    * The icon to use for the first page control.
    */
-  firstIcon?: string | object | undefined;
+  firstIcon?: any;
   /**
    * The icon to use for the previous page control.
    */
-  prevIcon?: string | object | undefined;
+  prevIcon?: any;
   /**
    * The icon to use for the next page control.
    */
-  nextIcon?: string | object | undefined;
+  nextIcon?: any;
   /**
    * The icon to use for the last page control.
    */
-  lastIcon?: string | object | undefined;
+  lastIcon?: any;
   /**
    * The icon to use for the ellipsis control.
    */
-  ellipsisIcon?: string | object | undefined;
+  ellipsisIcon?: any;
   /**
    * The color of the pagination controls.
    * @default "\"neutral\""
@@ -223,7 +217,7 @@ interface PaginationProps {
   /**
    * A function to render page controls as links.
    */
-  to?: ((page: number) => string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined) | undefined;
+  to?: ((page: number) => string | kt | Tt | undefined) | undefined;
   ui?: { root?: ClassNameValue; list?: ClassNameValue; ellipsis?: ClassNameValue; label?: ClassNameValue; first?: ClassNameValue; prev?: ClassNameValue; item?: ClassNameValue; next?: ClassNameValue; last?: ClassNameValue; } | undefined;
   /**
    * The value of the page that should be active when initially rendered.
@@ -313,8 +307,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

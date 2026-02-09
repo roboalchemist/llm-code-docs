@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/sdk-platforms/react-native.md
 
-# Source: https://docs.livekit.io/home/quickstarts/react-native.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › React Native
+LiveKit docs › Get Started › SDK platform quickstarts › React Native
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › React Native
 
 > ℹ️ **Note**
 > 
-> If you're planning to integrate LiveKit into an Expo app, see the [quickstart guide for Expo instead](https://docs.livekit.io/home/quickstarts/expo.md).
+> If you're planning to integrate LiveKit into an Expo app, see the [quickstart guide for Expo instead](https://docs.livekit.io/transport/sdk-platforms/expo.md).
 
 ## Voice AI quickstart
 
@@ -193,17 +191,17 @@ const styles = StyleSheet.create({
 
 ### Create a backend server to generate tokens
 
-Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/home/server/generating-tokens.md).
+Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md).
 
 ## Next steps
 
 The following resources are useful for getting started with LiveKit on React Native.
 
-- **[Generating tokens](https://docs.livekit.io/home/server/generating-tokens.md)**: Guide to generating authentication tokens for your users.
+- **[Generating tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md)**: Guide to generating authentication tokens for your users.
 
-- **[Realtime media](https://docs.livekit.io/home/client/tracks.md)**: Complete documentation for live video and audio tracks.
+- **[Realtime media](https://docs.livekit.io/transport/media.md)**: Complete documentation for live video and audio tracks.
 
-- **[Realtime data](https://docs.livekit.io/home/client/data.md)**: Send and receive realtime data between clients.
+- **[Realtime data](https://docs.livekit.io/transport/data.md)**: Send and receive realtime data between clients.
 
 - **[React Native SDK](https://github.com/livekit/client-sdk-react-native)**: LiveKit React Native SDK on GitHub.
 
@@ -211,7 +209,7 @@ The following resources are useful for getting started with LiveKit on React Nat
 
 ---
 
-This document was rendered at 2025-11-18T23:54:54.919Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/react-native.md](https://docs.livekit.io/home/quickstarts/react-native.md).
+This document was rendered at 2026-02-03T03:25:15.301Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/react-native.md](https://docs.livekit.io/transport/sdk-platforms/react-native.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

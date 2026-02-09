@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/WebAgent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating a web agent
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/WebAgent/WebAgent.ipynb) by [Ornella Altunyan](https://twitter.com/ornelladotcom), [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-03-08</div>
@@ -77,7 +81,7 @@ In this cookbook, we'll use the multimodal approach, combining HTML DOM structur
 
 ## Processing screenshots
 
-First, let's write a function that converts screenshots of a given webpage into a format that we can use to pass to our model and [attach to our eval](/core/experiments/write#attachments).
+First, let's write a function that converts screenshots of a given webpage into a format that we can use to pass to our model and [attach to our eval](/evaluate/run-evaluations#attachments).
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 def process_screenshot(screenshot_input: Any) -> Optional[Attachment]:
@@ -621,8 +625,3 @@ Now that you've explored how to evaluate the decision making ability of a web ag
 * Learn more about [how to evaluate agents](https://braintrust.dev/blog/evaluating-agents)
 * Check out the [guide to what you should do after running an eval](https://braintrust.dev/blog/after-evals)
 * Try out another [agent cookbook](/cookbook/recipes/PromptChaining)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

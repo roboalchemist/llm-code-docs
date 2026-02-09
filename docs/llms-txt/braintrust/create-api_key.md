@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/apikeys/create-api_key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create api_key
 
 > Create a new api_key. It is possible to have multiple API keys with the same name. There is no de-duplication
@@ -181,7 +185,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

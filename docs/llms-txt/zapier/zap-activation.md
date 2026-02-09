@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/zap-activation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zap activation rates
 
 > Consider all of the Zaps that users try to create with your integration's triggers, actions, or searches. The Zap activation rate is the percentage of those Zaps that actually activated within 24 hours of creation, meaning the Zap ran at least one successful task.

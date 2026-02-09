@@ -1,24 +1,6 @@
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/rotate-secrets.md
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/windows-local-account/rotate-secrets.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mongodb-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/rotate-secrets.md
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/unix-linux-local-account/rotate-secrets.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/rotate-secrets.md
 
@@ -36,25 +18,7 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/rotate-secrets.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/rotate-secrets.md
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/databricks-service-principal-secret/rotate-secrets.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/rotate-secrets.md
 
@@ -62,68 +26,61 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/rotate-secrets.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/rotate-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/rotate-secrets.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Rotate Secrets
 
 > Rotate the generated credentials for the specified Auth0 Client Secret Rotation.
 
+
+
 ## OpenAPI
 
 ````yaml POST /api/v2/secret-rotations/auth0-client-secret/{rotationId}/rotate-secrets
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v2/secret-rotations/auth0-client-secret/{rotationId}/rotate-secrets
-  method: post
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security: []
-    parameters:
-      path:
-        rotationId:
-          schema:
-            - type: string
-              required: true
-              description: >-
-                The ID of the Auth0 Client Secret Rotation to rotate generated
-                credentials for.
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              secretRotation:
-                allOf:
-                  - type: object
+  /api/v2/secret-rotations/auth0-client-secret/{rotationId}/rotate-secrets:
+    post:
+      tags:
+        - Secret Rotations
+      description: >-
+        Rotate the generated credentials for the specified Auth0 Client Secret
+        Rotation.
+      operationId: rotateAuth0ClientSecretRotation
+      parameters:
+        - schema:
+            type: string
+            format: uuid
+          in: path
+          name: rotationId
+          required: true
+          description: >-
+            The ID of the Auth0 Client Secret Rotation to rotate generated
+            credentials for.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  secretRotation:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -289,256 +246,146 @@ paths:
                       - parameters
                       - secretsMapping
                     additionalProperties: false
-            requiredProperties:
-              - secretRotation
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              secretRotation:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                description: <string>
-                isAutoRotationEnabled: true
-                activeIndex: 0
-                folderId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                connectionId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-                rotationInterval: 123
-                rotationStatus: <string>
-                lastRotationAttemptedAt: '2023-11-07T05:31:56Z'
-                lastRotatedAt: '2023-11-07T05:31:56Z'
-                lastRotationJobId: <string>
-                nextRotationAt: '2023-11-07T05:31:56Z'
-                isLastRotationManual: true
-                connection:
-                  app: auth0
-                  name: <string>
-                  id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                environment:
-                  slug: <string>
-                  name: <string>
-                  id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                projectId: <string>
-                folder:
-                  id: <string>
-                  path: <string>
-                rotateAtUtc:
-                  hours: 11.5
-                  minutes: 29.5
-                lastRotationMessage: <string>
-                type: auth0-client-secret
-                parameters:
-                  clientId: <string>
-                secretsMapping:
-                  clientId: <string>
-                  clientSecret: <string>
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - secretRotation
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
 
 ````

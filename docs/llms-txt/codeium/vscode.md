@@ -1,8 +1,19 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/vscode.md
 
-# Visual Studio Code (VSCode)
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-VS Code 1.89 or greater are supported!
+# Visual Studio Code (VSCode) Troubleshooting
+
+> Troubleshoot VS Code extension issues including proxy settings, certificate errors, API server configuration, and chat response problems.
+
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The VSCode plugin is under maintenance mode.
+</Note>
+
+VSCode 1.89 or greater are supported.
 
 # Gathering extension logs
 
@@ -45,7 +56,7 @@ If you are trying to send messages to Codeium chat but not seeing responses, che
 ## Unable to read file .../package.json
 
 ```
-Unable to read file .../.vscode/extensions/codeium.codeium-<version>/package.json 
+Unable to read file .../.vscode/extensions/codeium.codeium-<version>/package.json
 ```
 
 If the above error shows up in the Codeium logs, try deleting the extension folder (.../.vscode/extensions/codeium.codeium-\<version>) and reinstall the extension.

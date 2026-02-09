@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/databricks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Databricks
 
 > Configure Databricks Model Serving to access foundation models
@@ -60,8 +64,3 @@ Configure the following for model endpoints in Databricks.
 * [Foundation Model APIs](https://docs.databricks.com/machine-learning/foundation-models/index.html)
 * [Authentication Guide](https://docs.databricks.com/dev-tools/api/latest/authentication.html)
 * [Model Serving Pricing](https://databricks.com/product/pricing/model-serving)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

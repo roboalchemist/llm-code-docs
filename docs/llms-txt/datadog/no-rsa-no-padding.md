@@ -1,0 +1,78 @@
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/static_analysis_rules/java-security/no-rsa-no-padding.md
+
+---
+title: RSA with no padding is insecure
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > Code Security > Static Code Analysis (SAST) > SAST
+  Rules > RSA with no padding is insecure
+---
+
+# RSA with no padding is insecure
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+## Metadata{% #metadata %}
+
+**ID:** `java-security/no-rsa-no-padding`
+
+**Language:** Java
+
+**Severity:** Error
+
+**Category:** Security
+
+**CWE**: [780](https://cwe.mitre.org/data/definitions/780.html)
+
+## Description{% #description %}
+
+You should never use RSA without padding. RSA should always be used with some padding to prevent any weak encryption.
+
+#### Learn More{% #learn-more %}
+
+- [RSA with no padding is insecure](https://find-sec-bugs.github.io/bugs.htm#RSA_NO_PADDING)
+- [CWE-780: Use of RSA Algorithm without OAEP](https://cwe.mitre.org/data/definitions/780.html)
+
+## Non-Compliant Code Examples{% #non-compliant-code-examples %}
+
+```java
+class MyClass {
+
+    public void test1() {
+        Cipher c = Cipher.getInstance("RSA/NONE/NoPadding");
+        c.init(Cipher.ENCRYPT_MODE, k, iv);
+        byte[] cipherText = c.doFinal(plainText);
+    }
+
+    public void test2() {
+        Cipher c = javax.crypto.Cipher.getInstance("RSA/NONE/NoPadding");
+        c.init(Cipher.ENCRYPT_MODE, k, iv);
+        byte[] cipherText = c.doFinal(plainText);
+    }
+}
+```
+
+## Compliant Code Examples{% #compliant-code-examples %}
+
+```java
+class MyClass {
+
+    public void test() {
+        Cipher c = Cipher.getInstance("RSA/ECB/OAEPWithMD5AndMGF1Padding");
+        c.init(Cipher.ENCRYPT_MODE, k, iv);
+        byte[] cipherText = c.doFinal(plainText);
+    }
+
+
+}
+```
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+{% icon name="icon-external-link" /%}
+ 

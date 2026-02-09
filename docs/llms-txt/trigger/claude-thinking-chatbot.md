@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/claude-thinking-chatbot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude 3.7 thinking chatbot
 
 > This example Next.js project uses Vercel's AI SDK and Anthropic's Claude 3.7 model to create a thinking chatbot.

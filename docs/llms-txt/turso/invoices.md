@@ -1,48 +1,62 @@
 # Source: https://docs.turso.tech/api-reference/organizations/invoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Invoices
 
 > Returns a list of invoices for the organization.
 
+<RequestExample>
+  ```bash cURL theme={null}
+  curl -L https://api.turso.tech/v1/organizations/{organizationSlug}/invoices \
+    -H 'Authorization: Bearer TOKEN'
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /v1/organizations/{organizationSlug}/invoices
+openapi: 3.0.1
+info:
+  title: Turso Platform API
+  description: API description here
+  license:
+    name: MIT
+  version: 0.1.0
+servers:
+  - url: https://api.turso.tech
+    description: Turso's Platform API
+security: []
 paths:
-  path: /v1/organizations/{organizationSlug}/invoices
-  method: get
-  servers:
-    - url: https://api.turso.tech
-      description: Turso's Platform API
-  request:
-    security: []
-    parameters:
-      path:
-        organizationSlug:
+  /v1/organizations/{organizationSlug}/invoices:
+    get:
+      summary: List Invoices
+      description: Returns a list of invoices for the organization.
+      operationId: listOrganizationInvoices
+      parameters:
+        - $ref: '#/components/parameters/organizationSlug'
+        - name: type
+          in: query
           schema:
-            - type: string
-              required: true
-              description: The slug of the organization or user account.
-      query:
-        type:
-          schema:
-            - type: enum<string>
-              enum:
-                - all
-                - upcoming
-                - issued
-              description: The type of invoice to retrieve.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              invoices:
-                allOf:
-                  - type: array
+            type: string
+            enum:
+              - all
+              - upcoming
+              - issued
+          description: The type of invoice to retrieve.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoices:
+                    type: array
                     description: The list of invoices for the organization.
                     items:
                       type: object
@@ -71,20 +85,14 @@ paths:
                           type: string
                           description: The link to the invoice PDF you can download.
                           example: https://assets.withorb.com/invoice/...
-        examples:
-          example:
-            value:
-              invoices:
-                - invoice_number: LFONTK-00001
-                  amount_due: '10.29'
-                  due_date: '2024-01-01T05:00:00+00:00'
-                  paid_at: '2024-01-01T05:00:00+00:00'
-                  payment_failed_at: '2024-01-01T05:00:00+00:00'
-                  invoice_pdf: https://assets.withorb.com/invoice/...
-        description: Successful response
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  parameters:
+    organizationSlug:
+      in: path
+      name: organizationSlug
+      required: true
+      schema:
+        type: string
+      description: The slug of the organization or user account.
 
 ````

@@ -12,7 +12,7 @@ If the content is from another app, you can only test it if the app supports Int
 {% endhint %}
 
 {% hint style="warning" %}
-Checkout Experiences and Checkout Testing is only available for Shopify Plus merchants
+Checkout Personalizations and Checkout Testing is only available for Shopify Plus merchants
 {% endhint %}
 
 ### Tests You *Can* Do
@@ -36,7 +36,7 @@ You can test
 * Any other rate based logic controlled in Shopify
 * Free shipping offers
 
-### Intelligems Checkout Experiences
+### Intelligems Checkout Personalizations
 
 All Intelligems owned checkout content blocks can be tested. This includes turning blocks on or off, testing different versions, and testing different locations.
 
@@ -102,12 +102,12 @@ Shopify only allows one checkout layout to be active at a time.
 
 * **Can I test my upsell app?**\
   Yes, if the app supports an Intelligems integration.\
-  No, if it does not.
+  We recommend creating a Product Upsell Checkout Test. [More steps here](#intelligems-checkout-experiences).&#x20;
 * **Can I test my gift message block?**\
-  Yes, if it is a Shopify Checkout Block or an Intelligems Checkout Experience.\
+  Yes, if it is a Shopify Checkout Block or an Intelligems Checkout Personalization.\
   No, if it is a third party app without integration.
 * **Can I test a "clean" checkout versus my current checkout?**\
-  If your current checkout has multiple third party apps running outside of Shopify Checkout Blocks or Intelligems Checkout Experiences, the answer is No.
+  If your current checkout has multiple third party apps running outside of Shopify Checkout Blocks or Intelligems Checkout Personalizations, the answer is No.
 * **Can I test one page vs three page checkout?**\
   No. Shopify does not allow multiple checkout layouts to run at the same time.
 * **Can I test shipping insurance pricing?**\

@@ -93,7 +93,7 @@ main
 Create `main.rb` with the above Ruby Example: 
 
 ```bash
-$ x mix todoworld-ruby
+$ npx add-in todoworld-ruby
 ```
 
 Run example:
@@ -137,7 +137,7 @@ main
 Override `main.rb` with the above Ruby Example: 
 
 ```bash
-$ x mix todoworld-ruby-ssl
+$ npx add-in todoworld-ruby-ssl
 ```
 
 Run example:

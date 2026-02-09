@@ -31,19 +31,19 @@ Each storage client implementation is responsible for ensuring proper initializa
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/storage_clients/_base/_storage_client.py#L42)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storage_clients/_base/_storage_client.py#L42)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/storage_clients/_base/_storage_client.py#L53)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storage_clients/_base/_storage_client.py#L53)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/storage_clients/_base/_storage_client.py#L64)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storage_clients/_base/_storage_client.py#L64)
 
 :
 
-### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
+### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
 
 * ****get\_rate\_limit\_errors**(): dict\[int, int]
 
@@ -53,6 +53,6 @@ Each storage client implementation is responsible for ensuring proper initializa
 
   #### Returns dict\[int, int]
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/storage_clients/_base/_storage_client.py#L33)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storage_clients/_base/_storage_client.py#L33)
 
 :

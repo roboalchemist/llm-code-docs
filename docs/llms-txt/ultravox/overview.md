@@ -22,53 +22,9 @@
 
 # Source: https://docs.ultravox.ai/agents/overview.md
 
-# Source: https://docs.ultravox.ai/webhooks/overview.md
-
-# Source: https://docs.ultravox.ai/voices/overview.md
-
-# Source: https://docs.ultravox.ai/tools/rag/overview.md
-
-# Source: https://docs.ultravox.ai/tools/overview.md
-
-# Source: https://docs.ultravox.ai/tools/custom/overview.md
-
-# Source: https://docs.ultravox.ai/telephony/overview.md
-
-# Source: https://docs.ultravox.ai/overview.md
-
-# Source: https://docs.ultravox.ai/noise/overview.md
-
-# Source: https://docs.ultravox.ai/apps/overview.md
-
-# Source: https://docs.ultravox.ai/api-reference/corpora/overview.md
-
-# Source: https://docs.ultravox.ai/api-reference/calls/overview.md
-
-# Source: https://docs.ultravox.ai/agents/overview.md
-
-# Source: https://docs.ultravox.ai/webhooks/overview.md
-
-# Source: https://docs.ultravox.ai/voices/overview.md
-
-# Source: https://docs.ultravox.ai/tools/rag/overview.md
-
-# Source: https://docs.ultravox.ai/tools/overview.md
-
-# Source: https://docs.ultravox.ai/tools/custom/overview.md
-
-# Source: https://docs.ultravox.ai/telephony/overview.md
-
-# Source: https://docs.ultravox.ai/overview.md
-
-# Source: https://docs.ultravox.ai/noise/overview.md
-
-# Source: https://docs.ultravox.ai/apps/overview.md
-
-# Source: https://docs.ultravox.ai/api-reference/corpora/overview.md
-
-# Source: https://docs.ultravox.ai/api-reference/calls/overview.md
-
-# Source: https://docs.ultravox.ai/agents/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview: Agents & Calls
 
@@ -137,8 +93,3 @@ Key benefits of using Agents:
     Learn sophisticated conversation control
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

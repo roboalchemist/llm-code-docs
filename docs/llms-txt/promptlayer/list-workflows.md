@@ -1,8 +1,12 @@
 # Source: https://docs.promptlayer.com/reference/list-workflows.md
 
-# Get All Workflows / Agents
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-Get a list of all workflows/agents in the system.
+# List Agents
+
+Get a list of all agents in the system.
 
 
 ## OpenAPI
@@ -159,7 +163,3 @@ paths:
                   - message
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

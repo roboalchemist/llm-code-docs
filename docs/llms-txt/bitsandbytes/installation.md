@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/installation.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/installation.md
 
 # Installation Guide
 

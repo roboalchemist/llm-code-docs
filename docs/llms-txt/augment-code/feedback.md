@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/troubleshooting/feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Feedback
 
 > We love feedback, and want to hear from you. We want to make the best AI-powered code assistant so you can get more done.

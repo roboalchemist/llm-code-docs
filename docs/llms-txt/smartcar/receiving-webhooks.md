@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/receiving-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Receiving Webhooks
 
 > Set up an endpoint to receive and parse webhook payloads from Smartcar
@@ -248,8 +252,3 @@ Once your endpoint is verified and receiving webhooks, continue implementing you
     No. Return 200 immediately and process asynchronously using a queue. This prevents timeouts and retry storms. See [Architecture Best Practices](/integrations/webhooks/best-practices/architecture).
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

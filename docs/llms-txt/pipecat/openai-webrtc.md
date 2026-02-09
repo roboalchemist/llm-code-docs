@@ -4,17 +4,9 @@
 
 # Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
 
-# Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI Realtime WebRTC Transport
 
@@ -77,8 +69,3 @@ client.start().withCallback {
 <Card title="Pipecat Android Client Reference" icon="book-open" href="https://docs-android.rtvi.ai/">
   Complete API documentation for the Pipecat Android client.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

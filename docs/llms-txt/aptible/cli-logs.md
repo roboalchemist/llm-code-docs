@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible logs
 
 This command lets you access real-time logs for an [App](/core-concepts/apps/overview) or [Database](/core-concepts/managed-databases/managing-databases/overview).

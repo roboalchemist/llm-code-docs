@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connect-apis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Your APIs
 
 > Learn how to connect your APIs to GenerativeAgent with API Connections
@@ -58,15 +62,25 @@ To create an API Connection, you need to:
     3. Click the **Create Connection** button
   </Step>
 
-  <Step title="Select or Upload Your API Specification">
-    Every API Connection requires an [OpenAPI specification](https://spec.openapis.org/oas/latest.html) that defines your API endpoints and structure.
+  <Step title="Select API Source">
+    Choose your API source type:
 
-    * Choose an existing API spec from your previously uploaded API Specs, or
-    * Upload a new OpenAPI specification file
+    <Tabs>
+      <Tab title="API Spec">
+        Every API Connection requires an [OpenAPI specification](https://spec.openapis.org/oas/latest.html) that defines your API endpoints and structure.
 
-    <Note>
-      We support any API that uses JSON for requests and responses.
-    </Note>
+        * Choose an existing API spec from your previously uploaded API Specs, or
+        * Upload a new OpenAPI specification file
+
+        <Note>
+          We support any API that uses JSON for requests and responses.
+        </Note>
+      </Tab>
+
+      <Tab title="MCP Server">
+        Use an MCP (Model Context Protocol) server to connect tools designed for LLM interaction. See [Using MCP Servers](/generativeagent/configuring/connect-apis/mcp-server) for detailed instructions.
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Configure Basic Details">
@@ -77,7 +91,7 @@ To create an API Connection, you need to:
     * **Endpoint**: Select the specific API endpoint from your specification
 
     <Warning>
-      Only endpoints with JSON request and response bodies are supported.
+      We only support endpoints with JSON request and response bodies.
     </Warning>
   </Step>
 
@@ -133,7 +147,7 @@ The Request Interface defines how GenerativeAgent interacts with your API. It co
 The Request Schema specifies the structure of data that GenerativeAgent can send to your API. This schema should be designed for optimal LLM interaction.
 
 <Warning>
-  This schema is NOT the schema of the API. This is the schema of that is shown to GenerativeAgent.
+  This schema is NOT the schema of the API. This is the schema that the system shows to GenerativeAgent.
 </Warning>
 
 **Best Practices for Schema Design**
@@ -349,7 +363,7 @@ The API Connection can not be saved until the request transformation has a succe
 
 ## Response Interface
 
-The Response Interface determines how API responses are processed and presented to GenerativeAgent. A well-designed response interface makes it easier for GenerativeAgent to understand and use the API's data effectively.
+The Response Interface determines how GenerativeAgent processes and presents API responses. A well-designed response interface makes it easier for GenerativeAgent to understand and use the API's data effectively.
 
 There are three main components to the response interface:
 
@@ -366,7 +380,7 @@ There are three main components to the response interface:
 The Response Schema defines the structure of data that GenerativeAgent will receive. Focus on creating clear, simple schemas that are optimized for LLM processing.
 
 <Warning>
-  The Response Schema is NOT the schema of the underlying API. This is the schema of what is returned to GenerativeAgent.
+  The Response Schema is NOT the schema of the underlying API. This is the schema of what the system returns to GenerativeAgent.
 </Warning>
 
 **Schema Design Principles**
@@ -519,18 +533,44 @@ Use [API Mock Users](/generativeagent/configuring/connect-apis/mock-apis) to sav
 
 ## Redaction
 
-You have the option to redact fields in the request or response from API Connection Logs or when viewing conversations.
+You can redact sensitive fields from API Connection Logs and conversation details views. There are two types of redaction, each affecting different parts of the request/response flow:
 
-You can redact fields the internal request and response, by adding `x-redact` to a field in the Request Schema or Response Schema. You will need to save the API connection to apply the changes. This will redact the fields when viewing conversations as well.
+* **Request/Response Interface**: The data that GenerativeAgent interacts with
+* **Raw API Request/Response**: The actual data sent to and received from the underlying API
 
-You can redact fields in the raw API request and response, by flagging the fields in the relevant API Spec:
+<Warning>
+  Redacting fields does not affect the data that GenerativeAgent can access. GenerativeAgent requires access to the data in order to perform its tasks. Redaction only impacts the views in the UI.
+</Warning>
 
-1. Navigate to API Integration Hub > API Specs
-2. Click on the relevant API Spec.
-3. Click on the "Parameters" tab and flag
-4. Per endpoint, click the fields you want to redact.
+<Tabs>
+  <Tab title="Request/Response Interface">
+    Redact fields in the request and response that GenerativeAgent uses. This redacts the transformed data that appears in conversations and API Connection Logs.
 
-Redacting the Spec will redact the fields within the [API Connection Log](#api-connection-logs).
+    To redact request/response interface fields:
+
+    1. Add `x-redact` to the field in the Request Schema or Response Schema
+    2. Save the API connection to apply the changes
+
+    <Note>
+      Redacting internal fields affects both API Connection Logs and conversations where GenerativeAgent uses the API.
+    </Note>
+  </Tab>
+
+  <Tab title="Raw API Request/Response">
+    Redact fields in the raw API request and response that are sent to and received from the underlying API. This redacts the underlying API data in API Connection Logs only.
+
+    To redact raw API fields:
+
+    1. Navigate to **API Integration Hub** > **API Specs**
+    2. Click on the relevant API Spec
+    3. Click on the **Parameters** tab
+    4. Per endpoint, click the fields you want to redact
+
+    <Note>
+      Redacting raw API fields only affects the [API Connection Logs](#api-connection-logs) as the raw API data is not visible to GenerativeAgent.
+    </Note>
+  </Tab>
+</Tabs>
 
 ## API Versioning
 
@@ -548,7 +588,7 @@ Logs are available in API Integration Hub > API Connection Logs.
 
 ## Default API Spec Settings
 
-You can set default information in an API spec. These default settings are used as a template for newly created API connections, copying those settings for all API connections created for that API spec.
+You can set default information in an API spec. These default settings serve as a template for newly created API connections, copying those settings for all API connections created for that API spec.
 
 You can set the following defaults:
 
@@ -562,7 +602,7 @@ You can set the following defaults:
 
 You can make further changes to API connections as necessary.
 
-You can also change the defaults and it will not change existing API connections, though the new defaults will be used on any new connections made with that Spec.
+You can also change the defaults and it will not change existing API connections, though the system will use the new defaults on any new connections made with that Spec.
 
 ## Examples
 

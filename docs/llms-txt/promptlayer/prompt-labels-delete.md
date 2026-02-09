@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/prompt-labels-delete.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a Prompt Template Label
 
 Delete a prompt label from a prompt version.
@@ -44,7 +48,3 @@ paths:
                 type: string
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -2,10 +2,7 @@
 
 # Replace User
 
-```
-PUT 
-/v2/:organizationId/Users/:userId
-```
+Copy page
 
 This endpoint updates an existing user by replacing all attributes present in the request.
 

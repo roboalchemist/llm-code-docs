@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/signals/new-hires.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # New Hire Tracking
 
 > Automatically track new hires at companies and take action.

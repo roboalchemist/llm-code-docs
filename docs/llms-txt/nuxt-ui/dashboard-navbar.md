@@ -64,11 +64,8 @@ const items: TabsItem[] = [{
 </template>
 ```
 
-<note>
-
-In this example, we use the [Tabs](/docs/components/tabs) component in the right slot to display some tabs.
-
-</note>
+> [!NOTE]
+> In this example, we use the [Tabs](/docs/components/tabs) component in the right slot to display some tabs.
 
 ### Title
 
@@ -138,14 +135,14 @@ interface DashboardNavbarProps {
   /**
    * The icon displayed next to the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   /**
    * Customize the toggle button to open the sidebar.
    * `{ color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  toggle?: boolean | Partial<ButtonProps> | undefined;
+  toggle?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The side to render the toggle button on.
    * @default "\"left\""
@@ -204,8 +201,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

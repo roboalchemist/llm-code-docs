@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/releases/aptible-yml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # .aptible.yml
 
 In addition to [Configuration variables read by Aptible](/core-concepts/apps/deploying-apps/configuration), Aptible also lets you configure your [Apps](/core-concepts/apps/overview) through a `.aptible.yml` file.

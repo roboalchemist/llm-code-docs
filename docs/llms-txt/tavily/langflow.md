@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/langflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Langflow
 
 > Integrate Tavily with Langflow, an open-source visual framework for building multi-agent and RAG applications.
@@ -93,8 +97,3 @@ To use Tavily components, you need to enter your [Tavily API key](https://app.ta
 
 * [Langflow GitHub Repository](https://github.com/langflow-ai/langflow)
 * [Langflow Documentation](https://docs.langflow.org)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/customers/delete.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete customers
 
 You can delete customers with the `deleteCustomer` API, you will find this name in both our API and our SDKs.

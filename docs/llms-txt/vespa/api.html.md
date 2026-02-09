@@ -45,7 +45,7 @@
 - [Health and Metric APIs](../../operations/metrics.html)
 - [/cluster/v2 API](cluster-v2.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

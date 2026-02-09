@@ -42,17 +42,19 @@ Additional steps, such as NACHA mandate collection, are required for businesses 
 
 ## Create a customer [Recommended]
 
-We recommend that you create a *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) with an email address to represent your user, that you then attach to your payment. Attaching a `Customer` object allows you to [list previously linked accounts ](https://docs.stripe.com/api/financial_connections/accounts/list.md) later. By providing an email address on the `Customer` object, Financial Connections can improve the authentication flow by simplifying sign-in or sign-up for your user, depending on whether they’re a returning [Link](https://support.stripe.com/questions/link-for-financial-connections-support-for-businesses) user.
+We recommend that you create a *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) with an email address and phone number to represent your user, that you then attach to your payment. Attaching a `Customer` object allows you to [list previously linked accounts ](https://docs.stripe.com/api/financial_connections/accounts/list.md) later. By providing the email address and phone number on the `Customer` object, Financial Connections can improve the authentication flow by simplifying sign-in or sign-up for your user, depending on whether they’re a returning [Link](https://support.stripe.com/questions/link-for-financial-connections-support-for-businesses) user.
 
 ```curl
 curl https://api.stripe.com/v1/customers \
   -u "<<YOUR_SECRET_KEY>>:" \
-  -d email={{CUSTOMER_EMAIL}}
+  -d email={{CUSTOMER_EMAIL}} \
+  -d phone={{CUSTOMER_PHONE}}
 ```
 
 ```cli
 stripe customers create  \
-  --email={{CUSTOMER_EMAIL}}
+  --email={{CUSTOMER_EMAIL}} \
+  --phone={{CUSTOMER_PHONE}}
 ```
 
 ```ruby
@@ -60,7 +62,10 @@ stripe customers create  \
 # See your keys here: https://dashboard.stripe.com/apikeys
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-customer = client.v1.customers.create({email: '{{CUSTOMER_EMAIL}}'})
+customer = client.v1.customers.create({
+  email: '{{CUSTOMER_EMAIL}}',
+  phone: '{{CUSTOMER_PHONE}}',
+})
 ```
 
 ```python
@@ -69,7 +74,10 @@ customer = client.v1.customers.create({email: '{{CUSTOMER_EMAIL}}'})
 client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-customer = client.v1.customers.create({"email": "{{CUSTOMER_EMAIL}}"})
+customer = client.v1.customers.create({
+  "email": "{{CUSTOMER_EMAIL}}",
+  "phone": "{{CUSTOMER_PHONE}}",
+})
 ```
 
 ```php
@@ -77,7 +85,10 @@ customer = client.v1.customers.create({"email": "{{CUSTOMER_EMAIL}}"})
 // See your keys here: https://dashboard.stripe.com/apikeys
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$customer = $stripe->customers->create(['email' => '{{CUSTOMER_EMAIL}}']);
+$customer = $stripe->customers->create([
+  'email' => '{{CUSTOMER_EMAIL}}',
+  'phone' => '{{CUSTOMER_PHONE}}',
+]);
 ```
 
 ```java
@@ -86,7 +97,10 @@ $customer = $stripe->customers->create(['email' => '{{CUSTOMER_EMAIL}}']);
 StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
 CustomerCreateParams params =
-  CustomerCreateParams.builder().setEmail("{{CUSTOMER_EMAIL}}").build();
+  CustomerCreateParams.builder()
+    .setEmail("{{CUSTOMER_EMAIL}}")
+    .setPhone("{{CUSTOMER_PHONE}}")
+    .build();
 
 // For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
 Customer customer = client.v1().customers().create(params);
@@ -99,6 +113,7 @@ const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const customer = await stripe.customers.create({
   email: '{{CUSTOMER_EMAIL}}',
+  phone: '{{CUSTOMER_PHONE}}',
 });
 ```
 
@@ -106,14 +121,21 @@ const customer = await stripe.customers.create({
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CustomerCreateParams{Email: stripe.String("{{CUSTOMER_EMAIL}}")}
+params := &stripe.CustomerCreateParams{
+  Email: stripe.String("{{CUSTOMER_EMAIL}}"),
+  Phone: stripe.String("{{CUSTOMER_PHONE}}"),
+}
 result, err := sc.V1Customers.Create(context.TODO(), params)
 ```
 
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new CustomerCreateOptions { Email = "{{CUSTOMER_EMAIL}}" };
+var options = new CustomerCreateOptions
+{
+    Email = "{{CUSTOMER_EMAIL}}",
+    Phone = "{{CUSTOMER_PHONE}}",
+};
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Customers;
 Customer customer = service.Create(options);
@@ -660,9 +682,9 @@ const paymentIntent = await stripe.paymentIntents.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentIntentRetrieveParams{Intent: stripe.String("{{PAYMENT_INTENT}}")}
+params := &stripe.PaymentIntentRetrieveParams{}
 params.AddExpand("payment_method")
-result, err := sc.V1PaymentIntents.Retrieve(context.TODO(), params)
+result, err := sc.V1PaymentIntents.Retrieve(context.TODO(), "{{PAYMENT_INTENT}}", params)
 ```
 
 ```dotnet

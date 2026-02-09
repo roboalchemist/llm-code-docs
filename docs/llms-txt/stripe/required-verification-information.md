@@ -2,7 +2,7 @@
 
 # Required verification information
 
-View requirements you must collect from connected accounts based on your setup.
+Identify current and future information requirements that connected accounts must provide based on their business, location, and requested capabilities.
 
 #### Processing live charges and receiving payouts
 
@@ -431,8 +431,8 @@ Optionally, you can collect ownership information on each person who owns 25% or
 
 If Stripe can’t verify the company, or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Collect it using:
 
-- [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-response-identity-business_details-documents-primary_verification-front_back-front)
-- [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-response-identity-business_details-documents-primary_verification-front_back-back)
+- [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-response-identity-business_details-documents-primary_verification-front_back-front)
+- [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-response-identity-business_details-documents-primary_verification-front_back-back)
 
 #### Additional information on the individual 
 
@@ -440,8 +440,8 @@ Depending on the situation, you might need to collect a scan of an [ID document]
 
 Collect ID information using:
 
-- [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front)
-- [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back)
+- [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front)
+- [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back)
 
 #### Additional information on the representative 
 
@@ -456,40 +456,40 @@ Optionally, you can collect the representative’s ownership information using [
 
 #### Additional information on directors 
 
-For companies (excluding partnerships), you must collect information on all [directors](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Directors are members of the governing board of the company. When you have finished collecting the required information from all directors, or if your company doesn’t have any directors, you must inform Stripe by setting [identity.attestations.persons_provided.directors](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-attestations-persons_provided-directors) to true.
+For companies (excluding partnerships), you must collect information on all [directors](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Directors are members of the governing board of the company. When you have finished collecting the required information from all directors, or if your company doesn’t have any directors, you must inform Stripe by setting [identity.attestations.persons_provided.directors](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-attestations-persons_provided-directors) to true.
 
-If there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-back) parameters.
+If there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-back) parameters.
 
 #### Additional information on beneficial owners (for both executives and owners) 
 
 You must collect information on all [beneficial owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Beneficial owners are persons who exercise significant management control over the company (executives) or who own 25% or more of the company (owners). When you have finished collecting the required information from all beneficial owners, you must inform Stripe by setting both of the following to true:
 
-- [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-owners)
-- [identity.attestations.persons_provided.executives](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-executives)
+- [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-owners)
+- [identity.attestations.persons_provided.executives](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-executives)
 
-Depending on the situation, you might need to collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. That can happen if Stripe can’t verify a beneficial owner or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns). Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-back) parameters.
+Depending on the situation, you might need to collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. That can happen if Stripe can’t verify a beneficial owner or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns). Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-back) parameters.
 
 Optionally, you can collect ownership information on each person who owns 25% or more of the company using [relationship.owner](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-owner) and [relationship.percent_ownership](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-percent_ownership).
 
 #### Additional information on the account 
 
-If Stripe can’t verify the company, or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=entity#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Collect it using the [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-front) and [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-back) parameters.
+If Stripe can’t verify the company, or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=entity#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Collect it using the [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-front) and [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-back) parameters.
 
 #### Additional information on the representative 
 
 If Stripe can’t verify the representative, they need to provide proof of liveness, which entails taking a selfie and uploading a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=identity#acceptable-verification-documents) using [Stripe Identity](https://docs.stripe.com/identity.md). Your platform needs to integrate with [Connect Onboarding](https://stripe.com/connect/onboarding) to satisfy this requirement.
 
-Alternatively, you can provide a scan of a government-issued ID document and a scan of an address document. To collect a government-issued ID document, use the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-back) parameters. To collect an address document, use the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
+Alternatively, you can provide a scan of a government-issued ID document and a scan of an address document. To collect a government-issued ID document, use the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-back) parameters. To collect an address document, use the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
 
 #### Additional information on the individual 
 
 Individuals that Stripe can’t verify must provide proof of liveness, which entails taking a selfie and uploading a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=identity#acceptable-verification-documents) using [Stripe Identity](https://docs.stripe.com/identity.md). Your platform needs to integrate with [Connect Onboarding](https://stripe.com/connect/onboarding) to allow such individuals to complete this requirement.
 
-Alternatively, your platform can collect scans of an individual’s ID and address documents and [upload them](https://docs.stripe.com/api/files/create.md) to Stripe. After uploading, submit the individual’s ID document with the [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front) and [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back) parameters. To collect an address document, use the [identity.individual.documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-front) and [identity.individual.documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-back) parameters.
+Alternatively, your platform can collect scans of an individual’s ID and address documents and [upload them](https://docs.stripe.com/api/files/create.md) to Stripe. After uploading, submit the individual’s ID document with the [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front) and [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back) parameters. To collect an address document, use the [identity.individual.documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-front) and [identity.individual.documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-back) parameters.
 
 #### Additional information on owners 
 
-You must collect information on all [owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Owners are any individual who owns 25% or more of the company. When you finish collecting the required information from all owners, set [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-owners) to true. This lets Stripe know that you have completed this requirement.
+You must collect information on all [owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Owners are any individual who owns 25% or more of the company. When you finish collecting the required information from all owners, set [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-owners) to true. This lets Stripe know that you have completed this requirement.
 
 Optionally, you can collect ownership information on each person who owns 25% or more of the company with [relationship.owner](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-owner) and [relationship.percent_ownership](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-percent_ownership).
 
@@ -498,7 +498,7 @@ Optionally, you can collect ownership information on each person who owns 25% or
 You must collect information on all [directors](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). We check the [director](https://support.stripe.com/questions/beneficial-owner-and-director-definitions) information you supply against the registry and results in one of these outcomes:
 
 - The business is found in the registry, and the information matches. The account fully onboards, and requires no additional action.
-- The business is found in the registry, but the director information doesn’t match. You must upload a [proof of registration document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=relationship#acceptable-verification-documents) using the [identity.business_details.documents.proof_of_registration.files](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-proof_of_registration-files) parameter. Set the `File`’s `purpose` parameter to `account_requirement`.
+- The business is found in the registry, but the director information doesn’t match. You must upload a [proof of registration document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=relationship#acceptable-verification-documents) using the [identity.business_details.documents.proof_of_registration.files](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-proof_of_registration-files) parameter. Set the `File`’s `purpose` parameter to `account_requirement`.
 
 #### curl
 
@@ -802,9 +802,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -836,7 +836,7 @@ Stripe.V2.Core.Account account = service.Update(
 
 #### Additional information on registration statuses
 
-If Stripe can’t verify the registration status of the charity, you need to collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=entity#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Upload it using the [identity.business_details.documents.company_registration_verification.files](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-company_registration_verification-files) parameter.
+If Stripe can’t verify the registration status of the charity, you need to collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md?country=CA&document-type=entity#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Upload it using the [identity.business_details.documents.company_registration_verification.files](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-company_registration_verification-files) parameter.
 
 ### Universal Beneficial Ownership Verification
 
@@ -846,7 +846,7 @@ After supplying the beneficial owner information, it is checked against the Nati
 - The business is found in the NRB, but the information doesn’t match. The account is fully onboarded, and no additional action is required. A discrepancy report is sent to the NRB.
 - The business isn’t found in the NRB. An attestation must be provided, declaring that the business is registered with the NRB and that the information given to Stripe matches.
 
-In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl&api-version=preview#v2_update_accounts-identity-attestations-ownership_declaration) hash.
+In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl#v2_update_accounts-identity-attestations-ownership_declaration) hash.
 
 ```curl
 curl -X POST https://api.stripe.com/v2/core/accounts/{{CONNECTED_STRIPE_ACCOUNT_ID}} \
@@ -1008,9 +1008,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -1047,7 +1047,7 @@ After supplying the beneficial owner information, it is checked against the Nati
 - The business is found in the NRB, but the information doesn’t match. The account is fully onboarded, and no additional action is required. A discrepancy report is sent to the NRB.
 - The business isn’t found in the NRB. An attestation must be provided, declaring that the business is registered with the NRB and that the information given to Stripe matches.
 
-In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl&api-version=preview#v2_update_accounts-identity-attestations-ownership_declaration) hash.
+In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl#v2_update_accounts-identity-attestations-ownership_declaration) hash.
 
 ```curl
 curl -X POST https://api.stripe.com/v2/core/accounts/{{CONNECTED_STRIPE_ACCOUNT_ID}} \
@@ -1209,9 +1209,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -1242,13 +1242,13 @@ Stripe.V2.Core.Account account = service.Update(
 
 #### Additional information on the account 
 
-If Stripe can’t verify the company, or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Collect it using the [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-front) and [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-back) parameters.
+If Stripe can’t verify the company, or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns), you must collect a [proof-of-entity document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable *payouts* (A payout is the transfer of funds to an external account, usually a bank account, in the form of a deposit). Collect it using the [identity.business_details.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-front) and [identity.business_details.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-primary_verification-front_back-back) parameters.
 
 #### Additional information on the individual 
 
 Depending on the situation, you might need to collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents), an address document, or both to enable payouts. That can happen if Stripe can’t verify the individual or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns). In some cases, depending on various calculated risk factors, Stripe can use Simplified Due Diligence and request only one document for verification at a later time.
 
-Collect ID information using the [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front) and [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back) parameters, and address information using the [identity.individual.documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-front) and [identity.individual.documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-back) parameters.
+Collect ID information using the [identity.individual.documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-front) and [identity.individual.documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification-front_back-back) parameters, and address information using the [identity.individual.documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-front) and [identity.individual.documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-secondary_verification-front_back-back) parameters.
 
 #### Additional information on the representative 
 
@@ -1262,19 +1262,19 @@ You can collect ID information with the [documents.primary_verification.front_ba
 
 #### Additional information on directors 
 
-For companies, excluding partnerships, you must collect information on all [directors](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Directors are members of the governing board of the company. When you have finished collecting the required information from all directors, or if your company doesn’t have any directors, you must inform Stripe by setting [identity.attestations.persons_provided.directors](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-attestations-persons_provided-directors) to true.
+For companies, excluding partnerships, you must collect information on all [directors](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Directors are members of the governing board of the company. When you have finished collecting the required information from all directors, or if your company doesn’t have any directors, you must inform Stripe by setting [identity.attestations.persons_provided.directors](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-attestations-persons_provided-directors) to true.
 
 You might need to collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) and an [address document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. That can happen if Stripe can’t verify the director’s provided information or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns). In some cases, depending on various calculated risk factors, Stripe can use Simplified Due Diligence and request only one document for verification at a later time.
 
-Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-back) parameters, and address information using the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
+Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-back) parameters, and address information using the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
 
 #### Additional information on beneficial owners (for both executives and owners) 
 
-You must collect information on all [beneficial owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Beneficial owners are persons who exercise significant management control over the company (executives) or who own 25% or more of the company (owners). When you have finished collecting the required information from all beneficial owners, you must inform Stripe by setting both [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-owners) and [identity.attestations.persons_provided.executives](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-executives) to true.
+You must collect information on all [beneficial owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions). Beneficial owners are persons who exercise significant management control over the company (executives) or who own 25% or more of the company (owners). When you have finished collecting the required information from all beneficial owners, you must inform Stripe by setting both [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-owners) and [identity.attestations.persons_provided.executives](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-executives) to true.
 
 You might need to collect a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) and an [address document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) to enable payouts. That can happen if Stripe can’t verify the beneficial owner’s provided information or if there are possible concerns about [sanctions](https://docs.stripe.com/connect/risk-management/best-practices.md#sanctions-concerns). In some cases, depending on various calculated risk factors, Stripe can use Simplified Due Diligence and request only one document for verification at a later time.
 
-Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification-front_back-back) parameters, and address information using the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
+Collect ID information using the [documents.primary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-front) and [documents.primary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification-front_back-back) parameters, and address information using the [documents.secondary_verification.front_back.front](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-front) and [documents.secondary_verification.front_back.back](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-secondary_verification-front_back-back) parameters.
 
 Optionally, you can collect ownership information on each person who owns 25% or more of the company with [relationship.owner](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-owner) and [relationship.percent_ownership](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-percent_ownership).
 
@@ -1288,7 +1288,7 @@ After supplying the beneficial owner information, it is checked against the Nati
 - The business is found in the NRB, but the information doesn’t match. The account is fully onboarded, and no additional action is required. A discrepancy report is sent to the NRB.
 - The business isn’t found in the NRB. An attestation must be provided, declaring that the business is registered with the NRB and that the information given to Stripe matches.
 
-In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl&api-version=preview#v2_update_accounts-identity-attestations-ownership_declaration) hash.
+In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl#v2_update_accounts-identity-attestations-ownership_declaration) hash.
 
 ```curl
 curl -X POST https://api.stripe.com/v2/core/accounts/{{CONNECTED_STRIPE_ACCOUNT_ID}} \
@@ -1450,9 +1450,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -1491,7 +1491,7 @@ After supplying the beneficial owner information, it is checked against the Nati
 
 ### Uploading proof of registration (Custom accounts) 
 
-In the case the business is not found in the NRB, a screenshot of the beneficial owner information from the NRB must be uploaded using the [identity.business_details.documents.proof_of_registration.files](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-proof_of_registration-files) parameter. Set the `File`’s `purpose` parameter to `account_requirement`.:
+In the case the business is not found in the NRB, a screenshot of the beneficial owner information from the NRB must be uploaded using the [identity.business_details.documents.proof_of_registration.files](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-proof_of_registration-files) parameter. Set the `File`’s `purpose` parameter to `account_requirement`.:
 
 #### curl
 
@@ -1795,9 +1795,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -1835,7 +1835,7 @@ After supplying the beneficial owner information, it is checked against the Nati
 - The business is found in the NRB, but the information doesn’t match. The account is fully onboarded, and no additional action is required. A discrepancy report is sent to the NRB.
 - The business isn’t found in the NRB. An attestation must be provided, declaring that the business is registered with the NRB and that the information given to Stripe matches.
 
-In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl&api-version=preview#v2_update_accounts-identity-attestations-ownership_declaration) hash.
+In the case where the business isn’t found in the NRB, provide the attestation by setting the `date`, `ip_address`, and `user_agent` in the `Account`’s [identity.attestations.ownership_declaration](https://docs.stripe.com/api/v2/core/accounts/update.md?lang=curl#v2_update_accounts-identity-attestations-ownership_declaration) hash.
 
 ```curl
 curl -X POST https://api.stripe.com/v2/core/accounts/{{CONNECTED_STRIPE_ACCOUNT_ID}} \
@@ -1997,9 +1997,9 @@ params := &stripe.V2CoreAccountUpdateParams{
       },
     },
   },
-  ID: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V2CoreAccounts.Update(context.TODO(), params)
+result, err := sc.V2CoreAccounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -2046,7 +2046,7 @@ Verification of the business representative’s address is required for all busi
 
 Stripe needs to verify that the [account representative has sufficient authority](https://support.stripe.com/questions/representative-authority-verification) to open an account on behalf of the legal entity.
 
-If we can’t verify this programmatically, Stripe returns the [verification_failed_representative_authority](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-requirements-entries-errors) error code. If possible, change the representative to a person with sufficient authority.
+If we can’t verify this programmatically, Stripe returns the [verification_failed_representative_authority](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-requirements-entries-errors) error code. If possible, change the representative to a person with sufficient authority.
 
 If necessary, you can allow a business representative without verifiable authority by having a person with authority authorize them in writing:
 
@@ -2060,7 +2060,7 @@ Additionally, the Letter of Authorization requirement can expose document-relate
 
 Stripe needs to verify that the [account representative has sufficient authority](https://support.stripe.com/questions/representative-authority-verification) to open an account on behalf of the legal entity.
 
-If we can’t verify this programmatically, Stripe returns the [verification_failed_representative_authority](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-requirements-entries-errors) error code. If possible, change the representative to a person with sufficient authority.
+If we can’t verify this programmatically, Stripe returns the [verification_failed_representative_authority](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-requirements-entries-errors) error code. If possible, change the representative to a person with sufficient authority.
 
 If necessary, you can allow a business representative without verifiable authority by having a person with authority authorize them in writing:
 
@@ -2074,7 +2074,7 @@ Additionally, the Letter of Authorization requirement can expose document-relate
 
 Stripe requires the verification of business name, UEN, and legal entity type. If we can’t verify the existence of the company, you must collect a company document.
 
-Stripe also needs to check that the business type and business structure matches the local government records. When a mismatch in [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-entity_type) or [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-business_details-structure) occurs, it generates an error, and you need to update the information or provide a company document to verify the legal entity.
+Stripe also needs to check that the business type and business structure matches the local government records. When a mismatch in [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-entity_type) or [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-business_details-structure) occurs, it generates an error, and you need to update the information or provide a company document to verify the legal entity.
 
 UEN information might be verified with the data made available at https://data.gov.sg under the terms of the [Singapore Open Data License version 1.0](https://data.gov.sg/open-data-licence).
 
@@ -2082,7 +2082,7 @@ UEN information might be verified with the data made available at https://data.g
 
 Stripe requires the verification of business name, UEN, and legal entity type. If we can’t verify the existence of the company, you must collect a company document.
 
-Stripe also needs to check that the business type and business structure matches the local government records. When a mismatch in [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-entity_type) or [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-business_details-structure) occurs, it generates an error, and you need to update the information or provide a company document to verify the legal entity.
+Stripe also needs to check that the business type and business structure matches the local government records. When a mismatch in [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-entity_type) or [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-business_details-structure) occurs, it generates an error, and you need to update the information or provide a company document to verify the legal entity.
 
 UEN information might be verified with the data made available at https://data.gov.sg under the terms of the [Singapore Open Data License version 1.0](https://data.gov.sg/open-data-licence).
 
@@ -2106,18 +2106,18 @@ Partnerships must verify the relationship between the business and all partners,
 
 ##### Exemptions
 
-In certain situations, a business entity might not need to declare its ownership. To qualify for an exemption, you must provide a legitimate reason in the [identity.attestations.persons_provided.ownership_exemption_reason](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-attestations-persons_provided-ownership_exemption_reason) field. Valid reasons for exemption include:
+In certain situations, a business entity might not need to declare its ownership. To qualify for an exemption, you must provide a legitimate reason in the [identity.attestations.persons_provided.ownership_exemption_reason](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-attestations-persons_provided-ownership_exemption_reason) field. Valid reasons for exemption include:
 
 - `qualified_entity_exceeds_ownership_threshold`: If a government, publicly listed company, or financial institution owns at least 75% of the business, the business is exempt from providing ownership details.
 - `qualifies_as_financial_institution`: Businesses that are financial institutions regulated by the [Monetary Authority of Singapore](https://eservices.mas.gov.sg/fid/institution?sector=Banking&category=Finance%20Company) are exempt from sharing ownership details.
 
-After submitting an exemption reason, we’ll review the business entity’s details. If Stripe determines that the business entity doesn’t qualify for the exemption, we display an error message, and the account must declare its ownership by providing an [identity.business_details.documents.proof_of_ultimate_beneficial_ownership](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-identity-business_details-documents-proof_of_ultimate_beneficial_ownership).
+After submitting an exemption reason, we’ll review the business entity’s details. If Stripe determines that the business entity doesn’t qualify for the exemption, we display an error message, and the account must declare its ownership by providing an [identity.business_details.documents.proof_of_ultimate_beneficial_ownership](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-identity-business_details-documents-proof_of_ultimate_beneficial_ownership).
 
 ##### Integration details  
 
-You must add UBOs and directors to the account with the [owner](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-owner) or [director](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-director) position in the API. Private companies, private partnerships, and non-profits require proof of beneficial ownership. When we can’t successfully verify the UBO, you need to collect an [ID Document](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) for the unverified UBO.
+You must add UBOs and directors to the account with the [owner](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-owner) or [director](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-director) position in the API. Private companies, private partnerships, and non-profits require proof of beneficial ownership. When we can’t successfully verify the UBO, you need to collect an [ID Document](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) for the unverified UBO.
 
-If Stripe determines that the account is missing owners, directors, or documentation of holding companies, its `requirements` hash includes an entry with the [description](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-requirements-entries-description) `identity.business_details.documents.proof_of_ultimate_beneficial_ownership`. You can find a complete list of acceptable documents at [Acceptable Verification Documents](https://docs.stripe.com/acceptable-verification-documents.md?country=SG&document-type=relationship).
+If Stripe determines that the account is missing owners, directors, or documentation of holding companies, its `requirements` hash includes an entry with the [description](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-requirements-entries-description) `identity.business_details.documents.proof_of_ultimate_beneficial_ownership`. You can find a complete list of acceptable documents at [Acceptable Verification Documents](https://docs.stripe.com/acceptable-verification-documents.md?country=SG&document-type=relationship).
 
 Additionally, you could be asked to attest that the list of directors is current and correct by setting the following fields in the API:
 
@@ -2153,9 +2153,9 @@ Stripe attempts to identify all directors and key executives of charities regist
 
 ##### Integration details 
 
-You must add all UBOs of non-profits to the account with [director](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-director) position in the API. When we can’t successfully verify the UBO, you need to collect an [ID Document](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) for the unverified UBO.
+You must add all UBOs of non-profits to the account with [director](https://docs.stripe.com/api/v2/core/persons/object.md?api-version=preview#v2_person_object-relationship-director) position in the API. When we can’t successfully verify the UBO, you need to collect an [ID Document](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) for the unverified UBO.
 
-If Stripe determines that the account is missing owners, directors, or documentation of holding companies, its `requirements` hash will include an entry with the [description](https://docs.stripe.com/api/v2/core/accounts/object.md?api-version=preview#v2_account_object-requirements-entries-description) `identity.business_details.documents.proof_of_ultimate_beneficial_ownership`. You can find a complete list of acceptable documents for Singapore at [Acceptable Verification Documents](https://docs.stripe.com/acceptable-verification-documents.md?country=SG&document-type=relationship).
+If Stripe determines that the account is missing owners, directors, or documentation of holding companies, its `requirements` hash will include an entry with the [description](https://docs.stripe.com/api/v2/core/accounts/object.md#v2_account_object-requirements-entries-description) `identity.business_details.documents.proof_of_ultimate_beneficial_ownership`. You can find a complete list of acceptable documents for Singapore at [Acceptable Verification Documents](https://docs.stripe.com/acceptable-verification-documents.md?country=SG&document-type=relationship).
 
 Both Stripe-hosted and embedded onboarding display a list of missing owners and directors, and the account user can add them to their account by clicking on them. Adding the suggested individuals fulfills the UBO requirement for companies without any holding companies in their ownership structure. For companies with holding companies, Stripe attempts to verify their owners. If we can’t, we prompt the account user to upload either [an ultimate beneficial owner attestation document or relevant ownership documents](https://docs.stripe.com/acceptable-verification-documents.md?country=SG&document-type=relationship) to determine the account’s ultimate beneficial owners. (This also applies to other business types, such as non-profits.)
 
@@ -2193,25 +2193,25 @@ These requirements are only applicable to Thai nationals, so leave the parameter
 
 #### Additional information on the individual 
 
-If Stripe can’t verify the individual, or if they’re not a Thai national, you need to collect a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Account`’s [identity.individual.documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-documents-primary_verification) hash.
+If Stripe can’t verify the individual, or if they’re not a Thai national, you need to collect a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Account`’s [identity.individual.documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-documents-primary_verification) hash.
 
 #### Additional information on the representative 
 
-If Stripe can’t verify the account representative, or if they’re not a Thai national, you need to provide a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Person`’s [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) hash.
+If Stripe can’t verify the account representative, or if they’re not a Thai national, you need to provide a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Person`’s [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) hash.
 
 #### Additional information on beneficial owners
 
 Accounts belonging to companies and registered partnerships are required to provide information on all beneficial owners. A beneficial owner is defined as any individual who owns 25% or more shares of the business. If there is no such person, then any individual who exercises significant control over the company is considered a beneficial owner. Otherwise, please provide information on any individual holding the position of senior management.
 
-If Stripe can’t verify a beneficial owner, or if they’re not a Thai national, you need to provide a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Person`’s [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) hash.
+If Stripe can’t verify a beneficial owner, or if they’re not a Thai national, you need to provide a scan of a [government-issued ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). To collect a government-issued ID document, add its front and back images to the `Person`’s [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) hash.
 
 #### Additional information on the company
 
-If Stripe can’t verify the company, you need to provide a scan of a [company verification document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) issued less than 6 months ago. To collect a company verification document, add its front and back images to the `Account`’s [identity.business_details.documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-primary_verification) hash.
+If Stripe can’t verify the company, you need to provide a scan of a [company verification document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) issued less than 6 months ago. To collect a company verification document, add its front and back images to the `Account`’s [identity.business_details.documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-primary_verification) hash.
 
 #### Additional tax information
 
-If Stripe can’t verify the company’s EIN (Employer Identification Number), upload a copy of [an IRS Letter 147C document or an IRS SS-4 confirmation letter](https://support.stripe.com/questions/using-irs-documentation-as-reference-when-entering-business-name-and-tax-id-number-tin-for-us-based-businesses) using the [identity.business_details.documents.company_tax_id_verification](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-documents-company_tax_id_verification) parameter. The document must include the connected account’s company name and EIN.
+If Stripe can’t verify the company’s EIN (Employer Identification Number), upload a copy of [an IRS Letter 147C document or an IRS SS-4 confirmation letter](https://support.stripe.com/questions/using-irs-documentation-as-reference-when-entering-business-name-and-tax-id-number-tin-for-us-based-businesses) using the [identity.business_details.documents.company_tax_id_verification](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-documents-company_tax_id_verification) parameter. The document must include the connected account’s company name and EIN.
 
 #### Additional information on the account 
 
@@ -2225,44 +2225,44 @@ Enabling card payments requires a validated city, state, and ZIP code for `ident
 
 Enabling payouts requires a validated full `identity.individual.address`. Stripe disables payouts if we haven’t verified the full address within 30 days.
 
-If the individual fails verification with their `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-id_numbers) parameter.
+If the individual fails verification with their `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-id_numbers) parameter.
 
 #### Additional information on the representative 
 
-A [Person](https://docs.stripe.com/api/v2/core/accounts/create-person.md?api-version=preview) known as a representative must activate this connected account. The representative must have significant responsibility to control, manage, or direct the organization, and must be authorized by the organization to agree to Stripe’s terms. The representative must be either [an owner or an executive](https://support.stripe.com/questions/beneficial-owner-and-director-definitions), which you specify by setting either [relationship.owner](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-relationship-owner) or [relationship.executive](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-relationship-executive) to true.
+A [Person](https://docs.stripe.com/api/v2/core/accounts/create-person.md) known as a representative must activate this connected account. The representative must have significant responsibility to control, manage, or direct the organization, and must be authorized by the organization to agree to Stripe’s terms. The representative must be either [an owner or an executive](https://support.stripe.com/questions/beneficial-owner-and-director-definitions), which you specify by setting either [relationship.owner](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-relationship-owner) or [relationship.executive](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-relationship-executive) to true.
 
-If the representative fails verification with their `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-id_numbers) parameter.
+If the representative fails verification with their `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-id_numbers) parameter.
 
-If Stripe can’t verify the representative, or if the person doesn’t have an SSN, then enabling card payments requires you to provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) parameter.
+If Stripe can’t verify the representative, or if the person doesn’t have an SSN, then enabling card payments requires you to provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) parameter.
 
 #### Additional information for minors
 
-If the account representative is a minor, you must verify the minor’s legal guardian. A legal guardian is a [Person](https://docs.stripe.com/api/v2/core/accounts/create-person.md?api-version=preview) object on the account with [relationship.legal_guardian](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-relationship-legal_guardian) set to `true`. Additionally, the legal guardian must provide their information and sign the Stripe terms of service, which we store on the `Person` object that represents the guardian. Store the legal guardian’s terms of service acceptance in the [additional_terms_of_service](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-additional_terms_of_service) hash.
+If the account representative is a minor, you must verify the minor’s legal guardian. A legal guardian is a [Person](https://docs.stripe.com/api/v2/core/accounts/create-person.md) object on the account with [relationship.legal_guardian](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-relationship-legal_guardian) set to `true`. Additionally, the legal guardian must provide their information and sign the Stripe terms of service, which we store on the `Person` object that represents the guardian. Store the legal guardian’s terms of service acceptance in the [additional_terms_of_service](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-additional_terms_of_service) hash.
 
-If the legal guardian fails verification with `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-id_numbers) parameter.
+If the legal guardian fails verification with `us_ssn_last_4`, then enabling card payments requires verifying their full SSN and their identity. Upload their full SSN using the [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-id_numbers) parameter.
 
-If Stripe can’t verify the legal guardian, or if the person doesn’t have an SSN, then enabling card payments requires you to provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) parameter.
+If Stripe can’t verify the legal guardian, or if the person doesn’t have an SSN, then enabling card payments requires you to provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents). Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) parameter.
 
 #### Additional information on owners 
 
-You must collect information on all [owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions) who have 25% or more ownership of the company, represented by [Person](https://docs.stripe.com/api/v2/core/persons.md?api-version=preview) objects on the account. When you finish collecting the required owner information, you must set [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-attestations-persons_provided-owners) to true.
+You must collect information on all [owners](https://support.stripe.com/questions/beneficial-owner-and-director-definitions) who have 25% or more ownership of the company, represented by [Person](https://docs.stripe.com/api/v2/core/persons.md?api-version=preview) objects on the account. When you finish collecting the required owner information, you must set [identity.attestations.persons_provided.owners](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-attestations-persons_provided-owners) to true.
 
 If the company has any unverified 25% owners, Stripe can disable payouts on the connected account when it reaches 750,000 USD in charges. To avoid disabling payouts, you must collect the following information for all 25% owners:
 
-- [address](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-address)
-- [date_of_birth.day](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-date_of_birth-day)
-- [date_of_birth.month](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-date_of_birth-month)
-- [date_of_birth.year](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-date_of_birth-year)
-- [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-id_numbers) (`us_ssn_last_4`)
-- [phone](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-phone)
+- [address](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-address)
+- [date_of_birth.day](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-date_of_birth-day)
+- [date_of_birth.month](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-date_of_birth-month)
+- [date_of_birth.year](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-date_of_birth-year)
+- [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-id_numbers) (`us_ssn_last_4`)
+- [phone](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-phone)
 
-If Stripe can’t verify an owner, or if an owner doesn’t have an SSN, you must provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) for them. Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-documents-primary_verification) parameter.
+If Stripe can’t verify an owner, or if an owner doesn’t have an SSN, you must provide a scan of an [ID document](https://docs.stripe.com/connect/handling-api-verification.md#acceptable-verification-documents) for them. Upload the front and back of the document using the [documents.primary_verification](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-documents-primary_verification) parameter.
 
-Optionally, you can collect company ownership information by setting [relationship.owner](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-relationship-owner) to true and [relationship.percent_ownership](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-relationship-percent_ownership) to the person’s ownership percentage. If you don’t specify `relationship.percent_ownership`, it defaults to 25%.
+Optionally, you can collect company ownership information by setting [relationship.owner](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-relationship-owner) to true and [relationship.percent_ownership](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-relationship-percent_ownership) to the person’s ownership percentage. If you don’t specify `relationship.percent_ownership`, it defaults to 25%.
 
 #### Supported business structures 
 
-Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-structure) parameter.
+Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-structure) parameter.
 
 Stripe supports the following business structures for privately held companies:
 
@@ -2279,7 +2279,7 @@ Stripe supports the following business structures for publicly traded companies.
 
 #### Supported business structures 
 
-Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-structure) parameter.
+Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-structure) parameter.
 
 Stripe supports the following business structures for government entities:
 
@@ -2290,22 +2290,22 @@ If your connected account is an instrumentality with tax-exempt status, you can 
 
 #### Supported business structures 
 
-While uncommon, there are circumstances where an `individual` business operates and is treated more like a `company`, such as a single-member LLC. For these accounts, you can optionally provide information on their [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-structure) parameter.
+While uncommon, there are circumstances where an `individual` business operates and is treated more like a `company`, such as a single-member LLC. For these accounts, you can optionally provide information on their [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-structure) parameter.
 
-If your connected account’s business has only one member or owner, and is registered as an LLC with a US state, you can set the [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-entity_type) to `company` and the `identity.business_details.structure` to `single_member_llc`. You collect the same required information, except you use the [identity.business_details](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details) hash and the [Persons v2](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview) API instead of the `identity.individual` hash. In that case, you map requirements in the `identity.individual` hash to the corresponding properties of the account’s representative. For example, set `given_name` on the representative’s `Person` instead of `identity.individual.given_name` on the `Account`.
+If your connected account’s business has only one member or owner, and is registered as an LLC with a US state, you can set the [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-entity_type) to `company` and the `identity.business_details.structure` to `single_member_llc`. You collect the same required information, except you use the [identity.business_details](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details) hash and the [Persons v2](https://docs.stripe.com/api/v2/core/accounts/update-person.md) API instead of the `identity.individual` hash. In that case, you map requirements in the `identity.individual` hash to the corresponding properties of the account’s representative. For example, set `given_name` on the representative’s `Person` instead of `identity.individual.given_name` on the `Account`.
 
-If your connected account has a business identification (for example, a tax ID separate from their personal ID, or a business address different than their home address), you can set the `identity.entity_type` to `company` and the `identity.business_details.structure` to `sole_proprietorship`. You collect the same required information, except you use the [identity.business_details](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details) hash and the [Persons v2](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview) API instead of the `individual` hash In that case, you map requirements in the `individual` hash to the corresponding properties of the account’s representative. For example, set `given_name` on the representative’s `Person` instead of `identity.individual.given_name` on the `Account`.
+If your connected account has a business identification (for example, a tax ID separate from their personal ID, or a business address different than their home address), you can set the `identity.entity_type` to `company` and the `identity.business_details.structure` to `sole_proprietorship`. You collect the same required information, except you use the [identity.business_details](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details) hash and the [Persons v2](https://docs.stripe.com/api/v2/core/accounts/update-person.md) API instead of the `individual` hash In that case, you map requirements in the `individual` hash to the corresponding properties of the account’s representative. For example, set `given_name` on the representative’s `Person` instead of `identity.individual.given_name` on the `Account`.
 
 #### Supported business structures 
 
-Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-structure) parameter.
+Optionally, you can provide information on the [legal structure](https://docs.stripe.com/connect/identity-verification.md#business-structure) of your connected account’s business using the [identity.business_details.structure](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-structure) parameter.
 
 Stripe supports the following business structures for non-profit organizations:
 
 - `incorporated_non_profit`
 - `unincorporated_non_profit`
 
-The US government grants tax-exempt status to certain government entities that it considers to be non-profit. If your connected account is an instrumentality with tax-exempt status, you can set the [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-entity_type) to `government_entity` and the `identity.business_details.structure` to `tax_exempt_government_instrumentality`. You must then collect the [appropriate verification requirements](https://docs.stripe.com/connect/required-verification-information.md#government-entity-card-us).
+The US government grants tax-exempt status to certain government entities that it considers to be non-profit. If your connected account is an instrumentality with tax-exempt status, you can set the [identity.entity_type](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-entity_type) to `government_entity` and the `identity.business_details.structure` to `tax_exempt_government_instrumentality`. You must then collect the [appropriate verification requirements](https://docs.stripe.com/connect/required-verification-information.md#government-entity-card-us).
 
 #### Tax reporting information
 
@@ -2313,26 +2313,26 @@ Not applicable to Accounts v2.
 
 #### Threshold information 
 
-In addition to the onboarding requirements, payouts require that you provide your connected account’s Employer Identification Number (EIN) before its charges reach a certain threshold. The threshold is either 10,000 USD or 3,000 USD, depending on your industry and Stripe’s review of your platform profile. Provide the EIN using the [identity.business_details.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-business_details-id_numbers) parameter. If Stripe can’t verify your connected account’s EIN before it reaches the threshold, we disable payouts.
+In addition to the onboarding requirements, payouts require that you provide your connected account’s Employer Identification Number (EIN) before its charges reach a certain threshold. The threshold is either 10,000 USD or 3,000 USD, depending on your industry and Stripe’s review of your platform profile. Provide the EIN using the [identity.business_details.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-business_details-id_numbers) parameter. If Stripe can’t verify your connected account’s EIN before it reaches the threshold, we disable payouts.
 
 #### Threshold information 
 
 In addition to the onboarding requirements, payouts require that you provide the following information for your connected account before its charges reach a certain threshold. The threshold is either 10,000 USD or 3,000 USD, depending on your industry and Stripe’s review of your platform profile. If Stripe can’t verify this information before the account reaches the threshold, we disable payouts.
 
-- [identity.individual.date_of_birth.day](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-date_of_birth-day)
-- [identity.individual.date_of_birth.month](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-date_of_birth--month)
-- [identity.individual.date_of_birth.year](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-date_of_birth-year)
-- [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-id_numbers) (`us_ssn_last_4`)
+- [identity.individual.date_of_birth.day](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-date_of_birth-day)
+- [identity.individual.date_of_birth.month](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-date_of_birth--month)
+- [identity.individual.date_of_birth.year](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-date_of_birth-year)
+- [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-id_numbers) (`us_ssn_last_4`)
 
 #### Payments threshold information
 
 When a connected account with `card_payments` reaches 500,000 USD in lifetime charges, we will collect the last four digits of their SSN or ITIN for US-resident owners and attempt to programmatically obtain the full nine digit SSN for them. If we are unable to obtain the full number using information provided, the User will need to provide the full nine digits. If the full number has already been provided, it is not needed again.
 
-For connected accounts with `identity.entity_type` set to `individual`, and where the owner isn’t a minor, add the SSN as type `us_ssn` using the `Account`’s [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-identity-individual-id_numbers) parameter. For other accounts, which have associated persons with `relationship.legal_guardian`, `relationship.representative`, or `relationship.owner` set to true, add the SSN as type `us_ssn` using the appropriate `Person`’s [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md?api-version=preview#v2_update_persons-id_numbers) parameter.
+For connected accounts with `identity.entity_type` set to `individual`, and where the owner isn’t a minor, add the SSN as type `us_ssn` using the `Account`’s [identity.individual.id_numbers](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-identity-individual-id_numbers) parameter. For other accounts, which have associated persons with `relationship.legal_guardian`, `relationship.representative`, or `relationship.owner` set to true, add the SSN as type `us_ssn` using the appropriate `Person`’s [id_numbers](https://docs.stripe.com/api/v2/core/accounts/update-person.md#v2_update_persons-id_numbers) parameter.
 
 #### Support phone number
 
-For accounts without access to a Stripe-hosted dashboard, and where Stripe is responsible for negative balances, activating `card_payments` requires [configuration.merchant.support.phone](https://docs.stripe.com/api/v2/core/accounts/update.md?api-version=preview#v2_update_accounts-configuration-merchant-support-phone).
+For accounts without access to a Stripe-hosted dashboard, and where Stripe is responsible for negative balances, activating `card_payments` requires [configuration.merchant.support.phone](https://docs.stripe.com/api/v2/core/accounts/update.md#v2_update_accounts-configuration-merchant-support-phone).
 
 #### Additional information on the account 
 
@@ -2648,9 +2648,9 @@ params := &stripe.AccountUpdateParams{
       Files: []*string{stripe.String("file_5dtoJkOhAxrMWb")},
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -2814,9 +2814,9 @@ params := &stripe.AccountUpdateParams{
       UserAgent: stripe.String("Mozilla/5.0"),
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -2978,9 +2978,9 @@ params := &stripe.AccountUpdateParams{
       UserAgent: stripe.String("Mozilla/5.0"),
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -3182,9 +3182,9 @@ params := &stripe.AccountUpdateParams{
       UserAgent: stripe.String("Mozilla/5.0"),
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -3466,9 +3466,9 @@ params := &stripe.AccountUpdateParams{
       Files: []*string{stripe.String("file_5dtoJkOhAxrMWb")},
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -3628,9 +3628,9 @@ params := &stripe.AccountUpdateParams{
       UserAgent: stripe.String("Mozilla/5.0"),
     },
   },
-  Account: stripe.String("{{CONNECTED_STRIPE_ACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTED_STRIPE_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet

@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/api-reference/tracing/get_whitelisted_users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get identifiers of users that are allowed to be logged
 
 By default, all prompts and responses are logged.
@@ -27,8 +31,3 @@ can use this API to view which users you've enabled.
   ]
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/sleep.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sleep for a fixed number of milliseconds
 
 The `Bun.sleep` method provides a convenient way to create a void `Promise` that resolves in a fixed number of milliseconds.
@@ -19,4 +23,4 @@ await new Promise(resolve => setTimeout(resolve, ms));
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

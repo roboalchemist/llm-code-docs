@@ -12,7 +12,7 @@ Getting information from inside iFrames is a known pain, especially for new deve
 
 If you are using basic methods of page objects like `page.evaluate()`, you are actually already working with frames. Behind the scenes, Puppeteer will call `page.mainFrame().evaluate()`, so most of the methods you are using with page object can be used the same way with frame object. To access frames, you need to loop over the main frame's child frames and identify the one you want to use.
 
-As a demonstration, we'll scrape the Twitter widget iFrame from https://www.imdb.com/.
+As a demonstration, we'll scrape the Twitter widget iFrame from [IMDb](https://www.imdb.com/).
 
 
 ```
@@ -73,4 +73,4 @@ for (const text of textFeed) {
 ```
 
 
-With a little more effort, we could also follow different links from the feed or even play a video, but that is not within the scope of this article. For all references about page and frame objects (and Puppeteer generally), you should study https://pub.dev/documentation/puppeteer/latest/puppeteer/Frame-class.html. New versions are released quite often, so checking the docs regularly can help you to stay on top of web scraping and automation.
+With a little more effort, we could also follow different links from the feed or even play a video, but that is not within the scope of this article. For all references about page and frame objects (and Puppeteer generally), you should study [the documentation](https://pub.dev/documentation/puppeteer/latest/puppeteer/Frame-class.html). New versions are released quite often, so checking the docs regularly can help you to stay on top of web scraping and automation.

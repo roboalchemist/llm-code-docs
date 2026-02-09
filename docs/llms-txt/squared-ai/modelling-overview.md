@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/ai-modelling/modelling-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > Understand what AI Modeling means inside AI Squared and how to configure your models for activation.

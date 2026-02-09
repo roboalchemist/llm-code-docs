@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-dependencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # dependencies
 
 # `fastmcp.dependencies`
@@ -10,7 +14,6 @@ This module re-exports dependency injection symbols from Docket and FastMCP
 to provide a clean, centralized import location for all dependency-related
 functionality.
 
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt
+DI features (Depends, CurrentContext, CurrentFastMCP) work without pydocket
+using a vendored DI engine. Only task-related dependencies (CurrentDocket,
+CurrentWorker) and background task execution require fastmcp\[tasks].

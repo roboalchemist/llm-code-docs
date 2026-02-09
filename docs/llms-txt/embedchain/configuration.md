@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/advanced/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom configurations
 
 Embedchain offers several configuration options for your LLM, vector database, and embedding model. All of these configuration options are optional and have sane defaults.
@@ -11,7 +15,7 @@ You can configure different components of your app (`llm`, `embedding model`, or
 </Tip>
 
 <CodeGroup>
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   app:
     config:
       name: 'full-stack-app'
@@ -74,7 +78,7 @@ You can configure different components of your app (`llm`, `embedding model`, or
     top_k: 10
   ```
 
-  ```json config.json
+  ```json config.json theme={null}
   {
     "app": {
       "config": {
@@ -135,7 +139,7 @@ You can configure different components of your app (`llm`, `embedding model`, or
   }
   ```
 
-  ```python config.py
+  ```python config.py theme={null}
   config = {
       'app': {
           'config': {

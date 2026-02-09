@@ -14,18 +14,6 @@ Read more about Markdown and access full capabilities [here](https://www.markdow
 
 You can also apply styling with a toolbar, which will pop up after you highlight a word or phrase or using slash commands when typing `/`.
 
-### Keyboard
-
-See below for keyboard shortcuts or search specific ones with `?`
-
-### Mouse
-
-Highlight text in edit mode to launch WYSIWYG editor
-
-### Command menu
-
-`markdown` when viewing an issue to copy issue in Markdown
-
 ## Formatting
 
 These styles can be applied using keyboard shortcuts or by highlighting text to bring up a styling toolbar. You can also hit `/` on your keyboard to bring up the formatting options:

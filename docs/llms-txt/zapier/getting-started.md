@@ -14,69 +14,9 @@
 
 # Source: https://docs.zapier.com/powered-by-zapier/authentication/getting-started.md
 
-# Source: https://docs.zapier.com/powered-by-zapier/zap-templates/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-creation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/sponsor-user-automation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/running-actions/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/managing-app-authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier-mcp/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-templates/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-creation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/sponsor-user-automation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/running-actions/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/managing-app-authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier-mcp/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-templates/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-creation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/sponsor-user-automation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/running-actions/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/managing-app-authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier-mcp/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-templates/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/zap-creation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/sponsor-user-automation/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/running-actions/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/managing-app-authentication/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier-mcp/getting-started.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/authentication/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Getting Started
 

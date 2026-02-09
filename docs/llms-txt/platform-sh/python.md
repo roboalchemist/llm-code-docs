@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Python is a general purpose scripting language often used in web development.
 You can deploy Python apps on Upsun using a server or a project such as [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/).
@@ -17,6 +17,8 @@ You can select the major and minor version.
 
 Patch versions are applied periodically for bug fixes and the like. When you deploy your app, you always get the latest available patches.
 
+   - 3.14
+
    - 3.13
 
    - 3.12
@@ -24,10 +26,6 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
    - 3.11
 
    - 3.10
-
-   - 3.9
-
-   - 3.8
 
 ### Specify the language
 
@@ -46,7 +44,7 @@ For example:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
 ```
 
 ### Deprecated versions
@@ -55,13 +53,17 @@ The following versions are [deprecated](https://docs.upsun.com/glossary.md#depre
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
+   - 3.9
+
+   - 3.8
+
    - 3.7
 
    - 3.6
 
    - 3.5
 
-   - 2.7*
+   - 2.7
 
 \* This version doesn't receive any updates at all.
 You are strongly recommended to upgrade to a supported version.
@@ -79,7 +81,7 @@ Once you have it configured, add the following configuration to get it running o
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
 ```
 2.  Install the requirements for your app.
 
@@ -87,7 +89,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         pipenv: "2024.4.1"
@@ -102,7 +104,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       # Start your app with the configuration you define
       # You can replace the file location with your location
@@ -123,7 +125,7 @@ Follow these steps to get your server started.
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
 ```
 2.  Define the conditions for your web server:
 
@@ -131,7 +133,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     web:
       upstream:
         # Send requests to the app server through a unix socket
@@ -171,7 +173,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         pipenv: "2024.4.1"
@@ -204,7 +206,7 @@ add them to the `dependencies` in your [app configuration](https://docs.upsun.co
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         <PACKAGE_NAME>: <PACKAGE_VERSION>
@@ -215,7 +217,7 @@ For example, to use `pipenv` to manage requirements and a virtual environment, a
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         pipenv: "2024.4.1"
@@ -251,6 +253,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 - [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md#use-in-app)
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
+
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
 
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 

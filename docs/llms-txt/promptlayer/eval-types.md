@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/eval-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Eval Types
 
 This page provides an overview of the various evaluation column types available on our platform.
@@ -307,8 +311,3 @@ The *Coalesce* evaluation type allows you to take multiple different columns and
 The *Count* evaluation type allows you to select a source column and count either the characters, words, or paragraphs within it. This will output a numeric value, which can be useful for analyzing the length or complexity of LLM outputs.
 
 Please reach out to us if you have any other evaluation types you would like to see on the platform. We are always looking to expand our evaluation capabilities to better serve your needs.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

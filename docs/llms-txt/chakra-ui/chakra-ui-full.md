@@ -9635,7 +9635,7 @@ Use when you don't need to control the value of the accordion. |
 Explore the `Accordion` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="accordion-basic-explorer" />
+<Explorer name="accordion-explorer-demo" />
 
 # Action Bar
 
@@ -9845,6 +9845,84 @@ export const ActionBarWithDialog = () => {
 
 ```
 
+### Placement
+
+Use the `placement` prop to control the position of the action bar. The action
+bar supports three placement options: `bottom` (default), `bottom-start`, and
+`bottom-end`.
+
+```tsx
+"use client"
+
+import {
+  ActionBar,
+  Button,
+  Portal,
+  SegmentGroup,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+import { useState } from "react"
+import { LuShare, LuTrash2 } from "react-icons/lu"
+
+export const ActionBarPlacement = () => {
+  const [placement, setPlacement] = useState<
+    "bottom" | "bottom-start" | "bottom-end"
+  >("bottom")
+  const [open, setOpen] = useState(false)
+
+  return (
+    <VStack gap="6" align="flex-start">
+      <VStack gap="3" align="flex-start">
+        <Text fontWeight="medium">Placement:</Text>
+        <SegmentGroup.Root
+          size="sm"
+          value={placement}
+          onValueChange={(e) =>
+            setPlacement(e.value as "bottom" | "bottom-start" | "bottom-end")
+          }
+        >
+          <SegmentGroup.Indicator />
+          <SegmentGroup.Items
+            items={[
+              { value: "bottom-start", label: "Bottom Start" },
+              { value: "bottom", label: "Bottom" },
+              { value: "bottom-end", label: "Bottom End" },
+            ]}
+          />
+        </SegmentGroup.Root>
+      </VStack>
+
+      <Button onClick={() => setOpen(!open)}>
+        {open ? "Hide" : "Show"} Action Bar
+      </Button>
+
+      <ActionBar.Root open={open} placement={placement}>
+        <Portal>
+          <ActionBar.Positioner>
+            <ActionBar.Content>
+              <ActionBar.SelectionTrigger>
+                3 selected
+              </ActionBar.SelectionTrigger>
+              <ActionBar.Separator />
+              <Button variant="outline" size="sm">
+                <LuTrash2 />
+                Delete
+              </Button>
+              <Button variant="outline" size="sm">
+                <LuShare />
+                Share
+              </Button>
+            </ActionBar.Content>
+          </ActionBar.Positioner>
+        </Portal>
+      </ActionBar.Root>
+    </VStack>
+  )
+}
+
+```
+
 ## Props
 
 ### Root
@@ -9865,7 +9943,6 @@ content within the popover when opened. |
 of the popover content. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
-| colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg'` | The size of the component |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
@@ -9882,6 +9959,7 @@ Use when you don't need to control the open state of the popover. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function invoked when the popover opens or closes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | open | undefined | `boolean` | The controlled open state of the popover |
 | persistentElements | undefined | `(() => Element \| null)[]` | Returns the persistent elements that:
 - should not have pointer-events disabled
@@ -9999,7 +10077,7 @@ export const AlertWithStatus = () => {
 ### Variants
 
 Use the `variant` prop to change the visual style of the alert. Values can be
-either `subtle`, `solid`, `outline`
+either `subtle`, `solid`, `outline`, `surface`
 
 ```tsx
 import { Alert, Stack } from "@chakra-ui/react"
@@ -10013,6 +10091,11 @@ export const AlertWithVariants = () => {
       </Alert.Root>
 
       <Alert.Root status="success" variant="solid">
+        <Alert.Indicator />
+        <Alert.Title>Data uploaded to the server. Fire on!</Alert.Title>
+      </Alert.Root>
+
+      <Alert.Root status="success" variant="outline">
         <Alert.Indicator />
         <Alert.Title>Data uploaded to the server. Fire on!</Alert.Title>
       </Alert.Root>
@@ -10196,7 +10279,7 @@ npx @chakra-ui/cli snippet add alert
 Explore the `Alert` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="alert-explorer" />
+<Explorer name="alert-explorer-demo" />
 
 # Aspect Ratio
 
@@ -10925,7 +11008,7 @@ If not provided, the fallback will display a generic icon. |
 Explore the `Avatar` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="avatar-basic-explorer" />
+<Explorer name="avatar-explorer-demo" />
 
 # Badge
 
@@ -11439,7 +11522,7 @@ npx @chakra-ui/cli snippet add blockquote
 Explore the `Blockquote` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="blockquote-explorer" />
+<Explorer name="blockquote-explorer-demo" />
 
 # Box
 
@@ -11965,8 +12048,6 @@ npx @chakra-ui/cli snippet add breadcrumb
 | colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | variant | plain | `'underline' \| 'plain'` | The variant of the component |
 | size | md | `'sm' \| 'md' \| 'lg'` | The size of the component |
-| separator | undefined | `React.ReactNode` | undefined |
-| separatorGap | undefined | `SystemStyleObject['gap']` | undefined |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | unstyled | undefined | `boolean` | Whether to remove the component's style. |
@@ -12333,6 +12414,112 @@ const Demo = () => {
 }
 ```
 
+## Customization
+
+:::info
+
+After customizing the recipe, run the CLI typegen command to regenerate the
+types.
+
+```bash
+npx @chakra-ui/cli typegen
+```
+
+:::
+
+### Adding a new variant
+
+Use the `defineRecipe` function to add a new variant to the button. In this
+example, we add a `pill` variant that respects the `colorPalette` prop.
+
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react"
+
+const buttonRecipe = defineRecipe({
+  variants: {
+    variant: {
+      pill: {
+        borderRadius: "full",
+        px: "6",
+        bg: "colorPalette.solid",
+        color: "colorPalette.contrast",
+        _hover: {
+          bg: "colorPalette.solid/90",
+        },
+      },
+    },
+  },
+})
+
+const system = createSystem(defaultConfig, {
+  theme: {
+    recipes: { button: buttonRecipe },
+  },
+})
+```
+
+Then use the `pill` variant in your button:
+
+```tsx
+<Button variant="pill" colorPalette="blue">
+  Pill Button
+</Button>
+```
+
+### Adding a new size
+
+Use the `defineRecipe` function to add a new size to the button.
+
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react"
+
+const buttonRecipe = defineRecipe({
+  variants: {
+    size: {
+      xxl: {
+        h: "16",
+        minW: "16",
+        textStyle: "xl",
+        px: "8",
+      },
+    },
+  },
+})
+
+const system = createSystem(defaultConfig, {
+  theme: {
+    recipes: { button: buttonRecipe },
+  },
+})
+```
+
+Then use the `xxl` size in your button:
+
+```tsx
+<Button size="xxl">XXL Button</Button>
+```
+
+### Changing the default variant
+
+Use the `defaultVariants` property to change the default size or variant.
+
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react"
+
+const buttonRecipe = defineRecipe({
+  defaultVariants: {
+    size: "lg",
+    variant: "outline",
+  },
+})
+
+const system = createSystem(defaultConfig, {
+  theme: {
+    recipes: { button: buttonRecipe },
+  },
+})
+```
+
 ## Props
 
 | Prop | Default | Type | Description |
@@ -12638,6 +12825,90 @@ export const CardWithAvatar = () => {
 
 ```
 
+## Customization
+
+### Adding new variants
+
+Create a custom Card recipe to add new style variants:
+
+```tsx title="theme.ts"
+import { defineSlotRecipe } from "@chakra-ui/react"
+import { cardAnatomy } from "@chakra-ui/react/anatomy"
+
+const customCardRecipe = defineSlotRecipe({
+  className: "chakra-card",
+  slots: cardAnatomy.keys(),
+  variants: {
+    // add new variant="ghost"
+    variant: {
+      gradient: {
+        root: {
+          bg: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          color: "white",
+        },
+      },
+    },
+  },
+})
+```
+
+### Adding new sizes
+
+Add custom size variants to the Card recipe:
+
+```tsx title="theme.ts"
+const customCardRecipe = defineSlotRecipe({
+  // ...
+  variants: {
+    size: {
+      // ... existing sizes (sm, md, lg)
+      xl: {
+        root: { "--card-padding": "spacing.10" },
+        title: { textStyle: "2xl" },
+      },
+    },
+  },
+})
+```
+
+### Changing defaults
+
+Set new default values for size and variant:
+
+```tsx title="theme.ts"
+const customCardRecipe = defineSlotRecipe({
+  // ...
+  defaultVariants: {
+    variant: "elevated", // Default to elevated instead of outline
+    size: "lg", // Default to lg instead of md
+  },
+})
+```
+
+### Updating the theme
+
+Add the custom recipe to your theme:
+
+```tsx title="components/ui/provider.tsx"
+const config = defineConfig({
+  theme: {
+    slotRecipes: {
+      card: customCardRecipe,
+    },
+  },
+})
+
+const system = createSystem(defaultConfig, config)
+
+export function Provider(props: { children: React.ReactNode }) {
+  return <ChakraProvider value={system}>{/* ... */}</ChakraProvider>
+}
+```
+
+View the
+[default Card recipe](https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/theme/recipes/card.ts)
+for reference.
+
 ## Props
 
 ### Root
@@ -12657,7 +12928,8 @@ export const CardWithAvatar = () => {
 Explore the `Card` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="card-explorer" />
+<Explorer name="card-explorer-demo" />
+```
 
 # Carousel
 
@@ -13748,7 +14020,7 @@ enabling nearby items to remain partially in view. |
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
 | index | undefined | `number` | The index of the item. |
-| snapAlign | "start" | `'center' \| 'end' \| 'start'` | The snap alignment of the item. |
+| snapAlign | "start" | `'center' \| 'start' \| 'end'` | The snap alignment of the item. |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
@@ -13766,7 +14038,7 @@ enabling nearby items to remain partially in view. |
 Explore the `Carousel` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="carousel-basic-explorer" />
+<Explorer name="carousel-explorer-demo" />
 
 # Center
 
@@ -14326,7 +14598,7 @@ Useful for form submission. |
 Explore the `Checkbox Card` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="checkbox-card-explorer" />
+<Explorer name="checkbox-card-explorer-demo" />
 
 # Checkbox
 
@@ -15078,7 +15350,7 @@ Useful for form submission. |
 Explore the `Checkbox` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="checkbox-explorer" />
+<Explorer name="checkbox-explorer-demo" />
 
 # Checkmark
 
@@ -15239,6 +15511,7 @@ export const CheckmarkWithFilled = () => {
 | disabled | undefined | `boolean \| undefined` | Whether the checkmark is disabled |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| filled | undefined | `'true' \| 'false'` | The filled of the component |
 
 
 # Client Only
@@ -15314,7 +15587,7 @@ These props can be passed to the `ClientOnly` component.
 
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
-| fallback | undefined | `string \| number \| bigint \| boolean \| ReactElement<unknown, string \| JSXElementConstructor<any>> \| Iterable<ReactNode> \| ReactPortal \| Promise<...>` | The fallback content to render while the component is mounting on the client
+| fallback | undefined | `any` | The fallback content to render while the component is mounting on the client
 side. |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
@@ -15498,7 +15771,7 @@ Use when you don't need to control the value of the clipboard. |
 Explore the `Clipboard` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="clipboard-explorer" />
+<Explorer name="clipboard-explorer-demo" />
 
 # Close Button
 
@@ -15534,7 +15807,7 @@ export const CloseButtonWithSizes = () => {
   return (
     <HStack gap="4" wrap="wrap">
       <For each={["2xs", "xs", "sm", "md", "lg", "xl"]}>
-        {(size) => <CloseButton variant="outline" size={size} />}
+        {(size) => <CloseButton key={size} variant="outline" size={size} />}
       </For>
     </HStack>
   )
@@ -17412,6 +17685,57 @@ export const CollapsibleLazyMounted = () => (
 
 ## Guides
 
+### Accessing collapsible context
+
+Use `useCollapsibleContext` to access the collapsible's state and methods from
+any component inside the collapsible.
+
+```tsx
+import { useCollapsibleContext } from "@chakra-ui/react"
+
+const CollapsibleStatus = () => {
+  const collapsible = useCollapsibleContext()
+
+  return <div>Collapsible is {collapsible.open ? "open" : "closed"}</div>
+}
+
+const MyCollapsible = () => (
+  <Collapsible.Root>
+    <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+    <Collapsible.Content>
+      <CollapsibleStatus />
+    </Collapsible.Content>
+  </Collapsible.Root>
+)
+```
+
+### Closing programmatically
+
+Use `setOpen(false)` from the context to close the collapsible programmatically.
+
+```tsx
+import { useCollapsibleContext } from "@chakra-ui/react"
+
+const CloseButton = () => {
+  const collapsible = useCollapsibleContext()
+
+  return (
+    <Button onClick={() => collapsible.setOpen(false)}>
+      Close Collapsible
+    </Button>
+  )
+}
+
+const MyCollapsible = () => (
+  <Collapsible.Root>
+    <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+    <Collapsible.Content>
+      <CloseButton />
+    </Collapsible.Content>
+  </Collapsible.Root>
+)
+```
+
 ### Content Padding
 
 To prevent janky animations when the collapsible expands or collapses, apply
@@ -17454,6 +17778,8 @@ padding to the inner content element rather than directly on
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | unstyled | undefined | `boolean` | Whether to remove the component's style. |
+| collapsedHeight | undefined | `string \| number` | The height of the content when collapsed. |
+| collapsedWidth | undefined | `string \| number` | The width of the content when collapsed. |
 | defaultOpen | undefined | `boolean` | The initial open state of the collapsible when rendered.
 Use when you don't need to control the open state of the collapsible. |
 | disabled | undefined | `boolean` | Whether the collapsible is disabled. |
@@ -18152,6 +18478,76 @@ export const ColorPickerInline = () => {
 
 ```
 
+### Open From Dialog
+
+To use the color picker within a dialog, avoid portalling the
+`ColorPicker.Positioner` to the document's body.
+
+```tsx
+"use client"
+
+import {
+  Button,
+  CloseButton,
+  ColorPicker,
+  Dialog,
+  HStack,
+  Portal,
+  parseColor,
+} from "@chakra-ui/react"
+
+export const ColorPickerOpenFromDialog = () => {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Button variant="outline">Open Dialog</Button>
+      </Dialog.Trigger>
+      <Portal>
+        <Dialog.Backdrop />
+        <Dialog.Positioner>
+          <Dialog.Content>
+            <Dialog.CloseTrigger asChild>
+              <CloseButton />
+            </Dialog.CloseTrigger>
+            <Dialog.Header>
+              <Dialog.Title>Color Picker</Dialog.Title>
+            </Dialog.Header>
+            <Dialog.Body>
+              <DialogColorPicker />
+            </Dialog.Body>
+            <Dialog.Footer />
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
+  )
+}
+
+const DialogColorPicker = () => {
+  return (
+    <ColorPicker.Root defaultValue={parseColor("#eb5e41")} maxW="200px">
+      <ColorPicker.HiddenInput />
+      <ColorPicker.Label>Color</ColorPicker.Label>
+      <ColorPicker.Control>
+        <ColorPicker.Input />
+        <ColorPicker.Trigger />
+      </ColorPicker.Control>
+
+      <ColorPicker.Positioner>
+        <ColorPicker.Content>
+          <ColorPicker.Area />
+          <HStack>
+            <ColorPicker.EyeDropper size="xs" variant="outline" />
+            <ColorPicker.Sliders />
+          </HStack>
+        </ColorPicker.Content>
+      </ColorPicker.Positioner>
+    </ColorPicker.Root>
+  )
+}
+
+```
+
 ### Disabled
 
 Pass the `disabled` prop to disable the color picker.
@@ -18541,6 +18937,43 @@ const swatches = ["red", "blue", "green"]
 
 ```
 
+## Guide
+
+### Getting the hex code
+
+Use the `onValueChange` callback to get the color value. The `value` object has
+a `toString()` method that accepts different format options.
+
+```tsx
+<ColorPicker.Root
+  onValueChange={(details) => {
+    console.log(details.value.toString("hex")) // "#ff0000"
+    console.log(details.value.toString("hexa")) // "#ff0000ff" (with alpha)
+    console.log(details.value.toString("rgb")) // "rgb(255, 0, 0)"
+    console.log(details.value.toString("css")) // CSS color string
+  }}
+>
+  {/* ... */}
+</ColorPicker.Root>
+```
+
+You can also access it from the store:
+
+```tsx
+const picker = useColorPicker() // or useColorPickerContext()
+const hexValue = picker.value.toString("hex") // "#ff0000"
+```
+
+The same `toString()` method is available when using `parseColor`:
+
+```tsx
+import { parseColor } from "@chakra-ui/react"
+
+const color = parseColor("#ff0000")
+console.log(color.toString("hex")) // "#ff0000"
+console.log(color.toString("rgba")) // "rgba(255, 0, 0, 1)"
+```
+
 ## Props
 
 ### Root
@@ -18594,7 +19027,7 @@ Use when you don't need to control the open state of the color picker. |
 Explore the `Color Picker` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="color-picker-explorer" />
+<Explorer name="color-picker-explorer-demo" />
 
 # Color Swatch
 
@@ -18827,10 +19260,11 @@ import { Combobox } from "@chakra-ui/react"
 </Combobox.Root>
 ```
 
-To setup combobox, you might need to import the following hooks:
+To setup combobox, you need to import the following hooks:
 
-- `useListCollection`: Used to manage the list of items in the combobox,
-  providing helpful methods for filtering and mutating the list.
+- `useListCollection`: Used to manage the
+  [list collection](https://ark-ui.com/docs/collections/list-collection) in the
+  combobox, providing helpful methods for filtering and mutating the list.
 
 - `useFilter`: Used to provide the filtering logic for the combobox based on
   [`Intl.Collator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator)
@@ -21919,7 +22353,7 @@ const frameworks = [
 
 ```
 
-### Within Dialog
+### Open From Dialog
 
 To use the combobox within a dialog or popover component, avoid wrapping the
 `Combobox.Positioner` within the `Portal`.
@@ -21959,7 +22393,7 @@ import {
   useListCollection,
 } from "@chakra-ui/react"
 
-export const ComboboxInPopover = () => {
+export const ComboboxOpenFromPopover = () => {
   return (
     <Popover.Root size="xs">
       <Popover.Trigger asChild>
@@ -22243,6 +22677,8 @@ function useCreatableCombobox(props: UseCreatableComboboxProps) {
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
 | collection | undefined | `ListCollection<T>` | The collection of items |
+| alwaysSubmitOnEnter | false | `boolean` | Whether to always submit on Enter key press, even if popup is open.
+Useful for single-field autocomplete forms where Enter should submit the form. |
 | composite | true | `boolean` | Whether the combobox is a composed with other composite widgets like tabs |
 | defaultInputValue | "" | `string` | The initial value of the combobox's input when rendered.
 Use when you don't need to control the value of the combobox's input. |
@@ -22258,7 +22694,7 @@ Use when you don't need to control the value of the combobox's selected items. |
 | openOnClick | false | `boolean` | Whether to open the combobox popup on initial click on the input |
 | openOnKeyPress | true | `boolean` | Whether to open the combobox on arrow key press |
 | positioning | { placement: "bottom-start" } | `PositioningOptions` | The positioning options to dynamically position the menu |
-| selectionBehavior | "replace" | `'replace' \| 'clear' \| 'preserve'` | The behavior of the combobox input when an item is selected
+| selectionBehavior | "replace" | `'clear' \| 'replace' \| 'preserve'` | The behavior of the combobox input when an item is selected
 
 - `replace`: The selected item string is set as the input value
 - `clear`: The input value is cleared
@@ -22329,7 +22765,7 @@ but the user can still interact with it |
 Explore the `Combobox` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="combobox-explorer" />
+<Explorer name="combobox-explorer-demo" />
 
 # Container
 
@@ -23217,6 +23653,168 @@ export const DialogNested = () => {
 
 ```
 
+### Open From Popover
+
+Dialogs can be triggered from within a popover. The dialog will appear above the
+popover thanks to the unified z-index system.
+
+```tsx
+"use client"
+
+import {
+  Button,
+  CloseButton,
+  Dialog,
+  Popover,
+  Portal,
+  Text,
+} from "@chakra-ui/react"
+
+export const DialogOpenFromPopover = () => {
+  return (
+    <Popover.Root>
+      <Popover.Trigger asChild>
+        <Button variant="outline">Open Popover</Button>
+      </Popover.Trigger>
+      <Portal>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Arrow />
+            <Popover.Body>
+              <Popover.Title fontWeight="medium">Popover Title</Popover.Title>
+              <Text my="4">
+                This popover contains a button that opens a dialog. The dialog
+                should appear above the popover.
+              </Text>
+              <PopoverDialog />
+            </Popover.Body>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Portal>
+    </Popover.Root>
+  )
+}
+
+function PopoverDialog() {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Button size="sm" variant="solid" colorPalette="blue">
+          Open Dialog
+        </Button>
+      </Dialog.Trigger>
+      <Portal>
+        <Dialog.Backdrop />
+        <Dialog.Positioner>
+          <Dialog.Content>
+            <Dialog.CloseTrigger asChild>
+              <CloseButton />
+            </Dialog.CloseTrigger>
+            <Dialog.Header>
+              <Dialog.Title>Dialog from Popover</Dialog.Title>
+            </Dialog.Header>
+            <Dialog.Body>
+              <Text>
+                This dialog was opened from within a popover. It should appear
+                above the popover thanks to the unified z-index system.
+              </Text>
+            </Dialog.Body>
+            <Dialog.Footer>
+              <Dialog.ActionTrigger asChild>
+                <Button variant="outline">Cancel</Button>
+              </Dialog.ActionTrigger>
+              <Button colorPalette="blue">Save</Button>
+            </Dialog.Footer>
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
+  )
+}
+
+```
+
+### Open From Menu
+
+Use a controlled dialog to open it from a menu item action, like a delete
+confirmation.
+
+```tsx
+"use client"
+
+import {
+  Button,
+  CloseButton,
+  Dialog,
+  Menu,
+  Portal,
+  Text,
+} from "@chakra-ui/react"
+import { useState } from "react"
+import { LuChevronDown } from "react-icons/lu"
+
+export const DialogOpenFromMenu = () => {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <Menu.Root>
+        <Menu.Trigger asChild>
+          <Button variant="outline">
+            Actions <LuChevronDown />
+          </Button>
+        </Menu.Trigger>
+        <Portal>
+          <Menu.Positioner>
+            <Menu.Content>
+              <Menu.Item value="edit">Edit</Menu.Item>
+              <Menu.Item value="duplicate">Duplicate</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item value="delete" onClick={() => setOpen(true)}>
+                Delete...
+              </Menu.Item>
+            </Menu.Content>
+          </Menu.Positioner>
+        </Portal>
+      </Menu.Root>
+
+      <Dialog.Root
+        role="alertdialog"
+        open={open}
+        size="sm"
+        onOpenChange={(e) => setOpen(e.open)}
+      >
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.CloseTrigger asChild>
+                <CloseButton />
+              </Dialog.CloseTrigger>
+              <Dialog.Header>
+                <Dialog.Title>Confirm Delete</Dialog.Title>
+              </Dialog.Header>
+              <Dialog.Body>
+                <Text>
+                  Are you sure you want to delete this item? This action cannot
+                  be undone.
+                </Text>
+              </Dialog.Body>
+              <Dialog.Footer>
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+                <Button colorPalette="red">Delete</Button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </>
+  )
+}
+
+```
+
 ### Initial Focus
 
 Use the `initialFocusEl` prop to set the initial focus of the dialog component.
@@ -23625,7 +24223,6 @@ Use when you don't need to control the open state of the dialog. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | trapFocus | true | `boolean` | Whether to trap focus inside the dialog when it's opened |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
-| colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | placement | top | `'center' \| 'top' \| 'bottom'` | The placement of the component |
 | scrollBehavior | outside | `'inside' \| 'outside'` | The scrollBehavior of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'cover' \| 'full'` | The size of the component |
@@ -23645,6 +24242,7 @@ Use when you don't need to control the open state of the dialog. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function to call when the dialog's open state changes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | open | undefined | `boolean` | The controlled open state of the dialog |
 | persistentElements | undefined | `(() => Element \| null)[]` | Returns the persistent elements that:
 - should not have pointer-events disabled
@@ -24478,6 +25076,7 @@ Use when you don't need to control the open state of the dialog. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function to call when the dialog's open state changes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | open | undefined | `boolean` | The controlled open state of the dialog |
 | persistentElements | undefined | `(() => Element \| null)[]` | Returns the persistent elements that:
 - should not have pointer-events disabled
@@ -24719,7 +25318,7 @@ Use when you don't need to control the value of the editable. |
 Explore the `Editable` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="editable-explorer" />
+<Explorer name="editable-explorer-demo" />
 
 # Em
 
@@ -25259,6 +25858,94 @@ command:
 npx @chakra-ui/cli snippet add field
 ```
 
+## Customization
+
+### Customizing slots
+
+The Field component has multiple slots that can be customized. Use the
+[Explorer](#explorer) below to see all available slots.
+
+```tsx title="theme.ts"
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react"
+import { fieldSlotRecipe } from "@chakra-ui/react/recipes"
+
+const customFieldRecipe = fieldSlotRecipe.extend({
+  base: {
+    label: {
+      color: "blue.600",
+      fontWeight: "bold",
+    },
+    errorText: {
+      bg: "red.50",
+      p: "2",
+      borderRadius: "md",
+    },
+    helperText: {
+      fontStyle: "italic",
+    },
+    requiredIndicator: {
+      color: "orange.500",
+    },
+  },
+})
+
+const config = defineConfig({
+  theme: {
+    slotRecipes: {
+      field: customFieldRecipe,
+    },
+  },
+})
+
+export const system = createSystem(defaultConfig, config)
+```
+
+### Adding new variants
+
+Extend the Field recipe to add new layout or style variants:
+
+```tsx title="theme.ts"
+const customFieldRecipe = fieldSlotRecipe.extend({
+  variants: {
+    variant: {
+      // Add a new style variant
+      outlined: {
+        root: {
+          border: "1px solid",
+          borderColor: "border",
+          borderRadius: "md",
+          p: "3",
+        },
+        label: {
+          bg: "bg",
+          px: "2",
+          position: "absolute",
+          top: "-2",
+          left: "3",
+        },
+      },
+    },
+    size: {
+      // Add a new size variant
+      lg: {
+        root: {
+          gap: "3",
+        },
+        label: {
+          textStyle: "md",
+        },
+      },
+    },
+  },
+})
+```
+
+After customizing, run the typegen command:
+
+```bash
+npx @chakra-ui/cli typegen ./theme.ts
+```
+
 ## Props
 
 ### Root
@@ -25282,7 +25969,7 @@ npx @chakra-ui/cli snippet add field
 Explore the `Field` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="field-explorer" />
+<Explorer name="field-explorer-demo" />
 
 # Fieldset
 
@@ -25480,7 +26167,7 @@ export const FieldsetWithInvalid = () => {
 Explore the `Fieldset` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="fieldset-explorer" />
+<Explorer name="fieldset-explorer-demo" />
 
 # File Upload
 
@@ -26045,7 +26732,7 @@ Use when you don't need to control the accepted files of the input. |
 Explore the `File Upload` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="file-upload-explorer" />
+<Explorer name="file-upload-explorer-demo" />
 
 # Flex
 
@@ -26671,7 +27358,8 @@ export const FormatByteWithUnitDisplay = () => {
 | --- | --- | --- | --- |
 | value | undefined | `number` | The byte size to format |
 | unit | undefined | `'bit' \| 'byte'` | The unit granularity to display |
-| unitDisplay | undefined | `'long' \| 'short' \| 'narrow'` | The unit display |
+| unitDisplay | undefined | `'short' \| 'long' \| 'narrow'` | The unit display |
+| unitSystem | undefined | `'decimal' \| 'binary'` | The unit system to use for formatting |
 
 
 # Format Number
@@ -27200,16 +27888,26 @@ export const HeadingWithComposition = () => {
 
 ## Customization
 
+:::info
+
+After customizing the recipe, run the CLI typegen command to regenerate the
+types.
+
+```bash
+npx @chakra-ui/cli typegen
+```
+
+:::
+
 To override the `fontSize`, we recommend using the `textStyle` prop since it
 considers the line height and letter spacing as well.
 
-### Base style
+### Changing default styles
 
 Here's an example of customizing the `Heading` component.
 
-```tsx title="provider.tsx"
-import { createSystem, defineRecipe } from "@chakra-ui/react"
-import { defaultConfig } from "@chakra-ui/react"
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react"
 
 const headingRecipe = defineRecipe({
   base: {
@@ -27225,13 +27923,30 @@ const system = createSystem(defaultConfig, {
 })
 ```
 
-### Custom Size
+### Changing heading font globally
+
+To change the default heading font, set the `fonts.heading` token in your theme.
+
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig } from "@chakra-ui/react"
+
+const system = createSystem(defaultConfig, {
+  theme: {
+    tokens: {
+      fonts: {
+        heading: { value: "Playfair Display, serif" },
+      },
+    },
+  },
+})
+```
+
+### Adding a new size
 
 Update the `variants.size` property to create a custom size.
 
-```tsx title="provider.tsx"
-import { createSystem, defineRecipe } from "@chakra-ui/react"
-import { defaultConfig } from "@chakra-ui/react"
+```tsx title="components/ui/provider.tsx"
+import { createSystem, defaultConfig, defineRecipe } from "@chakra-ui/react"
 
 const headingRecipe = defineRecipe({
   variants: {
@@ -27429,6 +28144,7 @@ export const HighlightWithSquiggle = () => {
 | matchAll | undefined | `boolean` | Whether to match multiple instances of the query |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| exactMatch | undefined | `boolean` | Whether to match whole words only |
 
 
 # Hover Card
@@ -27663,7 +28379,7 @@ export const HoverCardWithDisabled = () => {
 
 ```
 
-### Within Dialog
+### Open From Dialog
 
 To use the `HoverCard` within a `Dialog`, you need to avoid portalling the
 `HoverCard.Positioner` to the document's body.
@@ -27692,7 +28408,7 @@ avoid placing crucial content within it.
 | --- | --- | --- | --- |
 | closeDelay | 300 | `number` | The duration from when the mouse leaves the trigger or content until the hover card closes. |
 | lazyMount | false | `boolean` | Whether to enable lazy mounting |
-| openDelay | 700 | `number` | The duration from when the mouse enters the trigger until the hover card opens. |
+| openDelay | 600 | `number` | The duration from when the mouse enters the trigger until the hover card opens. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
 | colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
@@ -27702,6 +28418,7 @@ avoid placing crucial content within it.
 | unstyled | undefined | `boolean` | Whether to remove the component's style. |
 | defaultOpen | undefined | `boolean` | The initial open state of the hover card when rendered.
 Use when you don't need to control the open state of the hover card. |
+| disabled | undefined | `boolean` | Whether the hover card is disabled |
 | id | undefined | `string` | The unique identifier of the machine. |
 | ids | undefined | `Partial<{ trigger: string; content: string; positioner: string; arrow: string }>` | The ids of the elements in the popover. Useful for composition. |
 | immediate | undefined | `boolean` | Whether to synchronize the present change immediately or defer it to the next frame |
@@ -27720,7 +28437,7 @@ Use when you don't need to control the open state of the hover card. |
 Explore the `Hover Card` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="hover-card-explorer" />
+<Explorer name="hover-card-explorer-demo" />
 
 # Icon Button
 
@@ -28095,11 +28812,16 @@ export const ImageWithHtmlHeight = () => {
 Use the `asChild` prop to render the image as a child of the `Image` component.
 
 ```jsx
-import NextImage from "next/image"
+import { Image } from "@chakra-ui/react";
+import NextImage from "next/image";
 
-;<Image asChild>
-  <NextImage src="..." alt="..." />
-</Image>
+const Demo = () => {
+  return (
+    <Image asChild>
+      <NextImage src="..." alt="..." />
+    </Image>
+  );
+};
 ```
 
 ## Props
@@ -29103,6 +29825,8 @@ export const LinkWithExternal = () => {
 
 ```
 
+## Guides
+
 ### Routing Library
 
 Use the `asChild` prop to compose `Link` with framework links like (Next.js)
@@ -29115,6 +29839,46 @@ const Demo = () => {
   return (
     <ChakraLink asChild>
       <NextLink href="/about">Click here</NextLink>
+    </ChakraLink>
+  )
+}
+```
+
+### Styling Active Links
+
+Use the `_currentPage` condition to style active links when using
+`aria-current="page"`.
+
+```jsx
+<Link
+  href="/home"
+  aria-current="page"
+  _currentPage={{ color: "blue.500", fontWeight: "bold" }}
+>
+  Home
+</Link>
+```
+
+With routing libraries, set `aria-current` based on the current route:
+
+```jsx
+import { Link as ChakraLink } from "@chakra-ui/react"
+import NextLink from "next/link"
+import { usePathname } from "next/navigation"
+
+const NavLink = ({ href, children }) => {
+  const pathname = usePathname()
+  const isActive = pathname === href
+
+  return (
+    <ChakraLink asChild>
+      <NextLink
+        href={href}
+        aria-current={isActive ? "page" : undefined}
+        _currentPage={{ color: "blue.500", fontWeight: "bold" }}
+      >
+        {children}
+      </NextLink>
     </ChakraLink>
   )
 }
@@ -29350,6 +30114,9 @@ import { Listbox } from "@chakra-ui/react"
   </Listbox.Content>
 </Listbox.Root>
 ```
+
+To setup the listbox, use `useListCollection` to manage the
+[list collection](https://ark-ui.com/docs/collections/list-collection).
 
 ## Examples
 
@@ -30230,6 +30997,7 @@ export const ListboxWithDialog = () => {
                     outline="0"
                     width="full"
                     onChange={(e) => filter(e.currentTarget.value)}
+                    autoHighlight
                   />
                 </Dialog.Header>
 
@@ -31116,6 +31884,15 @@ Use when you don't need to control the highlighted value of the listbox. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
 
+### Input
+
+| Prop | Default | Type | Description |
+| --- | --- | --- | --- |
+| autoHighlight | false | `boolean` | Whether to automatically highlight the item when typing |
+| as | undefined | `React.ElementType` | The underlying element to render. |
+| asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+
+
 ### Content
 
 | Prop | Default | Type | Description |
@@ -31171,7 +31948,7 @@ Use when you don't need to control the highlighted value of the listbox. |
 Explore the `Listbox` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="listbox-explorer" />
+<Explorer name="listbox-explorer-demo" />
 
 # Locale Provider
 
@@ -31263,6 +32040,778 @@ Use the `variant` prop to change the color of the mark.
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | variant | undefined | `'subtle' \| 'solid' \| 'text' \| 'plain'` | The variant of the component |
 
+
+# Marquee
+
+```tsx
+"use client"
+
+import { Marquee } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueeAutoFill = () => (
+  <Marquee.Root autoFill spacing="2rem">
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {items.map((item, i) => (
+          <Marquee.Item key={i} px="2rem">
+            {item.icon && (
+              <item.icon
+                size="3rem"
+                aria-label={item.label}
+                color={item.color}
+              />
+            )}
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+  </Marquee.Root>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+## Usage
+
+```js
+import { Marquee } from "@chakra-ui/react"
+```
+
+```jsx
+<Marquee.Root>
+  <Marquee.Viewport>
+    <Marquee.Content>
+      <Marquee.Item />
+    </Marquee.Content>
+  </Marquee.Viewport>
+</Marquee.Root>
+```
+
+## Examples
+
+### Reversed
+
+Use the reverse prop on the `Marquee.Root` component to reverse the direction of
+the marquee.
+
+```tsx
+"use client"
+import { Marquee } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueeReverseDirection = () => (
+  <Marquee.Root reverse>
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {items.map((item, i) => (
+          <Marquee.Item key={i} px="2rem">
+            {item.icon && (
+              <item.icon
+                size="3rem"
+                aria-label={item.label}
+                color={item.color}
+              />
+            )}
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+  </Marquee.Root>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Vertical Animation
+
+To animate content along the Y axis, use the `side` prop and set it to `bottom`.
+
+```tsx
+"use client"
+import { Marquee } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueeVerticalAnimation = () => (
+  <Marquee.Root side="bottom" height="300px" spacing="2rem">
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {items.map((item, i) => (
+          <Marquee.Item key={i} px="2rem">
+            {item.icon && (
+              <item.icon
+                size="3rem"
+                aria-label={item.label}
+                color={item.color}
+              />
+            )}
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+  </Marquee.Root>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Speed
+
+Use the `speed` prop to control the animation speed in pixels per second.
+
+```tsx
+"use client"
+
+import { For, Marquee, Span, Stack } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+const speeds = [
+  { value: 25, label: "Slow (25px/s)" },
+  { value: 50, label: "Normal (50px/s)" },
+  { value: 100, label: "Fast (100px/s)" },
+]
+
+export const MarqueeWithSpeed = () => (
+  <Stack gap="12">
+    <For each={speeds}>
+      {(speed) => (
+        <Stack key={speed.value} gap="4">
+          <Span fontWeight="medium" textStyle="sm">
+            {speed.label}
+          </Span>
+          <Marquee.Root speed={speed.value}>
+            <Marquee.Viewport>
+              <Marquee.Content>
+                {items.map((item, i) => (
+                  <Marquee.Item key={i} px="2rem">
+                    {item.icon && (
+                      <item.icon
+                        size="3rem"
+                        aria-label={item.label}
+                        color={item.color}
+                      />
+                    )}
+                  </Marquee.Item>
+                ))}
+              </Marquee.Content>
+            </Marquee.Viewport>
+          </Marquee.Root>
+        </Stack>
+      )}
+    </For>
+  </Stack>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Pause On Interaction
+
+Use the `pauseOnInteraction` prop to pause the animation when the user hovers or
+focuses the marquee.
+
+```tsx
+"use client"
+import { Marquee } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueePauseInteractions = () => (
+  <Marquee.Root pauseOnInteraction>
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {items.map((item, i) => (
+          <Marquee.Item key={i} px="2rem">
+            {item.icon && (
+              <item.icon
+                size="3rem"
+                aria-label={item.label}
+                color={item.color}
+              />
+            )}
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+  </Marquee.Root>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Store
+
+Use the `Marquee.RootProvider` and `useMarquee` hook to provide the marquee
+instance to the component and control the animation state programmatically.
+
+```tsx
+"use client"
+
+import {
+  Button,
+  ButtonGroup,
+  Marquee,
+  Stack,
+  useMarquee,
+} from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+import { LuPause, LuPlay } from "react-icons/lu"
+
+export const MarqueeWithStore = () => {
+  const marquee = useMarquee()
+
+  return (
+    <Stack gap="8">
+      <Marquee.RootProvider value={marquee}>
+        <Marquee.Viewport>
+          <Marquee.Content>
+            {items.map((item, i) => (
+              <Marquee.Item key={i} px="2rem">
+                {item.icon && (
+                  <item.icon
+                    size="3rem"
+                    aria-label={item.label}
+                    color={item.color}
+                  />
+                )}
+              </Marquee.Item>
+            ))}
+          </Marquee.Content>
+        </Marquee.Viewport>
+      </Marquee.RootProvider>
+
+      <ButtonGroup size="sm" variant="outline">
+        <Button hidden={marquee.paused} onClick={() => marquee.pause()}>
+          <LuPause /> Pause
+        </Button>
+        <Button hidden={!marquee.paused} onClick={() => marquee.resume()}>
+          <LuPlay />
+          Resume
+        </Button>
+      </ButtonGroup>
+    </Stack>
+  )
+}
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Finite Loops
+
+To loop the marquee a finite number of times, set the `loopCount` prop on
+`Marquee.Root`. Alternatively, use the `onLoopComplete` and `onComplete`
+callbacks to track the number of completed loops or when the animation fully
+finishes.
+
+```tsx
+<Marquee.Root
+  loopCount={3}
+  onLoopComplete={() => {
+    /* handle loop completion */
+  }}
+  onComplete={() => {
+    /* handle animation end */
+  }}
+>
+  {/* Marquee.Item elements */}
+</Marquee.Root>
+```
+
+```tsx
+"use client"
+
+import { Marquee, Stack } from "@chakra-ui/react"
+import { useState } from "react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueeFiniteLoop = () => {
+  const [loopCount, setLoopCount] = useState(0)
+  const [completedCount, setCompletedCount] = useState(0)
+
+  return (
+    <>
+      <Marquee.Root
+        loopCount={3}
+        onLoopComplete={() => setLoopCount((prev) => prev + 1)}
+        onComplete={() => setCompletedCount((prev) => prev + 1)}
+      >
+        <Marquee.Viewport>
+          <Marquee.Content>
+            {items.map((item, i) => (
+              <Marquee.Item key={i} px="2rem">
+                {item.icon && (
+                  <item.icon
+                    size="3rem"
+                    aria-label={item.label}
+                    color={item.color}
+                  />
+                )}
+              </Marquee.Item>
+            ))}
+          </Marquee.Content>
+        </Marquee.Viewport>
+      </Marquee.Root>
+
+      <Stack m="4" textStyle="sm">
+        <p>Loop completed: {loopCount} times</p>
+        <p>Animation completed: {completedCount} times</p>
+      </Stack>
+    </>
+  )
+}
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Edge Gradient
+
+Render the `Marquee.Edge` component to apply an edge fade.
+
+```tsx
+"use client"
+import { Marquee } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+
+export const MarqueeEdgeGradient = () => (
+  <Marquee.Root>
+    <Marquee.Edge side="start" />
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {items.map((item, i) => (
+          <Marquee.Item key={i} px="2rem">
+            {item.icon && (
+              <item.icon
+                size="3rem"
+                aria-label={item.label}
+                color={item.color}
+              />
+            )}
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+    <Marquee.Edge side="end" />
+  </Marquee.Root>
+)
+
+const items = [
+  { icon: IoLogoFigma, label: "Figma", color: "#F24E1E" },
+  { icon: IoLogoTwitter, label: "Twitter", color: "#1da1f2" },
+  { icon: IoLogoLinkedin, label: "LinkedIn", color: "#0077b5" },
+  { icon: IoLogoGitlab, label: "GitLab", color: "#fc6d26" },
+  { icon: IoLogoVimeo, label: "Vimeo", color: "#1ab7ea" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#f7df1e" },
+]
+
+```
+
+### Multiple
+
+Here's an example of how to render alternating marquee components.
+
+```tsx
+"use client"
+
+import { Marquee, Stack } from "@chakra-ui/react"
+import {
+  IoLogoFigma,
+  IoLogoGitlab,
+  IoLogoJavascript,
+  IoLogoLinkedin,
+  IoLogoTwitter,
+  IoLogoVimeo,
+} from "react-icons/io5"
+import type { IconType } from "react-icons/lib"
+
+interface Item {
+  icon: IconType
+  color: string
+}
+
+const items: Item[] = [
+  { icon: IoLogoFigma, color: "#F24E1E" },
+  { icon: IoLogoTwitter, color: "#1da1f2" },
+  { icon: IoLogoLinkedin, color: "#0077b5" },
+  { icon: IoLogoGitlab, color: "#fc6d26" },
+  { icon: IoLogoVimeo, color: "#1ab7ea" },
+  { icon: IoLogoJavascript, color: "#f7df1e" },
+]
+
+export const MarqueeMultiple = () => {
+  return (
+    <Stack gap="8" py="8">
+      <MarqueeRow items={items} />
+      <MarqueeRow items={items} reverse />
+    </Stack>
+  )
+}
+
+interface MarqueeRowProps {
+  items: Item[]
+  reverse?: boolean
+}
+
+const MarqueeRow = (props: MarqueeRowProps) => {
+  const { items, reverse = false } = props
+  return (
+    <Marquee.Root reverse={reverse} autoFill>
+      <Marquee.Viewport>
+        <Marquee.Content>
+          {items.map((item, i) => (
+            <Marquee.Item key={i} px="2rem">
+              <item.icon size="3rem" color={item.color} />
+            </Marquee.Item>
+          ))}
+        </Marquee.Content>
+      </Marquee.Viewport>
+    </Marquee.Root>
+  )
+}
+
+```
+
+### Diagonal
+
+Here's an example of how to animate content diagonally using the marquee
+component.
+
+```tsx
+import { Circle, HStack, Marquee } from "@chakra-ui/react"
+
+export const MarqueeDiagonal = () => {
+  return (
+    <Marquee.Root
+      position="relative"
+      top="25%"
+      overflow="hidden"
+      transform="rotate(-2deg)"
+      bg="bg.emphasized"
+      py="4"
+    >
+      <Marquee.Viewport>
+        <Marquee.Content>
+          {[...Array(10)].map((_, i) => (
+            <Marquee.Item key={i} pr="4">
+              <HStack gap="8" textStyle="3xl" fontWeight="medium">
+                Chakra Conf 2026
+                <Circle size="1.5" bg="colorPalette.solid" />
+              </HStack>
+            </Marquee.Item>
+          ))}
+        </Marquee.Content>
+      </Marquee.Viewport>
+    </Marquee.Root>
+  )
+}
+
+```
+
+### News Ticker
+
+Here's an example of how to implement a news ticker with the marquee component.
+
+```tsx
+"use client"
+
+import { Box, Circle, Flex, HStack, Marquee } from "@chakra-ui/react"
+
+const newsItems = [
+  "Bitcoin hits all-time high",
+  "New React version released",
+  "SpaceX successfully lands rocket",
+  "Global markets rally today",
+  "AI regulation talks begin in EU",
+]
+
+export const MarqueeNewsTicker = () => {
+  return (
+    <Flex align="center" bg="bg.muted">
+      <Box
+        bg="teal.solid"
+        color="teal.contrast"
+        px="4"
+        py="2"
+        whiteSpace="nowrap"
+        textStyle="sm"
+        fontWeight="medium"
+      >
+        LATEST NEWS
+      </Box>
+
+      <Marquee.Root css={{ "--marquee-duration": "40s" }}>
+        <Marquee.Viewport>
+          <Marquee.Content textStyle="sm">
+            {newsItems.map((item, i) => (
+              <Marquee.Item key={i} pr="4">
+                <HStack
+                  align="center"
+                  gap="8"
+                  fontWeight="medium"
+                  textTransform="uppercase"
+                >
+                  {item}
+                  <Circle size="1" bg="colorPalette.solid" />
+                </HStack>
+              </Marquee.Item>
+            ))}
+          </Marquee.Content>
+        </Marquee.Viewport>
+      </Marquee.Root>
+    </Flex>
+  )
+}
+
+```
+
+### Testimonials
+
+You can display testimonials with the marquee component.
+
+```tsx
+"use client"
+
+import { Avatar, Box, Card, HStack, Marquee, Stack } from "@chakra-ui/react"
+import { IoStar } from "react-icons/io5"
+
+export const MarqueeWithTestimonials = () => (
+  <Marquee.Root pauseOnInteraction py="10">
+    <Marquee.Edge side="start" />
+    <Marquee.Viewport>
+      <Marquee.Content>
+        {testimonials.map((item, i) => (
+          <Marquee.Item key={i} px="1rem">
+            <TestimonialCard item={item} />
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
+    </Marquee.Viewport>
+    <Marquee.Edge side="end" />
+  </Marquee.Root>
+)
+
+const TestimonialCard = ({ item }: { item: Testimonial }) => {
+  return (
+    <Card.Root maxW="sm" h="full">
+      <Card.Body>
+        <Stack gap="3">
+          <HStack gap="1">
+            {[...Array(5)].map((_, i) => (
+              <Box as={IoStar} key={i} color="orange.solid" />
+            ))}
+          </HStack>
+
+          <Card.Description color="fg.muted" textStyle="md" minH="16">
+            "{item.content}"
+          </Card.Description>
+
+          <HStack gap="3" mt="1">
+            <Avatar.Root size="sm">
+              <Avatar.Image src={item.avatar} />
+              <Avatar.Fallback name={item.name} />
+            </Avatar.Root>
+            <Box textStyle="sm">
+              <Box fontWeight="medium" color="fg">
+                {item.name}
+              </Box>
+              <Box color="fg.muted">{item.role}</Box>
+            </Box>
+          </HStack>
+        </Stack>
+      </Card.Body>
+    </Card.Root>
+  )
+}
+
+interface Testimonial {
+  name: string
+  role: string
+  rating: number
+  avatar: string
+  content: string
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Sarah Chen",
+    role: "Product Designer",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+    content:
+      "This library saved me weeks of work. The components are accessible and easy to customize.",
+  },
+  {
+    name: "Michael Torres",
+    role: "Frontend Dev",
+    rating: 4,
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+    content:
+      "The animations are buttery smooth. I love how easy it is to implement the marquee.",
+  },
+  {
+    name: "Emily Wang",
+    role: "CTO",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?u=a04258114e29026302d",
+    content:
+      "Scalable, reliable, and beautiful. Highly recommended for any modern web project.",
+  },
+  {
+    name: "David Smith",
+    role: "Marketing Lead",
+    rating: 5,
+    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+    content:
+      "Our conversion rates increased by 15% after switching to this UI system.",
+  },
+  {
+    name: "Jessica Lee",
+    role: "Indie Hacker",
+    rating: 4,
+    avatar: "https://i.pravatar.cc/150?u=a04258a2462d826712d",
+    content:
+      "Documentation is top-notch. I was able to build my MVP in a single weekend.",
+  },
+]
+
+```
+
+## Props
+
+| Prop | Default | Type | Description |
+| --- | --- | --- | --- |
+| autoFill | false | `boolean` | Whether to automatically duplicate content to fill the container. |
+| defaultPaused | false | `boolean` | Whether the marquee is paused by default. |
+| delay | 0 | `number` | The delay before the animation starts (in seconds). |
+| loopCount | 0 | `number` | The number of times to loop the animation (0 = infinite). |
+| pauseOnInteraction | false | `boolean` | Whether to pause the marquee on user interaction (hover, focus). |
+| reverse | false | `boolean` | Whether to reverse the animation direction. |
+| side | "start" | `Side` | The side/direction the marquee scrolls towards. |
+| spacing | "1rem" | `string` | The spacing between marquee items. |
+| speed | 50 | `number` | The speed of the marquee animation in pixels per second. |
+| as | undefined | `React.ElementType` | The underlying element to render. |
+| asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| unstyled | undefined | `boolean` | Whether to remove the component's style. |
+| ids | undefined | `Partial<{ root: string; viewport: string; content: (index: number) => string }>` | The ids of the elements in the marquee. Useful for composition. |
+| onComplete | undefined | `() => void` | Function called when the marquee completes all loops and stops.
+Only fires for finite loops (loopCount > 0). |
+| onLoopComplete | undefined | `() => void` | Function called when the marquee completes one loop iteration. |
+| onPauseChange | undefined | `(details: PauseStatusDetails) => void` | Function called when the pause status changes. |
+| paused | undefined | `boolean` | Whether the marquee is paused. |
+| translations | undefined | `IntlTranslations` | The localized messages to use. |
+
+
+---
 
 # Menu
 
@@ -32035,7 +33584,7 @@ export const MenuWithHideWhenDetached = () => {
 
 ```
 
-### Within Dialog
+### Open From Dialog
 
 To use the `Menu` within a `Dialog`, you need to avoid portalling the
 `Menu.Positioner` to the document's body.
@@ -32069,7 +33618,7 @@ If you have set `scrollBehavior="inside"` on the `Dialog`, you need to:
 import { Button, Dialog, Menu, Portal } from "@chakra-ui/react"
 import Lorem from "react-lorem-ipsum"
 
-export const MenuWithinDialog = () => {
+export const MenuOpenFromDialog = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -32118,6 +33667,29 @@ const DialogMenu = () => {
 
 ```
 
+## Guide
+
+### Styling highlighted items
+
+Use the `_highlighted` prop to style menu items when they are hovered or focused
+with keyboard navigation.
+
+```tsx
+<Menu.Item _highlighted={{ bg: "blue.500", color: "white" }}>
+  Custom highlighted item
+</Menu.Item>
+```
+
+### Styling open state
+
+Use the `_open` prop to style the menu trigger when the menu is open.
+
+```tsx
+<Menu.Trigger asChild>
+  <Button _open={{ bg: "blue.500", color: "white" }}>Menu</Button>
+</Menu.Trigger>
+```
+
 ## Props
 
 ### Root
@@ -32131,7 +33703,6 @@ const DialogMenu = () => {
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | typeahead | true | `boolean` | Whether the pressing printable characters should trigger typeahead navigation |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
-| colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | variant | subtle | `'subtle' \| 'solid'` | The variant of the component |
 | size | md | `'sm' \| 'md'` | The size of the component |
 | as | undefined | `React.ElementType` | The underlying element to render. |
@@ -32155,6 +33726,7 @@ Use when you don't need to control the open state of the menu. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function called when the menu opens or closes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | onSelect | undefined | `(details: SelectionDetails) => void` | Function called when a menu item is selected. |
 | open | undefined | `boolean` | The controlled open state of the menu |
 | positioning | undefined | `PositioningOptions` | The options used to dynamically position the menu |
@@ -32180,7 +33752,7 @@ If not provided, the text content of the menu item will be used. |
 Explore the `Menu` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="menu-explorer" />
+<Explorer name="menu-explorer-demo" />
 
 # Select (Native)
 
@@ -32481,7 +34053,7 @@ npx @chakra-ui/cli snippet add native-select
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
 | colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
-| variant | outline | `'outline' \| 'subtle' \| 'plain'` | The variant of the component |
+| variant | outline | `'outline' \| 'subtle' \| 'plain' \| 'ghost'` | The variant of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | The size of the component |
 | disabled | undefined | `boolean \| undefined` | undefined |
 | invalid | undefined | `boolean \| undefined` | undefined |
@@ -33043,7 +34615,7 @@ Use when you don't need to control the value of the input. |
 Explore the `NumberInput` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="number-input-explorer" />
+<Explorer name="number-input-explorer-demo" />
 
 # Overlay Manager
 
@@ -34065,6 +35637,8 @@ Use when you don't need to control the page size of the pagination. |
 | type | "button" | `'button' \| 'link'` | The type of the trigger element |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | count | undefined | `number` | Total number of data items |
+| getPageUrl | undefined | `(details: PageUrlDetails) => string` | Function to generate href attributes for pagination links.
+Only used when `type` is set to "link". |
 | ids | undefined | `Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  prevTrigger: string\n  nextTrigger: string\n  item: (page: number) => string\n}>` | The ids of the elements in the accordion. Useful for composition. |
 | onPageChange | undefined | `(details: PageChangeDetails) => void` | Called when the page number is changed |
 | onPageSizeChange | undefined | `(details: PageSizeChangeDetails) => void` | Called when the page size is changed |
@@ -34668,7 +36242,7 @@ Here's how to setup the Pin input for a closed component composition.
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
 | placeholder | "○" | `string` | The placeholder text for the input |
-| type | "numeric" | `'numeric' \| 'alphabetic' \| 'alphanumeric'` | The type of value the pin-input should allow |
+| type | "numeric" | `'numeric' \| 'alphanumeric' \| 'alphabetic'` | The type of value the pin-input should allow |
 | colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | size | md | `'2xs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | The size of the component |
 | variant | outline | `'outline' \| 'subtle' \| 'flushed'` | The variant of the component |
@@ -34707,7 +36281,7 @@ use `autocomplete="one-time-code"`. |
 Explore the `Pin Input` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="pin-input-explorer" />
+<Explorer name="pin-input-explorer-demo" />
 
 # Popover
 
@@ -35203,7 +36777,7 @@ export const PopoverWithCustomBg = () => {
 
 ```
 
-### Within Dialog
+### Open From Dialog
 
 To use the `Popover` within a `Dialog`, you need to avoid portalling the
 `Popover.Positioner` to the document's body.
@@ -35243,7 +36817,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 
-export const PopoverInDialog = () => {
+export const PopoverOpenFromDialog = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -35296,6 +36870,95 @@ function DialogPopover() {
 
 ```
 
+## Guide
+
+### Accessing popover context
+
+Use `usePopoverContext` to access the popover's state and methods from any
+component inside the popover.
+
+```tsx
+import { usePopoverContext } from "@chakra-ui/react"
+
+const PopoverStatus = () => {
+  const popover = usePopoverContext()
+
+  return <div>Popover is {popover.open ? "open" : "closed"}</div>
+}
+
+const MyPopover = () => (
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Content>
+        <PopoverStatus />
+      </Popover.Content>
+    </Popover.Positioner>
+  </Popover.Root>
+)
+```
+
+### Closing programmatically
+
+Use `setOpen(false)` from the context to close the popover programmatically.
+
+```tsx
+import { usePopoverContext } from "@chakra-ui/react"
+
+const CloseButton = () => {
+  const popover = usePopoverContext()
+
+  return <Button onClick={() => popover.setOpen(false)}>Close Popover</Button>
+}
+
+const MyPopover = () => (
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Content>
+        <CloseButton />
+      </Popover.Content>
+    </Popover.Positioner>
+  </Popover.Root>
+)
+```
+
+### Positioning based on ref
+
+Use `positioning.getAnchorRect()` to position the popover based on a custom
+element ref.
+
+```tsx
+import { useRef } from "react"
+
+const MyPopover = () => {
+  const anchorRef = useRef<HTMLDivElement>(null)
+
+  return (
+    <>
+      <div ref={anchorRef}>Anchor Element</div>
+
+      <Popover.Root
+        positioning={{
+          getAnchorRect() {
+            return anchorRef.current?.getBoundingClientRect()
+          },
+        }}
+      >
+        <Popover.Trigger>Open</Popover.Trigger>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Body>
+              This popover is anchored to the div above
+            </Popover.Body>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Popover.Root>
+    </>
+  )
+}
+```
+
 ## Props
 
 ### Root
@@ -35316,7 +36979,6 @@ content within the popover when opened. |
 of the popover content. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
-| colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg'` | The size of the component |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
@@ -35333,6 +36995,7 @@ Use when you don't need to control the open state of the popover. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function invoked when the popover opens or closes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | open | undefined | `boolean` | The controlled open state of the popover |
 | persistentElements | undefined | `(() => Element \| null)[]` | Returns the persistent elements that:
 - should not have pointer-events disabled
@@ -35346,7 +37009,7 @@ Use when you don't need to control the open state of the popover. |
 Explore the `Popover` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="popover-basic-explorer" />
+<Explorer name="popover-explorer-demo" />
 
 # Portal
 
@@ -35952,6 +37615,16 @@ Here's how to create a closed component using the `ProgressCircle` component.
 
 <ExampleCode name="progress-circle-closed-component" />
 
+## Guide
+
+### Customizing indeterminate color
+
+Use the `_indeterminate` condition to style the indeterminate state.
+
+```tsx
+<ProgressCircle.Range _indeterminate={{ stroke: "purple.500" }} />
+```
+
 ## Props
 
 ### Root
@@ -36244,7 +37917,7 @@ Use when you don't need to control the value of the progress bar. |
 Explore the `Progress` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="progress-explorer" />
+<Explorer name="progress-explorer-demo" />
 
 # Prose
 
@@ -36852,7 +38525,7 @@ Use when you don't need to control the value of the qr code. |
 Explore the `QR Code` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="qr-code-explorer" />
+<Explorer name="qr-code-explorer-demo" />
 
 # Radio Card
 
@@ -37454,7 +39127,7 @@ Use when you don't need to control the value of the radio group. |
 Explore the `Radio Card` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="radio-card-explorer" />
+<Explorer name="radio-card-explorer-demo" />
 
 # Radio
 
@@ -37960,6 +39633,7 @@ export const RadiomarkWithFilled = () => {
 | disabled | undefined | `boolean \| undefined` | Whether the checkmark is disabled |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
+| filled | undefined | `'true' \| 'false'` | The filled of the component |
 
 
 # Rating
@@ -38430,6 +40104,4160 @@ Use when you don't need to control the value of the rating. |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 
+
+# Rich Text Editor
+
+```tsx
+"use client"
+
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { TextStyleKit } from "@tiptap/extension-text-style"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorBasic = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+      TextStyleKit,
+    ],
+    content: `<h1>Welcome to Chakra UI + Tiptap!</h1><p>Edit using the toolbar below...</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.FontFamily />
+          <Control.FontSize />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.H1 />
+          <Control.H2 />
+          <Control.H3 />
+          <Control.H4 />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+## Getting Started
+
+::::steps
+
+### Add the snippet
+
+The rich text editor is exposed as a snippet that can be added to your project.
+
+```bash
+npx @chakra-ui/cli snippet add rich-text-editor
+```
+
+### Tiptap StarterKit
+
+To get started with the core editor features, install the
+[Tiptap StarterKit](https://tiptap.dev/docs/editor/extensions/functionality/starterkit).
+
+```bash
+npm i @tiptap/starter-kit
+```
+
+### Additional extensions
+
+Tiptap provides a rich set of additional extensions for adding additional
+features to the editor. The most commonly used additional extensions you can
+install are:
+
+- Subscript: `@tiptap/extension-subscript`
+- Superscript: `@tiptap/extension-superscript`
+- Text Align: `@tiptap/extension-text-align`
+- Text Style: `@tiptap/extension-text-style`
+
+```bash
+npm i @tiptap/extension-subscript @tiptap/extension-superscript @tiptap/extension-text-align @tiptap/extension-text-style
+```
+
+::::
+
+## Usage
+
+```tsx
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useEditor } from "@tiptap/react"
+```
+
+```tsx
+<RichTextEditor.Root editor={editor}>
+  <RichTextEditor.Toolbar>
+    <RichTextEditor.ControlGroup>
+      <Control.Bold />
+      <Control.Italic />
+      <Control.Underline />
+    </RichTextEditor.ControlGroup>
+  </RichTextEditor.Toolbar>
+  <RichTextEditor.Content />
+</RichTextEditor.Root>
+```
+
+## Examples
+
+### Toggle Edit Mode
+
+In the `useEditor` hook, assign the `editable` property to control the editor's
+mode. When set to `false`, the editor will be in view-only mode.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  Control,
+  RichTextEditor,
+  createSelectControl,
+} from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+
+export const RichTextEditorWithMode = () => {
+  const [editable, setEditable] = useState(true)
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: `<p>Edit this text...</p>`,
+    editable,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  const handleModeChange = (newMode: string) => {
+    setEditable(newMode === "edit")
+    editor.setEditable(newMode === "edit")
+  }
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="md">
+      <HStack p="2" borderBottomWidth="1px" justify="space-between">
+        <RichTextEditor.ControlGroup
+          inert={!editable}
+          opacity={!editable ? 0.5 : 1}
+        >
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+        <RichTextEditor.ControlGroup>
+          <ModePicker
+            width="120px"
+            currentMode={editable ? "edit" : "view"}
+            onModeChange={handleModeChange}
+          />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+interface ModePickerProps {
+  currentMode: string
+  onModeChange: (mode: string) => void
+  width?: string
+}
+
+const ModePicker = (props: ModePickerProps) => {
+  const { currentMode, onModeChange, ...rest } = props
+
+  const SelectControl = createSelectControl({
+    label: "Mode",
+    options: [
+      { value: "edit", label: "Editing" },
+      { value: "view", label: "Viewing" },
+    ],
+    getValue: () => currentMode,
+    command: (_editor, value) => {
+      onModeChange(value)
+    },
+  })
+
+  return <SelectControl {...rest} />
+}
+
+```
+
+### Controlled
+
+In the `useEditor` hook, set the `content` and `onUpdate` properties to control
+the editor's content programmatically.
+
+```tsx
+const [content, setContent] = useState("<p>Edit here...</p>")
+
+const editor = useEditor({
+  content,
+  onUpdate({ editor }) {
+    setContent(editor.getHTML())
+  },
+})
+```
+
+```tsx
+"use client"
+
+import { Box, Stack } from "@chakra-ui/react"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+
+export const RichTextEditorControlled = () => {
+  const [content, setContent] = useState<string>("<p>Edit here...</p>")
+
+  const editor = useEditor({
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+    ],
+    content,
+    onUpdate({ editor }) {
+      setContent(editor.getHTML())
+    },
+  })
+
+  if (!editor) return null
+
+  return (
+    <Stack maxW="3xl">
+      <RichTextEditor.Root editor={editor} maxHeight="2xl">
+        <RichTextEditor.Toolbar>
+          <RichTextEditor.ControlGroup>
+            <Control.Bold />
+            <Control.Italic />
+            <Control.Underline />
+            <Control.Strikethrough />
+            <Control.Code />
+          </RichTextEditor.ControlGroup>
+        </RichTextEditor.Toolbar>
+
+        <RichTextEditor.Content />
+      </RichTextEditor.Root>
+
+      <Box p="4" bg="bg.muted" flex="1">
+        <Box
+          as="pre"
+          textStyle="sm"
+          wordWrap="break-word"
+          whiteSpace="pre-wrap"
+        >
+          {content}
+        </Box>
+      </Box>
+    </Stack>
+  )
+}
+
+```
+
+### Placeholder
+
+To add a placeholder to the editor, use the
+[@tiptap/extension-placeholder](https://www.npmjs.com/package/@tiptap/extension-placeholder)
+extension and configure the `placeholder` property.
+
+```tsx
+const editor = useEditor({
+  extensions: [
+    // ... other extensions
+    Placeholder.configure({
+      placeholder: "Start typing your content here...",
+    }),
+  ],
+})
+```
+
+```tsx
+"use client"
+
+import Placeholder from "@tiptap/extension-placeholder"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithPlaceholder = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: "Start typing your content here...",
+      }),
+    ],
+    content: "",
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Character Count
+
+To display live character and word counts, use the
+[@tiptap/extensions/character-count](https://www.npmjs.com/package/@tiptap/extensions/character-count)
+extension. This is especially useful for editors with limits or word-count
+requirements.
+
+```tsx
+const editor = useEditor({
+  extensions: [
+    // ... other extensions
+    CharacterCount.configure({
+      limit: 1000,
+      mode: "textSize",
+    }),
+  ],
+})
+```
+
+```tsx
+"use client"
+
+import { Box } from "@chakra-ui/react"
+import Image from "@tiptap/extension-image"
+import { CharacterCount } from "@tiptap/extensions/character-count"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithCharacterCount = () => {
+  const editor = useEditor({
+    content: `
+      <h2>Dr. Stone</h2>
+      <p><strong>Dr. Stone</strong> is a Japanese manga and anime series that follows the story of Senku Ishigami, a scientific genius who awakens thousands of years after humanity has been petrified.</p>
+      <p>The world is in ruins, and Senku aims to rebuild civilization using the power of science.</p>
+    `,
+    extensions: [
+      StarterKit,
+      Image,
+      CharacterCount.configure({
+        limit: 1000,
+        mode: "textSize",
+      }),
+    ],
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  const charCount = editor.storage.characterCount.characters()
+  const wordCount = editor.storage.characterCount.words()
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+
+      <RichTextEditor.Footer justify="flex-end" textStyle="xs">
+        <Box fontVariantNumeric="tabular-nums">Characters: {charCount}</Box>
+        <Box fontVariantNumeric="tabular-nums">Words: {wordCount}</Box>
+      </RichTextEditor.Footer>
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Live Preview
+
+Use the editor's `getHTML()` method to retrieve content and display it in a
+read-only panel.
+
+```tsx
+"use client"
+
+import { Splitter } from "@chakra-ui/react"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Prose } from "@/components/ui/prose"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithPreview = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+    ],
+    content: `
+        <p>Edit here...</p>
+        <p><strong>Tip:</strong> Try selecting this sentence.</p>
+        <h2>Example Subheading</h2>
+        <p>Here's a paragraph with <em>italic</em>, <u>underline</u>, and <strong>bold</strong> text.</p>
+        <p><code>Code snippets can be inline or block-level.</code></p>
+        <ul>
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+        </ul>
+        <ol>
+        <li>First numbered item</li>
+        <li>Second numbered item</li>
+        </ol>
+        <blockquote>This is a blockquote example.</blockquote>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <Splitter.Root panels={[{ id: "editor" }, { id: "preview" }]} minH="60">
+      <Splitter.Panel id="editor">
+        <RichTextEditor.Root
+          editor={editor}
+          css={{ "--content-min-height": "520px" }}
+        >
+          <RichTextEditor.Toolbar>
+            <RichTextEditor.ControlGroup>
+              <Control.Bold />
+              <Control.Italic />
+              <Control.Underline />
+              <Control.Strikethrough />
+              <Control.Code />
+            </RichTextEditor.ControlGroup>
+            <RichTextEditor.ControlGroup>
+              <Control.H1 />
+              <Control.H2 />
+              <Control.H3 />
+              <Control.H4 />
+            </RichTextEditor.ControlGroup>
+            <RichTextEditor.ControlGroup>
+              <Control.Undo />
+              <Control.Redo />
+            </RichTextEditor.ControlGroup>
+          </RichTextEditor.Toolbar>
+
+          <RichTextEditor.Content />
+        </RichTextEditor.Root>
+      </Splitter.Panel>
+
+      <Splitter.ResizeTrigger id="editor:preview" />
+      <Splitter.Panel id="preview" px="8" py="2">
+        <Prose
+          width="full"
+          size="lg"
+          color="fg"
+          dangerouslySetInnerHTML={{ __html: editor.getHTML() }}
+        />
+      </Splitter.Panel>
+    </Splitter.Root>
+  )
+}
+
+```
+
+### Text Highlight
+
+To add text highlighting, use the
+[@tiptap/extension-highlight](https://www.npmjs.com/package/@tiptap/extension-highlight)
+extension and configure the `multicolor` property. This allows users to pick or
+cycle through highlight colors via the `<Control.Highlight />` component.
+
+```tsx
+"use client"
+
+import Highlight from "@tiptap/extension-highlight"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithHighlight = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Highlight.configure({
+        multicolor: true,
+      }),
+    ],
+    content: `
+      <p>This is a basic example of implementing text <mark data-color="#FFFF00" style="background-color: #FFFF00">highlighting</mark> using the Tiptap editor.</p>
+      <p>Select some text and click the highlight button to <mark data-color="#00FFFF" style="background-color: #00FFFF">apply a highlight color</mark>.</p>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Highlight />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Bubble Menu
+
+Use the `BubbleMenu` component from Tiptap with any existing controls. The menu
+will appear above any text selection, providing contextual formatting options.
+
+```tsx
+"use client"
+
+import { useEditor } from "@tiptap/react"
+import { BubbleMenu } from "@tiptap/react/menus"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithBubbleMenu = () => {
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: sampleContent,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="lg">
+      {editor && (
+        <BubbleMenu editor={editor}>
+          <RichTextEditor.Toolbar variant="floating">
+            <RichTextEditor.ControlGroup>
+              <Control.Bold />
+              <Control.Italic />
+              <Control.Underline />
+              <Control.Strikethrough />
+            </RichTextEditor.ControlGroup>
+
+            <RichTextEditor.ControlGroup>
+              <Control.Hr />
+              <Control.Code />
+            </RichTextEditor.ControlGroup>
+
+            <RichTextEditor.ControlGroup>
+              <Control.BulletList />
+              <Control.OrderedList />
+            </RichTextEditor.ControlGroup>
+          </RichTextEditor.Toolbar>
+        </BubbleMenu>
+      )}
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+const sampleContent = `
+  <h2>Select some text in this paragraph to see the bubble menu!</h2>
+  <p>The <strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>, and <strike>Strikethrough</strike> controls will appear. You can also change the block type here.</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  </p>
+  <ul>
+    <li>Try selecting text within this list item.</li>
+    <li>Use the list buttons to switch between bullet and ordered lists.</li>
+  </ul>
+`
+
+```
+
+### Autosave
+
+Implement an autosave feature by using the editor's `onUpdate` method. This
+allows you to handle content changes and save them to a server, local storage,
+or any other persistence layer.
+
+```tsx
+"use client"
+
+import { Badge, Box, HStack, Text } from "@chakra-ui/react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { LuCheck, LuCloud, LuLoader } from "react-icons/lu"
+
+type SaveStatus = "idle" | "saving" | "saved" | "error"
+
+export const RichTextEditorWithAutosave = () => {
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>("idle")
+  const [lastSaved, setLastSaved] = useState<Date | null>(null)
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Simulate saving to server
+  const saveContent = useCallback(async (content: string) => {
+    setSaveStatus("saving")
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 800))
+
+    // Save to localStorage as demo
+    localStorage.setItem("autosave-content", content)
+
+    setSaveStatus("saved")
+    setLastSaved(new Date())
+
+    // Reset status after 2 seconds
+    setTimeout(() => setSaveStatus("idle"), 2000)
+  }, [])
+
+  // Load saved content on mount
+  const getSavedContent = () => {
+    if (typeof window === "undefined") return null
+    return localStorage.getItem("autosave-content")
+  }
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content:
+      getSavedContent() ||
+      `<p>Start typing... your content will be automatically saved.</p>
+       <p>Try making some changes and watch the save indicator.</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+    onUpdate: ({ editor }) => {
+      // Debounce autosave
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current)
+      }
+
+      saveTimeoutRef.current = setTimeout(() => {
+        saveContent(editor.getHTML())
+      }, 1000) // Save after 1 second of inactivity
+    },
+  })
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  if (!editor) return null
+
+  const formatLastSaved = (date: Date) => {
+    const now = new Date()
+    const diff = now.getTime() - date.getTime()
+    const seconds = Math.floor(diff / 1000)
+
+    if (seconds < 60) return "just now"
+    if (seconds < 120) return "1 minute ago"
+    return `${Math.floor(seconds / 60)} minutes ago`
+  }
+
+  return (
+    <Box>
+      <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+        <RichTextEditor.Toolbar>
+          <RichTextEditor.ControlGroup>
+            <Control.Bold />
+            <Control.Italic />
+            <Control.Underline />
+          </RichTextEditor.ControlGroup>
+
+          <RichTextEditor.ControlGroup>
+            <Control.BulletList />
+            <Control.OrderedList />
+          </RichTextEditor.ControlGroup>
+
+          <RichTextEditor.ControlGroup>
+            <Control.Undo />
+            <Control.Redo />
+          </RichTextEditor.ControlGroup>
+
+          <HStack flex="1" justify="flex-end" gap="2">
+            <Badge
+              variant="subtle"
+              colorPalette={
+                saveStatus === "saving"
+                  ? "yellow"
+                  : saveStatus === "saved"
+                    ? "green"
+                    : "gray"
+              }
+            >
+              <HStack gap="1">
+                {saveStatus === "saving" && (
+                  <LuLoader className="animate-spin" />
+                )}
+                {saveStatus === "saved" && <LuCheck />}
+                {saveStatus === "idle" && <LuCloud />}
+                <Text>
+                  {saveStatus === "saving" && "Saving..."}
+                  {saveStatus === "saved" && "Saved"}
+                  {saveStatus === "idle" &&
+                    (lastSaved
+                      ? `Saved ${formatLastSaved(lastSaved)}`
+                      : "Draft")}
+                </Text>
+              </HStack>
+            </Badge>
+          </HStack>
+        </RichTextEditor.Toolbar>
+
+        <RichTextEditor.Content />
+      </RichTextEditor.Root>
+    </Box>
+  )
+}
+
+```
+
+### Task List
+
+To add interactive task lists, use the
+[@tiptap/extension-task-item](https://www.npmjs.com/package/@tiptap/extension-task-item)
+and
+[@tiptap/extension-task-list](https://www.npmjs.com/package/@tiptap/extension-task-list)
+extensions and configure the `nested` property.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import TaskItem from "@tiptap/extension-task-item"
+import TaskList from "@tiptap/extension-task-list"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  RichTextEditor,
+  createBooleanControl,
+} from "@/components/ui/rich-text-editor"
+import { LuArrowLeft, LuArrowRight, LuListChecks, LuPlus } from "react-icons/lu"
+
+export const RichTextEditorWithTask = () => {
+  const editor = useEditor({
+    extensions: [StarterKit, TaskList, TaskItem.configure({ nested: true })],
+    content: `
+      <h2>Project Tasks</h2>
+      <p>Use the toolbar to manage your tasks:</p>
+      <ul data-type="taskList">
+        <li data-type="taskItem" data-checked="false">Write introduction</li>
+        <li data-type="taskItem" data-checked="true">Set up editor</li>
+        <li data-type="taskItem" data-checked="false">Add toolbar controls</li>
+      </ul>
+      <p>Keep adding tasks to track your progress!</p>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="md">
+      <HStack gap="2" p="2" borderBottomWidth="1px">
+        <RichTextEditor.ControlGroup>
+          <ToggleTaskList />
+          <IndentTask />
+          <OutdentTask />
+          <AddTask />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+const ToggleTaskList = createBooleanControl({
+  label: "Toggle Task List",
+  icon: LuListChecks,
+  command: (editor) => editor.chain().focus().toggleTaskList().run(),
+  getVariant: (editor) => (editor.isActive("taskList") ? "subtle" : "ghost"),
+})
+
+const IndentTask = createBooleanControl({
+  label: "Indent Task",
+  icon: LuArrowRight,
+  command: (editor) => editor.chain().focus().sinkListItem("taskItem").run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+const OutdentTask = createBooleanControl({
+  label: "Outdent Task",
+  icon: LuArrowLeft,
+  command: (editor) => editor.chain().focus().liftListItem("taskItem").run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+const AddTask = createBooleanControl({
+  label: "Add Task",
+  icon: LuPlus,
+  command: (editor) =>
+    editor
+      .chain()
+      .focus()
+      .insertContent(
+        `<li data-type="taskItem" data-checked="false">New task</li>`,
+      )
+      .run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+```
+
+### Code Blocks
+
+Add syntax-highlighted code blocks using
+[@tiptap/extension-code-block-lowlight](https://www.npmjs.com/package/@tiptap/extension-code-block-lowlight)
+and `lowlight` to highlight your favorite languages.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import css from "highlight.js/lib/languages/css"
+import js from "highlight.js/lib/languages/javascript"
+import ts from "highlight.js/lib/languages/typescript"
+import html from "highlight.js/lib/languages/xml"
+import { all, createLowlight } from "lowlight"
+
+const lowlight = createLowlight(all)
+lowlight.register("html", html)
+lowlight.register("css", css)
+lowlight.register("js", js)
+lowlight.register("ts", ts)
+
+export const RichTextEditorWithCode = () => {
+  const editor = useEditor({
+    extensions: [StarterKit, CodeBlockLowlight.configure({ lowlight })],
+    content: `<p>That’s a boring paragraph followed by a fenced code block:</p>
+<pre><code class="language-javascript">${code}</code></pre>
+<p>Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root
+      editor={editor}
+      border="1px solid"
+      borderColor="border"
+      rounded="md"
+    >
+      <HStack gap="2" p="2" borderBottom="1px solid" borderColor="border">
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+// Escape HTML so it can be safely injected
+function escapeHtml(unsafe: string) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+}
+
+const code = escapeHtml(`
+async function fetchTodos() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
+  const data = await response.json()
+  return data
+}
+
+async function showTodos() {
+  const todos = await fetchTodos()
+  todos.forEach(todo => console.log(\`\${todo.id}: \${todo.title} [\${todo.completed ? '✅' : '❌'}]\`))
+}
+
+showTodos()
+`)
+
+```
+
+### Drag Handle
+
+To add drag-and-drop reordering, use the
+[@tiptap/extension-drag-handle-react](https://www.npmjs.com/package/@tiptap/extension-drag-handle-react).
+This extension enables draggable handles for each block, letting users easily
+reorder content.
+
+```tsx
+"use client"
+
+import { Box, Icon, useChakraContext } from "@chakra-ui/react"
+import { DragHandle } from "@tiptap/extension-drag-handle-react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { LuGripVertical } from "react-icons/lu"
+
+export const RichTextEditorWithDragHandle = () => {
+  const { token } = useChakraContext()
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        dropcursor: { width: 2, color: token("colors.teal.solid") },
+      }),
+    ],
+    content: `
+      <p>Hover over any paragraph to see the drag handle appear on the left.</p>
+      <p>This is another paragraph. You can drag blocks to reorder them.</p>
+      <p>Try adding more content and rearranging it!</p>
+      <ul>
+        <li>List items can also be dragged</li>
+        <li>Each block has its own handle</li>
+      </ul>
+      <blockquote>Blockquotes work too!</blockquote>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+          <Control.Blockquote />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <Box position="relative">
+        <DragHandle editor={editor}>
+          <Box
+            pos="relative"
+            top="-0.5"
+            insetStart="-1"
+            cursor="grab"
+            color="fg.muted"
+            opacity="0.6"
+            _hover={{ opacity: 1, color: "fg" }}
+            _active={{ cursor: "grabbing" }}
+          >
+            <Icon asChild boxSize="4">
+              <LuGripVertical />
+            </Icon>
+          </Box>
+        </DragHandle>
+        <RichTextEditor.Content />
+      </Box>
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Images
+
+To add images, use the
+[@tiptap/extension-image](https://www.npmjs.com/package/@tiptap/extension-image)
+extension. This lets you embed image URLs, upload files, or integrate a custom
+media service.
+
+```tsx
+"use client"
+
+import {
+  Box,
+  Button,
+  Dialog,
+  FileUpload,
+  Icon,
+  Input,
+  Portal,
+  Tabs,
+} from "@chakra-ui/react"
+import Image from "@tiptap/extension-image"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  Control,
+  RichTextEditor,
+  useRichTextEditorContext,
+} from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+import { LuImage, LuLink, LuUpload } from "react-icons/lu"
+
+export const RichTextEditorWithImage = () => {
+  const editor = useEditor({
+    content: `
+      <h2>Jiraiya Sensei</h2>
+      <img src="https://preview.redd.it/was-jiraiya-good-looking-back-in-the-day-or-does-it-just-v0-7lcmj7gpf4we1.jpg?width=640&crop=smart&auto=webp&s=cbece8f347da1b9326d1958dbb46284d4bceb828" alt="Jiraiya Sensei" />
+      <p><strong>Jiraiya</strong> is a legendary ninja from the Naruto series, known for his wisdom, humor, and mentorship of Naruto Uzumaki.</p>
+      <p>Famed as one of the "Legendary Sannin," Jiraiya travels the world gathering knowledge and inspiring future generations.</p>
+    `,
+    extensions: [StarterKit, Image],
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <InsertImageControl />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+function InsertImageControl() {
+  const { editor } = useRichTextEditorContext()
+  const [open, setOpen] = useState(false)
+  const [files, setFiles] = useState<File[]>([])
+
+  if (!editor) return null
+
+  return (
+    <>
+      <Control.ButtonControl
+        icon={<LuImage />}
+        label="Insert Image"
+        onClick={() => setOpen(true)}
+        variant="ghost"
+      />
+
+      <Dialog.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content maxW="lg">
+              <Dialog.Header>
+                <Dialog.Title>Insert Image</Dialog.Title>
+              </Dialog.Header>
+
+              <Dialog.Body>
+                <Tabs.Root defaultValue="url">
+                  <Tabs.List>
+                    <Tabs.Trigger value="url">
+                      <LuLink /> Embed URL
+                    </Tabs.Trigger>
+                    <Tabs.Trigger value="upload">
+                      <LuUpload /> Upload File
+                    </Tabs.Trigger>
+                  </Tabs.List>
+
+                  <Tabs.Content value="url">
+                    <Box display="flex" gap="2" mt="4">
+                      <Input
+                        placeholder="Enter image URL"
+                        id="image-url-input"
+                      />
+                      <Button
+                        onClick={() => {
+                          const url = (
+                            document.getElementById(
+                              "image-url-input",
+                            ) as HTMLInputElement
+                          ).value
+                          if (url)
+                            editor.chain().focus().setImage({ src: url }).run()
+                          setOpen(false)
+                        }}
+                      >
+                        Insert
+                      </Button>
+                    </Box>
+                  </Tabs.Content>
+
+                  <Tabs.Content value="upload">
+                    <FileUpload.Root
+                      maxW="xl"
+                      alignItems="stretch"
+                      maxFiles={1}
+                      accept="image/*"
+                      onFileAccept={(accepted) => {
+                        const uploaded = accepted.files ?? []
+                        setFiles(uploaded)
+
+                        if (uploaded[0]) {
+                          const url = URL.createObjectURL(uploaded[0])
+                          editor.chain().focus().setImage({ src: url }).run()
+                          setOpen(false)
+                        }
+                      }}
+                    >
+                      <FileUpload.HiddenInput />
+                      <FileUpload.Dropzone>
+                        <Icon size="md" color="fg.muted">
+                          <LuUpload />
+                        </Icon>
+                        <FileUpload.DropzoneContent>
+                          <Box>Drag and drop a file here</Box>
+                          <Box color="fg.muted">.png, .jpg up to 5MB</Box>
+                        </FileUpload.DropzoneContent>
+                      </FileUpload.Dropzone>
+
+                      <FileUpload.List files={files} />
+                    </FileUpload.Root>
+                  </Tabs.Content>
+                </Tabs.Root>
+              </Dialog.Body>
+
+              <Dialog.Footer mt="4">
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </>
+  )
+}
+
+```
+
+### Hashtags
+
+To support hashtags in the editor, create a custom
+[Tiptap node](https://tiptap.dev/docs/editor/extensions/nodes). This allows
+hashtags to be parsed, rendered, and handled as structured inline content.
+
+```tsx
+"use client"
+
+import {
+  Node,
+  mergeAttributes,
+  nodeInputRule,
+  nodePasteRule,
+} from "@tiptap/core"
+import {
+  type NodeViewProps,
+  ReactNodeViewRenderer,
+  useEditor,
+} from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithHashtags = () => {
+  const initialContent = `<p>Type #chakra or #react and press space, it becomes a tag. Try pasting: #tiptap #awesome</p>`
+  const preprocessedContent = preprocessContent(initialContent, "#")
+
+  const editor = useEditor({
+    extensions: [StarterKit, Hashtag],
+    content: preprocessedContent,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+  return (
+    <RichTextEditor.Root
+      editor={editor}
+      border="1px solid"
+      borderColor="border"
+      rounded="md"
+    >
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+interface HashtagOptions {
+  trigger: string
+}
+interface HashtagAttributes {
+  tag: string
+}
+
+const Hashtag = Node.create<HashtagOptions>({
+  name: "hashtag",
+  inline: true,
+  group: "inline",
+  atom: true,
+
+  addOptions() {
+    return { trigger: "#" }
+  },
+
+  addAttributes() {
+    return {
+      tag: {
+        default: "",
+        parseHTML: (element) => element.getAttribute("data-tag"),
+        renderHTML: (attributes) => {
+          return { "data-tag": attributes.tag }
+        },
+      },
+    }
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: "span[data-type='hashtag']",
+        getAttrs: (element) => {
+          if (typeof element === "string") return false
+          return {
+            tag: element.getAttribute("data-tag") || "",
+          }
+        },
+      },
+    ]
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "span",
+      mergeAttributes(HTMLAttributes, {
+        "data-type": "hashtag",
+        "data-tag": HTMLAttributes.tag,
+      }),
+      `${this.options.trigger}${HTMLAttributes.tag}`,
+    ]
+  },
+
+  addInputRules() {
+    const trigger = this.options.trigger
+    return [
+      nodeInputRule({
+        find: new RegExp(`(${trigger}[a-zA-Z0-9_]+)\\s```tsx
+"use client"
+
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { TextStyleKit } from "@tiptap/extension-text-style"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorBasic = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+      TextStyleKit,
+    ],
+    content: `<h1>Welcome to Chakra UI + Tiptap!</h1><p>Edit using the toolbar below...</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.FontFamily />
+          <Control.FontSize />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.H1 />
+          <Control.H2 />
+          <Control.H3 />
+          <Control.H4 />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+## Getting Started
+
+::::steps
+
+### Add the snippet
+
+The rich text editor is exposed as a snippet that can be added to your project.
+
+```bash
+npx @chakra-ui/cli snippet add rich-text-editor
+```
+
+### Tiptap StarterKit
+
+To get started with the core editor features, install the
+[Tiptap StarterKit](https://tiptap.dev/docs/editor/extensions/functionality/starterkit).
+
+```bash
+npm i @tiptap/starter-kit
+```
+
+### Additional extensions
+
+Tiptap provides a rich set of additional extensions for adding additional
+features to the editor. The most commonly used additional extensions you can
+install are:
+
+- Subscript: `@tiptap/extension-subscript`
+- Superscript: `@tiptap/extension-superscript`
+- Text Align: `@tiptap/extension-text-align`
+- Text Style: `@tiptap/extension-text-style`
+
+```bash
+npm i @tiptap/extension-subscript @tiptap/extension-superscript @tiptap/extension-text-align @tiptap/extension-text-style
+```
+
+::::
+
+## Usage
+
+```tsx
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useEditor } from "@tiptap/react"
+```
+
+```tsx
+<RichTextEditor.Root editor={editor}>
+  <RichTextEditor.Toolbar>
+    <RichTextEditor.ControlGroup>
+      <Control.Bold />
+      <Control.Italic />
+      <Control.Underline />
+    </RichTextEditor.ControlGroup>
+  </RichTextEditor.Toolbar>
+  <RichTextEditor.Content />
+</RichTextEditor.Root>
+```
+
+## Examples
+
+### Toggle Edit Mode
+
+In the `useEditor` hook, assign the `editable` property to control the editor's
+mode. When set to `false`, the editor will be in view-only mode.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  Control,
+  RichTextEditor,
+  createSelectControl,
+} from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+
+export const RichTextEditorWithMode = () => {
+  const [editable, setEditable] = useState(true)
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: `<p>Edit this text...</p>`,
+    editable,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  const handleModeChange = (newMode: string) => {
+    setEditable(newMode === "edit")
+    editor.setEditable(newMode === "edit")
+  }
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="md">
+      <HStack p="2" borderBottomWidth="1px" justify="space-between">
+        <RichTextEditor.ControlGroup
+          inert={!editable}
+          opacity={!editable ? 0.5 : 1}
+        >
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+        <RichTextEditor.ControlGroup>
+          <ModePicker
+            width="120px"
+            currentMode={editable ? "edit" : "view"}
+            onModeChange={handleModeChange}
+          />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+interface ModePickerProps {
+  currentMode: string
+  onModeChange: (mode: string) => void
+  width?: string
+}
+
+const ModePicker = (props: ModePickerProps) => {
+  const { currentMode, onModeChange, ...rest } = props
+
+  const SelectControl = createSelectControl({
+    label: "Mode",
+    options: [
+      { value: "edit", label: "Editing" },
+      { value: "view", label: "Viewing" },
+    ],
+    getValue: () => currentMode,
+    command: (_editor, value) => {
+      onModeChange(value)
+    },
+  })
+
+  return <SelectControl {...rest} />
+}
+
+```
+
+### Controlled
+
+In the `useEditor` hook, set the `content` and `onUpdate` properties to control
+the editor's content programmatically.
+
+```tsx
+const [content, setContent] = useState("<p>Edit here...</p>")
+
+const editor = useEditor({
+  content,
+  onUpdate({ editor }) {
+    setContent(editor.getHTML())
+  },
+})
+```
+
+```tsx
+"use client"
+
+import { Box, Stack } from "@chakra-ui/react"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+
+export const RichTextEditorControlled = () => {
+  const [content, setContent] = useState<string>("<p>Edit here...</p>")
+
+  const editor = useEditor({
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+    ],
+    content,
+    onUpdate({ editor }) {
+      setContent(editor.getHTML())
+    },
+  })
+
+  if (!editor) return null
+
+  return (
+    <Stack maxW="3xl">
+      <RichTextEditor.Root editor={editor} maxHeight="2xl">
+        <RichTextEditor.Toolbar>
+          <RichTextEditor.ControlGroup>
+            <Control.Bold />
+            <Control.Italic />
+            <Control.Underline />
+            <Control.Strikethrough />
+            <Control.Code />
+          </RichTextEditor.ControlGroup>
+        </RichTextEditor.Toolbar>
+
+        <RichTextEditor.Content />
+      </RichTextEditor.Root>
+
+      <Box p="4" bg="bg.muted" flex="1">
+        <Box
+          as="pre"
+          textStyle="sm"
+          wordWrap="break-word"
+          whiteSpace="pre-wrap"
+        >
+          {content}
+        </Box>
+      </Box>
+    </Stack>
+  )
+}
+
+```
+
+### Placeholder
+
+To add a placeholder to the editor, use the
+[@tiptap/extension-placeholder](https://www.npmjs.com/package/@tiptap/extension-placeholder)
+extension and configure the `placeholder` property.
+
+```tsx
+const editor = useEditor({
+  extensions: [
+    // ... other extensions
+    Placeholder.configure({
+      placeholder: "Start typing your content here...",
+    }),
+  ],
+})
+```
+
+```tsx
+"use client"
+
+import Placeholder from "@tiptap/extension-placeholder"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithPlaceholder = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: "Start typing your content here...",
+      }),
+    ],
+    content: "",
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Character Count
+
+To display live character and word counts, use the
+[@tiptap/extensions/character-count](https://www.npmjs.com/package/@tiptap/extensions/character-count)
+extension. This is especially useful for editors with limits or word-count
+requirements.
+
+```tsx
+const editor = useEditor({
+  extensions: [
+    // ... other extensions
+    CharacterCount.configure({
+      limit: 1000,
+      mode: "textSize",
+    }),
+  ],
+})
+```
+
+```tsx
+"use client"
+
+import { Box } from "@chakra-ui/react"
+import Image from "@tiptap/extension-image"
+import { CharacterCount } from "@tiptap/extensions/character-count"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithCharacterCount = () => {
+  const editor = useEditor({
+    content: `
+      <h2>Dr. Stone</h2>
+      <p><strong>Dr. Stone</strong> is a Japanese manga and anime series that follows the story of Senku Ishigami, a scientific genius who awakens thousands of years after humanity has been petrified.</p>
+      <p>The world is in ruins, and Senku aims to rebuild civilization using the power of science.</p>
+    `,
+    extensions: [
+      StarterKit,
+      Image,
+      CharacterCount.configure({
+        limit: 1000,
+        mode: "textSize",
+      }),
+    ],
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  const charCount = editor.storage.characterCount.characters()
+  const wordCount = editor.storage.characterCount.words()
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+
+      <RichTextEditor.Footer justify="flex-end" textStyle="xs">
+        <Box fontVariantNumeric="tabular-nums">Characters: {charCount}</Box>
+        <Box fontVariantNumeric="tabular-nums">Words: {wordCount}</Box>
+      </RichTextEditor.Footer>
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Live Preview
+
+Use the editor's `getHTML()` method to retrieve content and display it in a
+read-only panel.
+
+```tsx
+"use client"
+
+import { Splitter } from "@chakra-ui/react"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Prose } from "@/components/ui/prose"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithPreview = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({ link: { openOnClick: false } }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+    ],
+    content: `
+        <p>Edit here...</p>
+        <p><strong>Tip:</strong> Try selecting this sentence.</p>
+        <h2>Example Subheading</h2>
+        <p>Here's a paragraph with <em>italic</em>, <u>underline</u>, and <strong>bold</strong> text.</p>
+        <p><code>Code snippets can be inline or block-level.</code></p>
+        <ul>
+        <li>Item one</li>
+        <li>Item two</li>
+        <li>Item three</li>
+        </ul>
+        <ol>
+        <li>First numbered item</li>
+        <li>Second numbered item</li>
+        </ol>
+        <blockquote>This is a blockquote example.</blockquote>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <Splitter.Root panels={[{ id: "editor" }, { id: "preview" }]} minH="60">
+      <Splitter.Panel id="editor">
+        <RichTextEditor.Root
+          editor={editor}
+          css={{ "--content-min-height": "520px" }}
+        >
+          <RichTextEditor.Toolbar>
+            <RichTextEditor.ControlGroup>
+              <Control.Bold />
+              <Control.Italic />
+              <Control.Underline />
+              <Control.Strikethrough />
+              <Control.Code />
+            </RichTextEditor.ControlGroup>
+            <RichTextEditor.ControlGroup>
+              <Control.H1 />
+              <Control.H2 />
+              <Control.H3 />
+              <Control.H4 />
+            </RichTextEditor.ControlGroup>
+            <RichTextEditor.ControlGroup>
+              <Control.Undo />
+              <Control.Redo />
+            </RichTextEditor.ControlGroup>
+          </RichTextEditor.Toolbar>
+
+          <RichTextEditor.Content />
+        </RichTextEditor.Root>
+      </Splitter.Panel>
+
+      <Splitter.ResizeTrigger id="editor:preview" />
+      <Splitter.Panel id="preview" px="8" py="2">
+        <Prose
+          width="full"
+          size="lg"
+          color="fg"
+          dangerouslySetInnerHTML={{ __html: editor.getHTML() }}
+        />
+      </Splitter.Panel>
+    </Splitter.Root>
+  )
+}
+
+```
+
+### Text Highlight
+
+To add text highlighting, use the
+[@tiptap/extension-highlight](https://www.npmjs.com/package/@tiptap/extension-highlight)
+extension and configure the `multicolor` property. This allows users to pick or
+cycle through highlight colors via the `<Control.Highlight />` component.
+
+```tsx
+"use client"
+
+import Highlight from "@tiptap/extension-highlight"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithHighlight = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Highlight.configure({
+        multicolor: true,
+      }),
+    ],
+    content: `
+      <p>This is a basic example of implementing text <mark data-color="#FFFF00" style="background-color: #FFFF00">highlighting</mark> using the Tiptap editor.</p>
+      <p>Select some text and click the highlight button to <mark data-color="#00FFFF" style="background-color: #00FFFF">apply a highlight color</mark>.</p>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Highlight />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Bubble Menu
+
+Use the `BubbleMenu` component from Tiptap with any existing controls. The menu
+will appear above any text selection, providing contextual formatting options.
+
+```tsx
+"use client"
+
+import { useEditor } from "@tiptap/react"
+import { BubbleMenu } from "@tiptap/react/menus"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+
+export const RichTextEditorWithBubbleMenu = () => {
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content: sampleContent,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="lg">
+      {editor && (
+        <BubbleMenu editor={editor}>
+          <RichTextEditor.Toolbar variant="floating">
+            <RichTextEditor.ControlGroup>
+              <Control.Bold />
+              <Control.Italic />
+              <Control.Underline />
+              <Control.Strikethrough />
+            </RichTextEditor.ControlGroup>
+
+            <RichTextEditor.ControlGroup>
+              <Control.Hr />
+              <Control.Code />
+            </RichTextEditor.ControlGroup>
+
+            <RichTextEditor.ControlGroup>
+              <Control.BulletList />
+              <Control.OrderedList />
+            </RichTextEditor.ControlGroup>
+          </RichTextEditor.Toolbar>
+        </BubbleMenu>
+      )}
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+const sampleContent = `
+  <h2>Select some text in this paragraph to see the bubble menu!</h2>
+  <p>The <strong>Bold</strong>, <em>Italic</em>, <u>Underline</u>, and <strike>Strikethrough</strike> controls will appear. You can also change the block type here.</p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  </p>
+  <ul>
+    <li>Try selecting text within this list item.</li>
+    <li>Use the list buttons to switch between bullet and ordered lists.</li>
+  </ul>
+`
+
+```
+
+### Autosave
+
+Implement an autosave feature by using the editor's `onUpdate` method. This
+allows you to handle content changes and save them to a server, local storage,
+or any other persistence layer.
+
+```tsx
+"use client"
+
+import { Badge, Box, HStack, Text } from "@chakra-ui/react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { LuCheck, LuCloud, LuLoader } from "react-icons/lu"
+
+type SaveStatus = "idle" | "saving" | "saved" | "error"
+
+export const RichTextEditorWithAutosave = () => {
+  const [saveStatus, setSaveStatus] = useState<SaveStatus>("idle")
+  const [lastSaved, setLastSaved] = useState<Date | null>(null)
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Simulate saving to server
+  const saveContent = useCallback(async (content: string) => {
+    setSaveStatus("saving")
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 800))
+
+    // Save to localStorage as demo
+    localStorage.setItem("autosave-content", content)
+
+    setSaveStatus("saved")
+    setLastSaved(new Date())
+
+    // Reset status after 2 seconds
+    setTimeout(() => setSaveStatus("idle"), 2000)
+  }, [])
+
+  // Load saved content on mount
+  const getSavedContent = () => {
+    if (typeof window === "undefined") return null
+    return localStorage.getItem("autosave-content")
+  }
+
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content:
+      getSavedContent() ||
+      `<p>Start typing... your content will be automatically saved.</p>
+       <p>Try making some changes and watch the save indicator.</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+    onUpdate: ({ editor }) => {
+      // Debounce autosave
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current)
+      }
+
+      saveTimeoutRef.current = setTimeout(() => {
+        saveContent(editor.getHTML())
+      }, 1000) // Save after 1 second of inactivity
+    },
+  })
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current)
+      }
+    }
+  }, [])
+
+  if (!editor) return null
+
+  const formatLastSaved = (date: Date) => {
+    const now = new Date()
+    const diff = now.getTime() - date.getTime()
+    const seconds = Math.floor(diff / 1000)
+
+    if (seconds < 60) return "just now"
+    if (seconds < 120) return "1 minute ago"
+    return `${Math.floor(seconds / 60)} minutes ago`
+  }
+
+  return (
+    <Box>
+      <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="l2">
+        <RichTextEditor.Toolbar>
+          <RichTextEditor.ControlGroup>
+            <Control.Bold />
+            <Control.Italic />
+            <Control.Underline />
+          </RichTextEditor.ControlGroup>
+
+          <RichTextEditor.ControlGroup>
+            <Control.BulletList />
+            <Control.OrderedList />
+          </RichTextEditor.ControlGroup>
+
+          <RichTextEditor.ControlGroup>
+            <Control.Undo />
+            <Control.Redo />
+          </RichTextEditor.ControlGroup>
+
+          <HStack flex="1" justify="flex-end" gap="2">
+            <Badge
+              variant="subtle"
+              colorPalette={
+                saveStatus === "saving"
+                  ? "yellow"
+                  : saveStatus === "saved"
+                    ? "green"
+                    : "gray"
+              }
+            >
+              <HStack gap="1">
+                {saveStatus === "saving" && (
+                  <LuLoader className="animate-spin" />
+                )}
+                {saveStatus === "saved" && <LuCheck />}
+                {saveStatus === "idle" && <LuCloud />}
+                <Text>
+                  {saveStatus === "saving" && "Saving..."}
+                  {saveStatus === "saved" && "Saved"}
+                  {saveStatus === "idle" &&
+                    (lastSaved
+                      ? `Saved ${formatLastSaved(lastSaved)}`
+                      : "Draft")}
+                </Text>
+              </HStack>
+            </Badge>
+          </HStack>
+        </RichTextEditor.Toolbar>
+
+        <RichTextEditor.Content />
+      </RichTextEditor.Root>
+    </Box>
+  )
+}
+
+```
+
+### Task List
+
+To add interactive task lists, use the
+[@tiptap/extension-task-item](https://www.npmjs.com/package/@tiptap/extension-task-item)
+and
+[@tiptap/extension-task-list](https://www.npmjs.com/package/@tiptap/extension-task-list)
+extensions and configure the `nested` property.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import TaskItem from "@tiptap/extension-task-item"
+import TaskList from "@tiptap/extension-task-list"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  RichTextEditor,
+  createBooleanControl,
+} from "@/components/ui/rich-text-editor"
+import { LuArrowLeft, LuArrowRight, LuListChecks, LuPlus } from "react-icons/lu"
+
+export const RichTextEditorWithTask = () => {
+  const editor = useEditor({
+    extensions: [StarterKit, TaskList, TaskItem.configure({ nested: true })],
+    content: `
+      <h2>Project Tasks</h2>
+      <p>Use the toolbar to manage your tasks:</p>
+      <ul data-type="taskList">
+        <li data-type="taskItem" data-checked="false">Write introduction</li>
+        <li data-type="taskItem" data-checked="true">Set up editor</li>
+        <li data-type="taskItem" data-checked="false">Add toolbar controls</li>
+      </ul>
+      <p>Keep adding tasks to track your progress!</p>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="md">
+      <HStack gap="2" p="2" borderBottomWidth="1px">
+        <RichTextEditor.ControlGroup>
+          <ToggleTaskList />
+          <IndentTask />
+          <OutdentTask />
+          <AddTask />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+const ToggleTaskList = createBooleanControl({
+  label: "Toggle Task List",
+  icon: LuListChecks,
+  command: (editor) => editor.chain().focus().toggleTaskList().run(),
+  getVariant: (editor) => (editor.isActive("taskList") ? "subtle" : "ghost"),
+})
+
+const IndentTask = createBooleanControl({
+  label: "Indent Task",
+  icon: LuArrowRight,
+  command: (editor) => editor.chain().focus().sinkListItem("taskItem").run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+const OutdentTask = createBooleanControl({
+  label: "Outdent Task",
+  icon: LuArrowLeft,
+  command: (editor) => editor.chain().focus().liftListItem("taskItem").run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+const AddTask = createBooleanControl({
+  label: "Add Task",
+  icon: LuPlus,
+  command: (editor) =>
+    editor
+      .chain()
+      .focus()
+      .insertContent(
+        `<li data-type="taskItem" data-checked="false">New task</li>`,
+      )
+      .run(),
+  getVariant: (editor) => (editor.isActive("taskItem") ? "subtle" : "ghost"),
+})
+
+```
+
+### Code Blocks
+
+Add syntax-highlighted code blocks using
+[@tiptap/extension-code-block-lowlight](https://www.npmjs.com/package/@tiptap/extension-code-block-lowlight)
+and `lowlight` to highlight your favorite languages.
+
+```tsx
+"use client"
+
+import { HStack } from "@chakra-ui/react"
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import css from "highlight.js/lib/languages/css"
+import js from "highlight.js/lib/languages/javascript"
+import ts from "highlight.js/lib/languages/typescript"
+import html from "highlight.js/lib/languages/xml"
+import { all, createLowlight } from "lowlight"
+
+const lowlight = createLowlight(all)
+lowlight.register("html", html)
+lowlight.register("css", css)
+lowlight.register("js", js)
+lowlight.register("ts", ts)
+
+export const RichTextEditorWithCode = () => {
+  const editor = useEditor({
+    extensions: [StarterKit, CodeBlockLowlight.configure({ lowlight })],
+    content: `<p>That’s a boring paragraph followed by a fenced code block:</p>
+<pre><code class="language-javascript">${code}</code></pre>
+<p>Press Command/Ctrl + Enter to leave the fenced code block and continue typing in boring paragraphs.</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root
+      editor={editor}
+      border="1px solid"
+      borderColor="border"
+      rounded="md"
+    >
+      <HStack gap="2" p="2" borderBottom="1px solid" borderColor="border">
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+// Escape HTML so it can be safely injected
+function escapeHtml(unsafe: string) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+}
+
+const code = escapeHtml(`
+async function fetchTodos() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
+  const data = await response.json()
+  return data
+}
+
+async function showTodos() {
+  const todos = await fetchTodos()
+  todos.forEach(todo => console.log(\`\${todo.id}: \${todo.title} [\${todo.completed ? '✅' : '❌'}]\`))
+}
+
+showTodos()
+`)
+
+```
+
+### Drag Handle
+
+To add drag-and-drop reordering, use the
+[@tiptap/extension-drag-handle-react](https://www.npmjs.com/package/@tiptap/extension-drag-handle-react).
+This extension enables draggable handles for each block, letting users easily
+reorder content.
+
+```tsx
+"use client"
+
+import { Box, Icon, useChakraContext } from "@chakra-ui/react"
+import { DragHandle } from "@tiptap/extension-drag-handle-react"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import { LuGripVertical } from "react-icons/lu"
+
+export const RichTextEditorWithDragHandle = () => {
+  const { token } = useChakraContext()
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        dropcursor: { width: 2, color: token("colors.teal.solid") },
+      }),
+    ],
+    content: `
+      <p>Hover over any paragraph to see the drag handle appear on the left.</p>
+      <p>This is another paragraph. You can drag blocks to reorder them.</p>
+      <p>Try adding more content and rearranging it!</p>
+      <ul>
+        <li>List items can also be dragged</li>
+        <li>Each block has its own handle</li>
+      </ul>
+      <blockquote>Blockquotes work too!</blockquote>
+    `,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+          <Control.Blockquote />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <Box position="relative">
+        <DragHandle editor={editor}>
+          <Box
+            pos="relative"
+            top="-0.5"
+            insetStart="-1"
+            cursor="grab"
+            color="fg.muted"
+            opacity="0.6"
+            _hover={{ opacity: 1, color: "fg" }}
+            _active={{ cursor: "grabbing" }}
+          >
+            <Icon asChild boxSize="4">
+              <LuGripVertical />
+            </Icon>
+          </Box>
+        </DragHandle>
+        <RichTextEditor.Content />
+      </Box>
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Images
+
+To add images, use the
+[@tiptap/extension-image](https://www.npmjs.com/package/@tiptap/extension-image)
+extension. This lets you embed image URLs, upload files, or integrate a custom
+media service.
+
+```tsx
+"use client"
+
+import {
+  Box,
+  Button,
+  Dialog,
+  FileUpload,
+  Icon,
+  Input,
+  Portal,
+  Tabs,
+} from "@chakra-ui/react"
+import Image from "@tiptap/extension-image"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import {
+  Control,
+  RichTextEditor,
+  useRichTextEditorContext,
+} from "@/components/ui/rich-text-editor"
+import { useState } from "react"
+import { LuImage, LuLink, LuUpload } from "react-icons/lu"
+
+export const RichTextEditorWithImage = () => {
+  const editor = useEditor({
+    content: `
+      <h2>Jiraiya Sensei</h2>
+      <img src="https://preview.redd.it/was-jiraiya-good-looking-back-in-the-day-or-does-it-just-v0-7lcmj7gpf4we1.jpg?width=640&crop=smart&auto=webp&s=cbece8f347da1b9326d1958dbb46284d4bceb828" alt="Jiraiya Sensei" />
+      <p><strong>Jiraiya</strong> is a legendary ninja from the Naruto series, known for his wisdom, humor, and mentorship of Naruto Uzumaki.</p>
+      <p>Famed as one of the "Legendary Sannin," Jiraiya travels the world gathering knowledge and inspiring future generations.</p>
+    `,
+    extensions: [StarterKit, Image],
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor}>
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <InsertImageControl />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+function InsertImageControl() {
+  const { editor } = useRichTextEditorContext()
+  const [open, setOpen] = useState(false)
+  const [files, setFiles] = useState<File[]>([])
+
+  if (!editor) return null
+
+  return (
+    <>
+      <Control.ButtonControl
+        icon={<LuImage />}
+        label="Insert Image"
+        onClick={() => setOpen(true)}
+        variant="ghost"
+      />
+
+      <Dialog.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content maxW="lg">
+              <Dialog.Header>
+                <Dialog.Title>Insert Image</Dialog.Title>
+              </Dialog.Header>
+
+              <Dialog.Body>
+                <Tabs.Root defaultValue="url">
+                  <Tabs.List>
+                    <Tabs.Trigger value="url">
+                      <LuLink /> Embed URL
+                    </Tabs.Trigger>
+                    <Tabs.Trigger value="upload">
+                      <LuUpload /> Upload File
+                    </Tabs.Trigger>
+                  </Tabs.List>
+
+                  <Tabs.Content value="url">
+                    <Box display="flex" gap="2" mt="4">
+                      <Input
+                        placeholder="Enter image URL"
+                        id="image-url-input"
+                      />
+                      <Button
+                        onClick={() => {
+                          const url = (
+                            document.getElementById(
+                              "image-url-input",
+                            ) as HTMLInputElement
+                          ).value
+                          if (url)
+                            editor.chain().focus().setImage({ src: url }).run()
+                          setOpen(false)
+                        }}
+                      >
+                        Insert
+                      </Button>
+                    </Box>
+                  </Tabs.Content>
+
+                  <Tabs.Content value="upload">
+                    <FileUpload.Root
+                      maxW="xl"
+                      alignItems="stretch"
+                      maxFiles={1}
+                      accept="image/*"
+                      onFileAccept={(accepted) => {
+                        const uploaded = accepted.files ?? []
+                        setFiles(uploaded)
+
+                        if (uploaded[0]) {
+                          const url = URL.createObjectURL(uploaded[0])
+                          editor.chain().focus().setImage({ src: url }).run()
+                          setOpen(false)
+                        }
+                      }}
+                    >
+                      <FileUpload.HiddenInput />
+                      <FileUpload.Dropzone>
+                        <Icon size="md" color="fg.muted">
+                          <LuUpload />
+                        </Icon>
+                        <FileUpload.DropzoneContent>
+                          <Box>Drag and drop a file here</Box>
+                          <Box color="fg.muted">.png, .jpg up to 5MB</Box>
+                        </FileUpload.DropzoneContent>
+                      </FileUpload.Dropzone>
+
+                      <FileUpload.List files={files} />
+                    </FileUpload.Root>
+                  </Tabs.Content>
+                </Tabs.Root>
+              </Dialog.Body>
+
+              <Dialog.Footer mt="4">
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </>
+  )
+}
+
+```
+
+### Hashtags
+
+To support hashtags in the editor, create a custom
+[Tiptap node](https://tiptap.dev/docs/editor/extensions/nodes). This allows
+hashtags to be parsed, rendered, and handled as structured inline content.
+
+),
+        type: this.type,
+        getAttributes: (match) => ({
+          tag: match[1].substring(trigger.length),
+        }),
+      }),
+    ]
+  },
+
+  addPasteRules() {
+    const trigger = this.options.trigger
+    return [
+      nodePasteRule({
+        find: new RegExp(`${trigger}([a-zA-Z0-9_]+)`, "g"),
+        type: this.type,
+        getAttributes: (match) => ({ tag: match[1] }),
+      }),
+    ]
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(HashtagComponent)
+  },
+})
+
+function HashtagComponent({ node }: NodeViewProps) {
+  const { tag } = node.attrs as HashtagAttributes
+  return `#${tag}`
+}
+
+function preprocessContent(content: string, trigger: string = "#"): string {
+  const regex = new RegExp(`${trigger}([a-zA-Z0-9_]+)`, "g")
+
+  return content.replace(regex, (_match, tag) => {
+    return `<span data-type="hashtag" data-tag="${tag}">${trigger}${tag}</span>`
+  })
+}
+
+```
+
+### Mentions
+
+Here's an example of how to add mentions to the editor by creating a custom
+Tiptap extension that triggers on `@` and renders a suggestion menu using the
+provided menu components.
+
+```tsx
+"use client"
+
+import Mention from "@tiptap/extension-mention"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { TextStyle } from "@tiptap/extension-text-style"
+import {
+  NodeViewWrapper,
+  type ReactNodeViewProps,
+  ReactNodeViewRenderer,
+  useEditor,
+} from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import {
+  type HashtagItem,
+  type MentionItem,
+  createMentionConfig,
+  createSuggestionConfig,
+} from "@/components/ui/rich-text-editor-menu"
+import { Tag } from "@/components/ui/tag"
+
+export const RichTextEditorWithMentions = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+      TextStyle,
+      CustomMention.configure({
+        HTMLAttributes: {
+          class: "mention",
+        },
+        suggestion: createMentionConfig(MENTION_USERS),
+      }),
+      HashtagMention.configure({
+        HTMLAttributes: {
+          class: "hashtag",
+        },
+        suggestion: createSuggestionConfig("#", (query) =>
+          HASHTAGS.filter((hashtag) =>
+            hashtag.label.toLowerCase().includes(query.toLowerCase()),
+          ),
+        ),
+      }),
+    ],
+    content: `<h1>Rich Text Editor with Mentions</h1><p>Type <strong>@</strong> for mentions or <strong>#</strong> for hashtags</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="sm">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.H1 />
+          <Control.H2 />
+          <Control.H3 />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+          <Control.Blockquote />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+const MentionComponent = (props: ReactNodeViewProps) => {
+  return (
+    <NodeViewWrapper as="span">
+      <Tag size="lg" colorPalette="orange" mr="1">
+        @{props.node.attrs.label ?? props.node.attrs.id}
+      </Tag>
+    </NodeViewWrapper>
+  )
+}
+
+const CustomMention = Mention.extend({
+  addNodeView() {
+    return ReactNodeViewRenderer(MentionComponent)
+  },
+})
+
+const HashtagMention = Mention.extend({
+  name: "hashtag",
+  addNodeView() {
+    return ReactNodeViewRenderer((props) => (
+      <NodeViewWrapper as="span">
+        #{props.node.attrs.label ?? props.node.attrs.id}
+      </NodeViewWrapper>
+    ))
+  },
+})
+
+const MENTION_USERS: MentionItem[] = [
+  { id: "1", label: "Alice Johnson", email: "alice@example.com" },
+  { id: "2", label: "Bob Smith", email: "bob@example.com" },
+  { id: "3", label: "Charlie Davis", email: "charlie@example.com" },
+  { id: "4", label: "Diana Wilson", email: "diana@example.com" },
+  { id: "5", label: "Ethan Brown", email: "ethan@example.com" },
+  { id: "6", label: "Fiona Martinez", email: "fiona@example.com" },
+  { id: "7", label: "George Anderson", email: "george@example.com" },
+  { id: "8", label: "Hannah Taylor", email: "hannah@example.com" },
+]
+
+const HASHTAGS: HashtagItem[] = [
+  { id: "react", label: "react", description: "React.js framework" },
+  { id: "typescript", label: "typescript", description: "TypeScript language" },
+  { id: "nextjs", label: "nextjs", description: "Next.js framework" },
+  { id: "chakra", label: "chakra", description: "Chakra UI library" },
+  { id: "javascript", label: "javascript", description: "JavaScript language" },
+  { id: "css", label: "css", description: "CSS styling" },
+]
+
+```
+
+### Emojis
+
+Enhance your editor with [emoji suggestions](#emoji-menu) by using Tiptap's
+[Emoji extension](https://www.npmjs.com/package/@tiptap/extension-emoji). Emojis
+can be triggered by typing `:` or using common emoticons like `:)` or `<3`.
+
+```tsx
+"use client"
+
+import Emoji, { emojis } from "@tiptap/extension-emoji"
+import { useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { RichTextEditor } from "@/components/ui/rich-text-editor"
+import { createEmojiSuggestionConfig } from "@/components/ui/rich-text-editor-menu"
+
+export const RichTextEditorWithEmoji = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Emoji.configure({
+        emojis,
+        enableEmoticons: true,
+        suggestion: createEmojiSuggestionConfig(emojis),
+      }),
+    ],
+    content: `<p>Type <strong>:</strong> to insert an emoji, like :smile: or :heart:</p><p>You can also use emoticons like :) or &lt;3</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} rounded="md">
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+```
+
+### Slash Commands
+
+Enable slash commands in your editor by creating a Tiptap extension that
+triggers on `/`.
+
+```tsx
+"use client"
+
+import { Extension } from "@tiptap/core"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TextAlign from "@tiptap/extension-text-align"
+import { TextStyle } from "@tiptap/extension-text-style"
+import { PluginKey } from "@tiptap/pm/state"
+import { ReactRenderer, useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Suggestion } from "@tiptap/suggestion"
+import { Control, RichTextEditor } from "@/components/ui/rich-text-editor"
+import {
+  type FloatingMenuProps,
+  SuggestionMenu,
+} from "@/components/ui/rich-text-editor-menu"
+import { LuCode, LuHash, LuList, LuListOrdered, LuQuote } from "react-icons/lu"
+
+export const RichTextEditorWithSlashCommands = () => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["paragraph", "heading"] }),
+      TextStyle,
+      SlashCommandsExtension,
+    ],
+    content: `<h1>Slash Commands Editor</h1><p>Type <strong>/</strong> to see commands</p>`,
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root editor={editor} borderWidth="1px" rounded="sm">
+      <RichTextEditor.Toolbar>
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Strikethrough />
+          <Control.Code />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.H1 />
+          <Control.H2 />
+          <Control.H3 />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+          <Control.Blockquote />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+      </RichTextEditor.Toolbar>
+
+      <RichTextEditor.Content />
+    </RichTextEditor.Root>
+  )
+}
+
+interface SlashCommand {
+  id: string
+  label: string
+  description: string
+  icon: any
+  command: (props: { editor: any; range: any }) => void
+}
+
+const SLASH_COMMANDS: SlashCommand[] = [
+  {
+    id: "heading1",
+    label: "Heading 1",
+    description: "Large section heading",
+    icon: LuHash,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setNode("heading", { level: 1 })
+        .run()
+    },
+  },
+  {
+    id: "heading2",
+    label: "Heading 2",
+    description: "Medium section heading",
+    icon: LuHash,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setNode("heading", { level: 2 })
+        .run()
+    },
+  },
+  {
+    id: "heading3",
+    label: "Heading 3",
+    description: "Small section heading",
+    icon: LuHash,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setNode("heading", { level: 3 })
+        .run()
+    },
+  },
+  {
+    id: "bullet",
+    label: "Bullet List",
+    description: "Create a bullet list",
+    icon: LuList,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleBulletList().run()
+    },
+  },
+  {
+    id: "numbered",
+    label: "Numbered List",
+    description: "Create a numbered list",
+    icon: LuListOrdered,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleOrderedList().run()
+    },
+  },
+  {
+    id: "quote",
+    label: "Quote",
+    description: "Add a blockquote",
+    icon: LuQuote,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleBlockquote().run()
+    },
+  },
+  {
+    id: "code",
+    label: "Code Block",
+    description: "Add a code block",
+    icon: LuCode,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleCodeBlock().run()
+    },
+  },
+]
+
+const SlashCommandsExtension = Extension.create({
+  name: "slashCommands",
+
+  addProseMirrorPlugins() {
+    return [
+      Suggestion({
+        editor: this.editor,
+        char: "/",
+        pluginKey: new PluginKey("slashCommands"),
+
+        command: ({
+          editor,
+          range,
+          props,
+        }: {
+          editor: any
+          range: any
+          props: SlashCommand
+        }) => {
+          props.command({ editor, range })
+        },
+
+        items: ({ query }: { query: string }) =>
+          SLASH_COMMANDS.filter((command) =>
+            command.label.toLowerCase().includes(query.toLowerCase()),
+          ),
+
+        render: () => {
+          let component: ReactRenderer<
+            HTMLDivElement,
+            FloatingMenuProps
+          > | null = null
+          let container: HTMLDivElement | null = null
+          let selectedIndex = 0
+
+          return {
+            onStart(props) {
+              selectedIndex = 0
+              container = document.createElement("div")
+              document.body.appendChild(container)
+
+              component = new ReactRenderer(SuggestionMenu, {
+                props: {
+                  items: props.items,
+                  selectedIndex,
+                  onSelect: (item: SlashCommand) => props.command(item),
+                  clientRect: props.clientRect,
+                },
+                editor: props.editor,
+              })
+
+              container.appendChild(component.element)
+            },
+
+            onUpdate(props) {
+              if (!component) return
+              component.updateProps({
+                items: props.items,
+                selectedIndex,
+                onSelect: (item: SlashCommand) => props.command(item),
+                clientRect: props.clientRect,
+              })
+            },
+
+            onKeyDown({ event }) {
+              if (!component) return false
+
+              if (event.key === "ArrowUp") {
+                selectedIndex =
+                  (selectedIndex - 1 + component.props.items.length) %
+                  component.props.items.length
+                component.updateProps({ ...component.props, selectedIndex })
+                return true
+              }
+
+              if (event.key === "ArrowDown") {
+                selectedIndex =
+                  (selectedIndex + 1) % component.props.items.length
+                component.updateProps({ ...component.props, selectedIndex })
+                return true
+              }
+
+              if (event.key === "Enter") {
+                const item = component.props.items[selectedIndex]
+                if (item) component.props.onSelect(item)
+                return true
+              }
+
+              if (event.key === "Escape") return true
+
+              return false
+            },
+
+            onExit() {
+              if (container) container.remove()
+              container = null
+              if (component) component.destroy()
+              component = null
+            },
+          }
+        },
+      }),
+    ]
+  },
+})
+
+```
+
+### Composition
+
+A real-world Google Docs–like layout demonstrating a full-page editor with a
+collapsible document outline, sticky toolbar, floating link menus, and
+integrated controls for headings, lists, links, images, and text formatting.
+
+```tsx
+"use client"
+
+import {
+  Box,
+  Button,
+  Dialog,
+  FileUpload,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Input,
+  Portal,
+  Switch,
+  Tabs,
+  Text,
+  VStack,
+} from "@chakra-ui/react"
+import Color from "@tiptap/extension-color"
+import Heading from "@tiptap/extension-heading"
+import Highlight from "@tiptap/extension-highlight"
+import Image from "@tiptap/extension-image"
+import Link from "@tiptap/extension-link"
+import Subscript from "@tiptap/extension-subscript"
+import Superscript from "@tiptap/extension-superscript"
+import TaskItem from "@tiptap/extension-task-item"
+import TaskList from "@tiptap/extension-task-list"
+import TextAlign from "@tiptap/extension-text-align"
+import { TextStyleKit } from "@tiptap/extension-text-style"
+import { Plugin } from "@tiptap/pm/state"
+import { Editor, useEditor } from "@tiptap/react"
+import StarterKit from "@tiptap/starter-kit"
+import { Avatar } from "@/components/ui/avatar"
+import {
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuTrigger,
+} from "@/components/ui/menu"
+import {
+  PopoverBody,
+  PopoverContent,
+  PopoverRoot,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import {
+  Control,
+  RichTextEditor,
+  useRichTextEditorContext,
+} from "@/components/ui/rich-text-editor"
+import { Tooltip } from "@/components/ui/tooltip"
+import { forwardRef, useEffect, useId, useState } from "react"
+import {
+  LuChevronDown,
+  LuCircleHelp,
+  LuFileText,
+  LuLock,
+  LuMessageSquare,
+  LuSearch,
+  LuStar,
+  LuUpload,
+  LuVideo,
+} from "react-icons/lu"
+import { LuImage, LuLink } from "react-icons/lu"
+import {
+  LuArrowRight,
+  LuCopy,
+  LuDownload,
+  LuFolder,
+  LuPlus,
+  LuSettings,
+} from "react-icons/lu"
+
+export const RichTextEditorComposition = () => {
+  const [linkBubblePosition, setLinkBubblePosition] = useState<{
+    top: number
+    left: number
+  } | null>(null)
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({ heading: false }),
+      HeadingWithSlug.configure({ levels: [1, 2, 3] }),
+      TextStyleKit,
+      Color,
+      Highlight.configure({ multicolor: true }),
+      Subscript,
+      Superscript,
+      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Link.configure({ openOnClick: false }),
+      Image,
+      TaskList,
+      TaskItem.configure({ nested: true }),
+    ],
+    content: editorContent,
+    onSelectionUpdate: ({ editor }) => {
+      if (editor.isActive("link")) {
+        const { from } = editor.state.selection
+        const domAtPos = editor.view.domAtPos(from)
+        const node = domAtPos.node as HTMLElement
+        const linkElement =
+          node.nodeType === Node.TEXT_NODE ? node.parentElement : node
+
+        if (linkElement && linkElement.tagName === "A") {
+          const rect = linkElement.getBoundingClientRect()
+          setLinkBubblePosition({
+            top: rect.bottom + window.scrollY + 8,
+            left: rect.left + window.scrollX + rect.width / 2,
+          })
+        }
+      } else {
+        setLinkBubblePosition(null)
+      }
+    },
+    shouldRerenderOnTransaction: true,
+    immediatelyRender: false,
+  })
+
+  if (!editor) return null
+
+  return (
+    <RichTextEditor.Root
+      editor={editor}
+      shadow="sm"
+      h="100vh"
+      display="flex"
+      flexDirection="column"
+      css={{
+        "--content-padding-x": "spacing.16",
+        "--content-padding-y": "spacing.12",
+      }}
+    >
+      <GoogleDocsHeader />
+      <Toolbar />
+      <HStack
+        borderTop="1px solid"
+        borderColor="border"
+        flex="1"
+        mt="4"
+        alignItems="stretch"
+        gap={0}
+        overflow="hidden"
+      >
+        <Box
+          w="280px"
+          borderRight="1px solid"
+          borderColor="border"
+          display="flex"
+          flexDirection="column"
+          overflow="hidden"
+        >
+          <SidebarOutline editor={editor} />
+        </Box>
+        <Flex
+          flex="1"
+          justifyContent="center"
+          overflowY="auto"
+          position="relative"
+        >
+          <RichTextEditor.Content />
+          {linkBubblePosition && (
+            <LinkBubbleMenu
+              editor={editor}
+              position={linkBubblePosition}
+              onClose={() => setLinkBubblePosition(null)}
+            />
+          )}
+        </Flex>
+      </HStack>
+    </RichTextEditor.Root>
+  )
+}
+
+const LinkBubbleMenu = ({
+  editor,
+  position,
+  onClose,
+}: {
+  editor: Editor
+  position: { top: number; left: number }
+  onClose: () => void
+}) => {
+  const [url, setUrl] = useState("")
+  const [isEditing, setIsEditing] = useState(false)
+
+  useEffect(() => {
+    const attrs = editor.getAttributes("link")
+    setUrl(attrs.href || "")
+  }, [editor])
+
+  const handleSave = () => {
+    if (url.trim()) {
+      const isValid = /^https?:\/\//i.test(url.trim())
+      const finalUrl = isValid ? url.trim() : `https://${url.trim()}`
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: finalUrl })
+        .run()
+    }
+    setIsEditing(false)
+  }
+
+  const handleRemove = () => {
+    editor.chain().focus().unsetLink().run()
+    onClose()
+  }
+
+  return (
+    <Box
+      position="fixed"
+      top={`${position.top}px`}
+      left={`${position.left}px`}
+      transform="translateX(-50%)"
+      bg="white"
+      boxShadow="lg"
+      borderRadius="md"
+      borderWidth="1px"
+      p={3}
+      zIndex={1000}
+      minW="280px"
+    >
+      {isEditing ? (
+        <VStack gap={2} align="stretch">
+          <Input
+            size="sm"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter URL"
+            autoFocus
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleSave()
+              if (e.key === "Escape") setIsEditing(false)
+            }}
+          />
+          <HStack justify="flex-end" gap={2}>
+            <Button
+              size="xs"
+              variant="ghost"
+              onClick={() => setIsEditing(false)}
+            >
+              Cancel
+            </Button>
+            <Button size="xs" colorPalette="blue" onClick={handleSave}>
+              Save
+            </Button>
+          </HStack>
+        </VStack>
+      ) : (
+        <VStack gap={2} align="stretch">
+          <HStack justify="space-between">
+            <Text
+              fontSize="sm"
+              lineClamp={1}
+              truncate
+              flex="1"
+              color="blue.600"
+            >
+              {url}
+            </Text>
+          </HStack>
+          <HStack gap={2}>
+            <Button
+              size="xs"
+              variant="outline"
+              onClick={() => setIsEditing(true)}
+              flex="1"
+            >
+              Edit
+            </Button>
+            <Button
+              size="xs"
+              variant="outline"
+              colorPalette="red"
+              onClick={handleRemove}
+              flex="1"
+            >
+              Remove
+            </Button>
+          </HStack>
+        </VStack>
+      )}
+    </Box>
+  )
+}
+
+const GoogleDocsHeader = () => {
+  return (
+    <Flex px={4} py={2} alignItems="center" justifyContent="space-between">
+      <HStack gap={3} align="flex-start">
+        <Icon as={LuFileText} color="blue.500" boxSize={8} mt={1} />
+
+        <VStack align="flex-start" gap={0}>
+          <HStack gap={2}>
+            <Text fontSize="lg" fontWeight="semibold">
+              Legend Of X: The Complete Saga
+            </Text>
+            <IconButton variant="ghost" size="xs" color="gray.500">
+              <LuStar size={16} />
+            </IconButton>
+          </HStack>
+
+          <HStack gap={3}>
+            {menuItems.map((menu) => (
+              <MenuRoot key={menu.label}>
+                <MenuTrigger>
+                  <Button fontSize="sm" px={2} py={1} variant="ghost" size="xs">
+                    {menu.label}
+                  </Button>
+                </MenuTrigger>
+
+                <MenuContent minW="200px" py={1}>
+                  {menu.items.map((item) => (
+                    <MenuItem
+                      value={item.label}
+                      key={item.label}
+                      gap={3}
+                      cursor="button"
+                    >
+                      <HStack gap={3} align="center">
+                        <Icon as={() => item.icon} boxSize={4} />
+                        <Text fontSize="sm">{item.label}</Text>
+                      </HStack>
+                    </MenuItem>
+                  ))}
+                </MenuContent>
+              </MenuRoot>
+            ))}
+          </HStack>
+        </VStack>
+      </HStack>
+
+      <HStack gap={4}>
+        <IconButton variant="ghost">
+          <LuMessageSquare size={20} />
+        </IconButton>
+
+        <HStack gap={0}>
+          <IconButton variant="ghost">
+            <LuVideo size={20} />
+          </IconButton>
+          <IconButton variant="ghost" size="xs">
+            <LuChevronDown size={14} />
+          </IconButton>
+        </HStack>
+
+        <Button borderRadius="full" px={6} gap={2} colorPalette="blue">
+          <LuLock size={14} />
+          Share
+        </Button>
+
+        <Avatar
+          fallback={<Text fontSize="sm">SA</Text>}
+          name="Segun Adebayo"
+          src="https://bit.ly/sage-adebayo"
+        />
+      </HStack>
+    </Flex>
+  )
+}
+const Toolbar = () => {
+  return (
+    <Box px={4}>
+      <HStack
+        bg="bg.muted"
+        p={2}
+        gap={1}
+        rounded="50px"
+        mt="4"
+        overflowX="auto"
+      >
+        <IconButton variant="ghost" size="sm">
+          <LuSearch />
+        </IconButton>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Undo />
+          <Control.Redo />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.FontFamily width="140px" />
+          <Control.FontSize width="80px" />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.Bold />
+          <Control.Italic />
+          <Control.Underline />
+          <Control.Strikethrough />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.H1 />
+          <Control.H2 />
+          <Control.H3 />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.AlignLeft />
+          <Control.AlignCenter />
+          <Control.AlignRight />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <Control.BulletList />
+          <Control.OrderedList />
+        </RichTextEditor.ControlGroup>
+
+        <RichTextEditor.ControlGroup>
+          <LinkControl />
+          <InsertImageControl />
+        </RichTextEditor.ControlGroup>
+      </HStack>
+    </Box>
+  )
+}
+
+const SidebarOutline = ({ editor }: { editor: Editor }) => {
+  if (!editor) return null
+
+  const headings: { level: number; text: string; id: string }[] = []
+
+  if (editor.getJSON().content) {
+    editor.getJSON().content.forEach((node, i) => {
+      if (node.type === "heading") {
+        const { attrs = {}, content = [] } = node
+        const level = attrs.level ?? 1
+        const id = attrs.id ?? `heading-${i}`
+        const text = content.map((c: any) => c.text).join("") ?? ""
+        headings.push({ level, text, id })
+      }
+    })
+  }
+
+  const getPaddingLeft = (level: number = 1) => {
+    return (level - 1) * 16 + 4
+  }
+
+  const scrollToHeading = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
+  return (
+    <VStack align="stretch" gap={0} h="full">
+      <HStack
+        justify="space-between"
+        align="center"
+        p={4}
+        borderBottom="1px solid"
+        borderColor="border"
+        flexShrink={0}
+      >
+        <Text fontWeight="medium" fontSize="sm">
+          Document outline
+        </Text>
+        <IconButton variant="ghost" size="xs" aria-label="Options">
+          <Icon as={LuChevronDown} />
+        </IconButton>
+      </HStack>
+
+      <VStack align="stretch" gap={1} p={2} overflowY="auto" flex="1">
+        {headings.length === 0 ? (
+          <Text fontSize="sm" textAlign="center" p={4}>
+            Headings you add to the document will appear here
+          </Text>
+        ) : (
+          headings.map((h) => (
+            <Button
+              key={h.id}
+              variant="ghost"
+              size="sm"
+              pl={`${getPaddingLeft(h.level)}px`}
+              py={2}
+              onClick={() => scrollToHeading(h.id)}
+              lineClamp="1"
+              truncate
+            >
+              <Icon
+                as={LuFileText}
+                mr={2}
+                flexShrink={0}
+                color="gray.500"
+                boxSize={4}
+              />
+              {h.text}
+            </Button>
+          ))
+        )}
+      </VStack>
+    </VStack>
+  )
+}
+
+const LinkControl = forwardRef<
+  HTMLButtonElement,
+  Omit<Control.ButtonControlProps, "icon" | "label">
+>(function LinkControl(props, ref) {
+  const { editor } = useRichTextEditorContext()
+  const [open, setOpen] = useState(false)
+  const [url, setUrl] = useState("")
+  const [external, setExternal] = useState(false)
+  const [position, setPosition] = useState<{
+    top: number
+    left: number
+  } | null>(null)
+
+  const triggerId = useId()
+
+  if (!editor) return null
+
+  const handleOpen = () => {
+    const markAttrs = editor.getAttributes("link")
+    setUrl(markAttrs.href ?? "")
+    setExternal(markAttrs.target === "_blank")
+
+    // Get cursor position
+    const { from } = editor.state.selection
+    const coords = editor.view.coordsAtPos(from)
+
+    console.log("coords", coords)
+    setPosition({
+      top: coords.bottom,
+      left: coords.left,
+    })
+
+    setOpen(true)
+  }
+
+  const handleApply = () => {
+    const trimmed = url.trim()
+    if (!trimmed) {
+      editor.chain().focus().unsetLink().run()
+      setOpen(false)
+      return
+    }
+
+    const isValid = /^https?:\/\//i.test(trimmed)
+    const finalUrl = isValid ? trimmed : `https://${trimmed}`
+
+    editor
+      .chain()
+      .focus()
+      .extendMarkRange("link")
+      .setLink({ href: finalUrl, ...(external ? { target: "_blank" } : {}) })
+      .run()
+
+    setOpen(false)
+  }
+
+  const positioning = position
+    ? {
+        strategy: "fixed" as const,
+        placement: "bottom-start" as const,
+        gutter: 8,
+        getAnchorRect: () => ({
+          x: position.left,
+          y: position.top,
+          height: 0,
+        }),
+      }
+    : undefined
+
+  return (
+    <PopoverRoot
+      open={open}
+      onOpenChange={(e) => setOpen(e.open)}
+      positioning={positioning}
+      ids={{ trigger: triggerId }}
+    >
+      <Tooltip content="Insert Link" ids={{ trigger: triggerId }}>
+        <PopoverTrigger asChild>
+          <IconButton
+            ref={ref}
+            size="2xs"
+            aria-label="Insert Link"
+            onClick={handleOpen}
+            variant={editor.isActive("link") ? "subtle" : "ghost"}
+            {...props}
+          >
+            <LuLink />
+          </IconButton>
+        </PopoverTrigger>
+      </Tooltip>
+      <Portal>
+        <PopoverContent p="3" minW="280px">
+          <PopoverBody>
+            <Text fontWeight="medium" mb="2">
+              Insert Link
+            </Text>
+            <Input
+              placeholder="Enter URL"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              size="sm"
+              mb="3"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleApply()
+              }}
+              autoFocus
+            />
+            <HStack mb="4" align="center">
+              <Switch.Root
+                checked={external}
+                onCheckedChange={(e) => setExternal(e.checked)}
+                size="sm"
+              >
+                <Switch.HiddenInput />
+                <Switch.Control>
+                  <Switch.Thumb />
+                </Switch.Control>
+                <Switch.Label>Open in new tab</Switch.Label>
+              </Switch.Root>
+            </HStack>
+            <HStack justify="flex-end" gap="2">
+              <Button size="sm" variant="ghost" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button size="sm" onClick={handleApply}>
+                Apply
+              </Button>
+            </HStack>
+          </PopoverBody>
+        </PopoverContent>
+      </Portal>
+    </PopoverRoot>
+  )
+})
+
+function InsertImageControl() {
+  const { editor } = useRichTextEditorContext()
+  const [open, setOpen] = useState(false)
+  const [files, setFiles] = useState<File[]>([])
+
+  if (!editor) return null
+
+  return (
+    <>
+      <Control.ButtonControl
+        icon={<LuImage />}
+        label="Insert Image"
+        onClick={() => setOpen(true)}
+        variant="ghost"
+      />
+
+      <Dialog.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
+        <Dialog.Trigger asChild />
+        <Portal>
+          <Dialog.Backdrop />
+          <Dialog.Positioner>
+            <Dialog.Content maxW="lg">
+              <Dialog.Header>
+                <Dialog.Title>Insert Image</Dialog.Title>
+              </Dialog.Header>
+
+              <Dialog.Body>
+                <Tabs.Root defaultValue="url">
+                  <Tabs.List>
+                    <Tabs.Trigger value="url">
+                      <LuLink /> Embed URL
+                    </Tabs.Trigger>
+                    <Tabs.Trigger value="upload">
+                      <LuUpload /> Upload File
+                    </Tabs.Trigger>
+                  </Tabs.List>
+
+                  <Tabs.Content value="url">
+                    <Box display="flex" gap="2" mt="4">
+                      <Input
+                        placeholder="Enter image URL"
+                        id="image-url-input"
+                      />
+                      <Button
+                        onClick={() => {
+                          const url = (
+                            document.getElementById(
+                              "image-url-input",
+                            ) as HTMLInputElement
+                          ).value
+                          if (url) {
+                            editor.chain().focus().setImage({ src: url }).run()
+                            setOpen(false)
+                          }
+                        }}
+                      >
+                        Insert
+                      </Button>
+                    </Box>
+                  </Tabs.Content>
+
+                  <Tabs.Content value="upload">
+                    <FileUpload.Root
+                      maxW="xl"
+                      alignItems="stretch"
+                      maxFiles={1}
+                      accept="image/*"
+                      onFileAccept={(accepted) => {
+                        const uploaded = accepted.files ?? []
+                        setFiles(uploaded)
+
+                        if (uploaded[0]) {
+                          const url = URL.createObjectURL(uploaded[0])
+                          editor.chain().focus().setImage({ src: url }).run()
+                          setOpen(false)
+                        }
+                      }}
+                    >
+                      <FileUpload.HiddenInput />
+                      <FileUpload.Dropzone>
+                        <Icon size="md" color="fg.muted">
+                          <LuUpload />
+                        </Icon>
+                        <FileUpload.DropzoneContent>
+                          <Box>Drag and drop a file here</Box>
+                          <Box color="fg.muted">.png, .jpg up to 5MB</Box>
+                        </FileUpload.DropzoneContent>
+                      </FileUpload.Dropzone>
+
+                      <FileUpload.List files={files} />
+                    </FileUpload.Root>
+                  </Tabs.Content>
+                </Tabs.Root>
+              </Dialog.Body>
+
+              <Dialog.Footer mt="4">
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </>
+  )
+}
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-") // replace non-alphanumeric with dash
+    .replace(/^-+|-+$/g, "") // remove leading/trailing dashes
+}
+
+const HeadingWithSlug = Heading.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      id: {
+        default: null,
+        parseHTML: (element) => element.getAttribute("id"),
+        renderHTML: (attributes) => ({
+          id: attributes.id,
+        }),
+      },
+    }
+  },
+  addProseMirrorPlugins() {
+    return [
+      new Plugin({
+        appendTransaction: (_transactions, _oldState, newState) => {
+          const tr = newState.tr
+          let modified = false
+
+          newState.doc.descendants((node, pos) => {
+            if (node.type.name === "heading") {
+              const text = node.textContent
+              const slug = slugify(text)
+              if (node.attrs.id !== slug) {
+                tr.setNodeMarkup(pos, undefined, {
+                  ...node.attrs,
+                  id: slug,
+                })
+                modified = true
+              }
+            }
+          })
+
+          return modified ? tr : null
+        },
+      }),
+    ]
+  },
+})
+
+const editorContent = `
+      <h1 id="heading-0">Legend Of X: The Complete Saga</h1>
+      <p>In a world where technology and humanity collide, the fate of civilization hangs in the balance. This is the story of those who dared to question everything they knew.</p>
+
+      <h2 id="heading-1">Chapter 1: Awakening</h2>
+      <p>The city of <a href="https://example.com">Neo-Tokyo</a> stretched endlessly beneath the artificial sky. Maya Tanaka stood at the edge of the observation deck, watching the streams of data flow through the neural network that powered the megacity. She had always believed the System was infallible, that the Architects who built it had created a perfect world.</p>
+      <p>But something was wrong. The anomalies in the code were becoming more frequent, more deliberate. Someone—or something—was trying to break through.</p>
+
+      <h3 id="heading-2">Part 1: The First Glitch</h3>
+      <p>It started with small things. A flicker in the holographic displays. A delay in the transportation grid. Messages that appeared and disappeared before anyone could read them. Maya had noticed these irregularities for weeks, but she was afraid to report them. In Neo-Tokyo, questioning the System was considered treason.</p>
+      <p>One evening, as she worked late in the Neural Operations Center, the main screen went black. Then, slowly, text began to appear: "They are watching. They have always been watching. Find the Archive before it's too late."</p>
+      <h3 id="heading-3">Part 2: The Underground</h3>
+      <p>The next day, Maya received an encrypted message directing her to an abandoned sector of the city. She knew it was dangerous, but curiosity overwhelmed her caution. The meeting place was a decrepit building, its walls covered in graffiti that depicted symbols she didn't recognize.</p>
+      <p>Inside, she found a group of people huddled around old terminals. They called themselves the Disconnected—those who had rejected the neural implants that connected everyone to the System. Their leader, a man named Kenzo, explained that the glitches were intentional.</p>
+      <p>"We're trying to wake people up," he said. "The System isn't what you think it is. The Architects didn't save humanity—they enslaved it."</p>
+      <h2 id="heading-4">Chapter 2: The Archive</h2>
+      <p>Maya's decision to join the Disconnected changed everything. Kenzo taught her how to navigate the hidden layers of the System, the forgotten protocols and backdoors that the Architects thought they had sealed. Together, they began their search for the Archive.</p>
+      <p>The journey took them through the darkest corners of Neo-Tokyo. They encountered other groups of rebels, each with their own theories about what the Archive contained. Some believed it held the key to shutting down the System entirely. Others thought it was a weapon that could be used to take control.</p>
+      <h3 id="heading-5">Part 3: Revelations</h3>
+      <p>After months of searching, they found it. The Archive wasn't a physical location—it was a fragment of code hidden in the deepest layer of the System, protected by encryption so complex that even the Architects had lost access to it.</p>
+      <p>When Maya finally broke through the encryption, what she found shocked her. The Archive contained memories—thousands of them, uploaded from the minds of people who had lived before the Great Collapse. They revealed a truth that the Architects had hidden: the Collapse had been engineered.</p>
+      <p>The Architects had created the disaster that destroyed the old world so they could rebuild it in their image. And now, they were planning to do it again.</p>
+      <h2 id="heading-6">Chapter 3: Resistance</h2>
+      <p>Armed with the truth, Maya and the Disconnected began spreading the Archive's contents throughout the city. The response was immediate. Some people refused to believe it, clinging to their faith in the System. Others joined the resistance, ready to fight for their freedom.</p>
+      <p>The Architects responded with force. Security drones filled the streets, hunting down anyone suspected of accessing the Archive. The city descended into chaos as the battle between the Disconnected and the System's defenders intensified.</p>
+      <h3 id="heading-7">Part 4: The Final Stand</h3>
+      <p>Maya knew they couldn't win through violence alone. The System was too powerful, too entrenched. Instead, she devised a plan to use the Archive itself as a weapon. If they could upload its contents directly into the neural network, everyone connected to the System would see the truth simultaneously.</p>
+      <p>The operation was risky. It required infiltrating the Central Node, the heart of the System's infrastructure. Many of the Disconnected would have to sacrifice themselves to create a distraction. But it was their only chance.</p>
+      <p>As Maya stood before the Central Node's interface, her fingers trembling over the controls, she thought about all the lives that had been lost, all the lies that had been told. With one final command, she initiated the upload.</p>
+      <h2 id="heading-8">Epilogue: A New Beginning</h2>
+      <p>The System didn't collapse overnight. But once people knew the truth, they began to question, to resist, to rebuild. Maya watched from a rooftop as the artificial sky flickered and went dark for the first time in decades, revealing the stars above.</p>
+      <p>The world would never be perfect. But it would be real. And that, she thought, was worth fighting for.</p>
+    `
+
+const menuItems = [
+  {
+    label: "File",
+    items: [
+      { label: "New", icon: <LuPlus /> },
+      { label: "Open", icon: <LuFolder /> },
+      { label: "Make a copy", icon: <LuCopy /> },
+      { label: "Download", icon: <LuDownload /> },
+    ],
+  },
+  {
+    label: "Edit",
+    items: [
+      { label: "Undo", icon: <LuArrowRight /> },
+      { label: "Redo", icon: <LuArrowRight /> },
+      { label: "Cut", icon: <LuSettings /> },
+      { label: "Copy", icon: <LuCopy /> },
+      { label: "Paste", icon: <LuArrowRight /> },
+    ],
+  },
+  {
+    label: "View",
+    items: [
+      { label: "Zoom in", icon: <LuArrowRight /> },
+      { label: "Zoom out", icon: <LuArrowRight /> },
+      { label: "Full screen", icon: <LuSettings /> },
+    ],
+  },
+  {
+    label: "Insert",
+    items: [
+      { label: "Image", icon: <LuPlus /> },
+      { label: "Table", icon: <LuSettings /> },
+      { label: "Drawing", icon: <LuFolder /> },
+    ],
+  },
+  {
+    label: "Format",
+    items: [
+      { label: "Bold", icon: <LuSettings /> },
+      { label: "Italic", icon: <LuSettings /> },
+      { label: "Underline", icon: <LuSettings /> },
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      { label: "Spelling", icon: <LuSettings /> },
+      { label: "Word count", icon: <LuSettings /> },
+    ],
+  },
+  {
+    label: "Extensions",
+    items: [
+      { label: "Add-ons", icon: <LuSettings /> },
+      { label: "Apps Script", icon: <LuSettings /> },
+    ],
+  },
+  {
+    label: "Help",
+    items: [
+      { label: "Docs Help", icon: <LuCircleHelp /> },
+      { label: "Keyboard shortcuts", icon: <LuSettings /> },
+    ],
+  },
+]
+
+```
+
+## Guides
+
+### Adding controls
+
+`RichTextEditor` ships with a set of built-in controls that can be composed
+inside `RichTextEditor.ControlGroup`.
+
+```jsx
+import { Control } from "@/components/ui/rich-text-editor"
+```
+
+```jsx
+<RichTextEditor.ControlGroup>
+  <Control.Bold />
+  <Control.Italic />
+  <Control.Strike />
+</RichTextEditor.ControlGroup>
+```
+
+### Customizing Content Padding
+
+The editor uses CSS custom properties for content padding:
+
+```tsx
+<RichTextEditor.Root
+  editor={editor}
+  css={{
+    "--content-padding-x": "spacing.8",
+    "--content-padding-y": "spacing.6",
+    "--content-min-height": "sizes.96",
+  }}
+>
+  <RichTextEditor.Content />
+</RichTextEditor.Root>
+```
+
+### Custom Controls
+
+The `RichTextEditor` provides three factory functions for creating custom
+controls that integrate seamlessly with the editor: `createBooleanControl`,
+`createSelectControl`, and `createSwatchControl`.
+
+**Boolean Controls**
+
+Boolean controls toggle editor states (bold, italic, etc.) and are the most
+common control type:
+
+```tsx
+import { createBooleanControl } from "@/components/ui/rich-text-editor"
+import { LuSparkles } from "react-icons/lu"
+
+export const CustomHighlight = createBooleanControl({
+  label: "Highlight Important",
+  icon: LuSparkles,
+  command: (editor) => {
+    editor
+      .chain()
+      .focus()
+      .toggleMark("textStyle", {
+        backgroundColor: "#fef08a",
+        fontWeight: "bold"
+      })
+      .run()
+  },
+  getVariant: (editor) => {
+    const attrs = editor.getAttributes("textStyle")
+    return attrs.backgroundColor === "#fef08a" ? "subtle" : "ghost"
+  },
+  isDisabled: (editor) => !editor.can().toggleMark("textStyle")
+})
+
+// Use it in your toolbar
+<RichTextEditor.ControlGroup>
+  <CustomHighlight />
+</RichTextEditor.ControlGroup>
+```
+
+**Select Controls**
+
+Select controls provide dropdown menus for choosing between multiple options:
+
+```tsx
+import { createSelectControl } from "@/components/ui/rich-text-editor"
+
+export const LineHeight = createSelectControl({
+  label: "Line Height",
+  width: "100px",
+  placeholder: "Normal",
+  options: [
+    { value: "normal", label: "Normal" },
+    { value: "1.5", label: "1.5" },
+    { value: "2", label: "Double" },
+    { value: "2.5", label: "2.5" },
+  ],
+  getValue: (editor) => {
+    return editor.getAttributes("textStyle")?.lineHeight || "normal"
+  },
+  command: (editor, value) => {
+    if (value === "normal") {
+      editor.chain().focus().unsetMark("textStyle").run()
+    } else {
+      editor.chain().focus().setMark("textStyle", { lineHeight: value }).run()
+    }
+  },
+  renderValue: (value, option) => {
+    return <Box fontWeight="medium">{option?.label || "Normal"}</Box>
+  },
+})
+```
+
+**Swatch Controls**
+
+Swatch controls provide color picker interfaces with predefined color swatches:
+
+```tsx
+import { createSwatchControl } from "@/components/ui/rich-text-editor"
+import { LuPaintbrush } from "react-icons/lu"
+
+export const BackgroundColor = createSwatchControl({
+  label: "Background Color",
+  icon: LuPaintbrush,
+  swatches: [
+    { value: "#fef3c7", color: "#fef3c7", label: "Yellow" },
+    { value: "#dbeafe", color: "#dbeafe", label: "Blue" },
+    { value: "#dcfce7", color: "#dcfce7", label: "Green" },
+    { value: "#fce7f3", color: "#fce7f3", label: "Pink" },
+  ],
+  getValue: (editor) => {
+    return editor.getAttributes("textStyle")?.backgroundColor || ""
+  },
+  command: (editor, color) => {
+    editor
+      .chain()
+      .focus()
+      .setMark("textStyle", { backgroundColor: color })
+      .run()
+  },
+  getProps: (editor) => ({
+    variant: editor.getAttributes("textStyle")?.backgroundColor
+      ? "subtle"
+      : "ghost",
+  }),
+  showRemove: true,
+  onRemove: (editor) => {
+    editor
+      .chain()
+      .focus()
+      .updateAttributes("textStyle", { backgroundColor: null })
+      .run()
+  },
+})
+```
 
 # Scroll Area
 
@@ -39650,6 +45478,9 @@ import { Select } from "@chakra-ui/react"
 </Select.Root>
 ```
 
+To setup the select, use `useListCollection` to manage the
+[list collection](https://ark-ui.com/docs/collections/list-collection).
+
 ## Examples
 
 ### Sizes
@@ -39760,6 +45591,66 @@ export const SelectWithVariants = () => {
         )}
       </For>
     </Stack>
+  )
+}
+
+const frameworks = createListCollection({
+  items: [
+    { label: "React.js", value: "react" },
+    { label: "Vue.js", value: "vue" },
+    { label: "Angular", value: "angular" },
+    { label: "Svelte", value: "svelte" },
+  ],
+})
+
+```
+
+### Color Palette
+
+The Select component is designed to be neutral-colored by default for
+consistency across form elements. To apply a color palette, style the trigger
+and indicator components directly using the `colorPalette` token.
+
+```tsx
+"use client"
+
+import { Portal, Select, createListCollection } from "@chakra-ui/react"
+
+export const SelectWithColorPalette = () => {
+  return (
+    <Select.Root
+      colorPalette="red"
+      collection={frameworks}
+      size="sm"
+      width="320px"
+    >
+      <Select.HiddenSelect />
+      <Select.Label>Select framework</Select.Label>
+      <Select.Control>
+        <Select.Trigger
+          borderColor="colorPalette.muted"
+          bg="colorPalette.subtle"
+          color="colorPalette.fg"
+        >
+          <Select.ValueText placeholder="Select framework" />
+        </Select.Trigger>
+        <Select.IndicatorGroup>
+          <Select.Indicator color="colorPalette.fg" />
+        </Select.IndicatorGroup>
+      </Select.Control>
+      <Portal>
+        <Select.Positioner>
+          <Select.Content>
+            {frameworks.items.map((framework) => (
+              <Select.Item item={framework} key={framework.value}>
+                {framework.label}
+                <Select.ItemIndicator />
+              </Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Positioner>
+      </Portal>
+    </Select.Root>
   )
 }
 
@@ -40497,7 +46388,7 @@ const frameworks = createListCollection({
 
 ```
 
-### Within Popover
+### Open From Popover
 
 Here's an example of how to use the `Select` within a `Popover` component.
 
@@ -40512,7 +46403,7 @@ import {
   createListCollection,
 } from "@chakra-ui/react"
 
-export const SelectInPopover = () => {
+export const SelectOpenFromPopover = () => {
   return (
     <Popover.Root size="xs">
       <Popover.Trigger asChild>
@@ -40570,7 +46461,7 @@ const frameworks = createListCollection({
 
 ```
 
-### Within Dialog
+### Open From Dialog
 
 To use the `Select` within a `Dialog`, you need to avoid portalling the
 `Select.Positioner` to the document's body.
@@ -40610,7 +46501,7 @@ import {
   createListCollection,
 } from "@chakra-ui/react"
 
-export const SelectInDialog = () => {
+export const SelectOpenFromDialog = () => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -40953,7 +46844,7 @@ interface Framework {
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
 | colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
-| variant | outline | `'outline' \| 'subtle'` | The variant of the component |
+| variant | outline | `'outline' \| 'subtle' \| 'ghost'` | The variant of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg'` | The size of the component |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
@@ -40997,7 +46888,7 @@ Use when you don't need to control the value of the select. |
 Explore the `Select` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="select-basic-explorer" />
+<Explorer name="select-explorer-demo" />
 
 # Separator
 
@@ -42077,7 +47968,7 @@ export const SliderCustomization = () => {
         <Slider.Track bg="red.100">
           <Slider.Range bg="tomato" />
         </Slider.Track>
-        <Slider.Thumb index={0} boxSize={6} borderColor="tomato" shadow="md">
+        <Slider.Thumb index={0} boxSize={6} borderColor="tomato">
           <Box color="tomato" as={MdGraphicEq} />
         </Slider.Thumb>
       </Slider.Control>
@@ -42566,7 +48457,7 @@ npx @chakra-ui/cli snippet add slider
 - `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`
 - `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20` |
 | orientation | horizontal | `'vertical' \| 'horizontal'` | The orientation of the component |
-| origin | "start" | `'center' \| 'end' \| 'start'` | The origin of the slider range. The track is filled from the origin
+| origin | "start" | `'center' \| 'start' \| 'end'` | The origin of the slider range. The track is filled from the origin
 to the thumb for single values.
 - "start": Useful when the value represents an absolute value
 - "center": Useful when the value represents an offset (relative)
@@ -42605,7 +48496,7 @@ Use when you don't need to control the value of the slider. |
 Explore the `Slider` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="slider-explorer" />
+<Explorer name="slider-explorer-demo" />
 
 # Spinner
 
@@ -44372,7 +50263,7 @@ Use when you don't need to control the size of the panels. |
 Explore the `Splitter` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="splitter-explorer" />
+<Explorer name="splitter-explorer-demo" />
 
 # Stack
 
@@ -44735,7 +50626,7 @@ Here's how to setup the Stat for a closed component composition.
 Explore the `Stat` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="stat-explorer" />
+<Explorer name="stat-explorer-demo" />
 
 # Status
 
@@ -45569,7 +51460,7 @@ Use when you don't need to control the value of the stepper. |
 Explore the `Steps` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="steps-explorer" />
+<Explorer name="steps-explorer-demo" />
 
 # Switch
 
@@ -47169,7 +53060,7 @@ const data: Product[] = [
 Explore the `Table` component parts interactively. Click on parts in the sidebar
 to highlight them in the preview.
 
-<Explorer name="table-basic-explorer" />
+<Explorer name="table-explorer-demo" />
 
 # Tabs
 
@@ -47825,6 +53716,23 @@ export const TabsWithAnimation = () => {
 
 ```
 
+## Guide
+
+### Styling active tab
+
+Use the `_selected` condition to style the active tab's text and background.
+
+```tsx
+<Tabs.Trigger
+  _selected={{
+    bg: "blue.500",
+    color: "white",
+  }}
+>
+  Tab
+</Tabs.Trigger>
+```
+
 ## Props
 
 ### Root
@@ -47851,7 +53759,7 @@ export const TabsWithAnimation = () => {
 Use when you don't need to control the selected tab value. |
 | deselectable | undefined | `boolean` | Whether the active tab can be deselected when clicking on it. |
 | id | undefined | `string` | The unique identifier of the machine. |
-| ids | undefined | `Partial<{ root: string; trigger: string; list: string; content: string; indicator: string }>` | The ids of the elements in the tabs. Useful for composition. |
+| ids | undefined | `Partial<{\n  root: string\n  trigger: (value: string) => string\n  list: string\n  content: (value: string) => string\n  indicator: string\n}>` | The ids of the elements in the tabs. Useful for composition. |
 | navigate | undefined | `(details: NavigateDetails) => void` | Function to navigate to the selected tab when clicking on it.
 Useful if tab triggers are anchor elements. |
 | onFocusChange | undefined | `(details: FocusChangeDetails) => void` | Callback to be called when the focused tab changes |
@@ -48901,23 +54809,18 @@ export const TagsInputWithCombobox = () => {
     filter: contains,
   })
 
-  const inputId = useId()
+  const uid = useId()
   const controlRef = useRef<HTMLDivElement | null>(null)
 
   const tags = useTagsInput({
-    ids: { input: inputId },
+    ids: { input: `input_${uid}`, control: `control_${uid}` },
   })
 
   const comobobox = useCombobox({
-    ids: { input: inputId },
+    ids: { input: `input_${uid}`, control: `control_${uid}` },
     collection,
     onInputValueChange(e) {
       filter(e.inputValue)
-    },
-    positioning: {
-      getAnchorRect() {
-        return controlRef.current!.getBoundingClientRect()
-      },
     },
     value: [],
     allowCustomValue: true,
@@ -48947,7 +54850,6 @@ export const TagsInputWithCombobox = () => {
 
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.Empty>No tags found</Combobox.Empty>
             {collection.items.map((item) => (
               <Combobox.Item item={item} key={item}>
                 <Combobox.ItemText>{item}</Combobox.ItemText>
@@ -49030,7 +54932,7 @@ Useful for preventing duplicates or invalid tag values. |
 Explore the `TagsInput` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="tags-input-explorer" />
+<Explorer name="tags-input-explorer-demo" />
 
 # Text
 
@@ -49977,6 +55879,7 @@ export const TimelineComposition = () => {
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | unstyled | undefined | `boolean` | Whether to remove the component's style. |
+| showLastSeparator | false | `'true' \| 'false'` | The showLastSeparator of the component |
 
 
 ## Explorer
@@ -50664,7 +56567,6 @@ content within the popover when opened. |
 of the popover content. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
-| colorPalette | gray | `'gray' \| 'red' \| 'orange' \| 'yellow' \| 'green' \| 'teal' \| 'blue' \| 'cyan' \| 'purple' \| 'pink'` | The color palette of the component |
 | size | md | `'xs' \| 'sm' \| 'md' \| 'lg'` | The size of the component |
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
@@ -50681,6 +56583,7 @@ Use when you don't need to control the open state of the popover. |
 | onInteractOutside | undefined | `(event: InteractOutsideEvent) => void` | Function called when an interaction happens outside the component |
 | onOpenChange | undefined | `(details: OpenChangeDetails) => void` | Function invoked when the popover opens or closes |
 | onPointerDownOutside | undefined | `(event: PointerDownOutsideEvent) => void` | Function called when the pointer is pressed down outside the component |
+| onRequestDismiss | undefined | `(event: LayerDismissEvent) => void` | Function called when this layer is closed due to a parent layer being closed |
 | open | undefined | `boolean` | The controlled open state of the popover |
 | persistentElements | undefined | `(() => Element \| null)[]` | Returns the persistent elements that:
 - should not have pointer-events disabled
@@ -51168,7 +57071,7 @@ export const TooltipWithTab = () => {
 
 | Prop | Default | Type | Description |
 | --- | --- | --- | --- |
-| closeDelay | 500 | `number` | The close delay of the tooltip. |
+| closeDelay | 150 | `number` | The close delay of the tooltip. |
 | closeOnClick | true | `boolean` | Whether the tooltip should close on click |
 | closeOnEscape | true | `boolean` | Whether to close the tooltip when the Escape key is pressed. |
 | closeOnPointerDown | true | `boolean` | Whether to close the tooltip on pointerdown. |
@@ -51176,7 +57079,7 @@ export const TooltipWithTab = () => {
 | interactive | false | `boolean` | Whether the tooltip's content is interactive.
 In this mode, the tooltip will remain open when user hovers over the content. |
 | lazyMount | false | `boolean` | Whether to enable lazy mounting |
-| openDelay | 1000 | `number` | The open delay of the tooltip. |
+| openDelay | 400 | `number` | The open delay of the tooltip. |
 | skipAnimationOnMount | false | `boolean` | Whether to allow the initial presence animation. |
 | unmountOnExit | false | `boolean` | Whether to unmount on exit. |
 | as | undefined | `React.ElementType` | The underlying element to render. |
@@ -51201,7 +57104,7 @@ Use when you don't need to control the open state of the tooltip. |
 Explore the `Tooltip` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="tooltip-explorer" />
+<Explorer name="tooltip-explorer-demo" />
 
 # TreeView
 
@@ -51308,6 +57211,10 @@ import { TreeView } from "@chakra-ui/react"
   </TreeView.Tree>
 </TreeView.Root>
 ```
+
+> To setup the tree view, you need to use the
+> [tree collection](https://ark-ui.com/docs/collections/tree-collection) to
+> register the tree data.
 
 ## Shortcuts
 
@@ -53265,6 +59172,7 @@ const collection = createTreeCollection<Node>({
 | as | undefined | `React.ElementType` | The underlying element to render. |
 | asChild | undefined | `boolean` | Use the provided child element as the default rendered element, combining their props and behavior. |
 | unstyled | undefined | `boolean` | Whether to remove the component's style. |
+| canRename | undefined | `(node: T, indexPath: IndexPath) => boolean` | Function to determine if a node can be renamed |
 | checkedValue | undefined | `string[]` | The controlled checked node value |
 | defaultCheckedValue | undefined | `string[]` | The initial checked node value when rendered.
 Use when you don't need to control the checked node value. |
@@ -53279,11 +59187,14 @@ Use when you don't need to control the selected node value. |
 | ids | undefined | `Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>` | The ids of the tree elements. Useful for composition. |
 | loadChildren | undefined | `(details: LoadChildrenDetails<T>) => Promise<T[]>` | Function to load children for a node asynchronously.
 When provided, branches will wait for this promise to resolve before expanding. |
+| onBeforeRename | undefined | `(details: RenameCompleteDetails) => boolean` | Called before a rename is completed. Return false to prevent the rename. |
 | onCheckedChange | undefined | `(details: CheckedChangeDetails) => void` | Called when the checked value changes |
 | onExpandedChange | undefined | `(details: ExpandedChangeDetails<T>) => void` | Called when the tree is opened or closed |
 | onFocusChange | undefined | `(details: FocusChangeDetails<T>) => void` | Called when the focused node changes |
 | onLoadChildrenComplete | undefined | `(details: LoadChildrenCompleteDetails<T>) => void` | Called when a node finishes loading children |
 | onLoadChildrenError | undefined | `(details: LoadChildrenErrorDetails<T>) => void` | Called when loading children fails for one or more nodes |
+| onRenameComplete | undefined | `(details: RenameCompleteDetails) => void` | Called when a node label rename is completed |
+| onRenameStart | undefined | `(details: RenameStartDetails<T>) => void` | Called when a node starts being renamed |
 | onSelectionChange | undefined | `(details: SelectionChangeDetails<T>) => void` | Called when the selection changes |
 | selectedValue | undefined | `string[]` | The controlled selected node value |
 | animateContent | undefined | `'true' \| 'false'` | The animateContent of the component |
@@ -53307,7 +59218,7 @@ When provided, branches will wait for this promise to resolve before expanding. 
 Explore the `TreeView` component parts interactively. Click on parts in the
 sidebar to highlight them in the preview.
 
-<Explorer name="tree-view-explorer" />
+<Explorer name="tree-view-explorer-demo" />
 
 # Visually Hidden
 
@@ -54463,21 +60374,42 @@ export const TokensFocusRing = () => {
 
 ### Ring Color
 
-To change the focus ring color for a specific component, you can use the
-`focusRingColor` prop.
+There are three ways to customize the focus ring color:
+
+**1. Per component** - Use the `focusRingColor` prop:
 
 ```tsx
 <Button focusRingColor="red.500">Click me</Button>
 ```
 
-To change the color of the focus ring globally, you can configure the
-`focusRing` semantic token.
+**2. Globally** - Set it in global CSS:
 
 ```tsx title="theme.ts"
 const config = defineConfig({
   globalCss: {
     "*": {
       focusRingColor: "red.500 !important",
+    },
+  },
+})
+
+export const system = createSystem(defaultConfig, config)
+```
+
+**3. Per color palette** - Define semantic tokens for each palette:
+
+```tsx title="theme.ts"
+const config = defineConfig({
+  theme: {
+    semanticTokens: {
+      colors: {
+        gray: {
+          focusRing: { value: "blue.500" },
+        },
+        blue: {
+          focusRing: { value: "blue.400" },
+        },
+      },
     },
   },
 })
@@ -54949,6 +60881,8 @@ Chakra UI supports the following keyframes out of the box.
 | `slide-to-right`         | <Box animation="slide-to-right 1s" />         |
 | `scale-in`               | <Box animation="scale-in 1s" />               |
 | `scale-out`              | <Box animation="scale-out 1s" />              |
+| `marqueeX`               | <Box animation="marqueeX 1s" />               |
+| `marqueeY`               | <Box animation="marqueeY 1s" />               |
 
 ## Durations
 
@@ -55927,6 +61861,33 @@ This means a code like this will not work:
 For this cases, we recommend rendering multiple versions of the component with
 different breakpoints, then hide/show as needed.
 
+## Using Semantic Tokens
+
+Semantic tokens from your theme are available in recipes. Reference them by
+name.
+
+```tsx title="button.recipe.ts"
+import { defineRecipe } from "@chakra-ui/react"
+
+export const buttonRecipe = defineRecipe({
+  base: {
+    bg: "bg.muted", // semantic token
+    color: "fg", // semantic token
+    borderRadius: "l2", // semantic radius
+  },
+  variants: {
+    variant: {
+      primary: {
+        bg: "colorPalette.solid", // virtual color
+        color: "colorPalette.contrast",
+      },
+    },
+  },
+})
+```
+
+Common tokens: `bg`, `fg`, `border`, `colorPalette.*`
+
 ## Theme Usage
 
 To use the recipe in a reusable manner, move it to the system theme and add it
@@ -56106,6 +62067,22 @@ This allows the use of the `bg` token in the following ways:
   <Box bg="bg.primary">Hello World</Box>
   <Box bg="bg.secondary">Hello World</Box>
 </Box>
+```
+
+## Using in Recipes
+
+Semantic tokens are available in recipe definitions. Reference them by name.
+
+```tsx
+import { defineRecipe } from "@chakra-ui/react"
+
+const cardRecipe = defineRecipe({
+  base: {
+    bg: "bg.subtle", // semantic token
+    color: "fg", // semantic token
+    borderColor: "border",
+  },
+})
 ```
 
 # Shadows
@@ -58379,12 +64356,15 @@ rendered HTML did not match the client**, and the error looks similar to:
 -<style data-emotion="css-global xxx" data-s="">
 ```
 
-This is caused by how Next.js hydrates Emotion CSS in `--turbo` mode. Please
-remove the `--turbo` flag from your `dev` script in your `package.json` file.
+This is caused by how Next.js hydrates Emotion CSS when running with Turbopack.
+Please add the `--webpack` flag to your `dev` and `build` scripts in your
+`package.json` file instead.
 
 ```diff
-- "dev": "next dev --turbo"
-+ "dev": "next dev"
+- "dev": "next dev"
+- "build": "next build"
++ "dev": "next dev --webpack"
++ "build": "next build --webpack"
 ```
 
 When this is fixed by the `Next.js` team, we'll update this guide.
@@ -58546,12 +64526,15 @@ rendered HTML did not match the client**, and the error looks similar to:
 -<style data-emotion="css-global xxx" data-s="">
 ```
 
-This is caused by how Next.js hydrates Emotion CSS in `--turbo` mode. Please
-remove the `--turbo` flag from your `dev` script in your `package.json` file.
+This is caused by how Next.js hydrates Emotion CSS when running with Turbopack.
+Please add the `--webpack` flag to your `dev` and `build` scripts in your
+`package.json` file instead.
 
 ```diff
-- "dev": "next dev --turbo"
-+ "dev": "next dev"
+- "dev": "next dev"
+- "build": "next build"
++ "dev": "next dev --webpack"
++ "build": "next build --webpack"
 ```
 
 When this is fixed by the `Next.js` team, we'll update this guide.
@@ -59166,6 +65149,124 @@ export const ColorModeForced = () => {
 > You might need to update the `color-mode.tsx` snippet since the `LightMode`
 > and `DarkMode` components were recently added to the snippet.
 
+## Guides
+
+### Setting Default Color Mode
+
+To set the default color mode, update the `ColorModeProvider` in your
+`components/ui/color-mode.tsx` file.
+
+**Default to light mode:**
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      defaultTheme="light"
+      {...props}
+    />
+  )
+}
+```
+
+**Default to dark mode:**
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      defaultTheme="dark"
+      {...props}
+    />
+  )
+}
+```
+
+**Respect system preference (default):**
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      defaultTheme="system"
+      {...props}
+    />
+  )
+}
+```
+
+### Disabling System Preference
+
+By default, the color mode respects the user's system preference. To disable
+this and only use `light` or `dark` mode, set `enableSystem` to `false`.
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      defaultTheme="light"
+      enableSystem={false}
+      {...props}
+    />
+  )
+}
+```
+
+### Using Custom Storage Key
+
+The color mode is stored in `localStorage` under the key `theme`. To use a
+custom key, set the `storageKey` prop.
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      storageKey="my-app-color-mode"
+      {...props}
+    />
+  )
+}
+```
+
+### Forcing a Specific Page to Light/Dark Mode
+
+To force a specific page to render in a specific color mode, set the
+`forcedTheme` prop in the provider.
+
+```tsx
+export function ColorModeProvider(props: ColorModeProviderProps) {
+  return (
+    <ThemeProvider
+      attribute="class"
+      disableTransitionOnChange
+      forcedTheme="dark"
+      {...props}
+    />
+  )
+}
+```
+
+Alternatively, use the `LightMode` or `DarkMode` components to force specific
+parts of your UI to render in a specific color mode.
+
+## FAQ
+
+### Does next-themes only work with Next.js?
+
+No. Despite its name, `next-themes` is a general-purpose library that works with
+any React framework including Vite, Remix, Gatsby, and others. The name can be
+misleading, but it works great everywhere.
+
 # Composition
 
 ## The `as` Prop
@@ -59237,14 +65338,15 @@ Here's a list of all the components available in the library.
 # Server Components
 
 React Server Components is a new feature in React that allows you to build
-components that render on the server and return UI to the client without hydration.
+components that render on the server and return UI to the client without
+hydration.
 
 Client components are still server-rendered but hydrated on the client. Learn
 more about
 [Server component patterns](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns)
 
 Chakra UI components are client components because they rely on `useState`,
-`useRef` and `useState` which are not available in server components.
+`useRef` and `useContext` which are not available in server components.
 
 :::info
 
@@ -62806,6 +68908,36 @@ const customConfig = defineConfig({
 })
 
 export const system = createSystem(defaultConfig, customConfig)
+```
+
+### Change global font family
+
+To change the font family globally, set it on the `html` element in globalCss:
+
+```tsx title="theme.ts"
+const customConfig = defineConfig({
+  globalCss: {
+    html: {
+      fontFamily: "Roboto, sans-serif",
+    },
+  },
+})
+```
+
+Alternatively, define custom font tokens:
+
+```tsx title="theme.ts"
+const customConfig = defineConfig({
+  theme: {
+    tokens: {
+      fonts: {
+        body: { value: "Roboto, sans-serif" },
+        heading: { value: "Poppins, sans-serif" },
+        mono: { value: "Fira Code, monospace" },
+      },
+    },
+  },
+})
 ```
 
 ### Remove global CSS

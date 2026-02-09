@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/guide/optimization/code-splitting.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/guides/code-splitting/](https://webpack.js.org/guides/code-splitting/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/guides/code-splitting/" />
 
 # Code splitting
 
@@ -135,8 +140,8 @@ Here is an example showing the effect of the `name` configuration of cacheGroup.
 
 Adding these inline directives to your imports allows Rspack to output resource hints that tell the browser that:
 
-* **prefetch**: resource is probably needed for some navigation in the future
-* **preload**: resource will also be needed during the current navigation
+- **prefetch**: resource is probably needed for some navigation in the future
+- **preload**: resource will also be needed during the current navigation
 
 An example of this is having a `HomePage` component, which renders a `LoginButton` component which then on demand loads a `LoginModal` component after being clicked.
 
@@ -153,10 +158,10 @@ Rspack will add the prefetch hint once the parent chunk has been loaded.
 
 Preload directive has a bunch of differences compared to prefetch:
 
-* A preloaded chunk starts loading in parallel to the parent chunk. A prefetched chunk starts after the parent chunk finishes loading.
-* A preloaded chunk has medium priority and is instantly downloaded. A prefetched chunk is downloaded while the browser is idle.
-* A preloaded chunk should be instantly requested by the parent chunk. A prefetched chunk can be used anytime in the future.
-* Browser support is different.
+- A preloaded chunk starts loading in parallel to the parent chunk. A prefetched chunk starts after the parent chunk finishes loading.
+- A preloaded chunk has medium priority and is instantly downloaded. A prefetched chunk is downloaded while the browser is idle.
+- A preloaded chunk should be instantly requested by the parent chunk. A prefetched chunk can be used anytime in the future.
+- Browser support is different.
 
 An example of this can be having a `Component` which always depends on a big library that should be in a separate chunk.
 

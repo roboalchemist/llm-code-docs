@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/domains/bimi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Implementing BIMI
 
 > Set up BIMI to gain brand recognition by displaying your logo in the inbox.
@@ -62,18 +66,22 @@ Here is an example of an adequate DMARC record:
 
 ### 2. Establish verifiable use of your logo
 
-To display your logo in most email clients using BIMI, you need to prove ownership of your logo by obtaining a mark certificate. This process is similar to acquiring an SSL certificate for your website. You can purchase a mark certificate from various authorized vendors. We recommend [DigiCert](https://www.digicert.com/).
+To display your logo in most email clients using BIMI, you need to prove ownership of your logo by obtaining a mark certificate. This process is similar to acquiring an SSL certificate for your website. You can purchase a mark certificate from one of the following [authorized mark verifying authorities](https://bimigroup.org/vmc-issuers/):
+
+* [DigiCert](https://www.digicert.com/tls-ssl/verified-mark-certificates)
+* [GlobalSign](https://www.globalsign.com/)
+* [SSL.com](https://www.ssl.com/)
 
 There are two possible mark Certificate's to verify the use of your logo:
 
-* **Verified Mark Certificate (VMC)**: A certificate issued by a Certificate Authority (CA) that is used to verify that you are the owner of the logo you are trying to display. A VMC is avaiable if you have a trademark of your logo. With a VMC, Gmail will display a blue checkmark.
+* **Verified Mark Certificate (VMC)**: A certificate issued by a Certificate Authority (CA) that is used to verify that you are the owner of the logo you are trying to display. A VMC is available if you have a trademark of your logo. With a VMC, Gmail will display a blue checkmark.
 * **Common Mark Certificate (CMC)**: A certificate also issued by Certificate Authority (CA) to verify you. A CMC is available to you if you can establish that you’ve used your logo for one year. Currently, only Gmail supports a CMC.
 
-A VMC offers the widest email client support, though the barrier of a trademark means a CMC is an easier path if you have eastablished use of your logo for one year.
+A VMC offers the widest email client support, though the barrier of a trademark means a CMC is an easier path if you have established use of your logo for one year.
 
 Here are a some things to know before starting the certificate purchase process:
 
-* If you don't hold a trademark for your logo or have not used your logo for a year, you will not be able to purchase a certiifcate.
+* If you don't hold a trademark for your logo or have not used your logo for a year, you will not be able to purchase a certificate.
 * The process could take weeks, so start early and respond to their requests quickly.
 * You will need to provide a [SVG Tiny P/S formatted logo](https://bimigroup.org/creating-bimi-svg-logo-files/).
 * You will need to prove you own the domain by adding a DNS record.

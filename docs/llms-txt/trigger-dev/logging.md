@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/logging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging and tracing
 
 > How to use the built-in logging and tracing system.
@@ -16,7 +20,7 @@ You can use `console.log()`, `console.error()`, etc as normal and they will be s
 
 We recommend that you use our `logger` object which creates structured logs. Structured logs will make it easier for you to search the logs to quickly find runs.
 
-```ts /trigger/logging.ts theme={null}
+```ts /trigger/logging.ts theme={"theme":"css-variables"}
 import { task, logger } from "@trigger.dev/sdk";
 
 export const loggingExample = task({
@@ -54,7 +58,7 @@ You can [add instrumentations](/config/config-file#instrumentations). The Prisma
 
 If you want to add custom traces to your code, you can use the `logger.trace` function. It will create a new OTEL trace and you can set attributes on it.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 
 export const customTrace = task({

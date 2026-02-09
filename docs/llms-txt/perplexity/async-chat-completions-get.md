@@ -1,134 +1,143 @@
 # Source: https://docs.perplexity.ai/api-reference/async-chat-completions-get.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Async Chat Completions
 
-> Lists all asynchronous chat completion requests for the authenticated user.
+> Retrieve a list of all asynchronous chat completion requests for a given user.
+
+
 
 ## OpenAPI
 
 ````yaml get /async/chat/completions
+openapi: 3.1.0
+info:
+  title: Perplexity AI API
+  description: Perplexity AI API
+  version: 0.1.0
+servers: []
+security: []
 paths:
-  path: /async/chat/completions
-  method: get
-  servers:
-    - url: https://api.perplexity.ai
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
-          schema:
-            - type: integer
-              required: false
-              description: Maximum number of requests to return.
-              default: 20
-        next_token:
-          schema:
-            - type: string
-              required: false
-              description: >-
-                Token for fetching the next page of results. Ensure this token
-                is URL-encoded when passed as a query parameter.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              next_token:
-                allOf:
-                  - title: Next Token
-                    type: string
-                    nullable: true
-                    description: Token for fetching the next page of results.
-              requests:
-                allOf:
-                  - title: Requests
-                    type: array
-                    items:
-                      $ref: >-
-                        #/components/schemas/AsyncApiChatCompletionsResponseSummary
-            title: ListAsyncApiChatCompletionsResponse
-            refIdentifier: '#/components/schemas/ListAsyncApiChatCompletionsResponse'
-            requiredProperties:
-              - requests
-        examples:
-          example:
-            value:
-              next_token: <string>
-              requests:
-                - id: <string>
-                  created_at: 123
-                  started_at: 123
-                  completed_at: 123
-                  failed_at: 123
-                  model: <string>
-                  status: CREATED
-        description: Successfully retrieved list of async chat completion requests.
-  deprecated: false
-  type: path
+  /async/chat/completions:
+    get:
+      summary: List Async Chat Completions
+      description: >-
+        Retrieve a list of all asynchronous chat completion requests for a given
+        user.
+      operationId: list_async_chat_completions_async_chat_completions_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAsyncApiChatCompletionsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - HTTPBearer: []
 components:
   schemas:
+    ListAsyncApiChatCompletionsResponse:
+      properties:
+        next_token:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Next Token
+        requests:
+          items:
+            $ref: '#/components/schemas/AsyncApiChatCompletionsResponseSummary'
+          type: array
+          title: Requests
+      type: object
+      required:
+        - requests
+      title: ListAsyncApiChatCompletionsResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    AsyncApiChatCompletionsResponseSummary:
+      properties:
+        id:
+          type: string
+          title: Id
+        created_at:
+          type: integer
+          title: Created At
+        started_at:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Started At
+        completed_at:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Completed At
+        failed_at:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Failed At
+        model:
+          type: string
+          title: Model
+        status:
+          $ref: '#/components/schemas/AsyncProcessingStatus'
+      type: object
+      required:
+        - id
+        - created_at
+        - model
+        - status
+      title: AsyncApiChatCompletionsResponseSummary
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
     AsyncProcessingStatus:
-      title: AsyncProcessingStatus
       type: string
       enum:
         - CREATED
         - IN_PROGRESS
         - COMPLETED
         - FAILED
-      description: The status of an asynchronous processing job.
-    AsyncApiChatCompletionsResponseSummary:
-      title: AsyncApiChatCompletionsResponseSummary
-      type: object
-      properties:
-        id:
-          title: ID
-          type: string
-        created_at:
-          title: Created At
-          type: integer
-          format: int64
-          description: Unix timestamp of when the request was created.
-        started_at:
-          title: Started At
-          type: integer
-          format: int64
-          nullable: true
-          description: Unix timestamp of when processing started.
-        completed_at:
-          title: Completed At
-          type: integer
-          format: int64
-          nullable: true
-          description: Unix timestamp of when processing completed.
-        failed_at:
-          title: Failed At
-          type: integer
-          format: int64
-          nullable: true
-          description: Unix timestamp of when processing failed.
-        model:
-          title: Model
-          type: string
-        status:
-          $ref: '#/components/schemas/AsyncProcessingStatus'
-      required:
-        - id
-        - created_at
-        - model
-        - status
+      title: AsyncProcessingStatus
+      description: Status enum for async processing.
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
 
 ````

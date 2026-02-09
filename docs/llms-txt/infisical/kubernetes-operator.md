@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/guides/kubernetes-operator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Secrets With Kubernetes Operator
 
 > How to use the Infisical Kubernetes Operator to Push Secrets, Pull Secrets, and Generate Dynamic Secrets within your clusters.

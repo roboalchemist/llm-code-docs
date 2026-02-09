@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/no-code/chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat
 
 Agents with the chat capability can answer questions with tailored responses based on topics, personas, or data. You can connect the chat agent to a [Knowledge Graph](/home/knowledge-graph-concepts) to answer questions about your company's data.
@@ -157,6 +161,36 @@ Controls how many text snippets to retrieve from the Knowledge Graph for context
 * **Increase** for broader coverage when you need comprehensive research or more context
 * **Decrease** for best matches when you want focused queries or concise results
 
+#### Keyword relevance threshold
+
+Controls how closely keyword matches must align with your query. Higher settings require closer matches, while lower settings allow broader keyword relevance in results.
+
+**How it works**:
+
+* **Low**: Broader range - includes results with looser keyword matches
+* **Medium**: Balanced filtering for most use cases
+* **High**: Stricter relevance - only includes results with strong keyword matches
+
+**When to adjust**:
+
+* **Set higher** for stricter relevance when you need precise keyword matching
+* **Set lower** for broader range when you want to capture more potential matches
+
+#### Semantic relevance threshold
+
+Controls how closely results must match the meaning of your query. Higher settings require stronger semantic similarity, while lower settings allow varied interpretations.
+
+**How it works**:
+
+* **Low**: Broader range - includes results with looser semantic connections
+* **Medium**: Balanced filtering for most use cases
+* **High**: Stricter relevance - only includes results with strong semantic similarity
+
+**When to adjust**:
+
+* **Set higher** for stricter relevance when you need precise conceptual matching
+* **Set lower** for broader range when you want to capture more contextually related content
+
 ### Common configuration patterns
 
 The default configuration for Knowledge Graph mode handles most use cases. You can adjust the configuration to your specific needs. Below are some common configuration patterns for different use cases.
@@ -172,6 +206,8 @@ Use this configuration for comprehensive research tasks where you need thorough 
 * **Max tokens**: 7000 (detailed responses)
 * **Sub-question count**: 8 (thorough analysis)
 * **Weight distribution**: 25 (broad coverage)
+* **Keyword relevance threshold**: Low (broader range)
+* **Semantic relevance threshold**: Low (broader range)
 
 #### Quick answers
 
@@ -184,6 +220,8 @@ Use this configuration for fast, focused responses where speed and precision mat
 * **Max tokens**: 2000 (concise responses)
 * **Sub-question count**: 3 (quick processing)
 * **Weight distribution**: 15 (focused results)
+* **Keyword relevance threshold**: High (stricter relevance)
+* **Semantic relevance threshold**: High (stricter relevance)
 
 #### Creative content generation
 
@@ -196,6 +234,8 @@ Use this configuration when you want the AI to interpret and build upon source m
 * **Max tokens**: 5000 (moderate length)
 * **Sub-question count**: 6 (balanced analysis)
 * **Weight distribution**: 30 (comprehensive context)
+* **Keyword relevance threshold**: Medium (balanced filtering)
+* **Semantic relevance threshold**: Low (broader range)
 
 ### How parameters work together
 

@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/gmail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gmail Integration Guide
 
 > This guide outlines how start sending and receiving emails via Gmail in Unify.

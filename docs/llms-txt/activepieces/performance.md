@@ -1,6 +1,10 @@
 # Source: https://www.activepieces.com/docs/install/architecture/performance.md
 
-# Performance & Benchmarking
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Benchmarking
 
 ## Performance
 
@@ -78,7 +82,7 @@ AP_FLOW_WORKER_CONCURRENCY=25
 
 2. Create a flow with a Catch Webhook trigger and a webhook Return Response action.
 
-   <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3932ff8bbe1bc53cb4968458b5d617b0" alt="Simple Webhook Flow" data-og-width="719" width="719" data-og-height="847" height="847" data-path="resources/screenshots/simple-webhook-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f7f3771d8d0ddf3ea65aceaf8989177f 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5f63616909a658a7c36ccf60e376af4f 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=76c7ada115f8b4a9cc2e5ee37d5ec064 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=38ead94383a663547736a50dcd43e372 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6609bba1e3550712e3bf97019d8b33eb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0b43adade90df31e0c038cec274282a9 2500w" />
+   <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4e68236dc668545a3684a5c386c34e10" alt="Simple Webhook Flow" data-og-width="719" width="719" data-og-height="847" height="847" data-path="resources/screenshots/simple-webhook-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=98f67927644bec9ecb057703bf2f8488 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=8b6bad695ad685391707b874ca46090f 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=e0f6ef8bfd7ae3cb0b20633e7f47370e 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=efeb254621bfef95de62b864af8e0dcb 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=d7ca669e4ddd200fd8b29634b7ebbf3e 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/simple-webhook-flow.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=f8a0ff62d59dd43949c079626e0e62a3 2500w" />
 3. Get the webhook URL from the webhook trigger and append `/sync` to it.
 4. Install a benchmark tool like [ab](https://httpd.apache.org/docs/2.4/programs/ab.html):
 

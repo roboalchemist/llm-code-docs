@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/setup-datadog-apm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up Datadog APM
 
 > Guide for setting up Datadog Application Performance Monitoring (APM) on your Aptible apps
@@ -16,7 +20,7 @@ Datadog APM (Application Performance Monitoring) can be configured with Aptible 
     aptible apps:create datadog-agent
     aptible config:set --app datadog-agent DD_API_KEY=foo DD_HOSTNAME=aptible
     aptible deploy --app datadog-agent --docker-image=datadog/agent:7
-    aptible endpoints:https:create --app datadog-agent --default-domain cmd
+    aptible endpoints:https:create --app datadog-agent --default-domain cmd --internal
     ```
 
     The example above deploys the Datadog Agent v7 from Dockerhub, an endpoint with a default domain, and also sets two required configuration variables.
@@ -64,7 +68,7 @@ Datadog APM (Application Performance Monitoring) can be configured with Aptible 
     For example, a Dockerfile pointing to a PostgreSQL database could look like this:
 
     ```Dockerfile  theme={null}
-    FROM datadog/datadog-agent:7
+    FROM datadog/agent:7
     COPY postgres.yaml /conf.d/postgres.d/conf.yaml
     ```
 

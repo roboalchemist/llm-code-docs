@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/multivector-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multivector Search
 
 > Learn how to perform multivector search in LanceDB to handle multiple vector embeddings per document, ideal for late interaction models like ColBERT and ColPaLi.
@@ -155,8 +159,3 @@ With multiple vector queries, LanceDB calculates similarity using late interacti
 ## What's Next?
 
 If you still need more guidance, you can try the complete [Multivector Search Notebook](https://colab.research.google.com/github/lancedb/vectordb-recipes/blob/main/examples/saas_examples/python_notebook/Multivector_on_LanceDB_Cloud.ipynb).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

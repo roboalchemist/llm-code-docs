@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/image_captioning.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/image_captioning.md
 
 # Image captioning
 
@@ -51,7 +51,7 @@ The dataset has two features, `image` and `text`.
 
 Many image captioning datasets contain multiple captions per image. In those cases, a common strategy is to randomly sample a caption amongst the available ones during training.
 
-Split the dataset's train split into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
+Split the dataset's train split into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
 
 ```python
 ds = ds["train"].train_test_split(test_size=0.1)
@@ -145,9 +145,9 @@ def compute_metrics(eval_pred):
 
 ## Train
 
-Now, you are ready to start fine-tuning the model. You will use the 🤗 [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) for this.
+Now, you are ready to start fine-tuning the model. You will use the 🤗 [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) for this.
 
-First, define the training arguments using [TrainingArguments](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.TrainingArguments).
+First, define the training arguments using [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments).
 
 ```python
 from transformers import TrainingArguments, Trainer
@@ -187,7 +187,7 @@ trainer = Trainer(
 )
 ```
 
-To start training, simply call [train()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.train) on the [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) object.
+To start training, simply call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train) on the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) object.
 
 ```python
 trainer.train()
@@ -195,7 +195,7 @@ trainer.train()
 
 You should see the training loss drop smoothly as training progresses.
 
-Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
+Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
 
 ```python
 trainer.push_to_hub()

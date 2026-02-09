@@ -244,9 +244,9 @@ View tutorials to help you get started with Vectorize.
 
 ## Docs
 
-| Name | Last Updated | Type | Difficulty |
-| - | - | - | - |
-| [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 12 months ago | 📝 Tutorial | Beginner |
+| Name | Last Updated | Difficulty |
+| - | - | - |
+| [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | about 1 year ago | Beginner |
 
 ## Videos
 
@@ -283,7 +283,7 @@ title: Create indexes · Cloudflare Vectorize docs
 description: Indexes are the "atom" of Vectorize. Vectors are inserted into an
   index and enable you to query the index for similar vectors for a given input
   vector.
-lastUpdated: 2025-08-20T21:45:15.000Z
+lastUpdated: 2025-11-24T11:28:05.000Z
 chatbotDeprioritize: false
 source_url:
   html: https://developers.cloudflare.com/vectorize/best-practices/create-indexes/
@@ -349,7 +349,7 @@ headers = {
 
 
 body = {
-  "name": "demo-index"
+  "name": "demo-index",
   "description": "some index description",
   "config": {
     "dimensions": 1024,
@@ -897,7 +897,7 @@ source_url:
 title: Vectorize and Workers AI · Cloudflare Vectorize docs
 description: Vectorize allows you to generate vector embeddings using a
   machine-learning model, including the models available in Workers AI.
-lastUpdated: 2025-08-20T21:45:15.000Z
+lastUpdated: 2026-01-29T10:38:24.000Z
 chatbotDeprioritize: false
 source_url:
   html: https://developers.cloudflare.com/vectorize/get-started/embeddings/
@@ -1029,10 +1029,9 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
   ```jsonc
   {
-    "$schema": "./node_modules/wrangler/config-schema.json",
     "vectorize": [
       {
-        "binding": "VECTORIZE",
+        "binding": "VECTORIZE", // available in your Worker on env.VECTORIZE
         "index_name": "embeddings-index"
       }
     ]
@@ -1043,7 +1042,7 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
   ```toml
   [[vectorize]]
-  binding = "VECTORIZE" # available in your Worker on env.VECTORIZE
+  binding = "VECTORIZE"
   index_name = "embeddings-index"
   ```
 
@@ -1063,7 +1062,6 @@ From within the `embeddings-tutorial` directory, open your Wrangler file in your
 
   ```jsonc
   {
-    "$schema": "./node_modules/wrangler/config-schema.json",
     "vectorize": [
       {
         "binding": "VECTORIZE",
@@ -1071,7 +1069,7 @@ From within the `embeddings-tutorial` directory, open your Wrangler file in your
       }
     ],
     "ai": {
-      "binding": "AI"
+      "binding": "AI" // available in your Worker on env.AI
     }
   }
   ```
@@ -1080,12 +1078,12 @@ From within the `embeddings-tutorial` directory, open your Wrangler file in your
 
   ```toml
   [[vectorize]]
-  binding = "VECTORIZE" # available in your Worker on env.VECTORIZE
+  binding = "VECTORIZE"
   index_name = "embeddings-index"
 
 
   [ai]
-  binding = "AI" # available in your Worker on env.AI
+  binding = "AI"
   ```
 
 With Workers AI ready, you can write code in your Worker.
@@ -1240,7 +1238,7 @@ description: Vectorize is Cloudflare's vector database. Vector databases allow
   you to use machine learning (ML) models to perform semantic search,
   recommendation, classification and anomaly detection tasks, as well as provide
   context to LLMs (Large Language Models).
-lastUpdated: 2025-08-20T21:45:15.000Z
+lastUpdated: 2026-01-29T10:38:24.000Z
 chatbotDeprioritize: false
 source_url:
   html: https://developers.cloudflare.com/vectorize/get-started/intro/
@@ -1377,10 +1375,9 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
   ```jsonc
   {
-    "$schema": "./node_modules/wrangler/config-schema.json",
     "vectorize": [
       {
-        "binding": "VECTORIZE",
+        "binding": "VECTORIZE", // available in your Worker on env.VECTORIZE
         "index_name": "tutorial-index"
       }
     ]
@@ -1391,7 +1388,7 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
   ```toml
   [[vectorize]]
-  binding = "VECTORIZE" # available in your Worker on env.VECTORIZE
+  binding = "VECTORIZE"
   index_name = "tutorial-index"
   ```
 
@@ -2050,7 +2047,7 @@ Triggered when an index is deleted.
 ---
 title: Limits · Cloudflare Vectorize docs
 description: "The following limits apply to accounts, indexes and vectors (as specified):"
-lastUpdated: 2025-10-15T18:12:38.000Z
+lastUpdated: 2026-01-23T16:54:42.000Z
 chatbotDeprioritize: false
 source_url:
   html: https://developers.cloudflare.com/vectorize/platform/limits/
@@ -2075,7 +2072,7 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form](
 | Maximum upsert batch size (per batch) | 1000 (Workers) / 5000 (HTTP API) |
 | Maximum vectors in a list-vectors page | 1000 |
 | Maximum index name length | 64 bytes |
-| Maximum vectors per index | 5,000,000 |
+| Maximum vectors per index | 10,000,000 |
 | Maximum namespaces per index | 50,000 (Workers Paid) / 1000 (Free) |
 | Maximum namespace name length | 64 bytes |
 | Maximum vectors upload size | 100 MB |
@@ -2197,7 +2194,7 @@ source_url:
 title: Vectorize API · Cloudflare Vectorize docs
 description: This page covers the Vectorize API available within Cloudflare
   Workers, including usage examples.
-lastUpdated: 2025-08-26T18:15:57.000Z
+lastUpdated: 2026-01-29T10:38:24.000Z
 chatbotDeprioritize: false
 source_url:
   html: https://developers.cloudflare.com/vectorize/reference/client-api/
@@ -2391,7 +2388,7 @@ Vectorize V2 requires [wrangler](https://developers.cloudflare.com/workers/wrang
 Run the following `wrangler vectorize` command:
 
 ```sh
-wrangler vectorize info <name>
+wrangler vectorize info <index-name>
 ```
 
 ## Vectors
@@ -2427,10 +2424,9 @@ Vectorize indexes are bound by name. A binding for an index named `production-do
 
   ```jsonc
   {
-    "$schema": "./node_modules/wrangler/config-schema.json",
     "vectorize": [
       {
-        "binding": "PROD_SEARCH",
+        "binding": "PROD_SEARCH", // the index will be available as env.PROD_SEARCH in your Worker
         "index_name": "production-doc-search"
       }
     ]
@@ -2441,7 +2437,7 @@ Vectorize indexes are bound by name. A binding for an index named `production-do
 
   ```toml
   [[vectorize]]
-  binding = "PROD_SEARCH" # the index will be available as env.PROD_SEARCH in your Worker
+  binding = "PROD_SEARCH"
   index_name = "production-doc-search"
   ```
 

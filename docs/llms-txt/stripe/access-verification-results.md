@@ -50,9 +50,9 @@ In this guide, you’ll learn how to:
 
 ## Consider your sensitive data access requirements carefully
 
-To build an integration with Stripe Identity that prioritizes your user’s privacy, you must first decide the minimum amount of PII that you need access to.  If you don’t need access to the most sensitive data (that requires authentication with a restricted API key), then your integration can authenticate using your secret key only.
+To build an integration with Stripe Identity that prioritizes your user’s privacy, you must first decide the minimum amount of PII that you need access to. If you don’t need access to the most sensitive data (that requires authentication with a restricted API key), then your integration can authenticate using your secret key only.
 
-To access PII resulting from a verification, you can retrieve a VerificationSession and [expand](https://docs.stripe.com/api/expanding_objects.md) either the [verified_outputs](https://docs.stripe.com/api/identity/verification_sessions/object.md#identity_verification_session_object-verified_outputs) field or - if you need more granular detail on the verification result - the [last_verification_report](https://docs.stripe.com/api/identity/verification_sessions/object.md#identity_verification_session_object-last_verification_report).  Expanding either of these fields automatically includes all of the PII fields they contain that only require a secret key.
+To access PII resulting from a verification, you can retrieve a VerificationSession and [expand](https://docs.stripe.com/api/expanding_objects.md) either the [verified_outputs](https://docs.stripe.com/api/identity/verification_sessions/object.md#identity_verification_session_object-verified_outputs) field or - if you need more granular detail on the verification result - the [last_verification_report](https://docs.stripe.com/api/identity/verification_sessions/object.md#identity_verification_session_object-last_verification_report). Expanding either of these fields automatically includes all of the PII fields they contain that only require a secret key.
 
 Here is an example of how to expand the `verified_outputs` field to retrieve a user’s name that was verified by Stripe Identity.
 
@@ -374,7 +374,7 @@ var documentExpirationDate = verificationSession.LastVerificationReport.Document
 
 You can retrieve identity document and face images that you collect as part of a session using the [File Upload API](https://docs.stripe.com/file-upload.md). The following fields on a VerificationReport can hold a reference to a [File](https://docs.stripe.com/api/files.md) resource in the Stripe API:
 
-- [document.files](https://docs.stripe.com/api/identity/verification_reports/object.md#identity_verification_report_object-document-front) - images of the identity document
+- [document.files](https://docs.stripe.com/api/identity/verification_reports/object.md#identity_verification_report_object-document-files) - images of the identity document
 - [selfie.document](https://docs.stripe.com/api/identity/verification_reports/object.md#identity_verification_report_object-selfie-document) - image of the photo ID front
 - [selfie.selfie](https://docs.stripe.com/api/identity/verification_reports/object.md#identity_verification_report_object-selfie-selfie) - image of the user’s face
 

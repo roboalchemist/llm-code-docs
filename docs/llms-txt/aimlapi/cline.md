@@ -97,7 +97,6 @@ These models have been tested by our team for compatibility with Cline integrati
 * [meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo](https://docs.aimlapi.com/api-references/text-models-llm/meta/meta-llama-3.1-70b-instruct-turbo)
 * [meta-llama/llama-4-maverick](https://docs.aimlapi.com/api-references/text-models-llm/meta/llama-4-maverick)
 * [Qwen/Qwen2.5-7B-Instruct-Turbo](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-7b-instruct-turbo)
-* [Qwen/Qwen2.5-Coder-32B-Instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-coder-32b-instruct)
 * [qwen-max](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-max)
 * [qwen-max-2025-01-25](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-max)
 * [qwen-plus](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-plus)

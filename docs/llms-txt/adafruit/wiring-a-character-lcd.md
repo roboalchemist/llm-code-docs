@@ -139,7 +139,7 @@ In Stock
 [RGB backlight negative LCD 20x4 + extras](https://www.adafruit.com/product/498)
 This is a fancy upgrade to standard 20x4 LCDs, instead of just having blue and white, or red and black, this LCD has full color RGB characters on a dark/black background! That means you can change the character display colors to anything you want - red, green, blue, pink, white, purple yellow,...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/498)
 [Related Guides to the Product](https://learn.adafruit.com/products/498/guides)
 ### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
@@ -153,18 +153,18 @@ Out of Stock
 
 ## Related Guides
 
-- [Animating Multiple LED Backpacks](https://learn.adafruit.com/animating-multiple-led-backpacks.md)
-- [RGB LED Matrix Basics](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix.md)
-- [Adafruit VS1053 MP3/AAC/Ogg/MIDI/WAV Codec Breakout Tutorial](https://learn.adafruit.com/adafruit-vs1053-mp3-aac-ogg-midi-wav-play-and-record-codec-tutorial.md)
-- [Making Adabot: Part 2](https://learn.adafruit.com/making-adabot-part-2.md)
-- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
-- [How to Build a Testing Jig](https://learn.adafruit.com/how-to-build-a-testing-fixture.md)
-- [Analog Feedback Servos](https://learn.adafruit.com/analog-feedback-servos.md)
-- [Ladyada's Learn Arduino - Lesson #0](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-0.md)
-- [Deciphering Strange Arduino Code](https://learn.adafruit.com/deciphering-strange-arduino-code.md)
-- [WiFi Controlled Mobile Robot](https://learn.adafruit.com/wifi-controlled-mobile-robot.md)
+- [Trinket Temperature & Humidity LCD Display](https://learn.adafruit.com/trinket-temperature-humidity-lcd-display.md)
 - [Circuit Playground Sound-Controlled Robot](https://learn.adafruit.com/circuit-playground-sound-controlled-robot.md)
-- [Adafruit 4-Channel ADC Breakouts](https://learn.adafruit.com/adafruit-4-channel-adc-breakouts.md)
-- [RGB LCD Shield](https://learn.adafruit.com/rgb-lcd-shield.md)
-- [LSM303 Accelerometer + Compass Breakout](https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout.md)
-- [Current Limiting Stepper Driver with DRV8871](https://learn.adafruit.com/current-limiting-stepper-driver-with-drv8871.md)
+- [TTL Serial Camera](https://learn.adafruit.com/ttl-serial-camera.md)
+- [Digital Circuits 7: MCUs... how do they work?](https://learn.adafruit.com/mcus-how-do-they-work.md)
+- [Adafruit Data Logger Shield](https://learn.adafruit.com/adafruit-data-logger-shield.md)
+- [Arduino "Hunt The Wumpus"](https://learn.adafruit.com/arduino-hunt-the-wumpus.md)
+- [Arduino Lesson 2. LEDs](https://learn.adafruit.com/adafruit-arduino-lesson-2-leds.md)
+- [Mini Thermal Receipt Printers](https://learn.adafruit.com/mini-thermal-receipt-printer.md)
+- [Bluetooth Temperature & Humidity Sensor](https://learn.adafruit.com/bluetooth-temperature-and-humidity-sensor.md)
+- [Character LCD with Raspberry Pi or BeagleBone Black](https://learn.adafruit.com/character-lcd-with-raspberry-pi-or-beaglebone-black.md)
+- [DIY 8x2 LCD Shield](https://learn.adafruit.com/diy-8x2-lcd-shield.md)
+- [Arduino Ethernet + SD Card](https://learn.adafruit.com/arduino-ethernet-sd-card.md)
+- [Trellis 3D Printed Enclosure](https://learn.adafruit.com/trellis-3d-printed-enclosure.md)
+- [Adafruit AirLift Shield - ESP32 WiFi Co-Processor](https://learn.adafruit.com/adafruit-airlift-shield-esp32-wifi-co-processor.md)
+- [2.2" TFT Display](https://learn.adafruit.com/2-2-tft-display.md)

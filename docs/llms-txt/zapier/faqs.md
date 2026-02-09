@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build-cli/faqs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Frequently Asked Questions
 
 ### Why doesn't Zapier support newer versions of Node.js?

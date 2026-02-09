@@ -2,37 +2,43 @@
 
 # Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/order-management-and-disputes.md
 
-# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
+# Adyen order management and disputes
 
-# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/order-management-and-disputes.md
+## In this section, you’ll find the best practices for Adyen and Klarna integration. We recommend you follow the steps below to get the most value from your new payment option.
 
-# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
+## Order management
 
-# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/order-management-and-disputes.md
+Adyen has integrated Klarna's order management API requests that you’re likely to use on a daily basis. Here are some of our best practices:
 
-# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
+- When the order is ready to be shipped, make sure to include all relevant order line items in the [capture request](https://docs.adyen.com/payment-methods/klarna/web-drop-in#manual-captures). This is especially important for partial capture orders. If order lines are missing, Adyen adds a `CORRECTION` order line to each partial capture in the order. As a result, all items from the same order will be listed on every invoice issued for that order, as well as in the customer’s Klarna account. Even though the customer is billed correctly, this can be confusing and lead to avoidable customer support queries.
+- When the order is captured, add the [shipping and tracking information](https://docs.adyen.com/payment-methods/klarna/web-drop-in#shipping-and-tracking-information). This lets the customer track the status of their order.
+- When the order is fully refunded, make sure you send all order line items in the captured request. If the order is refunded partially, make sure to send all relevant order line items. If order lines are missing, Adyen adds a `CORRECTION` line in the refund request, which can be confusing for customers.
+- If you haven’t opted for multiple partial captures, [Adyen will clear the remaining Klarna balance](https://docs.adyen.com/api-explorer/Checkout/70/post/payments/_paymentPspReference_/captures) in case of a partial capture.
 
-# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/order-management-and-disputes.md
+## Data handling
 
-# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
+### Address & phone validation
 
-# Order Management and Disputes
+Make sure to validate all addresses and phone numbers before sharing them with Adyen. Rejections due to mismatched or incorrect addresses late in the process can have a negative impact on acceptance rates, so ensuring these are correct early on is critical.
 
-## Manage Klarna orders on Shopify effectively by configuring payment capture, handling refunds within set timelines, and responding promptly to chargebacks through Klarna’s dispute process.
+### Tax handling with discounts
 
-## **Captures**
+You need to declare the tax amounts and VAT for your Klarna orders. It’s crucial to declare discounts and taxes correctly. Make sure to follow the [invoice lines and discounts guidance in Adyen Docs](https://docs.adyen.com/payment-methods/klarna/invoice-lines) to avoid integration issues.
 
-In your payment settings, you can choose to capture payments automatically when an order is placed, or to capture them manually within 28 days of an order. By default, your payments are captured automatically. When you capture a payment, the funds are provided to you immediately by Klarna. You can change the way that you capture payments in the Payments section of your Shopify admin. The manual capture option applies to all payments, not just those from Klarna. From the time the order is placed, you have until midnight Coordinated Universal Time (UTC) on the 28th calendar day from when the order was placed to capture the payment. If you don't capture the payment within that time, then the payment expires and becomes void. For manually captured orders, the Shopify payment status is initially set to "Payment pending." After a short delay, once the Klarna order is created, the status changes to "Authorized." You can then manually capture the Shopify order, which triggers the corresponding capture of the Klarna order. Note that Klarna capture does not include order line data as Shopify does not share this data. For automatically captured orders, the payment status starts as "Payment pending" and changes to "Paid" after a delay. The corresponding Klarna order is automatically captured after another delay of up to 20 minutes.
+### Extra merchant data (EMD)
 
-## **Refunds**
+[Extra merchant data](https://docs.klarna.com/api/payments/#operation/createCreditSession!path=attachment&t=request) is a set of additional information typically unavailable during the checkout flow. This information may consist of data about the customer performing the transaction, the products or services associated with the transaction, or the seller and their affiliates. Depending on the business category or the type of goods you sell, sending EMD data may be a mandatory requirement.  Here are some examples of business categories where sending EMD is mandatory:
 
-If you refund a transaction processed by Klarna, then the processing fee charged to you by Shopify Payments isn't refunded. Processing fees are determined by the subscription plan on your Shopify account. For more information about Shopify Payment fees, refer to the [Shopify Pricing](https://www.shopify.com/pricing) page for your location. Klarna allows refunds to be processed within 180 days of the initial charge of an order. If 180 days have passed from the date of the initial charge, then it's no longer possible to refund through a Klarna payment option. If you want to refund an order after 180 days, then work with the customer to return the funds to them using an external service.
+- Travel (flight, train, bus, car rental, hotel)
+- Marketplaces
+- Tickets and events 
+- Subscriptions
+- Vouchers and gift cards
 
-## **Chargebacks**
+### Product and image URLs
 
-If a chargeback is opened against a Klarna order, then the customer is encouraged to contact you directly.
+You can share the [imageUrl](https://docs.klarna.com/api/payments/#operation/createOrder!path=order_lines/image_url&t=request)`imageUrl` and the [productUrl](https://docs.klarna.com/api/payments/#operation/createOrder!path=order_lines/product_url&t=request)`productUrl` with Adyen. This lets Klarna use these resources in your communication with the customer to improve the post-purchase experience in the Klarna app. This helps the end customer to visualize the purchase they have made.
 
-- Klarna contacts the customer if the dispute isn't resolved after 21 days.
-- Klarna then contacts you by email about the dispute and provides you with the Klarna order number.
-- You can use the Klarna order number in your Shopify admin to find your order.
-- You have 7 days to respond to the dispute notification from Klarna.
+## Disputes
+
+You can manage the [Klarna disputes](https://docs.adyen.com/risk-management/chargeback-guidelines/klarna-chargebacks) using the [Adyen customer area](https://docs.adyen.com/risk-management/chargeback-guidelines/klarna-chargebacks#klarna-dispute-ca) or by using the [Adyen dispute API](https://docs.adyen.com/risk-management/chargeback-guidelines/klarna-chargebacks#klarna-dispute-api). If you have any questions regarding disputes, please reach out to Adyen support who will be able to help you.

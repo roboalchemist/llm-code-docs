@@ -5,7 +5,7 @@
 Non-interactive mode lets you run Codex from scripts (for example, continuous integration (CI) jobs) without opening the interactive TUI.
 You invoke it with `codex exec`.
 
-For flag-level details, see [`codex exec`](/codex/cli/reference#codex-exec).
+For flag-level details, see [`codex exec`](https://developers.openai.com/codex/cli/reference#codex-exec).
 
 ## When to use `codex exec`
 
@@ -60,7 +60,7 @@ Sample JSON stream (each line is a JSON object):
 {"type":"turn.completed","usage":{"input_tokens":24763,"cached_input_tokens":24448,"output_tokens":122}}
 ```
 
-If you only need the final message, write it to a file with `-o <path>`/`--output-last-message <path>`. This writes the final message to the file and still prints it to `stdout` (see [`codex exec`](/codex/cli/reference#codex-exec) for details).
+If you only need the final message, write it to a file with `-o <path>`/`--output-last-message <path>`. This writes the final message to the file and still prints it to `stdout` (see [`codex exec`](https://developers.openai.com/codex/cli/reference#codex-exec) for details).
 
 ## Create structured outputs with a schema
 
@@ -206,4 +206,4 @@ jobs:
 
 #### Alternative: Use the Codex GitHub Action
 
-If you want to avoid installing the CLI yourself, you can run `codex exec` through the [Codex GitHub Action](/codex/github-action) and pass the prompt as an input.
+If you want to avoid installing the CLI yourself, you can run `codex exec` through the [Codex GitHub Action](https://developers.openai.com/codex/github-action) and pass the prompt as an input.

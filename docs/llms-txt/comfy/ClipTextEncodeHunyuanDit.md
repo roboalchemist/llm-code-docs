@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipTextEncodeHunyuanDit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipTextEncodeHunyuanDit - ComfyUI Built-in Node Documentation
 
 > The ClipTextEncodeHunyuanDit node is used to encode text prompts into HunyuanDiT-compatible conditioning embeddings.

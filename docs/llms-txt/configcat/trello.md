@@ -2,6 +2,8 @@
 
 # Trello Power-Up - Manage feature flags from Trello
 
+Copy page
+
 The [ConfigCat's Trello Power-Up](https://trello.com/power-ups/5e694b66d2511a3601ebd0fb) allows you to connect your Trello Cards and feature flags. Create or link existing flags to your Trello cards without leaving your Trello board.
 
 Turn features On/Off right from a linked card on your Trello board. You can also easily modify the linked flags to edit or add new Targeting or Percentage Rules.
@@ -49,7 +51,7 @@ Your browser does not support the video tag.
 2. See the linked feature flags in the **Feature Flag (ConfigCat)** section.
 3. You can manage the selected feature flag from this Card.
 4. Add new Percentage Options to Feature Flags or Targeting Rules.
-5. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md)
+5. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md)
 6. You can remove Targeting Rules as well.
 
 Your browser does not support the video tag.

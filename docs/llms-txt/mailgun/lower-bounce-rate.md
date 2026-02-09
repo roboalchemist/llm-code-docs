@@ -29,7 +29,7 @@ panel](https://app.mailgun.com/app/dashboard).
 4. Verify the email address is correct with a confirmation email (aka,
 [confirmed opt-in](http://en.wikipedia.org/wiki/Opt-in_email)).
 5. We recommend using our [Email Validation
-API](http://documentation.mailgun.com/api-email-validation.html) at
+API](https://documentation.mailgun.com/docs/validate/api-overview) at
 the point of signup to reduce invalid email addresses.
 6. **Don't** purchase your list or scrape websites for emails.
 

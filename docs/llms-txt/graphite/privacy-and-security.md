@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/privacy-and-security.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Privacy & Security
 
 > Learn how Graphite prioritizes security to safeguard your source code.
@@ -7,7 +13,7 @@
 To achieve our mission to build state-of-the-art developer tools, Graphite values security above all else. We are SOC 2 Type II compliant, passing a rigorous auditing procedure established by the American Institute of Certified Public Accountants (AICPA). SOC 2 Type II assesses non-financial reporting controls across five areas: security, availability, processing integrity, confidentiality, and privacy. We also continuously pen test. [Learn more](https://graphite.com/privacy) about our security practices.
 
 <Note>
-  Unlike SOC 2 Type I certification, which focuses on a company’s controls at a specific point in time, Type II goes further. It evaluates how effectively these controls operate over an extended period of typically six months or more. For our enterprise users, this certification streamlines the vendor due diligence process. If you have questions about our security policies or want to request a copy of our SOC 2 Type II report, reach out to our security team at [support@graphite.dev](mailto:support@graphite.dev).
+  Unlike SOC 2 Type I certification, which focuses on a company’s controls at a specific point in time, Type II goes further. It evaluates how effectively these controls operate over an extended period of typically six months or more. For our enterprise users, this certification streamlines the vendor due diligence process. If you have questions about our security policies or want to request a copy of our SOC 2 Type II report, please visit our [trust center](https://trust.graphite.com).
 </Note>
 
 ## Permissions requested by the Graphite GitHub App
@@ -82,6 +88,4 @@ We additionally encrypt data in our database with a key stored in a different se
 
 ### Learn more
 
-We're more than happy to provide you with copies of our security-related company policies to give you a better sense of how we approach security at Graphite.
-
-Please email [security@graphite.com](mailto:security@graphite.com) to request copies, or feel free to share your team's security questionnaire if you have a standard format.
+For more information about our security practices, certifications, and policies, please visit our [trust center](https://trust.graphite.com).

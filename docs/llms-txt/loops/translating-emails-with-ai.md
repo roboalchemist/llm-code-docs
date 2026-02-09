@@ -1,15 +1,18 @@
 # Source: https://loops.so/docs/creating-emails/translating-emails-with-ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Translating emails
 
 > Loops provides an automated way to translate your emails
 
-<Note>
-  Translation is a Beta feature. Please contact the team [via
-  email](mailto:support@loops.so) or live chat for access.
-</Note>
-
 Translation inside of Loops is a simple, single-click method of translating emails from one language to another entirely inside of the platform.
+
+<Note>
+  Enable this feature in [Settings → Sending](https://app.loops.so/settings?page=sending).
+</Note>
 
 1. Create a branch, ensuring it contains at least one email to be translated.
 2. Click the **language icon** above the branch and choose the **output** language you would like to translate the branch into.

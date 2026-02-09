@@ -453,7 +453,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:42.728Z.
+This document was rendered at 2026-02-03T03:25:28.944Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/sip_lifecycle.md](https://docs.livekit.io/recipes/sip_lifecycle.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

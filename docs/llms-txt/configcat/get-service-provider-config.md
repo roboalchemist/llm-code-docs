@@ -2,10 +2,7 @@
 
 # Get Service Provider Config
 
-```
-GET 
-/v2/:organizationId/ServiceProviderConfig
-```
+Copy page
 
 This endpoint returns the service provider config.
 

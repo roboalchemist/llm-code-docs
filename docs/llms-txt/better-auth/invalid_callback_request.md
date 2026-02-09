@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/invalid_callback_request.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/invalid_callback_request.md
 
-# Invalid callback request
+# invalid_callback_request
 
 The callback request is invalid.
 
-***
 
-title: Invalid callback request
-description: The callback request is invalid.
----------------------------------------------
 
 ## What is it?
 

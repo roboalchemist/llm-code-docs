@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/faq/application/build-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build Apps FAQ
 
 > Frequently asked questions about building apps in Giselle
@@ -81,8 +85,3 @@ Check the error message and update your workflow accordingly.
 ## Where can I learn more about building workflows?
 
 See the [Workspaces guide](/en/guides/workspaces) for detailed instructions on building workflows, and the [Glossary](/en/glossary/node) for information about each node type.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

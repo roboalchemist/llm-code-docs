@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/clui-graphical-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The Graphical Command Line Interface
 
 > Learn how to use CLUI, Replit's interactive command bar that lets you perform various actions across your Account, Workspace, and through Shortcuts.

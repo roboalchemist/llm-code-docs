@@ -4,11 +4,7 @@
 
 Passkey
 
-***
 
-title: Passkey
-description: Passkey
---------------------
 
 Passkeys are a secure, passwordless authentication method using cryptographic key pairs, supported by WebAuthn and FIDO2 standards in web browsers. They replace passwords with unique key pairs: a private key stored on the user's device and a public key shared with the website. Users can log in using biometrics, PINs, or security keys, providing strong, phishing-resistant authentication without traditional passwords.
 
@@ -20,7 +16,7 @@ The passkey plugin implementation is powered by [SimpleWebAuthn](https://simplew
   <Step>
     ### Install the plugin
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -89,7 +85,7 @@ The passkey plugin implementation is powered by [SimpleWebAuthn](https://simplew
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -135,7 +131,7 @@ The passkey plugin implementation is powered by [SimpleWebAuthn](https://simplew
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -206,6 +202,7 @@ The passkey plugin implementation is powered by [SimpleWebAuthn](https://simplew
 
 To add or register a passkey make sure a user is authenticated and then call the `passkey.addPasskey` function provided by the client.
 
+
 ### Client Side
 
 ```ts
@@ -230,17 +227,18 @@ const data = await auth.api.addPasskey({
 
 ```ts
 type addPasskey = {
-    /**
-     * An optional name to label the authenticator account being registered. If not provided, it will default to the user's email address or user ID
-    */
-    name?: string = "example-passkey-name"
-    /**
-     * You can also specify the type of authenticator you want to register. Default behavior allows both platform and cross-platform passkeys
-    */
-    authenticatorAttachment?: "platform" | "cross-platform" = "cross-platform"
-
+      /**
+       * An optional name to label the authenticator account being registered. If not provided, it will default to the user's email address or user ID
+      */
+      name?: string = "example-passkey-name"
+      /**
+       * You can also specify the type of authenticator you want to register. Default behavior allows both platform and cross-platform passkeys
+      */
+      authenticatorAttachment?: "platform" | "cross-platform" = "cross-platform"
+  
 }
 ```
+
 
 <Callout>
   Setting `throw: true` in the fetch options has no effect for the register and sign-in passkey responses â they will always return a data object containing the error object.
@@ -249,6 +247,7 @@ type addPasskey = {
 ### Sign in with a passkey
 
 To sign in with a passkey you can use the `signIn.passkey` method. This will prompt the user to sign in with their passkey.
+
 
 ### Client Side
 
@@ -272,13 +271,14 @@ const data = await auth.api.signInPasskey({
 
 ```ts
 type signInPasskey = {
-    /**
-     * Browser autofill, a.k.a. Conditional UI. Read more: https://simplewebauthn.dev/docs/packages/browser#browser-autofill-aka-conditional-ui
-    */
-    autoFill?: boolean = true
-
+      /**
+       * Browser autofill, a.k.a. Conditional UI. Read more: https://simplewebauthn.dev/docs/packages/browser#browser-autofill-aka-conditional-ui
+      */
+      autoFill?: boolean = true
+  
 }
 ```
+
 
 #### Example Usage
 
@@ -303,6 +303,7 @@ await authClient.signIn.passkey({
 
 You can list all of the passkeys for the authenticated user by calling `passkey.listUserPasskeys`:
 
+
 ### Client Side
 
 ```ts
@@ -323,13 +324,15 @@ const passkeys = await auth.api.listPasskeys({
 
 ```ts
 type listPasskeys = {
-
+  
 }
 ```
+
 
 ### Deleting passkeys
 
 You can delete a passkey by calling `passkey.delete` and providing the passkey ID.
+
 
 ### Client Side
 
@@ -355,15 +358,17 @@ const data = await auth.api.deletePasskey({
 
 ```ts
 type deletePasskey = {
-    /**
-     * The ID of the passkey to delete. 
-     */
-    id: string = "some-passkey-id"
-
+      /**
+       * The ID of the passkey to delete. 
+       */
+      id: string = "some-passkey-id"
+  
 }
 ```
 
+
 ### Updating passkey names
+
 
 ### Client Side
 
@@ -391,17 +396,18 @@ const data = await auth.api.updatePasskey({
 
 ```ts
 type updatePasskey = {
-    /**
-     * The ID of the passkey which you want to update.
-     */
-    id: string = "id of passkey"
-    /**
-     * The new name which the passkey will be updated to. 
-     */
-    name: string = "my-new-passkey-name"
-
+      /**
+       * The ID of the passkey which you want to update.
+       */
+      id: string = "id of passkey"
+      /**
+       * The new name which the passkey will be updated to. 
+       */
+      name: string = "my-new-passkey-name"
+  
 }
 ```
+
 
 ### Conditional UI
 

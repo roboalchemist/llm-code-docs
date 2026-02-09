@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/managed-api-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managed API Keys
 
 > Using managed API keys for your Pipecat Cloud agents
@@ -71,8 +75,3 @@ This approach:
 ## Getting Help
 
 If you have any questions about using managed keys, reach out to us on [Discord](https://discord.gg/pipecat). Our community and team are happy to help!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

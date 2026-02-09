@@ -1,85 +1,77 @@
 # Source: https://docs.squared.ai/api-reference/connector_definitions/connector_definition.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connector Definition
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/connector_definitions/{connector_name}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connector_definitions/{connector_name}
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        connector_name:
+  /api/v1/connector_definitions/{connector_name}:
+    get:
+      tags:
+        - Connector Definitions
+      summary: Retrieve specific connector definition based on its name
+      parameters:
+        - name: connector_name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Name of the connector
-      query:
-        type:
+            type: string
+          description: Name of the connector
+        - name: type
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - source
-                - destination
-              required: true
-              description: Type of the connector (source or destination)
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-              connector_type:
-                allOf:
-                  - type: string
-              connector_subtype:
-                allOf:
-                  - type: string
-              documentation_url:
-                allOf:
-                  - type: string
-              github_issue_label:
-                allOf:
-                  - type: string
-              icon:
-                allOf:
-                  - type: string
-              license:
-                allOf:
-                  - type: string
-              release_stage:
-                allOf:
-                  - type: string
-              support_level:
-                allOf:
-                  - type: string
-              tags:
-                allOf:
-                  - type: array
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector (source or destination)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  connector_type:
+                    type: string
+                  connector_subtype:
+                    type: string
+                  documentation_url:
+                    type: string
+                  github_issue_label:
+                    type: string
+                  icon:
+                    type: string
+                  license:
+                    type: string
+                  release_stage:
+                    type: string
+                  support_level:
+                    type: string
+                  tags:
+                    type: array
                     items:
                       type: string
-              connector_spec:
-                allOf:
-                  - type: object
+                  connector_spec:
+                    type: object
                     properties:
                       documentation_url:
                         type: string
@@ -92,30 +84,14 @@ paths:
                         type: boolean
                       stream_type:
                         type: string
-        examples:
-          example:
-            value:
-              name: <string>
-              connector_type: <string>
-              connector_subtype: <string>
-              documentation_url: <string>
-              github_issue_label: <string>
-              icon: <string>
-              license: <string>
-              release_stage: <string>
-              support_level: <string>
-              tags:
-                - <string>
-              connector_spec:
-                documentation_url: <string>
-                connection_specification: {}
-                supports_normalization: true
-                supports_dbt: true
-                stream_type: <string>
-        description: Successful response
-  deprecated: false
-  type: path
+                additionalProperties: true
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

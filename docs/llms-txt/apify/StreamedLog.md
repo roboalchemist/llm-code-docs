@@ -2,57 +2,51 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/StreamedLog.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/StreamedLog.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/StreamedLog.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/StreamedLog.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/StreamedLog.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/StreamedLog.md
-
 # StreamedLog<!-- -->
 
-Utility class for streaming logs from another Actor.
-
-It uses buffer to deal with possibly chunked logs. Chunked logs are stored in buffer. Chunks are expected to contain specific markers that indicate the start of the log message. Each time a new chunk with complete split marker arrives, the buffer is processed, logged and emptied.
-
-This works only if the logs have datetime marker in ISO format. For example, `2025-05-12T15:35:59.429Z` This is the default log standard for the actors.
-
-### Hierarchy
-
-* *StreamedLog*
-
-  * [StreamedLogSync](https://docs.apify.com/api/client/python/api/client/python/reference/class/StreamedLogSync.md)
-  * [StreamedLogAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/StreamedLogAsync.md)
+Helper class for redirecting streamed Actor logs to another log.
 
 ## Index[**](#Index)
 
+### Constructors
+
+* [**constructor](#constructor)
+
 ### Methods
 
-* [**\_\_init\_\_](https://docs.apify.com/api/client/python/api/client/python/reference/class/StreamedLog.md#__init__)
+* [**start](#start)
+* [**stop](#stop)
+
+## Constructors<!-- -->[**](#Constructors)
+
+### [**](#constructor)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L155)constructor
+
+* ****new StreamedLog**(options): [StreamedLog](https://docs.apify.com/api/client/js/api/client/js/reference/class/StreamedLog.md)
+
+- #### Parameters
+
+  * ##### options: [StreamedLogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/StreamedLogOptions.md)
+
+  #### Returns [StreamedLog](https://docs.apify.com/api/client/js/api/client/js/reference/class/StreamedLog.md)
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L216)\_\_init\_\_
+### [**](#start)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L165)publicstart
 
-* ****\_\_init\_\_**(to\_logger, \*, from\_start): None
+* ****start**(): void
 
-- Overrides [StreamedLog.\_\_init\_\_](https://docs.apify.com/api/client/python/api/client/python/reference/class/StreamedLog.md#__init__)
-
-  Initialize `StreamedLog`.
+- Start log redirection.
 
   ***
 
-  #### Parameters
+  #### Returns void
 
-  * ##### to\_logger: logging.Logger
+### [**](#stop)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L176)publicstop
 
-    The logger to which the logs will be redirected.
+* ****stop**(): Promise\<void>
 
-  * ##### optionalkeyword-onlyfrom\_start: bool = <!-- -->True
+- Stop log redirection.
 
-    If `True`, all logs from the start of the actor run will be redirected. If `False`, only newly arrived logs will be redirected. This can be useful for redirecting only a small portion of relevant logs for long-running actors in stand-by.
+  ***
 
-  #### Returns None
+  #### Returns Promise\<void>

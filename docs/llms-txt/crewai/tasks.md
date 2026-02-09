@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tasks
 
 > Detailed guide on managing and creating tasks within the CrewAI framework.
@@ -44,30 +48,31 @@ crew = Crew(
 
 ## Task Attributes
 
-| Attribute                              | Parameters              | Type                        | Description                                                                                                     |                                                                            |
-| :------------------------------------- | :---------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Description**                        | `description`           | `str`                       | A clear, concise statement of what the task entails.                                                            |                                                                            |
-| **Expected Output**                    | `expected_output`       | `str`                       | A detailed description of what the task's completion looks like.                                                |                                                                            |
-| **Name** *(optional)*                  | `name`                  | `Optional[str]`             | A name identifier for the task.                                                                                 |                                                                            |
-| **Agent** *(optional)*                 | `agent`                 | `Optional[BaseAgent]`       | The agent responsible for executing the task.                                                                   |                                                                            |
-| **Tools** *(optional)*                 | `tools`                 | `List[BaseTool]`            | The tools/resources the agent is limited to use for this task.                                                  |                                                                            |
-| **Context** *(optional)*               | `context`               | `Optional[List["Task"]]`    | Other tasks whose outputs will be used as context for this task.                                                |                                                                            |
-| **Async Execution** *(optional)*       | `async_execution`       | `Optional[bool]`            | Whether the task should be executed asynchronously. Defaults to False.                                          |                                                                            |
-| **Human Input** *(optional)*           | `human_input`           | `Optional[bool]`            | Whether the task should have a human review the final answer of the agent. Defaults to False.                   |                                                                            |
-| **Markdown** *(optional)*              | `markdown`              | `Optional[bool]`            | Whether the task should instruct the agent to return the final answer formatted in Markdown. Defaults to False. |                                                                            |
-| **Config** *(optional)*                | `config`                | `Optional[Dict[str, Any]]`  | Task-specific configuration parameters.                                                                         |                                                                            |
-| **Output File** *(optional)*           | `output_file`           | `Optional[str]`             | File path for storing the task output.                                                                          |                                                                            |
-| **Create Directory** *(optional)*      | `create_directory`      | `Optional[bool]`            | Whether to create the directory for output\_file if it doesn't exist. Defaults to True.                         |                                                                            |
-| **Output JSON** *(optional)*           | `output_json`           | `Optional[Type[BaseModel]]` | A Pydantic model to structure the JSON output.                                                                  |                                                                            |
-| **Output Pydantic** *(optional)*       | `output_pydantic`       | `Optional[Type[BaseModel]]` | A Pydantic model for task output.                                                                               |                                                                            |
-| **Callback** *(optional)*              | `callback`              | `Optional[Any]`             | Function/object to be executed after task completion.                                                           |                                                                            |
-| **Guardrail** *(optional)*             | `guardrail`             | `Optional[Callable]`        | Function to validate task output before proceeding to next task.                                                |                                                                            |
-| **Guardrails** *(optional)*            | `guardrails`            | \`Optional\[List\[Callable] | List\[str]]\`                                                                                                   | List of guardrails to validate task output before proceeding to next task. |
-| **Guardrail Max Retries** *(optional)* | `guardrail_max_retries` | `Optional[int]`             | Maximum number of retries when guardrail validation fails. Defaults to 3.                                       |                                                                            |
+\| Attribute                              | Parameters              | Type                        | Description                                                                                                     |
+\| :------------------------------------- | :---------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+\| **Description**                        | `description`           | `str`                       | A clear, concise statement of what the task entails.                                                            |
+\| **Expected Output**                    | `expected_output`       | `str`                       | A detailed description of what the task's completion looks like.                                                |
+\| **Name** *(optional)*                  | `name`                  | `Optional[str]`             | A name identifier for the task.                                                                                 |
+\| **Agent** *(optional)*                 | `agent`                 | `Optional[BaseAgent]`       | The agent responsible for executing the task.                                                                   |
+\| **Tools** *(optional)*                 | `tools`                 | `List[BaseTool]`            | The tools/resources the agent is limited to use for this task.                                                  |
+\| **Context** *(optional)*               | `context`               | `Optional[List["Task"]]`    | Other tasks whose outputs will be used as context for this task.                                                |
+\| **Async Execution** *(optional)*       | `async_execution`       | `Optional[bool]`            | Whether the task should be executed asynchronously. Defaults to False.                                          |
+\| **Human Input** *(optional)*           | `human_input`           | `Optional[bool]`            | Whether the task should have a human review the final answer of the agent. Defaults to False.                   |
+\| **Markdown** *(optional)*              | `markdown`              | `Optional[bool]`            | Whether the task should instruct the agent to return the final answer formatted in Markdown. Defaults to False. |
+\| **Config** *(optional)*                | `config`                | `Optional[Dict[str, Any]]`  | Task-specific configuration parameters.                                                                         |
+\| **Output File** *(optional)*           | `output_file`           | `Optional[str]`             | File path for storing the task output.                                                                          |
+\| **Create Directory** *(optional)*      | `create_directory`      | `Optional[bool]`            | Whether to create the directory for output\_file if it doesn't exist. Defaults to True.                          |
+\| **Output JSON** *(optional)*           | `output_json`           | `Optional[Type[BaseModel]]` | A Pydantic model to structure the JSON output.                                                                  |
+\| **Output Pydantic** *(optional)*       | `output_pydantic`       | `Optional[Type[BaseModel]]` | A Pydantic model for task output.                                                                               |
+\| **Callback** *(optional)*              | `callback`              | `Optional[Any]`             | Function/object to be executed after task completion.                                                           |
+\| **Guardrail** *(optional)*             | `guardrail`             | `Optional[Callable]`        | Function to validate task output before proceeding to next task.                                                |
+\| **Guardrails** *(optional)*            | `guardrails`            | `Optional[List[Callable]    | List[str]]`                                                                                                     | List of guardrails to validate task output before proceeding to next task. |
+\| **Guardrail Max Retries** *(optional)* | `guardrail_max_retries` | `Optional[int]`             | Maximum number of retries when guardrail validation fails. Defaults to 3.                                       |
 
 <Note type="warning" title="Deprecated: max_retries">
   The task attribute `max_retries` is deprecated and will be removed in v1.0.0.
-  Use `guardrail_max_retries` instead to control retry attempts when a guardrail fails.
+  Use `guardrail_max_retries` instead to control retry attempts when a guardrail
+  fails.
 </Note>
 
 ## Creating Tasks
@@ -168,7 +173,8 @@ class LatestAiDevelopmentCrew():
 ```
 
 <Note>
-  The names you use in your YAML files (`agents.yaml` and `tasks.yaml`) should match the method names in your Python code.
+  The names you use in your YAML files (`agents.yaml` and `tasks.yaml`) should
+  match the method names in your Python code.
 </Note>
 
 ### Direct Code Definition (Alternative)
@@ -205,7 +211,8 @@ reporting_task = Task(
 ```
 
 <Tip>
-  Directly specify an `agent` for assignment or let the `hierarchical` CrewAI's process decide based on roles, availability, etc.
+  Directly specify an `agent` for assignment or let the `hierarchical` CrewAI's
+  process decide based on roles, availability, etc.
 </Tip>
 
 ## Task Output
@@ -307,7 +314,7 @@ analysis_task:
   expected_output: >
     A comprehensive analysis with charts and key findings
   agent: analyst
-  markdown: true  # Enable markdown formatting
+  markdown: true # Enable markdown formatting
   output_file: analysis.md
 ```
 
@@ -319,7 +326,9 @@ analysis_task:
 * **Cross-Platform Compatibility**: Markdown is universally supported
 
 <Note>
-  The markdown formatting instructions are automatically added to the task prompt when `markdown=True`, so you don't need to specify formatting requirements in your task description.
+  The markdown formatting instructions are automatically added to the task
+  prompt when `markdown=True`, so you don't need to specify formatting
+  requirements in your task description.
 </Note>
 
 ## Task Dependencies and Context
@@ -531,6 +540,7 @@ This approach combines the precision of programmatic validation with the flexibi
 ### Guardrail Function Requirements
 
 1. **Function Signature**:
+
    * Must accept exactly one parameter (the task output)
    * Should return a tuple of `(bool, Any)`
    * Type hints are recommended but optional
@@ -558,6 +568,7 @@ def validate_with_context(result: TaskOutput) -> Tuple[bool, Any]:
 ```
 
 2. **Error Categories**:
+
    * Use specific error codes
    * Include relevant context
    * Provide actionable feedback
@@ -624,7 +635,8 @@ task = Task(
 ## Getting Structured Consistent Outputs from Tasks
 
 <Note>
-  It's also important to note that the output of the final task of a crew becomes the final output of the actual crew itself.
+  It's also important to note that the output of the final task of a crew
+  becomes the final output of the actual crew itself.
 </Note>
 
 ### Using `output_pydantic`
@@ -1017,7 +1029,7 @@ analysis_task:
     A comprehensive financial report with quarterly insights
   agent: financial_analyst
   output_file: reports/quarterly/q4_2024_analysis.pdf
-  create_directory: true  # Automatically create 'reports/quarterly/' directory
+  create_directory: true # Automatically create 'reports/quarterly/' directory
 
 audit_task:
   description: >
@@ -1026,7 +1038,7 @@ audit_task:
     A compliance audit report
   agent: auditor
   output_file: audit/compliance_report.md
-  create_directory: false  # Directory must already exist
+  create_directory: false # Directory must already exist
 ```
 
 ### Use Cases

@@ -1,17 +1,21 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/structured-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Structured Data
 
 > Extract entities and targeted data from your conversations
 
-Structured data is specific, customizable data points extracted from a conversation. This feature encompasses to main components:
+Structured data is specific, customizable data points extracted from a conversation. This feature encompasses two main components:
 
 * **Entity extraction**: Automatically identifies and extracts specific pieces of information.
 * **Question extraction (Targeted Structured Data)**: Answers predefined questions based on the conversation content.
 
-Entity and Question structured data comes out of the box with entities and questions based per industry, but can be [customized](#customization) to match your unique use cases.
+Entity and Question structured data comes out of the box with entities and questions based on industry, but you can [customize](#customization) them to match your unique use cases.
 
-The dynamic nature of structure data makes them capable of solving an endless list of challenges, but may help you with:
+The dynamic nature of structured data enables solving an endless list of challenges, and may help you with:
 
 * Automating data collection for analytics and reporting
 * Facilitating compliance monitoring and quality assurance
@@ -130,7 +134,7 @@ This example uses our **Conversation API** to provide the transcript, but you ha
   </Step>
 
   <Step title="Step 3: Add messages">
-    You need to add the messages for the conversation. You have the choice to add a **single message** for each turn of the conversation, or can upload a **batch of messages** a conversation.
+    You need to add the messages for the conversation. You have the choice to add a **single message** for each turn of the conversation, or you can upload a **batch of messages** for a conversation.
 
     <Tabs>
       <Tab title="Single message">
@@ -153,7 +157,7 @@ This example uses our **Conversation API** to provide the transcript, but you ha
 
         A successfully created message returns a status code of 200 and the id of the message.
 
-        <Warning>We only show one message as an example, though you would create many messages over the source of the conversation.</Warning>
+        <Warning>We only show one message as an example, though you would create many messages over the course of the conversation.</Warning>
       </Tab>
 
       <Tab title="Batched messages">
@@ -293,13 +297,13 @@ This example uses our **Conversation API** to provide the transcript, but you ha
     }
     ```
 
-    The structured data represents both the entities and answered questions you have configured.
+    The structured data represents both the entities and the answered questions you have configured.
   </Step>
 </Steps>
 
 ## Customization
 
-Structured Data questions and entities are fully customizable according to your business needs.
+You can fully customize Structured Data questions and entities according to your business needs.
 
 We have a list of potential questions and entities per industry that you can start with. Work with your ASAPP account team to determine whether one of our out-of-the-box configurations work for you, or if you need to create custom structured data.
 

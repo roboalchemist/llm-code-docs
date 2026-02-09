@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/create/redirects.md
+# Source: https://www.mintlify.com/docs/create/redirects.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Redirects
 
@@ -7,6 +11,10 @@
 When you change the path of a file in your docs folder, it also changes the URL path to that page. This may happen when restructuring your docs or changing the sidebar title.
 
 ## Redirects
+
+<Note>
+  Redirects **cannot** include URL anchors like `path#anchor` or query parameters like `path?query=value`.
+</Note>
 
 Set up 301 redirects by adding the `redirects` field to your `docs.json` file.
 
@@ -21,6 +29,8 @@ Set up 301 redirects by adding the `redirects` field to your `docs.json` file.
 
 This permanently redirects `/source/path` to `/destination/path` so that you don't lose any previous SEO for the original page.
 
+### Wildcard redirects
+
 To match a wildcard path, use `*` after a parameter. In this example, `/beta/:slug*` matches `/beta/introduction` and redirects it to `/v2/introduction`.
 
 ```json  theme={null}
@@ -32,12 +42,55 @@ To match a wildcard path, use `*` after a parameter. In this example, `/beta/:sl
 ]
 ```
 
-## Broken links
+### Partial wildcard redirects
 
-Catch broken links with our CLI. [Install the CLI](/installation) and run the command:
+Use partial wildcards to match URL segments that start with a specific prefix.
+
+```json  theme={null}
+"redirects": [
+  {
+    "source": "/articles/concepts-*",
+    "destination": "/collections/overview"
+  }
+]
+```
+
+This matches any URLs with the `/articles/concepts-` path, such as `/articles/concepts-getting-started` and `/articles/concepts-overview`, and redirects them all to `/collections/overview`.
+
+You can also substitute the captured wildcard value in the destination.
+
+```json  theme={null}
+"redirects": [
+  {
+    "source": "/old/article-*",
+    "destination": "/new/article-*"
+  }
+]
+```
+
+This redirects `/old/article-123` to `/new/article-123`, preserving the captured value after the prefix.
+
+### Avoid infinite redirects
+
+To avoid infinite loops, do not create circular redirects where paths redirect back to each other.
+
+```json  theme={null}
+"redirects": [
+  {
+    "source": "/docs/:slug*",
+    "destination": "/help/:slug*"
+  },
+  {
+    "source": "/help/:slug*",
+    "destination": "/docs/:slug*"
+  }
+]
+```
+
+## Check for broken links
+
+Find broken links with the [CLI](/installation).
 
 ```bash  theme={null}
 mint broken-links
 ```
-
-The CLI identifies any relative links in your docs that don't exist.

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/binary/arraybuffer-to-blob.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert an ArrayBuffer to a Blob
 
 A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) can be constructed from an array of "chunks", where each chunk is a string, binary data structure, or another `Blob`.
@@ -21,4 +25,4 @@ blob.type; // => "application/octet-stream"
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.

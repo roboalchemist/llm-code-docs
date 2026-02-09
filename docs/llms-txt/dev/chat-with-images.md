@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/chat-with-images.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add images to chat completions
 
 You can include images directly in your chat conversations with Palmyra X5 using mixed content support. This allows you to send both text and images in the same message, enabling rich visual conversations with Palmyra X5.

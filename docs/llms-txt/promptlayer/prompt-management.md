@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/prompt-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Management
 
 **We believe that prompt management is a critical component of building successful AI products with Large Language Models (LLMs).** The Prompt Registry is designed to help you decouple prompts from code, enable collaboration among technical and non-technical stakeholders, and streamline the prompt development lifecycle.
@@ -47,8 +51,3 @@ The key to writing good prompts is to build a dev environment that let's your te
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
   <iframe src="https://www.youtube.com/embed/dZUz3ygv95U?feature=youtu.be" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
 </div>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/customers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customers
 
 Customers that reach out to you will automatically be created in Plain without requiring any API integration.

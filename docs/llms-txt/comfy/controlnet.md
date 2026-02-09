@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/controlnet/controlnet.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI ControlNet Usage Example
 
 > This guide will introduce you to the basic concepts of ControlNet and demonstrate how to generate corresponding images in ComfyUI

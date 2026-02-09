@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/progress.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Progress
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol (MCP) supports optional progress tracking for long-running
 operations through notification messages. Either side can send progress notifications to
@@ -69,6 +71,10 @@ The receiver **MAY** then send progress notifications containing:
    * Choose not to send any progress notifications
    * Send notifications at whatever frequency they deem appropriate
    * Omit the total value if unknown
+
+3. For [task-augmented requests](./tasks), the `progressToken` provided in the original request **MUST** continue to be used for progress notifications throughout the task's lifetime, even after the `CreateTaskResult` has been returned. The progress token remains valid and associated with the task until the task reaches a terminal status.
+   * Progress notifications for tasks **MUST** use the same `progressToken` that was provided in the initial task-augmented request
+   * Progress notifications for tasks **MUST** stop after the task reaches a terminal status (`completed`, `failed`, or `cancelled`)
 
 ```mermaid  theme={null}
 sequenceDiagram

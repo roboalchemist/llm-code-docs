@@ -1,29 +1,26 @@
 # Source: https://gofastmcp.com/servers/icons.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Icons
 
 > Add visual icons to your servers, tools, resources, and prompts
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
-<VersionBadge version="2.14.0" />
+<VersionBadge version="2.13.0" />
 
 Icons provide visual representations for your MCP servers and components, helping client applications present better user interfaces. When displayed in MCP clients, icons help users quickly identify and navigate your server's capabilities.
 
 ## Icon Format
 
-Icons use the standard MCP Icon type from the MCP protocol specification. Each icon specifies:
-
-* **src**: URL or data URI pointing to the icon image
-* **mimeType** (optional): MIME type of the image (e.g., "image/png", "image/svg+xml")
-* **sizes** (optional): Array of size descriptors (e.g., \["48x48"], \["any"])
+Icons use the standard MCP Icon type from the MCP protocol specification. Each icon specifies a source URL or data URI, and optionally includes MIME type and size information.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from mcp.types import Icon
@@ -35,9 +32,15 @@ icon = Icon(
 )
 ```
 
+The fields serve different purposes:
+
+* **src**: URL or data URI pointing to the icon image
+* **mimeType** (optional): MIME type of the image (e.g., "image/png", "image/svg+xml")
+* **sizes** (optional): Array of size descriptors (e.g., \["48x48"], \["any"])
+
 ## Server Icons
 
-Add icons and a website URL to your server for display in client applications:
+Add icons and a website URL to your server for display in client applications. Multiple icons at different sizes help clients choose the best resolution for their display context.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp import FastMCP
@@ -65,7 +68,7 @@ Server icons appear in MCP client interfaces to help users identify your server 
 
 ## Component Icons
 
-Icons can be added to individual tools, resources, resource templates, and prompts:
+Icons can be added to individual tools, resources, resource templates, and prompts. This helps users visually distinguish between different component types and purposes.
 
 ### Tool Icons
 
@@ -117,7 +120,7 @@ def analyze_code(code: str):
 
 ## Using Data URIs
 
-For small icons or when you want to embed the icon directly, use data URIs:
+For small icons or when you want to embed the icon directly without external dependencies, use data URIs. This approach eliminates the need for hosting and ensures the icon is always available.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from mcp.types import Icon
@@ -133,8 +136,17 @@ svg_icon = Icon(
 def my_tool() -> str:
     """A tool with an embedded SVG icon."""
     return "result"
+```
 
-# Generating a data URI from a local image file.
+### Generating Data URIs from Files
+
+FastMCP provides the `Image` utility class to convert local image files into data URIs.
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+from mcp.types import Icon
+from fastmcp.utilities.types import Image
+
+# Generate a data URI from a local image file
 img = Image(path="./assets/brand/favicon.png")
 icon = Icon(src=img.to_data_uri())
 
@@ -143,3 +155,5 @@ def file_icon_tool() -> str:
     """A tool with an icon generated from a local file."""
     return "result"
 ```
+
+This approach is useful when you have local image assets and want to embed them directly in your server definition.

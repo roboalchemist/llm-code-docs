@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/audiences/managing-unsubscribe-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Unsubscribed Contacts
 
 > Learn how to check and remove recipients who have unsubscribed to your marketing emails.
@@ -42,3 +46,16 @@ You can update a Topic subscription for a Contact by clicking the **Edit** butto
 <img alt="Add Contact to Topic" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=66e212d282f450c371f42a1b214029cd" data-og-width="1800" width="1800" data-og-height="923" height="923" data-path="images/dashboard-save-contact-topic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=280&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=b797e3daddfe352e8234a31051b404fb 280w, https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=560&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=5cbd883c87088364c7d0c10ffc6e9032 560w, https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=840&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=af1b159c7b2d4ffcdffa3dc08db79436 840w, https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=1100&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=a3333dcc26612cbf90a06df77c5e91aa 1100w, https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=1650&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=512909f7997ceaa67f98cbd55bff4da5 1650w, https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?w=2500&fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=4bff4c8288e55640c341976821ee7fa9 2500w" />
 
 You can also update a Topic subscription for a Contact [via the API or SDKs](/api-reference/contacts/update-contact-topics).
+
+### Bulk Subscribe to Topics
+
+You can subscribe multiple Contacts to Topics at once:
+
+1. Go to the [Contacts](https://resend.com/audience) page.
+2. Select multiple Contacts by clicking the checkbox next to each Contact.
+3. Click the **Edit** button in the bulk actions bar.
+4. Select **Subscribe to topics**.
+5. Choose the Topics you want to subscribe the Contacts to.
+6. Click **Subscribe**.
+
+Learn more about [bulk actions for Contacts](/dashboard/audiences/contacts#bulk-actions).

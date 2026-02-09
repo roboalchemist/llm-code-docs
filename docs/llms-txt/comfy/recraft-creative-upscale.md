@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/recraft/recraft-creative-upscale.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recraft Creative Upscale - ComfyUI Native Node Documentation
 
 > A Recraft Partner node that uses AI to creatively enhance image details and resolution

@@ -1,18 +1,20 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/scraping-the-data.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/scraping-the-data.md
-
 # Scraping data
 
 **Learn how to add data extraction logic to your crawler, which will allow you to extract data from all the websites you crawled.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-At the https://docs.apify.com/academy/web-scraping-for-beginners.md, we learned that the term web scraping usually means a combined process of data extraction and crawling. And this is exactly what we'll do in this lesson. We will take the crawling code from the previous lesson, and we will combine it with data extraction code and turn everything into a web scraper.
+At the [very beginning of this course](https://docs.apify.com/academy/scraping-basics-javascript/legacy.md), we learned that the term web scraping usually means a combined process of data extraction and crawling. And this is exactly what we'll do in this lesson. We will take the crawling code from the previous lesson, and we will combine it with data extraction code and turn everything into a web scraper.
 
 ## Extracting data from a product detail page
 
-The term product detail page (or PDP) is commonly used on e-commerce websites to describe the page where you can find detailed information about a product. In the Warehouse store, there's, for example, https://warehouse-theme-metal.myshopify.com/products/denon-ah-c720-in-ear-headphones.
+The term product detail page (or PDP) is commonly used on e-commerce websites to describe the page where you can find detailed information about a product. In the Warehouse store, there's, for example, [this page describing Denon headphones](https://warehouse-theme-metal.myshopify.com/products/denon-ah-c720-in-ear-headphones).
 
 Let's start writing a script that extracts data from this single PDP. We can use this familiar code as a boilerplate.
 
@@ -31,7 +33,7 @@ const $ = cheerio.load(html);
 ```
 
 
-We will use the techniques learned in the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md section to find and extract the following product attributes:
+We will use the techniques learned in the [Basics of data extraction](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md) section to find and extract the following product attributes:
 
 * title
 * vendor
@@ -41,7 +43,7 @@ We will use the techniques learned in the https://docs.apify.com/academy/web-scr
 
 ![scraping-title.png](/assets/images/scraping-title-b9819987fa0d66c00b3e394c42ba8f98.png)
 
-> For brevity, we won't explain how to extract every attribute step-by-step. Review the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md section to learn about DevTools and extracting data.
+> For brevity, we won't explain how to extract every attribute step-by-step. Review the [Basics of data extraction](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md) section to learn about DevTools and extracting data.
 
 ### Title
 
@@ -85,7 +87,7 @@ const reviewCount = parseInt($('span.rating__caption').text(), 10);
 
 ### Description
 
-Getting the description is fairly straightforward as well, but notice the two selectors separated by a space: `div[class*="description"] div.rte`. This is called a https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator, and it allows you to search for child elements within parent elements. Using any of the selectors separately would lead to unwanted strings in our result.
+Getting the description is fairly straightforward as well, but notice the two selectors separated by a space: `div[class*="description"] div.rte`. This is called a [descendant combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator), and it allows you to search for child elements within parent elements. Using any of the selectors separately would lead to unwanted strings in our result.
 
 
 ```
@@ -167,14 +169,14 @@ for (const url of productUrls) {
 ```
 
 
-We can see that the code is quite similar. Both scripts download HTML and then process the HTML. To understand how to put them together, we'll go back to the https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md.
+We can see that the code is quite similar. Both scripts download HTML and then process the HTML. To understand how to put them together, we'll go back to the [original process of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md).
 
 1. Visit the start URL.
 2. Extract the next URLs (and data) and save them.
 3. Visit one of the collected URLs and save data and/or more URLs.
 4. Repeat step 3 until you have everything you need.
 
-Using this flow as guidance, we should be able to connect the pieces of code together to build a scraper which crawls through the products found in the https://warehouse-theme-metal.myshopify.com/collections/sales, and then scrapes the **title**, **vendor**, **price**, **review count**, and **description** of each of them.
+Using this flow as guidance, we should be able to connect the pieces of code together to build a scraper which crawls through the products found in the [Sales category of Warehouse](https://warehouse-theme-metal.myshopify.com/collections/sales), and then scrapes the **title**, **vendor**, **price**, **review count**, and **description** of each of them.
 
 ## Building the final scraper
 
@@ -262,7 +264,7 @@ for (const url of productUrls) {
 ```
 
 
-Finally, let's combine the above code blocks into a full runnable example. When you run the below code, it will scrape detailed information about all the products on the first page of the https://warehouse-theme-metal.myshopify.com/collections/sales. We added a few console logs throughout the code to see what's going on.
+Finally, let's combine the above code blocks into a full runnable example. When you run the below code, it will scrape detailed information about all the products on the first page of the [Warehouse Sales category](https://warehouse-theme-metal.myshopify.com/collections/sales). We added a few console logs throughout the code to see what's going on.
 
 
 ```
@@ -354,4 +356,4 @@ That's it for the absolute basics of crawling, but we're not done yet. We scrape
 
 ## Next up
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/pro-scraping.md we will rewrite the scraper using an open-source web scraping library called https://crawlee.dev. It will make the scraper more robust while speeding up development at the same time.
+In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/pro-scraping.md) we will rewrite the scraper using an open-source web scraping library called [Crawlee](https://crawlee.dev). It will make the scraper more robust while speeding up development at the same time.

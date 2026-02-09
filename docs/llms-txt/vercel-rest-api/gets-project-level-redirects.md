@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/gets-project-level-redirects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gets project-level redirects.
 
 > Get the version history for a project's bulk redirects
@@ -11,7 +15,7 @@
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/bulk-redirects
 openapi: 3.0.3
 info:
-  title: Vercel SDK
+  title: Vercel REST API & SDK
   description: >-
     The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
     type-safe Typescript SDK that allows you to access the resources and methods
@@ -120,15 +124,32 @@ paths:
                               type: number
                             permanent:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             sensitive:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             caseSensitive:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             query:
                               type: boolean
-                            destination:
-                              type: string
+                              enum:
+                                - false
+                                - true
+                            preserveQueryParams:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
                             source:
+                              type: string
+                            destination:
                               type: string
                           required:
                             - destination
@@ -157,11 +178,17 @@ paths:
                               defaults to an ISO timestamp string.
                           isStaging:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether this version has not been promoted to
                               production yet and is not serving end users.
                           isLive:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether this version is currently live in
                               production.
@@ -174,10 +201,10 @@ paths:
                               The staging link for previewing redirects in this
                               version.
                         required:
+                          - createdBy
                           - id
                           - key
                           - lastModified
-                          - createdBy
                         type: object
                       pagination:
                         properties:
@@ -188,13 +215,13 @@ paths:
                           numPages:
                             type: number
                         required:
+                          - numPages
                           - page
                           - per_page
-                          - numPages
                         type: object
                     required:
-                      - redirects
                       - pagination
+                      - redirects
                     type: object
         '400':
           description: One of the provided values in the request query is invalid.
@@ -214,7 +241,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt

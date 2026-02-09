@@ -6,7 +6,7 @@ This section describes API endpoints to manage Datasets.
 
 Dataset is a storage for structured data, where each record stored has the same attributes, such as online store products or real estate offers. You can imagine it as a table, where each object is a row and its attributes are columns. Dataset is an append-only storage - you can only add new records to it but you cannot modify or remove existing records. Typically it is used to store crawling results.
 
-For more information, see the https://docs.apify.com/platform/storage/dataset.
+For more information, see the [Datasets documentation](https://docs.apify.com/platform/storage/dataset).
 
 note
 
@@ -14,34 +14,34 @@ Some of the endpoints do not require the authentication token, the calls are aut
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/datasets-get.md
+## [Get list of datasets](https://docs.apify.com/api/v2/datasets-get.md)
 
-https://docs.apify.com/api/v2/datasets-get.md
+[/datasets](https://docs.apify.com/api/v2/datasets-get.md)
 
-## https://docs.apify.com/api/v2/datasets-post.md
+## [Create dataset](https://docs.apify.com/api/v2/datasets-post.md)
 
-https://docs.apify.com/api/v2/datasets-post.md
+[/datasets](https://docs.apify.com/api/v2/datasets-post.md)
 
-## https://docs.apify.com/api/v2/dataset-get.md
+## [Get dataset](https://docs.apify.com/api/v2/dataset-get.md)
 
-https://docs.apify.com/api/v2/dataset-get.md
+[/datasets/{datasetId}](https://docs.apify.com/api/v2/dataset-get.md)
 
-## https://docs.apify.com/api/v2/dataset-put.md
+## [Update dataset](https://docs.apify.com/api/v2/dataset-put.md)
 
-https://docs.apify.com/api/v2/dataset-put.md
+[/datasets/{datasetId}](https://docs.apify.com/api/v2/dataset-put.md)
 
-## https://docs.apify.com/api/v2/dataset-delete.md
+## [Delete dataset](https://docs.apify.com/api/v2/dataset-delete.md)
 
-https://docs.apify.com/api/v2/dataset-delete.md
+[/datasets/{datasetId}](https://docs.apify.com/api/v2/dataset-delete.md)
 
-## https://docs.apify.com/api/v2/dataset-items-get.md
+## [Get dataset items](https://docs.apify.com/api/v2/dataset-items-get.md)
 
-https://docs.apify.com/api/v2/dataset-items-get.md
+[/datasets/{datasetId}/items](https://docs.apify.com/api/v2/dataset-items-get.md)
 
-## https://docs.apify.com/api/v2/dataset-items-post.md
+## [Store items](https://docs.apify.com/api/v2/dataset-items-post.md)
 
-https://docs.apify.com/api/v2/dataset-items-post.md
+[/datasets/{datasetId}/items](https://docs.apify.com/api/v2/dataset-items-post.md)
 
-## https://docs.apify.com/api/v2/dataset-statistics-get.md
+## [Get dataset statistics](https://docs.apify.com/api/v2/dataset-statistics-get.md)
 
-https://docs.apify.com/api/v2/dataset-statistics-get.md
+[/datasets/{datasetId}/statistics](https://docs.apify.com/api/v2/dataset-statistics-get.md)

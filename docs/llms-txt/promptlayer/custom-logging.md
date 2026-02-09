@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/custom-logging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Logging
 
 ## When to Use Custom Logging
@@ -247,6 +251,95 @@ pl_client.log_request(
 )
 ```
 
+## Logging Extended Thinking and Reasoning
+
+When logging requests that use extended thinking (Anthropic), thinking mode (Google), or reasoning (OpenAI), you need to:
+
+1. **Include the thinking configuration in `parameters`** - Use the provider-specific format
+2. **Include thinking content blocks in the output** - Add them to the message content array
+
+### Anthropic Extended Thinking
+
+For Anthropic models with extended thinking enabled, pass the `thinking` parameter:
+
+```python  theme={null}
+pl_client.log_request(
+    provider="anthropic",
+    model="claude-3-7-sonnet-20250219",
+    input=input_blueprint,
+    output={
+        "type": "chat",
+        "messages": [{
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "thinking",
+                    "thinking": "Let me analyze this step by step...",
+                    "signature": "ErUBCk..."  # Include if returned by the API
+                },
+                {
+                    "type": "text",
+                    "text": "Based on my analysis, here's the answer..."
+                }
+            ]
+        }]
+    },
+    parameters={
+        "max_tokens": 16000,
+        "thinking": {
+            "type": "enabled",
+            "budget_tokens": 10000
+        }
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time
+)
+```
+
+### Google/Gemini Thinking Mode
+
+For Google models with thinking mode, use the `thinking_config` parameter:
+
+```python  theme={null}
+pl_client.log_request(
+    provider="google",
+    model="gemini-2.0-flash-thinking-exp",
+    input=input_blueprint,
+    output=output_blueprint,
+    parameters={
+        "thinking_config": {
+            "include_thoughts": True,
+            "thinking_budget": 8000
+        }
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time
+)
+```
+
+### OpenAI Reasoning Models (o1, o3, etc.)
+
+For OpenAI reasoning models, use the `reasoning_effort` parameter:
+
+```python  theme={null}
+pl_client.log_request(
+    provider="openai",
+    model="o1",
+    input=input_blueprint,
+    output=output_blueprint,
+    parameters={
+        "reasoning_effort": "high"  # Options: "low", "medium", "high"
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time,
+    api_type="chat-completions"
+)
+```
+
+<Note>
+  The parameter name varies by provider — make sure to use the correct format for your provider as shown above.
+</Note>
+
 ## Working with Tools and Function Calls
 
 For OpenAI/Anthropic function calling or tool use:
@@ -354,8 +447,3 @@ async function main() {
 
 main();
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

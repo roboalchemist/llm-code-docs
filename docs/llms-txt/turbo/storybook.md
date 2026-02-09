@@ -1,11 +1,13 @@
 # Source: https://turbo.build/guides/tools/storybook.md
 
 # Storybook
-Description: Learn how to use Storybook in a Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
+<CopyPrompt
+  title="Set up Storybook in a Turborepo"
+  prompt={
+  "Set up Storybook in this Turborepo.\n1) Create a Storybook app\n2) Connect it to the UI package\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
 
 [Storybook](https://storybook.js.org/) is a popular way to build UI components in an isolated environment. By putting Storybook into your Turborepo, you can easily develop your design system right alongside your applications.
 
@@ -13,7 +15,7 @@ import { Steps, Step } from '#components/steps';
 
 If you'd rather use a template, this guide is walking through how to build [this Storybook/Turborepo template](https://vercel.com/templates/react/turborepo-design-system) on Vercel.
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e design-system
@@ -37,7 +39,7 @@ If you'd rather use a template, this guide is walking through how to build [this
     bunx create-turbo@latest -e design-system
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## Guide
 
@@ -47,7 +49,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     If you don't have an existing project, use [create-turbo](/docs/getting-started/installation) to create a new monorepo:
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm dlx create-turbo@latest
@@ -71,7 +73,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         bunx create-turbo@latest
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
   </Step>
 
   <Step>
@@ -90,7 +92,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     In the `apps/storybook` directory, initialize a new Storybook application:
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm create storybook@latest
@@ -114,11 +116,11 @@ If you'd rather use a template, this guide is walking through how to build [this
         bun create storybook@latest
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
 
     Follow the prompts to create an application. For the rest of this guide, we'll assume React and TypeScript.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       After going through Storybook's onboarding, you can [uninstall the onboarding
       addon](https://github.com/storybookjs/addon-onboarding/blob/main/README.md).
     </Callout>
@@ -129,7 +131,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     Now, install your UI package into Storybook.
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @repo/ui --filter=storybook
@@ -153,7 +155,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         cd apps/storybook && bun install @repo/ui
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
   </Step>
 
   <Step>
@@ -164,13 +166,13 @@ If you'd rather use a template, this guide is walking through how to build [this
     As an example, here is a story for the `Button` component from `@repo/ui/button`.
 
     ```tsx title="./apps/storybook/src/stories/Button.stories.tsx"
-    import type { Meta, StoryObj } from '@storybook/react';
-    import { Button } from '@repo/ui/button';
+    import type { Meta, StoryObj } from "@storybook/react";
+    import { Button } from "@repo/ui/button";
 
     const meta = {
-      title: 'Example/Button',
+      title: "Example/Button",
       component: Button,
-      tags: ['autodocs'],
+      tags: ["autodocs"],
     } satisfies Meta<typeof Button>;
 
     export default meta;
@@ -178,8 +180,8 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     export const Primary: Story = {
       args: {
-        appName: 'Button',
-        children: 'I am a primary button.',
+        appName: "Button",
+        children: "I am a primary button.",
       },
     };
     ```
@@ -272,7 +274,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
     + import { Button } from "./button";
     ```
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       You may also need to update [absolute
       imports](/docs/guides/tools/typescript#use-nodejs-subpath-imports-instead-of-typescript-compiler-paths)
       according to your changes and usage.
@@ -280,7 +282,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 
     You'll also need to install any Storybook packages required for writing stories. For example, moving the story from above would require that you install `@storybook/react` into your `@repo/ui` package.
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @storybook/react --filter=@repo/ui --save-dev
@@ -304,7 +306,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
         cd packages/ui && bun install @storybook/react --dev
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
   </Step>
 
   <Step>
@@ -341,7 +343,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
     }
     ```
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       If you are using the [Compiled Package
       pattern](/docs/core-concepts/internal-packages#compiled-packages), you may
       also need to add `^build` to your `dependsOn`.
@@ -380,3 +382,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 ### Adding CSS
 
 If your UI package exports its own CSS, you'll need to add it to the renders in the Storybook app, similar to how you would add it to your applications. [The Storybook documentation](https://storybook.js.org/docs/configure/styling-and-css#css) recommends you add it to the `.storybook/preview.ts` file.
+
+---
+
+[View full sitemap](/sitemap.md)

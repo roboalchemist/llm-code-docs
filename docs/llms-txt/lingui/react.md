@@ -2,10 +2,6 @@
 
 # Source: https://lingui.dev/tutorials/react.md
 
-# Source: https://lingui.dev/ref/react.md
-
-# Source: https://lingui.dev/tutorials/react.md
-
 # React Apps Internationalization
 
 In this tutorial, we'll learn how to add internationalization (i18n) to an existing React JS application. We'll focus on the most common patterns and best practices for using Lingui in React.

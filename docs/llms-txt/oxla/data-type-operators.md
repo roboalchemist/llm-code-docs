@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-data-types/data-type-operators.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Type Operators
 
 The Operator data type is any parsed expression that returns a value. An operator is used in the form of a special symbol or function.

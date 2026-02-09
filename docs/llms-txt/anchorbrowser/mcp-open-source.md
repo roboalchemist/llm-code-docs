@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/mcp-open-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP - Open Source
 
 > Self-host Anchor MCP server with customizable Playwright integration for your specific needs
@@ -12,9 +16,9 @@ A Model Context Protocol (MCP) server that provides browser automation capabilit
 
 This is based on the open source repository at [browsermcp-com/mcp](https://github.com/browsermcp-com/mcp), which extends Microsoft's Playwright MCP with Anchor Browser's cloud infrastructure.
 
-<Info>
+<Note>
   Looking for our hosted MCP service? Check out [MCP - Hosted Version](/advanced/mcp) for zero-setup integration.
-</Info>
+</Note>
 
 ## When to Use Open Source MCP
 

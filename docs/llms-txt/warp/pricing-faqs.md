@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/support-and-billing/plans-and-pricing/pricing-faqs.md
+# Source: https://docs.warp.dev/support-and-community/plans-and-billing/pricing-faqs.md
 
 # Pricing FAQs
 
@@ -8,7 +8,7 @@ All paid Warp plans come with higher monthly AI credit limits than the Free plan
 
 When you upgrade from Free to a paid plan, your AI credit usage resets. If you’re switching between paid plans, any AI usage you've already accumulated will carry over.
 
-To subscribe to any Warp paid plan, start by [creating a Team in Warp](https://docs.warp.dev/knowledge-and-collaboration/teams#creating-a-team), even if you're subscribing as an individual. Once your team is created, you can upgrade:
+To subscribe to any Warp paid plan, start by [creating a Team in Warp](https://docs.warp.dev/warp/knowledge-and-collaboration/teams#creating-a-team), even if you're subscribing as an individual. Once your team is created, you can upgrade:
 
 * In the app: Go to `Settings` > `Billing and usage`, then click the Upgrade link
 * Online: Visit [warp.dev/pricing](https://www.warp.dev/pricing)
@@ -20,14 +20,14 @@ After entering your payment details, you’ll receive an invoice and confirmatio
 {% hint style="warning" %}
 Warp's legacy paid plans included Pro, Turbo, and Lightspeed.
 
-After **Oct 30, 2025**, we have rolled out the new Build plan to replace them. Existing subscribers will start to roll over onto the Build plan starting **Dec 1st, 2025**. For questions related to the new pricing changes, please refer to [#warps-pricing-change-faqs-oct-30-2025](#warps-pricing-change-faqs-oct-30-2025 "mention").
+After **Oct 30, 2025**, we have rolled out the new Build plan to replace them. Existing subscribers will start to roll over onto the Build plan starting **Dec 1st, 2025**. For questions related to the new pricing changes, please refer to [Warp's Pricing Change FAQs](#warps-pricing-change-faqs-oct-30-2025).
 
 To see more details on the latest plan, please visit [**warp.dev/pricing**](https://www.warp.dev/pricing).
 {% endhint %}
 
 Warp's plans are designed for developers who rely on AI to code, debug, and move faster with their team.
 
-* **Build**, one usage-based plan with a set of AI credits, ability to Bring Your Own API Key (BYOK), and access to [Add-on credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits) with volume-based discounts. See more on [bring-your-own-api-key](https://docs.warp.dev/support-and-billing/plans-and-pricing/bring-your-own-api-key "mention").
+* **Build**, one usage-based plan with a set of AI credits, ability to Bring Your Own API Key (BYOK), and access to [Add-on credits](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits) with volume-based discounts. See more on [Bring Your Own API Key](https://docs.warp.dev/support-and-community/plans-and-billing/bring-your-own-api-key).
 * **Business** includes everything in Build, with advanced features like automatically enforced team-wide Zero Data Retention, SAML-based SSO, and support for teams up to 50 seats.
 
 Legacy plans:
@@ -72,29 +72,29 @@ All members of the team will have the same subscription plan, you can't mix and 
 
 ### What is the value of joining or creating a team on Warp?
 
-Team members have access to your shared [Warp Drive](https://docs.warp.dev/knowledge-and-collaboration/warp-drive) objects and limited access to Warp's collaboration features, including Session Sharing and Warp Drive storage.
+Team members have access to your shared [Warp Drive](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/) objects and limited access to Warp's collaboration features, including Session Sharing and Warp Drive storage.
 
 **Upgrading the team to a plan unlocks powerful collaboration and knowledge-sharing tools to help your team move faster, together:**
 
-* Create unlimited [Notebooks](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/notebooks) and [Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows) in Warp Drive to organize and share knowledge across your team.
-* Use Unlimited [Session Sharing](https://docs.warp.dev/features/session-sharing) to collaborate in real time through live, shared terminal sessions.
+* Create unlimited [Notebooks](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/notebooks) and [Workflows](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/workflows) in Warp Drive to organize and share knowledge across your team.
+* Use Unlimited [Session Sharing](https://docs.warp.dev/warp/knowledge-and-collaboration/session-sharing) to collaborate in real time through live, shared terminal sessions.
 
 ### My co-workers are using Warp but we’re not on a Team together yet. How does billing work?
 
 Individual users with either personal or work email domains may continue to use Warp independently without incurring billing. The benefit of joining together on a Warp Team is that you get access to a shared Team Drive and collaboration features.
 
-When you’re ready to use Warp more collaboratively, we suggest you nominate an Admin to [create a Team](https://docs.warp.dev/features/teams) and invite members to join. When your Team exceeds the Warp Drive limits, you will be prompted to upgrade to a plan.
+When you’re ready to use Warp more collaboratively, we suggest you nominate an Admin to [create a Team](https://docs.warp.dev/warp/knowledge-and-collaboration/teams) and invite members to join. When your Team exceeds the Warp Drive limits, you will be prompted to upgrade to a plan.
 
 ### How does usage work if logged into the same account on multiple devices?
 
 When you use the account to sign into Warp on different devices, for example Linux on one computer and Windows on another, your usage of metered features like AI credits is tracked at the account level, not the device level.
 
-You can use your Warp account on multiple personal computers. Warp is designed to provide a consistent experience across devices. When you log in with the same account on different computers, your settings and preferences can be synced through the [Settings Sync](https://docs.warp.dev/features/settings-sync) feature.
+You can use your Warp account on multiple personal computers. Warp is designed to provide a consistent experience across devices. When you log in with the same account on different computers, your settings and preferences can be synced through the [Settings Sync](https://docs.warp.dev/terminal/more-features/settings-sync) feature.
 
 ### What happens when I downgrade during a billing cycle?
 
 {% hint style="warning" %}
-Note this only applies when switching between legacy plans (Pro, Turbo, Lightspeed, or the Old Business) or switching the new plans (Build, New Business). When switching between legacy to new plans, the change is immediate, prorated, and the AI credits are reset. See more in [#what-happens-when-i-change-from-my-legacy-plan-to-the-new-build-or-business-plans](#what-happens-when-i-change-from-my-legacy-plan-to-the-new-build-or-business-plans "mention").
+Note this only applies when switching between legacy plans (Pro, Turbo, Lightspeed, or the Old Business) or switching the new plans (Build, New Business). When switching between legacy to new plans, the change is immediate, prorated, and the AI credits are reset. See more in [What happens when I change from my legacy plan to the new Build or Business plans?](#what-happens-when-i-change-from-my-legacy-plan-to-the-new-build-or-business-plans).
 {% endhint %}
 
 The subscription will downgrade to the lower plan limits at the end of the billing cycle. If you’re switching between paid plans, any AI usage you've already accumulated will carry over.\
@@ -123,11 +123,11 @@ If a payment fails, you will receive an email from Stripe and your Warp Team Set
 
 ### What counts as an AI credit?
 
-Each time you submit a prompt in Warp, whether to generate code, suggest a command, or accomplish a task, you initiate an interaction with the Agent. Please see more details in our [AI Credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits) page.
+Each time you submit a prompt in Warp, whether to generate code, suggest a command, or accomplish a task, you initiate an interaction with the Agent. Please see more details in our [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits) page.
 
 ### How do overages work?
 
-Overages allow for pay-as-you-go access to premium AI models after reaching your monthly quota on Warp plans. Please see more details in our [Overages](https://docs.warp.dev/support-and-billing/plans-and-pricing/usage-overages) page.
+Overages allow for pay-as-you-go access to premium AI models after reaching your monthly quota on Warp plans. Please see more details in our [Overages](https://docs.warp.dev/support-and-community/plans-and-billing/overages-legacy) page.
 
 ### What counts as an AI token?
 
@@ -139,11 +139,11 @@ Warp now abstracts away token usage, so you don't need to manage or track it dir
 
 If you're curious, you can still learn more about tokens [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them), or refer to the pricing page for plan-level credit allocations. If you reach your monthly AI credit limits on a paid plan, premium models will be temporarily disabled until your quota resets at the start of your next billing cycle.
 
-If you’d like to continue using premium models beyond your included quota, you can enable [pay-as-you-go overages](https://docs.warp.dev/support-and-billing/plans-and-pricing/usage-overages) in `Settings > Billing and usage`.
+If you’d like to continue using premium models beyond your included quota, you can enable [pay-as-you-go overages](https://docs.warp.dev/support-and-community/plans-and-billing/overages-legacy) in `Settings > Billing and usage`.
 
 ### How often do my AI credits reset?
 
-Allotted AI credits refill every 30 days from your signup date. When you upgrade to a [paid plan](https://www.warp.dev/pricing), you will be given more credits immediately. You can follow along with your refill period by referencing `Settings > Billing and usage`. Alternatively, you can also set [Overages](https://docs.warp.dev/support-and-billing/plans-and-pricing/usage-overages) to your desired amount to continue to use more premium model credits.
+Allotted AI credits refill every 30 days from your signup date. When you upgrade to a [paid plan](https://www.warp.dev/pricing), you will be given more credits immediately. You can follow along with your refill period by referencing `Settings > Billing and usage`. Alternatively, you can also set [Overages](https://docs.warp.dev/support-and-community/plans-and-billing/overages-legacy) to your desired amount to continue to use more premium model credits.
 
 {% hint style="info" %}
 Unused AI credits do not rollover to the next cycle and can't be transferred to other accounts.
@@ -169,9 +169,9 @@ For more details, please [visit the Security Overview](https://www.warp.dev/secu
 
 Over time, the Lite model—originally designed as a fallback when premium models ran out—began to deliver inconsistent results, especially for users running complex, multi-step prompts.
 
-For credit-efficient usage, we encourage you to try our new **Auto (cost-efficiency) model**, which automatically selects the optimal model based on task complexity to help extend your credits. To continue AI usage please either add [Add-on Credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits) or consider [using your own API key](https://docs.warp.dev/support-and-billing/plans-and-pricing/bring-your-own-api-key).
+For credit-efficient usage, we encourage you to try our new **Auto (cost-efficiency) model**, which automatically selects the optimal model based on task complexity to help extend your credits. To continue AI usage please either add [Add-on Credits](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits) or consider [using your own API key](https://docs.warp.dev/support-and-community/plans-and-billing/bring-your-own-api-key).
 
-If you have any questions or feedback, please connect with us in our [community Slack](https://docs.warp.dev/sending-us-feedback#sending-warp-feedback).
+If you have any questions or feedback, please connect with us in our [community Slack](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md#sending-warp-feedback).
 
 ### What payment options are available for Warp's self-service plans?
 
@@ -269,9 +269,9 @@ If you have any questions, please reach out to us at **<billing@warp.dev>**.
 
 You will retain your current plan and credits until the first renewal after December 1, 2025. At renewal, all current Pro, Turbo, Lightspeed, and Business plans will transition to the new Warp Build and Business plans.
 
-The Build and new Business plans includes 1,500 monthly AI credits, the ability to purchase [add-on-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits "mention") that roll over for 12 months, and the ability to bring your own API key. Learn more at [warp.dev/pricing](https://www.warp.dev/pricing).
+The Build and new Business plans includes 1,500 monthly AI credits, the ability to purchase [Add-on Credits](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits) that roll over for 12 months, and the ability to bring your own API key. Learn more at [warp.dev/pricing](https://www.warp.dev/pricing).
 
-In addition, [Add-on credit auto reload](https://docs.warp.dev/support-and-billing/add-on-credits#id-2.-enable-auto-reload) will be automatically enabled for some legacy plan users in the following ways (but can be opted out of or modified at any time). Our goal is to maintain the same maximum monthly spend in line with your legacy plan subscription plus any Overages:
+In addition, [Add-on credit auto reload](https://docs.warp.dev/support-and-community/add-on-credits#id-2.-enable-auto-reload) will be automatically enabled for some legacy plan users in the following ways (but can be opted out of or modified at any time). Our goal is to maintain the same maximum monthly spend in line with your legacy plan subscription plus any Overages:
 
 * **Pro:** Will transition to the Build plan. Auto-reload ***will not*****&#x20;be enabled by default**.
 * **Turbo:** Will transition to the Build plan. Auto-reload ***will*****&#x20;be enabled by default**. It will default to $30 auto-reload monthly spending limit for monthly subscribers and $22 for yearly subscribers. A handful of Turbo subscribers received a bulk discount for teams of 3 or more—please check your email for details on the default spending limits for your account.
@@ -284,7 +284,7 @@ If your total auto-reload monthly spend limit is $80 or above, we will set the A
 
 #### Can I continue to use Warp as my primary terminal?
 
-Yes, the terminal features of Warp will continue to be free to use for developers. Learn more at [](https://docs.warp.dev/support-and-billing/plans-and-pricing "mention").
+Yes, the terminal features of Warp will continue to be free to use for developers. Learn more at [Plans And Pricing](https://docs.warp.dev/support-and-community/plans-and-billing/plans-and-pricing).
 
 #### How are Add-on credits different from overages?
 

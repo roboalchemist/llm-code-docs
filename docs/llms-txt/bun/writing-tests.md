@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/writing-tests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Writing tests
 
 > Learn how to write tests using Bun's Jest-compatible API with support for async tests, timeouts, and various test modifiers
@@ -78,6 +82,43 @@ test("wat", async () => {
 In `bun:test`, test timeouts throw an uncatchable exception to force the test to stop running and fail. We also kill any child processes that were spawned in the test to avoid leaving behind zombie processes lurking in the background.
 
 The default timeout for each test is 5000ms (5 seconds) if not overridden by this timeout option or `jest.setDefaultTimeout()`.
+
+## Retries and Repeats
+
+### test.retry
+
+Use the `retry` option to automatically retry a test if it fails. The test passes if it succeeds within the specified number of attempts. This is useful for flaky tests that may fail intermittently.
+
+```ts title="example.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { test } from "bun:test";
+
+test(
+  "flaky network request",
+  async () => {
+    const response = await fetch("https://example.com/api");
+    expect(response.ok).toBe(true);
+  },
+  { retry: 3 }, // Retry up to 3 times if the test fails
+);
+```
+
+### test.repeats
+
+Use the `repeats` option to run a test multiple times regardless of pass/fail status. The test fails if any iteration fails. This is useful for detecting flaky tests or stress testing. Note that `repeats: N` runs the test N+1 times total (1 initial run + N repeats).
+
+```ts title="example.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { test } from "bun:test";
+
+test(
+  "ensure test is stable",
+  () => {
+    expect(Math.random()).toBeLessThan(1);
+  },
+  { repeats: 20 }, // Runs 21 times total (1 initial + 20 repeats)
+);
+```
+
+<Note>You cannot use both `retry` and `repeats` on the same test.</Note>
 
 ### 🧟 Zombie Process Killer
 

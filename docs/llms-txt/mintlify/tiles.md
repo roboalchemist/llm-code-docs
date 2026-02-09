@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/tiles.md
+# Source: https://www.mintlify.com/docs/components/tiles.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tiles
 
@@ -77,8 +81,3 @@ Combine tiles with the [columns component](/components/columns) to create a resp
 <ResponseField name="children" type="React.ReactNode" required>
   Content displayed inside the tile preview area, typically images or SVGs.
 </ResponseField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

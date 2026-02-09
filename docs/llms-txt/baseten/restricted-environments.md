@@ -1,28 +1,37 @@
-# Source: https://docs.baseten.co/observability/restricted-environments.md
+# Source: https://docs.baseten.co/organization/restricted-environments.md
 
-# Restricted environments 🆕
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Restricted environments
 
 > Control access to sensitive environments like production with environment-level permissions.
 
-Restricted environments let workspace admins lock down specific environments so that
+Restricted environments let organization Admins lock down specific environments so that
 only designated users can modify settings and configurations.
 Use restricted environments to prevent unauthorized changes to critical
 environments like production.
 
 For more information on user roles, see
-[workspace access control](/observability/access) and
+[Access control](/organization/access) and
 [Environments](/deployment/environments).
 
 ## How restricted environments work
 
-By default, environments are unrestricted, meaning any workspace member can modify
+By default, environments are unrestricted, meaning any organization member can modify
 deployments, autoscaling settings, and other configurations.
 When you mark an environment as restricted, only users you explicitly grant access can
 make changes.
 
-Restricted environments apply across all models and chains in your workspace.
+Restricted environments apply across all models and Chains in your organization.
 For example, if you restrict an environment named `production`, that restriction applies to
 every model and chain's production environment, not just one specific model or chain.
+
+<Note>
+  If your organization uses [teams](/organization/teams), restricted environments are scoped to individual teams.
+  Team Admins can create and manage restricted environments for their team.
+</Note>
 
 ### Permissions by access level
 
@@ -42,7 +51,7 @@ They retain full read access and can still call inference endpoints.
 
 ## Managing restricted environments
 
-Only workspace **admins** can create or modify restricted environments.
+Only organization **Admins** can create or modify restricted environments.
 Members (non-admin users) can only create unrestricted environments and cannot change
 environment restrictions.
 
@@ -92,8 +101,3 @@ This includes operations like:
 
 Users without access can still call inference endpoints, as restrictions only apply to
 management operations.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.baseten.co/llms.txt

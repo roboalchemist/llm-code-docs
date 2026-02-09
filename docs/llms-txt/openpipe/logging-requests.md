@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/request-logs/logging-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging Requests
 
 >  Record production data to train and improve your models' performance.
@@ -17,7 +21,7 @@ We provide a drop-in replacement for the OpenAI SDK, so the only code you need t
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     # from openai import OpenAI
     from openpipe import OpenAI
 
@@ -35,7 +39,7 @@ We provide a drop-in replacement for the OpenAI SDK, so the only code you need t
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     // import OpenAI from "openai"
     import OpenAI from "openpipe/openai";
 
@@ -75,7 +79,7 @@ Here's an example of steps 2-4 put together in both a raw cURL request and with 
 
 <Tabs>
   <Tab title="cURL Request">
-    ```bash
+    ```bash  theme={null}
     curl --request POST \
       --url https://api.openpipe.ai/api/v1/chat/completions \
       --header "Authorization: Bearer YOUR_OPENPIPE_API_KEY" \
@@ -99,7 +103,7 @@ Here's an example of steps 2-4 put together in both a raw cURL request and with 
   </Tab>
 
   <Tab title="Python SDK">
-    ```python
+    ```python  theme={null}
     from openai import OpenAI
 
     # Find your API key in https://app.openpipe.ai/settings
@@ -120,7 +124,7 @@ Here's an example of steps 2-4 put together in both a raw cURL request and with 
   </Tab>
 
   <Tab title="TypeScript SDK">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openai";
 
     // Find your API key in https://app.openpipe.ai/settings
@@ -145,7 +149,7 @@ If you need more flexibility in how you log requests, you can use the `report` e
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     import time
     from openai import OpenAI
     from openpipe.client import OpenPipe
@@ -172,7 +176,7 @@ If you need more flexibility in how you log requests, you can use the `report` e
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openai";
     import { ChatCompletionCreateParams } from "openai/resources";
     import OpenPipe from "openpipe/client";

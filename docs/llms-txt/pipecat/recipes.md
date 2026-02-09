@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/recipes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recipes
 
 > Code snippets and techniques to enhance your Pipecat applications
@@ -123,8 +127,3 @@
     Get help from the community
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

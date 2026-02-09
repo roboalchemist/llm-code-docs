@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/n8n.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # n8n
 
 > Tavily is now available for no-code integration through n8n.
@@ -105,8 +109,3 @@ To optimize your Tavily integration in n8n:
 * Use the SplitInBatches node to process multiple search results efficiently
 * Use filters to process only relevant results
 * Use the Merge node to combine multiple search results
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

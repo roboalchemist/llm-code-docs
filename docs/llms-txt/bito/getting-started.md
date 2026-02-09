@@ -1,4 +1,4 @@
-# Source: https://docs.bito.ai/getting-started.md
+# Source: https://docs.bito.ai/ai-code-reviews-in-git/getting-started.md
 
 # Getting started
 
@@ -25,7 +25,7 @@ This guide walks you through both options to help you determine which deployment
 
 * **Handling of Pull Request Diffs:** For analysis purposes, diffs from pull requests are temporarily stored on our servers.
 
-<p align="center"><a href="ai-code-reviews-in-git/install-run-using-bito-cloud" class="button primary">Install/run using Bito Cloud</a></p>
+<p align="center"><a href="install-run-using-bito-cloud" class="button primary">Install/run using Bito Cloud</a></p>
 
 ***
 
@@ -43,4 +43,4 @@ This guide walks you through both options to help you determine which deployment
 * **Setup Complexity:** Establishing a self-hosted environment requires technical know-how and can be more complex than using a managed service, potentially leading to longer setup times.
 * **Maintenance Responsibility:** The responsibility of maintaining and updating the software falls entirely on your team, which includes ensuring the system is scaled appropriately to handle demand.
 
-<p align="center"><a href="ai-code-reviews-in-git/install-run-as-a-self-hosted-service" class="button primary">Install/run as a self-hosted service</a></p>
+<p align="center"><a href="install-run-as-a-self-hosted-service" class="button primary">Install/run as a self-hosted service</a></p>

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-nominal-capacity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Battery Capacity
 
 > Returns a list of nominal rated battery capacities for a vehicle.

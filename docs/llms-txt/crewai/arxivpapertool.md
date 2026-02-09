@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/arxivpapertool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Arxiv Paper Tool
 
 > The `ArxivPaperTool` searches arXiv for papers matching a query and optionally downloads PDFs.

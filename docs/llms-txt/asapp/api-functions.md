@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/api-functions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Functions
 
 > Connect to your existing APIs to fetch data or perform actions with API Functions.
@@ -55,7 +59,7 @@ After creating the function, you can configure additional fields to enhance the 
 
 * **Message before sending**: Display a message to the user before calling the API
 * **Confirmation message**: Show confirmation after successful API calls
-* **Reference variables**: The API function response will be part of the conversation context for GenerativeAgent to reference, but you can optionally specify a specific field as a reference variable to either reference it in a [Conditional Template](/generativeagent/configuring/tasks-and-functions/conditional-templates), or for it to be included when a [System Transfer Function](/generativeagent/configuring/tasks-and-functions/system-transfer) is called.
+* **Reference variables**: The API function response will be part of the conversation context for GenerativeAgent to reference, but you can optionally specify a specific field as a reference variable to either reference it in a [Conditional Template](/generativeagent/configuring/tasks-and-functions/conditional-templates), or to include it when you call a [System Transfer Function](/generativeagent/configuring/tasks-and-functions/system-transfer).
 
 The function detail page shows the function configuration and any available API endpoints.
 
@@ -71,11 +75,11 @@ GenerativeAgent will call the function when it determines the API call is needed
 
 Here's how the function works within a task and conversation flow:
 
-1. GenerativeAgent analyzes the user's request and determines if an API call is needed
-2. (Optional) A "Message before Sending" can be displayed to the user
+1. GenerativeAgent analyzes the user's request and determines if it needs an API call
+2. (Optional) The system can display a "Message before Sending" to the user
 3. GenerativeAgent calls the API function with the appropriate parameters
-4. The API response is processed and can be used to generate a response to the user
-5. (Optional) A "Confirmation Message" can be displayed after successful API calls
+4. The system processes the API response and can use it to generate a response to the user
+5. (Optional) The system can display a "Confirmation Message" after successful API calls
 
 <Accordion title="Example scenario using an API Function">
   ```jinja  theme={null}

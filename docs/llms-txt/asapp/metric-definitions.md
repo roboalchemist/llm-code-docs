@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/metric-definitions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metric Definitions
 
 > Learn about the metrics available in Live Insights.
@@ -32,29 +36,29 @@
 
 ## Agent Metrics
 
-| **Metric name**           | **Definition**                                                                                                                                                                                        |
-| :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Agent Name**            | Name of the agent currently logged in to Agent Desk. Agents currently handling assignments have their names underlined. On click, the agent's current assignments display in the 'Conversations' tab. |
-| **Agent Status**          | Name of the status selected by the agent in Agent Desk. Green labels represent Available statuses, while orange labels represent Away statuses.                                                       |
-| **Time in Status**        | The time an agent has spent in the currently displayed status.                                                                                                                                        |
-| **Average Handle time**   | The time spent across all current assignments, starting from when the chat was assigned to when it is dispositioned, for a given agent.                                                               |
-| **Average Response Time** | The average amount of time to respond to a customer message across all current assignments for a given agent.                                                                                         |
-| **Assignments**           | The number of assignments an agent is currently handling.                                                                                                                                             |
+| **Metric name**           | **Definition**                                                                                                                                                                                                          |
+| :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Agent Name**            | Name of the agent currently logged in to Agent Desk. Agents currently handling assignments have their names underlined. When you click, the system displays the agent's current assignments in the 'Conversations' tab. |
+| **Agent Status**          | Name of the status selected by the agent in Agent Desk. Green labels represent Available statuses, while orange labels represent Away statuses.                                                                         |
+| **Time in Status**        | The time an agent has spent in the currently displayed status.                                                                                                                                                          |
+| **Average Handle time**   | The time spent across all current assignments, starting from when the chat was assigned to when it is dispositioned, for a given agent.                                                                                 |
+| **Average Response Time** | The average amount of time to respond to a customer message across all current assignments for a given agent.                                                                                                           |
+| **Assignments**           | The number of assignments an agent is currently handling.                                                                                                                                                               |
 
 ## Conversation Metrics
 
-| **Metric name**           | **Definition**                                                                          |
-| :------------------------ | :-------------------------------------------------------------------------------------- |
-| **Issue ID**              | Unique conversation identifier assigned to a customer intent.                           |
-| **Agent Name**            | Name of the agents handling the conversation.                                           |
-| **Channel**               | Channel the customer is engaging with.                                                  |
-| **Intent**                | Last detected intent prior to the user being assigned to the queue.                     |
-| **Queue Membership**      | Queue the issue was assigned to based on intent classification and queue routing rules. |
-| **Time Assigned**         | Time the conversation was assigned to an agent.                                         |
-| **Handle Time**           | Current handle time of the conversation.                                                |
-| **Average Response Time** | Average time it takes an agent to reply to customer utterances.                         |
-| **Time Waiting**          | Time since the last message sender has been awaiting a response.                        |
-| **Alerts**                | Event-based signals recorded throughout the conversation.                               |
+| **Metric name**           | **Definition**                                                                                    |
+| :------------------------ | :------------------------------------------------------------------------------------------------ |
+| **Issue ID**              | Unique conversation identifier that the system assigns to a customer intent.                      |
+| **Agent Name**            | Name of the agent handling the conversation.                                                      |
+| **Channel**               | Channel the customer is engaging with.                                                            |
+| **Intent**                | Last detected intent before the system assigns the user to the queue.                             |
+| **Queue Membership**      | Queue where the system assigned the issue based on intent classification and queue routing rules. |
+| **Time Assigned**         | Time when the system assigned the conversation to an agent.                                       |
+| **Handle Time**           | Current handle time of the conversation.                                                          |
+| **Average Response Time** | Average time it takes an agent to reply to customer utterances.                                   |
+| **Time Waiting**          | Time since the last message sender awaits a response.                                             |
+| **Alerts**                | Event-based signals that the system records throughout the conversation.                          |
 
 ## Performance - 'Current Period' Metrics (since 12 am)
 

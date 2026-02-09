@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/dinat.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/dinat.md
 
 # Dilated Neighborhood Attention Transformer
 
@@ -52,7 +52,7 @@ Note that the latter will likely take time to compile. NATTEN does not support W
 
 A list of official Hugging Face and community (indicated by 🌎) resources to help you get started with DiNAT.
 
-- [DinatForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
+- [DinatForImageClassification](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
 - See also: [Image classification task guide](../tasks/image_classification)
 
 If you're interested in submitting a resource to be included here, please feel free to open a Pull Request and we'll review it! The resource should ideally demonstrate something new instead of duplicating an existing resource.
@@ -61,15 +61,15 @@ If you're interested in submitting a resource to be included here, please feel f
 
 #### transformers.DinatConfig[[transformers.DinatConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinat/configuration_dinat.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinat/configuration_dinat.py#L24)
 
-This is the configuration class to store the configuration of a [DinatModel](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatModel). It is used to instantiate a Dinat
+This is the configuration class to store the configuration of a [DinatModel](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatModel). It is used to instantiate a Dinat
 model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
 defaults will yield a similar configuration to that of the Dinat
 [shi-labs/dinat-mini-in1k-224](https://huggingface.co/shi-labs/dinat-mini-in1k-224) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -126,17 +126,17 @@ layer_scale_init_value (`float`, *optional*, defaults to 0.0) : The initial valu
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.dinat.modeling_dinat.DinatImageClassifierOutput` or `tuple(torch.FloatTensor)`A `transformers.models.dinat.modeling_dinat.DinatImageClassifierOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.dinat.modeling_dinat.DinatImageClassifierOutput` or `tuple(torch.FloatTensor)`A `transformers.models.dinat.modeling_dinat.DinatImageClassifierOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DinatConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatConfig)) and inputs.
+elements depending on the configuration ([DinatConfig](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -146,7 +146,7 @@ elements depending on the configuration ([DinatConfig](/docs/transformers/v5.0.0
 
   Hidden-states of the model at the output of each layer plus the initial embedding outputs reshaped to
   include the spatial dimensions.
-The [DinatForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatForImageClassification) forward method, overrides the `__call__` special method.
+The [DinatForImageClassification](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -178,7 +178,7 @@ Example:
 
 **Parameters:**
 
-config ([DinatForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatForImageClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([DinatForImageClassification](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatForImageClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -186,15 +186,15 @@ config ([DinatForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/
 
 A `transformers.models.dinat.modeling_dinat.DinatImageClassifierOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DinatConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinat#transformers.DinatConfig)) and inputs.
+elements depending on the configuration ([DinatConfig](/docs/transformers/v5.0.0/en/model_doc/dinat#transformers.DinatConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

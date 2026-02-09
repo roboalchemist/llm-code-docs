@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/xtts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # XTTS
 
 > Text-to-speech service implementation using Coqui's XTTS streaming server
@@ -59,8 +63,3 @@ Before using XTTSTTSService, you need:
   GPU acceleration is recommended for optimal performance. The server requires
   CUDA support for best results.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

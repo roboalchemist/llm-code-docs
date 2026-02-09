@@ -71,5 +71,5 @@ services
 
  | nodes | Array | Array of service objects, the are services running on the node. The `service` object is defined in [/metrics/v1/values](metrics-v1.html#metrics-v1-values). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

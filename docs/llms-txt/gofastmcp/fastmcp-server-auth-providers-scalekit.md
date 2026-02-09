@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-providers-scalekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # scalekit
 
 # `fastmcp.server.auth.providers.scalekit`
@@ -12,9 +16,7 @@ authentication for seamless MCP client authentication.
 
 ## Classes
 
-### `ScalekitProviderSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/scalekit.py#L25" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-### `ScalekitProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/scalekit.py#L38" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `ScalekitProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/scalekit.py#L23" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Scalekit resource server provider for OAuth 2.1 authentication.
 
@@ -33,16 +35,15 @@ IMPORTANT SETUP REQUIREMENTS:
 
 2. Environment Configuration:
    * Set SCALEKIT\_ENVIRONMENT\_URL (e.g., [https://your-env.scalekit.com](https://your-env.scalekit.com))
-   * Set SCALEKIT\_CLIENT\_ID from your OAuth application
    * Set SCALEKIT\_RESOURCE\_ID from your created resource
-   * Set MCP\_URL to your FastMCP server's public URL
+   * Set BASE\_URL to your FastMCP server's public URL
 
 For detailed setup instructions, see:
 [https://docs.scalekit.com/mcp/overview/](https://docs.scalekit.com/mcp/overview/)
 
 **Methods:**
 
-#### `get_routes` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/scalekit.py#L134" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `get_routes` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/scalekit.py#L144" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_routes(self, mcp_path: str | None = None) -> list[Route]

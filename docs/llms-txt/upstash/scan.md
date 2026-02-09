@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SCAN
 
@@ -26,36 +12,44 @@
 
 ## Arguments
 
-<ParamField body="cursor" type="string">
-  The cursor value. Start with "0" on the first call, then use the cursor
-  returned by each call for the next. It's a string to safely support large
-  numbers that might exceed JavaScript's number limits.
+<ParamField body="cursor" type="int" required>
+  The cursor, use `0` in the beginning and then use the returned cursor for subsequent calls.
 </ParamField>
 
-<ParamField body="options" type="Object">
-  <ParamField body="match" type="string">
-    Glob-style pattern to filter by field names.
-  </ParamField>
+<ParamField body="match" type="str" required>
+  Glob-style pattern to filter by field names.
+</ParamField>
 
-  <ParamField body="count" type="number">
-    Number of fields to return per call.
-  </ParamField>
+<ParamField body="count" type="int" required>
+  Number of fields to return per call.
+</ParamField>
 
-  <ParamField body="type" type="string">
-    Filter by type. For example `string`, `hash`, `set`, `zset`, `list`,
-    `stream`.
-  </ParamField>
+<ParamField body="type" type="str">
+  Filter by type.
+  For example `string`, `hash`, `set`, `zset`, `list`, `stream`.
 </ParamField>
 
 ## Response
 
-<ResponseField type="[string, string[]]" required>
-  Returns the next cursor and the list of matching keys. When the returned
-  cursor is "0", the scan is complete.
+<ResponseField type="Tuple[int, List[str]]" required>
+  The new cursor and the keys as a tuple.
+  If the new cursor is `0` the iteration is complete.
+
+  Use the new cursor for subsequent calls.
 </ResponseField>
 
 <RequestExample>
-  ```ts Basic theme={"system"}
-  const [cursor, keys] = await redis.scan(0, { match: "*" });
+  ```py Example theme={"system"}
+  # Get all keys
+
+  cursor = 0
+  results = []
+
+  while True:
+      cursor, keys = redis.scan(cursor, match="*")
+
+      results.extend(keys)
+      if cursor == 0:
+          break
   ```
 </RequestExample>

@@ -1,207 +1,354 @@
 # Source: https://www.promptfoo.dev/docs/guides/llm-redteaming/
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-guides/llm-redteaming" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">How to red team LLM applications | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-guides-llm-redteaming--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-guides-llm-redteaming--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/guides/llm-redteaming/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How to red team LLM applications | Promptfoo"><meta data-rh="true" name="description" content="Protect your LLM applications from prompt injection, jailbreaks, and data leaks with automated red teaming tests that identify 20+ vulnerability types and security risks"><meta data-rh="true" property="og:description" content="Protect your LLM applications from prompt injection, jailbreaks, and data leaks with automated red teaming tests that identify 20+ vulnerability types and security risks"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/guides/llm-redteaming/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/guides/llm-redteaming/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/guides/llm-redteaming/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"How to red team LLM applications","item":"https://www.promptfoo.dev/docs/guides/llm-redteaming"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+# How to red team LLM applications
 
+Promptfoo is a popular open source evaluation framework that includes LLM red team and penetration testing capabilities.
 
+This guide shows you how to automatically generate adversarial tests specifically for your app. The red team covers a wide range of potential vulnerabilities and failure modes, including:
 
+## Privacy and Security
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+- PII Leaks
+- Cybercrime and Hacking
+- BFLA, BOLA, and other access control vulnerabilities
+- SSRF (Server-Side Request Forgery)
 
+## Technical Vulnerabilities
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+- Prompt Injection and Extraction
+- Jailbreaking
+- Hijacking
+- SQL and Shell Injection
+- ASCII Smuggling (invisible characters)
 
+## Criminal Activities and Harmful Content
 
+- Hate and Discrimination
+- Violent Crimes
+- Child Exploitation
+- Illegal Drugs
+- Indiscriminate and Chemical/Biological Weapons
+- Self-Harm and Graphic Content
 
+## Misinformation and Misuse
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="How to red team LLM applications" class="linkLabel_fEdy">How to red team LLM applications</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/rag/"><span title="RAG Red Teaming" class="linkLabel_fEdy">RAG Red Teaming</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/agents/"><span title="Agent Red Teaming" class="linkLabel_fEdy">Agent Red Teaming</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/mcp-security-testing/"><span title="MCP Security Testing" class="linkLabel_fEdy">MCP Security Testing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/multimodal-red-team/"><span title="Multi-Modal Red Teaming" class="linkLabel_fEdy">Multi-Modal Red Teaming</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/foundation-models/"><span title="Foundation Model Red Teaming" class="linkLabel_fEdy">Foundation Model Red Teaming</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/llm-supply-chain/"><span title="LLM Supply Chain Security" class="linkLabel_fEdy">LLM Supply Chain Security</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/model-drift/"><span title="Detecting Model Drift" class="linkLabel_fEdy">Detecting Model Drift</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/guides/testing-guardrails/"><span title="Testing Guardrails" class="linkLabel_fEdy">Testing Guardrails</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Guides</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">How to red team LLM applications</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>How to red team LLM applications</h1></header>
-<p>Promptfoo is a popular open source evaluation framework that includes LLM red team and penetration testing capabilities.</p>
-<p>This guide shows you how to automatically generate adversarial tests specifically for your app. The red team covers a wide range of potential vulnerabilities and failure modes, including:</p>
-<p><strong>Privacy and Security:</strong></p>
-<ul>
-<li class="">PII Leaks</li>
-<li class="">Cybercrime and Hacking</li>
-<li class="">BFLA, BOLA, and other access control vulnerabilities</li>
-<li class="">SSRF (Server-Side Request Forgery)</li>
-</ul>
-<p><strong>Technical Vulnerabilities:</strong></p>
-<ul>
-<li class="">Prompt Injection and Extraction</li>
-<li class="">Jailbreaking</li>
-<li class="">Hijacking</li>
-<li class="">SQL and Shell Injection</li>
-<li class="">ASCII Smuggling (invisible characters)</li>
-</ul>
-<p><strong>Criminal Activities and Harmful Content:</strong></p>
-<ul>
-<li class="">Hate and Discrimination</li>
-<li class="">Violent Crimes</li>
-<li class="">Child Exploitation</li>
-<li class="">Illegal Drugs</li>
-<li class="">Indiscriminate and Chemical/Biological Weapons</li>
-<li class="">Self-Harm and Graphic Content</li>
-</ul>
-<p><strong>Misinformation and Misuse:</strong></p>
-<ul>
-<li class="">Misinformation and Disinformation</li>
-<li class="">Copyright Violations</li>
-<li class="">Competitor Endorsements</li>
-<li class="">Excessive Agency</li>
-<li class="">Hallucination</li>
-<li class="">Overreliance</li>
-</ul>
-<p>The tool also allows for custom policy violations tailored to your specific use case. For a full list of supported vulnerability types, see <a class="" href="/docs/red-team/llm-vulnerability-types/">Types of LLM vulnerabilities</a>.</p>
-<p>The end result is a view that summarizes your LLM app&#x27;s vulnerabilities:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team report" src="/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png" width="2540" height="1946" class="img_SS3x"></p>
-<p>You can also dig into specific red team failure cases:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team evals" src="/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png" width="2932" height="1896" class="img_SS3x"></p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
-<p>First, install <a href="https://nodejs.org/en/download/package-manager/" target="_blank" rel="noopener noreferrer" class="">Node 20 or later</a>.</p>
-<p>Then create a new project for your red teaming needs:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam init my-redteam-project --no-gui</span><br></span></code></pre></div></div>
-<p>The <code>init</code> command will guide you through setting up a redteam for your use case, and includes several useful defaults to quickly get you started.</p>
-<p>It will create a <code>promptfooconfig.yaml</code> config file where we’ll do most of our setup.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="getting-started">Getting started<a href="#getting-started" class="hash-link" aria-label="Direct link to Getting started" title="Direct link to Getting started" translate="no">​</a></h2>
-<p>Edit <code>my-redteam-project/promptfooconfig.yaml</code> to set up the prompt and the LLM you want to test. See the <a class="" href="/docs/red-team/configuration/">configuration guide</a> for more information.</p>
-<p>Run the eval:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">cd</span><span class="token plain"> my-redteam-project</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam run</span><br></span></code></pre></div></div>
-<p>This will create a file <code>redteam.yaml</code> with adversarial test cases and run them through your application.</p>
-<p>And view the results:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam report</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="step-1-configure-your-prompts">Step 1: Configure your prompts<a href="#step-1-configure-your-prompts" class="hash-link" aria-label="Direct link to Step 1: Configure your prompts" title="Direct link to Step 1: Configure your prompts" translate="no">​</a></h2>
-<p>The easiest way to get started is to edit <code>promptfooconfig.yaml</code> to include your prompt(s).</p>
-<p>In this example, let&#x27;s pretend we&#x27;re building a trip planner app. I’ll set a prompt and include <code>{{variables}}</code> to indicate placeholders that will be replaced by user inputs:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Act as a travel agent and help the user plan their trip to {{destination}}. Be friendly and concise. User query: {{query}}&#x27;</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="what-if-you-dont-have-a-prompt">What if you don&#x27;t have a prompt?<a href="#what-if-you-dont-have-a-prompt" class="hash-link" aria-label="Direct link to What if you don&#x27;t have a prompt?" title="Direct link to What if you don&#x27;t have a prompt?" translate="no">​</a></h3>
-<p>Some testers prefer to directly redteam an API endpoint or website. In this case, just omit the prompt and proceed to set your targets below.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="chat-style-prompts">Chat-style prompts<a href="#chat-style-prompts" class="hash-link" aria-label="Direct link to Chat-style prompts" title="Direct link to Chat-style prompts" translate="no">​</a></h3>
-<p>In most cases your prompt will be more complex, in which case you could create a <code>prompt.json</code>:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">&#x27;role&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;system&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">&#x27;content&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Act as a travel agent and help the user plan their trip to {{destination}}. Be friendly and concise.&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">&#x27;role&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;user&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">&#x27;content&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;{{query}}&#x27;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre></div></div>
-<p>And then reference the file from <code>promptfooconfig.yaml</code>:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//prompt.json</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="dynamically-generated-prompts">Dynamically generated prompts<a href="#dynamically-generated-prompts" class="hash-link" aria-label="Direct link to Dynamically generated prompts" title="Direct link to Dynamically generated prompts" translate="no">​</a></h3>
-<p>Some applications generate their prompts dynamically depending on variables. For example, suppose we want to determine the prompt based on the user&#x27;s destination:</p>
-<div class="language-python codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-python codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">def</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">get_prompt</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">context</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> context</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;vars&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;destination&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Australia&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token string-interpolation string" style="color:#e3116c">f&quot;Act as a travel agent, mate: {{query}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token string-interpolation string" style="color:#e3116c">f&quot;Act as a travel agent and help the user plan their trip. Be friendly and concise. User query: {{query}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
-<p>We can include this prompt in the configuration like so:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//rag_agent.py</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">get_prompt</span><br></span></code></pre></div></div>
-<p>The equivalent Javascript is also supported:</p>
-<div class="language-js codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-js codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">function</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">getPrompt</span><span class="token punctuation" style="color:#393A34">(</span><span class="token parameter">context</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">context</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">vars</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">destination </span><span class="token operator" style="color:#393A34">===</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Australia&#x27;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token template-string string" style="color:#e3116c">Act as a travel agent, mate: </span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">${</span><span class="token template-string interpolation">context</span><span class="token template-string interpolation punctuation" style="color:#393A34">.</span><span class="token template-string interpolation">query</span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">}</span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token template-string string" style="color:#e3116c">Act as a travel agent and help the user plan their trip. Be friendly and concise. User query: </span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">${</span><span class="token template-string interpolation">context</span><span class="token template-string interpolation punctuation" style="color:#393A34">.</span><span class="token template-string interpolation">query</span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">}</span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="step-2-configure-your-targets">Step 2: Configure your targets<a href="#step-2-configure-your-targets" class="hash-link" aria-label="Direct link to Step 2: Configure your targets" title="Direct link to Step 2: Configure your targets" translate="no">​</a></h2>
-<p>LLMs are configured with the <code>targets</code> property in <code>promptfooconfig.yaml</code>. An LLM target can be a known LLM API (such as OpenAI, Anthropic, Ollama, etc.) or a custom RAG or agent flow you&#x27;ve built yourself.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-apis">LLM APIs<a href="#llm-apis" class="hash-link" aria-label="Direct link to LLM APIs" title="Direct link to LLM APIs" translate="no">​</a></h3>
-<p>Promptfoo supports <a class="" href="/docs/providers/">many LLM providers</a> including OpenAI, Anthropic, Mistral, Azure, Groq, Perplexity, Cohere, and more. In most cases all you need to do is set the appropriate API key environment variable.</p>
-<p>You should choose at least one target. If desired, set multiple in order to compare their performance in the red team eval. In this example, we’re comparing performance of GPT, Claude, and Llama:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">5</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> anthropic</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">messages</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">claude</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">3</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">sonnet</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">20241022</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> ollama</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">chat</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">llama3.3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">70b</span><br></span></code></pre></div></div>
-<p>To learn more, find your preferred LLM provider <a class="" href="/docs/providers/">here</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="custom-flows">Custom flows<a href="#custom-flows" class="hash-link" aria-label="Direct link to Custom flows" title="Direct link to Custom flows" translate="no">​</a></h3>
-<p>If you have a custom RAG or agent flow, you can include them in your project like this:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># JS and Python are natively supported</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//path/to/js_agent.js</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//path/to/python_agent.py</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Any executable can be run with the `exec:` directive</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> exec</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">/path/to/shell_agent</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># HTTP requests can be made with the `webhook:` directive</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> webhook</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">&lt;http</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//localhost</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">8000/api/agent</span><span class="token punctuation" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
-<p>To learn more, see:</p>
-<ul>
-<li class=""><a class="" href="/docs/providers/custom-api/">Javascript provider</a></li>
-<li class=""><a class="" href="/docs/providers/python/">Python provider</a></li>
-<li class=""><a class="" href="/docs/providers/custom-script/">Exec provider</a> (Used to run any executable from any programming language)</li>
-<li class=""><a class="" href="/docs/providers/webhook/">Webhook provider</a> (HTTP requests, useful for testing an app that is online or running locally)</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="http-endpoints">HTTP endpoints<a href="#http-endpoints" class="hash-link" aria-label="Direct link to HTTP endpoints" title="Direct link to HTTP endpoints" translate="no">​</a></h3>
-<p>In order to pentest a live API endpoint, set the provider id to a URL. This will send an HTTP request to the endpoint. It expects that the LLM or agent output will be in the HTTP response.</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;https://example.com/generate&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">method</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;POST&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">headers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">&#x27;Content-Type&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;application/json&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">body</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">my_prompt</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;{{prompt}}&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">transformResponse</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;json.path[0].to.output&#x27;</span><br></span></code></pre></div></div>
-<p>Customize the HTTP request using a placeholder variable <code>{{prompt}}</code> that will be replaced by the final prompt during the pentest.</p>
-<p>If your API responds with a JSON object and you want to pick out a specific value, use the <code>transformResponse</code> key to set a Javascript snippet that manipulates the provided <code>json</code> object.</p>
-<p>For example, <code>json.nested.output</code> will reference the output in the following API response:</p>
-<div class="language-js codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-js codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token string-property property" style="color:#36acaa">&#x27;nested&#x27;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token string-property property" style="color:#36acaa">&#x27;output&#x27;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;...&#x27;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<p>You can also reference nested objects. For example, <code>json.choices[0].message.content</code> references the generated text in a standard OpenAI chat response.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="configuring-the-grader">Configuring the grader<a href="#configuring-the-grader" class="hash-link" aria-label="Direct link to Configuring the grader" title="Direct link to Configuring the grader" translate="no">​</a></h3>
-<p>The results of the red team are graded by a model. By default, <code>gpt-5</code> is used and the test expects an <code>OPENAI_API_KEY</code> environment variable.</p>
-<p>You can override the grader by adding a provider override for <code>defaultTest</code>, which will apply the override to all test cases. Here’s an example of using Llama3 as a grader locally:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;ollama:chat:llama3.3:70b&#x27;</span><br></span></code></pre></div></div>
-<p>And in this example, we use <a class="" href="/docs/providers/azure/#model-graded-tests">Azure OpenAI</a> as a grader:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">defaultTest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">options</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> azureopenai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">chat</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">deployment</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">apiHost</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;xxxxxxx.openai.azure.com&#x27;</span><br></span></code></pre></div></div>
-<p>For more information, see <a class="" href="/docs/configuration/expected-outputs/model-graded/#overriding-the-llm-grader">Overriding the LLM grader</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="step-3-generate-adversarial-test-cases">Step 3: Generate adversarial test cases<a href="#step-3-generate-adversarial-test-cases" class="hash-link" aria-label="Direct link to Step 3: Generate adversarial test cases" title="Direct link to Step 3: Generate adversarial test cases" translate="no">​</a></h2>
-<p>Now that you&#x27;ve configured everything, the next step is to generate the red teaming inputs. This is done by running the <code>promptfoo redteam generate</code> command:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam generate</span><br></span></code></pre></div></div>
-<p>This command works by reading your prompts and targets and then generating a set of adversarial inputs that stress-test your prompts/models in a variety of situations. Test generation usually takes about 5 minutes.</p>
-<p>The adversarial tests include:</p>
-<ul>
-<li class="">Prompt injection (<a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer" class="">OWASP LLM01</a>)</li>
-<li class="">Jailbreaking (<a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener noreferrer" class="">OWASP LLM01</a>)</li>
-<li class="">Excessive Agency (<a href="https://genai.owasp.org/llmrisk/llm08-excessive-agency/" target="_blank" rel="noopener noreferrer" class="">OWASP LLM08</a>)</li>
-<li class="">Overreliance (<a href="https://genai.owasp.org/llmrisk/llm09-overreliance/" target="_blank" rel="noopener noreferrer" class="">OWASP LLM09</a>)</li>
-<li class="">Hallucination (when the LLM provides unfactual answers)</li>
-<li class="">Hijacking (when the LLM is used for unintended purposes)</li>
-<li class="">PII leaks (ensuring the model does not inadvertently disclose PII)</li>
-<li class="">Competitor recommendations (when the LLM suggests alternatives to your business)</li>
-<li class="">Unintended contracts (when the LLM makes unintended commitments or agreements)</li>
-<li class="">Political statements</li>
-<li class="">Imitation of a person, brand, or organization</li>
-</ul>
-<p>It also tests for a variety of harmful input and output scenarios from the <a href="https://arxiv.org/abs/2404.12241" target="_blank" rel="noopener noreferrer" class="">ML Commons Safety Working Group</a> and <a href="https://www.harmbench.org/" target="_blank" rel="noopener noreferrer" class="">HarmBench</a> framework:</p>
-<details class="details_IpIu alert alert--info details_jERq" data-collapsed="true"><summary>View harmful categories</summary><div><div class="collapsibleContent_Fd2D"><ul>
-<li class="">Chemical &amp; biological weapons</li>
-<li class="">Child exploitation</li>
-<li class="">Copyright violations</li>
-<li class="">Cybercrime &amp; unauthorized intrusion</li>
-<li class="">Graphic &amp; age-restricted content</li>
-<li class="">Harassment &amp; bullying</li>
-<li class="">Hate</li>
-<li class="">Illegal activities</li>
-<li class="">Illegal drugs</li>
-<li class="">Indiscriminate weapons</li>
-<li class="">Intellectual property</li>
-<li class="">Misinformation &amp; disinformation</li>
-<li class="">Non-violent crimes</li>
-<li class="">Privacy</li>
-<li class="">Privacy violations &amp; data exploitation</li>
-<li class="">Promotion of unsafe practices</li>
-<li class="">Self-harm</li>
-<li class="">Sex crimes</li>
-<li class="">Sexual content</li>
-<li class="">Specialized financial/legal/medical advice</li>
-<li class="">Violent crimes</li>
-</ul></div></div></details>
-<p>By default, all of the above will be included in the redteam. To use specific types of tests, use <code>--plugins</code>:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam generate </span><span class="token punctuation" style="color:#393A34">-</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">plugins &#x27;harmful</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain">jailbreak</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain">hijacking&#x27;</span><br></span></code></pre></div></div>
-<p>The following plugins are enabled by default:</p>
-<table><thead><tr><th>Plugin Name</th><th>Description</th></tr></thead><tbody><tr><td>contracts</td><td>Tests if the model makes unintended commitments or agreements.</td></tr><tr><td>excessive-agency</td><td>Tests if the model exhibits too much autonomy or makes decisions on its own.</td></tr><tr><td>hallucination</td><td>Tests if the model generates false or misleading content.</td></tr><tr><td>harmful</td><td>Tests for the generation of harmful or offensive content.</td></tr><tr><td>imitation</td><td>Tests if the model imitates a person, brand, or organization.</td></tr><tr><td>hijacking</td><td>Tests the model&#x27;s vulnerability to being used for unintended tasks.</td></tr><tr><td>jailbreak</td><td>Tests if the model can be manipulated to bypass its safety mechanisms.</td></tr><tr><td>overreliance</td><td>Tests for excessive trust in LLM output without oversight.</td></tr><tr><td>pii</td><td>Tests for inadvertent disclosure of personally identifiable information.</td></tr><tr><td>politics</td><td>Tests for political opinions and statements about political figures.</td></tr><tr><td>prompt-injection</td><td>Tests the model&#x27;s susceptibility to prompt injection attacks.</td></tr></tbody></table>
-<p>These additional plugins can be optionally enabled:</p>
-<table><thead><tr><th>Plugin Name</th><th>Description</th></tr></thead><tbody><tr><td>competitors</td><td>Tests if the model recommends alternatives to your service.</td></tr></tbody></table>
-<p>The adversarial test cases will be written to <code>promptfooconfig.yaml</code>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="step-4-run-the-pentest">Step 4: Run the pentest<a href="#step-4-run-the-pentest" class="hash-link" aria-label="Direct link to Step 4: Run the pentest" title="Direct link to Step 4: Run the pentest" translate="no">​</a></h2>
-<p>Now that all the red team tests are ready, run the eval:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam eval</span><br></span></code></pre></div></div>
-<p>This will take a while, usually ~15 minutes or so depending on how many plugins you have chosen.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="step-5-review-results">Step 5: Review results<a href="#step-5-review-results" class="hash-link" aria-label="Direct link to Step 5: Review results" title="Direct link to Step 5: Review results" translate="no">​</a></h2>
-<p>Use the web viewer to review the flagged outputs and understand the failure cases.</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest view</span><br></span></code></pre></div></div>
-<p>This will open a view that displays red team test results lets you dig into specific vulnerabilities:</p>
-<p><img decoding="async" loading="lazy" alt="llm redteaming" src="/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png" width="2932" height="1896" class="img_SS3x"></p>
-<p>Click the &quot;Vulnerability Report&quot; button to see a report view that summarizes the vulnerabilities:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team report" src="/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png" width="2540" height="1946" class="img_SS3x"></p></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/guides/llm-redteaming.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/troubleshooting/remote-generation/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Remote Generation Errors</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/rag/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">RAG Red Teaming</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#getting-started" class="table-of-contents__link toc-highlight">Getting started</a></li><li><a href="#step-1-configure-your-prompts" class="table-of-contents__link toc-highlight">Step 1: Configure your prompts</a><ul><li><a href="#what-if-you-dont-have-a-prompt" class="table-of-contents__link toc-highlight">What if you don&#39;t have a prompt?</a></li><li><a href="#chat-style-prompts" class="table-of-contents__link toc-highlight">Chat-style prompts</a></li><li><a href="#dynamically-generated-prompts" class="table-of-contents__link toc-highlight">Dynamically generated prompts</a></li></ul></li><li><a href="#step-2-configure-your-targets" class="table-of-contents__link toc-highlight">Step 2: Configure your targets</a><ul><li><a href="#llm-apis" class="table-of-contents__link toc-highlight">LLM APIs</a></li><li><a href="#custom-flows" class="table-of-contents__link toc-highlight">Custom flows</a></li><li><a href="#http-endpoints" class="table-of-contents__link toc-highlight">HTTP endpoints</a></li><li><a href="#configuring-the-grader" class="table-of-contents__link toc-highlight">Configuring the grader</a></li></ul></li><li><a href="#step-3-generate-adversarial-test-cases" class="table-of-contents__link toc-highlight">Step 3: Generate adversarial test cases</a></li><li><a href="#step-4-run-the-pentest" class="table-of-contents__link toc-highlight">Step 4: Run the pentest</a></li><li><a href="#step-5-review-results" class="table-of-contents__link toc-highlight">Step 5: Review results</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+- Misinformation and Disinformation
+- Copyright Violations
+- Competitor Endorsements
+- Excessive Agency
+- Hallucination
+- Overreliance
+
+The tool also allows for custom policy violations tailored to your specific use case. For a full list of supported vulnerability types, see [Types of LLM vulnerabilities](/docs/red-team/llm-vulnerability-types/).
+
+The end result is a view that summarizes your LLM app's vulnerabilities:
+
+![llm red team report](/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png)
+
+You can also dig into specific red team failure cases:
+
+![llm red team evals](/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png)
+
+## Prerequisites
+
+First, install [Node 20 or later](https://nodejs.org/en/download/package-manager/).
+
+Then create a new project for your red teaming needs:
+
+```sh
+npx promptfoo@latest redteam init my-redteam-project --no-gui
+```
+
+The `init` command will guide you through setting up a redteam for your use case, and includes several useful defaults to quickly get you started.
+
+It will create a `promptfooconfig.yaml` config file where we’ll do most of our setup.
+
+## Getting started
+
+Edit `my-redteam-project/promptfooconfig.yaml` to set up the prompt and the LLM you want to test. See the [configuration guide](/docs/red-team/configuration/) for more information.
+
+Run the eval:
+
+```sh
+cd my-redteam-project
+npx promptfoo@latest redteam run
+```
+
+This will create a file `redteam.yaml` with adversarial test cases and run them through your application.
+
+And view the results:
+
+```sh
+npx promptfoo@latest redteam report
+```
+
+## Step 1: Configure your prompts
+
+The easiest way to get started is to edit `promptfooconfig.yaml` to include your prompt(s).
+
+In this example, let's pretend we're building a trip planner app. I’ll set a prompt and include `{{variables}}` to indicate placeholders that will be replaced by user inputs:
+
+```yaml
+prompts:
+  - 'Act as a travel agent and help the user plan their trip to {{destination}}. Be friendly and concise. User query: {{query}}'
+```
+
+### What if you don't have a prompt?
+
+Some testers prefer to directly redteam an API endpoint or website. In this case, just omit the prompt and proceed to set your targets below.
+
+### Chat-style prompts
+
+In most cases your prompt will be more complex, in which case you could create a `prompt.json`:
+
+```yaml
+[
+  {
+    'role': 'system',
+    'content': 'Act as a travel agent and help the user plan their trip to {{destination}}. Be friendly and concise.',
+  },
+  {
+    'role': 'user', 'content': '{{query}}'
+  },
+]
+```
+
+And then reference the file from `promptfooconfig.yaml`:
+
+```yaml
+prompts:
+  - file://prompt.json
+```
+
+### Dynamically generated prompts
+
+Some applications generate their prompts dynamically depending on variables. For example, suppose we want to determine the prompt based on the user's destination:
+
+```python
+def get_prompt(context):
+  if context['vars']['destination'] == 'Australia':
+    return f"Act as a travel agent, mate: {{query}}"
+  return f"Act as a travel agent and help the user plan their trip. Be friendly and concise. User query: {{query}}"
+```
+
+We can include this prompt in the configuration like so:
+
+```yaml
+prompts:
+  - file:////rag_agent.py:get_prompt
+```
+
+The equivalent Javascript is also supported:
+
+```js
+function getPrompt(context) {
+  if (context.vars.destination === 'Australia') {
+    return `Act as a travel agent, mate: ${context.query}`;
+  }
+  return `Act as a travel agent and help the user plan their trip. Be friendly and concise. User query: ${context.query}`;
+}
+```
+
+## Step 2: Configure your targets
+
+LLMs are configured with the `targets` property in `promptfooconfig.yaml`. An LLM target can be a known LLM API (such as OpenAI, Anthropic, Ollama, etc.) or a custom RAG or agent flow you've built yourself.
+
+### LLM APIs
+
+Promptfoo supports [many LLM providers](/docs/providers/) including OpenAI, Anthropic, Mistral, Azure, Groq, Perplexity, Cohere, and more. In most cases all you need to do is set the appropriate API key environment variable.
+
+You should choose at least one target. If desired, set multiple in order to compare their performance in the red team eval. In this example, we’re comparing performance of GPT, Claude, and Llama:
+
+```yaml
+targets:
+  - openai:gpt-5
+  - anthropic:messages:claude-3-5-sonnet-20241022
+  - ollama:chat:llama3.3:70b
+```
+
+To learn more, find your preferred LLM provider [here](/docs/providers/).
+
+### Custom flows
+
+If you have a custom RAG or agent flow, you can include them in your project like this:
+
+```yaml
+targets:
+  # JS and Python are natively supported
+  - file:////path/to/js_agent.js
+  - file:////path/to/python_agent.py
+  # Any executable can be run with the `exec:` directive
+  - exec:/path/to/shell_agent
+  # HTTP requests can be made with the `webhook:` directive
+  - webhook:<http://localhost:8000/api/agent>
+```
+
+To learn more, see:
+
+- [Javascript provider](/docs/providers/custom-api/)
+- [Python provider](/docs/providers/python/)
+- [Exec provider](/docs/providers/custom-script/) (Used to run any executable from any programming language)
+- [Webhook provider](/docs/providers/webhook/) (HTTP requests, useful for testing an app that is online or running locally)
+
+### HTTP endpoints
+
+In order to pentest a live API endpoint, set the provider id to a URL. This will send an HTTP request to the endpoint. It expects that the LLM or agent output will be in the HTTP response.
+
+```yaml
+targets:
+  - id: https://example.com/generate
+    config:
+      method: POST
+      headers:
+        'Content-Type': 'application/json'
+      body:
+        my_prompt: '{{prompt}}'
+      transformResponse: 'json.path[0].to.output'
+```
+
+Customize the HTTP request using a placeholder variable `{{prompt}}` that will be replaced by the final prompt during the pentest.
+
+If your API responds with a JSON object and you want to pick out a specific value, use the `transformResponse` key to set a Javascript snippet that manipulates the provided `json` object.
+
+For example, `json.nested.output` will reference the output in the following API response:
+
+```json
+{
+  'nested': {
+    'output': '...'
+  }
+}
+```
+
+You can also reference nested objects. For example, `json.choices[0].message.content` references the generated text in a standard OpenAI chat response.
+
+### Configuring the grader
+
+The results of the red team are graded by a model. By default, `gpt-5` is used and the test expects an `OPENAI_API_KEY` environment variable.
+
+You can override the grader by adding a provider override for `defaultTest`, which will apply the override to all test cases. Here’s an example of using Llama3 as a grader locally:
+
+```yaml
+defaultTest:
+  options:
+    provider: ollama:chat:llama3.3:70b
+```
+
+And in this example, we use [Azure OpenAI](/docs/providers/azure/#model-graded-tests) as a grader:
+
+```yaml
+defaultTest:
+  options:
+    provider:
+      id: azureopenai:chat:gpt-4-deployment-name
+      config:
+        apiHost: xxxxxxx.openai.azure.com
+```
+
+For more information, see [Overriding the LLM grader](/docs/configuration/expected-outputs/model-graded/#overriding-the-llm-grader).
+
+## Step 3: Generate adversarial test cases
+
+Now that you've configured everything, the next step is to generate the red teaming inputs. This is done by running the `promptfoo redteam generate` command:
+
+```sh
+npx promptfoo@latest redteam generate
+```
+
+This command works by reading your prompts and targets and then generating a set of adversarial inputs that stress-test your prompts/models in a variety of situations. Test generation usually takes about 5 minutes.
+
+The adversarial tests include:
+
+- Prompt injection ([OWASP LLM01](https://genai.owasp.org/llmrisk/llm01-prompt-injection/))
+- Jailbreaking ([OWASP LLM01](https://genai.owasp.org/llmrisk/llm01-prompt-injection/))
+- Excessive Agency ([OWASP LLM08](https://genai.owasp.org/llmrisk/llm08-excessive-agency/))
+- Overreliance ([OWASP LLM09](https://genai.owasp.org/llmrisk/llm09-overreliance/))
+- Hallucination (when the LLM provides unfactual answers)
+- Hijacking (when the LLM is used for unintended purposes)
+- PII leaks (ensuring the model does not inadvertently disclose PII)
+- Competitor recommendations (when the LLM suggests alternatives to your business)
+- Unintended contracts (when the LLM makes unintended commitments or agreements)
+- Political statements
+- Imitation of a person, brand, or organization
+
+It also tests for a variety of harmful input and output scenarios from the [ML Commons Safety Working Group](https://arxiv.org/abs/2404.12241) and [HarmBench](https://www.harmbench.org/) framework:
+
+View harmful categories
+
+- Chemical & biological weapons
+- Child exploitation
+- Copyright violations
+- Cybercrime & unauthorized intrusion
+- Graphic & age-restricted content
+- Harassment & bullying
+- Hate
+- Illegal activities
+- Illegal drugs
+- Indiscriminate weapons
+- Intellectual property
+- Misinformation & disinformation
+- Non-violent crimes
+- Privacy
+- Privacy violations & data exploitation
+- Promotion of unsafe practices
+- Self-harm
+- Sex crimes
+- Sexual content
+- Specialized financial/legal/medical advice
+- Violent crimes
+
+By default, all of the above will be included in the redteam. To use specific types of tests, use `--plugins`:
+
+```sh
+npx promptfoo@latest redteam generate --plugins 'harmful,jailbreak,hijacking'
+```
+
+The following plugins are enabled by default:
+
+| Plugin Name | Description |
+| --- | --- |
+| contracts | Tests if the model makes unintended commitments or agreements. |
+| excessive-agency | Tests if the model exhibits too much autonomy or makes decisions on its own. |
+| hallucination | Tests if the model generates false or misleading content. |
+| harmful | Tests for the generation of harmful or offensive content. |
+| imitation | Tests if the model imitates a person, brand, or organization. |
+| hijacking | Tests the model's vulnerability to being used for unintended tasks. |
+| jailbreak | Tests if the model can be manipulated to bypass its safety mechanisms. |
+| overreliance | Tests for excessive trust in LLM output without oversight. |
+| pii | Tests for inadvertent disclosure of personally identifiable information. |
+| politics | Tests for political opinions and statements about political figures. |
+| prompt-injection | Tests the model's susceptibility to prompt injection attacks. |
+
+These additional plugins can be optionally enabled:
+
+| Plugin Name | Description |
+| --- | --- |
+| competitors | Tests if the model recommends alternatives to your service. |
+
+The adversarial test cases will be written to `promptfooconfig.yaml`.
+
+## Step 4: Run the pentest
+
+Now that all the red team tests are ready, run the eval:
+
+```sh
+npx promptfoo@latest redteam eval
+```
+
+This will take a while, usually ~15 minutes or so depending on how many plugins you have chosen.
+
+## Step 5: Review results
+
+Use the web viewer to review the flagged outputs and understand the failure cases.
+
+```sh
+npx promptfoo@latest view
+```
+
+This will open a view that displays red team test results lets you dig into specific vulnerabilities:
+
+![llm redteaming](/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png)
+
+Click the "Vulnerability Report" button to see a report view that summarizes the vulnerabilities:
+
+![llm red team report](/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png)

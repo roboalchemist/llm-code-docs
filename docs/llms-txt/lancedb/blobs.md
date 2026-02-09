@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/geneva/udfs/blobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Blob Types in Geneva UDFs
 
 > Learn how to work with Lance Blobs in Geneva UDFs for handling large binary objects efficiently with lazy reading capabilities.
@@ -58,8 +62,3 @@ For `pa.RecordBatch` batched UDFs you the effort is similar:
       return pa.array(blobs, type=pa.large_binary())
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

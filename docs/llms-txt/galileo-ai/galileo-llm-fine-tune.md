@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-llm-fine-tune.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview of Galileo LLM Fine-Tune
 
 > Fine-tune large language models with Galileo's LLM Fine-Tune tools, enabling precise adjustments for optimized AI performance and output quality.

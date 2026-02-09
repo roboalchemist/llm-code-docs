@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/ai-agent/actions/cal-booking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cal.com Booking Widget
 
 The Cal.com Booking Widget action embeds your Cal.com scheduler directly inside the chat, so users can view real-time availability and book without leaving the conversation.

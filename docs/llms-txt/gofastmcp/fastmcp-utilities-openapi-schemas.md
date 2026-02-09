@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-openapi-schemas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # schemas
 
 # `fastmcp.utilities.openapi.schemas`
@@ -37,8 +41,3 @@ object type, it wraps it to comply with MCP requirements.
 **Returns:**
 
 * MCP-compliant output schema with potential wrapping, or None if no suitable schema found
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

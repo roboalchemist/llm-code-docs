@@ -8,6 +8,8 @@ Display a confirmation page with your customer's order information.
 
 > This is a Stripe-hosted page for when payment-ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=stripe-hosted.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 If you have a Checkout integration that uses a Stripe-hosted page, Stripe redirects your customer to a success page that you create and host on your site. You can use the details from a [Checkout Session](https://docs.stripe.com/api/checkout/sessions.md) to display an order confirmation page for your customer (for example, their name or payment amount) after the payment.
 
 ## Redirect customers to a success page 
@@ -291,6 +293,8 @@ If it works, you’re redirected to the success page with your custom message. F
 # Embedded form
 
 > This is a Embedded form for when payment-ui is embedded-form. View the full page at https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form.
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 If you have a Checkout integration that uses an embedded form, you can customize how and whether Stripe redirects your customers after they complete payment. You can have Stripe always redirect customers, only redirect for some payment methods, or completely disable redirects.
 

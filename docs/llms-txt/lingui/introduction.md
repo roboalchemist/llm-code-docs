@@ -2,10 +2,6 @@
 
 # Source: https://lingui.dev/introduction.md
 
-# Source: https://lingui.dev/tools/introduction.md
-
-# Source: https://lingui.dev/introduction.md
-
 # Introduction
 
 📖 A readable, automated, and optimized internationalization for JavaScript
@@ -42,7 +38,7 @@ Integrate Lingui into your existing workflow. It supports explicit message keys 
 
 ### Lightweight and Optimized[​](#lightweight-and-optimized "Direct link to Lightweight and Optimized")
 
-Core library is less than [2 kB gzipped](https://bundlephobia.com/result?p=@lingui/core), React components are additional [1.4 kB gzipped](https://bundlephobia.com/result?p=@lingui/react).
+Core library is less than [2 kB gzipped](https://bundlephobia.com/result?p=@lingui/core), React components are additional [1.3 kB gzipped](https://bundlephobia.com/result?p=@lingui/react).
 
 ### AI Translations Ready[​](#ai-translations-ready "Direct link to AI Translations Ready")
 

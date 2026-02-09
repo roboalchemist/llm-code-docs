@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/orchestrators.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrate with Orchestrators
 
 > Integrate Datafold with dbt Core, dbt Cloud, Airflow, or custom orchestrators to streamline your data workflows with automated monitoring, testing, and seamless CI integration.

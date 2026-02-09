@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/server/job.md
 
-LiveKit docs › Agent server › Job lifecycle
+LiveKit docs › Agent Server › Job lifecycle
 
 ---
 
@@ -18,13 +18,13 @@ The entrypoint is executed as the main function of the process for each new job 
 
 > ℹ️ **Defining the entrypoint function**
 > 
-> In Python, the entrypoint function is decorated with `@sever.realtime_session()`. In Node.js, the entrypoint function is defined as a property of the default export of the agent file.
+> In Python, the entrypoint function is decorated with `@server.rtc_session()`. In Node.js, the entrypoint function is defined as a property of the default export of the agent file.
 
-You can use the entrypoint function and Agents Framework without creating an `AgentSession`. This lets you take advantage of the framework’s job context and lifecycle to build a programmatic participant that's automatically dispatched to rooms. To learn more, see [Agent server lifecycle](https://docs.livekit.io/agents/server.md).
+You can use the entrypoint function and Agents Framework without creating an `AgentSession`. This lets you take advantage of the framework's job context and lifecycle to build a programmatic participant that's automatically dispatched to rooms. To learn more, see [Server lifecycle](https://docs.livekit.io/agents/server/lifecycle.md).
 
 > ℹ️ **Controlling connection**
 > 
-> If you use `AgentSession`, it connects to LiveKit automatically when started. If you're not using `AgentSession`, or if you need to control the precise timing or method of connection (for example, to enable [end-to-end encryption](https://docs.livekit.io/home/client/tracks/encryption.md)), use the `JobContext` [connect method](https://docs.livekit.io/reference/python/livekit/agents/index.html.md#livekit.agents.JobContext.connect).
+> If you use `AgentSession`, it connects to LiveKit automatically when started. If you're not using `AgentSession`, or if you need to control the precise timing or method of connection (for example, to enable [end-to-end encryption](https://docs.livekit.io/transport/encryption.md)), use the `JobContext` [connect method](https://docs.livekit.io/reference/python/v1/livekit/agents/index.html.md#livekit.agents.JobContext.connect).
 
 ### Examples
 
@@ -112,11 +112,11 @@ For more LiveKit Agents examples, see the [GitHub repository](https://github.com
 
 To learn more about publishing and receiving tracks, see the following topics.
 
-- **[Media tracks](https://docs.livekit.io/home/client/tracks.md)**: Use the microphone, speaker, cameras, and screen share with your agent.
+- **[Media tracks](https://docs.livekit.io/transport/media.md)**: Use the microphone, speaker, cameras, and screen share with your agent.
 
-- **[Realtime text and data](https://docs.livekit.io/home/client/data.md)**: Use text and data channels to communicate with your agent.
+- **[Realtime text and data](https://docs.livekit.io/transport/data.md)**: Use text and data channels to communicate with your agent.
 
-- **[Processing raw media tracks](https://docs.livekit.io/home/client/tracks/raw-tracks.md)**: Use server-side SDKs to read, process, and publish raw media tracks and files.
+- **[Processing raw media tracks](https://docs.livekit.io/transport/media/raw-tracks.md)**: Use server-side SDKs to read, process, and publish raw media tracks and files.
 
 ### Participant entrypoint function
 
@@ -130,7 +130,7 @@ Available in:
 - [ ] Node.js
 - [x] Python
 
-Each job outputs JSON-formatted logs that include the user transcript, turn detection data, job ID, process ID, and more. You can include custom fields in the logs using `ctx.log_fields_context` for additional diagnostic context.
+Each job outputs JSON-formatted logs that include the user transcript, turn detection data, job ID, process ID, and more. You can include custom fields in the logs using `ctx.log_context_fields` for additional diagnostic context.
 
 The following example adds worker ID and room name to the logs:
 
@@ -260,9 +260,9 @@ export default defineAgent({
 
 For more information, see the following topics:
 
-- **[Room metadata](https://docs.livekit.io/home/client/state/room-metadata.md)**: Learn how to set and use room metadata.
+- **[Room metadata](https://docs.livekit.io/transport/data/state/room-metadata.md)**: Learn how to set and use room metadata.
 
-- **[Participant attributes & metadata](https://docs.livekit.io/home/client/state/participant-attributes.md)**: Learn how to set and use participant attributes and metadata.
+- **[Participant attributes & metadata](https://docs.livekit.io/transport/data/state/participant-attributes.md)**: Learn how to set and use participant attributes and metadata.
 
 ## Ending the session
 
@@ -272,7 +272,7 @@ Other participants in the LiveKit room can continue. Your [shutdown hooks](#post
 
 **Python**:
 
-In Python, use the `session.shutdown()` method to close the session and disconnect the agent from the room.
+In Python, use the `session.shutdown()` method to gracefully close the session and disconnect the agent from the room.
 
 ```python
 # Graceful shutdown with draining
@@ -294,20 +294,30 @@ export default defineAgent({
   entry: async (ctx: JobContext) => {
     // do some work...
 
-    // disconnect from the room
-    ctx.shutdown('Session ended');
+    // Graceful shutdown with draining
+    ctx.shutdown(drain=true);
+
+    // Or immediate close
+    await ctx.aclose();
   },
 });
 
 ```
 
+The difference between `shutdown()` and `aclose()` is as follows:
+
+- `agent_session.shutdown()`: Takes an optional `drain` parameter that allows you to shutdown gracefully and drain pending speech before closing. It's a non-blocking call that executes in the background. The shutdown operations happen asynchronously while your code continues executing.
+- `agent_session.aclose()`: Executes the shutdown operation immediately. It's an awaitable method (async) that pauses the current coroutine execution until the close operation is finished. Your code doesn't proceed until `aclose()` completes.
+
 After you shutdown the session, you can delete the room if it's no longer needed.
 
 ### Delete the room
 
-If the session should end for everyone, use the server API [deleteRoom](https://docs.livekit.io/home/server/managing-rooms.md#delete-a-room) to end the session. This disconnects all participants from the room.
+You can configure the agent session to automatically delete the room on session end by setting the `delete_room_on_close` parameter to `True`. To learn more, see [Delete room when session ends](https://docs.livekit.io/agents/logic/sessions.md#delete_room_on_close).
 
-When the room is removed from the server, a `disconnected` [room event](https://docs.livekit.io/home/client/events.md#room-disconnected) is emitted.
+Alternatively, you can delete the room manually. If the session should end for everyone, use the server API [deleteRoom](https://docs.livekit.io/intro/basics/rooms-participants-tracks/rooms.md#delete-a-room) to end the session. This disconnects all participants from the room.
+
+When the room is removed from the server, a `disconnected` [room event](https://docs.livekit.io/intro/basics/rooms-participants-tracks/webhooks-events.md#sdk-events) is emitted.
 
 **Python**:
 
@@ -385,7 +395,7 @@ export default defineAgent({
 
 ---
 
-This document was rendered at 2025-11-18T23:55:17.367Z.
+This document was rendered at 2026-02-03T03:24:58.194Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/server/job.md](https://docs.livekit.io/agents/server/job.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

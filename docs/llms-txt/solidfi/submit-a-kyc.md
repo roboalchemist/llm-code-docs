@@ -1,250 +1,155 @@
 # Source: https://docs.solidfi.com/v2/api-reference/sub-account-holders/submit-a-kyc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Submit a KYC
 
 > Submit a KYC
 
+
+
 ## OpenAPI
 
 ````yaml post /v2/accounts/sub_account_holder/{sub_account_holder_id}/kyc
+openapi: 3.0.3
+info:
+  title: Solid v2
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.sandbox.solidfi.com
+  - url: https://api.prod.solidfi.com
+security: []
+tags:
+  - name: Master Accounts
+  - name: Sub Account Holders
+  - name: Sub Accounts
+  - name: Counterparties
+  - name: Card Holders
+  - name: Cards
+  - name: Transactions
+  - name: Attachments
+  - name: Webhooks
+  - name: Simulation
+  - name: ACH
+  - name: Card
 paths:
-  path: /v2/accounts/sub_account_holder/{sub_account_holder_id}/kyc
-  method: post
-  servers:
-    - url: https://api.sandbox.solidfi.com
-    - url: https://api.prod.solidfi.com
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
+  /v2/accounts/sub_account_holder/{sub_account_holder_id}/kyc:
     parameters:
-      path:
-        sub_account_holder_id:
+      - name: sub_account_holder_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - Sub Account Holders
+      summary: Submit a KYC
+      description: Submit a KYC
+      operationId: SubmitAKYC
+      parameters:
+        - name: api-key
+          in: header
           schema:
-            - type: string
-              required: true
-      query: {}
-      header:
-        api-key:
-          schema:
-            - type: string
-              required: true
-              description: >-
-                API key is required to call Solid APIs. You can view and manage
-                your API keys in the Solid dashboard.
-              example: '{{api_key}}'
-      cookie: {}
-    body: {}
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-                    description: unique id of the sub account holder
-              client_id:
-                allOf:
-                  - type: string
-                    example: cli_64c6c87ee9d609f36a6f390dc378a4ce
-                    description: unique id of the client that created the sub account
-              master_account_holder_id:
-                allOf:
-                  - type: string
-                    example: mah_201e02c581a098a740456c5c19fcfcd6
-                    description: unique id of the master account holder
-              master_account_id:
-                allOf:
-                  - type: string
-                    example: mas_743fa071316bc6beaf5dddfd05f49c30
-                    description: unique id of the master account
-              person:
-                allOf:
-                  - type: object
-                    $ref: '#/components/schemas/person'
-              business:
-                allOf:
-                  - type: object
-                    $ref: '#/components/schemas/business'
-              ofac:
-                allOf:
-                  - type: object
-                    $ref: '#/components/schemas/sub_account_holder_ofac'
-              external_reference_id:
-                allOf:
-                  - type: string
-                    example: TW-9L1L2-UVV
-                    description: unique id to cross-reference records with external systems
-              purpose:
-                allOf:
-                  - type: string
-                    example: Ace sub-account holder
-                    description: purpose of sub account holder
-              attachments:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/attachment_object'
-              metadata:
-                allOf:
-                  - type: object
-                    $ref: '#/components/schemas/metadata'
-              status:
-                allOf:
-                  - type: string
-                    example: activated
-                    description: status of sub account holder
-                    enum:
-                      - pending_activation
-                      - activated
-                      - suspended
-                      - deactivated
-                      - locked
-              timestamps:
-                allOf:
-                  - type: object
-                    $ref: '#/components/schemas/sub_account_holder_timestamp'
-            refIdentifier: '#/components/schemas/sub_account_holder'
-        examples:
-          sub_account_holder_example:
-            value:
-              id: sah_5ccfeef0adf0cbe2aa0980d2c9509b2d
-              client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
-              master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
-              master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
-              type: person
-              person:
-                first_name: Jane
-                last_name: Doe
-                id_type: ssn
-                id_number: '223913234'
-                date_of_birth: '1974-01-25'
-                phone: '+19418405843'
-                email: jane.doe@gmail.com
-                address:
-                  line1: 123 Main St
-                  line2: ''
-                  city: New York
-                  state: NY
-                  country: US
-                  postal_code: '10001'
-                kyc:
-                  id: kyc_01arz3ndektsv4rrffq69g5fav
-                  status: pass
-                  method: solid
-                  url: >-
-                    https://dashboard.solidfi.com/verify?id=kyc_01arz3ndektsv4rrffq69g5fav
-                  details:
-                    name:
-                      status: pass
-                      reasons: null
-                    address:
-                      status: pass
-                      reasons: null
-                    dob:
-                      status: pass
-                      reasons: null
-                    ssn:
-                      status: pass
-                      reasons: null
-                    phone:
-                      status: pass
-                      reasons: null
-                    email:
-                      status: pass
-                      reasons: null
-                    watchlist:
-                      status: pass
-                      reasons: null
-                    fraud:
-                      status: pass
-                      reasons: null
-                idv:
-                  id: idv_01arz3ndektsv4rrffq69g5fav
-                  status: fail
-                  method: solid
-                  url: >-
-                    https://dashboard.solidfi.com/id=idv_01arz3ndektsv4rrffq69g5fav
-                  reasons: null
-              business: null
-              ofac:
-                status: pass
-                last_updated_at: '2024-04-01T21:00:00Z'
-              external_reference_id: TW-9L1L2-UVV
-              purpose: Ace sub-account holder
-              attachments:
-                - label: formation
-                  id: att_a8d2b191fa0e960d8e49a4bfd320e07b
-                  created_at: '2024-04-01T21:00:00Z'
-              metadata:
-                customer_code: '1501'
-              status: activated
-              timestamps:
-                created_at: '2024-04-01T21:00:00Z'
-                updated_at: '2024-04-01T21:00:00Z'
-                deactivated_at: '2024-04-01T21:00:00Z'
-        description: Submit a KYC
-    '400':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          sub_account_holder_example:
-            value:
-              request_id: req_01900ec5ebd37bf2a18b90948129e419
-              client_id: ''
-              method: POST
-              status: 400
-              error:
-                code: ERROR_CODE_INVALID_FIELD
-                message: no type specified!
-                field_name: type
-              created_at: '2024-06-12T23:26:10Z'
-        description: Unauthorized Error
-    '401':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          sub_account_holder_example:
-            value:
-              request_id: req_01900e34c96d7abfa970a9f454ab2d5d
-              client_id: ''
-              method: GET
-              status: 401
-              error:
-                code: ERROR_CODE_UNAUTHORIZED
-                message: unauthorized
-                field_name: ''
-              created_at: '2024-06-12T20:47:38Z'
-        description: Unauthorized Error
-    '404':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          master_account_example:
-            value:
-              request_id: req_01900e959896706b870affad1b4d71dd
-              client_id: ''
-              method: GET
-              status: 404
-              error:
-                code: ERROR_CODE_RESOURCE_NOT_FOUND
-                message: cannot find account by id in qldb
-                field_name: ''
-              created_at: '2024-06-12T22:33:23Z'
-        description: Not Found Error
-  deprecated: false
-  type: path
+            type: string
+            example: '{{api_key}}'
+            description: >-
+              API key is required to call Solid APIs. You can view and manage
+              your API keys in the Solid dashboard.
+          required: true
+      responses:
+        '201':
+          description: Submit a KYC
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sub_account_holder'
+                type: object
+              examples:
+                sub_account_holder_example:
+                  $ref: '#/components/examples/sub_account_holder_example'
+        '400':
+          description: Unauthorized Error
+          content:
+            application/json:
+              examples:
+                sub_account_holder_example:
+                  $ref: '#/components/examples/sub_account_holder_bad_request_error'
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              examples:
+                sub_account_holder_example:
+                  $ref: '#/components/examples/unauth_error'
+        '404':
+          description: Not Found Error
+          content:
+            application/json:
+              examples:
+                master_account_example:
+                  $ref: '#/components/examples/master_account_not_found_error'
+      security:
+        - {}
 components:
   schemas:
+    sub_account_holder:
+      properties:
+        id:
+          type: string
+          example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+          description: unique id of the sub account holder
+        client_id:
+          type: string
+          example: cli_64c6c87ee9d609f36a6f390dc378a4ce
+          description: unique id of the client that created the sub account
+        master_account_holder_id:
+          type: string
+          example: mah_201e02c581a098a740456c5c19fcfcd6
+          description: unique id of the master account holder
+        master_account_id:
+          type: string
+          example: mas_743fa071316bc6beaf5dddfd05f49c30
+          description: unique id of the master account
+        person:
+          $ref: '#/components/schemas/person'
+          type: object
+        business:
+          $ref: '#/components/schemas/business'
+          type: object
+        ofac:
+          $ref: '#/components/schemas/sub_account_holder_ofac'
+          type: object
+        external_reference_id:
+          type: string
+          example: TW-9L1L2-UVV
+          description: unique id to cross-reference records with external systems
+        purpose:
+          type: string
+          example: Ace sub-account holder
+          description: purpose of sub account holder
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/attachment_object'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+          type: object
+        status:
+          type: string
+          example: activated
+          description: status of sub account holder
+          enum:
+            - pending_activation
+            - activated
+            - suspended
+            - deactivated
+            - locked
+        timestamps:
+          $ref: '#/components/schemas/sub_account_holder_timestamp'
+          type: object
     person:
       type: object
       properties:
@@ -349,29 +254,29 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 dob:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 ssn:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 phone:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 email:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
         idv:
           type: object
           properties:
@@ -525,21 +430,109 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
         members:
           type: array
           items:
             $ref: '#/components/schemas/business_member'
+    sub_account_holder_ofac:
+      type: object
+      properties:
+        status:
+          type: string
+          example: pass
+          description: ofac status of the sub account holder
+          enum:
+            - pass
+            - fail
+        last_updated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: >-
+            last date and time at which the sub account holder's ofac status was
+            checked
+    attachment_object:
+      type: object
+      properties:
+        id:
+          type: string
+          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
+          description: unique id of the attachment created
+        label:
+          type: string
+          example: formation
+          description: label of the attachment
+        timestamps:
+          type: object
+          properties:
+            created_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was created
+            deleted_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was deleted
+    metadata:
+      type: object
+      description: >-
+        Metadata takes free-form key-value pairs. You may send metadata when you
+        create an object (POST) and when updating the object (PATCH).  If you
+        would like to remove metadata that is already on an object, you can
+        unset it by passing in the key-value pair with an empty string, like
+        this: 
+         {"key": ""}
+    sub_account_holder_timestamp:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the sub account holder was created
+        updated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the sub account holder was updated
+        deactivated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the sub account holder was deactivated
+    kyc_kyb:
+      type: object
+      properties:
+        status:
+          type: string
+          example: pass
+          enum:
+            - pass
+            - fail
+            - review
+            - in_review
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_kyb_reasons'
+    kyc_kyb_reasons:
+      type: object
+      properties:
+        code:
+          type: string
+          example: N001
+          description: reason code
+        description:
+          type: string
+          example: First name didn't match
+          description: description of reason code
     business_member:
       type: object
       properties:
@@ -659,116 +652,138 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 dob:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 ssn:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 phone:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 email:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
-    sub_account_holder_ofac:
-      type: object
-      properties:
-        status:
-          type: string
-          example: pass
-          description: ofac status of the sub account holder
-          enum:
-            - pass
-            - fail
-        last_updated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: >-
-            last date and time at which the sub account holder's ofac status was
-            checked
-    kyc_kyb:
-      type: object
-      properties:
-        status:
-          type: string
-          example: pass
-          enum:
-            - pass
-            - fail
-            - review
-            - in_review
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_kyb_reasons'
-    kyc_kyb_reasons:
-      type: object
-      properties:
-        code:
-          type: string
-          example: N001
-          description: reason code
-        description:
-          type: string
-          example: First name didn't match
-          description: description of reason code
-    attachment_object:
-      type: object
-      properties:
-        id:
-          type: string
-          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
-          description: unique id of the attachment created
-        label:
-          type: string
-          example: formation
-          description: label of the attachment
+                  type: object
+  examples:
+    sub_account_holder_example:
+      value:
+        id: sah_5ccfeef0adf0cbe2aa0980d2c9509b2d
+        client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
+        master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
+        master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
+        type: person
+        person:
+          first_name: Jane
+          last_name: Doe
+          id_type: ssn
+          id_number: '223913234'
+          date_of_birth: '1974-01-25'
+          phone: '+19418405843'
+          email: jane.doe@gmail.com
+          address:
+            line1: 123 Main St
+            line2: ''
+            city: New York
+            state: NY
+            country: US
+            postal_code: '10001'
+          kyc:
+            id: kyc_01arz3ndektsv4rrffq69g5fav
+            status: pass
+            method: solid
+            url: >-
+              https://dashboard.solidfi.com/verify?id=kyc_01arz3ndektsv4rrffq69g5fav
+            details:
+              name:
+                status: pass
+                reasons: null
+              address:
+                status: pass
+                reasons: null
+              dob:
+                status: pass
+                reasons: null
+              ssn:
+                status: pass
+                reasons: null
+              phone:
+                status: pass
+                reasons: null
+              email:
+                status: pass
+                reasons: null
+              watchlist:
+                status: pass
+                reasons: null
+              fraud:
+                status: pass
+                reasons: null
+          idv:
+            id: idv_01arz3ndektsv4rrffq69g5fav
+            status: fail
+            method: solid
+            url: https://dashboard.solidfi.com/id=idv_01arz3ndektsv4rrffq69g5fav
+            reasons: null
+        business: null
+        ofac:
+          status: pass
+          last_updated_at: '2024-04-01T21:00:00Z'
+        external_reference_id: TW-9L1L2-UVV
+        purpose: Ace sub-account holder
+        attachments:
+          - label: formation
+            id: att_a8d2b191fa0e960d8e49a4bfd320e07b
+            created_at: '2024-04-01T21:00:00Z'
+        metadata:
+          customer_code: '1501'
+        status: activated
         timestamps:
-          type: object
-          properties:
-            created_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was created
-            deleted_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was deleted
-    metadata:
-      type: object
-      description: >-
-        Metadata takes free-form key-value pairs. You may send metadata when you
-        create an object (POST) and when updating the object (PATCH).  If you
-        would like to remove metadata that is already on an object, you can
-        unset it by passing in the key-value pair with an empty string, like
-        this: 
-         {"key": ""}
-    sub_account_holder_timestamp:
-      type: object
-      properties:
-        created_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the sub account holder was created
-        updated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the sub account holder was updated
-        deactivated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the sub account holder was deactivated
+          created_at: '2024-04-01T21:00:00Z'
+          updated_at: '2024-04-01T21:00:00Z'
+          deactivated_at: '2024-04-01T21:00:00Z'
+    sub_account_holder_bad_request_error:
+      value:
+        request_id: req_01900ec5ebd37bf2a18b90948129e419
+        client_id: ''
+        method: POST
+        status: 400
+        error:
+          code: ERROR_CODE_INVALID_FIELD
+          message: no type specified!
+          field_name: type
+        created_at: '2024-06-12T23:26:10Z'
+    unauth_error:
+      value:
+        request_id: req_01900e34c96d7abfa970a9f454ab2d5d
+        client_id: ''
+        method: GET
+        status: 401
+        error:
+          code: ERROR_CODE_UNAUTHORIZED
+          message: unauthorized
+          field_name: ''
+        created_at: '2024-06-12T20:47:38Z'
+    master_account_not_found_error:
+      value:
+        request_id: req_01900e959896706b870affad1b4d71dd
+        client_id: ''
+        method: GET
+        status: 404
+        error:
+          code: ERROR_CODE_RESOURCE_NOT_FOUND
+          message: cannot find account by id in qldb
+          field_name: ''
+        created_at: '2024-06-12T22:33:23Z'
 
 ````

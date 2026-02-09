@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/whatsapp-business.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WhatsApp Business
 
 WhatsApp Business is a service that enables your organization to communicate directly with your customers in WhatsApp through your Customer Service Platform (CSP), which in this case will be ASAPP.
@@ -38,7 +42,7 @@ In this signup flow, you will set up an account name, time zone and payment meth
 
 #### Register Phone Numbers
 
-As part of the signup flow, each WABA must have at least one phone number assigned to it (multiple phone #s per WABA are supported). Before adding a number, you must also create a profile display name, **which must match the name of the Business Manager (BM) account.**
+As part of the signup flow, each WABA must have at least one phone number assigned to it (multiple phone numbers per WABA are supported). Before adding a number, you must also create a profile display name, **which must match the name of the Business Manager (BM) account.**
 
 <Frame>
   <img src="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=0b72c603d4520f8b75af6ede0327bbbe" data-og-width="736" width="736" data-og-height="443" height="443" data-path="image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=280&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=b5f98447efda9c0bb0ebf0d08112a5b7 280w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=560&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=a3f662a0011483101c21e8e436957667 560w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=840&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=78a92c32eaab1feb9d03f2c5e72311a2 840w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=1100&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=b30df0b819c5ade33469424fdf492053 1100w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=1650&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=c3f3fe8b95fef263ef43a322fedf6dfd 1650w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3d34fe68-0d11-0120-d9b2-4a95c1a9ad46.png?w=2500&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=43fea3b561dfcf2af52c8149fc57c802 2500w" />
@@ -55,21 +59,21 @@ The WhatsApp customer experience is distinct from ASAPP SDKs in several ways - s
 
 #### Buttons and Forms
 
-All buttons with external links are displayed using message text with a link for each button. See below for an example of two buttons (**Hello, I open a link** and **Hello, I open a view**) that each render as a message with a link:
+All buttons with external links display using message text with a link for each button. See below for an example of two buttons (**Hello, I open a link** and **Hello, I open a view**) that each render as a message with a link:
 
 <Frame>
   <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=94c991aabedbb17d3773bb14a217781a" data-og-width="646" width="646" data-og-height="1061" height="1061" data-path="image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=835e9405882b2f37baf017c3af9b491c 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=d3183a87786c14eb74f267755f897185 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=01bd195905a9bb93eb5c5a270685360a 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=83aa9c41de9847c68e017e98c4b33705 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=7d15dcca5a4d0bf5773283020bf38fea 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-738af325-85a2-2ecd-3052-7770b9b5ab32.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=cb5a27c724f81219505bd3caec1624ce 2500w" />
 </Frame>
 
-Similarly, forms sent by agents and feedback forms at the end of chat also send messages with links to a separate page to complete the survey. Once the survey is completed, users are redirected back to WhatsApp.
+Similarly, forms that agents send and feedback forms at the end of chat also send messages with links to a separate page to complete the survey. Once users complete the survey, the system redirects them back to WhatsApp.
 
 #### Quick Reply Limitations
 
 Quick replies in WhatsApp also have different limitations from other ASAPP SDKs:
 
-* Each node may only include up to three quick reply options; a node with more than three replies will be truncated and only the first three replies will be shown.
-* Each quick reply may only include up to 20 characters; a quick reply with more than 20 characters will be truncated and only show the first 17 characters, followed by an ellipsis
-* Sending a node that includes both a button in the message and quick replies is not recommended, as the links will be sent to the customer out of order
+* Each node may only include up to three quick reply options; the system truncates a node with more than three replies and shows only the first three replies.
+* Each quick reply may only include up to 20 characters; the system truncates a quick reply with more than 20 characters and shows only the first 17 characters, followed by an ellipsis
+* You can send a node that includes both a button in the message and quick replies, but this is not recommended, as the system will send the links to the customer out of order
 
 #### Authentication
 
@@ -80,9 +84,9 @@ The WhatsApp Cloud API currently **does not support authentication**. As such, l
 Nodes that include attachments, such as cards and carousels, are not supported in this channel.
 
 <Note>
-  In addition to differences in the Virtual Agent experience, the live chat experience with an agent also excludes some features that are typically supported:
+  The WhatsApp interface includes voice messages and emojis. WhatsApp also excludes some features that typically support live chat with an agent:
 
-  * **Images**: Agents will not be able to view images sent by customers. The same is true of voice messages and emojis, which are also part of the WhatsApp interface.
+  * **Images**: Agents cannot view images that customers send. The same applies to voice messages and emojis, which are also part of the WhatsApp interface.
   * **Typing preview and indicators**: Agents will not see typing previews or indicators while the customer is typing. The customer will not see a typing indicator while the agent is typing.
   * **Co-browsing**: This capability is not currently supported in WhatsApp
 </Note>

@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/functions/debugging.md
 
-# Source: https://docs.convex.dev/agents/debugging.md
-
-# Source: https://docs.convex.dev/functions/debugging.md
-
 # Debugging
 
 Debugging is the process of figuring out why your code isn't behaving as you expect.

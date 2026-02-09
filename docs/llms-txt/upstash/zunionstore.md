@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zunionstore.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zunionstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zunionstore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZUNIONSTORE
 
@@ -26,30 +12,24 @@
 
 ## Arguments
 
-<ParamField body="destination" type="string" required>
-  The key to write the union to.
+<ParamField body="destination" type="str" required>
+  The key to store the resulting set in.
 </ParamField>
 
-<ParamField body="keys" type="integer" required>
-  How many keys to compare.
+<ParamField body="keys" type="List[str]" required>
+  The keys of the sets to compare.
 </ParamField>
 
-<ParamField body="keys" type="string | string[]" required>
-  The keys to compare.
+<ParamField body="weights" type="List[float]" default="None">
+  The weights to apply to the sets.
 </ParamField>
 
-<ParamField body="options">
-  <ParamField body="aggregate" type="sum | min | max">
-    The aggregation method.
-  </ParamField>
+<ParamField body="aggregate" type="&#x22;SUM&#x22; | &#x22;MIN&#x22; | &#x22;MAX&#x22;" default="sum">
+  The aggregation function to apply to the sets.
+</ParamField>
 
-  <ParamField body="weight" type="number">
-    The weight to apply to each key.
-  </ParamField>
-
-  <ParamField body="weights" type="number[]">
-    The weights to apply to each key.
-  </ParamField>
+<ParamField body="withscores" type="bool" default="false">
+  Whether to include scores in the result.
 </ParamField>
 
 ## Response
@@ -59,56 +39,36 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Simple theme={"system"}
-  await redis.zadd(
-      "key1", 
-      { score: 1, member: "member1" },
-  )
-  await redis.zadd(
-      "key2",
-      { score: 1, member: "member1" },
-      { score: 2, member: "member2" },
-  )
+  ```py Simple theme={"system"}
+  redis.zadd("key1", {"a": 1, "b": 2, "c": 3})
 
-  const res = await redis.zunionstore("destination", 2, ["key1", "key2"]);
-  console.log(res) // 2
+  redis.zadd("key2", {"c": 3, "d": 4, "e": 5})
+
+  result = redis.zunionstore(["key1", "key2"])
+
+  assert result == 5
   ```
 
-  ```ts With Weights theme={"system"}
-  await redis.zadd(
-      "key1", 
-      { score: 1, member: "member1" },
-  )
-  await redis.zadd(
-      "key2",
-      { score: 1, member: "member1" },
-      { score: 2, member: "member2" },
-  )
-  const res = await redis.zunionstore(
-      "destination",
-      2,
-      ["key1", "key2"],
-      { weights: [2, 3] },
-  );
-  console.log(res) // 2
+  ```py Aggregation theme={"system"}
+  redis.zadd("key1", {"a": 1, "b": 2, "c": 3})
+
+  redis.zadd("key2", {"a": 3, "b": 4, "c": 5})
+
+  result = redis.zunionstore(["key1", "key2"], withscores=True, aggregate="SUM")
+
+  assert result == [("a", 4), ("b", 6), ("c", 8)]
   ```
 
-  ```ts Aggregate theme={"system"}
-  await redis.zadd(
-      "key1", 
-      { score: 1, member: "member1" },
-  )
-  await redis.zadd(
-      "key2",
-      { score: 1, member: "member1" },
-      { score: 2, member: "member2" },
-  )
-  const res = await redis.zunionstore(
-      "destination",
-      2,
-      ["key1", "key2"],
-      { aggregate: "sum" },
-  );
-  console.log(res) // 2
+  ```py Weights theme={"system"}
+  redis.zadd("key1", {"a": 1})
+
+  redis.zadd("key2", {"a": 1})
+
+  result = redis.zunionstore(["key1", "key2"],
+                        withscores=True,
+                        aggregate="SUM",
+                        weights=[2, 3])
+
+  assert result == [("a", 5)]
   ```
 </RequestExample>

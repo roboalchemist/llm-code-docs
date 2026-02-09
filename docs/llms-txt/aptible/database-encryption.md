@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-encryption/database-encryption.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Encryption at Rest
 
 This section covers Aptible's default managed encryption. For more information about encryption using AWS Key Management Service, see [Custom Database Encryption](/core-concepts/managed-databases/managing-databases/database-encryption/custom-database-encryption).

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/empty-brace-spaces.md
 ---
-# unicorn/empty-brace-spaces&#x20;
 
 ### What it does
 
@@ -22,8 +21,9 @@ makes the code easier to understand and maintain.
 Examples of **incorrect** code for this rule:
 
 ```javascript
-const a = {};
-class A {}
+const a = {  };
+class A {
+}
 ```
 
 Examples of **correct** code for this rule:

@@ -12,11 +12,11 @@ The Apify platform is SOC 2 Type II compliant. This means that we have undergone
 
 [AICPA SOC 2](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2)
 
-To learn more, read the https://blog.apify.com/apify-soc2/ and visit our https://trust.apify.com for additional information or to request a copy of our SOC 2 Type II report.
+To learn more, read the [announcement](https://blog.apify.com/apify-soc2/) and visit our [Trust Center](https://trust.apify.com) for additional information or to request a copy of our SOC 2 Type II report.
 
 ## Trust center
 
-To learn more about Apify's security practices, data protection measures, and compliance certifications, please visit our https://trust.apify.com. The Trust Center includes:
+To learn more about Apify's security practices, data protection measures, and compliance certifications, please visit our [Trust Center](https://trust.apify.com). The Trust Center includes:
 
 * List of our security certifications and compliance reports
 * Information about Apify's data protection controls
@@ -35,10 +35,10 @@ We invite security researchers, ethical hackers, and the broader community to he
 
 *Scope:* The following Apify services and domains are eligible for security research and responsible reporting:
 
-* https://apify.com
-* https://console.apify.com
-* https://api.apify.com
-* https://console-backend.apify.com
+* [apify.com](https://apify.com)
+* [console.apify.com](https://console.apify.com)
+* [api.apify.com](https://api.apify.com)
+* [console-backend.apify.com](https://console-backend.apify.com)
 
 Please use your personal account for research purposes. Free accounts are sufficient for most testing.
 
@@ -64,7 +64,7 @@ Please use your personal account for research purposes. Free accounts are suffic
 
 ### Reporting process
 
-If you notice or suspect a potential security issue, please report it to our security team at mailto:security@apify.com with as much detail as possible, including the following:
+If you notice or suspect a potential security issue, please report it to our security team at [security@apify.com](mailto:security@apify.com) with as much detail as possible, including the following:
 
 * Clear description of the issue
 * Step-by-step reproduction instructions
@@ -93,8 +93,8 @@ Please adhere strictly to the following rules. Failure to do so may result in le
 
 * *Do not publicly disclose vulnerabilities until resolved.* This ensures that the issue can be properly evaluated and mitigated before being exposed to potential exploitation.
 * *Treat all related information as confidential.* Any details about a vulnerability you are reporting are considered confidential information and cannot be disclosed unless explicitly approved by Apify in writing.
-* *Comply with all legal terms.* As per our https://docs.apify.com/legal, you must not take any action that might cause an overload, disruption, or denial of service, result in unauthorized access to another user's data, or have a similar adverse effect on Apify's services or other users.
+* *Comply with all legal terms.* As per our [Terms of Service](https://docs.apify.com/legal), you must not take any action that might cause an overload, disruption, or denial of service, result in unauthorized access to another user's data, or have a similar adverse effect on Apify's services or other users.
 
 ## Securing your data
 
-The Apify platform provides you with multiple ways to secure your data, including https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md for storing your configuration secrets and https://docs.apify.com/platform/actors/development/actor-definition/input-schema/secret-input.md for securing the input parameters of your Actors.
+The Apify platform provides you with multiple ways to secure your data, including [encrypted environment variables](https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md) for storing your configuration secrets and [encrypted input](https://docs.apify.com/platform/actors/development/actor-definition/input-schema/secret-input.md) for securing the input parameters of your Actors.

@@ -2,6 +2,8 @@
 
 # ConfigCat package for Laravel
 
+Copy page
+
 [![Star on GitHub](https://img.shields.io/github/stars/pod-point/laravel-configcat.svg?style=social)](https://github.com/pod-point/laravel-configcat/stargazers) [![Latest Version on Packagist](https://img.shields.io/packagist/v/pod-point/laravel-configcat.svg?style=flat-square)](https://packagist.org/packages/pod-point/laravel-configcat) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pod-point/laravel-configcat/run-tests.yml?branch=main\&label=tests) [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/Pod-Point/laravel-configcat/blob/main/LICENSE.md) [![Total Downloads](https://img.shields.io/packagist/dt/pod-point/laravel-configcat.svg?style=flat-square)](https://packagist.org/packages/pod-point/laravel-configcat)
 
 caution
@@ -14,16 +16,18 @@ As this is a community maintained package, ConfigCat can't guarantee it's stabil
 
 You can install the package via composer:
 
-```
+```bash
 composer require pod-point/laravel-configcat
+
 ```
 
 ### Publishing the config file[​](#publishing-the-config-file "Direct link to Publishing the config file")
 
 Next, you should publish the Laravel package configuration file using the `vendor:publish` Artisan command. It will be placed in your application's config directory:
 
-```
+```bash
 php artisan vendor:publish --provider="PodPoint\ConfigCat\ConfigCatServiceProvider"
+
 ```
 
 Don't forget to specify your [ConfigCat SDK `key`](https://app.configcat.com/sdkkey) within the freshly published Laravel configuration file under `config/configcat.php`.
@@ -36,35 +40,37 @@ The Laravel configuration for this package comes with sensible defaults. See [`c
 
 The `ConfigCat` facade as well as the global helper can be used to retrieve the actual value of the feature flag, text or number setting:
 
-```
+```php
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 $flag = ConfigCat::get('new_registration_flow');
 
 $flag = configcat('new_registration_flow');
+
 ```
 
-> **Note:** You can define the actual value of a feature flag to be `bool(true)` or `bool(false)` on ConfigCat but not only, it can also be [a number or a text setting](https://configcat.com/docs/docs/main-concepts/.md#about-setting-types).
+> **Note:** You can define the actual value of a feature flag to be `bool(true)` or `bool(false)` on ConfigCat but not only, it can also be [a number or a text setting](https://configcat.com/docs/main-concepts.md#about-setting-types).
 
 If the feature flag is undefined or something went wrong, `bool(false)` will be returned by default, however you can change this by specifying a default value **only when using the Facade or the global helper** to retrieve the feature flag value using:
 
-```
+```php
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 $flag = ConfigCat::get('new_registration_flow', true);
 
 $flag = configcat('new_registration_flow', true);
+
 ```
 
 You can also globally sepcify a default value from the [`config/configcat.php`](https://github.com/Pod-Point/laravel-configcat/blob/main/config/configcat.php) file.
 
-⚠️<!-- --> **Only** `boolean`, `string`, `integer` or `float` default value types are supported as these are the only [setting types](https://configcat.com/docs/docs/main-concepts/.md#about-setting-types) available from ConfigCat.
+⚠️<!-- --> **Only** `boolean`, `string`, `integer` or `float` default value types are supported as these are the only [setting types](https://configcat.com/docs/main-concepts.md#about-setting-types) available from ConfigCat.
 
 ### Validation rule[​](#validation-rule "Direct link to Validation rule")
 
 Given the following validation rules:
 
-```
+```php
 Validator::make([
     'email' => 'taylor@laravel.com',
     'username' => 'taylor',
@@ -72,6 +78,7 @@ Validator::make([
     'email' => 'required_if_configcat:new_registration_flow,true',
     'username' => 'required_if_configcat:new_registration_flow,false',
 ]);
+
 ```
 
 * When the feature flag is **on**
@@ -88,16 +95,18 @@ Validator::make([
 
 ### HTTP middleware[​](#http-middleware "Direct link to HTTP middleware")
 
-The following route will only be accessible if the [feature flag](https://configcat.com/docs/docs/main-concepts/.md#about-setting-types) is truthy, otherwise a `404` will be thrown.
+The following route will only be accessible if the [feature flag](https://configcat.com/docs/main-concepts.md#about-setting-types) is truthy, otherwise a `404` will be thrown.
 
-```
+```php
 Router::get('/registration')->middleware('configcat.on:new_registration_flow');
+
 ```
 
 The opposite is possible, also throwing a `404` if the feature flag is falsy:
 
-```
+```php
 Router::get('/sign-up')->middleware('configcat.off:new_registration_flow');
+
 ```
 
 **Note:** undefined, text or number settings will be considered as feature flags turned `off`.
@@ -106,19 +115,21 @@ Router::get('/sign-up')->middleware('configcat.off:new_registration_flow');
 
 The following view content will only be rendered if the feature flag is truthy:
 
-```
+```blade
 @configcat('new_registration_flow')
     New registration form
 @endconfigcat
-```
 
 ```
+
+```blade
 @unlessconfigcat('new_registration_flow')
     Old registration form
 @endconfigcat
-```
 
 ```
+
+```blade
 @configcat('new_registration_flow_1')
     Sign up
 @elseconfigcat('new_registration_flow_2')
@@ -126,6 +137,7 @@ The following view content will only be rendered if the feature flag is truthy:
 @else
     Register
 @endconfigcat
+
 ```
 
 **Note:** undefined, text or number settings will be considered as feature flags turned `off`.
@@ -134,17 +146,18 @@ The following view content will only be rendered if the feature flag is truthy:
 
 ### User targeting[​](#user-targeting "Direct link to User targeting")
 
-The [User Object](https://configcat.com/docs/docs/sdk-reference/php/.md#user-object) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+The [User Object](https://configcat.com/docs/sdk-reference/php.md#user-object) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/targeting/targeting-overview.md) feature.
 
 ConfigCat needs to understand the representation of your users from your application. To do so, you will need to transform your user into a `ConfigCat\User` object. This can be done directly from the [`config/configcat.php`](https://github.com/Pod-Point/laravel-configcat/blob/main/config/configcat.php) file. Here is an example:
 
-```
+```php
 'user' => \PodPoint\ConfigCat\Support\DefaultUserTransformer::class,
+
 ```
 
 Which will be using a sensible default transformer:
 
-```
+```php
 class DefaultUserTransformer
 {
     public function __invoke(\Illuminate\Foundation\Auth\User $user)
@@ -152,6 +165,7 @@ class DefaultUserTransformer
         return new \ConfigCat\User($user->getKey(), $user->email);
     }
 }
+
 ```
 
 Feel free to create your own transformer class and use it instead, just **remember** that it needs to be **callable** with the `__invoke()` function.
@@ -160,24 +174,27 @@ Feel free to create your own transformer class and use it instead, just **rememb
 
 Once you have defined your mapping, you will be able to explicitly use the representation of your user when checking a feature flag:
 
-```
+```php
 use App\Models\User;
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 $user = User::where('email', 'taylor@laravel.com')->firstOrFail();
 ConfigCat::get('new_registration_flow', $default, $user);
+
 ```
 
 This is also applicable for the global helper and the Blade directive:
 
-```
+```php
 configcat('new_registration_flow', $default, $user);
-```
 
 ```
+
+```blade
 @configcat('new_registration_flow', $user)
     New registration form
 @endconfigcat
+
 ```
 
 > **Note:** if you have defined your user mapping but are not explicitly using a specific user when checking for a flag, we will automatically try to use the logged in user, if any, for convenience.
@@ -196,13 +213,14 @@ When writing unit or functional tests, you may need to be able to mock or fake t
 
 **Mocking:**
 
-```
+```php
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 ConfigCat::shouldReceive('get')
     ->once()
     ->with('new_registration_flow')
     ->andReturn(true);
+
 ```
 
 See <https://laravel.com/docs/mocking#mocking-facades> for more info.
@@ -211,13 +229,14 @@ See <https://laravel.com/docs/mocking#mocking-facades> for more info.
 
 Faking it will prevent the package to genuinely try to hit ConfigCat's CDN:
 
-```
+```php
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 // you can fake it
 ConfigCat::fake();
 // optionally setup some predefined feature flags for your test
 ConfigCat::fake(['new_registration_flow' => true]);
+
 ```
 
 #### End-to-end testing[​](#end-to-end-testing "Direct link to End-to-end testing")
@@ -228,18 +247,20 @@ First of all, you will need to make sure to enable `overrides` from [`config/con
 
 Similarly to `ConfigCat::fake()` you can come up with some predefined feature flags which will be saved into a `json` file:
 
-```
+```php
 use PodPoint\ConfigCat\Facades\ConfigCat;
 
 ConfigCat::override(['new_registration_flow' => true]);
+
 ```
 
 ## Testing[​](#testing "Direct link to Testing")
 
 Run the tests with:
 
-```
+```bash
 composer test
+
 ```
 
 ## Changelog[​](#changelog "Direct link to Changelog")

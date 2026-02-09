@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-named-as-default-member.md
 ---
-# import/no-named-as-default-member&#x20;
 
 ### What it does
 

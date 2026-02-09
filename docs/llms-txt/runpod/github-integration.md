@@ -1,0 +1,247 @@
+# Source: https://docs.runpod.io/serverless/workers/github-integration.md
+
+
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Deploy workers from GitHub
+
+> Speed up development by deploying workers directly from GitHub.
+
+Runpod's GitHub integration simplifies your workflow by pulling your code and Dockerfile from GitHub, building the container image, storing it in Runpod's secure container registry, and deploying it to your endpoint.
+
+<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/3lHnRU4QPRM" title="Deploy workers from GitHub" frameBorder="0" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+
+## Requirements
+
+To deploy a worker from GitHub, you need:
+
+* A working [handler function](/serverless/workers/handler-functions) in a GitHub repository.
+* A Dockerfile in your repository. See [Creating a Dockerfile](/serverless/workers/deploy#creating-a-dockerfile) for details.
+* A GitHub account.
+
+<Tip>
+  For an example repository containing the minimal files necessary for deployment, see [runpod-workers/worker-basic](https://github.com/runpod-workers/worker-basic) on GitHub.
+</Tip>
+
+## Authorize Runpod with GitHub
+
+Before deploying from GitHub, you need to authorize Runpod to access your repositories:
+
+1. Open the [settings page](http://console.runpod.io/user/settings) in the Runpod console.
+
+2. Find the **GitHub** card under **Connections** and click **Connect**.
+
+3. Sign in using the GitHub authorization flow. This will open your GitHub account settings page.
+
+4. Choose which repositories Runpod can access:
+
+   * **All repositories:** Access to all current and future repositories.
+   * **Only select repositories:** Choose specific repositories.
+
+5. Click **Save**.
+
+You can manage this connection using Runpod settings or GitHub account settings, in the **Applications** tab.
+
+## Deploy from GitHub
+
+To deploy a worker from a GitHub repository:
+
+1. Go to the [Serverless section](https://www.console.runpod.io/serverless) of the Runpod console
+
+2. Click **New Endpoint**
+
+3. Under **Import Git Repository**, use the search bar or menu to select the repository containing your code. This menu is populated with all repos connected to your account (repos you've forked/created, or owned by your GitHub organizations).
+
+4. Configure your deployment options:
+
+   * **Branch:** Select which branch to deploy from.
+   * **Dockerfile Path:** Specify the path to your Dockerfile (if not in root).
+
+   Then click **Next**.
+
+5. Configure your endpoint settings:
+   * Enter an **Endpoint Name**.
+   * Choose your **Endpoint Type**: select **Queue** for traditional queue-based processing or **Load Balancer** for direct HTTP access (see [Load balancing endpoints](/serverless/load-balancing/overview) for details).
+   * Under **GPU Configuration**, select the appropriate GPU types for your workload.
+   * Configure [other settings](/serverless/endpoints/endpoint-configurations) as needed (active/max workers, timeouts, environment variables).
+
+6. Click **Deploy Endpoint** to deploy your worker.
+
+Runpod will build your Docker image and deploy it to your endpoint automatically. You'll be redirected to the endpoint details page when complete.
+
+## Monitor build status
+
+You can monitor your build status in the **Builds** tab of your endpoint detail page. Builds progress through these statuses:
+
+| Status    | Description                                         |
+| --------- | --------------------------------------------------- |
+| Pending   | Runpod is scheduling the build.                     |
+| Building  | Runpod is building your container.                  |
+| Uploading | Runpod is uploading your container to the registry. |
+| Testing   | Runpod is testing your Serverless worker.           |
+| Completed | Runpod completed the build and upload.              |
+| Failed    | Something went wrong (check build logs).            |
+
+## Update your endpoint
+
+When you make changes to your GitHub repository, they won't automatically be pushed to your endpoint. To trigger an update for the workers on your endpoint, create a new release for the GitHub repository.
+
+For detailed instructions on creating releases, see the [GitHub documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+
+## Roll back to a previous build
+
+Roll back your endpoint to any previous build directly from the Runpod console. This restores your endpoint to an earlier version without waiting for a new GitHub release.
+
+### Rollback requirements
+
+To roll back an endpoint, you need:
+
+* An existing endpoint deployed with GitHub integration.
+* At least one previous build available in your deployment history.
+
+### Roll back a deployment
+
+To roll back your endpoint to a previous build:
+
+<Steps>
+  <Step title="Navigate to your endpoint">
+    Open the endpoint details page in the [Serverless section](https://www.console.runpod.io/serverless) of the Runpod console.
+  </Step>
+
+  <Step title="Select a previous build">
+    Click the **Builds** tab to view your deployment history.
+
+    Find the build you want to roll back to, then click the three dots menu button next to that build.
+  </Step>
+
+  <Step title="Initiate the rollback">
+    Select **Rollback** from the menu.
+
+    Review the confirmation modal and click **Confirm** to proceed with the rollback.
+  </Step>
+</Steps>
+
+After confirming, your endpoint rolls back to the selected build. A banner appears at the top of the endpoint page indicating the endpoint is on a rolled-back version.
+
+### Rollback behavior
+
+When you roll back an endpoint:
+
+* Your endpoint immediately switches to the Docker image from the selected previous build.
+* The rollback banner displays at the top of your endpoint page to indicate the current state.
+* Your endpoint remains on the rolled-back version until you deploy a new release from GitHub.
+* When you push a new commit and create a release, the new build automatically becomes the active version and supersedes the rollback.
+
+## Manage multiple environments
+
+GitHub integration enables streamlined development workflows by supporting multiple environments:
+
+* Production endpoint tracking the `main` branch.
+* Staging endpoint tracking the `dev` branch.
+
+To set up multiple environments:
+
+1. Create a new branch for your staging endpoint.
+2. [Create an endpoint](#deploying-from-github) for your production branch.
+3. On the Serverless page of the Runpod console, click the three dots to the top right of your production endpoint. Click **Clone Endpoint**.
+4. Expand the **Repository Configuration** section and select your staging branch.
+5. Click **Deploy Endpoint**.
+
+Each environment maintains independent GPU and worker configurations.
+
+## Continuous integration with GitHub Actions
+
+You can enhance your workflow with GitHub Actions for testing before deployment:
+
+1. Create a workflow file at `.github/workflows/test-and-deploy.yml`:
+
+   ```yml  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   name: Test and Deploy
+
+   on:
+   push:
+      branches: [ main ]
+   pull_request:
+      branches: [ main ]
+
+   jobs:
+   test-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build and push Docker image
+         uses: docker/build-push-action@v4
+         with:
+         context: .
+         push: true
+         tags: [DOCKER_USERNAME]/[WORKER_NAME]:${{ github.sha }}
+         
+      - name: Run Tests
+         uses: runpod/runpod-test-runner@v1
+         with:
+         image-tag: [DOCKER_USERNAME]/[WORKER_NAME]:${{ github.sha }}
+         runpod-api-key: ${{ secrets.RUNPOD_API_KEY }} # Add your API key to a GitHub secret
+         test-filename: .github/tests.json
+         request-timeout: 300
+   ```
+
+   <Tip>
+     To add your Runpod API key to a GitHub secret, see [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
+   </Tip>
+
+2. Create test cases for your repository at `.github/tests.json`:
+
+   ```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   [
+   {
+      "input": {
+         "prompt": "Test input 1"
+      },
+      "expected_output": {
+         "status": "COMPLETED"
+      }
+   },
+   {
+      "input": {
+         "prompt": "Test input 2",
+         "parameter": "value"
+      },
+      "expected_output": {
+         "status": "COMPLETED"
+      }
+   }
+   ]
+   ```
+
+## Troubleshoot deployment issues
+
+If your worker fails to deploy or process requests:
+
+* Check the build logs in the Runpod console for error messages.
+* Verify your Dockerfile is properly configured.
+* Ensure your handler function works correctly in local testing.
+* Check that your repository structure matches what's expected in your Dockerfile.
+* Verify you have the necessary permissions on the GitHub repository.
+
+## Disconnect from GitHub
+
+To disconnect your GitHub account from Runpod:
+
+1. Go to [Runpod Settings](https://www.console.runpod.io/user/settings) → **Connections** → **Edit Connection**
+2. Select your GitHub account.
+3. Click **Configure**.
+4. Scroll down to the Danger Zone.
+5. Uninstall "Runpod Inc."
+
+## Limitations
+
+Runpod has the following limitations when using the GitHub integration to deploy your worker:
+
+* **Build time limit**: Builds must complete within 160 minutes (2.5 hours). Optimize your Dockerfile for efficiency with large images to avoid timeouts.
+* **Image size restriction**: Docker images cannot exceed 80 GB. Plan your image requirements accordingly, particularly when including large model weights or dependencies.
+* **Base image limitations**: The integration doesn't support privately hosted images as base images. Consider incorporating essential components directly into your Dockerfile instead.
+* **Hardware-specific builds**: Builds requiring GPU access during construction (such as those using GPU-compiled versions of libraries like `bitsandbytes`) are not supported.
+* **Platform exclusivity**: Images built through Runpod's image builder service are designed exclusively for Runpod's infrastructure and cannot be pulled or executed on other platforms.
+* **Single GitHub connection**: Each Runpod account can link to only one GitHub account. This connection cannot be shared among team members, requiring separate Runpod accounts for collaborative projects.

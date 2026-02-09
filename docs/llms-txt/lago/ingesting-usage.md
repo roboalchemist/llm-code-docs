@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/events/ingesting-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ingesting usage
 
 > This guide explains how Lago ingests usage-based events coming from your application.

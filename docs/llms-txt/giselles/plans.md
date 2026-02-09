@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/learn-about/plans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Plans
 
 > Understand your Giselle subscription.
@@ -12,7 +16,7 @@ For the latest information about our plans and pricing options,please visit [Our
 
 Ideal for solo developers exploring AI agents.
 
-* **30 minutes** of AI model usage per month (\$3 monthly credit)
+* **30 minutes** of AI model usage per month (limited-time offer)
 * Access to basic AI models
 * Create and deploy agents with no-code builder
 * Single-user account
@@ -23,9 +27,11 @@ Ideal for solo developers exploring AI agents.
 Built for individual power users.
 
 * **\$20/month**
-* **Unlimited** AI model usage (limited-time promotional offer)
+* **\$20 of AI credits** included each month
+* Additional usage billed at cost plus 10% markup
 * Access to all premium AI models
 * All Free plan features included
+* Document & GitHub Vector Stores
 * Single-user account
 * Managed cloud deployment
 * Email support
@@ -43,19 +49,54 @@ Designed for teams collaborating on AI agents. (Coming soon)
 
 ## Monthly AI Model Usage Details
 
-Each Giselle subscription includes monthly AI model usage credits:
+Each Giselle subscription includes monthly AI credits:
 
-* **Free Plan:** Monthly limit of 30 minutes of AI usage. Once the monthly limit is reached, AI usage pauses until the next billing cycle.
-* **Pro Plan:** Includes \$20 worth of monthly AI usage credits. During the current limited-time promotion, all usage beyond the standard monthly credits is unlimited at no additional cost.
+* **Free Plan:** Limited-time offer of 30 minutes of AI usage per month. Once the monthly limit is reached, AI usage pauses until the next billing cycle.
+* **Pro Plan:** Includes \$20 of AI credits each month. Additional usage beyond the included credits is billed at cost plus 10% markup.
 
 AI model usage credits are refreshed monthly and unused credits do not roll over.
+
+## Vector Store Quotas
+
+Each plan has limits on the number of Vector Stores you can create and GitHub Repositories you can register.
+
+### Quotas by Plan
+
+| Plan | Document Vector Stores | GitHub Repositories |
+| ---- | ---------------------- | ------------------- |
+| Free | Unavailable            | Unavailable         |
+| Pro  | Up to 5                | Up to 3             |
+| Team | Up to 20               | Up to 10            |
+
+* **Document Vector Stores**: Upload PDF, TXT, and Markdown files to build knowledge bases that can be utilized in your AI workflows
+* **GitHub Repositories**: Ingest code, Issues, and Pull Requests from GitHub repositories to make them searchable
+
+<Note>
+  For more details about Vector Stores, see [Vector Stores Settings](/en/guides/settings/team/vector-stores).
+</Note>
+
+### Managing Plan Limits
+
+#### Free Plan
+
+* To use Vector Stores, you need to upgrade to the Pro or Team plan
+
+#### Pro Plan
+
+* **Document Vector Stores**: When you reach the 5-store limit, you can delete existing Vector Stores or consider upgrading to the Team plan
+* **GitHub Repositories**: When you reach the 3-repository limit, you can delete existing repositories or consider upgrading to the Team plan
+
+#### Team Plan
+
+* **Document Vector Stores**: When you reach the 20-store limit, you need to delete existing Vector Stores
+* **GitHub Repositories**: When you reach the 10-repository limit, you need to delete existing repositories
 
 ## Plan Changes & Billing Information
 
 ### Upgrading from Free to Pro
 
-* When upgrading, Free plan unused credits are discarded.
-* Pro plan benefits, including unlimited promotional usage, become immediately available upon upgrade.
+* When upgrading, Free plan unused usage is discarded.
+* Pro plan benefits become immediately available upon upgrade.
 
 ### Downgrading from Pro to Free
 
@@ -70,11 +111,7 @@ AI model usage credits are refreshed monthly and unused credits do not roll over
 
 ### Additional Usage Costs (Pro Plan)
 
-* During standard (non-promotional) periods, Pro plan users exceeding the \$20 monthly usage credit incur reasonable additional charges (10% fee), billed automatically at the next subscription payment cycle.
-
-### Promotional Period
-
-* Current unlimited usage offer for the Pro plan is temporary. Users will be notified one month before this promotion ends.
+* Pro plan users exceeding the \$20 monthly AI credits incur additional charges at cost plus 10% markup, billed automatically at the next subscription payment cycle.
 
 ***
 

@@ -1,9 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/dll-plugin.md
 
-import { Table } from '@builtIns';
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/dll-plugin/](https://webpack.js.org/plugins/dll-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/dll-plugin/" />
 
 # DllPlugin
 
@@ -11,7 +15,7 @@ The `DllPlugin` is used in a separate rspack configuration exclusively to create
 
 ## Options
 
-* **Type:**
+- **Type:**
 
 ```ts
 type DllPluginOptions = {
@@ -24,64 +28,15 @@ type DllPluginOptions = {
 };
 ```
 
-<Table
-  header={[
-  {
-    name: 'Name',
-    key: 'name',
-  },
-  {
-    name: 'Type',
-    key: 'type',
-  },
-  {
-    name: 'Default',
-    key: 'default',
-  },
-  {
-    name: 'Description',
-    key: 'description',
-  },
-]}
-  body={[
-  {
-    name: '`context`',
-    type: '`string`',
-    default: `The rspack compiler context`,
-    description: 'context of requests in the manifest file',
-  },
-  {
-    name: '`path`',
-    type: '`string`',
-    default: `undefined`,
-    description: 'absolute path to the manifest json file ',
-  },
-  {
-    name: '`entryOnly`',
-    type: '`boolean`',
-    default: '`true`',
-    description: 'if `true`, only entry points will be exposed',
-  },
-  {
-    name: '`format`',
-    type: '`boolean`',
-    default: 'undefined',
-    description: 'Whether or not format manifest json',
-  },
-  {
-    name: '`name`',
-    type: '`string`',
-    default: 'undefined',
-    description: 'The expose dll function name',
-  },
-  {
-    name: '`type`',
-    type: '`string`',
-    default: 'undefined',
-    description: 'type of the dll bundle',
-  },
-]}
-/>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `context` | `string` | The rspack compiler context | context of requests in the manifest file |
+| `path` | `string` | undefined | absolute path to the manifest json file |
+| `entryOnly` | `boolean` | `true` | if `true`, only entry points will be exposed |
+| `format` | `boolean` | undefined | Whether or not format manifest json |
+| `name` | `string` | undefined | The expose dll function name |
+| `type` | `string` | undefined | type of the dll bundle |
+
 
 ## Examples
 

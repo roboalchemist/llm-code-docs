@@ -2,21 +2,9 @@
 
 # Source: https://bun.com/docs/guides/install/cicd.md
 
-# Source: https://bun.com/docs/guides/runtime/cicd.md
-
-# Source: https://bun.com/docs/guides/install/cicd.md
-
-# Source: https://bun.com/docs/guides/runtime/cicd.md
-
-# Source: https://bun.com/docs/guides/install/cicd.md
-
-# Source: https://bun.com/docs/guides/runtime/cicd.md
-
-# Source: https://bun.com/docs/guides/install/cicd.md
-
-# Source: https://bun.com/docs/guides/runtime/cicd.md
-
-# Source: https://bun.com/docs/guides/install/cicd.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Install dependencies with Bun in GitHub Actions
 

@@ -4,12 +4,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/experiment-trackers/mlflow.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/model-registries/mlflow.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/model-deployers/mlflow.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/experiment-trackers/mlflow.md
-
 # MLflow
 
 The MLflow Experiment Tracker is an [Experiment Tracker](https://docs.zenml.io/stacks/stack-components/experiment-trackers) flavor provided with the MLflow ZenML integration that uses [the MLflow tracking service](https://mlflow.org/docs/latest/tracking.html) to log and visualize information from your pipeline steps (e.g. models, parameters, metrics).

@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/vim/using-augment/vim-completions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Completions
 
 > Use code completions to get more done. Augment’s radical context awareness means more relevant suggestions, fewer hallucinations, and less time hunting down documentation.

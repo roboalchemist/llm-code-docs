@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/daily-webrtc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily WebRTC
 
 > Using Daily as a WebRTC transport for your Pipecat Cloud agents
@@ -20,9 +24,10 @@ The integrated Daily API key provides:
 * **Built-in compatibility**: All Pipecat base images work with Daily out of the box
 
 <Info>
-  While 1:1 voice minutes are included, additional Daily features like
-  recording, transcription, and PSTN/SIP connections are billed according to
-  [Daily's standard pricing](https://www.daily.co/pricing).
+  Free voice minutes apply only to 1:1 voice sessions running on Pipecat Cloud.
+  Video sessions, WebRTC sessions outside of Pipecat Cloud, and additional Daily
+  features (recording, transcription, PSTN/SIP) are billed according to [Daily's
+  standard pricing](https://www.daily.co/pricing/webrtc-infrastructure/).
 </Info>
 
 ## Using Daily with Pipecat Cloud Agents
@@ -145,8 +150,3 @@ The basic flow is handled for you, allowing you to focus on building your agent'
     View example Pipecat projects using Daily WebRTC
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

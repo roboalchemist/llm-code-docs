@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/file-history.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File History
 
 > To make sure you never lose any of your work, Replit auto-saves your code as you write. If you ever lose an edit to your code that you'd like to recover, rewind back in time with File History.

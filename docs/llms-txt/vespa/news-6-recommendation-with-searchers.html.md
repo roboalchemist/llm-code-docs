@@ -32,21 +32,21 @@ All requests pass through the `container` cluster before passing along to`conten
 
 ```
 { "message": "Invoke searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
 
-    { "message": "Federating to [mind]" },
+{ "message": "Federating to [mind]" },
 
-    { "message": "Got 10 hits from source:mind" },
-    { "message": "Return searcher 'federation in native'" },
+{ "message": "Got 10 hits from source:mind" },
+{ "message": "Return searcher 'federation in native'" },
 
-    { "message": "Return searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
-    { "message": "Return searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
+{ "message": "Return searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
 ```
 
 This shows a small sample of the additional output when using `trace.level`. Note the invocations of the Searchers. Each Searcher gets invoked along a chain, and the last Searcher in the chain sends the post-processed query to the search backend. When the results come back, the processing passes back up the chain. The Searchers can then process the results before passing them to the previous Searcher, and ultimately back as a response to the query.
@@ -223,8 +223,8 @@ $ vespa query -v \
 Note that the `searchChain` query parameter can be set as default, so this does not have to be passed with the query request. This is done by adding it to the default query profile in[src/main/application/search/query-profiles/default.xml](https://github.com/vespa-engine/sample-apps/blob/master/news/app-6-recommendation-with-searchers/src/main/application/search/query-profiles/default.xml):
 
 ```
-<query-profile id="default" type="root">
-    <field name="searchChain">user</field>
+<query-profile id="default" type="root"<
+    <field name="searchChain">user</field<
 </query-profile>
 ```
 
@@ -262,7 +262,7 @@ A common way of performing blending from multiple sources is to implement a spec
 
 We now have a Vespa application up and running that takes a single `user_id`and returns recommendations for that user. In the [next part of the tutorial](news-7-recommendation-with-parent-child.html), we'll address what to do when new users without any history visit our recommendation system.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

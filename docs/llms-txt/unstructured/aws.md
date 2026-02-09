@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/api-reference/legacy-api/aws.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unstructured API on AWS
 
 > Follow these steps to deploy the Unstructured API service into your AWS account.
@@ -303,7 +307,7 @@ For example, run one of the following, setting the following environment variabl
 * Set `UNSTRUCTURED_API_URL` to `http://`, followed by your load balancer's DNS name, followed by `/general/v0/general`.
 
   <Info>You can now use this value (`http://`, followed by your load balancer's DNS name, followed by `/general/v0/general`) in place of
-  calling the [Unstructured Partition Endpoint](/api-reference/partition/overview) URL as described elsewhere in the Unstructured API documentation.</Info>
+  calling the [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview) URL as described elsewhere in the Unstructured API documentation.</Info>
 
 * Set `LOCAL_FILE_INPUT_DIR` to the path on your local machine to the files for the Unstructured API to process. If you do not have any input files available, you can download any of the ones from the [example-docs](https://github.com/Unstructured-IO/unstructured-ingest/tree/main/example-docs) folder in GitHub.
 

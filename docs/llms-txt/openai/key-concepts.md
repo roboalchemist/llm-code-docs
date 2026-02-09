@@ -6,15 +6,15 @@ Supporting Instant Checkout in ChatGPT requires a merchant to implement three fl
 
 ## Sharing a product feed
 
-The [Product Feed Spec](/commerce/specs/feed) defines how merchants share structured product data with OpenAI so ChatGPT can accurately surface their products in search and shopping experiences.
+The [Product Feed Spec](https://developers.openai.com/commerce/specs/feed) defines how merchants share structured product data with OpenAI so ChatGPT can accurately surface their products in search and shopping experiences.
 
-- Merchants provide a secure, regularly refreshed feed (TSV, CSV, XML, or JSON) containing key details such as identifiers, descriptions, pricing, inventory, media, and fulfillment options.
-- Required fields ensure correct display of price, availability, and checkout status, while recommended attributes—like rich media, reviews, and performance signals—improve ranking, relevance, and user trust.
-- Integration involves setting up an encrypted HTTPS connection, sending an initial sample feed for validation, and supporting frequent updates (as often as every 15 minutes) to keep product information current.
+- Merchants provide a secure, regularly refreshed feed (CSV or JSON) containing key details such as identifiers, descriptions, pricing, inventory, media, and fulfillment options.
+- Required fields ensure correct display of price and availability, while recommended attributes—like rich media, reviews, and performance signals—improve ranking, relevance, and user trust.
+- Integration involves sending an initial sample feed for validation, and daily snapshots.
 
 ## Handling orders and checkout
 
-The [Agentic Checkout Spec](/commerce/specs/checkout) enables ChatGPT to act as the customer’s AI agent and renders a checkout experience embedded in ChatGPT’s UI.
+The [Agentic Checkout Spec](https://developers.openai.com/commerce/specs/checkout) enables ChatGPT to act as the customer’s AI agent and renders a checkout experience embedded in ChatGPT’s UI.
 
 - ChatGPT collects buyer, fulfillment, and payment information from the user.
 - ChatGPT calls the merchant’s Agentic Commerce Protocol endpoints to create or update a checkout session, and securely share information.
@@ -33,14 +33,14 @@ The checkout session is rendered in the OpenAI UI, but the actual checkout
 
 ## Handling payments
 
-The [Delegated Payment Spec](/commerce/specs/payment) allows OpenAI to securely share payment details with the merchant or its designated payment service provider (PSP). The merchant and its PSP then handle the transaction and process the related payment in the same manner as any other order and payment they collect.
+The [Delegated Payment Spec](https://developers.openai.com/commerce/specs/payment) allows OpenAI to securely share payment details with the merchant or its designated payment service provider (PSP). The merchant and its PSP then handle the transaction and process the related payment in the same manner as any other order and payment they collect.
 
 - OpenAI prepares a one-time delegated payment request and sets a maximum chargeable amount and expiry based on what the user has selected to buy in ChatGPT’s UI.
 - This payload is passed to the merchant’s trusted PSP who will handle the transaction.
 - The PSP responds with a payment token that OpenAI passes on to the merchant to complete the payment.
 - [Stripe’s Shared Payment Token](https://docs.stripe.com/agentic-commerce) is the first Delegated Payment Spec-compatible implementation, with more PSPs coming soon.
 - Eligible cards will be upgraded using network tokenization.
-- If you’re a PSP or a PCI DSS level 1 merchant with your own vault, [learn how to build a direct integration with OpenAI](/commerce/specs/payment).
+- If you’re a PSP or a PCI DSS level 1 merchant with your own vault, [learn how to build a direct integration with OpenAI](https://developers.openai.com/commerce/specs/payment).
 
 
 
@@ -56,4 +56,4 @@ OpenAI is not the merchant of record in the Agentic Commerce Protocol.
 
 This diagram illustrates the end-to-end data flow of the Agentic Commerce Protocol.
 
-![Agentic Commerce Protocol flow diagram](/images/commerce/commerce-acp-flow.png)
+![Agentic Commerce Protocol flow diagram](https://developers.openai.com/images/commerce/commerce-acp-flow.png)

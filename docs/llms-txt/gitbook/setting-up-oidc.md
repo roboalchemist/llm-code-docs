@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-oidc.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access/setting-up-oidc.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access/setting-up-oidc.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access/setting-up-oidc.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-oidc.md
 
@@ -20,15 +16,13 @@ To setup your GitBook site with authenticated access using OIDC, the process loo
 
 {% stepper %}
 {% step %}
-
-#### Create a new application with your identity provider
+**Create a new application with your identity provider**
 
 Create an application from your identity provider’s dashboard.
 {% endstep %}
 
 {% step %}
-
-#### Install and configure the OIDC integration
+**Install and configure the OIDC integration**
 
 Install the Auth0 integration and add the required configuration.
 {% endstep %}

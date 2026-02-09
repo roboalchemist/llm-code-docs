@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/custom-channel.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/custom-channel.md
-
 # Custom channel
 
 After building and testing your LLaMB agent, the next step is to select the deployment channel. The Avaamo Platform offers several pre-built channels, including Web, iOS, Android, and MS Teams, for deploying agents with LLaMB. If you need to deploy agents to a channel not listed, you can configure and deploy agents to a custom channel.

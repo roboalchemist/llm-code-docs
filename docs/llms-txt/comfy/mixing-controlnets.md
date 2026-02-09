@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/controlnet/mixing-controlnets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Mixing ControlNet Examples
 
 > In this example, we will demonstrate how to mix multiple ControlNets and learn to use multiple ControlNet models to control image generation

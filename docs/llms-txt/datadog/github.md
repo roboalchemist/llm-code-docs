@@ -1,0 +1,104 @@
+# Source: https://docs.datadoghq.com/continuous_integration/pipelines/github.md
+
+# Source: https://docs.datadoghq.com/account_management/teams/github.md
+
+---
+title: Provision Datadog Teams with GitHub
+description: >-
+  Enable automatic provisioning of Datadog Teams based on an organization's
+  GitHub team structure, including nested teams. Allow Datadog to use GitHub as
+  a source for Teams data.
+breadcrumbs: Docs > Account Management > Teams > Provision Datadog Teams with GitHub
+---
+
+# Provision Datadog Teams with GitHub
+
+## Overview{% #overview %}
+
+Link your GitHub teams to Datadog Teams to automatically provision Datadog Teams. The following features are supported:
+
+- Create Datadog Teams based on your GitHub teams configuration.
+- Sync team membership between Datadog and GitHub. Requires individual users to connect their Datadog accounts to GitHub.
+
+Datadog links existing teams by performing an exact name match between GitHub team slugs and Datadog Team [handles](https://docs.datadoghq.com/account_management/teams/#team-handle). The match is case-insensitive and ignores whitespace differences.
+
+If your GitHub teams have a hierarchical team structure, Datadog replicates that same structure during provisioning.
+
+**Note:** In Datadog, a sub-team must be as restrictive as or more restrictive than its parent team. For example, a sub-team cannot be [open](https://docs.datadoghq.com/account_management/teams/manage/#team-modification-permissions) if the parent team is [invite-only](https://docs.datadoghq.com/account_management/teams/manage/#team-modification-permissions).
+
+Datadog only reads GitHub teams. Datadog never modifies, creates, or deletes GitHub teams.
+
+## Prerequisites{% #prerequisites %}
+
+### GitHub integration{% #github-integration %}
+
+Ensure your Datadog organization is [connected](https://docs.datadoghq.com/integrations/github/#connect-github-teams-to-datadog-teams) to a GitHub organization. Your GitHub integration must have the `members_read` permission to read team data.
+
+### Permissions{% #permissions %}
+
+- To link and create teams, your Datadog user must have the `teams_manage` permission.
+- To manage team membership, your Datadog user must have the `user_access_manage` permission.
+
+## Setup{% #setup %}
+
+### Connect GitHub teams to Datadog Teams{% #connect-github-teams-to-datadog-teams %}
+
+1. Navigate to [Teams](https://app.datadoghq.com/organization-settings/teams).
+1. In the upper right, click **GitHub Connections**.
+1. Configure your connection by selecting options for import type, sync members, and cadence.
+1. Click **Save**.
+
+### View Datadog Teams{% #view-datadog-teams %}
+
+1. Navigate to [GitHub Connections](https://app.datadoghq.com/organization-settings/teams/github-connections?github-connections__view=synced).
+1. If the list of created and linked teams is empty, click **Refresh**.
+1. Optionally, manually update Datadog Teams to reach your desired state.
+
+### User configuration{% #user-configuration %}
+
+After an admin enables team provisioning from GitHub, a notification appears on the Team detail page. The notification asks users **Log in to GitHub** to connect their accounts from Datadog to GitHub through OAuth.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/account_management/teams/github/connect-to-github.3a99fc775be792dcc52f35409f353665.png?auto=format"
+   alt="'Not Connected to GitHub' box with button to 'Log in to GitHub'" /%}
+
+Each user must manually link their GitHub account to Datadog to establish the connection between Datadog and GitHub. This behavior is required by GitHub's OAuth and user privacy policies.
+
+After a user links their accounts, Datadog adds the user to any Datadog Teams that correspond to GitHub teams where the user is a member.
+
+For example, assume that user B is a member of team A in GitHub. The following sequence occurs in Datadog:
+
+1. An admin enables Datadog Teams provisioning and user syncing from GitHub.
+1. Team A is created in Datadog, empty.
+1. User B sees a notification to **Log in to GitHub** and follows through.
+1. User B is provisioned into Team A in Datadog.
+
+## Deleting teams{% #deleting-teams %}
+
+The GitHub automatic connection only manages resources that it created.
+
+If a team was created manually in Datadog and later linked to a GitHub team, deleting that GitHub team does not delete the Datadog Team.
+
+However, if a team was originally created by the automatic GitHub sync, and that GitHub team is deleted, Datadog also deletes the corresponding team to maintain consistency.
+
+### Examples{% #examples %}
+
+The following examples show the different results when deleting teams that were created in Datadog versus GitHub.
+
+Team created in Datadog:
+
+1. An admin creates Team A in Datadog.
+1. Team A is linked to a GitHub team.
+1. Team A is deleted in GitHub.
+1. Team A remains in Datadog, but is not linked to any GitHub team.
+
+Team created automatically from GitHub:
+
+1. In Datadog, Team B is created automatically from GitHub.
+1. Team B is deleted in GitHub.
+1. Team B is automatically deleted in Datadog.
+
+## Further reading{% #further-reading %}
+
+- [GitHub integration](https://docs.datadoghq.com/integrations/github/)
+- [Keep service ownership up to date with Datadog Teams' GitHub integration](https://www.datadoghq.com/blog/datadog-teams-github-integration)

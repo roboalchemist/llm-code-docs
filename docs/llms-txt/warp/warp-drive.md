@@ -26,17 +26,17 @@ Warp Drive is accessible from the status bar in the Warp terminal or you can tog
 {% endtab %}
 {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0288f9040db807f99341ba18e772017afdce8ed3%2FOpen_Warp_Drive.png?alt=media" alt="Warp Drive icon on top left corner of Warp"><figcaption><p>Warp Drive Icon</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-0288f9040db807f99341ba18e772017afdce8ed3%2FOpen_Warp_Drive.png?alt=media" alt="Warp Drive icon on top left corner of Warp"><figcaption><p>Warp Drive Icon</p></figcaption></figure>
 
 ## Workspaces in Warp Drive
 
 When you open the Warp Drive panel, you will find a personal workspace where you can store your Workflows, Notebooks, Prompts, and Environment Variables and organize them into folders.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d0cb97917d2ddc51af2f22680309c5fcff367270%2FWarp_Drive_Zero_State.png?alt=media&#x26;token=ad60169c-f470-407a-86b6-9bde404ee0b3" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-d0cb97917d2ddc51af2f22680309c5fcff367270%2FWarp_Drive_Zero_State.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 If you are a member of a team using Warp Drive, your team’s workspace will also be available in the side panel.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-062dd655495a77c5e7534e1be9fe4bafe427856c%2FWarp_Drive_with_Team.png?alt=media&#x26;token=fa958493-e973-4de5-84c8-15c5a5781945" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-062dd655495a77c5e7534e1be9fe4bafe427856c%2FWarp_Drive_with_Team.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Organizing objects in Warp Drive with your team
 
@@ -49,7 +49,7 @@ If you are a member of a team using Warp Drive, your team’s workspace will als
 
 In offline mode, some files will be read-only. You can still create and edit files while offline in your personal space. They will only be saved locally and will not be synced. They cannot be moved into a team or deleted until you are back online.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-09dfac99a8d1b5e05c02e530d20af0f94356fa45%2Fwarp_drive_offline.png?alt=media&#x26;token=4a241a89-f644-4ebb-a263-d059f0360793" alt=""><figcaption><p>Warp Drive offline mode</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-09dfac99a8d1b5e05c02e530d20af0f94356fa45%2Fwarp_drive_offline.png?alt=media" alt=""><figcaption><p>Warp Drive offline mode</p></figcaption></figure>
 
 ## Navigating Warp Drive with your keyboard
 
@@ -92,11 +92,11 @@ You can take these keyboard actions within Warp Drive:
   {% endtab %}
   {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b270a227ece084a6ea41dbcc66f638fccb93883e%2Fwarp_drive_nav1.png?alt=media&#x26;token=5f66b0ea-4d29-4414-aa9d-03d25b62e8bf" alt=""><figcaption><p>Warp Drive navigation states</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b270a227ece084a6ea41dbcc66f638fccb93883e%2Fwarp_drive_nav1.png?alt=media" alt=""><figcaption><p>Warp Drive navigation states</p></figcaption></figure>
 
 To switch between panels using your keyboard, you can use the “Switch Focus to Left Panel” and “Switch Focus to Right Panel” commands in the [Command Palette](https://docs.warp.dev/terminal/command-palette).
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-c471c8ad16ced21c0b393bbba746040d8b800fd8%2Fwarp_drive_nav2.png?alt=media&#x26;token=9ed2c511-402d-4d46-a1bb-8a499dc0e54f" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-c471c8ad16ced21c0b393bbba746040d8b800fd8%2Fwarp_drive_nav2.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Import and Export
 
@@ -111,7 +111,7 @@ Every object in Warp Drive can be exported to or imported from a file. When impo
 
 To import a local file or directory, `RIGHT-CLICK` on a folder or click `+` on a workspace and choose "Import." If importing a directory, supported files in the directory and its sub-directories will be imported into a matching folder structure.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-74cb6c7302db2318a21a39a8769f17bdf81908d8%2Fnotebook-import-modal.png?alt=media" alt=""><figcaption><p>Import modal</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-74cb6c7302db2318a21a39a8769f17bdf81908d8%2Fnotebook-import-modal.png?alt=media" alt=""><figcaption><p>Import modal</p></figcaption></figure>
 
 ### Exporting files from Warp Drive
 
@@ -133,17 +133,17 @@ To share a Drive object, navigate to the object's overflow menu, and choose "Cop
 In order to access an object, link-followers must have permission to open it through one of the sharing methods above. If they do not have permission, they can automatically request access from the object owner or team admin.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-cf376faaf78a9f2f2cce858d45f377b7f8911b7e%2FScreenshot%202024-07-23%20at%2012.42.25%E2%80%AFPM.png?alt=media&#x26;token=85b3c18b-c2b4-413e-95f3-cb7165a75569" alt="" width="216"><figcaption><p>Copy link Menu Item</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-cf376faaf78a9f2f2cce858d45f377b7f8911b7e%2Fwd-copy-link-menu.png?alt=media" alt="" width="216"><figcaption><p>Copy link Menu Item</p></figcaption></figure>
 
 ### Managing Permissions
 
 To manage a Drive object's permissions, navigate to its overflow menu and choose "Share". If the object is open, you can also use the [Command Palette](https://docs.warp.dev/terminal/command-palette#how-to-access-it) and search for "Share Pane" or click the share button in the pane header:
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f914bba18dc86b02d7b326da6b125c6e387ef517%2Fwd-share-button.png?alt=media" alt="The pane header for a notebook, with the share button circled"><figcaption><p>Pane header share button</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f914bba18dc86b02d7b326da6b125c6e387ef517%2Fwd-share-button.png?alt=media" alt="The pane header for a notebook, with the share button circled"><figcaption><p>Pane header share button</p></figcaption></figure>
 
 This opens a dialog that lists the current sharing settings and allows you to change them:
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6b2434fbc61f1b6522f9cdfb606290f16c402331%2Fwd-share-dialog.png?alt=media&#x26;token=36c71afd-2edd-47f2-b406-3557fe25142e" alt="A sharing dialog showing that anyone with the link can view, the owner has full access, and another user can edit."><figcaption><p>Warp Drive sharing dialog</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-6b2434fbc61f1b6522f9cdfb606290f16c402331%2Fwd-share-dialog.png?alt=media" alt="A sharing dialog showing that anyone with the link can view, the owner has full access, and another user can edit."><figcaption><p>Warp Drive sharing dialog</p></figcaption></figure>
 
 In this dialog, you can:
 

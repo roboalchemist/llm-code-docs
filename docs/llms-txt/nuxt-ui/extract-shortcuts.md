@@ -30,11 +30,9 @@ defineShortcuts(extractShortcuts(items))
 </script>
 ```
 
-<tip to="/docs/composables/define-shortcuts">
-
-Learn more about keyboard shortcuts in the **defineShortcuts** composable documentation.
-
-</tip>
+> [!TIP]
+> See: /docs/composables/define-shortcuts
+> Learn more about keyboard shortcuts in the defineShortcuts composable documentation.
 
 ## API
 
@@ -44,57 +42,19 @@ Extracts keyboard shortcuts from an array of menu items and returns a configurat
 
 #### Parameters
 
-<field-group>
-<field name="items" type="any[] | any[][]" :required="true" required="true">
-
 An array of menu items (or nested arrays) containing shortcut definitions. Each item can have the following properties:
 
-<collapsible>
-<field-group>
-<field name="kbds" type="string[]">
-
-An array of keyboard keys that form the shortcut (e.g., `['meta', 'S']`).
-
-</field>
-
-<field name="onSelect" type="() => void">
+An array of keyboard keys that form the shortcut (e.g., ).
 
 A callback function to execute when the shortcut is triggered.
 
-</field>
-</field-group>
-</collapsible>
-
-<field name="onClick" type="() => void">
-
-An alternative callback function (used if `onSelect` is not defined).
-
-</field>
-
-<field name="children" type="any[]">
+An alternative callback function (used if  is not defined).
 
 Nested menu items to recursively extract shortcuts from.
 
-</field>
-
-<field name="items" type="any[]">
-
 Alternative property for nested menu items.
 
-</field>
-</field>
-
-::
-
-</field-group>
-
-<field name="separator" type="'_' | '-'">
-
-The separator used to join keyboard keys. Use `'_'` for key combinations (e.g., `meta_k`) or `'-'` for key sequences (e.g., `g-d`). Defaults to `'_'`.
-
-</field>
-
-::
+The separator used to join keyboard keys. Use  for key combinations (e.g., ) or  for key sequences (e.g., ). Defaults to .
 
 **Returns:** A `ShortcutsConfig` object that can be passed directly to `defineShortcuts`.
 

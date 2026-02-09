@@ -10,33 +10,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-volumes.md
 
-# Source: https://docs.unstructured.io/ui/sources/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/ui/destinations/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/ui/sources/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/ui/destinations/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/databricks-volumes.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/databricks-volumes.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Databricks Volumes
 
@@ -75,8 +51,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -126,7 +101,7 @@ The requirements are as follows.
     [Azure](https://learn.microsoft.com/azure/databricks/dev-tools/auth/oauth-m2m), or
     [GCP](https://docs.gcp.databricks.com/dev-tools/auth/oauth-m2m.html).
 
-    You will need the the **Client ID** (or **UUID** or **Application** ID) and OAuth **Secret** (client secret) values for the corresponding service principal.
+    You will need the **Client ID** (or **UUID** or **Application** ID) and OAuth **Secret** (client secret) values for the corresponding service principal.
     Note that for Azure, only Databricks managed service principals are supported. Microsoft Entra ID managed service principals are not supported.
 
     The following video shows how to create a Databricks managed service principal:
@@ -198,7 +173,7 @@ The requirements are as follows.
   * `USE SCHEMA` on the volume's parent schema (formerly known as a database) in Unity Catalog.
   * `READ VOLUME` and `WRITE VOLUME` on the volume.
 
-  The following videos shows how to create and set privileges for a catalog, schema (formerly known as a database), and volume in Unity Catalog.
+  The following videos show how to create and set privileges for a catalog, schema (formerly known as a database), and volume in Unity Catalog.
 
   <iframe width="560" height="315" src="https://www.youtube.com/embed/yF9DJphhQQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 

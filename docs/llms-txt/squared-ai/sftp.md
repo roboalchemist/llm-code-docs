@@ -2,74 +2,50 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SFTP
 
-## Connect AI Squared to SFTP
+> Learn how to set up a SFTP destination connector in AI Squared to efficiently transfer data to your SFTP server.
 
-The Secure File Transfer Protocol (SFTP) is a secure method for transferring files between systems. This guide will help you configure the SFTP Connector with AI Squared allows you to access your data.
+## Introduction
 
-### Prerequisites
+The Secure File Transfer Protocol (SFTP) is a secure method for transferring files between systems. Integrating SFTP with AI Squared allows you to efficiently transfer data to your SFTP server for storage or further distribution. This guide outlines the steps to set up an SFTP destination connector in AI Squared.
 
-Before proceeding, ensure you have the hostname/ip address, port, username, password, file path, and file name from your SFTP Server.
+### Step 1: Access AI Squared
 
-## Step-by-Step Guide to Connect to a SFTP Server Endpoint
+1. Log in to your AI Squared account.
+2. Navigate to the **Destinations** section to manage your data destinations.
 
-### Step 1: Navigate to your SFTP Server
+### Step 2: Create a New Destination Connector
 
-1. Log in to your SFTP Server.
-2. Select your SFTP instances.
+1. Click on the **Add Destination** button.
+2. Select **SFTP** from the list of available destination types.
 
-### Step 2: Locate SFTP Configuration Details
+### Step 3: Configure Connection Settings
 
-Once you're in your select instance of your SFTP Server, you'll find the necessary configuration details:
-
-#### 1. User section
+Provide the following details to establish a connection between AI Squared and your SFTP server:
 
 * **Host**: The hostname or IP address of the SFTP server.
 * **Port**: The port number used for SFTP connections (default is 22).
 * **Username**: Your username for accessing the SFTP server.
 * **Password**: The password associated with the username.
+* **Destination Path**: The directory path on the SFTP server where you want to store the files.
+* **Filename**: The name of the file to be uploaded to the SFTP server, appended with the current timestamp.
 
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1735878893/Multiwoven/connectors/SFTP-Source/SFTP_credentials_ngkpu0.png" />
-</Frame>
+Enter these details in the respective fields on the connector configuration page and press **Finish**.
 
-#### 2. File Manager section
+### Step 4: Test the Connection
 
-* **File Path**: The directory path on the SFTP server where your file is stored.
-* **File Name**: The name of the file to be read.
+1. After entering the necessary information, use the automated **Test Connection** feature to ensure AI Squared can successfully connect to your SFTP server.
+2. If the test is successful, you'll receive a confirmation message. If not, double-check your entered details for any errors.
 
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1735879781/Multiwoven/connectors/SFTP-Source/SFTP_File_vnb0am.png" />
-</Frame>
+### Step 5: Finalize the Destination Connector Setup
 
-### Step 3: Configure and Test the SFTP Connection
+1. After a successful connection test, save the connector settings to establish the destination connection.
 
-Now that you have gathered all the necessary details, enter the necessary details for the connector in your application:
+## Conclusion
 
-1. Save the configuration settings.
-2. Test the connection to SFTP from your application to ensure everything is set up correctly.
-3. Run a test query or check the connection status to verify successful connectivity.
-
-Your SFTP connector is now configured and ready to query data from your SFTP service.
-
-### Supported sync modes
-
-| Mode             | Supported (Yes/No/Coming soon) |
-| ---------------- | ------------------------------ |
-| Incremental sync | YES                            |
-| Full refresh     | Coming soon                    |
+By following these steps, you've successfully set up an SFTP destination connector in AI Squared. You can now efficiently transfer data to your SFTP server for storage or further distribution within AI Squared.

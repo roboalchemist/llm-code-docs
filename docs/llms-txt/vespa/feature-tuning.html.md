@@ -197,7 +197,7 @@ One can evaluate if using the hybrid evaluation improves search performance by a
 
 ## Indexing uuids
 
-When configuring [string](../reference/schemas/schemas.html#string) type fields with `index`, the default [match](../reference/schemas/schemas.html#match) mode is `text`. This means Vespa will [tokenize](../linguistics/linguistics.html#tokenization) the content and index the tokens.
+When configuring [string](../reference/schemas/schemas.html#string) type fields with `index`, the default [match](../reference/schemas/schemas.html#match) mode is `text`. This means Vespa will [tokenize](../linguistics/linguistics-opennlp.html#tokenization) the content and index the tokens.
 
 The string representation of an [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) is 32 hexadecimal (base 16) digits, in five groups, separated by hyphens, in the form 8-4-4-4-12, for a total of 36 characters (32 alphanumeric characters and four hyphens).
 
@@ -535,7 +535,7 @@ Three-way mapped (mixed) dot product: [Tensor Playground](https://docs.vespa.ai/
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

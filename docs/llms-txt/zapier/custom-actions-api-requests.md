@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/custom-actions-api-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom actions and API requests actions
 
 > [Custom Actions](https://help.zapier.com/hc/en-us/articles/16276574838925-App-Extensions-in-Zapier) and [API Requests](https://help.zapier.com/hc/en-us/articles/12899607716493-Set-up-an-API-request-action#prerequisites-0-0) are features that have been developed internally at Zapier, designed to help our mutual customers achieve the most value out of your app integration.

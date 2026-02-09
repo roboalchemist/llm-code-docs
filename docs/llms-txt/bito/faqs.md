@@ -4,12 +4,6 @@
 
 # Source: https://docs.bito.ai/ai-code-reviews-in-git/faqs.md
 
-# Source: https://docs.bito.ai/other-bito-ai-tools/bito-cli/faqs.md
-
-# Source: https://docs.bito.ai/ai-code-reviews-in-ide/ai-that-understands-your-code/faqs.md
-
-# Source: https://docs.bito.ai/ai-code-reviews-in-git/faqs.md
-
 # FAQs
 
 ## How do I whitelist Bito's gateway IP address for my on-premise Git platform?

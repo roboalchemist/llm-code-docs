@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/libsql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # libSQL
 
 > libSQL is SQLite for modern applications.
@@ -15,7 +19,7 @@ libSQL is a fork of SQLite that aims to be a modern database, with a focus on lo
     Browse the libSQL source code on GitHub, report issues, feature requests and contribute using pull requests.
   </Card>
 
-  <Card title="Discord" href="https://discord.gg/turso" icon="discord">
+  <Card title="Discord" href="https://tur.so/discord" icon="discord">
     Join the community on Discord to talk about the development of libSQL.
   </Card>
 </CardGroup>

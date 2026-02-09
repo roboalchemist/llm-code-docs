@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/best-practices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best Practices
 
 ## Designing your Virtual Agent
@@ -10,9 +14,9 @@ The most important thing to keep in mind when designing a good flow is whether i
 
 ### (a) Understanding the Intent
 
-Since flows are invoked when ASAPP classifies an intent, understanding the intent in question is key to successfully designing a flow. The best way to do this is to review recent utterances that have been classified to the intent and categorizing them into more nuanced use cases that your flow must address. This will ensure that the flow you design is complete in its coverage given how customers will enter the flow.
+Since flows are invoked when ASAPP classifies an intent, understanding the intent in question is key to successfully designing a flow. The best way to do this is to review recent utterances that ASAPP has classified to the intent and categorize them into more nuanced use cases that your flow must address. This will ensure that the flow you design is complete in its coverage given how customers will enter the flow.
 
-These utterances are accessible through ASAPP Historical Reporting, in the First Utterance table.
+ASAPP Historical Reporting makes these utterances accessible through the First Utterance table.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=35d6596fed1596d42b5210219d9877ba" data-og-width="1999" width="1999" data-og-height="931" height="931" data-path="image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=42d81df6dfd1178f7b36ff77b6563d9e 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=ab1306ef880ef4a1bbe825e64b1d76fb 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=edd8bca1ef391565412a2445e201f5d4 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=8d475570b07450920e47a6baa77e824e 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=a10faa3c32af0b13210026787cdb244a 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-a89adeb3-7316-62c2-c885-910d111a7d8a.png?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=6206213f24e5011d983fcc696dbdf20b 2500w" />
@@ -20,9 +24,9 @@ These utterances are accessible through ASAPP Historical Reporting, in the First
 
 ### (b) Ongoing Refinement
 
-Every flow you build can be thought of as a hypothesis for how to effectively understand and respond to your customers in a given scenario. Your ability to refine those hypotheses over time--and test new ones--is key to managing a truly effective virtual agent program that meets your customers needs.
+Every flow you build can be thought of as a hypothesis for how to effectively understand and respond to your customers in a given scenario. Your ability to refine those hypotheses over time—and test new ones—is key to managing a truly effective virtual agent program that meets your customers' needs.
 
-We recommend performing the following steps on a regular basis--at least monthly--to identify opportunities for flow refinement, and improve effectiveness over time.
+We recommend performing the following steps on a regular basis—at least monthly—to identify opportunities for flow refinement, and improve effectiveness over time.
 
 #### Step 1: Identify opportunity areas in particular flows
 
@@ -31,7 +35,7 @@ We recommend performing the following steps on a regular basis--at least monthly
 
 #### Step 2: Determine Likely Causes for Flow Underperformance, Identify Remedies
 
-Once you've identified problematic flows, the next step is to determine why they are under-performing. In most cases you'll quickly identify at least one of the following issues with your flow by reviewing transcripts of issueIDs from Conversation Manager in Insights Manager:
+Once you've identified problematic flows, the next step is to determine why they underperform. In most cases, reviewing transcripts of issueIDs from Conversation Manager in Insights Manager will quickly reveal at least one of the following issues with your flow:
 
 **1. General unhelpfulness or imprecise responses**
 

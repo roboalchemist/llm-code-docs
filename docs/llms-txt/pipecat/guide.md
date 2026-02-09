@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/runner/guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Development Runner
 
 > Unified runner for building voice AI bots with Daily, WebRTC, and telephony transports
@@ -34,7 +38,7 @@ Your bot code receives runner arguments that contain everything it needs, includ
 
 ## Pipecat Cloud Ready
 
-The bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using a free transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.
+The bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using an open source transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.
 
 ## Building with the Runner
 
@@ -44,7 +48,6 @@ Here's the basic structure:
 
 ```python  theme={null}
 # Your imports
-from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.runner.types import RunnerArguments
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.network.small_webrtc import SmallWebRTCTransport
@@ -70,7 +73,6 @@ async def bot(runner_args: RunnerArguments):
         params=TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         webrtc_connection=runner_args.webrtc_connection,
     )
@@ -108,7 +110,6 @@ async def bot(runner_args: RunnerArguments):
             params=DailyParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
         )
 
@@ -120,7 +121,6 @@ async def bot(runner_args: RunnerArguments):
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
             webrtc_connection=runner_args.webrtc_connection,
         )
@@ -188,8 +188,8 @@ async def bot(runner_args: RunnerArguments):
 
     # Enable production features only when deployed
     if not is_local:
-        from pipecat.audio.filters.krisp_filter import KrispFilter
-        krisp_filter = KrispFilter()
+        from pipecat.audio.filters.krisp_viva_filter import KrispVivaFilter
+        krisp_filter = KrispVivaFilter()
     else:
         krisp_filter = None
 
@@ -198,10 +198,9 @@ async def bot(runner_args: RunnerArguments):
         runner_args.token,
         "Pipecat Bot",
         params=DailyParams(
-            audio_in_filter=krisp_filter,  # Krisp filter only in production
+            audio_in_filter=krisp_filter,  # Krisp VIVA filter only in production
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
     )
 ```
@@ -355,17 +354,14 @@ transport_params = {
     "daily": lambda: DailyParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
     "webrtc": lambda: TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
     "twilio": lambda: FastAPIWebsocketParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
         # add_wav_header and serializer handled automatically
     ),
 }
@@ -590,8 +586,3 @@ For practical examples of using the development runner with different transports
   Explore the examples for different ways to use the development runner with
   various transports.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -22,7 +22,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### attrmap
 
->  attrmap (o)
+``` python
+
+def attrmap(
+    o
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -32,7 +38,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### valmap
 
->  valmap (o)
+``` python
+
+def valmap(
+    o
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -42,7 +54,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### FT
 
->  FT (tag:str, cs:tuple, attrs:dict=None, void_=False, **kwargs)
+``` python
+
+def FT(
+    tag:str, cs:tuple, attrs:dict=None, void_:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *A ‘Fast Tag’ structure, containing `tag`,`children`,and `attrs`*
 
@@ -54,10 +72,14 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ft
 
->  ft (tag:str, *c, void_:bool=False, attrmap:<built-
->          infunctioncallable>=<function attrmap>, valmap:<built-
->          infunctioncallable>=<function valmap>, ft_cls=<class '__main__.FT'>,
->          **kw)
+``` python
+
+def ft(
+    tag:str, c:VAR_POSITIONAL, void_:bool=False, attrmap:callable=attrmap, valmap:callable=valmap, ft_cls:type=FT,
+    kw:VAR_KEYWORD
+):
+
+```
 
 *Create an [`FT`](https://fastcore.fast.ai/xml.html#ft) structure for
 [`to_xml()`](https://fastcore.fast.ai/xml.html#to_xml)*
@@ -76,7 +98,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Html
 
->  Html (*c, doctype=True, **kwargs)
+``` python
+
+def Html(
+    c:VAR_POSITIONAL, doctype:bool=True, kwargs:VAR_KEYWORD
+)->FT:
+
+```
 
 *An HTML tag, optionally preceeded by `!DOCTYPE HTML`*
 
@@ -124,7 +152,15 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Safe
 
-\*str(object=’’) -\> str str(bytes_or_buffer\[, encoding\[, errors\]\])
+``` python
+
+def Safe(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
+
+*str(object=’’) -\> str* str(bytes_or_buffer\[, encoding\[, errors\]\])
 -\> str
 
 Create a new string object from the given object. If encoding or errors
@@ -132,7 +168,7 @@ is specified, then the object must expose a data buffer that will be
 decoded using the given encoding and error handler. Otherwise, returns
 the result of object.\_\_str\_\_() (if defined) or repr(object).
 encoding defaults to sys.getdefaultencoding(). errors defaults to
-‘strict’.\*
+‘strict’.
 
 ## Conversion to XML/HTML
 
@@ -144,7 +180,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### to_xml
 
->  to_xml (elm, lvl=0, indent=True, do_escape=True)
+``` python
+
+def to_xml(
+    elm, lvl:int=0, indent:bool=True, do_escape:bool=True
+):
+
+```
 
 *Convert [`ft`](https://fastcore.fast.ai/xml.html#ft) element tree into
 an XML string*
@@ -157,7 +199,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### FT.\_\_html\_\_
 
->  FT.__html__ ()
+``` python
+
+def __html__(
+    
+):
+
+```
 
 ``` python
 to_xml(Div("<script>alert('XSS')</script>"), do_escape=True)
@@ -182,6 +230,19 @@ print(h)
     <img src="filename" data="1">    </div>
       </body>
     </html>
+
+``` python
+c = I('hello')
+print(c)
+```
+
+    <i>hello</i>
+
+``` python
+c
+```
+
+<i>hello</i>
 
 ``` python
 class PageTitle:
@@ -257,24 +318,36 @@ print(Div('ho'))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L230"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L234"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### FT.\_\_hash\_\_
 
->  FT.__hash__ ()
+``` python
+
+def __hash__(
+    
+):
+
+```
 
 *Return hash(self).*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L225"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L229"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### FT.\_\_eq\_\_
 
->  FT.__eq__ (other)
+``` python
+
+def __eq__(
+    other
+):
+
+```
 
 *Return self==value.*
 
@@ -296,24 +369,36 @@ assert hash(Div('hello')), hash(Div('goodbye'))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L233"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L237"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### highlight
 
->  highlight (s, lang='html')
+``` python
+
+def highlight(
+    s, lang:str='html'
+):
+
+```
 
 *Markdown to syntax-highlight `s` in language `lang`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L238"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L242"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### showtags
 
->  showtags (s)
+``` python
+
+def showtags(
+    s
+):
+
+```
 
 You can also reorder the children to come *after* the attrs, if you use
 this alternative syntax for [`FT`](https://fastcore.fast.ai/xml.html#ft)
@@ -322,6 +407,7 @@ is because [`FT`](https://fastcore.fast.ai/xml.html#ft) implements
 `__call__` to add children).
 
 ``` python
+hl_md(
 Body(klass='myclass')(
     Div(style='padding:3px')(
         'Some text 1<2',
@@ -329,7 +415,7 @@ Body(klass='myclass')(
         Input(name='me'),
         Img(src="filename", data=1)
     )
-)
+))
 ```
 
 ``` html
@@ -343,9 +429,15 @@ Some text 1&lt;2<i spurious>in italics</i>    <input name="me">
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L246"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/xml.py#L250"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### **getattr**
 
->  __getattr__ (tag)
+``` python
+
+def __getattr__(
+    tag
+):
+
+```

@@ -346,7 +346,7 @@ See also:
 - The [Tensor Java API](https://javadoc.io/doc/com.yahoo.vespa/vespajlib/latest/com/yahoo/tensor/Tensor.html).
 - [Tensor ranking performance](../performance/feature-tuning.html#tensor-ranking).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/bi-data-apps/tracking-jobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tracking Jobs
 
 > Track the completion and success of your data app integration syncs.

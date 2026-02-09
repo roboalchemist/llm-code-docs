@@ -6,9 +6,9 @@
 
 ***
 
-A https://playwright.dev/docs/api/class-browsercontext is an isolated incognito session within a **Browser** instance. This means that contexts can have different device/screen size configurations, different language and color scheme settings, etc. It is useful to use multiple browser instances when dealing with automating logging into multiple accounts simultaneously (therefore requiring multiple sessions), or in any cases where multiple sessions are required.
+A [BrowserContext](https://playwright.dev/docs/api/class-browsercontext) is an isolated incognito session within a **Browser** instance. This means that contexts can have different device/screen size configurations, different language and color scheme settings, etc. It is useful to use multiple browser instances when dealing with automating logging into multiple accounts simultaneously (therefore requiring multiple sessions), or in any cases where multiple sessions are required.
 
-When we create a **Browser** object by using the `launch()` function, a single https://playwright.dev/docs/browser-contexts is automatically created. In order to create more, we use the https://playwright.dev/docs/api/class-browser#browser-new-context function in Playwright, and https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-browsercreateincognitobrowsercontextoptions in Puppeteer.
+When we create a **Browser** object by using the `launch()` function, a single [browser context](https://playwright.dev/docs/browser-contexts) is automatically created. In order to create more, we use the [browser.newContext()](https://playwright.dev/docs/api/class-browser#browser-new-context) function in Playwright, and [browser.createIncognitoBrowserContext](https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-browsercreateincognitobrowsercontextoptions) in Puppeteer.
 
 * Playwright
 * Puppeteer
@@ -29,7 +29,7 @@ const myNewContext = await browser.createIncognitoBrowserContext();
 
 In both examples above, we are creating a new **non-persistent** browser context, which means that once it closes, all of its cookies, cache, etc. will be lost. For some cases, that's okay, but in most situations, the performance hit from this is too large. This is why we have **persistent** browser contexts. Persistent browser contexts open up a bit slower and they store all their cache, cookies, session storage, and local storage in a file on disk.
 
-In Puppeteer, the **default** browser context is the persistent one, while in Playwright we have to use https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context instead of `BrowserType.launch()` in order for the default context to be persistent.
+In Puppeteer, the **default** browser context is the persistent one, while in Playwright we have to use [BrowserType.launchPersistentContext()](https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context) instead of `BrowserType.launch()` in order for the default context to be persistent.
 
 * Playwright
 * Puppeteer
@@ -64,7 +64,7 @@ await browser.close();
 
 ## Using browser contexts
 
-In both Playwright and Puppeteer, various devices (iPhones, iPads, Androids, etc.) can be emulated by using https://playwright.dev/docs/api/class-playwright#playwright-devices or https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-puppeteerdevices. We'll be using this to create two different browser contexts, one emulating an iPhone, and one emulating an Android device:
+In both Playwright and Puppeteer, various devices (iPhones, iPads, Androids, etc.) can be emulated by using [playwright.devices](https://playwright.dev/docs/api/class-playwright#playwright-devices) or [puppeteer.devices](https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-puppeteerdevices). We'll be using this to create two different browser contexts, one emulating an iPhone, and one emulating an Android device:
 
 * Playwright
 * Puppeteer
@@ -123,7 +123,7 @@ await browser.close();
 ```
 
 
-Then, we'll make both `iPhonePage` and `androidPage` visit https://www.deviceinfo.me/, which is a website that displays the type of device you have, the operating system you're using, and more device and location-specific information.
+Then, we'll make both `iPhonePage` and `androidPage` visit [deviceinfo.me](https://www.deviceinfo.me/), which is a website that displays the type of device you have, the operating system you're using, and more device and location-specific information.
 
 
 ```

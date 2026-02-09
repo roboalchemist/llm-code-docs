@@ -2,6 +2,8 @@
 
 # ActorBuildOptions<!-- -->
 
+Options for building an Actor.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -13,7 +15,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#betaPackages)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L512)optionalbetaPackages
+### [**](#betaPackages)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L807)optionalbetaPackages
 
 **betaPackages?
 
@@ -21,7 +23,7 @@
 
 : boolean
 
-### [**](#tag)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L513)optionaltag
+### [**](#tag)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L808)optionaltag
 
 **tag?
 
@@ -29,7 +31,7 @@
 
 : string
 
-### [**](#useCache)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L514)optionaluseCache
+### [**](#useCache)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L809)optionaluseCache
 
 **useCache?
 
@@ -37,7 +39,7 @@
 
 : boolean
 
-### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L515)optionalwaitForFinish
+### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L810)optionalwaitForFinish
 
 **waitForFinish?
 

@@ -2,7 +2,7 @@
 
 # Network Storage
 
-The Network Storage service enables a new kind of [mount](https://docs.upsun.com../create-apps/app-reference/single-runtime-image.md#mounts)
+The Network Storage service enables a new kind of [mount](https://docs.upsun.com../create-apps/image-properties/mounts.md)
 that refers to a shared service rather than to a local directory.
 This service allows you to store data and share it between different apps.
 
@@ -22,12 +22,6 @@ This service is the Upsun network storage implementation, not the version of a t
 It isn’t possible to upgrade or downgrade the network storage service version while keeping existing data in place.
 Changing the service version requires that the service be reinitialized.
 Any change to the service version results in existing data becoming inaccessible.
-
-### Deprecated versions
-
-The following versions are [deprecated](https://docs.upsun.com/glossary.md#deprecated-versions).
-They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
-They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
    - 2.0
 
@@ -104,7 +98,7 @@ services:
 ## Multi-application usage
 
 If your project contains [multiple apps](https://docs.upsun.com../create-apps/multi-app.md),
-they may [share `storage` mounts](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#share-a-mount-between-several-apps).
+they may [share `storage` mounts](https://docs.upsun.com/create-apps/image-properties/mounts.md#share-a-mount-between-several-apps).
 
 Alternatively, they may use shared `service` mounts.
 If the `source_path` is the same for both apps,

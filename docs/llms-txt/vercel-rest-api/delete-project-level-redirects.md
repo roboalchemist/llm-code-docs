@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/delete-project-level-redirects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete project-level redirects.
 
 > Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response.
@@ -11,7 +15,7 @@
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples delete /v1/bulk-redirects
 openapi: 3.0.3
 info:
-  title: Vercel SDK
+  title: Vercel REST API & SDK
   description: >-
     The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
     type-safe Typescript SDK that allows you to access the resources and methods
@@ -82,56 +86,121 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  alias:
-                    nullable: true
-                    type: string
-                  version:
-                    properties:
-                      id:
-                        type: string
-                        description: The unique identifier for the version.
-                      key:
-                        type: string
-                        description: >-
-                          The key of the version. The key may be duplicated
-                          across versions if the contents are the same as a
-                          different version.
-                      lastModified:
-                        type: number
-                      createdBy:
-                        type: string
-                      name:
-                        type: string
-                        description: >-
-                          Optional name for the version. If not provided,
-                          defaults to an ISO timestamp string.
-                      isStaging:
-                        type: boolean
-                        description: >-
-                          Whether this version has not been promoted to
-                          production yet and is not serving end users.
-                      isLive:
-                        type: boolean
-                        description: Whether this version is currently live in production.
-                      redirectCount:
-                        type: number
-                        description: The number of redirects in this version.
+                oneOf:
+                  - properties:
                       alias:
                         type: string
-                        description: >-
-                          The staging link for previewing redirects in this
-                          version.
+                      version:
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier for the version.
+                          key:
+                            type: string
+                            description: >-
+                              The key of the version. The key may be duplicated
+                              across versions if the contents are the same as a
+                              different version.
+                          lastModified:
+                            type: number
+                          createdBy:
+                            type: string
+                          name:
+                            type: string
+                            description: >-
+                              Optional name for the version. If not provided,
+                              defaults to an ISO timestamp string.
+                          isStaging:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether this version has not been promoted to
+                              production yet and is not serving end users.
+                          isLive:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether this version is currently live in
+                              production.
+                          redirectCount:
+                            type: number
+                            description: The number of redirects in this version.
+                          alias:
+                            type: string
+                            description: >-
+                              The staging link for previewing redirects in this
+                              version.
+                        required:
+                          - createdBy
+                          - id
+                          - key
+                          - lastModified
+                        type: object
                     required:
-                      - id
-                      - key
-                      - lastModified
-                      - createdBy
+                      - version
                     type: object
-                required:
-                  - alias
-                  - version
-                type: object
+                  - properties:
+                      alias:
+                        nullable: true
+                        type: string
+                      version:
+                        properties:
+                          id:
+                            type: string
+                            description: The unique identifier for the version.
+                          key:
+                            type: string
+                            description: >-
+                              The key of the version. The key may be duplicated
+                              across versions if the contents are the same as a
+                              different version.
+                          lastModified:
+                            type: number
+                          createdBy:
+                            type: string
+                          name:
+                            type: string
+                            description: >-
+                              Optional name for the version. If not provided,
+                              defaults to an ISO timestamp string.
+                          isStaging:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether this version has not been promoted to
+                              production yet and is not serving end users.
+                          isLive:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
+                            description: >-
+                              Whether this version is currently live in
+                              production.
+                          redirectCount:
+                            type: number
+                            description: The number of redirects in this version.
+                          alias:
+                            type: string
+                            description: >-
+                              The staging link for previewing redirects in this
+                              version.
+                        required:
+                          - createdBy
+                          - id
+                          - key
+                          - lastModified
+                        type: object
+                    required:
+                      - alias
+                      - version
+                    type: object
         '400':
           description: |-
             One of the provided values in the request body is invalid.
@@ -154,7 +223,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt

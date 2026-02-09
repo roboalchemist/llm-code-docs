@@ -2,12 +2,9 @@
 
 # Get authenticated user details
 
-```
-GET 
-/v1/me
-```
+Copy page
 
-## Responses[â€‹](#responses "Direct link to Responses")
+## Responses[​](#responses "Direct link to Responses")
 
 * 200
 * 429

@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/session-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session List
 
 * Author(s): [@ahmedhesham6](https://github.com/ahmedhesham6)
@@ -330,8 +334,3 @@ Corresponding response example:
 * **2025-11-11**: Remove `createdAt`, `updatedAt`, and `search` filters from the request parameters
 * **2025-11-23**: Remove `limit` parameter from request; make `createdAt` and `updatedAt` optional in SessionInfo
 * **2025-11-24**: Update capabilities schema, consolidate to single `updatedAt` timestamp
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

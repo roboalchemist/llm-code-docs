@@ -31,7 +31,11 @@ Guests are an exception, and will be able to sign in by selecting **Continue via
 3. Enter the requested details from Linear into your IDP and press "Continue"
 4. You can paste in an XML URL or the raw XML text to complete the configuration with your identity provider. If you're not sure where to find this in your identity provider, take a look at their documentation or reach out to us for help.
 
-You can make changes to your configuration later on from `...` > **Edit Configuration** within the SAML authentication & SCIM provisioning settings page.
+You can make changes to your configuration later on from `...` > **Edit Configuration** within the SAML authentication & SCIM provisioning settings page. 
+
+If you need to replace the XML URL or metadata from your IDP, just press `Continue` past the Linear-side configuration details to reach this page.
+
+![The second page of Linear's SAML Configuration steps where the XML data can be added or replaced](https://webassets.linear.app/images/ornj730p/production/7e23e9cf4438fc46f0b07cf5b8896480d24a619e-1058x670.png?q=95&auto=format&dpr=2)
 
 If you want to add our logo in your Identity Provider, our Brand Assets are available for download [here](https://linear.app/brand).
 
@@ -61,7 +65,7 @@ When a new user signs in via SAML for the first time, Linear creates the account
 
 ### Allowed domains
 
-Once you have configured your settings for an IDP , you'll need to add approved domains for this IDP under the settings for **SAML-approved email domains**. You will need to add a TXT code to your DNS record to claim this domain. 
+Once you have configured your settings for an IDP, you'll need to add approved domains for this IDP under the settings for **SAML-approved email domains**. You will need to add a TXT code to your DNS record to claim this domain. 
 
 Please reach out to support@linear.app if you have any trouble claiming a domain, or if you are working across multiple workspaces. 
 

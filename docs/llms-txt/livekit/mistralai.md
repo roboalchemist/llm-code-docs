@@ -2,38 +2,28 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/mistralai.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/mistralai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/mistralai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/mistralai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/mistralai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/mistralai.md
-
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Mistral AI
+LiveKit docs › Models › LLM › Plugins › Mistral AI
 
 ---
 
-# Mistral STT plugin guide
+# Mistral AI LLM plugin guide
 
-> How to use the Mistral STT plugin for LiveKit Agents.
+> How to integrate Mistral AI's La Plateforme inference service with LiveKit Agents.
 
 ## Overview
 
-This plugin allows you to use [Voxtral](https://mistral.ai/products/voxtral) as an STT provider for your voice agents.
+This plugin allows you to use [Mistral AI](https://mistral.ai/) as an LLM provider for your voice agents.
 
 ## Quick reference
 
 This section includes a basic usage example and some reference material. For links to more detailed documentation, see [Additional resources](#additional-resources).
 
-#### Installation
+### Installation
 
 Install the LiveKit Mistral AI plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[mistralai]~=1.2"
+uv add "livekit-agents[mistralai]~=1.3"
 
 ```
 
@@ -45,45 +35,47 @@ Set the `MISTRAL_API_KEY` in your `.env` file.
 
 ### Usage
 
-Use Mistral AI STT in your `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+Use Mistral AI within an `AgentSession` or as a standalone LLM service. For example, you can use this LLM in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
 ```python
 from livekit.plugins import mistralai
 
 session = AgentSession(
-    stt=mistralai.STT(
-        model="voxtral-mini-2507"   
+    llm=mistralai.LLM(
+        model="mistral-medium-latest"
     ),
-    # ... llm, tts, etc.
+    # ... tts, stt, vad, turn_detection, etc.
 )
 
 ```
 
 ### Parameters
 
-This section describes some of the available parameters. See the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/mistralai.md#livekit.plugins.mistralai.STT) for a complete list of all available parameters.
+This section describes some of the available parameters. See the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/mistralai.md#livekit.plugins.mistralai.LLM) for a complete list of all available parameters.
 
-- **`model`** _(string)_ (optional) - Default: `voxtral-mini-latest`: Name of the Voxtral STT model to use.
+- **`model`** _(string | ChatModels)_ (optional) - Default: `ministral-8b-2410`: Which Mistral AI model to use. You can pass a string or a typed enum from `ChatModels`.
+
+- **`temperature`** _(float)_ (optional): Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
 
 ## Additional resources
 
-The following resources provide more information about using Groq with LiveKit Agents.
+The following resources provide more information about using Mistral AI with LiveKit Agents.
 
 - **[Python package](https://pypi.org/project/livekit-plugins-mistralai)**: The `livekit-plugins-mistralai` package on PyPI.
 
-- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/mistralai.md#livekit.plugins.mistralai.STT)**: Reference for the Mistral AI STT plugin.
+- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/mistralai.md#livekit.plugins.mistralai.LLM)**: Reference for the Mistral AI LLM plugin.
 
 - **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-mistralai)**: View the source or contribute to the LiveKit Mistral AI LLM plugin.
 
-- **[Mistral AI LLM plugin](https://docs.livekit.io/agents/models/llm/plugins/mistralai.md)**: Mistral AI LLM plugin documentation.
+- **[Mistral AI STT docs](https://docs.livekit.io/agents/models/stt/plugins/mistralai.md)**: Mistral AI STT documentation.
 
-- **[Mistral AI platform docs](https://docs.mistral.ai/)**: Mistral AI platform documentation.
+- **[Mistral AI docs](https://docs.mistral.ai/)**: Mistral AI platform documentation.
 
 - **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Mistral AI.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.527Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/mistralai.md](https://docs.livekit.io/agents/models/stt/plugins/mistralai.md).
+This document was rendered at 2026-02-03T03:25:00.834Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/mistralai.md](https://docs.livekit.io/agents/models/llm/plugins/mistralai.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

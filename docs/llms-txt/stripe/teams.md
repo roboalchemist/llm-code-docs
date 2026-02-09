@@ -6,21 +6,21 @@ Learn how to invite and interact with team members.
 
 Stripe logs the account activity of team members during the past 180 days. To review account activity information, go to [Security history](https://dashboard.stripe.com/settings/security_history) in the Dashboard.
 
-You can [invite members](https://dashboard.stripe.com/settings/team?invite_shown=true) of your team to access your Stripe account. You must assign each team member at least one role before you can invite them. Roles protect your sensitive information and restrict the actions team members can perform on your account. See the [list of actions](https://docs.stripe.com/get-started/account/teams/roles.md) that each role can and can’t perform before assigning the role to a team member.
+To invite new team members:
 
-You can invite team members individually, or invite multiple users at the same time by separating their email addresses with a comma or space. You can also assign multiple roles to a team member, which gives them the combined set of permissions granted by those roles. Invites to your Stripe account expire after 10 days.
-![Invite a team member to access your Stripe account](https://b.stripecdn.com/docs-statics-srv/assets/invite-team-members.56ae9525e14e736f8fd9d7045b7e96f1.png)
+1. Go to the [Team](https://dashboard.stripe.com/settings/team) tab in the Dashboard.
+1. Click **Add member**.
+1. Add one or more email addresses, separated by a space or comma. Adding users together allows you to assign them all the same roles and access simultaneously.
+1. Select which roles to assign. Users can hold multiple roles within the same account. Review the [list of actions](https://docs.stripe.com/get-started/account/teams/roles.md) that each role can and can’t perform before assigning the role to a team member. Grant the lowest permission required by the user to perform their job.
+1. After completing the role assignment for all the accounts, review the configuration, and click **Send invites** to email the specified users with the steps to accept the invitation.
 
-Invite a team member to access your Stripe account
+Invites to your Stripe account expire after 10 days.
 
-After a team member has accepted their invite, you can edit their role at any time from your account’s [Team](https://dashboard.stripe.com/settings/team) settings. To edit a team member’s role, click the overflow menu (⋯), then click **Edit**.
+After a team member accepts their invite, you can edit their role at any time from your [Team](https://dashboard.stripe.com/settings/team) settings. To edit a team member’s role, click the overflow menu (⋯), then click **Edit**.
 
 ## Mention team members 
 
 You can mention team members when you add a note to a payment. If you mention a team member, they receive an email notification with the note and a link to the associated payment.
-![Mention a team member when you add a note to a payment](https://b.stripecdn.com/docs-statics-srv/assets/mention-team-members.b21aa27e9cf6862239796d842d869428.png)
-
-Mention a team member
 
 ## Receive email notifications 
 

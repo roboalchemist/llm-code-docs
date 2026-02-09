@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-droid.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (Droid)
 
 > Get started with Augment Context Engine MCP in Droid in minutes
 
 ## Quick Start with Droid
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -25,7 +29,7 @@ This will open a browser window for authentication.
 Add the Augment Context Engine MCP server:
 
 ```bash  theme={null}
-droid mcp add augment-code "auggie" --mcp
+droid mcp add augment-code "auggie" --mcp --mcp-auto-workspace
 ```
 
 ### 4. Test the integration
@@ -57,18 +61,7 @@ Copy the `accessToken` value (the long string after `"accessToken":"`) and the `
 ### 2. Configure with environment variables
 
 ```bash  theme={null}
-droid mcp add augment-code "auggie" --mcp --env AUGMENT_API_TOKEN=your-access-token --env AUGMENT_API_URL=your-tenant-url
+droid mcp add augment-code "auggie" --mcp --mcp-auto-workspace --env AUGMENT_API_TOKEN=your-access-token --env AUGMENT_API_URL=your-tenant-url
 ```
 
 Replace `your-access-token` and `your-tenant-url` with the values from step 1.
-
-For a specific workspace:
-
-```bash  theme={null}
-droid mcp add augment-code "auggie" -w /path/to/project --mcp --env AUGMENT_API_TOKEN=your-access-token --env AUGMENT_API_URL=your-tenant-url
-```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

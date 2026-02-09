@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/rag/using-static-documents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Static Documents
 
 > Use text, PDF, Word, and other documents in your corpus.
@@ -87,8 +91,3 @@ The following types of static files are currently supported:
 ## Limits
 
 See the [Overall Limits](/api-reference/corpora/overview#overall-limits) section for details on limits for the number of sources, file sizes, and more.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

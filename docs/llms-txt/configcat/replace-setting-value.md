@@ -2,10 +2,7 @@
 
 # Replace value
 
-```
-PUT 
-/v1/environments/:environmentId/settings/:settingId/value
-```
+Copy page
 
 This endpoint replaces the whole value of a Feature Flag or Setting in a specified Environment.
 
@@ -15,7 +12,7 @@ Only the `value`, `rolloutRules` and `percentageRules` attributes are modifiable
 
 For example: We have the following resource.
 
-```
+```json
 {
   "rolloutPercentageItems": [
     {
@@ -30,24 +27,27 @@ For example: We have the following resource.
   "rolloutRules": [],
   "value": false
 }
+
 ```
 
 If we send a replace request body as below:
 
-```
+```json
 {
   "value": true
 }
+
 ```
 
 Then besides that the default value is set to `true`, all the Percentage Rules are deleted. So we get a response like this:
 
-```
+```json
 {
   "rolloutPercentageItems": [],
   "rolloutRules": [],
   "value": true
 }
+
 ```
 
 The `rolloutRules` property describes two types of rules:

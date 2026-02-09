@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/messaging-customer-channels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ASAPP Messaging Updates - Customer Channels
 
 > New updates and improvements for ASAPP Messaging - Customer Channels
@@ -66,7 +70,7 @@
 </Update>
 
 <Update label="2024 - WhatsApp Business">
-  ASAPP supports [WhatsApp Business as a messaging channel](/messaging-platform/integrations/whatsapp-business), enabling your customers to interact with virtual agents and have conversations with live agents in their preferred messaging app.
+  ASAPP supports [WhatsApp Business as a messaging channel](/agent-desk/integrations/whatsapp-business), enabling your customers to interact with virtual agents and have conversations with live agents in their preferred messaging app.
 
   This expanded channel support gives you the ability to offer robust messaging experiences to your WhatsApp users, encouraging them to choose messaging more often and have more satisfying interactions in a familiar setting.
 
@@ -172,7 +176,7 @@
 
     This approach requires companies to implement and host a login page to which Apple Messages for Business will direct the user for authentication.
 
-    Visit [Apple Messages for Business integration guide](/messaging-platform/integrations/apple-messages-for-business#customer-authentication) for more information.
+    Visit [Apple Messages for Business integration guide](/agent-desk/integrations/apple-messages-for-business#customer-authentication) for more information.
 
     <Note>
       Reach out to your ASAPP account team to coordinate on the implementation of customer authentication in Apple Messages for Business.
@@ -256,6 +260,6 @@
     2. **Can the list picker experience be selected in AI-Console for designated automated flows or are quick replies the only option?**\
        Currently, if quick replies are enabled, they will be the only supported option across automated flows. The list picker experience will be used for older versions of iOS and macOS.
 
-    Visit the [Apple Messages for Business](/messaging-platform/integrations/apple-messages-for-business) integration guide for more information about this channel.
+    Visit the [Apple Messages for Business](/agent-desk/integrations/apple-messages-for-business) integration guide for more information about this channel.
   </Accordion>
 </Update>

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/remove.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun remove
 
 > Remove dependencies from your project

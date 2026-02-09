@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/troubleshooting/max_concurrent_connections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ERR max concurrent connections exceeded
 
 ### Symptom
@@ -52,7 +56,7 @@ which is REST based so it does not have any connection related problems.
 
 ### Solution-3
 
-You can upgrade your database to Pro for higher limits.
+Please reach out to us via [support@upstash.com](mailto:support@upstash.com) if above does not help.
 
 <Info>
   See [the blog post](https://blog.upstash.com/serverless-database-connections)

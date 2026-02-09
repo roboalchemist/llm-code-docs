@@ -1,10 +1,12 @@
 # Source: https://docs.replit.com/category/billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Billing
 
 > Replit's billing system helps you optimize your spending on the platform.
-
-export const AssistantCheckpointCost = '$0.05';
 
 export const AgentCheckpointCost = '$0.25';
 
@@ -12,9 +14,17 @@ export const TeamsCredits = '$40';
 
 export const CoreCredits = '$25';
 
+<Warning>
+  The Teams plan is being replaced by the new Pro plan. These changes will take effect on February 20th, 2026. [Learn more about what's changing](https://blog.replit.com/pro-plan).
+</Warning>
+
 Replit's billing system is designed to keep things simple and predictable. When you subscribe to a Replit plan, you receive monthly credits that are included in your subscription fee.
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
+  <Card title="Starter Plan" icon="gift">
+    Limited daily Agent and monthly cloud credits
+  </Card>
+
   <Card title="Core Plan" icon="user">
     {CoreCredits} in monthly credits to cover your development needs
   </Card>
@@ -26,7 +36,7 @@ Replit's billing system is designed to keep things simple and predictable. When 
 
 This means your usage up to your monthly credit allowance is covered by your subscription—no additional charges. Only when you exceed your monthly credits will you be charged for additional usage.
 
-These credits cover all your usage across Replit's platform, including AI features like Agent and Assistant, publishing, database operations, and more. Your subscription credits reset each month, giving you a fresh allowance to build and publish your projects.
+These credits cover all your usage across Replit's platform, including AI features like Agent, publishing, database operations, and more. Your subscription credits reset each month, giving you a fresh allowance to build and publish your projects.
 
 Beyond the credit system, Replit provides comprehensive billing tools to help you monitor your spending patterns, set monthly budget limits, and receive alerts when you reach spending thresholds. You can configure alerts and budget limits to prevent unexpected charges and give yourself time to increase your budget if needed for uninterrupted access to your projects.
 
@@ -82,9 +92,9 @@ Review past usage and payments for subscriptions and usage-based charges to trac
 
 ## Key features
 
-* **Monthly credits included**: Your subscription includes monthly credits ({CoreCredits} for Core, {TeamsCredits} per user for Teams) that cover usage up to your plan's allowance
+* **Credits included**: Starter plan users receive limited daily Agent credits (up to a monthly cap) and monthly cloud credits. Paid plans include monthly credits ({CoreCredits} for Core, {TeamsCredits} per user for Teams) that cover usage up to your plan's allowance
 * **Credit packs available**: Purchase additional credits on our Core and Teams plans, with discounts on larger packs. See [Managing Your Spend](/billing/managing-spend) for details
-* **AI features included**: Use Agent and Assistant within your credit allowance
+* **AI features included**: Use Agent within your credit allowance
 * **Real-time usage tracking**: Monitor your current plan and usage in the **Billing** section of the <a href="https://replit.com/account" target="_blank">Account</a> page
 * **Smart alerts and budgets**: Set custom alerts and budget limits to manage costs and prevent unexpected charges. See [Managing Your Spend](/billing/managing-spend) for more information
 * **Detailed usage insights**: Track resource consumption and costs for the current billing period in your **Usage** dashboard
@@ -114,7 +124,8 @@ Use data from the **Usage** and **Invoice** pages to make informed decisions abo
 
 To learn more about Replit's billing and plans, explore these resources:
 
+* [Starter Plan](/billing/plans/starter-plan) - Learn about Starter Plan features and limitations
 * [Pricing plans](https://replit.com/pricing) - Compare plans and features to find the right fit for your projects
-* [AI Billing](/billing/ai-billing): Learn how Replit charges for Agent and Assistant usage
+* [AI Billing](/billing/ai-billing): Learn how Replit charges for Agent usage
 * [Publishing and Database Billing](/billing/about-usage-based-billing): Learn about compute units, data transfer, and database costs
 * [Replit Teams](/category/teams/) - Learn about the Teams plan, which includes AI-powered collaborative coding and team management

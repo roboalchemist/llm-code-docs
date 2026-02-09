@@ -1,84 +1,77 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/aliases/list-deployment-aliases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Deployment Aliases
 
 > Retrieves all Aliases for the Deployment with the given ID. The authenticated user or team must own the deployment.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v2/deployments/{id}/aliases
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v2/deployments/{id}/aliases
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v2/deployments/{id}/aliases:
+    get:
+      tags:
+        - aliases
+      summary: List Deployment Aliases
+      description: >-
+        Retrieves all Aliases for the Deployment with the given ID. The
+        authenticated user or team must own the deployment.
+      operationId: listDeploymentAliases
+      parameters:
+        - name: id
+          description: The ID of the deployment the aliases should be listed for
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID of the deployment the aliases should be listed for
-              example: dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa
-      query:
-        teamId:
+            example: dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa
+            description: The ID of the deployment the aliases should be listed for
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: listDeploymentAliases
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Aliases.ListDeploymentAliases(ctx, \"dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: listDeploymentAliases
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.aliases.listDeploymentAliases({
-              id: "dpl_FjvFJncQHQcZMznrUm9EoB8sFuPa",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              aliases:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: The list of aliases assigned to the deployment
+          content:
+            application/json:
+              schema:
+                properties:
+                  aliases:
+                    items:
                       properties:
                         uid:
                           type: string
@@ -138,10 +131,10 @@ paths:
                                     enum:
                                       - user
                                 required:
+                                  - access
                                   - createdAt
                                   - lastUpdatedAt
                                   - lastUpdatedBy
-                                  - access
                                   - scope
                                 type: object
                                 description: The protection bypass for the alias
@@ -181,56 +174,31 @@ paths:
                           type: object
                           description: The protection bypass for the alias
                       required:
-                        - uid
                         - alias
                         - created
+                        - uid
                       type: object
                       description: A list of the aliases assigned to the deployment
                     type: array
                     description: A list of the aliases assigned to the deployment
-            requiredProperties:
-              - aliases
-        examples:
-          example:
-            value:
-              aliases:
-                - uid: 2WjyKQmM8ZnGcJsPWMrHRHrE
-                  alias: my-alias.vercel.app
-                  created: '2017-04-26T23:00:34.232Z'
-                  redirect: <string>
-                  protectionBypass: {}
-        description: The list of aliases assigned to the deployment
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The deployment was not found
-        examples: {}
-        description: The deployment was not found
-  deprecated: false
-  type: path
+                required:
+                  - aliases
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: The deployment was not found
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

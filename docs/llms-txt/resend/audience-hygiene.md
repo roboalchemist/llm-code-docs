@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/audience-hygiene.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audience Hygiene: How to keep your Audiences in good shape?
 
 > Learn strategies for maintaining good audience hygiene and maximizing email deliverability.
@@ -60,11 +64,11 @@ By using these services, you can clean up your existing email lists or prevent u
 
 ***
 
-# How to proactively remove emails from your Audiences
+# How to proactively remove emails from your Segments
 
-Over time, certain recipients may become disengaged with your content. It's important to manage your audience by removing inactive or unengaged users.
+Over time, certain recipients may become disengaged with your content. It's important to manage your segments by removing inactive or unengaged users.
 
-Regularly filtering your audiences ensures that you're sending to only those who are actively interested, which in turn boosts engagement and deliverability.
+Regularly filtering your segments ensures that you're sending to only those who are actively interested, which in turn boosts engagement and deliverability.
 
 A healthy email list is one that is continuously nurtured with relevant and timely content. Instead of sporadic communication, maintain consistent engagement with your audience to keep them interested.
 
@@ -83,7 +87,7 @@ Regularly cleaning your list of disengaged recipients helps maintain a positive 
 
 ### Automatically remove bounced recipients
 
-Using our [Webhooks](/dashboard/webhooks/introduction), you can be notified when a delivery bounces or gets marked as spam by the recipient.
+Using our [Webhooks](/webhooks/introduction), you can be notified when a delivery bounces or gets marked as spam by the recipient.
 
 This is an opportunity to proactively unsubscribe the recipient and prevent further sending. Indeed, while Resend will automatically suppress further deliveries to that email address, we don't automatically unsubscribe it.
 

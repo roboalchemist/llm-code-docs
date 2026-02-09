@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/qwen/qwen-2-5-32b-coder-instruct.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen-2-5-32B-Coder-Instruct
 
 > Qwen 2.5 32B Coder is an OpenAI-compatible model and can be called using the OpenAI SDK in any language.

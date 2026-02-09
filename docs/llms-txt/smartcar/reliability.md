@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/best-practices/reliability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reliability
 
 > Build resilient webhook processing that handles retries and out-of-order delivery
@@ -417,8 +421,3 @@ def process_webhook(payload):
     Test retry scenarios
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

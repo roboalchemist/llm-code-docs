@@ -9,7 +9,7 @@ https://api.apify.com/v2/schedules
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ScheduleCollectionClientAsync#createhttps://docs.apify.com/api/client/js/reference/class/ScheduleCollectionClient#createCreates a new schedule with settings provided by the schedule object passed as JSON in the payload. The response is the created schedule object.
+Creates a new schedule with settings provided by the schedule object passed as JSON in the payload. The response is the created schedule object.
 
 The request needs to specify the `Content-Type: application/json` HTTP header!
 
@@ -20,7 +20,10 @@ When providing your API authentication token, we recommend using the request's `
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

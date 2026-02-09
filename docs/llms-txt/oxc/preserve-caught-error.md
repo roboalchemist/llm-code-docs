@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/preserve-caught-error.md
 ---
-# eslint/preserve-caught-error&#x20;
 
 ### What it does
 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/python-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python SDK
 
 The official Python SDK for the Fireworks AI API is available on [GitHub](https://github.com/fw-ai-external/python-sdk) and [PyPI](https://pypi.org/project/fireworks-ai/).
@@ -38,8 +42,3 @@ For detailed usage instructions, see the
 [README.md](https://github.com/fw-ai-external/python-sdk#readme). To quickly get
 started with serverless, see our [Serverless
 Quickstart](/getting-started/quickstart).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

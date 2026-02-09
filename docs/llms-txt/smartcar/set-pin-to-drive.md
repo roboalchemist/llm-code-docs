@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/set-pin-to-drive.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set PIN to Drive
 
 > Enables this feature on the vehicle and sets the PIN needed in order to drive it.

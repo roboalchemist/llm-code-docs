@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/incoming-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Incoming webhooks
 
 > Send data to Loops from supported platforms using webhooks.
@@ -25,13 +29,15 @@ Note: we only process webhook events listed below for each provider (and which c
 
 We return helpful messages in responses if there is an issue processing a webhook event. Check the webhook logs in your external platforms.
 
-<img src="https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=3429f5d0095e3c10220f48c1773d5c03" alt="Incoming webhook configuration" data-og-width="2280" width="2280" data-og-height="1541" height="1541" data-path="images/webhook-event-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=280&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=78bda7d204a6a232bc91f8afe8054267 280w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=560&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=6751d2e8fd127bcf70c633524960e819 560w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=840&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=2aca78ca1261640f30ff6a41323a9e35 840w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=1100&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=8da7e40f142f1196eff6ec26babaf38a 1100w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=1650&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=e86a9d68ff7d05f56fc6398fdd33a04c 1650w, https://mintcdn.com/loops/zNnVRjXA37FUc8Z0/images/webhook-event-configuration.png?w=2500&fit=max&auto=format&n=zNnVRjXA37FUc8Z0&q=85&s=29b055af202615627f7da2ae9c4f0fd3 2500w" />
+<img src="https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=66fb68a51444232454fd5358a5b18491" alt="Incoming webhook configuration" data-og-width="2280" width="2280" data-og-height="1752" height="1752" data-path="images/webhook-event-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=280&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=67f50dc6ce7154de256954dc1161d737 280w, https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=560&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=7076d4cce9c8aa474ae4b3d90675cdca 560w, https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=840&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=6e793061e3d5885943f9d8bd965b66a6 840w, https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=1100&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=0ec6f3579f091cc266de53ee18db3def 1100w, https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=1650&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=3b9979786dda0a90a3c7828eba6acaae 1650w, https://mintcdn.com/loops/DuxlKP609UZVRhv_/images/webhook-event-configuration.png?w=2500&fit=max&auto=format&n=DuxlKP609UZVRhv_&q=85&s=33a8ac74e0f0e2338c4b9844d30383d1 2500w" />
 
 ### Syncing contacts
 
 The primary use case for incoming webhooks is to create and update contacts in your Loops audience. When data arrives in Loops, we grab the email address to create and update contacts in your Loops audience. To this end, we only support incoming events that contain an email address.
 
-You can assign a user group value to each new contact, which allows you to create segments from webhook-created contacts.
+You can choose to update first and last name data from the webhook event as well.
+
+Additionally, you can assign a user group value to each new contact, which helps create segments from webhook-created contacts.
 
 Any new contact created via a webhook will have a source like "Stripe webhook" so you know where it originated from.
 
@@ -43,7 +49,13 @@ You can subscribe contacts to [mailing lists](/contacts/mailing-lists) when they
 
 ### Sending emails
 
-Incoming webhooks can also trigger loops if you specify an event in the **Trigger an event** section. This can be useful to automatically send emails when something has happened in the external platform, for example a successful payment in Stripe or a new sign up in Clerk.
+Incoming webhooks can trigger emails if you connect events to [loop triggers](/loop-builder/loop-triggers). This can be useful if you want to automatically send emails when something has happened in the external platform, for example a successful payment in Stripe or a new sign up in Clerk.
+
+Just create a loop using the **Event received** trigger and select the event you want to trigger on.
+
+<img src="https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=8bb5f0603673f1de9ef932981f89a432" alt="Event received trigger" data-og-width="2280" width="2280" data-og-height="1670" height="1670" data-path="images/platform-event-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=280&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=9e345c9d580d85a869f9b839093752d1 280w, https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=560&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=fa37a8b8d2b42d0dde7dceb9580d9909 560w, https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=840&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=eaa3af2fad199b729d4941dc195ac9f7 840w, https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=1100&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=d18a1f1c01cd51c14e5613d979a20310 1100w, https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=1650&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=fb9f2fe7123e9adb501f6f48d066c7fc 1650w, https://mintcdn.com/loops/GKN1ibwh5TRStT8v/images/platform-event-trigger.png?w=2500&fit=max&auto=format&n=GKN1ibwh5TRStT8v&q=85&s=d322c80b281eca440e8fd07ad1867834 2500w" />
+
+You can also trigger custom events from incoming webhooks if you specify an event in the **Trigger an additional custom event** section in the configuration.
 
 ## Create webhook endpoints in Loops
 

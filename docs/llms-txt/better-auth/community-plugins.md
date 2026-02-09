@@ -4,11 +4,7 @@
 
 A list of recommended community plugins.
 
-***
 
-title: Community Plugins
-description: A list of recommended community plugins.
------------------------------------------------------
 
 import { CommunityPluginsTable } from "@/components/community-plugins-table";
 

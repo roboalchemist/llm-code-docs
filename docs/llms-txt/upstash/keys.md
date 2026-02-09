@@ -4,58 +4,35 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/keys.md
+# Keys
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
+<Info>
+  You can run the async code by importing `AsyncQStash` from `qstash`
+  and awaiting the methods.
+</Info>
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
+#### Retrieve your signing Keys
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/keys.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
+client = QStash("<QSTASH-TOKEN>")
+signing_key = client.signing_key.get()
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
+print(signing_key.current, signing_key.next)
+```
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/keys.md
+#### Rotate your signing Keys
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
+client = QStash("<QSTASH-TOKEN>")
+new_signing_key = client.signing_key.rotate()
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/keys.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
-
-# KEYS
-
-> Returns all keys matching pattern.
-
-<Warning>
-  This command may block the DB for a long time, depending on its size. We advice against using it in production. Use [SCAN](/redis/sdks/ts/commands/generic/scan) instead.
-</Warning>
-
-## Arguments
-
-<ParamField body="match" type="string" required>
-  A glob-style pattern. Use `*` to match all keys.
-</ParamField>
-
-## Response
-
-<ResponseField type="string[]" required>
-  Array of keys matching the pattern.
-</ResponseField>
-
-<RequestExample>
-  ```ts Example theme={"system"}
-  const keys = await redis.keys("prefix*");
-  ```
-
-  ```ts Match All theme={"system"}
-  const keys = await redis.keys("*");
-  ```
-</RequestExample>
+print(new_signing_key.current, new_signing_key.next)
+```

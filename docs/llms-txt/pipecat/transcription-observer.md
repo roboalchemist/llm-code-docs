@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/transcription-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transcription Log Observer
 
 > Logging speech-to-text transcription activity in Pipecat
@@ -34,8 +38,3 @@ The observer uses consistent formatting with emoji indicators:
 * 💬 \[Source] → INTERIM TRANSCRIPTION: \[text] from \[user\_id]
 
 All log entries include timestamps for precise timing analysis.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

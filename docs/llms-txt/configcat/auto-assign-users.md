@@ -2,9 +2,11 @@
 
 # Auto-assign Users
 
-All new users who sign up with a [verified email domain](https://configcat.com/docs/docs/advanced/team-management/domain-verification/.md) will be automatically added to your organization. Furthermore, you can also set which Organization roles / Product permissions they should get upon on-boarding.
+Copy page
 
-## Steps to configure[â€‹](#steps-to-configure "Direct link to Steps to configure")
+All new users who sign up with a [verified email domain](https://configcat.com/docs/advanced/team-management/domain-verification.md) will be automatically added to your organization. Furthermore, you can also set which Organization roles / Product permissions they should get upon on-boarding.
+
+## Steps to configure[​](#steps-to-configure "Direct link to Steps to configure")
 
 * Open your organization's authentication settings on the [ConfigCat Dashboard](https://app.configcat.com/organization/authentication).
 

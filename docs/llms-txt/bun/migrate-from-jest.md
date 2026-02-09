@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/migrate-from-jest.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate from Jest to Bun's test runner
 
 In many cases, Bun's test runner can run Jest test suites with no code changes. Just run `bun test` instead of `npx jest`, `yarn test`, etc.
@@ -60,7 +64,7 @@ describe("my test suite", () => {
 
 ***
 
-Bun implements the vast majority of Jest's matchers, but compatibility isn't 100% yet. Refer to the full compatibility table at [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing#matchers).
+Bun implements the vast majority of Jest's matchers, but compatibility isn't 100% yet. Refer to the full compatibility table at [Docs > Test runner > Writing tests](/test/writing-tests#matchers).
 
 Some notable missing features:
 
@@ -72,7 +76,7 @@ If you're using `testEnvironment: "jsdom"` to run your tests in a browser-like e
 
 At the moment jsdom does not work in Bun due to its internal use of V8 APIs. Track support for it [here](https://github.com/oven-sh/bun/issues/3554).
 
-```toml bunfig.toml theme={"theme":{"light":"github-light","dark":"dracula"}}
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
 preload = ["./happy-dom.ts"]
 ```
@@ -105,11 +109,11 @@ bun test --timeout 10000
 
 Many other flags become irrelevant or obsolete when using `bun test`.
 
-* `transform` — Bun supports TypeScript & JSX. Other file types can be configured with [Plugins](https://bun.sh/docs/runtime/plugins).
+* `transform` — Bun supports TypeScript & JSX. Other file types can be configured with [Plugins](/runtime/plugins).
 * `extensionsToTreatAsEsm`
 * `haste` — Bun uses it's own internal source maps
 * `watchman`, `watchPlugins`, `watchPathIgnorePatterns` — use `--watch` to run tests in watch mode
-* `verbose` — set `logLevel: "debug"` in [`bunfig.toml`](https://bun.sh/docs/runtime/bunfig#loglevel)
+* `verbose` — set `logLevel: "debug"` in [`bunfig.toml`](/runtime/bunfig#loglevel)
 
 ***
 
@@ -120,4 +124,4 @@ Settings that aren't mentioned here are not supported or have no equivalent. Ple
 See also:
 
 * [Mark a test as a todo](/guides/test/todo-tests)
-* [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing)
+* [Docs > Test runner > Writing tests](/test/writing-tests)

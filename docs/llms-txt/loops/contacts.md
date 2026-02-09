@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/examples/contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contacts API examples
 
 > Code examples for managing contacts with the Loops API and SDKs.

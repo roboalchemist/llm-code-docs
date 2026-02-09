@@ -237,7 +237,7 @@ schema docs {
 
 With this, we can use the powerful ranking framework in Vespa to select the best chunks to provide to the LLM, without sending any chunks that won't be used over the network.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

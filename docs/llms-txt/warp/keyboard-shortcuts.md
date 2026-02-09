@@ -18,7 +18,7 @@ On macOS, [system keyboard shortcuts](https://support.apple.com/en-us/HT201236) 
 Keybinds that conflict with others are highlighted with an orange border.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b1deaff708f95fdb8ebffe491a823ccea24bac6c%2Fkeybinds-conflict.png?alt=media&#x26;token=e89cb316-87ee-4c85-a0f5-e21270b15649" alt="keybinds that conflict with others are highlighted in orange"><figcaption><p>Keybind Conflict Example</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b1deaff708f95fdb8ebffe491a823ccea24bac6c%2Fkeybinds-conflict.png?alt=media" alt="keybinds that conflict with others are highlighted in orange"><figcaption><p>Keybind Conflict Example</p></figcaption></figure>
 
 ## All Available Shortcuts
 

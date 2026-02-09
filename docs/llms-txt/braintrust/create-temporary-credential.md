@@ -1,8 +1,12 @@
 # Source: https://braintrust.dev/docs/api-reference/proxy/create-temporary-credential.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create temporary credential
 
-> Create a temporary credential which can access the proxy for a limited time. The temporary credential will be allowed to make requests on behalf of the Braintrust API key (or model provider API key) provided in the `Authorization` header. See [docs](/docs/guides/proxy#temporary-credentials-for-end-user-access) for code examples.
+> Create a temporary credential which can access the proxy for a limited time. The temporary credential will be allowed to make requests on behalf of the Braintrust API key (or model provider API key) provided in the `Authorization` header. See [docs](/docs/deploy/ai-proxy#create-temporary-credentials) for code examples.
 
 
 
@@ -39,8 +43,8 @@ paths:
         time. The temporary credential will be allowed to make requests on
         behalf of the Braintrust API key (or model provider API key) provided in
         the `Authorization` header. See
-        [docs](/docs/guides/proxy#temporary-credentials-for-end-user-access) for
-        code examples.
+        [docs](/docs/deploy/ai-proxy#create-temporary-credentials) for code
+        examples.
       operationId: proxycredentials
       requestBody:
         description: >-
@@ -114,7 +118,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

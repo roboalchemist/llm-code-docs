@@ -1,0 +1,70 @@
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/static_analysis_rules/java-security/random-iv.md
+
+---
+title: Use a randomly-generated IV
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > Code Security > Static Code Analysis (SAST) > SAST
+  Rules > Use a randomly-generated IV
+---
+
+# Use a randomly-generated IV
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+## Metadata{% #metadata %}
+
+**ID:** `java-security/random-iv`
+
+**Language:** Java
+
+**Severity:** Warning
+
+**Category:** Security
+
+**CWE**: [1204](https://cwe.mitre.org/data/definitions/1204.html)
+
+## Description{% #description %}
+
+The initialization vector (IV) for a cryptographic operation must be random and not statically declared. Instead of using a static initialization vector, use the `SecureRandom` class that will initialize your vector with real random values.
+
+#### Learn More{% #learn-more %}
+
+- [`SecureRandom` documentation](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)
+- [CWE-1204: Generation of Weak Initialization Vector (IV)](https://cwe.mitre.org/data/definitions/1204.html)
+
+## Non-Compliant Code Examples{% #non-compliant-code-examples %}
+
+```java
+public class Foo {
+    void bad() {
+        byte[] iv = new byte[] { 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, };
+    }
+
+    void alsoBad() {
+        byte[] iv = "secret iv in here".getBytes();
+    }
+}
+```
+
+## Compliant Code Examples{% #compliant-code-examples %}
+
+```java
+public class Foo {
+    void good() {
+        SecureRandom random = new SecureRandom();
+        byte iv[] = new byte[16];
+        random.nextBytes(bytes);
+    }
+}
+```
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+{% icon name="icon-external-link" /%}
+ 

@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/web-search.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/web-search.md
 
 # Web Search
 
@@ -63,13 +63,13 @@ You can inspect the web search UI at any time:
   * The text used to answer your question
   * Citations and reference metadata
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-3233fd85ddac77de6e46d22d23ff538db08ff5b6%2Fweb-search-results.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-3233fd85ddac77de6e46d22d23ff538db08ff5b6%2Fweb-search-results.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 This makes it easy to verify accuracy, audit reasoning, and validate sources.
 
 ### Enabling or Disabling Web Search
 
-Web search is controlled per [agent-profiles-permissions](https://docs.warp.dev/agents/using-agents/agent-profiles-permissions "mention").
+Web search is controlled per [Agent Profiles & Permissions](https://docs.warp.dev/agent-platform/agent/using-agents/agent-profiles-permissions).
 
 **To configure:**
 
@@ -78,7 +78,7 @@ Web search is controlled per [agent-profiles-permissions](https://docs.warp.dev/
 3. Scroll to **Call web tools**
 4. Toggle the **setting on or off**
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-acd80903bfbfee24d75aaf1c86014a86805a5bdc%2Fweb-search-settings.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-acd80903bfbfee24d75aaf1c86014a86805a5bdc%2Fweb-search-settings.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Disabling this prevents the agent from performing searches, even if a model would normally use them.
 

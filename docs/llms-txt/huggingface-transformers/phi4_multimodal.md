@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/phi4_multimodal.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/phi4_multimodal.md
 
 ## Phi4 Multimodal
 
@@ -11,7 +11,7 @@ You can find all the original Phi4 Multimodal checkpoints under the [Phi4](https
 >
 > Click on the Phi-4 Multimodal in the right sidebar for more examples of how to apply Phi-4 Multimodal to different tasks.
 
-The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```python
 from transformers import pipeline
@@ -120,40 +120,19 @@ print(f'>>> Response\n{response}')
 
 #### transformers.Phi4MultimodalFeatureExtractor[[transformers.Phi4MultimodalFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/feature_extraction_phi4_multimodal.py#L36)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/feature_extraction_phi4_multimodal.py#L34)
 
 ## Phi4MultimodalImageProcessorFast[[transformers.Phi4MultimodalImageProcessorFast]]
 
 #### transformers.Phi4MultimodalImageProcessorFast[[transformers.Phi4MultimodalImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/image_processing_phi4_multimodal_fast.py#L51)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/image_processing_phi4_multimodal_fast.py#L51)
 
 Constructs a fast Phi4 Multimodal image processor.
 
-pad_to_max_num_cropstransformers.Phi4MultimodalImageProcessorFast.pad_to_max_num_cropshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/image_processing_phi4_multimodal_fast.py#L140[{"name": "images", "val": ""}, {"name": "max_crops", "val": " = 5"}]
+pad_to_max_num_cropstransformers.Phi4MultimodalImageProcessorFast.pad_to_max_num_cropshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/image_processing_phi4_multimodal_fast.py#L140[{"name": "images", "val": ""}, {"name": "max_crops", "val": " = 5"}]
 
-images: B x 3 x H x W, B"`) : The fake image token pattern.
-
-fake_audio_token_pattern (`str`, *optional*, defaults to `r""`) : The fake audio token pattern.
-
-## Phi4MultimodalAudioConfig[[transformers.Phi4MultimodalAudioConfig]]
-
-#### transformers.Phi4MultimodalAudioConfig[[transformers.Phi4MultimodalAudioConfig]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L113)
-
-This is the configuration class to store the configuration of a [Phi4MultimodalAudioModel](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalAudioModel). It is used to instantiate a
-Phi4Multimodal audio encoder according to the specified arguments, defining the model architecture. Instantiating a
-configuration with the defaults will yield a similar configuration to that of the audio encoder of
-[microsoft/Phi-4-multimodal-instruct](https://huggingface.co/microsoft/Phi-4-multimodal-instruct) architecture.
-
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
-
-Example:
-
-```python
->>> from transformers import Phi4MultimodalAudioConfig
+images: B x 3 x H x W, B>> from transformers import Phi4MultimodalAudioConfig
 
 >>> # Initializing a Phi4MultimodalAudioConfig with microsoft/Phi-4-multimodal-instruct style configuration
 >>> configuration = Phi4MultimodalAudioConfig()
@@ -213,15 +192,15 @@ feature_layer (`int`, *optional*, defaults to -2) : The index of the layer of th
 
 #### transformers.Phi4MultimodalVisionConfig[[transformers.Phi4MultimodalVisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L28)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L27)
 
-This is the configuration class to store the configuration of a [Phi4MultimodalVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalVisionModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Phi4MultimodalVisionModel](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalVisionModel). It is used to instantiate a
 Phi4Multimodal vision encoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the vision encoder of
 [microsoft/Phi-4-multimodal-instruct](https://huggingface.co/microsoft/Phi-4-multimodal-instruct) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -264,15 +243,15 @@ feature_layer (`int`, *optional*, defaults to -2) : The index of the layer of th
 
 #### transformers.Phi4MultimodalConfig[[transformers.Phi4MultimodalConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L246)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L245)
 
-This is the configuration class to store the configuration of a [Phi4MultimodalModel](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Phi4MultimodalModel](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalModel). It is used to instantiate a
 Phi4Multimodal model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the
 [microsoft/Phi-4-multimodal-instruct](https://huggingface.co/microsoft/Phi-4-multimodal-instruct) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -289,13 +268,13 @@ Example:
 >>> configuration = model.config
 ```
 
-validate_ropetransformers.Phi4MultimodalConfig.validate_ropehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L438[{"name": "ignore_keys", "val": ": typing.Optional[set] = None"}]
+validate_ropetransformers.Phi4MultimodalConfig.validate_ropehttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/configuration_phi4_multimodal.py#L435[{"name": "ignore_keys", "val": ": set | None = None"}]
 
 Validate the `rope_parameters` configuration.
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 200064) : Vocabulary size of the Phi-3 model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Phi3Model](/docs/transformers/v5.0.0rc1/en/model_doc/phi3#transformers.Phi3Model).
+vocab_size (`int`, *optional*, defaults to 200064) : Vocabulary size of the Phi-3 model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Phi3Model](/docs/transformers/v5.0.0/en/model_doc/phi3#transformers.Phi3Model).
 
 hidden_size (`int`, *optional*, defaults to 3072) : Dimension of the hidden representations.
 
@@ -345,26 +324,26 @@ audio_config (`Phi4MultimodalAudioConfig` or `dict`, *optional*) : The audio con
 
 #### transformers.Phi4MultimodalAudioModel[[transformers.Phi4MultimodalAudioModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L937)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L956)
 
-forward_embeddingstransformers.Phi4MultimodalAudioModel.forward_embeddingshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L973[{"name": "hidden_states", "val": ""}, {"name": "masks", "val": ""}]
+forward_embeddingstransformers.Phi4MultimodalAudioModel.forward_embeddingshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L992[{"name": "hidden_states", "val": ""}, {"name": "masks", "val": ""}]
 Forwarding the inputs through the top embedding layers
 
 ## Phi4MultimodalVisionModel[[transformers.Phi4MultimodalVisionModel]]
 
 #### transformers.Phi4MultimodalVisionModel[[transformers.Phi4MultimodalVisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L409)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L425)
 
 ## Phi4MultimodalModel[[transformers.Phi4MultimodalModel]]
 
 #### transformers.Phi4MultimodalModel[[transformers.Phi4MultimodalModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1513)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1530)
 
 The bare Phi4 Multimodal Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -372,7 +351,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Phi4MultimodalModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1535[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_sizes", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "image_attention_mask", "val": " = None"}, {"name": "audio_input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "audio_embed_sizes", "val": " = None"}, {"name": "audio_attention_mask", "val": " = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]
+forwardtransformers.Phi4MultimodalModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1552[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "image_pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "image_sizes", "val": ": torch.LongTensor | None = None"}, {"name": "image_attention_mask", "val": " = None"}, {"name": "audio_input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "audio_embed_sizes", "val": " = None"}, {"name": "audio_attention_mask", "val": " = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]
 
 image_pixel_values (`torch.FloatTensor`, *optional*):
 If the input contains images, these correspond to the pixel values after transformations (as returned by
@@ -391,17 +370,17 @@ Attention mask for the audio inputs.
 
 **Parameters:**
 
-config ([Phi4MultimodalConfig](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Phi4MultimodalConfig](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 ## Phi4MultimodalForCausalLM[[transformers.Phi4MultimodalForCausalLM]]
 
 #### transformers.Phi4MultimodalForCausalLM[[transformers.Phi4MultimodalForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1630)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1647)
 
 The Phi4 Multimodal Model for causal language modeling.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -409,11 +388,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Phi4MultimodalForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1644[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_sizes", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "image_attention_mask", "val": " = None"}, {"name": "audio_input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "audio_embed_sizes", "val": " = None"}, {"name": "audio_attention_mask", "val": " = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Phi4MultimodalForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/phi4_multimodal/modeling_phi4_multimodal.py#L1661[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "image_pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "image_sizes", "val": ": torch.LongTensor | None = None"}, {"name": "image_attention_mask", "val": " = None"}, {"name": "audio_input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "audio_embed_sizes", "val": " = None"}, {"name": "audio_attention_mask", "val": " = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -432,8 +411,8 @@ forwardtransformers.Phi4MultimodalForCausalLM.forwardhttps://github.com/huggingf
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -475,18 +454,18 @@ forwardtransformers.Phi4MultimodalForCausalLM.forwardhttps://github.com/huggingf
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Phi4MultimodalConfig](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) and inputs.
+elements depending on the configuration ([Phi4MultimodalConfig](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -499,7 +478,7 @@ elements depending on the configuration ([Phi4MultimodalConfig](/docs/transforme
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Phi4MultimodalForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalForCausalLM) forward method, overrides the `__call__` special method.
+The [Phi4MultimodalForCausalLM](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -520,19 +499,19 @@ Example:
 
 **Parameters:**
 
-config ([Phi4MultimodalForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Phi4MultimodalForCausalLM](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Phi4MultimodalConfig](/docs/transformers/v5.0.0rc1/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) and inputs.
+elements depending on the configuration ([Phi4MultimodalConfig](/docs/transformers/v5.0.0/en/model_doc/phi4_multimodal#transformers.Phi4MultimodalConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.

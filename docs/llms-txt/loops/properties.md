@@ -2,17 +2,9 @@
 
 # Source: https://loops.so/docs/contacts/properties.md
 
-# Source: https://loops.so/docs/events/properties.md
-
-# Source: https://loops.so/docs/contacts/properties.md
-
-# Source: https://loops.so/docs/events/properties.md
-
-# Source: https://loops.so/docs/contacts/properties.md
-
-# Source: https://loops.so/docs/events/properties.md
-
-# Source: https://loops.so/docs/contacts/properties.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Contact properties
 
@@ -48,12 +40,6 @@ The "Subscribed" value determines whether a contact is able to receive **loops a
 
 Contacts can unsubscribe from your emails using an [Unsubscribe link](/creating-emails/editor#footer-content) automatically added to your campaigns and loops.
 
-Some important notes:
-
-* We do not charge for unsubscribed contacts.
-* We suggest you keep unsubscribed contacts in your audience. If you delete and then re-add them in the future somehow, they may end up being "subscribed" even though they have been unsubscribed.
-* You cannot re-subscribe contacts via a [CSV upload](/add-users/csv-upload) or from the Audience page in Loops. You can re-subscribe contacts [with the API](/api-reference/update-contact) and with some of [our integrations](/integrations#manage-contacts).
-
 #### Using `subscribed` in API requests
 
 When you include a `subscribed` value in your API requests, you will manually change the contact's subscribed status. For example, if you send `subscribed: true` when updating a contact, previously unsubscribed contacts will be re-subscribed.
@@ -61,6 +47,12 @@ When you include a `subscribed` value in your API requests, you will manually ch
 <Tip>
   We recommend leaving `subscribed` out of your API requests unless you specifically want to unsubscribe or re-subscribe a contact. All new contacts are subscribed by default (`subscribed: true`).
 </Tip>
+
+### Some important notes:
+
+* We do not charge for unsubscribed contacts.
+* We suggest you keep unsubscribed contacts in your audience. If you delete and then re-add them in the future somehow, they may end up being "subscribed" even though they have been unsubscribed.
+* You can re-subscribe unsubscribed contacts [with the API](/api-reference/update-contact) and with some of [our integrations](/integrations#manage-contacts). You cannot re-subscribe contacts via a [CSV upload](/add-users/csv-upload) or from the Audience page in Loops. Unsubscribes from [mailing lists](/contacts/mailing-lists) work differently. You cannot re-subscribe contacts to lists via any method.
 
 ### User Group
 

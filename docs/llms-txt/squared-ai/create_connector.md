@@ -1,77 +1,69 @@
 # Source: https://docs.squared.ai/api-reference/connectors/create_connector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Connector
+
+
 
 ## OpenAPI
 
 ````yaml POST /api/v1/connectors
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connectors
-  method: post
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              connector:
-                allOf:
-                  - type: object
-                    properties:
-                      name:
-                        type: string
-                      connector_type:
-                        type: string
-                        enum:
-                          - source
-                          - destination
-                      connector_name:
-                        type: string
-                      configuration:
-                        type: object
-                        description: >-
-                          Configuration details for the connector. Structure
-                          depends on the connector definition.
-                        additionalProperties: true
-                    required:
-                      - name
-                      - connector_type
-                      - connector_name
-                      - configuration
-            required: true
-        examples:
-          example:
-            value:
-              connector:
-                name: <string>
-                connector_type: source
-                connector_name: <string>
-                configuration: {}
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+  /api/v1/connectors:
+    post:
+      tags:
+        - Connectors
+      summary: Creates a connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                      enum:
+                        - source
+                        - destination
+                    connector_name:
+                      type: string
+                    configuration:
+                      type: object
+                      description: >-
+                        Configuration details for the connector. Structure
+                        depends on the connector definition.
+                      additionalProperties: true
+                  required:
+                    - name
+                    - connector_type
+                    - connector_name
+                    - configuration
+      responses:
+        '201':
+          description: Connector created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -100,25 +92,13 @@ paths:
                             type: string
                           icon:
                             type: string
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                type: <string>
-                attributes:
-                  name: <string>
-                  connector_type: <string>
-                  workspace_id: 123
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-                  configuration: {}
-                  connector_name: <string>
-                  icon: <string>
-        description: Connector created
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

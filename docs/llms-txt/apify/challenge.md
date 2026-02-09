@@ -1,25 +1,27 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/challenge.md
-
 # Challenge
 
 **Test your knowledge acquired in the previous sections of this course by building an Amazon scraper using Crawlee's CheerioCrawler!**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
 Before moving onto the other courses in the academy, we recommend following along with this section, as it combines everything you've learned in the previous lessons into one cohesive project that helps you prove to yourself that you've thoroughly understood the material.
 
-We recommend that you make sure you've gone through both the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md and https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md sections of this course to ensure the smoothest development process.
+We recommend that you make sure you've gone through both the [data extraction](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md) and [crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md) sections of this course to ensure the smoothest development process.
 
 ## Learning 🧠
 
 Before continuing, it is highly recommended to do the following:
 
-* Look over https://crawlee.dev/docs/introduction/first-crawler and ideally **code along**.
-* Read https://docs.apify.com/academy/node-js/request-labels-in-apify-actors about https://crawlee.dev/api/core/class/Request#label (this will be extremely useful later on).
-* Check out https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md about dynamic pages.
-* Read about the https://crawlee.dev/api/core/class/RequestQueue.
+* Look over [how to build a crawler in Crawlee](https://crawlee.dev/docs/introduction/first-crawler) and ideally **code along**.
+* Read [this short article](https://docs.apify.com/academy/node-js/request-labels-in-apify-actors) about [request labels](https://crawlee.dev/api/core/class/Request#label) (this will be extremely useful later on).
+* Check out [this tutorial](https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md) about dynamic pages.
+* Read about the [RequestQueue](https://crawlee.dev/api/core/class/RequestQueue).
 
 ## Our task
 
@@ -83,6 +85,6 @@ Each of the items in the dataset will represent a scraped offer and will have th
 
 From this course, you should have all the knowledge to build this scraper by yourself. Give it a try, then come back to compare your scraper with our solution.
 
-The challenge can be completed using either https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler or https://crawlee.dev/api/playwright-crawler/class/PlaywrightCrawler. Playwright is significantly slower but doesn't get blocked as much. You will learn the most by implementing both.
+The challenge can be completed using either [CheerioCrawler](https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler) or [PlaywrightCrawler](https://crawlee.dev/api/playwright-crawler/class/PlaywrightCrawler). Playwright is significantly slower but doesn't get blocked as much. You will learn the most by implementing both.
 
-Let's start off this section by https://docs.apify.com/academy/web-scraping-for-beginners/challenge/initializing-and-setting-up.md our project with the Crawlee CLI (don't worry, no additional installation is required).
+Let's start off this section by [initializing and setting up](https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/initializing-and-setting-up.md) our project with the Crawlee CLI (don't worry, no additional installation is required).

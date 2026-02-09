@@ -8,8 +8,6 @@
 
 Workspaces are individual, isolated deployments of the ZenML server. Each workspace has its own set of users, roles, projects, and resources. Essentially, everything you do in ZenML Pro revolves around a workspace: all of your projects, pipelines, stacks, runs, connectors and so on are scoped to a workspace. This includes both traditional ML workflows and AI agent development projects.
 
-![Image showing the workspace page](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/.gitbook/assets/Workspace%20-%20Home.png)
-
 The ZenML server that you get through a workspace is a supercharged version of the open-source ZenML server. This means that you get all the features of the open-source version, plus some extra Pro features.
 
 ## Connecting to Your Workspace
@@ -56,8 +54,6 @@ A workspace is a crucial part of your Organization and serves as a container for
 {% stepper %}
 {% step %}
 **Go to your organization page**
-
-![Image showing the create workspace page](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/.gitbook/assets/Organization%20-%20Home.png)
 {% endstep %}
 
 {% step %}
@@ -166,7 +162,7 @@ Some Pro-only features that you can leverage in your workspace are as follows:
 * [Model Control Plane](https://docs.zenml.io/how-to/model-management-metrics/model-control-plane/register-a-model)
 * [Artifact Control Plane](https://docs.zenml.io/how-to/data-artifact-management/handle-data-artifacts)
 * [Create snapshots out of your pipeline runs](https://docs.zenml.io/concepts/snapshots#using-the-dashboard)
-* [Run snapshots from the Dashboard](https://docs.zenml.io/concepts/snapshots#using-the-dashboard-1)
+* [Run snapshots from the Dashboard](https://docs.zenml.io/concepts/snapshots#running-the-dashboard)
 
 and [more](https://zenml.io/pro)!
 

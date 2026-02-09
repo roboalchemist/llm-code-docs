@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/styles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Styling emails
 
 > Learn how to edit emails in the Loops editor.

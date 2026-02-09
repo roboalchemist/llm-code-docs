@@ -22,7 +22,7 @@ Any of these entry points will open the workflow editor where you can:
 * Add a meaningful description that will be indexed for search (optional)
 * Add arguments, descriptions for arguments, and default values (optional)
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-ac0ba786b03b5431ec11e2292243060b52b62d12%2Fedit-workflow-pane.png?alt=media" alt="Workflows save and edit modal"><figcaption><p>Workflows save / edit pane</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-ac0ba786b03b5431ec11e2292243060b52b62d12%2Fedit-workflow-pane.png?alt=media" alt="Workflows save and edit modal"><figcaption><p>Workflows save / edit pane</p></figcaption></figure>
 
 {% embed url="<https://www.youtube.com/watch?v=8UmreUTTrkg&start=9s&end=198s>" %}
 Save Workflow Demo
@@ -70,16 +70,16 @@ Workflow aliases are not compatible with [YAML Workflows](https://docs.warp.dev/
 
 Once a workflow has been created, you can edit it at any time, as long as you have access to an internet connection.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8e33c4c88fb2361939d53100aca3004e8125d241%2FEdit_Workflow.png?alt=media" alt=""><figcaption><p>Edit workflow menu</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-8e33c4c88fb2361939d53100aca3004e8125d241%2FEdit_Workflow.png?alt=media" alt=""><figcaption><p>Edit workflow menu</p></figcaption></figure>
 
 #### AI Autofill
 
-Workflows also have the option to use [Warp AI](https://docs.warp.dev/agents/agents-overview) to automatically generate a title, descriptions, or parameters.
+Workflows also have the option to use [Warp AI](https://docs.warp.dev/agent-platform/agent/agents-overview) to automatically generate a title, descriptions, or parameters.
 
 * Create or edit a Workflow, in the edit view you should see the option to AutoFill.
 * Warp AI will fill in the fields based on the Workflow you're creating.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-c5fd9fb1cff247dfd36ecc03624f1acbfbde9675%2FEdit-workflows-autofill.gif?alt=media&#x26;token=8dfde999-8ff6-4bf5-9ae8-73caf2100a8d" alt=""><figcaption><p>Edit Workflows - Autofill</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-c5fd9fb1cff247dfd36ecc03624f1acbfbde9675%2FEdit-workflows-autofill.gif?alt=media" alt=""><figcaption><p>Edit Workflows - Autofill</p></figcaption></figure>
 
 ### Editing workflows with a team
 
@@ -102,11 +102,11 @@ When you create two or more arguments with the same name, Warp automatically sel
 Also, tailor your Command Search experience by toggling off "Show Global Workflows" in `Settings > Features`. When disabled, your search will exclusively encompass YAML and Warp Drive Workflows.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-375626cd398bd4fec5b7b807d3cd659e27144e88%2FScreenshot%202023-06-17%20at%2012.16.55%20PM.png?alt=media&#x26;token=e0215807-b292-4c77-96c0-d214bb4a56e4" alt=""><figcaption><p>Search for any workflow in the Command Palette with <code>CMD + P</code></p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-375626cd398bd4fec5b7b807d3cd659e27144e88%2Fsearch-workflow-command-palette.png?alt=media" alt=""><figcaption><p>Search for any workflow in the Command Palette with <code>CMD + P</code></p></figcaption></figure>
 
 These options will paste the workflow into your active terminal input. Workflow names and any relevant descriptions and arguments will be displayed in a dialog, so you can understand how to use the workflow.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b41e3c7f62e21477cd2e0f35dbc9d119bfe5ecd8%2FScreenshot%202023-06-17%20at%2012.18.13%20PM.png?alt=media&#x26;token=d7abfcc9-e68d-4b97-88a6-b0e70f60f6f2" alt=""><figcaption><p>Execute a Workflow</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b41e3c7f62e21477cd2e0f35dbc9d119bfe5ecd8%2Fexecute-a-workflow.png?alt=media" alt=""><figcaption><p>Execute a Workflow</p></figcaption></figure>
 
 You make any adjustments you need to the arguments (or the command itself) before running the command in your input editor.
 

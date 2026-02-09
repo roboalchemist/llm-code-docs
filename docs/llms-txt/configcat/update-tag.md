@@ -2,10 +2,7 @@
 
 # Update Tag
 
-```
-PUT 
-/v1/tags/:tagId
-```
+Copy page
 
 This endpoint updates a Tag identified by the `tagId` parameter.
 

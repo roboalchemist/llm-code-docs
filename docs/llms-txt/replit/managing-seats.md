@@ -1,8 +1,16 @@
 # Source: https://docs.replit.com/billing/teams-billing/managing-seats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Seats
 
 > Learn how to add and remove seats in your organization, including prorated billing and scheduling changes for the next billing period.
+
+<Warning>
+  The Teams plan is being replaced by the new Pro plan. These changes will take effect on February 20th, 2026. You will no longer have to pay per seat on the Pro plan and it has a maximum of 15 seats. [Learn more about what's changing](https://blog.replit.com/pro-plan).
+</Warning>
 
 ## Where to manage seats
 

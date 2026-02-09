@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/dashboard/teams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Team Settings
 
 > Your Smartcar Team is the central hub for managing your applications, vehicles, members, security settings, and billing information.

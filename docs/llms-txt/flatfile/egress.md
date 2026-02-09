@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/egress.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Egress
 
 > Get data out of Flatfile using various transmission methods and file formats
@@ -50,13 +54,13 @@ For file generation and download, Flatfile provides the Export Workbook Plugin t
 
 ### Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-export-workbook
 ```
 
 ### Implementation
 
-```javascript
+```javascript  theme={null}
 import { FlatfileListener } from "@flatfile/listener";
 import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -82,7 +86,7 @@ export default function (listener) {
 
 Add a download action to your workbook to trigger the export:
 
-```javascript
+```javascript  theme={null}
 {
   name: "Customer Data",
   actions: [
@@ -110,14 +114,14 @@ For custom file formats, you can build files programmatically using any TypeScri
 
 ### Installation
 
-```bash
+```bash  theme={null}
 npm install xml2js
 npm install @types/xml2js --save-dev
 ```
 
 ### Implementation
 
-```javascript
+```javascript  theme={null}
 import api from "@flatfile/api";
 import { FlatfileListener } from "@flatfile/listener";
 import { Builder } from 'xml2js';
@@ -229,7 +233,7 @@ export default function (listener) {
 
 Add an XML download action to trigger the export:
 
-```javascript
+```javascript  theme={null}
 {
   name: "Customer Data",
   actions: [

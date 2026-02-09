@@ -2,10 +2,7 @@
 
 # Update Group
 
-```
-PATCH 
-/v2/:organizationId/Groups/:groupId
-```
+Copy page
 
 This endpoint updates an existing group by applying JSON Patch operations.
 

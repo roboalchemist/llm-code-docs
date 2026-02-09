@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/sign-up-sign-in.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sign up & sign in
 
 > Create and access your Argil account

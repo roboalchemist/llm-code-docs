@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/envvars/list-env_vars.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List env_vars
 
 > List out all env_vars. The env_vars are sorted by creation date, with the most recently-created env_vars coming first
@@ -184,6 +188,29 @@ components:
           nullable: true
           format: date-time
           description: Date the environment variable was last used
+        metadata:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: >-
+            Optional metadata associated with the environment variable when
+            managed via the function secrets API
+        secret_type:
+          type: string
+          nullable: true
+          description: >-
+            Optional classification for the secret (for example, the AI provider
+            name)
+        secret_category:
+          type: string
+          enum:
+            - env_var
+            - ai_provider
+          default: env_var
+          description: >-
+            The category of the secret: env_var for regular environment
+            variables, ai_provider for AI provider API keys
       required:
         - id
         - object_type
@@ -231,7 +258,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

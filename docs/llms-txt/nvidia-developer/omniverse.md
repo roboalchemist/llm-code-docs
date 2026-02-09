@@ -69,7 +69,7 @@ Open-source developer framework for data generation and spatial computing in Pyt
 
 [Go to GitHub](https://github.com/NVIDIA/warp)
 
-## Get Started With Developer Frameworks
+## Get Started With Developer Blueprints
 
  ![Digital twins for AI data centers design and operations](https://developer.download.nvidia.com/images/omniverse/digital-twin-ai-factory-design-operations-ari.jpg)
 
@@ -111,7 +111,7 @@ Reference workflow for generating exponential synthetic manipulation data for ro
 
 [Watch Video](https://www.youtube.com/watch?v=Odve87ieiYE)
 
-## Developer Frameworks Coming Soon 
+## Developer Blueprints Coming Soon 
 
  ![Digital twin for building gigawatt-scale AI data centers](https://developer.download.nvidia.com/images/omniverse/ai-factories-ari.jpg)
 
@@ -119,7 +119,7 @@ Reference workflow for generating exponential synthetic manipulation data for ro
 
 A framework for building gigawatt-scale data centers for massive AI workloads.
 
-[Read the Blog](/blog/omniverse-dsx-blueprint/)
+[Read the Blog](https://blogs.nvidia.com/blog/omniverse-dsx-blueprint/)
 
 [Watch Video](https://www.youtube.com/watch?v=Odve87ieiYE)
 

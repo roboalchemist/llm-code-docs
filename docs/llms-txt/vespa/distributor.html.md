@@ -1073,6 +1073,11 @@ vds.distributor.update\_puts.ok
  | operation | The number of successful update\_puts operations performed |
 | 
 
+vds.distributor.mutating\_op\_memory\_usage
+
+ | byte | Estimated amount of memory used by active mutating operations across all distributor stripes, in bytes |
+| 
+
 vds.idealstate.nodes\_per\_merge
 
  | node | The number of nodes involved in a single merge operation. |
@@ -1107,5 +1112,5 @@ vds.bouncer.clock\_skew\_aborts
 
  | operation | Number of client operations that were aborted due to clock skew between sender and receiver exceeding acceptable range |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/customer-support/zendesk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zendesk
 
 > Zendesk is a customer service software and support ticketing system. Zendesk's connected platform enables you to improve customer relationships by providing seamless support and comprehensive customer insights.

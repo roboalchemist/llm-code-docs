@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/agents/patterns/parallelization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parallelization
 
 <img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=e2a0c9d6b9087aa110a5552a0343a616" data-og-width="1856" width="1856" data-og-height="880" height="880" data-path="img/workflow/agents/diagram/parallel-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=b377332ee8b667f81791816d635edd91 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=b27d5a7c75ba10432b239ab0ac9e39d3 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=ac6a7bdc1da4f5b155826bcc9f996a79 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=dc1ac647c5d2cf7ad062e7753cc305cd 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=970752cda6b5a12bab4ec923f7f0ccbd 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/parallel-diagram.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=8214652e3e4c8dca441346c945518675 2500w" />
@@ -8,12 +12,14 @@ This workflow calls multiple agents simultaneously to handle tasks, and then agg
 
 ```ts  theme={"system"}
 import { serve } from "@upstash/workflow/nextjs";
+import { agentWorkflow } from "@upstash/workflow-agents";
 
 export const { POST } = serve(async (context) => {
-  const model = context.agents.openai('gpt-3.5-turbo');
+  const agents = agentWorkflow(context);
+  const model = agents.openai('gpt-3.5-turbo');
 
   // Define worker agents
-  const worker1 = context.agents.agent({
+  const worker1 = agents.agent({
     model,
     name: 'worker1',
     maxSteps: 1,
@@ -21,7 +27,7 @@ export const { POST } = serve(async (context) => {
     tools: {}
   });
 
-  const worker2 = context.agents.agent({
+  const worker2 = agents.agent({
     model,
     name: 'worker2',
     maxSteps: 1,
@@ -29,7 +35,7 @@ export const { POST } = serve(async (context) => {
     tools: {}
   });
 
-  const worker3 = context.agents.agent({
+  const worker3 = agents.agent({
     model,
     name: 'worker3',
     maxSteps: 1,
@@ -39,13 +45,13 @@ export const { POST } = serve(async (context) => {
 
   // Await results
   const [result1, result2, result3] = await Promise.all([
-    context.agents.task({ agent: worker1, prompt: "Explain quantum physics." }).run(),
-    context.agents.task({ agent: worker2, prompt: "Explain relativity." }).run(),
-    context.agents.task({ agent: worker3, prompt: "Explain string theory." }).run(),
+    agents.task({ agent: worker1, prompt: "Explain quantum physics." }).run(),
+    agents.task({ agent: worker2, prompt: "Explain relativity." }).run(),
+    agents.task({ agent: worker3, prompt: "Explain string theory." }).run(),
   ]);
 
   // Aggregating results
-  const aggregator = context.agents.agent({
+  const aggregator = agents.agent({
     model,
     name: 'aggregator',
     maxSteps: 1,
@@ -53,7 +59,7 @@ export const { POST } = serve(async (context) => {
     tools: {}
   });
 
-  const task = await context.agents.task({
+  const task = await agents.task({
     agent: aggregator,
     prompt: `Summarize these three explanations: ${result1.text}, ${result2.text}, ${result3.text}`
   })

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/test/simulator.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/test-agents/simulator.md
-
-# Source: https://docs.avaamo.com/user-guide/test/simulator.md
-
 # Simulator
 
 You can test the agent once you complete the prompt to ensure it provides appropriate responses to user queries using the `Simulator` option.

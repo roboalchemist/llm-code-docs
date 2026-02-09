@@ -2,9 +2,24 @@
 
 # How to use SEO techniques to improve your documentation
 
-### Documentation needs SEO — and that’s a good thing <a href="#documentation-needs-seo-and-that-s-a-good-thing" id="documentation-needs-seo-and-that-s-a-good-thing"></a>
+*Last updated on 28 January, 2026.*
 
-Sorry to break it to you but your product documentation is leading a double life. Alongside its primary job — educating and instructing your users — your documentation is also playing an important role in your company’s SEO.
+{% hint style="info" %}
+This guide explains **documentation SEO**. You’ll learn how to make product docs easier to discover in search engines like Google and Bing. It covers keywords, headings, metadata, internal links, indexing choices, accessibility, and page performance.
+{% endhint %}
+
+### Quick takeaways
+
+* Documentation SEO makes your docs easier to find via search.
+* Good SEO mostly looks like good docs, with clear structure and relevance.
+* Start with keywords and headings that match real user queries.
+* Tighten metadata: title, description, canonical URL, and update signals.
+* Use internal links to connect related tasks and help crawlers.
+* Keep pages fresh, fast, mobile-friendly, and accessible.
+
+## Why documentation SEO matters (and why that’s a good thing) <a href="#documentation-needs-seo-and-that-s-a-good-thing" id="documentation-needs-seo-and-that-s-a-good-thing"></a>
+
+Sorry to break it to you, but [documentation SEO](https://app.gitbook.com/s/Ua3kTfM3iWAoECzM0u90/published-documentation/publishing/how-does-gitbook-handle-seo) is part of the job. Alongside educating and instructing users, your docs also play an important role in your company’s SEO.
 
 And here’s why: your documentation is one of the largest bodies of text available for search engines to index. It's just as likely as your marketing website to answer someone’s Google or Bing query.
 
@@ -12,11 +27,21 @@ So, like it or not, your documentation is a part of your marketing funnel. If th
 
 Here’s how you can make a few small adjustments to improve both the discoverability and usefulness of your product documentation.
 
-### You’re already doing SEO for your documentation <a href="#you-re-already-doing-seo-for-your-documentation" id="you-re-already-doing-seo-for-your-documentation"></a>
+### SEO vs GEO: what’s the difference?
+
+SEO (search engine optimization) helps your documentation **rank in traditional search engines**, like Google and Bing. The goal is more qualified clicks from search results.
+
+GEO (generative engine optimization) helps your documentation get **retrieved and cited** by AI systems, like ChatGPT, Perplexity, and Google AI Overviews. The goal is accurate answers that quote your docs and link back.
+
+They overlap, because clear structure and helpful content wins everywhere. But GEO puts extra weight on machine-friendly structure, crisp definitions, and small “answerable” sections. That makes it easier for LLMs to extract the right chunk and attribute it correctly.
+
+Want the GEO playbook? Read our [GEO guide: How to optimize your docs for AI search and LLM ingestion](https://gitbook.com/docs/guides/seo-and-llm-optimization/geo-guide).
+
+## Documentation SEO basics you’re already doing <a href="#you-re-already-doing-seo-for-your-documentation" id="you-re-already-doing-seo-for-your-documentation"></a>
 
 Here’s the good news: if you’re already maintaining high-quality documentation, you’ve laid the groundwork for SEO. That means that search engine optimization for your docs doesn’t need to be a whole new layer of work.
 
-That’s because SEO relies on the very things that define good documentation. The likes of Google and Bing prioritize content that is useful, relevant, and well-written. The old days of trying to trick search engines or stuffing keywords into content are over. In fact, search engines today tend to punish that type of activity.
+That’s because SEO relies on the very things that define good documentation. Search engines like Google prioritize content that is [useful, relevant, and well-written](https://developers.google.com/search/docs/fundamentals/creating-helpful-content). The old days of trying to trick search engines or stuffing keywords into content are over. In fact, search engines today tend to punish that type of activity.
 
 So, you’re already halfway there. To do even better, though, you’ll need to consider how search engines rank content. Some of the factors they consider include:
 
@@ -31,11 +56,11 @@ Do those criteria look a little familiar? For a moment, forget we’re talking a
 
 SEO doesn’t mean you have to make compromises. Instead, it’s about being intentional in doing the things that lead to a great docs experience for your readers. And, as a bonus, you make your documentation more accessible to prospective users through search.
 
-### SEO techniques you can apply to your documentation <a href="#seo-techniques-you-can-apply-to-your-documentation" id="seo-techniques-you-can-apply-to-your-documentation"></a>
+## Documentation SEO techniques you can apply today <a href="#seo-techniques-you-can-apply-to-your-documentation" id="seo-techniques-you-can-apply-to-your-documentation"></a>
 
 In return for relatively small adjustments to your workflow, you can see big improvements. This affects both how you serve existing users and those hoping to learn about your product for the first time. Let’s look at what those practical techniques are.
 
-#### Carry out keyword research <a href="#carry-out-keyword-research" id="carry-out-keyword-research"></a>
+### Keyword research for documentation SEO <a href="#carry-out-keyword-research" id="carry-out-keyword-research"></a>
 
 Earlier, we touched on the idea that SEO comes as an added bonus of good documentation practice. Keyword research, though, can feel like something that’s only about SEO. After all, what do your existing users care about search terms?
 
@@ -53,7 +78,7 @@ For longer-term results, consider making keyword research a regular part of your
 
 And just like your documentation, SEO is a moving target. Making keyword research a part of your update process can help you take account of changes in how people think and speak about the problems your product solves over time.
 
-#### Write clear, actionable headings <a href="#write-clear-actionable-headings" id="write-clear-actionable-headings"></a>
+### SEO-friendly headings for documentation <a href="#write-clear-actionable-headings" id="write-clear-actionable-headings"></a>
 
 Headings serve a dual function in documentation. They help readers quickly navigate content by signposting key sections, allowing them to jump straight to the information they need. And from an SEO perspective, headings communicate the structure of your content to search engines, highlighting the importance of different topics.
 
@@ -61,8 +86,7 @@ Headings serve a dual function in documentation. They help readers quickly navig
 
 This also improves accessibility, as screen readers often read headings first, enabling users to skip to the most relevant sections. In contrast, generic headings strip away the context that screen readers — and all users — need to make sense of the content.
 
-**How this helps your SEO**:\
-Search engines rely on headings to interpret the structure and meaning of your content. By using specific, keyword-rich headings that align with what users are searching for, you increase your chances of ranking higher in search results. Optimized headings not only help external search engines but also improve internal documentation search, making it easier for users to find the content they need.
+**How this helps your SEO**: Search engines rely on headings to interpret the structure and meaning of your content. By using specific, keyword-rich headings that align with what users are searching for, you increase your chances of ranking higher in search results. Optimized headings not only help external search engines but also improve internal documentation search, making it easier for users to find the content they need.
 
 **Practical advice**: Start by auditing your existing documentation for generic headings like “Introduction” or “Overview”, and replace them with specific alternatives that describe the content in that section.
 
@@ -70,7 +94,7 @@ For longer-term improvements, consider developing a heading strategy within your
 
 Look for patterns, like whether specific headings lead to longer reading times or fewer support queries. One way to get this data is to use a documentation platform, such as GitBook, that has built-in analytics tooling. Use this data to further refine your headings, making your documentation more effective and user-friendly over time.
 
-#### Write metadata <a href="#write-metadata" id="write-metadata"></a>
+### Metadata for documentation SEO (titles, descriptions, canonical URLs) <a href="#write-metadata" id="write-metadata"></a>
 
 Metadata, like keyword research, might initially seem like it’s only relevant for SEO, but it’s actually an extension of the information architecture you’re already managing. It helps organize your content for search engines, similar to how headings and structure guide your readers.
 
@@ -94,7 +118,7 @@ Including relevant keywords in your metadata boosts your chances of appearing in
 
 By optimizing these tags, you’ll not only improve your SEO but also boost the usability and shareability of your documentation across different platforms.
 
-#### Link, link, link <a href="#link-link-link" id="link-link-link"></a>
+### Internal linking for documentation SEO <a href="#link-link-link" id="link-link-link"></a>
 
 Internal and external links are a powerful tool in your documentation toolkit. They not only improve the user experience but also help search engines understand how your content fits into the broader ecosystem of knowledge that your users rely on.
 
@@ -110,17 +134,17 @@ External links to reputable sources also strengthen your content’s credibility
 
 For the long term, make internal and external linking a standard part of your documentation process, reviewing links periodically to ensure they’re still relevant and effective.
 
-#### Make updates <a href="#make-updates" id="make-updates"></a>
+### Keep documentation updated (freshness signals for SEO) <a href="#make-updates" id="make-updates"></a>
 
 Keeping your documentation up to date with each product release is probably already part of your workflow. And that’s good news for your SEO because search engines prioritize fresh content.
 
 **How this helps your docs**: Really, there’s not going to be much change to your documentation. So long as you’re already updating docs as the product changes or as you learn more about user needs, then this is really just about making sure search engines know that your content is up to date.
 
-**How this helps SEO**: Search engines will prioritize newer content. That’s why you see articles with tiles like, “Best hosted docs platforms in October 2024”.
+**How this helps SEO**: Search engines will prioritize newer content. That’s why you see articles with titles like, “Best hosted docs platforms in October 2024”.
 
 **Practical advice**: Ensure your update process includes revisiting both the content and its metadata. Always add 'last updated' dates visibly on the page to signal freshness to users, and in the metadata to inform search engines.
 
-#### Make it fast and mobile-friendly <a href="#make-it-fast-and-mobile-friendly" id="make-it-fast-and-mobile-friendly"></a>
+### Page speed and mobile-friendly docs (technical SEO) <a href="#make-it-fast-and-mobile-friendly" id="make-it-fast-and-mobile-friendly"></a>
 
 Page speed and mobile optimization directly impact both user experience and search rankings. Google prioritizes fast-loading, mobile-friendly pages, and a significant portion of your audience might be accessing your docs on mobile devices.
 
@@ -132,7 +156,7 @@ Page speed and mobile optimization directly impact both user experience and sear
 
 For an even faster solution, consider using a documentation platform like GitBook, which handles many of these optimizations automatically.
 
-#### Make it accessible <a href="#make-it-accessible" id="make-it-accessible"></a>
+### Accessibility best practices that also improve SEO <a href="#make-it-accessible" id="make-it-accessible"></a>
 
 Accessible documentation ensures that everyone can use it, including people with disabilities. Search engines reward accessible content — plus, it’s the right thing to do.
 
@@ -150,7 +174,7 @@ Accessible documentation ensures that everyone can use it, including people with
 
 For longer-term improvements, regularly audit your documentation using tools like [WAVE](https://wave.webaim.org/). You can also test your content by navigating it using only the keyboard to ensure it’s fully usable without a mouse. By making accessibility testing a standard part of your documentation review process you’ll serve more readers for very little additional effort.
 
-### How GitBook can help improve your documentation SEO <a href="#how-gitbook-can-help-improve-your-documentation-seo" id="how-gitbook-can-help-improve-your-documentation-seo"></a>
+## GitBook features that support documentation SEO <a href="#how-gitbook-can-help-improve-your-documentation-seo" id="how-gitbook-can-help-improve-your-documentation-seo"></a>
 
 Optimizing your documentation for search engines also optimizes your documentation for your readers. And, as we’ve seen, a great deal of SEO builds on what you’re already doing as a documentation professional.
 
@@ -173,8 +197,36 @@ With small, intentional adjustments, you can improve both the accessibility and 
 
 Ready to streamline your documentation and optimize it for SEO? GitBook makes it easy, so you can focus on what you do best — creating great docs.
 
+## FAQ
+
+### What is documentation SEO?
+
+Documentation SEO is the practice of making docs easy to discover in search. It focuses on matching search intent with clear, accurate answers. It also improves structure and usability for existing users.
+
+### How long does documentation SEO take to work?
+
+Expect early signals in 2–6 weeks, like more impressions. Meaningful ranking and click gains often take 1–3 months. Timing depends on your domain authority, crawl frequency, and competition.
+
+### Should docs be indexed or noindexed?
+
+Index docs that help users evaluate, adopt, and use your product. Noindex anything that’s private, duplicated, thin, or not meant for discovery. Common noindex candidates include staging docs, internal runbooks, and account-only content.
+
+You can [noindex individual pages](https://app.gitbook.com/s/NkEGS7hzeqa35sMXQZ4X/creating-content/content-structure/page#page-options) or [entire docs sites](https://app.gitbook.com/s/NkEGS7hzeqa35sMXQZ4X/publishing-documentation/publish-a-docs-site/public-publishing#publish-without-search-engine-indexing) in GitBook, giving you complete control.
+
+### What should I optimize first for documentation SEO?
+
+Start with titles and headings that match real user queries. Then fix internal linking so key pages are easy to reach. After that, improve freshness signals by updating outdated pages.
+
+### How do I choose keywords for documentation pages?
+
+Use the language users type into search, not internal product terms. Prioritize tasks, errors, comparisons, and “how to” queries. Treat each page like one primary question, plus a few related subtopics.
+
+### Does adding more content always improve documentation SEO?
+
+No. Extra text only helps if it removes ambiguity or answers adjacent questions. Search engines reward pages that solve the problem fast and completely. If a section doesn’t help users succeed, cut it or move it elsewhere.
+
 [**→ Get started with GitBook for free**](https://app.gitbook.com/join)
 
-[**→ Read more about SEO in GitBook**](https://gitbook.com/docs/help-center/published-documentation/publishing/how-does-gitbook-handle-seo)
+[**→ Learn more about SEO in GitBook**](https://gitbook.com/docs/help-center/published-documentation/publishing/how-does-gitbook-handle-seo)
 
-[**→ 7 tips for making your docs more useful for your users**](https://gitbook.com/docs/guides/docs-workflow-optimization/7-ways-to-make-your-public-documentation-more-useful-for-users)
+[**→ GEO guide: How to optimize your docs for AI search and LLM ingestion**](https://gitbook.com/docs/guides/seo-and-llm-optimization/geo-guide)

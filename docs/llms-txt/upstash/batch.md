@@ -1,16 +1,8 @@
 # Source: https://upstash.com/docs/qstash/features/batch.md
 
-# Source: https://upstash.com/docs/qstash/api/messages/batch.md
-
-# Source: https://upstash.com/docs/qstash/features/batch.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/batch.md
-
-# Source: https://upstash.com/docs/qstash/features/batch.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/batch.md
-
-# Source: https://upstash.com/docs/qstash/features/batch.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Batching
 

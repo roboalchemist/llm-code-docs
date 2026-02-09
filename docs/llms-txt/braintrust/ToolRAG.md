@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ToolRAG.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using functions to build a RAG agent
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ToolRAG/ToolRAG.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom), [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-10-08</div>
@@ -236,7 +240,7 @@ TypeScript code snippet.
 
 Once you're satisfied with the prompt, hit **Update** to save the changes. Each time you save the prompt, you
 create a new version. To learn more about how to use a prompt in your code, check out the
-[prompts guide](/core/functions/prompts#using-prompts-in-your-code).
+[prompts guide](/evaluate/write-prompts#using-prompts-in-your-code).
 
 ## Run full experiments
 
@@ -254,11 +258,6 @@ then you can run a full experiment by selecting **+Experiments**. Once you run t
 
 Now that you've built a RAG app in Braintrust, you can:
 
-* [Deploy the prompt in your app](/core/functions/prompts#using-prompts-in-your-code)
-* [Conduct more detailed evaluations](/core/experiments)
-* Learn about [logging LLM calls](/core/logs) to create a data flywheel
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Deploy the prompt in your app](/evaluate/write-prompts#using-prompts-in-your-code)
+* [Conduct more detailed evaluations](/evaluate/run-evaluations)
+* Learn about [logging LLM calls](/observe/view-logs) to create a data flywheel

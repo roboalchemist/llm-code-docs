@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
 
-# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create a project
 
@@ -61,7 +49,7 @@ If you are an [organization owner or user](/guides/organizations/understanding-o
       PINECONE_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
 
       curl "https://api.pinecone.io/admin/projects" \
-          -H "X-Pinecone-Api-Version: 2025-04" \
+          -H "X-Pinecone-Api-Version: 2025-10" \
       	-H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
       	-d '{
                 "name":"example-project"

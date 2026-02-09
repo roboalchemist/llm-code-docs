@@ -2,14 +2,6 @@
 
 # Source: https://livecodes.io/docs/sdk/svelte.html.md
 
-# Source: https://livecodes.io/docs/languages/svelte.html.md
-
-# Source: https://livecodes.io/docs/sdk/svelte.html.md
-
-# Source: https://livecodes.io/docs/languages/svelte.html.md
-
-# Source: https://livecodes.io/docs/sdk/svelte.html.md
-
 # Svelte
 
 import LiveCodes from '../../src/components/LiveCodes.tsx';

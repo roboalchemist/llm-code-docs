@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/api-reference/migration-guides/translation-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate from translation API to translation tool
 
 This guide shows you how to migrate from the deprecated [Translation API endpoint](/api-reference/translation-api/translate) to the [translation tool](/home/translation-tool) in chat completions. After completing these steps, you can translate text using the translation tool, which provides the same capabilities within a chat completion workflow.

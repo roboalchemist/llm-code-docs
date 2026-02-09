@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/always-return.md
 ---
-# promise/always-return&#x20;
 
 ### What it does
 
@@ -67,7 +66,7 @@ chain does not warn if it does an assignment to a global variable. Default is
 `["globalThis"]`.
 
 ```javascript
-/* eslint promise/always-return: ["error", { ignoreAssignmentVariable: ["globalThis"] }] */
+/* promise/always-return: ["error", { ignoreAssignmentVariable: ["globalThis"] }] */
 
 // OK
 promise.then((x) => {

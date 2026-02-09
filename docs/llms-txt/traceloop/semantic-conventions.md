@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/contributing/semantic-conventions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GenAI Semantic Conventions
 
 With OpenLLMetry, we aim at defining an extension of the standard
@@ -101,8 +105,3 @@ This is a work in progress, and we welcome your feedback and contributions!
 ## Metrics Definition
 
 ### LLM Foundation Models
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

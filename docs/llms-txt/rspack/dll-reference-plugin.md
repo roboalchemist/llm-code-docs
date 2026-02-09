@@ -1,9 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/dll-reference-plugin.md
 
-import { Table } from '@builtIns';
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/dll-plugin/#dllreferenceplugin](https://webpack.js.org/plugins/dll-plugin/#dllreferenceplugin)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/dll-plugin/#dllreferenceplugin" />
 
 # DllReferencePlugin
 
@@ -11,7 +15,7 @@ The `DllReferencePlugin` is used be reference the dll-only-bundle to require pre
 
 ## Options
 
-* **Types:**
+- **Types:**
 
 ```ts
 type DllReferencePluginOptionsContent = {

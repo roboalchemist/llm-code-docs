@@ -1,10 +1,195 @@
 # Source: https://smartcar.com/docs/changelog/latest.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Latest Releases
 
 > Learn about Smartcar's latest product updates and improvements
 
 [Subscribe to changelog updates](https://sta26.share.hsforms.com/2CCbdweFdSOeE5B58UvjVlw) and receive email notifications for new releases and updates.
+
+<Update label="January 28th, 2026">
+  ## Charging signal CONNECTOR replaced with CHARGING\_TYPE is now live
+
+  The charging signal change [announced on January 12th](#upcoming-change-charging-signal-connector-to-charging_type) is now live. The `CONNECTOR` type has been replaced with `CHARGING_TYPE` in the following signals:
+
+  * Charge.ChargeLimits
+  * Charge.ChargeRecords
+  * Charge.ChargeTimers
+
+  These signals now return the charging current type (`AC` or `DC`) instead of a connector hardware type. If your integration parses any of these signals and still references the `CONNECTOR` type, update your code to use `CHARGING_TYPE` and parse the `chargingType` field.
+
+  For full details on the change, see the [original announcement](#upcoming-change-charging-signal-connector-to-charging_type) below.
+</Update>
+
+<Update label="January 20th, 2026">
+  ## Send Destination now available for Volkswagen
+
+  You can now use the Smartcar API to send destinations to Volkswagen vehicles in the United States.
+
+  With the Send Destination command, your application can route a destination directly to a driver's built-in navigation screen. This unlocks new workflows:
+
+  * Fleet management: Route drivers to their next pickup, delivery, or service location
+  * Car sharing and rentals: Send return location addresses when a rental period is ending
+  * Repair and maintenance: Direct customers to your nearest service center when maintenance is needed
+  * Charging networks: Guide EV drivers to available chargers when battery is low
+
+  **Get started**: Request the `control_navigation` permission during the Smartcar Connect flow and call [Send Destination](/api-reference/send-destination-to-vehicle).
+</Update>
+
+<Update label="January 16th, 2026">
+  ## Ruby SDK and Java SDK Updated to Support Version 3 of the Vehicles API
+
+  The [Ruby SDK](https://github.com/smartcar/ruby-sdk) and [Java SDK](https://github.com/smartcar/java-sdk) have been updated to support [Version 3 of the Vehicles API](/api-reference/vehicles-api-intro).
+
+  Both SDKs now include three new methods:
+
+  * `get_vehicle` - Retrieve vehicle information
+  * `get_signal` - Get a specific signal for a vehicle
+  * `get_signals` - Get all available signals for a vehicle
+
+  These new methods provide easier access to vehicle data through the latest API version, enabling developers to work with Smartcar's expanded signal catalog and improved data delivery capabilities.
+
+  **Get started**: Update to the latest SDK version and explore the new methods in the [Ruby SDK](https://github.com/smartcar/ruby-sdk) and [Java SDK](https://github.com/smartcar/java-sdk) documentation.
+</Update>
+
+<Update label="January 14th, 2026">
+  ## Volvo Cars Partner Integration now available!
+
+  <Frame>
+        <img src="https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=ea8cf4e82c39f8eb3772b51c7c8ca21d" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/volvo-partnership.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=280&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=3fcf8c4187d4e7a5fd3d79053c14c2d2 280w, https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=560&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=7eee730bf5f97a57f03515b6dc914d66 560w, https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=840&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=b972ceec2fd22858acfff13ee05e339d 840w, https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=1100&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=44547ea92ff52bc017aab6b243675669 1100w, https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=1650&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=fc444b2d6b215deec4db64df17faee40 1650w, https://mintcdn.com/smartcar-docs/BeQEjJv4IeTUpsgG/images/changelog/volvo-partnership.png?w=2500&fit=max&auto=format&n=BeQEjJv4IeTUpsgG&q=85&s=e0dc184772c8a5fb11798312c1eb1d66 2500w" />
+  </Frame>
+
+  Smartcar is excited to announce a partnership with Volvo Cars, providing access to vehicles across the United States and Europe.
+
+  **What's new:**
+
+  * Access charging, battery, location, and odometer data through Smartcar signals
+  * Use the updated consent flow through Volvo's official portal
+
+  Learn more in the [Volvo integration updates](/help/oem-integrations/volvo/whats-new).
+</Update>
+
+<Update label="January 12th, 2026">
+  ## Upcoming change: Charging signal `CONNECTOR` to `CHARGING_TYPE`
+
+  On January 28th, 2026, we're updating three charging-related signals. This is a breaking change that may require updates to your integration.
+
+  **Affected signals:**
+
+  * `Charge.ChargeLimits`
+  * `Charge.ChargeRecords`
+  * `Charge.ChargeTimers`
+
+  **What's changing:**
+  In all three signals, the `CONNECTOR` type is being replaced with `CHARGING_TYPE`. Instead of returning a connector hardware type (e.g., `J1772`), these signals will now return the charging current type (`AC` or `DC`).
+
+  **Before (current format):**
+
+  ```json  theme={null}
+  {
+    "type": "CONNECTOR",
+    "condition": {
+      "connectorType": "J1772"
+    }
+  }
+  ```
+
+  **After (new format):**
+
+  ```json  theme={null}
+  {
+    "type": "CHARGING_TYPE",
+    "condition": {
+      "chargingType": "AC"
+    }
+  }
+  ```
+
+  Other types such as `GLOBAL` and `LOCATION` remain unchanged.
+
+  **Why we're making this change:**
+  OEMs report connector hardware types inconsistently--some return proprietary strings, others return nothing at all. In contrast, AC vs. DC charging type is more widely provided across manufacturers.
+
+  This change gives you more consistent, actionable data. Rather than maintaining a mapping of connector type strings, you can rely on a simple AC or DC value to determine whether the vehicle is on Level 1/2 charging or DC fast charging.
+
+  **What you need to do:**
+  If your integration parses any of these signals and handles the `CONNECTOR` type, update your code to:
+
+  * Expect `CHARGING_TYPE` instead of `CONNECTOR`
+  * Parse `chargingType` (values: `AC` or `DC`) instead of `connectorType`
+
+  **Timeline:**
+
+  * Now -> January 27th, 2026: Current format remains in place
+  * January 28th, 2026: New format goes live
+
+  **Questions?**
+  Reach out to your Smartcar account manager or [contact support](https://smartcar.com/contact).
+</Update>
+
+<Update label="December 15th, 2025">
+  ## Mercedes-Benz Partner Integration Now Available in Europe!
+
+  <Frame>
+        <img src="https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=2f0a2839bdea0e7a22abb7bdf499d080" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/mercedes-benz-partnership.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=280&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=19863b313464c4fc620d30df12c4a9c9 280w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=560&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=8adc584c8118cc3862e4a70e0fdc7d91 560w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=840&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=18ca7624f3954d817a3cd7b51d51a15c 840w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=1100&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=9c4cace159b682759250eafbe4dda527 1100w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=1650&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=e87c7810fbb22b610592ce86c4a8709e 1650w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=2500&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=408823c8d10c25f95d4b0deedd48f7c3 2500w" />
+  </Frame>
+
+  We're excited to announce that Mercedes-Benz is now available on Smartcar! Connect Mercedes-Benz electric vehicles (BEV and PHEV) to access vehicle data and enable smart charging capabilities.
+
+  **What's new:**
+
+  * Mercedes-Benz BEV and PHEV vehicles can now connect through Smartcar
+  * Enhanced connect flow with VIN verification for Mercedes vehicles
+  * Support for key vehicle data signals including battery level, charge status, and location
+
+  **Important notes:**
+
+  * Currently, only Battery Electric Vehicles (BEV) and Plug-in Hybrid Electric Vehicles (PHEV) are supported with this integration.
+  * Need support for other Mercedes vehicle types? [Contact us](https://smartcar.com/contact) to discuss your requirements.
+
+  Check out the [Mercedes-Benz integration guide](/help/oem-integrations/mercedes/whats-new) for more details.
+</Update>
+
+<Update label="December 5th, 2025">
+  ## Vehicle data in Dashboard Coming Soon!
+
+  <Frame>
+        <img src="https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=3acd45cd6de7b63ecfbdc4fae8592e50" alt="" data-og-width="2892" width="2892" data-og-height="1912" height="1912" data-path="images/changelog/vehicle-data-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=280&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=4721f9823579d7fcfe0794f1db5cb992 280w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=560&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=e45a0e4a91772c8b459952c4f06c88b9 560w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=840&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=0cbc3270924d126450adbfea672963e1 840w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=1100&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=1a549de5674c535bf26a7fea9f7d6ff3 1100w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=1650&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=02d4ae539e1f569bc07d38ce66d6e6a2 1650w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/vehicle-data-dashboard.png?w=2500&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=1cbf8ecc3ebac04727d45a7438ab02a5 2500w" />
+  </Frame>
+
+  Vehicle data will be available in your Smartcar Dashboard. This feature is now rolling out to some customers and will be available to all customers over the next few weeks.
+
+  If you are interested in this feature or have any questions, please reach out to your Smartcar account manager or contact our support team.
+</Update>
+
+<Update label="December 5th, 2025">
+  ## Dashboard updates: API logs, timezone controls, and more!
+
+  We've added more visibility into production usage in the Dashboard so you can monitor API requests and webhook delivery health in one place.
+
+  **What's new:**
+
+  * **API V3 call tracking**: See which API V3 endpoints are being called directly in the Dashboard to monitor migration progress
+  * **Active vehicle counter**: Track how many vehicles are actively delivering webhooks successfully to spot delivery gaps faster
+  * **Timezone customization**: Set your preferred timezone in the Dashboard so charts and tables align with your operations
+
+  **Get started**: Check out these updates in the [Smartcar Dashboard](https://dashboard.smartcar.com/).
+</Update>
+
+<Update label="December 5th, 2025">
+  ## BMW Charging API now live across Europe
+
+  <Frame>
+        <img src="https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=e8ca42461ce3d3d54bb2449dbd45435b" alt="" data-og-width="2104" width="2104" data-og-height="1166" height="1166" data-path="images/changelog/smartcarxbmw.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=280&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=c44c6ed488ca620b305f21106c49f2e9 280w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=560&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=abffe64e385e5460f3c41104fd0135c6 560w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=840&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=8ef36d9c517b6749f0c0f91f8fd2c3af 840w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=1100&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=09683c1cc6b0f3db8c58f204590c5a38 1100w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=1650&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=6d2d60d425fa423915ca2ad3e243e8b5 1650w, https://mintcdn.com/smartcar-docs/rT1IH8yV6VQUOKv9/images/changelog/smartcarxbmw.png?w=2500&fit=max&auto=format&n=rT1IH8yV6VQUOKv9&q=85&s=1ea7543fe353d8f175ddd84e1643877b 2500w" />
+  </Frame>
+
+  We've partnered with BMW to bring their new Charging API to Europe, giving energy providers privacy-first access to BMW EVs for smart charging, grid optimization, and home energy management.
+
+  This integration is now available in select European markets. Reach out to your Smartcar team to enable BMW Charging for your app or learn more in the [partnership announcement](https://smartcar.com/blog/smartcar-and-bmw-partnership).
+</Update>
 
 <Update label="November 19th, 2025">
   ## Improved Webhook Logs in Dashboard

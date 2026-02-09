@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/admin/configure-sso-with-okta.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure SSO with Okta
 
 > Enable SSO authentication using Okta integration.
@@ -100,5 +104,16 @@ In the browser tab or window you kept open in [Step 1](#1-start-sso-setup-in-pin
 3. Click **Next**.
 
 4. Select a **Default role** for all users who log in with SSO. You can change user roles later.
+
+   <Warning>
+     When users first log in via SSO, they receive the default SSO role regardless of their previous role. Subsequent SSO logins do not change the role. If the default is **User**, existing owners will lose owner access on their first SSO login.
+
+     To prevent losing access to organization management features:
+
+     * **Sole owner**: Temporarily set the default to **Owner**, log in via SSO to retain owner access, then change the default back to **User**. After changing it back, check your organization's user list to verify no one else logged in via SSO while the default was **Owner**—if they did, adjust their roles accordingly.
+     * **Multiple owners**: Keep at least one owner signed in via email while others log in via SSO. That owner can restore roles as needed, then log in via SSO last.
+
+     If all owners lose access, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
+   </Warning>
 
 Okta is now ready to be used for single sign-on. Follow the [Okta docs](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-main.htm) to learn how to add users and groups.

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/raw-tracks.md
 
-# Source: https://docs.livekit.io/home/client/tracks/raw-tracks.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Processing raw tracks
+LiveKit docs › Media › Processing raw tracks
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › LiveKit SDKs › Realtime media › Processing raw tracks
 
 ## Overview
 
-LiveKit's [server-side SDKs](https://docs.livekit.io/home/client.md#server-side-sdks) give you full control over how media is processed and published. You can work directly with participant tracks or media files to apply custom processing.
+LiveKit's [server-side SDKs](https://docs.livekit.io/transport.md#server-side-sdks) give you full control over how media is processed and published. You can work directly with participant tracks or media files to apply custom processing.
 
 A typical media-processing workflow involves three steps:
 
@@ -131,7 +129,7 @@ To learn more, see the following links.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:51.068Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/raw-tracks.md](https://docs.livekit.io/home/client/tracks/raw-tracks.md).
+This document was rendered at 2026-02-03T03:25:16.224Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/raw-tracks.md](https://docs.livekit.io/transport/media/raw-tracks.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

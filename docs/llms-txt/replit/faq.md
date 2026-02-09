@@ -2,21 +2,9 @@
 
 # Source: https://docs.replit.com/additional-resources/bounties/faq.md
 
-# Source: https://docs.replit.com/faq.md
-
-# Source: https://docs.replit.com/additional-resources/bounties/faq.md
-
-# Source: https://docs.replit.com/faq.md
-
-# Source: https://docs.replit.com/extensions/faq.md
-
-# Source: https://docs.replit.com/additional-resources/bounties/faq.md
-
-# Source: https://docs.replit.com/faq.md
-
-# Source: https://docs.replit.com/extensions/faq.md
-
-# Source: https://docs.replit.com/additional-resources/bounties/faq.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Frequently Asked Questions (FAQ)
 

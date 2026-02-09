@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Learn about Agent Builder
 
 > Build AI agents with a low-code visual editor. Collaborate with drag-and-drop blocks for tool calling, RAG, and custom workflows.
@@ -17,7 +21,7 @@ Agent Builder is a low-code tool for building AI agents with Writer. It enables 
 Agents created in Agent Builder are fully composable and reusable—from the backend logic to frontend experience—making them faster to build and easier to maintain. Each agent consists of two core components: a blueprint and a UI.
 
 * **Blueprint**: a visual map of the agent's business logic and behavior.
-  * Blueprints are created using a library of configurable blocks for tool calling, built-in RAG, text generation, classification, state management, and more.
+  * Blueprints are created using a library of configurable blocks for tool calling, built-in RAG, text generation, classification, state management, persistent key-value storage, and more.
   * They define how the agent processes input, makes decisions, and takes action—enabling it to reliably orchestrate work across people, data, systems, and even other agents built in Writer.
 * **UI**: the interface that users interact with.
   * UIs are designed using elements like input fields, buttons, and embeds, including support for guided workflows with pagination.

@@ -1,10 +1,8 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/pipeline_gradio.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/pipeline_gradio.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/pipeline_gradio.md
 
 # Machine learning apps
 
-[Gradio](https://www.gradio.app/), a fast and easy library for building and sharing machine learning apps, is integrated with [Pipeline](/docs/transformers/v4.57.3/en/main_classes/pipelines#transformers.Pipeline) to quickly create a simple interface for inference.
+[Gradio](https://www.gradio.app/), a fast and easy library for building and sharing machine learning apps, is integrated with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) to quickly create a simple interface for inference.
 
 Before you begin, make sure Gradio is installed.
 
@@ -12,7 +10,7 @@ Before you begin, make sure Gradio is installed.
 !pip install gradio
 ```
 
-Create a pipeline for your task, and then pass it to Gradio's [Interface.from_pipeline](https://www.gradio.app/docs/gradio/interface#interface-from_pipeline) function to create the interface. Gradio automatically determines the appropriate input and output components for a [Pipeline](/docs/transformers/v4.57.3/en/main_classes/pipelines#transformers.Pipeline).
+Create a pipeline for your task, and then pass it to Gradio's [Interface.from_pipeline](https://www.gradio.app/docs/gradio/interface#interface-from_pipeline) function to create the interface. Gradio automatically determines the appropriate input and output components for a [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline).
 
 Add [launch](https://www.gradio.app/main/docs/gradio/blocks#blocks-launch) to create a web server and start up the app.
 

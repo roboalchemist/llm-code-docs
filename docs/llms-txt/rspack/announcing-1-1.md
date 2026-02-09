@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-1.md
 
-*November 7, 2024*
+_November 7, 2024_
 
 # Announcing Rspack 1.1
 
@@ -14,16 +14,16 @@ Rspack v1.1 and Rsbuild v1.1 are out!
 
 Notable changes:
 
-* Performance improvements
-  * [Better scheduling strategy](#better-scheduling-strategy): Make Rspack **10% faster** than v1.0.
-  * [New incremental rebuild](#new-incremental-rebuild): Experimental feature that makes HMR **up to 38% faster**.
-* New features
-  * [Improved HTML Plugin](#improved-html-plugin): Refactored the built-in HTML plugin with new features.
-  * [Improved JSDoc](#improved-jsdoc): Added JSDoc for all configuration options.
-* Ecosystem
-  * [Docusaurus Faster](#docusaurus-faster): Use Rspack as the bundler for Docusaurus sites.
-  * [Nuxt Rspack Builder](#nuxt-rspack-builder): Experimental Rspack builder for Nuxt.
-* [Rsbuild v1.1](#rsbuild-v11): CLI shortcuts and new configurations.
+- Performance improvements
+  - [Better scheduling strategy](#better-scheduling-strategy): Make Rspack **10% faster** than v1.0.
+  - [New incremental rebuild](#new-incremental-rebuild): Experimental feature that makes HMR **up to 38% faster**.
+- New features
+  - [Improved HTML Plugin](#improved-html-plugin): Refactored the built-in HTML plugin with new features.
+  - [Improved JSDoc](#improved-jsdoc): Added JSDoc for all configuration options.
+- Ecosystem
+  - [Docusaurus Faster](#docusaurus-faster): Use Rspack as the bundler for Docusaurus sites.
+  - [Nuxt Rspack Builder](#nuxt-rspack-builder): Experimental Rspack builder for Nuxt.
+- [Rsbuild v1.1](#rsbuild-v11): CLI shortcuts and new configurations.
 
 ## Performance improvements
 
@@ -31,8 +31,7 @@ Notable changes:
 
 According to our benchmarks, Rspack v1.1 is **10% faster** than v1.0.
 
-<img width="850" src="https://assets.rspack.rs/rspack/assets/rspack-1-1-perf-comparison.png" alt="Rspack v1.1 vs v1.0" />
-
+![Rspack v1.1 vs v1.0](https://assets.rspack.rs/rspack/assets/rspack-1-1-perf-comparison.png)
 A major optimization is that Rspack uses a better scheduling strategy inspired by [Using Rustlang’s Async Tokio Runtime for CPU-Bound Tasks](https://thenewstack.io/using-rustlangs-async-tokio-runtime-for-cpu-bound-tasks/) and SWC optimization for better concurrency support, which allows better scheduling of async tasks.
 
 ### New incremental rebuild
@@ -45,8 +44,7 @@ In Rspack v1.1, we introduced [experiments.incremental](/config/experiments.md#e
 
 In a case of 10000 React components, the HMR becomes 38% faster:
 
-<img width="850" src="https://assets.rspack.rs/rspack/assets/rspack-v1-1-new-incremental-compare.png" alt="10000 React Components with new incremental enabled" />
-
+![10000 React Components with new incremental enabled](https://assets.rspack.rs/rspack/assets/rspack-v1-1-new-incremental-compare.png)
 In Rspack v1.1 you can enable this feature in development mode by:
 
 ```js title="rspack.config.mjs"
@@ -102,8 +100,7 @@ Rspack uses [zod](https://github.com/colinhacks/zod) to validate user configurat
 
 To fix this, we recently refactored the configuration types and added JSDoc comments for all of them to improve readability.
 
-<img width="850" src="https://assets.rspack.rs/rspack/assets/rspack-v1-1-config-intellisense.png" alt="configuration intellisense in IDE" />
-
+![configuration intellisense in IDE](https://assets.rspack.rs/rspack/assets/rspack-v1-1-config-intellisense.png)
 > We're still looking to improve the JSDoc. If you're interested, feel free to submit pull requests. ❤️
 
 ## Ecosystem
@@ -134,22 +131,20 @@ Rsbuild now supports enabling CLI shortcuts through the [dev.cliShortcuts](https
 
 The CLI shortcut allows you to clear the console, open the browser, restart the server, or customize any shortcut you want.
 
-<img width="650" src="https://assets.rspack.rs/rsbuild/assets/rsbuild-cli-shortcuts.png" alt="Rsbuild CLI shortcuts" />
-
+![Rsbuild CLI shortcuts](https://assets.rspack.rs/rsbuild/assets/rsbuild-cli-shortcuts.png)
 ### View static assets
 
 Rsbuild dev server now provides a report page at `/rsbuild-dev-server` that allows you to view all static assets generated during the current build.
 
-<img src="https://assets.rspack.rs/rsbuild/assets/assets-report-page.png" alt="rsbuild-dev-server" width="600" />
-
+![rsbuild-dev-server](https://assets.rspack.rs/rsbuild/assets/assets-report-page.png)
 ### New configurations
 
 Rsbuild 1.1 introduced some new configurations:
 
-* [server.base](https://rsbuild.rs/config/server/base): Set the base path of the server.
-* [source.assetsInclude](https://rsbuild.rs/config/source/assets-include): Set the additional files that should be treated as static assets.
-* [output.filename.assets](https://rsbuild.rs/config/output/filename): Set the name of other static assets.
-* [output.distPath.assets](https://rsbuild.rs/config/output/dist-path): Set the output directory of other static assets.
+- [server.base](https://rsbuild.rs/config/server/base): Set the base path of the server.
+- [source.assetsInclude](https://rsbuild.rs/config/source/assets-include): Set the additional files that should be treated as static assets.
+- [output.filename.assets](https://rsbuild.rs/config/output/filename): Set the name of other static assets.
+- [output.distPath.assets](https://rsbuild.rs/config/output/dist-path): Set the output directory of other static assets.
 
 ## Upgrade guide
 

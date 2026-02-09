@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/content-structure/collection.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/content-structure/collection.md
-
-# Source: https://gitbook.com/docs/creating-content/content-structure/collection.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/content-structure/collection.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/content-structure/collection.md
 

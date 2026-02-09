@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/python.md
 
-# Source: https://docs.convex.dev/client/python.md
-
-# Source: https://docs.convex.dev/quickstart/python.md
-
 # Python Quickstart
 
 Learn how to query data from Convex in a Python app.

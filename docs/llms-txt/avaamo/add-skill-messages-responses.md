@@ -158,6 +158,17 @@ You can use the carousel to add a set or series of cards, each with a Title, Ima
 
 ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-MO53RsjtoQOaTEewtQH%2F-MO7Atlsa-uyh000KkdC%2Fdialog-skill-carousel.png?alt=media\&token=66dfeb23-fd79-4b63-a5a4-8f34ddd55e08)
 
+### Agentic text
+
+You can use this to add simple text to the display. Instead of static responses, the agent uses this to generate responses dynamically.
+
+* Example:\
+  \&#xNAN;*“Ask the user what size of pizza they want.”*
+
+This enables more natural, less repetitive conversations.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fsu4qD8BZ5aEmE8VvvNnT%2FScreenshot%202026-01-15%20at%2012.16.17%E2%80%AFPM.png?alt=media&#x26;token=9bd9e15b-13be-4f1f-bf6f-50ffec8df6b9" alt=""><figcaption></figcaption></figure>
+
 ### ListView
 
 You can add a list of items or options with Title, Image, Description, and Buttons. Example: A list of special offer options in a pizza order. In the ListView response, specify the following details:

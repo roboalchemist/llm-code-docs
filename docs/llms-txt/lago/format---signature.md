@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/webhooks/format---signature.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Format & Signature
 
 > Webhooks are HTTP notifications sent from Lago to your application.

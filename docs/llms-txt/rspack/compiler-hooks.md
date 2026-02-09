@@ -1,11 +1,5 @@
 # Source: https://rspack.dev/api/plugin-api/compiler-hooks.md
 
-import Mermaid from '@components/Mermaid';
-
-import { Collapse, CollapsePanel } from '@components/Collapse';
-import Columns from '@components/Columns';
-import { NoSSR } from '@rspress/core/runtime';
-
 # Compiler hooks
 
 Compiler hooks allow Rspack plugins to intervene at specific stages of the build process. These hooks represent various lifecycle stages from initialization to asset output.
@@ -18,239 +12,51 @@ See [Compiler](/api/javascript-api/compiler.md) for more information about the C
 
 ## Overview
 
-<NoSSR>
-  <Columns>
-    <div>
-      <Mermaid title="rspack()" style={{width: '20rem'}}>
-        {`
-          flowchart TD
-          CallRspack("rspack()") --> CreateCompiler("new Compiler()")
-          CreateCompiler --> ApplyNodeEnvPlugin(Apply NodeEnvironmentPlugin)
-          ApplyNodeEnvPlugin --> ApplyDefaultOptions(Apply default options)
-          ApplyDefaultOptions --> ApplyCustomPlugins(Apply custom plugins)
-          ApplyCustomPlugins --> HookEnvironment(<a href="#environment">hooks.environment</a>)
-          HookEnvironment --> HookAfterEnvironment(<a href="#afterenvironment">hooks.afterEnvironment</a>)
-          HookAfterEnvironment --> ApplyRspackPlugins(Apply internal plugins)
-          ApplyRspackPlugins <--> HookEntryOptions(<a href="#entryoption">hooks.entryOption</a>)
-          ApplyRspackPlugins --> HookAfterPlugins(<a href="#afterplugins">hooks.afterPlugins</a>)
-          HookAfterPlugins --> ResolveOptions(Generate resolve options)
-          ResolveOptions --> HookAfterResolvers(<a href="#afterresolvers">hooks.afterResolvers</a>)
-          HookAfterResolvers --> HookInitialize(<a href="#initialize">hooks.initialize</a>)
-          HookInitialize --> compiler("return compiler")
-
-          class CallRspack flow-start
-          class compiler flow-end
-          class CreateCompiler,ApplyNodeEnvPlugin,ApplyDefaultOptions,ApplyCustomPlugins,ApplyRspackPlugins,ResolveOptions flow-process
-          class HookEnvironment,HookAfterEnvironment,HookEntryOptions,HookAfterPlugins,HookAfterResolvers,HookInitialize flow-hook
-          `}
-      </Mermaid>
-
-      <br />
-
-      <Mermaid title="compiler.compile()">
-        {`
-          flowchart TD
-          Compile("compiler.compile(callback)") --> CompilationParams("Create module factories")
-          CompilationParams --> HookNormalModuleFactory(hooks.normalModuleFactory)
-          CompilationParams --> HookContextModuleFactory(hooks.contextModuleFactory)
-          CompilationParams --> HookBeforeCompile(<a href="#beforecompile">hooks.beforeCompile</a>)
-          HookBeforeCompile --> HookCompile(<a href="#compile">hooks.compile</a>)
-          HookCompile --> Compilation("new Compilation()")
-          Compilation --> HookThisCompilation(<a href="#thiscompilation">hooks.thisCompilation</a>)
-          HookThisCompilation --> HookCompilation(<a href="#compilation">hooks.compilation</a>)
-          HookCompilation --> HookMake(<a href="#make">hooks.make</a>)
-          HookMake --> CreateModuleGraph(Create module graph)
-          CreateModuleGraph <--> RunLoaders(Run loaders on modules)
-          CreateModuleGraph --> HookFinishMake(<a href="#finishmake">hooks.finishMake</a>)
-          HookFinishMake --> CompilationFinish("compilation.finish()")
-          CompilationFinish --> CompilationSeal("compilation.seal()")
-          CompilationSeal --> HookAfterCompile(<a href="#aftercompile">hooks.afterCompile</a>)
-          HookAfterCompile --> Callback("callback()")
-
-          class Compile flow-start
-          class Callback,CloseCallback flow-end
-          class CompilationParams,Compilation,CreateModuleGraph,RunLoaders,CompilationFinish,CompilationSeal flow-process
-          class HookBeforeCompile,HookCompile,HookThisCompilation,HookCompilation,HookMake,HookFinishMake,HookAfterCompile flow-hook
-          class HookNormalModuleFactory,HookContextModuleFactory flow-hook-non-support
-          `}
-      </Mermaid>
-    </div>
-
-    <Mermaid title="compiler.watch/run/close()">
-      {`
-        flowchart TD
-        WatchCompiler("compiler.watch(options, callback)") --> CreateWatching("new Watching()")
-        RunCompiler("compiler.run(callback)") --> HookBeforeRun(<a href="#beforerun">hooks.beforeRun</a>)
-        HookBeforeRun --> HookRun(<a href="#run">hooks.run</a>)
-        HookRun --> HookReadRecords(hooks.readRecords)
-        CreateWatching --> HookReadRecords
-        HookReadRecords --> Compile("compiler.compile()")
-        HookWatchRun --> Compile
-        HookReadRecords --> HookWatchRun(<a href="#watchrun">hooks.watchRun</a>)
-        Compile --> HookShouldEmit{<a href="#shouldemit">hooks.shouldEmit</a>}
-        HookShouldEmit --> |true| HookEmit(<a href="#emit">hooks.emit</a>)
-        HookShouldEmit --> |false| HookDone(<a href="#done">hooks.done</a>)
-        HookEmit --> EmitAssets(Emit asset files)
-        EmitAssets <--> HookAssetEmitted(hooks.assetEmitted)
-        EmitAssets --> HookAfterEmit(<a href="#afteremit">hooks.afterEmit</a>)
-        HookAfterEmit --> HookNeedAdditionalPass{hooks.needAdditionalPass}
-        HookNeedAdditionalPass --> |true| HookAdditionalDone(hooks.done)
-        HookAdditionalDone --> HookAdditionPass(hooks.additionalPass)
-        HookAdditionPass --> Compile
-        HookEmitRecords --> HookDone
-        HookDone --> HookFailed(<a href="#failed">hooks.failed</a>)
-        HookFailed --> Callback("callback(err, stats)")
-        Callback --> WatchingWatch("watching.watch()")
-        WatchingWatch --> HookAfterDone(<a href="#afterdone">hooks.afterDone</a>)
-        WatchingWatch --> CollectFileChanges("Collect file changes")
-        CollectFileChanges --> HookReadRecords
-        Callback --> HookAfterDone
-
-        HookAfterDone -.-> CloseCompile("compiler.close(callback)")
-        CloseCompile --> WatchingClose("watching.close()")
-        WatchingClose --> HookWatchClose(<a href="#watchclose">hooks.watchClose</a>)
-        HookWatchClose --> CloseCallback("callback()")
-        CloseCallback --> HookShutdown(<a href="#shutdown">hooks.shutdown</a>)
-
-        class RunCompiler,WatchCompiler flow-start
-        class Callback flow-end
-        class Compile,EmitAssets,CollectFileChanges,CreateWatching,WatchingWatch flow-process
-        class HookBeforeRun,HookRun,HookShouldEmit,HookEmit,HookAfterEmit,HookDone,HookFailed,HookAfterDone,HookWatchRun flow-hook
-        class HookReadRecords,HookAssetEmitted,HookNeedAdditionalPass,HookAdditionPass,HookAdditionalDone,HookEmitRecords flow-hook-non-support
-
-        class CloseCompile flow-start
-        class CloseCallback flow-end
-        class WatchingClose flow-process
-        class HookWatchClose,HookShutdown flow-hook
-        `}
-    </Mermaid>
-  </Columns>
-</NoSSR>
 
 ## `environment`
 
 Called while preparing the compiler environment, right after initializing the plugins in the configuration file.
 
-* **Type:** `SyncHook<[]>`
+- **Type:** `SyncHook<[]>`
 
 ## `afterEnvironment`
 
 Called right after the `environment` hook, when the compiler environment setup is complete.
 
-* **Type:** `SyncHook<[]>`
+- **Type:** `SyncHook<[]>`
 
 ## `entryOption`
 
 Called after the [`entry`](/config/entry.md) configuration from Rspack options has been processed.
 
-* **Type:** `SyncBailHook<[string, EntryNormalized]>`
-* **Arguments:**
-  * `string`: same with [`context`](/config/context.md)
-  * `EntryNormalized`: normalized [`entry`](/config/entry.md)
+- **Type:** `SyncBailHook<[string, EntryNormalized]>`
+- **Arguments:**
+  - `string`: same with [`context`](/config/context.md)
+  - `EntryNormalized`: normalized [`entry`](/config/entry.md)
 
 ## `afterPlugins`
 
 Called after setting up initial set of internal plugins.
 
-* **Type:** `SyncHook<[Compiler]>`
-* **Arguments:**
-  * `Compiler`: current compiler instance
+- **Type:** `SyncHook<[Compiler]>`
+- **Arguments:**
+  - `Compiler`: current compiler instance
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compiler.ts" key="Compiler">
-    <>
-      ```ts
-      type Compiler = {
-        hooks: CompilerHooks;
-        inputFileSystem: InputFileSystem | null;
-        outputFileSystem: OutputFileSystem | null;
-        watchFileSystem: WatchFileSystem | null;
-        options: RspackOptionsNormalized;
-        watching: Watching;
-
-        getInfrastructureLogger(name: string | (() => string)): Logger;
-        getCache(name: string): CacheFacade;
-        watch(
-          watchOptions: Watchpack.WatchOptions,
-          handler: liteTapable.Callback<Error, Stats>,
-        ): Watching;
-        run(callback: liteTapable.Callback<Error, Stats>): void;
-        runAsChild(
-          callback: (
-            err?: null | Error,
-            entries?: Chunk[],
-            compilation?: Compilation,
-          ) => any,
-        ): void;
-        createChildCompiler(
-          compilation: Compilation,
-          compilerName: string,
-          compilerIndex: number,
-          outputOptions: OutputNormalized,
-          plugins: RspackPluginInstance[],
-        ): Compiler;
-        compile(callback: liteTapable.Callback<Error, Compilation>): void;
-        close(callback: (error?: Error | null) => void): void;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compiler.ts
 ## `afterResolvers`
 
 Triggered after resolver setup is complete.
 
-* **Type:** `SyncHook<[Compiler]>`
-* **Arguments:**
-  * `Compiler`: current compiler instance
+- **Type:** `SyncHook<[Compiler]>`
+- **Arguments:**
+  - `Compiler`: current compiler instance
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compiler.ts" key="Compiler">
-    <>
-      ```ts
-      type Compiler = {
-        hooks: CompilerHooks;
-        inputFileSystem: InputFileSystem | null;
-        outputFileSystem: OutputFileSystem | null;
-        watchFileSystem: WatchFileSystem | null;
-        options: RspackOptionsNormalized;
-        watching: Watching;
-
-        getInfrastructureLogger(name: string | (() => string)): Logger;
-        getCache(name: string): CacheFacade;
-        watch(
-          watchOptions: Watchpack.WatchOptions,
-          handler: liteTapable.Callback<Error, Stats>,
-        ): Watching;
-        run(callback: liteTapable.Callback<Error, Stats>): void;
-        runAsChild(
-          callback: (
-            err?: null | Error,
-            entries?: Chunk[],
-            compilation?: Compilation,
-          ) => any,
-        ): void;
-        createChildCompiler(
-          compilation: Compilation,
-          compilerName: string,
-          compilerIndex: number,
-          outputOptions: OutputNormalized,
-          plugins: RspackPluginInstance[],
-        ): Compiler;
-        compile(callback: liteTapable.Callback<Error, Compilation>): void;
-        close(callback: (error?: Error | null) => void): void;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compiler.ts
 ## `initialize`
 
 Called when a compiler object is initialized.
 
-* **Type:** `SyncHook<[]>`
+- **Type:** `SyncHook<[]>`
 
 ## `beforeRun`
 
@@ -262,52 +68,12 @@ This hook is only triggered when calling [compiler.run()](/api/javascript-api/in
 
 :::
 
-* **Type:** `AsyncSeriesHook<[Compiler]>`
-* **Arguments:**
-  * `Compiler`: current compiler instance
+- **Type:** `AsyncSeriesHook<[Compiler]>`
+- **Arguments:**
+  - `Compiler`: current compiler instance
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compiler.ts" key="Compiler">
-    <>
-      ```ts
-      type Compiler = {
-        hooks: CompilerHooks;
-        inputFileSystem: InputFileSystem | null;
-        outputFileSystem: OutputFileSystem | null;
-        watchFileSystem: WatchFileSystem | null;
-        options: RspackOptionsNormalized;
-        watching: Watching;
-
-        getInfrastructureLogger(name: string | (() => string)): Logger;
-        getCache(name: string): CacheFacade;
-        watch(
-          watchOptions: Watchpack.WatchOptions,
-          handler: liteTapable.Callback<Error, Stats>,
-        ): Watching;
-        run(callback: liteTapable.Callback<Error, Stats>): void;
-        runAsChild(
-          callback: (
-            err?: null | Error,
-            entries?: Chunk[],
-            compilation?: Compilation,
-          ) => any,
-        ): void;
-        createChildCompiler(
-          compilation: Compilation,
-          compilerName: string,
-          compilerIndex: number,
-          outputOptions: OutputNormalized,
-          plugins: RspackPluginInstance[],
-        ): Compiler;
-        compile(callback: liteTapable.Callback<Error, Compilation>): void;
-        close(callback: (error?: Error | null) => void): void;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
-* **Example:** Sync operation
+Compiler.ts
+- **Example:** Sync operation
 
 ```js
 class ExamplePlugin {
@@ -319,7 +85,7 @@ class ExamplePlugin {
 }
 ```
 
-* **Example:** Async operation
+- **Example:** Async operation
 
 ```js
 class ExamplePlugin {
@@ -346,52 +112,12 @@ This hook is only triggered when calling [compiler.run()](/api/javascript-api/in
 
 :::
 
-* **Type:** `AsyncSeriesHook<[Compiler]>`
-* **Arguments:**
-  * `Compiler`: current compiler instance
+- **Type:** `AsyncSeriesHook<[Compiler]>`
+- **Arguments:**
+  - `Compiler`: current compiler instance
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compiler.ts" key="Compiler">
-    <>
-      ```ts
-      type Compiler = {
-        hooks: CompilerHooks;
-        inputFileSystem: InputFileSystem | null;
-        outputFileSystem: OutputFileSystem | null;
-        watchFileSystem: WatchFileSystem | null;
-        options: RspackOptionsNormalized;
-        watching: Watching;
-
-        getInfrastructureLogger(name: string | (() => string)): Logger;
-        getCache(name: string): CacheFacade;
-        watch(
-          watchOptions: Watchpack.WatchOptions,
-          handler: liteTapable.Callback<Error, Stats>,
-        ): Watching;
-        run(callback: liteTapable.Callback<Error, Stats>): void;
-        runAsChild(
-          callback: (
-            err?: null | Error,
-            entries?: Chunk[],
-            compilation?: Compilation,
-          ) => any,
-        ): void;
-        createChildCompiler(
-          compilation: Compilation,
-          compilerName: string,
-          compilerIndex: number,
-          outputOptions: OutputNormalized,
-          plugins: RspackPluginInstance[],
-        ): Compiler;
-        compile(callback: liteTapable.Callback<Error, Compilation>): void;
-        close(callback: (error?: Error | null) => void): void;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
-* **Example:** Sync operation
+Compiler.ts
+- **Example:** Sync operation
 
 ```js
 class ExamplePlugin {
@@ -403,7 +129,7 @@ class ExamplePlugin {
 }
 ```
 
-* **Example:** Async operation
+- **Example:** Async operation
 
 ```js
 class ExamplePlugin {
@@ -432,52 +158,12 @@ This hook is only triggered when calling [compiler.watch()](/api/javascript-api/
 
 :::
 
-* **Type:** `AsyncSeriesHook<[Compiler]>`
-* **Arguments:**
-  * `Compiler`: current compiler instance
+- **Type:** `AsyncSeriesHook<[Compiler]>`
+- **Arguments:**
+  - `Compiler`: current compiler instance
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compiler.ts" key="Compiler">
-    <>
-      ```ts
-      type Compiler = {
-        hooks: CompilerHooks;
-        inputFileSystem: InputFileSystem | null;
-        outputFileSystem: OutputFileSystem | null;
-        watchFileSystem: WatchFileSystem | null;
-        options: RspackOptionsNormalized;
-        watching: Watching;
-
-        getInfrastructureLogger(name: string | (() => string)): Logger;
-        getCache(name: string): CacheFacade;
-        watch(
-          watchOptions: Watchpack.WatchOptions,
-          handler: liteTapable.Callback<Error, Stats>,
-        ): Watching;
-        run(callback: liteTapable.Callback<Error, Stats>): void;
-        runAsChild(
-          callback: (
-            err?: null | Error,
-            entries?: Chunk[],
-            compilation?: Compilation,
-          ) => any,
-        ): void;
-        createChildCompiler(
-          compilation: Compilation,
-          compilerName: string,
-          compilerIndex: number,
-          outputOptions: OutputNormalized,
-          plugins: RspackPluginInstance[],
-        ): Compiler;
-        compile(callback: liteTapable.Callback<Error, Compilation>): void;
-        close(callback: (error?: Error | null) => void): void;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
-* **Example:** Sync operation
+Compiler.ts
+- **Example:** Sync operation
 
 ```js
 class ExamplePlugin {
@@ -495,7 +181,7 @@ class ExamplePlugin {
 }
 ```
 
-* **Example:** Async operation
+- **Example:** Async operation
 
 ```js
 class ExamplePlugin {
@@ -511,13 +197,13 @@ class ExamplePlugin {
 
 Executes a plugin after compilation parameters are created.
 
-* **Type:** `AsyncSeriesHook<[]>`
+- **Type:** `AsyncSeriesHook<[]>`
 
 ## `compile`
 
 Called right after `beforeCompile`, before a new [compilation object](/api/javascript-api/compilation.md) is created.
 
-* **Type:** `SyncHook<[]>`
+- **Type:** `SyncHook<[]>`
 
 ## `thisCompilation`
 
@@ -525,55 +211,12 @@ Called while initializing the compilation, can be used to get the current compil
 
 You can use the `compilation` parameter to access the properties of the compilation object, or register [compilation hooks](/api/plugin-api/compilation-hooks.md).
 
-* **Type:** `SyncHook<[Compilation]>`
-* **Arguments:**
-  * `compilation`: created [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `SyncHook<[Compilation]>`
+- **Arguments:**
+  - `compilation`: created [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
-* **Example:**
+Compilation.ts
+- **Example:**
 
 ```js
 class ExamplePlugin {
@@ -597,54 +240,11 @@ You can use the `compilation` parameter to access the properties of the compilat
 
 `compilation` hook is called after the [thisCompilation](#thiscompilation) hook, and `thisCompilation` hook is not copied to child compiler, while `compilation` hook is copied to child compiler.
 
-* **Type:** `SyncHook<[Compilation]>`
-* **Arguments:**
-  * `compilation`: created [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `SyncHook<[Compilation]>`
+- **Arguments:**
+  - `compilation`: created [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ```js
 class ExamplePlugin {
   apply(compiler) {
@@ -665,215 +265,43 @@ Called before the make phase.
 
 In the make phase, Rspack will build the module graph starting from the entry, and use the loader to handle each module.
 
-* **Type:** `AsyncParallelHook<[Compilation]>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `AsyncParallelHook<[Compilation]>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ## `finishMake`
 
 Called after finishing the make phase.
 
 In the make phase, Rspack builds the module graph starting from the entry and uses loaders to handle each module. This hook is called when that process completes.
 
-* **Type:** `AsyncSeriesHook<[Compilation]>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `AsyncSeriesHook<[Compilation]>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ## `afterCompile`
 
 Called after the make phase and before the seal phase.
 
 In the seal phase, Rspack will create chunk graph from the module graph and then generate the assets.
 
-* **Type:** `AsyncSeriesHook<[Compilation]>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `AsyncSeriesHook<[Compilation]>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ## `shouldEmit`
 
 Called before emitting assets. Should return a boolean telling whether to emit.
 
-* **Type:** `SyncBailHook<[Compilation], boolean>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `SyncBailHook<[Compilation], boolean>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
-* **Example:**
+Compilation.ts
+- **Example:**
 
 ```js
 compiler.hooks.shouldEmit.tap('MyPlugin', (compilation) => {
@@ -886,174 +314,52 @@ compiler.hooks.shouldEmit.tap('MyPlugin', (compilation) => {
 
 Called right before emitting assets to output dir.
 
-* **Type:** `AsyncSeriesHook<[Compilation]>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `AsyncSeriesHook<[Compilation]>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ## `afterEmit`
 
 Called after emitting assets to output directory.
 
-* **Type:** `AsyncSeriesHook<[Compilation]>`
-* **Arguments:**
-  * `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
+- **Type:** `AsyncSeriesHook<[Compilation]>`
+- **Arguments:**
+  - `Compilation`: current [compilation](/api/javascript-api/compilation.md) object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Compilation.ts" key="Compilation">
-    <>
-      > See [compilation object](/api/javascript-api/compilation.md) for more details.
-
-      ```ts
-      type Compilation = {
-        emitAsset(): void; // add a new asset
-        updateAsset(): void; // update content of the asset
-        renameAsset(): void; // rename the asset
-        deleteAsset(): void; // delete an existing asset
-        getAssets(): Asset[]; // get all assets
-        getAsset(): Asset; // get asset from name
-        getPath(): string; // generate path from template
-        getPathWithInfo(): PathWithInfo; // generate path and asset info from template
-        getStats(): Stats; // get stats object
-        createChildCompiler(): Compiler; // create a child compiler
-        rebuildModule(): void; // run module.build again
-        getLogger(): Logger; // get compilation related logger object
-        getCache(): CacheFacade; // get compilation related cache object
-        options: RspackOptionsNormalized; // the compiler options
-        compiler: Compiler; // current compiler
-        hooks: CompilationHooks; // hooks of compilation
-        hash: string | null; // hash of this compilation
-        fullhash: string | null; // same as 'hash'
-        assets: Record<string, Source>; // mapping from filename to asset content
-        chunkGroups: ChunkGroup[]; // list of chunk groups
-        entrypoints: Map<string, Entrypoint>; // mapping from name to entrypoint
-        namedChunkGroups: Map<string, ChunkGroup>; // mapping named chunk groups
-        modules: Set<Module>; // set of all modules
-        chunks: Set<Chunk>; // set of all chunks
-        namedChunks: Map<string, Chunk>; // mapping of named chunks
-        fileDependencies: CompilationDependencies; // dependent files
-        contextDependencies: CompilationDependencies; // dependent directories
-        missingDependencies: CompilationDependencies; // dependent missing files
-        buildDependencies: CompilationDependencies; // dependent build files
-        errors: RspackError[]; // errors during compilation
-        warnings: RspackError[]; // warnings during compilation
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Compilation.ts
 ## `done`
 
 Called when the compilation has completed.
 
-* **Type:** `AsyncSeriesHook<Stats>`
-* **Arguments:**
-  * `Stats`: generated stats object
+- **Type:** `AsyncSeriesHook<Stats>`
+- **Arguments:**
+  - `Stats`: generated stats object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Stats.ts" key="Stats">
-    <>
-      ```ts
-      type Stats = {
-        compilation: Compilation;
-        hash: Readonly<string | null>;
-        startTime?: number;
-        endTime?: number;
-        hasErrors(): bool;
-        hasWarnings(): bool;
-        toJson(opts?: StatsValue): StatsCompilation;
-        toString(opts?: StatsValue): string;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Stats.ts
 ## `afterDone`
 
 Called after `done` hook.
 
-* **Type:** `SyncHook<Stats>`
-* **Arguments:**
-  * `Stats`: generated stats object
+- **Type:** `SyncHook<Stats>`
+- **Arguments:**
+  - `Stats`: generated stats object
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="Stats.ts" key="Stats">
-    <>
-      ```ts
-      type Stats = {
-        compilation: Compilation;
-        hash: Readonly<string | null>;
-        startTime?: number;
-        endTime?: number;
-        hasErrors(): bool;
-        hasWarnings(): bool;
-        toJson(opts?: StatsValue): StatsCompilation;
-        toString(opts?: StatsValue): string;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+Stats.ts
 ## `failed`
 
 Called if the compilation fails.
 
-* **Type:** `SyncHook<[Error]>`
+- **Type:** `SyncHook<[Error]>`
 
 ## `invalid`
 
 Executed when a watching compilation has been invalidated. This hook is not copied to child compilers.
 
-* **Type:** `SyncHook<[string | null, number]>`
-* **Arguments:**
-  * `fileName`: the file path of the invalid file
-  * `changeTime`: the change time of the invalid file
+- **Type:** `SyncHook<[string | null, number]>`
+- **Arguments:**
+  - `fileName`: the file path of the invalid file
+  - `changeTime`: the change time of the invalid file
 
 When triggering a re-compilation, this hook can be used to get the changed file path and change time, for example:
 
@@ -1067,13 +373,13 @@ compiler.hooks.invalid.tap('MyPlugin', (fileName, changeTime) => {
 
 Called when a watching compilation has stopped.
 
-* **Type:** `SyncHook<[]>`
+- **Type:** `SyncHook<[]>`
 
 ## `shutdown`
 
 Called when the compiler is closing.
 
-* **Type:** `AsyncSeriesHook<[]>`
+- **Type:** `AsyncSeriesHook<[]>`
 
 ## infrastructureLog
 
@@ -1083,12 +389,12 @@ This hook provides a way to customize Rspack's infrastructure logs - you can fil
 
 If the hook returns `true`, the default infrastructure logging will be prevented. If it returns `undefined`, the default logging will proceed.
 
-* **Type:** `SyncBailHook<[string, string, any[]], true | void>`
-* **Arguments:**
-  * `name`: The name of the logger
-  * `type`: The log type (e.g., 'log', 'warn', 'error', ...)
-  * `args`: An array of arguments passed to the logging method
-* **Example:**
+- **Type:** `SyncBailHook<[string, string, any[]], true | void>`
+- **Arguments:**
+  - `name`: The name of the logger
+  - `type`: The log type (e.g., 'log', 'warn', 'error', ...)
+  - `args`: An array of arguments passed to the logging method
+- **Example:**
 
 ```js
 class ExamplePlugin {

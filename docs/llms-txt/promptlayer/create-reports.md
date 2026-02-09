@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/create-reports.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Evaluation Pipeline
 
 > Creates a new evaluation pipeline (report) with optional evaluation columns and custom scoring.
@@ -399,7 +403,3 @@ paths:
                     example: Dataset group not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/nextjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js setup guide
 
 > This guide will show you how to setup Trigger.dev in your existing Next.js project, test an example task, and view the run.
@@ -24,25 +28,31 @@ export const framework_0 = "Next.js"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -53,15 +63,15 @@ export const framework_0 = "Next.js"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -93,7 +103,7 @@ export const framework_0 = "Next.js"
 <Tip>
   Instead of running your Next.js app and Trigger.dev dev server in separate terminals, you can run them concurrently. First, add these scripts to your `package.json`:
 
-  ```json  theme={null}
+  ```json  theme={"theme":"css-variables"}
   {
     "scripts": {
       "trigger:dev": "npx trigger.dev@latest dev",
@@ -104,7 +114,7 @@ export const framework_0 = "Next.js"
 
   Then, in your terminal, you can start both servers with a single command:
 
-  ```bash  theme={null}
+  ```bash  theme={"theme":"css-variables"}
   npm run dev
   ```
 
@@ -133,7 +143,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Add your task">
         Add this code to your `route.ts` file which imports your task along with `NextResponse` to handle the API route response:
 
-        ```ts app/api/hello-world/route.ts theme={null}
+        ```ts app/api/hello-world/route.ts theme={"theme":"css-variables"}
         // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
         import type { helloWorldTask } from "@/trigger/example";
         import { tasks } from "@trigger.dev/sdk";
@@ -157,15 +167,15 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
@@ -173,22 +183,22 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
 
         Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash  theme={"theme":"css-variables"}
         http://localhost:3000/api/hello-world
         ```
 
@@ -206,7 +216,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create an `actions.ts` file">
         Create an `actions.ts` file in the `app/api` directory and add this code which imports your `helloWorldTask()` task. Make sure to include `"use server";` at the top of the file.
 
-        ```ts app/api/actions.ts theme={null}
+        ```ts app/api/actions.ts theme={"theme":"css-variables"}
           "use server";
 
           import type { helloWorldTask } from "@/trigger/example";
@@ -233,7 +243,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create a button to trigger your task">
         For the purposes of this guide, we'll create a button with an `onClick` event that triggers your task. We'll add this to the `page.tsx` file so we can trigger the task by clicking the button. Make sure to import your task and include `"use client";` at the top of your file.
 
-        ```ts app/page.tsx theme={null}
+        ```ts app/page.tsx theme={"theme":"css-variables"}
         "use client";
 
         import { myTask } from "./actions";
@@ -258,37 +268,37 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
 
         Open your app in a browser, making sure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash  theme={"theme":"css-variables"}
         http://localhost:3000
         ```
 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
@@ -307,7 +317,7 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
       <Step title="Create an API route">
         Create an API route in the `pages/api` directory. Then create a `hello-world .ts` (or `hello-world.js`) file for your task and copy this code example:
 
-        ```ts pages/api/hello-world.ts theme={null}
+        ```ts pages/api/hello-world.ts theme={"theme":"css-variables"}
         // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
         import { helloWorldTask } from "@/trigger/example";
         import { tasks } from "@trigger.dev/sdk";
@@ -331,15 +341,15 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run your Next.js app:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npm run dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm run dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dev
           ```
         </CodeGroup>
@@ -347,22 +357,22 @@ Here are the steps to trigger your task in the Next.js App and Pages router and 
         Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/nextjs#initial-setup) section above if it's not already running:
 
         <CodeGroup>
-          ```bash npm theme={null}
+          ```bash npm theme={"theme":"css-variables"}
           npx trigger.dev@latest dev
           ```
 
-          ```bash pnpm theme={null}
+          ```bash pnpm theme={"theme":"css-variables"}
           pnpm dlx trigger.dev@latest dev
           ```
 
-          ```bash yarn theme={null}
+          ```bash yarn theme={"theme":"css-variables"}
           yarn dlx trigger.dev@latest dev
           ```
         </CodeGroup>
 
         Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Next.js app on. For example, if you're running your Next.js app on port 3000, visit:
 
-        ```bash  theme={null}
+        ```bash  theme={"theme":"css-variables"}
         http://localhost:3000/api/hello-world
         ```
 
@@ -389,7 +399,7 @@ If you want to automatically sync environment variables from your Vercel project
   the project with the environment variables you want to sync.
 </Note>
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -424,15 +434,15 @@ You can also add environment variables in code by following the steps on the [En
 For this guide, we'll manually deploy your task by running the [CLI deploy command](/cli-deploy) below. Other ways to deploy are listed in the next section.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -463,7 +473,7 @@ The handlers are slightly different for the App and Pages router:
 
 If you are using the App router, create a new revalidation route at `app/api/revalidate/path/route.ts`:
 
-```ts app/api/revalidate/path/route.ts theme={null}
+```ts app/api/revalidate/path/route.ts theme={"theme":"css-variables"}
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
@@ -493,7 +503,7 @@ export async function POST(request: NextRequest) {
 
 If you are using the Pages router, create a new revalidation route at `pages/api/revalidate/path.ts`:
 
-```ts pages/api/revalidate/path.ts theme={null}
+```ts pages/api/revalidate/path.ts theme={"theme":"css-variables"}
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -532,7 +542,7 @@ This task takes a `path` as a payload and will revalidate the path you specify, 
   To run this task in production, you will need to set the `REVALIDATION_SECRET` environment variable in Vercel, in your project settings, and also in your environment variables in the Trigger.dev dashboard.
 </Note>
 
-```ts trigger/revalidate-path.ts theme={null}
+```ts trigger/revalidate-path.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 
 const NEXTJS_APP_URL = process.env.NEXTJS_APP_URL; // e.g. "http://localhost:3000" or "https://my-nextjs-app.vercel.app"
@@ -587,7 +597,7 @@ export const revalidatePath = task({
 
 You can test your revalidation task in the Trigger.dev dashboard on the testing page, using the following payload.
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "path": "<path-to-revalidate>" // e.g. "blog"
 }
@@ -597,7 +607,7 @@ You can test your revalidation task in the Trigger.dev dashboard on the testing 
 
 This issue occurs during the Next.js app build process on GitHub CI where the Trigger.dev SDK is expecting the TRIGGER\_SECRET\_KEY environment variable to be set at build time. Next.js attempts to compile routes and creates static pages, which can cause issues with SDKs that require runtime environment variables. The solution is to mark the relevant pages as dynamic to prevent Next.js from trying to make them static. You can do this by adding the following line to the route file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const dynamic = "force-dynamic";
 ```
 
@@ -607,13 +617,13 @@ An issue can sometimes arise when you try to pass a function directly to the `on
 
 This works:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 <Button onClick={() => myTask()}>Trigger my task</Button>
 ```
 
 Whereas this does not work:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 <Button onClick={myTask}>Trigger my task</Button>
 ```
 

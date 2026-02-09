@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/list-responses.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Responses
 
 > Get a list of all responses for the authenticated account.
@@ -9,239 +13,140 @@ Args:
     after: Cursor for pagination - return responses after this ID
     before: Cursor for pagination - return responses before this ID
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/responses
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers: []
+security: []
+tags:
+  - name: gateway.openapi_Gateway
+    x-displayName: Gateway
+  - name: gateway-extra.openapi_Gateway
+    x-displayName: Gateway
+  - name: responses.openapi_other
+    x-displayName: other
+  - name: text-completion.openapi_other
+    x-displayName: other
 paths:
-  path: /v1/responses
-  method: get
-  servers:
-    - url: https://api.fireworks.ai/inference
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
-          schema:
-            - type: integer
-              required: false
-              title: Limit
-              default: 20
-        after:
-          schema:
-            - type: string
-              required: false
-              title: After
-            - type: 'null'
-              required: false
-              title: After
-        before:
-          schema:
-            - type: string
-              required: false
-              title: Before
-            - type: 'null'
-              required: false
-              title: Before
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              object:
-                allOf:
-                  - type: string
-                    title: Object
-                    description: The object type, which is always 'list'.
-                    default: list
-              data:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/Response'
-                    type: array
-                    title: Data
-                    description: >-
-                      An array of response objects, sorted by creation time in
-                      descending order (most recent first).
-              has_more:
-                allOf:
-                  - type: boolean
-                    title: Has More
-                    description: >-
-                      Indicates whether there are more responses available
-                      beyond this page. If true, use the 'last_id' value as the
-                      'after' cursor to fetch the next page.
-              first_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: First Id
-                    description: >-
-                      The ID of the first response in the current page. Used for
-                      pagination.
-              last_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Last Id
-                    description: >-
-                      The ID of the last response in the current page. Use this
-                      as the 'after' cursor to fetch the next page if has_more
-                      is true.
-            title: ResponseList
-            description: >-
-              Response model for listing responses.
+  /v1/responses:
+    servers:
+      - url: https://api.fireworks.ai/inference
+    get:
+      tags:
+        - responses.openapi_other
+      summary: List Responses
+      description: |-
+        Get a list of all responses for the authenticated account.
 
-
-              Returned from the GET /v1/responses endpoint. Provides a paginated
-              list
-
-              of response objects with cursor-based pagination support.
-            refIdentifier: '#/components/schemas/ResponseList'
-            requiredProperties:
-              - data
-              - has_more
-        examples:
-          example:
-            value:
-              object: list
-              data:
-                - id: <string>
-                  object: response
-                  created_at: 123
-                  status: <string>
-                  model: <string>
-                  output:
-                    - id: <string>
-                      type: message
-                      role: <string>
-                      content:
-                        - type: <string>
-                          text: <string>
-                      status: <string>
-                  previous_response_id: <string>
-                  usage: {}
-                  error: {}
-                  incomplete_details: {}
-                  instructions: <string>
-                  max_output_tokens: 123
-                  max_tool_calls: 2
-                  parallel_tool_calls: true
-                  reasoning: {}
-                  store: true
-                  temperature: 1
-                  text: {}
-                  tool_choice: <string>
-                  tools:
-                    - {}
-                  top_p: 1
-                  truncation: disabled
-                  user: <string>
-                  metadata: {}
-              has_more: true
-              first_id: <string>
-              last_id: <string>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+        Args:
+            limit: Maximum number of responses to return (default: 20, max: 100)
+            after: Cursor for pagination - return responses after this ID
+            before: Cursor for pagination - return responses before this ID
+      operationId: list_responses_v1_responses_get
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+            title: Limit
+        - name: after
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: After
+        - name: before
+          in: query
+          required: false
+          schema:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Before
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseList'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - BearerAuth: []
 components:
   schemas:
-    Message:
+    ResponseList:
       properties:
-        id:
+        object:
           type: string
-          title: Id
-          description: The unique identifier of the message.
-        type:
-          type: string
-          title: Type
-          description: The object type, always 'message'.
-          default: message
-        role:
-          type: string
-          title: Role
-          description: >-
-            The role of the message sender. Can be 'user', 'assistant', or
-            'system'.
-        content:
+          title: Object
+          description: The object type, which is always 'list'.
+          default: list
+        data:
           items:
-            $ref: '#/components/schemas/MessageContent'
+            $ref: '#/components/schemas/Response'
           type: array
-          title: Content
+          title: Data
           description: >-
-            An array of content parts that make up the message. Each part has a
-            type and associated data.
-        status:
-          type: string
-          title: Status
-          description: The status of the message. Can be 'in_progress' or 'completed'.
-      type: object
-      required:
-        - id
-        - role
-        - content
-        - status
-      title: Message
-      description: Represents a message in a conversation.
-    MessageContent:
-      properties:
-        type:
-          type: string
-          title: Type
+            An array of response objects, sorted by creation time in descending
+            order (most recent first).
+        has_more:
+          type: boolean
+          title: Has More
           description: >-
-            The type of the content part. Can be 'input_text', 'output_text',
-            'image', etc.
-        text:
+            Indicates whether there are more responses available beyond this
+            page. If true, use the 'last_id' value as the 'after' cursor to
+            fetch the next page.
+        first_id:
           anyOf:
             - type: string
             - type: 'null'
-          title: Text
-          description: The text content, if applicable.
+          title: First Id
+          description: >-
+            The ID of the first response in the current page. Used for
+            pagination.
+        last_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Last Id
+          description: >-
+            The ID of the last response in the current page. Use this as the
+            'after' cursor to fetch the next page if has_more is true.
       type: object
       required:
-        - type
-      title: MessageContent
-      description: Represents a piece of content within a message.
+        - data
+        - has_more
+      title: ResponseList
+      description: |-
+        Response model for listing responses.
+
+        Returned from the GET /v1/responses endpoint. Provides a paginated list
+        of response objects with cursor-based pagination support.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     Response:
       properties:
         id:
@@ -458,6 +363,64 @@ components:
         parameters,
 
         and metadata about the conversation state.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    Message:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: The unique identifier of the message.
+        type:
+          type: string
+          title: Type
+          description: The object type, always 'message'.
+          default: message
+        role:
+          type: string
+          title: Role
+          description: >-
+            The role of the message sender. Can be 'user', 'assistant', or
+            'system'.
+        content:
+          items:
+            $ref: '#/components/schemas/MessageContent'
+          type: array
+          title: Content
+          description: >-
+            An array of content parts that make up the message. Each part has a
+            type and associated data.
+        status:
+          type: string
+          title: Status
+          description: The status of the message. Can be 'in_progress' or 'completed'.
+      type: object
+      required:
+        - id
+        - role
+        - content
+        - status
+      title: Message
+      description: Represents a message in a conversation.
     ToolCall:
       properties:
         id:
@@ -467,7 +430,37 @@ components:
         type:
           type: string
           title: Type
-          description: The type of tool call. Can be 'function', 'tool_call', or 'mcp'.
+          description: The type of tool call. Can be 'function_call' or 'mcp_call'.
+        call_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Call Id
+          description: >-
+            The call ID for function calls, used to match with
+            function_call_output.
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+          description: The name of the function to call (for function_call type).
+        arguments:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Arguments
+          description: >-
+            The arguments for the function call as a JSON string (for
+            function_call type).
+        status:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Status
+          description: >-
+            The status of the tool call. Can be 'in_progress', 'completed', or
+            'incomplete'.
         function:
           anyOf:
             - additionalProperties: true
@@ -476,7 +469,7 @@ components:
           title: Function
           description: >-
             The function definition for function tool calls. Contains 'name' and
-            'arguments' keys.
+            'arguments' keys. Deprecated for function_call type.
         mcp:
           anyOf:
             - additionalProperties: true
@@ -513,26 +506,32 @@ components:
         - output
       title: ToolOutput
       description: Represents the output/result of a tool call.
-    ValidationError:
+    MessageContent:
       properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
         type:
           type: string
-          title: Error Type
+          title: Type
+          description: >-
+            The type of the content part. Can be 'input_text', 'output_text',
+            'image', etc.
+        text:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Text
+          description: The text content, if applicable.
       type: object
       required:
-        - loc
-        - msg
         - type
-      title: ValidationError
+      title: MessageContent
+      description: Represents a piece of content within a message.
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API_KEY
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
 
 ````

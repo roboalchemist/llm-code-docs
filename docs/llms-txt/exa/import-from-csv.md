@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/import-from-csv.md
+# Source: https://exa.ai/docs/websets/dashboard/import-from-csv.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Import from CSV
 
@@ -56,8 +60,3 @@ Filter your imported URLs based on specific criteria:
 * Industry or sector
 * Geographic location
 * Content type or topic
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

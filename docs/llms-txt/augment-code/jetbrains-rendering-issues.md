@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/troubleshooting/jetbrains-rendering-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Jetbrains UI issues
 
 > Fix issues where the Augment panel is white, blank or not showing anything in JetBrains IDEs.

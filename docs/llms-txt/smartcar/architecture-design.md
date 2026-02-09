@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/how-to/architecture-design.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Design Your Backend Architecture for Smartcar
 
 > Learn how to design your backend to integrate your application with Smartcar.

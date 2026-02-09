@@ -1,27 +1,26 @@
 # Source: https://gofastmcp.com/integrations/openapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAPI 🤝 FastMCP
 
 > Generate MCP servers from any OpenAPI specification
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.0.0" />
 
-<Tip>
-  **New in 2.11**: FastMCP is introducing a next-generation OpenAPI parser. The new parser has greatly improved performance and compatibility, and is also easier to maintain. To enable it, set the environment variable `FASTMCP_EXPERIMENTAL_ENABLE_NEW_OPENAPI_PARSER=true`.
-
-  The new parser is largely API-compatible with the existing implementation and will become the default in a future version. We encourage all users to test it and report any issues before it becomes the default.
-</Tip>
-
 FastMCP can automatically generate an MCP server from any OpenAPI specification, allowing AI models to interact with existing APIs through the MCP protocol. Instead of manually creating tools and resources, you provide an OpenAPI spec and FastMCP intelligently converts API endpoints into the appropriate MCP components.
+
+<Note>
+  Under the hood, OpenAPI integration uses OpenAPIProvider (v3.0.0+) to source tools from the specification. See [Providers](/servers/providers/overview) to understand how FastMCP sources components.
+</Note>
 
 <Tip>
   Generating MCP servers from OpenAPI is a great way to get started with FastMCP, but in practice LLMs achieve **significantly better performance** with well-designed and curated MCP servers than with auto-converted OpenAPI servers. This is especially true for complex APIs with many endpoints and parameters.
@@ -100,16 +99,6 @@ DEFAULT_ROUTE_MAPPINGS = [
     RouteMap(mcp_type=MCPType.TOOL),
 ]
 ```
-
-<Tip>
-  **Experimental Parser**: If you're using the new parser (enabled via `FASTMCP_EXPERIMENTAL_ENABLE_NEW_OPENAPI_PARSER=true`), import from the experimental module instead:
-
-  ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-  from fastmcp.experimental.server.openapi import RouteMap, MCPType
-  ```
-
-  The API is identical, but the implementation provides better performance and serverless compatibility.
-</Tip>
 
 ### Custom Route Maps
 
@@ -343,7 +332,7 @@ mcp = FastMCP.from_openapi(
 
 #### OpenAPI Tags in Client Meta
 
-FastMCP automatically includes OpenAPI tags from your specification in the component's metadata. These tags are available to MCP clients through the `_meta._fastmcp.tags` field, allowing clients to filter and organize components based on the original OpenAPI tagging:
+FastMCP automatically includes OpenAPI tags from your specification in the component's metadata. These tags are available to MCP clients through the `meta.fastmcp.tags` field, allowing clients to filter and organize components based on the original OpenAPI tagging:
 
 <CodeGroup>
   ```json {5} OpenAPI spec with tags theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
@@ -364,9 +353,9 @@ FastMCP automatically includes OpenAPI tags from your specification in the compo
   async with client:
       tools = await client.list_tools()
       for tool in tools:
-          if hasattr(tool, '_meta') and tool._meta:
-              # OpenAPI tags are now available in _fastmcp namespace!
-              fastmcp_meta = tool._meta.get('_fastmcp', {})
+          if tool.meta:
+              # OpenAPI tags are now available in fastmcp namespace!
+              fastmcp_meta = tool.meta.get('fastmcp', {})
               openapi_tags = fastmcp_meta.get('tags', [])
               if 'users' in openapi_tags:
                   print(f"Found user-related tool: {tool.name}")
@@ -389,19 +378,11 @@ At times you may want to modify those MCP components in a variety of ways, such 
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp.server.openapi import (
-    HTTPRoute, 
-    OpenAPITool, 
-    OpenAPIResource, 
+    HTTPRoute,
+    OpenAPITool,
+    OpenAPIResource,
     OpenAPIResourceTemplate,
 )
-
-# If using experimental parser, import from experimental module:
-# from fastmcp.experimental.server.openapi import (
-#     HTTPRoute,
-#     OpenAPITool,
-#     OpenAPIResource,
-#     OpenAPIResourceTemplate,
-# )
 
 def customize_components(
     route: HTTPRoute, 

@@ -2,21 +2,9 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
 
-# Source: https://docs.augmentcode.com/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/setup-augment/mcp.md
-
-# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Setup Model Context Protocol servers
 

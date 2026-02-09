@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/troubleshooting/reset-password.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reset Password
 
 > How to reset your password on a self-hosted instance
@@ -35,8 +39,3 @@ If you forgot your password on a self-hosted instance, you can reset it using th
    ```sql  theme={null}
    UPDATE public.user_identity SET password='HASH_PASSWORD' WHERE email='YOUR_EMAIL_ADDRESS';
    ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

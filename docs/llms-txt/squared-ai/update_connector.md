@@ -1,82 +1,76 @@
 # Source: https://docs.squared.ai/api-reference/connectors/update_connector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Connector
+
+
 
 ## OpenAPI
 
 ````yaml PUT /api/v1/connectors/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connectors/{id}
-  method: put
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/connectors/{id}:
+    put:
+      tags:
+        - Connectors
+      summary: Updates a specific connector by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Unique ID of the connector
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              connector:
-                allOf:
-                  - type: object
-                    properties:
-                      name:
-                        type: string
-                      connector_type:
-                        type: string
-                        enum:
-                          - source
-                          - destination
-                      configuration:
-                        type: object
-                        description: >-
-                          Generic configuration structure. Specifics depend on
-                          the connector type.
-                        additionalProperties: true
-                      connector_name:
-                        type: string
-                    required:
-                      - name
-                      - connector_type
-                      - configuration
-                      - connector_name
-            required: true
-        examples:
-          example:
-            value:
-              connector:
-                name: <string>
-                connector_type: source
-                configuration: {}
-                connector_name: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: string
+          description: Unique ID of the connector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    connector_type:
+                      type: string
+                      enum:
+                        - source
+                        - destination
+                    configuration:
+                      type: object
+                      description: >-
+                        Generic configuration structure. Specifics depend on the
+                        connector type.
+                      additionalProperties: true
+                    connector_name:
+                      type: string
+                  required:
+                    - name
+                    - connector_type
+                    - configuration
+                    - connector_name
+      responses:
+        '200':
+          description: Connector updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -105,26 +99,14 @@ paths:
                             type: string
                           icon:
                             type: string
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                type: <string>
-                attributes:
-                  name: <string>
-                  connector_type: <string>
-                  workspace_id: 123
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-                  configuration: {}
-                  connector_name: <string>
-                  icon: <string>
-        description: Connector updated successfully
-  deprecated: false
-  type: path
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

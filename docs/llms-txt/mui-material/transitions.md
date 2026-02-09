@@ -2,14 +2,6 @@
 
 # Source: https://mui.com/material-ui/transitions.md
 
-# Source: https://mui.com/material-ui/customization/transitions.md
-
-# Source: https://mui.com/material-ui/transitions.md
-
-# Source: https://mui.com/material-ui/customization/transitions.md
-
-# Source: https://mui.com/material-ui/transitions.md
-
 ---
 productId: material-ui
 title: React Transition component

@@ -35,9 +35,9 @@ const paymentElement = elements.create('payment', {
 
 For more information, read how to [build a custom checkout page that includes Link](https://docs.stripe.com/payments/link/add-link-elements-integration.md).
 
-## The defaultValues parameter 
+## Speed up the checkout process 
 
-If you’re planning on passing customer email addresses to the Payment Element, use the [defaultValues](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options-defaultValues) object to specify a customer’s [billingDetails](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options-defaultValues-billingDetails). Prefilling as much information as possible streamlines the checkout process:
+Use [defaultValues](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options-defaultValues) to prefill customer information, making checkout with Link faster for users. Pass customer emails to the Payment Element through [defaultValues.billingDetails](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options-defaultValues-billingDetails).
 
 ```javascript
 // Pass in defaultValues to prefill consumer information
@@ -59,11 +59,11 @@ const paymentElement = elements.create('payment', {
 
 ## Automatically prefill Link for your customers 
 
-Save your customers from re-entering details to sign up for or log into Link when they’ve already provided them elsewhere on your checkout page. Link includes a prefill tool that detects customer information such as email or phone number in your checkout, then automatically populates corresponding Link fields.  This convenience encourages your customers to use Link, which has been shown to increase the likelihood that a customer successfully completes checkout. Prefilled values are never stored unless the customer completes a Link sign-up.
+Save your customers from re-entering details to sign up for or log into Link when they’ve already provided them elsewhere on your checkout page. Link includes a prefill tool that detects customer information such as email or phone number in your checkout, then automatically populates corresponding Link fields. This convenience encourages your customers to use Link, which has been shown to increase the likelihood that a customer successfully completes checkout. Prefilled values are never stored unless the customer completes a Link sign-up.
 
 When a customer enters information such as their email, phone number, or name on the same checkout page as the Element where Link is enabled, Link’s prefill tool can:
 
-- Populate the Link sign-up form with the customer email/phone/name. The customer must proceed with Link sign-up to create an account.
+- Populate the Link sign-up form with the customer email, phone, or name. The customer must proceed with Link sign-up to create an account.
 - Populate the Link login with the customer’s email when they already have a Link account, so they can just enter the one time password.
 
 ### Enable accelerated sign-up
@@ -80,7 +80,7 @@ The Link prefill tool requires no changes to your existing integration. The pref
 
 #### How it works
 
-When a customer loads a page containing the Element with Link enabled and the `defaultValue` parameter hasn’t already provided Stripe customer data, our system analyzes the surrounding checkout page to locate input fields containing details that match Link sign-up or login fields.  Link only looks for information applicable to creating or reusing a Link account.
+When a customer loads a page containing the Element with Link enabled and the `defaultValue` parameter hasn’t already provided Stripe customer data, our system analyzes the surrounding checkout page to locate input fields containing details that match Link sign-up or login fields. Link only looks for information applicable to creating or reusing a Link account.
 
 If Stripe detects such data fields, we use the values to prefill the Link login with email, or prefill sign-up fields with customer information required to create a Link account. We don’t store the prefilled values on the browser using cookies or local storage or any other service. We only hold the values temporarily in local memory for use in the context of the session.
 

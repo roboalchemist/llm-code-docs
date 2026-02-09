@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-tasks
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/TaskCollectionClientAsync#listhttps://docs.apify.com/api/client/js/reference/class/TaskCollectionClient#listGets the complete list of tasks that a user has created or used.
+Gets the complete list of tasks that a user has created or used.
 
 The response is a list of objects in which each object contains essential information about a single task.
 
@@ -22,6 +22,10 @@ By default, the records are sorted by the `createdAt` field in ascending order; 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

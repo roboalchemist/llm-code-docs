@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/model-types/multiclass-classification.md
 
-# Source: https://docs.aporia.com/model-types/multiclass-classification.md
-
-# Source: https://docs.aporia.com/v1/model-types/multiclass-classification.md
-
 # Multiclass Classification
 
 Multiclass classification models predict one of more than two outcomes. In Aporia, these models are represented with the `multiclass` model type.

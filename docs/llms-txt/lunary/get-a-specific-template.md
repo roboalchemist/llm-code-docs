@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/templates/get-a-specific-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a specific template
 
 > Get a specific prompt template and all its versions by its ID.
@@ -127,7 +131,3 @@ components:
           type: number
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

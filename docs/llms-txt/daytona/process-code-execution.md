@@ -4,11 +4,19 @@ The Daytona SDK provides powerful process and code execution capabilities throug
 
 ## Code Execution
 
-Daytona SDK provides an option to execute code in Python and TypeScript.
+Daytona SDK supports both stateless and stateful code execution flows. Stateless runs use the `process` module and
+supports multiple languages (Python, TypeScript, JavaScript). The stateful code interpreter keeps variables and imports
+between calls and currently supports only Python.
 
-### Running Code
+:::note
 
-Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
+- Stateless execution inherits the Sandbox language that you choose at creation time. See [Basic Sandbox Creation](https://www.daytona.io/docs/en/sandboxes.md#basic-sandbox-creation).
+- The stateful interpreter supports only Python.
+  :::
+
+### Stateless Execution
+
+Use stateless execution when each snippet is independent. Every invocation starts from a clean interpreter.
 
 ```python
 # Run Python code
@@ -20,7 +28,6 @@ print(greet("Daytona"))
 ''')
 
 print(response.result)
-
 ```
 ```typescript
 // Run TypeScript code
@@ -55,8 +62,109 @@ response = await sandbox.process.codeRun(
 console.log(response.result);
 ```
 
+```ruby
+# Run Python code
+response = sandbox.process.code_run(code: <<~PYTHON)
+  def greet(name):
+      return f"Hello, {name}!"
+  
+  print(greet("Daytona"))
+PYTHON
 
-See: [code_run (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcode_run), [codeRun (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#coderun)
+puts response.result
+
+# Run code with environment variables
+response = sandbox.process.code_run(
+  code: 'import os; print(f"FOO: {os.environ.get(\'FOO\')}")',
+  env: { 'FOO' => 'BAR' }
+)
+puts response.result
+
+# Run code with timeout
+response = sandbox.process.code_run(
+  code: 'import time; time.sleep(2); print("Done")',
+  timeout: 5
+)
+puts response.result
+```
+
+See: [code_run (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcode_run), [codeRun (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#coderun), [code_run (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#code_run)
+
+### Stateful Code Interpreter
+
+When you need to persist variables, imports between calls, use the Sandbox code interpreter. It offers:
+
+- A shared default context that keeps state between calls.
+- The ability to create/delete isolated contexts for specific workflows.
+- Per-call environment variables and timeout controls.
+
+```python
+from daytona import Daytona, OutputMessage
+
+def handle_stdout(message: OutputMessage):
+    print(f"[STDOUT] {message.output}")
+
+daytona = Daytona()
+sandbox = daytona.create()
+
+# Shared default context
+result = sandbox.code_interpreter.run_code(
+    "counter = 1\nprint(f'Counter initialized at {counter}')",
+    on_stdout=handle_stdout,
+)
+
+# Isolated context
+ctx = sandbox.code_interpreter.create_context()
+try:
+    sandbox.code_interpreter.run_code(
+        "value = 'stored in ctx'",
+        context=ctx,
+    )
+    sandbox.code_interpreter.run_code(
+        "print(value)",
+        context=ctx,
+        on_stdout=handle_stdout,
+    )
+finally:
+    sandbox.code_interpreter.delete_context(ctx)
+```
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+
+const daytona = new Daytona()
+
+async function main() {
+    const sandbox = await daytona.create()
+
+    // Shared default context
+    await sandbox.codeInterpreter.runCode(
+`
+counter = 1
+print(f'Counter initialized at {counter}')
+`,
+        { onStdout: (msg) => process.stdout.write(`[STDOUT] ${msg.output}`)},
+    )
+
+    // Isolated context
+    const ctx = await sandbox.codeInterpreter.createContext()
+    try {
+    await sandbox.codeInterpreter.runCode(
+        `value = 'stored in ctx'`,
+        { context: ctx },
+    )
+    await sandbox.codeInterpreter.runCode(
+        `print(value)`,
+        { context: ctx, onStdout: (msg) => process.stdout.write(`[STDOUT] ${msg.output}`) },
+    )
+    } finally {
+    await sandbox.codeInterpreter.deleteContext(ctx)
+    }
+}
+
+main()
+```
+
+See: [code_interpreter (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/code-interpreter.md), [codeInterpreter (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/code-interpreter.md), and [code_interpreter (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/code-interpreter.md)
 
 ## Process Execution
 
@@ -65,7 +173,7 @@ the Dockerfile if present, or falling back to the user's home directory if not -
 
 ### Running Commands
 
-Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
+Daytona SDK provides an option to execute shell commands in Python, TypeScript, and Ruby. You can run commands with input, timeout, and environment variables.
 
 ```python
 # Execute any shell command
@@ -106,7 +214,27 @@ console.log(response3.result);
 ```
 
 
-See: [exec (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processexec), [executeCommand (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#executecommand)
+```ruby
+
+# Execute any shell command
+response = sandbox.process.exec(command: 'ls -la')
+puts response.result
+
+# Setting a working directory and a timeout
+response = sandbox.process.exec(command: 'sleep 3', cwd: 'workspace/src', timeout: 5)
+puts response.result
+
+# Passing environment variables
+response = sandbox.process.exec(
+  command: 'echo $CUSTOM_SECRET',
+  env: { 'CUSTOM_SECRET' => 'DAYTONA' }
+)
+puts response.result
+
+```
+
+
+See: [exec (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processexec), [executeCommand (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#executecommand), [exec (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#exec)
 
 ## Sessions (Background Processes)
 
@@ -147,7 +275,118 @@ for (const session of sessions) {
 ```
 
 
-See: [get_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session), [list_sessions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processlist_sessions), [getSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsession), [listSessions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#listsessions)
+```ruby
+# Check session's executed commands
+session = sandbox.process.get_session(session_id)
+puts "Session #{session_id}:"
+session.commands.each do |command|
+  puts "Command: #{command.command}, Exit Code: #{command.exit_code}"
+end
+
+# List all running sessions
+sessions = sandbox.process.list_sessions
+sessions.each do |session|
+  puts "PID: #{session.id}, Commands: #{session.commands}"
+end
+
+```
+
+
+See: [get_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session), [list_sessions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processlist_sessions), [getSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsession), [listSessions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#listsessions), [get_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session), [list_sessions (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#list_sessions)
+
+### Interactive Session Commands
+
+Session commands can be interactive, allowing you to send input to running commands that expect user interaction,
+such as confirmations or interactive tools (e.g., database CLIs or package managers).
+
+```python
+session_id = "interactive-session"
+sandbox.process.create_session(session_id)
+
+# Execute command that requires confirmation
+command = sandbox.process.execute_session_command(
+    session_id,
+    SessionExecuteRequest(
+        command='pip uninstall requests',
+        run_async=True,
+    ),
+)
+
+# Stream logs asynchronously
+logs_task = asyncio.create_task(
+    sandbox.process.get_session_command_logs_async(
+        session_id,
+        command.cmd_id,
+        lambda log: print(f"[STDOUT]: {log}"),
+        lambda log: print(f"[STDERR]: {log}"),
+    )
+)
+
+await asyncio.sleep(1)
+# Send input to the command
+sandbox.process.send_session_command_input(session_id, command.cmd_id, "y")
+
+# Wait for logs to complete
+await logs_task
+```
+```typescript
+const sessionId = 'interactive-session'
+await sandbox.process.createSession(sessionId)
+
+// Execute command that requires confirmation
+const command = await sandbox.process.executeSessionCommand(sessionId, {
+    command: 'pip uninstall requests',
+    runAsync: true,
+})
+
+// Stream logs asynchronously
+const logPromise = sandbox.process.getSessionCommandLogs(
+    sessionId,
+    command.cmdId!,
+    (stdout) => console.log('[STDOUT]:', stdout),
+    (stderr) => console.log('[STDERR]:', stderr),
+)
+
+await new Promise((resolve) => setTimeout(resolve, 1000))
+// Send input to the command
+await sandbox.process.sendSessionCommandInput(sessionId, command.cmdId!, 'y')
+
+// Wait for logs to complete
+await logPromise
+```
+```ruby
+session_id = "interactive-session"
+sandbox.process.create_session(session_id)
+
+# Execute command that requires confirmation
+interactive_command = sandbox.process.execute_session_command(
+  session_id: session_id,
+  req: Daytona::SessionExecuteRequest.new(
+    command: 'pip uninstall requests',
+    run_async: true
+  )
+)
+
+# Wait a moment for the command to start
+sleep 1
+
+# Send input to the command
+sandbox.process.send_session_command_input(
+  session_id: session_id,
+  command_id: interactive_command.cmd_id,
+  data: "y"
+)
+
+# Get logs for the interactive command asynchronously
+sandbox.process.get_session_command_logs_async(
+  session_id: session_id,
+  command_id: interactive_command.cmd_id,
+  on_stdout: ->(log) { puts "[STDOUT]: #{log}" },
+  on_stderr: ->(log) { puts "[STDERR]: #{log}" }
+)
+```
+
+See: [send_session_command_input (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processsend_session_command_input), [sendSessionCommandInput (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#sendsessioncommandinput)
 
 ## Best Practices
 
@@ -183,7 +422,19 @@ The following best practices apply to managing resources when executing processe
    }
    ```
 
-See: [create_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcreate_session), [delete_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processdelete_session), [createSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#createsession), [deleteSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#deletesession)
+   ```ruby
+   # Ruby - Clean up session
+   session_id = 'long-running-cmd'
+   begin
+     sandbox.process.create_session(session_id)
+     session = sandbox.process.get_session(session_id)
+     # Do work...
+   ensure
+     sandbox.process.delete_session(session.session_id)
+   end
+   ```
+
+See: [create_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcreate_session), [delete_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processdelete_session), [createSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#createsession), [deleteSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#deletesession), [create_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#create_session), [delete_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#delete_session)
 
 ### Error Handling
 
@@ -211,6 +462,16 @@ try {
         console.error("Error output:", e.stderr);
     }
 }
+```
+
+```ruby
+begin
+  response = sandbox.process.code_run(code: 'invalid python code')
+rescue Daytona::ProcessExecutionError => e
+  puts "Execution failed: #{e}"
+  puts "Exit code: #{e.exit_code}"
+  puts "Error output: #{e.stderr}"
+end
 ```
 
 ## Common Issues

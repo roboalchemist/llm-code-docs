@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/bounties/posting-a-bounty.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Posting and awarding a Bounty
 
 > Learn how to post a bounty, manage applications, and review work submissions on Replit's bounty platform to get help with your projects.

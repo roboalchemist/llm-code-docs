@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/analytics/prepaid-credits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prepaid credits
 
 > This dashboard provides an overview of your prepaid credits flows within a specific time period.

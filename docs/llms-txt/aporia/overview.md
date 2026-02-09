@@ -8,16 +8,6 @@
 
 # Source: https://docs.aporia.com/v1/storing-your-predictions/overview.md
 
-# Source: https://docs.aporia.com/dashboards/overview.md
-
-# Source: https://docs.aporia.com/data-sources/overview.md
-
-# Source: https://docs.aporia.com/storing-your-predictions/overview.md
-
-# Source: https://docs.aporia.com/v1/data-sources/overview.md
-
-# Source: https://docs.aporia.com/v1/storing-your-predictions/overview.md
-
 # Overview
 
 **Monitoring your Machine Learning models begins with storing their inputs and outputs in production.**&#x20;

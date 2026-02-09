@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/byt5.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/byt5.md
 
 # ByT5
 
@@ -9,7 +9,7 @@ You can find all the original ByT5 checkpoints under the [Google](https://huggin
 > [!TIP]
 > Refer to the [T5](./t5) docs for more examples of how to apply ByT5 to different language tasks.
 
-The example below demonstrates how to generate text with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) and from the command line.
+The example below demonstrates how to generate text with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) and from the command line.
 
 ```python
 import torch
@@ -106,14 +106,14 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 
 #### transformers.ByT5Tokenizer[[transformers.ByT5Tokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/byt5/tokenization_byt5.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/byt5/tokenization_byt5.py#L25)
 
 Construct a ByT5 tokenizer. ByT5 simply uses raw bytes utf-8 encoding.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-build_inputs_with_special_tokenstransformers.ByT5Tokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/byt5/tokenization_byt5.py#L171[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": typing.Optional[list[int]] = None"}]- **token_ids_0** (`list[int]`) --
+build_inputs_with_special_tokenstransformers.ByT5Tokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/byt5/tokenization_byt5.py#L169[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}]- **token_ids_0** (`list[int]`) --
   List of IDs to which the special tokens will be added.
 - **token_ids_1** (`list[int]`, *optional*) --
   Optional second list of IDs for sequence pairs.0`list[int]`List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
@@ -143,12 +143,12 @@ additional_special_tokens (`list[str]`, *optional*) : Additional special tokens 
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### convert_tokens_to_string[[transformers.ByT5Tokenizer.convert_tokens_to_string]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/byt5/tokenization_byt5.py#L217)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/byt5/tokenization_byt5.py#L215)
 
 Converts a sequence of tokens (string) in a single string.
 #### create_token_type_ids_from_sequences[[transformers.ByT5Tokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/byt5/tokenization_byt5.py#L149)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/byt5/tokenization_byt5.py#L147)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. ByT5 does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -166,7 +166,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### get_special_tokens_mask[[transformers.ByT5Tokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/byt5/tokenization_byt5.py#L110)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/byt5/tokenization_byt5.py#L108)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.

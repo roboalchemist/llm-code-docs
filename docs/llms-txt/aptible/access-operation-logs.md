@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/access-operation-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to access operation logs
 
 > For all operations performed, Aptible collects operation logs. These logs are retained only for active resources and can be viewed in the following ways.

@@ -2,7 +2,7 @@
 
 # Plugins
 
-* **Type:**
+- **Type:**
 
 ```ts
 type Falsy = false | '' | 0 | null | undefined;
@@ -17,7 +17,7 @@ type Plugin =
 type Plugins = Plugin[];
 ```
 
-* **Default:** `[]`
+- **Default:** `[]`
 
 The `plugins` option is used to register a set of Rspack or webpack plugins to customize the build process.
 

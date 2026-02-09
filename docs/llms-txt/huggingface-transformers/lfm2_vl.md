@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/lfm2_vl.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/lfm2_vl.md
 
 # LFM2-VL
 
@@ -60,18 +60,18 @@ processor.batch_decode(outputs, skip_special_tokens=True)[0]
 
 #### transformers.Lfm2VlImageProcessorFast[[transformers.Lfm2VlImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L193)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L222)
 
 Constructs a fast Lfm2 Vl image processor.
 
-crop_image_to_patchestransformers.Lfm2VlImageProcessorFast.crop_image_to_patcheshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L258[{"name": "image", "val": ": torch.Tensor"}, {"name": "min_tiles", "val": ": int"}, {"name": "max_tiles", "val": ": int"}, {"name": "tile_size", "val": ": int"}, {"name": "use_thumbnail", "val": ": bool"}, {"name": "thumbnail_size", "val": ": tuple"}, {"name": "interpolation", "val": ": F.InterpolationMode = None"}, {"name": "antialias", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]
+crop_image_to_patchestransformers.Lfm2VlImageProcessorFast.crop_image_to_patcheshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L287[{"name": "image", "val": ": torch.Tensor"}, {"name": "min_tiles", "val": ": int"}, {"name": "max_tiles", "val": ": int"}, {"name": "tile_size", "val": ": int"}, {"name": "use_thumbnail", "val": ": bool"}, {"name": "thumbnail_size", "val": ": tuple"}, {"name": "interpolation", "val": ": tvF.InterpolationMode = None"}, {"name": "antialias", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]
 
 Processes a high resolution image into patches.
 This method splits a high resolution image into a grid of smaller patches while trying to maintain
 the original aspect ratio. It finds the optimal grid configuration within the specified tile constraints.
 #### smart_resize[[transformers.Lfm2VlImageProcessorFast.smart_resize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L307)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/image_processing_lfm2_vl_fast.py#L336)
 
 Rescales the image so that the following conditions are met:
 1. Both dimensions (height and width) are divisible by 'encoder_patch_size' * 'downsample_factor'.
@@ -83,45 +83,77 @@ Rescales the image so that the following conditions are met:
 
 #### transformers.Lfm2VlProcessor[[transformers.Lfm2VlProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/processing_lfm2_vl.py#L52)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/processing_lfm2_vl.py#L58)
 
-Constructs a Lfm2Vl processor which wraps a Lfm2Tokenizer tokenizer and Lfm2VlImageProcessor into a single processor.
+Constructs a Lfm2VlProcessor which wraps a image processor and a tokenizer into a single processor.
 
-[Lfm2VlProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlProcessor) offers all the functionalities of `Lfm2ImageProcessor` and `Lfm2Tokenizer`.
+[Lfm2VlProcessor](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlProcessor) offers all the functionalities of [Lfm2VlImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlImageProcessorFast) and `tokenizer_class`. See the
+[~Lfm2VlImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlImageProcessorFast) and `~tokenizer_class` for more information.
 
-batch_decodetransformers.Lfm2VlProcessor.batch_decodehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/processing_lfm2_vl.py#L226[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
+__call__transformers.Lfm2VlProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/processing_lfm2_vl.py#L77[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], list[typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]], list[list[typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]]], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.lfm2_vl.processing_lfm2_vl.Lfm2VlProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **use_image_special_tokens** (`bool`, *optional*, defaults to `True`) --
+  Whether to use special image tokens (`` and ``) to delimit image sequences
+  in the text. When enabled, images are wrapped with these tokens to clearly mark image boundaries.
+  When disabled, only the image token itself is used without delimiters.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-This method forwards all its arguments to LFM2Tokeniser's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
-refer to the docstring of this method for more information.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 **Parameters:**
 
-image_processor (`Lfm2VlImageProcessor`) : An instance of `Lfm2VlImageProcessor`. The image processor is a required input.
+image_processor (`Lfm2VlImageProcessorFast`) : The image processor is a required input.
 
-tokenizer (`PreTrainedTokenizerBase`) : An instance of [PreTrainedTokenizerBase](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase). This should correspond with the model's text model. The tokenizer is a required input.
+tokenizer (`tokenizer_class`) : The tokenizer is a required input.
 
-chat_template (`str`, *optional*) : A Jinja template which will be used to convert lists of messages in a chat into a tokenizable string.
-#### decode[[transformers.Lfm2VlProcessor.decode]]
+chat_template (`str`, *optional*) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/processing_lfm2_vl.py#L234)
+**Returns:**
 
-This method forwards all its arguments to LFM2Tokeniser's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
-the docstring of this method for more information.
+````
+
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 ## Lfm2VlConfig[[transformers.Lfm2VlConfig]]
 
 #### transformers.Lfm2VlConfig[[transformers.Lfm2VlConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/configuration_lfm2_vl.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/configuration_lfm2_vl.py#L24)
 
-This is the configuration class to store the configuration of a [Lfm2VlForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlForConditionalGeneration). It is used to instantiate an
+This is the configuration class to store the configuration of a [Lfm2VlForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlForConditionalGeneration). It is used to instantiate an
 Lfm2Vl model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the Lfm2-VL-1.6B.
 
 e.g. [LiquidAI/LFM2-VL-1.6B](https://huggingface.co/LiquidAI/LFM2-VL-1.6B)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -137,17 +169,19 @@ projector_hidden_size (`int`, *optional*, defaults to 2560) : The hidden size of
 
 projector_bias (`bool`, *optional*, defaults to `True`) : Whether to use bias in the multimodal projector.
 
+projector_use_layernorm (`bool`, *optional*, defaults to `True`) : Whether to use layernorm in the multimodal projector.
+
 downsample_factor (`int`, *optional*, defaults to 2) : The downsample_factor factor of the vision backbone.
 
 ## Lfm2VlModel[[transformers.Lfm2VlModel]]
 
 #### transformers.Lfm2VlModel[[transformers.Lfm2VlModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L147)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L147)
 
 The Lfm2Vl model which consists of a vision backbone and a language model, without a language modeling head.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -155,11 +189,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Lfm2VlModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L235[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "spatial_shapes", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "pixel_attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Lfm2VlModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L238[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "spatial_shapes", "val": ": torch.Tensor | None = None"}, {"name": "pixel_attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -175,8 +209,8 @@ forwardtransformers.Lfm2VlModel.forwardhttps://github.com/huggingface/transforme
   [What are position IDs?](../glossary#position-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  `image_processor_class`. See `image_processor_class.__call__` for details ([Lfm2VlProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlProcessor) uses
-  `image_processor_class` for processing images).
+  [Lfm2VlImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlImageProcessorFast). See [Lfm2VlImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Lfm2VlProcessor](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlProcessor) uses
+  [Lfm2VlImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlImageProcessorFast) for processing images).
 - **spatial_shapes** (`torch.Tensor` of shape `(batch_size, 2)`, *optional*) --
   The spatial shapes of the input images.
 - **pixel_attention_mask** (`torch.Tensor` of shape `(batch_size, height, width)`, *optional*) --
@@ -186,8 +220,8 @@ forwardtransformers.Lfm2VlModel.forwardhttps://github.com/huggingface/transforme
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -206,25 +240,25 @@ forwardtransformers.Lfm2VlModel.forwardhttps://github.com/huggingface/transforme
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.lfm2_vl.modeling_lfm2_vl.Lfm2VlModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.lfm2_vl.modeling_lfm2_vl.Lfm2VlModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
+elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
-The [Lfm2VlModel](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlModel) forward method, overrides the `__call__` special method.
+The [Lfm2VlModel](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -232,7 +266,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Lfm2VlConfig](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -240,34 +274,70 @@ config ([Lfm2VlConfig](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transfo
 
 A `transformers.models.lfm2_vl.modeling_lfm2_vl.Lfm2VlModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
+elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_images, sequence_length, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.Lfm2VlModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L164)
+
+Obtains image last hidden states from the vision tower and apply multimodal projection.
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor]` of shape `(batch_size, channels, height, width)`) : The tensors corresponding to the input images.
+
+spatial_shapes (`torch.Tensor` of shape `(batch_size, 2)`) : The spatial shapes of the input images.
+
+pixel_attention_mask (`torch.Tensor` of shape `(batch_size, height, width)`) : The pixel attention mask of the input images.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## Lfm2VlForConditionalGeneration[[transformers.Lfm2VlForConditionalGeneration]]
 
 #### transformers.Lfm2VlForConditionalGeneration[[transformers.Lfm2VlForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L302)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L306)
 
 The LFM2_VL model which consists of a vision backbone and a language model.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -275,7 +345,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Lfm2VlForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L335[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "spatial_shapes", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "pixel_attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
+forwardtransformers.Lfm2VlForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L348[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "spatial_shapes", "val": ": torch.Tensor | None = None"}, {"name": "pixel_attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
 
 pixel_values (`torch.FloatTensor` of shape `(batch_size, channels, height, width)`, *optional*):
 The input image tensors.
@@ -292,7 +362,8 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, AutoModelForImageTextToText
 >>> from transformers.image_utils import load_image
 
@@ -332,5 +403,69 @@ Example:
 
 **Parameters:**
 
-config ([Lfm2VlConfig](/docs/transformers/v5.0.0rc1/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+#### get_image_features[[transformers.Lfm2VlForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/lfm2_vl/modeling_lfm2_vl.py#L325)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, Lfm2VlForConditionalGeneration
+
+>>> model = Lfm2VlForConditionalGeneration.from_pretrained("LiquidAI/LFM2-VL-1.6B")
+>>> processor = AutoProcessor.from_pretrained("LiquidAI/LFM2-VL-1.6B")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor]` of shape `(batch_size, channels, height, width)`) : The tensors corresponding to the input images.
+
+spatial_shapes (`torch.Tensor` of shape `(batch_size, 2)`) : The spatial shapes of the input images.
+
+pixel_attention_mask (`torch.Tensor` of shape `(batch_size, height, width)`) : The pixel attention mask of the input images.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Lfm2VlConfig](/docs/transformers/v5.0.0/en/model_doc/lfm2_vl#transformers.Lfm2VlConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 

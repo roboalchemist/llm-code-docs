@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/azure-artifacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using bun install with an Azure Artifacts npm registry
 
 <Note>
@@ -29,9 +33,9 @@ password = "$NPM_PASSWORD"
 
 ***
 
-Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](https://bun.com/docs/runtime/env) `.env` files, so create a file called `.env` in your project root. There is no need to base-64 encode this token! Bun will do this for you.
+Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](/runtime/environment-variables) `.env` files, so create a file called `.env` in your project root. There is no need to base-64 encode this token! Bun will do this for you.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NPM_PASSWORD=<paste token here>
 ```
 
@@ -41,7 +45,7 @@ NPM_PASSWORD=<paste token here>
 
 ***
 
-To configure Azure Artifacts without `bunfig.toml`, you can set the `NPM_CONFIG_REGISTRY` environment variable. The URL should include `:username` and `:_password` as query parameters. Replace `<USERNAME>` and `<PASSWORD>` with the apprropriate values.
+To configure Azure Artifacts without `bunfig.toml`, you can set the `NPM_CONFIG_REGISTRY` environment variable. The URL should include `:username` and `:_password` as query parameters. Replace `<USERNAME>` and `<PASSWORD>` with the appropriate values.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NPM_CONFIG_REGISTRY=https://pkgs.dev.azure.com/my-azure-artifacts-user/_packaging/my-azure-artifacts-user/npm/registry/:username=<USERNAME>:_password=<PASSWORD>

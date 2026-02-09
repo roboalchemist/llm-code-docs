@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/multimodality/text.md
 
-# Source: https://docs.livekit.io/agents/build/text.md
-
-LiveKit docs › Building voice agents › Text & transcriptions
+LiveKit docs › Multimodality › Text & transcriptions
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › Building voice agents › Text & transcriptions
 
 ## Overview
 
-LiveKit Agents supports text inputs and outputs in addition to audio, based on the [text streams](https://docs.livekit.io/home/client/data/text-streams.md) feature of the LiveKit SDKs. This guide explains what's possible and how to use it in your app.
+LiveKit Agents supports text inputs and outputs in addition to audio, based on the [text streams](https://docs.livekit.io/transport/data/text-streams.md) feature of the LiveKit SDKs. This guide explains what's possible and how to use it in your app.
 
 ## Transcriptions
 
@@ -20,7 +18,7 @@ When an agent performs STT as part of its processing pipeline, the transcription
 
 Transcriptions use the `lk.transcription` text stream topic. They include a `lk.transcribed_track_id` attribute and the sender identity is the transcribed participant.
 
-To disable transcription output, set `transcription_enabled=False` in `RoomOutputOptions`.
+To disable transcription output, set `text_output=False` in `RoomOptions` (Python) or `transcriptionEnabled: false` in `outputOptions` (Node.js).
 
 ### Synchronized transcription forwarding
 
@@ -28,15 +26,21 @@ When both voice and transcription are enabled, the agent's speech is synchronize
 
 #### Disabling synchronization
 
-To send transcriptions to the client as soon as they become available, without synchronizing to the original speech, set `sync_transcription` to False in `RoomOutputOptions`.
+To send transcriptions to the client as soon as they become available, without synchronizing to the original speech, set `sync_transcription` to False in text output options.
 
 **Python**:
 
 ```python
+from livekit.agents import room_io
+
 await session.start(
     agent=MyAgent(),
     room=ctx.room,
-    room_output_options=RoomOutputOptions(sync_transcription=False),
+    room_options=room_io.RoomOptions(
+        text_output=room_io.TextOutputOptions(
+            sync_transcription=False
+        ),
+    ),
 )
 
 ```
@@ -60,7 +64,7 @@ await session.start({
 
 ### Accessing from AgentSession
 
-You can be notified within your agent whenever text input or output is committed to the chat history by listening to the [conversation_item_added](https://docs.livekit.io/agents/build/events.md#conversation_item_added) event.
+You can be notified within your agent whenever text input or output is committed to the chat history by listening to the [conversation_item_added](https://docs.livekit.io/reference/other/events.md#conversation_item_added) event.
 
 ### TTS-aligned transcriptions
 
@@ -84,7 +88,7 @@ session = AgentSession(
 
 ```
 
-To access timing information in your code, implement a [transcription_node](https://docs.livekit.io/agents/build/nodes.md#transcription-node) method in your agent. The iterator yields a `TimedString` which includes `start_time` and `end_time` for each word, in seconds relative to the start of the agent's current [turn](https://docs.livekit.io/agents/build/turns.md).
+To access timing information in your code, implement a [transcription_node](https://docs.livekit.io/agents/build/nodes.md#transcription-node) method in your agent. The iterator yields a `TimedString` which includes `start_time` and `end_time` for each word, in seconds relative to the start of the agent's current [turn](https://docs.livekit.io/agents/logic/turns.md).
 
 > 🔥 **Experimental feature**
 > 
@@ -109,7 +113,7 @@ async def transcription_node(
 
 Your agent monitors the `lk.chat` text stream topic for incoming text messages from its linked participant. The agent interrupts its current speech, if any, to process the message and generate a new response.
 
-To disable text input, set `text_enabled=False` in `RoomInputOptions`.
+To disable text input, set `text_input=False` in `RoomOptions` (Python) or `textEnabled: false` in `RoomInputOptions` (Node.js).
 
 ### Sending from frontend
 
@@ -141,21 +145,20 @@ To insert text input and generate a response, use the `generate_reply` method of
 
 ### Custom handling
 
-Available in:
-- [x] Node.js
-- [x] Python
-
 You can customize how agents handle incoming text input, replacing the default behavior with custom logic, such as command processing, message filtering, or custom response generation.
 
-To implement custom text input handling, provide a `text_input_cb` parameter in `RoomInputOptions`.
+To implement custom text input handling, provide a text input callback function in room options:
 
 **Python**:
 
-```python
-from livekit.agents import AgentSession, RoomInputOptions
-from livekit.agents.voice.room_io import TextInputEvent
+In Python, use the `TextInputOptions` parameter for `text_input` in `RoomOptions` to provide a text input callback function:
 
-def custom_text_input_handler(session: AgentSession, event: TextInputEvent) -> None:
+```python
+from livekit.agents import AgentServer, AgentSession
+from livekit.agents import room_io
+
+
+def custom_text_input_handler(session: AgentSession, event: room_io.TextInputEvent) -> None:
     # Access the incoming text message
     message = event.text
 
@@ -177,12 +180,25 @@ def custom_text_input_handler(session: AgentSession, event: TextInputEvent) -> N
     session.interrupt()
     session.generate_reply(user_input=message)
 
-session = AgentSession(
-    # ... stt, llm, tts, etc.
-    room_input_options=RoomInputOptions(
-        text_input_cb=custom_text_input_handler
+
+server = AgentServer()
+
+@server.rtc_session()
+async def my_agent(ctx: JobContext):
+    # Create the session
+    session = AgentSession(
+        # ... stt, llm, tts, etc.
     )
-)
+
+    # Start session with custom text input handler
+    session.start(
+        # other options...
+        room_options=room_io.RoomOptions(
+            text_input=room_io.TextInputOptions(
+                text_input_cb=custom_text_input_handler
+            )
+        )
+    )
 
 ```
 
@@ -237,15 +253,19 @@ Turn off audio input and output for a text-only session, or dynamically, using t
 
 ### Disable audio for the entire session
 
-To turn off audio input or output for the entire session, set `audio_enabled=False` in `RoomInputOptions` or `RoomOutputOptions` when you start the session. When audio output is disabled, the agent does not publish audio tracks to the room. Text responses are sent without the `lk.transcribed_track_id` attribute and without speech synchronization.
+You can turn off audio input or output for the entire session when you start a session. When audio output is disabled, the agent does not publish audio tracks to the room. Text responses are sent without the `lk.transcribed_track_id` attribute and without speech synchronization.
 
 **Python**:
+
+In Python, you can turn off audio input and output in `RoomOptions` when you start a session:
 
 ```python
 session.start(
     # ... agent, room
-    room_input_options=RoomInputOptions(audio_enabled=False),
-    room_output_options=RoomOutputOptions(audio_enabled=False),
+    room_options=RoomOptions(
+      audio_input=False,
+      audio_output=False,
+    ),
 )
 
 ```
@@ -253,6 +273,8 @@ session.start(
 ---
 
 **Node.js**:
+
+In Node.js, you can turn off audio input and output in `inputOptions` and `outputOptions` when you start a session:
 
 ```typescript
 await session.start({
@@ -362,7 +384,7 @@ async function doJob() {
 
 ## Frontend rendering
 
-LiveKit client SDKs have native support for text streams. For more information, see the [text streams](https://docs.livekit.io/home/client/data/text-streams.md) documentation.
+LiveKit client SDKs have native support for text streams. For more information, see the [text streams](https://docs.livekit.io/transport/data/text-streams.md) documentation.
 
 ### Receiving text streams
 
@@ -466,7 +488,7 @@ try await room.registerTextStreamHandler(for: "lk.transcription") { reader, part
 
 ---
 
-This document was rendered at 2025-11-18T23:55:04.527Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/text.md](https://docs.livekit.io/agents/build/text.md).
+This document was rendered at 2026-02-03T03:24:55.248Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/multimodality/text.md](https://docs.livekit.io/agents/multimodality/text.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

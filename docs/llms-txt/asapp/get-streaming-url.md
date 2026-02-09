@@ -1,76 +1,82 @@
 # Source: https://docs.asapp.com/apis/autotranscribe/get-streaming-url.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get streaming URL
 
 > Get [websocket streaming URL](/autotranscribe/deploying-autotranscribe-via-websocket) to transcribe audio in real time. This websocket is used to send audio to ASAPP's transcription service and receive transcription results.
 
 
+
+
 ## OpenAPI
 
 ````yaml api-specs/autotranscribe.yaml post /autotranscribe/v1/streaming-url
+openapi: 3.0.1
+info:
+  title: AutoTranscribe API
+  description: >
+    AutoTranscribe API to get the streaming URL to transcribe audio in real-time
+    with websockets
+  version: 0.0.3
+servers:
+  - url: https://api.sandbox.asapp.com
+security:
+  - API-ID: []
+    API-Secret: []
+tags:
+  - name: AutoTranscribe
+    description: Get streaming URL to transcribe audio
 paths:
-  path: /autotranscribe/v1/streaming-url
-  method: post
-  servers:
-    - url: https://api.sandbox.asapp.com
-  request:
-    security:
-      - title: API ID & API Secret
-        parameters:
-          query: {}
-          header:
-            asapp-api-id:
-              type: apiKey
-            asapp-api-secret:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              externalId:
-                allOf:
-                  - description: >-
-                      Your unique identifier for the conversation. This ID
-                      should be the same for streams of the same conversation.
-                    type: string
-            example:
-              externalId: 8560333f-7e53-4e9f-80f3-3409a396506e
-        examples:
-          example:
-            value:
-              externalId: 8560333f-7e53-4e9f-80f3-3409a396506e
+  /autotranscribe/v1/streaming-url:
+    post:
+      tags:
+        - AutoTranscribe
+      summary: Get streaming URL
+      description: >
+        Get [websocket streaming
+        URL](/autotranscribe/deploying-autotranscribe-via-websocket) to
+        transcribe audio in real time. This websocket is used to send audio to
+        ASAPP's transcription service and receive transcription results.
+      operationId: getStreamingUrl
+      requestBody:
         description: The parameters for getting streaming URL
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              streamingUrl:
-                allOf:
-                  - type: string
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                externalId:
+                  description: >-
+                    Your unique identifier for the conversation. This ID should
+                    be the same for streams of the same conversation.
+                  type: string
+              example:
+                externalId: 8560333f-7e53-4e9f-80f3-3409a396506e
+      responses:
+        '200':
+          description: Successfully generated the URL for streaming
+          content:
+            application/json:
+              schema:
+                description: Get streaming url
+                type: object
+                properties:
+                  streamingUrl:
+                    type: string
                     description: Streaming websocket URL
-            description: Get streaming url
-        examples:
-          example:
-            value:
-              streamingUrl: <string>
-        description: Successfully generated the URL for streaming
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '400':
+          description: 400 - Bad request
+          content:
+            application/json:
+              schema:
+                description: Bad request response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 400-01
                       message: Bad request
@@ -89,23 +95,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Bad request response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 400-01
-                message: Bad request
-        description: 400 - Bad request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '401':
+          description: 401 - Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Unauthorized response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 401-01
                       message: Unauthorized
@@ -124,23 +123,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unauthorized response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 401-01
-                message: Unauthorized
-        description: 401 - Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '403':
+          description: 403 - Forbidden
+          content:
+            application/json:
+              schema:
+                description: Forbidden response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 403-01
                       message: Forbidden Response
@@ -159,23 +151,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Forbidden response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 403-01
-                message: Forbidden Response
-        description: 403 - Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '404':
+          description: 404 - Not Found
+          content:
+            application/json:
+              schema:
+                description: Not Found response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 404-01
                       message: Not Found
@@ -194,23 +179,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Not Found response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 404-01
-                message: Not Found
-        description: 404 - Not Found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '409':
+          description: 409 - Conflict
+          content:
+            application/json:
+              schema:
+                description: Conflict response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 409-01
                       message: Conflict
@@ -229,23 +207,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Conflict response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 409-01
-                message: Conflict
-        description: 409 - Conflict
-    '413':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '413':
+          description: 413 - Request Entity Too Large
+          content:
+            application/json:
+              schema:
+                description: Request Entity Too Large response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 413-01
                       message: Request Entity Too Large
@@ -264,23 +235,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Request Entity Too Large response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 413-01
-                message: Request Entity Too Large
-        description: 413 - Request Entity Too Large
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '422':
+          description: 422 - Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                description: Unprocessable Entity response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 422-01
                       message: Unprocessable Entity
@@ -299,23 +263,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unprocessable Entity response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 422-01
-                message: Unprocessable Entity
-        description: 422 - Unprocessable Entity
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '429':
+          description: 429 - Too Many Requests
+          content:
+            application/json:
+              schema:
+                description: Too Many Requests response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 429-01
                       message: Too Many Requests
@@ -334,23 +291,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Too Many Requests response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 429-01
-                message: Too Many Requests
-        description: 429 - Too Many Requests
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '503':
+          description: 503 - Service Unavailable
+          content:
+            application/json:
+              schema:
+                description: Service Unavailable response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 503-01
                       message: Service Unavailable
@@ -369,23 +319,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Service Unavailable response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 503-01
-                message: Service Unavailable
-        description: 503 - Service Unavailable
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        default:
+          description: 500 - Internal Server Error
+          content:
+            application/json:
+              schema:
+                description: Default error response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 500-01
                       message: Internal server error
@@ -404,18 +347,15 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Default error response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 500-01
-                message: Internal server error
-        description: 500 - Internal Server Error
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    API-ID:
+      type: apiKey
+      in: header
+      name: asapp-api-id
+    API-Secret:
+      type: apiKey
+      in: header
+      name: asapp-api-secret
 
 ````

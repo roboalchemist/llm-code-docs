@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/run-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Usage
 
 > Get compute duration and cost from inside a run, or for a specific block of code.
@@ -8,7 +12,7 @@
 
 You can get the cost and duration of the current including retries of the same run.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const heavyTask = task({
   id: "heavy-task",
   machine: {
@@ -63,7 +67,7 @@ export const heavyTask = task({
 
 You can use [runs.retrieve()](/management/runs/retrieve) to get a single run or [runs.list()](/management/runs/list) to get a list of runs. The response will include `costInCents` `baseCostInCents` and `durationMs` fields.
 
-```ts single run theme={null}
+```ts single run theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run-id");
@@ -71,7 +75,7 @@ console.log(run.costInCents, run.baseCostInCents, run.durationMs);
 const totalCost = run.costInCents + run.baseCostInCents;
 ```
 
-```ts multiple runs theme={null}
+```ts multiple runs theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 let totalCost = 0;
@@ -87,7 +91,7 @@ console.log("Total cost", totalCost);
 
 You can also wrap code with `usage.measure` to get the cost and duration of that block of code:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Inside a task run function, or inside a function that's called from there.
 const { result, compute } = await usage.measure(async () => {
   //...Do something for 1 second

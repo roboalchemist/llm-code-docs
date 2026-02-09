@@ -1,71 +1,92 @@
 # Source: https://docs.tavus.io/api-reference/phoenix-replica-model/get-replicas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Replicas
 
 > This endpoint returns a list of all Replicas created by the account associated with the API Key in use. In the response, a root level `data` key will contain the list of Replicas.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/replicas
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/replicas
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
+  /v2/replicas:
+    get:
+      tags:
+        - Replicas
+      summary: List Replicas
+      description: >
+        This endpoint returns a list of all Replicas created by the account
+        associated with the API Key in use. In the response, a root level `data`
+        key will contain the list of Replicas.
+      operationId: listReplicas
+      parameters:
+        - in: query
+          name: limit
           schema:
-            - type: integer
-              description: The number of replicas to return per page.
-        page:
+            type: integer
+          description: The number of replicas to return per page.
+        - in: query
+          name: page
           schema:
-            - type: integer
-              description: The page number to return
-        verbose:
+            type: integer
+          description: The page number to return
+        - in: query
+          name: verbose
           schema:
-            - type: boolean
-              description: >-
-                If set to true, the response will include additional replica
-                data such as the replica type.
-        replica_type:
+            type: boolean
+          description: >-
+            If set to true, the response will include additional replica data
+            such as the replica type.
+        - in: query
+          name: replica_type
           schema:
-            - type: enum<string>
-              enum:
-                - user
-                - system
-              description: >-
-                If set to user, the response will only include user replicas. If
-                set to system, the response will only include stock replicas.
-        replica_ids:
+            type: string
+            enum:
+              - user
+              - system
+          description: >-
+            If set to user, the response will only include user replicas. If set
+            to system, the response will only include stock replicas.
+        - in: query
+          name: replica_ids
           schema:
-            - type: string
-              description: >-
-                A comma separated list of replica ids to filter the response by.
-                Example: `replica_ids=re1074c227,r243eed46c`
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: string
+          description: >-
+            A comma separated list of replica ids to filter the response by.
+            Example: `replica_ids=re1074c227,r243eed46c`
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -103,42 +124,28 @@ paths:
                             replicas are replicas that have been created by
                             users. System replicas are stock Tavus replicas that
                             anyone may use
-              total_count:
-                allOf:
-                  - type: integer
+                  total_count:
+                    type: integer
                     description: The total number of replicas given the filters provided.
                     example: 42
-        examples:
-          example:
-            value:
-              data:
-                - replica_id: r783537ef5
-                  replica_name: My Replica
-                  thumbnail_video_url: <string>
-                  training_progress: 100/100
-                  status: completed
-                  created_at: <string>
-                  replica_type: user'
-              total_count: 42
-        description: ''
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

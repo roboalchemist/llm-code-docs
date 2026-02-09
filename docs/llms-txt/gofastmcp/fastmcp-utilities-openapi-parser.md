@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-openapi-parser.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # parser
 
 # `fastmcp.utilities.openapi.parser`
@@ -34,8 +38,3 @@ parse(self) -> list[HTTPRoute]
 ```
 
 Parse the OpenAPI schema into HTTP routes.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

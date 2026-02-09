@@ -86,11 +86,8 @@ Use the `standalone` prop alongside the `inset` prop to display the Chip inline.
 </template>
 ```
 
-<note>
-
-It's used this way in the [`CommandPalette`](/docs/components/command-palette), [`InputMenu`](/docs/components/input-menu), [`Select`](/docs/components/select) or [`SelectMenu`](/docs/components/select-menu) components for example.
-
-</note>
+> [!NOTE]
+> It's used this way in the [`CommandPalette`](/docs/components/command-palette), [`InputMenu`](/docs/components/input-menu), [`Select`](/docs/components/select) or [`SelectMenu`](/docs/components/select-menu) components for example.
 
 ## Examples
 
@@ -124,11 +121,8 @@ onMounted(() => {
 </template>
 ```
 
-<note>
-
-In this example, the Chip has a color per status and is displayed when the status is not `offline`.
-
-</note>
+> [!NOTE]
+> In this example, the Chip has a color per status and is displayed when the status is not `offline`.
 
 ## API
 
@@ -272,8 +266,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

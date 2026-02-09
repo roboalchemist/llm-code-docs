@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/tables/create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ingesting Data
 
 > Learn about different methods to ingest data into tables in LanceDB, including from various data sources and empty tables.
@@ -12,9 +16,9 @@ export const TablesBasicConnect = "import lancedb\n\nuri = \"data/sample-lancedb
 
 export const DropTable = "db = tmp_db\n# Create a table first\ndata = [{\"vector\": [1.1, 1.2], \"lat\": 45.5}]\ndb.create_table(\"my_table\", data, mode=\"overwrite\")\n\n# Drop the table\ndb.drop_table(\"my_table\")\n";
 
-export const CreateEmptyTablePydantic = "import lancedb\nfrom lancedb.pydantic import LanceModel, Vector\n\nclass Item(LanceModel):\n    vector: Vector(2)\n    item: str\n    price: float\n\ndb = tmp_db\ntbl = db.create_table(\n    \"test_empty_table_new\", schema=Item.to_arrow_schema(), mode=\"overwrite\"\n)\n";
+export const CreateEmptyTablePydantic = "from lancedb.pydantic import LanceModel, Vector\n\nclass Item(LanceModel):\n    vector: Vector(2)\n    item: str\n    price: float\n\ndb = tmp_db\ntbl = db.create_table(\n    \"test_empty_table_new\", schema=Item.to_arrow_schema(), mode=\"overwrite\"\n)\n";
 
-export const CreateEmptyTable = "import lancedb\nimport pyarrow as pa\n\nschema = pa.schema(\n    [\n        pa.field(\"vector\", pa.list_(pa.float32(), 2)),\n        pa.field(\"item\", pa.string()),\n        pa.field(\"price\", pa.float32()),\n    ]\n)\ndb = tmp_db\ntbl = db.create_table(\"test_empty_table\", schema=schema, mode=\"overwrite\")\n";
+export const CreateEmptyTable = "import pyarrow as pa\n\nschema = pa.schema(\n    [\n        pa.field(\"vector\", pa.list_(pa.float32(), 2)),\n        pa.field(\"item\", pa.string()),\n        pa.field(\"price\", pa.float32()),\n    ]\n)\ndb = tmp_db\ntbl = db.create_table(\"test_empty_table\", schema=schema, mode=\"overwrite\")\n";
 
 export const OpenExistingTable = "db = tmp_db\n# Create a table first\ndata = [{\"vector\": [1.1, 1.2], \"lat\": 45.5, \"long\": -122.7}]\ndb.create_table(\"test_table\", data, mode=\"overwrite\")\n\n# List table names\nprint(db.table_names())\n\n# Open existing table\ntbl = db.open_table(\"test_table\")\n";
 
@@ -246,8 +250,3 @@ Use the `drop_table()` method on the database to remove a table.
 This permanently removes the table and is not recoverable, unlike deleting rows.
 By default, if the table does not exist an exception is raised. To suppress this,
 you can pass in `ignore_missing=True`.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

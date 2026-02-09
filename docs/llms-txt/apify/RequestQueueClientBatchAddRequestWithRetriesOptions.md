@@ -13,7 +13,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#forefront)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L655)optionalforefront
+### [**](#forefront)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L939)optionalforefront
 
 **forefront?
 
@@ -21,7 +21,7 @@
 
 : boolean
 
-### [**](#maxParallel)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L657)optionalmaxParallel
+### [**](#maxParallel)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L941)optionalmaxParallel
 
 **maxParallel?
 
@@ -29,7 +29,7 @@
 
 : number
 
-### [**](#maxUnprocessedRequestsRetries)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L656)optionalmaxUnprocessedRequestsRetries
+### [**](#maxUnprocessedRequestsRetries)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L940)optionalmaxUnprocessedRequestsRetries
 
 **maxUnprocessedRequestsRetries?
 
@@ -37,7 +37,7 @@
 
 : number
 
-### [**](#minDelayBetweenUnprocessedRequestsRetriesMillis)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L658)optionalminDelayBetweenUnprocessedRequestsRetriesMillis
+### [**](#minDelayBetweenUnprocessedRequestsRetriesMillis)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L942)optionalminDelayBetweenUnprocessedRequestsRetriesMillis
 
 **minDelayBetweenUnprocessedRequestsRetriesMillis?
 

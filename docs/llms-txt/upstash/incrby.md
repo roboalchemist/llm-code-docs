@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrby.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrby.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # INCRBY
 
@@ -28,24 +14,24 @@ If a key does not exist, it is initialized as 0 before performing the operation.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to decrement.
 </ParamField>
 
-<ParamField body="incrementBy" type="integer" required>
+<ParamField body="increment" type="int" required>
   The amount to increment by.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The value at the key after the incrementing.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", 6);
-  await redis.incrby("key", 4);
-  // returns 10
+  ```py Example theme={"system"}
+  redis.set("key", 6)
+
+  assert redis.incrby("key", 4) == 10
   ```
 </RequestExample>

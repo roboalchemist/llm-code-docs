@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/create-custom-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Custom Tools
 
 > Comprehensive guide on crafting, using, and managing custom tools within the CrewAI framework, including new functionalities and error handling.
@@ -63,6 +67,56 @@ def my_cache_strategy(arguments: dict, result: str) -> bool:
     return True if some_condition else False
 
 cached_tool.cache_function = my_cache_strategy
+```
+
+### Creating Async Tools
+
+CrewAI supports async tools for non-blocking I/O operations. This is useful when your tool needs to make HTTP requests, database queries, or other I/O-bound operations.
+
+#### Using the `@tool` Decorator with Async Functions
+
+The simplest way to create an async tool is using the `@tool` decorator with an async function:
+
+```python Code theme={null}
+import aiohttp
+from crewai.tools import tool
+
+@tool("Async Web Fetcher")
+async def fetch_webpage(url: str) -> str:
+    """Fetch content from a webpage asynchronously."""
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+```
+
+#### Subclassing `BaseTool` with Async Support
+
+For more control, subclass `BaseTool` and implement both `_run` (sync) and `_arun` (async) methods:
+
+```python Code theme={null}
+import requests
+import aiohttp
+from crewai.tools import BaseTool
+from pydantic import BaseModel, Field
+
+class WebFetcherInput(BaseModel):
+    """Input schema for WebFetcher."""
+    url: str = Field(..., description="The URL to fetch")
+
+class WebFetcherTool(BaseTool):
+    name: str = "Web Fetcher"
+    description: str = "Fetches content from a URL"
+    args_schema: type[BaseModel] = WebFetcherInput
+
+    def _run(self, url: str) -> str:
+        """Synchronous implementation."""
+        return requests.get(url).text
+
+    async def _arun(self, url: str) -> str:
+        """Asynchronous implementation for non-blocking I/O."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                return await response.text()
 ```
 
 By adhering to these guidelines and incorporating new functionalities and collaboration tools into your tool creation and management processes,

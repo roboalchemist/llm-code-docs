@@ -10,12 +10,18 @@
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L38"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L40"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ifnone
 
->  ifnone (a, b)
+``` python
+
+def ifnone(
+    a, b
+):
+
+```
 
 *`b` if `a` is None else `a`*
 
@@ -33,12 +39,18 @@ test_eq(ifnone(2   ,1), 2)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L43"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L45"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### maybe_attr
 
->  maybe_attr (o, attr)
+``` python
+
+def maybe_attr(
+    o, attr
+):
+
+```
 
 *`getattr(o,attr,o)`*
 
@@ -55,12 +67,18 @@ test_eq(maybe_attr(myobj, 'another_attr'), myobj)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L48"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L50"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### basic_repr
 
->  basic_repr (flds=None)
+``` python
+
+def basic_repr(
+    flds:NoneType=None
+):
+
+```
 
 *Minimal `__repr__`*
 
@@ -127,12 +145,18 @@ repr(SomeClass())
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L62"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L64"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### BasicRepr
 
->  BasicRepr ()
+``` python
+
+def BasicRepr(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Base class for objects needing a basic `__repr__`*
 
@@ -152,12 +176,18 @@ repr(SomeClass())
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L67"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L69"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_array
 
->  is_array (x)
+``` python
+
+def is_array(
+    x
+):
+
+```
 
 *`True` if `x` supports `__array__` or `iloc`*
 
@@ -170,12 +200,18 @@ is_array(np.array(1)),is_array([1])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L72"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L74"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### listify
 
->  listify (o=None, *rest, use_list=False, match=None)
+``` python
+
+def listify(
+    o:NoneType=None, rest:VAR_POSITIONAL, use_list:bool=False, match:NoneType=None
+):
+
+```
 
 *Convert `o` to a `list`*
 
@@ -237,12 +273,18 @@ test_fail(lambda: listify([1,1],match=3))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L88"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L90"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### tuplify
 
->  tuplify (o, use_list=False, match=None)
+``` python
+
+def tuplify(
+    o, use_list:bool=False, match:NoneType=None
+):
+
+```
 
 *Make `o` a tuple*
 
@@ -255,12 +297,18 @@ test_eq(tuplify(1,match=[1,2,3]),(1,1,1))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L93"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L95"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### true
 
->  true (x)
+``` python
+
+def true(
+    x
+):
+
+```
 
 *Test whether `x` is truthy; collections with \>0 elements are
 considered `True`*
@@ -282,12 +330,18 @@ considered `True`*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L99"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L101"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### NullType
 
->  NullType ()
+``` python
+
+def NullType(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *An object that is `False` and can be called, chained, and indexed*
 
@@ -300,12 +354,18 @@ bool(null.hi().there[3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L109"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L111"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### tonull
 
->  tonull (x)
+``` python
+
+def tonull(
+    x
+):
+
+```
 
 *Convert `None` to `null`*
 
@@ -318,13 +378,19 @@ bool(tonull(None).hi().there[3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L114"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L116"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_class
 
->  get_class (nm, *fld_names, sup=None, doc=None, funcs=None, anno=None,
->                 **flds)
+``` python
+
+def get_class(
+    nm, fld_names:VAR_POSITIONAL, sup:NoneType=None, doc:NoneType=None, funcs:NoneType=None, anno:NoneType=None,
+    flds:VAR_KEYWORD
+):
+
+```
 
 *Dynamically create a class, optionally inheriting from `sup`,
 containing `fld_names`*
@@ -357,13 +423,19 @@ details and examples of use (which also apply to
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L143"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L145"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_class
 
->  mk_class (nm, *fld_names, sup=None, doc=None, funcs=None, mod=None,
->                anno=None, **flds)
+``` python
+
+def mk_class(
+    nm, fld_names:VAR_POSITIONAL, sup:NoneType=None, doc:NoneType=None, funcs:NoneType=None, mod:NoneType=None,
+    anno:NoneType=None, flds:VAR_KEYWORD
+):
+
+```
 
 *Create a class using
 [`get_class`](https://fastcore.fast.ai/basics.html#get_class) and add to
@@ -401,12 +473,18 @@ t
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L150"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L152"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### wrap_class
 
->  wrap_class (nm, *fld_names, sup=None, doc=None, funcs=None, **flds)
+``` python
+
+def wrap_class(
+    nm, fld_names:VAR_POSITIONAL, sup:NoneType=None, doc:NoneType=None, funcs:NoneType=None, flds:VAR_KEYWORD
+):
+
+```
 
 *Decorator: makes function a method of a new class `nm` passing
 parameters to
@@ -424,12 +502,18 @@ test_eq(t.bar(3), 4)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L158"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L160"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ignore_exceptions
 
->  ignore_exceptions ()
+``` python
+
+def ignore_exceptions(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Context manager to ignore exceptions*
 
@@ -442,12 +526,18 @@ with ignore_exceptions():
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L164"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L166"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### exec_local
 
->  exec_local (code, var_name)
+``` python
+
+def exec_local(
+    code, var_name
+):
+
+```
 
 *Call `exec` on `code` and return the var `var_name`*
 
@@ -458,12 +548,18 @@ test_eq(exec_local("a=1", "a"), 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L176"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L178"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### risinstance
 
->  risinstance (types, obj=None)
+``` python
+
+def risinstance(
+    types, obj:NoneType=None
+):
+
+```
 
 *Curried `isinstance` but with args reversed*
 
@@ -485,12 +581,18 @@ assert not risinstance('int', 'a')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L183"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L185"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ver2tuple
 
->  ver2tuple (v:str)
+``` python
+
+def ver2tuple(
+    v:str
+)->tuple:
+
+```
 
 ``` python
 test_eq(ver2tuple('3.8.1'), (3,8,1))
@@ -507,7 +609,13 @@ These are used when you need a pass-through function.
 
 ### noop
 
->  noop (x=None, *args, **kwargs)
+``` python
+
+def noop(
+    x:NoneType=None, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Do nothing*
 
@@ -520,7 +628,13 @@ test_eq(noop(1),1)
 
 ### noops
 
->  noops (x=None, *args, **kwargs)
+``` python
+
+def noops(
+    x:NoneType=None, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Do nothing (method)*
 
@@ -561,12 +675,18 @@ test_eq([o for i,o in zip(range(5), Inf.nones)],
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L215"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L217"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### in\_
 
->  in_ (x, a)
+``` python
+
+def in_(
+    x, a
+):
+
+```
 
 *`True` if `x in a`*
 
@@ -607,12 +727,18 @@ lt(5)(3),gt(5)(3),is_(None)(None),in_([1,2])(0),mod(2)(3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L228"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L230"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ret_true
 
->  ret_true (*args, **kwargs)
+``` python
+
+def ret_true(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Predicate: always `True`*
 
@@ -624,36 +750,54 @@ assert ret_true(False)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L233"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L235"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ret_false
 
->  ret_false (*args, **kwargs)
+``` python
+
+def ret_false(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Predicate: always `False`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L238"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L240"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### stop
 
->  stop (e=<class 'StopIteration'>)
+``` python
+
+def stop(
+    e:type=StopIteration
+):
+
+```
 
 *Raises exception `e` (by default `StopIteration`)*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L243"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L245"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### gen
 
->  gen (func, seq, cond=<function ret_true>)
+``` python
+
+def gen(
+    func, seq, cond:function=ret_true
+):
+
+```
 
 *Like `(func(o) for o in seq if cond(func(o)))` but handles
 `StopIteration`*
@@ -670,26 +814,18 @@ test_eq(gen(lambda o:o if o<5 else stop(), Inf.count),
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L259"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L250"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### chunked
 
->  chunked (it, chunk_sz=None, drop_last=False, n_chunks=None)
+``` python
 
-*Return batches from iterator `it` of size `chunk_sz` (or return
-`n_chunks` total)*
+def chunked(
+    it, chunk_sz:NoneType=None, drop_last:bool=False, n_chunks:NoneType=None, pad:bool=False, pad_val:NoneType=None
+):
 
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L259"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### chunked
-
->  chunked (it, chunk_sz=None, drop_last=False, n_chunks=None, pad=False,
->               pad_val=None)
+```
 
 *Return batches from iterator `it` of size `chunk_sz` (or return
 `n_chunks` total)*
@@ -727,12 +863,18 @@ test_eq(chunked(range(5),2,pad=True), [[0,1], [2,3], [4,None]])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L272"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L263"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### otherwise
 
->  otherwise (x, tst, y)
+``` python
+
+def otherwise(
+    x, tst, y
+):
+
+```
 
 *`y if tst(x) else x`*
 
@@ -749,12 +891,18 @@ attributes or properties of objects.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L277"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L268"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### custom_dir
 
->  custom_dir (c, add)
+``` python
+
+def custom_dir(
+    c, add
+):
+
+```
 
 *Implement custom `__dir__`, adding `add` to `cls`*
 
@@ -774,10 +922,18 @@ assert {'foo', 'bar', 'f'}.issubset(s)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L282"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L273"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AttrDict
+
+``` python
+
+def AttrDict(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *`dict` subclass that also provides access to keys as attrs*
 
@@ -816,12 +972,18 @@ AttrDict(_test_dict)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L291"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L282"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AttrDictDefault
 
->  AttrDictDefault (*args, default_=None, **kwargs)
+``` python
+
+def AttrDictDefault(
+    args:VAR_POSITIONAL, default_:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *[`AttrDict`](https://fastcore.fast.ai/basics.html#attrdict) subclass
 that returns `None` for missing attrs*
@@ -836,10 +998,18 @@ test_eq(d.c, 'nope')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L300"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L291"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### NS
+
+``` python
+
+def NS(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *`SimpleNamespace` subclass that also adds `iter` and `dict` support*
 
@@ -879,12 +1049,18 @@ list(d)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L307"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L298"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### get_annotations_ex
 
->  get_annotations_ex (obj, globals=None, locals=None)
+``` python
+
+def get_annotations_ex(
+    obj, globals:NoneType=None, locals:NoneType=None
+):
+
+```
 
 *Backport of py3.10 `get_annotations` that returns globals/locals*
 
@@ -900,12 +1076,18 @@ needed to evaluate types.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L354"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L345"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### eval_type
 
->  eval_type (t, glb, loc)
+``` python
+
+def eval_type(
+    t, glb, loc
+):
+
+```
 
 *`eval` a type or collection of types, if needed, for annotations in
 py3.10+*
@@ -940,12 +1122,18 @@ eval_type(ann['a'], glb, loc)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L371"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L362"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### type_hints
 
->  type_hints (f)
+``` python
+
+def type_hints(
+    f
+):
+
+```
 
 *Like `typing.get_type_hints` but returns `{}` if not allowed type*
 
@@ -981,12 +1169,18 @@ assert not type_hints(_T)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L378"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L369"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### annotations
 
->  annotations (o)
+``` python
+
+def annotations(
+    o
+):
+
+```
 
 *Annotations for `o`, or `type(o)`*
 
@@ -1003,12 +1197,18 @@ assert not annotations(print)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L388"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L379"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### anno_ret
 
->  anno_ret (func)
+``` python
+
+def anno_ret(
+    func
+):
+
+```
 
 *Get the return annotation of `func`*
 
@@ -1046,24 +1246,36 @@ test_eq(anno_ret(None), None) # instead of passing in a func, pass in None
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L395"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L386"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### signature_ex
 
->  signature_ex (obj, eval_str:bool=False)
+``` python
+
+def signature_ex(
+    obj, eval_str:bool=False
+):
+
+```
 
 *Backport of `inspect.signature(..., eval_str=True` to \<py310*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L412"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L403"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### union2tuple
 
->  union2tuple (t)
+``` python
+
+def union2tuple(
+    t
+):
+
+```
 
 ``` python
 test_eq(union2tuple(Union[int,str]), (int,str))
@@ -1076,12 +1288,18 @@ if UnionType: test_eq(union2tuple(int|str), (int,str))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L418"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L409"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### argnames
 
->  argnames (f, frame=False)
+``` python
+
+def argnames(
+    f, frame:bool=False
+):
+
+```
 
 *Names of arguments to function or frame `f`*
 
@@ -1092,12 +1310,18 @@ test_eq(argnames(f), ['x'])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L424"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L415"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### with_cast
 
->  with_cast (f)
+``` python
+
+def with_cast(
+    f
+):
+
+```
 
 *Decorator which uses any parameter annotations as preprocessing
 functions*
@@ -1120,12 +1344,18 @@ test_eq(_g(2), '2')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L450"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L441"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### store_attr
 
->  store_attr (names=None, but='', cast=False, store_args=None, **attrs)
+``` python
+
+def store_attr(
+    names:NoneType=None, but:str='', cast:bool=False, store_args:NoneType=None, attrs:VAR_KEYWORD
+):
+
+```
 
 *Store params named in comma-separated `names` from calling context into
 attrs in `self`*
@@ -1273,12 +1503,18 @@ assert t.a==1 and t.b==2
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L468"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L459"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### attrdict
 
->  attrdict (o, *ks, default=None)
+``` python
+
+def attrdict(
+    o, ks:VAR_POSITIONAL, default:NoneType=None
+):
+
+```
 
 *Dict from each `k` in `ks` to `getattr(o,k)`*
 
@@ -1293,12 +1529,18 @@ test_eq(attrdict(t,'b','c'), {'b':3, 'c':2})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L473"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L464"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### properties
 
->  properties (cls, *ps)
+``` python
+
+def properties(
+    cls, ps:VAR_POSITIONAL
+):
+
+```
 
 *Change attrs in `cls` with names in `ps` to properties*
 
@@ -1315,12 +1557,18 @@ test_eq(T().b(),2)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L483"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L474"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### camel2words
 
->  camel2words (s, space=' ')
+``` python
+
+def camel2words(
+    s, space:str=' '
+):
+
+```
 
 *Convert CamelCase to ‘spaced words’*
 
@@ -1331,12 +1579,18 @@ test_eq(camel2words('ClassAreCamel'), 'Class Are Camel')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L488"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L479"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### camel2snake
 
->  camel2snake (name)
+``` python
+
+def camel2snake(
+    name
+):
+
+```
 
 *Convert CamelCase to snake_case*
 
@@ -1348,12 +1602,18 @@ test_eq(camel2snake('Already_Snake'), 'already__snake')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L494"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L485"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### snake2camel
 
->  snake2camel (s)
+``` python
+
+def snake2camel(
+    s
+):
+
+```
 
 *Convert snake_case to CamelCase*
 
@@ -1364,12 +1624,18 @@ test_eq(snake2camel('a_b_cc'), 'ABCc')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L499"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L490"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### class2attr
 
->  class2attr (cls_name)
+``` python
+
+def class2attr(
+    cls_name
+):
+
+```
 
 *Return the snake-cased name of the class; strip ending `cls_name` if it
 exists.*
@@ -1394,12 +1660,18 @@ test_eq(cp2.name, 'parent_child_of')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L504"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L495"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### getcallable
 
->  getcallable (o, attr)
+``` python
+
+def getcallable(
+    o, attr
+):
+
+```
 
 *Calls `getattr` with a default of `noop`*
 
@@ -1416,12 +1688,18 @@ test_eq(getcallable(m, "subtraction")(a=1,b=2), None)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L509"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L500"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### getattrs
 
->  getattrs (o, *attrs, default=None)
+``` python
+
+def getattrs(
+    o, attrs:VAR_POSITIONAL, default:NoneType=None
+):
+
+```
 
 *List of all `attrs` in `o`*
 
@@ -1438,12 +1716,18 @@ getattrs(Fraction(1,2), 'numerator', 'denominator')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L514"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L505"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### hasattrs
 
->  hasattrs (o, attrs)
+``` python
+
+def hasattrs(
+    o, attrs
+):
+
+```
 
 *Test whether `o` contains all `attrs`*
 
@@ -1455,12 +1739,18 @@ assert not hasattrs(1,('imag','foo'))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L519"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L510"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### setattrs
 
->  setattrs (dest, flds, src)
+``` python
+
+def setattrs(
+    dest, flds, src
+):
+
+```
 
 ``` python
 d = dict(a=1,bb="2",ignore=3)
@@ -1481,12 +1771,18 @@ test_eq(o.bb, "2")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L525"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L516"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### try_attrs
 
->  try_attrs (obj, *attrs)
+``` python
+
+def try_attrs(
+    obj, attrs:VAR_POSITIONAL
+):
+
+```
 
 *Return first attr that exists in `obj`*
 
@@ -1500,12 +1796,18 @@ test_eq(try_attrs(1, 'foobar', 'real'), 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L533"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L524"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### GetAttrBase
 
->  GetAttrBase ()
+``` python
+
+def GetAttrBase(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Basic delegation of
 [`__getattr__`](https://fastcore.fast.ai/xml.html#__getattr__) and
@@ -1514,12 +1816,18 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L542"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L533"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### GetAttr
 
->  GetAttr ()
+``` python
+
+def GetAttr(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Inherit from this to have all attr accesses in `self._xtra` passed down
 to `self.default`*
@@ -1663,12 +1971,18 @@ test_fail(lambda: dir(t))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L560"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L551"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### delegate_attr
 
->  delegate_attr (k, to)
+``` python
+
+def delegate_attr(
+    k, to
+):
+
+```
 
 *Use in [`__getattr__`](https://fastcore.fast.ai/xml.html#__getattr__)
 to delegate to attr `to` without inheriting from
@@ -1736,12 +2050,18 @@ Functions that manipulate popular python collections.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L585"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L576"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### partition
 
->  partition (coll, f)
+``` python
+
+def partition(
+    coll, f
+):
+
+```
 
 *Partition a collection by a predicate*
 
@@ -1754,12 +2074,18 @@ test_eq(ts, [1,3,5,7,9])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L595"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L586"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### partition_dict
 
->  partition_dict (d, f)
+``` python
+
+def partition_dict(
+    d, f
+):
+
+```
 
 *Partition a dict by a predicate that takes key/value params*
 
@@ -1779,24 +2105,36 @@ test_eq(fs, {'a':1, 'd':4})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L602"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L593"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### flatten
 
->  flatten (o)
+``` python
+
+def flatten(
+    o
+):
+
+```
 
 *Concatenate all collections and items as a generator*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L610"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L601"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### concat
 
->  concat (colls)
+``` python
+
+def concat(
+    colls
+)->list:
+
+```
 
 *Concatenate all collections and items as a list*
 
@@ -1815,12 +2153,18 @@ concat([["abc", "xyz"], ["foo", "bar"]])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L615"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L606"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### strcat
 
->  strcat (its, sep:str='')
+``` python
+
+def strcat(
+    its, sep:str=''
+)->str:
+
+```
 
 *Concatenate stringified items `its`*
 
@@ -1832,12 +2176,18 @@ test_eq(strcat(['a',2], ';'), 'a;2')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L620"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L611"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### detuplify
 
->  detuplify (x)
+``` python
+
+def detuplify(
+    x
+):
+
+```
 
 *If `x` is a tuple with one thing, extract it*
 
@@ -1851,12 +2201,18 @@ test_eq(detuplify(np.array([[1,2]])), np.array([[1,2]]))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L625"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L616"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### replicate
 
->  replicate (item, match)
+``` python
+
+def replicate(
+    item, match
+):
+
+```
 
 *Create tuple of `item` copied `len(match)` times*
 
@@ -1869,12 +2225,18 @@ test_eq(replicate(1, t),(1,1))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L630"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L621"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### setify
 
->  setify (o)
+``` python
+
+def setify(
+    o
+):
+
+```
 
 *Turn any list like-object into a set.*
 
@@ -1890,12 +2252,18 @@ test_eq(setify({1,2}),{1,2})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L635"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L626"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### merge
 
->  merge (*ds)
+``` python
+
+def merge(
+    ds:VAR_POSITIONAL
+):
+
+```
 
 *Merge all dictionaries in `ds`*
 
@@ -1908,12 +2276,18 @@ test_eq(merge(dict(a=1,b=2), dict(b=3,c=4), None), dict(a=1, b=3, c=4))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L727"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L718"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### range_of
 
->  range_of (x)
+``` python
+
+def range_of(
+    x
+):
+
+```
 
 *All indices of collection `x` (i.e. `list(range(len(x)))`)*
 
@@ -1924,12 +2298,18 @@ test_eq(range_of([1,1,1,1]), [0,1,2,3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L651"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L642"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### groupby
 
->  groupby (x, key, val=<function noop>)
+``` python
+
+def groupby(
+    x, key, val:function=noop
+):
+
+```
 
 *Like `itertools.groupby` but doesn’t need to be sorted, and isn’t lazy,
 plus some extensions*
@@ -1965,12 +2345,18 @@ groupby(((o,k) for k,v in d.items() for o in v), 0, 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L660"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L651"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### last_index
 
->  last_index (x, o)
+``` python
+
+def last_index(
+    x, o
+):
+
+```
 
 *Finds the last index of occurence of `x` in `o` (returns -1 if no
 occurence)*
@@ -1983,12 +2369,18 @@ test_eq(last_index(6, [1, 2, 9, 3, 4, 9, 10]), -1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L666"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L657"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### filter_dict
 
->  filter_dict (d, func)
+``` python
+
+def filter_dict(
+    d, func
+):
+
+```
 
 *Filter a `dict` using `func`, applied to keys and values*
 
@@ -2008,12 +2400,18 @@ filter_dict(letters, lambda k,v: k<67 or v in 'FG')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L671"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L662"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### filter_keys
 
->  filter_keys (d, func)
+``` python
+
+def filter_keys(
+    d, func
+):
+
+```
 
 *Filter a `dict` using `func`, applied to keys*
 
@@ -2026,12 +2424,18 @@ filter_keys(letters, lt(67))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L676"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L667"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### filter_values
 
->  filter_values (d, func)
+``` python
+
+def filter_values(
+    d, func
+):
+
+```
 
 *Filter a `dict` using `func`, applied to values*
 
@@ -2044,12 +2448,18 @@ filter_values(letters, in_('FG'))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L681"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L672"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### cycle
 
->  cycle (o)
+``` python
+
+def cycle(
+    o
+):
+
+```
 
 *Like `itertools.cycle` except creates list of `None`s if `o` is empty*
 
@@ -2063,12 +2473,18 @@ test_eq(itertools.islice(cycle(1),3), [1,1,1])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L687"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L678"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### zip_cycle
 
->  zip_cycle (x, *args)
+``` python
+
+def zip_cycle(
+    x, args:VAR_POSITIONAL
+):
+
+```
 
 *Like `itertools.zip_longest` but
 [`cycle`](https://fastcore.fast.ai/basics.html#cycle)s through elements
@@ -2081,12 +2497,18 @@ test_eq(zip_cycle([1,2,3,4],list('abc')), [(1, 'a'), (2, 'b'), (3, 'c'), (4, 'a'
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L692"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L683"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### sorted_ex
 
->  sorted_ex (iterable, key=None, reverse=False, cmp=None, **kwargs)
+``` python
+
+def sorted_ex(
+    iterable, key:NoneType=None, reverse:bool=False, cmp:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `sorted`, but if key is str use `attrgetter`; if int use
 `itemgetter`; use `cmp` comparator function or `key` with `kwargs`*
@@ -2135,12 +2557,18 @@ test_eq(sorted_ex([1,2,3], reverse=True), [3,2,1])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L704"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L695"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### not\_
 
->  not_ (f)
+``` python
+
+def not_(
+    f
+):
+
+```
 
 *Create new function that negates result of `f`*
 
@@ -2154,12 +2582,18 @@ test_eq(not_(f)(a=-1),True)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L710"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L701"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### argwhere
 
->  argwhere (iterable, f, negate=False, **kwargs)
+``` python
+
+def argwhere(
+    iterable, f, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like [`filter_ex`](https://fastcore.fast.ai/basics.html#filter_ex), but
 return indices for matching items*
@@ -2167,27 +2601,38 @@ return indices for matching items*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L717"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L708"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### filter_ex
 
->  filter_ex (iterable, f=<function noop>, negate=False, gen=False,
->                 **kwargs)
+``` python
+
+def filter_ex(
+    iterable, f:function=noop, negate:bool=False, gen:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `filter`, but passing `kwargs` to `f`, defaulting `f` to `noop`,
-and adding `negate` and
+and adding [`negate`](https://fastcore.fast.ai/basics.html#negate) and
 [`gen`](https://fastcore.fast.ai/basics.html#gen)*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L727"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L718"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### range_of
 
->  range_of (a, b=None, step=None)
+``` python
+
+def range_of(
+    a, b:NoneType=None, step:NoneType=None
+):
+
+```
 
 *All indices of collection `a`, if `a` is a collection, otherwise
 `range`*
@@ -2200,12 +2645,18 @@ test_eq(range_of(4), [0,1,2,3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L733"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L724"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### renumerate
 
->  renumerate (iterable, start=0)
+``` python
+
+def renumerate(
+    iterable, start:int=0
+):
+
+```
 
 *Same as `enumerate`, but returns index as 2nd element instead of 1st*
 
@@ -2216,12 +2667,18 @@ test_eq(renumerate('abc'), (('a',0),('b',1),('c',2)))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L738"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L729"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### first
 
->  first (x, f=None, negate=False, **kwargs)
+``` python
+
+def first(
+    x, f:NoneType=None, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *First element of `x`, optionally filtered by `f`, or None if missing*
 
@@ -2234,12 +2691,18 @@ test_eq(first([False], noop), None)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L745"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L736"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### last
 
->  last (x, f=None, negate=False, **kwargs)
+``` python
+
+def last(
+    x, f:NoneType=None, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Last element of `x`, optionally filtered by `f`, or None if missing*
 
@@ -2252,12 +2715,18 @@ test_eq(last([False], noop), None)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L753"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L744"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### only
 
->  only (o)
+``` python
+
+def only(
+    o
+):
+
+```
 
 *Return the only item of `o`, raise if `o` doesn’t have exactly one
 item*
@@ -2265,12 +2734,18 @@ item*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L763"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L754"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nested_attr
 
->  nested_attr (o, attr, default=None)
+``` python
+
+def nested_attr(
+    o, attr, default:NoneType=None
+):
+
+```
 
 *Same as `getattr`, but if `attr` includes a `.`, then looks inside
 nested objects*
@@ -2308,12 +2783,18 @@ test_eq(nested_attr(b, 'a'), 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L774"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L765"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nested_setdefault
 
->  nested_setdefault (o, attr, default)
+``` python
+
+def nested_setdefault(
+    o, attr, default
+):
+
+```
 
 *Same as `setdefault`, but if `attr` includes a `.`, then looks inside
 nested objects*
@@ -2321,12 +2802,18 @@ nested objects*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L781"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L772"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nested_callable
 
->  nested_callable (o, attr)
+``` python
+
+def nested_callable(
+    o, attr
+):
+
+```
 
 *Same as
 [`nested_attr`](https://fastcore.fast.ai/basics.html#nested_attr) but if
@@ -2341,12 +2828,18 @@ test_eq(nested_callable(a, 'b.d'), noop)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L804"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L795"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nested_idx
 
->  nested_idx (coll, *idxs)
+``` python
+
+def nested_idx(
+    coll, idxs:VAR_POSITIONAL
+):
+
+```
 
 *Index into nested collections, dicts, etc, with `idxs`*
 
@@ -2375,12 +2868,18 @@ test_eq(nested_idx(a, 'b', 1, 'c'), 2)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L812"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L803"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### set_nested_idx
 
->  set_nested_idx (coll, value, *idxs)
+``` python
+
+def set_nested_idx(
+    coll, value, idxs:VAR_POSITIONAL
+):
+
+```
 
 *Set value indexed like \`nested_idx*
 
@@ -2392,12 +2891,18 @@ test_eq(nested_idx(a, 'b', 0), 3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L818"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L809"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### val2idx
 
->  val2idx (x)
+``` python
+
+def val2idx(
+    x
+):
+
+```
 
 *Dict from value to index*
 
@@ -2408,12 +2913,18 @@ test_eq(val2idx([1,2,3]), {3:2,1:0,2:1})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L823"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L814"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### uniqueify
 
->  uniqueify (x, sort=False, bidir=False, start=None)
+``` python
+
+def uniqueify(
+    x, sort:bool=False, bidir:bool=False, start:NoneType=None
+):
+
+```
 
 *Unique elements in `x`, optional `sort`, optional return reverse
 correspondence, optional prepend with elements.*
@@ -2434,12 +2945,18 @@ test_eq(o,{0:0, 1: 1, 3: 2, 5: 3})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L832"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L823"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### loop_first_last
 
->  loop_first_last (values)
+``` python
+
+def loop_first_last(
+    values
+):
+
+```
 
 *Iterate and generate a tuple with a flag for first and last value.*
 
@@ -2450,12 +2967,18 @@ test_eq(loop_first_last(range(3)), [(True,False,0), (False,False,1), (False,True
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L844"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L835"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### loop_first
 
->  loop_first (values)
+``` python
+
+def loop_first(
+    values
+):
+
+```
 
 *Iterate and generate a tuple with a flag for first value.*
 
@@ -2466,12 +2989,18 @@ test_eq(loop_first(range(3)), [(True,0), (False,1), (False,2)])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L849"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L840"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### loop_last
 
->  loop_last (values)
+``` python
+
+def loop_last(
+    values
+):
+
+```
 
 *Iterate and generate a tuple with a flag for last value.*
 
@@ -2482,12 +3011,18 @@ test_eq(loop_last(range(3)), [(False,0), (False,1), (True,2)])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L854"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L845"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### first_match
 
->  first_match (lst, f, default=None)
+``` python
+
+def first_match(
+    lst, f, default:NoneType=None
+):
+
+```
 
 *First element of `lst` matching predicate `f`, or `default` if none*
 
@@ -2499,12 +3034,18 @@ test_eq(first_match(a, lambda o:o%2), 3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L859"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L850"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### last_match
 
->  last_match (lst, f, default=None)
+``` python
+
+def last_match(
+    lst, f, default:NoneType=None
+):
+
+```
 
 *Last element of `lst` matching predicate `f`, or `default` if none*
 
@@ -2519,12 +3060,18 @@ A tuple with extended functionality.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L878"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L869"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### fastuple
 
->  fastuple (x=None, *rest)
+``` python
+
+def fastuple(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *A `tuple` with elementwise ops and more friendly **init** behavior*
 
@@ -2558,12 +3105,18 @@ test_eq(fastuple((3,4)), (3, 4))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L897"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L888"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ##### fastuple.add
 
->  fastuple.add (*args)
+``` python
+
+def add(
+    args:VAR_POSITIONAL
+):
+
+```
 
 *`+` is already defined in `tuple` for concat, so use `add` instead*
 
@@ -2576,12 +3129,18 @@ test_eq(fastuple('1','2').add('2'), fastuple('12','22'))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L893"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L884"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ##### fastuple.mul
 
->  fastuple.mul (*args)
+``` python
+
+def mul(
+    args:VAR_POSITIONAL
+):
+
+```
 
 *`*` is already defined in `tuple` for replicating, so use `mul`
 instead*
@@ -2629,12 +3188,18 @@ debugging functions.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L924"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L915"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### bind
 
->  bind (func, *pargs, **pkwargs)
+``` python
+
+def bind(
+    func, pargs:VAR_POSITIONAL, pkwargs:VAR_KEYWORD
+):
+
+```
 
 *Same as `partial`, except you can use `arg0` `arg1` etc param
 placeholders*
@@ -2699,12 +3264,18 @@ test_eq(bind(myfn, 17,19,14,e=arg0)(3), (17,19,14,1,3))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L939"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L930"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mapt
 
->  mapt (func, *iterables)
+``` python
+
+def mapt(
+    func, iterables:VAR_POSITIONAL
+):
+
+```
 
 *Tuplified `map`*
 
@@ -2716,12 +3287,18 @@ test_eq(mapt(operator.neg, t), (0,-1,-2,-3))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L944"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L935"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### map_ex
 
->  map_ex (iterable, f, *args, gen=False, **kwargs)
+``` python
+
+def map_ex(
+    iterable, f, args:VAR_POSITIONAL, gen:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `map`, but use
 [`bind`](https://fastcore.fast.ai/basics.html#bind), and supports `str`
@@ -2756,12 +3333,18 @@ test_eq(map_ex(t, f, b=arg0), range(4))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L954"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L945"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### compose
 
->  compose (*funcs, order=None)
+``` python
+
+def compose(
+    funcs:VAR_POSITIONAL, order:NoneType=None
+):
+
+```
 
 *Create a function that composes all functions in `funcs`, passing along
 remaining `*args` and `**kwargs` to all*
@@ -2780,12 +3363,18 @@ test_eq(f1(f2(3)), compose(f1,f2, order="order")(3))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L966"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L957"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### maps
 
->  maps (*args, retain=<function noop>)
+``` python
+
+def maps(
+    args:VAR_POSITIONAL, retain:function=noop
+):
+
+```
 
 *Like `map`, except funcs are composed first*
 
@@ -2798,12 +3387,18 @@ test_eq(maps(operator.neg, operator.neg, [1,2]), [1,2])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L973"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L964"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### partialler
 
->  partialler (f, *args, order=None, **kwargs)
+``` python
+
+def partialler(
+    f, args:VAR_POSITIONAL, order:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `functools.partial` but also copies over docstring*
 
@@ -2842,12 +3437,18 @@ test_eq(f(3), 1) # NB: different to `partialler` example
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L982"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L973"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### instantiate
 
->  instantiate (t)
+``` python
+
+def instantiate(
+    t
+):
+
+```
 
 *Instantiate `t` if it’s a type, otherwise do nothing*
 
@@ -2859,12 +3460,18 @@ test_eq_type(instantiate(1), 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L990"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L981"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### using_attr
 
->  using_attr (f, attr)
+``` python
+
+def using_attr(
+    f, attr
+):
+
+```
 
 *Construct a function which applies `f` to the argument’s attribute
 `attr`*
@@ -2874,6 +3481,137 @@ t = Path('/a/b.txt')
 f = using_attr(str.upper, 'name')
 test_eq(f(t), 'B.TXT')
 ```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L986"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### negate
+
+``` python
+
+def negate(
+    f
+):
+
+```
+
+*Returns the negation of `f`*
+
+``` python
+def true():
+    'Returns True'
+    return True
+```
+
+``` python
+false = negate(true)
+print(false.__doc__)
+test_eq(false(), not true())
+```
+
+    Returns `not true(...)`
+
+    Original: Returns True
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L994"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### spread
+
+``` python
+
+def spread(
+    f
+):
+
+```
+
+*Wrap `f` to accept a single iterable and spread it as positional args*
+
+[`spread`](https://fastcore.fast.ai/basics.html#spread) wraps a function
+so it accepts a single iterable (like a tuple or list) and unpacks it as
+positional arguments.
+
+It can be used to replicate `itertools.starmap`:
+
+``` python
+def add(a, b): return a + b
+pairs = [(1,2), (3,4), (5,6)]
+list(map(spread(add), pairs))  # [3, 7, 11]
+```
+
+    [3, 7, 11]
+
+It can also be used to create `star` versions of functions such as
+`filter`, which aren’t otherwise in the stdlib:
+
+``` python
+def is_long_segment(x1, y1, x2, y2, maxlen=4): return ((x2-x1)**2 + (y2-y1)**2)**0.5 > maxlen
+
+segments = [(0,0,2,3), (1,1,4,5), (0,0,6,8)]
+list(filter(spread(is_long_segment), segments))
+```
+
+    [(1, 1, 4, 5), (0, 0, 6, 8)]
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1001"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### dspread
+
+``` python
+
+def dspread(
+    f
+):
+
+```
+
+*Wrap `f` to accept a single dict and spread it as keyword args*
+
+[`dspread`](https://fastcore.fast.ai/basics.html#dspread) is the
+dictionary equivalent of
+[`spread`](https://fastcore.fast.ai/basics.html#spread) - it wraps a
+function to accept a single dictionary and unpacks it as keyword
+arguments. For instance:
+
+``` python
+def greet(name, greeting='Hello'): return f'{greeting}, {name}!'
+configs = [{'name': 'Alice'}, {'name': 'Bob', 'greeting': 'Hi'}]
+list(map(dspread(greet), configs))  # ['Hello, Alice!', 'Hi, Bob!']
+```
+
+    ['Hello, Alice!', 'Hi, Bob!']
+
+A more realistic example showing API request configuration. Each request
+dictionary may have different keys present, and
+[`dspread`](https://fastcore.fast.ai/basics.html#dspread) handles this
+naturally (missing keys use the function’s defaults):
+
+``` python
+def api_request(endpoint, method='GET', timeout=30, headers=None):
+    return f"{method} {endpoint} (timeout={timeout})"
+
+requests = [
+    {'endpoint': '/users', 'method': 'POST', 'timeout': 60},
+    {'endpoint': '/data'},
+    {'endpoint': '/health', 'method': 'HEAD', 'timeout': 5}
+]
+list(map(dspread(api_request), requests))
+```
+
+    ['POST /users (timeout=60)',
+     'GET /data (timeout=30)',
+     'HEAD /health (timeout=5)']
 
 ### Self (with an *uppercase* S)
 
@@ -2930,12 +3668,18 @@ list(map(fg, [f,g]))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1038"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1051"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### copy_func
 
->  copy_func (f)
+``` python
+
+def copy_func(
+    f
+):
+
+```
 
 *Copy a non-builtin function (NB `copy.copy` does not work for this)*
 
@@ -2977,12 +3721,18 @@ test_eq(copy_func(g)(4), 7)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1054"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1067"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### patch_to
 
->  patch_to (cls, as_prop=False, cls_method=False, set_prop=False)
+``` python
+
+def patch_to(
+    cls, as_prop:bool=False, cls_method:bool=False, set_prop:bool=False, nm:NoneType=None, glb:NoneType=None
+):
+
+```
 
 *Decorator: add `f` to `cls`*
 
@@ -3072,15 +3822,35 @@ t = _T7(2)
 test_eq(t.func_mult(4), 8)
 ```
 
+You can also rename the function in the patched class:
+
+``` python
+class _T8(int): pass  
+
+@patch_to(_T8, nm='add_value')
+def func2(self, a): return self+a
+
+t = _T8(1)
+test_eq(t.add_value(2), 3)
+test_eq(_T8.add_value.__name__, 'add_value')
+assert not hasattr(t, 'func2')
+```
+
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1077"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1089"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### patch
 
->  patch (f=None, as_prop=False, cls_method=False, set_prop=False)
+``` python
+
+def patch(
+    f:NoneType=None, as_prop:bool=False, cls_method:bool=False, set_prop:bool=False, nm:NoneType=None
+):
+
+```
 
 *Decorator: add `f` to the first parameter’s class (based on f’s type
 annotations)*
@@ -3158,17 +3928,17 @@ def func(cls:_T5, x): return cls.attr + x # you can access class attributes in t
 test_eq(_T5.func(4), 7)
 ```
 
-------------------------------------------------------------------------
+``` python
+class _T8(int): pass  
 
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1085"
-target="_blank" style="float:right; font-size:smaller">source</a>
+@patch(nm='add_value')
+def func2(self:_T8, a): return self+a
 
-### patch_property
-
->  patch_property (f)
-
-*Deprecated; use `patch(as_prop=True)` instead*
+t = _T8(1)
+test_eq(t.add_value(2), 3)
+test_eq(_T8.add_value.__name__, 'add_value')
+assert not hasattr(t, 'func2')
+```
 
 Patching `classmethod` shouldn’t affect how python’s inheritance works
 
@@ -3192,12 +3962,18 @@ test_eq(child.type_cls(), FastChild)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1092"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1103"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### compile_re
 
->  compile_re (pat)
+``` python
+
+def compile_re(
+    pat
+):
+
+```
 
 *Compile `pat` if it’s not None*
 
@@ -3209,13 +3985,18 @@ assert compile_re('a').match('ab')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1097"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1108"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ImportEnum
 
->  ImportEnum (value, names=None, module=None, qualname=None, type=None,
->                  start=1)
+``` python
+
+def ImportEnum(
+    args:VAR_POSITIONAL, kwds:VAR_KEYWORD
+):
+
+```
 
 *An `Enum` that can have its values imported*
 
@@ -3229,13 +4010,18 @@ test_eq(goobar, _T.goobar)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1105"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1116"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### StrEnum
 
->  StrEnum (value, names=None, module=None, qualname=None, type=None,
->               start=1)
+``` python
+
+def StrEnum(
+    args:VAR_POSITIONAL, kwds:VAR_KEYWORD
+):
+
+```
 
 *An [`ImportEnum`](https://fastcore.fast.ai/basics.html#importenum) that
 behaves like a `str`*
@@ -3243,12 +4029,18 @@ behaves like a `str`*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1110"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1121"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str_enum
 
->  str_enum (name, *vals)
+``` python
+
+def str_enum(
+    name, vals:VAR_POSITIONAL
+):
+
+```
 
 *Simplified creation of
 [`StrEnum`](https://fastcore.fast.ai/basics.html#strenum) types*
@@ -3256,13 +4048,18 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1115"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1126"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ValEnum
 
->  ValEnum (value, names=None, module=None, qualname=None, type=None,
->               start=1)
+``` python
+
+def ValEnum(
+    args:VAR_POSITIONAL, kwds:VAR_KEYWORD
+):
+
+```
 
 *An [`ImportEnum`](https://fastcore.fast.ai/basics.html#importenum) that
 stringifies using values*
@@ -3280,12 +4077,18 @@ print(_T.a, _T.a.upper())
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1120"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1131"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### Stateful
 
->  Stateful (*args, **kwargs)
+``` python
+
+def Stateful(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *A base class/mixin for objects that should not serialize all their
 state*
@@ -3346,12 +4149,18 @@ print(reader.readline())
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1140"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1151"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### NotStr
 
->  NotStr (s)
+``` python
+
+def NotStr(
+    s
+):
+
+```
 
 *Behaves like a `str`, but isn’t an instance of one*
 
@@ -3368,10 +4177,18 @@ test_eq(s[2], "l")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1158"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1169"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### PrettyString
+
+``` python
+
+def PrettyString(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Little hack to get strings to show properly in Jupyter.*
 
@@ -3401,12 +4218,18 @@ PrettyString(with_special_chars)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1163"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1174"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### even_mults
 
->  even_mults (start, stop, n)
+``` python
+
+def even_mults(
+    start, stop, n
+):
+
+```
 
 *Build log-stepped array from `start` to
 [`stop`](https://fastcore.fast.ai/basics.html#stop) in `n` steps.*
@@ -3420,12 +4243,18 @@ test_eq(even_mults(2,8,1), 8)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1171"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1182"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### num_cpus
 
->  num_cpus ()
+``` python
+
+def num_cpus(
+    
+):
+
+```
 
 *Get number of cpus*
 
@@ -3433,17 +4262,23 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 num_cpus()
 ```
 
-    22
+    16
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1179"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1190"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### add_props
 
->  add_props (f, g=None, n=2)
+``` python
+
+def add_props(
+    f, g:NoneType=None, n:int=2
+):
+
+```
 
 *Create properties passing each of `range(n)` to f*
 
@@ -3473,12 +4308,18 @@ test_eq(t.b,3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1188"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1199"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str2bool
 
->  str2bool (s)
+``` python
+
+def str2bool(
+    s
+):
+
+```
 
 *Case-insensitive convert string `s` too a bool
 (`y`,`yes`,`t`,[`true`](https://fastcore.fast.ai/basics.html#true),`on`,`1`-\>`True`)*
@@ -3497,100 +4338,138 @@ for o in 1,True: assert str2bool(o)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1198"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1209"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str2int
 
->  str2int (s)
+``` python
+
+def str2int(
+    s
+)->int:
+
+```
 
 *Convert `s` to an `int`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1207"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1218"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str2float
 
->  str2float (s:str)
+``` python
+
+def str2float(
+    s:str
+):
+
+```
 
 *Convert `s` to a float*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1214"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1225"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str2list
 
->  str2list (s:str)
+``` python
+
+def str2list(
+    s:str
+):
+
+```
 
 *Convert `s` to a list*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1222"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1233"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### str2date
 
->  str2date (s:str)
+``` python
+
+def str2date(
+    s:str
+)->date:
+
+```
 
 *`date.fromisoformat` with empty string handling*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1231"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1242"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### to_date
 
->  to_date (arg)
+``` python
+
+def to_date(
+    arg
+):
+
+```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1230"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1241"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### to_list
 
->  to_list (arg)
+``` python
+
+def to_list(
+    arg
+):
+
+```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1229"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1240"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### to_float
 
->  to_float (arg)
+``` python
+
+def to_float(
+    arg
+):
+
+```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1228"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1239"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### to_int
 
->  to_int (arg)
+``` python
 
-------------------------------------------------------------------------
+def to_int(
+    arg
+):
 
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1227"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### to_bool
-
->  to_bool (arg)
+```
 
 ------------------------------------------------------------------------
 
@@ -3598,9 +4477,31 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1238"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
+### to_bool
+
+``` python
+
+def to_bool(
+    arg
+):
+
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1249"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
 ### typed
 
->  typed (_func=None, cast=False)
+``` python
+
+def typed(
+    _func:NoneType=None, cast:bool=False
+):
+
+```
 
 *Decorator to check param and return types at runtime, with optional
 casting*
@@ -3699,12 +4600,18 @@ with ExceptionExpected(TypeError): test_bar("foobar")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1273"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1284"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### exec_new
 
->  exec_new (code)
+``` python
+
+def exec_new(
+    code
+):
+
+```
 
 *Execute `code` in a new environment and return it*
 
@@ -3716,14 +4623,83 @@ test_eq(g['a'], 1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1281"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1292"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### exec_import
 
->  exec_import (mod, sym)
+``` python
+
+def exec_import(
+    mod, sym
+):
+
+```
 
 *Import `sym` from `mod` in a new environment*
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1298"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### sig_with_params
+
+``` python
+
+def sig_with_params(
+    sig, remove:NoneType=None, keep:NoneType=None, updates:VAR_KEYWORD
+):
+
+```
+
+[`sig_with_params`](https://fastcore.fast.ai/basics.html#sig_with_params)
+lets you modify a function signature by adding, replacing, or removing
+parameters. This is useful when creating wrapper functions or decorators
+that need to adjust the signature of the wrapped function.
+
+You can remove parameters by name:
+
+``` python
+from inspect import signature, Parameter
+```
+
+``` python
+def foo(a, b, c=3): pass
+sig = signature(foo)
+
+new_sig = sig_with_params(sig, remove=['b'])
+test_eq(list(new_sig.parameters.keys()), ['a', 'c'])
+```
+
+You can also add new parameters:
+
+``` python
+new_param = Parameter('d', Parameter.KEYWORD_ONLY, default=4)
+new_sig = sig_with_params(sig, d=new_param)
+test_eq(list(new_sig.parameters.keys()), ['a', 'b', 'c', 'd'])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L1307"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### fdelegates
+
+``` python
+
+def fdelegates(
+    to
+):
+
+```
+
+This is a simplified version of
+[`fastcore.meta.delegates`](https://fastcore.fast.ai/meta.html#delegates)
+that supports only regular functions.
 
 ## Notebook functions
 
@@ -3731,7 +4707,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ipython_shell
 
->  ipython_shell ()
+``` python
+
+def ipython_shell(
+    
+):
+
+```
 
 *Same as `get_ipython` but returns `False` if not in IPython*
 
@@ -3739,7 +4721,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### in_ipython
 
->  in_ipython ()
+``` python
+
+def in_ipython(
+    
+):
+
+```
 
 *Check if code is running in some kind of IPython environment*
 
@@ -3747,7 +4735,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### in_colab
 
->  in_colab ()
+``` python
+
+def in_colab(
+    
+):
+
+```
 
 *Check if the code is running in Google Colaboratory*
 
@@ -3755,7 +4749,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### in_jupyter
 
->  in_jupyter ()
+``` python
+
+def in_jupyter(
+    
+):
+
+```
 
 *Check if the code is running in a jupyter notebook*
 
@@ -3763,7 +4763,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### in_notebook
 
->  in_notebook ()
+``` python
+
+def in_notebook(
+    
+):
+
+```
 
 *Check if the code is running in a jupyter notebook*
 

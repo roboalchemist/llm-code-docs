@@ -2,19 +2,9 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/FlatPricePerMonthActorPricingInfo.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/FlatPricePerMonthActorPricingInfo.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/FlatPricePerMonthActorPricingInfo.md
-
-# Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
-
 # FlatPricePerMonthActorPricingInfo<!-- -->
+
+Pricing information for Actors with a flat monthly subscription fee.
 
 ### Hierarchy
 
@@ -37,7 +27,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyMarginPercentage)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L543)inheritedapifyMarginPercentage
+### [**](#apifyMarginPercentage)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L846)inheritedapifyMarginPercentage
 
 **apifyMarginPercentage: number
 
@@ -45,7 +35,7 @@ Inherited from CommonActorPricingInfo.apifyMarginPercentage
 
 In \[0, 1], fraction of pricePerUnitUsd that goes to Apify
 
-### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L545)inheritedcreatedAt
+### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L848)inheritedcreatedAt
 
 **createdAt: Date
 
@@ -53,7 +43,7 @@ Inherited from CommonActorPricingInfo.createdAt
 
 When this pricing info record has been created
 
-### [**](#notifiedAboutChangeAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L549)optionalinheritednotifiedAboutChangeAt
+### [**](#notifiedAboutChangeAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L852)optionalinheritednotifiedAboutChangeAt
 
 **notifiedAboutChangeAt?
 
@@ -63,7 +53,7 @@ When this pricing info record has been created
 
 Inherited from CommonActorPricingInfo.notifiedAboutChangeAt
 
-### [**](#notifiedAboutFutureChangeAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L548)optionalinheritednotifiedAboutFutureChangeAt
+### [**](#notifiedAboutFutureChangeAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L851)optionalinheritednotifiedAboutFutureChangeAt
 
 **notifiedAboutFutureChangeAt?
 
@@ -73,17 +63,17 @@ Inherited from CommonActorPricingInfo.notifiedAboutChangeAt
 
 Inherited from CommonActorPricingInfo.notifiedAboutFutureChangeAt
 
-### [**](#pricePerUnitUsd)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L562)pricePerUnitUsd
+### [**](#pricePerUnitUsd)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L871)pricePerUnitUsd
 
 **pricePerUnitUsd: number
 
 Monthly flat price in USD
 
-### [**](#pricingModel)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L558)pricingModel
+### [**](#pricingModel)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L867)pricingModel
 
 **pricingModel: FLAT\_PRICE\_PER\_MONTH
 
-### [**](#reasonForChange)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L550)optionalinheritedreasonForChange
+### [**](#reasonForChange)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L853)optionalinheritedreasonForChange
 
 **reasonForChange?
 
@@ -93,7 +83,7 @@ Monthly flat price in USD
 
 Inherited from CommonActorPricingInfo.reasonForChange
 
-### [**](#startedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L547)inheritedstartedAt
+### [**](#startedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L850)inheritedstartedAt
 
 **startedAt: Date
 
@@ -101,7 +91,7 @@ Inherited from CommonActorPricingInfo.startedAt
 
 Since when is this pricing info record effective for a given Actor
 
-### [**](#trialMinutes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L560)optionaltrialMinutes
+### [**](#trialMinutes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L869)optionaltrialMinutes
 
 **trialMinutes?
 

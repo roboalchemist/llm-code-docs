@@ -1,94 +1,100 @@
 # Source: https://docs.tavus.io/api-reference/video-request/patch-video-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rename Video
 
 > This endpoint renames a single video by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml patch /v2/videos/{video_id}/name
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/videos/{video_id}/name
-  method: patch
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/videos/{video_id}/name:
     parameters:
-      path:
-        video_id:
-          schema:
-            - type: string
-              required: true
-              description: The unique identifier of the video generation.
-              example: 8a4f94e736
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              video_name:
-                allOf:
-                  - type: string
-                    example: Sales
-            requiredProperties:
-              - video_name
-        examples:
-          Rename Video:
-            value:
-              video_name: Sales
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: OK
-        examples: {}
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+      - name: video_id
+        in: path
+        required: true
+        description: The unique identifier of the video generation.
+        schema:
+          type: string
+          example: 8a4f94e736
+    patch:
+      tags:
+        - Videos
+      summary: Rename Video
+      description: |
+        This endpoint renames a single video by its unique identifier.
+      operationId: renameVideo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                video_name:
+                  type: string
+                  example: Sales
+              required:
+                - video_name
+            examples:
+              Rename Video:
+                value:
+                  video_name: Sales
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid video_id
-        examples:
-          example:
-            value:
-              error: Invalid video_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

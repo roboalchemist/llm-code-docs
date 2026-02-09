@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/build-your-first-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Your first model
 
 > Build and deploy your first model
@@ -11,16 +15,16 @@ using Baseten's Truss framework.
 
 To use Truss, install a recent Truss version and ensure pydantic is v2:
 
-```bash  theme={"system"}
+```bash theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
 pip install --upgrade truss 'pydantic>=2.0.0'
 ```
 
 <Accordion title="Help for setting up a clean development environment">
-  Truss requires python `>=3.8,<3.13`. To set up a fresh development environment,
+  Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
   you can use the following commands, creating a environment named `truss_env`
   using `pyenv`:
 
-  ```bash  theme={"system"}
+  ```bash theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
   curl https://pyenv.run | bash
   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
   echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -38,7 +42,7 @@ To deploy Truss remotely, you also need a
 [Baseten account](https://app.baseten.co/signup).
 It is handy to export your API key to the current shell session or permanently in your `.bashrc`:
 
-```bash ~/.bashrc theme={"system"}
+```bash ~/.bashrc theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
 export BASETEN_API_KEY="nPh8..."
 ```
 
@@ -121,13 +125,17 @@ In Truss models, we expect users to provide a Python class with the following me
 
 ## Deploy your model
 
-To deploy your model, you can use the `truss push` command.
+To deploy your model for development with live reload, run:
 
 ```bash  theme={"system"}
-$ truss push
+$ truss push --watch
 ```
 
-This will deploy your model to Baseten.
+This will deploy your model to Baseten as a development deployment with live reload enabled.
+
+<Note>
+  When no flag is specified, `truss push` defaults to a published deployment. Use `--watch` for development deployments with live reload support, or `--publish` explicitly for production-ready deployments.
+</Note>
 
 ## Invoke your model
 
@@ -179,10 +187,10 @@ class Model:
 
 ## Running inference
 
-Similarly to our previous example, we can deploy this model using `truss push`
+Similarly to our previous example, we can deploy this model using `truss push --watch`
 
 ```bash  theme={"system"}
-$ truss push
+$ truss push --watch
 ```
 
 And then invoke it using the invocation URL on Baseten.

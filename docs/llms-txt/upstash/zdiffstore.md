@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZDIFFSTORE
 
@@ -26,26 +12,27 @@
 
 ## Arguments
 
-<ParamField body="destination" type="string" required>
+<ParamField body="destination" type="str" required>
   The key to write the difference to.
 </ParamField>
 
-<ParamField body="keys" type="integer" required>
-  How many keys to compare.
-</ParamField>
-
-<ParamField body="keys" type="...string[]" required>
+<ParamField body="keys" type="List[str]" required>
   The keys to compare.
 </ParamField>
 
 ## Response
 
-<ResponseField required>
+<ResponseField type="int">
   The number of elements in the resulting set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const values = await redis.zdiffstore("destination", 2, "key1", "key2");
+  ```py Example theme={"system"}
+  redis.zadd("key1", {"a": 1, "b": 2, "c": 3})
+
+  redis.zadd("key2", {"c": 3, "d": 4, "e": 5})
+
+  # a and b
+  assert redis.zdiffstore("dest", ["key1", "key2"]) == 2
   ```
 </RequestExample>

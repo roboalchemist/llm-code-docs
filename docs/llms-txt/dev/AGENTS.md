@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/AGENTS.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 # Developer documentation style guide
@@ -492,8 +496,3 @@ Now that you have webhooks configured, you can:
 ***
 
 *This guide is a living document. Submit suggestions and updates through the standard documentation review process.*
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

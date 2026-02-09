@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/content-types.md
+# Source: https://www.mintlify.com/docs/guides/content-types.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Content types
 
@@ -80,5 +84,30 @@ Defining content types helps you plan documentation with a clear purpose and mak
 1. **Maintain purpose**: Before writing, assign each page a specific content type and make it top of mind in the doc throughout your writing.
 2. **Consider content freshness**: Regardless of content type, try to optimize for evergreen documentation. If something represents a moment in time of what a feature looks like on a specific date, it's probably better suited for a changelog or blog post than in your documentation. Or if something changes very frequently avoid putting it in your docs.
 3. **Think like your users**: Consider different user personas when organizing content. See [Understand your audience](/guides/understand-your-audience) for more information.
+4. **Use templates**: Start with [content templates](/guides/content-templates) that provide the basic structure for each content type.
 
 While the Diátaxis framework provides a starting point, successful documentation requires contextual adaptation to your product. Start by understanding the framework's principles, then adjust them to serve your users' needs.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Content templates" icon="file-code" href="/guides/content-templates">
+    Copy and modify templates for each content type.
+  </Card>
+
+  <Card title="Style and tone" icon="pen" href="/guides/style-and-tone">
+    Write effective documentation with consistent style.
+  </Card>
+
+  <Card title="Understand your audience" icon="users" href="/guides/understand-your-audience">
+    Research and define your documentation audience.
+  </Card>
+
+  <Card title="Navigation" icon="compass" href="/guides/navigation">
+    Organize your documentation structure effectively.
+  </Card>
+
+  <Card title="Improve your docs" icon="chart-line" href="/guides/improving-docs">
+    Use data and metrics to improve documentation.
+  </Card>
+</CardGroup>

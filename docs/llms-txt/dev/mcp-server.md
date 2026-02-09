@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/mcp-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP server
 
 This guide shows you how to use the Writer MCP server to orchestrate multiple Writer API calls through AI assistants like [Claude Desktop](https://claude.ai/download) and [Cursor](https://www.cursor.com/), or your own custom MCP client.

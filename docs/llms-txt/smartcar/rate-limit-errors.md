@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/rate-limit-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate Limit Errors
 
 > Thrown when there is an issue with the frequency of your requests.

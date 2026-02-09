@@ -2,7 +2,7 @@
 
 # Source: https://docs.bito.ai/other-bito-ai-tools/bito-cli/overview.md
 
-# Source: https://docs.bito.ai/ai-architect/overview.md
+# Source: https://docs.bito.ai/ai-code-reviews-in-cli/overview.md
 
 # Source: https://docs.bito.ai/ai-code-reviews-in-ide/ai-that-understands-your-code/overview.md
 
@@ -10,62 +10,75 @@
 
 # Source: https://docs.bito.ai/ai-code-reviews-in-git/overview.md
 
-# Source: https://docs.bito.ai/help/billing-and-plans/overview.md
-
-# Source: https://docs.bito.ai/other-bito-ai-tools/bito-cli/overview.md
-
 # Source: https://docs.bito.ai/ai-architect/overview.md
-
-# Source: https://docs.bito.ai/ai-code-reviews-in-ide/ai-that-understands-your-code/overview.md
-
-# Source: https://docs.bito.ai/ai-code-reviews-in-ide/overview.md
-
-# Source: https://docs.bito.ai/ai-code-reviews-in-git/overview.md
 
 # Overview
 
-{% hint style="info" %}
-[**Get a 14-day FREE trial of Bito's AI Code Review Agent.**](https://alpha.bito.ai/home/welcome)
-{% endhint %}
-
-{% embed url="<https://youtu.be/WukH9rA_5go>" %}
-
-Bito’s [**AI Code Review Agent**](https://bito.ai/product/ai-code-review-agent/) is the first agent built with **Bito’s AI Agent framework and engine**. It is an automated AI assistant (powered by Anthropic’s Claude Sonnet 3.7) that will review your team’s code; it spots bugs, issues, code smells, and security vulnerabilities in Pull/Merge Requests (PR/MR) and provides high-quality suggestions to fix them.
-
-It seamlessly integrates with Git providers such as **GitHub, GitLab, and Bitbucket**, automatically posting recommendations directly as comments within the corresponding Pull Request. It includes real-time recommendations from Static Code Analysis and OSS vulnerability tools such as fbinfer, Dependency-Check, etc. and can include high severity suggestions from other 3rd party tools you use such as Snyk.
+Bito’s **AI Architect** builds a knowledge graph of your codebase — from repos to modules to APIs — delivering deep codebase intelligence to the coding agents you already use. This fundamentally changes the game for enterprises with many microservices or large, complex codebases.
 
 {% hint style="info" %}
-We also support **GitHub (Self-Managed)** and **GitLab (Self-Managed)**.
+Bito provides the AI Architect in a completely secure fashion, with the AI Architect available on-prem if you desire with no code ever being sent to Bito. No AI is trained on your code and your code is not stored.
 {% endhint %}
 
-The AI Code Review Agent acts as a **set of specialized engineers** each analyzing different aspects of your PR. They analyze aspects such as Performance, Code Structure, Security, Optimization, and Scalability. By combining and filtering the results, the Agent can provide you with much more detailed and insightful code reviews, bringing you a better quality code review and helping you save time.
+{% embed url="<https://youtu.be/qAMtZ41-xJY>" %}
 
-The AI Code Review Agent helps engineering teams merge code faster while also keeping the code clean and up to standard, making sure it runs smoothly and follows best practices.
+## Key capabilities of the AI Architect include:
 
-It ensures a secure and confidential experience without compromising on reliability. Bito neither reads nor stores your code, and none of your code is used for AI model training. Learn more about our [**Privacy & Security practices**](https://docs.bito.ai/privacy-and-security).
+* **Grounded 1-shot production-ready code** — The AI Architect learns all your services, endpoints, code usage examples, and architectural patterns. The agent automatically feeds those to your coding agent (Claude Code, Cursor, Codex, any MCP client) to provide it the necessary information to quickly and efficiently create production ready code.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=2yx_FfDsYco)
+* **Consistent design adherence** — Code generated aligns with your architecture patterns and coding conventions.
+* **Spec-driven development** — Automatically generate highly detailed, implementation-ready technical requirement documents (TRDs) and low-level designs (LLDs) with a deep, context-aware understanding of your codebase, services, and design patterns, ensuring architectural integrity and consistency at a granular level.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=xMmZbbZUcq0)
+* **Triaging production issues** — Easily and quickly find root causes to production issues based on errors/logs/etc.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=05-2hKcaZKk)
+* **Faster onboarding** — New engineers or AI agents can quickly understand how a system or component system structure.
+* **Enhanced documentation and diagramming** — Through its internal understanding of interconnections between modules and APIs.
+* **Smarter code reviews** — Reviews with system-wide awareness of dependencies and impacts.
 
-By accessing Bito's [**AI that Understands Your Code**](https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/) feature, the AI Code Review Agent can analyze relevant context from your entire repository, providing better context-aware analysis and suggestions. This tailored approach ensures a more personalized and contextually relevant code review experience.
+The AI Architect builds the knowledge graph by analyzing all your repositories (whether you have 50 or 5,000 repos) to learn about your codebase architecture, microservices, modules, API endpoints, design patterns, and more.
 
-To comprehend your code and its dependencies, we use Symbol Indexing, Abstract Syntax Trees (AST), and Embeddings. Each step feeds into the next, starting from locating specific code snippets with Symbol Indexing, getting their structural context with AST parsing, and then leveraging embedding vectors for broader semantic insights. This approach ensures a detailed understanding of the code's functionality and its dependencies. For more information, see [**How does Bito’s “AI that understands your code” work?**](https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/)
+## How you can use AI Architect
 
-The AI Code Review Agent is built using **Bito Dev Agents**, an open framework and engine to **build custom AI Agents** for software developers that understands code, can connect to your organization’s data and tools, and can be discovered and shared via a global registry.
+AI Architect is designed to be flexible and can power multiple use cases across different AI coding tools and workflows.
 
-<p align="center"><a href="https://alpha.bito.ai/home/welcome" class="button primary">Start free trial</a><a href="https://bit.ly/bito-code-review-Demo" class="button secondary">Get a demo</a></p>
+* [**Integrate via MCP server**](#getting-started) – Use AI Architect as an **MCP (Model Context Protocol) server** to connect with tools like [Claude Code](https://docs.bito.ai/ai-architect/guide-for-claude-code), [Cursor](https://docs.bito.ai/ai-architect/guide-for-cursor), [Windsurf](https://docs.bito.ai/ai-architect/guide-for-windsurf), [GitHub Copilot (VS Code)](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code), [Junie (JetBrains)](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains), and [JetBrains AI Assistant](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant). It helps connected tools understand your codebase and workflows better, resulting in accurate and more reliable suggestions.
+  1. **On-premises deployment** – Install and run AI Architect on your own infrastructure.
+     * [**See the installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted)
+  2. **Bito-hosted version** – Use the hosted version managed by Bito.
+     * Contact [**support@bito.ai**](mailto:support@bito.ai) for a trial
+* [**Example: Bito’s AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) – One example of AI Architect in action is **Bito’s AI Code Review Agent**, which uses AI Architect to deliver smarter, context-aware code reviews directly in your pull requests and IDEs.
+  * [**View Guide**](https://docs.bito.ai/ai-architect/integrating-ai-architect-with-ai-code-review-agent)
 
-## Why use an AI Agent for code review?
+## Why use the AI Architect?
 
-In many organizations, senior developers spend approximately half of their time reviewing code changes in PRs to find potential issues. The AI Code Review Agent can help save this valuable time.
+Most AI coding tools struggle with accuracy in real-world codebases because they
 
-AI Code Review Agent **speeds up PR merges by 89%**, **reduces regressions by 34%**, and **delivers 87% human-grade feedback**.
+1. Don’t fully understand the breadth and depth of your codebase. They read some of the code in your existing repository, but they don’t have a complete graph of your internal APIs, endpoints, libraries, etc. On top of that, if you are accessing a monorepo or many services not available on your machine locally, they have no context or get confused trying to access them. Bito’s AI Architect has built a knowledge graph to provide this information in a cheap and efficient way to your coding agent so it can accomplish the task with grounded and complete information.
+2. They don’t fully understand how all of your services and modules interact with each other when you are trying to understand your overall system versus just one component. The AI Architect’s graph contains a mapping of all the dependencies, allowing to provide sophisticated analysis – how you would expect an Architect too.
 
-However, it's important to remember that the AI Code Review Agent is designed to assist, not replace, senior software engineers. It takes care of many of the more mundane issues involved in code review, so senior engineers can focus on the business logic and how new development is aligned with your organization’s business goals.
+## How AI Architect differs from Embeddings?
 
-## Pricing details
+Traditional embeddings work like a search engine — they retrieve code snippets or documents similar to a given query.&#x20;
 
-The **Free Plan** offers **AI-generated pull request summaries** to provide a quick overview of changes. For advanced features like **line-level code suggestions**, consider upgrading to the **Team Plan**. For detailed pricing information, visit our [**Pricing**](https://bito.ai/pricing/) page.
+They can find related content but can’t understand how different parts of your system work together.&#x20;
 
-[**Get a 14-day FREE trial of Bito's AI Code Review Agent.**](https://alpha.bito.ai/home/welcome)
+The AI Architect, on the other hand:&#x20;
 
-## Learn more
+* Builds a knowledge graph that captures relationships between repositories, modules, APIs, and libraries.
+* Provides precise answers and implementations, not just search results.
+* Understands context and intent — how and why something is implemented in your codebase.
+* Enables system-aware reasoning, allowing AI agents to generate or review code with full architectural understanding.
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>Getting Started</strong></mark></td><td></td><td><a href="../getting-started">getting-started</a></td></tr><tr><td><mark style="color:purple;"><strong>Key Features</strong></mark></td><td></td><td><a href="key-features">key-features</a></td></tr><tr><td><mark style="color:purple;"><strong>Supported Programming Languages and Tools</strong></mark></td><td></td><td><a href="supported-programming-languages-and-tools">supported-programming-languages-and-tools</a></td></tr><tr><td><mark style="color:purple;"><strong>Agent Configuration: bito-cra.properties File</strong></mark></td><td></td><td><a href="install-run-as-a-self-hosted-service/agent-configuration-bito-cra.properties-file">agent-configuration-bito-cra.properties-file</a></td></tr><tr><td><mark style="color:purple;"><strong>FAQs</strong></mark></td><td></td><td><a href="faqs">faqs</a></td></tr></tbody></table>
+## Getting started
+
+1. [**Try Bito's AI Architect**](https://alpha.bito.ai/home/welcome/ai-architect)
+2. [**Get a demo**](https://calendly.com/d/csk7-8yg-pwf) with our team.
+3. Lastly, email [**support@bito.ai**](mailto:support@bito.ai) if you have any additional questions.
+
+## Demos of different ways to use AI Architect
+
+{% embed url="<https://www.youtube.com/watch?v=2yx_FfDsYco>" %}
+
+{% embed url="<https://www.youtube.com/watch?v=xMmZbbZUcq0>" %}
+
+{% embed url="<https://www.youtube.com/watch?v=05-2hKcaZKk>" %}

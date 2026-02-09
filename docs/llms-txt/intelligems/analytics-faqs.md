@@ -168,3 +168,45 @@ Resetting clears all collected data and moves your test back to pending status. 
 Don't reset if you've already collected meaningful traffic data, as you'll lose all results and need to start over. Instead, consider creating a new test variation if you need to make significant changes.
 
 </details>
+
+<details>
+
+<summary>Why do my test results look so different in the first few days and then stabilize?</summary>
+
+**This is completely normal and expected behavior — it's sample size in action.**
+
+In the first hours or days of a test, you have very few visitors in each group. When sample sizes are small, a single conversion creates huge percentage swings.
+
+**Example:** If 1 out of your first 10 visitors buys, that's a 10% conversion rate. But if another variation happens to get 0 out of 10, it shows 0%. That 10-point "gap" isn't meaningful — it's just randomness with small numbers.
+
+As more visitors flow through, those early fluctuations get diluted by the larger dataset. The curves smooth out because you're now measuring actual behavioral patterns rather than random noise.
+
+#### How long should I wait before reading into the results?
+
+We recommend waiting until you have **at least 300 orders per variation** before drawing conclusions. At that sample size, you have enough data for the metrics to reflect real differences (or lack thereof) rather than statistical noise.
+
+You can also use the statistical significance indicators in the analytics dashboard:
+
+* **Probability to beat control** shows confidence that a variation is outperforming
+* **Confidence intervals** narrow as more data accumulates
+
+For more on interpreting results, see [Statistical Significance](https://docs.intelligems.io/analytics/experiment-analytics/statistical-significance).
+
+#### What should I do during the early test period?
+
+* **Don't panic** if you see wild swings — this is expected
+* **Don't end tests early** based on early results alone
+* **Do check results regularly** to catch any actual issues (like zero traffic to a variation)
+* **Do wait** for sufficient sample size before making decisions
+
+#### Pro tip: Use discrete mode to see day-by-day patterns
+
+By default, the analytics time series shows **cumulative** data — a running total up to each point in time. If you want to see how metrics performed on individual days (which makes the early volatility even more visible), you can switch to **discrete mode** by unchecking the "Cumulative" checkbox in the time series chart.
+
+This can help you spot daily patterns and see exactly when results started stabilizing.
+
+Learn more: [Time series - Discrete Mode](https://docs.intelligems.io/analytics/experiment-analytics/timeseries#discrete)
+
+**Bottom line:** Early spikes and gaps are statistical noise, not signal. The smoothed-out data after you've accumulated sufficient orders is what actually tells the story.
+
+</details>

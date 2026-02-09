@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/prefer-namespace-keyword.md
 ---
-# typescript/prefer-namespace-keyword&#x20;
 
 ### What it does
 

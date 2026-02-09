@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/whats-next.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What's Next
 
 > Continue your Pipecat journey with advanced features, examples, and production deployment
@@ -29,8 +33,3 @@ Get involved with the Pipecat community to share your projects, get support, and
 * **[Discord Community](https://discord.gg/pipecat)**: Get support, share projects, and connect with other developers
 * **[GitHub](https://github.com/pipecat-ai/pipecat)**: Contribute to the project and report issues
 * **[Examples Repository](https://github.com/pipecat-ai/pipecat-examples)**: Community-contributed applications
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

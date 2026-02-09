@@ -12,7 +12,7 @@ Imagine a large website that you need to scrape. You have a scraper that works w
 
 In a rush?
 
-You can check https://github.com/apify/apify-docs/tree/master/examples/ts-parallel-scraping right away.
+You can check [full code example](https://github.com/apify/apify-docs/tree/master/examples/ts-parallel-scraping) right away.
 
 ## Managing Multiple Scraper Runs
 
@@ -20,7 +20,7 @@ To manage multiple instances of the scraper, we need to build an Orchestrator Ac
 
 ## Orchestrator Actor Configuration
 
-The Orchestrator Actor orchestrates the parallel execution of scraper Actor runs. It runs multiple instances of the scraper Actor and passes the request queue and dataset to them. For the Actor's base structure, we use Apify CLI and create a new Actor with the following command and use the https://apify.com/templates/ts-empty.
+The Orchestrator Actor orchestrates the parallel execution of scraper Actor runs. It runs multiple instances of the scraper Actor and passes the request queue and dataset to them. For the Actor's base structure, we use Apify CLI and create a new Actor with the following command and use the [Empty TypeScript Actor template](https://apify.com/templates/ts-empty).
 
 
 ```
@@ -28,7 +28,7 @@ apify create orchestrator-actor
 ```
 
 
-If you don't have Apify CLI installed, check out our installation https://docs.apify.com/cli/docs/installation.
+If you don't have Apify CLI installed, check out our installation [instructions](https://docs.apify.com/cli/docs/installation).
 
 ### Input Configuration
 
@@ -130,7 +130,7 @@ if (state.isInitialized) {
         const runClient = apifyClient.run(runId);
         const run = await runClient.get();
 
-        // This should happen if the run was deleted or the state was incorectly saved.
+        // This should happen if the run was deleted or the state was incorrectly saved.
         if (!run) throw new Error(`The run ${runId} from state does not exists.`);
 
         if (run.status === 'RUNNING') {
@@ -203,7 +203,7 @@ Once Actor is initialized, it launches parallel scraper runs and waits for them 
 ```
 import{Actor,log}from'apify';await Actor.init();const{parallelRunsCount=1,targetActorId,targetActorInput={},targetActorRunOptions={}}=(await Actor.getInput())??{};const{apifyClient}=Actor;if(!targetActorId)throw await Actor.fail('Missing the "targetActorId" input!');// Get the current run request queue and dataset, we use the default ones.
 const requestQueue=await Actor.openRequestQueue();const dataset=await Actor.openDataset();// Spawn parallel runs and store their IDs in the state or continue if they are already running.
-const state=await Actor.useState('actor-state',{parallelRunIds:[],isInitialized:false});if(state.isInitialized){for(const runId of state.parallelRunIds){const runClient=apifyClient.run(runId);const run=await runClient.get();// This should happen only if the run was deleted or the state was incorectly saved.
+const state=await Actor.useState('actor-state',{parallelRunIds:[],isInitialized:false});if(state.isInitialized){for(const runId of state.parallelRunIds){const runClient=apifyClient.run(runId);const run=await runClient.get();// This should happen only if the run was deleted or the state was incorrectly saved.
 if(!run)throw await Actor.fail(`The run ${runId} from state does not exists.`);if(run.status==='RUNNING'){log.info('Parallel run is already running.',{runId});}else{log.info(`Parallel run was in state ${run.status}, resurrecting.`,{runId});await runClient.resurrect(targetActorRunOptions);}}}else{for(let i=0;i<parallelRunsCount;i++){const run=await Actor.start(targetActorId,{...targetActorInput,datasetId:dataset.id,requestQueueId:requestQueue.id},targetActorRunOptions);log.info(`Started parallel run with ID: ${run.id}`,{runId:run.id});state.parallelRunIds.push(run.id);}state.isInitialized=true;}const parallelRunPromises=state.parallelRunIds.map(async runId=>{const runClient=apifyClient.run(runId);return runClient.waitForFinish();});// Abort parallel runs if the main run is aborted
 Actor.on('aborting',async()=>{for(const runId of state.parallelRunIds){log.info('Aborting run',{runId});await apifyClient.run(runId).abort();}});// Wait for all parallel runs to finish
 await Promise.all(parallelRunPromises);// Gracefully exit the Actor process. It's recommended to quit all Actors with an exit()
@@ -223,7 +223,7 @@ apify push
 
 First log in
 
-If you are pushing the Actor for the first time, you will need to https://docs.apify.com/cli/docs/reference#apify-login.
+If you are pushing the Actor for the first time, you will need to [login to your Apify account](https://docs.apify.com/cli/docs/reference#apify-login).
 
 By running this command, you will be prompted to provide the Actor ID, which you can find in the Apify Console under the Actors tab.
 
@@ -252,7 +252,7 @@ const dataset = await Actor.openDataset(datasetId);
 ```
 
 
-Once you initialized the request queue and dataset, you can start scraping the website. In this example, we will use the CheerioCrawler to scrape https://warehouse-theme-metal.myshopify.com/. You can create your scraper from the https://apify.com/templates/ts-crawlee-cheerio.
+Once you initialized the request queue and dataset, you can start scraping the website. In this example, we will use the CheerioCrawler to scrape [the example of ecommerce website](https://warehouse-theme-metal.myshopify.com/). You can create your scraper from the [Crawlee + Cheerio TypeScript Actor template](https://apify.com/templates/ts-crawlee-cheerio).
 
 * input\_schema.json
 * main.ts
@@ -290,7 +290,7 @@ await Actor.exit();
 ```
 
 
-You can check https://github.com/apify/apify-docs/tree/master/examples/ts-parallel-scraping/scraper.
+You can check [full code example](https://github.com/apify/apify-docs/tree/master/examples/ts-parallel-scraping/scraper).
 
 You need to push the Scraper Actor to Apify using the following command from the root directory of the Actor project:
 

@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/querying/page-templates.html.md
 
-# Source: https://docs.vespa.ai/en/querying/page-templates.html.md
-
-# Source: https://docs.vespa.ai/en/reference/querying/page-templates.html.md
-
-# Source: https://docs.vespa.ai/en/querying/page-templates.html.md
-
-# Source: https://docs.vespa.ai/en/reference/querying/page-templates.html.md
-
 # Page templates reference
 
  
@@ -130,7 +122,7 @@ Includes the page elements contained directly in the `page` element in the given
 | --- | --- | --- |
 | idref | The id specification of the page to include. Portions of the version may be left unspecified to get the latest matching version. | _(Mandatory)_ |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

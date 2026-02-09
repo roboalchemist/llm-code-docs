@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/translate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Field Translation using Google Translate API
 
 > Automatically translate text content in specified fields using Google Translate API and create new fields with translated content
@@ -10,7 +14,7 @@ The Translate plugin for Flatfile integrates with the Google Translate API to au
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-translate
 ```
 
@@ -37,7 +41,7 @@ By default, the plugin does not do anything until it is configured and registere
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { convertTranslatePlugin } from '@flatfile/plugin-convert-translate';
 
@@ -57,7 +61,7 @@ By default, the plugin does not do anything until it is configured and registere
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { convertTranslatePlugin } from '@flatfile/plugin-convert-translate';
 
@@ -83,7 +87,7 @@ To translate to multiple languages, use the plugin multiple times with different
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { convertTranslatePlugin } from '@flatfile/plugin-convert-translate';
 
@@ -116,7 +120,7 @@ To translate to multiple languages, use the plugin multiple times with different
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from '@flatfile/listener';
     import { convertTranslatePlugin } from '@flatfile/plugin-convert-translate';
 
@@ -153,7 +157,7 @@ To translate to multiple languages, use the plugin multiple times with different
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { translateRecord, convertTranslatePlugin } from '@flatfile/plugin-convert-translate';
 
     const config = {
@@ -182,7 +186,7 @@ To translate to multiple languages, use the plugin multiple times with different
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileRecord } from '@flatfile/plugin-record-hook';
     import { translateRecord, convertTranslatePlugin, TranslationConfig } from '@flatfile/plugin-convert-translate';
 
@@ -220,7 +224,7 @@ The main entry point for the plugin. This function registers a `recordHook` with
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 convertTranslatePlugin(listener: FlatfileListener, config: TranslationConfig): void
 ```
 
@@ -238,7 +242,7 @@ A standalone function that applies the translation logic to a single `FlatfileRe
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 translateRecord(record: FlatfileRecord, config: TranslationConfig): { record: FlatfileRecord; error?: string }
 ```
 
@@ -265,7 +269,7 @@ The plugin includes comprehensive error handling:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // Error handling example
     const { record: updatedRecord, error } = translateRecord(record, config);
 
@@ -279,7 +283,7 @@ The plugin includes comprehensive error handling:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // Error handling example
     const { record: updatedRecord, error } = translateRecord(record, config);
 

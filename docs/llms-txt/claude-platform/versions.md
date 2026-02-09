@@ -12,34 +12,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/beta/skills/versions.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/versions.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/versions.md
-
 # Versions
 
 ## Create
@@ -155,6 +127,8 @@ Create Skill Version
 ```http
 curl https://api.anthropic.com/v1/skills/$SKILL_ID/versions \
     -X POST \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: skills-2025-10-02' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
@@ -294,6 +268,8 @@ List Skill Versions
 
 ```http
 curl https://api.anthropic.com/v1/skills/$SKILL_ID/versions \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: skills-2025-10-02' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
@@ -415,6 +391,8 @@ Get Skill Version
 
 ```http
 curl https://api.anthropic.com/v1/skills/$SKILL_ID/versions/$VERSION \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: skills-2025-10-02' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
@@ -505,5 +483,7 @@ Delete Skill Version
 ```http
 curl https://api.anthropic.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -X DELETE \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: skills-2025-10-02' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

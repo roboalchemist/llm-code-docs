@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/sending-to-large-audience.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sending to large audiences
 
 > Tips for sending emails to a large group of new contacts.

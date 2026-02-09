@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/patterns/testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing your FastMCP Server
 
 > How to test your FastMCP server.

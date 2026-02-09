@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/static-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Static Deployments
 
 > Static Deployments publish your static websites and frontend apps to a cost-effective cloud server.

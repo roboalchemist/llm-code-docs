@@ -105,7 +105,7 @@ Matrix transforms are useful when you need to apply pre-calculated transformatio
 
 ***
 
-### `decomposedMatrix`, `rotation`, `scaleX`, `scaleY`, `transformMatrix`, `translateX`, `translateY`[​](#decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey "Direct link to decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey")
+### 🗑️ `decomposedMatrix`, `rotation`, `scaleX`, `scaleY`, `transformMatrix`, `translateX`, `translateY`[​](#️-decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey "Direct link to ️-decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey")
 
 Deprecated
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/audio/krisp-viva-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # KrispVivaFilter
 
 > Audio noise reduction filter using Krisp VIVA model
@@ -10,14 +14,9 @@
 
 To use Krisp, you need a Krisp SDK license. Get started at [Krisp.ai](https://krisp.ai/developers/).
 
-<Tip>
-  Looking for help getting started with Krisp and Pipecat? Checkout our [Krisp
-  noise cancellation guide](/guides/features/krisp).
-</Tip>
-
 ## Installation
 
-See the [Krisp guide](/guides/features/krisp) to learn how to install the Krisp VIVA SDK.
+See the [Krisp guide](/guides/features/krisp-viva) to learn how to install the Krisp VIVA SDK.
 
 ## Environment Variables
 
@@ -76,12 +75,6 @@ transport = DailyTransport(
         audio_in_enabled=True,
         audio_in_filter=KrispVivaFilter(), # Enable Krisp noise reduction
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

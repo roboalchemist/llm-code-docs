@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/setup-incident-io.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup Incident.io
 
 Incident.io is our primary tool for managing and responding to urgent issues and service disruptions.

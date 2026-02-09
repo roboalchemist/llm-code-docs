@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/how-to-work-with-support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to work with Support
 
 There are several best practices for working with Pinecone Support that can lead to faster resolutions and more relevant recommendations. Please note that Pinecone Support is reserved for users in organizations on the Standard or Enterprise plan. First-response SLAs only apply to tickets created by users in an organization subscribed to a [support plan](https://www.pinecone.io/pricing/?plans=support). To upgrade your support plan, go to [Manage your support plan](https://app.pinecone.io/organizations/-/settings/support/plans) in the console and select your desired plan.

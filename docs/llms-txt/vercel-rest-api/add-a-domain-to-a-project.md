@@ -1,183 +1,155 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/add-a-domain-to-a-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a domain to a project
 
 > Add a domain to the project by passing its domain name and by specifying the project by either passing the project `id` or `name` in the URL. If the domain is not yet verified to be used on this project, the request will return `verified = false`, and the domain will need to be verified according to the `verification` challenge via `POST /projects/:idOrName/domains/:domain/verify`. If the domain already exists on the project, the request will fail with a `400` status code.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v10/projects/{idOrName}/domains
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v10/projects/{idOrName}/domains
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v10/projects/{idOrName}/domains:
+    post:
+      tags:
+        - projects
+      summary: Add a domain to a project
+      description: >-
+        Add a domain to the project by passing its domain name and by specifying
+        the project by either passing the project `id` or `name` in the URL. If
+        the domain is not yet verified to be used on this project, the request
+        will return `verified = false`, and the domain will need to be verified
+        according to the `verification` challenge via `POST
+        /projects/:idOrName/domains/:domain/verify`. If the domain already
+        exists on the project, the request will fail with a `400` status code.
+      operationId: addProjectDomain
+      parameters:
+        - name: idOrName
+          description: The unique project identifier or the project name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique project identifier or the project name
-      query:
-        teamId:
+            description: The unique project identifier or the project name
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - description: The project domain name
-                    example: www.example.com
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  description: The project domain name
+                  type: string
+                  example: www.example.com
+                gitBranch:
+                  description: Git branch to link the project domain
+                  example: null
+                  type: string
+                  maxLength: 250
+                  nullable: true
+                customEnvironmentId:
+                  description: The unique custom environment identifier within the project
+                  type: string
+                redirect:
+                  description: Target destination domain for redirect
+                  example: foobar.com
+                  type: string
+                  nullable: true
+                redirectStatusCode:
+                  description: Status code for domain redirect
+                  example: 307
+                  type: integer
+                  enum:
+                    - null
+                    - 301
+                    - 302
+                    - 307
+                    - 308
+                  nullable: true
+              required:
+                - name
+              type: object
+        required: true
+      responses:
+        '200':
+          description: The domain was successfully added to the project
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
                     type: string
-              gitBranch:
-                allOf:
-                  - description: Git branch to link the project domain
-                    example: null
-                    maxLength: 250
+                  apexName:
                     type: string
+                  projectId:
+                    type: string
+                  redirect:
                     nullable: true
-              customEnvironmentId:
-                allOf:
-                  - description: >-
-                      The unique custom environment identifier within the
-                      project
                     type: string
-              redirect:
-                allOf:
-                  - description: Target destination domain for redirect
-                    example: foobar.com
-                    type: string
+                  redirectStatusCode:
                     nullable: true
-              redirectStatusCode:
-                allOf:
-                  - description: Status code for domain redirect
-                    example: 307
-                    type: integer
-                    enum:
-                      - null
-                      - 301
-                      - 302
-                      - 307
-                      - 308
-                    nullable: true
-            required: true
-            requiredProperties:
-              - name
-        examples:
-          example:
-            value:
-              name: www.example.com
-              gitBranch: null
-              customEnvironmentId: <string>
-              redirect: foobar.com
-              redirectStatusCode: 307
-    codeSamples:
-      - label: addProjectDomain
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Projects.AddProjectDomain(ctx, \"<value>\", nil, nil, &operations.AddProjectDomainRequestBody{\n        Name: \"www.example.com\",\n        GitBranch: nil,\n        Redirect: vercel.String(\"foobar.com\"),\n        RedirectStatusCode: operations.AddProjectDomainRedirectStatusCodeThreeHundredAndSeven.ToPointer(),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: addProjectDomain
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.projects.addProjectDomain({
-              idOrName: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                name: "www.example.com",
-                gitBranch: null,
-                redirect: "foobar.com",
-                redirectStatusCode: 307,
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-              apexName:
-                allOf:
-                  - type: string
-              projectId:
-                allOf:
-                  - type: string
-              redirect:
-                allOf:
-                  - nullable: true
-                    type: string
-              redirectStatusCode:
-                allOf:
-                  - nullable: true
                     type: number
                     enum:
-                      - 307
                       - 301
                       - 302
+                      - 307
                       - 308
-              gitBranch:
-                allOf:
-                  - nullable: true
+                  gitBranch:
+                    nullable: true
                     type: string
-              customEnvironmentId:
-                allOf:
-                  - nullable: true
+                  customEnvironmentId:
+                    nullable: true
                     type: string
-              updatedAt:
-                allOf:
-                  - type: number
-              createdAt:
-                allOf:
-                  - type: number
-              verified:
-                allOf:
-                  - type: boolean
+                  updatedAt:
+                    type: number
+                  createdAt:
+                    type: number
+                  verified:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       `true` if the domain is verified for use with the project.
                       If `false` it will not be used as an alias on this project
                       until the challenge in `verification` is completed.
-              verification:
-                allOf:
-                  - items:
+                  verification:
+                    items:
                       properties:
                         type:
                           type: string
@@ -188,10 +160,10 @@ paths:
                         reason:
                           type: string
                       required:
-                        - type
                         - domain
-                        - value
                         - reason
+                        - type
+                        - value
                       type: object
                       description: >-
                         A list of verification challenges, one of which must be
@@ -210,130 +182,60 @@ paths:
                       domain. Possible challenges: - If `verification.type =
                       TXT` the `verification.domain` will be checked for a TXT
                       record matching `verification.value`.
-            requiredProperties:
-              - name
-              - apexName
-              - projectId
-              - verified
-        examples:
-          example:
-            value:
-              name: <string>
-              apexName: <string>
-              projectId: <string>
-              redirect: <string>
-              redirectStatusCode: 307
-              gitBranch: <string>
-              customEnvironmentId: <string>
-              updatedAt: 123
-              createdAt: 123
-              verified: true
-              verification:
-                - type: <string>
-                  domain: <string>
-                  value: <string>
-                  reason: <string>
-        description: The domain was successfully added to the project
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: >-
-              One of the provided values in the request body is invalid.
+                required:
+                  - apexName
+                  - name
+                  - projectId
+                  - verified
+                type: object
+        '400':
+          description: >-
+            One of the provided values in the request body is invalid.
 
-              One of the provided values in the request query is invalid.
+            One of the provided values in the request query is invalid.
 
-              The domain is not valid
+            The domain is not valid
 
-              You can't set both a git branch and a redirect for the domain
+            You can't set both a git branch and a redirect for the domain
 
-              The domain can not be added because the latest production
-              deployment for the project was not successful
+            The domain can not be added because the latest production deployment
+            for the project was not successful
 
-              The domain redirect is not valid
+            The domain redirect is not valid
 
-              A domain cannot redirect to itself
+            A domain cannot redirect to itself
 
-              You can not set the production branch as a branch for your domain
-        examples: {}
-        description: >-
-          One of the provided values in the request body is invalid.
+            You can not set the production branch as a branch for your domain
+        '401':
+          description: The request is not authorized.
+        '402':
+          description: |-
+            The account was soft-blocked for an unhandled reason.
+            The account is missing a payment so payment method must be updated
+        '403':
+          description: |-
+            You do not have permission to access this resource.
+            You don't have access to the domain you are adding
+        '409':
+          description: >-
+            The domain is already assigned to another Vercel project
 
-          One of the provided values in the request query is invalid.
+            Cannot create project domain since owner already has `domain` on
+            their account, but it's not verified yet.
 
-          The domain is not valid
+            Cannot create project domain since owner already has `domain` on
+            their account, and it's verified.
 
-          You can't set both a git branch and a redirect for the domain
+            The domain is not allowed to be used
 
-          The domain can not be added because the latest production deployment
-          for the project was not successful
-
-          The domain redirect is not valid
-
-          A domain cannot redirect to itself
-
-          You can not set the production branch as a branch for your domain
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '402':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              The account was soft-blocked for an unhandled reason.
-              The account is missing a payment so payment method must be updated
-        examples: {}
-        description: |-
-          The account was soft-blocked for an unhandled reason.
-          The account is missing a payment so payment method must be updated
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              You do not have permission to access this resource.
-              You don't have access to the domain you are adding
-        examples: {}
-        description: |-
-          You do not have permission to access this resource.
-          You don't have access to the domain you are adding
-    '409':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: >-
-              The domain is already assigned to another Vercel project
-
-              Cannot create project domain since owner already has `domain` on
-              their account, but it's not verified yet.
-
-              Cannot create project domain since owner already has `domain` on
-              their account, and it's verified.
-
-              The domain is not allowed to be used
-
-              The project is currently being transferred
-        examples: {}
-        description: >-
-          The domain is already assigned to another Vercel project
-
-          Cannot create project domain since owner already has `domain` on their
-          account, but it's not verified yet.
-
-          Cannot create project domain since owner already has `domain` on their
-          account, and it's verified.
-
-          The domain is not allowed to be used
-
-          The project is currently being transferred
-  deprecated: false
-  type: path
+            The project is currently being transferred
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

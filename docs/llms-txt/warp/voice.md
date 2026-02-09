@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/voice.md
+# Source: https://docs.warp.dev/agent-platform/agent/voice.md
 
 # Voice
 
@@ -55,7 +55,7 @@ There are two ways to activate Voice:
   {% endtab %}
   {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8ec7b05f1abdfc4fa153e33dfde31bd2213efbc0%2Fvoice-settings.png?alt=media" alt=""><figcaption><p>Voice settings panel showing hotkey configuration and voice input toggle options</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-8ec7b05f1abdfc4fa153e33dfde31bd2213efbc0%2Fvoice-settings.png?alt=media" alt=""><figcaption><p>Voice settings panel showing hotkey configuration and voice input toggle options</p></figcaption></figure>
 
 ### Sample use cases
 
@@ -65,7 +65,7 @@ You can also describe multi-step system tasks like "Find all log files in my pro
 
 Voice input is not limited to just Agent Mode - it works across all of Warp's input interfaces. Whether you're using the Find dialog to search through text, entering commands in the terminal, or working with other input editors, you can use voice commands to quickly input your text.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f221503dbf54c309fa459017ce8809890a8b7c84%2Fvoice-in-find.png?alt=media" alt=""><figcaption><p>Voice input works across Warp's editor interfaces, including the Find dialog and other input editors</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-f221503dbf54c309fa459017ce8809890a8b7c84%2Fvoice-in-find.png?alt=media" alt=""><figcaption><p>Voice input works across Warp's editor interfaces, including the Find dialog and other input editors</p></figcaption></figure>
 
 ## Privacy & Security
 

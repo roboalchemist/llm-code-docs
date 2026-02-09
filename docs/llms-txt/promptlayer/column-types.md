@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/column-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node & Column Types
 
 > Complete reference for all node types used in Agents and evaluation pipelines
@@ -7,7 +11,8 @@
 This page documents all available node types for Agents (workflows) and column types for evaluation pipelines. Agents and evaluations share the same node types—each has specific configuration options that determine its behavior.
 
 <Note>
-  In Agents, these are called **nodes**. In evaluation pipelines, they're called **columns**. The configuration is identical.
+  In Agents, these are called **nodes**. In evaluation pipelines, they're called
+  **columns**. The configuration is identical.
 </Note>
 
 ## How Column Sources Work
@@ -20,7 +25,8 @@ Columns can reference data from two places:
 When you specify a `source` or include a column name in `sources`, the system first looks for an evaluation column with that name, then falls back to looking for a dataset column.
 
 <Info>
-  Columns are executed in order based on their `position`. A column can only reference other columns that come before it in the pipeline.
+  Columns are executed in order based on their `position`. A column can only
+  reference other columns that come before it in the pipeline.
 </Info>
 
 ### Example: Chaining Columns Together
@@ -70,8 +76,10 @@ columns = [
 These columns execute prompts, code, or external services.
 
 <AccordionGroup>
-  <Accordion title="PROMPT_TEMPLATE">
-    Runs a prompt template from the registry against each row.
+  <Accordion title="Prompt Template">
+    Runs a prompt template against each row. You can reference a template from the Prompt Registry or define one inline.
+
+    **Registry Reference (using `template`)**
 
     | Field                               | Type    | Required | Description                                           |
     | ----------------------------------- | ------- | -------- | ----------------------------------------------------- |
@@ -125,9 +133,61 @@ These columns execute prompts, code, or external services.
       }
     }
     ```
+
+    **Inline Template (using `inline_template`)**
+
+    Define a prompt template directly in the configuration without saving it to the registry. This is useful for quick experimentation or one-off evaluations.
+
+    | Field                                   | Type    | Required | Description                                           |
+    | --------------------------------------- | ------- | -------- | ----------------------------------------------------- |
+    | `inline_template.inline`                | boolean | Yes      | Must be `true`                                        |
+    | `inline_template.prompt_template`       | object  | Yes      | The template content (chat or completion format)      |
+    | `inline_template.metadata`              | object  | No       | Model configuration (provider, name, parameters)      |
+    | `inline_template.source_prompt_name`    | string  | No       | Name of the registry prompt this was derived from     |
+    | `inline_template.source_prompt_version` | integer | No       | Version number of the source prompt                   |
+    | `prompt_template_variable_mappings`     | object  | Yes      | Maps template input variables to dataset/column names |
+
+    ```json  theme={null}
+    {
+      "column_type": "PROMPT_TEMPLATE",
+      "name": "Generate Response",
+      "configuration": {
+        "inline_template": {
+          "inline": true,
+          "prompt_template": {
+            "type": "chat",
+            "messages": [
+              {
+                "role": "system",
+                "content": [{"type": "text", "text": "You are a helpful assistant."}]
+              },
+              {
+                "role": "user",
+                "content": [{"type": "text", "text": "Answer: {question}"}]
+              }
+            ]
+          },
+          "metadata": {
+            "model": {
+              "provider": "openai",
+              "name": "gpt-4",
+              "parameters": {"temperature": 0.7}
+            }
+          }
+        },
+        "prompt_template_variable_mappings": {
+          "question": "user_question"
+        }
+      }
+    }
+    ```
+
+    <Warning>
+      You must provide exactly one of `template` or `inline_template`. They are mutually exclusive.
+    </Warning>
   </Accordion>
 
-  <Accordion title="CODE_EXECUTION">
+  <Accordion title="Code Execution">
     Executes custom Python or JavaScript code. The code receives a `data` dictionary containing all column values for the current row.
 
     | Field      | Type   | Required | Description              |
@@ -147,7 +207,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="ENDPOINT">
+  <Accordion title="Endpoint">
     Calls an external HTTP endpoint. The request body contains all column values for the current row.
 
     | Field     | Type   | Required | Description             |
@@ -169,7 +229,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="WORKFLOW">
+  <Accordion title="Workflow">
     Runs a PromptLayer workflow.
 
     | Field                     | Type    | Required | Description                              |
@@ -217,7 +277,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="HUMAN">
+  <Accordion title="Human">
     Adds a column for manual human evaluation.
 
     | Field        | Type   | Required | Description                    |
@@ -241,7 +301,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="CONVERSATION_SIMULATOR">
+  <Accordion title="Conversation Simulator">
     Simulates multi-turn conversations to test chatbots and conversational agents. An AI-powered user persona engages in realistic dialogue with your prompt template, allowing you to evaluate how well your agent handles extended interactions.
 
     | Field                                  | Type    | Required    | Description                                                                                                                                                            |
@@ -384,12 +444,129 @@ These columns execute prompts, code, or external services.
   </Accordion>
 </AccordionGroup>
 
+## Loop Types
+
+These nodes enable iterating over collections or executing repeated operations within Agents.
+
+<AccordionGroup>
+  <Accordion title="For Loop">
+    Iterates over a collection of items or runs a fixed number of times, executing a prompt template or sub-workflow on each iteration.
+
+    | Field                | Type    | Required    | Description                                                                 |
+    | -------------------- | ------- | ----------- | --------------------------------------------------------------------------- |
+    | `loop_type`          | string  | Yes         | `"prompt"` or `"workflow"`                                                  |
+    | `prompt_config`      | object  | Conditional | Configuration for prompt execution (required if `loop_type` = "prompt")     |
+    | `workflow_config`    | object  | Conditional | Configuration for workflow execution (required if `loop_type` = "workflow") |
+    | `iterator_source`    | string  | Conditional | Source node providing the collection to iterate over                        |
+    | `max_iterations`     | integer | Conditional | Fixed number of iterations (mutually exclusive with `iterator_source`)      |
+    | `return_all_outputs` | boolean | No          | Return all outputs from each iteration (default: false)                     |
+    | `variable_mappings`  | object  | No          | Maps template variables to source nodes or special loop variables           |
+
+    **Special loop variables for `variable_mappings`:**
+
+    * `loop_index` - Current iteration index (0-based)
+    * `previous_outputs` - Array of all outputs from previous iterations
+    * `_iterator_item` - Current item from the iterated collection
+
+    <Warning>
+      Exactly **one** of `iterator_source` or `max_iterations` must be provided.
+    </Warning>
+
+    ```json  theme={null}
+    {
+      "node_type": "FOR_LOOP",
+      "name": "process_items",
+      "is_output_node": true,
+      "dependencies": ["items"],
+      "configuration": {
+        "loop_type": "prompt",
+        "iterator_source": "items",
+        "prompt_config": {
+          "template": {
+            "name": "item-processor",
+            "label": "production"
+          },
+          "prompt_template_variable_mappings": {
+            "item": "_iterator_item",
+            "index": "loop_index"
+          }
+        },
+        "variable_mappings": {
+          "item": "_iterator_item",
+          "index": "loop_index"
+        }
+      }
+    }
+    ```
+
+    **Output structure:**
+
+    ```json  theme={null}
+    {
+      "iterations": 5,
+      "outputs": ["output1", "output2", "output3", "output4", "output5"],
+      "final_output": "output5"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="While Loop">
+    Executes repeatedly until an end condition is met or maximum iterations are reached.
+
+    | Field                     | Type    | Required    | Description                                                                 |
+    | ------------------------- | ------- | ----------- | --------------------------------------------------------------------------- |
+    | `loop_type`               | string  | Yes         | `"prompt"` or `"workflow"`                                                  |
+    | `prompt_config`           | object  | Conditional | Configuration for prompt execution (required if `loop_type` = "prompt")     |
+    | `workflow_config`         | object  | Conditional | Configuration for workflow execution (required if `loop_type` = "workflow") |
+    | `end_condition_json_path` | string  | No          | JSONPath expression to evaluate termination (loop stops when truthy)        |
+    | `max_iterations`          | integer | No          | Maximum iterations (defaults to system limit)                               |
+    | `return_all_outputs`      | boolean | No          | Return all outputs (default: false)                                         |
+    | `variable_mappings`       | object  | No          | Maps template variables to source nodes or special variables                |
+
+    <Info>
+      **Termination behavior:**
+
+      * If `end_condition_json_path` is set: Loop ends when JSONPath extracts a truthy value
+      * If not set: Loop ends when output is falsy (empty, null, false)
+    </Info>
+
+    ```json  theme={null}
+    {
+      "node_type": "WHILE_LOOP",
+      "name": "refine_loop",
+      "is_output_node": true,
+      "dependencies": ["initial_draft"],
+      "configuration": {
+        "loop_type": "prompt",
+        "max_iterations": 5,
+        "end_condition_json_path": "$.is_complete",
+        "prompt_config": {
+          "template": {
+            "name": "text-refiner",
+            "label": "production"
+          },
+          "prompt_template_variable_mappings": {
+            "text": "initial_draft",
+            "previous_results": "previous_outputs"
+          }
+        },
+        "variable_mappings": {
+          "text": "initial_draft",
+          "previous_results": "previous_outputs",
+          "iteration": "loop_index"
+        }
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
 ## Evaluation Types
 
 These columns evaluate or compare data and typically return boolean or numeric scores.
 
 <AccordionGroup>
-  <Accordion title="LLM_ASSERTION">
+  <Accordion title="LLM Assertion">
     Uses an LLM to evaluate content against a natural language prompt. Returns a boolean indicating pass/fail.
 
     | Field           | Type   | Required    | Description                                                     |
@@ -455,7 +632,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     The output will be a dictionary with each assertion as a key and its boolean result as the value.
   </Accordion>
 
-  <Accordion title="COMPARE">
+  <Accordion title="Compare">
     Compares two values for equality. Supports string comparison and JSON comparison with optional JSONPath.
 
     | Field                       | Type   | Required | Description                                              |
@@ -493,7 +670,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="CONTAINS">
+  <Accordion title="Contains">
     Checks if a value contains a substring (case-insensitive).
 
     | Field          | Type   | Required    | Description                                                     |
@@ -514,7 +691,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="REGEX">
+  <Accordion title="Regex">
     Tests if content matches a regular expression pattern. Returns boolean.
 
     | Field           | Type   | Required | Description                |
@@ -534,7 +711,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="COSINE_SIMILARITY">
+  <Accordion title="Cosine Similarity">
     Calculates semantic similarity between two texts using embeddings. Returns a float between 0 and 1.
 
     | Field     | Type  | Required | Description                                |
@@ -553,7 +730,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="ABSOLUTE_NUMERIC_DISTANCE">
+  <Accordion title="Absolute Numeric Distance">
     Calculates the absolute difference between two numeric values.
 
     | Field     | Type  | Required | Description                                        |
@@ -571,7 +748,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="AI_DATA_EXTRACTION">
+  <Accordion title="AI Data Extraction">
     Uses an LLM to extract specific information from content based on a natural language query.
 
     | Field    | Type   | Required | Description                                     |
@@ -597,7 +774,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
 These columns extract or parse data from other columns.
 
 <AccordionGroup>
-  <Accordion title="JSON_PATH">
+  <Accordion title="JSON Path">
     Extracts data from JSON using JSONPath expressions.
 
     | Field                | Type    | Required | Description                                               |
@@ -619,7 +796,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="XML_PATH">
+  <Accordion title="XML Path">
     Extracts data from XML using XPath expressions.
 
     | Field         | Type    | Required | Description                                                          |
@@ -643,7 +820,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="REGEX_EXTRACTION">
+  <Accordion title="Regex Extraction">
     Extracts content matching a regular expression pattern. Returns an array of all matches.
 
     | Field           | Type   | Required | Description                 |
@@ -663,7 +840,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="PARSE_VALUE">
+  <Accordion title="Parse Value">
     Parses and converts a value to a specific type.
 
     | Field    | Type   | Required | Description                                             |
@@ -689,7 +866,7 @@ These columns extract or parse data from other columns.
 These columns transform, combine, or validate data.
 
 <AccordionGroup>
-  <Accordion title="VARIABLE">
+  <Accordion title="Variable">
     Creates a static value that can be referenced by other columns.
 
     | Field         | Type   | Required | Description        |
@@ -728,7 +905,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="ASSERT_VALID">
+  <Accordion title="Assert Valid">
     Validates that data is in a valid format. Returns boolean.
 
     | Field    | Type   | Required | Description                                                  |
@@ -748,7 +925,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COALESCE">
+  <Accordion title="Coalesce">
     Returns the first non-null value from multiple sources.
 
     | Field     | Type  | Required | Description                      |
@@ -766,7 +943,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COMBINE_COLUMNS">
+  <Accordion title="Combine Columns">
     Combines multiple column values into a single dictionary object.
 
     | Field     | Type  | Required | Description                      |
@@ -784,7 +961,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COUNT">
+  <Accordion title="Count">
     Counts occurrences in text content.
 
     | Field    | Type   | Required | Description                                                   |
@@ -804,7 +981,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="MATH_OPERATOR">
+  <Accordion title="Math Operator">
     Performs numeric comparisons. Returns boolean.
 
     | Field      | Type   | Required    | Description                                                                                                       |
@@ -841,7 +1018,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="MIN_MAX">
+  <Accordion title="Min/Max">
     Finds the minimum or maximum value from an array or JSON structure.
 
     | Field       | Type   | Required | Description                                        |
@@ -863,8 +1040,3 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

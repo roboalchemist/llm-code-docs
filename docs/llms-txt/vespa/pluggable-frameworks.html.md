@@ -53,5 +53,5 @@ As mentioned, the missing package in this example is part of the SDK. In these c
 </container>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

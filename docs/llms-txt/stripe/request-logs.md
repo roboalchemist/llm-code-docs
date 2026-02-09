@@ -61,7 +61,7 @@ You can use the inline navigation to filter API requests by **Date**, **Status**
 
 1. Open the [Logs](https://dashboard.stripe.com/logs) page.
 1. Click **More**.
-   - To filter by version, select an option in the **API version** dropdown menu. For example, `2025-10-29.clover`.
+   - To filter by version, select an option in the **API version** dropdown menu. For example, `2026-01-28.clover`.
    - To filter by error type, select an option in the **Error type** dropdown menu. For example, `card_error`.
    - To filter by error message, select an option in the **Error code** dropdown menu. For example, `bank_account_unverified`.
 1. Click **Apply**.

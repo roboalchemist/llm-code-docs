@@ -1,47 +1,14 @@
 # Source: https://docs.augmentcode.com/setup-augment/guidelines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rules & Guidelines for Agent and Chat
 
 > You can provide custom rules and guidelines written in natural language to improve Agent and Chat with your preferences, best practices, styles, and technology stack.
 
 export const Command = ({text}) => <span className="font-bold">{text}</span>;
-
-export const Availability = ({tags}) => {
-  const tagTypes = {
-    invite: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    beta: {
-      styles: "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10 text-zinc-900 dark:text-zinc-200"
-    },
-    vscode: {
-      styles: "border border-sky-500/20 bg-sky-50/50 dark:border-sky-500/30 dark:bg-sky-500/10 text-sky-900 dark:text-sky-200"
-    },
-    jetbrains: {
-      styles: "border border-amber-500/20 bg-amber-50/50 dark:border-amber-500/30 dark:bg-amber-500/10 text-amber-900 dark:text-amber-200"
-    },
-    vim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    neovim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    default: {
-      styles: "bg-gray-200"
-    }
-  };
-  return <div className="flex items-center space-x-2 border-b pb-4 border-gray-200 dark:border-white/10">
-      <span className="text-sm font-medium">Availability</span>
-      {tags.map(tag => {
-    const tagType = tagTypes[tag] || tagTypes.default;
-    return <div key={tag} className={`px-2 py-0.5 rounded-md text-xs font-medium ${tagType.styles}`}>
-            {tag}
-          </div>;
-  })}
-    </div>;
-};
-
-<Availability tags={["vscode", "jetbrains"]} />
 
 ## What are Rules & Guidelines?
 
@@ -82,6 +49,52 @@ Rules are files that live in the `.augment/rules` directory. Currently, we suppo
 * **Always**: contents will be included in every user prompt
 * **Manual**: needs to be tagged through @ attaching the Rules file manually
 * **Auto**: Agent will automatically detect and attach rules based on a description field
+
+### User Rules vs Workspace Rules
+
+Rules can be defined at two levels:
+
+| Scope     | Location                           | Availability                        |
+| :-------- | :--------------------------------- | :---------------------------------- |
+| User      | `~/.augment/rules/`                | Available in all workspaces         |
+| Workspace | `<workspace_root>/.augment/rules/` | Available in current workspace only |
+
+**User rules** are stored in your home directory and apply to all projects. Use these for personal preferences, coding style guidelines, or conventions you want to follow across all your work. User rules are always treated as **Always** type and are automatically included in every prompt regardless of any frontmatter configuration.
+
+**Workspace rules** are stored in the project repository and apply only to that specific project. Use these for project-specific guidelines that should be shared with your team via version control. Workspace rules support all three types (Always, Manual, Auto) via frontmatter configuration.
+
+### Hierarchical Rules
+
+In addition to workspace-level rules, Augment supports **hierarchical rules** through `AGENTS.md` and `CLAUDE.md` files placed in subdirectories. When working on files in a subdirectory, Augment automatically discovers and applies rule files from that directory and all parent directories.
+
+**How it works:**
+
+1. When you work on a file, Augment looks for `AGENTS.md` and `CLAUDE.md` in the file's directory
+2. It walks up the directory tree, checking each parent directory for these files
+3. All discovered rules are included in the context for that work session
+4. The search stops at the workspace root (workspace root rules are loaded separately)
+
+**Example:**
+
+```
+my-project/
+  AGENTS.md                  <- Always included (workspace root)
+  src/
+    AGENTS.md                <- Included when working in src/ or subdirs
+    components/
+      AGENTS.md              <- Included when working in src/components/
+      Button.tsx
+```
+
+When working on `src/components/Button.tsx`, all three `AGENTS.md` files are loaded.
+
+**Use cases:**
+
+* Framework-specific guidelines (React rules in frontend/, Node.js rules in backend/)
+* Module-specific conventions (API design patterns in api/)
+* Team boundaries (different teams maintain their own standards)
+
+<Note>Only `AGENTS.md` and `CLAUDE.md` files are discovered hierarchically. Files in `.augment/rules/` are only loaded from the workspace root.</Note>
 
 ### Importing Rules
 
@@ -148,7 +161,8 @@ You can add an `.augment-guidelines` file to the root of a repository to specify
     Guidelines and Rules differ in how they are stored and their scope of influence.
 
     * **User Guidelines** are stored in the user’s local IDE storage that will persist across Chat & Agent sessions; however, they do not persist across workspaces.
-    * **Rules** will also be stored within the repository under the `.augment/rules` root that will allow you to split up previous Guidelines into multiple files to more precisely define your preferences.
+    * **User Rules** are stored in `~/.augment/rules/` and apply to all workspaces. They are always treated as "Always" type and automatically included in every prompt.
+    * **Workspace Rules** are stored within the repository under the `.augment/rules` root that will allow you to split up previous Guidelines into multiple files to more precisely define your preferences. Workspace rules support all three types (Always, Manual, Auto).
     * **Workspace Guidelines** (legacy) stored within the repository under the `.augment-guidelines` file are a legacy set of rules that can be edited by editing the `.augment-guidelines` in your repository. Augment will automatically import Workspace Guidelines as Rules which you can access under Settings > User Guidelines and Rules.
   </Accordion>
 
@@ -156,8 +170,7 @@ You can add an `.augment-guidelines` file to the root of a repository to specify
     * User Guidelines are currently limited to a maximum of 24,576 characters.
     * Workspace Guidelines + Rules are limited to a maximum of 49,512 characters. If we exceed these limits, the user will be notified in app and be applied in order of (manual rules, always + auto rules, .augment-guidelines)
     * For VSCode, Guidelines are available in plugin version 0.492.0 and above
-    * For JetBrains IDEs, Guidelines are available in plugin version 0.197.0 and above
-    * Rules are not yet available in JetBrains IDEs
+    * For JetBrains IDEs, Rules are available in plugin version 0.249.1 and above
   </Accordion>
 </AccordionGroup>
 

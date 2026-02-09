@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-7.md
 
-*December 31, 2025*
+_December 31, 2025_
 
 # Announcing Rspack 1.7
 
@@ -12,17 +12,17 @@ We are excited to announce Rspack 1.7! This marks the final minor release in the
 
 Notable changes include:
 
-* New features
-  * [Improved SWC plugin compatibility](#improved-swc-plugin-compatibility)
-  * [Importing assets as bytes](#importing-assets-as-bytes)
-  * [Lazy compilation](#lazy-compilation)
-  * [Experimental features stabilized](#experimental-features-stabilized)
-* Rstack progress
-  * [Rsbuild 1.7](#rsbuild-17)
-  * [Rsdoctor 1.4](#rsdoctor-14)
-  * [Rslib 0.19](#rslib-019)
-  * [Rstest 0.7](#rstest-07)
-  * [Rspress 2.0 RC](#rspress-20-rc)
+- New features
+  - [Improved SWC plugin compatibility](#improved-swc-plugin-compatibility)
+  - [Importing assets as bytes](#importing-assets-as-bytes)
+  - [Lazy compilation](#lazy-compilation)
+  - [Experimental features stabilized](#experimental-features-stabilized)
+- Rstack progress
+  - [Rsbuild 1.7](#rsbuild-17)
+  - [Rsdoctor 1.4](#rsdoctor-14)
+  - [Rslib 0.19](#rslib-019)
+  - [Rstest 0.7](#rstest-07)
+  - [Rspress 2.0 RC](#rspress-20-rc)
 
 ## New features
 
@@ -32,8 +32,8 @@ In previous versions, the upgrade cost for SWC Wasm plugins was relatively high.
 
 To address this issue, we contributed a series of [compatibility improvements](https://swc.rs/docs/plugin/ecmascript/compatibility) to the SWC community, including:
 
-* Using the self-describing [cbor](https://www.rfc-editor.org/rfc/rfc8949.html) serialization scheme to replace the version-sensitive [rkyv](https://rkyv.org/), allowing Wasm plugins to better adapt to AST structure changes.
-* Introducing the `Unknown` variant for enum types in the AST, improving fault tolerance when encountering new fields or nodes.
+- Using the self-describing [cbor](https://www.rfc-editor.org/rfc/rfc8949.html) serialization scheme to replace the version-sensitive [rkyv](https://rkyv.org/), allowing Wasm plugins to better adapt to AST structure changes.
+- Introducing the `Unknown` variant for enum types in the AST, improving fault tolerance when encountering new fields or nodes.
 
 In Rspack 1.7, we upgraded the SWC version in use and adopted these compatibility improvements. From now on, in most scenarios, SWC upgrades are unlikely to break existing plugins built with older SWC versions.
 
@@ -77,15 +77,15 @@ If you have special requirements, such as needing to debug the full build output
 
 In Rspack 1.7, we have stabilized several experimental features. The following capabilities have been verified in production and are now considered stable, and the corresponding experimental flags have been deprecated or enabled by default:
 
-* **Constant Inlining Optimization**: This optimization is now stable and enabled by default in production builds.
-  * The original [experiments.inlineConst](/config/deprecated-options.md#experimentsinlineconst) option is deprecated.
-  * If you need to disable this behavior, use [optimization.inlineExports](/config/optimization.md#optimizationinlineexports) to control it.
-* **TypeScript Enum Inlining Optimization**: This optimization is now stable.
-  * The original [experiments.inlineEnum](/config/deprecated-options.md#experimentsinlineenum) option is deprecated.
-  * Use [collectTypeScriptInfo.exportedEnum](/guide/features/builtin-swc-loader.md#collecttypescriptinfoexportedenum) to control whether to collect exported `enum` information.
-  * Use [optimization.inlineExports](/config/optimization.md#optimizationinlineexports) to control whether to inline `enum`.
-* **Type Re-export Check**: This optimization is now stable.
-  * The original [experiments.typeReexportsPresence](/config/deprecated-options.md#experimentstypereexportspresence) option is deprecated.
+- **Constant Inlining Optimization**: This optimization is now stable and enabled by default in production builds.
+  - The original [experiments.inlineConst](/config/deprecated-options.md#experimentsinlineconst) option is deprecated.
+  - If you need to disable this behavior, use [optimization.inlineExports](/config/optimization.md#optimizationinlineexports) to control it.
+- **TypeScript Enum Inlining Optimization**: This optimization is now stable.
+  - The original [experiments.inlineEnum](/config/deprecated-options.md#experimentsinlineenum) option is deprecated.
+  - Use [collectTypeScriptInfo.exportedEnum](/guide/features/builtin-swc-loader.md#collecttypescriptinfoexportedenum) to control whether to collect exported `enum` information.
+  - Use [optimization.inlineExports](/config/optimization.md#optimizationinlineexports) to control whether to inline `enum`.
+- **Type Re-export Check**: This optimization is now stable.
+  - The original [experiments.typeReexportsPresence](/config/deprecated-options.md#experimentstypereexportspresence) option is deprecated.
 
 > Refer to the [Upgrade Guide](#upgrade-guide) to learn how to adjust related configurations.
 
@@ -212,9 +212,9 @@ Currently, the `@rstest/adapter-rslib` adapter has been officially released, and
 
 Rstest has made several usability improvements for local development and debugging scenarios, making test feedback more intuitive:
 
-* **Spot stuck tests earlier:** Rstest now supports marking test cases that have not completed for a long time during local runs. When the test process slows down, you can directly see which case is executing and may be stuck, instead of waiting blindly for the test to time out.
+- **Spot stuck tests earlier:** Rstest now supports marking test cases that have not completed for a long time during local runs. When the test process slows down, you can directly see which case is executing and may be stuck, instead of waiting blindly for the test to time out.
 
-* **Clearer timeout failure feedback:** When a test fails due to timeout, Rstest now displays the number of executed assertions in the error message. This helps you quickly judge whether the test has been partially executed or is stuck in some asynchronous logic, thus locating the problem faster.
+- **Clearer timeout failure feedback:** When a test fails due to timeout, Rstest now displays the number of executed assertions in the error message. This helps you quickly judge whether the test has been partially executed or is stuck in some asynchronous logic, thus locating the problem faster.
 
 ### Rspress 2.0 RC
 
@@ -222,8 +222,8 @@ Rstest has made several usability improvements for local development and debuggi
 
 In front-end frameworks that rely on dynamic React rendering, static information is often difficult to extract, and Rspress also encountered the same problem. Rspress allows users to enhance document expressiveness through dynamic features such as [MDX fragments](https://v2.rspress.rs/guide/use-mdx/components), React components, Hooks, and TSX routes. However, these dynamic contents face several challenges when converted to Markdown text:
 
-* Directly inputting MDX to AI will contain a lot of code syntax noise and lose React component content.
-* Converting SSG-generated HTML to Markdown often yields poor results, and information quality is difficult to guarantee.
+- Directly inputting MDX to AI will contain a lot of code syntax noise and lose React component content.
+- Converting SSG-generated HTML to Markdown often yields poor results, and information quality is difficult to guarantee.
 
 To solve this problem, Rspress 2.0 introduces the [SSG-MD](https://v2.rspress.rs/guide/basic/ssg-md) feature. This is a new rendering mode, as the name suggests, the key difference from traditional [Static Site Generation (SSG)](https://v2.rspress.rs/guide/basic/ssg) is that it renders your page into Markdown files instead of HTML files, and generates [llms.txt](https://llmstxt.org/) and llms-full.txt files. Compared to traditional approaches such as converting HTML to Markdown, SSG-MD has better information sources during rendering, such as React Virtual DOM, so it produces higher-quality static content with greater flexibility.
 
@@ -276,7 +276,7 @@ If your project uses SWC Wasm plugins (such as `@swc/plugin-emotion`, etc.), upg
 
 ### Remove deprecated configuration
 
-* The following experimental options have been deprecated and can be directly removed:
+- The following experimental options have been deprecated and can be directly removed:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -292,7 +292,7 @@ export default {
 };
 ```
 
-* Adjust the position of the [collectTypeScriptInfo](/guide/features/builtin-swc-loader.md#collecttypescriptinfo) option in `builtin:swc-loader`, removing the `rspackExperiments` level:
+- Adjust the position of the [collectTypeScriptInfo](/guide/features/builtin-swc-loader.md#collecttypescriptinfo) option in `builtin:swc-loader`, removing the `rspackExperiments` level:
 
 ```js title="rspack.config.mjs"
 export default {

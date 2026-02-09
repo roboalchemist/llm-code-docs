@@ -243,7 +243,7 @@ The `rawScore` feature takes a field name as parameter and gives the sum of all 
 
 Query item labeling is a generic mechanism that can be used to attach symbolic names to query items. A query item is labeled by using the `setLabel` method on a query item in the search container query API.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

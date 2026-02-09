@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/recipes/company-research-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Company Research Agent
 
 > How to build a Company Research agent in Agent.ai

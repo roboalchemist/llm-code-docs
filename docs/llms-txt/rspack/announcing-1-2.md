@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-2.md
 
-*January 21, 2025*
+_January 21, 2025_
 
 # Announcing Rspack 1.2
 
@@ -14,18 +14,18 @@ Rspack v1.2 has been released!
 
 Notable changes:
 
-* New features
-  * [Persistent cache](#persistent-cache): An experimental feature that improves hot start performance by up to **250%**.
-  * [Yarn PnP](#yarn-pnp)
-* Performance improvements
-  * [Faster code splitting](#faster-code-splitting): An experimental flag that significantly improve the code splitting performance.
-  * [Watch scope change](#watch-scope-change)
-  * [Reduced memory usage](#reduced-memory-usage)
-  * [Smaller minification size](#smaller-minification-size)
-  * [Faster side effects optimization](#faster-side-effects-optimization)
-* Ecosystem
-  * [Angular support](#angular-support)
-  * [Rsbuild v1.2](#rsbuild-v1-2)
+- New features
+  - [Persistent cache](#persistent-cache): An experimental feature that improves hot start performance by up to **250%**.
+  - [Yarn PnP](#yarn-pnp)
+- Performance improvements
+  - [Faster code splitting](#faster-code-splitting): An experimental flag that significantly improve the code splitting performance.
+  - [Watch scope change](#watch-scope-change)
+  - [Reduced memory usage](#reduced-memory-usage)
+  - [Smaller minification size](#smaller-minification-size)
+  - [Faster side effects optimization](#faster-side-effects-optimization)
+- Ecosystem
+  - [Angular support](#angular-support)
+  - [Rsbuild v1.2](#rsbuild-v1-2)
 
 ## New features
 
@@ -57,7 +57,7 @@ Note that persistent cache is still in an experimental stage and currently only 
 
 If you encounter any issues while using persistent cache, please feel free to report them via GitHub Issues.
 
-> See [experiments.cache](/config/experiments.md#experimentscache) for more details.
+> See [cache](/config/cache.md) for more details.
 
 ### Yarn PnP
 
@@ -97,9 +97,9 @@ Rspack v1.2 no longer watching the `node_modules` directory by default. This can
 
 According to our [benchmark repo](https://github.com/rstackjs/build-tools-performance), this change will:
 
-* Reduce memory usage by 120MB
-* Increase dev startup speed by 40%
-* Increase HMR speed by 20~30%
+- Reduce memory usage by 120MB
+- Increase dev startup speed by 40%
+- Increase HMR speed by 20\~30%
 
 This change will not affect symlinked resources in monorepo, as symlinked resources are resolved to their real path by default.
 
@@ -160,9 +160,9 @@ Please visit [Angular Rspack](https://github.com/nrwl/angular-rspack) for more i
 
 Rsbuild v1.2 has been released alongside Rspack v1.2, bringing several new features:
 
-* Customize manifest file generation through [output.manifest.generate](https://rsbuild.rs/config/output/manifest#generate).
-* Specify files to retain in the dist directory using [cleanDistPath.keep](https://rsbuild.rs/config/output/clean-dist-path#keep).
-* [@rsbuild/plugin-assets-retry](https://rsbuild.rs/plugins/list/plugin-assets-retry) now generates smaller runtime code.
+- Customize manifest file generation through [output.manifest.generate](https://rsbuild.rs/config/output/manifest#generate).
+- Specify files to retain in the dist directory using [cleanDistPath.keep](https://rsbuild.rs/config/output/clean-dist-path#keep).
+- [@rsbuild/plugin-assets-retry](https://rsbuild.rs/plugins/list/plugin-assets-retry) now generates smaller runtime code.
 
 > For more details, see [Rsbuild v1.2.0](https://github.com/web-infra-dev/rsbuild/releases/tag/v1.2.0).
 

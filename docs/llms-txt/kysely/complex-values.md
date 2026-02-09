@@ -2,10 +2,6 @@
 
 # Source: https://kysely.dev/docs/examples/insert/complex-values.md
 
-# Source: https://kysely.dev/docs/examples/update/complex-values.md
-
-# Source: https://kysely.dev/docs/examples/insert/complex-values.md
-
 # Complex values
 
 In addition to primitives, the values can also be arbitrary expressions. You can build the expressions by using a callback and calling the methods on the expression builder passed to it:

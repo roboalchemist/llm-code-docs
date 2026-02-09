@@ -23,7 +23,7 @@ When you SSH into a remote box, you get all the features of Warp without any con
 If you're using zsh on the remote host, Warp creates a temp folder to act as the ZDOTDIR during the bootstrapping process and removes it when the shell is set up.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d1dfbe0032fc3388c17b2ecb4eaff36a7a2b5d6c%2Fssh.png?alt=media&#x26;token=4d3dd306-f3e0-4cf9-af42-e9d4325df08a" alt="SSH"><figcaption><p>SSH</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-d1dfbe0032fc3388c17b2ecb4eaff36a7a2b5d6c%2Fssh%20(1).png?alt=media" alt="SSH"><figcaption><p>SSH</p></figcaption></figure>
 
 ## Implementation
 
@@ -58,4 +58,4 @@ There are several [known issues with SSH Wrapper](https://github.com/warpdotdev/
 If the subshell workaround helps, we recommend you disable the SSH Wrapper in `Settings > Features.`You'll need to start a new session before a change is reflected or try invoking the SSH binary directly with `command ssh`.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-5cfba89554e738ad331b86151eae6b7bb819e306%2Fsubshell-ssh-demo.gif?alt=media&#x26;token=6af18eca-bfd1-4fd7-888a-2af3dd65dd51" alt="Command SSH subshell workaround"><figcaption><p>Warpify SSH Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-5cfba89554e738ad331b86151eae6b7bb819e306%2Fsubshell-ssh-demo.gif?alt=media" alt="Command SSH subshell workaround"><figcaption><p>Warpify SSH Demo</p></figcaption></figure>

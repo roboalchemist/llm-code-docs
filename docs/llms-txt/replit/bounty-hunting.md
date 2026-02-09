@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/bounties/bounty-hunting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Earning with Replit Bounties
 
 > Bounties on Replit allow you to request and pay for coding tasks or project work using a platform-specific currency called Cycles. When you have a specific need—such as developing a new product, needing coding help for a personal project, or requiring API integration—you can create a Bounty. This acts as a job posting that other members, known as Bounty Hunters, can accept to complete the specified task.

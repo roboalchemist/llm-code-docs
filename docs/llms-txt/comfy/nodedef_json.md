@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/specs/nodedef_json.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node Definition JSON
 
 > JSON schema for a ComfyUI Node.

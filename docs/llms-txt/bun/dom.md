@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/dom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DOM testing
 
 > Learn how to test DOM elements and components using Bun with happy-dom and React Testing Library
@@ -66,7 +70,7 @@ bun test
 ```
 
 ```
-bun test v1.3.2
+bun test v1.3.3
 
 dom.test.ts:
 ✓ dom test [0.82ms]

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/contributing/platform/developing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local development
 
 > This guide will help you set up and run the Infisical platform in local development.
@@ -16,7 +20,7 @@ git checkout -b MY_BRANCH_NAME
 
 ## Set up environment variables
 
-Start by creating a `.env` file at the root of the Infisical directory then copy the contents of the file linked [here](https://github.com/Infisical/infisical/blob/main/.env.example). View all available [environment variables](https://infisical.com/docs/self-hosting/configuration/envars) and guidance for each.
+Start by creating a `.env` file at the root of the Infisical directory then copy the contents of the file linked [here](https://github.com/Infisical/infisical/blob/main/.env.dev.example). View all available [environment variables](https://infisical.com/docs/self-hosting/configuration/envars) and guidance for each.
 
 ## Starting Infisical for development
 

@@ -6,7 +6,7 @@
 
 ***
 
-With https://zapier.com/apps/apify/integrations, you can connect your Apify Actors to Slack, Trello, Google Sheets, Dropbox, Salesforce, and loads more.
+With [Apify integration for Zapier](https://zapier.com/apps/apify/integrations), you can connect your Apify Actors to Slack, Trello, Google Sheets, Dropbox, Salesforce, and loads more.
 
 Your Zapier workflows can start Apify Actors or tasks, fetch items from a dataset, set and get records from key-value stores, or find Actor or task runs.
 
@@ -14,14 +14,14 @@ You can use the Zapier integration to trigger a workflow whenever an Actor or a 
 
 Complementary to the following guide we've created a detailed video, that will guide you through the process of setting up your Telegram integration through Zapier.
 
-https://www.youtube.com/embed/XldEuQleq3c?si=86qbdrzWpVLoY_fr
+[YouTube video player](https://www.youtube.com/embed/XldEuQleq3c?si=86qbdrzWpVLoY_fr)
 
 ## Connect Apify with Zapier
 
 To use the Apify integration on Zapier, you will need to:
 
-* Have an https://console.apify.com/.
-* Have a https://zapier.com/.
+* Have an [Apify account](https://console.apify.com/).
+* Have a [Zapier account](https://zapier.com/).
 
 ### Step 1: Create Zap and find Apify on Zapier
 

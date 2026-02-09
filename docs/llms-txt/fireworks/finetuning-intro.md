@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/finetuning-intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fine Tuning Overview
 
 Fireworks helps you fine-tune models to improve quality and performance for your product use cases, without the burden of building & maintaining your own training infrastructure.

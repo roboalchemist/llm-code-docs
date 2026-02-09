@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/docs/tools/inspector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP Inspector
 
 > In-depth guide to using the MCP Inspector for testing and debugging Model Context Protocol servers

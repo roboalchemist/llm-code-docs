@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/python/orm/sqlalchemy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQLAlchemy + Turso
 
 > Configure SQLAlchemy to work with your Turso database

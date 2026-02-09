@@ -4,27 +4,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/terraform-cloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/cloud/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/terraform-cloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/cloud/terraform-cloud.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/terraform-cloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Terraform Cloud
 

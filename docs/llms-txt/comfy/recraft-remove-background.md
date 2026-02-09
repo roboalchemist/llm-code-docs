@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/recraft/recraft-remove-background.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recraft Remove Background - ComfyUI Native Node Documentation
 
 > A Recraft Partner node that automatically removes image backgrounds and creates transparent alpha channels

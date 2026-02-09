@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/sdk-platforms/expo.md
 
-# Source: https://docs.livekit.io/home/quickstarts/expo.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › Expo
+LiveKit docs › Get Started › SDK platform quickstarts › Expo
 
 ---
 
@@ -156,17 +154,17 @@ See the [quickstart example repo](https://github.com/livekit-examples/react-nati
 
 ### Create a backend server to generate tokens
 
-Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/home/server/generating-tokens.md).
+Set up a server to generate tokens for your app at runtime by following this guide: [Generating Tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md).
 
 ## Next steps
 
 The following resources are useful for getting started with LiveKit on React Native and Expo.
 
-- **[Generating tokens](https://docs.livekit.io/home/server/generating-tokens.md)**: Guide to generating authentication tokens for your users.
+- **[Generating tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md)**: Guide to generating authentication tokens for your users.
 
-- **[Realtime media](https://docs.livekit.io/home/client/tracks.md)**: Complete documentation for live video and audio tracks.
+- **[Realtime media](https://docs.livekit.io/transport/media.md)**: Complete documentation for live video and audio tracks.
 
-- **[Realtime data](https://docs.livekit.io/home/client/data.md)**: Send and receive realtime data between clients.
+- **[Realtime data](https://docs.livekit.io/transport/data.md)**: Send and receive realtime data between clients.
 
 - **[React Native SDK](https://github.com/livekit/client-sdk-react-native)**: LiveKit React Native SDK on GitHub.
 
@@ -174,7 +172,7 @@ The following resources are useful for getting started with LiveKit on React Nat
 
 ---
 
-This document was rendered at 2025-11-18T23:54:55.071Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/expo.md](https://docs.livekit.io/home/quickstarts/expo.md).
+This document was rendered at 2026-02-03T03:25:15.452Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/expo.md](https://docs.livekit.io/transport/sdk-platforms/expo.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

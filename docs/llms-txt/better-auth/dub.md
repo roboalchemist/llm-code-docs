@@ -4,11 +4,7 @@
 
 Better Auth Plugin for Lead Tracking using Dub links and OAuth Linking
 
-***
 
-title: Dub
-description: Better Auth Plugin for Lead Tracking using Dub links and OAuth Linking
------------------------------------------------------------------------------------
 
 [Dub](https://dub.co/) is an open source modern link management platform for entrepreneurs, creators, and growth teams.
 
@@ -22,7 +18,7 @@ This plugins allows you to track leads when a user signs up using a Dub link. It
 
     First, install the plugin:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -72,7 +68,7 @@ This plugins allows you to track leads when a user signs up using a Dub link. It
 
     Next, install the Dub SDK on your server:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -192,6 +188,7 @@ const authClient = createAuthClient({
 
 To link account with Dub, you need to use the `dub.link`.
 
+
 ### Client Side
 
 ```ts
@@ -216,14 +213,15 @@ const data = await auth.api.dubLink({
 
 ```ts
 type dubLink = {
-  /**
-   * URL to redirect to after linking
-   * @clientOnly
-  */
-  callbackURL: string = "/dashboard"
-
+    /**
+     * URL to redirect to after linking
+     * @clientOnly
+    */
+    callbackURL: string = "/dashboard"
+  
 }
 ```
+
 
 ## Options
 

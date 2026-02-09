@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/highlights-restored-js-sdk.md
+# Source: https://exa.ai/docs/changelog/highlights-restored-js-sdk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JS SDK: highlights restored
 
@@ -15,7 +19,7 @@ The highlights feature is back in the JavaScript SDK. Following user feedback, w
 The `highlights` option is now available in search and contents operations:
 
 * `highlights: true` - Returns highlighted sentences with default settings
-* `highlights: { numSentences, highlightsPerUrl, query }` - Customize extraction behavior
+* `highlights: { maxCharacters, query }` - Customize extraction behavior
 
 Results include:
 
@@ -40,8 +44,7 @@ console.log(results.results[0].highlights);
 ```javascript  theme={null}
 const results = await exa.searchAndContents("machine learning tutorials", {
   highlights: {
-    numSentences: 3,
-    highlightsPerUrl: 5,
+    maxCharacters: 2000,
     query: "beginner friendly"
   }
 });
@@ -66,8 +69,3 @@ This update applies only to the JavaScript SDK (`exa-js`). Other SDKs can access
 ```bash  theme={null}
 npm install exa-js@latest
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

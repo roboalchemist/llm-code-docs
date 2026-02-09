@@ -6,7 +6,7 @@
 
 ***
 
-Naming your Actor can be tricky, especially after you’ve worked hard on it. To help people find your Actor and make it stand out, we’ve set some naming guidelines. These will help your Actor rank better on Google and keep things consistent on https://apify.com/store.
+Naming your Actor can be tricky, especially after you’ve worked hard on it. To help people find your Actor and make it stand out, we’ve set some naming guidelines. These will help your Actor rank better on Google and keep things consistent on [Apify Store](https://apify.com/store).
 
 Ideally, you should choose a name that clearly shows what your Actor does and includes keywords people might use to search for it.
 
@@ -23,7 +23,7 @@ Your Actor's name consists of four parts: actual name, SEO name, URL, and GitHub
 
 * Actor URL (technical name), e.g. *booking-scraper*.
   <!-- -->
-  * More on it on https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md page.
+  * More on it on [Importance of Actor URL](https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md) page.
 
 * GitHub repository name (best to keep it similar to the other ones, for convenience), e.g. *actor-booking-scraper*.
 
@@ -112,7 +112,7 @@ You can test and refine your SEO assumptions by occasionally changing the SEO na
 
 ✅:
 
-* Technical name (Actor's name in the https://console.apify.com/): `${domain}-scraper`, e.g. youtube-scraper.
+* Technical name (Actor's name in the [Apify Console](https://console.apify.com/)): `${domain}-scraper`, e.g. youtube-scraper.
 * Actor name: `${Domain} Scraper`, e.g. YouTube Scraper.
 * Name of the GitHub repository: `actor-${domain}-scraper`, e.g. actor-youtube-scraper.
 
@@ -127,14 +127,14 @@ If your Actor only caters to a specific service on a domain (and you don't plan 
 For example,
 
 * Technical name: `${domain}-${service}-scraper`, e.g. google-search-scraper.
-* Actor name: `${Domain} ${Service} Scraper`, e.g. https://apify.com/apify/google-search-scraper.
+* Actor name: `${Domain} ${Service} Scraper`, e.g. [Google Search Scraper](https://apify.com/apify/google-search-scraper).
 * GitHub repository: `actor-${domain}-${service}-scraper`, e.g. actor-google-search-scraper.
 
 ### Non-scraping Actors
 
 Naming for non-scraping Actors is more liberal. Being creative and considering SEO and user experience are good places to start. Think about what your users will type into a search engine when looking for your Actor. What is your Actor's function?
 
-Below are examples for the https://apify.com/lukaskrivka/google-sheets Actor.
+Below are examples for the [Google Sheets](https://apify.com/lukaskrivka/google-sheets) Actor.
 
 ✅:
 
@@ -150,4 +150,4 @@ Below are examples for the https://apify.com/lukaskrivka/google-sheets Actor.
 
 Renaming your Actor
 
-You may rename your Actor freely, except when it comes to the Actor URL. Remember to read https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md to find out why!
+You may rename your Actor freely, except when it comes to the Actor URL. Remember to read [Importance of Actor URL](https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url.md) to find out why!

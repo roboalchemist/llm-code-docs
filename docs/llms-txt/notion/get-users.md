@@ -1,144 +1,505 @@
 # Source: https://developers.notion.com/reference/get-users.md
 
-# Notion API
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-## Objects
-
-### Block
-- [Rich text](/reference/rich-text)
-
-### Page
-- [Page properties](/reference/page-property-values)
-  - [Page property items](/reference/property-item-object)
-
-### Database
-- [Database](/reference/database)
-
-### Data source
-- [Data source properties](/reference/data-source)
-
-### Comment
-- [Comment attachment](/reference/comment-attachment)
-- [Comment display name](/reference/comment-display-name)
-
-### File
-- [File Upload](/reference/file-upload)
-
-### User
-- [User](/reference/user)
-
-### Parent
-- [Parent](/reference/parent-object)
-
-### Emoji
-- [Emoji](/reference/emoji-object)
-
-### Unfurl attribute (Link Previews)
-- [Unfurl attribute (Link Previews)](/reference/unfurl-attribute-object)
-
-## Endpoints
-
-### Authentication
-- [Create a token](/reference/create-a-token) (post)
-- [Introspect token](/reference/introspect-token) (post)
-- [Revoke token](/reference/revoke-token) (post)
-- [Refresh a token](/reference/refresh-a-token) (post)
-
-### Blocks
-- [Append block children](/reference/append-block-children) (patch)
-- [Retrieve a block](/reference/retrieve-a-block) (get)
-- [Retrieve block children](/reference/retrieve-block-children) (get)
-- [Update a block](/reference/update-a-block) (patch)
-- [Delete a block](/reference/delete-a-block) (del)
-
-### Pages
-- [Create a page](/reference/create-a-page) (post)
-- [Retrieve a page](/reference/retrieve-a-page) (get)
-- [Retrieve a page property item](/reference/retrieve-a-page-property) (get)
-- [Update page](/reference/update-page)
-  - [Trash a page](/reference/trash-a-page)
-
-### Databases
-- [Create a database](/reference/create-database) (post)
-- [List databases](/reference/list-databases) (get)
-- [Delete a database](/reference/delete-database) (del)
-```
-
-# RESTful API Reference
-
-## Database Operations
-
-- [Create a database](https://docs.apimatic.io/reference/database-create)
-- [Update a database](https://docs.apimatic.io/reference/database-update)
-- [Retrieve a database](https://docs.apimatic.io/reference/database-retrieve)
-
-## Data Sources
-
-### Create a Data Source
-
-- [Create a data source](https://docs.apimatic.io/reference/create-a-data-source)
-- [Update a data source](https://docs.apimatic.io/reference/update-a-data-source)
-  - [Update data source properties](https://docs.apimatic.io/reference/update-data-source-properties)
-- [Retrieve a data source](https://docs.apimatic.io/reference/retrieve-a-data-source)
-- [Query a data source](https://docs.apimatic.io/reference/query-a-data-source)
-  - [Filter data source entries](https://docs.apimatic.io/reference/filter-data-source-entries)
-  - [Sort data source entries](https://docs.apimatic.io/reference/sort-data-source-entries)
-- [List data source templates](https://docs.apimatic.io/reference/list-data-source-templates)
-
-### Databases (deprecated)
-
-- [Create a database](https://docs.apimatic.io/reference/create-a-database)
-- [Query a database](https://docs.apimatic.io/reference/post-database-query)
-  - [Filter database entries](https://docs.apimatic.io/reference/post-database-query-filter)
-  - [Sort database entries](https://docs.apimatic.io/reference/post-database-query-sort)
-- [Retrieve a database](https://docs.apimatic.io/reference/retrieve-a-database)
-- [Update a database](https://docs.apimatic.io/reference/update-a-database)
-  - [Update database properties](https://docs.apimatic.io/reference/update-property-schema-object)
-- [List databases (deprecated)](https://docs.apimatic.io/reference/get-databases)
-
-### Comments
-
-- [Create comment](https://docs.apimatic.io/reference/create-a-comment)
-- [Retrieve a comment](https://docs.apimatic.io/reference/retrieve-comment)
-- [List comments](https://docs.apimatic.io/reference/list-comments)
-
-### File Uploads
-
-- [Create a file upload](https://docs.apimatic.io/reference/create-a-file-upload)
-- [Send a file upload](https://docs.apimatic.io/reference/send-a-file-upload)
-- [Complete a file upload](https://docs.apimatic.io/reference/complete-a-file-upload)
-- [Retrieve a file upload](https://docs.apimatic.io/reference/retrieve-a-file-upload)
-- [List file uploads](https://docs.apimatic.io/reference/list-file-uploads)
-
-## Other Resources
-
-- [Authentication](https://docs.apimatic.io/authentication)
-- [Authorization](https://docs.apimatic.io/authorization)
-- [Error Codes](https://docs.apimatic.io/error-codes)
-- [HTTP Status Codes](https://docs.apimatic.io/http-status-codes)
-- [API Versioning](https://docs.apimatic.io/api-versioning)
-- [Terms of Service](https://docs.apimatic.io/terms-of-service)
-- [Code Samples](https://docs.apimatic.io/code-samples)
-- [Examples](https://docs.apimatic.io/examples)
-```
+> Returns a paginated list of [Users](/reference/user) for the workspace. The response may contain fewer than `page_size` of results.
 
 # List all users
-
-Returns a paginated list of [Users](/reference/user) for the workspace. The response may contain fewer than `page_size` of results.
 
 Guests are not included in the response.
 
 See [Pagination](/reference/intro#pagination) for details about how to use a cursor to iterate through the list.
 
-## Errors
+### Errors
 
 Each Public API endpoint can return several possible error codes. See the [Error codes section](/reference/status-codes#error-codes) of the Status codes documentation for more information.
 
-> **📘**
-> The API does not currently support filtering users by their email and/or name.
+<Info>
+  The API does not currently support filtering users by their email and/or name.
+</Info>
 
-> **📘**
-> Integration capabilities
-> 
-> This endpoint requires an integration to have user information capabilities. Attempting to call this API without user information capabilities will return an HTTP response with a 403 status code. For more information on integration capabilities, see the [capabilities guide](/reference/capabilities).
-```
+<Info>
+  **Integration capabilities**
+
+  This endpoint requires an integration to have user information capabilities. Attempting to call this API without user information capabilities will return an HTTP response with a 403 status code. For more information on integration capabilities, see the [capabilities guide](/reference/capabilities).
+</Info>
+
+
+## OpenAPI
+
+````yaml get /v1/users
+openapi: 3.1.0
+info:
+  title: Notion API
+  version: 1.0.0
+  termsOfService: >-
+    https://notion.notion.site/Terms-and-Privacy-28ffdd083dc3473e9c2da6ec011b58ac
+servers:
+  - url: https://api.notion.com
+security:
+  - bearerAuth: []
+tags:
+  - name: Databases
+    description: Database endpoints
+  - name: Data sources
+    description: Data source endpoints
+  - name: Pages
+    description: Page endpoints
+  - name: Blocks
+    description: Block endpoints
+  - name: Comments
+    description: Comment endpoints
+  - name: File uploads
+    description: File upload endpoints
+  - name: OAuth
+    description: OAuth endpoints (basic authentication)
+  - name: Users
+    description: User endpoints
+  - name: Search
+    description: Search endpoints
+paths:
+  /v1/users:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      operationId: get-users
+      parameters:
+        - name: start_cursor
+          in: query
+          schema:
+            type: string
+        - name: page_size
+          in: query
+          schema:
+            type: number
+        - $ref: '#/components/parameters/notionVersion'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                title: User
+                type: object
+                properties:
+                  type:
+                    enum:
+                      - user
+                  user:
+                    $ref: '#/components/schemas/emptyObject'
+                  object:
+                    enum:
+                      - list
+                  next_cursor:
+                    type:
+                      - string
+                      - 'null'
+                  has_more:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/userObjectResponse'
+                required:
+                  - type
+                  - user
+                  - object
+                  - next_cursor
+                  - has_more
+                  - results
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_400'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_401'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_403'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_404'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_409'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_429'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_500'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_503'
+components:
+  parameters:
+    notionVersion:
+      name: Notion-Version
+      in: header
+      required: true
+      schema:
+        enum:
+          - '2025-09-03'
+      description: >-
+        The [API version](/reference/versioning) to use for this request. The
+        latest version is `2025-09-03`.
+  schemas:
+    emptyObject:
+      type: object
+      properties: {}
+      additionalProperties: false
+    userObjectResponse:
+      allOf:
+        - $ref: '#/components/schemas/userObjectResponseCommon'
+        - oneOf:
+            - $ref: '#/components/schemas/personUserObjectResponse'
+            - $ref: '#/components/schemas/botUserObjectResponse'
+    error_api_400:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - invalid_json
+                - invalid_request_url
+                - invalid_request
+                - missing_version
+                - validation_error
+            status:
+              const: 400
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_401:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - unauthorized
+            status:
+              const: 401
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_403:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - restricted_resource
+            status:
+              const: 403
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_404:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - object_not_found
+            status:
+              const: 404
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_409:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - conflict_error
+            status:
+              const: 409
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_429:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - rate_limited
+            status:
+              const: 429
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_500:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - internal_server_error
+            status:
+              const: 500
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_503:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - service_unavailable
+            status:
+              const: 503
+          required:
+            - code
+            - status
+          additionalProperties: false
+    userObjectResponseCommon:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/idResponse'
+          description: The ID of the user.
+        object:
+          type: string
+          const: user
+          description: The user object type name.
+        name:
+          oneOf:
+            - type: string
+            - type: 'null'
+          description: The name of the user.
+        avatar_url:
+          oneOf:
+            - type: string
+            - type: 'null'
+          description: The avatar URL of the user.
+      additionalProperties: false
+      required:
+        - id
+        - object
+        - name
+        - avatar_url
+    personUserObjectResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          const: person
+          description: Indicates this user is a person.
+        person:
+          type: object
+          properties:
+            email:
+              type: string
+              description: The email of the person.
+          additionalProperties: false
+          description: Details about the person, when the `type` of the user is `person`.
+      required:
+        - type
+        - person
+      title: Person
+    botUserObjectResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          const: bot
+          description: Indicates this user is a bot.
+        bot:
+          oneOf:
+            - $ref: '#/components/schemas/emptyObject'
+            - $ref: '#/components/schemas/botInfoResponse'
+          description: Details about the bot, when the `type` of the user is `bot`.
+      required:
+        - type
+        - bot
+      title: Bot
+    publicApiCommonErrorResponse:
+      type: object
+      properties:
+        object:
+          const: error
+        message:
+          type: string
+        additional_data:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+      required:
+        - object
+        - message
+    idResponse:
+      type: string
+      format: uuid
+    botInfoResponse:
+      type: object
+      properties:
+        owner:
+          oneOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  const: user
+                  description: Always `user`
+                user:
+                  oneOf:
+                    - type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/idResponse'
+                          description: The ID of the user.
+                        object:
+                          type: string
+                          const: user
+                          description: The user object type name.
+                        name:
+                          oneOf:
+                            - type: string
+                            - type: 'null'
+                          description: The name of the user.
+                        avatar_url:
+                          oneOf:
+                            - type: string
+                            - type: 'null'
+                          description: The avatar URL of the user.
+                        type:
+                          type: string
+                          const: person
+                          description: The type of the user.
+                        person:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                              description: The email of the person.
+                          additionalProperties: false
+                          description: The person info of the user.
+                      additionalProperties: false
+                      required:
+                        - id
+                        - object
+                        - name
+                        - avatar_url
+                        - type
+                        - person
+                    - $ref: '#/components/schemas/partialUserObjectResponse'
+                  description: >-
+                    Details about the owner of the bot, when the `type` of the
+                    owner is `user`. This means the bot is for a integration.
+              additionalProperties: false
+              required:
+                - type
+                - user
+              title: User
+            - type: object
+              properties:
+                type:
+                  type: string
+                  const: workspace
+                  description: Always `workspace`
+                workspace:
+                  type: boolean
+                  const: true
+                  description: >-
+                    Details about the owner of the bot, when the `type` of the
+                    owner is `workspace`. This means the bot is for an internal
+                    integration.
+              additionalProperties: false
+              required:
+                - type
+                - workspace
+              title: Workspace
+          description: Details about the owner of the bot.
+        workspace_id:
+          type: string
+          description: The ID of the bot's workspace.
+        workspace_limits:
+          type: object
+          properties:
+            max_file_upload_size_in_bytes:
+              type: integer
+              minimum: 0
+              description: The maximum allowable size of a file upload, in bytes
+          additionalProperties: false
+          required:
+            - max_file_upload_size_in_bytes
+          description: Limits and restrictions that apply to the bot's workspace
+        workspace_name:
+          oneOf:
+            - type: string
+            - type: 'null'
+          description: The name of the bot's workspace.
+      additionalProperties: false
+      required:
+        - owner
+        - workspace_id
+        - workspace_limits
+        - workspace_name
+    partialUserObjectResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/idResponse'
+        object:
+          type: string
+          const: user
+          description: Always `user`
+      additionalProperties: false
+      required:
+        - id
+        - object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+````

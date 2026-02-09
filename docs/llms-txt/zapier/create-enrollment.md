@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/api-reference/promotions/create-enrollment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Promotion Enrollment
 
 > Enrolls an account into an existing promotion.
@@ -16,203 +20,248 @@ or [delete](https://docs.zapier.com/powered-by-zapier/api-reference/promotions/d
 
 This endpoint requires the `promotions:write` OAuth scope.
 
+This API is [rate limited](/powered-by-zapier/api-reference/rate-limiting).
+
+
 ## OpenAPI
 
 ````yaml powered-by-zapier/api-reference/promotions-openapi.yaml post /v2/promotions
+openapi: 3.1.0
+info:
+  title: Powered by Zapier Promotions API
+  version: promotions
+  description: >-
+    The API to define promotions, powered by Zapier. See
+    https://docs.zapier.com/powered-by-zapier/introduction for more information.
+  contact:
+    name: Partner Sharing
+servers:
+  - url: https://api.zapier.com
+    description: Production
+security: []
+tags:
+  - name: Promotions
+    description: Operations related to managing Promotions
+  - name: Experimental
+    description: >-
+      Operations that are not to be considered finalized, and are subject to
+      change
 paths:
-  path: /v2/promotions
-  method: post
-  servers:
-    - url: https://api.zapier.com
-      description: Production
-  request:
-    security:
-      - title: OAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: oauth2
+  /v2/promotions:
+    post:
+      tags:
+        - Promotions
+        - Experimental
+      summary: Create a promotion enrollment
+      description: >-
+        Enrolls an account into an existing promotion.
+
+
+        Endpoint available to Partners only.
+
+        The request must be authenticated by an [access
+        token](https://docs.zapier.com/powered-by-zapier/api-reference/authentication#retrieving-a-user-access-token)
+
+        that the user has granted to the Partner for the account.
+
+
+        The `enrollment_id`, returned after successfully enrolling a user,
+
+        **must** be stored by the partner in order to
+        [retrieve](https://docs.zapier.com/powered-by-zapier/api-reference/promotions/get-enrollment)
+
+        or
+        [delete](https://docs.zapier.com/powered-by-zapier/api-reference/promotions/delete-enrollment)
+        the enrollment.
+
+
+        #### OAuth
+
+
+        This endpoint requires the `promotions:write` OAuth scope.
+      operationId: root_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromotionEnrollment'
+            examples:
+              EnrollInAPromotion:
+                value:
+                  promotion_id: promo_12345
+                summary: Enroll in a promotion
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionEnrollmentResponse'
+          description: Successful Enrollment
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+              examples:
+                Access:
+                  value:
+                    errors:
+                      - status: '401'
+                        code: not_authenticated
+                        title: User Not Authenticated
+                        detail: >-
+                          User must be authenticated to access this resource. No
+                          valid user access token was provided.
+          description: >-
+            Access denied: User does not have permission for enrollment_id:
+            enroll_67890
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+              examples:
+                Forbidden:
+                  value:
+                    errors:
+                      - status: '403'
+                        code: permission_denied
+                        title: Permission Denied
+                        detail: You do not have permission to perform this action.
+          description: Forbidden - User lacks permission to access this location
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+              examples:
+                '404':
+                  value:
+                    errors:
+                      - status: '404'
+                        code: promotion_not_found
+                        title: Promotion Not Found
+                        detail: >-
+                          The requested promotion was not found. The specified
+                          promotion_id may be invalid.
+          description: 404 Not Found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+              examples:
+                Conflict:
+                  value:
+                    errors:
+                      - status: '409'
+                        code: already_enrolled
+                        title: Already Enrolled
+                        detail: >-
+                          The provided account is already enrolled in the
+                          specified promotion.
+          description: Conflict - User is already enrolled in this promotion
+        '429':
+          headers:
+            Retry-After:
+              schema:
+                type: string
+                format: uri
+              description: Indicates when to retry the request
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                format: uri
               description: >-
-                The user access token for the user you would like to enroll. See
-                our [OAuth2 authentication
-                documentation](https://docs.zapier.com/powered-by-zapier/api-reference/authentication#retrieving-a-user-access-token).
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              promotion_id:
-                allOf:
-                  - type: string
-                    description: The unique identifier for the promotions
-            required: true
-            refIdentifier: '#/components/schemas/PromotionEnrollment'
-            requiredProperties:
-              - promotion_id
-        examples:
-          EnrollInAPromotion:
-            summary: Enroll in a promotion
-            value:
-              promotion_id: promo_12345
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              enrollment_id:
-                allOf:
-                  - type: string
-                    description: >-
-                      The unique identifier for the enrollment. This must be
-                      stored by partners.
-            description: Successful Enrollment
-            refIdentifier: '#/components/schemas/PromotionEnrollmentResponse'
-            requiredProperties:
-              - enrollment_id
-        examples:
-          example:
-            value:
-              enrollment_id: <string>
-        description: Successful Enrollment
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - &ref_0
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/PromotionError'
-                    description: Errors encountered processing the request
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: &ref_1
-              - errors
-        examples:
-          Access:
-            value:
-              errors:
-                - status: '401'
-                  code: not_authenticated
-                  title: User Not Authenticated
-                  detail: >-
-                    User must be authenticated to access this resource. No valid
-                    user access token was provided.
-        description: >-
-          Access denied: User does not have permission for enrollment_id:
-          enroll_67890
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          Forbidden:
-            value:
-              errors:
-                - status: '403'
-                  code: permission_denied
-                  title: Permission Denied
-                  detail: You do not have permission to perform this action.
-        description: Forbidden - User lacks permission to access this location
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          '404':
-            value:
-              errors:
-                - status: '404'
-                  code: promotion_not_found
-                  title: Promotion Not Found
-                  detail: >-
-                    The requested promotion was not found. The specified
-                    promotion_id may be invalid.
-        description: 404 Not Found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          Conflict:
-            value:
-              errors:
-                - status: '409'
-                  code: already_enrolled
-                  title: Already Enrolled
-                  detail: >-
-                    The provided account is already enrolled in the specified
-                    promotion.
-        description: Conflict - User is already enrolled in this promotion
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              errors:
-                - status: <string>
-                  code: <string>
-                  title: <string>
-                  detail: <string>
-        description: ''
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/PromotionErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              errors:
-                - status: <string>
-                  code: <string>
-                  title: <string>
-                  detail: <string>
-        description: ''
-  deprecated: false
-  type: path
+                The maximum number of requests you're permitted to make per
+                hour.
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                format: uri
+              description: >-
+                The number of requests remaining in the current rate limit
+                window.
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                format: uri
+              description: >-
+                The time at which the current rate limit window resets in UTC
+                epoch seconds.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+          description: ''
+        '503':
+          headers:
+            Retry-After:
+              schema:
+                type: string
+                format: uri
+              description: Indicates when to retry the request
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                format: uri
+              description: >-
+                The maximum number of requests you're permitted to make per
+                hour.
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                format: uri
+              description: >-
+                The number of requests remaining in the current rate limit
+                window.
+            X-RateLimit-Reset:
+              schema:
+                type: string
+                format: uri
+              description: >-
+                The time at which the current rate limit window resets in UTC
+                epoch seconds.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionErrorResponse'
+          description: ''
+      security:
+        - OAuth:
+            - promotions:write
 components:
   schemas:
+    PromotionEnrollment:
+      type: object
+      properties:
+        promotion_id:
+          type: string
+          description: The unique identifier for the promotions
+      required:
+        - promotion_id
+    PromotionEnrollmentResponse:
+      type: object
+      description: Successful Enrollment
+      properties:
+        enrollment_id:
+          type: string
+          description: >-
+            The unique identifier for the enrollment. This must be stored by
+            partners.
+      required:
+        - enrollment_id
+    PromotionErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionError'
+          description: Errors encountered processing the request
+      required:
+        - errors
     PromotionError:
       type: object
       properties:
@@ -233,5 +282,24 @@ components:
         - detail
         - status
         - title
+  securitySchemes:
+    OAuth:
+      type: oauth2
+      description: >-
+        The user access token for the user you would like to enroll. See our
+        [OAuth2 authentication
+        documentation](https://docs.zapier.com/powered-by-zapier/api-reference/authentication#retrieving-a-user-access-token).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://zapier.com/oauth/authorize/
+          tokenUrl: https://zapier.com/oauth/token/
+          refreshUrl: https://zapier.com/oauth/token/
+          scopes:
+            promotions:write: Enroll or unenroll accounts into promotions
+            promotions:read: View usage of promotions you manage on an account
+        clientCredentials:
+          tokenUrl: /oauth/token
+          scopes:
+            promotions:write: Unenroll accounts from promotions
 
 ````

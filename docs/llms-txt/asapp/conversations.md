@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/conversations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Review Conversations
 
 > Review and analyze GenerativeAgent conversations to improve performance.
@@ -103,6 +107,22 @@ You can share a conversation with others by clicking the "Copy Link" button when
 </Frame>
 
 You can also share your current filtered view by copying the URL of your current page.
+
+### Playback a conversation
+
+You can play back a conversation to listen to how GenerativeAgent interacted with the customer over time.
+
+Conversation Playback is useful for understanding the flow of the conversation and how GenerativeAgent responded to different customer inputs.
+
+The Conversation Playback enables you to:
+
+* Play, pause, and navigate through the conversation timeline.
+* Skip forward or backward by 15 seconds.
+* Play the conversation at different speeds such as 1x, 1.5x, and 2x.
+
+<Frame>
+    <img src="https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=80bd40400d3c25cbacea115eec88da3e" alt="Conversation Playback" data-og-width="1538" width="1538" data-og-height="1208" height="1208" data-path="images/generativeagent/reporting/conversation-playback.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=280&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=1a27ccfa582279da338237adfb7acdff 280w, https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=560&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=905aa2523c7f8ff46e2a112c01aee13a 560w, https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=840&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=5ac00d3ba0b4356bc5680c32c04ee1eb 840w, https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=1100&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=cc156ba09e1962118e8fb81ebb6ef7db 1100w, https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=1650&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=b2877c0b3efd3c7675a1684f83d98f9c 1650w, https://mintcdn.com/asapp/CkcqmGOpg4cxp1hC/images/generativeagent/reporting/conversation-playback.png?w=2500&fit=max&auto=format&n=CkcqmGOpg4cxp1hC&q=85&s=0abbe1e794eb4d528e1a1545dd3bf405 2500w" />
+</Frame>
 
 ## Analyze Model Actions
 

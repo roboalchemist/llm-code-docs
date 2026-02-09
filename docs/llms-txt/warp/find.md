@@ -34,4 +34,4 @@ Since command outputs are contained within Blocks, you can still use the input e
 
 ## How it works
 
-![Find](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-ae6ed470ebb4a9eb546165e6d92267a8098734a5%2Ffind.gif?alt=media\&token=75702056-0574-4056-bee3-604edda497fc)
+![Find](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-ae6ed470ebb4a9eb546165e6d92267a8098734a5%2Ffind.gif?alt=media)

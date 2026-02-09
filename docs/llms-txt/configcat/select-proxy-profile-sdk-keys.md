@@ -2,10 +2,7 @@
 
 # Select SDK keys
 
-```
-POST 
-/v1/proxy-profiles/:proxyProfileId/sdk-keys/select
-```
+Copy page
 
 This endpoint adds the given list of Config / Environment pairs' SDK Keys to a Proxy Profile identified by the `proxyProfileId`.
 

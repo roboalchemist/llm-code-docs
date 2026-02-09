@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/reranking/answerdotai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Answer.AI Rerankers
 
 > Use AnswerDotAI's lightweight reranking library with LanceDB. Features unified API for common reranking models, configurable model selection, and comprehensive scoring options.
@@ -25,7 +29,7 @@ This integration uses [AnswersDotAI's rerankers](https://github.com/AnswerDotAI/
 | `model_type`   | `str` | `"colbert"`                               | The type of model to use. Supported model types can be found here: [https://github.com/AnswerDotAI/rerankers](https://github.com/AnswerDotAI/rerankers).                                                                                      |
 | `model_name`   | `str` | `"answerdotai/answerai-colbert-small-v1"` | The name of the reranker model to use.                                                                                                                                                                                                        |
 | `column`       | `str` | `"text"`                                  | The name of the column to use as input to the cross encoder model.                                                                                                                                                                            |
-| `return_score` | str   | `"relevance"`                             | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all" is supported, will return relevance score along with the vector and/or fts scores depending on query type. |
+| `return_score` | `str` | `"relevance"`                             | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all" is supported, will return relevance score along with the vector and/or fts scores depending on query type. |
 
 ## Supported Scores for each query type
 
@@ -51,8 +55,3 @@ You can specify the type of scores you want the reranker to return. The followin
 | -------------- | ----------- | ----------------------------------------------------------------------------- |
 | `relevance`    | ✅ Supported | Results only have the `_relevance_score` column.                              |
 | `all`          | ✅ Supported | Results have FTS(`score`) along with Hybrid Search score(`_relevance_score`). |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

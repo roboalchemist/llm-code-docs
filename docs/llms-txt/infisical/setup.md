@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/getting-started/setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup
 
 > This guide provides a step-by-step walkthrough for configuring Infisical's Privileged Access Management (PAM). Learn how to deploy a gateway, define resources, and grant your team secure, audited access to critical infrastructure.
@@ -37,8 +41,3 @@ The following steps will guide you through the entire setup process, from deploy
     Users can now use the Infisical CLI to securely connect to the resource using the defined accounts, with full auditing and session recording enabled.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

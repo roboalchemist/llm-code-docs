@@ -9,6 +9,18 @@ url: /pkg.md
 
 ## Packages
 
+- [aichat](/pkg/aichat): Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal
+- [catai](/pkg/catai): Chat UI and Local API for the Llama models
+- [chatblade](/pkg/chatblade): Chatblade is a versatile command-line interface (CLI) tool designed to interact with OpenAI's ChatGPT.
+- [gpt-engineer](/pkg/gpt-engineer): gpt-engineer is a commercial project that automatically generates web applications by interacting with AI through natural language
+- [gptscript](/pkg/gptscript): a new scripting language to automate your interaction with a Large Language Model (LLM), namely OpenAI
+- [gptui](/pkg/gptui): A GPT conversational TUI tool that runs within the terminal
+- [how2](/pkg/how2): Use an external AI server to find the best unix command line suggestions
+- [huggingface](/pkg/huggingface): Client library to download and publish models, datasets and other repos on the huggingface.co hub
+- [llm](/pkg/llm): Access large language models from the command-line
+- [open-interpreter](/pkg/open-interpreter): An open-source, locally running implementation of OpenAI's Code Interpreter
+- [whispercpp](/pkg/whispercpp): Port of OpenAI's Whisper model in C/C++
+- [chatgpt](/pkg/chatgpt): Command line interface for ChatGPT
 - [procs](/pkg/procs): An alternative to the `ps` command, providing a concise and intuitive way to view and manage processes in the system
 - [gotop](/pkg/gotop): Terminal based graphical interface monitor
 - [glances](/pkg/glances): A cross-platform curses-based monitoring tool
@@ -23,18 +35,6 @@ url: /pkg.md
 - [ismc](/pkg/ismc): an Apple System Management Controller (SMC) CLI tool can decode and display temperature, fans, battery, power, voltage and current information
 - [viddy](/pkg/viddy): Modern watch command
 - [sampler](/pkg/sampler): A tool for shell commands execution, visualization and alerting
-- [aichat](/pkg/aichat): Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal
-- [catai](/pkg/catai): Chat UI and Local API for the Llama models
-- [chatblade](/pkg/chatblade): Chatblade is a versatile command-line interface (CLI) tool designed to interact with OpenAI's ChatGPT.
-- [gpt-engineer](/pkg/gpt-engineer): gpt-engineer is a commercial project that automatically generates web applications by interacting with AI through natural language
-- [gptscript](/pkg/gptscript): a new scripting language to automate your interaction with a Large Language Model (LLM), namely OpenAI
-- [gptui](/pkg/gptui): A GPT conversational TUI tool that runs within the terminal
-- [how2](/pkg/how2): Use an external AI server to find the best unix command line suggestions
-- [huggingface](/pkg/huggingface): Client library to download and publish models, datasets and other repos on the huggingface.co hub
-- [llm](/pkg/llm): Access large language models from the command-line
-- [open-interpreter](/pkg/open-interpreter): An open-source, locally running implementation of OpenAI's Code Interpreter
-- [whispercpp](/pkg/whispercpp): Port of OpenAI's Whisper model in C/C++
-- [chatgpt](/pkg/chatgpt): Command line interface for ChatGPT
 - [xlsxsql](/pkg/xlsxsql): A CLI tool that executes SQL queries on various files including xlsx files and outputs the results to various files
 - [sd](/pkg/sd): sd is an intuitive find & replace CLI
 - [pandoc](/pkg/pandoc): An open-source document conversion tool that supports converting multiple document formats to each other, including Markdown, HTML, PDF, DOCX, and more

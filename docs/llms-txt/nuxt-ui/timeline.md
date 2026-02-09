@@ -10,7 +10,9 @@ Use the Timeline component to display a list of items in a timeline.
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { TimelineItem } from '@nuxt/ui'
+
+const items = ref<TimelineItem[]>([
   {
     date: 'Mar 15, 2025',
     title: 'Project Kickoff',
@@ -262,7 +264,7 @@ const items = ref<TimelineItem[]>([
 
 ### Control active item
 
-You can control the active item by using the `default-value` prop or the `v-model` directive with the index of the item.
+You can control the active item by using the `default-value` prop or the `v-model` directive with the `value` of the item. If no `value` is provided, it defaults to the index.
 
 ```vue [TimelineModelValueExample.vue]
 <script setup lang="ts">
@@ -309,11 +311,64 @@ onMounted(() => {
 </template>
 ```
 
-<tip>
+> [!TIP]
+> Use the `value-key` prop to change the key used to match items when a `v-model` or `default-value` is provided.
 
-You can also pass the `value` of one of the items if provided.
+### With select event
 
-</tip>
+You can add a `@select` listener to make items clickable.
+
+> [!NOTE]
+> The handler function receives the `Event` and `TimelineItem` as the first and second arguments respectively.
+
+```vue [TimelineSelectExample.vue]
+<script setup lang="ts">
+import type { TimelineItem } from '@nuxt/ui'
+
+const items: TimelineItem[] = [{
+  date: 'Mar 15, 2025',
+  title: 'Project Kickoff',
+  description: 'Kicked off the project with team alignment. Set up project milestones and allocated resources.',
+  icon: 'i-lucide-rocket',
+  value: 'kickoff'
+}, {
+  date: 'Mar 22, 2025',
+  title: 'Design Phase',
+  description: 'User research and design workshops. Created wireframes and prototypes for user testing.',
+  icon: 'i-lucide-palette',
+  value: 'design'
+}, {
+  date: 'Mar 29, 2025',
+  title: 'Development Sprint',
+  description: 'Frontend and backend development. Implemented core features and integrated with APIs.',
+  icon: 'i-lucide-code',
+  value: 'development'
+}, {
+  date: 'Apr 5, 2025',
+  title: 'Testing & Deployment',
+  description: 'QA testing and performance optimization. Deployed the application to production.',
+  icon: 'i-lucide-check-circle',
+  value: 'deployment'
+}]
+
+const active = ref<string | number>('kickoff')
+
+function onSelect(_e: Event, item: TimelineItem) {
+  if (item.value) {
+    active.value = item.value
+  }
+}
+</script>
+
+<template>
+  <UTimeline
+    v-model="active"
+    :items="items"
+    class="w-96"
+    @select="onSelect"
+  />
+</template>
+```
 
 ### With alternating layout
 
@@ -498,7 +553,7 @@ const items = [{
  * Props for the Timeline component
  */
 interface TimelineProps {
-  items: TimelineItem[];
+  items: T[];
   /**
    * The element or component this component should render as.
    */
@@ -510,6 +565,11 @@ interface TimelineProps {
    * @default "\"vertical\""
    */
   orientation?: "horizontal" | "vertical" | undefined;
+  /**
+   * The key used to get the value from the item.
+   * @default "\"value\""
+   */
+  valueKey?: GetItemKeys<T> | undefined;
   defaultValue?: string | number | undefined;
   reverse?: boolean | undefined;
   ui?: { root?: ClassNameValue; item?: ClassNameValue; container?: ClassNameValue; indicator?: ClassNameValue; separator?: ClassNameValue; wrapper?: ClassNameValue; date?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; } | undefined;
@@ -525,6 +585,7 @@ interface TimelineProps {
  */
 interface TimelineSlots {
   indicator(): any;
+  wrapper(): any;
   date(): any;
   title(): any;
   description(): any;
@@ -538,6 +599,7 @@ interface TimelineSlots {
  * Emitted events for the Timeline component
  */
 interface TimelineEmits {
+  select: (payload: [event: Event, item: T]) => void;
   update:modelValue: (payload: [value: string | number | undefined]) => void;
 }
 ```
@@ -847,8 +909,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

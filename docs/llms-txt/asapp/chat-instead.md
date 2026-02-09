@@ -1,8 +1,12 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/chat-instead.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat Instead Overview
 
-Chat Instead is a feature that allows you to prompt customers to chat instead of calling. When customer volume shifts from calls to chat, this reduces costs and improves the customer experience.
+Chat Instead is a feature that prompts customers to chat instead of calling. When customer volume shifts from calls to chat, this reduces costs and improves the customer experience.
 
 You can use any ASAPP SDK to display a menu when a customer taps on a phone number to give them the option to Chat Instead or to call.
 

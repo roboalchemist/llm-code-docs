@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/embed-inline-images.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embed Inline Images
 
 > Send emails with inline images.
@@ -15,25 +19,13 @@ You can optionally embed an image in the HTML body of the email. This allows you
   <Step title="Add the CID in the email HTML.">
     Use the prefix `cid:` to reference the ID in the `src` attribute of an image tag in the HTML body of the email.
 
-    ```html  theme={null}
+    ```html  theme={"theme":{"light":"github-light","dark":"vesper"}}
       <img src="cid:logo-image">
     ```
   </Step>
 
-  <Step title="Reference the CID in the attachment">
-    Include the `content_id` parameter in the attachment object (e.g. `content_id: "logo-image"`).
-
-    ```bash  theme={null}
-    "attachments": [
-        {
-          "path": "https://resend.com/static/sample/logo.png",
-          "filename": "logo.png",
-          "content_id": "logo-image"
-        }
-      ]
-    ```
-
-    The ID is an arbitrary string set by you, and must be less than 128 characters.
+  <Step title="Reference the CID in the attachment.">
+    Include the content id parameter in the attachment object (see below for example implementations). The ID is an arbitrary string set by you, and must be less than 128 characters.
   </Step>
 </Steps>
 
@@ -46,7 +38,7 @@ As with all our features, inline images are available across all our SDKs.
 ### Remote image example
 
 <CodeGroup>
-  ```ts Node.js {9, 14} theme={null}
+  ```ts Node.js {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -66,7 +58,7 @@ As with all our features, inline images are available across all our SDKs.
   });
   ```
 
-  ```php PHP {7,12} theme={null}
+  ```php PHP {7,12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -84,7 +76,7 @@ As with all our features, inline images are available across all our SDKs.
   ]);
   ```
 
-  ```python Python {8,15} theme={null}
+  ```python Python {8,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -106,7 +98,7 @@ As with all our features, inline images are available across all our SDKs.
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {9, 14} theme={null}
+  ```rb Ruby {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -128,7 +120,7 @@ As with all our features, inline images are available across all our SDKs.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {14, 21} theme={null}
+  ```go Go {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
 
@@ -162,7 +154,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```rust Rust {14, 17} theme={null}
+  ```rust Rust {14, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
   use resend_rs::{Resend, Result};
 
@@ -192,7 +184,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```java Java {10, 17} theme={null}
+  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -218,7 +210,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```csharp .NET {11, 18} theme={null}
+  ```csharp .NET {11, 18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
 
@@ -243,7 +235,7 @@ As with all our features, inline images are available across all our SDKs.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {8,13} theme={null}
+  ```bash cURL {8,13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -266,7 +258,7 @@ As with all our features, inline images are available across all our SDKs.
 ### Local image example
 
 <CodeGroup>
-  ```ts Node.js {13, 18} theme={null}
+  ```ts Node.js {13, 18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
   import fs from 'fs';
 
@@ -290,7 +282,7 @@ As with all our features, inline images are available across all our SDKs.
   });
   ```
 
-  ```php PHP {7, 12} theme={null}
+  ```php PHP {7, 12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -308,7 +300,7 @@ As with all our features, inline images are available across all our SDKs.
   ]);
   ```
 
-  ```python Python {10, 16} theme={null}
+  ```python Python {10, 16} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import os
   import resend
 
@@ -331,7 +323,7 @@ As with all our features, inline images are available across all our SDKs.
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {11,16} theme={null}
+  ```rb Ruby {11,16} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -355,7 +347,7 @@ As with all our features, inline images are available across all our SDKs.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {21, 28} theme={null}
+  ```go Go {21, 28} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
   	"os"
@@ -396,7 +388,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```rust Rust {16,22} theme={null}
+  ```rust Rust {16,22} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use std::fs::File;
   use std::io::Read;
 
@@ -431,7 +423,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```java Java {10, 17} theme={null}
+  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -457,7 +449,7 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```csharp .NET {12, 19} theme={null}
+  ```csharp .NET {12, 19} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
   using System.IO;
@@ -483,7 +475,7 @@ As with all our features, inline images are available across all our SDKs.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {8, 13} theme={null}
+  ```bash cURL {8, 13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \

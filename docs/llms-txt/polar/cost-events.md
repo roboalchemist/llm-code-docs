@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/cost-insights/cost-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cost Events
 
 > Track costs by adding cost metadata to your ingested events
@@ -12,7 +16,7 @@ Cost Insights works by allowing you to add a special `_cost` property to any eve
 
 To track costs, add a `_cost` property to your event's metadata when ingesting events.
 
-```typescript TypeScript (SDK) theme={null}
+```typescript icon="square-js" TypeScript (SDK) theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({
@@ -81,7 +85,7 @@ The `_cost` property has the following structure:
 
 Track the cost of LLM API calls per customer:
 
-```typescript TypeScript theme={null}
+```typescript icon="square-js" TypeScript theme={null}
 import { Polar } from "@polar-sh/sdk";
 import OpenAI from "openai";
 
@@ -180,7 +184,7 @@ Track costs from external services:
 
 Ingest cost events as they occur to maintain accurate, up-to-date metrics:
 
-```typescript TypeScript theme={null}
+```typescript icon="square-js" TypeScript theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({

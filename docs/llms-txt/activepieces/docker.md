@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/options/docker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker
 
 > Single docker image deployment with SQLite3 and Memory Queue
@@ -39,7 +43,7 @@ ngrok http 8080
 
 3. Replace `AP_FRONTEND_URL` environment variable in the command line above.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=85cc8d40c4ad2ede8e8ad83fcb6e6b42" alt="Ngrok" data-og-width="961" width="961" data-og-height="509" height="509" data-path="resources/screenshots/docker-ngrok.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3c787f690f4700e8d2ac0115b86554e5 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ce675bfcc849cfe97d79fe6defdb69bc 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d5f1a1530820f43048b1d6110bb88d50 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0d917892d782b38aaabcd94d2d3b0c09 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ff5dfdbbed7b1b24ec65fe48e826ad20 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=09c2e4f0aacdcc60602ed8f3137e908d 2500w" />
+<img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=582a33f970c20feee557523172997ad0" alt="Ngrok" data-og-width="961" width="961" data-og-height="509" height="509" data-path="resources/screenshots/docker-ngrok.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=bdf46af25beb6a2e92fceabbf9755f46 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=872495f39fcbed2420805f17c7f5edc6 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4468c89583767ece2a35dc51eabd8d3f 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=d512cbfe2c0689fcbf870ba7a3142fb4 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=ad59f73684040aa3f81488e50d5f6989 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/docker-ngrok.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=ddeb3188719649c6456e2d6efda05b7a 2500w" />
 
 ## Upgrade
 

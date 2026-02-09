@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/integrations/tools/xcode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Xcode Integration (AI Gateway)
 
 > Configure Xcode's Intelligence model provider to route through Helicone's AI Gateway for observability.

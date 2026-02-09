@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/sentence-transformers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sentence Transformers
 
 export const PyEmbeddingSentenceTransformersBaai = "import tempfile\nfrom pathlib import Path\n\nimport lancedb\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\n\ndb = lancedb.connect(str(Path(tempfile.mkdtemp()) / \"sentence-transformers\"))\nmodel = (\n    get_registry()\n    .get(\"sentence-transformers\")\n    .create(name=\"BAAI/bge-small-en-v1.5\", device=\"cpu\")\n)\n\nclass Words(LanceModel):\n    text: str = model.SourceField()\n    vector: Vector(model.ndims()) = model.VectorField()\n\ntable = db.create_table(\"words\", schema=Words)\ntable.add(\n    [\n        {\"text\": \"hello world\"},\n        {\"text\": \"goodbye world\"},\n    ]\n)\n\nquery = \"greetings\"\nactual = table.search(query).limit(1).to_pydantic(Words)[0]\nprint(actual.text)\n";
@@ -161,8 +165,3 @@ Allows you to set parameters when registering a `sentence-transformers` object.
 </Note>
 
 Visit sentence-transformers [HuggingFace HUB](https://huggingface.co/sentence-transformers) page for more information on the available models.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

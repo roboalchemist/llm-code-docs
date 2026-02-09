@@ -2,50 +2,50 @@
 
 # Integrate with Apify
 
-If you are building a service and your users could benefit from integrating with Apify or vice versa, we would love to hear from you! Contact us at mailto:integrations@apify.com to discuss potential collaboration. We are always looking for ways to make our platform more useful and powerful for our users.
+If you are building a service and your users could benefit from integrating with Apify or vice versa, we would love to hear from you! Contact us at [integrations@apify.com](mailto:integrations@apify.com) to discuss potential collaboration. We are always looking for ways to make our platform more useful and powerful for our users.
 
 ## Why integrate with Apify
 
 Apify is the leading platform for web scraping, AI agents, and automation tools. By integrating Apify into your platform, you enable users to incorporate real-time, structured data from the web with zero scraping infrastructure on your side.
 
-https://apify.com/store contains thousands of pre-built Actors, ready-made tools for web scraping and automation.
+[Apify Store](https://apify.com/store) contains thousands of pre-built Actors, ready-made tools for web scraping and automation.
 
 ## Integration types
 
-An Apify integration can be *general*, allowing users to integrate any Actor from Apify Store into their workflows (or their own Actors), or *Actor-specific*, enabling targeted automation like integrating https://apify.com/apify/instagram-scraper for use cases like social media monitoring.
+An Apify integration can be *general*, allowing users to integrate any Actor from Apify Store into their workflows (or their own Actors), or *Actor-specific*, enabling targeted automation like integrating [Instagram Scraper](https://apify.com/apify/instagram-scraper) for use cases like social media monitoring.
 
 ### General integrations
 
 General integrations allow users to integrate Actors into their workflows by connecting Apify with other platforms. Examples include:
 
-* https://docs.apify.com/platform/integrations/zapier.md integration allows Zapier users to enrich their automation workflows with data from the web or to add additional Actions performed by https://apify.com/store.
-* https://docs.apify.com/platform/integrations/keboola.md integration enables Keboola users to easily pull data crawled from the web into their data pipelines.
+* [Zapier](https://docs.apify.com/platform/integrations/zapier.md) integration allows Zapier users to enrich their automation workflows with data from the web or to add additional Actions performed by [Apify Actors](https://apify.com/store).
+* [Keboola](https://docs.apify.com/platform/integrations/keboola.md) integration enables Keboola users to easily pull data crawled from the web into their data pipelines.
 
 ### Actor-specific integrations
 
 Actor-specific integrations are designed for targeted use cases. While they work similarly to general integrations, they help users find the right Apify tools more easily and provide a better experience. Examples include:
 
-* https://www.make.com/en/integrations/apify-instagram-scraper
-* https://www.lindy.ai/integrations/instagram
+* [Make Instagram Scraper integration](https://www.make.com/en/integrations/apify-instagram-scraper)
+* [Lindy.ai Instagram integration](https://www.lindy.ai/integrations/instagram)
 
-For more examples both general and Actor-specific, check https://docs.apify.com/platform/integrations.md.
+For more examples both general and Actor-specific, check [integrations](https://docs.apify.com/platform/integrations.md).
 
 ## Integrating with Apify
 
 To integrate your service with Apify, you have two options:
 
-* Build an external integration using the https://docs.apify.com/api/v2
-* Build an https://docs.apify.com/platform/actors that will be used as integration within https://console.apify.com
+* Build an external integration using the [Apify API](https://docs.apify.com/api/v2)
+* Build an [Apify Actor](https://docs.apify.com/platform/actors) that will be used as integration within [Apify Console](https://console.apify.com)
 
 ![Integration-ready Actors](/assets/images/integration-ready-actors-3f9c1f9b61abf5dd4157f050cf2cb3d8.png)
 
 ### Building an integration Actor
 
-One way to reach out to Apify users is directly within https://console.apify.com. To do that, you need to build an integrable Actor that can be piped into other Actors to upload existing data into a database. This can then be easily configured within Apify Console. Follow the https://docs.apify.com/platform/integrations/actors/integration-ready-actors.md.
+One way to reach out to Apify users is directly within [Apify Console](https://console.apify.com). To do that, you need to build an integrable Actor that can be piped into other Actors to upload existing data into a database. This can then be easily configured within Apify Console. Follow the [guide on building integration-ready Actors](https://docs.apify.com/platform/integrations/actors/integration-ready-actors.md).
 
 ### Building an external integration
 
-An alternative way is to let your users manage the connection directly on your side using https://docs.apify.com/api/v2 and our API clients for https://docs.apify.com/api/client/js or https://docs.apify.com/api/client/python. This way, users can manage the connection directly from your service.
+An alternative way is to let your users manage the connection directly on your side using [Apify API](https://docs.apify.com/api/v2) and our API clients for [JavaScript](https://docs.apify.com/api/client/js) or [Python](https://docs.apify.com/api/client/python). This way, users can manage the connection directly from your service.
 
 ![Airbyte sources tab](/assets/images/airbyte-sources-web-120a4cf11b196f4dbfb01659d156f0a9.png)
 
@@ -55,7 +55,7 @@ Apify supports two main authentication methods for secure API access.
 
 *OAuth 2.0* - Use OAuth 2.0 to allow users to authorize your integration without sharing their credentials.
 
-*API token* - Apify user generates personal API token from Apify account settings page. For more information, see https://docs.apify.com/platform/integrations/api#api-token.
+*API token* - Apify user generates personal API token from Apify account settings page. For more information, see [API Token documentation](https://docs.apify.com/platform/integrations/api#api-token).
 
 ### API implementation
 
@@ -69,10 +69,10 @@ Triggers the execution of any Apify Actor by ID, allowing users to start custom 
 
 Recommended features:
 
-* Select Actor: The Actor list will be pre-populated with Actors that the user created or used, using the https://docs.apify.com/api/v2/acts-get and enriched with Actors from the store, which the user has not run already using https://docs.apify.com/api/v2/store-get.
+* Select Actor: The Actor list will be pre-populated with Actors that the user created or used, using the [List of Actors API](https://docs.apify.com/api/v2/acts-get) and enriched with Actors from the store, which the user has not run already using [API](https://docs.apify.com/api/v2/store-get).
 * Synchronous vs. asynchronous run: flow will wait until the run/task finishes (consider a timeout on your platform side)
 * Input UI: upon selecting an Actor, dynamically display specific Actor input and preload default example values based on the Actor Input schema. Alternatively, allow users to insert a JSON input for the Actor.
-* Additionally, it should include the option to choose https://docs.apify.com/platform/actors/running/runs-and-builds, https://docs.apify.com/platform/actors/running/usage-and-resources#memory, and https://docs.apify.com/platform/actors/running/usage-and-resources#memory.
+* Additionally, it should include the option to choose [Actor build](https://docs.apify.com/platform/actors/running/runs-and-builds), [memory](https://docs.apify.com/platform/actors/running/usage-and-resources#memory), and [timeout](https://docs.apify.com/platform/actors/running/usage-and-resources#memory).
 * Field mapping: allowing users to map fields to data acquired in previous steps of the workflow.
 
 ##### Run a task
@@ -81,7 +81,7 @@ Starts a predefined task (a saved Actor configuration), making it easy for users
 
 Recommended features:
 
-* *Select task*: The task list will be pre-populated with tasks that the user created, using the https://docs.apify.com/api/v2/actor-tasks-get API.
+* *Select task*: The task list will be pre-populated with tasks that the user created, using the [List of tasks](https://docs.apify.com/api/v2/actor-tasks-get) API.
 * *Synchronous vs. asynchronous run*: the flow will wait until the run/task finishes (considering timeout on your platform side)
 * *JSON input field*: possibility to add a JSON input to override the task input.
 
@@ -91,7 +91,7 @@ Fetches structured results (JSON, CSV, etc.) generated by a previously run Actor
 
 Recommended features:
 
-* *Dataset*: Dropdown (user's datasets) or ID/String input. Populated via https://docs.apify.com/api/v2/datasets-get.
+* *Dataset*: Dropdown (user's datasets) or ID/String input. Populated via [Datasets API](https://docs.apify.com/api/v2/datasets-get).
 * *Limit (optional)*: The maximum number of dataset items to fetch. If empty, the default limit will be used.
 * *Offset (optional)*: The offset in the dataset from where to start fetching the items. If empty, it will be from the beginning.
 
@@ -101,12 +101,12 @@ Retrieves a specific item from a key-value store, commonly used to access metada
 
 Recommended features:
 
-* *Key-value store*: Dropdown (user's KV stores) or ID/String input. Populated via https://docs.apify.com/api/v2/key-value-stores-get.
+* *Key-value store*: Dropdown (user's KV stores) or ID/String input. Populated via [Key-value Stores API](https://docs.apify.com/api/v2/key-value-stores-get).
 * *Record key*: value (string)
 
 ##### Scrape a single URL
 
-Runs Apify's https://apify.com/apify/website-content-crawler in synchronous mode to extract structured data from a single web page - ideal for on-demand URL scraping inside agents or automation flows.
+Runs Apify's [Website Content Crawler](https://apify.com/apify/website-content-crawler) in synchronous mode to extract structured data from a single web page - ideal for on-demand URL scraping inside agents or automation flows.
 
 Recommended features:
 
@@ -132,7 +132,7 @@ Monitors the status of an Actor run by ID, useful for triggering follow-up steps
 
 Recommended features:
 
-* *Select Actor runs to watch*: Dropdown (list of user's Actors). Populated via https://docs.apify.com/api/v2/acts-get
+* *Select Actor runs to watch*: Dropdown (list of user's Actors). Populated via [List Actors API](https://docs.apify.com/api/v2/acts-get)
 
 ##### Watch task runs
 
@@ -140,7 +140,7 @@ Similar to watching Actor runs, this tracks the progress and completion status o
 
 Recommended features:
 
-* *Select Actor tasks to watch*: Dropdown (list of user's tasks). Populated via https://docs.apify.com/api/v2/actor-tasks-get.
+* *Select Actor tasks to watch*: Dropdown (list of user's tasks). Populated via [List tasks API](https://docs.apify.com/api/v2/actor-tasks-get).
 
 ### Pricing options
 
@@ -175,16 +175,16 @@ These identifiers enable better analytics and support for your integration.
 
 ### Apify API
 
-https://docs.apify.com/api provides an extensive REST API that covers all the features of the Apify platform. You can download the complete OpenAPI schema of Apify API in the https://docs.apify.com/api/openapi.yaml or https://docs.apify.com/api/openapi.json formats. Apify provides official libraries for JavaScript and Python to access API.
+[Apify API](https://docs.apify.com/api) provides an extensive REST API that covers all the features of the Apify platform. You can download the complete OpenAPI schema of Apify API in the [YAML](https://docs.apify.com/api/openapi.yaml) or [JSON](https://docs.apify.com/api/openapi.json) formats. Apify provides official libraries for JavaScript and Python to access API.
 
-* https://docs.apify.com/api/v2
+* [Apify API Reference](https://docs.apify.com/api/v2)
 
 * Client libraries
 
   <!-- -->
 
-  * https://docs.apify.com/api/client/js/
-  * https://docs.apify.com/api/client/python/
+  * [JavaScript/TypeScript/Node.js](https://docs.apify.com/api/client/js/)
+  * [Python](https://docs.apify.com/api/client/python/)
 
 ### Reference implementations
 
@@ -194,27 +194,34 @@ For inspiration, check out the public repositories of Apify's existing external 
 
   <!-- -->
 
-  * https://docs.apify.com/platform/integrations/zapier
-  * https://github.com/apify/apify-zapier-integration
+  * [Zapier integration documentation](https://docs.apify.com/platform/integrations/zapier)
+  * [Source code on Github](https://github.com/apify/apify-zapier-integration)
 
 * Make.com
   <!-- -->
-  * https://docs.apify.com/platform/integrations/make
+  * [Make.com integration documentation](https://docs.apify.com/platform/integrations/make)
+
+* Kestra
+
+  <!-- -->
+
+  * [Kestra integration documentation](https://kestra.io/plugins/plugin-apify)
+  * [Source code on Github](https://github.com/kestra-io/plugin-apify)
 
 * Keboola
 
   <!-- -->
 
-  * https://docs.apify.com/platform/integrations/keboola
-  * https://github.com/apify/keboola-ex-apify/ (JavaScript)
-  * https://github.com/apify/keboola-gmrs/ (Actor-specific)
+  * [Keboola integration documentation](https://docs.apify.com/platform/integrations/keboola)
+  * [Source code on GitHub](https://github.com/apify/keboola-ex-apify/) (JavaScript)
+  * [Google Maps Reviews Scraper integration](https://github.com/apify/keboola-gmrs/) (Actor-specific)
 
 * Airbyte
   <!-- -->
-  * https://github.com/airbytehq/airbyte/tree/master/airbyte-integrations/connectors/source-apify-dataset (Python)
+  * [Source code on GitHub](https://github.com/airbytehq/airbyte/tree/master/airbyte-integrations/connectors/source-apify-dataset) (Python)
 
 * Pipedream
   <!-- -->
-  * https://github.com/PipedreamHQ/pipedream/tree/65e79d1d66cf0f2fca5ad20a18acd001f5eea069/components/apify
+  * [Source code on GitHub](https://github.com/PipedreamHQ/pipedream/tree/65e79d1d66cf0f2fca5ad20a18acd001f5eea069/components/apify)
 
-For technical support, please contact us at mailto:integrations@apify.com.
+For technical support, please contact us at [integrations@apify.com](mailto:integrations@apify.com).

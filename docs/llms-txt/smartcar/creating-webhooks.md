@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/creating-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creating Webhooks
 
 > Step-by-step guide to creating and configuring webhook integrations in the Smartcar Dashboard
@@ -83,8 +87,3 @@ After creating your webhook, you'll need to subscribe vehicles to start receivin
     Understand retry policies and delivery guarantees
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

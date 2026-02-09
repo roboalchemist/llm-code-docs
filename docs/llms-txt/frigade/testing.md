@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/advanced/testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automated Testing
 
 > Learn how to run unit and integration tests with your Frigade Flows
@@ -14,7 +18,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     Before running your tests, you will likely want to reset this user in Frigade. This can be done by making the following API request using your private API key in the Developer environment (see [API docs](/api-reference/users/users-delete) for more information):
 
-    ```javascript
+    ```javascript  theme={"system"}
     function resetTestUser() {
       fetch('https://api.frigade.com/v1/users?foreignId=my-test-user-id', {
         method: 'DELETE',
@@ -28,7 +32,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     With this in hand, you can add a `beforeAll` to reset the test user before and after running your tests.
 
-    ```javascript
+    ```javascript  theme={"system"}
     beforeAll(() => {
       resetTestUser();
     });
@@ -40,7 +44,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     In this example, we will use Playwright. This test presses the primary button with the text "Got it" in a `Frigade.Announcement` and ensures that the modal is closed.
 
-    ```javascript
+    ```javascript  theme={"system"}
     const { test, expect } = require('@playwright/test');
 
     test('close announcement', async ({ page }) => {
@@ -56,7 +60,7 @@ Unlike no-code tools, Frigade allows you to easily write automated tests for you
 
     Methods such as `flow.complete()` or `step.complete()` support an optional `createdAt` parameter that can simulate the time of completion, too.
 
-    ```javascript
+    ```javascript  theme={"system"}
     import { Frigade } from '@frigade/js'
 
     test('Flow is visible after completing other Flow', async () => {

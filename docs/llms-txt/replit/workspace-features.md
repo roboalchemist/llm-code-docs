@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/workspace-features.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workspace Features
 
 > The Replit workspace features are a comprehensive set of tools that power your app creation experience.

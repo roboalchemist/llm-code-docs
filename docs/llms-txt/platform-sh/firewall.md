@@ -26,7 +26,7 @@ The default settings would look like this:
 ```yaml {}
 applications:
   <APP_NAME>:
-    type: 'python:3.13'
+    type: 'python:3.14'
     source:
       root: "/"
     firewall:
@@ -43,7 +43,7 @@ applications:
     source:
       root: "/"
     stack: 
-      runtimes: [ "python@3.13" ]
+      runtimes: [ "python@3.14" ]
     firewall:
       outbound:
         - ips: [ "0.0.0.0/0" ]
@@ -64,7 +64,7 @@ and requests to 1.2.3.4 on either port 80 or 443 are allowed:
 ```yaml {}
 applications:
   <APP_NAME>:
-    type: 'python:3.13'
+    type: 'python:3.14'
     source:
       root: "/"
     firewall:
@@ -83,7 +83,7 @@ applications:
     source:
       root: "/"
     stack: 
-      runtimes: [ "python@3.13" ]
+      runtimes: [ "python@3.14" ]
     firewall:
       outbound:
         - ips: [ "1.2.3.4/32" ]
@@ -112,7 +112,7 @@ An example rule filtering by domain:
 ```yaml {}
 applications:
   <APP_NAME>:
-    type: 'python:3.13'
+    type: 'python:3.14'
     source:
       root: "/"
     firewall:
@@ -134,7 +134,7 @@ applications:
     source:
       root: "/"
     stack: 
-      runtimes: [ "python@3.13" ]
+      runtimes: [ "python@3.14" ]
     firewall:
       outbound:
         - protocol: tcp

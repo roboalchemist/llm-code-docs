@@ -1,8 +1,27 @@
 # Source: https://smartcar.com/docs/help/frequencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Freshness Frequencies
 
 > Smartcar's goal is to provide as close to real-time data as possible based on available technologies and capabilities from OEMs. Although real-time is not yet available across all OEMs outside of commercial fleets, Smartcar continues to improve these frequencies as platforms and technologies evolve.
+
+## Understanding Real Vehicle Data Freshness Frequencies
+
+At Smartcar, we are committed to transparency about our data. When we report data freshness, we're referring to actual data retrieved directly from vehicles, not cached information. Cached data can be returned instantly.
+
+### What Does The Table Data Mean
+
+* **True Vehicle Freshness**: A frequency range of 30 minutes means how often the vehicle can safely provide new data without side effects. Even if we attempt to fetch it every 5 seconds, the data won't change for 30 minutes.
+* **Data Delivery**: Rather than polling our API to determine when the data has changed, create a [Webhook](/integrations/webhooks/overview) and Smartcar will send you data as frequently as it changes. It provides both the convenience of immediate notifications AND the reliability of truly fresh vehicle data.
+
+### Why This Matters
+
+**Honest Reporting**: We publish actual vehicle data freshness rates rather than platform latency rates that can be misleading. Developers need to understand the true age of the data they're receiving to build reliable applications. When you come across promises of data "every minute" for a brand we show as 30 minutes, this often means you're repeatedly receiving the same cached information at that frequency, not retrieving fresh data from the vehicle.
+
+***
 
 <Note>
   The values below indicate a range of how quickly you can expect to see fresh data and not how frequent you can receive data from Smartcar. i.e. You may request/receive odometer every three minutes from Smartcar, but its value won't change until it is refreshed by the OEM.
@@ -53,7 +72,7 @@ Smartcar automatically adjusts polling frequency based on vehicle status to bala
 | RAM           | Global     | 5-10                          |
 | RENAULT       | Europe     | 30-60                         |
 | RIVIAN        | Global     | 3-5                           |
-| SKODA         | Europe     | 5                             |
+| SKODA         | Europe     | 30-60                         |
 | SUBARU        | US         | 5-10                          |
 | TESLA\*       | Global     | 1 sec - 5 min                 |
 | TOYOTA        | US         | 30-60                         |

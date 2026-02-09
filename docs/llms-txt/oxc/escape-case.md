@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/escape-case.md
 ---
-# unicorn/escape-case&#x20;
 
 ### What it does
 

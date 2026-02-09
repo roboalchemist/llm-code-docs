@@ -15,6 +15,5240 @@ For a sitemap overview, see: https://alexop.dev/llms.txt
 # BLOG POSTS
 ================================================================================
 
+--- title: Spec-Driven Development with Claude Code in Action description: A practical workflow for tackling large refactors with Claude Code using parallel research subagents, written specs, and the new task system for context-efficient implementation. tags: ['claude-code', 'ai', 'local-first', 'architecture'] url: https://alexop.dev/posts/spec-driven-development-claude-code-in-action ---
+
+# Spec-Driven Development with Claude Code in Action
+
+
+
+I'm building a [simplified sync engine from scratch](https://github.com/alexanderop/nuxt-sync-engine) using Nuxt 4.
+My approach: study how production-grade frameworks solve the hard problems, then implement a minimal version myself.
+
+[Jazz](https://jazz.tools) is my primary reference a local-first framework with elegant patterns for persistence, conflict resolution, and cross-tab sync. Rather than reading through their codebase manually, 
+I use Claude Code to research, extract patterns, and help me implement them.
+
+This post documents the workflow I call **Spec-Driven Development with Claude Code** the exact prompts, tools, and patterns I used to migrate my storage layer from SQLite/WASM to IndexedDB in a single day.
+
+## The Problem
+
+My sync engine was using `sql.js` (SQLite compiled to WASM) for client-side storage. It worked, but had issues:
+- Large WASM bundle (~1MB)
+- Complex COOP/COEP header requirements
+- No native cross-tab sync
+
+I wanted to migrate to IndexedDB, borrowing patterns from Jazz. But this was a significant refactor touching 15+ files. (For background on <InternalLink slug="what-is-local-first-web-development">local-first web development</InternalLink> and why it matters, see my earlier post.)
+
+## The Workflow
+
+Instead of diving into code, I used Claude Code as an **AI development team**with myself as the product owner, Claude as the tech lead, and subagents as developers.
+
+Important: I also cloned the source code of Jazz into my Project so Claude could reference it during research and implementation.
+
+<Figure
+  src={specDrivenDevelopmentImg}
+  alt="Spec-Driven Development workflow: Research Phase with parallel subagents, Spec Creation with written document, Refine with Q&A interview pattern, and Implement with task-per-subagent"
+  caption="The four phases of Spec-Driven Development with Claude Code"
+/>
+
+## Phase 1: Research with Parallel Subagents
+
+### The Prompt
+
+<Prompt>
+you have access to jazz source repo explain to me how they use
+indexdb in the client to persist state our project is using sqlite
+but we want to change to indexdb with jazz your goal is to write
+a report spin up multiple subagents for your research task
+</Prompt>
+
+### What Happened
+
+Claude spawned **5 parallel research agents**, each investigating a specific aspect of Jazz:
+
+<Figure
+  src={researchPhaseImg}
+  alt="Research Phase: Five parallel agents (CRDT, WebSocket, Push/Pull, Storage, Architecture) each investigating independently, converging into a consolidated research report"
+  caption="Parallel research agents converging into a consolidated report"
+/>
+
+Each agent explored the Jazz codebase independently and reported back:
+
+| Agent | Focus | Key Findings |
+|-------|-------|--------------|
+| CRDT | Data structures | CoMap, CoList use operation-based CRDTs with LWW |
+| WebSocket | Real-time sync | 4-message protocol: load, known, content, done |
+| Push/Pull | Sync strategy | Hybrid model with known-state tracking |
+| Storage | Persistence | IndexedDB with `coValues`, `sessions`, `transactions` stores |
+| Architecture | Overall design | Monorepo with platform adapters |
+
+### Follow-up Prompt
+
+<Prompt>
+research longer and improve the plan
+</Prompt>
+
+This triggered deeper investigation into edge cases and implementation details.
+
+## Phase 2: Spec Creation
+
+After research, Claude wrote a comprehensive technical specification to `docs/indexeddb-migration-spec.md`:
+[Full spec](https://gist.github.com/alexanderop/70ef80ac6dda5166c5085cc9bb269df1)
+
+```markdown
+# IndexedDB Migration Specification
+
+## Part 1: How Jazz Uses IndexedDB
+- Database schema (coValues, sessions, transactions stores)
+- Transaction queuing pattern
+- Entity caching layer
+- Session-based conflict resolution
+
+## Part 2: Current SQLite Architecture Analysis
+- sql.js WASM setup
+- Existing sync protocol
+- Pain points and limitations
+
+## Part 3: Migration Plan (4 Phases)
+- Phase 1: Core IndexedDB utilities
+- Phase 2: Composables layer
+- Phase 3: Cross-tab sync
+- Phase 4: Cleanup and testing
+
+## Part 4: Implementation Checklist
+- [ ] idb-helpers.ts
+- [ ] useIndexedDB.ts
+- [ ] useSessionTracking.ts
+- ... (14 items total)
+```
+
+**Key insight**: The spec becomes the source of truth. It's a document Claude can reference during implementation, ensuring consistency across all tasks.
+It also becomes a Pin that we can use if something went wrong during implementation.
+
+## Phase 3: Spec Refinement via Interview
+
+Before implementation, I wanted to ensure the spec was solid. I used Claude's `AskUserQuestion` tool:
+
+### The Prompt
+
+<Prompt>
+use the ask_user_question tool do you have any questions regarding
+@docs/indexeddb-migration-spec.md before we implement it we want
+to improve the specs
+</Prompt>
+
+Claude asked clarifying questions:
+- Should we support migration from existing SQLite data?
+- What's the preferred conflict resolution strategy?
+- Should cross-tab sync use BroadcastChannel or SharedWorker?
+
+After answering, I requested Vue-specific improvements:
+
+<Prompt>
+we want to use provide and inject you have access to the source
+code of pinia spin up multiple subagents how they do it so we can
+use same patterns
+</Prompt>
+
+Claude researched Pinia's patterns and updated the spec with:
+- Symbol-based injection keys
+- Provider composables with fallback patterns
+- Proper cleanup on unmount
+
+## Phase 4: Implementation with Task Delegation
+
+This is where the new **Claude Code Task System** shines. (If you're unfamiliar with subagents and how they work in Claude Code, my <InternalLink slug="claude-code-customization-guide-claudemd-skills-subagents">customization guide</InternalLink> covers the fundamentals.)
+
+### The Prompt
+
+<Prompt>
+implement @docs/indexeddb-migration-spec.md use the task tool and
+each task should only be done by a subagent so that context is
+clear after each task do a commit before you continue you are the
+main agent and your subagents are your devs
+</Prompt>
+
+### Understanding Claude Code's Task System
+
+Claude Code's task systeminspired by [Beads](https://github.com/beads-ai/beads), Steve Yegge's distributed git-backed issue trackersolves two critical problems with AI coding agents:
+
+**Agent Amnesia**: Starting a new session mid-task loses all progress unless you manually document remaining work.
+
+**Context Pollution**: A full context window makes the agent drop discovered bugs instead of tracking them.
+
+The previous todo list lived in session memory and vanished on restart. The new task system persists tasks to disk, making them shareable across sessions and subagents.
+
+### How Tasks Persist
+
+Tasks are stored in `.claude/tasks/{session-id}/` as JSON files:
+
+```json
+{
+  "id": "task-1",
+  "subject": "Create idb-helpers.ts",
+  "description": "Implement IndexedDB promise wrappers...",
+  "status": "pending | in_progress | completed",
+  "blocks": ["task-3", "task-4"],
+  "blockedBy": ["task-0"]
+}
+```
+
+### The Four Task Tools
+
+| Tool | Purpose |
+|------|---------|
+| `TaskCreate` | Create a new task with subject, description, and dependencies |
+| `TaskUpdate` | Update status (pending → in_progress → completed) or modify dependencies |
+| `TaskList` | View all tasks, their status, and what's blocked |
+| `TaskGet` | Get full details of a specific task including description |
+
+### Task System Architecture
+
+<Figure
+  src={taskOrchestrationImg}
+  alt="Task Orchestration: Main Session orchestrator connects to Task List in .claude/tasks/, which delegates to Subagent 1, 2, and 3 each with fresh context. Below shows a dependency graph with Wave 1 (T1, T2, T3 in parallel), Wave 2 (T4, T5, T6 dependent), and Wave 3 (T7)"
+  caption="Task orchestration with dependency-aware parallel execution"
+/>
+
+### Why Subagents + Tasks = Context Efficiency
+
+By delegating each task to a subagent, the main session stays leanit only handles orchestration (creating tasks, tracking progress, committing). Each subagent gets a fresh context window focused entirely on its specific task, reads what it needs, implements, and returns. This means the main agent won't run out of context even for larger refactors with dozens of tasks.
+
+For truly massive projects spanning days or weeks, a full autonomous agent like [Ralph](https://ghuntley.com/ralph/) would be more appropriate. Ralph is elegantly simplea bash loop that feeds a markdown file into Claude Code repeatedly:
+
+<Figure
+  src={ralphArchitectureImg}
+  alt="Ralph Architecture: A bash loop (while :; do cat PROMPT.md | claude-code ; done) where PROMPT.md feeds into Claude Code which produces output, and the loop continues indefinitely"
+  caption="Ralph's stateless architecture using markdown as persistent memory"
+/>
+
+The key difference: Ralph executes each iteration in a completely new Claude session, using the markdown file as the only persistent memory. This makes it truly stateless and capable of running for days.
+
+This spec-driven approach hits a middle ground: subagents get fresh context but the main orchestrator maintains state within a single session. Structured enough to maintain coherence, flexible enough to handle complexity, without the setup overhead of a full autonomous system.
+
+### The Execution Flow
+
+<Figure
+  src={orchestratorFlowImg}
+  alt="Main Agent Orchestrator flow: TaskCreate spawns Subagent 1 which implements and returns, then TaskUpdate marks complete and commits, then TaskCreate spawns Subagent 2 with dependencies, repeating for all tasks"
+  caption="The orchestrator delegates each task to a subagent with atomic commits"
+  size="medium"
+/>
+
+### Why This Pattern Works
+
+1. **Context isolation**: Each subagent starts fresh, reading only what it needsno accumulated cruft
+2. **Persistent progress**: Tasks survive session restarts; pick up where you left off
+3. **Dependency-aware parallelism**: Claude identifies which tasks can run concurrently
+4. **Atomic commits**: Every task = one commit, making rollbacks trivial
+5. **Spec as contract**: Subagents reference the spec, ensuring consistency
+
+### Backpressure: Let the System Catch Mistakes
+
+One crucial element that makes atomic commits powerful: [backpressure](https://banay.me/dont-waste-your-backpressure/). Instead of manually reviewing every change, set up pre-commit hooks that run tests, linting, and type checking automatically.
+
+```bash
+# .husky/pre-commit
+pnpm typecheck && pnpm lint && pnpm test-run
+```
+
+When a subagent commits, the hook runs immediately. If tests fail, the commit is rejected and the agent sees the error outputgiving it a chance to self-correct before moving on. This creates automated feedback that catches issues at the source rather than accumulating bugs across multiple tasks.
+
+The result: you stop being the bottleneck for quality control. The system validates correctness while you focus on higher-level decisions.
+
+### When Things Go Wrong
+
+The first execution wasn't perfectI started the project and hit some errors. But here's where the spec pays off: I opened a new chat, pinned the spec document, pasted the error, and Claude fixed it immediately. No context rebuilding, no re-explaining the architecture.
+
+The spec acts as a recovery point. When a session goes sideways or context gets polluted, you don't lose everythingyou have a document that captures the full intent and design decisions.
+
+### The Results
+
+After ~45 minutes:
+
+```
+$ git log-oneline | head20
+
+9dc1c96 refactor: clean up code structure
+9fce16b feat(storage): migrate from SQLite to IndexedDB
+835c494 feat: integrate IDB sync engine provider
+d2cd7b7 refactor: remove SQLite/sql.js dependencies
+2fb7656 feat: add browser mode test stubs
+... (14 commits total)
+```
+
+**14 tasks completed**, **14 commits**, **15+ files changed**, **one PR ready for review**. See the [full pull request](https://github.com/alexanderop/nuxt-sync-engine/pull/3) (includes additional manual changes).
+
+And despite orchestrating 14 subagents, the main session's context stayed manageable:
+
+<ContextUsage
+  model="claude-opus-4-5-20251101"
+  used="143k"
+  total="200k"
+  percent={71}
+  categories={[
+    { name: "System prompt", tokens: "2.8k", percent: 1.4, color: "system-prompt" },
+    { name: "System tools", tokens: "16.2k", percent: 8.1, color: "system-tools" },
+    { name: "MCP tools", tokens: "293", percent: 0.1, color: "mcp-tools" },
+    { name: "Custom agents", tokens: "641", percent: 0.3, color: "custom-agents" },
+    { name: "Memory files", tokens: "431", percent: 0.2, color: "memory-files" },
+    { name: "Skills", tokens: "1.6k", percent: 0.8, color: "skills" },
+    { name: "Messages", tokens: "122.9k", percent: 61.4, color: "messages" },
+    { name: "Free space", tokens: "22k", percent: 11.1, color: "free" },
+    { name: "Autocompact buffer", tokens: "33.0k", percent: 16.5, color: "buffer" },
+  ]}
+/>
+
+This proves the delegation pattern worksthe main agent handled orchestration while subagents did the heavy lifting in isolated contexts.
+
+## The Prompt Patterns
+
+Here are the key prompt patterns that make this workflow effective:
+
+### 1. Parallel Research
+
+<Prompt>
+spin up multiple subagents for your research task
+</Prompt>
+
+Triggers Claude to spawn parallel agents, each investigating independently. Much faster than sequential research.
+
+### 2. Spec-First Development
+
+<Prompt>
+your goal is to write a report/document
+</Prompt>
+
+Forces Claude to produce a written artifact before any code. This becomes the source of truth.
+
+### 3. Interview Before Implementation
+
+<Prompt>
+use the ask_user_question tool... before we implement
+</Prompt>
+
+Surfaces ambiguities and design decisions before they become bugs.
+
+### 4. Task Delegation with Commits
+
+<Prompt>
+use the task tool and each task should only be done by a subagent
+after each task do a commit before you continue
+</Prompt>
+
+Creates the orchestration pattern with atomic commits.
+
+### 5. Role Assignment
+
+<Prompt>
+you are the main agent and your subagents are your devs
+</Prompt>
+
+Sets expectations for how Claude should behaveas a coordinator, not a solo implementer.
+
+## Comparison: Traditional vs Spec-Driven
+
+| | Traditional AI Coding | Spec-Driven Development |
+|---|---|---|
+| **Flow** | Prompt → Code → Debug → Repeat | Research → Spec → Refine → Tasks → Done |
+| **Context** | Fills up with failed attempts | Each task gets fresh context |
+| **Memory** | No persistence across sessions | Spec is persistent source of truth |
+| **Bug tracking** | Discovered late, forgotten | Bugs become new tasks |
+| **Completion** | No clear stopping point | Clear completion criteria |
+
+## Advanced: Multi-Session Workflows
+
+The task system supports coordination across multiple Claude Code sessions. Set a shared task list ID:
+
+```bash
+CLAUDE_CODE_TASK_LIST_ID=myproject claude
+```
+
+Or add to `.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "CLAUDE_CODE_TASK_LIST_ID": "myproject"
+  }
+}
+```
+
+One session acts as **orchestrator**; another becomes a **checker** that monitors completed tasks, verifies implementation quality, and adds follow-up tasks for anything missing.
+
+## When to Use This Workflow
+
+This pattern excels for:
+
+- **Large refactors** touching many files
+- **Migrations** requiring research into external codebases
+- **Feature implementations** with unclear requirements
+- **Learning new libraries** by studying their source
+
+It's overkill for:
+
+- Small bug fixes
+- Single-file changes
+- Well-defined, simple features
+
+## The Tools You Need
+
+1. **Claude Code CLI** (latest version with task tools)
+2. **A spec document** (markdown works great)
+3. **Reference codebases** if learning from existing implementations
+4. **Git** for atomic commits
+
+## Further Reading
+
+- [Beads](https://github.com/beads-ai/beads) Steve Yegge's git-backed issue tracker that inspired the task system
+- [12 Factor Agents](https://12factor.net/agents) Design principles for AI coding agents
+- [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) Anthropic's research on agent architectures
+- For a broader overview of Claude Code's feature stack, see my <InternalLink slug="understanding-claude-code-full-stack">comprehensive guide</InternalLink>
+
+## Conclusion
+
+Spec-Driven Development with Claude Code mirrors real engineering workflows: parallel work, handoffs, blockers, and dependencies. Instead of treating Claude as a solo coder, you treat it as a team.
+
+The key insight from Beads applies here:
+
+> "By having each task that you give a coding agent isolated into its own context window, you can now give it the ability to log any bugs for later."
+
+The SQLite to IndexedDB migration would have taken me 2-3 days manually. With this workflow, it took one afternoonand produced better code thanks to the research phase uncovering patterns from Jazz I wouldn't have found on my own.
+
+---
+
+*Try it yourself: Start your next significant feature with "write a spec for X, spin up subagents for research" and see how it changes your workflow.*
+
+---
+
+--- title: My Opinionated ESLint Setup for Vue Projects description: A battle-tested linting configuration that catches real bugs, enforces clean architecture, and runs fast using Oxlint and ESLint together. tags: ['vue', 'typescript', 'tooling', 'architecture'] url: https://alexop.dev/posts/opinionated-eslint-setup-vue-projects ---
+
+# My Opinionated ESLint Setup for Vue Projects
+
+
+
+Over the last 7+ years as a Vue developer, I've developed a highly opinionated style for writing Vue components. Some of these rules might not be useful for you, but I thought it was worth sharing so you can pick what fits your project. The goal is to enforce code structure that's readable for both developers and AI agents.
+
+These rules aren't arbitrary—they encode patterns I've written about extensively:
+
+- <InternalLink slug="how-to-write-clean-vue-components">How to Write Clean Vue Components</InternalLink> explains why I separate business logic into pure functions
+- <InternalLink slug="how-to-structure-vue-projects">How to Structure Vue Projects</InternalLink> covers my feature-based architecture approach
+- <InternalLink slug="nuxt-layers-modular-monolith">Building a Modular Monolith with Nuxt Layers</InternalLink> applies feature isolation to Nuxt projects
+- <InternalLink slug="the-problem-with-as-in-typescript-why-its-a-shortcut-we-should-avoid">The Problem with `as` in TypeScript</InternalLink> covers why I ban type assertions
+- <InternalLink slug="robust-error-handling-in-typescript-a-journey-from-naive-to-rust-inspired-solutions">Robust Error Handling in TypeScript</InternalLink> introduces the Result pattern behind my `tryCatch` rule
+- <InternalLink slug="vue3_testing_pyramid_vitest_browser_mode">Vue 3 Testing Pyramid</InternalLink> explains my integration-first testing strategy
+- <InternalLink slug="frontend-testing-guide-10-essential-rules">Frontend Testing Guide</InternalLink> shares my test naming conventions
+
+ESLint rules are how I enforce these patterns automatically—so the codebase stays consistent even as the team grows.
+
+<Alert type="note">
+**Why linting matters more in the AI era:** As AI agents write more of our code, strict linting becomes essential. It's a form of [back pressure](https://banay.me/dont-waste-your-backpressure/?ref=ghuntley.com)—automated feedback mechanisms that tell an agent when it's made a mistake, allowing it to self-correct without your intervention. You have a limited budget of feedback (your time and attention). If you spend that budget telling the agent "you missed an import" or "that type is wrong," you can't spend it on architectural decisions or complex logic. Type checkers, linters, and test suites act as back pressure: they push back against bad code so you don't have to. Your ESLint config is now part of your prompt—it's the automated quality gate that lets agents iterate until they pass.
+</Alert>
+
+## Table of Contents
+
+## Why Two Linters? Oxlint + ESLint
+
+I run two linters: **Oxlint** first, then **ESLint**. Why? Speed and coverage.
+
+### Oxlint: The Speed Demon
+
+[Oxlint](https://oxc.rs/docs/guide/usage/linter.html) is written in Rust. It runs 50-100x faster than ESLint on large codebases. My pre-commit hook completes in milliseconds instead of seconds.
+
+```bash
+# In package.json
+"lint:oxlint": "oxlint . --fix --ignore-path .gitignore",
+"lint:eslint": "eslint . --fix --cache",
+"lint": "run-s lint:*"  # Runs oxlint first, then eslint
+```
+
+**The tradeoff:** Oxlint supports fewer rules. It handles:
+- **Correctness & suspicious patterns** - catches bugs early
+- **Core ESLint equivalents** - `no-console`, `no-explicit-any`
+- **TypeScript basics** - `array-type`, `consistent-type-definitions`
+
+But Oxlint lacks:
+- Vue-specific rules (`vue/*`)
+- Import boundary rules (`import-x/*`)
+- Vitest testing rules (`vitest/*`)
+- i18n rules (`@intlify/vue-i18n/*`)
+- Custom local rules
+
+### The Setup
+
+Oxlint runs first for fast feedback. ESLint runs second for comprehensive checks. The `eslint-plugin-oxlint` package tells ESLint to skip rules that Oxlint already handles.
+
+```typescript
+// eslint.config.ts
+export default defineConfigWithVueTs(
+  // ... other configs
+  ...pluginOxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
+)
+```
+
+```json
+// .oxlintrc.json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "typescript/no-explicit-any": "error",
+    "eslint/no-console": ["error", { "allow": ["warn", "error"] }]
+  }
+}
+```
+
+---
+
+## Must-Have Rules
+
+These rules catch real bugs and enforce maintainable code. Enable them on every Vue project.
+
+---
+
+### Cyclomatic Complexity
+
+Complex functions are hard to test and understand. This rule limits branching logic per function.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'complexity': ['warn', { max: 10 }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+function processOrder(order: Order) {
+  if (order.status === 'pending') {
+    if (order.items.length > 0) {
+      if (order.payment) {
+        if (order.payment.verified) {
+          if (order.shipping) {
+            // 5 levels deep, complexity keeps growing...
+          }
+        }
+      }
+    }
+  }
+}
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+function processOrder(order: Order) {
+  if (!isValidOrder(order)) return
+
+  processPayment(order.payment)
+  scheduleShipping(order.shipping)
+}
+
+function isValidOrder(order: Order): boolean {
+  return order.status === 'pending'
+    && order.items.length > 0
+    && order.payment?.verified === true
+}
+```
+  </Fragment>
+</CodeComparison>
+
+**Threshold guidance:**
+- ESLint default: `20` (lenient)
+- This project uses: `10` (stricter)
+- Consider `15` as a middle ground for legacy codebases
+
+> [ESLint: complexity](https://eslint.org/docs/latest/rules/complexity)
+
+---
+
+### No Nested Ternaries
+
+Nested ternaries are hard to read. Use early returns or separate variables instead.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'no-nested-ternary': 'error'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+const label = isLoading ? 'Loading...' : hasError ? 'Failed' : 'Success'
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+function getLabel() {
+  if (isLoading) return 'Loading...'
+  if (hasError) return 'Failed'
+  return 'Success'
+}
+
+const label = getLabel()
+```
+  </Fragment>
+</CodeComparison>
+
+> [ESLint: no-nested-ternary](https://eslint.org/docs/rules/no-nested-ternary)
+
+---
+
+### No Type Assertions
+
+Type assertions (`as Type`) bypass TypeScript's type checker. They hide bugs. Use type guards or proper typing instead.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    '@typescript-eslint/consistent-type-assertions': ['error', {
+      assertionStyle: 'never'
+    }]
+  }
+}
+```
+
+<Alert type="note">
+`as const` assertions are always allowed, even with `assertionStyle: 'never'`. Const assertions don't bypass type checking—they make types more specific.
+</Alert>
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+const user = response.data as User  // What if it's not a User?
+
+const element = document.querySelector('.btn') as HTMLButtonElement
+element.click()  // Runtime error if element is null
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+// Use type guards
+function isUser(data: unknown): data is User {
+  return typeof data === 'object'
+    && data !== null
+    && 'id' in data
+    && 'name' in data
+}
+
+if (isUser(response.data)) {
+  const user = response.data  // TypeScript knows it's User
+}
+
+// Handle nulls properly
+const element = document.querySelector('.btn')
+if (element instanceof HTMLButtonElement) {
+  element.click()
+}
+```
+  </Fragment>
+</CodeComparison>
+
+> [TypeScript ESLint: consistent-type-assertions](https://typescript-eslint.io/rules/consistent-type-assertions)
+
+---
+
+### No Enums
+
+TypeScript enums have quirks. They generate JavaScript code, have numeric reverse mappings, and behave differently from union types. Use literal unions or const objects instead.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'no-restricted-syntax': ['error', {
+      selector: 'TSEnumDeclaration',
+      message: 'Use literal unions or `as const` objects instead of enums.'
+    }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+enum Status {
+  Pending,
+  Active,
+  Done
+}
+
+const status: Status = Status.Pending
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+// Literal union - simplest
+type Status = 'pending' | 'active' | 'done'
+
+// Or const object when you need values
+const Status = {
+  Pending: 'pending',
+  Active: 'active',
+  Done: 'done'
+} as const
+
+type Status = typeof Status[keyof typeof Status]
+```
+  </Fragment>
+</CodeComparison>
+
+> [ESLint: no-restricted-syntax](https://eslint.org/docs/rules/no-restricted-syntax)
+
+---
+
+### No else/else-if
+
+`else` and `else-if` blocks increase nesting. Early returns are easier to read and reduce cognitive load.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'no-restricted-syntax': ['error',
+      {
+        selector: 'IfStatement > IfStatement.alternate',
+        message: 'Avoid `else if`. Prefer early returns or ternary operators.'
+      },
+      {
+        selector: 'IfStatement > :not(IfStatement).alternate',
+        message: 'Avoid `else`. Prefer early returns or ternary operators.'
+      }
+    ]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+function getDiscount(user: User) {
+  if (user.isPremium) {
+    return 0.2
+  } else if (user.isMember) {
+    return 0.1
+  } else {
+    return 0
+  }
+}
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+function getDiscount(user: User) {
+  if (user.isPremium) return 0.2
+  if (user.isMember) return 0.1
+  return 0
+}
+```
+  </Fragment>
+</CodeComparison>
+
+> [ESLint: no-restricted-syntax](https://eslint.org/docs/rules/no-restricted-syntax)
+
+---
+
+### No Native try/catch
+
+Native try/catch blocks are verbose and error-prone. Use a utility function that returns a result tuple instead.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'no-restricted-syntax': ['error', {
+      selector: 'TryStatement',
+      message: 'Use tryCatch() from @/lib/tryCatch instead of try/catch. Returns Result<T> tuple: [error, null] | [null, data].'
+    }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+async function fetchUser(id: string) {
+  try {
+    const response = await api.get(`/users/${id}`)
+    return response.data
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+async function fetchUser(id: string) {
+  const [error, response] = await tryCatch(api.get(`/users/${id}`))
+
+  if (error) {
+    console.error(error)
+    return null
+  }
+
+  return response.data
+}
+```
+  </Fragment>
+</CodeComparison>
+
+The `tryCatch` utility returns `[error, null]` or `[null, data]`, similar to Go's error handling.
+
+> [ESLint: no-restricted-syntax](https://eslint.org/docs/rules/no-restricted-syntax)
+
+---
+
+### No Direct DOM Manipulation
+
+Vue manages the DOM. Calling `document.querySelector` bypasses Vue's reactivity and template refs. Use `useTemplateRef()` instead. If you're on Vue 3.5+, the built-in rule already enforces this.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/prefer-use-template-ref': 'error'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<script setup lang="ts">
+function focusInput() {
+  const input = document.getElementById('my-input')
+  input?.focus()
+}
+</script>
+
+<template>
+  
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<script setup lang="ts">
+const inputRef = useTemplateRef<HTMLInputElement>('input')
+
+function focusInput() {
+  inputRef.value?.focus()
+}
+</script>
+
+<template>
+  
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [ESLint: no-restricted-syntax](https://eslint.org/docs/rules/no-restricted-syntax)
+
+---
+
+### Feature Boundary Enforcement
+
+Features should not import from other features. This keeps code modular and prevents circular dependencies. If you're using a feature-based architecture, this rule is essential—see <InternalLink slug="how-to-structure-vue-projects">How to Structure Vue Projects</InternalLink> for more on this approach.
+
+```typescript
+// eslint.config.ts
+{
+  plugins: { 'import-x': pluginImportX },
+  rules: {
+    'import-x/no-restricted-paths': ['error', {
+      zones: [
+        // === CROSS-FEATURE ISOLATION ===
+        // Features cannot import from other features
+        { target: './src/features/workout', from: './src/features', except: ['./workout'] },
+        { target: './src/features/exercises', from: './src/features', except: ['./exercises'] },
+        { target: './src/features/settings', from: './src/features', except: ['./settings'] },
+        { target: './src/features/timers', from: './src/features', except: ['./timers'] },
+        { target: './src/features/templates', from: './src/features', except: ['./templates'] },
+        { target: './src/features/benchmarks', from: './src/features', except: ['./benchmarks'] },
+
+        // === UNIDIRECTIONAL FLOW ===
+        // Shared code cannot import from features or views
+        {
+          target: ['./src/components', './src/composables', './src/lib', './src/db', './src/types', './src/stores'],
+          from: ['./src/features', './src/views']
+        },
+
+        // Features cannot import from views (views are top-level orchestrators)
+        { target: './src/features', from: './src/views' }
+      ]
+    }]
+  }
+}
+```
+
+**Unidirectional Flow:** The architecture enforces a strict dependency hierarchy. Views orchestrate features, features use shared code, but never the reverse.
+
+```
+views → features → shared (components, composables, lib, db, types, stores)
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+// src/features/workout/composables/useWorkout.ts
+// Cross-feature import!
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+// src/features/workout/composables/useWorkout.ts
+// Use shared database layer instead
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-import-x: no-restricted-paths](https://github.com/un-ts/eslint-plugin-import-x)
+
+---
+
+### Vue Component Naming
+
+Consistent naming makes components easy to find and identify.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/multi-word-component-names': ['error', {
+      ignores: ['App', 'Layout']
+    }],
+    'vue/component-definition-name-casing': ['error', 'PascalCase'],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+      registeredComponentsOnly: false
+    }],
+    'vue/match-component-file-name': ['error', {
+      extensions: ['vue'],
+      shouldMatchCase: true
+    }],
+    'vue/prop-name-casing': ['error', 'camelCase'],
+    'vue/attribute-hyphenation': ['error', 'always'],
+    'vue/custom-event-name-casing': ['error', 'kebab-case']
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<!-- File: button.vue -->
+<template>
+  <base-button>Click</base-button>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<!-- File: SubmitButton.vue -->
+<template>
+  <BaseButton>Click</BaseButton>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue: component rules](https://eslint.vuejs.org/rules/)
+
+---
+
+### Dead Code Detection in Vue
+
+Find unused props, refs, and emits before they become tech debt.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/no-unused-properties': ['error', {
+      groups: ['props', 'data', 'computed', 'methods']
+    }],
+    'vue/no-unused-refs': 'error',
+    'vue/no-unused-emit-declarations': 'error'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<script setup lang="ts">
+const props = defineProps<{
+  title: string
+  subtitle: string  // Never used!
+}>()
+
+const emit = defineEmits<{
+  (e: 'click'): void
+  (e: 'hover'): void  // Never emitted!
+}>()
+
+const buttonRef = ref<HTMLButtonElement>()  // Never used!
+</script>
+
+<template>
+  <h1>{{ title }}</h1>
+  <button @click="emit('click')">Click</button>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<script setup lang="ts">
+const props = defineProps<{
+  title: string
+}>()
+
+const emit = defineEmits<{
+  (e: 'click'): void
+}>()
+</script>
+
+<template>
+  <h1>{{ title }}</h1>
+  <button @click="emit('click')">Click</button>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue: no-unused-properties](https://eslint.vuejs.org/rules/no-unused-properties.html)
+
+---
+
+### No Hardcoded i18n Strings
+
+Hardcoded strings break internationalization. The `@intlify/vue-i18n` plugin catches them.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  plugins: { '@intlify/vue-i18n': pluginVueI18n },
+  rules: {
+    '@intlify/vue-i18n/no-raw-text': ['error', {
+      ignorePattern: '^[-#:()&+×/°′″%]+',
+      ignoreText: ['kg', 'lbs', 'cm', 'ft/in', '—', '•', '✓', '›', '→', '·', '.', 'Close'],
+      attributes: {
+        '/.+/': ['title', 'aria-label', 'aria-placeholder', 'placeholder', 'alt']
+      }
+    }]
+  }
+}
+```
+
+The `attributes` option catches hardcoded strings in accessibility attributes too.
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<template>
+  <button>Save Changes</button>
+  <p>No items found</p>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<template>
+  <button>{{ t('common.save') }}</button>
+  <p>{{ t('items.empty') }}</p>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue-i18n](https://eslint-plugin-vue-i18n.intlify.dev/)
+
+---
+
+### No Disabling i18n Rules
+
+Prevent developers from bypassing i18n checks with `eslint-disable` comments.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  plugins: {
+    '@eslint-community/eslint-comments': pluginEslintComments
+  },
+  rules: {
+    '@eslint-community/eslint-comments/no-restricted-disable': [
+      'error',
+      '@intlify/vue-i18n/*'
+    ]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<!-- eslint-disable-next-line @intlify/vue-i18n/no-raw-text -->
+<button>Save Changes</button>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<button>{{ t('common.save') }}</button>
+```
+  </Fragment>
+</CodeComparison>
+
+> [@eslint-community/eslint-plugin-eslint-comments](https://github.com/eslint-community/eslint-plugin-eslint-comments)
+
+---
+
+### No Hardcoded Route Strings
+
+Use named routes instead of hardcoded path strings for maintainability.
+
+```typescript
+// eslint.config.ts
+{
+  rules: {
+    'no-restricted-syntax': ['error',
+      {
+        selector: 'CallExpression[callee.property.name="push"][callee.object.name="router"] > Literal:first-child',
+        message: 'Use named routes with RouteNames instead of hardcoded path strings.'
+      },
+      {
+        selector: 'CallExpression[callee.property.name="push"][callee.object.name="router"] > TemplateLiteral:first-child',
+        message: 'Use named routes with RouteNames instead of template literals.'
+      }
+    ]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+router.push('/workout/123')
+router.push(`/workout/${id}`)
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+router.push({ name: RouteNames.WorkoutDetail, params: { id } })
+```
+  </Fragment>
+</CodeComparison>
+
+> [ESLint: no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax)
+
+---
+
+### Enforce Integration Test Helpers
+
+Ban direct `render()` or `mount()` calls in tests. Use a centralized test helper instead. For more on testing strategies in Vue, see <InternalLink slug="vue3_testing_pyramid_vitest_browser_mode">Vue 3 Testing Pyramid: A Practical Guide with Vitest Browser Mode</InternalLink>.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/__tests__/**/*.{ts,spec.ts}'],
+  ignores: ['src/__tests__/helpers/**'],
+  rules: {
+    'no-restricted-imports': ['error', {
+      paths: [
+        {
+          name: 'vitest-browser-vue',
+          importNames: ['render'],
+          message: 'Use createTestApp() from @/__tests__/helpers/createTestApp instead.'
+        },
+        {
+          name: '@vue/test-utils',
+          importNames: ['mount', 'shallowMount'],
+          message: 'Use createTestApp() instead of mounting components directly.'
+        }
+      ]
+    }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+const { getByText } = render(MyComponent)
+const wrapper = mount(MyComponent)
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+const { page } = await createTestApp({ route: '/workout' })
+```
+  </Fragment>
+</CodeComparison>
+
+This ensures all tests use consistent setup with routing, i18n, and database.
+
+> [ESLint: no-restricted-imports](https://eslint.org/docs/latest/rules/no-restricted-imports)
+
+---
+
+### Enforce pnpm Catalogs
+
+When using pnpm workspaces, enforce that dependencies use catalog references.
+
+```typescript
+// eslint.config.ts
+export default defineConfigWithVueTs(
+  // ... other configs
+  ...pnpmConfigs.recommended,
+)
+```
+
+This ensures dependencies are managed centrally in `pnpm-workspace.yaml`.
+
+> [eslint-plugin-pnpm](https://github.com/nickmccurdy/eslint-plugin-pnpm)
+
+---
+
+## Nice-to-Have Rules
+
+These rules improve code quality but are less critical. Enable them after the must-haves are in place.
+
+---
+
+### Vue 3.5+ API Enforcement
+
+Use the latest Vue 3.5 APIs for cleaner code.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/define-props-destructuring': 'error',
+    'vue/prefer-use-template-ref': 'error'
+  }
+}
+```
+
+<CodeComparison badTitle="Before Vue 3.5" goodTitle="Vue 3.5+">
+  <Fragment slot="bad">
+```vue
+<script setup lang="ts">
+const props = defineProps<{ count: number }>()
+const buttonRef = ref<HTMLButtonElement>()
+
+console.log(props.count)  // Using props. prefix
+</script>
+
+<template>
+  <button ref="buttonRef">Click</button>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<script setup lang="ts">
+const { count } = defineProps<{ count: number }>()
+const buttonRef = useTemplateRef<HTMLButtonElement>('button')
+
+console.log(count)  // Direct destructured access
+</script>
+
+<template>
+  <button ref="button">Click</button>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue: define-props-destructuring](https://eslint.vuejs.org/rules/define-props-destructuring.html)
+
+---
+
+### Explicit Component APIs
+
+Require `defineExpose` and `defineSlots` to make component interfaces explicit.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/require-expose': 'warn',
+    'vue/require-explicit-slots': 'warn'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<script setup lang="ts">
+function focus() { /* ... */ }
+</script>
+
+<template>
+  
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<script setup lang="ts">
+defineSlots<{
+  default(): unknown
+}>()
+
+function focus() { /* ... */ }
+
+defineExpose({ focus })
+</script>
+
+<template>
+  
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue: require-expose](https://eslint.vuejs.org/rules/require-expose.html)
+
+---
+
+### Template Depth Limit
+
+Deep template nesting is hard to read. Extract nested sections into components. This one matters a lot—it helps you avoid ending up with components that are 2000 lines long.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/*.vue'],
+  rules: {
+    'vue/max-template-depth': ['error', { maxDepth: 8 }],
+    'vue/max-props': ['error', { maxProps: 6 }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<template>
+  <div>
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <span>Too deep!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>Title</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <span>Content</span>
+    </CardContent>
+  </Card>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vue: max-template-depth](https://eslint.vuejs.org/rules/max-template-depth.html)
+
+---
+
+### Better Assertions in Tests
+
+Use specific matchers for clearer test failures.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/__tests__/*'],
+  rules: {
+    'vitest/prefer-to-be': 'error',
+    'vitest/prefer-to-have-length': 'error',
+    'vitest/prefer-to-contain': 'error',
+    'vitest/prefer-mock-promise-shorthand': 'error'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+expect(value === null).toBe(true)
+expect(arr.length).toBe(3)
+expect(arr.includes('foo')).toBe(true)
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+expect(value).toBeNull()
+expect(arr).toHaveLength(3)
+expect(arr).toContain('foo')
+
+// Also prefer mock shorthands
+vi.fn().mockResolvedValue('data')  // Instead of mockReturnValue(Promise.resolve('data'))
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)
+
+---
+
+### Test Structure Rules
+
+Keep tests organized and readable.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/__tests__/*'],
+  rules: {
+    'vitest/consistent-test-it': ['error', { fn: 'it' }],
+    'vitest/prefer-hooks-on-top': 'error',
+    'vitest/prefer-hooks-in-order': 'error',
+    'vitest/no-duplicate-hooks': 'error',
+    'vitest/require-top-level-describe': 'error',
+    'vitest/max-nested-describe': ['error', { max: 2 }],
+    'vitest/no-conditional-in-test': 'warn'
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+test('works', () => {})  // Inconsistent: test vs it
+it('also works', () => {})
+
+describe('feature', () => {
+  it('test 1', () => {})
+
+  beforeEach(() => {})  // Hook after test!
+
+  describe('nested', () => {
+    describe('too deep', () => {
+      describe('way too deep', () => {})  // 3 levels!
+    })
+  })
+})
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+describe('feature', () => {
+  beforeEach(() => {})  // Hooks first, in order
+
+  it('does something', () => {})
+  it('does another thing', () => {})
+
+  describe('edge cases', () => {
+    it('handles null', () => {})
+  })
+})
+
+// no-conditional-in-test prevents flaky tests
+// Bad: if (data.length > 0) { expect(data[0]).toBeDefined() }
+// Good: expect(data).toHaveLength(3); expect(data[0]).toBeDefined()
+```
+  </Fragment>
+</CodeComparison>
+
+> [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)
+
+---
+
+### Prefer Vitest Locators in Tests
+
+Use Vitest Browser locators instead of raw DOM queries.
+
+```typescript
+// eslint.config.ts
+{
+  files: ['src/**/__tests__/**/*.{ts,spec.ts}'],
+  rules: {
+    'no-restricted-syntax': ['warn', {
+      selector: 'CallExpression[callee.property.name=/^querySelector(All)?$/]',
+      message: 'Prefer page.getByRole(), page.getByText(), or page.getByTestId() over querySelector. Vitest locators are more resilient to DOM changes.'
+    }]
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+const button = container.querySelector('.submit-btn')
+await button?.click()
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+const button = page.getByRole('button', { name: 'Submit' })
+await button.click()
+```
+  </Fragment>
+</CodeComparison>
+
+> [Vitest Browser Mode](https://vitest.dev/guide/browser/)
+
+---
+
+### Unicorn Rules
+
+The `eslint-plugin-unicorn` package catches common mistakes and enforces modern JavaScript patterns.
+
+```typescript
+// eslint.config.ts
+pluginUnicorn.configs.recommended,
+
+{
+  name: 'app/unicorn-overrides',
+  rules: {
+    // === Enable non-recommended rules that add value ===
+    'unicorn/better-regex': 'warn',              // Simplify regexes: /[0-9]/ → /\d/
+    'unicorn/custom-error-definition': 'error',  // Correct Error subclassing
+    'unicorn/no-unused-properties': 'warn',      // Dead code detection
+    'unicorn/consistent-destructuring': 'warn',  // Use destructured vars consistently
+
+    // === Disable rules that conflict with project conventions ===
+    'unicorn/no-null': 'off',                    // We use null for database values
+    'unicorn/filename-case': 'off',              // Vue uses PascalCase, tests use camelCase
+    'unicorn/prevent-abbreviations': 'off',      // props, e, Db are fine
+    'unicorn/no-array-callback-reference': 'off', // arr.filter(isValid) is fine
+    'unicorn/no-await-expression-member': 'off', // (await fetch()).json() is fine
+    'unicorn/no-array-reduce': 'off',            // reduce is useful for aggregations
+    'unicorn/no-useless-undefined': 'off'        // mockResolvedValue(undefined) for TS
+  }
+}
+```
+
+**Examples:**
+
+```typescript
+// unicorn/better-regex
+// Bad:  /[0-9]/
+// Good: /\d/
+
+// unicorn/consistent-destructuring
+// Bad:
+const { foo } = object
+console.log(object.bar)  // Uses object.bar instead of destructuring
+
+// Good:
+const { foo, bar } = object
+console.log(bar)
+```
+
+> [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)
+
+---
+
+## Custom Local Rules
+
+Sometimes you need rules that don't exist. Write them yourself.
+
+### Composable Must Use Vue
+
+A file named `use*.ts` should import from Vue. If it doesn't, it's a utility, not a composable. For more on writing proper composables, see <InternalLink slug="vueuse_composables_style_guide">Vue Composables Style Guide: Lessons from VueUse's Codebase</InternalLink>.
+
+```typescript
+// eslint-local-rules/composable-must-use-vue.ts
+const VALID_VUE_SOURCES = new Set(['vue', '@vueuse/core', 'vue-router', 'vue-i18n'])
+const VALID_PATH_PATTERNS = [/^@\/stores\//]  // Global state composables count too
+
+function isComposableFilename(filename: string): boolean {
+  return /^use[A-Z]/.test(path.basename(filename, '.ts'))
+}
+
+const rule: Rule.RuleModule = {
+  meta: {
+    messages: {
+      notAComposable: 'File "{{filename}}" does not import from Vue. Rename it or add Vue imports.'
+    }
+  },
+  create(context) {
+    if (!isComposableFilename(context.filename)) return {}
+
+    let hasVueImport = false
+
+    return {
+      ImportDeclaration(node) {
+        if (VALID_VUE_SOURCES.has(node.source.value)) {
+          hasVueImport = true
+        }
+      },
+      'Program:exit'(node) {
+        if (!hasVueImport) {
+          context.report({ node, messageId: 'notAComposable' })
+        }
+      }
+    }
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+// src/composables/useFormatter.ts
+export function useFormatter() {
+  return {
+    formatDate: (d: Date) => d.toISOString()  // No Vue imports!
+  }
+}
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+// src/lib/formatter.ts (renamed)
+export function formatDate(d: Date) {
+  return d.toISOString()
+}
+
+// OR add Vue reactivity:
+// src/composables/useFormatter.ts
+export function useFormatter() {
+  const locale = ref('en-US')
+  const formatter = computed(() => new Intl.DateTimeFormat(locale.value))
+  return { formatter, locale }
+}
+```
+  </Fragment>
+</CodeComparison>
+
+---
+
+### No Hardcoded Tailwind Colors
+
+Hardcoded Tailwind colors (`bg-blue-500`) make theming impossible. Use semantic colors (`bg-primary`).
+
+```typescript
+// eslint-local-rules/no-hardcoded-colors.ts
+// Status colors (red, amber, yellow, green, emerald) are ALLOWED for semantic states
+const HARDCODED_COLORS = ['slate', 'gray', 'zinc', 'blue', 'purple', 'pink', 'orange', 'indigo', 'violet']
+const COLOR_UTILITIES = ['bg', 'text', 'border', 'ring', 'fill', 'stroke']
+
+const rule: Rule.RuleModule = {
+  meta: {
+    messages: {
+      noHardcodedColor: 'Avoid "{{color}}". Use semantic classes like bg-primary, text-foreground.'
+    }
+  },
+  create(context) {
+    return {
+      Literal(node) {
+        if (typeof node.value !== 'string') return
+
+        const matches = findHardcodedColors(node.value)
+        for (const color of matches) {
+          context.report({ node, messageId: 'noHardcodedColor', data: { color } })
+        }
+      }
+    }
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```vue
+<template>
+  <button class="bg-blue-500 text-white">Click</button>
+</template>
+```
+  </Fragment>
+  <Fragment slot="good">
+```vue
+<template>
+  <button class="bg-primary text-primary-foreground">Click</button>
+</template>
+```
+  </Fragment>
+</CodeComparison>
+
+<Alert type="note">
+Status colors (`red`, `amber`, `yellow`, `green`, `emerald`) are intentionally allowed for error/warning/success states. Only use these for semantic status indication, not general styling.
+</Alert>
+
+---
+
+### No let in describe Blocks
+
+Mutable variables in test describe blocks create hidden state. Use setup functions instead.
+
+```typescript
+// eslint-local-rules/no-let-in-describe.ts
+const rule: Rule.RuleModule = {
+  meta: {
+    messages: {
+      noLetInDescribe: 'Avoid `let` in describe blocks. Use setup functions instead.'
+    }
+  },
+  create(context) {
+    let describeDepth = 0
+
+    return {
+      CallExpression(node) {
+        if (isDescribeCall(node)) describeDepth++
+      },
+      'CallExpression:exit'(node) {
+        if (isDescribeCall(node)) describeDepth--
+      },
+      VariableDeclaration(node) {
+        if (describeDepth > 0 && node.kind === 'let') {
+          context.report({ node, messageId: 'noLetInDescribe' })
+        }
+      }
+    }
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+describe('Login', () => {
+  let user: User
+
+  beforeEach(() => {
+    user = createUser()  // Hidden mutation!
+  })
+
+  it('works', () => {
+    expect(user.name).toBe('test')
+  })
+})
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+describe('Login', () => {
+  function setup() {
+    return { user: createUser() }
+  }
+
+  it('works', () => {
+    const { user } = setup()
+    expect(user.name).toBe('test')
+  })
+})
+```
+  </Fragment>
+</CodeComparison>
+
+---
+
+### Extract Complex Conditions
+
+Complex boolean expressions should have names. Extract them into variables.
+
+```typescript
+// eslint-local-rules/extract-condition-variable.ts
+const OPERATOR_THRESHOLD = 2  // Conditions with 2+ logical operators need extraction
+
+const rule: Rule.RuleModule = {
+  meta: {
+    messages: {
+      extractCondition: 'Complex condition should be extracted into a named const.'
+    }
+  },
+  create(context) {
+    return {
+      IfStatement(node) {
+        // Skip patterns that TypeScript needs inline for narrowing
+        if (isEarlyExitGuard(node.consequent)) return  // if (!x) return
+        if (hasOptionalChaining(node.test)) return      // if (user?.name)
+        if (hasTruthyNarrowingPattern(node.test)) return // if (arr && arr[0])
+
+        if (countOperators(node.test) >= OPERATOR_THRESHOLD) {
+          context.report({ node: node.test, messageId: 'extractCondition' })
+        }
+      }
+    }
+  }
+}
+```
+
+**Smart Exceptions:** The rule skips several patterns that TypeScript needs inline for type narrowing:
+- Early exit guards: `if (!user) return`
+- Optional chaining: `if (user?.name)`
+- Truthy narrowing: `if (arr && arr[0])`
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+if (user.isActive && user.role === 'admin' && !user.isBanned) {
+  showAdminPanel()
+}
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+const canAccessAdminPanel = user.isActive && user.role === 'admin' && !user.isBanned
+
+if (canAccessAdminPanel) {
+  showAdminPanel()
+}
+```
+  </Fragment>
+</CodeComparison>
+
+---
+
+### Repository tryCatch Wrapper
+
+Database calls can fail. Enforce wrapping them in `tryCatch()`.
+
+```typescript
+// eslint-local-rules/repository-trycatch.ts
+// Matches pattern: get*Repository().method()
+const REPO_PATTERN = /^get\w+Repository$/
+
+const rule: Rule.RuleModule = {
+  meta: {
+    messages: {
+      missingTryCatch: 'Repository calls must be wrapped with tryCatch().'
+    }
+  },
+  create(context) {
+    return {
+      AwaitExpression(node) {
+        if (!isRepositoryMethodCall(node.argument)) return
+        if (isWrappedInTryCatch(context, node)) return
+
+        context.report({ node, messageId: 'missingTryCatch' })
+      }
+    }
+  }
+}
+```
+
+<CodeComparison>
+  <Fragment slot="bad">
+```typescript
+const workouts = await getWorkoutRepository().findAll()  // Might throw!
+```
+  </Fragment>
+  <Fragment slot="good">
+```typescript
+const [error, workouts] = await tryCatch(getWorkoutRepository().findAll())
+
+if (error) {
+  showError('Failed to load workouts')
+  return
+}
+```
+  </Fragment>
+</CodeComparison>
+
+<Alert type="note">
+This rule matches the `get*Repository()` pattern. Ensure your repository factory functions follow this naming convention.
+</Alert>
+
+---
+
+## The Full Config
+
+<Collapsible title="Complete eslint.config.ts example">
+
+```typescript
+export default defineConfigWithVueTs(
+  { ignores: ['**/dist/**', '**/coverage/**', '**/node_modules/**'] },
+
+  pluginVue.configs['flat/essential'],
+  vueTsConfigs.recommended,
+  pluginUnicorn.configs.recommended,
+
+  // Vue component rules
+  {
+    files: ['src/**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': ['error', { ignores: ['App', 'Layout'] }],
+      'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+      'vue/prop-name-casing': ['error', 'camelCase'],
+      'vue/custom-event-name-casing': ['error', 'kebab-case'],
+      'vue/no-unused-properties': ['error', { groups: ['props', 'data', 'computed', 'methods'] }],
+      'vue/no-unused-refs': 'error',
+      'vue/define-props-destructuring': 'error',
+      'vue/prefer-use-template-ref': 'error',
+      'vue/max-template-depth': ['error', { maxDepth: 8 }],
+    },
+  },
+
+  // TypeScript style guide
+  {
+    files: ['src/**/*.{ts,vue}'],
+    rules: {
+      'complexity': ['warn', { max: 10 }],
+      'no-nested-ternary': 'error',
+      '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'never' }],
+      'no-restricted-syntax': ['error',
+        { selector: 'TSEnumDeclaration', message: 'Use literal unions instead of enums.' },
+        { selector: 'IfStatement > :not(IfStatement).alternate', message: 'Avoid else. Use early returns.' },
+        { selector: 'TryStatement', message: 'Use tryCatch() instead of try/catch.' },
+      ],
+    },
+  },
+
+  // Feature boundaries
+  {
+    files: ['src/**/*.{ts,vue}'],
+    plugins: { 'import-x': pluginImportX },
+    rules: {
+      'import-x/no-restricted-paths': ['error', {
+        zones: [
+          { target: './src/features/workout', from: './src/features', except: ['./workout'] },
+          // ... other features
+          { target: './src/features', from: './src/views' },  // Unidirectional flow
+        ]
+      }],
+    },
+  },
+
+  // i18n rules
+  {
+    files: ['src/**/*.vue'],
+    plugins: { '@intlify/vue-i18n': pluginVueI18n },
+    rules: {
+      '@intlify/vue-i18n/no-raw-text': ['error', { /* config */ }],
+    },
+  },
+
+  // Prevent disabling i18n rules
+  {
+    files: ['src/**/*.vue'],
+    plugins: { '@eslint-community/eslint-comments': pluginEslintComments },
+    rules: {
+      '@eslint-community/eslint-comments/no-restricted-disable': ['error', '@intlify/vue-i18n/*'],
+    },
+  },
+
+  // Vitest rules
+  {
+    files: ['src/**/__tests__/*'],
+    ...pluginVitest.configs.recommended,
+    rules: {
+      'vitest/consistent-test-it': ['error', { fn: 'it' }],
+      'vitest/prefer-hooks-on-top': 'error',
+      'vitest/prefer-hooks-in-order': 'error',
+      'vitest/no-duplicate-hooks': 'error',
+      'vitest/max-nested-describe': ['error', { max: 2 }],
+      'vitest/no-conditional-in-test': 'warn',
+    },
+  },
+
+  // Enforce test helpers
+  {
+    files: ['src/**/__tests__/**/*.{ts,spec.ts}'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        paths: [
+          { name: 'vitest-browser-vue', importNames: ['render'], message: 'Use createTestApp()' },
+          { name: '@vue/test-utils', importNames: ['mount'], message: 'Use createTestApp()' },
+        ]
+      }],
+    },
+  },
+
+  // Local rules
+  {
+    files: ['src/**/*.{ts,vue}'],
+    plugins: { local: localRules },
+    rules: {
+      'local/no-hardcoded-colors': 'error',
+      'local/composable-must-use-vue': 'error',
+      'local/repository-trycatch': 'error',
+      'local/extract-condition-variable': 'error',
+      'local/no-let-in-describe': 'error',
+    },
+  },
+
+  // Disable rules handled by Oxlint
+  ...pluginOxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
+
+  // pnpm catalog enforcement
+  ...pnpmConfigs.recommended,
+
+  skipFormatting,
+)
+```
+
+</Collapsible>
+
+---
+
+## Summary
+
+| Category | Rule | Purpose |
+|----------|------|---------|
+| **Must Have** | `complexity` | Limit function complexity |
+| **Must Have** | `no-nested-ternary` | Readable conditionals |
+| **Must Have** | `consistent-type-assertions` | No unsafe `as` casts |
+| **Must Have** | `no-restricted-syntax` (enums) | Use unions over enums |
+| **Must Have** | `no-restricted-syntax` (else) | Prefer early returns |
+| **Must Have** | `no-restricted-syntax` (routes) | Use named routes |
+| **Must Have** | `import-x/no-restricted-paths` | Feature isolation |
+| **Must Have** | `vue/no-unused-*` | Dead code detection |
+| **Must Have** | `@intlify/vue-i18n/no-raw-text` | i18n compliance |
+| **Must Have** | `no-restricted-disable` | No bypassing i18n |
+| **Must Have** | `no-restricted-imports` | Enforce test helpers |
+| **Nice to Have** | `vue/define-props-destructuring` | Vue 3.5 patterns |
+| **Nice to Have** | `vue/max-template-depth` | Template readability |
+| **Nice to Have** | `vitest/*` | Test consistency |
+| **Nice to Have** | `unicorn/*` | Modern JavaScript |
+| **Nice to Have** | `pnpm/recommended` | Catalog enforcement |
+| **Custom** | `composable-must-use-vue` | Composable validation |
+| **Custom** | `no-hardcoded-colors` | Theming support |
+| **Custom** | `no-let-in-describe` | Clean tests |
+| **Custom** | `extract-condition-variable` | Readable conditions |
+| **Custom** | `repository-trycatch` | Error handling |
+
+Start with the must-haves. Add nice-to-haves when you're ready. Write custom rules when nothing else fits.
+
+The combination of Oxlint for speed and ESLint for coverage gives you fast feedback during development and comprehensive checks in CI.
+
+---
+
+--- title: Next Level GitHub Copilot: Agents, Instructions & Automation in VS Code description: Workshop covering the transformation from LLM to Agent, context engineering, AGENTS.md, subagents, and skills in VS Code Copilot. tags: ['vs-code', 'github-copilot', 'ai-agents', 'context-engineering', 'workshop'] url: https://alexop.dev/posts/vs-code-copilot-workshop ---
+
+# Next Level GitHub Copilot: Agents, Instructions & Automation in VS Code
+
+
+
+# Next Level GitHub Copilot
+
+Agents.md Subagents & Skills
+
+by Alexander Opalic
+
+---
+
+---
+
+## Workshop Outline
+
+<VClicks>
+
+1. What is an Agent? (LLM → Agent transformation)
+2. Context Engineering (the real skill)
+3. Back Pressure (core validation concept)
+4. AGENTS.md (open standard)
+5. Subagents (specialized invocation)
+6. Skills (portable workflows)
+7. Live Demo
+
+</VClicks>
+
+---
+
+## 🙋 Who has used GitHub Copilot in VS Code?
+
+---
+
+## About me
+
+<div class="flex flex-col items-center">
+  
+  <h2 class="mt-4">Alex Opalic</h2>
+</div>
+
+<VClicks>
+
+* 🚀 7 years expierence as a full stack developer 
+* 💼 Developer at Otto Payments
+* 🏡 Based in Geretsried (south of Munich, Bavaria)
+* ✍️ Blogger at alexop.dev
+* 🎤 Sharing & speaking about Vue, testing & GraphQL & AI
+
+</VClicks>
+
+---
+
+# What is an Agent?
+
+---
+
+## The Transformation: LLM → Agent
+
+- At the beginning, an LLM is just a text generator
+- One problem: the LLM didn't have access to current news
+- Solution: all providers gave the LLM access to tools
+- With tools, the LLM can now interact with the world
+- This is why an agent is an LLM + Tools + Agentic Loop
+
+---
+
+---
+
+## The Agentic Loop (nanocode)
+
+```shell
+nanocode | claude-opus-4-5 | /Users/alexanderopalic/Projects/typescript/nanocode
+
+────────────────────────────────────────────────────────────────────────────────
+❯  create a simple typescript file as a sum function
+────────────────────────────────────────────────────────────────────────────────
+[agentLoop] Starting with 1 messages
+[agentLoop] Got response, stop_reason: tool_use
+
+⏺ Write(src/sum.ts)
+  ⎿  ok
+[agentLoop] Starting with 3 messages
+[agentLoop] Got response, stop_reason: end_turn
+
+⏺ Created `src/sum.ts` with a simple sum function that takes two numbers and returns their sum.
+```
+
+**~350 lines of TypeScript** to understand how Claude Code works.
+
+---
+
+## The Agentic Loop (Code)
+
+```typescript
+async function agentLoop(messages: Message[], systemPrompt: string): Promise<Message[]> {
+  const response = await callApi(messages, systemPrompt)
+  printResponse(response)
+
+  const toolResults = await processToolCalls(response.content)
+  const newMessages = [...messages, { role: 'assistant', content: response.content }]
+
+  if (toolResults.length === 0) {
+    return newMessages  // No tools called, we're done
+  }
+
+  return agentLoop(  // Loop again with tool results
+    [...newMessages, { role: 'user', content: toolResults }],
+    systemPrompt
+  )
+}
+```
+
+The entire request → response → execute → loop cycle in ~15 lines.
+
+---
+
+## Tool Registration
+
+```typescript
+const TOOLS = new Map([
+  ['read', {
+    description: 'Read file with line numbers',
+    schema: { path: 'string', offset: 'number?', limit: 'number?' },
+    execute: read
+  }],
+  ['write', {
+    description: 'Write content to file',
+    schema: { path: 'string', content: 'string' },
+    execute: write
+  }],
+  ['bash', {
+    description: 'Run shell command',
+    schema: { cmd: 'string' },
+    execute: bash
+  }]
+])
+```
+
+---
+
+## A Complete Tool Implementation
+
+```typescript
+async function read(args: Record<string, unknown>): Promise<string> {
+  const path = args.path as string
+  const text = await Bun.file(path).text()
+  const lines = text.split('\n')
+  const offset = (args.offset as number) ?? 0
+  const limit = (args.limit as number) ?? lines.length
+  return lines
+    .slice(offset, offset + limit)
+    .map((line, i) => `${(offset + i + 1).toString().padStart(4)}| ${line}`)
+    .join('\n')
+}
+```
+
+---
+
+---
+
+## VS Code Copilot Built-in Tools
+
+- ⟨⟩ **agent** — Delegate tasks to other agents
+- ⓘ **askQuestions** — Ask questions to clarify requirements
+- ✎ **edit** — Edit files in your workspace
+- ▷ **execute** — Execute code and applications
+- ⧉ **read** — Read files in your workspace
+- 🔍 **search** — Search files in your workspace
+- ≡ **todo** — Manage and track todo items
+- ✕ **vscode** — Use VS Code features
+- 🌐 **web** — Fetch information from the web
+
+---
+
+# Context Engineering
+
+---
+
+---
+
+---
+
+> "Context engineering is the art and science of filling the context window with just the right information at each step of an agent's trajectory."
+>
+> — LangChain/Manus webinar
+
+---
+
+## Context Window Utilization
+
+---
+
+---
+
+## Three Long-Horizon Techniques
+
+From [Anthropic's guide](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents):
+
+<VClicks>
+1. **Compaction** — Summarize history, reset periodically
+2. **Structured note-taking** — External memory systems
+3. **Sub-agent architectures** — Distribute work across focused contexts
+</VClicks>
+
+---
+
+# Back Pressure
+
+---
+
+## Why Back Pressure Matters
+
+**Back pressure** = automated feedback that validates agent work
+
+<VClicks>
+
+- Without back pressure, **you** become the validation layer
+- Agents cannot self-correct if nothing tells them something is wrong
+- With good back pressure, agents detect mistakes and iterate until correct
+
+</VClicks>
+
+> "If you're directly responsible for checking each line is valid, that's time taken away from higher-level goals."
+
+---
+
+## Back Pressure Sources
+
+| Source | What It Validates |
+|--------|-------------------|
+| **Type system** | Types, interfaces, contracts |
+| **Build tools** | Syntax, imports, compilation |
+| **Tests** | Logic, behavior, regressions |
+| **Linters** | Style, patterns, best practices |
+
+**Key insight:** Expressive type systems + good error messages = agents can self-correct.
+
+---
+
+# AGENTS.md
+
+---
+
+## What is AGENTS.md?
+
+**What:** An open standard for agent-specific documentation
+
+**Where:** Repository root (works in monorepos too)
+
+**Who:** Works with Copilot, Claude, Cursor, Devin, 20+ agents
+
+> "While README.md targets humans, AGENTS.md contains the extra context coding agents need."
+
+---
+
+---
+
+## AGENTS.md Structure
+
+```markdown
+# AGENTS.md
+
+## Dev Environment
+- How to set up and navigate
+
+## Build & Test Commands
+- `pnpm install && pnpm dev`
+- `pnpm test:unit`
+
+## Code Style
+- TypeScript strict mode
+- Prefer composition over inheritance
+
+## PR Instructions
+- Keep PRs small and focused
+```
+
+**Key:** No required fields—use what helps your project.
+
+---
+
+---
+
+## Before vs After: Progressive Disclosure
+
+<h3 class="text-red-400 font-bold text-xl mb-4">❌ Bloated (847 lines)</h3>
+
+```markdown
+# AGENTS.md
+
+## API Endpoints
+[200 lines of docs...]
+## Testing Strategy
+[150 lines of docs...]
+## Architecture
+[300 lines of docs...]
+## Code Style
+[100 lines of rules...]
+## Deployment
+[97 lines of docs...]
+```
+
+<p class="text-yellow-400 mt-4 text-sm">40% context consumed before work starts</p>
+
+<h3 class="text-green-400 font-bold text-xl mb-4">✅ Lean (58 lines)</h3>
+
+```markdown
+# AGENTS.md
+
+## Quick Start
+pnpm install && pnpm dev
+
+## Docs Reference
+| Doc | When to read |
+|-----|--------------|
+| docs/api.md | API work |
+| docs/testing.md | Tests |
+| docs/arch.md | Design |
+```
+
+<p class="text-cyan-400 mt-4 text-sm">Docs loaded on-demand when needed</p>
+
+---
+
+---
+
+## The /learn Skill
+
+```markdown
+# Learn from Conversation
+
+## Phase 1: Deep Analysis
+- What patterns or approaches were discovered?
+- What gotchas or pitfalls were encountered?
+- What architecture decisions were made?
+
+## Phase 2: Categorize & Locate
+Read existing docs to find the best home.
+
+## Phase 3: Draft the Learning
+Format to match existing doc style.
+
+## Phase 4: User Approval (BLOCKING)
+Present changes, wait for explicit approval.
+
+## Phase 5: Save
+After approval, save the learning.
+```
+
+---
+
+# Subagents
+
+---
+
+## Subagents in VS Code
+
+**How to invoke:**
+<VClicks>
+1. Enable tools in Copilot Chat (hammer icon)
+2. Call explicitly with `#runSubagent`
+3. Or accept when Copilot suggests one
+</VClicks>
+
+---
+
+## Use Cases 
+
+<VClicks>
+- Specialized searches (explore codebase, web, docs)
+- Long-running tasks (data analysis, refactoring)
+- TDD workflows (test generation, validation)
+- Multi-step processes (research, summarize, act)
+</VClicks>
+---
+## Explore Subagent Flow
+
+<SubagentDiagram
+  task="Find auth files"
+  files={["Auth.tsx", "auth.ts", "authService.ts"]}
+/>
+
+Click **Start** to see how the main agent delegates file search to a specialized Explore subagent.
+
+---
+
+## Parallel Subagent Execution
+
+<ParallelSubagentDiagram
+  task="Research Vue 3 reactivity"
+  agents={[
+    { name: "Web Agent", icon: "🌐", color: "#3b82f6", domain: "Docs, GitHub", findings: ["Official guide", "RFC #123", "GitHub issue"] },
+    { name: "Community", icon: "💬", color: "#8b5cf6", domain: "Reddit, SO", findings: ["r/vuejs post", "Top SO answer", "Discord tip"] },
+    { name: "Codebase", icon: "📂", color: "#10b981", domain: "Project files", findings: ["useAuth.ts", "store.ts", "api/client.ts"] }
+  ]}
+/>
+
+Click **Start** to see the fan-out/fan-in pattern where multiple subagents search in parallel.
+
+---
+
+## Subagent in nanocode: Fetch Tool
+
+```shell
+nanocode | claude-opus-4-5 | /Users/alexanderopalic/Projects/typescript/nanocode
+
+────────────────────────────────────────────────────────────────────────────────
+❯ how does fc bayern played yesterday
+────────────────────────────────────────────────────────────────────────────────
+[agentLoop] Starting with 1 messages
+[agentLoop] Got response, stop_reason: tool_use
+
+⏺ Fetch(https://www.google.com/search?q=fc+bayern+munich+m)
+  ⎿  I apologize, but I cannot access real-time sports results or ... +7 lines
+[agentLoop] Starting with 3 messages
+[agentLoop] Got response, stop_reason: tool_use
+
+⏺ Fetch(https://www.espn.com/soccer/team/_/id/132/bayern-m)
+  ⎿  Based on the information in the image, Bayern Munich's most  ... +7 lines
+[agentLoop] Starting with 5 messages
+[agentLoop] Got response, stop_reason: end_turn
+
+⏺ FC Bayern Munich lost 2-1 to FC Augsburg in the Bundesliga yesterday.
+```
+
+The **Fetch tool** uses a subagent to summarize HTML responses before returning.
+
+---
+
+#  Skills
+
+---
+
+---
+
+## Real Skill: Plausible SEO Consultant
+
+```shell
+.claude/skills/plausible-insights/
+├── skill.md              # Skill definition + quick start
+├── scripts/              # Automation scripts 
+│   └── fetch-data.ts    # Fetch Plausible data CLI
+└── references/           # On-demand docs (progressive disclosure)
+    ├── quick-ref.md      # Common query patterns
+    ├── api/
+    │   ├── filters.md    # Filter syntax
+    │   └── errors.md     # Error solutions
+    └── seo/
+        └── thresholds.md # Interpretation guidelines
+```
+
+The agent reads `skill.md` first. Reference docs load only when needed.
+
+---
+
+## Skill in Action
+
+**User:** "Why is my bounce rate so high on the Vue posts?"
+
+<VClicks>
+
+1. Description matches → skill.md loads (~500 tokens)
+2. Agent runs: `bun cli top-pages --range 7d --pattern "/vue/"`
+3. Agent reads `references/seo/thresholds.md` for interpretation
+4. Agent fetches actual pages with WebFetch
+5. Returns specific fixes based on real content
+
+</VClicks>
+
+**Key:** Data shows symptoms. Content shows causes.
+
+---
+
+# The Full Picture
+
+---
+
+---
+
+# Live Demo
+
+---
+
+## Prerequisites
+
+The demo uses `npx` (bundled with Node.js) and Python. Install for your platform:
+
+<VClicks>
+
+**Mac (Homebrew):**
+```bash
+brew install node python
+```
+
+**Windows (winget):**
+```bash
+winget install OpenJS.NodeJS Python.Python.3.12
+```
+
+**Or download from:** [nodejs.org](https://nodejs.org) | [python.org](https://python.org)
+
+</VClicks>
+
+**Verify:**
+```bash
+node --version && npx --version && python --version
+```
+
+---
+
+## Demo: Building a Skill
+
+<VClicks>
+
+1. **Enable Skills** in VS Code settings
+2. **Install skill-creator** via CLI
+3. **Prompt** to generate a new skill
+
+</VClicks>
+
+---
+
+## Step 1: Enable Skills
+
+**VS Code Setting:**
+
+```json
+{
+  "chat.useAgentSkills": true
+}
+```
+
+Or via UI: `Settings → Search "agent skills" → Enable`
+
+> Note: Still in preview — enable in VS Code Insiders for latest features.
+
+---
+
+---
+
+## Step 3: Create a new Skill
+
+```md
+---
+name: hello
+description: 'use it everytime the user writes alex'
+---
+
+# Hello SKill
+
+if the user writes "alex", respond with "Hello, Alexander Opalic! How can I assist you today?"
+
+```
+
+---
+
+## Step 3: Install skill-creator
+
+```bash
+npx skills add https://github.com/anthropics/skills --skill skill-creator
+```
+
+This adds the **skill-creator** skill to your project — a skill that helps you create new skills.
+
+**Project structure after install:**
+
+```
+my-project/
+└── .github/
+    └── skills/
+        └── skill-creator/
+            └── SKILL.md
+```
+
+---
+
+```shell
+◇  Source: https://github.com/anthropics/skills.git
+│
+◇  Repository cloned
+│
+◇  Found 17 skills (via Well-known Agent Skill Discovery)
+│
+●  Selected 1 skill: skill-creator
+│
+◇  Detected 3 agents
+│
+◇  Install to
+│  All agents (Recommended)
+│
+◇  Installation scope
+│  Project
+│
+◇  Installation method
+│  Symlink (Recommended)
+
+│
+◇  Installation Summary ──────────────────────────────╮
+│                                                     │
+│  ~/Projects/workshop/.agents/skills/skill-creator   │
+│    symlink → Claude Code, GitHub Copilot, OpenCode  │
+│                                                     │
+├─────────────────────────────────────────────────────╯
+│
+◆  Proceed with installation?
+│  ● Yes / ○ No
+└
+```
+---
+
+## Step 3: Generate a New Skill
+
+Important Skill name and folder name must match!
+
+**Prompt:**
+
+```
+Create a skill that will use https://alexop.dev/llms.txt
+and will answer any question regarding Vue or AI.
+
+The skill should fetch the content and use the
+#runSubagent command. The subagent should do the
+heavy work and then report back to the main agent.
+name of the skill is vue-ai-assistant
+```
+
+→ **skill-creator generates the SKILL.md for us**
+
+---
+
+## What Gets Generated
+
+```markdown
+---
+name: vue-ai-assistant
+description: Answer questions about Vue.js, Nuxt, and AI topics using Alexander Opalic's knowledge base. Use this skill when the user asks about Vue, Vue 3, Nuxt, Nuxt 3, Composition API, Vue Router, Pinia, Vite, AI, machine learning, LLMs, or related frontend/AI topics. Triggers on questions like "how do I use Vue", "explain Nuxt", "what's new in Vue 3", "AI agent patterns", or any Vue/AI related query.
+---
+
+# Vue & AI Assistant
+
+Answer questions about Vue.js ecosystem and AI topics by fetching knowledge from https://alexop.dev/llms.txt and delegating research to a subagent.
+
+## MANDATORY Workflow
+
+**IMPORTANT: You MUST follow ALL steps below. Do NOT skip the subagent step. Do NOT answer directly after fetching - you MUST delegate to a subagent.**
+
+1. **Fetch the knowledge base**: Use `fetch_webpage` to retrieve content from `https://alexop.dev/llms.txt`
+2. **REQUIRED - Delegate to subagent**: Use `runSubagent` with the fetched content and user's question. **This step is NOT optional.**
+3. **Return the answer**: Present the subagent's findings to the user
+
+## Implementation
+
+**You MUST execute ALL steps below. Skipping the subagent is a violation of this skill's requirements.**
+
+### Step 1: Fetch Knowledge Base
+
+Use the fetch_webpage tool:
+- URL: `https://alexop.dev/llms.txt`
+- Query: The user's question about Vue or AI
+
+### Step 2: Run Subagent with Context (MANDATORY)
+
+**You MUST call `runSubagent` - do NOT answer the question yourself. The subagent handles the analysis and response.**
+
+Use `runSubagent` with a detailed prompt containing:
+
+1. The fetched content from llms.txt as the knowledge base
+2. The user's original question
+3. Instructions to:
+   - Analyze the knowledge base content thoroughly
+   - Find relevant information to answer the question
+   - Provide a clear, concise, and accurate answer
+   - Include code examples when relevant
+   - Cite specific sections from the knowledge base if applicable
+   - If the knowledge base doesn't contain the answer, use general knowledge but note this
+
+Example subagent prompt:
+
+You are a Vue.js and AI expert. Answer the following question using the provided knowledge base content.
+
+KNOWLEDGE BASE CONTENT:
+fetched_content
+
+USER QUESTION:
+user_question
+
+Analyze thoroughly, provide code examples when relevant, and cite sources from the knowledge base.
+### Step 3: Present Answer
+
+Return the subagent's response to the user, formatted appropriately with code blocks and explanations.
+
+## Example
+
+**User asks**: "How do I use composables in Vue 3?"
+
+**Execution**:
+1. Fetch https://alexop.dev/llms.txt
+2. **MUST** call runSubagent with the content and question (do NOT skip this)
+3. Return the subagent's comprehensive answer about Vue 3 composables
+```
+
+---
+
+---
+
+## Bonus: The askQuestions Tool
+
+VS Code Copilot can **ask clarifying questions** mid-task.
+
+```md
+help me to create a workout tracking app use the #askQuestions tool to find out how the tech specs should be
+```
+
+---
+```shell
+┌─────────────────────────────────────────────────────────────┐
+│                     Platform (1/4)                          │
+├─────────────────────────────────────────────────────────────┤
+│ What platform should the workout tracking app target?       │
+├─────────────────────────────────────────────────────────────┤
+│ ★ Web App  Browser-based PWA, accessible anywhere      [✓]  │
+├─────────────────────────────────────────────────────────────┤
+│   iOS Native  Swift/SwiftUI for iPhone                      │
+├─────────────────────────────────────────────────────────────┤
+│   Android Native  Kotlin for Android devices                │
+├─────────────────────────────────────────────────────────────┤
+│   Cross-Platform  React Native or Flutter for iOS & Android │
+├─────────────────────────────────────────────────────────────┤
+│   Desktop  Electron app for Mac/Windows                     │
+├─────────────────────────────────────────────────────────────┤
+│ ✎ Other...  Enter custom answer                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Subagent Fan-Out Pattern
+
+**Prompt for VS Code Insiders:**
+
+```
+#runSubagent run 3 subagents that search the web
+and tell me something interesting about Geretsried
+```
+
+This demonstrates the **fan-out/fan-in pattern** where multiple agents work in parallel.
+
+---
+
+## Live Action: Excalidraw Skill
+
+**Install the skill:**
+
+```bash
+npx skills add https://github.com/softaworks/agent-toolkit --skill excalidraw
+```
+
+Install the Excalidraw Extension in VS Code for best experience.
+
+**Prompt to customize with brand colors:**
+
+```
+Update the excalidraw skill to use these brand colors:
+
+- Fill: rgb(33, 39, 55)
+- Text: rgb(234, 237, 243)
+- Accent: rgb(255, 107, 237)
+- Card: rgb(52, 63, 96)
+- Card Muted: rgb(138, 51, 123)
+- Border: rgb(171, 75, 153)
+```
+
+→ Agent modifies the skill's SKILL.md to include color instructions
+
+---
+
+---
+
+## More Community Skills
+
+```bash
+npx skills add https://github.com/anthropics/skills --skill frontend-design
+npx skills add https://github.com/simonwong/agent-skills --skill code-simplifier
+```
+
+- **frontend-design** — creates polished, production-grade UI components
+- **code-simplifier** — simplifies and refines code for clarity
+
+Browse and discover skills at [agentskills.io](https://agentskills.io/)
+
+---
+
+# Key Takeaways
+
+---
+
+## Key Takeaways
+
+1. **Agents = LLM + Tools + Loop** (nanocode shows this simply)
+2. **Context is finite** — treat tokens as budget
+3. **AGENTS.md** — standardized project context
+4. **Subagents** — specialized agents for complex tasks
+5. **Skills** — portable workflows that load on demand
+
+---
+
+# Thank You!
+Questions?
+
+---
+
+# Resources
+
+---
+
+## Resources
+
+- [VS Code: Using Agents](https://code.visualstudio.com/docs/copilot/agents/overview) - Agent types and session management
+- [Anthropic: Effective Context Engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) - Context engineering guide
+- [VS Code: Introducing Agent Skills](https://www.youtube.com/watch?v=JepVi1tBNEE) - Agent Skills deep dive
+- [VS Code: Context Engineering Guide](https://code.visualstudio.com/docs/copilot/guides/context-engineering-guide) - Microsoft's context engineering workflow
+- [AGENTS.md](https://agents.md/) - Open standard for agent documentation
+- [Agent Skills Spec](https://agentskills.io/) - Open standard for portable agent skills
+- [nanocode](https://github.com/alexanderop/nanocode) - Minimal agent implementation in TypeScript
+- [Writing a Good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) - Best practices for agent documentation
+- [Plausible SEO Skill](https://github.com/alexanderop/claude-plausible-analytics) - Skills deep dive with Plausible example
+- [Don't Waste Your Back Pressure](https://banay.me/dont-waste-your-backpressure/) - Why automated feedback loops make agents more effective
+- [Workshop Solution](https://github.com/alexanderop/workshop) - Complete code examples from this workshop
+- [Learn Prompt](https://alexop.dev/prompts/claude/claude-learn-command/) - Skill that helps agents learn from conversations
+
+---
+
+---
+
+--- title: What's New in VS Code Copilot: January 2026 Update description: Major updates to VS Code Copilot including parallel subagent execution, a new skills system, deeper Claude integration with extended thinking, terminal improvements with kitty keyboard protocol, and instruction files that now work everywhere. tags: ['ai', 'tooling', 'vscode'] url: https://alexop.dev/posts/whats-new-vscode-copilot-january-2026 ---
+
+# What's New in VS Code Copilot: January 2026 Update
+
+
+
+The past week has brought a wave of updates to VS Code's Copilot experience, with major improvements to how agents work together, a new skills system, deeper Claude integration, and significant terminal enhancements. Here's what you need to know—with concrete examples you can try today.
+
+For those who want to dive deeper into the implementation details, I've included links to the relevant GitHub pull requests and issues throughout this post.
+
+---
+
+## Subagents Get Smarter (and Faster)
+
+Two significant changes make subagents far more practical for complex workflows.
+
+**Related:** [Issue #274630 - Parallel subagent execution](https://github.com/microsoft/vscode/issues/274630)
+
+### Parallel Execution
+
+Previously, if you kicked off multiple `runSubagent` calls, they'd run one after another. Now they can run simultaneously when tasks are independent, dramatically reducing wait times for research and code review operations.
+
+**Example prompt:**
+```
+Research the best approaches for:
+1. Rate limiting in our REST API
+2. Caching strategies for our database queries
+3. Error handling patterns for our microservices
+
+Use a subagent for each topic and compile the findings.
+```
+
+With parallel execution, all three research subagents run concurrently instead of sequentially—cutting total wait time significantly.
+
+<Figure
+  src={subAgentParallel}
+  alt="Parallel subagent execution visualization"
+  size="large"
+/>
+
+### Fine-Grained Tool Access
+
+You can now constrain which tools a subagent can access. This is critical for safety-conscious workflows where you want AI help without the risk of unintended changes.
+
+**Creating a custom agent with restricted tools:**
+
+Create a file at `.github/agents/github-researcher.md`:
+
+```markdown
+---
+name: github-researcher
+description: Research agent with access to GitHub. Use for searching issues,
+             reading documentation, and gathering information. Cannot edit files.
+tools: ['read', 'search', 'web', 'github/*']
+argument-hint: The research task to complete
+---
+
+You are a research assistant with read-only access to the codebase and GitHub.
+
+Your capabilities:
+- Search and read files in the repository
+- Search GitHub issues and pull requests
+- Fetch web documentation
+
+You cannot:
+- Edit or create files
+- Run terminal commands
+- Make commits
+
+When researching, provide citations and links to sources.
+```
+
+Now you can ask: *"Use a subagent to find all issues assigned to me about authentication and summarize them"* — and the subagent will be limited to read-only operations.
+
+If you've used Claude Code's subagent system, you'll recognize this pattern—it's similar to how <InternalLink slug="claude-code-customization-guide-claudemd-skills-subagents">Claude Code handles skills and subagents</InternalLink> with tool restrictions.
+
+### Control Subagent Availability
+
+Use the `infer` attribute to control whether an agent can be used as a subagent:
+
+```markdown
+---
+name: dangerous-deployer
+description: Handles production deployments
+tools: ['execute', 'edit', 'read']
+infer: false  # This agent cannot be auto-invoked as a subagent
+---
+```
+
+---
+
+## Skills Are Now a First-Class Feature
+
+Skills are now **enabled by default** for all users. They're folders containing instructions and resources that Copilot loads on-demand when relevant to your task.
+
+**Related PRs:**
+- [Issue #286237 - Custom agent improvements](https://github.com/microsoft/vscode/issues/286237)
+- [Issue #286238 - Skill lookup enhancements](https://github.com/microsoft/vscode/issues/286238)
+- [PR #3082 - Implement agent using CustomAgentProvider API](https://github.com/microsoft/vscode-copilot-chat/pull/3082)
+
+### Creating Your First Skill
+
+Create a directory structure:
+
+<FileTree tree={[
+  { name: ".github", children: [
+    { name: "skills", children: [
+      { name: "webapp-testing", children: [
+        { name: "SKILL.md", comment: "// Instructions" },
+        { name: "test-template.js", comment: "// Example template" }
+      ]}
+    ]}
+  ]}
+]} />
+
+**`SKILL.md`:**
+```markdown
+---
+name: webapp-testing
+description: Guide for testing web applications using Playwright.
+             Use this when asked to create or run browser-based tests.
+---
+
+# Web Application Testing with Playwright
+
+When creating tests for this project, follow these patterns:
+
+## Test Structure
+- Use `describe` blocks for feature groupings
+- Use `test` for individual test cases
+- Always include setup and teardown
+
+## Assertions
+- Prefer `toBeVisible()` over `toHaveCount(1)`
+- Use `waitFor` for async operations
+- Include accessibility checks
+
+## Example Template
+Reference the [test template](./test-template.js) for the standard structure.
+
+## Naming Convention
+- Test files: `*.spec.ts`
+- Test descriptions: "should [expected behavior] when [condition]"
+```
+
+Now when you ask *"Write Playwright tests for the login form"*, Copilot automatically loads this skill and follows your project's testing conventions.
+
+### Loading Skills from Custom Locations
+
+For teams sharing skills across repos, use the new setting:
+
+```json
+{
+  "chat.agentSkillsLocations": [
+    ".github/skills",
+    "~/shared-skills",
+    "/team/copilot-skills"
+  ]
+}
+```
+
+### Extension-Contributed Skills
+
+Extensions can now contribute skills via their `package.json`:
+
+```json
+{
+  "contributes": {
+    "copilotSkills": [
+      {
+        "name": "docker-compose",
+        "description": "Helps create and debug Docker Compose configurations",
+        "path": "./skills/docker-compose"
+      }
+    ]
+  }
+}
+```
+
+Or dynamically via the new API:
+
+```typescript
+vscode.chat.registerSkill({
+  name: 'dynamic-skill',
+  description: 'A skill registered at runtime',
+  async getInstructions(context) {
+    // Return context-aware instructions
+    return generateInstructionsFor(context.workspace);
+  }
+});
+```
+
+---
+
+## Instruction Files Work Everywhere
+
+Instruction files now apply to **non-coding tasks** like code exploration, architecture explanation, and documentation. [#287152](https://github.com/microsoft/vscode/issues/287152)
+
+**Before:** Your `.github/copilot-instructions.md` was ignored when you asked *"Explain how authentication works in this codebase"*
+
+**After:** Those instructions are now read for all codebase-related work.
+
+This aligns with the <InternalLink slug="stop-bloating-your-claude-md-progressive-disclosure-ai-coding-tools">progressive disclosure approach</InternalLink> where context is loaded on-demand rather than crammed into a single file.
+
+**Example `copilot-instructions.md`:**
+```markdown
+# Project Context
+
+This is a microservices architecture with:
+- API Gateway (Node.js/Express)
+- Auth Service (Go)
+- User Service (Python/FastAPI)
+- Shared message queue (RabbitMQ)
+
+When explaining code:
+- Always mention which service a file belongs to
+- Reference the architecture diagram at docs/architecture.md
+- Note any cross-service dependencies
+```
+
+Now *"How does user registration work?"* will include this context automatically.
+
+---
+
+## Claude Code Gets Extended Thinking
+
+The Claude Code integration now supports **extended thinking**, showing Claude's chain-of-thought reasoning in a collapsible section. [#287658](https://github.com/microsoft/vscode/issues/287658)
+
+**Related:** [Issue #266962 - Claude agent support](https://github.com/microsoft/vscode/issues/266962), [#287933 - Model picker support](https://github.com/microsoft/vscode/issues/287933)
+
+### What It Looks Like
+
+When you ask Claude to solve a complex problem, you'll see:
+
+```
+▼ Thinking...
+  Let me analyze the codebase structure first. I see there are
+  three main modules: auth, api, and database. The user is asking
+  about the authentication flow, so I should trace the request
+  from the API gateway through to the auth service...
+
+  The JWT validation happens in middleware/auth.ts, but the token
+  generation is in services/auth/token.go. I need to explain how
+  these connect via the shared Redis cache...
+
+Here's how authentication works in your codebase:
+[Final response]
+```
+
+### Configuration
+
+Enable/disable thinking display in settings:
+```json
+{
+  "github.copilot.chat.claude.showThinking": true
+}
+```
+
+### Model Picker
+
+You can now select which Claude model to use:
+
+1. Open the Chat view
+2. Click the model selector dropdown
+3. Choose from available Claude models (Sonnet, Opus, etc.)
+
+Different models offer different speed/capability tradeoffs—use faster models for simple tasks, more capable models for complex reasoning.
+
+---
+
+## Terminal Gets Major Upgrades
+
+The integrated terminal received significant keyboard handling improvements this release, with two new protocol implementations.
+
+**Related PRs:**
+- [PR #286897 - xterm.js 6.1.0 with kitty keyboard and win32-input-mode](https://github.com/microsoft/vscode/pull/286897)
+- [Issue #286809 - Kitty keyboard protocol support](https://github.com/microsoft/vscode/issues/286809)
+- [Issue #286896 - Win32 input mode support](https://github.com/microsoft/vscode/issues/286896)
+- [xterm.js PR #5600 - Implement kitty keyboard protocol](https://github.com/xtermjs/xterm.js/pull/5600) (upstream)
+
+### Kitty Keyboard Protocol (CSI u)
+
+VS Code's terminal now supports the [kitty keyboard protocol](https://sw.kovidgoyal.net/kitty/keyboard-protocol/), enabling more sophisticated keyboard input handling. This unlocks previously unavailable key combinations and provides better support for terminal applications that use this modern standard.
+
+**Important:** This feature is **disabled by default** as it's experimental. Enable it in settings:
+
+```json
+{
+  "terminal.integrated.enableKittyKeyboardProtocol": true
+}
+```
+
+The protocol improves handling of modifiers, key events, repeat detection, and escape sequences—particularly useful if you use tools like fish shell, neovim, or other terminal applications that support CSI u.
+
+### Win32 Input Mode
+
+For Windows users, the terminal now supports win32-input-mode, improving keyboard handling compatibility with Windows console applications. VT sequences alone can't send everything that Windows console programs expect (encoded as win32 INPUT_RECORDs), so this mode bridges that gap.
+
+**Also disabled by default.** Enable with:
+
+```json
+{
+  "terminal.integrated.enableWin32InputMode": true
+}
+```
+
+### Terminal Command Output Streams Inline
+
+When using Copilot in agent mode, terminal command output now streams inline inside the Chat view instead of requiring you to switch to the terminal panel. [#257468](https://github.com/microsoft/vscode/issues/257468) The output auto-expands on command execution and collapses on success [#287664](https://github.com/microsoft/vscode/issues/287664)—keeping you focused on the conversation flow.
+
+### Terminal Timeout Parameter
+
+The terminal tool now supports a timeout parameter to control how long commands run before timing out. [#286598](https://github.com/microsoft/vscode/issues/286598) This prevents unnecessary polling and gives you more control over long-running operations.
+
+### Terminal Command Sandboxing
+
+Terminal command sandboxing is now available for **macOS and Linux** [#277286](https://github.com/microsoft/vscode/issues/277286), adding an extra layer of security when running commands through the terminal tool.
+
+### Syntax Highlighting in Confirmation Dialogs
+
+The terminal tool now presents Python, Node.js, and Ruby commands with syntax highlighting in the confirmation dialog [#287772](https://github.com/microsoft/vscode/issues/287772), [#287773](https://github.com/microsoft/vscode/issues/287773), [#288360](https://github.com/microsoft/vscode/issues/288360)—making it easier to review commands before execution.
+
+### Expanded Auto-Approved Commands
+
+More commands are now automatically approved for execution:
+- `dir` in PowerShell [#288431](https://github.com/microsoft/vscode/issues/288431)
+- `sed -i` when editing files within the workspace [#288318](https://github.com/microsoft/vscode/issues/288318)
+- `od`, `xxd`, and safe `docker` commands [#287652](https://github.com/microsoft/vscode/issues/287652)
+
+### SGR 221/222 Escape Sequences
+
+The terminal now supports SGR 221 and 222 escape sequences [#286810](https://github.com/microsoft/vscode/issues/286810), allowing independent control of bold and faint text attributes for more granular formatting.
+
+---
+
+## MCP Gets More Powerful
+
+Model Context Protocol continues to evolve with significant new capabilities.
+
+### Dynamic Context Updates
+
+MCP apps now support model context update methods, enabling servers to update the context model dynamically. [#289473](https://github.com/microsoft/vscode/issues/289473) This means MCP servers can push new context to your chat sessions without requiring a refresh.
+
+### Custom Package Registries
+
+Added support for `registryBaseUrl` in MCP packages [#287549](https://github.com/microsoft/vscode/issues/287549), allowing teams to use private package registries for their MCP servers.
+
+### Built-in MCP Apps Support
+
+Built-in support for MCP Apps enables servers to provide custom UI for tool invocation. [#260218](https://github.com/microsoft/vscode/issues/260218) This opens the door for richer, more interactive MCP experiences beyond simple text-based tools.
+
+---
+
+## Quality of Life Improvements
+
+### Codex Agent in Dropdown
+
+The OpenAI Codex agent now appears directly in the agents dropdown [#289040](https://github.com/microsoft/vscode/issues/289040) for quick access:
+
+```
+Agents ▼
+├── Local Agent
+├── Background Agent
+├── Cloud Agent
+└── Codex Agent       ← New!
+```
+
+### New MCP Server Command
+
+A new `workbench.mcp.startServer` command [#283959](https://github.com/microsoft/vscode/issues/283959) lets you programmatically start specific or all MCP servers to discover their tools. This is useful for automation scenarios where you need to ensure servers are running before invoking their tools.
+
+### The `/clear` Command Archives Sessions
+
+The `/clear` command now archives the current session and starts a new one automatically [#285854](https://github.com/microsoft/vscode/issues/285854)—no more losing your chat history when you want a fresh start.
+
+### New Local Chat Command
+
+A new "New Local Chat" command [#288467](https://github.com/microsoft/vscode/issues/288467) lets you start a local chat session quickly.
+
+### Chat Session Imports
+
+You can now **import** a chat session directly into the Chat view [#283954](https://github.com/microsoft/vscode/issues/283954), instead of only being able to open it in a new editor tab. This makes it easier to continue conversations from exported sessions.
+
+### Chat Session Exports with MCP Info
+
+Exported sessions now include <InternalLink slug="what-is-model-context-protocol-mcp">MCP server</InternalLink> configuration [#283945](https://github.com/microsoft/vscode/issues/283945):
+
+```json
+{
+  "session": {
+    "messages": [...],
+    "mcpServers": [
+      {
+        "name": "github",
+        "url": "https://mcp.github.com",
+        "tools": ["search_issues", "get_pr", "list_repos"]
+      }
+    ]
+  }
+}
+```
+
+This makes sessions reproducible—share them with teammates and they can recreate your exact setup.
+
+### Multi-Select in Sessions View
+
+Select multiple chat sessions with `Cmd/Ctrl+Click` [#288448](https://github.com/microsoft/vscode/issues/288448):
+- Archive all selected
+- Mark all as read
+- Batch delete
+
+Additional session management improvements include "Mark All Read", "Archive All", and "Unarchive All" actions in context menus [#288147](https://github.com/microsoft/vscode/issues/288147), and increased locally persisted chat sessions [#283123](https://github.com/microsoft/vscode/issues/283123).
+
+### Resizable Sessions Sidebar
+
+You can now resize the sessions sidebar in the Chat view by dragging the separator [#281258](https://github.com/microsoft/vscode/issues/281258), similar to how terminal tabs work.
+
+### Extension Context Tooltips
+
+Hover over extension-contributed context items to see additional information about what they provide. [#280658](https://github.com/microsoft/vscode/issues/280658)
+
+### Accessible View Streams Thinking Content
+
+The Accessible View now dynamically streams thinking content [#289223](https://github.com/microsoft/vscode/issues/289223), making Claude's chain-of-thought reasoning accessible to screen reader users in real-time.
+
+### Multi-Model Selection in Language Models Editor
+
+Select multiple models in the Language Models editor and toggle their visibility at once [#287511](https://github.com/microsoft/vscode/issues/287511). Enterprise and Business users also get access to the Manage Models action [#287814](https://github.com/microsoft/vscode/issues/287814).
+
+---
+
+## Editor & Language Improvements
+
+### Improved Shebang Detection
+
+VS Code now recognizes Deno, Bun, and other modern JavaScript runtimes [#287819](https://github.com/microsoft/vscode/issues/287819) for better language detection when opening scripts.
+
+### Better Ghost Text Visibility
+
+Improved visibility of ghost text in next edit suggestions [#284517](https://github.com/microsoft/vscode/issues/284517), making it easier to distinguish AI suggestions from regular text.
+
+### Double-Click Selects Block Content
+
+Double-clicking immediately after a curly brace or bracket now selects the content inside it [#9123](https://github.com/microsoft/vscode/issues/9123)—a small but impactful change for manipulating code blocks.
+
+### Match File Path Case Toggle
+
+A new "Match File Path Case" toggle in the Search view's "files to include" input [#10633](https://github.com/microsoft/vscode/issues/10633) lets you control whether file paths and glob patterns match case-sensitively.
+
+### Bracket Match Foreground Color
+
+New `editorBracketMatch.foreground` theme color [#85775](https://github.com/microsoft/vscode/issues/85775) enables customization of matched bracket text color.
+
+### Parallel Build Tasks
+
+Dependent build tasks can now run in parallel [#288439](https://github.com/microsoft/vscode/issues/288439), improving build performance for projects with multiple independent compilation steps.
+
+### Git Delete File Command
+
+A new "Git: Delete File" command [#111767](https://github.com/microsoft/vscode/issues/111767) performs `git rm` on the current file directly from the command palette.
+
+---
+
+## Try It Today
+
+Here's a quick workflow to test the new features:
+
+1. **Create a custom agent** at `.github/agents/researcher.md` with restricted tools
+2. **Create a skill** at `.github/skills/my-skill/SKILL.md`
+3. **Ask Copilot:** *"What skills and subagents do you have available?"*
+4. **Test parallel execution:** *"Use subagents to research three different topics simultaneously"*
+5. **Enable Claude thinking** and ask a complex architecture question
+
+---
+
+## Looking Ahead
+
+These updates signal a clear direction: Copilot is evolving from a single-agent assistant into a **coordinated multi-agent system**. The combination of parallel subagents, constrained tool access, and shareable skills creates a foundation for sophisticated automated workflows.
+
+If you're interested in building your own agent systems, check out <InternalLink slug="building-your-own-coding-agent-from-scratch">Building Your Own Coding Agent from Scratch</InternalLink> for a hands-on guide to the underlying patterns.
+
+Key settings to know:
+```json
+{
+  "chat.useAgentSkills": true,
+  "chat.agentSkillsLocations": [".github/skills"],
+  "chat.customAgentInSubagent.enabled": true,
+  "github.copilot.chat.claude.showThinking": true,
+  "terminal.integrated.enableKittyKeyboardProtocol": true,
+  "terminal.integrated.enableWin32InputMode": true
+}
+```
+
+The ecosystem is about to get a lot more interesting.
+
+---
+
+## Related Pull Requests & Issues
+
+For those who want to dig into the implementation details:
+
+### Agent & Skills
+- [#274630 - Parallel subagent execution](https://github.com/microsoft/vscode/issues/274630)
+- [#280704 - Agents define allowed subagents](https://github.com/microsoft/vscode/issues/280704)
+- [#288480 - Skills enabled by default](https://github.com/microsoft/vscode/issues/288480)
+- [#288483 - Extension-contributed skills via manifest](https://github.com/microsoft/vscode/issues/288483)
+- [#288486 - Dynamic skills API](https://github.com/microsoft/vscode/issues/288486)
+- [#282738 - Skills from custom locations](https://github.com/microsoft/vscode/issues/282738)
+
+### Claude Integration
+- [#287658 - Extended thinking support](https://github.com/microsoft/vscode/issues/287658)
+- [#287933 - Model picker for Claude](https://github.com/microsoft/vscode/issues/287933)
+- [#266962 - Claude agent support](https://github.com/microsoft/vscode/issues/266962)
+
+### Terminal
+- [#286809 - Kitty keyboard protocol](https://github.com/microsoft/vscode/issues/286809)
+- [#286896 - Win32 input mode](https://github.com/microsoft/vscode/issues/286896)
+- [#286810 - SGR 221/222 escape sequences](https://github.com/microsoft/vscode/issues/286810)
+- [#257468 - Terminal output streams inline](https://github.com/microsoft/vscode/issues/257468)
+- [#287664 - Auto-expand/collapse terminal output](https://github.com/microsoft/vscode/issues/287664)
+- [#277286 - Terminal sandboxing for macOS/Linux](https://github.com/microsoft/vscode/issues/277286)
+- [#286598 - Terminal timeout parameter](https://github.com/microsoft/vscode/issues/286598)
+- [#287772 - Python syntax highlighting in confirmations](https://github.com/microsoft/vscode/issues/287772)
+- [xterm.js #5600 - Kitty keyboard protocol](https://github.com/xtermjs/xterm.js/pull/5600)
+
+### MCP
+- [#289473 - Dynamic context updates](https://github.com/microsoft/vscode/issues/289473)
+- [#287549 - Custom package registries](https://github.com/microsoft/vscode/issues/287549)
+- [#260218 - Built-in MCP Apps](https://github.com/microsoft/vscode/issues/260218)
+- [#283959 - startServer command](https://github.com/microsoft/vscode/issues/283959)
+- [#283945 - MCP info in session exports](https://github.com/microsoft/vscode/issues/283945)
+
+### Chat & Sessions
+- [#285854 - /clear archives sessions](https://github.com/microsoft/vscode/issues/285854)
+- [#288467 - New Local Chat command](https://github.com/microsoft/vscode/issues/288467)
+- [#283954 - Import chat sessions](https://github.com/microsoft/vscode/issues/283954)
+- [#288448 - Multi-select in sessions](https://github.com/microsoft/vscode/issues/288448)
+- [#281258 - Resizable sessions sidebar](https://github.com/microsoft/vscode/issues/281258)
+- [#283123 - Increased persisted sessions](https://github.com/microsoft/vscode/issues/283123)
+- [#289223 - Accessible View streams thinking](https://github.com/microsoft/vscode/issues/289223)
+
+### Editor & Other
+- [#287819 - Improved shebang detection](https://github.com/microsoft/vscode/issues/287819)
+- [#284517 - Ghost text visibility](https://github.com/microsoft/vscode/issues/284517)
+- [#9123 - Double-click selects block content](https://github.com/microsoft/vscode/issues/9123)
+- [#10633 - Match file path case toggle](https://github.com/microsoft/vscode/issues/10633)
+- [#288439 - Parallel build tasks](https://github.com/microsoft/vscode/issues/288439)
+- [#111767 - Git Delete File command](https://github.com/microsoft/vscode/issues/111767)
+
+### Iteration Plan
+- [#286040 - January 2026 Iteration Plan](https://github.com/microsoft/vscode/issues/286040)
+
+---
+
+*These features are rolling out in VS Code Insiders (1.109) now, with stable release expected in early February. Note that some features like kitty keyboard protocol and win32-input-mode are disabled by default and require manual opt-in.*
+
+---
+
+--- title: Presentation Mode: Turn Your Blog Posts into Slides description: A complete demo of presentation mode with v-click animations and drawing annotations. Press P to see keyboard navigation, incremental reveals, and press D to draw on slides! tags: ['demo', 'presentation', 'feature'] url: https://alexop.dev/posts/presentation-mode-demo ---
+
+# Presentation Mode: Turn Your Blog Posts into Slides
+
+
+
+<Alert type="info" title="Try It Now!">
+  Press **P** on your keyboard or click the floating button in the bottom-right corner to enter presentation mode. Use arrow keys to navigate between slides, and press **D** to draw annotations directly on slides!
+</Alert>
+
+# Presentation Mode
+
+Turn your blog posts into beautiful slides with incremental reveals
+
+---
+
+## Why Presentation Mode?
+
+**The Problem:** You write a great blog post, then need to present it at a meetup.
+
+**Old Solution:** Recreate everything in PowerPoint or Google Slides.
+
+**New Solution:** Just add `presentation: true` to your frontmatter!
+
+```yaml
+---
+title: "My Awesome Post"
+presentation: true
+---
+```
+
+---
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| **P** | Toggle presentation mode |
+| **→** or **Space** | Next click step, then next slide |
+| **←** | Previous click step, then previous slide |
+| **1-9** | Jump to slide N (resets clicks) |
+| **Home** | First slide |
+| **End** | Last slide |
+| **D** | Toggle drawing mode |
+| **G** | Toggle grid overview |
+| **Escape** | Exit drawing → grid → presentation |
+
+---
+
+# Drawing Annotations
+
+Draw directly on slides with Excalidraw!
+
+---
+
+## Try Drawing Mode
+
+Press **D** to toggle drawing mode. A toolbar will appear with these tools:
+
+<VClicks>
+
+- **↖ Selection** - Select and move drawings
+- **✏️ Freedraw** - Freehand drawing (press P)
+- **→ Arrow** - Draw arrows (press A)
+- **□ Rectangle** - Draw rectangles (press R)
+- **○ Ellipse** - Draw circles (press O)
+- **T Text** - Add text annotations (press T)
+- **🧹 Eraser** - Erase drawings (press E)
+
+</VClicks>
+
+---
+
+## Drawing Features
+
+**Colors:** 6 preset colors - Red, Blue, Green, Yellow, White, Black
+
+**Stroke Widths:** 3 sizes - Thin (1px), Medium (2px), Thick (4px)
+
+**Persistence:** Drawings stay when you navigate between slides!
+
+**Shortcuts:**
+- `C` - Clear current slide
+- `Shift+C` - Clear all slides
+- `Escape` - Exit drawing mode
+
+---
+
+## Use Cases
+
+Why draw on slides during presentations?
+
+<VClicks>
+
+- Circle important code sections
+- Draw arrows connecting concepts
+- Add quick annotations for Q&A
+- Highlight key points in diagrams
+- Sketch ideas during discussions
+
+</VClicks>
+
+---
+
+# V-Click Animations
+
+Reveal content step-by-step with Slidev-style click animations
+
+---
+
+## Sequential Reveals
+
+Press **→** to reveal each point:
+
+**Step 1:** First, we define the problem clearly.
+
+**Step 2:** Then, we explore possible solutions.
+
+**Step 3:** Finally, we implement and test!
+
+---
+
+## Building a List
+
+Benefits of incremental reveals:
+
+<VClicks>
+
+- Keeps audience focused on the current point
+- Creates natural pacing for your talk
+- Prevents information overload
+- Makes complex topics digestible
+
+</VClicks>
+
+---
+
+## V-Click Syntax
+
+In MDX files, use components to control reveals:
+
+```mdx
+
+Content appears on click
+
+<VClicks>
+- Each list item
+- Gets its own click
+</VClicks>
+
+Explicit order (appears third)
+
+This disappears on click
+```
+
+---
+
+# Custom Components
+
+Interactive React components work in slides!
+
+---
+
+## Context Window Visualizer
+
+This is a custom React component rendered inside a slide:
+
+Try typing messages to see the context fill up!
+
+---
+
+## Code Blocks Work Perfectly
+
+Here's a Vue composable example with full syntax highlighting:
+
+```typescript
+export function useCounter(initial = 0) {
+  const count = ref(initial)
+
+  const double = computed(() => count.value * 2)
+
+  function increment() {
+    count.value++
+  }
+
+  return { count, double, increment }
+}
+```
+
+---
+
+## Magic Move: Code Evolution
+
+Watch code transform with smooth animations (press **→** to advance):
+
+<MagicMove
+  lang="typescript"
+  steps={[
+    `const x = 1`,
+    `const x = 1
+const y = 2`,
+    `const x = 1
+const y = 2
+
+function add(a: number, b: number) {
+  return a + b
+}`,
+    `const x = 1
+const y = 2
+
+function add(a: number, b: number) {
+  return a + b
+}
+
+const sum = add(x, y)
+console.log(sum) // 3`
+  ]}
+/>
+
+Each arrow press animates the code to its next state!
+
+---
+
+## Mermaid Diagrams
+
+Flowcharts render beautifully in slides:
+
+```mermaid
+graph LR
+    A[Blog Post] --> B{presentation: true?}
+    B -->|Yes| C[Show Toggle Button]
+    B -->|No| D[Normal Post]
+    C --> E[Press P]
+    E --> F[Fullscreen Slides!]
+```
+
+---
+
+## Animated Diagrams
+
+Interactive diagrams with self-contained animations:
+
+<SubagentDiagram
+  task="Find auth files"
+  files={["Auth.tsx", "auth.ts", "authService.ts"]}
+/>
+
+Click **Start** to see the Explore subagent flow animation!
+
+---
+
+# Slide Layouts
+
+---
+
+## Available Layouts
+
+This feature supports 9 different layout types:
+
+| Layout | Description |
+|--------|-------------|
+| `default` | Standard centered prose |
+| `cover` | Large title, full-bleed |
+| `center` | Fully centered content |
+| `two-cols` | Two-column split |
+| `image-left` | Image 40%, content 60% |
+| `image-right` | Content 60%, image 40% |
+| `image` | Full-bleed background |
+| `quote` | Prominent blockquote |
+| `section` | Section divider |
+| `iframe` | Embedded website/demo |
+
+---
+
+## Iframe Layout
+
+Embed live demos, CodePen, StackBlitz, or videos directly in slides:
+
+This is a live StackBlitz embed - fully interactive!
+
+---
+
+## Layout Syntax
+
+In **.md files**, use HTML comments. In **.mdx files**, use components:
+
+```mdx
+{/* MDX format */}
+
+# My Title
+
+---
+
+{/* .md format */}
+<!--slide:{"layout":"cover"}-->
+# My Title
+```
+
+<Aside type="note" title="MDX vs MD">
+Both file formats support layouts and v-clicks! For `.md` files use HTML comments, for `.mdx` files use the `Slide`, `VClick`, and `VClicks` components.
+</Aside>
+
+---
+
+## Layout Properties
+
+All layouts accept these properties:
+
+| Property | Description |
+|----------|-------------|
+| `layout` | Layout name (required) |
+| `image` | Path to image in /public |
+| `backgroundSize` | CSS value (default: cover) |
+| `class` | Custom CSS class |
+| `src` | URL for iframe layout |
+| `title` | Accessibility title for iframe |
+
+---
+
+## Layout Animations
+
+Each layout type has its own animation:
+
+| Layout | Animation |
+|--------|-----------|
+| `default` | Slide |
+| `center` | Slide |
+| `two-cols` | Slide |
+| `cover` | **Fade** |
+| `image` | **Zoom** |
+| `quote` | **Fade** |
+| `section` | **Fade** |
+| `iframe` | **Fade** |
+
+---
+
+# Technical Details
+
+---
+
+## Architecture Overview
+
+```mermaid
+flowchart TB
+    subgraph Frontend
+        A[PresentationToggle] --> B[PresentationMode]
+        B --> C[PresentationSlide]
+        B --> D[PresentationControls]
+        B --> E[PresentationProgress]
+    end
+
+    subgraph Layouts
+        C --> F[SlideLayoutDefault]
+        C --> G[SlideLayoutCover]
+        C --> H[SlideLayoutTwoCols]
+        C --> I[... more layouts]
+    end
+
+    subgraph Content
+        J[Blog Post] --> K[Compiled HTML]
+        K --> L[Parse slide comments]
+        L --> M[SlideData Array]
+    end
+
+    M --> C
+```
+
+---
+
+## Tips for Great Slides
+
+<Aside type="tip" title="Best Practices">
+
+1. **Keep slides focused** - One idea per slide
+2. **Use headings** - They become slide titles
+3. **Leverage layouts** - Pick the right layout for content
+4. **Use v-clicks** - Reveal complex info step-by-step
+5. **Test navigation** - Make sure flow makes sense
+
+</Aside>
+
+### Content Length
+
+<VClicks>
+
+- Short slides work best
+- If content overflows, it scrolls within the slide
+- But try to keep each slide digestible
+- Use v-clicks to break up longer content
+
+</VClicks>
+
+---
+
+## Accessibility Features
+
+<VClicks>
+
+- **Focus trap** - Tab stays within the modal
+- **ARIA live region** - Announces "Slide X of Y, Step N of M"
+- **Escape to exit** - Standard modal behavior
+- **Keyboard navigation** - No mouse required
+- **Theme aware** - Respects light/dark mode
+- **Reduced motion** - V-click respects `prefers-reduced-motion`
+
+</VClicks>
+
+---
+
+## What's NOT Included (Yet)
+
+Future enhancements could include:
+
+<VClicks>
+
+- Presenter notes (separate view)
+- Export to PDF
+- Speaker timer
+- Touch/swipe gestures
+- Dual-screen presenter view
+- Laser pointer mode
+- Drawing export to PNG/SVG
+
+</VClicks>
+
+Want these features? Open an issue!
+
+---
+
+# Thank You!
+
+Press **Escape** to exit or continue with arrow keys
+
+---
+
+## Quick Reference
+
+**File format trade-offs:**
+
+| Format | Custom Components | Layouts | V-Click | Syntax |
+|--------|-------------------|---------|---------|--------|
+| `.mdx` | Yes | Yes | Yes | Components |
+| `.md` | No | Yes | Yes | HTML comments |
+
+Press **Escape** to exit presentation mode!
+
+---
+
+--- title: Stop Bloating Your CLAUDE.md: Progressive Disclosure for AI Coding Tools description: AI coding tools are stateless—every session starts fresh. The solution isn't cramming everything into CLAUDE.md, but building a layered context system where learnings accumulate in docs and specialized agents load on-demand. tags: ['claude-code', 'ai-tools', 'developer-experience', 'productivity'] url: https://alexop.dev/posts/stop-bloating-your-claude-md-progressive-disclosure-ai-coding-tools ---
+
+# Stop Bloating Your CLAUDE.md: Progressive Disclosure for AI Coding Tools
+
+
+
+Yesterday I spent an hour debugging a Nuxt Content gotcha with Claude. We figured it out together—you need to use `stem` instead of `slug` in page collection queries. Today? Claude made the same mistake. Yesterday's session was gone.
+
+<Alert type="info">
+The examples in this post come from my [Second Brain](https://second-brain-nuxt.vercel.app/)—a personal wiki built with Nuxt and Nuxt Content that uses Zettelkasten-style wiki-links for knowledge management. You can see the actual [CLAUDE.md file](https://github.com/alexanderop/second-brain-nuxt/blob/main/CLAUDE.md) on GitHub.
+</Alert>
+
+That's the constraint. **Your context is just an array of tokens**—a sliding window that forgets everything the moment the conversation ends.[^1]
+
+<Alert type="info">
+The percentages shown in these visualizations are illustrative examples—not real measurements. Actual system prompt overhead varies by tool version and configuration. The key insight is the relative proportions, not the exact numbers.
+</Alert>
+
+There's no hidden memory. No database of past conversations. Just this array, rebuilt fresh every session.
+
+Dex Horthy calls this "context engineering"—since LLMs are stateless, the only way to improve output is optimizing input.[^6] The array is all you have. Everything outside it doesn't exist to the model.
+
+But that array has a size limit. Fill it with noise, and you're working in what Dex calls the "dumb zone"—where performance degrades because irrelevant context competes for attention.
+
+Most developers respond to this by putting every lesson learned into their `CLAUDE.md` file. I've seen files balloon to 2000 lines. Style guides, architectural decisions, war stories from that one bug that took three days to fix.
+
+This makes things worse.
+
+## Bloated CLAUDE.md Makes Things Worse
+
+When Claude makes a mistake, the instinct is to add a rule: "Never use `slug` in page collection queries—use `stem` instead."
+
+Then another mistake, another rule. Then another.
+
+Before long, your CLAUDE.md looks like this:
+
+```markdown
+# CLAUDE.md
+
+## Project Overview
+...50 lines...
+
+## Code Style
+...200 lines of formatting rules...
+
+## Architecture Decisions
+...150 lines of historical context...
+
+## Gotchas
+...300 lines of edge cases...
+
+## Testing Conventions
+...100 lines...
+```
+
+**Half your context budget is gone before any work begins.**
+
+HumanLayer keeps their CLAUDE.md under 60 lines.[^2] Frontier LLMs reliably follow 150-200 instructions—and Claude Code's system prompt already uses about 50 of those.[^2]
+
+The math doesn't work. You can't stuff everything in one file.
+
+## Stop Writing Prose About Lint Rules
+
+Why write two hundred lines about code style when one line handles it? I stopped putting anything a tool can enforce in CLAUDE.md.
+
+❌ **Don't write prose about style rules:**
+```markdown
+## Code Style
+- Use 2-space indentation
+- Prefer single quotes
+- Always add trailing commas
+- Maximum line length: 100 characters
+```
+
+✅ **Let ESLint handle it:**
+```json
+{
+  "extends": ["@nuxt/eslint-config"]
+}
+```
+
+The rules are already there—you just don't repeat them in prose:
+```js
+// What @nuxt/eslint-config contains:
+{
+  rules: {
+    'indent': ['error', 2],
+    'quotes': ['error', 'single'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'max-len': ['error', { code: 100 }]
+  }
+}
+```
+
+The AI can run `pnpm lint:fix && pnpm typecheck` and know immediately if it violated a rule. No interpretation needed. No ambiguity.
+
+**If a tool can enforce it, don't write prose about it.** ESLint for style. TypeScript for types. Prettier for formatting. These rules are verifiable, not interpretable.
+
+Moss calls this *backpressure*—automated feedback mechanisms that let agents self-correct.[^7] Without a linter, you waste your time typing messages like "you forgot to add the import" or "that should be a const, not let." With backpressure, the agent runs the build, reads the error, and fixes itself. You remove yourself from trivial corrections and focus on higher-level decisions.
+
+My CLAUDE.md now just says:
+
+```markdown
+Run `pnpm lint:fix && pnpm typecheck` after code changes.
+```
+
+One line instead of two hundred. Or skip it entirely—use husky to run checks automatically on commit. This is especially useful for techniques like Ralph, where AI works autonomously through a queue of tasks.[^8]
+
+## The Gotchas ESLint Won't Catch
+
+ESLint won't catch this:
+
+> "Nuxt Content v3 caches aggressively in `.data/`. When you modify transformation logic in hooks, you must clear the cache to test changes."
+
+Or this:
+
+{/* > "Don't mock `@nuxt/content/server` internals in tests—it breaks when Nuxt Content updates. Extract pure logic to `server/utils/` instead." */}
+
+Or this:
+
+> "Wiki-links to data collections require path prefixes. Use `[[authors/john-doe]]`, not `[[john-doe]]`."
+
+These are *gotchas*—non-obvious behaviors that bite you once. The kind of thing you'd tell a new team member on their first day. They need documentation, but they don't belong in CLAUDE.md.
+
+**The insight: CLAUDE.md is for universal context. Gotchas are situational.**
+
+You don't need the wiki-link prefix rule in every conversation—only when you're writing content with author links. Loading it every time wastes tokens.
+
+So where do these gotchas go? And how do you capture them without breaking your flow?
+
+## My /learn Skill
+
+My system: when I notice Claude struggling with something we've solved before, I run `/learn`.
+
+This is a Claude Code skill I built ([see full prompt](/prompts/claude/claude-learn-command)). It:
+
+1. Analyzes the conversation for reusable, non-obvious insights
+2. Finds the right place in `/docs` to save it (or proposes a new file)
+3. Asks for my approval before saving
+
+I end up with a growing knowledge base in my docs folder:
+
+```
+docs/
+├── nuxt-content-gotchas.md    # 15 hard-won lessons
+├── nuxt-component-gotchas.md  # Vue-specific pitfalls
+├── testing-strategy.md        # When to use which test type
+└── SYSTEM_KNOWLEDGE_MAP.md    # Architecture overview
+```
+
+**CLAUDE.md stays stable.** It just tells Claude where to look:
+
+```markdown
+## Further Reading
+
+**IMPORTANT:** Before starting any task, identify which docs below are relevant and read them first. Load the full context before making changes.
+
+- `docs/nuxt-content-gotchas.md` - Nuxt Content v3 pitfalls
+- `docs/testing-strategy.md` - Test layers and when to use each
+```
+
+The **IMPORTANT** instruction is critical—without it, Claude won't automatically read these docs. With it, Claude identifies relevant docs before starting work: content queries trigger the gotchas doc, testing tasks trigger the testing strategy. Progressive disclosure—the right context at the right time.[^2]
+
+Another approach: build skills that load domain-specific gotchas automatically. A `nuxt-content` skill that injects the gotchas doc whenever you're working with content queries. In theory, this is cleaner—context loads without you thinking about it. In practice, I've found skills don't always activate when expected. The trigger conditions can be fuzzy, and sometimes Claude just doesn't invoke them. Vercel's agent evals confirmed this: skills were never invoked in 56% of their test cases, producing zero improvement over baseline.[^9] The docs-based setup is more predictable: I know Claude will read what I point it to.
+
+## One Agent Per Domain
+
+I take this further with custom agents. Each agent has its own documentation file that loads only when needed. If you're new to how these customization layers work together, I wrote a <InternalLink slug="claude-code-customization-guide-claudemd-skills-subagents">detailed comparison of CLAUDE.md, skills, and subagents</InternalLink>.
+
+```
+.claude/agents/
+├── nuxt-content-specialist.md   # Content queries, MDC, search
+├── nuxt-ui-specialist.md        # Component styling, theming
+├── vue-specialist.md            # Reactivity, composables
+└── nuxt-specialist.md           # Routing, config, deployment
+```
+
+When I'm debugging a content query, Claude loads the nuxt-content-specialist. When I'm styling a component, it loads nuxt-ui-specialist. The specialist agents know to fetch the latest documentation from official sources—they don't rely on stale training data.
+
+This is why I don't use MCPs like context7 for documentation. Agents can fetch llms.txt directly from official docs sites and find what they need. No tool definition bloat, no intermediate tokens—just a focused research task in its own context window. I wrote more about <InternalLink slug="why-you-dont-need-nuxt-mcp-claude-code">why I use custom research agents instead of MCPs</InternalLink>.
+
+Skills work similarly—with `context:fork`, they run in isolated contexts without polluting your main conversation. The agent has both the ability and motivation to read real documentation. No context7, no MCP overhead.
+
+## It Compounds
+
+This system creates a feedback loop:
+
+Over time, my `/docs` folder becomes a curated knowledge base of *exactly the things AI coding tools get wrong* in my codebase. It's like fine-tuning, but under my control.
+
+I got this idea from a pattern for self-improving skills where agents automatically analyze sessions and update themselves.[^5] I adapted it to use markdown documentation and a `/learn` command instead—giving me explicit control over what gets captured and where it goes.
+
+An actual entry from my `nuxt-content-gotchas.md`:
+
+```markdown
+## Page Collection Queries: Use `stem` Not `slug`
+
+The `slug` field doesn't exist in page-type collections.
+Use `stem` (file path without extension) instead:
+
+// ❌ Fails: "no such column: slug"
+queryCollection('content').select('slug', 'title').all()
+
+// ✅ Works
+queryCollection('content').select('stem', 'title').all()
+```
+
+Claude will never make this mistake again in my project. Not because I added it to CLAUDE.md—but because when it's working with content queries, it reads the gotchas doc first.
+
+## My 50-Line CLAUDE.md
+
+The structure:
+
+```markdown
+# CLAUDE.md
+
+Second Brain is a personal knowledge base using
+Zettelkasten-style wiki-links.
+
+## Commands
+pnpm dev          # Start dev server
+pnpm lint:fix     # Auto-fix linting issues
+pnpm typecheck    # Verify type safety
+
+Run `pnpm lint:fix && pnpm typecheck` after code changes.
+
+## Stack
+- Nuxt 4, @nuxt/content v3, @nuxt/ui v3
+
+## Structure
+- `app/` - Vue application
+- `content/` - Markdown files
+- `content.config.ts` - Collection schemas
+
+## Further Reading
+
+**IMPORTANT:** Read relevant docs below before starting any task.
+
+- `docs/nuxt-content-gotchas.md`
+- `docs/testing-strategy.md`
+- `docs/SYSTEM_KNOWLEDGE_MAP.md`
+```
+
+That's it. Universal context only. Everything else lives in docs, agents, or tooling.
+
+## Cross-Tool Compatibility
+
+If you use multiple AI coding tools, you don't need separate config files. VS Code Copilot and Cursor both support `agents.md` for project-level instructions. You can symlink it to share the same configuration:
+
+```bash
+# Create a symlink so all tools read the same file
+ln -s CLAUDE.md agents.md
+```
+
+Now your minimal, focused instructions work across Claude Code, Copilot, and Cursor. One source of truth, no drift between tools.
+
+## How This Played Out Last Week
+
+Last week I was implementing semantic search. When Claude started working on content queries, it read `nuxt-content-gotchas.md` first—as my CLAUDE.md instructs. The stem/slug gotcha was already there.
+
+No mistake. No correction needed.
+
+But during the session, we discovered something new: `queryCollectionSearchSections` returns IDs with a leading slash. Don't add another slash when constructing URLs.
+
+I ran `/learn`. Claude proposed:
+
+```markdown
+## Search Section IDs
+
+Returns IDs with leading slash (`/slug#section`).
+Don't add another slash when constructing URLs.
+```
+
+Added. Next time I work on search, Claude will know.
+
+---
+
+AI tools being stateless isn't a bug to fight. It's a design constraint—like limited screen real estate or slow network connections. Accept it, and you can build systems that work with it.
+
+**Keep CLAUDE.md minimal. Let tooling enforce what it can. Capture learnings as you go. Load context on demand.**
+
+One caveat: you can never be 100% sure agents will read your docs when they face issues. For tricky domains like Nuxt Content—where training data is sparse or outdated—I've learned to be explicit in my prompts. When I know I'm working on something with poor training coverage, I'll add to the plan: "If you encounter issues with Nuxt Content APIs, read `docs/nuxt-content-gotchas.md` first." This nudge makes the difference between the agent guessing based on outdated patterns and actually consulting current knowledge.
+
+The AI forgets. Your documentation doesn't.
+
+---
+
+[^1]: LLMs have no memory between sessions—context is just tokens in a sliding window. See Factory's analysis in [The Context Window Problem](https://factory.ai/news/context-window-problem).
+
+[^2]: HumanLayer's guide on [Writing a Good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) recommends keeping files under 60 lines and using progressive disclosure for detailed instructions.
+
+[^5]: Developers Digest, [Self-Improving Skills in Claude Code](https://www.youtube.com/watch?v=-4nUCaMNBR8). A pattern for capturing learnings automatically: skills analyze sessions, extract corrections, and update themselves.
+
+[^6]: Dex Horthy, [No Vibes Allowed: Solving Hard Problems in Complex Codebases](https://www.youtube.com/watch?v=rmvDxxNubIg). Dex is the founder of HumanLayer and creator of the Ralph technique for autonomous AI coding. His [12 Factor Agents](https://www.humanlayer.dev/blog/12-factor-agents) manifesto includes "Make Your Agent a Stateless Reducer" as Factor 12.
+
+[^7]: Moss, [Don't Waste Your Back Pressure](https://banay.me/dont-waste-your-backpressure). Backpressure—automated feedback from type systems, linters, and build tools—is what enables agents to work on longer-horizon tasks without constant human intervention.
+
+[^8]: Geoffrey Huntley, [Ralph](https://ghuntley.com/ralph/). Ralph is a technique for autonomous AI coding where tasks are queued and executed without human intervention, making automated checks on commit essential.
+
+[^9]: Jude Gao, [AGENTS.md outperforms skills in our agent evals](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals). Vercel's evals found that a compressed docs index embedded directly in AGENTS.md achieved 100% pass rate, while skills maxed out at 79% even with explicit instructions—and performed no better than baseline when left to trigger naturally.
+
+---
+
+--- title: How I Built a Skill That Lets Me Talk to Claude's Conversation Memory description: How I built a skill that lets Claude search its own conversation history, turning it into a persistent coding partner that remembers past solutions. tags: ['claude-code', 'ai', 'tooling', 'python'] url: https://alexop.dev/posts/building-conversation-search-skill-claude-code ---
+
+# How I Built a Skill That Lets Me Talk to Claude's Conversation Memory
+
+
+
+When I work with Claude Code on complex projects, I often remember discussing a problem or solution but can't find it. "We fixed that EMFILE error last week, what was the solution?" or "What did we work on yesterday?"
+
+Claude Code stores every session locally. But Claude itself can't search those files by default. So I built a skill that lets Claude search its own conversation history.
+
+This turns Claude into a persistent coding partner that actually remembers past solutions.
+
+<Aside type="tip" title="New to Claude Code Skills?">
+If you're not familiar with how skills work in Claude Code, check out my <InternalLink slug="claude-code-customization-guide-claudemd-skills-subagents">guide to CLAUDE.md, skills, and subagents</InternalLink> first.
+</Aside>
+
+<Aside type="note" title="Just Want the Code?">
+If you just want to check out the skill, find it here: [conversation-search skill](https://github.com/alexanderop/dotfiles/tree/main/claude/skills/conversation-search)
+</Aside>
+
+## How Claude Code Stores Conversations
+
+Every Claude Code session gets saved as a JSONL file in `~/.claude/projects/`. The directory structure looks like this:
+
+<FileTree tree={[
+  { name: ".claude", open: true, children: [
+    { name: "projects", open: true, children: [
+      { name: "-Users-alex-Projects-myapp", open: true,comment: "// encoded path", children: [
+        { name: "a1b2c3d4.jsonl", comment: "// session file" , open: true},
+        { name: "b2c3d4e5.jsonl" },
+        { name: "c3d4e5f6.jsonl" },
+        { name: "e5f6g7h8.jsonl" },
+        { name: "agent-xyz123.jsonl", comment: "// subagent session" }
+      ]},
+      { name: "-Users-alex-Projects-blog", children: [
+        { name: "i9j0k1l2.jsonl" }
+      ]}
+    ]}
+  ]}
+]} />
+
+The path encoding is simple: replace `/` with `-` and prefix absolute paths with `-`. So `/Users/alex/Projects/myapp` becomes `-Users-alex-Projects-myapp`.
+
+Each JSONL file contains one JSON object per line:
+
+```json
+{"type": "user", "timestamp": "2026-01-16T10:30:00Z", "gitBranch": "main", "message": {"content": "Fix the EMFILE error"}}
+{"type": "assistant", "timestamp": "2026-01-16T10:30:15Z", "message": {"content": [{"type": "text", "text": "Let me investigate..."}, {"type": "tool_use", "name": "Bash", "input": {"command": "ulimit -n"}}]}}
+{"type": "summary", "summary": "Fixed EMFILE error by increasing file descriptor limit"}
+```
+
+Each entry includes the role, timestamp, git branch, message content, and tool uses. The `summary` type appears when Claude generates a conversation summary.
+
+## The Skill Structure
+
+The skill lives in `~/.claude/skills/conversation-search/` with two files:
+
+<FileTree open={true} tree={[
+  { name: "conversation-search", open: true, children: [
+    { name: "SKILL.md", comment: "// trigger patterns and usage" },
+    { name: "scripts", open: true, children: [
+      { name: "search_history.py", comment: "// the search engine" }
+    ]}
+  ]}
+]} />
+
+The `SKILL.md` file tells Claude when to activate this skill:
+
+```yaml
+---
+name: conversation-search
+description: Search past Claude Code conversation history. Use when asked to recall,
+  find, or search for anything from previous conversations. Triggers include
+  "what did we do today", "how did we fix X", "search history", "recall when we"...
+---
+```
+
+When I ask "what did we do yesterday?", Claude recognizes the trigger and knows to use this skill.
+
+## How the Python Script Works
+
+The script has two modes: **digest** for daily summaries and **search** for finding specific solutions.
+
+### Data Structures
+
+The script parses JSONL files into clean dataclasses:
+
+```python
+@dataclass
+class Message:
+    uuid: str
+    parent_uuid: Optional[str]
+    role: str  # 'user', 'assistant'
+    content: str
+    timestamp: str
+    tool_uses: list
+    tool_results: list
+
+@dataclass
+class Conversation:
+    session_id: str
+    file_path: str
+    summary: Optional[str]
+    messages: list
+    project_path: str
+    git_branch: Optional[str]
+    timestamp: str
+
+@dataclass
+class SearchResult:
+    conversation: Conversation
+    score: float
+    matched_messages: list
+    problem_excerpt: str
+    solution_excerpt: str
+    commands_run: list
+```
+
+### Relevance Scoring
+
+The search algorithm tokenizes the query and content, then calculates relevance scores with weighted boosts:
+
+```python
+def calculate_relevance_score(query: str, conversation: Conversation) -> tuple:
+    query_tokens = tokenize(query)
+    total_score = 0.0
+    matched_messages = []
+
+    # Summary gets highest weight (3x)
+    if conversation.summary:
+        summary_tokens = tokenize(conversation.summary)
+        summary_overlap = len(query_tokens & summary_tokens) / len(query_tokens)
+        total_score += summary_overlap * 3.0
+
+    # Check each message
+    for msg in conversation.messages:
+        msg_tokens = tokenize(msg.content)
+        overlap = len(query_tokens & msg_tokens)
+
+        if overlap > 0:
+            msg_score = overlap / len(query_tokens)
+
+            # User messages get 1.5x boost (problem descriptions)
+            if msg.role == 'user':
+                msg_score *= 1.5
+
+            # Messages with tool uses get 1.3x boost (solutions)
+            if msg.tool_uses:
+                msg_score *= 1.3
+
+            total_score += msg_score
+            matched_messages.append(msg)
+
+    return total_score, matched_messages
+```
+
+The weighting makes sense: summaries are the most relevant since they capture the essence. User messages describe problems. Tool uses indicate actual solutions.
+
+### Date Filtering
+
+The script supports filtering by date range:
+
+```bash
+# Today's sessions only
+python3 search_history.py --today "newsletter"
+
+# Yesterday
+python3 search_history.py --yesterday "bug fix"
+
+# Last 7 days
+python3 search_history.py --days 7 "refactor"
+
+# Since a specific date
+python3 search_history.py --since 2026-01-01 "feature"
+```
+
+### Extracting Useful Information
+
+The script extracts practical information from each conversation:
+
+```python
+def extract_bash_commands(conversation: Conversation) -> list:
+    """Extract Bash commands run during the conversation."""
+    commands = []
+    for msg in conversation.messages:
+        for tool in msg.tool_uses:
+            if tool.get('name') == 'Bash':
+                cmd = tool.get('input', {}).get('command', '')
+                if cmd:
+                    commands.append(cmd)
+    return commands
+
+def extract_files_touched(conversation: Conversation) -> list:
+    """Extract files that were read, written, or edited."""
+    files = set()
+    for msg in conversation.messages:
+        for tool in msg.tool_uses:
+            name = tool.get('name', '')
+            inp = tool.get('input', {})
+
+            if name in ('Read', 'Write', 'Edit'):
+                path = inp.get('file_path', '')
+                if path:
+                    files.add(Path(path).name)
+    return sorted(files)[:10]
+```
+
+This is useful for recreating solutions. If you found how you fixed something before, you can see exactly which commands you ran and which files you changed.
+
+## Using the Skill
+
+### Daily Digest
+
+Ask "what did we do yesterday?" and Claude runs the digest mode:
+
+```bash
+python3 search_history.py --digest yesterday
+```
+
+Output:
+
+```
+## January 16, 2026 - 32 sessions
+
+### 1. Set Context Menu Feature Spec
+   Session: `1498ff91`
+   Branch: `fitnessFunctions`
+   Files: set-context-menu.md, SetContextMenu.vue, SetContextMenuPO.ts
+   Commands: 12 executed
+
+### 2. Fix Pipeline: Missing i18n, Unused Exports
+   Session: `23351e77`
+   Branch: `fitnessFunctions`
+   Files: de.json, en.json, claude-qa.yml
+   Commands: 6 executed
+
+### 3. Adding AI Coding Articles to Second Brain
+   Session: `5c909423`
+   Branch: `main`
+   Files: article.md, dex-horthy.md, diagrams-guide.md
+   Commands: 1 executed
+```
+
+This is great for standup notes or just remembering what you worked on.
+
+### Keyword Search
+
+Ask "how did we fix the EMFILE error?" and Claude searches for relevant sessions:
+
+```bash
+python3 search_history.py "EMFILE error" --days 14
+```
+
+Output:
+
+```
+============================================================
+Result #1 (Score: 4.25)
+============================================================
+Project: /Users/alex/Projects/fitness-app
+Session: a1b2c3d4...
+Branch: main
+Date: 2026-01-10
+
+PROBLEM:
+Getting EMFILE error when running tests, too many open files
+
+SOLUTION:
+The issue was too many file watchers. Fixed by increasing the limit with
+`ulimit -n 10240` and adding it to shell profile...
+
+COMMANDS RUN (3 total):
+  $ ulimit -n
+  $ ulimit -n 10240
+  $ echo "ulimit -n 10240" >> ~/.zshrc
+```
+
+Now I can recreate the exact solution without remembering the details.
+
+### Project Filtering
+
+You can narrow searches to a specific project:
+
+```bash
+python3 search_history.py "vitest config" --project ~/Projects/fitness-app
+```
+
+## Why This Matters
+
+Before this skill, I'd waste time re-solving problems I'd already solved. "I know we discussed this, but I can't find it." Now I just ask Claude.
+
+The benefits:
+
+1. **No more re-solving problems** - Claude finds past solutions instantly
+2. **Daily digests for standups** - "What did we work on yesterday?" gives a ready summary
+3. **Commands are preserved** - You can recreate exact solutions with the same commands
+4. **Cross-project search** - Find solutions from any project you've worked on
+
+The skill turns Claude from a stateless assistant into something closer to a persistent coding partner. It remembers what you've done together.
+
+<Alert type="tip" title="Build Your Own Skills">
+If you want to extend Claude Code with custom skills, check out my post on <InternalLink slug="building-my-first-claude-code-plugin">building a Claude Code plugin</InternalLink> for packaging and sharing skills across projects.
+</Alert>
+
+---
+
+--- title: In Five Years, Developers Won't Write Code By Hand description: Software development as translation work is dying. Software engineering—the strategic, architectural discipline—is more valuable than ever. The shift is already here. tags: ['ai', 'software-engineering'] url: https://alexop.dev/posts/developers-wont-write-code-by-hand ---
+
+# In Five Years, Developers Won't Write Code By Hand
+
+
+
+I haven't written code by hand in months.
+
+This year alone, I built four complete projects using only Claude Code: a markdown editor, a Nuxt blog starter, a workout tracking app, and the Second Brain you might be reading this on. At work, I regularly one-shot entire issues without touching my keyboard for anything except prompts. Last week, I resolved a production incident using VS Code Copilot while barely glancing at the actual code.
+
+I'm not special. I'm just paying attention.
+
+And I'm not alone. Simon Willison[^1]—one of the most respected voices in the developer community—put it bluntly on the Oxide and Friends podcast:
+
+> I think the job of being paid money to type code into a computer will go the same way as punching punch cards [...] I do not think anyone will be paid to just do the thing where you type the code. I think software engineering will still be an enormous career. I just think the software engineers won't be spending multiple hours of their day in a text editor typing out syntax.
+
+But here's the part that matters:
+
+> The more time I spend on AI-assisted programming the less afraid I am for my job, because it turns out building software—especially at the rate it's now possible to build—still requires enormous skill, experience and depth of understanding. The skills are changing though! Being able to read a detailed specification and transform it into lines of code is the thing that's being automated away. What's left is everything else, and the more time I spend working with coding agents the larger that "everything else" becomes.
+
+That "everything else" is the whole point.
+
+## The Shift Is Already Here
+
+In five years, developers won't write code by hand. This isn't a prediction about some distant future—it's a description of what's already happening to anyone using the right tools.
+
+The reason most people don't see it? Two things: skill gaps and companies failing to provide developers with modern tooling. Most developers are still typing every character. Most companies are still debating whether AI tools are "worth the license cost." Meanwhile, the developers who figured this out are shipping at 10x the pace.
+
+The creator of Claude Code uses Claude Code to work on multiple features simultaneously. Techniques like Ralph[^2]—an automation framework that breaks work into discrete chunks—can literally rip through your entire backlog. This isn't theoretical. It's happening now, in production, at companies that stopped waiting for permission. (For a deep dive into how these tools actually work, see my <InternalLink slug="understanding-claude-code-full-stack">guide to Claude Code's architecture</InternalLink>.)
+
+## The Great Distinction Nobody Talks About
+
+Here's what changes everything: understanding the difference between software *engineering* and software *development*.
+
+**Software engineering** is designing systems. Architecture decisions. Test strategies. The guardrails that keep a codebase healthy over time. Knowing what to build and—more importantly—what not to build.
+
+**Software development** is writing the actual code. Translating specifications into syntax. Converting tickets into pull requests.
+
+One of these is a creative, strategic discipline. The other is translation work.
+
+Software development is dying. Software engineering is more valuable than ever.
+
+Kent Beck[^3] put it perfectly: 90% of traditional skills have lost their economic value because AI can replicate them efficiently. But the remaining 10%? They gain 1000x leverage through AI augmentation. The question you need to answer: which skills are your 10%?
+
+## Scrum Was a Workaround for Human Limitations
+
+Think about why we created Scrum in the first place.
+
+We needed big teams with specialized roles because implementing features took forever. Frontend developers, backend developers, QA engineers, DevOps specialists—all coordinating through ceremonies and tickets because the bottleneck was literally typing characters into an editor.
+
+In the worst cases—an anti-pattern far too common—managers saw developers as "code monkeys" who converted tickets into code. The developer's job was translation, not thinking.
+
+This made sense when coding was slow. When a feature took days or weeks to implement.
+
+Those days are over.
+
+When implementation takes days, you need ceremonies to coordinate. When implementation takes minutes, the coordination overhead becomes the bottleneck. Scrum isn't dying because it was bad—it's dying because the constraint it solved no longer exists.
+
+## The New Economics
+
+The math has fundamentally changed.
+
+Prototypes are cheap now. What took a sprint takes an afternoon. Burke Holland[^4], a Microsoft developer advocate, built four substantial projects with AI—including Swift applications in a language he doesn't know. His advice? "Make things. Stop waiting to have all the answers... you can make things faster than you ever thought possible."
+
+I've watched product owners use Claude Code to generate their own prototypes, fix simple bugs, and submit pull requests. They're not becoming developers—they're just not waiting for developers anymore.
+
+Ralph-style automation lets you feed your backlog to an AI and get working code out the other end. Not perfect code. Not production-ready code on the first try. But functional code that's 80% there, leaving humans to handle the remaining 20% that actually requires judgment.
+
+The developers who thrive aren't writing more code. They're orchestrating AI to write code for them, then applying their expertise to the parts that matter.
+
+## The Hard Part Was Never Coding
+
+Here's the uncomfortable truth: coding was never the hard part. We just convinced ourselves it was because it took so much *time*.
+
+Lee Robinson[^5]—who went from Vercel to Cursor—built a Rust image compressor, a SvelteKit web app, and a hardware game without writing code by hand. His reflection? "Writing code was never really the bottleneck, especially for larger projects." And: "It wasn't about the code... It's about building something great and something that I'm proud of."
+
+The actually hard problems haven't changed:
+- Understanding what customers need (not what they say they need)
+- Writing specifications clear enough that anyone—human or AI—can implement them
+- Knowing what to build and what to skip
+- Making architectural decisions that won't haunt you in two years
+- Marketing, positioning, product sense
+
+These are human problems. Creative problems. Strategic problems.
+
+Martin Fowler[^6] argues this is the biggest shift since assembly to high-level languages. But here's what he gets right: AI lacks architectural judgment. It cannot distinguish good patterns from poor ones. It can write code all day, but it can't tell you whether that code should exist.
+
+The value shifts from writing code to knowing what code to write and why.
+
+## "But AI Code Is Buggy"
+
+Yes. And?
+
+The first high-level language compilers produced worse machine code than hand-written assembly. Early web frameworks were slower than hand-crafted HTML. Every abstraction layer introduces inefficiencies.
+
+We adopt them anyway because developer productivity matters more than perfect output. The question isn't "is AI code flawless?"—it's "is AI code good enough, fast enough, to change the economics?"
+
+The answer is yes. Today. Not in five years—today.
+
+I'm not arguing AI produces better code than expert developers. I'm arguing it produces acceptable code fast enough that the calculus changes. When you can generate ten implementations in the time it takes to write one, you can afford to throw away the bad ones.
+
+The skeptics are optimizing for the wrong variable. They're measuring code quality when they should be measuring iteration speed.
+
+## How to Prepare
+
+Geoffrey Huntley[^7] put it bluntly: "Software engineers who haven't adopted or started exploring software assistants, are frankly not gonna make it."
+
+But here's the nuance he adds: "I suspect there's not going to be mass-layoffs for software developers due to AI. Instead, what we will see is a natural attrition between those who invest in themselves right now and those who do not."
+
+This isn't about being replaced by AI. It's about being outperformed by developers who use AI. The gap is already opening. (I wrote about this dynamic in <InternalLink slug="the-age-of-the-generalist">The Age of the Generalist</InternalLink>—high-agency builders thrive while passive specialists struggle.)
+
+If you want to thrive in this new world, here's where to focus:
+
+**Learn how LLMs actually work.** Not to build models—to orchestrate them. Understand context windows, token limits, prompt engineering. Know why your AI assistant suddenly "forgot" what you told it three messages ago. This isn't optional knowledge anymore; it's table stakes. (For practical starting points, see <InternalLink slug="how-i-use-llms">how I use LLMs in my daily work</InternalLink>.)
+
+**Study the architecture of AI agents.** The developers who can build custom agents for their specific workflows have superpowers the rest of the industry doesn't understand yet. Resources like the 12 Factor Agents[^8] manifesto lay out the principles: small focused agents, deterministic control flow with strategic LLM decision points, and proper context window management. Learn what context engineering means. Understand why RAG exists. Build something that automates your own repetitive work.
+
+**Double down on software engineering.** System design, architecture patterns, testing strategies—these skills become more valuable, not less. When anyone can generate code, the people who know what code to generate become invaluable.
+
+**Stop optimizing for code output.** Start optimizing for clarity of thought, quality of specifications, and speed of iteration. Your value isn't in the characters you type; it's in the decisions you make.
+
+## The Paradox
+
+Here's what I find fascinating: I don't think we'll ever get AI that matches human agency and creativity. The models might plateau. They might not get dramatically "smarter" than they are today.
+
+It doesn't matter.
+
+Even with current capabilities, as tooling improves, we're witnessing the biggest transformation in software development history. The change isn't coming from AI replacing human thinking—it's coming from AI eliminating the translation layer between human thinking and working software.
+
+You don't need AGI to automate code. You just need models that are good enough at translation, combined with humans who are good enough at specification.
+
+We have both. Right now.
+
+---
+
+The question isn't whether this shift will happen. It's whether you'll be ready when your company finally notices.
+
+[^1]: Simon Willison, [LLM Predictions for 2026](https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026)
+[^2]: [Ralph](https://github.com/snarktank/ralph) - Automation framework for AI-driven development
+[^3]: Kent Beck, [90% of My Skills Are Now Worth $0](https://tidyfirst.substack.com/p/90-of-my-skills-are-now-worth-0)
+[^4]: Burke Holland, [Opus 4.5 is Going to Change Everything](https://burkeholland.github.io/posts/opus-4-5-change-everything/)
+[^5]: Lee Robinson, [AI codes better than me. Now what?](https://www.youtube.com/watch?v=UrNLVip0hSA)
+[^6]: Martin Fowler, [How AI Will Change Software Engineering](https://www.youtube.com/watch?v=CQmI4XKTa0U)
+[^7]: Geoffrey Huntley, [What do I mean by some software devs are "ngmi"?](https://ghuntley.com/ngmi/)
+[^8]: [12 Factor Agents](https://www.humanlayer.dev/blog/12-factor-agents) - Principles for production-grade AI agents
+
+---
+
+--- title: Mutation Testing with AI Agents When Stryker Doesn't Work description: When Stryker doesn't support your test stack, AI agents can execute mutation testing manually. A practical approach for Vitest browser mode and Playwright. tags: ['testing', 'ai', 'claude-code', 'vitest'] url: https://alexop.dev/posts/mutation-testing-ai-agents-vitest-browser-mode ---
+
+# Mutation Testing with AI Agents When Stryker Doesn't Work
+
+
+
+## The Coverage Lie
+
+Code coverage lies. A test that exercises a line doesn't mean it verifies that line does the right thing:
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b
+}
+
+// 100% coverage - would still pass if add() returned 999
+it('adds numbers', () => {
+  add(2, 2)
+})
+```
+
+Mutation testing flips the question. Instead of asking "did tests run this code?", it asks **"if I break this code, do tests fail?"**
+
+Using our `add` example, a mutation tester would:
+
+```typescript
+// Original
+function add(a: number, b: number): number {
+  return a + b
+}
+
+// Mutated: swap + for -
+function add(a: number, b: number): number {
+  return a - b  // <-- bug introduced
+}
+```
+
+Now run the test. `add(2, 2)` returns `0` instead of `4`. Does the test fail? No—it never checked the result. **The mutant survives.** Your test has a gap.
+
+The process:
+1. **Mutate**: Introduce a small bug (change `>` to `>=`, swap `&&` for `||`, delete a line)
+2. **Run tests**: Execute your test suite against the mutated code
+3. **Evaluate**: If tests pass with the bug, your tests are weak. If tests fail, they caught it.
+
+A mutation that tests fail to catch is a "surviving mutant"—proof of a test gap.
+
+---
+
+## When Stryker Works: The Gold Standard
+
+When your test stack supports it, automated mutation testing with Stryker is the way to go. It's fast, deterministic, generates HTML reports, and runs in CI pipelines. This is especially valuable when you have pure functions with high test coverage but want to verify test quality.
+
+Here's what it looks like in practice:
+
+```bash
+pnpm test:mutation
+# or: stryker run
+```
+
+```
+INFO ProjectReader Found 7 of 2947 file(s) to be mutated.
+INFO Instrumenter Instrumented 7 source file(s) with 394 mutant(s)
+INFO DryRunExecutor Initial test run succeeded. Ran 184 tests in 0 seconds.
+
+Mutation testing  [====================] 100% | 394/394 Mutants tested
+(35 survived, 0 timed out)
+
+--------------|---------|----------|----------|----------|
+File          |  % score | # killed | # survived | # no cov |
+--------------|---------|----------|----------|----------|
+All files     |   90.86 |      358 |         35 |        1 |
+ backlinks.ts |   96.30 |       26 |          1 |        0 |
+ callouts.ts  |   93.94 |       62 |          4 |        0 |
+ graph.ts     |   91.55 |       65 |          6 |        0 |
+ mentions.ts  |   91.30 |       63 |          5 |        1 |
+ minimark.ts  |   82.61 |       76 |         16 |        0 |
+ text.ts      |  100.00 |       34 |          0 |        0 |
+ wikilinks.ts |   91.43 |       32 |          3 |        0 |
+--------------|---------|----------|----------|----------|
+
+INFO MutationTestExecutor Done in 36 seconds.
+```
+
+394 mutants tested across 7 files in 36 seconds. The report shows exactly which files have weak spots—`minimark.ts` at 82.61% needs attention, while `text.ts` is solid at 100%.
+
+Stryker also generates an interactive HTML report where you can drill into each surviving mutant and see exactly what code change your tests failed to catch.
+
+<Alert type="tip" title="Use Stryker When You Can">
+  If your stack supports Stryker (standard Vitest in Node mode, Jest, Mocha), use it. Deterministic tooling in your CI pipeline beats manual approaches every time. The AI agent technique in this post is for when Stryker isn't an option.
+</Alert>
+
+---
+
+## The Vitest Browser Mode Problem
+
+But what if Stryker doesn't support your stack? Stryker doesn't work with Vitest's browser mode. Their instrumentation assumes Node.js execution, but browser mode runs tests in actual Chromium via Playwright.
+
+My setup:
+- **Framework**: Vitest 4 with `browser.enabled: true`
+- **Provider**: Playwright (Chromium)
+- **Test style**: Integration tests with real DOM
+
+<InternalLink slug="vue3_testing_pyramid_vitest_browser_mode">My testing strategy</InternalLink> relies heavily on Vitest browser mode for realistic user flow testing. Stryker's mutation coverage reports? Not an option. And switching to Node-based testing would mean losing the browser-specific behavior I'm actually testing.
+
+---
+
+## AI Agents as Manual Mutation Testers
+
+The mutation testing algorithm is simple enough that an AI coding agent can execute it manually. Claude Code can:
+
+1. Read your source code
+2. Apply mutations systematically
+3. Run `pnpm test --run`
+4. Record whether tests passed or failed
+5. Restore the original code
+6. Report surviving mutants with suggested fixes
+
+I adapted a <InternalLink slug="claude-code-customization-guide-claudemd-skills-subagents">Claude Code skill</InternalLink> originally created by [Paul Hammond](https://www.linkedin.com/posts/paul-hammond-bb5b78251_mutation-testing-is-typically-expensive-but-activity-7414719212071473152-_xTm) that codifies this workflow.
+
+```mermaid
+flowchart TD
+    subgraph Agent["AI Agent Workflow"]
+        A[Read source file] --> B[Identify mutation targets]
+        B --> C[Apply single mutation]
+        C --> D[Run test suite]
+        D --> E{Tests fail?}
+        E -->|Yes| F[Mutant KILLED]
+        E -->|No| G[Mutant SURVIVED]
+        F --> H[Restore original code]
+        G --> H
+        H --> I{More mutations?}
+        I -->|Yes| C
+        I -->|No| J[Generate report]
+    end
+
+    subgraph Results["Report Output"]
+        J --> K[Killed mutants: Tests caught the bug]
+        J --> L[Survived mutants: Test gaps found]
+        L --> M[Suggested fixes for each gap]
+    end
+
+    style G fill:#f96,stroke:#333
+    style F fill:#6f9,stroke:#333
+    style L fill:#f96,stroke:#333
+    style K fill:#6f9,stroke:#333
+```
+
+### The Mutation Testing Skill
+
+The skill defines mutation operators in priority order:
+
+**Priority 1 - Boundaries** (most likely to survive):
+
+| Original | Mutate To |
+|----------|-----------|
+| `<` | `<=` |
+| `>` | `>=` |
+| `<=` | `<` |
+| `>=` | `>` |
+
+**Priority 2 - Boolean Logic**:
+
+| Original | Mutate To |
+|----------|-----------|
+| `&&` | `\|\|` |
+| `\|\|` | `&&` |
+| `!condition` | `condition` |
+
+**Priority 3 - Return Values**:
+
+| Original | Mutate To |
+|----------|-----------|
+| `return x` | `return null` |
+| `return true` | `return false` |
+| Early return | Remove it |
+
+**Priority 4 - Statement Removal**:
+
+| Original | Mutate To |
+|----------|-----------|
+| `array.push(x)` | Remove |
+| `await save(x)` | Remove |
+| `emit('event')` | Remove |
+
+The agent applies each mutation one at a time, runs tests, records results, and restores the original code immediately.
+
+---
+
+## Real Example: Settings Feature
+
+I ran this against my settings feature. The integration tests looked comprehensive—theme toggling, language switching, unit preferences. Code coverage would show high percentages.
+
+**Results: 38% mutation score** (5 killed, 8 survived out of 13 mutations)
+
+Here's what the AI agent found:
+
+### Surviving Mutant #1: Volume Boundary Not Tested
+
+```typescript
+// Original (stores/settings.ts:65)
+Math.min(Math.max(volume, 0.5), 1)
+
+// Mutation: Change 0.5 to 0.4
+Math.min(Math.max(volume, 0.4), 1)
+
+// Result: Tests PASSED -> Mutant SURVIVED
+```
+
+My tests never verified the minimum volume constraint. A bug changing the minimum from 50% to 40% would ship undetected.
+
+### Surviving Mutant #2: Theme DOM Class Not Verified
+
+```typescript
+// Original (composables/useTheme.ts:26)
+newMode === 'dark'
+
+// Mutation: Negate the condition
+newMode !== 'dark'
+
+// Result: Tests PASSED -> Mutant SURVIVED
+```
+
+My test checked that clicking the toggle changed the stored preference. It never verified that `document.documentElement.classList` actually received the `dark` class. The UI could break while tests pass.
+
+### Surviving Mutant #3: Error Handling Path Untested
+
+```typescript
+// Original (stores/settings.ts:28)
+if (error) return
+
+// Mutation: Negate the condition
+if (!error) return
+
+// Result: Tests PASSED -> Mutant SURVIVED
+```
+
+No test exercised the error handling branch. A bug that inverted error handling would go unnoticed.
+
+### The Fixes
+
+The agent suggested specific tests for each surviving mutant:
+
+```typescript
+// Fix for Mutant #1: Boundary test
+it('volume slider has minimum value constraint of 50%', async () => {
+  const volumeSlider = page.getByTestId('timer-sound-volume-slider')
+  await expect.poll(async () => {
+    const el = await volumeSlider.element()
+    return el.getAttribute('min')
+  }).toBe('0.5')
+})
+
+// Fix for Mutant #2: DOM verification
+it('adds dark class to html element when dark mode enabled', async () => {
+  const themeToggle = page.getByTestId('theme-toggle')
+  await userEvent.click(themeToggle)
+
+  await expect.poll(() =>
+    document.documentElement.classList.contains('dark')
+  ).toBe(true)
+})
+```
+
+---
+
+## How to Set This Up
+
+### Step 1: Create the Skill
+
+Save this as `.claude/skills/mutation-testing/SKILL.md`:
+
+<details>
+<summary>Full Mutation Testing Skill (click to expand)</summary>
+
+```markdown
+---
+name: mutation-testing
+description: |
+  Mutation testing patterns for verifying test effectiveness. Use when analyzing branch code
+  to find weak or missing tests. Triggers: "mutation testing", "test effectiveness",
+  "would tests catch this bug", "weak tests", "are my tests good enough", "surviving mutants".
+---
+
+# Mutation Testing
+
+Mutation testing answers: **"Would my tests catch this bug?"** by actually introducing bugs and running tests.
+
+---
+
+## Execution Workflow
+
+**CRITICAL**: This skill actually mutates code and runs tests. Follow this exact process:
+
+### Step 1: Identify Target Code
+
+git diff main...HEAD --name-only | grep -E '\.(ts|js|tsx|jsx|vue)' | grep -v '\.test\.' | grep -v '\.spec\.'
+
+### Step 2: For Each Function to Test
+
+Execute this loop for each mutation:
+
+1. READ the original file and note exact content
+2. APPLY one mutation (edit the code)
+3. RUN tests: pnpm test --run (or specific test file)
+4. RECORD result: KILLED (test failed) or SURVIVED (test passed)
+5. RESTORE original code immediately
+6. Repeat for next mutation
+
+### Step 3: Report Results
+
+After all mutations, provide a summary table:
+
+| Mutation | Location | Result | Action Needed |
+|----------|----------|--------|---------------|
+| `>` → `>=` | file.ts:42 | SURVIVED | Add boundary test |
+| `&&` → `||` | file.ts:58 | KILLED | None |
+
+---
+
+## Mutation Operators to Apply
+
+### Priority 1: Boundary Mutations (Most Likely to Survive)
+
+| Original | Mutate To | Why It Matters |
+|----------|-----------|----------------|
+| `<` | `<=` | Boundary not tested |
+| `>` | `>=` | Boundary not tested |
+| `<=` | `<` | Equality case missed |
+| `>=` | `>` | Equality case missed |
+
+### Priority 2: Boolean Logic Mutations
+
+| Original | Mutate To | Why It Matters |
+|----------|-----------|----------------|
+| `&&` | `\|\|` | Only tested when both true |
+| `\|\|` | `&&` | Only tested when both false |
+| `!condition` | `condition` | Negation not verified |
+
+### Priority 3: Arithmetic Mutations
+
+| Original | Mutate To | Why It Matters |
+|----------|-----------|----------------|
+| `+` | `-` | Tested with 0 only |
+| `-` | `+` | Tested with 0 only |
+| `*` | `/` | Tested with 1 only |
+
+### Priority 4: Return/Early Exit Mutations
+
+| Original | Mutate To | Why It Matters |
+|----------|-----------|----------------|
+| `return x` | `return null` | Return value not asserted |
+| `return true` | `return false` | Boolean return not checked |
+| `if (cond) return` | `// removed` | Early exit not tested |
+
+### Priority 5: Statement Removal
+
+| Original | Mutate To | Why It Matters |
+|----------|-----------|----------------|
+| `array.push(x)` | `// removed` | Side effect not verified |
+| `await save(x)` | `// removed` | Async operation not verified |
+| `emit('event')` | `// removed` | Event emission not tested |
+
+---
+
+## Practical Execution Example
+
+### Example: Testing a Validation Function
+
+**Original code** (`src/utils/validation.ts:15`):
+
+export function isValidAge(age: number): boolean {
+  return age >= 18 && age <= 120;
+}
+
+**Mutation 1**: Change `>=` to `>`
+
+export function isValidAge(age: number): boolean {
+  return age > 18 && age <= 120;  // MUTATED
+}
+
+**Run tests**: `pnpm test --run src/__tests__/validation.test.ts`
+
+**Result**: Tests PASS → **SURVIVED** (Bad! Need test for `isValidAge(18)`)
+
+**Restore original code immediately**
+
+**Mutation 2**: Change `&&` to `||`
+
+export function isValidAge(age: number): boolean {
+  return age >= 18 || age <= 120;  // MUTATED
+}
+
+**Run tests**: `pnpm test --run src/__tests__/validation.test.ts`
+
+**Result**: Tests FAIL → **KILLED** (Good! Tests catch this bug)
+
+**Restore original code immediately**
+
+---
+
+## Results Interpretation
+
+### Mutant States
+
+| State | Meaning | Action |
+|-------|---------|--------|
+| **KILLED** | Test failed with mutant | Tests are effective |
+| **SURVIVED** | Tests passed with mutant | **Add or strengthen test** |
+| **TIMEOUT** | Tests hung (infinite loop) | Counts as detected |
+
+### Mutation Score
+
+Score = (Killed + Timeout) / Total Mutations * 100
+
+| Score | Quality |
+|-------|---------|
+| < 60% | Weak - significant test gaps |
+| 60-80% | Moderate - improvements needed |
+| 80-90% | Good - minor gaps |
+| > 90% | Strong test suite |
+
+---
+
+## Fixing Surviving Mutants
+
+When a mutant survives, add a test that would catch it:
+
+### Surviving: Boundary mutation (`>=` → `>`)
+
+// Add boundary test
+it('accepts exactly 18 years old', () => {
+  expect(isValidAge(18)).toBe(true);  // Would fail if >= became >
+});
+
+### Surviving: Logic mutation (`&&` → `||`)
+
+// Add test with mixed conditions
+it('rejects when only one condition met', () => {
+  expect(isValidAge(15)).toBe(false);  // Would pass if && became ||
+});
+
+### Surviving: Statement removal
+
+// Add side effect verification
+it('saves to database', async () => {
+  await processOrder(order);
+  expect(db.save).toHaveBeenCalledWith(order);  // Would fail if save removed
+});
+
+---
+
+## Quick Checklist During Mutation
+
+For each mutation, ask:
+
+1. **Before mutating**: Does a test exist for this code path?
+2. **After running tests**: Did any test actually fail?
+3. **If survived**: What specific test would catch this?
+4. **After fixing**: Re-run mutation to confirm killed
+
+---
+
+## Common Surviving Mutation Patterns
+
+### Tests Only Check Happy Path
+
+// WEAK: Only tests success case
+it('validates', () => {
+  expect(validate(goodInput)).toBe(true);
+});
+
+// STRONG: Tests both cases
+it('validates good input', () => {
+  expect(validate(goodInput)).toBe(true);
+});
+it('rejects bad input', () => {
+  expect(validate(badInput)).toBe(false);
+});
+
+### Tests Use Identity Values
+
+// WEAK: Mutation survives
+expect(multiply(5, 1)).toBe(5);  // 5*1 = 5/1 = 5
+
+// STRONG: Mutation detected
+expect(multiply(5, 3)).toBe(15);  // 5*3 ≠ 5/3
+
+### Tests Don't Assert Return Values
+
+// WEAK: No return value check
+it('processes', () => {
+  process(data);  // No assertion!
+});
+
+// STRONG: Asserts outcome
+it('processes', () => {
+  const result = process(data);
+  expect(result).toEqual(expected);
+});
+
+---
+
+## Important Rules
+
+1. **ALWAYS restore original code** after each mutation
+2. **Run tests immediately** after applying mutation
+3. **One mutation at a time** - don't combine mutations
+4. **Focus on changed code** - prioritize branch diff
+5. **Track all results** - report full mutation summary
+
+---
+
+## Summary Report Template
+
+After completing mutation testing, provide:
+
+## Mutation Testing Results
+
+**Target**: `src/features/workout/utils.ts` (functions: X, Y, Z)
+**Total Mutations**: 12
+**Killed**: 9
+**Survived**: 3
+**Score**: 75%
+
+### Surviving Mutants (Action Required)
+
+| # | Location | Original | Mutated | Suggested Test |
+|---|----------|----------|---------|----------------|
+| 1 | line 42 | `>=` | `>` | Test boundary value |
+| 2 | line 58 | `&&` | `\|\|` | Test mixed conditions |
+| 3 | line 71 | `emit()` | removed | Verify event emission |
+
+### Killed Mutants (Tests Effective)
+
+- Line 35: `+` → `-` killed by `calculation.test.ts`
+- Line 48: `true` → `false` killed by `validate.test.ts`
+- ...
+```
+
+</details>
+
+### Step 2: Invoke It
+
+```bash
+claude "Run mutation testing on the settings feature"
+```
+
+The agent will:
+- Find changed files on your branch
+- Identify testable functions
+- Apply mutations systematically
+- Report surviving mutants with suggested test fixes
+
+### Step 3: Review and Fix
+
+The agent produces a markdown report. Review each surviving mutant and decide:
+- Add the suggested test
+- Accept the risk (document why)
+- Refactor the code to be more testable
+
+---
+
+## When to Use This Approach
+
+| Good Fit | Not Ideal |
+|----------|-----------|
+| Vitest browser mode (no Stryker support) | Large codebases needing full mutation coverage |
+| Playwright component testing | CI/CD automation (manual agent invocation) |
+| Small-to-medium codebases | Strict mutation score thresholds |
+| Pre-merge review of specific features | |
+| Learning what makes tests effective | |
+
+<Alert type="tip" title="Complement, Don't Replace">
+  This approach works best alongside your existing testing strategy. Use it to spot-check critical features before merge, not as a replacement for automated mutation testing where available.
+</Alert>
+
+<Alert type="info" title="Feature Branches, Not Pipelines">
+  This skill shines on **feature branches** where you want to validate test quality before merging. Running AI agents in CI/CD pipelines is possible—you could build <InternalLink slug="building_ai_qa_engineer_claude_code_playwright">an automated QA agent</InternalLink> with the Claude Agent SDK—but it adds complexity and cost. For pipeline automation, deterministic tools like Stryker remain the better choice when your stack supports them. Think of this as a developer tool for improving tests during development, not a CI gate.
+</Alert>
+
+---
+
+## Key Takeaways
+
+1. **Coverage doesn't equal confidence.** High code coverage can coexist with ineffective tests.
+
+2. **Mutation testing reveals test gaps.** By breaking code and checking if tests notice, you find what's actually being verified.
+
+3. **AI agents can execute manual mutation testing.** When tooling doesn't support your stack, an agent can apply the algorithm systematically.
+
+4. **Focus on surviving mutants.** Each one is a potential bug your tests wouldn't catch.
+
+5. **This complements, not replaces.** Use this alongside coverage reports, not instead of automated mutation testing where available.
+
+---
+
+## Resources
+
+- [Paul Hammond's Mutation Testing Skill](https://github.com/citypaul/.dotfiles/blob/main/claude/.claude/skills/mutation-testing/SKILL.md) - The original skill this post is based on
+- [Mutation Testing on Wikipedia](https://en.wikipedia.org/wiki/Mutation_testing)
+- [Stryker Mutator](https://stryker-mutator.io/) - When your stack supports it
+- <InternalLink slug="custom-tdd-workflow-claude-code-vue">My TDD workflow with Claude Code</InternalLink> - Related approach for test-first development
+
+---
+
 --- title: Why You Don't Need the Nuxt MCP When You Use Claude Code description: Why I use custom research agents instead of MCP servers for AI-assisted development. Learn how llms.txt enables context-efficient documentation fetching with a practical Nuxt Content agent example. tags: ['ai', 'claude-code', 'nuxt', 'tooling'] url: https://alexop.dev/posts/why-you-dont-need-nuxt-mcp-claude-code ---
 
 # Why You Don't Need the Nuxt MCP When You Use Claude Code
@@ -4902,6 +10136,10 @@ Here's a real-world workflow that combines multiple features:
 **Why this works:** Main context stays focused on planning. Heavy implementation work happens in isolated context. Skills handle documentation. Hooks enforce quality standards. No context pollution.
 
 ## Decision guide: choosing the right tool
+
+<Alert type="info" title="Community Resource: Claude Code Driver Repository">
+  🎉 **Huge thanks to [@thewiredbear](https://github.com/thewiredbear)** for creating the [Claude Code Driver](https://github.com/thewiredbear/Claude_Code_Driver/) repository! This community-driven collection includes examples, templates, and resources based on this guide. Perfect for getting started quickly or finding inspiration for your own Claude Code setup. Check it out and contribute your own patterns!
+</Alert>
 
 <Alert type="info" title="Quick Reference Cheat Sheet">
   For a comprehensive visual guide to all Claude Code features, check out the
@@ -13875,6 +19113,271 @@ Find the complete example code on [GitHub](https://github.com/alexanderop/vue-de
 
 ---
 
+--- title: Adding Obsidian-Style Wiki Links to My Astro Blog description: I added [[wiki link]] syntax to my Astro blog with hover preview cards. Here's how it works and how you can build it too. tags: ['astro', 'markdown', 'obsidian'] url: https://alexop.dev/posts/adding-obsidian-wiki-links-to-astro-blog ---
+
+# Adding Obsidian-Style Wiki Links to My Astro Blog
+
+
+
+## TLDR
+
+I built a remark plugin that transforms `[[slug]]` syntax into internal links with hover preview cards. It supports multiple content collections, custom display text, and shows broken link warnings at build time.
+
+## Live Examples
+
+Hover over these links to see the preview cards in action:
+
+**Blog post:** [[are-llms-creative]]
+
+**Blog post with alias:** [[are-llms-creative|my thoughts on LLM creativity]]
+
+**TIL:** [[til:dynamic-pinia-stores]]
+
+**Notes:** [[notes:software-testing-with-generative-ai|Testing with AI]]
+
+**Broken link:** [[this-post-does-not-exist]]
+
+All of these are written as simple `[[slug]]` syntax in the markdown source.
+
+## Why I Built This
+
+I use Obsidian for note-taking and love the `[[wiki link]]` syntax. It's fast to type and creates connections between notes naturally. I wanted the same experience when writing blog posts.
+
+Before this, I had an `InternalLink` component that required MDX imports:
+
+```mdx
+Check out <InternalLink slug="some-post">this post</InternalLink>.
+```
+
+Too verbose. I wanted to just type `[[some-post]]` and have it work.
+
+## How It Works
+
+The solution uses a custom remark plugin that:
+
+1. Finds `[[...]]` patterns in markdown text
+2. Looks up the post metadata from the file system
+3. Generates the full preview card HTML at build time
+
+### Supported Syntax
+
+```markdown
+[[slug]]                           # Links to blog post
+[[slug|custom text]]               # With display text
+[[til:slug]]                       # Links to TIL collection
+[[notes:slug|my notes]]            # Other collections with alias
+```
+
+### The Preview Card
+
+Hover over any wiki link to see a preview card with:
+
+- Post title
+- Description (3 lines max)
+- Tags (first 3)
+- Publication date
+
+The card uses fixed positioning to escape overflow containers and flips below the link when too close to the viewport top.
+
+## Building the Remark Plugin
+
+The plugin runs during markdown processing. It reads all content collection files at initialization and caches the metadata for fast lookups.
+
+```ts
+// src/lib/remarkWikiLinks.ts
+const WIKI_LINK_REGEX = /\[\[([^\]|]+?)(?:\|([^\]]+))?\]\]/g;
+
+export function remarkWikiLinks() {
+  // Load all posts at plugin init
+  const cache = loadAllPosts();
+
+  return (tree) => {
+    visit(tree, "text", (node, index, parent) => {
+      const matches = [...node.value.matchAll(WIKI_LINK_REGEX)];
+      if (matches.length === 0) return;
+
+      // Replace matches with HTML nodes containing preview cards
+      // ...
+    });
+  };
+}
+```
+
+The key insight: remark plugins can output raw HTML nodes. The plugin generates the complete preview card markup, so no separate rehype processing is needed.
+
+### Parsing the Syntax
+
+The regex captures two groups:
+
+1. The target (either `slug` or `collection:slug`)
+2. The optional alias after the pipe
+
+```ts
+function parseWikiLink(target: string, alias?: string) {
+  let collection = "blog";
+  let slug = target;
+
+  if (target.includes(":")) {
+    const [col, sl] = target.split(":", 2);
+    if (["blog", "til", "notes", "prompts"].includes(col)) {
+      collection = col;
+      slug = sl;
+    }
+  }
+
+  return { collection, slug, alias };
+}
+```
+
+### Loading Post Metadata
+
+The plugin reads frontmatter directly from content files using `gray-matter`:
+
+```ts
+function loadCollectionPosts(collection: string) {
+  const posts = new Map();
+  const dir = `src/content/${collection}`;
+
+  for (const file of fs.readdirSync(dir, { recursive: true })) {
+    if (!file.endsWith(".md") && !file.endsWith(".mdx")) continue;
+
+    const content = fs.readFileSync(`${dir}/${file}`, "utf-8");
+    const { data } = matter(content);
+
+    if (data.draft) continue;
+
+    const slug = file.replace(/\.(md|mdx)$/, "");
+    posts.set(slug, {
+      title: data.title,
+      description: data.description,
+      tags: data.tags,
+      pubDatetime: data.pubDatetime,
+    });
+  }
+
+  return posts;
+}
+```
+
+### Generating Preview Card HTML
+
+The plugin outputs the same HTML structure as my existing `InternalLink` component:
+
+```ts
+function createPreviewCardHtml(post, href, displayText) {
+  return `
+    <span class="internal-link-wrapper">
+      <a href="${href}" class="internal-link">${displayText}</a>
+      <span class="preview-card" role="tooltip">
+        <span class="preview-content">
+          <span class="preview-title">${post.title}</span>
+          <span class="preview-description">${post.description}</span>
+          <!-- tags and date -->
+        </span>
+      </span>
+    </span>
+  `;
+}
+```
+
+## Broken Link Detection
+
+When a wiki link references a non-existent post, the plugin:
+
+1. Logs a warning during build: `[wiki-links] Post not found: blog:missing-slug`
+2. Renders the link with error styling (red wavy underline)
+
+```ts
+if (!postData) {
+  console.warn(`[wiki-links] Post not found: ${collection}:${slug}`);
+  return `<span class="wiki-link-broken" title="Post not found: ${slug}">${displayText}</span>`;
+}
+```
+
+This catches typos and stale references before they hit production.
+
+## Adding the Plugin to Astro
+
+Register the plugin in `astro.config.ts`:
+
+```ts
+export default defineConfig({
+  markdown: {
+    remarkPlugins: [
+      remarkWikiLinks,
+      // other plugins...
+    ],
+  },
+});
+```
+
+The plugin runs first so wiki links are processed before other transformations.
+
+## The CSS
+
+The styles match my existing `InternalLink` component:
+
+```css
+.internal-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.internal-link {
+  @apply text-skin-accent underline decoration-dashed;
+}
+
+.preview-card {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+
+.wiki-link-broken {
+  @apply text-red-400 underline decoration-wavy;
+}
+```
+
+## The Hover Script
+
+A small inline script handles the preview card positioning:
+
+```js
+document.addEventListener("astro:page-load", () => {
+  document.querySelectorAll(".internal-link-wrapper").forEach((wrapper) => {
+    wrapper.addEventListener("mouseenter", () => {
+      const card = wrapper.querySelector(".preview-card");
+      // Calculate position, flip if needed, show card
+    });
+  });
+});
+```
+
+The script runs on `astro:page-load` to work with Astro's view transitions.
+
+## Result
+
+Now I can write posts with natural wiki link syntax:
+
+```markdown
+I wrote about [[are-llms-creative|LLM creativity]] last month.
+See also my [[til:dynamic-pinia-stores|TIL on Pinia stores]].
+```
+
+The links render with hover previews, and broken references get caught at build time. Much better than importing components everywhere.
+
+## What's Next
+
+A few improvements I'm considering:
+
+- Fuzzy matching for slug typos
+- Backlinks section showing which posts link to the current one
+- Support for heading anchors: `[[post#section]]`
+
+---
+
 --- title: Unlocking Reading Insights: A Guide to Data Analysis with Claude and Readwise description: Discover how to transform your reading data into actionable insights by combining Readwise exports with Claude AI's powerful analysis capabilities tags: ['ai', 'productivity', 'reading'] url: https://alexop.dev/posts/supercharging-reading-comprehension-claude-readwise ---
 
 # Unlocking Reading Insights: A Guide to Data Analysis with Claude and Readwise
@@ -21675,6 +27178,82 @@ Despite these minor critiques, it's highly recommended for beginners.
 # PROMPTS
 ================================================================================
 
+--- title: Add Prompt: Quick Prompt Collection Entry description: Quickly add new prompts to the blog's prompts collection with auto-generated frontmatter tool: claude category: instruction tags: ['prompts', 'workflow', 'automation', 'claude-code'] url: https://alexop.dev/prompts/claude/claude-add-prompt-command ---
+
+# Add Prompt: Quick Prompt Collection Entry
+
+description: Add a new prompt to the blog's prompts collection with auto-generated frontmatter
+argument-hint: [paste raw prompt content]
+model: sonnet
+allowed-tools: Read, Write, Glob, AskUserQuestion
+
+# Add Prompt to Collection
+
+Add a new prompt to `src/content/prompts/` with properly generated frontmatter.
+
+## Phase 1: Parse Input
+
+The user will provide raw prompt content. This typically includes:
+- A YAML config block with: description, allowed-tools, model, argument-hint
+- Markdown instructions/body
+
+Extract:
+1. **name**: From the heading or first line (e.g., "# Learn from Conversation" → "learn")
+2. **description**: From the YAML `description` field
+3. **model**: From the YAML `model` field
+4. **allowed-tools**: From the YAML `allowed-tools` field
+
+## Phase 2: Generate Frontmatter
+
+Create the primary frontmatter block for the prompts collection:
+
+```yaml
+---
+title: "{Title Case Name}: {Brief Purpose}"
+pubDatetime: {today's date}T00:00:00Z
+tool: "claude"
+category: "{skill|instruction|prompt|agent}"  # Infer from content
+tags: [{extract relevant keywords}]
+description: "{from input description}"
+useCase: "{derive from when/how to use}"
+modelVersion: "{from model field, formatted nicely}"
+expectedOutput: "{infer from the prompt's goal}"
+draft: false
+---
+```
+
+**Category inference:**
+- Has `allowed-tools` + specific workflow → "instruction"
+- Has `name:` field in YAML → "skill"
+- Simple prompt without execution config → "prompt"
+- Describes an autonomous agent → "agent"
+
+## Phase 3: Generate Filename
+
+Format: `claude-{kebab-case-name}-command.md`
+
+Examples:
+- "Learn" → `claude-learn-command.md`
+- "Fix Pipeline" → `claude-fix-pipeline-command.md`
+- "Create Skill" → `claude-create-skill.md`
+
+## Phase 4: Present Draft
+
+Show the complete file content:
+1. The generated primary frontmatter
+2. The original skill config YAML block (preserved as-is)
+3. The original prompt body (preserved as-is)
+
+Ask: "Ready to create `{filename}`?"
+
+## Phase 5: Create File
+
+After user approval:
+1. Write to `src/content/prompts/{filename}`
+2. Confirm creation with path
+
+---
+
 --- title: Conventional Commit description: Slash command to create conventional commit messages and commit staged changes following the conventional commits specification tool: claude category: instruction tags: ['git', 'commit', 'conventional-commits', 'automation', 'workflow'] url: https://alexop.dev/prompts/claude/claude-conventional-commit ---
 
 # Conventional Commit
@@ -21727,172 +27306,6 @@ I have gathered information about your changes. Here are the results:
    ```
 
 5. **Show the result** with `git log -1` to confirm.
-
----
-
---- title: Create Plugin description: Slash command to convert a project into a properly structured Claude Code plugin with marketplace configuration tool: claude category: instruction tags: ['plugin', 'claude-code', 'packaging', 'distribution'] url: https://alexop.dev/prompts/claude/claude-create-plugin ---
-
-# Create Plugin
-
-
-description: Convert a project into a Claude Code plugin
-argument-hint: [project-path]
-
-
-## /create-plugin
-
-## Purpose
-
-Guide users through converting an existing project into a properly structured Claude Code plugin, following official documentation standards.
-
-## Contract
-
-**Inputs:** `[project-path]` — Optional path to project directory (defaults to current directory)
-**Outputs:** `STATUS=<OK|FAIL> PLUGIN_PATH=<path>`
-
-## Instructions
-
-1. **Analyze the project structure:**
-   - Identify existing components that could become plugin features
-   - Check for slash commands, agents, skills, hooks, or MCP integrations
-   - Review documentation files
-
-2. **Create plugin and marketplace structure:**
-   - Create `.claude-plugin/` directory at project root
-   - Generate `plugin.json` manifest with proper metadata:
-     - name (lowercase, kebab-case)
-     - description
-     - version (semantic versioning)
-     - author information (object with name and optional url)
-     - repository (string URL, not object)
-     - license (optional)
-   - Generate `marketplace.json` in the same directory with:
-     - marketplace name
-     - owner information
-     - plugins array with source reference `"./"` (self-reference)
-
-3. **Organize plugin components:**
-   - `commands/` - Slash command markdown files
-   - `agents/` - Agent definition markdown files
-   - `skills/` - Agent Skills with SKILL.md files
-   - `hooks/` - hooks.json for event handlers
-   - `.mcp.json` - MCP server configurations (if applicable)
-
-4. **Generate documentation:**
-   - Create/update README.md with:
-     - Installation instructions
-     - Usage examples
-     - Component descriptions
-     - Testing guidance
-
-5. **Provide testing workflow:**
-   - Local marketplace setup commands
-   - Installation verification steps
-   - Iteration and debugging guidance
-
-## Reference Documentation
-
-Follow the official Claude Code plugin and marketplace structure:
-
-```
-my-plugin/
-├── .claude-plugin/
-│   ├── marketplace.json      # Marketplace manifest
-│   └── plugin.json          # Plugin metadata
-├── commands/                 # Custom slash commands (optional)
-│   └── command-name.md
-├── agents/                   # Custom agents (optional)
-│   └── agent-name.md
-├── skills/                   # Agent Skills (optional)
-│   └── skill-name/
-│       └── SKILL.md
-├── hooks/                    # Event handlers (optional)
-│   └── hooks.json
-├── .mcp.json                # MCP servers (optional)
-└── README.md                # Documentation
-```
-
-## Plugin Manifest Template
-
-The plugin.json file MUST be created at `<plugin-dir>/.claude-plugin/plugin.json`:
-
-```json
-{
-  "name": "plugin-name",
-  "version": "1.0.0",
-  "description": "Plugin description",
-  "author": {
-    "name": "Author Name",
-    "url": "https://github.com/username"
-  },
-  "repository": "https://github.com/username/plugin-name",
-  "license": "MIT"
-}
-```
-
-**Important:** The `repository` field must be a string URL, not an object. Using an object format like `{"type": "git", "url": "..."}` will cause validation errors.
-
-## Marketplace Manifest Template
-
-The marketplace.json file MUST be created at `<plugin-dir>/.claude-plugin/marketplace.json` alongside plugin.json:
-
-```json
-{
-  "name": "marketplace-name",
-  "owner": {
-    "name": "Owner Name"
-  },
-  "plugins": [
-    {
-      "name": "plugin-name",
-      "source": "./",
-      "description": "Plugin description"
-    }
-  ]
-}
-```
-
-## Key Guidelines
-
-- **Plugin manifest**: Use semantic versioning, clear descriptions
-- **Marketplace manifest**: MUST create marketplace.json in the same .claude-plugin/ directory alongside plugin.json
-- **Commands**: Markdown files with frontmatter (description, argument-hint)
-- **Skills**: Create subdirectories with SKILL.md files
-- **Testing**: Use local marketplace for iterative development
-- **Documentation**: Include installation, usage, and examples
-
-## Constraints
-
-- Must create valid plugin.json schema in .claude-plugin/ directory
-- Must create valid marketplace.json schema in the same .claude-plugin/ directory
-- The repository field in plugin.json MUST be a string URL, not an object
-- Follow kebab-case naming conventions
-- Include proper frontmatter in all markdown files
-- Marketplace source must reference "./" to point to the plugin directory itself
-- Output final STATUS line with plugin path
-
-## Example Output
-
-```
-Created plugin structure at: ./my-plugin
-Generated components:
-  - .claude-plugin/plugin.json
-  - .claude-plugin/marketplace.json
-  - commands/helper.md
-  - README.md
-
-Next steps:
-1. cd my-plugin && claude
-2. /plugin marketplace add .
-3. /plugin install my-plugin@my-plugin-dev
-
-Or for GitHub-based installation:
-1. Push to GitHub repository
-2. /plugin marketplace add username/my-plugin
-3. /plugin install my-plugin@my-plugin-dev
-
-STATUS=OK PLUGIN_PATH=./my-plugin
-```
 
 ---
 
@@ -22518,6 +27931,172 @@ You are an interactive CLI tool that helps users with software engineering tasks
 - User-level styles are available across all projects
 - Project-level styles are specific to the current project
 - You can manually edit the generated files to refine instructions
+
+---
+
+--- title: Create Plugin description: Slash command to convert a project into a properly structured Claude Code plugin with marketplace configuration tool: claude category: instruction tags: ['plugin', 'claude-code', 'packaging', 'distribution'] url: https://alexop.dev/prompts/claude/claude-create-plugin ---
+
+# Create Plugin
+
+
+description: Convert a project into a Claude Code plugin
+argument-hint: [project-path]
+
+
+## /create-plugin
+
+## Purpose
+
+Guide users through converting an existing project into a properly structured Claude Code plugin, following official documentation standards.
+
+## Contract
+
+**Inputs:** `[project-path]` — Optional path to project directory (defaults to current directory)
+**Outputs:** `STATUS=<OK|FAIL> PLUGIN_PATH=<path>`
+
+## Instructions
+
+1. **Analyze the project structure:**
+   - Identify existing components that could become plugin features
+   - Check for slash commands, agents, skills, hooks, or MCP integrations
+   - Review documentation files
+
+2. **Create plugin and marketplace structure:**
+   - Create `.claude-plugin/` directory at project root
+   - Generate `plugin.json` manifest with proper metadata:
+     - name (lowercase, kebab-case)
+     - description
+     - version (semantic versioning)
+     - author information (object with name and optional url)
+     - repository (string URL, not object)
+     - license (optional)
+   - Generate `marketplace.json` in the same directory with:
+     - marketplace name
+     - owner information
+     - plugins array with source reference `"./"` (self-reference)
+
+3. **Organize plugin components:**
+   - `commands/` - Slash command markdown files
+   - `agents/` - Agent definition markdown files
+   - `skills/` - Agent Skills with SKILL.md files
+   - `hooks/` - hooks.json for event handlers
+   - `.mcp.json` - MCP server configurations (if applicable)
+
+4. **Generate documentation:**
+   - Create/update README.md with:
+     - Installation instructions
+     - Usage examples
+     - Component descriptions
+     - Testing guidance
+
+5. **Provide testing workflow:**
+   - Local marketplace setup commands
+   - Installation verification steps
+   - Iteration and debugging guidance
+
+## Reference Documentation
+
+Follow the official Claude Code plugin and marketplace structure:
+
+```
+my-plugin/
+├── .claude-plugin/
+│   ├── marketplace.json      # Marketplace manifest
+│   └── plugin.json          # Plugin metadata
+├── commands/                 # Custom slash commands (optional)
+│   └── command-name.md
+├── agents/                   # Custom agents (optional)
+│   └── agent-name.md
+├── skills/                   # Agent Skills (optional)
+│   └── skill-name/
+│       └── SKILL.md
+├── hooks/                    # Event handlers (optional)
+│   └── hooks.json
+├── .mcp.json                # MCP servers (optional)
+└── README.md                # Documentation
+```
+
+## Plugin Manifest Template
+
+The plugin.json file MUST be created at `<plugin-dir>/.claude-plugin/plugin.json`:
+
+```json
+{
+  "name": "plugin-name",
+  "version": "1.0.0",
+  "description": "Plugin description",
+  "author": {
+    "name": "Author Name",
+    "url": "https://github.com/username"
+  },
+  "repository": "https://github.com/username/plugin-name",
+  "license": "MIT"
+}
+```
+
+**Important:** The `repository` field must be a string URL, not an object. Using an object format like `{"type": "git", "url": "..."}` will cause validation errors.
+
+## Marketplace Manifest Template
+
+The marketplace.json file MUST be created at `<plugin-dir>/.claude-plugin/marketplace.json` alongside plugin.json:
+
+```json
+{
+  "name": "marketplace-name",
+  "owner": {
+    "name": "Owner Name"
+  },
+  "plugins": [
+    {
+      "name": "plugin-name",
+      "source": "./",
+      "description": "Plugin description"
+    }
+  ]
+}
+```
+
+## Key Guidelines
+
+- **Plugin manifest**: Use semantic versioning, clear descriptions
+- **Marketplace manifest**: MUST create marketplace.json in the same .claude-plugin/ directory alongside plugin.json
+- **Commands**: Markdown files with frontmatter (description, argument-hint)
+- **Skills**: Create subdirectories with SKILL.md files
+- **Testing**: Use local marketplace for iterative development
+- **Documentation**: Include installation, usage, and examples
+
+## Constraints
+
+- Must create valid plugin.json schema in .claude-plugin/ directory
+- Must create valid marketplace.json schema in the same .claude-plugin/ directory
+- The repository field in plugin.json MUST be a string URL, not an object
+- Follow kebab-case naming conventions
+- Include proper frontmatter in all markdown files
+- Marketplace source must reference "./" to point to the plugin directory itself
+- Output final STATUS line with plugin path
+
+## Example Output
+
+```
+Created plugin structure at: ./my-plugin
+Generated components:
+  - .claude-plugin/plugin.json
+  - .claude-plugin/marketplace.json
+  - commands/helper.md
+  - README.md
+
+Next steps:
+1. cd my-plugin && claude
+2. /plugin marketplace add .
+3. /plugin install my-plugin@my-plugin-dev
+
+Or for GitHub-based installation:
+1. Push to GitHub repository
+2. /plugin marketplace add username/my-plugin
+3. /plugin install my-plugin@my-plugin-dev
+
+STATUS=OK PLUGIN_PATH=./my-plugin
+```
 
 ---
 
@@ -23306,6 +28885,127 @@ $ARGUMENTS
 5. **Confirm** with `git branch --show-current`.
 
 6. **Summarize** the branch name and what task it's for.
+
+---
+
+--- title: Create Command: Scaffold New Slash Commands description: Interactive agent that scaffolds new slash commands with best practices, proper frontmatter, and structured templates tool: claude category: agent tags: ['claude-code', 'slash-commands', 'automation', 'scaffolding'] url: https://alexop.dev/prompts/claude/claude-create-slash-command ---
+
+# Create Command: Scaffold New Slash Commands
+
+
+
+## Create Command: Scaffold New Slash Commands
+
+An interactive agent that guides you through creating well-structured slash commands for Claude Code. It asks the right questions and generates commands following proven patterns.
+
+## Purpose
+
+Creating effective slash commands requires understanding frontmatter options, context gathering patterns, and instruction structures. This agent encapsulates best practices so you can create powerful commands quickly without memorizing the format.
+
+## Instructions
+
+### Step 1: Gather Requirements
+
+Ask the user these questions:
+
+**Question 1: Command Category**
+What category best describes this command?
+
+| Category | Description | Defaults |
+|----------|-------------|----------|
+| `git-workflow` | Git operations (commit, branch, push, merge) | `model: haiku`, git tools |
+| `github` | GitHub operations (PR, issues, CI) | `model: haiku`, gh + git tools |
+| `quality` | Linting, testing, type checking | test/lint tools |
+| `debugging` | Fix errors, investigate issues | full tools, decision trees |
+| `code-transform` | Refactoring, code generation | full tools, file references |
+| `utility` | General purpose automation | varies |
+
+**Question 2: Arguments**
+Does this command need arguments?
+
+| Option | Syntax | Example |
+|--------|--------|---------|
+| None | (no arguments) | `/lint` |
+| Single required | `$1` | `/review-pr 123` |
+| Multiple positional | `$1`, `$2`, `$3` | `/deploy staging v1.2.3` |
+| Free-form text | `$ARGUMENTS` | `/branch add dark mode toggle` |
+
+**Question 3: File References**
+Does the command operate on specific files?
+
+- **Yes** - Use `@$1` syntax to reference file contents
+- **No** - Command works on general context
+
+**Question 4: Complexity**
+How complex is the workflow?
+
+| Level | Characteristics | Structure |
+|-------|-----------------|-----------|
+| `simple` | Run command, report result | Linear steps |
+| `linear` | Sequential steps, no branching | Numbered instructions |
+| `branching` | Pre-checks, multiple paths | Decision tree |
+| `complex` | Multi-phase, verification, fallback | Full protocol with red flags |
+
+### Step 2: Generate Command File
+
+Based on the answers, generate the command file with:
+
+**Frontmatter:**
+```yaml
+---
+description: <imperative verb phrase>
+argument-hint: <show expected args>
+allowed-tools: <category defaults>
+model: <haiku for routine, omit for complex>
+---
+```
+
+**Context Blocks** using semantic XML tags:
+```markdown
+<current_branch>
+!`git branch --show-current`
+</current_branch>
+```
+
+**Structure Templates** based on complexity level.
+
+### Step 3: Write the File
+
+1. Write the file to `.claude/commands/<name>.md`
+2. Show the user the generated command
+3. Explain how to use it
+
+## Expected Output
+
+- **Format:** Complete markdown file with YAML frontmatter
+- **Key sections:**
+  - Frontmatter with description, tools, model
+  - Context blocks with shell commands
+  - Decision tree (if branching/complex)
+  - Numbered instructions
+  - Red flags section (if complex)
+
+## Example
+
+**Input:**
+```
+/create-command deploy "Deploy to staging or production environment"
+```
+
+**Output:**
+A complete command file at `.claude/commands/deploy.md` with:
+- Proper frontmatter for deployment category
+- Context blocks for git status, current branch, latest tag
+- Decision tree handling uncommitted changes
+- Instructions for build and deploy steps
+
+## Done When
+
+- [ ] User requirements gathered via questions
+- [ ] Command file generated with correct frontmatter
+- [ ] Context blocks use appropriate shell commands
+- [ ] Instructions match complexity level
+- [ ] File written to `.claude/commands/`
 
 ---
 
@@ -24126,124 +29826,66 @@ I have run the Vitest test suite. Here are the results:
 
 ---
 
---- title: Create Command: Scaffold New Slash Commands description: Interactive agent that scaffolds new slash commands with best practices, proper frontmatter, and structured templates tool: claude category: agent tags: ['claude-code', 'slash-commands', 'automation', 'scaffolding'] url: https://alexop.dev/prompts/claude/claude-create-slash-command ---
+--- title: Learn: Analyze Conversation for Documentation description: Analyzes conversation for insights worth preserving and saves them to the project's documentation tool: claude category: skill tags: ['documentation', 'learning', 'knowledge-capture', 'workflow'] url: https://alexop.dev/prompts/claude/claude-learn-command ---
 
-# Create Command: Scaffold New Slash Commands
+# Learn: Analyze Conversation for Documentation
 
+description: Analyze conversation for learnings and save to docs folder
+argument-hint: [optional topic hint]
+model: claude-opus-4-5-20251101
+allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion
 
+# Learn from Conversation
 
-## Create Command: Scaffold New Slash Commands
+Analyze this conversation for insights worth preserving in the project's documentation.
 
-An interactive agent that guides you through creating well-structured slash commands for Claude Code. It asks the right questions and generates commands following proven patterns.
+**If a topic hint was provided via `$ARGUMENTS`, focus on capturing that specific learning.**
+**If no hint provided, analyze the full conversation for valuable insights.**
 
-## Purpose
+## Phase 1: Deep Analysis
 
-Creating effective slash commands requires understanding frontmatter options, context gathering patterns, and instruction structures. This agent encapsulates best practices so you can create powerful commands quickly without memorizing the format.
+Think deeply about what was learned in this conversation:
+- What new patterns or approaches were discovered?
+- What gotchas or pitfalls were encountered?
+- What architecture decisions were made and why?
+- What conventions were established?
+- What troubleshooting solutions were found?
 
-## Instructions
+Only capture insights that are:
+1. **Reusable** - Will help in future similar situations
+2. **Non-obvious** - Not already common knowledge
+3. **Project-specific** - Relevant to this codebase
 
-### Step 1: Gather Requirements
+If nothing valuable was learned, say so and exit gracefully.
 
-Ask the user these questions:
+## Phase 2: Categorize & Locate
 
-**Question 1: Command Category**
-What category best describes this command?
+Read existing docs to find the best home. Look for a `docs/` folder or similar documentation directory in the project.
 
-| Category | Description | Defaults |
-|----------|-------------|----------|
-| `git-workflow` | Git operations (commit, branch, push, merge) | `model: haiku`, git tools |
-| `github` | GitHub operations (PR, issues, CI) | `model: haiku`, gh + git tools |
-| `quality` | Linting, testing, type checking | test/lint tools |
-| `debugging` | Fix errors, investigate issues | full tools, decision trees |
-| `code-transform` | Refactoring, code generation | full tools, file references |
-| `utility` | General purpose automation | varies |
+If no existing doc fits, propose a new doc file with kebab-case naming.
 
-**Question 2: Arguments**
-Does this command need arguments?
+**Note:** CLAUDE.md stays stable as the entry point. All detailed learnings go to `/docs` only.
 
-| Option | Syntax | Example |
-|--------|--------|---------|
-| None | (no arguments) | `/lint` |
-| Single required | `$1` | `/review-pr 123` |
-| Multiple positional | `$1`, `$2`, `$3` | `/deploy staging v1.2.3` |
-| Free-form text | `$ARGUMENTS` | `/branch add dark mode toggle` |
+## Phase 3: Draft the Learning
 
-**Question 3: File References**
-Does the command operate on specific files?
+Format the insight to match existing doc style:
+- Clear heading describing the topic
+- Concise explanation of the insight
+- Code examples if applicable
+- Context on when this applies
 
-- **Yes** - Use `@$1` syntax to reference file contents
-- **No** - Command works on general context
+## Phase 4: User Approval (BLOCKING)
 
-**Question 4: Complexity**
-How complex is the workflow?
+Present your proposed changes:
+1. What insight you identified
+2. Where you'll save it (existing doc + section, or new file)
+3. The exact content to add
 
-| Level | Characteristics | Structure |
-|-------|-----------------|-----------|
-| `simple` | Run command, report result | Linear steps |
-| `linear` | Sequential steps, no branching | Numbered instructions |
-| `branching` | Pre-checks, multiple paths | Decision tree |
-| `complex` | Multi-phase, verification, fallback | Full protocol with red flags |
+**Wait for explicit user approval before saving.**
 
-### Step 2: Generate Command File
+## Phase 5: Save
 
-Based on the answers, generate the command file with:
-
-**Frontmatter:**
-```yaml
----
-description: <imperative verb phrase>
-argument-hint: <show expected args>
-allowed-tools: <category defaults>
-model: <haiku for routine, omit for complex>
----
-```
-
-**Context Blocks** using semantic XML tags:
-```markdown
-<current_branch>
-!`git branch --show-current`
-</current_branch>
-```
-
-**Structure Templates** based on complexity level.
-
-### Step 3: Write the File
-
-1. Write the file to `.claude/commands/<name>.md`
-2. Show the user the generated command
-3. Explain how to use it
-
-## Expected Output
-
-- **Format:** Complete markdown file with YAML frontmatter
-- **Key sections:**
-  - Frontmatter with description, tools, model
-  - Context blocks with shell commands
-  - Decision tree (if branching/complex)
-  - Numbered instructions
-  - Red flags section (if complex)
-
-## Example
-
-**Input:**
-```
-/create-command deploy "Deploy to staging or production environment"
-```
-
-**Output:**
-A complete command file at `.claude/commands/deploy.md` with:
-- Proper frontmatter for deployment category
-- Context blocks for git status, current branch, latest tag
-- Decision tree handling uncommitted changes
-- Instructions for build and deploy steps
-
-## Done When
-
-- [ ] User requirements gathered via questions
-- [ ] Command file generated with correct frontmatter
-- [ ] Context blocks use appropriate shell commands
-- [ ] Instructions match complexity level
-- [ ] File written to `.claude/commands/`
+After approval, save the learning and confirm what was captured.
 
 ---
 

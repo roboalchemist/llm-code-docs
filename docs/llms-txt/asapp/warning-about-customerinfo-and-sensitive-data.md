@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/security/warning-about-customerinfo-and-sensitive-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Warning about CustomerInfo and Sensitive Data
 
 > Learn how to securely handle Customer Information.
@@ -18,9 +22,9 @@ ASAPP treats all customer data securely. By default, however, ASAPP may not appl
 
 Certain calls available via ASAPP APIs and SDKs provide a parameter that supports the inclusion of arbitrary data with the call.
 
-We'll refer to such fields as **"CustomerInfo"** here, even though in different ASAPP interfaces they may be variously called "custom\_params", "customer\_params", and "CustomerInfo".
+We'll refer to such fields as **"CustomerInfo"** here, even though different ASAPP interfaces may call them "custom\_params", "customer\_params", and "CustomerInfo".
 
-CustomerInfo is typically a JSON object containing a set of key:value pairs that can be used in multiple ways by ASAPP and ASAPP customers. For example, as context input for use in the ASAPP Web SDK:
+CustomerInfo is typically a JSON object containing a set of key:value pairs that ASAPP and ASAPP customers can use in multiple ways. For example, as context input for use in the ASAPP Web SDK:
 
 ```javascript  theme={null}
 "CustomerInfo": {
@@ -40,6 +44,6 @@ This practice will ensure that ASAPP never has access to the customer's sensitiv
 Additionally, ASAPP strongly recommends that our customers use strong encryption. Specifically, we insist that customers use one of the following configurations:
 
 * **Symmetric Encryption Model:** use AES-GCM-256 (authenticated encryption) with a random [salt](https://en.wikipedia.org/wiki/Salt_\(cryptography\)) to provide data integrity, confidentiality and enhanced security. Each combination of salt+associated data should be unique.
-* **Asymmetric Encryption Model:** use a key size of 2048, and use RSA as an algorithm. ASAPP recommends setting a key expiration date of less than two years. ASAPP and the customer should both have mechanisms in place to update the key being used. Private keys which are rotated should be retained temporarily for the purposes of accessing previously encrypted data.
+* **Asymmetric Encryption Model:** use a key size of 2048, and use RSA as an algorithm. ASAPP recommends setting a key expiration date of less than two years. ASAPP and the customer should both have mechanisms in place to update the key being used. Temporarily retain private keys which are rotated for the purposes of accessing previously encrypted data.
 
 In extraordinary circumstances, ASAPP can make exceptions to these requirements. Please contact your ASAPP account team to discuss options if you have a compelling business need to have ASAPP implement an exception.

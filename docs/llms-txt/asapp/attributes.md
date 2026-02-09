@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/attributes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attributes
 
 ASAPP supports attributes that can be routed on to funnel customers to the right flow through [intent routing](/agent-desk/virtual-agent/intent-routing "Intent Routing").
@@ -14,12 +18,12 @@ Attributes tell the virtual agent who the customer is. For example, they indicat
 
 The Attributes List contains all the attributes available for intent routing. Here, you'll find the following information displayed in table format:
 
-1. **Attribute name:** display name of the attribute
-2. **Definition:** Indicates if the attribute is Standard or Custom. Standard attributes are natively supported by ASAPP. Custom attributes are added in accordance with your business requirements\*
+1. **Attribute name:** Display name of the attribute
+2. **Definition:** Indicates if the attribute is Standard or Custom. ASAPP natively supports Standard attributes. Custom attributes are added in accordance with your business requirements\*
 3. **Type:** Indicates the value type of an attribute. There are two possible types: Boolean, or Value.
    a.  **Boolean:** A boolean attribute includes two values. For example: Yes/No, True/False, On/Off.
    b.  **Value:** A value attribute can include any number of values. For example: Market 1, Market 2, Market 3.
-4. **Origin Key:** exact value that is passed from the company to ASAPP.
+4. **Origin Key:** Exact value that the company passes to ASAPP.
 
 <tip>
   Contact your ASAPP team for more details on how to add a custom attribute.
@@ -34,10 +38,10 @@ The Attributes List contains all the attributes available for intent routing. He
 To view specific attribute details, click an **attribute name** to launch the details modal.
 
 1. **Description:** Describes what the attribute is.
-2. **Value ID:** Unique, non-editable key that is directly passed to ASAPP for that attribute (can be non-human readable).
-3. **Value name:** Display name for the value to describe what the attribute value is. These value names are reflected in intent routing for ease of use.
+2. **Value ID:** Unique, non-editable key that the system directly passes to ASAPP for that attribute (can be non-human readable).
+3. **Value name:** Display name for the value to describe what the attribute value is. These value names appear in intent routing for ease of use.
 
-Descriptions and value names can be edited. To modify these fields, make your changes and click **Save**. On click, changes will be automatically saved, and changes take effect immediately.
+Descriptions and value names can be edited. To modify these fields, make your changes and click **Save**. When you click, the system automatically saves changes, and changes take effect immediately.
 
 <Note>
   There is no support for versioning or adding new attributes and/or values at this time, please contact your ASAPP team for support in this area.

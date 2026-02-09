@@ -4,12 +4,6 @@
 
 # Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-shopify-functions/step-1-add-intelligems-javascript.md
 
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-duplicate-products/step-1-add-intelligems-javascript.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-checkout-scripts/step-1-add-intelligems-javascript.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-shopify-functions/step-1-add-intelligems-javascript.md
-
 # Step 1: Add Intelligems JavaScript
 
 ## Introduction

@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/transport/self-hosting/benchmark.md
 
-# Source: https://docs.livekit.io/home/self-hosting/benchmark.md
-
 LiveKit docs › Self-hosting › Benchmarks
 
 ---
@@ -39,7 +37,7 @@ When benchmarking with the load tester, be sure to run it on a machine with plen
 
 > 🔥 **Caution**
 > 
-> Load testing traffic on your cloud instance _will_ count toward your [quotas](https://docs.livekit.io/home/cloud/quotas-and-limits.md), and is subject to the limits of your plan.
+> Load testing traffic on your cloud instance _will_ count toward your [quotas](https://docs.livekit.io/deploy/admin/quotas-and-limits.md), and is subject to the limits of your plan.
 
 ## Benchmarks
 
@@ -108,7 +106,7 @@ lk load-test \
 
 ---
 
-This document was rendered at 2025-11-18T23:55:00.700Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/benchmark.md](https://docs.livekit.io/home/self-hosting/benchmark.md).
+This document was rendered at 2026-02-03T03:25:21.212Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/benchmark.md](https://docs.livekit.io/transport/self-hosting/benchmark.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

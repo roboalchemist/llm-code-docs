@@ -191,6 +191,8 @@ pipecat cloud agent list [OPTIONS]
 
 Lists active sessions for a specified agent. When there are no active sessions, it suggests how to start a new session.
 
+When used with the `--id` option, displays detailed information about a specific session including CPU and memory usage with sparkline visualizations and percentile summaries.
+
 **Usage:**
 
 ```shell theme={null}
@@ -204,6 +206,10 @@ pipecat cloud agent sessions [ARGS] [OPTIONS]
 </ParamField>
 
 **Options:**
+
+<ParamField type="string">
+  Session ID to view detailed metrics for. When provided, displays CPU and memory usage statistics including sparkline visualizations and percentile summaries (p50, p90, p99).
+</ParamField>
 
 <ParamField type="string">
   Organization to list sessions for. If not provided, uses the current
@@ -386,11 +392,14 @@ pipecat cloud deploy [ARGS] [OPTIONS]
   [Discord](https://discord.gg/dailyco).
 </ParamField>
 
-<ParamField type="boolean">
-  Enable Krisp noise cancellation for this deployed agent. In addition, you also
-  need to enable the `KrispFilter()` for your transport. See the [Krisp Noise
-  Cancellation](/deployment/pipecat-cloud/guides/krisp-noise-cancellation) guide
-  for more information.
+<ParamField type="string">
+  Enable Krisp VIVA noise cancellation with the specified audio filter model.
+  Valid values are:
+
+  * `tel`: Telephony model (up to 16kHz)
+  * `pro`: WebRTC model (up to 32kHz)
+
+  In addition to this flag, you also need to enable the `KrispVivaFilter()` for your transport. See the [Krisp VIVA](/server/utilities/audio/krisp-viva-filter) documentation for more information.
 </ParamField>
 
 <ParamField type="boolean">
@@ -457,6 +466,12 @@ pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --
 
 ```shell theme={null}
 pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --region eu-central
+```
+
+**Deploy with Krisp VIVA noise cancellation:**
+
+```shell theme={null}
+pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --krisp-viva-audio-filter tel
 ```
 
 ## Configuration File (pcc-deploy.toml)
@@ -4284,7 +4299,6 @@ Oftentimes clients need to provide configuration data to the server when startin
           DailyParams(
               audio_in_enabled=True,
               audio_out_enabled=True,
-              vad_analyzer=SileroVADAnalyzer(),
           ),
       )
 
@@ -4299,31 +4313,28 @@ Oftentimes clients need to provide configuration data to the server when startin
 
       messages = [ { role: "system", content: args.prompt } ]
       context = LLMContext(messages)
-      context_aggregator = LLMContextAggregatorPair(context)
-
-      # RTVI events for Pipecat client UI
-      rtvi = RTVIProcessor(config=RTVIConfig(config=[]), transport=daily_transport)
+      user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+          context,
+          user_params=LLMUserAggregatorParams(
+              vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+          ),
+      )
 
       pipeline = Pipeline(
           [
               daily_transport.input(),
-              context_aggregator.user(),
-              rtvi,
+              user_aggregator,
               llm,
               daily_transport.output(),
-              context_aggregator.assistant(),
+              assistant_aggregator,
           ]
       )
 
-      task = PipelineTask(
-          pipeline,
-          params=PipelineParams(allow_interruptions=True),
-          observers=[RTVIObserver(rtvi)],
-      )
+      task = PipelineTask(pipeline)
 
       @rtvi.event_handler("on_client_ready")
       async def on_client_ready(rtvi):
-          await rtvi.set_bot_ready()
+          logger.debug("Client ready")
           # Kick off the conversation
           await task.queue_frames([LLMRunFrame()])
 
@@ -5655,7 +5666,6 @@ The `WebSocketTransport` takes the same options as the constructor; `WebSocketTr
               audio_in_enabled=True,
               audio_out_enabled=True,
               add_wav_header=False,
-              vad_analyzer=SileroVADAnalyzer(),
               serializer=ProtobufFrameSerializer(),
           ),
       )
@@ -5664,26 +5674,26 @@ The `WebSocketTransport` takes the same options as the constructor; `WebSocketTr
 
       messages = [{ role: "system", content: "You are a helpful assistant." }]
       context = LLMContext(messages)
-      context_aggregator = LLMContextAggregatorPair(context)
-
-      # RTVI events for Pipecat client UI
-      rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
+      user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+          context,
+          user_params=LLMUserAggregatorParams(
+              vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+          ),
+      )
 
       pipeline = Pipeline(
           [
               ws_transport.input(),
-              context_aggregator.user(),
-              rtvi,
+              user_aggregator,
               llm,  # LLM
               ws_transport.output(),
-              context_aggregator.assistant(),
+              assistant_aggregator,
           ]
       )
 
       task = PipelineTask(
           pipeline,
           params,
-          observers=[RTVIObserver(rtvi)],
       )
       ...
   ```
@@ -7513,7 +7523,6 @@ async def main(room_url: str, token: str):
                 audio_in_enabled=True,
                 audio_out_enabled=True,
                 video_out_enabled=False,
-                vad_analyzer=SileroVADAnalyzer(),
                 transcription_enabled=True,
             ),
         )
@@ -7533,21 +7542,26 @@ async def main(room_url: str, token: str):
             },
         ]
 
-        tma_in = LLMUserResponseAggregator(messages)
-        tma_out = LLMAssistantResponseAggregator(messages)
+        context = LLMContext(messages)
+        user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+            context,
+            user_params=LLMUserAggregatorParams(
+                vad_analyzer=SileroVADAnalyzer(),
+            ),
+        )
 
         pipeline = Pipeline(
             [
                 transport.input(),
-                tma_in,
+                user_aggregator,
                 llm,
                 tts,
                 transport.output(),
-                tma_out,
+                assistant_aggregator,
             ]
         )
 
-        task = PipelineTask(pipeline, params=PipelineParams(allow_interruptions=True))
+        task = PipelineTask(pipeline)
 
         @transport.event_handler("on_first_participant_joined")
         async def on_first_participant_joined(transport, participant):
@@ -7851,9 +7865,9 @@ Working as part of a team requires creating an organization. Organizations are m
 * Organizations have dedicated access tokens for initializing agent instances.
 
 <Info>
-  During the beta phase, deployments cannot be shared or moved between
-  organizations or user accounts. If you plan to collaborate with others, we
-  recommend creating a new organization.
+  Deployments cannot be shared or moved between organizations or user
+  accounts. If you plan to collaborate with others, we recommend creating
+  a new organization.
 </Info>
 
 ### Creating organizations
@@ -7862,10 +7876,7 @@ Organization creation must be done via the [Pipecat Cloud dashboard<Icon icon="a
 
 ### Inviting accounts to your organization
 
-While in beta you must know the account name of a given Pipecat Cloud user in order to invite them.
-We will add support for inviting users via email in the future.
-
-You can obtain your account name by running `pipecat cloud auth whoami`.
+You can invite a user to your organization by their email address using the [Pipecat Cloud dashboard<Icon icon="arrow-up-right-from-square" />](https://pipecat.daily.co/).
 
 ### Working with organizations
 
@@ -8169,7 +8180,7 @@ This helps developers implement cost control and workload management and can be 
 See [Scaling](./scaling) for more information.
 
 <Warning>
-  While in beta, the default instance pool capacity is **50 active sessions per
+  The default instance pool capacity is **50 active sessions per
   deployment**. Please contact us at [help@daily.co](mailto:help@daily.co) or via
   [Discord](https://discord.gg/dailyco) if you require more capacity.
 </Warning>
@@ -8229,8 +8240,6 @@ This command will list all active sessions for the specified agent, alongside a 
 
 ### Session logs
 
-<Warning>Session logs are not available in beta.</Warning>
-
 To view individual session logs, use the following command:
 
 ```shell theme={null}
@@ -8240,8 +8249,6 @@ pipecat cloud agent logs [my-first-agent] --session [session-id]
 For more information, see [Logging and Observability](./logging).
 
 ## Stopping sessions
-
-<Warning>Session termination is not available in beta.</Warning>
 
 You can issue a termination request to stop an active session. This will immediately stop the instance so be aware of disrupting any ongoing user interactions.
 
@@ -8370,15 +8377,16 @@ The base image exposes the following HTTP routes for Pipecat Cloud platform inte
 
 The base image uses the following environment variables for configuration:
 
-| Variable                   | Description                                            |
-| -------------------------- | ------------------------------------------------------ |
-| `PORT`                     | HTTP server port (default: `8080`)                     |
-| `SHUTDOWN_TIMEOUT`         | Server shutdown timeout in seconds (default: `7200`)   |
-| `PCC_LOG_FEATURES_SUMMARY` | Set to `true` to log available features on startup     |
-| `IMAGE_VERSION`            | Set automatically during build to track image versions |
-| `ESP32_ENABLED`            | Enable ESP32 mode for SmallWebRTC                      |
-| `ESP32_HOST`               | ESP32 host address                                     |
-| `ICE_CONFIG_URL`           | ICE server configuration endpoint                      |
+| Variable                   | Description                                                                 |
+| -------------------------- | --------------------------------------------------------------------------- |
+| `PORT`                     | HTTP server port (default: `8080`)                                          |
+| `SHUTDOWN_TIMEOUT`         | Server shutdown timeout in seconds (default: `7200`)                        |
+| `PIPECAT_LOG_LEVEL`        | Pipecat logging level: `TRACE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `NONE` |
+| `PCC_LOG_FEATURES_SUMMARY` | Set to `true` to log available features on startup                          |
+| `IMAGE_VERSION`            | Set automatically during build to track image versions                      |
+| `ESP32_ENABLED`            | Enable ESP32 mode for SmallWebRTC                                           |
+| `ESP32_HOST`               | ESP32 host address                                                          |
+| `ICE_CONFIG_URL`           | ICE server configuration endpoint                                           |
 
 For WhatsApp integration, the following environment variables are required:
 
@@ -8461,7 +8469,7 @@ We recommend using FastAPI to create this route. Please refer to the base image 
 
 ## Building the image
 
-While in beta, Pipecat Cloud requires all images to be built to target Linux on ARM. This is the most common platform for cloud deployments.
+Pipecat Cloud requires all images to be built to target Linux on ARM. This is the most common platform for cloud deployments.
 
 ```bash theme={null}
 docker build --platform linux/arm64 -t my-agent:latest .
@@ -8733,6 +8741,20 @@ Obtaining logs and metrics from your agents and sessions
   back soon for updates.
 </Warning>
 
+## Configuring log level
+
+You can control the Pipecat logging level for your deployed agents using the `PIPECAT_LOG_LEVEL` environment variable. This can be set as a [secret](/deployment/pipecat-cloud/fundamentals/secrets) or directly in your deployment configuration.
+
+Available log levels:
+
+| Level     | Description                                                          |
+| --------- | -------------------------------------------------------------------- |
+| `TRACE`   | The most detailed information for debugging (includes Frame logging) |
+| `DEBUG`   | Verbose output for debugging (default)                               |
+| `INFO`    | General operational information                                      |
+| `WARNING` | Warning messages for potential issues                                |
+| `ERROR`   | Error messages only                                                  |
+
 ## Agent logs
 
 Agent logs are available via both the CLI and Dashboard. You can view logs for a specific agent by running the following command:
@@ -8771,6 +8793,24 @@ async def bot(args: PipecatRunnerArguments):
   See [the Session Arguments reference](../sdk-reference/session-arguments) for
   more additional SessionArgument types.
 </Note>
+
+## CPU and memory metrics
+
+Pipecat Cloud tracks CPU and memory usage for each session, which can be helpful for troubleshooting performance issues. You can view these metrics in two ways:
+
+### Dashboard
+
+Navigate to your agent in the Pipecat Cloud dashboard, then go to **Sessions** and click on a specific **Session ID** to view CPU and memory usage graphs.
+
+### CLI
+
+Use the `sessions` command with a specific session ID to see CPU and memory usage with sparkline visualizations and percentile summaries:
+
+```bash theme={null}
+pipecat cloud agent sessions my-agent --id <session-id>
+```
+
+See the [CLI reference](/cli/cloud/agent#sessions) for more details.
 
 
 # Scaling
@@ -8851,7 +8891,7 @@ pipecat cloud deploy [agent-name] --min-agents 1
 </Frame>
 
 <Note>
-  During beta, each deployment made to Pipecat Cloud has a maximum allowed pool
+  Each deployment made to Pipecat Cloud has a maximum allowed pool
   size of 50. Please contact us at [help@daily.co](mailto:help@daily.co) or via
   [Discord](https://discord.gg/dailyco) if you require more capacity.
 </Note>
@@ -9502,54 +9542,56 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Get date
-      id: date
-      run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
+      - name: Get date
+        id: date
+        run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and Push
-      uses: docker/build-push-action@v5
-      with:
-        platforms: linux/arm64
-        context: .
-        push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/arm64
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
 
-    - name: Deploy to Pipecat Cloud
-      run: |
-        curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
-          -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
-            "imagePullSecretSet": "my-image-pull-secret",
-            "secretSet": "my-secret-set",
-            "enableKrisp": true,
-            "autoScaling": {
-              "minAgents": 0,
-              "maxAgents": 10
-            }
-          }'
+      - name: Deploy to Pipecat Cloud
+        run: |
+          curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
+            -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
+              "imagePullSecretSet": "my-image-pull-secret",
+              "secretSet": "my-secret-set",
+              "krispViva": {
+                "audioFilter": "tel"
+              },
+              "autoScaling": {
+                "minAgents": 0,
+                "maxAgents": 10
+              }
+            }'
 ```
 
 This workflow will:
@@ -9598,9 +9640,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
-      - 'server/**'
+      - "server/**"
 
 jobs:
   deploy:
@@ -9610,47 +9652,49 @@ jobs:
         working-directory: ./server
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Get date
-      id: date
-      run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
+      - name: Get date
+        id: date
+        run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and Push
-      uses: docker/build-push-action@v5
-      with:
-        platforms: linux/arm64
-        context: ./server
-        push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/arm64
+          context: ./server
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
 
-    - name: Deploy to Pipecat Cloud
-      run: |
-        curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
-          -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
-            "imagePullSecretSet": "my-image-pull-secret",
-            "secretSet": "my-secret-set",
-            "enableKrisp": true,
-            "autoScaling": {
-              "minAgents": 0,
-              "maxAgents": 10
-            }
-          }'
+      - name: Deploy to Pipecat Cloud
+        run: |
+          curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
+            -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
+              "imagePullSecretSet": "my-image-pull-secret",
+              "secretSet": "my-secret-set",
+              "krispViva": {
+                "audioFilter": "tel"
+              },
+              "autoScaling": {
+                "minAgents": 0,
+                "maxAgents": 10
+              }
+            }'
 ```
 
 The `paths` filter ensures the workflow only runs when files in the `server/` directory change, preventing unnecessary builds.
@@ -9672,17 +9716,16 @@ To use native ARM runners when available:
 ```yml theme={null}
 jobs:
   deploy:
-    runs-on: ubuntu-24.04-arm  # Use ARM runner
+    runs-on: ubuntu-24.04-arm # Use ARM runner
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    # Remove the "Set up QEMU" step entirely
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      # ... rest of workflow
+      # Remove the "Set up QEMU" step entirely
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        # ... rest of workflow
 ```
 
 ## Customizing Deployment Configuration
@@ -9692,7 +9735,7 @@ The deployment step in the workflow configures your agent using the Pipecat Clou
 * `image`: The Docker image tag to deploy
 * `imagePullSecretSet`: Reference to your image pull credentials (replace `my-image-pull-secret` with your actual secret name)
 * `secretSet`: Reference to your environment secrets (replace `my-secret-set` with your actual secret set name)
-* `enableKrisp`: Enable or disable Krisp noise suppression
+* `krispViva.audioFilter`: The Krisp VIVA audio filter model to use (replace `tel` with your actual filter model)
 * `autoScaling.minAgents`: Minimum number of agent instances to maintain
 * `autoScaling.maxAgents`: Maximum number of agent instances allowed
 
@@ -10010,9 +10053,10 @@ The integrated Daily API key provides:
 * **Built-in compatibility**: All Pipecat base images work with Daily out of the box
 
 <Info>
-  While 1:1 voice minutes are included, additional Daily features like
-  recording, transcription, and PSTN/SIP connections are billed according to
-  [Daily's standard pricing](https://www.daily.co/pricing).
+  Free voice minutes apply only to 1:1 voice sessions running on Pipecat Cloud.
+  Video sessions, WebRTC sessions outside of Pipecat Cloud, and additional Daily
+  features (recording, transcription, PSTN/SIP) are billed according to [Daily's
+  standard pricing](https://www.daily.co/pricing/webrtc-infrastructure/).
 </Info>
 
 ## Using Daily with Pipecat Cloud Agents
@@ -10137,143 +10181,6 @@ The basic flow is handled for you, allowing you to focus on building your agent'
 </CardGroup>
 
 
-# Krisp Noise Cancellation
-Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-noise-cancellation
-
-Eliminate background noise and voices for more reliable agent interactions
-
-<Warning>
-  The `KrispFilter` is deprecated and will be removed in a future version.
-  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See
-  the [Krisp VIVA guide](/deployment/pipecat-cloud/guides/krisp-viva) for more
-  information.
-</Warning>
-
-## Overview
-
-Voice agents are vulnerable to background noise, especially other voices that trigger false interruptions. When this happens, your bot stops mid-sentence unnecessarily, creating a poor user experience. Pipecat Cloud's Krisp integration processes incoming audio to remove ambient noise and background voices before they reach your agent, resulting in cleaner audio input with fewer false interruptions and better transcription.
-
-<Info>
-  Krisp processes the audio before it reaches your agent's speech recognition
-  and VAD systems, helping to ensure that only the intended user's voice
-  triggers interruptions.
-</Info>
-
-## Enabling Krisp
-
-Enabling Krisp with Pipecat Cloud involves the following steps:
-
-### 1. Use the Pipecat Base Image
-
-Krisp dependencies are pre-installed in the official Pipecat base image. You don't need to add any Krisp-related packages to your `requirements.txt` file.
-
-<Note>
-  Krisp support is available in the `dailyco/pipecat-base` image starting with
-  version `0.0.6`.
-</Note>
-
-### 2. Add the Krisp Filter to Your Transport
-
-In your bot code, import and add the `KrispFilter` to your transport:
-
-```python theme={null}
-from pipecat.audio.filters.krisp_filter import KrispFilter
-from pipecat.audio.vad.silero import SileroVADAnalyzer
-from pipecat.transports.daily.transport import DailyParams, DailyTransport
-
-transport = DailyTransport(
-    room_url,
-    token,
-    "Voice AI Bot",
-    DailyParams(
-        audio_in_enabled=True,
-        audio_in_filter=KrispFilter(),  # Add Krisp filter here
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
-    ),
-)
-```
-
-### 3. Enable Krisp in Your Deployment
-
-You can enable Krisp when deploying your agent through:
-
-<Tabs>
-  <Tab title="CLI">
-    ```bash theme={null}
-    pipecat cloud deploy --enable-krisp true
-    ```
-  </Tab>
-
-  <Tab title="Config File">
-    In your `pcc-deploy.toml`:
-
-    ```toml theme={null}
-    agent_name = "voice-starter"
-    image = "your-repo/voice-starter:0.1"
-    secret_set = "voice-starter-secrets"
-    enable_krisp = true
-
-    [scaling]
-    min_agents = 0
-
-    ```
-  </Tab>
-
-  <Tab title="Dashboard">
-    In the Pipecat Cloud dashboard:
-
-    1. Navigate to your agent
-    2. Go to Settings > Agent Configuration
-    3. Toggle "Krisp Noise Cancellation" on
-    4. Save your changes
-  </Tab>
-</Tabs>
-
-<Check>
-  Once configured, your agent will process incoming audio through Krisp's noise
-  cancellation.
-</Check>
-
-## Testing Your Integration
-
-To verify Krisp is working:
-
-1. Deploy your agent with Krisp enabled
-2. Connect to your agent in an environment with background noise; try turning on a TV or podcast
-3. Observe whether background noises and voices affect your agent's behavior
-
-## Pricing
-
-Krisp processing is billed based on active session minutes:
-
-| Usage Tier                      | Price               |
-| ------------------------------- | ------------------- |
-| First 100,000 minutes per month | Free                |
-| Additional minutes              | \$0.0002 per minute |
-
-<Note>
-  For agents deployed with Krisp enabled, active session minutes count as Krisp
-  usage, accruing towards your monthly bill.
-</Note>
-
-## Local Development
-
-Krisp cannot be used in local development environments, as it requires a proprietary SDK and model which can only be distributed on Pipecat Cloud. When running locally be sure to not import the KrispFilter module and don't apply it to your transport.
-
-## Troubleshooting
-
-If you're experiencing issues with Krisp noise cancellation:
-
-* Verify `enable_krisp` is set to `true` in your deployment configuration
-* Confirm you've added the `KrispFilter()` to your transport configuration
-* Check your logs for any Krisp-related error messages
-* Confirm that you have not added any Krisp-related dependencies to your `requirements.txt` file, as they are not needed and may cause conflicts.
-
-```
-```
-
-
 # Krisp VIVA Noise Cancellation
 Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/krisp-viva
 
@@ -10308,7 +10215,6 @@ In your bot code, import and add the `KrispVivaFilter()` to your transport:
 
 ```python theme={null}
 from pipecat.audio.filters.krisp_viva_filter import KrispVivaFilter
-from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.transports.daily.transport import DailyParams, DailyTransport
 
 transport = DailyTransport(
@@ -10319,7 +10225,6 @@ transport = DailyTransport(
         audio_in_enabled=True,
         audio_in_filter=KrispVivaFilter(),  # Add Krisp VIVA filter here
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -10524,8 +10429,6 @@ Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/regions
 
 Deploy agents to geographic regions for optimal performance and compliance
 
-<Note>Regions are currently in beta.</Note>
-
 Pipecat Cloud supports deploying agents to geographic regions, allowing you to reduce latency for your users and meet data residency requirements.
 
 ## Available Regions
@@ -10691,6 +10594,157 @@ Your application determines which regional agent to connect users to based on th
 * [Secrets](/deployment/pipecat-cloud/fundamentals/secrets) - Managing secrets and credentials
 
 
+# Session API
+Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/session-api
+
+Send HTTP requests to your running Pipecat Cloud sessions
+
+The Session API lets you send HTTP requests directly to your running Pipecat Cloud agents. This enables real-time control and data exchange with active sessions, such as updating conversation context, triggering actions, or retrieving session state.
+
+## How It Works
+
+1. [Start a session](/deployment/pipecat-cloud/fundamentals/active-sessions) with your agent
+2. Capture the `sessionId` header from the start response
+3. Send HTTP requests to your session using the session endpoint
+
+## Endpoint Format
+
+```
+https://api.pipecat.daily.co/v1/public/{service_name}/sessions/{session_id}/{path}
+```
+
+| Parameter      | Description                                   |
+| -------------- | --------------------------------------------- |
+| `service_name` | The name of your deployed agent               |
+| `session_id`   | The `sessionId` value from the start response |
+| `path`         | The endpoint path you defined in your bot     |
+
+### Supported Methods
+
+* `GET`
+* `POST`
+* `PUT`
+* `PATCH`
+* `DELETE`
+* `OPTIONS`
+* `HEAD`
+
+## Authentication
+
+Include your Pipecat Cloud public API key in the `Authorization` header:
+
+```bash theme={null}
+Authorization: Bearer pk_...
+```
+
+## Setting Up Your Bot
+
+To handle Session API requests, define endpoints in your `bot.py` file using the `app` object from `pipecatcloud_system`:
+
+```python theme={null}
+from pipecatcloud_system import app
+from pipecat.runner.types import PipecatRunnerArguments
+
+# Define your API endpoints
+@app.get("/status")
+async def get_status():
+    return {"status": "active", "message": "Bot is running"}
+
+@app.post("/update-context")
+async def update_context(data: dict):
+    # Handle context updates
+    return {"updated": True}
+
+# Your main bot function
+async def bot(args: PipecatRunnerArguments):
+    # Bot implementation
+    pass
+```
+
+<Note>Requires base image version `0.1.2` or later.</Note>
+
+## Examples
+
+### Get Session Status
+
+Define an endpoint that returns the current session state:
+
+```python theme={null}
+from pipecatcloud_system import app
+
+session_data = {"messages": [], "user_name": None}
+
+@app.get("/status")
+async def get_status():
+    return {
+        "message_count": len(session_data["messages"]),
+        "user_name": session_data["user_name"]
+    }
+```
+
+Call the endpoint:
+
+```bash theme={null}
+curl -X GET \
+  'https://api.pipecat.daily.co/v1/public/my-agent/sessions/57af5437-97a2-4646-9873-a5c5935bd705/status' \
+  -H 'Authorization: Bearer pk_...'
+```
+
+### Update Conversation Context
+
+Define an endpoint to inject information into the conversation:
+
+```python theme={null}
+from pipecatcloud_system import app
+from pydantic import BaseModel
+
+class ContextUpdate(BaseModel):
+    user_name: str
+    preferences: dict
+
+@app.post("/context")
+async def update_context(update: ContextUpdate):
+    # Update your bot's context with the new information
+    # This could modify the LLM system prompt, add to conversation history, etc.
+    return {"status": "context updated", "user_name": update.user_name}
+```
+
+Call the endpoint:
+
+```bash theme={null}
+curl -X POST \
+  'https://api.pipecat.daily.co/v1/public/my-agent/sessions/57af5437-97a2-4646-9873-a5c5935bd705/context' \
+  -H 'Authorization: Bearer pk_...' \
+  -H 'Content-Type: application/json' \
+  -d '{"user_name": "Alice", "preferences": {"language": "Spanish"}}'
+```
+
+### Trigger an Action
+
+Define an endpoint to trigger bot behavior mid-session:
+
+```python theme={null}
+from pipecatcloud_system import app
+
+@app.post("/speak")
+async def trigger_speech(data: dict):
+    message = data.get("message", "Hello!")
+    # Queue the message for your TTS pipeline
+    # Implementation depends on your bot architecture
+    return {"queued": True, "message": message}
+```
+
+## Important Notes
+
+* **Startup latency**: If you call the Session API before your bot finishes initializing, the request may take longer while waiting for the bot to become available.
+* **Session scope**: Each endpoint call is routed to the specific session identified by `session_id`. Different sessions run independently.
+* **Error handling**: If a session has ended or the session ID is invalid, you'll receive an error response.
+
+## Getting Help
+
+If you have questions about the Session API, reach out on [Discord](https://discord.gg/pipecat).
+
+
 # Smart Turn Detection
 Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/smart-turn
 
@@ -10718,34 +10772,47 @@ Smart Turn Detection uses an advanced machine learning model to determine when a
 
 ## Quick Start
 
-To enable Smart Turn Detection in your Pipecat Cloud bot, add the `LocalSmartTurnAnalyzerV3` analyzer to your transport configuration.
+To enable Smart Turn Detection in your Pipecat Cloud bot, configure a `TurnAnalyzerUserTurnStopStrategy` with `LocalSmartTurnAnalyzerV3` in your context aggregator.
 
 The model weights are bundled with Pipecat, so there's no need to download them separately.
 
 ```python theme={null}
-import aiohttp
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.daily.transport import DailyParams, DailyTransport
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 async def main(room_url: str, token: str):
-    async with aiohttp.ClientSession() as session:
-        transport = DailyTransport(
-            room_url,
-            token,
-            "Voice AI Bot",
-            DailyParams(
-                audio_in_enabled=True,
-                audio_out_enabled=True,
-                # Set VAD to 0.2 seconds for optimal Smart Turn performance
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-                # Enable local Smart Turn inference using the weights bundled with Pipecat
-                turn_analyzer=LocalSmartTurnAnalyzerV3(),
-            ),
-        )
+    transport = DailyTransport(
+        room_url,
+        token,
+        "Voice AI Bot",
+        DailyParams(
+            audio_in_enabled=True,
+            audio_out_enabled=True,
+        ),
+    )
 
-        # Continue with your pipeline setup...
+    # Configure Smart Turn Detection via user turn strategies
+    user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+        context,
+        user_params=LLMUserAggregatorParams(
+            user_turn_strategies=UserTurnStrategies(
+                stop=[TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3()
+                )]
+            ),
+            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+        ),
+    )
+
+    # Continue with your pipeline setup...
 ```
 
 <Tip>
@@ -10903,7 +10970,6 @@ async def bot(runner_args: RunnerArguments):
             dialin_settings=dialin_settings,
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         )
     )
 
@@ -11873,7 +11939,6 @@ transport = SmallWebRTCTransport(
     params=TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -12060,6 +12125,29 @@ Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint
 GET /secrets/{setName}
 Retrieve key and value pairs for a specific secret set.
 
+
+
+# Session API
+Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/session-proxy
+
+GET /{serviceName}/sessions/{sessionId}/{path}
+Send HTTP requests directly to your running Pipecat Cloud agent sessions.
+
+Send HTTP requests to endpoints defined in your running bot. Supports `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, and `HEAD` methods.
+
+## Request Headers
+
+Headers are forwarded to your bot with these exceptions:
+
+* `host` - Excluded
+* `content-length` - Excluded
+* `authorization` - Excluded (authentication is handled by the API gateway)
+
+<Note>
+  Requires base image version `0.1.2` or later. See the [Session API
+  guide](/deployment/pipecat-cloud/guides/session-api) for setup instructions
+  and examples.
+</Note>
 
 
 # Start an Agent session
@@ -12948,7 +13036,6 @@ async def main(room_url: str, token: str):
                 audio_in_enabled=True,
                 audio_out_enabled=True,
                 transcription_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.6)),
             ),
         )
 
@@ -12970,16 +13057,20 @@ async def main(room_url: str, token: str):
             voice_id="79a125e8-cd45-4c13-8a67-188112f4dd22",  # British Lady
         )
 
+        vad_processor = VADProcessor(vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)))
+
         custom_context = LLMContext(messages)
+        custom_user_aggregator, custom_assistant_aggregator = LLMContextAggregatorPair(context)
         context_aggregator_custom = LLMContextAggregatorPair(custom_context)
 
         pipeline = Pipeline(
             [
                 transport.input(),  # Transport user input
-                context_aggregator_custom.user(),
+                vad_processor,
+                custom_user_aggregator,
                 llm,
                 tts,
-                context_aggregator_custom.assistant(),
+                custom_assistant_aggregator,
                 transport.output(),  # Transport bot output
             ]
         )
@@ -12987,7 +13078,6 @@ async def main(room_url: str, token: str):
         task = PipelineTask(
             pipeline,
             params=PipelineParams(
-                allow_interruptions=True,
                 enable_metrics=True,
                 enable_usage_metrics=True,
             ),
@@ -13610,6 +13700,12 @@ Complete applications and quickstart demos to accelerate your Pipecat developmen
   [View Example →](https://github.com/pipecat-ai/pipecat-examples/tree/main/sentry-metrics)
 </Update>
 
+<Update label={<><Icon icon="video" size={16} color="currentColor" /><span style={{marginLeft: '8px'}}>Vonage Audio Connector</span></>}>
+  Stream real-time audio from an active Vonage Video API session into a Pipecat pipeline using the Vonage Audio Connector.
+
+  [View Example →](https://github.com/pipecat-ai/pipecat-examples/tree/main/vonage-audio-bot)
+</Update>
+
 ***
 
 ## 💡 Need Help Getting Started?
@@ -14218,20 +14314,19 @@ messages = [
 ]
 
 context = LLMContext(messages)
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+    ),
+)
 ```
 
 The context aggregator automatically collects user messages (after speech-to-text) and assistant responses (after text-to-speech), maintaining the conversation flow without manual intervention.
 
 ### RTVI Protocol
 
-When building web or mobile clients, you can use [Pipecat's client SDKs](/client/introduction) that communicate with your bot via the [RTVI (Real-Time Voice Interaction) protocol](/client/rtvi-standard). In our quickstart example, we initialize the RTVI processor to handle client-server messaging and events:
-
-```python theme={null}
-rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
-```
-
-See below for how we incorporate the RTVI processor into the pipeline.
+When building web or mobile clients, you can use [Pipecat's client SDKs](/client/introduction) that communicate with your bot via the [RTVI (Real-Time Voice Interaction) protocol](/client/rtvi-standard). Pipecat comes with RTVI enabled by default, allowing your the Pipecat server and client to exchange messages and events in real-time.
 
 ### Pipeline Configuration
 
@@ -14240,14 +14335,13 @@ The core of your bot is a Pipeline that processes data through a series of proce
 ```python theme={null}
 # Create the pipeline with the processors
 pipeline = Pipeline([
-    transport.input(),              # Receive audio from browser
-    rtvi,                           # Protocol for client/server messaging and events
-    stt,                            # Speech-to-text (Deepgram)
-    context_aggregator.user(),      # Add user message to context
-    llm,                            # Language model (OpenAI)
-    tts,                            # Text-to-speech (Cartesia)
-    transport.output(),             # Send audio back to browser
-    context_aggregator.assistant(), # Add bot response to context
+    transport.input(),     # Receive audio from browser
+    stt,                   # Speech-to-text (Deepgram)
+    user_aggregator,       # Add user message to context
+    llm,                   # Language model (OpenAI)
+    tts,                   # Text-to-speech (Cartesia)
+    transport.output(),    # Send audio back to browser
+    assistant_aggregator,  # Add bot response to context
 ])
 ```
 
@@ -14263,7 +14357,6 @@ task = PipelineTask(
         enable_metrics=True,
         enable_usage_metrics=True,
     ),
-    observers=[RTVIObserver(rtvi)],
 )
 ```
 
@@ -14322,12 +14415,10 @@ async def bot(runner_args: RunnerArguments):
         "daily": lambda: DailyParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         "webrtc": lambda: TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
     }
 
@@ -14382,763 +14473,150 @@ Dive deeper into Pipecat's architecture and learn how to build custom solutions.
 # Building with Gemini Live
 Source: https://docs.pipecat.ai/guides/features/gemini-live
 
-Create a real-time AI chatbot using Gemini Live and Pipecat
+Create real-time voice AI agents using Google's Gemini Live API and Pipecat
 
-<Tip>
-  **Gemini x Pipecat Hackathon 2025**
-
-  For the most up to date getting started information, check out the [Hackathon guide](https://docs.google.com/document/d/1B89fAVXQwPrLuy8-hee2h3WSndx5CM_Vve-LOZXZkL0/edit?tab=t.0#heading=h.naqf3pekw46) for starter projects.
-
-  To learn the basics, check out the following starter projects:
-
-  * Twilio phone bot: [pcc-gemini-twilio](https://github.com/daily-co/pcc-gemini-twilio)
-  * Web + screensharing bot: [pcc-gemini-screen-voice-ui-kit](https://github.com/daily-co/pcc-gemini-screen-voice-ui-kit)
-</Tip>
-
-This guide will walk you through building a real-time AI chatbot using Gemini Live and Pipecat. We'll create a complete application with a Pipecat server and a Pipecat React client that enables natural conversations with an AI assistant.
-
-<Frame>
-  <img alt="Pipecat + Gemini Live" />
-</Frame>
+Gemini Live is Google's speech-to-speech API that enables natural, real-time voice conversations with AI. With Pipecat, you can build production-ready voice agents that leverage Gemini Live for telephony, web, and mobile applications.
 
 <CardGroup>
   <Card title="API Reference" icon="book" href="/server/services/s2s/gemini-live">
-    Gemini Live API documentation
+    Gemini Live service documentation
   </Card>
 
-  <Card title="Example Code" icon="code" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot">
-    Find the complete client and server code in Github
-  </Card>
-
-  <Card title="Client SDK" icon="react" href="/client/react/introduction">
-    Pipecat React SDK documentation
+  <Card title="Pipecat CLI" icon="terminal" href="/cli/overview">
+    Scaffold and deploy projects
   </Card>
 </CardGroup>
 
-## What We'll Build
+## Capabilities
 
-In this guide, you'll create:
-
-* A FastAPI server that manages bot instances
-* A Gemini-powered conversational AI bot
-* A React client with real-time audio/video
-* A complete pipeline for speech-to-speech interaction
-
-## Key Concepts
-
-Before we dive into implementation, let's cover some important concepts that will help you understand how Pipecat and Gemini work together.
-
-### Understanding Pipelines
-
-At the heart of Pipecat is the pipeline system. A pipeline is a sequence of processors that handle different aspects of the conversation flow. Think of it like an assembly line where each station (processor) performs a specific task.
-
-For our chatbot, the pipeline looks like this:
-
-```python theme={null}
-pipeline = Pipeline([
-    transport.input(),              # Receives audio/video from the user via WebRTC
-    rtvi,                           # Handles client/server messaging and events
-    context_aggregator.user(),      # Manages user message history
-    llm,                            # Processes speech through Gemini
-    talking_animation,              # Controls bot's avatar
-    transport.output(),             # Sends audio/video back to the user via WebRTC
-    context_aggregator.assistant(), # Manages bot message history
-])
-```
-
-### Processors
-
-Each processor in the pipeline handles a specific task:
+Pipecat's Gemini Live integration supports multiple modalities and deployment targets:
 
 <CardGroup>
-  <Card title="Transport" icon="arrow-right-arrow-left">
-    `transport.input()` and `transport.output()` handle media streaming with
-    Daily
+  <Card title="Voice" icon="microphone">
+    Real-time speech-to-speech conversations with natural turn-taking and voice activity detection
   </Card>
 
-  <Card title="Context" icon="brain">
-    `context_aggregator` maintains conversation history for natural dialogue
+  <Card title="Vision" icon="eye">
+    Process video and screenshare alongside audio for multimodal interactions
   </Card>
 
-  <Card title="Speech Processing" icon="waveform-lines">
-    `rtvi_user_transcription` and `rtvi_bot_transcription` handle speech-to-text
+  <Card title="Telephony" icon="phone">
+    Build phone-based voice agents with Twilio WebSocket integration
   </Card>
 
-  <Card title="Animation" icon="robot">
-    `talking_animation` controls the bot's visual state based on speaking
-    activity
+  <Card title="Tool Use" icon="wrench">
+    Function calling support for external integrations and dynamic responses
   </Card>
 </CardGroup>
 
-<Note>
-  The order of processors matters! Data flows through the pipeline in sequence,
-  so each processor should receive the data it needs from previous processors.
+### Architecture
 
-  Learn more about the [Core Concepts](/guides/learn/overview) to Pipecat server.
-</Note>
+Pipecat manages connections between your client and Gemini Live:
 
-### Gemini Integration
+<Frame>
+  <img alt="Gemini Live Architecture" />
+</Frame>
 
-The `GeminiLiveLLMService` is a speech-to-speech LLM service that interfaces with the Gemini Live API.
+The Pipecat server handles media streaming with clients via WebRTC (web/mobile) or WebSockets (telephony), while maintaining a persistent connection to Gemini Live for real-time AI processing.
 
-It provides:
+## Quick Start
 
-* Real-time speech-to-speech conversation
-* Context management
-* Voice activity detection
-* Tool use
-
-<Note>
-  Pipecat manages two types of connections:
-
-  1. A WebRTC connection between the Pipecat client and server for reliable audio/video streaming
-  2. A WebSocket connection between the Pipecat server and Gemini for real-time AI processing
-
-  This architecture ensures stable media streaming while maintaining responsive AI interactions.
-</Note>
-
-## Prerequisites
-
-Before we begin, you'll need:
-
-* Python 3.10 or higher
-* Node.js 16 or higher
-* A [Daily API key](https://dashboard.daily.co/u/signup?pipecat=1)
-* A Google API key with Gemini Live access
-* Clone the Pipecat repo:
+The fastest way to start building is with the Pipecat CLI:
 
 ```bash theme={null}
-git clone git@github.com:pipecat-ai/pipecat.git
+# Install the CLI
+uv tool install pipecat-ai-cli
+
+# Create a new project
+pipecat init
 ```
 
-## Server Implementation
+The CLI will guide you through selecting:
 
-Let's start by setting up the server components. Our server will handle bot management, room creation, and client connections.
-
-### Environment Setup
-
-1. Navigate to the simple-chatbot's server directory:
-
-```bash theme={null}
-cd examples/simple-chatbot/server
-```
-
-2. Set up a python virtual environment:
-
-```bash theme={null}
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install requirements:
-
-```bash theme={null}
-pip install -r requirements.txt
-```
-
-4. Copy env.example to .env and make a few changes:
-
-```bash theme={null}
-# Remove the hard-coded example room URL
-DAILY_SAMPLE_ROOM_URL=
-
-# Add your Daily and Gemini API keys
-DAILY_API_KEY=[your key here]
-GEMINI_API_KEY=[your key here]
-
-# Use Gemini implementation
-BOT_IMPLEMENTATION=gemini
-```
-
-### Server Setup (server.py)
-
-`server.py` is a FastAPI server that creates the meeting room where clients and bots interact, manages bot instances, and handles client connections. It's the orchestrator that brings everything on the server-side together.
-
-#### Creating Meeting Room
-
-The server uses Daily's API via a [REST API helper](/server/utilities/daily/rest-helper#create-room) to create rooms where clients and bots can meet. Each room is a secure space for audio/video communication:
-
-```python server/server.py theme={null}
-async def create_room_and_token():
-    """Create a Daily room and generate access credentials."""
-    room = await daily_helpers["rest"].create_room(DailyRoomParams())
-    token = await daily_helpers["rest"].get_token(room.url)
-    return room.url, token
-```
-
-#### Managing Bot Instances
-
-When a client connects, the server starts a new bot instance configured specifically for that room. It keeps track of running bots and ensures there's only one bot per room:
-
-```python server/server.py theme={null}
-# Start the bot process for a specific room
-bot_file = "bot-gemini.py"
-proc = subprocess.Popen([f"python3 -m {bot_file} -u {room_url} -t {token}"])
-bot_procs[proc.pid] = (proc, room_url)
-```
-
-#### Connection Endpoints
-
-The server provides two ways to connect:
-
-<CardGroup>
-  <Card title="Browser Access (/)" icon="browser">
-    Creates a room, starts a bot, and redirects the browser to the Daily meeting
-    URL. Perfect for quick testing and development.
-  </Card>
-
-  <Card title="RTVI Client (/connect)" icon="plug">
-    Creates a room, starts a bot, and returns connection credentials. Used by
-    RTVI clients for custom implementations.
-  </Card>
-</CardGroup>
-
-### Bot Implementation (bot-gemini.py)
-
-The bot implementation connects all the pieces: Daily transport, Gemini service, conversation context, and processors.
-
-Let's break down each component:
-
-#### Transport Setup
-
-First, we configure the Daily transport, which handles WebRTC communication between the client and server.
-
-```python server/bot-gemini.py theme={null}
-transport = DailyTransport(
-    room_url,
-    token,
-    "Chatbot",
-    DailyParams(
-        audio_in_enabled=True,        # Enable audio input
-        audio_out_enabled=True,       # Enable audio output
-        video_out_enabled=True,      # Enable video output
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.5)),
-    ),
-)
-```
-
-<Info>
-  Gemini Live audio requirements:
-
-  * Input: 16 kHz sample rate
-  * Output: 24 kHz sample rate
-</Info>
-
-#### Gemini Service Configuration
-
-Next, we initialize the Gemini service which will provide speech-to-speech inference and communication:
-
-```python server/bot-gemini.py theme={null}
-llm = GeminiLiveLLMService(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    voice_id="Puck",                     # Choose your bot's voice
-    params=InputParams(temperature=0.7)  # Set model input params
-)
-```
-
-#### Conversation Context
-
-We give our bot its personality and initial instructions:
-
-```python server/bot-gemini.py theme={null}
-messages = [{
-    "role": "user",
-    "content": """You are Chatbot, a friendly, helpful robot.
-                 Keep responses brief and avoid special characters
-                 since output will be converted to audio."""
-}]
-
-context = LLMContext(messages)
-context_aggregator = LLMContextAggregatorPair(context)
-```
-
-<Note>
-  The context aggregator automatically maintains conversation history, helping
-  the bot remember previous interactions.
-</Note>
-
-#### Processor Setup
-
-We initialize two additional processors in our pipeline to handle different aspects of the interaction:
-
-<CardGroup>
-  <Card title="RTVI Processors" icon="message-bot">
-    `RTVIProcessor`: Handles all client communication events including transcriptions,
-    speaking states, and performance metrics
-  </Card>
-
-  <Card title="Animation" icon="robot">
-    `TalkingAnimation`: Controls the bot's visual state, switching between
-    static and animated frames based on speaking status
-  </Card>
-</CardGroup>
-
-<Info>
-  [Learn more](/server/frameworks/rtvi/introduction) about the RTVI framework
-  and available processors.
-</Info>
-
-#### Pipeline Assembly
-
-Finally, we bring everything together in a pipeline:
-
-```python server/bot-gemini.py theme={null}
-pipeline = Pipeline([
-    transport.input(),             # Receive media
-    rtvi,                          # Client UI events
-    context_aggregator.user(),     # Process user context
-    llm,                           # Gemini processing
-    ta,                            # Animation (talking/quiet states)
-    transport.output(),            # Send media
-    context_aggregator.assistant() # Process bot context
-])
-
-task = PipelineTask(
-    pipeline,
-    params=PipelineParams(
-        allow_interruptions=True,
-        enable_metrics=True,
-        enable_usage_metrics=True,
-    ),
-    observers=[RTVIObserver(rtvi)],
-)
-```
+* **Bot type**: Gemini Live (speech-to-speech)
+* **Transport**: Daily WebRTC, Twilio, or others
+* **Deployment target**: Local development or Pipecat Cloud
 
 <Tip>
-  The order of processors is crucial! For example, the RTVI processor should be
-  early in the pipeline to capture all relevant events.
-
-  The `RTVIObserver` monitors the entire pipeline and automatically collects relevant events to send to the client.
+  All CLI commands can use either `pipecat` or the shorter `pc` alias.
 </Tip>
 
-## Client Implementation
+## Starter Projects
 
-Our React client uses the [Pipecat React SDK](/client/react/introduction) to communicate with the bot. Let's explore how the client connects and interacts with our Pipecat server.
+These complete examples demonstrate Gemini Live in production scenarios. Each includes local development setup and Pipecat Cloud deployment configuration.
 
-### Connection Setup
+### Phone Bot (Twilio)
 
-The client needs to connect to our bot server using the same transport type (Daily WebRTC) that we configured on the server:
+A telephone-based voice agent using Gemini Live with Twilio WebSockets. The demo plays "Two Truths and a Lie" to showcase natural conversation flow.
 
-```typescript examples/react/src/providers/PipecatProvider.tsx theme={null}
-const client = new PipecatClient({
-  transport: new DailyTransport(),
-  enableMic: true, // Enable audio input
-  enableCam: false, // Disable video input
-  enableScreenShare: false, // Disable screen sharing
-});
-client.startBotAndConnect({
-  endpoint: "http://localhost:7860/connect", // Your bot connection endpoint
-});
-```
+<Card title="Phone Bot Starter" icon="phone" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/gemini-live-starters/phone-bot">
+  Build a production phone agent with Twilio integration
+</Card>
 
-The connection configuration must match your server:
+**Try it now**: Call **1-970-LIVE-API** (1-970-548-3274) to talk to a live demo.
 
-* `DailyTransport`: Matches the WebRTC transport used in `bot-gemini.py`
-* `connect` endpoint: Matches the `/connect` route in `server.py`
-* Media settings: Controls which devices are enabled on join
+**What you'll learn**:
 
-### Media Handling
+* Twilio WebSocket transport configuration
+* Google STT/TTS integration alongside Gemini Live
+* TwiML setup for incoming calls
+* Pipecat Cloud deployment with telephony
 
-Pipecat's React components handle all the complex media stream management for you:
+### Web Bot (Vision)
 
-```tsx theme={null}
-function App() {
-  return (
-    <PipecatClientProvider client={client}>
-      <div className="app">
-        <PipecatClientVideo participant="bot" /> {/* Bot's video feed */}
-        <PipecatClientAudio /> {/* Audio input/output */}
-      </div>
-    </PipecatClientProvider>
-  );
-}
-```
+A browser-based agent with screensharing and vision capabilities, built with the Pipecat Voice UI Kit and Daily WebRTC transport.
 
-The `PipecatClientProvider` is the root component for providing Pipecat client context to your application. By wrapping your `PipecatClientAudio` and `PipecatClientVideo` components in this provider, they can access the client instance and receive and process the streams received from the Pipecat server.
+<Card title="Web Bot Starter" icon="browser" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/gemini-live-starters/web-bot">
+  Build a web agent with vision and screensharing
+</Card>
 
-### Real-time Events
+**What you'll learn**:
 
-The RTVI processors we configured in the pipeline emit events that we can handle in our client:
+* Daily WebRTC transport for web clients
+* Vision/screenshare processing with Gemini Live
+* Next.js client with Voice UI Kit components
+* Resizable panels and event logging
 
-```typescript theme={null}
-// Listen for transcription events
-useRTVIClientEvent(RTVIEvent.UserTranscript, (data: TranscriptData) => {
-  if (data.final) {
-    console.log(`User said: ${data.text}`);
-  }
-});
+## Deployment
 
-// Listen for bot responses
-useRTVIClientEvent(RTVIEvent.BotOutput, (data: BotOutputData) => {
-  if (data.aggregated_by === "sentence") {
-    console.log(`Bot responded: ${data.text}`);
-  }
-});
-```
-
-<CardGroup>
-  <Card title="Available Events" icon="bell">
-    * Speaking state changes
-    * Transcription updates
-    * Bot responses
-    * Connection status
-    * Performance metrics
-  </Card>
-
-  <Card title="Event Usage" icon="code">
-    Use these events to:
-
-    * Show speaking indicators
-    * Display transcripts
-    * Update UI state
-    * Monitor performance
-  </Card>
-</CardGroup>
-
-<Tip>
-  Optionally, uses callbacks to handle events in your application. [Learn
-  more](/client/js/api-reference/callbacks#callbacks) in the Pipecat client
-  docs.
-</Tip>
-
-### Complete Example
-
-Here's a basic client implementation with connection status and transcription display:
-
-```tsx theme={null}
-function ChatApp() {
-  return (
-    <PipecatClientProvider client={client}>
-      <div className="app">
-        {/* Connection UI */}
-        <StatusDisplay />
-        <ConnectButton />
-
-        {/* Media Components */}
-        <BotVideo />
-        <PipecatClientAudio />
-
-        {/* Debug/Transcript Display */}
-        <DebugDisplay />
-      </div>
-    </PipecatClientProvider>
-  );
-}
-```
-
-<Note>
-  Check out the [example
-  repository](https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot)
-  for a complete client implementation with styling and error handling.
-</Note>
-
-## Running the Application
-
-From the `simple-chatbot` directory, start the server and client to test the chatbot:
-
-### 1. Start the Server
-
-In one terminal:
+Both starter projects include configuration for [Pipecat Cloud](/deployment/pipecat-cloud/introduction), which handles scaling, monitoring, and global deployment.
 
 ```bash theme={null}
-python server/server.py
+# Authenticate with Pipecat Cloud
+pipecat cloud auth login
+
+# Build and push your Docker image
+pipecat cloud docker build-push
+
+# Deploy your agent
+pipecat cloud deploy
 ```
 
-### 2. Start the Client
+Each starter includes a `pcc-deploy.toml` file with sensible defaults for agent configuration and scaling.
 
-In another terminal:
-
-```bash theme={null}
-cd examples/react
-npm install
-npm run dev
-```
-
-### 3. Testing the Connection
-
-1. Open `http://localhost:5173` in your browser
-2. Click "Connect" to join a room
-3. Allow microphone access when prompted
-4. Start talking with your AI assistant
-
-<Warning>
-  Troubleshooting:
-
-  * Check that all API keys are properly configured in .env
-  * Grant your browser access to your microphone, so it can receive your audio input
-  * Verify WebRTC ports aren't blocked by firewalls
-</Warning>
+<Card title="Pipecat Cloud Deployment" icon="cloud" href="/deployment/pipecat-cloud/fundamentals/deploy">
+  Learn more about deploying to production
+</Card>
 
 ## Next Steps
 
-Now that you have a working chatbot, consider these enhancements:
-
-* Add custom avatar animations
-* Implement [function calling](/guides/learn/function-calling) for external integrations
-* Add support for multiple languages
-* Enhance error recovery and reconnection logic
-
-### Examples
-
 <CardGroup>
-  <Card title="Foundational Example" icon="code" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/26a-gemini-live-transcription.py">
-    A basic implementation demonstrating core Gemini Live features and transcription capabilities
+  <Card title="Function Calling" icon="code" href="/guides/learn/function-calling">
+    Add external integrations and dynamic responses
   </Card>
 
-  <Card title="Simple Chatbot" icon="robot" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/simple-chatbot">
-    A complete client/server implementation showing how to build a Pipecat JS or React client that connects to a Gemini Live Pipecat bot
+  <Card title="React Client SDK" icon="react" href="/client/react/introduction">
+    Build custom web interfaces
+  </Card>
+
+  <Card title="Telephony Guide" icon="phone-volume" href="/deployment/pipecat-cloud/guides/telephony/twilio-websocket">
+    Deep dive into phone integrations
+  </Card>
+
+  <Card title="Core Concepts" icon="graduation-cap" href="/guides/learn/overview">
+    Understand Pipecat pipelines and processors
   </Card>
 </CardGroup>
-
-### Learn More
-
-* [Gemini Live API Reference](/server/services/s2s/gemini-live)
-* [React Client SDK Documentation](/client/react/introduction)
-
-
-# Noise cancellation with Krisp
-Source: https://docs.pipecat.ai/guides/features/krisp
-
-Learn how to integrate Krisp noise cancellation into your Pipecat application
-
-<Warning>
-  The `KrispFilter` is deprecated and will be removed in a future version.
-  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See
-  the [Krisp VIVA guide](/guides/features/krisp-viva) for more information.
-</Warning>
-
-## Overview
-
-This guide will walk you through setting up and using Krisp's noise reduction capabilities in your Pipecat application. Krisp provides professional-grade noise cancellation that can significantly improve audio quality in real-time communications.
-
-To use Krisp's noise cancellation, you'll need to obtain their SDK and models through a Krisp developer account. Our Pipecat Krisp module simplifies the integration process, which we'll cover in this guide.
-
-## Walkthrough
-
-### Get Access to Krisp SDK and Models
-
-1. Create a Krisp developers account at [krisp.ai/developers](https://krisp.ai/developers)
-2. Download the [Krisp Desktop SDK (v7)](https://sdk.krisp.ai/sdk/desktop) that matches your platform:
-   * Linux: `Desktop SDK v7.0.2: Linux`
-   * macOS (ARM): `Desktop SDK v7.0.1: Mac ARM`
-   * macOS (Intel): `Desktop SDK v7.0.1: Mac Intel`
-   * Windows(ARM): `Desktop SDK v7.0.2: Windows ARM`
-   * Windows (x64): `Desktop SDK v7.0.2: Windows`
-3. Download the corresponding models. We recommend trying the `Background Voice Cancellation` model. Recommended model for each platform:
-   * Linux (ARM): `hs.c6.f.s.de56df.kw`
-   * Mac (ARM): `hs.c6.f.s.de56df.kw`
-   * Linux (x86\_64): `hs.c6.f.s.de56df.kw`
-   * Mac (x86\_64): `hs.c6.f.s.de56df.kw`
-   * Windows (x86\_64): `hs.c6.f.s.de56df.kw`
-
-<Frame>
-  <img alt="Krisp SDK Portal" />
-</Frame>
-
-### Install build dependencies
-
-The `pipecat-ai-krisp` module is a python wrapper around Krisp's C++ SDK. To build the module, you'll need to install the following dependencies:
-
-<Tabs>
-  <Tab title="macOS">
-    ```bash theme={null}
-    # Using Homebrew
-    brew install cmake pybind11
-    ```
-  </Tab>
-
-  <Tab title="Ubuntu/Debian">
-    ```bash theme={null}
-    # Using apt
-    sudo apt-get update
-    sudo apt-get install cmake python3-dev pybind11-dev g++
-    ```
-  </Tab>
-
-  <Tab title="Windows">
-    ```powershell theme={null}
-    # Using Chocolatey
-    choco install cmake
-    # pybind11 will be installed via pip during the build process
-
-    # OR using Visual Studio
-    # 1. Install Visual Studio with C++ development tools
-    # 2. Install CMake from https://cmake.org/download/
-    # pybind11 will be installed via pip during the build process
-    ```
-  </Tab>
-</Tabs>
-
-<Note>
-  For Windows users: Make sure you have Visual Studio installed with C++
-  development tools, or alternatively, have the Visual C++ Build Tools
-  installed.
-</Note>
-
-### Install the pipecat-ai-krisp module
-
-In your Pipecat repo, activate your virtual environment:
-
-<Tabs>
-  <Tab title="macOS/Linux">
-    ```bash theme={null}
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-  </Tab>
-
-  <Tab title="Windows">
-    ```powershell theme={null}
-    # Using PowerShell
-    python -m venv venv
-    .\venv\Scripts\Activate.ps1
-
-    # OR using Command Prompt
-    python -m venv venv
-    .\venv\Scripts\activate.bat
-
-    # OR using Git Bash
-    python -m venv venv
-    source venv/Scripts/activate
-    ```
-  </Tab>
-</Tabs>
-
-Export the path to your Krisp SDK and model files:
-
-<Tabs>
-  <Tab title="macOS/Linux">
-    ```bash theme={null}
-    # Add to your .env file or shell configuration
-    export KRISP_SDK_PATH=/PATH/TO/KRISP/SDK
-    export KRISP_MODEL_PATH=/PATH/TO/KRISP/MODEL.kef
-    ```
-  </Tab>
-
-  <Tab title="Windows">
-    ```powershell theme={null}
-    # Using PowerShell
-    $env:KRISP_SDK_PATH = "C:\PATH\TO\KRISP\SDK"
-    $env:KRISP_MODEL_PATH = "C:\PATH\TO\KRISP\MODEL.kef"
-
-    # OR using Command Prompt
-    set KRISP_SDK_PATH=C:\PATH\TO\KRISP\SDK
-    set KRISP_MODEL_PATH=C:\PATH\TO\KRISP\MODEL.kef
-    ```
-  </Tab>
-</Tabs>
-
-<Tip>
-  When selecting a `KRISP_MODEL_PATH`, ensure that you're selecting the actual
-  model file, not just the directory. The path should look something like this:
-
-  <Tabs>
-    <Tab title="ARM Linux">
-      ```bash theme={null}
-      export KRISP_MODEL_PATH=./krisp/hs.c6.f.s.de56df.kw
-      ```
-    </Tab>
-
-    <Tab title="Mac ARM">
-      ```bash export theme={null}
-      KRISP_MODEL_PATH=./krisp/outbound-bvc-models-fp16/hs.c6.f.s.de56df.bucharest.kef
-      ```
-    </Tab>
-
-    <Tab title="Windows">
-      ```powershell theme={null}
-      $env:KRISP_MODEL_PATH="C:\krisp\outbound-bvc-models-fp32\hs.c6.f.s.de56df.bucharest.kef"
-      ```
-    </Tab>
-  </Tabs>
-</Tip>
-
-Next, install the `pipecat-ai[krisp]` module, which will automatically build the `pipecat-ai-krisp` python wrapper module:
-
-```bash theme={null}
-pip install "pipecat-ai[krisp]"
-```
-
-### Test the integration
-
-You can now test the Krisp integration. The easiest way to do this is to run the foundational example: [07p-interruptible-krisp.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp.py).
-
-<Tip>
-  You can run a foundational example by running the following command:
-
-  ```bash theme={null}
-  python examples/foundational/07p-interruptible-krisp.py -u YOUR_DAILY_ROOM_URL
-  ```
-</Tip>
-
-#### Important for macOS users
-
-If you're running on macOS you may receive a security warning about running the script. This is expected. You can allow access by going to `System Settings > Privacy & Security` then click `Allow Anyway` to permit the example to run.
-
-<Frame>
-  <img alt="Security & Privacy" />
-</Frame>
-
-After allowing and re-running, you may get a pop-up asking for permission. Select `Open Anyway` to run the script.
-
-<Frame>
-  <img alt="Open Anyway" />
-</Frame>
-
-## Usage Example
-
-Here's a basic example of how to add Krisp noise reduction to your Pipecat pipeline:
-
-```python theme={null}
-from pipecat.audio.filters.krisp_filter import KrispFilter
-from pipecat.transports.services.daily import DailyParams, DailyTransport
-
-# Add to transport configuration
-transport = DailyTransport(
-    room_url,
-    token,
-    "Audio Bot",
-    DailyParams(
-        audio_in_filter=KrispFilter(),  # Enable Krisp noise reduction
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
-    ),
-)
-```
-
-## Troubleshooting
-
-Common issues and solutions:
-
-1. **Missing Dependencies**
-
-```bash theme={null}
-Error: Missing module: pipecat_ai_krisp
-```
-
-Solution: Ensure you've installed with the krisp extra: `pip install "pipecat-ai[krisp]"`
-
-2. **Model Path Not Found**
-
-```bash theme={null}
-Error: Model path for KrispAudioProcessor must be provided
-```
-
-Solution: Set the `KRISP_MODEL_PATH` environment variable or provide it in the constructor
-
-3. **SDK Path Issues**
-
-```bash theme={null}
-Error: Cannot find Krisp SDK
-```
-
-Solution: Verify `KRISP_SDK_PATH` points to a valid Krisp SDK installation
-
-## Additional Resources
-
-* [KrispFilter Reference Documentation](/server/utilities/audio/krisp-filter)
-* [Example Application](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07p-interruptible-krisp.py)
 
 
 # Noise cancellation with Krisp VIVA
@@ -15196,10 +14674,10 @@ To complete this setup, you will need access to a Krisp developers account, wher
 
    Note: the full model name will be in the format of `krisp-viva-pro-v1.kef`.
 
-2. In your .env file, add a `KRISP_VIVA_MODEL_PATH` environment variable which points to the path to the VIVA model you wish to use.
+2. In your .env file, add a `KRISP_VIVA_FILTER_MODEL_PATH` environment variable which points to the path to the VIVA model you wish to use.
 
 ```bash theme={null}
-KRISP_VIVA_MODEL_PATH=/PATH_TO_UNZIPPED_MODELS/krisp-viva-models-9.9/krisp-viva-pro-v1.kef
+KRISP_VIVA_FILTER_MODEL_PATH=/PATH_TO_UNZIPPED_MODELS/krisp-viva-models-9.9/krisp-viva-pro-v1.kef
 ```
 
 ## Test the integration
@@ -15231,7 +14709,6 @@ transport = DailyTransport(
         audio_in_enabled=True,
         audio_in_filter=KrispVivaFilter(),  # Enable Krisp noise reduction
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -15975,7 +15452,6 @@ transport = SmallWebRTCTransport(
     params=TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -16033,7 +15509,7 @@ Learn how to write your own custom FrameProcessor
 
 Pipecat's architecture is made up of a Pipeline, FrameProcessors, and Frames. See the [Core Concepts](/guides/learn/pipeline) for a full review. From that architecture, recall that FrameProcessors are the workers in the pipeline that receive frames and complete actions based on the frames received.
 
-Pipecat comes with many FrameProcessors built in. These consist of services, like `OpenAILLMService` or `CartesiaTTSService`, utilities, like `UserIdleProcessor`, and other things. Largely, you can build most of your application with these built-in FrameProcessors, but commonly, your application code may require custom frame processing logic. For example, you may want to perform an action as a result of a frame that's pushed in the pipeline.
+Pipecat comes with many FrameProcessors built in. These consist of services, like `OpenAILLMService` or `CartesiaTTSService`, utilities, like `LLMTextProcessor`, and other things. Largely, you can build most of your application with these built-in FrameProcessors, but commonly, your application code may require custom frame processing logic. For example, you may want to perform an action as a result of a frame that's pushed in the pipeline.
 
 ## Example: MetricsFrame logger
 
@@ -16091,7 +15567,7 @@ def format_metrics(metrics, indent=0):
 
 ## Add to a Pipeline
 
-````python theme={null}
+```python theme={null}
 # Create and initialize the custom FrameProcessor
 metrics_frame_processor = MetricsFrameLogger()
 
@@ -16107,6 +15583,7 @@ pipeline = Pipeline(
         metrics_frame_processor,  # Our custom FrameProcessor that pretty prints metrics frames
     ]
 )
+```
 
 With this positioning, the `MetricsFrameLogger` FrameProcessor will receive every MetericsFrame in the pipeline.
 
@@ -16114,8 +15591,8 @@ With this positioning, the `MetricsFrameLogger` FrameProcessor will receive ever
 
 FrameProcessors must inherit from the base `FrameProcessor` class. This ensures that your custom FrameProcessor will correctly handle frames like `StartFrame`, `EndFrame`, `StartInterruptionFrame` without having to write custom logic for those frames. This inheritance also provides it with the ability to `process_frame()` and `push_frame()`:
 
-- **`process_frame()`** is what allows the FrameProcessor to receive frames and add custom conditional logic based on the frames that are received.
-- **`push_frame()`** allows the FrameProcessor to push frames to the pipeline. Normally, frames are pushed DOWNSTREAM, but based on which processors need the output, you can also push UPSTREAM or in both directions.
+* **`process_frame()`** is what allows the FrameProcessor to receive frames and add custom conditional logic based on the frames that are received.
+* **`push_frame()`** allows the FrameProcessor to push frames to the pipeline. Normally, frames are pushed DOWNSTREAM, but based on which processors need the output, you can also push UPSTREAM or in both directions.
 
 ### Essential Implementation Details
 
@@ -16124,7 +15601,7 @@ To ensure proper base class inheritance, it's critical to include:
 1. **`super().__init__()`** in your `__init__` method
 2. **`await super().process_frame(frame, direction)`** in your `process_frame()` method
 
-```python
+```python theme={null}
 class MyCustomProcessor(FrameProcessor):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)  # ✅ Required
@@ -16139,7 +15616,7 @@ class MyCustomProcessor(FrameProcessor):
             pass
 
         await self.push_frame(frame, direction)  # ✅ Required - pass frame through
-````
+```
 
 ## Critical Responsibility: Frame Forwarding
 
@@ -16179,92 +15656,114 @@ Learn how to detect and respond when users are inactive in conversations
 
 ## Overview
 
-In conversational applications, it's important to handle situations where users go silent or inactive. Pipecat's `UserIdleProcessor` helps you detect when users haven't spoken for a defined period, allowing your bot to respond appropriately.
+In conversational applications, it's important to handle situations where users go silent or inactive. Pipecat provides built-in idle detection through `LLMUserAggregator` and `UserTurnProcessor`, allowing your bot to respond appropriately when users haven't spoken for a defined period.
 
 ## How It Works
 
-The `UserIdleProcessor` monitors user activity and:
+Idle detection monitors user activity and:
 
 1. Starts tracking after the first interaction (user or bot speaking)
-2. Resets a timer whenever the user speaks
-3. Calls your custom callback function when the user is idle for longer than the timeout period
-4. Provides a retry counter to track consecutive idle periods
-5. Allows you to implement escalating responses or gracefully end the conversation
+2. Resets a timer whenever the user or bot speaks
+3. Pauses during function calls (which may take longer than the timeout)
+4. Emits an `on_user_turn_idle` event when the user is idle for longer than the timeout period
+5. Allows you to implement escalating responses or gracefully end the conversation in your application code
 
 <Note>
-  The processor uses speech events (not audio frames) to detect activity, so it
-  requires an active speech-to-text service or a transport with built-in speech
-  detection.
+  Idle detection uses continuous activity frames (`UserSpeakingFrame`,
+  `BotSpeakingFrame`) to track real-time conversation activity. It requires an
+  active speech-to-text service or a transport with built-in speech detection.
 </Note>
 
 ## Basic Implementation
 
-### Step 1: Create a Handler Function
+### Step 1: Enable Idle Detection
 
-First, create a callback function that will be triggered when the user is idle:
+Enable idle detection by setting the `user_idle_timeout` parameter when creating your aggregator:
 
 ```python theme={null}
-# Simple handler that doesn't use retry count
-async def handle_user_idle(processor):
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_idle_timeout=5.0,  # Detect idle after 5 seconds
+    ),
+)
+```
+
+### Step 2: Handle Idle Events
+
+Create an event handler to respond when the user becomes idle:
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_turn_idle")
+async def on_user_turn_idle(aggregator):
     # Send a reminder to the user
-    await processor.push_frame(TTSSpeakFrame("Are you still there?"))
-
-# OR
-
-# Advanced handler with retry logic
-async def handle_user_idle(processor, retry_count):
-    if retry_count == 1:
-        # First attempt - gentle reminder
-        await processor.push_frame(TTSSpeakFrame("Are you still there?"))
-        return True  # Continue monitoring
-    elif retry_count == 2:
-        # Second attempt - more direct prompt
-        await processor.push_frame(TTSSpeakFrame("Would you like to continue our conversation?"))
-        return True  # Continue monitoring
-    else:
-        # Third attempt - end conversation
-        await processor.push_frame(TTSSpeakFrame("I'll leave you for now. Have a nice day!"))
-        await processor.push_frame(EndFrame(), FrameDirection.UPSTREAM)
-        return False  # Stop monitoring
+    message = {
+        "role": "system",
+        "content": "The user has been quiet. Politely ask if they're still there.",
+    }
+    await aggregator.push_frame(LLMMessagesAppendFrame([message], run_llm=True))
 ```
 
-### Step 2: Create the Idle Processor
+### Step 3: Implement Retry Logic (Optional)
 
-Initialize the processor with your callback and desired timeout:
-
-```python theme={null}
-from pipecat.processors.user_idle_processor import UserIdleProcessor
-
-user_idle = UserIdleProcessor(
-    callback=handle_user_idle,  # Your callback function
-    timeout=5.0,               # Seconds of inactivity before triggering
-)
-```
-
-### Step 3: Add to Your Pipeline
-
-Place the processor after speech detection but before context handling:
+For escalating responses, track retry count in your application:
 
 ```python theme={null}
-pipeline = Pipeline(
-    [
-        transport.input(),
-        stt,                         # Speech-to-text
-        user_idle,                   # Add idle detection here
-        context_aggregator.user(),
-        llm,
-        tts,
-        transport.output(),
-        context_aggregator.assistant(),
-    ]
-)
+class IdleHandler:
+    def __init__(self):
+        self._retry_count = 0
+
+    def reset(self):
+        self._retry_count = 0
+
+    async def handle_idle(self, aggregator):
+        self._retry_count += 1
+
+        if self._retry_count == 1:
+            # First attempt - gentle reminder
+            message = {
+                "role": "system",
+                "content": "The user has been quiet. Politely ask if they're still there.",
+            }
+            await aggregator.push_frame(LLMMessagesAppendFrame([message], run_llm=True))
+        elif self._retry_count == 2:
+            # Second attempt - more direct
+            message = {
+                "role": "system",
+                "content": "The user is still inactive. Ask if they'd like to continue.",
+            }
+            await aggregator.push_frame(LLMMessagesAppendFrame([message], run_llm=True))
+        else:
+            # Third attempt - end conversation
+            await aggregator.push_frame(
+                TTSSpeakFrame("It seems like you're busy. Have a nice day!")
+            )
+            await aggregator.push_frame(EndTaskFrame(), FrameDirection.UPSTREAM)
+
+# Use the handler
+idle_handler = IdleHandler()
+
+@user_aggregator.event_handler("on_user_turn_idle")
+async def on_user_turn_idle(aggregator):
+    await idle_handler.handle_idle(aggregator)
+
+@user_aggregator.event_handler("on_user_turn_started")
+async def on_user_turn_started(aggregator, strategy):
+    idle_handler.reset()  # Reset retry count when user speaks
 ```
 
 ## Best Practices
 
 * **Set appropriate timeouts**: Shorter timeouts (5-10 seconds) work well for voice conversations
 * **Use escalating responses**: Start with gentle reminders and gradually become more direct
-* **Limit retry attempts**: After 2-3 unsuccessful attempts, consider [ending the conversation](/guides/learn/pipeline-termination) gracefully by pushing an `EndFrame`
+* **Limit retry attempts**: After 2-3 unsuccessful attempts, consider [ending the conversation](/guides/learn/pipeline-termination) gracefully by pushing an `EndTaskFrame`
+* **Reset on user activity**: Use the `on_user_turn_started` event to reset your retry counter when the user speaks
+* **Let the LLM respond naturally**: Use system messages to prompt the LLM rather than hardcoded TTS responses for more natural interactions
 
 ## Next Steps
 
@@ -16274,9 +15773,8 @@ pipeline = Pipeline(
     respond to user inactivity in Pipecat.
   </Card>
 
-  <Card title="UserIdleProcessor Reference" icon="book" href="/server/utilities/user-idle-processor">
-    Read the complete API reference documentation for advanced configuration
-    options and callback patterns.
+  <Card title="Turn Events" icon="book" href="/server/utilities/turn-management/turn-events">
+    Learn about all available turn events and their parameters.
   </Card>
 </CardGroup>
 
@@ -16678,9 +16176,13 @@ The `AudioBufferProcessor` captures audio by:
 The `AudioBufferProcessor` offers several configuration options:
 
 * **Composite recording**: Combined audio from both user and bot
+  * `on_audio_data` event handler
 * **Track-level recording**: Separate audio files for user and bot
+  * `on_track_audio_data` event handler
 * **Turn-based recording**: Individual audio clips for each speaking turn
+  * `on_user_turn_audio_data` and `on_bot_turn_audio_data` event handlers
 * **Mono or stereo output**: Single channel mixing or two-channel separation
+  * `num_channels=1` for mono; `num_channels=2` for stereo
 
 ## Basic Implementation
 
@@ -16769,7 +16271,8 @@ For conversations that last a few minutes, it may be sufficient to just buffer t
 1. **Memory Usage**: Long recordings can consume significant memory, leading to potential crashes or performance issues.
 2. **Conversation Loss**: If the application crashes or the connection drops, you may lose all recorded audio.
 
-Instead, consider using a chunked approach to record audio in manageable segments. This allows you to periodically save audio data to disk or upload it to cloud storage, reducing memory usage and ensuring data persistence.
+Instead, use the `buffer_size` parameter to record audio in manageable segments. This allows you to periodically save audio data to disk or upload it to cloud storage, reducing memory usage and ensuring data persistence.
+See an example of how to upload chunked audio to AWS cloud storage [here]().
 
 ### Chunked Recording
 
@@ -16799,14 +16302,16 @@ async def on_chunk_ready(buffer, user_audio, bot_audio, sample_rate, num_channel
 
 ### Multipart Upload Strategy
 
-For cloud storage, consider using multipart uploads to stream audio chunks:
+For cloud storage, use multipart uploads to stream audio chunks. For example AWS cloud storage, use the [s3 multipart upload API](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html).
+
+If you are rolling your own multipart upload code, consider the following:
 
 **Conceptual Approach:**
 
 1. **Initialize multipart upload** when recording starts
 2. **Upload chunks as parts** when buffers fill (every \~30 seconds)
 3. **Complete multipart upload** when recording ends
-4. **Post-process** to create final WAV file(s)
+4. **Post-process** to create final WAV file(s), concatenate audio chunks
 
 **Benefits:**
 
@@ -16815,9 +16320,10 @@ For cloud storage, consider using multipart uploads to stream audio chunks:
 * Enables real-time processing and analysis
 * Parallel upload of multiple tracks
 
-### Post-Processing Pipeline
+### \[Optional] Post-Processing Pipeline
 
-After uploading chunks, create final audio files using tools like FFmpeg:
+If not using a managed multipart upload framework like AWS s3 multipart upload, concatenate audio chunks together to create final audio files.
+This can be done with tools like FFmpeg:
 
 **Concatenating Audio Files:**
 
@@ -16864,71 +16370,70 @@ Learn how to collect and save conversation transcripts between users and your bo
 
 ## Overview
 
-Recording transcripts of conversations between users and your bot is useful for debugging, analysis, and creating a record of interactions. Pipecat's `TranscriptProcessor` makes it easy to collect both user and bot messages as they occur.
+Recording transcripts of conversations between users and your bot is useful for debugging, analysis, and creating a record of interactions. Pipecat's turn events make it easy to collect both user and assistant messages as they occur.
 
 ## How It Works
 
-The `TranscriptProcessor` collects transcripts by:
+Transcripts are collected using turn events on the context aggregators:
 
-1. Capturing what the user says (from `TranscriptionFrame`s)
-2. Capturing what the bot says (from `TTSTextFrame`s)
-3. Emitting events with transcript updates in real-time
+1. Capturing what the user says via `on_user_turn_stopped`
+2. Capturing what the assistant says via `on_assistant_turn_stopped`
+3. Each event provides the complete transcript for that turn
 4. Allowing you to handle these events with custom logic
 
 <Note>
-  The `TranscriptProcessor` provides two separate processors: one for user
-  speech and one for assistant speech. Both emit the same event type when new
-  transcript content is available.
+  Turn events are emitted by the context aggregators (`LLMUserAggregator` and
+  `LLMAssistantAggregator`), which are created as part of the
+  `LLMContextAggregatorPair`.
 </Note>
 
 ## Basic Implementation
 
-### Step 1: Create a Transcript Processor
+### Step 1: Create Context Aggregators
 
-First, initialize the transcript processor:
+First, create the context aggregator pair and get references to both aggregators:
 
 ```python theme={null}
-from pipecat.processors.transcript_processor import TranscriptProcessor
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    UserTurnStoppedMessage,
+    AssistantTurnStoppedMessage,
+)
 
-# Create a single transcript processor instance
-transcript = TranscriptProcessor()
+# Create context aggregator pair
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 ### Step 2: Add to Your Pipeline
 
-Place the processors in your pipeline at the appropriate positions:
+Include the aggregators in your pipeline:
 
 ```python theme={null}
 pipeline = Pipeline(
     [
         transport.input(),
-        stt,                            # Speech-to-text
-        transcript.user(),              # Captures user transcripts
-        context_aggregator.user(),
+        stt,                              # Speech-to-text
+        user_aggregator,
         llm,
-        tts,                            # Text-to-speech
+        tts,                              # Text-to-speech
         transport.output(),
-        transcript.assistant(),         # Captures assistant transcripts
-        context_aggregator.assistant(),
+        assistant_aggregator,
     ]
 )
 ```
 
-<Note>
-  Place `transcript.user()` after the STT processor and `transcript.assistant()`
-  after `transport.output()` to ensure accurate transcript collection.
-</Note>
+### Step 3: Handle Turn Events
 
-### Step 3: Handle Transcript Updates
-
-Register an event handler to process transcript updates:
+Register event handlers to capture transcripts when turns complete:
 
 ```python theme={null}
-@transcript.event_handler("on_transcript_update")
-async def handle_transcript_update(processor, frame):
-    # Each message contains role (user/assistant), content, and timestamp
-    for message in frame.messages:
-        print(f"[{message.timestamp}] {message.role}: {message.content}")
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    print(f"[{message.timestamp}] user: {message.content}")
+
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    print(f"[{message.timestamp}] assistant: {message.content}")
 ```
 
 <Tip>
@@ -16939,30 +16444,28 @@ async def handle_transcript_update(processor, frame):
 ## Next Steps
 
 <CardGroup>
-  <Card title="Try the Transcript Example" icon="code" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/28-transcription-processor.py">
-    Explore a complete working example that demonstrates how to collect and save
-    conversation transcripts with Pipecat.
+  <Card title="Turn Events Reference" icon="book" href="/server/utilities/turn-management/turn-events">
+    Learn about all available turn events and their parameters.
   </Card>
 
-  <Card title="TranscriptProcessor Reference" icon="book" href="/server/utilities/transcript-processor">
-    Read the complete API reference documentation for advanced configuration
-    options and event handlers.
+  <Card title="Transcriptions Reference" icon="scroll" href="/server/utilities/turn-management/transcriptions">
+    See more examples for collecting and processing transcriptions.
   </Card>
 </CardGroup>
 
 Consider implementing transcript recording in your application for debugging during development and preserving important conversations in production. The transcript data can also be useful for analyzing conversation patterns and improving your bot's responses over time.
 
 
-# User Input Muting with STTMuteFilter
+# User Input Muting
 Source: https://docs.pipecat.ai/guides/fundamentals/user-input-muting
 
 Learn how to control when user speech is processed in your conversational bot
 
 ## Overview
 
-In conversational applications, there are moments when you don't want to process user speech, such as during bot introductions or while executing function calls. Pipecat's `STTMuteFilter` lets you selectively "mute" user input based on different conversation states.
+In conversational applications, there are moments when you don't want to process user speech, such as during bot introductions or while executing function calls. Pipecat's user mute strategies let you selectively "mute" user input based on different conversation states.
 
-## When to Use STTMuteFilter
+## When to Use Mute Strategies
 
 Common scenarios for muting user input include:
 
@@ -16973,117 +16476,139 @@ Common scenarios for muting user input include:
 
 ## How It Works
 
-The `STTMuteFilter` works by blocking specific user-related frames from flowing through your pipeline. When muted, it filters:
+User mute strategies work by blocking specific user-related frames from flowing through your pipeline. When muted, the following frames are filtered:
 
 * Voice activity detection (VAD) events
 * Interruption signals
 * Raw audio input frames
-* Transcription frames
+* Transcription frames (both interim and final)
 
-This prevents the Speech-to-Text service from receiving and processing the user's speech during muted periods.
+This prevents user speech from being processed during muted periods.
 
 <Note>
-  The filter must be placed between your STT service and context aggregator in
-  the pipeline to work correctly.
+  Mute strategies are configured on the `LLMUserAggregator` via the
+  `user_mute_strategies` parameter.
 </Note>
 
 ## Mute Strategies
 
-The `STTMuteFilter` supports several strategies for determining when to mute user input:
+Pipecat provides several built-in strategies for determining when to mute user input:
 
 <CardGroup>
-  <Card title="FIRST_SPEECH" icon="microphone-slash">
+  <Card title="FirstSpeechUserMuteStrategy" icon="microphone-slash">
     Mute only during the bot's first speech utterance. Useful for introductions
     when you want the bot to complete its greeting before the user can speak.
   </Card>
 
-  <Card title="MUTE_UNTIL_FIRST_BOT_COMPLETE" icon="hourglass-half">
+  <Card title="MuteUntilFirstBotCompleteUserMuteStrategy" icon="hourglass-half">
     Start muted and remain muted until the first bot utterance completes.
     Ensures the bot's initial instructions are fully delivered.
   </Card>
 
-  <Card title="FUNCTION_CALL" icon="gear">
+  <Card title="FunctionCallUserMuteStrategy" icon="gear">
     Mute during function calls. Prevents users from speaking while the bot is
     processing external data requests.
   </Card>
 
-  <Card title="ALWAYS" icon="volume-xmark">
+  <Card title="AlwaysUserMuteStrategy" icon="volume-xmark">
     Mute whenever the bot is speaking. Creates a strict turn-taking conversation
     pattern.
-  </Card>
-
-  <Card title="CUSTOM" icon="sliders">
-    Use custom logic via callback to determine when to mute. Provides maximum
-    flexibility for complex muting rules.
   </Card>
 </CardGroup>
 
 <Warning>
-  The `FIRST_SPEECH` and `MUTE_UNTIL_FIRST_BOT_COMPLETE` strategies should not
-  be used together as they handle the first bot speech differently.
+  The `FirstSpeechUserMuteStrategy` and
+  `MuteUntilFirstBotCompleteUserMuteStrategy` strategies should not be used
+  together as they handle the first bot speech differently.
 </Warning>
 
 ## Basic Implementation
 
-### Step 1: Configure the Filter
-
-First, create a configuration for the `STTMuteFilter`:
+Import and configure the mute strategies you need:
 
 ```python theme={null}
-from pipecat.processors.filters.stt_mute_filter import STTMuteConfig, STTMuteFilter, STTMuteStrategy
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_mute import AlwaysUserMuteStrategy
 
 # Configure with one or more strategies
-stt_mute_processor = STTMuteFilter(
-    config=STTMuteConfig(
-        strategies={
-            STTMuteStrategy.MUTE_UNTIL_FIRST_BOT_COMPLETE,
-            STTMuteStrategy.FUNCTION_CALL,
-        }
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[AlwaysUserMuteStrategy()],
     ),
 )
 ```
 
-### Step 2: Add to Your Pipeline
+## Combining Multiple Strategies
 
-Place the filter between the STT service and context aggregator:
+Multiple strategies can be combined. They use OR logic—if **any** strategy indicates the user should be muted, input is suppressed:
 
 ```python theme={null}
-pipeline = Pipeline(
-    [
-        transport.input(),           # Transport user input
-        stt,                         # Speech-to-text service
-        stt_mute_processor,          # Add between STT and context aggregator
-        context_aggregator.user(),   # User responses
-        llm,                         # LLM
-        tts,                         # Text-to-speech
-        transport.output(),          # Transport bot output
-        context_aggregator.assistant(),  # Assistant spoken responses
-    ]
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+
+from pipecat.turns.user_mute import (
+    MuteUntilFirstBotCompleteUserMuteStrategy,
+    FunctionCallUserMuteStrategy,
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            MuteUntilFirstBotCompleteUserMuteStrategy(),  # Mute until first response
+            FunctionCallUserMuteStrategy(),               # Mute during function calls
+        ],
+    ),
 )
 ```
 
+## Responding to Mute Events
+
+You can register event handlers to be notified when muting starts or stops. This is particularly useful for providing visual feedback to users:
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_mute_started")
+async def on_user_mute_started(aggregator):
+    logger.info("User mute started")
+    # Send a visual indicator to your client
+    # e.g., show a "Bot is speaking" indicator
+
+@user_aggregator.event_handler("on_user_mute_stopped")
+async def on_user_mute_stopped(aggregator):
+    logger.info("User mute stopped")
+    # Update your client UI
+    # e.g., show a "You can speak now" indicator
+```
+
+These events fire whenever the mute state changes, allowing you to keep your UI synchronized with the bot's state.
+
 ## Best Practices
 
-* **Place the filter correctly**: Always position `STTMuteFilter` between the STT service and context aggregator
 * **Choose strategies wisely**: Select the minimal set of strategies needed for your use case
 * **Test user experience**: Excessive muting can frustrate users; balance control with usability
-* **Consider feedback**: Provide visual cues when the user is muted to improve the experience
+* **Provide feedback**: Use the mute event handlers to show visual cues when the user is muted to improve the experience
 
 ## Next Steps
 
 <CardGroup>
-  <Card title="Try the STTMuteFilter Example" icon="code" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/24-stt-mute-filter.py">
-    Explore a complete working example that demonstrates how to use
-    STTMuteFilter to control user input during bot speech and function calls.
+  <Card title="User Mute Strategies Reference" icon="book" href="/server/utilities/turn-management/user-mute-strategies">
+    Read the complete API reference documentation for all available mute
+    strategies and their behavior.
   </Card>
 
-  <Card title="STTMuteFilter Reference" icon="book" href="/server/utilities/filters/stt-mute">
-    Read the complete API reference documentation for advanced configuration
-    options and muting strategies.
+  <Card title="User Turn Strategies" icon="arrows-turn-to-dots" href="/server/utilities/turn-management/user-turn-strategies">
+    Learn how to configure turn detection behavior for more control over
+    conversation flow.
   </Card>
 </CardGroup>
 
-Experiment with different muting strategies to find the right balance for your application. For advanced scenarios, try implementing custom muting logic based on specific conversation states or content.
+Experiment with different muting strategies to find the right balance for your application.
 
 
 # Voicemail Detection
@@ -17286,8 +16811,15 @@ messages = [
 context = LLMContext(messages)
 
 # Create context aggregator instance
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
+
+<Note>
+  The context aggregator also supports configuring [user turn
+  strategies](/server/utilities/turn-management/user-turn-strategies) and [user
+  mute strategies](/server/utilities/turn-management/user-mute-strategies) via
+  `LLMUserAggregatorParams`.
+</Note>
 
 **About LLMContext:**
 
@@ -17330,7 +16862,7 @@ tools = ToolsSchema(standard_tools=[weather_function])
 
 # Create context with both messages and tools
 context = LLMContext(messages, tools)
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 Function call results are also automatically stored in the context, maintaining a complete conversation history including tool interactions.
@@ -17537,7 +17069,7 @@ context = LLMContext(
     messages=[{"role": "system", "content": "You are a helpful assistant."}],
     tools=tools
 )
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 The `ToolsSchema` will be automatically converted to the correct format for your LLM provider through adapters.
@@ -17576,7 +17108,7 @@ context = LLMContext(
     messages=[{"role": "system", "content": "You are a helpful assistant."}],
     tools=tools
 )
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 #### Using Provider-Specific Formats (Alternative)
@@ -17777,17 +17309,17 @@ context = LLMContext(
 )
 
 # Create the context aggregator to collect the user and assistant context
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 
 # Create the pipeline
 pipeline = Pipeline([
-    transport.input(),               # Input from the transport
-    stt,                             # STT processing
-    context_aggregator.user(),       # User context aggregation
-    llm,                             # LLM processing
-    tts,                             # TTS processing
-    transport.output(),              # Output to the transport
-    context_aggregator.assistant(),  # Assistant context aggregation
+    transport.input(),     # Input from the transport
+    stt,                   # STT processing
+    user_aggregator,       # User context aggregation
+    llm,                   # LLM processing
+    tts,                   # TTS processing
+    transport.output(),    # Output to the transport
+    assistant_aggregator,  # Assistant context aggregation
 ])
 ```
 
@@ -18829,8 +18361,6 @@ Pipecat includes automatic idle detection to prevent hanging pipelines. This fea
 ```python theme={null}
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(
-    ),
     # Configure idle detection timeout
     cancel_on_idle_timeout=True, # Default is True
     idle_timeout_seconds=600,  # Default is 300 seconds
@@ -18996,7 +18526,6 @@ async def bot(runner_args: RunnerArguments):
         params=TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         webrtc_connection=runner_args.webrtc_connection,
     )
@@ -19129,11 +18658,11 @@ async def on_client_ready(rtvi):
     await task.queue_frames([LLMRunFrame()])
 ```
 
-<Important>
+<Note>
   For client/server room-based connections, waiting for `on_client_ready` is
   crucial - starting too early can cause the client to miss part of the initial
   message.
-</Important>
+</Note>
 
 ## Process Isolation
 
@@ -19210,19 +18739,26 @@ Now that you understand session initialization, let's explore the different tran
 # Speech Input & Turn Detection
 Source: https://docs.pipecat.ai/guides/learn/speech-input
 
-Learn how Pipecat detects when users start and stop speaking, and manages conversation turns
+Learn how Pipecat detects user turns using VAD, transcriptions, and turn detection models
 
-Understanding how your bot detects and processes user speech is crucial for creating natural conversations. Pipecat provides sophisticated Voice Activity Detection (VAD) and turn detection to handle the complex timing of real-time conversations.
+A key to natural conversations is properly detecting when the user starts and stops speaking. This is more nuanced than simply detecting audio; a brief pause doesn't always mean the user is done talking.
 
 ## Overview
 
-Speech input processing involves three key components:
+Pipecat uses [user turn strategies](/server/utilities/turn-management/user-turn-strategies) to determine when user turns start and end. These strategies can use different techniques:
 
-* **VAD Analyzer**: Detects when users start and stop speaking
-* **Turn Analyzer**: Determines when users have finished their turn
-* **Speech Events**: System frames that coordinate pipeline behavior
+**For detecting turn start:**
 
-These components work together to create natural conversation flow and enable interruptions.
+* Voice Activity Detection (VAD): triggers when speech is detected
+* Transcription-based (fallback): triggers when transcription is received but VAD didn't detect speech
+* Minimum words: waits for a minimum number of spoken words before triggering
+
+**For detecting turn end:**
+
+* Transcription-based: analyzes transcription to determine when the user is done
+* Turn detection model: uses AI to understand if the user has finished their thought
+
+Custom strategies can also be implemented for specific use cases. By combining these techniques, you can create responsive yet natural conversations that don't interrupt users mid-sentence or wait too long after they've finished.
 
 ## Voice Activity Detection (VAD)
 
@@ -19238,11 +18774,15 @@ VAD is responsible for detecting when a user starts and stops speaking. Pipecat 
 
 ### VAD Configuration
 
-VAD is configured through `VADParams` in your transport setup:
+VAD is configured through `VADParams` in the `LLMContextAggregatorPair`:
 
 ```python theme={null}
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 
 vad_analyzer = SileroVADAnalyzer(
     params=VADParams(
@@ -19253,10 +18793,9 @@ vad_analyzer = SileroVADAnalyzer(
     )
 )
 
-transport = YourTransport(
-    params=TransportParams(
-        vad_analyzer=vad_analyzer,
-    ),
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(vad_analyzer=vad_analyzer)),
 )
 ```
 
@@ -19284,108 +18823,78 @@ transport = YourTransport(
   optimal performance across different audio environments and use cases.
 </Warning>
 
-## Turn Detection
+## User Turn Detection
 
-### Beyond Simple VAD
+While VAD detects speech vs. silence, it can't understand linguistic context. A pause doesn't mean the user is done. User turn strategies interpret VAD signals and transcriptions to determine actual turn boundaries.
 
-While VAD detects speech vs. silence, it can't understand linguistic context. Humans use grammar, tone, pace, and semantic cues to determine conversation turns. Pipecat's turn detection brings this sophistication to voice AI.
+### How It Works
 
-### smart-turn Model
+1. **Turn Start**: When VAD detects speech (or transcription arrives), the start strategy emits `UserStartedSpeakingFrame` and optionally triggers an interruption
+2. **Turn End**: When the stop strategy determines the user is done, it emits `UserStoppedSpeakingFrame`
 
-Pipecat integrates with the [smart-turn model](https://github.com/pipecat-ai/smart-turn), an open-source native audio turn detection model:
+<Note>
+  VAD also emits its own frames (`VADUserStartedSpeakingFrame`,
+  `VADUserStoppedSpeakingFrame`) which indicate raw speech/silence detection.
+  These are inputs to the turn strategies, not the final turn decisions.
+</Note>
+
+### Detecting Turn End
+
+Turn end detection uses transcription to understand what the user said:
+
+**Transcription-based (Default)**: Analyzes transcription to determine when the user has finished speaking.
+
+```python theme={null}
+from pipecat.turns.user_stop import TranscriptionUserTurnStopStrategy
+
+stop_strategy = TranscriptionUserTurnStopStrategy()
+```
+
+**Smart Turn Model**: Uses an AI model to analyze audio and determine if the user has finished their thought.
 
 ```python theme={null}
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
 
-transport = YourTransport(
-    params=TransportParams(
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=LocalSmartTurnAnalyzerV3(),  # Requires VAD to be configured at 0.2s
-    ),
+stop_strategy = TurnAnalyzerUserTurnStopStrategy(
+    turn_analyzer=LocalSmartTurnAnalyzerV3()
 )
 ```
 
-**Smart Turn v3 features:**
-
-* Support for 23 languages
-* Runs on CPU (no GPU required)
-* Community-driven development
-* BSD 2-clause license (truly open)
-
-### VAD + Turn Detection Integration
-
-When using turn detection, VAD and turn analyzer work together:
-
-1. **VAD detects speech segments** with low `stop_secs` (recommended: 0.2)
-2. **Turn model analyzes audio** to determine if turn is complete or incomplete
-3. **VAD behavior adjusts** based on turn model results:
-   * **Complete**: Normal VAD stop behavior
-   * **Incomplete**: Extends waiting time (default: 3.0 seconds)
-
-**Recommended VAD configuration with turn detection:**
-
-```python theme={null}
-# Configure VAD for responsive turn detection
-vad_params = VADParams(
-    stop_secs=0.2,  # Low value for quick turn model analysis
-)
-
-vad_analyzer = SileroVADAnalyzer(params=vad_params)
-```
-
-Learn more about the VAD and Turn Analyzers in the server utilities documentation:
+When using Smart Turn, configure VAD with a low `stop_secs` (0.2) so the model can analyze speech quickly.
 
 <CardGroup>
-  <Card title="VAD Documentation" icon="microphone" href="/server/utilities/audio/silero-vad-analyzer">
-    Complete VAD configuration reference
+  <Card title="User Turn Strategies" icon="arrows-turn-to-dots" href="/server/utilities/turn-management/user-turn-strategies">
+    Complete reference for start and stop strategies
   </Card>
 
-  <Card title="Turn Detection Guide" icon="comments" href="/server/utilities/smart-turn/smart-turn-overview">
-    Detailed turn detection implementation guide
+  <Card title="Smart Turn Overview" icon="brain" href="/server/utilities/smart-turn/smart-turn-overview">
+    Smart Turn model implementation guide
   </Card>
 </CardGroup>
 
-## Speech Events & Pipeline Coordination
+### Interruptions
 
-### System Frames for Speech Events
+Interruptions stop the bot when the user starts speaking. This is controlled by the `enable_interruptions` parameter on start strategies (enabled by default).
 
-When VAD detects speech activity, the transport emits system frames that coordinate pipeline behavior:
+When a user turn starts with interruptions enabled:
 
-**When speech starts:**
+1. Bot immediately stops speaking
+2. Pending audio and text is cleared
+3. Pipeline ready for new user input
 
-* `UserStartedSpeakingFrame`: Informs processors that user began speaking
-* `StartInterruptionFrame`: Triggers interruption handling (if enabled)
-
-**When speech stops:**
-
-* `UserStoppedSpeakingFrame`: Signals end of user input
-* `StopInterruptionFrame`: Resumes normal processing
-
-### Interruption Handling
-
-Interruptions are a critical feature for natural conversations:
+To disable interruptions:
 
 ```python theme={null}
-task = PipelineTask(
-    pipeline,
-    params=PipelineParams(
-        allow_interruptions=True,  # Default: True (strongly recommended)
-    ),
-)
+from pipecat.turns.user_start import VADUserTurnStartStrategy
+
+start_strategy = VADUserTurnStartStrategy(enable_interruptions=False)
 ```
 
-**How interruptions work:**
-
-1. User starts speaking → `StartInterruptionFrame` emitted
-2. System frame processed immediately (bypasses normal queues)
-3. Current processors stop and clear their queues
-4. Pipeline resets, ready for new user input
-
-<Important>
-  Keep `allow_interruptions=True` (default) for natural conversations. This
-  enables users to interrupt the bot mid-sentence, just like human
-  conversations.
-</Important>
+<Note>
+  Keep interruptions enabled (default) for natural conversations. This enables
+  users to interrupt the bot mid-sentence, just like human conversations.
+</Note>
 
 ## Best Practices
 
@@ -19394,28 +18903,38 @@ task = PipelineTask(
 **For most voice AI use cases:**
 
 ```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
 # Responsive VAD with turn detection
 vad_params = VADParams(
     start_secs=0.2,
     stop_secs=0.2 if using_turn_detection else 0.8,
 )
 
-smart_turn_analyzer = LocalSmartTurnAnalyzerV3()
-
 transport = YourTransport(
-    params=TransportParams(
+    params=TransportParams(),
+)
+
+# Configure Smart Turn via user turn strategies (if using turn detection)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )]
+        ) if using_smart_turn_detection else None,
         vad_analyzer=SileroVADAnalyzer(params=vad_params),
-        turn_analyzer=smart_turn_analyzer if using_smart_turn_detection else None,
     ),
 )
 
-# Enable interruptions for natural flow
-task = PipelineTask(
-    pipeline,
-    params=PipelineParams(
-        allow_interruptions=True, # Default is True
-    ),
-)
+task = PipelineTask(pipeline)
 ```
 
 ### Performance Considerations
@@ -19661,10 +19180,11 @@ While many STT services provide Voice Activity Detection, use Pipecat's local Si
 ```python theme={null}
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 
-# Configure in transport params
-transport = YourTransport(
-    params=TransportParams(
-        vad_analyzer=SileroVADAnalyzer(),  # 150-200ms faster than remote VAD
+# Configure in context aggregator
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
     ),
 )
 ```
@@ -19868,7 +19388,11 @@ For TTS-specific text preprocessing, you can provide custom text transforms that
 Text transforms are registered directly on the TTS service instance via the `add_text_transformer()` method or during initialization using the `text_transforms` parameter.
 
 <Note>
-  The intentions of text transforms are meant to be TTS-specific modifications that do not affect the underlying LLM text or context. That said, since the context aggregator attempts to base its context on what was actually spoken, for services that support word timestamps, like Cartesia, ElevenLabs, and Rime,these transforms will modify the context as they modify what is spoken.
+  The intentions of text transforms are meant to be TTS-specific modifications
+  that do not affect the underlying LLM text or context. That said, since the
+  context aggregator attempts to base its context on what was actually spoken,
+  for services that support word timestamps, like Cartesia, ElevenLabs, and
+  Rime,these transforms will modify the context as they modify what is spoken.
 </Note>
 
 ```python theme={null}
@@ -19914,7 +19438,11 @@ tts.add_text_transformer(replace_acronyms, "*")  # Apply to all text
 
 ### Text Filters
 
-<Warning>Text filters are no longer the preferred method for text preprocessing and will be deprecated in future releases. Instead, you should use one of the methods described above.</Warning>
+<Warning>
+  Text filters are no longer the preferred method for text preprocessing and
+  will be deprecated in future releases. Instead, you should use one of the
+  methods described above.
+</Warning>
 
 Apply preprocessing to text before synthesis:
 
@@ -20001,6 +19529,10 @@ Pipecat supports multiple transport types to fit different use cases and deploym
     WebSocket transport for telephony providers and custom WebSocket connections
   </Card>
 
+  <Card title="HeyGenTransport" icon="camera" href="/server/services/transport/heygen">
+    Specialized transport for HeyGen LiveAvatar video generation and streaming
+  </Card>
+
   <Card title="LiveKitTransport" icon="microphone" href="/server/services/transport/livekit">
     WebRTC transport using LiveKit's real-time communication platform
   </Card>
@@ -20070,16 +19602,10 @@ params = TransportParams(
     video_out_enabled=False,
 
     # Video stream configuration
-    camera_out_width=1024,
-    camera_out_height=576,
-    camera_out_bitrate=800000,
-    camera_out_framerate=30,
-
-    # Voice Activity Detection
-    vad_analyzer=SileroVADAnalyzer(),
-
-    # Turn detection for conversation management
-    turn_analyzer=some_turn_analyzer,
+    video_out_width=1024,
+    video_out_height=576,
+    video_out_bitrate=800000,
+    video_out_framerate=30,
 )
 ```
 
@@ -20088,6 +19614,12 @@ params = TransportParams(
   TransportParams with transport-specific options. Check the individual
   transport documentation for details.
 </Note>
+
+<Tip>
+  For advanced turn detection (like Smart Turn), configure [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) on the
+  context aggregator instead of using the transport's turn\_analyzer parameter.
+</Tip>
 
 <Card title="TransportParams Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.base_transport.html#pipecat.transports.base_transport.TransportParams">
   Complete reference for all transport configuration options
@@ -20137,7 +19669,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,  # Provider-specific serialization
     ),
 )
@@ -20168,7 +19699,6 @@ async def bot(runner_args: RunnerArguments):
             params=DailyParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
         )
 
@@ -20180,7 +19710,6 @@ async def bot(runner_args: RunnerArguments):
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
             webrtc_connection=runner_args.webrtc_connection,
         )
@@ -20569,7 +20098,6 @@ async def bot(runner_args: RunnerArguments):
             dialin_settings=daily_dialin_settings,
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         )
     )
 
@@ -20681,7 +20209,6 @@ async def bot(args: RunnerArguments):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -20919,7 +20446,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,
     ),
 )
@@ -21056,7 +20582,6 @@ task = PipelineTask(
     params=PipelineParams(
         audio_in_sample_rate=8000,
         audio_out_sample_rate=8000,
-        allow_interruptions=True,
     ),
 )
 ```
@@ -21348,7 +20873,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,
     ),
 )
@@ -21500,7 +21024,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,
     ),
 )
@@ -21536,7 +21059,6 @@ task = PipelineTask(
     params=PipelineParams(
         audio_in_sample_rate=8000,
         audio_out_sample_rate=8000,
-        allow_interruptions=True,
     ),
 )
 ```
@@ -21718,7 +21240,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,
     ),
 )
@@ -21881,7 +21402,6 @@ task = PipelineTask(
     params=PipelineParams(
         audio_in_sample_rate=8000,
         audio_out_sample_rate=8000,
-        allow_interruptions=True,
     ),
 )
 ```
@@ -22030,7 +21550,6 @@ async def run_bot(room_url: str, token: str, call_sid: str, sip_endpoint: str):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -22143,7 +21662,6 @@ async def run_bot(room_url: str, token: str, target_number: str, sip_uri: str):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -22516,7 +22034,6 @@ task = PipelineTask(
     params=PipelineParams(
         audio_in_sample_rate=8000,
         audio_out_sample_rate=8000,
-        allow_interruptions=True,
     ),
 )
 ```
@@ -22828,7 +22345,7 @@ This page provides an overview of RTVI from the server's perspective and how to 
 
 ## Architecture
 
-RTVI operates with two primary components, both of which are required for full functionality:
+RTVI operates with two primary components:
 
 1. [**RTVIProcessor**](./rtvi-processor) - A frame processor residing in the pipeline that serves as the entry point for sending and receiving messages to/from the client.
 
@@ -22839,21 +22356,18 @@ RTVI operates with two primary components, both of which are required for full f
    * TTS events
    * Performance metrics
 
+<Note>
+  RTVI is enabled by default. When you create a `PipelineTask`, it automatically adds `RTVIProcessor` to the start of your pipeline and registers an `RTVIObserver`. The default `on_client_ready` handler calls `set_bot_ready()` automatically.
+</Note>
+
 ## Basic Example
 
-Here's how to set up RTVI in your Pipecat application:
+With automatic RTVI setup, your pipeline code can focus on core functionality:
 
 ```python theme={null}
-from pipecat.processors.frameworks.rtvi import RTVIObserver, RTVIProcessor
-
-# Create the RTVI processor
-rtvi = RTVIProcessor()
-
-# Include the RTVIProcessor in your pipeline
 pipeline = Pipeline(
     [
         transport.input(),
-        rtvi,
         stt,
         context_aggregator.user(),
         llm,
@@ -22867,18 +22381,15 @@ pipeline = Pipeline(
 task = PipelineTask(
     pipeline,
     params=PipelineParams(
-        allow_interruptions=True,
         enable_metrics=True,
+        enable_usage_metrics=True,
     ),
-    observers=[RTVIObserver(rtvi)],
 )
 
-# Handle client connection
-@rtvi.event_handler("on_client_ready")
+# Access the RTVI processor via task.rtvi
+@task.rtvi.event_handler("on_client_ready")
 async def on_client_ready(rtvi):
-    # Signal bot is ready to receive messages
-    await rtvi.set_bot_ready()
-    # Initialize the conversation
+    # set_bot_ready() is called automatically, add custom logic here
     await task.queue_frames([LLMRunFrame()])
 
 # Handle participant disconnection
@@ -22889,6 +22400,26 @@ async def on_participant_left(transport, participant, reason):
 # Run the pipeline
 runner = PipelineRunner()
 await runner.run(task)
+```
+
+## Customizing RTVI
+
+You can customize RTVI behavior through `PipelineTask` parameters:
+
+```python theme={null}
+from pipecat.processors.frameworks.rtvi import RTVIProcessor, RTVIObserverParams
+
+task = PipelineTask(
+    pipeline,
+    rtvi_processor=RTVIProcessor(),  # Provide your own processor
+    rtvi_observer_params=RTVIObserverParams(...),  # Customize observer
+)
+```
+
+To disable RTVI entirely:
+
+```python theme={null}
+task = PipelineTask(pipeline, enable_rtvi=False)
 ```
 
 ## Protocol Flow
@@ -22934,32 +22465,27 @@ The `RTVIObserver` translates Pipecat's internal pipeline events into standardiz
 
 The `RTVIObserver` primarily serves to convert internal pipeline frames into to client-compatible RTVI messages. It is required for any application using RTVI as the client protocol to ensure proper communication of events such as speech start/stop, user transcript, bot output, metrics, and server messages.
 
-## Adding to a Pipeline
+## Automatic Setup
 
-The observer is attached to a pipeline task along with the RTVI processor:
+`RTVIObserver` is automatically created and attached when you create a `PipelineTask`. No manual setup is required for standard usage.
+
+To customize the observer's behavior, pass `RTVIObserverParams` to the task:
 
 ```python theme={null}
-# Create the RTVIProcessor
-rtvi = RTVIProcessor()
+from pipecat.processors.frameworks.rtvi import RTVIObserverParams
 
-# Add to pipeline
-pipeline = Pipeline([
-    transport.input(),
-    rtvi,
-    # Other processors...
-])
-
-# Create pipeline task with observer
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
-    observers=[RTVIObserver(rtvi)],  # Add the observer here
+    rtvi_observer_params=RTVIObserverParams(
+        bot_llm_enabled=False,
+        metrics_enabled=False,
+    ),
 )
 ```
 
 ## Configuration
 
-The `RTVIObserver` should be initialized with the RTVIProcessor instance along with an optional set of parameters with the following fields:
+`RTVIObserverParams` accepts the following fields:
 
 <ParamField>
   Indicates if bot output messages should be sent.
@@ -23084,23 +22610,31 @@ The `RTVIProcessor` manages bidirectional communication between clients and your
 
 ## Initialization
 
-Add the `RTVIProcessor` to your pipeline:
+`RTVIProcessor` is automatically added to your pipeline when you create a `PipelineTask`. Access it via `task.rtvi`:
 
 ```python theme={null}
-from pipecat.processors.rtvi import RTVIProcessor, RTVIConfig, RTVIServiceConfig
-
-# Create the RTVIProcessor
-rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
-
-# Add to pipeline
 pipeline = Pipeline([
     transport.input(),
-    rtvi,
     stt,
     # ... other processors ...
     transport.output()
 ])
+
+task = PipelineTask(pipeline)
+
+# Access the processor
+rtvi = task.rtvi
 ```
+
+To provide a custom processor (e.g., for [Google RTVI](./google-rtvi-observer)):
+
+```python theme={null}
+from pipecat.services.google.rtvi import GoogleRTVIProcessor
+
+task = PipelineTask(pipeline, rtvi_processor=GoogleRTVIProcessor())
+```
+
+To disable RTVI entirely, set `enable_rtvi=False`.
 
 ## Readiness Protocol
 
@@ -23351,9 +22885,13 @@ Pipecat integrates with various AI services across different categories:
 
 ```python theme={null}
 from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
 from pipecat.pipeline import Pipeline
 from pipecat.processors.aggregators.llm_context import LLMContext
-from pipecat.processors.aggregators.llm_response_universal import LLMContextAggregatorPair
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.services.cartesia.tts import CartesiaTTSService
 from pipecat.services.deepgram.stt import DeepgramSTTService
 from pipecat.services.openai.llm import OpenAILLMService
@@ -23366,7 +22904,6 @@ transport = DailyTransport(
     DailyParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 
@@ -23379,17 +22916,22 @@ tts = CartesiaTTSService(api_key=KEY, voice_id=ID)
 context = LLMContext(
     messages=[{"role": "system", "content": "You are a helpful assistant."}]
 )
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+    ),
+)
 
 # Create pipeline
 pipeline = Pipeline([
     transport.input(),
     stt,
-    context_aggregator.user(),
+    user_aggregator,
     llm,
     tts,
     transport.output(),
-    context_aggregator,assistant()
+    assistant_aggregator,
 ])
 ```
 
@@ -23611,7 +23153,6 @@ task = PipelineTask(pipeline)
 # Custom configuration
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     idle_timeout_secs=600,  # 10 minute timeout
     idle_timeout_frames=(BotSpeakingFrame,),  # Only monitor bot speaking
     cancel_on_idle_timeout=False,  # Don't auto-cancel, just notify
@@ -23661,7 +23202,6 @@ pipeline = Pipeline([...])
 # Configure task with custom idle settings
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     idle_timeout_secs=180,  # 3 minutes
     cancel_on_idle_timeout=False  # Don't auto-cancel
 )
@@ -23702,7 +23242,6 @@ params = PipelineParams()
 
 # Or customize specific parameters
 params = PipelineParams(
-    allow_interruptions=True,
     audio_in_sample_rate=16000,
     enable_metrics=True
 )
@@ -23715,8 +23254,15 @@ task = PipelineTask(pipeline, params=params)
 ## Available Parameters
 
 <ParamField type="bool">
-  Whether to allow pipeline interruptions. When enabled, a user's speech will
-  immediately interrupt the bot's response.
+  <Warning>
+    DEPRECATED: This parameter is deprecated. Configure interruption behavior
+    via [User Turn
+    Strategies](/server/utilities/turn-management/user-turn-strategies) instead.
+    See the `enable_interruptions` parameter on start strategies.
+  </Warning>
+
+  Whether to allow pipeline interruptions. When enabled, a user's speech will immediately
+  interrupt the bot's response.
 </ParamField>
 
 <ParamField type="int">
@@ -23810,7 +23356,6 @@ from pipecat.pipeline.runner import PipelineRunner
 
 # Create comprehensive parameters
 params = PipelineParams(
-    allow_interruptions=True,
     audio_in_sample_rate=8000,
     audio_out_sample_rate=8000,
     enable_heartbeats=True,
@@ -23925,19 +23470,23 @@ await runner.run(task)
 </ParamField>
 
 <ParamField type="bool">
-  Whether to enable OpenTelemetry tracing. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Whether to enable OpenTelemetry tracing. See [The OpenTelemetry
+  guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField type="bool">
-  Whether to enable turn tracking. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Whether to enable turn tracking. See [The OpenTelemetry
+  guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField type="Optional[str]">
-  Custom ID for the conversation. If not provided, a UUID will be generated. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Custom ID for the conversation. If not provided, a UUID will be generated. See
+  [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField type="Optional[dict]">
-  Any additional attributes to add to top-level OpenTelemetry conversation span. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Any additional attributes to add to top-level OpenTelemetry conversation span.
+  See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 ## Methods
@@ -24085,22 +23634,6 @@ Want to add your integration? See our [Community Integrations Guide](https://git
 
 ***
 
-## Speech-to-Text
-
-Speech-to-Text services receive and audio input and output transcriptions.
-
-| Service                         | Repository | Maintainer(s) |
-| ------------------------------- | ---------- | ------------- |
-| *No community integrations yet* |            |               |
-
-## Large Language Models
-
-LLMs receive text or audio based input and output a streaming text response.
-
-| Service                         | Repository | Maintainer(s) |
-| ------------------------------- | ---------- | ------------- |
-| *No community integrations yet* |            |               |
-
 ## Knowledge Retrieval
 
 Semantic retrieval services enable context-aware search and retrieval of relevant information.
@@ -24109,15 +23642,44 @@ Semantic retrieval services enable context-aware search and retrieval of relevan
 | -------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
 | [Moss](https://www.usemoss.dev/) | [https://github.com/usemoss/pipecat-moss](https://github.com/usemoss/pipecat-moss) | [Moss](https://github.com/usemoss) |
 
+## Large Language Models
+
+LLMs receive text or audio based input and output a streaming text response.
+
+| Service                          | Repository                                                                                                             | Maintainer(s)                           |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [Anannas AI](https://anannas.ai) | [https://github.com/Anannas-AI/anannas-pipecat-integration](https://github.com/Anannas-AI/anannas-pipecat-integration) | [Haleshot](https://github.com/Haleshot) |
+
+## Observability
+
+Observability services enable telemetry and metrics data to be passed to a Open Telemetry backend or another service.
+
+| Service                                                    | Repository                                                                                                                                                | Maintainer(s)                                                             |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [OpenInference](https://arize-ai.github.io/openinference/) | [openinference-instrumentation-pipecat](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-pipecat) | [Arize-ai](https://github.com/Arize-ai/openinference/graphs/contributors) |
+| [Finchvox](https://finchvox.dev/)                          | [https://github.com/finchvox/finchvox](https://github.com/finchvox/finchvox)                                                                              | [Finchvox](https://github.com/finchvox)                                   |
+
+## Telephony Serializers
+
+Serializers convert between frames and media streams, enabling real-time communication over a websocket.
+
+| Service                          | Repository                                                                               | Maintainer(s)                         |
+| -------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------- |
+| [AwaazAI](https://www.awaaz.ai/) | [https://github.com/awaazde/pipecat-awaazai](https://github.com/awaazde/pipecat-awaazai) | [AwaazAI](https://github.com/awaazde) |
+
 ## Text-to-Speech
 
 Text-to-Speech services receive text input and output audio streams or chunks.
 
-| Service                          | Repository                                                                                         | Maintainer(s)                                 |
-| -------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [Typecast](https://typecast.ai/) | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast) | [neosapience](https://github.com/neosapience) |
+| Service                                                          | Repository                                                                                             | Maintainer(s)                                   |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| [Murf AI](https://murf.ai/api)                                   | [https://github.com/murf-ai/pipecat-murf-tts](https://github.com/murf-ai/pipecat-murf-tts)             | [murf-ai](https://github.com/murf-ai)           |
+| [Pipecat TTS Cache](https://pypi.org/project/pipecat-tts-cache/) | [https://github.com/omChauhanDev/pipecat-tts-cache](https://github.com/omChauhanDev/pipecat-tts-cache) | [omChauhanDev](https://github.com/omChauhanDev) |
+| [Respeecher](https://www.respeecher.com/real-time-tts-api)       | [https://github.com/respeecher/pipecat-respeecher](https://github.com/respeecher/pipecat-respeecher)   | [respeecher](https://github.com/respeecher)     |
+| [Typecast](https://typecast.ai/)                                 | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast)     | [neosapience](https://github.com/neosapience)   |
+| [Voice.ai](https://voice.ai/)                                    | [https://github.com/voice-ai/voice-ai-pipecat-tts](https://github.com/voice-ai/voice-ai-pipecat-tts)   | [voice-ai](https://github.com/voice-ai)         |
 
-# Video
+## Video
 
 Video services enable you to build an avatar where audio and video are synchronized.
 
@@ -24125,17 +23687,17 @@ Video services enable you to build an avatar where audio and video are synchroni
 | ------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------- |
 | [Beyond Presence](https://www.beyondpresence.ai/) | [https://github.com/bey-dev/pipecat-bey](https://github.com/bey-dev/pipecat-bey) | [bey-dev](https://github.com/bey-dev) |
 
-## Telephony Serializers
+## Image Generation
 
-Serializers convert between frames and media streams, enabling real-time communication over a websocket.
+Image generation services receive text inputs and output images.
 
 | Service                         | Repository | Maintainer(s) |
 | ------------------------------- | ---------- | ------------- |
 | *No community integrations yet* |            |               |
 
-## Image Generation
+## Speech-to-Text
 
-Image generation services receive text inputs and output images.
+Speech-to-Text services receive and audio input and output transcriptions.
 
 | Service                         | Repository | Maintainer(s) |
 | ------------------------------- | ---------- | ------------- |
@@ -25503,8 +25065,8 @@ A real-time, multimodal conversational AI service powered by Google's Gemini via
     Official Vertex AI Gemini Live API documentation
   </Card>
 
-  <Card title="Google Cloud Vertex AI" icon="cloud" href="https://cloud.google.com/vertex-ai">
-    Official Google Cloud Vertex AI platform
+  <Card title="Gemini Live Model Card" icon="book" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash-live-api">
+    Gemini Live available models
   </Card>
 </CardGroup>
 
@@ -25602,6 +25164,66 @@ Before using OpenAI Realtime services, you need:
 * **Conversation Management**: Intelligent context handling and conversation flow control
 
 
+# Ultravox Realtime
+Source: https://docs.pipecat.ai/server/services/s2s/ultravox
+
+Real-time speech-to-speech service implementation using Ultravox's Realtime API
+
+## Overview
+
+`UltravoxRealtimeLLMService` provides real-time conversational AI capabilities using Ultravox's Realtime API. It supports both text and audio modalities with voice transcription, streaming responses, and tool usage for creating interactive AI experiences.
+
+<CardGroup>
+  <Card title="Ultravox Realtime API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ultravox.llm.html">
+    Pipecat's API methods for Ultravox Realtime integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/50-ultravox-realtime.py">
+    Complete Ultravox Realtime conversation example
+  </Card>
+
+  <Card title="Ultravox Documentation" icon="book" href="https://docs.ultravox.ai/overview">
+    Official Ultravox API documentation
+  </Card>
+
+  <Card title="Ultravox Console" icon="external-link" href="https://app.ultravox.ai/">
+    Access Ultravox models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Ultravox Realtime services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[ultravox]"
+```
+
+## Prerequisites
+
+### Ultravox Account Setup
+
+Before using Ultravox Realtime services, you need:
+
+1. **Ultravox Account**: Sign up at [Ultravox Console](https://app.ultravox.ai/)
+2. **API Key**: Generate an Ultravox API key from your account dashboard
+3. **Model Access**: Ensure access to Ultravox Realtime models
+4. **Usage Limits**: Configure appropriate usage limits and billing
+
+### Required Environment Variables
+
+* `ULTRAVOX_API_KEY`: Your Ultravox API key for authentication
+
+### Key Features
+
+* **Audio-Native Model**: Ultravox is an audio-native model for natural voice interactions
+* **Real-time Streaming**: Low-latency audio processing and streaming responses
+* **Multiple Input Modes**: Support for Agent, One-Shot, and Join URL input parameters
+* **Voice Transcription**: Built-in transcription with streaming output
+* **Function Calling**: Support for tool integration and API calling
+* **Configurable Duration**: Set maximum call duration limits
+
+
 # ExotelFrameSerializer
 Source: https://docs.pipecat.ai/server/services/serializers/exotel
 
@@ -25697,6 +25319,10 @@ Pipecat includes serializers for popular voice and communications platforms:
 
   <Card title="Twilio Serializer" icon="phone" href="/server/services/serializers/twilio">
     For integrating with Twilio Media Streams WebSocket protocol
+  </Card>
+
+  <Card title="Vonage Serializer" icon="waveform" href="/server/services/serializers/vonage">
+    For integrating with Vonage Video API Audio Connector WebSocket protocol
   </Card>
 </CardGroup>
 
@@ -25919,6 +25545,71 @@ Before using TwilioFrameSerializer, you need:
 * **μ-law Encoding**: Handle Twilio's standard audio encoding format
 
 
+# VonageFrameSerializer
+Source: https://docs.pipecat.ai/server/services/serializers/vonage
+
+Serializer for Vonage Video API Audio Connector WebSocket protocol
+
+## Overview
+
+`VonageFrameSerializer` enables integration with the Vonage Video API Audio Connector WebSocket protocol, allowing Pipecat applications to process real-time audio streams from active Vonage video sessions.
+
+<CardGroup>
+  <Card title="Vonage Serializer API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.serializers.vonage.html">
+    Pipecat's API methods for Vonage Audio Connector Streams integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/vonage-audio-bot">
+    End-to-end Pipecat example using Vonage Audio Connector
+  </Card>
+
+  <Card title="Vonage Audio Connector Documentation" icon="book" href="https://developer.vonage.com/en/video/guides/audio-connector">
+    Official Vonage Video API Audio Connector documentation
+  </Card>
+
+  <Card title="Vonage Video API Console" icon="microphone" href="https://tokbox.com/account/">
+    Manage Vonage Video API projects
+  </Card>
+</CardGroup>
+
+## Installation
+
+The `VonageFrameSerializer` does not require any additional dependencies beyond the core Pipecat library:
+
+```bash theme={null}
+pip install "pipecat-ai"
+```
+
+## Prerequisites
+
+### Vonage Video API Account Setup
+
+Before using VonageFrameSerializer, you need:
+
+1. **Vonage (TokBox) Account**: Sign up at [Vonage Video API Console](https://tokbox.com/account/)
+2. **Vonage Video API Project**: Create a project to obtain Project API Key and Project Secret
+3. **Existing Vonage Video Session**: A Vonage session must already exist. Sessions can be created using TokBox Playground or Vonage Video API SDKs
+
+### Required Environment Variables
+
+* `VONAGE_API_KEY`: Your Vonage Video API project key
+* `VONAGE_API_SECRET`: Your Vonage Video API project secret
+* `VONAGE_SESSION_ID`: The existing routed session ID
+* `WS_URI`: Public WebSocket endpoint URI of the server application running Pipecat (e.g. via ngrok)
+
+### Required Configuration
+
+* **WebSocket Endpoint (/ws)**: A WebSocket server application (e.g. FastAPI) running Pipecat that accepts raw PCM audio frames.
+* **Audio Connector /connect Request**: Triggers Vonage to open a WebSocket connection to your server and begin streaming audio from the active session.
+
+### Key Features
+
+* **Bidirectional Audio**: Convert between Pipecat and Vonage Audio Connector formats
+* **Real-Time AI Pipelines**: Stream live audio into Pipecat and process it through any real-time pipeline configuration supported by the framework
+* **Session Control Events**: Handle Vonage Audio Connector JSON events
+* **Linear PCM Audio**: Handle raw 16-bit linear PCM audio streams used by the Vonage Video API Audio Connector
+
+
 # AssemblyAI
 Source: https://docs.pipecat.ai/server/services/stt/assemblyai
 
@@ -26134,6 +25825,14 @@ Deepgram provides two STT service implementations:
 
 * `DeepgramSTTService` for real-time speech recognition using Deepgram's standard WebSocket API with support for interim results, language detection, and voice activity detection (VAD)
 * `DeepgramFluxSTTService` for advanced conversational AI with Flux capabilities including intelligent turn detection, eager end-of-turn events, and enhanced speech processing for improved response timing.
+
+<Note>
+  Since Deepgram Flux provides its own user turn start and end detection, you
+  should use `ExternalUserTurnStrategies` to let Flux handle turn management.
+  See [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) for
+  configuration details.
+</Note>
 
 <CardGroup>
   <Card title="Deepgram STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.deepgram.stt.html">
@@ -26438,6 +26137,53 @@ Before using Groq STT services, you need:
 * `GROQ_API_KEY`: Your Groq API key for authentication
 
 
+# Hathora
+Source: https://docs.pipecat.ai/server/services/stt/hathora
+
+Speech-to-text service implementations hosted on Hathora
+
+## Overview
+
+Hathora is a hosting provider for several models for voice AI, which can be utilized under the single `HathoraSTTService`.
+
+<CardGroup>
+  <Card title="Hathora STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.hahotra.stt.html">
+    Pipecat's API methods for Hathora-hosted STT models
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ag-interruptible-hathora.py">
+    Complete example using Hathora-hosted models
+  </Card>
+
+  <Card title="Hathora Models Documentation" icon="book" href="https://models.hathora.dev/">
+    Official Hathora documentation and features
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Hathora services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[hathora]"
+```
+
+## Prerequisites
+
+### Hathora Account Setup
+
+Before using Hathora STT services, you need:
+
+1. **Hathora Account**: Sign up at [Hathora Models Console](https://models.hathora.dev/)
+2. **API Key**: Generate an API token from your [Tokens page](https://models.hathora.dev/tokens)
+
+### Hathora Model Specifier
+
+The `HathoraSTTService` accepts a `model: str` parameter which corresponds to the model you would like to use.
+
+You can find available specifiers [here](https://models.hathora.dev/)
+
+
 # OpenAI
 Source: https://docs.pipecat.ai/server/services/stt/openai
 
@@ -26652,7 +26398,7 @@ Speech-to-text service implementation using Soniox's WebSocket API
     Pipecat's API methods for Soniox STT integration
   </Card>
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07aa-interruptible-soniox.py">
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07za-interruptible-soniox.py">
     Complete example with interruption handling
   </Card>
 
@@ -26697,6 +26443,14 @@ Speech-to-text service implementation using Speechmatics' real-time transcriptio
 
 `SpeechmaticsSTTService` enables real-time speech transcription using Speechmatics' WebSocket API with partial and final results, speaker diarization, and end of utterance detection (VAD) for comprehensive conversation analysis.
 
+<Note>
+  Since Speechmatics provides its own user turn start and end detection, you
+  should use `ExternalUserTurnStrategies` to let Speechmatics handle turn
+  management. See [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) for
+  configuration details.
+</Note>
+
 <CardGroup>
   <Card title="Speechmatics STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.speechmatics.stt.html">
     Pipecat's API methods for Speechmatics STT integration
@@ -26733,59 +26487,294 @@ Before using Speechmatics STT services, you need:
 2. **API Key**: Generate an API key from your account dashboard
 3. **Feature Selection**: Configure transcription features like speaker diarization
 
+### Select Endpoint
+
+Speechmatics STT supports the following endpoints (defaults to `EU2`):
+
+| Region | Environment   | STT Endpoint                     | Access                    |
+| ------ | ------------- | -------------------------------- | ------------------------- |
+| EU     | EU1           | `wss://neu.rt.speechmatics.com/` | Self-Service / Enterprise |
+| EU     | EU2 (Default) | `wss://eu2.rt.speechmatics.com/` | Self-Service / Enterprise |
+| US     | US1           | `wss://wus.rt.speechmatics.com/` | Enterprise                |
+
 ### Required Environment Variables
 
 * `SPEECHMATICS_API_KEY`: Your Speechmatics API key for authentication
+* `SPEECHMATICS_RT_URL`: Speechmatics endpoint URL (optional, defaults to EU2)
 
+## End of Turn detection
 
-# Ultravox
-Source: https://docs.pipecat.ai/server/services/stt/ultravox
+The Speechmatics STT service supports Pipecat's own end of turn detection (Silero VAD and Smart Turn) without any additional configuration. When using Pipecat's features, the `turn_detection_mode` must be set to `TurnDetectionMode.EXTERNAL` (which is the default).
 
-Speech-to-text service implementation using a locally-loaded Ultravox multimodal model
+### Default mode
 
-## Overview
+By default, Speechmatics uses signals from Pipecat's VAD / smart turn detection as input to trigger the end of turn and finalization of the current transcript segment. This provides a seamless integration where Pipecat's voice activity detection and turn detection work in conjunction with Speechmatics' real-time processing capabilities.
 
-`UltravoxSTTService` provides real-time speech-to-text using the Ultravox multimodal model running locally. Ultravox directly encodes audio into the LLM's embedding space, eliminating traditional ASR components and providing faster, more efficient transcription with built-in conversational understanding.
+<Note>
+  If you wish to use features such as focussing on or ignoring other speakers,
+  then you may see benefit from using `TurnDetectionMode.ADAPTIVE` or
+  `TurnDetectionMode.SMART_TURN` modes.
+</Note>
 
-<CardGroup>
-  <Card title="Ultravox STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ultravox.stt.html">
-    Pipecat's API methods for Ultravox STT integration
-  </Card>
+### Adaptive End of Turn detection
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07u-interruptible-ultravox.py">
-    Complete example with GPU optimization
-  </Card>
+This mode looks at the content of the speech, pace of speaking and other acoustic information (using VAD) to determine when the user has finished speaking. This is especially important when using the plugin's ability to focus on a specific speaker and not have other speakers interrupt the agent / conversation.
 
-  <Card title="Ultravox Documentation" icon="book" href="https://docs.ultravox.ai/">
-    Official Ultravox documentation and features
-  </Card>
+To use this mode, set the `turn_detection_mode` to `TurnDetectionMode.ADAPTIVE` in your STT configuration. You must also remove any other VAD / smart turn features within Pipecat to ensure that there is not a conflict.
 
-  <Card title="Hugging Face Models" icon="microphone" href="https://huggingface.co/settings/tokens">
-    Access Ultravox models and get HF tokens
-  </Card>
-</CardGroup>
+```python theme={null}
+transport_params = TransportParams(
+    audio_in_enabled=True,
+    audio_out_enabled=True,
+    # vad_analyzer=... <- REMOVE (use Speechmatics' built-in VAD)
+    # turn_analyzer=... <- REMOVE (use Speechmatics' built-in end-of-turn detection)
+)
 
-## Installation
+...
 
-To use Ultravox services, install the required dependency:
-
-```bash theme={null}
-pip install "pipecat-ai[ultravox]"
+stt = SpeechmaticsSTTService(
+    api_key=os.getenv("SPEECHMATICS_API_KEY"),
+    params=SpeechmaticsSTTService.InputParams(
+        language=Language.EN,
+        turn_detection_mode=SpeechmaticsSTTService.TurnDetectionMode.ADAPTIVE,
+        speaker_active_format="<{speaker_id}>{text}</{speaker_id}>",
+    ),
+)
 ```
 
-## Prerequisites
+### Smart Turn detection
 
-### Ultravox Model Setup
+Further to `ADAPTIVE`, Speechmatics also provides its own smart turn detection which combines VAD and the use of Smart Turn v3 from Pipecat. This can be enabled by setting the `turn_detection_mode` parameter to `TurnDetectionMode.SMART_TURN`.
 
-Before using Ultravox STT services, you need:
+```python theme={null}
+transport_params = TransportParams(
+    audio_in_enabled=True,
+    audio_out_enabled=True,
+    # vad_analyzer=... <- REMOVE (use Speechmatics' built-in VAD)
+    # turn_analyzer=... <- REMOVE (use Speechmatics' built-in end-of-turn detection)
+)
 
-1. **Hugging Face Account**: Sign up at [Hugging Face](https://huggingface.co/)
-2. **HF Token**: Generate a Hugging Face token for model access
-3. **GPU Resources**: Recommended for optimal performance with local model inference
+...
 
-### Required Environment Variables
+stt = SpeechmaticsSTTService(
+    api_key=os.getenv("SPEECHMATICS_API_KEY"),
+    params=SpeechmaticsSTTService.InputParams(
+        language=Language.EN,
+        turn_detection_mode=SpeechmaticsSTTService.TurnDetectionMode.SMART_TURN,
+        speaker_active_format="<{speaker_id}>{text}</{speaker_id}>",
+    ),
+)
+```
 
-* `HF_TOKEN`: Your Hugging Face token for model access
+## Speaker Diarization
+
+Speechmatics STT supports speaker diarization, which separates out different speakers in the audio. The identity of each speaker is returned in the TranscriptionFrame objects in the `user_id` attribute.
+
+If `speaker_active_format` or `speaker_passive_format` are provided, then the text output for the TranscriptionFrame will be formatted to this specification. Your system context can then be updated to include information about this format to understand which speaker spoke which words. The passive format is optional and is used when the engine has been told to focus on specific speakers and other speakers will then be formatted using the `speaker_passive_format` format.
+
+* `speaker_active_format` -> the formatter for active speakers
+* `speaker_passive_format` -> the formatter for passive / background speakers
+
+Examples:
+
+* `<{speaker_id}>{text}</{speaker_id}>` -> `<S1>Good morning.</S1>`.
+* `@{speaker_id}: {text}` -> `@S1: Good morning.`.
+
+### Available attributes
+
+| Attribute          | Description                                 | Example                         |
+| ------------------ | ------------------------------------------- | ------------------------------- |
+| `speaker_id`       | The label of the speaker                    | `S1`                            |
+| `text` / `content` | The transcribed text                        | `Good morning.`                 |
+| `ts`               | The timestamp of the transcription          | `2025-09-15T19:47:29.096+00:00` |
+| `start_time`       | The start time of the transcription segment | `0.0`                           |
+| `end_time`         | The end time of the transcription segment   | `2.5`                           |
+| `lang`             | The language of the transcription segment   | `en`                            |
+
+## Speaker Lock
+
+In conjunction with speaker diarization, it is possible to decide at the start or during a conversation to focus on a specific speaker, ignore or retain words from other speakers, or implicitly ignore one or more speakers altogether.
+
+In the example below, the following will happen:
+
+* `S1` will be transcribed as normal and drive the end of turn and the conversation flow
+* `S2` will be ignored completely
+* All other speakers' words will be transcribed and emitted as tagged segments, but ONLY when a speaker in focus also speaks
+
+What this means is that if `S3` says "Hello", then it is not until `S1` speaks again that the transcription will be emitted.
+
+```python theme={null}
+stt = SpeechmaticsSTTService(
+    api_key=os.getenv("SPEECHMATICS_API_KEY"),
+    params=SpeechmaticsSTTService.InputParams(
+        language=Language.EN,
+        focus_speakers=["S1"],
+        ignore_speakers=["S2"],
+        focus_mode=SpeechmaticsSTTService.SpeakerFocusMode.RETAIN,
+        speaker_active_format="<{speaker_id}>{text}</{speaker_id}>",
+    ),
+)
+```
+
+## Language Support
+
+<Note>
+  Refer to the [Speechmatics
+  docs](https://docs.speechmatics.com/introduction/supported-languages) for more
+  information on supported languages.
+</Note>
+
+Speechmatics STT supports the following languages and regional variants.
+
+Setting a language can be done using the `language` parameter when creating the STT object. The exception to this is English / Mandarin which has the code `cmn_en`.
+
+| Language Code  | Description | Locales                   |
+| -------------- | ----------- | ------------------------- |
+| `Language.AR`  | Arabic      | -                         |
+| `Language.BA`  | Bashkir     | -                         |
+| `Language.EU`  | Basque      | -                         |
+| `Language.BE`  | Belarusian  | -                         |
+| `Language.BG`  | Bulgarian   | -                         |
+| `Language.BN`  | Bengali     | -                         |
+| `Language.YUE` | Cantonese   | -                         |
+| `Language.CA`  | Catalan     | -                         |
+| `Language.HR`  | Croatian    | -                         |
+| `Language.CS`  | Czech       | -                         |
+| `Language.DA`  | Danish      | -                         |
+| `Language.NL`  | Dutch       | -                         |
+| `Language.EN`  | English     | `en-US`, `en-GB`, `en-AU` |
+| `Language.EO`  | Esperanto   | -                         |
+| `Language.ET`  | Estonian    | -                         |
+| `Language.FA`  | Persian     | -                         |
+| `Language.FI`  | Finnish     | -                         |
+| `Language.FR`  | French      | -                         |
+| `Language.GL`  | Galician    | -                         |
+| `Language.DE`  | German      | -                         |
+| `Language.EL`  | Greek       | -                         |
+| `Language.HE`  | Hebrew      | -                         |
+| `Language.HI`  | Hindi       | -                         |
+| `Language.HU`  | Hungarian   | -                         |
+| `Language.IA`  | Interlingua | -                         |
+| `Language.IT`  | Italian     | -                         |
+| `Language.ID`  | Indonesian  | -                         |
+| `Language.GA`  | Irish       | -                         |
+| `Language.JA`  | Japanese    | -                         |
+| `Language.KO`  | Korean      | -                         |
+| `Language.LV`  | Latvian     | -                         |
+| `Language.LT`  | Lithuanian  | -                         |
+| `Language.MS`  | Malay       | -                         |
+| `Language.MT`  | Maltese     | -                         |
+| `Language.CMN` | Mandarin    | `cmn-Hans`, `cmn-Hant`    |
+| `Language.MR`  | Marathi     | -                         |
+| `Language.MN`  | Mongolian   | -                         |
+| `Language.NO`  | Norwegian   | -                         |
+| `Language.PL`  | Polish      | -                         |
+| `Language.PT`  | Portuguese  | -                         |
+| `Language.RO`  | Romanian    | -                         |
+| `Language.RU`  | Russian     | -                         |
+| `Language.SK`  | Slovakian   | -                         |
+| `Language.SL`  | Slovenian   | -                         |
+| `Language.ES`  | Spanish     | -                         |
+| `Language.SV`  | Swedish     | -                         |
+| `Language.SW`  | Swahili     | -                         |
+| `Language.TA`  | Tamil       | -                         |
+| `Language.TH`  | Thai        | -                         |
+| `Language.TR`  | Turkish     | -                         |
+| `Language.UG`  | Uyghur      | -                         |
+| `Language.UK`  | Ukrainian   | -                         |
+| `Language.UR`  | Urdu        | -                         |
+| `Language.VI`  | Vietnamese  | -                         |
+| `Language.CY`  | Welsh       | -                         |
+
+For bilingual transcription, use the `language` and `domain` parameters as follows:
+
+| Language Code | Description        | Domain Options |
+| ------------- | ------------------ | -------------- |
+| `cmn_en`      | English / Mandarin | -              |
+| `en_ms`       | English / Malay    | -              |
+| `Language.ES` | English / Spanish  | `bilingual-en` |
+| `en_ta`       | English / Tamil    | -              |
+
+## Usage Examples
+
+Examples are included in the Pipecat project:
+
+* Using Speechmatics STT service -> [07a-interruptible-speechmatics.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07a-interruptible-speechmatics.py)
+* Using Speechmatics STT service with VAD -> [07a-interruptible-speechmatics-vad.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07a-interruptible-speechmatics-vad.py)
+* Transcribing with Speechmatics STT -> [13h-speechmatics-transcription.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13h-speechmatics-transcription.py)
+
+Sample projects:
+
+* Guess Who -> [Guess Who](https://github.com/sam-s10s/pipecat-guess-who)
+* Guess Who Board Game -> [Guess Who](https://github.com/sam-s10s/pipecat-guess-who-irl)
+
+### Basic Configuration
+
+Initialize the `SpeechmaticsSTTService` and use it in a pipeline:
+
+```python theme={null}
+from pipecat.services.speechmatics.stt import SpeechmaticsSTTService
+from pipecat.transcriptions.language import Language
+
+# Configure service
+stt = SpeechmaticsSTTService(
+    api_key="your-api-key",
+    params=SpeechmaticsSTTService.InputParams(
+        language=Language.FR,
+    )
+)
+
+# Use in pipeline
+pipeline = Pipeline([
+    transport.input(),
+    stt,
+    context_aggregator.user(),
+    llm,
+    tts,
+    transport.output(),
+    context_aggregator.assistant()
+])
+```
+
+### With Diarization
+
+This will enable diarization and also only go to the LLM if words are spoken from the first speaker (`S1`). Words from other speakers are transcribed but only sent when the first speaker speaks. When using the `TurnDetectionMode.ADAPTIVE` or `TurnDetectionMode.SMART_TURN` options, this will use the speaker diarization to determine when a speaker is speaking. You will need to disable VAD options within the selected transport object to ensure this works correctly (see [07b-interruptible-speechmatics-vad.py](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07b-interruptible-speechmatics-vad.py) as an example).
+
+Initialize the `SpeechmaticsSTTService` and use it in a pipeline:
+
+```python theme={null}
+from pipecat.services.speechmatics.stt import SpeechmaticsSTTService
+from pipecat.transcriptions.language import Language
+
+# Configure service
+stt = SpeechmaticsSTTService(
+    api_key="your-api-key",
+    params=SpeechmaticsSTTService.InputParams(
+        language=Language.EN,
+        turn_detection_mode=SpeechmaticsSTTService.TurnDetectionMode.ADAPTIVE,
+        focus_speakers=["S1"],
+        speaker_active_format="<{speaker_id}>{text}</{speaker_id}>",
+        speaker_passive_format="<PASSIVE><{speaker_id}>{text}</{speaker_id}></PASSIVE>",
+    )
+)
+
+# Use in pipeline
+pipeline = Pipeline([
+    transport.input(),
+    stt,
+    context_aggregator.user(),
+    llm,
+    tts,
+    transport.output(),
+    context_aggregator.assistant()
+])
+```
+
+## Additional Notes
+
+* **Connection Management**: Automatically handles WebSocket connections and reconnections
+* **Sample Rate**: The default sample rate of `16000` in `pcm_s16le` format
+* **VAD Integration**: Optionally supports Speechmatics' built-in VAD and end of utterance detection
 
 
 # Whisper
@@ -26865,6 +26854,7 @@ Transports exchange audio and video streams between the user and bot.
 | ------------------------------------------------------------------------- | ------------------------------------- |
 | [DailyTransport](/server/services/transport/daily)                        | `pip install "pipecat-ai[daily]"`     |
 | [FastAPIWebSocketTransport](/server/services/transport/fastapi-websocket) | `pip install "pipecat-ai[websocket]"` |
+| [HeyGenTransport](/server/services/transport/heygen)                      | `pip install "pipecat-ai[heygen]"`    |
 | [LiveKitTransport](/server/services/transport/livekit)                    | `pip install "pipecat-ai[livekit]"`   |
 | [SmallWebRTCTransport](/server/services/transport/small-webrtc)           | `pip install "pipecat-ai[webrtc]"`    |
 | [TavusTransport](/server/services/transport/tavus)                        | `pip install "pipecat-ai[tavus]"`     |
@@ -26881,6 +26871,7 @@ Serializers convert between frames and media streams, enabling real-time communi
 | [Plivo](/server/services/serializers/plivo)   | No dependencies required |
 | [Telnyx](/server/services/serializers/telnyx) | No dependencies required |
 | [Twilio](/server/services/serializers/twilio) | No dependencies required |
+| [Vonage](/server/services/serializers/vonage) | No dependencies required |
 
 ## Speech-to-Text
 
@@ -26899,13 +26890,13 @@ Speech-to-Text services receive and audio input and output transcriptions.
 | [Google](/server/services/stt/google)                 | `pip install "pipecat-ai[google]"`       |
 | [Gradium](/server/services/stt/gradium)               | `pip install "pipecat-ai[gradium]"`      |
 | [Groq (Whisper)](/server/services/stt/groq)           | `pip install "pipecat-ai[groq]"`         |
+| [Hathora](/server/services/stt/hathora)               | `pip install "pipecat-ai[hathora]"`      |
 | [NVIDIA Riva](/server/services/stt/riva)              | `pip install "pipecat-ai[nvidia]"`       |
 | [OpenAI (Whisper)](/server/services/stt/openai)       | `pip install "pipecat-ai[openai]"`       |
 | [SambaNova (Whisper)](/server/services/stt/sambanova) | `pip install "pipecat-ai[sambanova]"`    |
 | [Sarvam](/server/services/stt/sarvam)                 | `pip install "pipecat-ai[sarvam]"`       |
 | [Soniox](/server/services/stt/soniox)                 | `pip install "pipecat-ai[soniox]"`       |
 | [Speechmatics](/server/services/stt/speechmatics)     | `pip install "pipecat-ai[speechmatics]"` |
-| [Ultravox](/server/services/stt/ultravox)             | `pip install "pipecat-ai[ultravox]"`     |
 | [Whisper](/server/services/stt/whisper)               | `pip install "pipecat-ai[whisper]"`      |
 
 ## Large Language Models
@@ -26943,6 +26934,7 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [Async](/server/services/tts/asyncai)             | `pip install "pipecat-ai[asyncai]"`      |
 | [AWS Polly](/server/services/tts/aws)             | `pip install "pipecat-ai[aws]"`          |
 | [Azure](/server/services/tts/azure)               | `pip install "pipecat-ai[azure]"`        |
+| [Camb AI](/server/services/tts/camb)              | `pip install "pipecat-ai[camb]"`         |
 | [Cartesia](/server/services/tts/cartesia)         | `pip install "pipecat-ai[cartesia]"`     |
 | [Deepgram](/server/services/tts/deepgram)         | `pip install "pipecat-ai[deepgram]"`     |
 | [ElevenLabs](/server/services/tts/elevenlabs)     | `pip install "pipecat-ai[elevenlabs]"`   |
@@ -26950,6 +26942,8 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [Google](/server/services/tts/google)             | `pip install "pipecat-ai[google]"`       |
 | [Gradium](/server/services/tts/gradium)           | `pip install "pipecat-ai[gradium]"`      |
 | [Groq](/server/services/tts/groq)                 | `pip install "pipecat-ai[groq]"`         |
+| [Hathora](/server/services/tts/hathora)           | `pip install "pipecat-ai[hathora]"`      |
+| [Hume](/server/services/tts/hume)                 | `pip install "pipecat-ai[hume]"`         |
 | [Inworld](/server/services/tts/inworld)           | No dependencies required                 |
 | [LMNT](/server/services/tts/lmnt)                 | `pip install "pipecat-ai[lmnt]"`         |
 | [MiniMax](/server/services/tts/minimax)           | No dependencies required                 |
@@ -26958,6 +26952,7 @@ Text-to-Speech services receive text input and output audio streams or chunks.
 | [OpenAI](/server/services/tts/openai)             | `pip install "pipecat-ai[openai]"`       |
 | [Piper](/server/services/tts/piper)               | No dependencies required                 |
 | [PlayHT](/server/services/tts/playht)             | `pip install "pipecat-ai[playht]"`       |
+| [Resemble](/server/services/tts/resemble)         | `pip install "pipecat-ai[resemble]"`     |
 | [Rime](/server/services/tts/rime)                 | `pip install "pipecat-ai[rime]"`         |
 | [Sarvam](/server/services/tts/sarvam)             | No dependencies required                 |
 | [Speechmatics](/server/services/tts/speechmatics) | `pip install "pipecat-ai[speechmatics]"` |
@@ -26972,7 +26967,9 @@ Speech-to-Speech services are multi-modal LLM services that take in audio, video
 | [AWS Nova Sonic](/server/services/s2s/aws)                       | `pip install "pipecat-ai[aws-nova-sonic]"` |
 | [Gemini Multimodal Live](/server/services/s2s/gemini-live)       | `pip install "pipecat-ai[google]"`         |
 | [Gemini Live Vertex AI](/server/services/s2s/gemini-live-vertex) | `pip install "pipecat-ai[google]"`         |
+| [Grok Voice Agent](/server/services/s2s/grok)                    | `pip install "pipecat-ai[grok]"`           |
 | [OpenAI Realtime](/server/services/s2s/openai)                   | `pip install "pipecat-ai[openai]"`         |
+| [Ultravox](/server/services/s2s/ultravox)                        | `pip install "pipecat-ai[ultravox]"`       |
 
 ## Image Generation
 
@@ -27174,6 +27171,59 @@ See the [complete example](https://github.com/pipecat-ai/pipecat-examples/tree/m
 * Telephony provider integration setup
 * Frame serializer configuration
 * Audio processing pipeline integration
+
+
+# HeyGenTransport
+Source: https://docs.pipecat.ai/server/services/transport/heygen
+
+AI avatar video generation service for creating interactive conversational avatars
+
+## Overview
+
+`HeyGenTransport` enables your Pipecat bot to join the same virtual room as a HeyGen avatar and human participants. The transport integrates with the HeyGen [LiveAvatar](https://www.liveavatar.com/) platform to create interactive AI-powered video avatars that respond naturally in real-time conversations. The service handles bidirectional audio/video streaming, avatar animations, voice activity detection, and conversation interruptions to deliver engaging conversational AI experiences with lifelike visual presence.
+
+When used, the Pipecat bot connects to a LiveKit room alongside the HeyGen avatar and user. The bot receives audio input from participants, processes it through your pipeline, and sends TTS audio to the HeyGen avatar for synchronized video rendering.
+
+<CardGroup>
+  <Card title="HeyGen Trasnport API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.heygen.html">
+    Pipecat's API methods for HeyGen video integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/43-heygen-transport.py">
+    Complete example with interactive avatar
+  </Card>
+
+  <Card title="HeyGen Documentation" icon="book" href="https://docs.liveavatar.com/docs/getting-started">
+    Official HeyGen API documentation and guides
+  </Card>
+
+  <Card title="HeyGen Platform" icon="microphone" href="https://www.liveavatar.com/">
+    Access interactive avatars and API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use HeyGen services, install the required dependency:
+
+```bash theme={null}
+pip install "pipecat-ai[heygen]"
+```
+
+## Prerequisites
+
+### HeyGen Account Setup
+
+Before using HeyGen video services, you need:
+
+1. **HeyGen Account**: Sign up at [HeyGen Platform](https://app.liveavatar.com/signin)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Avatar Selection**: Choose from available interactive avatars
+4. **Streaming Setup**: Configure real-time avatar streaming capabilities
+
+### Required Environment Variables
+
+* `HEYGEN_LIVE_AVATAR_API_KEY`: Your HeyGen LiveAvatar API key for authentication
 
 
 # LiveKitTransport
@@ -27582,7 +27632,7 @@ Async provides high-quality text-to-speech synthesis with two service implementa
     Pipecat's API methods for AsyncAI TTS integration
   </Card>
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ac-interruptible-asyncai.py">
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zc-interruptible-asyncai.py">
     Complete example with WebSocket streaming
   </Card>
 
@@ -27724,6 +27774,62 @@ Before using Azure TTS services, you need:
 * `AZURE_SPEECH_REGION`: Your Azure Speech service region (e.g., "eastus")
 
 
+# Camb AI
+Source: https://docs.pipecat.ai/server/services/tts/camb
+
+Text-to-speech service using Camb AI's MARS models for high-quality speech synthesis
+
+## Overview
+
+`CambTTSService` provides high-quality text-to-speech synthesis using Camb AI's MARS model family with streaming capabilities. The service offers multiple model options optimized for different use cases: `mars-flash` for fast inference and `mars-pro` for high-quality output.
+
+<CardGroup>
+  <Card title="Camb AI TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.camb.tts.html">
+    Pipecat's API methods for Camb AI TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zg-interruptible-camb.py">
+    Complete example with interruption handling
+  </Card>
+
+  <Card title="Camb AI Documentation" icon="book" href="https://docs.camb.ai/">
+    Official Camb AI API documentation
+  </Card>
+
+  <Card title="Camb AI Platform" icon="microphone" href="https://studio.camb.ai/">
+    Access the Camb AI studio platform
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Camb AI services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[camb]"
+```
+
+## Prerequisites
+
+### Camb AI Account Setup
+
+Before using Camb AI TTS services, you need:
+
+1. **Camb AI Account**: Sign up at [Camb AI](https://studio.camb.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose voice IDs from the platform
+
+### Required Environment Variables
+
+* `CAMB_API_KEY`: Your Camb AI API key for authentication
+
+## Notes
+
+<Tip>
+  Set the `audio_out_sample_rate` in `PipelineParams` to match the model's sample rate (22050 for `mars-flash`, 48000 for `mars-pro`) for optimal quality. See the [example implementation](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zg-interruptible-camb.py) for usage.
+</Tip>
+
+
 # Cartesia
 Source: https://docs.pipecat.ai/server/services/tts/cartesia
 
@@ -27789,9 +27895,9 @@ async def spell_out_text(text: str, type: str) -> str:
 
 tts = CartesiaTTSService(
     api_key=os.getenv("CARTESIA_API_KEY"),
-    text_transforms=[{
-        "phone_number": spell_out_text,
-    }],
+    text_transforms=[
+        ("phone_number", spell_out_text),
+    ],
 )
 ```
 
@@ -27809,9 +27915,9 @@ async def maybe_insert_sarcasm(text: str, type: str) -> str:
 
 tts = CartesiaTTSService(
     api_key=os.getenv("CARTESIA_API_KEY"),
-    text_transforms=[{
-        "sentence": maybe_insert_sarcasm,
-    }],
+    text_transforms=[
+        ("sentence", maybe_insert_sarcasm),
+    ],
 )
 ```
 
@@ -27829,9 +27935,9 @@ async def pause_after_questions(text: str, type: str) -> str:
 
 tts = CartesiaTTSService(
     api_key=os.getenv("CARTESIA_API_KEY"),
-    text_transforms=[{
-        "sentence": pause_after_questions, # Only apply to sentence aggregations
-    }],
+    text_transforms=[
+        ("sentence", pause_after_questions), # Only apply to sentence aggregations
+    ],
 )
 ```
 
@@ -27849,9 +27955,9 @@ async def maybe_say_it_loud(text: str, type: str) -> str:
 
 tts = CartesiaTTSService(
     api_key=os.getenv("CARTESIA_API_KEY"),
-    text_transforms=[{
-        "*": maybe_say_it_loud, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", maybe_say_it_loud), # Apply to all text
+    ],
 )
 ```
 
@@ -27870,9 +27976,9 @@ async def slow_down_slow_words(text: str, type: str) -> str:
 
 tts = CartesiaTTSService(
     api_key=os.getenv("CARTESIA_API_KEY"),
-    text_transforms=[{
-        "*": slow_down_slow_words, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", slow_down_slow_words), # Apply to all text
+    ],
 )
 ```
 
@@ -28129,6 +28235,103 @@ Before using Groq TTS services, you need:
 * `GROQ_API_KEY`: Your Groq API key for authentication
 
 
+# Hathora
+Source: https://docs.pipecat.ai/server/services/tts/hathora
+
+Text-to-speech service implementations hosted on Hathora
+
+## Overview
+
+Hathora is a hosting provider for several models for voice AI, which can be utilized under the single `HathoraTTSService`.
+
+<CardGroup>
+  <Card title="Hathora TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.hahotra.tts.html">
+    Pipecat's API methods for Hathora-hosted TTS models
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ag-interruptible-hathora.py">
+    Complete example using Hathora-hosted models
+  </Card>
+
+  <Card title="Hathora Models Documentation" icon="book" href="https://models.hathora.dev/">
+    Official Hathora documentation and features
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Hathora services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[hathora]"
+```
+
+## Prerequisites
+
+### Hathora Account Setup
+
+Before using Hathora STT services, you need:
+
+1. **Hathora Account**: Sign up at [Hathora Models Console](https://models.hathora.dev/)
+2. **API Key**: Generate an API token from your [Tokens page](https://models.hathora.dev/tokens)
+
+### Hathora Model Specifier
+
+The `HathoraTTSService` accepts a `model: str` parameter which corresponds to the model you would like to use.
+
+You can find available specifiers [here](https://models.hathora.dev/)
+
+
+# Hume
+Source: https://docs.pipecat.ai/server/services/tts/hume
+
+Text-to-speech service using Hume AI's expressive Octave models with word timestamps
+
+## Overview
+
+Hume provides expressive text-to-speech synthesis using their Octave models, which adapt pronunciation, pitch, speed, and emotional style based on context. `HumeTTSService` offers real-time streaming with word-level timestamps, custom voice support, and advanced synthesis controls including acting instructions, speed adjustment, and trailing silence configuration.
+
+<CardGroup>
+  <Card title="Hume TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.hume.tts.html">
+    Pipecat's API methods for Hume TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ze-interruptible-hume.py">
+    Complete example with word timestamps and interruption handling
+  </Card>
+
+  <Card title="Hume Documentation" icon="book" href="https://dev.hume.ai/docs/text-to-speech-tts/overview">
+    Official Hume TTS API documentation and features
+  </Card>
+
+  <Card title="Voice Library" icon="microphone" href="https://dev.hume.ai/docs/text-to-speech-tts/voices">
+    Browse and manage available voices
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Hume services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[hume]"
+```
+
+## Prerequisites
+
+### Hume Account Setup
+
+Before using Hume TTS services, you need:
+
+1. **Hume Account**: Sign up at [Hume AI](https://www.hume.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose voice IDs from the voice library or create custom voices
+
+### Required Environment Variables
+
+* `HUME_API_KEY`: Your Hume API key for authentication
+
+
 # Inworld
 Source: https://docs.pipecat.ai/server/services/tts/inworld
 
@@ -28136,14 +28339,14 @@ Text-to-speech service using Inworld AI's TTS APIs
 
 ## Overview
 
-`InworldTTSService` provides high-quality text-to-speech synthesis using Inworld AI's TTS APIs with natural-sounding voices and real-time streaming capabilities. The service supports both streaming and non-streaming modes, making it suitable for various use cases from low-latency conversational AI to batch audio generation.
+Inworld provides high-quality, low-latency speech synthesis via two implementation types: `InworldTTSService` for real-time, minimal-latency use-cases through websockets and `InworldHttpTTSService` for streaming and non-streaming use-cases over HTTP. Featuring support for 12+ languages, timestamps, custom pronunciation and instant voice cloning.
 
 <CardGroup>
   <Card title="Inworld TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.inworld.tts.html">
     Pipecat's API methods for Inworld TTS integration
   </Card>
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ab-interruptible-inworld-http.py">
+  <Card title="Example Implementation (Websockets)" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zb-interruptible-inworld.py">
     Complete example with Inworld TTS
   </Card>
 
@@ -28487,6 +28690,56 @@ Before using PlayHT TTS services, you need:
 * `PLAY_HT_API_KEY`: Your PlayHT API key for authentication
 
 
+# Resemble AI
+Source: https://docs.pipecat.ai/server/services/tts/resemble
+
+Text-to-speech service using Resemble AI's WebSocket streaming API with word-level timing
+
+## Overview
+
+`ResembleAITTSService` provides high-quality text-to-speech synthesis using Resemble AI's streaming WebSocket API with word-level timestamps and audio context management for handling multiple simultaneous synthesis requests with proper interruption support.
+
+<CardGroup>
+  <Card title="Resemble AI TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.resembleai.tts.html">
+    Pipecat's API methods for Resemble AI TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zk-interruptible-resemble.py">
+    Complete example with interruption handling
+  </Card>
+
+  <Card title="Resemble AI Documentation" icon="book" href="https://docs.resemble.ai/">
+    Official Resemble AI API documentation
+  </Card>
+
+  <Card title="Sign up" icon="user" href="https://app.resemble.ai/">
+    Sign up for a Resemble AI account
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Resemble AI services, install the required dependencies:
+
+```bash theme={null}
+pip install "pipecat-ai[resemble]"
+```
+
+## Prerequisites
+
+### Resemble AI Account Setup
+
+Before using Resemble AI TTS services, you need:
+
+1. **Resemble AI Account**: Sign up at [Resemble AI](https://app.resemble.ai)
+2. **API Key**: Generate an API key from your [account settings](https://app.resemble.ai/account/api)
+3. **Voice Selection**: Choose or create voice UUIDs from your [voice library](https://app.resemble.ai/hub/voices)
+
+### Required Environment Variables
+
+* `RESEMBLE_API_KEY`: Your Resemble AI API key for authentication
+
+
 # Rime
 Source: https://docs.pipecat.ai/server/services/tts/rime
 
@@ -28552,9 +28805,9 @@ async def spell_out_text(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "phone_number": spell_out_text,
-    }],
+    text_transforms=[
+        ("phone_number", spell_out_text),
+    ],
 )
 ```
 
@@ -28572,9 +28825,9 @@ async def pause_after_questions(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "sentence": pause_after_questions, # Only apply to sentence aggregations
-    }],
+    text_transforms=[
+        ("sentence", pause_after_questions), # Only apply to sentence aggregations
+    ],
 )
 ```
 
@@ -28594,9 +28847,9 @@ async def maybe_say_potato_all_fancylike(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "*": maybe_say_potato_all_fancylike, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", maybe_say_potato_all_fancylike), # Apply to all text
+    ],
 )
 ```
 
@@ -28615,9 +28868,9 @@ async def slow_down_slow_words(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "*": slow_down_slow_words, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", slow_down_slow_words), # Apply to all text
+    ],
 )
 ```
 
@@ -28861,7 +29114,7 @@ AI avatar video generation service for creating interactive conversational avata
 
 ## Overview
 
-`HeyGenVideoService` integrates with HeyGen to create interactive AI-powered video avatars that respond naturally in real-time conversations. The service handles bidirectional audio/video streaming, avatar animations, voice activity detection, and conversation interruptions to deliver engaging conversational AI experiences with lifelike visual presence.
+`HeyGenVideoService` integrates with HeyGen [LiveAvatar](https://www.liveavatar.com/) to create interactive AI-powered video avatars that respond naturally in real-time conversations. The service handles bidirectional audio/video streaming, avatar animations, voice activity detection, and conversation interruptions to deliver engaging conversational AI experiences with lifelike visual presence.
 
 <CardGroup>
   <Card title="HeyGen Video API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.heygen.video.html">
@@ -28872,11 +29125,11 @@ AI avatar video generation service for creating interactive conversational avata
     Complete example with interactive avatar
   </Card>
 
-  <Card title="HeyGen Documentation" icon="book" href="https://docs.heygen.com/reference/authentication">
+  <Card title="HeyGen Documentation" icon="book" href="https://docs.liveavatar.com/docs/getting-started">
     Official HeyGen API documentation and guides
   </Card>
 
-  <Card title="HeyGen Platform" icon="microphone" href="https://app.heygen.com">
+  <Card title="HeyGen Platform" icon="microphone" href="https://www.liveavatar.com/">
     Access interactive avatars and API keys
   </Card>
 </CardGroup>
@@ -28895,14 +29148,14 @@ pip install "pipecat-ai[heygen]"
 
 Before using HeyGen video services, you need:
 
-1. **HeyGen Account**: Sign up at [HeyGen Platform](https://app.heygen.com)
+1. **HeyGen Account**: Sign up at [HeyGen Platform](https://app.liveavatar.com/signin)
 2. **API Key**: Generate an API key from your account dashboard
 3. **Avatar Selection**: Choose from available interactive avatars
 4. **Streaming Setup**: Configure real-time avatar streaming capabilities
 
 ### Required Environment Variables
 
-* `HEYGEN_API_KEY`: Your HeyGen API key for authentication
+* `HEYGEN_LIVE_AVATAR_API_KEY`: Your HeyGen LiveAvatar API key for authentication
 
 
 # Simli
@@ -29079,13 +29332,17 @@ The service automatically detects and uses the best available hardware:
 # AICFilter
 Source: https://docs.pipecat.ai/server/utilities/audio/aic-filter
 
-Speech improvement using ai-coustics
+Speech enhancement using ai-coustics' SDK
 
 ## Overview
 
-`AICFilter` is an audio processor that improves users speech by reducing background noise and improving speech clarity overall. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality.
+`AICFilter` is an audio processor that enhances user speech by reducing background noise and improving speech clarity. It inherits from `BaseAudioFilter` and processes audio frames in real-time using ai-coustics' speech enhancement technology.
 
 To use AIC, you need a license key. Get started at [ai-coustics.com](https://ai-coustics.com/pipecat).
+
+<Note>
+  This documentation covers **aic-sdk v2.x**. If you're using aic-sdk v1.x, please see the [Migration Guide](#migration-guide-v1-to-v2) section below for upgrading instructions.
+</Note>
 
 ## Installation
 
@@ -29098,24 +29355,67 @@ pip install "pipecat-ai[aic]"
 ## Constructor Parameters
 
 <ParamField type="str">
-  AIC license key
+  ai-coustics license key for authentication. Get your key at [developers.ai-coustics.io](https://developers.ai-coustics.io).
 </ParamField>
 
-<ParamField type="int">
-  Model
+<ParamField type="Optional[str]">
+  Model identifier to download from CDN. Required if `model_path` is not provided.
+  See [artifacts.ai-coustics.io](https://artifacts.ai-coustics.io/) for available models.
+  See the [documentation](https://docs.ai-coustics.com/guides/models) for more detailed information about the models.
+
+  Examples: `"quail-vf-l-16khz"`, `"quail-s-16khz"`, `"quail-l-8khz"`
 </ParamField>
 
-<ParamField type="float">
-  Enhancement level
+<ParamField type="Optional[str]">
+  Path to a local `.aicmodel` file. If provided, `model_id` is ignored and no download occurs.
+  Useful for offline deployments or custom models.
 </ParamField>
 
-<ParamField type="float">
-  Voice gain
+<ParamField type="Optional[Path]">
+  Directory for downloading and caching models. Defaults to a cache directory in the user's home folder.
 </ParamField>
 
-<ParamField type="bool">
-  Enable noise gate
+## Methods
+
+### create\_vad\_analyzer
+
+Creates an `AICVADAnalyzer` that uses the AIC model's built-in voice activity detection.
+
+```python theme={null}
+def create_vad_analyzer(
+    *,
+    speech_hold_duration: Optional[float] = None,
+    minimum_speech_duration: Optional[float] = None,
+    sensitivity: Optional[float] = None,
+) -> AICVADAnalyzer
+```
+
+#### VAD Parameters
+
+<ParamField type="Optional[float]">
+  Controls for how long the VAD continues to detect speech after the audio signal no longer contains speech (in seconds).
+  Range: `0.0` to `100x model window length`, Default (in SDK): `0.05s`
 </ParamField>
+
+<ParamField type="Optional[float]">
+  Controls for how long speech needs to be present in the audio signal before the VAD considers it speech (in seconds).
+  Range: `0.0` to `1.0`, Default (in SDK): `0.0s`
+</ParamField>
+
+<ParamField type="Optional[float]">
+  Controls the sensitivity (energy threshold) of the VAD. This value is used by the VAD as the threshold a speech audio signal's energy has to exceed in order to be considered speech.
+  Formula: `Energy threshold = 10 ** (-sensitivity)`
+  Range: `1.0` to `15.0`, Default (in SDK): `6.0`
+</ParamField>
+
+### get\_vad\_context
+
+Returns the VAD context once the processor is initialized. Can be used to dynamically adjust VAD parameters at runtime.
+
+```python theme={null}
+vad_ctx = aic_filter.get_vad_context()
+vad_ctx.set_parameter(VadParameter.Sensitivity, 8.0)
+```
 
 ## Input Frames
 
@@ -29125,50 +29425,173 @@ pip install "pipecat-ai[aic]"
   ```python theme={null}
   from pipecat.frames.frames import FilterEnableFrame
 
-  # Disable noise reduction
+  # Disable speech enhancement
   await task.queue_frame(FilterEnableFrame(False))
 
-  # Re-enable noise reduction
+  # Re-enable speech enhancement
   await task.queue_frame(FilterEnableFrame(True))
   ```
 </ParamField>
 
-## Usage Example
+## Usage Examples
+
+### Basic Usage with AIC VAD
+
+The recommended approach is to use `AICFilter` with its built-in VAD analyzer:
+
+```python theme={null}
+from pipecat.audio.filters.aic_filter import AICFilter
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.transports.services.daily import DailyTransport, DailyParams
+
+# Create the AIC filter
+aic_filter = AICFilter(
+    license_key=os.environ["AIC_SDK_LICENSE"],
+    model_id="quail-vf-l-16khz",
+)
+
+# Use AIC's integrated VAD
+transport = DailyTransport(
+    room_url,
+    token,
+    "Bot",
+    DailyParams(
+        audio_in_enabled=True,
+        audio_out_enabled=True,
+        audio_in_filter=aic_filter,
+    ),
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=aic_filter.create_vad_analyzer(
+            speech_hold_duration=0.05,
+            minimum_speech_duration=0.0,
+            sensitivity=6.0,
+        ),
+    ),
+)
+```
+
+### Using a Local Model
+
+For offline deployments or when you want to manage model files yourself:
 
 ```python theme={null}
 from pipecat.audio.filters.aic_filter import AICFilter
 
-transport = DailyTransport(
-    room_url,
-    token,
-    "Respond bot",
-    DailyParams(
-        audio_in_filter=AICFilter(), # Enable AIC speech improvement
+aic_filter = AICFilter(
+    license_key=os.environ["AIC_SDK_LICENSE"],
+    model_path="/path/to/your/model.aicmodel",
+)
+```
+
+### Custom Cache Directory
+
+Specify a custom directory for model downloads:
+
+```python theme={null}
+from pipecat.audio.filters.aic_filter import AICFilter
+
+aic_filter = AICFilter(
+    license_key=os.environ["AIC_SDK_LICENSE"],
+    model_id="quail-s-16khz",
+    model_download_dir="/opt/aic-models",
+)
+```
+
+### With Other Transports
+
+The AIC filter works with any Pipecat transport:
+
+```python theme={null}
+from pipecat.audio.filters.aic_filter import AICFilter
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.transports.websocket import FastAPIWebsocketTransport, FastAPIWebsocketParams
+
+aic_filter = AICFilter(
+    license_key=os.environ["AIC_SDK_LICENSE"],
+    model_id="quail-vf-l-16khz",
+)
+
+transport = FastAPIWebsocketTransport(
+    params=FastAPIWebsocketParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
+        audio_in_filter=aic_filter,
+    ),
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=aic_filter.create_vad_analyzer(
+            speech_hold_duration=0.05,
+            sensitivity=6.0,
+        ),
     ),
 )
 ```
+
+<Info>
+  See the [AIC filter example](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zd-interruptible-aicoustics.py) for a complete working example.
+</Info>
+
+## Models
+
+For detailed information about the available models, take a look at the [Models documentation](https://docs.ai-coustics.com/guides/models).
 
 ## Audio Flow
 
 ```mermaid theme={null}
 graph TD
     A[AudioRawFrame] --> B[AICFilter]
-    B[AICFilter] --> C[VAD]
-    C[VAD] --> D[STT]
+    B --> C[AICVADAnalyzer]
+    C --> D[STT]
 ```
+
+The AIC filter enhances audio before it reaches the VAD and STT stages, improving transcription accuracy in noisy environments.
+
+## Migration Guide (v1 to v2)
+
+<Note>
+  For the complete aic-sdk migration guide including all API changes, see the official [Python 1.3 to 2.0 Migration Guide](https://docs.ai-coustics.com/guides/migrations/python-1-3-to-2-0#quick-migration-checklist).
+</Note>
+
+### Migration Steps
+
+1. Update Pipecat to the latest version (aic-sdk v2.x is included automatically).
+2. Remove deprecated constructor parameters (`model_type`, `enhancement_level`, `voice_gain`, `noise_gate_enable`).
+3. Add `model_id` parameter with an appropriate model (e.g., `"quail-vf-l-16khz"`).
+4. Update any runtime VAD adjustments to use the new VAD context API.
+5. We recommend to use `aic_filter.create_vad_analyzer()` for improved accuracy.
+
+### Breaking Changes
+
+| v1 Parameter        | v2 Replacement                            |
+| ------------------- | ----------------------------------------- |
+| `model_type`        | `model_id` (string-based model selection) |
+| `enhancement_level` | Removed (model-specific behavior)         |
+| `voice_gain`        | Removed                                   |
+| `noise_gate_enable` | Removed                                   |
 
 ## Notes
 
-* Requires ai-coustics license key
-* Supports real-time audio processing
-* Handles PCM\_16 audio format
+* Requires ai-coustics license key (get one at [developers.ai-coustics.io](https://developers.ai-coustics.io))
+* Models are automatically downloaded and cached on first use
+* Supports real-time audio processing with low latency
+* Handles PCM\_16 audio format (int16 samples)
 * Thread-safe for pipeline processing
-* Can be dynamically enabled/disabled
-* Maintains audio quality while improving speech, including noise reduction
-* Efficient processing for low latency
+* Can be dynamically enabled/disabled via `FilterEnableFrame`
+* Integrated VAD provides better accuracy than standalone VAD when using enhancement
+* For available models, visit [artifacts.ai-coustics.io](https://artifacts.ai-coustics.io/)
 
 
 # AudioBufferProcessor
@@ -29437,18 +29860,8 @@ transport = DailyTransport(
         audio_in_filter=KoalaFilter(access_key=os.getenv("KOALA_ACCESS_KEY")), # Enable Koala noise reduction
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
-```
-
-## Audio Flow
-
-```mermaid theme={null}
-graph TD
-    A[AudioRawFrame] --> B[KoalaFilter]
-    B[KoalaFilter] --> C[VAD]
-    C[VAD] --> D[STT]
 ```
 
 ## Notes
@@ -29463,112 +29876,6 @@ graph TD
 * Sample rate must match Koala's required sample rate
 
 
-# KrispFilter
-Source: https://docs.pipecat.ai/server/utilities/audio/krisp-filter
-
-Audio noise reduction filter using Krisp AI technology
-
-<Warning>
-  The `KrispFilter` is deprecated and will be removed in a future version.
-  Please use the `KrispVivaFilter`, which is the latest model from Krisp. See
-  the [Krisp VIVA guide](/server/utilities/audio/krisp-viva-filter) for more
-  information.
-</Warning>
-
-## Overview
-
-`KrispFilter` is an audio processor that reduces background noise in real-time audio streams using Krisp AI technology. It inherits from `BaseAudioFilter` and processes audio frames to improve audio quality by removing unwanted noise.
-
-To use Krisp, you need a Krisp SDK license. Get started at [Krisp.ai](https://krisp.ai/developers/).
-
-<Tip>
-  Looking for help getting started with Krisp and Pipecat? Checkout our [Krisp
-  noise cancellation guide](/guides/features/krisp).
-</Tip>
-
-## Installation
-
-The Krisp filter requires additional dependencies:
-
-```bash theme={null}
-pip install "pipecat-ai[krisp]"
-```
-
-## Environment Variables
-
-You need to provide the path to the Krisp model. This can either be done by setting the `KRISP_MODEL_PATH` environment variable or by setting the `model_path` in the constructor.
-
-## Constructor Parameters
-
-<ParamField type="str">
-  Audio sample type format
-</ParamField>
-
-<ParamField type="int">
-  Number of audio channels
-</ParamField>
-
-<ParamField type="str">
-  Path to the Krisp model file.
-
-  You can set the `model_path` directly. Alternatively, you can set the `KRISP_MODEL_PATH` environment variable to the model file path.
-</ParamField>
-
-## Input Frames
-
-<ParamField type="Frame">
-  Specific control frame to toggle filtering on/off
-
-  ```python theme={null}
-  from pipecat.frames.frames import FilterEnableFrame
-
-  # Disable noise reduction
-  await task.queue_frame(FilterEnableFrame(False))
-
-  # Re-enable noise reduction
-  await task.queue_frame(FilterEnableFrame(True))
-  ```
-</ParamField>
-
-## Usage Example
-
-```python theme={null}
-from pipecat.audio.filters.krisp_filter import KrispFilter
-
-transport = DailyTransport(
-    room_url,
-    token,
-    "Respond bot",
-    DailyParams(
-        audio_in_filter=KrispFilter(), # Enable Krisp noise reduction
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
-    ),
-)
-```
-
-## Audio Flow
-
-```mermaid theme={null}
-graph TD
-    A[AudioRawFrame] --> B[KrispFilter]
-    B[KrispFilter] --> C[VAD]
-    C[VAD] --> D[STT]
-```
-
-## Notes
-
-* Requires Krisp SDK and model file to be available
-* Supports real-time audio processing
-* Supports additional features like background voice removal
-* Handles PCM\_16 audio format
-* Thread-safe for pipeline processing
-* Can be dynamically enabled/disabled
-* Maintains audio quality while reducing noise
-* Efficient processing for low latency
-
-
 # KrispVivaFilter
 Source: https://docs.pipecat.ai/server/utilities/audio/krisp-viva-filter
 
@@ -29580,14 +29887,9 @@ Audio noise reduction filter using Krisp VIVA model
 
 To use Krisp, you need a Krisp SDK license. Get started at [Krisp.ai](https://krisp.ai/developers/).
 
-<Tip>
-  Looking for help getting started with Krisp and Pipecat? Checkout our [Krisp
-  noise cancellation guide](/guides/features/krisp).
-</Tip>
-
 ## Installation
 
-See the [Krisp guide](/guides/features/krisp) to learn how to install the Krisp VIVA SDK.
+See the [Krisp guide](/guides/features/krisp-viva) to learn how to install the Krisp VIVA SDK.
 
 ## Environment Variables
 
@@ -29646,7 +29948,6 @@ transport = DailyTransport(
         audio_in_enabled=True,
         audio_in_filter=KrispVivaFilter(), # Enable Krisp noise reduction
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -29700,14 +30001,11 @@ pip install "pipecat-ai[silero]"
 ## Usage Example
 
 ```python theme={null}
-transport = DailyTransport(
-    room_url,
-    token,
-    "Respond bot",
-    DailyParams(
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.5)),
+context = LLMContext(messages)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
     ),
 )
 ```
@@ -29943,7 +30241,7 @@ Properties that configure a Daily room's behavior and features.
 </ResponseField>
 
 <ResponseField name="enable_recording" type="string">
-  Recording settings ("cloud", "local", or "raw-tracks")
+  Recording settings ("cloud", "cloud-audio-only", "local", or "raw-tracks")
 </ResponseField>
 
 <ResponseField name="geo" type="string">
@@ -29972,6 +30270,12 @@ Properties that configure a Daily room's behavior and features.
 
 The class also includes a `sip_endpoint` property that returns the SIP endpoint URI if available.
 
+`enable_recording` also supports `cloud-audio-only`, which records the call server-side and produces an audio-only MPEG-4 file with `.m4a` file extension and content type as `audio/mp4`. This recording setting behaves like `cloud`, except the `layout` options do not apply because there are no video tracks. Note: you can retrieve the resulting `.m4a` recordings via the [Daily REST API](https://docs.daily.co/reference/rest-api/recordings), in the same way you fetch `cloud` recording assets.
+
+<Tip>
+  If you're already using `enable_recording="cloud"` and want to switch to audio-only without changing your code, you can set `force_audio_only_recording: 1` on your Daily domain. This forces all cloud recordings to be audio-only (`.m4a` instead of `.mp4`) and skips recording video tracks even if they are present. This is useful when you want to transition to audio-only recordings immediately while avoiding an application redeploy. Switching `force_audio_only_recording: 0` will allow recording video tracks.
+</Tip>
+
 ```python theme={null}
 import time
 from pipecat.transports.services.helpers.daily_rest import (
@@ -29984,7 +30288,7 @@ properties = DailyRoomProperties(
     exp=time.time() + 3600,  # 1 hour from now
     enable_chat=True,
     enable_emoji_reactions=True,
-    enable_recording="cloud",
+    enable_recording="cloud-audio-only",
     geo="us-west",
     max_participants=50,
     sip=DailyRoomSipParams(display_name="conference"),
@@ -30135,7 +30439,7 @@ Properties for configuring a Daily meeting token.
 </ResponseField>
 
 <ResponseField name="enable_recording" type="string">
-  Recording settings ("cloud", "local", or "raw-tracks")
+  Recording settings ("cloud", "cloud-audio-only", "local", or "raw-tracks")
 </ResponseField>
 
 <ResponseField name="enable_prejoin_ui" type="boolean">
@@ -30169,10 +30473,16 @@ token_params = DailyMeetingTokenParams(
         user_name="John Doe",
         enable_screenshare=True,
         start_video_off=True,
+        enable_recording="cloud-audio-only",
+        start_cloud_recording=True,
         permissions={"canSend": ["video", "audio"]}
     )
 )
 ```
+
+<Warning>
+  Recording type: ‎`cloud` will produce files with a ‎`.mp4` extension, while ‎`cloud-audio-only` will produce files with a ‎`.m4a` extension.
+</Warning>
 
 ## Initialize DailyRESTHelper
 
@@ -31079,6 +31389,12 @@ Source: https://docs.pipecat.ai/server/utilities/filters/stt-mute
 
 Processor for controlling STT muting and interruption handling during bot speech and function calls
 
+<Warning>
+  DEPRECATED: STTMuteFilter has been deprecated in favor of [User Mute
+  Strategies](/server/utilities/turn-management/user-mute-strategies). Configure
+  `user_mute_strategies` on the `LLMUserAggregator` instead.
+</Warning>
+
 ## Overview
 
 `STTMuteFilter` is a general-purpose processor that combines STT muting and interruption control. When active, it prevents both transcription and interruptions during specified conditions (e.g., bot speech, function calls), providing a cleaner conversation flow.
@@ -31687,143 +32003,6 @@ pipeline = Pipeline([
 ```
 
 
-# Interruption Strategies
-Source: https://docs.pipecat.ai/server/utilities/interruption-strategies
-
-Configure when users can interrupt the bot to prevent unwanted interruptions from brief affirmations
-
-## Overview
-
-Interruption strategies allow you to control when users can interrupt the bot during speech. By default, any user speech immediately interrupts the bot, but this can be problematic when users engage in backchanneling—brief vocal responses like "yeah", "okay", or "mm-hmm" that indicate they're listening without intending to interrupt.
-
-With interruption strategies, you can require users to meet specific criteria (such as speaking a minimum number of words or reaching a certain audio volume) before their speech will interrupt the bot, creating a more natural conversation flow.
-
-<Tip>
-  Want to try it out? Check out the [interruption strategies foundational
-  demo](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/42-interruption-config.py)
-</Tip>
-
-## Configuration
-
-Interruption strategies are configured via the `interruption_strategies` parameter in `PipelineParams`. When specified, the normal immediate interruption behavior is replaced with conditional interruption based on your criteria.
-
-<ParamField type="List[BaseInterruptionStrategy]">
-  List of interruption strategies to apply. When multiple strategies are
-  provided, the first one that evaluates to true will trigger the interruption.
-  If empty, normal interruption behavior applies.
-</ParamField>
-
-## Base Strategy Interface
-
-All interruption strategies inherit from `BaseInterruptionStrategy`, which provides a common interface for evaluating interruption conditions.
-
-<ParamField type="async method">
-  Appends audio data to the strategy for analysis. Not all strategies handle
-  audio.
-</ParamField>
-
-<ParamField type="async method">
-  Appends text to the strategy for analysis. Not all strategies handle text.
-</ParamField>
-
-<ParamField type="async method">
-  Called when the user stops speaking to determine if interruption should occur
-  based on accumulated audio and/or text.
-</ParamField>
-
-<ParamField type="async method">
-  Resets accumulated text and/or audio data.
-</ParamField>
-
-## Available Strategies
-
-### MinWordsInterruptionStrategy
-
-Requires users to speak a minimum number of words before interrupting the bot.
-
-<ParamField type="int">
-  Minimum number of words the user must speak to interrupt the bot. Must be
-  greater than 0.
-</ParamField>
-
-```python theme={null}
-from pipecat.audio.interruptions.min_words_interruption_strategy import MinWordsInterruptionStrategy
-
-strategy = MinWordsInterruptionStrategy(min_words=3)
-```
-
-## How It Works
-
-When interruption strategies are configured:
-
-1. **Bot not speaking**: User speech interrupts immediately (normal behavior)
-2. **Bot speaking**: User speech and audio are collected and fed to strategies
-3. **User stops speaking**: Strategies are evaluated in order
-4. **First match wins**: The first strategy that returns `True` triggers interruption
-5. **No matches**: User speech is discarded
-
-The system automatically handles both audio and text input:
-
-* Audio frames (`InputAudioRawFrame`) are fed to `append_audio()`
-* Transcription text is fed to `append_text()`
-* Strategies can use either or both data types
-
-## Usage Examples
-
-### Basic Word Count Interruption
-
-Require users to speak at least 3 words to interrupt the bot:
-
-```python theme={null}
-from pipecat.audio.interruptions.min_words_interruption_strategy import MinWordsInterruptionStrategy
-from pipecat.pipeline.task import PipelineParams, PipelineTask
-
-task = PipelineTask(
-    pipeline,
-    params=PipelineParams(
-        allow_interruptions=True,
-        interruption_strategies=[MinWordsInterruptionStrategy(min_words=3)]
-    )
-)
-```
-
-### Multiple Strategies with Priority
-
-Strategies are evaluated in order, with the first match triggering interruption:
-
-```python theme={null}
-# Prioritize word count, then volume (hypothetical future strategy)
-task = PipelineTask(
-    pipeline,
-    params=PipelineParams(
-        allow_interruptions=True,
-        interruption_strategies=[
-            MinWordsInterruptionStrategy(min_words=2),        # Check first
-            # VolumeInterruptionStrategy(min_volume=0.8),     # Your custom strategy
-        ]
-    )
-)
-```
-
-## Behavior Comparison
-
-| Scenario                                      | Without Strategy         | With MinWordsInterruptionStrategy(min\_words=3) |
-| --------------------------------------------- | ------------------------ | ----------------------------------------------- |
-| User says "okay" while bot speaks             | ✅ Interrupts immediately | ❌ Ignored (only 1 word)                         |
-| User says "yes that's right" while bot speaks | ✅ Interrupts immediately | ✅ Interrupts (3 words)                          |
-| User speaks while bot is silent               | ✅ Processed immediately  | ✅ Processed immediately                         |
-
-## Notes
-
-* Interruption strategies only affect behavior when the bot is actively speaking
-* When the bot is not speaking, user input is processed immediately regardless of strategy configuration
-* The `allow_interruptions` parameter must be `True` for interruption strategies to work
-* User speech that doesn't meet interruption criteria is discarded, not queued
-* Strategies are evaluated in order - first match wins
-* Both audio and text data are automatically fed to strategies based on their implementation
-* Word counting uses simple whitespace splitting for word boundaries
-
-
 # MCPClient
 Source: https://docs.pipecat.ai/server/utilities/mcp/mcp
 
@@ -32283,7 +32462,6 @@ The observer is automatically created when you initialize a `PipelineTask` with 
 ```python theme={null}
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     # Turn tracking is enabled by default
 )
 
@@ -32374,9 +32552,7 @@ from pipecat.observers.loggers.user_bot_latency_log_observer import UserBotLaten
 
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(
-        observers=[UserBotLatencyLogObserver()],
-    ),
+    params=PipelineParams(observers=[UserBotLatencyLogObserver()]),
 )
 ```
 
@@ -32585,6 +32761,14 @@ Many cloud providers offer OpenTelemetry-compatible observability services:
 * **Datadog APM**
 
 Check the OpenTelemetry documentation for specific exporter configurations: [OpenTelemetry Vendors](https://opentelemetry.io/ecosystem/vendors/)
+
+### OpenInference
+
+Arize-ai provides OpenInference instrumentation, compatible with OpenTelemetry.
+
+* [openinference-instrumentation-pipecat](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-pipecat)
+
+See [Observability community integrations](https://docs.pipecat.ai/server/services/community-integrations#observability) for more details.
 
 ## Span Attributes
 
@@ -32796,7 +32980,6 @@ pipeline = Pipeline([
 task = PipelineTask(
     pipeline,
     params=PipelineParams(
-        allow_interruptions=True,
         enable_metrics=True,
         enable_usage_metrics=True,
     ),
@@ -32864,7 +33047,7 @@ Your bot code receives runner arguments that contain everything it needs, includ
 
 ## Pipecat Cloud Ready
 
-The bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using a free transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.
+The bot runner is designed to be cloud-ready, meaning that you can run the same bot code locally and deployed to Pipecat Cloud without any modifications. It automatically handles the differences in transport setup, providing you with the flexibility to test locally using an open source transport, like SmallWebRTCTransport, but run in production using Daily or telephony transports.
 
 ## Building with the Runner
 
@@ -32874,7 +33057,6 @@ Here's the basic structure:
 
 ```python theme={null}
 # Your imports
-from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.runner.types import RunnerArguments
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.transports.network.small_webrtc import SmallWebRTCTransport
@@ -32900,7 +33082,6 @@ async def bot(runner_args: RunnerArguments):
         params=TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         webrtc_connection=runner_args.webrtc_connection,
     )
@@ -32938,7 +33119,6 @@ async def bot(runner_args: RunnerArguments):
             params=DailyParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
         )
 
@@ -32950,7 +33130,6 @@ async def bot(runner_args: RunnerArguments):
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
             webrtc_connection=runner_args.webrtc_connection,
         )
@@ -33018,8 +33197,8 @@ async def bot(runner_args: RunnerArguments):
 
     # Enable production features only when deployed
     if not is_local:
-        from pipecat.audio.filters.krisp_filter import KrispFilter
-        krisp_filter = KrispFilter()
+        from pipecat.audio.filters.krisp_viva_filter import KrispVivaFilter
+        krisp_filter = KrispVivaFilter()
     else:
         krisp_filter = None
 
@@ -33028,10 +33207,9 @@ async def bot(runner_args: RunnerArguments):
         runner_args.token,
         "Pipecat Bot",
         params=DailyParams(
-            audio_in_filter=krisp_filter,  # Krisp filter only in production
+            audio_in_filter=krisp_filter,  # Krisp VIVA filter only in production
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
     )
 ```
@@ -33185,17 +33363,14 @@ transport_params = {
     "daily": lambda: DailyParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
     "webrtc": lambda: TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
     "twilio": lambda: FastAPIWebsocketParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
         # add_wav_header and serializer handled automatically
     ),
 }
@@ -33926,6 +34101,13 @@ Source: https://docs.pipecat.ai/server/utilities/smart-turn/fal-smart-turn
 
 Cloud-hosted Smart Turn detection using Fal.ai
 
+<Warning>
+  DEPRECATED: `FalSmartTurnAnalyzer` is deprecated. Please use
+  [LocalSmartTurnAnalyzerV3](/server/utilities/smart-turn/smart-turn-overview#local-smart-turn)
+  instead, which provides fast CPU inference without requiring external API
+  calls.
+</Warning>
+
 ## Overview
 
 `FalSmartTurnAnalyzer` provides an easy way to use Smart Turn detection via Fal.ai's cloud infrastructure. This implementation requires minimal setup - just an API key - and offers scalable inference without having to manage your own servers.
@@ -33976,7 +34158,13 @@ import aiohttp
 from pipecat.audio.turn.smart_turn.fal_smart_turn import FalSmartTurnAnalyzer
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 async def setup_transport():
     async with aiohttp.ClientSession() as session:
@@ -33985,11 +34173,22 @@ async def setup_transport():
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-                turn_analyzer=FalSmartTurnAnalyzer(
-                    api_key=os.getenv("FAL_SMART_TURN_API_KEY"),
-                    aiohttp_session=session
+            ),
+        )
+
+        # Configure Smart Turn Detection via user turn strategies
+        user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+            context,
+            user_params=LLMUserAggregatorParams(
+                user_turn_strategies=UserTurnStrategies(
+                    stop=[TurnAnalyzerUserTurnStopStrategy(
+                        turn_analyzer=FalSmartTurnAnalyzer(
+                            api_key=os.getenv("FAL_SMART_TURN_API_KEY"),
+                            aiohttp_session=session
+                        )
+                    )]
                 ),
+                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
             ),
         )
 
@@ -34001,10 +34200,12 @@ async def setup_transport():
 You can also deploy the Smart Turn model yourself on Fal.ai and point to your custom deployment:
 
 ```python theme={null}
-turn_analyzer=FalSmartTurnAnalyzer(
-    url="https://fal.run/your-username/your-deployment/raw",
-    api_key=os.getenv("FAL_API_KEY"),
-    aiohttp_session=session
+TurnAnalyzerUserTurnStopStrategy(
+    turn_analyzer=FalSmartTurnAnalyzer(
+        url="https://fal.run/your-username/your-deployment/raw",
+        api_key=os.getenv("FAL_API_KEY"),
+        aiohttp_session=session
+    )
 )
 ```
 
@@ -34045,18 +34246,9 @@ Smart Turn Detection is an advanced feature in Pipecat that determines when a us
   </Card>
 </CardGroup>
 
-Pipecat provides two implementations of Smart Turn Detection:
-
-1. **LocalSmartTurnAnalyzerV3** - Runs inference locally using ONNX. This method is recommended due to the fast CPU inference times in Smart Turn v3.
-2. **FalSmartTurnAnalyzer** - Uses Fal's hosted smart-turn model for inference.
-
-All implementations share the same underlying API and parameters, making it easy to switch between them based on your deployment requirements.
+Pipecat provides `LocalSmartTurnAnalyzerV3` which runs inference locally using ONNX. This is the recommended approach due to the fast CPU inference times in Smart Turn v3.
 
 ## Installation
-
-The Smart Turn Detection feature requires additional dependencies depending on which implementation you choose.
-
-**For local inference:**
 
 ```bash theme={null}
 pip install "pipecat-ai[local-smart-turn-v3]"
@@ -34064,25 +34256,38 @@ pip install "pipecat-ai[local-smart-turn-v3]"
 
 The Smart Turn model weights are bundled with Pipecat, so no need to download these separately.
 
-**For Fal's hosted service inference:**
+## Integration with User Turn Strategies
 
-```bash theme={null}
-pip install "pipecat-ai[remote-smart-turn]"
-```
-
-## Integration with Transport
-
-Smart Turn Detection is integrated into your application by setting one of the available turn analyzers as the `turn_analyzer` parameter in your transport configuration:
+Smart Turn Detection is integrated into your application by configuring a `TurnAnalyzerUserTurnStopStrategy` with `LocalSmartTurnAnalyzerV3` in your context aggregator:
 
 ```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 transport = SmallWebRTCTransport(
     webrtc_connection=webrtc_connection,
     params=TransportParams(
         audio_in_enabled=True,
+    ),
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )]
+        ),
         vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=LocalSmartTurnAnalyzerV3(),
     ),
 )
 ```
@@ -34091,14 +34296,13 @@ transport = SmallWebRTCTransport(
   Smart Turn Detection requires VAD to be enabled and works best when the VAD analyzer is set to a short `stop_secs` value. We recommend 0.2 seconds.
 
   ```python theme={null}
-  audio_in_enabled=True,
   vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2))
   ```
 </Tip>
 
 ## Configuration
 
-All implementations use the same `SmartTurnParams` class to configure behavior:
+The `SmartTurnParams` class configures turn detection behavior:
 
 <ParamField type="float">
   Duration of silence in seconds required before triggering a silence-based end
@@ -34113,54 +34317,6 @@ All implementations use the same `SmartTurnParams` class to configure behavior:
   Maximum allowed segment duration in seconds. For segments longer than this
   value, a rolling window is used.
 </ParamField>
-
-## Remote Smart Turn
-
-The `FalSmartTurnAnalyzer` class uses a remote service for turn detection inference.
-
-### Constructor Parameters
-
-<ParamField type="str">
-  The URL of the remote Smart Turn service
-</ParamField>
-
-<ParamField type="Optional[int]">
-  Audio sample rate (will be set by the transport if not provided)
-</ParamField>
-
-<ParamField type="SmartTurnParams">
-  Configuration parameters for turn detection
-</ParamField>
-
-### Example
-
-```python theme={null}
-import os
-from pipecat.audio.turn.smart_turn.fal_smart_turn import FalSmartTurnAnalyzer
-from pipecat.audio.turn.smart_turn.base_smart_turn import SmartTurnParams
-from pipecat.transports.base_transport import TransportParams
-
-# Get the URL for the remote Smart Turn service
-remote_smart_turn_url = os.getenv("REMOTE_SMART_TURN_URL")
-
-# Create the transport with Smart Turn detection
-transport = SmallWebRTCTransport(
-    webrtc_connection=webrtc_connection,
-    params=TransportParams(
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=FalSmartTurnAnalyzer(
-            url=remote_smart_turn_url,
-            params=SmartTurnParams(
-                stop_secs=3.0,
-                pre_speech_ms=0.0,
-                max_duration_secs=8.0
-            )
-        ),
-    ),
-)
-```
 
 ## Local Smart Turn
 
@@ -34188,16 +34344,35 @@ The `LocalSmartTurnAnalyzerV3` runs inference locally. Version 3 of the model su
 
 ```python theme={null}
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
-# Create the transport with Smart Turn detection
+# Create the transport
 transport = SmallWebRTCTransport(
     webrtc_connection=webrtc_connection,
     params=TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
+    ),
+)
+
+# Configure Smart Turn Detection via user turn strategies
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )]
+        ),
         vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=LocalSmartTurnAnalyzerV3(),
     ),
 )
 ```
@@ -34207,9 +34382,7 @@ transport = SmallWebRTCTransport(
 Smart Turn Detection continuously analyzes audio streams to identify natural turn completion points:
 
 1. **Audio Buffering**: The system continuously buffers audio with timestamps, maintaining a small buffer of pre-speech audio.
-
 2. **VAD Processing**: Voice Activity Detection (using the Silero model) detects when there is a pause in the user's speech.
-
 3. **Smart Turn Analysis**: When VAD detects a pause in speech, the Smart Turn model analyzes the audio from the most recent 8 seconds of the user's turn, and makes a decision about whether the turn is complete or incomplete.
 
 The system includes a fallback mechanism: if a turn is classified as incomplete but silence continues for longer than `stop_secs`, the turn is automatically marked as complete.
@@ -34616,18 +34789,19 @@ async def spell_out_text(text: str, type: str) -> str:
 # is applied
 tts.add_text_transformer(spell_out_text, "credit_card")
 
-# RTVI processor and observer with a text transformer to obfuscate
-# credit card numbers in the bot's output.
-async def obfuscate_credit_card(text: str, type: str) -> str:
+# RTVI is automatically enabled. Use rtvi_observer_params to add
+# a text transformer that obfuscates credit card numbers in client output.
+from pipecat.processors.frameworks.rtvi import RTVIObserverParams
+
+def obfuscate_credit_card(text: str, type: str) -> str:
     return "XXXX-XXXX-XXXX-" + text[-4:]
 
-rtviIn = RTVIProcessor()
-rtviOut = RTVIObserver(rtviIn)
-rtviOut.add_bot_output_transformer(obfuscate_credit_card, "credit_card")
-
-# add the llm_text_processor to your pipeline after the llm and before the tts
-#   rtviIn -> llm -> llm_text_processor -> tts
-# add rtviOut as an observer to your pipeline task
+task = PipelineTask(
+    pipeline,  # llm -> llm_text_processor -> tts
+    rtvi_observer_params=RTVIObserverParams(
+        bot_output_transforms=[("credit_card", obfuscate_credit_card)],
+    ),
+)
 ```
 
 ## How It Works
@@ -34666,6 +34840,14 @@ flowchart TD
 Source: https://docs.pipecat.ai/server/utilities/transcript-processor
 
 Factory for creating and managing conversation transcript processors with shared event handling
+
+<Warning>
+  DEPRECATED: TranscriptProcessor has been deprecated. Use
+  `on_user_turn_stopped` and `on_assistant_turn_stopped` events on the context
+  aggregators to collect transcriptions, see
+  [Transcriptions](/server/utilities/turn-management/transcriptions) for
+  details.
+</Warning>
 
 ## Overview
 
@@ -34818,10 +35000,1459 @@ async def handle_update(processor, frame):
 ```
 
 
+# External Turn Management
+Source: https://docs.pipecat.ai/server/utilities/turn-management/external-turn-management
+
+Handle turn detection externally using UserTurnProcessor or external services
+
+## Overview
+
+In some scenarios, turn detection happens externally, either through a dedicated processor or an external service. Pipecat provides `ExternalUserTurnStrategies`, a [user turn strategy](/server/utilities/turn-management/user-turn-strategies) that defers turn handling to these external sources.
+
+External turn management might be needed when:
+
+* **Multiple context aggregators**: Parallel pipelines with multiple LLMs need a single, shared source of turn events
+* **External services with turn detection**: Services like [Deepgram Flux](/server/services/stt/deepgram) or [Speechmatics](/server/services/stt/speechmatics) provide their own turn detection
+
+In both cases, you need to configure your context aggregators with `ExternalUserTurnStrategies` to defer turn handling to the external source.
+
+## External Services
+
+Some speech-to-text services provide built-in turn detection. When using these services, configure your context aggregator with `ExternalUserTurnStrategies` to let the service handle turn management:
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_turn_strategies import ExternalUserTurnStrategies
+
+# Configure aggregator to use external turn strategies
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=ExternalUserTurnStrategies()
+    ),
+)
+```
+
+## UserTurnProcessor
+
+`UserTurnProcessor` is a frame processor for managing user turn lifecycle when you need a single source of turn events shared across multiple context aggregators. It emits `UserStartedSpeakingFrame` and `UserStoppedSpeakingFrame` frames and handles interruptions.
+
+<Note>
+  `UserTurnProcessor` only manages user turn start and end events. It does not
+  handle transcription aggregation, that remains the responsibility of the
+  context aggregators.
+</Note>
+
+### Constructor Parameters
+
+<ParamField type="UserTurnStrategies">
+  Configured strategies for starting and stopping user turns. See [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) for
+  available options.
+</ParamField>
+
+<ParamField type="float">
+  Timeout in seconds to automatically stop a user turn if no stop strategy
+  triggers.
+</ParamField>
+
+### Event Handlers
+
+`UserTurnProcessor` provides event handlers for turn lifecycle events:
+
+```python theme={null}
+@user_turn_processor.event_handler("on_user_turn_started")
+async def on_user_turn_started(processor, strategy):
+    # Called when a user turn starts
+    pass
+
+@user_turn_processor.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(processor, strategy):
+    # Called when a user turn stops
+    pass
+
+@user_turn_processor.event_handler("on_user_turn_stop_timeout")
+async def on_user_turn_stop_timeout(processor):
+    # Called if no stop strategy triggers before timeout
+    pass
+```
+
+### Usage with Parallel Pipelines
+
+When using parallel pipelines with multiple context aggregators, place `UserTurnProcessor` before the parallel pipeline and configure each context aggregator with `ExternalUserTurnStrategies`:
+
+```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.pipeline.parallel_pipeline import ParallelPipeline
+from pipecat.pipeline.pipeline import Pipeline
+from pipecat.processors.aggregators.llm_context import LLMContext
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_processor import UserTurnProcessor
+from pipecat.turns.user_turn_strategies import ExternalUserTurnStrategies, UserTurnStrategies
+
+# Create the external user turn processor with your preferred strategies
+user_turn_processor = UserTurnProcessor(
+    user_turn_strategies=UserTurnStrategies(
+        stop=[
+            TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )
+        ]
+    ),
+)
+
+# Create contexts for each LLM
+openai_context = LLMContext(openai_messages)
+groq_context = LLMContext(groq_messages)
+
+# Configure aggregators to use external turn strategies
+openai_context_aggregator = LLMContextAggregatorPair(
+    openai_context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=ExternalUserTurnStrategies()
+    ),
+)
+groq_context_aggregator = LLMContextAggregatorPair(
+    groq_context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=ExternalUserTurnStrategies()
+    ),
+)
+
+# Build the pipeline with UserTurnProcessor before the parallel branches
+pipeline = Pipeline(
+    [
+        transport.input(),
+        stt,
+        user_turn_processor,  # Handles turn management for all branches
+        ParallelPipeline(
+            [
+                openai_context_aggregator.user(),
+                openai_llm,
+                transport.output(),
+                openai_context_aggregator.assistant(),
+            ],
+            [
+                groq_context_aggregator.user(),
+                groq_llm,
+                groq_context_aggregator.assistant(),
+            ],
+        ),
+    ]
+)
+```
+
+## Related
+
+* [User Turn Strategies](/server/utilities/turn-management/user-turn-strategies) - Configure turn detection strategies
+* [Parallel Pipeline](/server/pipeline/parallel-pipeline) - Run multiple pipeline branches concurrently
+* [Turn Events](/server/utilities/turn-management/turn-events) - Handle turn lifecycle events
+
+
+# Filter Incomplete User Turns
+Source: https://docs.pipecat.ai/server/utilities/turn-management/filter-incomplete-turns
+
+Use LLM-based detection to suppress responses when users are cut off mid-thought
+
+## Overview
+
+Filter Incomplete Turns is an LLM-powered feature that detects when a user's conversational turn was incomplete (they were cut off or need time to think) and suppresses the bot's response accordingly. Instead of responding to partial input, the bot waits for the user to continue, then automatically re-engages if they remain silent.
+
+This creates more natural conversations by:
+
+* Preventing the bot from responding to incomplete thoughts
+* Giving users time to finish speaking without interruption
+* Automatically prompting users to continue after pauses
+
+## How It Works
+
+When enabled, the LLM outputs a turn completion marker as the first character of every response:
+
+| Marker | Meaning                                              | Bot Behavior                             |
+| ------ | ---------------------------------------------------- | ---------------------------------------- |
+| `✓`    | **Complete** - User finished their thought           | Respond normally                         |
+| `○`    | **Incomplete Short** - User was cut off mid-sentence | Suppress response, wait 5s, then prompt  |
+| `◐`    | **Incomplete Long** - User needs time to think       | Suppress response, wait 10s, then prompt |
+
+The system automatically:
+
+1. Injects turn completion instructions into the LLM's system prompt
+2. Detects markers in the LLM's streaming response
+3. Suppresses bot speech for incomplete turns
+4. Starts a timeout based on the incomplete type
+5. Re-prompts the LLM when the timeout expires
+
+## Configuration
+
+Enable the feature via `LLMUserAggregatorParams` when creating an `LLMContextAggregatorPair`:
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_context import LLMContext
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+
+context = LLMContext(messages)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        filter_incomplete_user_turns=True,
+    ),
+)
+```
+
+### LLMUserAggregatorParams
+
+<ParamField type="bool">
+  Enable LLM-based turn completion detection. When True, the system
+  automatically injects turn completion instructions into the LLM context and
+  configures the LLM service to process turn markers.
+</ParamField>
+
+<ParamField type="UserTurnCompletionConfig">
+  Optional configuration object for customizing turn completion behavior. If not
+  provided, default values are used.
+</ParamField>
+
+## UserTurnCompletionConfig
+
+Use `UserTurnCompletionConfig` to customize timeouts, prompts, and instructions:
+
+```python theme={null}
+from pipecat.turns.user_turn_completion_mixin import UserTurnCompletionConfig
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        filter_incomplete_user_turns=True,
+        user_turn_completion_config=UserTurnCompletionConfig(
+            incomplete_short_timeout=5.0,
+            incomplete_long_timeout=10.0,
+            incomplete_short_prompt="Custom prompt for short pauses...",
+            incomplete_long_prompt="Custom prompt for long pauses...",
+            instructions="Custom turn completion instructions...",
+        ),
+    ),
+)
+```
+
+### Parameters
+
+<ParamField type="float">
+  Seconds to wait after detecting `○` (incomplete short) before re-prompting the
+  LLM. Use shorter values for more responsive re-engagement.
+</ParamField>
+
+<ParamField type="float">
+  Seconds to wait after detecting `◐` (incomplete long) before re-prompting the
+  LLM. Use longer values to give users more time to think.
+</ParamField>
+
+<ParamField type="str">
+  System prompt sent to the LLM when the short timeout expires. Should instruct
+  the LLM to generate a brief, natural prompt encouraging the user to continue.
+</ParamField>
+
+<ParamField type="str">
+  System prompt sent to the LLM when the long timeout expires. Should instruct
+  the LLM to generate a friendly check-in message.
+</ParamField>
+
+<ParamField type="str">
+  Complete turn completion instructions appended to the system prompt. Override
+  this to customize how the LLM determines turn completeness.
+</ParamField>
+
+## Markers Explained
+
+### Complete (✓)
+
+The user has provided enough information for a meaningful response:
+
+```
+User: "I'd go to Japan because I love the culture and food."
+LLM: "✓ Japan is a wonderful choice! The blend of ancient traditions..."
+```
+
+The `✓` marker tells the system to push the response normally. The marker itself is not spoken (marked with `skip_tts`).
+
+### Incomplete Short (○)
+
+The user was cut off mid-sentence and will likely continue soon:
+
+```
+User: "I'd go to Japan because I love"
+LLM: "○"
+```
+
+The `○` marker suppresses the bot's response entirely. After 5 seconds (configurable), the LLM is prompted to re-engage with something like "Go ahead, I'm listening."
+
+### Incomplete Long (◐)
+
+The user needs more time to think or explicitly asked for time:
+
+```
+User: "That's a good question. Let me think..."
+LLM: "◐"
+```
+
+The `◐` marker also suppresses the response, but waits 15 seconds (configurable) before prompting. This handles cases like:
+
+* "Hold on a second"
+* "Let me think about that"
+* "Hmm, that's interesting..."
+
+## Usage Examples
+
+### Basic Usage
+
+Enable turn completion with default settings:
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_context import LLMContext
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+
+messages = [
+    {
+        "role": "system",
+        "content": "You are a helpful assistant...",
+    }
+]
+
+context = LLMContext(messages)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        filter_incomplete_user_turns=True,
+    ),
+)
+```
+
+<Note>
+  You don't need to modify your system prompt. Turn completion instructions are
+  automatically appended when `filter_incomplete_user_turns` is enabled.
+</Note>
+
+### Custom Timeouts
+
+Adjust timeouts for your use case:
+
+```python theme={null}
+from pipecat.turns.user_turn_completion_mixin import UserTurnCompletionConfig
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        filter_incomplete_user_turns=True,
+        user_turn_completion_config=UserTurnCompletionConfig(
+            incomplete_short_timeout=3.0,  # More responsive
+            incomplete_long_timeout=20.0,  # More patient
+        ),
+    ),
+)
+```
+
+### Custom Prompts
+
+Customize what the LLM says when re-engaging:
+
+```python theme={null}
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        filter_incomplete_user_turns=True,
+        user_turn_completion_config=UserTurnCompletionConfig(
+            incomplete_short_prompt="""The user paused briefly.
+Generate a contextual prompt to encourage them to continue.
+Respond with ✓ followed by your message.""",
+            incomplete_long_prompt="""The user has been quiet for a while.
+Generate a friendly check-in.
+Respond with ✓ followed by your message.""",
+        ),
+    ),
+)
+```
+
+<Warning>
+  Custom prompts must instruct the LLM to respond with `✓` followed by the
+  message. This ensures the re-engagement message is spoken normally.
+</Warning>
+
+### With Smart Turn Detection
+
+Combine with smart turn detection for better end-of-turn detection:
+
+```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[
+                TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3()
+                )
+            ]
+        ),
+        filter_incomplete_user_turns=True,
+    ),
+)
+```
+
+<Tip>
+  Smart turn detection helps determine when the user stops speaking, while turn
+  completion filtering determines whether to respond. They work well together
+  for natural conversations.
+</Tip>
+
+## Transcripts
+
+Turn completion markers are automatically stripped from assistant transcripts emitted via the `on_assistant_turn_stopped` event. Your transcript handlers will receive clean text without markers:
+
+```python theme={null}
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    # message.content will be "Japan is a wonderful choice!"
+    # NOT "✓ Japan is a wonderful choice!"
+    print(f"Assistant: {message.content}")
+```
+
+## Supported LLM Services
+
+Turn completion detection works with any LLM service that inherits from `LLMService`:
+
+* OpenAI (`OpenAILLMService`)
+* Anthropic (`AnthropicLLMService`)
+* Google Gemini (`GoogleLLMService`)
+* AWS Bedrock (`AWSLLMService`)
+* And other compatible services
+
+## Graceful Degradation
+
+If the LLM fails to output a turn marker:
+
+1. The system logs a warning indicating markers were expected but not found
+2. The buffered text is pushed normally to avoid losing the response
+3. The conversation continues without interruption
+
+This ensures the feature doesn't break conversations if the LLM occasionally disobeys instructions.
+
+## Related
+
+* [User Turn Strategies](/server/utilities/turn-management/user-turn-strategies) - Configure turn detection
+* [Smart Turn Detection](/server/utilities/smart-turn/smart-turn-overview) - AI-powered end-of-turn detection
+* [Transcriptions](/server/utilities/turn-management/transcriptions) - Working with conversation transcripts
+
+
+# Interruption Strategies
+Source: https://docs.pipecat.ai/server/utilities/turn-management/interruption-strategies
+
+Configure when users can interrupt the bot to prevent unwanted interruptions from brief affirmations
+
+<Warning>
+  DEPRECATED Interruption strategies have been deprecated in favor of [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies).
+</Warning>
+
+## Overview
+
+Interruption strategies allow you to control when users can interrupt the bot during speech. By default, any user speech immediately interrupts the bot, but this can be problematic when users engage in backchanneling—brief vocal responses like "yeah", "okay", or "mm-hmm" that indicate they're listening without intending to interrupt.
+
+With interruption strategies, you can require users to meet specific criteria (such as speaking a minimum number of words or reaching a certain audio volume) before their speech will interrupt the bot, creating a more natural conversation flow.
+
+<Tip>
+  Want to try it out? Check out the [interruption strategies foundational
+  demo](https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/42-interruption-config.py)
+</Tip>
+
+## Configuration
+
+Interruption strategies are configured via the `interruption_strategies` parameter in `PipelineParams`. When specified, the normal immediate interruption behavior is replaced with conditional interruption based on your criteria.
+
+<ParamField type="List[BaseInterruptionStrategy]">
+  List of interruption strategies to apply. When multiple strategies are
+  provided, the first one that evaluates to true will trigger the interruption.
+  If empty, normal interruption behavior applies.
+</ParamField>
+
+## Base Strategy Interface
+
+All interruption strategies inherit from `BaseInterruptionStrategy`, which provides a common interface for evaluating interruption conditions.
+
+<ParamField type="async method">
+  Appends audio data to the strategy for analysis. Not all strategies handle
+  audio.
+</ParamField>
+
+<ParamField type="async method">
+  Appends text to the strategy for analysis. Not all strategies handle text.
+</ParamField>
+
+<ParamField type="async method">
+  Called when the user stops speaking to determine if interruption should occur
+  based on accumulated audio and/or text.
+</ParamField>
+
+<ParamField type="async method">
+  Resets accumulated text and/or audio data.
+</ParamField>
+
+## Available Strategies
+
+### MinWordsInterruptionStrategy
+
+Requires users to speak a minimum number of words before interrupting the bot.
+
+<ParamField type="int">
+  Minimum number of words the user must speak to interrupt the bot. Must be
+  greater than 0.
+</ParamField>
+
+```python theme={null}
+from pipecat.audio.interruptions.min_words_interruption_strategy import MinWordsInterruptionStrategy
+
+strategy = MinWordsInterruptionStrategy(min_words=3)
+```
+
+## How It Works
+
+When interruption strategies are configured:
+
+1. **Bot not speaking**: User speech interrupts immediately (normal behavior)
+2. **Bot speaking**: User speech and audio are collected and fed to strategies
+3. **User stops speaking**: Strategies are evaluated in order
+4. **First match wins**: The first strategy that returns `True` triggers interruption
+5. **No matches**: User speech is discarded
+
+The system automatically handles both audio and text input:
+
+* Audio frames (`InputAudioRawFrame`) are fed to `append_audio()`
+* Transcription text is fed to `append_text()`
+* Strategies can use either or both data types
+
+## Usage Examples
+
+### Basic Word Count Interruption
+
+Require users to speak at least 3 words to interrupt the bot:
+
+```python theme={null}
+from pipecat.audio.interruptions.min_words_interruption_strategy import MinWordsInterruptionStrategy
+from pipecat.pipeline.task import PipelineParams, PipelineTask
+
+task = PipelineTask(
+    pipeline,
+    params=PipelineParams(
+        allow_interruptions=True,
+        interruption_strategies=[MinWordsInterruptionStrategy(min_words=3)]
+    )
+)
+```
+
+### Multiple Strategies with Priority
+
+Strategies are evaluated in order, with the first match triggering interruption:
+
+```python theme={null}
+# Prioritize word count, then volume (hypothetical future strategy)
+task = PipelineTask(
+    pipeline,
+    params=PipelineParams(
+        allow_interruptions=True,
+        interruption_strategies=[
+            MinWordsInterruptionStrategy(min_words=2),        # Check first
+            # VolumeInterruptionStrategy(min_volume=0.8),     # Your custom strategy
+        ]
+    )
+)
+```
+
+## Behavior Comparison
+
+| Scenario                                      | Without Strategy         | With MinWordsInterruptionStrategy(min\_words=3) |
+| --------------------------------------------- | ------------------------ | ----------------------------------------------- |
+| User says "okay" while bot speaks             | ✅ Interrupts immediately | ❌ Ignored (only 1 word)                         |
+| User says "yes that's right" while bot speaks | ✅ Interrupts immediately | ✅ Interrupts (3 words)                          |
+| User speaks while bot is silent               | ✅ Processed immediately  | ✅ Processed immediately                         |
+
+## Notes
+
+* Interruption strategies only affect behavior when the bot is actively speaking
+* When the bot is not speaking, user input is processed immediately regardless of strategy configuration
+* The `allow_interruptions` parameter must be `True` for interruption strategies to work
+* User speech that doesn't meet interruption criteria is discarded, not queued
+* Strategies are evaluated in order - first match wins
+* Both audio and text data are automatically fed to strategies based on their implementation
+* Word counting uses simple whitespace splitting for word boundaries
+
+
+# Transcriptions
+Source: https://docs.pipecat.ai/server/utilities/turn-management/transcriptions
+
+Collect user and assistant conversation transcripts using turn events
+
+## Overview
+
+Pipecat provides a straightforward way to collect conversation transcriptions using [turn events](/server/utilities/turn-management/turn-events). When a user or assistant turn ends, the corresponding event includes the complete transcript for that turn.
+
+The key events for transcription collection are:
+
+* **`on_user_turn_stopped`** - Provides the user's complete transcript via `UserTurnStoppedMessage`
+* **`on_assistant_turn_stopped`** - Provides the assistant's complete transcript via `AssistantTurnStoppedMessage`
+
+## Basic Example
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    UserTurnStoppedMessage,
+    AssistantTurnStoppedMessage,
+)
+
+# Create context aggregator
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
+
+# Handle user transcriptions
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    print(f"[USER] {message.content}")
+
+# Handle assistant transcriptions
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    print(f"[ASSISTANT] {message.content}")
+```
+
+## Saving Transcripts to a File
+
+```python theme={null}
+import json
+from datetime import datetime
+
+transcript_log = []
+
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    transcript_log.append({
+        "role": "user",
+        "content": message.content,
+        "timestamp": message.timestamp,
+        "user_id": message.user_id,
+    })
+
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    transcript_log.append({
+        "role": "assistant",
+        "content": message.content,
+        "timestamp": message.timestamp,
+    })
+
+# Save transcript when session ends
+async def save_transcript():
+    with open(f"transcript_{datetime.now().isoformat()}.json", "w") as f:
+        json.dump(transcript_log, f, indent=2)
+```
+
+## Sending Transcripts to an External Service
+
+```python theme={null}
+import aiohttp
+
+async def send_to_service(role: str, content: str, timestamp: str):
+    async with aiohttp.ClientSession() as session:
+        await session.post(
+            "https://api.example.com/transcripts",
+            json={"role": role, "content": content, "timestamp": timestamp}
+        )
+
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    await send_to_service("user", message.content, message.timestamp)
+
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    await send_to_service("assistant", message.content, message.timestamp)
+```
+
+## Message Types
+
+For details on `UserTurnStoppedMessage` and `AssistantTurnStoppedMessage` fields, see [Turn Events - Message Types](/server/utilities/turn-management/turn-events#message-types).
+
+## Related
+
+* [Turn Events](/server/utilities/turn-management/turn-events) - Complete reference for turn lifecycle events
+* [Saving Transcripts Guide](/guides/fundamentals/saving-transcripts) - Guide for saving conversation transcripts
+
+
+# Turn Events
+Source: https://docs.pipecat.ai/server/utilities/turn-management/turn-events
+
+Handle user and assistant turn lifecycle events for transcriptions and turn tracking
+
+## Overview
+
+Turn events provide hooks into the conversation turn lifecycle, allowing you to know when users and assistants start or stop speaking. These events are emitted by the context aggregators (`LLMUserAggregator` and `LLMAssistantAggregator`) and are particularly useful for:
+
+* **Collecting transcriptions** - Get complete user and assistant transcripts when turns end
+* **Turn tracking** - Monitor conversation flow and timing
+* **Analytics** - Measure turn durations, detect timeouts, and track conversation patterns
+
+## Events Summary
+
+| Event                       | Emitter                | Description                                         |
+| --------------------------- | ---------------------- | --------------------------------------------------- |
+| `on_user_turn_started`      | `user_aggregator`      | User begins speaking                                |
+| `on_user_turn_stopped`      | `user_aggregator`      | User finishes speaking (includes transcript)        |
+| `on_user_turn_stop_timeout` | `user_aggregator`      | User turn ended due to timeout                      |
+| `on_user_turn_idle`         | `user_aggregator`      | User has been idle (not speaking) for timeout       |
+| `on_assistant_turn_started` | `assistant_aggregator` | Assistant begins responding                         |
+| `on_assistant_turn_stopped` | `assistant_aggregator` | Assistant finishes responding (includes transcript) |
+
+## User Turn Events
+
+User turn events are registered on the `user_aggregator` from an `LLMContextAggregatorPair`.
+
+### on\_user\_turn\_started
+
+Fired when a user turn is detected to have started, based on the configured [start strategies](/server/utilities/turn-management/user-turn-strategies#start-strategies).
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_turn_started")
+async def on_user_turn_started(aggregator, strategy):
+    print(f"User started speaking (detected by {strategy})")
+```
+
+**Parameters:**
+
+| Parameter    | Type                        | Description                                |
+| ------------ | --------------------------- | ------------------------------------------ |
+| `aggregator` | `LLMUserAggregator`         | The user aggregator instance               |
+| `strategy`   | `BaseUserTurnStartStrategy` | The strategy that triggered the turn start |
+
+### on\_user\_turn\_stopped
+
+Fired when a user turn is detected to have ended, based on the configured [stop strategies](/server/utilities/turn-management/user-turn-strategies#stop-strategies). This event includes the complete user transcript for the turn.
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    print(f"User said: {message.content}")
+    print(f"Turn started at: {message.timestamp}")
+    if message.user_id:
+        print(f"User ID: {message.user_id}")
+```
+
+**Parameters:**
+
+| Parameter    | Type                       | Description                                 |
+| ------------ | -------------------------- | ------------------------------------------- |
+| `aggregator` | `LLMUserAggregator`        | The user aggregator instance                |
+| `strategy`   | `BaseUserTurnStopStrategy` | The strategy that triggered the turn stop   |
+| `message`    | `UserTurnStoppedMessage`   | Contains the user's transcript and metadata |
+
+### on\_user\_turn\_stop\_timeout
+
+Fired when a user turn times out without any stop strategy triggering. This is a fallback mechanism that ends the turn after a configurable timeout period (default: 5.0 seconds) when the user has stopped speaking according to VAD but no transcription-based stop has occurred. Commonly, this event is used to retrigger the LLM response after the user has stopped speaking.
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_turn_stop_timeout")
+async def on_user_turn_stop_timeout(aggregator):
+    message = {
+        "role": "system",
+        "content": "Continue.",
+    }
+    await user_aggregator.queue_frame(LLMMessagesAppendFrame([message], run_llm=True))
+```
+
+**Parameters:**
+
+| Parameter    | Type                | Description                  |
+| ------------ | ------------------- | ---------------------------- |
+| `aggregator` | `LLMUserAggregator` | The user aggregator instance |
+
+<Note>
+  After `on_user_turn_stop_timeout` fires, `on_user_turn_stopped` will also be
+  called with the accumulated transcript.
+</Note>
+
+### on\_user\_turn\_idle
+
+Fired when the user has been idle (not speaking) for a configured timeout period. This event is useful for re-engaging users who may have stepped away or need a prompt to continue the conversation. The idle timer only starts after the first conversation activity and does not trigger while the bot is speaking or function calls are in progress.
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_turn_idle")
+async def on_user_turn_idle(aggregator):
+    # Re-engage the user with a contextual prompt
+    message = {
+        "role": "system",
+        "content": "The user has been quiet. Politely and briefly ask if they're still there.",
+    }
+    await aggregator.push_frame(LLMMessagesAppendFrame([message], run_llm=True))
+```
+
+**Parameters:**
+
+| Parameter    | Type                | Description                  |
+| ------------ | ------------------- | ---------------------------- |
+| `aggregator` | `LLMUserAggregator` | The user aggregator instance |
+
+<Note>
+  The idle timer resets on user or bot speaking activity, and does not trigger
+  during function call execution. This event can fire multiple times if the user
+  remains idle.
+</Note>
+
+## Assistant Turn Events
+
+Assistant turn events are registered on the `assistant_aggregator` from an `LLMContextAggregatorPair`.
+
+### on\_assistant\_turn\_started
+
+Fired when the assistant begins generating a response.
+
+```python theme={null}
+@assistant_aggregator.event_handler("on_assistant_turn_started")
+async def on_assistant_turn_started(aggregator):
+    print("Assistant started responding")
+```
+
+**Parameters:**
+
+| Parameter    | Type                     | Description                       |
+| ------------ | ------------------------ | --------------------------------- |
+| `aggregator` | `LLMAssistantAggregator` | The assistant aggregator instance |
+
+### on\_assistant\_turn\_stopped
+
+Fired when the assistant finishes responding or is interrupted. This event includes the complete assistant transcript for the turn.
+
+```python theme={null}
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    print(f"Assistant said: {message.content}")
+    print(f"Turn started at: {message.timestamp}")
+```
+
+**Parameters:**
+
+| Parameter    | Type                          | Description                                      |
+| ------------ | ----------------------------- | ------------------------------------------------ |
+| `aggregator` | `LLMAssistantAggregator`      | The assistant aggregator instance                |
+| `message`    | `AssistantTurnStoppedMessage` | Contains the assistant's transcript and metadata |
+
+<Note>
+  This event fires when the LLM response completes, when the user interrupts, or
+  when a user image is appended to context.
+</Note>
+
+## Message Types
+
+### UserTurnStoppedMessage
+
+Contains the user's complete transcript when their turn ends.
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_response_universal import UserTurnStoppedMessage
+```
+
+<ParamField type="str">
+  The complete transcribed text from the user's turn.
+</ParamField>
+
+<ParamField type="str">
+  ISO 8601 timestamp indicating when the user turn started.
+</ParamField>
+
+<ParamField type="Optional[str]">
+  Optional identifier for the user, if available from the transport.
+</ParamField>
+
+### AssistantTurnStoppedMessage
+
+Contains the assistant's complete transcript when their turn ends.
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_response_universal import AssistantTurnStoppedMessage
+```
+
+<ParamField type="str">
+  The complete text content from the assistant's turn.
+</ParamField>
+
+<ParamField type="str">
+  ISO 8601 timestamp indicating when the assistant turn started.
+</ParamField>
+
+## Related
+
+* [Transcriptions](/server/utilities/turn-management/transcriptions) - Collect conversation transcripts using turn events
+* [User Turn Strategies](/server/utilities/turn-management/user-turn-strategies) - Configure turn detection behavior
+* [Turn Tracking Observer](/server/utilities/observers/turn-tracking-observer) - Track complete turn cycles with timing
+
+
+# User Mute Strategies
+Source: https://docs.pipecat.ai/server/utilities/turn-management/user-mute-strategies
+
+Control when user input is suppressed during bot operations
+
+## Overview
+
+User mute strategies control whether incoming user input should be suppressed based on the current system state. They determine when user audio and transcriptions should be muted to prevent interruptions during critical bot operations like initial responses or function calls.
+
+By default, user input is never muted. You can configure mute strategies to automatically suppress user input in specific scenarios, such as while the bot is speaking or during function execution. Custom strategies can also be implemented for specific use cases.
+
+## Configuration
+
+User mute strategies are configured via `LLMUserAggregatorParams` when creating an `LLMContextAggregatorPair`:
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_mute import (
+    MuteUntilFirstBotCompleteUserMuteStrategy,
+    FunctionCallUserMuteStrategy,
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            MuteUntilFirstBotCompleteUserMuteStrategy(),
+            FunctionCallUserMuteStrategy(),
+        ],
+    ),
+)
+```
+
+## Available Strategies
+
+### AlwaysUserMuteStrategy
+
+Mutes user input whenever the bot is speaking. This prevents any interruptions during bot speech.
+
+```python theme={null}
+from pipecat.turns.user_mute import AlwaysUserMuteStrategy
+
+strategy = AlwaysUserMuteStrategy()
+```
+
+**Behavior:**
+
+* Mutes when `BotStartedSpeakingFrame` is received
+* Unmutes when `BotStoppedSpeakingFrame` is received
+
+### FirstSpeechUserMuteStrategy
+
+Mutes user input only during the bot's first speech. After the initial response completes, user input is allowed even while the bot is speaking.
+
+```python theme={null}
+from pipecat.turns.user_mute import FirstSpeechUserMuteStrategy
+
+strategy = FirstSpeechUserMuteStrategy()
+```
+
+**Behavior:**
+
+* Allows user input before bot speaks
+* Mutes during the first bot speech only
+* Unmutes permanently after first speech completes
+
+<Note>
+  Use this strategy when you want to ensure the bot's greeting or initial
+  response isn't interrupted, but allow normal interruptions afterward.
+</Note>
+
+### MuteUntilFirstBotCompleteUserMuteStrategy
+
+Mutes user input from the start of the interaction until the bot completes its first speech. This ensures the bot maintains full control at the beginning of a conversation.
+
+```python theme={null}
+from pipecat.turns.user_mute import MuteUntilFirstBotCompleteUserMuteStrategy
+
+strategy = MuteUntilFirstBotCompleteUserMuteStrategy()
+```
+
+**Behavior:**
+
+* Mutes immediately when the pipeline starts (before bot speaks)
+* Remains muted until first `BotStoppedSpeakingFrame` is received
+* Unmutes permanently after first speech completes
+
+<Note>
+  Unlike `FirstSpeechUserMuteStrategy`, this strategy mutes user input even
+  before the bot starts speaking. Use this when you don't want to process any
+  user input until the bot has delivered its initial message.
+</Note>
+
+### FunctionCallUserMuteStrategy
+
+Mutes user input while function calls are executing. This prevents user interruptions during potentially long-running tool operations.
+
+```python theme={null}
+from pipecat.turns.user_mute import FunctionCallUserMuteStrategy
+
+strategy = FunctionCallUserMuteStrategy()
+```
+
+**Behavior:**
+
+* Mutes when `FunctionCallsStartedFrame` is received
+* Tracks multiple concurrent function calls
+* Unmutes when all function calls complete (via `FunctionCallResultFrame` or `FunctionCallCancelFrame`)
+
+<Tip>
+  This strategy is particularly useful when function calls trigger external API
+  requests or database operations that may take several seconds to complete and
+  you don't want to the user to interrupt the output.
+</Tip>
+
+## Combining Multiple Strategies
+
+Multiple strategies can be combined in a list. The strategies are combined with OR logic—if **any** strategy indicates the user should be muted, user input is suppressed.
+
+```python theme={null}
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            MuteUntilFirstBotCompleteUserMuteStrategy(),  # Mute until first response
+            FunctionCallUserMuteStrategy(),               # Mute during function calls
+        ],
+    ),
+)
+```
+
+In this example, user input is muted:
+
+* From pipeline start until the bot completes its first speech
+* Whenever function calls are executing (even after first speech)
+
+## Usage Examples
+
+### Prevent Interruptions During Greeting
+
+Ensure the bot's greeting plays completely before accepting user input:
+
+```python theme={null}
+from pipecat.turns.user_mute import MuteUntilFirstBotCompleteUserMuteStrategy
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            MuteUntilFirstBotCompleteUserMuteStrategy(),
+        ],
+    ),
+)
+```
+
+### Mute During Function Calls Only
+
+Allow normal interruptions but prevent them during tool execution:
+
+```python theme={null}
+from pipecat.turns.user_mute import FunctionCallUserMuteStrategy
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            FunctionCallUserMuteStrategy(),
+        ],
+    ),
+)
+```
+
+### Never Allow Interruptions
+
+Always mute user input while the bot is speaking:
+
+```python theme={null}
+from pipecat.turns.user_mute import AlwaysUserMuteStrategy
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_mute_strategies=[
+            AlwaysUserMuteStrategy(),
+        ],
+    ),
+)
+```
+
+## Event Handlers
+
+You can register event handlers to be notified when user muting starts or stops. This is useful for observability or providing feedback to users.
+
+### Available Events
+
+#### on\_user\_mute\_started
+
+Called when user input becomes muted due to any active mute strategy.
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_mute_started")
+async def on_user_mute_started(aggregator):
+    logger.info("User mute started")
+```
+
+#### on\_user\_mute\_stopped
+
+Called when user input is unmuted (no active mute strategies).
+
+```python theme={null}
+@user_aggregator.event_handler("on_user_mute_stopped")
+async def on_user_mute_stopped(aggregator):
+    logger.info("User mute stopped")
+```
+
+<Note>
+  These events fire whenever the mute state changes, regardless of which
+  strategy triggered the change. Use them to provide consistent feedback across
+  all mute scenarios.
+</Note>
+
+## Related
+
+* [User Turn Strategies](/server/utilities/turn-management/user-turn-strategies) - Configure turn detection behavior
+* [User Input Muting Guide](/guides/fundamentals/user-input-muting) - Guide for controlling user input
+
+
+# User Turn Strategies
+Source: https://docs.pipecat.ai/server/utilities/turn-management/user-turn-strategies
+
+Configure how user turns are detected and managed in conversations
+
+## Overview
+
+User turn strategies provide fine-grained control over how user speaking turns are detected in conversations. They determine when a user's turn starts (user begins speaking) and when it stops (user finishes speaking and expects a response).
+
+By default, Pipecat uses a combination of VAD (Voice Activity Detection) and transcription-based detection:
+
+* **Start**: VAD detection or transcription received
+* **Stop**: Transcription received after VAD indicates silence
+
+You can customize this behavior by providing your own strategies for more sophisticated turn detection, such as requiring a minimum number of words before triggering a turn, or using AI-powered turn detection models.
+
+## How It Works
+
+1. **Turn Start Detection**: When any start strategy triggers, the user aggregator:
+
+   * Marks the start of a user turn
+   * Optionally emits `UserStartedSpeakingFrame`
+   * Optionally emits an interruption frame (if the bot is speaking)
+
+2. **During User Turn**: The aggregator collects transcriptions and audio frames.
+
+3. **Turn Stop Detection**: When a stop strategy triggers, the user aggregator:
+
+   * Marks the end of the user turn
+   * Emits `UserStoppedSpeakingFrame`
+   * Pushes the aggregated user message to the LLM context
+
+4. **Timeout Handling**: If no stop strategy triggers within `user_turn_stop_timeout` seconds (default: 5.0), the turn is automatically ended.
+
+## Configuration
+
+User turn strategies are configured via `LLMUserAggregatorParams` when creating an `LLMContextAggregatorPair`:
+
+```python theme={null}
+from pipecat.processors.aggregators.llm_context import LLMContext
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
+context = LLMContext(messages)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            start=[...],  # List of start strategies
+            stop=[...],   # List of stop strategies
+        ),
+    ),
+)
+```
+
+## Start Strategies
+
+Start strategies determine when a user's turn begins. Multiple strategies can be provided, and the first one to trigger will signal the start of a user turn.
+
+### Base Parameters
+
+All start strategies inherit these parameters:
+
+<ParamField type="bool">
+  If True, the user aggregator will emit an interruption frame when the user
+  turn starts, allowing the user to interrupt the bot.
+</ParamField>
+
+<ParamField type="bool">
+  If True, the user aggregator will emit frames indicating when the user starts
+  speaking. Disable this if another component (e.g., an STT service) already
+  generates these frames.
+</ParamField>
+
+### VADUserTurnStartStrategy
+
+Triggers a user turn start based on Voice Activity Detection. This is the most responsive strategy, detecting speech as soon as the VAD indicates the user has started speaking.
+
+```python theme={null}
+from pipecat.turns.user_start import VADUserTurnStartStrategy
+
+strategy = VADUserTurnStartStrategy()
+```
+
+### TranscriptionUserTurnStartStrategy
+
+Triggers a user turn start when a transcription is received. This serves as a fallback for scenarios where VAD-based detection fails (e.g., when the user speaks very softly) but the STT service still produces transcriptions.
+
+<ParamField type="bool">
+  Whether to trigger on interim (partial) transcription frames for earlier
+  detection.
+</ParamField>
+
+```python theme={null}
+from pipecat.turns.user_start import TranscriptionUserTurnStartStrategy
+
+strategy = TranscriptionUserTurnStartStrategy(use_interim=True)
+```
+
+### MinWordsUserTurnStartStrategy
+
+Requires the user to speak a minimum number of words before triggering a turn start. This is useful for preventing brief utterances like "okay" or "yeah" from triggering responses.
+
+<ParamField type="int">
+  Minimum number of spoken words required to trigger the start of a user turn.
+</ParamField>
+
+<ParamField type="bool">
+  Whether to consider interim transcription frames for earlier detection.
+</ParamField>
+
+```python theme={null}
+from pipecat.turns.user_start import MinWordsUserTurnStartStrategy
+
+# Require at least 3 words to start a turn
+strategy = MinWordsUserTurnStartStrategy(min_words=3)
+```
+
+<Note>
+  When the bot is not speaking, this strategy will trigger after just 1 word.
+  The `min_words` threshold only applies when the bot is actively speaking,
+  preventing short affirmations from interrupting the bot.
+</Note>
+
+### ExternalUserTurnStartStrategy
+
+Delegates turn start detection to an external processor. This strategy listens for `UserStartedSpeakingFrame` frames emitted by other components in the pipeline (such as speech-to-speech services).
+
+```python theme={null}
+from pipecat.turns.user_start import ExternalUserTurnStartStrategy
+
+strategy = ExternalUserTurnStartStrategy()
+```
+
+<Note>
+  This strategy automatically sets `enable_interruptions=False` and
+  `enable_user_speaking_frames=False` since these are expected to be handled by
+  the external processor.
+</Note>
+
+## Stop Strategies
+
+Stop strategies determine when a user's turn ends and the bot should respond.
+
+### Base Parameters
+
+All stop strategies inherit these parameters:
+
+<ParamField type="bool">
+  If True, the aggregator will emit frames indicating when the user stops
+  speaking. Disable this if another component already generates these frames.
+</ParamField>
+
+### TranscriptionUserTurnStopStrategy
+
+The default stop strategy that signals the end of a user turn when transcription is received and VAD indicates silence.
+
+<ParamField type="float">
+  A short delay in seconds used to handle consecutive or slightly delayed
+  transcriptions gracefully.
+</ParamField>
+
+```python theme={null}
+from pipecat.turns.user_stop import TranscriptionUserTurnStopStrategy
+
+strategy = TranscriptionUserTurnStopStrategy(timeout=0.5)
+```
+
+### TurnAnalyzerUserTurnStopStrategy
+
+Uses an AI-powered turn detection model to determine when the user has finished speaking. This provides more intelligent end-of-turn detection that can understand conversational context.
+
+<ParamField type="BaseTurnAnalyzer">
+  The turn detection analyzer instance to use for end-of-turn detection.
+</ParamField>
+
+<ParamField type="float">
+  A short delay in seconds used to handle consecutive or slightly delayed
+  transcriptions.
+</ParamField>
+
+```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+
+strategy = TurnAnalyzerUserTurnStopStrategy(
+    turn_analyzer=LocalSmartTurnAnalyzerV3()
+)
+```
+
+<Tip>
+  See the [Smart Turn
+  Detection](/server/utilities/smart-turn/smart-turn-overview) documentation for
+  more information on available turn analyzers.
+</Tip>
+
+### ExternalUserTurnStopStrategy
+
+Delegates turn stop detection to an external processor. This strategy listens for `UserStoppedSpeakingFrame` frames emitted by other components in the pipeline.
+
+<ParamField type="float">
+  A short delay in seconds used to handle consecutive or slightly delayed
+  transcriptions.
+</ParamField>
+
+```python theme={null}
+from pipecat.turns.user_stop import ExternalUserTurnStopStrategy
+
+strategy = ExternalUserTurnStopStrategy()
+```
+
+## UserTurnStrategies
+
+Container for configuring user turn start and stop strategies.
+
+<ParamField type="List[BaseUserTurnStartStrategy]">
+  List of strategies used to detect when the user starts speaking. The first
+  strategy to trigger will signal the start of the user's turn.
+</ParamField>
+
+<ParamField type="List[BaseUserTurnStopStrategy]">
+  List of strategies used to detect when the user stops speaking and expects a
+  response.
+</ParamField>
+
+## ExternalUserTurnStrategies
+
+A convenience class that preconfigures `UserTurnStrategies` with external strategies for both start and stop detection. Use this when an external processor (such as a speech-to-speech service) controls turn management.
+
+```python theme={null}
+from pipecat.turns.user_turn_strategies import ExternalUserTurnStrategies
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=ExternalUserTurnStrategies(),
+    ),
+)
+```
+
+## Usage Examples
+
+### Default Behavior
+
+The default configuration uses VAD and transcription for turn detection:
+
+```python theme={null}
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
+# This is equivalent to the default behavior
+strategies = UserTurnStrategies(
+    start=[VADUserTurnStartStrategy(), TranscriptionUserTurnStartStrategy()],
+    stop=[TranscriptionUserTurnStopStrategy()],
+)
+```
+
+### Minimum Words for Interruption
+
+Require users to speak at least 3 words before they can interrupt the bot:
+
+```python theme={null}
+from pipecat.turns.user_start import MinWordsUserTurnStartStrategy
+from pipecat.turns.user_stop import TranscriptionUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            start=[MinWordsUserTurnStartStrategy(min_words=3)],
+            stop=[TranscriptionUserTurnStopStrategy()],
+        ),
+    ),
+)
+```
+
+### Local Smart Turn Detection
+
+Use a local turn detection model instead of a cloud service:
+
+```python theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[
+                TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3()
+                )
+            ]
+        ),
+    ),
+)
+```
+
+## Related
+
+* [User Input Muting](/guides/fundamentals/user-input-muting) - Control when user input is ignored
+* [Smart Turn Detection](/server/utilities/smart-turn/smart-turn-overview) - AI-powered turn detection
+
+
 # UserIdleProcessor
 Source: https://docs.pipecat.ai/server/utilities/user-idle-processor
 
 A processor that monitors user inactivity and triggers callbacks after specified timeout periods
+
+<Warning>
+  DEPRECATED: UserIdleProcessor has been deprecated. Use `user_idle_timeout`
+  parameter when creating your aggregator, see [Detecting Idle
+  Users](/guides/fundamentals/detecting-user-idle) for details.
+</Warning>
 
 The `UserIdleProcessor` is a specialized frame processor that monitors user activity in a conversation and executes callbacks when the user becomes idle. It's particularly useful for maintaining engagement by detecting periods of user inactivity and providing escalating responses to inactivity.
 

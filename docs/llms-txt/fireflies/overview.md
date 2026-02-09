@@ -6,59 +6,49 @@
 
 # Source: https://docs.fireflies.ai/askfred/overview.md
 
-# Source: https://docs.fireflies.ai/realtime-api/overview.md
-
-# Source: https://docs.fireflies.ai/mcp-tools/overview.md
-
-# Source: https://docs.fireflies.ai/examples/overview.md
-
-# Source: https://docs.fireflies.ai/askfred/overview.md
-
-# Source: https://docs.fireflies.ai/realtime-api/overview.md
-
-# Source: https://docs.fireflies.ai/examples/overview.md
-
-# Source: https://docs.fireflies.ai/realtime-api/overview.md
-
-# Source: https://docs.fireflies.ai/examples/overview.md
-
-# Source: https://docs.fireflies.ai/realtime-api/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 
-> Learn about Fireflies.ai's Realtime API for live transcription
+> Use AI to intelligently query and analyze your meeting transcripts with natural language
 
-The Fireflies.ai Realtime API allows your application to receive **live transcription events** over WebSockets. This enables building interactive features such as live captioning, transcription overlays, and real-time analysis as users speak.
+## What is AskFred?
 
-<Warning>
-  The Realtime API is currently in <b>beta</b>. Features and endpoints may change. We welcome your feedback as we continue to improve this API.
-</Warning>
+AskFred is Fireflies' AI-powered meeting assistant that lets you ask natural language questions about your meeting transcripts. Query individual meetings or search across multiple meetings to get intelligent, context-aware answers.
 
-## How It Works
+### Key Capabilities
 
-The Realtime API uses WebSocket connections to deliver transcription data as it's generated.
+**Intelligent Q\&A** - Ask questions in natural language and receive comprehensive answers with smart follow-up suggestions
 
-## Flow
+**Contextual Threads** - Maintain conversations where follow-up questions preserve context from previous exchanges
 
-1. **Authenticate**: Connect using a valid API token and transcript ID.
-2. **Listen**: Once connected, you'll start receiving transcription events in real time.
-3. **React**: Update your UI or process transcription events as they arrive.
+**Multi-Meeting Analysis** - Query across meetings using filters to identify patterns and aggregate insights
 
-## Features
+## API Operations
 
-* **Low Latency**: Data is streamed as soon as it’s transcribed.
-* **Event-Based**: Receive structured events for easy handling.
-* **Token-Based Authentication**: Secure connections with scoped access.
-* **Incremental Transcription**: Receive transcript segments progressively.
+AskFred provides a comprehensive set of GraphQL operations:
 
-## Additional Resources
+### Queries
+
+* [askfred\_threads](/graphql-api/query/askfred-threads) - List all conversation threads
+* [askfred\_thread](/graphql-api/query/askfred-thread) - Get specific thread with full history
+
+### Mutations
+
+* [createAskFredThread](/graphql-api/mutation/create-askfred-thread) - Start a new conversation
+* [continueAskFredThread](/graphql-api/mutation/continue-askfred-thread) - Add follow-up questions
+* [deleteAskFredThread](/graphql-api/mutation/delete-askfred-thread) - Remove threads
+
+## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Active Meetings" icon="link" href="/graphql-api/query/active-meetings">
-    Query meetings currently in progress
+  <Card title="Quickstart" icon="rocket" href="/askfred/quickstart">
+    Create your first thread and start querying meetings
   </Card>
 
-  <Card title="Event Schema" icon="link" href="/realtime-api/event-schema">
-    Schema for Realtime Events
+  <Card title="Use Cases" icon="lightbulb" href="/askfred/use-cases">
+    Example questions and industry-specific scenarios
   </Card>
 </CardGroup>

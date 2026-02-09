@@ -7,9 +7,9 @@ slug: mix-github-actions-aws-ecs
 
 AWS EC2 Container Service (ECS) is a managed container orchestration environment that while not as flexible as Kubernetes, it provides some great integration if you are already in an AWS environment, especially for hosting HTTP APIs. However, when just getting started on a project, setting up Application Load Balancers, CloudFront CDN, AutoScaling Groups etc can be a high entry point from a monthly cost and complexity standpoint. It also provides an alternative to 'serverless' solutions that avoid issues like cold starts as well as polluting any of your code with cloud provider specific implementation.
 
-We've created a new `x mix release-ecr-aws` template to try and help solo developers and small teams that think they might use a more mature AWS ECS setup in the future, but don't have the budget or just want a cheap host for a prototype/demo. Once your product grows, integrating all the other AWS infrastructure is a smaller and clearer path than trying to do it from the very beginning, not knowing if you'll ever need it.
+We've created a new `npx add-in release-ecr-aws` template to try and help solo developers and small teams that think they might use a more mature AWS ECS setup in the future, but don't have the budget or just want a cheap host for a prototype/demo. Once your product grows, integrating all the other AWS infrastructure is a smaller and clearer path than trying to do it from the very beginning, not knowing if you'll ever need it.
 
-We're also going to leverage the powerful GitHub Actions platform so that the distance between your CI environment and code is as small as possible. The `x mix release-ecr-aws` template provides a starting point for your ServiceStack application to have a CI setup and deploy to a **single** server in ECS to keep costs down. This is good for prototyping an idea or any low request rate applications where you think you'll move into a more standard ECS infrastructure pattern as your application usage increases.
+We're also going to leverage the powerful GitHub Actions platform so that the distance between your CI environment and code is as small as possible. The `npx add-in release-ecr-aws` template provides a starting point for your ServiceStack application to have a CI setup and deploy to a **single** server in ECS to keep costs down. This is good for prototyping an idea or any low request rate applications where you think you'll move into a more standard ECS infrastructure pattern as your application usage increases.
 
 ### Hosting setup
 
@@ -49,18 +49,18 @@ Once created, follow the GitHub wizard and clone it to your local machine.
 
 Then you can use the following commands to get your new ServiceStack application setup in GitHub with GitHub Actions.
 > Choose the appropriate web template from `x new` for your needs as most templates are compatible GitHub Actions `x mix` templates.
-> `x new web` will create a project in an existing directory, `x new web WebApp` will create the project in a new `WebApp` folder.
+> `npx create-net web` will create a project in an existing directory, `npx create-net web WebApp` will create the project in a new `WebApp` folder.
 
 ```
 git clone <Git URL>
 cd WebApp
-x new web
+npx create-net web
 git add -A
 git commit -m "Initial commit"
 git branch -M main
 git remote add origin <copy git URL from GitHub page>
 git push -u origin main
-x mix build release-ecr-aws
+npx add-in build release-ecr-aws
 git add -A
 git commit -m "Add GitHub Action files"
 git push
@@ -189,7 +189,7 @@ If both these are showing up, our AWS environment should be ready to deploy the 
 
 ### Setup Repository Secrets
 
-The GitHub Action templates added using `x mix release-ecr-aws` get their input from GitHub Secrets. These can be added to the repository or to your organization if there are common ones you are using in multiple repositories. 
+The GitHub Action templates added using `npx add-in release-ecr-aws` get their input from GitHub Secrets. These can be added to the repository or to your organization if there are common ones you are using in multiple repositories. 
 
 - AWS_ACCESS_KEY_ID - AWS access key for programmatic access to AWS APIs.
 - AWS_SECRET_ACCESS_KEY - AWS access secrets for programmatic access to AWS APIs.

@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/accounts/domain-verification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Domain Verification
+
+> Verify your organization's domain ownership with DNS TXT records to enable SSO, user management, and automatic team invitations in Windsurf.
 
 Domain verification is the process of proving that your organization owns or controls a specific domain. This prevents spoofing or unauthorized use of your domain and enables secure organization-level features in Windsurf, such as SSO and user management.
 

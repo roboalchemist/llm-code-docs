@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/projects/management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Management
 
 > How to manage your Envoyer projects.
@@ -30,9 +34,9 @@ From here, you can change the project settings, source control settings, and del
 
 When your site has finished deploying, Envoyer can ping it to ensure that it is still available. Health checks are performed from three locations:
 
-*   New York
-*   London
-*   Singapore
+* New York
+* London
+* Singapore
 
 If you have configured notifications on your project, Envoyer will notify these channels of the result of the health check.
 
@@ -44,9 +48,9 @@ If you have configured notifications on your project, Envoyer will notify these 
 
 If your application firewall requires you to allow access from the health check monitors by IP address, you should allow the following IP addresses so that Envoyer can ping your URL:
 
-*   New York: `198.199.84.22`
-*   London: `167.71.140.19`
-*   Singapore: `167.71.208.72`
+* New York: `198.199.84.22`
+* London: `167.71.140.19`
+* Singapore: `167.71.208.72`
 
 ### Source Control
 

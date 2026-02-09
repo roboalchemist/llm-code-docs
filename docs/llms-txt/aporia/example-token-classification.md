@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/nlp/example-token-classification.md
 
-# Source: https://docs.aporia.com/nlp/example-token-classification.md
-
-# Source: https://docs.aporia.com/v1/nlp/example-token-classification.md
-
 # Example: Token Classification
 
 Token classification is a natural language understanding task in which a label is assigned to some tokens in a text&#x20;

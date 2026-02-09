@@ -6,14 +6,6 @@
 
 # Source: https://mui.com/x/react-charts/toolbar.md
 
-# Source: https://mui.com/x/api/data-grid/toolbar.md
-
-# Source: https://mui.com/x/react-data-grid/components/toolbar.md
-
-# Source: https://mui.com/x/api/charts/toolbar.md
-
-# Source: https://mui.com/x/react-charts/toolbar.md
-
 ---
 title: Charts - Toolbar
 productId: x-charts

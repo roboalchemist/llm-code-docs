@@ -2,17 +2,9 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
 
-# Source: https://polar.sh/docs/api-reference/license-keys/validate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
-
-# Source: https://polar.sh/docs/api-reference/license-keys/validate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
-
-# Source: https://polar.sh/docs/api-reference/license-keys/validate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Validate License Key
 
@@ -23,407 +15,492 @@
 > If you plan to validate a license key on a server, use the `/v1/license-keys/validate`
 > endpoint instead.
 
+
+
 ## OpenAPI
 
 ````yaml post /v1/customer-portal/license-keys/validate
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customer-portal/license-keys/validate
-  method: post
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              key:
-                allOf:
-                  - type: string
-                    title: Key
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-              activation_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Activation Id
-              benefit_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The benefit ID.
-                        x-polar-selector-widget:
-                          displayProperty: description
-                          resourceName: Benefit
-                          resourceRoot: /v1/benefits
-                      - type: 'null'
-                    title: Benefit Id
-              customer_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Customer Id
-              increment_usage:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Increment Usage
-              conditions:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Conditions
-                    description: >-
-                      Key-value object allowing you to set conditions that must
-                      match when validating the license key.
+  /v1/customer-portal/license-keys/validate:
+    post:
+      tags:
+        - customer_portal
+        - license_keys
+        - public
+      summary: Validate License Key
+      description: >-
+        Validate a license key.
 
 
-                      The key must be a string with a maximum length of **40
-                      characters**.
+        > This endpoint doesn't require authentication and can be safely used on
+        a public
 
-                      The value must be either:
+        > client, like a desktop application or a mobile app.
 
+        > If you plan to validate a license key on a server, use the
+        `/v1/license-keys/validate`
 
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-            required: true
-            title: LicenseKeyValidate
-            refIdentifier: '#/components/schemas/LicenseKeyValidate'
-            requiredProperties:
-              - key
-              - organization_id
-        examples:
-          example:
-            value:
-              key: <string>
-              organization_id: <string>
-              activation_id: <string>
-              benefit_id: <string>
-              customer_id: <string>
-              increment_usage: 123
-              conditions: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.LicenseKeys.Validate(ctx, components.LicenseKeyValidate{\n        Key: \"<key>\",\n        OrganizationID: \"<value>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.ValidatedLicenseKey != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
-
-
-          with Polar() as polar:
-
-              res = polar.customer_portal.license_keys.validate(request={
-                  "key": "<key>",
-                  "organization_id": "<value>",
-              })
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar();
-
-          async function run() {
-            const result = await polar.customerPortal.licenseKeys.validate({
-              key: "<key>",
-              organizationId: "<value>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-          use Polar\Models\Components;
-
-          $sdk = Polar\Polar::builder()->build();
-
-          $request = new Components\LicenseKeyValidate(
-              key: '<key>',
-              organizationId: '<value>',
-          );
-
-          $response = $sdk->customerPortal->licenseKeys->validate(
-              request: $request
-          );
-
-          if ($response->validatedLicenseKey !== null) {
-              // handle response
-          }
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the object.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-              customer_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Customer Id
-              customer:
-                allOf:
-                  - $ref: '#/components/schemas/LicenseKeyCustomer'
-              benefit_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Benefit Id
-                    description: The benefit ID.
-                    x-polar-selector-widget:
-                      displayProperty: description
-                      resourceName: Benefit
-                      resourceRoot: /v1/benefits
-              key:
-                allOf:
-                  - type: string
-                    title: Key
-              display_key:
-                allOf:
-                  - type: string
-                    title: Display Key
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/LicenseKeyStatus'
-              limit_activations:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Limit Activations
-              usage:
-                allOf:
-                  - type: integer
-                    title: Usage
-              limit_usage:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Limit Usage
-              validations:
-                allOf:
-                  - type: integer
-                    title: Validations
-              last_validated_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Last Validated At
-              expires_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Expires At
-              activation:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/LicenseKeyActivationBase'
-                      - type: 'null'
-            title: ValidatedLicenseKey
-            refIdentifier: '#/components/schemas/ValidatedLicenseKey'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - organization_id
-              - customer_id
-              - customer
-              - benefit_id
-              - key
-              - display_key
-              - status
-              - limit_activations
-              - usage
-              - limit_usage
-              - validations
-              - last_validated_at
-              - expires_at
-        examples:
-          example:
-            value:
-              id: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              modified_at: '2023-11-07T05:31:56Z'
-              organization_id: <string>
-              customer_id: <string>
-              customer:
-                id: 992fae2a-2a17-4b7a-8d9e-e287cf90131b
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-                metadata: {}
-                external_id: usr_1337
-                email: customer@example.com
-                email_verified: true
-                name: John Doe
-                billing_address:
-                  line1: <string>
-                  line2: <string>
-                  postal_code: <string>
-                  city: <string>
-                  state: <string>
-                  country: US
-                tax_id:
-                  - '911144442'
-                  - us_ein
-                organization_id: 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                deleted_at: '2023-11-07T05:31:56Z'
-                avatar_url: https://www.gravatar.com/avatar/xxx?d=404
-              benefit_id: <string>
-              key: <string>
-              display_key: <string>
-              status: granted
-              limit_activations: 123
-              usage: 123
-              limit_usage: 123
-              validations: 123
-              last_validated_at: '2023-11-07T05:31:56Z'
-              expires_at: '2023-11-07T05:31:56Z'
-              activation:
-                id: <string>
-                license_key_id: <string>
-                label: <string>
-                meta: {}
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-        description: Successful Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: License key not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+        > endpoint instead.
+      operationId: customer_portal:license_keys:validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseKeyValidate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatedLicenseKey'
+        '404':
+          description: License key not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - {}
 components:
   schemas:
+    LicenseKeyValidate:
+      properties:
+        key:
+          type: string
+          title: Key
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+        activation_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Activation Id
+        benefit_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The benefit ID.
+              x-polar-selector-widget:
+                displayProperty: description
+                resourceName: Benefit
+                resourceRoot: /v1/benefits
+            - type: 'null'
+          title: Benefit Id
+        customer_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Customer Id
+        increment_usage:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Increment Usage
+        conditions:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Conditions
+          description: >-
+            Key-value object allowing you to set conditions that must match when
+            validating the license key.
+
+
+            The key must be a string with a maximum length of **40 characters**.
+
+            The value must be either:
+
+
+            * A string with a maximum length of **500 characters**
+
+            * An integer
+
+            * A floating-point number
+
+            * A boolean
+
+
+            You can store up to **50 key-value pairs**.
+      type: object
+      required:
+        - key
+        - organization_id
+      title: LicenseKeyValidate
+    ValidatedLicenseKey:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+        customer_id:
+          type: string
+          format: uuid4
+          title: Customer Id
+        customer:
+          $ref: '#/components/schemas/LicenseKeyCustomer'
+        benefit_id:
+          type: string
+          format: uuid4
+          title: Benefit Id
+          description: The benefit ID.
+          x-polar-selector-widget:
+            displayProperty: description
+            resourceName: Benefit
+            resourceRoot: /v1/benefits
+        key:
+          type: string
+          title: Key
+        display_key:
+          type: string
+          title: Display Key
+        status:
+          $ref: '#/components/schemas/LicenseKeyStatus'
+        limit_activations:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Limit Activations
+        usage:
+          type: integer
+          title: Usage
+        limit_usage:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Limit Usage
+        validations:
+          type: integer
+          title: Validations
+        last_validated_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Last Validated At
+        expires_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Expires At
+        activation:
+          anyOf:
+            - $ref: '#/components/schemas/LicenseKeyActivationBase'
+            - type: 'null'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - organization_id
+        - customer_id
+        - customer
+        - benefit_id
+        - key
+        - display_key
+        - status
+        - limit_activations
+        - usage
+        - limit_usage
+        - validations
+        - last_validated_at
+        - expires_at
+      title: ValidatedLicenseKey
+    ResourceNotFound:
+      properties:
+        error:
+          type: string
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    LicenseKeyCustomer:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the customer.
+          examples:
+            - 992fae2a-2a17-4b7a-8d9e-e287cf90131b
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        external_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: External Id
+          description: >-
+            The ID of the customer in your system. This must be unique within
+            the organization. Once set, it can't be updated.
+          examples:
+            - usr_1337
+        email:
+          type: string
+          title: Email
+          description: >-
+            The email address of the customer. This must be unique within the
+            organization.
+          examples:
+            - customer@example.com
+        email_verified:
+          type: boolean
+          title: Email Verified
+          description: >-
+            Whether the customer email address is verified. The address is
+            automatically verified when the customer accesses the customer
+            portal using their email address.
+          examples:
+            - true
+        type:
+          anyOf:
+            - $ref: '#/components/schemas/CustomerType'
+            - type: 'null'
+          description: >-
+            The type of customer: 'individual' for single users, 'team' for
+            customers with multiple members. Legacy customers may have NULL type
+            which is treated as 'individual'.
+          examples:
+            - individual
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+          description: The name of the customer.
+          examples:
+            - John Doe
+        billing_address:
+          anyOf:
+            - $ref: '#/components/schemas/Address'
+            - type: 'null'
+        tax_id:
+          anyOf:
+            - prefixItems:
+                - type: string
+                - $ref: '#/components/schemas/TaxIDFormat'
+              type: array
+              maxItems: 2
+              minItems: 2
+              examples:
+                - - '911144442'
+                  - us_ein
+                - - FR61954506077
+                  - eu_vat
+            - type: 'null'
+          title: Tax Id
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the customer.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+        deleted_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Deleted At
+          description: Timestamp for when the customer was soft deleted.
+        avatar_url:
+          type: string
+          title: Avatar Url
+          examples:
+            - https://www.gravatar.com/avatar/xxx?d=404
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - metadata
+        - external_id
+        - email
+        - email_verified
+        - name
+        - billing_address
+        - tax_id
+        - organization_id
+        - deleted_at
+        - avatar_url
+      title: LicenseKeyCustomer
+    LicenseKeyStatus:
+      type: string
+      enum:
+        - granted
+        - revoked
+        - disabled
+      title: LicenseKeyStatus
+    LicenseKeyActivationBase:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+        license_key_id:
+          type: string
+          format: uuid4
+          title: License Key Id
+        label:
+          type: string
+          title: Label
+        meta:
+          additionalProperties:
+            anyOf:
+              - type: string
+              - type: integer
+              - type: number
+              - type: boolean
+          type: object
+          title: Meta
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+      type: object
+      required:
+        - id
+        - license_key_id
+        - label
+        - meta
+        - created_at
+        - modified_at
+      title: LicenseKeyActivationBase
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    MetadataOutputType:
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: integer
+          - type: number
+          - type: boolean
+      type: object
+    CustomerType:
+      type: string
+      enum:
+        - individual
+        - team
+      title: CustomerType
     Address:
       properties:
         line1:
@@ -962,275 +1039,12 @@ components:
       required:
         - country
       title: Address
-    LicenseKeyActivationBase:
-      properties:
-        id:
-          type: string
-          format: uuid4
-          title: Id
-        license_key_id:
-          type: string
-          format: uuid4
-          title: License Key Id
-        label:
-          type: string
-          title: Label
-        meta:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Meta
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-      type: object
-      required:
-        - id
-        - license_key_id
-        - label
-        - meta
-        - created_at
-        - modified_at
-      title: LicenseKeyActivationBase
-    LicenseKeyCustomer:
-      properties:
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the customer.
-          examples:
-            - 992fae2a-2a17-4b7a-8d9e-e287cf90131b
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        external_id:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: External Id
-          description: >-
-            The ID of the customer in your system. This must be unique within
-            the organization. Once set, it can't be updated.
-          examples:
-            - usr_1337
-        email:
-          type: string
-          title: Email
-          description: >-
-            The email address of the customer. This must be unique within the
-            organization.
-          examples:
-            - customer@example.com
-        email_verified:
-          type: boolean
-          title: Email Verified
-          description: >-
-            Whether the customer email address is verified. The address is
-            automatically verified when the customer accesses the customer
-            portal using their email address.
-          examples:
-            - true
-        name:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Name
-          description: The name of the customer.
-          examples:
-            - John Doe
-        billing_address:
-          anyOf:
-            - $ref: '#/components/schemas/Address'
-            - type: 'null'
-        tax_id:
-          anyOf:
-            - prefixItems:
-                - type: string
-                - $ref: '#/components/schemas/TaxIDFormat'
-              type: array
-              maxItems: 2
-              minItems: 2
-              examples:
-                - - '911144442'
-                  - us_ein
-                - - FR61954506077
-                  - eu_vat
-            - type: 'null'
-          title: Tax Id
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the customer.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-        deleted_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Deleted At
-          description: Timestamp for when the customer was soft deleted.
-        avatar_url:
-          type: string
-          title: Avatar Url
-          examples:
-            - https://www.gravatar.com/avatar/xxx?d=404
-      type: object
-      required:
-        - id
-        - created_at
-        - modified_at
-        - metadata
-        - external_id
-        - email
-        - email_verified
-        - name
-        - billing_address
-        - tax_id
-        - organization_id
-        - deleted_at
-        - avatar_url
-      title: LicenseKeyCustomer
-    LicenseKeyStatus:
-      type: string
-      enum:
-        - granted
-        - revoked
-        - disabled
-      title: LicenseKeyStatus
-    TaxIDFormat:
-      type: string
-      enum:
-        - ad_nrt
-        - ae_trn
-        - ar_cuit
-        - au_abn
-        - au_arn
-        - bg_uic
-        - bh_vat
-        - bo_tin
-        - br_cnpj
-        - br_cpf
-        - ca_bn
-        - ca_gst_hst
-        - ca_pst_bc
-        - ca_pst_mb
-        - ca_pst_sk
-        - ca_qst
-        - ch_uid
-        - ch_vat
-        - cl_tin
-        - cn_tin
-        - co_nit
-        - cr_tin
-        - de_stn
-        - do_rcn
-        - ec_ruc
-        - eg_tin
-        - es_cif
-        - eu_oss_vat
-        - eu_vat
-        - gb_vat
-        - ge_vat
-        - hk_br
-        - hr_oib
-        - hu_tin
-        - id_npwp
-        - il_vat
-        - in_gst
-        - is_vat
-        - jp_cn
-        - jp_rn
-        - jp_trn
-        - ke_pin
-        - kr_brn
-        - kz_bin
-        - li_uid
-        - mx_rfc
-        - my_frp
-        - my_itn
-        - my_sst
-        - ng_tin
-        - no_vat
-        - no_voec
-        - nz_gst
-        - om_vat
-        - pe_ruc
-        - ph_tin
-        - ro_tin
-        - rs_pib
-        - ru_inn
-        - ru_kpp
-        - sa_vat
-        - sg_gst
-        - sg_uen
-        - si_tin
-        - sv_nit
-        - th_vat
-        - tr_tin
-        - tw_vat
-        - ua_vat
-        - us_ein
-        - uy_ruc
-        - ve_rif
-        - vn_tin
-        - za_vat
-      title: TaxIDFormat
-      description: |-
-        List of supported tax ID formats.
-
-        Ref: https://docs.stripe.com/billing/customer/tax-ids#supported-tax-id
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

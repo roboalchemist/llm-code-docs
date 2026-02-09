@@ -6,6 +6,22 @@ Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with *
 
 Once connected via MCP (Model Context Protocol), JetBrains AI Assistant can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
 ## Prerequisites
 
 1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
@@ -47,52 +63,78 @@ JetBrains AI Assistant has the same setup process across all platforms (Windows,
 
 ### Configure `BitoAIArchitect`
 
-**macOS/Linux configuration:**
+The configuration dialog accepts JSON input. Paste the appropriate JSON configuration for your platform:
 
-Fill in the fields as follows:
+#### **macOS/Linux configuration:**
 
-* **Name**: `BitoAIArchitect`
-* **Command**: `npx`
-* **Args** (add each on a separate line by clicking the + button):
-  1. `-y`
-  2. `mcp-remote`
-  3. `<Your-Bito-MCP-URL>`&#x20;
-  4. `--header`
-  5. `Authorization:${AUTH_HEADER}`
-* **Environment Variables** (click + to add):
-  * **Key**: `AUTH_HEADER`
-  * **Value**: `Bearer <Your-Bito-MCP-Access-Token>`&#x20;
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
 
 {% hint style="info" %}
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
   {% endhint %}
 
-**Windows configuration (IMPORTANT - uses cmd):**
+#### **Windows configuration (IMPORTANT - uses cmd):**
 
-Fill in the fields as follows:
-
-* **Name**: `BitoAIArchitect`
-* **Command**: `cmd`
-* **Args** (add each on a separate line):
-  1. `/c`
-  2. `npx`
-  3. `-y`
-  4. `mcp-remote`
-  5. `<Your-Bito-MCP-URL>`&#x20;
-  6. `--header`
-  7. `Authorization:${AUTH_HEADER}`
-* **Environment Variables**:
-  * **Key**: `AUTH_HEADER`
-  * **Value**: `Bearer <Your-Bito-MCP-Access-Token>`
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
 
 {% hint style="info" %}
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
   {% endhint %}
   {% endstep %}
 
@@ -200,6 +242,9 @@ curl -s -X POST \
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
   {% endhint %}
 
@@ -209,6 +254,6 @@ curl -s -X POST \
 
 #### Windows-specific issues:
 
-1. Verify you're using `cmd` as the command (not `npx`)
-2. Ensure `/c` is the first argument
+1. Verify the JSON uses `"command": "cmd"` (not `npx`)
+2. Ensure `"/c"` is the first element in the `args` array
 3. Node.js must be in system PATH

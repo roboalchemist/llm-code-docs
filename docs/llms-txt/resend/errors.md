@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors
 
 > Troubleshoot problems with this comprehensive breakdown of all error codes.
@@ -41,8 +45,14 @@ We use standard HTTP response codes for success and failure notifications, and o
 ### `validation_error`
 
 * **Status:** 403
-* **Message:** You can only send testing emails to your own email address (`youremail@domain.com`).
-* **Suggested action:** In [Resend's Domain page](https://resend.com/domains), add and verify a domain for which you have DNS access. This allows you to send emails to addresses beyond your own.
+* **Message:** You can only send testing emails to your own email address (`youremail@domain.com`). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain.
+* **Suggested action:** In [Resend's Domain page](https://resend.com/domains), add and verify a domain for which you have DNS access. This allows you to send emails to addresses beyond your own. [Learn more about resolving this error](/knowledge-base/403-error-resend-dev-domain).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** The `domain.com` domain is not verified. Please, add and verify your domain.
+* **Suggested action:** Make sure the domain in your API request's `from` field matches a domain you've verified in Resend. Update your API request to use your verified domain, or add and verify the domain you're trying to use. [Learn more about resolving this error](/knowledge-base/403-error-domain-mismatch).
 
 ### `not_found`
 
@@ -78,7 +88,7 @@ We use standard HTTP response codes for success and failure notifications, and o
 
 * **Status:** 422
 * **Message:** Invalid `from` field.
-* **Suggested action:** Make sure the `from` field is a valid. The email address needs to follow the `email@example.com` or `Name <email@example.com>` format.
+* **Suggested action:** Make sure the `from` field is valid. The email address needs to follow the `email@example.com` or `Name <email@example.com>` format.
 
 ### `invalid_access`
 

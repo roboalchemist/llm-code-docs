@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/reasoning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reasoning
 
 > How to use reasoning with Fireworks models
@@ -61,7 +65,11 @@ for choice in completion.choices:
 
 ### Controlling reasoning effort
 
-You can control the reasoning token length using the [`reasoning_effort`](/api-reference/post-chatcompletions#body-reasoning-effort-one-of-0) parameter:
+You can control the reasoning token length using either the `reasoning_effort` parameter or the Anthropic-compatible `thinking` parameter.
+
+#### Using `reasoning_effort`
+
+The [`reasoning_effort`](/api-reference/post-chatcompletions#body-reasoning-effort-one-of-0) parameter accepts string values like `"low"`, `"medium"`, or `"high"`:
 
 ```python lines highlight={9} theme={null}
 completion = client.chat.completions.create(
@@ -77,6 +85,32 @@ completion = client.chat.completions.create(
 ```
 
 See the [reasoning\_effort](/api-reference/post-chatcompletions#body-reasoning-effort-one-of-0) parameter for more details.
+
+#### Using `thinking` (Anthropic-compatible)
+
+Alternatively, you can use the [`thinking`](/api-reference/post-chatcompletions#body-thinking) parameter, which provides an Anthropic-compatible format for controlling reasoning behavior:
+
+```python lines highlight={9-12} theme={null}
+completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Solve this step by step: If a train travels at 60 mph for 2.5 hours, how far does it go?",
+        }
+    ],
+    model="accounts/fireworks/models/<reasoning-model>",
+    thinking={
+        "type": "enabled",
+        "budget_tokens": 4096,  # Must be >= 1024
+    },
+)
+```
+
+See the [thinking](/api-reference/post-chatcompletions#body-thinking) parameter for more details.
+
+<Warning>
+  You cannot specify both `thinking` and `reasoning_effort` in the same request. If both are provided, a validation error will be raised.
+</Warning>
 
 ### Streaming with reasoning content
 
@@ -119,7 +153,7 @@ When building multi-turn tool-calling agents with models that support
 interleaved thinking, you must include the `reasoning_content` from previous
 assistant turns in subsequent requests. This enables the model to think between tool calls and after receiving tool results, allowing for more complex, step-by-step reasoning.
 
-<Frame caption={<>Interleaved thinking: the model reasons between tool calls within a single turn. Source: <a href="https://docs.z.ai/guides/capabilities/thinking-mode" className="caption-link">Z.AI</a></>}>
+<Frame caption="Interleaved thinking: the model reasons between tool calls within a single turn. Source: [Z.AI](https://docs.z.ai/guides/capabilities/thinking-mode)">
   <img src="https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=4d5135b3cca735a0fd014ceaab718be2" alt="Diagram showing interleaved thinking where reasoning is preserved within Turn 1 across multiple steps but starts fresh in Turn 2" data-og-width="2486" width="2486" data-og-height="1614" height="1614" data-path="images/interleaved-thinking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=280&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=d6e988da370c0d1490b68c1b56162cda 280w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=560&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=caf889b30da80de379329f858bc8ac7e 560w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=840&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=69068d19cf241269a4388c5c5fac1eb1 840w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=1100&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=1a5038ac3d2e0cb17361d446a572b7df 1100w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=1650&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=7dbbb7d88be73fafca320e7880fac2ff 1650w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/interleaved-thinking.png?w=2500&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=dd6ae2a1c5c0430aa1a17e43b6da0c51 2500w" />
 </Frame>
 
@@ -473,7 +507,7 @@ Below is the expected output:
 
 While interleaved thinking preserves reasoning within a single turn (across tool calls), **preserved thinking** extends this concept across multiple user turns. This allows the model to retain reasoning content from previous assistant turns in the conversation context, enabling more coherent multi-turn reasoning.
 
-<Frame caption={<>Preserved thinking: reasoning from previous turns is retained and passed to subsequent turns. Source: <a href="https://docs.z.ai/guides/capabilities/thinking-mode" className="caption-link">Z.AI</a></>}>
+<Frame caption="Preserved thinking: reasoning from previous turns is retained and passed to subsequent turns. Source: [Z.AI](https://docs.z.ai/guides/capabilities/thinking-mode)">
   <img src="https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=df0cb8f2768cd2ea112664228ba778c5" alt="Diagram showing preserved thinking where reasoning from Turn 1 is included in the input context for Turn 2" data-og-width="2494" width="2494" data-og-height="1856" height="1856" data-path="images/preserved-thinking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=280&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=891909f745e24552975176e1d753ef22 280w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=560&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=c2e572d203ee1b9269a554706b83f665 560w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=840&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=93b4a59a9246875395616ada7b61a986 840w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=1100&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=1888ba83b76a0254af890c4dd064e9e2 1100w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=1650&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=195cdd50fd4ac554465495a414380f7c 1650w, https://mintcdn.com/fireworksai/dqqwAgnyVTzDcoY2/images/preserved-thinking.png?w=2500&fit=max&auto=format&n=dqqwAgnyVTzDcoY2&q=85&s=fc80a0a8c119502345d0567c2ac2b03a 2500w" />
 </Frame>
 
@@ -819,8 +853,3 @@ Let me make the function call.</think><tool_call>calculator<arg_key>operation</a
 ════════════════════════════════════════════════════════════
   ✅ SUCCESS: reasoning_content from both first and third turns IS included in fourth turn requests!
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

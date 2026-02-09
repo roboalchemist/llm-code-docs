@@ -2,10 +2,7 @@
 
 # Delete Segment
 
-```
-DELETE 
-/v1/segments/:segmentId
-```
+Copy page
 
 This endpoint removes a Segment identified by the `segmentId` parameter.
 

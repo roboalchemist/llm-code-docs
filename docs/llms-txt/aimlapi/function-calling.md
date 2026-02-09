@@ -104,7 +104,6 @@ print(json.dumps(response.choices[0].message.model_dump()['tool_calls'], indent=
 
 * [Qwen/Qwen2.5-7B-Instruct-Turbo](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-7b-instruct-turbo)
 * [Qwen/Qwen2.5-72B-Instruct-Turbo](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-72b-instruct-turbo)
-* [Qwen/Qwen2.5-Coder-32B-Instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-coder-32b-instruct)
 * [qwen-max](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-max)
 * [qwen-max-2025-01-25](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-max)
 * [qwen-plus](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen-plus)
@@ -117,6 +116,14 @@ print(json.dumps(response.choices[0].message.model_dump()['tool_calls'], indent=
 * [alibaba/qwen3-max-instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-max-instruct)
 * [alibaba/qwen3-vl-32b-instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-vl-32b-instruct)
 * [alibaba/qwen3-vl-32b-thinking](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-vl-32b-thinking)
+
+***
+
+* [baidu/ernie-4.5-21b-a3b](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-21b-a3b)
+* [baidu/ernie-4.5-21b-a3b-thinking](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-21b-a3b-thinking)
+* [baidu/ernie-4.5-300b-a47b](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-300b-a47b)
+* [baidu/ernie-4.5-vl-28b-a3b](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-vl-28b-a3b)
+* [baidu/ernie-4.5-vl-424b-a47b](https://docs.aimlapi.com/api-references/text-models-llm/baidu/ernie-4.5-vl-424b-a47b)
 
 ***
 
@@ -173,9 +180,11 @@ print(json.dumps(response.choices[0].message.model_dump()['tool_calls'], indent=
 * [openai/gpt-5-1-codex-mini](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5-1-codex-mini)
 * [openai/gpt-5-2](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2)
 * [openai/gpt-5-2-chat-latest](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2-chat-latest)
+* [openai/gpt-5-2-codex](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2-codex)
 
 ***
 
+* [bytedance/seed-1-8](https://docs.aimlapi.com/api-references/text-models-llm/bytedance/seed-1.8)
 * [deepseek/deepseek-r1](https://docs.aimlapi.com/api-references/text-models-llm/deepseek/deepseek-r1)
 * [deepseek/deepseek-thinking-v3.2-exp](https://docs.aimlapi.com/api-references/text-models-llm/deepseek/deepseek-reasoner-v3.2-exp-thinking)
 * [deepseek/deepseek-non-thinking-v3.2-exp](https://docs.aimlapi.com/api-references/text-models-llm/deepseek/deepseek-reasoner-v3.2-exp-non-thinking)

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-redwoodjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with RedwoodJS
 
 > Learn how to send your first email using Redwood.js and the Resend Node.js SDK.
@@ -16,20 +20,20 @@ To get the most out of this guide, you'll need to:
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn workspace api add resend
   ```
 </CodeGroup>
 
 ### 2. Send email using HTML
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 yarn rw g function send
 ```
 
 The easiest way to send an email is by using the `html` parameter.
 
-```ts api/src/functions/send/send.ts theme={null}
+```ts api/src/functions/send/send.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 import type { APIGatewayEvent, Context } from 'aws-lambda';
 

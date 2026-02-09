@@ -23,7 +23,7 @@ So you can build awesome software without rolling your own sync.
 
 In 2024 we [re-built Electric from scratch](/blog/2024/07/17/electric-next) to be simpler, faster, more reliable and more scalable. In December 2024, [we hit BETA](/blog/2024/12/10/electric-beta-release#the-path-to-beta) with production users, [proof of scalability](/docs/reference/benchmarks) and a raft of updated [docs](/docs/intro) and [demos](/demos).
 
-Since then, we've launched a [managed cloud platform](/product/cloud), run / supported a wide range of production workloads from both open-source and cloud users, tested with [Antithesis](https://www.antithesis.com) and merged 200 bug-fix and reliability PRs.
+Since then, we've launched a [managed cloud platform](/cloud), run / supported a wide range of production workloads from both open-source and cloud users, tested with [Antithesis](https://www.antithesis.com) and merged 200 bug-fix and reliability PRs.
 
 ## Stable APIs
 
@@ -41,7 +41,7 @@ Electric is stable, reliable and scales. It's been stress-tested in production f
 
 We process millions of requests and transactions each day. With hundreds of thousands of active [shapes](/docs/guides/shapes) and application users.
 
-The chart below is from our [cloud benchmarks](/docs/reference/benchmarks#cloud), showing flat, low latency and memory use scaling sync to 1 million concurrent clients on a single community Postgres:
+The chart below is from our [cloud benchmarks](/docs/reference/benchmarks#cloud), showing flat, low latency and memory use scaling sync to 1 million concurrent clients on a single commodity Postgres:
 
 ## Increasingly powerful
 
@@ -60,4 +60,4 @@ As we build towards 2.0 and 3.0, Electric is only going to become more expressiv
 
 ## Next steps
 
-[Sign up for Cloud](/product/cloud), dive into the [Quickstart](/docs/quickstart), join the [Discord](https://discord.electric-sql.com) and star us on [GitHub](https://github.com/electric-sql/electric).
+[Sign up for Cloud](/cloud), dive into the [Quickstart](/docs/quickstart), join the [Discord](https://discord.electric-sql.com) and star us on [GitHub](https://github.com/electric-sql/electric).

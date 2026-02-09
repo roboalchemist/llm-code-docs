@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connecting-your-knowledge-base/add-via-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add via API
 
 > Learn how to add Knowledge Base articles programmatically using the API
 
 The Knowledge Base Article Submission API offers an alternative to manual creation of article snippets and URL imports. This is especially beneficial for large data sources that are not easily scraped, such as internal knowledge bases or articles within a Content Management System.
 
-All content imported via API follow the [Imported Articles](/generativeagent/configuring/connecting-your-knowledge-base#imported-articles) review process.
+All content imported via API follows the [Imported Articles](/generativeagent/configuring/connecting-your-knowledge-base#imported-articles) review process.
 
 ## Before you Begin
 
@@ -61,7 +65,7 @@ curl --request POST \
 
 ## Step 2: Article Processing
 
-The Article Submission API submits the article that will still need to be reviewed and published like any other imported article.
+The Article Submission API submits the article that will still need review and publication like any other imported article.
 
 You can check the status of the submission by calling the [Get a Submission](/apis/knowledge-base/retrieve-a-submission) API.
 
@@ -80,9 +84,9 @@ The response will include the `id` of the submission and the `status` of the sub
 
 ## Step 3: Publication and Updates
 
-Once the submission is approved, the article will be published and become available in the Knowledge Base. The status of the submission will be updated to `ACCEPTED` and you will see it within the ASAPP AI-Console UI.
+Once you approve the submission, the system will publish the article and make it available in the Knowledge Base. The status of the submission will update to `ACCEPTED` and you will see it within the ASAPP AI-Console UI.
 
-You can also update the article after it has been published by creating another submission with the same `articleId`.
+You can also update the article after the system has published it by creating another submission with the same `articleId`.
 
 ## Troubleshooting
 
@@ -102,7 +106,7 @@ Common API response codes and their solutions:
   </Accordion>
 
   <Accordion title="401 - Unauthorized">
-    A `401` code indicates wrong credentials or unconfigured ASAPP credentials.
+    A `401` code indicates incorrect credentials or unconfigured ASAPP credentials.
   </Accordion>
 
   <Accordion title="413 - Request Entity Too Large">

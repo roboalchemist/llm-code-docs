@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/api-refence/schedules/create-a-schedule.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Schedule
 
 > Create a schedule to send messages periodically
@@ -447,7 +451,3 @@ components:
       description: QStash authentication token passed as a query parameter
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

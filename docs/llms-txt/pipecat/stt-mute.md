@@ -1,8 +1,18 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/stt-mute.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # STTMuteFilter
 
 > Processor for controlling STT muting and interruption handling during bot speech and function calls
+
+<Warning>
+  DEPRECATED: STTMuteFilter has been deprecated in favor of [User Mute
+  Strategies](/server/utilities/turn-management/user-mute-strategies). Configure
+  `user_mute_strategies` on the `LLMUserAggregator` instead.
+</Warning>
 
 ## Overview
 
@@ -241,8 +251,3 @@ graph TD
 * Placed between the STT service and context aggregator in pipeline
 * Maintains conversation flow during bot speech and function calls
 * Efficient state tracking for minimal overhead
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

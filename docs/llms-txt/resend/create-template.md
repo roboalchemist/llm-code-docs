@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/templates/create-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Template
 
 > Create a new template with optional variables.
@@ -82,14 +86,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <ParamField body="variables" type="array">
-  The array of variables used in the template. Each template may contain up to 20 variables.
+  The array of variables used in the template. Each template may contain up to 50 variables.
 
   Each variable is an object with the following properties:
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="key" type="string" required>
       The key of the variable. We recommend capitalizing the key (e.g. `PRODUCT_NAME`). The following variable names are reserved and cannot be used:
-      `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `UNSUBSCRIBE_URL`, `contact`, and `this`.
+      `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `RESEND_UNSUBSCRIBE_URL`, `contact`, and `this`.
     </ParamField>
 
     <ParamField body="type" type="'string' | 'number'" required>
@@ -98,7 +102,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
       Can be `'string'` or `'number'`
     </ParamField>
 
-    <ResendParamField body="fallback_value">
+    <ResendParamField body="fallback_value" type="string | number">
       The fallback value of the variable. The value must match the type of the variable.
 
       If no fallback value is provided, you must provide a value for the variable when sending an email using the template.
@@ -115,7 +119,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -141,7 +145,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   await resend.templates.create({ ... }).publish();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->templates->create([
@@ -162,7 +166,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -185,7 +189,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   })
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -208,7 +212,9 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"context"
 
@@ -218,7 +224,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	template, err := client.Templates.CreateWithContext(context.TODO(), &resend.CreateTemplateRequest{
+  	client.Templates.CreateWithContext(context.TODO(), &resend.CreateTemplateRequest{
   		Name: "order-confirmation",
   		Html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
   		Variables: []*resend.TemplateVariable{
@@ -231,13 +237,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   				Key:           "PRICE",
   				Type:          resend.VariableTypeNumber,
   				FallbackValue: 25,
-  			}
+  			},
   		},
   	})
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{
     types::{CreateTemplateOptions, Variable, VariableType},
     Resend, Result,
@@ -264,7 +270,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -283,7 +289,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create("re_xxxxxxxxx");
@@ -314,7 +320,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine($"Template Id={resp.Content}");
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/templates' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -338,7 +344,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
     "object": "template"

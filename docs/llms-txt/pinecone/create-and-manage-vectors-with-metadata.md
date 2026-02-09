@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/create-and-manage-vectors-with-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create and manage vectors with metadata
 
 Performing deletes by metadata filtering can be a very expensive process for any database. By using a hierarchical naming convention for vector IDs, you can avoid this process and perform deletes by ID. This is more efficient and will reduce the impact on the compute resources, minimize query latency, and maintain a more consistent user experience.
@@ -25,14 +29,14 @@ Performing deletes by metadata filtering can be a very expensive process for any
 
 * Batch these together and send them to the [`delete`](/reference/api/2024-10/data-plane/delete) endpoint using the IDs of the vectors.
 
-  ```shell  theme={null}
+  ```shell curl theme={null}
   INDEX_NAME="docs-example"
   PROJECT_ID="example-project-id"
 
   curl "https://$INDEX_NAME-$PROJECT_ID.svc.environment.pinecone.io/vectors/delete" \
     -H "accept: application/json" \
     -H "content-type: application/json"\
-    -H "X-Pinecone-API-Version: 2024-07" \
+    -H "X-Pinecone-Api-Version: 2024-07" \
     -d '
     {
       "deleteAll": "false",

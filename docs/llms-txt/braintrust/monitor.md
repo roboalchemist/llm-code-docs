@@ -1,81 +1,75 @@
-# Source: https://braintrust.dev/docs/core/monitor.md
+# Source: https://braintrust.dev/docs/deploy/monitor.md
 
-# Monitor custom dashboards
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Custom dashboards for logs and experiments
+# Monitor deployments
 
-The **Monitor** page shows custom dashboards that aggregate metrics data for both the logs and experiments in a given project. The included preset charts show values related to the selected time period for request count, latency, token count, time to first token, cost, scores, and tools. Custom charts can also be created.
+> Track production performance and errors
 
-<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=4c4b117a23bf49845bd74197c4429dce" alt="Monitor page" data-og-width="3138" width="3138" data-og-height="1372" height="1372" data-path="images/guides/monitor/monitor-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=83d842d1748e3b426226f1413cb2d3f6 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=4601a72cdc69c776a8a3440c87c2848f 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=064fd20702529c4d00cb6d1b15edeee0 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=aa25a846492a840b4740375f4109d6ba 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=d432626a514d2961a15b7d639192da7d 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=992db3d4cb5bc1049cb1962464b1c778 2500w" />
+Every production request flows through the same observability system you used during development. The Monitor page provides custom dashboards to track performance, costs, errors, and quality metrics across your deployed prompts and functions.
 
-## Filter and group data
+## View production metrics
 
-Select filter and group by options on the top of the page to apply to all charts.
+The <Icon icon="chart-no-axes-column" /> **Monitor** page shows custom dashboards for tracking deployed prompts and functions. For details on creating custom charts, filtering data, selecting timeframes, and configuring dashboards, see [Monitor with dashboards](/observe/dashboards).
 
-<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=eb5fee0899516fb798f0ccd75a4381d2" alt="Monitor page" data-og-width="1442" width="1442" data-og-height="154" height="154" data-path="images/guides/monitor/monitor-filter-group.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=48b0f0733d171606e79bd0e85d01ca9e 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=06591e1ab47b2f3e5a162b05c2f5323a 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=a7d9147da6cacd3926b3233dfa78ea3b 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=ece1614e2e651612feeeeecddd127fa9 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=4191cc56c464777b1eba9ec276b060d2 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-filter-group.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=042c3ccad61e84a5108d0136ddac306b 2500w" />
+Production-specific metrics include:
 
-## Create custom charts
+* **Request count**: Volume of production traffic
+* **Latency**: Response time (total duration, time to first token)
+* **Token count**: Prompt tokens, completion tokens, and total usage
+* **Cost**: Estimated spend based on model pricing
+* **Scores**: Quality metrics from online scoring
+* **Tools**: Tool call frequency and success rates
 
-Select **+Chart** to open the chart editor. You can also select the pencil icon next to any chart title. [Measures](https://www.braintrust.dev/docs/reference/btql#dimensions-and-measures) and [filters](https://www.braintrust.dev/docs/reference/btql#filter) correspond to the BTQL options of the same name. The "group by" option is a BTQL dimension.
+Filter by production environments, models, or errors to focus on specific segments. Group by model, environment, user, or custom metadata to analyze patterns across your deployments.
 
-### Time series
+<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=4c4b117a23bf49845bd74197c4429dce" alt="Monitor overview" data-og-width="3138" width="3138" data-og-height="1372" height="1372" data-path="images/guides/monitor/monitor-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=83d842d1748e3b426226f1413cb2d3f6 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=4601a72cdc69c776a8a3440c87c2848f 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=064fd20702529c4d00cb6d1b15edeee0 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=aa25a846492a840b4740375f4109d6ba 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=d432626a514d2961a15b7d639192da7d 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-overview.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=992db3d4cb5bc1049cb1962464b1c778 2500w" />
 
-Visualizes data over time. You can choose between lines and stacked bars variants.
-<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=3501bf16d5c08ef0fd488a9f6a878304" alt="Monitor page" data-og-width="2458" width="2458" data-og-height="1598" height="1598" data-path="images/guides/monitor/monitor-custom-chart-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=d3c4c860dbd052680e153e824ffd50b0 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=081b9d2bfb8b63c10889cbef6d6bd6b9 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=cd6d6e71ef94fe70427ff26b8db5fa75 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=6b28324ae0d55d755d33bdb0562457d7 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=f5336b8d9d8a0469f97814931f2ae052 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=89be9d68d3287ea166f1bf64df45cb47 2500w" />
+## Set up alerts
 
-<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=271c946045d98ab9d8238da7a05d088e" alt="Monitor page" data-og-width="2386" width="2386" data-og-height="1560" height="1560" data-path="images/guides/monitor/monitor-custom-chart-editor-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=a929c0516507efd093282b9d7caa0653 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=bab822600afa0f602193c2400eaaaba0 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=5500b2dfb4804f5d97632d15c5aac4d0 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=918f16d404522e1cba2032a4bb352fd4 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=802e90fc81c35f4359cbd0a836946db3 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-2.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=2e215ff9a20ee87ec3d98b2216fbe166 2500w" />
+Configure alerts to notify you when metrics exceed thresholds:
 
-### Top list
+1. Navigate to **Configuration** > **Automations**
+2. Click **+ Alert**
+3. Define your conditions using SQL queries
+4. Set notification channels (email, Slack, webhooks)
 
-Shows the values of multiple groups over the entire timeframe. Option to order by value or alphabetically (ascending or descending).
+Example alerts:
 
-<div style={{maxWidth: '600px'}}>
-    <img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=9d2676087b3667ddc71ee231415c6e38" alt="Monitor page" data-og-width="964" width="964" data-og-height="708" height="708" data-path="images/guides/monitor/monitor-custom-chart-top-list.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=31d155a459176cad068014f741821091 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=f3294bd4dd98f076382d67a643263b42 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=e2b050c93f9aa92ac1c46c5f1f93ecbc 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=b43bd63558a9427fe8b4d4ce533dc8f6 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=1e71659c5ab25205fc884b2457065b0e 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-top-list.jpg?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=00d671235e12cf8fa819d8c03711bcd3 2500w" />
-</div>
+* Error rate exceeds 5% for 10 minutes
+* Average latency above 2 seconds
+* Daily cost exceeds budget threshold
+* Score drops below 0.8
 
-### Big number
+See [Alerts](/admin/automations/alerts) for detailed configuration.
 
-Shows a single value over the timeframe as one big number.
+## Track costs
 
-<div style={{maxWidth: '600px'}}>
-    <img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=9cde51ff57b4a6c5cf4a94ef9efb3e05" alt="Monitor page" data-og-width="820" width="820" data-og-height="698" height="698" data-path="images/guides/monitor/monitor-custom-chart-big-number.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=1c36b07cf05528b69ce281f07f1e9030 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=cb0abf52484f5e9391c1c6831f351a78 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=ee85e81d8975e002fdbb35d19b5e71e6 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=41ed0dd859086fe0b37f6498ffe44569 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=561eb6741b20cf9b355d8a2735212547 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-big-number.jpg?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=cdc23d5c6ca1f4a0d507a4b9a11e1308 2500w" />
-</div>
+Cost charts estimate spending based on model pricing. Costs are calculated from:
 
-### Presets
+* Token counts (prompt and completion)
+* Model pricing rates
+* Provider-specific pricing tiers
 
-These are the default charts that are included on the **Monitor** page.
+<Note>
+  Cost estimates are approximate. Actual billing from providers may vary based on rate limits, batch discounts, and other factors.
+</Note>
 
-<div style={{maxWidth: '600px'}}>
-    <img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=f7a2cd43f4ac4b0c44b97ec783acacc3" alt="Monitor page" data-og-width="966" width="966" data-og-height="586" height="586" data-path="images/guides/monitor/monitor-custom-chart-editor-presets.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=eefa2e6ec833c73ef35586a2d006d214 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=ef1124e3990fdb0370bee43c7430dd25 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=b1df0eaf487f8230bc643be8d5806796 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=67b863989fce9a005a3f6b5910771aa6 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=2243ab45ac885a0b2eb1cf7874442602 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-custom-chart-editor-presets.jpg?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=8c749ebaede2ef7611b05a8f2f79a4e7 2500w" />
-</div>
+## Monitor quality
 
-## Select a timeframe
+Online scoring automatically evaluates production requests. View score distributions and trends in the Monitor page:
 
-Select a timeframe from the given options to see the data associated with that time period. For time series charts you can also click and drag horizontally to select a fixed timeframe to zoom in on. Double click a chart to zoom out.
+* Group by score name to compare different quality metrics
+* Filter by low scores to find problematic requests
+* Track score changes over time to detect quality regressions
 
-<img src="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=d11a7a6d7173000c85bba30c80ac6468" alt="Monitor page" data-og-width="604" width="604" data-og-height="728" height="728" data-path="images/guides/monitor/monitor-timeframe.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=280&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=db3c706c8adb515206362e7d3800d5b6 280w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=560&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=cd2b0012a4ef2235475ce3d2fa0faf57 560w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=840&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=37a1b1f1c753ddabdd32f5ac222c061d 840w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=1100&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=2763f578113c765f614e120707a1cd84 1100w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=1650&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=c61775460a64d19a245cebac8ee99d28 1650w, https://mintcdn.com/braintrust/b11zJxKLgN0Qiq8B/images/guides/monitor/monitor-timeframe.png?w=2500&fit=max&auto=format&n=b11zJxKLgN0Qiq8B&q=85&s=71a7b814fecc1d7366382046ab09955a 2500w" />
+Configure online scoring in **Configuration** > **Online scoring**. See [Score online](/observe/score-online) for details.
 
-## View traces
+## Next steps
 
-To see specific traces, select a data point on any chart. It will redirect you to the logs or experiments page filtered to the corresponding time range and series.
-
-## Create custom dashboards
-
-The default view (dashboard) shows all data for a project. To create a custom dashboard, add or edit any chart. You will be prompted to create a new view before you save. You can also use the drop down in the top left to duplicate the current view and save as a new dashboard.
-
-## Unit types
-
-Charts can display values with different unit types to properly format the data:
-
-* **Duration**: Displays values as seconds (e.g. "1.5s", "0.3s")
-* **Cost**: Displays values as US dollars with currency formatting (e.g. 0.05 becomes \$0.05, 1.23 becomes \$1.23)
-* **Percent**: Displays values as percentages (e.g. 0.75 becomes "75%", 1 becomes "100%")
-* **Bytes**: Displays values with appropriate binary byte units using base-1024 (e.g. 1024 becomes "1 KB", 2147483648 becomes "2 GB", 500 becomes "500 B")
-* **Count**: Displays values as generic countable things (e.g. "1,234", "5.5")
-
-The unit type affects how values are displayed in chart axes, tooltips, and legends throughout the Monitor page.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Score online](/observe/score-online) to automatically evaluate production requests
+* [Set up alerts](/admin/automations/alerts) to catch issues proactively
+* [View logs](/observe/view-logs) to investigate specific requests
+* [Use dashboards](/observe/dashboards) for detailed observability

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/deepseek/deepseek-r1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deepseek R1
 
 > A state-of-the-art 671B-parameter MoE LLM with o1-style reasoning licensed for commercial use
@@ -20,8 +24,8 @@ DeepSeek-R1 is optimized using SGLang and uses an OpenAI-compatible API endpoint
 import httpx
 import os
 
-MODEL_ID = "abcd1234"  # Replace with your model ID
-DEPLOYMENT_ID = "abcd1234"  # [Optional] Replace with your deployment ID
+MODEL_ID = "abcd1234"  # Replace this with your model ID
+DEPLOYMENT_ID = "abcd1234"  # [Optional] Replace this with your deployment ID
 API_KEY = os.environ["BASETEN_API_KEY"]
 
 resp = httpx.post(

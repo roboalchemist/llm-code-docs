@@ -1,16 +1,20 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/links.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Links
 
 > Learn how to manage external links and URLs that direct customers to web pages.
 
-ASAPP provides a powerful mechanism to manage external links and URLs that direct customers to web pages. Links are predominantly used in flows, core dialogs, and customer profiles.
+ASAPP provides a powerful mechanism to manage external links and URLs that direct customers to web pages. Flows, core dialogs, and customer profiles predominantly use links.
 
 ## Links List
 
-The Links list page displays a list of all links available to use in AI-Console. When a link is created, it can be attached to content in a node in Flow Tooling, included in the Customer Profile panels, assigned to a View, etc.
+The Links list page displays a list of all links available to use in AI-Console. When you create a link, you can attach it to content in a node in Flow Tooling, include it in the Customer Profile panels, assign it to a View, etc.
 
-Here, you'll find the **Link name & URL**. When adding a link to a flow or other feature, you will be required to add it from a list of all link names.
+Here, you'll find the **Link name & URL**. When adding a link to a flow or other feature, you must add it from a list of all link names.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=d2d96077ffd90f9c1ecca8705275f856" data-og-width="2066" width="2066" data-og-height="462" height="462" data-path="images/messaging-platform/LinksPage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=280&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=b023e92384d7c58f057d3ba0514a9608 280w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=560&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=6c43d5da4e151bb07ab45fb8d6eac920 560w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=840&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=90b633fb63f5befb95d8f296b227d69d 840w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=1100&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=3aff100f6277cc00373c995791d1df2a 1100w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=1650&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=54f14a378417ed1ac65a0f857b32b4f6 1650w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/messaging-platform/LinksPage.png?w=2500&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=3968779da09c9d567b05b66f24c3c4d2 2500w" />
@@ -32,12 +36,12 @@ To create a link:
 
 ### Add a Channel Target Variant
 
-1. Click **Add Channel Target** to add a URL variant. A new input field will be added.
+1. Click **Add Channel Target** to add a URL variant. The system adds a new input field.
    a. **URL Override:** Include the URL variant for the targeted channel. Please follow the same URL syntax as described under **Create a Link**.
    b. **Channel Target:** From the drop-down menu, select which channel to target. Bear in mind that a single variant per channel is currently supported.
 2. **Delete targets:** To remove a target, click the **Delete** icon.
 3. **Save:** To save the link, click the **Save** button. The link will not be active until it is assigned to a flow, customer profile or any other feature that supports **Links**.
-4. **Cancel:** On click, all changes will be cleared.
+4. **Cancel:** When you click, the system clears all changes.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=1e53e8ba29d7c31f883cad3bf2d9dc33" data-og-width="1090" width="1090" data-og-height="522" height="522" data-path="image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=0079be88d7d7b9b2f139b653fdf634c5 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=808e10e53564e0ad8911dd18862c2db5 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=c6cf42b09ff0c340a97fa285300d7c8f 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=4ae354f7320c8b6238487d2300d8384c 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=9a5fbf62c2596848f4db0356550e5c02 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-86cb8d7f-ba8f-6c01-8926-4f0cae6d3b80.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=abfd194f63b7d6ed6e09bde9a888f989 2500w" />
@@ -45,9 +49,9 @@ To create a link:
 
 ### Link Assignments
 
-Once a link has been created, it can be sent to customers in flows. The **Links** feature will keep tabs on where each link has been assigned and provide quick access to those feature areas.
+Once you create a link, you can send it to customers in flows. The **Links** feature will keep tabs on where each link has been assigned and provide quick access to those feature areas.
 
-When viewing a specific link, the Usage section indicates which flows are currently using the respective link. On click, you can navigate directly to the flow. When a link is not assigned in any flow, 'Not yet assigned' will be displayed.
+When viewing a specific link, the Usage section indicates which flows are currently using the respective link. When you click, you can navigate directly to the flow. When a link is not assigned in any flow, the system displays 'Not yet assigned'.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=dec88d376965339adb327ffb50196179" data-og-width="1072" width="1072" data-og-height="278" height="278" data-path="image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=430a1302a16997188ced38a976d41694 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=f06bc69754bab02a65f9eb5201441cc5 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=dcafb5bc82d499e9c334ac110e1f6622 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=0e66ec885573204498269c44718f5244 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=2c47cc2503360e462d6100cab88a5dc4 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-80058a33-eb5c-5c76-3e89-8e7a35b2a5af.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=6c8340fc8789d05b2cb4ce59508c1a3d 2500w" />
@@ -55,10 +59,10 @@ When viewing a specific link, the Usage section indicates which flows are curren
 
 ## Edit a Link
 
-Link changes are global, which means that saved changes are immediately pushed to all features that reference the link.
+Link changes are global, which means that the system immediately pushes saved changes to all features that reference the link.
 
 1. From the **Links** landing page, click the **link name** you want to edit.
-2. **Link ID:** After a link is saved for the first time, a unique identifier is automatically assigned to the link. This identifier does not change over time, including when the link is edited.
+2. **Link ID:** After you save a link for the first time, the system automatically assigns a unique identifier to the link. This identifier does not change over time, including when you edit the link.
    a. The **Link ID** can be referenced in **Historical Reporting** for your reporting needs.
 3. Assign changes to the configurations.
 4. **Save:** When changes are complete, click **Save** to automatically apply the changes.

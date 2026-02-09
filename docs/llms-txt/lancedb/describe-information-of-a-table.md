@@ -1,11 +1,15 @@
 # Source: https://docs.lancedb.com/api-reference/rest/table/describe-information-of-a-table.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Describe information of a table
 
 > Describe the detailed information for table `id`.
 
 REST NAMESPACE ONLY
-REST namespace passes `with_table_uri` as a query parameter instead of in the request body.
+REST namespace passes `with_table_uri` and `load_detailed_metadata` as query parameters instead of in the request body.
 
 
 
@@ -96,6 +100,7 @@ paths:
       - $ref: '#/components/parameters/id'
       - $ref: '#/components/parameters/delimiter'
       - $ref: '#/components/parameters/with_table_uri'
+      - $ref: '#/components/parameters/load_detailed_metadata'
     post:
       tags:
         - Table
@@ -107,8 +112,8 @@ paths:
 
         REST NAMESPACE ONLY
 
-        REST namespace passes `with_table_uri` as a query parameter instead of
-        in the request body.
+        REST namespace passes `with_table_uri` and `load_detailed_metadata` as
+        query parameters instead of in the request body.
       operationId: DescribeTable
       requestBody:
         required: true
@@ -167,10 +172,28 @@ components:
       schema:
         type: boolean
         default: false
+    load_detailed_metadata:
+      name: load_detailed_metadata
+      description: >
+        Whether to load detailed metadata that requires opening the dataset.
+
+        When false (default), only `location` is required in the response.
+
+        When true, the response includes additional metadata such as `version`,
+        `schema`, and `stats`.
+      in: query
+      required: false
+      schema:
+        type: boolean
+        default: false
   schemas:
     DescribeTableRequest:
       type: object
       properties:
+        identity:
+          $ref: '#/components/schemas/Identity'
+        context:
+          $ref: '#/components/schemas/Context'
         id:
           type: array
           items:
@@ -188,92 +211,195 @@ components:
             Default is false.
           type: boolean
           default: false
+        load_detailed_metadata:
+          description: >
+            Whether to load detailed metadata that requires opening the dataset.
+
+            When true, the response must include all detailed metadata such as
+            `version`, `schema`, and `stats`
+
+            which require reading the dataset.
+
+            When not set, the implementation can decide whether to return
+            detailed metadata
+
+            and which parts of detailed metadata to return.
+          type: boolean
+        vend_credentials:
+          description: >
+            Whether to include vended credentials in the response
+            `storage_options`.
+
+            When true, the implementation should provide vended credentials for
+            accessing storage.
+
+            When not set, the implementation can decide whether to return vended
+            credentials.
+          type: boolean
+    Identity:
+      type: object
+      description: |
+        Identity information of a request.
+      properties:
+        api_key:
+          type: string
+          description: |
+            API key for authentication.
+
+            REST NAMESPACE ONLY
+            This is passed via the `x-api-key` header.
+        auth_token:
+          type: string
+          description: |
+            Bearer token for authentication.
+
+            REST NAMESPACE ONLY
+            This is passed via the `Authorization` header
+            with the Bearer scheme (e.g., `Bearer <token>`).
+    Context:
+      type: object
+      description: >
+        Arbitrary context for a request as key-value pairs.
+
+        How to use the context is custom to the specific implementation.
+
+
+        REST NAMESPACE ONLY
+
+        Context entries are passed via HTTP headers using the naming convention
+
+        `x-lance-ctx-<key>: <value>`. For example, a context entry
+
+        `{"trace_id": "abc123"}` would be sent as the header
+        `x-lance-ctx-trace_id: abc123`.
+      additionalProperties:
+        type: string
     DescribeTableResponse:
       type: object
       properties:
         table:
           type: string
-          description: Table name
+          description: |
+            Table name.
+            Only populated when `load_detailed_metadata` is true.
         namespace:
           type: array
           items:
             type: string
-          description: The namespace identifier as a list of parts
+          description: |
+            The namespace identifier as a list of parts.
+            Only populated when `load_detailed_metadata` is true.
         version:
           type: integer
           format: int64
           minimum: 0
+          description: |
+            Table version number.
+            Only populated when `load_detailed_metadata` is true.
         location:
           type: string
-          description: Table storage location (e.g., S3/GCS path)
+          description: |
+            Table storage location (e.g., S3/GCS path).
         table_uri:
           type: string
           description: >
             Table URI. Unlike location, this field must be a complete and valid
-            URI
+            URI.
+
+            Only returned when `with_table_uri` is true.
         schema:
           $ref: '#/components/schemas/JsonArrowSchema'
+          description: |
+            Table schema in JSON Arrow format.
+            Only populated when `load_detailed_metadata` is true.
         storage_options:
           type: object
-          description: |
+          description: >
             Configuration options to be used to access storage. The available
+
             options depend on the type of storage in use. These will be
+
             passed directly to Lance to initialize storage access.
+
+            When `vend_credentials` is true, this field may include vended
+            credentials.
+
+            If the vended credentials are temporary, the `expires_at_millis` key
+            should be
+
+            included to indicate the millisecond timestamp when the credentials
+            expire.
           additionalProperties:
             type: string
         stats:
           $ref: '#/components/schemas/TableBasicStats'
           nullable: true
-          description: Table statistics
+          description: |
+            Table statistics.
+            Only populated when `load_detailed_metadata` is true.
+        metadata:
+          type: object
+          description: |
+            Optional table metadata as key-value pairs.
+          additionalProperties:
+            type: string
     ErrorResponse:
       type: object
       description: Common JSON error response model
+      required:
+        - code
       properties:
         error:
           type: string
-          description: a brief, human-readable message about the error
-          example: Incorrect username or password
+          description: A brief, human-readable message about the error.
+          example: Table 'users' not found in namespace 'production'
         code:
           type: integer
-          minimum: 400
-          maximum: 600
-          description: >
-            HTTP style response code, where 4XX represents client side errors 
-
-            and 5XX represents server side errors.
-
-
-            For implementations that uses HTTP (e.g. REST namespace),
-
-            this field can be optional in favor of the HTTP response status
-            code.
-
-            In case both values exist and do not match, the HTTP response status
-            code should be used.
-          example: 404
-        type:
-          type: string
+          minimum: 0
           description: |
-            An optional type identifier string for the error.
-            This allows the implementation to specify their internal error type,
-            which could be more detailed than the HTTP standard status code.
-          example: /errors/incorrect-user-pass
+            Lance Namespace error code identifying the error type.
+
+            Error codes:
+              0 - Unsupported: Operation not supported by this backend
+              1 - NamespaceNotFound: The specified namespace does not exist
+              2 - NamespaceAlreadyExists: A namespace with this name already exists
+              3 - NamespaceNotEmpty: Namespace contains tables or child namespaces
+              4 - TableNotFound: The specified table does not exist
+              5 - TableAlreadyExists: A table with this name already exists
+              6 - TableIndexNotFound: The specified table index does not exist
+              7 - TableIndexAlreadyExists: A table index with this name already exists
+              8 - TableTagNotFound: The specified table tag does not exist
+              9 - TableTagAlreadyExists: A table tag with this name already exists
+              10 - TransactionNotFound: The specified transaction does not exist
+              11 - TableVersionNotFound: The specified table version does not exist
+              12 - TableColumnNotFound: The specified table column does not exist
+              13 - InvalidInput: Malformed request or invalid parameters
+              14 - ConcurrentModification: Optimistic concurrency conflict
+              15 - PermissionDenied: User lacks permission for this operation
+              16 - Unauthenticated: Authentication credentials are missing or invalid
+              17 - ServiceUnavailable: Service is temporarily unavailable
+              18 - Internal: Unexpected server/implementation error
+              19 - InvalidTableState: Table is in an invalid state for the operation
+              20 - TableSchemaValidationError: Table schema validation failed
+          example: 4
         detail:
           type: string
-          description: |
-            an optional human-readable explanation of the error.
-            This can be used to record information such as stack trace.
-          example: Authentication failed due to incorrect username or password
+          description: >
+            An optional human-readable explanation of the error.
+
+            This can be used to record additional information such as stack
+            trace.
+          example: The table may have been dropped or renamed
         instance:
           type: string
           description: >
-            a string that identifies the specific occurrence of the error.
+            A string that identifies the specific occurrence of the error.
 
-            This can be a URI, a request or response ID, 
+            This can be a URI, a request or response ID,
 
             or anything that the implementation can recognize to trace specific
             occurrence of the error.
-          example: /login/log/abc123
+          example: /v1/table/production$users/describe
     JsonArrowSchema:
       type: object
       description: |
@@ -453,7 +579,3 @@ components:
       name: x-api-key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

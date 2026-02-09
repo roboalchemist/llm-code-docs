@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/agent-images.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Images
 
 > How to containerize your agent project
@@ -105,15 +109,16 @@ The base image exposes the following HTTP routes for Pipecat Cloud platform inte
 
 The base image uses the following environment variables for configuration:
 
-| Variable                   | Description                                            |
-| -------------------------- | ------------------------------------------------------ |
-| `PORT`                     | HTTP server port (default: `8080`)                     |
-| `SHUTDOWN_TIMEOUT`         | Server shutdown timeout in seconds (default: `7200`)   |
-| `PCC_LOG_FEATURES_SUMMARY` | Set to `true` to log available features on startup     |
-| `IMAGE_VERSION`            | Set automatically during build to track image versions |
-| `ESP32_ENABLED`            | Enable ESP32 mode for SmallWebRTC                      |
-| `ESP32_HOST`               | ESP32 host address                                     |
-| `ICE_CONFIG_URL`           | ICE server configuration endpoint                      |
+| Variable                   | Description                                                                 |
+| -------------------------- | --------------------------------------------------------------------------- |
+| `PORT`                     | HTTP server port (default: `8080`)                                          |
+| `SHUTDOWN_TIMEOUT`         | Server shutdown timeout in seconds (default: `7200`)                        |
+| `PIPECAT_LOG_LEVEL`        | Pipecat logging level: `TRACE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `NONE` |
+| `PCC_LOG_FEATURES_SUMMARY` | Set to `true` to log available features on startup                          |
+| `IMAGE_VERSION`            | Set automatically during build to track image versions                      |
+| `ESP32_ENABLED`            | Enable ESP32 mode for SmallWebRTC                                           |
+| `ESP32_HOST`               | ESP32 host address                                                          |
+| `ICE_CONFIG_URL`           | ICE server configuration endpoint                                           |
 
 For WhatsApp integration, the following environment variables are required:
 
@@ -196,7 +201,7 @@ We recommend using FastAPI to create this route. Please refer to the base image 
 
 ## Building the image
 
-While in beta, Pipecat Cloud requires all images to be built to target Linux on ARM. This is the most common platform for cloud deployments.
+Pipecat Cloud requires all images to be built to target Linux on ARM. This is the most common platform for cloud deployments.
 
 ```bash  theme={null}
 docker build --platform linux/arm64 -t my-agent:latest .
@@ -216,8 +221,3 @@ Your agent image should include:
 * Pipecat Cloud will automatically restart your agent if it crashes. Ensure your agent can handle this gracefully.
 * Use [Secrets](./secrets) to securely store sensitive information in your agent image.
 * To optimize for fast start-ups, avoid long running or blocking processes during initialization.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

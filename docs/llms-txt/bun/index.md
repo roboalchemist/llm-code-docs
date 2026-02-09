@@ -8,29 +8,9 @@
 
 # Source: https://bun.com/docs/bundler/index.md
 
-# Source: https://bun.com/docs/test/index.md
-
-# Source: https://bun.com/docs/runtime/index.md
-
-# Source: https://bun.com/docs/index.md
-
-# Source: https://bun.com/docs/guides/index.md
-
-# Source: https://bun.com/docs/bundler/index.md
-
-# Source: https://bun.com/docs/test/index.md
-
-# Source: https://bun.com/docs/runtime/index.md
-
-# Source: https://bun.com/docs/index.md
-
-# Source: https://bun.com/docs/guides/index.md
-
-# Source: https://bun.com/docs/bundler/index.md
-
-# Source: https://bun.com/docs/guides/index.md
-
-# Source: https://bun.com/docs/bundler/index.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Bundler
 
@@ -245,6 +225,78 @@ An array of paths corresponding to the entrypoints of our application. One bundl
     ```
   </Tab>
 </Tabs>
+
+### files
+
+A map of file paths to their contents for in-memory bundling. This allows you to bundle virtual files that don't exist on disk, or override the contents of files that do exist. This option is only available in the JavaScript API.
+
+File contents can be provided as a `string`, `Blob`, `TypedArray`, or `ArrayBuffer`.
+
+#### Bundle entirely from memory
+
+You can bundle code without any files on disk by providing all sources via `files`:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const result = await Bun.build({
+  entrypoints: ["/app/index.ts"],
+  files: {
+    "/app/index.ts": `
+      import { greet } from "./greet.ts";
+      console.log(greet("World"));
+    `,
+    "/app/greet.ts": `
+      export function greet(name: string) {
+        return "Hello, " + name + "!";
+      }
+    `,
+  },
+});
+
+const output = await result.outputs[0].text();
+console.log(output);
+```
+
+When all entrypoints are in the `files` map, the current working directory is used as the root.
+
+#### Override files on disk
+
+In-memory files take priority over files on disk. This lets you override specific files while keeping the rest of your codebase unchanged:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Assume ./src/config.ts exists on disk with development settings
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  files: {
+    // Override config.ts with production values
+    "./src/config.ts": `
+      export const API_URL = "https://api.production.com";
+      export const DEBUG = false;
+    `,
+  },
+  outdir: "./dist",
+});
+```
+
+#### Mix disk and virtual files
+
+Real files on disk can import virtual files, and virtual files can import real files:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// ./src/index.ts exists on disk and imports "./generated.ts"
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  files: {
+    // Provide a virtual file that index.ts imports
+    "./src/generated.ts": `
+      export const BUILD_ID = "${crypto.randomUUID()}";
+      export const BUILD_TIME = ${Date.now()};
+    `,
+  },
+  outdir: "./dist",
+});
+```
+
+This is useful for code generation, injecting build-time constants, or testing with mock modules.
 
 ### outdir
 
@@ -1185,6 +1237,202 @@ Remove function calls from a bundle. For example, `--drop=console` will remove a
   </Tab>
 </Tabs>
 
+### features
+
+Enable compile-time feature flags for dead-code elimination. This provides a way to conditionally include or exclude code paths at bundle time using `import { feature } from "bun:bundle"`.
+
+```ts title="app.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { feature } from "bun:bundle";
+
+if (feature("PREMIUM")) {
+  // Only included when PREMIUM flag is enabled
+  initPremiumFeatures();
+}
+
+if (feature("DEBUG")) {
+  // Only included when DEBUG flag is enabled
+  console.log("Debug mode");
+}
+```
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ['./app.ts'],
+      outdir: './out',
+      features: ["PREMIUM"],  // PREMIUM=true, DEBUG=false
+    })
+    ```
+  </Tab>
+
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build ./app.ts --outdir ./out --feature PREMIUM
+    ```
+  </Tab>
+</Tabs>
+
+The `feature()` function is replaced with `true` or `false` at bundle time. Combined with minification, unreachable code is eliminated:
+
+```ts title="Input" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { feature } from "bun:bundle";
+const mode = feature("PREMIUM") ? "premium" : "free";
+```
+
+```js title="Output (with --feature PREMIUM --minify)" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+var mode = "premium";
+```
+
+```js title="Output (without --feature PREMIUM, with --minify)" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+var mode = "free";
+```
+
+**Key behaviors:**
+
+* `feature()` requires a string literal argument — dynamic values are not supported
+* The `bun:bundle` import is completely removed from the output
+* Works with `bun build`, `bun run`, and `bun test`
+* Multiple flags can be enabled: `--feature FLAG_A --feature FLAG_B`
+* For type safety, augment the `Registry` interface to restrict `feature()` to known flags (see below)
+
+**Use cases:**
+
+* Platform-specific code (`feature("SERVER")` vs `feature("CLIENT")`)
+* Environment-based features (`feature("DEVELOPMENT")`)
+* Gradual feature rollouts
+* A/B testing variants
+* Paid tier features
+
+**Type safety:** By default, `feature()` accepts any string. To get autocomplete and catch typos at compile time, create an `env.d.ts` file (or add to an existing `.d.ts`) and augment the `Registry` interface:
+
+```ts title="env.d.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+declare module "bun:bundle" {
+  interface Registry {
+    features: "DEBUG" | "PREMIUM" | "BETA_FEATURES";
+  }
+}
+```
+
+Ensure the file is included in your `tsconfig.json` (e.g., `"include": ["src", "env.d.ts"]`). Now `feature()` only accepts those flags, and invalid strings like `feature("TYPO")` become type errors.
+
+### metafile
+
+Generate metadata about the build in a structured format. The metafile contains information about all input files, output files, their sizes, imports, and exports. This is useful for:
+
+* **Bundle analysis**: Understand what's contributing to bundle size
+* **Visualization**: Feed into tools like [esbuild's bundle analyzer](https://esbuild.github.io/analyze/) or other visualization tools
+* **Dependency tracking**: See the full import graph of your application
+* **CI integration**: Track bundle size changes over time
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    const result = await Bun.build({
+      entrypoints: ['./src/index.ts'],
+      outdir: './dist',
+      metafile: true,
+    });
+
+    if (result.metafile) {
+      // Analyze inputs
+      for (const [path, meta] of Object.entries(result.metafile.inputs)) {
+        console.log(`${path}: ${meta.bytes} bytes`);
+      }
+
+      // Analyze outputs
+      for (const [path, meta] of Object.entries(result.metafile.outputs)) {
+        console.log(`${path}: ${meta.bytes} bytes`);
+      }
+
+      // Save for external analysis tools
+      await Bun.write('./dist/meta.json', JSON.stringify(result.metafile));
+    }
+    ```
+  </Tab>
+
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build ./src/index.ts --outdir ./dist --metafile ./dist/meta.json
+    ```
+  </Tab>
+</Tabs>
+
+#### Markdown metafile
+
+Use `--metafile-md` to generate a markdown metafile, which is LLM-friendly and easy to read in the terminal:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build ./src/index.ts --outdir ./dist --metafile-md ./dist/meta.md
+```
+
+Both `--metafile` and `--metafile-md` can be used together:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build ./src/index.ts --outdir ./dist --metafile ./dist/meta.json --metafile-md ./dist/meta.md
+```
+
+#### `metafile` option formats
+
+In the JavaScript API, `metafile` accepts several forms:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Boolean — include metafile in the result object
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: true,
+});
+
+// String — write JSON metafile to a specific path
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: "./dist/meta.json",
+});
+
+// Object — specify separate paths for JSON and markdown output
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: {
+    json: "./dist/meta.json",
+    markdown: "./dist/meta.md",
+  },
+});
+```
+
+The metafile structure contains:
+
+```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+interface BuildMetafile {
+  inputs: {
+    [path: string]: {
+      bytes: number;
+      imports: Array<{
+        path: string;
+        kind: ImportKind;
+        original?: string; // Original specifier before resolution
+        external?: boolean;
+      }>;
+      format?: "esm" | "cjs" | "json" | "css";
+    };
+  };
+  outputs: {
+    [path: string]: {
+      bytes: number;
+      inputs: {
+        [path: string]: { bytesInOutput: number };
+      };
+      imports: Array<{ path: string; kind: ImportKind }>;
+      exports: string[];
+      entryPoint?: string;
+      cssBundle?: string; // Associated CSS file for JS entry points
+    };
+  };
+}
+```
+
 ## Outputs
 
 The `Bun.build` function returns a `Promise<BuildOutput>`, defined as:
@@ -1194,6 +1442,7 @@ interface BuildOutput {
   outputs: BuildArtifact[];
   success: boolean;
   logs: Array<object>; // see docs for details
+  metafile?: BuildMetafile; // only when metafile: true
 }
 
 interface BuildArtifact extends Blob {
@@ -1282,22 +1531,41 @@ The Bun runtime implements special pretty-printing of `BuildArtifact` object to 
 
 ## Bytecode
 
-The `bytecode: boolean` option can be used to generate bytecode for any JavaScript/TypeScript entrypoints. This can greatly improve startup times for large applications. Only supported for `"cjs"` format, only supports `"target": "bun"` and dependent on a matching version of Bun. This adds a corresponding `.jsc` file for each entrypoint.
+The `bytecode: boolean` option can be used to generate bytecode for any JavaScript/TypeScript entrypoints. This can greatly improve startup times for large applications. Requires `"target": "bun"` and is dependent on a matching version of Bun.
+
+* **CommonJS**: Works with or without `compile: true`. Generates a `.jsc` file alongside each entrypoint.
+* **ESM**: Requires `compile: true`. Bytecode and module metadata are embedded in the standalone executable.
+
+Without an explicit `format`, bytecode defaults to CommonJS.
 
 <Tabs>
   <Tab title="JavaScript">
     ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    // CommonJS bytecode (generates .jsc files)
     await Bun.build({
       entrypoints: ["./index.tsx"],
       outdir: "./out",
       bytecode: true,
+    })
+
+    // ESM bytecode (requires compile)
+    await Bun.build({
+      entrypoints: ["./index.tsx"],
+      outfile: "./mycli",
+      bytecode: true,
+      format: "esm",
+      compile: true,
     })
     ```
   </Tab>
 
   <Tab title="CLI">
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # CommonJS bytecode
     bun build ./index.tsx --outdir ./out --bytecode
+
+    # ESM bytecode (requires --compile)
+    bun build ./index.tsx --outfile ./mycli --bytecode --format=esm --compile
     ```
   </Tab>
 </Tabs>
@@ -1465,7 +1733,10 @@ interface BuildConfig {
    * start times, but will make the final output larger and slightly increase
    * memory usage.
    *
-   * Bytecode is currently only supported for CommonJS (`format: "cjs"`).
+   * - CommonJS: works with or without `compile: true`
+   * - ESM: requires `compile: true`
+   *
+   * Without an explicit `format`, defaults to CommonJS.
    *
    * Must be `target: "bun"`
    * @default false
@@ -1618,7 +1889,8 @@ bun build <entry points>
 </ParamField>
 
 <ParamField path="--format" type="string" default="esm">
-  Module format of the output bundle. One of <code>esm</code>, <code>cjs</code>, or <code>iife</code>
+  Module format of the output bundle. One of <code>esm</code>, <code>cjs</code>, or <code>iife</code>. Defaults to{" "}
+  <code>cjs</code> when <code>--bytecode</code> is used.
 </ParamField>
 
 ### File Naming

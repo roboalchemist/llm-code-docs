@@ -1,11 +1,8 @@
 # Source: https://rspack.dev/plugins/rspack/lightning-css-minimizer-rspack-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # LightningCssMinimizerRspackPlugin
 
-<ApiMeta specific={['Rspack']} />
-
+Rspack only
 This plugin uses [lightningcss](https://lightningcss.dev/) to minify CSS assets. See [optimization.minimizer](/config/optimization.md#optimizationminimizer).
 
 ```js title="rspack.config.mjs"
@@ -22,29 +19,29 @@ export default {
 
 ### include
 
-* **Type:** `string | RegExp | (string | RegExp)[]`
-* **Default:** `undefined`
+- **Type:** `string | RegExp | (string | RegExp)[]`
+- **Default:** `undefined`
 
 Use this to specify which files should be minified, it matches the path of the output files.
 
 ### exclude
 
-* **Type:** `string | RegExp | (string | RegExp)[]`
-* **Default:** `undefined`
+- **Type:** `string | RegExp | (string | RegExp)[]`
+- **Default:** `undefined`
 
 Use this to specify which files should be excluded from minification, it matches the path of the output files.
 
 ### test
 
-* **Type:** `string | RegExp | (string | RegExp)[]`
-* **Default:** `undefined`
+- **Type:** `string | RegExp | (string | RegExp)[]`
+- **Default:** `undefined`
 
 Use this to provide a pattern that CSS files are matched against. If the output filename matches the given pattern, it will be minified, otherwise it won't be.
 
 ### removeUnusedLocalIdents
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Whether to automatically remove the unused local idents of CSS Modules, including unused CSS class names, ids, and @keyframe names. The declarations of these will be removed.
 
@@ -81,23 +78,37 @@ Below are the configurations supported, `targets` configuration is plain browser
 
 :::info
 
-1. The default `targets` is set to `"fully supports es6"` to ensure that minification does not introduce advanced syntax that could cause browser incompatibility (minification might turn lower-level syntax into advanced syntax because it is shorter).
+1. The `targets` option is resolved in the following priority order:
+
+   - User-specified `targets` in plugin options (highest priority)
+   - Targets derived from Rspack's [`target`](/config/target.md) configuration when using browserslist-related targets (e.g., `browserslist` or `browserslist:modern`), since Lightning CSS only supports browser-related targets, non-browser targets like `node` will not provide default targets for this plugin.
+   - Falls back to `"fully supports es6"` if neither is available
+
+   The fallback ensures that minification does not introduce advanced syntax that could cause browser incompatibility (minification might turn lower-level syntax into advanced syntax because it is shorter).
+
 2. The `exclude` option is configured with all features by default. We usually do syntax degradation in [builtin:lightningcss-loader](/guide/features/builtin-lightningcss-loader.md) or other loaders, so this plugin excludes all features by default to avoid syntax downgrading during the minimize process.
 
 We recommend and encourage users to configure their own `targets` to achieve the best minification results.
 :::
 
 ```ts
+type Targets = {
+  android?: string;
+  chrome?: string;
+  edge?: string;
+  firefox?: string;
+  ie?: string;
+  ios_saf?: string;
+  opera?: string;
+  safari?: string;
+  samsung?: string;
+};
+
 type LightningCssMinimizerOptions = {
   errorRecovery?: boolean;
-  targets?: string[] | string;
+  targets?: string[] | string | Targets;
   include?: LightningcssFeatureOptions;
   exclude?: LightningcssFeatureOptions;
-  /**
-   * @deprecated Use `drafts` instead.
-   * This will be removed in the next major version.
-   */
-  draft?: Drafts;
   drafts?: Drafts;
   nonStandard?: NonStandard;
   pseudoClasses?: PseudoClasses;

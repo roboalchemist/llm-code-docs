@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/auto-keyword-score-deprecation.md
+# Source: https://exa.ai/docs/changelog/auto-keyword-score-deprecation.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Score Deprecation in Auto Search
 
@@ -83,8 +87,3 @@ for item in result.results:
 ## Need Help with Migration?
 
 If you have questions about migrating from Auto search scores or need help determining the best search type for your use case, please reach out to [hello@exa.ai](mailto:hello@exa.ai). We're here to help ensure a smooth transition.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

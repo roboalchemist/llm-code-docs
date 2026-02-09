@@ -2,10 +2,7 @@
 
 # Create Group
 
-```
-POST 
-/v2/:organizationId/Groups
-```
+Copy page
 
 This endpoint creates a new group with the given attributes.
 

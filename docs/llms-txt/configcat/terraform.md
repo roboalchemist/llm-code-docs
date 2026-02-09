@@ -2,6 +2,8 @@
 
 # Terraform - Manage feature flags from HCL scripts
 
+Copy page
+
 [ConfigCat Feature Flags Provider](https://registry.terraform.io/providers/configcat/configcat) allows you to configure and access ConfigCat resources via ConfigCat Public Management API with [Terraform.](https://www.terraform.io/)
 
 ## Installation[​](#installation "Direct link to Installation")
@@ -10,7 +12,7 @@ Please refer to the [official documentation](https://registry.terraform.io/provi
 
 ## Sample usage[​](#sample-usage "Direct link to Sample usage")
 
-```
+```hcl
 terraform {
   required_providers {
     configcat = {
@@ -59,6 +61,8 @@ resource "configcat_setting_value" "setting_value" {
   setting_id     = configcat_setting.setting.id
   value          = "false"
 }
+
+
 ```
 
 ## Useful Resources[​](#useful-resources "Direct link to Useful Resources")

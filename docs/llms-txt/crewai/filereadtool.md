@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/filereadtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File Read
 
 > The `FileReadTool` is designed to read files from the local file system.

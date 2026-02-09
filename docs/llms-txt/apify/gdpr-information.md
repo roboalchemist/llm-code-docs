@@ -6,7 +6,7 @@ The European Union (“**EU**”) General Data Protection Regulation (“**GDPR*
 
 Apify Technologies s.r.o., with its registered seat at Vodičkova 704/36, 110 00 Prague 1, Czech Republic, Company reg. no. 04788290 (also referred to as “**Apify**”, “**we**”, “**us**” or “**our**”), is deeply committed to providing its users with the maximum security and privacy, and is committed to comply with the GDPR. On this page, we will explain our methods to achieve GDPR compliance, both for ourselves and for our customers.
 
-Please note that this document is not a legal contract - the legal relation between Apify and its users is governed by the https://docs.apify.com/legal/general-terms-and-conditions.md and Apify's https://docs.apify.com/legal/privacy-policy.md. Privacy Policy specifies in detail the extent of personal data we collect and process, retention period of personal data and other details regarding personal data processing.
+Please note that this document is not a legal contract - the legal relation between Apify and its users is governed by the [General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md) and Apify's [Privacy Policy](https://docs.apify.com/legal/privacy-policy.md). Privacy Policy specifies in detail the extent of personal data we collect and process, retention period of personal data and other details regarding personal data processing.
 
 ## Apify as the data controller
 
@@ -39,15 +39,15 @@ First and foremost, we process data that is necessary for us to perform our cont
 
 6. **Right to object:** you have the right to object to the processing of personal data which are processed for the purpose of protecting our legitimate interests or for the purpose of fulfilling a task performed in the public interest or in the exercise of public power. If Apify does not prove that there is a justified legitimate reason for the processing which overrides your interest or rights and freedoms, we shall terminate the processing on the basis of the objection without an undue delay.
 
-7. **Right to file a complaint:** you can file a complaint with the Office for Personal Data Protection if you claim that processing of data has violated your right to personal data protection during their processing or related legislation, including violating the above-mentioned rights. The Office for Personal Data Protection is located at the address Pplk. Sochora 27, 170 00 Prague 7. More information about its activities is available on the website https://uoou.gov.cz/.
+7. **Right to file a complaint:** you can file a complaint with the Office for Personal Data Protection if you claim that processing of data has violated your right to personal data protection during their processing or related legislation, including violating the above-mentioned rights. The Office for Personal Data Protection is located at the address Pplk. Sochora 27, 170 00 Prague 7. More information about its activities is available on the website [https://uoou.gov.cz/](https://uoou.gov.cz/).
 
-As the controller for your personal data, Apify is committed to respecting all your rights under the GDPR. If you have any questions or feedback, please reach out to us by email at mailto:legal@apify.com.
+As the controller for your personal data, Apify is committed to respecting all your rights under the GDPR. If you have any questions or feedback, please reach out to us by email at [legal@apify.com](mailto:legal@apify.com).
 
 ## Apify as the data processor
 
 The data that you collect, store and process using Apify might contain personal data of your data subjects, and you are considered the data controller for this personal data.
 
-Using the Apify Platform to process the personal data of your customers means that you have engaged Apify as a data processor to carry out certain processing activities on your behalf. According to Article 28 of the GDPR, the relationship between the controller and the processor needs to be made in writing (electronic form is acceptable under subsection (9) of the same Article). This is where our https://docs.apify.com/legal/general-terms-and-conditions.md and https://docs.apify.com/legal/privacy-policy.md come in. These two documents also serve as your data processing contract, setting out the instructions that you are giving to Apify with regard to processing the personal data you control and establishing the rights and responsibilities of both parties. Apify will only process your data based on your instructions as the data controller.
+Using the Apify Platform to process the personal data of your customers means that you have engaged Apify as a data processor to carry out certain processing activities on your behalf. According to Article 28 of the GDPR, the relationship between the controller and the processor needs to be made in writing (electronic form is acceptable under subsection (9) of the same Article). This is where our [General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md) and [Privacy Policy](https://docs.apify.com/legal/privacy-policy.md) come in. These two documents also serve as your data processing contract, setting out the instructions that you are giving to Apify with regard to processing the personal data you control and establishing the rights and responsibilities of both parties. Apify will only process your data based on your instructions as the data controller.
 
 Apify is based in the EU, therefore all our customers including customers in the EU have a contractual relationship with our EU legal entity, based in the Czech Republic.
 
@@ -57,7 +57,7 @@ One topic that often comes up with customers is data transfers outside of the Eu
 
 When Apify engages sub-processors outside the EU and EEA, it is our job to ensure that we transfer the data lawfully. We keep an up-to-date list of sub-processors and guarantee that the data is adequately protected even after it leaves the EU or EEA. To ensure that all the personal data are protected when they are being transferred outside the EU or EEA, Apify is using a legal mechanism based on Standard Contractual Clauses (SCC) approved by European Commission. These clauses provide sufficient safeguards for the protection of data when they are being transferred internationally. SCC represents a contractual commitment between Apify, as a company transferring the data, and a third-party service provider, which is obliged to maintain the personal data secure and protected at all time.
 
-Hopefully this information helps you to better navigate the EU's data protection requirements. If you have any questions with regard to the above, you are welcome to reach out to us at mailto:legal@apify.com and we will do our best to explain things further. Upon signing a non-disclosure agreement with us, we will provide you with our GDPR Audit document where we provide the list of sub-processors, information about what kind of data we send to them and how we verify their compliance with the GDPR.
+Hopefully this information helps you to better navigate the EU's data protection requirements. If you have any questions with regard to the above, you are welcome to reach out to us at [legal@apify.com](mailto:legal@apify.com) and we will do our best to explain things further. Upon signing a non-disclosure agreement with us, we will provide you with our GDPR Audit document where we provide the list of sub-processors, information about what kind of data we send to them and how we verify their compliance with the GDPR.
 
 ## What Apify is doing for GDPR compliance
 
@@ -75,7 +75,7 @@ Data subjects' ownership of their personal data is at the heart of the GDPR. We 
 
 ### Documentation
 
-Our https://docs.apify.com/legal/general-terms-and-conditions.md and https://docs.apify.com/legal/privacy-policy.md are constantly being revised to increase transparency and to make sure the documents meet GDPR requirements. As these are the basis for our relationship for you, it is very important for us to comprehensively and openly explain our commitments and your rights in these documents. Additionally, we are constantly mapping all our data processing activities to be able to comply with the GDPR accountability requirements.
+Our [General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md) and [Privacy Policy](https://docs.apify.com/legal/privacy-policy.md) are constantly being revised to increase transparency and to make sure the documents meet GDPR requirements. As these are the basis for our relationship for you, it is very important for us to comprehensively and openly explain our commitments and your rights in these documents. Additionally, we are constantly mapping all our data processing activities to be able to comply with the GDPR accountability requirements.
 
 ### Training
 

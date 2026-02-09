@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/transport/self-hosting/ports-firewall.md
 
-# Source: https://docs.livekit.io/home/self-hosting/ports-firewall.md
-
 LiveKit docs › Self-hosting › Firewall configuration
 
 ---
@@ -62,7 +60,7 @@ The firewall rule should look something like this:
 
 ---
 
-This document was rendered at 2025-11-18T23:55:00.486Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/ports-firewall.md](https://docs.livekit.io/home/self-hosting/ports-firewall.md).
+This document was rendered at 2026-02-03T03:25:21.049Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/ports-firewall.md](https://docs.livekit.io/transport/self-hosting/ports-firewall.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

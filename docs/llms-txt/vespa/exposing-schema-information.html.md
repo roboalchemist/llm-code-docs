@@ -117,7 +117,7 @@ $ vespa deploy
 $ vespa curl "schema/v1/"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

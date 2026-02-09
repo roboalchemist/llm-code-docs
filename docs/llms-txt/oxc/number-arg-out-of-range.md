@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/number-arg-out-of-range.md
 ---
-# oxc/number-arg-out-of-range&#x20;
 
 ### What it does
 

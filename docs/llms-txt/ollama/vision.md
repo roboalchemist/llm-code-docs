@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/capabilities/vision.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vision
 
 Vision models accept images alongside text so the model can describe, classify, and answer questions about what it sees.
@@ -35,7 +39,6 @@ Provide an `images` array. SDKs accept file paths, URLs or raw bytes while the R
         }],
         "stream": false
     }'
-    "
     ```
   </Tab>
 

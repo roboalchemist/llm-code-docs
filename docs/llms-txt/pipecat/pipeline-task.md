@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/pipeline/pipeline-task.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PipelineTask
 
 > Manage pipeline execution and lifecycle with PipelineTask
@@ -77,19 +81,23 @@ await runner.run(task)
 </ParamField>
 
 <ParamField path="enable_tracing" type="bool" default="False">
-  Whether to enable OpenTelemetry tracing. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Whether to enable OpenTelemetry tracing. See [The OpenTelemetry
+  guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField path="enable_turn_tracking" type="bool" default="False">
-  Whether to enable turn tracking. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Whether to enable turn tracking. See [The OpenTelemetry
+  guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField path="conversation_id" type="Optional[str]" default="None">
-  Custom ID for the conversation. If not provided, a UUID will be generated. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Custom ID for the conversation. If not provided, a UUID will be generated. See
+  [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 <ParamField path="additional_span_attributes" type="Optional[dict]" default="None">
-  Any additional attributes to add to top-level OpenTelemetry conversation span. See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
+  Any additional attributes to add to top-level OpenTelemetry conversation span.
+  See [The OpenTelemetry guide](/server/utilities/opentelemetry) for details.
 </ParamField>
 
 ## Methods
@@ -164,8 +172,3 @@ async def on_idle_timeout(task):
     print("Pipeline has been idle too long")
     await task.queue_frame(TTSSpeakFrame("Are you still there?"))
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

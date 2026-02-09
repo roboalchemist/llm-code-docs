@@ -1,11 +1,8 @@
 # Source: https://rspack.dev/guide/features/builtin-lightningcss-loader.md
 
-import { ApiMeta, Stability } from '@components/ApiMeta';
-
 # Builtin lightningcss-loader
 
-<ApiMeta addedVersion="1.0.0" />
-
+[Added in v1.0.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0)
 [Lightning CSS](https://lightningcss.dev) is a high performance CSS parser, transformer and minifier written in Rust. It supports parsing and transforming many modern CSS features into syntax supported by target browsers, and also provides a better compression ratio.
 
 Rspack provides a built-in `builtin:lightningcss-loader`, which is based on Lightning CSS to transform CSS. It can replace the [postcss-loader](https://github.com/postcss/postcss-loader) and [autoprefixer](https://github.com/postcss/autoprefixer) for CSS syntax downgrading, prefixing, and other functionalities, offering better performance.
@@ -98,17 +95,24 @@ type LightningcssFeatureOptions = {
   color?: boolean;
 };
 
+type Targets = {
+  android?: string;
+  chrome?: string;
+  edge?: string;
+  firefox?: string;
+  ie?: string;
+  ios_saf?: string;
+  opera?: string;
+  safari?: string;
+  samsung?: string;
+};
+
 type LightningcssLoaderOptions = {
   minify?: boolean;
   errorRecovery?: boolean;
-  targets?: string[] | string;
+  targets?: string[] | string | Targets;
   include?: LightningcssFeatureOptions;
   exclude?: LightningcssFeatureOptions;
-  /**
-   * @deprecated Use `drafts` instead.
-   * This will be removed in the next major version.
-   */
-  draft?: Drafts;
   drafts?: Drafts;
   nonStandard?: NonStandard;
   pseudoClasses?: PseudoClasses;
@@ -118,13 +122,19 @@ type LightningcssLoaderOptions = {
 
 ### targets
 
-* **Type:** `string | string[]`
+- **Type:** `string | string[] | Targets`
 
-Browserslist query string.
+Browserslist query string or a `Targets` object specifying browser versions.
+
+:::tip Default targets from Rspack
+If `targets` is not configured, `builtin:lightningcss-loader` will automatically derive a default targets from Rspack's [`target`](/config/target.md) configuration when using browserslist-related targets (e.g., `browserslist` or `browserslist:modern`). Since Lightning CSS only supports browser-related targets, non-browser targets like `node` will not provide default targets for this loader.
+
+This means you can rely on your Rspack `target` configuration without manually specifying the same targets in the loader options.
+:::
 
 Here are some examples of setting targets.
 
-* Setting a browserslist query string:
+- Setting a browserslist query string:
 
 ```js
 const loader = {
@@ -136,7 +146,7 @@ const loader = {
 };
 ```
 
-* Setting an array of browserslist query strings:
+- Setting an array of browserslist query strings:
 
 ```js
 const loader = {
@@ -148,10 +158,25 @@ const loader = {
 };
 ```
 
+- Setting a `Targets` object:
+
+```js
+const loader = {
+  loader: 'builtin:lightningcss-loader',
+  /** @type {import('@rspack/core').LightningcssLoaderOptions} */
+  options: {
+    targets: {
+      chrome: '95.0',
+      safari: '13.2',
+    },
+  },
+};
+```
+
 ### errorRecovery
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Control how Lightning CSS handles invalid CSS syntax.
 

@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/cascade/mcp.md
 
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Model Context Protocol (MCP)
+
+> Configure MCP servers to extend Cascade with custom tools and services using stdio, HTTP, or SSE transports with admin controls for Teams and Enterprise.
 
 **MCP (Model Context Protocol)** is a protocol that enables LLMs to access custom tools and services.
 An MCP client (Cascade, in this case) can make requests to MCP servers to access tools that they provide.
@@ -27,41 +19,28 @@ See the [official MCP docs](https://modelcontextprotocol.io/) for more informati
 
 ## Adding a new MCP plugin
 
-New MCP plugins can be added from the Plugin Store, which you can access by clicking on the `Plugins` icon in the top right menu in the Cascade panel, or from the `Windsurf Settings` > `Cascade` > `Plugins` section.
+New MCP plugins can be added by going to the `Settings` > `Tools` > `Windsurf Settings` > `Add Server` section.
 
-If you cannot find your desired MCP plugin, you can add it manually by editing the raw `mcp_config.json` file.
+If you cannot find your desired MCP plugin, you can add it manually by clicking `View Raw Config` button and editing the raw `mcp_config.json` file.
 
-Official MCP plugins will show up with a blue checkmark, indicating that they are made by the parent service company.
+When you click on an MCP server, simply click `+ Add Server` to expose the server and its tools to Cascade.
 
-When you click on a plugin, simply click `Install` to expose the server and its tools to Cascade.
+<Frame>
+  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=06f96424bd8374333d6969006868456e" data-og-width="1666" width="1666" data-og-height="1388" height="1388" data-path="assets/plugins/mcp-server-templates.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=5b2d971d3bf67cc6086400971450795a 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7cd83fdadc63dc1ad56e248627b2c3ca 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=10df4adfb6948fdaa90de722bfec030b 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=c218409460599a4640e7d0561d67828a 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f0a89fdd40125f56652d2a07e36a560f 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/mcp-server-templates.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=d2205e6e71979118c375006caae1e259 2500w" />
+</Frame>
 
-Windsurf supports two [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP servers: `stdio` and `http`.
+Cascade supports three [transport types](https://modelcontextprotocol.io/docs/concepts/transports) for MCP
+servers: `stdio`,  `Streamable HTTP`, and `SSE`.
+
+Cascade also supports OAuth for each transport type.
 
 For `http` servers, the URL should reflect that of the endpoint and resemble `https://<your-server-url>/mcp`.
 
-We can also support streamable HTTP transport and MCP Authentication.
-
 <Note>Make sure to press the refresh button after you add a new MCP plugin.</Note>
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d755c65b22df71e8d035f440cb2fff22" data-og-width="1138" width="1138" data-og-height="828" height="828" data-path="assets/windsurf/cascade/mcp/mcp-plugin-store.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a7e3ab90cf04cdfabbdd580f83aea2b2 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=0011e35c9f6a2202f26e3485ef017b2c 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=92c63c6e862e266842486022c402866d 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=26f17c37647e79435ca3ade47e087147 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1202cfe8ef04923199de9625ffe8aaa6 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-plugin-store.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=d582ec77762e3e0ca99d65d5525e64a6 2500w" />
-</Frame>
-
-## Configuring MCP tools
-
-Each plugin has a certain number of tools it has access to. Cascade has a limit of 100 total tools that it has access to at any given time.
-
-At the plugin level, you can navigate to the Tools tab and toggle the tools that you wish to enable. Or, from the `Windsurf Settings`, you can click on the `Manage plugins` button.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=30757b56f44e15c789a6f9f50dfa6035" data-og-width="1130" width="1130" data-og-height="700" height="700" data-path="assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ba55e144bbb094c2cc9425c5225a01a1 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=f3b5992248f1c307fec42269b6172b43 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4d03feb4bc0128fab8236a5184f5aed 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=4067473f9a179c67e3dabd16db2c870b 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=1b6598d6418581175716d87b40903fee 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/mcp/mcp-manage-plugin-tools.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=5d12db70cab4e15dbf199f629d4d40d4 2500w" />
-</Frame>
 
 ## mcp\_config.json
 
-The `~/.codeium/windsurf/mcp_config.json` file is a JSON file that contains a list of servers that Cascade can connect to.
-
-The JSON should follow the same schema as the config file for Claude Desktop.
+The `~/.codeium/mcp_config.json` file is a JSON file that contains a list of servers that Cascade can connect to.
 
 Here’s an example configuration, which sets up a single server for GitHub:
 
@@ -82,25 +61,51 @@ Here’s an example configuration, which sets up a single server for GitHub:
 }
 ```
 
-It's important to note that for HTTP servers, the configuration is slightly different and requires a `serverUrl` field.
+Be sure to provide the required arguments and environment variables for the servers that you want to use.
+
+See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+
+### Remote HTTP MCPs
+
+It's important to note that for remote HTTP MCPs, the configuration is slightly
+different and requires a `serverUrl` or `url` field.
 
 Here's an example configuration for an HTTP server:
 
 ```json  theme={null}
 {
   "mcpServers": {
-    "figma": {
-      "serverUrl": "<your-server-url>/mcp"
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "value"
+      }
     }
   }
 }
 ```
 
-<Note>For Figma Dev Mode MCP server, make sure you have updated to the latest Figma desktop app version to use the new `/mcp` endpoint.</Note>
+### Config Interpolation
 
-Be sure to provide the required arguments and environment variables for the servers that you want to use.
+The `~/.codeium/mcp_config.json` file handles interpolation of
+environment variables in these fields: `command`, `args`, `env`, `serverUrl`, `url`, and
+`headers`.
 
-See the [official MCP server reference repository](https://github.com/modelcontextprotocol/servers) or [OpenTools](https://opentools.com/) for some example servers.
+Here’s an example configuration, which uses an `AUTH_TOKEN` environment variable
+in `headers`.
+
+```json  theme={null}
+{
+  "mcpServers": {
+    "remote-http-mcp": {
+      "serverUrl": "<your-server-url>/mcp",
+      "headers": {
+        "API_KEY": "Bearer ${env:AUTH_TOKEN}"
+      }
+    }
+  }
+}
+```
 
 ## Admin Controls (Teams & Enterprises)
 
@@ -285,4 +290,4 @@ Remember: Once you whitelist any server, **all other servers are automatically b
 
 * Since MCP tool calls can invoke code written by arbitrary server implementers, we do not assume liability
   for MCP tool call failures. To reiterate:
-* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools) and [resources](https://modelcontextprotocol.io/docs/concepts/resources), not [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).
+* We currently support an MCP server's [tools](https://modelcontextprotocol.io/docs/concepts/tools), [resources](https://modelcontextprotocol.io/docs/concepts/resources), and [prompts](https://modelcontextprotocol.io/docs/concepts/prompts).

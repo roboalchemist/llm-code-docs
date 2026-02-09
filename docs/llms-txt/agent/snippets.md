@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/snippets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Snippets in Agent.ai
 
 Use [**Snippets**](https://agent.ai/builder/snippets) to define reusable values that are available to all agents across the platform. This is useful for things like shared sign-offs, disclaimers, or other repeated text.

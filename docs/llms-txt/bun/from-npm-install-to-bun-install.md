@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/from-npm-install-to-bun-install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate from npm install to bun install
 
 `bun install` is a Node.js compatible npm client designed to be an incredibly fast successor to npm.
@@ -97,7 +101,7 @@ bun update
 bun update @types/bun --latest
 
 # Update a dependency to a specific version
-bun update @types/bun@1.3.2
+bun update @types/bun@1.3.3
 
 # Update all dependencies to the latest versions
 bun update --latest

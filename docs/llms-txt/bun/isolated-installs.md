@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/isolated-installs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Isolated installs
 
 > Strict dependency isolation similar to pnpm's approach
@@ -190,7 +194,7 @@ Isolated installs are conceptually similar to pnpm, so migration should be strai
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Remove pnpm files
-$ rm -rf node_modules pnpm-lock.yaml
+rm -rf node_modules pnpm-lock.yaml
 
 # Install with Bun's isolated linker
 bun install --linker isolated

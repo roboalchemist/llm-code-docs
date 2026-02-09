@@ -7,7 +7,7 @@ title: ASP.NET Core Identity Auth
 ### ASP.NET Core Identity Auth now used in new Integrated Auth projects
 
 ASP.NET Core Identity Auth is the default Auth Model adopted in new ServiceStack projects which closely follows the same 
-approach as the Microsoft Project Template it integrates ServiceStack with, e.g. the .NET 8
+approach as the Microsoft Project Template it integrates ServiceStack with, e.g. the .NET 10
 **Blazor** and **Blazor Vue** project templates adopts the exact same Auth configuration as Microsoft's default Blazor Project 
 Template configured with **Individual** Identity Auth, likewise with the **Bootstrap** and **Tailwind** styled **MVC** and 
 **Razor Pages** templates.
@@ -36,11 +36,6 @@ For a quick preview of what these look like, checkout out their Internet Hosted 
         <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor-vue.png"></div>
         <div class="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold group-hover:bg-indigo-700 group-hover:text-white text-center py-2">blazor-vue.web-templates.io</div>
     </a>
-    <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700" href="https://blazor-wasm.web-templates.io">
-        <div style="max-height:350px;overflow:hidden">
-        <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/blazor-wasm.png"></div>
-        <div class="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-semibold group-hover:bg-indigo-700 group-hover:text-white text-center py-2">blazor-wasm.web-templates.io</div>
-    </a>
     <a class="block group border dark:border-gray-800 hover:border-indigo-700 dark:hover:border-indigo-700" href="https://razor.web-templates.io">
         <div style="max-height:350px;overflow:hidden">
         <img class="p-2" src="https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/razor.png"></div>
@@ -64,7 +59,7 @@ Identity Auth in your own projects:
 
 - [blazor](https://github.com/NetCoreTemplates/blazor)
 - [blazor-vue](https://github.com/NetCoreTemplates/blazor-vue)
-- [blazor-wasm](https://github.com/NetCoreTemplates/blazor-wasm)
+- [blazor-wasm](https://github.com/LegacyTemplates/blazor-wasm)
 - [razor](https://github.com/NetCoreTemplates/razor)
 - [mvc](https://github.com/NetCoreTemplates/mvc)
 - [razor-bootstrap](https://github.com/NetCoreTemplates/razor-bootstrap)
@@ -93,7 +88,7 @@ but replace their internal implementation to use ASP.NET Identity Auth instead.
 The new Identity Auth integration is contained in the .NET 6+ **ServiceStack.Extensions** NuGet package:
 
 ```xml
-<PackageReference Include="ServiceStack.Extensions" Version="8.*" />
+<PackageReference Include="ServiceStack.Extensions" Version="10.*" />
 ```
 
 Which at a minimum lets you configure ServiceStack to use Identity Auth by simply registering the existing `AuthFeature`
@@ -248,7 +243,7 @@ public class ConfigureAuth : IHostingStartup
 }
 ```
 
-Which the new .NET 8 BlazorDiffusion App does in [Configure.Auth.cs](https://github.com/NetCoreApps/BlazorDiffusionVue/blob/main/BlazorDiffusion/Configure.Auth.cs)
+Which the new .NET 10 BlazorDiffusion App does in [Configure.Auth.cs](https://github.com/NetCoreApps/BlazorDiffusionVue/blob/main/BlazorDiffusion/Configure.Auth.cs)
 to be compatible with its existing ServiceStack `UserAuth` tables which used an `int` primary key.
 
 ## Using Identity Auth in ServiceStack Apps
@@ -314,7 +309,7 @@ This transparent re-implementation of ServiceStack Auth Providers and endpoints 
 
 ### SMTP IEmailSender
 
-The .NET 8 Templates also include a nice solution for sending Identity Auth emails through the `IEmailSender` interface
+The .NET 10 Templates also include a nice solution for sending Identity Auth emails through the `IEmailSender` interface
 which drops the Email Request in the registered Background MQ in
 [Configure.Mq.cs](https://github.com/NetCoreTemplates/blazor/blob/main/MyApp/Configure.Mq.cs)
 which uses it to invoke the `SendEmail` API in

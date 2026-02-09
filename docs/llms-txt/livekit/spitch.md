@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/spitch.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/spitch.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/spitch.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
-
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Spitch
+LiveKit docs › Models › STT › Plugins › Spitch
 
 ---
 
@@ -39,13 +27,13 @@ This section provides a quick reference for the Spitch STT plugin. For more info
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[spitch]~=1.2"
+uv add "livekit-agents[spitch]~=1.3"
 
 ```
 
 ### Authentication
 
-The Spitch plugin requires a [Spitch API key](https://studio.spitch.app/api/keys).
+The Spitch plugin requires a [Spitch API key](https://spitch.studio/api-keys).
 
 Set `SPITCH_API_KEY` in your `.env` file.
 
@@ -89,7 +77,7 @@ The following resources provide more information about using Spitch with LiveKit
 
 ---
 
-This document was rendered at 2025-11-18T23:55:09.518Z.
+This document was rendered at 2026-02-03T03:25:04.385Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/spitch.md](https://docs.livekit.io/agents/models/stt/plugins/spitch.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

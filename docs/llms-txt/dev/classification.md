@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/classification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Classification
 
 Classifies text into predefined categories using AI. Useful for tagging and routing inputs.
@@ -148,7 +152,7 @@ Additional context: This is a product review for a high-end electronics item. Fo
         </code>
       </td>
 
-      <td>The keys should be the categories you want to classify the text in, for example 'valid' and 'invalid', and the values the criteria for each category. Category names should contain only letters of the English alphabet, digits, underscores and spaces.</td>
+      <td>The keys should be the categories you want to classify the text into, for example 'valid' and 'invalid', and the values are the criteria for each category. Category names should contain only letters of the English alphabet, digits, underscores, and spaces.</td>
 
       <td>
         <span>-</span>
@@ -205,7 +209,7 @@ Below are the possible end states of the block call.
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error classifying the text.</td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/support/payment/accepted-payment-methods.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Accepted payment methods
 
 > Learn about the payment methods accepted by Comfy Organization Inc

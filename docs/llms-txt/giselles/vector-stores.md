@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/settings/team/vector-stores.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vector Stores
 
 > Ingest and manage GitHub repositories and documents as knowledge bases.
@@ -24,6 +28,62 @@ Currently, two types of Vector Stores are supported:
 </Note>
 
 Document Vector Stores allows you to upload PDF, TXT, and Markdown files to ingest into Vector Stores.
+
+### Plan-Based Quotas
+
+The number of Document Vector Stores you can create is limited based on your team's subscription plan.
+
+#### Quotas by Plan
+
+| Plan | Document Vector Stores Limit |
+| ---- | ---------------------------- |
+| Free | 0 (unavailable)              |
+| Pro  | 5                            |
+| Team | 20                           |
+
+#### Checking Usage
+
+The Document Vector Stores page displays your current usage:
+
+* **Used / Maximum**: Example: "3 / 5 stores"
+* **Remaining**: Example: "2 Document Vector Stores remaining in your Pro plan."
+* **Plan name**: Your current plan (Free, Pro, Team)
+
+#### Managing Plan Limits
+
+When you reach the maximum capacity:
+
+1. **An alert is displayed**:
+   * Title: "Maximum capacity reached"
+   * Message: "Delete an existing store or upgrade your plan in Team Settings to add more Document Vector Stores."
+
+2. **New Vector Store button is disabled**:
+   * Hover over the button to see a tooltip explaining why
+   * "You've reached the number of Document Vector Stores included in your plan."
+
+3. **How to proceed**:
+   * Delete an existing Document Vector Store
+   * Upgrade your plan in [Team Settings](/en/guides/settings/team/general)
+
+#### For Free Plan Users
+
+Document Vector Stores are not available on the Free plan:
+
+1. **Locked state is displayed**:
+   * Title: "Document Vector Stores are locked"
+   * Message: "Upgrade to Pro or Team to ingest knowledge bases and connect Document Vector Stores to your agents."
+
+2. **Warning alert**:
+   * "Document Vector Stores are not included in the Free plan"
+   * "Upgrade to Pro or Team to ingest documents with Vector Stores."
+
+3. **How to upgrade**:
+   * Click the **View plans** button to go to [Team Settings](/en/guides/settings/team/general)
+   * Upgrade to the Pro or Team plan
+
+<Note>
+  For more details about plans, see [Plans Information](/en/guides/learn-about/plans).
+</Note>
 
 ### Creating a Document Vector Store
 
@@ -120,6 +180,64 @@ To delete a Document Vector Store:
 </Warning>
 
 ## GitHub Repositories
+
+### Plan-Based Quotas
+
+The number of GitHub repositories you can register is limited based on your team's subscription plan.
+
+#### Quotas by Plan
+
+| Plan | GitHub Repositories Limit |
+| ---- | ------------------------- |
+| Free | 0 (unavailable)           |
+| Pro  | 3                         |
+| Team | 10                        |
+
+#### Checking Usage
+
+The GitHub Repositories page displays your current usage:
+
+* **Used / Maximum**: Example: "2 / 3 repositories"
+* **Remaining**: Example: "1 GitHub Repository remaining in your Pro plan."
+* **Plan name**: Your current plan (Free, Pro, Team)
+
+#### Managing Plan Limits
+
+When you reach the maximum capacity:
+
+1. **An alert is displayed**:
+   * Title: "Maximum capacity reached"
+   * Message: "Delete an existing repository or upgrade your plan in Team Settings to add more GitHub Vector Stores."
+
+2. **Register Repository button is disabled**:
+   * Hover over the button to see a tooltip explaining why
+   * "You've reached the number of GitHub Vector Stores included in your plan."
+
+3. **How to proceed**:
+   * Delete an existing repository
+   * Upgrade your plan in [Team Settings](/en/guides/settings/team/general)
+
+#### For Free Plan Users
+
+GitHub Vector Stores are not available on the Free plan:
+
+1. **Locked state is displayed**:
+   * Title: "GitHub Vector Stores are locked"
+   * Message: "Upgrade to Pro or Team to index GitHub repositories and connect them to your agents."
+
+2. **Warning alert**:
+   * "GitHub Vector Stores are not included in the Free plan"
+   * "Upgrade to Pro or Team to index GitHub repositories."
+
+3. **How to upgrade**:
+   * Click the **View plans** button to go to [Team Settings](/en/guides/settings/team/general)
+   * Upgrade to the Pro or Team plan
+
+<Note>
+  For more details about plans, see [Plans Information](/en/guides/learn-about/plans).
+</Note>
+
+### Prerequisites
 
 To use GitHub Vector Stores:
 

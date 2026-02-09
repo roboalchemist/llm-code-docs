@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/axiom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Axiom and OpenLLMetry
 
 <Frame>
@@ -14,8 +18,3 @@ TRACELOOP_HEADERS="Authorization=Bearer <YOUR_API_KEY>,X-Axiom-Dataset=<YOUR_DAT
 ```
 
 For more information check out the [docs link](https://axiom.co/docs/send-data/opentelemetry).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

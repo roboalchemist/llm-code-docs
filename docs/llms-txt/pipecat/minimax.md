@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/minimax.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MiniMax
 
 > Text-to-speech service implementation using MiniMax T2A API
@@ -48,8 +52,3 @@ Before using MiniMax TTS services, you need:
 
 * `MINIMAX_API_KEY`: Your MiniMax API key for authentication
 * `MINIMAX_GROUP_ID`: Your MiniMax group ID
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

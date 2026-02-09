@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/corpora/corpora-sources-documents-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Corpus Source Documents
 
 > Returns details for all documents contained in the source
@@ -134,6 +138,13 @@ components:
           type: string
           description: The timestamp that the document was published, if known.
           format: date-time
+        exampleQueries:
+          type: array
+          items:
+            type: string
+          description: |-
+            Example queries for query-based embedding.
+             When present, these queries are embedded instead of the document content.
       description: >-
         Metadata about a document. This is typically not included in the
         document's
@@ -147,7 +158,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

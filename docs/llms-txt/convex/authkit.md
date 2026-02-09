@@ -4,9 +4,11 @@
 
 [WorkOS AuthKit](https://authkit.com) is an authentication solution that enables sign-in using passwords, social login providers, email one-time codes, two-factor authentication, and user management capabilities.
 
+You can use your own WorkOS account with AuthKit or [create a WorkOS account with Convex](/auth/authkit/auto-provision.md) to create and do some configuration of AuthKit environments automatically.
+
 ## Get started[​](#get-started "Direct link to Get started")
 
-The quickest way to get started is to create an [associated WorkOS account](/auth/authkit/auto-provision.md) through the Convex CLI.
+The quickest way to get started is with a template:
 
 ```
 npm create convex@latest -- -t react-vite-authkit
@@ -17,6 +19,8 @@ npm run dev
 Follow the prompts to create a WorkOS team that will be associated with your Convex team. After this Convex deployments for projects in this team will be able to automatically provision and configure their own WorkOS environments.
 
 That's it! After this you and other members of your Convex team can create and configure development WorkOS environments without visiting [workos.com](https://workos.com).
+
+See [AuthKit configuration in convex.json](/auth/authkit/auto-provision.md) to modify the convex.json file in this template for your needs.
 
 ### Configuring an existing WorkOS account[​](#configuring-an-existing-workos-account "Direct link to Configuring an existing WorkOS account")
 

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/what-attachment-types-are-not-supported.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What attachment types are not supported?
 
 > Learn which file attachment extensions you can't send.

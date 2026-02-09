@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/class/Configuration.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/Configuration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/Configuration.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/Configuration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/Configuration.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/Configuration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/Configuration.md
-
 # Configuration<!-- -->
 
 `Configuration` is a value object holding the SDK configuration. We can use it in two ways:

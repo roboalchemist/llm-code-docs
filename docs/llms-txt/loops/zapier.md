@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier
 
 > Connect Loops to thousands of apps to manage contacts and send email.

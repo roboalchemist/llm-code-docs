@@ -6,7 +6,7 @@
 
 ***
 
-https://www.lindy.ai/ is an AI-powered automation platform that lets you create intelligent workflows and automate complex tasks. By integrating Apify with Lindy, you can leverage Apify's web scraping capabilities within Lindy's AI-driven automation workflows to extract data, monitor websites, and trigger actions based on scraped information.
+[Lindy](https://www.lindy.ai/) is an AI-powered automation platform that lets you create intelligent workflows and automate complex tasks. By integrating Apify with Lindy, you can leverage Apify's web scraping capabilities within Lindy's AI-driven automation workflows to extract data, monitor websites, and trigger actions based on scraped information.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ This section demonstrates how to integrate Apify's data extraction capabilities 
 
 Actor Availability
 
-You have access to thousands of Actors available on the https://apify.com/store. Please note that Actors using the *rental pricing model* are not available for use with this integration. For details on Actor pricing models, refer to our https://docs.apify.com/platform/actors/publishing/monetize.md#rental-pricing-model.
+You have access to thousands of Actors available on the [Apify Store](https://apify.com/store). Please note that Actors using the *rental pricing model* are not available for use with this integration. For details on Actor pricing models, refer to our [Pricing Documentation](https://docs.apify.com/platform/actors/publishing/monetize.md#rental-pricing-model).
 
 This establishes the fundamental workflow:<br />*Chatting with Lindy can now trigger the Apify Instagram Profile Scraper.*
 

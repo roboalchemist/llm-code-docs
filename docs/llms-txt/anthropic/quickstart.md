@@ -1,5 +1,9 @@
 # Source: https://platform.claude.com/docs/en/agent-sdk/quickstart.md
 
+# Source: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md
+
+# Source: https://platform.claude.com/docs/en/agent-sdk/quickstart.md
+
 # Quickstart
 
 Get started with the Python or TypeScript Agent SDK to build AI agents that work autonomously
@@ -16,7 +20,7 @@ Use the Agent SDK to build an AI agent that reads your code, finds bugs, and fix
 ## Prerequisites
 
 - **Node.js 18+** or **Python 3.10+**
-- An **Anthropic account** ([sign up here](https://console.anthropic.com/))
+- An **Anthropic account** ([sign up here](https://platform.claude.com/))
 
 ## Setup
 
@@ -35,9 +39,9 @@ Use the Agent SDK to build an AI agent that reads your code, finds bugs, and fix
         brew install --cask claude-code
         ```
       </Tab>
-      <Tab title="npm">
-        ```bash
-        npm install -g @anthropic-ai/claude-code
+      <Tab title="WinGet">
+        ```powershell
+        winget install Anthropic.ClaudeCode
         ```
       </Tab>
     </Tabs>
@@ -87,7 +91,7 @@ Use the Agent SDK to build an AI agent that reads your code, finds bugs, and fix
   <Step title="Set your API key">
     If you've already authenticated Claude Code (by running `claude` in your terminal), the SDK uses that authentication automatically.
 
-    Otherwise, you need an API key, which you can get from the [Claude Console](https://console.anthropic.com/).
+    Otherwise, you need an API key, which you can get from the [Claude Console](https://platform.claude.com/).
 
     Create a `.env` file in your project directory and store the API key there:
 
@@ -313,7 +317,7 @@ With `Bash` enabled, try: `"Write unit tests for utils.py, run them, and fix any
 | `bypassPermissions` | Runs without prompts | CI/CD pipelines, automation |
 | `default` | Requires a `canUseTool` callback to handle approval | Custom approval flows |
 
-The example above uses `acceptEdits` mode, which auto-approves file operations so the agent can run without interactive prompts. If you want to prompt users for approval, use `default` mode and provide a [`canUseTool` callback](/docs/en/agent-sdk/permissions#canusetool) that collects user input. For more control, see [Permissions](/docs/en/agent-sdk/permissions).
+The example above uses `acceptEdits` mode, which auto-approves file operations so the agent can run without interactive prompts. If you want to prompt users for approval, use `default` mode and provide a [`canUseTool` callback](/docs/en/agent-sdk/user-input) that collects user input. For more control, see [Permissions](/docs/en/agent-sdk/permissions).
 
 ## Next steps
 

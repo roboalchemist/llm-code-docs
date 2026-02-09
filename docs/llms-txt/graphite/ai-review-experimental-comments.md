@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-experimental-comments.md
 
+> ## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Experimental comments
 
 > Learn about experimental AI review comments and how to provide feedback

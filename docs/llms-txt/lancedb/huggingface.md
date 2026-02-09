@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/huggingface.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hugging Face
 
 export const PyEmbeddingHuggingfaceUsage = "import tempfile\nfrom pathlib import Path\n\nimport lancedb\nimport pandas as pd\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\n\ndb = lancedb.connect(str(Path(tempfile.mkdtemp()) / \"huggingface-demo\"))\nmodel = get_registry().get(\"huggingface\").create(name=\"facebook/bart-base\")\n\nclass Words(LanceModel):\n    text: str = model.SourceField()\n    vector: Vector(model.ndims()) = model.VectorField()\n\ndf = pd.DataFrame({\"text\": [\"hi hello sayonara\", \"goodbye world\"]})\ntable = db.create_table(\"greets\", schema=Words)\ntable.add(df)\nquery = \"old greeting\"\nactual = table.search(query).limit(1).to_pydantic(Words)[0]\nprint(actual.text)\n";
@@ -13,8 +17,3 @@ Example usage:
     {PyEmbeddingHuggingfaceUsage}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

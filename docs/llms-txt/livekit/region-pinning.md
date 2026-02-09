@@ -4,82 +4,128 @@
 
 # Source: https://docs.livekit.io/telephony/features/region-pinning.md
 
-# Source: https://docs.livekit.io/deploy/admin/regions/region-pinning.md
-
-# Source: https://docs.livekit.io/telephony/features/region-pinning.md
-
-# Source: https://docs.livekit.io/home/cloud/region-pinning.md
-
-LiveKit docs › LiveKit Cloud › Region pinning
+LiveKit docs › Features › Region pinning
 
 ---
 
-# Region pinning
+# Region pinning for telephony
 
-> Learn how to isolate LiveKit traffic to a specific region.
+> Learn how to isolate LiveKit telephony traffic to a specific region.
 
 ## Overview
 
-Region pinning restricts network traffic to a specific geographical region. Use this feature to comply with local telephony regulations or data residency requirements.
+LiveKit SIP is part of LiveKit Cloud and runs as a globally distributed service, providing redundancy and high availability. By default, SIP endpoints are global, and calls are routed through the region closest to the origination point. Incoming calls are routed to the region closest to the SIP trunking provider's endpoint. Outgoing calls originate from the same region where the `CreateSIPParticipant` API call is made.
 
-There are two options for restricting traffic to a specific region:
+In most cases, using the global endpoint is the recommended approach. However, if you need to exercise more control over call routing—for example, to comply with local telephony regulations—LiveKit SIP supports region pinning. This allows you to restrict both incoming and outgoing calls to a specific region.
 
-- **Protocol-based region pinning**
+## Region pinning
 
-Signaling and transport protocols include region selection. Use this option with LiveKit realtime SDKs.
-- **Region-based endpoint**
+Region pinning allows you to restrict calls to a specific region to comply with local telephony regulations. The following sections describe how to enable region pinning for inbound and outbound calls.
 
-Clients connect to a region-specific endpoint. Use this option for telephony applications. To learn more, see [SIP cloud and region pinning](https://docs.livekit.io/sip/cloud.md).
-
-> ℹ️ **Agent deployment regions**
+> ℹ️ **Protocol-based region pinning**
 > 
-> Region pinning only applies to LiveKit Cloud network traffic. To manage the regions where your agents themselves are deployed, see [Agent deployment regions](https://docs.livekit.io/agents/ops/deployment.md#regions).
+> For realtime SDKs, you can use protocol-based region pinning to restrict traffic to a specific region. To learn more, see [Region pinning](https://docs.livekit.io/deploy/admin/regions/region-pinning.md).
 
-## Protocol-based region pinning
+### Inbound calls
 
-In protocol-based region pinning, region selection information is embedded in the initial signaling and transport messages. When pinning is enabled, if the initial connection is routed to a server outside the allowed regions, the request is rejected. The client then retries the connection using a server in one of the pinned regions.
+To enable region pinning for incoming calls, configure your SIP trunking provider to use a region-based endpoint. A region-based endpoint is configured to direct traffic only to nodes within a specific region.
 
-Region pinning is available for customers on the [Scale plan](https://livekit.io/pricing) or higher.
+#### Region-based endpoint format
 
-> 🔥 **Protocol-based region pinning only works with LiveKit realtime SDKs**
+The endpoint format is as follows:
+
+```
+{sip_subdomain}.{region_name}.sip.livekit.cloud
+
+```
+
+Where:
+
+- `{sip_subdomain}` is your LiveKit SIP URI subdomain. This is also your project ID without the `p_` prefix. You can find your SIP URI on the [Project settings](https://cloud.livekit.io/projects/p_/settings/project) page.
+
+For example, if your SIP URI is `sip:bwwn08a2m4o.sip.livekit.cloud`, your SIP subdomain is `bwwn08a2m4o`.
+- `{region_name}` is one of the following [regions](#available-regions):
+
+`eu`, `india`, `sa`, `us`
+
+For example to create a SIP endpoint for India, see the following:
+
+> 💡 **Tip**
 > 
-> For SIP requests, the server rejects the connection and doesn't retry it. Use [region-based endpoints](https://docs.livekit.io/sip/cloud.md#region-based-endpoint) for SIP.
+> Sign in to LiveKit Cloud to automatically include the subdomain for your project in the example.
 
-> ℹ️ **When to use protocol-based region pinning**
-> 
-> When connecting with LiveKit realtime SDKs or when regional data residency (for example, GDPR compliance) is required.
+```shell
+%{regionalEndpointSubdomain}%.india.sip.livekit.cloud
 
-### Enabling protocol-based region pinning
+```
 
-LiveKit must enable region pinning for your project. To request region pinning, sign in to [LiveKit Cloud](https://cloud.livekit.io) and select the **Support** option in the menu.
+Use the region-based endpoint to configure your SIP trunking provider. Follow the instructions for external provider setup in [SIP trunk setup](https://docs.livekit.io/telephony/start/sip-trunk-setup.md).
 
-## Considerations
+### Outbound calls
 
-When you enable region pinning, you turn off automatic failover to the nearest region in the case of an outage.
+To originate calls from the same region as the destination phone number, set the `destination_country` parameter for an outbound trunk. This applies region pinning to all calls made through the trunk. When `destination_country` is enabled, outbound calls are routed based on location:
 
-## Available regions
+- For countries that LiveKit operates data centers in, calls originate from a server within the country.
+- For other countries, calls originate from a server that is closest to that country.
 
-The following regions are available for region pinning:
+In the unlikely event that the preferred region is non-operational or offline, calls originate from another region nearby. For a full list of supported regions, see [Available regions](#available-regions).
+
+The `destination_country` parameter accepts a two-letter [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). To learn more, see [CreateSIPOutboundTrunk](https://docs.livekit.io/reference/telephony/sip-api.md#createsipoutboundtrunk).
+
+#### Example outbound trunk
+
+Create an outbound trunk with the `destination_country` parameter set to India, `india`.
+
+1. Create a file named `outbound-trunk.json`, replacing the phone number with your SIP provider phone number and username and password:
+
+```json
+{
+  "trunk": {
+    "name": "My outbound trunk",
+    "phone_number": "+15105550100",
+    "username": "myusername",
+    "password": "mypassword",
+    "destination_country": "in"
+  }
+}
+
+```
+2. Create the outbound trunk using the CLI:
+
+```shell
+lk sip outbound create outbound-trunk.json
+
+```
+
+To learn more, see [Outbound trunks](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md).
+
+### Available regions
+
+The following regions are available for region pinning for SIP:
 
 | Region name | Region locations |
-| `africa` | South Africa |
-| `asia` | Japan, Singapore |
-| `aus` | Australia |
 | `eu` | France, Germany, Zurich |
-| `il` | Israel |
-| `india` | India, India South |
-| `me` | Saudi Arabia, UAE |
-| `sa` | Brazil |
-| `uk` | UK |
+| `india` | India |
+| `sa` | Saudi Arabia |
 | `us` | US Central, US East B, US West B |
+| `aus` | Australia |
+| `uk` | United Kingdom |
 
 > ℹ️ **Note**
 > 
-> This list of regions is subject to change. Last updated 2025-07-23.
+> This list of regions is subject to change. Last updated 2025-09-29.
+
+## Additional resources
+
+The following additional topics provide more information about regions and region pinning.
+
+- **[Region pinning](https://docs.livekit.io/deploy/admin/regions/region-pinning.md)**: Restrict network traffic to specific regions with protocol-based region pinning and realtime SDKs.
+
+- **[Agent deployment](https://docs.livekit.io/deploy/admin/regions/agent-deployment.md)**: Deploy agents to specific regions to optimize latency and manage regional deployments.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:59.009Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cloud/region-pinning.md](https://docs.livekit.io/home/cloud/region-pinning.md).
+This document was rendered at 2026-02-03T03:25:11.183Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/features/region-pinning.md](https://docs.livekit.io/telephony/features/region-pinning.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

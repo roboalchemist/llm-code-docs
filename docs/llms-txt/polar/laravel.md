@@ -2,17 +2,9 @@
 
 # Source: https://polar.sh/docs/guides/laravel.md
 
-# Source: https://polar.sh/docs/integrate/sdk/adapters/laravel.md
-
-# Source: https://polar.sh/docs/guides/laravel.md
-
-# Source: https://polar.sh/docs/integrate/sdk/adapters/laravel.md
-
-# Source: https://polar.sh/docs/guides/laravel.md
-
-# Source: https://polar.sh/docs/integrate/sdk/adapters/laravel.md
-
-# Source: https://polar.sh/docs/guides/laravel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Integrate Polar with Laravel
 
@@ -204,7 +196,7 @@ If you're developing locally, you can use a tool like [ngrok](https://ngrok.com/
 
 Run the following command to start an ngrok tunnel:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 ngrok http 3000
 ```
 
@@ -215,7 +207,7 @@ ngrok http 3000
 3. Generate a secret key to sign the requests. This will allow you to verify that the requests are truly coming from Polar.
 4. Add the secret key to your environment variables.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # .env
 POLAR_API_KEY="polar_oat..."
 POLAR_WEBHOOK_SECRET="..."
@@ -225,7 +217,7 @@ POLAR_WEBHOOK_SECRET="..."
 
 First, we need to install the standard-webhooks package to properly decode the incoming webhook payloads.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require standard-webhooks/standard-webhooks:dev-main
 ```
 
@@ -263,13 +255,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
 We will use Spatie's Webhook Client to handle the webhook events. It will automatically verify the signature of the requests, and dispatch the payload to a job queue for processing.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require spatie/laravel-webhook-client
 ```
 
 Let's publish the config:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --provider="Spatie\WebhookClient\WebhookClientServiceProvider" --tag="webhook-client-config"
 ```
 
@@ -354,7 +346,7 @@ return [
 
 By default, all webhook calls get saved into the database. So, we need to publish the migration that will hold the records. So run:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --provider="Spatie\WebhookClient\WebhookClientServiceProvider" --tag="webhook-client-migrations"
 ```
 

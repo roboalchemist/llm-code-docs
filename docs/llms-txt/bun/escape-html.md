@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/escape-html.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Escape an HTML string
 
 The `Bun.escapeHTML()` utility can be used to escape HTML characters in a string. The following replacements are made.
@@ -19,4 +23,4 @@ Bun.escapeHTML("<script>alert('Hello World!')</script>");
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

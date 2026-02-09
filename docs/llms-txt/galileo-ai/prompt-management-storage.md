@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/prompt-management-storage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Management-Storage
 
 > Manage and store your AI prompts efficiently in Galileo Evaluate, with tools for organizing, versioning, and analyzing prompt performance at scale.
@@ -26,11 +30,11 @@ Selecting or Retrieving Prompts
 
 Once you've experimented with a few different prompt templates and have evaluated them, you can mark one version as the 'Selected' version. This can be done from the UI, by using the dropdown next to the template name:
 
-![Mark Version as 'Selected'](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/m-s.png)
+<img src="https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=7fd0e36b3fc1463cd8e97ce081e125cb" alt="Mark Version as 'Selected'" data-og-width="800" width="800" data-og-height="254" height="254" data-path="images/m-s.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=280&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=e01eff91e89f2b6c77020a2562504362 280w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=560&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=5e3f8d40e494f70939d836098ebcbab6 560w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=840&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=d44d3460698b5bbff2a1738c041d8b03 840w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=1100&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=7d7139932ef137d1ea86318a4c0ca6fe 1100w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=1650&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=b354514d3b3e915ebe9fa77b9fc1b2d5 1650w, https://mintcdn.com/galileo/3UGpZ7QaZFb11H8t/images/m-s.png?w=2500&fit=max&auto=format&n=3UGpZ7QaZFb11H8t&q=85&s=5cb37694675f729a3dd58a8e706ab708 2500w" />
 
 or from the Python client:
 
-```Bash
+```Bash  theme={null}
 
 from promptquality.helpers import select_template_version
 
@@ -41,7 +45,7 @@ select_template_version(version=<version-number>, project_id=<project-id>, templ
 
 If you want to use this template version outside the experimentation setting, you can do so by fetching the prompt using the `promptquality` Python client.
 
-```Bash
+```Bash  theme={null}
 
 from promptquality.helpers import get_template
 

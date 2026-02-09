@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/niche-company-finder-with-phrase-filters.md
+# Source: https://exa.ai/docs/examples/niche-company-finder-with-phrase-filters.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Phrase Filters: Niche Company Finder
 
@@ -144,8 +148,3 @@ Which outputs:
 ```
 
 Nice! On inspection, these results include companies located in Hamburg, Munich and other close by European locations. This example can be extended to any key phrase - have a play with filtering via [other company suffixes - ](https://en.wikipedia.org/wiki/List%5Fof%5Flegal%5Fentity%5Ftypes%5Fby%5Fcountry) and see what interesting results you get back!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

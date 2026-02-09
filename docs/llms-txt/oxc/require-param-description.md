@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/require-param-description.md
 ---
-# jsdoc/require-param-description&#x20;
 
 ### What it does
 

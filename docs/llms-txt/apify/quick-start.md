@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/actors/development/quick-start.md
 
-# Source: https://docs.apify.com/cli/docs/quick-start.md
-
-# Source: https://docs.apify.com/platform/actors/development/quick-start.md
-
-# Source: https://docs.apify.com/cli/docs/quick-start.md
-
-# Source: https://docs.apify.com/platform/actors/development/quick-start.md
-
-# Source: https://docs.apify.com/cli/docs/quick-start.md
-
-# Source: https://docs.apify.com/platform/actors/development/quick-start.md
-
 # Actor development quick start
 
 **Create your first Actor using the Apify Web IDE or locally in your IDE.**
@@ -22,40 +10,30 @@
 
 Before you build
 
-Before you start building your own Actor, try out a couple of existing Actors from https://apify.com/store. See the https://docs.apify.com/platform/actors/running.md section for more information on running existing Actors.
+Before you start building your own Actor, try out a couple of existing Actors from [Apify Store](https://apify.com/store). See the [Running Actors](https://docs.apify.com/platform/actors/running.md) section for more information on running existing Actors.
 
 ## Technology stack
 
-Any code that can run inside of a Docker container can be turned into Apify https://docs.apify.com/platform/actors.md. This gives you freedom in choosing your technical stack, including programming language and technologies.
+Any code that can run inside of a Docker container can be turned into Apify [Actor](https://docs.apify.com/platform/actors.md). This gives you freedom in choosing your technical stack, including programming language and technologies.
 
 But to fully benefit from running on top of the Apify platform, we recommend you choose either JavaScript/Node.js or Python, where Apify provides first-level support regarding its SDK, API clients, and learning materials.
 
-For these languages, you can also https://apify.com/templates that help you to kickstart your project quickly.
+For these languages, you can also [choose from many code templates](https://apify.com/templates) that help you to kickstart your project quickly.
 
-![Actor Templates](/assets/images/templates-ac1ea37affbfcdf353be5f9049a5ea9e.png)
+![Actor Templates](/assets/images/python-templates-31f59eb2821f2f949927d740ac002de7.png)
 
 ## Development paths
 
-You can develop Actor in two ways:
+You can choose from three main ways to build your Actor, depending on your preferences and requirements:
 
-### Local development
+#### [Start Locally in Your IDE](https://docs.apify.com/platform/actors/development/quick-start/locally.md)
 
-Develop your Actor locally in your IDE and only deploy to the Apify platform when it is production ready.
+[Build and test on your own machine using your preferred IDE, then deploy to Apify when ready.](https://docs.apify.com/platform/actors/development/quick-start/locally.md)
 
-This way, you benefit from your local setup for a better development and debugging experience. After you are done with the development, you can https://docs.apify.com/platform/actors/development/deployment.md your Actor to the Apify platform.
+#### [Start in Apify Web IDE](https://docs.apify.com/platform/actors/development/quick-start/web-ide.md)
 
-#### https://docs.apify.com/platform/actors/development/quick-start/locally.md
+[Start coding immediately in your browser using Apify Console.](https://docs.apify.com/platform/actors/development/quick-start/web-ide.md)
 
-### Web IDE
+#### [Build with AI](https://docs.apify.com/platform/actors/development/quick-start/build-with-ai.md)
 
-Using the Web IDE in https://console.apify.com.
-
-This is the fastest way to kick-start your Actor development and try out the Apify platform.
-
-#### https://docs.apify.com/platform/actors/development/quick-start/web-ide.md
-
-## Build with AI
-
-Use the Apify toolset to build with AI:
-
-#### https://docs.apify.com/platform/actors/development/quick-start/build-with-ai.md
+[Use AI coding assistants to generate and refine your Actor's code.](https://docs.apify.com/platform/actors/development/quick-start/build-with-ai.md)

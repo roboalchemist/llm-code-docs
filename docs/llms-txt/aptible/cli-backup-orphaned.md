@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-backup-orphaned.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible backup:orphaned
 
 This command lists all [Final Database Backups](/core-concepts/managed-databases/managing-databases/database-backups#retention-and-disposal).

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/manual-logger-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Logger - Python
 
 > Integrate any custom LLM with Helicone using the Python Manual Logger. Step-by-step guide for Python implementation to connect your proprietary or open-source models.

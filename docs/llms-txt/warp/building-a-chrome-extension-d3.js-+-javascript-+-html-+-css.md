@@ -10,8 +10,7 @@ This educational module teaches you step-by-step how to replicate the process sh
 
 {% stepper %}
 {% step %}
-
-### Set up your environment and create a new Chrome Extension project
+**Set up your environment and create a new Chrome Extension project**
 
 Our goal: build a Chrome extension called **“Sankey Stone”** that visualizes flows using **D3.js**.
 
@@ -33,10 +32,9 @@ If you see errors like “Failed to load extension” or “Could not 
 {% endstep %}
 
 {% step %}
+**Test the initial D3.js rendering**
 
-### Test the initial D3.js rendering
-
-After fixing missing icons, the extension loads but initially shows only “Loading diagram.” \
+After fixing missing icons, the extension loads but initially shows only “Loading diagram.”\
 \
 Debug this by taking a screenshot and feeding it to an AI agent for context by asking:
 
@@ -50,8 +48,7 @@ Result: a working, interactive diagram rendered inside the extension popup.
 {% endstep %}
 
 {% step %}
-
-### Version control and GitHub setup
+**Version control and GitHub setup**
 
 Initialize a Git repository and commit:
 
@@ -61,14 +58,13 @@ git add .
 git commit -m "Initial Sankey Stone extension"
 ```
 
-The developer asks the agent to create a GitHub repo and push the code. \
+The developer asks the agent to create a GitHub repo and push the code.\
 \
 The agent handles authentication, creates the remote repo, and pushes all files automatically.
 {% endstep %}
 
 {% step %}
-
-### Add a local test page and dynamic data
+**Add a local test page and dynamic data**
 
 Launch a simple local web server with a test page that outputs traffic flow data. The extension reads this data and updates the Sankey diagram dynamically.
 
@@ -82,8 +78,7 @@ The agent edits the test page so that clicking the **Regenerate Test Page** butt
 {% endstep %}
 
 {% step %}
-
-### Coordinate multiple agents in parallel
+**Coordinate multiple agents in parallel**
 
 The video demonstrates running **multiple agents** in parallel. Each agent receives a different task:
 
@@ -101,8 +96,7 @@ Running multiple agents in parallel mirrors having a small team: one agent focus
 {% endstep %}
 
 {% step %}
-
-### Refine styles and interactions
+**Refine styles and interactions**
 
 After the data layer works, now you can iterate on appearance:
 
@@ -127,8 +121,7 @@ The Warp agent writes the JS logic for PNG export and verifies that clicking the
 {% endstep %}
 
 {% step %}
-
-### Add an API key setup screen
+**Add an API key setup screen**
 
 Create a settings page where users can store API keys:
 
@@ -141,8 +134,7 @@ Add a settings page to enter the Anthropic API key and test it.
   {% endstep %}
 
 {% step %}
-
-### Publish to the Chrome Web Store
+**Publish to the Chrome Web Store**
 
 Package and submit the extension:
 
@@ -150,7 +142,7 @@ Package and submit the extension:
 zip -r sankey_stone.zip *
 ```
 
-Upload the ZIP file to <https://chrome.google.com/webstore/devconsole> and follow the prompts.&#x20;
+Upload the ZIP file to <https://chrome.google.com/webstore/devconsole> and follow the prompts.
 
 {% hint style="info" %}
 The review may take a few weeks.

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/foreign-db-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Foreign Database Extractor for Microsoft SQL Server
 
 > Automatically extract data from Microsoft SQL Server backup files (.bak) into Flatfile Workbooks for easy data review and processing.
@@ -10,7 +14,7 @@ This plugin automates the process of extracting data from a Microsoft SQL Server
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-foreign-db-extractor
 ```
 
@@ -23,7 +27,7 @@ This plugin does not have any user-configurable options that are passed during i
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { foreignDBExtractor } from '@flatfile/plugin-foreign-db-extractor';
 
   export default function (listener) {
@@ -34,7 +38,7 @@ This plugin does not have any user-configurable options that are passed during i
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener';
   import { foreignDBExtractor } from '@flatfile/plugin-foreign-db-extractor';
 
@@ -50,7 +54,7 @@ This plugin does not have any user-configurable options that are passed during i
 ### Complete Setup Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { foreignDBExtractor } from '@flatfile/plugin-foreign-db-extractor';
 
@@ -63,7 +67,7 @@ This plugin does not have any user-configurable options that are passed during i
   export default listener;
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { foreignDBExtractor } from '@flatfile/plugin-foreign-db-extractor';
 
@@ -96,7 +100,7 @@ A factory function that returns a pre-configured plugin for a Flatfile Listener.
 The plugin has built-in error handling. If any step in the extraction job fails (e.g., database restore fails, polling times out), the `try...catch` block within the `job:ready` listener will catch the exception. It then updates the associated File status to 'failed' and fails the Job with a descriptive error message, making the failure visible in the Flatfile UI.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Error handling is automatic - failures will be visible in the Flatfile UI
   try {
     listener.use(foreignDBExtractor());
@@ -105,7 +109,7 @@ The plugin has built-in error handling. If any step in the extraction job fails 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // Error handling is automatic - failures will be visible in the Flatfile UI
   try {
     listener.use(foreignDBExtractor());

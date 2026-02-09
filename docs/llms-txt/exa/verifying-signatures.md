@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/webhooks/verifying-signatures.md
+# Source: https://exa.ai/docs/websets/api/webhooks/verifying-signatures.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Verifying Signatures
 
@@ -434,8 +438,3 @@ print(f"Test signature valid: {is_valid}")  # Should print True
 * Learn about [webhook events](/websets/api/events) and their payloads
 * Set up [webhook retries and monitoring](/websets/api/webhooks/attempts/list-webhook-attempts)
 * Explore [webhook management endpoints](/websets/api/webhooks/create-a-webhook)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/deploys-take-long.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploys Take Too long
 
 When Aptible builds your App, it must run each of the commands in your Dockerfile. We leverage Docker's built-in caching support, which is described in detail in [Docker's documentation.](https://docs.docker.com/articles/dockerfile_best-practices/#build-cache)

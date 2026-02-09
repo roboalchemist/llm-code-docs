@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-endpoints-https-modify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible endpoints:https:modify
 
 This command modifies an existing App [HTTP(S) Endpoint.](/core-concepts/apps/connecting-to-apps/app-endpoints/https-endpoints/overview)

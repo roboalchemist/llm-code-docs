@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/selecting-an-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Selecting an Authentication
 
 > Support users in selecting 3rd party authentications, either through an existing authentication or by adding new.

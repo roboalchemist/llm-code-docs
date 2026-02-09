@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/whisper.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/whisper.md
 
 # Whisper
 
@@ -9,7 +9,7 @@ You can find all the original Whisper checkpoints under the [Whisper](https://hu
 > [!TIP]
 > Click on the Whisper models in the right sidebar for more examples of how to apply Whisper to different audio tasks.
 
-The example below demonstrates how to automatically transcribe speech into text with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to automatically transcribe speech into text with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```py
 import torch
@@ -58,21 +58,21 @@ transcription[0]
 ## Notes
 
 - Whisper relies a custom `generate` for inference, make sure to check the docs below.
-- The [WhisperProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor) can be used for preparing audio and decoding predicted ids back into text.
+- The [WhisperProcessor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperProcessor) can be used for preparing audio and decoding predicted ids back into text.
 
 ## WhisperConfig[[transformers.WhisperConfig]]
 
 #### transformers.WhisperConfig[[transformers.WhisperConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/configuration_whisper.py#L50)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/configuration_whisper.py#L49)
 
-This is the configuration class to store the configuration of a [WhisperModel](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [WhisperModel](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperModel). It is used to instantiate a
 Whisper model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the Whisper
 [openai/whisper-tiny](https://huggingface.co/openai/whisper-tiny) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -91,7 +91,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 51865) : Vocabulary size of the Whisper model. Defines the number of different tokens that can be represented by the `decoder_input_ids` passed when calling [WhisperModel](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperModel)
+vocab_size (`int`, *optional*, defaults to 51865) : Vocabulary size of the Whisper model. Defines the number of different tokens that can be represented by the `decoder_input_ids` passed when calling [WhisperModel](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperModel)
 
 num_mel_bins (`int`, *optional*, defaults to 80) : Number of mel features used per input features. Should correspond to the value used in the `WhisperProcessor` class.
 
@@ -145,9 +145,9 @@ suppress_tokens (`list[int]`, *optional*) : A list containing the non-speech tok
 
 begin_suppress_tokens (`list[int]`, *optional*, defaults to `[220,50256]`) : A list containing tokens that will be suppressed at the beginning of the sampling process. Initialized as the token for `" "` (`blank_token_id`) and the `eos_token_id`
 
-use_weighted_layer_sum (`bool`, *optional*, defaults to `False`) : Whether to use a weighted average of layer outputs with learned weights. Only relevant when using an instance of [WhisperForAudioClassification](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForAudioClassification).
+use_weighted_layer_sum (`bool`, *optional*, defaults to `False`) : Whether to use a weighted average of layer outputs with learned weights. Only relevant when using an instance of [WhisperForAudioClassification](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForAudioClassification).
 
-classifier_proj_size (`int`, *optional*, defaults to 256) : Dimensionality of the projection before token mean-pooling for classification. Only relevant when using an instance of [WhisperForAudioClassification](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForAudioClassification).
+classifier_proj_size (`int`, *optional*, defaults to 256) : Dimensionality of the projection before token mean-pooling for classification. Only relevant when using an instance of [WhisperForAudioClassification](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForAudioClassification).
 
 apply_spec_augment (`bool`, *optional*, defaults to `False`) : Whether to apply *SpecAugment* data augmentation to the outputs of the feature encoder. For reference see [SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition](https://huggingface.co/papers/1904.08779).
 
@@ -186,7 +186,7 @@ task (`str`, *optional*) : Task identifier to append at the start of sequence (i
 predict_timestamps (`bool`, *optional*, defaults to `False`) : Whether to omit the `` token at the start of the sequence.
 #### get_special_tokens_mask[[transformers.WhisperTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L680)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L659)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.
@@ -206,10 +206,10 @@ already_has_special_tokens (`bool`, *optional*, defaults to `False`) : Whether o
 A list of integers in the range [0, 1]: 1 for a special token, 0 for a sequence token.
 #### save_vocabulary[[transformers.WhisperTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L566)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L545)
 #### batch_decode[[transformers.WhisperTokenizer.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2938)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2929)
 
 Convert a list of lists of token ids into a list of strings by calling decode.
 
@@ -233,7 +233,7 @@ kwargs (additional keyword arguments, *optional*) : Will be passed to the underl
 The list of decoded sentences.
 #### decode[[transformers.WhisperTokenizer.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L435)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L432)
 
 Converts a sequence of ids in a string, using the tokenizer and vocabulary with options to remove special
 tokens and clean up tokenization spaces.
@@ -269,13 +269,13 @@ kwargs (additional keyword arguments, *optional*) : Will be passed to the underl
 The decoded sentence.
 #### basic_normalize[[transformers.WhisperTokenizer.basic_normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L556)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L536)
 
 Normalize a given string using the `BasicTextNormalizer` class, which performs commons transformation on
 multilingual text.
 #### normalize[[transformers.WhisperTokenizer.normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L548)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L528)
 
 Normalize a given string using the `EnglishTextNormalizer` class, which performs commons transformation on
 english text.
@@ -284,14 +284,14 @@ english text.
 
 #### transformers.WhisperTokenizer[[transformers.WhisperTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L166)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L163)
 
 Construct a "fast" Whisper tokenizer (backed by HuggingFace's *tokenizers* library).
 
-This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-set_prefix_tokenstransformers.WhisperTokenizer.set_prefix_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L596[{"name": "language", "val": ": typing.Optional[str] = None"}, {"name": "task", "val": ": typing.Optional[str] = None"}, {"name": "predict_timestamps", "val": ": typing.Optional[bool] = None"}]- **language** (`str`, *optional*, defaults to `None`) --
+set_prefix_tokenstransformers.WhisperTokenizer.set_prefix_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L575[{"name": "language", "val": ": str | None = None"}, {"name": "task", "val": ": str | None = None"}, {"name": "predict_timestamps", "val": ": bool | None = None"}]- **language** (`str`, *optional*, defaults to `None`) --
   The language of the transcription text.
 - **task** (`str`, *optional*, defaults to `None`) --
   Task identifier to append at the start of sequence (if any).
@@ -334,7 +334,7 @@ task (`str`, *optional*) : Task identifier to append at the start of sequence (i
 predict_timestamps (`bool`, *optional*, defaults to `False`) : Whether to omit the `` token at the start of the sequence.
 #### get_special_tokens_mask[[transformers.WhisperTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L680)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L659)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.
@@ -354,10 +354,10 @@ already_has_special_tokens (`bool`, *optional*, defaults to `False`) : Whether o
 A list of integers in the range [0, 1]: 1 for a special token, 0 for a sequence token.
 #### save_vocabulary[[transformers.WhisperTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L566)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L545)
 #### batch_decode[[transformers.WhisperTokenizer.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2938)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2929)
 
 Convert a list of lists of token ids into a list of strings by calling decode.
 
@@ -381,7 +381,7 @@ kwargs (additional keyword arguments, *optional*) : Will be passed to the underl
 The list of decoded sentences.
 #### decode[[transformers.WhisperTokenizer.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L435)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L432)
 
 Converts a sequence of ids in a string, using the tokenizer and vocabulary with options to remove special
 tokens and clean up tokenization spaces.
@@ -417,13 +417,13 @@ kwargs (additional keyword arguments, *optional*) : Will be passed to the underl
 The decoded sentence.
 #### basic_normalize[[transformers.WhisperTokenizer.basic_normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L556)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L536)
 
 Normalize a given string using the `BasicTextNormalizer` class, which performs commons transformation on
 multilingual text.
 #### normalize[[transformers.WhisperTokenizer.normalize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/tokenization_whisper.py#L548)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/tokenization_whisper.py#L528)
 
 Normalize a given string using the `EnglishTextNormalizer` class, which performs commons transformation on
 english text.
@@ -432,17 +432,17 @@ english text.
 
 #### transformers.WhisperFeatureExtractor[[transformers.WhisperFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/feature_extraction_whisper.py#L36)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/feature_extraction_whisper.py#L33)
 
 Constructs a Whisper feature extractor.
 
-This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
+This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
 most of the main methods. Users should refer to this superclass for more information regarding those methods.
 
 This class extracts mel-filter bank features from raw speech using a custom numpy implementation of the `Short Time
 Fourier Transform` which should match pytorch's `torch.stft` equivalent.
 
-__call__transformers.WhisperFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/feature_extraction_whisper.py#L192[{"name": "raw_speech", "val": ": typing.Union[numpy.ndarray, list[float], list[numpy.ndarray], list[list[float]]]"}, {"name": "truncation", "val": ": bool = True"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "padding", "val": ": typing.Optional[str] = 'max_length'"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "sampling_rate", "val": ": typing.Optional[int] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "device", "val": ": typing.Optional[str] = 'cpu'"}, {"name": "return_token_timestamps", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
+__call__transformers.WhisperFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/feature_extraction_whisper.py#L189[{"name": "raw_speech", "val": ": numpy.ndarray | list[float] | list[numpy.ndarray] | list[list[float]]"}, {"name": "truncation", "val": ": bool = True"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "padding", "val": ": str | None = 'max_length'"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "sampling_rate", "val": ": int | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "device", "val": ": str | None = 'cpu'"}, {"name": "**kwargs", "val": ""}]- **raw_speech** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
   The sequence or batch of sequences to be padded. Each sequence can be a numpy array, a list of float
   values, a list of numpy arrays or a list of list of float values. Must be mono channel audio, not
   stereo, i.e. single float per timestep.
@@ -453,7 +453,7 @@ __call__transformers.WhisperFeatureExtractor.__call__https://github.com/huggingf
 
   This is especially useful to enable the use of Tensor Cores on NVIDIA hardware with compute capability
   `>= 7.5` (Volta), or on TPUs which benefit from having sequence lengths be a multiple of 128.
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -470,7 +470,7 @@ __call__transformers.WhisperFeatureExtractor.__call__https://github.com/huggingf
   bugs.
 
   
-- **padding** (`str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `'max_length'`) --
+- **padding** (`str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `'max_length'`) --
   Activates and controls padding. Accepts the following values:
 
   - `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence is
@@ -494,11 +494,6 @@ __call__transformers.WhisperFeatureExtractor.__call__https://github.com/huggingf
 - **device** (`str`, *optional*, defaults to `'cpu'`) --
   Specifies the device for computation of the log-mel spectrogram of audio signals in the
   `_torch_extract_fbank_features` method. (e.g., "cpu", "cuda")
-- **return_token_timestamps** (`bool`, *optional*, defaults to `None`) --
-  Deprecated. Use `return_attention_mask` instead from which the number of frames can be inferred.
-
-  Whether or not to return the number of frames of the input raw_speech.
-  These num_frames can be used by the model to compute word level timestamps.
 - ****kwargs** -- Not supported by WhisperFeatureExtractor.__call__() and ignored.0
 Main method to featurize and prepare for the model one or several sequence(s). Implementation uses PyTorch
 for the STFT computation if available, otherwise a slower NumPy based one.
@@ -523,51 +518,50 @@ dither (`float`, *optional*, defaults to 0.0) : Adds dithering. In other words, 
 
 #### transformers.WhisperProcessor[[transformers.WhisperProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/processing_whisper.py#L22)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/processing_whisper.py#L23)
 
-Constructs a Whisper processor which wraps a Whisper feature extractor and a Whisper tokenizer into a single
-processor.
+Constructs a WhisperProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-[WhisperProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor) offers all the functionalities of [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [WhisperTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperTokenizer). See
-the [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor.__call__) and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[WhisperProcessor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperProcessor) offers all the functionalities of [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [WhisperTokenizer](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperTokenizer). See the
+[~WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [~WhisperTokenizer](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperTokenizer) for more information.
 
-__call__transformers.WhisperProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/processing_whisper.py#L43[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
+__call__transformers.WhisperProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/processing_whisper.py#L30[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-Forwards the `audio` argument to WhisperFeatureExtractor's [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) and the `text`
-argument to [__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__). Please refer to the docstring of the above two methods for more
-information.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0
 
 **Parameters:**
 
-feature_extractor (`WhisperFeatureExtractor`) : An instance of [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). The feature extractor is a required input.
+feature_extractor (`WhisperFeatureExtractor`) : The feature extractor is a required input.
 
-tokenizer (`WhisperTokenizer`) : An instance of [WhisperTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperTokenizer). The tokenizer is a required input.
+tokenizer (`WhisperTokenizer`) : The tokenizer is a required input.
 #### from_pretrained[[transformers.WhisperProcessor.from_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1349)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1364)
 
 Instantiate a processor associated with a pretrained model.
 
 This class method is simply calling the feature extractor
-[from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained), image processor
-[ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) and the tokenizer
+[from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained), image processor
+[ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) and the tokenizer
 `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained` methods. Please refer to the docstrings of the
 methods above for more information.
 
 **Parameters:**
 
-pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained feature_extractor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a feature extractor file saved using the [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved feature extractor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
+pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained feature_extractor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a feature extractor file saved using the [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved feature extractor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
 
-- ****kwargs** : Additional keyword arguments passed along to both [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained) and `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained`.
+- ****kwargs** : Additional keyword arguments passed along to both [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained) and `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained`.
 #### save_pretrained[[transformers.WhisperProcessor.save_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L778)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L792)
 
 Saves the attributes of this processor (feature extractor, tokenizer...) in the specified directory so that it
-can be reloaded using the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.from_pretrained) method.
+can be reloaded using the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/processors#transformers.ProcessorMixin.from_pretrained) method.
 
-This class method is simply calling [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) and
-[save_pretrained()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained). Please refer to the docstrings of the
+This class method is simply calling [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) and
+[save_pretrained()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained). Please refer to the docstrings of the
 methods above for more information.
 
 **Parameters:**
@@ -576,29 +570,29 @@ save_directory (`str` or `os.PathLike`) : Directory where the feature extractor 
 
 push_to_hub (`bool`, *optional*, defaults to `False`) : Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the repository you want to push to with `repo_id` (will default to the name of `save_directory` in your namespace).
 
-kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
+kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
 #### batch_decode[[transformers.WhisperProcessor.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1520)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1593)
 
-This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
+This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
 refer to the docstring of this method for more information.
 #### decode[[transformers.WhisperProcessor.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1529)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1602)
 
-This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
+This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
 the docstring of this method for more information.
 
 ## WhisperModel[[transformers.WhisperModel]]
 
 #### transformers.WhisperModel[[transformers.WhisperModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L906)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L905)
 
 The bare Whisper Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -606,10 +600,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L971[{"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "decoder_position_ids", "val": ": typing.Optional[tuple[torch.LongTensor]] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L970[{"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "decoder_position_ids", "val": ": tuple[torch.LongTensor] | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor) uses
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperProcessor) uses
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -620,8 +614,8 @@ forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transform
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [WhisperTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [WhisperTokenizer](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 
@@ -635,7 +629,7 @@ forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transform
   If you want to change padding behavior, you should read
   `modeling_whisper._prepare_decoder_attention_mask` and modify to your needs. See diagram 1 in [the BART
   paper](https://huggingface.co/papers/1910.13461) for more information on the default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -644,15 +638,15 @@ forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transform
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
   If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
   have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
   of shape `(batch_size, sequence_length)`.
-- **decoder_inputs_embeds** (`tuple[torch.FloatTensor]` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
+- **decoder_inputs_embeds** (`tuple` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `decoder_input_ids` you can choose to directly pass an embedded
   representation. If `past_key_values` is used, optionally only the last `decoder_inputs_embeds` have to be
   input (see `past_key_values`). This is useful if you want more control over how to convert
@@ -675,19 +669,19 @@ forwardtransformers.WhisperModel.forwardhttps://github.com/huggingface/transform
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -715,7 +709,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [WhisperModel](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperModel) forward method, overrides the `__call__` special method.
+The [WhisperModel](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -740,21 +734,21 @@ Example:
 
 **Parameters:**
 
-config ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -784,7 +778,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
   self-attention heads.
 #### _mask_input_features[[transformers.WhisperModel._mask_input_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L928)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L927)
 
 Masks extracted features along time axis and/or along feature axis according to
 [SpecAugment](https://huggingface.co/papers/1904.08779).
@@ -793,11 +787,11 @@ Masks extracted features along time axis and/or along feature axis according to
 
 #### transformers.WhisperForConditionalGeneration[[transformers.WhisperForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1089)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1088)
 
 The Whisper Model with a language modeling head. Can be used for automatic speech recognition.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -805,10 +799,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1118[{"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "decoder_position_ids", "val": ": typing.Optional[tuple[torch.LongTensor]] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1117[{"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "decoder_position_ids", "val": ": tuple[torch.LongTensor] | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor) uses
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperProcessor) uses
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -819,8 +813,8 @@ forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/hu
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [WhisperTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [WhisperTokenizer](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 
@@ -834,7 +828,7 @@ forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/hu
   If you want to change padding behavior, you should read
   `modeling_whisper._prepare_decoder_attention_mask` and modify to your needs. See diagram 1 in [the BART
   paper](https://huggingface.co/papers/1910.13461) for more information on the default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -843,15 +837,15 @@ forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/hu
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
   If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
   have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
   of shape `(batch_size, sequence_length)`.
-- **decoder_inputs_embeds** (`tuple[torch.FloatTensor]` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
+- **decoder_inputs_embeds** (`tuple` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `decoder_input_ids` you can choose to directly pass an embedded
   representation. If `past_key_values` is used, optionally only the last `decoder_inputs_embeds` have to be
   input (see `past_key_values`). This is useful if you want more control over how to convert
@@ -878,17 +872,17 @@ forwardtransformers.WhisperForConditionalGeneration.forwardhttps://github.com/hu
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -916,7 +910,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [WhisperForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [WhisperForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -946,19 +940,19 @@ Example:
 
 **Parameters:**
 
-config ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -988,7 +982,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
   self-attention heads.
 #### generate[[transformers.WhisperForConditionalGeneration.generate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/generation_whisper.py#L386)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/generation_whisper.py#L383)
 
 Transcribes or translates log-mel input features to a sequence of auto-regressively generated token ids.
 
@@ -1078,9 +1072,9 @@ Progress:  95%|█████████████████████�
 
 **Parameters:**
 
-input_features (`torch.Tensor` of shape `(batch_size, feature_size, sequence_length)`, *optional*) : Float values of log-mel features extracted from the raw speech waveform. The raw speech waveform can be obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.*  via the torchcodec library (`pip install torchcodec`) or the soundfile library (`pip install soundfile`). To prepare the array into `input_features`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for extracting the mel features, padding and conversion into a tensor of type `torch.FloatTensor`. See [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details.
+input_features (`torch.Tensor` of shape `(batch_size, feature_size, sequence_length)`, *optional*) : Float values of log-mel features extracted from the raw speech waveform. The raw speech waveform can be obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.*  via the torchcodec library (`pip install torchcodec`) or the soundfile library (`pip install soundfile`). To prepare the array into `input_features`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for extracting the mel features, padding and conversion into a tensor of type `torch.FloatTensor`. See [__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details.
 
-generation_config ([GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which had the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
+generation_config ([GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which had the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
 
 logits_processor (`LogitsProcessorList`, *optional*) : Custom logits processors that complement the default logits processors built from arguments and generation config. If a logit processor is passed that is already created with the arguments or a generation config an error is thrown. This feature is intended for advanced users.
 
@@ -1124,9 +1118,9 @@ return_token_timestamps (`bool`, *optional*) : Whether to return token-level tim
 
 return_segments (`bool`, *optional*, defaults to `False`) : Whether to additionally return a list of all segments. Note that this option can only be enabled when doing long-form transcription.
 
-return_dict_in_generate (`bool`, *optional*, defaults to `False`) : Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of just returning the generated tokens. Note that when doing long-form transcription, `return_dict_in_generate` can only be enabled when `return_segments` is set True. In this case the generation outputs of each segment is added to each segment.
+return_dict_in_generate (`bool`, *optional*, defaults to `False`) : Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of just returning the generated tokens. Note that when doing long-form transcription, `return_dict_in_generate` can only be enabled when `return_segments` is set True. In this case the generation outputs of each segment is added to each segment.
 
-force_unique_generate_call (`bool`, *optional*) : Whether to force a unique call to the underlying GenerationMixin's [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate) method. This is useful for assisted decoding and testing purposes to ensure that only one call to [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate) is made and therefore decoder input token ids and eos token ids are returned.
+force_unique_generate_call (`bool`, *optional*) : Whether to force a unique call to the underlying GenerationMixin's [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate) method. This is useful for assisted decoding and testing purposes to ensure that only one call to [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate) is made and therefore decoder input token ids and eos token ids are returned.
 
 monitor_progress (`Callable[[torch.Tensor], None]`, *optional*) : If provided, this function can be called to report the progress of the audio transcription. The function takes a tensor argument `p` of shape `(n, 2)`, where `n` is the batch size. `p[i, 0]`  contains the index of the audio frame that is currently being transcribed for batch item `i`. `p[i, 1]` contains the total number of frames for batch item `i`. No return value is expected.
 
@@ -1134,36 +1128,36 @@ kwargs (`dict[str, Any]`, *optional*) : Ad hoc parametrization of `generate_conf
 
 **Returns:**
 
-`[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) or `dict[str, Any]` or `torch.LongTensor``
+`[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) or `dict[str, Any]` or `torch.LongTensor``
 
 One of the following:
-- [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) when `return_dict_in_generate=True` and (`return_timestamps=False` or `force_unique_generate_call=True`), including the decoder input ids and end of sequence id.
+- [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) when `return_dict_in_generate=True` and (`return_timestamps=False` or `force_unique_generate_call=True`), including the decoder input ids and end of sequence id.
 - `dict[str, Any]` when (`return_dict_in_generate=True` and `return_timestamps=True`) or `return_segments=True` or `return_token_timestamps=True`.
 - `torch.LongTensor` in all other cases, excluding the decoder input ids and end of sequence id.
 
-The possible [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) types are:
-- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput)
-- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
+The possible [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) types are:
+- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput)
+- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
 
 `segments` is a list of lists (one list per batch element) of `segment`.
 A `segment` is a dictionary with keys `start`, `end`, `tokens`, `idxs`, and `result`.
 - `start`: the start timestamp of the segment.
 - `end`: the end timestamp of the segment.
 - `tokens`: the tokens of the segment, excluding the decoder input ids and end of sequence id.
-- `idxs`: the start (included) and end (excluded) indices of the `tokens` of the segment in the underlying call to GenerationMixin's [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate) (present in `result`).
-- `result`: the result of the underlying call to GenerationMixin's [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate).
+- `idxs`: the start (included) and end (excluded) indices of the `tokens` of the segment in the underlying call to GenerationMixin's [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate) (present in `result`).
+- `result`: the result of the underlying call to GenerationMixin's [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate).
 
-When `return_timestamps=True`, `return_dict_in_generate=True` applies to each call of the underlying GenerationMixin's [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate), with outputs stored in `result` of each `segment`.
+When `return_timestamps=True`, `return_dict_in_generate=True` applies to each call of the underlying GenerationMixin's [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate), with outputs stored in `result` of each `segment`.
 
 ## WhisperForCausalLM[[transformers.WhisperForCausalLM]]
 
 #### transformers.WhisperForCausalLM[[transformers.WhisperForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1266)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1266)
 
 Whisper decoder with a language modeling head on top (linear layer with weights tied to the input embeddings).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1171,11 +1165,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.WhisperForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1292[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.WhisperForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1292[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1193,8 +1187,8 @@ forwardtransformers.WhisperForCausalLM.forwardhttps://github.com/huggingface/tra
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -1219,13 +1213,13 @@ forwardtransformers.WhisperForCausalLM.forwardhttps://github.com/huggingface/tra
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1243,11 +1237,11 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
   Cross attentions weights after the attention softmax, used to compute the weighted average in the
   cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-The [WhisperForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForCausalLM) forward method, overrides the `__call__` special method.
+The [WhisperForCausalLM](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1281,15 +1275,15 @@ Example:
 
 **Parameters:**
 
-config ([WhisperForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([WhisperForCausalLM](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1307,7 +1301,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
   Cross attentions weights after the attention softmax, used to compute the weighted average in the
   cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -1316,12 +1310,12 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
 #### transformers.WhisperForAudioClassification[[transformers.WhisperForAudioClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1394)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1394)
 
 Whisper Encoder Model with a sequence classification head on top (a linear layer over the pooled output) for tasks
 like SUPERB Keyword Spotting.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1329,11 +1323,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.WhisperForAudioClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/whisper/modeling_whisper.py#L1421[{"name": "input_features", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.WhisperForAudioClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/whisper/modeling_whisper.py#L1421[{"name": "input_features", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperProcessor) uses
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([WhisperProcessor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperProcessor) uses
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -1348,9 +1342,9 @@ forwardtransformers.WhisperForAudioClassification.forwardhttps://github.com/hugg
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -1363,7 +1357,7 @@ elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [WhisperForAudioClassification](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForAudioClassification) forward method, overrides the `__call__` special method.
+The [WhisperForAudioClassification](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForAudioClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1398,15 +1392,15 @@ Example:
 
 **Parameters:**
 
-config ([WhisperForAudioClassification](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperForAudioClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([WhisperForAudioClassification](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperForAudioClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
+elements depending on the configuration ([WhisperConfig](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

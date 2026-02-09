@@ -2,176 +2,302 @@
 
 # Source: https://developers.openai.com/codex/cli/features.md
 
-# Source: https://developers.openai.com/codex/ide/features.md
+# Source: https://developers.openai.com/codex/app/features.md
 
-# Source: https://developers.openai.com/codex/cli/features.md
+# Codex app features
 
-# Source: https://developers.openai.com/codex/ide/features.md
+The Codex app is a focused desktop experience for working on Codex threads in parallel,
+with built-in worktree support, automations, and Git functionality.
 
-# Source: https://developers.openai.com/codex/cli/features.md
+<YouTubeEmbed
+  title="Introducing the Codex app"
+  videoId="HFM3se4lNiw"
+  class="max-w-md"
+/>
 
-# Codex CLI features
+---
 
-Codex ships with a rich set of workflows that go beyond a chat interface. Use this guide to understand what each experience unlocks and how to make the most of them.
+<section class="feature-grid">
 
-## Running in interactive mode
+<div>
 
-Codex launches into a full-screen terminal UI that can read your repository, make edits, and run commands as you iterate together. Use it whenever you want a conversational workflow where you can review Codex's actions in real time.
+## Multitask across projects
 
-```bash
-codex
-```
+Use one Codex app window to run tasks across projects. Add a project for each
+codebase and switch between them as needed.
 
-Once the session is open you can:
+If you've used the [Codex CLI](https://developers.openai.com/codex/cli), a project is like starting a
+session in a specific directory.
 
-- Send prompts, code snippets, or screenshots (see [image inputs](#image-inputs)) directly into the composer.
-- Watch Codex explain its plan before making a change, and approve or reject steps inline.
-- Press <kbd>Ctrl</kbd>+<kbd>C</kbd> or use `/exit` to close the interactive session when you're done.
+If you work in a single repository with two or more apps or packages, split
+distinct projects into separate app projects so the [sandbox](https://developers.openai.com/codex/security)
+only includes the files for that project.
 
-## Resuming conversations
+</div>
 
-Codex stores your transcripts locally so you can pick up where you left off instead of repeating context. Use the `resume` subcommand when you want to reopen an earlier thread with the same repository state and instructions.
+<CodexScreenshot
+  alt="Codex app showing multiple projects in the sidebar and threads in the main pane"
+  lightSrc="/images/codex/app/multitask-light.webp"
+  darkSrc="/images/codex/app/multitask-dark.webp"
+  maxHeight="400px"
+/>
 
-- `codex resume` launches a picker of recent interactive sessions. Highlight a run to see its summary and press <kbd>Enter</kbd> to reopen it.
-- `codex resume --last` skips the picker and jumps straight to your most recent session.
-- `codex resume <SESSION_ID>` targets a specific run. You can copy the ID from the picker, `/status`, or the files under `~/.codex/sessions/`.
+</section>
 
-Non-interactive automation runs can resume too:
+<section class="feature-grid inverse">
 
-```bash
-codex exec resume --last "Fix the race conditions you found"
-codex exec resume 7f9f9a2e-1b3c-4c7a-9b0e-.... "Implement the plan"
-```
+<div>
 
-Each resumed run keeps the original transcript, plan history, and approvals, so Codex can use prior context while you supply new instructions. Override the working directory with `--cd` or add extra roots with `--add-dir` if you need to steer the environment before resuming.
+## Skills support
 
-## Models & reasoning
+The Codex app supports the same [agent skills](https://developers.openai.com/codex/skills) as the CLI and
+IDE Extension. You can also view and explore new skills that your team has
+created across your different projects by clicking Skills in the sidebar.
 
-Codex defaults to `gpt-5-codex` on macOS and Linux, and `gpt-5` on Windows. Switch models mid-session with the `/model` command, or specify one when launching the CLI.
+</div>
 
-```shell
-codex --model gpt-5-codex
-```
+<CodexScreenshot
+  alt="Skills picker showing available skills in the Codex app"
+  lightSrc="/images/codex/app/skill-selector-light.webp"
+  darkSrc="/images/codex/app/skill-selector-dark.webp"
+  maxHeight="400px"
+/>
 
-[Learn more about the models available in Codex](/codex/models).
+</section>
 
-## Image inputs
+<section class="feature-grid">
 
-Attach screenshots or design specs so Codex can read image details alongside your prompt. You can paste images into the interactive composer or provide files on the command line.
+<div>
 
-```bash
-codex -i screenshot.png "Explain this error"
-```
+## Automations
 
-```bash
-codex --image img1.png,img2.jpg "Summarize these diagrams"
-```
+You can also combine skills with [automations](https://developers.openai.com/codex/app/automations) to perform routine tasks
+such as evaluating errors in your telemetry and submitting fixes or creating reports on recent
+codebase changes.
 
-Codex accepts common formats such as PNG and JPEG. Use comma-separated filenames for two or more images, and combine them with text instructions to add context.
+</div>
 
-## Running local code review
+<CodexScreenshot
+  alt="Automation creation form with schedule and prompt fields"
+  lightSrc="/images/codex/app/create-automation-light.webp"
+  darkSrc="/images/codex/app/create-automation-dark.webp"
+  maxHeight="400px"
+/>
 
-Type `/review` in the CLI to open Codex's review presets. The CLI launches a dedicated reviewer that reads the diff you select and reports prioritized, actionable findings without touching your working tree.
+</section>
 
-- **Review against a base branch** lets you pick a local branch; Codex finds the merge base against its upstream, diffs your work, and highlights the biggest risks before you open a pull request.
-- **Review uncommitted changes** inspects everything that's staged, not staged, or not tracked so you can address issues before committing.
-- **Review a commit** lists recent commits and has Codex read the exact change set for the SHA you choose.
-- **Custom review instructions** accepts your own wording (for example, "Focus on accessibility regressions") and runs the same reviewer with that prompt.
+<section class="feature-grid inverse">
 
-Each run shows up as its own turn in the transcript, so you can rerun reviews as the code evolves and compare the feedback.
+<div>
+
+## Modes
+
+Each thread runs in a selected mode. When starting a thread, you can choose:
+
+- **Local**: work directly in your current project directory.
+- **Worktree**: isolate changes in a Git worktree. [Learn more](https://developers.openai.com/codex/app/worktrees).
+- **Cloud**: run remotely in a configured cloud environment.
+
+Both **Local** and **Worktree** threads will run on your computer.
+
+For the full glossary and concepts, explore the [concepts section](https://developers.openai.com/codex/prompting).
+
+</div>
+
+<CodexScreenshot
+  alt="New thread composer with Local, Worktree, and Cloud mode options"
+  lightSrc="/images/codex/app/modes-light.webp"
+  darkSrc="/images/codex/app/modes-dark.webp"
+  maxHeight="400px"
+/>
+
+</section>
+
+<section class="feature-grid">
+
+<div>
+
+## Built-in Git tools
+
+The Codex app provides common Git features directly within the app.
+
+The diff pane shows a Git diff of your changes in your local project or worktree checkout. You
+can also add inline comments for Codex to address and stage or revert specific chunks or entire files.
+
+You can also commit, push, and create pull requests for local and worktree tasks directly from
+within the Codex app.
+
+For more advanced Git tasks, use the [integrated terminal](#integrated-terminal).
+
+</div>
+
+<CodexScreenshot
+  alt="Git diff and commit panel with a commit message field"
+  lightSrc="/images/codex/app/git-commit-light.webp"
+  darkSrc="/images/codex/app/git-commit-dark.webp"
+  maxHeight="400px"
+/>
+
+</section>
+
+<section class="feature-grid inverse">
+
+<div>
+
+## Worktree support
+
+When you create a new thread, choose **Local** or **Worktree**. **Local** works
+directly within your project. **Worktree** creates a new [Git worktree](https://git-scm.com/docs/git-worktree) so changes stay isolated from your regular project.
+
+Use **Worktree** when you want to try a new idea without touching your current
+work, or when you want Codex to run independent tasks side by side in the same
+project.
+
+Automations run in dedicated background worktrees for Git repositories, and directly in the project directory for non-version-controlled projects.
+
+[Learn more about using worktrees in the Codex app.](https://developers.openai.com/codex/app/worktrees)
+
+</div>
+
+<CodexScreenshot
+  alt="Worktree thread view showing branch actions and worktree details"
+  lightSrc="/images/codex/app/worktree-light.webp"
+  darkSrc="/images/codex/app/worktree-dark.webp"
+  maxHeight="400px"
+/>
+
+</section>
+
+<section class="feature-grid">
+
+<div>
+
+## Integrated terminal
+
+Each thread includes a built-in terminal scoped to the current project or
+worktree. Toggle it using the terminal icon in the top right of the app or by
+pressing <kbd>Cmd</kbd>+<kbd>J</kbd>.
+
+Use the terminal to validate changes, run scripts, and perform Git operations
+without leaving the app.
+
+Common tasks include:
+
+- `git status`
+- `git pull --rebase`
+- `pnpm test` or `npm test`
+- `pnpm run lint` or similar project commands
+
+If you run a task regularly, you can define an **action** inside your [local environment](https://developers.openai.com/codex/app/local-environments) to add a shortcut button to the top of your Codex app window.
+
+Note that <kbd>Cmd</kbd>+<kbd>K</kbd> opens the command palette in the Codex
+app. It doesn't clear the terminal. To clear the terminal use <kbd>Ctrl</kbd>+<kbd>L</kbd>.
+
+</div>
+
+<CodexScreenshot
+  alt="Integrated terminal drawer open beneath a Codex thread"
+  lightSrc="/images/codex/app/integrated-terminal-light.webp"
+  darkSrc="/images/codex/app/integrated-terminal-dark.webp"
+  maxHeight="400px"
+/>
+
+</section>
+
+<section class="feature-grid inverse">
+
+<div>
+
+## Voice dictation
+
+Use your voice to prompt Codex. Hold <kbd>Ctrl</kbd>+<kbd>M</kbd> while the composer is visible and start talking. Your voice will be transcribed. Edit the transcribed prompt or hit send to have Codex start work.
+
+</div>
+
+<CodexScreenshot
+  alt="Voice dictation indicator in the composer with a transcribed prompt"
+  lightSrc="/images/codex/app/voice-dictation-light.webp"
+  darkSrc="/images/codex/app/voice-dictation-dark.webp"
+  maxHeight="400px"
+/>
+
+</section>
+
+---
+
+## Sync with the IDE extension
+
+If you have the [Codex IDE Extension](https://developers.openai.com/codex/ide) installed in your editor,
+your Codex app and IDE Extension automatically sync when both are in the same
+project.
+
+When they sync, you see an **IDE context** option in the Codex app composer. With "Auto context"
+enabled, the Codex app tracks the files you're viewing, so you can reference them indirectly (for
+example, "What's this file about?"). You can also see threads running in the Codex app inside the
+IDE Extension, and vice versa.
+
+If you're unsure whether the app includes context, toggle it off and ask the
+same question again to compare results.
+
+## Approvals and sandboxing
+
+Your approval and sandbox settings constrain Codex actions.
+
+- Approvals determine when Codex pauses for permission before running a command.
+- The sandbox controls which directories and network access Codex can use.
+
+When you see prompts like “approve once” or “approve for this session,” you are
+granting different scopes of permission for tool execution. If you are unsure,
+approve the narrowest option and continue iterating.
+
+By default, Codex scopes work to the current project. In most cases, that's the
+right constraint.
+
+If your task requires work across more than one repository or directory, prefer
+opening separate projects or using worktrees rather than asking Codex to roam
+outside the project root.
+
+For details on how Codex handles sandboxing, check out the [security documentation](https://developers.openai.com/codex/security).
+
+## MCP support
+
+The Codex app, CLI, and IDE Extension share [Model Context Protocol (MCP)](https://developers.openai.com/codex/mcp) settings.
+If you've already configured MCP servers in one, they're automatically adopted by the others. To
+configure new servers, open the MCP section in the app's settings and either enable a recommended
+server or add a new server to your configuration.
 
 ## Web search
 
-Codex ships with a first-party web search tool that stays off until you opt in. Enable it in `~/.codex/config.toml` (or pass the `--search` flag) and optionally allow network access if you're running in the default sandbox:
+Codex ships with a first-party web search tool. For local tasks in the Codex IDE Extension, Codex
+enables web search by default and serves results from a web search cache. If you configure your
+sandbox for [full access](https://developers.openai.com/codex/security), web search defaults to live results. See
+[Config basics](https://developers.openai.com/codex/config-basic) to disable web search or switch to live results that fetch the
+most recent data.
 
-```toml
-[features]
-web_search_request = true
+## Image input
 
-[sandbox_workspace_write]
-network_access = true
-```
+You can drag and drop images into the prompt composer to include them as context. Hold down `Shift`
+while dropping an image to add the image to the context.
 
-Once enabled, Codex can call the search tool when it needs fresh context. You'll see `web_search` items in the transcript or `codex exec --json` output whenever Codex looks something up.
+You can also ask Codex to view images on your system. By giving Codex tools to take screenshots of
+the app you are working on, Codex can verify the work it's doing.
 
-## Running with an input prompt
+## Notifications
 
-When you just need a quick answer, run Codex with a single prompt and skip the interactive UI.
+By default, the Codex app sends notifications when a task completes or needs approval while the app
+is in the background.
 
-```bash
-codex "explain this codebase"
-```
+In the Codex app settings, you can choose to never send notifications or always send them, even
+when the app is in focus.
 
-Codex will read the working directory, craft a plan, and stream the response back to your terminal before exiting. Pair this with flags like `--path` to target a specific directory or `--model` to dial in the behavior up front.
+## Keep your computer awake
 
-## Shell completions
+Since your tasks might take a while to complete, you can have the Codex app prevent your computer
+from going to sleep by enabling the "Prevent sleep while running" toggle in the app's settings.
 
-Speed up everyday usage by installing the generated completion scripts for your shell:
+## See also
 
-```bash
-codex completion bash
-codex completion zsh
-codex completion fish
-```
-
-Run the completion script in your shell configuration file to set up completions for new sessions. For example, if you use `zsh`, you can add the following to the end of your `~/.zshrc` file:
-
-```bash
-# ~/.zshrc
-eval "$(codex completion zsh)"
-```
-
-Start a new session, type `codex` and press <kbd>Tab</kbd> to see the completions. If you see a `command not found: compdef` error, you need to enable `compdef` by adding `autoload -Uz compinit && compinit` to your `~/.zshrc` file before the `eval "$(codex completion zsh)"` line and then restarting your shell.
-
-## Approval modes
-
-Approval modes define how much Codex can do without stopping for confirmation. Use `/approvals` inside an interactive session to switch modes as your comfort level changes.
-
-- **Auto** (default) lets Codex read files, edit, and run commands within the working directory. It still asks before touching anything outside that scope or using the network.
-- **Read Only** keeps Codex in a consultative mode. It can browse files but won't make changes or run commands until you approve a plan.
-- **Full Access** grants Codex the ability to work across your machine, including network access, without asking. Use it sparingly and only when you trust the repository and task.
-
-Codex always surfaces a transcript of its actions, so you can review or roll back changes with your usual git workflow.
-
-## Scripting Codex
-
-Automate workflows or wire Codex into your existing scripts with the `exec` subcommand. This runs Codex non-interactively, piping the final plan and results back to `stdout`.
-
-```bash
-codex exec "fix the CI failure"
-```
-
-Combine `exec` with shell scripting to build custom workflows, such as automatically updating changelogs, sorting issues, or enforcing editorial checks before a PR ships.
-
-## Working with Codex cloud
-
-The `codex cloud` command lets you triage and launch [Codex cloud tasks](/codex/cloud) without leaving the terminal. Run it with no arguments to open an interactive picker, browse active or finished tasks, and apply the changes to your local project.
-
-You can also start a task directly from the terminal:
-
-```bash
-codex cloud exec --env ENV_ID "Summarize open bugs"
-```
-
-Add `--attempts` (1–4) to request best-of-N runs when you want Codex cloud to generate more than one solution. For example, `codex cloud exec --env ENV_ID --attempts 3 "Summarize open bugs"`.
-
-Environment IDs come from your Codex cloud configuration—use `codex cloud` and press <kbd>Ctrl</kbd>+<kbd>O</kbd> to choose an environment or the web dashboard to confirm the exact value. Authentication follows your existing CLI login, and the command exits non-zero if submission fails so you can wire it into scripts or CI.
-
-## Slash commands
-
-Slash commands give you quick access to specialized workflows like `/review`, `/plan`, or your own reusable prompts. Codex ships with a curated set of built-ins, and you can create custom ones for team-specific tasks or personal shortcuts.
-
-See the [slash commands guide](/codex/guides/slash-commands) to browse the catalog of built-ins, learn how to author custom commands, and understand where they live on disk.
-
-## Model Context Protocol (MCP)
-
-Connect Codex to more tools by configuring Model Context Protocol servers. Add STDIO or streaming HTTP servers in `~/.codex/config.toml`, or manage them with the `codex mcp` CLI commands—Codex launches them automatically when a session starts and exposes their tools next to the built-ins. You can even run Codex itself as an MCP server when you need it inside another agent.
-
-See [Model Context Protocol](/codex/mcp) for example configurations, supported auth flows, and a deeper walk-through.
-
-## Tips & shortcuts
-
-- Type `@` in the composer to open a fuzzy file search over the workspace root; press <kbd>Tab</kbd> or <kbd>Enter</kbd> to drop the highlighted path into your message.
-- Tap <kbd>Esc</kbd> twice while the composer is empty to edit your previous user message. Continue pressing <kbd>Esc</kbd> to walk further back in the transcript, then hit <kbd>Enter</kbd> to fork from that point.
-- Launch Codex from any directory using `codex --cd <path>` to set the working root without running `cd` first. The active path appears in the TUI header.
-- Expose more writable roots with `--add-dir` (for example, `codex --cd apps/frontend --add-dir ../backend --add-dir ../shared`) when you need to coordinate changes across more than one project.
+- [Settings](https://developers.openai.com/codex/app/settings)
+- [Automations](https://developers.openai.com/codex/app/automations)
+- [Local environments](https://developers.openai.com/codex/app/local-environments)
+- [Worktrees](https://developers.openai.com/codex/app/worktrees)

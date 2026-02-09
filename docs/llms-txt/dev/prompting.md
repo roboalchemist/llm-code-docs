@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Write effective prompts
 
 > Master prompting fundamentals and advanced techniques. Learn directive writing, context inclusion, few-shot prompting, and chain-of-thought reasoning.

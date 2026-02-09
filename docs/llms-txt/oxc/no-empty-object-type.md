@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-empty-object-type.md
 ---
-# typescript/no-empty-object-type&#x20;
 
 ### What it does
 
@@ -94,7 +93,7 @@ Allowed values are:
 
 ### allowWithName
 
-type: `string | null`
+type: `string`
 
 A stringified regular expression to allow interfaces and object type aliases with the configured name.
 

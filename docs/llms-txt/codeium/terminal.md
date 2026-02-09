@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/terminal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Terminal
+
+> Use Windsurf's enhanced terminal with Command mode, Cascade integration, Turbo mode for auto-execution, and allow/deny lists for command control.
 
 # Command in the terminal
 
@@ -28,19 +34,48 @@ Chat with Cascade about your active terminals.
 
 # Auto-executed Cascade commands
 
-Cascade has the ability to run terminal commands on its own with user permission. However, certain terminal commands can be accepted or rejected automatically through the Allow and Deny lists.
+Cascade has the ability to run terminal commands on its own with user permission. You can configure how Cascade handles command execution through four distinct auto-execution levels, and certain terminal commands can be accepted or rejected automatically through the Allow and Deny lists.
 
-By enabling Auto mode, it will rely on Cascade's judgement on whether the command requires the user's permission to be executed. This feature is only available for messages sent with premium models.
+## Auto-Execution Levels
 
-### Turbo Mode
+Windsurf provides four levels of command auto-execution, giving you control over how Cascade runs terminal commands:
 
-In Turbo mode, Cascade will always execute the command, unless it is in the deny list.
+| Level              | Description                                                                                                                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Disabled**       | Auto-execution is completely disabled. All commands require manual approval before execution.                                                                                                                               |
+| **Allowlist Only** | Only commands that match entries in your allow list can be auto-executed. All other commands require manual approval.                                                                                                       |
+| **Auto**           | Cascade uses its judgment to determine whether a command is safe to auto-execute. Commands deemed potentially risky will still require your approval. This feature is only available for messages sent with premium models. |
+| **Turbo**          | All commands are auto-executed immediately, except those in your deny list.                                                                                                                                                 |
 
-You can toggle this via the Windsurf - Settings panel in the bottom right hand corner of the editor.
+You can select your preferred auto-execution level via the Windsurf Settings panel in the bottom right corner of the editor.
 
 <Frame>
   <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=8860ea8311000ae2cc440cef26560620" data-og-width="680" width="680" data-og-height="60" height="60" data-path="assets/windsurf/cascade/cascade-turbo-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=dbcaa01fab58d7ba1fac05acc91ae12f 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c5dc736ca3cd591d00f0c8b3b4f13f90 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=13ee4803cf3edcdaba2b9d76dcf109aa 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=389cfcb06aec368986869bfd15a42553 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=e9829ad62b78b641213d472b4bca8683 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/cascade-turbo-mode.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=db556ad06ddff8c4fbe5186569bf8334 2500w" />
 </Frame>
+
+### Admin-Controlled Maximum Level (Teams & Enterprise)
+
+For Teams and Enterprise users, administrators can set a maximum allowed auto-execution level for their organization. This setting restricts which levels are available to team members, allowing admins to enforce security policies while still giving users flexibility within those bounds.
+
+When an admin sets a maximum level, users can select any level up to and including that maximum. For example, if an admin sets the maximum to "Auto", users can choose between Disabled, Allowlist Only, or Auto, but cannot enable Turbo mode.
+
+Administrators can configure this setting in the <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a> under Team Settings.
+
+### Team-Wide Command Lists (Teams & Enterprise)
+
+Administrators can configure **team-wide allowlist and denylist** for terminal commands that apply to all team members. These lists work in addition to individual user allow/deny lists.
+
+| List Type     | Behavior                                                                                                                              |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Allowlist** | Commands matching entries in this list will be auto-executed without user confirmation (when auto-execution is enabled for the user). |
+| **Denylist**  | Commands matching entries in this list will always require user approval before execution, regardless of user settings.               |
+
+**Key behaviors:**
+
+* **Team and user configs are merged**: Team-level lists are combined with individual user allow/deny lists configured in Windsurf settings. A command matching either the team or user allowlist will be auto-executed (unless blocked by a denylist).
+* The **denylist takes precedence** over the allowlist—if a command matches both lists (at either team or user level), it will require approval
+
+To configure team-wide command lists, go to the <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a> → Team Settings → Terminal Commands → **Manage Lists**.
 
 ### Allow list
 
@@ -61,3 +96,20 @@ The setting can be via Command Palette → Open Settings (UI) → Search for `wi
 <Frame>
   <img style={{ maxHeight: "500px" }} src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=83f5c447deeb931e68781fbd6cb89733" data-og-width="2090" width="2090" data-og-height="624" height="624" data-path="assets/windsurf/cascade/deny-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=479a1b8b643adefbca8fcd08bbb2d4cd 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=fb60fb1ea1f66c2cd63eb62ae0513675 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=83520e9689fae159e121ccce1dc72901 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=a4832324125ef273f72d41f315a434ca 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=28da77a6ed6fb67a2467df9bd95c7c90 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf/cascade/deny-list.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=01bc9a72d11a63527867a908cdace643 2500w" />
 </Frame>
+
+# Dedicated terminal
+
+Starting in Wave 13, Windsurf introduced a dedicated terminal for Cascade to use for running commands on macOS.
+This dedicated terminal is separate from your default terminal and *always* uses `zsh` as the shell.
+
+<Frame>
+  <img style={{ maxHeight: "350px" }} src="https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=8de2c0092ba68abc3c44f39868ec7db5" data-og-width="1248" width="1248" data-og-height="430" height="430" data-path="assets/windsurf/dedicated-terminal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=280&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=9be023f55788dda3e342e0f4d564f906 280w, https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=560&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=dc7ee08fe44711231e1c745a44bb5f1f 560w, https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=840&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=3a370b9d6623065b2eb67cc161dbb69d 840w, https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=1100&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=c0a082190566b7c9758532c8692634ad 1100w, https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=1650&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=0b54e6b78ad311aa7743055025b6d24c 1650w, https://mintcdn.com/codeium/qV7Je1rddINQc1la/assets/windsurf/dedicated-terminal.png?w=2500&fit=max&auto=format&n=qV7Je1rddINQc1la&q=85&s=9543e3fc42d6bb972fcc8813a4684536 2500w" />
+</Frame>
+
+The dedicated terminal *will* use your zsh configuration, so aliases and environment variables will be available from `.zshrc` and other zsh-specific files.
+
+If you use a different shell instead of `zsh`, and want Windsurf to use shared environment variables, we recommend creating a shared configuration file that both shells can source.
+
+### Troubleshooting
+
+If you have issues with the dedicated terminal, you can revert to the legacy terminal by enabling the Legacy Terminal Profile option in Windsurf settings.

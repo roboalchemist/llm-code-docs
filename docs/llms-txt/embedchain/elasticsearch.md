@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/vector-databases/elasticsearch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Elasticsearch
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[elasticsearch]'
 ```
 
@@ -15,14 +19,14 @@ pip install --upgrade 'embedchain[elasticsearch]'
 You can authorize the connection to Elasticsearch by providing either `basic_auth`, `api_key`, or `bearer_auth`.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load elasticsearch configuration from yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   vectordb:
     provider: elasticsearch
     config:

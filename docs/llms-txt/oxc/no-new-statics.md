@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/no-new-statics.md
 ---
-# promise/no-new-statics&#x20;
 
 ### What it does
 

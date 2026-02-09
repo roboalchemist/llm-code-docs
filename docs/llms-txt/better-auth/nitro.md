@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Nitro.
 
-***
 
-title: Nitro Integration
-description: Integrate Better Auth with Nitro.
-----------------------------------------------
 
 Better Auth can be integrated with your [Nitro Application](https://nitro.build/) (an open source framework to build web servers).
 
@@ -34,7 +30,7 @@ This will create the `nitro-app` directory and install all the dependencies. You
 
 For this guide, we will be using the Prisma adapter. You can install prisma client by running the following command:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -80,7 +76,7 @@ For this guide, we will be using the Prisma adapter. You can install prisma clie
 
 `prisma` can be installed as a dev dependency using the following command:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -215,7 +211,7 @@ You can configure CORS for your Nitro app by creating a plugin.
 
 Start by installing the cors package:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

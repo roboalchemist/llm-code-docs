@@ -1,52 +1,52 @@
 # Source: https://docs.squared.ai/api-reference/syncs/show_sync.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Sync
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/syncs/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/{id}
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/syncs/{id}:
+    get:
+      tags:
+        - Syncs
+      summary: Show details of a specific sync operation
+      operationId: showSync
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-              type:
-                allOf:
-                  - type: string
+            type: string
+      responses:
+        '200':
+          description: Sync details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
                     enum:
                       - syncs
-              attributes:
-                allOf:
-                  - type: object
+                  attributes:
+                    type: object
                     properties:
                       source_id:
                         type: integer
@@ -79,28 +79,13 @@ paths:
                         type: string
                       status:
                         type: string
-        examples:
-          example:
-            value:
-              id: <string>
-              type: syncs
-              attributes:
-                source_id: 123
-                destination_id: 123
-                model_id: 123
-                configuration: {}
-                schedule_type: automated
-                sync_mode: full_refresh
-                sync_interval: 123
-                sync_interval_unit: minutes
-                cron_expression: <string>
-                cursor_field: <string>
-                stream_name: <string>
-                status: <string>
-        description: Sync details retrieved successfully
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

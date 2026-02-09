@@ -1,3 +1,5 @@
+# Source: https://lynxjs.org/ai/start/integrate-with-existing-apps.md
+
 # Source: https://lynxjs.org/rspeedy/start/integrate-with-existing-apps.md
 
 # Source: https://lynxjs.org/react/start/integrate-with-existing-apps.md

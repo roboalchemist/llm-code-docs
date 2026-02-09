@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/email_doesn't_match.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/email_doesn't_match.md
 
-# Email doesn't match
+# email_doesn't_match
 
 The email doesn't match the email of the account.
 
-***
 
-title: Email doesn't match
-description: The email doesn't match the email of the account.
---------------------------------------------------------------
 
 ## What is it?
 

@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/runner.md
 
-# Source: https://vitest.dev/api/advanced/runner.md
-
-# Source: https://vitest.dev/config/runner.md
-
 ---
 url: /config/runner.md
 ---

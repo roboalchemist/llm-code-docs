@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/getting-started/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Serverless Quickstart
 
 > Make your first Serverless API call in minutes
@@ -29,8 +33,48 @@ Once you have your API key, export it as an environment variable in your termina
 ## Step 2: Make your first Serverless API call
 
 <Tabs>
-  <Tab title="Python">
-    Fireworks provides an OpenAI compatible endpoint. Install the OpenAI Python SDK:
+  <Tab title="Python (Fireworks SDK)">
+    Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
+
+    <Note>
+      The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+    </Note>
+
+    <CodeGroup>
+      ```bash pip theme={null}
+      pip install --pre fireworks-ai
+      ```
+
+      ```bash poetry theme={null}
+      poetry add --pre fireworks-ai
+      ```
+
+      ```bash uv theme={null}
+      uv add --pre fireworks-ai
+      ```
+    </CodeGroup>
+
+    Then make your first Serverless API call:
+
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{
+        "role": "user",
+        "content": "Say hello in Spanish",
+      }],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    Fireworks provides an OpenAI compatible endpoint. Install the [OpenAI Python SDK](https://github.com/openai/openai-python):
 
     ```bash  theme={null}
     pip install openai
@@ -60,7 +104,7 @@ Once you have your API key, export it as an environment variable in your termina
   </Tab>
 
   <Tab title="JavaScript">
-    Fireworks provides an OpenAI compatible endpoint. Install the OpenAI Node.js SDK:
+    Fireworks provides an OpenAI compatible endpoint. Install the [OpenAI JavaScript / TypeScript SDK](https://github.com/openai/openai-node):
 
     ```bash  theme={null}
     npm install openai
@@ -117,7 +161,25 @@ You should see a response like: `"¡Hola!"`
 Stream responses token-by-token for a better user experience:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    stream = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{"role": "user", "content": "Tell me a short story"}],
+      stream=True
+    )
+
+    for chunk in stream:
+      if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -184,19 +246,17 @@ Stream responses token-by-token for a better user experience:
 Connect your models to external tools and APIs:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
     ```python  theme={null}
-    import os
-    from openai import OpenAI
+    from fireworks import Fireworks
 
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1",
-    )
+    client = Fireworks()
 
     response = client.chat.completions.create(
         model="accounts/fireworks/models/kimi-k2-instruct-0905",
-        messages=[{"role": "user", "content": "What's the weather in Paris?"}],
+        messages=[
+            {"role": "user", "content": "What's the weather in Paris?"}
+        ],
         tools=[
             {
                 "type": "function",
@@ -214,7 +274,47 @@ Connect your models to external tools and APIs:
                         "required": ["location"],
                     },
                 },
-            }
+            },
+        ],
+    )
+
+    print(response.choices[0].message.tool_calls)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
+    ```python  theme={null}
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ.get("FIREWORKS_API_KEY"),
+        base_url="https://api.fireworks.ai/inference/v1",
+    )
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/kimi-k2-instruct-0905",
+        messages=[
+            {"role": "user", "content": "What's the weather in Paris?"}
+        ],
+        tools=[
+            {
+                "type": "function",
+                "function": {
+                    "name": "get_weather",
+                    "description": "Get the current weather for a location",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "location": {
+                                "type": "string",
+                                "description": "City name, e.g. San Francisco",
+                            }
+                        },
+                        "required": ["location"],
+                    },
+                },
+            },
         ],
     )
 
@@ -305,7 +405,41 @@ Connect your models to external tools and APIs:
 Get reliable JSON responses that match your schema:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[
+        {
+          "role": "user",
+          "content": "Extract the name and age from: John is 30 years old",
+        }
+      ],
+      response_format={
+        "type": "json_schema",
+        "json_schema": {
+          "name": "person",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "age": { "type": "number" }
+            },
+            "required": ["name", "age"],
+          },
+        },
+      },
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -420,7 +554,35 @@ Get reliable JSON responses that match your schema:
 Analyze images with vision-language models:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/qwen2p5-vl-32b-instruct",
+      messages=[
+        {
+          "role": "user",
+          "content": [
+            {"type": "text", "text": "What's in this image?"},
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": "https://storage.googleapis.com/fireworks-public/image_assets/fireworks-ai-wordmark-color-dark.png"
+              },
+            },
+          ],
+        }
+      ],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -523,6 +685,10 @@ Serverless models are managed by the Fireworks team and may be updated or deprec
 <Tip>
   Make sure to add a [payment method](https://fireworks.ai/billing) to access [higher rate limits](/guides/quotas_usage/rate-limits) up to 6,000 RPM. Without a payment method, you're limited to 10 RPM.
 </Tip>
+
+<Callout type="warning">
+  The 6,000 RPM figure is the maximum ceiling enforced by our spike arrest policy. Your actual limit scales dynamically with sustained usage, so short-lived spikes may be throttled below that cap. For predictable throughput needs, consider [on-demand deployments](/guides/ondemand-deployments) or [requesting a rate review](/guides/quotas_usage/rate-limits#serverless-rate-limits).
+</Callout>
 
 ## Next steps
 

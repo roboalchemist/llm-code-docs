@@ -2,10 +2,7 @@
 
 # List Deleted Settings
 
-```
-GET 
-/v1/configs/:configId/deleted-settings
-```
+Copy page
 
 This endpoint returns the list of Feature Flags and Settings that were deleted from the given Config.
 

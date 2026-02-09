@@ -1,44 +1,48 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/task-best-practices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tasks Best Practices
 
 > Improve task writing by following best practices
 
-Before any technical integration with GenerativeAgent, you must first define the tasks and the functions that the GenerativeAgent will perform to help your organization.
+Before integrating GenerativeAgent, define the tasks and functions that GenerativeAgent will perform for your organization.
 
-**Tasks** are the issues or actions you want generative agent to handle. They are primarily a set of **instructions** and the **Functions** needed to perform the instructions.
+**Tasks** represent the issues or actions you want the generative agent to handle. Each task consists of **instructions** and the **functions** needed to perform those instructions.
 
-* **Instructions** define the business logic and acceptance criteria of a task.
-* **Functions** are the set of tools (e.g. APIs) needed to perform a task with its instructions.
+* **Instructions** define the business logic and acceptance criteria for a task.
+* **Functions** are the tools (such as APIs) needed to perform a task according to its instructions.
 
-The goal of all instructions is to deliver the desired outcome using the minimum number expressions.
+The goal of all instructions is to deliver the desired outcome using the minimum number of expressions.
 
 ## Best Practices
 
-Clearly defining tasks is key in configuring GenerativeAgent, as the GenerativeAgent acts on the tasks you as it to perform and solve customer issues across your apps.
+Clearly defining tasks is essential for configuring GenerativeAgent. GenerativeAgent acts on the tasks you ask it to perform and solves customer issues across your apps.
 
-When writing or defining Tasks, have the following methods in mind:
+When writing or defining tasks, keep the following practices in mind:
 
 ### Know where to place information
 
-Deciding which information belongs in a Tasks or in the Knowledge Base can be challenging. To make it simple, we offer this recommendation as a rule of thumb:
+Deciding which information belongs in tasks versus in the Knowledge Base can be challenging. Use this rule of thumb:
 
-* Task instructions are procedures and course of action for GenerativeAgent.
+* **Task instructions** define procedures and courses of action for GenerativeAgent.
 
-> Example: "Flip a coin, the result of coin\_flip decides whether the customer kickoffs the game."
+> Example: "Flip a coin. The result of coin\_flip determines whether the customer starts the game."
 
-* Knowledge Base Articles are a place to hold information and guides on how to make operate during an action.
+* **Knowledge Base articles** contain information and guides on how to operate during an action.
 
-> Example: "Flipping coins must be quarters, the result of the flip is marked after the coin falls in your hand and stops moving. If the coin falls from your hand, the result is null.""
+> Example: "Flipping coins must use quarters. Mark the result after the coin falls into your hand and stops moving. If the coin falls from your hand, the result is null."
 
-For example, an example of the Task that uses the `refund_eligibility` API would be:
+For example, a task that uses the `refund_eligibility` API would be:
 
 ```
 Use the refund_eligibility API to check if the purchase is eligible for a refund. 
 If eligible, ask the customer if they want store credit or a refund to their original payment method
 ```
 
-And the example of the Knowledge Base Article for the Task would be:
+A Knowledge Base article for this task would be:
 
 ```
 Refunds typically take 7-10 days to appear on credit card statements. 
@@ -47,34 +51,33 @@ Store credit will be sent via email within one hour of issuing the refund.
 
 ### Format Instructions
 
-Use clear instructions for the Task.
+Use clear instructions for tasks.
 
-Be consistent in the way you use marks, like Headers or bullet/numbered lists. Use markdown for the task definition.
+Be consistent in how you use formatting elements, such as headers or bullet/numbered lists. Use markdown for task definitions.
 
-* Use Headers to organize sections within the instructions
+* Use headers to organize sections within the instructions
 * Use lists for clarity
 
 ```json  theme={null}
-# Headers
-- Task section
-- Bullet 2
--- Secondary Section
---- Tertiary Section
---- Tertiary Section 2
-Here are instructions on how to use the api calls to solve problems:
-# Section
-1blah blah blah
-# Section
-2blah blah blah
+# Headers organize task sections
+- Use headers to break down complex tasks into sections
+- Use bullet points for clarity within each section
+-- Use sub bullet points for further clarification on a specific point
+
+# Task Format Example
+- Verify the customer's order ID
+- Use the order_status API to retrieve current status
+- Communicate the status to the customer
+-- If the status is pending, ask the customer to check back later.
 ```
 
 ### Provide Resolution Steps
 
 Enumerate the steps that GenerativeAgent needs to resolve a task.
 
-This provides a logical flow of actions that the GenerativeAgent can use to be more efficient.
+This provides a logical flow of actions that GenerativeAgent can follow to be more efficient.
 
-Just as a human agent needs to check, read, resolve, and send information to a customer, GenerativeAgent needs these steps to be more detailed.
+Just as a human agent needs to check, read, resolve, and send information to a customer, GenerativeAgent needs these steps to be clearly defined.
 
 ```json  theme={null}
 # Steps to take to check order status
@@ -90,13 +93,13 @@ Just as a human agent needs to check, read, resolve, and send information to a c
 
 ### Define Functions to Call
 
-Functions are the set of APIs needed alongside their instructions.
+Functions represent the set of APIs needed alongside their instructions.
 
-GenerativeAgent invokes Functions to perform the necessary actions for a task.
+GenerativeAgent invokes functions to perform the necessary actions for a task.
 
-Task instructions must outline how and when does GenerativeAgent invokes a Function.
+Task instructions must specify how and when GenerativeAgent should invoke a function.
 
-Here is an example of how to call out functions in the task instruction:
+Here is an example of how to reference functions in task instructions:
 
 Within the "FlightStatus" task, functions might include:
 
@@ -112,9 +115,9 @@ Here is how the task instruction would be outlined to use the function:
 
 ### API Return Handling
 
-Provide instructions for handle the returns of API Calls after performing a Function.
+Provide instructions for handling API call responses after performing a function.
 
-Use the syntax `(data["APICallName"])` to let GenerativeAgent know that that precise piece of writing is the data return from an API Call.
+Use the syntax `(data["APICallName"])` to reference specific data returned from an API call.
 
 Here is an example of API Return Handling:
 
@@ -126,9 +129,9 @@ When called, if there is a past due amount, you MUST tell them their exact soft 
 
 Clearly define company policies and outline what GenerativeAgent must do in various scenarios.
 
-Stating Policies ensure consistency and compliance with your Organization's standards.
+Stating policies ensures consistency and compliance with your organization's standards.
 
-Remember than a good part of the Policies can be taken from your Knowledge Base.
+Remember that a good portion of policies can be taken from your Knowledge Base.
 
 ```json  theme={null}
 # Refund eligibility
@@ -142,21 +145,23 @@ Remember than a good part of the Policies can be taken from your Knowledge Base.
 
 ### Ensure Knowledge Base Resourcing
 
-Ensure that GenerativeAgent is making use of your Knowledge Base either by API or by the Knowledge Base Tooling in the Generative Agent UI.
+Ensure that GenerativeAgent uses your Knowledge Base either through an API or the Knowledge Base tooling in the GenerativeAgent UI.
 
-Provide the Knowledge Base Resources within the task, so GenerativeAgent references them when active.
-Remember that you can try out GenerativeAgent's behavior by using the Previewer.
+Reference Knowledge Base resources within the task so GenerativeAgent can access them during conversations.
 
-It is recommended to store task-related information in the Knowledge Base with metadata tags.
+You can test GenerativeAgent's behavior using the Previewer.
 
-You can use metadata to ensure certain articles are only used by specific tasks. If an Article and a Task have the same metadata tags, GenerativeAgent will filter and only use that specific relevant information during a conversation.
+Store task-related information in the Knowledge Base with metadata tags.
 
-### Outline limitations
+Use metadata to ensure certain articles are only used by specific tasks. If an article and a task have the same metadata tags, GenerativeAgent will filter and only use that relevant information during a conversation.
+
+### Outline Limitations
 
 Be clear about the limitations of each task.
 
-Provide instructions on what to do in scenarios when customers ask for things that go beyond the limits of a task.
-This helps GenerativeAgent to manage customer expectations, provide alternative solutions, and switch to tasks that are in line with the customer's needs.
+Provide instructions for handling customer requests that go beyond a task's limits.
+
+This helps GenerativeAgent manage customer expectations, provide alternative solutions, and switch to tasks that align with the customer's needs.
 
 ```json  theme={null}
 # Limitations
@@ -185,12 +190,12 @@ This ensures that only the contextually relevant task instructions are available
 
 Once a reference variable is created, you can use it to:
 
-* Conditionally make other Functions available
+* Conditionally make other functions available
 * Set conditional logic in prompt instructions
 * Compare values across different parts of your GenerativeAgent workflow
-* Control Function exposure based on data from previous function calls.
-* Toggle conditional instructions in your Task s prompt depending on returned data
-* Extract and transform values without hard‐coding logic into prompts or code
+* Control function exposure based on data from previous function calls
+* Toggle conditional instructions in your task's prompt depending on returned data
+* Extract and transform values without hard-coding logic into prompts or code
 
 For example:
 
@@ -202,15 +207,15 @@ val is not none and val|length > 0 → returns True if val has length > 0
 
 ### Create Subtasks
 
-Some tasks might be bigger and more complex than others.
+Some tasks are larger and more complex than others.
 
 GenerativeAgent is more efficient with cohesive and direct tasks. A good practice for complex tasks is to divide them into subtasks.
 
-For example, to give a refund to a client, GenerativeAgent might need to:
+For example, to process a refund for a customer, GenerativeAgent might need to:
 
 * Confirm the customer's status
 * Confirm the policies allow for the refund
-* Confirm the refund
+* Process the refund
 
 ```json  theme={null}
 For a customer seeking a refund, consider splitting the task into:
@@ -220,13 +225,13 @@ IssueRefund: To gather the information necessary to process the refund and actua
 
 ### Call Task Switch
 
-As all tasks are outlined, sometimes GenerativeAgent needs to switch from one task to another.
+Sometimes GenerativeAgent needs to switch from one task to another.
 
-Be explicit about the tasks to switch to, given a context.
+Be explicit about which tasks to switch to based on the context.
 
 ```json  theme={null}
 # Damage Claims
-- For claims regarding damaged products, use use the 'DamageClaims' task
+- For claims regarding damaged products, use the 'DamageClaims' task
 # Exchange Requests
 - For exchange inquiries, use the 'ExchangeProducts' task
 # No pets rule
@@ -237,9 +242,9 @@ Be explicit about the tasks to switch to, given a context.
 
 ### Outline Human Support
 
-State the scenarios where GenerativeAgent needs to escalate the issue to a human agent.
+State scenarios in which GenerativeAgent needs to escalate the issue to a human agent.
 
-This ensures GenerativeAgent's role in your organization is well contained.
+This ensures GenerativeAgent's role in your organization is clearly defined.
 
 ```json  theme={null}
 # Escalate to a Human Agent
@@ -255,16 +260,16 @@ You can also state scenarios for HILA:
 - Cancelation of high-value purchases
 ```
 
-### Keep it simple
+### Keep It Simple
 
-It is generally best to keep task instructions focused and concise.
+Keep task instructions focused and concise.
 
-The more details you add to tasks, the greater the chance that essential instructions could be overlooked or diluted. GenerativeAgent might not follow the most important steps as precisely if the instructions are too long or complex.
+The more details you add to tasks, the greater the chance that essential instructions could be overlooked or diluted. If instructions are too long or complex, GenerativeAgent might not follow the most important steps precisely.
 
-So, we recommend to not place many task-relevant information directly into the task. It is better to make use of the other tools GenerativeAgent has at your disposal, like metadata, Functions, and the Knowledge Base.
+We recommend not placing too much task-relevant information directly in the task. Instead, use the other tools GenerativeAgent provides, such as metadata, functions, and the Knowledge Base.
 
 <Note>
-  We do not recommend  to directly upload an internal agent-facing knowledge base to the GenerativeAgent Knowledge Base.
+  We do not recommend directly uploading an internal agent-facing knowledge base to the GenerativeAgent Knowledge Base.
 
-  GenerativeAgent's Knowledge Base is meant for GenerativeAgent's use. Instructions meant for agents are better suited to task instructions.
+  GenerativeAgent's Knowledge Base is meant for GenerativeAgent's use. Task instructions better suit instructions meant for agents.
 </Note>

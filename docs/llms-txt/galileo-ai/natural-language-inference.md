@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Natural Language Inference
 
 > Leverage Galileo NLP Studio for natural language inference (NLI), enabling accurate predictions and model performance monitoring.

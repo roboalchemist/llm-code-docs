@@ -2,41 +2,27 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZLEXCOUNT
 
-> Returns the number of elements in the sorted set stored at key filtered by lex.
+> Returns the number of elements in the sorted set stored at key filterd by lex.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="min" type="string" required>
+<ParamField body="min" type="str" required>
   The lower lexicographical bound to filter by.
 
   Use `-` to disable the lower bound.
 </ParamField>
 
-<ParamField body="max" type="string" required>
+<ParamField body="max" type="str" required>
   The upper lexicographical bound to filter by.
 
   Use `+` to disable the upper bound.
@@ -44,17 +30,14 @@
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of matched.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.zadd("key", 
-      { score: 1, member: "one"}, 
-      { score: 2, member: "two" },
-  );
-  const elements = await redis.zlexcount("key", "two", "+");
-  console.log(elements); // 1
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zlexcount("myset", "-", "+") == 3
   ```
 </RequestExample>

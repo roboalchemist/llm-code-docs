@@ -50,5 +50,5 @@ ReturnCode(NO_SPACE, External feed is blocked due to resource exhaustion:
 
 To remedy, add nodes to the content cluster to distribute documents with attributes over more nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

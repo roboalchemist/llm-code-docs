@@ -1,0 +1,44 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/gcp/gcp.privilegedaccessmanager_grant.dataset.md
+
+---
+title: Privileged Access Manager Grant
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Privileged Access Manager Grant
+---
+
+# Privileged Access Manager Grant
+
+Privileged Access Manager Grant in Google Cloud is a resource that defines temporary elevated access to sensitive resources. It allows administrators to grant just-in-time permissions to users or service accounts for a limited duration, reducing the risk of long-term privilege exposure. This resource helps enforce the principle of least privilege and supports approval workflows, access justification, and audit logging for compliance and security management.
+
+```
+gcp.privilegedaccessmanager_grant
+```
+
+## Fields
+
+| Title                       | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                              | Description |
+| --------------------------- | ---- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                        | core | string        |
+| additional_email_recipients | core | array<string> | Optional. Additional email addresses to notify for all the actions performed on the grant.                                                                                                                                                                                                                                                                                                                                             |
+| ancestors                   | core | array<string> |
+| audit_trail                 | core | json          | Output only. Audit trail of access provided by this grant. If unspecified then access was never granted.                                                                                                                                                                                                                                                                                                                               |
+| create_time                 | core | timestamp     | Output only. Create time stamp.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| datadog_display_name        | core | string        |
+| externally_modified         | core | bool          | Output only. Flag set by the PAM system to indicate that policy bindings made by this grant have been modified from outside PAM. After it is set, this flag remains set forever irrespective of the grant state. A `true` value here indicates that PAM no longer has any certainty on the access a user has because of this grant.                                                                                                    |
+| justification               | core | json          | Optional. Justification of why this access is needed.                                                                                                                                                                                                                                                                                                                                                                                  |
+| labels                      | core | array<string> |
+| name                        | core | string        | Identifier. Name of this grant. Possible formats: * `organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` * `folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` * `projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}/grants/{grant-id}` The last segment of this name (`{grant-id}`) is autogenerated. |
+| organization_id             | core | string        |
+| parent                      | core | string        |
+| privileged_access           | core | json          | Output only. The access that would be granted by this grant.                                                                                                                                                                                                                                                                                                                                                                           |
+| project_id                  | core | string        |
+| project_number              | core | string        |
+| region_id                   | core | string        |
+| requested_duration          | core | string        | Required. The amount of time access is needed for. This value should be shorter than the `max_request_duration` value of the entitlement.                                                                                                                                                                                                                                                                                              |
+| requester                   | core | string        | Output only. Username of the user who created this grant.                                                                                                                                                                                                                                                                                                                                                                              |
+| resource_name               | core | string        |
+| state                       | core | string        | Output only. Current state of this grant.                                                                                                                                                                                                                                                                                                                                                                                              |
+| tags                        | core | hstore_csv    |
+| timeline                    | core | json          | Output only. Timeline of this grant.                                                                                                                                                                                                                                                                                                                                                                                                   |
+| update_time                 | core | timestamp     | Output only. Update time stamp.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| zone_id                     | core | string        |

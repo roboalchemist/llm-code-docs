@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/features/esm.md
 
-import { Stability } from '@components/ApiMeta';
-
 # ESM output
 
 Rspack supports building with ESM format output. When building applications, Rspack generates IIFE-based bundled output by default instead of standard CommonJS or ESM format. You can configure [output.module](/config/output.md#outputmodule) to generate ESM format output. The following sections introduce how to [build application ESM output](#building-application-esm-output) and [build library ESM output](#building-library-esm-output), and finally list the [configuration checklist](#configuration-checklist) related to ESM output.
@@ -93,7 +91,6 @@ Below are the main configuration options related to ESM and their descriptions, 
 3. [output.library.type](/config/output.md#outputlibrarytype): Set to `'modern-module'` for additional optimization of library ESM output format.
 4. [output.chunkLoading](/config/output.md#outputchunkloading): Set to `'import'` to use ESM `import` for loading chunks.
 5. [output.workerChunkLoading](/config/output.md#outputworkerchunkloading): Set to `'import'` to use ESM `import` for loading workers.
-6. [optimization.concatenateModules](/config/optimization.md#optimizationconcatenatemodules): modern-module depends on this option being enabled to ensure the output supports good tree-shaking and correct library exports.
-7. [optimization.avoidEntryIife](/config/optimization.md#optimizationavoidentryiife): In some cases, Rspack wraps ESM output in an IIFE, which breaks ESM's modular characteristics.
-8. [experiments.outputModule](/config/experiments.md#experimentsoutputmodule): Enable the experimental feature required for output.module.
-9. [HtmlWebpackPlugin.scriptLoading](/guide/tech/html.md#htmlwebpackplugin): Set to `'module'` to use ESM `<script type="module">` for loading `.mjs` modules.
+6. [optimization.avoidEntryIife](/config/optimization.md#optimizationavoidentryiife): In some cases, Rspack wraps ESM output in an IIFE, which breaks ESM's modular characteristics.
+7. [experiments.outputModule](/config/experiments.md#experimentsoutputmodule): Enable the experimental feature required for output.module.
+8. [HtmlWebpackPlugin.scriptLoading](/guide/tech/html.md#htmlwebpackplugin): Set to `'module'` to use ESM `<script type="module">` for loading `.mjs` modules.

@@ -1,49 +1,108 @@
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
-
 # Source: https://docs.fireworks.ai/api-reference/update-secret.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.fireworks.ai/api-reference/update-secret.md
+# null
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
 
-# Source: https://docs.fireworks.ai/api-reference/update-secret.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
+## OpenAPI
 
-# Source: https://docs.fireworks.ai/api-reference/update-secret.md
+````yaml patch /v1/accounts/{account_id}/secrets/{secret_id}
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/secrets/{secret_id}:
+    patch:
+      tags:
+        - Gateway
+      operationId: Gateway_UpdateSecret
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
+          schema:
+            type: string
+        - name: secret_id
+          in: path
+          required: true
+          description: The Secret Id
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyName:
+                  type: string
+                  title: >-
+                    name of the key. In this case, it can be
+                    WOLFRAM_ALPHA_API_KEY
+                value:
+                  type: string
+                  example: sk-1234567890abcdef
+                  description: >-
+                    The secret value. This field is INPUT_ONLY and will not be
+                    returned in GET or LIST responses
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
+                    for security reasons. The value is only accepted when
+                    creating or updating secrets.
+              required:
+                - keyName
+                - secret
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewaySecret'
+components:
+  schemas:
+    gatewaySecret:
+      type: object
+      properties:
+        name:
+          type: string
+          title: |-
+            name follows the convention
+            accounts/account-id/secrets/unkey-key-id
+        keyName:
+          type: string
+          title: name of the key. In this case, it can be WOLFRAM_ALPHA_API_KEY
+        value:
+          type: string
+          example: sk-1234567890abcdef
+          description: >-
+            The secret value. This field is INPUT_ONLY and will not be returned
+            in GET or LIST responses
 
-# firectl update secret
+            for security reasons. The value is only accepted when creating or
+            updating secrets.
+      required:
+        - name
+        - keyName
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
-> Updates an existing secret.
-
-```
-firectl update secret [flags]
-```
-
-### Examples
-
-```
-firectl update secret --id MY_SECRET --value newvalue
-```
-
-### Flags
-
-```
-  -h, --help           help for secret
-      --id string      The id of the secret to be updated
-      --value string   The new value of the secret
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-      --dry-run             Print the request proto without running it.
-  -o, --output Output       Set the output format to "text", "json", or "flag". (default text)
-  -p, --profile string      fireworks auth and settings profile to use.
-```
+````

@@ -6,14 +6,6 @@
 
 # Source: https://vitest.dev/config/reporters.md
 
-# Source: https://vitest.dev/api/advanced/reporters.md
-
-# Source: https://vitest.dev/guide/advanced/reporters.md
-
-# Source: https://vitest.dev/guide/reporters.md
-
-# Source: https://vitest.dev/config/reporters.md
-
 ---
 url: /config/reporters.md
 ---

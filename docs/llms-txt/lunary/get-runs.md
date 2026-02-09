@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/runs/get-runs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get runs
 
 > The Runs API endpoint allows you to retrieve data about specific runs from your Lunary application.
@@ -279,7 +283,3 @@ components:
           type: string
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

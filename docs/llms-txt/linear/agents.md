@@ -109,6 +109,6 @@ This triggers a `created` AgentSessionEvent webhook containing an `agentSession`
 To get started, your agent should:
 
 * Emit a `thought` activity within 10 seconds to acknowledge the session has begun
-* Inspect the `issue`, `comment`, `previousComments`, and `guidance` fields
+* Use the [`promptContext`](https://linear.app/developers/agent-interaction?noRedirect=1#collapsible-6a944bd6e1df) field to construct a formatted string containing the session’s relevant context, such as issue details, comments, and guidance
 
 Details on the Agent Session webhook structure and how to respond using Agent Activities in [Developing the Agent Interaction](https://linear.app/developers/agent-interaction).

@@ -20,7 +20,7 @@ You can take look at these two styles below under each of the supported items.
 
 Before submitting data, it is important to ensure all required form controls are filled out, in the correct format.
 
-In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behaviour and is the recommended way to do deal with validations.
+In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behavior and is the recommended way to do deal with validations.
 
 ![](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-06326f9b2b6de5d39b9c8aa37e677b23c122f26e%2Fform-validation.webp?alt=media)
 

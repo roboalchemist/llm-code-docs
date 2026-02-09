@@ -12,8 +12,7 @@ This guide covers 6 key Warp features that enhance Kubernetes productivity:
 
 {% stepper %}
 {% step %}
-
-### AI Integration in the Terminal
+**AI Integration in the Terminal**
 
 Warp’s **Agent Mode** (`Cmd + I`) lets you run complex Kubernetes operations with plain-English prompts.
 
@@ -37,8 +36,7 @@ Ideal for on-the-fly debugging or compliance checks without leaving your termina
 {% endstep %}
 
 {% step %}
-
-### Building AI-Aided Context
+**Building AI-Aided Context**
 
 You can attach any command’s output as context for follow-up prompts.\
 For instance, right-click log output → “Attach as Agent Context,” then run:
@@ -51,8 +49,7 @@ Warp detects the Helm chart and outputs the required YAML config to disable stat
 {% endstep %}
 
 {% step %}
-
-### Active AI Suggestions
+**Active AI Suggestions**
 
 Warp automatically suggests next actions.\
 Examples of suggested actions:
@@ -66,8 +63,7 @@ Examples of suggested actions:
   > {% endstep %}
 
 {% step %}
-
-### Custom Workflows
+**Custom Workflows**
 
 Create reusable, parameterized commands for common operations like:
 
@@ -83,8 +79,7 @@ Accessible from the **Command Palette (`Cmd + P`)**, workflows make repetitive K
 {% endstep %}
 
 {% step %}
-
-### Synchronized Panes and Tabs
+**Synchronized Panes and Tabs**
 
 Link multiple terminal panes or tabs (e.g., master + worker nodes).\
 When synchronization is active, running:
@@ -97,8 +92,7 @@ executes simultaneously across all linked sessions.
 {% endstep %}
 
 {% step %}
-
-### Modern Text Editing
+**Modern Text Editing**
 
 Warp supports **click-to-edit** for commands — no more arrow key gymnastics.\
 Hovering shows inline **tooltips** explaining flags and subcommands (e.g., Helm, kubectl, etc.), with autocompletions for 400+ CLI tools.

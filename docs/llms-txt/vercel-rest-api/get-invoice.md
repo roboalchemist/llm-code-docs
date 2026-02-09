@@ -1,125 +1,124 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/get-invoice.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Invoice
 
 > Get Invoice details and status for a given invoice ID.<br/> <br/> See Billing Events with Webhooks documentation on how to receive invoice events. This endpoint is used to retrieve the invoice details.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        integrationConfigurationId:
+  /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}:
+    get:
+      tags:
+        - marketplace
+      summary: Get Invoice
+      description: >-
+        Get Invoice details and status for a given invoice ID.<br/> <br/> See
+        Billing Events with Webhooks documentation on how to receive invoice
+        events. This endpoint is used to retrieve the invoice details.
+      operationId: get-invoice
+      parameters:
+        - name: integrationConfigurationId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        invoiceId:
+            type: string
+        - name: invoiceId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: get-invoice
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.marketplace.getInvoice({
-              integrationConfigurationId: "<id>",
-              invoiceId: "<id>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              test:
-                allOf:
-                  - type: boolean
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  test:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       Whether the invoice is in the testmode (no real
                       transaction created).
-              invoiceId:
-                allOf:
-                  - type: string
+                  invoiceId:
+                    type: string
                     description: Vercel Marketplace Invoice ID.
-              externalId:
-                allOf:
-                  - type: string
+                  externalId:
+                    type: string
                     description: Partner-supplied Invoice ID, if applicable.
-              state:
-                allOf:
-                  - type: string
+                  state:
+                    type: string
                     enum:
-                      - draft
                       - pending
-                      - scheduled
-                      - invoiced
                       - paid
                       - notpaid
+                      - draft
+                      - scheduled
+                      - invoiced
                       - refund_requested
                       - refunded
                     description: Invoice state.
-              invoiceNumber:
-                allOf:
-                  - type: string
+                  invoiceNumber:
+                    type: string
                     description: User-readable invoice number.
-              invoiceDate:
-                allOf:
-                  - type: string
+                  invoiceDate:
+                    type: string
                     description: Invoice date. ISO 8601 timestamp.
-              period:
-                allOf:
-                  - properties:
+                  period:
+                    properties:
                       start:
                         type: string
                       end:
                         type: string
                     required:
-                      - start
                       - end
+                      - start
                     type: object
                     description: >-
                       Subscription period for this billing cycle. ISO 8601
                       timestamps.
-              memo:
-                allOf:
-                  - type: string
+                  paidAt:
+                    type: string
+                    description: Moment the invoice was paid. ISO 8601 timestamp.
+                  refundedAt:
+                    type: string
+                    description: >-
+                      Most recent moment the invoice was refunded. ISO 8601
+                      timestamp.
+                  memo:
+                    type: string
                     description: Additional memo for the invoice.
-              items:
-                allOf:
-                  - items:
+                  items:
+                    items:
                       properties:
                         billingPlanId:
                           type: string
@@ -162,15 +161,14 @@ paths:
                         - name
                         - price
                         - quantity
-                        - units
                         - total
+                        - units
                       type: object
                       description: Invoice items.
                     type: array
                     description: Invoice items.
-              discounts:
-                allOf:
-                  - items:
+                  discounts:
+                    items:
                       properties:
                         billingPlanId:
                           type: string
@@ -200,109 +198,57 @@ paths:
                           type: string
                           description: Discount amount. A dollar-based decimal string.
                       required:
+                        - amount
                         - billingPlanId
                         - name
-                        - amount
                       type: object
                       description: Invoice discounts.
                     type: array
                     description: Invoice discounts.
-              total:
-                allOf:
-                  - type: string
+                  total:
+                    type: string
                     description: Invoice total amount. A dollar-based decimal string.
-              refundReason:
-                allOf:
-                  - type: string
+                  refundReason:
+                    type: string
                     description: >-
                       The reason for refund. Only applicable for states
                       "refunded" or "refund_request".
-              refundTotal:
-                allOf:
-                  - type: string
+                  refundTotal:
+                    type: string
                     description: >-
                       Refund amount. Only applicable for states "refunded" or
                       "refund_request". A dollar-based decimal string.
-              created:
-                allOf:
-                  - type: string
+                  created:
+                    type: string
                     description: System creation date. ISO 8601 timestamp.
-              updated:
-                allOf:
-                  - type: string
+                  updated:
+                    type: string
                     description: System update date. ISO 8601 timestamp.
-            requiredProperties:
-              - invoiceId
-              - state
-              - invoiceDate
-              - period
-              - items
-              - total
-              - created
-              - updated
-        examples:
-          example:
-            value:
-              test: true
-              invoiceId: <string>
-              externalId: <string>
-              state: draft
-              invoiceNumber: <string>
-              invoiceDate: <string>
-              period:
-                start: <string>
-                end: <string>
-              memo: <string>
-              items:
-                - billingPlanId: <string>
-                  resourceId: <string>
-                  start: <string>
-                  end: <string>
-                  name: <string>
-                  details: <string>
-                  price: <string>
-                  quantity: 123
-                  units: <string>
-                  total: <string>
-              discounts:
-                - billingPlanId: <string>
-                  resourceId: <string>
-                  start: <string>
-                  end: <string>
-                  name: <string>
-                  details: <string>
-                  amount: <string>
-              total: <string>
-              refundReason: <string>
-              refundTotal: <string>
-              created: <string>
-              updated: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - created
+                  - invoiceDate
+                  - invoiceId
+                  - items
+                  - period
+                  - state
+                  - total
+                  - updated
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

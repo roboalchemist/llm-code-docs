@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/chatbots/create-chatbot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create chatbot
 
 > Create a new chatbot using a template or from scratch.

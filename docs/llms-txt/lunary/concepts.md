@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Concepts
 
 Understanding these concepts can be useful for working with Lunary's APIs and SDKs, though they are not required to get started.
@@ -72,8 +76,3 @@ Understanding these concepts can be useful for working with Lunary's APIs and SD
 
   [Learn more about users](/docs/features/users)
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

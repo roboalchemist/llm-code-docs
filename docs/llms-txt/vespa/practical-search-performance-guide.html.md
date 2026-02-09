@@ -23,7 +23,15 @@ The guide includes step-by-step instructions on how to reproduce the experiments
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -575,11 +583,13 @@ In this particular case the `summaryfetchtime` difference is not that large, but
 
 A note on select field scoping with YQL, e.g. `select title, track_id from ..`. When using the default summary by not using a summary parameter, all fields are delivered from the content nodes to the stateless search container in the summary fill phase, regardless of field scoping. The search container removes the set of fields not selected and renders the result. Hence, select scoping only reduces the amount of data transferred back to the client, and does not impact or optimize the performance of the internal communication and potential summary cache miss. For optimal performance for use cases asking for large number of hits to the client it is recommended to use dedicated document summaries. Note also that Vespa per default limits the max hits to 400 per default, the behavior can be overridden in the [default queryProfile](../reference/api/query.html#queryprofile).
 
-When requesting large amount of data with hits, it is recommended to use result compression. Vespa will compress if the HTTP client uses the [Accept-Encoding](https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding) HTTP request header:
+When requesting large amounts of data, consider how to reduce response size. Vespa supports gzip compression if the HTTP client uses the [Accept-Encoding](https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding) HTTP request header:
 
 ```
 Accept-Encoding: gzip
 ```
+
+Compression reduces data transfer but adds CPU overhead. The lowest latency is achieved without compression if network bandwidth is sufficient.[CBOR format](../reference/api/query.html#presentation.format) (`format=cbor` or `Accept: application/cbor`) is both more compact and faster to generate than JSON, especially for numeric data such as tensors and embeddings. CBOR can also be combined with gzip compression. CBOR is a drop-in replacement for JSON - when deserialized, the result is identical.
 
 ## Searching attribute fields
 
@@ -1998,7 +2008,7 @@ This concludes this tutorial. The following removes the container and the data:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

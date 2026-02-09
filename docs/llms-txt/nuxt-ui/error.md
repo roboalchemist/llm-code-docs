@@ -6,23 +6,19 @@
 
 ## Usage
 
-The Error component works together with the [Header](/docs/components/header) component to create a full-height layout that extends to the viewport's available height.
+The Error component renders a `<main>` element that works together with the [Header](/docs/components/header) component to create a full-height layout that extends to the viewport's available height.
 
-<tip to="/docs/getting-started/theme/css-variables#header">
-
-The Error component uses the `--ui-header-height` CSS variable to position itself correctly below the [Header](/docs/components/header).
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/theme/css-variables#header
+> The Error component uses the `--ui-header-height` CSS variable to position itself correctly below the `Header`.
 
 ### Error
 
 Use the `error` prop to display an error message.
 
-<note target="_blank" to="https://nuxt.com/docs/guide/directory-structure/error">
-
-In most cases, you will receive the `error` prop in your `error.vue` file.
-
-</note>
+> [!NOTE]
+> See: https://nuxt.com/docs/guide/directory-structure/error
+> In most cases, you will receive the `error` prop in your `error.vue` file.
 
 ```vue
 <template>
@@ -78,30 +74,24 @@ const props = defineProps<{
 </template>
 ```
 
-<tip>
+> [!TIP]
+> You might want to replicate the code of your `app.vue` inside your `error.vue` file to have the same layout and features, here is an example: [https://github.com/nuxt/ui/blob/v4/docs/app/error.vue](https://github.com/nuxt/ui/blob/v4/docs/app/error.vue)
 
-You might want to replicate the code of your `app.vue` inside your `error.vue` file to have the same layout and features, here is an example: [https://github.com/nuxt/ui/blob/v4/docs/app/error.vue](https://github.com/nuxt/ui/blob/v4/docs/app/error.vue)
-
-</tip>
-
-<note>
-
-You can read more about how to handle errors in the [Nuxt documentation](https://nuxt.com/docs/getting-started/error-handling#error-page), but when using `nuxt generate` it is recommended to add `fatal: true` inside your `createError` call to make sure the error page is displayed:
-
-```vue [pages/[...slug].vue]
-<script setup lang="ts">
-const route = useRoute()
-
-const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('docs').path(route.path).first()
-})
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-}
-</script>
-```
-
-</note>
+> [!NOTE]
+> You can read more about how to handle errors in the [Nuxt documentation](https://nuxt.com/docs/getting-started/error-handling#error-page), but when using `nuxt generate` it is recommended to add `fatal: true` inside your `createError` call to make sure the error page is displayed:
+> ```vue
+> <script setup lang="ts">
+> const route = useRoute()
+> 
+> const { data: page } = await useAsyncData(route.path, () => {
+>   return queryCollection('docs').path(route.path).first()
+> })
+> if (!page.value) {
+>   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+> }
+> </script>
+> 
+> ```
 
 ## API
 
@@ -114,6 +104,7 @@ if (!page.value) {
 interface ErrorProps {
   /**
    * The element or component this component should render as.
+   * @default "\"main\""
    */
   as?: any;
   error?: Partial<NuxtError<unknown> & { message: string; }> | undefined;
@@ -127,7 +118,7 @@ interface ErrorProps {
    * `{ size: 'lg', color: 'primary', variant: 'solid', label: 'Back to home' }`{lang="ts-type"}
    * @default "true"
    */
-  clear?: boolean | Partial<ButtonProps> | undefined;
+  clear?: boolean | ButtonProps | undefined;
   ui?: { root?: ClassNameValue; statusCode?: ClassNameValue; statusMessage?: ClassNameValue; message?: ClassNameValue; links?: ClassNameValue; } | undefined;
 }
 ```
@@ -167,8 +158,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

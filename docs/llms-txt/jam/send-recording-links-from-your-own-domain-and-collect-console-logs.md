@@ -28,9 +28,11 @@ Under Recording URLs: add, install, and verify the installation of one or more v
 If your application redirects users from your Recording URL—for example, redirecting unauthorized users to a login page—you will need to persist Jam's querystring parameters through the redirect. Most important is `jam-recording=...`, but all `jam-` parameters should be persisted.
 
 {% hint style="warning" %}
-You will need at least one Recording URL for each domain you wish to record on. Recordings only have access to debug data from capture scripts on pages from the same domain (*not subdomain!)* that initiated the recording.
+You will need at least one Recording URL for each domain you wish to record on. Recordings have access only to debug data from capture scripts on pages on the same domain that initiated the recording.\
+\
+In most cases, a recoder installed on the root domain will also be able to capture events from subdomains. The exception is Safari, where events will only be captured if recorder and capture script are on the same subdomain.&#x20;
 
-**For example:** a recorder installed on `example.com/recorder` cannot see events from pages on `sub.example.com` (and vice-versa).
+**For example:** a recorder installed on `example.com/recorder` can see events from pages on `sub.example.com` (and vice-versa) except on Safari.
 {% endhint %}
 
 ## 2. Set up Jam's Recorder & Capture Scripts

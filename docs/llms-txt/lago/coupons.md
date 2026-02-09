@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/coupons.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Coupons
 
 > Coupons allow you to offer discounts to your customers. When you apply a coupon to a customer,  its value will be deducted from their next subscription invoice(s).

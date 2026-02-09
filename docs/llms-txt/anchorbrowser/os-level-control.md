@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/os-level-control.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OS-Level Control
 
 > Direct operating system control for precise browser automation and AI agent interactions

@@ -8,7 +8,7 @@
 
 ***
 
-An ad-hoc webhook is a single-use webhook created for a specific Actor run when starting the run using the https://docs.apify.com/api/v2.md. The webhook triggers once when the run transitions to the specified state. Define ad-hoc webhooks using the `webhooks` URL parameter added to the API endpoint that starts an Actor or Actor task:
+An ad-hoc webhook is a single-use webhook created for a specific Actor run when starting the run using the [Apify API](https://docs.apify.com/api/v2.md). The webhook triggers once when the run transitions to the specified state. Define ad-hoc webhooks using the `webhooks` URL parameter added to the API endpoint that starts an Actor or Actor task:
 
 
 ```
@@ -70,7 +70,7 @@ async def main():
 ```
 
 
-For more information, check out the https://docs.apify.com/sdk/js/reference/class/Actor#addWebhook or the https://docs.apify.com/sdk/python/reference/class/Actor#add_webhook.
+For more information, check out the [JavaScript SDK documentation](https://docs.apify.com/sdk/js/reference/class/Actor#addWebhook) or the [Python SDK documentation](https://docs.apify.com/sdk/python/reference/class/Actor#add_webhook).
 
 To prevent duplicate ad-hoc webhooks in case of Actor restart, use the idempotency key parameter. The idempotency key must be unique across all user webhooks to ensure only one webhook is created for a given value. For example, use the Actor run ID as an idempotency key:
 

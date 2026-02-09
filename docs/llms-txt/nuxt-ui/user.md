@@ -36,8 +36,6 @@ Use the `avatar` prop to display an [Avatar](/docs/components/avatar) component.
 </template>
 ```
 
-<collapsible name="all avatar properties">
-
 ```ts
 /**
  * Props for the Avatar component
@@ -49,12 +47,12 @@ interface AvatarProps {
   as?: any;
   src?: string | undefined;
   alt?: string | undefined;
-  icon?: string | object | undefined;
+  icon?: any;
   text?: string | undefined;
-  size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "3xs" | "2xl" | "3xl" | undefined;
+  size?: "md" | "xs" | "sm" | "lg" | "xl" | "3xs" | "2xs" | "2xl" | "3xl" | undefined;
   chip?: boolean | ChipProps | undefined;
   ui?: { root?: ClassNameValue; image?: ClassNameValue; fallback?: ClassNameValue; icon?: ClassNameValue; } | undefined;
-  loading?: "lazy" | "eager" | undefined;
+  loading?: "eager" | "lazy" | undefined;
   referrerpolicy?: HTMLAttributeReferrerPolicy | undefined;
   crossorigin?: "" | "anonymous" | "use-credentials" | undefined;
   decoding?: "async" | "auto" | "sync" | undefined;
@@ -66,8 +64,6 @@ interface AvatarProps {
 }
 ```
 
-</collapsible>
-
 ### Chip
 
 Use the `chip` prop to display a [Chip](/docs/components/chip) component.
@@ -77,8 +73,6 @@ Use the `chip` prop to display a [Chip](/docs/components/chip) component.
   <UUser name="John Doe" description="Software Engineer" />
 </template>
 ```
-
-<collapsible name="all chip properties">
 
 ```ts
 /**
@@ -117,8 +111,6 @@ interface ChipProps {
 }
 ```
 
-</collapsible>
-
 ### Size
 
 Use the `size` prop to change the size of the user avatar and text.
@@ -149,11 +141,8 @@ You can pass any property from the [`<NuxtLink>`](https://nuxt.com/docs/api/comp
 </template>
 ```
 
-<note>
-
-The `NuxtLink` component will inherit all other attributes you pass to the `User` component.
-
-</note>
+> [!NOTE]
+> The `NuxtLink` component will inherit all other attributes you pass to the `User` component.
 
 ## API
 
@@ -178,7 +167,7 @@ interface UserProps {
    * @default "\"horizontal\""
    */
   orientation?: "horizontal" | "vertical" | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | undefined;
   ui?: { root?: ClassNameValue; wrapper?: ClassNameValue; name?: ClassNameValue; description?: ClassNameValue; avatar?: ClassNameValue; } | undefined;
@@ -224,14 +213,14 @@ export default defineAppConfig({
         to: {
           true: {
             name: [
-              'text-default peer-hover:text-highlighted',
+              'text-default peer-hover:text-highlighted peer-focus-visible:text-highlighted',
               'transition-colors'
             ],
             description: [
-              'peer-hover:text-toned',
+              'peer-hover:text-toned peer-focus-visible:text-toned',
               'transition-colors'
             ],
-            avatar: 'transform transition-transform duration-200 group-hover/user:scale-115'
+            avatar: 'transform transition-transform duration-200 group-hover/user:scale-115 group-has-focus-visible/user:scale-115'
           },
           false: {
             name: 'text-highlighted',
@@ -299,8 +288,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

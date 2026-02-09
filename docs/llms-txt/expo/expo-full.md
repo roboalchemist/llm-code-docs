@@ -38,7 +38,7 @@ Let's set up a local development environment for running your project on Android
 ## Where would you like to develop?
 We recommend using a real device to develop, since you'll get to see exactly what your users will see.
 ## How would you like to develop?
-Expo Go is a sandbox for trying out Expo quickly. A development build is a build of your own app that includes Expo's developer tools.
+Expo Go is a playground for students and learners to try Expo quickly. A development build is a build of your own app that includes Expo's developer tools.
 ---
 # Android Emulator Setup
 
@@ -671,7 +671,7 @@ $ brew install expo-orbit
 ```
 If you want Orbit to start when you log in automatically, click on the Orbit icon in the menu bar, then **Settings** and select the **Launch on Login** option.
 For Windows: 
-> **important** Orbit for Windows is in preview and is only compatible with x64 and x86 machines. Compatibility for other architectures will be added in the future.
+> **important** Orbit for Windows is in beta and is only compatible with x64 and x86 machines. Compatibility for other architectures will be added in the future.
 You can download Orbit for Windows directly from the [GitHub releases](https://github.com/expo/orbit/releases).
 > **info** Orbit relies on the Android SDK on both macOS and Windows and `xcrun` for device management only on macOS, which requires setting up both [Android Studio](/workflow/android-studio-emulator/) and [Xcode](/workflow/ios-simulator/).
 {/* ### Usage */}
@@ -683,13 +683,13 @@ You can also use it to debug your app using VS Code's built-in debugger to set b
 Snack is an in-browser development environment that works similarly to Expo Go. It's a great way to share code snippets and experiment with React Native without downloading any tools on your computer.
 To use it, go to [snack.expo.dev](https://snack.expo.dev/), edit the `<Text>` component in **App.js**, choose a platform (Android, iOS, or web) in the right panel and see the changes live.
 ### Expo Go
-[Expo Go](https://expo.dev/go) is a free open-source, sandbox for learning and experimenting with React Native. It works with Android and iOS.
+[Expo Go](https://expo.dev/go) is a free, open-source playground for students and learners to try out React Native. It works with Android and iOS.
 For more information on how to use it:
 - Click [this link](/get-started/set-up-your-environment/?mode=expo-go) to go to Set up your environment guide
 - Select a platform to develop under **Where would you like to develop?**
 - Select Expo Go under **How would you like to develop?**
 - Follow the instructions described in that guide
-> **Note:** Not recommended for building and distributing production apps to the app stores. Instead, use [development builds](/get-started/set-up-your-environment/?mode=development-build).
+> **Note:** Expo Go is limited and not useful for building production-grade projects. Use [development builds](/get-started/set-up-your-environment/?mode=development-build) instead.
 Note: What if I open a project with an unsupported SDK version?
 ---
 When running a project that was created for an unsupported SDK version in Expo Go, you'll see the following error:
@@ -995,19 +995,19 @@ You will see one test being passed.
 Organizing your test files is important to make them easier to maintain. A common pattern is creating a **\_\_tests\_\_** directory and putting all your tests inside.
 An example structure of tests next to the **components** directory is shown below:
 ```
-__tests__/
+âââ __tests__/
 â   âââ ThemedText-test.tsx
-components/
+âââ components/
     âââ ThemedText.tsx
     âââ ThemedView.tsx
 ```
 Alternatively, you can have multiple **\_\_tests\_\_** sub-directories for different areas of your project. For example, create a separate test directory for **components**, and so on:
 ```
-components/
+âââ components/
 â   âââ ThemedText.tsx
 â   âââ __tests__/
 â       âââ ThemedText-test.tsx
-utils/
+âââ utils/
     âââ index.tsx
     âââ __tests__/
         âââ index-test.tsx
@@ -1371,10 +1371,12 @@ If the font you're using has both OTF and TTF versions, prefer OTF. The **.otf**
 Copy the file into your project's **assets/fonts** directory.
 > **info** **assets/fonts** directory path is a common convention in React Native apps to put font files. You can place these files elsewhere if you follow a custom convention.
 Two ways to use the local font file in your project:
-- Embed the font file with [`expo-font` config plugin](/versions/latest/sdk/font/#configuration-in-app-config).
-- Loading the font file with [`useFonts`](/versions/latest/sdk/font/#usefontsmap) hook at runtime asynchronously.
+- Embed the font file with [`expo-font` config plugin](/versions/latest/sdk/font/#configuration-in-app-config) (Android and iOS only).
+- Load the font file with [`useFonts`](/versions/latest/sdk/font/#usefontsmap) hook at runtime (Android, iOS, and web).
 ### With `expo-font` config plugin
-The `expo-font` config plugin allows embedding one or more font files in your project's native code. It supports `ttf` and `otf` for both Android and iOS, and `woff` and `woff2` are supported on iOS only. This is the recommended method for adding fonts to your app due to its benefits:
+The `expo-font` config plugin allows embedding one or more font files in your project's native code. It supports `ttf` and `otf` for both Android and iOS, and `woff` and `woff2` are supported on iOS only.
+> **Note:** Config plugins only run on native platforms (Android and iOS). For web, use the [`useFonts` hook](#with-usefonts-hook) instead.
+This is the recommended method for adding fonts to your app due to its benefits:
 - Fonts are available immediately when the app starts on a device.
 - No additional code required to load fonts in a project asynchronously when the app starts.
 - Fonts are consistently available across all devices where the app is installed because they're bundled within the app.
@@ -1947,17 +1949,16 @@ Why use development builds and how to get started.
 **Development build** is the term that we use for a "Debug" build of an app that includes the [`expo-dev-client`](/versions/latest/sdk/dev-client/) library. This library augments the built-in React Native development tooling with additional capabilities, such as support for inspecting network requests and a "launcher" UI that lets you switch between different development servers (such as between a server running on your machine or a teammate's machine) and deployments of your app (such as published updates with EAS Update).
 Note: Difference between Expo Go and development builds
 ---
-When you create your first React Native project with `npx create-expo-app` and ran it with `npx expo start`, you most likely start off using the [Expo Go](https://expo.dev/go) app for development. Expo Go is a native app that the Expo team built and submitted to the [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) and [Apple App Store](https://apps.apple.com/us/app/expo-go/id982107779) so you can get coding quickly. It is a sandbox app with a number of native libraries included within (see the [dependencies list](https://github.com/expo/expo/blob/main/apps/expo-go/package.json#L23)). This means that developers may update their app's JavaScript code on their local machine and see the changes on Expo Go.
-A React Native app consists of two parts: the **native app (Expo Go)** and the **JavaScript bundle (`npx expo start`)**. It is immutable and when you're using the Expo Go app for development, you can only rely on the native code and tools that exist in Expo Go. The only way to get around it is to build your native app yourself instead of using Expo's pre-packaged sandbox. This is exactly what a **Development Build is, your own version of Expo Go**, where you are free to use any native libraries and change any native config.
+[Expo Go](https://expo.dev/go) is a playground app for students and learners to get started quickly. It comes with a fixed set of native libraries built in, so you can write JavaScript code and see changes instantly without building a native app yourself. A development build is a fully featured development environment for working on your production-grade Expo apps.
 ---
 Note: Native app and JavaScript bundle
 ---
-The **native app (Expo Go)** is immutable once installed. Native build tools are required to create this bundle, and it needs to be signed to be installable on real devices. To add a new library with native code or change metadata that is shipped with the app (for example app name, icon, splash screen) the app needs to be rebuilt and re-installed on the device.
+The **native app** is what you install on your device. Expo Go is a pre-built native app that works like a playground &mdash; it can't be changed after you install it. To add new native libraries or change things like your app name and icon, you need to build your own native app (a development build).
 The **JavaScript bundle (`npx expo start`)** is where your app's UI code and business logic are. In production apps, there is one **main.js** bundle that is shipped with the app itself. In development, this JS bundle is live reloaded from your local machine. The main role of React Native is to provide a way for the JavaScript code to access the native APIs (Image, Camera, Notifications, and more). However, only APIs and libraries that were bundled in the **native app** can be used.
 ---
 Video Tutorial: [Expo Go & Development Builds: which should you use?](https://www.youtube.com/watch?v=FdjczjkwQKE)
 ## Why use a development build (a.k.a what _can't_ you do in Expo Go and why)
-Expo Go is the perfect tool for learning, prototyping, and experimenting, but most production apps will convert to using development builds sooner rather than later. It helps to know exactly what is _impossible_ in Expo Go and _why_, so you can make an informed decision on when and why to make this move.
+Expo Go is a playground for students and learners to understand the basics of React Native. It's limited and not useful for building production-grade projects, so most apps will convert to using development builds. It helps to know exactly what is _impossible_ in Expo Go and _why_, so you can make an informed decision on when and why to make this move.
 Note: Use libraries with native code that aren't in Expo Go
 ---
 Consider [`react-native-webview`](/versions/latest/sdk/webview/) as an example, a library that contains native code, but [is included in Expo Go](https://github.com/expo/expo/blob/main/apps/expo-go/package.json#L23). When you run `npx expo install react-native-webview` command in your project, it will install the library in your **node_modules** directory, which includes both the JS code and the native code. But the JS bundle you are building _only_ uses the JS code. Then, your JS bundle gets uploaded to Expo Go, and it interacts with the native code that was already bundled with the app.
@@ -2375,11 +2376,11 @@ Using the diagram below, in this guide, you will learn the first two parts of th
 In the following section, let's create a local config plugin that adds an arbitrary property `HelloWorldMessage` to the **AndroidManifest.xml** for Android and **Info.plist** for iOS.
 This example will create and modify the following files. To follow along, create a **plugins** directory in the root of your project, and inside it, create **withAndroidPlugin.ts**, **withIosPlugins.ts**, and **withPlugin.ts** files.
 ```
-plugins/
+âââ plugins/
 â   âââ withAndroidPlugin.ts  # Contains Android-specific modifications
 â   âââ withIosPlugin.ts  # Contains iOS-specific modifications
 â   âââ withPlugin.ts  # Main plugin file that combines both Android and iOS plugins
-app.config.ts  # Dynamic app config file that uses the plugin
+âââ app.config.ts  # Dynamic app config file that uses the plugin
 ```
 Step 1: 
 ### Create Android plugin
@@ -2722,6 +2723,10 @@ Both approaches provide the same capabilities for modifying your native configur
 With plugins defined within your app's project, you can implement plugins directly in your project in several ways:
 #### File import
 You can quickly create a plugin in your project by creating a JavaScript/TypeScript file and use it in your config like any other JS/TS file.
+```
+âââ app.config.ts  # import "./my-config-plugin"
+âââ my-config-plugin.ts  # Imported from config
+```
 In the above example, the config plugin file contains a bare minimum function:
 ```ts my-config-plugin.ts
 module.exports = ({ config }: { config: ExpoConfig }) => {};
@@ -2753,14 +2758,56 @@ One caveat to using functions instead of strings is that serialization will repl
 Standalone package plugins can be implemented in two ways:
 #### 1. Dedicated config plugin packages
 These are npm packages whose sole purpose is to provide a config plugin. For a dedicated config plugin package, you can export your plugin using `app.plugin.js`:
+```
+âââ app.config.ts  # import "expo-splash-screen"
+âââ node_modules/
+    âââ expo-splash-screen/  # Node module
+        âââ app.plugin.js  # Entry file for custom plugins
+        âââ build/
+            âââ index.js  # Skipped in favor of "app.plugin.js"
+```
 #### 2. Config plugins with companion packages
 When a config plugin is part of a Node module without an **app.plugin.js**, it uses the package's `main` entry point:
+```
+âââ app.config.ts  # import "expo-splash-screen"
+âââ node_modules/
+    âââ expo-splash-screen/  # Node module
+        âââ package.json  # "main": "./build/index.js"
+        âââ build/
+            âââ index.js  # Node resolve to this file
+```
 ### Plugin resolution order
 When you import a plugin package, files are resolved in this specific order:
 1. **app.plugin.js in package root**
+```
+âââ app.config.ts  # import "expo-splash-screen"
+âââ node_modules/
+    âââ expo-splash-screen/  # Node module
+        âââ package.json  # "main": "./build/index.js"
+        âââ app.plugin.js  # Entry file for custom plugins
+        âââ build/
+            âââ index.js  # Skipped in favor of app.plugin.js
+```
 2. **Package's main entry (from package.json)**
+```
+âââ app.config.ts  # import "expo-splash-screen"
+âââ node_modules/
+    âââ expo-splash-screen/  # Node module
+        âââ package.json  # "main": "./build/index.js"
+        âââ build/
+            âââ index.js  # Node resolve to this file
+```
 3. **Direct internal imports** (not recommended)
 > **error** Avoid importing module internals directly as it bypasses the standard resolution order and may break in future updates.
+```
+âââ app.config.ts  # import "expo-splash-screen/build/index.js"
+âââ node_modules/
+    âââ expo-splash-screen/
+        âââ package.json  # "main": "./build/index.js"
+        âââ app.plugin.js  # Ignored due to direct import
+        âââ build/
+            âââ index.js  # "expo-splash-screen/build/index.js"
+```
 ### Why use app.plugin.js for plugins
 The `app.plugin.js` approach is preferred for config plugins as it allows different transpilation settings from the main package code. This is particularly important because Node environments often require different transpilation presets compared to Android, iOS, or web JS environments (for example, `module.exports` instead of `import/export`).
 [xml2js]: https://www.npmjs.com/package/xml2js
@@ -2892,7 +2939,7 @@ Beyond immediate user experience improvements, config plugins enable compatibili
 ## Project structure
 A directory structure is the foundation for maintaining config plugins within your library. Below is an example directory structure:
 ```
-./
+âââ ./
     âââ android/  # Android native module code
     â   âââ src/
     â   â   âââ main/
@@ -3553,7 +3600,7 @@ Please add the following to your app config
 
 Learn about how to use patch-project to create generate, apply, and preserve native changes in your Expo project.
 
-> **important** **Note**: `patch-project` is an experimental feature.
+> **important** **Note**: `patch-project` is an alpha feature.
 `patch-project` is an Expo config plugin and command-line interface (CLI) tool that generates and applies patches to preserve native changes after running `npx expo prebuild`. This tool is useful for native app developers who want to preserve customizations without needing to know how to write a config plugin, effectively generating an automatic solution that works with [Continuous Native Generation (CNG)](/workflow/continuous-native-generation/).
 This guide explains how to use `patch-project`, when to use it, and its limitations.
 ## How patch-project works
@@ -3581,7 +3628,7 @@ $ npx patch-project
 > **info** **Note**: In scenarios where you want to generate patches for a specific platform, you can use the `--platform` option and run `npx patch-project --platform android` or `npx patch-project --platform ios`.
 These patches, when generated, are saved in the **cng-patches** directory.
 ```
-./
+âââ ./
     âââ app.json  # with patch-project plugin
     âââ cng-patches/
     â   âââ android+eee880ad7b07965271d2323f7057a2b4.patch  # patch for android directory
@@ -3789,7 +3836,7 @@ The **Components** tab allows you to inspect the React components in your app. Y
 The **Profiler** tab allows you to record and analyze the performance of your app's JavaScript. You can start recording, interact with your app, and stop recording to analyze the profile.
 > **info** To profile the native runtime, use the tools included in Android Studio or Xcode.
 ## Debugging with VS Code
-> **warning** VS Code debugger integration is experimental. For the most stable debugging experience, [use the React Native DevTools](#debugging-with-react-native-devtools).
+> **warning** VS Code debugger integration is in alpha. For the most stable debugging experience, [use the React Native DevTools](#debugging-with-react-native-devtools).
 VS Code is a popular code editor, which has a built-in debugger. This debugger uses the same system as the React Native DevTools &mdash; the inspector protocol.
 You can use this debugger with the [Expo Tools](https://github.com/expo/vscode-expo#readme) VS Code extension. This debugger allows you to set breakpoints, inspect variables, and execute code through the debug console.
 To start debugging:
@@ -3974,7 +4021,7 @@ In the terminal, run `npx expo start`, press <kbd>shift</kbd> + <kbd>m</kbd> to 
 
 Learn how to create a dev tools plugin to enhance your development experience.
 
-> **Tip**: Check out the [Expo DevTools Plugins](https://github.com/expo/dev-plugins) for complete examples.
+> **info** **Tip:** Check out the [Expo DevTools Plugins](https://github.com/expo/dev-plugins) for complete examples.
 You can create a dev tools plugin, whether that's for inspecting aspects of a common framework or library or something specific to your custom code. This guide will walk you through creating a dev tools plugin.
 ## What is a dev tools plugin?
 A dev tools plugin runs in your web browser in your local development environment and connects to your Expo app.
@@ -4099,7 +4146,7 @@ Learn about how to distribute your app for review using app stores, internal dis
 This page outlines three approaches to sharing a preview version of your app with your team for QA and review: app store testing tracks, internal distribution, and development builds with EAS Update.
 Note: Can I use Expo Go for reviewing releases?
 ---
-Even though Expo Go is an open-source sandbox that can be good for previewing isolated prototypes on Android and iOS, it is not intended for production apps. It should be avoided during the preview process of your app.
+Expo Go is a playground for students and learners, not for building production-grade projects. It's not useful for the review process of your app.
 ---
 ## App store testing tracks
 When distributing apps through app store testing tracks, you can only use release builds. You cannot use this method to distribute development builds. An alternative approach is to use ["Internal distribution"](#internal-distribution-with-eas-build), which works with both release and development builds.
@@ -4429,7 +4476,7 @@ You can also submit your app manually to the Google Play Store and Apple App Sto
 
 A brief overview of how to use EAS Metadata to automate and maintain your app store presence.
 
-> **important** **EAS Metadata** is in preview and subject to breaking changes.
+> **important** **EAS Metadata** is in beta and subject to breaking changes.
 When submitting your app to app stores, you need to provide metadata. This process is lengthy and is often about complex topics that don't apply to your app. After the information you provide gets reviewed and if there is any issue with it, you need to restart this process.
 [**EAS Metadata**](/eas/metadata/) enables you to automate and maintain this information from the command line instead of going through multiple forms in the app store dashboards. It can also instantly identify well-known app store restrictions that could trigger a rejection after a lengthy review queue. This guide shows how to use EAS Metadata to automate and maintain your app store presence.
 ## Prerequisites
@@ -4516,7 +4563,6 @@ You can learn how to [rollout an update](/eas-update/rollouts/), [optimize asset
 
 Learn how to deploy your web app using EAS Hosting.
 
-> **important** **EAS Hosting** is in preview and subject to changes.
 If you are building a universal app, you can quickly deploy your web app using [EAS Hosting](/eas/hosting/introduction/). It is a service for deploying web apps built with Expo Router and React.
 ## Prerequisites
 Before you begin, in your project's **app.json** file, ensure that the [`expo.web.output`](/versions/latest/config/app/#output) property is either `static` or `server`.
@@ -4691,9 +4737,9 @@ It can be used simultaneously with React Native Community. Regardless of which C
 ## Is Expo Go open source?
 Yes, the source for Expo Go can be found in the [expo/expo GitHub repository](https://github.com/expo/expo) in the **apps/expo-go** directory. The Expo Go app is also built with Expo and React Native.
 ## What can I do or cannot do with Expo Go?
-[Expo Go](/get-started/set-up-your-environment/?redirected=#how-would-you-like-to-develop) is a sandbox that can help you get started quickly with React Native development in order to learn, prototype, or experiment. It allows you to use libraries included in the Expo SDK and libraries that don't require custom native code.
-Expo Go cannot use third-party libraries that require custom native code and you cannot edit native code directly in Expo Go. It cannot be used for production apps.
-**We strongly recommend any projects that require additional libraries with native code to migrate to [development builds](/develop/development-builds/introduction/). It's like creating a version of Expo Go that is specifically customized to your app's needs.**
+[Expo Go](/get-started/set-up-your-environment/?redirected=#how-would-you-like-to-develop) is a playground for students and learners to test out Expo quickly and understand the basics. It allows you to use libraries included in the Expo SDK and libraries that don't require custom native code.
+Expo Go cannot use third-party libraries that require custom native code and you cannot edit native code directly in Expo Go. It's limited and not useful for building production-grade projects.
+**We strongly recommend using [development builds](/develop/development-builds/introduction/) for any real project. It's like creating a version of Expo Go that is specifically customized to your app's needs.**
 ## Is ejecting deprecated?
 Yes, eject is a deprecated term and is no longer necessary. When Expo was first released, apps had larger native binary sizes and didn't support custom native code without "ejecting". This changed in December 2020 with the release of [EAS Build](/build/introduction) which supports any React Native app. The concept of "ejecting" was replaced by the [`npx expo prebuild`](/workflow/prebuild) command in SDK 41 (April 2021), which continuously generates native projects based on the libraries in your project and the app config (**app.json**). The `expo eject` command was fully deprecated in SDK 46 (August 2022).
 Unlike the previous eject workflow, authors can configure their libraries to work with Expo Prebuild by creating a [config plugin](/config-plugins/introduction/). This means you can use any library with Expo Prebuild. You can also use any custom native code with Expo Prebuild by creating a [development build](/develop/development-builds/introduction/). Learn more in the [Expo Prebuild documentation](/workflow/prebuild).
@@ -4998,7 +5044,7 @@ Step 4:
 ## Add a bottom tab navigator
 At this point, the file structure of our **app** directory looks like the following:
 ```
-app/
+âââ app/
     âââ _layout.tsx  # Root layout
     âââ index.tsx  # matches route '/'
     âââ about.tsx  # matches route '/about'
@@ -5009,7 +5055,7 @@ We'll add a bottom tab navigator to our app and reuse the existing Home and Abou
 2. Create a **(tabs)/\_layout.tsx** file inside the directory. It will be used to define the tab layout, which is separate from Root layout.
 3. Move the existing **index.tsx** and **about.tsx** files inside the **(tabs)** directory. The structure of **app** directory will look like this:
 ```
-app/
+âââ app/
     âââ _layout.tsx  # Root layout
     âââ +not-found.tsx  # matches route any 404 route
     âââ (tabs)/
@@ -7611,9 +7657,9 @@ You can now continue using **app.json** for static values and use **app.config.j
   summary={
     <>
       We successfully created <strong>app.config.js</strong> just for our dynamic configuration
-      while leaving static configuration in **app.json** unchanged, added environment variables in{' '}
-      <strong>eas.json</strong> to configure specific build profile, and learned how to start the
-      development server with a custom <strong>package.json</strong> script.
+      while leaving static configuration in <strong>app.json</strong> unchanged, added environment
+      variables in <strong>eas.json</strong> to configure specific build profile, and learned how to
+      start the development server with a custom <strong>package.json</strong> script.
     </>
   }
   nextChapterDescription="In the next chapter, learn about what are internal distribution builds, why we need them, and how to create them."
@@ -8241,10 +8287,10 @@ Note: Can I use EAS if I'm not using any Expo open source tools?
 Yes! We think EAS is a great fit for any React Native project.
 ---
 ---
-Note: Expo Go: an optional tool for learning, experimenting, and prototyping
+Note: Expo Go: a playground for students and learners
 ---
-There's no faster way to spin up a React Native project and run it on your device or emulator than [Expo Go](https://expo.dev/go), especially when combined with [Snack](https://snack.expo.dev/).
-However, **Expo Go and Snack are not intended for building production apps**. They are great when you're getting started on a project or for prototypes. **If you plan on deploying your app to the store, then [development builds](#development-builds) will provide a more flexible, reliable, and complete development environment.** This guide does not go into any detail about Expo Go, and this is the only section that mentions it.
+[Expo Go](https://expo.dev/go) is the fastest way to get started with React Native, especially when combined with [Snack](https://snack.expo.dev/). It's great for students and learners to understand the basics.
+However, **Expo Go is a limited playground and not useful for building production-grade projects**. **If you plan on deploying your app to the store, then [development builds](#development-builds) will provide a more flexible, reliable, and complete development environment.** This guide does not go into any detail about Expo Go, and this is the only section that mentions it.
 ---
 Note: Development builds
 ---
@@ -8278,7 +8324,7 @@ Note: Continuous Native Generation (CNG)
 ---
 Continuous Native Generation (CNG) is a process for building an Expo app where your [native projects](#android-and-ios-native-projects) are generated on-demand from your **app.json** and **package.json**, similar to how your **node_modules** are generated from your **package.json**.
 The [native project](#android-and-ios-native-projects) directories (**android** and **ios**) are automatically added to your **.gitignore** when you create a new project, and you can delete them at any time, then re-generate them from the Expo app config with `npx expo prebuild` whenever required. You might never even run prebuild on your own development machine if you use a cloud-based development workflow.
-Using CNG can make upgrading to new versions of React Native much easier. It can simplify project maintenance and facilitate setting up complex features such as [App Clips](https://github.com/bndkt/react-native-app-clip), [share extensions](https://github.com/timedtext/expo-config-plugin-ios-share-extension), and [push notifications](https://github.com/OneSignal/onesignal-expo-plugin). This is all made possible with [config plugins](/config-plugins/introduction/). Learn more about [CNG](/workflow/continuous-native-generation/).
+Using CNG can make upgrading to new versions of React Native much easier. It can simplify project maintenance and facilitate setting up complex features such as [App Clips](https://github.com/bndkt/react-native-app-clip), [share extensions](https://github.com/timedtext/expo-config-plugin-ios-share-extension), and [error reporting](https://github.com/getsentry/sentry-react-native). This is all made possible with [config plugins](/config-plugins/introduction/). Learn more about [CNG](/workflow/continuous-native-generation/).
 Note: What if I want to edit the native project configuration in Android Studio or Xcode rather than generating the projects with prebuild?
 ---
 CNG has proven to be helpful to many teams. However, it may not be the best fit for your project and this is a perfectly reasonable way to use Expo tools in many cases.
@@ -8554,7 +8600,7 @@ React Native library authors can adopt CNG in several ways. It depends on the co
 - **Native code with no additional setup after install**: Libraries with native code can often be installed and linked automatically with [Expo Autolinking](/more/glossary-of-terms#autolinking), which runs before the native app is built.
 - **Additional configuration side-effects and setup**: Libraries that require additional configuration side-effects can adopt CNG by creating [Expo config plugins](/config-plugins/introduction/) for their libraries. This approach enables library authors to automate adding values such as permission messages to the **Info.plist**, or injecting targets in the Xcode project.
 - **Libraries Dependent on Native Runtime Hooks**: Libraries that depend on specific native runtime hooks, such as intercepting the initial launch URL via the `AppDelegate`, `MainActivity`, `MainApplication`, and so on, can utilize [**Lifecycle listeners**](/modules/android-lifecycle-listeners/) in the Expo Modules API. These lifecycle listeners allow these runtime hooks to be applied via Expo Autolinking instead of by modifying these standard native project files, eliminating the need for a config plugin.
-Many complex libraries and services already support CNG via Expo Prebuild such as, [MapBox](https://github.com/rnmapbox/maps), [OneSignal](https://github.com/OneSignal/onesignal-expo-plugin), [Stripe](https://github.com/stripe/stripe-react-native), and [React Native Firebase](https://rnfirebase.io/#expo).
+Many complex libraries and services already support CNG via Expo Prebuild such as, [MapBox](https://github.com/rnmapbox/maps), [Sentry](https://github.com/getsentry/sentry-react-native), [Stripe](https://github.com/stripe/stripe-react-native), and [React Native Firebase](https://rnfirebase.io/#expo).
 Adopting CNG by library authors is not a preqrequisite for using `npx expo prebuild`. If a library author has not adopted CNG, developers can still use `npx expo prebuild` by creating local [Config Plugins](https://github.com/expo/config-plugins/) to modify the native generation pipeline. This flexibility makes CNG accessible and beneficial to all developers within the React Native community.
 ---
 Note: Is CNG limited to React Native projects?
@@ -8569,7 +8615,6 @@ Here are a few community examples of difficult native features converted into si
 - [Cross-platform end-to-end testing](https://github.com/expo/config-plugins/tree/main/packages/detox): Configure native apps to support E2E testing with Detox in a single-line.
 - [The entire Firebase suite](https://rnfirebase.io/): Here you can see the entire native Firebase suite going from a multi-step native configuration process across multiple IDEs, down to basic JSON configuration.
 - [Cross-platform home screen widgets](https://github.com/gaishimo/eas-widget-example): This Expo config plugin can generate a home screen widget for Android and iOS.
-- [Notification extension and code signing](https://github.com/OneSignal/onesignal-expo-plugin): This Expo config plugin generates a notification extension target on iOS and it augments the EAS credentials service to keep zero-config code signing working.
 - [Apple App Clips](https://github.com/bndkt/react-native-app-clip): This Expo config plugin takes the process of generating an Apple App Clip from a multi-step process, ranging across multiple targets, and reduces it to a single line `["react-native-app-clip", { "name": "My App Clip" }]`.
 At any point, these features can be easily added and removed, without any side effects. CNG allows developers to experiment with complex features and iterate on them quickly without worrying about the long-term maintenance costs or potential orphaned code in their project.
 ---
@@ -8668,7 +8713,7 @@ Next, a typical API reference includes:
 After the React Native Directory, the [npm registry](https://www.npmjs.com/) is the next best place. The npm registry is the definitive source for JavaScript libraries, but the libraries that it lists may not all be compatible with React Native. React Native is one of many JavaScript programming environments, including Node.js, web browsers, Electron, and more, and npm includes libraries that work for all of these environments. Any library that is compatible with React Native is compatible with the Expo project when you create a [development build](/workflow/overview/#development-builds). However, it may not be compatible with the [Expo Go](https://expo.dev/go) app.
 ### Determining third-party library compatibility
 Use Expo [development builds](/workflow/overview/#development-builds) for building production-quality apps. It includes all of the native code that your project needs to run. This is a great way to test your app before you publish it to the App Store or Google Play. You can also include libraries that require native projects (**android** and **ios** directories) configuration.
-The Expo Go app is an optional stepping stone toward development builds. You can use it to quickly test your app while you are developing it, but it does not include all of the native code required to support every library. You can check **React Native Directory** to find a library compatible with Expo Go by visiting the website and verifying that it has a "âï¸ Expo Go" tag. You can also enable the [filter by Expo Go](https://reactnative.directory/?expoGo=true).
+Expo Go is a playground for students and learners to quickly try out React Native. It does not include all of the native code required to support every library, so it's limited and not useful for building production-grade projects. You can check **React Native Directory** to find a library compatible with Expo Go by visiting the website and verifying that it has a "âï¸ Expo Go" tag. You can also enable the [filter by Expo Go](https://reactnative.directory/?expoGo=true).
 To determine if a new dependency changes native project directories, you can check the following:
 - Does the library includes **android** or **ios** directories?
 - Does the library's README mention linking?
@@ -8761,7 +8806,7 @@ Most permissions are added automatically by libraries that you use in your app e
   }
 }
 ```
-The only way to remove permissions that are added by package-level **AndroidManifest.xml** files is to block them with the [`android.blockedPermissions`](/versions/latest/config/app/#blockedpermissions) property. To do this, specify the **full permission name**. For example, if you want to remove the audio recording permissions added by `expo-av`:
+The only way to remove permissions that are added by package-level **AndroidManifest.xml** files is to block them with the [`android.blockedPermissions`](/versions/latest/config/app/#blockedpermissions) property. To do this, specify the **full permission name**. For example, if you want to remove the audio recording permissions added by `expo-camera`:
 ```json app.json
 {
   "android": {
@@ -8873,7 +8918,7 @@ If you're experiencing issues with environment variables, you can try disabling 
 ### EAS Build
 [EAS Build](/build/introduction/) uses Metro Bundler to build the JavaScript bundle embedded within your app binary, so it will use **.env** files uploaded with your build job to inline `EXPO_PUBLIC_` variables into your code. EAS Build also lets you define environment variables within build profiles in **eas.json** and via EAS Secrets. Check out the EAS Build documentation on [environment variables and build secrets](/build-reference/variables/) for more information.
 ### EAS Update
-[EAS Update](/eas-update/introduction) uses Metro Bundler in your local environment or CI to build your app bundle, so it will use available **.env** files to inline `EXPO_PUBLIC_` variables into your code. Check out the EAS Update documentation on [environment variables](/eas-update/environment-variables/) for more information.
+[EAS Update](/eas-update/introduction) uses Metro Bundler in your local environment or CI to build your app bundle, so it will use available **.env** files to inline `EXPO_PUBLIC_` variables into your code. Check out the EAS Update documentation on [environment variables](/eas/environment-variables/usage/#using-environment-variables-with-eas-update) for more information.
 ## Migrating to Expo environment variables
 ### From react-native-config
 Update your **.env** files to prefix any variables used within your JavaScript code with `EXPO_PUBLIC_`:
@@ -9355,7 +9400,7 @@ To setup **two-way association** between the website and app for iOS, you need t
 - **Native app verification:** This requires some form of code signing that references the target website domain (URL).
 ### Create AASA file
 Create an **apple-app-site-association** file for the website verification inside the **/.well-known** directory. This file specifies your Apple Developer Team ID, bundle identifier, and a list of supported paths to redirect to the native app.
-> **info** You can run the **experimental** CLI command `npx setup-safari` inside your project to automatically register a bundle identifier to your Apple account, assign entitlements to the ID, and create an iTunes app entry in the store. The local setup will be printed and you can skip most the following. This is the easiest way to get started with universal links on iOS.
+> **info** You can run the experimental CLI command `npx setup-safari` inside your project to automatically register a bundle identifier to your Apple account, assign entitlements to the ID, and create an iTunes app entry in the store. The local setup will be printed and you can skip most the following. This is the easiest way to get started with universal links on iOS.
 If you're using Expo Router to build your website (or any other modern React framework such as Remix, Next.js, and so on), create the AASA file at **public/.well-known/apple-app-site-association**. For legacy Expo webpack projects, create the file at **web/.well-known/apple-app-site-association**.
 ```json public/.well-known/apple-app-site-association
 {
@@ -9526,7 +9571,7 @@ You can add custom native code by using one or both of the following approaches:
 Expo and React Native developers typically spend the vast majority of their time writing JavaScript code and using native APIs and components that are made available through libraries like [`expo-camera`](/versions/latest/sdk/camera/), [`react-native-safe-area-context`](/versions/latest/sdk/safe-area-context/), and `react-native` itself. These libraries allow developers to access and use device features from their JavaScript code. They may also provide access to a third-party service SDK that is implemented in native code (such as [`@sentry/react-native`](/guides/using-sentry/), which provides bindings to the Sentry native SDK for Android and iOS).
 Note: Using Expo Go?
 ---
-If you are using the sandbox app, [Expo Go](http://expo.dev/go), [you can only access native libraries that are included in the Expo SDK](/versions/latest/sdk/third-party-overview/), or libraries that do not include any custom native code ([learn more](/workflow/using-libraries/#third-party-libraries)). [Creating a development build](/develop/development-builds/introduction/) allows you to change the native code or configuration as you would in any other native app.
+If you are using [Expo Go](http://expo.dev/go), [you can only access native libraries that are included in the Expo SDK](/versions/latest/sdk/third-party-overview/), or libraries that do not include any custom native code ([learn more](/workflow/using-libraries/#third-party-libraries)). [Creating a development build](/develop/development-builds/introduction/) allows you to change the native code or configuration as you would in any other native app.
 ---
 ### Installing libraries with custom native code in development builds
 When using [development builds](/develop/development-builds/introduction/), using libraries with custom native code is straightforward:
@@ -9590,12 +9635,18 @@ Ensure you install the version of `expo` that works for your currently installed
 ## Update the entry file
 Modify the entry file to use [`registerRootComponent`](/versions/latest/sdk/expo/#registerrootcomponentcomponent) instead of `AppRegistry.registerComponent`:
 ```diff
-+ import {registerRootComponent} from 'expo';
-- import {AppRegistry} from 'react-native';
-import App from './App';
-- import {name as appName} from './app.json';
-- AppRegistry.registerComponent(appName, () => App);
-+ registerRootComponent(App);
+diff --git a/index.js b/index.js
+index 0000000..1111111 100644
+--- a/index.js
++++ b/index.js
+@@ -1,5 +1,4 @@
+-import {AppRegistry} from 'react-native';
+-import {name as appName} from './app.json';
++import {registerRootComponent} from 'expo';
+ import App from './App';
+-
+-AppRegistry.registerComponent(appName, () => App);
++registerRootComponent(App);
 ```
 > Learn more about [`registerRootComponent`](/versions/latest/sdk/expo/#registerrootcomponentcomponent).
 ## Prebuild
@@ -9619,26 +9670,35 @@ The **android** and **ios** directories are automatically added to **.gitignore*
 **app.json**
 Remove all fields that are outside the top-level `expo` object as these will not be used in `npx expo prebuild`.
 ```diff
-{
+diff --git a/app.json b/app.json
+index 0000000..1111111 100644
+--- a/app.json
++++ b/app.json
+@@
 -  "name": "myapp",
 -  "displayName": "myapp"
 +  "expo": {
 +    "name": "myapp"
 +  }
-}
+ }
 ```
 **metro.config.js**
 See [Customizing Metro](/guides/customizing-metro/).
 **package.json**
 You may want to change the scripts to use the [Expo CLI](/more/expo-cli/#compiling) run commands:
 ```diff
-  "scripts": {
-    "start": "expo start",
+diff --git a/package.json b/package.json
+index 0000000..1111111 100644
+--- a/package.json
++++ b/package.json
+@@
+   "scripts": {
+     "start": "expo start",
 -    "android": "react-native run-android",
 -    "ios": "react-native run-ios",
 +    "android": "expo run:android",
 +    "ios": "expo run:ios",
-  },
+   },
 ```
 These commands have better logging, auto code signing, better simulator handling, and they ensure you run `npx expo start` to serve files.
 ## Migrate native customizations
@@ -9662,29 +9722,29 @@ Prebuild is the tip of the automation iceberg, here are some features you can ad
 [cli]: /more/expo-cli/
 
 
-# Compile locally
+# Build locally
 
-## Compile locally: Overview
+## Build locally: Overview
 
-An overview on local app compilation process for your Expo apps.
+An overview of how to build your app locally using your own machine for Expo projects.
 
-You can leverage your local development environment to compile your app locally by utilizing Android Studio and Xcode. This compilation process can be done for both debug and release builds. This page provides an overview of the local app compilation process and references to other guides that might be necessary in this workflow.
-## When to compile your app locally
-There are different scenarios when you want to compile your app on your developer machine. It includes:
+You can leverage your local development environment to build your app locally by utilizing Android Studio and Xcode. This build process can be done for both debug and release builds. This page provides an overview on different ways to build your app locally using your own machine and references to other guides that might be necessary in this workflow.
+## When to build your app locally
+There are different scenarios when you want to build your app on your developer machine:
 - You want to iterate quickly on native code changes or test platform-specific changes in your debug build
 - You want to manually generate native code to test your debug build
-- Any scenario where you are required to create builds inside an environment where access to a network is restricted
+- Any scenario where you are required to create builds inside an environment where access to a network is restricted.
 - You want to locally manage your own credentials (such as upload key, and so on)
 - You want to test or integrate your own custom build cache provider
 - You want to opt out of prebuilt Expo Modules for Android and compile them from source locally once
-> **Note**: Compiling your app locally complements EAS Build. You can keep using the build service for cloud automation and fall back to local builds for development.
+> **Note**: Building your app locally complements EAS Build. You can keep using the build service for cloud automation and fall back to local builds for development.
 ## Prerequisites
 You need to install and set up Android Studio and Xcode to compile and run Android and iOS projects on your local machine. See the following guides on how to set up these tools:
 - [Android Studio](/get-started/set-up-your-environment/?platform=android&device=physical&mode=development-build&buildEnv=local#set-up-an-android-device-with-a-development-build)
 - [Xcode](/get-started/set-up-your-environment/?platform=ios&device=physical&mode=development-build&buildEnv=local#set-up-an-ios-device-with-a-development-build)
-## Compiling your debug build
+## Creating your debug build locally
 To quickly build and iterate on a debug build, you can use Expo CLI's `npx expo run:[android|ios]` commands. These commands compile your project, using your locally installed Android SDK or Xcode, into a debug build of your app.
-## Compiling your release build
+## Creating your release build locally
 To create a release build (also known as production build) of your app, you generate signing credentials by utilizing tools provided by Android Studio and Xcode. Then, you can generate a release build and follow the process of manually submitting your app to Google Play Store or Apple App Store.
 ## Reuse previous builds from a provider
 You can accelerate your local development by caching and reusing builds from a provider. You can use EAS as a build provider or create your own custom provider.
@@ -9692,9 +9752,9 @@ You can accelerate your local development by caching and reusing builds from a p
 SDK 53 and later ship with prebuilt Expo Modules for Android that reduce the work Gradle performs on each build. You can continue using the defaults or selectively opt out when you need to modify a module's source code.
 
 
-## Local app development
+## Create a debug build locally
 
-Learn how to compile and build your Expo app locally.
+Learn how to create a debug build for your Expo app locally.
 
 To build your project into an app locally using your machine, you have to manually generate native code before testing the debug build or creating a production build for it to submit to the app store. There are two ways you can build your app locally. This guide provides a brief introduction to both methods and references to other guides that are necessary to create this workflow.
 ## Prerequisites
@@ -10059,12 +10119,15 @@ $ npm install expo
 ```
 2. Modify the entry file to use [`registerRootComponent`](/versions/latest/sdk/expo/#registerrootcomponentcomponent) instead of `AppRegistry.registerComponent`:
 ```diff
-+ import {registerRootComponent} from 'expo';
-import App from './App';
-- import {AppRegistry} from 'react-native';
-- import {name as appName} from './app.json';
-- AppRegistry.registerComponent(appName, () => App);
-+ registerRootComponent(App);
+diff --git a/index.js b/index.js
+--- a/index.js
++++ b/index.js
+@@ -1,5 +1,4 @@
+-import {AppRegistry} from 'react-native';
+-import {name as appName} from './app.json';
++import {registerRootComponent} from 'expo';
+-AppRegistry.registerComponent(appName, () => App);
++registerRootComponent(App);
 ```
 ---
 ### Start the dev server
@@ -10103,6 +10166,7 @@ Expo Router supports three output targets for web apps.
 | `single` (default) | <YesIcon /> | <NoIcon />  | Outputs a Single Page Application (SPA) with a single **index.html** in the output directory and has no statically indexable HTML.                                               |
 | `server`           | <YesIcon /> | <YesIcon /> | Creates **client** and **server** directories. Client files are output as separate HTML files. API routes as separate JavaScript files for hosting with a custom Node.js server. |
 | `static`           | <YesIcon /> | <NoIcon />  | Outputs separate HTML files for every route in the **app** directory.                                                                                                            |
+> **info** **Note**: For `static` and `server` output modes, you can configure [global HTTP headers](/router/web/server-headers) that are applied to all route responses via the `expo-router` plugin.
 ## Create a build
 Creating a build of the project is the first step to publishing a web app. Whether you want to serve it locally or deploy to a hosting service, you'll need to export all JavaScript and assets of a project. This is known as a static bundle. It can be exported by running the following command:
 Run the universal export command to compile the project for web:
@@ -10264,14 +10328,14 @@ $ git remote add origin https://github.com/username/expo-gh-pages.git
 The above commands initialize a new Git repository and configure it to push your source code to the specified GitHub repository.
 Step 2: 
 Install the `gh-pages` package as a development dependency in your project:
-For npm: 
-```sh
-$ npm install --save-dev gh-pages
-```
-For Yarn: 
-```sh
-$ yarn add -D gh-pages
-```
+<Terminal
+  cmd={{
+    npm: ['$ npm install --save-dev gh-pages'],
+    yarn: ['$ yarn add -D gh-pages'],
+    pnpm: ['$ pnpm add -D gh-pages'],
+    bun: ['$ bun add -D gh-pages'],
+  }}
+/>
 Step 3: 
 To deploy the project, configure it to a subdomain with the [`baseUrl`](/versions/latest/config/app/#baseurl) property in [app config](/workflow/configuration/). Set its value to the string `/repo-name`.
 For example, if the GitHub repository is `expo-gh-pages`, the following will be the value of the [experimental `baseUrl` property](/more/expo-cli/#hosting-with-sub-paths):
@@ -10295,14 +10359,14 @@ Modify the `scripts` in the **package.json** file by adding `predeploy` and `dep
 Since Expo uses underscores in generated files, you need to disable Jekyll with the `--nojekyll` flag.
 Step 5: 
 To generate a production build of the web app and deploy it to GitHub Pages, run the following command:
-For npm: 
-```sh
-$ npm run deploy
-```
-For Yarn: 
-```sh
-$ yarn deploy
-```
+<Terminal
+  cmd={{
+    npm: ['$ npm run deploy'],
+    yarn: ['$ yarn run deploy'],
+    pnpm: ['$ pnpm run deploy'],
+    bun: ['$ bun run deploy'],
+  }}
+/>
 This publishes a build of the web app to the `gh-pages` branch of your GitHub repository. This branch only contains build artifacts from the **dist** directory, plus the **.nojekyll** file generated by `gh-pages`. It does not include development source code.
 Step 6: 
 Now that the web app is published to the `gh-pages` branch, configure GitHub Pages to serve the app from that branch.
@@ -10448,7 +10512,7 @@ getDeviceName(): Promise<string> {
 ```
 Think of these functions like React Server Functions, but instead of residing on the server, they live locally in the native app and communicate with the DOM component. This approach provides a powerful way to add truly native functionality to your DOM components.
 ## Passing refs
-> **important** This is experimental and may change in the future.
+> **important** This is in alpha and may change in the future.
 You can use the `useDOMImperativeHandle` hook inside a DOM component to accept ref calls from the native side. This hook is similar to React's [`useImperativeHandle`](https://react.dev/reference/react/useImperativeHandle) hook, but it does not need a ref object to be passed to it.
 ```tsx App.tsx (native)
 import { useRef } from 'react';
@@ -10526,7 +10590,7 @@ import { IS_DOM } from 'expo/dom';
 ```
 While `process.env.EXPO_OS` will always be web in a DOM component, you can detect the _top_ platform with `process.env.EXPO_DOM_HOST_OS`. This will be either `ios`, `android`, depending on the OS of the top-most native platform, and `undefined` on web.
 ## Public assets
-> **important** **Warning:** This is experimental and may change in the future. Public assets are not supported in EAS Update. Use `require()` to load local assets instead.
+> **important** **Warning:** This is in alpha and may change in the future. Public assets are not supported in EAS Update. Use `require()` to load local assets instead.
 The contents of the root **public** directory are copied to the native app's binary to support the use of public assets in DOM components. Since these public assets will be served from the local filesystem, use the `process.env.EXPO_BASE_URL` prefix to reference the correct path. For example:
 ```tsx
 <img src={`${process.env.EXPO_BASE_URL}img.png`} />
@@ -10748,7 +10812,7 @@ Create a PWA manifest in **public/manifest.json**:
 Step 2: 
 The files **logo192.png** and **logo512.png** are the icons that will be used when the app is installed on the user's device. These should be added to the **public** directory too.
 ```
-public/
+âââ public/
     âââ manifest.json  # PWA Manifest
     âââ logo192.png  # 192x192 icon
     âââ logo512.png  # 512x512 icon
@@ -10913,10 +10977,10 @@ Learn how to configure and use Tailwind CSS in your Expo project.
 ## Prerequisites
 The following files will be modified to set the Tailwind CSS configuration:
 ```
-app.json
-package.json
-global.css
-index.js
+âââ app.json
+âââ package.json
+âââ global.css
+âââ index.js
 ```
 Ensure that your project is using Metro for web. You can verify this by checking the `web.bundler` field which is set to `metro` in the **app.json** file.
 ```json app.json
@@ -11586,7 +11650,7 @@ This will be minified by the Expo CLI:
 ```js Output
 console.log('a long string to collapse');
 ```
-> **Tip**: Comments can be preserved by using the `/** @preserve */` directive.
+> **info** **Tip:** Comments can be preserved by using the `/** @preserve */` directive.
 The default minification of Expo CLI is sufficient for most projects. However, you can customize the minifier to optimize for speed or remove additional features like logs.
 ## Remove console logs
 You can remove console logs from your production build. Use the `drop_console` option in the Terser minifier config.
@@ -11785,51 +11849,27 @@ packages:
 ### Create your first app
 Now that you have the basic monorepo structure set up, add your first app.
 Before you create your app, you have to create the **apps** directory. This directory contains all separate apps or websites that belong to this monorepo. Inside this **apps** directory, you can create a sub-directory that contains the Expo app.
-  For npm: 
-    ```sh
-$ npx create-expo-app@latest apps/cool-app
-```
-  For Yarn: 
-    ```sh
-$ yarn create expo-app apps/cool-app
-```
-  For pnpm: 
-    ```sh
-$ pnpm create expo-app apps/cool-app
-```
-  For Bun: 
-    ```sh
-$ bun create expo apps/cool-app
-```
+<Terminal
+  cmd={{
+    npm: ['$ npx create-expo-app@latest apps/cool-app'],
+    yarn: ['$ yarn create expo-app apps/cool-app'],
+    pnpm: ['$ pnpm create expo-app apps/cool-app'],
+    bun: ['$ bun create expo apps/cool-app'],
+  }}
+/>
 > If you have an existing app, you can copy all those files into a directory inside **apps**.
 After copying or creating the first app, install your dependencies with your package manager from the root directory of your monorepo to check for common warnings.
 ### Create a package
 Monorepos can help us group code in a single repository. That includes apps but also separate packages. They also don't need to be published. The [Expo repository](https://github.com/expo/expo) uses this as well. All the Expo SDK packages live inside the [**packages**](https://github.com/expo/expo/tree/main/packages) directory in our repo. It helps us test the code inside one of our [**apps**](https://github.com/expo/expo/tree/main/apps/native-component-list) directory before we publish them.
 Let's go back to the root and create the **packages** directory. This directory can contain all the separate packages that you want to make. Once you are inside this directory, we need to add a new sub-directory. The sub-directory is a separate package that we can use inside our app. In the example below, we named it **cool-package**.
-  For npm: 
-    ```sh
-$ mkdir -p packages/cool-package
-$ cd packages/cool-package
-$ npm init
-```
-  For Yarn: 
-    ```sh
-$ mkdir -p packages/cool-package
-$ cd packages/cool-package
-$ yarn init
-```
-  For pnpm: 
-    ```sh
-$ mkdir -p packages/cool-package
-$ cd packages/cool-package
-$ pnpm init
-```
-  For Bun: 
-    ```sh
-$ mkdir -p packages/cool-package
-$ cd packages/cool-package
-$ bun init --minimal
-```
+<Terminal
+  cmd={{
+    npm: ['$ mkdir -p packages/cool-package && cd packages/cool-package && npm init'],
+    yarn: ['$ mkdir -p packages/cool-package && cd packages/cool-package && yarn init'],
+    pnpm: ['$ mkdir -p packages/cool-package && cd packages/cool-package && pnpm init'],
+    bun: ['$ mkdir -p packages/cool-package && cd packages/cool-package && bun init --minimal'],
+  }}
+/>
 We won't go into too much detail in creating a package. If you are not familiar with this, consider using a simple app without monorepos. But, to make the example complete, let's add an **index.js** file with the following content:
 ```js index.js
 export const greeting = 'Hello!';
@@ -11890,22 +11930,14 @@ Expo has improved support for more complete **node_modules** patterns, such as i
 - Duplicate React versions in a single app will cause runtime errors
 - Duplicate versions of Turbo and Expo modules may cause runtime or build errors
 You can check if your monorepo has multiple versions of a package, for example, `react-native`, and why they're installed through the package manager you use.
-  For npm: 
-    ```sh
-$ npm why react-native
-```
-  For Yarn: 
-    ```sh
-$ yarn why react-native
-```
-  For pnpm: 
-    ```sh
-$ pnpm why --depth=10 react-native
-```
-  For Bun: 
-    ```sh
-$ bun pm why react-native
-```
+<Terminal
+  cmd={{
+    npm: ['$ npm why react-native'],
+    yarn: ['$ yarn why react-native'],
+    pnpm: ['$ pnpm why --depth=10 react-native'],
+    bun: ['$ bun pm why react-native'],
+  }}
+/>
 The output of these commands will be very different from one package manager to another, but you can spot duplicate packages in any of their outputs by looking for multiple versions of the package, for example `react-native@0.79.5` and `react-native@0.81.0`.
 **npm**,
 #### Adding dependency resolutions for peer dependencies
@@ -11923,9 +11955,9 @@ If the duplicate dependency is not resolvable by you changing your dependencies,
 ```
 For [npm](https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides), you have to use a property named `overrides` rather than `resolutions`.
 #### Deduplicating auto-linked native modules
-> **important** This is an experimental feature starting in SDK 54 and later. The process will be automated and have better support in future versions.
+> **important** This is an alpha feature starting in SDK 54 and later. The process will be automated and have better support in future versions.
 Often, duplicate dependencies won't cause any problems. However, native modules should never be duplicated, because only one version of a native module can be compiled for an app build at a time. Unlike JavaScript dependencies, native builds cannot contain two conflicting versions of a single native module.
-From **SDK 54**, you can set set `experiments.autolinkingModuleResolution` to `true` in your **app.json** to apply autolinking to Expo CLI and Metro bundler automatically. This will force dependencies that Metro resolves to match the native modules that [autolinking](/modules/autolinking/) links for your native builds.
+From **SDK 54**, you can set `experiments.autolinkingModuleResolution` to `true` in your **app.json** to apply autolinking to Expo CLI and Metro bundler automatically. This will force dependencies that Metro resolves to match the native modules that [autolinking](/modules/autolinking/) links for your native builds.
 ### Script '...' does not exist
 React Native uses packages to ship both JavaScript and native files. These native files also need to be linked, like the [**react-native/react.Gradle**](https://github.com/facebook/react-native/blob/v0.70.6/react.gradle) file from **android/app/build.Gradle**. Usually, this path is hardcoded to something like:
 **Android** ([source](https://github.com/facebook/react-native/blob/e918362be3cb03ae9dee3b8d50a240c599f6723f/template/android/app/build.gradle#L84))
@@ -12098,19 +12130,19 @@ For miscellaneous errors, try the following:
 
 Learn about React Native's "New Architecture" and how and why to migrate to it.
 
-> **info** We recommend using the latest Expo version for the best experience with the New Architecture.
+> **info** **SDK 55 and later run entirely on the New Architecture.** The New Architecture is always enabled and cannot be disabled. If you need to use the legacy architecture, use SDK 54 or earlier.
 The New Architecture is a name that we use to describe a complete refactoring of the internals of React Native. It is also used to solve limitations of the original React Native architecture discovered over years of usage in production at Meta and other companies.
 In this guide, we'll talk about how to use the New Architecture in Expo projects today.
 Note: Why migrate to the New Architecture?
 ---
-**The New Architecture is the future of React Native** &mdash; yet, for many apps, there may not be many immediate benefits to migrating today. You may want to think of migrating to the New Architecture as an investment in the future of your app, rather than as a way to immediately improve your app.
-That said, **new React and React Native features are coming to the New Architecture only**. For example, the New Architecture includes [full support for Suspense](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here#full-support-for-suspense) and [new styling capabilities](https://reactnative.dev/blog/2025/01/21/version-0.77#new-css-features-for-better-layouts-sizing-and-blending) are not implemented in the legacy architecture. Libraries such as [@shopify/flash-list](https://github.com/Shopify/flash-list) and [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) will be shipping new major versions that take full advantage of new features to deliver better performance than was possible before, and will drop support for the legacy architecture.
-**The legacy architecture will not be around forever** &mdash; it's possible that the legacy architecture will be removed from React Native in a late 2025 release. When it is removed, you will not be able to upgrade React Native or the Expo SDK without migrating to the New Architecture.
+**The New Architecture is the present and future of React Native**. Starting with React Native 0.82, the New Architecture is always enabled and cannot be disabled. SDK 55 uses React Native 0.83, which inherits this behavior. The [legacy architecture was frozen](https://github.com/reactwg/react-native-new-architecture/discussions/290) in June 2025, meaning no new features or bugfixes are being developed for it.
+**New React and React Native features are coming to the New Architecture only**. For example, the New Architecture includes [full support for Suspense](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here#full-support-for-suspense) and [new styling capabilities](https://reactnative.dev/blog/2025/01/21/version-0.77#new-css-features-for-better-layouts-sizing-and-blending) that are not implemented in the legacy architecture. Many popular libraries now only support the New Architecture.
+**If you are on SDK 54 or earlier**, you can still use the legacy architecture by setting `newArchEnabled` to `false`. However, you will need to migrate to the New Architecture before upgrading to SDK 55 or later.
 ---
 ## Expo tools and the New Architecture
 As of SDK 53, all `expo-*` packages in the [Expo SDK](/versions/latest/) support the New Architecture (including [bridgeless](https://github.com/reactwg/react-native-new-architecture/discussions/154)). [Learn more about known issues](#known-issues-in-expo-sdk-libraries).
 Additionally, all modules written using the [Expo Modules API](/modules/overview/) support the New Architecture by default! So if you have built your own native modules using this API, no additional work is needed to use them with the New Architecture.
-**As of April 2025, approximately 75% of SDK 52+ projects built with [EAS Build](/build/introduction/) use the New Architecture**.
+**As of January 2026, approximately 83% of SDK 54 projects built with [EAS Build](/build/introduction/) use the New Architecture**.
 ## Third-party libraries and the New Architecture
 The compatibility status of many of the most popular libraries is tracked on [React Native Directory](https://reactnative.directory/) ([learn more about known issues in third-party libraries](#known-issues-in-third-party-libraries)). We've built tooling into Expo Doctor to integrate with React Native Directory to help you validate your dependencies, so you can quickly learn which libraries are unmaintained and which incompatible or untested with the New Architecture.
 ### Validate your dependencies with React Native Directory
@@ -12142,8 +12174,12 @@ Note: See all available options
 $ npx create-expo-app@latest
 ```
 ## Enable the New Architecture in an existing project
-  For SDK 53 and later: 
-    **The New Architecture is enabled by default in SDK 53 and later**. If you have explicitly disabled it, remove that configuration to enable it.
+  For SDK 55 and later: 
+    **The New Architecture is always enabled in SDK 55 and later**. There is no option to disable it. SDK 55 uses React Native 0.83. [React Native 0.82 was the first version to remove the option to disable the New Architecture](https://reactnative.dev/blog/2025/10/08/react-native-0.82), and this applies to all later versions.
+    If you were previously using `newArchEnabled: false` in your app config, this setting will be ignored. Remove it from your configuration to avoid confusion.
+  For SDK 53 and SDK 54: 
+    **The New Architecture is enabled by default in SDK 53 and SDK 54**. If you have explicitly disabled it, remove that configuration to enable it.
+    > **info** SDK 54 is the last SDK version where the New Architecture can be disabled.
   For SDK 52: 
     We recommend upgrading to SDK 53 to ensure that your app can take advantage of all of the latest New Architecture related fixes and improvements with libraries and React Native itself. If you want to try it on SDK 52 first, follow the instructions below.
     Step 1: 
@@ -12170,16 +12206,17 @@ $ eas build -p ios
       If the build succeeds, you will now be running your app with the New Architecture! Depending on the native modules you use, your app may work properly immediately.
       Now you can tap around your app and test it out. For most non-trivial apps, you're likely to encounter some issues, such as missing native views that haven't been implemented for the New Architecture yet. Many of the issues you encounter are actionable and can be resolved with some configuration or code changes. We recommend reading [Troubleshooting](#troubleshooting) sections below for more information.
   For SDK 51 and earlier: 
-    We recommend upgrading to at least SDK 52, preferably SDK 53. It's possible to enable the New Architecture in SDK 51, but you are likely to encounter a variety of issues that have been resolved in more recent releases. To enable it, you need to [install the `expo-build-properties` plugin](/versions/latest/sdk/build-properties/#installation) and set `newArchEnabled` on target platforms.
+    We recommend upgrading to SDK 54 or SDK 55. SDK 51 is significantly outdated, and the [legacy architecture has been frozen](https://github.com/reactwg/react-native-new-architecture/discussions/290), meaning it will not receive new features or bugfixes. It's possible to enable the New Architecture in SDK 51, but you are likely to encounter a variety of issues that have been resolved in more recent releases. To enable it, you need to [install the `expo-build-properties` plugin](/versions/latest/sdk/build-properties/#installation) and set `newArchEnabled` on target platforms.
 Note: Are you enabling the New Architecture in a bare React Native app?
 ---
-If you are using Expo SDK 53 or higher, it will be enabled by default. The following instructions apply to older projects.
+If you are using Expo SDK 53 or later, the New Architecture is enabled by default. For SDK 55 and later, the New Architecture is always enabled and cannot be disabled. The following instructions apply to SDK 52 and earlier projects.
 - **Android**: Set `newArchEnabled=true` in the **gradle.properties** file.
 - **iOS**: If your project has a **Podfile.properties.json** file (which is created by `npx create-expo-app` or `npx expo prebuild`), you can enable the New Architecture by setting the `newArchEnabled` property to `"true"` in the **Podfile.properties.json** file. Otherwise, refer to the ["Enable the New Architecture for Apps"](https://github.com/reactwg/react-native-new-architecture/blob/main/docs/enable-apps.md) section of the React Native New Architecture working group.
 ---
 ## Disable the New Architecture in an existing project
-> **info**: Expo Go only supports the New Architecture.
-If you want to opt out of using the New Architecture, set the `newArchEnabled` property to `false` in app config and create a [development build](/develop/development-builds/introduction/).
+> **warning** **SDK 55 and later do not support disabling the New Architecture.** SDK 55 uses React Native 0.83. Starting with [React Native 0.82, the option to disable the New Architecture was removed](https://reactnative.dev/blog/2025/10/08/react-native-0.82), so setting `newArchEnabled` to `false` has no effect. If you need to use the legacy architecture, use SDK 54 or earlier.
+> **info** Expo Go only supports the New Architecture.
+On **SDK 54 and earlier**, you can opt out of the New Architecture by setting the `newArchEnabled` property to `false` in app config and create a [development build](/develop/development-builds/introduction/).
 ```json app.json
 {
   "expo": {
@@ -12187,7 +12224,7 @@ If you want to opt out of using the New Architecture, set the `newArchEnabled` p
   }
 }
 ```
-Note: Are you disabling the New Architecture in a bare React Native app?
+Note: Are you disabling the New Architecture in a bare React Native app (SDK 54 and earlier)?
 ---
 - **Android**: Set `newArchEnabled=false` in the **gradle.properties** file.
 - **iOS**: If your project has a **Podfile.properties.json** file (which is created by `npx create-expo-app` or `npx expo prebuild`), you can disable the New Architecture by setting the `newArchEnabled` property to `"false"` in the **Podfile.properties.json** file. Otherwise, refer to the ["Enable the New Architecture for Apps"](https://github.com/reactwg/react-native-new-architecture/blob/main/docs/enable-apps.md) section of the React Native New Architecture working group.
@@ -12523,7 +12560,12 @@ fi
 `"$NODE_BINARY" --print "require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'"`
 ```
 And add support the `"main"` field in **package.json** by making the following change to **AppDelegate.swift**:
-```diff AppDelegate.swift
+```diff
+diff --git a/ios/AppDelegate.swift b/ios/AppDelegate.swift
+index 0000000..1111111 100644
+--- a/ios/AppDelegate.swift
++++ b/ios/AppDelegate.swift
+@@ -1,7 +1,7 @@
    override func bundleURL() -> URL? {
  #if DEBUG
 -    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
@@ -12531,6 +12573,7 @@ And add support the `"main"` field in **package.json** by making the following c
  #else
      Bundle.main.url(forResource: "main", withExtension: "jsbundle")
  #endif
+   }
 ```
 ---
 ## Usage
@@ -12672,17 +12715,20 @@ Modify the `expo` section of **app.json**. If you created your project using `np
 > The example `updates` URL and `projectId` shown below are used with EAS Update. The EAS CLI sets this URL correctly for the EAS Update service when running `eas update:configure`.
 <DiffBlock source="/static/diffs/expo-updates-app-json.diff" />
 If you want to set up a [custom `expo-updates` server](https://github.com/expo/custom-expo-updates-server) instead, add your URL to `updates.url` in **app.json**.
-```diff app.json
- {
-   "name": "MyApp",
-   "displayName": "MyApp",
+```diff
+diff --git a/app.json b/app.json
+index 0000000..1111111 100644
+--- a/app.json
++++ b/app.json
+@@ -1,7 +1,7 @@
    "expo": {
      "name": "MyApp",
-      ...
-     "updates": {
+-    "updates": {
 -      "url": "https://u.expo.dev/[your-project-id]"
+-    }
++    "updates": {
 +      "url": "http://localhost:3000/api/manifest"
-     }
++    }
    }
  }
 ```
@@ -12692,20 +12738,7 @@ Modify **android/app/build.gradle** to check for the JS engine configuration (JS
 Modify **android/app/src/main/AndroidManifest.xml** to add the `expo-updates` configuration XML so that it matches the contents of **app.json**:
 <DiffBlock source="/static/diffs/expo-updates-android-manifest.diff" />
 If using the updates server URL (a custom non-HTTPS update server running on the same machine), you will need to modify **android/app/src/main/AndroidManifest.xml** to add the update server URL and enable `usesCleartextTraffic`:
-```diff android/app/src/main/AndroidManifest.xml
- <application
-  android:name=".MainApplication"
-  android:label="@string/app_name"
-  android:icon="@mipmap/ic_launcher"
-  android:roundIcon="@mipmap/ic_launcher_round"
-  android:allowBackup="false"
-  android:theme="@style/AppTheme"
-+ android:usesCleartextTraffic="true"
- >
-- <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://u.expo.dev/[your-project-id]"/>
-+ <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="http://localhost:3000/api/manifest"/>
- </application>
-```
+<DiffBlock source="/static/diffs/expo-updates-android-manifest-cleartext.diff" />
 Add the Expo runtime version string key to **android/app/src/main/res/values/strings.xml**:
 <DiffBlock source="/static/diffs/expo-updates-strings-xml.diff" />
 ### iOS
@@ -12809,7 +12842,7 @@ An existing native app that was built using another technology, whose main entry
 In contrast, "greenfield" apps are created using Expo or React Native from the start or where React Native is the entry point and where all other UI branches off from.
 By these definitions, if you have an "existing native app" for Android or iOS and you want to learn how to use Expo and React Native in your project (perhaps on a single screen or even a single feature), then this guide is for you.
 ## Compatibility with existing native apps
-> **info** Support for integrating Expo modules into existing native projects is still experimental. If you encounter issues, [create an issue on GitHub](https://github.com/expo/expo/issues). Not all features of the tools and services below will be available when used in the context of an existing native app.
+> **info** Support for integrating Expo modules into existing native projects is in alpha. If you encounter issues, [create an issue on GitHub](https://github.com/expo/expo/issues). Not all features of the tools and services below will be available when used in the context of an existing native app.
 Expo is primarily built with greenfield apps in mind, but we are increasingly investing in brownfield scenarios. Not all Expo tools and services are compatible with existing native projects yet. Additionally, comprehensive documentation for brownfield integrations may not yet available, and you may need to adapt other related documentation to your context.
 | Tool/Service                                                                                         | Supports brownfield? |
 | ---------------------------------------------------------------------------------------------------- | -------------------- |
@@ -12821,6 +12854,23 @@ Expo is primarily built with greenfield apps in mind, but we are increasingly in
 | [EAS Build](/build/introduction/) - a CI/CD service built specifically for Expo/React Native         | Yes                  |
 | [EAS Submit](/submit/introduction/) - a hosted service that uploads your app to stores               | Yes                  |
 | [EAS Update](/eas-update/introduction/) - instant updates of your app JavaScript and assets          | Yes                  |
+## Integrated vs Isolated approaches
+When you integrate React Native into an existing native app, you can choose between two main approaches: integrated and isolated. The best approach for you will depend on your project's structure, your team's workflow, and your long-term goals.
+### Integrated approach
+In the integrated approach, your React Native code lives inside your existing native project. This allows for a tight coupling between your React Native and native code.
+For example, you might add your existing Android or iOS native projects to a subdirectory of the React Native project. This is a common setup for projects that started with React Native and added native code later, but it can also be used for existing native apps. If you can't use the standard `android` and `ios` subdirectories for your native projects, you can configure a custom root folder for your React Native code, with a simple monorepo setup.
+**Choose this approach if:**
+- You need to frequently iterate on both native and React Native code together.
+- You have a single team that manages both native and React Native development.
+- Your project structure allows for adding a React Native project directly.
+### Isolated approach
+In the isolated approach, your React Native code is developed and maintained separately from your native project, and it can be maintained in a separate repository or in a monorepo.
+With this approach, you package your React Native app as a native library (using AAR for Android and XCFramework for iOS). Then, you integrate this library into your native app just like any other native dependency.
+This separation simplifies the workflow for native developers, as they don't need to set up a Node.js environment, or deal with React Native's build dependencies. They can just consume the React Native part of the app as a pre-built artifact.
+**Choose this approach if:**
+- You have separate teams for native and React Native development.
+- You want to minimize the impact of adding React Native on your existing native build process.
+- You prefer to treat the React Native part of your app as a self-contained module.
 ## Next steps
 
 
@@ -13163,6 +13213,131 @@ You have completed all the basic steps to integrate React Native with your appli
 $ yarn start
 ```
 Metro builds your TypeScript application code into a bundle, serves it through its HTTP server, and shares the bundle from `localhost` on your developer environment to a simulator or device, allowing for [hot reloading](https://reactnative.dev/blog/2016/03/24/introducing-hot-reloading). Now you can build and run your app as normal. Once you reach your React-powered Activity inside the app, it should load the JavaScript code from the development server.
+## Configuration in app config
+The `expo-brownfield` package provides a [config plugin](/config-plugins/introduction/) that can be used to configure the brownfield integration when using [Continuous Native Generation (CNG)](/workflow/continuous-native-generation/). This plugin allows you to customize how your Expo project is packaged and integrated into your existing native app.
+<ConfigPluginExample>
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-brownfield",
+        {
+          "ios": {
+            "targetName": "MyBrownfieldTarget",
+            "bundleIdentifier": "com.example.brownfield"
+          },
+          "android": {
+            "group": "com.example",
+            "libraryName": "brownfield",
+            "package": "com.example.brownfield",
+            "version": "1.0.0"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+</ConfigPluginExample>
+<ConfigPluginProperties
+  properties={[
+    {
+      name: 'ios.targetName',
+      platform: 'ios',
+      description:
+        'Name of the Xcode target for the brownfield integration. This is used to create a separate target in your Xcode project for the React Native code.',
+      default: '"<scheme>brownfield" or "<slug>brownfield"',
+    },
+    {
+      name: 'ios.bundleIdentifier',
+      platform: 'ios',
+      description:
+        'Bundle identifier for the brownfield target. This should be unique and different from your main app bundle identifier.',
+      default: '"<ios.bundleIdentifier base>.<targetName>" or "com.example.<targetName>"',
+    },
+    {
+      name: 'android.group',
+      platform: 'android',
+      description:
+        'Maven group ID for the generated Android library. This is used when publishing the library to a Maven repository.',
+      default: '"<package without last segment>"',
+    },
+    {
+      name: 'android.libraryName',
+      platform: 'android',
+      description: 'Name of the generated Android library module.',
+      default: '"brownfield"',
+    },
+    {
+      name: 'android.package',
+      platform: 'android',
+      description: 'Java/Kotlin package name for the generated Android library code.',
+      default: '"<android.package>.brownfield" or "com.example.brownfield"',
+    },
+    {
+      name: 'android.version',
+      platform: 'android',
+      description:
+        'Version string for the generated Android library. This is used when publishing to a Maven repository.',
+      default: '"1.0.0"',
+    },
+    {
+      name: 'android.publishing',
+      platform: 'android',
+      description:
+        'Publishing configuration for the generated Android library. Supports `localMaven`, `localDirectory`, `remotePublic`, and `remotePrivate` publication types. Each type has different configuration options for specifying where and how the library is published.',
+      default: '[{ type: "localMaven" }]',
+    },
+  ]}
+/>
+
+
+## Configuring lifecycle listeners
+
+Learn about the mechanism that allows the Expo Modules API to hook into the lifecycle of your app.
+
+Some Expo libraries need to handle system events such as deep links, push notifications, and configuration changes by implementing `Activity`/`Application` or `AppDelegate` lifecycle callbacks.
+The Expo Modules API provides an easy way to manage such callbacks:
+- <PlatformTag platform="android" /> `ApplicationLifecycleDispatcher` and `ReactActivityHandler`
+  forward `Application` and `Activity` lifecycle events to registered listeners. Modules can provide
+  `ReactActivityLifecycleListener` and `ApplicationLifecycleListener` implementations through a
+  `Package` class to register callbacks.
+- <PlatformTag platform="ios" /> `ExpoAppDelegate` forwards `AppDelegate` calls to registered
+  subscribers. Modules can provide an `ExpoAppDelegateSubscriber` implementation to register
+  callbacks.
+Using these mechanisms allows modules to register behavior without requiring you to edit native entry points repeatedly.
+## Configure your native project
+### Android
+To integrate `Application` lifecycle listeners on Android, forward the `onCreate()` and `onConfigurationChanged()` calls from your `Application` class to `ApplicationLifecycleDispatcher`:
+<DiffBlock source="/static/diffs/brownfield/lifecycle-listeners/application-lifecycle-dispatcher.diff" />
+### iOS
+To integrate `AppDelegate` subscribers on iOS, forward the relevant calls to `ExpoAppDelegateSubscriberManager` in your existing `AppDelegate` implementation so that subscribers can respond to them:
+<DiffBlock source="/static/diffs/brownfield/lifecycle-listeners/expo-app-delegate-subscriber-manager.diff" />
+Alternatively, if your `AppDelegate` doesn't already extend another class, you can simplify the setup by inheriting from `ExpoAppDelegate`, which handles the forwarding automatically:
+<DiffBlock source="/static/diffs/brownfield/lifecycle-listeners/expo-app-delegate.diff" />
+> **Note:** Not all `UIApplicationDelegate` methods that could cause significant side effects are supported. See the Expo source (**ExpoAppDelegate.swift**) for the full list of forwarded methods if you need to rely on a specific delegate.
+## Test your integration
+To test if the callbacks are working correctly, install a module that relies on them. Install `expo-linking`, which uses lifecycle listeners to handle deep links:
+```sh
+$ npx expo install expo-linking
+```
+Add a listener for deep links in your code and observe the console when opening a deep link:
+```jsx
+import * as Linking from 'expo-linking';
+import { useEffect } from 'react';
+useEffect(() => {
+  const listener = Linking.addEventListener('url', ({ url }) => {
+    console.log('Received deep link:', url);
+  });
+  return listener.remove;
+}, []);
+```
+Run the following command to open a deep link to your app:
+```sh
+$ npx uri-scheme open com.example.app://somepath/details --android
+$ npx uri-scheme open myapp://somepath/details --ios
+```
 
 
 # Expo Router
@@ -13266,11 +13441,11 @@ You can create a custom entry point in your Expo Router project to initialize an
 - Ignoring specific logs using `LogBox` from `react-native`
 1. Create a new file in the root of your project, such as **index.js**. After creating this file, the project structure should look like this:
    ```
-app/
+âââ app/
 â   âââ _layout.tsx
-index.js
-package.json
-Other project files
+âââ index.js
+âââ package.json
+âââ Other project files
 ```
 2. Import or add your custom configuration to the file. Then, import `expo-router/entry` to register the app entry. Remember to always import it last to ensure all configurations are properly set up before the app renders.
    ```js index.js
@@ -13354,13 +13529,13 @@ This also means that you can often refer to React Navigation documentation for h
 ## The rules of Expo Router applied
 Let's apply these foundational rules of Expo Router to quickly identify key elements of the following project file structure:
 ```
-app/
+âââ app/
 â   âââ index.tsx
 â   âââ home.tsx
 â   âââ _layout.tsx
 â   âââ profile/
 â       âââ friends.tsx
-components/
+âââ components/
     âââ TextField.tsx
     âââ Toolbar.tsx
 ```
@@ -13379,7 +13554,7 @@ When you look inside the **app** directory in a typical Expo Router project, you
 ## Types of route notation
 ### Simple names/no notation
 ```
-app/
+âââ app/
     âââ home.tsx
     âââ feed/
         âââ favorites.tsx
@@ -13387,7 +13562,7 @@ app/
 Regular file and directory names without any notation signify _static routes_. Their URL matches exactly as they appear in your file tree. So, a file named **favorites.tsx** inside the **feed** directory will have a URL of `/feed/favorites`.
 ### Square brackets
 ```
-app/
+âââ app/
     âââ [userName].tsx
     âââ products/
         âââ [productId]/
@@ -13396,7 +13571,7 @@ app/
 If you see square brackets in a file or directory name, you are looking at a _dynamic route_. The name of the route includes a parameter that can be used when rendering the page. The parameter could be either in a directory name or a file name. For example, a file named **[userName].tsx** will match `/evanbacon`, `/expo`, or another username. Then, you can access that parameter with the `useLocalSearchParams` hook inside the page, using that to load the data for that specific user.
 ### Parentheses
 ```
-app/
+âââ app/
     âââ (tabs)/
         âââ index.tsx
         âââ settings.tsx
@@ -13405,7 +13580,7 @@ A directory with its name surrounded in parentheses indicates a _route group_. T
 Route groups can be useful for simple organization purposes, but often become more important for defining complex relationships between routes.
 ### index.tsx files
 ```
-app/
+âââ app/
     âââ (tabs)/
     â   âââ index.tsx
     âââ profile/
@@ -13414,7 +13589,7 @@ app/
 Just like on the web, an **index.tsx** file indicates the default route for a directory. For example, a file named **profile/index.tsx** will match `/profile`. A file named **(tabs)/index.tsx** will match `/`, effectively becoming the default route for your entire app.
 ### \_layout.tsx files
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ (tabs)/
     â   âââ _layout.tsx
@@ -13425,7 +13600,7 @@ app/
 Layout routes are rendered before the actual page routes inside their directory. This means that the **\_layout.tsx** directly inside the **app** directory is rendered before anything else in the app, and is where you would put the initialization code that may have previously gone inside an **App.jsx** file.
 ### Plus sign
 ```
-app/
+âââ app/
     âââ +not-found.tsx
     âââ +html.tsx
     âââ +native-intent.tsx
@@ -13439,7 +13614,7 @@ Routes that include a `+` have special significance to Expo Router, and are used
 ## Route notation applied
 Consider the following project file structure to identify the different types of routes represented:
 ```
-app/
+âââ app/
     âââ (tabs)/
     â   âââ _layout.tsx
     â   âââ index.tsx
@@ -13500,7 +13675,7 @@ The above example shows the splash screen initially and then renders a stack nav
 ## Stacks
 You can implement a stack navigator in your root layout, as shown above, or in any other layout file inside a directory. Let's suppose you have a file structure with a stack inside of a directory:
 ```
-app/
+âââ app/
     âââ products/
         âââ _layout.tsx
         âââ index.tsx
@@ -13531,7 +13706,7 @@ While it is possible to nest navigators, be sure to only do so when it is truly 
 ## Tabs
 Much like a stack, you can implement a tab navigator in your layout file, and all the routes directly inside that directory will be treated as tabs. Consider the following file structure:
 ```
-app/
+âââ app/
     âââ (tabs)/
         âââ _layout.tsx
         âââ index.tsx
@@ -13563,7 +13738,7 @@ In the case of `Tabs`, you will likely want to define the tabs in the navigator,
 In some cases, you may want a layout without a navigator. This is helpful for adding a header or footer around the current route, or for displaying a modal over any route inside a directory. In this case, you can use the `Slot` component, which serves as a placeholder for the current child route.
 Consider the following file structure:
 ```
-app/
+âââ app/
     âââ social/
         âââ _layout.tsx
         âââ index.tsx
@@ -13609,7 +13784,7 @@ export default function Home() {
 Expo Router apps default to stack navigation, where navigating to a new route pushes a screen onto a stack, and backing out of that route pops it off the stack. Usually, you would want to use the `router.navigate` function. This will either push a new page onto the stack or unwind to an existing route on the stack. However, you can also call `router.push` to explicitly push a new page onto the stack, `router.back` to go back to the previous page, or `router.replace` to replace the current page on the stack.
 With Expo Router, you refer to pages by their URL, or their position relative to the **app** directory. Check out the following file structure and how you would navigate to each page:
 ```
-app/
+âââ app/
     âââ index.tsx  # router.navigate("/")
     âââ about.tsx  # router.navigate("/about")
     âââ profile/
@@ -13663,7 +13838,7 @@ router.navigate('./article');
 Dynamic routes can be linked to with their full URL, or by passing a `params` object.
 Consider the following file structure:
 ```
-app/
+âââ app/
     âââ user/
         âââ [id].tsx
 ```
@@ -13789,7 +13964,7 @@ Deep linking is when a URL opens a specific page in your app. Expo Router suppor
 On web, deep linking is as simple as navigating to that specific URL in your web browser. On mobile, you define a `scheme` in your [app config](/workflow/configuration/) file, and this becomes the prefix for deep links into your app.
 Assuming your `scheme` is `myapp`, here are some examples of how you would link to a page in your app from a web page or another app:
 ```
-app/
+âââ app/
     âââ about.tsx  # myapp://about
     âââ profile/
     â   âââ index.tsx  # myapp://profile
@@ -13801,7 +13976,7 @@ With app links and universal links, you can also link to your app with an `https
 When opening a deep link to a page in your app, you will likely want back navigation to work as if the user navigated to the page from your home page. To do this, you can specify an `initialRouteName` configuration, which defines the page in a layout that should be loaded before the deep linked page.
 Consider the following file structure:
 ```
-app/
+âââ app/
     âââ index.tsx
     âââ stack/
         âââ index.tsx
@@ -13835,7 +14010,7 @@ Now that you know the basics of how files and directories are named and arranged
 If the typical starting point for your app is a set of tabs, but one or more tabs may have more than one screen associated with it, nesting a stack navigator inside of a tab is often the way to go. This pattern often results in intuitive URLs and scales well to desktop web apps, where the primary tabs are often always visible.
 Consider the following navigation tree:
 ```
-app/
+âââ app/
     âââ (tabs)/
         âââ _layout.tsx
         âââ index.tsx  # single page tab
@@ -13879,7 +14054,7 @@ You can also nest tabs inside of an outer stack navigator. That is often more us
 ## One screen, two tabs: sharing routes
 Route groups can be used to share a single screen between two different tabs. Consider a navigation tree that has a Feed tab and a Search tab, and they both share pages for viewing a user profile:
 ```
-app/
+âââ app/
     âââ (tabs)/
         âââ _layout.tsx
         âââ (feed)/
@@ -13916,6 +14091,17 @@ When you're already focused on a tab and navigating to a user, you will stay in 
 ## Authenticated users only: protected routes
 For mobile apps requiring authentication, you will likely have a set of routes that should only be accessible to authenticated users.
 For example, consider the following navigation tree in which you have a bottom tabs layout, a sign-in page, a create account page, and a modal that should only be visible to authenticated users:
+```
+âââ app/
+    âââ _layout.tsx  # Root layout
+    âââ (tabs)/
+    â   âââ _layout.tsx
+    â   âââ index.tsx  # Protected
+    â   âââ settings.tsx  # Protected
+    âââ sign-in.tsx
+    âââ create-account.tsx
+    âââ modal.tsx  # Protected
+```
 When your app is first launched, the router will try to open the root index, **app/(tabs)/index.tsx**. If you wrap this screen in a `Stack.Protected` with the `guard={false}`, the screen will become inaccessible and the next available screen will be opened instead. In this example, the `sign-in` screen will be opened, since it is the next available route.
 ```tsx app/_layout.tsx
 import { Stack } from 'expo-router';
@@ -13991,7 +14177,7 @@ This guide provides information on how you can create a `Stack` navigator in you
 ## Get started
 You can use file-based routing to create a stack navigator. Here's an example file structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ details.tsx
@@ -14005,8 +14191,9 @@ export default function Layout() {
 }
 ```
 ## Screen options and header configuration
+Starting in SDK 55, you can configure screen options and the header using either the options-based API or the new composition components API. Both APIs can be used interchangeably in your project.
 ### Statically configure route options
-You can use the `<Stack.Screen name={routeName} />` component in the layout component route to statically configure a route's options. This is also useful for [tabs](/router/advanced/tabs/) or [drawers](/router/advanced/drawer/) as they need an icon defined ahead of time.
+You can use the `<Stack.Screen name={routeName} />` component in the layout component route to statically configure a route's options.
 ```tsx app/_layout.tsx|collapseHeight=440
 import { Stack } from 'expo-router';
 export default function Layout() {
@@ -14024,23 +14211,6 @@ export default function Layout() {
       {/* Optionally configure static options outside the route.*/}
       <Stack.Screen name="home" options={{}} />
     </Stack>
-  );
-}
-```
-As an alternative to the `<Stack.Screen>` component, you can use [`navigation.setOptions()`](https://reactnavigation.org/docs/navigation-object/#setoptions) to configure a route's options from within the route's component file.
-```tsx app/index.tsx
-import { Stack, useNavigation } from 'expo-router';
-import { Text, View } from 'react-native';
-import { useEffect } from 'react';
-export default function Home() {
-  const navigation = useNavigation();
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
   );
 }
 ```
@@ -14064,53 +14234,9 @@ export default function Layout() {
   );
 }
 ```
-To configure the header bar dynamically for an individual route, use that navigator's `<Stack.Screen>` component in the routes's file. This is useful for interactions that change the UI.
-```tsx app/index.tsx
-import { Link, Stack } from 'expo-router';
-import { Image, Text, View, StyleSheet } from 'react-native';
-function LogoTitle() {
-  return (
-    <Image style={styles.image} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
-  );
-}
-export default function Home() {
-  return (
-    <View style={styles.container}>
-      <Stack.Screen
-        options={{
-          title: 'My home',
-          headerStyle: { backgroundColor: '#f4511e' },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-          headerTitle: props => <LogoTitle {...props} />,
-        }}
-      />
-      <Text>Home Screen</Text>
-      <Link href={{ pathname: 'details', params: { name: 'Bacon' } }}>Go to Details</Link>
-    </View>
-  );
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    width: 50,
-    height: 50,
-  },
-});
-```
-### Available header options
-The `Stack` navigator supports comprehensive header configuration options. Below are all the header-related options available:
-<ReactNavigationOptions category="header" />
-For additional details and navigator-specific examples, see [React Navigation's Native Stack Navigator documentation](https://reactnavigation.org/docs/native-stack-navigator).
 ### Set screen options dynamically
-To configure a route's option dynamically, you can always use the `<Stack.Screen>` component in that route's file.
-As an alternative, you can also use the [imperative API's `router.setParams()`](/versions/latest/sdk/router/#router) function to configure the route dynamically.
+To configure a route's options dynamically, you can use either the composition components or the options-based API.
+For Options API: 
 ```tsx app/details.tsx
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
@@ -14122,6 +14248,7 @@ export default function Details() {
       <Stack.Screen
         options={{
           title: params.name,
+          headerStyle: { backgroundColor: 'lightblue' },
         }}
       />
       <Text
@@ -14141,8 +14268,42 @@ const styles = StyleSheet.create({
   },
 });
 ```
+For Composition components: 
+> **important** Screen composition API is in alpha and available in SDK 55 and later.
+```tsx app/details.tsx
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { View, Text, StyleSheet } from 'react-native';
+export default function Details() {
+  const router = useRouter();
+  const params = useLocalSearchParams();
+  return (
+    <View style={styles.container}>
+      <Stack.Screen.Title>{params.name}</Stack.Screen.Title>
+      <Stack.Header style={{ backgroundColor: 'lightblue' }} />
+      <Text
+        onPress={() => {
+          router.setParams({ name: 'Updated' });
+        }}>
+        Update the title
+      </Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+```
+### Available header options
+The `Stack` navigator supports comprehensive header configuration options. Below are all the header-related options available:
+<ReactNavigationOptions category="header" />
+For additional details and navigator-specific examples, see [React Navigation's Native Stack Navigator documentation](https://reactnavigation.org/docs/native-stack-navigator).
 ### Header buttons
-You can add buttons to the header by using the `headerLeft` and `headerRight` options. These options accept a React component that renders in the header.
+You can add buttons to the header by using the `headerLeft` and `headerRight` options or `<Stack.Toolbar>` component. These options accept a React component that renders in the header.
+For Options API: 
 ```tsx app/index.tsx
 import { Stack } from 'expo-router';
 import { Button, Text, Image, StyleSheet } from 'react-native';
@@ -14173,6 +14334,38 @@ const styles = StyleSheet.create({
   },
 });
 ```
+For Composition components: 
+> **important** Screen composition API is in alpha and available in SDK 55 and later.
+```tsx app/index.tsx
+import { Stack } from 'expo-router';
+import { Button, Text, Image, StyleSheet } from 'react-native';
+import { useState } from 'react';
+function LogoTitle() {
+  return (
+    <Image style={styles.image} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} />
+  );
+}
+export default function Home() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <Stack.Screen.Title asChild>
+        <LogoTitle />
+      </Stack.Screen.Title>
+      <Stack.Toolbar placement="right" asChild>
+        <Button onPress={() => setCount(c => c + 1)} title="Update count" />
+      </Stack.Toolbar>
+      <Text>Count: {count}</Text>
+    </>
+  );
+}
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50,
+  },
+});
+```
 ### Other screen options
 For a complete list of all available other screen options including animations, gestures, and other configurations:
 <ReactNavigationOptions excludeCategories={['header']} />
@@ -14181,7 +14374,7 @@ For additional details and navigator-specific examples, see [React Navigation's 
 By default, the `Stack` navigator removes duplicate screens when pushing a route that is already in the stack. For example, if you push the same screen twice, the second push will be ignored. You can change this push behavior by providing a custom `getId()` function to the `<Stack.Screen>`.
 For example, the `index` route in the following layout structure shows a list of different user profiles in the app. Let's make the `[details]` route a [dynamic route](/router/basics/notation/#square-brackets) so that the app user can navigate to see a profile's details.
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ [details].tsx  # matches dynamic paths like '/details1'
@@ -14333,6 +14526,69 @@ Create a [development build](/develop/development-builds/create-a-build/#prerequ
 ### Method 2: Use JavaScript-based navigation stack
 Switch from native navigation library ([`@react-navigation/native`](https://reactnavigation.org/docs/native-stack-navigator/)) to a JavaScript-based stack navigator library such as [`@react-navigation/stack`](https://reactnavigation.org/docs/stack-navigator/), which gives you full control over the header UI but at the cost of performance benefits of using the highly optimized iOS navigation views/controllers.
 For more information, see [JavaScript stack with `@react-navigation/stack`](#javascript-stack-with-react-navigationstack).
+## Common problems
+Note: Large title does not collapse when scrolling
+---
+When using `headerLargeTitle: true` (or `<Stack.Screen.Title large>`) with a `ScrollView` or `FlatList`, the large title may not collapse on scroll. This happens when the scrollable view is not the direct first child of the screen component.
+To fix this, ensure `ScrollView` or `FlatList` is the first child rendered by your screen component. If you need a wrapper, set `collapsable={false}` on it:
+```tsx app/index.tsx
+import { Stack } from 'expo-router';
+import { ScrollView, View, Text } from 'react-native';
+export default function Home() {
+  return (
+    <ScrollView>
+      <Stack.Screen.Title large>Home</Stack.Screen.Title>
+      <Text>Content here</Text>
+    </ScrollView>
+  );
+}
+```
+If you need to wrap the `ScrollView`, set `collapsable={false}` on the wrapper:
+```tsx app/index.tsx
+import { Stack } from 'expo-router';
+import { ScrollView, View, Text } from 'react-native';
+export default function Home() {
+  return (
+    <View collapsable={false}>
+      <ScrollView>
+        <Stack.Screen.Title large>Home</Stack.Screen.Title>
+        <Text>Content here</Text>
+      </ScrollView>
+    </View>
+  );
+}
+```
+---
+Note: White background flashes when navigating between screens
+---
+A white flash between screen transitions usually means the navigation stack is using a light background while your app uses a dark theme.
+To fix this, wrap your root layout with React Navigation's `ThemeProvider` and pass the appropriate theme:
+```tsx app/_layout.tsx
+import { ThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { Stack } from 'expo-router';
+import { useColorScheme } from 'react-native';
+export default function RootLayout() {
+  const colorScheme = useColorScheme();
+  return (
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Stack />
+    </ThemeProvider>
+  );
+}
+```
+For apps that are always dark-themed:
+```tsx app/_layout.tsx
+import { ThemeProvider, DarkTheme } from '@react-navigation/native';
+import { Stack } from 'expo-router';
+export default function RootLayout() {
+  return (
+    <ThemeProvider value={DarkTheme}>
+      <Stack />
+    </ThemeProvider>
+  );
+}
+```
+---
 
 
 ## JavaScript tabs
@@ -14355,7 +14611,7 @@ This guide covers the **JavaScript tabs** layout. For other tab layouts see:
 ## Get started with JavaScript tabs
 You can use file-based routing to create a tabs layout. Here's an example file structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ (tabs)/
         âââ _layout.tsx
@@ -14503,19 +14759,38 @@ Learn how to use the native tabs layout in Expo Router.
   description="Learn how to use native tabs to create liquid glass tabs on iOS with Expo Router."
   className="mb-6"
 />
-> **important** Native tabs is an experimental feature available in SDK 54 and later, and its API is subject to change.
+> **important** Native tabs is in alpha and is available in SDK 54 and later. Its API is subject to change.
 Tabs are a common way to navigate between different sections of an app. In Expo Router, you can use different tab layouts, depending on your needs. This guide covers the native tabs. Unlike the [other tabs layout](/router/advanced/tabs/#multiple-tab-layouts), native tabs use the native system tab bar.
 For other tab layouts see:
 ## Get started
 You can use file-based routing to create a tabs layout. Here's an example file structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ settings.tsx
 ```
 The above file structure produces a layout with a tab bar at the bottom of the screen. The tab bar will have two tabs: **Home** and **Settings**.
 You can use the **app/\_layout.tsx** file to define your app's root layout using tabs. This file is the main layout file for the tab bar and each tab. Inside it, you can control how the tab bar and each tab item look and behave.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Icon sf="gear" md="settings" />
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Icon, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14559,9 +14834,26 @@ When you want to customize the tab bar item, we recommend using the components A
 - **Label**: The label displayed in the tab bar item.
 - **Badge**: The badge displayed in the tab bar item.
 ### Icon
-You can use the `Icon` component to customize the icon displayed in the tab bar item. The `Icon` component accepts a `drawable` prop for Android drawables, a `sf` prop for Apple's SF Symbols icons, or a `src` prop for custom images.
-Alternatively, you can pass `{default: ..., selected: ...}` to either the `sf` or `src` prop to specify different icons for the default and selected states.
-> To use `drawable` props on Android, you can use [built-in drawables](https://developer.android.com/reference/android/R.drawable) or add [custom drawables](https://developer.android.com/studio/write/resource-manager).
+> **info** `NativeTabs.Trigger.Icon` is available in SDK 55 and later. For SDK 54, use `Icon` imported from `expo-router/unstable-native-tabs`.
+You can use the `Icon` component to customize the icon displayed in the tab bar item. The `Icon` component accepts a `md` prop for Android material symbols, a `sf` prop for Apple's SF Symbols icons, or a `src` prop for custom images.
+Alternatively, you can pass `{default: ..., selected: ...}` to either the `sf` or `src` prop to specify different icons for the default and selected states (currently not supported on Android).
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Icon src={require('../../../assets/setting_icon.png')} />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Icon } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14577,7 +14869,42 @@ export default function TabLayout() {
   );
 }
 ```
-Liquid glass on iOS automatically changes colors based on if the background color is light or dark. There is no callback for this, so you need to use a `PlatformColor` to set the color of the icon.
+Liquid glass on iOS automatically changes colors based on if the background color is light or dark. There is no callback for this, so you need to use a `PlatformColor` or `DynamicColorIOS` to set the color of the icon.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { DynamicColorIOS } from 'react-native';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs
+      labelStyle={{
+        // For the text color
+        color: DynamicColorIOS({
+          dark: 'white',
+          light: 'black',
+        }),
+      }}
+      // For the selected icon color
+      tintColor={DynamicColorIOS({
+        dark: 'white',
+        light: 'black',
+      })}>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Icon sf={{ default: 'house', selected: 'house.fill' }} md="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Icon
+          src={{
+            default: require('../assets/setting_icon.png'),
+            selected: require('../assets/selected_setting_icon.png'),
+          }}
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { DynamicColorIOS } from 'react-native';
 import { NativeTabs, Icon } from 'expo-router/unstable-native-tabs';
@@ -14602,8 +14929,8 @@ export default function TabLayout() {
       <NativeTabs.Trigger name="settings">
         <Icon
           src={{
-            default: require('../../../assets/setting_icon.png'),
-            selected: require('../../../assets/selected_setting_icon.png'),
+            default: require('../assets/setting_icon.png'),
+            selected: require('../assets/selected_setting_icon.png'),
           }}
         />
       </NativeTabs.Trigger>
@@ -14611,9 +14938,74 @@ export default function TabLayout() {
   );
 }
 ```
+#### Icon rendering mode
+> **important** Icon rendering mode is available in SDK 55 and later.
+When using the `src` prop for custom images on iOS, you can control how the icon is rendered with the `renderingMode` prop:
+- **`template` (default)**: The icon is rendered as a template image, allowing iOS to apply the tint color. This is ideal for single-color icons that should match your app's color scheme.
+- **`original`**: The icon is rendered with its original colors preserved. This is useful for icons with gradients or multiple colors.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      {/* Icon with original colors preserved (e.g., for gradient or multi-color icons) */}
+      <NativeTabs.Trigger name="colorful">
+        <NativeTabs.Trigger.Icon
+          src={require('../../../assets/colorful_icon.png')}
+          renderingMode="original"
+        />
+      </NativeTabs.Trigger>
+      {/* Icon rendered as a template (default behavior) */}
+      <NativeTabs.Trigger name="simple">
+        <NativeTabs.Trigger.Icon
+          src={require('../../../assets/simple_icon.png')}
+          renderingMode="template"
+        />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
+```tsx app/_layout.tsx
+import { NativeTabs, Icon } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      {/* Icon with original colors preserved (e.g., for gradient or multi-color icons) */}
+      <NativeTabs.Trigger name="colorful">
+        <Icon src={require('../../../assets/colorful_icon.png')} renderingMode="original" />
+      </NativeTabs.Trigger>
+      {/* Icon rendered as a template (default behavior) */}
+      <NativeTabs.Trigger name="simple">
+        <Icon src={require('../../../assets/simple_icon.png')} renderingMode="template" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+> **info** The `renderingMode` prop only affects iOS. On Android, all image icons are rendered with their original colors.
 ### Label
 You can use the `Label` component to customize the label displayed in the tab bar item. The `Label` component accepts a string label passed as a child. If no label is provided, the tab bar item will use the route name as the label.
 If you don't want to display a label, you can use the `hidden` prop to hide the label.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Label hidden />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14631,6 +15023,23 @@ export default function TabLayout() {
 ```
 ### Badge
 You can use the `Badge` component to customize the badge displayed for the tab bar item. The badge is an additional mark on top of the tab and useful for showing notification or unread message counts.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="messages">
+        <NativeTabs.Trigger.Badge>9+</NativeTabs.Trigger.Badge>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Badge />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Badge } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14649,7 +15058,54 @@ export default function TabLayout() {
 ## Customizing the tab bar
 Since the native tab layout's appearance varies by platform, the customization options are also different. For all customization options, see the [API reference for `NativeTabs`](/versions/latest/sdk/router-native-tabs/).
 ## Advanced
-### Hide a tab conditionally
+### Hiding the Tab bar
+> **info** `hidden` property is available in SDK 55 and later.
+You can hide the tab bar using `hidden` prop on the `NativeTabs` component. To hide tab bar for specific screens, you can use context API to set the `hidden` prop dynamically.
+```tsx context/TabBarContext.tsx
+import { createContext } from 'react';
+export const TabBarContext = createContext<{
+  setIsTabBarHidden: (hidden: boolean) => void;
+}>({
+  setIsTabBarHidden: () => {},
+});
+```
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { useState } from 'react';
+import { TabBarContext } from '../context/TabBarContext';
+export default function TabLayout() {
+  const [isTabBarHidden, setIsTabBarHidden] = useState(false);
+  return (
+    <TabBarContext value={{ setIsTabBarHidden }}>
+      <NativeTabs hidden={isTabBarHidden}>
+        <NativeTabs.Trigger name="index">
+          <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="settings">
+          <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+      </NativeTabs>
+    </TabBarContext>
+  );
+}
+```
+```tsx app/index.tsx
+import { useFocusEffect } from 'expo-router';
+import { use } from 'react';
+import { TabBarContext } from '../context/TabBarContext';
+export default function HomeScreen() {
+  const { setIsTabBarHidden } = use(TabBarContext);
+  useFocusEffect(() => {
+    setIsTabBarHidden(true);
+    return () => setIsTabBarHidden(false);
+  });
+  return (
+    // Screen content
+  );
+}
+```
+### Hiding a tab conditionally
+> **warning** Dynamically hiding tabs will remount the navigator and the state will be reset. Change the visibility of the tabs only before the navigator is mounted or when it is not visible to the user.
 If you want to hide a tab based on a condition, you can either remove the trigger or pass the `hidden` prop to the `NativeTabs.Trigger` component.
 ```tsx app/_layout.tsx
 import { NativeTabs } from 'expo-router/unstable-native-tabs';
@@ -14664,8 +15120,25 @@ export default function TabLayout() {
 ```
 > **info** **Note**: Marking a tab as `hidden` means it cannot be navigated to in any way.
 ### Dismiss behavior
-> **info** Currently this is an iOS-only feature, but we plan to add it to Android in the future.
+> **info** Dismiss behavior is available on Android in SDK 55 and later.
 By default, tapping a tab that is already active closes all screens in that tab's stack and returns to the root screen. You can disable this by setting the `disablePopToTop` prop on the `NativeTabs.Trigger` component.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index" disablePopToTop>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14682,8 +15155,25 @@ export default function TabLayout() {
 }
 ```
 ### Scroll to top
-> **info** Currently this is an iOS-only feature, but we plan to add it to Android in the future.
+> **info** Scroll to top is available on Android in SDK 55 and later.
 By default, tapping a tab that is already active and showing its root screen scrolls the content back to the top. You can disable this by setting the `disableScrollToTop` prop on the `NativeTabs.Trigger` component.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index" disableScrollToTop>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="settings">
+        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14703,6 +15193,23 @@ export default function TabLayout() {
 > **info** To use features described in this section, compile your app with Xcode 26 or higher.
 #### Separate search tab
 To add a separate search tab, assign the `role` with its value set to `search` to the native tab you want to display separately.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="search" role="search">
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14721,7 +15228,7 @@ export default function TabLayout() {
 #### Tabbar search input
 To add a search field to the tab bar, wrap the screen in a Stack navigator and configure `headerSearchBarOptions`.
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ search/
@@ -14729,15 +15236,15 @@ app/
         âââ index.tsx
 ```
 ```tsx app/_layout.tsx
-import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
   return (
     <NativeTabs>
       <NativeTabs.Trigger name="index">
-        <Label>Home</Label>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="search" role="search">
-        <Label>Search</Label>
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
@@ -14746,33 +15253,43 @@ export default function TabLayout() {
 ```tsx app/search/_layout.tsx
 import { Stack } from 'expo-router';
 export default function SearchLayout() {
-  return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          title: 'Search',
-          headerSearchBarOptions: {
-            placement: 'automatic',
-            placeholder: 'Search',
-            onChangeText: () => {},
-          },
-        }}
-      />
-    </Stack>
-  );
+  return <Stack />;
 }
 ```
 ```tsx app/search/index.tsx
 import { ScrollView } from 'react-native';
+import { Stack } from 'expo-router';
 export default function SearchIndex() {
-  return <ScrollView>{/* Screen content */}</ScrollView>;
+  return (
+    <>
+      <Stack.Screen.Title>Search</Stack.Screen.Title>
+      <Stack.SearchBar placement="automatic" placeholder="Search" onChangeText={() => {}} />
+      <ScrollView>{/* Screen content */}</ScrollView>
+    </>
+  );
 }
 ```
 #### Tab bar minimize behavior
 To implement the minimized behavior on the tab bar, you can use
 [`minimizeBehavior`](/versions/latest/sdk/router-native-tabs/#minimizebehavior) prop on
 `NativeTabs`. In the example below, the tab bar is minimized when scrolling down.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs minimizeBehavior="onScrollDown">
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="tab-1">
+        <NativeTabs.Trigger.Label>Tab 1</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14788,52 +15305,248 @@ export default function TabLayout() {
   );
 }
 ```
-### Integration with `@expo/vector-icons`
-> **info** **Recommended**: Use [SF Symbols on iOS](#icon). They offer a more native platform feeling compared to vector icons.
-To use icons from `@expo/vector-icons`, you can use `VectorIcon` component.
-```tsx app/_layout.tsx|collapseHeight=480
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { NativeTabs, Icon, VectorIcon } from 'expo-router/unstable-native-tabs';
-import { Platform } from 'react-native';
+#### Bottom accessory
+> **info** This feature is available in SDK 55 and later.
+A bottom accessory is a floating view that appears above the tab bar, useful for displaying persistent controls like a mini music player. See Apple's [`UITabBarController` bottomAccessory documentation](https://developer.apple.com/documentation/uikit/uitabbarcontroller/bottomaccessory) for more details.
+The bottom accessory can appear in two placements: `'regular'` (standard position above the tab bar) or `'inline'` (compact mode, inline with the tab bar). Use the `usePlacement` hook to adapt your UI based on the current placement.
+> **warning** You must store state outside the accessory component using props, context, or external state management. Two instances of the bottom accessory component are rendered simultaneously (one for each placement) and state is **not** shared between them.
+The following example demonstrates a mini player with state lifted to the parent component:
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { useState } from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+function MiniPlayer({ isPlaying, onToggle }) {
+  const placement = NativeTabs.BottomAccessory.usePlacement();
+  if (placement === 'inline') {
+    // Compact UI for inline placement
+    return (
+      <Pressable onPress={onToggle} style={styles.inlinePlayer}>
+        <Text>{isPlaying ? 'â¸' : 'â¶'}</Text>
+      </Pressable>
+    );
+  }
+  // Full UI for regular placement
+  return (
+    <View style={styles.regularPlayer}>
+      <Text>Now Playing: Song Title</Text>
+      <Pressable onPress={onToggle}>
+        <Text>{isPlaying ? 'Pause' : 'Play'}</Text>
+      </Pressable>
+    </View>
+  );
+}
+export default function TabLayout() {
+  // State must be stored outside BottomAccessory
+  const [isPlaying, setIsPlaying] = useState(false);
+  return (
+    <NativeTabs>
+      <NativeTabs.BottomAccessory>
+        <MiniPlayer isPlaying={isPlaying} onToggle={() => setIsPlaying(!isPlaying)} />
+      </NativeTabs.BottomAccessory>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="library">
+        <NativeTabs.Trigger.Label>Library</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+const styles = StyleSheet.create({
+  inlinePlayer: {
+    padding: 8,
+  },
+  regularPlayer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 16,
+  },
+});
+```
+### Disabling keyboard avoidance on Android
+By default, when the keyboard is displayed on Android, the native tabs automatically adjust to avoid being obscured. You can disable this behavior by changing the [`android.softwareKeyboardLayoutMode`](/versions/latest/config/app/#softwarekeyboardlayoutmode) property to `pan` in your app config file:
+```json app.json
+{
+  "expo": {
+    "android": {
+      "softwareKeyboardLayoutMode": "pan"
+    }
+  }
+}
+```
+### Safe area handling
+> **info** This feature is available in SDK 55 and later.
+Native tabs automatically handle safe area insets, with platform-specific behavior:
+- **Android**: Screen content is automatically wrapped in a `SafeAreaView` that applies the **bottom** inset for the tab bar. Other insets (top, left, right) must be handled manually.
+- **iOS**: The first `ScrollView` nested inside a native tabs screen has [automatic content inset adjustment](https://reactnative.dev/docs/scrollview#contentinsetadjustmentbehavior-ios) enabled. This ensures content scrolls correctly behind the tab bar.
+#### Disabling automatic content insets
+If you need full control over safe area handling, you can disable automatic content inset adjustment using the `disableAutomaticContentInsets` prop on `NativeTabs.Trigger`:
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
   return (
-    <NativeTabs minimizeBehavior="onScrollDown">
-      <NativeTabs.Trigger name="index">
-        <Label>Home</Label>
-        {Platform.select({
-          ios: <Icon sf="house.fill" />,
-          android: <Icon src={<VectorIcon family={MaterialIcons} name="home" />} />,
-        })}
+    <NativeTabs>
+      <NativeTabs.Trigger name="index" disableAutomaticContentInsets>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
 ```
+For SDK 54: 
+```tsx app/_layout.tsx
+import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index" disableAutomaticContentInsets>
+        <Label>Home</Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+When `disableAutomaticContentInsets` is set to `true`, you must manage safe area insets manually. You can use `SafeAreaView` from `react-native-screens/experimental`:
+```tsx app/index.tsx
+import { SafeAreaView } from 'react-native-screens/experimental';
+export default function HomeScreen() {
+  return (
+    <SafeAreaView edges={{ bottom: true }} style={{ flex: 1 }}>
+      {/* Screen content */}
+    </SafeAreaView>
+  );
+}
+```
+## Migrating native tabs from SDK 54 to 55
+SDK 55 changes how you access tab bar item components. Instead of importing `Icon`, `Label`, and `Badge` separately, use the compound component API: `NativeTabs.Trigger.Icon`, `NativeTabs.Trigger.Label`, and `NativeTabs.Trigger.Badge`. For Android icons, the `md` prop is the new recommended way to use Material Symbols.
+<DiffBlock source="/static/diffs/router/native-tabs/sdk-54-to-55-migration.diff" />
 ## Migrating from JavaScript tabs
 Native tabs are not designed to be a drop-in replacement for [JavaScript tabs](/router/advanced/tabs/). The native tabs are constrained to the native platform behavior, whereas the JavaScript tabs can be customized more freely. If you aren't interested in the native platform behavior, you can continue using the JavaScript tabs.
 ### Use `Trigger` instead of `Screen`
 `NativeTabs` introduces the concept of a `Trigger` for adding routes to a layout. Unlike a `Screen`, which styles routes that are added automatically, the `Trigger` system gives you better control for hiding and removing tabs from the tab bar.
 ### Use React components instead of props
 `NativeTabs` has a React-first API that opts to use components for defining UI in favor of props objects.
-```diff
-- options={{
--   tabBarIcon: ({ focused, color, size }) => (
--     <Icon name="home" color={color} size={size} />
--   ),
-- }}
-+ <Icon sf="house" drawable="home_drawable" />
-```
+<DiffBlock source="/static/diffs/router/native-tabs/trigger-icon-component.diff" />
 ### Use Stacks inside tabs
 The JavaScript `` have a mock stack header which is not present in the native tabs. Instead, you should nest a native `<Stack />` layout inside the native tabs to support both headers and pushing screens.
+## Common problems
+Note: The tab bar is transparent on iOS 18 and earlier
+---
+On iOS 18 and earlier, the native tab bar becomes transparent when scrolling to the end of a scrollable content. This means that it will become transparent when you scroll to the end of a `ScrollView` or when you render a static `View`.
+You can use the [`disableTransparentOnScrollEdge`](/versions/latest/sdk/router-native-tabs/#disabletransparentonscrolledge) prop to disable this behavior.
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+function TabLayout() {
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index" disableTransparentOnScrollEdge>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+When you are using a `ScrollView` and the tab bar is transparent from the start, ensure that the `ScrollView` is a first child of the screen component. If you wrap it with another component make sure to set `collapsable` to `false` on the wrapper component.
+```tsx app/index.tsx
+import { ScrollView, View } from 'react-native';
+export default function HomeScreen() {
+  return (
+    <View collapsable={false} style={{ flex: 1 }}>
+      <ScrollView>{/* Screen content */}</ScrollView>
+    </View>
+  );
+}
+```
+---
+Note: White background flashes when switching tabs on iOS 26
+---
+This happens because React Navigation's default theme uses a white background color. To fix this, wrap your app in React Navigation's `ThemeProvider` with the appropriate theme.
+**For apps supporting both light and dark modes:**
+```tsx app/_layout.tsx
+import { ThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { useColorScheme } from 'react-native';
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
+  return (
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <NativeTabs>
+        <NativeTabs.Trigger name="index">
+          <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="settings">
+          <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+        </NativeTabs.Trigger>
+      </NativeTabs>
+    </ThemeProvider>
+  );
+}
+```
+**For dark-mode-only apps:**
+```tsx app/_layout.tsx
+import { ThemeProvider, DarkTheme } from '@react-navigation/native';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <ThemeProvider value={DarkTheme}>
+      <NativeTabs>{/* tabs */}</NativeTabs>
+    </ThemeProvider>
+  );
+}
+```
+**Alternative for specific background colors:**
+If you need a specific background color that doesn't match the default themes, you can use the [`contentStyle`](/versions/latest/sdk/router-native-tabs/#contentstyle) prop on `NativeTabs.Trigger`:
+```tsx
+<NativeTabs.Trigger name="index" contentStyle={{ backgroundColor: '#1a1a2e' }}>
+```
+---
+Note: Scroll to top does not work when tapping a tab
+---
+Tapping an active tab should scroll the content to the top, but this may not work if the `ScrollView` is not the first child of the screen component.
+Ensure that the `ScrollView` is a direct first child of the screen component. If you wrap it with another component, make sure to set `collapsable` to `false` on the wrapper component.
+```tsx app/index.tsx
+import { ScrollView, View } from 'react-native';
+export default function HomeScreen() {
+  return (
+    <View collapsable={false} style={{ flex: 1 }}>
+      <ScrollView>{/* Screen content */}</ScrollView>
+    </View>
+  );
+}
+```
+---
 ## Known limitations
-### A limit of 5 tabs on Android
+Note: A limit of 5 tabs on Android
+---
 On Android, there is a limitation of having a maximum of 5 tabs in the tab bar. This restriction comes from the platform's Material Tabs component.
-### Cannot measure the tab bar height
+---
+Note: Cannot measure the tab bar height
+---
 The tabs move around, sometimes being on top of the screen when rendering on iPad, sometimes on the side of the screen when running on Apple Vision Pro, and so on. We're working on a layout function to provide more detailed layout info in the future.
-### No support for nested native tabs
+---
+Note: No support for nested native tabs
+---
 Native tabs cannot be nested inside other native tabs. You can still nest [JavaScript tabs](/router/advanced/tabs/) inside native tabs.
-### Limited support for FlatList
+---
+Note: Limited support for FlatList
+---
 [FlatList](https://reactnative.dev/docs/flatlist) integration with native tabs has limitations. Features like scroll-to-top and minimize-on-scroll aren't supported. Additionally, detecting scroll edges may fail, causing the tab bar to appear transparent. To fix this, use the [`disableTransparentOnScrollEdge`](/versions/latest/sdk/router-native-tabs/#disabletransparentonscrolledge) prop.
+For SDK 55 and later: 
+```tsx app/_layout.tsx
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+export default function TabLayout() {
+  return (
+    <NativeTabs disableTransparentOnScrollEdge>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+```
+For SDK 54: 
 ```tsx app/_layout.tsx
 import { NativeTabs, Label } from 'expo-router/unstable-native-tabs';
 export default function TabLayout() {
@@ -14846,6 +15559,11 @@ export default function TabLayout() {
   );
 }
 ```
+---
+Note: No support for dynamically adding or removing tabs
+---
+Dynamically adding or removing tabs at runtime is not supported. Tabs should be defined statically in your layout file and remain consistent throughout the app's lifecycle. This aligns with platform guidelines from [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/tab-bars#Best-practices) which recommend keeping tab bar content stable to help users build a mental model of your app's navigation structure. If you dynamically add or remove tabs, the content will be remounted and the state will be lost.
+---
 
 
 ## Drawer
@@ -14906,6 +15624,14 @@ How to implement authentication and protect routes with Expo Router.
 With Expo Router, all routes are always defined and accessible. You can use runtime logic to redirect users away from specific screens depending on whether they are authenticated. There are two different techniques for authenticating users within routes. This guide provides an example that demonstrates the functionality of standard native apps.
 ## Using Protected Routes
 [Protected routes](/router/advanced/protected/) allow you to prevent users from accessing certain routes using client-side navigation. If a user tries to navigate to a protected screen, or if a screen becomes protected while it is active, they will be redirected to the anchor route (usually the index screen) or the first available screen in the stack. Consider the following project structure that has a `/sign-in` route that is always accessible and a `(app)` group that requires authentication:
+```
+âââ app/
+    âââ _layout.tsx  # Controls what is protected
+    âââ sign-in.tsx  # Always accessible
+    âââ (app)/
+        âââ _layout.tsx  # Requires authorization
+        âââ index.tsx  # Should be protected by the (app)/_layout
+```
 Step 1: 
 To follow the above example, set up a [React Context provider](https://react.dev/reference/react/createContext) that can expose an authentication session to the entire app. You can implement your custom authentication session provider or use the one from the **Example authentication context** below.
 Note: Example authentication context
@@ -15125,6 +15851,16 @@ export default function AppLayout() {
 You now have an app that will present the splash screen until the initial authentication state has loaded and will redirects to the sign-in screen if the user is not authenticated. If a user visits a deep link to any routes with the authentication check, they'll be redirected to the sign-in screen.
 ## Modals and per-route authentication
 Another common pattern is to render a sign-in modal over the top of the app. This enables you to dismiss and partially preserve deep links when the authentication is complete. However, this pattern requires routes to be rendered in the background as these routes require handling data loading without authentication.
+```
+âââ app/
+    âââ _layout.tsx  # Declares global session context
+    âââ (app)/
+        âââ _layout.tsx
+        âââ sign-in.tsx  # Modal presented over the root
+        âââ (root)/
+            âââ _layout.tsx  # Protects child routes
+            âââ index.tsx  # Requires authorization
+```
 ```tsx app/(app)/_layout.tsx|collapseHeight=480
 import { Stack } from 'expo-router';
 export const unstable_settings = {
@@ -15165,6 +15901,14 @@ How to implement authentication and protect routes with Expo Router.
 With Expo Router, all routes are always defined and accessible. You can use runtime logic to redirect users away from specific screens depending on whether they are authenticated. There are two different techniques for authenticating users within routes. This guide provides an example that demonstrates the functionality of standard native apps.
 ## Using React Context and Route Groups
 It's common to restrict specific routes to users who are not authenticated. This is achievable in an organized way by using React Context and Route Groups. Consider the following project structure that has a `/sign-in` route that is always accessible and a `(app)` group that requires authentication:
+```
+âââ app/
+    âââ _layout.tsx
+    âââ sign-in.tsx  # Always accessible
+    âââ (app)/
+        âââ _layout.tsx  # Protects child routes
+        âââ index.tsx  # Requires authorization
+```
 Step 1: 
 To follow the above example, set up a [React Context provider](https://react.dev/reference/react/createContext) that can expose an authentication session to the entire app. You can implement your custom authentication session provider or use the one from the **Example authentication context** below.
 Note: Example authentication context
@@ -15357,6 +16101,16 @@ You now have an app that can present a loading state while it checks the initial
 With Expo Router, something must be rendered to the screen while loading the initial auth state. In the example above, the app layout renders a loading message. Alternatively, you can make the `index` route a loading state and move the initial route to something such as `/home`, which is similar to how X works.
 ## Modals and per-route authentication
 Another common pattern is to render a sign-in modal over the top of the app. This enables you to dismiss and partially preserve deep links when the authentication is complete. However, this pattern requires routes to be rendered in the background as these routes require handling data loading without authentication.
+```
+âââ app/
+    âââ _layout.tsx  # Declares global session context
+    âââ (app)/
+        âââ _layout.tsx
+        âââ sign-in.tsx  # Modal presented over the root
+        âââ (root)/
+            âââ _layout.tsx  # Protects child routes
+            âââ index.tsx  # Requires authorization
+```
 ```tsx app/(app)/_layout.tsx|collapseHeight=480
 import { Stack } from 'expo-router';
 export const unstable_settings = {
@@ -15384,7 +16138,7 @@ Error: Attempted to navigate before mounting the Root Layout component. Ensure t
 To fix this, add a group and move conditional logic down a level.
 ### Before
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ about.tsx
 ```
@@ -15404,7 +16158,7 @@ export default function RootLayout() {
 ```
 ### After
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ (app)/
         âââ _layout.tsx  # Move conditional logic down a level
@@ -15449,7 +16203,7 @@ Nesting navigators allow rendering a navigator inside the screen of another navi
 ## Example
 Consider the following file structure which is used as an example:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ home/
@@ -15537,7 +16291,7 @@ Below is an example of how a modal screen works on different platforms:
 ### Usage
 To implement a modal route, create a screen called **modal.tsx** inside the **app** directory. Here's an example file structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ modal.tsx
@@ -15658,6 +16412,124 @@ export const unstable_settings = {
 };
 ```
 In the above example, the `anchor: 'index'` tells the Expo Router that it should maintain the specified anchor route in the background when presenting a modal.
+## Form sheet presentation
+Form sheet presents a modal as a bottom sheet that app users can drag between different heights (called detents). This is useful for content that needs partial screen coverage with interactive sizing.
+### Basic usage
+To use form sheet, set the `presentation` option to `formSheet` on your modal screen:
+```tsx app/_layout.tsx
+import { Stack } from 'expo-router';
+export default function Layout() {
+  return (
+    <Stack>
+      <Stack.Screen name="index" />
+      <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'formSheet',
+        }}
+      />
+    </Stack>
+  );
+}
+```
+### Configuring sheet detents
+Detents define the heights where the sheet can rest. Use `sheetAllowedDetents` to configure them:
+- **Numeric array** (`number[]`): Specify snap positions as fractions of the screen height between 0 and 1. For example, `[0.25, 0.5, 1]` creates three snap points at 25%, 50%, and full screen height. Values must be sorted in ascending order.
+- **Fit to contents** (`'fitToContents'`): The sheet automatically sizes itself based on its content. When using this option, you must provide explicit content sizing since `flex: 1` is not supported because the sheet needs to know the content's actual size to determine its height.
+> **info** Android supports a maximum of 3 detents. iOS accepts any number of detents.
+```tsx app/_layout.tsx
+import { Stack } from 'expo-router';
+export default function Layout() {
+  return (
+    <Stack>
+      <Stack.Screen name="index" />
+      <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'formSheet',
+          sheetAllowedDetents: [0.25, 0.5, 1],
+          sheetInitialDetentIndex: 1,
+        }}
+      />
+    </Stack>
+  );
+}
+```
+### Additional sheet options
+| Option                            | Type                         | Description                                                |
+| --------------------------------- | ---------------------------- | ---------------------------------------------------------- |
+| `sheetInitialDetentIndex`         | `number \| 'last'`           | Index of the detent where the sheet opens (default: `0`).  |
+| `sheetGrabberVisible`             | `boolean`                    | Shows a grabber handle at the top of the sheet (iOS only). |
+| `sheetCornerRadius`               | `number`                     | Corner radius of the sheet in pixels.                      |
+| `sheetLargestUndimmedDetentIndex` | `number \| 'none' \| 'last'` | Largest detent index that keeps the background undimmed.   |
+```tsx app/_layout.tsx
+import { Stack } from 'expo-router';
+export default function Layout() {
+  return (
+    <Stack>
+      <Stack.Screen name="index" />
+      <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'formSheet',
+          sheetAllowedDetents: [0.25, 0.5, 1],
+          sheetInitialDetentIndex: 0,
+          sheetGrabberVisible: true,
+          sheetCornerRadius: 24,
+          sheetLargestUndimmedDetentIndex: 1,
+        }}
+      />
+    </Stack>
+  );
+}
+```
+### Sheet footer (Android)
+> **important** `unstable_sheetFooter` is an Android-only experimental feature that may change in future releases.
+You can add a footer to the sheet that stays visible at all detent positions using a React component:
+```tsx app/_layout.tsx
+import { Stack } from 'expo-router';
+import { View, Button } from 'react-native';
+export default function Layout() {
+  return (
+    <Stack>
+      <Stack.Screen name="index" />
+      <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'formSheet',
+          sheetAllowedDetents: [0.5, 1],
+          unstable_sheetFooter: () => (
+            <View style={{ padding: 16, backgroundColor: 'white' }}>
+              <Button title="Confirm" onPress={() => {}} />
+            </View>
+          ),
+        }}
+      />
+    </Stack>
+  );
+}
+```
+### Using `flex: 1` with custom detents
+> **info** In SDK 55 and later, `flex: 1` works correctly on iOS when using custom numeric detents. This does not work with `fitToContents` where you must provide explicit content sizing.
+When using numeric detents, your modal content can use `flex: 1` to fill the available space within the sheet:
+```tsx app/modal.tsx
+import { StyleSheet, Text, View } from 'react-native';
+export default function Modal() {
+  return (
+    <View style={styles.container}>
+      <Text>Modal content</Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  },
+});
+```
 ## Additional information
 ### Presentation options
 There are different options to present a modal screen using the `presentation` option on Android and iOS.
@@ -15669,21 +16541,21 @@ There are different options to present a modal screen using the `presentation` o
 | `containedModal`            | On Android, fallbacks to `modal`. On iOS, uses [`UIModalPresentationCurrentContext`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/uimodalpresentationcurrentcontext) modal style.                    |
 | `containedTransparentModal` | On Android, fallbacks to `transparentModal`. On iOS, uses [`UIModalPresentationOverCurrentContext`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/uimodalpresentationovercurrentcontext) modal style. |
 | `fullScreenModal`           | On Android, fallbacks to `modal`. On iOS, uses [`UIModalPresentationFullScreen`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/uimodalpresentationfullscreen) modal style.                            |
-| `formSheet`                 | On Android, fallbacks to `modal`. On iOS, uses [`UIModalPresentationFormSheet`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/uimodalpresentationformsheet) modal style.                              |
+| `formSheet`                 | Presents a bottom sheet with configurable detents. See [FormSheet presentation](#form-sheet-presentation) for details.                                                                                                           |
 
 
 ## Web modals
 
 Learn how to implement and customize the behavior of a modal in your web app using Expo Router.
 
-> **important** Web modals are an experimental feature available in SDK 54 and later. To use this feature, you must set the `EXPO_UNSTABLE_WEB_MODAL=1` environment variable in your project.
+> **important** Web modals are in alpha and available in SDK 54 and later. To use this feature, you must set the `EXPO_UNSTABLE_WEB_MODAL=1` environment variable in your project.
 Modern web apps require a flexible modal experience that adapts to different content sizes and user interactions. Expo Router provides various modal presentation patterns for modern web experiences. These patterns leverage `presentation` with `modal`, `formSheet`, `transparentModal`, or `containedTransparentModal` to present either a modal based on different screen widths, and provide customizable styling props using `webModalStyle`.
 ## Get started
 > **info** To use the new web modal features, you must set the `EXPO_UNSTABLE_WEB_MODAL=1` environment variable for both development and [export](/deploy/web/#export-your-web-project) builds. You can do this by adding it to your **.env** file at the root of your project or by prefixing your commands, for example: `EXPO_UNSTABLE_WEB_MODAL=1 npx expo start`.
 Modals in Expo Router are configured using `Stack.Screen` component with specific options. This requires the modal screen to be added to the layout file of your app's `Stack`.
 Consider the following navigation tree, which includes a stack navigator defined in the layout file, a home screen where the modal is accessed, and the modal screen component:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ modal.tsx
@@ -16089,7 +16961,7 @@ Learn how to define shared routes or use arrays to use the same route multiple t
 To match the same URL with different layouts, use [**groups**](/router/basics/notation/#parentheses) with overlapping child routes. This pattern is very common in native apps. For example, in the X app, a profile can be viewed in every tab (such as home, search, and profile). However, there is only one URL that is required to access this route.
 In the example below, **app/\_layout.tsx** is the tab bar and each route has its own header. The **app/(profile)/[user].tsx** route is shared between each tab.
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ (home)/
     â   âââ _layout.tsx
@@ -16142,7 +17014,7 @@ Video Tutorial: [Watch: Using protected routes](https://www.youtube.com/watch?v=
 ## Overview
 Protected screens allow you to prevent users from accessing certain routes using client-side navigation. If a user tries to navigate to a protected screen, or if a screen becomes protected while it is active, they will be redirected to the anchor route (usually the index screen) or the first available screen in the stack.
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ about.tsx
@@ -16215,7 +17087,7 @@ In this case:
 ## Falling back to a specific screen
 You can configure the navigator to fall back to a specific screen if access is denied.
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ about.tsx
@@ -16281,7 +17153,7 @@ There are two ways to use platform-specific extensions:
 Metro bundler's platform-specific extensions (for example, **.android.tsx**, **.ios.tsx**, **.native.tsx**, or **.web.tsx**) are supported in the **app** directory only if a **non-platform version** also exists. This ensures that routes are universal across platforms for deep linking.
 Consider the following project structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ _layout.web.tsx
     âââ index.tsx
@@ -16296,11 +17168,11 @@ In the above file structure:
 You can create platform-specific files with extensions (for example, **.android.tsx**, **.ios.tsx**, **.native.tsx**, or **.web.tsx**) outside the **app** directory and use them from within the **app** directory.
 Consider the following project structure:
 ```
-app/
+âââ app/
 â   âââ _layout.tsx
 â   âââ index.tsx
 â   âââ about.tsx
-components/
+âââ components/
     âââ about.tsx
     âââ about.ios.tsx
     âââ about.web.tsx
@@ -16354,7 +17226,7 @@ Expo Router will always evaluate a URL with the assumption that the URL targets 
 In such scenarios, the URL needs to be rewritten to correctly target a route.
 To facilitate this, create a special file called **+native-intent.tsx** at the top level of your project's **app** directory. This file exports a special [`redirectSystemPath`](/versions/latest/sdk/router/#nativeintent) method designed to handle URL/path processing. When invoked, it receives an `options` object with two attributes: `path` and `initial`.
 ```
-app/
+âââ app/
     âââ +native-intent.tsx
 ```
 Here's an example the applies practices on how `redirectSystemPath` is used inside **+native-intent.tsx** file. Following this example, you can ensure the stability and reliability of your app's URL processing functionality and mitigate the risk of unexpected errors and crashes.
@@ -16437,7 +17309,7 @@ This approach is effective for directing users to external websites or Universal
 <Link href="https://my-website.com/router/introduction" />
 ```
 ## `legacy_subscribe`
-> `legacy_subscribe` is experimentally available in SDK 52.
+> **important** `legacy_subscribe` is in alpha and is available in SDK 52.
 If you're using a third-party provider that doesn't support Expo Router but does support React Navigation via the `Linking.subscribe` function for existing projects, you can use `legacy_subscribe` as an alternative API.
 Using this API is not recommended for new projects or integrations. Its usage is incompatible with Server Side Routing and [Static Rendering](/router/web/static-rendering/), and can be challenging to manage while offline or in a low network connectivity environment.
 
@@ -16450,7 +17322,7 @@ Learn how to configure layouts with static properties in Expo Router.
 #### initialRouteName
 When deep linking to a route, you may want to provide a user with a "back" button. The `initialRouteName` sets the default screen of the stack and should match a valid filename (without the extension).
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ other.tsx
@@ -16491,7 +17363,6 @@ Learn how to seamlessly continue app navigation across Apple devices with Expo R
 
 Apple Handoff is a feature that enables users to continue browsing your app or website on another device. Expo Router automates all of the runtime routing for this feature. However, the one-time configuration must be set up manually.
 In Expo Router, the underlying iOS API (`NSUserActivity`) requires a `webpageUrl` which the OS recommends as the current URL for switching to your app. The `expo-router/head` component has an optional native module that can automatically set the `webpageUrl` to the currently focused route in Expo Router.
-<PlatformsSection ios web />
 ## Setup
 The following restrictions and considerations are important:
 - Handoff is Apple-only.
@@ -16696,21 +17567,21 @@ Typically, the `TabList` defines both the available tab routes and the appearanc
 ### Dynamic routes
 Dynamic routes are allowed and can be provided with values via the `href`.
 ```
-_layout.tsx
-[slug].tsx
+âââ _layout.tsx
+âââ [slug].tsx
 ```
 The trigger `<TabTrigger name="dynamic page" href="/hello-world" />` will create a tab for **[slug].tsx** with the params `{ slug: 'hello-world' }`. This setup can be useful for displaying an arbitrary number of tabs in the tab bar, based on end-user data, such as showing a separate tab for each user profile in an app.
 ### Ambiguous routes
 ```
-_layout.tsx
-(one,two)/
+âââ _layout.tsx
+âââ (one,two)/
     âââ route.tsx  # A route within a shared group
 ```
 The `href` values provided to `TabTrigger` must always point to a single route. In the above example of a shared route, href `/route` is not allowed, as it could refer to either `/(one)/route` or `/(two)/route`. However, specifying the route group within the href would work (for example,`href="/(one)/route"`).
 ### Nested routes
 ```
-_layout.tsx
-(stack-one)/
+âââ _layout.tsx
+âââ (stack-one)/
     âââ _layout.tsx  # A <Stack> layout
     âââ (stack-two)/
         âââ _layout.tsx  # Nested <Stack> layout
@@ -16834,12 +17705,7 @@ export function TabButton({ icon, children, isFocused, ...props }: TabButtonProp
 Note: Expo SDK 52 / React 18 and earlier
 ---
 In Expo SDK 52 and earlier (React 18), use the legacy `forwardRef` function to access the `ref` handle.
-```diff
-- import { ComponentProps, Ref } from 'react';
-+ import { ComponentProps, Ref, forwardRef } from 'react';
-- export function TabButton({ ref }) {
-+ export const TabButton = forwardRef((props: TabButtonProps, ref: Ref<View>) => {
-```
+<DiffBlock source="/static/diffs/router/custom-tabs/forward-ref-tab-button.diff" />
 ---
 ### Hooks
 All components also have a hook version giving you control over the render tree. See the [Router UI Reference](/versions/latest/sdk/router-ui/) for a full list of the hooks available.
@@ -16851,8 +17717,8 @@ The `TabSlot` accepts a `renderFn` property. This function can be used to overri
 Note: How do I create multiple tabs for the same route?
 ---
 ```
-_layout.tsx  # Tabs layout
-(movie,tv)/
+âââ _layout.tsx  # Tabs layout
+âââ (movie,tv)/
     âââ [id].tsx
 ```
 You should add the route to a shared group and create a separate `TabTrigger` for each group `group`.
@@ -16868,12 +17734,592 @@ You can provide a custom renderer to `TabSlot` to customize how it renders a scr
 Note: Can I use relative hrefs?
 ---
 ```
-directory/
+âââ directory/
     âââ _layout.tsx  # The local pathname is /directory
     âââ page.tsx  # The pathname is /directory/page
     âââ profile.tsx  # The pathname is /directory/profile
 ```
 A `TabTrigger` with a relative href is relative to the local path name `Tabs` was rendered on. This is different from normal relative hrefs which are relative to the current displayed route. For example, the `<TabTrigger href="./profile" />` will resolve to `/directory/profile`, even when the `/directory/page` route is showing. Expo recommends against using relative hrefs.
+---
+
+
+## Stack Toolbar
+
+Learn how to use the iOS toolbar in Stack navigation with Expo Router.
+
+> **important** `Stack.Toolbar` is an alpha API available on **iOS only** in **Expo SDK 55** and later. The API is subject to breaking changes.
+[`Stack.Toolbar`](/versions/unversioned/sdk/router/#stacktoolbar) lets you add native iOS toolbar items to your Stack screens. You can place buttons, menus, and custom views in the header (left or right side) or in the bottom toolbar area.
+## Adding header buttons
+Use [`Stack.Toolbar.Button`](/versions/unversioned/sdk/router/#stacktoolbarbutton) within `Stack.Toolbar` with `placement="right"` or `placement="left"` to add buttons to the navigation header. This is useful for actions like favoriting, sharing, or editing content.
+```tsx app/notes/[id].tsx
+import { useState } from 'react';
+import { Stack } from 'expo-router';
+import { View, Text, Alert } from 'react-native';
+export default function NoteScreen() {
+  const [isFavorite, setIsFavorite] = useState(false);
+  return (
+    <>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button
+          icon={isFavorite ? 'star.fill' : 'star'}
+          onPress={() => setIsFavorite(!isFavorite)}
+        />
+        <Stack.Toolbar.Button icon="square.and.arrow.up" onPress={() => Alert.alert('Share')} />
+      </Stack.Toolbar>
+      <Stack.Toolbar placement="left">
+        <Stack.Toolbar.Button icon="sidebar.left" onPress={() => Alert.alert('Sidebar')} />
+      </Stack.Toolbar>
+      <View style={{ flex: 1, padding: 16 }}>
+        <Text>Note content...</Text>
+      </View>
+    </>
+  );
+}
+```
+## Icons
+Toolbar buttons support two types of icons: SF Symbols and custom images.
+### SF Symbols
+The easiest way to add icons is using [SF Symbols](https://developer.apple.com/sf-symbols/), Apple's built-in icon library. Pass the symbol name directly to the `icon` prop:
+```tsx
+<Stack.Toolbar.Button icon="star.fill" onPress={() => {}} />
+<Stack.Toolbar.Button icon="square.and.arrow.up" onPress={() => {}} />
+<Stack.Toolbar.Menu icon="ellipsis.circle">{/* ... */}</Stack.Toolbar.Menu>
+```
+You can browse available symbols in Apple's SF Symbols app.
+### Custom images
+You can also use custom images. In header toolbars (`placement="left"` or `placement="right"`), pass an image source directly to the `icon` prop:
+```tsx
+import { Stack } from 'expo-router';
+export default function Page() {
+  return (
+    <>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button icon={require('./assets/expo.png')} onPress={() => {}} />
+      </Stack.Toolbar>
+      {/* Screen content */}
+    </>
+  );
+}
+```
+In the bottom toolbar, use the `useImage` hook from `expo-image` and pass the result to the `image` prop:
+```tsx
+import { Stack } from 'expo-router';
+import { useImage } from 'expo-image';
+export default function Page() {
+  const customIcon = useImage('https://simpleicons.org/icons/expo.svg', {
+    maxWidth: 24,
+    maxHeight: 24,
+  });
+  return (
+    <>
+      <Stack.Toolbar>
+        <Stack.Toolbar.Button image={customIcon} onPress={() => {}} />
+      </Stack.Toolbar>
+      {/* Screen content */}
+    </>
+  );
+}
+```
+> **info** The `useImage` and `image` prop pattern for bottom toolbar custom images is a temporary API and may change in future releases.
+## Building action menus
+For screens with multiple actions, use [`Stack.Toolbar.Menu`](/versions/unversioned/sdk/router/#stacktoolbarmenu) to group them into a dropdown menu:
+```tsx app/mail/[id].tsx
+import { useState } from 'react';
+import { Stack } from 'expo-router';
+import { Alert } from 'react-native';
+export default function EmailScreen() {
+  const [isArchived, setIsArchived] = useState(false);
+  return (
+    <>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Menu icon="ellipsis.circle">
+          <Stack.Toolbar.MenuAction
+            icon="arrowshape.turn.up.left"
+            onPress={() => Alert.alert('Reply')}>
+            Reply
+          </Stack.Toolbar.MenuAction>
+          <Stack.Toolbar.MenuAction
+            icon="arrowshape.turn.up.right"
+            onPress={() => Alert.alert('Forward')}>
+            Forward
+          </Stack.Toolbar.MenuAction>
+          <Stack.Toolbar.MenuAction
+            icon={isArchived ? 'tray.full' : 'archivebox'}
+            isOn={isArchived}
+            onPress={() => setIsArchived(!isArchived)}>
+            {isArchived ? 'Unarchive' : 'Archive'}
+          </Stack.Toolbar.MenuAction>
+          <Stack.Toolbar.MenuAction icon="trash" destructive onPress={() => Alert.alert('Delete')}>
+            Delete
+          </Stack.Toolbar.MenuAction>
+        </Stack.Toolbar.Menu>
+      </Stack.Toolbar>
+      {/* Email content */}
+    </>
+  );
+}
+```
+The `isOn` prop on [`Stack.Toolbar.MenuAction`](/versions/unversioned/sdk/router/#stacktoolbarmenuaction) shows a checkmark next to the action, useful for toggle states. The `destructive` prop styles the action in red to indicate a dangerous operation.
+### Nested submenus
+For more complex menus, nest `Stack.Toolbar.Menu` inside another menu. Use the `inline` prop to display submenu items directly without collapsing:
+```tsx
+import { useState } from 'react';
+import { Stack } from 'expo-router';
+export default function EmailScreen() {
+  const [sortBy, setSortBy] = useState<'name' | 'date' | 'size'>('name');
+  const [showHiddenFiles, setShowHiddenFiles] = useState(false);
+  return (
+    <>
+      <Stack.Toolbar>
+        <Stack.Toolbar.Menu icon="ellipsis.circle">
+          {/* Inline submenu - options appear directly in the menu */}
+          <Stack.Toolbar.Menu inline title="Sort By">
+            <Stack.Toolbar.MenuAction isOn={sortBy === 'name'} onPress={() => setSortBy('name')}>
+              Name
+            </Stack.Toolbar.MenuAction>
+            <Stack.Toolbar.MenuAction isOn={sortBy === 'date'} onPress={() => setSortBy('date')}>
+              Date
+            </Stack.Toolbar.MenuAction>
+            <Stack.Toolbar.MenuAction isOn={sortBy === 'size'} onPress={() => setSortBy('size')}>
+              Size
+            </Stack.Toolbar.MenuAction>
+          </Stack.Toolbar.Menu>
+          {/* Nested submenu - opens as a separate menu */}
+          <Stack.Toolbar.Menu title="Preferences">
+            <Stack.Toolbar.MenuAction
+              isOn={showHiddenFiles}
+              onPress={() => setShowHiddenFiles(!showHiddenFiles)}>
+              Show Hidden Files
+            </Stack.Toolbar.MenuAction>
+          </Stack.Toolbar.Menu>
+        </Stack.Toolbar.Menu>
+      </Stack.Toolbar>
+      {/* Email content */}
+    </>
+  );
+}
+```
+## Using the bottom toolbar
+iOS apps commonly have a bottom toolbar for primary actions. To add one, use `Stack.Toolbar` without a placement prop (it defaults to `"bottom"`):
+```tsx app/photos/index.tsx
+import { Stack } from 'expo-router';
+import { Alert } from 'react-native';
+export default function PhotosScreen() {
+  return (
+    <>
+      <Stack.Toolbar>
+        <Stack.Toolbar.Button icon="photo.on.rectangle" onPress={() => Alert.alert('Select')}>
+          Select
+        </Stack.Toolbar.Button>
+        <Stack.Toolbar.Spacer />
+        <Stack.Toolbar.Button icon="plus" onPress={() => Alert.alert('Add')}>
+          Add
+        </Stack.Toolbar.Button>
+      </Stack.Toolbar>
+    </>
+  );
+}
+```
+[`Stack.Toolbar.Spacer`](/versions/unversioned/sdk/router/#stacktoolbarspacer) creates flexible space between items, pushing them to opposite sides. This is how you achieve layouts like having buttons on both ends of the toolbar.
+> **info** Bottom toolbars can only be used inside page components, not in layout files.
+## Adding badges to buttons
+In header toolbars, you can add badges to indicate counts or status. Use [`Stack.Toolbar.Icon`](/versions/unversioned/sdk/router/#stacktoolbaricon), [`Stack.Toolbar.Label`](/versions/unversioned/sdk/router/#stacktoolbarlabel), and [`Stack.Toolbar.Badge`](/versions/unversioned/sdk/router/#stacktoolbarbadge) to compose the button content:
+```tsx app/inbox.tsx
+import { Stack } from 'expo-router';
+export default function InboxScreen() {
+  const unreadCount = 5;
+  return (
+    <>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button onPress={() => {}}>
+          <Stack.Toolbar.Icon sf="bell" />
+          <Stack.Toolbar.Label>Notifications</Stack.Toolbar.Label>
+          {unreadCount > 0 && <Stack.Toolbar.Badge>{String(unreadCount)}</Stack.Toolbar.Badge>}
+        </Stack.Toolbar.Button>
+      </Stack.Toolbar>
+      {/* Screen content */}
+    </>
+  );
+}
+```
+> **info** Badges only work in header placements (`left` or `right`), not in the bottom toolbar.
+## Embedding custom views
+When you need something beyond buttons and menus, use [`Stack.Toolbar.View`](/versions/unversioned/sdk/router/#stacktoolbarview) to embed any React Native component:
+```tsx app/search.tsx
+import { Stack } from 'expo-router';
+import { Pressable, Alert } from 'react-native';
+import { SymbolView } from 'expo-symbols';
+export default function SearchScreen() {
+  return (
+    <>
+      <Stack.Toolbar>
+        <Stack.Toolbar.View>
+          <Pressable
+            style={{ width: 32, height: 32, justifyContent: 'center', alignItems: 'center' }}
+            onPress={() => {
+              Alert.alert('Filter pressed');
+            }}>
+            <SymbolView name="line.3.horizontal.decrease.circle" size={24} />
+          </Pressable>
+        </Stack.Toolbar.View>
+      </Stack.Toolbar>
+      {/* Screen content */}
+    </>
+  );
+}
+```
+## Showing and hiding items dynamically
+Use the `hidden` prop to toggle toolbar items based on state:
+```tsx app/document.tsx
+import { useState } from 'react';
+import { Stack } from 'expo-router';
+export default function DocumentScreen() {
+  const [isEditing, setIsEditing] = useState(false);
+  return (
+    <>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button hidden={isEditing} icon="pencil" onPress={() => setIsEditing(true)} />
+        <Stack.Toolbar.Button hidden={!isEditing} onPress={() => setIsEditing(false)}>
+          Done
+        </Stack.Toolbar.Button>
+      </Stack.Toolbar>
+      {/* Document content */}
+    </>
+  );
+}
+```
+## Known limitations
+Note: iOS only
+---
+`Stack.Toolbar` is only available on iOS. On Android and web, the component will not render.
+---
+Note: Bottom toolbar only in page components
+---
+The bottom toolbar can only be used inside page components, not in layout files. This is because the bottom toolbar needs to be associated with a specific screen's content.
+---
+Note: Cannot nest toolbars
+---
+You cannot nest `Stack.Toolbar` components inside each other.
+---
+Note: Badge only in header placements
+---
+`Stack.Toolbar.Badge` is only supported when using `placement="left"` or `placement="right"`. Badges are not displayed in the bottom toolbar.
+---
+## Learn more
+For complete API documentation, including all available props, see the [`Stack.Toolbar` API reference](/versions/unversioned/sdk/router/#stacktoolbar).
+
+
+## Zoom transition
+
+Learn how to use the zoom transition to create fluid animations between screens when using Expo Router for iOS.
+
+> **important** Zoom transition is an alpha API available on **iOS only** in **Expo SDK 55** and later. The API is subject to breaking changes.
+Zoom transitions provide a fluid animation effect when navigating between screens by zooming from a source element to the destination screen. This feature leverages iOS 18+ native zoom transition API to create shared, interactive transitions that produce a sense of spatial awareness between routes. For example, a card thumbnail may transition to become a full-width banner on the next route.
+## Get started
+To implement zoom transitions, you need to use the `Link.AppleZoom` component to mark the source element and optionally `Link.AppleZoom.Target` to specify the target alignment on the destination screen.
+### Basic example
+To activate zoom transition for a link, wrap the source (`Image`) element with `Link.AppleZoom` in your screen:
+```tsx app/index.tsx
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { Link } from 'expo-router';
+import { Image } from 'expo-image';
+export default function HomeScreen() {
+  return (
+    <View style={styles.container}>
+      <Link href="/image" asChild>
+        <Link.AppleZoom>
+          <Pressable>
+            <Image
+              source={{ uri: 'https://example.com/image-1.jpg' }}
+              style={{ width: 100, height: 200 }}
+            />
+          </Pressable>
+        </Link.AppleZoom>
+      </Link>
+    </View>
+  );
+}
+```
+In the destination screen, define the `Image` component:
+```tsx app/image.tsx
+import { View, Text, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
+export default function DetailsScreen() {
+  return <Image source={{ uri: 'https://example.com/image-1.jpg' }} style={{ flex: 1 }} />;
+}
+```
+## Using `Link.AppleZoom`
+The `Link.AppleZoom` component wraps the element you want to zoom from. It is useful for marking the source of the zoom transition, if you want to include additional elements alongside the zoomed content.
+```tsx
+<Link href="/image" asChild>
+  <Pressable>
+    <Link.AppleZoom>
+      <View>{/* Your content */}</View>
+    </Link.AppleZoom>
+    <Text>Subtitle</Text>
+  </Pressable>
+</Link>
+```
+> **info** `Link.AppleZoom` only accepts a single child component. If you need to wrap multiple children, use a `View` or another container component.
+### Customizing alignment
+You can specify the alignment of the zoomed element on the destination screen by using `Link.AppleZoom.Target` element.
+```tsx app/image.tsx
+export default function ImageScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Link.AppleZoom.Target>
+        <Image source={{ uri: 'https://example.com/image-1.jpg' }} style={{ width: '100%' }} />
+      </Link.AppleZoom.Target>
+    </View>
+  );
+}
+```
+If you need more control over the alignment rectangle, you can pass an `alignmentRect` prop to `Link.AppleZoom`. However, this is normally not necessary if you use `Link.AppleZoom.Target`.
+> **info** The `alignmentRect` prop internally relies on [`alignmentRectProvider`](https://developer.apple.com/documentation/uikit/uiviewcontroller/transition/zoomoptions/alignmentrectprovider) API.
+```tsx
+<Link.AppleZoom alignmentRect={{ x: 0, y: 0, width: 200, height: 300 }}>
+  <Image source={{ uri: 'https://example.com/image-1.jpg' }} style={{ width: 100, height: 150 }} />
+</Link.AppleZoom>
+```
+## Complete example
+Here's a more complex example showing a gallery grid with zoom transitions to detail views. The source screen component (**app/index.tsx**) uses `Link.AppleZoom` to wrap an `Image` component:
+```tsx app/index.tsx
+import { Image } from 'expo-image';
+import { Link } from 'expo-router';
+import { useState } from 'react';
+import { Text, Pressable, ScrollView, StyleSheet } from 'react-native';
+const IMAGES = [
+  // Define your array of images here.
+];
+export default function Index() {
+  return (
+    <ScrollView
+      style={styles.scrollView}
+      contentContainerStyle={styles.scrollViewContent}
+      contentInsetAdjustmentBehavior="automatic">
+      {IMAGES.map((_, index) => (
+        <Thumbnail key={index} index={index} />
+      ))}
+    </ScrollView>
+  );
+}
+function Thumbnail({ index }: { index: number }) {
+  const [size, setSize] = useState<{ width: number; height: number } | null>(null);
+  return (
+    <Link
+      href={{
+        pathname: `/image/[id]`,
+        // You need to pass the image size to the detail page, so that the layout can be measured during the first render.
+        params: { id: index, width: size?.width, height: size?.height },
+      }}
+      asChild>
+      <Pressable style={styles.thumbnail}>
+        <Link.AppleZoom>
+          <Image
+            source={IMAGES[index % IMAGES.length]}
+            style={styles.thumbnailImage}
+            onLoad={e => setSize({ width: e.source.width, height: e.source.height })}
+          />
+        </Link.AppleZoom>
+        <Text style={{ textAlign: 'center' }}>Photo {index + 1}</Text>
+      </Pressable>
+    </Link>
+  );
+}
+const styles = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+  },
+  scrollViewContent: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 16,
+  },
+  thumbnail: {
+    width: 170,
+    aspectRatio: 1,
+  },
+  thumbnailImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
+  },
+});
+```
+In the destination screen, the `Link.AppleZoomTarget` is used to specify the alignment of the zoomed element:
+```tsx app/image/[id].tsx
+import { Image } from 'expo-image';
+import { Link, useLocalSearchParams } from 'expo-router';
+import { useMemo } from 'react';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
+export default function ImagePage() {
+  const params = useLocalSearchParams();
+  const index = params.id ? parseInt(params.id as string, 10) : 0;
+  const imageSource = IMAGES[index % IMAGES.length];
+  const imageSize = {
+    width: parseInt(params.width as string, 10),
+    height: parseInt(params.height as string, 10),
+  };
+  const windowDimensions = useWindowDimensions();
+  // Compute the size to fit within the window while maintaining aspect ratio.
+  const computedSize = useMemo(() => {
+    if (!imageSize.width || !imageSize.height) {
+      return { width: windowDimensions.width, height: windowDimensions.height };
+    }
+    const widthRatio = windowDimensions.width / imageSize.width;
+    const heightRatio = windowDimensions.height / imageSize.height;
+    const minRatio = Math.min(widthRatio, heightRatio);
+    return {
+      width: imageSize.width * minRatio,
+      height: imageSize.height * minRatio,
+    };
+  }, [imageSize, windowDimensions]);
+  return (
+    <View style={styles.container}>
+      <Link.AppleZoomTarget>
+        <View style={{ ...computedSize }}>
+          <Image source={imageSource} style={styles.image} />
+        </View>
+      </Link.AppleZoomTarget>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+});
+```
+## Controlling dismissal gestures
+The [`usePreventZoomTransitionDismissal`](/versions/unversioned/sdk/router/#usepreventzoomtransitiondismissal_options) hook allows you to control the interactive swipe-to-dismiss gesture on screens using zoom transitions. This is useful when you want to prevent accidental dismissals or restrict dismissal to specific screen areas.
+### Disabling dismissal completely
+Call the hook without any options to completely disable the swipe-to-dismiss gesture:
+```tsx app/detail.tsx
+import { usePreventZoomTransitionDismissal } from 'expo-router';
+export default function DetailScreen() {
+  usePreventZoomTransitionDismissal();
+  // Dismissal gesture is now disabled - users must use navigation controls to go back
+  return <View>{/* Content */}</View>;
+}
+```
+### Restricting dismissal to a specific area
+Use the `unstable_dismissalBoundsRect` option to define a rectangle where dismissal gestures are allowed. This is useful for image viewers where you want dismissal only from the image area:
+```tsx app/image.tsx
+import { usePreventZoomTransitionDismissal } from 'expo-router';
+import { View, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
+export default function DetailScreen() {
+  // Only allow dismissal gestures that start within this rectangle
+  usePreventZoomTransitionDismissal({
+    unstable_dismissalBoundsRect: { minX: 100, minY: 100, maxX: 300, maxY: 300 },
+  });
+  return (
+    <View style={styles.container}>
+      {/* Visual indicator of the dismissal zone (for demonstration) */}
+      <View style={styles.dismissalZone} />
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+  },
+  dismissalZone: {
+    position: 'absolute',
+    left: 100,
+    top: 100,
+    width: 200, // maxX - minX = 300 - 100
+    height: 200, // maxY - minY = 300 - 100
+    borderWidth: 2,
+    borderColor: 'rgba(0, 122, 255, 0.5)',
+    borderStyle: 'dashed',
+    backgroundColor: 'rgba(0, 122, 255, 0.1)',
+  },
+});
+```
+> **info** The `unstable_dismissalBoundsRect` option internally relies on the [`interactiveDismissShouldBegin`](https://developer.apple.com/documentation/uikit/uiviewcontroller/transition/zoomoptions/interactivedismissshouldbegin) API.
+## Platform support
+Zoom transitions is only available on iOS 18 and later. On older iOS versions or other platforms, the component will render normally without the zoom animation effect.
+The zoom transition components automatically detect platform support and gracefully degrade to standard navigation on unsupported platforms.
+## Known limitations
+Note: Using zoom transition with headers
+---
+We recommend avoiding the use of zoom transitions when navigating between screens that have a header (navigation bar). There are known issues with the native iOS zoom transition API that can lead to visual glitches or unexpected behavior when headers are involved.
+---
+Note: Single child requirement
+---
+Both `Link.AppleZoom` and `Link.AppleZoom.Target` only accept a single child component. If you attempt to pass multiple children, a warning will be logged and the component will not render properly.
+**Incorrect:**
+```tsx
+<Link.AppleZoom>
+  <View />
+  <Text />
+</Link.AppleZoom>
+```
+**Correct:**
+```tsx
+<Link.AppleZoom>
+  <View>
+    <Image />
+    <Text />
+  </View>
+</Link.AppleZoom>
+```
+---
+Note: Supported only within router's Stack navigator
+---
+The zoom transition feature is only supported when using the router's built-in Stack navigator.
+If you attempt to use Link with zoom transition to a screen that is not part of a Stack navigator, the zoom transition will not work as expected.
+---
+Note: Must be used within a Link
+---
+`Link.AppleZoom` must be used as a direct or indirect child of a `Link` component with the `asChild` prop. Using it outside this context will result in an error.
+---
+Note: iOS 18+ only
+---
+The zoom transition feature requires iOS 18 or later. While the components will render on older versions, the zoom animation will not be applied.
+---
+Note: Using zoom transition with ScrollView
+---
+When using zoom transitions on screens with a `ScrollView`, the swipe-to-dismiss gesture may conflict with scrolling. To prevent accidental dismissal while scrolling, use the `usePreventZoomTransitionDismissal` hook with `unstable_dismissalBoundsRect`:
+```tsx app/image.tsx
+import { Link, usePreventZoomTransitionDismissal } from 'expo-router';
+import { useState } from 'react';
+import { ScrollView } from 'react-native';
+export default function Screen() {
+  const [shouldPrevent, setShouldPrevent] = useState(false);
+  usePreventZoomTransitionDismissal(
+    shouldPrevent
+      ? undefined
+      : {
+          unstable_dismissalBoundsRect: { minX: 0, minY: 0 },
+        }
+  );
+  return (
+    <ScrollView
+      style={{ flex: 1 }}
+      onScroll={event => {
+        setShouldPrevent(event.nativeEvent.contentOffset.y > 1);
+      }}>
+      {/* Content */}
+    </ScrollView>
+  );
+}
+```
+This approach disables the swipe-to-dismiss gesture when the scroll position is at the top, allowing users to scroll down without accidentally triggering the dismissal animation. Once scrolled, the gesture is re-enabled.
 ---
 
 
@@ -16895,7 +18341,7 @@ Video Tutorial: [Watch: Expo Router API Routes Handle Requests & Stream Data](ht
 API Routes are functions that are executed on a server when a route is matched. They can be used to handle sensitive data, such as API keys securely, or implement custom server logic, such as exchanging auth codes for access tokens. API Routes should be executed in a [WinterCG](https://wintercg.org/)-compliant environment.
 In Expo, API Routes are defined by creating files in the **app** directory with the `+api.ts` extension. For example, the following API route is executed when the route `/hello` is matched.
 ```
-app/
+âââ app/
     âââ index.tsx
     âââ hello+api.ts  # API Route
 ```
@@ -17142,7 +18588,7 @@ If you want to export API routes and skip generating a website version of your a
 $ npx expo export --platform web --no-ssg
 ```
 ### Native deployment
-> **important** This is an experimental feature starting in SDK 52 and later. The process will be more automated and have better support in future versions.
+> **important** This is an alpha feature starting in SDK 52 and later. The process will be more automated and have better support in future versions.
 Server features (API routes, and React Server Components) in Expo Router are centered around native implementations of `window.location` and `fetch` which point to the remote server. In development, we automatically point to the dev server running with `npx expo start`, but for production native builds to work you'll need to deploy the server to a secure host and set the `origin` property of the Expo Router Config Plugin.
 When configured, features like relative fetch requests `fetch('/my-endpoint')` will automatically point to the server origin.
 This deployment process can experimentally be automated to ensure correct versioning during native builds with the `EXPO_UNSTABLE_DEPLOY_SERVER=1` environment variable.
@@ -17440,11 +18886,276 @@ API Routes currently work by bundling all code (minus the Node.js built-ins) int
 The current bundling implementation opts to be more unified than flexible. This means the limitation of native not supporting ESM is carried over to API Routes. All code will be transpiled down to Common JS (`require`/`module.exports`). However, we recommend you write API Routes using ESM regardless. This will be addressed in a future version.
 
 
+## Data loaders
+
+Learn how to fetch data on the server using data loaders in Expo Router.
+
+> **important** Data loaders are in alpha and are available in SDK 55 and later. They require either [static rendering](/router/web/static-rendering) or [server rendering](/router/web/server-rendering).
+Data loaders enable server-side data fetching for your routes. By exporting a `loader` function from a route file, you can fetch data on the server and access it in your component using the [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) hook. This lets you keep sensitive data and API keys on the server while providing your components with the data they need.
+## Setup
+Step 1: 
+Enable data loaders in your project's [app config](/versions/latest/config/app/) by adding the `unstable_useServerDataLoaders` option to the `expo-router` plugin:
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "unstable_useServerDataLoaders": true,
+          "unstable_useServerRendering": true
+        }
+      ]
+    ]
+  }
+}
+```
+Step 2: 
+Configure your web output mode. Data loaders work with both [static rendering](/router/web/static-rendering) (`web.output: 'static'`) and [server rendering](/router/web/server-rendering) (`web.output: 'server'`):
+```json app.json
+{
+  "expo": {
+    "web": {
+      "output": "server"
+    }
+  }
+}
+```
+Step 3: 
+Start the development server:
+```sh
+$ npx expo start
+```
+## Basic example
+Export a `loader` function from your route file and use the [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) hook to access the data in your component:
+```tsx app/index.tsx
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+export async function loader() {
+  // Fetch data from an API, database, or any server-side source
+  const response = await fetch('https://api.example.com/data');
+  return response.json();
+}
+export default function Home() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <View>
+      <Text>Data: {JSON.stringify(data)}</Text>
+    </View>
+  );
+}
+```
+The `loader` function executes on the server, and its return value is serialized and passed to your component. This means you can safely use server-side secrets, database connections, and other resources that should not be exposed to the client. When using TypeScript, passing `typeof loader` as the generic parameter to [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) allows the hook to infer the return type from your loader function.
+> **info** The [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) hook does not need to be called in the route component itself. It can be called in any child component within the route's component tree.
+### Using Suspense
+When a component calls the [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) hook while data is still loading, React suspends that component. The loading state cascades up the component tree until it reaches the nearest [`<Suspense>`](https://react.dev/reference/react/Suspense) boundary, which then renders its fallback.
+This lets you control exactly where loading fallbacks appear by placing [`<Suspense>`](https://react.dev/reference/react/Suspense) boundaries in your component tree:
+```tsx app/index.tsx
+import { Suspense } from 'react';
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+export async function loader() {
+  const response = await fetch('https://api.example.com/data');
+  return response.json();
+}
+export default function Home() {
+  return (
+    <View>
+      <Text>Welcome</Text>
+      <Suspense fallback={<Text>Loading...</Text>}>
+        <DataSection />
+      </Suspense>
+    </View>
+  );
+}
+function DataSection() {
+  const data = useLoaderData<typeof loader>();
+  return <Text>{data.title}</Text>;
+}
+```
+In the above example, [`useLoaderData`](/versions/unversioned/sdk/router/#useloaderdata) is in a child component of `<Home>` and wrapped it with [`<Suspense>`](https://react.dev/reference/react/Suspense) to show a loading state.
+### Error handling
+When a loader throws an error, it propagates to the nearest [error boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary). You can export an [`ErrorBoundary`](/versions/latest/sdk/router/#errorboundary) component from the same route file to handle loader errors:
+```tsx app/data.tsx
+import { Text, View } from 'react-native';
+import { useLoaderData, type ErrorBoundaryProps } from 'expo-router';
+export async function loader() {
+  const response = await fetch('https://api.example.com/data');
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return response.json();
+}
+export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
+  return (
+    <View>
+      <Text>Error: {error.message}</Text>
+      <Text onPress={retry}>Try again</Text>
+    </View>
+  );
+}
+export default function DataPage() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <View>
+      <Text>{data.title}</Text>
+    </View>
+  );
+}
+```
+When no `ErrorBoundary` is exported, the error propagates to the nearest parent route's error boundary. You can also use custom error boundary components within your route to catch errors at specific points in the component tree.
+## Dynamic routes
+Loaders receive route parameters as the second argument:
+```tsx app/posts/[postId].tsx
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+export async function loader(request, params) {
+  const response = await fetch(`https://api.example.com/posts/${params.postId}`);
+  return response.json();
+}
+export default function Post() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <View>
+      <Text>{data.title}</Text>
+      <Text>{data.content}</Text>
+    </View>
+  );
+}
+```
+## Accessing the request
+> **warning** The `request` parameter is `undefined` when using static rendering because there is no HTTP request at build-time.
+When using [server rendering](/router/web/server-rendering), loaders receive the incoming HTTP request as the first argument. This allows you to access headers, cookies, and other request information:
+```tsx app/profile.tsx
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+export async function loader(request) {
+  // Access authorization header
+  const authToken = request?.headers.get('Authorization');
+  if (!authToken) {
+    return { user: null };
+  }
+  // Fetch user data using the token
+  const response = await fetch('https://api.example.com/user', {
+    headers: { Authorization: authToken },
+  });
+  return { user: await response.json() };
+}
+export default function Profile() {
+  const { user } = useLoaderData<typeof loader>();
+  if (!user) {
+    return <Text>Please log in</Text>;
+  }
+  return (
+    <View>
+      <Text>Welcome, {user.name}</Text>
+    </View>
+  );
+}
+```
+## Returning data
+Loaders can return data as plain JSON, which is easily deserialized using [`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse). This includes objects, arrays or any other primitive that can be serialized with [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+```tsx app/index.tsx
+export async function loader() {
+  const response = await fetch('https://api.example.com/data');
+  return response.json();
+}
+```
+If your loader returns `undefined` or `null`, the value is normalized to `null`.
+## Runtime API
+Data loaders have full access to the [Runtime API](/router/web/api-routes/#runtime-api) from [`expo-server`](/versions/latest/sdk/server/). This includes utilities for setting response headers, throwing HTTP errors, and running background tasks:
+```tsx app/example.tsx
+import { setResponseHeaders, StatusError } from 'expo-server';
+export async function loader(request) {
+  const authToken = request?.headers.get('Authorization');
+  if (!authToken) {
+    throw new StatusError(401, 'Unauthorized');
+  }
+  setResponseHeaders({ 'Cache-Control': 'private, max-age=60' });
+  return { user: 'authenticated' };
+}
+```
+See the [Runtime API documentation](/router/web/api-routes/#runtime-api) for a full list of available functions.
+## Environment variables
+Loaders run on the server and have access to `process.env`. Environment variables used in loaders are never exposed to the client bundle. This is useful for accessing API keys and other secrets:
+```tsx app/api-data.tsx
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+export async function loader() {
+  const apiKey = process.env.API_SECRET_KEY;
+  const response = await fetch('https://api.example.com/data', {
+    headers: { 'X-API-Key': apiKey },
+  });
+  return response.json();
+}
+export default function ApiData() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <View>
+      <Text>{JSON.stringify(data)}</Text>
+    </View>
+  );
+}
+```
+## Difference between static and server rendering
+Data loaders behave differently depending on your [`web.output`](/versions/latest/config/app/#output) configuration:
+| Aspect              | Static Rendering                      | Server Rendering                                                    |
+| ------------------- | ------------------------------------- | ------------------------------------------------------------------- |
+| Loader execution    | Build time                            | Request time                                                        |
+| `request` parameter | `undefined`                           | [`ImmutableRequest`](/versions/latest/sdk/server/#immutablerequest) |
+| Best for            | Blogs, marketing pages, documentation | Personalized content, authentication-dependent pages                |
+### Static rendering
+With static rendering, loaders execute during when exporting your app with `npx expo export`. The data is embedded in the generated HTML and JSON files. This means:
+- Data is determined at build-time and does not change until the next build
+- The `request` parameter is `undefined` because there is no HTTP request during the build
+- Ideal for content that does not change frequently
+### Server rendering
+With server rendering, loaders execute on every request. This means:
+- The `request` parameter contains an immutable version of the incoming HTTP request
+- Requires [`expo-server`](/versions/latest/sdk/server/) for production deployment
+## Typed loader functions
+For improved type safety, you can import the `LoaderFunction` type from `expo-router`:
+```tsx app/posts/[postId].tsx
+import { Text, View } from 'react-native';
+import { useLoaderData } from 'expo-router';
+import { type LoaderFunction } from 'expo-router/server';
+type PostData = {
+  title: string;
+  content: string;
+};
+export const loader: LoaderFunction<PostData> = async (request, params) => {
+  const response = await fetch(`https://api.example.com/posts/${params.postId}`);
+  return response.json();
+};
+export default function Post() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <View>
+      <Text>{data.title}</Text>
+      <Text>{data.content}</Text>
+    </View>
+  );
+}
+```
+## Known limitations
+- Loaders **must** return JSON-serializable data. Streaming responses are currently not supported. This will be addressed in a future release.
+- Loader data is cached on the client during navigation. There is currently no built-in way to invalidate this cache. This will be addressed in a future release.
+## Common questions
+Note: Can I use data loaders without server rendering?
+---
+Yes. Data loaders work with both static rendering (`web.output: 'static'`) and server rendering (`web.output: 'server'`).
+---
+Note: Are loaders included in the client bundle?
+---
+No, `loader` exports are dropped from the client bundle. However, if another module contains server-side logic and is imported by client-side code outside of the **app** directory, it may be included in your client-side bundle.
+---
+
+
 ## Server middleware
 
 Learn how to create middleware that runs for every request to the server in Expo Router.
 
-> **important** Server middleware is an experimental feature available in SDK 54 and later, and requires a [deployed server](/router/web/api-routes/#deployment) for production use.
+> **important** Server middleware is in alpha and is available in SDK 54 and later. It requires a [deployed server](/router/web/api-routes/#deployment) for production use.
 Server middleware in Expo Router allows you to run code before requests reach your routes, enabling powerful server-side functionality like authentication and logging for every request. Unlike [API routes](/router/web/api-routes) that handle specific endpoints, middleware runs for **every** request in your app, so it should run as quickly as possible to avoid slowing down your app's performance. Client-side navigation such as on native, or in a web app when using [`<Link />`](/versions/latest/sdk/router/#link), will not move through the server middleware.
 ## Setup
 Step 1: 
@@ -17673,44 +19384,183 @@ But you won't be able to:
 - Access the `body` property directly
 
 
-## Static Rendering
+## Server headers
+
+Learn how to set custom HTTP headers for all server route responses in Expo Router.
+
+> **important** Server headers are available in SDK 54 and later, and requires [`expo-server`](/versions/latest/sdk/server/) to serve your exported application.
+Server headers in Expo Router allow you to set custom HTTP headers for security, caching, cookies, and custom metadata on route responses. Headers **only** apply to HTML and API route responses, and are not applicable to static assets such as images, fonts, or JavaScript bundles.
+## Setup
+Step 1: 
+Configure headers in the `expo-router` plugin in your [app config](/versions/latest/config/app/):
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "X-Frame-Options": "DENY"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+Step 2: 
+Start the development server or export for production:
+```sh
+$ npx expo start
+$ npx expo export -p web
+```
+Headers are automatically applied to all HTML and API route responses.
+## Configuration
+Headers are configured as an object where keys are header names and values are either strings or arrays of strings.
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "X-Frame-Options": "DENY",
+            "X-Content-Type-Options": "nosniff",
+            "Set-Cookie": ["session=abc123; HttpOnly", "preference=dark; Path=/"]
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+## Examples
+Note: Security headers
+---
+Add common security headers to protect your application:
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "X-Frame-Options": "DENY",
+            "X-Content-Type-Options": "nosniff",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "X-XSS-Protection": "1; mode=block"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+---
+Note: Cross-Origin headers for SharedArrayBuffer
+---
+Some web APIs like [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer) require specific Cross-Origin headers. This is required for features like [`expo-sqlite` on web](/versions/latest/sdk/sqlite/#web-setup).
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "Cross-Origin-Embedder-Policy": "credentialless",
+            "Cross-Origin-Opener-Policy": "same-origin"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+---
+Note: Cache-Control headers
+---
+Set caching policies for your responses:
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "Cache-Control": "public, max-age=3600, s-maxage=86400"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+---
+Note: Custom headers
+---
+Add custom headers with metadata about your app:
+```json app.json
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "headers": {
+            "X-App-Version": "1.0.0",
+            "X-Environment": "production"
+          }
+        }
+      ]
+    ]
+  }
+}
+```
+---
+## How it works
+### Output modes
+Server headers work with both output modes configured in your app config:
+- **`static`**: Headers are applied when serving pre-rendered HTML files with [`expo-server`](/versions/latest/sdk/server/)
+- **`server`**: Headers are applied to dynamically rendered responses
+### Header precedence
+Headers defined in the `expo-router` plugin are applied globally but do not override headers set by API routes. If an API route returns a response with a header that is also defined in the plugin configuration, the route-specific header takes precedence.
+For example, if you configure `Cache-Control: public, max-age=3600` globally, but an API route that returns real-time data sets `Cache-Control: no-store`, the API route's header takes precedence.
+## Known limitations
+- **Redirects**: Headers do not apply to redirect responses
+- **Static assets**: Headers are only applied to HTML and API route responses, not to static assets like images, fonts, or JavaScript bundles
+## Related
+
+
+## Static rendering
 
 Learn how to render routes to static HTML and CSS files with Expo Router.
 
 To enable Search Engine Optimization (SEO) on the web you must statically render your app. This guide will walk you through the process of statically rendering your Expo Router app.
+> **info** With static rendering, [data loaders](/router/web/data-loaders) are executed during the build process and their results are embedded in the output HTML files.
 ## Setup
 Step 1: 
-Enable metro bundler and static rendering in the project's [app config](/versions/latest/config/app/):
+Enable static rendering in your project's [app config](/versions/latest/config/app/):
 ```json app.json
 {
   "expo": {
     "web": {
-      "bundler": "metro",
       "output": "static"
     }
   }
 }
 ```
 Step 2: 
-If you have a **metro.config.js** file in your project, ensure it extends **expo/metro-config** as shown below:
-```js metro.config.js
-const { getDefaultConfig } = require('expo/metro-config');
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname, {
-  // Additional features...
-});
-module.exports = config;
-```
-You can also learn more about [customizing Metro](/guides/customizing-metro/) .
-Step 3: 
-Ensure Fast Refresh is configured. Expo Router requires at least `react-refresh@0.14.0`. Ensure you **do not** have any overrides or resolutions for `react-refresh` in your **package.json**.
-Step 4: 
 Start the development server:
 ```sh
 $ npx expo start
 ```
 ## Production
-To bundle your static website for production, run the universal export command:
+To bundle your static website for production, run the export command:
 ```sh
 $ npx expo export --platform web
 ```
@@ -17719,7 +19569,7 @@ You can test the production build locally by running the following command and o
 ```sh
 $ npx serve dist
 ```
-This project can be deployed to almost every hosting service. Note that this is not a single-page application, nor does it contain a custom server API. This means dynamic routes (**app/[id].tsx**) will not arbitrarily work. You may need to build a serverless function to handle dynamic routes.
+This project can be deployed to almost every hosting service. Note that this is not a single-page application, nor does it contain a custom server API. This means dynamic routes (for example, **app/[id].tsx**) will not arbitrarily work. You may need to build a serverless function to handle dynamic routes.
 ## Dynamic Routes
 The `static` output will generate HTML files for each route. This means dynamic routes (**app/[id].tsx**) will not work out of the box. You can generate known routes ahead of time using the `generateStaticParams` function.
 ```tsx app/blog/[id].tsx
@@ -17738,13 +19588,13 @@ export default function Page() {
 ```
 This will output a file for each post in the **dist** directory. For example, if the `generateStaticParams` method returned `[{ id: "alpha" }, { id: "beta" }]`, the following files would be generated:
 ```
-dist/
+âââ dist/
     âââ blog/
         âââ alpha.html
         âââ beta.html
 ```
 #### generateStaticParams
-A server-only function evaluated at build-time in a Node.js environment by Expo CLI. This means it has access to `__dirname`, `process.cwd()`, `process.env`, and more. It also has access to every environment variable that's available in the process. However, the values prefixed with `EXPO_PUBLIC_.generateStaticParams` do not run in a browser environment, so it cannot access browser APIs such as `localStorage` or `document`. It also cannot access native Expo APIs such as `expo-camera` or `expo-location`.
+A server-only function evaluated at build-time in a Node.js environment by Expo CLI. This means it has access to `__dirname`, `process.cwd()`, `process.env`, and more. It also has access to every environment variable that's available in the process. However, the values prefixed with `EXPO_PUBLIC_` do not run in a browser environment, so it cannot access browser APIs such as `localStorage` or `document`. It also cannot access native Expo APIs such as `expo-camera` or `expo-location`.
 ```tsx app/[id].tsx
 export async function generateStaticParams(): Promise<Record<string, string>[]> {
   console.log(process.cwd());
@@ -17773,17 +19623,17 @@ export async function generateStaticParams(params: {
 Since Expo Router compiles your code into a separate directory you cannot use `__dirname` to form a path as its value will be different than expected.
 Instead, use `process.cwd()`, which gives you the directory where the project is being compiled.
 ```tsx app/[category].tsx
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 export async function generateStaticParams(params: {
   id: string;
 }): Promise<Record<string, string>[]> {
-  const directory = await fs.readdir(path.join(process.cwd(), './posts/', category));
+  const directory = await fs.readdir(path.join(process.cwd(), './posts/'));
   const posts = directory.filter(fileOrSubDirectory => return path.extname(fileOrSubDirectory) === '.md')
-  return {
+  return [{
     id,
     posts,
-  };
+  }];
 }
 ```
 ## Root HTML
@@ -17845,7 +19695,7 @@ The head elements can be updated dynamically using the same API. However, it's u
 ## Static files
 Expo CLI supports a root **public** directory that gets copied to the **dist** directory during static rendering. This is useful for adding static files like images, fonts, and other assets.
 ```
-public/
+âââ public/
     âââ favicon.ico
     âââ logo.png
     âââ .well-known/
@@ -17853,7 +19703,7 @@ public/
 ```
 These files will be copied to the **dist** directory during static rendering:
 ```
-dist/
+âââ dist/
     âââ index.html
     âââ favicon.ico
     âââ logo.png
@@ -17907,7 +19757,7 @@ This generates the following static HTML:
 There is no prescriptive way to add a custom server. You can use any server you want. However, you will need to handle dynamic routes yourself. You can use the `generateStaticParams` function to generate static HTML files for known routes.
 In the future, there will be a server API, and a new `web.output` mode which will generate a project that will (among other things) support dynamic routes.
 ## Server-side Rendering
-Rendering at request-time (SSR) is not supported in `web.output: 'static'`. This will likely be added in a future version of Expo Router.
+Rendering at request-time is not supported with `web.output: 'static'`. To render pages dynamically on each request, use [server rendering](/router/web/server-rendering) with `web.output: 'server'` instead.
 ### Where can I deploy statically rendered websites?
 You can deploy your statically rendered website to any static hosting service. Here are some popular options:
 - [EAS Hosting](/eas/hosting/introduction/)
@@ -17921,11 +19771,183 @@ You can deploy your statically rendered website to any static hosting service. H
 > **Note:** You don't need to add Single-Page Application styled redirects to your static hosting service. The static website is not a single-page application. It is a collection of static HTML files.
 
 
+## Server rendering
+
+Learn how to render Expo Router routes dynamically at request time using server-side rendering (SSR).
+
+> **important** Server rendering is in alpha and is available in SDK 55 and later. It requires a [deployed server](/router/web/api-routes/#deployment) for production use.
+Server-side rendering (SSR) generates HTML dynamically on each request, as opposed to [static rendering](/router/web/static-rendering), which pre-renders HTML at build time. This guide walks you through enabling server rendering for your Expo Router app.
+> **info** With server-side rendering, [data loaders](/router/web/data-loaders) are executed on the server for each request and the result is embedded in the HTML response.
+## Setup
+Step 1: 
+Enable server rendering in your project's [app config](/versions/latest/config/app/):
+```json app.json
+{
+  "expo": {
+    "web": {
+      "output": "server"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "unstable_useServerRendering": true
+        }
+      ]
+    ]
+  }
+}
+```
+Step 2: 
+Start the development server:
+```sh
+$ npx expo start
+```
+## Production
+To export your app for production, run the export command:
+```sh
+$ npx expo export --platform web
+```
+This creates a **dist** directory with your server-rendered application. Unlike static rendering, no HTML files are pre-generated. Instead, the output includes a similar directory structure as shown below:
+```
+âââ dist/
+    âââ client/
+    â   âââ _expo/
+    â       âââ static/
+    â           âââ js/
+    â           â   âââ web/
+    â           â       âââ entry-[hash].js
+    â           âââ css/
+    â               âââ [name]-[hash].css
+    âââ server/
+        âââ _expo/
+            âââ routes.json
+            âââ server/
+                âââ render.js
+```
+In output above includes the following directories inside **dist** directory:
+- **client** directory: Contains JavaScript and CSS bundles for client-side hydration
+- **server** directory: Contains the routes manifest and server rendering module
+You can test the production build locally by running the following command and opening the linked URL in your browser:
+```sh
+$ npx expo serve
+```
+The above command starts a local server that renders pages on each request, simulating a production environment.
+## Dynamic routes
+With server rendering, dynamic routes are rendered on the fly, and the [`generateStaticParams`](/router/web/static-rendering/#generatestaticparams) export is not needed and should be removed. If your route file exports `generateStaticParams`, those routes will be handled dynamically instead. The route is rendered at request time with the actual parameters from the URL.
+```tsx app/blog/[id].tsx
+import { Text } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
+export default function Page() {
+  const { id } = useLocalSearchParams();
+  return <Text>Post {id}</Text>;
+}
+```
+In the above example, when the app user visits `/blog/my-post`, the page is rendered on the server with `id` set to `"my-post"`.
+## Root HTML
+You can customize the root HTML document by creating an **app/+html.tsx** file. This component wraps all routes and runs only on the server.
+```tsx app/+html.tsx
+import { ScrollViewStyleReset } from 'expo-router/html';
+import { type PropsWithChildren } from 'react';
+// This file is web-only and used to configure the root HTML for every
+// web page during server rendering.
+// The contents of this function only run in Node.js environments and
+// do not have access to the DOM or browser APIs.
+export default function Root({ children }: PropsWithChildren) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        {/*
+          Disable body scrolling on web. This makes ScrollView components work closer to how they do on native platforms.
+          However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.
+        */}
+        <ScrollViewStyleReset />
+        {/* Add any additional <head> elements that you want globally available on web... */}
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+The **+html.tsx** file is only used by the server renderer and never by client code. This means:
+- It will be run by `expo-server` during server rendering
+- It is not rehydrated on the client, and hence shouldn't use React hooks
+- You may not import global CSS in `+html.tsx` (use the [Root Layout](/router/basics/layout/#root-layout) for styles)
+- You may not call browser APIs like `window` or `document` in your `+html.tsx`
+All `+html.tsx` components are expected to render the `children` prop they receive in their JSX content.
+## Meta tags
+Add meta tags to your pages using the `<Head />` component from `expo-router`:
+```tsx app/about.tsx
+import Head from 'expo-router/head';
+import { Text } from 'react-native';
+export default function Page() {
+  return (
+    <>
+      <Head>
+        <title>About Us</title>
+        <meta name="description" content="Learn more about our company." />
+      </Head>
+      <Text>About page content</Text>
+    </>
+  );
+}
+```
+During server-side rendering, `<Head>` elements are extracted and included in the initial HTML response, modifying the `<head>` element sent to the client, and improving search engine optimization (SEO).
+## Deployment
+Server-side rendering requires a runtime server to render pages on each request. Server-side rendered Expo apps **cannot** be deployed to static hosting services like GitHub Pages.
+### Supported platforms
+| Platform                                  | Adapter                       |
+| ----------------------------------------- | ----------------------------- |
+| [EAS Hosting](/eas/hosting/introduction/) | Built-in                      |
+| Node.js/Express                           | `expo-server/adapter/express` |
+| Cloudflare Workers                        | `expo-server/adapter/workerd` |
+| Vercel Edge Functions                     | `expo-server/adapter/vercel`  |
+| Netlify Edge Functions                    | `expo-server/adapter/netlify` |
+| Bun                                       | `expo-server/adapter/bun`     |
+Note: Example: Deployment with EAS Hosting
+---
+EAS Hosting supports server rendering out of the box. Export your app and deploy with:
+```sh
+$ npx expo export --platform web
+$ npx eas-cli@latest hosting:deploy dist
+```
+---
+## Comparison with static rendering
+| Feature            |     | Static Rendering                                                                      | Server Rendering              |
+| ------------------ | :-- | ------------------------------------------------------------------------------------- | ----------------------------- |
+| HTML generation    |     | Build time                                                                            | Request time                  |
+| Configuration      |     | `web.output: 'static'`                                                                | `web.output: 'server'`        |
+| Dynamic routes     |     | Requires [`generateStaticParams`](/router/web/static-rendering/#generatestaticparams) | Works automatically           |
+| Server required    |     | No                                                                                    | Yes                           |
+| Time to First Byte |     | Fastest (cached)                                                                      | Slower (rendered per request) |
+| Hosting            |     | Any static host                                                                       | Server runtime required       |
+## Common questions
+Note: Can I use data loaders with server rendering?
+---
+Yes. Server rendering works with [data loaders](/router/web/data-loaders) to fetch data on the server before rendering.
+---
+Note: Can I mix server and static rendering?
+---
+Currently, Expo Router does not support mixing server and static rendering in the same project. Choose a single output mode based on your requirements.
+---
+Note: How do I cache server-rendered responses?
+---
+Caching is handled at the server or CDN level. Configure your deployment platform to cache responses based on URL patterns or cache headers.
+---
+Note: Does server rendering work with API routes?
+---
+Yes. [API routes](/router/web/api-routes/) work independently of the rendering mode. They are always executed on the server.
+---
+
+
 ## Async routes
 
 Learn how to speed up development with async bundling in Expo Router.
 
-> **important** Async routes is an experimental feature.
+> **important** Async routes is in alpha.
 <ContentSpotlight file="expo-router/async-routes.mp4" loop={false} />
 Expo Router can automatically split your JavaScript bundle based on the route files using [React Suspense](https://react.dev/reference/react/Suspense). This enables faster development as only the routes you navigate to will be bundled or loaded into memory. This can also be useful for reducing the initial bundle size for your application.
 Apps using the Hermes Engine will not benefit as much from bundle splitting as the bytecode is already memory mapped ahead of time. However, it will improve your over-the-air updates, React Server Components, and web support.
@@ -18060,7 +20082,7 @@ The hooks `useGlobalSearchParams` and `useLocalSearchParams` allow you to access
 Both hooks are typed and accessed the same way. However, the only difference is how frequently they update.
 The example below demonstrates the difference between `useLocalSearchParams` and `useGlobalSearchParams`. It uses the following **app** directory structure:
 ```
-app/
+âââ app/
     âââ _layout.tsx
     âââ index.tsx
     âââ [user].tsx
@@ -18219,6 +20241,11 @@ export default function User() {
 ```
 ## Route parameters versus search parameters
 Route parameters are used to match a route, while search parameters are used to pass data between routes. Consider the following structure, where a route parameter is used to match the _user_ route:
+```
+âââ app/
+    âââ index.tsx
+    âââ [user].tsx  # "user" is a "route parameter"
+```
 When the `app/[user]` route is matched, the `user` parameter is passed to the component and never a nullish value. Both search and route parameters can be used together and are accessible with the `useLocalSearchParams` and `useGlobalSearchParams` hooks:
 ```tsx app/[user].tsx
 import { useLocalSearchParams } from 'expo-router';
@@ -18287,6 +20314,126 @@ Certain URL parameters are reserved for internal use by Expo Router and React Na
 - `params`
 - `initial`
 - `state`
+
+
+## Color
+
+Access platform-specific colors with type safety in Expo Router.
+
+The `Color` API provides type-safe access to platform-specific colors on iOS and Android. It wraps React Native's `PlatformColor` with full TypeScript support, enabling autocomplete and compile-time type checking for system colors.
+## Usage
+```tsx
+import { Color } from 'expo-router';
+```
+The `Color` object has two platform-specific namespaces:
+- `Color.ios.*` - iOS system colors from UIKit
+- `Color.android.*` - Android colors including base colors, attributes, and Material Design 3 colors
+## iOS colors
+Access iOS system colors through `Color.ios.*`. These map directly to UIKit's [standard colors](https://developer.apple.com/documentation/uikit/standard-colors) and [UI element colors](https://developer.apple.com/documentation/uikit/ui-element-colors).
+```tsx
+import { Color } from 'expo-router';
+import { View, Text } from 'react-native';
+function MyComponent() {
+  return (
+    <View style={{ backgroundColor: Color.ios.systemBackground }}>
+      <Text style={{ color: Color.ios.label }}>Hello, World!</Text>
+    </View>
+  );
+}
+```
+iOS colors automatically adapt to the system appearance (light/dark mode) and accessibility settings.
+## Android colors
+Android provides four categories of colors through the `Color.android` namespace.
+### Base colors
+Access Android system colors through `Color.android.*`. These map to `@android:color/` resources.
+```tsx
+import { Color } from 'expo-router';
+// Basic colors
+Color.android.black;
+Color.android.white;
+Color.android.transparent;
+// Background colors
+Color.android.background_dark;
+Color.android.background_light;
+```
+See the [Android R.color documentation](https://developer.android.com/reference/android/R.color) for the full list of available colors.
+### Attribute colors
+Access Android theme attributes through `Color.android.attr.*`. These resolve colors from the current theme using `?attr/` syntax.
+```tsx
+import { Color } from 'expo-router';
+// Theme colors
+Color.android.attr.colorPrimary;
+Color.android.attr.colorSecondary;
+Color.android.attr.colorAccent;
+Color.android.attr.colorBackground;
+```
+See the [Android R.attr documentation](https://developer.android.com/reference/android/R.attr) for more information.
+### Material Design 3 static colors
+Access Material Design 3 static colors through `Color.android.material.*`. These use the standard Material 3 Light/Dark theme colors.
+```tsx
+import { Color } from 'expo-router';
+// Primary colors
+Color.android.material.primary;
+Color.android.material.onPrimary;
+Color.android.material.primaryContainer;
+Color.android.material.onPrimaryContainer;
+// Surface colors
+Color.android.material.surface;
+Color.android.material.onSurface;
+```
+See the [Material Design 3 color roles documentation](https://m3.material.io/styles/color/roles) for more information about each color role.
+### Material Design 3 dynamic colors
+Access Material Design 3 dynamic colors through `Color.android.dynamic.*`. Dynamic colors adapt to the user's wallpaper using Android's [Dynamic Color feature](https://m3.material.io/styles/color/dynamic/user-generated-source), available on Android 12+ (API 31+).
+```tsx
+import { Color } from 'expo-router';
+// Dynamic colors adapt to user's wallpaper
+Color.android.dynamic.primary;
+Color.android.dynamic.onPrimary;
+Color.android.dynamic.surface;
+Color.android.dynamic.onSurface;
+```
+The available colors are the same as [Material 3 static colors](#material-design-3-static-colors).
+### Responding to theme changes on Android
+Android Material colors (both static and dynamic) respond to the system's light/dark mode. To ensure your component re-renders when the theme changes, use the `useColorScheme()` hook from React Native.
+```tsx
+import { Color } from 'expo-router';
+import { View, Text, useColorScheme } from 'react-native';
+function MyComponent() {
+  // Triggers re-render when system theme changes
+  useColorScheme();
+  return (
+    <View style={{ backgroundColor: Color.android.dynamic.surface }}>
+      <Text style={{ color: Color.android.dynamic.onSurface }}>Hello, World!</Text>
+    </View>
+  );
+}
+```
+Without using `useColorScheme()`, the colors may not update when the user switches between light and dark mode.
+## Cross-platform usage
+The `Color` API is platform-specific. Use `useMemo` to select the appropriate color for each platform:
+```tsx
+import { Platform, View, Text } from 'react-native';
+import { Color } from 'expo-router';
+function MyComponent() {
+  const backgroundColor = Platform.select({
+    ios: Color.ios.systemBackground,
+    android: Color.android.dynamic.surface,
+    default: '#000000',
+  });
+  const textColor = Platform.select({
+    ios: Color.ios.label,
+    android: Color.android.dynamic.onSurface,
+    default: '#FFFFFF',
+  });
+  return (
+    <View style={{ backgroundColor }}>
+      <Text style={{ color: textColor }}>Hello, World!</Text>
+    </View>
+  );
+}
+```
+## API reference
+For the full list of available types and colors, see the [Color API reference](/versions/latest/sdk/router/#color).
 
 
 ## Sitemap
@@ -18534,7 +20681,7 @@ Statically typed routes do not support relative paths. You'll need to use absolu
 ```
 You can leverage the `useSegments()` hooks from `expo-router` to create complex relative paths. Consider the following structure:
 ```
-app/
+âââ app/
 â   âââ (feed)/
 â   â   âââ _layout.tsx
 â   â   âââ feed.tsx
@@ -18542,7 +20689,7 @@ app/
 â   â   âââ profile.tsx
 â   âââ (search)/
 â       âââ profile.tsx
-components/
+âââ components/
     âââ button.tsx
 ```
 You can ensure that you push to the same tab by using the `useSegments()` hook to get the first segment of the current route.
@@ -18647,7 +20794,7 @@ Unlike React Navigation, Expo Router always has access to a URL. This means scre
 1. Create a higher-order component that observes the currently selected URL
 2. Track the URL in your analytics provider
 ```
-app/
+âââ app/
     âââ _layout.tsx
 ```
 ```tsx app/_layout.tsx
@@ -18674,21 +20821,37 @@ React Navigation's [screen tracking guide](https://reactnavigation.org/docs/scre
 Learn how to use a top-level src directory in your Expo Router project.
 
 As your project grows, it can be helpful to move all the directories containing application code into a single **src** directory. Expo Router supports this out of the box.
+## Using a top-level src directory
+Step 1: 
+Move your **app** directory to **src/app**.
 ```
-src/
+âââ src/
 â   âââ app/
 â   â   âââ _layout.tsx
 â   â   âââ index.tsx
 â   âââ components/
 â       âââ button.tsx
-package.json
+âââ package.json
 ```
-Simply move your **app** directory to **src/app** and restart the development server.
+Step 2: 
+Update [TypeScript path aliases](/guides/typescript#path-aliases) in the **tsconfig.json** file to point to the **src** directory instead of the root directory. If you use the default `@/*` alias, set it to **./src/\***:
+```json tsconfig.json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+This keeps `@/` imports working after moving your app directory into **src**.
+Step 3: 
+Restart your development server.
 ```sh
 $ npx expo start
 $ npx expo export
 ```
-**Notes**:
+### Notes
 - The config files (**app.config.ts**, **app.json**, **package.json**, **metro.config.js**, **tsconfig.json**) should remain in the root directory.
 - The **src/app** directory takes higher precedence than the root **app** directory. Only the **src/app** directory will be used if you have both.
 - The **public** directory should remain in the root directory.
@@ -18728,6 +20891,7 @@ Before you proceed, ensure you have set up `jest-expo` according to the [Unit te
 `renderRouter` can provide inline-mocking of a file system by passing an object to this function as the first parameter. The keys of the object are the mock filesystem paths. **Do not use leading relative (`./`) or absolute (`/`) notation when defining these paths and exclude file extension.**
 ```tsx app.test.tsx
 import { renderRouter, screen } from 'expo-router/testing-library';
+import { View } from 'react-native';
 it('my-test', async () => {
   const MockComponent = jest.fn(() => <View />);
   renderRouter(
@@ -18758,7 +20922,9 @@ it('my-test', async () => {
 #### Path to fixture
 `renderRouter(fixturePath: string, options: RenderOptions)`
 `renderRouter` can accept a directory path to mock an existing fixture. Ensure that the provided path is relative to the current test file.
-```tsx app.test.js
+```tsx app.test.tsx
+import { renderRouter } from 'expo-router/testing-library';
+import { View } from 'react-native';
 it('my-test', async () => {
   const MockComponent = jest.fn(() => <View />);
   renderRouter('./my-test-fixture');
@@ -18767,7 +20933,9 @@ it('my-test', async () => {
 #### Path to the fixture with overrides
 `renderRouter({ appDir: string, overrides: Record<string, ReactComponent>}, options: RenderOptions)`
 For more intricate testing scenarios, `renderRouter` can leverage both directory path and inline-mocking methods simultaneously. The `appDir` parameter takes a string representing a pathname to a directory. The overrides parameter is an inline mock that can be used to override specific paths within the `appDir`. This combination allows for fine-tuned control over the mock environment.
-```tsx app.test.js
+```tsx app.test.tsx
+import { renderRouter } from 'expo-router/testing-library';
+import { View } from 'react-native';
 it('my-test', async () => {
   const MockAuthLayout = jest.fn(() => <View />);
   renderRouter({
@@ -18782,33 +20950,33 @@ it('my-test', async () => {
 The following matches have been added to `expect` and can be used to assert values on `screen`.
 #### toHavePathname()
 Assert the current pathname against a given string. The matcher uses the value of the [`usePathname`](/router/reference/hooks/#usepathname) hook on the current `screen`.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).toHavePathname('/my-router');
 ```
 #### toHavePathnameWithParams()
 Assert the current pathname, including URL parameters, against a given string. This is useful to assert the appearance of URL in a web browser.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).toHavePathnameWithParams('/my-router?hello=world');
 ```
 #### toHaveSegments()
 Assert the current segments against an array of strings. The matcher uses the value of the [`useSegments`](/router/reference/hooks/#usesegments) hook on the current `screen`.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).toHaveSegments(['[id]']);
 ```
 #### useLocalSearchParams()
 Assert the current local URL parameters against an object. The matcher uses the value of the [`useLocalSearchParams`](/router/reference/hooks/#uselocalsearchparams) hook on the current `screen`.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).useLocalSearchParams({ first: 'abc' });
 ```
 #### useGlobalSearchParams()
 Assert the current screen's pathname that matches a value. Compares using the value of [`useGlobalSearchParams`](/router/reference/hooks/#useglobalsearchparams) hook.
 Assert the current global URL parameters against an object. The matcher uses the value of the [`useGlobalSearchParams`](/router/reference/hooks/#useglobalsearchparams) hook on the current `screen`.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).useGlobalSearchParams({ first: 'abc' });
 ```
 #### toHaveRouterState()
 An advanced matcher that asserts the current router state against an object.
-```tsx app.test.ts
+```tsx app.test.tsx
 expect(screen).toHaveRouterState({
   routes: [{ name: 'index', path: '/' }],
 });
@@ -18903,16 +21071,7 @@ On web, returning `null` from the root will cause [static rendering](/router/web
 ## Migration
 ### Delete unused or managed code
 Expo Router automatically adds `react-native-safe-area-context` support.
-```diff
-- import { SafeAreaProvider } from 'react-native-safe-area-context';
-export default function App() {
-  return (
--    <SafeAreaProvider>
-      <MyApp />
--    </SafeAreaProvider>
-  )
-}
-```
+<DiffBlock source="/static/diffs/router/migrate-from-react-navigation/remove-safe-area-provider.diff" />
 Expo Router **does not** add `react-native-gesture-handler` (as of v3), so you'll have to add this yourself if you are using Gesture Handler or `<Drawer />` layout. Avoid using this package on web since it adds a lot of JavaScript that is often unused.
 ### Copy screens to the app directory
 Create an **app** directory at the root of your repo, or in a root **src** directory.
@@ -18957,7 +21116,7 @@ function App() {
 - Convert names to lowercase.
 - Move all the screens to the appropriate file locations inside the app directory. This may take some experimenting.
 ```
-app/
+âââ app/
     âââ _layout.js
     âââ (home)/
     â   âââ _layout.js
@@ -18991,36 +21150,11 @@ export default function HomeLayout() {
 ### Use Expo Router hooks
 React Navigation v6 and lower will pass the props `{ navigation, route }` to every screen. This pattern is going away in React Navigation, and we never introduced it to the Expo Router.
 Instead, migrate `navigation` to the `useRouter` hook.
-```diff
-+ import { useRouter } from 'expo-router';
-export default function Page({
--  navigation
-}) {
--  navigation.push('User', { user: 'bacon' });
-+  const router = useRouter();
-+  router.push('/users/bacon');
-}
-```
+<DiffBlock source="/static/diffs/router/migrate-from-react-navigation/use-router-hook.diff" />
 Similarly, migrate from the `route` prop to the [`useLocalSearchParams`](/router/reference/hooks/#uselocalsearchparams) hook.
-```diff
-+ import { useLocalSearchParams } from 'expo-router';
-export default function Page({
--  route
-}) {
--  const user = route?.params?.user;
-+  const { user } = useLocalSearchParams();
-}
-```
+<DiffBlock source="/static/diffs/router/migrate-from-react-navigation/use-local-search-params.diff" />
 To access the [`navigation.navigate`](https://reactnavigation.org/docs/navigation-object/#navigate), import the `navigation` prop from [`useNavigation`](/router/reference/hooks/#usenavigation) hook.
-```diff
-+ import { useNavigation } from 'expo-router';
-export default function Page({
-+  const navigation = useNavigation();
-  return (
-    <Button onPress={navigation.navigate('screenName')}>
-  )
-})
-```
+<DiffBlock source="/static/diffs/router/migrate-from-react-navigation/use-navigation-hook.diff" />
 ### Migrate the Link component
 React Navigation and Expo Router both provide Link components. However, Expo's Link component uses `href` instead of [`to`](https://reactnavigation.org/docs/use-link-props/#to).
 ```jsx
@@ -19212,13 +21346,8 @@ You can use this technique at any layer of the app to set the theme for a specif
 ### React Navigation Elements
 The [`@react-navigation/elements`](https://reactnavigation.org/docs/elements/) library provides a set of UI elements and helpers that can be used to build a navigation UI. These components are designed to be composable and customizable. You can reuse the default functionality from the library or build your navigator's UI on top of it.
 To use it with Expo Router, you need to install the library:
-For npm: 
 ```sh
-$ npm install @react-navigation/elements
-```
-For Yarn: 
-```sh
-$ yarn add @react-navigation/elements
+$ npx expo install @react-navigation/elements
 ```
 To learn more about the components and utilities the library provides, see [Elements library](https://reactnavigation.org/docs/elements/) documentation.
 
@@ -19545,7 +21674,7 @@ $ npx create-expo-module@latest --local
 You can provide a meaningful module name in the CLI prompt. For the rest of the prompts, you can also accept the default suggestions.
 Once you've run the command, you will see a new directory created in your project called **modules**. The directory structure should look like this:
 ```
-modules/
+âââ modules/
     âââ my-module/
         âââ android/
         â   âââ 
@@ -20843,85 +22972,38 @@ $ npx expo run:ios
 Step 3: 
 ## Add native dependencies
 Add the native dependencies to the module by editing the **expo-radial-chart/android/build.gradle** and **expo-radial-chart/ios/ExpoRadialChart.podspec** files:
-```diff android/build.gradle
-dependencies {
-  implementation project(':expo-modules-core')
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-+ implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-}
-```
-```diff ios/ExpoRadialChart.podspec
-  s.static_framework = true
-  s.dependency 'ExpoModulesCore'
-+ s.dependency 'DGCharts', '~> 5.1.0'
-  # Swift/Objective-C compatibility
-```
+<DiffBlock source="/static/diffs/third-party-library/android-mpandroidchart-dependency.diff" />
+<DiffBlock source="/static/diffs/third-party-library/ios-dgcharts-dependency.diff" />
 Note: Are you trying to use a  dependency?
 ---
   For SDK 52 and later: 
     Inside the **android** directory, create another directory called **libs** and place the **.aar** file inside it. Then, add the file as a Gradle project from autolinking:
-```diff expo-module.config.json
-    "android": {
-+     "gradleAarProjects": [
-+       {
-+         "name": "test-aar",
-+         "aarFilePath": "android/libs/test.aar"
-+       }
-+     ],
-    "modules": [
-```
+<DiffBlock source="/static/diffs/third-party-library/expo-module-config-gradle-aar.diff" />
     Finally, add the dependency to the `dependencies` list in the **android/build.gradle** file, using the dependency's specified name with `${project.name}$` prefix:
-```diff android/build.gradle
-dependencies {
-  implementation project(':expo-modules-core')
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-+ implementation project(":${project.name}\$test-aar")
-}
-```
+<DiffBlock source="/static/diffs/third-party-library/android-build-gradle-aar-project.diff" />
   For SDK 51 and earlier: 
     Inside the **android** directory, create another directory called **libs** and place the **.aar** file inside it. Then, add the directory as a repository:
-```diff android/build.gradle
-  repositories {
-    mavenCentral()
-+   flatDir {
-+       dirs 'libs'
-+   }
-  }
-```
+<DiffBlock source="/static/diffs/third-party-library/android-build-gradle-flatdir.diff" />
 Finally, add the dependency to the `dependencies` list. Instead of the filename, use the package path, which includes the `@aar` at the end:
-```diff android/build.gradle
-dependencies {
-  implementation project(':expo-modules-core')
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-+ implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0@aar'
-}
-```
+<DiffBlock source="/static/diffs/third-party-library/android-build-gradle-mpandroidchart-aar.diff" />
 ---
 Note: Are you trying to use an  or  dependency?
 ---
 On iOS, you can also use dependencies bundled as a framework by using the `vendored_frameworks` config option.
-```diff ios/ExpoRadialChart.podspec
-    s.static_framework = true
-    s.dependency 'ExpoModulesCore'
-+   s.vendored_frameworks = 'Frameworks/MyFramework.framework'
-    # Swift/Objective-C compatibility
-```
+<DiffBlock source="/static/diffs/third-party-library/ios-podspec-vendored-framework.diff" />
 > **info** **Note**: The file pattern used to specify the path to the framework is relative to the podspec file,
 > and doesn't support traversing the parent directory (`..`), meaning you need to place the framework inside the **ios** directory
 > (or a subdirectory of **ios**).
 Once the framework is added, make sure that the `source_files` option file pattern doesn't match any files inside the framework. One way to achieve this is to move your iOS source Swift files (that is `ExpoRadialChartView.swift` and `ExpoRadialChartModule.swift`) into a **src** directory separate from where you placed your framework(s) and update the `source_files` option to only match the **src** directory:
-```diff ios/ExpoRadialChart.podspec
-- s.source_files = '**/*.{h,m,mm,swift,hpp,cpp}'
-+ s.source_files = 'src/**/*.{h,m,mm,swift,hpp,cpp}'
-```
+<DiffBlock source="/static/diffs/third-party-library/ios-podspec-source-files-src.diff" />
 Your **ios** directory should end up with a file structure similar to this:
 ```
-Frameworks/
+âââ Frameworks/
 â   âââ MyFramework.framework
-src/
+âââ src/
 â   âââ ExpoRadialChartView.swift
 â   âââ ExpoRadialChartModule.swift
-ExpoRadialChart.podspec
+âââ ExpoRadialChart.podspec
 ```
 ---
 Step 4: 
@@ -21198,22 +23280,31 @@ Currently, only **macOS** and **tvOS** platforms are supported. This guide will 
 Step 1: 
 ## Use the `"apple"` platform in `expo-module.config.json`
 To provide seamless support for other Apple platforms, Expo SDK introduced a universal `"apple"` platform to instruct the [autolinking](/modules/autolinking/) that the module may support any of the Apple platform and whether to link the module in the specific CocoaPods target is moved off to the podspec. If you have used `"ios"` before, you can safely replace it:
-```diff expo-module.config.json
-{
--   "platforms": ["ios"],
--   "ios": {
--     "modules": ["MyModule"]
--   }
-+   "platforms": ["apple"],
-+   "apple": {
-+     "modules": ["MyModule"]
-+   }
-}
+```diff
+diff --git a/expo-module.config.json b/expo-module.config.json
+index 0000000..1111111 100644
+--- a/expo-module.config.json
++++ b/expo-module.config.json
+@@ -1,5 +1,5 @@
+-  "platforms": ["ios"],
+-  "ios": {
+-    "modules": ["MyModule"]
+-  }
++  "platforms": ["apple"],
++  "apple": {
++    "modules": ["MyModule"]
++  }
+ }
 ```
 Step 2: 
 ## Update the podspec to declare support for other platforms
 The module's podspec needs to be updated with a list of the supported platforms. Otherwise, CocoaPods would fail to install the pod on targets for the other platforms. As mentioned in the first step, this part of the spec is the source of truth for autolinking when the module is configured with a universal `"apple"` platform.
-```diff Module's podspec
+```diff
+diff --git a/YourModule.podspec b/YourModule.podspec
+index 0000000..1111111 100644
+--- a/YourModule.podspec
++++ b/YourModule.podspec
+@@ -1,5 +1,5 @@
 - s.platform       = :ios, '13.4'
 + s.platforms = {
 +   :ios => '13.4',
@@ -21743,6 +23834,141 @@ Function("readFile") { path: String, options: FileReadOptions ->
   // Read the file using given `options`
 }
 ```
+#### Formatter
+> **important** **This feature is experimental.**
+The Formatter API allows you to customize how a Record is serialized when returned from a native function. This is useful when you need to transform property values before sending them to JavaScript, or conditionally exclude certain properties from the output.
+#### Operations
+- **map**: Transform a property's value before serialization.
+- **skip**: Exclude a property from the output entirely.
+#### Basic usage
+```swift
+struct UserInfo: Record {
+  @Field var id: Int = 0
+  @Field var email: String = ""
+  @Field var password: String = ""
+}
+Function("getUser") {
+  let user = UserInfo(id: 1, email: "user@example.com", password: "secret123")
+  // Return user without exposing the password
+  return user.format { formatter in
+    formatter.property("password", keyPath: \.password).skip()
+  }
+}
+```
+```kotlin
+class UserInfo(
+  @Field val id: Int = 0,
+  @Field val email: String = "",
+  @Field val password: String = ""
+) : Record
+Function("getUser") {
+  val user = UserInfo(id = 1, email = "user@example.com", password = "secret123")
+  // Return user without exposing the password
+  formatter {
+    property(UserInfo::password).skip()
+  }.format(user)
+}
+```
+```js JavaScript
+const user = MyModule.getUser();
+console.log(user);
+// Output: { id: 1, email: "user@example.com" }
+// Note: password is not present in the object
+```
+#### Transforming values with `map`
+Use `map` to transform property values before they are sent to JavaScript:
+```swift
+struct Product: Record {
+  @Field var name: String = ""
+  @Field var price: Double = 0.0
+}
+Function("getProduct") {
+  let product = Product(name: "Widget", price: 19.99)
+  return product.format { formatter in
+    // Transform price to include currency symbol
+    formatter.property("price", keyPath: \.price).map { value in
+      "$\(String(format: "%.2f", value))"
+    }
+  }
+}
+```
+```kotlin
+class Product(
+  @Field val name: String = "",
+  @Field val price: Double = 0.0
+) : Record
+Function("getProduct") {
+  val product = Product(name = "Widget", price = 19.99)
+  formatter {
+    // Transform price to include currency symbol
+    property(Product::price).map { value ->
+      "${"$"}${String.format("%.2f", value)}"
+    }
+  }.format(product)
+}
+```
+#### Conditional skipping
+You can conditionally skip properties based on their values or the record's state:
+```swift
+struct Settings: Record {
+  @Field var theme: String = "light"
+  @Field var debugMode: Bool = false
+  @Field var apiKey: String? = nil
+}
+Function("getSettings") {
+  let settings = Settings(theme: "dark", debugMode: true, apiKey: "secret")
+  return settings.format { formatter in
+    // Skip apiKey if nil
+    formatter.property("apiKey", keyPath: \.apiKey).skip { value in
+      value == nil
+    }
+  }
+}
+```
+```kotlin
+class Settings(
+  @Field val theme: String = "light",
+  @Field val debugMode: Boolean = false,
+  @Field val apiKey: String? = null
+) : Record
+Function("getSettings") {
+  val settings = Settings(theme = "dark", debugMode = true, apiKey = "secret")
+  formatter {
+    // Skip apiKey if null
+    property(Settings::apiKey).skip { value ->
+      value == null
+    }
+  }.format(settings)
+}
+```
+#### Chaining operations
+You can chain multiple operations on the same property:
+```swift
+struct Data: Record {
+  @Field var value: Int? = nil
+}
+Function("getData") {
+  let data = Data(value: nil)
+  return data.format { formatter in
+    formatter.property("value", keyPath: \.value)
+      .map { $0 ?? 0 }  // Default to 0 if nil
+      .map { $0 * 2 }   // Double the value
+  }
+}
+```
+```kotlin
+class Data(
+  @Field val value: Int? = null
+) : Record
+Function("getData") {
+  val data = Data(value = null)
+  formatter {
+    property(Data::value)
+      .map { it ?: 0 }  // Default to 0 if null
+      .map { it * 2 }   // Double the value
+  }.format(data)
+}
+```
 #### Enums
 With enums, we can go even further with the above example (with `FileReadOptions` record) and limit supported encodings to `"utf8"` and `"base64"`. To use an enum as an argument or record field, it must represent a primitive value (for example, `String`, `Int`) and conform to `Enumerable`.
 ```swift
@@ -21793,6 +24019,83 @@ The implementation for three Either types is currently provided out of the box, 
 - `Either<FirstType, SecondType>` â A container for one of two types.
 - `EitherOfThree<FirstType, SecondType, ThirdType>` â A container for one of three types.
 - `EitherOfFour<FirstType, SecondType, ThirdType, FourthType>` â A container for one of four types.
+#### ValueOrUndefined
+> **important** **This feature is experimental.**
+`ValueOrUndefined` is a wrapper type that allows you to distinguish between a JavaScript `undefined` value and an actual value.
+With regular optional types, both `undefined` and `null` from JavaScript are converted to `null` on the native side, making it impossible to tell them apart. `ValueOrUndefined` solves this by preserving the distinction.
+#### Properties
+<APIMethod
+  name="isUndefined"
+  comment="Returns `true` if the JavaScript value was `undefined`, `false` otherwise."
+  returnTypeName="Bool"
+  isProperty
+/>
+<APIMethod
+  name="optional"
+  comment="Returns the unwrapped value if present, or `null` if the value was `undefined`."
+  returnTypeName="InnerType?"
+  isProperty
+/>
+```swift
+Function("configure") { (timeout: ValueOrUndefined<Int>) in
+  if timeout.isUndefined {
+    // Argument was not provided, use default behavior
+  } else if let value = timeout.optional {
+    // Argument was provided with a value
+  }
+}
+```
+```kotlin
+Function("configure") { timeout: ValueOrUndefined<Int> ->
+  if (timeout.isUndefined) {
+    // Argument was not provided, use default behavior
+  } else {
+    timeout.optional?.let { value ->
+      // Argument was provided with a value
+    }
+  }
+}
+```
+#### Distinguishing `undefined` from `null`
+When using `ValueOrUndefined` with an optional inner type, you can distinguish between three states:
+```swift
+Function("setName") { (name: ValueOrUndefined<String?>) in
+  switch name {
+  case .undefined:
+    // name argument was not provided
+    break
+  case .value(let unwrapped) where unwrapped == nil:
+    // name was explicitly set to null
+    break
+  case .value(let unwrapped):
+    // name was set to a string value
+    print("Name: \(unwrapped!)")
+  }
+}
+```
+```kotlin
+Function("setName") { name: ValueOrUndefined<String?> ->
+  when {
+    name.isUndefined -> {
+      // name argument was not provided
+    }
+    name.optional == null -> {
+      // name was explicitly set to null
+    }
+    else -> {
+      // name was set to a string value
+      println("Name: ${name.optional}")
+    }
+  }
+}
+```
+```js JavaScript
+import { requireNativeModule } from 'expo-modules-core';
+const MyModule = requireNativeModule('MyModule');
+MyModule.setName('Alice'); // name is a value
+MyModule.setName(null); // name is null (but not undefined)
+MyModule.setName(undefined); // name is undefined
+```
 #### JavaScript values
 It's also possible to use a `JavaScriptValue` type which is a holder for any value that can be represented in JavaScript.
 This type is useful when you want to mutate the given argument or when you want to omit type validations and conversions.
@@ -22124,6 +24427,22 @@ class MyModule : Module() {
 }
 ```
 For more examples from real modules, you can refer to Expo modules that already use this API on GitHub:
+```
+âââ expo-battery  # Swift
+âââ expo-cellular  # "Kotlin" , "Swift"
+âââ expo-clipboard  # "Kotlin" , "Swift"
+âââ expo-crypto  # "Kotlin" , "Swift"
+âââ expo-device  # Swift
+âââ expo-haptics  # Swift
+âââ expo-image-manipulator  # Swift
+âââ expo-image-picker  # "Kotlin" , "Swift"
+âââ expo-linear-gradient  # "Kotlin" ,{' '} "Swift"
+âââ expo-localization  # "Kotlin" , "Swift"
+âââ expo-store-review  # Swift
+âââ expo-system-ui  # Swift
+âââ expo-video-thumbnails  # Swift
+âââ expo-web-browser  # "Kotlin" , "Swift"
+```
 
 
 ## Android lifecycle listeners
@@ -22901,7 +25220,7 @@ For example, with the `--platform ios` option, it returns an object in **react-n
 }
 ```
 ## Dependency resolution and conflicts
-> **important** This is an experimental feature starting in SDK 54 and later.
+> **important** This is an alpha feature starting in SDK 54 and later.
 Autolinking and Node resolution have different goals and the module resolution algorithm in Node and Metro can sometimes come into conflict. If your app contains duplicate installations of a native module that is picked up by autolinking, your JavaScript bundle may contain both versions of the native module, while autolinking and your native app will only contain one version. This might cause runtime crashes and risks incompatibilities.
 This is an especially common problem with isolated dependencies or monorepos, and you should [check for and deduplicate native modules in your dependencies](/guides/monorepos/#duplicate-native-packages-within-monorepos).
 From **SDK 54**, you can set `experiments.autolinkingModuleResolution` to `true` in your [app config](/workflow/configuration/) to apply autolinking to Expo CLI and Metro bundler automatically. This will force dependencies that Metro resolves to match the native modules that **autolinking** resolves.
@@ -22919,6 +25238,208 @@ It's also necessary to include supported platforms in the `platforms` array â
 ### Opting out of Expo Autolinking for React Native modules
 Starting from SDK 52, Expo Autolinking replaces the React Native community CLI autolinking by default. If you would like to use the React Native community CLI's autolinking instead, set the environment variable `EXPO_USE_COMMUNITY_AUTOLINKING=1` and add `@react-native-community/cli` as a dev dependency to your project.
 With this environment variable set, Expo Autolinking will not be used to resolve React Native modules, but will continue to autolink Expo modules.
+
+
+## Using shared objects
+
+Learn how to use a shared object from the Expo Modules API.
+
+Shared objects let you expose long-lived native instances from Android and iOS to your app's JavaScript/TypeScript without giving control of their lifecycle. They can be used to keep heavy state objects, such as a decoded bitmap, alive across React components, rather than spinning up a new native instance every time a component mounts.
+In this guide, let's understand what a shared object is and how they are implemented in native platforms.
+## What is a shared object?
+A shared object is a custom class that bridges a native instance from Android and/or iOS to your app's JavaScript/TypeScript code through an Expo module. On the native side in Kotlin and Swift, you declare the class by inheriting from `SharedObject` and expose it in your module definition using `Class()`. A shared object is deallocated automatically once neither JavaScript nor native holds a reference.
+## Why use shared objects?
+Large media assets, like images, can exceed several megabytes once decoded into memory. Without shared objects, passing these assets between different parts of your app forces each part to reload from the disk every time and decode the same file multiple times. This can increase memory pressure, create an I/O bottleneck, drop frames, or cause battery drain.
+Shared objects solve this by keeping a single native instance alive in memory while multiple JavaScript references point to it.
+## Example: Image manipulation without disk I/O
+To understand shared objects, consider an example where you need to rotate and flip an image picked by the app user and then display that image in your app after manipulating it.
+### Without shared objects
+Historically, native modules were often written in a _stateless_ way, where each function operated independently without maintaining state between calls. If you wanted to perform two separate operations on the same object (such as an image file), you would load it from disk in both places and repeat the I/O operation each time.
+Without shared objects, `ImagePicker` reads from a file URI such as `"file:///path/to/image.jpg"` and decodes the image into memory. The image manipulator module then reads the same URI and decodes the image into memory again. When the app user calls a transform method (for example, `rotate()`) to rotate the image, the module saves the rotated image to a new file. Finally, when the new URI is passed to the `Image` component, it decodes the image from disk again to render the image. This workflow results in two or more decode and disk read operations.
+### With shared objects
+The same scenario becomes much more efficient with shared objects. `ImagePicker` reads the URI and decodes the image once into a shared object. When the app user calls a transform method (for example, `rotate()`), the module manipulates the in-memory bitmap without writing to the disk. If you need a file output, call an explicit save function (for example, `saveAsync` in an image manipulator), otherwise the transforms stay in memory only.
+Finally, the shared object is passed to the `Image` component and this time the image is rendered from memory. The entire workflow requires just one disk read and one decode operation, with all transformations happening in memory.
+The performance gains are significant. By eliminating redundant disk I/O and decode operations, you keep only a single bitmap in memory instead of multiple copies. This reduces CPU usage, which helps preserve battery life, and lowers the risk of crashes from memory pressure.
+Shared objects also unlock a more convenient, object-oriented API shape. You can expose methods on a long-lived instance (for example, `rotate()`, `flipX()`, `renderAsync()`) and let callers chain operations on that stateful object, instead of exposing a flat set of stateless functions.
+### Implementation with shared objects
+Now that you understand why shared objects are useful, let's look into a minimal implementation that demonstrates the core concepts of the previous example.
+The example creates a simple image manipulation module that loads an image from a file path, applies transforms (rotate and flip) in memory, and exposes a shared reference that other modules can consume.
+### Android implementation
+In Android, you create a shared object from `SharedObject` class provided by `expo.modules.kotlin.sharedobjects.SharedObject`. This class manages the decoded bitmap and exposes methods to manipulate it. The implementation keeps only the current image in memory and applies transforms in place, so you allocate a new bitmap only when a transformation like rotation or flip produces one:
+```kotlin
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import expo.modules.kotlin.modules.Module
+import expo.modules.kotlin.modules.ModuleDefinition
+import expo.modules.kotlin.sharedobjects.SharedObject
+class ImageRef : SharedRef<Bitmap>()
+class SimpleImageContext(
+  runtimeContext: RuntimeContext,
+  bitmap: Bitmap
+) : SharedObject(runtimeContext) {
+  private var current: Bitmap = bitmap
+  fun rotate(degrees: Float) = apply {
+    val matrix = Matrix().apply { postRotate(degrees) }
+    current = Bitmap.createBitmap(current, 0, 0, current.width, current.height, matrix, true)
+  }
+  fun flipX() = apply {
+    val matrix = Matrix().apply { preScale(-1f, 1f) }
+    current = Bitmap.createBitmap(current, 0, 0, current.width, current.height, matrix, true)
+  }
+  fun render(): ImageRef = ImageRef(current, runtimeContext)
+  override fun sharedObjectDidRelease() {
+    if (!current.isRecycled) current.recycle()
+  }
+}
+```
+The above example is quite similar to the iOS implementation. However, there is one difference on Android: the `sharedObjectDidRelease()` method. This lifecycle callback is invoked when JavaScript releases all references to the shared object, providing an opportunity to clean up native resources.
+When the result of this class is passed to another module, the `render` method returns an `ImageRef`, which is a specialized `SharedRef<Bitmap>` type that `expo-image` and other image-aware modules already understand.
+The module definition exposes an async function to create the context and a class definition to bind methods. The Expo Modules API uses a declarative syntax where you specify the module name, functions to create instances, and a class definition that maps methods to the shared object:
+```kotlin
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import expo.modules.kotlin.modules.Module
+import expo.modules.kotlin.modules.ModuleDefinition
+class SimpleImageModule : Module() {
+  override fun definition() = ModuleDefinition {
+    Name("SimpleImageModule")
+    AsyncFunction("createContextAsync") { path: String ->
+      val bitmap = BitmapFactory.decodeFile(path)
+        ?: throw Exceptions.IllegalArgument("Unable to decode image at $path")
+      SimpleImageContext(runtimeContext, bitmap)
+    }
+    Class<SimpleImageContext>("Context") {
+      Function("rotate") { ctx: SimpleImageContext, degrees: Float -> ctx.rotate(degrees) }
+      Function("flipX") { ctx: SimpleImageContext -> ctx.flipX() }
+      AsyncFunction("renderAsync") Coroutine { ctx: SimpleImageContext -> ctx.render() }
+    }
+  }
+}
+```
+In the above example, `createContextAsync` function decodes the bitmap from the file path and returns a new `SimpleImageContext` instance. Once the context exists, the `rotate` and `flipX` functions run synchronously because they only manipulate in memory. The `renderAsync` function is marked async to signal that it might involve copying or preparing the bitmap for consumption by other modules.
+### iOS implementation
+In iOS, you create a shared object by inheriting from `SharedObject` class provided by `ExpoModulesCore`. This class manages the decoded bitmap and exposes methods to manipulate it. The implementation keeps only the current image in memory and applies transforms in place:
+```swift
+import ExpoModulesCore
+import UIKit
+final class ImageRef: SharedRef<UIImage> {}
+final class SimpleImageContext: SharedObject {
+  private var current: UIImage
+  init(path: String) throws {
+    guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+          let image = UIImage(data: data) else {
+      throw Exceptions.InvalidArgument()
+    }
+    self.current = image
+    super.init()
+  }
+  func rotate(by degrees: Double) {
+    current = current.rotated(degrees: degrees)
+  }
+  func flipX() {
+    current = current.withHorizontallyFlippedOrientation()
+  }
+  func render() -> ImageRef {
+    return ImageRef(current)
+  }
+}
+```
+In the above example, `SimpleImageContext` reads an image file and keeps a single `UIImage` in memory. The `rotate` and `flipX` methods mutate the current image in memory without touching the disk.
+When the result of this class is passed to another module, the `render` method returns an `ImageRef`, which is a specialized `SharedRef<UIImage>` type that `expo-image` and other image-aware modules already understand.
+Now, with the shared object class definition, you can expose it through your module definition. The Expo Modules API uses a declarative syntax where you specify the module name, functions to create instances, and a class definition that maps methods to the shared object:
+```swift
+public final class SimpleImageModule: Module {
+  public func definition() -> ModuleDefinition {
+    Name("SimpleImageModule")
+    AsyncFunction("createContextAsync") { (path: String) -> SimpleImageContext in
+      return try SimpleImageContext(path: path)
+    }
+    Class("Context", SimpleImageContext.self) {
+      Function("rotate") { (ctx, degrees: Double) -> SimpleImageContext in
+        ctx.rotate(by: degrees)
+        return ctx
+      }
+      Function("flipX") { (ctx: SimpleImageContext) -> SimpleImageContext in
+        ctx.flipX()
+        return ctx
+      }
+      AsyncFunction("renderAsync") { (ctx: SimpleImageContext) -> ImageRef in
+        return ctx.render()
+      }
+    }
+  }
+}
+```
+In the above example, the `createContextAsync` is an asynchronous function because loading and decoding an image from disk is an I/O operation. Once the context exists, the `rotate` and `flipX` functions run synchronously because they only manipulate in memory. The `renderAsync` function is marked async to signal that it might involve copying or preparing the bitmap for consumption by other modules, though in this simple example, it returns immediately.
+### Using a shared object in your app
+You can now use the shared object in your app's JavaScript/TypeScript code to load the image from the path, create a context of the loaded image, chain in-memory transforms, render to get a shared reference, and then pass that reference to an `Image` component:
+```tsx
+import { useState } from 'react';
+import { Button } from 'react-native';
+import { Image } from 'expo-image';
+import type { SharedRef } from 'expo';
+import SimpleImageModule from 'simple-image-module'; // The native custom module
+import { pickImageAsync } from './pickImage'; // The custom TypeScript function
+export function SharedImageExample() {
+  const [context, setContext] = useState(null);
+  const [result, setResult] = useState<SharedRef<'image'> | null>(null);
+  const load = async () => {
+    const uri = await pickImageAsync();
+    if (!uri) {
+      return;
+    }
+    const ctx = await SimpleImageModule.createContextAsync(uri);
+    setContext(ctx);
+    setResult(await ctx.renderAsync());
+  };
+  const rotateAndFlip = async () => {
+    if (!context) {
+      return;
+    }
+    setResult(await context.rotate(90).flipX().renderAsync());
+  };
+  return (
+    <>
+      <Button title="Pick image" onPress={load} />
+      <Button title="Rotate 90Â° + flip X" onPress={rotateAndFlip} disabled={!context} />
+      {result && <Image source={result} style={{ width: 200, height: 200 }} />}
+    </>
+  );
+}
+```
+In the above example, the React component only consumes the native image transformed by the image manipulator context, which is already in memory and referenced by the shared object (`ImageRef`). As a result, the image view can display the image immediately on the next frame, and chained transforms never touch the file system.
+The JavaScript API picks an image using `ImagePicker`, which returns a standard file URI. This URI is handed to a custom native module to create a shared object in `SharedImageExample()`:
+```tsx
+import * as ImagePicker from 'expo-image-picker';
+export async function pickImageAsync() {
+  const result = await ImagePicker.launchImageLibraryAsync({
+    quality: 1,
+    allowsMultipleSelection: false,
+  });
+  if (result.canceled || !result.assets?.length) {
+    return null;
+  }
+  // At this point we still have a disk URI.
+  // The native module will lift it into a shared object.
+  return result.assets[0].uri;
+}
+```
+In the above example, `ImagePicker` doesn't need to know about shared objects. It returns what it should, which is a file path. Your native module is responsible for transforming that path into a shared object that other Expo modules can work with, such as `Image` from `expo-image`.
+## Expo libraries that use shared objects
+Some examples of [Expo SDK libraries](/versions/latest/) that use shared objects and their purpose:
+- `expo-image` library uses `SharedObject` to keep a decoded operation alive and the view component accepts `SharedRef<Bitmap>` on Android and `SharedRef<UIImage>` on iOS. This design allows images to be passed between modules without decoding it again. To explore more, see `expo-image` library's source code for [Android](https://github.com/expo/expo/tree/main/packages/expo-image/android/src/main/java/expo/modules/image) and [iOS](https://github.com/expo/expo/tree/main/packages/expo-image/ios).
+- `expo-image-manipulator` library demonstrates handling asynchronous operations, queuing multiple operations, and exposing a clean JavaScript API. To explore more, see `expo-image-manipulator` library's source code for [Android](https://github.com/expo/expo/tree/main/packages/expo-image-manipulator/android/src/main/java/expo/modules/imagemanipulator) and [iOS](https://github.com/expo/expo/tree/main/packages/expo-image-manipulator/ios).
+- `expo-sqlite` library uses shared objects to keep database, session, and statement handles across calls while coordinating access to the underlying database. To explore more, see `expo-sqlite` library's source code for [Android](https://github.com/expo/expo/tree/main/packages/expo-sqlite/android/src/main/java/expo/modules/sqlite) and [iOS](https://github.com/expo/expo/tree/main/packages/expo-sqlite/ios).
+- `expo/fetch` library uses shared objects to keep request and response lifecycles alive for streaming, cancellation, and redirect handling while presenting a JavaScript fetch-compatible API. To explore more, see `expo/fetch` library's source code for [Android](https://github.com/expo/expo/tree/main/packages/expo/android/src/main/java/expo/modules/fetch) and [iOS](https://github.com/expo/expo/tree/main/packages/expo/ios/Fetch).
+## Performance benefits of shared objects
+Using shared objects provides several performance improvements, such as:
+- **Reduced disk I/O:** A single read operation instead of multiple reads across different modules or function calls
+- **Fewer decode operations:** Expensive decoding (such as JPEG/PNG to bitmap) happens once, not repeatedly
+- **Lower memory pressure:** One decode instance in memory instead of multiple copies
+- **Faster operations:** In-memory transformations are significantly faster than disk-based ones
+- **Avoid frame drops:** Less I/O blocking means smoother UI interactions
+## Additional resources
 
 
 ## expo-module.config.json
@@ -22960,7 +25481,7 @@ $ brew install sourcekitten
 $ npx expo-modules-test-core generate-ts-mocks
 ```
 The command above generates **ExpoModuleName.ts** in the **mocks** directory of your module. It contains a mock implementation for each native method and view in your module.
-> **Tip:** You can also run `generate-js-mocks` to generate mocks in JavaScript.
+> **info** **Tip:** You can also run `generate-js-mocks` to generate mocks in JavaScript.
 ## Unit testing with mocked modules
 Once you have created mocks for your native modules, you can write comprehensive unit tests to verify that your JavaScript code calls the native functions correctly and handles their responses appropriately. For example, running `npx expo-modules-test-core generate-ts-mocks` command, will generate a mock similar to the example shown below inside **example-module/mocks** directory:
 ```ts example-module/mocks/ExpoModuleName.ts
@@ -22969,7 +25490,8 @@ Once you have created mocks for your native modules, you can write comprehensive
  *
  * This autogenerated file provides a mock for native Expo module,
  * and works out of the box with the expo jest preset.
- *  */
+ *
+ */
 export type URL = any;
 export function hello(): any {}
 export async function setValueAsync(value: string): Promise<any> {}
@@ -23137,7 +25659,7 @@ Android has a concept of [Data Messages](https://firebase.google.com/docs/cloud-
 You may also come across the term "silent notification", which is yet another name for notifications that don't present anything to the user &mdash; we describe these as [Headless Background Notifications](#headless-background-notifications).
 ## External references
 This is a non-exhaustive list of official resources for push notifications on Android and iOS:
-- [Android - About FCM messages](https://firebase.google.com/docs/cloud-messaging/concept-options)
+- [Android - Firebase Cloud Messaging message types](https://firebase.google.com/docs/cloud-messaging/customize-messages/set-message-type)
 - [iOS - Generating a remote notification](https://developer.apple.com/documentation/usernotifications/generating-a-remote-notification)
 - [iOS - Pushing background updates to your app](https://developer.apple.com/documentation/usernotifications/pushing-background-updates-to-your-app)
 
@@ -23914,11 +26436,16 @@ You may need finer-grained control over your notifications, in which case commun
 When using Expo notification service, you use the `ExpoPushToken` obtained with [`getExpoPushTokenAsync`](/versions/latest/sdk/notifications/#getexpopushtokenasyncoptions-expotokenoptions-expopushtoken).
 If you instead want to send notifications via FCM or APNs, you need to obtain the native device token with [`getDevicePushTokenAsync`](/versions/latest/sdk/notifications/#getdevicepushtokenasync-devicepushtoken).
 ```diff
-import * as Notifications from 'expo-notifications';
-...
-- const token = (await Notifications.getExpoPushTokenAsync()).data;
-+ const token = (await Notifications.getDevicePushTokenAsync()).data;
-// send token to your server
+diff --git a/App.js b/App.js
+index 0000000..1111111 100644
+--- a/App.js
++++ b/App.js
+@@ -1,4 +1,4 @@
+ import * as Notifications from 'expo-notifications';
+ // ...
+-const token = (await Notifications.getExpoPushTokenAsync()).data;
++const token = (await Notifications.getDevicePushTokenAsync()).data;
+ // send token to your server
 ```
 ## FCMv1 server
 This guide is based on [Firebase official documentation](https://firebase.google.com/docs/cloud-messaging/server).
@@ -24070,8 +26597,8 @@ request.write(
         body: 'Hello world! \uD83C\uDF10',
       },
     },
-    experienceId: '@yourExpoUsername/yourProjectSlug', // Required when testing in the Expo Go app
-    scopeKey: '@yourExpoUsername/yourProjectSlug', // Required when testing in the Expo Go app
+    experienceId: '@yourExpoUsername/yourProjectSlug', // Required only when testing in legacy Expo Go (in SDK 52 and earlier)
+    scopeKey: '@yourExpoUsername/yourProjectSlug', // Required only when testing in legacy Expo Go (in SDK 52 and earlier)
   })
 );
 request.end();
@@ -24131,7 +26658,7 @@ curl -H "Content-Type: application/json" -X POST "https://exp.host/--/api/v2/pus
 ```
 ---
 ### Notifications work in development, but not in release mode
-This indicates that you have either misconfigured your credentials or didn't configure them at all in your production app. Expo Go uses Expo's credentials, which allows working on notifications in development.
+This indicates that you have either misconfigured your credentials or didn't configure them at all in your production app. In SDK 53 and later, Expo Go does not support push notifications functionality, so to test push you should use a [development build](/develop/development-builds/introduction/). In SDK 52 and earlier, Expo Go used Expo's credentials, which allowed push notifications to work in development without setting up your own credentials.
 When you build your app for the app stores, you need to generate and use your own credentials. On Android, follow [this guide](/push-notifications/fcm-credentials). On iOS, this is handled by your [push key](/app-signing/app-credentials/#push-notification-keys) (revoking the push key associated with your app results in your notifications failing to be delivered. To fix that, add a new push key with `eas credentials`).
 For more information, see [app signing](/app-signing/app-credentials).
 ### Notifications occasionally stop coming through on Android
@@ -24186,6 +26713,1495 @@ If you are not using [Expo push notification service](/push-notifications/sendin
 This indicates an issue with the image asset you're providing. The image should be all white with a transparent background (this is required and enforced by Google, not Expo). For more information, see [this article](https://clevertap.com/blog/fixing-notification-icon-for-android-lollipop-and-above/).
 
 
+# Integrations
+
+# Analytics and error reports
+
+## React Native analytics SDKs and libraries
+
+An overview of analytics services available in the Expo and React Native ecosystem.
+
+An analytics service allows you to track how users interact with your app. With this data, you can take a measured approach when improving your app.
+The following list provides common analytics providers that are available in the Expo and React Native ecosystem.
+> Most analytics SDK requires configuring custom native code. Native code is not configurable when using Expo Go. However, you can create a [development build](/develop/development-builds/introduction/), which will allow you to use any of the services below.
+
+
+## Using Sentry
+
+A guide on installing and configuring Sentry for crash reporting.
+
+[Sentry](http://getsentry.com/) is a crash reporting platform that provides you with **real-time insight into production deployments with info to reproduce and fix crashes**.
+It notifies you of exceptions or errors that your users run into while using your app and organizes them for you on a web dashboard. Reported exceptions include stacktraces, device info, version, and other relevant context automatically. You can also provide additional context that is specific to your application such as the current route and user id.
+## What you'll learn
+This guide covers three main aspects of integrating Sentry with your Expo projects:
+- [Install and configure Sentry](#install-and-configure-sentry) in your React Native app
+- Using Sentry with EAS:
+  - [EAS Build](#usage-with-eas-build) for building your app
+  - [EAS Update](#usage-with-eas-update) for over-the-air updates
+- [Setting up the Sentry-Expo integration](#sentry-integration-with-eas-dashboard) to view crash reports and session replays directly in your EAS dashboard
+## Install and configure Sentry
+Step 1: 
+### Sign up for a Sentry account and create a project
+Before proceeding with installing Sentry, you'll need to make sure you have created a Sentry account and project:
+Step 1.1: 
+[Sign up for Sentry](https://sentry.io/signup/) (the free tier supports up to 5,000 events per month), and create a project in your
+Dashboard. Take note of your **organization slug**, **project name**, and **DSN** as you'll need
+them later:
+- **organization slug** is available in your **Organization settings** tab
+- **project name** is available in your project's **Settings** > **Projects** tab (find it in the list)
+- **DSN** is available in your project's **Settings** > **Projects** > **Project name** > Under **SDK Setup** section > **Client Keys (DSN)** tab.
+Step 1.2: 
+Go to the [Developer Settings > Auth Tokens](https://sentry.io/settings/auth-tokens/) page and create a new [Organization Auth Token](https://docs.sentry.io/account/auth-tokens/#organization-auth-tokens). The token is automatically scoped for Source Map Upload and Release Creation. Save it.
+Once you have each of these: **organization slug**, **project name**, **DSN**, and **auth token**, you're all set to proceed.
+Step 2: 
+### Use the Sentry wizard to set up your project
+The easiest way to set up Sentry in your Expo project is to use the Sentry wizard. This tool will automatically configure your project with the right settings.
+Run the following command in your project directory:
+```sh
+$ npx @sentry/wizard@latest -i reactNative
+```
+The wizard will:
+- Install the required dependencies
+- Configure your project to use Sentry
+- Set up the Metro configuration automatically
+- Add the necessary initialization code to your app
+Follow the prompts in the wizard to complete the setup process. The wizard will guide you to log in to your Sentry account and fetch all the correct information regarding your project.
+Step 3: 
+### Verify the configuration
+Create a new release build of your app and verify that it uploads source maps correctly. You may want to add a button in your app to test that it is working and sourcemaps are wired up as expected, for example:
+```jsx
+import { Button } from 'react-native';
+// Inside some component
+<Button title="Press me" onPress={() => { throw new Error('Hello, again, Sentry!'); }}/>
+```
+## Usage with EAS Build
+Ensure that `SENTRY_AUTH_TOKEN` is set in your build environment, and Sentry will automatically upload source maps for you. If you use environment variables rather than properties in your app config, ensure that those are set as well.
+Using the above instructions, no additional work is needed to integrate Sentry into your project when using EAS Build.
+## Usage with EAS Update
+After running `eas update`, upload the source maps to Sentry:
+```sh
+$ npx sentry-expo-upload-sourcemaps dist
+```
+That's it! Errors for your updates will now be properly symbolicated in Sentry.
+Note: Do you want to publish an update and the sourcemaps in one command?
+---
+You can chain the commands together with `&&` to publish an update and upload the sourcemaps in one step:
+```sh
+$ eas update --branch <branch> && npx sentry-expo-upload-sourcemaps dist
+```
+---
+Note: Do you want to append additional update-related metadata to error reports?
+---
+Configuring Sentry to tag your scope with information about your update allows you to see errors happening on certain updates in the Sentry dashboard.
+Add the following snippet in the global scope as early as possible in your application's lifecycle.
+```js
+import * as Sentry from '@sentry/react-native';
+import * as Updates from 'expo-updates';
+const manifest = Updates.manifest;
+const metadata = 'metadata' in manifest ? manifest.metadata : undefined;
+const extra = 'extra' in manifest ? manifest.extra : undefined;
+const updateGroup = metadata && 'updateGroup' in metadata ? metadata.updateGroup : undefined;
+Sentry.init({
+  // dsn, release, dist, etc...
+});
+const scope = Sentry.getGlobalScope();
+scope.setTag('expo-update-id', Updates.updateId);
+scope.setTag('expo-is-embedded-update', Updates.isEmbeddedLaunch);
+if (typeof updateGroup === 'string') {
+  scope.setTag('expo-update-group-id', updateGroup);
+  const owner = extra?.expoClient?.owner ?? '[account]';
+  const slug = extra?.expoClient?.slug ?? '[project]';
+  scope.setTag(
+    'expo-update-debug-url',
+    `https://expo.dev/accounts/${owner}/projects/${slug}/updates/${updateGroup}`
+  );
+} else if (Updates.isEmbeddedLaunch) {
+  // This will be `true` if the update is the one embedded in the build, and not one downloaded from the updates server.
+  scope.setTag('expo-update-debug-url', 'not applicable for embedded updates');
+}
+```
+Once configured, information about the associated update will show up in an error's tag section:
+---
+## Sentry integration with EAS dashboard
+The Sentry integration with Expo allows you to view crash reports and Session Replays for your Expo app deployments directly within your EAS dashboard. This integration provides a direct link to Sentry stack traces with full context, session replays, and debugging capabilities.
+### Install
+> **info** Sentry owner, manager, or admin permissions are required to install this integration.
+1. Log in to you Expo account and open [**Account settings > Overview**](https://expo.dev/accounts/[your-account]/settings).
+2. Under **Connections** and click **Connect** next to Sentry.
+3. Log in to your Sentry account and accept the integration into your organization. You will be redirected back to **Account settings**.
+### Link your project
+After connecting your accounts, you need to link your EAS Project to your Sentry Project:
+1. Open **Projects > [Your Project] > Configuration > Project settings** in EAS.
+2. Click **Link** and select your Sentry Project from the dropdown.
+### Usage
+To see your Sentry data in EAS dashboard, open **Projects > [Your Project] > Updates > Deployments > [Deployment]** to view Sentry data from a Release.
+With this integration, you can:
+- View crash reports directly in your EAS dashboard
+- Access Session Replays to see exactly what happened before an error occurred
+- Get detailed stack traces with full context
+- Navigate seamlessly between EAS and Sentry for debugging
+## Learn more about Sentry
+Sentry does more than just catch fatal errors, learn more about how to use Sentry from their [JavaScript usage](https://docs.sentry.io/platforms/javascript/) documentation.
+
+
+## Using BugSnag
+
+A guide on installing and configuring BugSnag for end-to-end error reporting and analytics.
+
+[BugSnag](https://www.bugsnag.com) is a stability monitoring solution that provides rich, end-to-end error reporting and analytics to reproduce and fix errors with speed and precision. BugSnag supports the full stack with open-source libraries for more than [50 platforms](https://www.bugsnag.com/platforms), including [React Native](https://docs.bugsnag.com/platforms/react-native/react-native/).
+With BugSnag, developers and engineering organizations can:
+- **Stabilize:** Innovate faster by knowing when to build new features versus fix bugs. Use the release health dashboard, stability scores and targets, and built-in alerts via email, Slack, PagerDuty, and more.
+- **Prioritize:** Improve customer experience by identifying and prioritizing bugs that have the greatest impact on app stability. Analyze issues grouped by root cause and sorted by business impact, customer segmentation, A/B testing and experiment results.
+- **Fix:** Increase productivity by spending less time on reproducing and fixing bugs. Utilize powerful diagnostic data, full stacktraces and automatic breadcrumbs.
+## Integration
+See the integration guide below for instructions on adding BugSnag to your Expo apps to report JavaScript errors. It also includes instructions for uploading source maps for updates published with [EAS Update](/eas-update/introduction/).
+If you're new to BugSnag, you can [create an account](https://app.bugsnag.com/user/new/) or [request a demo](https://www.bugsnag.com/demo-request).
+
+
+## Using LogRocket
+
+A guide on installing and configuring LogRocket for session replays and error monitoring.
+
+[LogRocket](https://logrocket.com) records user sessions and identifies bugs as your users use your app. You can filter sessions by update IDs and also connect to your LogRocket account on the EAS dashboard to get quick access to your app's session data.
+## Install and configure LogRocket
+You can install the LogRocket SDK with the following command:
+```sh
+$ npx expo install @logrocket/react-native expo-build-properties
+```
+Then, in your [app config](/workflow/configuration/), include the LogRocket config plugin:
+```json app.json
+{
+  "plugins": [
+    [
+      "expo-build-properties",
+      {
+        "android": {
+          "minSdkVersion": 25
+        }
+      }
+    ],
+    "@logrocket/react-native"
+  ]
+}
+```
+Finally, initialize LogRocket in your app in a top-level file, like **app/\_layout.tsx**:
+```tsx app/_layout.tsx
+import { useEffect } from 'react';
+import * as Updates from 'expo-updates';
+import LogRocket from '@logrocket/react-native';
+const App = () => {
+  useEffect(() => {
+    LogRocket.init('<App ID>', {
+      updateId: Updates.isEmbeddedLaunch ? null : Updates.updateId,
+      expoChannel: Updates.channel,
+    });
+  }, []);
+};
+```
+In the code above, replace `<App ID>` with your [LogRocket App ID](https://app.logrocket.com/r/settings/setup).
+## Connecting LogRocket on the EAS dashboard
+You can link your LogRocket account and project to your Expo account and project on Expo's dashboard, so that you can see the last few sessions from your app in the deployments and updates dashboards.
+Go to your **Account settings** > [**Overview**](https://expo.dev/accounts/%5Baccount%5D/settings) > **Connections** and click **Connect** to authenticate with LogRocket:
+Then, go to your project, under **Project settings** > [**General**](https://expo.dev/accounts/%5Baccount%5D/projects/%5BprojectName%5D/settings) and click **Connect** to link your LogRocket project with your project on Expo:
+Then, you'll start to see **View on LogRocket** buttons in the EAS dashboard in the Native Deployments and Updates dashboards, along with the last few sessions from your app.
+## Learn more about LogRocket
+To learn more about how to use LogRocket with Expo, check out the [LogRocket documentation](https://docs.logrocket.com/reference/react-native-expo-adding-the-sdk).
+
+
+## Using Vexo
+
+A guide on installing and configuring Vexo for real-time user analytics.
+
+[Vexo](https://www.vexo.co/) provides real-time user analytics for your Expo application, helping you understand how users interact with your app, identify friction points, and improve engagement.
+With a two-line integration, Vexo starts collecting data automatically, giving you actionable insights to optimize your app's user experience. If needed, you can also create custom events.
+## Features
+1. **Complete Dashboard**
+   - Active Users
+   - Session Time
+   - Downloads
+   - OS Distribution
+   - Version Adoption
+   - Geographic Insights
+   - Popular Screens
+2. **Session Replays**
+   - Watch real user sessions to understand their interactions.
+3. **Heatmaps**
+   - Identify the most engaged areas of your app.
+4. **Funnels**
+   - Analyze user flows and optimize conversion rates.
+5. **Custom Events and Dashboard Personalization**
+   - Track specific user actions by creating custom events.
+   - Customize your dashboard to visualize key metrics.
+## Getting started
+1. Create an account: Sign up for a [Vexo account](https://www.vexo.co/).
+2. Create a new app: You'll be prompted to create a new app. Give it a name (you can change it later), and once you submit it, you'll receive an API key.
+3. Install the Vexo package: Run the following command in your project:
+   <Terminal
+     cmd={{
+       npm: ['$ npm install vexo-analytics'],
+       yarn: ['$ yarn add vexo-analytics'],
+       pnpm: ['$ pnpm add vexo-analytics'],
+       bun: ['$ bun install vexo-analytics'],
+     }}
+   />
+4. Initialize Vexo: Add the following code in your app's entry file (for example, **index.js**, **App.js**, or **app/\_layout.tsx** if using Expo Router):
+   ```tsx app/_layout.tsx
+   import { vexo } from 'vexo-analytics';
+   // You may want to wrap this with `if (!__DEV__) { ... }` to only run Vexo in production.
+   vexo('YOUR_API_KEY');
+   ```
+5. Rebuild and run your app: Since `vexo-analytics` includes native code, you need to rebuild your application.
+6. Verify integration: Go to your app's page on Vexo and you should see your first event!
+## Compatibility
+- Expo: Vexo is compatible with [Development builds](/development/introduction/) and does not require additional configuration plugins.
+- Expo Go: Not supported, as Vexo requires custom native code.
+## Learn more about Vexo
+To learn more about using Vexo with Expo, check out the [Vexo documentation](https://docs.vexo.co/).
+
+
+# Authentication
+
+## Using authentication SDKs and libraries
+
+An overview of authentication integrations available in the Expo and React Native ecosystem.
+
+Authentication in mobile apps refers to how you identify who a user is, manage sign-up or sign-in flows, and maintain their authenticated session across app launches and across multiple devices. Authentication SDKs and libraries help you add these flows, so you do not need to build your own custom auth backend. The guides below highlight popular SDKs and providers for your Expo and React Native projects.
+> **warning** Some providers require custom native code and aren't supported in Expo Go. Use a [development build](/develop/development-builds/introduction/) when needed.
+
+
+## Using Clerk
+
+Learn how to integrate Clerk authentication in your Expo and React Native projects.
+
+[Clerk](https://clerk.com/) is a full stack authentication and user management platform that helps you add sign-up, sign-in, and account management without building your own auth backend. It supports multiple authentication strategies, session management, and organizations for multi-tenant apps.
+Clerk provides hooks, UI, and control components so you can build completely custom authentication screens. Pair it with `expo-secure-store` to keep session tokens encrypted on device, and configure your projects's providers and policies in the Clerk's dashboard.
+> **Note:** Clerk's [prebuilt UI components](https://clerk.com/docs/expo/reference/components/overview) are available for web only. For native platforms, Clerk recommends building custom flows.
+## Features
+- **Authentication flows:** Sign-up and sign-in with email verification code, magic links, passwords, social providers (20+), passkeys, phone number verification, SAML, OpenID Connect, Web3 (MetaMask), and authenticator apps for multi-factor authentication.
+- **Session management:** Secure token handling with [`expo-secure-store`](/versions/latest/sdk/secure-store/).
+- **User management:** Profile data, account settings, and organization membership for multi-tenant apps.
+## Get started
+To get started, follow the instructions in the Clerk's documentation:
+
+
+## Using Facebook authentication
+
+A guide on using react-native-fbsdk-next library to integrate Facebook authentication in your Expo project.
+
+The [`react-native-fbsdk-next`](https://github.com/thebergamo/react-native-fbsdk-next/) library provides a wrapper around Facebook's Android and iOS SDKs. It allows integrating Facebook authentication into your Expo project and provide access to native components.
+This guide provides additional information on configuring the library with Expo for Android.
+## Prerequisites
+The `react-native-fbsdk-next` library can't be used in the Expo Go app because it requires custom native code. Learn more about [adding custom native code to your app](/workflow/customizing/).
+## Installation
+See `react-native-fbsdk-next` documentation for instructions on how to install and configure the library:
+## Configuration for Android
+Adding Android as a platform in your Facebook project requires you to have your app approved by Google Play Store so that it has a valid Play Store URL, and the [`package`](/versions/latest/config/app/#package) name associated with your app. Otherwise, you'll run into the following error:
+See the following guides for more information on how to build your project for app stores:
+Once you have uploaded the app to the Play Store you can submit your app review. When it is approved the Facebook project will be able to access it at a Play Store URL.
+After that, go to your Facebook project's **Settings** > **Basic** and add the **Android** platform. You'll need to provide the Key hash, Package name and Class name.
+- To add Key hash, go to your Play Store Console to obtain the SHA-1 certificate fingerprint from **Release** > **Setup** > **App Integrity** > **App signing key certificate**. Then, [convert the value of the Hex value of the certificate to Base64](https://base64.guru/converter/encode/hex) and add it under the **Android** > **Key hashes** in your Facebook project.
+- You can find the Package name in your [app config](/versions/latest/config/app) under the [`android.package`](/versions/latest/config/app/#package) field.
+- The Class name is `MainActivity` by default, and you can use `package.MainActivity` where `package` is the `android.package` in your project's app config. For example, `com.myapp.example.MainActivity`, where `com.myapp.example` is the `package` name of your app.
+- Then, click **Save changes** to save the configuration.
+Now, you can use your Facebook project for development or release builds and production apps.
+
+
+## Using Google authentication
+
+A guide on using @react-native-google-signin/google-signin library to integrate Google authentication in your Expo project.
+
+The [`@react-native-google-signin/google-signin`](https://github.com/react-native-google-signin/google-signin) library provides a way to integrate Google authentication in your Expo app. It also provides native sign-in buttons and supports authenticating the user as well as obtaining their authorization to use Google APIs. You can use the library in your project by adding the [config plugin](/config-plugins/introduction/) in the [app config](/versions/latest/config/app/).
+This guide provides information on how to configure the library for your project.
+## Prerequisites
+The `@react-native-google-signin/google-signin` library can't be used in the Expo Go app because it requires custom native code. Learn more about [adding custom native code to your app](/workflow/customizing/).
+## Installation
+See `@react-native-google-signin/google-signin` documentation for instructions on how to install and configure the library:
+## Configure Google project for Android and iOS
+Below are instructions on how to configure your Google project for Android and iOS.
+### Upload app to Google Play Store
+We recommend uploading the app to the Google Play Store if your app intends to run in production. You can submit your app to the stores for testing even if your project is still in development. This allows you to test Google Sign In when your app is signed by EAS for testing, and when it is signed by [Google Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?hl=en) for store deployment. To learn more about the app submission process, see the guides below in the order they are specified:
+### Configure your Firebase or Google Cloud Console project
+> Refer to the [library's documentation](https://react-native-google-signin.github.io/docs/setting-up/get-config-file) for a more in-depth configuration guide.
+For Android, once you have uploaded your app, you need to provide the SHA-1 certificate fingerprint values when asked while configuring the project in Firebase or Google Cloud Console. There are two types of values that you can provide:
+- Fingerprint of the **.apk** you built (on your machine or using EAS Build). You can find the SHA-1 certificate fingerprint in the Google Play Console under **Release** > **Setup** > **App Integrity** > **Upload key certificate**.
+- Fingerprint(s) of a **production app** downloaded from the play store. You can find the SHA-1 certificate fingerprint(s) in the Google Play Console under **Release** > **Setup** > **App Integrity** > **App signing key certificate**.
+### With Firebase
+For more instructions on how to configure your project for Android and iOS with Firebase:
+#### Upload google-services.json and GoogleService-Info.plist to EAS
+If you use the Firebase method for Android and iOS (as shared in sections above), you'll need to make sure **google-services.json** and **GoogleService-Info.plist** are available in EAS for building the app. You can check them into your repository because the files should not contain sensitive values, or you can treat the files as secrets, add them to **.gitignore** and use the guide below to make them available in EAS.
+### With Google Cloud Console
+This is an alternate method to configure a Google project when you are not using [Firebase](#with-firebase).
+For more instructions on how to configure your Google project Android and iOS with Google Cloud Console:
+
+
+# CMS
+
+## Using a Content Management System (CMS)
+
+An overview of Content Management Systems (CMS) available in the Expo and React Native ecosystem.
+
+A **Content Management System (CMS)** is a platform that allows you to create, manage, and organize digital content such as blog posts, images, and product information without the need to write custom backend code. Using a CMS can save you significant development time and enable non-technical users (such as editors and marketers) to update app content easily through a user-friendly interface.
+Integrating a CMS into your Expo and React Native app lets you remotely manage and update content, push out new information to users instantly, and scale your content operations without releasing new app updates.
+Here are some popular CMS options to consider for Expo and React Native projects:
+
+
+# Database and SDKs
+
+## Using Firebase
+
+A guide on getting started and using Firebase JS SDK and React Native Firebase library.
+
+[Firebase](https://firebase.google.com/) is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as real-time database, cloud storage, authentication, crash reporting, analytics, and so on.
+It is built on Google's infrastructure and scales automatically.
+There are two different ways you can use Firebase in your projects:
+- Using [Firebase JS SDK](#using-firebase-js-sdk)
+- Using [React Native Firebase](#using-react-native-firebase)
+React Native supports both the JS SDK and the native SDK. The following sections will guide you through when to use which SDK and all the configuration steps required to use Firebase in your Expo projects.
+## Prerequisites
+Before proceeding, make sure that you have created a new Firebase project or have an existing one using the [Firebase console](https://console.firebase.google.com/).
+## Using Firebase JS SDK
+The [Firebase JS SDK](https://firebase.google.com/docs/web/setup) is a JavaScript library that allows you to interact with Firebase services in your project.
+It supports services such as [Authentication](https://firebase.google.com/docs/auth), [Firestore](https://firebase.google.com/docs/firestore), [Realtime Database](https://firebase.google.com/docs/database), and [Storage](https://firebase.google.com/docs/storage) in a React Native app.
+### When to use Firebase JS SDK
+You can consider using the Firebase JS SDK when you:
+- Want to use Firebase services such as Authentication, Firestore, Realtime Database, and Storage in your app and want to develop your app with [**Expo Go**](/get-started/set-up-your-environment/).
+- Want a quick start with Firebase services.
+- Want to create a universal app for Android, iOS, and the web.
+#### Caveats
+Firebase JS SDK does not support all services for mobile apps. Some of these services are Analytics, Dynamic Links and Crashlytics. See the [React Native Firebase](#using-react-native-firebase) section if you want to use these services.
+### Install and initialize Firebase JS SDK
+> **warning** Expo SDK 53 and later only support `firebase@^12.0.0`. Versions before this version cause ES module resolution errors.
+Step 1: 
+#### Install the SDK
+After you have created your [Expo project](/get-started/create-a-project/), you can install the Firebase JS SDK using the following command:
+```sh
+$ npx expo install firebase
+```
+Step 2: 
+#### Initialize the SDK in your project
+To initialize the Firebase instance in your Expo project, you must create a config object and pass it to the `initializeApp()` method imported from the `firebase/app` module.
+The config object requires an API key and other unique identifiers. To obtain these values, you will have to register a web app in your Firebase project. You can find these instructions in the [Firebase documentation](https://firebase.google.com/docs/web/setup#register-app).
+After you have the API key and other identifiers, you can paste the following code snippet by creating a new **firebaseConfig.js** file in your project's root directory or any other directory where you keep the configuration files.
+```js firebaseConfig.js
+import { initializeApp } from 'firebase/app';
+// Optionally import the services that you want to use
+// import {...} from 'firebase/auth';
+// import {...} from 'firebase/database';
+// import {...} from 'firebase/firestore';
+// import {...} from 'firebase/functions';
+// import {...} from 'firebase/storage';
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: 'api-key',
+  authDomain: 'project-id.firebaseapp.com',
+  databaseURL: 'https://project-id.firebaseio.com',
+  projectId: 'project-id',
+  storageBucket: 'project-id.appspot.com',
+  messagingSenderId: 'sender-id',
+  appId: 'app-id',
+  measurementId: 'G-measurement-id',
+};
+const app = initializeApp(firebaseConfig);
+// For more information on how to access Firebase in your project,
+// see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
+```
+You do not have to install other plugins or configurations to use Firebase JS SDK.
+Firebase version 9 and above provide a modular API. You can directly import any service you want to use from the `firebase` package. For example, if you want to use an authentication service in your project, you can import the `auth` module from the `firebase/auth` package.
+> **info** **Troubleshooting tip:** If you encounter issues related to authentication persistence with Firebase JS SDK, see the guide for [setting up persistence to keep users logged in between reloads](https://expo.fyi/firebase-js-auth-setup).
+### Next steps
+## Using React Native Firebase
+[React Native Firebase](https://rnfirebase.io/) provides access to native code by wrapping the native SDKs for Android and iOS into a JavaScript API.
+Each Firebase service is available as a module that can be added as a dependency to your project. For example, the `auth` module provides access to the Firebase Authentication service.
+### When to use React Native Firebase
+You can consider using React Native Firebase when:
+- Your app requires access to Firebase services not supported by the Firebase JS SDK, such as [Dynamic Links](https://rnfirebase.io/dynamic-links/usage), [Crashlytics](https://rnfirebase.io/crashlytics/usage), and so on.
+  For more information on the additional capabilities offered by the native SDK's, see [React Native Firebase documentation](https://rnfirebase.io/faqs-and-tips#why-react-native-firebase-over-firebase-js-sdk).
+- You want to use native SDKs in your app.
+- You have a bare React Native app with React Native Firebase already configured but are migrating to use Expo SDK.
+- You want to use [Firebase Analytics](https://rnfirebase.io/analytics/usage) in your app.
+Note: Migrating from Expo Firebase packages?
+---
+If your project has been previously using `expo-firebase-analytics` and `expo-firebase-recaptcha` packages, you can migrate to the React Native Firebase library. For more information, see [Firebase migration guide](https://expo.fyi/firebase-migration-guide).
+---
+#### Caveats
+React Native Firebase requires [custom native code and cannot be used with Expo Go](/workflow/customizing/).
+### Install and initialize React Native Firebase
+Step 1: 
+#### Install expo-dev-client
+Since React Native Firebase requires custom native code, you need to install the `expo-dev-client` library in your project.
+It allows configuring any native code required by React Native Firebase using [Config plugins](/config-plugins/introduction/) without writing native code yourself.
+To install [`expo-dev-client`](/development/getting-started/#installing--expo-dev-client--in-your-project), run the following command in your project:
+```sh
+$ npx expo install expo-dev-client
+```
+Step 2: 
+#### Install React Native Firebase
+To use React Native Firebase, it is necessary to install the `@react-native-firebase/app` module. This module provides the core functionality for all other modules.
+It also adds custom native code in your project using a config plugin. You can install it using the following command:
+```sh
+$ npx expo install @react-native-firebase/app
+```
+**At this point, you must follow the instructions from [React Native Firebase documentation](https://rnfirebase.io/#managed-workflow)** as it covers all the steps required to configure your project with the library.
+Once you have configured the React Native Firebase library in your project, come back to this guide to learn how to run your project in the next step.
+Step 3: 
+#### Run the project
+If you are using **[EAS Build](/build/introduction/), you can create and install a development build** on your devices. You do not need to run the project locally before creating a development build.
+For more information on creating a development build, see the section on [installing a development build](/develop/development-builds/create-a-build/).
+Note: Run project locally?
+---
+If you want to run the project locally, you need both Android Studio and Xcode installed and configured on your machine. See [Local app development](/guides/local-app-development/) guide for more information.
+If a particular React Native Firebase module requires custom native configuration steps, you must add it as a `plugin` to [app config](/workflow/configuration/) file. Then, to run the project locally, run the `npx expo prebuild --clean` command to apply the native changes before the `npx expo run` commands.
+---
+### Next steps
+After configuring React Native Firebase library, you can use any module it provides in your Expo project.
+
+
+## Using Supabase
+
+Add a Postgres Database and user authentication to your React Native app with Supabase.
+
+[Supabase](https://supabase.com/?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a Postgres database, user authentication, file storage, edge functions, realtime syncing, and a vector and AI toolkit. It's an open-source alternative to Google's Firebase.
+Supabase automatically [generates a REST API](https://supabase.com/docs/guides/api?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) from your database and employs a concept called [row level security (RLS)](https://supabase.com/docs/guides/auth/row-level-security?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to secure your data, making it possible to directly interact with your database from your React Native application without needing to go through a server!
+Supabase provides a TypeScript client library called [`supabase-js`](https://supabase.com/docs/reference/javascript/introduction?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to interact with the REST API. Alternatively, Supabase also exposes a [GraphQL API](https://supabase.com/docs/guides/database/extensions/pg_graphql?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) allowing you to use your favorite GraphQL client (for example, [Apollo Client](https://supabase.github.io/pg_graphql/usage_with_apollo/)) should you wish to.
+## Prerequisites
+Head over to [database.new](https://database.new?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to create a new Supabase project.
+### Get the API Keys
+Get the **Project URL** from the API settings and **Publishable key** from the API Keys:
+1. Go to the [API Settings](https://supabase.com/dashboard/project/_/settings/api) page in the Dashboard.
+2. Find your Project `URL` and `service_role` keys on this page.
+3. Then go to the [API Keys](https://supabase.com/dashboard/project/_/settings/api-keys)
+4. Find your Project **Publishable key** on this page under the API Keys tab.
+## Using the Supabase TypeScript SDK
+Using [`supabase-js`](https://supabase.com/docs/reference/javascript/introduction?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) is the most convenient way of leveraging the full power of the Supabase stack as it conveniently combines all the different services (database, auth, realtime, storage, edge functions) together.
+### Install and initialize the Supabase TypeScript SDK
+Step 1: 
+After you have created your [Expo project](/get-started/create-a-project/), install `@supabase/supabase-js` and the required dependencies using the following command:
+```sh
+$ npx expo install @supabase/supabase-js expo-sqlite
+```
+Step 2: 
+Create a helper file to initialize the Supabase client (`@supabase/supabase-js`). You need the API URL and the `Publishable` key copied [earlier](#get-the-api-keys). These variables are safe to expose in your Expo app since Supabase has [Row Level Security](https://supabase.com/docs/guides/auth/row-level-security?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) enabled in the Database.
+```ts utils/supabase.ts
+import 'expo-sqlite/localStorage/install';
+import { createClient } from '@supabase/supabase-js';
+const supabaseUrl = YOUR_REACT_NATIVE_SUPABASE_URL;
+const supabasePublishableKey = YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY;
+export const supabase = createClient(supabaseUrl, supabasePublishableKey, {
+  auth: {
+    storage: localStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+});
+```
+Now you can `import { supabase } from '/utils/supabase'` throughout your application to leverage the full power of Supabase!
+## Next steps
+
+
+# Emails
+
+## Using Resend
+
+Learn how to integrate Resend in your Expo and React Native app to programmatically send emails with Expo Router's API Routes.
+
+[Resend](https://resend.com/) is an email API platform designed for developers. It allows you to send, receive, and manage emails programmatically through an API. You can use it to send transactional emails for use cases like newsletters, marketing emails, and more. The API also allows you to set up webhooks for email events, manage domains for deliverability, and receive emails via webhooks.
+This guide demonstrates the **essential steps to integrate Resend with your Expo and React Native project**.
+Video Tutorial: [How to send emails with Resend from your Expo app](https://www.youtube.com/watch?v=8sPD8SNcUFA)
+## Prerequisites
+Before you get started, you need to have the following:
+- A project using [Expo Router](/router/installation/)
+- An [Expo account](https://expo.dev/signup) to deploy the API route using EAS Hosting
+- EAS CLI installed globally (`npm install -g eas-cli`)
+- A [Resend account](https://resend.com/)
+Step 1: 
+## Create a Resend API key
+Go to the [Resend dashboard](https://resend.com/api-keys) > **API Keys** and click on **Create API Key** to generate an API key.
+Once you have generated the API key, save it to **.env.local** file in your Expo project:
+```shell .env.local
+RESEND_API_KEY=YOUR_RESEND_API_KEY
+```
+> **Note:** Do not commit **.env.local** file to your Version Control System (VCS) like Git. The API key is sensitive and should not be exposed to the public. You must add the file to your **.gitignore** file to ignore it.
+Step 2: 
+## Install Resend SDK
+In your Expo project, install the Resend SDK using the following command:
+```sh
+$ npx expo install resend
+```
+The resend SDK library is a server-only library. It allows you to send emails from the server-side code of your app. Since this guide uses [API Routes](/router/web/api-routes/) to handle email submissions, you need to install the resend as part of your Expo project.
+Step 3: 
+## Enable and create an API route
+To enable using API Routes in your Expo project, you need to set the web.output to server in your [app config](/workflow/configuration/) file:
+```json app.json
+{
+  "web": {
+    "output": "server"
+  }
+}
+```
+Then, [create an API route](/router/web/api-routes/#create-an-api-route) to handle email submissions. Inside the **app** directory, create a new file called **api/audience+api.ts**. The `+api.ts` extension is used by Expo Router to identify the file as an API Route. To test the integration, you can add the minimal code below to send an email to a recipient using Resend SDK:
+```tsx app/api/audience+api.ts
+import { Resend } from 'resend';
+const resend = new Resend(process.env.RESEND_API_KEY);
+export async function POST(request: Request) {
+  const body = await request.json();
+  const { email } = body;
+  if (!email) {
+    return Response.json({ success: false });
+  }
+  await resend.contacts.create({
+    email: email,
+    // Provide dynamic values on your own
+    firstName: 'Steve',
+    lastName: 'Wozniak',
+    unsubscribed: false,
+  });
+  return Response.json({ success: true });
+}
+```
+In the above code snippet, the `POST` [request function](/router/web/api-routes/#request-body) is executed when the `/api/audience` route is matched. The function receives a `Request` object as an argument, which contains the HTTP request body. Then, the function extracts the `email` from the request body and sends it to the Resend API to add it to the audience.
+Step 4: 
+## Add a base URL
+To make the API route accessible from your Expo app, you need to add the base URL as an environment variable in your Expo project. Add the following code to your **.env.local** file:
+```shell .env.local
+EXPO_PUBLIC_BASE_URL=https://example-resend.expo.app # Deployed URL via EAS Hosting
+EXPO_PUBLIC_BASE_URL_LOCAL=http://localhost:8081 # Only required for testing locally
+```
+To test Resend integration locally, you can use `EXPO_PUBLIC_BASE_URL_LOCAL` to point to your local development server, whose URL is provided when you run `npx expo start`. Later in this guide, when you deploy your app to EAS Hosting, ensure to update the `EXPO_PUBLIC_BASE_URL` to the deployed URL.
+Note that only variables prefixed with `EXPO_PUBLIC_` can be used in the frontend code, so you can have the above as well as the Resend API key in the same **.env** file, but the `RESEND_API_KEY` will only be accessible from the server-side code (that is, files ending with **+api**).
+Step 5: 
+## Add a form to your Expo project
+The following example code shows a simple form to collect email addresses from app users. In a real-world scenario, you would want to add validation and error handling to the form. For example, the following code is added to the **app/index.tsx** file:
+```tsx app/index.tsx
+import { useRef, useState } from 'react';
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+export default function Index() {
+  const [email, setEmail] = useState('');
+  const inputRef = useRef<TextInput>(null);
+  const handleSubmit = async () => {
+    if (!email) {
+      alert('Email is required.');
+      return;
+    }
+    if (inputRef.current) {
+      inputRef.current.blur();
+    }
+    try {
+      const response = await fetch(
+        `${process.env.EXPO_PUBLIC_BASE_URL_LOCAL}/api/audience`, // Switch to `EXPO_PUBLIC_BASE_URL` after deploying to EAS Hosting
+        {
+          method: 'POST',
+          body: JSON.stringify({ email }),
+        }
+      );
+      // You can handle other response validations here.
+      await response.json();
+      Alert.alert('Success', 'Email sent successfully.', [
+        {
+          text: 'Continue',
+        },
+      ]);
+    } catch (error) {
+      alert('Something went wrong.');
+      console.error(error);
+    }
+  };
+  return (
+    <View style={styles.container}>
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        ref={inputRef}
+        autoCapitalize="none"
+        keyboardType="email-address"
+        style={styles.input}
+      />
+      <Pressable style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Send email</Text>
+      </Pressable>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 10,
+    width: '60%',
+    height: '6%',
+    borderRadius: 10,
+    marginBottom: 10,
+    margin: 20,
+  },
+  button: {
+    padding: 10,
+    backgroundColor: '#000000',
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+});
+```
+Step 6: 
+## Deploy the API route to EAS Hosting
+To make the API route (`/api/audience`) accessible from a URL, you can deploy it to [EAS Hosting](/eas/hosting/get-started/).
+1. Run the following command to export the web and API assets. The exported files are saved inside a **dist** directory and the API route file is part of this directory:
+```sh
+$ npx expo export --platform web
+```
+2. Run the following to create a production deployment via EAS Hosting:
+```sh
+$ eas deploy --prod
+```
+The `eas deploy --prod` command will:
+- Automatically create an EAS project if you haven't already
+- Prompt you to choose the preview URL for your project. Ensure that this URL is the same as the value of `EXPO_PUBLIC_BASE_URL` in your **.env.local** file. This will make the API route accessible from your Expo app while deployed in production
+> **Note:** Before deployment, you need to use the `EXPO_PUBLIC_BASE_URL` as your hosted domain in your form screen (**app/index.tsx**).
+## Learn more about Resend
+For more information about Resend's API and usage, see [Resend's official documentation](https://resend.com/docs/introduction).
+
+
+# Feature flags
+
+## React Native feature flag services
+
+An overview of feature flag services available in the Expo and React Native ecosystem.
+
+A feature flag (also known as a _feature gate_) is a mechanism that enables and disables features remotely. They are a safe way to rollout new features to your app users without deploying additional code. You can use them for testing in production, A/B testing, or to ship new app features such as UI elements.
+## Feature flag services
+The following libraries provide robust support for feature flag functionality and out-of-the-box compatibility with Expo apps using [Continuous Native Generation (CNG)](/workflow/continuous-native-generation/) and [config plugins](/config-plugins/introduction/) for seamless integration in your app.
+### Posthog
+[PostHog](https://posthog.com/) is an open-source product analytics platform that provides comprehensive feature flagging capabilities alongside analytics, session recordings, and A/B testing. It supports real-time feature toggles with user segmentation and the ability to roll back features instantly, making it an excellent choice for teams that want analytics and feature management in a single platform. It includes built-in A/B testing and multivariate testing functionality, allowing you to run experiments directly through feature flags while collecting detailed analytics on feature adoption and performance metrics. The service also supports bootstrap flags to eliminate loading states and improve user experience.
+### Statsig
+[Statsig](https://statsig.com/) is a feature management platform designed for data-driven product development that provides advanced statistical analysis, gradual rollouts, and sophisticated targeting capabilities with built-in metrics and performance monitoring for feature releases. The platform offers a robust SDK for React Native and Expo, with automatic event logging and dynamic configurations, making it particularly well-suited for teams focused on rigorous experimentation and data-driven decision-making.
+### LaunchDarkly
+[LaunchDarkly](https://launchdarkly.com/) is an enterprise-grade feature management platform that enables instant feature toggles and targeted rollouts with comprehensive dashboard controls, advanced user targeting, and robust experimentation tools that provide real-time flag updates. The SDK includes advanced features such as hooks for React integration, context identification and modification, comprehensive logging, support for multiple environments in development workflows, private attributes for handling sensitive data, and relay proxy configuration for enhanced security and performance.
+### Firebase Remote Config
+[Firebase Remote Config](https://firebase.google.com/docs/remote-config) is a cloud service allows you to change the appearance and functionality of your app without requiring an app update. Remote Config values are managed through the Firebase console and accessed via a JavaScript API, which gives you full control over when and how these values affect your app. The service supports conditional targeting based on user properties, app versions, custom attributes and real-time updates.
+
+
+# In-app purchases
+
+## Using in-app purchases
+
+Learn about how to use in-app purchases in your Expo app.
+
+In-app purchases (IAP) are transactions within a mobile or desktop application where users can buy digital goods or additional features. This guide provides a list of popular libraries and tutorials for implementing IAP in your Expo app.
+> In-app purchase libraries require configuring custom native code. Native code is not configurable when using Expo Go. Instead, create a [development build](/develop/development-builds/introduction/), which allows using a native library in your project.
+## Tutorial
+Video Tutorial: [Watch: How to Implement In-App Purchases in Expo](https://www.youtube.com/watch?v=R3fLKC-2Qh0)
+## Libraries
+The following libraries provide robust support for in-app purchase functionality and out-of-the-box compatibility with Expo apps using [CNG](/workflow/continuous-native-generation/) and [Config Plugins](/config-plugins/introduction/) for seamless integration in your app.
+
+
+# Push notifications
+
+## Using push notifications
+
+Learn about push notification services that are compatible with Expo and React Native apps.
+
+Expo apps can work with any notification service or any of the notification capabilities offered by the Android and iOS operating systems. Even if a package doesn't yet exist for a feature, native code can be written to access it via the [Expo Modules API](/modules/overview/), and native project configurations can be automated using [config plugins](/config-plugins/introduction/). The following options provide purpose-built Expo integrations, including config plugins where necessary, for implementing push notifications in your app:
+> The [`expo-notifications`](/versions/latest/sdk/notifications/) library is designed and tested to work with Expo's push notification service and notifications sent directly from FCM and APNS. Some advanced features may not be compatible with third-party providers, as they often have their own native and React Native SDKs optimized for their services.
+## Expo push notifications
+[Expo Notifications](/versions/latest/sdk/notifications/) provides a unified API for handling push notifications across Android and iOS. It integrates seamlessly with your Expo account and is free to use.
+### Key capabilities
+- Fully compatible with the [`expo-notifications`](/versions/latest/sdk/notifications/) library
+- Includes an EAS dashboard to track notification delivery to FCM and APNs
+- Supports testing notifications with the [Expo Notifications Tool](https://expo.dev/notifications)
+### Considerations and limitations
+- iOS Notification Service Extension for adding additional content to notifications, such as images, is not formally included, but you can add it using a config plugin with custom native code and configuration ([example](https://github.com/expo/expo/pull/36202)).
+- Volumes are limited to 600 notifications per second per project.
+For implementation details, see the following guides:
+## OneSignal
+[OneSignal](https://onesignal.com/) is a customer engagement platform that provides push notifications, in-app messaging, SMS, and email services for web and mobile apps. OneSignal supports rich media in notifications and engagement analytics. It includes an [Expo config plugin](https://github.com/OneSignal/onesignal-expo-plugin) for direct integration into your Expo project.
+## Braze
+[Braze](https://www.braze.com/) is a customer engagement platform that delivers personalized, cross-channel messaging through push notifications, in-app messaging, email, SMS, and web. Braze supports rich notification content, push notification campaigns, and support for resending notifications after failed deliveries on Android. It provides a [React Native SDK](https://github.com/braze-inc/braze-react-native-sdk) and a [config plugin](https://github.com/braze-inc/braze-expo-plugin/tree/main). Check out the [Expo example app](https://github.com/braze-inc/braze-expo-plugin/tree/main/example) for more details.
+## Customer.io
+[Customer.io](http://Customer.io) is a customer engagement platform that allows you to design powerful automated workflows utilizing push notifications, in-app messaging, email, SMS capabilities, and more. Its visual workflow builder allows you to automate complex, data-driven campaigns across multiple channels. Customer.io supports device-side metrics collection that can be used to customize push notifications tailored to user behaviors and preferences. Customer.io provides an [Expo plugin](https://github.com/customerio/customerio-expo-plugin) for direct integration with your Expo project and documentation for using Customer.io push notifications alongside other providers.
+## CleverTap
+[CleverTap](https://clevertap.com/) is an all-in-one customer engagement platform that helps you deliver personalized, real-time, omnichannel messaging across push notifications, in-app messages, email, and more. It offers advanced segmentation, analytics, and campaign automation &mdash; built to scale with your business. The [CleverTap React Native SDK](https://developer.clevertap.com/docs/react-native) and [Expo config plugin](https://github.com/CleverTap/clevertap-expo-plugin) make it easy to integrate CleverTap into your Expo projects. The config plugin handles all the native module setup during the prebuild process, allowing you to configure CleverTap through your app config without having to manually modify native code. For more information, check out the [CleverTap Example Plugin](https://github.com/CleverTap/clevertap-expo-plugin/tree/main/CTExample).
+## Send notifications directly via FCM and APNs
+You may choose to send directly to platform push API's from your backend. In this case, you can still use [`expo-notifications`](/versions/latest/sdk/notifications/) to retrieve the native push token and configure notifications separately for each platform.
+Although the client-side code remains cross-platform with [`expo-notifications`](/versions/latest/sdk/notifications/), you will need to implement server-side logic to interact with the [FCM](https://firebase.google.com/docs/cloud-messaging) and [APNs](https://developer.apple.com/documentation/usernotifications) APIs individually.
+## React Native Firebase messaging
+[React Native Firebase](https://rnfirebase.io/) provides a messaging module that lets you use [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging) as a unified push notification service for both Android and iOS. While FCM is often associated with Android notifications, it also supports iOS by routing messages through Apple Push Notification service (APNs) behind the scenes.
+This approach differs from using FCM solely for Android notifications. Instead, Firebase's cross-platform SDK handles notifications for both platforms through a single service.
+> Even though FCM handles notifications for both platforms, iOS notifications still go through APNs. Firebase automatically manages this routing. Learn more in the [React Native Firebase messaging documentation](https://rnfirebase.io/messaging/usage).
+## Tips and important considerations
+- **Avoid mixing client-side implementations**: Different notification services may have conflicting client-side implementations. Use a consistent approach to prevent potential issues.
+- **Web notifications**: Expo notifications do not support web notifications. However, some third-party solutions may offer this capability. Consider your app's requirements when choosing a service.
+- **Token management**: Track both Expo push tokens and native device tokens in your database. This provides flexibility for future integrations, especially with marketing tools that send notifications directly via FCM or APNs.
+
+
+# Tools
+
+## Using ESLint and Prettier
+
+A guide on configuring ESLint and Prettier to format Expo apps.
+
+[ESLint](https://eslint.org/) is a JavaScript linter that helps you find and fix errors in your code. It's a great tool to help you write better code and catch mistakes before they make it to production. In conjunction, you can use [Prettier](https://prettier.io/docs/en/), a code formatter that ensures all the code files follow a consistent styling.
+This guide provides steps to set up and configure ESLint and Prettier.
+## ESLint
+### Setup
+> **info** **From SDK 53 onwards**, the default ESLint config file uses the [Flat config](https://eslint.org/blog/2022/08/new-config-system-part-2/) format. It also supports legacy config. **For SDK 52 and earlier**, the default ESLint config file uses legacy config and does not support Flat config.
+To set up ESLint in your Expo project, you can use the Expo CLI to install the necessary dependencies. Running this command also creates a **eslint.config.js** file at the root of your project which extends configuration from [`eslint-config-expo`](https://github.com/expo/expo/tree/main/packages/eslint-config-expo).
+```sh
+$ npx expo lint
+```
+### Usage
+> **info** **Recommended:** If you're using VS Code, install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) to lint your code as you type.
+You can lint your code manually from the command line with the `npx expo lint` script:
+```sh
+run the command again to lint your code.
+$ npx expo lint
+```
+Running the above command will run the `lint` script from **package.json**.
+```sh
+/app/components/HelloWave.tsx
+  22:6 warning React Hook useEffect has a missing dependency: "rotateAnimation".
+       Either include it or remove the dependency array react-hooks/exhaustive-deps
+â 1 problem (0 errors
+1 warning)
+```
+### Environment configuration
+ESLint is generally configured for a single environment. However, the source code is written in JavaScript in an Expo app that runs in multiple different environments. For example, the **app.config.js**, **metro.config.js**, **babel.config.js**, and **app/+html.tsx** files are run in a Node.js environment. It means they have access to the global `__dirname` variable and can use Node.js modules such as `path`. Standard Expo project files like **app/index.js** can be run in Hermes, Node.js, or the web browser.
+The approach to configure environment-specific globals differs between Flat config and legacy config:
+For Flat config: 
+For Flat config, **metro.config.js** files already work with Node.js globals because of the built-in support in `eslint-config-expo`. For other configuration files that might need Node.js globals, use [`languageOptions.globals`](https://eslint.org/docs/latest/use/configure/language-options#predefined-global-variables) in your **eslint.config.js**:
+```js eslint.config.js
+const { defineConfig, globalIgnores } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+module.exports = defineConfig([
+  globalIgnores(['dist/*']),
+  expoConfig,
+  {
+    files: ['babel.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
+]);
+```
+For example, with this setup, you can now use Node.js globals in **babel.config.js**:
+```js babel.config.js
+import path from 'path';
+const __dirname = path.dirname(__filename);
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+  };
+};
+```
+For Legacy config: 
+For legacy config, you can add the `eslint-env` comment to the top of a file to tell ESLint which environment the file is running in:
+```js metro.config.js
+/* eslint-env node */
+const { getDefaultConfig } = require('expo/metro-config');
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(
+);
+module.exports = config;
+```
+## Prettier
+### Installation
+To install Prettier in your project:
+For macOS/Linux: 
+```sh
+$ npx expo install prettier eslint-config-prettier eslint-plugin-prettier --dev
+```
+For Windows: 
+```sh
+$ npx expo install prettier eslint-config-prettier eslint-plugin-prettier "--" --dev
+```
+### Setup
+For Flat config: 
+To integrate Prettier with ESLint, update your **eslint.config.js**:
+```js eslint.config.js
+const { defineConfig } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+module.exports = defineConfig([
+  expoConfig,
+  eslintPluginPrettierRecommended,
+  {
+    ignores: ['dist/*'],
+  },
+]);
+```
+For Legacy config: 
+To integrate Prettier with ESlint, update your **.eslintrc.js**:
+```js .eslintrc.js
+module.exports = {
+  extends: ['expo', 'prettier'],
+  ignorePatterns: ['/dist/*'],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+  },
+};
+```
+> **Note:** In the above configuration, you can use `"prettier/prettier": "warn"` if you prefer these formatting issues as warnings instead of errors.
+Now, when you run `npx expo lint`, anything that is not aligned with Prettier formatting will be caught as an error.
+To customize Prettier settings, create a **.prettierrc** file at the root of your project and add your configuration.
+## Troubleshooting
+### ESLint is not updating in VS Code
+If you're using VS Code, install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) to lint your code as you type. You can try restarting the ESLint server by running the command `ESLint: Restart ESLint Server` from the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+### ESLint is slow
+ESLint can be slow to run on large projects. The easiest way to speed up the process is to lint fewer files. Add a **.eslintignore** file to your project root to ignore certain files and directories such as:
+```sh .eslintignore
+# @info Ignore the root <b>.expo</b> directory. #
+/.expo
+# @end #
+node_modules
+```
+## Migration to Flat config
+> **info** **Note:** Flat config is supported in Expo SDK 53 and later.
+Upgrade ESLint and `eslint-config-expo`:
+For macOS/Linux: 
+```sh
+$ npx expo install eslint eslint-config-expo  --dev
+```
+For Windows: 
+```sh
+$ npx expo install eslint eslint-config-expo "--" --dev
+```
+If you haven't customized your ESLint config at all, delete your **.eslintrc.js** and generate the new config with:
+```sh
+$ npx expo lint
+```
+Alternatively, migrate your config based on the [ESLint's migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). `npx expo lint` supports both legacy and flat config, so the new config will automatically be picked up by the CLI.
+
+
+## Using TypeScript
+
+An in-depth guide on configuring an Expo project with TypeScript.
+
+Expo has first-class support for [TypeScript](https://www.typescriptlang.org/). The JavaScript interface of Expo SDK is written in TypeScript.
+This guide provides a quick way to get started for a new project and also steps to migrate your existing JavaScript based Expo project to use TypeScript.
+## Quick start
+To create a new project, use the default template which includes base TypeScript configuration, example code, and basic navigation structure:
+```sh
+$ npx create-expo-app@latest
+```
+After you create a new project using the command above, make sure to follow instructions from:
+- [Set up your environment](/get-started/set-up-your-environment/) which provides required steps for setting local development environment.
+- [Start developing](/get-started/start-developing/) which provides information on triggering a development server, file structure, and details about other features.
+## Migrating existing JavaScript project
+To migrate your existing JavaScript based project to use TypeScript, follow the instructions below:
+Step 1: 
+### Rename files to use .tsx or .ts extension
+Rename files to convert them to TypeScript. For example, start with the root component file such as **App.js** and rename it to **App.tsx**:
+```sh
+$ mv App.js App.tsx
+```
+> **info** **Tip:** Use the **.tsx** extension if the file includes React components (JSX). If the file does not include any JSX, you can use the **.ts** file extension.
+Step 2: 
+### Install required development dependencies
+To install required `devDependencies` such as `typescript` and `@types/react` in **package.json**:
+For macOS/Linux: 
+```sh
+$ npx expo install typescript @types/react --dev
+```
+For Windows: 
+```sh
+$ npx expo install typescript @types/react "--" --dev
+```
+> **info** Alternatively, run `npx expo start` command to install `typescript` and `@types/react` dev dependencies.
+Note: Type checking project files with 
+---
+To type check your project's files run `tsc` command within the root of your project directory:
+```sh
+$ npm run tsc
+$ yarn tsc
+```
+---
+Step 3: 
+### Add base configuration with tsconfig.json
+A project's **tsconfig.json** should extend `expo/tsconfig.base` by default. You can automatically generate a **tsconfig.json** file by running the command:
+```sh
+$ npx expo customize tsconfig.json
+```
+The default configuration in **tsconfig.json** is user-friendly and encourages adoption. If you prefer **strict type checking** and reduce the chances of runtime errors, enable `strict` under [`compilerOptions`](https://www.typescriptlang.org/docs/handbook/compiler-options.html):
+```json tsconfig.json
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true
+  }
+}
+```
+Step 4: 
+### Path aliases (Optional)
+Expo CLI supports [path aliases](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping) in **tsconfig.json** automatically. It allows importing modules with custom aliases instead of relative paths.
+For example, to import `Button` component from **src/components/Button.tsx** using the alias **@/components/Button**, add the alias `@/*` in **tsconfig.json** and set it to the **src** directory:
+```json tsconfig.json
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+Note: Disable path aliases
+---
+`tsconfigPaths` is enabled by default which allows you to set path aliases. You can disable it by setting `tsconfigPaths` to `false` in the project's [app config](/workflow/configuration/):
+```json app.json
+{
+  "expo": {
+    "experiments": {
+      "tsconfigPaths": false
+    }
+  }
+}
+```
+---
+#### Considerations
+When using path aliases, consider the following:
+- Restart Expo CLI after modifying **tsconfig.json** to update path aliases. You don't need to clear the Metro cache when the aliases change.
+- If not using TypeScript, **jsconfig.json** can serve as an alternative to **tsconfig.json**.
+- Path aliases add additional resolution time when defined.
+- Path aliases are only supported by Metro (including Metro web) and not by the deprecated `@expo/webpack-config`.
+- Bare projects require additional setup for this feature. See the [Metro setup guide](/versions/latest/config/metro#bare-workflow-setup) for more information.
+Step 5: 
+### Absolute imports (Optional)
+To enable absolute imports from a project's root directory, define [`compilerOptions.baseUrl`](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url) the **tsconfig.json** file:
+```json tsconfig.json
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "baseUrl": "./"
+  }
+}
+```
+For example, setting the above configuration allows importing `Button` component from the path **src/components/Button**:
+```tsx
+import Button from 'src/components/Button';
+```
+#### Considerations
+When using absolute imports, consider the following:
+- `compilerOptions.paths` are resolved relative to the `compilerOptions.baseUrl` if it is defined, otherwise they're resolved against the project root directory.
+- `compilerOptions.baseUrl` is resolved before node modules. This means if you have a file named `./path.ts`, it can be imported instead of a node module named `path`.
+- Restarting Expo CLI is necessary to update [`compilerOptions.baseUrl`](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url) after modifying the **tsconfig.json**.
+- If you're not using TypeScript, **jsconfig.json** can serve as an alternative to **tsconfig.json**.
+- Absolute imports are only supported by Metro (including Metro web) and not by `@expo/webpack-config`.
+- Bare projects require additional setup for this feature. See the [versioned Metro setup guide](/versions/latest/config/metro#bare-workflow-setup) for more information.
+## Type generation
+Some Expo libraries provide both static types and type generation capabilities. These types are automatically generated when the project builds or by running the `npx expo customize tsconfig.json` command.
+## TypeScript for project's config files
+Additional setup is required to use TypeScript for configuration files such as **metro.config.js** or **app.config.js**.
+Install [`tsx`](https://tsx.is/) as a dev dependency and utilize its [`tsx/cjs` require hook](https://tsx.is/dev-api/entry-point#commonjs-mode-only) to import TypeScript files within your JS configuration file. This hook allows TypeScript imports while keeping the root file as JavaScript. The command below adds `tsx` so `import 'tsx/cjs'` works in the following sub-section examples.
+For macOS/Linux: 
+```sh
+$ npx expo install tsx --dev
+```
+For Windows: 
+```sh
+$ npx expo install tsx "--" --dev
+```
+### metro.config.js
+Update **metro.config.js** to require **metro.config.ts** file:
+```js metro.config.js
+require('tsx/cjs'); // Add this to import TypeScript files
+module.exports = require('./metro.config.ts');
+```
+Update **metro.config.ts** file with your project's metro configuration:
+```ts metro.config.ts
+import { getDefaultConfig } from 'expo/metro-config';
+const config = getDefaultConfig(__dirname);
+module.exports = config;
+```
+Note: Deprecated: webpack.config.js
+---
+Install the `@expo/webpack-config` package.
+```js webpack.config.js
+require('tsx/cjs'); // Add this to import TypeScript files
+module.exports = require('./webpack.config.ts');
+```
+```ts webpack.config.ts
+import createExpoWebpackConfigAsync from '@expo/webpack-config/webpack';
+import { Arguments, Environment } from '@expo/webpack-config/webpack/types';
+module.exports = async function (env: Environment, argv: Arguments) {
+  const config = await createExpoWebpackConfigAsync(env, argv);
+  // Customize the config before returning it.
+  return config;
+};
+```
+---
+### app.config.js
+**app.config.ts** is supported by default. However, it doesn't support external TypeScript modules, or **tsconfig.json** customization. You can use the following approach to get a more comprehensive TypeScript setup:
+```ts app.config.ts
+import 'tsx/cjs'; // Add this to import TypeScript files
+import { ExpoConfig } from 'expo/config';
+const config: ExpoConfig = {
+  name: 'my-app',
+  slug: 'my-app',
+};
+export default config;
+```
+## Other TypeScript features
+Some language features may require additional configuration. For example, if you want to use decorators you'll need to add the `experimentalDecorators` option. For more information on the available properties see the [TypeScript compiler options](https://www.typescriptlang.org/docs/handbook/compiler-options.html) documentation.
+## Learn how to use TypeScript
+A good place to start learning TypeScript is the official [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html).
+**For TypeScript and React components,** we recommend referring to the [React TypeScript CheatSheet](https://github.com/typescript-cheatsheets/react) to learn how to type your React components in a variety of common situations.
+
+
+# TV apps
+
+## Build Expo apps for TV
+
+A guide for building an Expo app for an Android TV or Apple TV target.
+
+> **Warning** Not all Expo features and SDK libraries are available on TV. For more details, check the [See which libraries are supported](#see-which-libraries-are-supported).
+React Native is supported on Android TV and Apple TV through the [React Native TV project](https://github.com/react-native-tvos/react-native-tvos). This technology extends beyond TV, offering a comprehensive core repo fork with support for phone and TV targets, including Hermes and Fabric.
+Using the React Native TV library as the `react-native` dependency in an Expo project, it becomes capable of targeting both mobile (Android, iOS) and TV (Android TV, Apple TV) devices.
+## Prerequisites
+The necessary changes to the native Android and iOS files are minimal and can be automated with a [config plugin](https://github.com/react-native-tvos/config-tv/tree/main/packages/config-tv) if you use [prebuild](/workflow/prebuild/). Below is a list of changes made by the config plugins, which you can alternatively apply manually:
+### Android
+- **AndroidManifest.xml** is modified:
+  - The default phone portrait orientation is removed
+  - The required intent for TV apps is added
+- **MainApplication.kt** is modified to remove unsupported Flipper invocations
+### iOS
+- **ios/Podfile** is modified to target tvOS instead of iOS
+- The Xcode project is modified to target tvOS instead of iOS
+- The splash screen (**SplashScreen.storyboard**) is modified to work on tvOS
+## System requirements for TV development
+### Android TV
+- [Node.js (LTS)](https://nodejs.org/en/) on macOS or Linux.
+- Android Studio (Iguana or later).
+- In the Android Studio SDK manager, select the dropdown for the Android SDK you are using (API version 31 or later), and make sure an Android TV system image is selected for installation. (For Apple silicon, choose the ARM 64 image. Otherwise, choose the Intel x86_64 image).
+- After installing the Android TV system image, create an Android TV emulator using that image (the process is the same as creating an Android phone emulator).
+### Apple TV
+- [Node.js (LTS)](https://nodejs.org/en/) on macOS.
+- Xcode 16 or later.
+- tvOS SDK 17 or later. (This is not installed automatically with Xcode. You can install it later with `xcodebuild -downloadAllPlatforms`).
+## Quick start
+The fastest way to generate a new project is described in the [TV example](https://github.com/expo/examples/tree/master/with-tv) within the Expo examples repository:
+```sh
+$ npx create-expo-app MyTVProject -e with-tv
+```
+You can start with the [TV Router example](https://github.com/expo/examples/tree/master/with-router-tv):
+```sh
+$ npx create-expo-app MyTVProject -e with-router-tv
+```
+This creates a new project that uses [Expo Router](/router/introduction/) for file-based navigation, modeled after the [**create-expo-app** default template](/get-started/create-a-project/).
+Note: See which libraries are supported
+---
+At this time, TV applications work with the following libraries and APIs listed below:
+- [AppleAuthentication](/versions/latest/sdk/apple-authentication/)
+- [Application](/versions/latest/sdk/application/)
+- [Audio](/versions/latest/sdk/audio)
+- [Asset](/versions/latest/sdk/asset/)
+- [AsyncStorage](/versions/latest/sdk/async-storage/)
+- [AV](/versions/latest/sdk/av/)
+- [BackgroundTask](/versions/latest/sdk/background-task/)
+- [BlurView](/versions/latest/sdk/blur-view/)
+- [BuildProperties](/versions/latest/sdk/build-properties/)
+- [Constants](/versions/latest/sdk/constants/)
+- [Crypto](/versions/latest/sdk/crypto/)
+- [DevClient](/versions/latest/sdk/dev-client/)
+- [Device](/versions/latest/sdk/device/)
+- [Expo UI](/versions/latest/sdk/ui/)
+- [FileSystem](/versions/latest/sdk/filesystem/)
+- [FlashList](/versions/latest/sdk/flash-list/)
+- [Font](/versions/latest/sdk/font/)
+- [GlassEffect](/versions/latest/sdk/glass-effect/)
+- [Image](/versions/latest/sdk/image)
+- [ImageManipulator](/versions/latest/sdk/imagemanipulator/)
+- [KeepAwake](/versions/latest/sdk/keep-awake/)
+- [LinearGradient](/versions/latest/sdk/linear-gradient/)
+- [Localization](/versions/latest/sdk/localization/)
+- [Manifests](/versions/latest/sdk/manifests/)
+- [MediaLibrary](/versions/latest/sdk/media-library/)
+- [NetInfo](/versions/latest/sdk/netinfo/)
+- [Network](/versions/latest/sdk/network/)
+- [Reanimated](/versions/latest/sdk/reanimated/)
+- [SafeAreaContext](/versions/latest/sdk/safe-area-context/)
+- [SecureStore](/versions/latest/sdk/securestore/)
+- [Skia](/versions/latest/sdk/skia/)
+- [SplashScreen](/versions/latest/sdk/splash-screen/)
+- [SQLite](/versions/latest/sdk/sqlite/)
+- [Svg](/versions/latest/sdk/svg/)
+- [SystemUI](/versions/latest/sdk/system-ui/)
+- [TaskManager](/versions/latest/sdk/task-manager/)
+- [TrackingTransparency](/versions/latest/sdk/tracking-transparency/)
+- [Updates](/versions/latest/sdk/updates/)
+- [Video](/versions/latest/sdk/video/)
+- [VideoThumbnails](/versions/latest/sdk/video-thumbnails/)
+TV also works with [React Navigation](https://reactnavigation.org/), [React Native Skia](https://shopify.github.io/react-native-skia/), and many other commonly used third-party React Native libraries. See [React Native directory](https://reactnative.directory/?tvos=true) to learn more about supported third-party libraries.
+#### Limitations
+- The [Expo DevClient](/versions/latest/sdk/dev-client/) library is only supported in SDK 54 and later:
+  - **Android TV**: All operations are supported, similar to an Android phone.
+  - **Apple TV**: Basic operations with a local or tunneled packager are supported. Authentication to EAS and listing of EAS builds and updates is not yet supported.
+---
+## Integration with an existing Expo project
+The following walkthrough describes the steps required to modify an Expo project for TV.
+Step 1: 
+### Modify dependencies for TV
+In **package.json**, modify the `react-native` dependency to use the TV repo, and exclude this dependency from [`npx expo install` version validation](/more/expo-cli/#configuring-dependency-validation).
+> **Warning** The `react-native-tvos` version should match the Expo SDK you are using. For example, Expo SDK 54 uses React Native 0.81, so you should use `react-native-tvos@0.81-stable` (the latest 0.81 version) as shown below. See the [SDK compatibility table](/versions/latest/#each-expo-sdk-version-depends-on-a-react-native-version) for the correct version to use for older SDKs.
+```json package.json
+{
+  "dependencies": {
+    "react-native": "npm:react-native-tvos@0.81-stable",
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native"
+      ]
+    }
+  }
+}
+```
+Step 2: 
+### Add the TV config plugin
+```sh
+$ npx expo install @react-native-tvos/config-tv -- --dev
+```
+When installed, the plugin will modify the project for TV when either:
+- The environment variable `EXPO_TV` is set to `1`
+- The plugin parameter `isTV` is set to `true`
+Verify that this plugin appears in **app.json**:
+```json app.json
+{
+  "plugins": ["@react-native-tvos/config-tv"]
+}
+```
+To see additional information on the plugin's actions during prebuild, you can set [debug environment variables](https://github.com/debug-js/debug#conventions) before running prebuild. (See also our documentation on [Expo CLI environment variables](/more/expo-cli/#environment-variables).)
+```sh
+$ export DEBUG=expo:*
+$ export DEBUG=expo:react-native-tvos:config-tv
+```
+Step 3: 
+### Run prebuild
+Set the `EXPO_TV` environment variable, and run prebuild to make the TV modifications to the project.
+```sh
+$ export EXPO_TV=1
+$ npx expo prebuild --clean
+```
+> **Note**: The `--clean` argument is recommended, and is required if you have existing Android and iOS directories in the project.
+Step 4: 
+### Build for Android TV
+Start an Android TV emulator and use the following command to start the app on the emulator:
+```sh
+$ npx expo run:android
+```
+Step 5: 
+### Build for Apple TV
+Run the following command to build and run the app on an Apple TV simulator:
+```sh
+$ npx expo run:ios
+```
+Step 6: 
+### Revert TV changes and build for phone
+You can revert the changes for TV and go back to phone development by unsetting `EXPO_TV` and running prebuild again:
+```sh
+$ unset EXPO_TV
+$ npx expo prebuild --clean
+```
+Step 7: 
+### Create EAS Build profiles for both TV and phone
+Since the TV build can be driven by the value of an environment variable, it is easy to set up EAS Build profiles that build from the same source but target TV instead of phone.
+The following example **eas.json** shows how to extend existing profiles (`development` and `preview`) to create TV profiles (`development_tv` and `preview_tv`).
+```json eas.json
+{
+  "cli": {
+    "version": ">= 5.2.0"
+  },
+  "build": {
+    "base": {
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk",
+        "withoutCredentials": true
+      },
+      "channel": "base"
+    },
+    "development": {
+      "extends": "base",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug"
+      },
+      "channel": "development"
+    },
+    "development_tv": {
+      "extends": "development",
+      "env": {
+        "EXPO_TV": "1"
+      },
+      "channel": "development"
+    },
+    "preview": {
+      "extends": "base",
+      "channel": "preview"
+    },
+    "preview_tv": {
+      "extends": "preview",
+      "env": {
+        "EXPO_TV": "1"
+      },
+      "channel": "preview"
+    }
+  },
+  "submit": {}
+}
+```
+## Examples and demonstration projects
+
+
+# Web apps
+
+## Using Next.js with Expo for Web
+
+A guide for integrating Next.js with Expo for the web.
+
+> **warning** Using Next.js is not an official part of Expo's universal app development workflow.
+[Next.js](https://nextjs.org/) is a React framework that provides simple page-based routing as well as server-side rendering. To use Next.js with the Expo SDK, we recommend using [`@expo/next-adapter`](https://github.com/expo/expo-cli/tree/main/packages/next-adapter) library to handle the configuration.
+Using Expo with Next.js means you can share some of your existing components and APIs across your mobile and web app. Next.js has its own CLI that you'll need to use when developing for the web platform, so **you'll need to start your web projects with the Next.js CLI and not with `npx expo start`**.
+> Next.js can only be used with Expo for web as there is no support for Server-Side Rendering (SSR) for native apps.
+## Automatic setup
+To quickly get started, create a new project using [with-nextjs](https://github.com/expo/examples/tree/master/with-nextjs) template:
+```sh
+$ npx create-expo-app -e with-nextjs
+```
+- **Native**: `npx expo start` &mdash; start the Expo project
+- **Web**: `npx next dev` &mdash; start the Next.js project
+## Manual setup
+### Install dependencies
+Ensure you have `expo`, `next`, `@expo/next-adapter` installed in your project:
+```sh
+$ yarn add expo next @expo/next-adapter
+```
+### Transpilation
+Configure Next.js to transform language features:
+Note: Next.js with swc. (Recommended)
+---
+Using Next.js with SWC is recommended. You can configure the [**babel.config.js**](/versions/latest/config/babel/) to only account for native:
+```js babel.config.js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+  };
+};
+```
+You will also have to [force Next.js to use SWC](https://nextjs.org/docs/messages/swc-disabled) by adding the following to your **next.config.js**:
+```js next.config.js
+module.exports = {
+  experimental: {
+    forceSwcTransforms: true,
+  },
+};
+```
+---
+Note: Next.js with Babel. (Not recommended)
+---
+Adjust your **babel.config.js** to conditionally add `next/babel` when bundling with webpack for web:
+```js babel.config.js
+module.exports = function (api) {
+  // Detect web usage (this may change in the future if Next.js changes the loader)
+  const isWeb = api.caller(
+    caller =>
+      caller && (caller.name === 'babel-loader' || caller.name === 'next-babel-turbo-loader')
+  );
+  return {
+    presets: [
+      // Only use next in the browser, it'll break your native project
+      isWeb && require('next/babel'),
+      'babel-preset-expo',
+    ].filter(Boolean),
+  };
+};
+```
+---
+### Next.js configuration
+Add the following to your **next.config.js**:
+```js next.config.js
+const { withExpo } = require('@expo/next-adapter');
+module.exports = withExpo({
+  // transpilePackages is a Next.js +13.1 feature.
+  // older versions can use next-transpile-modules
+  transpilePackages: [
+    'react-native',
+    'react-native-web',
+    'expo',
+    // Add more React Native/Expo packages here...
+  ],
+});
+```
+The fully qualified Next.js config may look like:
+```js next.config.js
+const { withExpo } = require('@expo/next-adapter');
+/** @type {import('next').NextConfig} */
+const nextConfig = withExpo({
+  reactStrictMode: true,
+  swcMinify: true,
+  transpilePackages: [
+    'react-native',
+    'react-native-web',
+    'expo',
+    // Add more React Native/Expo packages here...
+  ],
+  experimental: {
+    forceSwcTransforms: true,
+  },
+});
+module.exports = nextConfig;
+```
+### React Native Web styling
+The package `react-native-web` builds on the assumption of reset CSS styles. Here's how you reset styles in Next.js using the **pages** directory.
+```jsx pages/_document.js
+import { Children } from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { AppRegistry } from 'react-native';
+// Follows the setup for react-native-web:
+// https://necolas.github.io/react-native-web/docs/setup/#root-element
+// Plus additional React Native scroll and text parity styles for various
+// browsers.
+// Force Next-generated DOM elements to fill their parent's height
+const style = `
+html, body, #__next {
+  -webkit-overflow-scrolling: touch;
+}
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  /* Allows you to scroll below the viewport; default value is visible */
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: scrollbar;
+}
+`;
+export default class MyDocument extends Document {
+  static async getInitialProps({ renderPage }) {
+    AppRegistry.registerComponent('main', () => Main);
+    const { getStyleElement } = AppRegistry.getApplication('main');
+    const page = await renderPage();
+    const styles = [
+      <style key="react-native-style" dangerouslySetInnerHTML={{ __html: style }} />,
+      getStyleElement(),
+    ];
+    return { ...page, styles: Children.toArray(styles) };
+  }
+  render() {
+    return (
+      <Html style={{ height: '100%' }}>
+        <Head />
+        <body style={{ height: '100%', overflow: 'hidden' }}>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+```
+```jsx pages/_app.js
+import Head from 'next/head';
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
+}
+```
+## Transpiling modules
+By default, modules in the React Native ecosystem are not transpiled to run in web browsers. React Native relies on advanced caching in Metro to reload quickly. Next.js uses webpack, which does not have the same level of caching, so no node modules are transpiled by default. You will have to manually mark every module you want to transpile with the `transpilePackages` option in **next.config.js**:
+```js next.config.js
+const { withExpo } = require('@expo/next-adapter');
+module.exports = withExpo({
+  experimental: {
+    transpilePackages: [
+      // NOTE: Even though `react-native` is never used in Next.js,
+      // you need to list `react-native` because `react-native-web`
+      // is aliased to `react-native`.
+      'react-native',
+      'react-native-web',
+      'expo',
+      // Add more React Native/Expo packages here...
+    ],
+  },
+});
+```
+## Deploy to Vercel
+This is Vercel's preferred method for deploying Next.js projects to production.
+Step 1: 
+Add a `build` script to your **package.json**:
+```json package.json
+{
+  "scripts": {
+    "build": "next build"
+  }
+}
+```
+Step 2: 
+Install the Vercel CLI:
+```sh
+$ npm i -g vercel
+```
+Step 3: 
+Deploy to Vercel:
+```sh
+$ vercel
+```
+## Limitations or differences compared to the default Expo for Web
+Using Next.js for the web means you will be bundling with the Next.js webpack config. This will lead to some core differences in how you develop your app vs your website.
+- Expo Next.js adapter does not support the experimental **app** directory.
+- For file-based routing on native, we recommend using [Expo Router](https://github.com/expo/router).
+## Contributing
+If you would like to help make Next.js support in Expo better, feel free to open a PR or submit an issue:
+- [@expo/next-adapter](https://github.com/expo/expo-cli/tree/main/packages/next-adapter)
+## Troubleshooting
+### Cannot use import statement outside a module
+Figure out which module has the import statement and add it to the `transpilePackages` option in **next.config.js**:
+```js next.config.js
+const { withExpo } = require('@expo/next-adapter');
+module.exports = withExpo({
+  experimental: {
+    transpilePackages: [
+      'react-native',
+      'react-native-web',
+      'expo',
+      // Add the failing package here, and restart the server...
+    ],
+  },
+});
+```
+
+
 # More
 
 ## Upgrade Expo SDK
@@ -24195,26 +28211,19 @@ Learn how to incrementally upgrade the Expo SDK version in your project.
 > **info** We recommend upgrading SDK versions incrementally, one at a time. Doing so will help you pinpoint breakages and issues that arise during the upgrade process.
 With a new SDK release, the latest version enters the current release status. This applies to Expo Go as it only supports the latest SDK version and previous versions are no longer supported. We recommend using [development builds](/develop/development-builds/introduction/) for production apps as the backwards compatibility for older SDK versions on EAS services tends to be much longer, but not forever.
 If you are looking to install a specific version of Expo Go, visit [expo.dev/go](https://expo.dev/go). It supports downloads for Android devices/emulators and iOS simulators. However, due to iOS platform restrictions, only the latest version of Expo Go is available for installation on physical iOS devices.
+Video Tutorial: [Watch: How to upgrade from Expo SDK 53 to SDK 54 in 5 minutes](https://www.youtube.com/watch?v=QuN63BRRhAM)
 ## How to upgrade to the latest SDK version
 Step 1: 
 ### Upgrade the Expo SDK
 Install the new version of the Expo package:
-  For npm: 
-    ```sh
-$ npm install expo@^54.0.0
-```
-  For Yarn: 
-    ```sh
-$ yarn add expo@^54.0.0
-```
-  For pnpm: 
-    ```sh
-$ pnpm add expo@^54.0.0
-```
-  For Bun: 
-    ```sh
-$ bun install expo@^54.0.0
-```
+<Terminal
+  cmd={{
+    npm: ['$ npm install expo@^54.0.0'],
+    yarn: ['$ yarn add expo@^54.0.0'],
+    pnpm: ['$ pnpm add expo@^54.0.0'],
+    bun: ['$ bun install expo@^54.0.0'],
+  }}
+/>
 Depending on which SDK you're upgrading to, substitute the `expo@^54.0.0` with the version range of the Expo SDK version you're targeting. For example, `expo@^54.0.0` stands for SDK 54.
 Step 2: 
 ### Upgrade dependencies
@@ -24536,7 +28545,7 @@ Hermes supports [Chrome DevTools Protocol](https://chromedevtools.github.io/devt
 
 ## iOS Developer Mode
 
-Learn how to enable iOS developer mode on iOS 16 and above to run internal distribution builds and local development builds.
+Learn how to enable iOS Developer Mode setting on iOS 16 and above to run internal distribution builds and local development builds.
 
 > This does not apply to builds signed using enterprise provisioning or to any builds installed on an iOS Simulator.
 Devices running iOS 16 and above need to enable OS-level **Developer Mode** setting before they can run [internal distribution](/build/internal-distribution) builds (including those built with EAS) or local development builds after installing them on the device.
@@ -24755,10 +28764,11 @@ You can either provide an array of supported locales directly, or use the `suppo
 > On iOS, use the language name or ISO language designator.
 ## Translating an app
 Creating and managing translations quickly becomes a large task. You can handle translations manually, but it's best to use a library to handle this for you.
-Let's make the app support English and Japanese. To achieve this install the i18n package `i18n-js`:
+Let's make the app support English and Japanese. To achieve that, this guide uses the `i18n-js` package:
 ```sh
 $ npx expo install i18n-js
 ```
+Take a look at [other translation libraries](#other-translation-libraries) to find one that best suits your needs.
 Then, configure the languages for your app:
 ```tsx
 import { getLocales } from 'expo-localization';
@@ -24769,7 +28779,7 @@ const i18n = new I18n({
   ja: { welcome: 'ããã«ã¡ã¯' },
 });
 // Set the locale once at the beginning of your app.
-i18n.locale = getLocales()[0].languageCode;
+i18n.locale = getLocales().at(0)?.languageCode ?? 'en'; // you can also do getLocales()[0].languageCode ?? 'en'
 console.log(i18n.t('welcome'));
 ```
 Now, you can use the `i18n.t` function to translate strings throughout your application.
@@ -24819,12 +28829,15 @@ const styles = StyleSheet.create({
 });
 ```
 ### Other translation libraries
-This guide uses `i18n-js` as an example. Other libraries can also help you with translations, and each has different features:
-- Creating translations is a huge effort. Consider hiring experts and using translation libraries with management tools for easier edits and automation. Some translation libraries can integrate with translation management tools (essentially, a web service that lets you outsource, auto-generate, or make it easier to create translations).
-- Some libraries allow rearranging component structures based on translation strings. For example, you want to localize a string that includes a `<Pressable>` link, and depending on the translation you want the link to be in a different order from the rest of the text.
-Here are some libraries:
-- [`React i18next`](https://react.i18next.com/) is a stable, well-maintained library based on `i18next`.
-- [`typesafe-i18n`](https://github.com/ivanhofer/typesafe-i18n) compiles translations to save space in the production bundle. It also generates TypeScript types for your translations so that you can use them in your code and get autocomplete and type safety. It requires the `Intl` API for some features, so it's only usable in projects with Hermes enabled.
+This guide uses `i18n-js` as an example, but other libraries can also help you with the task. Creating translations is a major effort. Some pointers to consider when choosing a library:
+- Integration with translation management tools for easier strings management and automations.
+- Ability to provide context to strings, so that AI translation tools and/or human reviewers can understand the context of the string and provide better translations.
+- Developer experience - usage in the context of React / JSX. Some libraries come with ESLint plugins and other tools to help in development.
+- Don't worry about localizing dates or numbers - use standardized `Intl` APIs for that.
+Here is a non-exhaustive list of other libraries you can consider:
+- [Lingui](https://lingui.dev/) is a mature library with first-class React (including React Server Components (RSC)) support and integrates well with translation management tools.
+- [fbtee](https://fbtee.dev/) is an internationalization framework for JavaScript and React designed to be powerful, flexible, and intuitive.
+- [React i18next](https://react.i18next.com/) is a stable, well-maintained library based on `i18next`.
 ### Translating app metadata
 If you plan on shipping your app to different countries or regions or want it to support various languages, you can provide [localized](/versions/latest/sdk/localization) strings for things like the display name and system dialogs. This is easily set up [in the app config](/workflow/configuration) file. First, set `ios.infoPlist.CFBundleAllowMixedLocalizations: true`, then provide a list of file paths to `locales`.
 ```json app.json
@@ -24846,14 +28859,19 @@ The keys provided to `locales` should be the [language identifier](https://devel
 {
   "ios": {
     "CFBundleDisplayName": "ããã«ã¡ã¯",
-    "NSContactsUsageDescription": "æ¥æ¬èªã®ãããã®è¨è"
+    "NSContactsUsageDescription": "æ¥æ¬èªã®ãããã®è¨è",
+    "Localizable.strings": {
+      "HELLO_NOTIFICATION_KEY": "ããã«ã¡ã¯ä¸ç"
+    }
   },
   "android": {
-    "app_name": "ããã«ã¡ã¯"
+    "app_name": "ããã«ã¡ã¯",
+    "HELLO_NOTIFICATION_KEY": "ããã«ã¡ã¯ä¸ç"
   }
 }
 ```
 Now, the display name of your app is set to `ããã«ã¡ã¯` whenever it's installed on a device with the language set to Japanese.
+In SDK 55 and later, there is an iOS-only option to specify a `Localizable.strings` object whose entries are used to create native localization files. The entries can be used in [iOS localized notifications](https://developer.apple.com/documentation/usernotifications/generating-a-remote-notification#Localize-your-alert-messages).
 ## Enabling RTL support
 Several regions around the world write text from right to left. If you want to localize your app, so it looks as expected in RTL languages, you need to make sure your app handles these layout and text direction changes accordingly.
 To enable RTL support, use the [`expo-localization`](/versions/latest/sdk/localization/#installation) config plugin and enable `extra.supportsRTL` property in app config:
@@ -25072,7 +29090,7 @@ $ bun run ios
 ```
 To install any Expo library, you can use `bun expo install`:
 ```sh
-$ bun expo install expo-av
+$ bun expo install expo-audio
 ```
 ## Use Bun for EAS builds
 EAS decides which package manager to use based on the lockfile in your codebase. If you want EAS to use Bun, run `bun install` in your codebase which will create a **bun.lockb** (the Bun lockfile). As long as this lockfile is in your codebase, Bun will be used as the package manager for your builds. Make sure to delete any lockfiles generated by other package managers.
@@ -25296,6 +29314,8 @@ Video Tutorial: [Watch: How to build a local-first Notes App with Turso and Expo
 ### Instant
 [Instant](https://www.instantdb.com/) is a modern alternative to Firebase. It gives you a real-time database so you can focus on building your app's frontend. To get started, check out the [Getting Started Guide](https://www.instantdb.com/docs/start-rn). You can also explore the [Sketch App](https://github.com/betomoedano/sketch-app) featured in the video below.
 Video Tutorial: [Watch: Build a Local-First Sketch App with Expo, Instant & Reanimated](https://www.youtube.com/watch?v=DEJIcaGN3vY)
+### RxDB
+[RxDB](https://rxdb.info/) (Reactive Database) is a local-first, NoSQL database for JavaScript applications. It is deeply reactive, allowing you to subscribe to query results so your UI updates automatically when data changes. RxDB focuses on offline-first capabilities to build apps that work even without internet and syncs when back online. RxDB works with Expo using the [SQLite storage adapter](https://rxdb.info/rx-storage-sqlite.html#usage-with-expo-sqlite), which wraps [`expo-sqlite`](/versions/latest/sdk/sqlite/). It also offers a variety of replication plugins to sync with your existing backend, whether it's HTTP, GraphQL, Supabase, or a custom one.
 ### Other tools
 The following list, far from being comprehensive, provides other tools that have caught our attention and that you may find interesting to explore. For a more thorough list of tools, see ["Local-first software" community website](https://localfirstweb.dev/).
 - [Automerge](https://automerge.org/)
@@ -25656,7 +29676,7 @@ Combining the Expo UI components and modifiers, you can build a UI like iOS Sett
       Image,
       Section,
       Spacer,
-      Switch,
+      Toggle,
       Text,
     } from '@expo/ui/swift-ui';
     import { background, clipShape, frame } from '@expo/ui/swift-ui/modifiers';
@@ -25681,7 +29701,7 @@ Combining the Expo UI components and modifiers, you can build a UI like iOS Sett
                 />
                 <Text>Airplane Mode</Text>
                 <Spacer />
-                <Switch value={isAirplaneMode} onValueChange={setIsAirplaneMode} />
+                <Toggle isOn={isAirplaneMode} onIsOnChange={setIsAirplaneMode} />
               </HStack>
               <Link href="/wifi" asChild>
                 <Button>
@@ -25739,1282 +29759,6 @@ Note: I'm a SwiftUI developer. Why should I learn Expo UI?
 Because React's promise of _"learn once, write anywhere"_, it now extends to SwiftUI and Jetpack Compose. With Expo UI, you can apply your SwiftUI knowledge to build apps that run in the React Native ecosystem, extend to the Web through [DOM components](/guides/dom-components/), and even integrate [2D](https://shopify.github.io/react-native-skia/) and [3D](https://github.com/wcandillon/react-native-webgpu) rendering. The system is flexible enough that different parts of your app can use different approaches &mdash; giving you seamless integration at the component level.
 ---
 ## Additional resources
-
-
-# Integrations
-
-## React Native analytics SDKs and libraries
-
-An overview of analytics services available in the Expo and React Native ecosystem.
-
-An analytics service allows you to track how users interact with your app. With this data, you can take a measured approach when improving your app.
-The following list provides common analytics providers that are available in the Expo and React Native ecosystem.
-> Most analytics SDK requires configuring custom native code. Native code is not configurable when using Expo Go. However, you can create a [development build](/develop/development-builds/introduction/), which will allow you to use any of the services below.
-
-
-## Using Facebook authentication
-
-A guide on using react-native-fbsdk-next library to integrate Facebook authentication in your Expo project.
-
-The [`react-native-fbsdk-next`](https://github.com/thebergamo/react-native-fbsdk-next/) library provides a wrapper around Facebook's Android and iOS SDKs. It allows integrating Facebook authentication into your Expo project and provide access to native components.
-This guide provides additional information on configuring the library with Expo for Android.
-## Prerequisites
-The `react-native-fbsdk-next` library can't be used in the Expo Go app because it requires custom native code. Learn more about [adding custom native code to your app](/workflow/customizing/).
-## Installation
-See `react-native-fbsdk-next` documentation for instructions on how to install and configure the library:
-## Configuration for Android
-Adding Android as a platform in your Facebook project requires you to have your app approved by Google Play Store so that it has a valid Play Store URL, and the [`package`](/versions/latest/config/app/#package) name associated with your app. Otherwise, you'll run into the following error:
-See the following guides for more information on how to build your project for app stores:
-Once you have uploaded the app to the Play Store you can submit your app review. When it is approved the Facebook project will be able to access it at a Play Store URL.
-After that, go to your Facebook project's **Settings** > **Basic** and add the **Android** platform. You'll need to provide the Key hash, Package name and Class name.
-- To add Key hash, go to your Play Store Console to obtain the SHA-1 certificate fingerprint from **Release** > **Setup** > **App Integrity** > **App signing key certificate**. Then, [convert the value of the Hex value of the certificate to Base64](https://base64.guru/converter/encode/hex) and add it under the **Android** > **Key hashes** in your Facebook project.
-- You can find the Package name in your [app config](/versions/latest/config/app) under the [`android.package`](/versions/latest/config/app/#package) field.
-- The Class name is `MainActivity` by default, and you can use `package.MainActivity` where `package` is the `android.package` in your project's app config. For example, `com.myapp.example.MainActivity`, where `com.myapp.example` is the `package` name of your app.
-- Then, click **Save changes** to save the configuration.
-Now, you can use your Facebook project for development or release builds and production apps.
-
-
-## Using Supabase
-
-Add a Postgres Database and user authentication to your React Native app with Supabase.
-
-[Supabase](https://supabase.com/?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a Postgres database, user authentication, file storage, edge functions, realtime syncing, and a vector and AI toolkit. It's an open-source alternative to Google's Firebase.
-Supabase automatically [generates a REST API](https://supabase.com/docs/guides/api?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) from your database and employs a concept called [row level security (RLS)](https://supabase.com/docs/guides/auth/row-level-security?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to secure your data, making it possible to directly interact with your database from your React Native application without needing to go through a server!
-Supabase provides a TypeScript client library called [`supabase-js`](https://supabase.com/docs/reference/javascript/introduction?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to interact with the REST API. Alternatively, Supabase also exposes a [GraphQL API](https://supabase.com/docs/guides/database/extensions/pg_graphql?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) allowing you to use your favorite GraphQL client (for example, [Apollo Client](https://supabase.github.io/pg_graphql/usage_with_apollo/)) should you wish to.
-## Prerequisites
-Head over to [database.new](https://database.new?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) to create a new Supabase project.
-### Get the API Keys
-Get the **Project URL** from the API settings and **Publishable key** from the API Keys:
-1. Go to the [API Settings](https://supabase.com/dashboard/project/_/settings/api) page in the Dashboard.
-2. Find your Project `URL` and `service_role` keys on this page.
-3. Then go to the [API Keys](https://supabase.com/dashboard/project/_/settings/api-keys)
-4. Find your Project **Publishable key** on this page under the API Keys tab.
-## Using the Supabase TypeScript SDK
-Using [`supabase-js`](https://supabase.com/docs/reference/javascript/introduction?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) is the most convenient way of leveraging the full power of the Supabase stack as it conveniently combines all the different services (database, auth, realtime, storage, edge functions) together.
-### Install and initialize the Supabase TypeScript SDK
-Step 1: 
-After you have created your [Expo project](/get-started/create-a-project/), install `@supabase/supabase-js` and the required dependencies using the following command:
-```sh
-$ npx expo install @supabase/supabase-js expo-sqlite
-```
-Step 2: 
-Create a helper file to initialize the Supabase client (`@supabase/supabase-js`). You need the API URL and the `Publishable` key copied [earlier](#get-the-api-keys). These variables are safe to expose in your Expo app since Supabase has [Row Level Security](https://supabase.com/docs/guides/auth/row-level-security?utm_source=expo&utm_medium=referral&utm_term=expo-react-native) enabled in the Database.
-```ts utils/supabase.ts
-import 'expo-sqlite/localStorage/install';
-import { createClient } from '@supabase/supabase-js';
-const supabaseUrl = YOUR_REACT_NATIVE_SUPABASE_URL;
-const supabasePublishableKey = YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY;
-export const supabase = createClient(supabaseUrl, supabasePublishableKey, {
-  auth: {
-    storage: localStorage,
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: false,
-  },
-});
-```
-Now you can `import { supabase } from '/utils/supabase'` throughout your application to leverage the full power of Supabase!
-## Next steps
-
-
-## Using Firebase
-
-A guide on getting started and using Firebase JS SDK and React Native Firebase library.
-
-[Firebase](https://firebase.google.com/) is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as real-time database, cloud storage, authentication, crash reporting, analytics, and so on.
-It is built on Google's infrastructure and scales automatically.
-There are two different ways you can use Firebase in your projects:
-- Using [Firebase JS SDK](#using-firebase-js-sdk)
-- Using [React Native Firebase](#using-react-native-firebase)
-React Native supports both the JS SDK and the native SDK. The following sections will guide you through when to use which SDK and all the configuration steps required to use Firebase in your Expo projects.
-## Prerequisites
-Before proceeding, make sure that you have created a new Firebase project or have an existing one using the [Firebase console](https://console.firebase.google.com/).
-## Using Firebase JS SDK
-The [Firebase JS SDK](https://firebase.google.com/docs/web/setup) is a JavaScript library that allows you to interact with Firebase services in your project.
-It supports services such as [Authentication](https://firebase.google.com/docs/auth), [Firestore](https://firebase.google.com/docs/firestore), [Realtime Database](https://firebase.google.com/docs/database), and [Storage](https://firebase.google.com/docs/storage) in a React Native app.
-### When to use Firebase JS SDK
-You can consider using the Firebase JS SDK when you:
-- Want to use Firebase services such as Authentication, Firestore, Realtime Database, and Storage in your app and want to develop your app with [**Expo Go**](/get-started/set-up-your-environment/).
-- Want a quick start with Firebase services.
-- Want to create a universal app for Android, iOS, and the web.
-#### Caveats
-Firebase JS SDK does not support all services for mobile apps. Some of these services are Analytics, Dynamic Links and Crashlytics. See the [React Native Firebase](#using-react-native-firebase) section if you want to use these services.
-### Install and initialize Firebase JS SDK
-> **warning** Expo SDK 53 and later only support `firebase@^12.0.0`. Versions before this version cause ES module resolution errors.
-Step 1: 
-#### Install the SDK
-After you have created your [Expo project](/get-started/create-a-project/), you can install the Firebase JS SDK using the following command:
-```sh
-$ npx expo install firebase
-```
-Step 2: 
-#### Initialize the SDK in your project
-To initialize the Firebase instance in your Expo project, you must create a config object and pass it to the `initializeApp()` method imported from the `firebase/app` module.
-The config object requires an API key and other unique identifiers. To obtain these values, you will have to register a web app in your Firebase project. You can find these instructions in the [Firebase documentation](https://firebase.google.com/docs/web/setup#register-app).
-After you have the API key and other identifiers, you can paste the following code snippet by creating a new **firebaseConfig.js** file in your project's root directory or any other directory where you keep the configuration files.
-```js firebaseConfig.js
-import { initializeApp } from 'firebase/app';
-// Optionally import the services that you want to use
-// import {...} from 'firebase/auth';
-// import {...} from 'firebase/database';
-// import {...} from 'firebase/firestore';
-// import {...} from 'firebase/functions';
-// import {...} from 'firebase/storage';
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: 'api-key',
-  authDomain: 'project-id.firebaseapp.com',
-  databaseURL: 'https://project-id.firebaseio.com',
-  projectId: 'project-id',
-  storageBucket: 'project-id.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
-};
-const app = initializeApp(firebaseConfig);
-// For more information on how to access Firebase in your project,
-// see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
-```
-You do not have to install other plugins or configurations to use Firebase JS SDK.
-Firebase version 9 and above provide a modular API. You can directly import any service you want to use from the `firebase` package. For example, if you want to use an authentication service in your project, you can import the `auth` module from the `firebase/auth` package.
-> **info** **Troubleshooting tip:** If you encounter issues related to authentication persistence with Firebase JS SDK, see the guide for [setting up persistence to keep users logged in between reloads](https://expo.fyi/firebase-js-auth-setup).
-### Next steps
-## Using React Native Firebase
-[React Native Firebase](https://rnfirebase.io/) provides access to native code by wrapping the native SDKs for Android and iOS into a JavaScript API.
-Each Firebase service is available as a module that can be added as a dependency to your project. For example, the `auth` module provides access to the Firebase Authentication service.
-### When to use React Native Firebase
-You can consider using React Native Firebase when:
-- Your app requires access to Firebase services not supported by the Firebase JS SDK, such as [Dynamic Links](https://rnfirebase.io/dynamic-links/usage), [Crashlytics](https://rnfirebase.io/crashlytics/usage), and so on.
-  For more information on the additional capabilities offered by the native SDK's, see [React Native Firebase documentation](https://rnfirebase.io/faqs-and-tips#why-react-native-firebase-over-firebase-js-sdk).
-- You want to use native SDKs in your app.
-- You have a bare React Native app with React Native Firebase already configured but are migrating to use Expo SDK.
-- You want to use [Firebase Analytics](https://rnfirebase.io/analytics/usage) in your app.
-Note: Migrating from Expo Firebase packages?
----
-If your project has been previously using `expo-firebase-analytics` and `expo-firebase-recaptcha` packages, you can migrate to the React Native Firebase library. For more information, see [Firebase migration guide](https://expo.fyi/firebase-migration-guide).
----
-#### Caveats
-React Native Firebase requires [custom native code and cannot be used with Expo Go](/workflow/customizing/).
-### Install and initialize React Native Firebase
-Step 1: 
-#### Install expo-dev-client
-Since React Native Firebase requires custom native code, you need to install the `expo-dev-client` library in your project.
-It allows configuring any native code required by React Native Firebase using [Config plugins](/config-plugins/introduction/) without writing native code yourself.
-To install [`expo-dev-client`](/development/getting-started/#installing--expo-dev-client--in-your-project), run the following command in your project:
-```sh
-$ npx expo install expo-dev-client
-```
-Step 2: 
-#### Install React Native Firebase
-To use React Native Firebase, it is necessary to install the `@react-native-firebase/app` module. This module provides the core functionality for all other modules.
-It also adds custom native code in your project using a config plugin. You can install it using the following command:
-```sh
-$ npx expo install @react-native-firebase/app
-```
-**At this point, you must follow the instructions from [React Native Firebase documentation](https://rnfirebase.io/#managed-workflow)** as it covers all the steps required to configure your project with the library.
-Once you have configured the React Native Firebase library in your project, come back to this guide to learn how to run your project in the next step.
-Step 3: 
-#### Run the project
-If you are using **[EAS Build](/build/introduction/), you can create and install a development build** on your devices. You do not need to run the project locally before creating a development build.
-For more information on creating a development build, see the section on [installing a development build](/develop/development-builds/create-a-build/).
-Note: Run project locally?
----
-If you want to run the project locally, you need both Android Studio and Xcode installed and configured on your machine. See [Local app development](/guides/local-app-development/) guide for more information.
-If a particular React Native Firebase module requires custom native configuration steps, you must add it as a `plugin` to [app config](/workflow/configuration/) file. Then, to run the project locally, run the `npx expo prebuild --clean` command to apply the native changes before the `npx expo run` commands.
----
-### Next steps
-After configuring React Native Firebase library, you can use any module it provides in your Expo project.
-
-
-## Using Google authentication
-
-A guide on using @react-native-google-signin/google-signin library to integrate Google authentication in your Expo project.
-
-The [`@react-native-google-signin/google-signin`](https://github.com/react-native-google-signin/google-signin) library provides a way to integrate Google authentication in your Expo app. It also provides native sign-in buttons and supports authenticating the user as well as obtaining their authorization to use Google APIs. You can use the library in your project by adding the [config plugin](/config-plugins/introduction/) in the [app config](/versions/latest/config/app/).
-This guide provides information on how to configure the library for your project.
-## Prerequisites
-The `@react-native-google-signin/google-signin` library can't be used in the Expo Go app because it requires custom native code. Learn more about [adding custom native code to your app](/workflow/customizing/).
-## Installation
-See `@react-native-google-signin/google-signin` documentation for instructions on how to install and configure the library:
-## Configure Google project for Android and iOS
-Below are instructions on how to configure your Google project for Android and iOS.
-### Upload app to Google Play Store
-We recommend uploading the app to the Google Play Store if your app intends to run in production. You can submit your app to the stores for testing even if your project is still in development. This allows you to test Google Sign In when your app is signed by EAS for testing, and when it is signed by [Google Play App Signing](https://support.google.com/googleplay/android-developer/answer/9842756?hl=en) for store deployment. To learn more about the app submission process, see the guides below in the order they are specified:
-### Configure your Firebase or Google Cloud Console project
-> Refer to the [library's documentation](https://react-native-google-signin.github.io/docs/setting-up/get-config-file) for a more in-depth configuration guide.
-For Android, once you have uploaded your app, you need to provide the SHA-1 certificate fingerprint values when asked while configuring the project in Firebase or Google Cloud Console. There are two types of values that you can provide:
-- Fingerprint of the **.apk** you built (on your machine or using EAS Build). You can find the SHA-1 certificate fingerprint in the Google Play Console under **Release** > **Setup** > **App Integrity** > **Upload key certificate**.
-- Fingerprint(s) of a **production app** downloaded from the play store. You can find the SHA-1 certificate fingerprint(s) in the Google Play Console under **Release** > **Setup** > **App Integrity** > **App signing key certificate**.
-### With Firebase
-For more instructions on how to configure your project for Android and iOS with Firebase:
-#### Upload google-services.json and GoogleService-Info.plist to EAS
-If you use the Firebase method for Android and iOS (as shared in sections above), you'll need to make sure **google-services.json** and **GoogleService-Info.plist** are available in EAS for building the app. You can check them into your repository because the files should not contain sensitive values, or you can treat the files as secrets, add them to **.gitignore** and use the guide below to make them available in EAS.
-### With Google Cloud Console
-This is an alternate method to configure a Google project when you are not using [Firebase](#with-firebase).
-For more instructions on how to configure your Google project Android and iOS with Google Cloud Console:
-
-
-## Using ESLint and Prettier
-
-A guide on configuring ESLint and Prettier to format Expo apps.
-
-[ESLint](https://eslint.org/) is a JavaScript linter that helps you find and fix errors in your code. It's a great tool to help you write better code and catch mistakes before they make it to production. In conjunction, you can use [Prettier](https://prettier.io/docs/en/), a code formatter that ensures all the code files follow a consistent styling.
-This guide provides steps to set up and configure ESLint and Prettier.
-## ESLint
-### Setup
-> **info** **From SDK 53 onwards**, the default ESLint config file uses the [Flat config](https://eslint.org/blog/2022/08/new-config-system-part-2/) format. It also supports legacy config. **For SDK 52 and earlier**, the default ESLint config file uses legacy config and does not support Flat config.
-To set up ESLint in your Expo project, you can use the Expo CLI to install the necessary dependencies. Running this command also creates a **eslint.config.js** file at the root of your project which extends configuration from [`eslint-config-expo`](https://github.com/expo/expo/tree/main/packages/eslint-config-expo).
-```sh
-$ npx expo lint
-```
-### Usage
-> **info** **Recommended:** If you're using VS Code, install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) to lint your code as you type.
-You can lint your code manually from the command line with the `npx expo lint` script:
-```sh
-run the command again to lint your code.
-$ npx expo lint
-```
-Running the above command will run the `lint` script from **package.json**.
-```sh
-/app/components/HelloWave.tsx
-  22:6 warning React Hook useEffect has a missing dependency: "rotateAnimation".
-       Either include it or remove the dependency array react-hooks/exhaustive-deps
-â 1 problem (0 errors
-1 warning)
-```
-### Environment configuration
-ESLint is generally configured for a single environment. However, the source code is written in JavaScript in an Expo app that runs in multiple different environments. For example, the **app.config.js**, **metro.config.js**, **babel.config.js**, and **app/+html.tsx** files are run in a Node.js environment. It means they have access to the global `__dirname` variable and can use Node.js modules such as `path`. Standard Expo project files like **app/index.js** can be run in Hermes, Node.js, or the web browser.
-The approach to configure environment-specific globals differs between Flat config and legacy config:
-For Flat config: 
-For Flat config, **metro.config.js** files already work with Node.js globals because of the built-in support in `eslint-config-expo`. For other configuration files that might need Node.js globals, use [`languageOptions.globals`](https://eslint.org/docs/latest/use/configure/language-options#predefined-global-variables) in your **eslint.config.js**:
-```js eslint.config.js
-const { defineConfig, globalIgnores } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
-module.exports = defineConfig([
-  globalIgnores(['dist/*']),
-  expoConfig,
-  {
-    files: ['babel.config.js'],
-    languageOptions: {
-      globals: globals.node,
-    },
-  },
-]);
-```
-For example, with this setup, you can now use Node.js globals in **babel.config.js**:
-```js babel.config.js
-import path from 'path';
-const __dirname = path.dirname(__filename);
-module.exports = function (api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-  };
-};
-```
-For Legacy config: 
-For legacy config, you can add the `eslint-env` comment to the top of a file to tell ESLint which environment the file is running in:
-```js metro.config.js
-/* eslint-env node */
-const { getDefaultConfig } = require('expo/metro-config');
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(
-);
-module.exports = config;
-```
-## Prettier
-### Installation
-To install Prettier in your project:
-For macOS/Linux: 
-```sh
-$ npx expo install prettier eslint-config-prettier eslint-plugin-prettier --dev
-```
-For Windows: 
-```sh
-$ npx expo install prettier eslint-config-prettier eslint-plugin-prettier "--" --dev
-```
-### Setup
-For Flat config: 
-To integrate Prettier with ESLint, update your **eslint.config.js**:
-```js eslint.config.js
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
-module.exports = defineConfig([
-  expoConfig,
-  eslintPluginPrettierRecommended,
-  {
-    ignores: ['dist/*'],
-  },
-]);
-```
-For Legacy config: 
-To integrate Prettier with ESlint, update your **.eslintrc.js**:
-```js .eslintrc.js
-module.exports = {
-  extends: ['expo', 'prettier'],
-  ignorePatterns: ['/dist/*'],
-  plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': 'error',
-  },
-};
-```
-> **Note:** In the above configuration, you can use `"prettier/prettier": "warn"` if you prefer these formatting issues as warnings instead of errors.
-Now, when you run `npx expo lint`, anything that is not aligned with Prettier formatting will be caught as an error.
-To customize Prettier settings, create a **.prettierrc** file at the root of your project and add your configuration.
-## Troubleshooting
-### ESLint is not updating in VS Code
-If you're using VS Code, install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) to lint your code as you type. You can try restarting the ESLint server by running the command `ESLint: Restart ESLint Server` from the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
-### ESLint is slow
-ESLint can be slow to run on large projects. The easiest way to speed up the process is to lint fewer files. Add a **.eslintignore** file to your project root to ignore certain files and directories such as:
-```sh .eslintignore
-# @info Ignore the root <b>.expo</b> directory. #
-/.expo
-# @end #
-node_modules
-```
-## Migration to Flat config
-> **info** **Note:** Flat config is supported in Expo SDK 53 and later.
-Upgrade ESLint and `eslint-config-expo`:
-For macOS/Linux: 
-```sh
-$ npx expo install eslint eslint-config-expo  --dev
-```
-For Windows: 
-```sh
-$ npx expo install eslint eslint-config-expo "--" --dev
-```
-If you haven't customized your ESLint config at all, delete your **.eslintrc.js** and generate the new config with:
-```sh
-$ npx expo lint
-```
-Alternatively, migrate your config based on the [ESLint's migration guide](https://eslint.org/docs/latest/use/configure/migration-guide). `npx expo lint` supports both legacy and flat config, so the new config will automatically be picked up by the CLI.
-
-
-## Using Next.js with Expo for Web
-
-A guide for integrating Next.js with Expo for the web.
-
-> **warning** Using Next.js is not an official part of Expo's universal app development workflow.
-[Next.js](https://nextjs.org/) is a React framework that provides simple page-based routing as well as server-side rendering. To use Next.js with the Expo SDK, we recommend using [`@expo/next-adapter`](https://github.com/expo/expo-cli/tree/main/packages/next-adapter) library to handle the configuration.
-Using Expo with Next.js means you can share some of your existing components and APIs across your mobile and web app. Next.js has its own CLI that you'll need to use when developing for the web platform, so **you'll need to start your web projects with the Next.js CLI and not with `npx expo start`**.
-> Next.js can only be used with Expo for web as there is no support for Server-Side Rendering (SSR) for native apps.
-## Automatic setup
-To quickly get started, create a new project using [with-nextjs](https://github.com/expo/examples/tree/master/with-nextjs) template:
-```sh
-$ npx create-expo-app -e with-nextjs
-```
-- **Native**: `npx expo start` &mdash; start the Expo project
-- **Web**: `npx next dev` &mdash; start the Next.js project
-## Manual setup
-### Install dependencies
-Ensure you have `expo`, `next`, `@expo/next-adapter` installed in your project:
-```sh
-$ yarn add expo next @expo/next-adapter
-```
-### Transpilation
-Configure Next.js to transform language features:
-Note: Next.js with swc. (Recommended)
----
-Using Next.js with SWC is recommended. You can configure the [**babel.config.js**](/versions/latest/config/babel/) to only account for native:
-```js babel.config.js
-module.exports = function (api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-  };
-};
-```
-You will also have to [force Next.js to use SWC](https://nextjs.org/docs/messages/swc-disabled) by adding the following to your **next.config.js**:
-```js next.config.js
-module.exports = {
-  experimental: {
-    forceSwcTransforms: true,
-  },
-};
-```
----
-Note: Next.js with Babel. (Not recommended)
----
-Adjust your **babel.config.js** to conditionally add `next/babel` when bundling with webpack for web:
-```js babel.config.js
-module.exports = function (api) {
-  // Detect web usage (this may change in the future if Next.js changes the loader)
-  const isWeb = api.caller(
-    caller =>
-      caller && (caller.name === 'babel-loader' || caller.name === 'next-babel-turbo-loader')
-  );
-  return {
-    presets: [
-      // Only use next in the browser, it'll break your native project
-      isWeb && require('next/babel'),
-      'babel-preset-expo',
-    ].filter(Boolean),
-  };
-};
-```
----
-### Next.js configuration
-Add the following to your **next.config.js**:
-```js next.config.js
-const { withExpo } = require('@expo/next-adapter');
-module.exports = withExpo({
-  // transpilePackages is a Next.js +13.1 feature.
-  // older versions can use next-transpile-modules
-  transpilePackages: [
-    'react-native',
-    'react-native-web',
-    'expo',
-    // Add more React Native/Expo packages here...
-  ],
-});
-```
-The fully qualified Next.js config may look like:
-```js next.config.js
-const { withExpo } = require('@expo/next-adapter');
-/** @type {import('next').NextConfig} */
-const nextConfig = withExpo({
-  reactStrictMode: true,
-  swcMinify: true,
-  transpilePackages: [
-    'react-native',
-    'react-native-web',
-    'expo',
-    // Add more React Native/Expo packages here...
-  ],
-  experimental: {
-    forceSwcTransforms: true,
-  },
-});
-module.exports = nextConfig;
-```
-### React Native Web styling
-The package `react-native-web` builds on the assumption of reset CSS styles. Here's how you reset styles in Next.js using the **pages** directory.
-```jsx pages/_document.js
-import { Children } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { AppRegistry } from 'react-native';
-// Follows the setup for react-native-web:
-// https://necolas.github.io/react-native-web/docs/setup/#root-element
-// Plus additional React Native scroll and text parity styles for various
-// browsers.
-// Force Next-generated DOM elements to fill their parent's height
-const style = `
-html, body, #__next {
-  -webkit-overflow-scrolling: touch;
-}
-#__next {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  /* Allows you to scroll below the viewport; default value is visible */
-  overflow-y: auto;
-  overscroll-behavior-y: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -ms-overflow-style: scrollbar;
-}
-`;
-export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
-    AppRegistry.registerComponent('main', () => Main);
-    const { getStyleElement } = AppRegistry.getApplication('main');
-    const page = await renderPage();
-    const styles = [
-      <style key="react-native-style" dangerouslySetInnerHTML={{ __html: style }} />,
-      getStyleElement(),
-    ];
-    return { ...page, styles: Children.toArray(styles) };
-  }
-  render() {
-    return (
-      <Html style={{ height: '100%' }}>
-        <Head />
-        <body style={{ height: '100%', overflow: 'hidden' }}>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
-}
-```
-```jsx pages/_app.js
-import Head from 'next/head';
-export default function App({ Component, pageProps }) {
-  return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Component {...pageProps} />
-    </>
-  );
-}
-```
-## Transpiling modules
-By default, modules in the React Native ecosystem are not transpiled to run in web browsers. React Native relies on advanced caching in Metro to reload quickly. Next.js uses webpack, which does not have the same level of caching, so no node modules are transpiled by default. You will have to manually mark every module you want to transpile with the `transpilePackages` option in **next.config.js**:
-```js next.config.js
-const { withExpo } = require('@expo/next-adapter');
-module.exports = withExpo({
-  experimental: {
-    transpilePackages: [
-      // NOTE: Even though `react-native` is never used in Next.js,
-      // you need to list `react-native` because `react-native-web`
-      // is aliased to `react-native`.
-      'react-native',
-      'react-native-web',
-      'expo',
-      // Add more React Native/Expo packages here...
-    ],
-  },
-});
-```
-## Deploy to Vercel
-This is Vercel's preferred method for deploying Next.js projects to production.
-Step 1: 
-Add a `build` script to your **package.json**:
-```json package.json
-{
-  "scripts": {
-    "build": "next build"
-  }
-}
-```
-Step 2: 
-Install the Vercel CLI:
-```sh
-$ npm i -g vercel
-```
-Step 3: 
-Deploy to Vercel:
-```sh
-$ vercel
-```
-## Limitations or differences compared to the default Expo for Web
-Using Next.js for the web means you will be bundling with the Next.js webpack config. This will lead to some core differences in how you develop your app vs your website.
-- Expo Next.js adapter does not support the experimental **app** directory.
-- For file-based routing on native, we recommend using [Expo Router](https://github.com/expo/router).
-## Contributing
-If you would like to help make Next.js support in Expo better, feel free to open a PR or submit an issue:
-- [@expo/next-adapter](https://github.com/expo/expo-cli/tree/main/packages/next-adapter)
-## Troubleshooting
-### Cannot use import statement outside a module
-Figure out which module has the import statement and add it to the `transpilePackages` option in **next.config.js**:
-```js next.config.js
-const { withExpo } = require('@expo/next-adapter');
-module.exports = withExpo({
-  experimental: {
-    transpilePackages: [
-      'react-native',
-      'react-native-web',
-      'expo',
-      // Add the failing package here, and restart the server...
-    ],
-  },
-});
-```
-
-
-## Using LogRocket
-
-A guide on installing and configuring LogRocket for session replays and error monitoring.
-
-[LogRocket](https://logrocket.com) records user sessions and identifies bugs as your users use your app. You can filter sessions by update IDs and also connect to your LogRocket account on the EAS dashboard to get quick access to your app's session data.
-## Install and configure LogRocket
-You can install the LogRocket SDK with the following command:
-```sh
-$ npx expo install @logrocket/react-native expo-build-properties
-```
-Then, in your [app config](/workflow/configuration/), include the LogRocket config plugin:
-```json app.json
-{
-  "plugins": [
-    [
-      "expo-build-properties",
-      {
-        "android": {
-          "minSdkVersion": 25
-        }
-      }
-    ],
-    "@logrocket/react-native"
-  ]
-}
-```
-Finally, initialize LogRocket in your app in a top-level file, like **app/\_layout.tsx**:
-```tsx app/_layout.tsx
-import { useEffect } from 'react';
-import * as Updates from 'expo-updates';
-import LogRocket from '@logrocket/react-native';
-const App = () => {
-  useEffect(() => {
-    LogRocket.init('<App ID>', {
-      updateId: Updates.isEmbeddedLaunch ? null : Updates.updateId,
-      expoChannel: Updates.channel,
-    });
-  }, []);
-};
-```
-In the code above, replace `<App ID>` with your [LogRocket App ID](https://app.logrocket.com/r/settings/setup).
-## Connecting LogRocket on the EAS dashboard
-You can link your LogRocket account and project to your Expo account and project on Expo's dashboard, so that you can see the last few sessions from your app in the deployments and updates dashboards.
-Go to your **Account settings** > [**Overview**](https://expo.dev/accounts/%5Baccount%5D/settings) > **Connections** and click **Connect** to authenticate with LogRocket:
-Then, go to your project, under **Project settings** > [**General**](https://expo.dev/accounts/%5Baccount%5D/projects/%5BprojectName%5D/settings) and click **Connect** to link your LogRocket project with your project on Expo:
-Then, you'll start to see **View on LogRocket** buttons in the EAS dashboard in the Native Deployments and Updates dashboards, along with the last few sessions from your app.
-## Learn more about LogRocket
-To learn more about how to use LogRocket with Expo, check out the [LogRocket documentation](https://docs.logrocket.com/reference/react-native-expo-adding-the-sdk).
-
-
-## Using Sentry
-
-A guide on installing and configuring Sentry for crash reporting.
-
-[Sentry](http://getsentry.com/) is a crash reporting platform that provides you with **real-time insight into production deployments with info to reproduce and fix crashes**.
-It notifies you of exceptions or errors that your users run into while using your app and organizes them for you on a web dashboard. Reported exceptions include stacktraces, device info, version, and other relevant context automatically. You can also provide additional context that is specific to your application such as the current route and user id.
-## What you'll learn
-This guide covers three main aspects of integrating Sentry with your Expo projects:
-- [Install and configure Sentry](#install-and-configure-sentry) in your React Native app
-- Using Sentry with EAS:
-  - [EAS Build](#usage-with-eas-build) for building your app
-  - [EAS Update](#usage-with-eas-update) for over-the-air updates
-- [Setting up the Sentry-Expo integration](#sentry-integration-with-eas-dashboard) to view crash reports and session replays directly in your EAS dashboard
-<PlatformsSection title="Platform compatibility" android emulator ios simulator web />
-## Install and configure Sentry
-Step 1: 
-### Sign up for a Sentry account and create a project
-Before proceeding with installing Sentry, you'll need to make sure you have created a Sentry account and project:
-Step 1.1: 
-[Sign up for Sentry](https://sentry.io/signup/) (the free tier supports up to 5,000 events per month), and create a project in your
-Dashboard. Take note of your **organization slug**, **project name**, and **DSN** as you'll need
-them later:
-- **organization slug** is available in your **Organization settings** tab
-- **project name** is available in your project's **Settings** > **Projects** tab (find it in the list)
-- **DSN** is available in your project's **Settings** > **Projects** > **Project name** > Under **SDK Setup** section > **Client Keys (DSN)** tab.
-Step 1.2: 
-Go to the [Developer Settings > Auth Tokens](https://sentry.io/settings/auth-tokens/) page and create a new [Organization Auth Token](https://docs.sentry.io/account/auth-tokens/#organization-auth-tokens). The token is automatically scoped for Source Map Upload and Release Creation. Save it.
-Once you have each of these: **organization slug**, **project name**, **DSN**, and **auth token**, you're all set to proceed.
-Step 2: 
-### Use the Sentry wizard to set up your project
-The easiest way to set up Sentry in your Expo project is to use the Sentry wizard. This tool will automatically configure your project with the right settings.
-Run the following command in your project directory:
-```sh
-$ npx @sentry/wizard@latest -i reactNative
-```
-The wizard will:
-- Install the required dependencies
-- Configure your project to use Sentry
-- Set up the Metro configuration automatically
-- Add the necessary initialization code to your app
-Follow the prompts in the wizard to complete the setup process. The wizard will guide you to log in to your Sentry account and fetch all the correct information regarding your project.
-Step 3: 
-### Verify the configuration
-Create a new release build of your app and verify that it uploads source maps correctly. You may want to add a button in your app to test that it is working and sourcemaps are wired up as expected, for example:
-```jsx
-import { Button } from 'react-native';
-// Inside some component
-<Button title="Press me" onPress={() => { throw new Error('Hello, again, Sentry!'); }}/>
-```
-## Usage with EAS Build
-Ensure that `SENTRY_AUTH_TOKEN` is set in your build environment, and Sentry will automatically upload source maps for you. If you use environment variables rather than properties in your app config, ensure that those are set as well.
-Using the above instructions, no additional work is needed to integrate Sentry into your project when using EAS Build.
-## Usage with EAS Update
-After running `eas update`, upload the source maps to Sentry:
-```sh
-$ npx sentry-expo-upload-sourcemaps dist
-```
-That's it! Errors for your updates will now be properly symbolicated in Sentry.
-Note: Do you want to publish an update and the sourcemaps in one command?
----
-You can chain the commands together with `&&` to publish an update and upload the sourcemaps in one step:
-```sh
-$ eas update --branch <branch> && npx sentry-expo-upload-sourcemaps dist
-```
----
-Note: Do you want to append additional update-related metadata to error reports?
----
-Configuring Sentry to tag your scope with information about your update allows you to see errors happening on certain updates in the Sentry dashboard.
-Add the following snippet in the global scope as early as possible in your application's lifecycle.
-```js
-import * as Sentry from '@sentry/react-native';
-import * as Updates from 'expo-updates';
-const manifest = Updates.manifest;
-const metadata = 'metadata' in manifest ? manifest.metadata : undefined;
-const extra = 'extra' in manifest ? manifest.extra : undefined;
-const updateGroup = metadata && 'updateGroup' in metadata ? metadata.updateGroup : undefined;
-Sentry.init({
-  // dsn, release, dist, etc...
-});
-const scope = Sentry.getGlobalScope();
-scope.setTag('expo-update-id', Updates.updateId);
-scope.setTag('expo-is-embedded-update', Updates.isEmbeddedLaunch);
-if (typeof updateGroup === 'string') {
-  scope.setTag('expo-update-group-id', updateGroup);
-  const owner = extra?.expoClient?.owner ?? '[account]';
-  const slug = extra?.expoClient?.slug ?? '[project]';
-  scope.setTag(
-    'expo-update-debug-url',
-    `https://expo.dev/accounts/${owner}/projects/${slug}/updates/${updateGroup}`
-  );
-} else if (Updates.isEmbeddedLaunch) {
-  // This will be `true` if the update is the one embedded in the build, and not one downloaded from the updates server.
-  scope.setTag('expo-update-debug-url', 'not applicable for embedded updates');
-}
-```
-Once configured, information about the associated update will show up in an error's tag section:
----
-## Sentry integration with EAS dashboard
-The Sentry integration with Expo allows you to view crash reports and Session Replays for your Expo app deployments directly within your EAS dashboard. This integration provides a direct link to Sentry stack traces with full context, session replays, and debugging capabilities.
-### Install
-> **info** Sentry owner, manager, or admin permissions are required to install this integration.
-1. Log in to you Expo account and open [**Account settings > Overview**](https://expo.dev/accounts/[your-account]/settings).
-2. Under **Connections** and click **Connect** next to Sentry.
-3. Log in to your Sentry account and accept the integration into your organization. You will be redirected back to **Account settings**.
-### Link your project
-After connecting your accounts, you need to link your EAS Project to your Sentry Project:
-1. Open **Projects > [Your Project] > Configuration > Project settings** in EAS.
-2. Click **Link** and select your Sentry Project from the dropdown.
-### Usage
-To see your Sentry data in EAS dashboard, open **Projects > [Your Project] > Updates > Deployments > [Deployment]** to view Sentry data from a Release.
-With this integration, you can:
-- View crash reports directly in your EAS dashboard
-- Access Session Replays to see exactly what happened before an error occurred
-- Get detailed stack traces with full context
-- Navigate seamlessly between EAS and Sentry for debugging
-## Learn more about Sentry
-Sentry does more than just catch fatal errors, learn more about how to use Sentry from their [JavaScript usage](https://docs.sentry.io/platforms/javascript/) documentation.
-
-
-## Using BugSnag
-
-A guide on installing and configuring BugSnag for end-to-end error reporting and analytics.
-
-[BugSnag](https://www.bugsnag.com) is a stability monitoring solution that provides rich, end-to-end error reporting and analytics to reproduce and fix errors with speed and precision. BugSnag supports the full stack with open-source libraries for more than [50 platforms](https://www.bugsnag.com/platforms), including [React Native](https://docs.bugsnag.com/platforms/react-native/react-native/).
-With BugSnag, developers and engineering organizations can:
-- **Stabilize:** Innovate faster by knowing when to build new features versus fix bugs. Use the release health dashboard, stability scores and targets, and built-in alerts via email, Slack, PagerDuty, and more.
-- **Prioritize:** Improve customer experience by identifying and prioritizing bugs that have the greatest impact on app stability. Analyze issues grouped by root cause and sorted by business impact, customer segmentation, A/B testing and experiment results.
-- **Fix:** Increase productivity by spending less time on reproducing and fixing bugs. Utilize powerful diagnostic data, full stacktraces and automatic breadcrumbs.
-## Integration
-See the integration guide below for instructions on adding BugSnag to your Expo apps to report JavaScript errors. It also includes instructions for uploading source maps for updates published with [EAS Update](/eas-update/introduction/).
-If you're new to BugSnag, you can [create an account](https://app.bugsnag.com/user/new/) or [request a demo](https://www.bugsnag.com/demo-request).
-
-
-## Using Vexo
-
-A guide on installing and configuring Vexo for real-time user analytics.
-
-[Vexo](https://www.vexo.co/) provides real-time user analytics for your Expo application, helping you understand how users interact with your app, identify friction points, and improve engagement.
-With a two-line integration, Vexo starts collecting data automatically, giving you actionable insights to optimize your app's user experience. If needed, you can also create custom events.
-## Features
-1. **Complete Dashboard**
-   - Active Users
-   - Session Time
-   - Downloads
-   - OS Distribution
-   - Version Adoption
-   - Geographic Insights
-   - Popular Screens
-2. **Session Replays**
-   - Watch real user sessions to understand their interactions.
-3. **Heatmaps**
-   - Identify the most engaged areas of your app.
-4. **Funnels**
-   - Analyze user flows and optimize conversion rates.
-5. **Custom Events and Dashboard Personalization**
-   - Track specific user actions by creating custom events.
-   - Customize your dashboard to visualize key metrics.
-## Getting started
-1. Create an account: Sign up for a [Vexo account](https://www.vexo.co/).
-2. Create a new app: You'll be prompted to create a new app. Give it a name (you can change it later), and once you submit it, you'll receive an API key.
-3. Install the Vexo package: Run the following command in your project:
-     For npm: 
-       ```sh
-$ npm install vexo-analytics
-```
-     For yarn: 
-       ```sh
-$ yarn add vexo-analytics
-```
-4. Initialize Vexo: Add the following code in your app's entry file (for example, **index.js**, **App.js**, or **app/\_layout.tsx** if using Expo Router):
-   ```tsx app/_layout.tsx
-   import { vexo } from 'vexo-analytics';
-   // You may want to wrap this with `if (!__DEV__) { ... }` to only run Vexo in production.
-   vexo('YOUR_API_KEY');
-   ```
-5. Rebuild and run your app: Since `vexo-analytics` includes native code, you need to rebuild your application.
-6. Verify integration: Go to your app's page on Vexo and you should see your first event!
-## Compatibility
-- Expo: Vexo is compatible with [Development builds](/development/introduction/) and does not require additional configuration plugins.
-- Expo Go: Not supported, as Vexo requires custom native code.
-## Learn more about Vexo
-To learn more about using Vexo with Expo, check out the [Vexo documentation](https://docs.vexo.co/).
-
-
-## Build Expo apps for TV
-
-A guide for building an Expo app for an Android TV or Apple TV target.
-
-> **Warning** Not all Expo features and SDK libraries are available on TV. For more details, check the [See which libraries are supported](#see-which-libraries-are-supported).
-React Native is supported on Android TV and Apple TV through the [React Native TV project](https://github.com/react-native-tvos/react-native-tvos). This technology extends beyond TV, offering a comprehensive core repo fork with support for phone and TV targets, including Hermes and Fabric.
-Using the React Native TV library as the `react-native` dependency in an Expo project, it becomes capable of targeting both mobile (Android, iOS) and TV (Android TV, Apple TV) devices.
-## Prerequisites
-The necessary changes to the native Android and iOS files are minimal and can be automated with a [config plugin](https://github.com/react-native-tvos/config-tv/tree/main/packages/config-tv) if you use [prebuild](/workflow/prebuild/). Below is a list of changes made by the config plugins, which you can alternatively apply manually:
-### Android
-- **AndroidManifest.xml** is modified:
-  - The default phone portrait orientation is removed
-  - The required intent for TV apps is added
-- **MainApplication.kt** is modified to remove unsupported Flipper invocations
-### iOS
-- **ios/Podfile** is modified to target tvOS instead of iOS
-- The Xcode project is modified to target tvOS instead of iOS
-- The splash screen (**SplashScreen.storyboard**) is modified to work on tvOS
-## System requirements for TV development
-### Android TV
-- [Node.js (LTS)](https://nodejs.org/en/) on macOS or Linux.
-- Android Studio (Iguana or later).
-- In the Android Studio SDK manager, select the dropdown for the Android SDK you are using (API version 31 or later), and make sure an Android TV system image is selected for installation. (For Apple silicon, choose the ARM 64 image. Otherwise, choose the Intel x86_64 image).
-- After installing the Android TV system image, create an Android TV emulator using that image (the process is the same as creating an Android phone emulator).
-### Apple TV
-- [Node.js (LTS)](https://nodejs.org/en/) on macOS.
-- Xcode 16 or later.
-- tvOS SDK 17 or later. (This is not installed automatically with Xcode. You can install it later with `xcodebuild -downloadAllPlatforms`).
-## Quick start
-The fastest way to generate a new project is described in the [TV example](https://github.com/expo/examples/tree/master/with-tv) within the Expo examples repository:
-```sh
-$ npx create-expo-app MyTVProject -e with-tv
-```
-You can start with the [TV Router example](https://github.com/expo/examples/tree/master/with-router-tv):
-```sh
-$ npx create-expo-app MyTVProject -e with-router-tv
-```
-This creates a new project that uses [Expo Router](/router/introduction/) for file-based navigation, modeled after the [**create-expo-app** default template](/get-started/create-a-project/).
-Note: See which libraries are supported
----
-At this time, TV applications work with the following libraries and APIs listed below:
-- [AppleAuthentication](/versions/latest/sdk/apple-authentication/)
-- [Application](/versions/latest/sdk/application/)
-- [Audio](/versions/latest/sdk/audio)
-- [Asset](/versions/latest/sdk/asset/)
-- [AsyncStorage](/versions/latest/sdk/async-storage/)
-- [AV](/versions/latest/sdk/av/)
-- [BackgroundTask](/versions/latest/sdk/background-task/)
-- [BlurView](/versions/latest/sdk/blur-view/)
-- [BuildProperties](/versions/latest/sdk/build-properties/)
-- [Constants](/versions/latest/sdk/constants/)
-- [Crypto](/versions/latest/sdk/crypto/)
-- [DevClient](/versions/latest/sdk/dev-client/)
-- [Device](/versions/latest/sdk/device/)
-- [Expo UI](/versions/latest/sdk/ui/)
-- [FileSystem](/versions/latest/sdk/filesystem/)
-- [FlashList](/versions/latest/sdk/flash-list/)
-- [Font](/versions/latest/sdk/font/)
-- [Image](/versions/latest/sdk/image)
-- [ImageManipulator](/versions/latest/sdk/imagemanipulator/)
-- [KeepAwake](/versions/latest/sdk/keep-awake/)
-- [LinearGradient](/versions/latest/sdk/linear-gradient/)
-- [Localization](/versions/latest/sdk/localization/)
-- [Manifests](/versions/latest/sdk/manifests/)
-- [MediaLibrary](/versions/latest/sdk/media-library/)
-- [NetInfo](/versions/latest/sdk/netinfo/)
-- [Network](/versions/latest/sdk/network/)
-- [Reanimated](/versions/latest/sdk/reanimated/)
-- [SafeAreaContext](/versions/latest/sdk/safe-area-context/)
-- [SecureStore](/versions/latest/sdk/securestore/)
-- [Skia](/versions/latest/sdk/skia/)
-- [SplashScreen](/versions/latest/sdk/splash-screen/)
-- [SQLite](/versions/latest/sdk/sqlite/)
-- [Svg](/versions/latest/sdk/svg/)
-- [SystemUI](/versions/latest/sdk/system-ui/)
-- [TaskManager](/versions/latest/sdk/task-manager/)
-- [TrackingTransparency](/versions/latest/sdk/tracking-transparency/)
-- [Updates](/versions/latest/sdk/updates/)
-- [Video](/versions/latest/sdk/video/)
-- [VideoThumbnails](/versions/latest/sdk/video-thumbnails/)
-TV also works with [React Navigation](https://reactnavigation.org/), [React Native Skia](https://shopify.github.io/react-native-skia/), and many other commonly used third-party React Native libraries. See [React Native directory](https://reactnative.directory/?tvos=true) to learn more about supported third-party libraries.
-#### Limitations
-- The [Expo DevClient](/versions/latest/sdk/dev-client/) library is only supported in SDK 54 and later:
-  - **Android TV**: All operations are supported, similar to an Android phone.
-  - **Apple TV**: Basic operations with a local or tunneled packager are supported. Authentication to EAS and listing of EAS builds and updates is not yet supported.
----
-## Integration with an existing Expo project
-The following walkthrough describes the steps required to modify an Expo project for TV.
-Step 1: 
-### Modify dependencies for TV
-In **package.json**, modify the `react-native` dependency to use the TV repo, and exclude this dependency from [`npx expo install` version validation](/more/expo-cli/#configuring-dependency-validation).
-> **Warning** The `react-native-tvos` version should match the Expo SDK you are using. For example, Expo SDK 54 uses React Native 0.81, so you should use `react-native-tvos@0.81-stable` (the latest 0.81 version) as shown below. See the [SDK compatibility table](/versions/latest/#each-expo-sdk-version-depends-on-a-react-native-version) for the correct version to use for older SDKs.
-```json package.json
-{
-  "dependencies": {
-    "react-native": "npm:react-native-tvos@0.81-stable",
-  },
-  "expo": {
-    "install": {
-      "exclude": [
-        "react-native"
-      ]
-    }
-  }
-}
-```
-Step 2: 
-### Add the TV config plugin
-```sh
-$ npx expo install @react-native-tvos/config-tv -- --dev
-```
-When installed, the plugin will modify the project for TV when either:
-- The environment variable `EXPO_TV` is set to `1`
-- The plugin parameter `isTV` is set to `true`
-Verify that this plugin appears in **app.json**:
-```json app.json
-{
-  "plugins": ["@react-native-tvos/config-tv"]
-}
-```
-To see additional information on the plugin's actions during prebuild, you can set [debug environment variables](https://github.com/debug-js/debug#conventions) before running prebuild. (See also our documentation on [Expo CLI environment variables](/more/expo-cli/#environment-variables).)
-```sh
-$ export DEBUG=expo:*
-$ export DEBUG=expo:react-native-tvos:config-tv
-```
-Step 3: 
-### Run prebuild
-Set the `EXPO_TV` environment variable, and run prebuild to make the TV modifications to the project.
-```sh
-$ export EXPO_TV=1
-$ npx expo prebuild --clean
-```
-> **Note**: The `--clean` argument is recommended, and is required if you have existing Android and iOS directories in the project.
-Step 4: 
-### Build for Android TV
-Start an Android TV emulator and use the following command to start the app on the emulator:
-```sh
-$ npx expo run:android
-```
-Step 5: 
-### Build for Apple TV
-Run the following command to build and run the app on an Apple TV simulator:
-```sh
-$ npx expo run:ios
-```
-Step 6: 
-### Revert TV changes and build for phone
-You can revert the changes for TV and go back to phone development by unsetting `EXPO_TV` and running prebuild again:
-```sh
-$ unset EXPO_TV
-$ npx expo prebuild --clean
-```
-Step 7: 
-### Create EAS Build profiles for both TV and phone
-Since the TV build can be driven by the value of an environment variable, it is easy to set up EAS Build profiles that build from the same source but target TV instead of phone.
-The following example **eas.json** shows how to extend existing profiles (`development` and `preview`) to create TV profiles (`development_tv` and `preview_tv`).
-```json eas.json
-{
-  "cli": {
-    "version": ">= 5.2.0"
-  },
-  "build": {
-    "base": {
-      "distribution": "internal",
-      "ios": {
-        "simulator": true
-      },
-      "android": {
-        "buildType": "apk",
-        "withoutCredentials": true
-      },
-      "channel": "base"
-    },
-    "development": {
-      "extends": "base",
-      "android": {
-        "gradleCommand": ":app:assembleDebug"
-      },
-      "ios": {
-        "buildConfiguration": "Debug"
-      },
-      "channel": "development"
-    },
-    "development_tv": {
-      "extends": "development",
-      "env": {
-        "EXPO_TV": "1"
-      },
-      "channel": "development"
-    },
-    "preview": {
-      "extends": "base",
-      "channel": "preview"
-    },
-    "preview_tv": {
-      "extends": "preview",
-      "env": {
-        "EXPO_TV": "1"
-      },
-      "channel": "preview"
-    }
-  },
-  "submit": {}
-}
-```
-## Examples and demonstration projects
-
-
-## Using TypeScript
-
-An in-depth guide on configuring an Expo project with TypeScript.
-
-Expo has first-class support for [TypeScript](https://www.typescriptlang.org/). The JavaScript interface of Expo SDK is written in TypeScript.
-This guide provides a quick way to get started for a new project and also steps to migrate your existing JavaScript based Expo project to use TypeScript.
-## Quick start
-To create a new project, use the default template which includes base TypeScript configuration, example code, and basic navigation structure:
-```sh
-$ npx create-expo-app@latest
-```
-After you create a new project using the command above, make sure to follow instructions from:
-- [Set up your environment](/get-started/set-up-your-environment/) which provides required steps for setting local development environment.
-- [Start developing](/get-started/start-developing/) which provides information on triggering a development server, file structure, and details about other features.
-## Migrating existing JavaScript project
-To migrate your existing JavaScript based project to use TypeScript, follow the instructions below:
-Step 1: 
-### Rename files to use .tsx or .ts extension
-Rename files to convert them to TypeScript. For example, start with the root component file such as **App.js** and rename it to **App.tsx**:
-```sh
-$ mv App.js App.tsx
-```
-> **info** **Tip:** Use the **.tsx** extension if the file includes React components (JSX). If the file does not include any JSX, you can use the **.ts** file extension.
-Step 2: 
-### Install required development dependencies
-To install required `devDependencies` such as `typescript` and `@types/react` in **package.json**:
-For macOS/Linux: 
-```sh
-$ npx expo install typescript @types/react --dev
-```
-For Windows: 
-```sh
-$ npx expo install typescript @types/react "--" --dev
-```
-> **info** Alternatively, run `npx expo start` command to install `typescript` and `@types/react` dev dependencies.
-Note: Type checking project files with 
----
-To type check your project's files run `tsc` command within the root of your project directory:
-```sh
-$ npm run tsc
-$ yarn tsc
-```
----
-Step 3: 
-### Add base configuration with tsconfig.json
-A project's **tsconfig.json** should extend `expo/tsconfig.base` by default. You can automatically generate a **tsconfig.json** file by running the command:
-```sh
-$ npx expo customize tsconfig.json
-```
-The default configuration in **tsconfig.json** is user-friendly and encourages adoption. If you prefer **strict type checking** and reduce the chances of runtime errors, enable `strict` under [`compilerOptions`](https://www.typescriptlang.org/docs/handbook/compiler-options.html):
-```json tsconfig.json
-{
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true
-  }
-}
-```
-Step 4: 
-### Path aliases (Optional)
-Expo CLI supports [path aliases](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping) in **tsconfig.json** automatically. It allows importing modules with custom aliases instead of relative paths.
-For example, to import `Button` component from **src/components/Button.tsx** using the alias **@/components/Button**, add the alias `@/*` in **tsconfig.json** and set it to the **src** directory:
-```json tsconfig.json
-{
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  }
-}
-```
-Note: Disable path aliases
----
-`tsconfigPaths` is enabled by default which allows you to set path aliases. You can disable it by setting `tsconfigPaths` to `false` in the project's [app config](/workflow/configuration/):
-```json app.json
-{
-  "expo": {
-    "experiments": {
-      "tsconfigPaths": false
-    }
-  }
-}
-```
----
-#### Considerations
-When using path aliases, consider the following:
-- Restart Expo CLI after modifying **tsconfig.json** to update path aliases. You don't need to clear the Metro cache when the aliases change.
-- If not using TypeScript, **jsconfig.json** can serve as an alternative to **tsconfig.json**.
-- Path aliases add additional resolution time when defined.
-- Path aliases are only supported by Metro (including Metro web) and not by the deprecated `@expo/webpack-config`.
-- Bare projects require additional setup for this feature. See the [Metro setup guide](/versions/latest/config/metro#bare-workflow-setup) for more information.
-Step 5: 
-### Absolute imports (Optional)
-To enable absolute imports from a project's root directory, define [`compilerOptions.baseUrl`](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url) the **tsconfig.json** file:
-```json tsconfig.json
-{
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "baseUrl": "./"
-  }
-}
-```
-For example, setting the above configuration allows importing `Button` component from the path **src/components/Button**:
-```tsx
-import Button from 'src/components/Button';
-```
-#### Considerations
-When using absolute imports, consider the following:
-- `compilerOptions.paths` are resolved relative to the `compilerOptions.baseUrl` if it is defined, otherwise they're resolved against the project root directory.
-- `compilerOptions.baseUrl` is resolved before node modules. This means if you have a file named `./path.ts`, it can be imported instead of a node module named `path`.
-- Restarting Expo CLI is necessary to update [`compilerOptions.baseUrl`](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url) after modifying the **tsconfig.json**.
-- If you're not using TypeScript, **jsconfig.json** can serve as an alternative to **tsconfig.json**.
-- Absolute imports are only supported by Metro (including Metro web) and not by `@expo/webpack-config`.
-- Bare projects require additional setup for this feature. See the [versioned Metro setup guide](/versions/latest/config/metro#bare-workflow-setup) for more information.
-## Type generation
-Some Expo libraries provide both static types and type generation capabilities. These types are automatically generated when the project builds or by running the `npx expo customize tsconfig.json` command.
-## TypeScript for project's config files
-Additional setup is required to use TypeScript for configuration files such as **metro.config.js** or **app.config.js**.
-Install [`tsx`](https://tsx.is/) as a dev dependency and utilize its [`tsx/cjs` require hook](https://tsx.is/dev-api/entry-point#commonjs-mode-only) to import TypeScript files within your JS configuration file. This hook allows TypeScript imports while keeping the root file as JavaScript. The command below adds `tsx` so `import 'tsx/cjs'` works in the following sub-section examples.
-For macOS/Linux: 
-```sh
-$ npx expo install tsx --dev
-```
-For Windows: 
-```sh
-$ npx expo install tsx "--" --dev
-```
-### metro.config.js
-Update **metro.config.js** to require **metro.config.ts** file:
-```js metro.config.js
-require('tsx/cjs'); // Add this to import TypeScript files
-module.exports = require('./metro.config.ts');
-```
-Update **metro.config.ts** file with your project's metro configuration:
-```ts metro.config.ts
-import { getDefaultConfig } from 'expo/metro-config';
-const config = getDefaultConfig(__dirname);
-module.exports = config;
-```
-Note: Deprecated: webpack.config.js
----
-Install the `@expo/webpack-config` package.
-```js webpack.config.js
-require('tsx/cjs'); // Add this to import TypeScript files
-module.exports = require('./webpack.config.ts');
-```
-```ts webpack.config.ts
-import createExpoWebpackConfigAsync from '@expo/webpack-config/webpack';
-import { Arguments, Environment } from '@expo/webpack-config/webpack/types';
-module.exports = async function (env: Environment, argv: Arguments) {
-  const config = await createExpoWebpackConfigAsync(env, argv);
-  // Customize the config before returning it.
-  return config;
-};
-```
----
-### app.config.js
-**app.config.ts** is supported by default. However, it doesn't support external TypeScript modules, or **tsconfig.json** customization. You can use the following approach to get a more comprehensive TypeScript setup:
-```ts app.config.ts
-import 'tsx/cjs'; // Add this to import TypeScript files
-import { ExpoConfig } from 'expo/config';
-const config: ExpoConfig = {
-  name: 'my-app',
-  slug: 'my-app',
-};
-export default config;
-```
-## Other TypeScript features
-Some language features may require additional configuration. For example, if you want to use decorators you'll need to add the `experimentalDecorators` option. For more information on the available properties see the [TypeScript compiler options](https://www.typescriptlang.org/docs/handbook/compiler-options.html) documentation.
-## Learn how to use TypeScript
-A good place to start learning TypeScript is the official [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html).
-**For TypeScript and React components,** we recommend referring to the [React TypeScript CheatSheet](https://github.com/typescript-cheatsheets/react) to learn how to type your React components in a variety of common situations.
-
-
-## Using in-app purchases
-
-Learn about how to use in-app purchases in your Expo app.
-
-In-app purchases (IAP) are transactions within a mobile or desktop application where users can buy digital goods or additional features. This guide provides a list of popular libraries and tutorials for implementing IAP in your Expo app.
-> In-app purchase libraries require configuring custom native code. Native code is not configurable when using Expo Go. Instead, create a [development build](/develop/development-builds/introduction/), which allows using a native library in your project.
-## Tutorial
-Video Tutorial: [Watch: How to Implement In-App Purchases in Expo](https://www.youtube.com/watch?v=R3fLKC-2Qh0)
-## Libraries
-The following libraries provide robust support for in-app purchase functionality and out-of-the-box compatibility with Expo apps using [CNG](/workflow/continuous-native-generation/) and [Config Plugins](/config-plugins/introduction/) for seamless integration in your app.
-
-
-## Using push notifications
-
-Learn about push notification services that are compatible with Expo and React Native apps.
-
-Expo apps can work with any notification service or any of the notification capabilities offered by the Android and iOS operating systems. Even if a package doesn't yet exist for a feature, native code can be written to access it via the [Expo Modules API](/modules/overview/), and native project configurations can be automated using [config plugins](/config-plugins/introduction/). The following options provide purpose-built Expo integrations, including config plugins where necessary, for implementing push notifications in your app:
-> The [`expo-notifications`](/versions/latest/sdk/notifications/) library is designed and tested to work with Expo's push notification service and notifications sent directly from FCM and APNS. Some advanced features may not be compatible with third-party providers, as they often have their own native and React Native SDKs optimized for their services.
-## Expo push notifications
-[Expo Notifications](/versions/latest/sdk/notifications/) provides a unified API for handling push notifications across Android and iOS. It integrates seamlessly with your Expo account and is free to use.
-### Key capabilities
-- Fully compatible with the [`expo-notifications`](/versions/latest/sdk/notifications/) library
-- Includes an EAS dashboard to track notification delivery to FCM and APNs
-- Supports testing notifications with the [Expo Notifications Tool](https://expo.dev/notifications)
-### Considerations and limitations
-- iOS Notification Service Extension for adding additional content to notifications, such as images, is not formally included, but you can add it using a config plugin with custom native code and configuration ([example](https://github.com/expo/expo/pull/36202)).
-- Volumes are limited to 600 notifications per second per project.
-For implementation details, see the following guides:
-## OneSignal
-[OneSignal](https://onesignal.com/) is a customer engagement platform that provides push notifications, in-app messaging, SMS, and email services for web and mobile apps. OneSignal supports rich media in notifications and engagement analytics. It includes an [Expo config plugin](https://github.com/OneSignal/onesignal-expo-plugin) for direct integration into your Expo project.
-## Braze
-[Braze](https://www.braze.com/) is a customer engagement platform that delivers personalized, cross-channel messaging through push notifications, in-app messaging, email, SMS, and web. Braze supports rich notification content, push notification campaigns, and support for resending notifications after failed deliveries on Android. It provides a [React Native SDK](https://github.com/braze-inc/braze-react-native-sdk) and a [config plugin](https://github.com/braze-inc/braze-expo-plugin/tree/main). Check out the [Expo example app](https://github.com/braze-inc/braze-expo-plugin/tree/main/example) for more details.
-## Customer.io
-[Customer.io](http://Customer.io) is a customer engagement platform that allows you to design powerful automated workflows utilizing push notifications, in-app messaging, email, SMS capabilities, and more. Its visual workflow builder allows you to automate complex, data-driven campaigns across multiple channels. Customer.io supports device-side metrics collection that can be used to customize push notifications tailored to user behaviors and preferences. Customer.io provides an [Expo plugin](https://github.com/customerio/customerio-expo-plugin) for direct integration with your Expo project and documentation for using Customer.io push notifications alongside other providers.
-## CleverTap
-[CleverTap](https://clevertap.com/) is an all-in-one customer engagement platform that helps you deliver personalized, real-time, omnichannel messaging across push notifications, in-app messages, email, and more. It offers advanced segmentation, analytics, and campaign automation &mdash; built to scale with your business. The [CleverTap React Native SDK](https://developer.clevertap.com/docs/react-native) and [Expo config plugin](https://github.com/CleverTap/clevertap-expo-plugin) make it easy to integrate CleverTap into your Expo projects. The config plugin handles all the native module setup during the prebuild process, allowing you to configure CleverTap through your app config without having to manually modify native code. For more information, check out the [CleverTap Example Plugin](https://github.com/CleverTap/clevertap-expo-plugin/tree/main/CTExample).
-## Send notifications directly via FCM and APNs
-You may choose to send directly to platform push API's from your backend. In this case, you can still use [`expo-notifications`](/versions/latest/sdk/notifications/) to retrieve the native push token and configure notifications separately for each platform.
-Although the client-side code remains cross-platform with [`expo-notifications`](/versions/latest/sdk/notifications/), you will need to implement server-side logic to interact with the [FCM](https://firebase.google.com/docs/cloud-messaging) and [APNs](https://developer.apple.com/documentation/usernotifications) APIs individually.
-## React Native Firebase messaging
-[React Native Firebase](https://rnfirebase.io/) provides a messaging module that lets you use [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging) as a unified push notification service for both Android and iOS. While FCM is often associated with Android notifications, it also supports iOS by routing messages through Apple Push Notification service (APNs) behind the scenes.
-This approach differs from using FCM solely for Android notifications. Instead, Firebase's cross-platform SDK handles notifications for both platforms through a single service.
-> Even though FCM handles notifications for both platforms, iOS notifications still go through APNs. Firebase automatically manages this routing. Learn more in the [React Native Firebase messaging documentation](https://rnfirebase.io/messaging/usage).
-## Tips and important considerations
-- **Avoid mixing client-side implementations**: Different notification services may have conflicting client-side implementations. Use a consistent approach to prevent potential issues.
-- **Web notifications**: Expo notifications do not support web notifications. However, some third-party solutions may offer this capability. Consider your app's requirements when choosing a service.
-- **Token management**: Track both Expo push tokens and native device tokens in your database. This provides flexibility for future integrations, especially with marketing tools that send notifications directly via FCM or APNs.
-
-
-## React Native feature flag services
-
-An overview of feature flag services available in the Expo and React Native ecosystem.
-
-A feature flag (also known as a _feature gate_) is a mechanism that enables and disables features remotely. They are a safe way to rollout new features to your app users without deploying additional code. You can use them for testing in production, A/B testing, or to ship new app features such as UI elements.
-## Feature flag services
-The following libraries provide robust support for feature flag functionality and out-of-the-box compatibility with Expo apps using [Continuous Native Generation (CNG)](/workflow/continuous-native-generation/) and [config plugins](/config-plugins/introduction/) for seamless integration in your app.
-### Posthog
-[PostHog](https://posthog.com/) is an open-source product analytics platform that provides comprehensive feature flagging capabilities alongside analytics, session recordings, and A/B testing. It supports real-time feature toggles with user segmentation and the ability to roll back features instantly, making it an excellent choice for teams that want analytics and feature management in a single platform. It includes built-in A/B testing and multivariate testing functionality, allowing you to run experiments directly through feature flags while collecting detailed analytics on feature adoption and performance metrics. The service also supports bootstrap flags to eliminate loading states and improve user experience.
-### Statsig
-[Statsig](https://statsig.com/) is a feature management platform designed for data-driven product development that provides advanced statistical analysis, gradual rollouts, and sophisticated targeting capabilities with built-in metrics and performance monitoring for feature releases. The platform offers a robust SDK for React Native and Expo, with automatic event logging and dynamic configurations, making it particularly well-suited for teams focused on rigorous experimentation and data-driven decision-making.
-### LaunchDarkly
-[LaunchDarkly](https://launchdarkly.com/) is an enterprise-grade feature management platform that enables instant feature toggles and targeted rollouts with comprehensive dashboard controls, advanced user targeting, and robust experimentation tools that provide real-time flag updates. The SDK includes advanced features such as hooks for React integration, context identification and modification, comprehensive logging, support for multiple environments in development workflows, private attributes for handling sensitive data, and relay proxy configuration for enhanced security and performance.
-### Firebase Remote Config
-[Firebase Remote Config](https://firebase.google.com/docs/remote-config) is a cloud service allows you to change the appearance and functionality of your app without requiring an app update. Remote Config values are managed through the Firebase console and accessed via a JavaScript API, which gives you full control over when and how these values affect your app. The service supports conditional targeting based on user properties, app versions, custom attributes and real-time updates.
-
-
-## Using a Content Management System (CMS)
-
-An overview of Content Management Systems (CMS) available in the Expo and React Native ecosystem.
-
-A **Content Management System (CMS)** is a platform that allows you to create, manage, and organize digital content such as blog posts, images, and product information without the need to write custom backend code. Using a CMS can save you significant development time and enable non-technical users (such as editors and marketers) to update app content easily through a user-friendly interface.
-Integrating a CMS into your Expo and React Native app lets you remotely manage and update content, push out new information to users instantly, and scale your content operations without releasing new app updates.
-Here are some popular CMS options to consider for Expo and React Native projects:
 
 
 # Troubleshooting

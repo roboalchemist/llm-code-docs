@@ -4,23 +4,9 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
 
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/integrations/langchain.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LangChain Integration | Galileo Evaluate
 
@@ -30,7 +16,7 @@ Galileo supports the logging of chains from `langchain`. To log these chains, we
 
 For logging your data, first login:
 
-```py
+```py  theme={null}
 import promptquality as pq
 
 pq.login()
@@ -38,7 +24,7 @@ pq.login()
 
 After that, you can set up the `GalileoPromptCallback`:
 
-```py
+```py  theme={null}
 from promptquality import Scorers
 scorers = [Scorers.context_adherence_luna,
            Scorers.completeness_luna,
@@ -62,25 +48,25 @@ When you execute your chain (with `run`, `invoke` or `batch`), just include the 
 
 If using `.run()`:
 
-```py
+```py  theme={null}
 chain.run(<inputs>, callbacks=[galileo_handler])
 ```
 
 If using `.invoke()`:
 
-```py
+```py  theme={null}
 chain.invoke(inputs, config=dict(callbacks=[galileo_handler]))
 ```
 
 If using `.batch()`:
 
-```py
+```py  theme={null}
 .batch(..., config=dict(callbacks=[galileo_handler]))
 ```
 
 **Important**: Once you complete executing for your dataset, tell Galileo the run is complete by:
 
-```py
+```py  theme={null}
 galileo_handler.finish()
 ```
 

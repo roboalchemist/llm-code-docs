@@ -2,17 +2,9 @@
 
 # Source: https://infisical.com/docs/cli/commands/vault.md
 
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/vault.md
-
-# Source: https://infisical.com/docs/cli/commands/vault.md
-
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/vault.md
-
-# Source: https://infisical.com/docs/cli/commands/vault.md
-
-# Source: https://infisical.com/docs/documentation/platform/external-migrations/vault.md
-
-# Source: https://infisical.com/docs/cli/commands/vault.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # infisical vault
 

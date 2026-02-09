@@ -1,95 +1,72 @@
 # Source: https://dev.writer.com/api-reference/file-api/download-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Download file
 
 > Download the binary content of a file. The response will contain the file data in the appropriate MIME type.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/files/{file_id}/download
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/files/{file_id}/download
-  method: get
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path:
-        file_id:
+  /v1/files/{file_id}/download:
+    get:
+      tags:
+        - File API
+      summary: Download file
+      description: >-
+        Download the binary content of a file. The response will contain the
+        file data in the appropriate MIME type.
+      operationId: gatewayDownloadFile
+      parameters:
+        - name: file_id
+          in: path
+          required: true
           schema:
-            - type: string
+            type: string
+          description: The unique identifier of the file.
+      responses:
+        '200':
+          description: File download successful
+          headers:
+            Content-Type:
+              description: The MIME type of the file being downloaded
               required: true
-              description: The unique identifier of the file.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: >-
-          curl --location --request GET
-          https://api.writer.com/v1/files/{file_id}/download \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            const response = await client.files.download('file_id');
-
-            console.log(response);
-
-            const content = await response.blob();
-            console.log(content);
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              # This is the default and can be omitted
-              api_key=os.environ.get("WRITER_API_KEY"),
-          )
-          response = client.files.download(
-              "file_id",
-          )
-          print(response)
-          content = response.read()
-          print(content)
-  response:
-    '200':
-      application/octet-stream:
-        schemaArray:
-          - type: file
-            contentEncoding: binary
-        examples:
-          fileDownloadExample:
-            summary: Example binary file download
-            value: File contents
-        description: File download successful
-  deprecated: false
-  type: path
+              schema:
+                type: object
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+              examples:
+                fileDownloadExample:
+                  summary: Example binary file download
+                  value: File contents
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/contactsupport.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contact Support & Community
 
 > Get help from the support and the community here

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/autogen-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auto-generating an LLM-as-a-judge
 
 > Learn how to use Galileo's Autogen feature to generate LLM-as-a-judge metrics.

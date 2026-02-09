@@ -23,7 +23,7 @@ For each tool:
 - **Name** – pair the domain with the action (`calendar.create_event`).
 - **Description** – start with “Use this when…” and call out disallowed cases ("Do not use for reminders").
 - **Parameter docs** – describe each argument, include examples, and use enums for constrained values.
-- **Read-only hint** – annotate `readOnlyHint: true` on tools that never mutate state so ChatGPT can streamline confirmation.
+- **Read-only hint** – annotate `readOnlyHint: true` on tools that only retrieve or compute information and never create, update, delete, or send data outside of ChatGPT.
 - For tools that are not read-only:
   - **Destructive hint** - annotate `destructiveHint: false` on tools that do not delete or overwrite user data.
   - **Open-world hint** - annotate `openWorldHint: false` on tools that do not publish content or reach outside the user's account.

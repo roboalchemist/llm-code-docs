@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/using-secret-in-evaluator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Secrets
 
 > Learn how to create secrets that can be utilized within your reward function.

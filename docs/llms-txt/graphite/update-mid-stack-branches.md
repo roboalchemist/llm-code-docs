@@ -1,6 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/update-mid-stack-branches.md
 
-# Update Mid Stack Branches
+> **Documentation Index**
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Update Mid Stack Branches
 
 > Learn how to make changes to mid-stack branches and auto-restack seamlessly with Graphite CLI.
 
@@ -36,7 +40,7 @@ Any branch you create with Graphite (using the [recommended workflow](/create-st
 
 By default, the `gt modify` command amends the commit on the branch. Here's how you would address feedback on a branch in the middle of your stack by amending a commit:
 
-```bash Terminal theme={null}
+```bash
 # address review comments by amending a commit
 
 
@@ -62,7 +66,7 @@ gt m -a
 
 If you prefer to create an entirely new commit for each of the changes you make to a branch, you can use `gt modify` with the `--commit` flag:
 
-```bash Terminal theme={null}
+```bash
 # navigte to the appropriate branch in the stack
 gt checkout some_branch_mid_stack
 
@@ -85,7 +89,7 @@ gt m -c
 
 Given that there are no merge conflicts (see next section), `gt modify` will automatically restack any upstack branches on top of your new changes and provide the following output:
 
-```bash Terminal theme={null}
+```bash
 1 file changed, 0 insertions(+), 0 deletions(-)
 create mode 100644 my amended commit
 Restacked next_branch on some_branch_mid_stack.
@@ -96,7 +100,7 @@ Restacked last_branch on next_branch.
 
 If `gt modify` encounters any conflicts as they recursively restack your branches, you'll be prompted to resolve your conflicts before continuing:
 
-```bash Terminal theme={null}
+```bash
 Hit conflict restacking next_branch on some_branch_mid_stack.
 
 
@@ -127,7 +131,7 @@ Each change will be amended into the correct commit in a branch downstack from t
 
 Before applying the changes, `gt absorb` will show which lines will be absorbed into each commit, and prompt for confirmation (unless the `--force` flag is passed).
 
-```bash Terminal theme={null}
+```bash
 # Receive review comments on your stack
 
 

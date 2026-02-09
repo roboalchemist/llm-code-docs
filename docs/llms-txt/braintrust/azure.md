@@ -1,6 +1,10 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/azure.md
 
-# Source: https://braintrust.dev/docs/guides/self-hosting/azure.md
+# Source: https://braintrust.dev/docs/admin/self-hosting/azure.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Self-host on Azure
 
@@ -22,7 +26,7 @@ Deploy the Braintrust data plane infrastructure in your Azure subscription.
 
     4. In `main.tf`, customize the Braintrust deployment settings.
 
-       The default configuration is for a large production-sized deployment. Adjust them based on your needs, but keep in mind the [hardware requirements](/guides/self-hosting/index#hardware-requirements).
+       The default configuration is for a large production-sized deployment. Adjust them based on your needs, but keep in mind the [hardware requirements](/admin/self-hosting/index#hardware-requirements).
 
     5. Initially set `enable_front_door = false` in `main.tf`. You'll enable this later after configuring the load balancer.
   </Step>
@@ -212,8 +216,3 @@ helm upgrade braintrust braintrust/braintrust-data-plane \
 </Note>
 
 Helm releases: [GitHub Releases](https://github.com/braintrustdata/helm/releases)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

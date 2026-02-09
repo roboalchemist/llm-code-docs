@@ -2,7 +2,9 @@
 
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-[![React Native](/img/header_logo.svg)![React Native](/img/header_logo.svg)](/index.md)
+Re-watch the latest [React Native Keynote](https://www.youtube.com/watch?v=NiYwlvXsBKw) from React Conf 2025
+
+[![](/img/header_logo.svg)![](/img/header_logo.svg)](/index.md)
 
 [**React Native**](/index.md)
 
@@ -122,4 +124,4 @@ Explore More
 
 [![Meta Open Source Logo](/img/oss_logo.svg)![Meta Open Source Logo](/img/oss_logo.svg)](https://opensource.fb.com/)
 
-Copyright © 2025 Meta Platforms, Inc.
+Copyright © 2026 Meta Platforms, Inc.

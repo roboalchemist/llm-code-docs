@@ -1,160 +1,323 @@
 # Source: https://www.promptfoo.dev/docs/model-audit/
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-model-audit/index" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">ModelAudit - Static Security Scanner for ML Models | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-model-audit--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-model-audit--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/model-audit/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="ModelAudit - Static Security Scanner for ML Models | Promptfoo"><meta data-rh="true" name="description" content="Scan AI/ML models for security vulnerabilities, malicious code, and backdoors. Supports PyTorch, TensorFlow, ONNX, Keras, and 30+ model formats."><meta data-rh="true" property="og:description" content="Scan AI/ML models for security vulnerabilities, malicious code, and backdoors. Supports PyTorch, TensorFlow, ONNX, Keras, and 30+ model formats."><meta data-rh="true" name="keywords" content="model security,AI security,ML security scanning,static analysis,malicious model detection,pytorch security,tensorflow security,model vulnerability scanner"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/model-audit/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/model-audit/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/model-audit/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Overview","item":"https://www.promptfoo.dev/docs/model-audit/"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+# Model Scanning
 
+## Overview
 
+ModelAudit is a lightweight static security scanner for machine learning models accessible through Promptfoo. It scans AI/ML models for potential security risks before deployment.
 
+Promptfoo provides a wrapper command `promptfoo scan-model` that integrates ModelAudit scanning capabilities.
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+![example model scan results](/assets/images/modelaudit-result-04df906a19815b169b83b07fa7008dc4.png)
 
+Promptfoo also includes a UI that allows you to set up a scan:
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+![model scan](/assets/images/model-audit-setup-b1f6d0c547b813f6dca4aaeba24f526b.png)
 
+And displays the results:
 
+![model scan results](/assets/images/model-audit-results-0b61f9c91295d4b2c014faca98ff72b3.png)
 
+## Purpose
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/discovery/"><span title="Target Discovery" class="linkLabel_fEdy">Target Discovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/guardrails/"><span title="Adaptive Guardrails" class="linkLabel_fEdy">Adaptive Guardrails</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/model-audit/"><span title="Model Scanner" class="categoryLinkLabel_ufhF">Model Scanner</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/model-audit/"><span title="Overview" class="linkLabel_fEdy">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/model-audit/usage/"><span title="Advanced Usage" class="linkLabel_fEdy">Advanced Usage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/model-audit/scanners/"><span title="Scanners" class="linkLabel_fEdy">Scanners</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Tools</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Model Scanner</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Overview</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Model Scanning</h1></header>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
-<p>ModelAudit is a lightweight static security scanner for machine learning models accessible through Promptfoo. It scans AI/ML models for potential security risks before deployment.</p>
-<p>Promptfoo provides a wrapper command <code>promptfoo scan-model</code> that integrates ModelAudit scanning capabilities.</p>
-<p><img decoding="async" loading="lazy" alt="example model scan results" src="/assets/images/modelaudit-result-04df906a19815b169b83b07fa7008dc4.png" width="1978" height="506" class="img_SS3x"></p>
-<p>Promptfoo also includes a UI that allows you to set up a scan:</p>
-<p><img decoding="async" loading="lazy" alt="model scan" src="/assets/images/model-audit-setup-b1f6d0c547b813f6dca4aaeba24f526b.png" width="2724" height="1940" class="img_SS3x"></p>
-<p>And displays the results:</p>
-<p><img decoding="async" loading="lazy" alt="model scan results" src="/assets/images/model-audit-results-0b61f9c91295d4b2c014faca98ff72b3.png" width="2724" height="1942" class="img_SS3x"></p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="purpose">Purpose<a href="#purpose" class="hash-link" aria-label="Direct link to Purpose" title="Direct link to Purpose" translate="no">​</a></h2>
-<p>AI/ML models can introduce security risks through:</p>
-<ul>
-<li class="">Malicious code embedded in pickled models</li>
-<li class="">Suspicious TensorFlow operations</li>
-<li class="">Potentially unsafe Keras Lambda layers</li>
-<li class="">Dangerous pickle opcodes</li>
-<li class="">Encoded payloads hidden in model structures</li>
-<li class="">Risky configurations in model architectures</li>
-<li class="">Malicious content in ZIP archives</li>
-<li class="">Embedded executables in binary model files</li>
-<li class="">Hidden credentials (API keys, tokens, passwords)</li>
-<li class="">Network communication patterns (URLs, IPs, sockets)</li>
-<li class="">JIT/Script execution in TorchScript and ONNX models</li>
-</ul>
-<p>ModelAudit helps identify these risks before models are deployed to production environments, ensuring a more secure AI pipeline.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="installation">Installation<a href="#installation" class="hash-link" aria-label="Direct link to Installation" title="Direct link to Installation" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="using-promptfoo">Using Promptfoo<a href="#using-promptfoo" class="hash-link" aria-label="Direct link to Using Promptfoo" title="Direct link to Using Promptfoo" translate="no">​</a></h3>
-<p>The easiest way to use ModelAudit is through Promptfoo:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Install Promptfoo globally</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-g</span><span class="token plain"> promptfoo</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Install modelaudit dependency</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="standalone-installation">Standalone Installation<a href="#standalone-installation" class="hash-link" aria-label="Direct link to Standalone Installation" title="Direct link to Standalone Installation" translate="no">​</a></h3>
-<p>You can also install ModelAudit directly:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Basic installation</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># With optional dependencies for specific model formats</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">tensorflow,h5,pytorch</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For all dependencies</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">all</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Or install specific components:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">tensorflow,h5,pytorch</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Core ML frameworks</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">cloud,mlflow</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">           </span><span class="token comment" style="color:#999988;font-style:italic"># Remote model access</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">numpy1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">                 </span><span class="token comment" style="color:#999988;font-style:italic"># NumPy 1.x compatibility</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="docker">Docker<a href="#docker" class="hash-link" aria-label="Direct link to Docker" title="Direct link to Docker" translate="no">​</a></h3>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Pull from GitHub Container Registry</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">docker</span><span class="token plain"> pull ghcr.io/promptfoo/modelaudit:latest</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Use specific variants</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">docker</span><span class="token plain"> pull ghcr.io/promptfoo/modelaudit:latest-full        </span><span class="token comment" style="color:#999988;font-style:italic"># All ML frameworks</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">docker</span><span class="token plain"> pull ghcr.io/promptfoo/modelaudit:latest-tensorflow  </span><span class="token comment" style="color:#999988;font-style:italic"># TensorFlow only</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Run with Docker</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">docker</span><span class="token plain"> run </span><span class="token parameter variable" style="color:#36acaa">--rm</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-v</span><span class="token plain"> </span><span class="token variable" style="color:#36acaa">$(</span><span class="token variable builtin class-name" style="color:#36acaa">pwd</span><span class="token variable" style="color:#36acaa">)</span><span class="token plain">:/data ghcr.io/promptfoo/modelaudit:latest scan /data/model.pkl</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="basic-command-structure">Basic Command Structure<a href="#basic-command-structure" class="hash-link" aria-label="Direct link to Basic Command Structure" title="Direct link to Basic Command Structure" translate="no">​</a></h3>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">OPTIONS</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token environment constant" style="color:#36acaa">PATH</span><span class="token punctuation" style="color:#393A34">..</span><span class="token plain">.</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="examples">Examples<a href="#examples" class="hash-link" aria-label="Direct link to Examples" title="Direct link to Examples" translate="no">​</a></h3>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Scan a single model file</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Scan a model directly from HuggingFace without downloading</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model https://huggingface.co/bert-base-uncased</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model hf://microsoft/resnet-50</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Scan from cloud storage</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model s3://my-bucket/model.pt</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model gs://my-bucket/model.h5</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Scan from MLflow registry</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model models:/MyModel/1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Scan multiple models and directories</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl model2.h5 models_directory</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Export results to JSON</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--format</span><span class="token plain"> json </span><span class="token parameter variable" style="color:#36acaa">--output</span><span class="token plain"> results.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Export results to SARIF for security tool integration</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--format</span><span class="token plain"> sarif </span><span class="token parameter variable" style="color:#36acaa">--output</span><span class="token plain"> results.sarif</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Add custom blacklist patterns</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--blacklist</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;unsafe_model&quot;</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--blacklist</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;malicious_net&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Enable verbose output</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--verbose</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Set file size limits</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model models/ --max-size 1GB</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Generate Software Bill of Materials</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--sbom</span><span class="token plain"> sbom.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Enable strict mode for security-critical scans</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl </span><span class="token parameter variable" style="color:#36acaa">--strict</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Preview scan without actually processing</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model model.pkl --dry-run</span><br></span></code></pre></div></div>
-<p>See the <a class="" href="/docs/model-audit/usage/">Advanced Usage</a> guide for detailed authentication setup for cloud storage, JFrog, and other remote sources.</p>
-<div class="theme-admonition theme-admonition-info admonition_WCGJ alert alert--info"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Alternative Installation and Usage</div><div class="admonitionContent_pbrs"><ul>
-<li class=""><strong>Standalone</strong>: Install modelaudit directly using <code>pip install modelaudit</code>. <code>modelaudit scan</code> behaves the same as <code>promptfoo scan-model</code>.</li>
-<li class=""><strong>Web Interface</strong>: For a GUI experience, use <code>promptfoo view</code> and navigate to <code>/model-audit</code> for visual scanning and configuration.</li>
-</ul></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="options">Options<a href="#options" class="hash-link" aria-label="Direct link to Options" title="Direct link to Options" translate="no">​</a></h3>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>--blacklist</code>, <code>-b</code></td><td>Additional blacklist patterns to check against model names</td></tr><tr><td><code>--format</code>, <code>-f</code></td><td>Output format (<code>text</code> | <code>json</code> | <code>sarif</code>) [default: text]</td></tr><tr><td><code>--output</code>, <code>-o</code></td><td>Output file path (prints to stdout if not specified)</td></tr><tr><td><code>--timeout</code>, <code>-t</code></td><td>Scan timeout in seconds [default: 300]</td></tr><tr><td><code>--verbose</code>, <code>-v</code></td><td>Enable verbose output</td></tr><tr><td><code>--max-size</code></td><td>Maximum total size to scan (e.g., <code>500MB</code>, <code>1GB</code>)</td></tr><tr><td><code>--sbom</code></td><td>Generate CycloneDX Software Bill of Materials with license info</td></tr><tr><td><code>--strict</code></td><td>Fail on warnings; enable stricter validation</td></tr><tr><td><code>--dry-run</code></td><td>Preview scan without processing files</td></tr><tr><td><code>--quiet</code></td><td>Suppress non-critical output</td></tr><tr><td><code>--progress</code></td><td>Force-enable progress reporting</td></tr><tr><td><code>--no-cache</code></td><td>Disable caching of downloaded files</td></tr><tr><td><code>--no-write</code></td><td>Skip writing results to database</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="web-interface">Web Interface<a href="#web-interface" class="hash-link" aria-label="Direct link to Web Interface" title="Direct link to Web Interface" translate="no">​</a></h2>
-<p>Promptfoo includes a web interface for ModelAudit at <code>/model-audit</code> with visual path selection, real-time progress tracking, and detailed results visualization.</p>
-<p><strong>Access:</strong> Run <code>promptfoo view</code> and navigate to <code>http://localhost:15500/model-audit</code></p>
-<p><strong>Key Features:</strong></p>
-<ul>
-<li class="">Visual file/directory selection with current working directory context</li>
-<li class="">GUI configuration for all scan options (blacklist patterns, timeouts, file limits)</li>
-<li class="">Live scanning progress and tabbed results display with severity color coding</li>
-<li class="">Scan history and automatic installation detection</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="supported-formats">Supported Formats<a href="#supported-formats" class="hash-link" aria-label="Direct link to Supported Formats" title="Direct link to Supported Formats" translate="no">​</a></h2>
-<p>ModelAudit supports scanning 30+ specialized file format scanners across major ML frameworks:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="model-formats">Model Formats<a href="#model-formats" class="hash-link" aria-label="Direct link to Model Formats" title="Direct link to Model Formats" translate="no">​</a></h3>
-<table><thead><tr><th>Format</th><th>Extensions</th><th>Description</th></tr></thead><tbody><tr><td><strong>PyTorch</strong></td><td><code>.pt</code>, <code>.pth</code>, <code>.bin</code></td><td>PyTorch model files and checkpoints</td></tr><tr><td><strong>TensorFlow SavedModel</strong></td><td><code>.pb</code>, directories</td><td>TensorFlow&#x27;s standard model format</td></tr><tr><td><strong>TensorFlow Lite</strong></td><td><code>.tflite</code></td><td>Mobile-optimized TensorFlow models</td></tr><tr><td><strong>TensorRT</strong></td><td><code>.engine</code>, <code>.plan</code></td><td>NVIDIA GPU-optimized inference engines</td></tr><tr><td><strong>Keras</strong></td><td><code>.h5</code>, <code>.keras</code>, <code>.hdf5</code></td><td>Keras/TensorFlow models in HDF5 format</td></tr><tr><td><strong>ONNX</strong></td><td><code>.onnx</code></td><td>Open Neural Network Exchange format</td></tr><tr><td><strong>SafeTensors</strong></td><td><code>.safetensors</code></td><td>Hugging Face&#x27;s secure tensor format</td></tr><tr><td><strong>GGUF/GGML</strong></td><td><code>.gguf</code>, <code>.ggml</code>, <code>.ggmf</code>, <code>.ggjt</code>, <code>.ggla</code>, <code>.ggsa</code></td><td>Quantized models (LLaMA, Mistral, etc.)</td></tr><tr><td><strong>Flax/JAX</strong></td><td><code>.msgpack</code>, <code>.flax</code>, <code>.orbax</code>, <code>.jax</code></td><td>JAX-based model formats</td></tr><tr><td><strong>JAX Checkpoints</strong></td><td><code>.ckpt</code>, <code>.checkpoint</code>, <code>.orbax-checkpoint</code></td><td>JAX training checkpoints</td></tr><tr><td><strong>Pickle</strong></td><td><code>.pkl</code>, <code>.pickle</code>, <code>.dill</code></td><td>Python serialization (includes Dill)</td></tr><tr><td><strong>Joblib</strong></td><td><code>.joblib</code></td><td>Scikit-learn and general ML serialization</td></tr><tr><td><strong>NumPy</strong></td><td><code>.npy</code>, <code>.npz</code></td><td>NumPy array storage formats</td></tr><tr><td><strong>PMML</strong></td><td><code>.pmml</code></td><td>Predictive Model Markup Language (XML)</td></tr><tr><td><strong>ZIP Archives</strong></td><td><code>.zip</code></td><td>Compressed model archives with recursive scanning</td></tr><tr><td><strong>Container Manifests</strong></td><td><code>.manifest</code></td><td>OCI/Docker layer scanning</td></tr><tr><td><strong>Binary Files</strong></td><td><code>.bin</code></td><td>Auto-detected format (PyTorch, ONNX, SafeTensors, etc.)</td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="remote-sources">Remote Sources<a href="#remote-sources" class="hash-link" aria-label="Direct link to Remote Sources" title="Direct link to Remote Sources" translate="no">​</a></h3>
-<table><thead><tr><th>Source</th><th>URL Format</th><th>Example</th></tr></thead><tbody><tr><td><strong>HuggingFace Hub</strong></td><td><code>https://huggingface.co/</code>, <code>https://hf.co/</code>, <code>hf://</code></td><td><code>hf://microsoft/resnet-50</code></td></tr><tr><td><strong>Amazon S3</strong></td><td><code>s3://</code></td><td><code>s3://my-bucket/model.pt</code></td></tr><tr><td><strong>Google Cloud Storage</strong></td><td><code>gs://</code></td><td><code>gs://my-bucket/model.h5</code></td></tr><tr><td><strong>Cloudflare R2</strong></td><td><code>r2://</code></td><td><code>r2://my-bucket/model.safetensors</code></td></tr><tr><td><strong>MLflow Registry</strong></td><td><code>models:/</code></td><td><code>models:/MyModel/1</code></td></tr><tr><td><strong>JFrog Artifactory</strong></td><td><code>https://*.jfrog.io/</code></td><td><code>https://company.jfrog.io/artifactory/models/model.pkl</code></td></tr><tr><td><strong>DVC</strong></td><td><code>.dvc</code> files</td><td><code>model.pkl.dvc</code></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="security-checks-performed">Security Checks Performed<a href="#security-checks-performed" class="hash-link" aria-label="Direct link to Security Checks Performed" title="Direct link to Security Checks Performed" translate="no">​</a></h2>
-<p>The scanner looks for various security issues, including:</p>
-<ul>
-<li class=""><strong>Malicious Code</strong>: Detecting potentially dangerous code in pickled models</li>
-<li class=""><strong>Suspicious Operations</strong>: Identifying risky TensorFlow operations and custom ONNX operators</li>
-<li class=""><strong>Unsafe Layers</strong>: Finding potentially unsafe Keras Lambda layers</li>
-<li class=""><strong>Blacklisted Names</strong>: Checking for models with names matching suspicious patterns</li>
-<li class=""><strong>Dangerous Serialization</strong>: Detecting unsafe pickle opcodes, nested pickle payloads, and decode-exec chains</li>
-<li class=""><strong>Enhanced Dill/Joblib Security</strong>: ML-aware scanning with format validation and bypass prevention</li>
-<li class=""><strong>Encoded Payloads</strong>: Looking for suspicious strings that might indicate hidden code</li>
-<li class=""><strong>Risky Configurations</strong>: Identifying dangerous settings in model architectures</li>
-<li class=""><strong>XML Security</strong>: Detecting XXE attacks and malicious content in PMML files</li>
-<li class=""><strong>Embedded Executables</strong>: Detecting Windows PE, Linux ELF, and macOS Mach-O files</li>
-<li class=""><strong>Container Security</strong>: Scanning model files within OCI/Docker container layers</li>
-<li class=""><strong>Compression Attacks</strong>: Detecting zip bombs and decompression attacks</li>
-<li class=""><strong>Weight Anomalies</strong>: Statistical analysis to detect potential backdoors</li>
-<li class=""><strong>Format Integrity</strong>: Validating file format structure</li>
-<li class=""><strong>License Compliance</strong>: Detecting AGPL obligations and commercial restrictions</li>
-<li class=""><strong>DVC Integration</strong>: Automatic resolution and scanning of DVC-tracked models</li>
-<li class=""><strong>Secrets Detection</strong>: Finding embedded API keys, tokens, and credentials</li>
-<li class=""><strong>Network Analysis</strong>: Detecting URLs, IPs, and socket usage that could enable data exfiltration</li>
-<li class=""><strong>JIT Code Detection</strong>: Scanning TorchScript, ONNX custom ops, and other JIT-compiled code</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="interpreting-results">Interpreting Results<a href="#interpreting-results" class="hash-link" aria-label="Direct link to Interpreting Results" title="Direct link to Interpreting Results" translate="no">​</a></h2>
-<p>The scan results are classified by severity:</p>
-<ul>
-<li class=""><strong>CRITICAL</strong>: Definite security concerns that should be addressed immediately</li>
-<li class=""><strong>WARNING</strong>: Potential issues that require review</li>
-<li class=""><strong>INFO</strong>: Informational findings, not necessarily security concerns</li>
-<li class=""><strong>DEBUG</strong>: Additional details (only shown with <code>--verbose</code>)</li>
-</ul>
-<p>Some issues include a &quot;Why&quot; explanation to help understand the security risk:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">1. suspicious_model.pkl (pos 28): [CRITICAL] Suspicious module reference found: posix.system</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   Why: The &#x27;os&#x27; module provides direct access to operating system functions.</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="integration-in-workflows">Integration in Workflows<a href="#integration-in-workflows" class="hash-link" aria-label="Direct link to Integration in Workflows" title="Direct link to Integration in Workflows" translate="no">​</a></h2>
-<p>ModelAudit is particularly useful in CI/CD pipelines when incorporated with Promptfoo:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Example CI/CD script segment</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-g</span><span class="token plain"> promptfoo</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo scan-model </span><span class="token parameter variable" style="color:#36acaa">--format</span><span class="token plain"> json </span><span class="token parameter variable" style="color:#36acaa">--output</span><span class="token plain"> scan-results.json ./models/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"> </span><span class="token variable" style="color:#36acaa">$?</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-ne</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">then</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token builtin class-name">echo</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Security issues found in models! Check scan-results.json&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token builtin class-name">exit</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">fi</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="exit-codes">Exit Codes<a href="#exit-codes" class="hash-link" aria-label="Direct link to Exit Codes" title="Direct link to Exit Codes" translate="no">​</a></h3>
-<p>ModelAudit returns specific exit codes for automation:</p>
-<ul>
-<li class=""><strong>0</strong>: No security issues found ✅</li>
-<li class=""><strong>1</strong>: Security issues detected (warnings or critical) 🟡</li>
-<li class=""><strong>2</strong>: Scan errors occurred (installation, file access, etc.) 🔴</li>
-</ul>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>CI/CD Best Practice</div><div class="admonitionContent_pbrs"><p>In CI/CD pipelines, exit code 1 indicates findings that should be reviewed but don&#x27;t necessarily block deployment. Only exit code 2 represents actual scan failures.</p></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="requirements">Requirements<a href="#requirements" class="hash-link" aria-label="Direct link to Requirements" title="Direct link to Requirements" translate="no">​</a></h2>
-<p>ModelAudit is included with Promptfoo, but specific model formats may require additional dependencies:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># For TensorFlow models</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> tensorflow</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For PyTorch models</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> torch</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For Keras models with HDF5</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> h5py</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For YAML configuration scanning</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> pyyaml</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For SafeTensors support</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> safetensors</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For HuggingFace URL scanning</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> huggingface-hub</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For cloud storage scanning</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> boto3 google-cloud-storage</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For MLflow registry scanning</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> mlflow</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="numpy-compatibility">NumPy Compatibility<a href="#numpy-compatibility" class="hash-link" aria-label="Direct link to NumPy Compatibility" title="Direct link to NumPy Compatibility" translate="no">​</a></h3>
-<p>ModelAudit supports both NumPy 1.x and 2.x. If you encounter NumPy compatibility issues:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Force NumPy 1.x if needed for full compatibility</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">pip </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> modelaudit</span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">numpy1</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="see-also">See Also<a href="#see-also" class="hash-link" aria-label="Direct link to See Also" title="Direct link to See Also" translate="no">​</a></h2>
-<ul>
-<li class=""><a class="" href="/docs/model-audit/usage/">Advanced Usage</a></li>
-<li class=""><a class="" href="/docs/model-audit/scanners/">Scanner Reference</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/model-audit/index.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/guardrails/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Adaptive Guardrails</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/model-audit/usage/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Advanced Usage</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#installation" class="table-of-contents__link toc-highlight">Installation</a><ul><li><a href="#using-promptfoo" class="table-of-contents__link toc-highlight">Using Promptfoo</a></li><li><a href="#standalone-installation" class="table-of-contents__link toc-highlight">Standalone Installation</a></li><li><a href="#docker" class="table-of-contents__link toc-highlight">Docker</a></li></ul></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#basic-command-structure" class="table-of-contents__link toc-highlight">Basic Command Structure</a></li><li><a href="#examples" class="table-of-contents__link toc-highlight">Examples</a></li><li><a href="#options" class="table-of-contents__link toc-highlight">Options</a></li></ul></li><li><a href="#web-interface" class="table-of-contents__link toc-highlight">Web Interface</a></li><li><a href="#supported-formats" class="table-of-contents__link toc-highlight">Supported Formats</a><ul><li><a href="#model-formats" class="table-of-contents__link toc-highlight">Model Formats</a></li><li><a href="#remote-sources" class="table-of-contents__link toc-highlight">Remote Sources</a></li></ul></li><li><a href="#security-checks-performed" class="table-of-contents__link toc-highlight">Security Checks Performed</a></li><li><a href="#interpreting-results" class="table-of-contents__link toc-highlight">Interpreting Results</a></li><li><a href="#integration-in-workflows" class="table-of-contents__link toc-highlight">Integration in Workflows</a><ul><li><a href="#exit-codes" class="table-of-contents__link toc-highlight">Exit Codes</a></li></ul></li><li><a href="#requirements" class="table-of-contents__link toc-highlight">Requirements</a><ul><li><a href="#numpy-compatibility" class="table-of-contents__link toc-highlight">NumPy Compatibility</a></li></ul></li><li><a href="#see-also" class="table-of-contents__link toc-highlight">See Also</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+AI/ML models can introduce security risks through:
+
+- Malicious code embedded in pickled models
+- Suspicious TensorFlow operations
+- Potentially unsafe Keras Lambda layers
+- Dangerous pickle opcodes
+- Encoded payloads hidden in model structures
+- Risky configurations in model architectures
+- Malicious content in ZIP archives
+- Embedded executables in binary model files
+- Hidden credentials (API keys, tokens, passwords)
+- Network communication patterns (URLs, IPs, sockets)
+- JIT/Script execution in TorchScript and ONNX models
+
+ModelAudit helps identify these risks before models are deployed to production environments, ensuring a more secure AI pipeline.
+
+## Installation
+
+### Using Promptfoo
+
+The easiest way to use ModelAudit is through Promptfoo:
+
+```bash
+# Install Promptfoo globally
+npm install -g promptfoo
+
+# Install modelaudit dependency
+pip install modelaudit
+```
+
+### Standalone Installation
+
+You can also install ModelAudit directly:
+
+```bash
+# Basic installation
+pip install modelaudit
+
+# With optional dependencies for specific model formats
+pip install modelaudit[tensorflow,h5,pytorch]
+
+# For all dependencies
+pip install modelaudit[all]
+
+# Or install specific components:
+pip install modelaudit[tensorflow,h5,pytorch]  # Core ML frameworks
+pip install modelaudit[cloud,mlflow]           # Remote model access
+pip install modelaudit[numpy1]                 # NumPy 1.x compatibility
+```
+
+### Docker
+
+```bash
+# Pull from GitHub Container Registry
+docker pull ghcr.io/promptfoo/modelaudit:latest
+
+# Use specific variants
+docker pull ghcr.io/promptfoo/modelaudit:latest-full        # All ML frameworks
+docker pull ghcr.io/promptfoo/modelaudit:latest-tensorflow  # TensorFlow only
+
+# Run with Docker
+docker run --rm -v $(pwd):/data ghcr.io/promptfoo/modelaudit:latest scan /data/model.pkl
+```
+
+## Usage
+
+### Basic Command Structure
+
+```bash
+promptfoo scan-model [OPTIONS] PATH..
+```
+
+### Examples
+
+```bash
+# Scan a single model file
+promptfoo scan-model model.pkl
+
+# Scan a model directly from HuggingFace without downloading
+promptfoo scan-model https://huggingface.co/bert-base-uncased
+promptfoo scan-model hf://microsoft/resnet-50
+
+# Scan from cloud storage
+promptfoo scan-model s3://my-bucket/model.pt
+promptfoo scan-model gs://my-bucket/model.h5
+
+# Scan from MLflow registry
+promptfoo scan-model models:/MyModel/1
+
+# Scan multiple models and directories
+promptfoo scan-model model.pkl model2.h5 models_directory
+
+# Export results to JSON
+promptfoo scan-model model.pkl --format json --output results.json
+
+# Export results to SARIF for security tool integration
+promptfoo scan-model model.pkl --format sarif --output results.sarif
+
+# Add custom blacklist patterns
+promptfoo scan-model model.pkl --blacklist "unsafe_model" --blacklist "malicious_net"
+
+# Enable verbose output
+promptfoo scan-model model.pkl --verbose
+
+# Set file size limits
+promptfoo scan-model models/ --max-size 1GB
+
+# Generate Software Bill of Materials
+promptfoo scan-model model.pkl --sbom sbom.json
+
+# Enable strict mode for security-critical scans
+promptfoo scan-model model.pkl --strict
+
+# Preview scan without actually processing
+promptfoo scan-model model.pkl --dry-run
+```
+
+See the [Advanced Usage](/docs/model-audit/usage/) guide for detailed authentication setup for cloud storage, JFrog, and other remote sources.
+
+### Alternative Installation and Usage
+
+- **Standalone**: Install modelaudit directly using `pip install modelaudit`. `modelaudit scan` behaves the same as `promptfoo scan-model`.
+- **Web Interface**: For a GUI experience, use `promptfoo view` and navigate to `/model-audit` for visual scanning and configuration.
+
+### Options
+
+| Option | Description |
+| --- | --- |
+| `--blacklist`, `-b` | Additional blacklist patterns to check against model names |
+| `--format`, `-f` | Output format (`text` | `json` | `sarif`) [default: text] |
+| `--output`, `-o` | Output file path (prints to stdout if not specified) |
+| `--timeout`, `-t` | Scan timeout in seconds [default: 300] |
+| `--verbose`, `-v` | Enable verbose output |
+| `--max-size` | Maximum total size to scan (e.g., `500MB`, `1GB`) |
+| `--sbom` | Generate CycloneDX Software Bill of Materials with license info |
+| `--strict` | Fail on warnings; enable stricter validation |
+| `--dry-run` | Preview scan without processing files |
+| `--quiet` | Suppress non-critical output |
+| `--progress` | Force-enable progress reporting |
+| `--no-cache` | Disable caching of downloaded files |
+| `--no-write` | Skip writing results to database |
+
+## Web Interface
+
+Promptfoo includes a web interface for ModelAudit at `/model-audit` with visual path selection, real-time progress tracking, and detailed results visualization.
+
+**Access:** Run `promptfoo view` and navigate to `http://localhost:15500/model-audit`
+
+**Key Features:**
+
+- Visual file/directory selection with current working directory context
+- GUI configuration for all scan options (blacklist patterns, timeouts, file limits)
+- Live scanning progress and tabbed results display with severity color coding
+- Scan history and automatic installation detection
+
+## Supported Formats
+
+ModelAudit supports scanning 30+ specialized file format scanners across major ML frameworks:
+
+### Model Formats
+
+| Format | Extensions | Description |
+| --- | --- | --- |
+| **PyTorch** | `.pt`, `.pth`, `.bin` | PyTorch model files and checkpoints |
+| **TensorFlow SavedModel** | `.pb`, directories | TensorFlow's standard model format |
+| **TensorFlow Lite** | `.tflite` | Mobile-optimized TensorFlow models |
+| **TensorRT** | `.engine`, `.plan` | NVIDIA GPU-optimized inference engines |
+| **Keras** | `.h5`, `.keras`, `.hdf5` | Keras/TensorFlow models in HDF5 format |
+| **ONNX** | `.onnx` | Open Neural Network Exchange format |
+| **SafeTensors** | `.safetensors` | Hugging Face's secure tensor format |
+| **GGUF/GGML** | `.gguf`, `.ggml`, `.ggmf`, `.ggjt`, `.ggla`, `.ggsa` | Quantized models (LLaMA, Mistral, etc.) |
+| **Flax/JAX** | `.msgpack`, `.flax`, `.orbax`, `.jax` | JAX-based model formats |
+| **JAX Checkpoints** | `.ckpt`, `.checkpoint`, `.orbax-checkpoint` | JAX training checkpoints |
+| **Pickle** | `.pkl`, `.pickle`, `.dill` | Python serialization (includes Dill) |
+| **Joblib** | `.joblib` | Scikit-learn and general ML serialization |
+| **NumPy** | `.npy`, `.npz` | NumPy array storage formats |
+| **PMML** | `.pmml` | Predictive Model Markup Language (XML) |
+| **ZIP Archives** | `.zip` | Compressed model archives with recursive scanning |
+| **Container Manifests** | `.manifest` | OCI/Docker layer scanning |
+| **Binary Files** | `.bin` | Auto-detected format (PyTorch, ONNX, SafeTensors, etc.) |
+
+### Remote Sources
+
+| Source | URL Format | Example |
+| --- | --- | --- |
+| **HuggingFace Hub** | `https://huggingface.co/`, `https://hf.co/`, `hf://` | `hf://microsoft/resnet-50` |
+| **Amazon S3** | `s3://` | `s3://my-bucket/model.pt` |
+| **Google Cloud Storage** | `gs://` | `gs://my-bucket/model.h5` |
+| **Cloudflare R2** | `r2://` | `r2://my-bucket/model.safetensors` |
+| **MLflow Registry** | `models:/` | `models:/MyModel/1` |
+| **JFrog Artifactory** | `https://*.jfrog.io/` | `https://company.jfrog.io/artifactory/models/model.pkl` |
+| **DVC** | `.dvc` files | `model.pkl.dvc` |
+
+## Security Checks Performed
+
+The scanner looks for various security issues, including:
+
+- **Malicious Code**: Detecting potentially dangerous code in pickled models
+- **Suspicious Operations**: Identifying risky TensorFlow operations and custom ONNX operators
+- **Unsafe Layers**: Finding potentially unsafe Keras Lambda layers
+- **Blacklisted Names**: Checking for models with names matching suspicious patterns
+- **Dangerous Serialization**: Detecting unsafe pickle opcodes, nested pickle payloads, and decode-exec chains
+- **Enhanced Dill/Joblib Security**: ML-aware scanning with format validation and bypass prevention
+- **Encoded Payloads**: Looking for suspicious strings that might indicate hidden code
+- **Risky Configurations**: Identifying dangerous settings in model architectures
+- **XML Security**: Detecting XXE attacks and malicious content in PMML files
+- **Embedded Executables**: Detecting Windows PE, Linux ELF, and macOS Mach-O files
+- **Container Security**: Scanning model files within OCI/Docker container layers
+- **Compression Attacks**: Detecting zip bombs and decompression attacks
+- **Weight Anomalies**: Statistical analysis to detect potential backdoors
+- **Format Integrity**: Validating file format structure
+- **License Compliance**: Detecting AGPL obligations and commercial restrictions
+- **DVC Integration**: Automatic resolution and scanning of DVC-tracked models
+- **Secrets Detection**: Finding embedded API keys, tokens, and credentials
+- **Network Analysis**: Detecting URLs, IPs, and socket usage that could enable data exfiltration
+- **JIT Code Detection**: Scanning TorchScript, ONNX custom ops, and other JIT-compiled code
+
+## Interpreting Results
+
+The scan results are classified by severity:
+
+- **CRITICAL**: Definite security concerns that should be addressed immediately
+- **WARNING**: Potential issues that require review
+- **INFO**: Informational findings, not necessarily security concerns
+- **DEBUG**: Additional details (only shown with `--verbose`)
+
+Some issues include a "Why" explanation to help understand the security risk:
+
+```bash
+1. suspicious_model.pkl (pos 28): [CRITICAL] Suspicious module reference found: posix.system
+   Why: The 'os' module provides direct access to operating system functions.
+```
+
+## Integration in Workflows
+
+ModelAudit is particularly useful in CI/CD pipelines when incorporated with Promptfoo:
+
+```bash
+# Example CI/CD script segment
+npm install -g promptfoo
+pip install modelaudit
+promptfoo scan-model --format json --output scan-results.json ./models/
+if [ $? -ne 0 ]; then
+  echo "Security issues found in models! Check scan-results.json"
+  exit 1
+fi
+```
+
+### Exit Codes
+
+ModelAudit returns specific exit codes for automation:
+
+- **0**: No security issues found ✅
+- **1**: Security issues detected (warnings or critical) 🟡
+- **2**: Scan errors occurred (installation, file access, etc.) 🔴
+
+In CI/CD pipelines, exit code 1 indicates findings that should be reviewed but don't necessarily block deployment. Only exit code 2 represents actual scan failures.
+
+## Requirements
+
+ModelAudit is included with Promptfoo, but specific model formats may require additional dependencies:
+
+```bash
+# For TensorFlow models
+pip install tensorflow
+
+# For PyTorch models
+pip install torch
+
+# For Keras models with HDF5
+pip install h5py
+
+# For YAML configuration scanning
+pip install pyyaml
+
+# For SafeTensors support
+pip install safetensors
+
+# For HuggingFace URL scanning
+pip install huggingface-hub
+
+# For cloud storage scanning
+pip install boto3 google-cloud-storage
+
+# For MLflow registry scanning
+pip install mlflow
+```
+
+### NumPy Compatibility
+
+ModelAudit supports both NumPy 1.x and 2.x. If you encounter NumPy compatibility issues:
+
+```bash
+# Force NumPy 1.x if needed for full compatibility
+pip install modelaudit[numpy1]
+```
+
+## See Also
+
+- [Advanced Usage](/docs/model-audit/usage/)
+- [Scanner Reference](/docs/model-audit/scanners/)

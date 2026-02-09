@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/api-reference/error-codes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand error codes
 
 This page provides a comprehensive reference for all error codes, HTTP status codes, and error handling patterns used across Writer APIs.
@@ -327,6 +331,48 @@ This section provides a comprehensive reference of all possible error codes orga
     | `QuotaExceeded`            | 429         | Vision rate limit          | Too many analysis requests per minute     |
     | `InternalError`            | 500         | Image processing error     | Internal error processing image           |
     | `InternalError`            | 503         | Vision service unavailable | Vision service is down for maintenance    |
+  </Accordion>
+
+  <Accordion title="Guardrails" icon="shield-halved">
+    Guardrail errors occur when content is blocked by configured safety controls. For more information, see [Configure guardrails](/home/guardrails).
+
+    ### Content blocked by guardrail
+
+    | Error Type                 | HTTP Status | Description                     | Possible Causes                                                                     |
+    | -------------------------- | ----------- | ------------------------------- | ----------------------------------------------------------------------------------- |
+    | `GuardrailBlockedError`    | 400         | Content blocked by guardrail    | Input or output violated guardrail policy                                           |
+    | `BadRequest`               | 400         | Bedrock guardrail violation     | Content blocked by AWS Bedrock guardrail policy (PII, content filter, denied topic) |
+    | `BadCredentials`           | 401         | Guardrail authentication failed | Invalid AWS credentials for Bedrock guardrail                                       |
+    | `InsufficientAccessRights` | 403         | Guardrail access denied         | Missing permissions for guardrail provider                                          |
+    | `ResourceNotFound`         | 404         | Guardrail not found             | Invalid guardrail ID or version                                                     |
+    | `InternalError`            | 500         | Guardrail processing error      | Error communicating with guardrail provider                                         |
+    | `InternalError`            | 503         | Guardrail service unavailable   | Guardrail provider service is down                                                  |
+
+    **Example guardrail error:**
+
+    ```json  theme={null}
+    {
+      "tpe": "BadRequest",
+      "errors": [
+        {
+          "description": "Content blocked by guardrail: PII detected",
+          "key": "fail.guardrail.blocked",
+          "extras": {
+            "guardrail_name": "pii-filter",
+            "entity_type": "CREDIT_CARD"
+          }
+        }
+      ],
+      "extras": {}
+    }
+    ```
+
+    **How to Fix:**
+
+    * Review the blocked entity type or violation reason in the error response
+    * Remove or mask sensitive content before retrying
+    * Check guardrail configuration if blocks are unexpected
+    * See [Guardrails documentation](/home/guardrails) for configuration options
   </Accordion>
 </AccordionGroup>
 

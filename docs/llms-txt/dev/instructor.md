@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/integrations/instructor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Structured output with Instructor
 
 This tutorial will guide you through using Writer with [Instructor](https://useinstructor.com/), a Python library that makes it easy to get structured data like JSON from LLMs.

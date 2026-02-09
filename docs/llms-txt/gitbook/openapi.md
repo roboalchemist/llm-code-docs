@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/openapi.md
 
-# Source: https://gitbook.com/docs/documentation/zh/api-references/openapi.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/openapi.md
-
-# Source: https://gitbook.com/docs/api-references/openapi.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/openapi.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/openapi.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/openapi.md
 

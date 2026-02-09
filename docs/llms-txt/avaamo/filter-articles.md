@@ -1,8 +1,8 @@
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content/filter-articles.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/step-2-configure-content-source-and-ingest-content/filter-articles.md
+# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/confluence/step-2-configure-content-source-and-ingest-content/filter-articles.md
 
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content/filter-articles.md
+
+# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content/filter-articles.md
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/step-2-configure-content-source-and-ingest-content/filter-articles.md
 

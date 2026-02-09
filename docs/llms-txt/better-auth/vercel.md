@@ -4,11 +4,7 @@
 
 Vercel provider setup and usage.
 
-***
 
-title: Vercel
-description: Vercel provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

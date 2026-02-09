@@ -2,17 +2,9 @@
 
 # Source: https://polar.sh/docs/features/benefits/credits.md
 
-# Source: https://polar.sh/docs/features/usage-based-billing/credits.md
-
-# Source: https://polar.sh/docs/features/benefits/credits.md
-
-# Source: https://polar.sh/docs/features/usage-based-billing/credits.md
-
-# Source: https://polar.sh/docs/features/benefits/credits.md
-
-# Source: https://polar.sh/docs/features/usage-based-billing/credits.md
-
-# Source: https://polar.sh/docs/features/benefits/credits.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Credits Benefit
 

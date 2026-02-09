@@ -24,32 +24,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/custom.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/model-registries/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/model-deployers/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/feature-stores/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/data-validators/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/annotators/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/alerters/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/image-builders/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/experiment-trackers/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/step-operators/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/log-stores/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/container-registries/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/artifact-stores/custom.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/custom.md
-
 # Develop a custom orchestrator
 
 {% hint style="info" %}

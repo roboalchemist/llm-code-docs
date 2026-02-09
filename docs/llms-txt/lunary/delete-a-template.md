@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/templates/delete-a-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a template
 
 
@@ -32,7 +36,3 @@ paths:
           description: Successful deletion
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

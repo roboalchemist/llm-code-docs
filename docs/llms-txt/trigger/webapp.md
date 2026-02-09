@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/self-hosting/env/webapp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webapp
 
 > Environment variables for the webapp container.
@@ -100,7 +104,9 @@
 | `TASK_PAYLOAD_MAXIMUM_SIZE`                      | No       | 3145728 (3MB)                                  | Max task payload size.                                                                                    |
 | `BATCH_TASK_PAYLOAD_MAXIMUM_SIZE`                | No       | 1000000 (1MB)                                  | Max batch payload size.                                                                                   |
 | `TASK_RUN_METADATA_MAXIMUM_SIZE`                 | No       | 262144 (256KB)                                 | Max metadata size.                                                                                        |
-| `MAX_BATCH_V2_TRIGGER_ITEMS`                     | No       | 500                                            | Max batch size.                                                                                           |
+| `MAX_BATCH_V2_TRIGGER_ITEMS`                     | No       | 500                                            | Max batch size (legacy v2 API).                                                                           |
+| `STREAMING_BATCH_MAX_ITEMS`                      | No       | 1000                                           | Max items in streaming batch (v3 API, requires SDK 4.3.1+).                                               |
+| `STREAMING_BATCH_ITEM_MAXIMUM_SIZE`              | No       | 3145728 (3MB)                                  | Max size per item in streaming batch.                                                                     |
 | `MAXIMUM_DEV_QUEUE_SIZE`                         | No       | —                                              | Max dev queue size.                                                                                       |
 | `MAXIMUM_DEPLOYED_QUEUE_SIZE`                    | No       | —                                              | Max deployed queue size.                                                                                  |
 | **OTel limits**                                  |          |                                                |                                                                                                           |
@@ -139,5 +145,5 @@
 | `OPENAI_API_KEY`                                 | No       | —                                              | OpenAI API key.                                                                                           |
 | `MACHINE_PRESETS_OVERRIDE_PATH`                  | No       | —                                              | Path to machine presets override file. See [machine overrides](/self-hosting/overview#machine-overrides). |
 | `APP_ENV`                                        | No       | `NODE_ENV`                                     | App environment. Used for things like the title tag.                                                      |
-| `ADMIN_EMAILS`                                   | No       | —                                              | Regex of user emails to automatically promote to admin.                                                   |
+| `ADMIN_EMAILS`                                   | No       | —                                              | Regex of user emails to automatically promote to admin on signup. Does not apply to existing users.       |
 | `EVENT_LOOP_MONITOR_ENABLED`                     | No       | 1                                              | Node.js event loop lag monitor.                                                                           |

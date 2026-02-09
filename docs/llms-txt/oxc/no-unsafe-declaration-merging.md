@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-unsafe-declaration-merging.md
 ---
-# typescript/no-unsafe-declaration-merging&#x20;
 
 ### What it does
 

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/link.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun link
 
 > Link local packages for development
@@ -13,7 +17,7 @@ bun link
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun link v1.x (7416672e)
+bun link v1.3.3 (7416672e)
 Success! Registered "cool-pkg"
 
 To use cool-pkg in a project, run:
@@ -52,7 +56,7 @@ bun unlink
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun unlink v1.x (7416672e)
+bun unlink v1.3.3 (7416672e)
 ```
 
 ***

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/saml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SAML
 
 > Learn how to set up and manage SAML single sign-on authentication for your Replit Enterprise Team, including domain configuration and Identity Provider setup.

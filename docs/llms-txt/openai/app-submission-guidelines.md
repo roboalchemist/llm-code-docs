@@ -56,10 +56,10 @@ Each tool must include a description that explains its purpose clearly and accur
 
 #### Correct annotation
 
-[Tool annotations](/apps-sdk/reference#annotations) must be correctly set so that ChatGPT and users understand whether an action is safe or requires extra caution.
+[Tool annotations](https://developers.openai.com/apps-sdk/reference#annotations) must be correctly set so that ChatGPT and users understand whether an action is safe or requires extra caution.
 
 - You should label a tool with the `readOnlyHint` annotation if it only retrieves or lists data, but does not change anything outside of ChatGPT.
-- Write or destructive tools (e.g., creating, updating, deleting, posting, sending) must be clearly marked using the `readOnlyHint` and `openWorldHint`.
+- Write or destructive tools (e.g., creating, updating, deleting, posting, sending) must be clearly marked using the `readOnlyHint` and `destructiveHint`.
 - Tools that interact with external systems, accounts, public platforms, or create publicly-visible content must be explicitly labeled using the `openWorldHint` annotation.
 - Incorrect or missing action labels are a common cause of rejection. Double-check to ensure that the `readOnlyHint`, `openWorldHint`, and `destructiveHint` annotations are correctly set and provide a detailed justification for each at submission time.
 
@@ -147,9 +147,9 @@ In addition, apps may not be used to sell, promote, facilitate, or meaningfully 
 
 Apps should use external checkout, directing users to complete purchases on your own domain.
 
-[Instant Checkout](/commerce/guides/get-started#instant-checkout), which is currently in beta, is currently available only to select marketplace partners and may expand to additional marketplaces and retailers over time.
+[Instant Checkout](https://developers.openai.com/commerce/guides/get-started#instant-checkout), which is currently in beta, is currently available only to select marketplace partners and may expand to additional marketplaces and retailers over time.
 
-Until then, standard external checkout is the required approach. No other third-party checkout solutions may be embedded or hosted within the app experience. To learn more, see our [docs on Agentic Commerce](/commerce/).
+Until then, standard external checkout is the required approach. No other third-party checkout solutions may be embedded or hosted within the app experience. To learn more, see our [docs on Agentic Commerce](https://developers.openai.com/commerce/).
 
 ### Advertising
 
@@ -230,4 +230,4 @@ Users with the Owner role may submit an app for review from the [OpenAI Platform
 
 While you can publish multiple, unique apps within a single Platform organization, each may only have one version in review at a time. You can review the status of the review within the Dashboard and will receive an email notification informing you of any status changes.
 
-To learn more about the app submission process, refer to our [dedicated guide](/apps-sdk/deploy/submission).
+To learn more about the app submission process, refer to our [dedicated guide](https://developers.openai.com/apps-sdk/deploy/submission).

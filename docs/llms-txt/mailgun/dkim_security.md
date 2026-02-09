@@ -58,6 +58,6 @@ When rotating keys or upgrading from a 1024 bit key to a 2048 bit key, we recomm
 
 Learn more about [DKIM key rotation](https://help.mailgun.com/hc/en-us/articles/16956951504539)
 
-View our [Domain Security API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/DKIM-Security/)
+View our [Domain Security API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/dkim-security)
 
-View our [Domain Keys API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Domain-Keys/)
+View our [Domain Keys API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/domain-keys)

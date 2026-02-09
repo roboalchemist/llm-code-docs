@@ -48,20 +48,20 @@ The first thing our test does is to create multiple accounts with 10 $NEAR token
     </TabItem>
     <TabItem value="rust" label="🦀 Rust">
         ```
-    let sandbox = near_workspaces::sandbox().await?;
-
-    let root = sandbox.root_account()?;
+    // Initialize the sandbox
+    let sandbox = near_sandbox::Sandbox::start_sandbox().await?;
+    let sandbox_network =
+        near_api::NetworkConfig::from_rpc_url("sandbox", sandbox.rpc_addr.parse()?);
 
     // Create accounts
-    let alice = create_subaccount(&root, "alice").await?;
-    let bob = create_subaccount(&root, "bob").await?;
-    let auctioneer = create_subaccount(&root, "auctioneer").await?;
-    let contract_account = create_subaccount(&root, "contract").await?;
+    let alice = create_subaccount(&sandbox, "alice.sandbox").await?;
+    let bob = create_subaccount(&sandbox, "bob.sandbox").await?;
+    let auctioneer = create_subaccount(&sandbox, "auctioneer.sandbox").await?;
+    let contract = create_subaccount(&sandbox, "contract.sandbox")
+        .await?
+        .as_contract();
 
-    // Deploy and initialize contract
-    let contract_wasm = near_workspaces::compile_project("./").await?;
-    let contract = contract_account.deploy(&contract_wasm).await?.unwrap();
-
+    // Initialize signer for the contract deployment
 ```
 
         Notice that the sandbox compiles the code itself, so we do not need to pre-compile the contract before running the tests.
@@ -97,15 +97,15 @@ The contract measures time in **nanoseconds**, for which we need to multiply the
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let now = Utc::now().timestamp();
-    let a_minute_from_now = (now + 60) * 1000000000;
+    let signer = near_api::Signer::from_secret_key(
+        near_sandbox::config::DEFAULT_GENESIS_ACCOUNT_PRIVATE_KEY
+            .parse()
+            .unwrap(),
+    )?;
 
-    let init = contract
-        .call("init")
-        .args_json(json!({"end_time": a_minute_from_now.to_string(),"auctioneer":auctioneer.id()}))
-        .transact()
-        .await?;
-
+    // Calculate the end time for the auction as a parameter for the init function
+    let now = std::time::SystemTime::now()
+        .duration_since(std::time::SystemTime::UNIX_EPOCH)?
 ```
 
 :::warning Time Units
@@ -160,40 +160,40 @@ We first make `alice` place a bid of 1 NEAR, and check that the contract correct
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+
+    // Deploy the contract with the init call
+    near_api::Contract::deploy(contract.account_id().clone())
+        .use_code(contract_wasm)
+        .with_init_call(
+            "init",
+            json!({"end_time": a_minute_from_now.to_string(), "auctioneer": auctioneer.account_id()}),
+        )?
+        .with_signer(signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
+
     // Alice makes first bid
-    let alice_bid = alice
-        .call(contract.id(), "bid")
+    contract
+        .call_function("bid", ())
+        .transaction()
         .deposit(NearToken::from_near(1))
-        .transact()
-        .await?;
+        .with_signer(alice.account_id().clone(), signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
 
-    assert!(alice_bid.is_success());
-
-    let highest_bid_json = contract.view("get_highest_bid").await?;
-    let highest_bid: Bid = highest_bid_json.json::<Bid>()?;
+    // For now, the highest bid is the Alice's bid
+    let highest_bid: Bid = contract
+        .call_function("get_highest_bid", ())
+        .read_only()
+        .fetch_from(&sandbox_network)
+        .await?
+        .data;
     assert_eq!(highest_bid.bid, NearToken::from_near(1));
-    assert_eq!(highest_bid.bidder, *alice.id());
+    assert_eq!(&highest_bid.bidder, alice.account_id());
 
-    let alice_balance = alice.view_account().await?.balance;
-
-    // Bob makes a higher bid
-    let bob_bid = bob
-        .call(contract.id(), "bid")
-        .deposit(NearToken::from_near(2))
-        .transact()
-        .await?;
-
-    assert!(bob_bid.is_success());
-
-    let highest_bid_json = contract.view("get_highest_bid").await?;
-    let highest_bid: Bid = highest_bid_json.json::<Bid>()?;
-    assert_eq!(highest_bid.bid, NearToken::from_near(2));
-    assert_eq!(highest_bid.bidder, *bob.id());
-
-    // Check that Alice was returned her bid
-    let new_alice_balance = alice.view_account().await?.balance;
-    assert!(new_alice_balance == alice_balance.saturating_add(NearToken::from_near(1)));
-
+    let alice_balance = alice
 ```
 
     </TabItem>
@@ -223,14 +223,14 @@ When testing we should also check that the contract does not allow invalid calls
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let alice_bid = alice
-        .call(contract.id(), "bid")
-        .deposit(NearToken::from_near(1))
-        .transact()
-        .await?;
+        .near_balance()
+        .fetch_from(&sandbox_network)
+        .await?
+        .total;
 
-    assert!(alice_bid.is_failure());
-
+    // Now, Bob makes a higher bid
+    contract
+        .call_function("bid", ())
 ```
 
     </TabItem>
@@ -268,25 +268,25 @@ After which the auction can now be claimed. Once claimed the test checks that th
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    // Fast forward 200 blocks
-    let blocks_to_advance = 200;
-    sandbox.fast_forward(blocks_to_advance).await?;
+        .read_only()
+        .fetch_from(&sandbox_network)
+        .await?
+        .data;
+    assert_eq!(highest_bid.bid, NearToken::from_near(2));
+    assert_eq!(&highest_bid.bidder, bob.account_id());
 
-    // Auctioneer claims the auction
-    let auctioneer_claim = auctioneer
-        .call(contract_account.id(), "claim")
-        .args_json(json!({}))
-        .gas(Gas::from_tgas(300))
-        .transact()
-        .await?;
+    // Check that Alice was refunded her bid
+    let new_alice_balance = alice
+        .tokens()
+        .near_balance()
+        .fetch_from(&sandbox_network)
+        .await?
+        .total;
+    assert!(new_alice_balance == alice_balance.saturating_add(NearToken::from_near(1)));
 
-    assert!(auctioneer_claim.is_success());
-
-    // Checks the auctioneer has the correct balance
-    let auctioneer_balance = auctioneer.view_account().await?.balance;
-    assert!(auctioneer_balance <= NearToken::from_near(12));
-    assert!(auctioneer_balance > NearToken::from_millinear(11990));
-
+    // Alice tries to make a bid with less NEAR than the previous
+    contract
+        .call_function("bid", ())
 ```
 
     </TabItem>

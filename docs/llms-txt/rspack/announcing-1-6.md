@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-6.md
 
-*October 30, 2025*
+_October 30, 2025_
 
 # Announcing Rspack 1.6
 
@@ -12,23 +12,23 @@ We are excited to announce Rspack 1.6!
 
 Notable changes include:
 
-* New Features
-  * [Enhanced tree shaking](#enhanced-tree-shaking)
-  * [Support for import defer](#support-for-import-defer)
-  * [Improved ESM output](#improved-esm-output)
-  * [Optimized barrels by default](#optimized-barrels-by-default)
-  * [Stabilized layers feature](#stabilized-layers-feature)
-  * [Preserve JSX syntax](#preserve-jsx-syntax)
-  * [Extract source map](#extract-source-map)
-  * [Performance improvements](#performance-improvements)
-* Rstack Progress
-  * [Rsbuild 1.6](#rsbuild-1-6)
-  * [Rspress v2 beta](#rspress-v2-beta)
-  * [Rslib 0.16](#rslib-0-16)
-  * [Rstest 0.6](#rstest-0-6)
-  * [Rsdoctor 1.3](#rsdoctor-1-3)
-* Ecosystem
-  * [next-rspack](#next-rspack)
+- New Features
+  - [Enhanced tree shaking](#enhanced-tree-shaking)
+  - [Support for import defer](#support-for-import-defer)
+  - [Improved ESM output](#improved-esm-output)
+  - [Optimized barrels by default](#optimized-barrels-by-default)
+  - [Stabilized layers feature](#stabilized-layers-feature)
+  - [Preserve JSX syntax](#preserve-jsx-syntax)
+  - [Extract source map](#extract-source-map)
+  - [Performance improvements](#performance-improvements)
+- Rstack Progress
+  - [Rsbuild 1.6](#rsbuild-1-6)
+  - [Rspress v2 beta](#rspress-v2-beta)
+  - [Rslib 0.16](#rslib-0-16)
+  - [Rstest 0.6](#rstest-0-6)
+  - [Rsdoctor 1.3](#rsdoctor-1-3)
+- Ecosystem
+  - [next-rspack](#next-rspack)
 
 ## New features
 
@@ -96,14 +96,14 @@ export default {
 
 Optimizing ESM output has long been one of the key challenges faced by Rspack. Previously, we relied on [module concatenation](/config/optimization.md#optimizationconcatenatemodules) to optimize ESM outputs, but that approach had several limitations:
 
-* **Impure output** – The generated files contained Rspack's runtime code.
-* **Prone to errors** – Some modules could not be correctly concatenated, leading to unexpected runtime issues.
-* **Limited code-splitting support** – Split bundles became complex and difficult to analyze or optimize statically.
+- **Impure output** – The generated files contained Rspack's runtime code.
+- **Prone to errors** – Some modules could not be correctly concatenated, leading to unexpected runtime issues.
+- **Limited code-splitting support** – Split bundles became complex and difficult to analyze or optimize statically.
 
 To address these issues once and for all, we introduced an experimental plugin called [EsmLibraryPlugin](/plugins/rspack/esm-library-plugin.md), purpose-built for constructing clean and efficient ESM libraries:
 
-* **Full control over the bundling process** – All modules are linked during compilation, eliminating reliance on Rspack's runtime.
-* **Code-splitting support** – Code after splitting can be statically analyzed and is tree-shaking friendly.
+- **Full control over the bundling process** – All modules are linked during compilation, eliminating reliance on Rspack's runtime.
+- **Code-splitting support** – Code after splitting can be statically analyzed and is tree-shaking friendly.
 
 The image below compares the code splitting output before and after using this plugin — the left side shows the previous output, while the right side shows the cleaner output produced by EsmLibraryPlugin:
 
@@ -149,8 +149,8 @@ What are barrel files? Barrel files are files that are primarily used to re-expo
 
 Layer is a feature for organizing modules into different layers, which can be useful in advanced scenarios such as React Server Components. By assigning different layers to modules, you can gain finer control over their build behavior, for example:
 
-* Compiling modules in different layers for different target environments
-* Outputting them to separate build directories
+- Compiling modules in different layers for different target environments
+- Outputting them to separate build directories
 
 Starting from Rspack 1.6, the layer feature has become stable enough that the experimental flag [experiments.layers](/config/experiments.md#experimentslayers) has been deprecated. You can now use the layer feature directly without the experimental flag.
 
@@ -214,9 +214,9 @@ export default {
 
 Rspack 1.6 introduces several performance optimizations. Compared with Rspack 1.5.0, you can expect the following improvements:
 
-* CLI startup is about **50 ms faster**
-* Building 10000 React components is **11% faster**
-* Building multiple UI component libraries is **31% faster** (thanks to the newly enabled barrel-file optimization by default)
+- CLI startup is about **50 ms faster**
+- Building 10000 React components is **11% faster**
+- Building multiple UI component libraries is **31% faster** (thanks to the newly enabled barrel-file optimization by default)
 
 > Data source: [Rspack benchmark](https://github.com/rstackjs/build-tools-performance)
 
@@ -374,16 +374,16 @@ Rsdoctor now supports exporting a [all-in-one JSON report file](https://rsdoctor
 
 In Next.js 16, next-rspack has integrated Rspack's [custom Rust binding solution](https://github.com/rstackjs/rspack-binding-template), delivering significant performance gains:
 
-* 24% faster build performance
-* 10% faster dev performance
+- 24% faster build performance
+- 10% faster dev performance
 
 In this customized Rspack Rust binding, the `externals` logic from Next.js has been moved to the Rust side, greatly reducing communication overhead between JavaScript and Rust.
 
-| Tool                 | Build time (no cache) | Dev time (no cache) |
-| -------------------- | --------------------- | ------------------- |
-| Rspack (next@16.0.0) | 3.8s                  | 1.7s                |
-| Rspack (next@15.4.0) | 5.0s                  | 1.9s                |
-| webpack              | 14.0s                 | 7.8s                |
+| Tool                  | Build time (no cache) | Dev time (no cache) |
+| --------------------- | --------------------- | ------------------- |
+| Rspack (next\@16.0.0) | 3.8s                  | 1.7s                |
+| Rspack (next\@15.4.0) | 5.0s                  | 1.9s                |
+| webpack               | 14.0s                 | 7.8s                |
 
 The benchmark is based on the [chakra-ui-docs](https://github.com/SyMind/chakra-ui-docs/tree/next-rspack) repository. Full performance data is available here: [PERF.md](https://github.com/SyMind/chakra-ui-docs/blob/next-rspack/PERF.md).
 

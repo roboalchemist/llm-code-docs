@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/external-migrations/envkey.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrating from EnvKey to Infisical
 
 > Learn how to migrate secrets from EnvKey to Infisical.

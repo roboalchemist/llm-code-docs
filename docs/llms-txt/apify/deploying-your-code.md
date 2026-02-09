@@ -6,7 +6,7 @@
 
 ***
 
-This section discusses how to use your newfound knowledge of the Apify platform and Actors from the https://docs.apify.com/academy/getting-started.md section to deploy your existing project's code to the Apify platform as an Actor. Any program running in a Docker container can become an Apify Actor.
+This section discusses how to use your newfound knowledge of the Apify platform and Actors from the [Getting started](https://docs.apify.com/academy/getting-started.md) section to deploy your existing project's code to the Apify platform as an Actor. Any program running in a Docker container can become an Apify Actor.
 
 Apify provides detailed guidance on how to deploy Node.js and Python programs as Actors, but apart from that you're not limited in what programming language you choose for your scraper.
 
@@ -14,18 +14,18 @@ Apify provides detailed guidance on how to deploy Node.js and Python programs as
 
 Here are a few examples of Actors in other languages:
 
-* https://apify.com/lukaskrivka/rust-actor-example
-* https://apify.com/jirimoravcik/go-actor-example
-* https://apify.com/jirimoravcik/julia-actor-example
+* [Rust Actor](https://apify.com/lukaskrivka/rust-actor-example)
+* [Go Actor](https://apify.com/jirimoravcik/go-actor-example)
+* [Julia Actor](https://apify.com/jirimoravcik/julia-actor-example)
 
 ## The "Actorization" workflow
 
 Follow these four main steps to turn a piece of code into an Actor:
 
-1. Handle https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md.
-2. Create an https://docs.apify.com/academy/deploying-your-code/input-schema.md *(optional)*.
-3. Add a https://docs.apify.com/academy/deploying-your-code/docker-file.md.
-4. https://docs.apify.com/academy/deploying-your-code/deploying.md to the Apify platform!
+1. Handle [accepting inputs and writing outputs](https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md).
+2. Create an [input schema](https://docs.apify.com/academy/deploying-your-code/input-schema.md) *(optional)*.
+3. Add a [Dockerfile](https://docs.apify.com/academy/deploying-your-code/docker-file.md).
+4. [Deploy](https://docs.apify.com/academy/deploying-your-code/deploying.md) to the Apify platform!
 
 ## Our example project
 
@@ -64,4 +64,4 @@ For all lessons in this section, we'll have examples for both Node.js and Python
 
 ## Next up
 
-https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md, we'll be learning how to accept input into our Actor as well as deliver output.
+[Next lesson](https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md), we'll be learning how to accept input into our Actor as well as deliver output.

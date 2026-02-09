@@ -10,7 +10,7 @@ Use the checklist below to turn your use cases into well-scoped tools before you
 
 ## Draft the tool surface area
 
-Start from the user journey defined in your [use case research](/apps-sdk/plan/use-case):
+Start from the user journey defined in your [use case research](https://developers.openai.com/apps-sdk/plan/use-case):
 
 - **One job per tool** – keep each tool focused on a single read or write action ("fetch_board", "create_ticket"), rather than a kitchen-sink endpoint. This helps the model decide between alternatives.
 - **Explicit inputs** – define the shape of `inputSchema` now, including parameter names, data types, and enums. Document defaults and nullable fields so the model knows what is optional.
@@ -27,13 +27,13 @@ Discovery is driven almost entirely by metadata. For each tool, draft:
 - **Parameter annotations** – describe each argument and call out safe ranges or enumerations. This context prevents malformed calls when the user prompt is ambiguous.
 - **Global metadata** – confirm you have app-level name, icon, and descriptions ready for the directory and launcher.
 
-Later, plug these into your MCP server and iterate using the [Optimize metadata](/apps-sdk/guides/optimize-metadata) workflow.
+Later, plug these into your MCP server and iterate using the [Optimize metadata](https://developers.openai.com/apps-sdk/guides/optimize-metadata) workflow.
 
 ## Model-side guardrails
 
 Think through how the model should behave once a tool is linked:
 
-- **Prelinked vs. link-required** – if your app can work anonymously, mark tools as available without auth. Otherwise, make sure your connector enforces linking via the onboarding flow described in [Authentication](/apps-sdk/build/auth).
+- **Prelinked vs. link-required** – if your app can work anonymously, mark tools as available without auth. Otherwise, make sure your connector enforces linking via the onboarding flow described in [Authentication](https://developers.openai.com/apps-sdk/build/auth).
 - **Read-only hints** – set the [`readOnlyHint` annotation](https://modelcontextprotocol.io/specification/2025-11-25/schema#toolannotations) to specify tools which cannot mutate state.
 - **Destructive hints** - set the [`destructiveHint` annotation](https://modelcontextprotocol.io/specification/2025-11-25/schema#toolannotations) to specify which tools do delete or overwrite user data.
 - **Open-world hints** - set the [`openWorldHint` annotation](https://modelcontextprotocol.io/specification/2025-11-25/schema#toolannotations) to specify which tools publish content or reach outside the user's account.
@@ -59,4 +59,4 @@ When you are ready to implement, compile the following into a handoff document:
 - Auth requirements, rate limits, and error handling expectations.
 - Test prompts that should succeed (and ones that should fail).
 
-Bring this plan into the [Set up your server](/apps-sdk/build/mcp-server) guide to translate it into code with the MCP SDK of your choice.
+Bring this plan into the [Set up your server](https://developers.openai.com/apps-sdk/build/mcp-server) guide to translate it into code with the MCP SDK of your choice.

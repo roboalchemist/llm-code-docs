@@ -1,126 +1,257 @@
 # Source: https://www.activepieces.com/docs/admin-guide/guides/sso.md
 
-# Source: https://www.activepieces.com/docs/security/sso.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Single Sign-On
+# How to Setup SSO
+
+> Configure Single Sign-On (SSO) to enable secure, centralized authentication for your Activepieces platform
 
 <Snippet file="enterprise-feature.mdx" />
 
+## Overview
+
+Single Sign-On (SSO) allows your team to authenticate using your organization's existing identity provider, eliminating the need for separate Activepieces credentials. This improves security, simplifies user management, and provides a seamless login experience.
+
+## Prerequisites
+
+Before configuring SSO, ensure you have:
+
+* **Admin access** to your Activepieces platform
+* **Admin access** to your identity provider (Google, GitHub, Okta, or JumpCloud)
+* The **redirect URL** from your Activepieces SSO configuration screen
+
+## Accessing SSO Configuration
+
+Navigate to **Platform Settings** → **SSO** in your Activepieces admin dashboard to access the SSO configuration screen.
+
+<img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=88efce2224ae9782860510b0d36a6731" alt="SSO Configuration" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=a38c145973065c56c28f42d2e63a3445 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4e38e550658c3898ecfc94ec66ed6a4f 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=34f845669f80333ad85a97691e91627e 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=c2c0dccb12d88efa1e22802a8a57e65e 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=1d1c7e68e1cbbf89837ab8d385ef7d0a 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/sso.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=c4cd4418c83c077bfebbd6d74509d52e 2500w" />
+
 ## Enforcing SSO
 
-You can enforce SSO by specifying the domain. As part of the SSO configuration, you have the option to disable email and user login. This ensures that all authentication is routed through the designated SSO provider.
+You can enforce SSO by specifying your organization's email domain. When SSO enforcement is enabled:
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=36f19b78f46392cf25a2dd8656d3d90f" alt="SSO" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f4bd7b419d0fadb83d39982bb589e86c 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=65958659542c0230d5ca1891617dd2f6 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=03431f73ceb60577d149ecb8f7de8c83 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a79b56ec6c0f486748f9c87b74ebf501 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=96f01414d4221451bcd4b5576f600cff 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=55b6a93c69bfee31129c6bdea8235112 2500w" />
+* Users with matching email domains must authenticate through the SSO provider
+* Email/password login can be disabled for enhanced security
+* All authentication is routed through your designated identity provider
+
+<Tip>
+  We recommend testing SSO with a small group of users before enforcing it organization-wide.
+</Tip>
 
 ## Supported SSO Providers
 
-You can enable various SSO providers, including Google and GitHub, to integrate with your system by configuring SSO.
+Activepieces supports multiple SSO providers to integrate with your existing identity management system.
 
-### Google:
-
-<Steps>
-  <Step title="Go to the Developer Console" />
-
-  <Step title="Create an OAuth2 App" />
-
-  <Step title="Copy the Redirect URL from the Configure Screen into the Google App" />
-
-  <Step title="Fill in the Client ID & Client Secret in Activepieces" />
-
-  <Step title="Click Finish" />
-</Steps>
-
-### GitHub:
+### Google
 
 <Steps>
-  <Step title="Go to the GitHub Developer Settings" />
-
-  <Step title="Create a new OAuth App" />
-
-  <Step title="Fill in the App details and click Register a new application" />
-
-  <Step title="Use the following Redirect URL from the Configure Screen" />
-
-  <Step title="Fill in the Homepage URL with the URL of your application" />
-
-  <Step title="Click Register application" />
-
-  <Step title="Copy the Client ID and Client Secret and fill them in Activepieces" />
-
-  <Step title="Click Finish" />
-</Steps>
-
-### SAML with OKTA:
-
-<Steps>
-  <Step title="Go to the Okta Admin Portal and create a new app" />
-
-  <Step title="Select SAML 2.0 as the Sign-on method" />
-
-  <Step title="Fill in the App details and click Next" />
-
-  <Step title="Use the following Single Sign-On URL from the Configure Screen" />
-
-  <Step title="Fill in Audience URI (SP Entity ID) with 'Activepieces'" />
-
-  <Step title="Add the following attributes (firstName, lastName, email)" />
-
-  <Step title="Click Next and Finish" />
-
-  <Step title="Go to the Sign On tab and click on View Setup Instructions" />
-
-  <Step title="Copy the Identity Provider metadata and paste it in the Idp Metadata field" />
-
-  <Step title="Copy the Signing Certificate and paste it in the Signing Key field" />
-
-  <Step title="Click Save" />
-</Steps>
-
-### SAML with JumpCloud:
-
-<Steps>
-  <Step title="Go to the JumpCloud Admin Portal and create a new app" />
-
-  <Step title="Create SAML App" />
-
-  <Step title="Copy the ACS URL from Activepieces and paste it in the ACS urls">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d7f62e7318652bbe11537dda4ddca5f3" alt="JumpCloud ACS URL" data-og-width="608" width="608" data-og-height="263" height="263" data-path="resources/screenshots/jumpcloud/acl-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a1191ab5bde4eb2eba360ba7af814db 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9344cf812f7a202a51981fbeac50544d 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=96f3c402c5d280d86b74a91082743c9a 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7015a842ce73840f1b7c07f482e8a438 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7aa35de4f66ff7864b7998affa7013eb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c7e3856dd592069ad300d0188b6d7624 2500w" />
+  <Step title="Access Google Cloud Console">
+    Go to the [Google Cloud Console](https://console.cloud.google.com/) and select your project (or create a new one).
   </Step>
 
-  <Step title="Fill in Audience URI (SP Entity ID) with 'Activepieces'" />
+  <Step title="Create OAuth2 Credentials">
+    Navigate to **APIs & Services** → **Credentials** → **Create Credentials** → **OAuth client ID**.
 
-  <Step title="Add the following attributes (firstName, lastName, email)">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0243c183611ae3ab374208725f7814ed" alt="JumpCloud User Attributes" data-og-width="599" width="599" data-og-height="368" height="368" data-path="resources/screenshots/jumpcloud/user-attribute.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9fb7f5b67fc82613aeff7d7c3f0ceede 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=674e1f8521feb2bcf4553e8f8feac308 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=32104d11cd660681c84af754dc9036fc 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b8894c36701e917f179bb9cb27a70173 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1555a1c74092ef42d822823a2d58411e 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7aed8876641785c56c8949a28cd275df 2500w" />
+    Select **Web application** as the application type.
   </Step>
 
-  <Step title="Include the HTTP-Redirect binding and export the metadata">
-    JumpCloud does not provide the `HTTP-Redirect` binding by default. You need to tick this box.
-    <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=891bb41c7e66420ab976016959bc2f22" alt="JumpCloud Redirect Binding" data-og-width="597" width="597" data-og-height="243" height="243" data-path="resources/screenshots/jumpcloud/declare-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d1148fa680d295d13064d86852d7d3cc 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7b97005f2b0ab717d8cf0d2193c2d3e3 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5614ad2fc17cf5b83dd35923b3043402 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a23ecb850326cac6b7a1c716c460461 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0bfa94531658cac50b0f2a4c0e75bd7f 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=bdbadbe645d0a25aaaa3aa03ec1cb4e1 2500w" />
+  <Step title="Configure Redirect URI">
+    Copy the **Redirect URL** from the Activepieces SSO configuration screen and add it to the **Authorized redirect URIs** in Google Cloud Console.
+  </Step>
 
-    Make sure you press `Save` and then Refresh the Page and Click on `Export Metadata`
+  <Step title="Copy Credentials to Activepieces">
+    Copy the **Client ID** and **Client Secret** from Google and paste them into the corresponding fields in Activepieces.
+  </Step>
 
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3ba991481241c93ca5be2fe2d32174c1" alt="JumpCloud Export Metadata" data-og-width="618" width="618" data-og-height="250" height="250" data-path="resources/screenshots/jumpcloud/export-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=048119e60b4f613cb90f6c76e2d2d2f5 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b2ca2a0fc41bf696785958707a740076 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1e8182bab4cf800d1aedf46f43b63c2a 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9bdec90ed3a27901439c9f280eaeddeb 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c22cc7cd4197a6775995482a761a4aeb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=00915125e7b80014525eda44ead8cc56 2500w" />
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
+</Steps>
+
+### GitHub
+
+<Steps>
+  <Step title="Access GitHub Developer Settings">
+    Go to [GitHub Developer Settings](https://github.com/settings/developers) → **OAuth Apps** → **New OAuth App**.
+  </Step>
+
+  <Step title="Register New Application">
+    Fill in the application details:
+
+    * **Application name**: Choose a recognizable name (e.g., "Activepieces SSO")
+    * **Homepage URL**: Enter your Activepieces instance URL
+  </Step>
+
+  <Step title="Configure Authorization Callback">
+    Copy the **Redirect URL** from the Activepieces SSO configuration screen and paste it into the **Authorization callback URL** field.
+  </Step>
+
+  <Step title="Complete Registration">
+    Click **Register application** to create the OAuth App.
+  </Step>
+
+  <Step title="Generate Client Secret">
+    After registration, click **Generate a new client secret** and copy it immediately (it won't be shown again).
+  </Step>
+
+  <Step title="Copy Credentials to Activepieces">
+    Copy the **Client ID** and **Client Secret** and paste them into the corresponding fields in Activepieces.
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
+</Steps>
+
+### SAML with Okta
+
+<Steps>
+  <Step title="Create New Application in Okta">
+    Go to the [Okta Admin Portal](https://login.okta.com/) → **Applications** → **Create App Integration**.
+  </Step>
+
+  <Step title="Select SAML 2.0">
+    Choose **SAML 2.0** as the sign-on method and click **Next**.
+  </Step>
+
+  <Step title="Configure General Settings">
+    Enter an **App name** (e.g., "Activepieces") and optionally upload a logo. Click **Next**.
+  </Step>
+
+  <Step title="Configure SAML Settings">
+    * **Single sign-on URL**: Copy the SSO URL from the Activepieces configuration screen
+    * **Audience URI (SP Entity ID)**: Enter `Activepieces`
+    * **Name ID format**: Select `EmailAddress`
+  </Step>
+
+  <Step title="Add Attribute Statements">
+    Add the following attribute mappings:
+
+    | Name        | Value            |
+    | ----------- | ---------------- |
+    | `firstName` | `user.firstName` |
+    | `lastName`  | `user.lastName`  |
+    | `email`     | `user.email`     |
+  </Step>
+
+  <Step title="Complete Setup in Okta">
+    Click **Next**, select the appropriate feedback option, and click **Finish**.
+  </Step>
+
+  <Step title="Export IdP Metadata">
+    Go to the **Sign On** tab → **View SAML setup instructions** or **View IdP metadata**. Copy the Identity Provider metadata XML.
+  </Step>
+
+  <Step title="Configure Activepieces">
+    * Paste the **IdP Metadata** XML into the corresponding field
+    * Copy the **X.509 Certificate** from Okta and paste it into the **Signing Key** field
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Save** to complete the setup.
+  </Step>
+</Steps>
+
+### SAML with JumpCloud
+
+<Steps>
+  <Step title="Create New Application in JumpCloud">
+    Go to the [JumpCloud Admin Portal](https://console.jumpcloud.com/) → **SSO Applications** → **Add New Application** → **Custom SAML App**.
+  </Step>
+
+  <Step title="Configure ACS URL">
+    Copy the **ACS URL** from the Activepieces configuration screen and paste it into the **ACS URLs** field in JumpCloud.
+
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=850741fb9a122b3aa3be92a9c0f16475" alt="JumpCloud ACS URL" data-og-width="608" width="608" data-og-height="263" height="263" data-path="resources/screenshots/jumpcloud/acl-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=3853f391837d583661225db8f226b3f1 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=81d7c6a37747342a86ff538e942292c9 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=1c90bd2bb6b68e5aecf89e96a648cb7d 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=ee8dcef0a30b25b2f1eac260a3bee5b3 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=c915a17d22af793c139f351fbe90f540 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/acl-url.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=21d5aae4e46ebd6cfc5611b4d5d30c88 2500w" />
+  </Step>
+
+  <Step title="Configure SP Entity ID">
+    Set the **SP Entity ID** (Audience URI) to `Activepieces`.
+  </Step>
+
+  <Step title="Add User Attributes">
+    Configure the following attribute mappings:
+
+    | Service Provider Attribute | JumpCloud Attribute |
+    | -------------------------- | ------------------- |
+    | `firstName`                | `firstname`         |
+    | `lastName`                 | `lastname`          |
+    | `email`                    | `email`             |
+
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=7ca21b93a70e8b51d392ee06cc6c4d10" alt="JumpCloud User Attributes" data-og-width="599" width="599" data-og-height="368" height="368" data-path="resources/screenshots/jumpcloud/user-attribute.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=9b11f2c145711496b54bba4b9fde63ae 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=ff63eb52f002c277ac7cb88d5e94d659 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=91e139de60e280d8a039f606ba6124d3 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=b6d3556ce3be45b503a64cca40044159 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=13da01ba9e1f96077bef81a43af97664 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-attribute.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=51b3448b758b1e2c90f09646421b87a0 2500w" />
+  </Step>
+
+  <Step title="Enable HTTP-Redirect Binding">
+    JumpCloud does not include the `HTTP-Redirect` binding by default. You **must** enable this option.
+
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=8f2daa949a616e4dc98840b7623f00cb" alt="JumpCloud Redirect Binding" data-og-width="597" width="597" data-og-height="243" height="243" data-path="resources/screenshots/jumpcloud/declare-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=6a1258dcd3e477a8c288803268ace908 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=eddb8daeceb8e64bcb9b3b1ba5ef6c5c 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=12cf214c9df97d556702b1648866622b 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=28ad042e17f5cd91ba04d6b55c54a041 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4510c8a59e1325b04adabe54b2ab2591 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/declare-login.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=5d1e72816ff38b9a77ed29991bf25a57 2500w" />
+
+    <Warning>
+      Without HTTP-Redirect binding, the SSO integration will not work correctly.
+    </Warning>
+  </Step>
+
+  <Step title="Export Metadata">
+    Click **Save**, then refresh the page and click **Export Metadata**.
+
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=9945a82f3b87881deea9dce937968f01" alt="JumpCloud Export Metadata" data-og-width="618" width="618" data-og-height="250" height="250" data-path="resources/screenshots/jumpcloud/export-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=af07b07a7200e82ece93ecc326eb838b 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=87c4d3da4daa9eca3f404ef745e3e299 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=e5ff802c679064d7f1cae8fda6c9e0c0 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=dc25d06fa8a4ec40fe7982e3064d23b7 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4e9485a404ff10c39c1e2470ccfdb883 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/export-metadata.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=b2541f12de981d893e8ea7810ab64dc4 2500w" />
 
     <Tip>
-      Please Verify ` Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"` inside the xml.
+      Verify that the exported XML contains `Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"` to ensure the binding was properly enabled.
     </Tip>
-
-    After you export the metadata, paste it in the `Idp Metadata` field.
   </Step>
 
-  <Step title="Copy the Certificate and paste it in the Signing Key field">
-    Find the `<ds:X509Certificate>` element in the IDP metadata and copy its value. Paste it between these lines:
+  <Step title="Configure IdP Metadata in Activepieces">
+    Paste the exported metadata XML into the **IdP Metadata** field in Activepieces.
+  </Step>
+
+  <Step title="Configure Signing Certificate">
+    Locate the `<ds:X509Certificate>` element in the IdP metadata and extract its value. Format it as a PEM certificate:
 
     ```
     -----BEGIN CERTIFICATE-----
-    [PASTE THE VALUE FROM IDP METADATA]
+    [PASTE THE CERTIFICATE VALUE HERE]
     -----END CERTIFICATE-----
     ```
+
+    Paste this into the **Signing Key** field.
   </Step>
 
-  <Step title="Make sure you Assigned the App to the User">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ec58a49538b08a0d97a72ab7a3dbdd66" alt="JumpCloud Assign App" data-og-width="939" width="939" data-og-height="526" height="526" data-path="resources/screenshots/jumpcloud/user-groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=22b8ecba77376c52a043559ec8c5cbd3 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d9539e73d13f585eb444d72b14e638ae 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=dff266c6731286720c420d6cb047267c 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ed455d0c87abd7e4f41c53b28367c62b 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3d9b6c62fa7ce2778a80504e6dad350e 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b22832eaec8cf2fbe46567a08c9c1f7f 2500w" />
+  <Step title="Assign Users to Application">
+    In JumpCloud, assign the application to the appropriate users or user groups.
+
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=43f7dcb66b7aaeec59a070053fdaf8e7" alt="JumpCloud Assign App" data-og-width="939" width="939" data-og-height="526" height="526" data-path="resources/screenshots/jumpcloud/user-groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=7b7b4b3296cd07f76c8f69b9da045bc1 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=0b376ea0d43933706c35a72c6f21fb03 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=9213f2a911863937ca2e6c2b0b87bd08 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=5ff48a56fc716cce3de983c6049947ff 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=4679139dce30955c6a8896b8e4d652ef 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/jumpcloud/user-groups.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=5a829b002dfb0106cf16945b7381cba4 2500w" />
   </Step>
 
-  <Step title="Click Next and Finish" />
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
 </Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Users cannot log in after SSO configuration">
+    * Verify the redirect URL is correctly configured in your identity provider
+    * Ensure users are assigned to the application in your identity provider
+    * Check that email domains match the SSO enforcement settings
+  </Accordion>
+
+  <Accordion title="SAML authentication fails">
+    * Confirm the IdP metadata is complete and correctly formatted
+    * Verify the signing certificate is properly formatted with BEGIN/END markers
+    * Ensure all required attributes (firstName, lastName, email) are mapped
+  </Accordion>
+
+  <Accordion title="HTTP-Redirect binding error (JumpCloud)">
+    * Enable the HTTP-Redirect binding option in JumpCloud
+    * Re-export the metadata after enabling the binding
+    * Verify the binding appears in the exported XML
+  </Accordion>
+</AccordionGroup>
+
+## Need Help?
+
+If you encounter issues during SSO setup, please contact our enterprise support or [sales team](https://www.activepieces.com/sales).

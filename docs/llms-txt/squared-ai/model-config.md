@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/faqs/model-config.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Model Configuration
 
 This section answers frequently asked questions about configuring AI models within AI Squared—including how to define schemas, preprocess inputs, and ensure model compatibility.

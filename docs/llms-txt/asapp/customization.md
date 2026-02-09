@@ -2,27 +2,15 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
 
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Customization
 
 ## Styling
 
-The SDK uses color attributes defined in the ASAPP theme, as well as extra style configuration options set via the style configuration class.
+The SDK uses color attributes that you define in the ASAPP theme, as well as extra style configuration options that you set via the style configuration class.
 
 ### Themes
 
@@ -38,13 +26,13 @@ To customize the SDK theme, extend the default ASAPP theme in your `styles.xml` 
   You must define your color variants for day and night in the appropriate resource files, unless night mode is disabled in your application.
 </Note>
 
-ASAPP recommends starting by only customizing `asapp_primary` to be your brand's primary color, and adjusting other colors when necessary for accessibility. `asapp_primary` is used as the message bubble background in most buttons and other controls. The screenshot below shows the default theme (gray primary - center) and custom primary colors on the left and right.
+ASAPP recommends starting by only customizing `asapp_primary` to be your brand's primary color, and adjusting other colors when necessary for accessibility. The system uses `asapp_primary` as the message bubble background in most buttons and other controls. The screenshot below shows the default theme (gray primary - center) and custom primary colors on the left and right.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=1dcfef0ea19c78e0e4e1db0fc02d52e7" data-og-width="1760" width="1760" data-og-height="1040" height="1040" data-path="image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=8463c425d3b8f1a39fab332b586ecbc8 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=4ca454f0ee5d3d4efabda0b8727a9dc5 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=5f1f6336033c338eff294a550c1d2010 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=b3a11b97a6355fe43cb067969c807484 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=efe61210c2e6471c001101439ea05dc0 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bc80c9b7-254f-61fd-8b21-9d9221c32d2e.png?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=8a8600019e287a6bbf0648ea5783686a 2500w" />
 </Frame>
 
-There are two other colors you may consider customizing for accessibility or to achieve an exact match with your app's theme: `asapp_on_background` and `asapp_on_primary`. `asapp_on_background` is used by other elements that might appear in front of the background. `asapp_on_primary` is used for text and other elements that appear in front of the primary color.
+There are two other colors you may consider customizing for accessibility or to achieve an exact match with your app's theme: `asapp_on_background` and `asapp_on_primary`. Other elements that might appear in front of the background use `asapp_on_background`. Text and other elements that appear in front of the primary color use `asapp_on_primary`.
 
 ### More Colors
 
@@ -93,7 +81,7 @@ To customize fonts and colors for both text and buttons, use the `ASAPPCustomTex
 
 object to:
 
-* Set a new font family with `updateFonts`. If no new fonts are set, the system default will be used instead.
+* Set a new font family with `updateFonts`. If you set no new fonts, the system uses the default instead.
 * Override font sizes, letter spacing, text colors, and text casing styles. You can also customize the font family for each text style individually, if needed.
 * Override button colors for normal, highlighted and disabled states.
 
@@ -115,9 +103,9 @@ ASAPP.instance.getStyleConfig()
 See `ASAPPTextStyles` to see all overridable styles.
 
 <Note>
-  `setTextStyleHandler` is called when an ASAPP activity is created. Use the given `Context` object if you access resources to make sure that all customization uses correct resource qualifiers.
+  The system calls `setTextStyleHandler` when it creates an ASAPP activity. Use the given `Context` object if you access resources to make sure that all customization uses correct resource qualifiers.
 
-  For example: if a user is in chat and toggles Night Mode, the SDK automatically triggers an activity restart. Once the new activity is created, the SDK calls `setTextStyleHandler` with the new night/day context, which will retrieve the correct color variants from your styles.
+  For example: if a user is in chat and toggles Night Mode, the SDK automatically triggers an activity restart. Once the system creates the new activity, the SDK calls `setTextStyleHandler` with the new night/day context, which retrieves the correct color variants from your styles.
 </Note>
 
 ## Chat Header
@@ -126,7 +114,7 @@ The chat header (toolbar in the chat activity) has no content by default, but yo
 
 ### Text Title
 
-To add text to the chat header, pass a String resource to `setChatActivityTitle`. By default, the title will be aligned to start. For example:
+To add text to the chat header, pass a String resource to `setChatActivityTitle`. By default, the system aligns the title to start. For example:
 
 ```kotlin  theme={null}
 ASAPP.instance.getStyleConfig()
@@ -152,7 +140,7 @@ ASAPP.instance.getStyleConfig
 </Frame>
 
 <Caution>
-  Icons will have priority in the chat header. If you add both text and icon, only the icon will be used.
+  Icons will have priority in the chat header. If you add both text and icon, the system uses only the icon.
 </Caution>
 
 ## Dark Mode
@@ -162,7 +150,7 @@ Android 10 (API 29) introduced Dark Mode (a.k.a night mode, dark theme), with a 
 The ASAPP SDK theme defines default colors using the system resource "default" and "night" qualifiers, so chat will react to changes to the system night mode setting.
 
 <Note>
-  The ASAPP SDK does not automatically convert any color or image assets in Dark Mode, you must define night variants for each custom asset as described in [Android >Styling>Theming](#themes "Customization").
+  The ASAPP SDK does not automatically convert any color or image assets in Dark Mode; you must define night variants for each custom asset as described in [Android >Styling>Theming](#themes "Customization").
 </Note>
 
 <Frame>

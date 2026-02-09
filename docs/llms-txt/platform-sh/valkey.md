@@ -1,13 +1,5 @@
 # Source: https://docs.upsun.com/add-services/valkey.md
 
-# Source: https://docs.upsun.com/guides/drupal/valkey.md
-
-# Source: https://docs.upsun.com/add-services/valkey.md
-
-# Source: https://docs.upsun.com/guides/drupal/valkey.md
-
-# Source: https://docs.upsun.com/add-services/valkey.md
-
 # Valkey
 
 [Valkey](https://valkey.io/) is an open source datastore that can be used high-performance data retrieval and key-value storage.
@@ -23,9 +15,11 @@ You can select the major and minor version.
 
 Patch versions are applied periodically for bug fixes and the like. When you deploy your app, you always get the latest available patches.
 
+   - 8.1
+
    - 8.0
 
-<!-- uncomment this when Upsun deprecates Valkey v8.0 
+<!-- uncomment this when Upsun deprecates Valkey v8.0
 
 ### Deprecated versions
 
@@ -67,7 +61,7 @@ The structure of the ``PLATFORM_RELATIONSHIPS`` environment variable can be obta
       "epoch": 0,
       "rel": "valkey",
       "scheme": "valkey",
-      "type": "valkey:8.0",
+      "type": "valkey:8.1",
       "public": false
     }
 ```
@@ -143,8 +137,8 @@ applications:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
     .upsun/config.yaml
@@ -164,9 +158,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
 For PHP, enable the [extension](https://docs.upsun.com/languages/php/extensions) for the service:
@@ -231,7 +225,7 @@ applications:
 services:
     # The name of the service container. Must be unique within a project.
     valkey:
-      valkey: valkey-persistent: 8.0"
+      valkey: valkey-persistent: 8.1"
 ```
 
     .upsun/config.yaml
@@ -260,7 +254,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: valkey-persistent:8.0"
+    type: valkey-persistent:8.1"
 ```
 
 ## Ephemeral Valkey
@@ -308,8 +302,8 @@ applications:
 ```
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships. That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the name of that service.
-Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships. That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the name of that service.
+Depending on your needs, instead of default endpoint configuration, you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
     .upsun/config.yaml
@@ -329,9 +323,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
 For PHP, enable the [extension](https://docs.upsun.com/languages/php/extensions) for the service:
@@ -416,7 +410,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: valkey: 8.0"
+    type: valkey: 8.1"
 ```
 
     .upsun/config.yaml
@@ -445,7 +439,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: valkey: 8.0"
+    type: valkey: 8.1"
 ```
 
 ### Use in app
@@ -474,7 +468,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: valkey: 8.0"
+    type: valkey: 8.1"
 ```
 
     .upsun/config.yaml
@@ -502,12 +496,12 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: valkey: 8.0"
+    type: valkey: 8.1"
 ```
 
 This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
 `myapp` has access to the `valkey` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image#relationships) configuration for relationships).
+(as per [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, ``myapp`` can retrieve access credentials to the service through the [relationship environment variables](#relationship-reference).
 
@@ -542,7 +536,7 @@ To customize those cache cleanups, set up an eviction policy such as the followi
 services:
   # The name of the service container. Must be unique within a project.
   valkey:
-    type: "valkey:8.0"
+    type: "valkey:8.1"
     configuration:
       maxmemory_policy: allkeys-lfu
 ```
@@ -638,7 +632,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkeysession:
-    type: "valkey-persistent:8.0"
+    type: "valkey-persistent:8.1"
 ```
 
     .upsun/config.yaml
@@ -679,7 +673,7 @@ applications:
 services:
   # The name of the service container. Must be unique within a project.
   valkeysession:
-    type: "valkey-persistent:8.0""
+    type: "valkey-persistent:8.1""
 ```
 
 ## Migrate from Redis to Valkey
@@ -696,7 +690,7 @@ with the following:
 
 ```json
 my_service_name:
-  type: valkey-persistent:8.0"
+  type: valkey-persistent:8.1"
   disk: 256
 ```
 

@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 This quickstart will walk your through running your first model with Ollama. To get started, download Ollama on macOS, Windows or Linux.
@@ -14,13 +18,13 @@ This quickstart will walk your through running your first model with Ollama. To 
   <Tab title="CLI">
     Open a terminal and run the command:
 
-    ```
+    ```sh  theme={"system"}
     ollama run gemma3
     ```
   </Tab>
 
   <Tab title="cURL">
-    ```
+    ```sh  theme={"system"}
     ollama pull gemma3
     ```
 
@@ -41,13 +45,13 @@ This quickstart will walk your through running your first model with Ollama. To 
   <Tab title="Python">
     Start by downloading a model:
 
-    ```
+    ```sh  theme={"system"}
     ollama pull gemma3
     ```
 
     Then install Ollama's Python library:
 
-    ```
+    ```sh  theme={"system"}
     pip install ollama
     ```
 
@@ -97,3 +101,44 @@ This quickstart will walk your through running your first model with Ollama. To 
 </Tabs>
 
 See a full list of available models [here](https://ollama.com/models).
+
+## Coding
+
+For coding use cases, we recommend using the `glm-4.7-flash` model.
+
+Note: this model requires 23 GB of VRAM with 64000 tokens context length.
+
+```sh  theme={"system"}
+ollama pull glm-4.7-flash 
+```
+
+Alternatively, you can use a more powerful cloud model (with full context length):
+
+```sh  theme={"system"}
+ollama pull glm-4.7:cloud
+```
+
+Use `ollama launch` to quickly set up a coding tool with Ollama models:
+
+```sh  theme={"system"}
+ollama launch
+```
+
+### Supported integrations
+
+* [OpenCode](/integrations/opencode) - Open-source coding assistant
+* [Claude Code](/integrations/claude-code) - Anthropic's agentic coding tool
+* [Codex](/integrations/codex) - OpenAI's coding assistant
+* [Droid](/integrations/droid) - Factory's AI coding agent
+
+### Launch with a specific model
+
+```sh  theme={"system"}
+ollama launch claude --model glm-4.7-flash
+```
+
+### Configure without launching
+
+```sh  theme={"system"}
+ollama launch claude --config
+```

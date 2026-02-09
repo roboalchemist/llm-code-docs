@@ -10,6 +10,6 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actor_charge_events)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_models.py#L160)actor\_charge\_events
+### [**](#actor_charge_events)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_models.py#L160)actor\_charge\_events
 
 **actor\_charge\_events: dict\[str, [ActorChargeEvent](https://docs.apify.com/sdk/python/sdk/python/reference/class/ActorChargeEvent.md)]

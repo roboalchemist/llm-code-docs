@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/google-calendar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Calendar connector
 
 > Connect WRITER Agent to Google Calendar to manage events, schedule meetings, and automate calendar workflows

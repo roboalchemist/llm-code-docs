@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/github-enterprise-server.md
 
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub Enterprise Server
 
 > Learn how Graphite Enterprise customers can use Graphite with a GitHub Enterpise Server instance.

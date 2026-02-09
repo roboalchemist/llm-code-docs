@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/learn-to-stack.md
 
-# Learn to Stack
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Learn to Stack
 
 > A practical starter guide for trunk-based development and stacking.
 

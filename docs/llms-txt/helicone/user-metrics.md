@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/user-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Metrics & Analytics
 
 > Understand user behavior, track engagement patterns, and optimize AI experiences with detailed user analytics

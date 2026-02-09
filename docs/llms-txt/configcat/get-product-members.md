@@ -2,10 +2,7 @@
 
 # List Product Members
 
-```
-GET 
-/v1/products/:productId/members
-```
+Copy page
 
 This endpoint returns the list of Members that belongs to the given Product, identified by the `productId` parameter.
 

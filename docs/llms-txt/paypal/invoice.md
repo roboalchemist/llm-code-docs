@@ -1,236 +1,1542 @@
-# Source: https://www.paypal.com/us/business/accept-payments/invoice
+# Invoicing | Create and Send Invoices Online | PayPal US
 
- <!DOCTYPE html>
-  <html lang="en-US" dir="ltr">
-  <head><script async src="https://www.paypalobjects.com/webcaptcha/ngrlCaptcha.min.js"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#012169">
-     <title>Invoicing | Create and Send Invoices Online | PayPal US</title>
-<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://www.paypalobjects.com" crossorigin>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/themes/ppe-dZ7RK3SR.css">
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/helpers-3619f629.css">
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.qr-code-image-container{overflow:hidden;display:inline-block}.qr-code-appearance-default{background-color:#fff}.qr-code-appearance-inverse{background-color:#000}.qr-code.qr-code-large .qr-code-image-container{padding:.5rem .5rem .25rem;box-shadow:.25rem .25rem 1.75rem .375rem #00000024;border-radius:.5rem}.qr-code.qr-code-large .qr-code-image-container svg{border-radius:.5rem}.qr-code.qr-code-x-large .qr-code-image-container{padding:.75rem .75rem .5rem;box-shadow:.25rem .25rem 1.75rem .375rem #00000024;border-radius:.75rem}.qr-code.qr-code-small .qr-code-image-container{padding:.25rem}.qr-code-show{display:block}.qr-code-hide{display:none!important}.qr-code-fallback-small{width:5.375rem;height:5.375rem}.qr-code-fallback-small img,.qr-code-fallback-large img,.qr-code-fallback-x-large img{width:100%}
-</style>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/card-renderer-3ff112e2.css">
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.regular .badge[data-ppui-info*=badge_],.compact .badge[data-ppui-info*=badge_],.quantum-leap .badge[data-ppui-info*=badge_],.quantum-leap-supreme .badge[data-ppui-info*=badge_],.ppe .badge[data-ppui-info*=badge_]{--badge-text-color-main: #001435;--badge-text-color-new: #001c64;--badge-background-color-main: #e6e0d9;--badge-background-color-type-new: #ffd140}.quantum-leap-supreme .badge[data-ppui-info*=badge_].badge-no-local-theme,.ppe .badge[data-ppui-info*=badge_].badge-no-local-theme{--badge-text-color-main: var(--component-button-primary-text);--badge-text-color-new: var(--component-button-primary-text);--badge-background-color-main: var(--style-fill-1);--badge-background-color-type-new: var(--style-fill-1)}.badge[data-ppui-info*=badge_]{padding:.4375rem .5rem;line-height:.625rem;font-size:.875rem;font-family:var(--font-family-strong);font-weight:var(--font-weight-strong);color:var(--badge-text-color-main);background-color:var(--badge-background-color-main);min-width:-moz-fit-content;min-width:fit-content;white-space:nowrap}.badge[data-ppui-info*=badge_].badge-size-small{padding:.25rem;line-height:.5rem;font-size:.6875rem;border-radius:.25rem}.badge[data-ppui-info*=badge_].badge-type-new{color:var(--badge-text-color-new);background-color:var(--badge-background-color-type-new)}.badge[data-ppui-info*=badge_].badge-type-new.gold-plate{color:#001c64;background-color:#fff}.badge[data-ppui-info*=badge_].badge-type-coming-soon{color:#0070e0;background-color:transparent;background-color:initial;border:1px solid;border-color:#0070e0;padding:.375rem .4375rem}.badge[data-ppui-info*=badge_].badge-type-coming-soon.badge-size-small{padding:.1875rem}.badge[data-ppui-info*=badge_].badge-type-coming-soon.blue-500-plate,.badge[data-ppui-info*=badge_].badge-type-coming-soon.blue-600-plate,.badge[data-ppui-info*=badge_].badge-type-coming-soon.blue-700-plate{color:#fff;border-color:#fff}.badge[data-ppui-info*=badge_].badge-type-coming-soon.gold-plate{color:#001c64;border-color:#001c64}.currency-input div[class$=prefix_wrapper]{border-radius:.25rem}.currency-badge{display:flex;align-items:center;gap:.25rem}.currency-badge .currency-badge-text{color:#001435}.currency-converter-input{text-align:start}.currency-converter-input .currency-converter-input-title{display:block;margin-bottom:.25rem}.currency-converter-input input{padding-inline-end:5.0625rem}.currency-converter-input .currency-input div[data-ppui][class$=icon_right]{width:auto;inset-inline-end:.6875rem}.currency-converter-input #sender-prefix,.currency-converter-input #receiver-prefix,.currency-converter-input #-prefix{opacity:1}.currency-converter{text-align:start;padding-block:.5rem}.currency-converter .currency-converter-input-container{display:flex}.currency-converter .currency-converter-error-alert{padding:0}.currency-converter .currency-converter-error-alert span[class*=status_icon]{margin-top:.25rem;margin-inline-end:.25rem}.currency-converter .currency-converter-xfr-icon svg path{fill:var(--style-general-text-muted)}.currency-converter.currency-converter-layout-vertical .currency-converter-input-container{flex-direction:column;gap:.75rem}.currency-converter.currency-converter-layout-vertical .currency-converter-xfr-icon{transform:rotate(90deg)}.currency-converter.currency-converter-layout-vertical .conversion-rate-display,.currency-converter.currency-converter-layout-vertical .currency-converter-error-alert{margin-top:.75rem}.currency-converter.currency-converter-layout-horizontal .currency-converter-input-container{flex-direction:row;gap:.5rem}.currency-converter.currency-converter-layout-horizontal .currency-converter-xfr-icon{align-self:flex-end;position:relative;bottom:1.25rem}.currency-converter.currency-converter-layout-horizontal .conversion-rate-display,.currency-converter.currency-converter-layout-horizontal .currency-converter-error-alert{margin-top:.5rem}.grid-compact .text-group .text-group-content-button-group .button-group{gap:1rem}@media screen and (min-width: 64rem){.grid-compact .text-group .text-group-content-button-group+.text-group-content-disclosure{margin-top:1.5rem}.grid-compact .text-group .text-group-content-button-group .button-group{gap:1.5rem}}.ppe .text-group>*+*{margin:0;margin-top:1rem}@media screen and (min-width: 64rem){.ppe .text-group>*+*{margin-top:clamp(1rem,.4285714285714286rem + .8928571428571428vw,1.5rem)}@supports not (font-size: clamp(1rem,.4285714285714286rem + .8928571428571428vw,1.5rem)){.ppe .text-group>*+*{margin-top:min(max(1rem,.4285714285714286rem + .8928571428571428vw),1.5rem)}}}.quantum-leap-supreme .text-group .text-group-eyebrow-text.heading-text-size-title{font-family:var(--font-family-strong);font-weight:var(--font-weight-strong)}.text-group>*+*{margin:0;margin-top:1rem}@media screen and (min-width: 107.875rem){.text-group>*+*{margin-top:1.5rem}}.text-group .text-group-content-button-group+.text-group-content-disclosure{margin-top:1rem}.text-group.text-group-alignment-center{text-align:center;display:flex;flex-direction:column;align-items:center}.text-group .text-group-logo{max-width:10rem;height:5rem}.text-group .text-group-eyebrow-container{display:flex;align-items:center;gap:.5rem}.text-group .text-group-headline{transform:translate(-.06em)}.text-group .text-group-headline,.text-group .text-group-paragraph{white-space:pre-wrap}.text-group .text-group-paragraph~ul{line-height:1.5rem;color:var(--style-headline-text)}@media only screen and (min-width: 41.0625rem){.text-group .text-group-paragraph~ul{padding-inline-start:1.5rem}}.text-group .text-group-paragraph+.text-group-paragraph{padding-top:.5rem}.text-group .text-group-action-group>a:last-of-type,.text-group .text-group-action-group>button:last-of-type{margin-bottom:0}.text-group .text-group-action-group .disclosure:first-child{margin-top:0}.text-group .text-group-action-group .disclosure{margin-top:1rem}.text-group .text-group-action-group .disclosure a{margin-bottom:0}.text-group ul,.text-group ol{line-height:1.5rem;color:var(--style-headline-text);padding-inline-start:1.5rem}.text-group ul li,.text-group ol li{margin-bottom:.25rem}.text-group .text-group-legal-text>*:first-child{margin-bottom:0;padding-top:0}.text-group .text-group-data-item:not(:first-child){padding-top:0}.text-group .feature-list{padding-inline-start:0}.text-group .feature-list li.feature-list-item{margin-bottom:0}[dir=rtl] .text-group-quotes-icon{display:inline-block;transform:scaleX(-1)}.text-group-quotes-icon path{fill:#0070e0;fill:var(--style-fill-2, #0070e0)}@media (min-width: 64rem){.text-group .text-group-action-group>a,.text-group .text-group-action-group>button{margin-bottom:0}.text-group .text-group-logo{max-width:12.5rem;height:6.25rem}}@media (min-width: 120rem){.text-group ul:not(.feature-list),.text-group ol{margin-top:1.5rem}}
-</style>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/Hero-08e79cc1.css">
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/NavButton-02decebe.css">
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/SubNav-0c73fcb9.css">
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.text-header-inner .text-header-inner-image{-o-object-fit:contain;object-fit:contain;margin:auto;margin-bottom:clamp(2rem,1.7833204930662558rem + .9244992295839755vw,2.375rem)}@supports not (font-size: clamp(2rem,1.7833204930662558rem + .9244992295839755vw,2.375rem)){.text-header-inner .text-header-inner-image{margin-bottom:min(max(2rem,1.7833204930662558rem + .9244992295839755vw),2.375rem)}}.text-header-inner .text-header-inner-image-align-start{margin-inline-start:0}.text-header-inner .text-header-inner-image-align-end{margin-inline-end:0}.text-header-inner .text-header-inner-img-size-small{max-width:4.5rem;max-height:4.5rem}.text-header-inner .text-header-inner-img-size-medium{max-width:8rem;max-height:8rem}.text-header-inner .text-header-inner-img-size-large{max-width:16rem;max-height:16rem}
-</style>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.card-content-section-item-media-tile{position:relative;overflow:hidden;background:none}.card-content-section-item-media-tile .card-content-section-item-media-tile-image img,.card-content-section-item-media-tile .card-content-section-item-media-tile-text{transition:transform .2s cubic-bezier(0,0,.25,1)}.card-content-section-item-media-tile .card-content-section-item-media-tile-image img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}.card-content-section-item-media-tile .card-content-section-item-media-tile-text{position:absolute;text-align:center;inset:0 0 auto;padding:1rem 1rem 2rem;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,0) 100%)}.card-content-section-item-media-tile:hover .card-content-section-item-media-tile-image img,.card-content-section-item-media-tile:focus-visible .card-content-section-item-media-tile-image img{transform:scale(1.05);transition:transform .2s cubic-bezier(0,0,.25,1)}.card-content-section-item-media-tile:focus-visible{outline:.1875rem solid var(--style-focus-color);outline-offset:3px}.card-content-section-item-media-tile:active .card-content-section-item-media-tile-image img{transform:scale(1)}@media (min-width: 64rem){.card-content-section-item-media-tile .card-content-section-item-media-tile-image img,.card-content-section-item-media-tile .card-content-section-item-media-tile-text{transition:transform .3s cubic-bezier(0,0,.25,1)}.card-content-section-item-media-tile:hover .card-content-section-item-media-tile-image img,.card-content-section-item-media-tile:focus-visible .card-content-section-item-media-tile-image img{transition:transform .3s cubic-bezier(0,0,.25,1)}}@media (min-width: 91.875rem){.card-content-section-item-media-tile .card-content-section-item-media-tile-text{padding:2rem 1rem 2.5rem}}.card-content-section-item-wayfinding-card{padding:1.5rem;justify-content:space-between;overflow:hidden}.card-content-section-item-wayfinding-card-inline.card-content-section-item{flex-direction:row}.card-content-section-item-wayfinding-card:active .text-group-headline{color:var(--style-headline-highlight-text)}.card-content-section-item-wayfinding-card:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;transition:.3s cubic-bezier(.22,1,.36,1);transition-property:inset,box-shadow}.card-content-section-item-wayfinding-card .text-group{height:100%;display:flex;flex-direction:column}.card-content-section-item-wayfinding-card .text-group>*:not(:last-child){padding-bottom:0}.card-content-section-item-wayfinding-card .text-group>div:has(.text-group-subheading){flex:1}.card-content-section-item-wayfinding-card .text-group:not(:has(.text-group-subheading))>div:has(.text-group-headline){flex:1}.card-content-section-item-wayfinding-card:focus-within .text-group-paragraph{transform:translateY(0);visibility:visible;opacity:1}.card-content-section-item-wayfinding-card-headline{margin-top:0}.card-content-section-item-wayfinding-card-headline>*+*{margin-top:1.5rem}.card-content-section-item-wayfinding-card-icon-container{display:flex;justify-content:flex-end;margin-top:2rem;padding-inline-start:.5rem}.card-content-section-item-wayfinding-card-icon-container-inline{flex-direction:column}.card-content-section-item-wayfinding-card .card-content-section-item-wayfinding-card-arrow-icon{width:2rem}[dir=rtl] .card-content-section-item-wayfinding-card .card-content-section-item-wayfinding-card-arrow-icon{transform:scaleX(-1)}@media screen and (min-width: 64rem){.card-content-section-item-wayfinding-card{padding-top:clamp(1.25rem,-.4719730941704037rem + 2.690582959641256vw,2rem);padding-bottom:clamp(1.25rem,-.4719730941704037rem + 2.690582959641256vw,2rem);padding-left:clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem);padding-right:clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem)}@supports not (font-size: clamp(1.25rem,-.4719730941704037rem + 2.690582959641256vw,2rem)){.card-content-section-item-wayfinding-card{padding-top:min(max(1.25rem,-.4719730941704037rem + 2.690582959641256vw),2rem);padding-bottom:min(max(1.25rem,-.4719730941704037rem + 2.690582959641256vw),2rem)}}@supports not (font-size: clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem)){.card-content-section-item-wayfinding-card{padding-left:min(max(1.5rem,-.7959641255605381rem + 3.587443946188341vw),2.5rem)}}@supports not (font-size: clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem)){.card-content-section-item-wayfinding-card{padding-right:min(max(1.5rem,-.7959641255605381rem + 3.587443946188341vw),2.5rem)}}.card-content-section-item-wayfinding-card-headline>*+*{margin-top:clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem)}@supports not (font-size: clamp(1.5rem,-.7959641255605381rem + 3.587443946188341vw,2.5rem)){.card-content-section-item-wayfinding-card-headline>*+*{margin-top:min(max(1.5rem,-.7959641255605381rem + 3.587443946188341vw),2.5rem)}}.card-content-section-item-wayfinding-card .text-group-paragraph{transform:translateY(100%);visibility:hidden;opacity:0;transition:all .4s cubic-bezier(.2,0,.4,1)}.card-content-section-item-wayfinding-card:hover{background:var(--style-background-alt)}.card-content-section-item-wayfinding-card:hover .text-group-paragraph{transform:translateY(0);visibility:visible;opacity:1}.card-content-section-item-wayfinding-card .card-content-section-item-wayfinding-card-arrow-icon{width:2.75rem}}@media screen and (min-width: 91.875rem){.card-content-section-item-wayfinding-card{padding:2rem 2.5rem}.card-content-section-item-wayfinding-card-headline>*+*{margin-top:2.5rem}.card-content-section-item-wayfinding-card-icon-container{padding-inline-start:7rem}}
-</style>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CardContentSection-9f7f09af.css">
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="high" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CardWrappedContentSection-70bd1c57.css">
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.truncated-text-group-truncate-button{width:100%;margin-top:1rem}.truncated-text-group-truncate-button-expanded{margin-bottom:1rem}.truncated-text-group-truncate-button-expanded+.truncated-text-group-feature-list{margin-top:1rem}.truncated-text-group .text-group+.truncated-text-group-feature-list{margin-top:1rem}@media screen and (min-width: 107.875rem){.truncated-text-group-truncate-button{margin-top:1.5rem}}
-</style>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.grid-compact .feature-column-item-image img{width:4.5rem;height:4.5rem;margin-bottom:1rem}.grid-compact .feature-column-item-text-group,.grid-compact .feature-column-item-text-group .text-group-content-button-group{margin-bottom:0rem}@media (min-width: 41.0625rem){.grid-compact .feature-column-item-image img{margin-bottom:1.5rem}}.feature-column-item .truncated-text-group-truncate-button{margin-top:0}.feature-column-item-image img{width:6rem;height:6rem;margin-bottom:2rem}.feature-column-item-text-group{margin-bottom:1rem}.feature-column-item-text-group .text-group-content-button-group{margin-top:0;margin-bottom:1rem}@media (min-width: 41.0625rem){.feature-column-item-image{transform-origin:center;width:-moz-fit-content;width:fit-content}.feature-column-item-image img{width:6rem;height:6rem;transform:translate(-10%)}}@media screen and (min-width: 64rem){.feature-column-item-image img{width:7.5rem;height:7.5rem;margin-bottom:3rem}.feature-column-item-text-group,.feature-column-item-text-group .text-group-subheading{margin-bottom:1.5rem}.feature-column-item-text-group .text-group-paragraph{margin-bottom:1.125rem}}@media screen and (min-width: 91.875rem){.feature-column-item{padding-inline-end:1.5rem}}@media (max-width: 63.9375rem){.venmo10 .feature-column-item-image picture img{width:3rem;height:3rem}}@media (min-width: 64rem){.venmo10 .feature-column-item-image.feature-column-pictogram-size-large img{width:4.5rem;height:4.5rem}.venmo10 .feature-column-item-image.feature-column-pictogram-size-medium img{width:3rem;height:3rem}}
-</style>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.feature-column-split .feature-column-split-media-container .image-frame img{width:100%}.feature-column-split .feature-column-split-features-container{margin-top:2rem;display:grid;grid-gap:2rem;gap:2rem}@media (min-width: 41.0625rem){.feature-column-split .feature-column-split-features-container{margin-top:0;gap:1rem}}@media (min-width: 64rem){.feature-column-split .feature-column-split-features-container{gap:2rem}.feature-column-split .feature-column-split-features-container.grid-2-col{grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem}}@media (min-width: 91.875rem){.feature-column-split .feature-column-split-features-container{gap:3rem}.feature-column-split .feature-column-split-features-container.grid-2-col{gap:3rem 1.5rem}}
-</style>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.text-section-alignment-5-col-to-end{padding-top:clamp(12rem,-7.199999999999999rem + 30vw,28.8rem)}@supports not (font-size: clamp(12rem,-7.199999999999999rem + 30vw,28.8rem)){.text-section-alignment-5-col-to-end{padding-top:min(max(12rem,-7.199999999999999rem + 30vw),28.8rem)}}.text-section.text-section-variant-full-height{min-height:100vh}.text-section.text-section-variant-full-height .text-header-inner{margin-block:auto}@media (min-width: 64rem){.text-section-alignment-5-col-to-end{padding-top:0}}
-</style>
-<link rel="dns-prefetch" href="https://www.gstatic.com">
-<link rel="dns-prefetch" href="https://www.paypalobjects.com">
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">!function(a,e){let t=a.createElement("script");function n(){a.head.appendChild(t)}t.async=!0,t.src="https://www.paypalobjects.com/pa/js/min/pa.js";let l=new CustomEvent("pypl_analytics_ready",{bubbles:!0,cancelable:!1});t.onload=function(){setTimeout(function(){e.PAYPAL.analytics.setup({data:"pgrp=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice&page=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice%3A%3A%3A&qual=&comp=ppcmsnodeweb&tsrce=ppcmsnodeweb&cu=0&ef_policy=ccpa&c_prefs=&pxpguid=&pgst=1767194933434&calc=f935432e19ac9&csci=f935432e19ac9&rsta=en_US&ccpg=us&pgtf=Nodejs&s=ci&env=live&xe=112102%2C112068%2C109112&xt=162357%2C162136%2C143574&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&pgsf=business&bzsr=main&lgin=out&page_type=ecm&shir=main_mktg_business_product&pros=2&event_props=cu%2Clgin%2Cpage%2Cxe%2Cxt&event_name=ppcom_page_viewed&page_segment=smb&user_props=cu%2Cxe%2Cxt&lgcook=0&server=origin&space_key=SKDENK"}),e.PAYPAL.analytics.setCWVData({"pgrp":"main:mktg:business:product:business-accept-payments/invoice","page":"main:mktg:business:product:business-accept-payments/invoice:::","comp":"ppcmsnodeweb","calc":"f935432e19ac9","csci":"f935432e19ac9","rsta":"en_US","ccpg":"us","xe":"112102,112068,109112","xt":"162357,162136,143574","lgin":"out","lgcook":"0","server":"fastly-edge","space_key":"SKDENK","pageurl":"/business/accept-payments/invoice"}),a.dispatchEvent(l)},0)},a.addEventListener("DOMContentLoaded",function(){"requestIdleCallback"in e?e.requestIdleCallback(n,{timeout:300}):setTimeout(n,100)})}(document,window);</script>
-<meta name="application-name" content="PayPal">
-<meta name="description" content="Discover invoicing solutions with advanced invoice software for creating, managing, and sending invoices online, simplify your billing process.">
-<link rel="canonical" href="https://www.paypal.com/us/business/accept-payments/invoice">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.paypal.com/us/business/accept-payments/invoice">
-<meta property="og:title" content="Invoicing | Create and Send Invoices Online | PayPal US">
-<meta property="og:image" content="https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg">
-<meta property="og:description" content="Discover invoicing solutions with advanced invoice software for creating, managing, and sending invoices online, simplify your billing process.">
-<meta name="robots" content="max-image-preview:large" id="robots:max-image-preview">
-<meta name="robots" content="max-video-preview:-1" id="robots:max-video-preview">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@paypal">
-<meta name="twitter:title" content="Invoicing | Create and Send Invoices Online | PayPal US">
-<meta name="twitter:image" content="https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg">
-<meta name="twitter:description" content="Discover invoicing solutions with advanced invoice software for creating, managing, and sending invoices online, simplify your billing process.">
-<script type="application/ld+json">{"@context":"http://www.schema.org","@type":"Corporation","@id":"https://www.paypal.com/us/#corporation","url":"https://www.paypal.com/us/","logo":"https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.png","name":"PayPal"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://www.paypal.com/us/#website","@type":"WebSite","inLanguage":"us","url":"https://www.paypal.com/us/","name":"PayPal"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://www.paypal.com/us/business/accept-payments/invoice#webpage","name":"Invoicing | Create and Send Invoices Online","inLanguage":"us","image":{"@type":"ImageObject","@id":"https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg#primaryimage","url":"https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg"},"isPartOf":{"@id":"https://www.paypal.com/us/#website"},"primaryImageOfPage":{"@id":"https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg#primaryimage"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://www.paypal.com/us/business/accept-payments/invoice#article","isPartOf":{"@id":"https://www.paypal.com/us/business/accept-payments/invoice#website"},"mainEntityOfPage":"https://www.paypal.com/us/business/accept-payments/invoice#website","image":{"@id":"https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg#primaryimage"},"headline":"Invoicing","description":"Discover invoicing solutions with advanced invoice software for creating, managing, and sending invoices online, simplify your billing process.","publisher":{"@id":"https://www.paypal.com/us/#corporation"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do I need to send a PayPal invoice?","acceptedAnswer":{"@type":"Answer","text":"All you need is a PayPal account. Creating and sending invoices is included with your account. If you don’t have one, sign up for an account."}},{"@type":"Question","name":"Does my customer need to have an account with PayPal?","acceptedAnswer":{"@type":"Answer","text":"No, your customer doesn’t need an account with PayPal. Upon receiving your invoice, your customer will be able to send their payment directly from the invoice."}},{"@type":"Question","name":"Can my customer pay my invoice in installments?","acceptedAnswer":{"@type":"Answer","text":"Yes, your customers can pay invoices in installments with PayPal Pay Later."}},{"@type":"Question","name":"What happens after I send my invoice?","acceptedAnswer":{"@type":"Answer","text":"We'll send an email to your customer that links to your invoice. They can review the invoice and choose to pay you online with their debit or credit card, or using their PayPal Wallet. You'll get an email confirming that we've sent your invoices, and when you've been paid."}},{"@type":"Question","name":"How do I send an invoice with PayPal?","acceptedAnswer":{"@type":"Answer","text":"There are many ways to send PayPal invoices. If you know your customer’s email address, you can add it directly to the invoice and it will be automatically sent with a secure link so they can pay instantly. If you don’t know their email address, you can create a shareable link that you can copy to a clipboard, or share from your phone using a QR code."}},{"@type":"Question","name":"Can I accept international payments through PayPal Invoicing?","acceptedAnswer":{"@type":"Answer","text":"PayPal Invoicing is available in over 200 markets and 24 currencies. Payment options may vary based on the recipient's location."}}]}</script>
-<style id="antiClickjack">html.js body {display: none !important;}</style>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">if (self === top || 'www.paypal.com' === window.parent.location.hostname) {var antiClickjack = document.getElementById('antiClickjack');if (antiClickjack) {antiClickjack.parentNode.removeChild(antiClickjack);}} else {top.location = self.location;}</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl"> document.querySelector('html').classList.add('js');</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">
-      if (window.console || 'console' in window) {
-        setTimeout(console.log.bind(console,'%c WARNING!!!', 'color:#FF8F1C; font-size:40px;'));
-        setTimeout(console.log.bind(console,'%c This browser feature is for developers only. Please do not copy-paste any code or run any scripts here. It may cause your PayPal account to be compromised.', 'color:#003087; font-size:16px; font-weight: bold;'));
-        setTimeout(console.log.bind(console,'%c For more information, http://en.wikipedia.org/wiki/Self-XSS', 'color:#003087; font-size:16px; font-weight: bold;'));
-      }
-      document.querySelector('html').classList.remove('no-js');</script>
-<script type="application/json" id="policy-data">{
-        "policies": ["CookieBanner"],
-        "nonce":"NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl",
-        "tenant":"paypal",
-        "policyData": {"country":"US","language":"en","isProd":true}
-      }</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.__DD_RUM_CONFIG__ = {"applicationId":"a3c34386-c9c5-4a16-b344-265a95997c64","env":"production","service":"ppcmsnodeweb","clientToken":"pubc2ea00ebdaf6a0f6395d8d4d458f2802","version":"2.48.0","site":"us5.datadoghq.com","sessionReplaySampleRate":0,"trackUserInteractions":true,"trackResources":true,"trackLongTasks":true}</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.__DD_FEATURE_FLAGS__ = [{"key":"server","value":"origin"},{"key":"nav_sub_version","value":"less"}]</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">'use strict';
-          (function chat(d, w) {
-            const s = d.createElement('script');
-            s.src = 'https://www.paypalobjects.com/helpcenter/smartchat/sales/v1/open-chat.js';
-            s.nonce = 'NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl';
-            s.defer = 1;
-            if (w.PAYPAL?.analytics) {
-              d.head.appendChild(s);
-            } else {
-              d.addEventListener('pypl_analytics_ready', () => d.head.appendChild(s));
-            }
-          }(document, window));</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.__GLOBAL_NAV_CONTEXT_HEADER__ = {"config":{"useMinimalHeader":false,"rtl":false,"smbRebrand":true,"compactHeader":true,"theme":"white","foundationTheme":"ppe","fptiTracking":{"xe":"112102,112068","xt":"162357,162136"},"dwHeader":true,"merchantRebrand":true},"content":{"mainMenuContent":[{"id":"5kfmFZA8oQqqp7LiFQxY1d","type":"subnavGrouped","align":"","text":"Personal","mobileOnlyText":"","href":"/us/digital-wallet/how-paypal-works?locale.x=en_US","subnavLinks":[{"id":"3MRnO8XInLhtZHi7zLuzCP","group":[{"target":"_self","id":"1kN2TOfMDPa9iaU8F3nUzL","text":"Buy Now, Pay Later","href":"/us/digital-wallet/ways-to-pay/buy-now-pay-later?locale.x=en_US"},{"target":"_self","id":"2Q7bRjp8zZSOsODF9WPgUE","text":"Rewards","href":"/us/digital-wallet/rewards?locale.x=en_US"},{"target":"_self","id":"6Eb2fFBCQVlk4fIQ3qwMF6","text":"PayPal credit and cards","href":"/us/digital-wallet/ways-to-pay/credit-services?locale.x=en_US"},{"target":"_self","id":"auQcIjRT0Ow6fheTiyKCE","text":"PayPal Debit Card","href":"/us/digital-wallet/manage-money/paypal-debit-card?locale.x=en_US"},{"target":"_self","id":"2Zbq7tgJcz07xejZmLJLLY","text":"Paying with PayPal","href":"/us/digital-wallet/ways-to-pay/checkout-with-paypal?locale.x=en_US"}],"text":"Shopping & Rewards","groupName":"SHOPBUY","mobileOnlyText":"Shopping & Rewards","mobileOnlyHref":"/us/digital-wallet/ways-to-pay?locale.x=en_US","href":"/us/digital-wallet/ways-to-pay?locale.x=en_US"},{"id":"3DzWuLMzbgXSnIsKxOf54l","group":[{"target":"_self","id":"926p4aNM9J5HJBC9LHfrK","text":"Send money","href":"/us/digital-wallet/send-receive-money/send-money?locale.x=en_US"},{"target":"_self","id":"6O7ECg8Muo1nSxR90mcffS","text":"Request money","href":"/us/digital-wallet/send-receive-money/request-money?locale.x=en_US"},{"target":"_self","id":"1D5w34OIBcIXbCANFiHGfz","text":"Pool money","href":"/us/digital-wallet/send-receive-money/pool-money?locale.x=en_US"},{"target":"_self","id":"6TfZ09kFg1oYTLEVjxHVpo","text":"Donate","href":"/us/digital-wallet/send-receive-money/giving?locale.x=en_US"},{"target":"_self","id":"5R7whrSByMKNHdyYVksrYG","text":"Start selling","href":"/us/digital-wallet/send-receive-money/start-selling?locale.x=en_US"}],"text":"Send & Receive","groupName":"SENDRECEIVE","mobileOnlyText":"Send and Receive Overview","mobileOnlyHref":"/us/digital-wallet/send-receive-money?locale.x=en_US","href":"/us/digital-wallet/send-receive-money?locale.x=en_US"},{"id":"1YVKnMk1lN4MgmTd5x4RQw","group":[{"target":"_self","id":"4gC8ykR29XSjEZBelzhZIF","text":"Add cards and banks","href":"/us/digital-wallet/ways-to-pay/add-payment-method?locale.x=en_US"},{"target":"_self","id":"64bLYYX5MVWSNy6BpUEMeg","text":"Security and safety","href":"/us/digital-wallet/security-and-protection?locale.x=en_US"},{"target":"_self","id":"69RxuNKyX0syZC12Zv44lX","text":"Set up Direct Deposit","href":"/us/digital-wallet/manage-money/direct-deposit?locale.x=en_US"},{"target":"_self","id":"7pWG2OFZ8bMLCPZHiiIE6e","text":"Add cash","href":"/us/digital-wallet/manage-money/add-cash?locale.x=en_US"},{"target":"_self","id":"538csNV6DEvuuuxfolYY2S","text":"Pay bills","href":"/us/digital-wallet/manage-money/pay-bills?locale.x=en_US"},{"target":"_self","id":"5H7CMPqgfTnWd8nIuEN7pR","text":"Savings and goals","href":"/us/digital-wallet/manage-money/start-saving?locale.x=en_US"},{"target":"_self","id":"FzMh4UhbNBBiqbQxwNnBI","text":"Cryptocurrency","href":"/us/digital-wallet/manage-money/crypto?locale.x=en_US"}],"text":"Manage Your Money","groupName":"MANAGEMONEY","mobileOnlyText":"Manage Your Money Overview","mobileOnlyHref":"/us/digital-wallet/manage-money?locale.x=en_US","href":"/us/digital-wallet/manage-money?locale.x=en_US"},{"target":"_self","type":"pill","align":"right","href":"/us/digital-wallet?locale.x=en_US","iconUrl":"https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-app.svg","iconImageAltText":"Get the App","text":"Get the App","id":"a9j8RdRkEyIcUBsCRGePJm"},{"target":"_self","type":"pill","align":"right","href":"/us/digital-wallet/how-paypal-works?locale.x=en_US","iconUrl":"https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-how-it-works.svg","iconImageAltText":"How PayPal works","text":"How PayPal Works","id":"1nJMernLCGvauMaYQcMGtz"},{"target":"_self","type":"pill","align":"right","href":"/us/money-hub?locale.x=en_US","iconUrl":"https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/smart-blue.svg","iconImageAltText":"Money Hub","text":"Money Hub","id":"4WsnyI8hzGXcYQW2pRL0zK"}],"segmentTitle":{"target":"_self","id":"J3NhjWT5Wvemxw6wDXq2c","text":"PayPal for You","href":"/us/digital-wallet/how-paypal-works?locale.x=en_US"}},{"id":"3KgLe8jd04LdVBrvITE9YZ","type":"subnavGrouped","align":"","text":"Business","mobileOnlyText":"","href":"/us/business?locale.x=en_US","subnavLinks":[{"id":"4bSohgFGUkmcoqcgtviFsu","group":[{"target":"_self","id":"c7ox33OzLxXb5QT3XQz8Xz","text":"Enterprises","href":"/us/enterprise?locale.x=en_US"},{"target":"_self","id":"YG8IT5P5I7TeOOPDZdfqKw","text":"Small Businesses","href":"/us/business/small-business?locale.x=en_US"},{"target":"_self","id":"faXcFce0sxsf3UwEwZZxsq","text":"Solopreneurs","href":"/us/business/solopreneurs?locale.x=en_US"},{"target":"_self","id":"XBG9MvkQyrHcBYrVjqjx2O","text":"Partners","href":"/us/enterprise/become-a-partner?locale.x=en_US"},{"target":"_self","id":"3tPNKj7iCJHfWsc4VqaCwY","text":"Platforms","href":"/us/business/platform-payment-solution?locale.x=en_US"},{"target":"_self","id":"cJVIYTrCAtMbqvjZjYFGNn","text":"Developers","href":"https://developer.paypal.com/home/?_ga=2.145026609.44035625.1744498317-1148914753.1731593727"},{"target":"_self","id":"99Ve4EofQ8dfJOGcBTeVCa","text":"Advertisers","href":"https://www.paypal.com/us/advertiser?locale.x=en_US"}],"text":"Business Types","groupName":"RESOURCES","mobileOnlyText":"Business Types Overview","mobileOnlyHref":"","href":""},{"id":"3pC1tUvgMrxSEHlYujuc0o","group":[{"target":"_self","id":"1aJPnnpEvZbI8ADb14b0k8","text":"Online Checkout","href":"/us/business/accept-payments/checkout?locale.x=en_US"},{"target":"_self","id":"afQ90n0NamJsYRLCyKzNV","text":"Installment Payments","href":"/us/business/accept-payments/installment-payments?locale.x=en_US"},{"target":"_self","id":"3fHPqzmrNcrkVIvx2Ag4IN","text":"Guest Checkout","href":"/us/business/accept-payments/guest-checkout?locale.x=en_US"},{"target":"_self","id":"3dpEp6so2VmQJfSeWlbCg6","text":"Accept Venmo","href":"/us/business/accept-payments/accept-venmo?locale.x=en_US"},{"target":"_self","id":"73NwclJg62gHZbj406uDiw","text":"POS System","href":"/us/business/pos-system?locale.x=en_US"},{"target":"_self","id":"1zoiwDi1nbMbsEzXGLzfro","text":"Invoicing","href":"/us/business/accept-payments/invoice?locale.x=en_US"},{"target":"_self","id":"X726vUkfXtteTj9VmN1WwH","text":"Payment Links","href":"/us/business/accept-payments/payment-links?locale.x=en_US"},{"target":"_self","id":"WWhlho8dnIefym91mp2UMX","text":"Enterprise Payments","href":"/us/enterprise/payment-processing?locale.x=en_US"},{"target":"_self","id":"7jKbBjOYk9xdndxYf6dOOR","text":"Tap to Pay","href":"/us/business/accept-payments/tap-to-pay?locale.x=en_US"}],"text":"Accept Payments","groupName":"ACCEPTPAYMENTS","mobileOnlyText":"Accept Payments Overview","mobileOnlyHref":"/us/business/accept-payments?locale.x=en_US","href":"/us/business/accept-payments?locale.x=en_US"},{"id":"4ClzIw5tWs6pb69rfNk1Rn","group":[{"target":"_self","id":"YVBJcd0hQbCbYasyoemnTN","text":"Make Payments","href":"/us/business/make-payments?locale.x=en_US"},{"target":"_self","id":"3B3uR9Nfmgzs71IUNmP8u8","text":"Risk Management","href":"/us/business/operations/risk-management?locale.x=en_US"},{"target":"_self","id":"7H2CufMwYEISLlrlZRu227","text":"Fraud Protection","href":"/us/enterprise/fraud-protection-advanced?locale.x=en_US"},{"target":"_self","id":"65GWuHSlRHENLRqOqIcKkw","text":"Reporting Tools","href":"/us/business/operations/reporting-tools?locale.x=en_US"},{"target":"_self","id":"3fhaWKpc7cm4u45y4FAaIc","text":"Shipping","href":"/us/business/operations/shipping?locale.x=en_US"},{"target":"_self","id":"cMINv10GQoDakQtMGVm91n","text":"Agentic Commerce","href":"/us/business/ai?locale.x=en_US"}],"text":"Risk & Operations","groupName":"RISKMANAGEMENT&OPERATIONS ","mobileOnlyText":"","mobileOnlyHref":"","href":""},{"id":"1fBTEIXymEMKJ34lxY9V8y","group":[{"target":"_self","id":"YAheFkiQvvxDRNCGqXKVH","text":"Working Capital Loan","href":"/us/business/financial-services/working-capital-loan?locale.x=en_US"},{"target":"_self","id":"2j04OyKyWgu7q5IwVYGLbY","text":"Business Loan","href":"/us/business/financial-services/small-business-loan?locale.x=en_US"},{"target":"_self","id":"2qYVZeSupiV2QcPkPRY0qB","text":"Business Debit Card","href":"/us/business/financial-services/debit-card?locale.x=en_US"}],"text":"Financial Services","groupName":"FINANCIALSERVICES","mobileOnlyText":"Financial Services Overview","mobileOnlyHref":"/us/business/financial-services?locale.x=en_US","href":"/us/business/financial-services?locale.x=en_US"},{"target":"_self","type":"pill","align":"right","href":"/us/business/open-business-account?locale.x=en_US","iconUrl":"https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/business-start.svg","iconImageAltText":"Get Started","text":"Get Started","id":"7GVQcrxq0PadShGKKZ8wWs"},{"target":"_self","type":"pill","align":"right","href":"/us/business/fees?locale.x=en_US","iconUrl":"https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/business-pricing.svg","iconImageAltText":"Fees","text":"Fees","id":"4hm7D6FYrS8IP0QCP8E6N3"},{"target":"_self","type":"linkOnly","align":"right","href":"/us/business/accept-payments/payment-methods?locale.x=en_US","iconImageAltText":"","text":"Payment Methods","id":"4ti7b9UdGjkbxNemk4sTKF"},{"target":"_self","type":"linkOnly","align":"right","href":"/us/business/platforms-and-marketplaces/solutions?locale.x=en_US","iconImageAltText":"","text":"3rd Party Integrations","id":"fNyHXXqe1shdBbPTbmEkyK"},{"target":"_self","type":"linkOnly","align":"right","href":"/us/brc/?locale.x=en_US","iconImageAltText":"","text":"Business Resource Center","id":"37rZa7hDriUa5uB56U3gsp"},{"target":"_self","type":"linkOnly","align":"right","href":"/us/webapps/mpp/campaigns/paypal-events?locale.x=en_US","iconImageAltText":"","text":"Events","id":"3EvaCcTu1wMTFd4qFuNdVs"}],"segmentTitle":{"target":"_self","id":"eZ6GNyUQ2PzfpPUVPGyMAe","text":"PayPal Open","subtext":"The platform for all business","href":"/us/business?locale.x=en_US"}},{"id":"afjNhtseg9CdMaQfAzMdWj","type":"subnavGrouped","align":"","text":"Advertiser","mobileOnlyText":"","href":"/us/advertiser?locale.x=en_US","subnavLinks":[{"id":"cmtR6lEwYQKfDA7S758tLS","group":[{"mobilePrimaryText":"About PayPal Ads","target":"_self","id":"8Zvt668ZZjjbIfT073rmy1","text":"About PayPal Ads","href":"https://www.paypal.com/us/advertiser/about"},{"mobilePrimaryText":"PayPal Ads Solutions","target":"_self","id":"6juCgOaefb2bxgxNywKnav","text":"PayPal Ads Solutions","href":"https://www.paypal.com/us/advertiser/solutions"},{"mobilePrimaryText":"PayPal Ads Resources","target":"_self","id":"eS454NwSyH6bykrmLB4i3p","text":"PayPal Ads Resources","href":"https://www.paypal.com/us/advertiser/resources"}],"text":"","groupName":"","mobileOnlyText":"","mobileOnlyHref":"","href":""}],"segmentTitle":{"mobilePrimaryText":"PayPal Ads","target":"_self","id":"29zEMgIbhdEcev9XlpIRIP","text":"PayPal Ads","href":"https://www.paypal.com/us/advertiser"}},{"id":"2Coq4lwsr6A2vPJhmWIFW0","type":"linkOnly","align":"","text":"Developer","mobileOnlyText":"","href":"https://developer.paypal.com/home/","subnavLinks":[]},{"id":"1lrVWz9aCIu8eDUpf1ycuY","type":"linkOnly","align":"right","text":"Help","mobileOnlyText":"","href":"/us/cshelp/personal?locale.x=en_US","subnavLinks":[]}],"minimalHeader":{"labelMenuButton":"Menu","labelClose":"Close","logo":{"target":"_self","logoName":"paypal_rebrand","foundationTheme":"ppe","theme":"white","id":"2t6ETuvMHeIBPnUEvo23WL","text":"PayPal logo","href":"/us/home?locale.x=en_US","url":"https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg"},"headerButtons":[{"theme":"SMB and LE","clickEventName":"SignUp_CTA","isLoggedIn":false,"id":"ul-btn","text":"Log In","href":"/signin?locale.x=en_US","color":"secondary","target":"_self","amplitudeKey":"ul-btn"},{"theme":"SMB and LE","clickEventName":"SignUp_CTA","id":"signup-button","text":"Sign Up","href":"/us/webapps/mpp/account-selection?locale.x=en_US","color":"primary","target":"_self","isSublistMobile":true,"amplitudeKey":"signup-button"}]},"sublistMobile":[{"id":"signup-button","target":"_self","type":"cta","theme":"SMB and LE","clickEventName":"SignUp_CTA","isSublistMobile":true,"text":"Sign Up","href":"/us/webapps/mpp/account-selection?locale.x=en_US","amplitudeKey":"signup-button"}]},"hosted_by":"LRU","version":"rebrand"};</script>
-<link href="https://www.paypalobjects.com/globalnav/css/main-NBeCT_bO.css" rel="stylesheet">
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.__GLOBAL_NAV_CONTEXT_FOOTER__ = {"config":{"loggedIn":false,"rtl":false,"theme":"black","foundationTheme":"ppe","brand":"paypal","useHtmlBaseFontSize":true,"hideCountrySelector":false},"content":{"mainLinks":{"list":[{"id":"4A6XO7WgDy85tftMQp511Y","text":"Help","href":"/us/cshelp/personal?locale.x=en_US","target":"_self","minimal":true},{"id":"7ihRd6mCPNFTkOZ0wblFok","text":"Contact","href":"/us/smarthelp/contact-us?locale.x=en_US","target":"_self","minimal":true},{"id":"7ACjy3wMaxV05EhkuV35nZ","text":"Fees","href":"/us/digital-wallet/paypal-consumer-fees?locale.x=en_US","target":"_self","minimal":true},{"id":"4GATx0x9GALShNvkSZXsp0","text":"Security Center","href":"/us/security?locale.x=en_US","target":"_self","minimal":true},{"id":"5hfuEIwSi2AgdW9TmHTAw4","text":"Privacy Center","href":"/us/privacy-center/home?locale.x=en_US","target":"_self","minimal":true},{"id":"119CYzD5fJttQGUqh4vsY1","text":"Shop","href":"/us/webapps/mpp/shopping-selection?locale.x=en_US","target":"_self"},{"id":"3iTPcobLhb3HN1DO1Q9PZ9","text":"Apps","href":"/us/digital-wallet/mobile-apps?locale.x=en_US"},{"id":"2H2AXNBJhctsUTeLyM5CZJ","text":"Enterprise","href":"/us/enterprise?locale.x=en_US","target":"_self"},{"id":"HBdlY1sPMIigLrOGOO9kj","text":"Partners","href":"/us/enterprise/industry-solutions/platforms-and-marketplaces?locale.x=en_US","target":"_self"}]},"secondaryLinks":{"list":[{"id":"3ztFiz5VjLmpIIhbHSFH4s","text":"About","href":"https://about.pypl.com/about-us/default.aspx","target":"_self","minimal":true},{"id":"5rewfH0YpdnWmHahqpL0vo","text":"Newsroom","href":"https://newsroom.paypal-corp.com/","target":"_self"},{"id":"4j0AHpLPBeE1ivLPdTY8an","text":"Jobs","href":"https://careers.pypl.com/home/","target":"_self","minimal":true},{"id":"4iKzGvYSScY7t4k21UTDoz","text":"Investor Relations","href":"https://investor.pypl.com/home/default.aspx","target":"_self"},{"id":"5SmFkackgP8ZcFpIKDHVf0","text":"Government Relations","href":"https://about.pypl.com/how-we-work/issues-and-advocacy/default.aspx","target":"_self"}]},"tertiaryLinks":{"list":[{"id":"5fhLGyWHLraAGwwpmRpht3","text":"© 1999–{{currentYear}}","minimal":true},{"id":"2pliw4jJCRY5lNuJisycij","text":"Accessibility","href":"/us/webapps/mpp/accessibility?locale.x=en_US","target":"_self","minimal":true},{"id":"5Sb81Iccz2aIJUvKL1aMAO","text":"Privacy Statement","href":"https://www.paypal.com/us/legalhub/privacy-full","target":"_self","minimal":true},{"id":"Xvyw17fpaW42PlmC4nCX7","text":"Cookies","href":"/myaccount/privacy/cookiePrefs?locale.x=en_US","target":"_self"},{"id":"68aq0vxQOuns66kX7d3sF8","text":"Legal","href":"/us/legalhub/home?locale.x=en_US","target":"_self","minimal":true},{"id":"5T9zpo6oHeY8g9F9ILy3oK","text":"Licenses","href":"/us/webapps/mpp/licenses?locale.x=en_US","target":"_self","minimal":true}]},"country":{"flag":{"href":"/us/webapps/mpp/country-worldwide?locale.x=en_US","text":"See all countries/regions","imageUrl":"https://www.paypalobjects.com/webstatic/mktg/icons/sprite_countries_flag4.png","locale":"US","target":"_self"}},"footerNotes":[{"text":"PayPal is located at 2211 N 1st St. San Jose, CA 95131"}],"logo":{"id":"4zCJZtLKg8WIcQr4Qzqjpg","text":"PayPal Logo","href":"/us/home?locale.x=en_US","imageUrl":"https://www.paypalobjects.com/marketing/web/logos/paypal-wordmark-monotone_new.svg"}},"hosted_by":"LRU","version":"rebrand"};</script>
-<script src="https://www.paypalobjects.com/globalnav/js/main-Bo6EnkLO.js" type="module"></script>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">button,hr,input{overflow:visible}progress,sub,sup{vertical-align:baseline}[type="checkbox"],[type="radio"],legend{box-sizing:border-box;padding:0}html{box-sizing:border-box;font-synthesis:style small-caps;-webkit-text-size-adjust:100%;line-height:1.15}*,:after,:before{box-sizing:inherit}body,html{height:100%}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;margin:0}details,main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type="button"],[type="reset"],[type="submit"],button{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{padding:.35em .75em .625em}legend{color:inherit;display:table;max-width:100%;white-space:normal}textarea{overflow:auto}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}[hidden],template{display:none}</style>
-<style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">@font-face{font-family:Plain;font-weight:400;font-display:swap;font-style:normal;src:url("https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Plain/PayPalPlain-Regular.woff2") format("woff2");}@font-face{font-family:Plain;font-weight:500;font-display:swap;font-style:normal;src:url("https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Plain/PayPalPlain-Medium.woff2") format("woff2");}@font-face{font-family:PayPal Pro;font-weight:400;font-display:swap;font-style:normal;src:url("https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Pro/PayPalProSWeb-Book.woff2") format("woff2");}@font-face{font-family:PayPal Pro;font-weight:900;font-display:swap;font-style:normal;src:url("https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Pro/PayPalProSWeb-Black.woff2") format("woff2");}body,html{font-family:Plain,Helvetica Neue,Arial,sans-serif;}</style>
-<link rel="preload" as="font" crossOrigin href="https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Plain/PayPalPlain-Regular.woff2" type="font/woff2">
-<link rel="preload" as="font" crossOrigin href="https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Plain/PayPalPlain-Medium.woff2" type="font/woff2">
-<link rel="preload" as="font" crossOrigin href="https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Pro/PayPalProSWeb-Book.woff2" type="font/woff2">
-<link rel="preload" as="font" crossOrigin href="https://www.paypalobjects.com/marketing/pp-com-components/fonts/PayPal%20Pro/PayPalProSWeb-Black.woff2" type="font/woff2">
-<link rel="apple-touch-icon" sizes="64x64" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp64.png">
-<link rel="apple-touch-icon" sizes="72x72" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp114.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp144.png">
-<link rel="apple-touch-icon" sizes="258x258" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp258.png">
-<link rel="icon" sizes="32x32" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp32.png">
-<link rel="shortcut icon" sizes="32x32" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp32.png">
-<link rel="shortcut icon" sizes="196x196" href="https://www.paypalobjects.com/marketing/web/icons/monogram/pp196.png">
-    <style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" data-emotion="ppcmsnodeweb pxchwr 18byuhn zna116-button_base-text_button_lg 15mf51s-button_base-text_button_lg-secondary j3j4on 1lc6yy1 b02ds2 z7uojr-button_base-text_button_lg-size_sm-text_button_sm rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary qah9zk 1vs64uy 1dz0bod 1i7zn3g p608om yqyna4 2l5x48 6fl9l8 19bh96s 73b4y 1ylamc0 1yn01jz 18vckfn tzcz0h 12wqsrn 16b6zhx 1n793pb mm2646 ubtagy y59vw7 jlvj8l 4tets9 tmvyzy 1bk0n6-svg-size_md 7gb3x9 1d4oewu dywr6a">.ppcmsnodeweb-pxchwr{padding-bottom:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-pxchwr{padding-bottom:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}.ppcmsnodeweb-18byuhn{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:2;grid-column-end:-2;z-index:1;}.ppcmsnodeweb-zna116-button_base-text_button_lg{position:relative;border-radius:1000px;color:#ffffff;cursor:pointer;display:inline-block;min-width:6rem;text-align:center;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;border:0.125rem solid #003087;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:1.125rem;line-height:1.5rem;font-weight:400;background-color:#003087;padding:0.625rem 1.875rem;}@media screen and (max-width: 752px){.ppcmsnodeweb-zna116-button_base-text_button_lg{font-size:min(1.125rem, 36px);line-height:min(1.5rem, 48px);}}.ppcmsnodeweb-zna116-button_base-text_button_lg:hover,.ppcmsnodeweb-zna116-button_base-text_button_lg:active,.ppcmsnodeweb-zna116-button_base-text_button_lg:visited{color:#ffffff;}.ppcmsnodeweb-zna116-button_base-text_button_lg:hover{-webkit-text-decoration:none;text-decoration:none;background-color:#0070e0;border-color:#0070e0;}.ppcmsnodeweb-zna116-button_base-text_button_lg:active{outline:none;background-color:#001c64;border-color:#001c64;}.ppcmsnodeweb-zna116-button_base-text_button_lg:focus{outline:none;}.ppcmsnodeweb-zna116-button_base-text_button_lg:focus:after{content:'';position:absolute;top:-0.125rem;left:-0.125rem;border:0.1875rem solid #097ff5;box-shadow:0 0 0 0.375rem rgba(209, 229, 249, 0.9);border-radius:inherit;text-indent:-0.125rem;width:calc(100% - -0.25rem);height:calc(100% - -0.25rem);pointer-events:none;}[dir='rtl'] .ppcmsnodeweb-zna116-button_base-text_button_lg:focus:after{left:0;right:-0.125rem;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary{position:relative;border-radius:1000px;color:#ffffff;cursor:pointer;display:inline-block;min-width:6rem;text-align:center;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;border:0.125rem solid #003087;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:1.125rem;line-height:1.5rem;font-weight:400;background-color:#003087;padding:0.625rem 1.875rem;background:transparent;border-color:#003087;color:#003087;box-shadow:0 0 0 0.0625rem transparent inset;}@media screen and (max-width: 752px){.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary{font-size:min(1.125rem, 36px);line-height:min(1.5rem, 48px);}}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:hover,.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:active,.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:visited{color:#ffffff;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:hover{-webkit-text-decoration:none;text-decoration:none;background-color:#0070e0;border-color:#0070e0;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:active{outline:none;background-color:#001c64;border-color:#001c64;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:focus{outline:none;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:focus:after{content:'';position:absolute;top:-0.125rem;left:-0.125rem;border:0.1875rem solid #097ff5;box-shadow:0 0 0 0.375rem rgba(209, 229, 249, 0.9);border-radius:inherit;text-indent:-0.125rem;width:calc(100% - -0.25rem);height:calc(100% - -0.25rem);pointer-events:none;}[dir='rtl'] .ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:focus:after{left:0;right:-0.125rem;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:visited{color:#003087;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:hover{background:transparent;color:#0070e0;border-color:#0070e0;box-shadow:none;}.ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary:active{background:transparent;color:#001c64;border-color:#001c64;box-shadow:none;}.ppcmsnodeweb-j3j4on{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;z-index:1;}@media only screen and (min-width: 91.875rem){.ppcmsnodeweb-j3j4on{grid-column-start:2;grid-column-end:-2;}}.ppcmsnodeweb-1lc6yy1{grid-row-gap:0;grid-template-rows:minmax(0px, auto);grid-auto-rows:minmax(0px, auto);}.ppcmsnodeweb-b02ds2{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:1;grid-column-end:-1;}@media only screen and (min-width: 91.875rem){.ppcmsnodeweb-b02ds2{grid-column-start:3;grid-column-end:-3;}}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm{position:relative;border-radius:1000px;color:#ffffff;cursor:pointer;display:inline-block;min-width:6rem;text-align:center;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;border:0.125rem solid #003087;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:1.125rem;line-height:1.5rem;font-weight:400;background-color:#003087;padding:0.625rem 1.875rem;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:0.875rem;line-height:1.25rem;font-weight:400;min-width:3.75rem;padding:0.25rem 0.875rem;}@media screen and (max-width: 752px){.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm{font-size:min(1.125rem, 36px);line-height:min(1.5rem, 48px);}}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:hover,.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:active,.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:visited{color:#ffffff;}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:hover{-webkit-text-decoration:none;text-decoration:none;background-color:#0070e0;border-color:#0070e0;}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:active{outline:none;background-color:#001c64;border-color:#001c64;}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:focus{outline:none;}.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:focus:after{content:'';position:absolute;top:-0.125rem;left:-0.125rem;border:0.1875rem solid #097ff5;box-shadow:0 0 0 0.375rem rgba(209, 229, 249, 0.9);border-radius:inherit;text-indent:-0.125rem;width:calc(100% - -0.25rem);height:calc(100% - -0.25rem);pointer-events:none;}[dir='rtl'] .ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm:focus:after{left:0;right:-0.125rem;}@media screen and (max-width: 752px){.ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm{font-size:min(0.875rem, 28px);line-height:min(1.25rem, 40px);}}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary{position:relative;border-radius:1000px;color:#ffffff;cursor:pointer;display:inline-block;min-width:6rem;text-align:center;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;transition:color 0.20s ease,background-color 0.20s ease,border-color 0.20s ease,box-shadow 0.20s ease;border:0.125rem solid #003087;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:1.125rem;line-height:1.5rem;font-weight:400;background-color:#003087;padding:0.625rem 1.875rem;color:#ffffff;font-family:PayPalOpen-Bold,"Helvetica Neue",Arial,sans-serif;font-size:0.875rem;line-height:1.25rem;font-weight:400;min-width:3.75rem;padding:0.25rem 0.875rem;background:transparent;border-color:#003087;color:#003087;box-shadow:0 0 0 0.0625rem transparent inset;}@media screen and (max-width: 752px){.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary{font-size:min(1.125rem, 36px);line-height:min(1.5rem, 48px);}}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:hover,.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:active,.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:visited{color:#ffffff;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:hover{-webkit-text-decoration:none;text-decoration:none;background-color:#0070e0;border-color:#0070e0;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:active{outline:none;background-color:#001c64;border-color:#001c64;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:focus{outline:none;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:focus:after{content:'';position:absolute;top:-0.125rem;left:-0.125rem;border:0.1875rem solid #097ff5;box-shadow:0 0 0 0.375rem rgba(209, 229, 249, 0.9);border-radius:inherit;text-indent:-0.125rem;width:calc(100% - -0.25rem);height:calc(100% - -0.25rem);pointer-events:none;}[dir='rtl'] .ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:focus:after{left:0;right:-0.125rem;}@media screen and (max-width: 752px){.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary{font-size:min(0.875rem, 28px);line-height:min(1.25rem, 40px);}}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:visited{color:#003087;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:hover{background:transparent;color:#0070e0;border-color:#0070e0;box-shadow:none;}.ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary:active{background:transparent;color:#001c64;border-color:#001c64;box-shadow:none;}.ppcmsnodeweb-qah9zk{padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);padding-top:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-qah9zk{padding-bottom:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-qah9zk{padding-top:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}.ppcmsnodeweb-1vs64uy{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:2;grid-column-end:-2;z-index:1;}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-1vs64uy{grid-column-start:3;grid-column-end:-3;}}.ppcmsnodeweb-1dz0bod{padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);padding-top:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-1dz0bod{padding-top:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}.ppcmsnodeweb-1i7zn3g{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:7;padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);z-index:1;}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-1i7zn3g{padding-bottom:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-1i7zn3g{grid-column-start:3;grid-column-end:7;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-1i7zn3g{grid-column-start:3;grid-column-end:span 12;}}.ppcmsnodeweb-p608om{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:2;grid-column-end:-2;z-index:1;}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-p608om{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;grid-row-start:2;grid-column-start:2;grid-column-end:span 3;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-p608om{grid-column-start:2;grid-column-end:span 6;}}.ppcmsnodeweb-yqyna4{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;z-index:1;}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-yqyna4{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;grid-row-start:2;grid-column-start:5;grid-column-end:-3;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-yqyna4{grid-column-start:9;grid-column-end:-3;}}.ppcmsnodeweb-2l5x48{padding-bottom:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);padding-top:clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-2l5x48{padding-bottom:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}@supports not (font-size: clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem)){.ppcmsnodeweb-2l5x48{padding-top:min(max(4rem, -2.3999999999999995rem + 10vw), 9.6rem);}}.ppcmsnodeweb-6fl9l8{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:7;padding-bottom:0;z-index:1;}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-6fl9l8{grid-column-start:3;grid-column-end:7;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-6fl9l8{grid-column-start:3;grid-column-end:span 12;}}.ppcmsnodeweb-19bh96s{padding-bottom:0;padding-top:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-19bh96s{padding-top:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}.ppcmsnodeweb-73b4y{padding-bottom:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);padding-top:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-73b4y{padding-bottom:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-73b4y{padding-top:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}.ppcmsnodeweb-1ylamc0{padding-bottom:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);padding-top:0;grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-1ylamc0{padding-bottom:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-1yn01jz{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:2;grid-column-end:-2;padding-top:0;z-index:1;}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-1yn01jz{grid-row-start:1;grid-row-end:2;grid-column-start:5;grid-column-end:-2;padding-top:0;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-1yn01jz{grid-row-start:1;grid-row-end:2;grid-column-start:9;grid-column-end:-2;padding-top:0;}}.ppcmsnodeweb-18vckfn{-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;padding-top:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);z-index:1;}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-18vckfn{padding-top:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-18vckfn{grid-row-start:1;grid-row-end:2;grid-column-start:3;grid-column-end:5;padding-bottom:2rem;padding-top:2rem;}}@media only screen and (min-width: 64rem){.ppcmsnodeweb-18vckfn{grid-row-start:1;grid-row-end:2;grid-column-start:3;grid-column-end:8;padding-bottom:3rem;padding-top:3rem;}}.ppcmsnodeweb-tzcz0h{padding-bottom:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-tzcz0h{padding-bottom:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-tzcz0h{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-12wqsrn{padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);padding-top:clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(auto, auto);grid-auto-rows:minmax(auto, auto);}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-12wqsrn{padding-bottom:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@supports not (font-size: clamp(1rem, -0.5999999999999999rem + 2.5vw, 2.4rem)){.ppcmsnodeweb-12wqsrn{padding-top:min(max(1rem, -0.5999999999999999rem + 2.5vw), 2.4rem);}}@media only screen and (min-width: 41.0625rem){.ppcmsnodeweb-12wqsrn{grid-template-rows:minmax(auto, auto);grid-auto-rows:minmax(auto, auto);}}.ppcmsnodeweb-16b6zhx{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:1;grid-column-end:-1;z-index:1;}@media only screen and (min-width: 91.875rem){.ppcmsnodeweb-16b6zhx{grid-column-start:3;grid-column-end:-3;}}.ppcmsnodeweb-1n793pb{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;padding-top:clamp(0.5rem, -0.29999999999999993rem + 1.25vw, 1.2rem);z-index:1;}@supports not (font-size: clamp(0.5rem, -0.29999999999999993rem + 1.25vw, 1.2rem)){.ppcmsnodeweb-1n793pb{padding-top:min(max(0.5rem, -0.29999999999999993rem + 1.25vw), 1.2rem);}}.ppcmsnodeweb-mm2646{padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-mm2646{padding-bottom:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-mm2646{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-ubtagy{padding-bottom:clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem);padding-top:0;grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem)){.ppcmsnodeweb-ubtagy{padding-bottom:min(max(4rem, -2.3999999999999995rem + 10vw), 9.6rem);}}.ppcmsnodeweb-y59vw7{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;z-index:1;}.ppcmsnodeweb-jlvj8l{padding-bottom:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-jlvj8l{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-4tets9{padding-bottom:clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(2rem, -1.1999999999999997rem + 5vw, 4.8rem)){.ppcmsnodeweb-4tets9{padding-bottom:min(max(2rem, -1.1999999999999997rem + 5vw), 4.8rem);}}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-4tets9{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-tmvyzy{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:3;grid-column-end:-3;z-index:1;}@media only screen and (min-width: 64rem){.ppcmsnodeweb-tmvyzy{grid-column-start:3;grid-column-end:-3;}}.ppcmsnodeweb-1bk0n6-svg-size_md{speak:none;display:inline-block;aspect-ratio:1;width:2rem;height:2rem;}.ppcmsnodeweb-1bk0n6-svg-size_md img,.ppcmsnodeweb-1bk0n6-svg-size_md svg{width:100%;height:100%;display:block;}.ppcmsnodeweb-7gb3x9{padding-bottom:clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:0;grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(4rem, -2.3999999999999995rem + 10vw, 9.6rem)){.ppcmsnodeweb-7gb3x9{padding-bottom:min(max(4rem, -2.3999999999999995rem + 10vw), 9.6rem);}}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-7gb3x9{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}.ppcmsnodeweb-1d4oewu{-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto;display:block;grid-row-start:auto;grid-row-end:auto;grid-column-start:2;grid-column-end:-2;z-index:1;}@media only screen and (min-width: 64rem){.ppcmsnodeweb-1d4oewu{grid-column-start:3;grid-column-end:-3;}}.ppcmsnodeweb-dywr6a{padding-bottom:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);padding-top:clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem);grid-row-gap:var(--grid-gap);grid-template-rows:minmax(50px, auto);grid-auto-rows:minmax(50px, auto);}@supports not (font-size: clamp(3rem, -1.7999999999999998rem + 7.5vw, 7.2rem)){.ppcmsnodeweb-dywr6a{padding-top:min(max(3rem, -1.7999999999999998rem + 7.5vw), 7.2rem);}}</style>
-    <script type="module" crossorigin src="https://www.paypalobjects.com/ppcmsnodeweb/pp-com-components/pp-com-components-55b4bccd.js"></script>
-    <script async type="module" nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" src="https://www.paypalobjects.com/ppcmsnodeweb/pp-com-components/datadog-b1cfe729.js"></script>
-    <style nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">.document-body-root{background:#f1efea}.document-body:not(.full-width){max-width:140rem}.document-body{margin:0 auto;background:#ffffff}#globalnav-header[data-nav-version*=legacy]~.document-body{padding-top:3.5rem}.document-footer{background:#ffffff}#globalnav-header:has(header[class*=smb-rebrand-gn-header])~div.document-body{padding-top:3.5rem}@media (min-width: 64rem){#globalnav-header:has(header[class*=smb-rebrand-gn-header])~div.document-body{padding-top:5.5rem}}@media (min-width: 91.875rem){#globalnav-header[data-nav-version*=legacy]~.document-body{padding-top:5.5rem}}.document-footer .disclosure{padding-bottom:100px;grid-column-start:3;grid-column-end:-3}@media (min-width: 48rem){.document-footer .disclosure{padding-bottom:60px}}.document-footer .disclosure-item{grid-column-start:3;grid-column-end:-3}@media only screen and (min-width: 140rem){.document-body:not(.full-width){border-style:solid;border-width:0 1px 0 1px;border-color:#dbd8d0}}#globalnav-footer-wrapper .disclosure{opacity:1!important}
-</style>
-  </head>
-  <body>
-    <script id="aep-placeholder" nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.ppAepDataLayer = window.ppAepDataLayer || {}; window.ppAepDataLayer.target = [];</script>
-    <div id="root"><div class="document-body-root" data-hosted-by="ppcmsnodeweb" dir="ltr" data-source="1"><div><!-- [regionalbanner:fragment] --></div><div id="globalnav-header" data-nav-version="rebrand" data-nav-sub-version="v1"><header data-building-block="organism" translate="no" data-theme="ppe" class="_gn-header_ye2x1_1172 _smb-rebrand-gn-header_ye2x1_2079 _ppe_ye2x1_2 _supreme-font_ye2x1_978 _compact-grid_ye2x1_956 _gn-header--compact_ye2x1_2110 _white_ye2x1_3 _gn-header--enhanced_ye2x1_1673"><div class="_gn-header-outer__wrapper_ye2x1_2039"><div class="_gn-header__wrapper_ye2x1_2482 _container_ye2x1_1616"><div class="_pypl-logo-wrapper_ye2x1_1821 undefined _paypal-logo-desktop_ye2x1_2579 _paypal-logo-mobile_ye2x1_2608"><a href="/us/home?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Logo-PayPal logo&quot;,&quot;event_name&quot;:&quot;ppcom_header_logo_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" data-testid="header-logo" style="background-image: url(https://www.paypalobjects.com/marketing/web/logos/paypal-mark-color_new.svg);" class="_pypl-logo_2a3j6_4 _pypl-logo_ye2x1_1821">PayPal logo</a></div><nav id="main-menu" class="_main-menu_ye2x1_1153"><ul class="_main-menu__sublist_ye2x1_2509"><li class="_sublist-cta-wrapper_ye2x1_1430"><a href="/us/webapps/mpp/account-selection?locale.x=en_US" data-testid="legacy-mobile-signup" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Sign Up&quot;,&quot;event_name&quot;:&quot;ppcom_header_signup_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" role="link" class="_pypl-btn_1q7vs_1 _pypl-btn--outline-white_1q7vs_39 _sublist-cta_ye2x1_1430">Sign Up</a></li></ul><div class="_main-menu-wrapper_ye2x1_5980"><ul class="_main-menu-list_ye2x1_2119"><li><button id="5kfmFZA8oQqqp7LiFQxY1d" aria-controls="submenu-5kfmFZA8oQqqp7LiFQxY1d" aria-expanded="false" data-text="Personal" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Personal&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_glnv-header__subnav-control_ye2x1_1213 _main-link_ye2x1_1196">Personal<span class="_glnv-header__subnav-control-icon_ye2x1_2147"></span></button><div id="submenu-5kfmFZA8oQqqp7LiFQxY1d" aria-label="Personal" role="region" class="_submenu-wrapper_ye2x1_1292"><div id="header-5kfmFZA8oQqqp7LiFQxY1d" class="_container_ye2x1_1616"><div class="_gn-header__subnav_ye2x1_1303"><div class="_segment-title-container_ye2x1_2364"><h2><a href="/us/digital-wallet/how-paypal-works?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Nav-Personal-PayPal for You&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_segment-title-link_ye2x1_2369 _segment-title-link-href_ye2x1_3198">PayPal for You<span class="_segment-title-link_href_arrow_ye2x1_3173"></span></a></h2></div><div class="_dw-submenu-container_ye2x1_2156"><div class="_wd-75_ye2x1_2160 _wd-75-4_ye2x1_3461"><div class="_submenu-col_ye2x1_1349 _wd-col-4_ye2x1_3422"><h3 class="submenu-col__header-div"><a href="/us/digital-wallet/ways-to-pay?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-col__header_ye2x1_1427 _submenu-col__header_with_href_ye2x1_3308"><span class="_submenu-col__header_text_container_ye2x1_5350">Shopping &amp; Rewards<span class="_submenu-col__header_with_href_arrow_ye2x1_5397"></span></span></a></h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 SHOPBUY"><a href="/us/digital-wallet/ways-to-pay/buy-now-pay-later?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards-Buy Now, Pay Later&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Buy Now, Pay Later " class="_submenu-navlink_ye2x1_2172">Buy Now, Pay Later</a></li><li class="_link-type_with_href_ye2x1_2172 SHOPBUY"><a href="/us/digital-wallet/rewards?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards-Rewards&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Rewards " class="_submenu-navlink_ye2x1_2172">Rewards</a></li><li class="_link-type_with_href_ye2x1_2172 SHOPBUY"><a href="/us/digital-wallet/ways-to-pay/credit-services?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards-PayPal credit and cards&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="PayPal credit and cards " class="_submenu-navlink_ye2x1_2172">PayPal credit and cards</a></li><li class="_link-type_with_href_ye2x1_2172 SHOPBUY"><a href="/us/digital-wallet/manage-money/paypal-debit-card?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards-PayPal Debit Card&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="PayPal Debit Card " class="_submenu-navlink_ye2x1_2172">PayPal Debit Card</a></li><li class="_link-type_with_href_ye2x1_2172 SHOPBUY"><a href="/us/digital-wallet/ways-to-pay/checkout-with-paypal?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Shopping &amp; Rewards-Paying with PayPal&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Paying with PayPal " class="_submenu-navlink_ye2x1_2172">Paying with PayPal</a></li></ul></div><div class="_submenu-col_ye2x1_1349 _wd-col-4_ye2x1_3422"><h3 class="submenu-col__header-div"><a href="/us/digital-wallet/send-receive-money?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-col__header_ye2x1_1427 _submenu-col__header_with_href_ye2x1_3308"><span class="_submenu-col__header_text_container_ye2x1_5350">Send &amp; Receive<span class="_submenu-col__header_with_href_arrow_ye2x1_5397"></span></span></a></h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 SENDRECEIVE"><a href="/us/digital-wallet/send-receive-money/send-money?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive-Send money&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Send money " class="_submenu-navlink_ye2x1_2172">Send money</a></li><li class="_link-type_with_href_ye2x1_2172 SENDRECEIVE"><a href="/us/digital-wallet/send-receive-money/request-money?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive-Request money&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Request money " class="_submenu-navlink_ye2x1_2172">Request money</a></li><li class="_link-type_with_href_ye2x1_2172 SENDRECEIVE"><a href="/us/digital-wallet/send-receive-money/pool-money?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive-Pool money&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Pool money " class="_submenu-navlink_ye2x1_2172">Pool money</a></li><li class="_link-type_with_href_ye2x1_2172 SENDRECEIVE"><a href="/us/digital-wallet/send-receive-money/giving?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive-Donate&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Donate " class="_submenu-navlink_ye2x1_2172">Donate</a></li><li class="_link-type_with_href_ye2x1_2172 SENDRECEIVE"><a href="/us/digital-wallet/send-receive-money/start-selling?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Send &amp; Receive-Start selling&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Start selling " class="_submenu-navlink_ye2x1_2172">Start selling</a></li></ul></div><div class="_submenu-col_ye2x1_1349 _wd-col-4_ye2x1_3422"><h3 class="submenu-col__header-div"><a href="/us/digital-wallet/manage-money?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-col__header_ye2x1_1427 _submenu-col__header_with_href_ye2x1_3308"><span class="_submenu-col__header_text_container_ye2x1_5350">Manage Your Money<span class="_submenu-col__header_with_href_arrow_ye2x1_5397"></span></span></a></h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/ways-to-pay/add-payment-method?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Add cards and banks&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Add cards and banks " class="_submenu-navlink_ye2x1_2172">Add cards and banks</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/security-and-protection?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Security and safety&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Security and safety " class="_submenu-navlink_ye2x1_2172">Security and safety</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/manage-money/direct-deposit?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Set up Direct Deposit&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Set up Direct Deposit " class="_submenu-navlink_ye2x1_2172">Set up Direct Deposit</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/manage-money/add-cash?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Add cash&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Add cash " class="_submenu-navlink_ye2x1_2172">Add cash</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/manage-money/pay-bills?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Pay bills&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Pay bills " class="_submenu-navlink_ye2x1_2172">Pay bills</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/manage-money/start-saving?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Savings and goals&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Savings and goals " class="_submenu-navlink_ye2x1_2172">Savings and goals</a></li><li class="_link-type_with_href_ye2x1_2172 MANAGEMONEY"><a href="/us/digital-wallet/manage-money/crypto?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Manage Your Money-Cryptocurrency&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Cryptocurrency " class="_submenu-navlink_ye2x1_2172">Cryptocurrency</a></li></ul></div></div><div class="_wd-25_ye2x1_4013 _wd-25-4_ye2x1_4077"><div class="_submenu-cards--dark_ye2x1_3794"><ul class="_submenu-col_ye2x1_1349 _dw-submenu-cards_ye2x1_2168 _dw-submenu-cards-3_ye2x1_5879"><li data-testid="submenu-card" class="_submenu-card_ye2x1_2168"><a href="/us/digital-wallet?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Get the App&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-card--link_ye2x1_2443"><img data-src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-app.svg" alt="Get the App" /><div><div class="_text_ye2x1_2168">Get the App</div></div></a></li><li data-testid="submenu-card" class="_submenu-card_ye2x1_2168"><a href="/us/digital-wallet/how-paypal-works?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-How PayPal Works&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-card--link_ye2x1_2443"><img data-src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/personal-how-it-works.svg" alt="How PayPal works" /><div><div class="_text_ye2x1_2168">How PayPal Works</div></div></a></li><li data-testid="submenu-card" class="_submenu-card_ye2x1_2168"><a href="/us/money-hub?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Personal-Money Hub&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-card--link_ye2x1_2443"><img data-src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/smart-blue.svg" alt="Money Hub" /><div><div class="_text_ye2x1_2168">Money Hub</div></div></a></li></ul></div></div></div></div></div></div></li><li><button id="3KgLe8jd04LdVBrvITE9YZ" aria-controls="submenu-3KgLe8jd04LdVBrvITE9YZ" aria-expanded="false" data-text="Business" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Business&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_glnv-header__subnav-control_ye2x1_1213 _main-link_ye2x1_1196">Business<span class="_glnv-header__subnav-control-icon_ye2x1_2147"></span></button><div id="submenu-3KgLe8jd04LdVBrvITE9YZ" aria-label="Business" role="region" class="_submenu-wrapper_ye2x1_1292"><div id="header-3KgLe8jd04LdVBrvITE9YZ" class="_container_ye2x1_1616"><div class="_gn-header__subnav_ye2x1_1303"><div class="_segment-title-container_ye2x1_2364"><h2><a href="/us/business?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Nav-Business-PayPal Open&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_segment-title-link_ye2x1_2369 _segment-title-link-href_ye2x1_3198">PayPal Open<span class="_segment-title-link_href_arrow_ye2x1_3173"></span></a></h2><p class="_subtext_ye2x1_3241">The platform for all business</p></div><div class="_dw-submenu-container_ye2x1_2156"><div class="_wd-75_ye2x1_2160 _wd-75-3_ye2x1_3460"><div class="_submenu-col_ye2x1_1349 _wd-col-3_ye2x1_3404"><h3 class="_submenu-col__header_ye2x1_1427">Business Types </h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="/us/enterprise?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Enterprises&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Enterprises " class="_submenu-navlink_ye2x1_2172">Enterprises</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="/us/business/small-business?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Small Businesses&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Small Businesses " class="_submenu-navlink_ye2x1_2172">Small Businesses</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="/us/business/solopreneurs?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Solopreneurs&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Solopreneurs " class="_submenu-navlink_ye2x1_2172">Solopreneurs</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="/us/enterprise/become-a-partner?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Partners&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Partners " class="_submenu-navlink_ye2x1_2172">Partners</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="/us/business/platform-payment-solution?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Platforms&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Platforms " class="_submenu-navlink_ye2x1_2172">Platforms</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="https://developer.paypal.com/home/?_ga=2.145026609.44035625.1744498317-1148914753.1731593727" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Developers&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Developers " class="_submenu-navlink_ye2x1_2172">Developers</a></li><li class="_link-type_with_href_ye2x1_2172 RESOURCES"><a href="https://www.paypal.com/us/advertiser?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Types-Advertisers&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Advertisers " class="_submenu-navlink_ye2x1_2172">Advertisers</a></li></ul></div><div class="_submenu-col_ye2x1_1349 _wd-col-3_ye2x1_3404"><h3 class="submenu-col__header-div"><a href="/us/business/accept-payments?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-col__header_ye2x1_1427 _submenu-col__header_with_href_ye2x1_3308"><span class="_submenu-col__header_text_container_ye2x1_5350">Accept Payments<span class="_submenu-col__header_with_href_arrow_ye2x1_5397"></span></span></a></h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/checkout?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Online Checkout&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Online Checkout " class="_submenu-navlink_ye2x1_2172">Online Checkout</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/installment-payments?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Installment Payments&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Installment Payments " class="_submenu-navlink_ye2x1_2172">Installment Payments</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/guest-checkout?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Guest Checkout&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Guest Checkout " class="_submenu-navlink_ye2x1_2172">Guest Checkout</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/accept-venmo?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Accept Venmo&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Accept Venmo " class="_submenu-navlink_ye2x1_2172">Accept Venmo</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/pos-system?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-POS System&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="POS System " class="_submenu-navlink_ye2x1_2172">POS System</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/invoice?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Invoicing&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Invoicing " class="_submenu-navlink_ye2x1_2172">Invoicing</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/payment-links?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Payment Links&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Payment Links " class="_submenu-navlink_ye2x1_2172">Payment Links</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/enterprise/payment-processing?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Enterprise Payments&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Enterprise Payments " class="_submenu-navlink_ye2x1_2172">Enterprise Payments</a></li><li class="_link-type_with_href_ye2x1_2172 ACCEPTPAYMENTS"><a href="/us/business/accept-payments/tap-to-pay?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Accept Payments-Tap to Pay&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Tap to Pay " class="_submenu-navlink_ye2x1_2172">Tap to Pay</a></li></ul></div><div class="_submenu-col_ye2x1_1349 _wd-col-3_ye2x1_3404"><h3 class="_submenu-col__header_ye2x1_1427">Risk &amp; Operations </h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/business/make-payments?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Make Payments&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Make Payments " class="_submenu-navlink_ye2x1_2172">Make Payments</a></li><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/business/operations/risk-management?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Risk Management&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Risk Management " class="_submenu-navlink_ye2x1_2172">Risk Management</a></li><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/enterprise/fraud-protection-advanced?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Fraud Protection&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Fraud Protection " class="_submenu-navlink_ye2x1_2172">Fraud Protection</a></li><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/business/operations/reporting-tools?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Reporting Tools&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Reporting Tools " class="_submenu-navlink_ye2x1_2172">Reporting Tools</a></li><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/business/operations/shipping?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Shipping&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Shipping " class="_submenu-navlink_ye2x1_2172">Shipping</a></li><li class="_link-type_with_href_ye2x1_2172 RISKMANAGEMENT&amp;OPERATIONS "><a href="/us/business/ai?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Risk &amp; Operations-Agentic Commerce&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Agentic Commerce " class="_submenu-navlink_ye2x1_2172">Agentic Commerce</a></li></ul></div><div class="_submenu-col_ye2x1_1349 _wd-col-3_ye2x1_3404"><h3 class="submenu-col__header-div"><a href="/us/business/financial-services?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Financial Services&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-col__header_ye2x1_1427 _submenu-col__header_with_href_ye2x1_3308"><span class="_submenu-col__header_text_container_ye2x1_5350">Financial Services<span class="_submenu-col__header_with_href_arrow_ye2x1_5397"></span></span></a></h3><ul class="_accordion-close_ye2x1_4157"><li class="_link-type_with_href_ye2x1_2172 FINANCIALSERVICES"><a href="/us/business/financial-services/working-capital-loan?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Financial Services-Working Capital Loan&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Working Capital Loan " class="_submenu-navlink_ye2x1_2172">Working Capital Loan</a></li><li class="_link-type_with_href_ye2x1_2172 FINANCIALSERVICES"><a href="/us/business/financial-services/small-business-loan?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Financial Services-Business Loan&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Business Loan " class="_submenu-navlink_ye2x1_2172">Business Loan</a></li><li class="_link-type_with_href_ye2x1_2172 FINANCIALSERVICES"><a href="/us/business/financial-services/debit-card?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Financial Services-Business Debit Card&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Business Debit Card " class="_submenu-navlink_ye2x1_2172">Business Debit Card</a></li></ul></div></div><div class="_wd-25_ye2x1_4013 _wd-25-3_ye2x1_4076"><div class="_submenu-cards--dark_ye2x1_3794"><ul class="_submenu-col_ye2x1_1349 _dw-submenu-cards_ye2x1_2168 _submenu-cards--margin_ye2x1_3935"><li data-testid="submenu-card" class="_submenu-card_ye2x1_2168"><a href="/us/business/open-business-account?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Get Started&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-card--link_ye2x1_2443"><img data-src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/business-start.svg" alt="Get Started" /><div><div class="_text_ye2x1_2168">Get Started</div></div></a></li><li data-testid="submenu-card" class="_submenu-card_ye2x1_2168"><a href="/us/business/fees?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Fees&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_submenu-card--link_ye2x1_2443"><img data-src="https://www.paypalobjects.com/marketing/web/US/en/rebrand/pictograms/business-pricing.svg" alt="Fees" /><div><div class="_text_ye2x1_2168">Fees</div></div></a></li></ul><ul class="_submenu-col_ye2x1_1349 _dw-submenu-cards_ye2x1_2168 _submenu-cards--links-section_ye2x1_2172"><li class="_link-type_with_href_ye2x1_2172"><a href="/us/business/accept-payments/payment-methods?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Payment Methods&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Payment Methods " class="_submenu-navlink_ye2x1_2172">Payment Methods</a></li><li class="_link-type_with_href_ye2x1_2172"><a href="/us/business/platforms-and-marketplaces/solutions?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-3rd Party Integrations&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="3rd Party Integrations " class="_submenu-navlink_ye2x1_2172">3rd Party Integrations</a></li><li class="_link-type_with_href_ye2x1_2172"><a href="/us/brc/?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Business Resource Center&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Business Resource Center " class="_submenu-navlink_ye2x1_2172">Business Resource Center</a></li><li class="_link-type_with_href_ye2x1_2172"><a href="/us/webapps/mpp/campaigns/paypal-events?locale.x=en_US" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Business-Events&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="Events " class="_submenu-navlink_ye2x1_2172">Events</a></li></ul></div></div></div></div></div></div></li><li><button id="afjNhtseg9CdMaQfAzMdWj" aria-controls="submenu-afjNhtseg9CdMaQfAzMdWj" aria-expanded="false" data-text="Advertiser" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Advertiser&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_glnv-header__subnav-control_ye2x1_1213 _main-link_ye2x1_1196">Advertiser<span class="_glnv-header__subnav-control-icon_ye2x1_2147"></span></button><div id="submenu-afjNhtseg9CdMaQfAzMdWj" aria-label="Advertiser" role="region" class="_submenu-wrapper_ye2x1_1292"><div id="header-afjNhtseg9CdMaQfAzMdWj" class="_container_ye2x1_1616"><div class="_gn-header__subnav_ye2x1_1303"><div class="_segment-title-container_ye2x1_2364"><h2><a href="https://www.paypal.com/us/advertiser" data-pa-click="{&quot;link&quot;:&quot;Header-Nav-Advertiser-PayPal Ads&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" tabIndex="0" class="_segment-title-link_ye2x1_2369 _segment-title-link-href_ye2x1_3198">PayPal Ads<span class="_segment-title-link_href_arrow_ye2x1_3173"></span></a></h2></div><div class="_dw-submenu-container_ye2x1_2156"><div class="_wd-75_ye2x1_2160 _wd-75-12_ye2x1_4010"><div class="_submenu-col_ye2x1_1349 _wd-col-12_ye2x1_3433"><ul class="_accordion-open_ye2x1_2409 _no-group_ye2x1_4163"><li class="_link-type_with_href_ye2x1_2172"><a href="https://www.paypal.com/us/advertiser/about" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Advertiser-PayPal Ads-About PayPal Ads&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="About PayPal Ads " class="_submenu-navlink_ye2x1_2172">About PayPal Ads</a></li><li class="_link-type_with_href_ye2x1_2172"><a href="https://www.paypal.com/us/advertiser/solutions" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Advertiser-PayPal Ads-PayPal Ads Solutions&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="PayPal Ads Solutions " class="_submenu-navlink_ye2x1_2172">PayPal Ads Solutions</a></li><li class="_link-type_with_href_ye2x1_2172"><a href="https://www.paypal.com/us/advertiser/resources" tabIndex="0" data-pa-click="{&quot;link&quot;:&quot;Header-Subnav-Advertiser-PayPal Ads-PayPal Ads Resources&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" aria-label="PayPal Ads Resources " class="_submenu-navlink_ye2x1_2172">PayPal Ads Resources</a></li></ul></div></div><div class="_wd-25_ye2x1_4013"></div></div></div></div></div></li><li><a id="2Coq4lwsr6A2vPJhmWIFW0" href="https://developer.paypal.com/home/" aria-label="Developer" data-text="Developer" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Developer&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_main-link_ye2x1_1196">Developer</a></li></ul><ul class="_main-menu-list_ye2x1_2119"><li><a id="1lrVWz9aCIu8eDUpf1ycuY" href="/us/cshelp/personal?locale.x=en_US" aria-label="Help" data-text="Help" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Help&quot;,&quot;event_name&quot;:&quot;ppcom_header_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_main-link_ye2x1_1196">Help</a></li></ul></div></nav><div data-testid="header-buttons" id="_header-buttons_ye2x1_1694" class="_header-buttons_ye2x1_1694 _mobile-nav-btn__placeholder-padding_ye2x1_4338"><div><a href="/signin?locale.x=en_US" target="_self" id="_ul-btn_ye2x1_1" role="link" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Log In&quot;,&quot;event_name&quot;:&quot;ppcom_header_login_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_pypl-btn_ye2x1_1517 _pypl-btn--small_ye2x1_1690 _pypl-btn--outline-white_ye2x1_1694">Log In</a><a href="/us/webapps/mpp/account-selection?locale.x=en_US" target="_self" id="_signup-button_ye2x1_1" role="link" data-pa-click="{&quot;link&quot;:&quot;Header-MainMenu-Sign Up&quot;,&quot;event_name&quot;:&quot;ppcom_header_signup_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_pypl-btn_ye2x1_1517 _pypl-btn--outline-white_ye2x1_1694 _pypl-btn--small_ye2x1_1690 _pypl-btn--outline-white_ye2x1_1694 _sublistMobile_ye2x1_2505">Sign Up</a></div></div></div></div><div id="dw-overlay-menu-open" class="_dw-overlay-menu-open_ye2x1_2079"></div></header></div><div class="document-body" data-testid="document-body-element" role="main"><!--$--><section class="hero hero-layout-featured hero-no-graphic-shapes section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-pxchwr"><div class="hero-content ppcmsnodeweb-18byuhn"><div class="text-group text-group-alignment-center" style="opacity:1;transform:none"><div style="opacity:1;transform:none"><div class="text-group-eyebrow-container"><h1 class="text-group-eyebrow-text body-text-style body-text-size-body-bold">Invoicing</h1>
-</div></div><div style="opacity:1;transform:none"><h2 class="text-group-headline heading-text-style heading-text-size-headline-3">Send invoices in seconds.</h2><h2 class="text-group-headline heading-text-style heading-text-size-headline-3">Get paid fast.</h2>
-</div><div style="opacity:1;transform:none"><p class="text-group-paragraph body-text-style body-text-size-body">Create and send invoices with ease from anywhere. Your customers can pay them instantly. Even if they don't have a PayPal account.</p>
-</div><div class="text-group-content-button-group" style="opacity:1;transform:none"><div class="button-group button-group-align-center button-group-legal-position-bottom text-group-action-group"><div class="button-group-alignment-center"><a class="button-type-primary button-size-dynamic ppcmsnodeweb-zna116-button_base-text_button_lg" data-ppui-info="buttons_7.4.0" aria-label="Sign Up" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:0:0:Primary:SignUp_CTA:clicked&quot;,&quot;event_name&quot;:&quot;top_0_0_Primary_SignUp_CTA_clicked&quot;}" href="https://www.paypal.com/us/bizsignup/entry?product=invoicing" componentType="Button">Sign Up</a><a class="button-type-secondary button-size-dynamic ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary" data-ppui-info="buttons_7.4.0" aria-label="Send Invoice" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:0:0:Secondary:sell-invoice:clicked&quot;,&quot;event_name&quot;:&quot;top_0_0_Secondary_sell-invoice_clicked&quot;}" href="https://www.paypal.com/invoice/s/create/" componentType="Button">Send Invoice</a></div><div class="button-group-legal-text disclosure ppe ppe-palette" componentType="Disclosure"><div class="disclosure-paragraph multi-line-text multi-line-text-wo-sup body-text-style body-text-size-caption"><div class="multi-line-text-paragraph"><span>Get in touch, </span><a href="tel:+18667843639" target="_blank" rel="noopener noreferrer" class="html-text-renderer-link multi-line-text-paragraph" data-pa-click="{&quot;link&quot;:&quot;Hero-Link-legalText-1-866-784-3639&quot;,&quot;event_name&quot;:&quot;smb_text_link_clicked&quot;}">1-866-784-3639</a><span>.</span></div>
-</div></div></div></div></div></div><div class="hero-media ppcmsnodeweb-j3j4on"><div class="hero-media-container"><div class="hero-media-frame hero-media-frame-onload-animation image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:auto;opacity:1;transform:none"><picture><source type="image/webp" media="(max-width: 41rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=300&amp;format=webp 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=600&amp;format=webp 600w"/><source type="image/webp" media="(min-width: 41.0625rem) and (max-width: 63.9375rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=300&amp;format=webp 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=600&amp;format=webp 600w"/><source type="image/webp" media="(min-width: 64rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=300&amp;format=webp 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=600&amp;format=webp 600w"/><source type="image/avif" media="(max-width: 41rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=300&amp;format=avif 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=600&amp;format=avif 600w"/><source type="image/avif" media="(min-width: 41.0625rem) and (max-width: 63.9375rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=300&amp;format=avif 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=600&amp;format=avif 600w"/><source type="image/avif" media="(min-width: 64rem)" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=300&amp;format=avif 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg?quality=40&amp;width=600&amp;format=avif 600w"/><img alt="Woman working on laptop with invoice overlay showing $220 due and options to pay with PayPal, Venmo, or credit or debit card" aria-hidden="false" src="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=300" srcSet="https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=300 300w,https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg?quality=40&amp;width=600 600w" fetchpriority="high"/></picture></div></div></div></section><!--/$--><!--$--><div class="white-plate sub-nav sub-nav-position-fixed sub-nav-hidden grid ppe ppe-palette grid-compact ppcmsnodeweb-1lc6yy1" id="SubNav" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="sub-nav-grid-item ppcmsnodeweb-b02ds2"><nav class="sub-nav-container" style="overflow:visible"><div class="sub-nav-title-wrapper"></div><div class="sub-nav-links" style="justify-content:end;overflow:hidden" aria-hidden="true"><div class="sub-nav-links-motion-wrapper" style="opacity:0;visibility:hidden"></div></div><div class="sub-nav-cta-motion-wrapper-container" style="width:0px;overflow:hidden"><div class="sub-nav-cta-motion-wrapper" style="opacity:0;visibility:hidden"><ul class="sub-nav-items-list sub-nav-cta-list" aria-hidden="false"><li class="sub-nav-cta-list-item"><a class="sub-nav-cta-item button-type-primary button-size-small ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm" data-ppui-info="buttons_7.4.0" aria-label="Sign Up" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:1:0:Primary:SignUp_CTA:clicked&quot;,&quot;event_name&quot;:&quot;top_1_0_Primary_SignUp_CTA_clicked&quot;}" href="https://www.paypal.com/us/bizsignup/entry?product=invoicing" componentType="Button">Sign Up</a></li><li class="sub-nav-cta-list-item"><a class="sub-nav-cta-item button-type-secondary button-size-small ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary" data-ppui-info="buttons_7.4.0" aria-label="Send Invoice" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:1:0:Secondary:sell-invoice:clicked&quot;,&quot;event_name&quot;:&quot;top_1_0_Secondary_sell-invoice_clicked&quot;}" href="https://www.paypal.com/invoice/s/create/" componentType="Button">Send Invoice</a></li></ul></div></div><div class="sub-nav-popup" id="sub-nav-popup" style="opacity:0;transform:translateX(0rem) translateY(1.25rem) scale(1) translateZ(0)"><hr class="divider divider-orientation-horizontal sub-nav-divider-horizontal"/><button data-pa-click="{&quot;link&quot;:&quot;SubNav-Button-Popup-close button&quot;,&quot;event_name&quot;:&quot;smb_button_clicked&quot;}" aria-label="" type="button" class="nav-button nav-button-type-icon-button sub-nav-popup-close-btn"><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" aria-label="" class="close-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9997 11.1308L7.25746 6.38877C6.74102 5.87235 5.90372 5.87237 5.3873 6.38881C4.87088 6.90524 4.8709 7.74254 5.38734 8.25896L10.1295 13.0009L5.38752 17.7427C4.87108 18.2591 4.87107 19.0964 5.38749 19.6128C5.90391 20.1293 6.7412 20.1293 7.25764 19.6129L11.9997 14.871L16.7417 19.6128C17.2581 20.1293 18.0954 20.1292 18.6118 19.6128C19.1282 19.0964 19.1282 18.2591 18.6118 17.7427L13.8698 13.0009L18.612 8.25896C19.1284 7.74254 19.1284 6.90525 18.612 6.38881C18.0956 5.87237 17.2583 5.87235 16.7418 6.38877L11.9997 11.1308Z" fill="#001C64"></path></svg></button></div></nav></div><div class="sub-nav-grid-item-stacked-cta ppcmsnodeweb-b02ds2" height="0" style="height:0;opacity:0;display:none;visibility:hidden"><ul class="sub-nav-items-list sub-nav-cta-list" aria-hidden="false"><li class="sub-nav-cta-list-item"><a class="sub-nav-cta-item button-type-primary button-size-small ppcmsnodeweb-z7uojr-button_base-text_button_lg-size_sm-text_button_sm" data-ppui-info="buttons_7.4.0" aria-label="Sign Up" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:1:0:Primary:SignUp_CTA:clicked&quot;,&quot;event_name&quot;:&quot;top_1_0_Primary_SignUp_CTA_clicked&quot;}" href="https://www.paypal.com/us/bizsignup/entry?product=invoicing" componentType="Button">Sign Up</a></li><li class="sub-nav-cta-list-item"><a class="sub-nav-cta-item button-type-secondary button-size-small ppcmsnodeweb-rlaxvp-button_base-text_button_lg-size_sm-text_button_sm-secondary" data-ppui-info="buttons_7.4.0" aria-label="Send Invoice" target="_self" data-pa-click="{&quot;link&quot;:&quot;top:1:0:Secondary:sell-invoice:clicked&quot;,&quot;event_name&quot;:&quot;top_1_0_Secondary_sell-invoice_clicked&quot;}" href="https://www.paypal.com/invoice/s/create/" componentType="Button">Send Invoice</a></li></ul></div></div><!--/$--><!--$--><section class="card-content-section card-wrapped-content-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-qah9zk" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="ppcmsnodeweb-1vs64uy"><div class="card-wrapped-content card-wrapped-content-max-columns-layout-3 card-wrapped-content-textgroup-auto-alignment-default"><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-3 noImage card-content-section-item-wrapped-cards-3"><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div class="text-group-data-item-wrapper" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="data-item data-item-column data-item-start data-item-metric-variant data-item-top-spacer data-item-bottom-spacer text-group-data-item"><div class="data-item-wrapper-number-group"><div class="number-group data-item-metric-number-group"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-3">77</span>
-<span class="number-group-number-prefix heading-text-style heading-text-size-headline-5">%</span></strong></div></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-3">77</span>
-<span class="number-group-number-prefix heading-text-style heading-text-size-headline-5">%</span></strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">of PayPal invoices are paid within one day of sending<sup>1</sup></div>
-</div></div></div></div></div></div></div><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-3 noImage card-content-section-item-wrapped-cards-3"><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div class="text-group-data-item-wrapper" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="data-item data-item-column data-item-start data-item-metric-variant data-item-bottom-spacer text-group-data-item"><div class="data-item-wrapper-number-group"><div class="number-group data-item-metric-number-group"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-3">755M</span>
-<span class="number-group-number-prefix heading-text-style heading-text-size-headline-5">+</span></strong></div></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-3">755M</span>
-<span class="number-group-number-prefix heading-text-style heading-text-size-headline-5">+</span></strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">PayPal invoices sent globally<sup>2</sup></div>
-</div></div></div></div></div></div></div><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-3 noImage card-content-section-item-wrapped-cards-3"><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div class="text-group-data-item-wrapper" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="data-item data-item-column data-item-start data-item-metric-variant data-item-top-spacer data-item-bottom-spacer text-group-data-item"><div class="data-item-wrapper-number-group"><div class="number-group data-item-metric-number-group"><strong class="number-group-number"><span class="number-group-number-suffix heading-text-style heading-text-size-headline-5">$</span><span class="number-group-number-value heading-text-style heading-text-size-headline-3">144B</span>
-</strong></div></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-suffix heading-text-style heading-text-size-headline-5">$</span><span class="number-group-number-value heading-text-style heading-text-size-headline-3">144B</span>
-</strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">paid globally through PayPal invoices<sup>2</sup></div>
-</div></div></div></div></div></div></div></div></div></section><!--/$--><!--$--><section class="feature-column-split section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-1dz0bod" id="FeatureColumnSplit" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner ppcmsnodeweb-1i7zn3g"><div class="text-group text-group-alignment-center" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Invoicing that works for you</h2>
-</div></div></div><div class="feature-column-split-media-container ppcmsnodeweb-p608om"><div class="image-frame image-frame-no-rounded-corners" style="min-height:12.5rem;min-width:auto;opacity:0;transform:translateX(0rem) translateY(2.25rem) scale(1) translateZ(0)"></div></div><div class="feature-column-split-features-container ppcmsnodeweb-yqyna4"><div><div class="text-group text-group-alignment-start feature-column-item-text-group" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-subheading heading-text-style heading-text-size-title">Enjoy smoother invoicing</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Create, send, and track invoices in seconds with an easy-to-use interface and smart automation, saving you time and effort.​</p>
-</div></div></div><div><div class="text-group text-group-alignment-start feature-column-item-text-group" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-subheading heading-text-style heading-text-size-title">Build customer trust</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Stay true to your brand with customizable, professional-looking invoices.</p>
-</div></div></div><div><div class="text-group text-group-alignment-start feature-column-item-text-group" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-subheading heading-text-style heading-text-size-title">Get your money faster</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Give your customers the flexible payments they want so you can get paid faster and see money in your account sooner.</p>
-</div></div></div></div></section><!--/$--><!--$--><section class="text-section section-wrapper neutral-100-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-2l5x48" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner text-section-alignment-12-col-start-to-end ppcmsnodeweb-6fl9l8"><div class="text-group text-group-alignment-start" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Create. Get paid. Repeat.</h2>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Get a preview of what your invoice will look like as you edit. Plus, learn how to save templates
-for future invoices.</p>
-</div><div class="text-group-content-button-group" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="button-group button-group-align-start button-group-legal-position-bottom text-group-action-group"><div class="button-group-alignment-start"><button aria-label="How to create and send an invoice" class="inline-play-button-theme inline-play-button" data-pa-click="{&quot;link&quot;:&quot;TextSection-Primary-How to create and send an invoice&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}" type="button"><svg class="inline-play-button-play-svg" viewBox="0 0 80 81" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="inline-play-button-circle" d="M0 40.5122C0 18.4208 17.9086 0.512207 40 0.512207V0.512207C62.0914 0.512207 80 18.4208 80 40.5122V40.5122C80 62.6036 62.0914 80.5122 40 80.5122V80.5122C17.9086 80.5122 0 62.6036 0 40.5122V40.5122Z" fill="none"></path><path class="inline-play-button-triangle" d="M29.3164 50.4622V32.1643C29.3164 28.8916 32.9162 26.8965 35.6914 28.631L50.3297 37.7799C52.9409 39.4119 52.9409 43.2146 50.3297 44.8466L35.6914 53.9955C32.9162 55.73 29.3164 53.7349 29.3164 50.4622Z" fill="none"></path></svg>How to create and send an invoice</button></div></div></div></div></div></section><!--/$--><!--$--><section class="featured-stack-section neutral-100-plate section-wrapper neutral-100-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-19bh96s"><div class="featured-stack-section-mobile-container ppcmsnodeweb-18byuhn" role="img" aria-label="Desktop screen of a new invoice with customizable options on the left and a summary and preview on the right"><div class="image-parallax-frame image-parallax-frame-outer image-parallax-frame-media-ratio-16-9" componentType="Image"><div class="image-parallax-frame-inner"><div class="_media-frame-template-media-ratio-16-9_1o5bq_86 _media-frame-template-base-media-ratio-16-9_1o5bq_158 _media-frame-template-md-media-ratio-16-9_1o5bq_255 _media-frame-template-lg-media-ratio-16-9_1o5bq_353 image-frame image-frame-no-rounded-corners" style="min-height:100%;min-width:100%;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1.1) translateZ(0)"></div></div></div></div></section><!--/$--><!--$--><section class="card-content-section card-wrapped-content-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-73b4y" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="ppcmsnodeweb-1vs64uy"><div class="card-wrapped-content card-wrapped-content-max-columns-layout-2 card-wrapped-content-textgroup-auto-alignment-default"><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-2 card-content-section-item-wrapped-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-4-3_1o5bq_62 _media-frame-template-base-media-ratio-4-3_1o5bq_134 _media-frame-template-md-media-ratio-4-3_1o5bq_231 _media-frame-template-lg-media-ratio-4-3_1o5bq_329 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-headline heading-text-style heading-text-size-headline-6">Customize invoices to your needs</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Send professional invoices with your company name and logo. Add taxes, discounts, shipping details, or notes for whatever, wherever, and however you sell.</p>
-</div></div></div></div><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-2 card-content-section-item-wrapped-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-4-3_1o5bq_62 _media-frame-template-base-media-ratio-4-3_1o5bq_134 _media-frame-template-md-media-ratio-4-3_1o5bq_231 _media-frame-template-lg-media-ratio-4-3_1o5bq_329 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-headline heading-text-style heading-text-size-headline-6">Accept payments globally</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Take payments in 200+ markets and 24 currencies and offer options including PayPal, Venmo,<sup>3</sup> Apple Pay®, credit and debit cards, and Pay Later.<sup>4</sup></p>
-</div></div></div></div></div></div></section><!--/$--><!--$--><section class="card-content-section card-wrapped-content-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-1ylamc0" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="ppcmsnodeweb-1vs64uy"><div class="card-wrapped-content card-wrapped-content-max-columns-layout-2 card-wrapped-content-textgroup-auto-alignment-default"><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-2 card-content-section-item-wrapped-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-4-3_1o5bq_62 _media-frame-template-base-media-ratio-4-3_1o5bq_134 _media-frame-template-md-media-ratio-4-3_1o5bq_231 _media-frame-template-lg-media-ratio-4-3_1o5bq_329 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-headline heading-text-style heading-text-size-headline-6">Share the way customers prefer</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Send invoices by email, SMS, messaging apps, and social media. Or even a QR code for in-person payments.<sup>5</sup></p>
-</div></div></div></div><div><div class="white-plate card-content-section-item card-content-section-item-card-style-clear card-content-section-item-cards-2 card-content-section-item-wrapped-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-4-3_1o5bq_62 _media-frame-template-base-media-ratio-4-3_1o5bq_134 _media-frame-template-md-media-ratio-4-3_1o5bq_231 _media-frame-template-lg-media-ratio-4-3_1o5bq_329 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-headline heading-text-style heading-text-size-headline-6">Track and manage payments</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Turn estimates into invoices, track payment statuses, and schedule payment reminders. All from your merchant dashboard.</p>
-</div></div></div></div></div></div></section><!--/$--><!--$--><section class="split-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-1dz0bod" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="split-section-item-start-col ppcmsnodeweb-1yn01jz"><div class="split-section-item-media-container split-section-item-ratio-3-4-large"><div class="image-frame image-frame-no-rounded-corners" style="min-height:12.5rem;min-width:auto;opacity:0;transform:translateX(0rem) translateY(2.25rem) scale(1) translateZ(0)"></div></div></div><div class="split-section-item-end-col split-section-item-text ppcmsnodeweb-18vckfn"><div class="text-group text-group-alignment-start split-section-item-auto-height" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Send it on the go</h2>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Use the PayPal app to create and manage invoices from anywhere you do business.<sup>5</sup></p>
-</div><div class="text-group-content-button-group" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="app-download-group app-download-group-variant-qr-code-only text-group-action-group" componentType="TextGroup"><div class="app-download-group-row app-download-group-row-align-start"><div class="app-download-group-col app-download-group-no-cta-col"><div class="app-download-group-image-container qr-code-fallback-large qr-code-show"><div class="qr-code-image-container image-frame image-frame-no-rounded-corners" style="min-height:7.875rem;min-width:7.875rem;opacity:1;transform:none"></div></div><div class="qr-code qr-code-large app-download-group-image-container qr-code-hide"><div class="qr-code-image-container qr-code-appearance-default" role="img" aria-label="QR code for PayPal app"></div></div><div class="app-download-group-cta-desktop-container"></div></div></div><div class="app-download-group-row app-download-group-row-align-start app-download-group-row-mobile"><div class="button-group button-group-align-start button-group-legal-position-bottom app-download-group-cta-group"><div class="button-group-alignment-start"><a class="button-type-secondary button-size-dynamic ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary" data-ppui-info="buttons_7.4.0" aria-label="Get the App" target="_self" data-pa-click="{&quot;link&quot;:&quot;middle:6:0:Secondary:GetTheApp_CTA:clicked&quot;,&quot;event_name&quot;:&quot;middle_6_0_Secondary_GetTheApp_CTA_clicked&quot;}" href="https://paypal.com/mobile-app/dashboard?source=%252Fbusiness%252Faccept-payments%252Finvoice_cta&amp;pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&amp;utm_campaign=&amp;utm_medium=web&amp;utm_source=%2Fbusiness%2Faccept-payments%2Finvoice&amp;cust=&amp;redirect=true" componentType="Button">Get the App</a></div></div></div></div></div></div></div></section><!--/$--><!--$--><section class="text-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-tzcz0h" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner text-section-alignment-12-col-start-to-end ppcmsnodeweb-6fl9l8"><div class="text-group text-group-alignment-start" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Pricing with no surprises</h2>
-</div><div class="text-group-content-button-group" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="button-group button-group-align-start button-group-legal-position-bottom text-group-action-group"><div class="button-group-alignment-start"><a class="button-type-secondary button-size-dynamic ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary" data-ppui-info="buttons_7.4.0" aria-label=" More About Fees" target="_self" data-pa-click="{&quot;link&quot;:&quot;middle:7:0:Secondary:Button_CTA:clicked&quot;,&quot;event_name&quot;:&quot;middle_7_0_Secondary_Button_CTA_clicked&quot;}" href="https://www.paypal.com/us/business/fees" componentType="Button">More About Fees</a></div></div></div></div></div></section><!--/$--><!--$--><section class="pricing-card-horizontal pricing-card-horizontal-stacking section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-12wqsrn" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="pricing-card-grid-container pricing-card-grid-container-3cards pricing-card-grid-container-overflow-12col ppcmsnodeweb-16b6zhx"><div class="pricing-card-item-wrapper pricing-card-item-no-media pricing-card-item-spacing-3col pricing-card-item-3col neutral-100-plate"><h3 class="pricing-card-item-product-name heading-text-style heading-text-size-title">PayPal and Venmo</h3>
-<!-- -->
-<div class="pricing-card-item-data-grid-item"><div class="data-item data-item-column data-item-start data-item-pricing-variant pricing-card-item-data-item"><div class="data-item-wrapper-number-group"></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-4">3.49%</span>
-</strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">+ $0.49 per transaction</div>
-</div></div></div></div><div class="pricing-card-item-action-group"></div></div><div class="pricing-card-item-wrapper pricing-card-item-no-media pricing-card-item-spacing-3col pricing-card-item-3col neutral-100-plate"><h3 class="pricing-card-item-product-name heading-text-style heading-text-size-title">Pay Later</h3>
-<div class="pricing-card-item-data-grid-item"><div class="data-item data-item-column data-item-start data-item-pricing-variant pricing-card-item-data-item"><div class="data-item-wrapper-number-group"></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-4">4.99%</span>
-</strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">+  $0.49 per transaction<sup>6</sup></div>
-</div></div></div></div><div class="pricing-card-item-action-group"></div></div><div class="pricing-card-item-wrapper pricing-card-item-no-media pricing-card-item-spacing-3col pricing-card-item-3col neutral-100-plate"><h3 class="pricing-card-item-product-name heading-text-style heading-text-size-title">Debit cards, credit cards, & Apple Pay<sup>7</sup></h3>
-<div class="pricing-card-item-data-grid-item"><div class="data-item data-item-column data-item-start data-item-pricing-variant pricing-card-item-data-item"><div class="data-item-wrapper-number-group"></div><div class="data-item-content"><div class="data-item-group"><div class="number-group data-item-number-group hide-spacing"><strong class="number-group-number"><span class="number-group-number-value heading-text-style heading-text-size-headline-4">2.99%</span>
-</strong></div></div><div class="data-item-text hide-spacing"><div class="data-item-property-content body-text-style body-text-size-body">+  $0.49 per transaction<sup>6</sup></div>
-</div></div></div></div>
-<div class="pricing-card-item-action-group"></div></div></div><div class="ppcmsnodeweb-1n793pb"><div class="disclosure-text-color disclosure ppe ppe-palette" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="disclosure-paragraph multi-line-text multi-line-text-wo-sup body-text-style body-text-size-caption"><div class="multi-line-text-paragraph">Fees are subject to change.</div>
-</div></div></div></section><!--/$--><!--$--><section class="text-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-mm2646" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner text-section-alignment-12-col-start-to-end ppcmsnodeweb-6fl9l8"><div class="text-group text-group-alignment-start" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Invoicing for whatever you do</h2>
-</div></div></div></section><!--/$--><!--$--><section class="stack-section section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-ubtagy" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="ppcmsnodeweb-y59vw7"><div class="_custom-media-frame_ _custom-media-frame-animation-type-default_s9709_3 _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-16-9_1o5bq_255 _media-frame-template-lg-media-ratio-16-9_1o5bq_353 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(2.25rem) scale(1) translateZ(0)"></div></div></section><!--/$--><!--$--><section class="card-content-section card-content-carousel-section section-wrapper black-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-jlvj8l" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner card-content-section-header ppcmsnodeweb-6fl9l8"><div class="text-group text-group-alignment-start" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-3">One platform. Many ways to get paid.</h2>
-</div></div></div><div class="ppcmsnodeweb-1vs64uy"><div aria-label="Card Carousel" role="region" class="carousel white card-content-section-carousel card-content-section-carousel-slides-per-view-2"><div><div class="carousel-track-container"><div role="presentation" class="carousel-track white"><div role="group" aria-roledescription="slide" aria-label="Slide 1 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Online checkout</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 2 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Payment links</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 3 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Recurring payments</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 4 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Virtual Terminal</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 5 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Guest checkout</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 6 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Installment payments</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 7 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">PayPal Payments</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 8 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">Venmo for business</p>
-</div></div></div></div><div role="group" aria-roledescription="slide" aria-label="Slide 9 of 9" class="carousel-slide" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_slide_button_clicked&quot;}"><div class="black-plate card-content-section-item card-content-section-item-card-style-discover card-content-section-item-cards-2"><div class="card-content-section-item-image _media-frame-template-media-ratio-1-1_1o5bq_38 _media-frame-template-base-media-ratio-1-1_1o5bq_98 _media-frame-template-md-media-ratio-1-1_1o5bq_195 _media-frame-template-lg-media-ratio-1-1_1o5bq_293 image-frame image-frame-no-rounded-corners" style="min-width:auto;min-height:auto;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="text-group text-group-alignment-start card-content-section-item-text" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body-large">POS system</p>
-</div></div></div></div></div><div class="page-nav-container"><button aria-label="Go to page 1 of 9" aria-current="true" aria-disabled="true" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator activeButton" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 2 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 3 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 4 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 5 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 6 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator far-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 7 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 8 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 9 of 9" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator" tabindex="-1" type="button"><span></span></button></div></div><button aria-label="Next slide" aria-disabled="false" class="carousel-button next-button" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_next_button_clicked&quot;}" tabindex="-1" type="button"><svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="arrow-icon" style="transform:scaleX(1);display:block"><rect width="56" height="56" rx="40"></rect><path id="Color" d="M24.2441 14.6195L16.3691 22.4946C16.2049 22.6587 15.9822 22.751 15.75 22.751C15.5178 22.751 15.2951 22.6587 15.1309 22.4946C14.9668 22.3304 14.8745 22.1077 14.8745 21.8755C14.8745 21.6433 14.9668 21.4206 15.1309 21.2564L21.513 14.8755L4.375 14.8755C4.14294 14.8755 3.92038 14.7833 3.75628 14.6192C3.59219 14.4551 3.5 14.2326 3.5 14.0005C3.5 13.7684 3.59219 13.5459 3.75628 13.3818C3.92038 13.2177 4.14294 13.1255 4.375 13.1255L21.513 13.1255L15.1309 6.74455C14.9668 6.58036 14.8745 6.35768 14.8745 6.12549C14.8745 5.89329 14.9668 5.67061 15.1309 5.50642C15.2951 5.34224 15.5178 5.25 15.75 5.25C15.9822 5.25 16.2049 5.34224 16.3691 5.50642L24.2441 13.3814C24.3254 13.4627 24.39 13.5592 24.434 13.6654C24.478 13.7716 24.5007 13.8855 24.5007 14.0005C24.5007 14.1155 24.478 14.2293 24.434 14.3356C24.39 14.4418 24.3254 14.5383 24.2441 14.6195Z" fill="black" transform="translate(14, 14)"></path></svg></button></div><span class="carousel-notification" aria-live="polite" aria-atomic="true">Showing page 1 of 9</span></div></div></section><!--/$--><!--$--><section class="accordion accordion-theme-white section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-4tets9" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="ppcmsnodeweb-tmvyzy"><div class="text-group text-group-alignment-start accordion-headline" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Frequently asked questions</h2>
-</div></div></div><div class="ppcmsnodeweb-tmvyzy"><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row1" aria-controls="accordion-content1" aria-expanded="true" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-What do I need to send a PayPal invoice?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">What do I need to send a PayPal invoice?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content1" aria-labelledby="accordion-row1" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body"><span>All you need is a PayPal account. Creating and sending invoices is included with your account. If you don’t have one, </span><a href="https://www.paypal.com/us/bizsignup/entry?country.x=US&amp;locale.x=en_US&amp;product=invoicing" target="_self" rel="" class="html-text-renderer-link" data-pa-click="{&quot;link&quot;:&quot;Accordion-Link-Paragraph-sign up for an account&quot;,&quot;event_name&quot;:&quot;smb_text_link_clicked&quot;}">sign up for an account</a><span>.</span></p>
-</div></div><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row2" aria-controls="accordion-content2" aria-expanded="false" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-Does my customer need to have an account with PayPal?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">Does my customer need to have an account with PayPal?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content2" aria-labelledby="accordion-row2" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body">No, your customer doesn’t need an account with PayPal. Upon receiving your invoice, your customer will be able to send their payment directly from the invoice.</p>
-</div></div><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row3" aria-controls="accordion-content3" aria-expanded="false" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-Can my customer pay my invoice in installments?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">Can my customer pay my invoice in installments?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content3" aria-labelledby="accordion-row3" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body">Yes, your customers can pay invoices in installments with PayPal Pay Later.<sup>4</sup></p>
-</div></div><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row4" aria-controls="accordion-content4" aria-expanded="false" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-What happens after I send my invoice?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">What happens after I send my invoice?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content4" aria-labelledby="accordion-row4" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body">We'll send an email to your customer that links to your invoice. They can review the invoice and choose to pay you online with their debit or credit card, or using their PayPal Wallet. You'll get an email confirming that we've sent your invoices, and when you've been paid.</p>
-</div></div><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row5" aria-controls="accordion-content5" aria-expanded="false" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-How do I send an invoice with PayPal?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">How do I send an invoice with PayPal?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content5" aria-labelledby="accordion-row5" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body">There are many ways to send PayPal invoices. If you know your customer’s email address, you can add it directly to the invoice and it will be automatically sent with a secure link so they can pay instantly. If you don’t know their email address, you can create a shareable link that you can copy to a clipboard, or share from your phone using a QR code.</p>
-</div></div><div class="accordion-item"><h3 class="accordion-item-heading"><button type="button" class="accordion-item-headline" id="accordion-row6" aria-controls="accordion-content6" aria-expanded="false" data-pa-click="{&quot;link&quot;:&quot;accordionItemHeader-Primary-Can I accept international payments through PayPal Invoicing?&quot;,&quot;event_name&quot;:&quot;smb_button_cta_clicked&quot;}"><span class="accordion-item-headline-container"><span class="accordion-item-headline-text-container"><span class="accordion-item-headline-text heading-text-style heading-text-size-title">Can I accept international payments through PayPal Invoicing?</span>
-</span><span class="accordion-item-icon accordion-item-icon-theme-white"><span class="ppcmsnodeweb-1bk0n6-svg-size_md" data-ppui-info="icons_8.24.1__7.46.3" aria-hidden="true" data-ppui="true"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em" data-ppui="true"><path d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5z" data-ppui="true"></path></svg></span></span></span></button></h3><div id="accordion-content6" aria-labelledby="accordion-row6" role="region" style="height:0px;opacity:0;display:none"><p class="body-text-style body-text-size-body">PayPal Invoicing is available in over 200 markets and 24 currencies. Payment options may vary based on the recipient's location.</p>
-</div></div></div></section><!--/$--><!--$--><section class="article-card-template not-mounted section-wrapper white-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-7gb3x9"><div class="ppcmsnodeweb-y59vw7"><div class="text-group text-group-alignment-start article-card-template-header" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h2 class="text-group-headline heading-text-style heading-text-size-headline-4">Get smarter. Grow faster.</h2>
-</div></div></div><div class="article-card-template-carousel-grid-wrapper ppcmsnodeweb-1d4oewu"><div aria-label="Card Carousel" role="region" class="carousel white article-card-template-container"><div><div class="carousel-track-container"><div role="presentation" class="carousel-track white"><div role="group" aria-roledescription="slide" aria-label="Slide 1 of 5" class="carousel-slide" tabindex="0"><a href="https://www.paypal.com/us/brc/article/create-an-online-invoice-tracker" class="article-card-anchor article-card-template-item" data-pa-click="{&quot;link&quot;:&quot;ArticleCardCarousel-Primary-How to keep track of invoices and payments efficiently&quot;,&quot;event_name&quot;:&quot;smb_standard_card_cta_clicked&quot;}" pa-marked="1" data-article-date="2024-07-02"><div class="article-card-template-image-frame image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:12.8rem;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="standard-card article-card-template-card white-plate"><div><div class="standard-card-list-item"><span class="body-text-style body-text-size-body">Small Business</span><span class="body-text-style body-text-size-body">Payments</span></div><span class="standard-card-headline standard-card-headline-3-line-clamp heading-text-style heading-text-size-title">How to keep track of invoices and payments efficiently</span>
-<div class="standard-card-speaker standard-card-speaker-small"><span class="body-text-style body-text-size-body">Author<span class="standard-card-host-speaker">PayPal Editorial Staff</span></span></div></div><div class="standard-card-list-item standard-card-footer-list-item"><span class="body-text-style body-text-size-body">July 02</span><span class="body-text-style body-text-size-body">Article</span></div></div></a></div><div role="group" aria-roledescription="slide" aria-label="Slide 2 of 5" class="carousel-slide" tabindex="0"><a href="https://www.paypal.com/us/brc/article/how-to-create-an-online-invoice-with-paypal" class="article-card-anchor article-card-template-item" data-pa-click="{&quot;link&quot;:&quot;ArticleCardCarousel-Primary-How to make an invoice on PayPal&quot;,&quot;event_name&quot;:&quot;smb_standard_card_cta_clicked&quot;}" pa-marked="1" data-article-date="2024-07-07"><div class="article-card-template-image-frame image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:12.8rem;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="standard-card article-card-template-card white-plate"><div><div class="standard-card-list-item"><span class="body-text-style body-text-size-body">Small Business</span><span class="body-text-style body-text-size-body">Payments</span></div><span class="standard-card-headline standard-card-headline-3-line-clamp heading-text-style heading-text-size-title">How to make an invoice on PayPal</span>
-<div class="standard-card-speaker standard-card-speaker-small"><span class="body-text-style body-text-size-body">Author<span class="standard-card-host-speaker">PayPal Editorial Staff</span></span></div></div><div class="standard-card-list-item standard-card-footer-list-item"><span class="body-text-style body-text-size-body">July 07</span><span class="body-text-style body-text-size-body">Article</span></div></div></a></div><div role="group" aria-roledescription="slide" aria-label="Slide 3 of 5" class="carousel-slide" tabindex="0"><a href="https://www.paypal.com/us/brc/article/invoice-payment-terms" class="article-card-anchor article-card-template-item" data-pa-click="{&quot;link&quot;:&quot;ArticleCardCarousel-Primary-Invoice payment terms: How to set them for your business&quot;,&quot;event_name&quot;:&quot;smb_standard_card_cta_clicked&quot;}" pa-marked="1" data-article-date="2025-01-02"><div class="article-card-template-image-frame image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:12.8rem;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="standard-card article-card-template-card white-plate"><div><div class="standard-card-list-item"><span class="body-text-style body-text-size-body">Small Business</span><span class="body-text-style body-text-size-body">Payments</span></div><span class="standard-card-headline standard-card-headline-3-line-clamp heading-text-style heading-text-size-title">Invoice payment terms: How to set them for your business</span>
-<div class="standard-card-speaker standard-card-speaker-small"><span class="body-text-style body-text-size-body">Author<span class="standard-card-host-speaker">PayPal Editorial Staff</span></span></div></div><div class="standard-card-list-item standard-card-footer-list-item"><span class="body-text-style body-text-size-body">January 02</span><span class="body-text-style body-text-size-body">Article</span></div></div></a></div><div role="group" aria-roledescription="slide" aria-label="Slide 4 of 5" class="carousel-slide" tabindex="0"><a href="https://www.paypal.com/us/brc/article/einvoicing-solutions-vs-paper-invoicing" class="article-card-anchor article-card-template-item" data-pa-click="{&quot;link&quot;:&quot;ArticleCardCarousel-Primary-What is e-invoicing: Understanding the benefits and differences between other invoice types&quot;,&quot;event_name&quot;:&quot;smb_standard_card_cta_clicked&quot;}" pa-marked="1" data-article-date="2024-07-29"><div class="article-card-template-image-frame image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:12.8rem;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="standard-card article-card-template-card white-plate"><div><div class="standard-card-list-item"><span class="body-text-style body-text-size-body">Small Business</span><span class="body-text-style body-text-size-body">Operations</span></div><span class="standard-card-headline standard-card-headline-3-line-clamp heading-text-style heading-text-size-title">What is e-invoicing: Understanding the benefits and differences between other invoice types</span>
-<div class="standard-card-speaker standard-card-speaker-small"><span class="body-text-style body-text-size-body">Author<span class="standard-card-host-speaker">PayPal Editorial Staff</span></span></div></div><div class="standard-card-list-item standard-card-footer-list-item"><span class="body-text-style body-text-size-body">July 29</span><span class="body-text-style body-text-size-body">Article</span></div></div></a></div><div role="group" aria-roledescription="slide" aria-label="Slide 5 of 5" class="carousel-slide" tabindex="0"><a href="https://www.paypal.com/us/brc/article/freelancer-invoice-template-online" class="article-card-anchor article-card-template-item" data-pa-click="{&quot;link&quot;:&quot;ArticleCardCarousel-Primary-Download and customize freelance invoice templates&quot;,&quot;event_name&quot;:&quot;smb_standard_card_cta_clicked&quot;}" pa-marked="1" data-article-date="2024-11-04"><div class="article-card-template-image-frame image-frame image-frame-no-rounded-corners" style="min-width:100%;min-height:12.8rem;opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"></div><div class="standard-card article-card-template-card white-plate"><div><div class="standard-card-list-item"><span class="body-text-style body-text-size-body">Small Business</span><span class="body-text-style body-text-size-body">Payments</span></div><span class="standard-card-headline standard-card-headline-3-line-clamp heading-text-style heading-text-size-title">Download and customize freelance invoice templates</span>
-<div class="standard-card-speaker standard-card-speaker-small"><span class="body-text-style body-text-size-body">Author<span class="standard-card-host-speaker">PayPal Editorial Staff</span></span></div></div><div class="standard-card-list-item standard-card-footer-list-item"><span class="body-text-style body-text-size-body">November 04</span><span class="body-text-style body-text-size-body">Article</span></div></div></a></div></div><div class="page-nav-container"><button aria-label="Go to page 1 of 5" aria-current="true" aria-disabled="true" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator activeButton" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 2 of 5" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 3 of 5" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 4 of 5" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button><button aria-label="Go to page 5 of 5" aria-current="false" aria-disabled="false" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_indicator_button_clicked&quot;}" class="carousel-indicator near-sibling" tabindex="-1" type="button"><span></span></button></div></div><button aria-label="Next slide" aria-disabled="false" class="carousel-button next-button" data-pa-click="{&quot;link&quot;:&quot;Carousel-Primary&quot;,&quot;event_name&quot;:&quot;smb_carousel_next_button_clicked&quot;}" tabindex="-1" type="button"><svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="arrow-icon" style="transform:scaleX(1);display:block"><rect width="56" height="56" rx="40"></rect><path id="Color" d="M24.2441 14.6195L16.3691 22.4946C16.2049 22.6587 15.9822 22.751 15.75 22.751C15.5178 22.751 15.2951 22.6587 15.1309 22.4946C14.9668 22.3304 14.8745 22.1077 14.8745 21.8755C14.8745 21.6433 14.9668 21.4206 15.1309 21.2564L21.513 14.8755L4.375 14.8755C4.14294 14.8755 3.92038 14.7833 3.75628 14.6192C3.59219 14.4551 3.5 14.2326 3.5 14.0005C3.5 13.7684 3.59219 13.5459 3.75628 13.3818C3.92038 13.2177 4.14294 13.1255 4.375 13.1255L21.513 13.1255L15.1309 6.74455C14.9668 6.58036 14.8745 6.35768 14.8745 6.12549C14.8745 5.89329 14.9668 5.67061 15.1309 5.50642C15.2951 5.34224 15.5178 5.25 15.75 5.25C15.9822 5.25 16.2049 5.34224 16.3691 5.50642L24.2441 13.3814C24.3254 13.4627 24.39 13.5592 24.434 13.6654C24.478 13.7716 24.5007 13.8855 24.5007 14.0005C24.5007 14.1155 24.478 14.2293 24.434 14.3356C24.39 14.4418 24.3254 14.5383 24.2441 14.6195Z" fill="black" transform="translate(14, 14)"></path></svg></button></div><span class="carousel-notification" aria-live="polite" aria-atomic="true">Showing page 1 of 5</span></div></div></section><!--/$--><!--$--><section class="cta-section cta-section-layout-qr-only-stack section-wrapper blue-600-plate grid ppe ppe-palette grid-compact ppcmsnodeweb-dywr6a" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="text-header-inner cta-section-item ppcmsnodeweb-y59vw7"><div class="text-group text-group-alignment-center cta-section-text-group" style="opacity:0;transform:translateX(0.75px) translateY(0.75px) scale(1) translateZ(0)"><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="text-group-eyebrow-container"><h2 class="text-group-eyebrow-text heading-text-style heading-text-size-headline-6">PayPal Open</h2>
-</div></div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><h3 class="text-group-headline heading-text-style heading-text-size-headline-3">One platform
-for all business</h3>
-</div><div style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><p class="text-group-paragraph body-text-style body-text-size-body">Get paid. Get growing. Get ahead.</p>
-<p class="text-group-paragraph body-text-style body-text-size-body">Do more with the platform designed to power commerce.</p>
-</div><div class="text-group-content-button-group" style="opacity:0;transform:translateX(0.75rem) translateY(0.75rem) scale(1) translateZ(0)"><div class="button-group button-group-align-center button-group-legal-position-bottom text-group-action-group"><div class="button-group-alignment-center"><a class="button-type-primary button-size-dynamic ppcmsnodeweb-zna116-button_base-text_button_lg" data-ppui-info="buttons_7.4.0" aria-label="Sign Up" target="_self" data-pa-click="{&quot;link&quot;:&quot;bottom:2:0:Primary:SignUp_CTA:clicked&quot;,&quot;event_name&quot;:&quot;bottom_2_0_Primary_SignUp_CTA_clicked&quot;}" href="https://www.paypal.com/us/bizsignup/entry?product=invoicing" componentType="Button">Sign Up</a><a class="button-type-secondary button-size-dynamic ppcmsnodeweb-15mf51s-button_base-text_button_lg-secondary" data-ppui-info="buttons_7.4.0" aria-label="Contact Sales" target="_self" data-pa-click="{&quot;link&quot;:&quot;bottom:2:0:Secondary:ContactSales_CTA:clicked&quot;,&quot;event_name&quot;:&quot;bottom_2_0_Secondary_ContactSales_CTA_clicked&quot;}" href="https://www.paypal.com/us/business/contact-sales" componentType="Button">Contact Sales</a></div></div></div></div></div></section><!--/$--></div><div class="document-footer"><div id="globalnav-footer-wrapper" class="global-footer--wrapper glnv-ppe glnv-supreme-font glnv-compact-grid glnv-black" data-theme="ppe">
-        
-          <div id="globalnav-footer" data-nav-version="rebrand" data-nav-sub-version="v1"><footer data-building-block="organism" id="footer" translate="no" data-theme="ppe" class="_global-footer_p8qtm_1090 _rebrand-footer_p8qtm_1093 _ppe_p8qtm_11 _supreme-font_p8qtm_987 _compact-grid_p8qtm_965 _black_p8qtm_135"><div class="_container_p8qtm_1335"><div class="_pypl-logo-wrapper-footer_p8qtm_1128"></div><div class="_row_p8qtm_1149"><div class="_links-container_p8qtm_1152"><ul class="_footer-main_p8qtm_1161 _ul-main-links_p8qtm_1206"><li id="4A6XO7WgDy85tftMQp511Y" class><a href="/us/cshelp/personal?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Help&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Help</a></li><li id="7ihRd6mCPNFTkOZ0wblFok" class><a href="/us/smarthelp/contact-us?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Contact&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Contact</a></li><li id="7ACjy3wMaxV05EhkuV35nZ" class><a href="/us/digital-wallet/paypal-consumer-fees?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Fees&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Fees</a></li><li id="4GATx0x9GALShNvkSZXsp0" class><a href="/us/security?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Security Center&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Security Center</a></li><li id="5hfuEIwSi2AgdW9TmHTAw4" class><a href="/us/privacy-center/home?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Privacy Center&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Privacy Center</a></li><li id="119CYzD5fJttQGUqh4vsY1" class><a href="/us/webapps/mpp/shopping-selection?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Shop&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Shop</a></li><li id="3iTPcobLhb3HN1DO1Q9PZ9" class><a href="/us/digital-wallet/mobile-apps?locale.x=en_US" data-pa-click="{&quot;link&quot;:&quot;Footer-Apps&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Apps</a></li><li id="2H2AXNBJhctsUTeLyM5CZJ" class><a href="/us/enterprise?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Enterprise&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Enterprise</a></li><li id="HBdlY1sPMIigLrOGOO9kj" class><a href="/us/enterprise/industry-solutions/platforms-and-marketplaces?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Partners&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Partners</a></li></ul><ul class="_footer-main_p8qtm_1161"><li class="_country-selector_p8qtm_1070"></li></ul></div></div><div class="_row_p8qtm_1149"><div class="_links-container_p8qtm_1152"><hr class="_hidden-lg-down_p8qtm_1234 _primary_p8qtm_792" /></div></div><div class="_row_p8qtm_1149"><div class="_links-container_p8qtm_1152"><ul class="_footer-secondary_p8qtm_1166 _footer-corplinks_p8qtm_1247"><li id="3ztFiz5VjLmpIIhbHSFH4s" class><a href="https://about.pypl.com/about-us/default.aspx" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-About&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">About</a></li><li id="5rewfH0YpdnWmHahqpL0vo" class><a href="https://newsroom.paypal-corp.com/" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Newsroom&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Newsroom</a></li><li id="4j0AHpLPBeE1ivLPdTY8an" class><a href="https://careers.pypl.com/home/" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Jobs&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Jobs</a></li><li id="4iKzGvYSScY7t4k21UTDoz" class><a href="https://investor.pypl.com/home/default.aspx" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Investor Relations&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Investor Relations</a></li><li id="5SmFkackgP8ZcFpIKDHVf0" class><a href="https://about.pypl.com/how-we-work/issues-and-advocacy/default.aspx" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Government Relations&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Government Relations</a></li></ul><hr class="_hidden-lg-down_p8qtm_1234 _secondary_p8qtm_1238" /><ul class="_footer-tertiary_p8qtm_1167 _copyright-section_p8qtm_1253 _top-border_p8qtm_1279"><li id="5fhLGyWHLraAGwwpmRpht3" class="_footer-copyright_p8qtm_1171 _footer-copyright-flex_p8qtm_1283"><span class>© 1999–2025</span></li><li id="2pliw4jJCRY5lNuJisycij" class><a href="/us/webapps/mpp/accessibility?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Accessibility&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Accessibility</a></li><li id="5Sb81Iccz2aIJUvKL1aMAO" class><a href="https://www.paypal.com/us/legalhub/privacy-full" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Privacy Statement&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Privacy Statement</a></li><li id="Xvyw17fpaW42PlmC4nCX7" class><a href="/myaccount/privacy/cookiePrefs?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Cookies&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Cookies</a></li><li id="68aq0vxQOuns66kX7d3sF8" class><a href="/us/legalhub/home?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Legal&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Legal</a></li><li id="5T9zpo6oHeY8g9F9ILy3oK" class><a href="/us/webapps/mpp/licenses?locale.x=en_US" target="_self" data-pa-click="{&quot;link&quot;:&quot;Footer-Licenses&quot;,&quot;event_name&quot;:&quot;ppcom_footer_link_clicked&quot;,&quot;comp&quot;:&quot;globalnavnodeweb&quot;,&quot;space_key&quot;:&quot;SKSVPL&quot;}" class="_footer-link_p8qtm_1165">Licenses</a></li></ul></div></div><div class="_row_p8qtm_1149"><div class="_links-container_p8qtm_1152"><p data-testid="footer-note-0" class="_footer-notes_p8qtm_1186">PayPal is located at 2211 N 1st St. San Jose, CA 95131</p></div></div></div></footer></div>
-        <!--$--><div class="disclosure-text-color disclosure ppe ppe-palette" style="opacity:0;transform:translateX(0rem) translateY(0rem) scale(1) translateZ(0)"><div class="disclosure-paragraph multi-line-text multi-line-text-wo-sup body-text-style body-text-size-caption">
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>1</sup></div><div class="multi-line-text-paragraph">Based on PayPal internal data from August 1, 2023 to July 31, 2024.</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>2</sup></div><div class="multi-line-text-paragraph">Based on PayPal’s internal data from its launch in 2010 through February 2025.</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>3</sup></div><div class="multi-line-text-paragraph">Payments using Venmo are only available in the US.</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>4</sup></div><div class="multi-line-text-paragraph">Requires the latest PayPal Checkout JavaScript Software Development Kit (JS SDK).</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>5</sup></div><div class="multi-line-text-paragraph">Stable internet connection and Bluetooth may be required.</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>6</sup></div><div class="multi-line-text-paragraph">Fixed fee varies by currency received. For international transactions, the fee for receiving domestic transactions applies, plus an additional percentage-based fee.</div>
-</div><div class="disclosure-item multi-line-text body-text-style body-text-size-caption"><div class="multi-line-text-sup"><sup>7</sup></div><div class="multi-line-text-paragraph">Apple Pay does not charge any additional fees.</div>
-</div><div class="disclosure-item multi-line-text multi-line-text-wo-sup body-text-style body-text-size-caption"><div class="multi-line-text-paragraph">Apple Pay is a registered trademark of Apple Inc.</div>
-</div></div><!--/$-->
-      </div></div></div></div>
-    <link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/StackSectionType-e38e5e0f.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/StackSectionType-e38e5e0f.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/SplitSectionItem-f21f542a.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/SplitSectionItem-f21f542a.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/SplitSection-81a671c4.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/SplitSection-81a671c4.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/ActionCard-9fe1e79b.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/ActionCard-9fe1e79b.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/PricingCardHorizontal-e42f24e1.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/PricingCardHorizontal-e42f24e1.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CardContentCarouselSection-140bb988.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CardContentCarouselSection-140bb988.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/Accordion-632700d6.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/Accordion-632700d6.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/ArticleCardCarousel-ca162dab.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/ArticleCardCarousel-ca162dab.css"></noscript>
-<link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="preload" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CtaSection-15353f3f.css" as="style" data-non-critical-css="true">
-<noscript><link nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl" rel="stylesheet" fetchpriority="low" href="https://www.paypalobjects.com/marketing/pp-com-components/component-chunks/CtaSection-15353f3f.css"></noscript>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">document.addEventListener("DOMContentLoaded", () =>{const nonCriticalLinks = document.querySelectorAll('link[data-non-critical-css]');nonCriticalLinks.forEach((link)=>{link.rel = 'stylesheet';link.removeAttribute('data-non-critical-css')})});</script>
-<script nonce="NDRhYTQ2NDYtNmMxMS00NjA0LTlkMGYtMDNlZGYyNWZlMmVl">window.__CMS_ENGINE_RENDER_CONTEXT__ = {"pageModel":{"id":"7JRHr2nSmFiR8AbLWCwmvI","componentType":"PageIdentifier","metadata":{"id":"6GpyAX3RQApcBNRH3ODFHy","componentType":"Metadata","pageId":"business/accept-payments/invoice","page__title":"Invoicing | Create and Send Invoices Online","page__description":"Discover invoicing solutions with advanced invoice software for creating, managing, and sending invoices online, simplify your billing process.","openGraphImageURL":"https://www.paypalobjects.com/marketing/web23/us/invoicing/meta_size-all.jpg","analyticsDescriptor__subFeature1":"Business","analyticsDescriptor__subFeature2":"Product","analyticsDescriptor__pageSegment":"smb","loggedInOnly":false,"globalNavConfig":{"id":"ZgTqwMxDW4jevgbsSLt4C8","componentType":"GlobalNavConfig","version":"rebrand","brand":"paypal","footerTheme":"black"}},"pageReference":{"id":"7Ch6c2Xjde9mhQPzPGvpKm","componentType":"Content","top":[{"id":"5HTkfJXFotQPgyShpYtxcj","componentType":"HeroRebrand","textGroup":{"id":"71vHK0zAUXgWCJ37ulnlbx","componentType":"TextGroup","eyebrowText":"Invoicing","eyebrowTag":"h1","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Send invoices in seconds.\n\nGet paid fast."}]}]},"headlineSize":"Headline 3","headlineTag":"h2","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Create and send invoices with ease from anywhere. Your customers can pay them instantly. Even if they don't have a PayPal account."}]}]},"paragraphSize":"Body","alignment":"Center","actionGroup":{"id":"Y7W7Q7bv7xqbMinDQMLkq2","componentType":"ButtonGroup","button":[{"id":"Y02bfHVLXUSeK0WDSWj3u0","componentType":"Button","text":"Sign Up","ariaLabel":"Sign Up","url":"/bizsignup/entry?product=invoicing","mobileUrl":"/bizsignup/entry?product=invoicing","target":"_self","size":"Dynamic","type":"Primary","clickEventName":"SignUp_CTA","buttonStyle":"ppreact","documentId":"BTN2354","serverFptiData":{"event_name":"top_0_0_Primary_SignUp_CTA_clicked","link":"top:0:0:Primary:SignUp_CTA:clicked"}},{"id":"19kwLxapAfTblS0y3cFyyP","componentType":"Button","text":"Send Invoice","ariaLabel":"Send Invoice","url":"https://www.paypal.com/invoice/s/create/","mobileUrl":"https://www.paypal.com/invoice/s/create/","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"sell-invoice","buttonStyle":"ppreact","documentId":"BTN2355","serverFptiData":{"event_name":"top_0_0_Secondary_sell-invoice_clicked","link":"top:0:0:Secondary:sell-invoice:clicked"}}],"disclosureType":{"id":"anc49cZ5pkRebSlsaPnbUP","componentType":"Disclosure","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Get in touch, "},{"data":{"uri":"tel:+18667843639"},"nodeType":"hyperlink","content":[{"data":{},"marks":[],"nodeType":"text","value":"1-866-784-3639"}]},{"data":{},"marks":[],"nodeType":"text","value":"."}]}]},"inlineDisclosure":true},"alignment":"Center","legalPosition":"Bottom"},"type":"Default"},"mediaFrame":{"id":"7nxMu9Cg3QSVGrDzv0MPq0","componentType":"MediaFrame","image":{"id":"1Rhe8qzIMH8cjk4t86eJMu","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/hero_size-tablet-up.jpg","imageAltText":"Woman working on laptop with invoice overlay showing $220 due and options to pay with PayPal, Venmo, or credit or debit card","imageServerKnobs":{"quality":40,"maxWidth":601,"intersectionRootMargin":"100px 0px"},"loading":"eager","fetchPriority":"high"},"type":"Image","mediaShape":"default","roundedCorners":false},"hideGraphicShapes":true,"layout":"Featured","applyMediaGlow":false,"isAnimatedMediaFrame":false,"theme":"white","bottomSpacer":"4vw"},{"id":"Z4yZ04plZ88dsmrZ9B7ZoR","componentType":"SubNav","displayNav":"When Hero CTA leaves viewport","theme":"white","ctaCollection":[{"id":"Y02bfHVLXUSeK0WDSWj3u0","componentType":"Button","text":"Sign Up","ariaLabel":"Sign Up","url":"/bizsignup/entry?product=invoicing","mobileUrl":"/bizsignup/entry?product=invoicing","target":"_self","size":"Dynamic","type":"Primary","clickEventName":"SignUp_CTA","buttonStyle":"ppreact","documentId":"BTN2354","serverFptiData":{"event_name":"top_1_0_Primary_SignUp_CTA_clicked","link":"top:1:0:Primary:SignUp_CTA:clicked"}},{"id":"19kwLxapAfTblS0y3cFyyP","componentType":"Button","text":"Send Invoice","ariaLabel":"Send Invoice","url":"https://www.paypal.com/invoice/s/create/","mobileUrl":"https://www.paypal.com/invoice/s/create/","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"sell-invoice","buttonStyle":"ppreact","documentId":"BTN2355","serverFptiData":{"event_name":"top_1_0_Secondary_sell-invoice_clicked","link":"top:1:0:Secondary:sell-invoice:clicked"}}],"ariaLabel":"Sub Navigation","navTitle":"Invoice","navActions":[{"id":"Y02bfHVLXUSeK0WDSWj3u0","componentType":"Button","text":"Sign Up","ariaLabel":"Sign Up","url":"/bizsignup/entry?product=invoicing","mobileUrl":"/bizsignup/entry?product=invoicing","target":"_self","size":"Dynamic","type":"Primary","clickEventName":"SignUp_CTA","buttonStyle":"ppreact","documentId":"BTN2354","serverFptiData":{"event_name":"top_1_0_Primary_SignUp_CTA_clicked","link":"top:1:0:Primary:SignUp_CTA:clicked"}},{"id":"19kwLxapAfTblS0y3cFyyP","componentType":"Button","text":"Send Invoice","ariaLabel":"Send Invoice","url":"https://www.paypal.com/invoice/s/create/","mobileUrl":"https://www.paypal.com/invoice/s/create/","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"sell-invoice","buttonStyle":"ppreact","documentId":"BTN2355","serverFptiData":{"event_name":"top_1_0_Secondary_sell-invoice_clicked","link":"top:1:0:Secondary:sell-invoice:clicked"}}]}],"middle":[{"id":"Ww5huu5xIP2feFnc6X1xuG","componentType":"CardWrappedContentSection","collection":[{"id":"6HsEqryibhrd3RSvSHAGzz","componentType":"RelatedContentItem","textGroup":{"id":"YqtlrqD5G79eRCC0KzJ7JH","componentType":"TextGroup","collection":[{"id":"XHs6og6Glq3dgO1vY9H7PQ","componentType":"DataItemRebrand","numberGroup":{"id":"4zAwqYBmfuZd4AEcpqv4qr","componentType":"NumberGroupRebrand","size":"Headline 3","number1":{"id":"es3dxwLqpfFajv6tveqPgo","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"77"}]}]},"suffix":"%"}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"of PayPal invoices are paid within one day of sending^1^"}]}]},"topBorder":false,"topSpacer":true,"bottomBorder":false,"bottomSpacer":true,"dataType":"Metric","indent":"Column","alignment":"Start"}]}},{"id":"870VziFdqasbByu4ArElEh","componentType":"RelatedContentItem","textGroup":{"id":"a2SepJ5n1mwcbU6dxHBpIa","componentType":"TextGroup","collection":[{"id":"3Wk68KZwMMQcCUKfGs5ul9","componentType":"DataItemRebrand","numberGroup":{"id":"1ZJZk2SeM0KdKAKEPPr7IZ","componentType":"NumberGroupRebrand","size":"Headline 3","number1":{"id":"2RqTP6ZGPNOddvPTSXFp7d","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"755M"}]}]},"suffix":"+"}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"PayPal invoices sent globally^2^"}]}]},"topBorder":false,"topSpacer":false,"bottomBorder":false,"bottomSpacer":true,"dataType":"Metric","indent":"Column","alignment":"Start"}]}},{"id":"8HWW966NCyMfdVICSiPH6y","componentType":"RelatedContentItem","textGroup":{"id":"3uGTjxdTpULdsjzczGGVon","componentType":"TextGroup","collection":[{"id":"XfHM85OWzZ6bkB8tmAFz9M","componentType":"DataItemRebrand","numberGroup":{"id":"YOl7bILV9dDblV3uYOmpAz","componentType":"NumberGroupRebrand","size":"Headline 3","number1":{"id":"XRbqippEDK6dlhNHAAEV1Q","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"144B"}]}]},"prefix":"$"}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"paid globally through PayPal invoices^2^"}]}]},"topBorder":false,"topSpacer":true,"bottomBorder":false,"bottomSpacer":true,"dataType":"Metric","indent":"Column","alignment":"Start"}]}}],"maxColumns":"3","cardVariant":"clear","theme":"white","cardTheme":"white","topSpacer":"4vw","bottomSpacer":"6vw"},{"id":"VKVYtc7kjPZbCVKPTawxmC","componentType":"FeatureColumnSplitSection","headline":{"id":"dZoeANTN5YfeuhsO9BE2sa","componentType":"TextHeaderInner","textGroup":{"id":"4Nfo0VTLFeY8LlNkZ9dr29","componentType":"TextGroup","eyebrowTag":"p","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Invoicing that works for you"}]}]},"headlineSize":"Headline 4","headlineTag":"h2","alignment":"Center","type":"Default","removeOrphanFromHeadline":true},"start":1,"span":12,"bottomSpacer":"6vw"},"collection":[{"id":"8q5CxUKVERyen41WBsUmWQ","componentType":"FeatureColumnItem","feature":{"id":"d659YtMwHhlcOvlUXbP7vP","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[{"type":"bold"}],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Enjoy smoother invoicing"}]}]},"subheadingTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Create, send, and track invoices in seconds with an easy-to-use interface and smart automation, saving you time and effort.​"}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true}},{"id":"a7lxYmBjnHAbRku7mGMMw1","componentType":"FeatureColumnItem","feature":{"id":"dJE4wOFg6YwfrD34BI1xye","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[{"type":"bold"}],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Build customer trust"}]}]},"subheadingTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Stay true to your brand with customizable, professional-looking invoices."}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true}},{"id":"8mEEBIRQUxdbgunulSwsUK","componentType":"FeatureColumnItem","feature":{"id":"bM0kPd66LxWdV2vw90G9EG","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[{"type":"bold"}],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Get your money faster"}]}]},"subheadingTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Give your customers the flexible payments they want so you can get paid faster and see money in your account sooner."}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true}}],"mediaFrame":{"id":"V6OEQQ9ll6MftGeiEo0Ugq","componentType":"MediaFrame","image":{"id":"ZyFyBiShI9pfLcSNadXJbZ","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/feature-column-split_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/feature-column-split_size-all.jpg","imageAltText":"Woman setting up jars for sale at farmer’s market while holding a tablet","imageServerKnobs":{"quality":40,"maxWidth":601,"intersectionRootMargin":"100px 0px"}},"type":"Image","roundedCorners":false},"mediaPosition":"Left"},{"id":"54jiL98GnY9DqBtT1QEJqj","componentType":"TextSectionType","textGroup":{"id":"XLmDxKbyjRvdzDqQfXNBBg","componentType":"TextHeaderInner","textGroup":{"id":"57PJtP4lCny2BsJs0BTwIk","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Create. Get paid. Repeat."}]}]},"headlineSize":"Headline 4","headlineTag":"h2","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Get a preview of what your invoice will look like as you edit. Plus, learn how to save templates\nfor future invoices."}]}]},"paragraphSize":"Body","alignment":"Start","actionGroup":{"id":"7wFKPjcpbjTfET6kQLKBRs","componentType":"ButtonGroup","button":[{"id":"VeFNC6OPQdDayVeOZ3rUmd","componentType":"InlinePlayButton","ariaLabel":"How to create and send an invoice","text":"How to create and send an invoice","youTubeId":"1WBlobP3ORU","clickEventName":"Button_CTA","buttonStyle":"inlinePlay","type":"InlinePlay"}],"alignment":"Start","legalPosition":"Bottom"},"type":"Default"},"start":1,"span":12,"bottomSpacer":"0vw"},"alignment":"12 Col Start to End","theme":"neutral 100","variant":"default","topSpacer":"12vw","bottomSpacer":"4vw"},{"id":"70I2n2JOTHoavRYIRKxVoJ","componentType":"StackSectionType","mediaFrame":{"id":"2wAKl35tcqfbrjIFz2QmCe","componentType":"MediaFrame","image":{"id":"37x0cwGapesSYzeTLpjT4g","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/stack-section-desktop_size-mobile-up.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/stack-section-desktop_size-tablet-up.jpg","imageAltText":"Desktop screen of a new invoice with customizable options on the left and a summary and preview on the right","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"alignment":"Center","theme":"neutral 100","variant":"featured","topSpacer":"4vw","bottomSpacer":"0vw","mediaSize":"Medium"},{"id":"0nzxdpYdH7YeA93VtZt5ra","componentType":"CardWrappedContentSection","collection":[{"id":"8NuQDOsZXnDcbibPO8p7ho","componentType":"RelatedContentItem","textGroup":{"id":"6EpCNMrfHNBcyJBgl93ske","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Customize invoices to your needs"}]}]},"headlineSize":"Headline 6","headlineTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Send professional invoices with your company name and logo. Add taxes, discounts, shipping details, or notes for whatever, wherever, and however you sell."}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true},"mediaFrame":{"id":"bR6dTim8OhCbq8eGTZNwsz","componentType":"MediaFrame","image":{"id":"e7K9SkuAnJMbmfxOVVePsH","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-1_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-1_size-all.jpg","imageAltText":"Mobile invoice showing a logo for Flora Landscaping and a note to the customer","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","mediaShape":"default","roundedCorners":false}},{"id":"AvMOVxQb4HEez1d727iduO","componentType":"RelatedContentItem","textGroup":{"id":"XIKkcnunpdFbhkt9Rkg3ot","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Accept payments globally"}]}]},"headlineSize":"Headline 6","headlineTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Take payments in 200+ markets and 24 currencies and offer options including PayPal, Venmo,^3^ Apple Pay®, credit and debit cards, and Pay Later.^4^"}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default"},"mediaFrame":{"id":"aTm87KJ4LK0c1SLnEYnDe7","componentType":"MediaFrame","image":{"id":"eWbTUWCazJldEioV2gdED7","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-2_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-2_size-all.jpg","imageAltText":"Payment options including PayPal, Venmo, Apple Pay, and debit and credit card","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","mediaShape":"default","roundedCorners":false}}],"maxColumns":"2","cardVariant":"clear","theme":"white","cardTheme":"white","topSpacer":"6vw","bottomSpacer":"4vw"},{"id":"YN6m1LX4SdAbpFSW1hqAYq","componentType":"CardWrappedContentSection","collection":[{"id":"au92Zwu3YJuf1Z9ayrffB2","componentType":"RelatedContentItem","textGroup":{"id":"WFppHxaaOFjfq6PrxSEeGC","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Share the way customers prefer"}]}]},"headlineSize":"Headline 6","headlineTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Send invoices by email, SMS, messaging apps, and social media. Or even a QR code for in-person payments.^5^"}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true},"mediaFrame":{"id":"ehIVagLN9L4cY9JT7ccJvl","componentType":"MediaFrame","image":{"id":"ZwT3GWTklL0dkSpzi81RPe","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-3_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-3_size-all.jpg","imageAltText":"Options to share invoice by SMS or through a shareable link","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","mediaShape":"default","roundedCorners":false}},{"id":"1c6crbYthPHcDeRWLr71w1","componentType":"RelatedContentItem","textGroup":{"id":"f8fPjCw4cwAeBB28c9I3EP","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Track and manage payments"}]}]},"headlineSize":"Headline 6","headlineTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Turn estimates into invoices, track payment statuses, and schedule payment reminders. All from your merchant dashboard."}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","removeOrphanFromHeadline":true},"mediaFrame":{"id":"V7OpTjMghTvcYdAlWLxeQx","componentType":"MediaFrame","image":{"id":"32P0Xp2rbQhduJ0RNZ6HHt","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-4_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/card-wrapped-4_size-all.jpg","imageAltText":"List of invoices with paid and pending statuses","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","mediaShape":"default","roundedCorners":false}}],"maxColumns":"2","cardVariant":"clear","theme":"white","cardTheme":"white","topSpacer":"0vw","bottomSpacer":"8vw"},{"id":"2gd5HwVNrUe21F3TThDJ1","componentType":"SplitSectionType","collection":[{"id":"4KXTqaoTzqudg1aHfOQOoR","componentType":"SplitSectionItem","textGroup":{"id":"eyxyYVV0IR5bjpNFaLuEI3","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Send it on the go"}]}]},"headlineSize":"Headline 4","headlineTag":"h2","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Use the PayPal app to create and manage invoices from anywhere you do business.^5^"}]}]},"paragraphSize":"Body","alignment":"Start","type":"Default","appDownloadGroup":{"id":"esat43BOgBxaxaoNAdNlyq","componentType":"AppDownloadGroup","imageUrl":"https://www.paypalobjects.com/marketing/web23/us/invoicing/qr_code.png","imageAltText":"QR code for PayPal app","ctaMobile":{"id":"ZHXjiZicggqd2hYCX47OeO","componentType":"ButtonGroup","button":[{"id":"0ad4DJaNZU2e3sAwhoM9fv","componentType":"Button","text":"Get the App","ariaLabel":"Get the App","url":"https://paypal.com/mobile-app/dashboard?source=%252Fbusiness%252Faccept-payments%252Finvoice_cta&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&utm_campaign=&utm_medium=web&utm_source=%2Fbusiness%2Faccept-payments%2Finvoice&cust=&redirect=true","mobileUrl":"https://paypal.com/mobile-app/dashboard?source=%252Fbusiness%252Faccept-payments%252Finvoice_cta&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&utm_campaign=&utm_medium=web&utm_source=%2Fbusiness%2Faccept-payments%2Finvoice&cust=&redirect=true","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"GetTheApp_CTA","buttonStyle":"ppreact","documentId":"BTN2360","serverFptiData":{"event_name":"middle_6_0_Secondary_GetTheApp_CTA_clicked","link":"middle:6:0:Secondary:GetTheApp_CTA:clicked"}}],"alignment":"Start","legalPosition":"Bottom"},"intent":"download_mktg","tsrce":"marketing_page","errorFallbackMessage":"Something went wrong on our end. Let's try again.","successFallbackMessage":"Thanks! We'll send you a text to get the app.","invalidFallbackMessage":"Enter a valid phone number to continue.","accountCreationEligibleFallback":"That phone number isn't eligible for the reward. We'll send you a link to download the app.","accountCreationIneligibleFallback":"That phone number isn’t eligible for a new account.","variant":"QR code only","dataQrUrl":"https://paypal.com/mobile-app/dashboard?source=%252Fbusiness%252Faccept-payments%252Finvoice_qrc&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee"},"removeOrphanFromHeadline":true},"mediaFrame":{"id":"8VcpTHMB1O8eKl9TFDGK8z","componentType":"MediaFrame","image":{"id":"3ab6L7CxoR4ciOYEndvn5B","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/split-section_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/split-section_size-all.jpg","imageAltText":"Man looking at phone with invoice overlay showing an invoice created for $524 with a send button"},"type":"Image","roundedCorners":false},"mediaSize":"3:4 Large"}],"imagePosition":"End","theme":"white","variant":"split","topSpacer":"6vw","bottomSpacer":"6vw"},{"id":"2ujysHnqaj7VvACm5UtF1Q","componentType":"TextSectionType","textGroup":{"id":"Wb7PURdIA77fyAkieDwfvc","componentType":"TextHeaderInner","textGroup":{"id":"6iTo2o3gpEUBTGudNVm59Q","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Pricing with no surprises"}]}]},"headlineSize":"Headline 4","headlineTag":"h2","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraphSize":"Body","alignment":"Start","actionGroup":{"id":"q1dEXdiWGMHOSPDnoFHmG","componentType":"ButtonGroup","button":[{"id":"4oMkct8UuhGgmMn5s2lLj1","componentType":"Button","text":"More About Fees","ariaLabel":" More About Fees","url":"/business/fees","mobileUrl":"/business/fees","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"Button_CTA","buttonStyle":"ppreact","documentId":"BTN643","serverFptiData":{"event_name":"middle_7_0_Secondary_Button_CTA_clicked","link":"middle:7:0:Secondary:Button_CTA:clicked"}}],"alignment":"Start","legalPosition":"Bottom"},"type":"Default","removeOrphanFromHeadline":true},"start":1,"span":12,"bottomSpacer":"0vw"},"alignment":"12 Col Start to End","theme":"white","variant":"default","topSpacer":"8vw","bottomSpacer":"4vw"},{"id":"34kWkVUyJSmYV26I9cs19O","componentType":"PricingCardHorizontalType","collection":[{"id":"2ZwnQcEzKdtpwXjlZgdkPU","componentType":"PricingCardIt","productName":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"PayPal and Venmo"}]}]},"productNameTag":"h3","productNameSize":"Title","pricingCardItemHeadline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"list":[{"id":"77CsCMcDrPgWAi2uU5VriO","componentType":"DataItemRebrand","numberGroup":{"id":"BJNL44RRz74Pl65qa9RCj","componentType":"NumberGroupRebrand","size":"Headline 4","number1":{"id":"7m3M3CGLP2yNFZFUOOVciX","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""},{"data":{"target":{"sys":{"id":"3oyd0WvsMqpjEVjnSPJ2xS","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: POS Pricing - US - PayPal Invoicing Rate - 3.49%","feeDataKey":"3.49%"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":""}]}]}}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":" \\+ "},{"data":{"target":{"sys":{"id":"3ndEzSVKlUdZOr0BfiMG0V","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: POS Pricing - US - PayPal Invoicing Fixed Fee - $0.49","feeDataKey":"$0.49"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":" per transaction"}]}]},"topBorder":false,"topSpacer":false,"bottomBorder":false,"bottomSpacer":false,"indent":"Column","alignment":"Start"}]},{"id":"6fjZmJKYL2ZrTPbwhveDjA","componentType":"PricingCardIt","productName":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Pay Later"}]}]},"productNameTag":"h3","productNameSize":"Title","list":[{"id":"4M2IIYfj1EWISJ5UBQ2KIs","componentType":"DataItemRebrand","numberGroup":{"id":"5wbNCz5TeUq6uEjtrbwOOr","componentType":"NumberGroupRebrand","size":"Headline 4","number1":{"id":"oHs5DDkEXvUXhzm8K3lSG","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""},{"data":{"target":{"sys":{"id":"7nps5hgG5dJEwBhVeIa00R","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: Installment Payments - US - Pay Monthly APR - 4.99%","feeDataKey":"4.99%"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":""}]}]}}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"\\+  "},{"data":{"target":{"sys":{"id":"3ndEzSVKlUdZOr0BfiMG0V","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: POS Pricing - US - PayPal Invoicing Fixed Fee - $0.49","feeDataKey":"$0.49"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":" per transaction^6^"}]}]},"topBorder":false,"topSpacer":false,"bottomBorder":false,"bottomSpacer":false,"indent":"Column","alignment":"Start"}]},{"id":"59hAoWLZt1zep6rH4hXWP3","componentType":"PricingCardIt","productName":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Debit cards, credit cards, & Apple Pay^7^"}]}]},"productNameTag":"h3","productNameSize":"Title","list":[{"id":"4jU5lyIlPseyDWpBASzizF","componentType":"DataItemRebrand","numberGroup":{"id":"2BrN9ZXVtIhtDqnfuaaFtw","componentType":"NumberGroupRebrand","size":"Headline 4","number1":{"id":"1oYNWzRVF1tP7sY1gxvOCa","componentType":"NumberRebrand","number":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""},{"data":{"target":{"sys":{"id":"k7KRk2fFl08VhiSIuBsHJ","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: POS Pricing - US - APM Invoicing Rate - 2.99%","feeDataKey":"2.99%"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":""}]}]}}},"text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"\\+  "},{"data":{"target":{"sys":{"id":"3ndEzSVKlUdZOr0BfiMG0V","contentType":{"sys":{"id":"cvPricingToken","linkType":"ContentType","type":"Link"}}},"fields":{"internalName":"Rebrand: POS Pricing - US - PayPal Invoicing Fixed Fee - $0.49","feeDataKey":"$0.49"}}},"nodeType":"embedded-entry-inline","content":[]},{"data":{},"marks":[],"nodeType":"text","value":" per transaction^6^"}]}]},"topBorder":false,"topSpacer":false,"bottomBorder":false,"bottomSpacer":false,"indent":"Column","alignment":"Start"}],"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]}}],"cardSize":"3col","cardTheme":"neutral 100","topSpacer":"4vw","bottomSpacer":"6vw","disclosureType":{"id":"5zz42k7ZbN9njK9pHNGcsc","componentType":"Disclosure","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Fees are subject to change."}]}]},"inlineDisclosure":true,"backgroundColor":"white"},"sectionColorTheme":"white","rowStackingBehavior":"stacking","width":"12 column"},{"id":"2570VdXGHqPNRtIjIwyduk","componentType":"TextSectionType","textGroup":{"id":"bliJac0BR2Qb09XxhjnRPW","componentType":"TextHeaderInner","textGroup":{"id":"30irQTALMaQxUymoUVBk4W","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Invoicing for whatever you do"}]}]},"headlineSize":"Headline 4","headlineTag":"h2","alignment":"Center","type":"Default","removeOrphanFromHeadline":true},"start":1,"span":12,"bottomSpacer":"0vw"},"alignment":"12 Col Start to End","theme":"white","variant":"default","topSpacer":"8vw","bottomSpacer":"6vw"},{"id":"1E38IvA2D3ltsuUamlkCeG","componentType":"StackSectionType","mediaFrame":{"id":"7ZBLaNCMtY5xTNKWlJiE0","componentType":"MediaFrame","image":{"id":"7xcwdvSql7jhPQ5uxs02ou","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/stack-section-mosaic_size-mobile-up.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/stack-section-mosaic_size-tablet-up.jpg","imageAltText":"Mosaic of industries including professional services, automotive, medical, travel, creative, personal care","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"alignment":"Start","mediaAlignment":"Inner Rail","theme":"white","topSpacer":"0vw","bottomSpacer":"12vw","mediaSize":"Medium"},{"id":"4BqusA5ckbVb6F1Ca1SMOi","componentType":"CardCarousel","headline":{"id":"ZrXeFb15yUGdQsPfruISMf","componentType":"TextHeaderInner","textGroup":{"id":"0BaJNcIrdr8e5WLPdp64Ig","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"One platform. Many ways to get paid."}]}]},"headlineSize":"Headline 3","headlineTag":"h2","alignment":"Start","type":"Default","removeOrphanFromHeadline":true},"start":1,"span":12,"bottomSpacer":"0vw"},"collection":[{"id":"2OISokCOYt0cwwkL7qCMIY","componentType":"RelatedContentItem","textGroup":{"id":"5jrdwCv4CUcbIjhfSmBV78","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Online checkout"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"aWTz6veATtQeS7UAem5jFZ","componentType":"MediaFrame","image":{"id":"3rYrftTPHyzfFkeM0rsAfY","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/US/merchant/qr-code/online-checkout_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/US/merchant/qr-code/online-checkout_size-all.jpg","imageAltText":"Online payment options for PayPal, Venmo, and debit or credit card shown over image of man outside","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"cardTheme":"black","contentLink":{"id":"WZ2gL2Ct0qbecfhvMUohJx","componentType":"ContentLink","url":"/business/accept-payments/checkout","mobileUrl":"/business/accept-payments/checkout","clickEventName":"Button_CTA","target":"_self"}},{"id":"58TuyWuJIr6dEkyWTwIWi5","componentType":"RelatedContentItem","textGroup":{"id":"906XVmhXS2kcrTmFo9HeNv","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Payment links"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"VQDfXVnLn8qePZRsUZSHfG","componentType":"MediaFrame","image":{"id":"1PvTwFnoszTeRBoyXbzN1M","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-payment-links_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-payment-links_size-all.jpg","imageAltText":"Person packing a hat in a box with overlay showing a PayPal payment link","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"cardTheme":"black","contentLink":{"id":"eVl2dp84pDSe9qy6xVS8hF","componentType":"ContentLink","url":"/business/accept-payments/payment-links","mobileUrl":"/business/accept-payments/payment-links","clickEventName":"Button_CTA","target":"_self"}},{"id":"49t6KdeN8E2brpX1Jfa2tF","componentType":"RelatedContentItem","textGroup":{"id":"2kiYUUhtL2MecVCJuvr1Bz","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Recurring payments"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"3Z8askBwP99aa6BbdEgh7B","componentType":"MediaFrame","image":{"id":"4IgOGsa3L9rcNWhdlIjuNp","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-recurring-payments_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-recurring-payments_size-all.jpg","imageAltText":"Person holding a package of skincare products with overlay showing a subscription plan for $32 due next Monday","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"contentLink":{"id":"0EcWyxn9BkvcCh52B6i7SE","componentType":"ContentLink","url":"/business/accept-payments/recurring-payments","mobileUrl":"/business/accept-payments/recurring-payments","clickEventName":"Button_CTA","target":"_self"}},{"id":"9YJCZD9raqMba4KzIyvpKM","componentType":"RelatedContentItem","textGroup":{"id":"9SJYLcKMZ38dc4OogVTdpm","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Virtual Terminal"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"ap14ndz2DMicQif2OgFI1N","componentType":"MediaFrame","image":{"id":"7jL9SfJxVpGdjHvUfaH0gY","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-virtual-terminal_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-virtual-terminal_size-all.jpg","imageAltText":"Virtual terminal payment notification on a photograph of a woman talking on the phone","imageLink":"https://www.paypal.com/us/business/accept-payments/virtual-terminal","target":"_self","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"cardTheme":"black","contentLink":{"id":"7qSmci8bnTAcOoYNCvQjYr","componentType":"ContentLink","url":"/business/accept-payments/virtual-terminal","mobileUrl":"/business/accept-payments/virtual-terminal","clickEventName":"Button_CTA","target":"_self"}},{"id":"ZuPEwVG91OldP6XXOCW6mO","componentType":"RelatedContentItem","textGroup":{"id":"VRUv9hVnmlOcxnzLb2kpFu","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Guest checkout"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"29fCNM8Pim9f2niLJIbRO8","componentType":"MediaFrame","image":{"id":"AEhtBEY8yAjcWUbCZO42aa","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-guest-checkout_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-guest-checkout_size-all.jpg","imageAltText":"Person holding a phone with overlay showing guest checkout code and Fastlane by PayPal logo","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"contentLink":{"id":"70E90rxRbg2c9DRjt0b33d","componentType":"ContentLink","url":"/business/accept-payments/guest-checkout","mobileUrl":"/business/accept-payments/guest-checkout","clickEventName":"Button_CTA","target":"_self"}},{"id":"AiNtWTKZxlcdu2Qq4dBLSa","componentType":"RelatedContentItem","textGroup":{"id":"3kT5Ko7Z1P3dxMwBgr9zdP","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Installment payments"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"5jzZqCInoeRfJOcRgrvDVb","componentType":"MediaFrame","image":{"id":"6IE3cJZWcmBeKNke5koe6J","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/US/recuring-payments/card-installment-payments_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/US/recuring-payments/card-installment-payments_size-all.jpg","imageAltText":"Pay Later Pay in 4 checkout screen over the image of a white chair","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"cardTheme":"black","contentLink":{"id":"1LLWGUJp75ZeA3vZ9vknzf","componentType":"ContentLink","url":"/business/accept-payments/installment-payments","mobileUrl":"/business/accept-payments/installment-payments","clickEventName":"Button_CTA","target":"_self"}},{"id":"3rFcNRRIEUde3nz0Teei1m","componentType":"RelatedContentItem","textGroup":{"id":"eqFQtBAOZD5aheOM4imOU2","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"PayPal Payments"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"XCXbRMZv2qJcZ8ezhSPUSX","componentType":"MediaFrame","image":{"id":"AMQhCc0OpCKaYI9sfaO3hj","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-paypal-payments_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-paypal-payments_size-all.jpg","imageAltText":"PayPal, Pay Later, and debit or credit card payment options shown over image of woman laying in sun","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"contentLink":{"id":"2HovjbK6NwBbGYJVRbJLQ2","componentType":"ContentLink","url":"/enterprise/payment-processing/accept-paypal","mobileUrl":"/enterprise/payment-processing/accept-paypal","clickEventName":"Button_CTA","target":"_self"}},{"id":"3qUZwwBKjpQdOI1bO8Iflh","componentType":"RelatedContentItem","textGroup":{"id":"1cM0GfD5xTKfkV7LxKGvbB","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Venmo for business"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"9nAyv3lfMo6fFkb0CaRPr5","componentType":"MediaFrame","image":{"id":"2GJGDjaQEC2d5llJBu2iyc","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-venmo-for-business_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/business-loan/card-content-carosel/media-carousel-section_card-venmo-for-business_size-all.jpg","imageAltText":"Venmo checkout blue button overlaying picture of woman smiling at phone","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"contentLink":{"id":"cXw6FODgVficajLBWBtMaa","componentType":"ContentLink","url":"https://www.paypal.com/us/business/accept-payments/accept-venmo","mobileUrl":"https://www.paypal.com/us/business/accept-payments/accept-venmo","clickEventName":"Button_CTA","target":"_self"}},{"id":"6kjnTC7u0tNapCiqwJZJNj","componentType":"RelatedContentItem","textGroup":{"id":"82bKAR4TbzfdnKX0gRitG8","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"subheading":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"POS system"}]}]},"paragraphSize":"Body Large","alignment":"Start","type":"Default"},"mediaFrame":{"id":"YkQ9pExwMpFdaJdi5jE7Kn","componentType":"MediaFrame","image":{"id":"VHAgPmTPBRlfRHIDGbyNwQ","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/recurring-payment/media-carousel-section_card-pos-system_size-tablet-up.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/merchant/recurring-payment/media-carousel-section_card-pos-system_size-tablet-up.jpg","desktopImage":"https://www.paypalobjects.com/marketing/web23/US/merchant/online-checkout/pos-system_size-tablet-up_live.jpg","imageAltText":"POS device with the PayPal logo on the screen","imageServerKnobs":{"quality":40,"maxWidth":601}},"type":"Image","roundedCorners":false},"cardTheme":"black","contentLink":{"id":"ZfSlZGXWhc8aY777ISu4Vx","componentType":"ContentLink","url":"https://www.paypal.com/us/business/pos-system","mobileUrl":"https://www.paypal.com/us/business/pos-system","clickEventName":"Button_CTA","target":"_self"}}],"carouselDetails":{"id":"33BcBYLdeoFXW3clHXCATj","componentType":"CarouselDetails","ariaLabel":"Card Carousel","prevButtonLabel":"Previous slide","nextButtonLabel":"Next slide","pageNavButtonLabel":"Go to page ${item} of ${totalItems}","slideLabel":"Slide ${item} of ${totalItems}","pageLabel":"Showing page ${item} of ${totalItems}"},"maxSlidesPerView":2,"topSpacer":"8vw","bottomSpacer":"8vw","theme":"black","cardTheme":"black","cardVariant":"discover"}],"bottom":[{"id":"YhQeAI2gyRtfGWdF0bvxse","componentType":"FaqType","textGroup":{"id":"VOVsRESeikubctCYrl3QO7","componentType":"TextGroup","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Frequently asked questions"}]}]},"headlineSize":"Headline 4","headlineTag":"h2"},"collection":[{"id":"AG99uaTiNCHbEjePj6uHj5","componentType":"AccordionItem","headline":"What do I need to send a PayPal invoice?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"All you need is a PayPal account. Creating and sending invoices is included with your account. If you don’t have one, "},{"data":{"uri":"/bizsignup/entry?country.x=US&locale.x=en_US&product=invoicing"},"nodeType":"hyperlink","content":[{"data":{},"marks":[],"nodeType":"text","value":"sign up for an account"}]},{"data":{},"marks":[],"nodeType":"text","value":"."}]}]}},{"id":"5x5EIT9fhVtf2qQJ2OVqHl","componentType":"AccordionItem","headline":"Does my customer need to have an account with PayPal?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"No, your customer doesn’t need an account with PayPal. Upon receiving your invoice, your customer will be able to send their payment directly from the invoice."}]}]}},{"id":"AX928gyCBogaZtovkru9Si","componentType":"AccordionItem","headline":"Can my customer pay my invoice in installments?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Yes, your customers can pay invoices in installments with PayPal Pay Later.^4^"}]}]}},{"id":"Yixz0pcvrVLcJ3tO0Qae2Z","componentType":"AccordionItem","headline":"What happens after I send my invoice?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"We'll send an email to your customer that links to your invoice. They can review the invoice and choose to pay you online with their debit or credit card, or using their PayPal Wallet. You'll get an email confirming that we've sent your invoices, and when you've been paid."}]}]}},{"id":"VcQYYQ2fFhieFkPKG7Mr0D","componentType":"AccordionItem","headline":"How do I send an invoice with PayPal?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"There are many ways to send PayPal invoices. If you know your customer’s email address, you can add it directly to the invoice and it will be automatically sent with a secure link so they can pay instantly. If you don’t know their email address, you can create a shareable link that you can copy to a clipboard, or share from your phone using a QR code."}]}]}},{"id":"0frIWD6SiuobVUXXDscel6","componentType":"AccordionItem","headline":"Can I accept international payments through PayPal Invoicing?","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"PayPal Invoicing is available in over 200 markets and 24 currencies. Payment options may vary based on the recipient's location."}]}]}}],"itemOpen":true,"theme":"white","layout":"default","topSpacer":"8vw","bottomSpacer":"6vw"},{"id":"1YLSiPqdLzwPbNDoDUuh6I","componentType":"ArticleCardCarousel","collection":[{"id":"3aT5yJQJ5vS54GWcbcqBk7","componentType":"SimpleArticleDescriptor","headline":{"id":"6hQxKhP10yS4EKVm9inmZo","componentType":"Paragraph","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"How to keep track of invoices and payments efficiently"}]}]},"headlineSize":"Headline 6","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]}},"topicGroup":{"id":"47onzwkD0l7uwe2TdaMYV6","componentType":"ArticleTopicGroup","segment":{"id":"hdn2sL4pd11L7sfP3CUZA","componentType":"ArticleSegment","segment":"Small Business","segmentId":"Small Business"},"category":{"id":"3qtvmYkJxAieZpKi8H0Zbz","componentType":"ArticleCategory","category":"Payments","categoryId":"Payments"},"topic":{"id":"30sYG9GCLSdiQG4BZxdd2g","componentType":"ArticleTopic","topic":"Article","topicId":"Article"}},"articleType":"article","articleTypeLabels":{"id":"X02WcZ6PNYybKoFZTUd3sG","componentType":"ArticleTypeLabels","articleLabel":"Article","caseStudyLabel":"Case Study","podcastLabel":"Podcast","storyLabel":"Story","podcastEpisodeLabel":"Podcast Episode"},"buttonAriaLabel":"Read","articleRelativeUrl":"/brc/article/create-an-online-invoice-tracker","date":"2024-07-02T00:00-05:00","author":{"id":"4UedizD98ovMbb8JdcG8Nt","componentType":"ArticleAuthorGroup","authorName":"PayPal Editorial Staff","authorGroupLabels":{"id":"7wlYcBLhwXD6Rht8VfIfuN","componentType":"AuthorGroupLabels","guestSpeakerLabel":"Guest","hostSpeakerLabel":"Host","authorSpeakerLabel":"Author"}},"image":{"id":"5tDGTlcR6HuCdjiWmL69JH","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-1_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-1_size-all.jpg","imageAltText":"Man in pottery studio holding tablet and looking at pot","imageServerKnobs":{"quality":40,"maxWidth":601}}},{"id":"1OQxbILS3nvaoktju5gGBl","componentType":"SimpleArticleDescriptor","headline":{"id":"XTHljSlZD3nnkvm9k8bEp","componentType":"Paragraph","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"How to make an invoice on PayPal"}]}]},"headlineSize":"Headline 6","headlineTag":"h3"},"topicGroup":{"id":"7EYL20JWkABUeArPethLRR","componentType":"ArticleTopicGroup","segment":{"id":"hdn2sL4pd11L7sfP3CUZA","componentType":"ArticleSegment","segment":"Small Business","segmentId":"Small Business"},"category":{"id":"38FnSZelGMGJiiXSRQgVVO","componentType":"ArticleCategory","category":"Payments","categoryId":"Payments"},"topic":{"id":"30sYG9GCLSdiQG4BZxdd2g","componentType":"ArticleTopic","topic":"Article","topicId":"Article"}},"articleType":"article","articleTypeLabels":{"id":"X02WcZ6PNYybKoFZTUd3sG","componentType":"ArticleTypeLabels","articleLabel":"Article","caseStudyLabel":"Case Study","podcastLabel":"Podcast","storyLabel":"Story","podcastEpisodeLabel":"Podcast Episode"},"buttonAriaLabel":"Read","articleRelativeUrl":"/brc/article/how-to-create-an-online-invoice-with-paypal","date":"2024-07-07T00:00-05:00","author":{"id":"4UedizD98ovMbb8JdcG8Nt","componentType":"ArticleAuthorGroup","authorName":"PayPal Editorial Staff","authorGroupLabels":{"id":"7wlYcBLhwXD6Rht8VfIfuN","componentType":"AuthorGroupLabels","guestSpeakerLabel":"Guest","hostSpeakerLabel":"Host","authorSpeakerLabel":"Author"}},"image":{"id":"4mWYrx4MoPcrl0VZYamJ21","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-2_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-2_size-all.jpg","imageAltText":"Landscape designer speaking to client","target":"_self","imageServerKnobs":{"quality":40,"maxWidth":601}}},{"id":"6DeqL85BLfyrQme9yUUGKw","componentType":"SimpleArticleDescriptor","headline":{"id":"5LK0kyep9Fx3UmUGVO5DbB","componentType":"Paragraph","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Invoice payment terms: How to set them for your business"}]}]},"headlineSize":"Headline 6","headlineTag":"h3"},"topicGroup":{"id":"47onzwkD0l7uwe2TdaMYV6","componentType":"ArticleTopicGroup","segment":{"id":"hdn2sL4pd11L7sfP3CUZA","componentType":"ArticleSegment","segment":"Small Business","segmentId":"Small Business"},"category":{"id":"3qtvmYkJxAieZpKi8H0Zbz","componentType":"ArticleCategory","category":"Payments","categoryId":"Payments"},"topic":{"id":"30sYG9GCLSdiQG4BZxdd2g","componentType":"ArticleTopic","topic":"Article","topicId":"Article"}},"articleType":"article","articleTypeLabels":{"id":"X02WcZ6PNYybKoFZTUd3sG","componentType":"ArticleTypeLabels","articleLabel":"Article","caseStudyLabel":"Case Study","podcastLabel":"Podcast","storyLabel":"Story","podcastEpisodeLabel":"Podcast Episode"},"buttonAriaLabel":"Read","articleRelativeUrl":"/brc/article/invoice-payment-terms","date":"2025-01-02T00:00-05:00","author":{"id":"4UedizD98ovMbb8JdcG8Nt","componentType":"ArticleAuthorGroup","authorName":"PayPal Editorial Staff","authorGroupLabels":{"id":"7wlYcBLhwXD6Rht8VfIfuN","componentType":"AuthorGroupLabels","guestSpeakerLabel":"Guest","hostSpeakerLabel":"Host","authorSpeakerLabel":"Author"}},"image":{"id":"2g3axELjbNKvnbXnDqRr6Q","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-3_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-3_size-all.jpg","imageAltText":"Two people holding phones","imageServerKnobs":{"quality":40,"maxWidth":601}}},{"id":"7tOfbAwbHtwyQnAFGIFgfQ","componentType":"SimpleArticleDescriptor","headline":{"id":"3LM7RbDMQXawfAWHg6k3BF","componentType":"Paragraph","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"What is e-invoicing: Understanding the benefits and differences between other invoice types"}]}]},"headlineSize":"Headline 6","headlineTag":"h3"},"topicGroup":{"id":"75eiKLp9qm7fcyxbjby7Ep","componentType":"ArticleTopicGroup","segment":{"id":"hdn2sL4pd11L7sfP3CUZA","componentType":"ArticleSegment","segment":"Small Business","segmentId":"Small Business"},"category":{"id":"6Zsfk9n2d6QbhS7oFQGv0d","componentType":"ArticleCategory","category":"Operations","categoryId":"Operations"},"topic":{"id":"30sYG9GCLSdiQG4BZxdd2g","componentType":"ArticleTopic","topic":"Article","topicId":"Article"}},"articleType":"article","articleTypeLabels":{"id":"X02WcZ6PNYybKoFZTUd3sG","componentType":"ArticleTypeLabels","articleLabel":"Article","caseStudyLabel":"Case Study","podcastLabel":"Podcast","storyLabel":"Story","podcastEpisodeLabel":"Podcast Episode"},"buttonAriaLabel":"Read","articleRelativeUrl":"/brc/article/einvoicing-solutions-vs-paper-invoicing","date":"2024-07-29T00:00-05:00","author":{"id":"4UedizD98ovMbb8JdcG8Nt","componentType":"ArticleAuthorGroup","authorName":"PayPal Editorial Staff","authorGroupLabels":{"id":"7wlYcBLhwXD6Rht8VfIfuN","componentType":"AuthorGroupLabels","guestSpeakerLabel":"Guest","hostSpeakerLabel":"Host","authorSpeakerLabel":"Author"}},"image":{"id":"SCxZVZPuN0yiqwB3s3Q7M","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-4_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-4_size-all.jpg","imageAltText":"Two men unpacking a box","imageServerKnobs":{"quality":40,"maxWidth":601}}},{"id":"2GWvrbpY1cNaqKyb0FxvjQ","componentType":"SimpleArticleDescriptor","headline":{"id":"3ASPUrJPCsJ73joJgalQpE","componentType":"Paragraph","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Download and customize freelance invoice templates"}]}]},"headlineSize":"Headline 6","headlineTag":"h3"},"topicGroup":{"id":"47onzwkD0l7uwe2TdaMYV6","componentType":"ArticleTopicGroup","segment":{"id":"hdn2sL4pd11L7sfP3CUZA","componentType":"ArticleSegment","segment":"Small Business","segmentId":"Small Business"},"category":{"id":"3qtvmYkJxAieZpKi8H0Zbz","componentType":"ArticleCategory","category":"Payments","categoryId":"Payments"},"topic":{"id":"30sYG9GCLSdiQG4BZxdd2g","componentType":"ArticleTopic","topic":"Article","topicId":"Article"}},"articleType":"article","articleTypeLabels":{"id":"X02WcZ6PNYybKoFZTUd3sG","componentType":"ArticleTypeLabels","articleLabel":"Article","caseStudyLabel":"Case Study","podcastLabel":"Podcast","storyLabel":"Story","podcastEpisodeLabel":"Podcast Episode"},"buttonAriaLabel":"Read","articleRelativeUrl":"/brc/article/freelancer-invoice-template-online","date":"2024-11-04T00:00-05:00","author":{"id":"4UedizD98ovMbb8JdcG8Nt","componentType":"ArticleAuthorGroup","authorName":"PayPal Editorial Staff","authorGroupLabels":{"id":"7wlYcBLhwXD6Rht8VfIfuN","componentType":"AuthorGroupLabels","guestSpeakerLabel":"Guest","hostSpeakerLabel":"Host","authorSpeakerLabel":"Author"}},"image":{"id":"1r7FrnhbqE3CREvvKbIAUI","componentType":"Image","baseImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-5_size-all.jpg","mdImage":"https://www.paypalobjects.com/marketing/web23/us/invoicing/article-5_size-all.jpg","imageAltText":"Woman sitting outside looking at phone","target":"_self","imageServerKnobs":{"quality":40,"maxWidth":601}}}],"carouselDetails":{"id":"33BcBYLdeoFXW3clHXCATj","componentType":"CarouselDetails","ariaLabel":"Card Carousel","prevButtonLabel":"Previous slide","nextButtonLabel":"Next slide","pageNavButtonLabel":"Go to page ${item} of ${totalItems}","slideLabel":"Slide ${item} of ${totalItems}","pageLabel":"Showing page ${item} of ${totalItems}"},"type":"standard","theme":"white","headerTextGroup":{"id":"6NbXQ2O1NLxf45eRCh94g8","componentType":"TextGroup","eyebrowTag":"p","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Get smarter. Grow faster."}]}]},"headlineSize":"Headline 4","headlineTag":"h2","alignment":"Start","type":"Default","removeOrphanFromHeadline":true},"topSpacer":"8vw","bottomSpacer":"12vw"},{"id":"AX7Gd1qNM7NfPubX1NuRsQ","componentType":"CtaClosingRebrand","textGroup":{"id":"aKIeBfCOL9JcBM78gf2vxx","componentType":"TextGroup","eyebrowText":"PayPal Open","eyebrowTag":"h2","headline":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"One platform\nfor all business"}]}]},"headlineSize":"Headline 3","headlineTag":"h3","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Get paid. Get growing. Get ahead."}]},{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Do more with the platform designed to power commerce."}]}]},"paragraphSize":"Body","alignment":"Center","actionGroup":{"id":"YMviCW9dBdweQDQUeh2RZS","componentType":"ButtonGroup","button":[{"id":"3cJSTnxmJ7vd5NPPlh3bgo","componentType":"Button","text":"Sign Up","ariaLabel":"Sign Up","url":"/bizsignup/entry?product=invoicing","mobileUrl":"/bizsignup/entry?product=invoicing","target":"_self","size":"Dynamic","type":"Primary","clickEventName":"SignUp_CTA","buttonStyle":"ppreact","documentId":"BTN2377","serverFptiData":{"event_name":"bottom_2_0_Primary_SignUp_CTA_clicked","link":"bottom:2:0:Primary:SignUp_CTA:clicked"}},{"id":"5Icv0Pyp5n5e6oxrrq5Hd2","componentType":"Button","text":"Contact Sales","ariaLabel":"Contact Sales","url":"/business/contact-sales","mobileUrl":"/business/contact-sales","target":"_self","size":"Dynamic","type":"Secondary","clickEventName":"ContactSales_CTA","buttonStyle":"ppreact","documentId":"BTN2378","serverFptiData":{"event_name":"bottom_2_0_Secondary_ContactSales_CTA_clicked","link":"bottom:2:0:Secondary:ContactSales_CTA:clicked"}}],"alignment":"Center","legalPosition":"Bottom"},"type":"Default"},"hideGraphicShapes":true,"appDownloadAlignment":"Center","layout":"QrOnlyStack","topSpacer":"8vw","bottomSpacer":"8vw","theme":"blue 600","eyebrowStyle":"Featured Eyebrow"}],"belowFooter":[{"id":"6DNkGBXNoGzfHy4FM74RJ7","componentType":"Disclosure","paragraph":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":""}]}]},"collection":[{"id":"5OyBxggyshofRL1JDmaWUP","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Based on PayPal internal data from August 1, 2023 to July 31, 2024."}]}]}},{"id":"cwYbmpfIRCDc1dkQE0x4Dk","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Based on PayPal’s internal data from its launch in 2010 through February 2025."}]}]}},{"id":"b8RUlWE6fMIfUeKeMHn46Q","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Payments using Venmo are only available in the US."}]}]}},{"id":"ZyVn00VTSOvbm8oquJmrrn","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Requires the latest PayPal Checkout JavaScript Software Development Kit (JS SDK)."}]}]}},{"id":"ZI8oHq1ddXEbzHc5Rvt6sq","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Stable internet connection and Bluetooth may be required."}]}]}},{"id":"1SaWTsRN56NewDOHPYbaeW","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Fixed fee varies by currency received. For international transactions, the fee for receiving domestic transactions applies, plus an additional percentage-based fee."}]}]}},{"id":"65a92TAFUdkb5pZCK4J7ae","componentType":"DisclosureItem","text":{"data":{},"nodeType":"document","content":[{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Apple Pay does not charge any additional fees."}]},{"data":{},"nodeType":"paragraph","content":[{"data":{},"marks":[],"nodeType":"text","value":"Apple Pay is a registered trademark of Apple Inc."}]}]}}],"inlineDisclosure":false,"backgroundColor":"white"}]},"isRebrandPage":true,"noIndex":false,"passUtm":false,"internalViewOnly":false,"theme":"ppe","update_time":"2025-04-23T02:55:22.899Z","create_time":"2023-01-08T15:34:26.456Z","language":["en-US"]},"pageContext":{"cmsEngineContext":{"apis":{"pardot":{"base":"/site/cms-engine/api/pardot","analytics":"/site/cms-engine/api/pardot/analytics","saveFormData":"/site/cms-engine/api/pardot/save-form-data"}},"app":{"appEntryPoint":"/site"},"environment":{"host":"https://www.paypal.com","baseNolocaleUri":"https://www.paypal.com","baseURI":"https://www.paypal.com/US","isCMSPreview":false,"isRTL":false,"pageSegment":"smb","pageURI":"business/accept-payments/invoice","queryStringParams":{"locale.x":"en_US","isPaypalWebView":"false","deviceType":"desktop","isiPhone":"false","cacheVer":"p6"},"runMode":"production","theme":"ppe","reduceMotion":false,"disableAnimations":false,"disableAnimationsComponentCount":5,"appEnv":{"isDev":false,"domain":"PayPal","cdnxHostName":"www.paypalobjects.com","hostnameConfig":{"hostname":"","useCountryCode":true}},"brand":"paypal","isPayPalAppWebview":false},"requestor":{"clientInfo":{"clientLocale":"en_US","clientOsType":"Other","clientType":"dedicated","initialViewPort":"sm"},"locality":{"country":"US","language":"en","locale":"en_US"},"csrfToken":"jFxkEDviRAk6Hnvx/bLCzrNwt9t4Ip5DomovA=","nonce":"XjjDVHvsCRBi29dYdQ123Y/QqQb+4/41BcaI5TIEVsVatxvZ","loggedIn":false,"tracking":{"utmParams":{},"fpti":{"dataString":"pgrp=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice&page=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice%3A%3A%3A&qual=&comp=ppcmsnodeweb&tsrce=ppcmsnodeweb&cu=0&ef_policy=ccpa&c_prefs=&pxpguid=&pgst=1767194933434&calc=f935432e19ac9&csci=f935432e19ac9&rsta=en_US&ccpg=us&pgtf=Nodejs&s=ci&env=live&xe=112102%2C112068%2C109112&xt=162357%2C162136%2C143574&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&pgsf=business&bzsr=main&lgin=out&page_type=ecm&shir=main_mktg_business_product&pros=2&event_props=cu%2Clgin%2Cpage%2Cxe%2Cxt&event_name=ppcom_page_viewed&page_segment=smb&user_props=cu%2Cxe%2Cxt&lgcook=0&server=origin&space_key=SKDENK","varName":"pta","name":"pta","jsURL":"https://www.paypalobjects.com","serverURL":"https://t.paypal.com/ts"}},"userHome":"GENERAL"}},"componentKitContext":{},"additionalContext":{"contentSource":1,"transformerContext":{},"preview":{"enabled":false},"passUtm":false,"__EXPERIMENTAL__":{},"templateContext":{"lang":"en-US","dir":"ltr","nonce":"XjjDVHvsCRBi29dYdQ123Y/QqQb+4/41BcaI5TIEVsVatxvZ"},"isReqFromMPP":true,"spaceKey":"core","edgeEnabled":true,"ecmHost":"node-contentnodeserv-vip.live38.dcg16.slc.paypalinc.com","navContent":{}}},"componentKit":{"HeroRebrand":{"requested":true},"SubNav":{"requested":true},"CardWrappedContentSection":{"requested":true},"FeatureColumnSplitSection":{"requested":true},"TextSectionType":{"requested":true},"StackSectionType":{"requested":true},"SplitSectionType":{"requested":true},"PricingCardHorizontalType":{"requested":true},"CardCarousel":{"requested":true},"FaqType":{"requested":true},"ArticleCardCarousel":{"requested":true},"CtaClosingRebrand":{"requested":true},"Disclosure":{"requested":true}},"previewTransformHelpers":{},"componentResolutionMetaData":{"helpers-3619f629.css":"critical","QrCode-64f747e1.css":"critical","card-renderer-3ff112e2.css":"critical","TextGroup-8bcffecc.css":"critical","Hero-08e79cc1.css":"critical","NavButton-02decebe.css":"critical","SubNav-0c73fcb9.css":"critical","TextHeaderInner-c1574fb8.css":"critical","CardContentSectionItem-de498cd0.css":"critical","CardContentSection-9f7f09af.css":"critical","CardWrappedContentSection-70bd1c57.css":"critical","TruncatedTextGroup-383948fd.css":"critical","FeatureColumnItem-58e0783c.css":"critical","FeatureColumnSplit-7db4915b.css":"critical","TextSectionType-c5a3677e.css":"critical","StackSectionType-e38e5e0f.css":"non-critical","SplitSectionItem-f21f542a.css":"non-critical","SplitSection-81a671c4.css":"non-critical","ActionCard-9fe1e79b.css":"non-critical","PricingCardHorizontal-e42f24e1.css":"non-critical","CardContentCarouselSection-140bb988.css":"non-critical","Accordion-632700d6.css":"non-critical","ArticleCardCarousel-ca162dab.css":"non-critical","CtaSection-15353f3f.css":"non-critical"}}</script>
-<noscript><img src="https://t.paypal.com/ts?nojs=1&pgrp=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice&page=main%3Amktg%3Abusiness%3Aproduct%3Abusiness-accept-payments%2Finvoice%3A%3A%3A&qual=&comp=ppcmsnodeweb&tsrce=ppcmsnodeweb&cu=0&ef_policy=ccpa&c_prefs=&pxpguid=&pgst=1767194933434&calc=f935432e19ac9&csci=f935432e19ac9&rsta=en_US&ccpg=us&pgtf=Nodejs&s=ci&env=live&xe=112102%2C112068%2C109112&xt=162357%2C162136%2C143574&pp_ref_id=6390fbe6-883b-4e81-b80f-708e14e926ee&pgsf=business&bzsr=main&lgin=out&page_type=ecm&shir=main_mktg_business_product&pros=2&event_props=cu%2Clgin%2Cpage%2Cxe%2Cxt&event_name=ppcom_page_viewed&page_segment=smb&user_props=cu%2Cxe%2Cxt&lgcook=0&server=origin&space_key=SKDENK" alt="" height="1" width="1" border="0"></noscript>
-<script type="text/javascript" src="https://www.paypalobjects.com/ncs/ncs.js" defer></script>
+## Invoicing
 
-    
-  <script async src="/auth/createchallenge/de805b75e1bd9375/recaptchav3.js"></script></body>
-</html>
+### Send invoices in seconds.
+
+### Get paid fast.
+
+Create and send invoices with ease from anywhere. Your customers can pay them instantly. Even if they don’t have a PayPal account.
+
+Get in touch, [1-866-784-3639](tel:+18667843639).
+
+![Woman working on laptop with invoice overlay showing $220 due and options to pay with PayPal, Venmo, or credit or debit card](https://www.paypalobjects.com/marketing/web23/us/invoicing/hero-size-mobile.jpg)
+
+## Invoicing that works for you
+
+### Enjoy smoother invoicing
+
+Create, send, and track invoices in seconds with an easy-to-use interface and smart automation, saving you time and effort.
+
+### Build customer trust
+
+Stay true to your brand with customizable, professional-looking invoices.
+
+### Get your money faster
+
+Give your customers the flexible payments they want so you can get paid faster and see money in your account sooner.
+
+### Create. Get paid. Repeat.
+
+Get a preview of what your invoice will look like as you edit. Plus, learn how to save templates for future invoices.
+
+## Pricing with no surprises
+
+### PayPal and Venmo
+
+- **Fixed Fee**: $0.49 per transaction
+- **Fixed Fee**: $0.49 per transaction
+
+### Pay Later
+
+- **Fixed Fee**: $0.49 per transaction
+
+### Debit cards, credit cards, & Apple Pay
+
+- **Fixed Fee**: $0.49 per transaction
+
+### Apple Pay
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction
+
+### PayPal Invoicing Fixed Fee
+
+- **Fixed Fee**: $0.49 per transaction

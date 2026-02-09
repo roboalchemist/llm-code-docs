@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/observability/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secure model inference
 
 > Keeping your models safe and private

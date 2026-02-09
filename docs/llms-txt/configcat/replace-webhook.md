@@ -2,10 +2,7 @@
 
 # Replace Webhook
 
-```
-PUT 
-/v1/webhooks/:webhookId
-```
+Copy page
 
 This endpoint replaces the whole value of a Webhook identified by the `webhookId` parameter.
 

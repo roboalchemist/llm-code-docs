@@ -65,7 +65,7 @@ Follow evolving performance optimizations and workload-specific recipes to maxim
 
 Scale deployment of streaming applications for industrial digitalization and physical AI simulation.
 
-[Learn More About Ominverse on DGX Cloud](https://www.nvidia.com/en-us/data-center/omniverse-dgx-cloud/)
+[Learn More About Omniverse on DGX Cloud](https://www.nvidia.com/en-us/data-center/omniverse-dgx-cloud/)
 
 ### NVIDIA Cosmos Curator on DGX Cloud
 
@@ -91,7 +91,7 @@ Tap into global GPU compute to discover, procure, develop, customize, and deploy
 
 Access optimized accelerated computing clusters for AI training and fine-tuning on any leading cloud.
 
-[Learn More About DGX Cloud on CSPs](https://www.nvidia.com/en-us/data-center/dgx-cloud-on-csps/?ncid=no-ncid)
+[Learn More About DGX Cloud on    CSPs](https://www.nvidia.com/en-us/data-center/dgx-cloud-on-csps/?ncid=no-ncid)
 
  ![NVIDIA Cloud Functions](https://developer.download.nvidia.com/images/dgx-cloud-services/scalable-ai.svg)
 ### NVIDIA Cloud Functions
@@ -112,7 +112,7 @@ Access benchmarking recipes, tools, and services to identify AI workload perform
 
 Scale deployment of streaming applications for industrial digitalization and physical AI simulations on one fully managed platform.
 
-[Learn More About Omniverese on DGX Cloud](https://www.nvidia.com/en-us/data-center/omniverse-dgx-cloud/)
+[Learn More About Omniverse on DGX Cloud](https://www.nvidia.com/en-us/data-center/omniverse-dgx-cloud/)
 
  ![NVIDIA Cosmos Curator on NVIDIA DGX Cloud](https://developer.download.nvidia.com/icons/model-customization.svg)
 ### NVIDIA Cosmos Curator on NVIDIA DGX Cloud

@@ -4,11 +4,7 @@
 
 Introduction to Better Auth.
 
-***
 
-title: Introduction
-description: Introduction to Better Auth.
------------------------------------------
 
 Better Auth is a framework-agnostic, universal authentication and authorization framework for TypeScript. It provides a comprehensive set of features out of the box and includes a plugin ecosystem that simplifies adding advanced functionalities. Whether you need 2FA, passkey, multi-tenancy, multi-session support, or even enterprise features like SSO, creating your own IDP, it lets you focus on building your application instead of reinventing the wheel.
 
@@ -27,6 +23,14 @@ Better Auth aims to be the most comprehensive auth library. It provides a wide r
 ### LLMs.txt
 
 Better Auth exposes an `LLMs.txt` that helps AI models understand how to integrate and interact with your authentication system. See it at [https://better-auth.com/llms.txt](https://better-auth.com/llms.txt).
+
+### Skills
+
+Better Auth provides skills that can be added to your AI coding assistant to help it understand Better Auth best practices and implementation patterns.
+
+```bash title="terminal"
+npx skills add better-auth/skills
+```
 
 ### MCP
 
@@ -71,7 +75,7 @@ Alternatively, you can manually configure the MCP server for each client:
 <Tabs items={["Claude Code", "Open Code", "Manual"]}>
   <Tab value="Claude Code">
     ```bash title="terminal"
-    claude mcp add --transport http better-auth https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp
+    claude mcp add --transport http better-auth https://mcp.inkeep.com/better-auth/mcp
     ```
   </Tab>
 
@@ -82,7 +86,7 @@ Alternatively, you can manually configure the MCP server for each client:
           "mcp": {
               "better-auth": {
                   "type": "remote",
-                  "url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp",
+                  "url": "https://mcp.inkeep.com/better-auth/mcp",
                   "enabled": true,
               }
           }
@@ -94,7 +98,7 @@ Alternatively, you can manually configure the MCP server for each client:
     ```json title="mcp.json"
     {
        "better-auth": {
-           "url": "https://mcp.chonkie.ai/better-auth/better-auth-builder/mcp"
+           "url": "https://mcp.inkeep.com/better-auth/mcp"
        }
     }
     ```
@@ -102,6 +106,6 @@ Alternatively, you can manually configure the MCP server for each client:
 </Tabs>
 
 <Callout>
-  We provide a firstâparty MCP, powered by [Chonkie](https://chonkie.ai). You can alternatively use [`context7`](https://context7.com/) and other MCP providers.
+  We provide a firstâparty MCP, powered by [Inkeep](https://inkeep.com). You can alternatively use [`context7`](https://context7.com/) and other MCP providers.
 </Callout>
 

@@ -2,14 +2,10 @@
 
 # Source: https://mui.com/x/react-charts/heatmap.md
 
-# Source: https://mui.com/x/api/charts/heatmap.md
-
-# Source: https://mui.com/x/react-charts/heatmap.md
-
 ---
 title: React Heatmap chart
 productId: x-charts
-components: Heatmap, HeatmapPlot, HeatmapTooltip, HeatmapTooltipContent
+components: Heatmap, HeatmapPlot, HeatmapTooltip, HeatmapTooltipContent, FocusedHeatmapCell
 ---
 
 # Charts - Heatmap [<span class="plan-pro"></span>](/x/introduction/licensing/#pro-plan 'Pro plan')
@@ -382,6 +378,85 @@ export default function HighlightClasses() {
         height={300}
       />
     </Box>
+  );
+}
+
+```
+
+## Click event
+
+Use `onItemClick` to know which cell is clicked by user.
+
+The first argument is the click event.
+The second one is the item identifier.
+It contains the properties `xIndex` and `yIndex` that are the indexes of the clicked cell along the x- and y-axes respectively.
+
+If this cell has associated data, the `dataIndex` property indicates the position of the cell's data within the series' `data` array.
+
+```tsx
+import * as React from 'react';
+import { HighlightedCode } from '@mui/docs/HighlightedCode';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
+import { Heatmap } from '@mui/x-charts-pro/Heatmap';
+import type { HeatmapItemIdentifier } from '@mui/x-charts-pro/models';
+import { data } from './dumbData';
+
+export default function HeatmapCellClick() {
+  const [cellData, setCellData] = React.useState<HeatmapItemIdentifier | null>(null);
+
+  return (
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      spacing={{ xs: 0, md: 4 }}
+      sx={{ width: '100%' }}
+    >
+      <Box sx={{ flexGrow: 1 }}>
+        <Heatmap
+          xAxis={[{ data: [1, 2, 3, 4] }]}
+          yAxis={[{ data: ['A', 'B', 'C', 'D', 'E'] }]}
+          series={[
+            {
+              data: data.filter((_, index) => index !== 5 && index !== 13),
+              highlightScope: { highlight: 'item' },
+            },
+          ]}
+          height={300}
+          onItemClick={(event, params) => setCellData(params)}
+        />
+      </Box>
+
+      <Stack direction="column" sx={{ width: { xs: '100%', md: '40%' } }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography>Click on the chart</Typography>
+          <IconButton
+            aria-label="reset"
+            size="small"
+            onClick={() => {
+              setCellData(null);
+            }}
+          >
+            <UndoOutlinedIcon fontSize="small" />
+          </IconButton>
+        </Box>
+        <HighlightedCode
+          code={`// Data from cell click
+${cellData ? JSON.stringify(cellData, null, 2) : '// The data will appear here'}
+`}
+          language="json"
+          copyButtonHidden
+        />
+      </Stack>
+    </Stack>
   );
 }
 

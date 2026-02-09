@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/descope.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Descope 🤝 FastMCP
 
 > Secure your FastMCP server with Descope
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.4" />
@@ -24,28 +25,30 @@ This guide shows you how to secure your FastMCP server using [**Descope**](https
 Before you begin, you will need:
 
 1. To [sign up](https://www.descope.com/sign-up) for a Free Forever Descope account
-2. Your **Project ID** from the [Descope Console](https://app.descope.com/settings/project)
-3. Your FastMCP server's URL (can be localhost for development, e.g., `http://localhost:3000`)
+2. Your FastMCP server's URL (can be localhost for development, e.g., `http://localhost:3000`)
 
 ### Step 1: Configure Descope
 
 <Steps>
-  <Step title="Enable Dynamic Client Registration">
-    1. Go to the [Inbound Apps page](https://app.descope.com/apps/inbound) of the Descope Console
-    2. Click **DCR Settings**
-    3. Enable **Dynamic Client Registration (DCR)**
-    4. Define allowed scopes
+  <Step title="Create an MCP Server">
+    1. Go to the [MCP Servers page](https://app.descope.com/mcp-servers) of the Descope Console, and create a new MCP Server.
+
+    2. Give the MCP server a name and description.
+
+    3. Ensure that **Dynamic Client Registration (DCR)** is enabled. Then click **Create**.
+
+    4. Once you've created the MCP Server, note your Well-Known URL.
 
     <Warning>
       DCR is required for FastMCP clients to automatically register with your authentication server.
     </Warning>
   </Step>
 
-  <Step title="Note Your Project ID">
-    Save your Project ID from [Project Settings](https://app.descope.com/settings/project):
+  <Step title="Note Your Well-Known URL">
+    Save your Well-Known URL from [MCP Server Settings](https://app.descope.com/mcp-servers):
 
     ```
-    Project ID: P2abc...123
+    Well-Known URL: https://.../v1/apps/agentic/P.../M.../.well-known/openid-configuration
     ```
   </Step>
 </Steps>
@@ -55,14 +58,9 @@ Before you begin, you will need:
 Create a `.env` file with your Descope configuration:
 
 ```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-DESCOPE_PROJECT_ID=P2abc...123      # Your Descope Project ID
-DESCOPE_BASE_URL=https://api.descope.com   # Descope API URL
+DESCOPE_CONFIG_URL=https://.../v1/apps/agentic/P.../M.../.well-known/openid-configuration     # Your Descope Well-Known URL
 SERVER_URL=http://localhost:3000     # Your server's base URL
 ```
-
-<Note>
-  You can find your project's Descope Base URL in the [Multi-Region Support Guide](https://docs.descope.com/management/project-settings/multi-regional).
-</Note>
 
 ### Step 3: FastMCP Configuration
 
@@ -75,9 +73,8 @@ from fastmcp.server.auth.providers.descope import DescopeProvider
 # The DescopeProvider automatically discovers Descope endpoints
 # and configures JWT token validation
 auth_provider = DescopeProvider(
-    project_id=DESCOPE_PROJECT_ID,        # Your Descope Project ID
+    config_url=https://.../.well-known/openid-configuration,        # Your MCP Server .well-known URL
     base_url=SERVER_URL,                  # Your server's public URL
-    descope_base_url=DESCOPE_BASE_URL,    # Descope API base URL
 )
 
 # Create FastMCP server with auth
@@ -87,7 +84,7 @@ mcp = FastMCP(name="My Descope Protected Server", auth=auth_provider)
 
 ## Testing
 
-To test your server, you can use the `fastmcp` CLI to run it locally. Assuming you've saved the above code to `server.py` (after replacing the `project_id`, `base_url`, and `descope_base_url` with your actual values!), you can run the following command:
+To test your server, you can use the `fastmcp` CLI to run it locally. Assuming you've saved the above code to `server.py` (after replacing the environment variables with your actual values!), you can run the following command:
 
 ```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 fastmcp run server.py --transport http --port 8000
@@ -107,55 +104,20 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-## Environment Variables
+## Production Configuration
 
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the Descope provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.descope.DescopeProvider` to use Descope authentication.
-  </ParamField>
-</Card>
-
-### Descope-Specific Configuration
-
-These environment variables provide default values for the Descope provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_PROJECT_ID" required>
-    Your Descope Project ID from the [Descope Console](https://app.descope.com/settings/project)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_BASE_URL" required>
-    Public URL of your FastMCP server (e.g., `https://your-server.com` or `http://localhost:8000` for development)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_DESCOPE_BASE_URL" default="https://api.descope.com">
-    Descope API base URL for your [region/environment](https://docs.descope.com/management/project-settings/multi-regional)
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Use the Descope provider
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.descope.DescopeProvider
-
-# Descope configuration
-FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_PROJECT_ID=P2abc...123
-FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_DESCOPEPROVIDER_DESCOPE_BASE_URL=https://api.descope.com
-```
-
-With environment variables set, your server code simplifies to:
+For production deployments, load configuration from environment variables:
 
 ```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
 from fastmcp import FastMCP
+from fastmcp.server.auth.providers.descope import DescopeProvider
 
-# Authentication is automatically configured from environment
-mcp = FastMCP(name="My Descope Protected Server")
+# Load configuration from environment variables
+auth = DescopeProvider(
+    config_url=os.environ.get("DESCOPE_CONFIG_URL"),
+    base_url=os.environ.get("BASE_URL", "https://your-server.com")
+)
+
+mcp = FastMCP(name="My Descope Protected Server", auth=auth)
 ```

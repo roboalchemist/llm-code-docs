@@ -2,21 +2,9 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/flyio.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/flyio.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/flyio.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/flyio.md
-
-# Source: https://infisical.com/docs/integrations/cloud/flyio.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/flyio.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/flyio.md
-
-# Source: https://infisical.com/docs/integrations/cloud/flyio.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/flyio.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Fly.io Connection
 
@@ -52,7 +40,7 @@ Infisical supports the use of [Access Tokens](https://fly.io/docs/security/token
   <Tab title="Infisical UI">
     <Steps>
       <Step title="Navigate to App Connections">
-        In your Infisical dashboard, navigate to the **App Connections** page in the desired project.
+        In your Infisical dashboard, navigate to the **Integrations** tab in the desired project, then select **App Connections**.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
       </Step>

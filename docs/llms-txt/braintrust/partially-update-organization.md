@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/organizations/partially-update-organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partially update organization
 
 > Partially update an organization object. Specify the fields to update in the payload. Any object-type fields will be deep-merged with existing content. Currently we do not support removing fields or setting them to null.
@@ -137,6 +141,8 @@ components:
         realtime_url:
           type: string
           nullable: true
+        image_rendering_mode:
+          $ref: '#/components/schemas/ImageRenderingMode'
     Organization:
       type: object
       properties:
@@ -164,6 +170,8 @@ components:
           nullable: true
           format: date-time
           description: Date of organization creation
+        image_rendering_mode:
+          $ref: '#/components/schemas/ImageRenderingMode'
       required:
         - id
         - name
@@ -171,6 +179,18 @@ components:
       type: string
       format: uuid
       description: Organization id
+    ImageRenderingMode:
+      type: string
+      nullable: true
+      enum:
+        - auto
+        - click_to_load
+        - blocked
+        - null
+      description: >-
+        Controls how images are rendered in the UI: 'auto' loads images
+        automatically, 'click_to_load' shows a placeholder until clicked,
+        'blocked' prevents image loading entirely
   securitySchemes:
     bearerAuth:
       type: http
@@ -183,7 +203,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

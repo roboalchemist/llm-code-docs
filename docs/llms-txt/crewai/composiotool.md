@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/automation/composiotool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Composio Tool
 
 > Composio provides 250+ production-ready tools for AI agents with flexible authentication management.

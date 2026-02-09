@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/continuous-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Continuous Integration
 
 Continuous Integration (CI) of prompt evaluations is the holy grail of prompt engineering. 🏆
@@ -64,8 +68,3 @@ The process of setting up regression tests looks similar to backtesting.
 The evaluation can result in a single quantitative final score. To configure the score card, all you need to do is make sure that the last step consists entirely of numbers or Booleans. A final objective score makes comparing prompt performance easy, and it will be displayed alongside prompts in the Prompt Registry.
 
 <img src="https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=1cdcda221e32c09311bf05a9e6e0728e" alt="Version Scoring" data-og-width="387" width="387" data-og-height="482" height="482" data-path="images/version-scores.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=280&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=7d09d12a5d981da213783ad8fc88c2ba 280w, https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=560&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=e46d40fa576b9d59b476d9e731b8de7f 560w, https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=840&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=3ae2c2c9c5d275ae1761ea57a927c7ef 840w, https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=1100&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=be6ca852ef0c9dd3d1c1af12afd0416a 1100w, https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=1650&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=387a8e664466b344055486ede246b7d1 1650w, https://mintcdn.com/promptlayer/v0RzaTvbzopITX7U/images/version-scores.png?w=2500&fit=max&auto=format&n=v0RzaTvbzopITX7U&q=85&s=ed4d547ef9172e5234d935bb9f03b9c2 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

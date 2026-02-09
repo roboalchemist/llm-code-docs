@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/ban-types.md
 ---
-# typescript/ban-types&#x20;
 
 ### What it does
 

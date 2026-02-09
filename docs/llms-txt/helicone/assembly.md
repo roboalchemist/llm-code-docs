@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/prompts/assembly.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Assembly
 
 > Understand how prompts are compiled from templates and runtime parameters

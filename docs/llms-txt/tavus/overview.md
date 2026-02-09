@@ -12,57 +12,9 @@
 
 # Source: https://docs.tavus.io/api-reference/overview.md
 
-# Source: https://docs.tavus.io/sections/video/overview.md
-
-# Source: https://docs.tavus.io/sections/replica/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/persona/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/interactions-protocols/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/overview.md
-
-# Source: https://docs.tavus.io/api-reference/overview.md
-
-# Source: https://docs.tavus.io/sections/video/overview.md
-
-# Source: https://docs.tavus.io/sections/replica/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/persona/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/interactions-protocols/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/overview.md
-
-# Source: https://docs.tavus.io/api-reference/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/persona/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/interactions-protocols/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/overview.md
-
-# Source: https://docs.tavus.io/api-reference/overview.md
-
-# Source: https://docs.tavus.io/sections/video/overview.md
-
-# Source: https://docs.tavus.io/sections/replica/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/persona/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/interactions-protocols/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/overview.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/overview.md
-
-# Source: https://docs.tavus.io/api-reference/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 

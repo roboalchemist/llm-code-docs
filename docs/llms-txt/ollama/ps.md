@@ -1,70 +1,71 @@
 # Source: https://docs.ollama.com/api/ps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List running models
 
 > Retrieve a list of models that are currently running
 
+
+
 ## OpenAPI
 
 ````yaml openapi.yaml get /api/ps
+openapi: 3.1.0
+info:
+  title: Ollama API
+  version: 0.1.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: |
+    OpenAPI specification for the Ollama HTTP API
+servers:
+  - url: http://localhost:11434
+    description: Ollama
+security: []
 paths:
-  path: /api/ps
-  method: get
-  servers:
-    - url: http://localhost:11434
-      description: Ollama
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: List running models
-        lang: bash
-        source: |
-          curl http://localhost:11434/api/ps
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              models:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/Ps'
-                    description: Currently running models
-            refIdentifier: '#/components/schemas/PsResponse'
-        examples:
-          example:
-            value:
-              models:
-                - model: gemma3
-                  size: 6591830464
-                  digest: >-
-                    a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a
-                  details:
-                    parent_model: ''
-                    format: gguf
-                    family: gemma3
-                    families:
-                      - gemma3
-                    parameter_size: 4.3B
-                    quantization_level: Q4_K_M
-                  expires_at: '2025-10-17T16:47:07.93355-07:00'
-                  size_vram: 5333539264
-                  context_length: 4096
-        description: Models currently loaded into memory
-  deprecated: false
-  type: path
-  xMint:
-    href: /api/ps
+  /api/ps:
+    get:
+      summary: List running models
+      description: Retrieve a list of models that are currently running
+      operationId: ps
+      responses:
+        '200':
+          description: Models currently loaded into memory
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PsResponse'
+              example:
+                models:
+                  - model: gemma3
+                    size: 6591830464
+                    digest: >-
+                      a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a
+                    details:
+                      parent_model: ''
+                      format: gguf
+                      family: gemma3
+                      families:
+                        - gemma3
+                      parameter_size: 4.3B
+                      quantization_level: Q4_K_M
+                    expires_at: '2025-10-17T16:47:07.93355-07:00'
+                    size_vram: 5333539264
+                    context_length: 4096
 components:
   schemas:
+    PsResponse:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ps'
+          description: Currently running models
     Ps:
       type: object
       properties:

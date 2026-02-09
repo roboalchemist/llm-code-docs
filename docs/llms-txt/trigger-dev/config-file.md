@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/config-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The trigger.config.ts file
 
 > This file is used to configure your project and how it's built.
 
 The `trigger.config.ts` file is used to configure your Trigger.dev project. It is a TypeScript file at the root of your project that exports a default configuration object. Here's an example:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -48,7 +52,7 @@ The config file handles a lot of things, like:
 
 You can specify the directories where your tasks are located using the `dirs` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -61,7 +65,7 @@ If you omit the `dirs` option, we will automatically detect directories that are
 
 We will search for TypeScript and JavaScript files in the specified directories and include them in the build process. We automatically exclude files that have `.test` or `.spec` in the name, but you can customize this by specifying glob patterns in the `ignorePatterns` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -75,7 +79,7 @@ export default defineConfig({
 
 You can specify a custom path to your tsconfig file. This is useful if you have a custom tsconfig file that you want to use.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -89,7 +93,7 @@ export default defineConfig({
 
 You can add lifecycle functions to get notified when any task starts, succeeds, or fails using `onStart`, `onSuccess` and `onFailure`:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -120,7 +124,7 @@ We use OpenTelemetry (OTEL) for our run logs. This means you get a lot of inform
 
 Here we add Prisma and OpenAI instrumentations to your `trigger.config.ts` file.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { PrismaInstrumentation } from "@prisma/instrumentation";
 import { OpenAIInstrumentation } from "@traceloop/instrumentation-openai";
@@ -152,7 +156,7 @@ Some ones we recommend:
 
 You can also configure custom telemetry exporters to send your traces and logs to other external services. For example, you can send your logs to [Axiom](https://axiom.co/docs/guides/opentelemetry-nodejs#exporter-instrumentation-ts). First, add the opentelemetry exporter packages to your package.json file:
 
-```json package.json theme={null}
+```json package.json theme={"theme":"css-variables"}
 "dependencies": {
   "@opentelemetry/exporter-logs-otlp-http": "0.52.1",
   "@opentelemetry/exporter-trace-otlp-http": "0.52.1"
@@ -161,7 +165,7 @@ You can also configure custom telemetry exporters to send your traces and logs t
 
 Then, configure the exporters in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -200,7 +204,7 @@ Make sure to set the `AXIOM_API_TOKEN` and `AXIOM_DATASET` environment variables
 
 It's important to note that you cannot configure exporters using `OTEL_*` environment variables, as they would conflict with our internal telemetry. Instead you should configure the exporters via passing in arguments to the `OTLPTraceExporter` and `OTLPLogExporter` constructors. For example, here is how you can configure exporting to Honeycomb:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { OTLPLogExporter } from "@opentelemetry/exporter-logs-otlp-http";
@@ -239,7 +243,7 @@ export default defineConfig({
 
 We currently only officially support the `node` runtime, but you can try our experimental `bun` runtime by setting the `runtime` option in your config file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -263,11 +267,11 @@ Trigger.dev runs your tasks on specific Node.js versions:
 
 * Node.js `21.7.3` (default)
 * Node.js `22.16.0` (`node-22`)
-* Bun `1.2.20` (`bun`)
+* Bun `1.3.3` (`bun`)
 
 You can change the runtime by setting the `runtime` field in your `trigger.config.ts` file.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -281,7 +285,7 @@ export default defineConfig({
 
 You can specify the default machine for all tasks in your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -297,7 +301,7 @@ See our [machines documentation](/machines) for more information.
 
 You can set the log level for your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -313,7 +317,7 @@ The `logLevel` only determines which logs are sent to the Trigger.dev instance w
 
 You can control console logging behavior in development:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -328,7 +332,7 @@ export default defineConfig({
 
 You can set the default `maxDuration` for all tasks in your project:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -346,7 +350,7 @@ Keep the process alive after the task has finished running so the next task does
 
 Note that the process could be killed at any time, and we don't make any guarantees about the process being alive for a certain amount of time
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -358,7 +362,7 @@ export default defineConfig({
 
 You can pass an object to the `processKeepAlive` option to configure the behavior:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -378,7 +382,7 @@ export default defineConfig({
 
 You can control the working directory behavior in development:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -394,7 +398,7 @@ When set to `false`, the current working directory will be set to the build dire
 
 CA Cert file to be added to NODE\_EXTRA\_CA\_CERT environment variable, useful in use with self signed cert in the trigger.dev environment.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -409,7 +413,7 @@ export default defineConfig({
 
 You can customize the build process using the `build` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -438,7 +442,7 @@ export default defineConfig({
 
 All code is bundled by default, but you can exclude some packages from the bundle using the `external` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -454,7 +458,7 @@ When a package is excluded from the bundle, it will be added to a dynamically ge
 
 Each entry in the external should be a package name, not necessarily the import path. For example, if you want to exclude the `ai` package, but you are importing `ai/rsc`, you should just include `ai` in the `external` array:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -466,16 +470,32 @@ export default defineConfig({
 });
 ```
 
+#### WebAssembly (WASM) packages
+
+Packages that use WebAssembly (WASM) must be added to the `external` array. WASM files are binary modules that need to be loaded at runtime and cannot be bundled into JavaScript code. When you add a WASM package to `external`, the package will be installed as a dependency in the runtime environment, ensuring the WASM files are available at their expected paths.
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
+import { defineConfig } from "@trigger.dev/sdk";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    external: ["your-wasm-package-name"],
+  },
+});
+```
+
 <Note>
-  Any packages that install or build a native binary should be added to external, as native binaries
-  cannot be bundled. For example, `re2`, `sharp`, and `sqlite3` should be added to external.
+  Any packages that install or build a native binary or use WebAssembly (WASM) should be added to external, as they
+  cannot be bundled. For example, `re2`, `sharp`, `sqlite3`, and WASM packages should be added to external.
 </Note>
 
 ### JSX
 
 You can customize the `jsx` options that are passed to `esbuild` using the `jsx` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -502,7 +522,7 @@ See the [esbuild JSX documentation](https://esbuild.github.io/content-types/#jsx
 
 You can add custom [import conditions](https://esbuild.github.io/api/#conditions) to your build using the `conditions` option:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({

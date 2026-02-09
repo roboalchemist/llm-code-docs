@@ -77,11 +77,8 @@ const items = ref<RadioGroupItem[]>([
 </template>
 ```
 
-<caution>
-
-When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
-
-</caution>
+> [!CAUTION]
+> When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
 
 ### Value Key
 
@@ -273,26 +270,26 @@ interface RadioGroupProps {
    * When `items` is an array of objects, select the field to use as the value.
    * @default "\"value\" as never"
    */
-  valueKey?: GetItemKeys<RadioGroupItem[]> | undefined;
+  valueKey?: VK | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the label.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<RadioGroupItem[]> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the description.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<RadioGroupItem[]> | undefined;
-  items?: RadioGroupItem[] | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
+  items?: T | undefined;
   /**
    * The controlled value of the RadioGroup. Can be bind as `v-model`.
    */
-  modelValue?: any;
+  modelValue?: GetItemValue<T, VK, NestedItem<T>> | undefined;
   /**
    * The value of the RadioGroup when initially rendered. Use when you do not need to control the state of the RadioGroup.
    */
-  defaultValue?: any;
+  defaultValue?: GetItemValue<T, VK, NestedItem<T>> | undefined;
   size?: "xs" | "sm" | "md" | "lg" | "xl" | undefined;
   variant?: "card" | "list" | "table" | undefined;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
@@ -300,7 +297,7 @@ interface RadioGroupProps {
    * The orientation the radio buttons are laid out.
    * @default "\"vertical\""
    */
-  orientation?: DataOrientation | undefined;
+  orientation?: "horizontal" | "vertical" | undefined;
   /**
    * Position of the indicator.
    */
@@ -345,7 +342,7 @@ interface RadioGroupSlots {
  * Emitted events for the RadioGroup component
  */
 interface RadioGroupEmits {
-  update:modelValue: (payload: [value: any]) => void;
+  update:modelValue: (payload: [value: GetItemValue<T, VK, NestedItem<T>>]) => void;
   change: (payload: [event: Event]) => void;
 }
 ```
@@ -476,8 +473,10 @@ export default defineAppConfig({
         },
         disabled: {
           true: {
-            base: 'cursor-not-allowed opacity-75',
-            label: 'cursor-not-allowed opacity-75'
+            item: 'opacity-75',
+            base: 'cursor-not-allowed',
+            label: 'cursor-not-allowed',
+            description: 'cursor-not-allowed'
           }
         },
         required: {
@@ -658,7 +657,7 @@ export default defineAppConfig({
           ],
           disabled: true,
           class: {
-            item: 'cursor-not-allowed opacity-75'
+            item: 'cursor-not-allowed'
           }
         }
       ],
@@ -676,8 +675,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

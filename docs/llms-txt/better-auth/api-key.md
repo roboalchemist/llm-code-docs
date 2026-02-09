@@ -4,11 +4,7 @@
 
 API Key plugin for Better Auth.
 
-***
 
-title: API Key
-description: API Key plugin for Better Auth.
---------------------------------------------
 
 The API Key plugin allows you to create and manage API keys for your application. It provides a way to authenticate and authorize API requests by verifying API keys.
 
@@ -47,7 +43,7 @@ The API Key plugin allows you to create and manage API keys for your application
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -93,7 +89,7 @@ The API Key plugin allows you to create and manage API keys for your application
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -164,6 +160,7 @@ You can view the list of API Key plugin options [here](/docs/plugins/api-key#api
 
 ### Create an API key
 
+
 ### Client Side
 
 ```ts
@@ -196,36 +193,39 @@ const data = await auth.api.createApiKey({
 
 ```ts
 type createApiKey = {
-    /**
-     * Name of the Api Key.
-     */
-    name?: string = 'project-api-key'
-    /**
-     * Expiration time of the Api Key in seconds.
-     */
-    expiresIn?: number = 60 * 60 * 24 * 7
-    /**
-     * User Id of the user that the Api Key belongs to. server-only.
-     * @serverOnly
-     */
-    userId?: string = "user-id"
-    /**
-     * Prefix of the Api Key.
-     */
-    prefix?: string = 'project-api-key'
-    /**
-     * Remaining number of requests. server-only.
-     * @serverOnly
-     */
-    remaining?: number = 100
-    /**
-     * Metadata of the Api Key.
-     */
-    metadata?: any | null = { someKey: 'someValue' 
+      /**
+       * Name of the Api Key.
+       */
+      name?: string = 'project-api-key'
+      /**
+       * Expiration time of the Api Key in seconds.
+       */
+      expiresIn?: number = 60 * 60 * 24 * 7
+      /**
+       * User Id of the user that the Api Key belongs to. server-only.
+       * @serverOnly
+       */
+      userId?: string = "user-id"
+      /**
+       * Prefix of the Api Key.
+       */
+      prefix?: string = 'project-api-key'
+      /**
+       * Remaining number of requests. server-only.
+       * @serverOnly
+       */
+      remaining?: number = 100
+      /**
+       * Metadata of the Api Key.
+       */
+      metadata?: any | null = { someKey: 'someValue' 
 }
 ```
 
-<Callout>API keys are assigned to a user.</Callout>
+
+<Callout>
+  API keys are assigned to a user.
+</Callout>
 
 #### Result
 
@@ -235,6 +235,7 @@ Otherwise if it throws, it will throw an `APIError`.
 ***
 
 ### Verify an API key
+
 
 ### Client Side
 
@@ -260,17 +261,18 @@ const data = await auth.api.verifyApiKey({
 
 ```ts
 type verifyApiKey = {
-    /**
-     * The key to verify.
-     */
-    key: string = "your_api_key_here"
-    /**
-     * The permissions to verify. Optional.
-     */
-    permissions?: Record<string, string[]>
-
+      /**
+       * The key to verify.
+       */
+      key: string = "your_api_key_here"
+      /**
+       * The permissions to verify. Optional.
+       */
+      permissions?: Record<string, string[]>
+  
 }
 ```
+
 
 #### Result
 
@@ -285,6 +287,7 @@ type Result = {
 ***
 
 ### Get an API key
+
 
 ### Client Side
 
@@ -310,13 +313,14 @@ const data = await auth.api.getApiKey({
 
 ```ts
 type getApiKey = {
-    /**
-     * The id of the Api Key.
-     */
-    id: string = "some-api-key-id"
-
+      /**
+       * The id of the Api Key.
+       */
+      id: string = "some-api-key-id"
+  
 }
 ```
+
 
 #### Result
 
@@ -330,6 +334,7 @@ type Result = Omit<ApiKey, "key">;
 ***
 
 ### Update an API key
+
 
 ### Client Side
 
@@ -367,46 +372,47 @@ const data = await auth.api.updateApiKey({
 
 ```ts
 type updateApiKey = {
-    /**
-     * The id of the Api Key to update.
-     */
-    keyId: string = "some-api-key-id"
-    /**
-     * The id of the user which the api key belongs to. server-only.
-     * @serverOnly
-     */
-    userId?: string = "some-user-id"
-    /**
-     * The name of the key.
-     */
-    name?: string = "some-api-key-name"
-    /**
-     * Whether the Api Key is enabled or not. server-only.
-     * @serverOnly
-     */
-    enabled?: boolean = true
-    /**
-     * The number of remaining requests. server-only.
-     * @serverOnly
-     */
-    remaining?: number = 100
-    /**
-     * The refill amount. server-only.
-     * @serverOnly
-     */
-    refillAmount?: number = 100
-    /**
-     * The refill interval in milliseconds. server-only.
-     * @serverOnly
-     */
-    refillInterval?: number = 1000
-    /**
-     * The metadata of the Api Key. server-only.
-     * @serverOnly
-     */
-    metadata?: any | null = { "key": "value" 
+      /**
+       * The id of the Api Key to update.
+       */
+      keyId: string = "some-api-key-id"
+      /**
+       * The id of the user which the api key belongs to. server-only.
+       * @serverOnly
+       */
+      userId?: string = "some-user-id"
+      /**
+       * The name of the key.
+       */
+      name?: string = "some-api-key-name"
+      /**
+       * Whether the Api Key is enabled or not. server-only.
+       * @serverOnly
+       */
+      enabled?: boolean = true
+      /**
+       * The number of remaining requests. server-only.
+       * @serverOnly
+       */
+      remaining?: number = 100
+      /**
+       * The refill amount. server-only.
+       * @serverOnly
+       */
+      refillAmount?: number = 100
+      /**
+       * The refill interval in milliseconds. server-only.
+       * @serverOnly
+       */
+      refillInterval?: number = 1000
+      /**
+       * The metadata of the Api Key. server-only.
+       * @serverOnly
+       */
+      metadata?: any | null = { "key": "value" 
 }
 ```
+
 
 #### Result
 
@@ -416,6 +422,7 @@ Otherwise, you'll receive the API Key details, except for the `key` value itself
 ***
 
 ### Delete an API Key
+
 
 ### Client Side
 
@@ -441,13 +448,14 @@ const data = await auth.api.deleteApiKey({
 
 ```ts
 type deleteApiKey = {
-    /**
-     * The id of the Api Key to delete.
-     */
-    keyId: string = "some-api-key-id"
-
+      /**
+       * The id of the Api Key to delete.
+       */
+      keyId: string = "some-api-key-id"
+  
 }
 ```
+
 
 #### Result
 
@@ -463,6 +471,7 @@ type Result = {
 ***
 
 ### List API keys
+
 
 ### Client Side
 
@@ -484,9 +493,10 @@ const data = await auth.api.listApiKeys({
 
 ```ts
 type listApiKeys = {
-
+  
 }
 ```
+
 
 #### Result
 
@@ -502,6 +512,7 @@ type Result = ApiKey[];
 ### Delete all expired API keys
 
 This function will delete all API keys that have an expired expiration date.
+
 
 ### Client Side
 
@@ -519,9 +530,10 @@ const data = await auth.api.deleteAllExpiredApiKeys({});
 
 ```ts
 type deleteAllExpiredApiKeys = {
-
+  
 }
 ```
+
 
 <Callout>
   We automatically delete expired API keys every time any apiKey plugin

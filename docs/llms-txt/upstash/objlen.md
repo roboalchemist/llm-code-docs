@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/objlen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/objlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objlen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.OBJLEN
 
@@ -26,22 +12,22 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
-  The path of the object.
+<ParamField body="path" type="str" required>
+  The path of the object. `$` is the root.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer[]" required>
+<ResponseField type="List[int]" required>
   The number of keys in the objects.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const lengths = await redis.json.objlen("key", "$.path");
+  ```py Example theme={"system"}
+  lengths = redis.json.objlen("key", "$.path")
   ```
 </RequestExample>

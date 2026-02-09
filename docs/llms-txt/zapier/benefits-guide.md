@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/benefits-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guide to Zapier Partner Program Benefits
 
 > Zapier offers a variety of marketing and support benefits to partners. This cheat sheet is designed to help you understand when and how you can access each of these benefits as you unlock them.

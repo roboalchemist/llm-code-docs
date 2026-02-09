@@ -163,12 +163,10 @@ To use identity verification there are two components:
 
 #### Identity Verification in Conversation Flow
 
-* Get started by going to your greet flow and adding the Identity Verification module. \
-  \\
+* Get started by going to your greet flow and adding the Identity Verification module. \ <br>
 
   <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FntDIGx0uFfMdgZkai45T%2Fimage.png?alt=media&#x26;token=ceff785a-5a0f-45bf-a897-19b357c814b3" alt=""><figcaption></figcaption></figure>
-* In the Identity Verification module settings set the shared secret value. (This shared secret is what you will be using on your server for hash generation)\
-  \\
+* In the Identity Verification module settings set the shared secret value. (This shared secret is what you will be using on your server for hash generation)\ <br>
 
   <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2F8Ou8jxPRE9QQaQngPvi8%2Fimage.png?alt=media&#x26;token=815feae2-457f-4fb8-9f6e-730962e23808" alt=""><figcaption></figcaption></figure>
 * The identity verification module will use the shared secret and generate the hash of the incoming data and compare that with the hash that you provide.
@@ -200,7 +198,7 @@ Announcement feature is used to display a message on top of the chabots for any 
 
 To add the Announcement feature, open the chatbot for which you want to add the Announcement and click on settings tab, click on Announcement tab which should look like this ![Add\_Announcement\_settings.png](https://help.deepconverse.com/hc/article_attachments/4631488644756/Add_Announcement_settings.png)
 
-Click on **Add Announcement** and it opens a tab where you need to add the title and description of the announcement which should look like this. \\
+Click on **Add Announcement** and it opens a tab where you need to add the title and description of the announcement which should look like this. <br>
 
 ![Add\_Announcemnet.png](https://help.deepconverse.com/hc/article_attachments/4631506613652/Add_Announcemnet.png)
 
@@ -212,8 +210,7 @@ Make sure that the **Start Date** and **End Date** are entered appropriately mat
 \
 Once the above steps are performed, you can click on test on the top of the chatbot page to test the chatbot created for the announcement feature added and this is how it should look \
 \
-![Announcment\_Preview\_on\_chatbot.png](https://help.deepconverse.com/hc/article_attachments/4632008650900/Announcment_Preview_on_chatbot.png)\
-\\
+![Announcment\_Preview\_on\_chatbot.png](https://help.deepconverse.com/hc/article_attachments/4632008650900/Announcment_Preview_on_chatbot.png)\ <br>
 
 
 # Channel Specific Functionality
@@ -328,8 +325,7 @@ Here, we have added a condition where we took **calendlyPayload** as a field to 
 \
 7\) Once the above steps are performed, the chatbot successfully integrated with **Calendly** will open up a calendar within the chatbot for the user to select a date and time and then enter the basic details like the username and email id so that the event invite will be forwarded to the same. \
 \
-![Screenshot\_2022-03-10\_at\_7.02.22\_PM.png](https://help.deepconverse.com/hc/article_attachments/4679909218580/Screenshot_2022-03-10_at_7.02.22_PM.png)\
-\\
+![Screenshot\_2022-03-10\_at\_7.02.22\_PM.png](https://help.deepconverse.com/hc/article_attachments/4679909218580/Screenshot_2022-03-10_at_7.02.22_PM.png)\ <br>
 
 &#x20;
 
@@ -690,7 +686,7 @@ public class MainActivity extends AppCompatActivity implements DeepConverseSDK.W
 }
 ```
 
-\\
+<br>
 
 #### Android Releases
 
@@ -703,19 +699,16 @@ You can add the chatbot to your Zendesk Help Center by following the steps below
 
 1. Open the Chatbot that you are planning to add to your help center
 2. Navigate to the **Settings** > **Deployment** and copy the snippet for your chatbot.\
-   \&#xNAN;*Note: You can toggle between the **draft** and **published** version* \\
+   \&#xNAN;*Note: You can toggle between the **draft** and **published** version* <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2Fbby1MdttLzeARLZzMK8p%2Fimage.png?alt=media&#x26;token=be8594ed-3c07-4597-a984-693082b63696" alt=""><figcaption></figcaption></figure>
-3. Next, open the Zendesk Guide and Navigate to the theme in which you would like to add the chatbot by clicking **Customize Design** > **Customize**\
-   \\
+3. Next, open the Zendesk Guide and Navigate to the theme in which you would like to add the chatbot by clicking **Customize Design** > **Customize**\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FYj8X5rWj9x9dftJslDQC%2Fimage.png?alt=media&#x26;token=58e11c79-4081-4d42-9369-b8123a999990" alt=""><figcaption></figcaption></figure>
-4. On the theme page click **Edit Code**\
-   \\
+4. On the theme page click **Edit Code**\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FUQkCNHPs7FebzCpFk0Id%2Fimage.png?alt=media&#x26;token=6f7f6475-0ee4-4fbd-8bfc-087afbf91180" alt=""><figcaption></figcaption></figure>
-5. On the Edit Code screen choose **document\_head.hbs** and add the script snippet there for the chatbot. Once done click **Publish**\
-   \\
+5. On the Edit Code screen choose **document\_head.hbs** and add the script snippet there for the chatbot. Once done click **Publish**\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2F3f6fxpHZ5ZsQ58Ca3mUa%2Fimage.png?alt=media&#x26;token=126e073a-fc29-4fd2-aae3-6b6eb954c70c" alt=""><figcaption></figcaption></figure>
 
@@ -730,7 +723,7 @@ In order to have a good experience you can disable the Zendesk Web Widget from a
 
 [Removing Web Widget (Classic) from your website or help center](https://support.zendesk.com/hc/en-us/articles/4408839367706-Removing-Web-Widget-Classic-from-your-website-or-help-center)
 
-\\
+<br>
 
 
 # Adding widget to your website
@@ -739,7 +732,7 @@ You can add the chatbot to your website by following the steps below.&#x20;
 
 1. Open the Chatbot that you are planning to add to your help center
 2. Navigate to the **Settings** > **Deployment** and copy the snippet for your chatbot.\
-   \&#xNAN;*Note: You can toggle between the **draft** and **published** version* \\
+   \&#xNAN;*Note: You can toggle between the **draft** and **published** version* <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2Fbby1MdttLzeARLZzMK8p%2Fimage.png?alt=media&#x26;token=be8594ed-3c07-4597-a984-693082b63696" alt=""><figcaption></figcaption></figure>
 3. Next, add the script tag to the `head` or the `body` tag of the webpages you want the chatbot to be shown\
@@ -756,7 +749,7 @@ The chatbot script is by default configured to always show the widget. In cases 
 [custom-initialization-and-passing-metadata](https://docs.deepconverse.com/product-docs/chatbots/deploy/custom-initialization-and-passing-metadata)
 {% endcontent-ref %}
 
-\\
+<br>
 
 
 # Custom Initialization and Passing Metadata
@@ -1092,7 +1085,7 @@ Enter the **Sheet Key** and the **Worksheet Title**&#x20;
 1. Locales in the Google Sheet should match the locales you use in your production/deployment environments for the translations to get picked up.
 2. If a text doesn't have the the corresponding language translation then it will default to using text from 'en\_us' as the fallback
 
-\\
+<br>
 
 
 # Customizations
@@ -1291,7 +1284,7 @@ Follow the instructions here to reorder the trigger: [Reordering and sorting tri
 | dc-email-positive-feedback   | Marks positive feedback given by the customer to the auto reply email   |
 | dc-email-negative-feedback   | Marks negative feedback given by the customer to the auto reply email   |
 
-\\
+<br>
 
 
 # Building Guides
@@ -1469,10 +1462,10 @@ Applies to customers with **Multi-Site** deployment feature on our **Enterprise*
 If you have Guide flows that you would like to copy across to another site, you can follow the steps below.
 
 1. Navigate to [Guide Flows](https://admin.deepconverse.com/guide/list) page&#x20;
-2. Hover over the menu of the flow you would like to copy and select **Copy to Site** \\
+2. Hover over the menu of the flow you would like to copy and select **Copy to Site** <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FbtLLvOPxlWAmAQFCQsqn%2Fimage.png?alt=media&#x26;token=52952a47-392e-4b5d-be18-b63b714684b1" alt=""><figcaption></figcaption></figure>
-3. Select the target site you would like to copy to\\
+3. Select the target site you would like to copy to<br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FOgzxBRs17wtfUz1RDpmI%2Fimage.png?alt=media&#x26;token=5530a4ef-17f7-4da8-b623-69d11e791051" alt=""><figcaption></figcaption></figure>
 4. After selecting the site click **OK**
@@ -1500,7 +1493,7 @@ Each of the nodes can be connected with transitions which represents how the con
 
 Nodes have events, properties and some additional properties specific to the type of node being used.
 
-\\
+<br>
 
 
 # Assign Parameters in Conversations
@@ -1642,8 +1635,7 @@ Rules allow you to define segmented conversation responses based on a defined cr
 
 1. Rules can be authored by dragging the ***Rule*** node on to the flow builder.&#x20;
 2. On the right panel you can add a rule by entering a name for your rule.
-3. Once you add the rule click on the name of the rule you added to define the criteria for it.\
-   \\
+3. Once you add the rule click on the name of the rule you added to define the criteria for it.\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FsGhB8dqskgaeZY7BSoz5%2Fimage.png?alt=media&#x26;token=ef92999e-3ede-4d97-a713-0a408f493f32" alt=""><figcaption></figcaption></figure>
 
@@ -1674,7 +1666,7 @@ The rule condition is composed of three parts:
 
 {% embed url="<https://player.vimeo.com/video/631335378>" %}
 
-\\
+<br>
 
 
 # Conversation Blocks
@@ -1840,8 +1832,7 @@ The HTTP Request block allows you to make request to any external Rest API. The 
 
 1. Start by selecting extensions in the flow palette on the left in the flow builder
 
-2. Drag an Add On node on to the flow builder\
-   \\
+2. Drag an Add On node on to the flow builder\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FrgPp6sheCP86Le5HakJf%2Fimage.png?alt=media&#x26;token=41fb9ad8-5939-40dc-a49a-c10a56b73d46" alt=""><figcaption></figcaption></figure>
 
@@ -1985,29 +1976,28 @@ This article allows you to do a handoff to Zendesk within DeepConverse chat widg
 
 1. Make sure you have connected to **Zendesk Sunshine Conversations** via the **Connections** page
 
-2. Navigate to **Zendesk Admin** > **Bots**. Here you will see DeepConverse under marketplace bots. \\
+2. Navigate to **Zendesk Admin** > **Bots**. Here you will see DeepConverse under marketplace bots. <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FKiukx4Si43svDivEGTmf%2Fimage.png?alt=media&#x26;token=31fb78df-e1f0-4095-8718-078619140655" alt=""><figcaption></figcaption></figure>
 
-3. Go ahead and navigate to **Messaging** to see if the web widget channel is active.\\
+3. Go ahead and navigate to **Messaging** to see if the web widget channel is active.<br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FK0eqsqxAyw2QZYmZzPaW%2Fimage.png?alt=media&#x26;token=bdd0439d-691e-4de9-8b91-be50e9316838" alt=""><figcaption></figcaption></figure>
 
-4. Create an API Key for the Conversations API for DeepConverse. \\
+4. Create an API Key for the Conversations API for DeepConverse. <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FNzothIGckxLGZ8cckVIN%2Fimage.png?alt=media&#x26;token=bc72a935-b30a-401b-866f-e3884b33e6e0" alt=""><figcaption></figcaption></figure>
 
 5. Reach out to the DeepConverse team to find out the **Web Messenger Integration Id** to use for the handoff. This is found via the integrations API \
-   [`https://api.smooch.io/v2/apps/{{appId}}/integrations`](https://api.smooch.io/v2/apps/%7B%7BappId%7D%7D/integrations)\\
+   [`https://api.smooch.io/v2/apps/{{appId}}/integrations`](https://api.smooch.io/v2/apps/%7B%7BappId%7D%7D/integrations)<br>
 
-6. Use the Web Messenger Integration Id along with the connection and fields to pass to Zendesk in the Escalation Flow.\
-   \\
+6. Use the Web Messenger Integration Id along with the connection and fields to pass to Zendesk in the Escalation Flow.\ <br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FlACBsQPPYc5Y2CfwPObR%2Fimage.png?alt=media&#x26;token=6ab9dc45-844f-4bcc-83b9-727f3df94e39" alt=""><figcaption></figcaption></figure>
 
 7. In order for DeepConverse to receive the Conversation events add a Conversation Integration with the following API: \
    \
-   [`https://api.converseapps.com/messaging/smooch/events`](https://api.converseapps.com/messaging/smooch/events)\\
+   [`https://api.converseapps.com/messaging/smooch/events`](https://api.converseapps.com/messaging/smooch/events)<br>
 
    <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FW1DDTESQsaUyolW0gnPb%2Fimage.png?alt=media&#x26;token=4809660d-d925-4c1c-bafd-218ea78a23ca" alt=""><figcaption></figcaption></figure>
 
@@ -2060,7 +2050,7 @@ On **Submit** you will be able to see the table.&#x20;
 
 &#x20;
 
-\\
+<br>
 
 
 # How to read or search data from Data Tables?
@@ -2087,7 +2077,7 @@ Note: In the query you can use parameters from the context to lookup values.
 
 <figure><img src="https://534431549-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FbO3m8ycFG8xg77R5w9dH%2Fuploads%2FTPTAARQhO7A3fF2kl4I8%2Fimage.png?alt=media&#x26;token=f9c06889-44fa-49db-b42a-0510e18f90cf" alt=""><figcaption></figcaption></figure>
 
-\\
+<br>
 
 
 # Chatbot Analytics
@@ -2444,7 +2434,7 @@ You can create a connection with Zendesk from [Admin Dashboard.](https://admin.d
 *If the help center URL is **xyz123.zendesk.com** subdomain value is **xyz123***
 {% endhint %}
 
-\\
+<br>
 
 
 # Zendesk Sunshine Conversations
@@ -2521,7 +2511,7 @@ You can create a connection with Salesforce from [Admin Dashboard.](https://admi
 
 <figure><img src="https://help.deepconverse.com/hc/article_attachments/360082924872/Screen_Shot_2021-01-21_at_9.00.14_PM.png" alt="" width="375"><figcaption></figcaption></figure>
 
-\\
+<br>
 
 
 # Gorgias
@@ -2548,7 +2538,7 @@ Account Subdomain
 *If the Gorgias URL is **xyz123.gorgias.com** subdomain value is **xyz123***
 {% endhint %}
 
-\\
+<br>
 
 
 # Adding Users
@@ -2574,7 +2564,7 @@ To add new users navigate to the [Users](https://admin.deepconverse.com/dashboar
 
 ![mceclip1.png](https://help.deepconverse.com/hc/article_attachments/360082145332/mceclip1.png)
 
-\\
+<br>
 
 
 # Permissions and Roles
@@ -2606,7 +2596,7 @@ Admins have additional permissions on managing the sites. They can perform the f
 
 ![mceclip1.png](https://help.deepconverse.com/hc/article_attachments/360082145332/mceclip1.png)
 
-\\
+<br>
 
 
 # Multiple Sites
@@ -2624,7 +2614,7 @@ This feature helps organizations create:
 * Sandbox environments
 * Multi brand environments
 
-The dashboard is always is acting within the context of the site that is currently active. You can see the active site on the top right corner. \\
+The dashboard is always is acting within the context of the site that is currently active. You can see the active site on the top right corner. <br>
 
 ![mceclip0.png](https://help.deepconverse.com/hc/article_attachments/360082768551/mceclip0.png)
 
@@ -2694,7 +2684,7 @@ Where DeepConverse is prohibited from notifying the competent data protection au
 
 In no event will DeepConverse transfer Personal Information to a requestor in a massive, disproportionate, and indiscriminate manner that goes beyond what is necessary in a democratic society.
 
-\\
+<br>
 
 
 # Technical and Organizational Security Measures
@@ -2879,8 +2869,7 @@ DeepConverse has a process for vetting data processors to ensure that any custom
     * Microsoft may store data for up to 30 days to detect abuse. DeepConverse is currently in the process of adding an option to reduce this time as well.
 * Difference between OpenAI and Azure OpenAI
 
-Azure OpenAI is a fully managed service offered by Microsoft Azure. It comes with SLAs, security and reliability to support enterprise use cases.\
-\\
+Azure OpenAI is a fully managed service offered by Microsoft Azure. It comes with SLAs, security and reliability to support enterprise use cases.\ <br>
 
 | <p><br></p>            | ChatGPT WebApp      | Microsoft Azure OpenAI ChatGPT APIs |
 | ---------------------- | ------------------- | ----------------------------------- |
@@ -2902,18 +2891,13 @@ DeepConverse does not make use of PII to provide answers and capabilities in the
   * Case creation
   * API lookups that need PII
     * Configurable duration
-    * Minimum 15 days\
-      \\
-
+    * Minimum 15 days\ <br>
 * Post Conversation
   * PII is removed
-  * Non-PII Data is retained for analytics and DeepConverse model improvement\
-    \\
-
+  * Non-PII Data is retained for analytics and DeepConverse model improvement\ <br>
 * PII Processed for Flow Execution
   * User messages
   * Problem Specification:
-
 * PII (mostly during case creation)
   * Name
   * Email
@@ -2928,7 +2912,7 @@ Generative AI models due to their generative nature can hallucinate i.e. give te
 * We make us of reasoning capabilities of LLMs to reduce hallucinations&#x20;
 * All Generative AI actions are logged and available for review for our team to identify potential hallucinations and place more safeguards as we iterate on improving the models.
 
-\\
+<br>
 
 
 # Contacting Support
@@ -2967,8 +2951,7 @@ We realize the importance of keeping your sales and support infrastructure from 
 
 ### Service Levels
 
-DeepConverse offers different levels of service for issues reported to us. The service level represents our timeline and commitment of providing you with a first response. The SLA is for the first response to your issue and will depend on the support plan your organization has. We will strive to provide subsequent responses to you as quickly as possible. \
-\\
+DeepConverse offers different levels of service for issues reported to us. The service level represents our timeline and commitment of providing you with a first response. The SLA is for the first response to your issue and will depend on the support plan your organization has. We will strive to provide subsequent responses to you as quickly as possible. \ <br>
 
 |            | **Assist Basic**                                           | **Assist Core**            |
 | ---------- | ---------------------------------------------------------- | -------------------------- |

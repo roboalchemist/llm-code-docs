@@ -30,8 +30,8 @@ The Nuxt UI MCP server provides the following tools organized by category:
 
 - **list_components**: Lists all available Nuxt UI components with their categories and basic information
 - **list_composables**: Lists all available Nuxt UI composables with their categories and basic information
-- **get_component**: Retrieves component documentation and details
-- **get_component_metadata**: Retrieves detailed metadata for a component including props, slots, and events
+- **get_component**: Retrieves component documentation and details. Supports a `sections` parameter (`usage`, `examples`, `api`, `theme`, `changelog`) to fetch only specific parts and reduce response size
+- **get_component_metadata**: Retrieves detailed metadata for a component including props, slots, and events (lightweight, no documentation content)
 - **search_components_by_category**: Searches components by category or text filter
 
 ### Template Tools
@@ -42,7 +42,7 @@ The Nuxt UI MCP server provides the following tools organized by category:
 ### Documentation Tools
 
 - **list_documentation_pages**: Lists all documentation pages
-- **get_documentation_page**: Retrieves documentation page content by URL path
+- **get_documentation_page**: Retrieves documentation page content by URL path. Supports a `sections` parameter to fetch only specific h2 sections (e.g., `["Usage", "API"]`) and reduce response size
 - **list_getting_started_guides**: Lists all getting started guides and installation instructions
 
 ### Example Tools
@@ -70,18 +70,15 @@ The Nuxt UI MCP server uses HTTP transport and can be configured in different AI
 
 ### ChatGPT
 
-<note icon="i-lucide-info">
-
-**Custom connectors using MCP are available on ChatGPT for Pro and Plus accounts** on the web.
-
-</note>
+> [!NOTE]
+> Custom connectors using MCP are available on ChatGPT for Pro and Plus accounts. Accessible on the web.
 
 Follow these steps to set up Nuxt UI as a connector within ChatGPT:
 
 1. **Enable Developer mode:**
-  - Go to Settings → Connectors → Advanced settings → Developer mode
+  - Go to "Settings" > "Connectors" > "Advanced settings" > "Developer mode"
 2. **Open ChatGPT settings**
-3. **In the Connectors tab, Create a new connector:**
+3. **In the Connectors tab, create a new connector:**
   - Give it a name: `Nuxt UI`
   - MCP server URL: `https://ui.nuxt.com/mcp`
   - Authentication: `None`
@@ -91,11 +88,8 @@ The Nuxt UI connector will appear in the composer's "Developer mode" tool later 
 
 ### Claude Code
 
-<note icon="i-lucide-info">
-
-**Ensure Claude Code is installed** - Visit [Anthropic's documentation](https://docs.anthropic.com/en/docs/claude-code/quickstart) for installation instructions.
-
-</note>
+> [!NOTE]
+> Ensure Claude Code is installed. Visit [Anthropic's documentation](https://docs.anthropic.com/en/docs/claude-code/quickstart) for installation instructions.
 
 Add the server using the CLI command:
 
@@ -103,17 +97,37 @@ Add the server using the CLI command:
 claude mcp add --transport http nuxt-ui-remote https://ui.nuxt.com/mcp
 ```
 
+### Claude Desktop
+
+#### Setup Instructions:
+
+1. Open Claude Desktop and navigate to "Settings" > "Developer".
+2. Click on "Edit Config". This will open the local Claude directory.
+3. Modify the `claude_desktop_config.json` file with your custom MCP server configuration.
+
+```json [claude_desktop_config.json]
+{
+  "mcpServers": {
+    "nuxt-ui": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://ui.nuxt.com/mcp"
+      ]
+    }
+  }
+}
+```
+
+1. Restart Claude Desktop app. The Nuxt UI MCP server should now be registered.
+
 ### Cursor
 
 #### Quick Install
 
 Click the button below to install the Nuxt UI MCP server directly in Cursor:
 
-<u-button color="neutral" icon="i-custom-cursor" label="Install MCP Server" to="cursor://anysphere.cursor-deeplink/mcp/install?name=nuxt-ui&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vdWkubnV4dC5jb20vbWNwIn0%3D">
-
-
-
-</u-button>
+[Install MCP Server](cursor://anysphere.cursor-deeplink/mcp/install?name=nuxt-ui&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vdWkubnV4dC5jb20vbWNwIn0%3D)
 
 #### Manual Setup Instructions:
 
@@ -133,6 +147,46 @@ Or manually create/update `.cursor/mcp.json` in your project root:
 }
 ```
 
+### Google Antigravity
+
+#### Setup Instructions:
+
+1. Open the MCP store via the "..." dropdown at the top of the editor's agent panel.
+2. Click on "Manage MCP Servers"
+3. Click on "View raw config"
+4. Modify the `mcp_config.json` with your custom MCP server configuration:
+
+```json
+{
+  "mcpServers": {
+    "nuxt-ui": {
+      "serverUrl": "https://ui.nuxt.com/mcp"
+    }
+  }
+}
+```
+
+1. Return to the "Manage MCP Servers" tab and click "Refresh". The Nuxt UI MCP server should now appear.
+
+### Gemini CLI
+
+#### Setup Instructions:
+
+1. Locate your Gemini CLI configuration file (usually ~/.gemini/settings.json or as specified in your environment).
+2. Add the following configuration to your mcpServers object:
+
+```json
+{
+  "mcpServers": {
+    "nuxt-ui": {
+      "url": "https://ui.nuxt.com/mcp"
+    }
+  }
+}
+```
+
+1. Restart your terminal session or reload the CLI. The Nuxt UI MCP server tools will now be available for use.
+
 ### Le Chat Mistral
 
 #### Setup Instructions:
@@ -141,16 +195,13 @@ Or manually create/update `.cursor/mcp.json` in your project root:
 2. Click on "Add Connector" button, then select "Custom MCP Connector"
 3. Create your Custom MCP Connector:
 
-  - Connector Name : `NuxtUI`
-  - Connector Server : `https://ui.nuxt.com/mcp`
+  - Connector Name: `NuxtUI`
+  - Connector Server: `https://ui.nuxt.com/mcp`
 
 ### Visual Studio Code
 
-<note icon="i-lucide-info">
-
-**Install required extensions** - Ensure you have [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extensions installed.
-
-</note>
+> [!NOTE]
+> Install required extensions. Ensure you have [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extensions installed.
 
 #### Setup Instructions:
 
@@ -225,18 +276,15 @@ Or manually create/update `.cursor/mcp.json` in your project root:
       "type": "remote",
       "url": "https://ui.nuxt.com/mcp",
       "enabled": true
-    },
+    }
   }
 }
 ```
 
 ### GitHub Copilot Agent
 
-<note icon="i-lucide-info">
-
-**Repository administrator access required** to configure MCP servers for GitHub Copilot coding agent.
-
-</note>
+> [!NOTE]
+> Repository administrator access required. This is needed to configure MCP servers for GitHub Copilot coding agent.
 
 If you have already configured MCP servers in VS Code (replace the `servers` key with `mcpServers` for GitHub Copilot Agent), you can leverage a similar configuration for GitHub Copilot coding agent. You will need to add a `tools` key specifying which tools are available to Copilot.
 
@@ -278,6 +326,7 @@ Once configured, you can ask your AI assistant questions like:
 
 - "List all available Nuxt UI components"
 - "Get Button component documentation"
+- "Show me just the Button usage examples"
 - "What props does Input accept?"
 - "Find form-related components"
 - "List dashboard templates"
@@ -288,3 +337,6 @@ Once configured, you can ask your AI assistant questions like:
 - "Get ContactForm example code"
 
 The AI assistant will use the MCP server to fetch structured JSON data and provide guided assistance for Nuxt UI during development.
+
+> [!TIP]
+> For large documentation pages, the AI can use the `sections` parameter to fetch only relevant parts (like "Usage" or "API"), reducing response size and improving performance.

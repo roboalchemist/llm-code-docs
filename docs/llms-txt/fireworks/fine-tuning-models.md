@@ -1,8 +1,12 @@
 # Source: https://docs.fireworks.ai/fine-tuning/fine-tuning-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supervised Fine Tuning - Text
 
-This guide will focus on using supervised fine-tuning to fine-tune and deploy a model with on-demand and serverless hosting.
+This guide will focus on using supervised fine-tuning to fine-tune and deploy a model with on-demand hosting.
 
 ## Fine-tuning a model using SFT
 
@@ -11,7 +15,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
     You can confirm that a base model is available to fine-tune by looking for the `Tunnable` tag in the model library or by using:
 
     ```bash  theme={null}
-    firectl get model -a fireworks <MODEL-ID>
+    firectl model get -a fireworks <MODEL-ID>
     ```
 
     And looking for `Tunable: true`.
@@ -31,6 +35,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
       * `role`: one of `system`, `user`, or `assistant`. A message with the `system` role is optional, but if specified, it must be the first message of the conversation
       * `content`: a string representing the message content
       * `weight`: optional key with value to be configured in either 0 or 1. message will be skipped if value is set to 0
+    * **Sample weight:** Optional key `weight` at the root of the JSON object. It can be any floating point number (positive, negative, or 0) and is used as a loss multiplier for tokens in that sample. If used, this field must be present in all samples in the dataset.
 
     Here is an example conversation dataset:
 
@@ -38,7 +43,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "What is the capital of France?"}, 
+        {"role": "user", "content": "What is the capital of France?"},
         {"role": "assistant", "content": "Paris."}
       ]
     }
@@ -49,6 +54,28 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
         {"role": "user", "content": "Now what is 2+2?"},
         {"role": "assistant", "content": "4"}
       ]
+    }
+    ```
+
+    Here is an example conversation dataset with sample weights:
+
+    ```json  theme={null}
+    {
+      "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is the capital of France?"},
+        {"role": "assistant", "content": "Paris."}
+      ],
+      "weight": 0.5
+    }
+    {
+      "messages": [
+        {"role": "user", "content": "What is 1+1?"},
+        {"role": "assistant", "content": "2", "weight": 0},
+        {"role": "user", "content": "Now what is 2+2?"},
+        {"role": "assistant", "content": "4"}
+      ],
+      "weight": 1.0
     }
     ```
 
@@ -99,7 +126,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
     {
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "What is the capital of France?"}, 
+        {"role": "user", "content": "What is the capital of France?"},
         {"role": "assistant", "content": "Paris.", "reasoning_content": "The user is asking about the capital city of France, it should be Paris."}
       ]
     }
@@ -128,7 +155,7 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
 
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl create dataset <DATASET_ID> /path/to/jsonl/file
+        firectl dataset create <DATASET_ID> /path/to/jsonl/file
         ```
       </Tab>
 
@@ -186,14 +213,14 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
         Ensure the fine tuned model ID conforms to the [resource id restrictions](/getting-started/concepts#resource-names-and-ids). This will return a fine-tuning job ID. For a full explanation of the settings available to control the fine-tuning process, including learning rate and epochs, consult [additional SFT job settings](#additional-sft-job-settings).
 
         ```bash  theme={null}
-        firectl create sftj --base-model <MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
+        firectl sftj create --base-model <MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
         ```
 
         <Tip>
           Similar to UI, instead of tuning a base model, you can also start tuning from a previous LoRA model using
 
           ```bash  theme={null}
-          firectl create sftj --warm-start-from <FINE_TUNED_MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
+          firectl sftj create --warm-start-from <FINE_TUNED_MODEL_ID> --dataset <DATASET_ID> --output-model <FINE_TUNED_MODEL_ID>
           ```
 
           Notice that we use `--warm-start-from` instead of `--base-model` when creating this job.
@@ -208,29 +235,33 @@ This guide will focus on using supervised fine-tuning to fine-tune and deploy a 
     With `firectl`, you can monitor the progress of the tuning job by running
 
     ```bash  theme={null}
-    firectl get sftj <DATASET_ID>
+    firectl sftj get <DATASET_ID>
     ```
 
     Once the job successfully completes, you will see the new LoRA model in your model list
 
     ```bash  theme={null}
-    firectl list models
+    firectl model list
     ```
   </Step>
 </Steps>
+
+<Tip>
+  For a complete Python SDK example that demonstrates the full workflow (creating datasets, uploading files, and launching a supervised fine-tuning job), see the [Python SDK workflow example](https://github.com/fw-ai-external/python-sdk/blob/main/examples/sftj_workflow.py).
+</Tip>
 
 ## Deploying a fine-tuned model
 
 After fine-tuning completes, deploy your model to make it available for inference:
 
 ```bash  theme={null}
-firectl create deployment <FINE_TUNED_MODEL_ID>
+firectl deployment create <FINE_TUNED_MODEL_ID>
 ```
 
 This creates a dedicated deployment with performance matching the base model.
 
 <Tip>
-  For more details on deploying fine-tuned models, including multi-LoRA and serverless deployments, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
+  For more details on deploying fine-tuned models, including multi-LoRA deployments, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
 </Tip>
 
 ## Additional SFT job settings
@@ -244,7 +275,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     `evaluation_dataset`: The ID of a separate dataset to use for evaluation. Must be pre-uploaded via firectl
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --evaluation-dataset my-eval-set \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -252,24 +283,24 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     ```
   </Accordion>
 
-  <Accordion title="Early stopping">
-    Early stopping stops training early if the validation loss does not improve. It is off by default.
+  <Accordion title="Max Context Length">
+    Depending on the size of the model, the default context size will be different. For most models, the default context size is >= 32768. Training examples will be cut-off at 32768 tokens. Usually you do not need to set the max context length unless out of memory error is encountered with higher lora rank and large max context length.
 
     ```shell  theme={null}
-    firectl create sftj \
-      --early-stop \
+    firectl sftj create \
+      --max-context-length 65536 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
     ```
   </Accordion>
 
-  <Accordion title="Max Context Length">
-    By default, fine-tuned models support a max context length of 8k. Increase max context length if your use case requires context above 8k. Maximum context length can be increased up to the default context length of your selected model. For models with over 70B parameters, we only support up to 65536 max context length.
+  <Accordion title="Batch Size">
+    Batch size is the number of tokens packed into one forward step during training. One batch could consist of multiple training samples. We do sequence packing on the training samples, and batch size controls how many total tokens will be packed into each batch.
 
     ```shell  theme={null}
-    firectl create sftj \
-      --max-context-length 65536 \
+    firectl sftj create \
+      --batch-size 65536 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -282,7 +313,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     **Note: we set a max value of 3 million dataset examples × epochs**
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --epochs 2.0 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -294,8 +325,33 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     Learning rate controls how fast the model updates from data. We generally do not recommend changing learning rate. The default value is automatically based on your selected model.
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --learning-rate 0.0001 \
+      --base-model MY_BASE_MODEL \
+      --dataset cancerset \
+      --output-model my-tuned-model
+    ```
+  </Accordion>
+
+  <Accordion title="Learning rate warmup steps">
+    Learning rate warmup steps controls the number of training steps during which the learning rate will be linearly ramped up to the set learning rate.
+
+    ```shell  theme={null}
+    firectl sftj create \
+      --learning-rate 0.0001 \
+      --learning-rate-warmup-steps 200 \
+      --base-model MY_BASE_MODEL \
+      --dataset cancerset \
+      --output-model my-tuned-model
+    ```
+  </Accordion>
+
+  <Accordion title="Gradient accumlation steps">
+    Gradient accumulation steps controls the number of forward steps and backward steps to take (gradients are accumulated) before optimizer.step() is taken. Gradient accumulation steps > 1 increases effective batch size.
+
+    ```shell  theme={null}
+    firectl sftj create \
+      --gradient-accumulation-steps 4 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -306,7 +362,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     LoRA rank refers to the number of parameters that will be tuned in your LoRA add-on. Higher LoRA rank increases the amount of information that can be captured while tuning. LoRA rank must be a power of 2 up to 64. Our default value is 8.
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --lora-rank 16 \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
@@ -318,7 +374,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     The fine-tuning service integrates with Weights & Biases to provide observability into the tuning process. To use this feature, you must have a Weights & Biases account and have provisioned an API key.
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --wandb-entity my-org \
       --wandb-api-key xxx \
       --wandb-project "My Project" \
@@ -332,7 +388,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     By default, the fine-tuning job will generate a random unique ID for the model. This ID is used to refer to the model at inference time. You can optionally specify a custom ID, within [ID constraints](/getting-started/concepts#resource-names-and-ids).
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --output-model my-model \
       --base-model MY_BASE_MODEL \
       --dataset cancerset
@@ -343,20 +399,8 @@ Additional tuning settings are available when starting a fine-tuning job. All of
     By default, the fine-tuning job will generate a random unique ID for the fine-tuning job. You can optionally choose a custom ID.
 
     ```shell  theme={null}
-    firectl create sftj \
+    firectl sftj create \
       --job-id my-fine-tuning-job \
-      --base-model MY_BASE_MODEL \
-      --dataset cancerset \
-      --output-model my-tuned-model
-    ```
-  </Accordion>
-
-  <Accordion title="Turbo Mode">
-    By default, the fine-tuning job will use a single GPU. You can optionally enable the turbo mode to accelerate with multiple GPUs (only for non-Deepseek models).
-
-    ```shell  theme={null}
-    firectl create sftj \
-      --turbo \
       --base-model MY_BASE_MODEL \
       --dataset cancerset \
       --output-model my-tuned-model
@@ -366,8 +410,7 @@ Additional tuning settings are available when starting a fine-tuning job. All of
 
 ## Appendix
 
-`Python builder SDK` [references](/tools-sdks/python-client/sdk-introduction)
-
-`Restful API`[ references](/api-reference/introduction)
-
-`firectl` [references](/tools-sdks/firectl/firectl)
+* `Python SDK` [references](/tools-sdks/python-sdk)
+* `Restful API` [references](/api-reference/introduction)
+* `firectl` [references](/tools-sdks/firectl/firectl)
+* [Complete Python SDK workflow example](https://github.com/fw-ai-external/python-sdk/blob/main/examples/sftj_workflow.py) for a code-only implementation

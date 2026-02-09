@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ModelComparison.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Comparing evals across multiple AI models
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ModelComparison/ModelComparison.ipynb) by [John Huang](https://www.linkedin.com/in/j13huang/) on 2024-05-22</div>
@@ -62,7 +66,7 @@ console.log(evalData);
 
 ## Running comparison evals across multiple models
 
-Let's set up some code to compare these prompts and inputs across 3 different models and different temperature values. For this cookbook we will be using [Braintrust's LLM proxy](https://www.braintrustdata.com/docs/guides/proxy) to access the API for different models.
+Let's set up some code to compare these prompts and inputs across 3 different models and different temperature values. For this cookbook we will be using [Braintrust's LLM proxy](/deploy/ai-proxy) to access the API for different models.
 
 All we need to do is provide a `baseURL` to the proxy with the relevant API key that we want to access, and the use the `wrapOpenAI` function from braintrust which will help us capture helpful debugging information about each model's performance while keeping the same SDK interface across all models.
 
@@ -290,8 +294,3 @@ In this view, we can see that `gpt-4` performed better than `gpt-4o` at higher t
 This is just the start of evaluating and improving your AI applications. From here, you should run more experiments with larger datasets, and also try out different prompts! Once you have run another set of experiments, come back to the chart and play with the different views and groupings. You can also add filtering to filter for experiments with specific scores and metadata to find even more insights.
 
 Happy evaluating!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

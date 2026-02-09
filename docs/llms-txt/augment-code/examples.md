@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/context-services/sdk/examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Examples
 
 > Example applications using the Auggie SDK
@@ -62,7 +66,7 @@ Before running the examples:
 
 2. **Auggie CLI** - Required for FileSystem Context examples
    ```bash  theme={null}
-   npm install -g @augmentcode/auggie@prerelease
+   npm install -g @augmentcode/auggie@latest
    ```
 
 3. **Authentication** - Required for all examples
@@ -380,8 +384,3 @@ The auggie CLI respects both `.gitignore` and `.augmentignore` patterns and will
     Back to quick start guide
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

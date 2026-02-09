@@ -4,11 +4,7 @@
 
 Built-in CLI for managing your project.
 
-***
 
-title: CLI
-description: Built-in CLI for managing your project.
-----------------------------------------------------
 
 Better Auth comes with a built-in CLI to help you manage the database schemas, initialize your project, generate a secret key for your application, and gather diagnostic information about your setup.
 
@@ -16,7 +12,7 @@ Better Auth comes with a built-in CLI to help you manage the database schemas, i
 
 The `generate` command creates the schema required by Better Auth. If you're using a database adapter like Prisma or Drizzle, this command will generate the right schema for your ORM. If you're using the built-in Kysely adapter, it will generate an SQL file you can run directly on your database.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -70,7 +66,7 @@ The `generate` command creates the schema required by Better Auth. If you're usi
 
 The migrate command applies the Better Auth schema directly to your database. This is available if you're using the built-in Kysely adapter. For other adapters, you'll need to apply the schema using your ORM's migration tool.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -129,7 +125,7 @@ The migrate command applies the Better Auth schema directly to your database. Th
 
 The `init` command allows you to initialize Better Auth in your project.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -185,7 +181,7 @@ The `init` command allows you to initialize Better Auth in your project.
 
 The `info` command provides diagnostic information about your Better Auth setup and environment. Useful for debugging and sharing when seeking support.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -263,7 +259,7 @@ Sensitive data like secrets, API keys, and database URLs are automatically repla
 
 The CLI also provides a way to generate a secret key for your Better Auth instance.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

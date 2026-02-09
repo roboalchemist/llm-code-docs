@@ -9,7 +9,7 @@ title: Rabbit MQ
 Use the `rabbitmq` mixin to register an [MQ Server](/messaging) for Amazon SQS with an existing .NET App:
 
 :::sh
-x mix rabbitmq
+npx add-in rabbitmq
 :::
 
 ## Worker Service Template
@@ -37,7 +37,7 @@ enabling a number of messaging features including publishing and receiving messa
 ServiceStack's Rabbit MQ bindings is available on NuGet at:
 
 :::copy
-`<PackageReference Include="ServiceStack.RabbitMq" Version="8.*" />`
+`<PackageReference Include="ServiceStack.RabbitMq" Version="10.*" />`
 :::
 
 #### RabbitMqServer

@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/debug/storage.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/storage.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/storage.md
-
-# Source: https://docs.avaamo.com/user-guide/debug/storage.md
-
 # Storage
 
 You can view all the data stored either for a global session (applicable for all the users interacting with agents) or for a specific user session in your agent.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/hidream/hidream-e1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Native HiDream-E1, E1.1 Workflow Example
 
 > This guide will help you understand and complete the ComfyUI native HiDream-I1 text-to-image workflow example
@@ -37,7 +41,7 @@ In combination with the previously released [hidream-i1](/tutorials/image/hidrea
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -135,6 +139,10 @@ Follow these steps to run the workflow:
 * When using the fp16 version of the model, in actual tests, the full version ran out of memory on both A100 40GB and 4090D 24GB, so the workflow is set by default to use `fp8_e4m3fn_fast` for inference.
 
 ## HiDream E1 ComfyUI Native Workflow Example
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=hidream_e1_full&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 E1 is a model released on April 28, 2025. This model only supports 768\*768 resolution.
 

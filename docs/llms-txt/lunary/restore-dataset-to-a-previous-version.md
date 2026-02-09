@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/datasets-v2/restore-dataset-to-a-previous-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Restore dataset to a previous version
 
 
@@ -168,7 +172,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

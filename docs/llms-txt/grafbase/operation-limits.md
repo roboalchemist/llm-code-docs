@@ -2,22 +2,6 @@
 
 # Source: https://grafbase.com/docs/gateway/security/operation-limits.md
 
-# Source: https://grafbase.com/docs/gateway/configuration/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/security/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/security/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/security/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/operation-limits.md
-
-# Source: https://grafbase.com/docs/gateway/security/operation-limits.md
-
 # Operation Limits
 
 One of the most common attacks malicious actors do to GraphQL APIs is sending complex and deeply nested queries to overload the server. Operation Limits allow you to protect your GraphQL API from these types of attacks. [Read more on configuring the operation limits](https://grafbase.com/docs/gateway/configuration/operation-limits.md).

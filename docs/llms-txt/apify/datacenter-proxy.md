@@ -8,9 +8,9 @@
 
 Datacenter proxies are a cheap, fast and stable way to mask your identity online. When you access a website using a datacenter proxy, the site can only see the proxy center's credentials, not yours.
 
-Datacenter proxies allow you to mask and https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation your IP address during web scraping and automation jobs, reducing the possibility of them being https://docs.apify.com/academy/anti-scraping/techniques.md#access-denied. For each https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods, the proxy takes the list of all available IP addresses and selects the one used the longest time ago for the specific hostname.
+Datacenter proxies allow you to mask and [rotate](https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation) your IP address during web scraping and automation jobs, reducing the possibility of them being [blocked](https://docs.apify.com/academy/anti-scraping/techniques.md#access-denied). For each [HTTP/S request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), the proxy takes the list of all available IP addresses and selects the one used the longest time ago for the specific hostname.
 
-You can refer to our https://blog.apify.com/datacenter-proxies-when-to-use-them-and-how-to-make-the-most-of-them/ for tips on how to make the most out of datacenter proxies.
+You can refer to our [blog post](https://blog.apify.com/datacenter-proxies-when-to-use-them-and-how-to-make-the-most-of-them/) for tips on how to make the most out of datacenter proxies.
 
 ## Features
 
@@ -25,31 +25,31 @@ You can refer to our https://blog.apify.com/datacenter-proxies-when-to-use-them-
 
 ## Datacenter proxy types
 
-When using Apify's datacenter proxies, you can either select a proxy group, or the `auto` mode. https://apify.com/proxy offers either proxy groups that are shared across multiple customers or dedicated ones.
+When using Apify's datacenter proxies, you can either select a proxy group, or the `auto` mode. [Apify Proxy](https://apify.com/proxy) offers either proxy groups that are shared across multiple customers or dedicated ones.
 
 ### Shared proxy groups
 
 Each user has access to a selected number of proxy servers from a shared pool. These servers are spread into groups (called proxy groups). Each group shares a common feature (location, provider, speed, etc.).
 
-For a full list of plans and number of allocated proxy servers for each plan, see our https://apify.com/pricing. To get access to more servers, you can upgrade your plan in the https://console.apify.com/billing/subscription;
+For a full list of plans and number of allocated proxy servers for each plan, see our [pricing](https://apify.com/pricing). To get access to more servers, you can upgrade your plan in the [subscription settings](https://console.apify.com/billing/subscription);
 
 ### Dedicated proxy groups
 
 When you purchase access to dedicated proxy groups, they are assigned to you, and only you can use them. You gain access to a range of static IP addresses from these groups.
 
-This feature is also useful if you have your own pool of proxy servers and still want to benefit from the features of Apify Proxy (like https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation, , and health checking). If you do not have your own pool, the https://apify.com/contact team can set up a dedicated group for you based on your needs and requirements.
+This feature is also useful if you have your own pool of proxy servers and still want to benefit from the features of Apify Proxy (like [IP address rotation](https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation), , and health checking). If you do not have your own pool, the [customer support](https://apify.com/contact) team can set up a dedicated group for you based on your needs and requirements.
 
-Prices for dedicated proxy servers are mainly based on the number of proxy servers, their type, and location. https://apify.com/contact for more information.
+Prices for dedicated proxy servers are mainly based on the number of proxy servers, their type, and location. [Contact us](https://apify.com/contact) for more information.
 
 ## Connecting to datacenter proxies
 
 By default, each proxied HTTP request is potentially sent via a different target proxy server, which adds overhead and could be potentially problematic for websites which save cookies based on IP address.
 
-If you want to pick an IP address and pass all subsequent connections via that same IP address, you can use the `session` https://docs.apify.com/platform/proxy/usage.md#sessions.
+If you want to pick an IP address and pass all subsequent connections via that same IP address, you can use the `session` [parameter](https://docs.apify.com/platform/proxy/usage.md#sessions).
 
 ### Username parameters
 
-The `username` field enables you to pass various https://docs.apify.com/platform/proxy/usage.md#connection-settings, such as groups, session and country, for your proxy connection.
+The `username` field enables you to pass various [parameters](https://docs.apify.com/platform/proxy/usage.md#connection-settings), such as groups, session and country, for your proxy connection.
 
 **This parameter is optional**. By default, the proxy uses all available proxy servers from all groups you have access to.
 
@@ -164,9 +164,9 @@ await Actor.exit();
 
 ## Session persistence
 
-When you use datacenter proxy with the `session` https://docs.apify.com/platform/proxy/usage.md#sessions set in the `username` , a single IP is assigned to the `session ID` provided after you make the first request.
+When you use datacenter proxy with the `session` [parameter](https://docs.apify.com/platform/proxy/usage.md#sessions) set in the `username` , a single IP is assigned to the `session ID` provided after you make the first request.
 
-**Session IDs represent IP addresses. Therefore, you can manage the IP addresses you use by managing sessions.** \[https://docs.apify.com/platform/proxy/usage.md#sessions]
+**Session IDs represent IP addresses. Therefore, you can manage the IP addresses you use by managing sessions.** \[[More info](https://docs.apify.com/platform/proxy/usage.md#sessions)]
 
 This IP/session ID combination is persisted and expires 26 hours later. Each additional request resets the expiration time to 26 hours.
 
@@ -177,7 +177,7 @@ If you use the session at least once a day, it will never expire, with two possi
 
 If the session is discarded due to the reasons above, it is assigned a new IP address.
 
-To learn more about https://docs.apify.com/platform/proxy/usage.md#sessions and https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation, see the https://docs.apify.com/platform/proxy.md.
+To learn more about [sessions](https://docs.apify.com/platform/proxy/usage.md#sessions) and [IP address rotation](https://docs.apify.com/platform/proxy/usage.md#ip-address-rotation), see the [proxy overview page](https://docs.apify.com/platform/proxy.md).
 
 ### Examples using sessions
 
@@ -295,13 +295,13 @@ await Actor.exit();
 
 ## Examples using standard libraries and languages
 
-You can find your proxy password on the https://console.apify.com/proxy of the Apify Console.
+You can find your proxy password on the [Proxy page](https://console.apify.com/proxy) of the Apify Console.
 
 > The `username` field is **not** your Apify username.<br />Instead, you specify proxy settings (e.g. `groups-BUYPROXIES94952`, `session-123`).<br />Use `auto` for default settings.
 
-For examples using https://www.php.net/, you need to have the https://www.php.net/manual/en/book.curl.php extension enabled in your PHP installation. See https://www.php.net/manual/en/curl.installation.php for more information.
+For examples using [PHP](https://www.php.net/), you need to have the [cURL](https://www.php.net/manual/en/book.curl.php) extension enabled in your PHP installation. See [installation instructions](https://www.php.net/manual/en/curl.installation.php) for more information.
 
-Examples in https://www.python.org/download/releases/2.0/ use the https://pypi.org/project/six/ library. Run `pip install six` to enable it.
+Examples in [Python 2](https://www.python.org/download/releases/2.0/) use the [six](https://pypi.org/project/six/) library. Run `pip install six` to enable it.
 
 * Node.js (axios)
 * Python 3

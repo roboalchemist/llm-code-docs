@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/no-barrel-file.md
 ---
-# oxc/no-barrel-file&#x20;
 
 ### What it does
 
@@ -25,7 +24,7 @@ References:
 * <https://github.com/thepassle/eslint-plugin-barrel-files>
 * <https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-7>
 
-### Example
+### Examples
 
 Invalid:
 

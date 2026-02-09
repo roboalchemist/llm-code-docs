@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/browseruse-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Browser-use
 
 <Note>This guide is dedicated to running your own browser-use agent while connecting to an Anchor browser. To use the embedded browser use capability, refer to [AI task completion](/agentic-browser-control/ai-task-completion)</Note>

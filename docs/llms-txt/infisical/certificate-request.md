@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/certificates/certificate-request.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Certificate Request
 
 
@@ -25,6 +29,7 @@ paths:
     get:
       tags:
         - PKI Certificates
+      operationId: getCertificateRequest
       parameters:
         - schema:
             type: string
@@ -43,9 +48,11 @@ paths:
                   status:
                     type: string
                     enum:
+                      - pending_approval
                       - pending
                       - issued
                       - failed
+                      - rejected
                   certificate:
                     type: string
                     nullable: true
@@ -60,6 +67,35 @@ paths:
                     nullable: true
                   errorMessage:
                     type: string
+                    nullable: true
+                  commonName:
+                    type: string
+                    nullable: true
+                  organization:
+                    type: string
+                    nullable: true
+                  organizationalUnit:
+                    type: string
+                    nullable: true
+                  country:
+                    type: string
+                    nullable: true
+                  state:
+                    type: string
+                    nullable: true
+                  locality:
+                    type: string
+                    nullable: true
+                  basicConstraints:
+                    type: object
+                    properties:
+                      isCA:
+                        type: boolean
+                      pathLength:
+                        type: number
+                    required:
+                      - isCA
+                    additionalProperties: false
                     nullable: true
                   createdAt:
                     type: string
@@ -94,6 +130,7 @@ paths:
                     type: string
                   error:
                     type: string
+                  details: {}
                 required:
                   - reqId
                   - statusCode
@@ -216,7 +253,3 @@ paths:
                 additionalProperties: false
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

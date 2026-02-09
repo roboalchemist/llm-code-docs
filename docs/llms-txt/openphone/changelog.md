@@ -1,8 +1,12 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/changelog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changelog
 
-> Stay up to date with the latest improvements to the API.
+> Stay up to date with the latest improvements to the API. View [main product Changelog.](https://support.quo.com/changelog)
 
 <Update label="January 22, 2025" description="1.2.0">
   ### Minor Changes

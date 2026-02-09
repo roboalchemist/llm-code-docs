@@ -2,6 +2,8 @@
 
 # ADFS Identity Provider
 
+Copy page
+
 Connect ConfigCat with Active Directory Federation Services (ADFS) via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
@@ -160,7 +162,7 @@ You can choose one of the following options to configure ConfigCat with SAML Ide
 
 ## 5. Sign In[​](#5-sign-in "Direct link to 5. Sign In")
 
-* Go to the [ConfigCat Log In](https://app.configcat.com/auth/login) page, and click `COMPANY ACCOUNT - SAML`.
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
   ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
@@ -176,4 +178,4 @@ You can choose one of the following options to configure ConfigCat with SAML Ide
 
 ## 6. Next Steps[​](#6-next-steps "Direct link to 6. Next Steps")
 
-* Configure the [auto-assignment of users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md).
+* Configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md).

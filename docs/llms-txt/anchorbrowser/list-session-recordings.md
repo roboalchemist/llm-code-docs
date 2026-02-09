@@ -1,129 +1,95 @@
 # Source: https://docs.anchorbrowser.io/api-reference/session-recordings/list-session-recordings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Session Recordings
 
 > Retrieves the URLs of the browser session's video recordings. Requires a valid API key for authentication.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/sessions/{session_id}/recordings
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{session_id}/recordings
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        session_id:
+  /v1/sessions/{session_id}/recordings:
+    get:
+      tags:
+        - Session Recordings
+      summary: List Session Recordings
+      description: >-
+        Retrieves the URLs of the browser session's video recordings. Requires a
+        valid API key for authentication.
+      parameters:
+        - in: path
+          name: session_id
+          required: true
+          description: The ID of the browser session to retrieve recordings for.
           schema:
-            - type: string
-              required: true
-              description: The ID of the browser session to retrieve recordings for.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      count:
-                        type: integer
-                        description: Total number of video recordings
-                      items:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/RecordingItem'
-            refIdentifier: '#/components/schemas/RecordingListResponse'
-        examples:
-          example:
-            value:
-              data:
-                count: 123
-                items:
-                  - id: <string>
-                    is_primary: true
-                    file_link: <string>
-                    suggested_file_name: <string>
-                    duration: <string>
-                    size: 123
-                    created_at: '2023-11-07T05:31:56Z'
-        description: A set of recording URLs associated with the browser session.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid API Key.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Session recordings not found.
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Too many requests, please try again later.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A set of recording URLs associated with the browser session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordingListResponse'
+        '401':
+          description: Invalid API Key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session recordings not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests, please try again later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    RecordingListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Total number of video recordings
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/RecordingItem'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     RecordingItem:
       type: object
       properties:
@@ -149,5 +115,11 @@ components:
           type: string
           format: date-time
           description: Timestamp when the recording was created
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

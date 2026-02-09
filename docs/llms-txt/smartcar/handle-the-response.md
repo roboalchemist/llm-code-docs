@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/handle-the-response.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handle the Response
 
 > Upon successfully accepting the permissions, Smartcar will redirect the user back to your application using the specified `REDIRECT_URI`, along with an authorization code as a query parameter. In the case of an error, we'll provide an error and description as parameters instead.

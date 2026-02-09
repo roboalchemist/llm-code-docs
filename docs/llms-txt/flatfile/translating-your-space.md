@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/translating-your-space.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Internationalization
 
 > Translate and customize your Space with text overrides
@@ -53,7 +57,7 @@ All users who use the Space will only see the language set in the language overr
 
 To specify the language, simply assign the appropriate language code (e.g., 'en' for English, 'fr' for French, etc.) to the languageOverride property.
 
-```typescript listener.ts
+```typescript listener.ts theme={null}
 listener.on("space:created", async ({ context: { spaceId } }) => {
   // This space will be in English regardless of the users browser settings
   const updateSpace = await api.spaces.update(spaceId, {
@@ -111,7 +115,7 @@ For our translations repository we would set our translationsPath to: [https://r
 
 Set up your translations path using our API or the listener. This can be done at both the Space and environment levels.
 
-```typescript listener.ts
+```typescript listener.ts theme={null}
 listener.on("space:created", async ({ context: { spaceId } }) => {
   //set the translation path for the Space
   const updateSpace = await api.spaces.update(spaceId, {
@@ -133,7 +137,7 @@ You can translate your own custom text used in your Actions.
 
 Simply add the new keys to your translation.json file:
 
-```json .../locales/en/translation.json
+```json .../locales/en/translation.json theme={null}
 {
   "mySubmitAction": {
     "label": "Submit",
@@ -151,7 +155,7 @@ Simply add the new keys to your translation.json file:
 Then instead of hardcoding strings directly into your action scripts, use JSON translation keys. Refer to these keys in your script as shown below:
 
 <CodeGroup>
-  ```javascript sheet.js
+  ```javascript sheet.js theme={null}
   sheets : [
     {
       name: "Sheet Name",
@@ -171,7 +175,7 @@ Then instead of hardcoding strings directly into your action scripts, use JSON t
   ]
   ```
 
-  ```javascript listener.js
+  ```javascript listener.js theme={null}
   sheets : [
     {
       name: "Sheet Name",
@@ -199,7 +203,7 @@ If a translation key is missing from your `translation.json` file, the system wi
 The same logic that applies to Actions also applies to your Documents. Just pass in the custom translation keys that you added to your translation files!
 
 <CodeGroup>
-  ```json .../locales/en/translation.json
+  ```json .../locales/en/translation.json theme={null}
   {
     "myDocument": {
       "title": "Your first Space!",
@@ -208,7 +212,7 @@ The same logic that applies to Actions also applies to your Documents. Just pass
   }
   ```
 
-  ```javascript listener.js
+  ```javascript listener.js theme={null}
   // Reference the translation keys in your document configuration
   ```
 </CodeGroup>

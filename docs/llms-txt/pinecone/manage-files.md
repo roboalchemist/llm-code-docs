@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/manage-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage files
 
 > List, check status, and delete files from your assistant.
@@ -178,7 +182,7 @@ You can [get the status and metadata for your assistant](/reference/api/latest/a
   # To get a signed URL in the response, set `include_url` to `true`.
   curl -X GET "https://prod-1-data.ke.pinecone.io/assistant/files/$ASSISTANT_NAME/$FILE_ID?include_url=true" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -210,8 +214,6 @@ This operation returns a response like the following:
 ## Delete a file
 
 You can [delete a file](/reference/api/latest/assistant/delete_file) from an assistant.
-
-<Warning>Once a file is deleted, you cannot recover it.</Warning>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -251,6 +253,6 @@ You can [delete a file](/reference/api/latest/assistant/delete_file) from an ass
   ```
 </CodeGroup>
 
-<Tip>
-  You can delete a file from an assistant using the [Pinecone console](https://app.pinecone.io/organizations/-/projects/-/assistant). In the Assistant playground, find the file and click the **ellipsis (...) menu > Delete**.
-</Tip>
+* Once a file is deleted, you cannot recover it.
+* You can delete a file while it is still processing. You do not need to wait for processing to complete.
+* You can also delete a file from an assistant using the [Pinecone console](https://app.pinecone.io/organizations/-/projects/-/assistant). In the Assistant playground, find the file and click the **ellipsis (...) menu > Delete**.

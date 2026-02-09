@@ -2,6 +2,8 @@
 
 # Smoke Testing - Ensuring the Core of Your Software Stands Strong
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 Smoke testing acts as a preliminary check to confirm that the key features of an application are working effectively. Delve into the fundamentals of smoke testing and its critical role in the early stages of the development cycle.

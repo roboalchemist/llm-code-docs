@@ -1,6 +1,10 @@
 # Source: https://docs.promptlayer.com/reference/templates-labels-get.md
 
-# Get Prompt Template Labels
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# List Prompt Template Labels
 
 Retrieve all the release labels assigned to a prompt template. Identifiers can be either `prompt_name` or `prompt_id`.
 
@@ -74,7 +78,3 @@ components:
       title: GetPromptTemplateLabelResponse
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

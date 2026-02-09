@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Augment is the developer AI platform that helps you understand code, debug issues, and ship faster because it understands your codebase. Use Agent, Next Edit, and Code Completions to get more done.

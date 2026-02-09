@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/hql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HQL (Helicone Query Language)
 
 > Query your Helicone analytics data directly using SQL with row-level security and built-in limits
@@ -98,13 +102,104 @@ ORDER BY total_cost DESC
 
 Saved queries can be revisited and shared within your organization.
 
-### Via API
+### Via REST API
 
-Interactive API documentation is available at: [https://api.helicone.ai/docs/#/HeliconeSql](https://api.helicone.ai/docs/#/HeliconeSql)
+The HQL REST API allows you to execute SQL queries programmatically. All endpoints require authentication via API key.
+
+#### Authentication
+
+Include your API key in the `Authorization` header:
+
+```bash  theme={null}
+Authorization: Bearer <YOUR_API_KEY>
+```
+
+#### Execute a Query
+
+**Endpoint:** `POST https://api.helicone.ai/v1/helicone-sql/execute`
+
+```bash  theme={null}
+curl -X POST "https://api.helicone.ai/v1/helicone-sql/execute" \
+  -H "Authorization: Bearer <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sql": "SELECT request_model, COUNT(*) as count FROM request_response_rmt WHERE request_created_at > now() - INTERVAL 7 DAY GROUP BY request_model ORDER BY count DESC LIMIT 10"
+  }'
+```
+
+**Response:**
+
+```json  theme={null}
+{
+  "data": {
+    "rows": [
+      {"request_model": "gpt-4o", "count": 1500},
+      {"request_model": "claude-3-opus", "count": 800}
+    ],
+    "elapsedMilliseconds": 124,
+    "size": 2048,
+    "rowCount": 2
+  }
+}
+```
+
+#### Get Schema
+
+**Endpoint:** `GET https://api.helicone.ai/v1/helicone-sql/schema`
+
+Returns available tables and columns for querying.
+
+```bash  theme={null}
+curl -X GET "https://api.helicone.ai/v1/helicone-sql/schema" \
+  -H "Authorization: Bearer <YOUR_API_KEY>"
+```
+
+#### Download Results as CSV
+
+**Endpoint:** `POST https://api.helicone.ai/v1/helicone-sql/download`
+
+Executes a query and returns a signed URL to download the results as CSV.
+
+```bash  theme={null}
+curl -X POST "https://api.helicone.ai/v1/helicone-sql/download" \
+  -H "Authorization: Bearer <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sql": "SELECT * FROM request_response_rmt WHERE request_created_at > now() - INTERVAL 1 DAY LIMIT 1000"
+  }'
+```
+
+#### Saved Queries
+
+You can also manage saved queries programmatically:
+
+* `GET /v1/helicone-sql/saved-queries` - List all saved queries
+* `POST /v1/helicone-sql/saved-query` - Create a new saved query
+* `GET /v1/helicone-sql/saved-query/{queryId}` - Get a specific saved query
+* `PUT /v1/helicone-sql/saved-query/{queryId}` - Update a saved query
+* `DELETE /v1/helicone-sql/saved-query/{queryId}` - Delete a saved query
+
+Interactive API documentation: [https://api.helicone.ai/docs/#/HeliconeSql](https://api.helicone.ai/docs/#/HeliconeSql)
+
+<Warning>
+  **Cost Values Are Stored as Integers**
+
+  Cost values in ClickHouse are stored multiplied by 1,000,000,000 (one billion) for precision. When querying costs via the API, divide by this multiplier to get the actual USD value:
+
+  ```sql  theme={null}
+  SELECT
+    request_model,
+    sum(cost) / 1000000000 AS total_cost_usd
+  FROM request_response_rmt
+  WHERE request_created_at > now() - INTERVAL 7 DAY
+  GROUP BY request_model
+  ```
+</Warning>
 
 ### API Limits
 
 * **Query limit**: 300,000 rows maximum per query
+* **Timeout**: 30 seconds per query
 * **Rate limits**: 100 queries/min, 10 CSV downloads/min
 
 ## Related

@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-runs/:runId/metamorph
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RunClientAsync#metamorphhttps://docs.apify.com/api/client/js/reference/class/RunClient#metamorphTransforms an Actor run into a run of another Actor with a new input.
+Transforms an Actor run into a run of another Actor with a new input.
 
 This is useful if you want to use another Actor to finish the work of your current Actor run, without the need to create a completely new run and waiting for its finish.
 
@@ -19,13 +19,17 @@ Internally, the system stops the Docker container corresponding to the Actor run
 
 All the default storages are preserved and the new input is stored under the `INPUT-METAMORPH-1` key in the same default key-value store.
 
-For more information, see the https://docs.apify.com/platform/actors/development/programming-interface/metamorph.
+For more information, see the [Actor docs](https://docs.apify.com/platform/actors/development/programming-interface/metamorph).
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

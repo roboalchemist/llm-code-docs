@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/model-delegation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use another LLM as a tool
 
 With model delegation, you can use another Writer model as a tool in a [chat completion](/home/chat-completion) with Palmyra X4 and later models. The predefined LLM tool allows you to delegate specific tasks to domain-specific Writer models, such as `palmyra-fin`, `palmyra-med`, or `palmyra-creative`.

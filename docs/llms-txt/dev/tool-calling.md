@@ -2,17 +2,9 @@
 
 # Source: https://dev.writer.com/agent-builder/tool-calling.md
 
-# Source: https://dev.writer.com/home/tool-calling.md
-
-# Source: https://dev.writer.com/agent-builder/tool-calling.md
-
-# Source: https://dev.writer.com/home/tool-calling.md
-
-# Source: https://dev.writer.com/agent-builder/tool-calling.md
-
-# Source: https://dev.writer.com/home/tool-calling.md
-
-# Source: https://dev.writer.com/agent-builder/tool-calling.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Use tool calling in Agent Builder
 

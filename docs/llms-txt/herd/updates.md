@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/getting-started/updates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Updates
 
 # Herd Updates
@@ -19,8 +23,9 @@ You can choose the PHP versions which you want to install or update in the "PHP"
 
 The supported PHP versions are:
 
-* 8.4
-* 8.3 (default)
+* 8.5
+* 8.4 (default)
+* 8.3
 * 8.2
 * 8.1
 * 8.0

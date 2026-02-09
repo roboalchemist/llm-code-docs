@@ -2,223 +2,117 @@
 
 # Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Resumable Query
 
-The resumableQuery method allows you to perform queries that can be resumed to fetch additional results. This is particularly useful for large result sets or when implementing pagination.
+Resumable queries let you start a nearest-neighbor search and continue fetching
+additional results later without restarting the search. This is useful for
+pagination or when you want to stream results incrementally instead of loading
+the whole result set into memory.
 
-<Note>
-  The dimension of the query vector must match the dimension of your index.
-</Note>
+Quick example (sync):
 
-<Note>
-  The score returned from query requests is a normalized value between 0 and 1,
-  where 1 indicates the highest similarity and 0 the lowest regardless of the
-  similarity function used.
-</Note>
+```python  theme={"system"}
+from upstash_vector import Index
 
-## Arguments
+index = Index()
 
-<ResponseField name="Payload" type="ResumableQueryPayload" required>
-  <Expandable defaultOpen="true">
-    <ResponseField name="vector | sparseVector | data" type="number[] | SparseVector | string" required>
-      <Note>
-        There are two ways to use the resumableQuery method. You can either create the vectors on your own and pass directly the `vector` or `sparseVector` field, depending on your index type. Or you can pass the `data` field and create the embeddings using Upstash Embedding.
-      </Note>
+# start a resumable query (returns initial results and a handle)
+results, handle = index.resumable_query(
+    vector=[0.1, 0.2],
+    top_k=2,
+    include_metadata=True,
+    include_vectors=True,
+    namespace="example-namespace",
+)
 
-      The query data/vector that you want to search for in the index.
-    </ResponseField>
+with handle:
+    # `results` contains the first batch
+    for r in results:
+        print(r.id, r.metadata, getattr(r, "vector", None))
 
-    <ResponseField name="topK" type="number" required>
-      The initial number of vectors to retrieve in the query result. The response will be sorted based on the distance metric score.
-    </ResponseField>
+    # fetch more results (fetch_next returns a list)
+    more = handle.fetch_next(3)
+    for r in more:
+        print(r.id)
 
-    <ResponseField name="includeMetadata" type="boolean">
-      Whether to include the metadata of the vectors in the response. Setting
-      this `true` would be the best practice, since it will make it easier to
-      identify the vectors.
-    </ResponseField>
+    # when the context block exits the handle is stopped automatically
+```
 
-    <ResponseField name="includeVectors" type="boolean">
-      Whether to include the vector values in the response.
-    </ResponseField>
+Parameters
 
-    <ResponseField name="includeData" type="boolean">
-      Whether to include [the data field](/vector/features/metadata#data) in the response.
-    </ResponseField>
+* vector (List\[float] | SupportsToList | None) — query vector (mutually exclusive with `data`).
+* top\_k (int, default 10) — how many top matches to return in the initial batch.
+* include\_vectors (bool, default False) — include full vector values on results.
+* include\_metadata (bool, default False) — include metadata on results.
+* filter (str, default "") — filter expression to narrow results by metadata.
+* data (str | None) — text query for indexes using Upstash-hosted embedding models.
+* namespace (str, default DEFAULT\_NAMESPACE) — namespace to search in.
+* include\_data (bool, default False) — include stored `data` field (used for embedding indexes).
+* max\_idle (int, default 3600) — how long the server keeps the resumable query alive (seconds).
+* sparse\_vector (SparseVector | TupleAsSparseVectorT | None) — sparse vector for sparse/hybrid indexes.
+* weighting\_strategy (WeightingStrategy | None) — weighting strategy for sparse vectors.
+* fusion\_algorithm (FusionAlgorithm | None) — fusion algorithm for hybrid scoring.
+* query\_mode (QueryMode | None) — query mode for hybrid embedding indexes (e.g. SPARSE).
 
-    <ResponseField name="filter" type="string">
-      The metadata filtering of the vector. This is used to query your data based on the filters and narrow down the query results.
+How it works
 
-      If you want to learn more about filtering check: [Metadata Filtering](/vector/features/filtering)
-    </ResponseField>
+* The call to `resumable_query` returns a tuple `(result, handle)` where `result`
+  is the first batch (list of QueryResult) and `handle` is a `ResumableQueryHandle`.
+* Use `handle.fetch_next(n)` (or `await handle.fetch_next(n)`) to retrieve the next
+  `n` results. If no more results are available an empty list is returned.
+* Always stop the handle when finished (use `with handle:` / `async with handle:` or
+  call `handle.stop()` / `await handle.stop()`). After the handle is stopped, further
+  calls to `fetch_next` or `stop` raise an error (tests expect UpstashError).
 
-    <ResponseField name="weightingStrategy" type="WeightingStrategy">
-      For sparse vectors, what kind of weighting strategy should be used while querying the matching non-zero dimension values of the query vector with the documents. If not provided, no weighting will be used.
-    </ResponseField>
+Examples
 
-    <ResponseField name="fusionAlgorithm" type="FusionAlgorithm">
-      Fusion algorithm to use while fusing scores from dense and sparse components of a hybrid index. If not provided, defaults to `RRF`.
-    </ResponseField>
+Simple paging (sync)
 
-    <ResponseField name="queryMode" type="QueryMode">
-      Query mode for hybrid indexes with Upstash-hosted embedding models. Specifies whether to run the query in only the dense index, only the sparse index, or in both. If not provided, defaults to `HYBRID`.
-    </ResponseField>
+```python  theme={"system"}
+results, handle = index.resumable_query(vector=[0.1, 0.2], top_k=2, namespace="ns")
 
-    <ResponseField name="maxIdle" type="number">
-      Maximum idle time for the resumable query in seconds.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+with handle:
+    all_results = list(results)
+    while True:
+        next_batch = handle.fetch_next(2)
+        if not next_batch:
+            break
+        all_results.extend(next_batch)
 
-## Response
+# handle is stopped after exiting the context manager
+```
 
-<ResponseField name="ResumableQueryResponse" type="Object" required>
-  <Expandable defaultOpen="true">
-    <ResponseField name="result" type="QueryResult[]" required>
-      The initial query results.
-    </ResponseField>
+Sparse / hybrid example (showing advanced options)
 
-    <ResponseField name="fetchNext" type="(additionalK: number) => Promise<Vector[]>" required>
-      A function to fetch the next batch of results.
-    </ResponseField>
+```python  theme={"system"}
+from upstash_vector.types import SparseVector, WeightingStrategy, FusionAlgorithm
 
-    <ResponseField name="stop" type="() => Promise<string>" required>
-      A function to stop the resumable query and release resources.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+scores, handle = index.resumable_query(
+    vector=[0.1, 0.1],
+    sparse_vector=([0], [0.1]),
+    top_k=2,
+    include_vectors=True,
+    include_metadata=True,
+    include_data=True,
+    weighting_strategy=WeightingStrategy.IDF,
+    fusion_algorithm=FusionAlgorithm.DBSF,
+    namespace="hybrid-ns",
+)
 
-<ResponseField name="QueryResult" type="Object" required>
-  <Expandable defaultOpen="true">
-    <ResponseField name="id" type="string | number" required>
-      The ID of the resulting vector.
-    </ResponseField>
+with handle:
+    for s in scores:
+        print(s.id, getattr(s, "vector", None), getattr(s, "sparse_vector", None))
+    more = handle.fetch_next(1)
+    print("more:", more)
+```
 
-    <ResponseField name="score" type="number" required>
-      The score of the vector data, calculated based on the distance metric of your index.
-    </ResponseField>
+Notes
 
-    <ResponseField name="vector" type="number[]">
-      The resulting vector (if `includeVectors` is set to true)
-    </ResponseField>
-
-    <ResponseField name="sparseVector" type="SparseVector">
-      The resulting sparseVector (if `includeVectors` is set to true)
-    </ResponseField>
-
-    <ResponseField name="metadata" type="Record<string, unknown>">
-      The metadata of the vector (if `includeMetadata` is set to true)
-    </ResponseField>
-
-    <ResponseField name="data" type="string">
-      The data of the vector (if `includeData` is set to true)
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<RequestExample>
-  ```typescript with Vector theme={"system"}
-  const { result, fetchNext, stop } = await index.resumableQuery({
-    maxIdle: 3600,
-    topK: 50,
-    vector: [0, 1, 2, ..., 383], // 384-dimensional vector
-    includeMetadata: true,
-    includeVectors: true,
-  });
-
-  console.log(result);
-  /*
-  [
-    {
-      id: '6345',
-      score: 1.00000012,
-      vector: [0, 1, 2, ..., 383],
-      metadata: {
-        sentence: "Upstash is great."
-      }
-    },
-    // ... more results
-  ]
-  */
-
-  const nextBatch = await fetchNext(5); // Fetch next 5 results
-  console.log(nextBatch);
-
-  await stop(); // Stop the resumable query
-  ```
-
-  ```typescript with Data theme={"system"}
-  const { result, fetchNext, stop } = await index.resumableQuery({
-    maxIdle: 3600,
-    topK: 50,
-    data: "lord of the rings"
-    includeMetadata: true,
-    includeData: true,
-  });
-
-  console.log(result);
-  /*
-  [
-    {
-      id: '6345',
-      score: 1.00000012,
-      data: "hobbit",
-      metadata: {
-        sentence: "Upstash is great."
-      }
-    },
-    // ... more results
-  ]
-  */
-
-  const nextBatch = await fetchNext(5); // Fetch next 5 results
-  console.log(nextBatch);
-
-  await stop(); // Stop the resumable query
-  ```
-
-  ```typescript with Metadata Type theme={"system"}
-  type Metadata = {
-    title: string,
-    genre: 'sci-fi' | 'fantasy' | 'horror' | 'action'
-  }
-
-  const { result, fetchNext, stop } = await index.resumableQuery<Metadata>({
-    vector: [
-      ... // query embedding
-    ],
-    includeMetadata: true,
-    topK: 1,
-    filter: "genre = 'fantasy' and title = 'Lord of the Rings'",
-    maxIdle: 3600,
-  })
-
-  if (result[0].metadata) {
-    // Since we passed the Metadata type parameter above,
-    // we can interact with metadata fields without having to
-    // do any typecasting.
-    const { title, genre } = result[0].metadata;
-    console.log(`The best match in fantasy was ${title}`)
-  }
-
-  await stop();
-  ```
-</RequestExample>
+* The server enforces a limit on the number of active resumable queries; keep them
+  short-lived and call `stop()` when finished. The default `max_idle` is 3600 seconds.
+* After calling `stop()` (explicitly or via context manager), further `fetch_next` or
+  `stop` calls will raise an error.

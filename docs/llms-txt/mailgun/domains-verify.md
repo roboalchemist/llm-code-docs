@@ -15,7 +15,7 @@
 
 The basic steps to verify a domain are:
 
-1. Get the DNS records (Via [API](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Domains/#tag/Domains/operation/GET-v4-domains--name-) or Control Panel)
+1. Get the DNS records (Via [API](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/domains/get-v4-domains--name-) or Control Panel)
 2. Open your DNS provider and add the provided DNS records:
 
 

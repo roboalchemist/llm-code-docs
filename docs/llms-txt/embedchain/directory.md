@@ -1,12 +1,16 @@
 # Source: https://docs.embedchain.ai/components/data-sources/directory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📁 Directory/Folder
 
 To use an entire directory as data source, just add `data_type` as `directory` and pass in the path of the local directory.
 
 ### Without customization
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 
@@ -21,7 +25,7 @@ print(response)
 
 ### Customization
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 from embedchain.loaders.directory_loader import DirectoryLoader

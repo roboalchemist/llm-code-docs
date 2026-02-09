@@ -1382,7 +1382,7 @@ export default function GroupedAxes() {
           data,
           scaleType: 'band',
           tickSize: 8,
-          height: 32,
+          height: 36,
           groups: [
             { getValue: getMonth },
             { getValue: getQuarter },
@@ -1721,6 +1721,57 @@ const chartConfig = {
 ## Axis customization
 
 Beyond the axis definition, there are several other ways to further customize how axes are rendered:
+
+### Styling axes by ID
+
+To target a specific axis by its ID, use the `data-axis-id` attribute as a selector.
+This is useful when you have multiple axes and want to style them differently.
+
+In the example below, the revenue axis label is styled with a teal color and the profit axis label with a blue color to match their respective series.
+
+```tsx
+import * as React from 'react';
+import { LineChart, type LineChartProps } from '@mui/x-charts/LineChart';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+
+const years = [2010, 2011, 2012, 2013, 2014, 2015];
+const revenue = [4000, 3000, 2000, 2780, 1890, 2390];
+const profit = [24, 13, 98, 39, 48, 38];
+
+const chartConfig: LineChartProps = {
+  xAxis: [{ data: years, scaleType: 'point' }],
+  yAxis: [
+    { id: 'revenue-axis', label: 'Revenue ($)' },
+    { id: 'profit-axis', label: 'Profit (%)', position: 'right' },
+  ],
+  series: [
+    { data: revenue, label: 'Revenue', yAxisId: 'revenue-axis', color: '#02b2af' },
+    { data: profit, label: 'Profit', yAxisId: 'profit-axis', color: '#2e96ff' },
+  ],
+  height: 300,
+};
+
+export default function AxisIdStyling() {
+  return (
+    <LineChart
+      sx={{
+        // Style the axis with id "revenue-axis"
+        [`& .${axisClasses.root}[data-axis-id="revenue-axis"] .${axisClasses.label}`]:
+          {
+            fill: '#02b2af',
+          },
+        // Style the axis with id "profit-axis"
+        [`& .${axisClasses.root}[data-axis-id="profit-axis"] .${axisClasses.label}`]:
+          {
+            fill: '#2e96ff',
+          },
+      }}
+      {...chartConfig}
+    />
+  );
+}
+
+```
 
 ### Fixing tick label overflow issues
 

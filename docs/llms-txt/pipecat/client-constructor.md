@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/js/api-reference/client-constructor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PipecatClient Constructor
 
 > Setting up the PipecatClient
@@ -91,8 +95,3 @@ const PipecatClient = new PipecatClient({
 <ParamField path="enableScreenShare" type="boolean" default="false">
   Enable user's local screen share. Note: Not all transports support screen sharing. Setting this value in that case will have no effect.
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

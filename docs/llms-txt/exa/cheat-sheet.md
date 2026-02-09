@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/sdks/cheat-sheet.md
+# Source: https://exa.ai/docs/sdks/cheat-sheet.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Python and TS Cheat Sheets
 
@@ -33,7 +37,7 @@
     # search and get contents with contents options
     results = exa.search_and_contents("This is a Exa query:",
                                     text={"include_html_tags": True, "max_characters": 1000},
-                                    highlights={"highlights_per_url": 2, "num_sentences": 1, "query": "This is the highlight query:"})
+                                    highlights={"max_characters": 2000, "query": "This is the highlight query:"})
 
 
     # find similar documents
@@ -55,7 +59,7 @@
     # get contents with contents options
     results = exa.get_contents(["ids"],
                              text={"include_html_tags": True, "max_characters": 1000},
-                             highlights={"highlights_per_url": 2, "num_sentences": 1, "query": "This is the highlight query:"})
+                             highlights={"max_characters": 2000, "query": "This is the highlight query:"})
 
     # basic answer
     response = exa.answer("This is a query to answer a question")
@@ -104,7 +108,7 @@
     // Search and get contents with contents options
     const searchAndCustomContentsResults = await exa.searchAndContents("This is a Exa query:", {
     text: { includeHtmlTags: true, maxCharacters: 1000 },
-    highlights: { highlightsPerUrl: 2, numSentences: 1, query: "This is the highlight query:" }
+    highlights: { maxCharacters: 2000, query: "This is the highlight query:" }
     });
 
     // Find similar documents
@@ -125,7 +129,7 @@
     // Get contents with contents options
     const customContentsResults = await exa.getContents(["ids"], {
     text: { includeHtmlTags: true, maxCharacters: 1000 },
-    highlights: { highlightsPerUrl: 2, numSentences: 1, query: "This is the highlight query:" }
+    highlights: { maxCharacters: 2000, query: "This is the highlight query:" }
     });
 
     // Get answer to a question with citation contents
@@ -146,8 +150,3 @@
     ```
   </Tab>
 </Tabs>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

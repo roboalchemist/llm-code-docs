@@ -1,165 +1,274 @@
 # Source: https://docs.fireworks.ai/api-reference/list-reinforcement-fine-tuning-steps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Reinforcement Fine-tuning Steps
+
+
 
 ## OpenAPI
 
 ````yaml get /v1/accounts/{account_id}/rlorTrainerJobs
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/rlorTrainerJobs
-  method: get
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/rlorTrainerJobs:
+    get:
+      tags:
+        - Gateway
+      summary: List Reinforcement Fine-tuning Steps
+      operationId: Gateway_ListRlorTrainerJobs
+      parameters:
+        - name: pageSize
+          description: >-
+            The maximum number of fine-tuning jobs to return. The maximum
+            page_size is 200,
+
+            values above 200 will be coerced to 200.
+
+            If unspecified, the default is 50.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-      query:
-        pageSize:
+            type: integer
+            format: int32
+        - name: pageToken
+          description: >-
+            A page token, received from a previous ListRlorTuningJobs call.
+            Provide this
+
+            to retrieve the subsequent page. When paginating, all other
+            parameters
+
+            provided to ListRlorTuningJobs must match the call that provided the
+            page
+
+            token.
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: >-
-                The maximum number of fine-tuning jobs to return. The maximum
-                page_size is 200,
-
-                values above 200 will be coerced to 200.
-
-                If unspecified, the default is 50.
-        pageToken:
+            type: string
+        - name: filter
+          description: >-
+            Filter criteria for the returned jobs. See
+            https://google.aip.dev/160 for the filter syntax specification.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                A page token, received from a previous ListRlorTuningJobs call.
-                Provide this
+            type: string
+        - name: orderBy
+          description: >-
+            A comma-separated list of fields to order by. e.g. "foo,bar"
 
-                to retrieve the subsequent page. When paginating, all other
-                parameters
+            The default sort order is ascending. To specify a descending order
+            for a
 
-                provided to ListRlorTuningJobs must match the call that provided
-                the page
+            field, append a " desc" suffix. e.g. "foo desc,bar"
 
-                token.
-        filter:
+            Subfields are specified with a "." character. e.g. "foo.bar"
+
+            If not specified, the default order is by "name".
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                Filter criteria for the returned jobs. See
-                https://google.aip.dev/160 for the filter syntax specification.
-        orderBy:
+            type: string
+        - name: readMask
+          description: >-
+            The fields to be returned in the response. If empty or "*", all
+            fields will be returned.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                A comma-separated list of fields to order by. e.g. "foo,bar"
-
-                The default sort order is ascending. To specify a descending
-                order for a
-
-                field, append a " desc" suffix. e.g. "foo desc,bar"
-
-                Subfields are specified with a "." character. e.g. "foo.bar"
-
-                If not specified, the default order is by "name".
-        readMask:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: false
-              description: >-
-                The fields to be returned in the response. If empty or "*", all
-                fields will be returned.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              rlorTrainerJobs:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      $ref: '#/components/schemas/gatewayRlorTrainerJob'
-              nextPageToken:
-                allOf:
-                  - type: string
-                    description: >-
-                      A token, which can be sent as `page_token` to retrieve the
-                      next page.
-
-                      If this field is omitted, there are no subsequent pages.
-              totalSize:
-                allOf:
-                  - type: integer
-                    format: int32
-                    title: The total number of fine-tuning jobs
-            refIdentifier: '#/components/schemas/gatewayListRlorTrainerJobsResponse'
-        examples:
-          example:
-            value:
-              rlorTrainerJobs:
-                - name: <string>
-                  displayName: <string>
-                  createTime: '2023-11-07T05:31:56Z'
-                  completedTime: '2023-11-07T05:31:56Z'
-                  dataset: <string>
-                  evaluationDataset: <string>
-                  evalAutoCarveout: true
-                  state: JOB_STATE_UNSPECIFIED
-                  status:
-                    code: OK
-                    message: <string>
-                  createdBy: <string>
-                  trainingConfig:
-                    outputModel: <string>
-                    baseModel: <string>
-                    warmStartFrom: <string>
-                    jinjaTemplate: <string>
-                    learningRate: 123
-                    maxContextLength: 123
-                    loraRank: 123
-                    region: REGION_UNSPECIFIED
-                    epochs: 123
-                    batchSize: 123
-                    gradientAccumulationSteps: 123
-                    learningRateWarmupSteps: 123
-                  rewardWeights:
-                    - <string>
-                  wandbConfig:
-                    enabled: true
-                    apiKey: <string>
-                    project: <string>
-                    entity: <string>
-                    runId: <string>
-                    url: <string>
-              nextPageToken: <string>
-              totalSize: 123
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayListRlorTrainerJobsResponse'
 components:
   schemas:
+    gatewayListRlorTrainerJobsResponse:
+      type: object
+      properties:
+        rlorTrainerJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewayRlorTrainerJob'
+            type: object
+        nextPageToken:
+          type: string
+          description: >-
+            A token, which can be sent as `page_token` to retrieve the next
+            page.
+
+            If this field is omitted, there are no subsequent pages.
+        totalSize:
+          type: integer
+          format: int32
+          title: The total number of fine-tuning jobs
+    gatewayRlorTrainerJob:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        displayName:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+          readOnly: true
+        completedTime:
+          type: string
+          format: date-time
+          readOnly: true
+        dataset:
+          type: string
+          description: The name of the dataset used for training.
+        evaluationDataset:
+          type: string
+          description: The name of a separate dataset to use for evaluation.
+        evalAutoCarveout:
+          type: boolean
+          description: Whether to auto-carve the dataset for eval.
+        state:
+          $ref: '#/components/schemas/gatewayJobState'
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/gatewayStatus'
+          readOnly: true
+        createdBy:
+          type: string
+          description: The email address of the user who initiated this fine-tuning job.
+          readOnly: true
+        trainingConfig:
+          $ref: '#/components/schemas/gatewayBaseTrainingConfig'
+          description: Common training configurations.
+        rewardWeights:
+          type: array
+          items:
+            type: string
+          description: >-
+            A list of reward metrics to use for training in format of
+            "<reward_name>=<weight>".
+        wandbConfig:
+          $ref: '#/components/schemas/gatewayWandbConfig'
+          description: >-
+            The Weights & Biases team/user account for logging training
+            progress.
+        awsS3Config:
+          $ref: '#/components/schemas/gatewayAwsS3Config'
+          description: The AWS configuration for S3 dataset access.
+        keepAlive:
+          type: boolean
+          title: indicates this RLOR trainer job should run in keep-alive mode
+        rolloutDeploymentName:
+          type: string
+          description: >-
+            Rollout deployment name associated with this RLOR trainer job.
+
+            This is optional. If not set, trainer will not trigger weight sync
+            to rollout engine.
+        lossConfig:
+          $ref: '#/components/schemas/gatewayReinforcementLearningLossConfig'
+          description: >-
+            Reinforcement learning loss method + hyperparameters for the
+            underlying trainer.
+        nodeCount:
+          type: integer
+          format: int32
+          description: |-
+            The number of nodes to use for the fine-tuning job.
+            If not specified, the default is 1.
+        acceleratorSeconds:
+          type: object
+          additionalProperties:
+            type: string
+            format: int64
+          description: >-
+            Accelerator seconds used by the job, keyed by accelerator type
+            (e.g., "NVIDIA_H100_80GB").
+
+            Updated periodically.
+          readOnly: true
+        serviceMode:
+          type: boolean
+          title: >-
+            Whether to deploy as a service with tinker-style api endpoints
+            exposure
+        directRouteHandle:
+          type: string
+          title: |-
+            Only valid when service_mode enabled
+            The direct route handle for the trainer in service mode (tinker api)
+          readOnly: true
+        hotLoadDeploymentId:
+          type: string
+          description: >-
+            The deployment ID used for hot loading. When set, checkpoints are
+            saved
+
+            to this deployment's hot load bucket, enabling weight swaps on
+            inference.
+
+            Only valid for service-mode or keep-alive jobs.
+      title: 'Next ID: 29'
+    gatewayJobState:
+      type: string
+      enum:
+        - JOB_STATE_UNSPECIFIED
+        - JOB_STATE_CREATING
+        - JOB_STATE_RUNNING
+        - JOB_STATE_COMPLETED
+        - JOB_STATE_FAILED
+        - JOB_STATE_CANCELLED
+        - JOB_STATE_DELETING
+        - JOB_STATE_WRITING_RESULTS
+        - JOB_STATE_VALIDATING
+        - JOB_STATE_DELETING_CLEANING_UP
+        - JOB_STATE_PENDING
+        - JOB_STATE_EXPIRED
+        - JOB_STATE_RE_QUEUEING
+        - JOB_STATE_CREATING_INPUT_DATASET
+        - JOB_STATE_IDLE
+        - JOB_STATE_CANCELLING
+        - JOB_STATE_EARLY_STOPPED
+        - JOB_STATE_PAUSED
+      default: JOB_STATE_UNSPECIFIED
+      description: |-
+        JobState represents the state an asynchronous job can be in.
+
+         - JOB_STATE_PAUSED: Job is paused, typically due to account suspension or manual intervention.
+    gatewayStatus:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/gatewayCode'
+          description: The status code.
+        message:
+          type: string
+          description: A developer-facing error message in English.
+      title: >-
+        Mimics
+        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
     gatewayBaseTrainingConfig:
       type: object
       properties:
@@ -216,10 +325,85 @@ components:
           type: integer
           format: int32
           title: Number of steps for learning rate warm up
+        batchSizeSamples:
+          type: integer
+          format: int32
+          description: The number of samples per gradient batch.
+        optimizerWeightDecay:
+          type: number
+          format: float
+          description: Weight decay (L2 regularization) for optimizer.
       title: |-
         BaseTrainingConfig contains common configuration fields shared across
         different training job types.
-        Next ID: 19
+        Next ID: 22
+    gatewayWandbConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether to enable wandb logging.
+        apiKey:
+          type: string
+          description: The API key for the wandb service.
+        project:
+          type: string
+          description: The project name for the wandb service.
+        entity:
+          type: string
+          description: The entity name for the wandb service.
+        runId:
+          type: string
+          description: The run ID for the wandb service.
+        url:
+          type: string
+          description: The URL for the wandb service.
+          readOnly: true
+      description: >-
+        WandbConfig is the configuration for the Weights & Biases (wandb)
+        logging which
+
+        will be used by a training job.
+    gatewayAwsS3Config:
+      type: object
+      properties:
+        credentialsSecret:
+          type: string
+          title: >-
+            Reference to a Secret resource containing AWS access key
+            credentials.
+
+            Format: accounts/{account_id}/secrets/{secret_id}
+
+            The secret value must be JSON: {"aws_access_key_id": "AKIA...",
+            "aws_secret_access_key": "..."}
+        iamRoleArn:
+          type: string
+          title: >-
+            IAM role ARN to assume for accessing S3 datasets via GCP OIDC
+            federation.
+
+            Format: arn:aws:iam::account-id:role/role-name
+      description: |-
+        AwsS3Config is the configuration for AWS S3 dataset access which
+        will be used by a training job.
+    gatewayReinforcementLearningLossConfig:
+      type: object
+      properties:
+        method:
+          $ref: '#/components/schemas/ReinforcementLearningLossConfigMethod'
+        klBeta:
+          type: number
+          format: float
+          description: |-
+            KL coefficient (beta) override for GRPO-like methods.
+            If unset, the trainer default is used.
+      description: >-
+        Loss method + hyperparameters for reinforcement-learning-style
+        fine-tuning (e.g. RFT / RL trainers).
+
+        For preference jobs (DPO API), the default loss method is GRPO when
+        METHOD_UNSPECIFIED.
     gatewayCode:
       type: string
       enum:
@@ -365,167 +549,107 @@ components:
       title: >-
         Mimics
         [https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto]
-    gatewayJobState:
-      type: string
-      enum:
-        - JOB_STATE_UNSPECIFIED
-        - JOB_STATE_CREATING
-        - JOB_STATE_RUNNING
-        - JOB_STATE_COMPLETED
-        - JOB_STATE_FAILED
-        - JOB_STATE_CANCELLED
-        - JOB_STATE_DELETING
-        - JOB_STATE_WRITING_RESULTS
-        - JOB_STATE_VALIDATING
-        - JOB_STATE_DELETING_CLEANING_UP
-        - JOB_STATE_PENDING
-        - JOB_STATE_EXPIRED
-        - JOB_STATE_RE_QUEUEING
-        - JOB_STATE_CREATING_INPUT_DATASET
-        - JOB_STATE_IDLE
-        - JOB_STATE_CANCELLING
-        - JOB_STATE_EARLY_STOPPED
-      default: JOB_STATE_UNSPECIFIED
-      description: JobState represents the state an asynchronous job can be in.
     gatewayRegion:
       type: string
       enum:
         - REGION_UNSPECIFIED
         - US_IOWA_1
         - US_VIRGINIA_1
+        - US_VIRGINIA_2
         - US_ILLINOIS_1
         - AP_TOKYO_1
+        - EU_LONDON_1
         - US_ARIZONA_1
         - US_TEXAS_1
         - US_ILLINOIS_2
         - EU_FRANKFURT_1
         - US_TEXAS_2
+        - EU_PARIS_1
+        - EU_HELSINKI_1
+        - US_NEVADA_1
         - EU_ICELAND_1
         - EU_ICELAND_2
         - US_WASHINGTON_1
         - US_WASHINGTON_2
+        - EU_ICELAND_DEV_1
         - US_WASHINGTON_3
+        - US_ARIZONA_2
         - AP_TOKYO_2
         - US_CALIFORNIA_1
+        - US_MISSOURI_1
         - US_UTAH_1
         - US_TEXAS_3
+        - US_ARIZONA_3
         - US_GEORGIA_1
         - US_GEORGIA_2
         - US_WASHINGTON_4
         - US_GEORGIA_3
+        - NA_BRITISHCOLUMBIA_1
+        - US_GEORGIA_4
+        - EU_ICELAND_3
+        - US_OHIO_1
       default: REGION_UNSPECIFIED
-      title: |-
+      description: |-
         - US_IOWA_1: GCP us-central1 (Iowa)
          - US_VIRGINIA_1: AWS us-east-1 (N. Virginia)
+         - US_VIRGINIA_2: OCI us-ashburn-1 [HIDE_FROM_DOCS]
          - US_ILLINOIS_1: OCI us-chicago-1
          - AP_TOKYO_1: OCI ap-tokyo-1
+         - EU_LONDON_1: OCI uk-london-1 [HIDE_FROM_DOCS]
          - US_ARIZONA_1: OCI us-phoenix-1
          - US_TEXAS_1: Lambda us-south-3 (C. Texas)
          - US_ILLINOIS_2: Lambda us-midwest-1 (Illinois)
          - EU_FRANKFURT_1: OCI eu-frankfurt-1
          - US_TEXAS_2: Lambda us-south-2 (N. Texas)
+         - EU_PARIS_1: Nebius eu-west1 [HIDE_FROM_DOCS]
+         - EU_HELSINKI_1: Nebius eu-north1 [HIDE_FROM_DOCS]
+         - US_NEVADA_1: GCP us-west4 [HIDE_FROM_DOCS]
          - EU_ICELAND_1: Crusoe eu-iceland1
          - EU_ICELAND_2: Crusoe eu-iceland1 (network1)
          - US_WASHINGTON_1: Voltage Park us-pyl-1 (Detach audio cluster from control_plane)
          - US_WASHINGTON_2: Voltage Park us-seattle-2
+         - EU_ICELAND_DEV_1: Crusoe eu-iceland1 (dev) [HIDE_FROM_DOCS]
          - US_WASHINGTON_3: Vultr Seattle 1
+         - US_ARIZONA_2: Azure westus3 (Anysphere BYOC) [HIDE_FROM_DOCS]
          - AP_TOKYO_2: AWS ap-northeast-1
          - US_CALIFORNIA_1: AWS us-west-1 (N. California)
+         - US_MISSOURI_1: Nebius us-central1 (Anysphere BYOC) [HIDE_FROM_DOCS]
          - US_UTAH_1: GCP us-west3 (Utah)
-         - US_TEXAS_3: Crusoe us-southcentral1
+         - US_TEXAS_3: Crusoe us-southcentral1 [HIDE_FROM_DOCS]
+         - US_ARIZONA_3: Coreweave us-west-04a-1 [HIDE_FROM_DOCS]
          - US_GEORGIA_1: DigitalOcean us-atl1
          - US_GEORGIA_2: Vultr Atlanta 1
          - US_WASHINGTON_4: Coreweave us-west-09b-1
          - US_GEORGIA_3: Alicloud us-southeast-1
-    gatewayRlorTrainerJob:
-      type: object
-      properties:
-        name:
-          type: string
-          readOnly: true
-        displayName:
-          type: string
-        createTime:
-          type: string
-          format: date-time
-          readOnly: true
-        completedTime:
-          type: string
-          format: date-time
-          readOnly: true
-        dataset:
-          type: string
-          description: The name of the dataset used for training.
-        evaluationDataset:
-          type: string
-          description: The name of a separate dataset to use for evaluation.
-        evalAutoCarveout:
-          type: boolean
-          description: Whether to auto-carve the dataset for eval.
-        state:
-          $ref: '#/components/schemas/gatewayJobState'
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/gatewayStatus'
-          readOnly: true
-        createdBy:
-          type: string
-          description: The email address of the user who initiated this fine-tuning job.
-          readOnly: true
-        trainingConfig:
-          $ref: '#/components/schemas/gatewayBaseTrainingConfig'
-          description: Common training configurations.
-        rewardWeights:
-          type: array
-          items:
-            type: string
-          description: >-
-            A list of reward metrics to use for training in format of
-            "<reward_name>=<weight>".
-        wandbConfig:
-          $ref: '#/components/schemas/gatewayWandbConfig'
-          description: >-
-            The Weights & Biases team/user account for logging training
-            progress.
-      title: 'Next ID: 18'
-    gatewayStatus:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/gatewayCode'
-          description: The status code.
-        message:
-          type: string
-          description: A developer-facing error message in English.
-      title: >-
-        Mimics
-        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
-    gatewayWandbConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Whether to enable wandb logging.
-        apiKey:
-          type: string
-          description: The API key for the wandb service.
-        project:
-          type: string
-          description: The project name for the wandb service.
-        entity:
-          type: string
-          description: The entity name for the wandb service.
-        runId:
-          type: string
-          description: The run ID for the wandb service.
-        url:
-          type: string
-          description: The URL for the wandb service.
-          readOnly: true
+         - NA_BRITISHCOLUMBIA_1: Fluidstack ca-west-1
+         - US_GEORGIA_4: DigitalOcean us-atl1 MI350X
+         - EU_ICELAND_3: Crusoe eu-iceland1 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - US_OHIO_1: Lambda us-midwest-2 (Ohio)
+      title: 'Next ID: 35'
+    ReinforcementLearningLossConfigMethod:
+      type: string
+      enum:
+        - METHOD_UNSPECIFIED
+        - GRPO
+        - DAPO
+        - DPO
+        - ORPO
+        - GSPO_TOKEN
+      default: METHOD_UNSPECIFIED
+      title: |-
+        - METHOD_UNSPECIFIED: Defaults to GRPO
+         - GRPO: Group Relative Policy Optimization (default for preference jobs)
+         - DAPO: Decoupled Alignment Preference Optimization
+         - DPO: Direct Preference Optimization
+         - ORPO: Odds Ratio Preference Optimization (reference-free)
+         - GSPO_TOKEN: Group Sequence Policy Optimization (token-level)
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
       description: >-
-        WandbConfig is the configuration for the Weights & Biases (wandb)
-        logging which
-
-        will be used by a training job.
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

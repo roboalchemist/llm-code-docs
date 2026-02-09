@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage agent state
 
 The agent's state is a core component of the agent's behavior. It contains values that the UI, blueprint, and custom Python code can access and update. The state acts as a shared memory for each part of the agent.
@@ -13,6 +17,13 @@ Imagine you're building a chatbot using Writer's Agent Builder. The chatbot need
 The state is like a shared notebook that different parts of the agent can read from and write to. This allows the agent to keep track of its progress, remember important details, and make decisions based on the information stored in its state.
 
 <img src="https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=4e36344cda72982ab9263783fb3388a1" alt="Agent state explained" data-og-width="2424" width="2424" data-og-height="1455" height="1455" data-path="images/agent-builder/agent-state-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=280&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=ef10b750efc6839c31da8da1d437c0c2 280w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=560&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=fb558dee1f481f321fa980c55e98abd8 560w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=840&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=752e58343330042833b6b0a00ffba407 840w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=1100&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=bdc81f86216f1ac50beb38ec3b244f59 1100w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=1650&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=80f66623dc46678b08c2c7e2861e304d 1650w, https://mintcdn.com/writer/dHnl9w_Om9ycQRLE/images/agent-builder/agent-state-overview.png?w=2500&fit=max&auto=format&n=dHnl9w_Om9ycQRLE&q=85&s=a839df6213cb12d5995985d008a35f1f 2500w" />
+
+<Note>
+  Agent state is session-based, temporary, and visible in the UI.
+
+  * For persistent, non-sensitive data: use the [**Key-Value Storage** block](/blueprints/key-valuestorage) to store data in the cloud.
+  * For sensitive data: use [**Vault**](/agent-builder/secrets) to store sensitive information like API keys, passwords, and credentials.
+</Note>
 
 ## Inspect the state
 

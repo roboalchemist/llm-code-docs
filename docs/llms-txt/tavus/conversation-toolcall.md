@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/event-schemas/conversation-toolcall.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Call Event
 
 > This is an event broadcasted by Tavus.

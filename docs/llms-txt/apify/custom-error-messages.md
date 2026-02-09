@@ -44,7 +44,7 @@ Field "email" must be a valid email address.
 
 ## Custom error messages for input fields
 
-Each property in the https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md can include an `errorMessage` field that defines a custom error message to be displayed when validation of that field fails.
+Each property in the [input schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md) can include an `errorMessage` field that defines a custom error message to be displayed when validation of that field fails.
 
 The `errorMessage` must be an object that maps *validation keywords* (e.g., `type`, `pattern`, `minLength`) to their respective custom messages.
 
@@ -74,7 +74,7 @@ Custom error messages are especially useful for complex validation rules like re
 
 ### Supported validation keywords
 
-You can define custom error messages for any validation keyword supported by the https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md, including:
+You can define custom error messages for any validation keyword supported by the [input schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md), including:
 
 | Type               | Supported validation keywords                                               |
 | ------------------ | --------------------------------------------------------------------------- |

@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/evaluators/guardrails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guardrails
 
 > Real-time evaluation and safety checks for LLM applications
@@ -315,8 +319,3 @@ This integrated approach ensures comprehensive quality control across developmen
 * [Explore pre-built evaluators](./made-by-traceloop) for common safety and quality checks
 * [Set up experiments](../experiments/introduction) to test guardrails before production
 * [Configure monitors](../monitoring/introduction) to track guardrail performance over time
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

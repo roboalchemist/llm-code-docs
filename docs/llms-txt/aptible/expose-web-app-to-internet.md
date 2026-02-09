@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/expose-web-app-to-internet.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to expose a web app to the Internet
 
 This guide assumes you already have a web app running on Aptible. If you don't have one already, you can create one using one of our [Quickstart Guides](/getting-started/deploy-starter-template/overview).

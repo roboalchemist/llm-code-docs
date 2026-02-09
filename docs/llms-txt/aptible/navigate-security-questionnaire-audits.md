@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/navigate-security-questionnaire-audits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to navigate security questionnaires and audits
 
 > Learn how to approach responding to security questionnaires and audits on Aptible

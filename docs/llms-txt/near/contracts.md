@@ -57,7 +57,13 @@ The RPC API enables you to view details about accounts and contracts as well as 
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.query({
           request_type: 'view_account',
           finality: 'final',
           account_id: 'account.rpc-examples.testnet',
@@ -140,7 +146,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.accountChanges(['contract.rpc-examples.testnet'], {
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.accountChanges(['contract.rpc-examples.testnet'], {
           blockId: 187310139,
         });
         ```
@@ -247,7 +259,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.query({
           request_type: 'view_code',
           finality: 'final',
           account_id: 'contract.rpc-examples.testnet',
@@ -331,7 +349,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.query({
           request_type: 'view_state',
           finality: 'final',
           account_id: 'contract.rpc-examples.testnet',
@@ -432,7 +456,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.contractStateChanges(
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.contractStateChanges(
           ['contract.rpc-examples.testnet'],
           { blockId: 187310139 },
           ''
@@ -537,7 +567,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.contractCodeChanges(
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.contractCodeChanges(
           ['contract.rpc-examples.testnet'],
           { blockId: 187309439 }
         );
@@ -630,7 +666,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.query({
           request_type: 'call_function',
           finality: 'final',
           account_id: 'contract.rpc-examples.testnet',
@@ -724,7 +766,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.query({
           request_type: 'call_function',
           finality: 'final',
           account_id: 'contract.rpc-examples.testnet',

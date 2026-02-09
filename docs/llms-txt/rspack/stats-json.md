@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/api/javascript-api/stats-json.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/api/stats/](https://webpack.js.org/api/stats/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/api/stats/" />
 
 # Stats JSON
 
@@ -247,14 +252,6 @@ type StatsModule = {
 
   // Source code
   source?: string | Buffer;
-
-  // The compilation time statistics for each phase (in milliseconds, need to enable `profile`)
-  profile?: {
-    // Finding the module
-    resolving: number;
-    // Compiling the module
-    building: number;
-  };
 };
 ```
 

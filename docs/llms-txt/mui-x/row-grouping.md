@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/row-grouping.md
 
-# Source: https://mui.com/x/react-data-grid/server-side-data/row-grouping.md
-
-# Source: https://mui.com/x/react-data-grid/row-grouping.md
-
 ---
 title: Data Grid - Row grouping
 ---

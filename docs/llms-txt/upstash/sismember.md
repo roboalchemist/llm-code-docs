@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/sismember.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sismember.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SISMEMBER
 
@@ -26,24 +12,24 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set to check.
 </ParamField>
 
-<ParamField body="member" type="TMember">
+<ParamField body="member" type="str">
   The member to check for.
 </ParamField>
 
 ## Response
 
-<ResponseField type="0 | 1" required>
-  `1` if the member exists in the set, `0` if not.
+<ResponseField type="bool" required>
+  `True` if the member exists in the set, `False` if not.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set", "a", "b", "c"); 
-  const isMember =  await redis.sismember("set", "a");
-  console.log(isMember); // 1
+  ```py Example  theme={"system"}
+  redis.sadd("set", "a", "b", "c")
+
+  assert redis.sismember("set", "a") == True
   ```
 </RequestExample>

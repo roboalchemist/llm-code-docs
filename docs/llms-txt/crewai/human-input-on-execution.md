@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/human-input-on-execution.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Human Input on Execution
 
 > Integrating CrewAI with human input during execution in complex decision-making processes and leveraging the full capabilities of the agent's attributes and tools.

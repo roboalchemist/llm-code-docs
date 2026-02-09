@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/sdiffstore.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sdiffstore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sdiffstore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SDIFFSTORE
 
@@ -26,25 +12,29 @@
 
 ## Arguments
 
-<ParamField body="destination" type="string" required>
+<ParamField body="destination" type="str" required>
   The key of the set to store the resulting set in.
 </ParamField>
 
-<ParamField body="keys" type="...string[]" required>
+<ParamField body="keys" type="*List[str]" required>
   The keys of the sets to perform the difference operation on.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue[]" required>
-  The members of the resulting set.
+<ResponseField type="int" required>
+  The number of elements in the resulting set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set1", "a", "b", "c"); 
-  await redis.sadd("set2", "c", "d", "e"); 
-  await redis.sdiff("dest", "set1", "set2");
-  console.log(diff); // ["a", "b"]
+  ```py Example  theme={"system"}
+  redis.sadd("key1", "a", "b", "c")
+
+  redis.sadd("key2", "c", "d", "e")
+
+  # Store the result in a new set
+  assert redis.sdiffstore("res", "key1", "key2") == 2
+
+  assert redis.smembers("set") == {"a", "b"}
   ```
 </RequestExample>

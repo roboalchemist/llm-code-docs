@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/smart-turn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Smart Turn Detection
 
 > Advanced conversational turn detection
@@ -26,34 +30,47 @@ Smart Turn Detection uses an advanced machine learning model to determine when a
 
 ## Quick Start
 
-To enable Smart Turn Detection in your Pipecat Cloud bot, add the `LocalSmartTurnAnalyzerV3` analyzer to your transport configuration.
+To enable Smart Turn Detection in your Pipecat Cloud bot, configure a `TurnAnalyzerUserTurnStopStrategy` with `LocalSmartTurnAnalyzerV3` in your context aggregator.
 
 The model weights are bundled with Pipecat, so there's no need to download them separately.
 
 ```python  theme={null}
-import aiohttp
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.daily.transport import DailyParams, DailyTransport
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 async def main(room_url: str, token: str):
-    async with aiohttp.ClientSession() as session:
-        transport = DailyTransport(
-            room_url,
-            token,
-            "Voice AI Bot",
-            DailyParams(
-                audio_in_enabled=True,
-                audio_out_enabled=True,
-                # Set VAD to 0.2 seconds for optimal Smart Turn performance
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-                # Enable local Smart Turn inference using the weights bundled with Pipecat
-                turn_analyzer=LocalSmartTurnAnalyzerV3(),
-            ),
-        )
+    transport = DailyTransport(
+        room_url,
+        token,
+        "Voice AI Bot",
+        DailyParams(
+            audio_in_enabled=True,
+            audio_out_enabled=True,
+        ),
+    )
 
-        # Continue with your pipeline setup...
+    # Configure Smart Turn Detection via user turn strategies
+    user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+        context,
+        user_params=LLMUserAggregatorParams(
+            user_turn_strategies=UserTurnStrategies(
+                stop=[TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3()
+                )]
+            ),
+            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+        ),
+    )
+
+    # Continue with your pipeline setup...
 ```
 
 <Tip>
@@ -92,8 +109,3 @@ For more details on Smart Turn, see the following links:
     More details about the Pipecat Smart Turn integration
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

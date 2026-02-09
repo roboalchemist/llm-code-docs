@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/promise-function-async.md
 ---
-# typescript/promise-function-async&#x20;
 
 ### What it does
 

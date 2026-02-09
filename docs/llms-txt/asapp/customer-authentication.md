@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/customer-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer Authentication
 
 Customer Authentication enables consistent and personalized conversations across channels and over time. The authentication requirements consist of two main elements:
@@ -7,14 +11,14 @@ Customer Authentication enables consistent and personalized conversations across
 1. A customer identifier
 2. An access token
 
-The source, format, and use of these items depends on the customer's infrastructure and services.  However, where applicable and feasible, ASAPP instills a few direct requirements for integration of these components.
+The source, format, and use of these items depends on the customer's infrastructure and services. However, where applicable and feasible, ASAPP instills a few direct requirements for integration of these components.
 
 This section outlines the requirements and considerations in the sections below.
 
 Integrations leveraging customer authentication enable two main features of ASAPP:
 
-1. Combination of the conversation history of a customer into a single view to enable the true asynchronous behavior of ASAPP.  This allows a customer to come back over time as well as change communication channels but maintain a consistent state and experience.
-2. Validation of a customer and make API calls for a customer's data to display to a representative or directly to the customer.  
+1. Combine the conversation history of a customer into a single view to enable the true asynchronous behavior of ASAPP. This allows a customer to come back over time as well as change communication channels but maintain a consistent state and experience.
+2. Validate a customer and make API calls for a customer's data to display to a representative or directly to the customer.  
 
 The following sequence diagram depicts an example of a customer authentication integration utilizing OAuth customer credentials and a JSON Web Token (JWT) for API calls.
 
@@ -72,7 +76,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
 ### Bearer Tokens
 
-A Bearer Token is a lightweight security token which provides the bearer, or user, access to protected resources. When a user authenticates, a Bearer Token type is issued that contains an access token and a refresh token, along with expiration details. Bearer tokens are short-lived, dynamic access tokens that can be updated throughout a session using a refresh token.
+A Bearer Token is a lightweight security token which provides the bearer, or user, access to protected resources. When a user authenticates, the system issues a Bearer Token type that contains an access token and a refresh token, along with expiration details. Bearer tokens are short-lived, dynamic access tokens that you can update throughout a session using a refresh token.
 
 **Example Bearer Token:**
 

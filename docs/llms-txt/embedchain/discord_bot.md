@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/discord_bot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🤖 Discord Bot
 
 ### 🔑 Keys Setup
@@ -13,7 +17,7 @@
 * Set `Authorization Method` to `In-app Authorization`. Under `Scopes` select `bot`.
 * Under `Bot Permissions` allow the following and then click on `Save Changes`.
 
-```text
+```text  theme={null}
 Send Messages (under Text Permissions)
 ```
 
@@ -27,13 +31,13 @@ Send Messages (under Text Permissions)
 
 <Tabs>
   <Tab title="docker">
-    ```bash
+    ```bash  theme={null}
     docker run --name discord-bot -e OPENAI_API_KEY=sk-xxx -e DISCORD_BOT_TOKEN=xxx -p 8080:8080 embedchain/discord-bot:latest
     ```
   </Tab>
 
   <Tab title="python">
-    ```bash
+    ```bash  theme={null}
     pip install --upgrade "embedchain[discord]"
 
     python -m embedchain.bots.discord
@@ -50,19 +54,19 @@ Send Messages (under Text Permissions)
   ![Slash commands interaction with bot](https://github.com/embedchain/embedchain/assets/73601258/bf1414e3-d408-4863-b0d2-ef382a76467e)
 * You can add data sources to the bot using the slash command:
 
-```text
+```text  theme={null}
 /ec add <data_type> <url_or_text>
 ```
 
 * You can ask your queries from the bot using the slash command:
 
-```text
+```text  theme={null}
 /ec query <question>
 ```
 
 * You can chat with the bot using the slash command:
 
-```text
+```text  theme={null}
 /ec chat <question>
 ```
 

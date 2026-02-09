@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/accessor-pairs.md
 ---
-# eslint/accessor-pairs&#x20;
 
 ### What it does
 

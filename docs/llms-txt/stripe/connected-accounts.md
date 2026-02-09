@@ -4,9 +4,13 @@
 
 Request the treasury capability and collect onboarding requirements for your connected accounts.
 
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Financial Accounts workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
+
 To use Financial Accounts for platforms, your platform must have a Stripe *Connect* (Connect is Stripe's solution for multi-party businesses, such as marketplace or software platforms, to route payments between sellers, customers, and other recipients) integration. Stripe Connect enables a platform to provide connected accounts to sellers and service providers. For an overview of how connected accounts fit into the Financial Accounts for platforms account structure, see the [Financial Accounts for platforms accounts structure](https://docs.stripe.com/financial-accounts/connect/account-management/accounts-structure.md) guide.
 
-Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted dashboard and where your platform is responsible for requirements collection and loss liability, including Custom connected accounts. Learn how to [create connected accounts](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct) that work with Financial Accounts for platforms.
+Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted dashboard and where your platform is responsible for requirements collection and loss liability, including Custom connected accounts. Learn how to [create connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform) that work with Financial Accounts for platforms.
 
 As a platform with connected accounts, you’re responsible for maintaining a minimum API version, communicating terms of service updates to your connected accounts, handling information requests from them, and providing them with support. Because your platform is ultimately responsible for the losses your connected accounts incur, you’re also responsible for vetting them for fraud. To learn more, read the [Financial Accounts for platforms fraud guide](https://docs.stripe.com/financial-accounts/connect/examples/fraud-guide.md).
 
@@ -56,7 +60,7 @@ Use `GET /v1/accounts` to retrieve a list of the accounts on your platform.
 
 ## Create a new connected account with the treasury capability
 
-> This guide demonstrates how to create a new connected account using the Stripe API for Financial Accounts for platforms and isn’t exhaustive. For complete documentation on creating a connected account, including through hosted onboarding, see the [Connect integration guide](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct).
+> This guide demonstrates how to create a new connected account using the Stripe API for Financial Accounts for platforms and isn’t exhaustive. For complete documentation on creating a connected account, including through hosted onboarding, see the [Connect integration guide](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform).
 
 Use `POST /v1/accounts` to create a new connected account. Request the following capabilities for the account, which are required to use Financial Accounts for platforms:
 
@@ -241,10 +245,10 @@ params := &stripe.AccountUpdateParams{
       Requested: stripe.Bool(true),
     },
   },
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
 }
 params.AddExtra("capabilities[treasury][requested]", true)
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTEDACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -254,7 +258,6 @@ var options = new AccountUpdateOptions
 {
     Capabilities = new AccountCapabilitiesOptions
     {
-        Treasury = new AccountCapabilitiesTreasuryOptions { Requested = true },
         CardIssuing = new AccountCapabilitiesCardIssuingOptions { Requested = true },
         UsBankAccountAchPayments = new AccountCapabilitiesUsBankAccountAchPaymentsOptions
         {
@@ -262,6 +265,7 @@ var options = new AccountUpdateOptions
         },
     },
 };
+options.AddExtraParam("capabilities[treasury][requested]", true);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Accounts;
 Account account = service.Update("{{CONNECTEDACCOUNT_ID}}", options);
@@ -625,7 +629,7 @@ result, _ := account.Update("{{CONNECTED_ACCOUNT_ID}}", params);
 
 ### Using hosted onboarding
 
-Use Connect Onboarding to efficiently collect required information. That offloads the verification complexity from your platform to Stripe and collects the terms of the service agreement. Alternatively, you can write your own API requests for initial integration, but must monitor for changes to compliance requirements to keep your onboarding workflow current. Learn how to [create connected accounts](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct) that work with Financial Accounts for platforms.
+Use Connect Onboarding to efficiently collect required information. That offloads the verification complexity from your platform to Stripe and collects the terms of the service agreement. Alternatively, you can write your own API requests for initial integration, but must monitor for changes to compliance requirements to keep your onboarding workflow current. Learn how to [create connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform) that work with Financial Accounts for platforms.
 
 Before you can use Connect Onboarding, you must provide the name, color, and icon of your brand in the **Branding** section of your [Connect settings page](https://dashboard.stripe.com/test/settings/connect). Doing so customizes the visual appearance of the form that sellers and service providers interact with when onboarding to your platform.
 
@@ -923,9 +927,9 @@ params := &stripe.AccountUpdateParams{
       Country: stripe.String("US"),
     },
   },
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTEDACCOUNT_ID}}", params)
 ```
 
 ```dotnet

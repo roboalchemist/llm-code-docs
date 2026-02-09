@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/android.md
 
-# Source: https://docs.convex.dev/client/android.md
-
-# Source: https://docs.convex.dev/quickstart/android.md
-
 # Android Kotlin Quickstart
 
 Learn how to query data from Convex in a Android Kotlin project.

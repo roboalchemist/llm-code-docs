@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/openai/openai-gpt-image1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI GPT Image 1 - ComfyUI Native Node Documentation
 
 > Node for generating images using OpenAI's GPT-4 Vision model

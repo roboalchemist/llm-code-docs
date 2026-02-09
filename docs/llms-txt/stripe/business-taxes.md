@@ -64,7 +64,7 @@ All Delaware C corporations are required to pay the Delaware franchise tax and t
 
 You have the option to recalculate your taxes due on the Delaware website.
 
-Delaware sends notices using a calculation method that results in large tax bills for companies with more than 5,000 shares. Most Atlas companies find they pay less tax when they use the [Assumed Par Value Capital](https://corp.delaware.gov/frtaxcalc/) method instead of the default Authorized Shares method. You can read about [these methods](https://corp.delaware.gov/frtaxcalc.shtml) on Delaware’s website. If the franchise tax isn’t submitted by March 1 2025, there is a 200 USD late fee and interest of 1.5% per month on the tax amount originally due.
+Delaware sends notices using a calculation method that results in large tax bills for companies with more than 5,000 shares. Most Atlas companies find they pay less tax when they use the [Assumed Par Value Capital](https://corp.delaware.gov/frtaxcalc/) method instead of the default Authorized Shares method. You can read about [these methods](https://corp.delaware.gov/frtaxcalc.shtml) on Delaware’s website. If the franchise tax isn’t submitted by March 1 2026, there is a 200 USD late fee and interest of 1.5% per month on the tax amount originally due.
 
 #### Pay Delaware franchise tax 
 
@@ -108,24 +108,24 @@ Complete the following steps to pay your annual Delaware LLC tax. You can save y
 
 If your company operates in any US states other than Delaware, it might be subject to annual taxation, registration, and reporting requirements in the other states. [Our partners](https://support.stripe.com/questions/legal-and-tax-advice-for-your-stripe-atlas-company) can help you understand the requirements that apply to your business.
 
-## 2025 key tax season dates 
+## 2026 key tax season dates 
 
-Plan ahead to meet any tax deadlines that apply to your business. Refer to the following information if your company was active in 2024.
+Plan ahead to meet any tax deadlines that apply to your business. Refer to the following information if your company was active in 2025.
 
 #### C Corporation
 
-- March 3, 2025: [Delaware franchise tax](https://docs.stripe.com/atlas/business-taxes.md#file-delaware-tax) due (penalty for late payments: $200 fee and interest of 1.5% per month on the tax amount originally due).
-- April 15, 2025: [US federal corporate income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=ccorp#file-us-corp-tax) due date.
-- October 15, 2025: If you filed for an extension, this is the due date for filing [US corporate income taxes](https://docs.stripe.com/atlas/business-taxes.md#file-us-corp-tax).
+- March 1, 2026: [Delaware franchise tax](https://docs.stripe.com/atlas/business-taxes.md#file-delaware-tax) due (penalty for late payments: $200 fee and interest of 1.5% per month on the tax amount originally due).
+- April 15, 2026: [US federal corporate income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=ccorp#file-us-corp-tax) due date.
+- October 15, 2026: If you filed for an extension, this is the due date for filing [US corporate income taxes](https://docs.stripe.com/atlas/business-taxes.md#file-us-corp-tax).
 
 #### LLC
 
-- March 15, 2025: [US LLC partnership income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc) due, or due date to submit an extension to file taxes later in the year.
-- April 15, 2025: US individual income tax due date.
-- June 2, 2025: [Delaware annual LLC tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc#annual-llc-tax) due.
-- September 15, 2025: If you filed for an extension, this is the due date for filing [US LLC partnership income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc).
+- March 15, 2026: [US LLC partnership income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc) due, or due date to submit an extension to file taxes later in the year.
+- April 15, 2026: US individual income tax due date.
+- June 1, 2026: [Delaware annual LLC tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc#annual-llc-tax) due.
+- September 15, 2026: If you filed for an extension, this is the due date for filing [US LLC partnership income tax](https://docs.stripe.com/atlas/business-taxes.md?business-type=llc).
 
-If your US company has employees or makes payments to US vendors, you might also be required to file a US W-2 or 1099 form by January 31, 2025.
+If your US company has employees or makes payments to US vendors, you might also be required to file a US W-2 or 1099 form by January 31, 2026.
 
 ### Tax obligations when dissolving your company 
 

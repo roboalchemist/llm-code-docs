@@ -2,9 +2,11 @@
 
 # Domain Verification
 
-In order to use the [SAML Single Sign-On](https://configcat.com/docs/docs/advanced/team-management/saml/saml-overview/.md) and the [Auto-assign Users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md) features, you have to verify the ownership of the domain that your company uses for email addresses.
+Copy page
 
-## Steps to verify your domain[â€‹](#steps-to-verify-your-domain "Direct link to Steps to verify your domain")
+In order to use the [SAML Single Sign-On](https://configcat.com/docs/advanced/team-management/saml/saml-overview.md) and the [Auto-assign Users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md) features, you have to verify the ownership of the domain that your company uses for email addresses.
+
+## Steps to verify your domain[​](#steps-to-verify-your-domain "Direct link to Steps to verify your domain")
 
 * Open your organization's authentication settings on the [ConfigCat Dashboard](https://app.configcat.com/organization/authentication).
 

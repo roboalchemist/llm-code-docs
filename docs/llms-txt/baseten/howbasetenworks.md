@@ -1,12 +1,16 @@
 # Source: https://docs.baseten.co/concepts/howbasetenworks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Baseten works
 
 > Baseten is a platform for building, serving, and scaling AI models in production.
 
 It supports multiple entry points depending on your workflow—whether you're deploying a dedicated model, calling an open-source LLM via our Model API, or training from scratch.
 
-**At the core is the Baseten Inference Stack:** performant model runtimes on top of Inference optimized infrastructure. Instead of managing infrastructure, scaling policies, and performance optimization, you can focus on building and iterating on your AI-powered applications.
+**At the core is the Baseten Inference Stack:** performant model engines on top of Inference optimized infrastructure. Instead of managing infrastructure, scaling policies, and performance optimization, you can focus on building and iterating on your AI-powered applications.
 
 ***
 
@@ -49,7 +53,7 @@ Monitor model health and performance with real-time metrics, logs, and detailed 
 
 <img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a81bbd59a02719c6814e62fdbfa89ec3" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/observability.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=15a3fb2106b5f51cd50b261131541f01 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1aa2af207e9f007781838fbd8ca63f50 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=90b0499c358c033b78985f2e08386e2e 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e6dfb73381b1ac4f70a7299f473c2fe7 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=537db025cbccafe7f54dbe0d99c736fe 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=daf4644abc87786401d3959d0f05d7d7 2500w" />
 
-This full-stack infrastructure, from packaging to observability, is powered by the **Baseten Inference Stack**: performant model runtimes, cross-cloud availability, and seamless developer workflows.
+This full-stack infrastructure, from packaging to observability, is powered by the **Baseten Inference Stack**: performant model engines, cross-cloud availability, and seamless developer workflows.
 
 ***
 

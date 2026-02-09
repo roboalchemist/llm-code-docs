@@ -1,11 +1,16 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/install-the-cli.md
 
-# Install & Authenticate The CLI
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Install & Authenticate The CLI
 
 > Learn how to install & authenticate Graphite's CLI to start creating stacked pull requests.
 
-The Graphite CLI is a tool to help you break up large engineering tasks into a series of small, incremental code changes directly from the command line. The Graphite CLI makes it easy to stay unblocked as an author, develop faster, and provide more helpful comments as a reviewer.\
-\
+The Graphite CLI is a tool to help you break up large engineering tasks into a series of small, incremental code changes directly from the command line. The Graphite CLI makes it easy to stay unblocked as an author, develop faster, and provide more helpful comments as a reviewer.
+
 The Graphite CLI is fully compatible with `git`—just install it on an existing repository and begin using our suite of `gt` commands.
 
 ## Install the CLI
@@ -30,7 +35,7 @@ gt --version
 
 ### node.js versioning (for npm installation only)
 
-We develop Graphite with Node.js v18, but Graphite should run with no major issues on any current version of Node. If you run into any issues that seem Node-related, try using v18 as a first workaround! If that doesn't work, we recommend the `brew` installation, which ships standalone binaries for both MacOS and Linux.
+We develop Graphite with Node.js v22, but Graphite should run with no major issues on any current version of Node. If you run into any issues that seem Node-related, try using v22 as a first workaround! If that doesn't work, we recommend the `brew` installation, which ships standalone binaries for both MacOS and Linux.
 
 ### git versioning
 
@@ -69,7 +74,7 @@ We are always working towards better native Windows support, although occasional
 ## Authenticate the CLI
 
 <Note>
-  To use Graphite to create or update pull requests in GitHub for the branches in your stack using `gt submit`, you must authenticate the CLI with your GitHub account. See [Privacy and Security](/privacy-and-security) to understand which GitHub permissions Graphite requires.
+  To use Graphite to create or update pull requests in GitHub for the branches in your stack, you must authenticate the CLI with your GitHub account. See [Privacy and Security](/privacy-and-security) to understand which GitHub permissions Graphite requires. Graphite is architected to ask for the minimum set of permissions necessary within the constraints of GitHub's API.
 </Note>
 
 1. Sign into [https://app.graphite.com/activate](https://app.graphite.com/activate) with your GitHub account.
@@ -83,6 +88,4 @@ We are always working towards better native Windows support, although occasional
 🔐 Saved auth token to "/Users/pranathiperi/.graphite_user_config"
 ```
 
-Once you've authenticated the CLI, you can run `gt submit` to create or update pull requests in GitHub for every branch in your stack.
-
-Your privacy and security are our top priorities. Graphite is architected to ask for the minimum set of permissions necessary within the constraints of GitHub's API. Learn more about our [GitHub integration](/privacy-and-security).
+Once you've authenticated the CLI, you can [initialize `gt` to be used in your repositories](/cli-quick-start#initializing-graphite).

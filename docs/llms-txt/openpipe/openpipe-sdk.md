@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/getting-started/openpipe-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installing the SDK
 
 Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Calls sent through the OpenPipe SDK will be recorded by default for later training. You'll use this same SDK to call your own fine-tuned models once they're deployed.
@@ -10,7 +14,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Installation
 
-    ```bash
+    ```bash  theme={null}
     pip install openpipe
     ```
 
@@ -18,20 +22,20 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     Add `OPENPIPE_API_KEY` to your environment variables.
 
-    ```bash
+    ```bash  theme={null}
     export OPENPIPE_API_KEY=opk-<your-api-key>
     # Or you can set it in your code, see "Complete Example" below
     ```
 
     Replace this line
 
-    ```python
+    ```python  theme={null}
     from openai import OpenAI
     ```
 
     with this one
 
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
     ```
 
@@ -45,7 +49,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Complete Example
 
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
     import os
 
@@ -74,7 +78,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Installation
 
-    ```bash
+    ```bash  theme={null}
     npm install --save openpipe
     # or
     yarn add openpipe
@@ -84,20 +88,20 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     Add `OPENPIPE_API_KEY` to your environment variables.
 
-    ```bash
+    ```bash  theme={null}
     export OPENPIPE_API_KEY=opk-<your-api-key>
     # Or you can set it in your code, see "Complete Example" below
     ```
 
     Replace this line
 
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openai";
     ```
 
     with this one
 
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
     ```
 
@@ -111,7 +115,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Complete Example
 
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
     // Fully compatible with original OpenAI initialization
     const openai = new OpenAI({
@@ -141,7 +145,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Installation
 
-    ```bash
+    ```bash  theme={null}
     npm install --save openpipe
     # or
     yarn add openpipe
@@ -151,20 +155,20 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     Add `OPENPIPE_API_KEY` to your environment variables.
 
-    ```bash
+    ```bash  theme={null}
     export OPENPIPE_API_KEY=opk-<your-api-key>
     # Or you can set it in your code, see "Complete Example" below
     ```
 
     Replace this line
 
-    ```typescript
+    ```typescript  theme={null}
     const OpenAI = require("openai");
     ```
 
     with this one
 
-    ```typescript
+    ```typescript  theme={null}
     const OpenAI = require("openpipe/openai").default;
     ```
 
@@ -178,7 +182,7 @@ Use the OpenPipe SDK as a drop-in replacement for the generic OpenAI package. Ca
 
     ## Complete Example
 
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
     // Fully compatible with original OpenAI initialization
     const openai = new OpenAI({

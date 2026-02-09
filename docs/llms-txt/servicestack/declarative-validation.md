@@ -31,6 +31,7 @@ The Validator attributes are decoupled from any implementation and can be safely
 | `[ValidateIsAdmin]`            | Protect access to this API to Admin Users only                          |
 | `[ValidateHasPermission]`      | Protect access to this API to only Users assigned with ALL Permissions  |
 | `[ValidateHasRole]`            | Protect access to this API to only Users assigned with ALL Roles        |
+| `[ValidateApiKey]`             | Protect access to this API to only Users with a valid API Key           |
 
 ### Property Validation Attributes
 
@@ -548,8 +549,8 @@ namespace MyApp
 ```
 
 ::: info
-The above code can be imported into your ServiceStack project by using `x mix validation-source` 
-if you are using .NET 8 modular startup.
+The above code can be imported into your ServiceStack project by using `npx add-in validation-source` 
+if you are using .NET 10 modular startup.
 :::
 
 DB Validation rules can be added programmatically, this example below adds 1x Type Validator and 2x Property Validators to the 

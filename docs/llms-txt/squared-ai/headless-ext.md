@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/data-apps/browser-extension/headless-ext.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Headless Extension
 
 The **Headless Extension** is a lightweight Chrome extension package that allows advanced users to run AI models directly on webpages without embedding anything in the page itself. This is ideal for internal use cases where you want automation, harvesting, or insight overlay without platform and closed environments.

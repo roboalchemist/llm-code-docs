@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/components/prompt-field.md
 
-# Source: https://mui.com/x/api/data-grid/prompt-field.md
-
-# Source: https://mui.com/x/react-data-grid/components/prompt-field.md
-
 ---
 title: Data Grid - Prompt Field component
 productId: x-data-grid

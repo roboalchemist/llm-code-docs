@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/pipeline/parallel-pipeline.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ParallelPipeline
 
 > Run multiple pipeline branches in parallel, with synchronized inputs and outputs for complex flows
@@ -106,8 +110,3 @@ pipeline = Pipeline([
 3. Other frames flow downstream to all branch sources
 4. Results from each branch are collected at the sinks
 5. The pipeline ensures `EndFrame`s are only passed through after all branches complete
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

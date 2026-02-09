@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/cookbooks/knowledge-base-qa.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge Base Q&A
 
 > Learn how to build a RAG (Retrieval-Augmented Generation) workflow using both Document Vector Store and GitHub Vector Store together, with query optimization.
@@ -160,8 +164,3 @@ Requirements:
 - If the answer is not found, clearly state that
 - Be concise but thorough
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

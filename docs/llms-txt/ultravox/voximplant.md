@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/integrations/voximplant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Voximplant
 
 > Connecting Ultravox to SIP Using Voximplant
@@ -498,8 +502,3 @@ The outgoing scenario accepts the `customData` parameter in the following format
 ```
 
 You can provide this parameter when launching the scenario via a **routing rule** or [StartScenarios](https://voximplant.com/docs/references/httpapi/scenarios#startscenarios) Management API method.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

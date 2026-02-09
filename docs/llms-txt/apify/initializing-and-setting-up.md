@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/initializing-and-setting-up.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/challenge/initializing-and-setting-up.md
-
 # Initialization and setting up
 
 **When you extract links from a web page, you often end up with a lot of irrelevant URLs. Learn how to filter the links to only keep the ones you need.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -81,4 +83,4 @@ Finally, we'll add the following input file to **INPUT.json** in the project's r
 
 ## Next up
 
-Cool! We're ready. But https://docs.apify.com/academy/web-scraping-for-beginners/challenge/modularity.md before moving forward!
+Cool! We're ready. But [let's discuss a bit about modularity](https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/modularity.md) before moving forward!

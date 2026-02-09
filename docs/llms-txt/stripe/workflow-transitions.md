@@ -5,7 +5,7 @@
 Learn about invoice status transitions and finalization.
 
 The following graphic shows the different ways that an invoice can transition from status to status:
-![](https://b.stripecdn.com/docs-statics-srv/assets/invoice_states_diagram_simplified.edbc1852633266183562d1235636a6ad.svg)
+![](https://b.stripecdn.com/docs-statics-srv/assets/invoice_states_diagram_simplified.6990197f2efb082ee5885ae3afb40fda.svg)
 
 Status transitions and finalization
 
@@ -89,10 +89,9 @@ const invoice = await stripe.invoices.finalizeInvoice('{{INVOICE_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceFinalizeInvoiceParams{
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.FinalizeInvoice(context.TODO(), params)
+params := &stripe.InvoiceFinalizeInvoiceParams{}
+result, err := sc.V1Invoices.FinalizeInvoice(
+  context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet

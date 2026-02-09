@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/encodec.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/encodec.md
 
 # EnCodec
 
@@ -39,15 +39,15 @@ Here is a quick example of how to encode and decode an audio using this model:
 
 #### transformers.EncodecConfig[[transformers.EncodecConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/configuration_encodec.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/configuration_encodec.py#L27)
 
-This is the configuration class to store the configuration of an [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel). It is used to instantiate a
+This is the configuration class to store the configuration of an [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel). It is used to instantiate a
 Encodec model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the
 [facebook/encodec_24khz](https://huggingface.co/facebook/encodec_24khz) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -116,22 +116,22 @@ use_conv_shortcut (`bool`, *optional*, defaults to `True`) : Whether to use a co
 
 #### transformers.EncodecFeatureExtractor[[transformers.EncodecFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/feature_extraction_encodec.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/feature_extraction_encodec.py#L26)
 
 Constructs an EnCodec feature extractor.
 
-This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
+This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
 most of the main methods. Users should refer to this superclass for more information regarding those methods.
 
 Instantiating a feature extractor with the defaults will yield a similar configuration to that of the
 [facebook/encodec_24khz](https://huggingface.co/facebook/encodec_24khz) architecture.
 
-__call__transformers.EncodecFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/feature_extraction_encodec.py#L84[{"name": "raw_audio", "val": ": typing.Union[numpy.ndarray, list[float], list[numpy.ndarray], list[list[float]]]"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy, NoneType] = None"}, {"name": "truncation", "val": ": typing.Optional[bool] = False"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "sampling_rate", "val": ": typing.Optional[int] = None"}]- **raw_audio** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
+__call__transformers.EncodecFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/feature_extraction_encodec.py#L81[{"name": "raw_audio", "val": ": numpy.ndarray | list[float] | list[numpy.ndarray] | list[list[float]]"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy | None = None"}, {"name": "truncation", "val": ": bool | None = False"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "sampling_rate", "val": ": int | None = None"}]- **raw_audio** (`np.ndarray`, `list[float]`, `list[np.ndarray]`, `list[list[float]]`) --
   The sequence or batch of sequences to be processed. Each sequence can be a numpy array, a list of float
   values, a list of numpy arrays or a list of list of float values. The numpy array must be of shape
   `(num_samples,)` for mono audio (`feature_size = 1`), or `(2, num_samples)` for stereo audio
   (`feature_size = 2`).
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `True`) --
   Select a strategy to pad the returned sequences (according to the model's padding side and padding
   index) among:
 
@@ -145,7 +145,7 @@ __call__transformers.EncodecFeatureExtractor.__call__https://github.com/huggingf
   Activates truncation to cut input sequences longer than `max_length` to `max_length`.
 - **max_length** (`int`, *optional*) --
   Maximum length of the returned list and optionally padding length (see above).
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -172,11 +172,11 @@ overlap (`float`, *optional*) : Defines the overlap between each chunk. It is us
 
 #### transformers.EncodecModel[[transformers.EncodecModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/modeling_encodec.py#L484)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/modeling_encodec.py#L496)
 
 The EnCodec neural audio codec model.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -184,14 +184,14 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-decodetransformers.EncodecModel.decodehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/modeling_encodec.py#L662[{"name": "audio_codes", "val": ": LongTensor"}, {"name": "audio_scales", "val": ": Tensor"}, {"name": "padding_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "last_frame_pad_length", "val": ": typing.Optional[int] = 0"}]- **audio_codes** (`torch.LongTensor`  of shape `(nb_frames, batch_size, nb_quantizers, frame_len)`, *optional*) --
+decodetransformers.EncodecModel.decodehttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/modeling_encodec.py#L672[{"name": "audio_codes", "val": ": LongTensor"}, {"name": "audio_scales", "val": ": Tensor"}, {"name": "padding_mask", "val": ": torch.Tensor | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "last_frame_pad_length", "val": ": int | None = 0"}]- **audio_codes** (`torch.LongTensor`  of shape `(nb_frames, batch_size, nb_quantizers, frame_len)`, *optional*) --
   Discrete code embeddings computed using `model.encode`.
 - **audio_scales** (list of length `nb_frames` of `torch.Tensor` of shape `(batch_size, 1)`, *optional*) --
   Scaling factor for each `audio_codes` input.
 - **padding_mask** (`torch.Tensor` of shape `(channels, sequence_length)`) --
   Padding mask used to pad the `input_values`.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **last_frame_pad_length** (`int`, *optional*) --
   Integer representing the length of the padding in the last frame, which is removed during decoding.0
 
@@ -202,10 +202,10 @@ trimmed.
 
 **Parameters:**
 
-config ([EncodecConfig](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([EncodecConfig](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 #### encode[[transformers.EncodecModel.encode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/modeling_encodec.py#L526)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/modeling_encodec.py#L536)
 
 Encodes the input audio waveform into discrete codes of shape
 `(nb_frames, batch_size, nb_quantizers, frame_len)`.
@@ -235,9 +235,9 @@ bandwidth (`float`, *optional*) : The target bandwidth. Must be one of `config.t
 - last_frame_pad_length (`int`, *optional*).
 #### forward[[transformers.EncodecModel.forward]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/encodec/modeling_encodec.py#L717)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/encodec/modeling_encodec.py#L727)
 
-The [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel) forward method, overrides the `__call__` special method.
+The [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -285,7 +285,7 @@ last_frame_pad_length (`int`, *optional*) : The length of the padding in the las
 
 A `transformers.models.encodec.modeling_encodec.EncodecOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([EncodecConfig](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecConfig)) and inputs.
+elements depending on the configuration ([EncodecConfig](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecConfig)) and inputs.
 
 - **audio_codes** (`torch.LongTensor`  of shape `(nb_frames, batch_size, nb_quantizers, frame_len)`, *optional*) -- Discrete code embeddings computed using `model.encode`.
 - **audio_values** (`torch.FloatTensor`  of shape `(batch_size, segment_length)`, *optional*) -- Decoded audio values, obtained using the decoder part of Encodec.

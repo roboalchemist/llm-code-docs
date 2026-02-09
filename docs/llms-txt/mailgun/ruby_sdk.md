@@ -38,7 +38,7 @@ Here's a simple example on how to send an email. As always, please consult the r
 require 'mailgun-ruby'
 
 # First, instantiate the Mailgun Client with your API key
-mg_client = Mailgun::Client.new 'your-api-key'
+mg_client = Mailgun::Client.new 'MAILGUN_API_KEY'
 
 # Define your message parameters
 message_params =  { from: 'bob@sending_domain.com',

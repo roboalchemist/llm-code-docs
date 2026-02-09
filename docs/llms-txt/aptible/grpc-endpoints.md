@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/grpc-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # gRPC Endpoints
 
 <img src="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=7358d127473451d0a602a354f7e57f3e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/ccfd24b-tls-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=280&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=02685d80d3c363e03e462e338e368ec3 280w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=560&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=f6b273562653d772a67f8b70d89c0e28 560w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=840&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=0d6188bfeab9e1a6f474a24ba12df6f5 840w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1100&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d583b15b03bcfde42fec239a2fd37d27 1100w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=1650&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=d1344f39716ca678eeb696708a89e47d 1650w, https://mintcdn.com/aptible/2c_c-XH-dAzVOaDu/images/ccfd24b-tls-endpoints.png?w=2500&fit=max&auto=format&n=2c_c-XH-dAzVOaDu&q=85&s=3b74f97b8ec524ba8b3774720013e051 2500w" />

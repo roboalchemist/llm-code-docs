@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/agents/patterns/evaluator-optimizer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluator-Optimizer
 
 <img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=397ca67e5abd9c7a2a2adc010c53889d" data-og-width="1654" width="1654" data-og-height="740" height="740" data-path="img/workflow/agents/diagram/evaluator-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=bc93c85c311f4cba37fc0176535284b0 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=95a68c5e03c1b5ef8d4223eda31c0581 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=8af28e72146c82aacc173da479c17a67 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=14a51520d0b8b163f790e2f2763eb389 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=212f123c10cad13a8e607f4ef9d326b5 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/evaluator-diagram.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=60b59c783ea112d1c3df2cd731c2d6a3 2500w" />
@@ -8,12 +12,14 @@ In this example, the generator creates output and passes it to the evaluator, wh
 
 ```ts  theme={"system"}
 import { serve } from "@upstash/workflow/nextjs";
+import { agentWorkflow } from "@upstash/workflow-agents";
 
 export const { POST } = serve(async (context) => {
-  const model = context.agents.openai('gpt-3.5-turbo');
+  const agents = agentWorkflow(context);
+  const model = agents.openai('gpt-3.5-turbo');
 
   // Generator agent that generates content
-  const generator = context.agents.agent({
+  const generator = agents.agent({
     model,
     name: 'generator',
     maxSteps: 1,
@@ -22,7 +28,7 @@ export const { POST } = serve(async (context) => {
   });
 
   // Evaluator agent that evaluates the text and gives corrections
-  const evaluator = context.agents.agent({
+  const evaluator = agents.agent({
     model,
     name: 'evaluator',
     maxSteps: 1,
@@ -44,11 +50,11 @@ export const { POST } = serve(async (context) => {
     }
 
     // Generate content
-    const generatedResponse = await context.agents.task({ agent: generator, prompt: nextPrompt }).run();
+    const generatedResponse = await agents.task({ agent: generator, prompt: nextPrompt }).run();
     generatedText = generatedResponse.text
 
     // Evaluate the generated content
-    const evaluationResponse = await context.agents.task({ agent: evaluator, prompt: `Evaluate and provide feedback for the following text: ${generatedText}` }).run();
+    const evaluationResponse = await agents.task({ agent: evaluator, prompt: `Evaluate and provide feedback for the following text: ${generatedText}` }).run();
     evaluationResult = evaluationResponse.text
 
     // If the evaluator accepts the content (i.e., "PASS"), stop

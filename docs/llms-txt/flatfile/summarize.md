@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/summarize.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text Summarization and Key Phrase Extraction Plugin
 
 > Automatically enriches Flatfile data by performing text summarization and key phrase extraction on specified text fields using natural language processing.
@@ -12,7 +16,7 @@ This is useful for processing large blocks of text, such as product descriptions
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-enrich-summarize
 ```
 
@@ -34,7 +38,7 @@ The `summarize` function accepts a configuration object with the following param
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 
@@ -50,7 +54,7 @@ The `summarize` function accepts a configuration object with the following param
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 
@@ -70,7 +74,7 @@ The `summarize` function accepts a configuration object with the following param
 ### Custom Summary Length
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 
@@ -88,7 +92,7 @@ The `summarize` function accepts a configuration object with the following param
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 
@@ -110,7 +114,7 @@ The `summarize` function accepts a configuration object with the following param
 ### Percentage-Based Summary
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 
@@ -128,7 +132,7 @@ The `summarize` function accepts a configuration object with the following param
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { summarize } from "@flatfile/plugin-enrich-summarize";
 

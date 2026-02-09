@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/context-awareness/remote-indexing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remote Indexing
+
+> Index remote repositories from GitHub, GitLab, and BitBucket for enterprise teams without storing code locally.
 
 <Note> This feature is only available in the Windsurf Plugins for Enterprise plans. </Note>
 

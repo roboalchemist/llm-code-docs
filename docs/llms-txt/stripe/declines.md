@@ -27,9 +27,6 @@ If the card issuer or payment provider declines a payment, Stripe shares with yo
 ## Blocked payments 
 
 *Stripe Radar* (Stripe Radar helps detect and block fraud for any type of business using machine learning that trains on data across millions of global companies. It’s built into Stripe and requires no additional setup to get started) blocks high risk payments, including those that violate your custom rules or have high risk scores. This automated fraud prevention product evaluates each payment, without requiring any action from you.
-![A payment that Radar declined](https://b.stripecdn.com/docs-statics-srv/assets/payment-high-risk-allow-list.1dd70f2d0e26384f44e8eeeb59eaf533.png)
-
-A payment that Radar declined
 
 When Stripe blocks a payment, it doesn’t obtain authorization from the card issuer. This precaution helps prevent potential fraudulent payments that might lead to disputes.
 
@@ -78,20 +75,20 @@ outcome: {
 In the API, you might see an invalid API call like the following:
 
 ```curl
-curl https://api.stripe.com/v1/charges \
+curl https://api.stripe.com/v1/payment_intents \
   -u "<<YOUR_SECRET_KEY>>:" \
   -d amount=2000 \
   -d currency=usd \
-  -d source=tok_invalid \
-  --data-urlencode description="Charge for jenny.rosen@example.com"
+  -d payment_method=pm_card_chargeDeclinedIncorrectCvc \
+  -d confirm=true
 ```
 
 ```cli
-stripe charges create  \
+stripe payment_intents create  \
   --amount=2000 \
   --currency=usd \
-  --source=tok_invalid \
-  --description="Charge for jenny.rosen@example.com"
+  --payment-method=pm_card_chargeDeclinedIncorrectCvc \
+  --confirm=true
 ```
 
 ```ruby
@@ -99,11 +96,11 @@ stripe charges create  \
 # See your keys here: https://dashboard.stripe.com/apikeys
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-charge = client.v1.charges.create({
+payment_intent = client.v1.payment_intents.create({
   amount: 2000,
   currency: 'usd',
-  source: 'tok_invalid',
-  description: 'Charge for jenny.rosen@example.com',
+  payment_method: 'pm_card_chargeDeclinedIncorrectCvc',
+  confirm: true,
 })
 ```
 
@@ -113,11 +110,11 @@ charge = client.v1.charges.create({
 client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-charge = client.v1.charges.create({
+payment_intent = client.v1.payment_intents.create({
   "amount": 2000,
   "currency": "usd",
-  "source": "tok_invalid",
-  "description": "Charge for jenny.rosen@example.com",
+  "payment_method": "pm_card_chargeDeclinedIncorrectCvc",
+  "confirm": True,
 })
 ```
 
@@ -126,11 +123,11 @@ charge = client.v1.charges.create({
 // See your keys here: https://dashboard.stripe.com/apikeys
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$charge = $stripe->charges->create([
+$paymentIntent = $stripe->paymentIntents->create([
   'amount' => 2000,
   'currency' => 'usd',
-  'source' => 'tok_invalid',
-  'description' => 'Charge for jenny.rosen@example.com',
+  'payment_method' => 'pm_card_chargeDeclinedIncorrectCvc',
+  'confirm' => true,
 ]);
 ```
 
@@ -139,16 +136,16 @@ $charge = $stripe->charges->create([
 // See your keys here: https://dashboard.stripe.com/apikeys
 StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-ChargeCreateParams params =
-  ChargeCreateParams.builder()
+PaymentIntentCreateParams params =
+  PaymentIntentCreateParams.builder()
     .setAmount(2000L)
     .setCurrency("usd")
-    .setSource("tok_invalid")
-    .setDescription("Charge for jenny.rosen@example.com")
+    .setPaymentMethod("pm_card_chargeDeclinedIncorrectCvc")
+    .setConfirm(true)
     .build();
 
 // For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-Charge charge = client.v1().charges().create(params);
+PaymentIntent paymentIntent = client.v1().paymentIntents().create(params);
 ```
 
 ```node
@@ -156,11 +153,11 @@ Charge charge = client.v1().charges().create(params);
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
-const charge = await stripe.charges.create({
+const paymentIntent = await stripe.paymentIntents.create({
   amount: 2000,
   currency: 'usd',
-  source: 'tok_invalid',
-  description: 'Charge for jenny.rosen@example.com',
+  payment_method: 'pm_card_chargeDeclinedIncorrectCvc',
+  confirm: true,
 });
 ```
 
@@ -168,28 +165,28 @@ const charge = await stripe.charges.create({
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.ChargeCreateParams{
+params := &stripe.PaymentIntentCreateParams{
   Amount: stripe.Int64(2000),
   Currency: stripe.String(stripe.CurrencyUSD),
-  Source: &stripe.PaymentSourceSourceParams{Token: stripe.String("tok_invalid")},
-  Description: stripe.String("Charge for jenny.rosen@example.com"),
+  PaymentMethod: stripe.String("pm_card_chargeDeclinedIncorrectCvc"),
+  Confirm: stripe.Bool(true),
 }
-result, err := sc.V1Charges.Create(context.TODO(), params)
+result, err := sc.V1PaymentIntents.Create(context.TODO(), params)
 ```
 
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new ChargeCreateOptions
+var options = new PaymentIntentCreateOptions
 {
     Amount = 2000,
     Currency = "usd",
-    Source = "tok_invalid",
-    Description = "Charge for jenny.rosen@example.com",
+    PaymentMethod = "pm_card_chargeDeclinedIncorrectCvc",
+    Confirm = true,
 };
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.Charges;
-Charge charge = service.Create(options);
+var service = client.V1.PaymentIntents;
+PaymentIntent paymentIntent = service.Create(options);
 ```
 
 The invalid API call generates an error response that might look like this:
@@ -197,25 +194,25 @@ The invalid API call generates an error response that might look like this:
 ```json
 {
   "error": {
-    "code": "invalid_number",
-    "doc_url": "https://docs.stripe.com/error-codes#invalid-number",
-    "message": "Your card number is incorrect.",
-    "param": "card[number]",
+    "code": "incorrect_cvc",
+    "doc_url": "https://stripe.com/docs/error-codes/incorrect-cvc",
+    "message": "Your card's security code is incorrect.",
+    "param": "cvc",
     "type": "card_error"
   }
 }
 ```
 
-The [outcome](https://docs.stripe.com/api.md#charge_object-outcome) of a declined payment includes the type of payment failure and the [reason](https://docs.stripe.com/api.md#charge_object-outcome-reason), based on the card issuer’s decline code. The reason might contain information other than the issuer’s response code, for example, if a Radar rule evaluation blocked the charge.
+The [outcome](https://docs.stripe.com/api.md#charge_object-outcome) of a declined payment includes the type of payment failure and the [reason](https://docs.stripe.com/api.md#charge_object-outcome-reason), based on the card network’s decline code. The reason might contain information other than the card network’s response code, for example, if a Radar rule evaluation blocked the charge.
 
 ```json
 ...
 outcome: {
   network_decline_code: "54",
-  network_advice_code: "01",
+  network_advice_code: "03",
   network_status: "declined_by_network",
   reason: "expired_card",
-  advice_code: "do_not_try_again",
+  advice_code: "confirm_card_data",
   risk_level: "normal",
   seller_message: "The bank returned the decline code `expired_card`.",
   type: "issuer_declined"
@@ -239,6 +236,6 @@ outcome: {
 ## See also
 
 - [Card declines](https://docs.stripe.com/declines/card.md)
-- [Test declined payments](https://docs.stripe.com/testing.md?testing-method=card-numbers#declined-payments)
+- [Test declined payments](https://docs.stripe.com/testing.md#declined-payments)
 - [Refund and cancel payments](https://docs.stripe.com/refunds.md)
 - [Automate payment retries](https://docs.stripe.com/billing/revenue-recovery/smart-retries.md)

@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/state_not_found.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/state_not_found.md
 
-# State not found
+# state_not_found
 
 The state parameter was not found in the request.
 
-***
 
-title: State not found
-description: The state parameter was not found in the request.
---------------------------------------------------------------
 
 ## What is it?
 

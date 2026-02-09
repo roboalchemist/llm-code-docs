@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/wav2vec2-bert.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/wav2vec2-bert.md
 
 # Wav2Vec2-BERT
 
@@ -25,26 +25,26 @@ This model was contributed by [ylacombe](https://huggingface.co/ylacombe). The o
 
 ## Resources
 
-- [Wav2Vec2BertForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/speech-recognition).
+- [Wav2Vec2BertForCTC](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/speech-recognition).
 - You can also adapt these notebooks on [how to finetune a speech recognition model in English](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/speech_recognition.ipynb), and [how to finetune a speech recognition model in any language](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/multi_lingual_speech_recognition.ipynb).
 
-- [Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification) can be used by adapting this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/audio-classification).
+- [Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification) can be used by adapting this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/audio-classification).
 - See also: [Audio classification task guide](../tasks/audio_classification)
 
 ## Wav2Vec2BertConfig[[transformers.Wav2Vec2BertConfig]]
 
 #### transformers.Wav2Vec2BertConfig[[transformers.Wav2Vec2BertConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/configuration_wav2vec2_bert.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/configuration_wav2vec2_bert.py#L23)
 
-This is the configuration class to store the configuration of a [Wav2Vec2BertModel](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel). It is used to
+This is the configuration class to store the configuration of a [Wav2Vec2BertModel](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel). It is used to
 instantiate an Wav2Vec2Bert model according to the specified arguments, defining the model architecture.
 Instantiating a configuration with the defaults will yield a similar configuration to that of the Wav2Vec2Bert
 [facebook/wav2vec2-bert-rel-pos-large](https://huggingface.co/facebook/wav2vec2-bert-rel-pos-large)
 architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -63,7 +63,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*) : Vocabulary size of the Wav2Vec2Bert model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Wav2Vec2BertModel](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel). Vocabulary size of the model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [Wav2Vec2BertModel](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel).
+vocab_size (`int`, *optional*) : Vocabulary size of the Wav2Vec2Bert model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Wav2Vec2BertModel](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel). Vocabulary size of the model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [Wav2Vec2BertModel](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertModel).
 
 hidden_size (`int`, *optional*, defaults to 1024) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -73,7 +73,7 @@ num_attention_heads (`int`, *optional*, defaults to 16) : Number of attention he
 
 intermediate_size (`int`, *optional*, defaults to 4096) : Dimensionality of the "intermediate" (i.e., feed-forward) layer in the Transformer encoder.
 
-feature_projection_input_dim (`int`, *optional*, defaults to 160) : Input dimension of this model, i.e the dimension after processing input audios with [SeamlessM4TFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/seamless_m4t#transformers.SeamlessM4TFeatureExtractor) or [Wav2Vec2BertProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertProcessor).
+feature_projection_input_dim (`int`, *optional*, defaults to 160) : Input dimension of this model, i.e the dimension after processing input audios with [SeamlessM4TFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/seamless_m4t#transformers.SeamlessM4TFeatureExtractor) or [Wav2Vec2BertProcessor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertProcessor).
 
 hidden_act (`str` or `function`, *optional*, defaults to `"swish"`) : The non-linear activation function (function or string) in the encoder and pooler. If string, `"gelu"`, `"relu"`, `"selu"`, `"swish"` and `"gelu_new"` are supported.
 
@@ -85,7 +85,7 @@ attention_dropout (`float`, *optional*, defaults to 0.0) : The dropout ratio for
 
 feat_proj_dropout (`float`, *optional*, defaults to 0.0) : The dropout probability for the feature projection.
 
-final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [Wav2Vec2BertForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC).
+final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [Wav2Vec2BertForCTC](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC).
 
 layerdrop (`float`, *optional*, defaults to 0.1) : The LayerDrop probability. See the [LayerDrop paper](see https://huggingface.co/papers/1909.11556) for more details.
 
@@ -131,17 +131,17 @@ mask_time_min_masks (`int`, *optional*, defaults to 2) : The minimum number of m
 
 **Parameters:**
 
-config ([Wav2Vec2BertForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Wav2Vec2BertForCTC](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForCTC)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
-target_lang (`str`, *optional*) : Language id of adapter weights. Adapter weights are stored in the format adapter..safetensors or adapter..bin. Only relevant when using an instance of [UniSpeechSatForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/unispeech-sat#transformers.UniSpeechSatForCTC) with adapters. Uses 'eng' by default.
+target_lang (`str`, *optional*) : Language id of adapter weights. Adapter weights are stored in the format adapter..safetensors or adapter..bin. Only relevant when using an instance of [UniSpeechSatForCTC](/docs/transformers/v5.0.0/en/model_doc/unispeech-sat#transformers.UniSpeechSatForCTC) with adapters. Uses 'eng' by default.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -159,12 +159,12 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
 #### transformers.Wav2Vec2BertForSequenceClassification[[transformers.Wav2Vec2BertForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1162)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1165)
 
 Wav2Vec2Bert Model with a sequence classification head on top (a linear layer over the pooled output) for tasks like
 SUPERB Keyword Spotting.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -172,10 +172,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Wav2Vec2BertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1188[{"name": "input_features", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.Wav2Vec2BertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1191[{"name": "input_features", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -190,13 +190,13 @@ forwardtransformers.Wav2Vec2BertForSequenceClassification.forwardhttps://github.
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -209,7 +209,7 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification) forward method, overrides the `__call__` special method.
+The [Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -273,15 +273,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Wav2Vec2BertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -299,11 +299,11 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
 #### transformers.Wav2Vec2BertForAudioFrameClassification[[transformers.Wav2Vec2BertForAudioFrameClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1254)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1257)
 
 The Wav2Vec2 Bert Model with a frame classification head on top for tasks like Speaker Diarization.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -311,10 +311,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Wav2Vec2BertForAudioFrameClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1279[{"name": "input_features", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.Wav2Vec2BertForAudioFrameClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1282[{"name": "input_features", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -333,9 +333,9 @@ forwardtransformers.Wav2Vec2BertForAudioFrameClassification.forwardhttps://githu
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -348,7 +348,7 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Wav2Vec2BertForAudioFrameClassification](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForAudioFrameClassification) forward method, overrides the `__call__` special method.
+The [Wav2Vec2BertForAudioFrameClassification](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForAudioFrameClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -382,15 +382,15 @@ Example:
 
 **Parameters:**
 
-config ([Wav2Vec2BertForAudioFrameClassification](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForAudioFrameClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Wav2Vec2BertForAudioFrameClassification](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForAudioFrameClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -408,11 +408,11 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
 #### transformers.Wav2Vec2BertForXVector[[transformers.Wav2Vec2BertForXVector]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1395)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1398)
 
 Wav2Vec2Bert Model with an XVector feature extraction head on top for tasks like Speaker Verification.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -420,10 +420,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Wav2Vec2BertForXVector.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1438[{"name": "input_features", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.Wav2Vec2BertForXVector.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/wav2vec2_bert/modeling_wav2vec2_bert.py#L1441[{"name": "input_features", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.Tensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
-  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor). See [Wav2Vec2FeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor.__call__) for details ([Wav2Vec2Processor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) uses
+  [Wav2Vec2FeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2FeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -438,13 +438,13 @@ forwardtransformers.Wav2Vec2BertForXVector.forwardhttps://github.com/huggingface
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.xvector_output_dim)`) -- Classification hidden states before AMSoftmax.
@@ -458,7 +458,7 @@ elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Wav2Vec2BertForXVector](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForXVector) forward method, overrides the `__call__` special method.
+The [Wav2Vec2BertForXVector](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForXVector) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -497,15 +497,15 @@ Example:
 
 **Parameters:**
 
-config ([Wav2Vec2BertForXVector](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForXVector)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Wav2Vec2BertForXVector](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertForXVector)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
+A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
+elements depending on the configuration ([Wav2Vec2BertConfig](/docs/transformers/v5.0.0/en/model_doc/wav2vec2-bert#transformers.Wav2Vec2BertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.xvector_output_dim)`) -- Classification hidden states before AMSoftmax.

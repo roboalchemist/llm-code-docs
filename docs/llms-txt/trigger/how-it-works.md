@@ -2,17 +2,9 @@
 
 # Source: https://trigger.dev/docs/how-it-works.md
 
-# Source: https://trigger.dev/docs/realtime/how-it-works.md
-
-# Source: https://trigger.dev/docs/how-it-works.md
-
-# Source: https://trigger.dev/docs/realtime/how-it-works.md
-
-# Source: https://trigger.dev/docs/how-it-works.md
-
-# Source: https://trigger.dev/docs/realtime/how-it-works.md
-
-# Source: https://trigger.dev/docs/how-it-works.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # How it works
 
@@ -24,7 +16,7 @@ Trigger.dev v3 allows you to integrate long-running async tasks into your applic
 
 For example, the below task processes a video with `ffmpeg` and sends the results to an s3 bucket, then updates a database with the results and sends an email to the user.
 
-```ts /trigger/video.ts theme={null}
+```ts /trigger/video.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { updateVideoUrl } from "../db.js";
 import ffmpeg from "fluent-ffmpeg";
@@ -97,7 +89,7 @@ export const convertVideo = task({
 
 Now in your application, you can trigger this task by calling:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { NextResponse } from "next/server";
 import { tasks } from "@trigger.dev/sdk";
 import type { convertVideo } from "./trigger/video";
@@ -119,7 +111,7 @@ This will schedule the task to run in the background and return a handle that yo
 
 Trigger.dev comes with a CLI that allows you to initialize Trigger.dev into your project, deploy your tasks, and run your tasks locally. You can run it via `npx` like so:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest login # Log in to your Trigger.dev account
 npx trigger.dev@latest init # Initialize Trigger.dev in your project
 npx trigger.dev@latest dev # Run your tasks locally
@@ -128,7 +120,7 @@ npx trigger.dev@latest deploy # Deploy your tasks to the Trigger.dev instance
 
 All these commands work with the Trigger.dev cloud and/or your self-hosted instance. It supports multiple profiles so you can easily switch between different accounts or instances.
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest login --profile <profile> -a https://trigger.example.com # Log in to a specific profile into a self-hosted instance
 npx trigger.dev@latest dev --profile <profile> # Initialize Trigger.dev in your project
 npx trigger.dev@latest deploy --profile <profile> # Deploy your tasks to the Trigger.dev instance
@@ -138,7 +130,7 @@ npx trigger.dev@latest deploy --profile <profile> # Deploy your tasks to the Tri
 
 Trigger.dev implements a serverless architecture (without timeouts!) that allows you to run your tasks in a scalable and reliable way. When you run `npx trigger.dev@latest deploy`, we build and deploy your task code to your Trigger.dev instance. Then, when you trigger a task from your application, it's run in a secure, isolated environment with the resources you need to complete the task. A simplified diagram for a task execution looks like this:
 
-```mermaid  theme={null}
+```mermaid  theme={"theme":"css-variables"}
 sequenceDiagram
   participant App
   participant Trigger.dev
@@ -178,7 +170,7 @@ This approach allows Trigger.dev to manage resources efficiently, handle complex
 
 Example of a parent and child task using the Checkpoint-Resume System:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, wait } from "@trigger.dev/sdk";
 
 export const parentTask = task({
@@ -215,7 +207,7 @@ export const childTask = task({
 
 The diagram below illustrates the flow of the parent and child tasks using the Checkpoint-Resume System:
 
-```mermaid  theme={null}
+```mermaid  theme={"theme":"css-variables"}
 sequenceDiagram
     participant App
     participant Trigger.dev
@@ -261,7 +253,7 @@ Trigger.dev's Checkpoint-Resume System, combined with idempotency keys, enables 
 Let's rewrite the `convert-video` task above to be more durable:
 
 <CodeGroup>
-  ```ts /trigger/video.ts theme={null}
+  ```ts /trigger/video.ts theme={"theme":"css-variables"}
   import { idempotencyKeys, logger, task } from "@trigger.dev/sdk";
   import { processVideo, sendUserEmail, uploadToS3 } from "./tasks.js";
   import { updateVideoUrl } from "../db.js";
@@ -299,7 +291,7 @@ Let's rewrite the `convert-video` task above to be more durable:
   });
   ```
 
-  ```ts /trigger/tasks.ts theme={null}
+  ```ts /trigger/tasks.ts theme={"theme":"css-variables"}
   import { task, logger } from "@trigger.dev/sdk";
   import ffmpeg from "fluent-ffmpeg";
   import { Readable } from "node:stream";
@@ -386,7 +378,7 @@ Let's say the email sending fails in our video processing workflow. Here's how t
 
 Here's a sequence diagram illustrating this process:
 
-```mermaid  theme={null}
+```mermaid  theme={"theme":"css-variables"}
 sequenceDiagram
   participant Main as Main Task
   participant Process as Process Video
@@ -442,7 +434,9 @@ When you run `npx trigger.dev@latest dev`, we run your task code locally on your
 
 ## Staging and production environments
 
-Trigger.dev supports deploying to multiple "deployed" environments, such as staging and production. This allows you to test your tasks in a staging environment before deploying them to production. You can deploy to a new environment by running `npx trigger.dev@latest deploy --env <env>`, where `<env>` is the name of the environment you want to deploy to. Each environment has its own API Key, which you can use to trigger tasks in that environment.
+Trigger.dev supports deploying to `prod` and `staging` environments. This allows you to test your tasks in a staging environment before deploying them to production. You can deploy to a different environment by running `npx trigger.dev@latest deploy --env <env>`, where `<env>` is either `prod` or `staging`. Each environment has its own API Key, which you can use to trigger tasks in that environment.
+
+For additional isolated environments, you can use [preview branches](/deployment/preview-branches), which allow you to create separate environments for each branch of your code.
 
 ## OpenTelemetry
 
@@ -452,7 +446,7 @@ The Trigger.dev logging and task dashboard is powered by OpenTelemetry traces an
 
 Because we use standard OpenTelemetry, you can instrument your code and OpenTelemetry compatible libraries to get detailed traces and logs of your tasks. The above trace instruments both Prisma and the AWS SDK:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { PrismaInstrumentation } from "@prisma/instrumentation";
 import { AwsInstrumentation } from "@opentelemetry/instrumentation-aws-sdk";

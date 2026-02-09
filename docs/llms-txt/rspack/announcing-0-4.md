@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-4.md
 
-*November 02, 2023*
+_November 02, 2023_
 
 # Announcing Rspack 0.4
 
@@ -22,12 +22,12 @@ This feature primarily addresses three categories of problems: [builtins](https:
 
 1. Removal of support for some [builtins](https://v0.rspack.rs/config/builtins) features:
 
-* [builtins.relay](https://v0.rspack.rs/config/builtins#builtinsrelay): moved to `rspackExperiments.relay`
-* [builtins.react](https://v0.rspack.rs/config/builtins#builtinsreact): moved to `jsc.transform.react`
-* [builtins.emotion](https://v0.rspack.rs/config/builtins#builtinsemotion): moved to `rspackExperiments.emotion`
-* [builtins.pluginImport](https://v0.rspack.rs/config/builtins#builtinspluginimport): moved to `rspackExperiments.import`
-* [builtins.decorator](https://v0.rspack.rs/config/builtins#builtinsdecorator): moved to `jsc.parser.decorators`
-* [builtins.presetEnv](https://v0.rspack.rs/config/builtins#builtinspresetenv): moved to `jsc.env`
+- [builtins.relay](https://v0.rspack.rs/config/builtins#builtinsrelay): moved to `rspackExperiments.relay`
+- [builtins.react](https://v0.rspack.rs/config/builtins#builtinsreact): moved to `jsc.transform.react`
+- [builtins.emotion](https://v0.rspack.rs/config/builtins#builtinsemotion): moved to `rspackExperiments.emotion`
+- [builtins.pluginImport](https://v0.rspack.rs/config/builtins#builtinspluginimport): moved to `rspackExperiments.import`
+- [builtins.decorator](https://v0.rspack.rs/config/builtins#builtinsdecorator): moved to `jsc.parser.decorators`
+- [builtins.presetEnv](https://v0.rspack.rs/config/builtins#builtinspresetenv): moved to `jsc.env`
 
 ```js title="rspack.config.mjs"
 export default {
@@ -97,15 +97,15 @@ export default {
 
 These types have been removed:
 
-* `"typescript"`
-* `"jsx"`
-* `"tsx"`
+- `"typescript"`
+- `"jsx"`
+- `"tsx"`
 
 For JS-related types, only the following will be retained:
 
-* `"javascript/auto"`
-* `"javascript/esm"`
-* `"javascript/dynamic"`
+- `"javascript/auto"`
+- `"javascript/esm"`
+- `"javascript/dynamic"`
 
 Refer to [this](/config/experiments.md#experimentsrspackfuturedisabletransformbydefault) for the complete migration guide.
 
@@ -238,8 +238,8 @@ In v0.4.0, Rspack deprecated some of the builtin options and migrated them to [b
 
 Currently, Rspack's internal plugins are divided into two categories:
 
-* Plugins compatible with Webpack, such as DefinePlugin, ProvidePlugin, etc. This part has been fully aligned with webpack.
-* Rspack-specific plugins, such as SwcJsMinimizerRspackPlugin, CopyRspackPlugin, etc.
+- Plugins compatible with Webpack, such as DefinePlugin, ProvidePlugin, etc. This part has been fully aligned with webpack.
+- Rspack-specific plugins, such as SwcJsMinimizerRspackPlugin, CopyRspackPlugin, etc.
 
 The original `builtins.define` can be migrated as follows:
 

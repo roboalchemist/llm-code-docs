@@ -50,7 +50,7 @@ Configuration settings for the server can be modified by setting values for the 
 ```
 ```
 
-Note that it is not allowed to set the `listenPort` in the http-server config, as it conflicts with the port that is set in the _port_ attribute in the _server_ element. For a complete list of configuration fields that can be set, refer to the config definition schema in [jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
+Note that it is not allowed to set the `listenPort` in the http-server config, as it conflicts with the port that is set in the _port_ attribute in the _server_ element. For a complete list of configuration fields that can be set, refer to the config definition schema in [jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
 
 ### TLS
 
@@ -222,7 +222,7 @@ public class TestRequestFilter extends AbstractResource implements RequestFilter
 
 Build a bundle, and place it in the [application package](../basics/applications.html)'s _components_ directory.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

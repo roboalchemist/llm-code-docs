@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/use-meta-prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Meta-Prompting
 
 > Use large language models (LLMs) to create and refine prompts dynamically.

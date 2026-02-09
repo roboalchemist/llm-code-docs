@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SETRANGE
 
@@ -28,30 +14,30 @@ The SETRANGE command in Redis is used to modify a portion of the value of a key 
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The name of the Redis key for which you want to modify the value.
 </ParamField>
 
-<ParamField body="offset" type="integer" required>
+<ParamField body="offset" type="int" required>
   The zero-based index in the value where you want to start replacing characters.
 </ParamField>
 
-<ParamField body="value" type="string" required>
+<ParamField body="value" type="str" required>
   The new string that you want to insert at the specified offset in the existing value.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The length of the value after it was modified.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", "helloworld")
-  const length = await redis.setrange("key", 5, "redis");
-  console.log(length); // 10
+  ```py Example theme={"system"}
+  redis.set("key", "Hello World")
 
-  // The value of "key" is now "helloredis"
+  assert redis.setrange("key", 6, "Redis") == 11
+
+  assert redis.get("key") == "Hello Redis"
   ```
 </RequestExample>

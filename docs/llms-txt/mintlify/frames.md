@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/frames.md
+# Source: https://www.mintlify.com/docs/components/frames.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Frames
 
@@ -12,16 +16,40 @@ Use frames to display images, diagrams, or other visual content with consistent 
 
 ## Captions
 
-You can add additional context to an image using the optional `caption` prop.
+Add additional context to an image using the optional `caption` prop. Captions appear in the frame below the image.
 
-<Frame caption="Yosemite National Park is visited by over 3.5 million people every year">
+<Frame caption="Yosemite National Park is visited by over 3.5 million people every year.">
   <img src="https://mintlify-assets.b-cdn.net/yosemite.jpg" alt="Photograph of Yosemite Valley." />
+</Frame>
+
+### Markdown in captions
+
+Captions support markdown formatting, including links and bold text.
+
+<Frame caption="Learn more about [Yosemite National Park](https://www.nps.gov/yose/index.htm) and plan your visit.">
+  <img src="https://mintlify-assets.b-cdn.net/yosemite.jpg" alt="Photograph of Yosemite Valley." />
+</Frame>
+
+<Frame caption="**Important:** Check the [park website](https://www.nps.gov/yose/index.htm) for current conditions.">
+  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Photograph of a lake surrounded by trees with mountains in the distance in Yellowstone National Park." />
+</Frame>
+
+## Hints
+
+Add text that precedes the frame using the optional `hint` prop. Hints appear above the frame.
+
+<Frame hint="If you plan to visit Yosemite National Park, secure your permits before you go." caption="Yosemite National Park is visited by over 3.5 million people every year.">
+  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Photograph of a lake surrounded by trees with mountains in the distance in Yellowstone National Park." />
 </Frame>
 
 ## Properties
 
 <ResponseField name="caption" type="string">
-  Optional caption text to show centered under your component.
+  Text that appears as part of the frame, centered below the content. Supports markdown formatting including links and bold text.
+</ResponseField>
+
+<ResponseField name="hint" type="string">
+  Text that precedes the frame.
 </ResponseField>
 
 <CodeGroup>
@@ -33,6 +61,30 @@ You can add additional context to an image using the optional `caption` prop.
 
   ```mdx Frame with a caption theme={null}
   <Frame caption="Caption text">
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+
+  ```mdx Frame with markdown in caption theme={null}
+  <Frame caption="Visit the [documentation](/docs) for more details">
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+
+  ```mdx Frame with bold text and links in caption theme={null}
+  <Frame caption="**Note:** See the [official guide](https://example.com) for setup instructions">
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+
+  ```mdx Frame with a hint theme={null}
+  <Frame hint="Hint text">
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+
+  ```mdx Frame with both hint and caption theme={null}
+  <Frame hint="Hint text" caption="Caption text">
     <img src="/path/image.jpg" alt="Descriptive alt text" />
   </Frame>
   ```

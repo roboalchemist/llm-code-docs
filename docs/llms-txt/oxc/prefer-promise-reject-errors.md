@@ -5,7 +5,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/prefer-promise-reject-errors.md
 ---
-# eslint/prefer-promise-reject-errors&#x20;
 
 ### What it does
 

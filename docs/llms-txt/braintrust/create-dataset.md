@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/datasets/create-dataset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create dataset
 
 > Create a new dataset. If there is an existing dataset in the project with the same name as the one specified in the request, will return the existing dataset unmodified
@@ -170,10 +174,14 @@ components:
           additionalProperties:
             nullable: true
           description: User-controlled metadata about the dataset
+        url_slug:
+          type: string
+          description: URL slug for the dataset. used to construct dataset URLs
       required:
         - id
         - project_id
         - name
+        - url_slug
   securitySchemes:
     bearerAuth:
       type: http
@@ -186,7 +194,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

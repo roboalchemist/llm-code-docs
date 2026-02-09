@@ -1,3 +1,9 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/automatic-documentation-suggestions/exploring-your-data.md
+
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/automatic-documentation-suggestions/exploring-your-data.md
+
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/automatic-documentation-suggestions/exploring-your-data.md
+
 # Source: https://gitbook.com/docs/gitbook-agent/automatic-documentation-suggestions/exploring-your-data.md
 
 # Exploring your data
@@ -24,11 +30,11 @@ You can view conversations by opening **Organization settings** > **GitBook Agen
 
 ### Issues
 
-Issues are standalone data points that have been identified within a conversation. GitBook Agent assigns them an impact score, which is added to the metadata from when the data was ingested.&#x20;
+Issues are standalone data points that have been identified within a conversation. GitBook Agent assigns them an impact score, which is added to the metadata from when the data was ingested.
 
 You can view issues by opening **Organization settings** > **GitBook Agent** > **Data Explorer** and choosing the **Issues** tab.
 
-Click the **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNRy7mRThawB9T6BgbmdQ%2Finspect-dark.svg?alt=media&#x26;token=d6ff9bc3-c1dd-4403-bc33-b707984f14f4" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> button on an issue to read a summary, along with GitBook Agent’s analysis of it.
+Click the **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> button on an issue to read a summary, along with GitBook Agent’s analysis of it.
 
 ### Topics
 
@@ -36,13 +42,13 @@ Topics are groups of issues that are related to one another. By grouping issues 
 
 The Agent will assign each topic an impact score, and show the number of issues and conversations the Agent used to form the topic. They’ll update automatically as new conversations and issues are processed.
 
-Click **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNRy7mRThawB9T6BgbmdQ%2Finspect-dark.svg?alt=media&#x26;token=d6ff9bc3-c1dd-4403-bc33-b707984f14f4" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> on any topic to see the issues used to form the topic, along with a log of GitBook Agent’s thinking to process those issues and create the topic.
+Click **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> on any topic to see the issues used to form the topic, along with a log of GitBook Agent’s thinking to process those issues and create the topic.
 
-This inspector screen also shows any change requests GitBook Agent has created based off of the topic — ready for [you and your team to review](https://gitbook.com/docs/collaboration/change-requests/change-requests-screen).
+This inspector screen also shows any change requests GitBook Agent has created based off of the topic — ready for [you and your team to review](https://gitbook.com/docs/collaboration/change-requests/change-requests-screen).
 
 {% hint style="info" %}
 
-## Disabling a topic
+### Disabling a topic
 
 If a topic isn’t valuable, you can toggle the topic off from its inspector screen. Once disabled, the topic will no longer be used to create change requests for your documentation.
 {% endhint %}

@@ -231,7 +231,7 @@ Required options:
 
 - **[`parser`](options.md#parser) (or [`filepath`](options.md#file-path))**: One of these options has to be specified for Prettier to know which parser to use.
 
-- **`plugins`**: Unlike the `format` function from the [Node.js-based API](api.md#prettierformatsource-options), this function doesn’t load plugins automatically. The `plugins` option is required because all the parsers included in the Prettier package come as plugins (for reasons of file size). These plugins are files in [https://unpkg.com/browse/prettier@3.6.2/plugins](https://unpkg.com/browse/prettier@3.6.2/plugins). Note that `estree` plugin should be loaded when printing JavaScript, TypeScript, Flow, or JSON.
+- **`plugins`**: Unlike the `format` function from the [Node.js-based API](api.md#prettierformatsource-options), this function doesn’t load plugins automatically. The `plugins` option is required because all the parsers included in the Prettier package come as plugins (for reasons of file size). These plugins are files in [https://unpkg.com/browse/prettier@3.8.1/plugins](https://unpkg.com/browse/prettier@3.8.1/plugins). Note that `estree` plugin should be loaded when printing JavaScript, TypeScript, Flow, or JSON.
 
   You need to load the ones that you’re going to use and pass them to `prettier.format` using the `plugins` option.
 
@@ -242,8 +242,8 @@ See below for examples.
 ### Global
 
 ```html
-<script src="https://unpkg.com/prettier@3.6.2/standalone.js"></script>
-<script src="https://unpkg.com/prettier@3.6.2/plugins/graphql.js"></script>
+<script src="https://unpkg.com/prettier@3.8.1/standalone.js"></script>
+<script src="https://unpkg.com/prettier@3.8.1/plugins/graphql.js"></script>
 <script>
   (async () => {
     const formatted = await prettier.format("type Query { hello: String }", {
@@ -260,8 +260,8 @@ Note that the [`unpkg` field](https://unpkg.com/#examples) in Prettier’s `pack
 
 ```html
 <script type="module">
-  import * as prettier from "https://unpkg.com/prettier@3.6.2/standalone.mjs";
-  import * as prettierPluginGraphql from "https://unpkg.com/prettier@3.6.2/plugins/graphql.mjs";
+  import * as prettier from "https://unpkg.com/prettier@3.8.1/standalone.mjs";
+  import * as prettierPluginGraphql from "https://unpkg.com/prettier@3.8.1/plugins/graphql.mjs";
 
   const formatted = await prettier.format("type Query { hello: String }", {
     parser: "graphql",
@@ -274,8 +274,8 @@ Note that the [`unpkg` field](https://unpkg.com/#examples) in Prettier’s `pack
 
 ```js
 define([
-  "https://unpkg.com/prettier@3.6.2/standalone.js",
-  "https://unpkg.com/prettier@3.6.2/plugins/graphql.js",
+  "https://unpkg.com/prettier@3.8.1/standalone.js",
+  "https://unpkg.com/prettier@3.8.1/plugins/graphql.js",
 ], async (prettier, ...plugins) => {
   const formatted = await prettier.format("type Query { hello: String }", {
     parser: "graphql",
@@ -306,8 +306,8 @@ This syntax doesn’t necessarily work in the browser, but it can be used when b
 <TabItem value="module" label="Module worker">
 
 ```js
-import * as prettier from "https://unpkg.com/prettier@3.6.2/standalone.mjs";
-import * as prettierPluginGraphql from "https://unpkg.com/prettier@3.6.21/plugins/graphql.mjs";
+import * as prettier from "https://unpkg.com/prettier@3.8.1/standalone.mjs";
+import * as prettierPluginGraphql from "https://unpkg.com/prettier@3.8.11/plugins/graphql.mjs";
 
 const formatted = await prettier.format("type Query { hello: String }", {
   parser: "graphql",
@@ -320,8 +320,8 @@ const formatted = await prettier.format("type Query { hello: String }", {
 
 ```js
 importScripts(
-  "https://unpkg.com/prettier@3.6.2/standalone.js",
-  "https://unpkg.com/prettier@3.6.2/plugins/graphql.js",
+  "https://unpkg.com/prettier@3.8.1/standalone.js",
+  "https://unpkg.com/prettier@3.8.1/plugins/graphql.js",
 );
 
 (async () => {
@@ -341,9 +341,9 @@ If you want to format [embedded code](options.md#embedded-language-formatting), 
 
 ```html
 <script type="module">
-  import * as prettier from "https://unpkg.com/prettier@3.6.2/standalone.mjs";
-  import * as prettierPluginBabel from "https://unpkg.com/prettier@3.6.2/plugins/babel.mjs";
-  import * as prettierPluginEstree from "https://unpkg.com/prettier@3.6.2/plugins/estree.mjs";
+  import * as prettier from "https://unpkg.com/prettier@3.8.1/standalone.mjs";
+  import * as prettierPluginBabel from "https://unpkg.com/prettier@3.8.1/plugins/babel.mjs";
+  import * as prettierPluginEstree from "https://unpkg.com/prettier@3.8.1/plugins/estree.mjs";
 
   console.log(
     await prettier.format("const html=/* HTML */ `<DIV> </DIV>`", {
@@ -359,10 +359,10 @@ The HTML code embedded in JavaScript stays unformatted because the `html` parser
 
 ```html
 <script type="module">
-  import * as prettier from "https://unpkg.com/prettier@3.6.2/standalone.mjs";
-  import * as prettierPluginBabel from "https://unpkg.com/prettier@3.6.2/plugins/babel.mjs";
-  import * as prettierPluginEstree from "https://unpkg.com/prettier@3.6.2/plugins/estree.mjs";
-  import * as prettierPluginHtml from "https://unpkg.com/prettier@3.6.2/plugins/html.mjs";
+  import * as prettier from "https://unpkg.com/prettier@3.8.1/standalone.mjs";
+  import * as prettierPluginBabel from "https://unpkg.com/prettier@3.8.1/plugins/babel.mjs";
+  import * as prettierPluginEstree from "https://unpkg.com/prettier@3.8.1/plugins/estree.mjs";
+  import * as prettierPluginHtml from "https://unpkg.com/prettier@3.8.1/plugins/html.mjs";
 
   console.log(
     await prettier.format("const html=/* HTML */ `<DIV> </DIV>`", {
@@ -859,8 +859,6 @@ singleQuote = true
 ## Configuration Overrides
 
 Overrides let you have different configuration for certain file extensions, folders and specific files.
-
-Prettier borrows ESLint’s [override format](https://eslint.org/docs/latest/user-guide/configuring/configuration-files#how-do-overrides-work).
 
 JSON:
 
@@ -2322,15 +2320,18 @@ Strings provided to `plugins` are ultimately passed to [`import()` expression](h
 
 - [`prettier-plugin-apex`](https://github.com/dangmai/prettier-plugin-apex) by [**@dangmai**](https://github.com/dangmai)
 - [`prettier-plugin-astro`](https://github.com/withastro/prettier-plugin-astro) by [**@withastro contributors**](https://github.com/withastro/prettier-plugin-astro/graphs/contributors)
+- [`prettier-plugin-bigcommerce-stencil`](https://github.com/phoenix128/prettier-plugin-bigcommerce-stencil) by [**@phoenix128**](https://github.com/phoenix128)
 - [`prettier-plugin-elm`](https://github.com/gicentre/prettier-plugin-elm) by [**@giCentre**](https://github.com/gicentre)
 - [`prettier-plugin-erb`](https://github.com/adamzapasnik/prettier-plugin-erb) by [**@adamzapasnik**](https://github.com/adamzapasnik)
 - [`prettier-plugin-gherkin`](https://github.com/mapado/prettier-plugin-gherkin) by [**@mapado**](https://github.com/mapado)
 - [`prettier-plugin-glsl`](https://github.com/NaridaL/glsl-language-toolkit/tree/main/packages/prettier-plugin-glsl) by [**@NaridaL**](https://github.com/NaridaL)
 - [`prettier-plugin-go-template`](https://github.com/NiklasPor/prettier-plugin-go-template) by [**@NiklasPor**](https://github.com/NiklasPor)
+- [`prettier-plugin-hugo-post`](https://github.com/metcalfc/prettier-plugin-hugo-post) by [**@metcalfc**](https://github.com/metcalfc)
 - [`prettier-plugin-java`](https://github.com/jhipster/prettier-java) by [**@JHipster**](https://github.com/jhipster)
 - [`prettier-plugin-jinja-template`](https://github.com/davidodenwald/prettier-plugin-jinja-template) by [**@davidodenwald**](https://github.com/davidodenwald)
 - [`prettier-plugin-jsonata`](https://github.com/Stedi/prettier-plugin-jsonata) by [**@Stedi**](https://github.com/Stedi)
 - [`prettier-plugin-kotlin`](https://github.com/Angry-Potato/prettier-plugin-kotlin) by [**@Angry-Potato**](https://github.com/Angry-Potato)
+- [`prettier-plugin-marko`](https://github.com/marko-js/prettier) by [**@marko-js**](https://github.com/marko-js)
 - [`prettier-plugin-motoko`](https://github.com/dfinity/prettier-plugin-motoko) by [**@dfinity**](https://github.com/dfinity)
 - [`prettier-plugin-nginx`](https://github.com/joedeandev/prettier-plugin-nginx) by [**@joedeandev**](https://github.com/joedeandev)
 - [`prettier-plugin-prisma`](https://github.com/umidbekk/prettier-plugin-prisma) by [**@umidbekk**](https://github.com/umidbekk)
@@ -2420,8 +2421,10 @@ function hasIgnorePragma(text: string): boolean;
 _(Optional)_ The preprocess function can process the input text before passing into `parse` function.
 
 ```ts
-function preprocess(text: string, options: object): string;
+function preprocess(text: string, options: object): string | Promise<string>;
 ```
+
+_Support for async preprocess first added in v3.7.0_
 
 ### `printers`
 
@@ -2441,6 +2444,8 @@ export const printers = {
     isBlockComment,
     printComment,
     getCommentChildNodes,
+    hasPrettierIgnore,
+    printPrettierIgnored,
     handleComments: {
       ownLine,
       endOfLine,
@@ -2665,6 +2670,22 @@ function getCommentChildNodes(
 
 Return `[]` if the node has no children or `undefined` to fall back on the default behavior.
 
+### (optional) `hasPrettierIgnore`
+
+```ts
+function hasPrettierIgnore(path: AstPath): boolean;
+```
+
+Returns whether or not the AST node is `prettier-ignore`d.
+
+### (optional) `printPrettierIgnored`
+
+If the AST node is `prettier-ignore`d, Prettier will slice for the text for parsing without calling `print` function by default, however plugin can also handle the `prettier-ignore`d node print by adding this property.
+
+This property have the same signature as the `print` property.
+
+_First available in v3.7.0_
+
 #### (optional) `printComment`
 
 Called whenever a comment node needs to be printed. It has the signature:
@@ -2681,16 +2702,23 @@ function printComment(
 #### (optional) `canAttachComment`
 
 ```ts
-function canAttachComment(node: AST): boolean;
+function canAttachComment(node: AST, ancestors: T[]): boolean;
 ```
 
 This function is used for deciding whether a comment can be attached to a particular AST node. By default, _all_ AST properties are traversed searching for nodes that comments can be attached to. This function is used to prevent comments from being attached to a particular node. A typical implementation looks like
 
 ```js
-function canAttachComment(node) {
-  return node.type && node.type !== "comment";
+function canAttachComment(node, [parent]) {
+  return !(
+    node.type === "comment" ||
+    (parent?.type === "shorthand-property" &&
+      parent.key === node &&
+      parent.key !== parent.value)
+  );
 }
 ```
+
+_The second parameter `ancestors` first added in v3.7.0._
 
 #### (optional) `isBlockComment`
 
@@ -3503,7 +3531,9 @@ title: Related Projects
 - [prettier-chrome](https://github.com/u3u/prettier-chrome) is an extension that runs Prettier in the browser
 - [spotless](https://github.com/diffplug/spotless) lets you run prettier from [gradle](https://github.com/diffplug/spotless/tree/main/plugin-gradle#prettier) or [maven](https://github.com/diffplug/spotless/tree/main/plugin-maven#prettier).
 - [csharpier](https://github.com/belav/csharpier) is a port of Prettier for C#
+- [Prettier](https://github.com/jaywcjlove/Prettier) is a Swift version based on Prettier
 - [reviewdog-action-prettier](https://github.com/EPMatt/reviewdog-action-prettier) runs Prettier in GitHub Actions CI/CD workflows
+- [monaco-prettier](https://github.com/remcohaszing/monaco-prettier) integrates Prettier into [Monaco editor](https://microsoft.github.io/monaco-editor/)
 
 
 ---
@@ -3642,6 +3672,7 @@ To _extend_ the configuration to overwrite some properties from the shared confi
 import usernamePrettierConfig from "@username/prettier-config";
 
 /**
+ * @see https://prettier.io/docs/configuration
  * @type {import("prettier").Config}
  */
 const config = {

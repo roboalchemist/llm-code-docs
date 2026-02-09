@@ -4,11 +4,7 @@
 
 User and account management.
 
-***
 
-title: User & Accounts
-description: User and account management.
------------------------------------------
 
 Beyond authenticating users, Better Auth also provides a set of methods to manage users. This includes, updating user information, changing passwords, and more.
 
@@ -116,6 +112,7 @@ await authClient.changeEmail({
 
 A user's password isn't stored in the user table. Instead, it's stored in the account table. To change the password of a user, you can use one of the following approaches:
 
+
 ### Client Side
 
 ```ts
@@ -144,21 +141,22 @@ const data = await auth.api.changePassword({
 
 ```ts
 type changePassword = {
-    /**
-     * The new password to set 
-     */
-    newPassword: string = "newpassword1234"
-    /**
-     * The current user password 
-     */
-    currentPassword: string = "oldpassword1234"
-    /**
-     * When set to true, all other active sessions for this user will be invalidated
-     */
-    revokeOtherSessions?: boolean = true
-
+      /**
+       * The new password to set 
+       */
+      newPassword: string = "newpassword1234"
+      /**
+       * The current user password 
+       */
+      currentPassword: string = "oldpassword1234"
+      /**
+       * When set to true, all other active sessions for this user will be invalidated
+       */
+      revokeOtherSessions?: boolean = true
+  
 }
 ```
+
 
 ### Set Password
 
@@ -166,10 +164,29 @@ If a user was registered using OAuth or other providers, they won't have a passw
 
 ```ts
 await auth.api.setPassword({
-    body: { newPassword: "password" },
-    headers: // headers containing the user's session token
+    body: {
+        newPassword: "new-password",
+    },
+    headers: await headers() // headers containing the user's session token
 });
 ```
+
+### Verify Password
+
+The `verifyPassword` function allows you to verify a user's current password. This is useful for confirming user identity before performing sensitive operations like updating security settings. This function can only be called from the server.
+
+```ts
+await auth.api.verifyPassword({
+    body: {
+        password: "user-password" // required
+    },
+    headers: await headers() // headers containing the user's session token
+});
+```
+
+<Callout type="info">
+  For OAuth users who don't have passwords, consider using email verification or fresh session checks for sensitive operations instead.
+</Callout>
 
 ## Delete User
 
@@ -485,8 +502,10 @@ Users already signed in can manually link their account to additional social pro
 
   ```ts
   await auth.api.setPassword({
-      headers: /* headers containing the user's session token */,
-      password: /* new password */
+    body: {
+        newPassword: "new-password", // required
+    },
+    headers: await headers() // headers containing the user's session token
   });
   ```
 

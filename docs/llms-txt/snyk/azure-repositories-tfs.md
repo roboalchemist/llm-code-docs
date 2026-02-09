@@ -82,7 +82,7 @@ To add a default Project:
 
 Use this procedure to add an Azure Repository dependency from a non-default path.
 
-1. In Snyk, navigate to **Projects** > **Add projects > Azure repos > Settings**.
+1. In Snyk, navigate to **Projects** > **Add projects** > **Azure repos** > **Settings**.
 2. Open the **Add custom file location (optional)** list and **select a repository...** to configure a custom path.
 3. In the text field, enter the `relative path for the manifest file location`.
 
@@ -101,5 +101,3 @@ After repositories are imported, a confirmation appears in green at the top of t
 {% hint style="info" %}
 The Azure Repository integration works like the other [Snyk SCM integrations](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations). To continue to monitor, fix, and manage your Projects, see the [Projects](https://docs.snyk.io/snyk-platform-administration/snyk-projects) documentation.
 {% endhint %}
-
-#### Integrate using Snyk Essentials <a href="#azure-devops-integrate-using-snyk-apprisk" id="azure-devops-integrate-using-snyk-apprisk"></a>

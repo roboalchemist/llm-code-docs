@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/agent-conversations.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/agent-conversations.md
 
 # Agent Conversations
 
@@ -25,9 +25,20 @@ By default, if you ask an AI query immediately after interacting in Agent Mode, 
 * Open the **Conversations menu** (`CMD + Y` on macOS, `CTRL + SHIFT + Y` on Windows/Linux), select a conversation, and then enter your query.
 * Alternatively, click the pink conversation chip in the input field to resume.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-10ca9fc0fbd10a8c0b963fff410891815f02419f%2Fclassic-input-follow-up.png?alt=media" alt=""><figcaption><p>Continuing an Agent conversation in Classic Input (with indicator)</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-10ca9fc0fbd10a8c0b963fff410891815f02419f%2Fclassic-input-follow-up.png?alt=media" alt=""><figcaption><p>Continuing an Agent conversation in Classic Input (with indicator)</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-53193ed375af7ad39235ed33c0a805bd644dd572%2Ffollow-up-universal-input.png?alt=media" alt=""><figcaption><p>Continuing an Agent conversation in Universal Input</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-53193ed375af7ad39235ed33c0a805bd644dd572%2Ffollow-up-universal-input.png?alt=media" alt=""><figcaption><p>Continuing an Agent conversation in Universal Input</p></figcaption></figure>
+
+#### Agent tips in the input
+
+While Warp’s agent is thinking and processing your request, Warp may surface short tips with helpful workflows and ways to use Warp. These tips appear under the Warping indicator.
+
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-10b0adcd2e6037b9f24ecb61b304c7bfdcf893f5%2Fagent-tips.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+You can enable or disable these tips in two places:
+
+* **Settings**: `Settings` > `AI` > `Input` > `Show agent tips`
+* **Command Palette**: Open the Command Palette (`CMD + P` on macOS, `CTRL + SHIFT + P` on Windows/Linux), then select "**Show Agent Tips**" or "**Hide Agent Tips**"
 
 ### **Managing Conversations**
 
@@ -74,9 +85,9 @@ You can also start a new conversation manually at any time:
   {% endtab %}
   {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4d44c077a13ae854ad47a6b045cffea39e2778d3%2Fclassic-input-new-convo.png?alt=media" alt=""><figcaption><p>Starting a new Conversation in Classic Input</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-4d44c077a13ae854ad47a6b045cffea39e2778d3%2Fclassic-input-new-convo.png?alt=media" alt=""><figcaption><p>Starting a new Conversation in Classic Input</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-c6ce01bb4be37f61d54d37766cf59e5d0ebf1ef9%2Funiversal-input-new-convo.png?alt=media" alt=""><figcaption><p>Starting a new Agent Conversation in Universal Input</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-c6ce01bb4be37f61d54d37766cf59e5d0ebf1ef9%2Funiversal-input-new-convo.png?alt=media" alt=""><figcaption><p>Starting a new Agent Conversation in Universal Input</p></figcaption></figure>
 
 ## Context Window Management
 
@@ -88,17 +99,17 @@ As tokens accumulate and exceed the context window, performance and response qua
 
 When less than 20% of the window is used, no indicator is shown. As more tokens accumulate, the usage bar progresses to reflect how much of the context window has been consumed.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-87b334f6c1c7c2dde8b16a5f2168f3247500f30e%2Fcontext-window-1.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-87b334f6c1c7c2dde8b16a5f2168f3247500f30e%2Fcontext-window-1.png?alt=media" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-e40fc2d2dea97ac30623dcbe6e959eb4e683589c%2Fcontext-window-2.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-e40fc2d2dea97ac30623dcbe6e959eb4e683589c%2Fcontext-window-2%20(1).png?alt=media" alt=""><figcaption></figcaption></figure>
 
 As you approach the limit, the indicator turns red to warn that the context window is nearly full.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-94ab5eb10db6a1a1b520b8d3a321aa53fda7d2db%2Fcontext-window-2.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-94ab5eb10db6a1a1b520b8d3a321aa53fda7d2db%2Fcontext-window-2.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Once the limit is exceeded, Warp automatically summarizes the conversation so you can continue without losing important context.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f52b179a0fb1eca0b0270e3a3a77bfbb881078d3%2Fcontext-window-3.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-f52b179a0fb1eca0b0270e3a3a77bfbb881078d3%2Fcontext-window-3.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 The context window usage indicator is available only in **Universal Input**, which you can enable under `Settings > Appearance > Input`.
 
@@ -112,7 +123,7 @@ Warp automatically detects when your query has shifted to a new topic. When this
 
 These options appear in the blocklist, where you can decide whether to branch off into a new conversation or keep going with the current one.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-1c939aecc15116a2b240cd0d3490784c5f6f7132%2Fconversation-segmentation.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-1c939aecc15116a2b240cd0d3490784c5f6f7132%2Fconversation-segmentation.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 You can also create a new conversation manually at any time by using the keyboard shortcut, opening a new tab, or opening a new pane.
 

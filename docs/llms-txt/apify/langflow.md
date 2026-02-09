@@ -8,32 +8,32 @@
 
 ## What is Langflow
 
-https://langflow.org/ is a low-code, visual tool that enables developers to build powerful AI agents and workflows that can use any API, models, or databases.
+[Langflow](https://langflow.org/) is a low-code, visual tool that enables developers to build powerful AI agents and workflows that can use any API, models, or databases.
 
 Explore Langflow
 
-For more information on Langflow, visit its https://docs.langflow.org/.
+For more information on Langflow, visit its [documentation](https://docs.langflow.org/).
 
 ## How to use Apify with Langflow
 
 This guide will demonstrate two different ways to use Apify Actors with Langflow:
 
-* **Calling Apify Actors in Langflow**: We will use the https://apify.com/apify/rag-web-browser Actor to search Google for a query and extract the search results.
-* **Building a flow to search for a company's social media profiles**: We will use the https://apify.com/apify/google-search-scraper Actor to search the web for social media profiles of a given company. Then, we will use the https://apify.com/clockworks/free-tiktok-scraper Actor to extract data from the TikTok profiles.
+* **Calling Apify Actors in Langflow**: We will use the [RAG Web Browser](https://apify.com/apify/rag-web-browser) Actor to search Google for a query and extract the search results.
+* **Building a flow to search for a company's social media profiles**: We will use the [Google Search Results Scraper](https://apify.com/apify/google-search-scraper) Actor to search the web for social media profiles of a given company. Then, we will use the [TikTok Data Extractor](https://apify.com/clockworks/free-tiktok-scraper) Actor to extract data from the TikTok profiles.
 
 ### Prerequisites
 
-* **Apify API token**: To use Apify Actors in Langflow, you need an Apify API token. If you don't have one, you can learn how to get it in the https://docs.apify.com/platform/integrations/api.
+* **Apify API token**: To use Apify Actors in Langflow, you need an Apify API token. If you don't have one, you can learn how to get it in the [Apify documentation](https://docs.apify.com/platform/integrations/api).
 
-* **OpenAI API key**: To work with agents in Langflow, you need an OpenAI API key. If you don't have one, you can get it from the https://platform.openai.com/account/api-keys.
+* **OpenAI API key**: To work with agents in Langflow, you need an OpenAI API key. If you don't have one, you can get it from the [OpenAI platform](https://platform.openai.com/account/api-keys).
 
 #### Langflow
 
 Cloud vs local setup
 
-Langflow can either be installed locally or used in the cloud. The cloud version is available on the http://langflow.org/ website. If you are using the cloud version, you can skip the installation step, and go straight to 
+Langflow can either be installed locally or used in the cloud. The cloud version is available on the [Langflow](http://langflow.org/) website. If you are using the cloud version, you can skip the installation step, and go straight to 
 
-First, install the Langflow platform using Python package and project manager https://docs.astral.sh/uv/:
+First, install the Langflow platform using Python package and project manager [uv](https://docs.astral.sh/uv/):
 
 
 ```
@@ -51,7 +51,7 @@ uv run langflow run
 
 When the platform is started, open the Langflow UI using `http://127.0.0.1:7860` in your browser.
 
-> Other installation methods can be found in the https://docs.langflow.org/get-started-installation.
+> Other installation methods can be found in the [Langflow documentation](https://docs.langflow.org/get-started-installation).
 
 ### Creating a new flow
 
@@ -63,7 +63,7 @@ Now, you can start building your flow.
 
 To call Apify Actors in Langflow, you need to add the **Apify Actors** component to the flow. From the bundle menu, add **Apify Actors** component: ![Flow - Add Apify Actors](/assets/images/bundles_apify-b72b75511bcd261c86b0b998951b77f4.png)
 
-Next, configure the Apify Actors components. First, input your API token (learn how to get it at https://docs.apify.com/platform/integrations/api). Then, set the Actor ID of the component to `apify/rag-web-browser` to use the https://apify.com/apify/rag-web-browser. Set the **Run input** field to pass arguments to the Actor run, allowing it to search Google with the query `"what is monero?"` (full Actor input schema can be found in the https://apify.com/apify/rag-web-browser/input-schema):
+Next, configure the Apify Actors components. First, input your API token (learn how to get it at [Integrations](https://docs.apify.com/platform/integrations/api)). Then, set the Actor ID of the component to `apify/rag-web-browser` to use the [RAG Web Browser](https://apify.com/apify/rag-web-browser). Set the **Run input** field to pass arguments to the Actor run, allowing it to search Google with the query `"what is monero?"` (full Actor input schema can be found in the [RAG Web Browser input schema](https://apify.com/apify/rag-web-browser/input-schema)):
 
 
 ```
@@ -93,9 +93,9 @@ Now that you understand how to call Apify Actors, let's build a practical exampl
 
 Create a new flow and add two **Apify Actors** components from the menu.
 
-Input your API token (learn how to get it in the https://docs.apify.com/platform/integrations/api) and set the Actor ID of the first component to `apify/google-search-scraper` and the second one to `clockworks/free-tiktok-scraper`: ![Flow - Actors configuration](/assets/images/apify_actors_configuration-9024e10771b3242b24afb7a9bfc57687.png)
+Input your API token (learn how to get it in the [Integrations documentation](https://docs.apify.com/platform/integrations/api)) and set the Actor ID of the first component to `apify/google-search-scraper` and the second one to `clockworks/free-tiktok-scraper`: ![Flow - Actors configuration](/assets/images/apify_actors_configuration-9024e10771b3242b24afb7a9bfc57687.png)
 
-Add the **Agent** component from the menu and set your OpenAI API key (get it from the https://platform.openai.com/account/api-keys):
+Add the **Agent** component from the menu and set your OpenAI API key (get it from the [OpenAI API keys page](https://platform.openai.com/account/api-keys)):
 
 Optimize Agent results
 

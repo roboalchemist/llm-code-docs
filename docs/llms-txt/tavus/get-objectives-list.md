@@ -1,50 +1,66 @@
 # Source: https://docs.tavus.io/api-reference/objectives/get-objectives-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Objectives
 
 > This endpoint returns a list of all objectives.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/objectives
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/objectives
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
+  /v2/objectives:
+    get:
+      tags:
+        - Objectives
+      summary: Get Objectives
+      description: |
+        This endpoint returns a list of all objectives.
+      operationId: getObjectives
+      parameters:
+        - in: query
+          name: limit
           schema:
-            - type: integer
-              description: The number of objectives to return per page. Default is 10.
-        page:
+            type: integer
+          description: The number of objectives to return per page. Default is 10.
+        - in: query
+          name: page
           schema:
-            - type: integer
-              description: The page number to return. Default is 1.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: integer
+          description: The page number to return. Default is 1.
+      responses:
+        '200':
+          description: Successfully retrieved objectives
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -118,50 +134,28 @@ paths:
                             ISO 8601 timestamp of when the objective was last
                             updated
                           example: '2024-01-15T10:30:00Z'
-              total_count:
-                allOf:
-                  - type: integer
+                  total_count:
+                    type: integer
                     description: The total number of objectives
                     example: 25
-        examples:
-          example:
-            value:
-              data:
-                - objectives_id: o12345
-                  objective_name: ask_if_new_patient
-                  objective_prompt: Ask the patient if they are new or have been here before
-                  confirmation_mode: auto
-                  output_variables:
-                    - patient_status
-                  modality: verbal
-                  next_conditional_objectives:
-                    new_patient_intake_process: If the patient has never been to the practice before
-                    existing_patient_intake_process: If the patient has been to the practice before
-                  next_required_objectives:
-                    - get_patient_name
-                  callback_url: https://your-server.com/webhook
-                  created_at: '2024-01-15T10:30:00Z'
-                  updated_at: '2024-01-15T10:30:00Z'
-              total_count: 25
-        description: Successfully retrieved objectives
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

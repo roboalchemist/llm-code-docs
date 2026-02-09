@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/ai-agent/playground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Playground
 
 The Playground is your sandbox to experiment with your AI agent in real time. You can tweak core settings—like AI model, enabled actions, temperature, and instructions—then chat with the agent to see exactly how those changes affect behavior.

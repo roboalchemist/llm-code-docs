@@ -14,7 +14,7 @@ All updates to an extension are made through a [Pull Request](https://github.com
 
 **FORK\_URL**
 
-Open the PR and click on the incomming ref as shown below
+Open the PR and click on the incoming ref as shown below
 
 ![](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-1a66bb065c6f9ccb78f4a42eebdcd3c70837fb1d%2Fgo-to-ref.webp?alt=media)
 

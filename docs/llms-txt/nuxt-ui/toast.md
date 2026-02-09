@@ -29,17 +29,12 @@ function addToCalendar() {
 </template>
 ```
 
-<warning>
+> [!WARNING]
+> Make sure to wrap your app with the [`App`](/docs/components/app) component which uses our [`Toaster`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/Toaster.vue) component which uses the [`ToastProvider`](https://reka-ui.com/docs/components/toast#provider) component from Reka UI.
 
-Make sure to wrap your app with the [`App`](/docs/components/app) component which uses our [`Toaster`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/Toaster.vue) component which uses the [`ToastProvider`](https://reka-ui.com/docs/components/toast#provider) component from Reka UI.
-
-</warning>
-
-<tip to="/docs/components/app#props">
-
-You can check the `App` component `toaster` prop to see how to configure the Toaster globally.
-
-</tip>
+> [!TIP]
+> See: /docs/components/app#props
+> You can check the `App` component `toaster` prop to see how to configure the Toaster globally.
 
 ### Title
 
@@ -222,23 +217,15 @@ function showToast() {
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Actions
 
@@ -278,11 +265,8 @@ function showToast() {
 
 Pass a `progress` field to customize or hide the [Progress](/docs/components/progress) bar (with `false` value).
 
-<tip>
-
-The Progress bar inherits the Toast color by default, but you can override it using the `progress.color` field.
-
-</tip>
+> [!TIP]
+> The Progress bar inherits the Toast color by default, but you can override it using the `progress.color` field.
 
 ```vue [ToastProgressExample.vue]
 <script setup lang="ts">
@@ -339,11 +323,9 @@ function showToast() {
 
 ## Examples
 
-<note to="/components/app">
-
-Nuxt UI provides an **App** component that wraps your app to provide global configurations.
-
-</note>
+> [!NOTE]
+> See: /components/app
+> Nuxt UI provides an App component that wraps your app to provide global configurations.
 
 ### Change global position
 
@@ -382,11 +364,9 @@ function addToCalendar() {
 </template>
 ```
 
-<note to="https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L3">
-
-In this example, we use the `AppConfig` to configure the `position` prop of the `Toaster` component globally.
-
-</note>
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L3
+> In this example, we use the `AppConfig` to configure the `position` prop of the `Toaster` component globally.
 
 ### Change global duration
 
@@ -425,13 +405,11 @@ function addToCalendar() {
 </template>
 ```
 
-<note to="https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L4">
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L4
+> In this example, we use the `AppConfig` to configure the `duration` prop of the `Toaster` component globally.
 
-In this example, we use the `AppConfig` to configure the `duration` prop of the `Toaster` component globally.
-
-</note>
-
-### Change global max <badge label="4.1+"></badge>
+### Change global max `4.1+`
 
 Change the `toaster.max` prop on the [App](/docs/components/app#props) component to change the max number of toasts displayed at once.
 
@@ -468,11 +446,9 @@ function addToCalendar() {
 </template>
 ```
 
-<note to="https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L5">
-
-In this example, we use the `AppConfig` to configure the `max` prop of the `Toaster` component globally.
-
-</note>
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L5
+> In this example, we use the `AppConfig` to configure the `max` prop of the `Toaster` component globally.
 
 ### Stacked toasts
 
@@ -490,11 +466,8 @@ const toaster = { expand: true }
 </template>
 ```
 
-<tip>
-
-You can hover over the toasts to expand them. This will also pause the timer of the toasts.
-
-</tip>
+> [!TIP]
+> You can hover over the toasts to expand them. This will also pause the timer of the toasts.
 
 ```vue [ToastExample.vue]
 <script setup lang="ts">
@@ -517,11 +490,72 @@ function addToCalendar() {
 </template>
 ```
 
-<note to="https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L6">
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/docs/app/app.config.ts#L6
+> In this example, we use the `AppConfig` to configure the `expand` prop of the `Toaster` component globally.
 
-In this example, we use the `AppConfig` to configure the `expand` prop of the `Toaster` component globally.
+### With callback
 
-</note>
+Pass an `onUpdateOpen` field to execute a callback when the toast is closed (either by expiration or user dismissal).
+
+```vue [ToastCallbackExample.vue]
+<script setup lang="ts">
+const toast = useToast()
+
+function showToast() {
+  toast.add({
+    'title': 'Uploading file...',
+    'description': 'Your file is being uploaded.',
+    'icon': 'i-lucide-cloud-upload',
+    'duration': 3000,
+    'onUpdate:open': (open) => {
+      if (!open) {
+        toast.add({
+          title: 'File uploaded!',
+          description: 'Your file has been successfully uploaded.',
+          icon: 'i-lucide-check',
+          color: 'success'
+        })
+      }
+    }
+  })
+}
+</script>
+
+<template>
+  <UButton label="Show toast" color="neutral" variant="outline" @click="showToast" />
+</template>
+```
+
+### With HTML content
+
+Use the [`h()` render function](https://vuejs.org/api/render-function.html#h) in the `title` or `description` fields to render HTML elements or Vue components with custom styling.
+
+```vue [ToastHtmlExample.vue]
+<script setup lang="ts">
+const toast = useToast()
+
+function showToast() {
+  toast.add({
+    title: h('span', {}, [
+      'Item ',
+      h('span', { class: 'text-primary font-bold' }, '#15'),
+      ' deleted'
+    ]),
+    description: h('span', {}, [
+      'You have successfully deleted the item from your ',
+      h('span', { class: 'font-bold' }, 'account'),
+      '.'
+    ]),
+    icon: 'i-lucide-trash-2'
+  })
+}
+</script>
+
+<template>
+  <UButton label="Show toast" color="neutral" variant="outline" @click="showToast" />
+</template>
+```
 
 ## API
 
@@ -538,7 +572,7 @@ interface ToastProps {
   as?: any;
   title?: StringOrVNode | undefined;
   description?: StringOrVNode | undefined;
-  icon?: string | object | undefined;
+  icon?: any;
   avatar?: AvatarProps | undefined;
   color?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   /**
@@ -551,11 +585,11 @@ interface ToastProps {
    * `{ size: 'md', color: 'neutral', variant: 'link' }`{lang="ts-type"}
    * @default "true"
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * Display a list of actions:
    * - under the title and description when orientation is `vertical`
@@ -750,8 +784,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

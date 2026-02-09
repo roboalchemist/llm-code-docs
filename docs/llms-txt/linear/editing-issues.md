@@ -36,7 +36,7 @@ When you move an issue to a new team, we generate a new _issue ID_ and unique UR
 Issue property | Effect | Workaround
 --- | --- | ---
 Cycle | Removed | Create a temporary label (e.g. Cycle 1) before moving issues if you'd like to retain the grouping when assigning issues to the new team's cycles
-Labels | Removed | Create a label in the new team with the same name.
+Team Labels | Removed | Create a label in the new team with the same name.
 Projects | Removed | Add the new team to the current team's project before moving the issue.
 Relations | Remain
 Priority | Remain

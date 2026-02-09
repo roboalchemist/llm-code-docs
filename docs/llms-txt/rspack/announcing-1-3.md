@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-3.md
 
-*March 28, 2025*
+_March 28, 2025_
 
 # Announcing Rspack 1.3
 
@@ -12,27 +12,27 @@ Rspack 1.3 has been released!
 
 Notable changes:
 
-* New features
-  * [Circular dependency detection](#circular-dependency-detection)
-  * [Build HTTP imports](#build-http-imports)
-  * [Lazy compilation improvements](#lazy-compilation-improvements)
-  * [AMD supports](#amd-supports)
-* Performance improvements
-  * [Code splitting 25% faster](#code-splitting-25-faster)
-  * [Bundle size optimization](#bundle-size-optimization)
-  * [Memory improvements](#memory-improvements)
-* Rstack updates
-  * [Rsdoctor 1.0](#rsdoctor-10)
-  * [Rsbuild 1.3](#rsbuild-13)
-  * [Rslib 0.6](#rslib-06)
-  * [Rspress and Rstest](#rspress-and-rstest)
-* Ecosystem
-  * [Rspeedy for Lynx](#rspeedy-for-lynx)
-  * [Re.Pack 5](#repack-5)
-  * [React Router v7 support](#react-router-v7-support)
-* Upgrade guide
-  * [Module subtypes changed](#module-subtypes-changed)
-  * [Upgrade SWC plugins](#upgrade-swc-plugins)
+- New features
+  - [Circular dependency detection](#circular-dependency-detection)
+  - [Build HTTP imports](#build-http-imports)
+  - [Lazy compilation improvements](#lazy-compilation-improvements)
+  - [AMD supports](#amd-supports)
+- Performance improvements
+  - [Code splitting 25% faster](#code-splitting-25-faster)
+  - [Bundle size optimization](#bundle-size-optimization)
+  - [Memory improvements](#memory-improvements)
+- Rstack updates
+  - [Rsdoctor 1.0](#rsdoctor-10)
+  - [Rsbuild 1.3](#rsbuild-13)
+  - [Rslib 0.6](#rslib-06)
+  - [Rspress and Rstest](#rspress-and-rstest)
+- Ecosystem
+  - [Rspeedy for Lynx](#rspeedy-for-lynx)
+  - [Re.Pack 5](#repack-5)
+  - [React Router v7 support](#react-router-v7-support)
+- Upgrade guide
+  - [Module subtypes changed](#module-subtypes-changed)
+  - [Upgrade SWC plugins](#upgrade-swc-plugins)
 
 ## New features
 
@@ -80,8 +80,8 @@ In previous versions, when [lazy compilation](/guide/features/lazy-compilation.m
 
 Rspack 1.3 provides new Express-style middleware for integrating lazy compilation that addresses these issues.
 
-* If you are using `@rspack/cli` or Rsbuild, you can upgrade to the new middleware by simply updating the dependency version.
-* If you are using a custom development server, you will need to integrate this middleware to support lazy compilation.
+- If you are using `@rspack/cli` or Rsbuild, you can upgrade to the new middleware by simply updating the dependency version.
+- If you are using a custom development server, you will need to integrate this middleware to support lazy compilation.
 
 Here's an example of how to use the lazy compilation middleware:
 
@@ -156,12 +156,10 @@ Rspack now defaults to using [mimalloc](https://github.com/microsoft/mimalloc) v
 
 Rspack 1.3 also implemented an internal mechanism to clean the outdated cache: `maxGenerations`. This controls how many compilations would cache survive if it's not being used by the compiler. Rspack sets the default to `1`. This means that the cache will be purged if it's not being used in the next compilation.
 
-<img src="https://assets.rspack.rs/rspack/assets/rspack-v1-3-memory-improve-max-generations.png" width="760" alt="Max generations" />
-
+![Max generations](https://assets.rspack.rs/rspack/assets/rspack-v1-3-memory-improve-max-generations.png)
 ## Rstack updates
 
-<img src="https://assets.rspack.rs/rstack/rstack-overview.png" width="760" alt="Rstack" />
-
+![Rstack](https://assets.rspack.rs/rstack/rstack-overview.png)
 ### Rsdoctor 1.0
 
 After a year of development and testing, we are proud to introduce [Rsdoctor 1.0](https://github.com/web-infra-dev/rsdoctor) — a build analyzer tailored for the Rspack ecosystem and fully compatible with the webpack ecosystem.
@@ -170,9 +168,9 @@ Rsdoctor is committed to being a one-stop, intelligent build analyzer that makes
 
 Rsdoctor 1.0 introduces significant enhancements:
 
-* A completely redesigned UI that delivers more intuitive and efficient information visualization.
-* Rewrote data processing logic using Rust, achieving 20%+ improvement in analysis speed.
-* New module search capabilities for analyzing dependencies and module sizes.
+- A completely redesigned UI that delivers more intuitive and efficient information visualization.
+- Rewrote data processing logic using Rust, achieving 20%+ improvement in analysis speed.
+- New module search capabilities for analyzing dependencies and module sizes.
 
 > Read the [Rsdoctor 1.0 release blog](https://rsdoctor.rs/zh/blog/release/release-note-1_0) for more.
 
@@ -180,7 +178,7 @@ Rsdoctor 1.0 introduces significant enhancements:
 
 Rsbuild 1.3 has been released alongside Rspack 1.3, notable features including:
 
-* Support importing compiled CSS files as strings by using the [?inline](https://rsbuild.rs/guide/basic/css-usage#inline) query parameter:
+- Support importing compiled CSS files as strings by using the [?inline](https://rsbuild.rs/guide/basic/css-usage#inline) query parameter:
 
 ```js
 import inlineCss from './style.css?inline';
@@ -188,7 +186,7 @@ import inlineCss from './style.css?inline';
 console.log(inlineCss); // Output the compiled CSS file content
 ```
 
-* Support importing raw CSS files and static assets as strings by using the [?raw](https://rsbuild.rs/guide/basic/css-usage#raw) query parameter:
+- Support importing raw CSS files and static assets as strings by using the [?raw](https://rsbuild.rs/guide/basic/css-usage#raw) query parameter:
 
 ```js
 import rawSvg from './logo.svg?raw';
@@ -202,8 +200,8 @@ console.log(rawCss); // Output the raw CSS file content
 
 Rslib 0.6 brings the following notable updates:
 
-* **Improved CJS output**: Rslib's CJS output can now be statically analyzed, allowing Node.js ESM modules to use named imports to reference exports from CJS output.
-* **Type error optimization**: When type errors occur, Rslib now prints the full context and code frame to the terminal, making it easier to fix type issues.
+- **Improved CJS output**: Rslib's CJS output can now be statically analyzed, allowing Node.js ESM modules to use named imports to reference exports from CJS output.
+- **Type error optimization**: When type errors occur, Rslib now prints the full context and code frame to the terminal, making it easier to fix type issues.
 
 This release also adds support for YAML and TOML. See [Rslib 0.6](https://github.com/web-infra-dev/rslib/releases/tag/v0.6.0) for more details.
 
@@ -211,8 +209,8 @@ This release also adds support for YAML and TOML. See [Rslib 0.6](https://github
 
 We are also working on:
 
-* **Rspress 2.0**: A fully upgraded static site generator with richer features and better performance.
-* **Rstest**: A testing framework powered by Rspack. It delivers comprehensive, first-class support for the Rspack ecosystem, enabling seamless integration into existing Rspack-based projects.
+- **Rspress 2.0**: A fully upgraded static site generator with richer features and better performance.
+- **Rstest**: A testing framework powered by Rspack. It delivers comprehensive, first-class support for the Rspack ecosystem, enabling seamless integration into existing Rspack-based projects.
 
 More information will be released soon, stay tuned 🌟
 
@@ -240,9 +238,9 @@ Re.Pack 5 has been released, which brings unprecedented performance improvements
 
 [rsbuild-plugin-react-router](https://github.com/rstackjs/rsbuild-plugin-react-router) has been released, which is an Rsbuild plugin that provides seamless integration with React Router v7, supporting the following features:
 
-* Filesystem routes
-* Server-side rendering
-* Experimental Module Federation support
+- Filesystem routes
+- Server-side rendering
+- Experimental Module Federation support
 
 > See [rsbuild-plugin-react-router repository](https://github.com/rstackjs/rsbuild-plugin-react-router) to try it out.
 
@@ -252,10 +250,10 @@ Re.Pack 5 has been released, which brings unprecedented performance improvements
 
 The module types exported by Rspack have been refined with more accurate type definitions, which helps to align with webpack. Currently supported module subtypes include:
 
-* NormalModule
-* ContextModule
-* ExternalModule
-* ConcatenatedModule
+- NormalModule
+- ContextModule
+- ExternalModule
+- ConcatenatedModule
 
 You can now identify a module's specific type in two ways:
 

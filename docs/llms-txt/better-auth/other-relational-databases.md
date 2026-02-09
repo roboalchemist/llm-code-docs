@@ -4,11 +4,7 @@
 
 Integrate Better Auth with other relational databases.
 
-***
 
-title: Other Relational Databases
-description: Integrate Better Auth with other relational databases.
--------------------------------------------------------------------
 
 Better Auth supports a wide range of database dialects out of the box thanks to <Link href="https://kysely.dev/">Kysely</Link>.
 

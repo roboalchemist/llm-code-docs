@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun supports deploying any Ruby application. Your application can use any Ruby application server such as Puma or Unicorn and deploying a Rails or a Sinatra app is very straight forward.
 
@@ -19,15 +19,13 @@ When you deploy your app, you always get the latest available patches.
 
 ### Ruby
 
+   - 4.0
+
    - 3.4
 
    - 3.3
 
    - 3.2
-
-   - 3.1
-
-   - 3.0
 
 ### Specify the language
 
@@ -46,7 +44,7 @@ For example:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'ruby:3.4'
+    type: 'ruby:4.0'
 ```
 
 ### Deprecated versions
@@ -54,6 +52,10 @@ applications:
 The following versions are [deprecated](https://docs.upsun.com/glossary.md#deprecated-versions).
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
+
+   - 3.1
+
+   - 3.0
 
    - 2.7
 
@@ -79,7 +81,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
     ```
 
 2. Setup environment variables.
@@ -92,13 +94,13 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         variables:
           env:
             PIDFILE: "tmp/server.pid" # Allow to start puma directly even if `tmp/pids` directory is not created
             RAILS_ENV: "production"
             BUNDLE_WITHOUT: 'development:test'
-            TARGET_RUBY_VERSION: '~>3.4' # this will allow to not fail on PATCH update of the image
+            TARGET_RUBY_VERSION: '~>4.0' # this will allow to not fail on PATCH update of the image
     ```
 
    The `SECRET_KEY_BASE` variable is generated automatically based on the
@@ -121,7 +123,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         ...
         hooks:
           build: |
@@ -141,7 +143,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         ...
         dependencies:
           nodejs:
@@ -154,7 +156,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         ...
         web:
           upstream:
@@ -178,7 +180,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         ...
         web:
           locations:
@@ -201,7 +203,7 @@ A complete example is included at the end of this section.
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'ruby:3.4'
+        type: 'ruby:4.0'
         ...
         mounts:
           "/log":
@@ -239,7 +241,7 @@ Here is a complete `.upsun/config.yaml` file:
 # The name of the app, which must be unique within a project.
 applications:
   myapp:
-    type: 'ruby:3.4'
+    type: 'ruby:4.0'
 
     dependencies:
       nodejs:
@@ -368,7 +370,7 @@ Once you have a service, link to it in your [app configuration](https://docs.ups
 ```yaml  {location=".upsun/config.yaml"}
 applications:
   myapp:
-    type: 'ruby:3.4'
+    type: 'ruby:4.0'
     relationships:
       mysql:
     [...]

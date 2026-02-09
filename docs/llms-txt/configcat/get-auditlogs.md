@@ -2,10 +2,7 @@
 
 # List Audit log items for Product
 
-```
-GET 
-/v1/products/:productId/auditlogs
-```
+Copy page
 
 This endpoint returns the list of Audit log items for a given Product and the result can be optionally filtered by Config and/or Environment.
 

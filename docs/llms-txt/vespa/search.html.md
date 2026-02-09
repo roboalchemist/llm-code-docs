@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/applications/services/search.html.md
 
-# Source: https://docs.vespa.ai/search.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/search.html.md
-
-# Source: https://docs.vespa.ai/search.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/search.html.md
-
 # services.xml - 'search'
 
  
@@ -328,6 +320,11 @@ The id of the source search chain is _sourceId@providerId_. This search chain au
 
 Specifies configuration for the thread pool for the jdisc search handler. All parameters are relative to the number of CPU cores—see the [container tuning example](../../../performance/container-tuning.html#container-worker-threads-example). This thread pool also supports the optional `max` attribute, which lets the pool grow up to `max * vCPU` threads under load before shrinking back after 5 seconds of idleness. Requests are rejected once the allowed number of threads is reached, all are busy, and the queue is full.
 
+Optional sub-elements:
+
+- [threads](#threadpool-threads)
+- [queue](#threadpool-queue)
+
 ### threads
 
 The number of permanent threads relative to number of vCPU cores. Default value is `10`.
@@ -344,7 +341,7 @@ The maximum number of threads relative to vCPU cores. Value must be greater than
 
 The size of the request queue relative to effective number of threads. Specify `0` to disable queuing. Default value is `40`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

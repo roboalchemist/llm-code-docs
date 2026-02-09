@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/fal-ai-image-to-cartoon.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert an image to a cartoon using Fal.ai
 
 > This example task generates an image from a URL using Fal.ai and uploads it to Cloudflare R2.
@@ -21,7 +25,7 @@ This video walks through the process of creating this task in a Next.js project.
 
 This task converts an image to a cartoon using Fal.ai, and uploads the result to Cloudflare R2.
 
-```ts trigger/fal-ai-image-to-cartoon.ts theme={null}
+```ts trigger/fal-ai-image-to-cartoon.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import * as fal from "@fal-ai/serverless-client";
@@ -97,7 +101,7 @@ export const falAiImageToCartoon = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 "imageUrl": "<image-url>", // Replace with the URL of the image you want to convert to a cartoon
 "fileName": "<file-name>" // Replace with the name you want to save the file as in Cloudflare R2
 ```

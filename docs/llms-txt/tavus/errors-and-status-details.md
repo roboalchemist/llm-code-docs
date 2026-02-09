@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/errors-and-status-details.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors and Status Details
 
 > Identify errors and status details encountered when using the Tavus platform.

@@ -14,11 +14,11 @@ Actors on the platform are always run in Docker containers, however, they can al
 
 ## Base images
 
-If your project doesn't already contain a Dockerfile, don't worry! Apify offers https://docs.apify.com/sdk/js/docs/guides/docker-images that are optimized for building and running Actors on the platform, which can be found on https://hub.docker.com/u/apify. When using a language for which Apify doesn't provide a base image, https://hub.docker.com/ provides a ton of free Docker images for most use-cases, upon which you can create your own images.
+If your project doesn't already contain a Dockerfile, don't worry! Apify offers [many base images](https://docs.apify.com/sdk/js/docs/guides/docker-images) that are optimized for building and running Actors on the platform, which can be found on [Docker Hub](https://hub.docker.com/u/apify). When using a language for which Apify doesn't provide a base image, [Docker Hub](https://hub.docker.com/) provides a ton of free Docker images for most use-cases, upon which you can create your own images.
 
 DockerHub images
 
-You can see all of Apify's Docker images https://hub.docker.com/u/apify.
+You can see all of Apify's Docker images [on DockerHub](https://hub.docker.com/u/apify).
 
 At the base level, each Docker image contains a base operating system and usually also a programming language runtime (such as Node.js or Python). You can also find images with preinstalled libraries or install them yourself during the build step.
 
@@ -32,7 +32,7 @@ FROM apify/actor-node:16
 
 VSCode extension
 
-For syntax highlighting in your Dockerfiles, download the https://code.visualstudio.com/docs/containers/overview#_installation.
+For syntax highlighting in your Dockerfiles, download the [Docker VSCode extension](https://code.visualstudio.com/docs/containers/overview#_installation).
 
 ## Writing the file
 
@@ -175,4 +175,4 @@ CMD ["julia", "main.jl"]
 
 ## Next up
 
-In the https://docs.apify.com/academy/deploying-your-code/deploying.md, we'll push our code directly to the Apify platform, or create and integrate a new Actor on the Apify platform with our project's GitHub repository.
+In the [next lesson](https://docs.apify.com/academy/deploying-your-code/deploying.md), we'll push our code directly to the Apify platform, or create and integrate a new Actor on the Apify platform with our project's GitHub repository.

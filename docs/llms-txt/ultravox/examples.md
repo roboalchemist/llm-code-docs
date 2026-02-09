@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview: Example Code
 
 > Explore working code examples and sample applications built with Ultravox.
@@ -33,8 +37,3 @@ Each example includes a README with instructions on how to setup and run the cod
 ## Need Help?
 
 If you have questions about any of the examples or need help adapting them for your use case, please see [Getting Help](/gettingstarted/getting-help).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/markuplm.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/markuplm.md
 
 # MarkupLM
 
@@ -31,16 +31,16 @@ This model was contributed by [nielsr](https://huggingface.co/nielsr). The origi
 
 ## Usage tips
 
-- In addition to `input_ids`, [forward()](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel.forward) expects 2 additional inputs, namely `xpath_tags_seq` and `xpath_subs_seq`.
+- In addition to `input_ids`, [forward()](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel.forward) expects 2 additional inputs, namely `xpath_tags_seq` and `xpath_subs_seq`.
 These are the XPATH tags and subscripts respectively for each token in the input sequence.
-- One can use [MarkupLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMProcessor) to prepare all data for the model. Refer to the [usage guide](#usage-markuplmprocessor) for more info.
+- One can use [MarkupLMProcessor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMProcessor) to prepare all data for the model. Refer to the [usage guide](#usage-markuplmprocessor) for more info.
 
  MarkupLM architecture. Taken from the original paper. 
 
 ## Usage: MarkupLMProcessor
 
-The easiest way to prepare data for the model is to use [MarkupLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMProcessor), which internally combines a feature extractor
-([MarkupLMFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor)) and a tokenizer ([MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer)). The feature extractor is
+The easiest way to prepare data for the model is to use [MarkupLMProcessor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMProcessor), which internally combines a feature extractor
+([MarkupLMFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor)) and a tokenizer ([MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer)). The feature extractor is
 used to extract all nodes and xpaths from the HTML strings, which are then provided to the tokenizer, which turns them into the
 token-level inputs of the model (`input_ids` etc.). Note that you can still use the feature extractor and tokenizer separately,
 if you only want to handle one of the two tasks.
@@ -53,16 +53,16 @@ tokenizer = MarkupLMTokenizerFast.from_pretrained("microsoft/markuplm-base")
 processor = MarkupLMProcessor(feature_extractor, tokenizer)
 ```
 
-In short, one can provide HTML strings (and possibly additional data) to [MarkupLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMProcessor),
+In short, one can provide HTML strings (and possibly additional data) to [MarkupLMProcessor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMProcessor),
 and it will create the inputs expected by the model. Internally, the processor first uses
-[MarkupLMFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) to get a list of nodes and corresponding xpaths. The nodes and
-xpaths are then provided to [MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer), which converts them
+[MarkupLMFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) to get a list of nodes and corresponding xpaths. The nodes and
+xpaths are then provided to [MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer), which converts them
 to token-level `input_ids`, `attention_mask`, `token_type_ids`, `xpath_subs_seq`, `xpath_tags_seq`.
 Optionally, one can provide node labels to the processor, which are turned into token-level `labels`.
 
-[MarkupLMFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) uses [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), a Python library for
+[MarkupLMFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) uses [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), a Python library for
 pulling data out of HTML and XML files, under the hood. Note that you can still use your own parsing solution of
-choice, and provide the nodes and xpaths yourself to [MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer).
+choice, and provide the nodes and xpaths yourself to [MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer).
 
 In total, there are 5 use cases that are supported by the processor. Below, we list them all. Note that each of these
 use cases work for both batched and non-batched inputs (we illustrate them for non-batched inputs).
@@ -192,15 +192,15 @@ dict_keys(['input_ids', 'token_type_ids', 'attention_mask', 'xpath_tags_seq', 'x
 
 #### transformers.MarkupLMConfig[[transformers.MarkupLMConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/configuration_markuplm.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/configuration_markuplm.py#L23)
 
-This is the configuration class to store the configuration of a [MarkupLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [MarkupLMModel](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel). It is used to instantiate a
 MarkupLM model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the MarkupLM
 [microsoft/markuplm-base](https://huggingface.co/microsoft/markuplm-base) architecture.
 
-Configuration objects inherit from [BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/bert#transformers.BertConfig) and can be used to control the model outputs. Read the
-documentation from [BertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/bert#transformers.BertConfig) for more information.
+Configuration objects inherit from [BertConfig](/docs/transformers/v5.0.0/en/model_doc/bert#transformers.BertConfig) and can be used to control the model outputs. Read the
+documentation from [BertConfig](/docs/transformers/v5.0.0/en/model_doc/bert#transformers.BertConfig) for more information.
 
 Examples:
 
@@ -219,7 +219,7 @@ Examples:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the MarkupLM model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [MarkupLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel).
+vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the MarkupLM model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [MarkupLMModel](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel).
 
 hidden_size (`int`, *optional*, defaults to 768) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -237,7 +237,7 @@ attention_probs_dropout_prob (`float`, *optional*, defaults to 0.1) : The dropou
 
 max_position_embeddings (`int`, *optional*, defaults to 512) : The maximum sequence length that this model might ever be used with. Typically set this to something large just in case (e.g., 512 or 1024 or 2048).
 
-type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed into [MarkupLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel).
+type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed into [MarkupLMModel](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
 
@@ -261,7 +261,7 @@ max_depth (`int`, *optional*, defaults to 50) : The maximum depth in xpath.
 
 #### transformers.MarkupLMFeatureExtractor[[transformers.MarkupLMFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/feature_extraction_markuplm.py#L33)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/feature_extraction_markuplm.py#L32)
 
 Constructs a MarkupLM feature extractor. This can be used to get a list of nodes and corresponding xpaths from HTML
 strings.
@@ -269,8 +269,8 @@ strings.
 This feature extractor inherits from `PreTrainedFeatureExtractor()` which contains most
 of the main methods. Users should refer to this superclass for more information regarding those methods.
 
-__call__transformers.MarkupLMFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/feature_extraction_markuplm.py#L99[{"name": "html_strings", "val": ""}]- **html_strings** (`str`, `list[str]`) --
-  The HTML string or batch of HTML strings from which to extract nodes and corresponding xpaths.0[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+__call__transformers.MarkupLMFeatureExtractor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/feature_extraction_markuplm.py#L98[{"name": "html_strings", "val": ""}]- **html_strings** (`str`, `list[str]`) --
+  The HTML string or batch of HTML strings from which to extract nodes and corresponding xpaths.0[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
 - **nodes** -- Nodes.
 - **xpaths** -- Corresponding xpaths.
@@ -316,9 +316,9 @@ html_strings (`str`, `list[str]`) : The HTML string or batch of HTML strings fro
 
 **Returns:**
 
-`[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)`
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
-A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
 - **nodes** -- Nodes.
 - **xpaths** -- Corresponding xpaths.
@@ -327,17 +327,17 @@ A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#tr
 
 #### transformers.MarkupLMTokenizer[[transformers.MarkupLMTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L93)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L91)
 
 Construct a MarkupLM tokenizer. Based on byte-level Byte-Pair-Encoding (BPE).
 
-[MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) can be used to turn HTML strings into to token-level `input_ids`, `attention_mask`,
-`token_type_ids`, `xpath_tags_seq` and `xpath_tags_seq`. This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which
+[MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) can be used to turn HTML strings into to token-level `input_ids`, `attention_mask`,
+`token_type_ids`, `xpath_tags_seq` and `xpath_tags_seq`. This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which
 contains most of the main methods and ensures a `tokenizers` backend is always instantiated.
 
 Users should refer to this superclass for more information regarding those methods.
 
-build_inputs_with_special_tokenstransformers.MarkupLMTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L962[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": typing.Optional[list[int]] = None"}]- **token_ids_0** (`list[int]`) --
+build_inputs_with_special_tokenstransformers.MarkupLMTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L952[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}]- **token_ids_0** (`list[int]`) --
   List of IDs to which the special tokens will be added.
 - **token_ids_1** (`list[int]`, *optional*) --
   Optional second list of IDs for sequence pairs.0`list[int]`List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
@@ -378,7 +378,7 @@ add_prefix_space (`bool`, *optional*, defaults to `False`) : Whether or not to a
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### get_special_tokens_mask[[transformers.MarkupLMTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330)
 
 Retrieve sequence ids from a token list that has no special tokens added.
 
@@ -400,7 +400,7 @@ already_has_special_tokens : Whether the sequence is already formatted with spec
 1 for a special token, 0 for a sequence token.
 #### create_token_type_ids_from_sequences[[transformers.MarkupLMTokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L985)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L975)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. RoBERTa does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -418,30 +418,30 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### save_vocabulary[[transformers.MarkupLMTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L1007)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L997)
 
 ## MarkupLMTokenizerFast[[transformers.MarkupLMTokenizer]]
 
 #### transformers.MarkupLMTokenizer[[transformers.MarkupLMTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L93)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L91)
 
 Construct a MarkupLM tokenizer. Based on byte-level Byte-Pair-Encoding (BPE).
 
-[MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) can be used to turn HTML strings into to token-level `input_ids`, `attention_mask`,
-`token_type_ids`, `xpath_tags_seq` and `xpath_tags_seq`. This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which
+[MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) can be used to turn HTML strings into to token-level `input_ids`, `attention_mask`,
+`token_type_ids`, `xpath_tags_seq` and `xpath_tags_seq`. This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which
 contains most of the main methods and ensures a `tokenizers` backend is always instantiated.
 
 Users should refer to this superclass for more information regarding those methods.
 
-batch_encode_plustransformers.MarkupLMTokenizer.batch_encode_plushttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L455[{"name": "batch_text_or_text_pairs", "val": ": typing.Union[list[str], list[tuple[str, str]], list[list[str]]]"}, {"name": "is_pair", "val": ": typing.Optional[bool] = None"}, {"name": "xpaths", "val": ": typing.Optional[list[list[list[int]]]] = None"}, {"name": "node_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "padding_side", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]
+batch_encode_plustransformers.MarkupLMTokenizer.batch_encode_plushttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L453[{"name": "batch_text_or_text_pairs", "val": ": list[str] | list[tuple[str, str]] | list[list[str]]"}, {"name": "is_pair", "val": ": bool | None = None"}, {"name": "xpaths", "val": ": list[list[list[int]]] | None = None"}, {"name": "node_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]
 
 add_special_tokens (`bool`, *optional*, defaults to `True`):
 Whether or not to add special tokens when encoding the sequences. This will use the underlying
 `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
 automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
 automatically.
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`):
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`):
 Activates and controls padding. Accepts the following values:
 
 - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -450,7 +450,7 @@ Activates and controls padding. Accepts the following values:
   acceptable input length for the model if that argument is not provided.
 - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
   lengths).
-truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`):
+truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`):
 Activates and controls truncation. Accepts the following values:
 
 - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -487,7 +487,7 @@ This is especially useful to enable the use of Tensor Cores on NVIDIA hardware w
 padding_side (`str`, *optional*):
 The side on which the model should have padding applied. Should be selected between ['right', 'left'].
 Default value is picked from the class attribute of the same name.
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*):
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*):
 If set, will return tensors instead of list of python integers. Acceptable values are:
 
 - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -495,7 +495,7 @@ If set, will return tensors instead of list of python integers. Acceptable value
 
 add_special_tokens (`bool`, *optional*, defaults to `True`):
 Whether or not to encode the sequences with the special tokens relative to their model.
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`):
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`):
 Activates and controls padding. Accepts the following values:
 
 - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -504,7 +504,7 @@ Activates and controls padding. Accepts the following values:
   acceptable input length for the model if that argument is not provided.
 - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
   lengths).
-truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`):
+truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`):
 Activates and controls truncation. Accepts the following values:
 
 - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -535,7 +535,7 @@ passing pretokenized inputs to avoid additional tokenization.
 pad_to_multiple_of (`int`, *optional*):
 If set will pad the sequence to a multiple of the provided value. This is especially useful to enable
 the use of Tensor Cores on NVIDIA hardware with compute capability `>= 7.5` (Volta).
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*):
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*):
 If set, will return tensors instead of list of python integers. Acceptable values are:
 
 - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -566,7 +566,7 @@ mask_token (`str`, *optional*, defaults to `""`) : The token used for masking va
 add_prefix_space (`bool`, *optional*, defaults to `False`) : Whether or not to add an initial space to the input. This allows to treat the leading word just as any other word. (RoBERTa tokenizer detect beginning of words by the preceding space).
 #### build_inputs_with_special_tokens[[transformers.MarkupLMTokenizer.build_inputs_with_special_tokens]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L962)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L952)
 
 Build model inputs from a sequence or a pair of sequence for sequence classification tasks by concatenating and
 adding special tokens. A RoBERTa sequence has the following format:
@@ -586,7 +586,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### create_token_type_ids_from_sequences[[transformers.MarkupLMTokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L985)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L975)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. RoBERTa does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -604,7 +604,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### encode_plus[[transformers.MarkupLMTokenizer.encode_plus]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L524)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L518)
 
 Tokenize and prepare for the model a sequence or a pair of sequences. .. warning:: This method is deprecated,
 `__call__` should be used instead.
@@ -617,9 +617,9 @@ text_pair (`list[str]` or `list[int]`, *optional*) : Optional second sequence to
 
 add_special_tokens (`bool`, *optional*, defaults to `True`) : Whether or not to add special tokens when encoding the sequences. This will use the underlying `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens automatically.
 
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence is provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence is provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
 
-truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
+truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
 
 max_length (`int`, *optional*) : Controls the maximum length to use by one of the truncation/padding parameters.  If left unset or set to `None`, this will use the predefined model maximum length if a maximum length is required by one of the truncation/padding parameters. If the model has no specific maximum input length (like XLNet) truncation/padding to a maximum length will be deactivated.
 
@@ -631,13 +631,13 @@ pad_to_multiple_of (`int`, *optional*) : If set will pad the sequence to a multi
 
 padding_side (`str`, *optional*) : The side on which the model should have padding applied. Should be selected between ['right', 'left']. Default value is picked from the class attribute of the same name.
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects. 
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects. 
 
 add_special_tokens (`bool`, *optional*, defaults to `True`) : Whether or not to encode the sequences with the special tokens relative to their model.
 
-padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
+padding (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) : Activates and controls padding. Accepts the following values:  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single sequence if provided). - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different lengths).
 
-truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
+truncation (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) : Activates and controls truncation. Accepts the following values:  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will truncate token by token, removing a token from the longest sequence in the pair if a pair of sequences (or a batch of pairs) is provided. - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the maximum acceptable input length for the model if that argument is not provided. This will only truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided. - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths greater than the model maximum admissible input size).
 
 max_length (`int`, *optional*) : Controls the maximum length to use by one of the truncation/padding parameters. If left unset or set to `None`, this will use the predefined model maximum length if a maximum length is required by one of the truncation/padding parameters. If the model has no specific maximum input length (like XLNet) truncation/padding to a maximum length will be deactivated.
 
@@ -647,10 +647,10 @@ is_split_into_words (`bool`, *optional*, defaults to `False`) : Whether or not t
 
 pad_to_multiple_of (`int`, *optional*) : If set will pad the sequence to a multiple of the provided value. This is especially useful to enable the use of Tensor Cores on NVIDIA hardware with compute capability `>= 7.5` (Volta).
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects.
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of list of python integers. Acceptable values are:  - `'pt'`: Return PyTorch `torch.Tensor` objects. - `'np'`: Return Numpy `np.ndarray` objects.
 #### get_xpath_seq[[transformers.MarkupLMTokenizer.get_xpath_seq]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/tokenization_markuplm.py#L255)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/tokenization_markuplm.py#L253)
 
 Given the xpath expression of one particular node (like "/html/body/div/li[1]/div/span[2]"), return a list of
 tag IDs and corresponding subscripts, taking into account max depth.
@@ -659,44 +659,148 @@ tag IDs and corresponding subscripts, taking into account max depth.
 
 #### transformers.MarkupLMProcessor[[transformers.MarkupLMProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/processing_markuplm.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/processing_markuplm.py#L25)
 
-Constructs a MarkupLM processor which combines a MarkupLM feature extractor and a MarkupLM tokenizer into a single
-processor.
+Constructs a MarkupLMProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-[MarkupLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMProcessor) offers all the functionalities you need to prepare data for the model.
+[MarkupLMProcessor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMProcessor) offers all the functionalities of [MarkupLMFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) and [MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer). See the
+[~MarkupLMFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) and [~MarkupLMTokenizer](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMTokenizer) for more information.
 
-It first uses [MarkupLMFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor) to extract nodes and corresponding xpaths from one or more HTML strings.
-Next, these are provided to [MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer), which turns them into token-level
-`input_ids`, `attention_mask`, `token_type_ids`, `xpath_tags_seq` and `xpath_subs_seq`.
+__call__transformers.MarkupLMProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/processing_markuplm.py#L31[{"name": "html_strings", "val": " = None"}, {"name": "nodes", "val": " = None"}, {"name": "xpaths", "val": " = None"}, {"name": "node_labels", "val": " = None"}, {"name": "questions", "val": " = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **html_strings** (`str` or `list[str]`, *optional*) --
+  Raw HTML strings to parse and process. When `parse_html=True` (default), these strings are parsed
+  to extract nodes and xpaths automatically. If provided, `nodes`, `xpaths`, and `node_labels` should
+  not be provided. Required when `parse_html=True`.
+- **nodes** (`list[list[str]]`, *optional*) --
+  Pre-extracted HTML nodes as a list of lists, where each inner list contains the text content of nodes
+  for a single document. Required when `parse_html=False`. Should not be provided when `parse_html=True`.
+- **xpaths** (`list[list[str]]`, *optional*) --
+  Pre-extracted XPath expressions corresponding to the nodes. Should be a list of lists with the same
+  structure as `nodes`, where each XPath identifies the location of the corresponding node in the HTML
+  tree. Required when `parse_html=False`. Should not be provided when `parse_html=True`.
+- **node_labels** (`list[list[int]]`, *optional*) --
+  Labels for the nodes, typically used for training or fine-tuning tasks. Should be a list of lists
+  with the same structure as `nodes`, where each label corresponds to a node. Optional and only used
+  when `parse_html=False`.
+- **questions** (`str` or `list[str]`, *optional*) --
+  Question strings for question-answering tasks. When provided, the tokenizer processes questions
+  as the first sequence and nodes as the second sequence (text_pair). If a single string is provided,
+  it is converted to a list to match the batch dimension of the parsed HTML.
+- **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to add special tokens when encoding the sequences. This will use the underlying
+  `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
+  automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
+  automatically.
+- **padding** (bool, str or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+  Activates and controls padding. Accepts the following values:
 
-__call__transformers.MarkupLMProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/processing_markuplm.py#L51[{"name": "html_strings", "val": " = None"}, {"name": "nodes", "val": " = None"}, {"name": "xpaths", "val": " = None"}, {"name": "node_labels", "val": " = None"}, {"name": "questions", "val": " = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]
+  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
+    sequence is provided).
+  - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum
+    acceptable input length for the model if that argument is not provided.
+  - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
+    lengths).
+- **truncation** (bool, str or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*) --
+  Activates and controls truncation. Accepts the following values:
 
-This method first forwards the `html_strings` argument to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor.__call__). Next, it
-passes the `nodes` and `xpaths` along with the additional arguments to `__call__()` and
-returns the output.
+  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
+    to the maximum acceptable input length for the model if that argument is not provided. This will
+    truncate token by token, removing a token from the longest sequence in the pair if a pair of
+    sequences (or a batch of pairs) is provided.
+  - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths
+    greater than the model maximum admissible input size).
+- **max_length** (`int`, *optional*) --
+  Controls the maximum length to use by one of the truncation/padding parameters.
 
-Optionally, one can also provide a `text` argument which is passed along as first sequence.
+  If left unset or set to `None`, this will use the predefined model maximum length if a maximum length
+  is required by one of the truncation/padding parameters. If the model has no specific maximum input
+  length (like XLNet) truncation/padding to a maximum length will be deactivated.
+- **stride** (`int`, *optional*, defaults to `0`) --
+  If set to a number along with `max_length`, the overflowing tokens returned when
+  `return_overflowing_tokens=True` will contain some tokens from the end of the truncated sequence
+  returned to provide some overlap between truncated and overflowing sequences. The value of this
+  argument defines the number of overlapping tokens.
+- **pad_to_multiple_of** (`int`, *optional*) --
+  If set will pad the sequence to a multiple of the provided value. Requires `padding` to be activated.
+  This is especially useful to enable using Tensor Cores on NVIDIA hardware with compute capability
+  `>= 7.5` (Volta).
+- **return_token_type_ids** (`bool`, *optional*) --
+  Whether to return token type IDs. If left to the default, will return the token type IDs according to
+  the specific tokenizer's default, defined by the `return_outputs` attribute.
 
-Please refer to the docstring of the above two methods for more information.
+  [What are token type IDs?](../glossary#token-type-ids)
+- **return_attention_mask** (`bool`, *optional*) --
+  Whether to return the attention mask. If left to the default, will return the attention mask according
+  to the specific tokenizer's default, defined by the `return_outputs` attribute.
+
+  [What are attention masks?](../glossary#attention-mask)
+- **return_overflowing_tokens** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return overflowing token sequences. If a pair of sequences of input ids (or a batch
+  of pairs) is provided with `truncation_strategy = longest_first` or `True`, an error is raised instead
+  of returning overflowing tokens.
+- **return_special_tokens_mask** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return special tokens mask information.
+- **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return `(char_start, char_end)` for each token.
+
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  Python's tokenizer, this method will raise `NotImplementedError`.
+- **return_length** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return the lengths of the encoded inputs.
+- **verbose** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to print more information and warnings.
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 **Parameters:**
 
-feature_extractor (`MarkupLMFeatureExtractor`) : An instance of [MarkupLMFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMFeatureExtractor). The feature extractor is a required input.
+feature_extractor (`MarkupLMFeatureExtractor`) : The feature extractor is a required input.
 
-tokenizer (`MarkupLMTokenizer` or `MarkupLMTokenizerFast`) : An instance of [MarkupLMTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer) or [MarkupLMTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMTokenizer). The tokenizer is a required input.
+tokenizer (`MarkupLMTokenizer`) : The tokenizer is a required input.
 
-parse_html (`bool`, *optional*, defaults to `True`) : Whether or not to use `MarkupLMFeatureExtractor` to parse HTML strings into nodes and corresponding xpaths.
+**Returns:**
+
+````
+
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 ## MarkupLMModel[[transformers.MarkupLMModel]]
 
 #### transformers.MarkupLMModel[[transformers.MarkupLMModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L527)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L522)
 
 The bare Markuplm Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -704,11 +808,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MarkupLMModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L551[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "xpath_tags_seq", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "xpath_subs_seq", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MarkupLMModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L546[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "xpath_tags_seq", "val": ": torch.LongTensor | None = None"}, {"name": "xpath_subs_seq", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **xpath_tags_seq** (`torch.LongTensor` of shape `(batch_size, sequence_length, config.max_depth)`, *optional*) --
@@ -744,9 +848,9 @@ forwardtransformers.MarkupLMModel.forwardhttps://github.com/huggingface/transfor
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -762,7 +866,7 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MarkupLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel) forward method, overrides the `__call__` special method.
+The [MarkupLMModel](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -788,17 +892,17 @@ Examples:
 
 **Parameters:**
 
-config ([MarkupLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MarkupLMModel](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 add_pooling_layer (`bool`, *optional*, defaults to `True`) : Whether to add a pooling layer
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -819,12 +923,12 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
 #### transformers.MarkupLMForSequenceClassification[[transformers.MarkupLMForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L860)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L855)
 
 MarkupLM Model transformer with a sequence classification/regression head on top (a linear layer on top of the
 pooled output) e.g. for GLUE tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -832,11 +936,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MarkupLMForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L877[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_tags_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_subs_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MarkupLMForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L872[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "xpath_tags_seq", "val": ": torch.Tensor | None = None"}, {"name": "xpath_subs_seq", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **xpath_tags_seq** (`torch.LongTensor` of shape `(batch_size, sequence_length, config.max_depth)`, *optional*) --
@@ -876,9 +980,9 @@ forwardtransformers.MarkupLMForSequenceClassification.forwardhttps://github.com/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -891,7 +995,7 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MarkupLMForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForSequenceClassification) forward method, overrides the `__call__` special method.
+The [MarkupLMForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -918,15 +1022,15 @@ Examples:
 
 **Parameters:**
 
-config ([MarkupLMForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MarkupLMForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -944,11 +1048,11 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
 #### transformers.MarkupLMForTokenClassification[[transformers.MarkupLMForTokenClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L758)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L753)
 
 MarkupLM Model with a `token_classification` head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -956,11 +1060,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MarkupLMForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L774[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_tags_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_subs_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MarkupLMForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L769[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "xpath_tags_seq", "val": ": torch.Tensor | None = None"}, {"name": "xpath_subs_seq", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **xpath_tags_seq** (`torch.LongTensor` of shape `(batch_size, sequence_length, config.max_depth)`, *optional*) --
@@ -998,9 +1102,9 @@ forwardtransformers.MarkupLMForTokenClassification.forwardhttps://github.com/hug
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1013,7 +1117,7 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MarkupLMForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForTokenClassification) forward method, overrides the `__call__` special method.
+The [MarkupLMForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForTokenClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1043,15 +1147,15 @@ Examples:
 
 **Parameters:**
 
-config ([MarkupLMForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MarkupLMForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1069,12 +1173,12 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
 #### transformers.MarkupLMForQuestionAnswering[[transformers.MarkupLMForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L645)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L640)
 
 The Markuplm transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1082,11 +1186,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MarkupLMForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/markuplm/modeling_markuplm.py#L657[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_tags_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "xpath_subs_seq", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MarkupLMForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/markuplm/modeling_markuplm.py#L652[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "xpath_tags_seq", "val": ": torch.Tensor | None = None"}, {"name": "xpath_subs_seq", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "start_positions", "val": ": torch.Tensor | None = None"}, {"name": "end_positions", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **xpath_tags_seq** (`torch.LongTensor` of shape `(batch_size, sequence_length, config.max_depth)`, *optional*) --
@@ -1130,9 +1234,9 @@ forwardtransformers.MarkupLMForQuestionAnswering.forwardhttps://github.com/huggi
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -1146,7 +1250,7 @@ elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MarkupLMForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [MarkupLMForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1179,15 +1283,15 @@ Examples:
 
 **Parameters:**
 
-config ([MarkupLMForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MarkupLMForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
+elements depending on the configuration ([MarkupLMConfig](/docs/transformers/v5.0.0/en/model_doc/markuplm#transformers.MarkupLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).

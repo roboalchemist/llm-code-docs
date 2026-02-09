@@ -8,13 +8,11 @@
 
 The PageSection component wraps your content in a [Container](/docs/components/container) while maintaining full-width flexibility making it easy to add background colors, images or patterns. It provides a flexible way to display content with an illustration in the default slot.
 
-<code-preview>
-<u-page-section :features="[{"title":"Icons","description":"Nuxt UI integrates with Nuxt Icon to access over 200,000+ icons from Iconify.","icon":"i-lucide-smile","to":"/docs/getting-started/integrations/icons"},{"title":"Fonts","description":"Nuxt UI integrates with Nuxt Fonts to provide plug-and-play font optimization.","icon":"i-lucide-a-large-small","to":"/docs/getting-started/integrations/fonts"},{"title":"Color Mode","description":"Nuxt UI integrates with Nuxt Color Mode to switch between light and dark.","icon":"i-lucide-sun-moon","to":"/docs/getting-started/integrations/color-mode"}]" description="Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt." headline="Features" title="Beautiful Vue UI components">
-
-
-
-</u-page-section>
-</code-preview>
+```vue
+<template>
+  <u-page-section :features=[{"title":"Icons","description":"Nuxt UI integrates with Nuxt Icon to access over 200,000+ icons from Iconify.","icon":"i-lucide-smile","to":"/docs/getting-started/integrations/icons"},{"title":"Fonts","description":"Nuxt UI integrates with Nuxt Fonts to provide plug-and-play font optimization.","icon":"i-lucide-a-large-small","to":"/docs/getting-started/integrations/fonts"},{"title":"Color Mode","description":"Nuxt UI integrates with Nuxt Color Mode to switch between light and dark.","icon":"i-lucide-sun-moon","to":"/docs/getting-started/integrations/color-mode"}] description=Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt. headline=Features title=Beautiful Vue UI components />
+</template>
+```
 
 Use it after a [PageHero](/docs/components/page-hero) component:
 
@@ -78,6 +76,10 @@ Use the `features` prop to display a list of [PageFeature](/docs/components/page
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
 
 ```vue
+<script setup lang="ts">
+import type { PageFeatureProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageSection title="Beautiful Vue UI components" description="Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt." />
 </template>
@@ -88,6 +90,10 @@ You can pass any property from the [Link](/docs/components/link#props) component
 Use the `links` prop to display a list of [Button](/docs/components/button) under the description.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageSection title="Beautiful Vue UI components" description="Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt." />
 </template>
@@ -98,6 +104,11 @@ Use the `links` prop to display a list of [Button](/docs/components/button) unde
 Use the `orientation` prop to change the orientation with the default slot. Defaults to `vertical`.
 
 ```vue
+<script setup lang="ts">
+import type { PageFeatureProps } from '@nuxt/ui'
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageSection title="Beautiful Vue UI components" description="Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt." icon="i-lucide-rocket" orientation="horizontal">
     <img src="https://picsum.photos/704/1294" width="352" height="647" alt="Illustration" class="w-full rounded-lg" />
@@ -110,6 +121,11 @@ Use the `orientation` prop to change the orientation with the default slot. Defa
 Use the `reverse` prop to reverse the orientation of the default slot.
 
 ```vue
+<script setup lang="ts">
+import type { PageFeatureProps } from '@nuxt/ui'
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageSection title="Beautiful Vue UI components" description="Nuxt UI provides a comprehensive suite of components and utilities to help you build beautiful and accessible web applications with Vue and Nuxt." icon="i-lucide-rocket" orientation="horizontal" reverse>
     <img src="https://picsum.photos/704/1294" width="352" height="647" alt="Illustration" class="w-full rounded-lg" />
@@ -138,7 +154,7 @@ interface PageSectionProps {
   /**
    * The icon displayed above the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   description?: string | undefined;
   /**
@@ -225,7 +241,7 @@ export default defineAppConfig({
         },
         reverse: {
           true: {
-            wrapper: 'lg:order-last'
+            wrapper: 'order-last'
           }
         },
         headline: {
@@ -275,8 +291,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

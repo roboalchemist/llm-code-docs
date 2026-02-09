@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/integrations/aisdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK
 
 <Note>
@@ -162,8 +166,7 @@ import { Client } from "@upstash/workflow";
 const client = new Client({ token: "<QSTASH_TOKEN>" });
 const { workflowRunId } = await client.trigger({
   url: "https://<YOUR_WORKFLOW_ENDPOINT>/<YOUR-WORKFLOW-ROUTE>",
-  body: { "prompt": "How is the weather in San Francisco around this time?" },
-  keepTriggerConfig: true,
+  body: { "prompt": "How is the weather in San Francisco around this time?" }
 });
 ```
 

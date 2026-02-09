@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/broadcasts/update-broadcast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Broadcast
 
 > Update a broadcast to send to your contacts.
@@ -92,7 +96,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -105,7 +109,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->broadcasts->update('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794', [
@@ -113,7 +117,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -126,7 +130,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Broadcasts.update(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -138,21 +142,24 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Resend::Broadcasts.update(params)
   ```
 
-  ```go Go theme={null}
-  import "fmt"
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  params := &resend.UpdateBroadcastRequest{
-    Id: "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-    Html: fmt.Sprintf("Hi %s, you can unsubscribe here: %s", FIRST_NAME, RESEND_UNSUBSCRIBE_URL),
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	params := &resend.UpdateBroadcastRequest{
+  		Id:   "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+  		Html: "Hi {{{FIRST_NAME|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  	}
+
+  	client.Broadcasts.Update(params)
   }
-
-  broadcast, _ := client.Broadcasts.Update(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::UpdateBroadcastOptions, Resend, Result};
 
   #[tokio::main]
@@ -170,7 +177,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   UpdateBroadcastOptions params = UpdateBroadcastOptions.builder()
@@ -181,7 +188,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   UpdateBroadcastResponseSuccess data = resend.broadcasts().update(params);
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -195,7 +202,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X PATCH 'https://api.resend.com/broadcasts/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -206,7 +213,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
   }

@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/web-eval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # RAG evaluation
 
 > Effortless Web-Based RAG Evaluation Using Tavily and LangGraph
@@ -72,8 +76,3 @@ Want to dive deeper into web-based RAG evaluation? Check out these resources:
     <img noZoom src="https://img.shields.io/github/stars/Eyalbenba/tavily-web-eval-generator?style=social" alt="GitHub Repo stars" />
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

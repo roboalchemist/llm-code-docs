@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan-move.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Wan-Move Workflow Example
 
 > Wan-Move is a motion-controllable video generation model via latent trajectory guidance, enabling fine-grained point-level motion control for image-to-video generation.
@@ -93,8 +97,3 @@
 │   └── 📂 vae/
 │          └── wan_2.1_vae.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

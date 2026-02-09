@@ -20,6 +20,10 @@ By default, the records are sorted by the `startedAt` field in ascending order. 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

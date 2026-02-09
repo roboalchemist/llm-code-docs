@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/persona/guardrails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guardrails
 
 > Guardrails provide your persona with strict behavioral guidelines that will be rigorously followed throughout every conversation.

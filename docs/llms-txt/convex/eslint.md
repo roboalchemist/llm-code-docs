@@ -2,7 +2,7 @@
 
 # ESLint rules
 
-ESLint rules for Convex functions enforce best practices. Let us know if there's a rule you would find helpful!
+The Convex ESLint plugin provides linter rules that enforce best practices for Convex functions. Let us know if there's a rule you would find helpful!
 
 ## Setup[​](#setup "Direct link to Setup")
 
@@ -210,6 +210,10 @@ await ctx.db.patch(messageId, { text: "updated" });
 await ctx.db.replace(messageId, { text: "replaced", author: "Alice" });
 await ctx.db.delete(messageId);
 ```
+
+typescript-eslint required
+
+In order for this rule to work, [typescript-eslint](https://typescript-eslint.io) must be set up in your ESLint configuration. If typescript-eslint is installed and the rule doesn’t seem to work, please make sure that [type-aware linting](https://typescript-eslint.io/troubleshooting/typed-linting/) is enabled.
 
 Note that if you’re not using ESLint, you can alternatively use the `@convex-dev/codemod` CLI tool to automatically migrate to the new format:
 

@@ -24,12 +24,12 @@ This is the recommended approach for most developers building ChatGPT apps.
 4. Payment, billing, taxes, refunds, and compliance are handled entirely on your domain.
 5. After purchase, the user can return to ChatGPT with confirmation or unlocked features.
 
-
 ### Instant Checkout in ChatGPT apps (private beta)
 
 
 
-Instant Checkout is limited to select marketplaces today and is not available to all users.
+Instant Checkout is limited to select marketplaces today and is not available
+  to all users.
 
 
 
@@ -42,7 +42,7 @@ The `requestCheckout` function lets your widget hand a checkout session to ChatG
 3. **Widget calls `requestCheckout`**: The widget invokes `requestCheckout(session_data)`. ChatGPT opens Instant Checkout, displays the amount to charge, and displays various payment methods.
 4. **Server finalizes**: Once the user clicks the pay button, the widget calls back to your MCP via the `complete_checkout` tool call. The MCP tool returns the completed order, which will be returned back to widget as a response to `requestCheckout`.
 
-## Checkout session 
+## Checkout session
 
 You are responsible for constructing the checkout session payload that the host will render. The exact values for certain fields such as `id` and `payment_provider` depend on your PSP (payment service provider) and commerce backend. In practice, your MCP tool should return:
 
@@ -58,6 +58,7 @@ The checkout session payload follows the spec defined in the [ACP](https://devel
 The host provides `window.openai.requestCheckout`. Use it to open the Instant Checkout UI when the user initiates a purchase:
 
 Example:
+
 ```tsx
 async function handleCheckout(sessionJson: string) {
   const session = JSON.parse(sessionJson);
@@ -128,11 +129,12 @@ const response = await window.openai.requestCheckout(checkoutRequest);
 ```
 
 Key points:
+
 - `window.openai.requestCheckout(session)` opens the host checkout UI.
 - The promise resolves with the order result or rejects on error/cancel.
 - Render the session JSON so users can review what they’re paying for.
 - Refer to the [ACP](https://developers.openai.com/commerce/specs/checkout#paymentprovider) for possible `provider` values.
-- Consult your PSP to get your PSP specific `merchant_id` value. 
+- Consult your PSP to get your PSP specific `merchant_id` value.
 
 ## MCP server: expose the `complete_checkout` tool
 
@@ -166,14 +168,17 @@ async def complete_checkout(
 Refer to the ACP specs for [buyer](https://developers.openai.com/commerce/specs/checkout#buyer) and [payment_data](https://developers.openai.com/commerce/specs/checkout#paymentdata) objects.
 
 Adapt this to:
+
 - Integrate with your PSP to charge the payment method within `payment_data`.
 - Persist the order in your backend.
 - Return authoritative order/receipt data. The response should follow the spec defined in [ACP](https://developers.openai.com/commerce/specs/checkout#response-2).
 - Include `_meta.openai/outputTemplate` if you want to render a confirmation widget.
 
 Refer to the following PSP specific monetization guides for information on how to collect payments:
+
 - [Stripe](https://docs.stripe.com/agentic-commerce/apps)
 - [Adyen](https://docs.adyen.com/online-payments/agentic-commerce)
+- [PayPal](https://docs.paypal.ai/growth/agentic-commerce/agent-ready)
 
 ## Error Handling
 

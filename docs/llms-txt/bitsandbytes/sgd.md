@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/sgd.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/sgd.md
 
 # SGD
 
@@ -10,9 +10,9 @@ bitsandbytes also supports momentum and Nesterov momentum to accelerate SGD by a
 
 #### bitsandbytes.optim.SGD[[bitsandbytes.optim.SGD]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L8)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L8)
 
-__init__bitsandbytes.optim.SGD.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.SGD.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.
@@ -65,9 +65,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.SGD8bit[[bitsandbytes.optim.SGD8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L67)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L67)
 
-__init__bitsandbytes.optim.SGD8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L68[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.SGD8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L68[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.
@@ -116,9 +116,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.SGD32bit[[bitsandbytes.optim.SGD32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L123)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L123)
 
-__init__bitsandbytes.optim.SGD32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/sgd.py#L124[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.SGD32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/sgd.py#L124[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.

@@ -1,991 +1,327 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/beta/skills.md
 
-# Skills
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills.md
 
-## Create
+# Source: https://platform.claude.com/docs/en/api/python/beta/skills.md
 
-`client.beta.skills.create(SkillCreateParamsparams?, RequestOptionsoptions?): SkillCreateResponse`
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills.md
 
-**post** `/v1/skills`
+# Source: https://platform.claude.com/docs/en/api/java/beta/skills.md
 
-Create Skill
+# Source: https://platform.claude.com/docs/en/api/go/beta/skills.md
 
-### Parameters
+# Source: https://platform.claude.com/docs/en/api/beta/skills.md
 
-- `params: SkillCreateParams`
+# Source: https://platform.claude.com/docs/en/agent-sdk/skills.md
 
-  - `display_title?: string | null`
+# Agent Skills in the SDK
 
-    Body param: Display title for the skill.
+Extend Claude with specialized capabilities using Agent Skills in the Claude Agent SDK
 
-    This is a human-readable label that is not included in the prompt sent to the model.
+---
 
-  - `files?: Array<Uploadable> | null`
+## Overview
 
-    Body param: Files to upload for the skill.
+Agent Skills extend Claude with specialized capabilities that Claude autonomously invokes when relevant. Skills are packaged as `SKILL.md` files containing instructions, descriptions, and optional supporting resources.
 
-    All files must be in the same top-level directory and must include a SKILL.md file at the root of that directory.
+For comprehensive information about Skills, including benefits, architecture, and authoring guidelines, see the [Agent Skills overview](/docs/en/agents-and-tools/agent-skills/overview).
 
-  - `betas?: Array<AnthropicBeta>`
+## How Skills Work with the SDK
 
-    Header param: Optional header to specify the beta version(s) you want to use.
+When using the Claude Agent SDK, Skills are:
 
-    - `(string & {})`
+1. **Defined as filesystem artifacts**: Created as `SKILL.md` files in specific directories (`.claude/skills/`)
+2. **Loaded from filesystem**: Skills are loaded from configured filesystem locations. You must specify `settingSources` (TypeScript) or `setting_sources` (Python) to load Skills from the filesystem
+3. **Automatically discovered**: Once filesystem settings are loaded, Skill metadata is discovered at startup from user and project directories; full content loaded when triggered
+4. **Model-invoked**: Claude autonomously chooses when to use them based on context
+5. **Enabled via allowed_tools**: Add `"Skill"` to your `allowed_tools` to enable Skills
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+Unlike subagents (which can be defined programmatically), Skills must be created as filesystem artifacts. The SDK does not provide a programmatic API for registering Skills.
 
-      - `"message-batches-2024-09-24"`
+<Note>
+**Default behavior**: By default, the SDK does not load any filesystem settings. To use Skills, you must explicitly configure `settingSources: ['user', 'project']` (TypeScript) or `setting_sources=["user", "project"]` (Python) in your options.
+</Note>
 
-      - `"prompt-caching-2024-07-31"`
+## Using Skills with the SDK
 
-      - `"computer-use-2024-10-22"`
+To use Skills with the SDK, you need to:
 
-      - `"computer-use-2025-01-24"`
+1. Include `"Skill"` in your `allowed_tools` configuration
+2. Configure `settingSources`/`setting_sources` to load Skills from the filesystem
 
-      - `"pdfs-2024-09-25"`
+Once configured, Claude automatically discovers Skills from the specified directories and invokes them when relevant to the user's request.
 
-      - `"token-counting-2024-11-01"`
+<CodeGroup>
 
-      - `"token-efficient-tools-2025-02-19"`
+```python Python
+import asyncio
+from claude_agent_sdk import query, ClaudeAgentOptions
 
-      - `"output-128k-2025-02-19"`
+async def main():
+    options = ClaudeAgentOptions(
+        cwd="/path/to/project",  # Project with .claude/skills/
+        setting_sources=["user", "project"],  # Load Skills from filesystem
+        allowed_tools=["Skill", "Read", "Write", "Bash"]  # Enable Skill tool
+    )
 
-      - `"files-api-2025-04-14"`
+    async for message in query(
+        prompt="Help me process this PDF document",
+        options=options
+    ):
+        print(message)
 
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `SkillCreateResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill was created.
-
-  - `display_title: string | null`
-
-    Display title for the skill.
-
-    This is a human-readable label that is not included in the prompt sent to the model.
-
-  - `latest_version: string | null`
-
-    The latest version identifier for the skill.
-
-    This represents the most recent version of the skill that has been created.
-
-  - `source: string`
-
-    Source of the skill.
-
-    This may be one of the following values:
-
-    * `"custom"`: the skill was created by a user
-    * `"anthropic"`: the skill was created by Anthropic
-
-  - `type: string`
-
-    Object type.
-
-    For Skills, this is always `"skill"`.
-
-  - `updated_at: string`
-
-    ISO 8601 timestamp of when the skill was last updated.
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const skill = await client.beta.skills.create();
-
-console.log(skill.id);
+asyncio.run(main())
 ```
 
-## List
-
-`client.beta.skills.list(SkillListParamsparams?, RequestOptionsoptions?): PageCursor<SkillListResponse>`
-
-**get** `/v1/skills`
-
-List Skills
-
-### Parameters
-
-- `params: SkillListParams`
-
-  - `limit?: number`
-
-    Query param: Number of results to return per page.
-
-    Maximum value is 100. Defaults to 20.
-
-  - `page?: string | null`
-
-    Query param: Pagination token for fetching a specific page of results.
-
-    Pass the value from a previous response's `next_page` field to get the next page of results.
-
-  - `source?: string | null`
-
-    Query param: Filter skills by source.
-
-    If provided, only skills from the specified source will be returned:
-
-    * `"custom"`: only return user-created skills
-    * `"anthropic"`: only return Anthropic-created skills
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Header param: Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `SkillListResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill was created.
-
-  - `display_title: string | null`
-
-    Display title for the skill.
-
-    This is a human-readable label that is not included in the prompt sent to the model.
-
-  - `latest_version: string | null`
-
-    The latest version identifier for the skill.
-
-    This represents the most recent version of the skill that has been created.
-
-  - `source: string`
-
-    Source of the skill.
-
-    This may be one of the following values:
-
-    * `"custom"`: the skill was created by a user
-    * `"anthropic"`: the skill was created by Anthropic
-
-  - `type: string`
-
-    Object type.
-
-    For Skills, this is always `"skill"`.
-
-  - `updated_at: string`
-
-    ISO 8601 timestamp of when the skill was last updated.
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-// Automatically fetches more pages as needed.
-for await (const skillListResponse of client.beta.skills.list()) {
-  console.log(skillListResponse.id);
+```typescript TypeScript
+import { query } from "@anthropic-ai/claude-agent-sdk";
+
+for await (const message of query({
+  prompt: "Help me process this PDF document",
+  options: {
+    cwd: "/path/to/project",  // Project with .claude/skills/
+    settingSources: ["user", "project"],  // Load Skills from filesystem
+    allowedTools: ["Skill", "Read", "Write", "Bash"]  // Enable Skill tool
+  }
+})) {
+  console.log(message);
 }
 ```
 
-## Retrieve
+</CodeGroup>
 
-`client.beta.skills.retrieve(stringskillID, SkillRetrieveParamsparams?, RequestOptionsoptions?): SkillRetrieveResponse`
+## Skill Locations
 
-**get** `/v1/skills/{skill_id}`
+Skills are loaded from filesystem directories based on your `settingSources`/`setting_sources` configuration:
 
-Get Skill
+- **Project Skills** (`.claude/skills/`): Shared with your team via git - loaded when `setting_sources` includes `"project"`
+- **User Skills** (`~/.claude/skills/`): Personal Skills across all projects - loaded when `setting_sources` includes `"user"`
+- **Plugin Skills**: Bundled with installed Claude Code plugins
 
-### Parameters
+## Creating Skills
 
-- `skillID: string`
+Skills are defined as directories containing a `SKILL.md` file with YAML frontmatter and Markdown content. The `description` field determines when Claude invokes your Skill.
 
-  Unique identifier for the skill.
-
-  The format and length of IDs may change over time.
-
-- `params: SkillRetrieveParams`
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `SkillRetrieveResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill was created.
-
-  - `display_title: string | null`
-
-    Display title for the skill.
-
-    This is a human-readable label that is not included in the prompt sent to the model.
-
-  - `latest_version: string | null`
-
-    The latest version identifier for the skill.
-
-    This represents the most recent version of the skill that has been created.
-
-  - `source: string`
-
-    Source of the skill.
-
-    This may be one of the following values:
-
-    * `"custom"`: the skill was created by a user
-    * `"anthropic"`: the skill was created by Anthropic
-
-  - `type: string`
-
-    Object type.
-
-    For Skills, this is always `"skill"`.
-
-  - `updated_at: string`
-
-    ISO 8601 timestamp of when the skill was last updated.
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const skill = await client.beta.skills.retrieve('skill_id');
-
-console.log(skill.id);
+**Example directory structure**:
+```bash
+.claude/skills/processing-pdfs/
+└── SKILL.md
 ```
 
-## Delete
+For complete guidance on creating Skills, including SKILL.md structure, multi-file Skills, and examples, see:
+- [Agent Skills in Claude Code](https://code.claude.com/docs/en/skills): Complete guide with examples
+- [Agent Skills Best Practices](/docs/en/agents-and-tools/agent-skills/best-practices): Authoring guidelines and naming conventions
 
-`client.beta.skills.delete(stringskillID, SkillDeleteParamsparams?, RequestOptionsoptions?): SkillDeleteResponse`
+## Tool Restrictions
 
-**delete** `/v1/skills/{skill_id}`
+<Note>
+The `allowed-tools` frontmatter field in SKILL.md is only supported when using Claude Code CLI directly. **It does not apply when using Skills through the SDK**.
 
-Delete Skill
+When using the SDK, control tool access through the main `allowedTools` option in your query configuration.
+</Note>
 
-### Parameters
+To restrict tools for Skills in SDK applications, use the `allowedTools` option:
 
-- `skillID: string`
+<Note>
+Import statements from the first example are assumed in the following code snippets.
+</Note>
 
-  Unique identifier for the skill.
+<CodeGroup>
 
-  The format and length of IDs may change over time.
+```python Python
+options = ClaudeAgentOptions(
+    setting_sources=["user", "project"],  # Load Skills from filesystem
+    allowed_tools=["Skill", "Read", "Grep", "Glob"]  # Restricted toolset
+)
 
-- `params: SkillDeleteParams`
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `SkillDeleteResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `type: string`
-
-    Deleted object type.
-
-    For Skills, this is always `"skill_deleted"`.
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const skill = await client.beta.skills.delete('skill_id');
-
-console.log(skill.id);
+async for message in query(
+    prompt="Analyze the codebase structure",
+    options=options
+):
+    print(message)
 ```
 
-# Versions
-
-## Create
-
-`client.beta.skills.versions.create(stringskillID, VersionCreateParamsparams?, RequestOptionsoptions?): VersionCreateResponse`
-
-**post** `/v1/skills/{skill_id}/versions`
-
-Create Skill Version
-
-### Parameters
-
-- `skillID: string`
-
-  Unique identifier for the skill.
-
-  The format and length of IDs may change over time.
-
-- `params: VersionCreateParams`
-
-  - `files?: Array<Uploadable> | null`
-
-    Body param: Files to upload for the skill.
-
-    All files must be in the same top-level directory and must include a SKILL.md file at the root of that directory.
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Header param: Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `VersionCreateResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill version.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill version was created.
-
-  - `description: string`
-
-    Description of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `directory: string`
-
-    Directory name of the skill version.
-
-    This is the top-level directory name that was extracted from the uploaded files.
-
-  - `name: string`
-
-    Human-readable name of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `skill_id: string`
-
-    Identifier for the skill that this version belongs to.
-
-  - `type: string`
-
-    Object type.
-
-    For Skill Versions, this is always `"skill_version"`.
-
-  - `version: string`
-
-    Version identifier for the skill.
-
-    Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const version = await client.beta.skills.versions.create('skill_id');
-
-console.log(version.id);
-```
-
-## List
-
-`client.beta.skills.versions.list(stringskillID, VersionListParamsparams?, RequestOptionsoptions?): PageCursor<VersionListResponse>`
-
-**get** `/v1/skills/{skill_id}/versions`
-
-List Skill Versions
-
-### Parameters
-
-- `skillID: string`
-
-  Unique identifier for the skill.
-
-  The format and length of IDs may change over time.
-
-- `params: VersionListParams`
-
-  - `limit?: number | null`
-
-    Query param: Number of items to return per page.
-
-    Defaults to `20`. Ranges from `1` to `1000`.
-
-  - `page?: string | null`
-
-    Query param: Optionally set to the `next_page` token from the previous response.
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Header param: Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `VersionListResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill version.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill version was created.
-
-  - `description: string`
-
-    Description of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `directory: string`
-
-    Directory name of the skill version.
-
-    This is the top-level directory name that was extracted from the uploaded files.
-
-  - `name: string`
-
-    Human-readable name of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `skill_id: string`
-
-    Identifier for the skill that this version belongs to.
-
-  - `type: string`
-
-    Object type.
-
-    For Skill Versions, this is always `"skill_version"`.
-
-  - `version: string`
-
-    Version identifier for the skill.
-
-    Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-// Automatically fetches more pages as needed.
-for await (const versionListResponse of client.beta.skills.versions.list('skill_id')) {
-  console.log(versionListResponse.id);
+```typescript TypeScript
+// Skills can only use Read, Grep, and Glob tools
+for await (const message of query({
+  prompt: "Analyze the codebase structure",
+  options: {
+    settingSources: ["user", "project"],  // Load Skills from filesystem
+    allowedTools: ["Skill", "Read", "Grep", "Glob"]  // Restricted toolset
+  }
+})) {
+  console.log(message);
 }
 ```
 
-## Retrieve
+</CodeGroup>
 
-`client.beta.skills.versions.retrieve(stringversion, VersionRetrieveParamsparams, RequestOptionsoptions?): VersionRetrieveResponse`
+## Discovering Available Skills
 
-**get** `/v1/skills/{skill_id}/versions/{version}`
+To see which Skills are available in your SDK application, simply ask Claude:
 
-Get Skill Version
+<CodeGroup>
 
-### Parameters
+```python Python
+options = ClaudeAgentOptions(
+    setting_sources=["user", "project"],  # Load Skills from filesystem
+    allowed_tools=["Skill"]
+)
 
-- `version: string`
-
-  Version identifier for the skill.
-
-  Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-- `params: VersionRetrieveParams`
-
-  - `skill_id: string`
-
-    Path param: Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Header param: Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `VersionRetrieveResponse`
-
-  - `id: string`
-
-    Unique identifier for the skill version.
-
-    The format and length of IDs may change over time.
-
-  - `created_at: string`
-
-    ISO 8601 timestamp of when the skill version was created.
-
-  - `description: string`
-
-    Description of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `directory: string`
-
-    Directory name of the skill version.
-
-    This is the top-level directory name that was extracted from the uploaded files.
-
-  - `name: string`
-
-    Human-readable name of the skill version.
-
-    This is extracted from the SKILL.md file in the skill upload.
-
-  - `skill_id: string`
-
-    Identifier for the skill that this version belongs to.
-
-  - `type: string`
-
-    Object type.
-
-    For Skill Versions, this is always `"skill_version"`.
-
-  - `version: string`
-
-    Version identifier for the skill.
-
-    Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const version = await client.beta.skills.versions.retrieve('version', { skill_id: 'skill_id' });
-
-console.log(version.id);
+async for message in query(
+    prompt="What Skills are available?",
+    options=options
+):
+    print(message)
 ```
 
-## Delete
-
-`client.beta.skills.versions.delete(stringversion, VersionDeleteParamsparams, RequestOptionsoptions?): VersionDeleteResponse`
-
-**delete** `/v1/skills/{skill_id}/versions/{version}`
-
-Delete Skill Version
-
-### Parameters
-
-- `version: string`
-
-  Version identifier for the skill.
-
-  Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-- `params: VersionDeleteParams`
-
-  - `skill_id: string`
-
-    Path param: Unique identifier for the skill.
-
-    The format and length of IDs may change over time.
-
-  - `betas?: Array<AnthropicBeta>`
-
-    Header param: Optional header to specify the beta version(s) you want to use.
-
-    - `(string & {})`
-
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
-
-      - `"message-batches-2024-09-24"`
-
-      - `"prompt-caching-2024-07-31"`
-
-      - `"computer-use-2024-10-22"`
-
-      - `"computer-use-2025-01-24"`
-
-      - `"pdfs-2024-09-25"`
-
-      - `"token-counting-2024-11-01"`
-
-      - `"token-efficient-tools-2025-02-19"`
-
-      - `"output-128k-2025-02-19"`
-
-      - `"files-api-2025-04-14"`
-
-      - `"mcp-client-2025-04-04"`
-
-      - `"mcp-client-2025-11-20"`
-
-      - `"dev-full-thinking-2025-05-14"`
-
-      - `"interleaved-thinking-2025-05-14"`
-
-      - `"code-execution-2025-05-22"`
-
-      - `"extended-cache-ttl-2025-04-11"`
-
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `VersionDeleteResponse`
-
-  - `id: string`
-
-    Version identifier for the skill.
-
-    Each version is identified by a Unix epoch timestamp (e.g., "1759178010641129").
-
-  - `type: string`
-
-    Deleted object type.
-
-    For Skill Versions, this is always `"skill_version_deleted"`.
-
-### Example
-
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const version = await client.beta.skills.versions.delete('version', { skill_id: 'skill_id' });
-
-console.log(version.id);
+```typescript TypeScript
+for await (const message of query({
+  prompt: "What Skills are available?",
+  options: {
+    settingSources: ["user", "project"],  // Load Skills from filesystem
+    allowedTools: ["Skill"]
+  }
+})) {
+  console.log(message);
+}
 ```
+
+</CodeGroup>
+
+Claude will list the available Skills based on your current working directory and installed plugins.
+
+## Testing Skills
+
+Test Skills by asking questions that match their descriptions:
+
+<CodeGroup>
+
+```python Python
+options = ClaudeAgentOptions(
+    cwd="/path/to/project",
+    setting_sources=["user", "project"],  # Load Skills from filesystem
+    allowed_tools=["Skill", "Read", "Bash"]
+)
+
+async for message in query(
+    prompt="Extract text from invoice.pdf",
+    options=options
+):
+    print(message)
+```
+
+```typescript TypeScript
+for await (const message of query({
+  prompt: "Extract text from invoice.pdf",
+  options: {
+    cwd: "/path/to/project",
+    settingSources: ["user", "project"],  // Load Skills from filesystem
+    allowedTools: ["Skill", "Read", "Bash"]
+  }
+})) {
+  console.log(message);
+}
+```
+
+</CodeGroup>
+
+Claude automatically invokes the relevant Skill if the description matches your request.
+
+## Troubleshooting
+
+### Skills Not Found
+
+**Check settingSources configuration**: Skills are only loaded when you explicitly configure `settingSources`/`setting_sources`. This is the most common issue:
+
+<CodeGroup>
+
+```python Python
+# Wrong - Skills won't be loaded
+options = ClaudeAgentOptions(
+    allowed_tools=["Skill"]
+)
+
+# Correct - Skills will be loaded
+options = ClaudeAgentOptions(
+    setting_sources=["user", "project"],  # Required to load Skills
+    allowed_tools=["Skill"]
+)
+```
+
+```typescript TypeScript
+// Wrong - Skills won't be loaded
+const options = {
+  allowedTools: ["Skill"]
+};
+
+// Correct - Skills will be loaded
+const options = {
+  settingSources: ["user", "project"],  // Required to load Skills
+  allowedTools: ["Skill"]
+};
+```
+
+</CodeGroup>
+
+For more details on `settingSources`/`setting_sources`, see the [TypeScript SDK reference](/docs/en/agent-sdk/typescript#settingsource) or [Python SDK reference](/docs/en/agent-sdk/python#settingsource).
+
+**Check working directory**: The SDK loads Skills relative to the `cwd` option. Ensure it points to a directory containing `.claude/skills/`:
+
+<CodeGroup>
+
+```python Python
+# Ensure your cwd points to the directory containing .claude/skills/
+options = ClaudeAgentOptions(
+    cwd="/path/to/project",  # Must contain .claude/skills/
+    setting_sources=["user", "project"],  # Required to load Skills
+    allowed_tools=["Skill"]
+)
+```
+
+```typescript TypeScript
+// Ensure your cwd points to the directory containing .claude/skills/
+const options = {
+  cwd: "/path/to/project",  // Must contain .claude/skills/
+  settingSources: ["user", "project"],  // Required to load Skills
+  allowedTools: ["Skill"]
+};
+```
+
+</CodeGroup>
+
+See the "Using Skills with the SDK" section above for the complete pattern.
+
+**Verify filesystem location**:
+```bash
+# Check project Skills
+ls .claude/skills/*/SKILL.md
+
+# Check personal Skills
+ls ~/.claude/skills/*/SKILL.md
+```
+
+### Skill Not Being Used
+
+**Check the Skill tool is enabled**: Confirm `"Skill"` is in your `allowedTools`.
+
+**Check the description**: Ensure it's specific and includes relevant keywords. See [Agent Skills Best Practices](/docs/en/agents-and-tools/agent-skills/best-practices#writing-effective-descriptions) for guidance on writing effective descriptions.
+
+### Additional Troubleshooting
+
+For general Skills troubleshooting (YAML syntax, debugging, etc.), see the [Claude Code Skills troubleshooting section](https://code.claude.com/docs/en/skills#troubleshooting).
+
+## Related Documentation
+
+### Skills Guides
+- [Agent Skills in Claude Code](https://code.claude.com/docs/en/skills): Complete Skills guide with creation, examples, and troubleshooting
+- [Agent Skills Overview](/docs/en/agents-and-tools/agent-skills/overview): Conceptual overview, benefits, and architecture
+- [Agent Skills Best Practices](/docs/en/agents-and-tools/agent-skills/best-practices): Authoring guidelines for effective Skills
+- [Agent Skills Cookbook](https://platform.claude.com/cookbook/skills-notebooks-01-skills-introduction): Example Skills and templates
+
+### SDK Resources
+- [Subagents in the SDK](/docs/en/agent-sdk/subagents): Similar filesystem-based agents with programmatic options
+- [Slash Commands in the SDK](/docs/en/agent-sdk/slash-commands): User-invoked commands
+- [SDK Overview](/docs/en/agent-sdk/overview): General SDK concepts
+- [TypeScript SDK Reference](/docs/en/agent-sdk/typescript): Complete API documentation
+- [Python SDK Reference](/docs/en/agent-sdk/python): Complete API documentation

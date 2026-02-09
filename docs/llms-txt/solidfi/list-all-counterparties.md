@@ -1,277 +1,276 @@
 # Source: https://docs.solidfi.com/v2/api-reference/counterparties/list-all-counterparties.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all Counterparties
 
 > List all Counterparties
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/payments/counterparty
+openapi: 3.0.3
+info:
+  title: Solid v2
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.sandbox.solidfi.com
+  - url: https://api.prod.solidfi.com
+security: []
+tags:
+  - name: Master Accounts
+  - name: Sub Account Holders
+  - name: Sub Accounts
+  - name: Counterparties
+  - name: Card Holders
+  - name: Cards
+  - name: Transactions
+  - name: Attachments
+  - name: Webhooks
+  - name: Simulation
+  - name: ACH
+  - name: Card
 paths:
-  path: /v2/payments/counterparty
-  method: get
-  servers:
-    - url: https://api.sandbox.solidfi.com
-    - url: https://api.prod.solidfi.com
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        sub_account_id:
+  /v2/payments/counterparty:
+    get:
+      tags:
+        - Counterparties
+      summary: List all Counterparties
+      description: List all Counterparties
+      operationId: listAllCounterparties
+      parameters:
+        - name: sub_account_id
+          in: query
           schema:
-            - type: string
-              description: unique id of the sub account
-              example: sub_bda1e562657c41e553104b10aad3fe70
-        external_reference_id:
+            type: string
+            example: sub_bda1e562657c41e553104b10aad3fe70
+            description: unique id of the sub account
+        - name: external_reference_id
+          in: query
           schema:
-            - type: string
-              description: unique id to cross-reference records with external systems
-              example: XVH-27LGDFX
-        status:
+            type: string
+            example: XVH-27LGDFX
+            description: unique id to cross-reference records with external systems
+        - name: status
+          in: query
           schema:
-            - type: enum<string>
-              enum:
-                - pending_activation
-                - activated
-                - suspended
-                - deactivated
-              description: status of counterparty
-              example: activated
-        limit:
+            type: string
+            example: activated
+            description: status of counterparty
+            enum:
+              - pending_activation
+              - activated
+              - suspended
+              - deactivated
+        - name: limit
+          in: query
           schema:
-            - type: number
-              description: number of records to return
-              example: 10
-        starting_after:
+            type: number
+            example: 10
+            description: number of records to return
+        - name: starting_after
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `starting_after` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, ending with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include
-                `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                in order to fetch the next page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        ending_before:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `starting_after` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, ending with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include
+              `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
+              in order to fetch the next page of the list.
+        - name: ending_before
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `ending_before` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, starting with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include `ending_before=
-                Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
-                fetch the previous page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-      header:
-        api-key:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `ending_before` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, starting with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include `ending_before=
+              Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
+              fetch the previous page of the list.
+        - name: api-key
+          in: header
           schema:
-            - type: string
-              required: true
-              description: >-
-                API key is required to call Solid APIs. You can view and manage
-                your API keys in the Solid dashboard.
-              example: '{{api_key}}'
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              total:
-                allOf:
-                  - type: number
-                    example: 1
-                    description: total number of records
-              data:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/counterparty'
-              has_more:
-                allOf:
-                  - type: string
-                    example: 'true'
-                    description: if there are more records to iterate or not
-                    enum:
-                      - 'true'
-                      - 'false'
-              starting_after:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `starting_after` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, ending with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include
-                      `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                      in order to fetch the next page of the list.
-              ending_before:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `ending_before` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, starting with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include `ending_before=
-                      Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order
-                      to fetch the previous page of the list.
-            refIdentifier: '#/components/schemas/list_counterparty'
-        examples:
-          list_counterparty_example:
-            value:
-              total: 1
-              data:
-                - value:
-                    id: ctp_8e5541c8a9e50c3af3b0daacf9175130
-                    client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
-                    master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
-                    master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
-                    sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-                    sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
-                    label: Development Vendor
-                    type: person
-                    person:
-                      first_name: John
-                      last_name: Doe
-                      id_type: ssn
-                      id_number: '223902234'
-                      date_of_birth: '1974-01-25'
-                      phone: '+19418405843'
-                      email: john.doe@gmail.com
-                      address:
-                        line1: 123 Main St
-                        line2: ''
-                        city: New York
-                        state: NY
-                        country: US
-                        postal_code: '10001'
-                    intra_account:
-                      sub_account_number: '95483674098723'
-                      sub_account_id: sub_cda1e562657c41e553104b10aad3fe70
-                    ach:
-                      account_number: '98324502'
-                      routing_number: '121042882'
-                      account_type: business_checking
-                      bank_name: Wells Fargo
-                      verification_status: pass
-                    domestic_wire:
-                      account_number: '98324502'
-                      routing_number: '121042882'
-                      account_type: business_checking
-                      bank_name: Wells Fargo
-                    international_wire:
-                      account_number: '920020006167511'
-                      beneficiary_bank:
-                        identifier_code: ICICINBBNRI
-                        name: ICICI Bank
-                        address:
-                          line1: 256 Main St
-                          line2: ''
-                          city: Bengaluru
-                          state: KA
-                          country: IN
-                          postal_code: '900009'
-                      correspondent_bank:
-                        identifier_code: SCBLUS33XXX
-                        name: STANDARD CHARTERED BANK
-                        address:
-                          line1: 1095 12th Ave
-                          line2: ''
-                          city: New York
-                          state: NY
-                          country: US
-                          postal_code: '10001'
-                    rtp:
-                      account_number: '98324502'
-                      routing_number: '121042882'
-                      account_type: business_checking
-                      bank_name: Wells Fargo
-                      verification_status: pass
-                    fednow:
-                      account_number: '98324502'
-                      routing_number: '121042882'
-                      account_type: business_checking
-                      bank_name: Wells Fargo
-                      verification_status: pass
-                    check:
-                      address:
-                        line1: 123 Main St
-                        line2: ''
-                        city: New York
-                        state: NY
-                        country: US
-                        postal_code: '10001'
-                    debit_card:
-                      card_number: tok_live_6GVyHuQR7aAjCZivYzLbuP_9990
-                      last4: '9990'
-                      expiry_month: '10'
-                      expiry_year: '2024'
-                      cvv: tok_live_6GVyHuQR7aAjCZivYzLbuP_9990
-                      address:
-                        line1: 123 Main St
-                        line2: ''
-                        city: New York
-                        state: NY
-                        country: US
-                        postal_code: '10001'
-                      pull_enabled: true
-                      push_enabled: true
-                    purpose: Offshore dev center
-                    external_reference_id: TW-9L1L2-UVV
-                    ofac:
-                      status: pass
-                      last_updated_at: '2024-04-01T21:00:00Z'
-                    attachments:
-                      - label: Dev Contract
-                        id: att_a8d2b191fa0e960d8e49a4bfd320e07b
-                        created_at: '2024-04-01T21:00:00Z'
-                    metadata:
-                      vendor_id: VID-0987ACR
-                    status: activated
-                    timestamps:
-                      created_at: '2024-04-01T21:00:00Z'
-                      updated_at: '2024-04-01T21:00:00Z'
-              has_more: 'true'
-              starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-              ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        description: List all Counterparties
-    '401':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          list_counterparty_example:
-            value:
-              request_id: req_01900e34c96d7abfa970a9f454ab2d5d
-              client_id: ''
-              method: GET
-              status: 401
-              error:
-                code: ERROR_CODE_UNAUTHORIZED
-                message: unauthorized
-                field_name: ''
-              created_at: '2024-06-12T20:47:38Z'
-        description: Unauthorized Error
-  deprecated: false
-  type: path
+            type: string
+            example: '{{api_key}}'
+            description: >-
+              API key is required to call Solid APIs. You can view and manage
+              your API keys in the Solid dashboard.
+          required: true
+      responses:
+        '200':
+          description: List all Counterparties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list_counterparty'
+                type: object
+              examples:
+                list_counterparty_example:
+                  $ref: '#/components/examples/list_counterparty_example'
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              examples:
+                list_counterparty_example:
+                  $ref: '#/components/examples/unauth_error'
+      security:
+        - {}
 components:
   schemas:
+    list_counterparty:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 1
+          description: total number of records
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/counterparty'
+        has_more:
+          type: string
+          example: 'true'
+          description: if there are more records to iterate or not
+          enum:
+            - 'true'
+            - 'false'
+        starting_after:
+          type: string
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `starting_after` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, ending with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include
+            `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in
+            order to fetch the next page of the list.
+        ending_before:
+          type: string
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `ending_before` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, starting with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include `ending_before=
+            Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to fetch
+            the previous page of the list.
+    counterparty:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ctp_8e5541c8a9e50c3af3b0daacf9175130
+          description: unique id of the counterparty
+        client_id:
+          type: string
+          example: cli_64c6c87ee9d609f36a6f390dc378a4ce
+          description: unique id of the client to which the counterparty belongs
+        master_account_holder_id:
+          type: string
+          example: mah_201e02c581a098a740456c5c19fcfcd6
+          description: unique id of the master account holder
+        master_account_id:
+          type: string
+          example: mas_743fa071316bc6beaf5dddfd05f49c30
+          description: unique id of the master account
+        sub_account_holder_id:
+          type: string
+          example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+          description: unique id of the sub account holder
+        sub_account_id:
+          type: string
+          example: sub_bda1e562657c41e553104b10aad3fe70
+          description: >-
+            unique id of the sub account under which the counterparty was
+            created
+        label:
+          type: string
+          example: Development Vendor
+          description: label of the counterparty
+        type:
+          type: string
+          example: person
+          description: type of counterparty
+          enum:
+            - person
+            - business
+        person:
+          $ref: '#/components/schemas/person'
+          type: object
+        business:
+          $ref: '#/components/schemas/business'
+          type: object
+        intra_account:
+          $ref: '#/components/schemas/counterparty_intra_account'
+          type: object
+        ach:
+          $ref: '#/components/schemas/counterparty_ach'
+          type: object
+        domestic_wire:
+          $ref: '#/components/schemas/counterparty_domestic_wire'
+          type: object
+        international_wire:
+          $ref: '#/components/schemas/counterparty_international_wire'
+          type: object
+        rtp:
+          $ref: '#/components/schemas/counterparty_rtp'
+          type: object
+        fednow:
+          $ref: '#/components/schemas/counterparty_fednow'
+          type: object
+        check:
+          $ref: '#/components/schemas/counterparty_check'
+          type: object
+        debit_card:
+          $ref: '#/components/schemas/counterparty_debit_card'
+          type: object
+        purpose:
+          type: string
+          example: Offshore dev center
+          description: purpose of counterparty
+        external_reference_id:
+          type: string
+          example: TW-9L1L2-UVV
+          description: unique id to cross-reference records with external systems
+        ofac:
+          $ref: '#/components/schemas/counterparty_ofac'
+          type: object
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/attachment_object'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+          type: object
+        status:
+          type: string
+          example: activated
+          description: status of counterparty
+          enum:
+            - pending_activation
+            - activated
+            - suspended
+            - deactivated
+            - locked
+        timestamps:
+          $ref: '#/components/schemas/counterparty_timestamp'
+          type: object
     person:
       type: object
       properties:
@@ -376,29 +375,29 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 dob:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 ssn:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 phone:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 email:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
         idv:
           type: object
           properties:
@@ -552,251 +551,21 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
         members:
           type: array
           items:
             $ref: '#/components/schemas/business_member'
-    business_member:
-      type: object
-      properties:
-        first_name:
-          type: string
-          example: Jane
-          description: first name of the person
-        middle_name:
-          type: string
-          example: Jack
-          description: middle name of the person
-        last_name:
-          type: string
-          example: Doe
-          description: last name of the person
-        id_type:
-          type: string
-          example: ssn
-          description: type of identity used
-          enum:
-            - ssn
-            - passport
-            - other
-        id_number:
-          type: string
-          example: '945678934'
-          description: |-
-            - if id_type is ssn, id_number must be full SSN 
-             - if id_type is passport, id_number must be passport number 
-             - if id_type is other, id_number must be unique number of the id 
-             
-             id_number must be unique, as in, you cannot use the same id_number for two different persons
-        date_of_birth:
-          type: string
-          example: '1974-01-01'
-          description: date of birth of the person (YYYY-MM-DD)
-        phone:
-          type: string
-          example: '+19418405843'
-          description: phone number of the person (E.164, max 16 chars, starts with +)
-        email:
-          type: string
-          example: jane.doe@gmail.com
-          description: email of the person
-        address:
-          type: object
-          properties:
-            line1:
-              type: string
-              example: 123 Main St
-              description: line 1 of the address
-            line2:
-              type: string
-              example: ''
-              description: line 2 of the address (optional)
-            city:
-              type: string
-              example: New York
-              description: city of the address
-            state:
-              type: string
-              example: NY
-              description: '2-Letter US state abbreviation (ex: CA)'
-            country:
-              type: string
-              example: US
-              description: '2-letter abbreviated country code (ex: US)'
-            postal_code:
-              type: string
-              example: '10001'
-              description: postal code
-        ownership:
-          type: number
-          example: 50.59
-          description: ownership percentage in the business
-        title:
-          type: string
-          example: CEO
-          description: title of the member in the business
-        control_person:
-          type: string
-          example: 'true'
-          description: true if this member is the control person of the business
-          enum:
-            - 'true'
-            - 'false'
-        kyc:
-          type: object
-          properties:
-            id:
-              type: string
-              example: kyc_7948d9a96706dd05360a340002de725f
-              description: unique id of the KYC
-            status:
-              type: string
-              example: pass
-              description: status of the KYC
-              enum:
-                - pass
-                - fail
-                - review
-                - not_started
-            method:
-              type: string
-              example: solid
-              description: >-
-                sub account holder verification method. It could be an external
-                vendor(Ex: alloy) or Solid
-            url:
-              type: string
-              example: >-
-                https://dashboard.solidfi.com/id=kyc_7948d9a96706dd05360a340002de725f
-              description: >-
-                url to the person or business verification result. It could be a
-                link to the external vendor or Solid
-            details:
-              type: object
-              properties:
-                name:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                address:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                dob:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                ssn:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                phone:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                email:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                watchlist:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-                fraud:
-                  type: object
-                  $ref: '#/components/schemas/kyc_kyb'
-    counterparty_ofac:
-      type: object
-      properties:
-        status:
-          type: string
-          example: pass
-          description: ofac status of the counterparty
-          enum:
-            - pass
-            - fail
-        last_updated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: >-
-            last date and time at which the counterparty's ofac status was
-            checked
-    kyc_kyb:
-      type: object
-      properties:
-        status:
-          type: string
-          example: pass
-          enum:
-            - pass
-            - fail
-            - review
-            - in_review
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_kyb_reasons'
-    kyc_kyb_reasons:
-      type: object
-      properties:
-        code:
-          type: string
-          example: N001
-          description: reason code
-        description:
-          type: string
-          example: First name didn't match
-          description: description of reason code
-    attachment_object:
-      type: object
-      properties:
-        id:
-          type: string
-          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
-          description: unique id of the attachment created
-        label:
-          type: string
-          example: formation
-          description: label of the attachment
-        timestamps:
-          type: object
-          properties:
-            created_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was created
-            deleted_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was deleted
-    metadata:
-      type: object
-      description: >-
-        Metadata takes free-form key-value pairs. You may send metadata when you
-        create an object (POST) and when updating the object (PATCH).  If you
-        would like to remove metadata that is already on an object, you can
-        unset it by passing in the key-value pair with an empty string, like
-        this: 
-         {"key": ""}
-    counterparty_timestamp:
-      type: object
-      properties:
-        created_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the counterparty was created
-        updated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the counterparty was updated
-        deactivated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the counterparty was deactivated
     counterparty_intra_account:
       type: object
       properties:
@@ -872,87 +641,11 @@ components:
           example: '920020006167511'
           description: bank account number of the counterparty
         beneficiary_bank:
-          type: object
           $ref: '#/components/schemas/counterparty_beneficiary_bank'
+          type: object
         correspondent_bank:
-          type: object
           $ref: '#/components/schemas/counterparty_correspondent_bank'
-    counterparty_beneficiary_bank:
-      type: object
-      properties:
-        identifier_code:
-          type: string
-          example: ICICINBBNRI
-          description: SWIFT/BIC code of counterparty's bank
-        name:
-          type: string
-          example: ICICI Bank
-          description: name of counterparty's bank
-        address:
           type: object
-          properties:
-            line1:
-              type: string
-              example: 256 Main St
-              description: line 1 of the address
-            line2:
-              type: string
-              example: Suite 201
-              description: line 2 of the address
-            city:
-              type: string
-              example: Bengaluru
-              description: city of the address
-            state:
-              type: string
-              example: KA
-              description: '2-Letter state abbreviation (ex: CA)'
-            country:
-              type: string
-              example: IN
-              description: '2-letter abbreviated country code (ex: US)'
-            postal_code:
-              type: string
-              example: '900009'
-              description: postal code
-    counterparty_correspondent_bank:
-      type: object
-      properties:
-        identifier_code:
-          type: string
-          example: SCBLUS33XXX
-          description: SWIFT/BIC code of counterparty's correspondent bank
-        name:
-          type: string
-          example: STANDARD CHARTERED BANK
-          description: name of counterparty's correspondent bank
-        address:
-          type: object
-          properties:
-            line1:
-              type: string
-              example: 1095 12th Ave
-              description: line 1 of the address
-            line2:
-              type: string
-              example: Suite 201
-              description: line 2 of the address
-            city:
-              type: string
-              example: New York
-              description: city of the address
-            state:
-              type: string
-              example: NY
-              description: '2-Letter US state abbreviation (ex: CA)'
-            country:
-              type: string
-              example: US
-              description: '2-letter abbreviated country code (ex: US)'
-            postal_code:
-              type: string
-              example: '10001'
-              description: postal code
     counterparty_rtp:
       type: object
       properties:
@@ -1111,106 +804,440 @@ components:
           enum:
             - 'true'
             - 'false'
-    counterparty:
+    counterparty_ofac:
+      type: object
+      properties:
+        status:
+          type: string
+          example: pass
+          description: ofac status of the counterparty
+          enum:
+            - pass
+            - fail
+        last_updated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: >-
+            last date and time at which the counterparty's ofac status was
+            checked
+    attachment_object:
       type: object
       properties:
         id:
           type: string
-          example: ctp_8e5541c8a9e50c3af3b0daacf9175130
-          description: unique id of the counterparty
-        client_id:
-          type: string
-          example: cli_64c6c87ee9d609f36a6f390dc378a4ce
-          description: unique id of the client to which the counterparty belongs
-        master_account_holder_id:
-          type: string
-          example: mah_201e02c581a098a740456c5c19fcfcd6
-          description: unique id of the master account holder
-        master_account_id:
-          type: string
-          example: mas_743fa071316bc6beaf5dddfd05f49c30
-          description: unique id of the master account
-        sub_account_holder_id:
-          type: string
-          example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-          description: unique id of the sub account holder
-        sub_account_id:
-          type: string
-          example: sub_bda1e562657c41e553104b10aad3fe70
-          description: >-
-            unique id of the sub account under which the counterparty was
-            created
+          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
+          description: unique id of the attachment created
         label:
           type: string
-          example: Development Vendor
-          description: label of the counterparty
-        type:
-          type: string
-          example: person
-          description: type of counterparty
-          enum:
-            - person
-            - business
-        person:
-          type: object
-          $ref: '#/components/schemas/person'
-        business:
-          type: object
-          $ref: '#/components/schemas/business'
-        intra_account:
-          type: object
-          $ref: '#/components/schemas/counterparty_intra_account'
-        ach:
-          type: object
-          $ref: '#/components/schemas/counterparty_ach'
-        domestic_wire:
-          type: object
-          $ref: '#/components/schemas/counterparty_domestic_wire'
-        international_wire:
-          type: object
-          $ref: '#/components/schemas/counterparty_international_wire'
-        rtp:
-          type: object
-          $ref: '#/components/schemas/counterparty_rtp'
-        fednow:
-          type: object
-          $ref: '#/components/schemas/counterparty_fednow'
-        check:
-          type: object
-          $ref: '#/components/schemas/counterparty_check'
-        debit_card:
-          type: object
-          $ref: '#/components/schemas/counterparty_debit_card'
-        purpose:
-          type: string
-          example: Offshore dev center
-          description: purpose of counterparty
-        external_reference_id:
-          type: string
-          example: TW-9L1L2-UVV
-          description: unique id to cross-reference records with external systems
-        ofac:
-          type: object
-          $ref: '#/components/schemas/counterparty_ofac'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/attachment_object'
-        metadata:
-          type: object
-          $ref: '#/components/schemas/metadata'
-        status:
-          type: string
-          example: activated
-          description: status of counterparty
-          enum:
-            - pending_activation
-            - activated
-            - suspended
-            - deactivated
-            - locked
+          example: formation
+          description: label of the attachment
         timestamps:
           type: object
-          $ref: '#/components/schemas/counterparty_timestamp'
+          properties:
+            created_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was created
+            deleted_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was deleted
+    metadata:
+      type: object
+      description: >-
+        Metadata takes free-form key-value pairs. You may send metadata when you
+        create an object (POST) and when updating the object (PATCH).  If you
+        would like to remove metadata that is already on an object, you can
+        unset it by passing in the key-value pair with an empty string, like
+        this: 
+         {"key": ""}
+    counterparty_timestamp:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the counterparty was created
+        updated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the counterparty was updated
+        deactivated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the counterparty was deactivated
+    kyc_kyb:
+      type: object
+      properties:
+        status:
+          type: string
+          example: pass
+          enum:
+            - pass
+            - fail
+            - review
+            - in_review
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_kyb_reasons'
+    kyc_kyb_reasons:
+      type: object
+      properties:
+        code:
+          type: string
+          example: N001
+          description: reason code
+        description:
+          type: string
+          example: First name didn't match
+          description: description of reason code
+    business_member:
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: Jane
+          description: first name of the person
+        middle_name:
+          type: string
+          example: Jack
+          description: middle name of the person
+        last_name:
+          type: string
+          example: Doe
+          description: last name of the person
+        id_type:
+          type: string
+          example: ssn
+          description: type of identity used
+          enum:
+            - ssn
+            - passport
+            - other
+        id_number:
+          type: string
+          example: '945678934'
+          description: |-
+            - if id_type is ssn, id_number must be full SSN 
+             - if id_type is passport, id_number must be passport number 
+             - if id_type is other, id_number must be unique number of the id 
+             
+             id_number must be unique, as in, you cannot use the same id_number for two different persons
+        date_of_birth:
+          type: string
+          example: '1974-01-01'
+          description: date of birth of the person (YYYY-MM-DD)
+        phone:
+          type: string
+          example: '+19418405843'
+          description: phone number of the person (E.164, max 16 chars, starts with +)
+        email:
+          type: string
+          example: jane.doe@gmail.com
+          description: email of the person
+        address:
+          type: object
+          properties:
+            line1:
+              type: string
+              example: 123 Main St
+              description: line 1 of the address
+            line2:
+              type: string
+              example: ''
+              description: line 2 of the address (optional)
+            city:
+              type: string
+              example: New York
+              description: city of the address
+            state:
+              type: string
+              example: NY
+              description: '2-Letter US state abbreviation (ex: CA)'
+            country:
+              type: string
+              example: US
+              description: '2-letter abbreviated country code (ex: US)'
+            postal_code:
+              type: string
+              example: '10001'
+              description: postal code
+        ownership:
+          type: number
+          example: 50.59
+          description: ownership percentage in the business
+        title:
+          type: string
+          example: CEO
+          description: title of the member in the business
+        control_person:
+          type: string
+          example: 'true'
+          description: true if this member is the control person of the business
+          enum:
+            - 'true'
+            - 'false'
+        kyc:
+          type: object
+          properties:
+            id:
+              type: string
+              example: kyc_7948d9a96706dd05360a340002de725f
+              description: unique id of the KYC
+            status:
+              type: string
+              example: pass
+              description: status of the KYC
+              enum:
+                - pass
+                - fail
+                - review
+                - not_started
+            method:
+              type: string
+              example: solid
+              description: >-
+                sub account holder verification method. It could be an external
+                vendor(Ex: alloy) or Solid
+            url:
+              type: string
+              example: >-
+                https://dashboard.solidfi.com/id=kyc_7948d9a96706dd05360a340002de725f
+              description: >-
+                url to the person or business verification result. It could be a
+                link to the external vendor or Solid
+            details:
+              type: object
+              properties:
+                name:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                address:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                dob:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                ssn:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                phone:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                email:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                watchlist:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+                fraud:
+                  $ref: '#/components/schemas/kyc_kyb'
+                  type: object
+    counterparty_beneficiary_bank:
+      type: object
+      properties:
+        identifier_code:
+          type: string
+          example: ICICINBBNRI
+          description: SWIFT/BIC code of counterparty's bank
+        name:
+          type: string
+          example: ICICI Bank
+          description: name of counterparty's bank
+        address:
+          type: object
+          properties:
+            line1:
+              type: string
+              example: 256 Main St
+              description: line 1 of the address
+            line2:
+              type: string
+              example: Suite 201
+              description: line 2 of the address
+            city:
+              type: string
+              example: Bengaluru
+              description: city of the address
+            state:
+              type: string
+              example: KA
+              description: '2-Letter state abbreviation (ex: CA)'
+            country:
+              type: string
+              example: IN
+              description: '2-letter abbreviated country code (ex: US)'
+            postal_code:
+              type: string
+              example: '900009'
+              description: postal code
+    counterparty_correspondent_bank:
+      type: object
+      properties:
+        identifier_code:
+          type: string
+          example: SCBLUS33XXX
+          description: SWIFT/BIC code of counterparty's correspondent bank
+        name:
+          type: string
+          example: STANDARD CHARTERED BANK
+          description: name of counterparty's correspondent bank
+        address:
+          type: object
+          properties:
+            line1:
+              type: string
+              example: 1095 12th Ave
+              description: line 1 of the address
+            line2:
+              type: string
+              example: Suite 201
+              description: line 2 of the address
+            city:
+              type: string
+              example: New York
+              description: city of the address
+            state:
+              type: string
+              example: NY
+              description: '2-Letter US state abbreviation (ex: CA)'
+            country:
+              type: string
+              example: US
+              description: '2-letter abbreviated country code (ex: US)'
+            postal_code:
+              type: string
+              example: '10001'
+              description: postal code
+  examples:
+    list_counterparty_example:
+      value:
+        total: 1
+        data:
+          - value:
+              id: ctp_8e5541c8a9e50c3af3b0daacf9175130
+              client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
+              master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
+              master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
+              sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+              sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
+              label: Development Vendor
+              type: person
+              person:
+                first_name: John
+                last_name: Doe
+                id_type: ssn
+                id_number: '223902234'
+                date_of_birth: '1974-01-25'
+                phone: '+19418405843'
+                email: john.doe@gmail.com
+                address:
+                  line1: 123 Main St
+                  line2: ''
+                  city: New York
+                  state: NY
+                  country: US
+                  postal_code: '10001'
+              intra_account:
+                sub_account_number: '95483674098723'
+                sub_account_id: sub_cda1e562657c41e553104b10aad3fe70
+              ach:
+                account_number: '98324502'
+                routing_number: '121042882'
+                account_type: business_checking
+                bank_name: Wells Fargo
+                verification_status: pass
+              domestic_wire:
+                account_number: '98324502'
+                routing_number: '121042882'
+                account_type: business_checking
+                bank_name: Wells Fargo
+              international_wire:
+                account_number: '920020006167511'
+                beneficiary_bank:
+                  identifier_code: ICICINBBNRI
+                  name: ICICI Bank
+                  address:
+                    line1: 256 Main St
+                    line2: ''
+                    city: Bengaluru
+                    state: KA
+                    country: IN
+                    postal_code: '900009'
+                correspondent_bank:
+                  identifier_code: SCBLUS33XXX
+                  name: STANDARD CHARTERED BANK
+                  address:
+                    line1: 1095 12th Ave
+                    line2: ''
+                    city: New York
+                    state: NY
+                    country: US
+                    postal_code: '10001'
+              rtp:
+                account_number: '98324502'
+                routing_number: '121042882'
+                account_type: business_checking
+                bank_name: Wells Fargo
+                verification_status: pass
+              fednow:
+                account_number: '98324502'
+                routing_number: '121042882'
+                account_type: business_checking
+                bank_name: Wells Fargo
+                verification_status: pass
+              check:
+                address:
+                  line1: 123 Main St
+                  line2: ''
+                  city: New York
+                  state: NY
+                  country: US
+                  postal_code: '10001'
+              debit_card:
+                card_number: tok_live_6GVyHuQR7aAjCZivYzLbuP_9990
+                last4: '9990'
+                expiry_month: '10'
+                expiry_year: '2024'
+                cvv: tok_live_6GVyHuQR7aAjCZivYzLbuP_9990
+                address:
+                  line1: 123 Main St
+                  line2: ''
+                  city: New York
+                  state: NY
+                  country: US
+                  postal_code: '10001'
+                pull_enabled: true
+                push_enabled: true
+              purpose: Offshore dev center
+              external_reference_id: TW-9L1L2-UVV
+              ofac:
+                status: pass
+                last_updated_at: '2024-04-01T21:00:00Z'
+              attachments:
+                - label: Dev Contract
+                  id: att_a8d2b191fa0e960d8e49a4bfd320e07b
+                  created_at: '2024-04-01T21:00:00Z'
+              metadata:
+                vendor_id: VID-0987ACR
+              status: activated
+              timestamps:
+                created_at: '2024-04-01T21:00:00Z'
+                updated_at: '2024-04-01T21:00:00Z'
+        has_more: 'true'
+        starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+        ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+    unauth_error:
+      value:
+        request_id: req_01900e34c96d7abfa970a9f454ab2d5d
+        client_id: ''
+        method: GET
+        status: 401
+        error:
+          code: ERROR_CODE_UNAUTHORIZED
+          message: unauthorized
+          field_name: ''
+        created_at: '2024-06-12T20:47:38Z'
 
 ````

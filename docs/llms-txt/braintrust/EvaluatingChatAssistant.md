@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/EvaluatingChatAssistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating a chat assistant
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/EvaluatingChatAssistant/EvaluatingChatAssistant.ipynb) by [Tara Nagar](https://www.linkedin.com/in/taranagar/) on 2024-07-16</div>
@@ -114,7 +118,7 @@ async function runTask(input: string) {
 
 We'll use the `Factuality` scoring function from the [autoevals library](https://www.braintrust.dev/docs/reference/autoevals) to check how the output of the chat completion compares factually to the expected value.
 
-We will also utilize [trials](https://www.braintrust.dev/docs/guides/evals/write#trials) by including the `trialCount` parameter in the `Eval` call. We expect the output of the chat completion to be non-deterministic, so running each input multiple times will give us a better sense of the "average" output.
+We will also utilize [trials](/evaluate/run-evaluations#trials) by including the `trialCount` parameter in the `Eval` call. We expect the output of the chat completion to be non-deterministic, so running each input multiple times will give us a better sense of the "average" output.
 
 ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 import { Eval } from "braintrust";
@@ -221,7 +225,7 @@ These will score (F) = 0.2 and (G) = 0 so the model gets some credit if there wa
 
 We can then use this spec and the `LLMClassifierFromSpec` function to create our customer scorer to use in the eval function.
 
-Read more about [defining your own scorers](https://www.braintrust.dev/docs/guides/evals/write#define-your-own-scorers) in the documentation.
+Read more about [defining your own scorers](/evaluate/run-evaluations#define-your-own-scorers) in the documentation.
 
 #### Re-running the eval
 
@@ -408,7 +412,7 @@ See results for gpt-4o assistant at https://www.braintrust.dev/app/braintrustdat
 
 60% score is a definite improvement from 4%.
 
-You'll notice that it says there were 0 improvements and 0 regressions compared to the last experiment `gpt-4o assistant - no history-934e5ca2` we ran. This is because by default, Braintrust uses the `input` field to match rows across experiments. From the dashboard, we can customize the comparison key ([see docs](https://www.braintrust.dev/docs/guides/evals/interpret#customizing-the-comparison-key)) by going to the [project configuration page](https://www.braintrust.dev/app/braintrustdata.com/p/Chat%20assistant/configuration).
+You'll notice that it says there were 0 improvements and 0 regressions compared to the last experiment `gpt-4o assistant - no history-934e5ca2` we ran. This is because by default, Braintrust uses the `input` field to match rows across experiments. From the dashboard, we can customize the comparison key ([see docs](/evaluate/interpret-results#customizing-the-comparison-key)) by going to the [project configuration page](https://www.braintrust.dev/app/braintrustdata.com/p/Chat%20assistant/configuration).
 
 #### Update experiment comparison for diff mode
 
@@ -513,8 +517,3 @@ Success! We got a 27 percentage point increase in factuality, up to an average s
 We've seen in this cookbook how to evaluate a chat assistant and visualized how the chat history effects the output of the chat completion. Along the way, we also utilized some other functionality such as updating the comparison key in the diff view and creating a custom scoring function.
 
 Try seeing how you can improve the outputs and scores even further!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/migratefromregionaltoglobal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate Regional to Global Database
 
 This guide will help you migrate your data from a regional Upstash Redis database to a global database.
@@ -24,15 +28,11 @@ Before starting the migration, make sure you have:
 
 ## Migration Process
 
-There are several official ways to migrate your data:
+You can migrate your data without leaving Upstash Console:
 
 <Warning>
   If you are using RBAC, please note that they are not migrated automatically. You need to redefine ACL users for new the global database after migration.
 </Warning>
-
-### 1. Using Backup/Restore (Recommended for AWS Regional Databases)
-
-If your regional database is hosted in AWS, you can use Upstash's backup/restore feature:
 
 1. Create a backup of your regional database:
 
@@ -43,12 +43,13 @@ If your regional database is hosted in AWS, you can use Upstash's backup/restore
    * Wait for the backup process to complete
 
    <Info>
-     During backup creation, some database operations will be temporarily unavailable.
+     During a backup operation, certain administrative operations will be temporarily unavailable: Backup operations, database config changes, plan and region setup, transferring database.
+     Regular Redis commands (GET, SET, etc.) are not blocked and continue to work normally.
    </Info>
 
 2. Restore the backup to your global database:
 
-   * Go to your global database details page
+   * Go to your new global database's details page
    * Navigate to the `Backups` tab
    * Click `Restore...`
    * Select your regional database as the source
@@ -58,39 +59,6 @@ If your regional database is hosted in AWS, you can use Upstash's backup/restore
    <Warning>
      The restore operation will flush (delete) all existing data in your (destination) global database before restoring the backup.
    </Warning>
-
-### 2. Using Upstash Console Migration Wizard
-
-The easiest way to migrate your data is using the Upstash Console's built-in migration wizard:
-
-1. Go to [Upstash Console](https://console.upstash.com)
-2. In the database list page, click the `Import` button
-3. Select your source (regional) database
-4. Select your destination (global) database
-5. Follow the wizard instructions to complete the migration
-
-<Info>
-  Note: The destination database will be flushed before migration starts.
-</Info>
-
-### 3. Using upstash-redis-dump
-
-Another reliable method is using the official [upstash-redis-dump](https://github.com/upstash/upstash-redis-dump) tool:
-
-1. Install upstash-redis-dump:
-   ```bash  theme={"system"}
-   go install github.com/upstash/upstash-redis-dump@latest
-   ```
-
-2. Export data from regional database:
-   ```bash  theme={"system"}
-   upstash-redis-dump -db 0 -host YOUR_REGIONAL_HOST -port YOUR_DATABASE_PORT -pass YOUR_PASSWORD -tls > redis.dump
-   ```
-
-3. Import data to global database:
-   ```bash  theme={"system"}
-   redis-cli --tls -u redis://YOUR_PASSWORD@YOUR_REGIONAL_HOST:6379 --pipe < redis.dump
-   ```
 
 ## Verification
 

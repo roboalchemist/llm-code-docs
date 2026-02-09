@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/opentelemetry/otel-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sending OTEL Traces from Python
 
 > How to use OpenTelemetry Python SDK to export traces to Lunary.
@@ -61,8 +65,3 @@ You can tag spans for sessions, users, or experiments:
 span.set_attribute("lunary.user.id", "user-123")
 span.set_attribute("lunary.tags", ["my-experiment", "beta"])
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

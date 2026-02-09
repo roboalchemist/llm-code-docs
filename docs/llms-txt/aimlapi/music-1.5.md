@@ -25,15 +25,14 @@ If you don’t have an API key for the AI/ML API yet, feel free to use our [Quic
 
 ### Generate music sample <a href="#retrieve-the-generated-video-from-the-server" id="retrieve-the-generated-video-from-the-server"></a>
 
-This endpoint generates a new music piece based on the voice and/or instrumental pattern identifiers obtained from the first endpoint above.\
-The generation can be completed in 60-80 seconds or take a bit more.
+This endpoint generates a music piece based on the prompt (which includes style instructions) and the provided lyrics. It returns a generation task ID, its status, and related metadata.
 
 ## POST /v2/generate/audio
 
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Audio.v2.SubmitGenerationResponseDTO":{"type":"object","properties":{"id":{"type":"string"},"status":{"type":"string","enum":["queued","completed","generating","error"]}},"required":["id","status"]}}},"paths":{"/v2/generate/audio":{"post":{"operationId":"AudioModelsControllerV2_createGeneration_v2","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"enum":["minimax/music-1.5"]},"prompt":{"type":"string","minLength":10,"maxLength":300,"description":"A description of the music, specifying style, mood, and scenario. Length: 10–300 characters."},"lyrics":{"type":"string","minLength":10,"maxLength":3000,"description":"Lyrics of the song. Use (\n) to separate lines. You may add structure tags like [Intro], [Verse], [Chorus], [Bridge], [Outro] to enhance the arrangement. Length: 10–3000 characters."},"audio_setting":{"type":"object","properties":{"sample_rate":{"type":"integer","description":"The sampling rate of the generated music.","enum":[16000,24000,32000,44100]},"bitrate":{"type":"integer","description":"The bit rate of the generated music.","enum":[32000,64000,128000,256000]},"format":{"type":"string","enum":["mp3","wav","pcm"],"description":"The format of the generated music."}},"required":["format"]}},"required":["model","prompt","lyrics"]}}}},"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Audio.v2.SubmitGenerationResponseDTO"}}}}},"tags":["Audio Generation"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v2/generate/audio":{"post":{"operationId":"_v2_generate_audio","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["minimax/music-1.5"]},"prompt":{"type":"string","minLength":10,"maxLength":300,"description":"A description of the music, specifying style, mood, and scenario. Length: 10–300 characters."},"lyrics":{"type":"string","minLength":10,"maxLength":3000,"description":"Lyrics of the song. Use (\n) to separate lines. You may add structure tags like [Intro], [Verse], [Chorus], [Bridge], [Outro] to enhance the arrangement. Length: 10–3000 characters."},"audio_setting":{"type":"object","properties":{"sample_rate":{"type":"integer","description":"The sampling rate of the generated music.","enum":[16000,24000,32000,44100]},"bitrate":{"type":"integer","description":"The bit rate of the generated music.","enum":[32000,64000,128000,256000]},"format":{"type":"string","enum":["mp3","wav","pcm"],"description":"The format of the generated music."}},"required":["format"]}},"required":["model","prompt","lyrics"],"title":"minimax/music-1.5"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ### Retrieve the generated music sample from the server <a href="#retrieve-the-generated-video-from-the-server" id="retrieve-the-generated-video-from-the-server"></a>
@@ -45,7 +44,7 @@ After sending a request for music generation, this task is added to the queue. B
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Audio.v2.PollAudioResponseDTO":{"type":"object","properties":{"audio_file":{"type":"object","properties":{"url":{"type":"string","format":"uri"}},"required":["url"]},"id":{"type":"string"},"status":{"type":"string","enum":["queued","completed","generating","error"]},"error":{"nullable":true}},"required":["id","status"]}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"AudioModelsControllerV2_fetchGeneration_v2","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Audio.v2.PollAudioResponseDTO"}}}}},"tags":["Audio Generation"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key","in":"header"}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"_v2_generate_audio","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ## Quick Code Example
@@ -117,7 +116,7 @@ def main():
                 print("Still waiting... Checking again in 10 seconds.")
                 time.sleep(10)
             else:
-                print("Generation complete:/n", response_data)
+                print("Generation complete:\n", response_data)
                 return response_data
    
         print("Timeout reached. Stopping.")
@@ -214,7 +213,7 @@ async function main() {
 
     const status = result.status;
     if (['generating', 'queued', 'waiting'].includes(status)) {
-      console.log('Still waiting... Checking again in 10 seconds.');
+      console.log(`Status: ${status}. Checking again in 10 seconds.`);
     } else {
       console.log('Generation complete:\n', result);
       clearInterval(intervalId);
@@ -245,7 +244,7 @@ Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
-Generation complete:/n {'id': 'd51032d5-e7b3-4e5b-a5c8-12e0c9474949:minimax/music-1.5', 'status': 'completed', 'audio_file': {'url': 'https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20251106201349-ESweHLjHtnWFQLwO.mp3?Expires=1762517636&OSSAccessKeyId=LTAI5tCpJNKCf5EkQHSuL9xg&Signature=ZIKZMHUCU3r30ysGjbSoqc3aVks%3D'}, 'extra_info': {'music_duration': 93022, 'music_sample_rate': 44100, 'music_channel': 2, 'bitrate': 256000, 'music_size': 0}, 'trace_id': '055bc3b9622dd73d828276162cc7d516'}
+Generation complete:\n {'id': 'd51032d5-e7b3-4e5b-a5c8-12e0c9474949:minimax/music-1.5', 'status': 'completed', 'audio_file': {'url': 'https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/music%2Fprod%2Ftts-20251106201349-ESweHLjHtnWFQLwO.mp3?Expires=1762517636&OSSAccessKeyId=LTAI5tCpJNKCf5EkQHSuL9xg&Signature=ZIKZMHUCU3r30ysGjbSoqc3aVks%3D'}, 'extra_info': {'music_duration': 93022, 'music_sample_rate': 44100, 'music_channel': 2, 'bitrate': 256000, 'music_size': 0}, 'trace_id': '055bc3b9622dd73d828276162cc7d516'}
 ```
 
 {% endcode %}

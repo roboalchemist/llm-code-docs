@@ -162,7 +162,7 @@ Reading this document is not necessary in order to use Vespa or to develop Java 
   1. [Delete all config server state](../operations/self-managed/configuration-server.html#zookeeper-recovery) on all config servers
   2. Run [vespa-remove-index](../reference/operations/self-managed/tools.html#vespa-remove-index) to wipe content nodes
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

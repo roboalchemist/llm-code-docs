@@ -2,9 +2,11 @@
 
 # Segment Condition
 
+Copy page
+
 ## What is a Segment Condition? What is a segment?[​](#what-is-a-segment-condition-what-is-a-segment "Direct link to What is a Segment Condition? What is a segment?")
 
-A *Segment Condition* is a condition that is based on the evaluation of a segment. A *segment* is approximately a reusable, predefined [User Condition](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md).
+A *Segment Condition* is a condition that is based on the evaluation of a segment. A *segment* is approximately a reusable, predefined [User Condition](https://configcat.com/docs/targeting/targeting-rule/user-condition.md).
 
 Segments allow you to define user groups based on any user attribute. You can reference segments in Targeting Rules. When you update a segment definition, the changes will be reflected automatically in all the Targeting Rules that reference it.
 
@@ -14,12 +16,12 @@ One segment belongs to one product and can be used in multiple feature flags wit
 
 ## How does the Segment Condition work?[​](#how-does-the-segment-condition-work "Direct link to How does the Segment Condition work?")
 
-The segment is evaluated with the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md). Then the result is checked against the comparator you set on the Dashboard:
+The segment is evaluated with the [User Object](https://configcat.com/docs/targeting/user-object.md). Then the result is checked against the comparator you set on the Dashboard:
 
 * For **IS IN SEGMENT**, the result of the Segment Condition will be the same as the result of the segment itself.
 * For **IS NOT IN SEGMENT**, the result will be negated (i.e. it will be the opposite of the result of the segment).
 
-For more details on the evaluation of Segment Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md#evaluation-of-a-segment-condition).
+For more details on the evaluation of Segment Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/targeting/feature-flag-evaluation.md#evaluation-of-a-segment-condition).
 
 ## How to set a Segment Condition?[​](#how-to-set-a-segment-condition "Direct link to How to set a Segment Condition?")
 
@@ -61,7 +63,7 @@ A Segment Condition consists of two parts:
 
 ### Comparison attribute[​](#comparison-attribute "Direct link to Comparison attribute")
 
-A property of your user (e.g. email address, geographic location). Your application should pass the attribute values (e.g. `'jane@example.com'`, `'Europe'`) to the ConfigCat SDK as a [User Object](https://configcat.com/docs/docs/targeting/user-object/.md).
+A property of your user (e.g. email address, geographic location). Your application should pass the attribute values (e.g. `'jane@example.com'`, `'Europe'`) to the ConfigCat SDK as a [User Object](https://configcat.com/docs/targeting/user-object.md).
 
 There are 3 predefined attributes. Additionally, you can define your custom attributes as well:
 

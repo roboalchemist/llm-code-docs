@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 You can manage Python packages in different ways.
 Python images come with pip installed,
@@ -45,13 +45,13 @@ applications:
     # The location of the application's code.
     source:
       root: "myapp"
-    type: 'python:3.13'
+    type: 'python:3.14'
     hooks:
       build: |
         # Fail the build if any errors occur
         set -eu
         # Download the latest version of pip
-        python3.13 -m pip install --upgrade pip
+        python3.14 -m pip install --upgrade pip
         # Install dependencies
         pip install -r requirements.txt        
 ```
@@ -65,7 +65,7 @@ applications:
     # The location of the application's code.
     source:
       root: "myapp"
-    type: 'python:3.13'
+    type: 'python:3.14'
     variables:
       env:
         PIP_VERSION: '22.3.1'
@@ -74,7 +74,7 @@ applications:
         # Fail the build if any errors occur
         set -eu
         # Download a specific version of pip
-        python3.13 -m pip install pip==$PIP_VERSION
+        python3.14 -m pip install pip==$PIP_VERSION
         # Install dependencies
         pip install -r requirements.txt        
 ```
@@ -104,7 +104,7 @@ applications:
     # The location of the application's code.
     source:
       root: "myapp"
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         pipenv: '*'
@@ -113,7 +113,7 @@ applications:
         # Fail the build if any errors occur
         set -eu
         # Download the latest version of pip
-        python3.13 -m pip install --upgrade pip
+        python3.14 -m pip install --upgrade pip
         # Install dependencies
         # Include `--deploy` to fail the build if `Pipfile.lock` isn't up to date
         pipenv install --deploy        
@@ -128,7 +128,7 @@ applications:
     # The location of the application's code.
     source:
       root: "myapp"
-    type: 'python:3.13'
+    type: 'python:3.14'
     variables:
       env:
         PIP_VERSION: '22.3.1'
@@ -140,7 +140,7 @@ applications:
         # Fail the build if any errors occur
         set -eu
         # Download a specific version of pip
-        python3.13 -m pip install pip==$PIP_VERSION
+        python3.14 -m pip install pip==$PIP_VERSION
         # Install dependencies
         # Include `--deploy` to fail the build if `Pipfile.lock` isn't up to date
         pipenv install --deploy        
@@ -155,7 +155,7 @@ manager, written in Rust.
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         uv: "*"
@@ -183,7 +183,7 @@ To set up Poetry on Upsun, follow these steps:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     variables:
       env:
         POETRY_VIRTUALENVS_IN_PROJECT: true
@@ -199,7 +199,7 @@ applications:
     # The location of the application's code.
     source:
       root: "myapp"
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       python3:
         poetry: '*'
@@ -212,7 +212,7 @@ applications:
         # Fail the build if any errors occur
         set -eu
         # Download the latest version of pip
-        python3.13 -m pip install --upgrade pip
+        python3.14 -m pip install --upgrade pip
         # Install dependencies
         poetry install        
 ```
@@ -226,7 +226,7 @@ applications:
      # The location of the application's code.
      source:
        root: "myapp"
-     type: 'python:3.13'
+     type: 'python:3.14'
      dependencies:
        python3:
          poetry: '>=1.8'
@@ -240,7 +240,7 @@ applications:
             # Fail the build if any errors occur
             set -eu
             # Download the latest version of pip
-            python3.13 -m pip install --upgrade pip
+            python3.14 -m pip install --upgrade pip
             # Install dependencies
             poetry install            
 ```

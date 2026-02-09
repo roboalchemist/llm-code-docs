@@ -47,4 +47,4 @@ Warp allows you to scale your terminal by fractions of a cell width | height. Wh
 Some full-screen applications don't behave well when resizing. If you are experiencing rendering issues with full screen apps, try turning this setting off. This will ensure that full-screen apps don't need to resize when starting up.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f389a59e0d72e737fdf978fe65e59ef32ad2ceeb%2Fpadding-settings.png?alt=media" alt="alt-screen padding setting"><figcaption><p>Alt-screen padding setting</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f389a59e0d72e737fdf978fe65e59ef32ad2ceeb%2Fpadding-settings.png?alt=media" alt="alt-screen padding setting"><figcaption><p>Alt-screen padding setting</p></figcaption></figure>

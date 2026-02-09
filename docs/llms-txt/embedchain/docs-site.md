@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/docs-site.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📚 Code Docs website
 
 To add any code documentation website as a loader, use the data\_type as `docs_site`. Eg:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

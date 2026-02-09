@@ -2,10 +2,7 @@
 
 # Deselect SDK keys
 
-```
-POST 
-/v1/proxy-profiles/:proxyProfileId/sdk-keys/deselect
-```
+Copy page
 
 This endpoint removes the given list of Config / Environment pairs' SDK Keys from a Proxy Profile identified by the `proxyProfileId`.
 

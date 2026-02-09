@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/custom-domain.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/custom-domain.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/custom-domain.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/custom-domain.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/custom-domain.md
 

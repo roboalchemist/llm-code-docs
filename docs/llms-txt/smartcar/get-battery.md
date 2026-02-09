@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-battery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tesla: Battery Status
 
 > Returns all battery related data for a Tesla vehicle.

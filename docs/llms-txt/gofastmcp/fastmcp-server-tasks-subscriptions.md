@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-tasks-subscriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # subscriptions
 
 # `fastmcp.server.tasks.subscriptions`
@@ -9,12 +13,14 @@ Task subscription helpers for sending MCP notifications (SEP-1686).
 Subscribes to Docket execution state changes and sends notifications/tasks/status
 to clients when their tasks change state.
 
+This module requires fastmcp\[tasks] (pydocket). It is only imported when docket is available.
+
 ## Functions
 
-### `subscribe_to_task_updates` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/subscriptions.py#L27" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `subscribe_to_task_updates` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/subscriptions.py#L30" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-subscribe_to_task_updates(task_id: str, task_key: str, session: ServerSession, docket: Docket) -> None
+subscribe_to_task_updates(task_id: str, task_key: str, session: ServerSession, docket: Docket, poll_interval_ms: int = 5000) -> None
 ```
 
 Subscribe to Docket execution events and send MCP notifications.
@@ -29,8 +35,4 @@ client polling frequency.
 * `task_key`: Internal Docket execution key (includes session, type, component)
 * `session`: MCP ServerSession for sending notifications
 * `docket`: Docket instance for subscribing to execution events
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt
+* `poll_interval_ms`: Poll interval in milliseconds to include in notifications

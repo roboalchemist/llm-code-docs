@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/models-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Choose a model
 
 > Compare Writer's Palmyra models with external provider models to select the best fit for your AI agents
@@ -146,8 +150,3 @@ To use a model, pass its ID to any completion endpoint. External models use the 
 
 * [Add external models](/home/external-models): Configure external models from providers like AWS Bedrock
 * [Palmyra models](/home/models): Explore Writer's Palmyra model capabilities
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

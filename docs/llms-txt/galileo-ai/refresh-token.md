@@ -1,80 +1,75 @@
 # Source: https://docs.galileo.ai/api-reference/auth/refresh-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Refresh Token
+
+
 
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json post /v1/refresh_token
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json post /v1/refresh_token
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/refresh_token
-  method: post
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie:
-        refresh_token:
+  /v1/refresh_token:
+    post:
+      tags:
+        - auth
+      summary: Refresh Token
+      operationId: refresh_token_v1_refresh_token_post
+      parameters:
+        - name: refresh_token
+          in: cookie
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Refresh Token
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              access_token:
-                allOf:
-                  - type: string
-                    title: Access Token
-              token_type:
-                allOf:
-                  - type: string
-                    title: Token Type
-                    default: bearer
-            title: Token
-            refIdentifier: '#/components/schemas/Token'
-            requiredProperties:
-              - access_token
-        examples:
-          example:
-            value:
-              access_token: <string>
-              token_type: bearer
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            title: Refresh Token
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    Token:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: bearer
+      type: object
+      required:
+        - access_token
+      title: Token
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:

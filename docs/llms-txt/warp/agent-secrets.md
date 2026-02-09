@@ -1,15 +1,15 @@
-# Source: https://docs.warp.dev/ambient-agents/agent-secrets.md
+# Source: https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets.md
 
 # Agent Secrets
 
 Ambient agents often need to interact with external systems such as APIs, databases, cloud providers, or internal tooling. To do this safely, Warp provides Warp-managed **agent secrets**, a secure way to store, scope, and inject credentials into ambient agent runs without exposing secret values to users or logs.
 
-Warp-managed secrets are designed to work across [ambient agent](https://docs.warp.dev/ambient-agents) and [integration](https://docs.warp.dev/integrations) triggers (CLI, Slack, Linear, and schedules), support both team-wide and personal credentials, and give engineering and security teams visibility into what agents can access.
+Warp-managed secrets are designed to work across [ambient agent](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) and [integration](https://docs.warp.dev/agent-platform/integrations/integrations-overview) triggers (CLI, Slack, Linear, and schedules), support both team-wide and personal credentials, and give engineering and security teams visibility into what agents can access.
 
 **Warp-managed secrets are useful when:**
 
 * An ambient agent needs to call an API or CLI that does not support OAuth
-* You are using [MCP servers](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents) that expect static tokens or keys
+* You are using [MCP servers](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents) that expect static tokens or keys
 * An agent needs credentials for tools like cloud CLIs, databases, monitoring systems, or internal services
 * You want centralized auditing and control over what credentials agents can access
 
@@ -25,7 +25,7 @@ Warp-managed secrets are designed to work across [ambient agent](https://docs.wa
 
 Warp provides a set of CLI commands for creating, updating, and listing secrets. Secret values are stored securely and cannot be retrieved once created.
 
-At runtime, **Warp sets the relevant secrets as environment variables** for each ambient agent run, based on who triggered the agent and how it was triggered.&#x20;
+At runtime, **Warp sets the relevant secrets as environment variables** for each ambient agent run, based on who triggered the agent and how it was triggered.
 
 {% hint style="info" %}
 Secret values are available only to the agent process (and any subprocesses it spawns) during execution, and **can’t be viewed or retrieved afterward.**
@@ -171,8 +171,8 @@ It **does not receive personal secrets** belonging to other team members.
 
 When an agent is triggered without a user context, such as:
 
-* [Scheduled (cron) agents](https://docs.warp.dev/ambient-agents/managing-ambient-agents/scheduled-agents)
-* Fully automated [integrations](https://docs.warp.dev/integrations)
+* [Scheduled (cron) agents](https://docs.warp.dev/agent-platform/ambient-agents/managing-ambient-agents/scheduled-agents)
+* Fully automated [integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview)
 
 The agent receives:
 

@@ -45,11 +45,11 @@ To get started, select the `mode` for your close books. The default is `automati
 
 ## Choose the latest closed accounting period in manual mode
 
-When you set `latest closed accounting period`, you close the selected accounting period along with all previous accounting periods, and you open all following periods. You can choose one of the periods in the past 24 months, and you can also choose `no closed accounting periods`. For example, when you choose the `latest closed accounting period` to be February 2021 in `manual` mode, the accounting period looks like the following example:
+When you set `latest closed accounting period`, you close the selected accounting period along with all previous accounting periods, and you open all following periods. You can choose one of the periods in the past 24 months, and you can also choose `no closed accounting periods`. For example, when you choose the `latest closed accounting period` to be February 2025 in `manual` mode, the accounting period looks like the following example:
 
 |                 |          |
 | --------------- | -------- |
-| Before Jan 2021 | Jan 2021 | Feb 2021 | Mar 2021 | Apr 2021 | May 2021 | Jun 2021 |
+| Before Jan 2025 | Jan 2025 | Feb 2025 | Mar 2025 | Apr 2025 | May 2025 | Jun 2025 |
 | Closed          | Closed   | Closed   | Open     | Open     | Open     | Open     |
 
 ## How accounting period and close books control works 
@@ -70,6 +70,6 @@ If you’re new to revenue recognition, use the close books control to get start
 
 You can open accounting periods after setting [revenue recognition rules](https://docs.stripe.com/revenue-recognition/rules.md), unless you need to issue corrections. In that case, you must close the accounting period before setting any rules.
 
-Adjustments for accounting periods take up to 24 hours to complete. When completed, you can see the setting in monthly summary charts and CSV-only reports in the Dashboard. For example, when you choose the `latest closed accounting period` to be February 2021 in `manual` mode, you can see it in the charts and reports.
-![Revenue chart with manual mode and latest closed accounting period as February 2021](https://b.stripecdn.com/docs-statics-srv/assets/accounting-period-control-revenue-chart.d6ab06169fb7d15f27f2e7cfe5a2282e.png)
-![Income statement report with manual mode and latest closed accounting period as February 2021](https://b.stripecdn.com/docs-statics-srv/assets/accounting-period-control-income-statement-report.da2f6a5fb6491e4e4da58c115c7089f7.png)
+Adjustments for accounting periods take up to 24 hours to complete. When completed, you can see the setting in monthly summary charts and CSV-only reports in the Dashboard. For example, when you choose the `latest closed accounting period` to be February 2025 in `manual` mode, you can see it in the charts and reports.
+![Revenue chart with manual mode and latest closed accounting period](https://b.stripecdn.com/docs-statics-srv/assets/accounting-period-control-revenue-chart.d6ab06169fb7d15f27f2e7cfe5a2282e.png)
+![Income statement report with manual mode and latest closed accounting period](https://b.stripecdn.com/docs-statics-srv/assets/accounting-period-control-income-statement-report.da2f6a5fb6491e4e4da58c115c7089f7.png)

@@ -2,7 +2,9 @@
 
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-[![React Native](/img/header_logo.svg)![React Native](/img/header_logo.svg)](/index.md)
+Re-watch the latest [React Native Keynote](https://www.youtube.com/watch?v=NiYwlvXsBKw) from React Conf 2025
+
+[![](/img/header_logo.svg)![](/img/header_logo.svg)](/index.md)
 
 [**React Native**](/index.md)
 
@@ -77,17 +79,29 @@ Get started quickly with Expo Go, then continue with expo-dev-client: a module t
 
 ### Watch talks by the React team and learn how to get the most out of React Native.<br />Find the latest on<!-- --> [Bluesky](https://bsky.app/profile/reactnative.dev) and<!-- --> [X](https://twitter.com/intent/follow?screen_name=reactnative\&region=follow_link).
 
-[Mobile Innovation with React Native, ComponentKit, and Litho](https://www.youtube.com/embed/NCAY0HIfrwc)
-
-#### FB 2019: Mobile innovation with React Native
-
-45:29
-
-[Explain Like I'm 5: React Native](https://www.youtube.com/embed/wUDeLT6WXnQ)
+![Explain Like I'm 5: React Native](https://img.youtube.com/vi/wUDeLT6WXnQ/maxresdefault.jpg)
 
 #### Why React Native?
 
 1:42
+
+![React Conf 2025 React Native Keynote](https://img.youtube.com/vi/NiYwlvXsBKw/maxresdefault.jpg)
+
+#### React Conf 2025<br />React Native Keynote
+
+55:13
+
+![React Conf 2024 React Native Keynote](https://img.youtube.com/vi/Q5SMmKb7qVI/maxresdefault.jpg)
+
+#### React Conf 2024<br />React Native Keynote
+
+55:14
+
+![Mobile Innovation with React Native, ComponentKit, and Litho](https://img.youtube.com/vi/NCAY0HIfrwc/maxresdefault.jpg)
+
+#### FB 2019<br />Mobile innovation with React Native
+
+45:29
 
 # Meta supported. Community driven.
 
@@ -161,4 +175,4 @@ Explore More
 
 [![Meta Open Source Logo](/img/oss_logo.svg)![Meta Open Source Logo](/img/oss_logo.svg)](https://opensource.fb.com/)
 
-Copyright © 2025 Meta Platforms, Inc.
+Copyright © 2026 Meta Platforms, Inc.

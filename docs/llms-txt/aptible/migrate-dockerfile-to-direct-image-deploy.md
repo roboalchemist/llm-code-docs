@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to migrate from Dockerfile Deploy to Direct Docker Image Deploy
 
 If you are currently using [Dockerfile Deploy](/how-to-guides/app-guides/deploy-from-git) and would like to migrate to a Direct Docker Image Deploy, use the following instructions:

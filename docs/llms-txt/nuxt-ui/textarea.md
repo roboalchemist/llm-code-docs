@@ -62,11 +62,8 @@ Use the `color` prop to change the ring color when the Textarea is focused.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -136,23 +133,15 @@ Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -210,14 +199,14 @@ interface TextareaProps {
    * Highlight the ring color like a focus state.
    */
   highlight?: boolean | undefined;
-  modelValue?: TextareaValue | undefined;
-  defaultValue?: TextareaValue | undefined;
-  modelModifiers?: ModelModifiers<TextareaValue> | undefined;
+  modelValue?: T | undefined;
+  defaultValue?: T | undefined;
+  modelModifiers?: ModelModifiers<T> | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; } | undefined;
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -229,7 +218,7 @@ interface TextareaProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -237,7 +226,7 @@ interface TextareaProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -245,7 +234,7 @@ interface TextareaProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   autocomplete?: string | undefined;
   cols?: Numberish | undefined;
   dirname?: string | undefined;
@@ -257,11 +246,9 @@ interface TextareaProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes">
-
-This component also supports all native `<textarea>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes
+> This component also supports all native `<textarea>` HTML attributes.
 
 ### Slots
 
@@ -283,7 +270,7 @@ interface TextareaSlots {
  * Emitted events for the Textarea component
  */
 interface TextareaEmits {
-  update:modelValue: (payload: [value: TextareaValue]) => void;
+  update:modelValue: (payload: [value: T]) => void;
   blur: (payload: [event: FocusEvent]) => void;
   change: (payload: [event: Event]) => void;
 }
@@ -626,8 +613,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

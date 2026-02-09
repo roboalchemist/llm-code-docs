@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/publish.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun publish
 
 > Use `bun publish` to publish a package to the npm registry
@@ -12,7 +16,7 @@ bun publish
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun publish v1.3.2 (ca7428e9)
+bun publish v1.3.3 (ca7428e9)
 
 packed 203B package.json
 packed 224B README.md
@@ -162,7 +166,7 @@ bun publish dist
 
   `--tag` can also be set in the `publishConfig` field of your `package.json`.
 
-  ```json package.json file="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
   {
     "publishConfig": {
       "tag": "next" // [!code ++]

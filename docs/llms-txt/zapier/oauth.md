@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/oauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add authentication with OAuth v2
 
 > OAuth v2 authentication matches in appearance the login process users expect from most modern apps.

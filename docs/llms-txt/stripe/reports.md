@@ -51,7 +51,7 @@ This report shows expected revenue amounts based on historical billings. It does
 ### Statements and CSV reports 
 
 Use the [Statements tab](https://dashboard.stripe.com/revenue-recognition/statements) to access all key financial reports associated with revenue recognition in Stripe. You can view summaries and detailed breakdowns, download financial documents, and share feedback on the reports.
-![Statements tab](https://b.stripecdn.com/docs-statics-srv/assets/statements.8b1508681ae96c328a4eb42e43cd94cc.png)
+![Statements tab](https://b.stripecdn.com/docs-statics-srv/assets/statements-old.8b1508681ae96c328a4eb42e43cd94cc.png)
 
 #### Statements overview 
 

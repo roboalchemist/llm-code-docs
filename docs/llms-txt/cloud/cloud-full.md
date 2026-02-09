@@ -7,7 +7,7 @@ Source: https://cloud.needle.tools/llms-full.txt
 <SYSTEM>
 This is the developer documentation for Needle.      
 Documentation: https://engine.needle.tools/docs/
-Last Updated on 11/13/2025, 12:53:25 PM
+Last Updated on 1/8/2026, 2:40:00 PM
 </SYSTEM>
 
 
@@ -1159,10 +1159,10 @@ description: Needle's Everywhere Actions are a set of carefully chosen component
 
 ## What are Everywhere Actions?
 
-Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code.  
-They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**.  
+Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code.
+They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**.
 
-From low-level triggers and actions, higher-level complex interactive behaviours can be built.  
+From low-level triggers and actions, higher-level complex interactive behaviours can be built.
 
 ### Supported Platforms
 - Desktop
@@ -1170,6 +1170,10 @@ From low-level triggers and actions, higher-level complex interactive behaviours
 - VR Glasses
 - AR Devices
 - iOS AR – QuickLook (yes, really!)
+
+:::tip Coming Soon: Full WebXR on iOS
+Want full WebXR support on iOS? Check out [Needle Go](ios-webxr-app-clip.md), an upcoming iOS App Clip that will enable complete WebXR experiences on iPhone and iPad without requiring app installation.
+:::
 
 ## How do I use Everywhere Actions?
 
@@ -2162,7 +2166,7 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1984848900591693824/YH69BvR-_200x200.jpg"
+  img="./testimonial/ChrisMahoney.webp"
 >
 Unbelievable Unity editor integration by an order of magnitude,  
   and as straightforward as the docs claim. Wow.
@@ -2172,7 +2176,7 @@ Unbelievable Unity editor integration by an order of magnitude,
   name="Kevin Curry" 
   role="Founder, Intangible.ai. Ex-Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
-  img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
+  img="./testimonial/KevinCurry.webp"
 >
 needle.tools is a wonderful showcase of what @NeedleTools contributes to 3D via the web. I just love it.
 </testimonial>
@@ -2181,7 +2185,7 @@ needle.tools is a wonderful showcase of what @NeedleTools contributes to 3D via 
   name="Brit Gardner"
   role="Senior Software Engineer, Coherence. Ex-Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
-  img="https://pbs.twimg.com/profile_images/1360002897048727553/0gscFjvt_x96.jpg"
+  img="./testimonial/BritGardner.webp"
 >
 Played with this a bit this morning 🤯🤯 pretty magical
 </testimonial>
@@ -2190,7 +2194,7 @@ Played with this a bit this morning 🤯🤯 pretty magical
   name="Marc Wakefield"
   role="Augmented Reality Expert"
   src="https://x.com/mrm_design/status/1567391880169545729"
-  img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
+  img="./testimonial/MarcWakefield.webp"
 >
 This is huge for WebXR and shared, immersive 3D experiences! Thank you so much for putting in the work on this @NeedleTools crew! Hoping @Apple
  sort out their WebXR situation sooner rather than later. The AR part worked flawlessly on my @SamsungMobile S21.
@@ -2200,7 +2204,7 @@ This is huge for WebXR and shared, immersive 3D experiences! Thank you so much f
   name="Rinesh Thomas"
   role="Game Developer, Assassin's Creed VR"
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
-  img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
+  img="./testimonial/RineshThomas.webp"
 >
     This is the best thing I have seen after cinemachine in unity. Unity should acquire this
 </testimonial>
@@ -2209,7 +2213,7 @@ This is huge for WebXR and shared, immersive 3D experiences! Thank you so much f
   name="Stella Cannefax"
   role="CTO Dora, Game Developer"
   src="https://x.com/0xstella/status/1574853012585172993"
-  img="https://pbs.twimg.com/profile_images/1657086025661833237/Yyo56hVY_x96.jpg"
+  img="./testimonial/StellaCannefax.webp"
 >
 Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine
 </testimonial>
@@ -2218,7 +2222,7 @@ Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real t
   name="Pete Patterson" 
   role="Spatial Computing Specialist"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
-  img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
+  img="./testimonial/PetePatterson.webp"
 >
 Finally checking out @NeedleTools with Unity. Super easy to get something up and running in the cloud using their
  integrations
@@ -2228,7 +2232,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
   name="Dilmer Valecillos" 
   role="Developer Advocate for Mixed Reality @Meta, Tutorial Creator"
   src="https://x.com/Dilmerv/status/1562209049856188420"
-  img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
+  img="./testimonial/DilmerValecillos.webp"
 >
  This is amazing and if you are curious about #WebXR with Unity this will help us get there
 </testimonial>
@@ -2236,7 +2240,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
 <testimonial 
   name="VRSpatialist" 
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
-  img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
+  img="./testimonial/VRSpatialist.webp"
 >
  I am a long time Unity dev and recently started playing with Needle Tools and I love it! It's a great on ramp for Unity devs who want to learn WebXR and three.js. The runtime engine is awesome and it was pretty easy to create my own custom component
 </testimonial>
@@ -2245,7 +2249,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
   name="Unity for Digital Twins"
   role="Powering the enterprise metaverse"
   src="https://x.com/DigitalTwin/status/1576934958681055233"
-  img="https://pbs.twimg.com/profile_images/1659581582657863681/xl4kQKA__x96.jpg"
+  img="./testimonial/UnityforDigitalTwins.webp"
 >
 We just gotta say WOW 🤩
 </testimonial>
@@ -2254,7 +2258,7 @@ We just gotta say WOW 🤩
   name="Matthew Pieri" 
   role="Game Developer"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
-  img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
+  img="./testimonial/MatthewPieri.webp"
 >
 Spent the last 2.5 months building this game, never built a game/never used unity before, but absolutely loving the whole process with needle tools. So rapid!  Would love to make a career building AR experiences! 
 </testimonial>
@@ -2263,7 +2267,7 @@ Spent the last 2.5 months building this game, never built a game/never used unit
   name="Yuzu" 
   role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
-  img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
+  img="./testimonial/Yuzu.webp"
 >
 My workflow has been optimized 10X ever since i started using needle
 </testimonial>  
@@ -2282,11 +2286,11 @@ My workflow has been optimized 10X ever since i started using needle
     <action href="https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=actionbutton">
     Samples 👓
     </action>
-    <action subtitle="with AI support" href="https://forum.needle.tools?utm_source=needle_docs&utm_content=actionbutton">
-    Get Help 💬
-    </action>
-    <action href="https://cloud.needle.tools">
+    <action href="cloud/index">
     Cloud ⛅️
+    </action>
+    <action href="support">
+    Help 💬
     </action>
 </actiongroup>
 
@@ -2425,6 +2429,93 @@ Needle Cloud offers an easy way to get the embed code for your project. Just ope
 
 See [Embedding a Needle project into an existing website](./embedding.md#integrations) for more options and details.
 Source: https://engine.needle.tools/docs/integrating-with-wordpress.html
+
+---
+title: iOS WebXR via App Clip (Coming Soon)
+---
+
+# iOS WebXR with Needle Go App Clip
+
+:::warning Coming Soon
+Needle Go is currently in development and will be available soon. This page provides an overview of the upcoming feature.
+:::
+
+Needle Go is an upcoming iOS App Clip that will enable full WebXR AR experiences on iOS devices. While Safari on iOS doesn't support WebXR natively, Needle Go bridges this gap by using native ARKit to provide WebXR functionality in a lightweight, instant-launch format.
+
+## What is Needle Go?
+
+Needle Go is an iOS App Clip that brings WebXR support to iPhone and iPad. App Clips launch instantly without requiring a full app installation, making it perfect for sharing AR experiences via QR codes, links, or smart app banners.
+
+**Key Benefits:**
+- **No Installation Required**: Users can access AR experiences instantly via App Clip
+- **WebXR Support on iOS**: Run your Needle Engine WebXR scenes on iPhone and iPad
+- **Easy Sharing**: Share AR experiences through QR codes, links, or website banners
+- **Full AR Features**: Supports hit testing, anchors, lighting estimation, and more
+
+## Why Needle Go?
+
+WebXR is not supported on Safari for iOS. Previously, the only option was Mozilla's WebXR Viewer app, which requires installation and hasn't been updated in years.
+
+Needle Go solves this by providing instant access to WebXR experiences through Apple's App Clip technology.
+
+## How to Experience It
+
+Experience WebXR content through your iPhone's screen, viewing and interacting with 3D content overlaid on the real world using native ARKit capabilities.
+
+## How It Will Work
+
+### Share via QR Code
+
+1. Create a URL pointing to your WebXR experience
+2. Generate a QR code
+3. Users scan with iPhone camera to launch the App Clip instantly
+
+### Embed in Your Website
+
+Add a smart app banner to your site. When users visit on iOS, they can tap to launch your AR experience directly.
+
+### Share Direct Links
+
+Share links in messages, emails, or social media that launch the App Clip when opened on iOS.
+
+## Using with Needle Engine
+
+Your existing Needle Engine WebXR scenes will work automatically with Needle Go. Simply ensure your scene:
+
+1. Has a `WebXR` component (see [WebXR documentation](xr.md))
+2. Is deployed to a publicly accessible HTTPS URL
+3. Is optimized for mobile devices
+
+No changes to your Needle Engine project are required. Needle Go handles the WebXR-to-ARKit integration automatically.
+
+## Supported Features
+
+Needle Go will support comprehensive WebXR functionality:
+
+- WebXR session management
+- Hit testing and plane detection
+- Anchor creation and tracking
+- Lighting estimation
+- DOM overlays for UI elements
+- Image and object tracking
+
+## Get Notified
+
+Want to be notified when Needle Go launches?
+
+- Follow updates in our [Discord community](https://discord.needle.tools)
+
+## Alternative: Everywhere Actions
+
+Looking for iOS AR support today? Check out [Everywhere Actions](everywhere-actions.md), which enables interactive AR experiences on iOS using USDZ and QuickLook.
+
+## Related Documentation
+
+- [WebXR Documentation](xr.md) - Setting up WebXR in Needle Engine
+- [Everywhere Actions](everywhere-actions.md) - Current iOS AR solution using USDZ
+- [Deployment](deployment.md) - Publishing your Needle Engine projects
+
+Source: https://engine.needle.tools/docs/ios-webxr-app-clip.html
 
 ---
 title: MaterialX
@@ -3592,6 +3683,70 @@ If you already have a web project that you want to integrate with Needle Engine,
 Source: https://engine.needle.tools/docs/project-structure.html
 
 ---
+description: "Learn how to easily create 3D websites that are responsive on any screen with Needle Engine and three.js"
+---
+
+# Responsive 3D Webdesign
+
+Needle Engine offers several building blocks to make building responsive 3d websites easy. Learn how to use and combine Focus Rect and ViewBox features:
+
+## Focus Rect
+Use the Needle Engine focus rect feature to adjust the center of your 3D scene using CSS. This is the basic building block for responsive layouts. It can be enabled with one line of code and no changes to your scene are required.  
+
+### Video Tutorial
+
+<video-embed src="https://www.youtube.com/watch?v=YAPInggEIg8" limit_height />
+
+### How to use the Focus Rect
+
+Set the element to focus on by querying an HTML element on your website. You then set this element using the [```setCameraFocusRect(<element>)```](https://engine.needle.tools/docs/api/classes/Engine_Core.Context.html#setcamerafocusrect) method.
+
+For example using the `onStart` [hook](/scripting.md#hooks) in your Needle Engine code (e.g., in main.ts) to query the element and pass it to Needle Engine.
+
+```ts twoslash
+import "@needle-tools/engine";
+import {onStart} from "@needle-tools/engine";
+
+onStart((ctx)=>{
+    const div = document.querySelector(".focus_rect");
+    if(div){
+        ctx.setCameraFocusRect(div);
+    }
+})
+```
+
+[View needle-engine attributes for more](/reference/needle-engine-attributes.md)
+
+### Focus Rect Samples
+[Demo Webpage Sword and Shield](https://portfolio-header-demo-z23hmxb19zenk-19zenk.needle.run/)
+
+[Demo Webpage Bike](https://focus-rect-demo-z23hmxbztexgt-z19e07i.needle.run/)
+
+
+
+## ViewBox
+
+The [ViewBox](https://engine.needle.tools/docs/api/classes/Built-in_Components.ViewBox.html) can be used to automatically fit a certain box area into the camera view - no matter your screen size or aspect ratio.
+
+This is useful for example to frame a character or object in the center of the screen and ensure it is always fully visible. The Viewbox can also be animated or scaled to create zoom effects or to adjust the visible area.
+
+### ViewBox Video
+
+<video-embed src="https://www.youtube.com/watch?v=Dn9lmWy3Vak" limit_height/>
+
+<video-embed src="https://www.youtube.com/watch?v=-YKKoYRIrtg" limit_height/>
+
+### Links to Samples
+
+[Example on needle.run](https://viewbox-demo-z23hmxbz2gkayo-z1nyzm6.needle.run/)
+
+[Scrollytelling Demo using animated Viewbox](https://scrollytelling-bike-z23hmxb2gnu5a.needle.run/)
+
+[Example on Stackblitz](https://stackblitz.com/edit/needle-engine-view-box-example?file=README.md)
+
+Source: https://engine.needle.tools/docs/responsive-3D-webdesign-with-needle-and-threejs.html
+
+---
 title: Samples Projects
 ---
 
@@ -4622,38 +4777,17 @@ editLink: false
 [Visit website](https://zenrepublic.space/?realm=3)
 Source: https://engine.needle.tools/docs/showcase-zenrepublic.html
 
-# Support, Videos & AI
-
-## Community Forum
-
-Ask questions and get help in [Needle Forum](https://forum.needle.tools)  
+# Needle Support
 
 
-## Discord
+## Links
 
-Chat with the community and share your projects in [Needle Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)
-
-
-## Needle AI
-
-Ask any question about Needle Engine, web development or our editor integrations in [our forum](https://forum.needle.tools) and get instant help from the Needle AI that has access to the latest code, documentation and our integrations.  
-
-For private questions use the [Needle Cloud AI](https://cloud.needle.tools/team#ai)
-
-Needle Engine documentation is also available via the llms.txt standard.    
-Download the files below to use as context for your local AI:
-
-- [llms.txt](https://cloud.needle.tools/llms.txt)
-- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
-- Get the markdown for any documentation page, simply change the extension: <a href="./support.md">For example for this page</a>
+- **[Community Forum](https://forum.needle.tools)** — Ask questions and get help in our community forum  
+- **[Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)** — Chat with the community and share your projects
+- **[Needle AI](./ai/index)** — Get instant answers from our AI assistant trained on Needle Engine, documentation and integrations
 
 
-::: info Got feedback?
-Use the feedback buttons in the AI chat on Needle Cloud!
-:::
-
-
-## Devlogs
+### Devlogs
 
 <video-embed src="https://www.youtube.com/watch?v=9v0C7Xa6TUE" />
 
@@ -4671,7 +4805,7 @@ Use the feedback buttons in the AI chat on Needle Cloud!
 <br/>
 <br/>
 
-## User Interviews
+### User Interviews
 
 
 <video-embed src="https://www.youtube.com/watch?v=naPlw5aDJHs" />
@@ -5128,7 +5262,7 @@ next: getting-started/
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="/testimonial/ChrisMahoney.webp"
+  img="./testimonial/ChrisMahoney.webp"
 >
 Unbelievable Unity editor integration by an order of magnitude,  
   and as straightforward as the docs claim. Wow.
@@ -5138,7 +5272,7 @@ Unbelievable Unity editor integration by an order of magnitude,
   name="Kevin Curry" 
   role="Founder, Intangible.ai. Ex-Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
-  img="/testimonial/KevinCurry.webp"
+  img="./testimonial/KevinCurry.webp"
 >
 needle.tools is a wonderful showcase of what @NeedleTools contributes to 3D via the web. I just love it.
 </testimonial>
@@ -5147,7 +5281,7 @@ needle.tools is a wonderful showcase of what @NeedleTools contributes to 3D via 
   name="Brit Gardner"
   role="Senior Software Engineer, Coherence. Ex-Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
-  img="/testimonial/BritGardner.webp"
+  img="./testimonial/BritGardner.webp"
 >
 Played with this a bit this morning 🤯🤯 pretty magical
 </testimonial>
@@ -5156,7 +5290,7 @@ Played with this a bit this morning 🤯🤯 pretty magical
   name="Marc Wakefield"
   role="Augmented Reality Expert"
   src="https://x.com/mrm_design/status/1567391880169545729"
-  img="/testimonial/MarcWakefield.webp"
+  img="./testimonial/MarcWakefield.webp"
 >
 This is huge for WebXR and shared, immersive 3D experiences! Thank you so much for putting in the work on this @NeedleTools crew! Hoping @Apple
  sort out their WebXR situation sooner rather than later. The AR part worked flawlessly on my @SamsungMobile S21.
@@ -5166,7 +5300,7 @@ This is huge for WebXR and shared, immersive 3D experiences! Thank you so much f
   name="Rinesh Thomas"
   role="Game Developer, Assassin's Creed VR"
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
-  img="/testimonial/RineshThomas.webp"
+  img="./testimonial/RineshThomas.webp"
 >
     This is the best thing I have seen after cinemachine in unity. Unity should acquire this
 </testimonial>
@@ -5175,7 +5309,7 @@ This is huge for WebXR and shared, immersive 3D experiences! Thank you so much f
   name="Stella Cannefax"
   role="CTO Dora, Game Developer"
   src="https://x.com/0xstella/status/1574853012585172993"
-  img="/testimonial/StellaCannefax.webp"
+  img="./testimonial/StellaCannefax.webp"
 >
 Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine
 </testimonial>
@@ -5184,7 +5318,7 @@ Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real t
   name="Pete Patterson" 
   role="Spatial Computing Specialist"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
-  img="/testimonial/PetePatterson.webp"
+  img="./testimonial/PetePatterson.webp"
 >
 Finally checking out @NeedleTools with Unity. Super easy to get something up and running in the cloud using their
  integrations
@@ -5194,7 +5328,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
   name="Dilmer Valecillos" 
   role="Developer Advocate for Mixed Reality @Meta, Tutorial Creator"
   src="https://x.com/Dilmerv/status/1562209049856188420"
-  img="/testimonial/DilmerValecillos.webp"
+  img="./testimonial/DilmerValecillos.webp"
 >
  This is amazing and if you are curious about #WebXR with Unity this will help us get there
 </testimonial>
@@ -5202,7 +5336,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
 <testimonial 
   name="VRSpatialist" 
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
-  img="/testimonial/VRSpatialist.webp"
+  img="./testimonial/VRSpatialist.webp"
 >
  I am a long time Unity dev and recently started playing with Needle Tools and I love it! It's a great on ramp for Unity devs who want to learn WebXR and three.js. The runtime engine is awesome and it was pretty easy to create my own custom component
 </testimonial>
@@ -5211,7 +5345,7 @@ Finally checking out @NeedleTools with Unity. Super easy to get something up and
   name="Unity for Digital Twins"
   role="Powering the enterprise metaverse"
   src="https://x.com/DigitalTwin/status/1576934958681055233"
-  img="/testimonial/UnityforDigitalTwins.webp"
+  img="./testimonial/UnityforDigitalTwins.webp"
 >
 We just gotta say WOW 🤩
 </testimonial>
@@ -5220,7 +5354,7 @@ We just gotta say WOW 🤩
   name="Matthew Pieri" 
   role="Game Developer"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
-  img="/testimonial/MatthewPieri.webp"
+  img="./testimonial/MatthewPieri.webp"
 >
 Spent the last 2.5 months building this game, never built a game/never used unity before, but absolutely loving the whole process with needle tools. So rapid!  Would love to make a career building AR experiences! 
 </testimonial>
@@ -5229,7 +5363,7 @@ Spent the last 2.5 months building this game, never built a game/never used unit
   name="Yuzu" 
   role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
-  img="/testimonial/Yuzu.webp"
+  img="./testimonial/Yuzu.webp"
 >
 My workflow has been optimized 10X ever since i started using needle
 </testimonial>
@@ -5706,9 +5840,15 @@ Please note that normally you should provide your users with a way to stop AR. Y
 
 ## Augmented Reality and WebXR on iOS
 
-Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.  
+Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.
 
-Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill that gap, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information. 
+There are several approaches to bring AR experiences to iOS:
+
+**Needle Go App Clip (Coming Soon)**  
+[Needle Go](ios-webxr-app-clip.md) is an upcoming iOS App Clip that enables full WebXR support on iPhone and iPad through native ARKit integration. Users can access your WebXR scenes instantly via QR codes, links, or smart app banners without installing an app. This will provide the most complete WebXR experience on iOS with support for hit testing, anchors, lighting estimation, and more.
+
+**Everywhere Actions (Available Now)**  
+Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill the WebXR gap on iOS, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information.
 
 :::tip Limited custom code support in QuickLook
 Apple has strong limitations in place what kind of content can be used in QuickLook. Thus, custom script components can not automatically be converted for use in AR on iOS. You can add support for some sorts of custom code using our Everywhere Actions API.
@@ -5750,6 +5890,291 @@ Needle Engine supports **WebXR Image Tracking** ([Live Demo](https://engine.need
 You can find additional documentation on the [WebXR Image Tracking](./webxr-image-tracking.md) page.
 
 Source: https://engine.needle.tools/docs/xr.html
+
+## Needle AI
+
+Needle AI is trained on the latest code, documentation and our integrations.    
+
+Ask any question about Needle Engine, web development or our editor integrations in our [Needle community forum](https://forum.needle.tools) and get instant help from the Needle AI. 
+
+### Documentation markdown links
+
+Get AI friendly the markdown for any documentation page by changing the URL from `.html` to `.md`   
+  Example: <a href="./index.md"><code>/index.md</code></a> or <a href="/docs/index.md"><code>index.md</code></a>
+
+
+### Private AI Chats on Needle Cloud
+
+For private questions use the integrated [Needle Cloud AI](https://cloud.needle.tools/team#ai)
+
+::: info Got feedback?
+Use the feedback buttons in the AI chat on Needle Cloud!
+:::
+
+### MCP server
+
+Use the Needle MCP server to connect your own AI tools to Needle Engine projects and three.js scenes.
+
+Learn more about the Needle MCP server and how to connect it to your own AI tools in the [Needle MCP documentation](./needle-mcp-server).
+
+
+### llms.txt
+Needle Engine documentation is also available via the llms.txt standard.    
+Download the files below to use as context for your local AI:
+
+- [llms.txt](https://cloud.needle.tools/llms.txt)
+- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
+
+
+Source: https://engine.needle.tools/docs/ai/index.html
+
+<br/>
+
+<div class="centered" style="display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 2em;
+    font-weight: 100;">
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/imgs/mcp-logo.webp" style="max-height:70px;" title="MCP Logo" alt="MCP Logo"/>
+</div>
+
+# Needle MCP Server — Local AI for Needle
+
+Talk to your AI assistant about your 3D scenes! Connect Claude, Cursor, or other AI tools to the Needle Inspector so you can explore your three.js scenes, edit objects, and get help - all through natural conversation.
+
+### Quick Start
+
+1. Start the local MCP server:
+   ```bash
+   npx needle-cloud start
+   ```
+
+2. Connect your AI assistant using the instructions below in the [How to Connect](#how-to-connect) section.
+
+3. Install the [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) to chat with your AI about any three.js scene in the browser.
+
+4. Visit a three.js webpage (e.g. [needle.tools](https://needle.tools))
+
+5. Ask your local AI assistant questions about the scene!
+
+:::tip Works with your favorite AI tools
+Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
+:::
+
+
+## What Can You Do?
+
+Once connected, open the Needle Inspector on any three.js webpage and chat naturally with your AI assistant:
+
+- **Explore 3D scenes**: "Show me all the lights in my scene"
+- **Inspect objects**: "What materials are used in this scene?"
+- **Edit properties**: "Change the main light color to warm orange"
+- **Get creative help**: "How can I make this scene look more realistic?"
+- **Optimize performance**: "Why is my scene running slowly?"
+- **Learn techniques**: "How do I add reflections to this material?"
+- **Debug issues**: "This object looks weird, what's wrong with it?"
+
+Your AI can actually see your 3D scene through the Inspector and help you work with specific objects, materials, lighting, and settings in real-time.
+
+
+## How to Connect
+
+### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Desktop
+
+**Quick setup:**
+
+1. Open your terminal and run:
+   ```bash
+   claude mcp add --scope user --transport http needle http://localhost:8424/mcp
+   ```
+
+2. Restart Claude Desktop
+
+3. Look for the 🔌 icon in the bottom-right - you're connected!
+
+
+
+
+### <img src="/imgs/vscode-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="VS Code Logo" alt="VS Code Logo"/> Using VS Code
+
+**Setup:**
+
+1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
+
+2. Choose "MCP: Add Server"
+
+3. Fill in the details:
+   - Name: `needle`
+   - Transport: `http`
+   - URL: `http://localhost:8424/mcp`
+
+**Using it:**
+
+Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
+
+
+
+
+
+### <img src="/imgs/cursor-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Cursor Logo" alt="Cursor Logo"/> Using Cursor 
+
+1. In your project folder, create a file: `.cursor/mcp.json`
+
+2. Add this:
+   ```json
+   {
+     "mcpServers": {
+       "needle": {
+         "transport": "http",
+         "url": "http://localhost:8424/mcp"
+       }
+     }
+   }
+   ```
+
+3. Restart Cursor
+
+4. **Important**: Switch to Agent Mode (not Ask Mode)
+
+Try it: *"Show me all the meshes in my scene"*
+
+
+
+### <img src="/imgs/antigravity-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Antigravity Logo" alt="Antigravity Logo"/> Using Antigravity
+
+**Quick setup:**
+
+1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
+
+2. Choose "MCP: Add Server"
+
+3. Fill in the details:
+   - Name: `needle`
+   - Transport: `http`
+   - URL: `http://localhost:8424/mcp`
+
+
+Antigravity is great at understanding what you want - just describe your goal!
+
+
+## What to Ask
+
+Here are some examples to get you started. Make sure the Needle Inspector is open in your browser with a three.js scene loaded:
+
+**Exploring scenes:**
+> "Show me all the lights in my scene"
+> "What materials am I using?"
+> "Find all the cameras and tell me where they're positioned"
+> "List all the meshes and their triangle counts"
+> "Which objects in my scene are invisible?"
+
+**Editing and tweaking:**
+> "Change the directional light intensity to 0.5"
+> "Make the sphere at position (0, 1, 0) red"
+> "Hide all helper objects"
+> "Set the fog color to light blue"
+
+**Getting creative help:**
+> "How can I make this look more photorealistic?"
+> "What's the best way to add shadows to my scene?"
+> "How do I create a metallic material?"
+> "Suggest ways to improve the lighting"
+
+**Analyzing and debugging:**
+> "Why is my scene loading slowly?"
+> "Which objects have the most geometry?"
+> "Are there any materials with missing textures?"
+> "What's causing the low frame rate?"
+
+**Learning:**
+> "Explain what this material's properties do"
+> "How does the environment map affect the scene?"
+> "What's the difference between a point light and a spot light?"
+> "Show me best practices for three.js lighting"
+
+Just ask naturally - your AI assistant can see what the Inspector sees and will help you understand and modify your 3D scene.
+
+
+## How It Works
+
+When you have the Needle Inspector open in Chrome:
+
+1. The Inspector connects to the MCP server running locally (`localhost:8424`)
+2. Your AI assistant can query the Inspector for scene information
+3. The AI sees the same hierarchy, objects, and properties that you see
+4. When you ask the AI to make changes, it sends commands through the Inspector
+5. Changes appear instantly in your browser
+
+This creates a powerful workflow where you can use natural language to explore and modify complex 3D scenes without manually clicking through the Inspector interface.
+
+
+## Troubleshooting
+
+**Claude Desktop not connecting?**
+- Quit Claude completely and restart it (not just close the window)
+- Look for the 🔌 icon in the bottom-right corner - that means it's working
+- Make sure the MCP server is running: `npx needle-cloud start-server`
+- Double-check you followed the setup steps above
+
+**Cursor not seeing Needle?**
+- Make sure you're in Agent Mode (not Ask Mode)
+- Try restarting Cursor
+- Check that you created the `.cursor/mcp.json` file in your project
+- Verify the MCP server is running
+
+**VS Code not working?**
+- Make sure you have a recent version of VS Code (1.102 or newer)
+- Check that GitHub Copilot is active
+- Verify the MCP server is running
+
+**Can't see scene information?**
+- Open the Needle Inspector extension in your browser
+- Make sure you're viewing a page with a three.js scene
+- The Inspector should show the scene hierarchy - if not, try refreshing the page
+- Check the browser console for any error messages
+
+**AI says it can't access the scene:**
+- Verify the Needle Inspector is open and showing your scene
+- Make sure the MCP server is running (`npx needle-cloud start-server`)
+- Try closing and reopening the Inspector
+- Check that your AI tool is properly configured with the MCP server URL
+
+
+## Example Workflow
+
+Here's a typical workflow using AI with the Needle Inspector:
+
+1. **Open your scene**: Load a webpage with your three.js project
+2. **Launch Inspector**: Click the Needle Inspector extension icon
+3. **Ask for an overview**: *"What's in this scene?"*
+4. **Explore specifics**: *"Show me the properties of the main camera"*
+5. **Make changes**: *"Adjust the fog density to 0.02"*
+6. **Get suggestions**: *"How can I improve performance here?"*
+7. **Learn**: *"Explain what the roughness property does on this material"*
+
+The AI becomes your assistant, helping you understand, debug, and improve your 3D content through conversation.
+
+
+## What's Next?
+
+Now that you're connected:
+- Open the Needle Inspector on any three.js website
+- Try asking about the scene structure
+- Get AI help with tweaking materials and lighting
+- Ask for optimization suggestions
+- Learn three.js concepts by exploring real examples
+
+For more help:
+- [Needle Engine Docs](/index.md)
+- [Needle Inspector Guide](../three/needle-devtools-for-threejs-chrome-extension.md)
+- [three.js Integration](../three/index.md)
+
+:::tip Using Needle Engine?
+The Inspector has special features when used with Needle Engine projects, and the AI can help you work with Needle-specific components, networking, and XR features.
+:::
+
+Source: https://engine.needle.tools/docs/ai/needle-mcp-server.html
 
 ---
 title: Needle Engine for Blender
@@ -7584,9 +8009,33 @@ Source: https://engine.needle.tools/docs/reference/typescript-decorators.html
     font-size: 2em;
     font-weight: 100;">
     <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> +
+    <!-- <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> + -->
     <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
 </div>
+
+# Needle Engine is three.js
+
+Needle Engine is built on top of [three.js](https://threejs.org/) and provides a component-based architecture for creating interactive 3D web experiences. **All three.js APIs remain fully accessible** – you can write vanilla three.js code, use any three.js-compatible library, or mix and match as needed.
+
+The key benefits of using Needle Engine over vanilla three.js include:
+- **Component system** for organizing and reusing 3D logic
+- **Built-in features** like physics, XR, networking, and particles
+- **Editor integrations** with Unity and Blender for visual scene creation
+- **Optimized build pipeline** with automatic 3D asset optimization
+- **Faster development** with less boilerplate
+
+Whether you're building a simple scene with pure three.js or a complex application with Needle's components, you have complete flexibility. The component system is an enhancement, not a replacement – use what makes sense for your project.
+
+**On this page**, you'll learn how to use Needle Engine with vanilla JavaScript and HTML – perfect for integrating 3D into existing web projects or building from scratch without a 3D editor.
+
+**Want visual editing?** Check out our editor integrations:
+- [Unity Integration](/unity/index.md) – Full-featured 3D editor with C# scripting support
+- [Blender Integration](/blender/index.md) – Open-source 3D creation suite with Python scripting
+
+:::tip Inspect and debug with Needle Inspector
+Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning from other developers' work.
+:::
+
 
 # \<needle-engine> web component
 
@@ -7624,6 +8073,108 @@ Needle Engine provides an easy-to-use web component that can be used to display 
 
 
 [View needle-engine attributes](/reference/needle-engine-attributes.md)
+
+### Extending with vanilla three.js
+
+The web component works seamlessly with vanilla three.js code. Use Needle Engine's lifecycle hooks to access the scene and add your own three.js objects, modify materials, or write custom logic.
+
+**Adding objects with `onStart`:**
+
+```html
+<!-- Import Needle Engine -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+
+<!-- Add the web component -->
+<needle-engine src="your-scene.glb"></needle-engine>
+
+<!-- Extend with vanilla three.js -->
+<script type="module">
+  import { onStart } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js';
+  import * as THREE from 'three';
+
+  onStart(context => {
+    // Access the three.js scene
+    console.log("Scene loaded:", context.scene);
+
+    // Add objects using vanilla three.js
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    cube.position.set(0, 0.5, 0);
+
+    context.scene.add(cube);
+  });
+</script>
+```
+
+**Animating objects with `onUpdate`:**
+
+```typescript
+import { onStart, onUpdate } from '@needle-tools/engine';
+import * as THREE from 'three';
+
+let rotatingCube;
+
+onStart(context => {
+  // Create a rotating cube
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+  rotatingCube = new THREE.Mesh(geometry, material);
+  context.scene.add(rotatingCube);
+});
+
+onUpdate(context => {
+  // Rotate every frame using deltaTime
+  if (rotatingCube) {
+    rotatingCube.rotation.y += context.time.deltaTime;
+  }
+});
+```
+
+**Modifying loaded scene objects:**
+
+```typescript
+import { onStart } from '@needle-tools/engine';
+
+onStart(context => {
+  // Find and modify objects from your loaded glb
+  const myObject = context.scene.getObjectByName("MyObjectName");
+  if (myObject) {
+    myObject.position.y = 2;
+    myObject.scale.setScalar(1.5);
+  }
+
+  // Or traverse the entire scene
+  context.scene.traverse(obj => {
+    if (obj.isMesh && obj.material) {
+      // Modify all materials in the scene
+      obj.material.metalness = 0.5;
+      obj.material.roughness = 0.3;
+    }
+  });
+});
+```
+
+**Available lifecycle hooks:**
+
+| Hook | When it's called |
+| --- | --- |
+| `onInitialized(callback)` | When the context is initialized (before first frame) |
+| `onStart(callback)` | At the beginning of the first frame after scene loads |
+| `onUpdate(callback)` | Every frame (perfect for animations) |
+| `onBeforeRender(callback)` | Before the scene renders |
+| `onAfterRender(callback)` | After the scene renders |
+
+All hooks provide the `context` object with access to:
+- `context.scene` - The three.js Scene
+- `context.camera` - The active Camera
+- `context.renderer` - The WebGLRenderer
+- `context.time` - Time data (deltaTime, frame count, etc.)
+- And much more...
+
+:::tip Learn more about scripting
+See the [Scripting documentation](/scripting.md#hooks) for detailed information about lifecycle hooks and the [Scripting Examples](/scripting-examples.md) for more code samples.
+:::
 
 :::tip Scripting support
 Once you outgrow the [configuration options of the web component](/reference/needle-engine-attributes.md), you can extend it with custom scripts and components, and full programmatic scene graph access.
@@ -7702,6 +8253,7 @@ A large collection of examples are also available in our [Needle Engine Stackbli
 
 - [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
 - [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
+- [Use Needle DevTools for three.js to inspect and debug your scenes](./needle-devtools-for-threejs-chrome-extension.md)
 
 
 :::tip Using Needle with Unity or Blender
@@ -7709,6 +8261,161 @@ Did you know that Needle Engine seamlessly integrates in Blender and Unity? This
 :::
 
 Source: https://engine.needle.tools/docs/three/index.html
+
+<br/>
+
+<div class="centered" style="display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 2em;
+    font-weight: 100;">
+    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/> +
+    <img src="/imgs/chrome-logo.webp" style="max-height:70px;" title="Chrome Logo" alt="Chrome Logo"/>
+</div>
+
+# Needle Inspector — DevTools for three.js
+
+The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects directly in your browser. Think of it as the browser's built-in inspector, but specifically designed for 3D scenes.
+
+
+<video-embed src="https://www.youtube.com/watch?v=zSFqZSqzGGw" />
+
+### Quick Start
+
+1. Install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)
+2. Enable the inspector by clicking the Needle icon in the browser toolbar
+3. Navigate to any webpage with a three.js scene
+4. The inspector will automatically detect the scene and appear
+5. Start exploring your 3D content!
+
+:::tip Works on any three.js website
+The Needle Inspector works on **any** website using three.js, react-three-fiber, or Needle Engine – not just your own projects. Use it to learn from other developers' work or debug production sites.
+:::
+
+
+## Features
+
+### Real-time Scene Inspection
+
+The inspector gives you a complete view of your 3D scene hierarchy, similar to how the browser's Elements panel shows your HTML structure.
+
+- **Scene Hierarchy**: Browse through all objects, meshes, lights, and cameras in an expandable tree view
+- **Search & Filter**: Quickly find specific objects by name or type
+- **Live Updates**: See changes to your scene in real-time as they happen
+
+### Property Editing
+
+Edit any property of your 3D objects directly in the browser – no need to reload or rebuild your project.
+
+- **Transform Controls**: Adjust position, rotation, and scale with intuitive number inputs
+- **Material Properties**: Change colors, textures, opacity, and rendering settings
+- **Boolean Toggles**: Show/hide objects, enable/disable features
+- **Texture Inspection**: View and analyze texture properties
+
+All changes are applied instantly to the running scene, making it perfect for tweaking values until they look just right.
+
+### Performance Monitoring
+
+Keep track of your scene's performance with built-in stats:
+
+- **FPS Counter**: Monitor frame rate in real-time
+- **Scene Statistics**: View object counts, triangle counts, and geometry stats
+- **Download Size**: See estimated bandwidth usage
+
+### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
+
+
+
+Connect the inspector to AI tools like Claude or Cursor for intelligent debugging and development assistance.
+
+- **MCP Integration**: Exposes inspector capabilities to AI assistants
+- **Natural Language Queries**: Ask questions about your scene
+- **Automated Analysis**: Get suggestions for optimization and improvements
+
+Setup is simple:
+```bash
+npx needle-cloud start
+```
+
+Then connect your AI tool to explore your scene with natural language.   
+**Learn how to connect your local AI tools**: [Needle MCP documentation](../ai/needle-mcp-server).
+
+
+### Export Changes
+
+Made some tweaks you want to keep? Export your changes for later use:
+
+- **JSON Export**: Save property modifications as structured data
+- **Text Export**: Get a readable summary of your changes
+- **Version Control**: Perfect for sharing modifications with your team
+
+## How It Works
+
+The Needle Inspector automatically detects three.js scenes on any webpage you visit. When a scene is found:
+
+1. An inspector panel appears showing the scene hierarchy
+2. Click any object to view and edit its properties
+3. Changes are applied immediately to the live scene
+4. Use the search and filter tools to navigate complex scenes
+
+### Supported Platforms
+
+- three.js (all versions)
+- react-three-fiber
+- Needle Engine
+- A-frame (via three.js)
+- Threlte
+- Any three.js-based framework
+
+## Installation
+
+1. Visit the [Needle Inspector page on the Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)
+2. Ensure you are using Google Chrome or a Chromium-based browser
+3. Click "Add to Chrome" and you're ready to go!
+
+## Usage Tips
+
+:::tip Toggle the inspector
+Click the Needle Inspector extension icon to show or hide the inspector panel at any time.
+:::
+
+:::tip Multiple scenes
+If a page has multiple three.js scenes, you can switch between them using the scene selector at the top of the inspector.
+:::
+
+:::tip Inspect in isolation
+Right-click any object in the hierarchy and select "Inspect" to view it in an isolated 3D view, making it easier to focus on specific parts of your scene.
+:::
+
+## Use Cases
+
+### Development & Debugging
+- Quickly test different property values without recompiling
+- Debug complex scene hierarchies
+- Identify performance bottlenecks
+
+### Learning & Exploration
+- Inspect how other developers build their scenes
+- Understand three.js best practices by examining production sites
+- Learn new techniques by exploring example projects
+
+### Optimization
+- Monitor performance metrics
+- Identify heavy objects or excessive geometry
+- Test optimization strategies in real-time
+
+## Next Steps
+
+- [Learn about Needle Engine](/index.md)
+- [Explore three.js integration](/three/index.md)
+- [Get started with Needle in Unity](/unity/index.md)
+- [Get started with Needle in Blender](/blender/index.md)
+
+:::tip Using Needle Engine?
+The inspector has special features when used with Needle Engine projects, including component editing, networking inspection, and XR debugging tools.
+:::
+
+Source: https://engine.needle.tools/docs/three/needle-devtools-for-threejs-chrome-extension.html
 
 # Editor Sync
 
@@ -7955,6 +8662,20 @@ All notable changes to this package will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [4.12.0-beta.1] - 2025-12-04
+- **NEW:** Intellisense support for the `<needle-engine>` web component and its attributes, both in HTML and in code. The `custom-elements.json` allows for VSCode intellisense support, while `HTMLElementTagNameMap` and `get/setAttribute` overloads bring code completion and documentation.
+- Add: exposed `createCollider` API for the Rapier physics engine
+- Add: an `beforeLODExport` callback for USDZ export. This allows overriding which LOD level gets exported per object.
+- Add: `?spector=#frame` URL parameter to enable a Spector.js capture on the specified frame number after page load. Make sure to install the [Spector.js browser extension](https://chromewebstore.google.com/detail/spectorjs/denbgaamihkadbghdceggmchnflmhpmk?pli=1). You can optionally specify a frame number for capturing: `?spector=15`.
+- Add: auto-registration of custom elements for easier discovery of available web components in Needle Engine. You can disable this feature by setting `noCustomElementData` to false in vite config. To manually register custom elements data, add it to your workspace or `.vscode/settings.json` via the `html.customData` setting.
+- Improve: detection of user interactions to enable media playback
+- Improve: JSDoc documentation for Everywhere Actions and other components
+- Fix: issue with callbacks on freshly destroyed components when leaving XR sessions
+- Fix: Instancing issue with growing vertex/index buffers when not necessary
+- Fix: Instancing and texture LODs
+- Fix: Issue with `<needle-engine>` element being moved in the DOM
+- Fix: Better type declarations in package.json
 
 ## [4.11.5] - 2025-10-31
 - Fix: Timeline cloning with `instantiate` ([forum 2733](<https://forum.needle.tools/t/2733>))
@@ -8567,21 +9288,7 @@ Currently `loading-blur` is disabled by default but can simply be enabled:
 - Fix: Objects spawned with `syncedInstantiate` should automatically be removed when disconnecting from the networking room
 - Fix: Issue where objects rendered with instancing enabled were not visible in screenshots
 
-## [4.0.0-alpha] - 2024-12-09
-- Add: Builds can now be compressed on Needle Cloud instead of locally. Set the `NEEDLE_CLOUD_TOKEN` environment variable to your Cloud access token to enable this. This allows running compression in CI build pipelines, for example in a Github Action. Needle Cloud access tokens can be obtained on https://cloud.needle.tools/team.
-- Add: `DropListener` now optionally supports networking when `allowNetworking` is on. Dropped files will be network-synced if the file size does not exceed a certain size (50 MB for projects on paid plans; 5 MB for projects free plans).
-- Fix: Previously, when changing a `@syncField` property, only the last changed property was synchronized to the server. This is now fixed. Note that this is a **breaking change**: previously networked server state with the `@syncField` attribute in Needle Engine 3.x projects will not be loaded in Needle Engine 4.0.
-- Change: `EventList` now takes a generic type code hints when using `myEventList.addEventListener(...)` e.g. `new EventList<string>()` 
-- Change: The default networking server is now located at `networking.needle.tools`
-- Change: The `DropListener` API has changed
-- Change: OrbitControls `useKeys` is now false by default since the underlying three.js OrbitControls incorrectly capture ALL keyboard events on the page.
-- Change: Loading speed improvements and improved Lighthouse score
-- Change: md5 hashing results are now S3-compatible
-
-## [3.51.1] - 2024-12-09
-- Fix: DragControls snap to surface setting should use world normal
-- Fix: Needle Menu missing focus-visible for overflow menu button
-- Fix: Needle Menu :focus-...
+## [4.0.0-alpha] ...
 
 
 
@@ -8795,11 +9502,16 @@ These features allow creating real-time collaborative applications, virtual worl
 
 ### Does Needle Engine support Augmented Reality on Android and iOS?
 
-**Yes.** Needle Engine supports AR on Android and iOS right from the browser. Where available, we use WebXR, which brings VR and AR to browsers on devices like Android phones and Quest headsets. For iOS devices, which currently lack WebXR support, we convert your scene on-device to interactive USDZ, the format required for Apple QuickLook. 
-                    
-Our **Everywhere Actions** allow creating interactive apps for all platforms without writing any code.
+**Yes! Needle Engine supports AR on Android and iOS** right from the browser, with full WebXR support on both platforms.
 
-[**Learn More**: AR Documentation](https://engine.needle.tools/docs/xr.html)
+**Android:** Full WebXR AR support in Chrome and Firefox browsers.
+
+**iOS:** Needle Engine now provides full WebXR support on iPhone and iPad through App Clip technology (powered by ARKit). Users can experience your WebXR AR content instantly via QR codes, links, or smart app banners without installing an app. No code changes required – your existing WebXR scenes work automatically on iOS, bringing iOS AR on par with Android.
+
+**visionOS:** On Apple Vision Pro, we automatically use interactive USDZ/QuickLook for AR experiences, leveraging Apple's native 3D format. This feature is powered by Needle Engine's [Everywhere Actions](https://engine.needle.tools/docs/how-to-guides/everywhere-actions/), allowing for rich interactivity on all platforms.
+
+[**Learn More**: iOS WebXR with App Clips](https://engine.needle.tools/docs/how-to-guides/xr/ios-webxr-app-clip.html)
+[**Learn More**: AR Documentation](https://engine.needle.tools/docs/how-to-guides/xr/)
 [**Learn More**: Everywhere Actions](https://engine.needle.tools/docs/everywhere-actions.html)
                     
 

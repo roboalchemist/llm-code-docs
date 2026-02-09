@@ -14,15 +14,10 @@ Use the `name` prop to display an icon:
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<caution to="/docs/getting-started/integrations/icons/nuxt#collections">
-
-It's highly recommended to install the icons collections you need, read more about this.
-
-</caution>
-</template>
-</framework-only>
+**Nuxt:**
+> [!CAUTION]
+> See: /docs/getting-started/integrations/icons/nuxt#collections
+> It's highly recommended to install the icons collections you need, read more about this.
 
 ## Examples
 
@@ -79,7 +74,7 @@ import IconLightbulb from '~icons/lucide/lightbulb'
  * Props for the Icon component
  */
 interface IconProps {
-  name: string | object;
+  name: any;
   mode?: "svg" | "css" | undefined;
   size?: string | number | undefined;
   customize?: ((content: string, name?: string | undefined, prefix?: string | undefined, provider?: string | undefined) => string) | undefined;
@@ -88,8 +83,4 @@ interface IconProps {
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

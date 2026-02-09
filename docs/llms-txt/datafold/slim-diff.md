@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/best-practices/slim-diff.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Slim Diff
 
 > Choose which downstream tables to diff to optimize time, cost, and performance.

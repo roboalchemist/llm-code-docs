@@ -79,5 +79,5 @@ Relevant pointers:
 - [Advanced indexing language](../reference/writing/indexing-language.html)
 - [Schemas](../basics/schemas.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/add-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add input fields to triggers and actions
 
 > When building in the Platform UI, you'll use the Input Designer to create the form users will input data into, to send to your app's API.

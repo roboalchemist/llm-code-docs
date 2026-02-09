@@ -20,7 +20,7 @@ In the **Account** tab's **Security** section, you can set security requirements
 * Maximum session lifespan
 * Two-factor authentication requirement
 
-**https://www.youtube.com/watch?v=BIL6HqtnvKk on organization accounts.**
+**[See our video tutorial](https://www.youtube.com/watch?v=BIL6HqtnvKk) on organization accounts.**
 
 ## Add users to your organization
 
@@ -38,10 +38,10 @@ To edit the permissions for each role, click on the **Configure permissions** bu
 
 > Each member can only have one role to avoid conflicting permissions.
 
-You can configure individual permissions for each resource type such as Actors, Actor tasks or storage. Bear in mind that if a user has the **read** permission for https://docs.apify.com/platform/storage.md, you cannot prevent them from accessing a particular storage (e.g. a certain https://docs.apify.com/platform/storage.md) - they will have access to all of the organization's storages.
+You can configure individual permissions for each resource type such as Actors, Actor tasks or storage. Bear in mind that if a user has the **read** permission for [storages](https://docs.apify.com/platform/storage.md), you cannot prevent them from accessing a particular storage (e.g. a certain [dataset](https://docs.apify.com/platform/storage.md)) - they will have access to all of the organization's storages.
 
 **Some permissions have dependencies**. For example, if someone has the **Actor run** permission, it is likely they will also need the **storage write** permission, so they can store the results from their Actor runs.
 
 ![Configure permissions](/assets/images/configure-permissions-b8534ba955f18ce7ae5481e9e7457a5c.png)
 
-https://docs.apify.com/platform/collaboration/list-of-permissions.md that can be granted to Apify resources.
+[See the full list of permissions](https://docs.apify.com/platform/collaboration/list-of-permissions.md) that can be granted to Apify resources.

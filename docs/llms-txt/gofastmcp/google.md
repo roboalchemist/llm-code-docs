@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/google.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google OAuth 🤝 FastMCP
 
 > Secure your FastMCP server with Google OAuth
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.0" />
@@ -195,81 +196,3 @@ mcp = FastMCP(name="Production Google App", auth=auth_provider)
 
   For complete details on these parameters, see the [OAuth Proxy documentation](/servers/auth/oauth-proxy#configuration-parameters).
 </Note>
-
-## Environment Variables
-
-<VersionBadge version="2.12.1" />
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the Google provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.google.GoogleProvider` to use Google authentication.
-  </ParamField>
-</Card>
-
-### Google-Specific Configuration
-
-These environment variables provide default values for the Google provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_CLIENT_ID" required>
-    Your Google OAuth 2.0 Client ID (e.g., `123456789.apps.googleusercontent.com`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_CLIENT_SECRET" required>
-    Your Google OAuth 2.0 Client Secret (e.g., `GOCSPX-abc123...`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_BASE_URL" default="http://localhost:8000">
-    Public URL where OAuth endpoints will be accessible (includes any mount path)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_ISSUER_URL" default="Uses BASE_URL">
-    Issuer URL for OAuth metadata (defaults to `BASE_URL`). Set to root-level URL when mounting under a path prefix to avoid 404 logs. See [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for details.
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_REDIRECT_PATH" default="/auth/callback">
-    Redirect path configured in your Google OAuth Client
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_REQUIRED_SCOPES" default="[]">
-    Comma-, space-, or JSON-separated list of required Google scopes (e.g., `"openid,https://www.googleapis.com/auth/userinfo.email"` or `["openid", "https://www.googleapis.com/auth/userinfo.email"]`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GOOGLE_TIMEOUT_SECONDS" default="10">
-    HTTP request timeout for Google API calls
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Use the Google provider
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.google.GoogleProvider
-
-# Google OAuth credentials
-FASTMCP_SERVER_AUTH_GOOGLE_CLIENT_ID=123456789.apps.googleusercontent.com
-FASTMCP_SERVER_AUTH_GOOGLE_CLIENT_SECRET=GOCSPX-abc123...
-FASTMCP_SERVER_AUTH_GOOGLE_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_GOOGLE_REQUIRED_SCOPES=openid,https://www.googleapis.com/auth/userinfo.email
-```
-
-With environment variables set, your server code simplifies to:
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-
-# Authentication is automatically configured from environment
-mcp = FastMCP(name="Google Secured App")
-
-@mcp.tool
-async def protected_tool(query: str) -> str:
-    """A tool that requires Google authentication to access."""
-    # Your tool implementation here
-    return f"Processing authenticated request: {query}"
-```

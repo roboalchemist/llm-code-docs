@@ -264,5 +264,5 @@ Get the current query access log from the source application (there might be mor
 $ docker exec vespa1 cat /opt/vespa/logs/vespa/access/JsonAccessLog.default
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

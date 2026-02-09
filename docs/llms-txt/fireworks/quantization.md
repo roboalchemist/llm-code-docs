@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/models/quantization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quantization
 
 > Reduce model precision to improve performance and lower costs
@@ -17,13 +21,13 @@ Models may support different numerical precisions like FP16, FP8, BF16, or INT8,
 **Check default precision:**
 
 ```bash  theme={null}
-firectl get model accounts/fireworks/models/llama-v3p1-8b-instruct | grep "Default Precision"
+firectl model get accounts/fireworks/models/llama-v3p1-8b-instruct | grep "Default Precision"
 ```
 
 **Check supported precisions:**
 
 ```bash  theme={null}
-firectl get model accounts/fireworks/models/llama-v3p1-8b-instruct | grep -E "(Supported Precisions|Supported Precisions With Calibration)"
+firectl model get accounts/fireworks/models/llama-v3p1-8b-instruct | grep -E "(Supported Precisions|Supported Precisions With Calibration)"
 ```
 
 The `Precisions` field indicates what precisions the model has been prepared for.
@@ -71,7 +75,7 @@ You can check on the status of preparation by running:
 <Tabs>
   <Tab title="firectl">
     ```bash  theme={null}
-    firectl get model <MODEL_ID>
+    firectl model get <MODEL_ID>
     ```
   </Tab>
 
@@ -106,7 +110,7 @@ By default, creating a deployment uses the FP16 checkpoint. To use a quantized F
 <Tabs>
   <Tab title="firectl">
     ```bash  theme={null}
-    firectl create deployment <MODEL> --accelerator-type NVIDIA_H100_80GB --precision FP8
+    firectl deployment create <MODEL> --accelerator-type NVIDIA_H100_80GB --precision FP8
     ```
   </Tab>
 

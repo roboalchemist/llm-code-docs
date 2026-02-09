@@ -26,9 +26,6 @@ To create a quote in the Stripe Dashboard:
 1. (Optional) Write a memo, and add a custom header and footer. You can set the future default text for the header and footer in the [quote template](https://dashboard.stripe.com/settings/billing/quote).
 1. To preview the quote PDF (which shows the generated quote number) click **Download preview**.
 1. Click **Finalize quote**.
-![Quote editor](https://b.stripecdn.com/docs-statics-srv/assets/create-quote-editor.b0567a67946f35c4844e0979f2bc7019.png)
-
-Quote editor
 
 After you finalize the quote, send it to your customer: 
 

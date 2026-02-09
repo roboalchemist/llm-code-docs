@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/app-connections/aws.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Connection
 
 > Learn how to configure an AWS Connection for Infisical.
@@ -241,7 +245,7 @@ Infisical supports two methods for connecting to AWS.
       <Step title="Setup AWS Connection in Infisical">
         <Tabs>
           <Tab title="Infisical UI">
-            1. Navigate to the **App Connections** page in the desired project.
+            1. Navigate to the **Integrations** tab in the desired project, then select **App Connections**.
                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
 
             2. Select the **AWS Connection** option.
@@ -468,7 +472,7 @@ Infisical supports two methods for connecting to AWS.
       <Step title="Setup AWS Connection in Infisical">
         <Tabs>
           <Tab title="Infisical UI">
-            1. Navigate to the **App Connections** page in the desired project.
+            1. Navigate to the **Integrations** tab in the desired project, then select **App Connections**.
                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
 
             2. Select the **AWS Connection** option.

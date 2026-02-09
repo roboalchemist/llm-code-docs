@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/sso-and-saml.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/sso-and-saml.md
-
-# Source: https://gitbook.com/docs/account-management/sso-and-saml.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/sso-and-saml.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/sso-and-saml.md
 
@@ -20,9 +16,9 @@ While manually managing your organization members is fine for smaller teams or f
 
 ## Single sign-on via email domain
 
-When you create or manage your organisation, you can add a list of email domains that you want to allow to access your GitBook organization. This means that anyone with a verified email address that matches your configured SSO domains will be allowed to join your organization.
+When you create or manage your organization, you can add a list of email domains that you want to allow to access your GitBook organization. This means that anyone with a verified email address that matches your configured SSO domains will be allowed to join your organization.
 
-You can enable email domain SSO in the ’SSO’ section of your organization settings; enter a comma-separated list of email domains you’d like to allow SSO access for and you’re good to go.
+You can enable email domain SSO in the **SSO** section of your organization’s **Settings**; enter a comma-separated list of email domains you’d like to allow SSO access for and you’re good to go.
 
 <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FF860Y1oqJmnsPKOjZ1n2%2Faccount-settings-sso.svg?alt=media&#x26;token=c63d515a-a261-4f6e-b3aa-c39f3d03f0b4" alt="A GitBook screenshot showing how to configure SSO"><figcaption><p>Set up SSO for your organization.</p></figcaption></figure>
 
@@ -42,11 +38,17 @@ By using SSO, your employees will be able to log into GitBook using the familiar
 * You must have administrative permission on the IdP.
 * You must be an administrator of the GitBook organization you want to set SAML up on.
 
-## ​Setup on GitBook <a href="#setup-on-gitbook" id="setup-on-gitbook"></a>
+### ​Set up on GitBook <a href="#setup-on-gitbook" id="setup-on-gitbook"></a>
 
 You must be an [organization admin](https://gitbook.com/docs/member-management/roles#admin) to enable SSO for your GitBook organization.‌
 
 After configuring SSO on your IdP, you will be able to enter metadata. When the setup is successful, administrators will see a confirmation dialog and the URL of the SSO login for end-users will be displayed. **GitBook does not send announcement emails when set up is complete**. It is the responsibility of the administrator to notify company employees (and convey the login URL to them) so they can access GitBook via SSO.‌
+
+{% hint style="info" %}
+Organization admins can still sign in with non-SSO methods, so you may still see Google, GitHub, or email buttons. This is expected, even with **Enforce SSO** enabled.&#x20;
+
+This prevents a lockout from your organization after a bad SSO setup. Admins can always sign in and remove or fix SSO settings.
+{% endhint %}
 
 You’ll need the following from your IdP metadata to register a SAML provider:
 
@@ -55,7 +57,7 @@ You’ll need the following from your IdP metadata to register a SAML provider:
 * A **Single Sign On URL**
 * An **X.509 certificate** – make sure you copy and paste the whole certificate!
 
-## ​Setup on the IdP <a href="#setup-on-the-idp" id="setup-on-the-idp"></a>
+### ​Set up on the IdP <a href="#setup-on-the-idp" id="setup-on-the-idp"></a>
 
 Most SAML 2.0 compliant identity providers require the same information about the service provider (GitBook, in this case) for set up. These values are specific to your GitBook organization and are available in the **Settings -> SSO** tab of the GitBook organization where you want to enable SSO.‌
 
@@ -63,7 +65,7 @@ Most of these values can be copied directly into your IdP to complete configurat
 
 GitBook requires that the **NameID** contain the user’s email address. Technically we are looking for: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` as the Name-ID format – many providers (such as Google) will allow you set a format such as **EMAIL**.
 
-### Custom Attributes
+### Custom attributes
 
 GitBook will pull the following custom attributes from the SAML assert response and use them when creating the user.
 

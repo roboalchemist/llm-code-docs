@@ -1386,8 +1386,8 @@ import { ListItem } from '@mui/material';
 | disablePadding | `bool` | `false` | No |  |
 | divider | `bool` | `false` | No |  |
 | secondaryAction | `node` | - | No |  |
-| slotProps | `{ root?: object }` | `{}` | No |  |
-| slots | `{ root?: elementType }` | `{}` | No |  |
+| slotProps | `{ root?: object, secondaryAction?: func \| object }` | `{}` | No |  |
+| slots | `{ root?: elementType, secondaryAction?: elementType }` | `{}` | No |  |
 | sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
 
 > **Note**: The `ref` is forwarded to the root element (HTMLLIElement).

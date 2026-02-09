@@ -73,7 +73,7 @@ Alternatively above Go example can be created with:
 
 ```bash
 $ mkdir client
-$ x mix todoworld-go -out client
+$ npx add-in todoworld-go -out client
 ```
 
 Run example:
@@ -134,7 +134,7 @@ func main() {
 Override `client/main.go` with the above Go Example: 
 
 ```bash
-$ x mix todoworld-go-ssl -out client
+$ npx add-in todoworld-go-ssl -out client
 ```
 
 Run example:

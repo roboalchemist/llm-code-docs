@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/differences-between-lexical-semantic-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Differences between Lexical and Semantic Search regarding relevancy
 
 When it comes to searching for information in a large corpus of text, there are two main approaches that search engines use: keyword or lexical search and vector semantic similarity search. While both methods aim to retrieve relevant documents, they use different techniques to do so.

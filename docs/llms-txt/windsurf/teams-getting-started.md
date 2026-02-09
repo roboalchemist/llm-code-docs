@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Getting started with Teams and Enterprise
+
+> Set up Teams and Enterprise plans with team management, SSO, analytics, user groups, and priority support for your organization.
 
 Windsurf scales from solo projects to large-scale enterprise codebases. Our Teams and Enterprise plans unlock collaboration features such as team management, Single Sign-On (SSO), advanced analytics, and priority support.
 
@@ -38,16 +30,16 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
   </Step>
 
   <Step title="Manage and invite team members">
-    <Card title="Manage Team Members" horizontal={true} icon="users" href="https://windsurf.com/team/members">
+    <Card title="Manage Team Members" horizontal={true} icon="users" href="https://windsurf.com/team/manage">
       Windsurf makes managing your team easy from one dashboard.
     </Card>
 
-    To add members to your team, first navigate to the [invite page](https://windsurf.com/team/members).
+    To add members to your team, first navigate to the [invite page](https://windsurf.com/team/invite).
 
     Simply click on the "invite" button and then either add via email or share a unique invite link.
   </Step>
 
-  <Step title="Configure team settings (optional)">
+  <Step title="Configure team settings">
     <Card title="Team Settings" horizontal={true} icon="gear" href="https://windsurf.com/team/settings">
       Configurable settings for your team.
     </Card>
@@ -55,12 +47,10 @@ Windsurf scales from solo projects to large-scale enterprise codebases. Our Team
     Select and approve models, MCP servers, SSO configurations, service keys, role management, and more.
   </Step>
 
-  <Step title="Set up Authentication (optional)">
+  <Step title="(Optional) Set up Authentication">
     <Card title="Authentication" horizontal={true} icon="lock" href="/windsurf/accounts/sso-scim">
       Set up SSO, SCIM, Duo, or PingID for your team.
     </Card>
-
-    For Teams plans, SSO must be purchased as an add-on [here](https://windsurf.com/team/members), which also comes with access controls and subteam analytics.
   </Step>
 </Steps>
 
@@ -78,7 +68,7 @@ From here, you can invite and view your team, add SSO, update the number of seat
 
 ## User Groups
 
-<Note>This feature is only available in Enterprise plans and for teams with SSO enabled.</Note>
+<Note>This feature is only available in Enterprise plans.</Note>
 
 Windsurf now supports creating user groups. For each group you can now view analytics per group. You can also configure group administrators who can view analytics for the specific groups they manage.
 

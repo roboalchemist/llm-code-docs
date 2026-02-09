@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/grace-period.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Grace period
 
 > Configure a buffer between invoice generation and finalization to review invoices.

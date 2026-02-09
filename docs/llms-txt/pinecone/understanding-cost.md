@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-cost/understanding-cost.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understanding cost
 
 > Understand how costs are incurred in Pinecone.
@@ -38,6 +42,18 @@ Beyond the monthly minimum, customers are charged for what they use each month.
   </Accordion>
 </AccordionGroup>
 
+## Discounts
+
+Pinecone offers a discount for customers who enroll in an annual plan with an upfront payment. Eligibility requires a minimum annual commitment of \$8,000.
+
+Throughout the contract term, the discount applies to List Price for all Pinecone services, excluding Storage and Support. Any usage that exceeds the prepaid credits will be billed at full List Price and will not qualify for the contractual discount.
+
+Customers on the Standard and Enterprise pay-as-you-go plans may upgrade directly by navigating in the Pinecone console to **[Settings > Billing > Plans](https://app.pinecone.io/organizations/-/settings/billing/plans)**.
+
+<Note>
+  The self-serve annual plan is not available through cloud marketplace billing. To purchase an annual plan through a cloud marketplace, contact [ar@pinecone.io](mailto:ar@pinecone.io).
+</Note>
+
 ## Serverless indexes
 
 With serverless indexes, you pay for the amount of data stored and operations performed, based on three usage metrics: [read units](#read-units), [write units](#write-units), and [storage](#storage).
@@ -56,40 +72,23 @@ Read units (RUs) measure the compute, I/O, and network resources consumed by the
   Read requests return the number of RUs used. You can use this information to [monitor read costs](/guides/manage-cost/monitor-usage-and-costs#read-units).
 </Tip>
 
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
+
 #### Query
 
-The cost of a query scales linearly with the size of the targeted namespace. Specifically, a query uses 1 RU for every 1 GB of [namespace size](#storage), with a minimum of 0.25 RUs per query.
+The cost of a query scales linearly with the size of the targeted namespace. Specifically, a query uses 1 RU for every 1 GB of namespace size, with a minimum of 0.25 RUs per query.
 
-For example, the following table contains the RU cost of searching indexes at different namespace sizes:
+| Namespace size | Read units per query |
+| :------------- | :------------------- |
+| \< 0.25 GB     | 0.25 RUs (minimum)   |
+| 1 GB           | 1 RU                 |
+| 10 GB          | 10 RUs               |
+| 50 GB          | 50 RUs               |
+| 100 GB         | 100 RUs              |
 
-<Tabs>
-  <Tab title="Dense index">
-    | Records    | Dense dimension | Avg. metadata size | Avg. record size | Namespace size | RUs  |
-    | :--------- | :-------------- | :----------------- | :--------------- | :------------- | :--- |
-    | 500,000    | 768             | 500 bytes          | 3.57 KB          | 1.78 GB        | 1.78 |
-    | 1,000,000  | 1536            | 1000 bytes         | 7.14 KB          | 7.14 GB        | 7.14 |
-    | 5,000,000  | 1024            | 15,000 bytes       | 19.10 KB         | 95.5 GB        | 95.5 |
-    | 10,000,000 | 1536            | 1000 bytes         | 7.14 KB          | 71.4 GB        | 71.4 |
-  </Tab>
-
-  <Tab title="Sparse index">
-    | Records    | Sparse non-zero values | Avg. metadata size | Avg. record size | Namespace size | RUs  |
-    | :--------- | :--------------------- | :----------------- | :--------------- | :------------- | :--- |
-    | 500,000    | 10                     | 500 bytes          | 0.09 KB          | 0.045 GB       | 0.25 |
-    | 1,000,000  | 50                     | 1000 bytes         | 1.45 KB          | 1.45 GB        | 1.45 |
-    | 5,000,000  | 100                    | 15,000 bytes       | 15.9 KB          | 79.5 GB        | 79.5 |
-    | 10,000,000 | 50                     | 1000 bytes         | 1.45 KB          | 14.5 GB        | 14.5 |
-  </Tab>
-
-  <Tab title="Hybrid index">
-    | Records    | Dense dimension | Sparse non-zero values | Avg. metadata size | Avg. record size | Namespace size | RUs  |
-    | :--------- | :-------------- | :--------------------- | :----------------- | :--------------- | :------------- | :--- |
-    | 500,000    | 768             | 10                     | 500 bytes          | 3.67 KB          | 1.83 GB        | 1.83 |
-    | 1,000,000  | 1536            | 50                     | 1000 bytes         | 7.34 KB          | 7.34 GB        | 7.34 |
-    | 5,000,000  | 1024            | 100                    | 15,000 bytes       | 19.44 KB         | 97.2 GB        | 97.2 |
-    | 10,000,000 | 1536            | 50                     | 1000 bytes         | 7.34 KB          | 73.4 GB        | 73.4 |
-  </Tab>
-</Tabs>
+To learn how to calculate your namespace size, see [Storage](#storage).
 
 <Note>
   Parameters that affect the size of the query response, such as `top_k`, `include_metadata`, and `include_values`, are not relevant for query cost; only the size of the namespace determines the number of RUs used.
@@ -179,49 +178,121 @@ Specifying a non-existent ID or adding the same ID more than once does not incre
 
 ### Storage
 
-Storage costs are based on the size of an index on a per-Gigabyte (GB) monthly rate. For the latest storage pricing rates, see [Pricing](https://www.pinecone.io/pricing/?plan=standard\&provider=aws\&plans=database\&scrollTo=product-pricing-modal-section).
+Storage costs are based on the size of an index on a per-gigabyte (GB) monthly rate. The size of an index is defined as the total size of its records across all namespaces. For the latest storage pricing rates, see [Pricing](https://www.pinecone.io/pricing/).
 
-* The size of an index is defined as the total size of its records across all namespaces.
+A record can include a dense vector, a sparse vector, or both. Use the formula for your index type to calculate total size:
 
-* The size of a single record is defined as the sum of the following components:
+<div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-4">
+  <Tabs>
+    <Tab title="Dense index">
+      A [dense index](/guides/index-data/indexing-overview#dense-indexes) contains records with one dense vector each.
 
-  * ID size
-  * Dense vector size (equal to 4 \* the dense dimensions)
-  * Sparse vector size (equal to 9 \* each non-zero sparse value)
-  * Total metadata size (equal to the total size of all metadata fields)
+      <Note>
+        Dense index records can also contain sparse vectors (when the index metric is set to `dotproduct`), which can be useful for [hybrid search](/guides/search/hybrid-search#use-a-single-hybrid-index). To learn how to calculate the size of a hybrid index, see [Hybrid index](#hybrid-index).
+      </Note>
 
-  Sparse vector size is relevant only for [sparse indexes](/guides/index-data/indexing-overview#sparse-indexes) and [hybrid indexes](/guides/search/hybrid-search#use-a-single-hybrid-index).
+      **Calculate dense index size (assuming no sparse vectors)**
 
-The following tables demonstrate index sizes at different record counts:
+      ```
+      Index size = Number of records × (
+                     ID size + 
+                     Metadata size +
+                     Dense vector dimensions × 4 bytes
+                   )
+      ```
 
-<Tabs>
-  <Tab title="Dense index">
-    | Records    | Dense dimension | Avg. metadata size | Avg. record size | Namespace size |
-    | :--------- | :-------------- | :----------------- | :--------------- | :------------- |
-    | 500,000    | 768             | 500 bytes          | 3.57 KB          | 1.78 GB        |
-    | 1,000,000  | 1536            | 1000 bytes         | 7.14 KB          | 7.14 GB        |
-    | 5,000,000  | 1024            | 15,000 bytes       | 19.10 KB         | 95.5 GB        |
-    | 10,000,000 | 1536            | 1000 bytes         | 7.14 KB          | 71.4 GB        |
-  </Tab>
+      Where:
 
-  <Tab title="Sparse index">
-    | Records    | Sparse non-zero values | Avg. metadata size | Avg. record size | Namespace size |
-    | :--------- | :--------------------- | :----------------- | :--------------- | :------------- |
-    | 500,000    | 10                     | 500 bytes          | 0.09 KB          | 0.045 GB       |
-    | 1,000,000  | 50                     | 1000 bytes         | 1.45 KB          | 1.45 GB        |
-    | 5,000,000  | 100                    | 15,000 bytes       | 15.9 KB          | 79.5 GB        |
-    | 10,000,000 | 50                     | 1000 bytes         | 1.45 KB          | 14.5 GB        |
-  </Tab>
+      * `ID size` and `Metadata size` are measured in bytes, averaged across all records.
+      * Each `Dense vector dimension` uses 4 bytes.
 
-  <Tab title="Hybrid index">
-    | Records    | Dense dimension | Sparse non-zero values | Avg. metadata size | Avg. record size | Namespace size |
-    | :--------- | :-------------- | :--------------------- | :----------------- | :--------------- | :------------- |
-    | 500,000    | 768             | 10                     | 500 bytes          | 3.67 KB          | 1.83 GB        |
-    | 1,000,000  | 1536            | 50                     | 1000 bytes         | 7.34 KB          | 7.34 GB        |
-    | 5,000,000  | 1024            | 100                    | 15,000 bytes       | 19.44 KB         | 97.2 GB        |
-    | 10,000,000 | 1536            | 50                     | 1000 bytes         | 7.34 KB          | 73.4 GB        |
-  </Tab>
-</Tabs>
+      **Example dense index calculations**
+
+      These examples assume 8-byte IDs:
+
+      | Records    | Dense vector dimensions | Avg metadata size | Index size |
+      | :--------- | :---------------------- | :---------------- | :--------- |
+      | 500,000    | 768                     | 500 bytes         | 1.79 GB    |
+      | 1,000,000  | 1536                    | 1,000 bytes       | 7.15 GB    |
+      | 5,000,000  | 1024                    | 15,000 bytes      | 95.5 GB    |
+      | 10,000,000 | 1536                    | 1,000 bytes       | 71.5 GB    |
+
+      <Note>
+        Example: 500,000 records × (8-byte ID + (768 dense vector dimensions × 4 bytes) + 500 bytes of metadata) = 1.79 GB
+      </Note>
+    </Tab>
+
+    <Tab title="Sparse index">
+      A [sparse index](/guides/index-data/indexing-overview#sparse-indexes) contains records with one sparse vector each.
+
+      **Calculate sparse index size**
+
+      ```
+      Index size = Number of records × (
+                     ID size + 
+                     Metadata size +
+                     Number of non-zero sparse values × 8 bytes
+                   )
+      ```
+
+      Where:
+
+      * `ID size` and `Metadata size` are measured in bytes, averaged across all records.
+      * `Number of non-zero sparse values`: Average number across all records. To find the count for a single record, check the length of the sparse vector's `indices` or `values` array. Each non-zero value uses 8 bytes.
+
+      **Example sparse index calculations**
+
+      These examples assume 8-byte IDs:
+
+      | Records    | Avg number of non-zero sparse values | Avg metadata size | Index size |
+      | :--------- | :----------------------------------- | :---------------- | :--------- |
+      | 500,000    | 10                                   | 500 bytes         | 0.29 GB    |
+      | 1,000,000  | 50                                   | 1,000 bytes       | 1.41 GB    |
+      | 5,000,000  | 100                                  | 15,000 bytes      | 79.0 GB    |
+      | 10,000,000 | 50                                   | 1,000 bytes       | 14.1 GB    |
+
+      <Note>
+        Example: 500,000 records × (8-byte ID + (10 non-zero sparse values × 8 bytes) + 500 bytes of metadata) = 0.29 GB
+      </Note>
+    </Tab>
+
+    <Tab title="Hybrid index">
+      A [hybrid index](/guides/search/hybrid-search#use-a-single-hybrid-index) contains records that each have one dense vector and an optional sparse vector.
+
+      **Calculate hybrid index size**
+
+      ```
+      Index size = Number of records × (
+                     ID size + 
+                     Metadata size +
+                     Dense vector dimensions × 4 bytes + 
+                     Number of non-zero sparse values × 8 bytes
+                   )
+      ```
+
+      Where:
+
+      * `ID size` and `Metadata size` are measured in bytes, averaged across all records.
+      * Each `Dense vector dimension` uses 4 bytes.
+      * `Number of non-zero sparse values`: Average number across all records, including those without sparse vectors. To find the count for a single record, check the length of the sparse vector's `indices` or `values` array. Each non-zero value uses 8 bytes.
+
+      **Example hybrid index calculations**
+
+      These examples assume 8-byte IDs:
+
+      | Records    | Dense vector dimensions | Avg number of non-zero sparse values | Avg metadata size | Index size |
+      | :--------- | :---------------------- | :----------------------------------- | :---------------- | :--------- |
+      | 500,000    | 768                     | 10                                   | 500 bytes         | 1.83 GB    |
+      | 1,000,000  | 1536                    | 50                                   | 1,000 bytes       | 7.54 GB    |
+      | 5,000,000  | 1024                    | 100                                  | 15,000 bytes      | 99.5 GB    |
+      | 10,000,000 | 1536                    | 50                                   | 1,000 bytes       | 75.4 GB    |
+
+      <Note>
+        Example: 500,000 records × (8-byte ID + (768 dense vector dimensions × 4 bytes) + (10 non-zero sparse values × 8 bytes) + 500 bytes of metadata) = 1.83 GB
+      </Note>
+    </Tab>
+  </Tabs>
+</div>
 
 ## Imports
 
@@ -233,7 +304,7 @@ For the latest import pricing rates, see [Pricing](https://www.pinecone.io/prici
 
 ## Backups and restores
 
-A [backup](/guides/manage-data/backups-overview) is a static copy of a serverless index. Both the cost of storing a backup and [restoring an index](/guides/manage-data/restore-an-index) from a backup is based on the size of the index. For the latest backup and restore pricing rates, see [Pricing](https://www.pinecone.io/pricing/?plan=standard\&provider=aws\&plans=database\&scrollTo=product-pricing-modal-section).
+A [backup](/guides/manage-data/backups-overview) is a static copy of a serverless index. Both the cost of storing a backup and [restoring an index](/guides/manage-data/restore-an-index) from a backup is based on the size of the index. For the latest backup and restore pricing rates, see [Pricing](https://www.pinecone.io/pricing/).
 
 ## Embedding
 
@@ -243,7 +314,7 @@ Embedding costs are determined by how many [tokens](https://www.pinecone.io/lear
 
 For example, if you generate embeddings for the query, "What is the maximum diameter of a red pine?", Pinecone Inference generates 10 tokens, then converts them into an embedding. If the price per token for your billing plan is \$.08 per million tokens, then this API call costs \$.00001.
 
-To learn more about tokenization, see [Choosing an embedding model](https://www.pinecone.io/learn/series/rag/embedding-models-rundown/). For the latest embed pricing rates, see [Pricing](https://www.pinecone.io/pricing/?plan=standard\&provider=aws\&plans=inference\&scrollTo=product-pricing-modal-section).
+To learn more about tokenization, see [Choosing an embedding model](https://www.pinecone.io/learn/series/rag/embedding-models-rundown/). For the latest embed pricing rates, see [Pricing](https://www.pinecone.io/pricing/).
 
 <Tip>
   Embedding requests returns the total tokens generated. You can use this information to [monitor and manage embedding costs](/guides/manage-cost/monitor-usage-and-costs#embedding-tokens).
@@ -253,7 +324,7 @@ To learn more about tokenization, see [Choosing an embedding model](https://www.
 
 Pinecone hosts several [reranking models](/guides/search/rerank-results#reranking-models) so it's easy to manage two-stage vector retrieval on a single platform. You can use a hosted model to rerank results as an integrated part of a query, or you can use a hosted model to rerank results as a standalone operation.
 
-Reranking costs are determined by the number of requests to the reranking model. For the latest rerank pricing rates, see [Pricing](https://www.pinecone.io/pricing/?plan=standard\&provider=aws\&plans=inference\&scrollTo=product-pricing-modal-section).
+Reranking costs are determined by the number of requests to the reranking model. For the latest rerank pricing rates, see [Pricing](https://www.pinecone.io/pricing/).
 
 ## Assistant
 

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/messaging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Messaging
 
 We provide various methods to message your customers with the Plain API. You can use this to reach out proactively, build an autoresponder or even to handle things like waiting list access.

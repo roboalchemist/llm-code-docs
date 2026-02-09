@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/bartpho.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/bartpho.md
 
 # BARTpho
 
@@ -10,7 +10,7 @@ You can find all the original checkpoints under the [VinAI](https://huggingface.
 > This model was contributed by [dqnguyen](https://huggingface.co/dqnguyen).
 > Check out the right sidebar for examples of how to apply BARTpho to different language tasks.
 
-The example below demonstrates how to summarize text with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to summarize text with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```python
 import torch
@@ -71,14 +71,14 @@ transformers run --task summarization --model vinai/bartpho-word --device 0
 
 #### transformers.BartphoTokenizer[[transformers.BartphoTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bartpho/tokenization_bartpho.py#L33)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bartpho/tokenization_bartpho.py#L32)
 
-Adapted from [XLMRobertaTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/xlm-roberta#transformers.XLMRobertaTokenizer). Based on [SentencePiece](https://github.com/google/sentencepiece).
+Adapted from [XLMRobertaTokenizer](/docs/transformers/v5.0.0/en/model_doc/xlm-roberta#transformers.XLMRobertaTokenizer). Based on [SentencePiece](https://github.com/google/sentencepiece).
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-build_inputs_with_special_tokenstransformers.BartphoTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bartpho/tokenization_bartpho.py#L161[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": typing.Optional[list[int]] = None"}]- **token_ids_0** (`list[int]`) --
+build_inputs_with_special_tokenstransformers.BartphoTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bartpho/tokenization_bartpho.py#L160[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}]- **token_ids_0** (`list[int]`) --
   List of IDs to which the special tokens will be added.
 - **token_ids_1** (`list[int]`, *optional*) --
   Optional second list of IDs for sequence pairs.0`list[int]`List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
@@ -120,7 +120,7 @@ sp_model (`SentencePieceProcessor`) : The *SentencePiece* processor that is used
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### create_token_type_ids_from_sequences[[transformers.BartphoTokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bartpho/tokenization_bartpho.py#L215)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bartpho/tokenization_bartpho.py#L214)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. BARTPho does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -138,7 +138,7 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### get_special_tokens_mask[[transformers.BartphoTokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bartpho/tokenization_bartpho.py#L187)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bartpho/tokenization_bartpho.py#L186)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.
@@ -158,7 +158,7 @@ already_has_special_tokens (`bool`, *optional*, defaults to `False`) : Whether o
 A list of integers in the range [0, 1]: 1 for a special token, 0 for a sequence token.
 #### get_vocab[[transformers.BartphoTokenizer.get_vocab]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bartpho/tokenization_bartpho.py#L245)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bartpho/tokenization_bartpho.py#L244)
 
 Override to use fairseq vocabulary
 

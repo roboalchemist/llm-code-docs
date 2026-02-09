@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/ui-components/badge.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Badge
 
 > Useful for statuses or when you need to attract attention to something.

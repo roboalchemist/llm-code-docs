@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration/column-remapping.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Column Remapping
 
 > Specify column renaming in your git commit message so Datafold can map renamed columns to their original counterparts in production for accurate comparison.

@@ -8,7 +8,7 @@ Learn how to bring your own custom domain to Stripe Checkout, Payment Links, and
 
 > This is a Stripe-hosted page for when payment-ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/checkout/custom-domains?payment-ui=stripe-hosted.
 
-If you’re using the [Stripe-hosted page](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=stripe-hosted) for Checkout, you can add your own custom domain to Stripe. Adding custom domains is a paid feature. For information about cost, see Checkout’s [Pricing](https://stripe.com/pricing).
+If you’re using the [Stripe-hosted page](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=stripe-hosted) for Checkout, you can add your own custom domain to Stripe. Adding custom domains is a paid feature. For information about cost, see Checkout’s [Pricing](https://stripe.com/pricing).
 
 ## Add your custom domain to the Stripe Dashboard
 
@@ -494,9 +494,11 @@ You receive a notification when your custom domain is added and enabled for test
 
 1. Go to the [Dashboard settings](https://dashboard.stripe.com/settings/custom-domains).
 1. Verify you have an `Added` indicator above your custom domain name.
-1. [Create a payment link](https://docs.stripe.com/payment-links/create.md) in a sandbox.
+1. [Create a payment link](https://docs.stripe.com/payment-links/create.md) in test mode.
 
 You see your new custom domain in the details page of your newly created payment link.
+
+> Adding custom domains is currently not supported in sandboxes.
 
 ## Optional: Removing your custom domain
 

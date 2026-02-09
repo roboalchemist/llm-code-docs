@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/error-handling-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Implementing Error Handling
 
 > Error handling enables you dictate how your integration should function when certain errors are returned from your API.

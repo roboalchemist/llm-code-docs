@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/regression-test-file-format.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/test-agents/regression-testing/regression-test-file-format.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/regression-test-file-format.md
-
 # Regression test file format
 
 A regression test file contains a set of questions, the actual answer to each question, which is the ground truth, and any user properties specific to that answer.&#x20;

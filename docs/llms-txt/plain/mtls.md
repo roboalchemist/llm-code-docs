@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/mtls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # mTLS
 
 All outbound requests made to your **webhook targets** and **customer card endpoints** include a client TLS certificate which you can verify to achieve mutual authentication.

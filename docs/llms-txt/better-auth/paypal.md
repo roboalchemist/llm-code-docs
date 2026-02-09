@@ -4,11 +4,7 @@
 
 Paypal provider setup and usage.
 
-***
 
-title: PayPal
-description: Paypal provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

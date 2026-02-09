@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/searching-your-content.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/searching-your-content.md
-
-# Source: https://gitbook.com/docs/creating-content/searching-your-content.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/searching-your-content.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/searching-your-content.md
 
@@ -20,7 +16,7 @@ You can use quick find to look for specific words or phrases, or you can ask Git
 
 {% hint style="success" %}
 
-### Global search
+#### Global search
 
 If you’re publishing your documentation on [an Ultimate site plan](https://gitbook.com/docs/account-management/plans#site-plans), and add multiple spaces as [site sections](https://gitbook.com/docs/publishing-documentation/site-structure/site-sections), your users will be able to use the **Ask or search** bar to find information across all your site sections.
 {% endhint %}

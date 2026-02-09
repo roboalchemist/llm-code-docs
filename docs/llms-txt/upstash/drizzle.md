@@ -1,18 +1,22 @@
 # Source: https://upstash.com/docs/redis/integrations/drizzle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DrizzleORM with Upstash Redis
 
 ### Quickstart
 
 DrizzleORM provides an `upstashCache()` helper to easily connect with Upstash Redis. To prevent surprises, the cache is always opt-in by default. Nothing is cached until you opt-in for a specific query or enable global caching.
 
-1. **Install the package:**
+First, install the drizzle package:
 
 ```bash  theme={"system"}
-npm install drizzle-orm@cache
+npm install drizzle-orm
 ```
 
-2. **Configure your Drizzle instance:**
+**Configure your Drizzle instance:**
 
 ```ts  theme={"system"}
 import { upstashCache } from "drizzle-orm/cache/upstash"

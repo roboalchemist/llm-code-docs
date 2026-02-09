@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/live-agent-summary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Live Agent Summary - GenAgent
 
 > Learn how to receive summaries from GenerativeAgent conversations.
 
-When using Generative Agent (GA), conversations may need to escalate to human agents. **Live Agent Summary** automatically generates concise summaries of these conversations, giving your agents the key context they need without having to read through lengthy chat transcripts.
+When using GenerativeAgent (GA), conversations may escalate to human agents. **Live Agent Summary** automatically generates concise summaries of these conversations, giving your agents the key context they need without requiring them to read through lengthy chat transcripts.
 
-Live Agent Summary helps to improve Average Handling Time (AHT) by generating concise, structured summaries presented to the agents at handoff. The summary highlights:
+Live Agent Summary helps improve Average Handling Time (AHT) by generating concise, structured summaries that present key information to agents at handoff. The summary highlights:
 
 * Customer intent
 * Key actions taken
@@ -21,9 +25,9 @@ Live Agent Summary helps to improve Average Handling Time (AHT) by generating co
 Live Agent Summary enhances your existing Digital Agent Desk by automatically generating context during escalations:
 
 * **Smart Context Generation**: The system analyzes GA conversations and creates concise summaries when escalations occur
-* **Inline Integration**: Summaries appear directly in the transcript panel with highlight styling, so agents don't need to switch between views
+* **Inline Integration**: The system displays summaries directly in the transcript panel with highlight styling, so agents don't need to switch between views
 * **Complete Context**: Agents maintain access to all standard transcript information (customer profile, conversation history) plus the generated insights inline
-* **Immediate Understanding**: No need to read through entire conversations - key information is highlighted and easily accessible
+* **Immediate Understanding**: No need to read through entire conversations - the system highlights key information and makes it easily accessible
 
 ## Set Up Live Agent Summary
 
@@ -36,7 +40,7 @@ To set up Live Agent Summary, you need to work with ASAPP to enable the feature 
     This involves configuring the summary generation parameters, setting up handoff trigger conditions, and testing the summary output quality.
 
     <Note>
-      Live Agent Summary requires Generative Agent to be configured and operational in your environment.
+      Live Agent Summary requires GenerativeAgent to be configured and operational in your environment.
     </Note>
   </Step>
 
@@ -76,7 +80,7 @@ You may find the following sections helpful in advancing your Digital Agent Desk
     Set up efficient queue management and routing to complement summary capabilities.
   </Card>
 
-  <Card href="/generativeagent" title="Generative Agent">
-    Learn more about the Generative Agent capabilities that power Live Agent Summary.
+  <Card href="/generativeagent" title="GenerativeAgent">
+    Learn more about GenerativeAgent capabilities that power Live Agent Summary.
   </Card>
 </CardGroup>

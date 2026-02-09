@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/groups.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Groups
 
 [Endpoint Reference](/reference/track-group)
@@ -29,17 +33,12 @@ It is helpful to link requests to eachother when building workflows with chains 
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-group \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
-      "group_id": "<GROUP ID>",
-  }'
+      "group_id": "<GROUP ID>"
+    }'
   ```
 </CodeGroup>
 
 Request group information will appear on the dashboard.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

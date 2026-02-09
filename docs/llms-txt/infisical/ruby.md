@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/sdks/languages/ruby.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Ruby SDK
 
 If you're working with Ruby, the official Infisical Ruby SDK package is the easiest way to fetch and work with secrets for your application.

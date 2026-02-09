@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/getting-started/developers/health-check.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Health Check
 
 > Check the operational status of ASAPP's API platform

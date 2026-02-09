@@ -10,16 +10,14 @@ This tutorial shows how to use Warp’s **Rules** to prevent AI agents or collab
 
 {% stepper %}
 {% step %}
-
-### The Problem
+**The Problem**
 
 AI assistants often echo API keys, tokens, or credentials in generated code blocks.\
 When collaborating or screen-sharing, that can expose secrets publicly.
 {% endstep %}
 
 {% step %}
-
-### The Rule Setup
+**The Rule Setup**
 
 Define a simple Rule in Warp that instructs the agent to **never display secrets** in outputs or commands.
 
@@ -44,8 +42,7 @@ This automatically masks sensitive values before the agent or output logs can ac
 {% endstep %}
 
 {% step %}
-
-### Benefits
+**Benefits**
 
 * Protects API keys and credentials from exposure
 * Keeps live streams and demos safe

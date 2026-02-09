@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/use-cases/chatbots.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🤖 Chatbots
 
 Chatbots, especially those powered by Large Language Models (LLMs), have a wide range of use cases, significantly enhancing various aspects of business, education, and personal assistance. Here are some key applications:

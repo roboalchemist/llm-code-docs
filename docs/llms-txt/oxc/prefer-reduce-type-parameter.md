@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/prefer-reduce-type-parameter.md
 ---
-# typescript/prefer-reduce-type-parameter&#x20;
 
 ### What it does
 

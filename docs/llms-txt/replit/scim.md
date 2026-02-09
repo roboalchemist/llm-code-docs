@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/scim.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SCIM
 
 > Learn how to set up and manage SCIM to simplify provisioning and managing user roles within your Replit Enterprise Team.
@@ -68,7 +72,25 @@ SCIM integration provides several advantages for Enterprise teams:
 * Document role allocations for existing Replit users before enabling SCIM
 * Configure groups for each Replit role, keeping in mind that users without a group will default to the **Viewer** role
 * Test your configuration by provisioning a small group of users before enabling bulk provisioning
+* After initial sync, review and configure permissions for custom groups based on your organization's access control needs
+* Dedicate role-control groups to control access levels of provisioned users in Replit and use other push groups for user categorization and bulk permission management
 * Document your SCIM configuration for future reference
+
+## Role Assignment
+
+All provisioned accounts are created in your Replit organization as "Viewers", which grants the most limited set of permissions and no ability to create apps.
+
+You can bulk edit member roles within your organization by selecting "Assign roles" in your SCIM portal and specifying which role to assign to each push group. For example, you can use this to assign the "Admin" role to the synced "Managers" group, and the "Guest" role to the synced "Contractors" group.
+
+To learn more about viewer access, see [Viewer Seats](/teams/identity-and-access-management/viewer-seats).
+
+## Group Synchronization
+
+All pushed groups from your IdP will be synchronized to Replit with the same members. For example, if you start pushing an "Engineering" group via SCIM, a corresponding "Engineering" group will be created in Replit that includes the same members.
+
+Group membership will be automatically updated to reflect the group membership in your IdP. You can use these synchronized groups for bulk editing member permissions, such as sharing an app with everyone in the "Engineering" group.
+
+For detailed information about groups, see [Groups & Permissions](/teams/identity-and-access-management/groups-and-permissions).
 
 ## FAQs
 
@@ -83,7 +105,7 @@ When SCIM is enabled, existing users are handled in two ways:
 
 2. **Users not provisioned through SCIM**:
    * These users remain unchanged and are considered "legacy" users
-   * We do not automatically revoke access, to prevent accidental deprovisioning
+   * Access is not automatically revoked to prevent accidental deprovisioning
    * Legacy users can be removed through the Replit interface by organization admins if needed
 
 <Warning>
@@ -98,9 +120,7 @@ SCIM users can be assigned to three roles:
 * **Member**: Standard access to create and edit Replit Apps
 * **Viewer**: Read-only access to published applications
 
-We recommend using dedicated groups for each role. During the SCIM onboarding process, you can configure the mapping between your IdP groups and Replit roles. For example, you might map your "Engineering" group to the Member role and your "Stakeholders" group to the Viewer role.
-
-For detailed information about role permissions, see [Groups & Permissions](/teams/identity-and-access-management/groups-and-permissions). To learn more about viewer access, see [Viewer Seats](/teams/identity-and-access-management/viewer-seats).
+During the SCIM onboarding process, you configure the mapping between your IdP groups and Replit roles. For example, you might map your "Engineering" group to the Member role and your "Stakeholders" group to the Viewer role.
 
 ### What if I need to edit the role mapping later?
 

@@ -78,7 +78,7 @@ void main(List<String> args) async {
 Override `bin/main.dart` with the above Dart Example: 
 
 :::sh
-x mix todoworld-dart -out bin
+npx add-in todoworld-dart -out bin
 :::
 
 Run example:
@@ -120,7 +120,7 @@ void main(List<String> args) async {
 Override `bin/main.dart` with the above Dart Example: 
 
 :::sh
-x mix todoworld-dart-ssl -out bin
+npx add-in todoworld-dart-ssl -out bin
 :::
 
 Run example:

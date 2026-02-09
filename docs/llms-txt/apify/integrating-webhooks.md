@@ -1,8 +1,12 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/integrating-webhooks.md
 
-# I - Integrating webhooks
+# Integrating webhooks
 
 **Learn how to integrate webhooks into your Actors. Webhooks are a super powerful tool, and can be used to do almost anything!**
+
+Updates coming
+
+This lesson is subject to change because it currently relies on code from our archived **Web scraping basics for JavaScript devs** course. For now you can still access the archived course, but we plan to completely retire it in a few months. This lesson will be updated to remove the dependency.
 
 ***
 
@@ -76,7 +80,7 @@ const { items } = await dataset.getData();
 ```
 
 
-While several methods can achieve the goal output of this Actor, using the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce is the most concise approach
+While several methods can achieve the goal output of this Actor, using the [Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) is the most concise approach
 
 
 ```
@@ -179,7 +183,7 @@ Success: Actor was deployed to Apify cloud and built there.
 
 ## Setting up the webhook
 
-We'll use the https://docs.apify.com/academy/api/run-actor-and-retrieve-data-via-api.md to set up the webhook. To compose the HTTP request, we'll need either the ID of our Actor or its technical name. Let's take a second look at the end of the output of the `apify push` command:
+We'll use the [Apify API](https://docs.apify.com/academy/api/run-actor-and-retrieve-data-via-api.md) to set up the webhook. To compose the HTTP request, we'll need either the ID of our Actor or its technical name. Let's take a second look at the end of the output of the `apify push` command:
 
 
 ```

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/nuxt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an app with Nuxt and Bun
 
 Bun supports [Nuxt](https://nuxt.com) out of the box. Initialize a Nuxt app with official `nuxi` CLI.
@@ -12,7 +16,7 @@ bunx nuxi init my-nuxt-app
 ✔ Which package manager would you like to use?
 bun
 ◐ Installing dependencies...
-bun install v1.3.2 (16b4bf34)
+bun install v1.3.3 (16b4bf34)
  + @nuxt/devtools@0.8.2
  + nuxt@3.7.0
  785 packages installed [2.67s]
@@ -70,6 +74,12 @@ export default defineNuxtConfig({
     preset: "bun", // [!code ++]
   },
 });
+```
+
+Alternatively, you can set the preset via environment variable:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+NITRO_PRESET=bun bun run build
 ```
 
 <Note>

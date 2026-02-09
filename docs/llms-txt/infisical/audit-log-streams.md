@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/audit-log-streams/audit-log-streams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audit Log Streams
 
 > Learn how to stream Infisical Audit Logs to external logging providers.

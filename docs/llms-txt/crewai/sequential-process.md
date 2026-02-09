@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/sequential-process.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sequential Processes
 
 > A comprehensive guide to utilizing the sequential processes for task execution in CrewAI projects.

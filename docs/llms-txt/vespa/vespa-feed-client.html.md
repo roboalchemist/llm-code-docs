@@ -70,7 +70,7 @@ Add _vespa-feed-client_ as dependency to your Maven (or other build system using
 <dependency>
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>vespa-feed-client</artifactId>
-    <version>8.617.12</version>
+    <version>8.634.24</version>
 </dependency>
 ```
 
@@ -103,7 +103,7 @@ $ vespa-feed-client \
   --endpoint http://container-endpoint:8080/
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

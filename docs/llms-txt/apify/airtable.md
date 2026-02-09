@@ -6,7 +6,7 @@
 
 ***
 
-https://www.airtable.com/ is a cloud-based platform for organizing, managing, and collaborating on data. With the Apify integration for Airtable, you can automatically upload Actor run results to Airtable after a successful run.
+[Airtable](https://www.airtable.com/) is a cloud-based platform for organizing, managing, and collaborating on data. With the Apify integration for Airtable, you can automatically upload Actor run results to Airtable after a successful run.
 
 This integration uses OAuth 2.0, a secure authorization protocol, to connect your Airtable account to Apify and manage data transfers.
 
@@ -14,8 +14,8 @@ This integration uses OAuth 2.0, a secure authorization protocol, to connect you
 
 To use the Apify integration for Airtable, ensure you have:
 
-* An https://console.apify.com/
-* An https://www.airtable.com/
+* An [Apify account](https://console.apify.com/)
+* An [Airtable account](https://www.airtable.com/)
 
 ## Types of integration
 
@@ -24,21 +24,21 @@ You can integrate Apify with Airtable using one of two options:
 * *Apify extension* on Airtable website.
 * *Console integration* on the Actor page.
 
-This guide explains how to use the *Apify extension*. For console integration instructions, see the https://docs.apify.com/platform/integrations/airtable/console.md documentation
+This guide explains how to use the *Apify extension*. For console integration instructions, see the [Console integration](https://docs.apify.com/platform/integrations/airtable/console.md) documentation
 
 ## Setup
 
 ### Install Apify extension
 
-Go to https://airtable.com and open the base you would like to work with. Press the **Tools** dropdown in the top right corner and click **Extensions**.
+Go to [Airtable](https://airtable.com) and open the base you would like to work with. Press the **Tools** dropdown in the top right corner and click **Extensions**.
 
 ![Access the extensions tab on Airtable UI by pressing tools button](/assets/images/airtable_tools_button-97e8312a2de4dee3486a59846cccc25e.png)
 
-Search for Apify extenison and install it
+Search for Apify extension and install it
 
-![Search for the Apify extension on Airtable](/assets/images/airtable_search_apify_extenison-55d37506218ef2a1bc40db96e920122c.png)
+![Search for the Apify extension on Airtable](/assets/images/airtable_search_apify_extension-55d37506218ef2a1bc40db96e920122c.png)
 
-Open the Apify extension and login using OAuth 2.0 with your Apify account. If you dont have an account, visit https://console.apify.com/sign-up page.
+Open the Apify extension and login using OAuth 2.0 with your Apify account. If you dont have an account, visit [Apify registration](https://console.apify.com/sign-up) page.
 
 ![Open Apify extension and login](/assets/images/airtable_login-730de1f8e5f8d8c81dac5142be8218db.png)
 

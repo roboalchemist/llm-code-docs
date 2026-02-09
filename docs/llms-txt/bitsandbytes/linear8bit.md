@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/nn/linear8bit.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/nn/linear8bit.md
 
 # LLM.int8()
 [LLM.int8()](https://hf.co/papers/2208.07339) is a quantization method that aims to make large language model inference more accessible without significant degradation. Unlike naive 8-bit quantization, which can result in loss of critical information and accuracy, LLM.int8() dynamically adapts to ensure sensitive components of the computation retain higher precision when needed. The key is to extract the outliers from the inputs and weights and multiply them in 16-bit. All other values are multiplied in 8-bit before being dequantized back to 16-bits. The outputs from the 16-bit and 8-bit multiplication are combined to produce the final output.
@@ -9,7 +9,7 @@
 
 #### bitsandbytes.nn.Linear8bitLt[[bitsandbytes.nn.Linear8bitLt]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L935)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L937)
 
 This class is the base module for the [LLM.int8()](https://arxiv.org/abs/2208.07339) algorithm.
 To read more about it, have a look at the paper.
@@ -40,7 +40,7 @@ int8_model.load_state_dict(fp16_model.state_dict())
 int8_model = int8_model.to(0) # Quantization happens here
 ```
 
-__init__bitsandbytes.nn.Linear8bitLt.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L967[{"name": "input_features", "val": ": int"}, {"name": "output_features", "val": ": int"}, {"name": "bias", "val": " = True"}, {"name": "has_fp16_weights", "val": " = True"}, {"name": "threshold", "val": " = 0.0"}, {"name": "index", "val": " = None"}, {"name": "device", "val": " = None"}]- **input_features** (`int`) --
+__init__bitsandbytes.nn.Linear8bitLt.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L969[{"name": "input_features", "val": ": int"}, {"name": "output_features", "val": ": int"}, {"name": "bias", "val": " = True"}, {"name": "has_fp16_weights", "val": " = True"}, {"name": "threshold", "val": " = 0.0"}, {"name": "index", "val": " = None"}, {"name": "device", "val": " = None"}]- **input_features** (`int`) --
   Number of input features of the linear layer.
 - **output_features** (`int`) --
   Number of output features of the linear layer.
@@ -61,7 +61,7 @@ bias (`bool`, defaults to `True`) : Whether the linear class uses the bias term 
 
 #### bitsandbytes.nn.Int8Params[[bitsandbytes.nn.Int8Params]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L637)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L639)
 
 __init__bitsandbytes.nn.Int8Params.__init__[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
 Initialize self.  See help(type(self)) for accurate signature.

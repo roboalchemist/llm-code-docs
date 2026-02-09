@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/essential-tips-iq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Essential tips for integrating quality health practices
 
 > Our shared customers rely on Zapier and your integration for business-critical workflows. Addressing feedback early and often ensures users have the best experience, both with Zapier's platform and yours. Follow these tips on how. 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/getting-started/mcp-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP Server Configuration
 
 > Connect your AI tools directly to your meeting data with Fireflies MCP Server.
@@ -66,11 +70,15 @@ Model Context Protocol (MCP) is an open standard that enables AI applications to
 ### Additional Resources
 
 <CardGroup cols={2}>
+  <Card title="MCP Tools" icon="tools" href="/mcp-tools/overview">
+    Complete reference for all available MCP tools and their parameters
+  </Card>
+
   <Card title="LLM-based Development" icon="link" href="/getting-started/llm-development">
     Enhance your AI coding experience with LLM readable documentation
   </Card>
 
-  <Card title="Authorization" icon="link" href="/fundamentals/authorization">
+  <Card title="Authorization" icon="lock" href="/fundamentals/authorization">
     Authenticating your requests with the Fireflies API
   </Card>
 </CardGroup>

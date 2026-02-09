@@ -22,77 +22,9 @@
 
 # Source: https://docs.helicone.ai/integrations/anthropic/curl.md
 
-# Source: https://docs.helicone.ai/integrations/xai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/vectordb/curl.md
-
-# Source: https://docs.helicone.ai/integrations/tools/curl.md
-
-# Source: https://docs.helicone.ai/integrations/openai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/curl.md
-
-# Source: https://docs.helicone.ai/integrations/llama/curl.md
-
-# Source: https://docs.helicone.ai/integrations/groq/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/curl.md
-
-# Source: https://docs.helicone.ai/integrations/data/curl.md
-
-# Source: https://docs.helicone.ai/integrations/azure/curl.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/curl.md
-
-# Source: https://docs.helicone.ai/integrations/xai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/vectordb/curl.md
-
-# Source: https://docs.helicone.ai/integrations/tools/curl.md
-
-# Source: https://docs.helicone.ai/integrations/openai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/curl.md
-
-# Source: https://docs.helicone.ai/integrations/llama/curl.md
-
-# Source: https://docs.helicone.ai/integrations/groq/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/curl.md
-
-# Source: https://docs.helicone.ai/integrations/data/curl.md
-
-# Source: https://docs.helicone.ai/integrations/azure/curl.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/curl.md
-
-# Source: https://docs.helicone.ai/integrations/xai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/vectordb/curl.md
-
-# Source: https://docs.helicone.ai/integrations/tools/curl.md
-
-# Source: https://docs.helicone.ai/integrations/openai/curl.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/curl.md
-
-# Source: https://docs.helicone.ai/integrations/llama/curl.md
-
-# Source: https://docs.helicone.ai/integrations/groq/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/curl.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/curl.md
-
-# Source: https://docs.helicone.ai/integrations/data/curl.md
-
-# Source: https://docs.helicone.ai/integrations/azure/curl.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/curl.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Anthropic cURL Integration
 
@@ -124,7 +56,8 @@ export const strings = {
   installRequiredDependencies: "Install required dependencies",
   installSDK: tool => `Install ${tool}`,
   logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
+  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>.",
+  modifyBasePath: "Modify the base URL path",
   optional: "Optional",
   relatedGuides: "Related Guides",
   replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
@@ -136,10 +69,9 @@ export const strings = {
   useTheSDK: tool => `Use the ${tool} SDK`,
   verifyInHelicone: "Verify your requests in Helicone",
   verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
   viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
+  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
+  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently."
 };
 
 <Warning>

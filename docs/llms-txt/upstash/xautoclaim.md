@@ -2,101 +2,85 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xautoclaim.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xautoclaim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xautoclaim.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XAUTOCLAIM
 
-> Changes the ownership of pending messages from one consumer to another in a stream consumer group.
+> Changes the ownership of pending messages from one consumer to another in a stream consumer group automatically.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the stream.
 </ParamField>
 
-<ParamField body="group" type="string" required>
+<ParamField body="group" type="str" required>
   The consumer group name.
 </ParamField>
 
-<ParamField body="consumer" type="string" required>
+<ParamField body="consumer" type="str" required>
   The consumer name that will claim the messages.
 </ParamField>
 
-<ParamField body="minIdleTime" type="number" required>
+<ParamField body="min_idle_time" type="int" required>
   The minimum idle time in milliseconds for messages to be claimed.
 </ParamField>
 
-<ParamField body="start" type="string" required>
+<ParamField body="start" type="str" required>
   The stream entry ID to start claiming from.
 </ParamField>
 
-<ParamField body="options" type="object">
-  <Expandable title="options">
-    <ParamField body="count" type="number">
-      The maximum number of messages to claim.
-    </ParamField>
+<ParamField body="count" type="int">
+  The maximum number of messages to claim.
+</ParamField>
 
-    <ParamField body="justid" type="boolean">
-      Return only the message IDs instead of the full message data.
-    </ParamField>
-  </Expandable>
+<ParamField body="justid" type="bool">
+  Return only the message IDs instead of the full message data.
 </ParamField>
 
 ## Response
 
-<ResponseField type="[string, Array<[string, string[]]>, string[]]">
-  Returns a tuple containing:
+<ResponseField type="Tuple[str, List[Any], List[str]]">
+  Returns a list containing:
 
   * Next start ID for pagination
-  * Array of claimed messages (ID and field-value pairs)
-  * Array of deleted message IDs
+  * List of claimed messages. If `justid` option is used, returns only message IDs.
+  * List of deleted message IDs
 </ResponseField>
 
 <RequestExample>
-  ```ts Basic autoclaim theme={"system"}
-  const result = await redis.xautoclaim(
-    "mystream",
-    "mygroup", 
-    "consumer1",
-    60000,
-    "0-0"
-  );
+  ```py Example theme={"system"}
+  # Auto-claim messages that have been idle for more than 60 seconds
+  result = redis.xautoclaim(
+      "mystream",
+      "mygroup", 
+      "consumer1",
+      60000,  # 60 seconds
+      start="0-0"
+  )
   ```
 
-  ```ts With count and justid theme={"system"}
-  const result = await redis.xautoclaim(
-    "mystream",
-    "mygroup",
-    "consumer1", 
-    60000,
-    "0-0",
-    { count: 5, justid: true }
-  );
+  ```py With count and justid theme={"system"}
+  result = redis.xautoclaim(
+      "mystream",
+      "mygroup",
+      "consumer1", 
+      60000,
+      start="0-0",
+      count=5,
+      justid=True
+  )
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```ts  theme={"system"}
+  ```py  theme={"system"}
   [
-    "1638360173533-1", // next start ID
-    [["1638360173533-0", ["field1", "value1", "field2", "value2"]]], // claimed messages
-    [] // deleted message IDs
+    "1638360173533-1",  # next start ID
+    [["1638360173533-0", ["field1", "value1", "field2", "value2"]]],  # claimed messages
+    []  # deleted message IDs
   ]
   ```
 </ResponseExample>

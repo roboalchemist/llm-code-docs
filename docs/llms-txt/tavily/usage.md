@@ -1,60 +1,94 @@
 # Source: https://docs.tavily.com/documentation/api-reference/endpoint/usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Usage
 
 > Get API key and account usage details
 
+
+
 ## OpenAPI
 
 ````yaml GET /usage
+openapi: 3.0.3
+info:
+  title: Tavily Search and Extract API
+  description: >-
+    Our REST API provides seamless access to Tavily Search, a powerful search
+    engine for LLM agents, and Tavily Extract, an advanced web scraping solution
+    optimized for LLMs.
+  version: 1.0.0
+servers:
+  - url: https://api.tavily.com/
+security: []
+tags:
+  - name: Search
+  - name: Extract
+  - name: Crawl
+  - name: Map
+  - name: Research
+  - name: Usage
 paths:
-  path: /usage
-  method: get
-  servers:
-    - url: https://api.tavily.com/
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header in the form Bearer <token>, where
-                <token> is your Tavily API key (e.g., Bearer tvly-YOUR_API_KEY).
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples: []
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              key:
-                allOf:
-                  - type: object
+  /usage:
+    get:
+      summary: Get API key and account usage details
+      description: Get API key and account usage details
+      responses:
+        '200':
+          description: Usage details returned successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: object
                     properties:
                       usage:
                         type: integer
-                        description: Current usage count for the API key
+                        description: >-
+                          Total credits used for this API key during the current
+                          billing cycle
                         example: 150
                       limit:
                         type: integer
-                        description: >-
-                          Usage limit for the API key. Returns null if unlimited
-                          (2147483647)
+                        description: Usage limit for the API key. Returns null if unlimited
                         example: 1000
-              account:
-                allOf:
-                  - type: object
+                      search_usage:
+                        type: integer
+                        description: >-
+                          Search endpoint credits used for this API key during
+                          the current billing cycle
+                        example: 100
+                      extract_usage:
+                        type: integer
+                        description: >-
+                          Extract endpoint credits used for this API key during
+                          the current billing cycle
+                        example: 25
+                      crawl_usage:
+                        type: integer
+                        description: >-
+                          Crawl endpoint credits used for this API key during
+                          the current billing cycle
+                        example: 15
+                      map_usage:
+                        type: integer
+                        description: >-
+                          Map endpoint credits used for this API key during the
+                          current billing cycle
+                        example: 7
+                      research_usage:
+                        type: integer
+                        description: >-
+                          Research endpoint credits used for this API key during
+                          the current billing cycle
+                        example: 3
+                  account:
+                    type: object
                     description: Account plan and usage information
                     properties:
                       current_plan:
@@ -63,7 +97,9 @@ paths:
                         example: Bootstrap
                       plan_usage:
                         type: integer
-                        description: Current usage count for the plan
+                        description: >-
+                          Total credits used for this plan during the current
+                          billing cycle
                         example: 500
                       plan_limit:
                         type: integer
@@ -77,43 +113,61 @@ paths:
                         type: integer
                         description: Pay-as-you-go usage limit
                         example: 100
-        examples:
-          example:
-            value:
-              key:
-                usage: 150
-                limit: 1000
-              account:
-                current_plan: Bootstrap
-                plan_usage: 500
-                plan_limit: 15000
-                paygo_usage: 25
-                paygo_limit: 100
-        description: Usage details returned successfully
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - type: object
+                      search_usage:
+                        type: integer
+                        description: >-
+                          Search endpoint credits used for this plan during the
+                          current billing cycle
+                        example: 350
+                      extract_usage:
+                        type: integer
+                        description: >-
+                          Extract endpoint credits used for this plan during the
+                          current billing cycle
+                        example: 75
+                      crawl_usage:
+                        type: integer
+                        description: >-
+                          Crawl endpoint credits used for this plan during the
+                          current billing cycle
+                        example: 50
+                      map_usage:
+                        type: integer
+                        description: >-
+                          Map endpoint credits used for this plan during the
+                          current billing cycle
+                        example: 15
+                      research_usage:
+                        type: integer
+                        description: >-
+                          Research endpoint credits used for this plan during
+                          the current billing cycle
+                        example: 10
+        '401':
+          description: Unauthorized - Your API key is wrong or missing.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: object
                     properties:
                       error:
                         type: string
-        examples:
-          example:
-            value:
-              detail:
-                error: 'Unauthorized: missing or invalid API key.'
-        description: Unauthorized - Your API key is wrong or missing.
-  deprecated: false
-  type: path
+              example:
+                detail:
+                  error: 'Unauthorized: missing or invalid API key.'
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header in the form Bearer <token>, where <token>
+        is your Tavily API key (e.g., Bearer tvly-YOUR_API_KEY).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

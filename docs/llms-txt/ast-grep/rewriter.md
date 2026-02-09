@@ -2,10 +2,6 @@
 
 # Source: https://ast-grep.github.io/guide/rewrite/rewriter.md
 
-# Source: https://ast-grep.github.io/reference/yaml/rewriter.md
-
-# Source: https://ast-grep.github.io/guide/rewrite/rewriter.md
-
 ---
 url: /guide/rewrite/rewriter.md
 ---

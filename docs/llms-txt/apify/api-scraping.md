@@ -8,13 +8,13 @@
 
 API scraping is locating a website's API endpoints, and fetching the desired data directly from their API, as opposed to parsing the data from their rendered HTML pages.
 
-> **Note:** In the next few lessons, we'll be using https://soundcloud.com as an example target, but the techniques described here can be applied to any site.
+> **Note:** In the next few lessons, we'll be using [SoundCloud's website](https://soundcloud.com) as an example target, but the techniques described here can be applied to any site.
 
 In this module, we will discuss the benefits and drawbacks of API scraping, how to locate an API, how to utilize its potential features, and how to work around some common roadblocks.
 
 ## What's an API?
 
-An API is a custom service that lives on the server of any given website. They provide an intuitive way for the website's client-side pages to send and receive data to and from the server, where it can be stored in a database, manipulated, or used to perform an operation. Though not **all** sites have APIs, many do, especially those built as complex web applications. Learn more about APIs https://blog.apify.com/what-is-an-api/.
+An API is a custom service that lives on the server of any given website. They provide an intuitive way for the website's client-side pages to send and receive data to and from the server, where it can be stored in a database, manipulated, or used to perform an operation. Though not **all** sites have APIs, many do, especially those built as complex web applications. Learn more about APIs [in this article](https://blog.apify.com/what-is-an-api/).
 
 ## Different types of APIs
 
@@ -61,7 +61,7 @@ Most APIs accept query parameters such as `maxPosts` or `fromCountry`. These par
 
 ### 3. Fast and efficient
 
-Especially for https://blog.apify.com/what-is-a-dynamic-page/, in which a headless browser would otherwise be required (it can sometimes be slow and cumbersome), scraping their API can prove to be much quicker and more efficient.
+Especially for [dynamic sites](https://blog.apify.com/what-is-a-dynamic-page/), in which a headless browser would otherwise be required (it can sometimes be slow and cumbersome), scraping their API can prove to be much quicker and more efficient.
 
 ### 4. Easy on the target website
 
@@ -104,7 +104,7 @@ Sometimes, a response will look something like this:
 ```
 
 
-Or some other encoding format. This example's `message` has some data encoded in https://en.wikipedia.org/wiki/Base64, which is one of the most common encoding types. For testing out Base64 encoding and decoding, you can use https://www.base64encode.org/ and https://www.base64decode.org/. Within a project where base64 decoding/encoding is necessary, the https://nodejs.org/api/buffer.html can be used like so:
+Or some other encoding format. This example's `message` has some data encoded in [Base64](https://en.wikipedia.org/wiki/Base64), which is one of the most common encoding types. For testing out Base64 encoding and decoding, you can use [base64encode.org](https://www.base64encode.org/) and [base64decode.org](https://www.base64decode.org/). Within a project where base64 decoding/encoding is necessary, the [Node.js Buffer Class](https://nodejs.org/api/buffer.html) can be used like so:
 
 
 ```
@@ -118,4 +118,4 @@ console.log(decoded);
 
 ## First up
 
-Get started with this course by learning some general knowledge about API scraping in the https://docs.apify.com/academy/api-scraping/general-api-scraping.md section! This section will teach you everything you need to know about scraping APIs before moving into more complex sections.
+Get started with this course by learning some general knowledge about API scraping in the [General API Scraping](https://docs.apify.com/academy/api-scraping/general-api-scraping.md) section! This section will teach you everything you need to know about scraping APIs before moving into more complex sections.

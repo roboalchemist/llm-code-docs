@@ -1,10 +1,4 @@
-# Source: https://docs.pinata.cloud/sdk/groups/public/update.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/update.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/update.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/update.md
+# Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/update.md
 
 # Source: https://docs.pinata.cloud/sdk/groups/public/update.md
 
@@ -14,13 +8,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/files/private/update.md
 
-# Source: https://docs.pinata.cloud/sdk/groups/public/update.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/update.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/update.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/update.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # update
 

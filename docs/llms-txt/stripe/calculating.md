@@ -17,15 +17,15 @@ Stripe calculates tax on a transaction taking into account some or all of the fo
 
 ## Payment methods
 
-Stripe calculates tax for all supported payment methods, including Apply Pay and Google Pay wallet transactions.
+Stripe calculates tax for all supported payment methods, including Apple Pay and Google Pay wallet transactions.
 
 ## How Stripe uses addresses
 
 Stripe uses a single address as the customer’s location, or transaction destination, when calculating taxes. For more information, see [which customer address we use](https://docs.stripe.com/tax/customer-locations.md#address-hierarchy).
 
-In certain scenarios, it’s important to identify the origin of a transaction. Stripe generally uses the address where your business is located as the origin of a transaction. This address is defined as your origin address in the Dashboard or as `head_office` if using the tax settings object.
+In certain scenarios, it’s important to identify the origin of a transaction. Stripe generally uses the address where your business is located as the origin of a transaction. This address is defined as your head office address in the Dashboard or as `head_office` if using the tax settings object.
 
-You can also specify a performance location to calculate tax based on a location that differs from both your origin address and your customer’s address. For example, you might deliver products to your customer at a store, or sell tickets to an event or activity.
+You can also specify a performance location to calculate tax based on a location that differs from both your head office address and your customer’s address. For example, you might deliver products to your customer at a store, or sell tickets to an event or activity.
 
 ### How to use ship-from addresses
 

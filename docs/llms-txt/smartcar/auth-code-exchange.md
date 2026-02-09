@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/authorization/auth-code-exchange.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auth Code Exchange
 
 > To interact with the Smartcar API, you will need to exchange your authorization code from the [Connect redirect](https://smartcar.com/docs/connect/handle-the-response) for an access token. Check the [overview](https://smartcar.com/docs/api-reference/authorization/overview) page for how to manage your tokens.

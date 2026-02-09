@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/how-to/programmatically-fetching-logged-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Programmatically Fetching Logged Data
 
 > Fetch logged data programmatically in Galileo Observe with step-by-step instructions for seamless integration into automated workflows and analysis tools.
@@ -12,7 +16,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     Then add the following to your project:
 
-    ```ts
+    ```ts  theme={null}
         import { ApiClient } from "@rungalileo/observe";
         const apiClient = new ApiClient();
         await apiClient.init("YOUR_PROJECT_NAME");
@@ -20,7 +24,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     You can use this with `getLoggedData` to retrieve the raw data.
 
-    ```ts
+    ```ts  theme={null}
         // Optional
         const filters = [{ col_name: "model", operator: "eq", value: "gpt-3.5-turbo" }];
 
@@ -41,13 +45,13 @@ If you want to fetch your logged data and metrics programmatically, you can do s
   <Tab title="Python">
     First, see the [Quickstart guide](/galileo/gen-ai-studio-products/galileo-observe/getting-started) for installing galileo\_observe and using it in your project.
 
-    ```py
+    ```py  theme={null}
         ...
         observe = GalileoObserve(project_name=MY_PROJECT_NAME)
         ...
     ```
 
-    ```py
+    ```py  theme={null}
         filters = [{"col_name": "model", "operator": "eq", "value": "gpt-3.5-turbo"}]
         sort_spec = [{"col_name": "created_at", "sort_dir": "asc"}]
 
@@ -84,7 +88,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     To fetch an authentication token, send a `POST` request to `/login` with your `username` and `password`:
 
-    ```py
+    ```py  theme={null}
         import requests
 
         base_url = YOUR_BASE_URL #see below for instructions to get your base_url
@@ -116,7 +120,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     To log data, you'll need your project ID. Get your project ID by making a GET request to the `/projects` endpoint, or simply copy it from the URL in your browser window. This project ID is static and will never change. You only have to do this once.
 
-    ```py
+    ```py  theme={null}
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
@@ -132,7 +136,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     To fetch a list of your records, make a `POST` the `/observe/rows` endpoint:
 
-    ```py
+    ```py  theme={null}
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
@@ -156,7 +160,7 @@ If you want to fetch your logged data and metrics programmatically, you can do s
 
     To fetch a list of aggregate metrics bucketed over time, make a `POST` request to the `/observe/metrics/` endpoint:
 
-    ```py
+    ```py  theme={null}
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',

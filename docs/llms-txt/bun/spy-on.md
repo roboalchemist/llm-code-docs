@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/spy-on.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Spy on methods in `bun test`
 
 Use the `spyOn` utility to track method calls with Bun's test runner.
@@ -43,4 +47,4 @@ test("turtles", () => { // [!code ++]
 
 ***
 
-See [Docs > Test Runner > Mocks](https://bun.sh/docs/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.

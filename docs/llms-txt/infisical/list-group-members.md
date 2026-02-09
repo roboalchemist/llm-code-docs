@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/groups/list-group-members.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Group Members
 
 
@@ -25,6 +29,7 @@ paths:
     get:
       tags:
         - Groups
+      operationId: listGroupMembers
       parameters:
         - schema:
             type: number
@@ -200,6 +205,7 @@ paths:
                     type: string
                   error:
                     type: string
+                  details: {}
                 required:
                   - reqId
                   - statusCode
@@ -322,7 +328,3 @@ paths:
                 additionalProperties: false
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

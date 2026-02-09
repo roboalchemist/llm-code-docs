@@ -2,17 +2,9 @@
 
 # Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
 
-# Source: https://docs.pinecone.io/release-notes/feature-availability.md
-
-# Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
-
-# Source: https://docs.pinecone.io/release-notes/feature-availability.md
-
-# Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
-
-# Source: https://docs.pinecone.io/release-notes/feature-availability.md
-
-# Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Feature availability
 

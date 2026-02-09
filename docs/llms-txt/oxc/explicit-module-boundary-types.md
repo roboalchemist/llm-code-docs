@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/explicit-module-boundary-types.md
 ---
-# typescript/explicit-module-boundary-types&#x20;
 
 ### What it does
 

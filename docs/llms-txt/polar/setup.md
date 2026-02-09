@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/oauth2/setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an OAuth 2.0 Client
 
 Before being able to make authentication requests, you'll need an **OAuth2 Client**. It's the entity that'll identify you, as a third-party developer, between Polar and the final user.

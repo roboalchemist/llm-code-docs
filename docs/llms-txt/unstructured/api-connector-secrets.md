@@ -1,10 +1,14 @@
 # Source: https://docs.unstructured.io/support/issues/api-connector-secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Drive source connectors cannot be created by using the API
 
 ## Issue
 
-When you try to use the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to
+When you try to use the [Unstructured API's workflow operations](/api-reference/workflow/overview) to
 [create a source connector](/api-reference/workflow/overview#create-a-source-connector)
 that connects [Google Drive](/api-reference/workflow/sources/google-drive) to Unstructured,
 an error similar to the following occurs, and the source connector is not created:
@@ -24,7 +28,7 @@ API error occurred: Status 412. Body: {
 
 This error occurs because the contents of the caller's Google Drive service account's `credentials.json` file (or its
 equivalent JSON string representation) must be specially encrypted and formatted before these contents are sent to Unstructured, due to the contents' size.
-However, the Unstructured Workflow Endpoint does not support this special encryption and formatting process.
+However, the Unstructured API's workflow operations do not support this special encryption and formatting process.
 
 ## Solution
 

@@ -2,6 +2,8 @@
 
 # RunGetOptions<!-- -->
 
+Options for getting a Run.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -10,7 +12,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L272)optionalwaitForFinish
+### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L485)optionalwaitForFinish
 
 **waitForFinish?
 

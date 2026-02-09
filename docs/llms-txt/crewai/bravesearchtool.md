@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/bravesearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Brave Search
 
 > The `BraveSearchTool` is designed to search the internet using the Brave Search API.

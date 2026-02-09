@@ -8,190 +8,67 @@
 
 # Source: https://upstash.com/docs/search/sdks/py/commands/range.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/range.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/range.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/range.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/range.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/range.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/range.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/range.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/range.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/range.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/range.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/range.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Range
 
-The range method is used to retrieve vectors in chunks with pagination. This method supports a variety of options to configure the query to your needs.
+## Range Command for Python SDK
 
-<Note>
-  The range command is stateless, meaning you need to pass all of the parameters
-  in each subsequent request.
-</Note>
+The range method is used to retrieve documents in chunks with pagination.
 
-## Arguments
+### Arguments
 
-<ParamField body="cursor" type="string | number" required>
-  The cursor to the last retrieved vector. Should be set to `0` in the initial
-  range request.
-</ParamField>
-
-<ParamField body="prefix" type="string">
-  An string prefix to match vector IDs. All vectors with IDs that start with
-  this prefix will be retrieved.
-</ParamField>
-
-<ParamField body="limit" type="number" required>
-  The number of maximum vectors wanted in the response of range. (page size)
-</ParamField>
-
-<ParamField body="includeMetadata" type="boolean">
-  Whether to include the metadata of the vectors in the response. Setting this
-  `true` would be the best practice, since it will make it easier to identify
-  the vectors.
-</ParamField>
-
-<ParamField body="includeVectors" type="boolean">
-  Whether to include the vector themselves in the response.
-</ParamField>
-
-<ParamField body="includeData" type="boolean">
-  Whether to include [the data field](/vector/features/metadata#data) in the
-  response.
-</ParamField>
-
-<ParamField name="Namespace" type="{ namespace?: string }">
-  Namespace to call range for. If not set, default namespace is used.
-</ParamField>
-
-## Response
-
-<ResponseField name="RangeResponse" type="" required>
+<ResponseField name="Payload" type="dict" required>
   <Expandable defaultOpen="true">
-    <ResponseField name="nextCursor" type="string | number" required>
-      Cursor to use in the next range request.
+    <ResponseField name="cursor" type="string" required>
+      The cursor to the last retrieved document. Should be set to `""` in the initial range request.
     </ResponseField>
 
-    <ResponseField name="vectors" type="Vector | Vector[]" required>
+    <ResponseField name="limit" type="int" required>
+      The number of maximum documents wanted in the response of range. (page size)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Response
+
+<ResponseField name="Response" type="dict" required>
+  <Expandable defaultOpen="true">
+    <ResponseField name="Documents" type="List[Document]" required>
+      This field is `null` if no document with the specified ID is found.
+
       <Expandable defaultOpen="true">
         <ResponseField name="id" type="string | number" required>
-          The ID of the vector
+          The ID of the resulting document.
         </ResponseField>
 
-        <ResponseField name="vector" type="number[]">
-          The vectors (if `includeVectors` is set to true)
+        <ResponseField name="content" type="Record<string, unknown>">
+          The main content of the document.
         </ResponseField>
 
         <ResponseField name="metadata" type="Record<string, unknown>">
-          The metadata of the vectors (if `includeMetadata` is set to true)
-        </ResponseField>
-
-        <ResponseField name="data" type="string">
-          The data of the vector (if `includeData` is set to true)
+          Additional metadata for the document.
         </ResponseField>
       </Expandable>
+    </ResponseField>
+
+    <ResponseField name="next_cursor" type="string">
+      The cursor for the next page of documents.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <RequestExample>
-  ```typescript Basic theme={"system"}
-  const responseRange = await index.range(
-    {
-      cursor: 0,
-      limit: 2,
-      includeMetadata: true,
-    },
-    { namespace: "my-namespace" }
-  );
+  ```python  theme={"system"}
+  range_documents = index.range(cursor="", limit=1)
+  print(range_documents.documents)
 
-  /*
-  {
-    nextCursor: '2',
-    vectors: [
-      { 
-        id: '0',
-        metadata: {
-          keyword: "Vector"
-        } 
-      },
-      { 
-        id: '19',
-        metadata: {
-          keyword: "Redis"
-        } 
-      }
-    ]
-  }
-  */
-  ```
-
-  ```typescript ID prefix theme={"system"}
-  const responseRange = await index.range({
-    cursor: 0,
-    limit: 2,
-    prefix: "test-",
-  });
-
-  /*
-  {
-    nextCursor: '2',
-    vectors: [
-      { id: 'test-1' },
-      { id: 'test-2' },
-    ]
-  }
-  */
-  ```
-
-  ```typescript Improved Types theme={"system"}
-  type Metadata = {
-    title: string;
-    genre: "sci-fi" | "fantasy" | "horror" | "action";
-  };
-
-  const responseRange = await index.range<Metadata>({
-    cursor: 0,
-    limit: 2,
-    includeMetadata: true,
-  });
-
-  if (responseRange[0].metadata) {
-    // Since we passed the Metadata type parameter above,
-    // we can interact with metadata fields without having to
-    // do any typecasting.
-    const { title, genre } = results[0].metadata;
-    console.log(`The best match in fantasy was ${title}`);
-  }
+  range_documents = index.range(
+      cursor=range_documents.next_cursor,
+      limit=3
+  )
+  print(range_documents.documents)
   ```
 </RequestExample>

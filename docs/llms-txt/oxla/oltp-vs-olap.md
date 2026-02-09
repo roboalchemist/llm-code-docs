@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/resources/oltp-vs-olap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OLTP vs. OLAP
 
 This article explains the differences between OLTP and OLAP technology. It helps you to further understand the use cases of our technology and why we chose OLAP for data analysis.

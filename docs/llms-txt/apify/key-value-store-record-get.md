@@ -9,7 +9,7 @@ https://api.apify.com/v2/key-value-stores/:storeId/records/:recordKey
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#get_recordhttps://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#getRecordGets a value stored in the key-value store under a specific key.
+Gets a value stored in the key-value store under a specific key.
 
 The response body has the same `Content-Encoding` header as it was set in .
 
@@ -17,12 +17,15 @@ If the request does not define the `Accept-Encoding` HTTP header with the right 
 
 Most HTTP clients support decompression by default. After using the HTTP client with decompression support, the `Accept-Encoding` header is set by the client and body is decompressed automatically.
 
+Please note that for security reasons, Apify API can perform small modifications to HTML documents before they are served via this endpoint. To fetch the raw HTML content without any modifications, use the `attachment` query parameter.
+
 ## Request
 
 ## Responses
 
 * 200
 * 302
+* 400
 
 **Response Headers**
 
@@ -31,3 +34,5 @@ Most HTTP clients support decompression by default. After using the HTTP client 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

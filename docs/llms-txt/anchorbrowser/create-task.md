@@ -1,181 +1,242 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/create-task.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Task
 
 > Creates a new task or updates an existing task with the same name. Tasks are reusable code snippets 
 that can be executed in browser sessions. Tasks support versioning with draft and published versions.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/task
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    pattern: ^[a-zA-Z0-9_-]+$
-                    minLength: 1
-                    maxLength: 255
-                    description: >-
-                      Task name (letters, numbers, hyphens, and underscores
-                      only)
-              code:
-                allOf:
-                  - type: string
-                    pattern: ^[A-Za-z0-9+/]*={0,2}$
-                    description: Base64 encoded task code (optional)
-              language:
-                allOf:
-                  - type: string
-                    enum:
-                      - typescript
-                    description: Programming language for the task
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 1000
-                    description: Optional description of the task
-              browserConfiguration:
-                allOf:
-                  - $ref: '#/components/schemas/SessionConfig'
-                    description: Browser configuration for task execution
-            required: true
-            refIdentifier: '#/components/schemas/CreateTaskRequest'
-            requiredProperties:
-              - name
-              - language
-        examples:
-          createTask:
-            summary: Create a new task
-            value:
-              name: web-scraper
-              language: typescript
-              description: A task to scrape product information from e-commerce sites
-              code: >-
-                Y29uc3QgYW5jaG9yID0gcmVxdWlyZSgnYW5jaG9yYnJvd3NlcicpOwoKYXN5bmMgZnVuY3Rpb24gcnVuKCkgewogIGNvbnN0IHNlc3Npb24gPSBhd2FpdCBhbmNob3IuY3JlYXRlU2Vzc2lvbigpOwogIGF3YWl0IHNlc3Npb24uZ29UbygnaHR0cHM6Ly9leGFtcGxlLmNvbScpOwogIGNvbnN0IHRpdGxlID0gYXdhaXQgc2Vzc2lvbi5nZXRUaXRsZSgpOwogIGNvbnNvbGUubG9nKHRpdGxlKTsKICBhd2FpdCBzZXNzaW9uLmNsb3NlKCk7Cn0KcnVuKCk7
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/Task'
-            refIdentifier: '#/components/schemas/TaskResponse'
-        examples:
-          example:
-            value:
-              data:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                teamId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                description: <string>
-                latestVersion: <string>
-                code: <string>
-                language: typescript
-                browserConfiguration:
-                  initial_url: <string>
-                  recording:
-                    active: true
-                  proxy:
-                    active: true
-                    type: anchor_proxy
-                    country_code: af
-                    region: <string>
-                    city: <string>
-                  timeout:
-                    max_duration: 123
-                    idle_timeout: 123
-                  live_view:
-                    read_only: true
-                deleted: true
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-        description: Task created or updated successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid request or validation failed
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task name already exists
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to create task
-  deprecated: false
-  type: path
+  /v1/task:
+    post:
+      tags:
+        - Tasks
+      summary: Create Task
+      description: >
+        Creates a new task or updates an existing task with the same name. Tasks
+        are reusable code snippets 
+
+        that can be executed in browser sessions. Tasks support versioning with
+        draft and published versions.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+            examples:
+              createTask:
+                summary: Create a new task
+                value:
+                  name: web-scraper
+                  language: typescript
+                  description: A task to scrape product information from e-commerce sites
+                  code: >-
+                    Y29uc3QgYW5jaG9yID0gcmVxdWlyZSgnYW5jaG9yYnJvd3NlcicpOwoKYXN5bmMgZnVuY3Rpb24gcnVuKCkgewogIGNvbnN0IHNlc3Npb24gPSBhd2FpdCBhbmNob3IuY3JlYXRlU2Vzc2lvbigpOwogIGF3YWl0IHNlc3Npb24uZ29UbygnaHR0cHM6Ly9leGFtcGxlLmNvbScpOwogIGNvbnN0IHRpdGxlID0gYXdhaXQgc2Vzc2lvbi5nZXRUaXRsZSgpOwogIGNvbnNvbGUubG9nKHRpdGxlKTsKICBhd2FpdCBzZXNzaW9uLmNsb3NlKCk7Cn0KcnVuKCk7
+      responses:
+        '200':
+          description: Task created or updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+        '400':
+          description: Invalid request or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Task name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to create task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    CreateTaskRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9_-]+$
+          minLength: 1
+          maxLength: 255
+          description: Task name (letters, numbers, hyphens, and underscores only)
+        code:
+          type: string
+          pattern: ^[A-Za-z0-9+/]*={0,2}$
+          description: Base64 encoded task code (optional)
+        language:
+          type: string
+          enum:
+            - typescript
+          description: Programming language for the task
+        description:
+          type: string
+          maxLength: 1000
+          description: Optional description of the task
+        browserConfiguration:
+          $ref: '#/components/schemas/SessionConfig'
+          description: Browser configuration for task execution
+      required:
+        - name
+        - language
+    TaskResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Task'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SessionConfig:
+      type: object
+      description: Session-related configurations.
+      properties:
+        initial_url:
+          type: string
+          format: uri
+          description: >-
+            The URL to navigate to when the browser session starts. If not
+            provided, the browser will load an empty page.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            Custom labels to categorize and identify browser sessions. Useful
+            for filtering, organizing, and tracking sessions across your
+            workflows.
+          example:
+            - production
+            - scraping
+            - customer-123
+        recording:
+          type: object
+          description: Configuration for session recording.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable video recording of the browser session.
+                Defaults to `true`.
+        proxy:
+          $ref: '#/components/schemas/ProxyConfig'
+        timeout:
+          type: object
+          description: Timeout configurations for the browser session.
+          properties:
+            max_duration:
+              type: integer
+              description: >-
+                Maximum time (in minutes) the session can run before
+                automatically terminating. Defaults to `20`. Set to `-1` to
+                disable this limit.
+            idle_timeout:
+              type: integer
+              description: >-
+                Time (in minutes) the session waits for new connections after
+                all others are closed before stopping. Defaults to `5`. Set to
+                `-1` to disable this limit.
+        live_view:
+          type: object
+          description: Configuration for live viewing the browser session.
+          properties:
+            read_only:
+              type: boolean
+              description: >-
+                Enable or disable read-only mode for live viewing. Defaults to
+                `false`.
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the task
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9_-]+$
+          minLength: 1
+          maxLength: 255
+          description: Task name (letters, numbers, hyphens, and underscores only)
+        teamId:
+          type: string
+          format: uuid
+          description: Team identifier that owns this task
+        description:
+          type: string
+          maxLength: 1000
+          description: Optional description of the task
+        latestVersion:
+          type: string
+          description: Latest version identifier (draft, latest, or version number)
+        code:
+          type: string
+          description: Base64 encoded task code
+        language:
+          type: string
+          enum:
+            - typescript
+          description: Programming language for the task
+        browserConfiguration:
+          $ref: '#/components/schemas/SessionConfig'
+          description: Browser configuration for task execution
+        deleted:
+          type: boolean
+          description: Whether the task is soft deleted
+        createdAt:
+          type: string
+          format: date-time
+          description: Task creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Task last update timestamp
+      required:
+        - id
+        - name
+        - teamId
+        - latestVersion
+        - code
+        - language
+        - deleted
+        - createdAt
+        - updatedAt
     ProxyConfig:
       description: |
         Proxy Documentation available at [Proxy Documentation](/advanced/proxy)
@@ -281,6 +342,156 @@ components:
         - username
         - password
         - active
+    AnchorProxyCountryCode:
+      type: string
+      title: anchor_proxy
+      enum:
+        - af
+        - al
+        - dz
+        - ad
+        - ao
+        - as
+        - ag
+        - ar
+        - am
+        - aw
+        - au
+        - at
+        - az
+        - bs
+        - bh
+        - bb
+        - by
+        - be
+        - bz
+        - bj
+        - bm
+        - bo
+        - ba
+        - br
+        - bg
+        - bf
+        - cm
+        - ca
+        - cv
+        - td
+        - cl
+        - co
+        - cg
+        - cr
+        - ci
+        - hr
+        - cu
+        - cy
+        - cz
+        - dk
+        - dm
+        - do
+        - ec
+        - eg
+        - sv
+        - ee
+        - et
+        - fo
+        - fi
+        - fr
+        - gf
+        - pf
+        - ga
+        - gm
+        - ge
+        - de
+        - gh
+        - gi
+        - gr
+        - gd
+        - gp
+        - gt
+        - gg
+        - gn
+        - gw
+        - gy
+        - ht
+        - hn
+        - hu
+        - is
+        - in
+        - ir
+        - iq
+        - ie
+        - il
+        - it
+        - jm
+        - jp
+        - jo
+        - kz
+        - kw
+        - kg
+        - lv
+        - lb
+        - ly
+        - li
+        - lt
+        - lu
+        - mk
+        - ml
+        - mt
+        - mq
+        - mr
+        - mx
+        - md
+        - mc
+        - me
+        - ma
+        - nl
+        - nz
+        - ni
+        - ng
+        - 'no'
+        - pk
+        - pa
+        - py
+        - pe
+        - ph
+        - pl
+        - pt
+        - pr
+        - qa
+        - ro
+        - lc
+        - sm
+        - sa
+        - sn
+        - rs
+        - sc
+        - sl
+        - sk
+        - si
+        - so
+        - za
+        - kr
+        - es
+        - sr
+        - se
+        - ch
+        - sy
+        - st
+        - tw
+        - tj
+        - tg
+        - tt
+        - tn
+        - tr
+        - tc
+        - ua
+        - ae
+        - us
+        - uy
+        - uz
+        - ve
+        - ye
+      default: us
     ResidentialCountryCode:
       type: string
       title: anchor_residential
@@ -766,256 +977,11 @@ components:
         - ve
         - ye
       default: us
-    AnchorProxyCountryCode:
-      type: string
-      title: anchor_proxy
-      enum:
-        - af
-        - al
-        - dz
-        - ad
-        - ao
-        - as
-        - ag
-        - ar
-        - am
-        - aw
-        - au
-        - at
-        - az
-        - bs
-        - bh
-        - bb
-        - by
-        - be
-        - bz
-        - bj
-        - bm
-        - bo
-        - ba
-        - br
-        - bg
-        - bf
-        - cm
-        - ca
-        - cv
-        - td
-        - cl
-        - co
-        - cg
-        - cr
-        - ci
-        - hr
-        - cu
-        - cy
-        - cz
-        - dk
-        - dm
-        - do
-        - ec
-        - eg
-        - sv
-        - ee
-        - et
-        - fo
-        - fi
-        - fr
-        - gf
-        - pf
-        - ga
-        - gm
-        - ge
-        - de
-        - gh
-        - gi
-        - gr
-        - gd
-        - gp
-        - gt
-        - gg
-        - gn
-        - gw
-        - gy
-        - ht
-        - hn
-        - hu
-        - is
-        - in
-        - ir
-        - iq
-        - ie
-        - il
-        - it
-        - jm
-        - jp
-        - jo
-        - kz
-        - kw
-        - kg
-        - lv
-        - lb
-        - ly
-        - li
-        - lt
-        - lu
-        - mk
-        - ml
-        - mt
-        - mq
-        - mr
-        - mx
-        - md
-        - mc
-        - me
-        - ma
-        - nl
-        - nz
-        - ni
-        - ng
-        - 'no'
-        - pk
-        - pa
-        - py
-        - pe
-        - ph
-        - pl
-        - pt
-        - pr
-        - qa
-        - ro
-        - lc
-        - sm
-        - sa
-        - sn
-        - rs
-        - sc
-        - sl
-        - sk
-        - si
-        - so
-        - za
-        - kr
-        - es
-        - sr
-        - se
-        - ch
-        - sy
-        - st
-        - tw
-        - tj
-        - tg
-        - tt
-        - tn
-        - tr
-        - tc
-        - ua
-        - ae
-        - us
-        - uy
-        - uz
-        - ve
-        - ye
-      default: us
-    SessionConfig:
-      type: object
-      description: Session-related configurations.
-      properties:
-        initial_url:
-          type: string
-          format: uri
-          description: >-
-            The URL to navigate to when the browser session starts. If not
-            provided, the browser will load an empty page.
-        recording:
-          type: object
-          description: Configuration for session recording.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable video recording of the browser session.
-                Defaults to `true`.
-        proxy:
-          $ref: '#/components/schemas/ProxyConfig'
-        timeout:
-          type: object
-          description: Timeout configurations for the browser session.
-          properties:
-            max_duration:
-              type: integer
-              description: >-
-                Maximum amount of time (in minutes) for the browser to run
-                before terminating. Defaults to `20`.
-            idle_timeout:
-              type: integer
-              description: >-
-                The amount of time (in minutes) the browser session waits for
-                new connections after all others are closed before stopping.
-                Defaults to `5`.
-        live_view:
-          type: object
-          description: Configuration for live viewing the browser session.
-          properties:
-            read_only:
-              type: boolean
-              description: >-
-                Enable or disable read-only mode for live viewing. Defaults to
-                `false`.
-    Task:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the task
-        name:
-          type: string
-          pattern: ^[a-zA-Z0-9_-]+$
-          minLength: 1
-          maxLength: 255
-          description: Task name (letters, numbers, hyphens, and underscores only)
-        teamId:
-          type: string
-          format: uuid
-          description: Team identifier that owns this task
-        description:
-          type: string
-          maxLength: 1000
-          description: Optional description of the task
-        latestVersion:
-          type: string
-          description: Latest version identifier (draft, latest, or version number)
-        code:
-          type: string
-          description: Base64 encoded task code
-        language:
-          type: string
-          enum:
-            - typescript
-          description: Programming language for the task
-        browserConfiguration:
-          $ref: '#/components/schemas/SessionConfig'
-          description: Browser configuration for task execution
-        deleted:
-          type: boolean
-          description: Whether the task is soft deleted
-        createdAt:
-          type: string
-          format: date-time
-          description: Task creation timestamp
-        updatedAt:
-          type: string
-          format: date-time
-          description: Task last update timestamp
-      required:
-        - id
-        - name
-        - teamId
-        - latestVersion
-        - code
-        - language
-        - deleted
-        - createdAt
-        - updatedAt
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

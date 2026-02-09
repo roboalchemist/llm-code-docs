@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/contributing/developing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local Development
 
 You can contribute both new instrumentations or update and improve the different SDKs.
@@ -72,8 +76,3 @@ For example, to run the tests for the `openai` instrumentation package, run:
 
 We use `npm` with workspaces to manage packages in the monorepo. Install by running `npm install` in the root of the project.
 Each package has its own test suite. You can use the sample app to run and test changes locally.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

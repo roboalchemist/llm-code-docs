@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/improving-inbox-placement.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Improve your inbox placement
 
 > If your emails are not landing in the inbox folder you expect, here are some tips to improve your inbox placement.
@@ -37,7 +41,7 @@ If you have previously used your primary domain for cold emailing, you may need 
 
 ## 5. Send a Welcome Email
 
-[Implement a welcome email with a Loop](/loop-builder) to welcome new users as soon as they join. When a user signs up, they expect a welcome email, so intent is clear and engagement is high. Keeping a steady cadence of emails to all new users will help balance out larger email sends to your entire user base. This is especially important if you're a new sender.
+[Implement a welcome email with a Loop](/guides/onboarding-emails) to welcome new users as soon as they join. When a user signs up, they expect a welcome email, so intent is clear and engagement is high. Keeping a steady cadence of emails to all new users will help balance out larger email sends to your entire user base. This is especially important if you're a new sender.
 
 ## 6. Content of Emails
 
@@ -65,9 +69,13 @@ Occasionally, when setting up emails from a new domain that matches your workspa
 
 You can usually confirm this is the case by sending the same email to a different address—for example, a personal account or one on another domain. If the email is delivered normally there, the issue is with how the client is classifying messages from the new domain.
 
-If this happens, simply mark the message as “Not spam” or “Not phishing” in Gmail. The issue should resolve itself shortly.
+If this happens, simply mark the message as "Not spam" or "Not phishing" in Gmail. The issue should resolve itself shortly.
 
-This behavior is not caused by Loops, it’s a built-in protection mechanism that email clients use when learning to trust a new domain.
+This behavior is not caused by Loops, it's a built-in protection mechanism that email clients use when learning to trust a new domain.
+
+## 12. Apple iCloud Private Relay
+
+[iCloud Private Relay](https://support.apple.com/102602) is a privacy feature for iCloud+ subscribers that masks users' IP addresses and encrypts their web traffic. If you're sending to Apple users, ensure your domain is [properly registered with Apple](/deliverability/apple-hide-my-email) to avoid deliverability issues with Apple users.
 
 ## Additional Checks: Blocklists and IP Reputation
 

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/devops/terraform/resources/upstash_qstash_schedule.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # upstash_qstash_schedule
 
 > Create and manage QStash schedules.

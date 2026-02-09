@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/plugins/content-addressable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Content Addressable
 
 > Use the Content Addressable plugin to include CID signatures

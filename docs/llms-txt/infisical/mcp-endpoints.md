@@ -1,4 +1,8 @@
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/mcp-endpoints.md
+# Source: https://infisical.com/docs/documentation/platform/agent-sentinel/mcp-endpoints.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # MCP Endpoints
 
@@ -26,6 +30,14 @@ This architecture provides several benefits:
   <Card title="Centralized Logging" icon="scroll">
     All tool invocations are logged regardless of which MCP server they target.
   </Card>
+
+  <Card title="PII Filtering" icon="user-shield">
+    Automatically redact sensitive data from requests and responses.
+  </Card>
+
+  <Card title="Auth Delegation" icon="key">
+    Handle OAuth and token-based authentication for connected servers.
+  </Card>
 </CardGroup>
 
 ## How It Works
@@ -47,7 +59,7 @@ In the following steps, we explore how to create an MCP endpoint and connect it 
   <Tab title="Infisical UI">
     <Steps>
       <Step title="Navigate to MCP Endpoints">
-        Head to your Agentic Manager project and select **MCP Endpoints** from the sidebar, then click **Create Endpoint**.
+        Head to your Agent Sentinel project and select **MCP Endpoints** from the sidebar, then click **Create Endpoint**.
 
                 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-endpoints-list.png" alt="mcp endpoints list" />
       </Step>
@@ -116,9 +128,124 @@ Once you have your endpoint URL, you can connect AI clients to it.
   </Tab>
 </Tabs>
 
+## Personal Credentials Authentication
+
+When an MCP endpoint includes servers configured with **Personal Credentials** mode, users must authenticate with each of those servers before they can connect to the endpoint.
+
+### Authentication Flow
+
+When a user connects to an endpoint with servers requiring personal credentials:
+
+1. **Authentication Prompt**: After authorizing access to the endpoint, users are shown a list of all MCP servers that require their personal credentials.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-endpoints-finalize-personal-incomplete.png" alt="mcp endpoints finalize personal incomplete" />
+
+2. **Authenticate Each Server**: Users must authenticate with each server in the list. The authentication method depends on how the server was configured:
+   * **OAuth**: Users are redirected to the service (e.g., GitHub, Notion) to authorize access
+   * **Bearer Token**: Users enter their personal access token directly
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-endpoints-finalize-personal-bearer.png" alt="mcp endpoints finalize personal bearer" />
+
+3. **Re-authentication**: Users can update their credentials for servers they've already authenticated with by clicking the **Re-authenticate** button. This is useful when tokens expire or when users want to switch accounts.
+
+4. **Complete All Authentications**: Users must authenticate with **all** servers requiring personal credentials before they can proceed. The connection will only be established once all required authentications are complete.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-endpoints-finalize-personal-complete.png" alt="mcp endpoints finalize personal complete" />
+
+## Access Control with Permission Conditions
+
+MCP endpoints support granular role-based access control through permission conditions. This allows you to restrict access to specific endpoints based on their name.
+
+### Example Use Cases
+
+* **Team-specific endpoints**: Create a role that only allows access to endpoints matching `engineering-*`
+* **Environment separation**: Restrict production endpoints (`prod-*`) to senior team members
+
+### Configuring Permission Conditions
+
+When creating or editing a project role, you can add conditions to MCP endpoint permissions:
+
+1. Navigate to **Access Control** > **Roles**
+2. Edit or create a role
+3. Under **MCP Endpoints** permissions, click **Add Condition**
+4. Select the **Endpoint Name** property
+5. Choose an operator (`equal`, `not equal`, `glob match`, or `in`)
+6. Enter the value(s) to match
+
+### Supported Operators
+
+| Operator     | Description         | Example                        |
+| ------------ | ------------------- | ------------------------------ |
+| `equal`      | Exact match         | `engineering-tools`            |
+| `not equal`  | Does not match      | `prod-endpoint`                |
+| `glob match` | Pattern matching    | `prod-*`, `*-internal`         |
+| `in`         | Matches any in list | `["endpoint-1", "endpoint-2"]` |
+
+## PII Filtering
+
+MCP Endpoints support automatic PII (Personally Identifiable Information) filtering to redact sensitive data from requests sent to MCP servers and responses returned to AI clients. This helps maintain compliance and prevent accidental exposure of sensitive information through AI tool interactions.
+
+### Supported PII Types
+
+| Type        | Description               | Redacted As              |
+| ----------- | ------------------------- | ------------------------ |
+| Email       | Email addresses           | `[REDACTED_EMAIL]`       |
+| Phone       | Phone numbers (US format) | `[REDACTED_PHONE]`       |
+| SSN         | Social Security Numbers   | `[REDACTED_SSN]`         |
+| Credit Card | Credit card numbers       | `[REDACTED_CREDIT_CARD]` |
+| IP Address  | IPv4 and IPv6 addresses   | `[REDACTED_IP]`          |
+
+### Configuring PII Filters
+
+<Tabs>
+  <Tab title="Infisical UI">
+    <Steps>
+      <Step title="Navigate to Endpoint Details">
+        Open your MCP endpoint and locate the **Filters** section in the left column.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-pii-filters-section.png" alt="pii filters section" />
+      </Step>
+
+      <Step title="Open Filter Configuration">
+        Click the edit icon to open the PII filter configuration modal.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/ai/mcp/mcp-pii-filters-config.png" alt="pii filter config modal" />
+      </Step>
+
+      <Step title="Configure Filtering Options">
+        Configure the following options:
+
+        * **Filter Requests**: Enable to redact PII from requests sent to MCP servers
+        * **Filter Responses**: Enable to redact PII from responses returned to AI clients
+        * **PII Detection**: Select which types of PII to detect and redact
+      </Step>
+
+      <Step title="Save Configuration">
+        Click **Save** to apply your PII filter settings. Changes take effect immediately for new tool invocations.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
 ## FAQ
 
 <AccordionGroup>
+  <Accordion title="How does PII filtering work?">
+    When PII filtering is enabled, Infisical scans request and/or response payloads using pattern matching to detect sensitive data. Detected PII is replaced with redaction placeholders (e.g., `[REDACTED_EMAIL]`) before the data is passed through. The original data is never stored or logged when filtering is enabled.
+  </Accordion>
+
+  <Accordion title="Can I filter requests and responses separately?">
+    Yes, you can enable PII filtering independently for requests (data sent to MCP servers) and responses (data returned to AI clients). This gives you granular control over where redaction is applied.
+  </Accordion>
+
+  <Accordion title="What PII types are supported?">
+    Infisical currently supports detection and redaction of: email addresses, phone numbers (US format), Social Security Numbers, credit card numbers, and IP addresses (both IPv4 and IPv6).
+  </Accordion>
+
+  <Accordion title="Can I select different PII types for requests and responses?">
+    No. The selected PII types apply to both request and response filtering. If you need different filtering rules, consider creating separate endpoints.
+  </Accordion>
+
   <Accordion title="Can I connect the same MCP server to multiple endpoints?">
     Yes, you can connect an MCP server to as many endpoints as needed. Each endpoint can have different tools enabled, allowing you to create different access profiles.
   </Accordion>
@@ -136,11 +263,11 @@ Once you have your endpoint URL, you can connect AI clients to it.
   </Accordion>
 
   <Accordion title="What if an MCP server requires personal credentials?">
-    If a connected MCP server uses personal credentials, users will be prompted to authenticate with that server when they first connect to the endpoint. This is a one-time process per server.
+    If a connected MCP server uses personal credentials, users will be prompted to authenticate when they first connect to the endpoint. The authentication method depends on how the server was configured:
+
+    * **OAuth servers**: Users complete an OAuth authorization flow
+    * **Bearer Token servers**: Users enter their personal access token directly
+
+    This is a one-time process per server, and users can re-authenticate at any time if needed.
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

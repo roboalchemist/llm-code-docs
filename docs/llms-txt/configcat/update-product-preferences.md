@@ -2,10 +2,7 @@
 
 # Update Product Preferences
 
-```
-POST 
-/v1/products/:productId/preferences
-```
+Copy page
 
 This endpoint updates the preferences of a Product identified by the `productId` parameter.
 

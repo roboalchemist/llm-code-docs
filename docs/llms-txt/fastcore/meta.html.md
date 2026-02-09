@@ -9,6 +9,7 @@
 from fastcore.foundation import *
 from nbdev.showdoc import *
 from fastcore.nb_imports import *
+from fastcore.test import *
 ```
 
 See this [blog post](https://realpython.com/python-metaclasses/) for
@@ -35,12 +36,18 @@ more information about metaclasses.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L17"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L20"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_sig
 
->  test_sig (f, b)
+``` python
+
+def test_sig(
+    f, b
+):
+
+```
 
 *Test the signature of an object*
 
@@ -59,12 +66,18 @@ test_sig(T, '(a, b)')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L28"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L32"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### FixSigMeta
 
->  FixSigMeta (name, bases, dict)
+``` python
+
+def FixSigMeta(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *A metaclass that fixes the signature on classes that override
 `__new__`*
@@ -169,12 +182,18 @@ test_sig(T2, '(*args, **kwargs)')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L36"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L40"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### PrePostInitMeta
 
->  PrePostInitMeta (name, bases, dict)
+``` python
+
+def PrePostInitMeta(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *A metaclass that calls optional `__pre_init__` and `__post_init__`
 methods*
@@ -204,12 +223,18 @@ subclassing, such as used in
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L47"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L51"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AutoInit
 
->  AutoInit (*args, **kwargs)
+``` python
+
+def AutoInit(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Same as `object`, but no need for subclasses to call
 `super().__init__`*
@@ -232,12 +257,18 @@ test_eq(t.k, 12)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L52"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L56"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### NewChkMeta
 
->  NewChkMeta (name, bases, dict)
+``` python
+
+def NewChkMeta(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Metaclass to avoid recreating object passed to constructor*
 
@@ -334,12 +365,18 @@ test_sig(_T, '(o=None, b=1)')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L60"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L64"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### BypassNewMeta
 
->  BypassNewMeta (name, bases, dict)
+``` python
+
+def BypassNewMeta(
+    args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Metaclass: casts `x` to this class if it’s of type `cls._bypass_type`*
 
@@ -396,24 +433,36 @@ test_eq(t2.new_attr, 9)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L70"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L74"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### empty2none
 
->  empty2none (p)
+``` python
+
+def empty2none(
+    p
+):
+
+```
 
 *Replace `Parameter.empty` with `None`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L75"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L79"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### anno_dict
 
->  anno_dict (f)
+``` python
+
+def anno_dict(
+    f
+):
+
+```
 
 *`__annotation__ dictionary with`empty`cast to`None\`, returning empty
 if doesn’t exist*
@@ -426,12 +475,18 @@ test_eq(anno_dict(_f), {'a': int, 'b': L, 'return': str})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L83"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L87"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### use_kwargs_dict
 
->  use_kwargs_dict (keep=False, **kwargs)
+``` python
+
+def use_kwargs_dict(
+    keep:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Decorator: replace `**kwargs` in signature with `names` params*
 
@@ -457,12 +512,18 @@ test_sig(foo, '(a, b=1, *, y=1, z=None, **kwargs)')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L97"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L101"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### use_kwargs
 
->  use_kwargs (names, keep=False)
+``` python
+
+def use_kwargs(
+    names, keep:bool=False
+):
+
+```
 
 *Decorator: replace `**kwargs` in signature with `names` params*
 
@@ -488,69 +549,36 @@ def foo(a, *args, b=1, **kwargs): pass
 test_sig(foo, '(a, *args, b=1, y=None, z=None, **kwargs)')
 ```
 
+``` python
+from fastcore.basics import *
+```
+
+``` python
+listify('a')
+```
+
+    ['a']
+
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L111"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L115"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### delegates
 
->  delegates (to:function=None, keep=False, but:list=None, sort_args=False)
+``` python
+
+def delegates(
+    to:function=None, # Delegatee
+    keep:bool=False, # Keep `kwargs` in decorated function?
+    but:list=None, # Exclude these parameters from signature
+    sort_args:bool=False, # Sort arguments alphabetically, doesn't work with call_parse
+):
+
+```
 
 *Decorator: replace `**kwargs` in signature with params from `to`*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>to</td>
-<td>function</td>
-<td>None</td>
-<td>Delegatee</td>
-</tr>
-<tr>
-<td>keep</td>
-<td>bool</td>
-<td>False</td>
-<td>Keep <code>kwargs</code> in decorated function?</td>
-</tr>
-<tr>
-<td>but</td>
-<td>list</td>
-<td>None</td>
-<td>Exclude these parameters from signature</td>
-</tr>
-<tr>
-<td>sort_args</td>
-<td>bool</td>
-<td>False</td>
-<td>Sort arguments alphabetically, doesn’t work with call_parse</td>
-</tr>
-</tbody>
-</table>
-
-A common Python idiom is to accept `**kwargs` in addition to named
-parameters that are passed onto other function calls. It is especially
-common to use `**kwargs` when you want to give the user an option to
-override default parameters of any functions or methods being called by
-the parent function.
-
-For example, suppose we have have a function `foo` that passes arguments
-to `baz` like so:
 
 ``` python
 def baz(a, b:int=2, c:int=3): return a + b + c
@@ -698,7 +726,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### method
 
->  method (f)
+``` python
+
+def method(
+    f
+):
+
+```
 
 *Mark `f` as a method*
 
@@ -743,7 +777,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### funcs_kwargs
 
->  funcs_kwargs (as_method=False)
+``` python
+
+def funcs_kwargs(
+    as_method:bool=False
+):
+
+```
 
 *Replace methods in `cls._methods` with those from `kwargs`*
 
@@ -847,3 +887,146 @@ t = T2(num=3)
 test_eq(t.b(a=5), 15) # 3 * 5 = 15
 test_sig(T2, '(num)')
 ```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/meta.py#L167"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### splice_sig
+
+``` python
+
+def splice_sig(
+    wrapper, fn, skips:VAR_POSITIONAL
+):
+
+```
+
+*Replace `*args`/`**kwargs` in wrapper’s sig with fn’s params (minus
+skips)*
+
+[`splice_sig`](https://fastcore.fast.ai/meta.html#splice_sig) is a
+utility for building decorators that need to “wrap” a function while
+adding their own parameters. It takes a wrapper function with
+`*args`/`**kwargs` placeholders and splices in the wrapped function’s
+parameters at that position.
+
+#### The Problem
+
+When writing decorators that add context parameters (like `id`, `dname`,
+`log_changed`), you face awkward choices:
+
+1.  **Hardcode the signature** — brittle, doesn’t adapt to decorated
+    functions
+2.  **Manual signature surgery** — verbose, error-prone, requires
+    bookkeeping
+3.  **Separate “template” functions** — extra indirection, easy to
+    desync
+
+#### The Solution
+
+Define your wrapper with `*args`/`**kwargs` at the splice point:
+
+``` python
+def wrapper(id, *args, dname='', **kw):
+    #       ↑ pre  ↑ splice      ↑ post
+```
+
+Then call `splice_sig(wrapper, fn, skips)` to: 1. Take params **before**
+`*args` from the wrapper (“pre”) 2. Take params from `fn`, excluding
+`skips` (“middle”) 3. Take keyword-only params **after** `*args` from
+the wrapper (“post”) 4. Apply `wraps(fn)` to preserve metadata
+
+Key Points:
+
+- The wrapper’s `*args` marks where the inner function’s params get
+  inserted
+- Params before `*args` become positional; keyword-only params after
+  stay keyword-only
+- `skips` removes params from `fn` (typically the “data” param your
+  wrapper provides)
+- `wraps(fn)` is applied automatically, preserving `__name__`,
+  `__doc__`, etc.
+
+#### Examples
+
+*Simple logging decorator:*
+
+``` python
+def logged(fn):
+    "Add verbose flag that logs input/output"
+    def wrapper(text, *args, verbose=False, **kw):
+        result = fn(text, *args, **kw)
+        if verbose: print(f'{fn.__name__}({text!r}) → {result!r}')
+        return result
+    return splice_sig(wrapper, fn, 'text')
+
+@logged
+def shout(text, times=1):
+    "Uppercase and repeat"
+    return text.upper() * times
+```
+
+``` python
+shout('hi', 2, verbose=True)
+```
+
+    shout('hi') → 'HIHI'
+
+    'HIHI'
+
+The signature combines the function and the wrapper:
+
+``` python
+shout?
+```
+
+``` python
+def shout(
+    text, times:int=1, verbose:bool=False
+):
+```
+
+    Uppercase and repeat
+
+**File:**
+`/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_65408/3741654590.py`
+
+**Type:** function
+
+*API client wrapper:*
+
+``` python
+def api_call(fn):
+    "Decorator adding auth and retry params to API transform functions"
+    def wrapper(endpoint, *args, auth_token=None, retries=3, **kw):
+        for attempt in range(retries):
+            resp = httpx.get(endpoint, headers={'Authorization': auth_token})
+            if resp.ok: break
+        return fn(resp.json(), *args, **kw)
+    return splice_sig(wrapper, fn, 'data',)
+
+@api_call
+def extract_ids(data, key='id'):
+    "Get `key` value from items in `data['results']`"
+    return [item[key] for item in data.get('results', [])]
+```
+
+``` python
+extract_ids?
+```
+
+``` python
+def extract_ids(
+    endpoint, key:str='id', auth_token:NoneType=None, retries:int=3
+):
+```
+
+    Get `key` value from items in `data['results']`
+
+**File:**
+`/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_65408/3604814096.py`
+
+**Type:** function

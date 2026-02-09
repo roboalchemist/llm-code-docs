@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/public-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build your first public integration on Zapier
 
 > This guide gives an overview of the process to publishing a public integration.
@@ -73,7 +77,7 @@ After you've submitted your integration for review, one of our developers will r
 ## 5. Beta phase
 
 <Frame>
-  <img src="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=cf8ad9227b54040eab5d891fc038dd1c" data-og-width="3032" width="3032" data-og-height="1928" height="1928" data-path="images/launch_process.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=280&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=ae2ffad3ce45f5a31dc595e5c0422044 280w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=560&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=5bc0e4afb6885eed447eb94e523bca60 560w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=840&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=611e50fa2f062297f32c1bc664d52f7f 840w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=1100&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=fc98356afe3aacd53bccf00e5e457ca8 1100w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=1650&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=b58ec4aa1c8874d95679a387f2faec51 1650w, https://mintcdn.com/zapier-82f0e938/FKPl8SjhZXHXKd0_/images/launch_process.jpg?w=2500&fit=max&auto=format&n=FKPl8SjhZXHXKd0_&q=85&s=57cd6d6de0e8ffb57f7e7056e4d3f787 2500w" />
+  <img src="https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=bdb6578016449a7ff40cdf93a1574b96" data-og-width="3032" width="3032" data-og-height="1928" height="1928" data-path="images/launch_process.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=280&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=2d61e89bcce0756d33d25153185bed5f 280w, https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=560&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=a2a9c6ff766c5234069ebb85f68f0fbb 560w, https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=840&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=e07267750322206efb7a3ec7a5781697 840w, https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=1100&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=a95e0e070d57f3d8276ecf67fd2c10df 1100w, https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=1650&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=07f8419f995b811e9e30e0b7cdfd96c8 1650w, https://mintcdn.com/zapier-82f0e938/wQj_022fa_mZMaTw/images/launch_process.webp?w=2500&fit=max&auto=format&n=wQj_022fa_mZMaTw&q=85&s=47e42c7a82aada80a64ff8d657a6c1fd 2500w" />
 </Frame>
 
 When your integration is approved, Zapier will update your:

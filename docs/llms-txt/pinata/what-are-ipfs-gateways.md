@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/ipfs-101/what-are-ipfs-gateways.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What are IPFS Gateways?
 
 Once you have uploaded content to Pinata, naturally the first thing you want to do is view it on the IPFS network! But there's a problem: IPFS is a separate protocol, just like HTTP for regular websites is a protocol. To access that content, we need a gateway to bridge IPFS and HTTP. IPFS gateways help us do exactly that!

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks/customer-group-membership-changed.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer Group Membership Changed Event
 
 This event is fired whenever a customer is added or removed from a customer group.

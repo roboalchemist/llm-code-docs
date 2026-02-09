@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/prompt-caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt caching
 
 Prompt caching is a performance optimization feature that allows Fireworks to
@@ -8,9 +12,11 @@ situations, it can reduce time to first token (TTFT) by as much as 80%.
 
 Prompt caching is enabled by default for all Fireworks models and deployments.
 
+For serverless models, cached prompt tokens cost 50% less than regular prompt tokens.
+
 For dedicated deployments, prompt caching frees up resources, leading to higher
-throughput on the same hardware. Dedicated deployments on the Enterprise plan allow
-additional configuration options to further optimize cache performance.
+throughput on the same hardware. Cached tokens on dedicated deployments are close to
+free for you, because they affect context length but do not need extra processing.
 
 ## Using prompt caching
 
@@ -34,7 +40,89 @@ information, at the end.
 
 For function calling models, tools are considered part of the prompt.
 
-## Optimization techniques for maximum cache hits
+### Optimizing inference request for caching
+
+Prompt caching only works within 1 replica. If you are using serverless or a
+deployment with multiple replicas, you need to give us hints for where to send
+the traffic to maximize prompt cache hit rates. To do this, you can send us a
+unique identifier for each user or session, when you expect the prompts to share
+the same prefix.
+
+You may place this identifier either in the `user` field of the request body or
+in the `x-session-affinity` header.
+
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    import os
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.environ.get("FIREWORKS_API_KEY"),
+        base_url="https://api.fireworks.ai/inference/v1",
+        extra_header={
+            "x-session-affinity": "session-id-123"
+        }
+    )
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/<MODEL_ID>",
+        messages=[{
+            "role": "user",
+            "content": "Explain quantum computing in simple terms"
+        }]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```javascript  theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.FIREWORKS_API_KEY,
+      baseURL: "https://api.fireworks.ai/inference/v1",
+      extra_header: {
+        x-session-affinity: "session-id-123"
+      }
+    });
+
+    const response = await client.chat.completions.create({
+      model: "accounts/fireworks/models/<MODEL_ID>",
+      messages: [
+        {
+          role: "user",
+          content: "Explain quantum computing in simple terms",
+        },
+      ]
+    });
+
+    console.log(response.choices[0].message.content);
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash  theme={null}
+    curl https://api.fireworks.ai/inference/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY" \
+      -H "x-session-affinity: session-id-123" \
+      -d '{
+        "model": "accounts/fireworks/models/",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain quantum computing in simple terms"
+          }
+        ]
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Prompt optimization techniques for maximum cache hits
 
 Due to the autoregressive nature of LLMs, even a single-token difference can invalidate the cache from that token onward. Here are key strategies to maximize your cache hit rates:
 
@@ -61,8 +149,6 @@ The most critical rule for effective prompt caching is maintaining a stable pref
 **✅ DO:** Place static content first, dynamic content last
 
 ```python  theme={null}
-from fireworks import LLM
-
 # ✅ Good: Static content first
 system_prompt = """
 You are a helpful AI assistant with expertise in software development.
@@ -91,10 +177,8 @@ if current_time_needed:
 # User query goes last
 user_message += user_query
 
-# Use with Fireworks Build SDK
-llm = LLM(model="llama-v3p1-70b-instruct", deployment_type="auto")
-
-response = llm.chat.completions.create(
+response = client.chat.completions.create(
+    model="accounts/fireworks/models/<MODEL_ID>",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_message}
@@ -137,8 +221,6 @@ def build_prompt(user_query, system_base):
 **Option 3: Move time to user message**
 
 ```python  theme={null}
-from fireworks import LLM
-
 # ✅ Keep system prompt static, add time context to user message
 system_prompt = """
 You are a helpful AI assistant...
@@ -150,10 +232,8 @@ Current time: {datetime.now().isoformat()}
 User query: {user_query}
 """
 
-# Use with Fireworks Build SDK
-llm = LLM(model="llama-v3p1-70b-instruct", deployment_type="auto")
-
-response = llm.chat.completions.create(
+response = client.chat.completions.create(
+    model="accounts/fireworks/models/<MODEL_ID>",
     messages=[
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_message}
@@ -196,38 +276,12 @@ Because prompt caching doesn't change the outputs, privacy is preserved even
 if the deployment powers a multi-tenant application. It does open a minor risk
 of a timing attack: potentially, an adversary can learn that a particular prompt
 is cached by observing the response time. To ensure full isolation, you can pass
-the `x-prompt-cache-isolation-key` header or the `prompt_cache_isolation_key`
+the `x-prompt-cache-isolation-key` header or the [`prompt_cache_isolation_key`](/api-reference/post-chatcompletions#body-prompt-cache-isolation-key)
 field in the body of the request. It can contain an arbitrary string that acts
 as an additional cache key, i.e., no sharing will occur between requests with
 different IDs.
 
-## Limiting or turning off caching
-
-Additionally, you can pass the `prompt_cache_max_len` field in the request body to
-limit the maximum prefix of the prompt (in tokens) that is considered for
-caching. It's rarely needed in real applications but can come in handy for
-benchmarking the performance of dedicated deployments by passing
-`"prompt_cache_max_len": 0`.
-
-## Advanced: cache locality for Enterprise deployments
-
-Dedicated deployments on an Enterprise plan allow you to pass an additional hint in the request to improve cache hit rates.
-
-First, the deployment needs to be created or updated with an additional flag:
-
-```bash  theme={null}
-firectl create deployment ... --enable-session-affinity
-```
-
-Then the client can pass an opaque identifier representing a single user or
-session in the `user` field of the body or in the `x-session-affinity` header. Fireworks
-will try to route requests with the identifier to the same server, further reducing response times.
-
-It's best to choose an identifier that groups requests with long shared prompt
-prefixes. For example, it can be a chat session with the same user or an
-assistant working with the same shared context.
-
-### Migration and traffic management
+## Advanced: Migration and traffic management
 
 When migrating between deployments that use prompt caching, it's crucial to implement proper traffic routing to maintain optimal cache hit rates. When gradually routing traffic to a new deployment, use consistent user/session-based sampling rather than random sampling.
 

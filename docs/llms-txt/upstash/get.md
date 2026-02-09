@@ -10,114 +10,32 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/get.md
 
-# Source: https://upstash.com/docs/workflow/rest/flow-control/get.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/get.md
+# JSON.GET
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/get.md
+> Get a single value from a JSON document.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/get.md
+## Arguments
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/get.md
+<ParamField body="key" type="str" required>
+  The key of the json entry.
+</ParamField>
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/get.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/get.md
-
-# Source: https://upstash.com/docs/qstash/api/signingKeys/get.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/get.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/get.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/get.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/get.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/get.md
-
-# Source: https://upstash.com/docs/qstash/api/signingKeys/get.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/get.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/get.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/get.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/get.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/get.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/get.md
-
-# Source: https://upstash.com/docs/qstash/api/signingKeys/get.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/get.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/get.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/get.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/get.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/get.md
-
-# Get Flow-Control
-
-> Get Information on Flow-Control
-
-## Request
-
-<ParamField path="flowControlKey" type="string">
-  The key of the flow control. See the [flow control](/workflow/features/flow-control) for more details.
+<ParamField body="paths" type="*List[str]" required>
+  One or more paths to retrieve from the JSON document. `$` is the root.
 </ParamField>
 
 ## Response
 
-<ResponseField name="flowControlKey" type="string">
-  The key of of the flow control.
-</ResponseField>
-
-<ResponseField name="waitListSize" type="integer">
-  The number of messages in the wait list that waits for `parallelism` set in the flow control.
+<ResponseField type="List[TValue | null]" required>
+  The value at the specified path or `null` if the path does not exist.
 </ResponseField>
 
 <RequestExample>
-  ```sh  theme={"system"}
-  curl -X GET https://qstash.upstash.io/v2/flowControl/YOUR_FLOW_CONTROL_KEY  -H "Authorization: Bearer <token>"
+  ```py Example theme={"system"}
+  value = redis.json.get("key", "$.path.to.somewhere")
   ```
 </RequestExample>

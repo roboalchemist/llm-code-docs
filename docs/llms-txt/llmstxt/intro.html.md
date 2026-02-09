@@ -40,9 +40,7 @@ pip install llms-txt
 
 ### CLI
 
-After installation,
-[`llms_txt2ctx`](https://llmstxt.org/core.html#llms_txt2ctx) is
-available in your terminal.
+After installation, `llms_txt2ctx` is available in your terminal.
 
 To get help for the CLI:
 
@@ -68,9 +66,8 @@ from llms_txt import *
 samp = Path('llms-sample.txt').read_text()
 ```
 
-Use [`parse_llms_file`](https://llmstxt.org/core.html#parse_llms_file)
-to create a data structure with the sections of an llms.txt file (you
-can also add `optional=True` if needed):
+Use `parse_llms_file` to create a data structure with the sections of an
+llms.txt file (you can also add `optional=True` if needed):
 
 ``` python
 parsed = parse_llms_file(samp)
@@ -103,9 +100,9 @@ parsed.sections.Optional[0]
   'url': 'https://gist.githubusercontent.com/jph00/809e4a4808d4510be0e3dc9565e9cbd3/raw/9b717589ca44cedc8aaf00b2b8cacef922964c0f/starlette-sml.md'}
 ```
 
-Use [`create_ctx`](https://llmstxt.org/core.html#create_ctx) to create
-an LLM context file with XML sections, suitable for systems such as
-Claude (this is what the CLI calls behind the scenes).
+Use `create_ctx` to create an LLM context file with XML sections,
+suitable for systems such as Claude (this is what the CLI calls behind
+the scenes).
 
 ``` python
 ctx = create_ctx(samp)

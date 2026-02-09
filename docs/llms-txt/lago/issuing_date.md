@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/issuing_date.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Issuing date preferences
 
 > Control when your subscription invoices are dated.
@@ -73,8 +77,3 @@ Ideal for businesses that need invoices dated within the same month as the servi
 | `subscription_invoice_issuing_date_adjustment` | `keep_anchor`       |
 
 Useful when you want consistent invoice dates aligned to billing cycle starts, regardless of processing delays. Example: Monthly invoices always dated on the 1st of each month.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

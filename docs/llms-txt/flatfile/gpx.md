@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/gpx.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GPX File Parser and Analyzer
 
 > Automatically processes GPX (GPS Exchange Format) files to extract waypoints, tracks, routes, and calculate geographic statistics like distance and elevation gain.
@@ -14,7 +18,7 @@ Use cases include analyzing fitness activities, processing geographic survey dat
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-enrich-gpx
 ```
 
@@ -43,7 +47,7 @@ By default, the plugin will parse the GPX file without removing duplicates or fi
 ### Basic Setup
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { enrichGpx } from "@flatfile/plugin-enrich-gpx";
 
@@ -59,7 +63,7 @@ By default, the plugin will parse the GPX file without removing duplicates or fi
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { enrichGpx } from "@flatfile/plugin-enrich-gpx";
 
@@ -79,7 +83,7 @@ By default, the plugin will parse the GPX file without removing duplicates or fi
 ### Complete Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { enrichGpx } from "@flatfile/plugin-enrich-gpx";
 
@@ -97,7 +101,7 @@ By default, the plugin will parse the GPX file without removing duplicates or fi
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { enrichGpx, GpxParserConfig } from "@flatfile/plugin-enrich-gpx";
 
@@ -121,7 +125,7 @@ By default, the plugin will parse the GPX file without removing duplicates or fi
 The plugin exports several utility functions that can be used independently for custom data processing tasks:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { calculateDistance } from "@flatfile/plugin-enrich-gpx";
 
   // Define two waypoints
@@ -135,7 +139,7 @@ The plugin exports several utility functions that can be used independently for 
   // Expected output: The distance is approximately 3944.42 km.
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { calculateDistance, Waypoint } from "@flatfile/plugin-enrich-gpx";
 
   // Define two waypoints

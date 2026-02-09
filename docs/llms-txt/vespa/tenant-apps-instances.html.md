@@ -26,5 +26,5 @@ Tenants in trial are auto-expired once trial is completed. Move to a paid plan t
 
 It is not possible to auto-migrate applications and data between tenants. To move an application to a new tenant, re-deploy the application with the new tenant name, see [cloning applications and data](../cloud/cloning-applications-and-data).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

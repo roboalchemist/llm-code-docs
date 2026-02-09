@@ -1,111 +1,129 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/webhooks/create-a-new-webhook-for-call-transcripts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a new webhook for call transcripts
 
 > Creates a new webhook that triggers on events from call transcripts.
 
+
+
 ## OpenAPI
 
 ````yaml https://openphone-public-api-prod.s3.us-west-2.amazonaws.com/public/openphone-public-api-v1-prod.json post /v1/webhooks/call-transcripts
+openapi: 3.1.0
+info:
+  title: OpenPhone Public API
+  version: 1.0.0
+  description: API for connecting with OpenPhone.
+  contact:
+    name: OpenPhone Support
+    email: support@openphone.com
+    url: https://support.openphone.com/hc/en-us
+  termsOfService: https://www.openphone.com/terms
+servers:
+  - description: Production server
+    url: https://api.openphone.com
+security:
+  - apiKey: []
+tags:
+  - description: Operations related to calls
+    name: Calls
+  - description: >-
+      Operations related to call summaries, including AI-generated summaries and
+      Sona voice assistant summaries
+    name: Call Summaries
+  - description: >-
+      Operations related to call transcripts, including AI-generated transcripts
+      and Sona voice assistant transcripts
+    name: Call Transcripts
+  - description: Operations related to contacts
+    name: Contacts
+  - description: Operations related to conversations
+    name: Conversations
+  - description: Operations related to text messages
+    name: Messages
+  - description: Operations related to phone numbers
+    name: Phone Numbers
+  - description: Operations related to users
+    name: Users
+  - description: Operations related to webhooks
+    name: Webhooks
 paths:
-  path: /v1/webhooks/call-transcripts
-  method: post
-  servers:
-    - url: https://api.openphone.com
-      description: Production server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              events:
-                allOf:
-                  - minItems: 1
-                    type: array
-                    items:
-                      type: string
-                      enum:
-                        - call.transcript.completed
-              label:
-                allOf:
-                  - description: The webhook's label.
-                    examples:
-                      - my webhook label
+  /v1/webhooks/call-transcripts:
+    post:
+      tags:
+        - Webhooks
+      summary: Create a new webhook for call transcripts
+      description: Creates a new webhook that triggers on events from call transcripts.
+      operationId: createCallTranscriptWebhook_v1
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                events:
+                  minItems: 1
+                  type: array
+                  items:
                     type: string
-              resourceIds:
-                allOf:
-                  - anyOf:
-                      - type: array
-                        items:
-                          pattern: ^PN(.*)$
-                          type: string
-                      - type: array
-                        items:
-                          const: '*'
-                          type: string
-              status:
-                allOf:
-                  - type: string
                     enum:
-                      - enabled
-                      - disabled
-                    description: The status of the webhook.
-                    examples:
-                      - enabled
-              url:
-                allOf:
-                  - format: uri
-                    description: The endpoint that receives events from the webhook.
-                    examples:
-                      - https://example.com
-                    type: string
-              userId:
-                allOf:
-                  - description: >-
-                      The ID of the user that creates the webhook. If not
-                      provided, default to workspace owner.
-                    examples:
-                      - US123abc
-                    pattern: ^US(.*)$
-                    type: string
-            required: true
-            requiredProperties:
-              - events
-              - url
-        examples:
-          example:
-            value:
-              events:
-                - call.transcript.completed
-              label: my webhook label
-              resourceIds:
-                - <string>
-              status: enabled
-              url: https://example.com
-              userId: US123abc
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+                      - call.transcript.completed
+                label:
+                  description: The webhook's label.
+                  examples:
+                    - my webhook label
+                  type: string
+                resourceIds:
+                  anyOf:
+                    - type: array
+                      items:
+                        pattern: ^PN(.*)$
+                        type: string
+                    - type: array
+                      items:
+                        const: '*'
+                        type: string
+                status:
+                  type: string
+                  enum:
+                    - enabled
+                    - disabled
+                  description: The status of the webhook.
+                  examples:
+                    - enabled
+                url:
+                  format: uri
+                  description: The endpoint that receives events from the webhook.
+                  examples:
+                    - https://example.com
+                  type: string
+                userId:
+                  description: >-
+                    The ID of the user that creates the webhook. If not
+                    provided, default to workspace owner.
+                  examples:
+                    - US123abc
+                  pattern: ^US(.*)$
+                  type: string
+              required:
+                - events
+                - url
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         description: The webhook's ID
@@ -212,57 +230,33 @@ paths:
                       - deletedAt
                       - events
                       - resourceIds
-            requiredProperties:
-              - data
-        examples:
-          example:
-            value:
-              data:
-                id: WHabcd1234
-                userId: US123abc
-                orgId: OR1223abc
-                label: my webhook label
-                status: enabled
-                url: https://example.com/
-                key: example-key
-                createdAt: '2022-01-01T00:00:00Z'
-                updatedAt: '2022-01-01T00:00:00Z'
-                deletedAt: '2022-01-01T00:00:00Z'
-                events:
-                  - call.transcript.completed
-                resourceIds:
-                  - <string>
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0305400'
+                required:
+                  - data
+        '400':
+          description: Invalid Version
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 400
+                  code:
+                    const: '0305400'
+                    type: string
+                  status:
+                    const: 400
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Invalid Version
+                  title:
+                    const: Invalid Version
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -282,64 +276,41 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: Invalid Version
+                  description:
+                    const: Invalid Version
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: Invalid Version
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0300401'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 401
+                  code:
+                    const: '0300401'
+                    type: string
+                  status:
+                    const: 401
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unauthorized
+                  title:
+                    const: Unauthorized
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -359,58 +330,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0300403'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 403
+                  code:
+                    const: '0300403'
+                    type: string
+                  status:
+                    const: 403
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Forbidden
+                  title:
+                    const: Forbidden
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -430,58 +380,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0300404'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 404
+                  code:
+                    const: '0300404'
+                    type: string
+                  status:
+                    const: 404
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Found
+                  title:
+                    const: Not Found
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -501,58 +430,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Not Found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0301500'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '500':
+          description: Unknown Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 500
+                  code:
+                    const: '0301500'
+                    type: string
+                  status:
+                    const: 500
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unknown
+                  title:
+                    const: Unknown
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -572,31 +480,19 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unknown Error
-  deprecated: false
-  type: path
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

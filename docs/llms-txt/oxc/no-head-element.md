@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/nextjs/no-head-element.md
 ---
-# nextjs/no-head-element&#x20;
 
 ### What it does
 

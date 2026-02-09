@@ -1,217 +1,96 @@
 # Source: https://smartcar.com/docs/api-reference/get-signal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Signal
 
 > Get a specific Signal for a Vehicle.
 
+
+
 ## OpenAPI
 
 ````yaml get /vehicles/{vehicleId}/signals/{signalCode}
+openapi: 3.0.3
+info:
+  title: Smartcar Vehicle Data API
+  version: 1.0.0
+  description: |
+    API for returning signal and attribute signals
+servers:
+  - url: https://vehicle.api.smartcar.com/v3
+    description: Smartcar Vehicle APIs
+security: []
 paths:
-  path: /vehicles/{vehicleId}/signals/{signalCode}
-  method: get
-  servers:
-    - url: https://vehicle.api.smartcar.com/v3
-      description: Smartcar Vehicle APIs
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        vehicleId:
+  /vehicles/{vehicleId}/signals/{signalCode}:
+    get:
+      summary: GET signal
+      operationId: getSignal
+      parameters:
+        - in: path
+          name: vehicleId
+          required: true
+          description: The unique identifier for the vehicle.
           schema:
-            - type: string
-              required: true
-              description: The unique identifier for the vehicle.
-        signalCode:
+            type: string
+        - in: path
+          name: signalCode
+          required: true
+          description: The unique identifier for the signal.
           schema:
-            - type: string
-              required: true
-              description: The unique identifier for the signal.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    description: |
-                      The unique human readable identifier for the signal.
-              type:
-                allOf:
-                  - type: string
-                    enum:
-                      - signal
-              attributes:
-                allOf:
-                  - $ref: '#/components/schemas/SignalAttributes'
-              meta:
-                allOf:
-                  - type: object
-                    allOf:
-                      - $ref: '#/components/schemas/DateMetaData'
-              links:
-                allOf:
-                  - type: object
-                    allOf:
-                      - $ref: '#/components/schemas/SelfLink'
-                      - type: object
-                        properties:
-                          values:
-                            type: string
-                            description: URL to the values for this signal
-                          vehicle:
-                            type: string
-                            description: URL to the vehicle associated with this signal
-            refIdentifier: '#/components/schemas/SignalResource'
-        examples:
-          example:
-            value:
-              id: <string>
-              type: signal
-              attributes:
-                code: charge-voltage
-                name: Voltage
-                group: Charge
-                status:
-                  value: SUCCESS
-                body:
-                  unit: volts
-                  value: 85
-              meta:
-                retrievedAt: 1696156800
-                oemUpdatedAt: 1696156799
-              links:
-                self: <string>
-                values: <string>
-                vehicle: <string>
-        description: Individual signal details
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - &ref_0
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        links:
-                          type: object
-                          properties:
-                            about:
-                              type: string
-                        status:
-                          type: string
-                        code:
-                          type: string
-                        title:
-                          type: string
-                        detail:
-                          type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              errors:
-                - status: '400'
-                  code: bad_request
-                  title: Bad Request
-                  detail: >-
-                    The request could not be understood by the server due to
-                    malformed syntax.
-        description: 400 Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              errors:
-                - status: '401'
-                  code: unauthorized
-                  title: Unauthorized
-                  detail: The Authorization token is missing or invalid.
-        description: 401 Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              errors:
-                - status: '403'
-                  code: forbidden
-                  title: Forbidden
-                  detail: You do not have permission to access this resource.
-        description: 403 Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              errors:
-                - status: '404'
-                  code: not_found
-                  title: Not Found
-                  detail: The requested resource could not be found.
-        description: 404 Not Found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              errors:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              errors:
-                - status: '500'
-                  code: internal_error
-                  title: Internal Server Error
-                  detail: An unexpected error occurred on the server.
-        description: 500 Internal Server Error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: Individual signal details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalResource'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+      security:
+        - bearerAuth: []
 components:
   schemas:
+    SignalResource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: |
+            The unique human readable identifier for the signal.
+        type:
+          type: string
+          enum:
+            - signal
+        attributes:
+          $ref: '#/components/schemas/SignalAttributes'
+        meta:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/DateMetaData'
+        links:
+          type: object
+          allOf:
+            - $ref: '#/components/schemas/SelfLink'
+            - type: object
+              properties:
+                values:
+                  type: string
+                  description: URL to the values for this signal
+                vehicle:
+                  type: string
+                  description: URL to the vehicle associated with this signal
     SignalAttributes:
       type: object
       properties:
@@ -248,56 +127,6 @@ components:
         body:
           unit: volts
           value: 85
-    SignalError:
-      type: object
-      properties:
-        type:
-          type: string
-          description: |
-            The type of error that occurred, indicating the nature of the issue.
-        code:
-          type: string
-          description: >
-            A code representing the specific error, used for error handling and
-            debugging.
-        description:
-          type: string
-          description: |
-            A human-readable message describing the error.
-        resolution:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Describes types of actions to be take to resolve an error state
-      example:
-        type: CONNECTED_SERVICES_ACCOUNT
-        code: AUTHENTICATION_FAILED
-        message: The authentication for the connected services account failed.
-        resolution:
-          type: REAUTHENTICATE
-    SignalStatus:
-      type: object
-      properties:
-        value:
-          type: string
-          description: >
-            The state of the signal, indicating whether it is active, inactive,
-            or in an error state.
-          enum:
-            - SUCCESS
-            - ERROR
-            - UNAVAILABLE
-        error:
-          $ref: '#/components/schemas/SignalError'
-      example:
-        value: ERROR
-        error:
-          type: SignalError
-          code: SIGNAL_NOT_FOUND
-          description: The requested signal does not exist.
-          resolution:
-            type: REAUTHENTICATE
     DateMetaData:
       type: object
       properties:
@@ -321,6 +150,49 @@ components:
           type: string
           description: |
             The URL to access the current resource.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              links:
+                type: object
+                properties:
+                  about:
+                    type: string
+              status:
+                type: string
+              code:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+    SignalStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          description: >
+            The state of the signal, indicating whether it is active, inactive,
+            or in an error state.
+          enum:
+            - SUCCESS
+            - ERROR
+            - UNAVAILABLE
+        error:
+          $ref: '#/components/schemas/SignalError'
+      example:
+        value: ERROR
+        error:
+          type: SignalError
+          code: SIGNAL_NOT_FOUND
+          description: The requested signal does not exist.
+          resolution:
+            type: REAUTHENTICATE
     UnitValue:
       type: object
       properties:
@@ -392,5 +264,101 @@ components:
     ObjectValue:
       type: object
       additionalProperties: true
+    SignalError:
+      type: object
+      properties:
+        type:
+          type: string
+          description: |
+            The type of error that occurred, indicating the nature of the issue.
+        code:
+          type: string
+          description: >
+            A code representing the specific error, used for error handling and
+            debugging.
+        description:
+          type: string
+          description: |
+            A human-readable message describing the error.
+        resolution:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Describes types of actions to be take to resolve an error state
+      example:
+        type: CONNECTED_SERVICES_ACCOUNT
+        code: AUTHENTICATION_FAILED
+        message: The authentication for the connected services account failed.
+        resolution:
+          type: REAUTHENTICATE
+  responses:
+    BadRequest:
+      description: 400 Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - status: '400'
+                code: bad_request
+                title: Bad Request
+                detail: >-
+                  The request could not be understood by the server due to
+                  malformed syntax.
+    Unauthorized:
+      description: 401 Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - status: '401'
+                code: unauthorized
+                title: Unauthorized
+                detail: The Authorization token is missing or invalid.
+    Forbidden:
+      description: 403 Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - status: '403'
+                code: forbidden
+                title: Forbidden
+                detail: You do not have permission to access this resource.
+    NotFound:
+      description: 404 Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - status: '404'
+                code: not_found
+                title: Not Found
+                detail: The requested resource could not be found.
+    InternalError:
+      description: 500 Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errors:
+              - status: '500'
+                code: internal_error
+                title: Internal Server Error
+                detail: An unexpected error occurred on the server.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

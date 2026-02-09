@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/ai-agent/ai-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI settings
 
 To configure the agent's AI settings, click the `Settings` button in the sidebar and select `AI`.

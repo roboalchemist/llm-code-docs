@@ -2,13 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/get-usage-config.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/get-usage-config.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/get-usage-config.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Usage Configuration
 
-> Retrieve usage cap configuration for add-on credits
+> Retrieve add-on credit cap configuration at team, group, or user level for enterprise billing management.
 
 ## Overview
 
@@ -100,8 +100,3 @@ Common error scenarios:
 * No scope parameter provided
 * Invalid group ID or user email
 * Rate limit exceeded
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.windsurf.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/quickstarts/vercel-functions-app-router.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Router
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/redis-js/tree/main/examples/vercel-functions-app-router" horizontal>

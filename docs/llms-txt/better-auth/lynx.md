@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Lynx cross-platform framework.
 
-***
 
-title: Lynx Integration
-description: Integrate Better Auth with Lynx cross-platform framework.
-----------------------------------------------------------------------
 
 This integration guide is for using Better Auth with [Lynx](https://lynxjs.org), a cross-platform rendering framework that enables developers to build applications for Android, iOS, and Web platforms with native rendering performance.
 
@@ -18,7 +14,7 @@ Before you start, make sure you have a Better Auth instance configured. If you h
 
 Install Better Auth and the Lynx React dependency:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

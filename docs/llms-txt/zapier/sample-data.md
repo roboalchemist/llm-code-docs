@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/sample-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Output data, defining sample data and output fields
 
 > This guide will explain what output data, sample data and output fields are and how to modify them in your triggers or actions.

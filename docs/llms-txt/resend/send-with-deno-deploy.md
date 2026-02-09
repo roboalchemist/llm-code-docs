@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-deno-deploy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Deno Deploy
 
 > Learn how to send your first email using Deno Deploy.
@@ -21,39 +25,33 @@ Go to [dash.deno.com/projects](https://dash.deno.com/projects) and create a new 
 
 Paste the following code into the browser editor:
 
-```js index.ts theme={null}
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+```ts main.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'npm:resend';
 
-const RESEND_API_KEY = 're_xxxxxxxxx';
+const resend = new Resend('re_123456789');
 
-const handler = async (_request: Request): Promise<Response> => {
-    const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${RESEND_API_KEY}`
-        },
-        body: JSON.stringify({
-            from: 'Acme <onboarding@resend.dev>',
-            to: ['delivered@resend.dev'],
-            subject: 'hello world',
-            html: '<strong>it works!</strong>',
-        })
+Deno.serve(async () => {
+  try {
+    const response = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: 'Hello World',
+      html: '<strong>It works!</strong>',
     });
 
-    if (res.ok) {
-        const data = await res.json();
-
-        return new Response(data, {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    }
-};
-
-serve(handler);
+    return new Response(JSON.stringify(response), {
+      status: response.error ? 500 : 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response(null, {
+      status: 500,
+    });
+  }
+});
 ```
 
 ## 3. Deploy and send email

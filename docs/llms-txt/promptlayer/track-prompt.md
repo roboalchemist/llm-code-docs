@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/track-prompt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Track Prompt
 
 Associate a prompt template with a request.
@@ -10,8 +14,8 @@ Associate a prompt template with a request.
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-prompt",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "prompt_name": "<PROMPT_NAME>",
       "prompt_input_variables": {"variable1": "value1", "variable2": "value2"},
       "request_id": "<REQUEST_ID>",
@@ -37,6 +41,13 @@ paths:
         - prompt
       summary: Track Prompt
       operationId: trackPrompt
+      parameters:
+        - name: X-API-KEY
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Your PromptLayer API Key.
       requestBody:
         required: true
         content:
@@ -44,10 +55,6 @@ paths:
             schema:
               type: object
               properties:
-                api_key:
-                  type: string
-                  description: Your PromptLayer API Key.
-                  minLength: 1
                 prompt_name:
                   type: string
                   description: The name of the prompt template.
@@ -76,7 +83,6 @@ paths:
                   maxLength: 512
                   optional: true
               required:
-                - api_key
                 - prompt_name
                 - request_id
       responses:
@@ -100,7 +106,3 @@ paths:
           description: Unauthorized
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -4,23 +4,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
 
-# Source: https://infisical.com/docs/documentation/platform/ldap/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/general.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # General
 

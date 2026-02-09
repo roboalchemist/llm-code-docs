@@ -19,8 +19,7 @@ The project: a **real-time chat application** built with **Python (FastAPI)** an
 
 {% stepper %}
 {% step %}
-
-### Setup & Installation
+**Setup & Installation**
 
 {% hint style="info" %}
 Warp is free for Mac, Linux, and Windows. Download it from [https://warp.dev](https://warp.dev/) and sign in with an account.
@@ -38,8 +37,7 @@ Pro tip: Enable voice input for natural prompting or attach screenshots when deb
 {% endstep %}
 
 {% step %}
-
-### Generate an App Idea
+**Generate an App Idea**
 
 Warp supports *planning models*, where the AI generates a detailed roadmap before coding.
 
@@ -47,14 +45,13 @@ Warp supports *planning models*, where the AI generates a detailed roadmap befor
 I would like to make something of simple to medium complexity that I could finish in about 30 minutes. I want this to be web based. I want to have some kind of interface and some kind of backend. Can you give me a fun idea that's not going to be too complicated to build out and to eventually deploy?
 ```
 
-The AI suggested several projects, like a personal mood tracker, quick poll creator, recipe randomizer, and more. \
+The AI suggested several projects, like a personal mood tracker, quick poll creator, recipe randomizer, and more.\
 \
 Chosen idea we went with: **a real-time chat application**.
 {% endstep %}
 
 {% step %}
-
-### Create a Development Plan
+**Create a Development Plan**
 
 Prompt:
 
@@ -124,8 +121,7 @@ Please execute this plan.
 {% endstep %}
 
 {% step %}
-
-### Allow Autonomous Execution
+**Allow Autonomous Execution**
 
 Once Warp starts executing, you can let Warp run commands automatically:
 
@@ -137,12 +133,11 @@ This enables autonomous execution for safe, fast iteration. Warp will run shell 
 {% endstep %}
 
 {% step %}
+**Running the App**
 
-### Running the App
+First, you can click into any file, like `main.py` to edit it directly in Warp. Warp displays your file directly in the app for easy editing, similar to any regular IDE experience.
 
-First, you can click into any file, like `main.py` to edit it directly in Warp. Warp displays your file directly in the app for easy editing, similar to any regular IDE experience.&#x20;
-
-<figure><img src="https://2121742425-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fc5dAwvMCRiTxUOdDicqy%2Fuploads%2FnQw71dhRDs7V9cbPK6gj%2FScreenshot%202025-10-07%20at%2010.44.14%E2%80%AFAM.png?alt=media&#x26;token=dcece1e6-ad69-4581-9b30-0021bd955fbe" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://298962004-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FrXGUo2JtQbwWQPKjndDm%2Fuploads%2Fgit-blob-dd853bdddea12b41ce52efbdb8c971132e9d7a80%2FScreenshot%202025-10-07%20at%2010.44.14%E2%80%AFAM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 You can also ask Warp to run the app and test locally:
 
@@ -159,8 +154,7 @@ And Warp can fix the issue and rerun the app automatically.
 {% endstep %}
 
 {% step %}
-
-### Adding New Features
+**Adding New Features**
 
 To enhance the app, request features conversationally:
 
@@ -172,8 +166,7 @@ Warp will modify frontend and backend code, updating WebSocket logic for real-ti
 {% endstep %}
 
 {% step %}
-
-### Preparing for Deployment
+**Preparing for Deployment**
 
 Warp integrates directly with version control and cloud deployers via **MCP servers**.
 
@@ -225,8 +218,7 @@ git push
 {% endstep %}
 
 {% step %}
-
-### Deploying via Railway
+**Deploying via Railway**
 
 Prompt:
 

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/prefer-literal-enum-member.md
 ---
-# typescript/prefer-literal-enum-member&#x20;
 
 ### What it does
 

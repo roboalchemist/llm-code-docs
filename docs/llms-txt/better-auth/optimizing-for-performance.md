@@ -4,11 +4,7 @@
 
 A guide to optimizing your Better Auth application for performance.
 
-***
 
-title: Optimizing for Performance
-description: A guide to optimizing your Better Auth application for performance.
---------------------------------------------------------------------------------
 
 In this guide, weâll go over some of the ways you can optimize your application for a more performant Better Auth app.
 
@@ -41,7 +37,7 @@ Read more about [cookie caching](/docs/concepts/session-management#cookie-cache)
 
 Here are examples of how you can do caching in different frameworks and environments:
 
-<Tabs items={["Next", "Remix", "SolidStart", "React Query"]}>
+<Tabs items={["Next", "Remix", "SolidStart", "TanStack Query"]}>
   <Tab value="Next">
     Since Next v15, we can use the `"use cache"` directive to cache the response of a server function.
 
@@ -88,8 +84,8 @@ Here are examples of how you can do caching in different frameworks and environm
     Learn more about SolidStart `query` function <Link href="https://docs.solidjs.com/solid-router/reference/data-apis/query">here</Link>.
   </Tab>
 
-  <Tab value="React Query">
-    With React Query you can use the `useQuery` hook to cache data. Hereâs an example:
+  <Tab value="TanStack Query">
+    With TanStack Query you can use the `useQuery` hook to cache data. Hereâs an example:
 
     ```ts
     import { useQuery } from '@tanstack/react-query';
@@ -116,7 +112,7 @@ Here are examples of how you can do caching in different frameworks and environm
     }
     ```
 
-    Learn more about React Query use cache directive <Link href="https://react-query.tanstack.com/reference/useQuery#usecache">here</Link>.
+    Learn more about TanStack Query <Link href="https://tanstack.com/query">here</Link>.
   </Tab>
 </Tabs>
 

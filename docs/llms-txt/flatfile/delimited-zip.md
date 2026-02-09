@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/delimited-zip.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delimited File Zip Exporter
 
 > Export data from all sheets within a Flatfile Workbook into delimited text files and compress them into a single ZIP archive for download.
@@ -10,7 +14,7 @@ This plugin is designed to be used in a server-side Flatfile listener. Its prima
 
 Install the plugin via npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-export-delimited-zip
 ```
 
@@ -33,7 +37,7 @@ By default, the plugin listens for a job named `workbook:downloadDelimited`. Whe
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { exportDelimitedZip } from '@flatfile/plugin-export-delimited-zip'
 
     export default function (listener) {
@@ -49,7 +53,7 @@ By default, the plugin listens for a job named `workbook:downloadDelimited`. Whe
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import type { FlatfileListener } from '@flatfile/listener'
     import { exportDelimitedZip } from '@flatfile/plugin-export-delimited-zip'
 
@@ -70,7 +74,7 @@ By default, the plugin listens for a job named `workbook:downloadDelimited`. Whe
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { exportDelimitedZip } from '@flatfile/plugin-export-delimited-zip'
 
     export default function (listener) {
@@ -88,7 +92,7 @@ By default, the plugin listens for a job named `workbook:downloadDelimited`. Whe
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import type { FlatfileListener } from '@flatfile/listener'
     import { exportDelimitedZip } from '@flatfile/plugin-export-delimited-zip'
 

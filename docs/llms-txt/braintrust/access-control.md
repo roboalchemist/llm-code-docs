@@ -1,102 +1,125 @@
-# Source: https://braintrust.dev/docs/guides/access-control.md
+# Source: https://braintrust.dev/docs/admin/access-control.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Access control
 
-Braintrust has a robust and flexible access control system.
-You can grant permissions to users or service accounts either at the organization level or on specific Braintrust objects (projects, experiments, logs, datasets, prompts, and playgrounds).
+> Set up permission groups and access controls
 
-## Permission groups
+Braintrust provides flexible access control at organization, project, and object levels. Use permission groups to grant users specific permissions across resources.
 
-The core concept of Braintrust's access control system is the permission group. Permission groups are collections of users that can be granted specific permissions.
-Braintrust has three pre-configured Permission Groups that are scoped to the organization.
+## Built-in permission groups
 
-1. **Owners** - Unrestricted access to the organization, its data, and its settings. Can add, modify, and delete projects and all other resources. Can invite and remove members and can manage group membership.
-2. **Engineers** - Can access, create, update, and delete projects and all resources within projects. Cannot invite or remove members or manage access to resources.
-3. **Viewers** - Can access projects and all resources within projects. Cannot create, update, or delete any resources. Cannot invite or remove members or manage access to resources.
+Every organization starts with three permission groups:
 
-If your access control needs are simple and you do not need to restrict access to individual projects, these ready-made permission groups may be all that you need.
+* **Owners**: Full access to organization, data, and settings. Can invite/remove members, manage permissions, and delete resources
+* **Engineers**: Can create, read, update, and delete projects and resources. Cannot manage members or access controls
+* **Viewers**: Read-only access to projects and resources. Cannot create, update, or delete anything
 
-A new user can be added to one of these three groups when you invite them to your organization.
+These groups are scoped to the entire organization. Assign users to built-in groups when inviting them or from <Icon icon="settings-2" /> **Settings** > <Icon icon="users-round" /> **Members**.
 
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=d0432787424a50adc0984be1ce5a2074" alt="Built-in Permission Groups" data-og-width="598" width="598" data-og-height="558" height="558" data-path="images/guides/access-control/built-in-permission-groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=7f4aba572446a7e919fd3a0918dcfe0f 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=4672ce357cd47659c50e6bf3e8a75269 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=4f5fb898e60b7786f588a20ca34530e9 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=9401443edf38ef05bd70b4ab9c6a63a1 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=bc8739cbd5495af2fedbdaed7eb1538b 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/built-in-permission-groups.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=f2551ff9d8e3052ed05dad33b64bc5eb 2500w" />
+## Create custom permission groups
 
-## Creating custom permission groups
+Build groups with specific permissions:
 
-In addition to the built-in permission groups, it's possible to create your own groups as well.
-To do so, go to the 'Permission groups' page of Settings and select **Create permission group**.
-Give your group a name and a description and then select **Create**.
+1. Go to <Icon icon="settings-2" /> **Settings** > **Organization** > <Icon icon="shield-check" /> **Permission groups**.
+2. Click **Create permission group**.
+3. Enter group name and description.
+4. Click **Create**.
 
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=41068ef20f43c0b968e819b53dc7d2f1" alt="Create group" data-og-width="582" width="582" data-og-height="322" height="322" data-path="images/guides/access-control/create-group.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=f94abd60695d2010136de3e1966f6996 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=5873ebe9fcb1c4563ed02bd3ca7d7659 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=aea06b2bbb84a84e132667aa2655c1f7 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1ab9347e925b3a287fffd73bbb4d0549 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=8af0fc365f3f009664bf506e04cd9cab 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-group.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=d09379d64ab0c22601b07999bbc8fe16 2500w" />
+After creating a group, configure its permissions.
 
-To set organization-level permissions for your new group, find the group in the groups list and select the Permissions button.
+## Set organization permissions
 
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=4503674f3173def8316356933f3fc254" alt="Custom group permissions" data-og-width="585" width="585" data-og-height="328" height="328" data-path="images/guides/access-control/custom-group-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=d70263aac897dd226502646a0e8fac06 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ab065e83c5afda124b5c13b308cb5864 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ed5d24c89ab5d0d8d2663bcea586abf6 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=94baefd93319ccee93f22284c47f2fdc 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=6319315ac1fdf22ea1705f0818cfbd82 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/custom-group-permissions.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ad64d9bae0ee4f442ccfe96d53999794 2500w" />
+Grant organization-level permissions to custom groups:
+
+1. Find the group in the permission groups list.
+2. Click **Permissions**.
+3. Select organization-level permissions:
+   * **Manage settings**: Change organization configuration.
+   * **Manage members**: Invite users.
+   * **Remove members**: Remove users.
+   * **Manage access**: Grant and revoke permissions (super-user ability).
+4. Select permissions for all projects:
+   * **Read**: View projects and their resources.
+   * **Create**: Create experiments, logs, datasets.
+   * **Update**: Modify existing resources.
+   * **Delete**: Remove resources.
+   * **Manage access**: Grant permissions on projects.
+5. Click **Save**.
+
+<Warning>
+  **Manage access** is a super-user permission. Users with this permission can grant themselves any other permission. Assign it carefully.
+
+  **Manage settings** grants users the ability to change organization-level settings like the API URL.
+</Warning>
+
+## Set project permissions
+
+Limit group access for a specific project, including object-level permissions:
+
+1. [Create a custom permission group](#create-custom-permission-groups).
+2. In your project, go to <Icon icon="settings-2" /> **Settings** > **Project** > <Icon icon="shield-check" /> **Project permissions**.
+3. Search for your group.
+4. Click the pencil icon next to the group.
+5. Select project permissions:
+   * **Read**: View project and its resources.
+   * **Create**: Create experiments, logs, datasets.
+   * **Update**: Modify existing resources.
+   * **Delete**: Remove resources.
+   * **Manage access**: Grant permissions on this project.
+6. Select object-level permissions for experiments, datasets, logs, prompts, and playgrounds:
+   * **Create**: Create the object.
+   * **Read**: View the object.
+   * **Update**: Modify the object.
+   * **Delete**: Remove the object.
+   * **Manage access**: Grant permissions on this object.
+7. Click **Save**.
+
+Users must have Read permission on a project to see it in the UI.
+
+## Manage group membership
+
+Add or remove users from permission groups:
+
+1. Go to <Icon icon="settings-2" /> **Settings** > **Organization** > <Icon icon="shield-check" /> **Permission groups**.
+2. Find the group in the permission groups list.
+3. Click **Group access**.
+4. Click <Icon icon="user-round" /> **Users**.
+5. To add: Search for users and click **Add**.
+6. To remove: Click the **X** next to a user's name.
+
+Users can belong to multiple permission groups. Their effective permissions are the union of all group permissions.
+
+## Use service accounts
+
+Service accounts provide credentials for system integrations:
+
+1. Go to <Icon icon="settings-2" /> **Settings** > **Organization** > <Icon icon="server" /> **Service tokens**.
+2. Click **+ Service token**.
+3. Enter service account name.
+4. Assign permission groups or grant specific permissions.
+5. Click **Create**.
+6. Copy and save the auto-generated service token somewhere safe and accessible. For security reasons, you will not be able to view it again. If you lose the service token, you must create a new one.
+7. Use the token like an API key in SDK or API calls.
+
+Service accounts are not tied to individual users. They maintain access even when team members leave.
 
 <Note>
-  The 'Manage Access' permission should be granted judiciously as it is a super-user permission.
-  It gives the user the ability to add and remove permissions, thus any user with 'Manage Access' gains the ability to grant all other permissions to themselves.
-  \
-  \
-  The 'Manage Settings' permission grants users the ability to change organization-level settings like the API URL.
+  Only organization owners can create and manage service accounts.
+
+  For hybrid deployments, you must configure a service token for the data plane to enable features like data retention. See [Data plane manager](/admin/self-hosting/advanced#data-plane-manager) for more details.
 </Note>
 
-To set group-level permissions for your new group, for example, who can read, delete, and add members to this group, find the group in the groups list and select **Group access**.
+## Programmatic access control
 
-## Project scoped permissions
+To automate the creation of permission groups and their access control rules, use the Braintrust API. See the API reference for [groups](/api-reference/groups/list-groups) and [permissions](/api-reference/acls/list-acls).
 
-To limit access to a specific project, create a new permission group from the Settings page.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=67370ab8ed272177a08a3b3be21adb51" alt="Project level permissions" data-og-width="589" width="589" data-og-height="308" height="308" data-path="images/guides/access-control/create-project-level.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=72e647c698e9eda618ef7898913f0655 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=545a74789edc8d07c7cd8ad400d813fa 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ccd29f3f206567508c0dc0ae2f64b729 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=944ebd5eefd9b0a23014341938f93fa2 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=36b4136194cdaffb45ac45b6c80daeee 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-project-level.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1b9b12061e6d08f0928d23ee9b923a84 2500w" />
+## Next steps
 
-Navigate to the Configuration page of that project, and select the Permissions link in the context menu.
-
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=8308aac4abf58922d007ffc6fc89a9e9" alt="Project level permissions" data-og-width="987" width="987" data-og-height="315" height="315" data-path="images/guides/access-control/project-level-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=e7582bb32deb29984571c821bfb0a3af 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=cb5e617e262c730b2b789e1087304efb 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1659e3bbf8f195a0680e5f2808fd7f0a 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=90bafc11adc4b60e6e53b080801148d2 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ecbcdbe42f50786d63fa8ffea9908205 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/project-level-permissions.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=3ea4eb7ec0df844c8dec7c747f51fdfb 2500w" />
-
-Search for your group by typing in the text input at the top of the page, and then select the pencil icon next to the group to set permissions.
-<img src="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=bdcac10bfc22295aa02fc077d200588f" alt="Search for group" data-og-width="802" width="802" data-og-height="418" height="418" data-path="images/guides/access-control/search-for-group.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=280&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=e835f7392962414f087d40ea8b107f37 280w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=560&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=85f60a4108d6256ec9f3a64bd5cf6864 560w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=840&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=b9cac7d041d3f3be07a3ee86d20bdd00 840w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=1100&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=d6b2b8de82bc434953d2abc2e7bea97f 1100w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=1650&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=f570c2cd70af3b55a2e95a18e4b57d64 1650w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/search-for-group.png?w=2500&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=1cf1c4284e78d8078d62fe201e777475 2500w" />
-
-Set the project-level permissions for your group and select **Save**.
-<img src="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=764cfcd09021d169c36da1d8d00d1fef" alt="Set project level permissions" data-og-width="623" width="623" data-og-height="512" height="512" data-path="images/guides/access-control/set-project-level-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=280&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=043f63f415197bbe5991a5e9378e1e75 280w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=560&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=da2643dbadd1913716e793645dde2f61 560w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=840&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=9402d9e780463d65ffa226f4e8a051a1 840w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=1100&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=b93170cb5d1b806bd01f0170b7baec7a 1100w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=1650&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=1e47071d5def6fee5e304a9a4df896b0 1650w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/access-control/set-project-level-permissions.png?w=2500&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=5894c663b2eede38ef21ca75032a7b9f 2500w" />
-
-## Object scoped permissions
-
-To limit access to a particular object (experiment, dataset, or playground) within a project, first create a permission group for those users on the 'Permission groups' section of Settings.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=e10702f9df575c5cf05f8989ce3f18e7" alt="Create experiment level group" data-og-width="586" width="586" data-og-height="314" height="314" data-path="images/guides/access-control/create-experiment-level-group.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=ccece0074b0bde8cb9b9f0e0758a0bc2 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=eb8a97dca5a8672c734a71b1c7fd81eb 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=fabbe8f1c58a5f5f518eead4f84b1792 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=b955b4f03f141da3012fb44eb6d839ea 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1bb21a006e8fd858e933d3a270e5b15c 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/create-experiment-level-group.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=21963e2fd74c83ced1bc9fbfe9fbc4cb 2500w" />
-
-Next, navigate to the Configuration page of the project that holds that object and grant the group 'Read' permission at the project level.
-This will allow users in that group to navigate to the project in the Braintrust UI.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=055a48425ea66d052f238768268bd71a" alt="Experiment level project permissions" data-og-width="741" width="741" data-og-height="416" height="416" data-path="images/guides/access-control/experiment-level-project-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=43287e01a9864032c37afd17fb1b4664 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=aa839b8d310079e038280a448106c3cd 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=b96729152c9dcc8ae753fa69e7cea411 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=df8fa5523450e375019a04d290b3e89a 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=e47fc1763449e7d59f9c1a28a5154ef4 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-project-permissions.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=f8d8c26a6fd8ff01f9ca501ca1799069 2500w" />
-
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=6cdadd1cd30946c5c2c3dd34ea424b34" alt="Setting project permissions for experiment" data-og-width="659" width="659" data-og-height="515" height="515" data-path="images/guides/access-control/read-on-project-for-your-experiment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=5ef696d71be068dd2f59d99ca2a42944 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1a984a3c31b9c1f041f361cbf3c581f7 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=f4706d3992ebbc8932af47bca9768675 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=27b239ce7aa41fc93ebe3d418d46d0aa 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=c13b878164d61d1c5599c5d4331b4938 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/read-on-project-for-your-experiment.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=92626b82863f697444aa231d233052e7 2500w" />
-
-Finally, navigate to your object and select Permissions from the context menu in the top-right of that object's page.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=d684396c31ab8238f86a3d66e2681502" alt="Experiment level project permissions" data-og-width="819" width="819" data-og-height="445" height="445" data-path="images/guides/access-control/experiment-level-permissions-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=2f3cfb2a92062a95bec45b3d964323e2 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=e2c92010c9b5cfc8d410e82c42472671 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=96876fe2554119ae1f9cdb2cf0b6413b 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=82169f4baaac106f34438f74330f2324 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=aa48dfae78102d649f2ae0b3028279bb 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-permissions-link.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=d9a48bc733020c6dfebb8a7ab65a1ab4 2500w" />
-
-Find the permission group via the search input, and select the pencil icon to set permissions for the group.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=08ce947ff50d8336b9d3643bfb35371b" alt="Experiment level find group" data-og-width="821" width="821" data-og-height="411" height="411" data-path="images/guides/access-control/experiment-level-find-group.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=538478a694d267818cff6bb4bbc096f9 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=92198179e752a2df9eca07c77730b0ed 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=1f2866f9b55a4ce646fc680e3b9e4239 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=02ee3ad0fd6a82bf9d189fa8f94f9279 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=9d3a4caa1584fa53c9eaf97cabb31f46 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-find-group.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=3fa267c9d12e0661802c04a603bf8822 2500w" />
-
-Set the desired permissions for the group scoped to this specific object.
-<img src="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=f0111af54715205722c231629ce81317" alt="Experiment level find group" data-og-width="586" width="586" data-og-height="324" height="324" data-path="images/guides/access-control/experiment-level-set-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=280&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=9bc677a7660980da4affbf0489f68757 280w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=560&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=751cc55a7b14b5a0e4283c498b825349 560w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=840&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=33dc64ffd516930bbbad7783cdd836f9 840w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=1100&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=69e5fd38c8faaca49dba075052a8c9d2 1100w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=1650&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=745f8f02a273bea8247ddbc397c3770c 1650w, https://mintcdn.com/braintrust/45MW-7Nyg-N7cImK/images/guides/access-control/experiment-level-set-permissions.png?w=2500&fit=max&auto=format&n=45MW-7Nyg-N7cImK&q=85&s=e2af6a46775751fd867b2f68a77f1866 2500w" />
-
-## Service accounts and service tokens
-
-Service accounts are designed for system integrations and automation. Unlike regular user accounts, service accounts are not tied to individual people and can be assigned granular permissions for specific use cases.
-Service accounts can inherit permissions from groups or be granted permissions like users.
-
-Service tokens are the authentication mechanism for service accounts. They use the `bt-st-` prefix to distinguish them from regular API keys (`sk-` prefix).
-Service tokens can be used anywhere API keys can be used in the SDK, AI proxy, and API requests.
-
-You must be in the Owner group of your organization to manage service accounts and service tokens.
-
-<Note>
-  For hybrid deployments you must configure a service token for the data plane to enable features like data retention. See the [data plane manager docs](/guides/self-hosting/advanced#data-plane-manager) for more details.
-</Note>
-
-## API support
-
-To automate the creation of permission groups and their access control rules, you can use the Braintrust API.
-For more information on using the API to manage permission groups, check out the [API reference for groups](/api-reference/groups/list-groups) and for [permissions](/api-reference/acls/list-acls).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Manage organizations](/admin/organizations) to invite members and assign groups
+* [Manage projects](/admin/projects) to configure project-level permissions
+* [Set up automations](/admin/automations) with service accounts
+* [API reference](/api-reference/groups/list-groups) for programmatic access control

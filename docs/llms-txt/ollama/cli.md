@@ -1,11 +1,56 @@
 # Source: https://docs.ollama.com/cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI Reference
 
 ### Run a model
 
 ```
 ollama run gemma3
+```
+
+### Launch integrations
+
+```
+ollama launch
+```
+
+Configure and launch external applications to use Ollama models. This provides an interactive way to set up and start integrations with supported apps.
+
+#### Supported integrations
+
+* **OpenCode** - Open-source coding assistant
+* **Claude Code** - Anthropic's agentic coding tool
+* **Codex** - OpenAI's coding assistant
+* **Droid** - Factory's AI coding agent
+
+#### Examples
+
+Launch an integration interactively:
+
+```
+ollama launch
+```
+
+Launch a specific integration:
+
+```
+ollama launch claude
+```
+
+Launch with a specific model:
+
+```
+ollama launch claude --model qwen3-coder
+```
+
+Configure without launching:
+
+```
+ollama launch droid --config
 ```
 
 #### Multiline input

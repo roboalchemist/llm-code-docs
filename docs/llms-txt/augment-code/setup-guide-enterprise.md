@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/setup-guide-enterprise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup Guide for Enterprise
 
 > Configure Augment Code Review for Enterprise accounts with multi-organization support.
@@ -18,7 +22,7 @@ Augment Code Review helps professional software teams complete code-reviews fast
 
 ## About the installation process
 
-Visit [app.augmentcode.com/settings/code-review](https://app.augmentcode.com/settings/code-review) and log in. Augment Code Review is only available as an add-on to [Enterprise plan](https://augmentcode.com/pricing) customers. Settings are accessible to all members of the Enterprise plan, but only configurable for Administrators of the Enterprise plan. If you aren't sure if you are an Administrator, please contact your solutions team.
+Visit [app.augmentcode.com/settings/code-review](https://app.augmentcode.com/settings/code-review) and log in. Settings are accessible to all members of the Enterprise plan, but only configurable for Administrators of the Enterprise plan. If you aren't sure if you are an Administrator, please contact your solutions team.
 
 ### Configure Repo Access inside of the Augment GitHub App
 
@@ -105,8 +109,3 @@ Now that you've completed the basic setup, explore these additional features to 
 ## Need Help?
 
 If you encounter any issues during setup, check out our [Troubleshooting](/codereview/troubleshooting) guide.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

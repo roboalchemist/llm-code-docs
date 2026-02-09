@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/research/get-a-task.md
+# Source: https://exa.ai/docs/reference/research/get-a-task.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get a task
 
@@ -7,454 +11,403 @@
 Use the unique `researchId` returned from `POST /research/v1` to poll until the task is finished.
 
 
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+
+
 ## OpenAPI
 
 ````yaml get /research/v1/{researchId}
+openapi: 3.1.0
+info:
+  title: Exa Research API
+  description: >-
+    Create asynchronous research tasks that explore the web, gather sources,
+    synthesize findings, and return structured results with citations. Perfect
+    for complex, multi-step research that requires reasoning over web data.
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.exa.ai
+    description: Production
+security:
+  - api_key: []
+tags: []
 paths:
-  path: /research/v1/{researchId}
-  method: get
-  servers:
-    - url: https://api.exa.ai/research/v1/
-      description: Production
-  request:
-    security: []
-    parameters:
-      path:
-        researchId:
+  /research/v1/{researchId}:
+    get:
+      tags:
+        - Research
+      summary: Get a research request by id
+      description: Retrieve research by ID. Add ?stream=true for real-time SSE updates.
+      operationId: ResearchController_getResearch
+      parameters:
+        - name: researchId
+          required: true
+          in: path
+          description: The unique identifier of the research request to retrieve
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the research request to retrieve
-      query:
-        stream:
+            type: string
+        - name: stream
+          required: false
+          in: query
+          description: >-
+            Set to "true" to receive real-time updates via Server-Sent Events
+            (SSE)
           schema:
-            - type: string
-              required: false
-              description: >-
-                Set to "true" to receive real-time updates via Server-Sent
-                Events (SSE)
-        events:
+            type: string
+        - name: events
+          required: false
+          in: query
+          description: >-
+            Set to "true" to include the detailed event log of all operations
+            performed
           schema:
-            - type: string
-              required: false
-              description: >-
-                Set to "true" to include the detailed event log of all
-                operations performed
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              researchId:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      Unique identifier for tracking and retrieving this
-                      research request
-              createdAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was created (Unix timestamp in
-                      milliseconds)
-              model:
-                allOf:
-                  - default: exa-research
-                    type:
-                      - string
-                    enum:
-                      - exa-research-fast
-                      - exa-research
-                      - exa-research-pro
-                    description: The model used for this research request
-              instructions:
-                allOf:
-                  - type:
-                      - string
-                    description: The original research instructions provided
-              outputSchema:
-                allOf:
-                  - type:
-                      - object
-                    additionalProperties: {}
-                    description: The JSON Schema used to validate the output, if provided
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - pending
-            title: Pending
-            refIdentifier: '#/components/schemas/ResearchDtoClass'
-            examples: &ref_1
-              - &ref_0
-                researchId: 01jszdfs0052sg4jc552sg4jc5
-                model: exa-research
-                instructions: What species of ant are similar to honeypot ants?
-                status: running
-              - researchId: 01jszdfs0052sg4jc552sg4jc5
-                model: exa-research
-                instructions: What species of ant are similar to honeypot ants?
-                status: completed
-                output: Melophorus bagoti
-            requiredProperties:
-              - researchId
-              - createdAt
-              - instructions
-              - status
-            example: *ref_0
-          - type: object
-            properties:
-              researchId:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      Unique identifier for tracking and retrieving this
-                      research request
-              createdAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was created (Unix timestamp in
-                      milliseconds)
-              model:
-                allOf:
-                  - default: exa-research
-                    type:
-                      - string
-                    enum:
-                      - exa-research-fast
-                      - exa-research
-                      - exa-research-pro
-                    description: The model used for this research request
-              instructions:
-                allOf:
-                  - type:
-                      - string
-                    description: The original research instructions provided
-              outputSchema:
-                allOf:
-                  - type:
-                      - object
-                    additionalProperties: {}
-                    description: The JSON Schema used to validate the output, if provided
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - running
-              events:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      $ref: '#/components/schemas/ResearchEventDtoClass'
-                    description: >-
-                      Real-time log of operations as research progresses. Poll
-                      this endpoint or use ?stream=true for live updates.
-            title: Running
-            refIdentifier: '#/components/schemas/ResearchDtoClass'
-            examples: *ref_1
-            requiredProperties:
-              - researchId
-              - createdAt
-              - instructions
-              - status
-            example: *ref_0
-          - type: object
-            properties:
-              researchId:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      Unique identifier for tracking and retrieving this
-                      research request
-              createdAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was created (Unix timestamp in
-                      milliseconds)
-              model:
-                allOf:
-                  - default: exa-research
-                    type:
-                      - string
-                    enum:
-                      - exa-research-fast
-                      - exa-research
-                      - exa-research-pro
-                    description: The model used for this research request
-              instructions:
-                allOf:
-                  - type:
-                      - string
-                    description: The original research instructions provided
-              outputSchema:
-                allOf:
-                  - type:
-                      - object
-                    additionalProperties: {}
-                    description: The JSON Schema used to validate the output, if provided
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - completed
-              events:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      $ref: '#/components/schemas/ResearchEventDtoClass'
-                    description: >-
-                      Detailed log of all operations performed during research.
-                      Use ?events=true to include this field for debugging or
-                      monitoring progress.
-              output:
-                allOf:
-                  - type:
-                      - object
-                    properties:
-                      content:
-                        type:
-                          - string
-                        description: >-
-                          The complete research output as text. If outputSchema
-                          was provided, this is a JSON string.
-                      parsed:
-                        type:
-                          - object
-                        additionalProperties: {}
-                        description: >-
-                          Structured JSON object matching your outputSchema.
-                          Only present when outputSchema was provided and the
-                          output successfully validated.
-                    required:
-                      - content
-                    description: >-
-                      The final research results, containing both raw text and
-                      parsed JSON if outputSchema was provided
-              costDollars:
-                allOf:
-                  - type:
-                      - object
-                    properties:
-                      total:
-                        type:
-                          - number
-                        description: Total cost in USD for this research request
-                      numSearches:
-                        type:
-                          - number
-                        description: >-
-                          Count of web searches performed. Each search query
-                          counts as one search.
-                      numPages:
-                        type:
-                          - number
-                        description: >-
-                          Count of web pages fully crawled and processed. Only
-                          pages that were read in detail are counted.
-                      reasoningTokens:
-                        type:
-                          - number
-                        description: >-
-                          Total AI tokens used for reasoning, planning, and
-                          generating the final output
-                    required:
-                      - total
-                      - numSearches
-                      - numPages
-                      - reasoningTokens
-                    description: Detailed cost breakdown for billing purposes
-              finishedAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research completed (Unix timestamp in
-                      milliseconds)
-            title: Completed
-            refIdentifier: '#/components/schemas/ResearchDtoClass'
-            examples: *ref_1
-            requiredProperties:
-              - researchId
-              - createdAt
-              - instructions
-              - status
-              - output
-              - costDollars
-              - finishedAt
-            example: *ref_0
-          - type: object
-            properties:
-              researchId:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      Unique identifier for tracking and retrieving this
-                      research request
-              createdAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was created (Unix timestamp in
-                      milliseconds)
-              model:
-                allOf:
-                  - default: exa-research
-                    type:
-                      - string
-                    enum:
-                      - exa-research-fast
-                      - exa-research
-                      - exa-research-pro
-                    description: The model used for this research request
-              instructions:
-                allOf:
-                  - type:
-                      - string
-                    description: The original research instructions provided
-              outputSchema:
-                allOf:
-                  - type:
-                      - object
-                    additionalProperties: {}
-                    description: The JSON Schema used to validate the output, if provided
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - canceled
-              events:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      $ref: '#/components/schemas/ResearchEventDtoClass'
-                    description: >-
-                      Detailed log of all operations performed during research.
-                      Use ?events=true to include this field for debugging or
-                      monitoring progress.
-              finishedAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was canceled (Unix timestamp in
-                      milliseconds)
-            title: Canceled
-            refIdentifier: '#/components/schemas/ResearchDtoClass'
-            examples: *ref_1
-            requiredProperties:
-              - researchId
-              - createdAt
-              - instructions
-              - status
-              - finishedAt
-            example: *ref_0
-          - type: object
-            properties:
-              researchId:
-                allOf:
-                  - type:
-                      - string
-                    description: >-
-                      Unique identifier for tracking and retrieving this
-                      research request
-              createdAt:
-                allOf:
-                  - type:
-                      - number
-                    description: >-
-                      When the research was created (Unix timestamp in
-                      milliseconds)
-              model:
-                allOf:
-                  - default: exa-research
-                    type:
-                      - string
-                    enum:
-                      - exa-research-fast
-                      - exa-research
-                      - exa-research-pro
-                    description: The model used for this research request
-              instructions:
-                allOf:
-                  - type:
-                      - string
-                    description: The original research instructions provided
-              outputSchema:
-                allOf:
-                  - type:
-                      - object
-                    additionalProperties: {}
-                    description: The JSON Schema used to validate the output, if provided
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - failed
-              events:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      $ref: '#/components/schemas/ResearchEventDtoClass'
-                    description: >-
-                      Detailed log of all operations performed during research.
-                      Use ?events=true to include this field for debugging or
-                      monitoring progress.
-              error:
-                allOf:
-                  - type:
-                      - string
-                    description: Human-readable error message explaining what went wrong.
-              finishedAt:
-                allOf:
-                  - type:
-                      - number
-                    description: When the research failed (Unix timestamp in milliseconds)
-            title: Failed
-            refIdentifier: '#/components/schemas/ResearchDtoClass'
-            examples: *ref_1
-            requiredProperties:
-              - researchId
-              - createdAt
-              - instructions
-              - status
-              - error
-              - finishedAt
-            example: *ref_0
-        examples:
-          example:
-            value:
-              researchId: 01jszdfs0052sg4jc552sg4jc5
-              model: exa-research
-              instructions: What species of ant are similar to honeypot ants?
-              status: running
-        description: ''
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchDtoClass'
 components:
   schemas:
+    ResearchDtoClass:
+      discriminator:
+        propertyName: status
+      oneOf:
+        - type:
+            - object
+          properties:
+            researchId:
+              type:
+                - string
+              description: >-
+                Unique identifier for tracking and retrieving this research
+                request
+            createdAt:
+              type:
+                - number
+              description: When the research was created (Unix timestamp in milliseconds)
+            model:
+              default: exa-research
+              type:
+                - string
+              enum:
+                - exa-research-fast
+                - exa-research
+                - exa-research-pro
+              description: The model used for this research request
+            instructions:
+              type:
+                - string
+              description: The original research instructions provided
+            outputSchema:
+              type:
+                - object
+              additionalProperties: {}
+              description: The JSON Schema used to validate the output, if provided
+            status:
+              type:
+                - string
+              enum:
+                - pending
+          required:
+            - researchId
+            - createdAt
+            - instructions
+            - status
+          title: Pending
+        - type:
+            - object
+          properties:
+            researchId:
+              type:
+                - string
+              description: >-
+                Unique identifier for tracking and retrieving this research
+                request
+            createdAt:
+              type:
+                - number
+              description: When the research was created (Unix timestamp in milliseconds)
+            model:
+              default: exa-research
+              type:
+                - string
+              enum:
+                - exa-research-fast
+                - exa-research
+                - exa-research-pro
+              description: The model used for this research request
+            instructions:
+              type:
+                - string
+              description: The original research instructions provided
+            outputSchema:
+              type:
+                - object
+              additionalProperties: {}
+              description: The JSON Schema used to validate the output, if provided
+            status:
+              type:
+                - string
+              enum:
+                - running
+            events:
+              type:
+                - array
+              items:
+                $ref: '#/components/schemas/ResearchEventDtoClass'
+              description: >-
+                Real-time log of operations as research progresses. Poll this
+                endpoint or use ?stream=true for live updates.
+          required:
+            - researchId
+            - createdAt
+            - instructions
+            - status
+          title: Running
+        - type:
+            - object
+          properties:
+            researchId:
+              type:
+                - string
+              description: >-
+                Unique identifier for tracking and retrieving this research
+                request
+            createdAt:
+              type:
+                - number
+              description: When the research was created (Unix timestamp in milliseconds)
+            model:
+              default: exa-research
+              type:
+                - string
+              enum:
+                - exa-research-fast
+                - exa-research
+                - exa-research-pro
+              description: The model used for this research request
+            instructions:
+              type:
+                - string
+              description: The original research instructions provided
+            outputSchema:
+              type:
+                - object
+              additionalProperties: {}
+              description: The JSON Schema used to validate the output, if provided
+            status:
+              type:
+                - string
+              enum:
+                - completed
+            events:
+              type:
+                - array
+              items:
+                $ref: '#/components/schemas/ResearchEventDtoClass'
+              description: >-
+                Detailed log of all operations performed during research. Use
+                ?events=true to include this field for debugging or monitoring
+                progress.
+            output:
+              type:
+                - object
+              properties:
+                content:
+                  type:
+                    - string
+                  description: >-
+                    The complete research output as text. If outputSchema was
+                    provided, this is a JSON string.
+                parsed:
+                  type:
+                    - object
+                  additionalProperties: {}
+                  description: >-
+                    Structured JSON object matching your outputSchema. Only
+                    present when outputSchema was provided and the output
+                    successfully validated.
+              required:
+                - content
+              description: >-
+                The final research results, containing both raw text and parsed
+                JSON if outputSchema was provided
+            costDollars:
+              type:
+                - object
+              properties:
+                total:
+                  type:
+                    - number
+                  description: Total cost in USD for this research request
+                numSearches:
+                  type:
+                    - number
+                  description: >-
+                    Count of web searches performed. Each search query counts as
+                    one search.
+                numPages:
+                  type:
+                    - number
+                  description: >-
+                    Count of web pages fully crawled and processed. Only pages
+                    that were read in detail are counted.
+                reasoningTokens:
+                  type:
+                    - number
+                  description: >-
+                    Total AI tokens used for reasoning, planning, and generating
+                    the final output
+              required:
+                - total
+                - numSearches
+                - numPages
+                - reasoningTokens
+              description: Detailed cost breakdown for billing purposes
+            finishedAt:
+              type:
+                - number
+              description: When the research completed (Unix timestamp in milliseconds)
+          required:
+            - researchId
+            - createdAt
+            - instructions
+            - status
+            - output
+            - costDollars
+            - finishedAt
+          title: Completed
+        - type:
+            - object
+          properties:
+            researchId:
+              type:
+                - string
+              description: >-
+                Unique identifier for tracking and retrieving this research
+                request
+            createdAt:
+              type:
+                - number
+              description: When the research was created (Unix timestamp in milliseconds)
+            model:
+              default: exa-research
+              type:
+                - string
+              enum:
+                - exa-research-fast
+                - exa-research
+                - exa-research-pro
+              description: The model used for this research request
+            instructions:
+              type:
+                - string
+              description: The original research instructions provided
+            outputSchema:
+              type:
+                - object
+              additionalProperties: {}
+              description: The JSON Schema used to validate the output, if provided
+            status:
+              type:
+                - string
+              enum:
+                - canceled
+            events:
+              type:
+                - array
+              items:
+                $ref: '#/components/schemas/ResearchEventDtoClass'
+              description: >-
+                Detailed log of all operations performed during research. Use
+                ?events=true to include this field for debugging or monitoring
+                progress.
+            finishedAt:
+              type:
+                - number
+              description: When the research was canceled (Unix timestamp in milliseconds)
+          required:
+            - researchId
+            - createdAt
+            - instructions
+            - status
+            - finishedAt
+          title: Canceled
+        - type:
+            - object
+          properties:
+            researchId:
+              type:
+                - string
+              description: >-
+                Unique identifier for tracking and retrieving this research
+                request
+            createdAt:
+              type:
+                - number
+              description: When the research was created (Unix timestamp in milliseconds)
+            model:
+              default: exa-research
+              type:
+                - string
+              enum:
+                - exa-research-fast
+                - exa-research
+                - exa-research-pro
+              description: The model used for this research request
+            instructions:
+              type:
+                - string
+              description: The original research instructions provided
+            outputSchema:
+              type:
+                - object
+              additionalProperties: {}
+              description: The JSON Schema used to validate the output, if provided
+            status:
+              type:
+                - string
+              enum:
+                - failed
+            events:
+              type:
+                - array
+              items:
+                $ref: '#/components/schemas/ResearchEventDtoClass'
+              description: >-
+                Detailed log of all operations performed during research. Use
+                ?events=true to include this field for debugging or monitoring
+                progress.
+            error:
+              type:
+                - string
+              description: Human-readable error message explaining what went wrong.
+            finishedAt:
+              type:
+                - number
+              description: When the research failed (Unix timestamp in milliseconds)
+          required:
+            - researchId
+            - createdAt
+            - instructions
+            - status
+            - error
+            - finishedAt
+          title: Failed
+      examples:
+        - researchId: 01jszdfs0052sg4jc552sg4jc5
+          model: exa-research
+          instructions: What species of ant are similar to honeypot ants?
+          status: running
+        - researchId: 01jszdfs0052sg4jc552sg4jc5
+          model: exa-research
+          instructions: What species of ant are similar to honeypot ants?
+          status: completed
+          output: Melophorus bagoti
     ResearchEventDtoClass:
       oneOf:
         - discriminator:
@@ -1062,9 +1015,11 @@ components:
                 - createdAt
                 - researchId
               title: Task Output
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

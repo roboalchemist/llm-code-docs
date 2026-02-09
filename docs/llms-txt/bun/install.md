@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun install
 
 > Install packages with Bun's fast package manager
@@ -22,20 +26,6 @@ The `bun` CLI contains a Node.js-compatible package manager designed to be a dra
     comparison](https://user-images.githubusercontent.com/709451/147004342-571b6123-17a9-49a2-8bfd-dcfc5204047e.png)
   </Frame>
 </Note>
-
-<Accordion title="For Linux users">
-  The recommended minimum Linux Kernel version is 5.6. If you're on Linux kernel 5.1 - 5.5, `bun install` will work, but HTTP requests will be slow due to a lack of support for io\_uring's `connect()` operation.
-
-  If you're using Ubuntu 20.04, here's how to install a [newer kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack):
-
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-  # If this returns a version >= 5.6, you don't need to do anything
-  uname -r
-
-  # Install the official Ubuntu hardware enablement kernel
-  sudo apt install --install-recommends linux-generic-hwe-20.04
-  ```
-</Accordion>
 
 To install all dependencies of a project:
 
@@ -130,7 +120,7 @@ For more information on filtering with `bun install`, refer to [Package Manager 
 
 Bun supports npm's `"overrides"` and Yarn's `"resolutions"` in `package.json`. These are mechanisms for specifying a version range for *metadependencies*—the dependencies of your dependencies. Refer to [Package manager > Overrides and resolutions](/pm/overrides) for complete documentation.
 
-```json package.json file="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "my-app",
   "dependencies": {

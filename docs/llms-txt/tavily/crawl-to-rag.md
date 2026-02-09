@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/crawl-to-rag.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Crawl to RAG
 
 > Turn Any Website into a Searchable Knowledge Base using Tavily and MongoDB.
@@ -39,8 +43,3 @@ Query your crawled data through a conversational agent that provides citation-ba
 3. **Smart Question Routing**: Automatic detection of informational vs. conversational queries
 4. **Persistent Memory**: Conversation history and context preservation using LangGraph-MongoDB checkpointing
 5. **Session Management**: Thread-based conversational persistance and vector store management
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

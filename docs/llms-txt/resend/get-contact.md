@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/contacts/get-contact.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Contact
 
 > Retrieve a single contact.
@@ -47,7 +51,7 @@ Either `id` or `email` must be provided.
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -63,7 +67,7 @@ Either `id` or `email` must be provided.
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Get by contact id
@@ -77,7 +81,7 @@ Either `id` or `email` must be provided.
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -93,7 +97,7 @@ Either `id` or `email` must be provided.
   )
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -113,21 +117,23 @@ Either `id` or `email` must be provided.
   Resend::Contacts.get(params)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  // Get by contact id
-  id := "e169aa45-1ecf-4183-9955-b1499d5701d3"
-  contact, err := client.Contacts.Get(id)
+  	// Get by contact id
+  	client.Contacts.Get("e169aa45-1ecf-4183-9955-b1499d5701d3")
 
-  // Get by contact email
-  email := "steve.wozniak@gmail.com"
-  contact, err := client.Contacts.Get(email)
+  	// Get by contact email
+  	client.Contacts.Get("steve.wozniak@gmail.com")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -150,7 +156,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -172,7 +178,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -190,7 +196,7 @@ Either `id` or `email` must be provided.
   Console.WriteLine( "Contact Email={0}", resp2.Content.Email );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   # Get by contact id
   curl -X GET 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
@@ -202,7 +208,7 @@ Either `id` or `email` must be provided.
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "contact",
     "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",

@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-diff/what-is-data-diff.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What's a Data Diff?
 
 > A data diff is the value-level comparison between two tables, used to identify critical changes to your data and guarantee data quality.

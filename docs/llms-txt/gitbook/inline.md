@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting/inline.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/formatting/inline.md
-
-# Source: https://gitbook.com/docs/creating-content/formatting/inline.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/formatting/inline.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting/inline.md
 
@@ -12,7 +8,7 @@
 
 # Inline content
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCL4Kugsl8i9PEecJo4Jz%2Fcreating-content-formatting-your-content-inline%402x.png?alt=media&#x26;token=48b5c428-9dc9-4212-9f68-7ee9113b58fd" alt="A GitBook screenshot showing inline content options"><figcaption><p>Add inline elements to your content.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQcBDNerKxNvi1X3Jnk2R%2F26_01_22_inline-palette%402x.png?alt=media&#x26;token=08b0298b-627f-4394-addf-dd5b49cf3501" alt="A GitBook screenshot showing inline content options"><figcaption><p>Add inline elements to your content.</p></figcaption></figure>
 
 The inline palette lets you quickly add extra content to your text block without moving your hands away from the keyboard. Simply hit `/` on any text block to open the inline palette. The forward slash will be replaced by the content you choose to insert.
 
@@ -114,8 +110,7 @@ To insert an absolute link:
 4. Hit `Enter`.
 
 {% hint style="info" %}
-
-#### Why don't external links open in a new tab?
+**Why don't external links open in a new tab?**
 
 When you add a link to an external site in your docs, it will open in the same tab.
 

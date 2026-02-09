@@ -1,180 +1,195 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/deployments/list-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List deployments
 
 > List deployments under the authenticated user or team. If a deployment hasn't finished uploading (is incomplete), the `url` property will have a value of `null`.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v6/deployments
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v6/deployments
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        app:
+  /v6/deployments:
+    get:
+      tags:
+        - deployments
+      summary: List deployments
+      description: >-
+        List deployments under the authenticated user or team. If a deployment
+        hasn't finished uploading (is incomplete), the `url` property will have
+        a value of `null`.
+      operationId: getDeployments
+      parameters:
+        - name: app
+          description: Name of the deployment.
+          in: query
           schema:
-            - type: string
-              description: Name of the deployment.
-              example: docs
-        from:
+            description: Name of the deployment.
+            type: string
+            example: docs
+        - name: from
+          description: >-
+            Gets the deployment created after this Date timestamp. (default:
+            current time)
+          in: query
           schema:
-            - type: number
-              description: >-
-                Gets the deployment created after this Date timestamp. (default:
-                current time)
-              deprecated: true
-              example: 1612948664566
-        limit:
+            description: >-
+              Gets the deployment created after this Date timestamp. (default:
+              current time)
+            type: number
+            example: 1612948664566
+            deprecated: true
+        - name: limit
+          description: Maximum number of deployments to list from a request.
+          in: query
           schema:
-            - type: number
-              description: Maximum number of deployments to list from a request.
-              example: 10
-        projectId:
+            description: Maximum number of deployments to list from a request.
+            type: number
+            example: 10
+        - name: projectId
+          description: Filter deployments from the given ID or name.
+          in: query
           schema:
-            - type: string
-              description: Filter deployments from the given ID or name.
-              example: QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY
-        projectIds:
+            description: Filter deployments from the given ID or name.
+            type: string
+            example: QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY
+        - name: projectIds
+          description: >-
+            Filter deployments from the given project IDs. Cannot be used when
+            projectId is specified.
+          in: query
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              description: >-
-                Filter deployments from the given project IDs. Cannot be used
-                when projectId is specified.
-              maxItems: 20
-              minItems: 1
-              example:
-                - prj_123
-                - prj_456
-        target:
+            description: >-
+              Filter deployments from the given project IDs. Cannot be used when
+              projectId is specified.
+            type: array
+            items:
+              type: string
+            example:
+              - prj_123
+              - prj_456
+            minItems: 1
+            maxItems: 20
+        - name: target
+          description: Filter deployments based on the environment.
+          in: query
           schema:
-            - type: string
-              description: Filter deployments based on the environment.
-              example: production
-        to:
+            description: Filter deployments based on the environment.
+            type: string
+            example: production
+        - name: to
+          description: >-
+            Gets the deployment created before this Date timestamp. (default:
+            current time)
+          in: query
           schema:
-            - type: number
-              description: >-
-                Gets the deployment created before this Date timestamp.
-                (default: current time)
-              deprecated: true
-              example: 1612948664566
-        users:
+            description: >-
+              Gets the deployment created before this Date timestamp. (default:
+              current time)
+            type: number
+            example: 1612948664566
+            deprecated: true
+        - name: users
+          description: >-
+            Filter out deployments based on users who have created the
+            deployment.
+          in: query
           schema:
-            - type: string
-              description: >-
-                Filter out deployments based on users who have created the
-                deployment.
-              example: kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY
-        since:
+            description: >-
+              Filter out deployments based on users who have created the
+              deployment.
+            type: string
+            example: kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY
+        - name: since
+          description: Get Deployments created after this JavaScript timestamp.
+          in: query
           schema:
-            - type: number
-              description: Get Deployments created after this JavaScript timestamp.
-              example: 1540095775941
-        until:
+            description: Get Deployments created after this JavaScript timestamp.
+            type: number
+            example: 1540095775941
+        - name: until
+          description: Get Deployments created before this JavaScript timestamp.
+          in: query
           schema:
-            - type: number
-              description: Get Deployments created before this JavaScript timestamp.
-              example: 1540095775951
-        state:
+            description: Get Deployments created before this JavaScript timestamp.
+            type: number
+            example: 1540095775951
+        - name: state
+          description: >-
+            Filter deployments based on their state (`BUILDING`, `ERROR`,
+            `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)
+          in: query
           schema:
-            - type: string
-              description: >-
-                Filter deployments based on their state (`BUILDING`, `ERROR`,
-                `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)
-              example: BUILDING,READY
-        rollbackCandidate:
+            description: >-
+              Filter deployments based on their state (`BUILDING`, `ERROR`,
+              `INITIALIZING`, `QUEUED`, `READY`, `CANCELED`)
+            type: string
+            example: BUILDING,READY
+        - name: rollbackCandidate
+          description: Filter deployments based on their rollback candidacy
+          in: query
           schema:
-            - type: boolean
-              description: Filter deployments based on their rollback candidacy
-        branch:
+            description: Filter deployments based on their rollback candidacy
+            type: boolean
+        - name: branch
+          description: Filter deployments based on the branch name
+          in: query
           schema:
-            - type: string
-              description: Filter deployments based on the branch name
-        sha:
+            description: Filter deployments based on the branch name
+            type: string
+        - name: sha
+          description: Filter deployments based on the SHA
+          in: query
           schema:
-            - type: string
-              description: Filter deployments based on the SHA
-        teamId:
+            description: Filter deployments based on the SHA
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getDeployments
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Deployments.GetDeployments(ctx, operations.GetDeploymentsRequest{\n        App: vercel.String(\"docs\"),\n        From: vercel.Float64(1612948664566),\n        Limit: vercel.Float64(10),\n        ProjectID: vercel.String(\"QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY\"),\n        Target: vercel.String(\"production\"),\n        To: vercel.Float64(1612948664566),\n        Users: vercel.String(\"kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY\"),\n        Since: vercel.Float64(1540095775941),\n        Until: vercel.Float64(1540095775951),\n        State: vercel.String(\"BUILDING,READY\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getDeployments
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.deployments.getDeployments({
-              app: "docs",
-              from: 1612948664566,
-              limit: 10,
-              projectId: "QmXGTs7mvAMMC7WW5ebrM33qKG32QK3h4vmQMjmY",
-              projectIds: [
-                "prj_123",
-                "prj_456",
-              ],
-              target: "production",
-              to: 1612948664566,
-              users: "kr1PsOIzqEL5Xg6M4VZcZosf,K4amb7K9dAt5R2vBJWF32bmY",
-              since: 1540095775941,
-              until: 1540095775951,
-              state: "BUILDING,READY",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              pagination:
-                allOf:
-                  - $ref: '#/components/schemas/Pagination'
-              deployments:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                  deployments:
+                    items:
                       properties:
                         uid:
                           type: string
@@ -212,6 +227,9 @@ paths:
                           example: 1609492210000
                         softDeletedByRetention:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             Optional flag to indicate if the deployment was soft
                             deleted by retention policy.
@@ -322,6 +340,9 @@ paths:
                           oneOf:
                             - type: number
                             - type: boolean
+                              enum:
+                                - false
+                                - true
                         createdAt:
                           type: number
                           description: Timestamp of when the deployment got created.
@@ -379,8 +400,8 @@ paths:
                                 completedAt:
                                   type: number
                               required:
-                                - state
                                 - startedAt
+                                - state
                               type: object
                               description: >-
                                 Detailed information about v2 deployment checks.
@@ -423,7 +444,15 @@ paths:
                         isRollbackCandidate:
                           nullable: true
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: Deployment can be used for instant rollback
+                        prebuilt:
+                          type: boolean
+                          enum:
+                            - false
+                            - true
                         projectSettings:
                           properties:
                             framework:
@@ -469,6 +498,7 @@ paths:
                                 - zola
                                 - hydrogen
                                 - vite
+                                - tanstack-start
                                 - vitepress
                                 - vuepress
                                 - parcel
@@ -482,15 +512,31 @@ paths:
                                 - hono
                                 - express
                                 - h3
+                                - koa
                                 - nestjs
+                                - elysia
                                 - fastify
                                 - xmcp
+                                - python
+                                - ruby
+                                - rust
+                                - node
+                                - services
                             gitForkProtection:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             customerSupportCodeVisibility:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             gitLFS:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             devCommand:
                               nullable: true
                               type: string
@@ -503,6 +549,7 @@ paths:
                             nodeVersion:
                               type: string
                               enum:
+                                - 24.x
                                 - 22.x
                                 - 20.x
                                 - 18.x
@@ -517,11 +564,17 @@ paths:
                             publicSource:
                               nullable: true
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             rootDirectory:
                               nullable: true
                               type: string
                             sourceFilesOutsideRootDirectory:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             commandForIgnoringBuildStep:
                               nullable: true
                               type: string
@@ -539,6 +592,9 @@ paths:
                                   type: number
                                 hasData:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 paidAt:
                                   type: number
                               required:
@@ -556,24 +612,35 @@ paths:
                                   type: number
                                 hasData:
                                   type: boolean
+                                  enum:
+                                    - true
                               required:
                                 - id
                               type: object
                             skipGitConnectDuringLink:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             gitComments:
                               properties:
                                 onPullRequest:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                   description: Whether the Vercel bot should comment on PRs
                                 onCommit:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                   description: >-
                                     Whether the Vercel bot should comment on
                                     commits
                               required:
-                                - onPullRequest
                                 - onCommit
+                                - onPullRequest
                               type: object
                               description: Since June '23
                           type: object
@@ -582,6 +649,9 @@ paths:
                             deployment
                         connectBuildsEnabled:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             The flag saying if Secure Compute network is used
                             for builds
@@ -618,136 +688,32 @@ paths:
                             The custom environment used for this deployment, if
                             any
                       required:
-                        - uid
-                        - name
-                        - projectId
-                        - url
                         - created
-                        - type
                         - creator
                         - inspectorUrl
+                        - name
+                        - projectId
+                        - type
+                        - uid
+                        - url
                       type: object
                     type: array
-            requiredProperties:
-              - pagination
-              - deployments
-        examples:
-          example:
-            value:
-              pagination:
-                count: 20
-                next: 1540095775951
-                prev: 1540095775951
-              deployments:
-                - uid: dpl_2euZBFqxYdDMDG1jTrHFnNZ2eUVa
-                  name: docs
-                  projectId: <string>
-                  url: docs-9jaeg38me.vercel.app
-                  created: 1609492210000
-                  defaultRoute: /docs
-                  deleted: 1609492210000
-                  undeleted: 1609492210000
-                  softDeletedByRetention: true
-                  source: cli
-                  state: READY
-                  readyState: READY
-                  type: LAMBDAS
-                  creator:
-                    uid: eLrCnEgbKhsHyfbiNR7E8496
-                    email: example@example.com
-                    username: johndoe
-                    githubLogin: johndoe
-                    gitlabLogin: johndoe
-                  meta: {}
-                  target: production
-                  aliasError:
-                    code: <string>
-                    message: <string>
-                  aliasAssigned: 123
-                  createdAt: 1609492210000
-                  buildingAt: 1609492210000
-                  ready: 1609492210000
-                  readySubstate: STAGED
-                  checksState: registered
-                  checksConclusion: succeeded
-                  checks:
-                    deployment-alias:
-                      state: succeeded
-                      startedAt: 123
-                      completedAt: 123
-                  inspectorUrl: https://vercel.com/acme/nextjs/J1hXN00qjUeoYfpEEf7dnDtpSiVq
-                  errorCode: BUILD_FAILED
-                  errorMessage: >-
-                    The Deployment has been canceled because this project was
-                    not affected
-                  oomReport: out-of-memory
-                  isRollbackCandidate: true
-                  projectSettings:
-                    framework: blitzjs
-                    gitForkProtection: true
-                    customerSupportCodeVisibility: true
-                    gitLFS: true
-                    devCommand: <string>
-                    installCommand: <string>
-                    buildCommand: <string>
-                    nodeVersion: 22.x
-                    outputDirectory: <string>
-                    publicSource: true
-                    rootDirectory: <string>
-                    sourceFilesOutsideRootDirectory: true
-                    commandForIgnoringBuildStep: <string>
-                    createdAt: 123
-                    speedInsights:
-                      id: <string>
-                      enabledAt: 123
-                      disabledAt: 123
-                      canceledAt: 123
-                      hasData: true
-                      paidAt: 123
-                    webAnalytics:
-                      id: <string>
-                      disabledAt: 123
-                      canceledAt: 123
-                      enabledAt: 123
-                      hasData: true
-                    skipGitConnectDuringLink: true
-                    gitComments:
-                      onPullRequest: true
-                      onCommit: true
-                  connectBuildsEnabled: true
-                  connectConfigurationId: <string>
-                  passiveConnectConfigurationId: <string>
-                  expiration: 123
-                  proposedExpiration: 123
-                  customEnvironment:
-                    id: <string>
-                    slug: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '422': {}
-  deprecated: false
-  type: path
+                required:
+                  - deployments
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '422':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
     Pagination:
@@ -775,5 +741,10 @@ components:
         This object contains information related to the pagination of the
         current request, including the necessary parameters to get the next or
         previous page of data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/polling-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a polling trigger
 
 > Set up your polling trigger in the Platform UI with the Settings, Input Designer and API Configuration tabs.

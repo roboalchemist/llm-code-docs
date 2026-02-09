@@ -29,15 +29,18 @@ If you don’t have an API key for the AI/ML API yet, feel free to use our [Quic
 [voyage-2.json](https://3927338786-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FROMd1X5PuqtikJ48n2N9%2Fuploads%2Fgit-blob-23bbcb539d99f68452ffbbe3fadc8e45e4a96dd8%2Fvoyage-2.json?alt=media\&token=342160ba-838f-4fcc-8c14-8ac53a059bf1)
 {% endopenapi %}
 
-## Example in Python
+## Code Example
 
-```python
-import openai
+{% tabs %}
+{% tab title="Python" %}
 
-# Initialize the API client
+<pre class="language-python"><code class="lang-python">import openai
+<strong>
+</strong># Initialize the API client
 client = openai.OpenAI(
+    # Insert your AIML API Key instead of &#x3C;YOUR_AIMLAPI_KEY>
+    api_key="&#x3C;YOUR_AIMLAPI_KEY>",
     base_url="https://api.aimlapi.com/v1",
-    api_key="<YOUR_AIMLAPI_KEY>",
 )
 
 # Define the text for which to generate an embedding
@@ -51,9 +54,54 @@ response = client.embeddings.create(
 
 # Print the embedding
 print(response)
+</code></pre>
+
+{% endtab %}
+
+{% tab title="JS" %}
+
+```javascript
+import OpenAI from "openai";
+import util from "util";
+
+// Initialize the API client
+const client = new OpenAI({
+  // Insert your AIML API Key instead of <YOUR_AIMLAPI_KEY>
+  apiKey: "<YOUR_AIMLAPI_KEY>",
+  baseURL: "https://api.aimlapi.com/v1",
+});
+
+// Define the text for which to generate an embedding
+const text = "Laura is a DJ.";
+
+const response = await client.embeddings.create({
+  input: text,
+  model: "voyage-2",
+});
+
+// Convert embedding to a regular array (not TypedArray)
+const pythonLikeResponse = {
+  ...response,
+  data: response.data.map(item => ({
+    ...item,
+    embedding: Array.from(item.embedding),
+  })),
+};
+
+// Python-like print
+console.log(
+  util.inspect(pythonLikeResponse, {
+    depth: null,
+    maxArrayLength: null,
+    compact: true,
+  })
+);
 ```
 
-This Python example shows how to set up an API client, send text to the embedding API, and print the response with the embedding vector. See how large a vector response the model generates from just a single short input phrase.
+{% endtab %}
+{% endtabs %}
+
+This example shows how to set up an API client, send text to the embedding API, and print the response with the embedding vector. See how large a vector response the model generates from just a single short input phrase.
 
 <details>
 

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/lamb.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/lamb.md
 
 # LAMB
 
@@ -11,9 +11,9 @@
 
 #### bitsandbytes.optim.LAMB[[bitsandbytes.optim.LAMB]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L8)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L8)
 
-__init__bitsandbytes.optim.LAMB.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LAMB.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -78,9 +78,9 @@ max_unorm (`float`, defaults to 1.0) : The maximum gradient norm.
 
 #### bitsandbytes.optim.LAMB8bit[[bitsandbytes.optim.LAMB8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L75)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L75)
 
-__init__bitsandbytes.optim.LAMB8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L76[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LAMB8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L76[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -141,9 +141,9 @@ max_unorm (`float`, defaults to 1.0) : The maximum gradient norm.
 
 #### bitsandbytes.optim.LAMB32bit[[bitsandbytes.optim.LAMB32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L139)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L139)
 
-__init__bitsandbytes.optim.LAMB32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lamb.py#L140[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LAMB32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lamb.py#L140[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "bias_correction", "val": " = True"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0"}, {"name": "amsgrad", "val": " = False"}, {"name": "adam_w_mode", "val": " = True"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = False"}, {"name": "max_unorm", "val": " = 1.0"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.

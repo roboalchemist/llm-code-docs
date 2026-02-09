@@ -51,5 +51,5 @@ Vespa does not have application-level support for encryption of on-disk document
 
 Protect all internal endpoints and protocols in Vespa with mutually authenticated Transport Layer Security (mTLS). See the [dedicated documentation](mtls) on how to get started, and try the [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA)example.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

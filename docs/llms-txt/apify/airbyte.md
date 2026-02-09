@@ -19,7 +19,7 @@ Once you have all the necessary accounts set up, you need to set up the Apify co
 
 ![Airbyte sources tab](/assets/images/airbyte-sources-7915e8b8c9b5959862c7c52c1505067f.png)
 
-You will need to provide a **dataset ID** and your Apify API Token. You can find both of these in https://console.apify.com.
+You will need to provide a **dataset ID** and your Apify API Token. You can find both of these in [Apify Console](https://console.apify.com).
 
 ![Airbyte source setup](/assets/images/airbyte-source-setup-8c9f9311148dad47f6c80bdbfe9cf3f1.png)
 
@@ -33,4 +33,4 @@ To find your Apify API token, you need to navigate to the **Settings** tab and s
 
 And that's it! You now have Apify datasets set up as a Source, and you can use Airbyte to transfer your datasets to one of the available destinations.
 
-To learn more about how to setup a Connection, visit https://docs.airbyte.com/using-airbyte/getting-started/set-up-a-connection
+To learn more about how to setup a Connection, visit [Airbyte's documentation](https://docs.airbyte.com/using-airbyte/getting-started/set-up-a-connection)

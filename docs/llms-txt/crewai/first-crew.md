@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/crews/first-crew.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build Your First Crew
 
 > Step-by-step tutorial to create a collaborative AI team that works together to solve complex problems.

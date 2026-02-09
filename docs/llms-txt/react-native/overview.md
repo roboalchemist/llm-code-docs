@@ -4,24 +4,6 @@
 
 # Source: https://reactnative.dev/architecture/overview.md
 
-# Source: https://reactnative.dev/contributing/overview.md
-
-# Source: https://reactnative.dev/community/overview.md
-
-# Source: https://reactnative.dev/architecture/overview.md
-
-# Source: https://reactnative.dev/contributing/overview.md
-
-# Source: https://reactnative.dev/community/overview.md
-
-# Source: https://reactnative.dev/architecture/overview.md
-
-# Source: https://reactnative.dev/contributing/overview.md
-
-# Source: https://reactnative.dev/community/overview.md
-
-# Source: https://reactnative.dev/architecture/overview.md
-
 # Architecture Overview
 
 info

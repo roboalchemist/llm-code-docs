@@ -20,13 +20,13 @@ Revenue Recognition is already automated for some business use cases but require
 
 If you have subscriptions through Stripe Billing (like monthly, quarterly, and so on), no further setup is required. Stripe Revenue Recognition automatically recognizes this revenue for you.
 
-Stripe recognizes the transaction amount by the service period for each [invoice line item](https://docs.stripe.com/api/invoices/line_item.md). By default, we recognize the revenue by the millisecond.
+Stripe recognizes the transaction amount by the service period for each [invoice line item](https://docs.stripe.com/api/invoices/line_item.md). By default, we recognize the revenue by the second.
 
-> If you want to recognize your subscription revenue by the month, instead of by the millisecond, please [create a ticket](https://support.stripe.com/contact/email?topic=financial_reports) on our support page to join our beta.
+> If you want to recognize your subscription revenue by the month, instead of by the second, please [create a ticket](https://support.stripe.com/contact/email?topic=financial_reports) on our support page to join our beta.
 
 As an example, say you have a customer who started an annual subscription on September 1 for the price of 365 USD. If you want to recognize the amount monthly, your report at the end of December would show this:
 
-| Account         | Sep 2021 | Oct 2021 | Nov 2021 | Dec 2021 |
+| Account         | Sep 2026 | Oct 2026 | Nov 2026 | Dec 2026 |
 | --------------- | -------- | -------- | -------- | -------- |
 | Revenue         | +30.00   | +31.00   | +30.00   | +31.00   |
 | DeferredRevenue | +335.00  | -31.00   | -30.00   | -31.00   |
@@ -92,19 +92,19 @@ As an example, say you offer a 9 USD monthly service with a one-time setup fee o
 
 | Date     | Invoice                                              |
 | -------- | ---------------------------------------------------- |
-| Jan 2021 | 9.00 monthly service fee
+| Jan 2026 | 9.00 monthly service fee
 
   50.00 one-time setup fee |
-| Feb 2021 | 9.00 monthly service fee                             |
-| Mar 2021 | 9.00 monthly service fee                             |
+| Feb 2026 | 9.00 monthly service fee                             |
+| Mar 2026 | 9.00 monthly service fee                             |
 
 The revenue schedule would look something like:
 
 | Month    | Revenue |
 | -------- | ------- |
-| Jan 2021 | 59.00   |
-| Feb 2021 | 9.00    |
-| Mar 2021 | 9.00    |
+| Jan 2026 | 59.00   |
+| Feb 2026 | 9.00    |
+| Mar 2026 | 9.00    |
 
 ## Generate reports and charts
 

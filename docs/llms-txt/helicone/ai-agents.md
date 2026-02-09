@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/ai-agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building and Monitoring AI Agents with Helicone
 
 > Learn how to build autonomous AI agents, monitor and optimize their performance using Helicone's Sessions.

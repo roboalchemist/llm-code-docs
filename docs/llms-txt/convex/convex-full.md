@@ -75,7 +75,8 @@
 - [Custom JWT Provider](/auth/advanced/custom-jwt.md): Configure Convex to work with custom JWT providers that don't implement full OIDC protocol, including setup and client-side integration.
 - [Convex & Auth0](/auth/auth0.md): Integrate Auth0 authentication with Convex
 - [Convex & WorkOS AuthKit](/auth/authkit.md): Integrate WorkOS AuthKit authentication with Convex
-- [Automatic AuthKit Configuration](/auth/authkit/auto-provision.md): WorkOS AuthKit authentication with Convex
+- [Automatic AuthKit Configuration](/auth/authkit/auto-provision.md): Configure WorkOS AuthKit integration with automatic provisioning for Convex deployments
+- [AuthKit Troubleshooting](/auth/authkit/troubleshooting.md): Debugging issues with AuthKit authentication with Convex
 - [Convex & Clerk](/auth/clerk.md): Integrate Clerk authentication with Convex
 - [Convex Auth](/auth/convex-auth.md): Built-in authentication for Convex applications
 - [Storing Users in the Convex Database](/auth/database-auth.md): Store user information in your Convex database
@@ -333,10 +334,18 @@
 
 - [Deployment API](/deployment-api.md): Deployment API
 - [Convex Deployment API](/deployment-api/convex-deployment-api.md): Admin API for interacting with deployments.
+- [Create log stream](/deployment-api/create-log-stream.md): Create a new log stream for the deployment. Errors if a log stream of the
+- [Delete log stream](/deployment-api/delete-log-stream.md): Delete the deployment's log stream with the given id.
 - [Get canonical URLs](/deployment-api/get-canonical-urls.md): Get the canonical URLs for a deployment.
+- [Get log stream](/deployment-api/get-log-stream.md): Get the config for a specific log stream by id.
 - [List environment variables](/deployment-api/list-environment-variables.md): Get all environment variables in a deployment.
+- [List log streams](/deployment-api/list-log-streams.md): List configs for all existing log streams in a deployment.
+- [Pause deployment](/deployment-api/pause-deployment.md): Disables a deployment without deleting any data. The deployment will not
+- [Rotate webhook log stream secret](/deployment-api/rotate-webhook-secret.md): Rotate the secret for the webhook log stream.
+- [Unpause deployment](/deployment-api/unpause-deployment.md): Reenables a deployment that was previously paused. The deployment will
 - [Update canonical URL](/deployment-api/update-canonical-url.md): Set or unset the canonical URL for a deployment's convex.cloud or
 - [Update environment variables](/deployment-api/update-environment-variables.md): Update one or many environment variables in a deployment.
+- [Update log stream](/deployment-api/update-log-stream.md): Update an existing log stream for the deployment. Omit a field to keep the
 
 ## deployment-platform-api
 
@@ -348,11 +357,17 @@
 - [Convex Management API](/management-api/convex-management-api.md): Management API for provisioning and managing Convex projects and deployments.
 - [Create custom domain](/management-api/create-custom-domain.md): Create custom domain
 - [Create deploy key](/management-api/create-deploy-key.md): Create a deploy key like 'dev:happy-animal-123|ey...' which can be
+- [Create deployment](/management-api/create-deployment.md): Create a new deployment for a project.
 - [Create project](/management-api/create-project.md): Create a new project on a team and provision a dev or prod deployment.
 - [Delete custom domain](/management-api/delete-custom-domain.md): Remove a custom domain from a deployment.
+- [Delete deploy key](/management-api/delete-deploy-key.md): Deletes a deploy key for the specified deployment. The `id` in the request
+- [Delete deployment](/management-api/delete-deployment.md): Delete a deployment. This will delete all data and files in the deployment,
 - [Delete project](/management-api/delete-project.md): Delete a project. Deletes all deployments in the project as well.
 - [Get token details](/management-api/get-token-details.md): Returns the team ID for team tokens.
 - [List custom domains](/management-api/list-custom-domains.md): Get all custom domains configured for a deployment.
+- [List deploy keys](/management-api/list-deploy-keys.md): Lists all deploy keys for the specified deployment.
+- [list_deployment_classes](/management-api/list-deployment-classes.md): list_deployment_classes
+- [list_deployment_regions](/management-api/list-deployment-regions.md): list_deployment_regions
 - [List deployments](/management-api/list-deployments.md): List deployments for a projects.
 - [List projects](/management-api/list-projects.md): List all projects for a team.
 
@@ -561,7 +576,7 @@ Note: best practice is to not rely on returning data from the action. Instead, q
 While the above approach is simple, generating responses asynchronously provide a few benefits:
 
 * You can set up optimistic UI updates on mutations that are transactional, so the message will be shown optimistically on the client until the message is saved and present in your message query.
-* You can save the message in the same mutation (transaction) as other writes to the database. This message can the be used and re-used in an action with retries, without duplicating the prompt message in the history. If the `promptMessageId` is used for multiple generations, any previous responses will automatically be included as context, so the LLM can continue where it left off. See [workflows](/agents/workflows.md) for more details.
+* You can save the message in the same mutation (transaction) as other writes to the database. This message can then be used and re-used in an action with retries, without duplicating the prompt message in the history. If the `promptMessageId` is used for multiple generations, any previous responses will automatically be included as context, so the LLM can continue where it left off. See [workflows](/agents/workflows.md) for more details.
 * Thanks to the idempotent guarantees of mutations, the client can safely retry mutations for days until they run exactly once. Actions can transiently fail.
 
 Any clients listing the messages will automatically get the new messages as they are created asynchronously.
@@ -599,13 +614,6 @@ export const generateResponseAsync = internalAction({
 ```
 
 Note that the action doesn't need to return anything. All messages are saved by default, so any client subscribed to the thread messages will receive the new message as it is generated asynchronously.
-
-The Step 2 code is common enough that there's a utility to save you some typing. It takes in some parameters to control streaming, etc. For more details, see [the code](https://github.com/get-convex/agent/blob/main/src/client/index.ts#L1475-L1557).
-
-```
-// Equivalent to Step 2 above.
-export const generateResponseAsync = agent.asTextAction();
-```
 
 ### Generating an object[​](#generating-an-object "Direct link to Generating an object")
 
@@ -1068,7 +1076,7 @@ Example code:
 git clone https://github.com/get-convex/agent.git
 cd agent
 npm run setup
-npm run example
+npm run dev
 ```
 
 ## Sending an image by uploading first and generating asynchronously[​](#sending-an-image-by-uploading-first-and-generating-asynchronously "Direct link to Sending an image by uploading first and generating asynchronously")
@@ -1801,7 +1809,7 @@ The RAG component is a Convex component that allows you to add data that you can
 
 <!-- -->
 
-[Convex component](https://www.convex.dev/components/rag)
+[Convex Component](https://www.convex.dev/components/rag)
 
 ### [RAG (Retrieval-Augmented Generation)](https://www.convex.dev/components/rag)
 
@@ -1955,7 +1963,7 @@ The rate limiting example demonstrates two types of rate limiting:
 git clone https://github.com/get-convex/agent.git
 cd agent
 npm run setup
-npm run example
+npm run dev
 ```
 
 Try sending multiple questions quickly to see the rate limiting in action!
@@ -2938,19 +2946,67 @@ The [Workflow component](https://convex.dev/components/workflow) is a great way 
 
 To use the agent alongside workflows, you can run individual idempotent steps that the workflow can run, each with configurable retries, with guarantees that the workflow will eventually complete. Even if the server crashes mid-workflow, the workflow will pick up from where it left off and run the next step. If a step fails and isn't caught by the workflow, the workflow's onComplete handler will get the error result.
 
-### Exposing the agent as Convex actions[​](#exposing-the-agent-as-convex-actions "Direct link to Exposing the agent as Convex actions")
+### Using the Agent within a workflow[​](#using-the-agent-within-a-workflow "Direct link to Using the Agent within a workflow")
 
-You can expose the agent's capabilities as Convex functions to be used as steps in a workflow.
+You can use the [Workflow component](https://convex.dev/components/workflow) to run agent flows. It handles retries and guarantees of eventually completing, surviving server restarts, and more. Read more about durable workflows [in this Stack post](https://stack.convex.dev/durable-workflows-and-strong-guarantees).
 
-To create a thread as a standalone mutation, similar to `createThread`:
+Within a workflow, each "step" is a single idempotent operation. The arguments and return values are stored as part of the workflow's state, so it can resume wherever it left off by replaying the history. This allows workflows to run for a long time, survive server restarts, retry individual steps, pause, and more.
 
-```
-export const createThread = supportAgent.createThreadMutation();
-```
-
-For an action that generates text in a thread, similar to `thread.generateText`:
+Some Agent functions can be called directly from a workflow, passing `step` instead of `ctx`. Under the hood, these functions are calling `step.runMutation` instead of the `ctx.runMutation` that is otherwise done. The two calls are roughly the same, though there is more overhead associated with calling steps since the arguments and return values count towards the workflow's overall database bandwidth limit. As such, try to avoid passing large amounts of data in as arguments or returned from steps, and prefer to save that data and pass around IDs instead.
 
 ```
+const workflow = new WorkflowManager(components.workflow);
+
+export const supportAgentWorkflow = workflow.define({
+  args: { prompt: v.string(), userId: v.string() },
+  handler: async (step, { prompt, userId }) => {
+    // Some functions can be called directly from a workflow, passing `step`
+    // instead of `ctx`. This doesn't work for anything action-related.
+    const { threadId } = await createThread(step, components.agent, {
+      userId,
+      title: prompt,
+    });
+    // Under the hood, these functions are calling step.runMutation,
+    // so saving the message is a workflow step. The equivalent would be to call
+    // step.runMutation with your own mutation that called saveMessage with ctx.
+    const { messageId } = await saveMessage(step, components.agent, {
+      threadId,
+      prompt,
+    });
+    // For functions that require `fetch` or otherwise need an action, run them
+    // as steps explicitly.
+    const { text } = await step.runAction(
+      internal.example.getSupport,
+      { threadId, userId, promptMessageId: messageId },
+      // Passing in a promptMessageId allows us to safely retry the step.
+      // If it fails partway, the retry will re-use the same prompt message and
+      // any existing responses.
+      { retry: true },
+    );
+    const { object } = await step.runAction(
+      internal.example.getStructuredSupport,
+      {
+        userId,
+        prompt: text,
+      },
+    );
+    // You can also run mutations as steps explicitly.
+    await step.runMutation(internal.example.sendUserMessage, {
+      userId,
+      message: object.instruction,
+    });
+  },
+});
+```
+
+### Exposing Agent functions as Convex Actions[​](#exposing-agent-functions-as-convex-actions "Direct link to Exposing Agent functions as Convex Actions")
+
+You can expose the agent's capabilities as Convex functions to be used as steps in a workflow, as an alternative to writing an action for each step.
+
+For an action that generates or streams text in a thread:
+
+```
+// Similar to thread.generateText / thread.streamText
 export const getSupport = supportAgent.asTextAction({
   stopWhen: stepCountIs(10),
 });
@@ -2959,57 +3015,16 @@ export const getSupport = supportAgent.asTextAction({
 You can also expose a standalone action that generates an object.
 
 ```
+// Similar to thread.generateObject / thread.streamObject
 export const getStructuredSupport = supportAgent.asObjectAction({
   schema: z.object({
     analysis: z.string().describe("A detailed analysis of the user's request."),
-    suggestion: z.string().describe("A suggested action to take."),
+    instruction: z.string().describe("A suggested action to take."),
   }),
 });
 ```
 
-To save messages explicitly as a mutation, similar to `agent.saveMessages`:
-
-```
-export const saveMessages = supportAgent.asSaveMessagesMutation();
-```
-
-This is useful for idempotency, as you can first create the user's message, then generate a response in an unreliable action with retries, passing in the existing messageId instead of a prompt.
-
-### Using the agent actions within a workflow[​](#using-the-agent-actions-within-a-workflow "Direct link to Using the agent actions within a workflow")
-
-You can use the [Workflow component](https://convex.dev/components/workflow) to run agent flows. It handles retries and guarantees of eventually completing, surviving server restarts, and more. Read more about durable workflows [in this Stack post](https://stack.convex.dev/durable-workflows-and-strong-guarantees).
-
-```
-const workflow = new WorkflowManager(components.workflow);
-
-export const supportAgentWorkflow = workflow.define({
-  args: { prompt: v.string(), userId: v.string() },
-  handler: async (step, { prompt, userId }) => {
-    const { threadId } = await step.runMutation(internal.example.createThread, {
-      userId,
-      title: "Support Request",
-    });
-    const suggestion = await step.runAction(internal.example.getSupport, {
-      threadId,
-      userId,
-      prompt,
-    });
-    const { object } = await step.runAction(
-      internal.example.getStructuredSupport,
-      {
-        userId,
-        message: suggestion,
-      },
-    );
-    await step.runMutation(internal.example.sendUserMessage, {
-      userId,
-      message: object.suggestion,
-    });
-  },
-});
-```
-
-See the code in [workflows/chaining.ts](https://github.com/get-convex/agent/blob/main/example/convex/workflows/chaining.ts).
+See example code in [workflows/chaining.ts](https://github.com/get-convex/agent/blob/main/example/convex/workflows/chaining.ts).
 
 ## Complex workflow patterns[​](#complex-workflow-patterns "Direct link to Complex workflow patterns")
 
@@ -3024,19 +3039,13 @@ While there is only an example of a simple workflow here, there are many complex
 
 <!-- -->
 
-[Convex component](https://www.convex.dev/components/retrier)
-
-### [Action Retrier](https://www.convex.dev/components/retrier)
-
-[Add reliability to unreliable external service calls. Retry idempotent calls with exponential backoff until success.](https://www.convex.dev/components/retrier)
-
-[Convex component](https://www.convex.dev/components/workpool)
+[Convex Component](https://www.convex.dev/components/workpool)
 
 ### [Workpool](https://www.convex.dev/components/workpool)
 
 [Builds on the Action Retrier to provide parallelism limits and retries to manage large numbers of external requests efficiently.](https://www.convex.dev/components/workpool)
 
-[Convex component](https://www.convex.dev/components/workflow)
+[Convex Component](https://www.convex.dev/components/workflow)
 
 ### [Workflow](https://www.convex.dev/components/workflow)
 
@@ -3126,6 +3135,49 @@ or see editor specific instructions:
   claude mcp add-json convex '{"type":"stdio","command":"npx","args":["convex","mcp","start"]}'
   claude mcp get convex
   ```
+
+## Configuration Options[​](#configuration-options "Direct link to Configuration Options")
+
+The MCP server supports several command-line options to customize its behavior:
+
+### Project Directory[​](#project-directory "Direct link to Project Directory")
+
+By default, the MCP server can run for multiple projects, and each tool call specifies its project directory. To run the server for a single project instead, use:
+
+```
+npx -y convex@latest mcp start --project-dir /path/to/project
+```
+
+### Deployment Selection[​](#deployment-selection "Direct link to Deployment Selection")
+
+By default, the MCP server connects to your development deployment. You can specify a different deployment using these options:
+
+* `--prod`: Run the MCP server on your project's production deployment (requires `--dangerously-enable-production-deployments`)
+* `--preview-name <name>`: Run on a preview deployment with the given name
+* `--deployment-name <name>`: Run on a specific deployment by name
+* `--env-file <path>`: Path to a custom environment file for choosing the deployment (e.g., containing `CONVEX_DEPLOYMENT` or `CONVEX_SELF_HOSTED_URL`). Uses the same format as `.env.local` or `.env` files.
+
+### Production Deployments[​](#production-deployments "Direct link to Production Deployments")
+
+By default, the MCP server cannot access production deployments. This is a safety measure to prevent accidental modifications to production data. If you need to access production deployments, you must explicitly enable this:
+
+```
+npx -y convex@latest mcp start --dangerously-enable-production-deployments
+```
+
+Use with care
+
+Enabling production access allows the MCP server to read and modify data in your production deployment. Only enable this when you specifically need to interact with production, and be careful with any operations that modify data.
+
+### Disabling Tools[​](#disabling-tools "Direct link to Disabling Tools")
+
+You can disable specific tools if you want to restrict what the MCP server can do:
+
+```
+npx -y convex@latest mcp start --disable-tools data,run,envSet
+```
+
+Available tools that can be disabled: `data`, `envGet`, `envList`, `envRemove`, `envSet`, `functionSpec`, `logs`, `run`, `runOneoffQuery`, `status`, `tables`
 
 ## Available Tools[​](#available-tools "Direct link to Available Tools")
 
@@ -4153,17 +4205,18 @@ Create a new [ConvexHttpClient](/api/classes/browser.ConvexHttpClient.md).
 
 #### Parameters[​](#parameters "Direct link to Parameters")
 
-| Name                                    | Type                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| --------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `address`                               | `string`              | The url of your Convex deployment, often provided by an environment variable. E.g. `https://small-mouse-123.convex.cloud`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `options?`                              | `Object`              | An object of options. - `skipConvexDeploymentUrlCheck` - Skip validating that the Convex deployment URL looks like `https://happy-animal-123.convex.cloud` or localhost. This can be useful if running a self-hosted Convex backend that uses a different URL. - `logger` - A logger or a boolean. If not provided, logs to the console. You can construct your own logger to customize logging to log elsewhere or not log at all, or use `false` as a shorthand for a no-op logger. A logger is an object with 4 methods: log(), warn(), error(), and logVerbose(). These methods can receive multiple arguments of any types, like console.log(). - `auth` - A JWT containing identity claims accessible in Convex functions. This identity may expire so it may be necessary to call `setAuth()` later, but for short-lived clients it's convenient to specify this value here. |
-| `options.skipConvexDeploymentUrlCheck?` | `boolean`             | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `options.logger?`                       | `boolean` \| `Logger` | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `options.auth?`                         | `string`              | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Name                                    | Type                                                                                                                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `address`                               | `string`                                                                                                                                                                     | The url of your Convex deployment, often provided by an environment variable. E.g. `https://small-mouse-123.convex.cloud`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `options?`                              | `Object`                                                                                                                                                                     | An object of options. - `skipConvexDeploymentUrlCheck` - Skip validating that the Convex deployment URL looks like `https://happy-animal-123.convex.cloud` or localhost. This can be useful if running a self-hosted Convex backend that uses a different URL. - `logger` - A logger or a boolean. If not provided, logs to the console. You can construct your own logger to customize logging to log elsewhere or not log at all, or use `false` as a shorthand for a no-op logger. A logger is an object with 4 methods: log(), warn(), error(), and logVerbose(). These methods can receive multiple arguments of any types, like console.log(). - `auth` - A JWT containing identity claims accessible in Convex functions. This identity may expire so it may be necessary to call `setAuth()` later, but for short-lived clients it's convenient to specify this value here. - `fetch` - A custom fetch implementation to use for all HTTP requests made by this client. |
+| `options.skipConvexDeploymentUrlCheck?` | `boolean`                                                                                                                                                                    | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `options.logger?`                       | `boolean` \| `Logger`                                                                                                                                                        | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `options.auth?`                         | `string`                                                                                                                                                                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `options.fetch?`                        | (`input`: `URL` \| `RequestInfo`, `init?`: `RequestInit`) => `Promise`<`Response`>(`input`: `string` \| `URL` \| `Request`, `init?`: `RequestInit`) => `Promise`<`Response`> | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[browser/http\_client.ts:95](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L95)
+[browser/http\_client.ts:97](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L97)
 
 ## Accessors[​](#accessors "Direct link to Accessors")
 
@@ -4181,7 +4234,7 @@ Not guaranteed to match the address with which this client was constructed: it m
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[browser/http\_client.ts:143](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L143)
+[browser/http\_client.ts:147](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L147)
 
 ## Methods[​](#methods "Direct link to Methods")
 
@@ -4203,7 +4256,7 @@ The URL to the Convex backend, including the client's API version.
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[browser/http\_client.ts:133](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L133)
+[browser/http\_client.ts:137](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L137)
 
 ***
 
@@ -4227,7 +4280,7 @@ Should be called whenever the token changes (i.e. due to expiration and refresh)
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[browser/http\_client.ts:154](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L154)
+[browser/http\_client.ts:158](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L158)
 
 ***
 
@@ -4243,7 +4296,7 @@ Clear the current authentication token if set.
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[browser/http\_client.ts:180](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L180)
+[browser/http\_client.ts:184](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L184)
 
 ***
 
@@ -4284,7 +4337,7 @@ A promise of the query's result.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[browser/http\_client.ts:222](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L222)
+[browser/http\_client.ts:226](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L226)
 
 ***
 
@@ -4315,7 +4368,7 @@ A promise of the query's result.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[browser/http\_client.ts:266](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L266)
+[browser/http\_client.ts:270](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L270)
 
 ***
 
@@ -4346,7 +4399,7 @@ A promise of the mutation's result.
 
 #### Defined in[​](#defined-in-7 "Direct link to Defined in")
 
-[browser/http\_client.ts:426](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L426)
+[browser/http\_client.ts:430](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L430)
 
 ***
 
@@ -4377,7 +4430,7 @@ A promise of the action's result.
 
 #### Defined in[​](#defined-in-8 "Direct link to Defined in")
 
-[browser/http\_client.ts:449](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L449)
+[browser/http\_client.ts:453](https://github.com/get-convex/convex-js/blob/main/src/browser/http_client.ts#L453)
 
 
 ---
@@ -5912,7 +5965,7 @@ BaseValidator\<Type, IsOptional, FieldPaths>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -5928,7 +5981,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -5944,7 +5997,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -5960,7 +6013,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -5976,7 +6029,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -5988,7 +6041,7 @@ The kind of validator, `"any"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:246](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L246)
+[values/validators.ts:261](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L261)
 
 
 ---
@@ -6043,7 +6096,7 @@ BaseValidator\&lt;Type, IsOptional\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:472](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L472)
+[values/validators.ts:490](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L490)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6059,7 +6112,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6075,7 +6128,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6091,7 +6144,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6107,7 +6160,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6119,7 +6172,7 @@ The validator for the elements of the array.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:462](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L462)
+[values/validators.ts:480](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L480)
 
 ***
 
@@ -6131,7 +6184,7 @@ The kind of validator, `"array"`.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:467](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L467)
+[values/validators.ts:485](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L485)
 
 
 ---
@@ -6181,7 +6234,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6197,7 +6250,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6213,7 +6266,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6229,7 +6282,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6245,7 +6298,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6257,7 +6310,7 @@ The kind of validator, `"boolean"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:153](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L153)
+[values/validators.ts:168](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L168)
 
 
 ---
@@ -6307,7 +6360,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6323,7 +6376,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6339,7 +6392,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6355,7 +6408,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6371,7 +6424,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6383,7 +6436,7 @@ The kind of validator, `"bytes"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:177](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L177)
+[values/validators.ts:192](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L192)
 
 
 ---
@@ -6433,7 +6486,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6449,7 +6502,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6465,7 +6518,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6481,7 +6534,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6497,7 +6550,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6509,7 +6562,7 @@ The kind of validator, `"float64"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:105](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L105)
+[values/validators.ts:120](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L120)
 
 
 ---
@@ -6562,7 +6615,7 @@ BaseValidator\&lt;Type, IsOptional\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:69](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L69)
+[values/validators.ts:84](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L84)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6578,7 +6631,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6594,7 +6647,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6610,7 +6663,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6626,7 +6679,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6638,7 +6691,7 @@ The name of the table that the validated IDs must belong to.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:59](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L59)
+[values/validators.ts:74](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L74)
 
 ***
 
@@ -6650,7 +6703,7 @@ The kind of validator, `"id"`.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:64](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L64)
+[values/validators.ts:79](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L79)
 
 
 ---
@@ -6700,7 +6753,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6716,7 +6769,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6732,7 +6785,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6748,7 +6801,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6764,7 +6817,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6776,7 +6829,7 @@ The kind of validator, `"int64"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:130](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L130)
+[values/validators.ts:145](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L145)
 
 
 ---
@@ -6829,7 +6882,7 @@ BaseValidator\&lt;Type, IsOptional\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:423](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L423)
+[values/validators.ts:441](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L441)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6845,7 +6898,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6861,7 +6914,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -6877,7 +6930,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -6893,7 +6946,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -6905,7 +6958,7 @@ The value that the validated values must be equal to.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:413](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L413)
+[values/validators.ts:431](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L431)
 
 ***
 
@@ -6917,7 +6970,7 @@ The kind of validator, `"literal"`.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:418](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L418)
+[values/validators.ts:436](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L436)
 
 
 ---
@@ -6967,7 +7020,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -6983,7 +7036,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -6999,7 +7052,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -7015,7 +7068,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -7031,7 +7084,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -7043,7 +7096,7 @@ The kind of validator, `"null"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:223](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L223)
+[values/validators.ts:238](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L238)
 
 
 ---
@@ -7100,7 +7153,7 @@ BaseValidator\&lt;Type, IsOptional, FieldPaths\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:289](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L289)
+[values/validators.ts:304](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L304)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -7116,7 +7169,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -7132,7 +7185,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -7148,7 +7201,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -7164,7 +7217,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -7176,7 +7229,7 @@ An object with the validator for each property.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:279](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L279)
+[values/validators.ts:294](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L294)
 
 ***
 
@@ -7188,7 +7241,7 @@ The kind of validator, `"object"`.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:284](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L284)
+[values/validators.ts:299](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L299)
 
 ## Methods[​](#methods "Direct link to Methods")
 
@@ -7216,7 +7269,7 @@ Create a new VObject with the specified fields omitted.
 
 #### Defined in[​](#defined-in-7 "Direct link to Defined in")
 
-[values/validators.ts:331](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L331)
+[values/validators.ts:349](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L349)
 
 ***
 
@@ -7244,7 +7297,7 @@ Create a new VObject with only the specified fields.
 
 #### Defined in[​](#defined-in-8 "Direct link to Defined in")
 
-[values/validators.ts:348](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L348)
+[values/validators.ts:366](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L366)
 
 ***
 
@@ -7260,7 +7313,7 @@ Create a new VObject with all fields marked as optional.
 
 #### Defined in[​](#defined-in-9 "Direct link to Defined in")
 
-[values/validators.ts:368](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L368)
+[values/validators.ts:386](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L386)
 
 ***
 
@@ -7288,7 +7341,7 @@ Create a new VObject with additional fields merged in.
 
 #### Defined in[​](#defined-in-10 "Direct link to Defined in")
 
-[values/validators.ts:389](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L389)
+[values/validators.ts:407](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L407)
 
 
 ---
@@ -7348,7 +7401,7 @@ BaseValidator\&lt;Type, IsOptional, FieldPaths\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:526](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L526)
+[values/validators.ts:547](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L547)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -7364,7 +7417,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -7380,7 +7433,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -7396,7 +7449,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -7412,7 +7465,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -7424,7 +7477,7 @@ The validator for the keys of the record.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:511](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L511)
+[values/validators.ts:532](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L532)
 
 ***
 
@@ -7436,7 +7489,7 @@ The validator for the values of the record.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:516](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L516)
+[values/validators.ts:537](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L537)
 
 ***
 
@@ -7448,7 +7501,7 @@ The kind of validator, `"record"`.
 
 #### Defined in[​](#defined-in-7 "Direct link to Defined in")
 
-[values/validators.ts:521](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L521)
+[values/validators.ts:542](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L542)
 
 
 ---
@@ -7498,7 +7551,7 @@ BaseValidator\<Type, IsOptional>.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:39](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L39)
+[values/validators.ts:54](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L54)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -7514,7 +7567,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -7530,7 +7583,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -7546,7 +7599,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -7562,7 +7615,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -7574,7 +7627,7 @@ The kind of validator, `"string"`.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:199](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L199)
+[values/validators.ts:214](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L214)
 
 
 ---
@@ -7631,7 +7684,7 @@ BaseValidator\&lt;Type, IsOptional, FieldPaths\&gt;.constructor
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[values/validators.ts:592](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L592)
+[values/validators.ts:619](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L619)
 
 ## Properties[​](#properties "Direct link to Properties")
 
@@ -7647,7 +7700,7 @@ BaseValidator.type
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[values/validators.ts:22](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L22)
+[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
 
 ***
 
@@ -7663,7 +7716,7 @@ BaseValidator.fieldPaths
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[values/validators.ts:27](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L27)
+[values/validators.ts:42](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L42)
 
 ***
 
@@ -7679,7 +7732,7 @@ BaseValidator.isOptional
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[values/validators.ts:32](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L32)
+[values/validators.ts:47](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L47)
 
 ***
 
@@ -7695,7 +7748,7 @@ BaseValidator.isConvexValidator
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[values/validators.ts:37](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L37)
+[values/validators.ts:52](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L52)
 
 ***
 
@@ -7707,7 +7760,7 @@ The array of validators, one of which must match the value.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:582](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L582)
+[values/validators.ts:609](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L609)
 
 ***
 
@@ -7719,7 +7772,7 @@ The kind of validator, `"union"`.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:587](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L587)
+[values/validators.ts:614](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L614)
 
 
 ---
@@ -8633,7 +8686,7 @@ Fetch a single document from the table by its [GenericId](/api/modules/values.md
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:90](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L90)
+[server/database.ts:88](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L88)
 
 ***
 
@@ -8653,7 +8706,7 @@ Queries don't execute immediately, so calling this method and extending its quer
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:102](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L102)
+[server/database.ts:100](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L100)
 
 
 ---
@@ -8701,7 +8754,7 @@ Fetch a single document from the table by its [GenericId](/api/modules/values.md
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:90](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L90)
+[server/database.ts:88](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L88)
 
 ***
 
@@ -8725,7 +8778,7 @@ Queries don't execute immediately, so calling this method and extending its quer
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:102](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L102)
+[server/database.ts:100](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L100)
 
 ***
 
@@ -8749,7 +8802,7 @@ Insert a new document into the table.
 
 #### Defined in[​](#defined-in-2 "Direct link to Defined in")
 
-[server/database.ts:297](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L297)
+[server/database.ts:289](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L289)
 
 ***
 
@@ -8774,7 +8827,7 @@ New fields are added. Existing fields are overwritten. Fields set to `undefined`
 
 #### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[server/database.ts:312](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L312)
+[server/database.ts:304](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L304)
 
 ***
 
@@ -8797,7 +8850,7 @@ Replace the value of an existing document, overwriting its old value.
 
 #### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[server/database.ts:324](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L324)
+[server/database.ts:316](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L316)
 
 ***
 
@@ -8819,7 +8872,7 @@ Delete an existing document.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[server/database.ts:334](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L334)
+[server/database.ts:326](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L326)
 
 
 ---
@@ -9657,13 +9710,13 @@ The two entry points are:
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:130](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L130)
+[server/database.ts:128](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L128)
 
 ## Methods[​](#methods "Direct link to Methods")
 
 ### get[​](#get "Direct link to get")
 
-▸ **get**<`TableName`>(`id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+▸ **get**<`TableName`>(`table`, `id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
 
 Fetch a single document from the database by its [GenericId](/api/modules/values.md#genericid).
 
@@ -9675,9 +9728,10 @@ Fetch a single document from the database by its [GenericId](/api/modules/values
 
 #### Parameters[​](#parameters "Direct link to Parameters")
 
-| Name | Type                                                         | Description                                                                                   |
-| ---- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `id` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+| Name    | Type                                                                     | Description                                                                                   |
+| ------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table to fetch the document from.                                             |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
 
 #### Returns[​](#returns "Direct link to Returns")
 
@@ -9691,7 +9745,37 @@ BaseDatabaseReader.get
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:36](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L36)
+[server/database.ts:23](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L23)
+
+▸ **get**<`TableName`>(`id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+
+Fetch a single document from the database by its [GenericId](/api/modules/values.md#genericid).
+
+#### Type parameters[​](#type-parameters-2 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
+
+#### Parameters[​](#parameters-1 "Direct link to Parameters")
+
+| Name | Type                                                         | Description                                                                                   |
+| ---- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `id` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+
+#### Returns[​](#returns-1 "Direct link to Returns")
+
+`Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+
+* The [GenericDocument](/api/modules/server.md#genericdocument) of the document at the given [GenericId](/api/modules/values.md#genericid), or `null` if it no longer exists.
+
+#### Inherited from[​](#inherited-from-1 "Direct link to Inherited from")
+
+BaseDatabaseReader.get
+
+#### Defined in[​](#defined-in-2 "Direct link to Defined in")
+
+[server/database.ts:34](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L34)
 
 ***
 
@@ -9703,31 +9787,31 @@ Begin a query for the given table name.
 
 Queries don't execute immediately, so calling this method and extending its query are free until the results are actually used.
 
-#### Type parameters[​](#type-parameters-2 "Direct link to Type parameters")
+#### Type parameters[​](#type-parameters-3 "Direct link to Type parameters")
 
 | Name        | Type             |
 | ----------- | ---------------- |
 | `TableName` | extends `string` |
 
-#### Parameters[​](#parameters-1 "Direct link to Parameters")
+#### Parameters[​](#parameters-2 "Direct link to Parameters")
 
 | Name        | Type        | Description                     |
 | ----------- | ----------- | ------------------------------- |
 | `tableName` | `TableName` | The name of the table to query. |
 
-#### Returns[​](#returns-1 "Direct link to Returns")
+#### Returns[​](#returns-2 "Direct link to Returns")
 
 [`QueryInitializer`](/api/interfaces/server.QueryInitializer.md)<[`NamedTableInfo`](/api/modules/server.md#namedtableinfo)<`DataModel`, `TableName`>>
 
 * A [QueryInitializer](/api/interfaces/server.QueryInitializer.md) object to start building a query.
 
-#### Inherited from[​](#inherited-from-1 "Direct link to Inherited from")
+#### Inherited from[​](#inherited-from-2 "Direct link to Inherited from")
 
 BaseDatabaseReader.query
 
-#### Defined in[​](#defined-in-2 "Direct link to Defined in")
+#### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[server/database.ts:49](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L49)
+[server/database.ts:47](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L47)
 
 ***
 
@@ -9741,30 +9825,30 @@ This accepts the string ID format as well as the `.toString()` representation of
 
 This does not guarantee that the ID exists (i.e. `db.get(id)` may return `null`).
 
-#### Type parameters[​](#type-parameters-3 "Direct link to Type parameters")
+#### Type parameters[​](#type-parameters-4 "Direct link to Type parameters")
 
 | Name        | Type             |
 | ----------- | ---------------- |
 | `TableName` | extends `string` |
 
-#### Parameters[​](#parameters-2 "Direct link to Parameters")
+#### Parameters[​](#parameters-3 "Direct link to Parameters")
 
 | Name        | Type        | Description            |
 | ----------- | ----------- | ---------------------- |
 | `tableName` | `TableName` | The name of the table. |
 | `id`        | `string`    | The ID string.         |
 
-#### Returns[​](#returns-2 "Direct link to Returns")
+#### Returns[​](#returns-3 "Direct link to Returns")
 
 `null` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>
 
-#### Inherited from[​](#inherited-from-2 "Direct link to Inherited from")
+#### Inherited from[​](#inherited-from-3 "Direct link to Inherited from")
 
 BaseDatabaseReader.normalizeId
 
-#### Defined in[​](#defined-in-3 "Direct link to Defined in")
+#### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[server/database.ts:65](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L65)
+[server/database.ts:63](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L63)
 
 
 ---
@@ -9802,7 +9886,7 @@ The two entry points are:
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:146](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L146)
+[server/database.ts:144](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L144)
 
 ## Methods[​](#methods "Direct link to Methods")
 
@@ -9834,7 +9918,7 @@ BaseDatabaseReaderWithTable.table
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:75](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L75)
+[server/database.ts:73](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L73)
 
 
 ---
@@ -9880,13 +9964,13 @@ The two entry points are:
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:130](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L130)
+[server/database.ts:128](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L128)
 
 ## Methods[​](#methods "Direct link to Methods")
 
 ### get[​](#get "Direct link to get")
 
-▸ **get**<`TableName`>(`id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+▸ **get**<`TableName`>(`table`, `id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
 
 Fetch a single document from the database by its [GenericId](/api/modules/values.md#genericid).
 
@@ -9898,9 +9982,10 @@ Fetch a single document from the database by its [GenericId](/api/modules/values
 
 #### Parameters[​](#parameters "Direct link to Parameters")
 
-| Name | Type                                                         | Description                                                                                   |
-| ---- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| `id` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+| Name    | Type                                                                     | Description                                                                                   |
+| ------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table to fetch the document from.                                             |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
 
 #### Returns[​](#returns "Direct link to Returns")
 
@@ -9914,7 +9999,37 @@ Fetch a single document from the database by its [GenericId](/api/modules/values
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:36](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L36)
+[server/database.ts:23](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L23)
+
+▸ **get**<`TableName`>(`id`): `Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+
+Fetch a single document from the database by its [GenericId](/api/modules/values.md#genericid).
+
+#### Type parameters[​](#type-parameters-2 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
+
+#### Parameters[​](#parameters-1 "Direct link to Parameters")
+
+| Name | Type                                                         | Description                                                                                   |
+| ---- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `id` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`> | The [GenericId](/api/modules/values.md#genericid) of the document to fetch from the database. |
+
+#### Returns[​](#returns-1 "Direct link to Returns")
+
+`Promise`<`null` | [`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>>
+
+* The [GenericDocument](/api/modules/server.md#genericdocument) of the document at the given [GenericId](/api/modules/values.md#genericid), or `null` if it no longer exists.
+
+#### Inherited from[​](#inherited-from-2 "Direct link to Inherited from")
+
+[GenericDatabaseReader](/api/interfaces/server.GenericDatabaseReader.md).[get](/api/interfaces/server.GenericDatabaseReader.md#get)
+
+#### Defined in[​](#defined-in-2 "Direct link to Defined in")
+
+[server/database.ts:34](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L34)
 
 ***
 
@@ -9926,31 +10041,31 @@ Begin a query for the given table name.
 
 Queries don't execute immediately, so calling this method and extending its query are free until the results are actually used.
 
-#### Type parameters[​](#type-parameters-2 "Direct link to Type parameters")
+#### Type parameters[​](#type-parameters-3 "Direct link to Type parameters")
 
 | Name        | Type             |
 | ----------- | ---------------- |
 | `TableName` | extends `string` |
 
-#### Parameters[​](#parameters-1 "Direct link to Parameters")
+#### Parameters[​](#parameters-2 "Direct link to Parameters")
 
 | Name        | Type        | Description                     |
 | ----------- | ----------- | ------------------------------- |
 | `tableName` | `TableName` | The name of the table to query. |
 
-#### Returns[​](#returns-1 "Direct link to Returns")
+#### Returns[​](#returns-2 "Direct link to Returns")
 
 [`QueryInitializer`](/api/interfaces/server.QueryInitializer.md)<[`NamedTableInfo`](/api/modules/server.md#namedtableinfo)<`DataModel`, `TableName`>>
 
 * A [QueryInitializer](/api/interfaces/server.QueryInitializer.md) object to start building a query.
 
-#### Inherited from[​](#inherited-from-2 "Direct link to Inherited from")
+#### Inherited from[​](#inherited-from-3 "Direct link to Inherited from")
 
 [GenericDatabaseReader](/api/interfaces/server.GenericDatabaseReader.md).[query](/api/interfaces/server.GenericDatabaseReader.md#query)
 
-#### Defined in[​](#defined-in-2 "Direct link to Defined in")
+#### Defined in[​](#defined-in-3 "Direct link to Defined in")
 
-[server/database.ts:49](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L49)
+[server/database.ts:47](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L47)
 
 ***
 
@@ -9964,30 +10079,30 @@ This accepts the string ID format as well as the `.toString()` representation of
 
 This does not guarantee that the ID exists (i.e. `db.get(id)` may return `null`).
 
-#### Type parameters[​](#type-parameters-3 "Direct link to Type parameters")
+#### Type parameters[​](#type-parameters-4 "Direct link to Type parameters")
 
 | Name        | Type             |
 | ----------- | ---------------- |
 | `TableName` | extends `string` |
 
-#### Parameters[​](#parameters-2 "Direct link to Parameters")
+#### Parameters[​](#parameters-3 "Direct link to Parameters")
 
 | Name        | Type        | Description            |
 | ----------- | ----------- | ---------------------- |
 | `tableName` | `TableName` | The name of the table. |
 | `id`        | `string`    | The ID string.         |
 
-#### Returns[​](#returns-2 "Direct link to Returns")
+#### Returns[​](#returns-3 "Direct link to Returns")
 
 `null` | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>
 
-#### Inherited from[​](#inherited-from-3 "Direct link to Inherited from")
+#### Inherited from[​](#inherited-from-4 "Direct link to Inherited from")
 
 [GenericDatabaseReader](/api/interfaces/server.GenericDatabaseReader.md).[normalizeId](/api/interfaces/server.GenericDatabaseReader.md#normalizeid)
 
-#### Defined in[​](#defined-in-3 "Direct link to Defined in")
+#### Defined in[​](#defined-in-4 "Direct link to Defined in")
 
-[server/database.ts:65](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L65)
+[server/database.ts:63](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L63)
 
 ***
 
@@ -9997,39 +10112,6 @@ This does not guarantee that the ID exists (i.e. `db.get(id)` may return `null`)
 
 Insert a new document into a table.
 
-#### Type parameters[​](#type-parameters-4 "Direct link to Type parameters")
-
-| Name        | Type             |
-| ----------- | ---------------- |
-| `TableName` | extends `string` |
-
-#### Parameters[​](#parameters-3 "Direct link to Parameters")
-
-| Name    | Type                                                                                                                                                     | Description                                                               |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `table` | `TableName`                                                                                                                                              | The name of the table to insert a new document into.                      |
-| `value` | [`WithoutSystemFields`](/api/modules/server.md#withoutsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The [Value](/api/modules/values.md#value) to insert into the given table. |
-
-#### Returns[​](#returns-3 "Direct link to Returns")
-
-`Promise`<[`GenericId`](/api/modules/values.md#genericid)<`TableName`>>
-
-* [GenericId](/api/modules/values.md#genericid) of the new document.
-
-#### Defined in[​](#defined-in-4 "Direct link to Defined in")
-
-[server/database.ts:172](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L172)
-
-***
-
-### patch[​](#patch "Direct link to patch")
-
-▸ **patch**<`TableName`>(`id`, `value`): `Promise`<`void`>
-
-Patch an existing document, shallow merging it with the given partial document.
-
-New fields are added. Existing fields are overwritten. Fields set to `undefined` are removed.
-
 #### Type parameters[​](#type-parameters-5 "Direct link to Type parameters")
 
 | Name        | Type             |
@@ -10038,26 +10120,30 @@ New fields are added. Existing fields are overwritten. Fields set to `undefined`
 
 #### Parameters[​](#parameters-4 "Direct link to Parameters")
 
-| Name    | Type                                                                                              | Description                                                                                                                                                                                                             |
-| ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                      | The [GenericId](/api/modules/values.md#genericid) of the document to patch.                                                                                                                                             |
-| `value` | `PatchValue`<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The partial [GenericDocument](/api/modules/server.md#genericdocument) to merge into the specified document. If this new value specifies system fields like `_id`, they must match the document's existing field values. |
+| Name    | Type                                                                                                                                                     | Description                                                               |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `table` | `TableName`                                                                                                                                              | The name of the table to insert a new document into.                      |
+| `value` | [`WithoutSystemFields`](/api/modules/server.md#withoutsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The [Value](/api/modules/values.md#value) to insert into the given table. |
 
 #### Returns[​](#returns-4 "Direct link to Returns")
 
-`Promise`<`void`>
+`Promise`<[`GenericId`](/api/modules/values.md#genericid)<`TableName`>>
+
+* [GenericId](/api/modules/values.md#genericid) of the new document.
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[server/database.ts:208](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L208)
+[server/database.ts:170](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L170)
 
 ***
 
-### replace[​](#replace "Direct link to replace")
+### patch[​](#patch "Direct link to patch")
 
-▸ **replace**<`TableName`>(`id`, `value`): `Promise`<`void`>
+▸ **patch**<`TableName`>(`table`, `id`, `value`): `Promise`<`void`>
 
-Replace the value of an existing document, overwriting its old value.
+Patch an existing document, shallow merging it with the given partial document.
+
+New fields are added. Existing fields are overwritten. Fields set to `undefined` are removed.
 
 #### Type parameters[​](#type-parameters-6 "Direct link to Type parameters")
 
@@ -10067,10 +10153,11 @@ Replace the value of an existing document, overwriting its old value.
 
 #### Parameters[​](#parameters-5 "Direct link to Parameters")
 
-| Name    | Type                                                                                                                                                               | Description                                                                                                                                                    |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                                                                                       | The [GenericId](/api/modules/values.md#genericid) of the document to replace.                                                                                  |
-| `value` | [`WithOptionalSystemFields`](/api/modules/server.md#withoptionalsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The new [GenericDocument](/api/modules/server.md#genericdocument) for the document. This value can omit the system fields, and the database will fill them in. |
+| Name    | Type                                                                                              | Description                                                                                                                                                                                                             |
+| ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                                                       | The name of the table the document is in.                                                                                                                                                                               |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>>                          | The [GenericId](/api/modules/values.md#genericid) of the document to patch.                                                                                                                                             |
+| `value` | `PatchValue`<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The partial [GenericDocument](/api/modules/server.md#genericdocument) to merge into the specified document. If this new value specifies system fields like `_id`, they must match the document's existing field values. |
 
 #### Returns[​](#returns-5 "Direct link to Returns")
 
@@ -10078,21 +10165,26 @@ Replace the value of an existing document, overwriting its old value.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[server/database.ts:236](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L236)
+[server/database.ts:187](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L187)
 
-***
+▸ **patch**<`TableName`>(`id`, `value`): `Promise`<`void`>
 
-### delete[​](#delete "Direct link to delete")
+Patch an existing document, shallow merging it with the given partial document.
 
-▸ **delete**(`id`): `Promise`<`void`>
+New fields are added. Existing fields are overwritten. Fields set to `undefined` are removed.
 
-Delete an existing document.
+#### Type parameters[​](#type-parameters-7 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
 
 #### Parameters[​](#parameters-6 "Direct link to Parameters")
 
-| Name | Type                                                                                                                                  | Description                                                                  |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `id` | [`GenericId`](/api/modules/values.md#genericid)<[`TableNamesInDataModel`](/api/modules/server.md#tablenamesindatamodel)<`DataModel`>> | The [GenericId](/api/modules/values.md#genericid) of the document to remove. |
+| Name    | Type                                                                                              | Description                                                                                                                                                                                                             |
+| ------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                      | The [GenericId](/api/modules/values.md#genericid) of the document to patch.                                                                                                                                             |
+| `value` | `PatchValue`<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The partial [GenericDocument](/api/modules/server.md#genericdocument) to merge into the specified document. If this new value specifies system fields like `_id`, they must match the document's existing field values. |
 
 #### Returns[​](#returns-6 "Direct link to Returns")
 
@@ -10100,7 +10192,109 @@ Delete an existing document.
 
 #### Defined in[​](#defined-in-7 "Direct link to Defined in")
 
-[server/database.ts:259](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L259)
+[server/database.ts:204](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L204)
+
+***
+
+### replace[​](#replace "Direct link to replace")
+
+▸ **replace**<`TableName`>(`table`, `id`, `value`): `Promise`<`void`>
+
+Replace the value of an existing document, overwriting its old value.
+
+#### Type parameters[​](#type-parameters-8 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
+
+#### Parameters[​](#parameters-7 "Direct link to Parameters")
+
+| Name    | Type                                                                                                                                                               | Description                                                                                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `table` | `TableName`                                                                                                                                                        | The name of the table the document is in.                                                                                                                      |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>>                                                                                           | The [GenericId](/api/modules/values.md#genericid) of the document to replace.                                                                                  |
+| `value` | [`WithOptionalSystemFields`](/api/modules/server.md#withoptionalsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The new [GenericDocument](/api/modules/server.md#genericdocument) for the document. This value can omit the system fields, and the database will fill them in. |
+
+#### Returns[​](#returns-7 "Direct link to Returns")
+
+`Promise`<`void`>
+
+#### Defined in[​](#defined-in-8 "Direct link to Defined in")
+
+[server/database.ts:217](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L217)
+
+▸ **replace**<`TableName`>(`id`, `value`): `Promise`<`void`>
+
+Replace the value of an existing document, overwriting its old value.
+
+#### Type parameters[​](#type-parameters-9 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
+
+#### Parameters[​](#parameters-8 "Direct link to Parameters")
+
+| Name    | Type                                                                                                                                                               | Description                                                                                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`TableName`>                                                                                                       | The [GenericId](/api/modules/values.md#genericid) of the document to replace.                                                                                  |
+| `value` | [`WithOptionalSystemFields`](/api/modules/server.md#withoptionalsystemfields)<[`DocumentByName`](/api/modules/server.md#documentbyname)<`DataModel`, `TableName`>> | The new [GenericDocument](/api/modules/server.md#genericdocument) for the document. This value can omit the system fields, and the database will fill them in. |
+
+#### Returns[​](#returns-8 "Direct link to Returns")
+
+`Promise`<`void`>
+
+#### Defined in[​](#defined-in-9 "Direct link to Defined in")
+
+[server/database.ts:230](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L230)
+
+***
+
+### delete[​](#delete "Direct link to delete")
+
+▸ **delete**<`TableName`>(`table`, `id`): `Promise`<`void`>
+
+Delete an existing document.
+
+#### Type parameters[​](#type-parameters-10 "Direct link to Type parameters")
+
+| Name        | Type             |
+| ----------- | ---------------- |
+| `TableName` | extends `string` |
+
+#### Parameters[​](#parameters-9 "Direct link to Parameters")
+
+| Name    | Type                                                                     | Description                                                                  |
+| ------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `table` | `TableName`                                                              | The name of the table the document is in.                                    |
+| `id`    | [`GenericId`](/api/modules/values.md#genericid)<`NonUnion`<`TableName`>> | The [GenericId](/api/modules/values.md#genericid) of the document to remove. |
+
+#### Returns[​](#returns-9 "Direct link to Returns")
+
+`Promise`<`void`>
+
+#### Defined in[​](#defined-in-10 "Direct link to Defined in")
+
+[server/database.ts:241](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L241)
+
+▸ **delete**(`id`): `Promise`<`void`>
+
+Delete an existing document.
+
+#### Parameters[​](#parameters-10 "Direct link to Parameters")
+
+| Name | Type                                                                                                                                  | Description                                                                  |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `id` | [`GenericId`](/api/modules/values.md#genericid)<[`TableNamesInDataModel`](/api/modules/server.md#tablenamesindatamodel)<`DataModel`>> | The [GenericId](/api/modules/values.md#genericid) of the document to remove. |
+
+#### Returns[​](#returns-10 "Direct link to Returns")
+
+`Promise`<`void`>
+
+#### Defined in[​](#defined-in-11 "Direct link to Defined in")
+
+[server/database.ts:251](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L251)
 
 
 ---
@@ -10146,7 +10340,7 @@ The two entry points are:
 
 #### Defined in[​](#defined-in "Direct link to Defined in")
 
-[server/database.ts:146](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L146)
+[server/database.ts:144](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L144)
 
 ## Methods[​](#methods "Direct link to Methods")
 
@@ -10178,7 +10372,7 @@ Scope the database to a specific table.
 
 #### Defined in[​](#defined-in-1 "Direct link to Defined in")
 
-[server/database.ts:282](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L282)
+[server/database.ts:274](https://github.com/get-convex/convex-js/blob/main/src/server/database.ts#L274)
 
 
 ---
@@ -14985,7 +15179,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-14 "Direct link to Defined in")
 
-[server/components/index.ts:402](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L402)
+[server/components/index.ts:414](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L414)
 
 ***
 
@@ -14995,7 +15189,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-15 "Direct link to Defined in")
 
-[server/components/index.ts:442](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L442)
+[server/components/index.ts:454](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L454)
 
 ***
 
@@ -16642,7 +16836,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-92 "Direct link to Defined in")
 
-[server/components/index.ts:359](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L359)
+[server/components/index.ts:371](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L371)
 
 ***
 
@@ -16660,7 +16854,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-93 "Direct link to Defined in")
 
-[server/components/index.ts:385](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L385)
+[server/components/index.ts:397](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L397)
 
 ***
 
@@ -16674,7 +16868,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-94 "Direct link to Defined in")
 
-[server/components/index.ts:440](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L440)
+[server/components/index.ts:452](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L452)
 
 ***
 
@@ -16969,7 +17163,7 @@ The wrapped function. Route a URL path to this function in `convex/http.js`.
 
 #### Defined in[​](#defined-in-103 "Direct link to Defined in")
 
-[server/impl/registration\_impl.ts:465](https://github.com/get-convex/convex-js/blob/main/src/server/impl/registration_impl.ts#L465)
+[server/impl/registration\_impl.ts:467](https://github.com/get-convex/convex-js/blob/main/src/server/impl/registration_impl.ts#L467)
 
 ***
 
@@ -17300,7 +17494,7 @@ The type of a [Validator](/api/modules/values.md#validator) constructed with [v]
 
 #### Defined in[​](#defined-in-5 "Direct link to Defined in")
 
-[values/validators.ts:618](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L618)
+[values/validators.ts:648](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L648)
 
 ***
 
@@ -17312,7 +17506,7 @@ Type representing whether a property in an object is optional or required.
 
 #### Defined in[​](#defined-in-6 "Direct link to Defined in")
 
-[values/validators.ts:651](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L651)
+[values/validators.ts:681](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L681)
 
 ***
 
@@ -17345,7 +17539,7 @@ More validators can be added in future releases so an exhaustive switch statemen
 
 #### Defined in[​](#defined-in-7 "Direct link to Defined in")
 
-[values/validators.ts:676](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L676)
+[values/validators.ts:706](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L706)
 
 ***
 
@@ -17362,7 +17556,7 @@ More validators can be added in future releases so an exhaustive switch statemen
 
 #### Defined in[​](#defined-in-8 "Direct link to Defined in")
 
-[values/validators.ts:717](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L717)
+[values/validators.ts:747](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L747)
 
 ***
 
@@ -17372,7 +17566,7 @@ More validators can be added in future releases so an exhaustive switch statemen
 
 #### Defined in[​](#defined-in-9 "Direct link to Defined in")
 
-[values/validators.ts:719](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L719)
+[values/validators.ts:749](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L749)
 
 ***
 
@@ -17382,7 +17576,7 @@ More validators can be added in future releases so an exhaustive switch statemen
 
 #### Defined in[​](#defined-in-10 "Direct link to Defined in")
 
-[values/validators.ts:738](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L738)
+[values/validators.ts:768](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L768)
 
 ***
 
@@ -17392,7 +17586,7 @@ More validators can be added in future releases so an exhaustive switch statemen
 
 #### Defined in[​](#defined-in-11 "Direct link to Defined in")
 
-[values/validators.ts:743](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L743)
+[values/validators.ts:773](https://github.com/get-convex/convex-js/blob/main/src/values/validators.ts#L773)
 
 ***
 
@@ -17416,7 +17610,7 @@ An identifier for a document in Convex.
 
 Convex documents are uniquely identified by their `Id`, which is accessible on the `_id` field. To learn more, see [Document IDs](https://docs.convex.dev/database/document-ids).
 
-Documents can be loaded using `db.get(id)` in query and mutation functions.
+Documents can be loaded using `db.get(tableName, id)` in query and mutation functions.
 
 IDs are base 32 encoded strings which are URL safe.
 
@@ -17757,7 +17951,7 @@ export const removeUserImage = mutation({
     if (!userId) {
       return;
     }
-    ctx.db.patch(userId, { imageId: undefined, image: undefined });
+    ctx.db.patch("users", userId, { imageId: undefined, image: undefined });
   },
 });
 ```
@@ -18312,9 +18506,11 @@ The authentication flow looks like this under the hood:
 
 [WorkOS AuthKit](https://authkit.com) is an authentication solution that enables sign-in using passwords, social login providers, email one-time codes, two-factor authentication, and user management capabilities.
 
+You can use your own WorkOS account with AuthKit or [create a WorkOS account with Convex](/auth/authkit/auto-provision.md) to create and do some configuration of AuthKit environments automatically.
+
 ## Get started[​](#get-started "Direct link to Get started")
 
-The quickest way to get started is to create an [associated WorkOS account](/auth/authkit/auto-provision.md) through the Convex CLI.
+The quickest way to get started is with a template:
 
 ```
 npm create convex@latest -- -t react-vite-authkit
@@ -18325,6 +18521,8 @@ npm run dev
 Follow the prompts to create a WorkOS team that will be associated with your Convex team. After this Convex deployments for projects in this team will be able to automatically provision and configure their own WorkOS environments.
 
 That's it! After this you and other members of your Convex team can create and configure development WorkOS environments without visiting [workos.com](https://workos.com).
+
+See [AuthKit configuration in convex.json](/auth/authkit/auto-provision.md) to modify the convex.json file in this template for your needs.
 
 ### Configuring an existing WorkOS account[​](#configuring-an-existing-workos-account "Direct link to Configuring an existing WorkOS account")
 
@@ -19111,36 +19309,134 @@ The authentication flow looks like this under the hood:
 
 # Automatic AuthKit Configuration
 
-AuthKit configuration can be automated for cloud dev deployments: each Convex deployment gets its own WorkOS environment configured and has local environment variables added to `.env.local` and Convex deployment environment variables set for it.
+Convex can **create** AuthKit environments in a WorkOS account made on your behalf. By default WorkOS gives you only two environments, but giving each Convex dev deployment its own AuthKit environment is useful for isolating development user data and configuration changes between multiple developers or agents working in parallel.
 
-This integration is in active development and will change as it continues to improve. Today the integration works with the two AuthKit templates offered when running `npm create convex@latest`.
+The Convex CLI will **configure** AuthKit environments, regardless of whether Convex or you created them, if the `WORKOS_CLIENT_ID` and `WORKOS_API_KEY` environment variables are present in the build environment or the Convex deployment. While developing locally, Convex can write environment variables to `.env.local` to make setting up an AuthKit environment a breeze.
 
-## Creating WorkOS environments on-demand[​](#creating-workos-environments-on-demand "Direct link to Creating WorkOS environments on-demand")
+## Getting Started[​](#getting-started "Direct link to Getting Started")
 
-Automatically provisioning a WorkOS environment for a Convex deployment is enabled by creating a new WorkOS account and team to associate with a Convex team. Once this account has been created, any member of the Convex team can create a WorkOS environment for their development deployments on each of the team's projects.
+Choose AuthKit as your authentication option in the create convex tool.
 
-This happens automatically whenever the `WORKOS_CLIENT_ID` environment variable is read in the `convex/auth.config.ts` file but not set on the deployment during a `convex dev`.
+```
+npm create convex@latest
+```
 
-The CLI then makes AuthKit-related configuration changes that replace the [manual configuration steps](/auth/authkit/.md#configuring-an-existing-workos-account) required to configure AuthKit for a development Convex deployment.
+These templates include a `convex.json` which cause an AuthKit environment for this deployment to be created and configured. With just `npx convex dev` you'll get a WorkOS environment all hooked up!
 
-Currently this configures the following with the assumed local development domain:
+### Going to production[​](#going-to-production "Direct link to Going to production")
 
-* redirect endpoint URI
-* CORS origin
+In the Convex dashboard settings for your production deployment, create an AuthKit environment in the WorkOS Authentication integration under settings, integrations. Copy these credentials to your hosting provider environment variables (in addition to other setup, like adding a production `CONVEX_DEPLOY_KEY`, setting the build command, and setting other framework-specific AuthKit environment variables).
 
-The following local environment variables may be set in `.env.local`:
+### Preview deployments[​](#preview-deployments "Direct link to Preview deployments")
 
-* `VITE_WORKOS_CLIENT_ID` (Vite only)
-* `WORKOS_CLIENT_ID` (Next.js only)
-* `*_WORKOS_REDIRECT_URI` (e.g. `VITE_WORKOS_REDIRECT_URI`)
-* `WORKOS_API_KEY` (Next.js only)
-* `WORKOS_COOKIE_PASSWORD` (Next.js only)
+In the Convex dashboard settings for any deployment in your project, create a new project-level AuthKit environment in the WorkOS Authentication integration under settings, integrations. Copy these credentials to your hosting provider environment variables (in addition to other setup, like adding a preview `CONVEX_DEPLOY_KEY`, setting the build command, and setting other framework-specific AuthKit environment variables).
 
-### Limitations[​](#limitations "Direct link to Limitations")
+## How it works[​](#how-it-works "Direct link to How it works")
 
-WorkOS environments can currently only be created for cloud development deployments. Preview and production deployments must be manually configured.
+AuthKit provisioning and configuration is triggered by the presence of a `convex.json` file with an `authKit` section with a property corresponding to the type of code push: `dev`, `preview`, or `prod`.
 
-To manually configure the production deployment, visit the WorkOS page for the production environment for this project and [follow these steps](/auth/authkit/.md#configuring-an-existing-workos-account). Only one production deployment exists by default per WorkOS team so additional project may need to use separate WorkOS teams.
+If this section is present, an AuthKit environment may be provisioned (dev only), local environment variables set (dev only), and configured (all code push types).
+
+### Finding the AuthKit environment[​](#finding-the-authkit-environment "Direct link to Finding the AuthKit environment")
+
+The CLI looks for WorkOS credentials `WORKOS_CLIENT_ID` and `WORKOS_API_KEY` in the following order:
+
+1. Environment variables in the build environment shell or `.env.local` file
+2. Convex deployment environment variables
+
+In remote build environments (e.g. building a project in Vercel, Netlify, Cloudflare) if these two environment variables are not found, the build will fail.
+
+During local dev, credentials are next fetched from the Convex Cloud API for a new or existing AuthKit environment. A link to this deployment in the WorkOS dashboard can be found in the Convex dashboard under the WorkOS integration.
+
+### Configuring the AuthKit environment[​](#configuring-the-authkit-environment "Direct link to Configuring the AuthKit environment")
+
+Once credentials are found, the `WORKOS_API_KEY` is used to configure the environment based on the `configure` section of the relevant `authKit` object. This sets things like an environment's [redirect URIs](https://workos.com/docs/sso/redirect-uris), [allowed CORS origins](https://workos.com/docs/authkit/client-only).
+
+### Setting local environment variables[​](#setting-local-environment-variables "Direct link to Setting local environment variables")
+
+For dev deployments only, environment variables are written to `.env.local` based on the `localEnvVars` section of the relevant `authKit` config.
+
+## Project-level vs deployment level AuthKit environments[​](#project-level-vs-deployment-level-authkit-environments "Direct link to Project-level vs deployment level AuthKit environments")
+
+In hosting providers with remote build pipelines like Vercel, it's difficult to set environment variables like `WORKOS_API_KEY` at build time in a way that's available to server-side code like Next.js middleware. This makes it necessary set the `WORKOS_*` environment variables in advance for preview and production deployments built on these platforms.
+
+After creating the WorkOS AuthKit environments for production and preview deployments in the dashboard, copy relevant environment variables like `WORKOS_CLIENT_ID`, `WORKOS_API_KEY`, `WORKOS_REDIRECT_URI`, and `WORKOS_COOKIE_PASSWORD` to the preview and production environment variables in your hosting provider.
+
+Deployment-specific AuthKit environments can be created for any deployment are difficult set up automatically so shared project-level environments are generally a better fit.
+
+In the `authKit` section of `convex.json`, `localEnvVars` `automate setting up dev environments by automatically setting the right environment variables in .env.local and automatically configuring the environment with a `redirectUri\`.
+
+Environments for hosting providers in build environments like Vercel (production and preview deploys) can be configured at build time, but the environment variables for these build environments must be set manually in the build settings.
+
+## Recommended Configuration[​](#recommended-configuration "Direct link to Recommended Configuration")
+
+Here's a common setup for a project where production and preview deploys are deployed to from Vercel. Check your hosting provider's docs to substitute the right environment variables, and check the guide for using AuthKit with your framework of choice to customize this example.
+
+convex.json
+
+```
+{
+  "authKit": {
+    "dev": {
+      "configure": {
+        "redirectUris": ["http://localhost:3000/callback"],
+        "appHomepageUrl": "http://localhost:3000",
+        "corsOrigins": ["http://localhost:3000"]
+      },
+      "localEnvVars": {
+        "WORKOS_CLIENT_ID": "${authEnv.WORKOS_CLIENT_ID}",
+        "WORKOS_API_KEY": "${authEnv.WORKOS_API_KEY}",
+        "NEXT_PUBLIC_WORKOS_REDIRECT_URI": "http://localhost:3000/callback"
+      }
+    },
+    "preview": {
+      "configure": {
+        "redirectUris": ["https://${buildEnv.VERCEL_BRANCH_URL}/callback"],
+        "appHomepageUrl": "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}",
+        "corsOrigins": ["https://${buildEnv.VERCEL_BRANCH_URL}"]
+      }
+    },
+    "prod": {
+      "environmentType": "production",
+      "configure": {
+        "redirectUris": [
+          "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}/callback"
+        ],
+        "appHomepageUrl": "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}",
+        "corsOrigins": ["https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}"]
+      }
+    }
+  }
+}
+```
+
+Additionally, for local dev in **Next.js** and **TanStack Start**, Convex automatically generates a `WORKOS_COOKIE_PASSWORD` if it's not already in `.env.local`.
+
+
+---
+
+# AuthKit Troubleshooting
+
+## Platform not authorized[​](#platform-not-authorized "Direct link to Platform not authorized")
+
+```
+WorkOSPlatformNotAuthorized: Your WorkOS platform API key is not authorized to
+access this team. Please ensure the API key has the correct permissions in the
+WorkOS dashboard.
+```
+
+This error occurs when your WorkOS platform API key is not authorized to access the WorkOS team associated with your Convex team.
+
+This typically happens when the WorkOS workspace has had Convex removed.
+
+You can contact WorkOS support to ask to restore this permission, or unlink the current workspace and create a new one:
+
+```
+npx convex integration workos disconnect-team
+npx convex integration workos provision-team
+```
+
+You'll need to use a different email address to create your new WorkOS Workspace as an email address can only be associated with a single WorkOS workspace.
 
 
 ---
@@ -19338,7 +19634,7 @@ This guide assumes you already have a working React app with Convex. If not foll
         }
         return await ctx.db
           .query("messages")
-          .filter((q) => q.eq(q.field("author"), identity.email))
+          .withIndex("by_author", (q) => q.eq("author", identity.email))
           .collect();
       },
     });
@@ -19587,7 +19883,7 @@ This guide assumes you already have a working Next.js app with Convex. If not fo
         }
         return await ctx.db
           .query("messages")
-          .filter((q) => q.eq(q.field("author"), identity.email))
+          .withIndex("by_author", (q) => q.eq("author", identity.email))
           .collect();
       },
     });
@@ -20604,7 +20900,7 @@ This means Chef can: build real-time apps, upload files, do text search and take
 
 ## Deploying to production[​](#deploying-to-production "Direct link to Deploying to production")
 
-Chef does have a built in ability to deploy your the dev version of your app for you to immediately share with your friends to try.
+Chef does have a built in ability to deploy the dev version of your app for you to immediately share with your friends to try.
 
 For apps intended to be built and maintained over the long term, we recommend downloading the code and importing it into your preferred IDE. When you download the code from Chef, your project automatically comes with [Cursor rules for Convex](/ai.md), helping you keep coding with confidence.
 
@@ -21001,7 +21297,7 @@ Generating code can require communicating with a convex deployment in order to e
 
 When logged in on your own machine, agents like Cursor and Claude Code can run CLI commands like `npx convex env list` that use your logged-in credentials run commands against your personal dev environment as if you ran the commands yourself. This works well when you're collaborating with an agent; just like when the agent runs `git commit -am "Fix."`, the commit will use your local git credentials.
 
-But when cloud-based coding agents like Jules, Devin, Codex, or Cursor background agents run Convex CLI commands, they can't log in. And if you do log in for them, the agent will use your default dev deployment to develop, conflicting with your own changes!
+But when cloud-based coding agents like Jules, Devin, Codex, or Cursor Cloud Agents run Convex CLI commands, they can't log in. And if you do log in for them, the agent will use your default dev deployment to develop, conflicting with your own changes!
 
 Instead, set `CONVEX_AGENT_MODE=anonymous` in this environment, causing the agent to use [anonymous development](/cli/local-deployments.md) to run a separate Convex backend on the VM where the agent is working.
 
@@ -21170,7 +21466,7 @@ Remember your cloud dev deployment and each local dev deployment are completely 
 
 * **No Public URL** - Cloud deployments have public URL to receive incoming HTTP requests from services like Twilio, but local deployments listen for HTTP requests on your own computer. Similarly, you can't power websites with Convex WebSocket connections unless your users browsers know how to reach your computer. Set up a proxy like ngrok or use a cloud deployment for these uses cases.
 
-* **Node actions require specific Node.js versions** - Running Node.js actions (actions defined in files with `"use node;"`) requires having Node.js 18 installed, since this is the version of Node.js used in production when Node.js actions run in AWS Lambda functions. To resolve this you can install and set up [nvm](https://github.com/nvm-sh/nvm) and then install Node.js version 18. You don't need to use Node.js 18 for the rest of your project.
+* **Node actions require specific Node.js versions** - Running Node.js actions (actions defined in files with `"use node;"`) requires having the same version of Node.js as your project is [configured for](/production/project-configuration.md#configuring-the-nodejs-version). By default this is Node.js 20 today, though this may change in the future. To resolve this you can install and set up [nvm](https://github.com/nvm-sh/nvm) and then install the required Node.js version. You don't need to use this version for the rest of your project.
 
 * **Node.js actions run directly on your computer** - Like a normal Node.js server, code running in Node.js actions has unrestricted filesystem access. Queries, mutations, and Convex runtime actions still run in isolated environments.
 
@@ -23812,209 +24108,217 @@ Components can be installed from NPM or from a local folder. Once installed, the
 
 [List of all components.](https://convex.dev/components)
 
-## Durable Functions[​](#durable-functions "Direct link to Durable Functions")
-
-## [Workflow](https://www.convex.dev/components/workflow)
-
-[Async code flow as durable functions.](https://www.convex.dev/components/workflow)
-
-## [Workpool](https://www.convex.dev/components/workpool)
-
-[Async durable function queue.](https://www.convex.dev/components/workpool)
-
-## [Crons](https://www.convex.dev/components/crons)
-
-[Dynamic runtime cron management](https://www.convex.dev/components/crons)
-
-## Database[​](#database "Direct link to Database")
-
-## [Sharded Counter](https://www.convex.dev/components/sharded-counter)
-
-[High-throughput counter operations](https://www.convex.dev/components/sharded-counter)
-
-## [Migrations](https://www.convex.dev/components/migrations)
-
-[Define and run migrations](https://www.convex.dev/components/migrations)
-
-## [Aggregate](https://www.convex.dev/components/aggregate)
-
-[Efficient sums and counts](https://www.convex.dev/components/aggregate)
-
-## Integrations[​](#integrations "Direct link to Integrations")
-
-## [Cloudflare R2](https://www.convex.dev/components/cloudflare-r2)
-
-[Store and serve files](https://www.convex.dev/components/cloudflare-r2)
-
-## [Collaborative Text Editor Sync](https://www.convex.dev/components/prosemirror-sync)
-
-[Real-time collaborative text editing](https://www.convex.dev/components/prosemirror-sync)
-
-## [Expo Push Notifications](https://www.convex.dev/components/push-notifications)
-
-[Send mobile push notifications](https://www.convex.dev/components/push-notifications)
-
-## [Twilio SMS](https://www.convex.dev/components/twilio)
-
-[Send and receive SMS messages](https://www.convex.dev/components/twilio)
-
-## [LaunchDarkly Feature Flags](https://www.convex.dev/components/launchdarkly)
-
-[Sync feature flags with backend](https://www.convex.dev/components/launchdarkly)
-
-## [Polar](https://www.convex.dev/components/polar)
-
-[Add subscriptions and billing](https://www.convex.dev/components/polar)
-
-## Backend[​](#backend "Direct link to Backend")
-
-## [AI Agent](https://www.convex.dev/components/agent)
-
-[Define agents with tools and memory](https://www.convex.dev/components/agent)
-
-## [Rate Limiter](https://www.convex.dev/components/rate-limiter)
-
-[Control resource usage rates](https://www.convex.dev/components/rate-limiter)
-
-## [Action Cache](https://www.convex.dev/components/action-cache)
-
-[Cache expensive external calls](https://www.convex.dev/components/action-cache)
-
 
 ---
 
 # Authoring Components
 
-Building a component lets you package up Convex functions, schemas, and persistent state into a reusable module that you or other developers can drop into their projects.
+Building a Convex Component lets you package up Convex functions, schemas, and persistent state into a reusable module that you or other developers can drop into their projects.
 
-Here are some common reasons to build a component:
+They differ from regular libraries in that they have their own database tables, sub-transactions, and can define functions that run in an isolated environment.
 
-* Modularizing your code into separate pieces that each own their own data
-* You want to re-use functionality across multiple projects without duplication
-* You solved a problem involving persistent state that you think would be useful to other Convex developers (sharded counter, cache, etc.)
+Trying to decide between writing a library or a component? Building it as a component allows you to:
 
-Components are the right thing to build when you not only want to add functionality to an application, like a library, but create a "living" distributed system that contains workflows and persistent state. They should be composable and provide abstractions for developers to add complex functionality without needing to understand the underlying implementation.
+* Persist data to tables where you control the schema.
+* Isolate access to data behind an API boundary.
+* Define queries, mutations, and actions that can run asynchronously to manage complex workflows.
+* Share functionality between apps in a predictable way.
 
-## Types of Components[​](#types-of-components "Direct link to Types of Components")
+## Anatomy of a component[​](#anatomy-of-a-component "Direct link to Anatomy of a component")
 
-There are three types of components, each suited for different use cases:
-
-**Sibling**
-
-* Stored alongside your Convex code in the same repository
-* Best for modularizing your codebase or reusing functionality across multiple projects
-* Quick to set up and iterate on
-
-**NPM Package**
-
-* Distributed as standalone NPM packages
-* Best for sharing solutions to common problems with the broader developer community
-* Examples: [WorkOS](https://github.com/get-convex/workos) and [Polar](https://github.com/get-convex/polar) components
-
-**Hybrid**
-
-* Combine shared NPM package code with local customization
-* Best when you want to provide a solution that developers can adapt to their specific needs
-* Example: [Better Auth](https://convex-better-auth.netlify.app/features/local-install) component
-
-Below, we'll walk through the structure of each type and how to get started building one.
-
-### Sibling[​](#sibling "Direct link to Sibling")
-
-These are components that are stored right next to the rest of your Convex code. The directory structure might look something like:
+Practically speaking, a component is defined in a folder containing a `convex.config.ts`. The component's folder has the same structure as a normal `convex/` folder:
 
 ```
-├── convex/
-│   ├── _generated/
-│   ├── schema.ts
-│   ├── convex.config.ts
-│   └── functions.ts
-└── fooComponent/
-    ├── _generated/
-    ├── schema.ts
-    ├── convex.config.ts
-    └── functions.ts
+ component/
+ ├── _generated/        # Generated code for the component's API and data model.
+ ├── convex.config.ts   # Defines the component and its child components.
+ ├── schema.ts          # Defines a schema only accessible by the component
+ └-- …folders/files.ts  # Queries, mutations, and actions for the component.
 ```
 
-To get started follow these steps:
+The component's `convex.config.ts` file configures the component's default name and child components.
 
-**1. Create a new directory at the same level as your `convex/` folder.**
+component/convex.config.ts
 
-**2. Add a `convex.config.ts` file inside of the new folder. This new file should look something like:**
+TS
 
 ```
 import { defineComponent } from "convex/server";
-
-const component = defineComponent("fooComponent");
-
+// import workpool from "@convex-dev/workpool/convex.config.js";
+// import localComponent from "../localComponent/convex.config.js";
+const component = defineComponent("myComponent");
+// component.use(workpool);
+// component.use(localComponent, { name: "customName" });
 export default component;
 ```
 
-**3. Add the component to your root directory like this:**
+Instances of the component are configured when used by the main app or other components in their `convex.config.ts` files, forming a tree of components, with the main app at the root.
+
+## Getting started[​](#getting-started "Direct link to Getting started")
+
+The source code for components can be a local folder or bundled into an NPM package.
+
+### Local components[​](#local-components "Direct link to Local components")
+
+The easiest way to get started is by creating a new folder for your component and adding a `convex.config.ts` file to it (like the one above). Then import it in your app's `convex/convex.config.ts` file:
+
+convex/convex.config.ts
+
+TS
 
 ```
 import { defineApp } from "convex/server";
-import fooComponent from "../fooComponent/convex.config.js";
+import myComponent from "./components/myComponent/convex.config.js";
 
 const app = defineApp();
-
-app.use(fooComponent);
-
+app.use(myComponent);
 export default app;
 ```
 
-**4. Run `convex dev`. This will generate code for your component.**
+Once installed, `npx convex dev` will generate code in `./components/myComponent/_generated/` and re-generate it whenever you make changes to the component's code.
 
-**5. Start writing code in your component!**
+Tip: The recommended pattern for local components is to organize them in a `convex/components` folder, but they can be stored anywhere in your project.
 
-### NPM Package[​](#npm-package "Direct link to NPM Package")
+### Packaged components[​](#packaged-components "Direct link to Packaged components")
 
-Components can be installed from NPM packages. These components expose all the relevant entry points to be used in your project:
+Components can be distributed and installed as NPM packages, enabling you to share solutions to common problems with the broader developer community via the [Convex Components directory](https://convex.dev/components).
 
-* `@your/package` for types, classes, and constants used to interact with the component.
-* `@your/package/convex.config.js` for adding the component to the app's `convex/convex.config.ts`
-* `@your/package/_generated/component.js` to expose the `ComponentApi` type, which describes the component's types from the point of view of app it's used in.
-* `@your/package/test` for utilities to use the component with `convex-test`.
-
-To get started follow these steps:
-
-**1. Create a new project from `npm` using the following command:**
+Get started with a new project using the [component template](https://github.com/get-convex/templates/tree/main/template-component):
 
 ```
-npm create convex@latest -- --component
+npx create-convex@latest --component
 ```
 
-**2. Follow the instructions in your terminal and start writing code!**
+Follow the CLI's instructions to get started and keep the component's generated code up-to-date. [See below for more information on building and publishing NPM package components.](#building-and-publishing-npm-package-components)
 
-### Hybrid[​](#hybrid "Direct link to Hybrid")
+### Hybrid components[​](#hybrid-components "Direct link to Hybrid components")
 
-Hybrid components are similar to sibling components, but they use some shared code from an NPM package. They are used when users want something more custom and want to implement some of their own functionality.
+Hybrid components define a local component, but use shared library code for some of the functionality. This allows you to provide a extra flexibility when users need to override or extend the schema or functions.
 
-## Functions[​](#functions "Direct link to Functions")
+An example of a hybrid component is the [Better Auth Component](https://convex-better-auth.netlify.app/features/local-install).
 
-### Function Access[​](#function-access "Direct link to Function Access")
+Note: in general, components should be composed or designed to be extended explicitly, as hybrid components introduce a lot of complexity for maintaining and updating the component in backwards-compatible ways.
 
-Understanding how functions can call each other is crucial when working with components.
+## Hello world[​](#hello-world "Direct link to Hello world")
 
-There's a hierarchy of access, where each level can only call its own (public and internal) functions as well as public functions exported by its immediate children.
+To try adding a new function, create a file `hello.ts` in your component's folder (e.g. `src/component/hello.ts` in the template):
 
-In particular, the public internet / React client / etc. cannot call any functions on components, even public ones. Similar to internal functions, there is an exception for `npx convex run` and running functions in the Convex dashboard, which can call any function.
+./path/to/component/hello.ts
 
-What if you want to call a component's functions from the public internet, or from React? The app needs to wrap the component's function in its own function. This allows the app to choose to add auth, rate limiting, etc.
+TS
 
 ```
-// in the app's convex/<file>.ts
-export const add = query({
-  args: { value: v.number() },
-  handler: async (ctx, args) => {
-    await counter.add(ctx, args.value);
+import { v } from "convex/values";
+import { query } from "./_generated/server.js";
+
+export const world = query({
+  args: {},
+  returns: v.string(),
+  handler: async () => {
+    return "hello world";
   },
 });
 ```
 
+After it deploys, you can run `npx convex run --component myComponent hello:world`.
+
+You can now also run it from a function in your app:
+
+convex/sayHi.ts
+
+TS
+
+```
+import { components } from "./_generated/api";
+import { query } from "./_generated/server";
+
+export default query({
+  handler: async (ctx) => {
+    return await ctx.runQuery(components.myComponent.hello.world);
+  },
+});
+```
+
+Try it out: `npx convex run sayHi`.
+
+## Key differences from regular Convex development[​](#key-differences-from-regular-convex-development "Direct link to Key differences from regular Convex development")
+
+Developing a component is similar to developing the rest of your Convex backend. This section is a guide to the key concepts and differences.
+
+### The Component API[​](#the-component-api "Direct link to The Component API")
+
+When you access a component reference like `components.foo`, you're working with the `ComponentApi` type which has some key differences from the regular `api` object:
+
+* **Only public functions are accessible**: Internal functions are not exposed to the parent app.
+* **Functions become internal references**: The component's "public" queries, mutations, and actions are turned into references with "internal" visibility. They can be called with `ctx.runQuery`, `ctx.runMutation`, etc. but **not** directly accessible from clients via HTTP or WebSockets. See below for patterns to re-export functions from the component.
+* **IDs become strings**: Any `Id<"tableName">` arguments or return values become plain strings in the `ComponentApi`. See next section for details.
+
+Similar to regular Convex functions, you can call both public and internal functions via `npx convex run` and the Convex dashboard.
+
+### `Id` types and validation[​](#id-types-and-validation "Direct link to id-types-and-validation")
+
+All `Id<"table_name">` types within a component become simple string types outside of the component (in the `ComponentApi` type).
+
+In addition, you cannot currently have a `v.id("table_name")` validator that represents a table in another component / app.
+
+Why?
+
+In Convex, a `v.id("table_name")` validator will check that an ID in an argument, return value, or database document matches the named table's format. Under the hood, this is currently encoded as a number assigned to each table in your schema.
+
+Within a component’s implementation, the same applies to the component's tables. However, a `v.id("users")` within the component is not the same as `v.id("users")` in another component or in the main app, as each "users" table can have a different table number representation.
+
+For this reason, all `Id` types in the `ComponentApi` become simple strings.
+
+### Generated code[​](#generated-code "Direct link to Generated code")
+
+Each component has its own `_generated` directory in addition to the `convex/_generated` directory. They are similar, but its contents are specific to the component and its schema. In general, code outside of the component should not import from this directory with the exception of `_generated/component`.
+
+* `component.ts` is only generated for components, and contains the component's `ComponentApi` type.
+* `server.ts` contains function builders like `query` and `mutation` to define your component's API. It's important that you import these when defining your component's functions, and not from `convex/_generated/server`. See below for more information on function visibility.
+* `api.ts` contains the component's `api` and `internal` objects to reference the component's functions. It also includes the `components` object with references to its child components, if any. In general, no code outside of the component should import from this file. Instead, they should use their own `components` object which includes this component keyed by whatever name they chose to install it with.
+* `dataModel.ts` contains the types for the component's data model. Note that the `Id` and `Doc` types here are not useful outside of the component, since the API turns all ID types into strings at the boundary.
+
+### Environment variables[​](#environment-variables "Direct link to Environment variables")
+
+The component's functions are isolated from the app's environment variables, so they cannot access `process.env`. Instead, you can pass environment variables as arguments to the component's functions.
+
+```
+return await ctx.runAction(components.sampleComponent.lib.translate, {
+  baseUrl: process.env.BASE_URL,
+  ...otherArgs,
+});
+```
+
+See below for other strategies for static configuration.
+
 ### HTTP Actions[​](#http-actions "Direct link to HTTP Actions")
 
 A component cannot expose HTTP actions itself because the routes could conflict with the main app's routes. Similar to other functions (queries, mutations, and actions), a component can define HTTP action handlers which the app can choose to mount. There’s an example in the [Twilio component](https://github.com/get-convex/twilio/blob/0bdf7fd4ee7dd46d442be3693280564eea597b68/src/client/index.ts#L71). All HTTP actions need to be mounted in the main app’s `convex/http.ts` file.
+
+### Authentication via ctx.auth[​](#authentication-via-ctxauth "Direct link to Authentication via ctx.auth")
+
+Within a component, `ctx.auth` is not available. You typically will do authentication in the app, then pass around identifiers like `userId` or other identifying information to the component.
+
+This explicit passing makes it clear what data flows between the app and component, making your component easier to understand and test.
+
+convex/myFunctions.ts
+
+TS
+
+```
+import { getAuthUserId } from "@convex-dev/auth/server";
+
+export const someMutation = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    await ctx.runMutation(components.myComponent.foo.bar, {
+      userId,
+      ...otherArgs,
+    });
+  },
+});
+```
 
 ### Function Handles[​](#function-handles "Direct link to Function Handles")
 
@@ -24030,7 +24334,7 @@ A function reference is something like api.foo.bar or `internal.foo.bar` or `com
 const handle = await createFunctionHandle(api.foo.bar);
 ```
 
-​This handle is a string.
+This handle is a string.
 
 Since it’s a string, you can pass it between functions and even store it in a table. You would use `v.string()` in args/schema validators.
 
@@ -24044,49 +24348,175 @@ const result = await ctx.runMutation(handle, args);
 await ctx.scheduler.runAfter(0, handle, args);
 ```
 
+[Here](https://github.com/get-convex/workpool/blob/aebe2db49fc3ec50ded6892ed27f464450b3d31e/src/component/worker.ts#L26-L28) is an example of using function handles in the [Workpool](https://www.convex.dev/components/workpool) component.
+
 ### Pagination[​](#pagination "Direct link to Pagination")
 
-The built-in `.paginate()` doesn't work in components, because of how Convex keeps track of reactive pagination. Therefore we recommend you use `paginator` from convex-helpers if you need pagination within your component. As a particular case, you cannot use the `migrations` component within your own component because it uses pagination. We’re working on more helpers to make this easier.
+The built-in `.paginate()` doesn't work in components, because of how Convex keeps track of reactive pagination. Therefore we recommend you use `paginator` from [`convex-helpers`](https://npmjs.com/package/convex-helpers) if you need pagination within your component.
 
-If you expose a pagination API that wants to be used with `usePaginatedQuery`, in a React context, use the `usePaginatedQuery` from `convex-helpers` instead of the default one. It will have a fixed first page size until you hit “load more,” at which point the first page will grow if anything before the second page is added.
+If you expose a pagination API that wants to be used with `usePaginatedQuery`, in a React context, use the `usePaginatedQuery` from `convex-helpers` instead of the default one from `convex/react`. It will have a fixed first page size until you hit “load more,” at which point the first page will grow if anything before the second page is added.
 
-## Building Client APIs[​](#building-client-apis "Direct link to Building Client APIs")
+[Here](https://github.com/get-convex/rag/blob/23fb22d593682e23d9134304e823f7532cbc7e67/src/component/chunks.ts#L437-L462) is an example of pagination in the [RAG](https://www.convex.dev/components/rag) component.
 
-When building a component, you'll want to provide a clean API for app developers to interact with your component. Instead of requiring users to directly write `ctx.runMutation(components.foo.bar, ...)`, you can wrap these calls in a more ergonomic client API.
+## Tips and best practices[​](#tips-and-best-practices "Direct link to Tips and best practices")
 
-Client APIs also bridge the gap between your app and component code by allowing you to access things like `ctx.auth` and `process.env` before calling into the isolated component environment.
+### Validation[​](#validation "Direct link to Validation")
 
-This section covers three approaches to building client APIs, which are conventions that help provide a consistent experience for users. These aren't hard and fast rules—choose the pattern that best fits your component's needs.
+All public component functions should have argument and return validators. Otherwise, the argument and return values will be typed as `any`. Below is an example of using validators.
 
-### Understanding `ComponentApi`[​](#understanding-componentapi "Direct link to understanding-componentapi")
+```
+import schema from "./schema";
 
-Before diving into the patterns, it's important to understand how a component's API differs from a regular app's `api` object.
+const messageDoc = schema.tables.messages.validator.extend({
+  _id: v.id("messages),
+  _creationTime: v.number(),
+});
 
-When you pass a component reference like `components.foo` to your client code, you're working with a `ComponentApi` type. This is exposed by all components via `_generated/component.js` and has some key differences from the regular `api` object:
+export const getLatestMessage = query({
+  args: {},
+  returns: v.nullable(messageDoc),
+  handler: async (ctx) => {
+    return await ctx.db.query("messages").order("desc).first();
+  },
+});
+```
 
-* **Only public functions are accessible**: Internal functions are not exposed to the parent app
-* **Functions become internal references**: Your public API functions are turned into references that can be called with `ctx.runQuery`, `ctx.runMutation`, etc. but **not** directly accessible from clients via HTTP or WebSockets.
-* **IDs become strings**: Any `Id<"tableName">` arguments or return values become plain strings in the `ComponentApi`
+Find out more information about function validation [here](/functions/validation.md).
+
+### Static configuration[​](#static-configuration "Direct link to Static configuration")
+
+A common pattern to track configuration in a component is to have a "globals" table with a single document that contains the configuration. You can then define functions to update this document from the CLI or from the app. To read the values, you can query them with `ctx.db.query("globals").first();`.
+
+## Wrapping the component with client code[​](#wrapping-the-component-with-client-code "Direct link to Wrapping the component with client code")
+
+When building a component, sometimes you want to provide a simpler API than directly calling `ctx.runMutation(components.foo.bar, ...)`, add more type safety, or provide functionality that spans the component's boundary.
+
+You can hide calls to the component's functions behind a more ergonomic client API that runs within the app's environment and calls into the component.
+
+This section covers conventions and approaches to writing client code. These aren't hard and fast rules; choose the pattern that best fits your component's needs.
+
+Note: An important aspect of this pattern is that the code running in the app has access to `ctx.auth`, `process.env`, and other app-level resources. For many use-cases, this is important, such as running code to define migrations in the app, which are then run from the Migrations Component. On the other hand, apps that want really tight control over what code runs in their app may prefer to call the component's functions directly.
 
 ### Simple Function Wrappers[​](#simple-function-wrappers "Direct link to Simple Function Wrappers")
 
-The simplest approach is to define standalone functions that wrap calls to your component. This works well for straightforward operations and utilities.
+The simplest approach is to define standalone functions that wrap calls to the component. This works well for straightforward operations and utilities.
 
 ```
+import type {
+  GenericActionCtx,
+  GenericDataModel,
+  GenericMutationCtx,
+} from "convex/server";
 import type { ComponentApi } from "../component/_generated/component.js";
 
-export async function addToCounter(
-  ctx: Pick<GenericMutationCtx<GenericDataModel>, "runMutation">,
+export async function callMyFunction(
+  ctx: MutationCtx | ActionCtx,
   component: ComponentApi,
-  value: number,
+  args: ...
 ) {
   // You can create function handles, add shared utilities,
-  // or do any processing that needs to run in the app's environment
-  await ctx.runMutation(component.public.add, { value });
+  // or do any processing that needs to run in the app's environment.
+  const functionHandle = await createFunctionHandle(args.someFn);
+  const someArg = process.env.SOME_ARG;
+  await ctx.runMutation(component.call.fn, {
+    ...args,
+    someArg,
+    functionHandle,
+  });
 }
+
+// Useful types for functions that only need certain capabilities.
+type MutationCtx = Pick<GenericMutationCtx<GenericDataModel>, "runMutation">;
+type ActionCtx = Pick<
+  GenericActionCtx<GenericDataModel>,
+  "runQuery" | "runMutation" | "runAction"
+>;
 ```
 
 Note: we only use `ctx.runMutation`, so we can use `Pick` to select a type that only includes that function. This allows users to call it even if their `ctx` is not exactly the standard MutationCtx. It also means it can be called from an Action, as ActionCtx also includes `ctx.runMutation`. If your function also needs auth or storage, you can adjust what you `Pick`.
+
+### Re-exporting component functions[​](#re-exporting-component-functions "Direct link to Re-exporting component functions")
+
+Sometimes you want to provide ready-made functions that apps can directly re-export to their public API. This is useful when you want to give apps the ability to expose your component's functionality to React clients or the public internet.
+
+The most straightforward way to do this is have the user define their own functions that call into the component.
+
+This allows the app to choose to add auth, rate limiting, etc.
+
+convex/counter.ts
+
+TS
+
+```
+export const add = mutation({
+  args: { value: v.number() },
+  returns: v.null(),
+  handler: async (ctx, args) => {
+    // The app can authenticate the user here if needed
+    await ctx.runMutation(components.counter.add, args);
+  },
+});
+```
+
+This is the recommended pattern, as it makes it clear to the user how the request is being authenticated. However, if you need to re-export a lot of functions, you can use the next pattern.
+
+#### Re-mounting an API[​](#re-mounting-an-api "Direct link to Re-mounting an API")
+
+Code in your `src/client/index.ts` can export these functions:
+
+```
+import type { Auth } from "convex/server";
+
+// In your component's src/client/index.ts
+export function makeCounterAPI(
+  component: ComponentApi,
+  options: {
+    // Important: provide a way for the user to authenticate these requests
+    auth: (ctx: { auth: Auth }, operation: "read" | "write") => Promise<string>;
+  },
+) {
+  return {
+    add: mutation({
+      args: { value: v.number() },
+      handler: async (ctx, args) => {
+        await options.auth(ctx, "write");
+        return await ctx.runMutation(component.public.add, args);
+      },
+    }),
+
+    get: query({
+      args: {},
+      handler: async (ctx) => {
+        await options.auth(ctx, "read");
+        return await ctx.runQuery(component.public.get, {});
+      },
+    }),
+  };
+}
+```
+
+Then apps can mount these in their own API:
+
+```
+// In the app's convex/counter.ts
+import { makeCounterAPI } from "@convex-dev/counter";
+import { components } from "./_generated/server.js";
+
+export const { add, get } = makeCounterAPI(components.counter, {
+  auth: async (ctx, operation) => {
+    const userId = await getAuthUserId(ctx);
+    // Check if the user has permission to perform the operation
+    if (operation === "write" && !userId) {
+      throw new Error("User not authenticated");
+    }
+    return userId;
+  },
+});
+```
+
+This pattern is also useful for components that need to provide functions with specific signatures for integration purposes.
+
+Here's a real-world [example](https://github.com/get-convex/prosemirror-sync/blob/91e19d5e5a2a272d44f3a31c9171e111dc98676c/src/client/index.ts#L171C4-L173C6) from the [ProseMirror component](https://www.convex.dev/components/prosemirror-sync) that exports ready-made functions.
 
 ### Class-Based Clients[​](#class-based-clients "Direct link to Class-Based Clients")
 
@@ -24098,7 +24528,9 @@ For more complex components, a class-based client provides a stateful interface 
 import Foo from "@convex-dev/foo";
 import { components } from "./_generated/server.js";
 
-const foo = new Foo(components.foo);
+const foo = new Foo(components.foo, {
+  maxShards: 10,
+});
 ```
 
 **With configuration options:**
@@ -24106,13 +24538,14 @@ const foo = new Foo(components.foo);
 Classes typically accept the component reference as their first argument, with optional configuration as the second:
 
 ```
-export class FooClient {
+export class Foo {
   private apiKey: string;
 
   constructor(
     public component: ComponentApi,
     options?: {
       maxShards?: number;
+      // Named after the environment variable it overrides, for clarity.
       FOO_AUTH_KEY?: string;
     },
   ) {
@@ -24135,81 +24568,22 @@ export const myQuery = query({
     const foo = new Foo(components.foo, {
       apiKey: args.customApiKey,
     });
-    await foo.bar();
+    await foo.count(ctx);
   },
 });
 ```
 
-This is especially useful when working with custom function wrappers:
+## Building and publishing NPM package components[​](#building-and-publishing-npm-package-components "Direct link to Building and publishing NPM package components")
 
-```
-const myCustomQuery = customQuery(
-  query,
-  customCtx((ctx) => {
-    const foo = new Foo(ctx, components.foo, { optionA: true });
-    return { foo };
-  }),
-);
+### Build process[​](#build-process "Direct link to Build process")
 
-export const myQuery = myCustomQuery({
-  handler: async (ctx, args) => {
-    await ctx.foo.bar();
-  },
-});
-```
+While developing a component that will be bundled, the example app that installs and exercises it will import the bundled version of the component. This helps ensure that the code you are testing matches the code that will be published.
 
-### Re-Mountable API Functions[​](#re-mountable-api-functions "Direct link to Re-Mountable API Functions")
+However, that means `npx convex dev` cannot detect where the original source code is located for the component, and will not automatically generate the code for the component. When developing a component that will be bundled, you need to run a separate build process to generate the component's `_generated` directory.
 
-Sometimes you want to provide ready-made functions that apps can directly re-export to their public API. This is useful when you want to give apps the ability to expose your component's functionality to React clients or the public internet.
+The component authoring template will automatically generate the code for the component when running `npm run dev`. You can see the setup in the [template's `package.json` scripts](https://github.com/get-convex/templates/blob/main/template-component/package.json).
 
-Code in your `src/client/index.ts` can export these functions:
-
-```
-// In your component's src/client/index.ts
-export function makeCounterAPI(component: ComponentApi) {
-  return {
-    add: query({
-      args: { value: v.number() },
-      handler: async (ctx, args) => {
-        return await ctx.runQuery(component.public.add, args);
-      },
-    }),
-
-    get: query({
-      args: {},
-      handler: async (ctx) => {
-        return await ctx.runQuery(component.public.get, {});
-      },
-    }),
-  };
-}
-```
-
-Then apps can mount these in their own API:
-
-```
-// In the app's convex/counter.ts
-import { makeCounterAPI } from "@convex-dev/counter";
-import { components } from "./_generated/server.js";
-
-export const { add, get } = makeCounterAPI(components.counter);
-```
-
-This pattern is also useful for components that need to provide functions with specific signatures for integration purposes.
-
-Here's a real-world [example](https://github.com/get-convex/prosemirror-sync/blob/91e19d5e5a2a272d44f3a31c9171e111dc98676c/src/client/index.ts#L171C4-L173C6) from the ProseMirror component that exports ready-made functions.
-
-## Codegen[​](#codegen "Direct link to Codegen")
-
-### Sibling Components[​](#sibling-components "Direct link to Sibling Components")
-
-In order to get up-to-date codegen, all you need to do is run `npx convex dev --typecheck-components` from your root component. This automatically grabs the types from your component and puts them in your top-level app.
-
-Note that the component needs to be installed in your app's `convex/convex.config.ts`, and the installation must point at the component's source (TypeScript files), not compiled `.js` files.
-
-### NPM Components[​](#npm-components "Direct link to NPM Components")
-
-When using the component authoring [template](https://github.com/get-convex/templates/tree/main/template-component) for NPM packages, you need to run `npm run dev` to generate code. The template automatically handles this, but if you're setting up your own build process, you'll need to run the following commands with their own file watchers:
+If you're setting up your own build process, you'll need to run the following commands with their own file watchers:
 
 1. **Component codegen**: Generate code for the component itself
 
@@ -24223,115 +24597,121 @@ When using the component authoring [template](https://github.com/get-convex/temp
    npm run build # Your build command (e.g., tsc, esbuild, etc.)
    ```
 
-3. **Example app codegen & deploy**: Generate code for and deploy the example app
+3. **Example app codegen & deploy**: Generate code for the example app and deploy it app
 
    ```
-   npx convex dev --typecheck-components
+   npx convex dev --typecheck-components # optionally type-check the components
    ```
 
-**Note on ordering:** The typical workflow is: component codegen → build the package → example app codegen & deploy. This is a recommended convention followed by the template, but the key requirement is that the component must be built and available before the example app tries to import it.
+**Note on ordering:** The ideal ordering is: component codegen → build the package → example app `convex dev` runs. This is a recommended convention followed by the template to avoid builds racing with each other, but the key requirement is that the component must be built and available before the example app tries to import it.
 
-## Environment Variables and Authentication[​](#environment-variables-and-authentication "Direct link to Environment Variables and Authentication")
+### Entry points[​](#entry-points "Direct link to Entry points")
 
-Components run in isolated JavaScript contexts, which means they don't have access to certain app-level resources. Understanding these limitations is important when building components.
+When publishing a component on NPM, you will need to expose all the relevant entry points to be used in your project:
 
-### The Isolation Model[​](#the-isolation-model "Direct link to The Isolation Model")
+* `@your/package` exports types, classes, and constants used to interact with the component from within their app's code. This is optional, but common.
+* `@your/package/convex.config.js` exposes the component's config.
+* `@your/package/_generated/component.js` exports the `ComponentApi` type, which describes the component's types from the point of view of app it's used in.
+* `@your/package/test` for utilities to use the component with `convex-test`.
 
-Each component's function execution gets a separate JavaScript context. This means:
+[The template’s package.json](https://github.com/get-convex/templates/blob/main/template-component/package.json) does this for you, but if you're setting up your own build process, you'll need to set this up in your package.json.
 
-* **No environment variables**: Components cannot access `process.env`
-* **No authentication context**: Components cannot access `ctx.auth`
-* **Separate global variables**: Even globals are scoped per component
+### Local package resolution for development[​](#local-package-resolution-for-development "Direct link to Local package resolution for development")
 
-This isolation is by design: it ensures components are truly modular and don't have hidden dependencies on the parent app's environment.
+When developing a component, you generally want to be importing the component's code in the same way that apps will import it, e.g. `import {} from "@your/package"`. To achieve this without having to install the package from NPM in the example app, follow the template's project structure:
 
-### Bridging the Gap with Client Code[​](#bridging-the-gap-with-client-code "Direct link to Bridging the Gap with Client Code")
+1. In the root of the project, have the `package.json` with the package name matching the `@your/package` name. This causes imports for that name to resolve to the `package.json`’s `exports`.
+2. In the `exports` section of the `package.json`, map the aforementioned entry points to the bundled files, generally in the `dist` directory. This means imports from the package name will resolve to the bundled files.
+3. Have a single package.json file and node\_modules directory in the root of the project, so the example app will resolve to the package name by default. This will also avoid having multiple versions of `convex` referenced by the library vs. the example app. To add dependencies used only by the example app, add them as `devDependencies` in the `package.json`.
 
-The solution is to pass app-level data through function arguments. Your client code in `src/client/` acts as the bridge:
+### Publishing to NPM[​](#publishing-to-npm "Direct link to Publishing to NPM")
 
-* `src/client/` runs in the **app's environment** and has access to `process.env`, `ctx.auth`, etc.
-* `src/component/` runs in the **component's isolated environment** and only receives what you explicitly pass to it
+To publish a component on NPM, check out [PUBLISHING.md](https://github.com/get-convex/templates/blob/main/template-component/PUBLISHING.md).
 
-Your client code can handle passing these implicitly, so component users don't have to think about it.
+## Testing[​](#testing "Direct link to Testing")
 
-### Example: Environment Variables[​](#example-environment-variables "Direct link to Example: Environment Variables")
+### Testing implementations[​](#testing-implementations "Direct link to Testing implementations")
 
-Here's a pattern for handling API keys or other environment variables. The client stores the value and passes it with each call:
+To test components, you can use the [`convex-test` library](/testing/convex-test.md). The main difference is that you must provide the schema and modules to the test instance.
+
+component/some.test.ts
+
+TS
 
 ```
-class Counter {
-  private apiKey: string;
+import { test } from "vitest";
+import { convexTest } from "convex-test";
+import schema from "./schema.ts";
+const modules = import.meta.glob("./**/*.ts");
 
-  constructor(
-    private component: ComponentApi,
-    options?: {
-      API_KEY?: string;
-    },
-  ) {
-    // Client runs in app environment, so it can access process.env
-    this.apiKey = options?.API_KEY ?? process.env.API_KEY!;
-  }
-
-  async count(ctx: RunQueryCtx) {
-    // Pass the API key as an argument to the component
-    return await ctx.runQuery(this.component.public.count, {
-      API_KEY: this.apiKey,
-    });
-  }
+export function initConvexTest() {
+  const t = convexTest(schema, modules);
+  return t;
 }
-```
 
-This keeps the common case simple (just set the env var) while allowing overrides when needed.
-
-### Example: Authentication[​](#example-authentication "Direct link to Example: Authentication")
-
-Similarly, for authentication, your client can extract the user identity from `ctx.auth` and pass it to the component:
-
-```
-class Counter {
-  constructor(private component: ComponentApi) {}
-
-  async count(ctx: QueryCtx) {
-    // Client has access to ctx.auth, component does not
-    const identity = await ctx.auth.getUserIdentity();
-
-    return await ctx.runQuery(this.component.public.count, {
-      userId: identity?.subject,
-      // Or pass the full identity if the component needs it
-      auth: identity,
-    });
-  }
-}
-```
-
-Your component's functions should then accept these as explicit arguments:
-
-```
-// In your component's src/component/functions.ts
-export const count = query({
-  args: {
-    userId: v.optional(v.string()),
-  },
-  handler: async (ctx, args) => {
-    // Now the component can use the userId
-    if (!args.userId) {
-      throw new Error("Not authenticated");
-    }
-    // ... rest of logic
-  },
+test("Test something with a local component", async () => {
+  const t = initConvexTest();
+  // Test like you would normally.
+  await t.run(async (ctx) => {
+    await ctx.db.insert("myComponentTable", { name: "test" });
+  });
 });
 ```
 
-This explicit passing makes it clear what data flows between the app and component, making your component easier to understand and test.
+If your component has child components, see the [Testing components](/components/using.md#testing-components) section in the Using Components documentation.
+
+### Testing the API and client code[​](#testing-the-api-and-client-code "Direct link to Testing the API and client code")
+
+To test the functions that are exported from the component to run in the app's environment, you can follow the same approach as in [Using Components](/components/using.md#testing-components) and test it from an app that uses the component.
+
+The template component includes an example app in part for this purpose: to exercise the component's bundled code as it will be used by apps installing it.
+
+### Exporting test helpers[​](#exporting-test-helpers "Direct link to Exporting test helpers")
+
+Most components export testing helpers to make it easy to register the component with the test instance. Here is an example from the [template component’s `/test` entrypoint](https://github.com/get-convex/templates/blob/main/template-component/src/test.ts):
+
+```
+/// <reference types="vite/client" />
+import type { TestConvex } from "convex-test";
+import type { GenericSchema, SchemaDefinition } from "convex/server";
+import schema from "./component/schema.js";
+const modules = import.meta.glob("./component/**/*.ts");
+
+/**
+ * Register the component with the test convex instance.
+ * @param t - The test convex instance, e.g. from calling `convexTest`.
+ * @param name - The name of the component, as registered in convex.config.ts.
+ */
+export function register(
+  t: TestConvex<SchemaDefinition<GenericSchema, boolean>>,
+  name: string = "sampleComponent",
+) {
+  t.registerComponent(name, schema, modules);
+}
+export default { register, schema, modules };
+```
+
+For NPM packages, this is exposed as `@your/package/test` in the package's `package.json`:
+
+```
+{
+  ...
+  "exports": {
+    ...
+    "./test": "./src/test.ts",
+    ...
+  }
+}
+```
 
 
 ---
 
 # Understanding Components
 
-Convex components are self-contained backend modules that bundle functions, schemas, and data together. They let you add complex functionality to your app—like authentication, rate limiting, or document collaboration—without implementing everything from scratch.
+Convex Components are self-contained backend modules that bundle functions, schemas, and data together. They let you add complex functionality to your app—like authentication, rate limiting, or document collaboration—without implementing everything from scratch.
 
-If you've worked with modern web development, you've likely encountered similar ideas in different forms. Components draw inspiration from frontend components, third-party APIs, and service-oriented architectures. The key difference is that Convex components run within your backend, giving you the composability combined with the persistence and reliability of backend services.
+If you've worked with modern web development, you've likely encountered similar ideas in different forms. Components draw inspiration from frontend components, third-party APIs, and service-oriented architectures. The key difference is that Convex Components run within your backend, giving you composability combined with the persistence and reliability of backend services.
 
 The following diagram shows how data and function access works in the component ecosystem. Arrows from one element to another represent that an element has access to the functions or data of the other element.
 
@@ -24351,10 +24731,10 @@ Typically, libraries require configuring a third party service to add stateful o
 
 Similar to regular npm libraries, Convex Components include functions, type safety, and are called from your code. However, they also provide extra guarantees.
 
-* Similar to a third-party API, components can't read data for which you don't provide access. This includes database tables, file storage, environment variables, scheduled functions, etc.
-* Similar to service-oriented architecture, functions in components are run in an isolated environment, so writes to global variables and patches system behavior aren't shared between components.
-* Similar to a monolith architecture, data changes commit transactionally across calls to components, without having to reason about complicated distributed commit protocols or data inconsistencies. You'll never have a component commit data but have the calling code roll back.
-* In addition, each mutation call to a component is a sub-transaction isolated from other calls, allowing you to safely catch errors thrown by components. It also allows component authors to easily reason about state changes without races, and trust that a thrown exception will always roll back the Component's sub-transaction. [Read more](/components/using.md#transactions).
+* Similar to an external service, code inside a component can't read data that is not explicitly provided to it. This includes database tables, file storage, environment variables, scheduled functions, etc. Conversely, the component's data cannot be directly mutated by the main app, allowing full separation of concerns.
+* Similar to a service-oriented architecture, functions in components are run in an isolated environment, so writes to global variables and patches to system behavior are not shared between components.
+* Similar to a monolithic architecture, data changes commit transactionally across calls to components, without having to reason about complicated distributed commit protocols or data inconsistencies. You'll never have a component commit data but have the calling code roll back.
+* In addition, each mutation call to a component is a sub-transaction isolated from other calls, allowing you to safely catch errors thrown by components. This also allows component authors to easily reason about state changes without races, and trust that a thrown exception will always roll back the component's sub-transaction. [Read more](/components/using.md#transactions).
 
 ### Encapsulation[​](#encapsulation "Direct link to Encapsulation")
 
@@ -24369,36 +24749,36 @@ Being able to reason about your code is essential to scaling a codebase. Compone
 
 # Using Components
 
-Convex components add new features to your backend in their own sandbox with their own functions, schema and data, scheduled functions and all other fundamental Convex features.
+Convex Components add new features to your backend in their own sandbox with their own functions, schema and data, scheduled functions and all other fundamental Convex features.
 
-You can see the full list of components in the [directory](https://convex.dev/components). Each component README provides full instructions on how to install and use them.
+You can see the full list of components in the [directory](https://convex.dev/components).
 
-This doc will go through common patterns on how to install and use Components.
+## Installation[​](#installation "Direct link to Installation")
 
-## Installing Components[​](#installing-components "Direct link to Installing Components")
-
-We'll use the [Sharded Counter](https://www.npmjs.com/package/@convex-dev/sharded-counter) component as an example.
+We'll use the [Agent](https://www.npmjs.com/package/@convex-dev/agent) component as an example.
 
 1. Install from \`npm\`
 
-   Install the relevant package from npm
-
    ```
-   npm i @convex-dev/sharded-counter
+   npm i @convex-dev/agent
    ```
 
 2. Add the component to your app
 
-   Create or update the `convex.config.ts` file in your app's `convex/` folder and install the component by calling `use`:
+   Create or update the `convex.config.ts` file in your app's `convex/` folder and install the component by calling `use`. Multiple instances of the same component can be installed by calling `use` multiple times with different names. Each will have their own tables and functions.
+
+   convex/convex.config.ts
+
+   TS
 
    ```
-   // convex/convex.config.ts
    import { defineApp } from "convex/server";
-   import shardedCounter from "@convex-dev/sharded-counter/convex.config";
+   import agent from "@convex-dev/agent/convex.config.js";
 
    const app = defineApp();
 
-   app.use(shardedCounter);
+   app.use(agent);
+   app.use(agent, { name: "agent2" });
    //... Add other components here
 
    export default app;
@@ -24406,17 +24786,23 @@ We'll use the [Sharded Counter](https://www.npmjs.com/package/@convex-dev/sharde
 
 3. Run convex dev
 
-   Make sure the convex dev cli is running to ensure the component is registered with your backend and the necessary code is generated.
+   The `convex dev` CLI command will generate code necessary for using the component.
 
    ```
    npx convex dev
    ```
 
-4. Use the provided component API
+4. Access the component through its API
 
-   Each component has its own API. Check out each component's README file for more details on its usage.
+   Each instance of a component has its API listed under the `components` object by its name. Some components wrap this API with classes or functions. Check out each component's documentation for more details on its usage.
 
-## Component functions[​](#component-functions "Direct link to Component functions")
+   ```
+   import { components } from "./_generated/api.js";
+
+   const agent = new Agent(components.agent, { ... });
+   ```
+
+## Using the component's API directly[​](#using-the-components-api-directly "Direct link to Using the component's API directly")
 
 Though components may expose higher level TypeScript APIs, under the hood they are called via normal Convex functions over the component sandbox boundary.
 
@@ -24425,18 +24811,22 @@ Queries, mutations, and action rules still apply - queries can only call compone
 Component functions can be called from your application using the following syntax:
 
 ```
-import { mutation, query } from "./_generated/server";
+import { internalAction } from "./_generated/server";
 import { components } from "./_generated/api";
 
-export const abc = query({
-  args: {},
-  handler: async (ctx) => {
-    await ctx.runMutation(components.foo.bar, args);
+export const myAction = internalAction({
+  args: { threadId: v.string() },
+  handler: async (ctx, args) => {
+    // Call the component's API to get the thread status.
+    const { status } = await ctx.runQuery(components.agent.threads.getThread, {
+      threadId: args.threadId,
+    });
+    //...
   },
 });
 ```
 
-This is often abstracted away with functions and methods exposed by the component's client library. For instance `ShardedCounter` from `@convex-dev/sharded-counter` is initialized with `components.foo`, and its methods take in `ctx`.
+Some components abstract away the component's API. For instance, the `Agent` class from `@convex-dev/agent` is initialized with `components.agent`, and its methods take in `ctx` so they can call the component's API internally. [Learn more about the Agent Component here](/agents.md).
 
 ## Transactions[​](#transactions "Direct link to Transactions")
 
@@ -24462,6 +24852,72 @@ The calling mutation, on the other hand, could also decide to ignore the rate li
 You can see your component’s data, functions, files, logs, and other info using the dropdown in the Dashboard. You can also use the dropdown to exclude info from certain components.
 
 ![Screenshot of the component dropdown](/screenshots/component_dropdown.png)
+
+## Testing components[​](#testing-components "Direct link to Testing components")
+
+When writing tests with [`convex-test`](/testing/convex-test.md), that use components, you must register the component with the test instance. This tells it what schema to validate and where to find the component source code. Most components export convenient helper functions on `/test` to make this easy:
+
+convex/some.test.ts
+
+TS
+
+```
+import agentTest from "@convex-dev/agent/test";
+import { expect, test } from "vitest";
+import { convexTest } from "convex-test";
+import { components } from "./_generated/api";
+import { createThread } from "@convex-dev/agent";
+
+// Define this once, often in a shared test helper file.
+export function initConvexTest() {
+  const t = convexTest();
+  agentTest.register(t);
+  return t;
+}
+
+test("Agent createThread", async () => {
+  const t = initConvexTest();
+
+  const threadId = await t.run(async (ctx) => {
+    // Calling functions that use ctx and components.agent
+    return await createThread(ctx, components.agent, {
+      title: "Hello, world!",
+    });
+  });
+  // Calling functions directly on the component's API
+  const thread = await t.query(components.agent.threads.getThread, {
+    threadId,
+  });
+  expect(thread).toMatchObject({
+    title: "Hello, world!",
+  });
+});
+```
+
+If you need to register the component yourself, you can do so by passing the component's schema and modules to the test instance.
+
+convex/manual.test.ts
+
+TS
+
+```
+/// <reference types="vite/client" />
+import { test } from "vitest";
+import { convexTest } from "convex-test";
+import schema from "./path/to/component/schema.ts";
+const modules = import.meta.glob("./path/to/component/**/*.ts");
+
+test("Test something with a local component", async () => {
+  const t = convexTest();
+  t.registerComponent("componentName", schema, modules);
+
+  await t.run(async (ctx) => {
+    await ctx.runQuery(components.componentName.someQuery, {
+      arg: "value",
+    });
+  });
+});
+```
 
 ## Log Streams[​](#log-streams "Direct link to Log Streams")
 
@@ -24687,7 +25143,7 @@ When new files are uploaded, the UI will reference the name of the recently uplo
 
 # Functions
 
-![Functions Dashboard View](/assets/images/functions-0c27a5b23883cc955c799abe6442f280.png)
+![Functions Dashboard View](/assets/images/functions-4e088bb973a16398dd86dbe3391dafc3.png)
 
 The [functions page](https://dashboard.convex.dev/deployment/functions) shows all currently deployed Convex functions.
 
@@ -25398,7 +25854,7 @@ const userId = await ctx.db.insert("users", { name: "Michael Jordan" });
 You can use this ID to efficiently read a single document using the `get` method:
 
 ```
-const retrievedUser = await ctx.db.get(userId);
+const retrievedUser = await ctx.db.get("users", userId);
 ```
 
 You can access the ID of a document in the [`_id` field](/database/types.md#system-fields):
@@ -25410,7 +25866,7 @@ const userId = retrievedUser._id;
 Also, this same ID can be used to update that document in place:
 
 ```
-await ctx.db.patch(userId, { name: "Steph Curry" });
+await ctx.db.patch("users", userId, { name: "Steph Curry" });
 ```
 
 Convex generates an [`Id`](/generated-api/data-model.md#id) TypeScript type based on your [schema](/database/schemas.md) that is parameterized over your table names:
@@ -25437,7 +25893,7 @@ await ctx.db.insert("books", {
 You can follow references with `ctx.db.get`:
 
 ```
-const user = await ctx.db.get(book.ownerId);
+const user = await ctx.db.get("users", book.ownerId);
 ```
 
 And [query for documents](/database/reading-data/.md) with a reference:
@@ -25492,7 +25948,7 @@ export const getTask = query({
     taskId: v.id("tasks"),
   },
   handler: async (ctx, args) => {
-    const task = await ctx.db.get(args.taskId);
+    const task = await ctx.db.get("tasks", args.taskId);
     // ...
   },
 });
@@ -25724,7 +26180,7 @@ export const listWithExtraArg = query({
   handler: async (ctx, args) => {
     return await ctx.db
       .query("messages")
-      .filter((q) => q.eq(q.field("author"), args.author))
+      .withIndex("by_author", (q) => q.eq("author", args.author))
       .order("desc")
       .paginate(args.paginationOpts);
   },
@@ -25907,7 +26363,7 @@ import { v } from "convex/values";
 export const getTask = query({
   args: { taskId: v.id("tasks") },
   handler: async (ctx, args) => {
-    const task = await ctx.db.get(args.taskId);
+    const task = await ctx.db.get("tasks", args.taskId);
     // do something with `task`
   },
 });
@@ -26098,9 +26554,9 @@ import { v } from "convex/values";
 export const eventAttendees = query({
   args: { eventId: v.id("events") },
   handler: async (ctx, args) => {
-    const event = await ctx.db.get(args.eventId);
+    const event = await ctx.db.get("events", args.eventId);
     return Promise.all(
-      (event?.attendeeIds ?? []).map((userId) => ctx.db.get(userId)),
+      (event?.attendeeIds ?? []).map((userId) => ctx.db.get("users", userId)),
     );
   },
 });
@@ -26496,12 +26952,12 @@ For example to query for "messages in `channel` **not** created by me" you could
 ```
 const messages = await ctx.db
   .query("messages")
-  .withIndex("by_channel", q => q.eq("channel", channel))
-  .filter(q => q.neq(q.field("user"), myUserId)
+  .withIndex("by_channel", (q) => q.eq("channel", channel))
+  .filter((q) => q.neq(q.field("user"), myUserId))
   .collect();
 ```
 
-In this case the performance of this query will be based on how many messages are in the channel. Convex will consider each message in the channel and only return the messages where the `user` field matches `myUserId`.
+In this case the performance of this query will be based on how many messages are in the channel. Convex will consider each message in the channel and only return the messages where the `user` field doesn't match `myUserId`.
 
 ## Sorting with indexes[​](#sorting-with-indexes "Direct link to Sorting with indexes")
 
@@ -26511,7 +26967,7 @@ The order of the columns in the index dictates the priority for sorting. The val
 
 Since Convex automatically includes `_creationTime` as the last column in all indexes, `_creationTime` will always be the final tie breaker if all other columns in the index are equal.
 
-For example, `by_channel_user` includes `channel`, `user`, and `\_creationTime`. So queries on `messages` that use `.withIndex("by_channel_user")` will be sorted first by channel, then by user within each channel, and finally by the creation time.
+For example, `by_channel_user` includes `channel`, `user`, and `_creationTime`. So queries on `messages` that use `.withIndex("by_channel_user")` will be sorted first by channel, then by user within each channel, and finally by the creation time.
 
 Sorting with indexes allows you to satisfy use cases like displaying the top `N` scoring users, the most recent `N` transactions, or the most `N` liked messages.
 
@@ -27131,7 +27587,7 @@ export default mutation({
   handler: async (ctx) => {
     const preferencesId = await ctx.db.insert("preferences", {});
     const userId = await ctx.db.insert("users", { preferencesId });
-    await ctx.db.patch(preferencesId, { userId });
+    await ctx.db.patch("preferences", preferencesId, { userId });
   },
 });
 ```
@@ -27239,7 +27695,7 @@ The TypeScript value `undefined` is not a valid Convex value, so it cannot be us
      if (args.a === null) {
        args.a = undefined;
      }
-     await ctx.db.patch(id, args);
+     await ctx.db.patch(tableName, id, args);
      ```
 
 6. Functions that return a plain `undefined`/`void` are treated as if they returned `null`.
@@ -27311,17 +27767,17 @@ export const updateTask = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
     const { id } = args;
-    console.log(await ctx.db.get(id));
+    console.log(await ctx.db.get("tasks", id));
     // { text: "foo", status: { done: true }, _id: ... }
 
     // Add `tag` and overwrite `status`:
-    await ctx.db.patch(id, { tag: "bar", status: { archived: true } });
-    console.log(await ctx.db.get(id));
+    await ctx.db.patch("tasks", id, { tag: "bar", status: { archived: true } });
+    console.log(await ctx.db.get("tasks", id));
     // { text: "foo", tag: "bar", status: { archived: true }, _id: ... }
 
     // Unset `tag` by setting it to `undefined`
-    await ctx.db.patch(id, { tag: undefined });
-    console.log(await ctx.db.get(id));
+    await ctx.db.patch("tasks", id, { tag: undefined });
+    console.log(await ctx.db.get("tasks", id));
     // { text: "foo", status: { archived: true }, _id: ... }
   },
 });
@@ -27341,12 +27797,12 @@ export const replaceTask = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
     const { id } = args;
-    console.log(await ctx.db.get(id));
+    console.log(await ctx.db.get("tasks", id));
     // { text: "foo", _id: ... }
 
     // Replace the whole document
-    await ctx.db.replace(id, { invalid: true });
-    console.log(await ctx.db.get(id));
+    await ctx.db.replace("tasks", id, { invalid: true });
+    console.log(await ctx.db.get("tasks", id));
     // { invalid: true, _id: ... }
   },
 });
@@ -27367,7 +27823,7 @@ import { v } from "convex/values";
 export const deleteTask = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
-    await ctx.db.delete(args.id);
+    await ctx.db.delete("tasks", args.id);
   },
 });
 ```
@@ -27425,7 +27881,7 @@ export const bulkInsertProducts = mutation({
 
 Database migrations are done through the migration component. The component is designed to run online migrations to safely evolve your database schema over time. It allows you to resume from failures, and validate changes with dry runs.
 
-[Convex component](https://www.convex.dev/components/migrations)
+[Convex Component](https://www.convex.dev/components/migrations)
 
 ### [Migrations](https://www.convex.dev/components/migrations)
 
@@ -27495,6 +27951,42 @@ Created in the dashboard under team settings for any team you can manage. Use th
 
 ---
 
+# Create log stream
+
+```
+POST 
+/create_log_stream
+```
+
+Create a new log stream for the deployment. Errors if a log stream of the given type already exists.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Delete log stream
+
+```
+POST 
+/delete_log_stream/:id
+```
+
+Delete the deployment's log stream with the given id.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
 # Get canonical URLs
 
 ```
@@ -27511,6 +28003,24 @@ Get the canonical URLs for a deployment.
 
 ---
 
+# Get log stream
+
+```
+GET 
+/get_log_stream/:id
+```
+
+Get the config for a specific log stream by id.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
 # List environment variables
 
 ```
@@ -27519,6 +28029,72 @@ GET
 ```
 
 Get all environment variables in a deployment. In the future this might not include "secret" environment variables.
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# List log streams
+
+```
+GET 
+/list_log_streams
+```
+
+List configs for all existing log streams in a deployment.
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Pause deployment
+
+```
+POST 
+/pause_deployment
+```
+
+Disables a deployment without deleting any data. The deployment will not operate until it is unpaused. While a deployment is paused, new functions calls will return an error, scheduled jobs will queue and run when the deployment is resumed, and cron jobs will be skipped. This means that no function calls or bandwidth usage will be charged while the deployment is paused, but storage costs will still apply.
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Rotate webhook log stream secret
+
+```
+POST 
+/rotate_webhook_secret/:id
+```
+
+Rotate the secret for the webhook log stream.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Unpause deployment
+
+```
+POST 
+/unpause_deployment
+```
+
+Reenables a deployment that was previously paused. The deployment will resume normal operation, including any scheduled jobs that were queued while paused.
 
 ## Responses[​](#responses "Direct link to Responses")
 
@@ -27563,6 +28139,24 @@ Update one or many environment variables in a deployment. This will invalidate a
 
 ---
 
+# Update log stream
+
+```
+POST 
+/update_log_stream/:id
+```
+
+Update an existing log stream for the deployment. Omit a field to keep the existing value, and use `null` to unset a field.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
 # Deployment Platform API
 
 info
@@ -27584,7 +28178,7 @@ Whatever type of key, add the string `"Convex "` to the front.
 ```
 const token = "ey...0=";
 const response = await fetch(
-  "https://happy-otter-123.convex.cloud/api/v1/list_environment_variables
+  "https://happy-otter-123.convex.cloud/api/v1/list_environment_variables",
   {
     headers: {
       Authorization: `Convex ${token}`,
@@ -27615,8 +28209,8 @@ A mutation `updateCounter` always updates the same document:
 export const updateCounter = mutation({
   args: {},
   handler: async (ctx) => {
-    const doc = await ctx.db.get(process.env.COUNTER_ID);
-    await ctx.db.patch(doc._id, { value: doc.value + 1 });
+    const doc = await ctx.db.get("counts", process.env.COUNTER_ID);
+    await ctx.db.patch("counts", doc._id, { value: doc.value + 1 });
   },
 });
 ```
@@ -27640,7 +28234,7 @@ export const writeCount = mutation({
   },
   handler: async (ctx, args) => {
     const tasks = await ctx.db.query("tasks").collect();
-    await ctx.db.patch(args.target, { value: tasks });
+    await ctx.db.patch("tasks", args.target, { value: tasks });
   },
 });
 
@@ -27673,12 +28267,104 @@ To fix this issue:
 * Learn more about [optimistic concurrency control](/database/advanced/occ.md).
 * See this [Stack post](https://stack.convex.dev/waitlist) for an example of designing an app to avoid mutation conflicts.
 
+### Related Components[​](#related-components "Direct link to Related Components")
+
+[Convex Component](https://www.convex.dev/components/workpool)
+
+### [Workpool](https://www.convex.dev/components/workpool)
+
+[Workpool give critical tasks priority by organizing async operations into separate, customizable queues.](https://www.convex.dev/components/workpool)
+
+[Convex Component](https://www.convex.dev/components/sharded-counter)
+
+### [Sharded Counter](https://www.convex.dev/components/sharded-counter)
+
+[High-throughput counter enables denormalized counts without write conflicts by spreading writes over multiple documents.](https://www.convex.dev/components/sharded-counter)
+
+[Convex Component](https://www.convex.dev/components/action-cache)
+
+### [Action Cache](https://www.convex.dev/components/action-cache)
+
+[Cache frequently run actions. By leveraging the \`force\` parameter to keep the cache populated, you can ensure that the cache is always up to date and avoid data races.](https://www.convex.dev/components/action-cache)
+
+## Undefined validator[​](#undefined-validator "Direct link to Undefined validator")
+
+This error occurs when a validator passed to a Convex function definition or schema is `undefined`. This most commonly happens due to circular imports (also known as import cycles) in TypeScript.
+
+### Example[​](#example "Direct link to Example")
+
+You have two files that import from each other:
+
+convex/validators.ts
+
+TS
+
+```
+import { v } from "convex/values";
+import { someUtility } from "./functions";
+
+export const myValidator = v.object({
+  name: v.string(),
+});
+
+// Uses someUtility somewhere...
+```
+
+convex/functions.ts
+
+TS
+
+```
+import { mutation } from "./_generated/server";
+// Both functions.ts and validators.ts import from each other.
+import { myValidator } from "./validators";
+
+export function someUtility() {
+  // ...
+}
+
+export const myMutation = mutation({
+  args: {
+    data: myValidator, // <-- May be undefined due to import cycle
+  },
+  handler: async (ctx, args) => {
+    // ...
+  },
+});
+```
+
+When `functions.ts` is loaded, it imports from `validators.ts`, which in turn tries to import from `functions.ts`. Since `functions.ts` hasn't finished the `import` statement yet, `myValidator` is still `undefined`, causing the `mutation` builder to throw an error.
+
+Note: the value may be defined at runtime if you try to log it. This is only a quirk of TypeScript’s import time behavior.
+
+### Cycles involving `schema.ts`[​](#cycles-involving-schemats "Direct link to cycles-involving-schemats")
+
+A common way to accidentally introduce this kind of cycle is through your `schema.ts` file. Larger apps often define validators or whole tables in other files and import them into `schema.ts`.
+
+If these files import from `schema.ts` or depend on files that do, you have a cycle.
+
+```
+schema.ts → validators.ts → someFile.ts → schema.ts
+```
+
+To break the cycle, define validators in "pure" files that have minimal dependencies, and import them into the places they are needed.
+
+### Investigate circular imports[​](#investigate-circular-imports "Direct link to Investigate circular imports")
+
+If you suspect a circular import but aren't sure where it is, tools like [madge](https://github.com/pahen/madge) can help you visualize your import graph and list cycles:
+
+```
+npx madge convex/ --extensions ts --exclude api.d.ts --circular
+```
+
+We exclude `api.d.ts` here because type-only imports are generally safe.
+
 
 ---
 
 # ESLint rules
 
-ESLint rules for Convex functions enforce best practices. Let us know if there's a rule you would find helpful!
+The Convex ESLint plugin provides linter rules that enforce best practices for Convex functions. Let us know if there's a rule you would find helpful!
 
 ## Setup[​](#setup "Direct link to Setup")
 
@@ -27691,8 +28377,9 @@ npm i @convex-dev/eslint-plugin --save-dev
 and add this to your `eslint.config.js` file:
 
 ```
-import convexPlugin from "@convex-dev/eslint-plugin";
 import { defineConfig } from "eslint/config";
+
+import convexPlugin from "@convex-dev/eslint-plugin";
 
 export default defineConfig([
   // Other configurations
@@ -27730,13 +28417,14 @@ If you’re [customizing the Convex directory location](/production/project-conf
 
 ```
 // eslint.config.js
+import { defineConfig } from "eslint/config";
 
 import convexPlugin from "@convex-dev/eslint-plugin";
 
 const recommendedConfig = convexPlugin.configs.recommended[0];
 const recommendedRules = recommendedConfig.rules;
 
-export default [
+export default defineConfig([
   // Other configurations go here...
 
   // Custom configuration with modified directory pattern
@@ -27747,7 +28435,7 @@ export default [
     },
     rules: recommendedRules,
   },
-];
+]);
 ```
 
 If you’re using the `next lint` command from Next.js
@@ -27770,6 +28458,7 @@ const nextConfig: NextConfig = {
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------ |
 | [`@convex-dev/no-old-registered-function-syntax`](#no-old-registered-function-syntax)<br />Prefer object syntax for registered functions | ✅          | 🔧           |
 | [`@convex-dev/require-argument-validators`](#require-argument-validators)<br />Require argument validators for Convex functions          | ✅          | 🔧           |
+| [`@convex-dev/explicit-table-ids`](#explicit-table-ids)<br />Require explicit table names in database operations                         | ✅          | 🔧           |
 | [`@convex-dev/import-wrong-runtime`](#import-wrong-runtime)<br />Prevent Convex runtime files from importing from Node runtime files     |             |              |
 
 ### no-old-registered-function-syntax[​](#no-old-registered-function-syntax "Direct link to no-old-registered-function-syntax")
@@ -27855,6 +28544,47 @@ export default defineConfig([
 ]);
 ```
 
+### explicit-table-ids[​](#explicit-table-ids "Direct link to explicit-table-ids")
+
+Require explicit table names in database operations.
+
+Starting from version 1.31.0 of the `convex` npm package, we recommend including the table name as the first argument to database operations (`db.get`, `db.replace`, `db.patch`, `db.delete`).
+
+This approach is more secure because it prevents vulnerabilities when an ID from one table is incorrectly typed as belonging to another table. The implicit syntax (where table names are inferred from the ID) will be deprecated in the future to give developers more control over ID generation. For both these reasons, we recommend developers to migrate to the new format.
+
+This rule helps migrate code from the old implicit format to the new explicit format. It uses TypeScript type information to automatically infer the table name from the `Id<"tableName">` type and provides automatic fixes.
+
+```
+const messageId: Id<"messages"> = "123" as Id<"messages">;
+
+// ✅ Allowed by this rule:
+const message = await ctx.db.get("messages", messageId);
+await ctx.db.patch("messages", messageId, { text: "updated" });
+await ctx.db.replace("messages", messageId, {
+  text: "replaced",
+  author: "Alice",
+});
+await ctx.db.delete("messages", messageId);
+
+// ❌ Not allowed by this rule:
+const message = await ctx.db.get(messageId);
+await ctx.db.patch(messageId, { text: "updated" });
+await ctx.db.replace(messageId, { text: "replaced", author: "Alice" });
+await ctx.db.delete(messageId);
+```
+
+typescript-eslint required
+
+In order for this rule to work, [typescript-eslint](https://typescript-eslint.io) must be set up in your ESLint configuration. If typescript-eslint is installed and the rule doesn’t seem to work, please make sure that [type-aware linting](https://typescript-eslint.io/troubleshooting/typed-linting/) is enabled.
+
+Note that if you’re not using ESLint, you can alternatively use the `@convex-dev/codemod` CLI tool to automatically migrate to the new format:
+
+```
+npx @convex-dev/codemod@latest explicit-ids
+```
+
+[Learn more on news.convex.dev →](https://news.convex.dev/db-table-name/)
+
 ### import-wrong-runtime[​](#import-wrong-runtime "Direct link to import-wrong-runtime")
 
 Prevent Convex runtime files from importing from Node runtime files (files with a `"use node"` directive).
@@ -27936,7 +28666,7 @@ export const getMetadata = query({
     storageId: v.id("_storage"),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.system.get(args.storageId);
+    return await ctx.db.system.get("_storage", args.storageId);
   },
 });
 
@@ -28383,6 +29113,12 @@ http.route({
 
     // Step 2: Save the storage ID to the database via a mutation
     const author = new URL(request.url).searchParams.get("author");
+    if (author === null) {
+      return new Response("Author is required", {
+        status: 400,
+      });
+    }
+
     await ctx.runMutation(api.messages.sendImage, { storageId, author });
 
     // Step 3: Return a response with the correct CORS headers
@@ -28826,6 +29562,26 @@ const fooAndBar = await ctx.runQuery(...)
 
 Caveats: Separate runQuery / runMutation calls are valid when intentionally trying to process more data than fits in a single transaction (e.g. running a migration, doing a live aggregate).
 
+## Related Components[​](#related-components "Direct link to Related Components")
+
+[Convex Component](https://www.convex.dev/components/action-cache)
+
+### [Action Cache](https://www.convex.dev/components/action-cache)
+
+[Cache expensive or frequently run actions. Allows configurable cache duration and forcing updates.](https://www.convex.dev/components/action-cache)
+
+[Convex Component](https://www.convex.dev/components/workpool)
+
+### [Workpool](https://www.convex.dev/components/workpool)
+
+[Workpool give critical tasks priority by organizing async operations into separate, customizable queues. Supports retries and parallelism limits.](https://www.convex.dev/components/workpool)
+
+[Convex Component](https://www.convex.dev/components/workflow)
+
+### [Workflow](https://www.convex.dev/components/workflow)
+
+[Similar to Actions, Workflows can call queries, mutations, and actions. However, they are durable functions that can suspend, survive server crashes, specify retries for action calls, and more.](https://www.convex.dev/components/workflow)
+
 
 ---
 
@@ -28924,8 +29680,11 @@ While this comes with a latency penalty the first time you push external package
 
 Create a [`convex.json`](/production/project-configuration.md#convexjson) file in the same directory as your `package.json` if it does not exist already. Set the `node.externalPackages` field to `["*"]` to mark all dependencies used within your Node actions as external:
 
+convex.json
+
 ```
 {
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "node": {
     "externalPackages": ["*"]
   }
@@ -28934,8 +29693,11 @@ Create a [`convex.json`](/production/project-configuration.md#convexjson) file i
 
 Alternatively, you can explicitly specify which packages to mark as external:
 
+convex.json
+
 ```
 {
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "node": {
     "externalPackages": ["aws-sdk", "sharp"]
   }
@@ -29068,7 +29830,7 @@ You can copy and paste a Request ID into your Convex dashboard to view the logs 
 There are four reasons why your Convex [queries](/functions/query-functions.md) and [mutations](/functions/mutation-functions.md) may hit errors:
 
 1. [Application Errors](#application-errors-expected-failures): The function code hits a logical condition that should stop further processing, and your code throws a `ConvexError`
-2. Developer Errors: There is a bug in the function (like calling `db.get(null)` instead of `db.get(id)`).
+2. Developer Errors: There is a bug in the function (like calling `db.get("documents", null)` instead of `db.get("documents", id)`).
 3. [Read/Write Limit Errors](#readwrite-limit-errors): The function is retrieving or writing too much data.
 4. Internal Convex Errors: There is a problem within Convex (like a network blip).
 
@@ -29161,23 +29923,11 @@ See [Application Errors](/functions/error-handling/application-errors.md).
 
 ## Read/write limit errors[​](#readwrite-limit-errors "Direct link to Read/write limit errors")
 
-To ensure uptime and guarantee performance, Convex will catch queries and mutations that try to read or write too much data. These limits are enforced at the level of a single query or mutation function execution. The limits are:
-
-Queries and mutations error out when:
-
-* More than 16384 documents are scanned
-* More than 8MiB worth of data is scanned
-* More than 4096 queries calls to `db.get` or `db.query` are made
-* The function spends more than 1 second executing JavaScript
-
-In addition, mutations error out when:
-
-* More than 8192 documents are written
-* More than 8MiB worth of data is written
+To ensure uptime and guarantee performance, Convex will catch queries and mutations that try to read or write too much data. These limits are enforced at the level of a single query or mutation function execution. The exact limits are listed in [Limits](/production/state/limits.md#transactions).
 
 Documents are "scanned" by the database to figure out which documents should be returned from `db.query`. So for example `db.query("table").take(5).collect()` will only need to scan 5 documents, but `db.query("table").filter(...).first()` might scan up to as many documents as there are in `"table"`, to find the first one that matches the given filter.
 
-Number of calls to `db.get` and `db.query` has a limit to prevent a single query from subscribing to too many index ranges.
+The number of calls to `db.get` and `db.query` has a limit to prevent a single query from subscribing to too many index ranges, or a mutation from reading from too many ranges that could cause conflicts.
 
 In general, if you're running into these limits frequently, we recommend [indexing your queries](/database/reading-data/indexes/.md) to reduce the number of documents scanned, allowing you to avoid unnecessary reads. Queries that scan large swaths of your data may look innocent at first, but can easily blow up at any production scale. If your functions are close to hitting these limits they will log a warning.
 
@@ -29186,6 +29936,20 @@ For information on other limits, see [here](/production/state/limits.md).
 ## Debugging Errors[​](#debugging-errors "Direct link to Debugging Errors")
 
 See [Debugging](/functions/debugging.md) and specifically [Finding relevant logs by Request ID](/functions/debugging.md#finding-relevant-logs-by-request-id).
+
+## Related Components[​](#related-components "Direct link to Related Components")
+
+[Convex Component](https://www.convex.dev/components/workpool)
+
+### [Workpool](https://www.convex.dev/components/workpool)
+
+[Workpool give critical tasks priority by organizing async operations into separate, customizable queues. Supports retries and parallelism limits.](https://www.convex.dev/components/workpool)
+
+[Convex Component](https://www.convex.dev/components/workflow)
+
+### [Workflow](https://www.convex.dev/components/workflow)
+
+[Simplify programming long running code flows. Workflows execute durably with configurable retries and delays.](https://www.convex.dev/components/workflow)
 
 
 ---
@@ -29508,6 +30272,12 @@ http.route({
 
     // Step 2: Save the storage ID to the database via a mutation
     const author = new URL(request.url).searchParams.get("author");
+    if (author === null) {
+      return new Response("Author is required", {
+        status: 400,
+      });
+    }
+
     await ctx.runMutation(api.messages.sendImage, { storageId, author });
 
     // Step 3: Return a response with the correct CORS headers
@@ -29615,7 +30385,7 @@ import { v } from "convex/values";
 export const markPlanAsProfessional = internalMutation({
   args: { planId: v.id("plans") },
   handler: async (ctx, args) => {
-    await ctx.db.patch(args.planId, { planType: "professional" });
+    await ctx.db.patch("plans", args.planId, { planType: "professional" });
   },
 });
 ```
@@ -29954,7 +30724,7 @@ export const getTaskList = query({
   handler: async (ctx, args) => {
     const tasks = await ctx.db
       .query("tasks")
-      .filter((q) => q.eq(q.field("taskListId"), args.taskListId))
+      .withIndex("by_task_list_id", (q) => q.eq("taskListId", args.taskListId))
       .order("desc")
       .take(100);
     return tasks;
@@ -30118,7 +30888,7 @@ Which part of the query context is used depends on what your query needs to do:
   export const getTask = query({
     args: { id: v.id("tasks") },
     handler: async (ctx, args) => {
-      return await ctx.db.get(args.id);
+      return await ctx.db.get("tasks", args.id);
     },
   });
   ```
@@ -30149,7 +30919,7 @@ import { v } from "convex/values";
 export const getTaskAndAuthor = query({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
-    const task = await ctx.db.get(args.id);
+    const task = await ctx.db.get("tasks", args.id);
     if (task === null) {
       return null;
     }
@@ -30161,7 +30931,7 @@ async function getUserName(ctx: QueryCtx, userId: Id<"users"> | null) {
   if (userId === null) {
     return null;
   }
-  return (await ctx.db.get(userId))?.name;
+  return (await ctx.db.get("users", userId))?.name;
 }
 ```
 
@@ -30723,7 +31493,7 @@ An identifier for a document in Convex.
 
 Convex documents are uniquely identified by their `Id`, which is accessible on the `_id` field. To learn more, see [Document IDs](/database/document-ids.md).
 
-Documents can be loaded using `db.get(id)` in query and mutation functions.
+Documents can be loaded using `db.get(tableName, id)` in query and mutation functions.
 
 IDs are just strings at runtime, but this type can be used to distinguish them from other strings when type checking.
 
@@ -31275,6 +32045,24 @@ When access to the deployment is granted any other way a new token will be creat
 
 ---
 
+# Create deployment
+
+```
+POST 
+/projects/:project_id/create_deployment
+```
+
+Create a new deployment for a project.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
 # Create project
 
 ```
@@ -31301,6 +32089,42 @@ POST
 ```
 
 Remove a custom domain from a deployment.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Delete deploy key
+
+```
+POST 
+/deployments/:deployment_name/delete_deploy_key
+```
+
+Deletes a deploy key for the specified deployment. The `id` in the request body can be the full deploy key (with prefix), encoded token, or the name of the deploy key.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# Delete deployment
+
+```
+POST 
+/deployments/:deployment_name/delete
+```
+
+Delete a deployment. This will delete all data and files in the deployment, so we recommend creating and downloading a backup before calling this endpoint. This does not delete the project itself.
 
 ## Request[​](#request "Direct link to Request")
 
@@ -31363,6 +32187,60 @@ Get all custom domains configured for a deployment.
 
 ---
 
+# List deploy keys
+
+```
+GET 
+/deployments/:deployment_name/list_deploy_keys
+```
+
+Lists all deploy keys for the specified deployment.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# list\_deployment\_classes
+
+```
+GET 
+/teams/:team_id/list_deployment_classes
+```
+
+list\_deployment\_classes
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
+# list\_deployment\_regions
+
+```
+GET 
+/teams/:team_id/list_deployment_regions
+```
+
+list\_deployment\_regions
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 200
+
+
+---
+
 # List deployments
 
 ```
@@ -31405,7 +32283,7 @@ info
 
 Convex Platform APIs are in openly available in Beta. Please contact <platforms@convex.dev> if your use case requires additional capabilities.
 
-This guide is for products that want to orchestrate multiple Convex projects in their accounts or manage projects in their users' accounts. These APIs are most often used by AI app builders, such as [Bloom](https://bloom.diy/) or [A0](https://a0.dev/).
+This guide is for products that want to orchestrate multiple Convex projects in their accounts or manage projects in their users' accounts. These APIs are most often used by AI app builders, such as [Bloom](https://bloom.diy/), [A0](https://a0.dev/), or [Macaly](https://www.macaly.com/).
 
 These guides assume a good understanding of Convex cloud hierarchy (teams, projects, and deployments) as well as the [development workflow](/understanding/workflow.md).
 
@@ -31470,9 +32348,9 @@ You can embed the Convex dashboard by adding an `<iframe>` to <https://dashboard
 
 When using `postMessage`, there may be a delay until the credentials are received. The default login page will be shown until credentials are received, so we recommend adding a delay before displaying the rendered iframe to avoid flashing a login screen.
 
-This will share your credentials client-side
+This will share the credentials of the deployment client-side
 
-When using `postMessage` to authenticate with the embedded dashboard, your deployment key will be shared with the end-user. Only do this when sharing credentials with the user is safe, such as with an [OAuth Application](/platform-apis/oauth-applications.md).
+When using `postMessage` to authenticate with the embedded dashboard, the deployment key will be shared with the end-user. This means that the user gets full control of the deployment. Do this only when sharing credentials with the user is safe, such as with an [OAuth Application](/platform-apis/oauth-applications.md) (for Convex deployments that are in the Convex account of the end user), or deploy keys [created with the Management API](/management-api/create-deploy-key.md) (if the Convex deployment is in a Convex account that the end user doesn’t control).
 
 Required information for `postMessage`:
 
@@ -31482,7 +32360,7 @@ Required information for `postMessage`:
 
 Optional configuration:
 
-* `visiblePages`: An array of page keys to show in the sidebar. If not provided, all pages are shown. If an empty array is provided, the sidebar will be hidden. Available page keys: `"health"`, `"data"`, `"functions"`, `"files"`, `"schedules"`, `"logs"`, `"history"`, `"settings"`.
+* `visiblePages`: An array of page keys to show in the sidebar. If not provided, all pages are shown. If an empty array is provided, the sidebar will be hidden. Available page keys: `"health"`, `"data"`, `"functions"`, `"files"`, `"schedules"`, `"logs"`, `"history"`, `"settings"`. Please note that this only changes the user interface on the client side, and does not strictly prevent the user from accessing the functionality exposed by the pages.
 
 Here's an example of the Convex dashboard embedded in a React application:
 
@@ -32298,6 +33176,46 @@ To remove an integration and stop further events from being piped out to the con
 
 Please reach out with any questions, comments, or suggestions [on Discord](https://convex.dev/community).
 
+## Integration Components[​](#integration-components "Direct link to Integration Components")
+
+Beyond integrations for logs and exceptions, [Convex Components](/components.md) make it easier to work with third party services. See the full list of components on the [Convex Components Directory](https://convex.dev/components).
+
+[Convex Component](https://www.convex.dev/components/cloudflare-r2)
+
+### [Cloudflare R2](https://www.convex.dev/components/cloudflare-r2)
+
+[Store and serve files in Cloudflare's R2 storage.](https://www.convex.dev/components/cloudflare-r2)
+
+[Convex Component](https://www.convex.dev/components/prosemirror-sync)
+
+### [Collaborative Text Editor](https://www.convex.dev/components/prosemirror-sync)
+
+[Real-time collaborative text editing using BlockNote or Tiptap.](https://www.convex.dev/components/prosemirror-sync)
+
+[Convex Component](https://www.convex.dev/components/push-notifications)
+
+### [Expo Push Notifications](https://www.convex.dev/components/push-notifications)
+
+[Send mobile push notifications using Expo.](https://www.convex.dev/components/push-notifications)
+
+[Convex Component](https://www.convex.dev/components/twilio)
+
+### [Twilio SMS](https://www.convex.dev/components/twilio)
+
+[Send and receive SMS messages using Twilio's API.](https://www.convex.dev/components/twilio)
+
+[Convex Component](https://www.convex.dev/components/launchdarkly)
+
+### [LaunchDarkly Feature Flags](https://www.convex.dev/components/launchdarkly)
+
+[Sync feature flags with backend, backed by LaunchDarkly.](https://www.convex.dev/components/launchdarkly)
+
+[Convex Component](https://www.convex.dev/components/polar)
+
+### [Polar](https://www.convex.dev/components/polar)
+
+[Add subscriptions and billing with Polar.](https://www.convex.dev/components/polar)
+
 
 ---
 
@@ -32390,6 +33308,67 @@ A webhook log stream is the simplest and most generic stream, allowing piping lo
 
 A request to this webhook contains as its body a JSON array of events in the schema defined below.
 
+## Securing webhook log streams[​](#securing-webhook-log-streams "Direct link to Securing webhook log streams")
+
+Webhook log stream requests include a signature so you can verify that a request is legitimate. The request body is signed using HMAC-SHA256 and encoded as a lowercase hex string, and the resulting signature is included in the `x-webhook-signature` HTTP header. The HMAC secret is visible in the dashboard upon configuring the webhook.
+
+To verify the authenticity of a request, sign and encode the request body using the HMAC secret and [compare the result in constant time](https://www.chosenplaintext.ca/articles/beginners-guide-constant-time-cryptography.html) (for instance using [`SubtleCrypto.verify()`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/verify) in JavaScript) with the signature included in the request header. Note that the signature is prefixed with `sha256=`.
+
+For additional security, consider validating that the `timestamp` field of the log event body falls within an acceptable time range to prevent replay attacks.
+
+```
+import { Hono } from "hono";
+
+const app = new Hono();
+
+app.post("/webhook", async (c) => {
+  const payload = await c.req.json();
+  const log = payload[0];
+
+  // If using JSONL, parse the first line:
+  // const payload = await c.req.text();
+  // const log = JSON.parse(payload.split("\n")[0]);
+
+  // Validate that the timestamp of the first log is within 5 minutes
+  if (log.timestamp < Date.now() - 5 * 60 * 1000) {
+    c.status(403);
+    return c.text("Request expired");
+  }
+
+  const signature = c.req.header("x-webhook-signature");
+  if (!signature) {
+    c.status(401);
+    return c.text("Unauthorized");
+  }
+
+  const hmacSecret = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(process.env.WEBHOOK_SECRET!),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["verify"],
+  );
+  const hashPayload = await c.req.arrayBuffer();
+
+  // Use constant-time comparison to verify the payload
+  const isValid = await crypto.subtle.verify(
+    "HMAC",
+    hmacSecret,
+    Uint8Array.fromHex(signature.replace("sha256=", "")),
+    hashPayload,
+  );
+
+  if (isValid) {
+    return c.text("Success");
+  }
+
+  c.status(401);
+  return c.text("Unauthorized");
+});
+
+export default app;
+```
+
 ## Log event schema[​](#log-event-schema "Direct link to Log event schema")
 
 info
@@ -32400,7 +33379,7 @@ Log events have a well-defined JSON schema that allow building complex, type-saf
 
 All events will have the following three fields:
 
-* `topic`: string, categorizes a log event, one of `["verification", "console", "function_execution", "audit_log", "scheduler_stats", "current_storage_usage"]`
+* `topic`: string, categorizes a log event, one of `["verification", "console", "function_execution", "audit_log", "concurrency_stats", "scheduler_stats", "current_storage_usage"]`
 * `timestamp`: number, Unix epoch timestamp in milliseconds as an integer
 * `convex`: An object containing metadata related to your Convex deployment, including `deployment_name`, `deployment_type`, `project_name`, and `project_slug`.
 
@@ -32528,6 +33507,32 @@ The following fields are added under `function` for all `console` and `function_
 * `path`: string, e.g. `"myDir/myFile:myFunction"`, or `"POST /my_endpoint"`
 * `cached`: optional boolean, for queries this denotes whether this event came from a cached function execution
 * `request_id`: string, the [request ID](/functions/debugging.md#finding-relevant-logs-by-request-id) of the function.
+
+### `concurrency_stats` events[​](#concurrency_stats-events "Direct link to concurrency_stats-events")
+
+These events are sent once a minute, reporting function concurrency statistics. Events are only sent if the stats have changed. Missing data points should be interpolated from the previous data event.
+
+Schema:
+
+Each event contains concurrency statistics for each function type (e.g. queries, mutations, actions). The records for each events have the following schema:
+
+* `num_running`: The maximum number of concurrently running functions within the minute the metric was reported
+
+* `num_queued`: The maximum number of queued functions within the minute the metric was reported. Functions may become temporarily queued when concurrency limits have been reached.
+
+* `topic`: `"concurrency_stats"`
+
+* `timestamp`: Unix epoch timestamp in milliseconds
+
+* `query`: Concurrency stats for queries
+
+* `mutation`: Concurrency stats for mutations
+
+* `action`: Concurrency stats for actions
+
+* `node_action`: Concurrency stats for node actions
+
+* `http_action`: Concurrency stats for HTTP actions
 
 ### `scheduler_stats` events[​](#scheduler_stats-events "Direct link to scheduler_stats-events")
 
@@ -32985,7 +33990,7 @@ convex.json
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/get-convex/convex-backend/refs/heads/main/npm-packages/convex/schemas/convex.schema.json"
+  "$schema": "./node_modules/convex/schemas/convex.schema.json"
 }
 ```
 
@@ -32999,7 +34004,7 @@ convex.json
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/get-convex/convex-backend/refs/heads/main/npm-packages/convex/schemas/convex.schema.json",
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "functions": "src/convex/"
 }
 ```
@@ -33024,7 +34029,7 @@ convex.json
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/get-convex/convex-backend/refs/heads/main/npm-packages/convex/schemas/convex.schema.json",
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "node": {
     "nodeVersion": "22"
   }
@@ -33043,7 +34048,7 @@ convex.json
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/get-convex/convex-backend/refs/heads/main/npm-packages/convex/schemas/convex.schema.json",
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "codegen": {
     "staticApi": true,
     "staticDataModel": true
@@ -33059,6 +34064,91 @@ This will greatly improve autocomplete and incremental typechecking performance,
 * [TypeScript enums](https://www.typescriptlang.org/docs/handbook/enums.html) no longer work in schema or API definitions. Use unions of string literal types instead.
 
 This feature is currently in beta, and we'd love to improve these limitations. Let us know if you run into any issues or have any feedback!
+
+### Configuring the TypeScript compiler[​](#configuring-the-typescript-compiler "Direct link to Configuring the TypeScript compiler")
+
+By default, Convex will use the `tsc` binary installed in your project for typechecking. If you would like to use the TypeScript 7 native preview instead, you can set the `typescriptCompiler` option to `tsgo`. Note that `@typescript/native-preview` must be installed in your project to use `tsgo`.
+
+Convex version required
+
+To use the TypeScript 7 native preview, you must use the `convex` NPM package version 1.31.1 or later.
+
+convex.json
+
+```
+{
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
+  "typescriptCompiler": "tsgo"
+}
+```
+
+### Configuring bundler options[​](#configuring-bundler-options "Direct link to Configuring bundler options")
+
+Convex includes sourcemaps when bundling your source code to provide stack traces and to display your code on the dashboard. If your code bundle is especially large, you can improve CLI upload times by excluding the source code content from the bundle. Set the `includeSourcesContent` property to `false` in the `bundler` options. Stack traces will continue to function as usual, but you will no longer be able to view your source code in the dashboard.
+
+Convex version required
+
+This configuration option is only available in version 1.31.3 or later of the `convex` NPM package.
+
+convex.json
+
+```
+{
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
+  "bundler": {
+    "includeSourcesContent": false
+  }
+}
+```
+
+### Configuring WorkOS AuthKit integration[​](#configuring-workos-authkit-integration "Direct link to Configuring WorkOS AuthKit integration")
+
+If you're using [WorkOS AuthKit](/auth/authkit/.md) for authentication, you can configure automatic provisioning (development only) and configuration of WorkOS environments via the `authKit` field.
+
+Convex version required
+
+This configuration option is only available in version 1.31.6 or later of the `convex` NPM package.
+
+convex.json
+
+```
+{
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
+  "authKit": {
+    "dev": {
+      "configure": {
+        "redirectUris": ["http://localhost:3000/callback"],
+        "appHomepageUrl": "http://localhost:3000",
+        "corsOrigins": ["http://localhost:3000"]
+      },
+      "localEnvVars": {
+        "WORKOS_CLIENT_ID": "${authEnv.WORKOS_CLIENT_ID}",
+        "WORKOS_API_KEY": "${authEnv.WORKOS_API_KEY}",
+        "NEXT_PUBLIC_WORKOS_REDIRECT_URI": "http://localhost:3000/callback"
+      }
+    },
+    "preview": {
+      "configure": {
+        "redirectUris": ["https://${buildEnv.VERCEL_BRANCH_URL}/callback"],
+        "appHomepageUrl": "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}",
+        "corsOrigins": ["https://${buildEnv.VERCEL_BRANCH_URL}"]
+      }
+    },
+    "prod": {
+      "environmentType": "production",
+      "configure": {
+        "redirectUris": [
+          "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}/callback"
+        ],
+        "appHomepageUrl": "https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}",
+        "corsOrigins": ["https://${buildEnv.VERCEL_PROJECT_PRODUCTION_URL}"]
+      }
+    }
+  }
+}
+```
+
+This configuration controls how WorkOS environments are provisioned and configured for each deployment type (dev, preview, prod). See the [Automatic AuthKit Configuration](/auth/authkit/auto-provision.md) guide for complete details.
 
 
 ---
@@ -33210,6 +34300,7 @@ These limits apply to each `query` or `mutation` function.
 | Data read                  | 16 MiB | Data not returned due to a `filter` counts as scanned     |
 | Data written               | 16 MiB |                                                           |
 | Documents scanned          | 32,000 | Documents not returned due to a `filter` count as scanned |
+| Index ranges read          | 4,096  | The number of calls to `db.get` and `db.query`.           |
 | Documents written          | 16,000 |                                                           |
 | Function return value size | 16 MiB |                                                           |
 
@@ -33219,7 +34310,7 @@ Applied per-deployment.
 
 |                     |               |
 | ------------------- | ------------- |
-| Number of variables | 100           |
+| Number of variables | 1000          |
 | Maximum name length | 40 characters |
 | Maximum value size  | 8 KiB         |
 
@@ -35589,7 +36680,7 @@ This quickstart guide uses a [community-maintained](/client/vue.md) Vue client f
    To get started, install the `convex` package.
 
    ```
-   cd my-vue-app && npm install convex-vue
+   cd my-vue-app && npm install convex convex-vue
    ```
 
 3. Set up a Convex dev deployment
@@ -35742,25 +36833,19 @@ Convex lets you easily schedule a function to run once or repeatedly in the futu
 
 Built-in scheduled functions and crons work well for simpler apps and workflows. If you're operating at high scale or need more specific guarantees, use the following higher-level [components](/components.md) for durable functions.
 
-[Convex component](https://www.convex.dev/components/workpool)
+[Convex Component](https://www.convex.dev/components/workpool)
 
 ### [Workpool](https://www.convex.dev/components/workpool)
 
 [Workpool give critical tasks priority by organizing async operations into separate, customizable queues.](https://www.convex.dev/components/workpool)
 
-[Convex component](https://www.convex.dev/components/workflow)
+[Convex Component](https://www.convex.dev/components/workflow)
 
 ### [Workflow](https://www.convex.dev/components/workflow)
 
 [Simplify programming long running code flows. Workflows execute durably with configurable retries and delays.](https://www.convex.dev/components/workflow)
 
-[Convex component](https://www.convex.dev/components/retrier)
-
-### [Action Retrier](https://www.convex.dev/components/retrier)
-
-[Add reliability to an unreliable external service. Retry idempotent calls a set number of times.](https://www.convex.dev/components/retrier)
-
-[Convex component](https://www.convex.dev/components/crons)
+[Convex Component](https://www.convex.dev/components/crons)
 
 ### [Crons](https://www.convex.dev/components/crons)
 
@@ -35886,7 +36971,7 @@ export const destruct = internalMutation({
     messageId: v.id("messages"),
   },
   handler: async (ctx, args) => {
-    await ctx.db.delete(args.messageId);
+    await ctx.db.delete("messages", args.messageId);
   },
 });
 ```
@@ -35928,7 +37013,7 @@ export const getScheduledMessage = query({
     id: v.id("_scheduled_functions"),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.system.get(args.id);
+    return await ctx.db.system.get("_scheduled_functions", args.id);
   },
 });
 ```
@@ -36344,7 +37429,7 @@ export const fetchResults = internalQuery({
   handler: async (ctx, args) => {
     const results = [];
     for (const id of args.ids) {
-      const doc = await ctx.db.get(id);
+      const doc = await ctx.db.get("foods", id);
       if (doc === null) {
         continue;
       }
@@ -36895,7 +37980,7 @@ See [Continuous Integration](/testing/ci.md) to run your tests on a shared remot
 
 # convex-test
 
-The `convex-test` library provides a mock implementation of the Convex backend in JavaScript. It enables fast automated testing of the logic in your [functions](/functions.md).
+The [`convex-test`](https://www.npmjs.com/package/convex-test) library provides a mock implementation of the Convex backend in JavaScript. It enables fast automated testing of the logic in your [functions](/functions.md).
 
 ## Example[​](#example "Direct link to Example")
 
@@ -37151,15 +38236,18 @@ TS
 ```
 import { convexTest } from "convex-test";
 import { expect, test } from "vitest";
+import schema from "./schema";
 
 test("functions", async () => {
-  const t = convexTest();
+  const t = convexTest(schema, modules);
   const firstTask = await t.run(async (ctx) => {
     await ctx.db.insert("tasks", { text: "Eat breakfast" });
     return await ctx.db.query("tasks").first();
   });
   expect(firstTask).toMatchObject({ text: "Eat breakfast" });
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 ### HTTP actions[​](#http-actions "Direct link to HTTP actions")
@@ -37172,12 +38260,16 @@ TS
 
 ```
 import { convexTest } from "convex-test";
-import { test } from "vitest";
+import { expect, test } from "vitest";
+import schema from "./schema";
 
 test("functions", async () => {
-  const t = convexTest();
+  const t = convexTest(schema, modules);
   const response = await t.fetch("/some/path", { method: "POST" });
+  expect(response.status).toBe(200);
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 Mocking the global `fetch` function doesn't affect `t.fetch`, but you can use `t.fetch` in a `fetch` mock to route to your HTTP actions.
@@ -37200,7 +38292,7 @@ test("mutation scheduling action", async () => {
   // Enable fake timers
   vi.useFakeTimers();
 
-  const t = convexTest(schema);
+  const t = convexTest(schema, modules);
 
   // Call a function that schedules a mutation or action
   const scheduledFunctionId = await t.mutation(
@@ -37222,14 +38314,16 @@ test("mutation scheduling action", async () => {
   await t.finishInProgressScheduledFunctions();
 
   // Assert that the scheduled function succeeded or failed
-  const scheduledFunctionStatus = t.run(async (ctx) => {
-    return await ctx.db.get(scheduledFunctionId);
+  const scheduledFunctionStatus = await t.run(async (ctx) => {
+    return await ctx.db.system.get("_scheduled_functions", scheduledFunctionId);
   });
   expect(scheduledFunctionStatus).toMatchObject({ state: { kind: "success" } });
 
   // Reset to normal `setTimeout` etc. implementation
   vi.useRealTimers();
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 If you have a chain of several scheduled functions, for example a mutation that schedules an action that schedules another action, you can use `t.finishAllScheduledFunctions` to wait for all scheduled functions, including recursively scheduled functions, to finish:
@@ -37248,7 +38342,7 @@ test("mutation scheduling action scheduling action", async () => {
   // Enable fake timers
   vi.useFakeTimers();
 
-  const t = convexTest(schema);
+  const t = convexTest(schema, modules);
 
   // Call a function that schedules a mutation or action
   await t.mutation(api.scheduler.mutationSchedulingActionSchedulingAction);
@@ -37259,7 +38353,7 @@ test("mutation scheduling action scheduling action", async () => {
   await t.finishAllScheduledFunctions(vi.runAllTimers);
 
   // Assert the resulting state after all scheduled functions finished
-  const createdTask = t.run(async (ctx) => {
+  const createdTask = await t.run(async (ctx) => {
     return await ctx.db.query("tasks").first();
   });
   expect(createdTask).toMatchObject({ author: "AI" });
@@ -37267,6 +38361,8 @@ test("mutation scheduling action scheduling action", async () => {
   // Reset to normal `setTimeout` etc. implementation
   vi.useRealTimers();
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 Check out more examples in [this file](https://github.com/get-convex/convex-test/blob/main/convex/scheduler.test.ts).
@@ -37286,7 +38382,7 @@ import { api } from "./_generated/api";
 import schema from "./schema";
 
 test("authenticated functions", async () => {
-  const t = convexTest(schema);
+  const t = convexTest(schema, modules);
 
   const asSarah = t.withIdentity({ name: "Sarah" });
   await asSarah.mutation(api.tasks.create, { text: "Add tests" });
@@ -37298,6 +38394,8 @@ test("authenticated functions", async () => {
   const leesTasks = await asLee.query(api.tasks.list);
   expect(leesTasks).toEqual([]);
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 ## Vitest tips[​](#vitest-tips "Direct link to Vitest tips")
@@ -37323,11 +38421,13 @@ import { api } from "./_generated/api";
 import schema from "./schema";
 
 test("messages validation", async () => {
-  const t = convexTest(schema);
-  expect(async () => {
+  const t = convexTest(schema, modules);
+  await expect(async () => {
     await t.mutation(api.messages.send, { body: "", author: "James" });
   }).rejects.toThrowError("Empty message body is not allowed");
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 ### Mocking `fetch` calls[​](#mocking-fetch-calls "Direct link to mocking-fetch-calls")
@@ -37340,12 +38440,12 @@ TS
 
 ```
 import { expect, test, vi } from "vitest";
-import { convexTest } from "../index";
 import { api } from "./_generated/api";
 import schema from "./schema";
+import { convexTest } from "convex-test";
 
 test("ai", async () => {
-  const t = convexTest(schema);
+  const t = convexTest(schema, modules);
 
   vi.stubGlobal(
     "fetch",
@@ -37357,6 +38457,8 @@ test("ai", async () => {
 
   vi.unstubAllGlobals();
 });
+
+const modules = import.meta.glob("./**/*.ts");
 ```
 
 ### Measuring test coverage[​](#measuring-test-coverage "Direct link to Measuring test coverage")
@@ -37826,21 +38928,21 @@ Let's say you decide to show a counter in your app. You may write a mutation tha
 
 There are a [few ways to deal with this](/error.md#remediation), including building something called a sharded counter...
 
-But before you go learn advanced scaling techniques on your own, there is a better way with Convex components.
+But before you go learn advanced scaling techniques on your own, there is a better way with [Convex Components](/components.md).
 
 ## Scaling best practices with Convex Components[​](#scaling-best-practices-with-convex-components "Direct link to Scaling best practices with Convex Components")
 
 In the case of the counter above, the Convex team has already built a [scalable counter](https://www.convex.dev/components/sharded-counter) Convex component for you to use.
 
-Convex components are installed in your Convex backend as an npm library. They are sandboxed, so they can't read your app's tables or call your app's functions unless explicitly provided.
+Convex Components are deployed along with your Convex backend but have their own tables and functions.
 
-As you build more complicated features like AI agent [workflows](https://www.convex.dev/components/workflow), [leaderboards](https://www.convex.dev/components/aggregate), [feature flags](https://www.convex.dev/components/launchdarkly) or [rate limiters](https://www.convex.dev/components/rate-limiter), you may find that there is already a Convex component that solves this problem.
+As you build more complicated features like [AI agents](/agents.md), [workflows](https://www.convex.dev/components/workflow), [leaderboards](https://www.convex.dev/components/aggregate), [feature flags](https://www.convex.dev/components/launchdarkly) or [rate limiters](https://www.convex.dev/components/rate-limiter), you may find that there is already a Convex Component that solves this problem. [Learn more about Convex Components here](/components.md).
 
 ## [Components directory](https://www.convex.dev/components)
 
 ## Wrap up[​](#wrap-up "Direct link to Wrap up")
 
-We've covered a lot of ground in this tutorial. We started by [building a chat app](/tutorial/.md) with queries, mutations and the database that form the fundamental building blocks of the Convex sync engine. We then called an [external API](/tutorial/actions.md) from our backend, using the scheduler to coordinate the work. Finally, we learned that [Convex components](https://www.convex.dev/components) give you scaling best practices in neat packages.
+We've covered a lot of ground in this tutorial. We started by [building a chat app](/tutorial/.md) with queries, mutations and the database that form the fundamental building blocks of the Convex sync engine. We then called an [external API](/tutorial/actions.md) from our backend, using the scheduler to coordinate the work. Finally, we learned that [Convex Components](/components.md) give you scaling best practices in neat packages.
 
 If you are looking for more tips, read our [best practices](/understanding/best-practices/.md) and join the [community](https://www.convex.dev/community).
 
@@ -37900,7 +39002,7 @@ export const setTaskCompleted = mutation({
   args: { taskId: v.id("tasks"), completed: v.boolean() },
   handler: async (ctx, { taskId, completed }) => {
     // Update the database using TypeScript
-    await ctx.db.patch(taskId, { completed });
+    await ctx.db.patch("tasks", taskId, { completed });
   },
 });
 ```
@@ -38018,6 +39120,8 @@ Together, these features mean AI can focus on your business logic while Convex's
 
 ## Learn more[​](#learn-more "Direct link to Learn more")
 
+[YouTube video player](https://www.youtube.com/embed/3d29eKJ2Vws)
+
 If you are intrigued about the details of how Convex pulls this all off, you can read Convex co-founder Sujay's excellent [How Convex Works](https://stack.convex.dev/how-convex-works) blog post.
 
 Now that you have a good sense of how Convex fits in your app. Let's walk through the overall workflow of setting up and launching a Convex app.
@@ -38037,7 +39141,7 @@ Convex functions use async / await. If you don't await all your promises (e.g. `
 
 ### How?[​](#how "Direct link to How?")
 
-We recommend the [no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises/) eslint rule with TypeScript.
+We recommend the [no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises/) rule of typescript-eslint.
 
 ## Avoid `.filter` on database queries[​](#avoid-filter-on-database-queries "Direct link to avoid-filter-on-database-queries")
 
@@ -38231,37 +39335,53 @@ Public functions can be called by anyone, including potentially malicious attack
 
 ### Example[​](#example-1 "Direct link to Example")
 
-convex/messages.ts
+convex/movies.ts
 
 TS
 
 ```
-// ❌ -- could be used to update any document (not just `messages`)
-export const updateMessage = mutation({
-  handler: async (ctx, { id, update }) => {
-    await ctx.db.patch(id, update);
+// ❌ -- `id` and `update` are not validated, so a client could pass
+//       any Convex value (the type at runtime could mismatch the
+//       TypeScript type). In particular, `update` could contain
+//       fields other than `title` and `director`.
+export const updateMovie = mutation({
+  handler: async (
+    ctx,
+    {
+      id,
+      update,
+    }: {
+      id: Id<"movies">;
+      update: Pick<Doc<"movies">, "title" | "director">;
+    },
+  ) => {
+    await ctx.db.patch("movies", id, update);
   },
 });
 
-// ✅ -- can only be called with an ID from the messages table, and can only update
-// the `body` and `author` fields
-export const updateMessage = mutation({
+// ✅ -- This can only be called with an ID from the movies table,
+//       and an `update` object with only the `title`/`director` fields
+export const updateMovie = mutation({
   args: {
-    id: v.id("messages"),
+    id: v.id("movies"),
     update: v.object({
-      body: v.optional(v.string()),
-      author: v.optional(v.string()),
+      title: v.string(),
+      director: v.string(),
     }),
   },
   handler: async (ctx, { id, update }) => {
-    await ctx.db.patch(id, update);
+    await ctx.db.patch("movies", id, update);
   },
 });
 ```
 
 ### How?[​](#how-4 "Direct link to How?")
 
-Search for `query`, `mutation`, and `action` in your Convex codebase, and ensure that all of them have argument validators (and optionally return value validators). If you have `httpAction`s, you may want to use something like `zod` to validate that the HTTP request is the shape you expect.
+Search for `query`, `mutation`, and `action` in your Convex codebase, and ensure that all of them have argument validators (and optionally return value validators).
+
+You can also check automatically that your functions have argument validators with the [`@convex-dev/require-argument-validators` ESLint rule](/eslint.md#require-argument-validators).
+
+If you use HTTP actions, you may want to use an argument validation library like [Zod](https://zod.dev) to validate that the HTTP request is the shape you expect.
 
 ## Use some form of access control for all public functions[​](#use-some-form-of-access-control-for-all-public-functions "Direct link to Use some form of access control for all public functions")
 
@@ -38292,7 +39412,7 @@ export const updateTeam = mutation({
     }),
   },
   handler: async (ctx, { id, update }) => {
-    await ctx.db.patch(id, update);
+    await ctx.db.patch("teams", id, update);
   },
 });
 
@@ -38311,7 +39431,7 @@ export const updateTeam = mutation({
     if (!teamMembers.some((m) => m.email === email)) {
       throw new Error("Unauthorized");
     }
-    await ctx.db.patch(id, update);
+    await ctx.db.patch("teams", id, update);
   },
 });
 
@@ -38333,7 +39453,7 @@ export const updateTeam = mutation({
     if (!isTeamMember) {
       throw new Error("Unauthorized");
     }
-    await ctx.db.patch(id, update);
+    await ctx.db.patch("teams", id, update);
   },
 });
 
@@ -38352,7 +39472,7 @@ export const setTeamOwner = mutation({
     if (!isTeamOwner) {
       throw new Error("Unauthorized");
     }
-    await ctx.db.patch(id, { owner: owner });
+    await ctx.db.patch("teams", id, { owner: owner });
   },
 });
 
@@ -38370,7 +39490,7 @@ export const setTeamName = mutation({
     if (!isTeamMember) {
       throw new Error("Unauthorized");
     }
-    await ctx.db.patch(id, { name: name });
+    await ctx.db.patch("teams", id, { name: name });
   },
 });
 ```
@@ -38511,7 +39631,7 @@ export const listMessages = query({
   },
   handler: async (ctx, { conversationId }) => {
     const user = await ctx.runQuery(api.users.getCurrentUser);
-    const conversation = await ctx.db.get(conversationId);
+    const conversation = await ctx.db.get("conversations", conversationId);
     if (conversation === null || !conversation.members.includes(user._id)) {
       throw new Error("Unauthorized");
     }
@@ -38570,7 +39690,7 @@ export async function ensureHasAccess(
   { conversationId }: { conversationId: Id<"conversations"> },
 ) {
   const user = await Users.getCurrentUser(ctx);
-  const conversation = await ctx.db.get(conversationId);
+  const conversation = await ctx.db.get("conversations", conversationId);
   if (conversation === null || !conversation.members.includes(user._id)) {
     throw new Error("Unauthorized");
   }
@@ -38594,7 +39714,7 @@ export async function addSummary(
   }: { conversationId: Id<"conversations">; summary: string },
 ) {
   await ensureHasAccess(ctx, { conversationId });
-  await ctx.db.patch(conversationId, { summary });
+  await ctx.db.patch("conversations", conversationId, { summary });
 }
 
 export async function generateSummary(
@@ -38889,6 +40009,87 @@ export const trySendMessage = mutation({
   },
 });
 ```
+
+## Always include the table name when calling `ctx.db` functions[​](#always-include-the-table-name-when-calling-ctxdb-functions "Direct link to always-include-the-table-name-when-calling-ctxdb-functions")
+
+### Why?[​](#why-11 "Direct link to Why?")
+
+Since version 1.31.0 of the `convex` NPM package, the `ctx.db` functions accept a table name as the first argument. While this first argument is currently optional, passing the table name adds an additional safeguard which will be required for custom ID generation in the future.
+
+### Example[​](#example-5 "Direct link to Example")
+
+convex/movies.ts
+
+TS
+
+```
+// ❌
+await ctx.db.get(movieId);
+await ctx.db.patch(movieId, { title: "Whiplash" });
+await ctx.db.replace(movieId, {
+  title: "Whiplash",
+  director: "Damien Chazelle",
+  votes: 0,
+});
+await ctx.db.delete(movieId);
+
+// ✅            vvvvvvvv
+await ctx.db.get("movies", movieId);
+await ctx.db.patch("movies", movieId, { title: "Whiplash" });
+await ctx.db.replace("movies", movieId, {
+  title: "Whiplash",
+  director: "Damien Chazelle",
+  votes: 0,
+});
+await ctx.db.delete("movies", movieId);
+```
+
+### How?[​](#how-10 "Direct link to How?")
+
+Search for calls of `db.get`, `db.patch`, `db.replace` and `db.delete` in your Convex codebase, and ensure that all of them pass a table name as the first argument.
+
+You can also check automatically that a table name argument is passed with the [`@convex-dev/explicit-table-ids` ESLint rule](/eslint.md#explicit-table-ids).
+
+You can migrate existing code automatically by using the autofix in the ESLint rule, or with the `@convex-dev/codemod` standalone tool.
+
+[Learn more on news.convex.dev →](https://news.convex.dev/db-table-name/)
+
+## Don’t use `Date.now()` in queries[​](#date-in-queries "Direct link to date-in-queries")
+
+### Why?[​](#why-12 "Direct link to Why?")
+
+When you subscribe to a query, Convex [will automatically run it again](/realtime.md) if the data that it accesses in the database change. The query is not re-run when `Date.now()` changes, because it wouldn’t be desirable to re-run a query every millisecond. So, if your query depends on the current time, it might return stale results.
+
+Also, using `Date.now()` in a query can cause the Convex query cache to be invalidated more frequently than necessary. In general, Convex will automatically re-use Convex query results if the query is called with the same arguments. However, when using `Date.now()` in a query, the query cache will be invalidated frequently in order to avoid showing results that are too old. This will unnecessarily increase the work that the database has to do.
+
+### Example[​](#example-6 "Direct link to Example")
+
+convex/posts.ts
+
+TS
+
+```
+// ❌
+const releasedPosts = await ctx.db
+  .query("posts")
+  .withIndex("by_released_at", (q) => q.lte("releasedAt", Date.now()))
+  .take(100);
+
+// ✅
+const releasedPosts = await ctx.db
+  .query("posts")
+  // `isReleased` is set to `true` by a scheduled function after `releasedAt` is reached
+  .withIndex("by_is_released", (q) => q.eq("isReleased", true))
+  .take(100);
+```
+
+### How?[​](#how-11 "Direct link to How?")
+
+Search for usages of `Date.now()` in your Convex queries, or in functions that are called from a Convex query.
+
+If you want to compare the current time with a timestamp stored in a database document, consider adding a coarser field to the document that you update from a [scheduled function](/scheduling/scheduled-functions.md) (see the example above). This way, the query cache is only invalidated explicitly when data changes.
+
+Alternatively, you can pass in the target time in as an explicit argument from the client. For best caching results, the client should avoid changing this argument frequently, for instance by rounding the time down to the most recent minute, so all client requests within that minute use the same arguments.
 
 
 ---
@@ -39276,6 +40477,8 @@ Whenever you're ready be sure the read the [Best Practices](/understanding/best-
 ---
 
 # The Zen of Convex
+
+[YouTube video player](https://www.youtube.com/embed/dyEWQ9s2ji4?si=ce-M8pt6EWDZ8tfd)
 
 Convex is an opinionated framework, with every element designed to pull developers into [the pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/).
 

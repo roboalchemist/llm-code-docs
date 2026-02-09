@@ -3,13 +3,13 @@
 # Installation and setup
 
 {% hint style="info" %}
-**Platform support:** Warp is supported on macOS (Intel and Mac Silicon), Windows (x86\_64 and ARM64), and Linux (x86\_64 and ARM64)
+**Platform support:** Warp is supported on macOS (Intel and Mac Silicon), Windows (x86\_64 and ARM64), and Linux (x86\_64 and ARM64).
 {% endhint %}
 
 ## Install Warp
 
 {% hint style="warning" %}
-**Visit** [Known Issues](https://docs.warp.dev/support-and-billing/known-issues) **to get more details on setting up and troubleshooting Warp.**
+**Visit** [Known Issues](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues) **to get more details on setting up and troubleshooting Warp.**
 {% endhint %}
 
 {% tabs %}
@@ -172,22 +172,22 @@ If you installed a package, find Warp in your desktop manager or run `warp-termi
 {% endtabs %}
 
 {% hint style="info" %}
-Want to try our newest features? [Warp Preview](https://docs.warp.dev/community/warp-preview-and-alpha-program) is available on all platforms and architectures (macOS, Windows, Linux) for early access to experimental features.
+Want to try our newest features? [Warp Preview](https://docs.warp.dev/support-and-community/community/warp-preview-and-alpha-program) is available on all platforms and architectures (macOS, Windows, Linux) for early access to experimental features.
 {% endhint %}
 
 ## Initial Setup
 
 ### Log in to Warp (Optional)
 
-After installation, you have the option to create a Warp account thru the "Sign up" bottom on the top right or in `Settings > Account > Sign up`. You have the option to skip this step. If you're having issues logging in, you can check out the [Login Troubleshooting](https://docs.warp.dev/support-and-billing/troubleshooting-login-issues) page.
+After installation, you have the option to create a Warp account thru the "Sign up" bottom on the top right or in `Settings > Account > Sign up`. You have the option to skip this step. If you're having issues logging in, you can check out the [Login Troubleshooting](https://docs.warp.dev/support-and-community/troubleshooting-and-support/troubleshooting-login-issues) page.
 
 {% hint style="info" %}
-If you sign up using Google or GitHub, Warp only gets access to the associated email address. Visit the [Privacy](https://docs.warp.dev/privacy/privacy) page for more details on Warp's approach to privacy.
+If you sign up using Google or GitHub, Warp only gets access to the associated email address. Visit the [Privacy](https://docs.warp.dev/support-and-community/privacy-and-security/privacy) page for more details on Warp's approach to privacy.
 {% endhint %}
 
 ### Use Warp offline
 
-You will only need an active internet connection when you open the Warp app for the first time. Once opened, [Warp is able to run with no internet connection](https://docs.warp.dev/support-and-billing/using-warp-offline), although certain features that require an internet connection like AI and real-time collaboration features will be unavailable.
+You will only need an active internet connection when you open the Warp app for the first time. Once opened, [Warp is able to run with no internet connection](https://docs.warp.dev/support-and-community/troubleshooting-and-support/using-warp-offline), although certain features that require an internet connection like AI and real-time collaboration features will be unavailable.
 
 ### Import your settings
 

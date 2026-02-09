@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/kubernetes/infisical-dynamic-secret-crd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the InfisicalDynamicSecret CRD
 
 > Learn how to generate dynamic secret leases in Infisical and sync them to your Kubernetes cluster.

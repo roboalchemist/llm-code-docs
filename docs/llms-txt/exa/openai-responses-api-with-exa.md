@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/openai-responses-api-with-exa.md
+# Source: https://exa.ai/docs/reference/openai-responses-api-with-exa.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI Responses API
 
@@ -511,8 +515,3 @@ Choose the right approach for your use case:
   For detailed information about research capabilities, structured outputs, and
   pricing, see the [Exa Research documentation](/reference/exa-research).
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

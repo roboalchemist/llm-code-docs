@@ -1,5 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/onboarding-troubleshooting.md
 
+## Documentation Index
+
+Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+
+Use this file to discover all available pages before exploring further.
+
 # Onboarding FAQs
 
 > Answers to common questions when getting started with Graphite.
@@ -10,7 +16,7 @@ If you don’t see your desired owner in the list of owners in the Graphite onbo
 
 If you're [a collaborator on a personal repository](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository) that you'd like to use with Graphite, you must install the Graphite GitHub App on your personal account.
 
-If you're still unable to select your desired repository owner, contact us at **[support@graphite.dev](mailto:support@graphite.dev)**.
+If you're still unable to select your desired repository owner, contact us at **[support@graphite.com](mailto:support@graphite.com)**.
 
 ## Don't see the repository you're looking for?
 

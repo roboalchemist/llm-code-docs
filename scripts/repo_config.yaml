@@ -12,6 +12,13 @@ settings:
 
 # Repository configurations
 repositories:
+  - name: "APScheduler"
+    description: "APScheduler - Advanced Python Scheduler for scheduling jobs to run at specific times or intervals with support for multiple schedulers, job stores, and triggers"
+    repo_url: "https://github.com/agronholm/apscheduler.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/apscheduler"
+    branch: "master"
+
   - name: "axe-core"
     description: "axe-core accessibility testing engine with comprehensive WCAG rule documentation and API guides"
     repo_url: "https://github.com/dequelabs/axe-core.git"
@@ -39,6 +46,13 @@ repositories:
     source_folder: "docs/source"
     target_folder: "docs/github-scraped/tensorrt-llm"
     branch: "main" # Default branch to use
+
+  - name: "Text Embeddings Inference"
+    description: "HuggingFace Text Embeddings Inference (TEI) - High-performance inference server for text embeddings, re-ranking, and sequence classification with optimized batching and quantization"
+    repo_url: "https://github.com/huggingface/text-embeddings-inference.git"
+    source_folder: "docs/source/en"
+    target_folder: "docs/github-scraped/text-embeddings-inference"
+    branch: "main"
 
   - name: "Three.js"
     description: "Three.js - JavaScript 3D library for WebGL with comprehensive API documentation"
@@ -201,6 +215,13 @@ repositories:
     target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
+  - name: "Gunicorn"
+    description: "Gunicorn - Python WSGI HTTP Server with pre-forked worker model, multiple worker types, and comprehensive configuration options for deploying Python web applications"
+    repo_url: "https://github.com/benoitc/gunicorn.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/gunicorn"
+    branch: "master"
+
   - name: "Go LSP"
     description: "Go Language Server Protocol implementation - Structs and interfaces for LSP wire format with Go mappings"
     repo_url: "https://github.com/go-language-server/protocol.git"
@@ -297,6 +318,27 @@ repositories:
     repo_url: "https://github.com/lxc/incus.git"
     source_folder: "doc"
     target_folder: "docs/github-scraped/incus"
+    branch: "main"
+
+  - name: "Jina Serve"
+    description: "Jina Serve - Framework for building and deploying multimodal AI services with gRPC, HTTP, and WebSocket support"
+    repo_url: "https://github.com/jina-ai/serve.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jina-serve"
+    branch: "master"
+
+  - name: "Jina Python SDK"
+    description: "Jina - Python package for building multimodal AI services and pipelines with cloud-native stack"
+    repo_url: "https://github.com/jina-ai/jina.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jina-python-sdk"
+    branch: "master"
+
+  - name: "Jina JavaScript SDK"
+    description: "Jina AI JavaScript/TypeScript SDK - Client library for integrating Jina AI APIs into JavaScript applications"
+    repo_url: "https://github.com/jina-ai/jinaai-js.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/jina-js-sdk"
     branch: "main"
 
   - name: "Matplotlib"
@@ -579,6 +621,13 @@ repositories:
     target_folder: "docs/github-scraped/numpy"
     branch: "main"
 
+  - name: "OpenBambuAPI"
+    description: "OpenBambuAPI - Community-maintained reverse-engineered documentation for Bambu Lab 3D printer protocols (MQTT, HTTP, FTP, G-code, video streaming, TLS)"
+    repo_url: "https://github.com/Doridian/OpenBambuAPI.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/openbambuapi"
+    branch: "main"
+
   - name: "OpenMPI"
     description: "Open MPI - High-performance Message Passing Interface (MPI) library for parallel computing"
     repo_url: "https://github.com/open-mpi/ompi.git"
@@ -724,6 +773,13 @@ repositories:
     repo_url: "https://github.com/arduino/docs-content.git"
     source_folder: "content"
     target_folder: "docs/github-scraped/arduino"
+    branch: "main"
+
+  - name: "Bambu Lab Cloud API"
+    description: "Bambu Lab printer API documentation - MQTT, local server API, cloud API, authentication, device control, file management, and status monitoring"
+    repo_url: "https://github.com/coelacant1/Bambu-Lab-Cloud-API.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/bambu-lab-api"
     branch: "main"
 
   - name: "ariakit"
@@ -927,6 +983,13 @@ repositories:
     repo_url: "https://github.com/ray-project/ray.git"
     source_folder: "doc/source"
     target_folder: "docs/github-scraped/ray"
+    branch: "master"
+
+  - name: "SiYuan"
+    description: "SiYuan - Privacy-first, self-hosted personal knowledge management system with Markdown editing, block-level references, and local-first data storage"
+    repo_url: "https://github.com/siyuan-note/user-guide-en_US.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/siyuan"
     branch: "master"
 
   - name: "Stable Diffusion"

@@ -8,25 +8,9 @@
 
 # Source: https://docs.pipecat.ai/client/android/transports/small-webrtc.md
 
-# Source: https://docs.pipecat.ai/server/services/transport/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/react-native/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/ios/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/server/services/transport/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/react-native/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/ios/transports/small-webrtc.md
-
-# Source: https://docs.pipecat.ai/client/android/transports/small-webrtc.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Small WebRTC Transport
 
@@ -77,8 +61,3 @@ client.start().withCallback {
 <Card title="Pipecat Android Client Reference" icon="book-open" href="https://docs-android.rtvi.ai/">
   Complete API documentation for the Pipecat Android client.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,10 +1,14 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connecting-your-knowledge-base.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connecting your Knowledge Base
 
 > Learn how to import, sync, and deploy your Knowledge Base for GenerativeAgent.
 
-Your knowledge base is crucial for GenerativeAgent to provide accurate and contextually relevant responses to users. You have full control over which articles are included, their update frequency, and how those updates are deployed.
+Your knowledge base is crucial for GenerativeAgent to provide accurate and contextually relevant responses to users. You have full control over which articles you include, their update frequency, and how you deploy those updates.
 
 All content and update management occurs within the ASAPP dashboard.
 
@@ -44,7 +48,6 @@ You can import content by:
     1. Select **Import from URL**
     2. Enter the URL to start the import
     3. (Optional) Use URL Prefixes or Excluded URLs to target specific sections
-    4. Click **Import content**
 
     <Frame>
       <img src="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=19f7bb548136e0218ede267b3e87cd1b" data-og-width="1009" width="1009" data-og-height="240" height="240" data-path="images/generativeagent/ExcludeURLs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=280&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=66b8c25c02bb08355d0353d5e2fcf799 280w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=560&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=334fd37d2f74515ac5c5c3cbe41edf18 560w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=840&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=24ad30a9c7146f9e31811bb4a0dcb931 840w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=1100&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=a9f46b133972355006eeaba078a6520d 1100w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=1650&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=9bbeb8b51545219df0affcf6313c4ad2 1650w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/ExcludeURLs.png?w=2500&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=b87acc41d381cfffa0cf522062ccc4da 2500w" />
@@ -52,6 +55,24 @@ You can import content by:
 
     <Frame>
       <img src="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=508d717961e37e309cc55f99aec084bf" data-og-width="980" width="980" data-og-height="134" height="134" data-path="images/generativeagent/url_prefix.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=280&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=8252f1cb82c1b309d362422c4108e189 280w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=560&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=29bc0fb9c1ec9697b6497e1bff3c642c 560w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=840&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=e5ca50f4c1cbbc33fdb327649e20003a 840w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=1100&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=1eadbfc690f7a26fcf1cebc1900289df 1100w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=1650&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=c942fa3df6b8b2673ade8ab0c5e40b89 1650w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/generativeagent/url_prefix.png?w=2500&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=94713b14683fcd02d00b103b79ee12de 2500w" />
+    </Frame>
+  </Tab>
+
+  <Tab title="Import from Zendesk KB">
+    Importing from Zendesk KB lets you import articles from your Zendesk Knowledge Base.
+
+    1. Select **Import from Zendesk KB**
+    2. Enter your Zendesk subdomain. This is the unique identifier for your Zendesk account.
+    3. Enter your Zendesk API credentials as an Authentication Method.
+    4. Optionally specify how to filter the content by:
+
+    * Locale
+    * Categories
+    * Sections
+    * Labels
+
+    <Frame>
+      <img src="https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=fed3fc294f77dc3753d701b2a988c7bf" data-og-width="2190" width="2190" data-og-height="1918" height="1918" data-path="images/generativeagent/configuring/zendesk-kb-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=280&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=920a5ffba2152bb726c15bc202361a59 280w, https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=560&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=23eec8bb61686ae213efe57f9398b6c7 560w, https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=840&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=4d332de35b8a16efb15a7100a3d25c7c 840w, https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=1100&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=e691b84de7a7c2e0eb76a584540a2c46 1100w, https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=1650&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=731f279eaf8b054477829157b3ffb84b 1650w, https://mintcdn.com/asapp/lmYFI1iPuxPVNIzz/images/generativeagent/configuring/zendesk-kb-options.png?w=2500&fit=max&auto=format&n=lmYFI1iPuxPVNIzz&q=85&s=3d635f343b4465a4b1b65869f11e6657 2500w" />
     </Frame>
   </Tab>
 
@@ -89,11 +110,11 @@ When adding or modifying a content source, you now have advanced control over ho
 * **Enable with review notification**\
   Scrapes and cleans content every 24 hours. Updates require manual review before deployment.
 * **Enable with auto-deployment**\
-  Scrapes and cleans content every 24 hours. Updates are *immediately* deployed to production, bypassing the review process.
+  Scrapes and cleans content every 24 hours. The system *immediately* deploys updates to production, bypassing the review process.
 * **Turn off**\
   Import content only once. No automated updates.
 
-> You can adjust this setting anytime in the content source management screen. The current sync mode is visually indicated for each source.
+> You can adjust this setting anytime in the content source management screen. The system visually indicates the current sync mode for each source.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=1b0293d1770a76dc9d46614ac8a6358a" alt="Auto-deploy indicator in Production table" data-og-width="640" width="640" data-og-height="348" height="348" data-path="images/generativeagent/KBLastActivityAutoDeploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=280&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=0f1981047af2604d7567a9531a84f23a 280w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=560&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=52d568402102adf4e8ca35cd0d21536c 560w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=840&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=0256e93fdb9614c837396953de07c6de 840w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=1100&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=f6169b9447fd48e5fd3dca98e1ba08df 1100w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=1650&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=84be7b5556a89581a0a3e0599146c6ad 1650w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/KBLastActivityAutoDeploy.png?w=2500&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=49f16e6042f43ff42ac283a28726aa83 2500w" />
@@ -110,7 +131,7 @@ You can override the sync and deployment setting of the content source for speci
 </Frame>
 
 2. In the dialog, enable **refresh frequency** for updates every 15 minutes.
-   * Updates will be auto-deployed to production immediately, even if your content source normally requires review.
+   * The system will auto-deploy updates to production immediately, even if your content source normally requires review.
    * Disabling will revert to the content source's settings.
 
 <Frame>
@@ -125,7 +146,7 @@ You can override the sync and deployment setting of the content source for speci
 
 Once imported and configured, deploy your Knowledge Base and changes to your desired environment for GenerativeAgent. This ensures users receive the most accurate and timely information.
 
-Deployment is managed as part of the [generative agent deployment process](/generativeagent/configuring/deploying-to-generativeagent).
+You manage deployment as part of the [generative agent deployment process](/generativeagent/configuring/deploying-to-generativeagent).
 
 ## Reviewing Imported Articles
 
@@ -143,14 +164,14 @@ You can choose between a cleaned-up or raw version of each article before publis
   <img src="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=0685331e2e0d35d33014d06360c1b670" data-og-width="1600" width="1600" data-og-height="991" height="991" data-path="images/generativeagent/DetailedReview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=280&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=cb6794c09344d5eeb57abd429a9f1370 280w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=560&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=043cccf33fea1428b1fb9fe55490ff47 560w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=840&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=a5f568c7274ed2ccb421ab34d2a53914 840w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=1100&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=a8610d50653b9edfeb1ad7c0887a766e 1100w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=1650&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=ca463d5f5caccff0f7fe0b6f841ecdac 1650w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/generativeagent/DetailedReview.png?w=2500&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=9ff6cc31d23db3891dbba86ec33bf2d3 2500w" />
 </Frame>
 
-> If an article is updated (by new crawl or API update), the same rules apply:
+> If the system updates an article (by new crawl or API update), the same rules apply:
 >
 > * Requires re-review if the parent content source is in review mode
 > * Deploys instantly if in auto-deploy or frequent refresh mode
 
 ## Visual Indicators & Notifications
 
-* Sync and deployment status is shown both for sources and individual articles.
+* The system shows sync and deployment status both for sources and individual articles.
 * Recent auto-sync and deployment activity can be reviewed in audit logs or dashboards.
 
 ***
@@ -183,7 +204,7 @@ Provide special clarifications or company-specific answers:
 
 ### Article Metadata
 
-Use metadata to ensure specific articles are only used for relevant tasks.
+Use metadata to ensure GenerativeAgent uses specific articles only for relevant tasks.
 
 1. Navigate to the article and click **Edit Metadata**.
 2. Add or modify metadata keys to enable targeted article discovery and control.

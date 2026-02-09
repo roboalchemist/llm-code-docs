@@ -1,40 +1,40 @@
 # Source: https://docs.squared.ai/api-reference/syncs/sync_configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Sync Configurations
+
+
 
 ## OpenAPI
 
 ````yaml Get /api/v1/syncs/configurations
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/configurations
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+  /api/v1/syncs/configurations:
+    get:
+      tags:
+        - Syncs
+      summary: Get report data based on given type
+      operationId: getConfigurations
+      responses:
+        '200':
+          description: Successfully retrieved report data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     description: Data object containing configuration details.
                     properties:
                       configurations:
@@ -171,42 +171,13 @@ paths:
                                             description: >-
                                               Expression to perform regex replace
                                               operation.
-        examples:
-          example:
-            value:
-              data:
-                configurations:
-                  catalog_mapping_types:
-                    standard: <string>
-                    static:
-                      string:
-                        type: string
-                        description: <string>
-                      number:
-                        type: float
-                        description: <string>
-                      boolean:
-                        type: boolean
-                        description: <string>
-                      'null':
-                        description: <string>
-                    template:
-                      variable:
-                        current_timestamp:
-                          type: datetime
-                          description: <string>
-                          value: <string>
-                      filter:
-                        cast:
-                          description: <string>
-                          value: <string>
-                        regex_replace:
-                          description: <string>
-                          value: <string>
-        description: Successfully retrieved report data.
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

@@ -1,11 +1,15 @@
 # Source: https://docs.pinecone.io/integrations/build-integration/attribute-usage-to-your-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attribute usage to your integration
 
 Once you have created your integration with Pinecone, specify a **source tag** when instantiating clients with Pinecone SDKs, or pass a source tag as part of the `User-Agent` header when using the API directly.
 
 <Note>
-  Anyone can create an integration, but [becoming an official Pinecone partner](/integrations/build-integration/become-a-partner) can help accelerate your go-to-market and add value to your customers.
+  Anyone can create an integration, but [becoming an official Pinecone partner](/integrations/build-integration/integration-ecosystem) can help accelerate your go-to-market and add value to your customers.
 </Note>
 
 ### Source tag naming conventions
@@ -19,13 +23,13 @@ For example, for an integration called "New Framework", `"new_framework"` is val
 
 ### Specify a source tag
 
-| Pinecone SDK                    | Required version |
-| ------------------------------- | ---------------- |
-| [Python](/reference/python-sdk) | v3.2.1+          |
-| [Node.js](/reference/node-sdk)  | v2.2.0+          |
-| [Java](/reference/java-sdk)     | v1.0.0+          |
-| [Go](/reference/go-sdk)         | v0.4.1+          |
-| [.NET](/reference/dotnet-sdk)   | v1.0.0+          |
+| Pinecone SDK                              | Required version |
+| ----------------------------------------- | ---------------- |
+| [Python](/reference/sdks/python/overview) | v3.2.1+          |
+| [Node.js](/reference/sdks/node/overview)  | v2.2.0+          |
+| [Java](/reference/sdks/java/overview)     | v1.0.0+          |
+| [Go](/reference/sdks/go/overview)         | v0.4.1+          |
+| [.NET](/reference/sdks/dotnet/overview)   | v1.0.0+          |
 
 <CodeGroup>
   ```python Python theme={null}
@@ -90,6 +94,6 @@ For example, for an integration called "New Framework", `"new_framework"` is val
     -H "Accept: application/json" \
     -H "Api-Key: YOUR_API_KEY" \
     -H "User-Agent: source_tag=YOUR_SOURCE_TAG" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>

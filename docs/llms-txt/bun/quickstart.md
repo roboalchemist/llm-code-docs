@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Build your first app with Bun
@@ -92,7 +96,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
       Then add the following to your `compilerOptions` in `tsconfig.json`:
 
-      ```json tsconfig.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+      ```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
       {
         "compilerOptions": {
           "lib": ["ESNext"],
@@ -216,7 +220,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
 Bun can also execute `"scripts"` from your `package.json`. Add the following script:
 
-```json package.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "quickstart",
   "module": "index.ts",

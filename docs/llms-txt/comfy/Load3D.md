@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/Load3D.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Load3D - ComfyUI Built-in Node Documentation
 
 > The Load3D node is a core node in ComfyUI for loading and previewing various 3D model files, supporting multi-format import and rich three-dimensional view operations.

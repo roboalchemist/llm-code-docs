@@ -2,210 +2,85 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3.md
+# Amazon S3
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
+## Connect AI Squared to Amazon S3
 
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
-
-# S3
-
-## Connect AI Squared to S3
-
-This page describes how to add AWS S3 as a source.
-
-AI Squared lets you pull data from CSV and Parquet files stored in an Amazon S3 bucket and push them to downstream destinations. To get started, you need an S3 bucket and AWS credentials.
-
-## Connector Configuration and Credentials Guide
+This guide will help you configure the Amazon S3 Connector in AI Squared to access and transfer data to your S3 bucket.
 
 ### Prerequisites
 
-Before proceeding, ensure you have the necessary information based on how you plan to authenticate to AWS. The two types of authentication we support are:
+Before proceeding, ensure you have the necessary personal access key, secret access key, region, bucket name, and file path from your S3 account.
 
-* IAM User with access id and secret access key.
-* IAM Role with ARN configured with an external ID so that AI Square can connect to your S3 bucket.
+## Step-by-Step Guide to Connect to Amazon S3
 
-Additional info you will need regardless of authentication type will be:
+## Step 1: Navigate to AWS Console
 
-* Region
-* Bucket name
-* The type of file we are working with (CSV or Parquet)
-* Path to the CSV or Parquet files
+Start by logging into your AWS Management Console.
 
-### Setting Up AWS Requirements
+1. Sign in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
 
-<AccordionGroup>
-  <Accordion title="Steps to Retrieve or Create an IAM Role User credentials">
-    <Steps>
-      <Step title="Sign In">
-        Log in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
-      </Step>
+## Step 2: Locate AWS Configuration Details
 
-      <Step title="Users">
-        Navigate to the the **Users**. This can be found in the left navigation under "Access Management" -> "Users".
+Once you're in the AWS console, you'll find the necessary configuration details:
 
-        <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_view.png" />
-        </Frame>
-      </Step>
+1. **Access Key and Secret Access Key:**
 
-      <Step title="Access/Secret Key">
-        Once inside the Users page, Select the User you would like to authenticate with. If there are no users to select, create one and make sure to give it the required permissions to read from S3 buckets. If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Secret Access Key as they are shown only once.
-        After selecting the user, go to **Security Credentials** tab and in it you should be able to see the Access keys for that user.
+   * Click on your username at the top right corner of the AWS Management Console.
+   * Choose "Security Credentials" from the dropdown menu.
+   * In the "Access keys" section, you can create or view your access keys.
+   * If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+     </Frame>
 
-        <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_access_key.png" />
-        </Frame>
-      </Step>
-    </Steps>
-  </Accordion>
+2. **Region:**
+   * The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Sagemaker resources is located and note down the region.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442701/Multiwoven/connectors/amazon_S3/AmazonS3_Region_xpszth.png" />
+     </Frame>
 
-  <Accordion title="Steps to Retrieve or Create an IAM Role ARN">
-    <Steps>
-      <Step title="Sign In">
-        Log in to your AWS account at [AWS Management Console](https://aws.amazon.com/console/).
-      </Step>
+3. **Bucket Name:**
+   * The S3 Bucket name can be found by selecting "General purpose buckets" on the left hand corner of the S3 Console. From there select the bucket you want to use and note down its name.
+     <Frame>
+       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442700/Multiwoven/connectors/amazon_S3/AmazonS3_Bucket_msmuow.png" />
+     </Frame>
 
-      <Step title="External ID">
-        The ARN is going to need an external ID which will be required during the configuration of the S3 source connector. The external ID will allow us to reach out to you S3 buckets and read data from it.
-        You can generate an external Id using this [GUID generator tool](https://guidgenerator.com/). [Learn more about AWS STS external ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html).
-      </Step>
+4. **File Path**
+   * After select your S3 bucket you can create a folder where you want your file to be stored or use an exist one.
+   <Frame>
+     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442700/Multiwoven/connectors/amazon_S3/AmazonS3_File_Path_djofzv.png" />
+   </Frame>
 
-      <Step title="Roles">
-        Navigate to the the **Roles**. This can be found in the left navigation under "Access Management" -> "Roles".
+## Step 3: Configure Amazon S3 Connector in Your Application
 
-        <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_roles_view.png" />
-        </Frame>
-      </Step>
+Now that you have gathered all the necessary details, enter the following information in your application:
 
-      <Step title="Create or Select an existing role">
-        Select an existing role to edit or create a new one by clicking on "Create Role".
-      </Step>
-
-      <Step title="ARN Premissions Policy">
-        The "Permissions Policy" should look something like this:
-
-        ```
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-               {
-                     "Sid": "VisualEditor0",
-                     "Effect": "Allow",
-                     "Action": [
-                        "s3:GetObject",
-                        "s3:GetObjectVersion",
-                        "s3:ListBucket"
-                     ],
-                     "Resource": [
-                        "arn:aws:s3:::{your-bucket-name}",
-                        "arn:aws:s3:::{your-bucket-name}/*"
-                     ]
-               }
-            ]
-         }
-        ```
-      </Step>
-
-      <Step title="ARN Trust Relationship">
-        The "Trust Relationship" should look something like this:
-
-        ```
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-               {
-                     "Sid": "Statement1",
-                     "Effect": "Allow",
-                     "Principal": {
-                        "AWS": "{iam-user-principal-arn}"
-                     },
-                     "Action": "sts:AssumeRole",
-                     "Condition": {
-                        "StringEquals": {
-                           "sts:ExternalId": "{generated-external-id}"
-                        }
-                     }
-               }
-            ]
-         }
-        ```
-      </Step>
-    </Steps>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Locate AWS S3 Configuration Details
-
-Now you should be in the AWS and have found your credentials. Now we will navigate to the S3 service to find the necessary configuration details:
-
-1. **IAM User Access Key and Secret Access Key or IAM Role ARN and External ID:**
-   * This has been gathered from the previous step.
-
-2. **Bucket:**
-   * Once inside of the AWS S3 console you should be able to see the list of buckets available, if not go ahead and create a bucket by clicking on the "Create bucket" button.
-
-3. **Region:**
-   * In the same list showing the buckets, there's a region assotiated with it.
-
-4. **Path:**
-   * The path where the file you wish to read from. This field is optional and can be left blank.
-
-5. **File type:**
-   * The files within the path that was selected should help determine the file type.
-
-### Step 3: Configure S3 Connector in Your Application
-
-Now that you have gathered all the necessary details enter the following information:
-
-* **Region:** The AWS region where your S3 bucket resources are located.
-* **Access Key ID:** Your AWS IAM user's Access Key ID.
+* **Personal Access Key:** Your AWS IAM user's Access Key ID.
 * **Secret Access Key:** The corresponding Secret Access Key.
-* **Bucket:** The name of the bucket you want to use.
-* **Path:** The path directory where the files are located at.
-* **File type:** The type of file (csv, parquet).
+* **Region:** The AWS region where your Sagemaker resources are located.
+* **Bucket Name:** The Amazon S3 Bucket you want to access.
+* **File Path:** The Path to the directory where files will be written.
+* **File Name:** The Name of the file to be written.
 
-### Step 4: Test the S3 Connection
+## Step 4: Test the Amazon S3 Connection
 
 After configuring the connector in your application:
 
 1. Save the configuration settings.
-2. Test the connection to S3 from your application to ensure everything is set up correctly.
-3. Run a test query or check the connection status to verify successful connectivity.
+2. Test the connection to Amazon S3 from your application to ensure everything is set up correctly.
 
-Your S3 connector is now configured and ready to query data from your S3 data catalog.
+By following these steps, you’ve successfully set up an Amazon S3 destination connector in AI Squared. You can now efficiently transfer data to your Amazon S3 endpoint for storage or further distribution within AI Squared.
 
-## Building a Model Query
-
-The S3 source connector is powered by [DuckDB S3 api support](https://duckdb.org/docs/extensions/httpfs/s3api.html). This allows us to use
-SQL queries to describe and/or fetch data from an S3 bucket, for example:
-
-```
-SELECT * FROM 's3://my-bucket/path/to/file/file.parquet';
-```
-
-From the example, we can notice some details that are required in order to perform the query:
-
-* **FROM command: `'s3://my-bucket/path/to/file/file.parquet'`** You need to provide a value in the same format as the example.
-* **Bucket: `my-bucket`** In that format you will need to provide the bucket name. The bucket name needs to be
-  the same one provided when configuring the S3 source connector.
-* **Path: `/path/to/file`** In that format you will need to provide the path to the file. The path needs to be
-  the same one provided when configuring the S3 source connector.
-* **File name and type: `file.parquet`** In that format you will need to provide the file name and type at the end of the path. The file type needs to be
-  the same one provided when configuring the S3 source connector.
-
-## Supported sync modes
+### Supported sync modes
 
 | Mode             | Supported (Yes/No/Coming soon) |
 | ---------------- | ------------------------------ |
 | Incremental sync | YES                            |
-| Full refresh     | YES                            |
+| Full refresh     | Coming soon                    |
+
+This guide will help you seamlessly connect your AI Squared application to MariaDB, enabling you to leverage your database's full potential.

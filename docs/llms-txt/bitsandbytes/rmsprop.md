@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/rmsprop.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/rmsprop.md
 
 # RMSprop
 
@@ -8,17 +8,17 @@ RMSprop is an adaptive learning rate optimizer that is very similar to `Adagrad`
 
 #### bitsandbytes.optim.RMSprop[[bitsandbytes.optim.RMSprop]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/rmsprop.py#L8)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/rmsprop.py#L8)
 
 ## RMSprop8bit[[bitsandbytes.optim.RMSprop8bit]]
 
 #### bitsandbytes.optim.RMSprop8bit[[bitsandbytes.optim.RMSprop8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/rmsprop.py#L72)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/rmsprop.py#L72)
 
 ## RMSprop32bit[[bitsandbytes.optim.RMSprop32bit]]
 
 #### bitsandbytes.optim.RMSprop32bit[[bitsandbytes.optim.RMSprop32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/rmsprop.py#L135)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/rmsprop.py#L135)
 

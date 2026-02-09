@@ -2,138 +2,98 @@
 
 # Source: https://upstash.com/docs/redis/quickstarts/laravel.md
 
-# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/quickstarts/laravel.md
+# Laravel
 
-# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
+## Project Setup
 
-# Source: https://upstash.com/docs/redis/quickstarts/laravel.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/laravel.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/laravel.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
-
-# Getting Started with Laravel
-
-`upstash/vector-laravel` is a dedicated Laravel SDK for Upstash Vector, that is built on top of our official PHP SDK.
-
-By using `upstash/vector-laravel` you will be able to:
-
-* Integrate Upstash Vector by only installing the package and setting environment variables.
-* A native Vector facade to interact with your vector database.
-* Able to maintain multiple index connections in your application.
-
-You can find the Github Repository [here](https://github.com/upstash/vector-laravel).
-
-## Install
-
-To install the SDK, you can use composer:
-
-```shell composer theme={"system"}
-composer require upstash/vector-laravel
-```
-
-## Setup
-
-There are two pieces of configuration required to use the Upstash vector client: a REST token and REST URL. These values can be passed using environment variables or in code through the initialization of the Index. Find your configuration values in the console dashboard at [https://console.upstash.com/](https://console.upstash.com/).
-
-```bash  theme={"system"}
-UPSTASH_VECTOR_REST_URL="your_rest_url"
-UPSTASH_VECTOR_REST_TOKEN="your_rest_token"
-```
-
-## Usage
-
-Our Laravel SDK will configure your index into the Laravel Service Container. You can access it by calling the `Vector` facade
-or by injecting the `IndexInterface` into your controllers.
-
-### Vector Facade
-
-When these environment variables are set, you can start using your Index by calling the `Vector` facade.
-
-```php  theme={"system"}
-use Upstash\Vector\Laravel\Facades\Vector;
-
-Vector::getInfo(); // Fetches the index info.
-```
-
-### Dependency Injection
-
-If you prefer to avoid using the facade, you can inject the `IndexInterface` into your controllers.
-
-```php  theme={"system"}
-namespace App\Http\Controllers;
-
-use Upstash\Vector\Contracts\IndexInterface;
-
-class Controller
-{
-    public function index(IndexInterface $index)
-    {
-        $namespaces = $index->listNamespaces();
-        
-        return response()->json(['namespaces' => $namespaces]);
-    }
-}
-```
-
-## Configuration
-
-You can also configure the SDK to be able to use multiple indexes in your application.
-
-For doing that you can publish the configuration file by running the following command:
+To get started, let’s create a new Laravel application. If you don’t have the Laravel CLI installed globally, install it first using Composer:
 
 ```shell  theme={"system"}
-php artisan vendor:publish --tag="vector-config"
+composer global require laravel/installer
 ```
 
-You'll get a new file under `config/vector.php` that you can edit to add your indexes.
+After installation, create your Laravel project:
+
+```shell  theme={"system"}
+laravel new example-app
+cd example-app
+```
+
+Alternatively, if you don’t want to install the Laravel CLI, you can create a project using Composer:
+
+```shell  theme={"system"}
+composer create-project laravel/laravel example-app
+cd example-app
+```
+
+## Database Setup
+
+Create a Redis database using [Upstash Console](https://console.upstash.com). Go to the **Connect to your database** section and click on Laravel. Copy those values into your .env file:
+
+```shell .env theme={"system"}
+REDIS_HOST="<YOUR_ENDPOINT>"
+REDIS_PORT=6379
+REDIS_PASSWORD="<YOUR_PASSWORD>"
+```
+
+## Framework Integration
+
+Upstash Redis integrates seamlessly with Laravel, allowing it to be used as a driver for multiple framework components.
+
+### Interact with Redis
+
+The Redis Facade in Laravel provides a convenient way to interact with your Redis database. For example:
 
 ```php  theme={"system"}
-return [
-    'default' => env('UPSTASH_VECTOR_CONNECTION', 'default'),
+use Illuminate\Support\Facades\Redis;
 
-    'connections' => [
-        'default' => [
-            'url' => env('UPSTASH_VECTOR_REST_URL'),
-            'token' => env('UPSTASH_VECTOR_REST_TOKEN'),
-        ],
-    ],
-];
+// Storing a value in Redis
+Redis::set('key', 'value');
+
+// Retrieving a value from Redis
+$value = Redis::get('key');
 ```
 
-### Multiple Connections
+This can be particularly useful for simple caching or temporary data storage.
 
-If you want to use multiple connections in your application, you can add them to the `connections` array as shown below:
+### Cache
+
+To use Upstash Redis as your caching driver, update the CACHE\_STORE in your .env file:
+
+```shell .env theme={"system"}
+CACHE_STORE="redis"
+REDIS_CACHE_DB="0"
+```
+
+With this configuration, you can use Laravel’s caching functions, such as:
 
 ```php  theme={"system"}
-return [
-    'default' => env('UPSTASH_VECTOR_CONNECTION', 'default'),
-
-    'connections' => [
-        'default' => [
-            'url' => env('UPSTASH_VECTOR_REST_URL'),
-            'token' => env('UPSTASH_VECTOR_REST_TOKEN'),
-        ],
-        'another' => [
-            'url' => env('SECOND_UPSTASH_VECTOR_REST_URL'),
-            'token' => env('SECOND_UPSTASH_VECTOR_REST_TOKEN'),
-        ],
-    ],
-];
+Cache::put('key', 'value', now()->addMinutes(10));
+$value = Cache::get('key');
 ```
 
-To access a specific connection, you can use the `connection` method:
+For more advanced cache configurations, see the [Laravel Cache Documentation](https://laravel.com/docs/cache).
 
-```php  theme={"system"}
-use Upstash\Vector\Laravel\Facades\Vector;
+### Session
 
-Vector::connection('another')->getInfo();
+Laravel can store session data in Upstash Redis. To enable this, set the SESSION\_DRIVER in your .env file:
+
+```shell .env theme={"system"}
+SESSION_DRIVER="redis"
 ```
+
+This ensures that session data is stored in your Upstash Redis database, providing fast and reliable session management.
+
+### Queue
+
+Upstash Redis can also serve as a driver for Laravel’s queue system, enabling job processing. To configure this, update the QUEUE\_CONNECTION in your .env file:
+
+```shell .env theme={"system"}
+QUEUE_CONNECTION="redis"
+```
+
+For detailed queue configurations and usage, refer to the [Laravel Queues Documentation](https://laravel.com/docs/queues).

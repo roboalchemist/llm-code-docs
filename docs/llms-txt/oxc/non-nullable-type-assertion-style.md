@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/non-nullable-type-assertion-style.md
 ---
-# typescript/non-nullable-type-assertion-style&#x20;
 
 ### What it does
 

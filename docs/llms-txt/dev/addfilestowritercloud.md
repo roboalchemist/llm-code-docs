@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/addfilestowritercloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add files to Writer Cloud
 
 Uploads files to the Writer platform.
@@ -189,7 +193,7 @@ Below are the possible end states of the block call.
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error uploading the files.</td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/ai-agent/actions/tutorials/fetch-and-email-order-confirmation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 1. Fetch and Email Order Confirmation
 
 In this tutorial, you'll build a simple but real-world flow that (1) fetches order data from an API via the [HTTP Request action](/ai-agent/actions/http-request), and (2) sends an email confirmation to the user with the [Send Email action](/ai-agent/actions/send-email).

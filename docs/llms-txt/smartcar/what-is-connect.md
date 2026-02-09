@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/what-is-connect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is Connect?
 
 Smartcar Connect is the fastest and most transparent way to collect user consent. Before you can make API requests to a car, your customer needs to link the vehicle to your app. It’s a simple process for your users to enroll their vehicles:

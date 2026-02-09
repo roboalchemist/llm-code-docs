@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/create-an-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an index
 
 > Create dense or sparse indexes for semantic and lexical search.
@@ -178,7 +182,7 @@ Other parameters are optional. See the [API reference](/reference/api/latest/con
   curl -X POST "https://api.pinecone.io/indexes/create-for-model" \
        -H "Content-Type: application/json" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-04" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
              "name": "integrated-dense-curl",
              "cloud": "aws",
@@ -374,7 +378,7 @@ Other parameters are optional. See the [API reference](/reference/api/latest/con
        -H "Accept: application/json" \
        -H "Content-Type: application/json" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-04" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
              "name": "standard-dense-curl",
              "vector_type": "dense",
@@ -573,7 +577,7 @@ Other parameters are optional. See the [API reference](/reference/api/latest/con
   curl -X POST "https://api.pinecone.io/indexes/create-for-model" \
        -H "Content-Type: application/json" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-04" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
              "name": "integrated-sparse-curl",
              "cloud": "aws",
@@ -745,7 +749,7 @@ Other parameters are optional. See the [API reference](/reference/api/latest/con
        -H "Accept: application/json" \
        -H "Content-Type: application/json" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-04" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
               "name": "standard-sparse-curl",
               "vector_type": "sparse",
@@ -808,7 +812,7 @@ For example, let's say you want to store records that represent chunks of a docu
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-10" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "name": "example-index-metadata",
           "vector_type": "dense",
@@ -853,7 +857,7 @@ For example, let's say you want to store records that represent chunks of a docu
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-10" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "name": "example-namespace",
           "schema": {
@@ -889,7 +893,7 @@ To check which metadata fields are indexed, you can describe the index or namesp
 
   curl -X GET "https://api.pinecone.io/indexes/example-index-metadata" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-10"
+       -H "X-Pinecone-Api-Version: 2025-10"
   ```
 
   ```shell Describe namespace theme={null}
@@ -900,7 +904,7 @@ To check which metadata fields are indexed, you can describe the index or namesp
 
   curl -X GET "https://$INDEX_HOST/namespaces/example-namespace" \
        -H "Api-Key: $PINECONE_API_KEY" \
-       -H "X-Pinecone-API-Version: 2025-10"
+       -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 

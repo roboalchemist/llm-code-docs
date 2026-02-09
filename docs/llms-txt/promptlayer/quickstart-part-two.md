@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/quickstart-part-two.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart - Pt 2
 
 <Info>This continues from [Quickstart Part 1](/quickstart), where we built a cake recipe generator prompt.</Info>
@@ -260,8 +264,3 @@ Each workspace has its own API key. Switch between workspaces using the dropdown
 * [Deployment Strategies](/onboarding-guides/deployment-strategies) - Caching, webhooks, and production patterns
 * [Tutorial Videos](/tutorial-videos) - Watch walkthroughs of common workflows
 * [API Reference](/reference) - Full SDK documentation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

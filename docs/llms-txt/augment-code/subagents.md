@@ -1,45 +1,33 @@
 # Source: https://docs.augmentcode.com/cli/subagents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Subagents
 
 > Configure custom agents for specific tasks to automate your workflow and share them with your team.
 
-export const Availability = ({tags}) => {
-  const tagTypes = {
-    invite: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    beta: {
-      styles: "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10 text-zinc-900 dark:text-zinc-200"
-    },
-    vscode: {
-      styles: "border border-sky-500/20 bg-sky-50/50 dark:border-sky-500/30 dark:bg-sky-500/10 text-sky-900 dark:text-sky-200"
-    },
-    jetbrains: {
-      styles: "border border-amber-500/20 bg-amber-50/50 dark:border-amber-500/30 dark:bg-amber-500/10 text-amber-900 dark:text-amber-200"
-    },
-    vim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    neovim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    default: {
-      styles: "bg-gray-200"
-    }
+export const Availability = ({tags = []}) => {
+  const tagColor = {
+    invite: "purple",
+    beta: "gray",
+    "private-preview": "purple",
+    vscode: "blue",
+    jetbrains: "orange",
+    vim: "gray",
+    neovim: "gray",
+    cli: "green"
   };
   return <div className="flex items-center space-x-2 border-b pb-4 border-gray-200 dark:border-white/10">
       <span className="text-sm font-medium">Availability</span>
-      {tags.map(tag => {
-    const tagType = tagTypes[tag] || tagTypes.default;
-    return <div key={tag} className={`px-2 py-0.5 rounded-md text-xs font-medium ${tagType.styles}`}>
-            {tag}
-          </div>;
-  })}
+      {tags.map(tag => <Badge key={tag} size="sm" color={tagColor[tag] || "gray"}>
+          {tag}
+        </Badge>)}
     </div>;
 };
 
-<Availability tags={["private-preview",]} />
+<Availability tags={["cli"]} />
 
 ## About subagents
 
@@ -77,7 +65,7 @@ You can create a subagent manually by creating a configuration file. The configu
 ---
 name: code-review
 description: Code review agent
-model: claude-sonnet-4-5
+model: sonnet4.5
 color: purple
 ---
 
@@ -121,6 +109,20 @@ Subagents are configured in markdown files with YAML frontmatter. Subagents can 
 | `color`       | No       | Color of the agent in the CLI, should be a valid ANSI color name.            |
 | `model`       | No       | Model to use for the agent. If not specified, the CLI default model is used. |
 
+### Supported models
+
+Subagents can use any model available in Auggie. To see a list of available models, run the following command:
+
+```bash  theme={null}
+auggie models list
+```
+
+This will display all supported models along with their identifiers that you can use in your subagent configuration.
+
+<Note>
+  Model availability may vary depending on your Augment subscription and organization settings.
+</Note>
+
 ### Agent prompt
 
 The agent prompt is the main body of the markdown file. The prompt is used to instruct the agent on its role and capabilities. The prompt can include any information that you want to be available to the agent, including specific tools or instructions. The prompt is rendered as markdown and supports code blocks, lists, and other formatting.
@@ -139,7 +141,7 @@ The agent prompt is the main body of the markdown file. The prompt is used to in
 ---
 name: code-review
 description: Code review agent
-model: claude-sonnet-4.5
+model: sonnet4.5
 color: purple
 ---
 
@@ -167,7 +169,7 @@ Review Areas to avoid:
 ---
 name: test-generation
 description: Generates and runs tests for new or modified code
-model: claude-sonnet-4.5
+model: sonnet4.5
 color: green
 ---
 
@@ -200,7 +202,7 @@ Guidelines:
 ---
 name: api-designer
 description: Use for designing REST/GraphQL APIs, OpenAPI specs, and API documentation
-model: claude-sonnet-4.5
+model: sonnet4.5
 color: blue
 ---
 

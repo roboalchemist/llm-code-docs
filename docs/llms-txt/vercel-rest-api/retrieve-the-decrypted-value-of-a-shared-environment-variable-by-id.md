@@ -1,149 +1,134 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/environment/retrieve-the-decrypted-value-of-a-shared-environment-variable-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve the decrypted value of a Shared Environment Variable by id.
 
 > Retrieve the decrypted value of a Shared Environment Variable by id.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/env/{id}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/env/{id}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v1/env/{id}:
+    get:
+      tags:
+        - environment
+      summary: Retrieve the decrypted value of a Shared Environment Variable by id.
+      description: Retrieve the decrypted value of a Shared Environment Variable by id.
+      operationId: getSharedEnvVar
+      parameters:
+        - name: id
+          description: >-
+            The unique ID for the Shared Environment Variable to get the
+            decrypted value.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: >-
-                The unique ID for the Shared Environment Variable to get the
-                decrypted value.
-      query:
-        teamId:
+            description: >-
+              The unique ID for the Shared Environment Variable to get the
+              decrypted value.
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getSharedEnvVar
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.environment.getSharedEnvVar({
-              id: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              created:
-                allOf:
-                  - type: string
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  created:
+                    type: string
                     format: date-time
                     description: The date when the Shared Env Var was created.
                     example: '2021-02-10T13:11:49.180Z'
-              key:
-                allOf:
-                  - type: string
+                  key:
+                    type: string
                     description: The name of the Shared Env Var.
                     example: my-api-key
-              ownerId:
-                allOf:
-                  - nullable: true
+                  ownerId:
+                    nullable: true
                     type: string
                     description: >-
                       The unique identifier of the owner (team) the Shared Env
                       Var was created for.
                     example: team_LLHUOMOoDlqOp8wPE4kFo9pE
-              id:
-                allOf:
-                  - type: string
+                  id:
+                    type: string
                     description: The unique identifier of the Shared Env Var.
                     example: env_XCG7t7AIHuO2SBA8667zNUiM
-              createdBy:
-                allOf:
-                  - nullable: true
+                  createdBy:
+                    nullable: true
                     type: string
                     description: >-
                       The unique identifier of the user who created the Shared
                       Env Var.
                     example: 2qDDuGFTWXBLDNnqZfWPDp1A
-              deletedBy:
-                allOf:
-                  - nullable: true
+                  deletedBy:
+                    nullable: true
                     type: string
                     description: >-
                       The unique identifier of the user who deleted the Shared
                       Env Var.
                     example: 2qDDuGFTWXBLDNnqZfWPDp1A
-              updatedBy:
-                allOf:
-                  - nullable: true
+                  updatedBy:
+                    nullable: true
                     type: string
                     description: >-
                       The unique identifier of the user who last updated the
                       Shared Env Var.
                     example: 2qDDuGFTWXBLDNnqZfWPDp1A
-              createdAt:
-                allOf:
-                  - type: number
+                  createdAt:
+                    type: number
                     description: Timestamp for when the Shared Env Var was created.
                     example: 1609492210000
-              deletedAt:
-                allOf:
-                  - type: number
+                  deletedAt:
+                    type: number
                     description: Timestamp for when the Shared Env Var was (soft) deleted.
                     example: 1609492210000
-              updatedAt:
-                allOf:
-                  - type: number
+                  updatedAt:
+                    type: number
                     description: Timestamp for when the Shared Env Var was last updated.
                     example: 1609492210000
-              value:
-                allOf:
-                  - type: string
+                  value:
+                    type: string
                     description: The value of the Shared Env Var.
-              projectId:
-                allOf:
-                  - items:
+                  projectId:
+                    items:
                       type: string
                     type: array
                     description: >-
@@ -152,9 +137,8 @@ paths:
                     example:
                       - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
                       - prj_2WjyKQmM8ZnGcJsPWMrasEFg
-              type:
-                allOf:
-                  - type: string
+                  type:
+                    type: string
                     enum:
                       - encrypted
                       - sensitive
@@ -164,87 +148,54 @@ paths:
                       The type of this cosmos doc instance, if blank, assume
                       secret.
                     example: encrypted
-              target:
-                allOf:
-                  - items:
+                  target:
+                    items:
                       type: string
                       enum:
                         - production
                         - preview
                         - development
-                      description: environments this env variable targets
                       example: production
+                      description: environments this env variable targets
                     type: array
                     description: environments this env variable targets
                     example: production
-              applyToAllCustomEnvironments:
-                allOf:
-                  - type: boolean
+                  applyToAllCustomEnvironments:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       whether or not this env varible applies to custom
                       environments
-              decrypted:
-                allOf:
-                  - type: boolean
+                  decrypted:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: whether or not this env variable is decrypted
-              comment:
-                allOf:
-                  - type: string
+                  comment:
+                    type: string
                     description: >-
                       A user provided comment that describes what this Shared
                       Env Var is for.
-              lastEditedByDisplayName:
-                allOf:
-                  - type: string
+                  lastEditedByDisplayName:
+                    type: string
                     description: The last editor full name or username.
-        examples:
-          example:
-            value:
-              created: '2021-02-10T13:11:49.180Z'
-              key: my-api-key
-              ownerId: team_LLHUOMOoDlqOp8wPE4kFo9pE
-              id: env_XCG7t7AIHuO2SBA8667zNUiM
-              createdBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-              deletedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-              updatedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-              createdAt: 1609492210000
-              deletedAt: 1609492210000
-              updatedAt: 1609492210000
-              value: <string>
-              projectId:
-                - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-                - prj_2WjyKQmM8ZnGcJsPWMrasEFg
-              type: encrypted
-              target: production
-              applyToAllCustomEnvironments: true
-              decrypted: true
-              comment: <string>
-              lastEditedByDisplayName: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

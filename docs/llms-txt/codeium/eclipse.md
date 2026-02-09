@@ -1,6 +1,17 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/eclipse.md
 
-# Eclipse
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Eclipse Troubleshooting
+
+> Troubleshoot Eclipse plugin issues including startup problems, empty chat screen, WebView2, and certificate errors with Java keystore solutions.
+
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Eclipse plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 

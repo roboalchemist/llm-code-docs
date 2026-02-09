@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Text2SQL.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text-to-SQL
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Text2SQL/Text2SQL.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2023-08-12</div>
@@ -530,8 +534,3 @@ See results for text-2-sql-1706755609 at https://www.braintrust.dev/app/braintru
 ## Wrapping up
 
 Congrats 🎉. You've run your first couple of experiments. Now, return back to the tutorial docs to proceed to the next step where we'll analyze the experiments.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

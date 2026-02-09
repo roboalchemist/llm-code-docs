@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/realtime/react-hooks/swr.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SWR hooks
 
 > Fetch and cache data using SWR-based hooks
@@ -16,7 +20,7 @@ SWR hooks use the [swr](https://swr.vercel.app/) library to fetch data once and 
 
 The `useRun` hook allows you to fetch a run by its ID.
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRun } from "@trigger.dev/react-hooks";
@@ -33,7 +37,7 @@ export function MyComponent({ runId }: { runId: string }) {
 
 The `run` object returned is the same as the [run object](/management/runs/retrieve) returned by the Trigger.dev API. To correctly type the run's payload and output, you can provide the type of your task to the `useRun` hook:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 import { useRun } from "@trigger.dev/react-hooks";
 import type { myTask } from "@/trigger/myTask";
 

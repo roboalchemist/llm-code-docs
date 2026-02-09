@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/step-2-configure-content-source-and-ingest-content/select-sites.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content/select-sites.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/step-2-configure-content-source-and-ingest-content/select-sites.md
-
 # Select sites
 
 Select the sites where your documents and articles are available. You can view all available folders from your content source and choose any number of sites by selecting the checkbox next to them. Click `Next`.

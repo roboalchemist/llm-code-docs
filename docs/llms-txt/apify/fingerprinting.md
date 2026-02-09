@@ -10,7 +10,7 @@ Browser fingerprinting is a method that some websites use to collect information
 
 Yup! Surprisingly enough, browsers provide a lot of information about the user (and even their machine) that is accessible to websites! Browser fingerprinting wouldn't even be possible if it weren't for the sheer amount of information browsers provide, and the fact that each fingerprint is unique.
 
-Based on https://www.eff.org/press/archives/2010/05/13 carried out by the Electronic Frontier Foundation, 84% of collected fingerprints are globally exclusive, and they found that the next 9% were in sets with a size of two. They also stated that even though fingerprints are dynamic, new ones can be matched up with old ones with 99.1% correctness. This makes fingerprinting a very viable option for websites that want to track the online behavior of their users in order to serve hyper-personalized advertisements to them. In some cases, it is also used to aid in preventing bots from accessing the websites (or certain sections of it).
+Based on [research](https://www.eff.org/press/archives/2010/05/13) carried out by the Electronic Frontier Foundation, 84% of collected fingerprints are globally exclusive, and they found that the next 9% were in sets with a size of two. They also stated that even though fingerprints are dynamic, new ones can be matched up with old ones with 99.1% correctness. This makes fingerprinting a very viable option for websites that want to track the online behavior of their users in order to serve hyper-personalized advertisements to them. In some cases, it is also used to aid in preventing bots from accessing the websites (or certain sections of it).
 
 ## What makes up a fingerprint?
 
@@ -18,7 +18,7 @@ To collect a good fingerprint, websites must collect them from various places.
 
 ### From HTTP headers
 
-Several https://docs.apify.com/academy/concepts/http-headers.md can be used to create a fingerprint about a user. Here are some of the main ones:
+Several HTTP headers can be used to create a fingerprint about a user. Here are some of the main ones:
 
 1. **User-Agent** provides information about the browser and its operating system (including its versions).
 2. **Accept** tells the server what content types the browser can render and send, and **Content-Encoding** provides data about the content compression.
@@ -33,7 +33,7 @@ A few other headers commonly used for fingerprinting can be seen below:
 
 The `window` is defined as a global variable that is accessible from JavaScript running in the browser. It is home to a vast amount of functions, variables, and constructors, and most of the global configuration is stored there.
 
-Most of the attributes that are used for fingerprinting are stored under the `window.navigator` object, which holds methods and info about the user's state and identity starting with the **User-Agent** itself and ending with the device's battery status. All of these properties can be used to fingerprint a device; however, most fingerprinting solutions (such as https://valve.github.io/fingerprintjs/) only use the most crucial ones.
+Most of the attributes that are used for fingerprinting are stored under the `window.navigator` object, which holds methods and info about the user's state and identity starting with the **User-Agent** itself and ending with the device's battery status. All of these properties can be used to fingerprint a device; however, most fingerprinting solutions (such as [Valve](https://valve.github.io/fingerprintjs/)) only use the most crucial ones.
 
 Here is a list of some of the most crucial properties on the `window` object used for fingerprinting:
 
@@ -84,13 +84,13 @@ navigator.permissions.query('some_permission');
 
 ### With canvases
 
-This technique is based on rendering https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API scenes to a canvas element and observing the rendered pixels. WebGL rendering is tightly connected with the hardware, and therefore provides high entropy. Here's a quick breakdown of how it works:
+This technique is based on rendering [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) scenes to a canvas element and observing the rendered pixels. WebGL rendering is tightly connected with the hardware, and therefore provides high entropy. Here's a quick breakdown of how it works:
 
-1. A JavaScript script creates a https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API and renders some font or a custom shape.
+1. A JavaScript script creates a [<canvas> element](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) and renders some font or a custom shape.
 2. The script then gets the pixel-map from the `<canvas>` element.
 3. The collected pixel-map is stored in a cryptographic hash specific to the device's hardware.
 
-Canvas fingerprinting takes advantage of the CSS3 feature for importing fonts into CSS (called https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts). This means it's not required to use just the machine's preinstalled fonts.
+Canvas fingerprinting takes advantage of the CSS3 feature for importing fonts into CSS (called [WebFonts](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts)). This means it's not required to use just the machine's preinstalled fonts.
 
 Here's an example of multiple WebGL scenes visibly being rendered differently on different machines:
 
@@ -98,7 +98,7 @@ Here's an example of multiple WebGL scenes visibly being rendered differently on
 
 ### From AudioContext
 
-The https://developer.mozilla.org/en-US/docs/Web/API/AudioContext API represents an audio-processing graph built from audio modules linked together, each represented by an https://developer.mozilla.org/en-US/docs/Web/API/AudioNode (https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode).
+The [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext) API represents an audio-processing graph built from audio modules linked together, each represented by an [AudioNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode) ([OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)).
 
 In the simplest cases, the fingerprint can be obtained by checking for the existence of AudioContext. However, this doesn't provide very much information. In advanced cases, the technique used to collect a fingerprint from AudioContext is quite similar to the `<canvas>` method:
 
@@ -110,7 +110,7 @@ In the simplest cases, the fingerprint can be obtained by checking for the exist
 
 ### From BatteryManager
 
-The `navigator.getBattery()` function returns a promise which resolves with a https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager interface. BatteryManager offers information about whether or not the battery is charging, and how much time is left until the battery has fully discharged/charged.
+The `navigator.getBattery()` function returns a promise which resolves with a [BatteryManager](https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager) interface. BatteryManager offers information about whether or not the battery is charging, and how much time is left until the battery has fully discharged/charged.
 
 On its own this method is quite weak, but it can be potent when combined with the `<canvas>` and AudioContext fingerprinting techniques mentioned above.
 
@@ -192,15 +192,15 @@ As mentioned above, many sites obfuscate their fingerprinting scripts to make th
 
 ### Manual de-obfuscation
 
-Almost all sites using fingerprinting and tracking scripts try to protect them as much as much as they can. However, it is impossible to make client-side JavaScript immune to reverse engineering. It is only possible to make reverse engineering difficult and unpleasant for the developer. The procedure used to make the code as unreadable as possible is called https://www.techtarget.com/searchsecurity/definition/obfuscation#:~:text=Obfuscation%20means%20to%20make%20something,code%20is%20one%20obfuscation%20method..
+Almost all sites using fingerprinting and tracking scripts try to protect them as much as much as they can. However, it is impossible to make client-side JavaScript immune to reverse engineering. It is only possible to make reverse engineering difficult and unpleasant for the developer. The procedure used to make the code as unreadable as possible is called [obfuscation](https://www.techtarget.com/searchsecurity/definition/obfuscation#:~:text=Obfuscation%20means%20to%20make%20something,code%20is%20one%20obfuscation%20method.).
 
 When you want to dig inside the protection code to determine exactly which data is collected, you will probably have to deobfuscate it. Be aware that this can be a very time-consuming process. Code deobfuscation can take anywhere up to 1–2 days to be in a semi-readable state.
 
-We recommend watching some videos from https://www.youtube.com/channel/UCJbZGfomrHtwpdjrARoMVaA/videos to learn the tooling necessary to deobfuscate code.
+We recommend watching some videos from [Jarrod Overson on YouTube](https://www.youtube.com/channel/UCJbZGfomrHtwpdjrARoMVaA/videos) to learn the tooling necessary to deobfuscate code.
 
 ### Using browser extensions
 
-Because of how common it has become to obfuscate fingerprinting scripts, there are many extensions that help identify fingerprinting scripts due to the fact that browser fingerprinting is such a big privacy question. Browser extensions such as https://github.com/freethenation/DFPM have been created to help detect them. In the extension's window, you can see a report on which functions commonly used for fingerprinting have been called, and which navigator properties have been accessed.
+Because of how common it has become to obfuscate fingerprinting scripts, there are many extensions that help identify fingerprinting scripts due to the fact that browser fingerprinting is such a big privacy question. Browser extensions such as [Don't Fingerprint Me](https://github.com/freethenation/DFPM) have been created to help detect them. In the extension's window, you can see a report on which functions commonly used for fingerprinting have been called, and which navigator properties have been accessed.
 
 ![Don\&#39;t Fingerprint Me extension window](/assets/images/dont-fingerprint-me-51a71cc91aec391b54c341abe69c3cf6.png)
 
@@ -214,4 +214,4 @@ When dealing with these cases, it's important to sync the generation of headers 
 
 ## Next up
 
-https://docs.apify.com/academy/anti-scraping/techniques/geolocation.md, we'll be covering **geolocation** methods that websites use to grab the location from which a request has been made, and how they relate to anti-scraping.
+[Next up](https://docs.apify.com/academy/anti-scraping/techniques/geolocation.md), we'll be covering **geolocation** methods that websites use to grab the location from which a request has been made, and how they relate to anti-scraping.

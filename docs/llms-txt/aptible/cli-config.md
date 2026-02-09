@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-config.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible config
 
 This command prints an App's [Configuration](/core-concepts/apps/deploying-apps/configuration) variables.
@@ -8,7 +12,7 @@ This command prints an App's [Configuration](/core-concepts/apps/deploying-apps/
 
 ```
 Usage:
-  aptible config
+  aptible config [--app APP]
 
 Options:
       [--app=APP]

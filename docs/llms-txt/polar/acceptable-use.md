@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/merchant-of-record/acceptable-use.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 As your Merchant of Record (MoR), we are the reseller of all digital goods and
@@ -57,19 +61,19 @@ Don’t hesitate to [reach out to us](/support) in advance in case you’re unsu
   * Quickly & poorly executed websites, products or services
   * Services with a lot of bugs and issues
   * Products, services or websites we determine to have a low trust score
-* Fake testimonials, reviews, and social proof. It's deceptive to consumers which is behaviour we do not tolerate.
+* Fake testimonials, reviews, social proof, and review inflation platforms. It's deceptive to consumers which is behaviour we do not tolerate.
 * Trademark violations
 * "Get rich" schemes or content
-* Gambling & betting services
+* Gambling & betting services (including lootboxes, mystery boxes and pack openings of random nature)
 * Regulated services or products
 * Counterfeit goods
 * Job boards
 * NFT & Crypto assets.
-* Cheating: Utilizing cheat codes, hacks, or any unauthorized modifications that alter gameplay or provide an unfair advantage.
+* Cheating: Utilizing macros, cheat codes, hacks, or any unauthorized modifications that alter gameplay or provide an unfair advantage.
 * Reselling Licenses: Selling, distributing, or otherwise transferring software licenses at reduced prices or without proper authorization.
 * Services to circumvent rules or terms of other services: Attempting to bypass, manipulate, or undermine any established rules, gameplay mechanics, or pricing structures of other vendors/games.
 * Financial services, e.g facilitating transactions, investments or balances for customers.
-* Financial trading, brokerage, or investment advisory services (including insights platforms).
+* Financial trading, trading bots, brokerage, or investment advisory services (including insights platforms).
 * Financial advice, e.g content or services related to tax guidance, wealth management, trading signals, investment strategies etc.
 * IPTV services
 * Virus & Spyware
@@ -83,7 +87,9 @@ Don’t hesitate to [reach out to us](/support) in advance in case you’re unsu
 * API & IP cloaking services, e.g services to circumvent IP bans, API rate limits etc.
 * Products or services associated with pseudo-science; clairvoyance, horoscopes, fortune-telling etc.
 * Travel services, reservation services, travel clubs and timeshares
-* Medical advice services or products, e.g. pharmaceutical, weight loss, muscle building.
+* Medical advice services or products, e.g. pharmaceutical, weight loss, muscle building
+* Watermark removal services
+* Third-party content downloaders (e.g., YouTube, Instagram, Snapchat, etc.)
 
 ## Restricted Businesses
 

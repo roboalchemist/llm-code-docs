@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/update.md
+# Source: https://www.mintlify.com/docs/components/update.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Update
 
@@ -32,6 +36,29 @@ Use the `Update` component to display changelog entries, version updates, and re
 
 Use multiple `Update` components to create [changelogs](/create/changelogs).
 
+Update components automatically generate RSS feed entries. The entries contain pure Markdown only--components, code blocks, inline code, and raw HTML elements are not included.
+
+If your update includes components or HTML, use the `rss` prop to provide alternative text for RSS subscribers.
+
+```mdx Custom RSS content theme={null}
+<Update
+  label="March 2025"
+  description="v2.0.0"
+  rss={{
+    title: "March 2025 - Major redesign",
+    description: "Complete UI overhaul with new components"
+  }}
+>
+  ## New dashboard
+
+  <Frame>
+    <img src="/dashboard.png" alt="New dashboard UI displaying updated components." />
+  </Frame>
+
+  Check out our redesigned dashboard with improved navigation.
+</Update>
+```
+
 ## Props
 
 <ResponseField name="label" type="string" required>
@@ -44,4 +71,23 @@ Use multiple `Update` components to create [changelogs](/create/changelogs).
 
 <ResponseField name="description" type="string">
   Description of the update. Appears below the label and tag.
+</ResponseField>
+
+<ResponseField name="rss" type="object">
+  Update components automatically generate RSS feed entries. Use the `rss` property to create a single RSS feed entry with a custom title and description.
+
+  If not provided:
+
+  * Updates with Markdown headings create a separate RSS feed entry for each heading.
+  * Updates without Markdown headings create a single RSS feed entry using the `label` as the title.
+
+  <Expandable title="properties">
+    <ResponseField name="title" type="string">
+      Custom title for the RSS feed entry.
+    </ResponseField>
+
+    <ResponseField name="description" type="string">
+      Custom description for the RSS feed entry.
+    </ResponseField>
+  </Expandable>
 </ResponseField>

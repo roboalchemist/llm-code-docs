@@ -1,202 +1,190 @@
 # Source: https://docs.datafold.com/api-reference/monitors/create-a-metric-monitor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Metric Monitor
+
+
 
 ## OpenAPI
 
 ````yaml openapi-public.json post /api/v1/monitors/create/metric
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/monitors/create/metric
-  method: post
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              alert:
-                allOf:
-                  - anyOf:
-                      - discriminator:
-                          mapping:
-                            absolute: '#/components/schemas/AbsoluteThreshold'
-                            automatic: '#/components/schemas/AnomalyDetectionThreshold'
-                            percentage: '#/components/schemas/PercentageThreshold'
-                          propertyName: type
-                        oneOf:
-                          - $ref: '#/components/schemas/AnomalyDetectionThreshold'
-                          - $ref: '#/components/schemas/AbsoluteThreshold'
-                          - $ref: '#/components/schemas/PercentageThreshold'
-                      - type: 'null'
-                    description: Condition for triggering alerts.
-              connection_id:
-                allOf:
-                  - description: The identifier for the data source configuration.
-                    title: Connection Id
-                    type: integer
-              description:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    description: The description of the monitor.
-                    title: Description
-              enabled:
-                allOf:
-                  - default: true
-                    description: Indicates whether the monitor is enabled.
-                    title: Enabled
-                    type: boolean
-              metric:
-                allOf:
-                  - description: Configuration for the metric being monitored.
-                    discriminator:
-                      mapping:
-                        column: '#/components/schemas/ColumnMetricMonitorConfig'
-                        custom: '#/components/schemas/CustomMetricMonitorConfig'
-                        table: '#/components/schemas/BaseTableMetricMonitorConfig'
-                      propertyName: type
-                    oneOf:
-                      - $ref: '#/components/schemas/BaseTableMetricMonitorConfig'
-                      - $ref: '#/components/schemas/ColumnMetricMonitorConfig'
-                      - $ref: '#/components/schemas/CustomMetricMonitorConfig'
-              name:
-                allOf:
-                  - description: The name of the monitor.
-                    title: Name
-                    type: string
-              notifications:
-                allOf:
-                  - description: Notification configuration for the monitor.
-                    items:
-                      discriminator:
-                        mapping:
-                          email: '#/components/schemas/EmailNotification'
-                          pagerduty: '#/components/schemas/PagerDutyNotification'
-                          slack: '#/components/schemas/SlackNotification'
-                          teams: '#/components/schemas/TeamsNotification'
-                          webhook: '#/components/schemas/WebhookNotification'
-                        propertyName: type
-                      oneOf:
-                        - $ref: '#/components/schemas/EmailNotification'
-                        - $ref: '#/components/schemas/PagerDutyNotification'
-                        - $ref: '#/components/schemas/WebhookNotification'
-                        - $ref: '#/components/schemas/SlackNotification'
-                        - $ref: '#/components/schemas/TeamsNotification'
-                    title: Notifications
-                    type: array
-              schedule:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/IntervalSchedule'
-                      - $ref: '#/components/schemas/CronSchedule'
-                      - $ref: '#/components/schemas/NoneSchedule'
-                    description: The schedule at which the monitor runs.
-              tags:
-                allOf:
-                  - description: Tags associated with the monitor.
-                    items:
-                      type: string
-                    title: Tags
-                    type: array
-            required: true
-            title: MetricMonitorSpecPublic
-            refIdentifier: '#/components/schemas/MetricMonitorSpecPublic'
-            requiredProperties:
-              - schedule
-              - name
-              - connection_id
-              - metric
-        examples:
-          example:
-            value:
-              alert:
-                sensitivity: 50
-                type: <string>
-              connection_id: 123
-              description: <string>
-              enabled: true
-              metric:
-                filter: <string>
-                metric: row_count
-                table: <string>
-                type: table
-              name: <string>
-              notifications:
-                - features:
-                    - attach_csv
-                  recipients:
-                    - <string>
-                  type: email
-              schedule:
-                interval:
-                  every: <string>
-                  type: hourly
-              tags:
-                - <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: Unique identifier for the monitor.
-                    title: Id
-                    type: integer
-            title: ApiPublicCreateMonitorOut
-            refIdentifier: '#/components/schemas/ApiPublicCreateMonitorOut'
-            requiredProperties:
-              - id
-        examples:
-          example:
-            value:
-              id: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /api/v1/monitors/create/metric:
+    post:
+      tags:
+        - Monitors
+      summary: Create a Metric Monitor
+      operationId: create_monitor_metric_api_v1_monitors_create_metric_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricMonitorSpecPublic'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiPublicCreateMonitorOut'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    MetricMonitorSpecPublic:
+      properties:
+        alert:
+          anyOf:
+            - discriminator:
+                mapping:
+                  absolute: '#/components/schemas/AbsoluteThreshold'
+                  automatic: '#/components/schemas/AnomalyDetectionThreshold'
+                  percentage: '#/components/schemas/PercentageThreshold'
+                propertyName: type
+              oneOf:
+                - $ref: '#/components/schemas/AnomalyDetectionThreshold'
+                - $ref: '#/components/schemas/AbsoluteThreshold'
+                - $ref: '#/components/schemas/PercentageThreshold'
+            - type: 'null'
+          description: Condition for triggering alerts.
+        connection_id:
+          description: The identifier for the data source configuration.
+          title: Connection Id
+          type: integer
+        description:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: The description of the monitor.
+          title: Description
+        enabled:
+          default: true
+          description: Indicates whether the monitor is enabled.
+          title: Enabled
+          type: boolean
+        metric:
+          description: Configuration for the metric being monitored.
+          discriminator:
+            mapping:
+              column: '#/components/schemas/ColumnMetricMonitorConfig'
+              custom: '#/components/schemas/CustomMetricMonitorConfig'
+              table: '#/components/schemas/BaseTableMetricMonitorConfig'
+            propertyName: type
+          oneOf:
+            - $ref: '#/components/schemas/BaseTableMetricMonitorConfig'
+            - $ref: '#/components/schemas/ColumnMetricMonitorConfig'
+            - $ref: '#/components/schemas/CustomMetricMonitorConfig'
+        name:
+          description: The name of the monitor.
+          title: Name
+          type: string
+        notifications:
+          description: Notification configuration for the monitor.
+          items:
+            discriminator:
+              mapping:
+                email: '#/components/schemas/EmailNotification'
+                pagerduty: '#/components/schemas/PagerDutyNotification'
+                slack: '#/components/schemas/SlackNotification'
+                teams: '#/components/schemas/TeamsNotification'
+                webhook: '#/components/schemas/WebhookNotification'
+              propertyName: type
+            oneOf:
+              - $ref: '#/components/schemas/EmailNotification'
+              - $ref: '#/components/schemas/PagerDutyNotification'
+              - $ref: '#/components/schemas/WebhookNotification'
+              - $ref: '#/components/schemas/SlackNotification'
+              - $ref: '#/components/schemas/TeamsNotification'
+          title: Notifications
+          type: array
+        schedule:
+          anyOf:
+            - $ref: '#/components/schemas/IntervalSchedule'
+            - $ref: '#/components/schemas/CronSchedule'
+            - $ref: '#/components/schemas/NoneSchedule'
+          description: The schedule at which the monitor runs.
+        tags:
+          description: Tags associated with the monitor.
+          items:
+            type: string
+          title: Tags
+          type: array
+      required:
+        - schedule
+        - name
+        - connection_id
+        - metric
+      title: MetricMonitorSpecPublic
+      type: object
+    ApiPublicCreateMonitorOut:
+      properties:
+        id:
+          description: Unique identifier for the monitor.
+          title: Id
+          type: integer
+      required:
+        - id
+      title: ApiPublicCreateMonitorOut
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    AnomalyDetectionThreshold:
+      properties:
+        sensitivity:
+          description: Sensitivity level for anomaly detection, ranging from 0 to 100.
+          maximum: 100
+          minimum: 0
+          title: Sensitivity
+          type: integer
+        type:
+          const: automatic
+          title: Type
+          type: string
+      required:
+        - type
+        - sensitivity
+      title: Anomaly Detection
+      type: object
     AbsoluteThreshold:
       properties:
         max:
@@ -219,22 +207,29 @@ components:
         - type
       title: Absolute
       type: object
-    AnomalyDetectionThreshold:
+    PercentageThreshold:
       properties:
-        sensitivity:
-          description: Sensitivity level for anomaly detection, ranging from 0 to 100.
-          maximum: 100
-          minimum: 0
-          title: Sensitivity
-          type: integer
+        decrease:
+          anyOf:
+            - type: number
+            - type: integer
+            - type: 'null'
+          description: Threshold for allowable percentage decrease.
+          title: Decrease
+        increase:
+          anyOf:
+            - type: number
+            - type: integer
+            - type: 'null'
+          description: Threshold for allowable percentage increase.
+          title: Increase
         type:
-          const: automatic
+          const: percentage
           title: Type
           type: string
       required:
         - type
-        - sensitivity
-      title: Anomaly Detection
+      title: Percentage
       type: object
     BaseTableMetricMonitorConfig:
       properties:
@@ -263,19 +258,6 @@ components:
         - metric
       title: Table
       type: object
-    ColumnMetricAlias:
-      enum:
-        - minimum
-        - maximum
-        - std_dev
-        - cardinality
-        - uniqueness
-        - median
-        - average
-        - sum
-        - fill_rate
-      title: ColumnMetricAlias
-      type: string
     ColumnMetricMonitorConfig:
       properties:
         column:
@@ -308,21 +290,6 @@ components:
         - metric
       title: Column
       type: object
-    CronSchedule:
-      properties:
-        cron:
-          description: The cron expression that defines the schedule.
-          title: Cron
-          type: string
-        type:
-          const: crontab
-          default: crontab
-          title: Type
-          type: string
-      required:
-        - cron
-      title: Cron
-      type: object
     CustomMetricMonitorConfig:
       properties:
         alert_on_missing_data:
@@ -343,42 +310,6 @@ components:
         - query
       title: Custom
       type: object
-    DayIntervalSchedule:
-      properties:
-        every:
-          const: day
-          title: Every
-          type: string
-        hour:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: The hour at which the monitor should trigger. (0 - 23)
-          title: Hour
-        type:
-          const: daily
-          default: daily
-          title: Type
-          type: string
-        utc_at:
-          anyOf:
-            - format: time
-              type: string
-            - type: 'null'
-          description: The UTC time at which the monitor should trigger.
-          title: Utc At
-      required:
-        - every
-      title: Day
-      type: object
-    DestinationFeatures:
-      enum:
-        - attach_csv
-        - notify_first_triggered_only
-        - disable_recovery_notifications
-        - notify_every_run
-      title: DestinationFeatures
-      type: string
     EmailNotification:
       properties:
         features:
@@ -404,41 +335,6 @@ components:
         - recipients
       title: Email
       type: object
-    HourIntervalSchedule:
-      properties:
-        every:
-          const: hour
-          title: Every
-          type: string
-        type:
-          const: hourly
-          default: hourly
-          title: Type
-          type: string
-      required:
-        - every
-      title: Hour
-      type: object
-    IntervalSchedule:
-      properties:
-        interval:
-          anyOf:
-            - $ref: '#/components/schemas/HourIntervalSchedule'
-            - $ref: '#/components/schemas/DayIntervalSchedule'
-          description: Specifies the scheduling interval.
-      required:
-        - interval
-      title: Interval
-      type: object
-    NoneSchedule:
-      properties:
-        type:
-          const: none
-          default: none
-          title: Type
-          type: string
-      title: None
-      type: object
     PagerDutyNotification:
       properties:
         features:
@@ -462,29 +358,28 @@ components:
         - integration
       title: PagerDuty
       type: object
-    PercentageThreshold:
+    WebhookNotification:
       properties:
-        decrease:
+        features:
           anyOf:
-            - type: number
-            - type: integer
+            - items:
+                $ref: '#/components/schemas/DestinationFeatures'
+              type: array
             - type: 'null'
-          description: Threshold for allowable percentage decrease.
-          title: Decrease
-        increase:
-          anyOf:
-            - type: number
-            - type: integer
-            - type: 'null'
-          description: Threshold for allowable percentage increase.
-          title: Increase
+          description: A list of features to enable for this notification.
+          title: Features
+        integration:
+          description: The identifier for the integration.
+          title: Integration
+          type: integer
         type:
-          const: percentage
+          const: webhook
+          default: webhook
           title: Type
           type: string
       required:
-        - type
-      title: Percentage
+        - integration
+      title: Webhook
       type: object
     SlackNotification:
       properties:
@@ -520,12 +415,6 @@ components:
         - channel
       title: Slack
       type: object
-    TableMetricAlias:
-      enum:
-        - row_count
-        - freshness
-      title: TableMetricAlias
-      type: string
     TeamsNotification:
       properties:
         channel:
@@ -560,6 +449,41 @@ components:
         - channel
       title: Teams
       type: object
+    IntervalSchedule:
+      properties:
+        interval:
+          anyOf:
+            - $ref: '#/components/schemas/HourIntervalSchedule'
+            - $ref: '#/components/schemas/DayIntervalSchedule'
+          description: Specifies the scheduling interval.
+      required:
+        - interval
+      title: Interval
+      type: object
+    CronSchedule:
+      properties:
+        cron:
+          description: The cron expression that defines the schedule.
+          title: Cron
+          type: string
+        type:
+          const: crontab
+          default: crontab
+          title: Type
+          type: string
+      required:
+        - cron
+      title: Cron
+      type: object
+    NoneSchedule:
+      properties:
+        type:
+          const: none
+          default: none
+          title: Type
+          type: string
+      title: None
+      type: object
     ValidationError:
       properties:
         loc:
@@ -581,28 +505,81 @@ components:
         - type
       title: ValidationError
       type: object
-    WebhookNotification:
+    TableMetricAlias:
+      enum:
+        - row_count
+        - freshness
+      title: TableMetricAlias
+      type: string
+    ColumnMetricAlias:
+      enum:
+        - minimum
+        - maximum
+        - std_dev
+        - cardinality
+        - uniqueness
+        - median
+        - average
+        - sum
+        - fill_rate
+      title: ColumnMetricAlias
+      type: string
+    DestinationFeatures:
+      enum:
+        - attach_csv
+        - notify_first_triggered_only
+        - disable_recovery_notifications
+        - notify_every_run
+      title: DestinationFeatures
+      type: string
+    HourIntervalSchedule:
       properties:
-        features:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/DestinationFeatures'
-              type: array
-            - type: 'null'
-          description: A list of features to enable for this notification.
-          title: Features
-        integration:
-          description: The identifier for the integration.
-          title: Integration
-          type: integer
+        every:
+          const: hour
+          title: Every
+          type: string
         type:
-          const: webhook
-          default: webhook
+          const: hourly
+          default: hourly
           title: Type
           type: string
       required:
-        - integration
-      title: Webhook
+        - every
+      title: Hour
       type: object
+    DayIntervalSchedule:
+      properties:
+        every:
+          const: day
+          title: Every
+          type: string
+        hour:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: The hour at which the monitor should trigger. (0 - 23)
+          title: Hour
+        type:
+          const: daily
+          default: daily
+          title: Type
+          type: string
+        utc_at:
+          anyOf:
+            - format: time
+              type: string
+            - type: 'null'
+          description: The UTC time at which the monitor should trigger.
+          title: Utc At
+      required:
+        - every
+      title: Day
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

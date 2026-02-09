@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/autocast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Autocast Plugin
 
 > Automatically convert data in a Flatfile Sheet to match the data types defined in the corresponding Blueprint
@@ -14,7 +18,7 @@ This plugin is useful in any scenario where source data may have inconsistent or
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-autocast
 ```
 
@@ -59,7 +63,7 @@ The `autocast` function accepts the following parameters:
 Apply autocasting to all supported fields on a sheet:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -70,7 +74,7 @@ Apply autocasting to all supported fields on a sheet:
   export default listener;
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -87,7 +91,7 @@ Apply autocasting to all supported fields on a sheet:
 Apply autocasting to only specific fields:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -98,7 +102,7 @@ Apply autocasting to only specific fields:
   export default listener;
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -115,7 +119,7 @@ Apply autocasting to only specific fields:
 Configure field filters and adjust performance settings:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -132,7 +136,7 @@ Configure field filters and adjust performance settings:
   export default listener;
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { autocast } from '@flatfile/plugin-autocast';
 
@@ -155,7 +159,7 @@ Configure field filters and adjust performance settings:
 The plugin also exports individual casting utility functions:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { castNumber, castBoolean, castDate } from '@flatfile/plugin-autocast';
 
   // Cast numbers (handles commas)
@@ -172,7 +176,7 @@ The plugin also exports individual casting utility functions:
   const date2 = castDate(1692144000000); // Returns 'Wed, 16 Aug 2023 00:00:00 GMT'
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { castNumber, castBoolean, castDate, TRecordValue } from '@flatfile/plugin-autocast';
 
   // Cast numbers (handles commas)
@@ -197,7 +201,7 @@ The plugin also exports individual casting utility functions:
 The individual casting utility functions throw errors when values cannot be converted:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { castNumber, castBoolean, castDate } from '@flatfile/plugin-autocast';
 
   try {
@@ -219,7 +223,7 @@ The individual casting utility functions throw errors when values cannot be conv
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { castNumber, castBoolean, castDate } from '@flatfile/plugin-autocast';
 
   try {

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/development-predict.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Development
 
 Use this endpoint to call the [development deployment](/deployment/deployments) of your model.
@@ -25,7 +29,7 @@ https://model-{model_id}.api.baseten.co/development/predict
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -56,7 +60,7 @@ https://model-{model_id}.api.baseten.co/development/predict
   truss predict --model-version DEPLOYMENT_ID -d '{}' # JSON-serializable model input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(

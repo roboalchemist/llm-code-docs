@@ -333,7 +333,7 @@ These are [global significance models](../ranking/significance#significance-mode
 #### significance-en-wikipedia-v1
  |
 | --- |
-| This significance model was generated from [English Wikipedia dump data from 2024-08-01](https://dumps.wikimedia.org/enwiki/20240801/). Available in Vespa as of version 8.426.8. |
+| This significance model was generated from [English Wikipedia dump data from 2024-08-01](https://dumps.wikimedia.org/enwiki/). Available in Vespa as of version 8.426.8. |
 | Model-id | significance-en-wikipedia-v1 |
 | License | [Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) License](https://creativecommons.org/licenses/by-sa/3.0/deed.en). |
 | Source | [https://data.vespa-cloud.com/significance\_models/significance-en-wikipedia-v1.json.zst](https://data.vespa-cloud.com/significance_models/significance-en-wikipedia-v1.json.zst) |
@@ -355,7 +355,7 @@ This can be useful for example to create an application package which uses model
 
 Specifying a model-id can be done for any[config field of type `model`](../applications/configuring-components.html#adding-files-to-the-component-configuration), whether the config is from Vespa or defined by you.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

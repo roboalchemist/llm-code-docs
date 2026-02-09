@@ -1,209 +1,96 @@
-# Source: https://docs.exa.ai/websets/api/imports/list-imports.md
+# Source: https://exa.ai/docs/websets/api/imports/list-imports.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List Imports
 
 > Lists all imports for the Webset.
 
+
+
 ## OpenAPI
 
 ````yaml get /v0/imports
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/imports
-  method: get
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        cursor:
+  /v0/imports:
+    get:
+      tags:
+        - Imports
+      summary: List Imports
+      description: Lists all imports for the Webset.
+      operationId: imports-list
+      parameters:
+        - name: cursor
+          required: false
+          in: query
+          description: The cursor to paginate through the results
           schema:
-            - type: string
-              required: false
-              description: The cursor to paginate through the results
-              minLength: 1
-        limit:
+            minLength: 1
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: The number of results to return
           schema:
-            - type: number
-              required: false
-              description: The number of results to return
-              maximum: 200
-              minimum: 1
-              default: 25
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const imports = await exa.websets.imports.list({
-            webset_id: 'webset_id'
-          });
-
-          console.log(`Found ${imports.data.length} imports`);
-          imports.data.forEach(importJob => {
-            console.log(`- ${importJob.id}: ${importJob.status}`);
-          });
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          imports = exa.websets.imports.list(webset_id='webset_id')
-
-          print(f'Found {len(imports.data)} imports')
-          for import_job in imports.data:
-              print(f'- {import_job.id}: {import_job.status}')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Import'
-                    description: The list of imports
-              hasMore:
-                allOf:
-                  - type:
-                      - boolean
-                    description: Whether there are more results to paginate through
-              nextCursor:
-                allOf:
-                  - type: string
-                    description: The cursor to paginate through the next set of results
-                    nullable: true
-            refIdentifier: '#/components/schemas/ListImportsResponse'
-            requiredProperties:
-              - data
-              - hasMore
-              - nextCursor
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  object: import
-                  status: pending
-                  format: csv
-                  entity:
-                    type: company
-                  title: <string>
-                  count: 123
-                  metadata: {}
-                  failedReason: invalid_format
-                  failedAt: '2023-11-07T05:31:56Z'
-                  failedMessage: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              hasMore: true
-              nextCursor: <string>
-        description: List of imports
-  deprecated: false
-  type: path
+            minimum: 1
+            maximum: 200
+            default: 25
+            type: number
+      responses:
+        '200':
+          description: List of imports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListImportsResponse'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
 components:
   schemas:
-    CompanyEntity:
+    ListImportsResponse:
       type:
         - object
       properties:
-        type:
-          type: string
-          const: company
-          default: company
-      required:
-        - type
-      title: Company
-    PersonEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: person
-          default: person
-      required:
-        - type
-      title: Person
-    ArticleEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: article
-          default: article
-      required:
-        - type
-      title: Article
-    ResearchPaperEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: research_paper
-          default: research_paper
-      required:
-        - type
-      title: Research Paper
-    CustomEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: custom
-          default: custom
-        description:
+        data:
           type:
-            - string
-          minLength: 2
-          maxLength: 200
+            - array
+          items:
+            $ref: '#/components/schemas/Import'
+            type:
+              - object
+          description: The list of imports
+        hasMore:
+          type:
+            - boolean
+          description: Whether there are more results to paginate through
+        nextCursor:
+          type: string
+          description: The cursor to paginate through the next set of results
+          nullable: true
       required:
-        - type
-        - description
-      title: Custom
-    Entity:
-      oneOf:
-        - type:
-            - object
-          $ref: '#/components/schemas/CompanyEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/PersonEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/ArticleEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/ResearchPaperEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/CustomEntity'
+        - data
+        - hasMore
+        - nextCursor
     Import:
       type:
         - object
@@ -295,9 +182,89 @@ components:
         - failedMessage
         - createdAt
         - updatedAt
+    Entity:
+      oneOf:
+        - $ref: '#/components/schemas/CompanyEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/PersonEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/ArticleEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/ResearchPaperEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/CustomEntity'
+          type:
+            - object
+    CompanyEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: company
+          default: company
+      required:
+        - type
+      title: Company
+    PersonEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: person
+          default: person
+      required:
+        - type
+      title: Person
+    ArticleEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: article
+          default: article
+      required:
+        - type
+      title: Article
+    ResearchPaperEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: research_paper
+          default: research_paper
+      required:
+        - type
+      title: Research Paper
+    CustomEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: custom
+          default: custom
+        description:
+          type:
+            - string
+          minLength: 2
+          maxLength: 200
+      required:
+        - type
+        - description
+      title: Custom
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

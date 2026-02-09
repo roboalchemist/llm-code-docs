@@ -1,36 +1,28 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # settings
 
 # `fastmcp.settings`
 
 ## Classes
 
-### `ExtendedEnvSettingsSource` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L36" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `DocketSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L30" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
-A special EnvSettingsSource that allows for multiple env var prefixes to be used.
+Docket worker configuration.
 
-Raises a deprecation warning if the old `FASTMCP_SERVER_` prefix is used.
+### `ExperimentalSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L118" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
-**Methods:**
-
-#### `get_field_value` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L43" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_field_value(self, field: FieldInfo, field_name: str) -> tuple[Any, str, bool]
-```
-
-### `ExtendedSettingsConfigDict` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L63" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-### `ExperimentalSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L67" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-### `Settings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L86" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `Settings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L142" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 FastMCP settings.
 
 **Methods:**
 
-#### `get_setting` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L98" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `get_setting` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L154" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_setting(self, attr: str) -> Any
@@ -39,7 +31,7 @@ get_setting(self, attr: str) -> Any
 Get a setting. If the setting contains one or more `__`, it will be
 treated as a nested setting.
 
-#### `set_setting` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L111" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `set_setting` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L167" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 set_setting(self, attr: str, value: Any) -> None
@@ -48,29 +40,8 @@ set_setting(self, attr: str, value: Any) -> None
 Set a setting. If the setting contains one or more `__`, it will be
 treated as a nested setting.
 
-#### `settings_customise_sources` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L125" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-settings_customise_sources(cls, settings_cls: type[BaseSettings], init_settings: PydanticBaseSettingsSource, env_settings: PydanticBaseSettingsSource, dotenv_settings: PydanticBaseSettingsSource, file_secret_settings: PydanticBaseSettingsSource) -> tuple[PydanticBaseSettingsSource, ...]
-```
-
-#### `settings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L143" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-settings(self) -> Self
-```
-
-This property is for backwards compatibility with FastMCP \< 2.8.0,
-which accessed fastmcp.settings.settings
-
-#### `normalize_log_level` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L163" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `normalize_log_level` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L189" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 normalize_log_level(cls, v)
-```
-
-#### `server_auth_class` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/settings.py#L378" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-server_auth_class(self) -> AuthProvider | None
 ```

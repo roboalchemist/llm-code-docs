@@ -1,22 +1,12 @@
 # Source: https://docs.replit.com/tutorials/effective-prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Efficient prompting with Replit AI
 
-> Learn principles and see examples for writing effective prompts when using AI development tools like Replit Agent and Assistant.
-
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
+> Learn principles and see examples for writing effective prompts when using Replit Agent.
 
 export const YouTubeEmbed = ({videoId, title = "YouTube video", startAt}) => {
   if (!videoId) {
@@ -31,9 +21,7 @@ export const YouTubeEmbed = ({videoId, title = "YouTube video", startAt}) => {
     </Frame>;
 };
 
-<AuthorCard />
-
-Clear, concise, and context-rich prompts are the foundation of effective vibe coding with Replit AI. Think of prompting as giving precise instructions to a very capable—but literal-minded—assistant like [**Replit Agent**](/replitai/agent) or [**Replit Assistant**](/replitai/assistant). Guiding these tools effectively helps you go from idea to app, fast.
+Clear, concise, and context-rich prompts are the foundation of effective vibe coding with Replit Agent. Think of prompting as giving precise instructions to a very capable—but literal-minded—assistant like [**Replit Agent**](/replitai/agent). Guiding Agent effectively helps you go from idea to app, fast.
 
 ## Examples of bad and good prompts
 
@@ -53,7 +41,7 @@ Just like leading a team, providing clear direction, the right resources, and co
 
 <YouTubeEmbed videoId="7m5SjKZBw6I" />
 
-Effective prompting isn't about complex linguistic tricks; it's about clarity, context, and iteration. Here are the key principles to remember when interacting with **Agent** and **Assistant**:
+Effective prompting isn't about complex linguistic tricks; it's about clarity, context, and iteration. Here are the key principles to remember when interacting with **Agent**:
 
 | Tip            | Description                                                                                                                                                                                            |
 | :------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -71,7 +59,7 @@ Effective prompting isn't about complex linguistic tricks; it's about clarity, c
 Let's explore how to apply each of these principles.
 
 <Frame>
-  <img src="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=21e1e7269802faa767fef0187bdb6e3d" alt="image" data-og-width="1259" width="1259" data-og-height="1101" height="1101" data-path="images/tutorials/10-tips.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=280&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=3eb9c6ff58977393faf27799ceb16e2e 280w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=560&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=e282b45ac8ca4ee9883da0e85e3a6d2d 560w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=840&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=9cf1975ce6c3259bbb917504449062ae 840w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=1100&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=e05600f978c4b13732e63b07fb020e77 1100w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=1650&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=d3ebdff27b736b7493b07d2bb6643a2d 1650w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=2500&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=63d6c48af46e86a5d13f7f35cb36756e 2500w" />
+  <img src="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=21e1e7269802faa767fef0187bdb6e3d" alt="Ten tips for effective prompting with Replit Agent" data-og-width="1259" width="1259" data-og-height="1101" height="1101" data-path="images/tutorials/10-tips.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=280&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=3eb9c6ff58977393faf27799ceb16e2e 280w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=560&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=e282b45ac8ca4ee9883da0e85e3a6d2d 560w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=840&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=9cf1975ce6c3259bbb917504449062ae 840w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=1100&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=e05600f978c4b13732e63b07fb020e77 1100w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=1650&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=d3ebdff27b736b7493b07d2bb6643a2d 1650w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/10-tips.png?w=2500&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=63d6c48af46e86a5d13f7f35cb36756e 2500w" />
 </Frame>
 
 ### Checkpoint: Build incrementally
@@ -96,7 +84,7 @@ When errors pop up, treat the AI like a collaborator who needs information to he
 
 ### Discover: Ask about possibilities
 
-Don't hesitate to ask **Agent** or **Assistant** for advice. If you're unsure about the best library for a task or different ways to approach a feature, ask! This is a great way to learn about new tools or techniques relevant to your project.
+Don't hesitate to ask **Agent** for advice. If you're unsure about the best library for a task or different ways to approach a feature, swicth to Plan mode and ask! This is a great way to learn about new tools or techniques relevant to your project.
 
 * **Why it matters**: You can quickly learn about relevant technologies or techniques you might not be aware of.
 * **How to apply**: Frame questions openly. Ask about options, trade-offs, or common practices.
@@ -128,7 +116,7 @@ Clearly state what you want the AI *to do*, rather than listing things to avoid.
 
 Give the AI the specific information it needs for the task at hand, but avoid flooding it with irrelevant details. Use features like file mentioning to focus the AI's attention. If switching to a completely different task, starting a **New chat** can prevent confusion.
 
-* **Why it matters**: Helps the AI focus on the specific problem without getting sidetracked by unrelated details. **Agent** and **Assistant** have features to help manage context, like mentioning specific files or scraping URLs.
+* **Why it matters**: Helps the AI focus on the specific problem without getting sidetracked by unrelated details. **Agent** has features to help manage context, like mentioning specific files or scraping URLs.
 * **How to apply**: When asking for changes to specific files (`profile.js`, `profile.html`), mention or attach only those key files. Supplement with specific external context like documentation URLs or design mockups instead of attaching the entire codebase.
 
   * **Less Effective**: (Attaching the whole project) "Implement the user profile page based on our design system."
@@ -170,11 +158,11 @@ Be explicit about your requirements and expectations. Define the desired output 
 Before you start prompting, take a moment to plan. Think through the application's structure, key features, and user flow, much like a product manager or engineer would. Having a clear plan will help you write more targeted and effective prompts.
 
 * **Why it matters**: A clear plan leads to more focused prompts and a more coherent final application.
-* **How to apply**: Outline the features, data structures, and user flows before you start prompting **Agent** or **Assistant**. Break the overall goal into logical development stages.
+* **How to apply**: Outline the features, data structures, and user flows before you start prompting **Agent**. Break the overall goal into logical development stages.
 
   * **Less Effective**: "Build a task manager app."
   * **More Effective**: (After planning) "1. Create the basic HTML structure for a task manager with an input field and a task list. 2. Add JavaScript to allow users to add tasks to the list. 3. Use Replit Database to store tasks so they persist. 4. Add functionality to mark tasks as complete..." (Then prompt for each step).
 
 ## Summary
 
-Apply these principles: build incrementally, provide clear context, be specific, show examples, and plan ahead. This approach significantly improves collaboration with **Replit Agent** and **Replit Assistant**. This allows developers to leverage the power of AI to build and publish applications faster and more effectively.
+Apply these principles: build incrementally, provide clear context, be specific, show examples, and plan ahead. This approach significantly improves collaboration with **Replit Agent**. This allows developers to leverage the power of AI to build and publish applications faster and more effectively.

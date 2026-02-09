@@ -12,11 +12,11 @@ i.e. the primary API used to access Large Language Models (LLMs).
 
 ## Install
 
-AI Chat can be added to any .NET 8+ project by installing the **ServiceStack.AI.Chat** NuGet package and 
+AI Chat can be added to any .NET 10+ project by installing the **ServiceStack.AI.Chat** NuGet package and 
 configuration with:
 
-:::sh
-x mix chat
+:::copy
+npx add-in chat
 :::
 
 Which drops this simple [Modular Startup](/modular-startup) that adds the `ChatFeature`
@@ -41,7 +41,7 @@ public class ConfigureAiChat : IHostingStartup
 As AI Chat protects its APIs and UI with Identity Auth or API Keys, you'll need to enable the [API Keys Feature](/auth/apikeys) if you haven't already:
 
 :::sh
-x mix apikeys
+npx add-in apikeys
 :::
 
 ## Single Powerful API

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-hex-escape.md
 ---
-# unicorn/no-hex-escape&#x20;
 
 ### What it does
 

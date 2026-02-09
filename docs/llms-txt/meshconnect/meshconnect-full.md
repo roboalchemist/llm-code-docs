@@ -47,15 +47,15 @@ This is equivalent to adding a card to Apple Pay: a small, one-time setup that u
 
 **📸 Example (Payment Use Case): A "Pay with Crypto" button in a checkout flow.**
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=77a14df54358491c86a526f135859cec" alt="Pay With Crypto Pn" title="Pay With Crypto Pn" className="mx-auto" style={{ width:"49%" }} data-og-width="686" width="686" data-og-height="472" height="472" data-path="images/payWithCrypto.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=a18420a5b9b9dfec4b187a17f5501ca0 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=2276b1fb856b1ed1a03973963e7d7048 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=8915c6d0a2f99ea2a3bd748a33c5c90e 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=ab75c3c92124933017e191d8808ed180 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=accd4a5936a418e5427a1acc4d9447e4 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/payWithCrypto.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=7b21aec6f6a6480a09bf4f44cf247fdc 2500w" />
+<img alt="Pay With Crypto Pn" title="Pay With Crypto Pn" />
 
 **📸 Example (Deposit Use Case): "Deposit from Wallet" with trusted brand options.**
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=dab7410af5f2862ce0bacc1a2769b9af" alt="deposit" className="mx-auto" style={{ width:"57%" }} data-og-width="550" width="550" data-og-height="220" height="220" data-path="images/depositFromWallet.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=b04a4d86857034bd782bbb6f3d51eaf4 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=67c23384587ad445a938cf72784bb1fa 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=40ec212a1d3f490824f287cb48c9525e 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=9e9cd470f4386664b5885c76660d7140 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=ec3814a43e07b5e9ec07a9d671399822 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=68c7d8f708bb599fb5116b3917c5d9a3 2500w" />
+<img alt="deposit" />
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=de9a08a7529814fb0d803455e8b09794" alt="deposit1" className="mx-auto" style={{ width:"39%" }} data-og-width="264" width="264" data-og-height="512" height="512" data-path="images/depositFromWallet1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=e0d07b3b8319c4089e86e0d479694c18 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=29bb9946dc9a1bec8161bf88ef490310 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=7eaf179c2db5cc4593caf117621f8ce9 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=1a2c74090fa8b40acb3db51ef0d6765c 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=d3275744aaba75ced292313c2e4a91b1 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet1.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=dad4e7a4f6aef3bb5300f9744faf9f06 2500w" />
+<img alt="deposit1" />
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=d5ccd33c9108765f4474093324de3046" alt="deposit2" className="mx-auto" style={{ width:"51%" }} data-og-width="512" width="512" data-og-height="387" height="387" data-path="images/depositFromWallet2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=2ec82c14b24f331f0d8e35c496e11e6e 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=f923781fdfcf5a70f893b789de487e2d 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=23fcb76ec7b7bc9196ff2b78c118c2c4 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=2df45038fd6571b03055290fcf562a67 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=33ea988fd61f0a0042aea88ac965c3ed 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/depositFromWallet2.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=2065ae44244b7c9b9d5b076c198d96e6 2500w" />
+<img alt="deposit2" />
 
 #### **2. Returning User Experience (Easy Pay / Easy Deposit)**
 
@@ -67,7 +67,7 @@ This is where the power of Mesh becomes clear. Once an account is connected, ret
 
 **📸 Example: A personalized deposit button for a return user.**
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=ee2049e740120d2d2f3811dacb64f899" alt="returnUserDeposit" className="mx-auto" style={{ width:"56%" }} data-og-width="512" width="512" data-og-height="262" height="262" data-path="images/ReturnUser.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=03d56bc4584ff77ec8ded4a26079c2cc 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=d0d9b900da6013e927eb45456b4aa959 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=816b59135e9931472e0bafe20bae7f5d 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=4714a7233d66286e0622a53ca64cd1d4 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=648436c2bdb4911005b64abc70e4792c 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/ReturnUser.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=34b4b65e0c4d6bc6ceb13b18464f7bfd 2500w" />
+<img alt="returnUserDeposit" />
 
 #### **3. Power User Experience (Fast Pay / Fast Deposit)**
 
@@ -77,7 +77,7 @@ For frequent users, you can create an even faster flow by pre-selecting the toke
 * The user is taken directly into the transfer flow, bypassing all selection steps.
 * This is ideal for high-frequency use cases like iGaming platforms.
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=2b505d4690667464fa5e651fb43d814d" alt="FastDeposit" title="" style={{ width:"96%" }} data-og-width="1064" width="1064" data-og-height="252" height="252" data-path="FastDeposit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=ee7b9cafbacd19728c592d9068134ee4 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=769d2fe29632dc578948075bedd6d28a 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=6f5162c7da63469e88819479ea8d1d49 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=1bded0d2d2d6cb030771d80630747d5c 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=60138966a3150dc6f3e6a789f9e9bc5c 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/FastDeposit.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=88f264934aac6f68e9878ab572f1c24b 2500w" />
+<img alt="FastDeposit" title="" />
 
 ***
 
@@ -225,69 +225,6 @@ To maximize conversion, we strongly recommend enabling SmartFunding. This allows
 ```
 
 
-# Client Managed Tokens (CMT)
-Source: https://docs.meshconnect.com/advanced/customer-managed-tokens
-
-This guide explains how to implement Client Managed Tokens (CMT), our recommended approach for handling user authentication to create a secure and seamless return user experience.
-
-## **What are Client Managed Tokens?**
-
-Client Managed Tokens is the model where **your application** takes responsibility for securely storing and managing the `auth_token` and `refreshToken` that are returned after a user connects their account through Mesh Link.
-
-This is the key to enabling the "Seamless Return Experience," where a user who has connected their account once does not need to log in again for future transactions.
-
-## **Why is CMT the Recommended Approach?**
-
-We recommend that clients manage their own tokens because it provides greater control and flexibility. By securely storing tokens within your own backend, your team retains direct ownership of user connections and data access.
-
-This design aligns with standard security practices used across the industry, ensuring that sensitive credentials remain within your own trusted environment. It also minimizes dependency on external storage and supports a more robust, scalable integration model.
-
-## **How to Implement Client Managed Tokens: A Step-by-Step Guide**
-
-Implementing CMT involves a five-step process that covers capturing, storing, and utilizing the tokens.
-
-### **Step 1: Get Tokens from the SDK**
-
-Use the `onIntegrationConnected()` SDK callback function to capture the `accessTokenPayload` after the user successfully connects their account. You will need to capture and store the following key fields:
-
-```json  theme={null}
-{
-  accountId: 'accountId', // Unique identifier for the account
-  accountName: 'accountName', // Display name for the account
-  accessToken: 'accessToken', // The actual access/auth token
-  brokerType: 'brokerType', // Type identifier for the broker/exchange
-  brokerName: 'brokerName' // Display name for the broker/exchange
-}
-```
-
-### **Step 2: Associate Tokens with a User**
-
-On your backend, you must associate the set of tokens you just received with a unique identifier for that specific user in your system. This is a critical step to ensure that you only ever use a token for the correct user and do not mix up account data.
-
-### **Step 3: Store Tokens Securely**
-
-It is essential to store the tokens with the utmost security. The tokens should be stored in a secure and encrypted storage layer on your backend, such as a key management system (KMS) or an encrypted database.
-
-> 🔒 Security First
->
-> Never store auth\_token or refreshToken in an insecure location, especially on the client side (e.g., in browser local storage) for production applications.
-
-### **Step 4: Implement Token Refresh Logic**
-
-Some tokens, particularly from OAuth integrations like Coinbase, will expire. To maintain a persistent connection, you must implement logic on your backend to refresh them.
-
-1. Check if the `expiresInSeconds` value is present. If it is, you need to refresh the `accessToken` before it expires.
-2. Record the timestamp when the token was obtained.
-3. Before that timestamp plus `expiresInSeconds` occurs, make a `POST` request to the `/api/v1/token/refresh` endpoint, including the `refreshToken`, to get a new `accessToken`.
-4. If a `refreshTokenExpiresInSeconds` is also provided, implement the same logic for the `refreshToken` itself.
-
-> **Note:** It is considered bad practice to wait for a `401 Unauthorized` error before refreshing a token. Proactive refreshing provides a much better user experience.
-
-### **Step 5: Pass Tokens to the SDK for Return Users**
-
-The next time the same user initiates a transaction, you will pass their stored and valid `accessToken` in the `accessTokens` parameter when you initialize the Link SDK. This will bypass the authentication step and take the user directly to the transfer flow, creating a seamless, one-click experience.
-
-
 # Intelligent Provider Filtering in Mesh Link
 Source: https://docs.meshconnect.com/advanced/intelligent-provider-filtering
 
@@ -415,7 +352,7 @@ When you initialize Link in your application, use the **`language`** parameter t
 
 ### **Web SDK**
 
-```jsx  theme={null}
+```jsx theme={null}
 const connection = createLink({
         ...
         language: 'en-US'
@@ -425,7 +362,7 @@ const connection = createLink({
 
 ### **Android SDK**
 
-```kotlin  theme={null}
+```kotlin theme={null}
 val configuration = LinkConfiguration(
     token = "linkToken",
     language = "en-US")
@@ -433,7 +370,7 @@ val configuration = LinkConfiguration(
 
 ### **iOS SDK**
 
-```swift  theme={null}
+```swift theme={null}
 let settings = LinkSettings(language: "en-US")
 let configuration = LinkConfiguration(
     linkToken: linkToken,
@@ -444,7 +381,7 @@ let configuration = LinkConfiguration(
 
 ### **React native SDK**
 
-```jsx  theme={null}
+```jsx theme={null}
 <LinkConnect settings={{language: 'en-US'}} ... />
 ```
 
@@ -463,45 +400,45 @@ Thoroughly test your implementation to ensure a seamless experience for your use
   **If you need a language that is not shown as supported below, please notify your Mesh team member to request it be added.**
 </aside>
 
-| **Status**                                             | **Language**                   | **Region**                                                                  | **Locale code** |
-| ------------------------------------------------------ | ------------------------------ | --------------------------------------------------------------------------- | --------------- |
-| <span class="sdk-badge sdk-live">**live**</span>       | English                        | United States <span class="sdk-badge sdk-default">**global default**</span> | **`en-US`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Spanish                        | United States <span class="sdk-badge sdk-default">**es default**</span>     | **`es-US`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Russian                        | Russia                                                                      | **`ru-RU`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | French                         | France <span class="sdk-badge sdk-default">**fr default**</span>            | **`fr-FR`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Chinese/Mandarin (Simplified)  | China <span class="sdk-badge sdk-default">**zh default**</span>             | **`zh-CN`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Turkish                        | Turkey                                                                      | **`tr-TR`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Polish                         | Poland                                                                      | **`pl-PL`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Japanese                       | Japan                                                                       | **`ja-JP`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | German                         | Germany                                                                     | **`de-DE`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Finnish                        | Finland                                                                     | **`fi-FI`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Hindi                          | India                                                                       | **`hi-IN`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Portuguese                     | Portugal <span class="sdk-badge sdk-default">**pt default**</span>          | **`pt-PT`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | Vietnamese                     | Vietnam                                                                     | **`vi-VN`**     |
-| <span class="sdk-badge sdk-live">**live**</span>       | system                         |                                                                             | **`system`**    |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Arabic                         | Egypt                                                                       | **`ar-EG`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Chinese/Mandarin (Traditional) | United States                                                               | **`zh-US`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Chinese                        | Hong Kong                                                                   | **`zh-HK`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Chinese                        | Taiwan                                                                      | **`zh-TW`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Czech                          | Czech Republic                                                              | **`cs-CZ`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Danish                         | Denmark                                                                     | **`da-DK`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Dutch, Flemish                 | Belgium                                                                     | **`nl-NL`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | English                        | Australia                                                                   | **`en-AU`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | English                        | India                                                                       | **`en-IN`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | English                        | United Kingdom                                                              | **`en-GB`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | French                         | Canada                                                                      | **`fr-CA`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Greek, Modern (1453–)          | Greece                                                                      | **`el-GR`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Hebrew                         | Israel                                                                      | **`he-IL`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Hungarian                      | Hungary                                                                     | **`hu-HU`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Indonesian                     | Indonesia                                                                   | **`id-ID`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Italian                        | Italy                                                                       | **`it-IT`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Korean                         | South Korea                                                                 | **`ko-KR`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Norwegian                      | Norway                                                                      | **`no-NO`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Portuguese                     | Brazil                                                                      | **`pt-BR`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Slovak                         | Slovakia                                                                    | **`sk-SK`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Spanish, Castilian             | Spain                                                                       | **`es-ES`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Swedish                        | Sweden                                                                      | **`sv-SE`**     |
-| <span class="sdk-badge sdk-backlog">**backlog**</span> | Thai                           | Thailand                                                                    | **`th-TH`**     |
+| **Status**               | **Language**                   | **Region**                                    | **Locale code** |
+| ------------------------ | ------------------------------ | --------------------------------------------- | --------------- |
+| <span>**live**</span>    | English                        | United States <span>**global default**</span> | **`en-US`**     |
+| <span>**live**</span>    | Spanish                        | United States <span>**es default**</span>     | **`es-US`**     |
+| <span>**live**</span>    | Russian                        | Russia                                        | **`ru-RU`**     |
+| <span>**live**</span>    | French                         | France <span>**fr default**</span>            | **`fr-FR`**     |
+| <span>**live**</span>    | Chinese/Mandarin (Simplified)  | China <span>**zh default**</span>             | **`zh-CN`**     |
+| <span>**live**</span>    | Turkish                        | Turkey                                        | **`tr-TR`**     |
+| <span>**live**</span>    | Polish                         | Poland                                        | **`pl-PL`**     |
+| <span>**live**</span>    | Japanese                       | Japan                                         | **`ja-JP`**     |
+| <span>**live**</span>    | German                         | Germany                                       | **`de-DE`**     |
+| <span>**live**</span>    | Finnish                        | Finland                                       | **`fi-FI`**     |
+| <span>**live**</span>    | Hindi                          | India                                         | **`hi-IN`**     |
+| <span>**live**</span>    | Portuguese                     | Portugal <span>**pt default**</span>          | **`pt-PT`**     |
+| <span>**live**</span>    | Vietnamese                     | Vietnam                                       | **`vi-VN`**     |
+| <span>**live**</span>    | system                         |                                               | **`system`**    |
+| <span>**backlog**</span> | Arabic                         | Egypt                                         | **`ar-EG`**     |
+| <span>**backlog**</span> | Chinese/Mandarin (Traditional) | United States                                 | **`zh-US`**     |
+| <span>**backlog**</span> | Chinese                        | Hong Kong                                     | **`zh-HK`**     |
+| <span>**backlog**</span> | Chinese                        | Taiwan                                        | **`zh-TW`**     |
+| <span>**backlog**</span> | Czech                          | Czech Republic                                | **`cs-CZ`**     |
+| <span>**backlog**</span> | Danish                         | Denmark                                       | **`da-DK`**     |
+| <span>**backlog**</span> | Dutch, Flemish                 | Belgium                                       | **`nl-NL`**     |
+| <span>**backlog**</span> | English                        | Australia                                     | **`en-AU`**     |
+| <span>**backlog**</span> | English                        | India                                         | **`en-IN`**     |
+| <span>**backlog**</span> | English                        | United Kingdom                                | **`en-GB`**     |
+| <span>**backlog**</span> | French                         | Canada                                        | **`fr-CA`**     |
+| <span>**backlog**</span> | Greek, Modern (1453–)          | Greece                                        | **`el-GR`**     |
+| <span>**backlog**</span> | Hebrew                         | Israel                                        | **`he-IL`**     |
+| <span>**backlog**</span> | Hungarian                      | Hungary                                       | **`hu-HU`**     |
+| <span>**backlog**</span> | Indonesian                     | Indonesia                                     | **`id-ID`**     |
+| <span>**backlog**</span> | Italian                        | Italy                                         | **`it-IT`**     |
+| <span>**backlog**</span> | Korean                         | South Korea                                   | **`ko-KR`**     |
+| <span>**backlog**</span> | Norwegian                      | Norway                                        | **`no-NO`**     |
+| <span>**backlog**</span> | Portuguese                     | Brazil                                        | **`pt-BR`**     |
+| <span>**backlog**</span> | Slovak                         | Slovakia                                      | **`sk-SK`**     |
+| <span>**backlog**</span> | Spanish, Castilian             | Spain                                         | **`es-ES`**     |
+| <span>**backlog**</span> | Swedish                        | Sweden                                        | **`sv-SE`**     |
+| <span>**backlog**</span> | Thai                           | Thailand                                      | **`th-TH`**     |
 
 
 # Mesh Link SDK Events
@@ -529,7 +466,8 @@ The way in which these events are captured and transmitted varies slightly acros
 | **SDK Event Type**                        | **Description of Occurrence**                                                                                                                                                                                                                                   | **Payload Details**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`pageLoaded`**                          | Triggered when the first page is fully loaded. The first page the user sees may differ based on use case.                                                                                                                                                       | No additional payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **`close`**                               | Triggered when the user exits the Mesh Link modal.                                                                                                                                                                                                              | • **`page`**: the page the user was on when they exited.<br />• Note: In the context of a transfer flow, `page: 'transferExecutedPage’` would indicate the full flow was successful because the user exited from the Success page. And if the page is anything else, then the flow was not successfully completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **`methodSelected`**                      | Triggered on HomePage when the user selects a particular method for their flow.                                                                                                                                                                                 | • **`method`**: The selected method type ('embedded' / 'manual' / 'buy')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **`close`**                               | Triggered when the user exits the Mesh Link modal.                                                                                                                                                                                                              | • **`page`**: the page the user was on when they exited.<br />• Note: In the context of a transfer flow, `page: 'transferExecutedPage'` would indicate the full flow was successful because the user exited from the Success page. And if the page is anything else, then the flow was not successfully completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **`integrationSelected`**                 | Triggered when a user selects an integration from the catalog list.                                                                                                                                                                                             | • **`integrationType`**: For exchanges, this is the same as the name. For wallets, this is ‘deFiWallet’.<br />• **`integrationName`**: Name of the selected integration.<br />• **`userSearched?`**: true/false if the user searched selected this integration from search results or not.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **`legalTermsViewed`**                    | Triggered if a user views the terms of use page in Link.                                                                                                                                                                                                        | No additional payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **`credentialsEntered`**                  | Triggered when a user submits exchange login credentials.                                                                                                                                                                                                       | No additional payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -546,7 +484,8 @@ The way in which these events are captured and transmitted varies slightly acros
 | **`transferNoEligibleAssets`**            | Triggered when there are no assets in the user’s account eligible for the transfer, or Mesh cannot use the assets in the account to fund the transfer.                                                                                                          | • **`arrayOfTokensHeld`**: A list of tokens held in the user’s account<br />   • **`symbol`**: Currency symbol<br />   • **`amount`**: Amount of holding<br />   • **`amountInFiat`**: Amount of holding in fiat<br />   • **`ineligibilityReason`**: Why the token is ineligible.<br />• **`integrationType`**: For exchanges, this is the same as the name. For wallets, this is ‘deFiWallet’.<br />• **`integrationName`**: Name of the selected integration.<br />• **`noAssetsType`**:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | **`transferConfigureError`**              | This may happen if the session linkToken expires during the configuration flow of a transfer. Very rare.                                                                                                                                                        | • **`errorMessage`**: Descriptive error message.<br />• **`requestId`**:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **`transferPreviewed`**                   | Triggered when a user previews the details of a pending transfer.                                                                                                                                                                                               | • **`integrationType`**: For exchanges, this is the same as the name. For wallets, this is ‘deFiWallet’.<br />• **`integrationName`**: Name of the selected integration.<br />• **`symbol`**: Currency symbol<br />• **`networkId`**: Selected network identifier<br />• **`networkName`**: Selected network name<br />• **`amount`**: Crypto amount of the transfer<br />• **`amountInFiat`** (optional): Amount in fiat currency<br />• **`fiatCurrency`**: fiat currency symbol for the **`amountInFiat`** value.<br />• **`toAddress`**: Destination address<br />• **`fees`**:<br />    • `institutionTransferFee`<br />    • `estimatedNetworkGasFee`<br />    • `customClientFee`<br />• **`fiatPurchaseStrategy`**: an enumeration of a fiat funding option used to fund this transaction plus any applicable `tradingFee`.<br />• **`cryptocurrencyFundingOptionType`**: an enumeration of any funding options used to fund this transactionplus any applicable `cryptocurrencyConversionFee` or `depositFee`.<br />• **`previewId`**: Unique ID for the preview |
-| **`transferPreviewError`**                | Triggered when there is an error in building a transfer preview.                                                                                                                                                                                                | • **`errorMessage`**: Descriptive error message.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **`transferPreviewError`**                | Triggered when there is an error in building a transfer preview.                                                                                                                                                                                                | • **`errorMessage`**: Descriptive error message.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **`linkTransferQRGenerated`**             | Triggered when the user lands on the Manual QR screen.                                                                                                                                                                                                          | • **`token`** (optional): Token symbol for the transfer<br />• **`network`** (optional): Network being used<br />• **`toAddress`** (optional): Destination address<br />• **`qrUrl`** (optional): Generated QR code URL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **`fundingOptionsViewed`**                | Triggered when the user views the funding options page.                                                                                                                                                                                                         | No additional payload.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **`fundingOptionsUpdated`**               | Triggered when the user makes updates to the selected funding options and clicks save (ie. saves a new funding strategy).                                                                                                                                       | No additional payload. When a user saves a new funding strategy, it would build a new Preview, which would fire a new **`transferPreviewed`** event with new funding options enumerated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **`transferInitiated`**                   | Triggered when the user clicks to Proceed from the Preview screen. This will send a request to transfer to the exchange or wallet, which the user then needs to approve (via 2FA for exchange, or signing for wallet).                                          | • **`integrationType`**: For exchanges, this is the same as the name. For wallets, this is ‘deFiWallet’.<br />• **`integrationName`**: Name of the selected integration.<br />• **`symbol`**: Currency symbol<br />• **`networkId`**: Selected network identifier<br />• **`networkName`**: Selected network name<br />• **`amount`**: Crypto amount of the transfer<br />• **`amountInFiat`** (optional): Amount in fiat currency<br />• **`fiatCurrency`**: fiat currency symbol for the **`amountInFiat`** value.<br />• **`toAddress`**: Destination address<br />• **`fees`**:<br />    • `institutionTransferFee`<br />    • `estimatedNetworkGasFee`<br />    • `customClientFee`<br />• **`fiatPurchaseStrategy`**: an enumeration of a fiat funding option used to fund this transaction plus any applicable `tradingFee`.<br />• **`cryptocurrencyFundingOptionType`**: an enumeration of any funding options used to fund this transactionplus any applicable `cryptocurrencyConversionFee` or `depositFee`.                                                   |
@@ -616,7 +555,7 @@ Once enabled, all authentication flows will return a `TokenId` in place of a raw
 
 When a user authenticates with their exchange or wallet account, you will receive the SDK event `integrationConnected`, which contains an object like this:
 
-```json  theme={null}
+```json theme={null}
 
 {
   "accountTokens": [
@@ -642,7 +581,7 @@ You can pass existing `TokenId` (or multiple, if available) into the Mesh Link S
 
 **SDK Setup Example:**
 
-```jsx  theme={null}
+```jsx theme={null}
 javascript
 CopyEdit
 const link = new MeshLink({
@@ -731,7 +670,7 @@ To create a Paylink, send a `linkToken` request to the Mesh API. This will gener
 * **Headers:**
   * `X-Client-Id`: Your Mesh Client ID. This identifies your application to the Mesh API.
   * `X-Client-Secret`: Your Mesh Client Secret. This is a secret key used to authenticate your requests to the Mesh API.
-  Include these headers in your request to authorize it.
+    Include these headers in your request to authorize it.
 
 * **Body:** The request body needs to be in JSON format and include the following information:
   * `userId`: A unique identifier for the user making the payment or transfer. This should be a value that identifies the user in your system.
@@ -750,7 +689,7 @@ To create a Paylink, send a `linkToken` request to the Mesh API. This will gener
 
 **Example Request (JSON):**
 
-```json  theme={null}
+```json theme={null}
 {
   "userId": "USER_IDENTIFIER_123",
   "transferOptions": {
@@ -781,7 +720,7 @@ After sending the `linkToken` request, the API will respond with a JSON object. 
 
 **Example Response (JSON):**
 
-```json  theme={null}
+```json theme={null}
 {
   "content": {},
   "linkToken": "aHR0cHM6Ly93ZWlubWVzaGNvbm5lY3QuY29tL2lyYi1pZnJhk...",
@@ -847,7 +786,7 @@ To use this API, you must first generate a dedicated API key and configure secur
 1. **Generate an API Key:**
    * Go to **Account** > **API Keys**.
    * In the new **Account Management API Keys** section, click to generate a new key.
-   * Use this key to authenticate your requests to the `https://admin-api.meshconnect.com/admin/api/v1/Token` endpoints.
+   * Use this key to authenticate your requests to the `https://admin-api.meshconnect.com` endpoints.
 2. **Configure IP Whitelisting (Security Requirement):**
    * To enhance security, access to the Account Management API is restricted to pre-approved IP addresses.
    * Go to the **Account Management API Whitelisted IPs** section in your dashboard.
@@ -1102,6 +1041,12 @@ Get the list of all networks supported by Mesh to perform transfers, including w
 
 
 
+The response always includes validation data:
+- `addressPattern`: The regex pattern for validating addresses on this network
+- `contractAddress`: For each token, the contract address (if applicable) to enable ERC20 contract address validation
+
+
+
 # Get supported tokens list
 Source: https://docs.meshconnect.com/api-reference/managed-transfers/get-supported-tokens-list
 
@@ -1205,15 +1150,15 @@ This guide provides a step-by-step walkthrough for integrating the Mesh SDK acro
 
 * Go to [Account > Team](https://dashboard.meshconnect.com/company/team) to add team members. New team members can be invited with varying permission sets to ensure you control access to only what’s needed on a per-member basis.
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=05201f8f4562c952c939c9e31ca9d18c" alt="Image1 Pn" data-og-width="1640" width="1640" data-og-height="1244" height="1244" data-path="images/image1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=4a3804b5b1e4db72d7ecdd492d364efd 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=8ccb1ccec1ce38c75cc9a396765698d6 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=d6e7381c4389166cd351c9df892db06b 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=b126f96d0a296babe97eec65527d12e2 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=0b663333098ea50a1ca30bf79f8cd8e3 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image1.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=9ef2f95c2aa2eff5b16322e100891ade 2500w" />
+<img alt="Image1 Pn" />
 
 * Go to [Account > API keys](https://dashboard.meshconnect.com/company/keys) to add callback URLs (where the Mesh SDK will be allowed to render) and to generate your production or sandbox API keys (you’ll have to complete a business verification check before being able to generate production keys).
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=41d3903a6c8d08efc86ef2803f060bf6" alt="Image2 Pn" data-og-width="1398" width="1398" data-og-height="836" height="836" data-path="images/image2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=97959c848051e0956d02a1700bec1ca4 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=37ac88d4240a19f4f3996f3c2c96fbec 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=f32a1e3a098846c933b7b827b7066fa9 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=15d2dae97de6f2151b2ff427806ba97e 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=3788ac9339a3b9f8712fe62a5634450b 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image2.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=fe8ad8e39f03eb6b9d7ed76bc4ffc925 2500w" />
+<img alt="Image2 Pn" />
 
 * Go to [Account > Link configuration](https://dashboard.meshconnect.com/company/link) to customize the Link SDK for your branding and other needs.
 
-<img src="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=f911563c2f39aa298cf8d172fe7b6911" alt="Image3 Pn" data-og-width="1084" width="1084" data-og-height="944" height="944" data-path="images/image3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=280&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=f806e0326f24b13105943d74c0605b26 280w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=560&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=0a76148b08b7b5d587fb518db5b0d83a 560w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=840&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=5f797aa0275542e64e3df937e4e9faa4 840w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=1100&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=bfb4da6222fa33f43fbbc8b365d6c227 1100w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=1650&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=e39f195db8dfe86c797fccd5e14ade6c 1650w, https://mintcdn.com/mesh-40/Zg_aIClCeM2bFVIx/images/image3.png?w=2500&fit=max&auto=format&n=Zg_aIClCeM2bFVIx&q=85&s=298efcefe638061e05aa33431f1a4bff 2500w" />
+<img alt="Image3 Pn" />
 
 ## Create Link Token (Backend)
 
@@ -1320,7 +1265,7 @@ Once your client application receives the linkToken, you can use it to initializ
 
 <Tabs>
   <Tab title="Web">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install --save @meshconnect/web-link-sdk 
     ```
   </Tab>
@@ -1332,17 +1277,38 @@ Once your client application receives the linkToken, you can use it to initializ
   <Tab title="Android">
     In your build.gradle file:
 
-    ```groovy  theme={null}
+    ```groovy theme={null}
     dependencies { implementation 'com.meshconnect:link:2.0.0' } 
     ```
   </Tab>
 
   <Tab title="React Native">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install --save @meshconnect/react-native-link-sdk
 
     # Also ensure react-native-webview is installed
     npm install --save react-native-webview
+    ```
+  </Tab>
+
+  <Tab title="Flutter">
+    Add to your `pubspec.yaml`:
+
+    ```yaml theme={null}
+    dependencies:
+      mesh_sdk_flutter: <latest_version>
+    ```
+
+    Then add localization delegates to your `MaterialApp`:
+
+    ```dart theme={null}
+    import 'package:mesh_sdk_flutter/mesh_sdk_flutter.dart';
+
+    MaterialApp(
+      localizationsDelegates: [
+        ...MeshLocalizations.localizationsDelegates,
+      ],
+    );
     ```
   </Tab>
 </Tabs>
@@ -1351,7 +1317,7 @@ Once your client application receives the linkToken, you can use it to initializ
 
 <Tabs>
   <Tab title="Web">
-    ```jsx  theme={null}
+    ```jsx theme={null}
     import { createLink } from "@meshconnect/web-link-sdk";
 
     // Initialize the Link connection with your callbacks
@@ -1368,7 +1334,7 @@ Once your client application receives the linkToken, you can use it to initializ
   </Tab>
 
   <Tab title="iOS">
-    ```swift  theme={null}
+    ```swift theme={null}
     // Create a configuration with the linkToken and callbacks
     let configuration = LinkConfiguration(
     linkToken: "YOUR_LINK_TOKEN",
@@ -1389,7 +1355,7 @@ Once your client application receives the linkToken, you can use it to initializ
   </Tab>
 
   <Tab title="Android">
-    ```kotlin  theme={null}
+    ```kotlin theme={null}
     // Register a launcher to handle the result from the Link flow
     private val linkLauncher = registerForActivityResult(LinkContract()) { result ->
     when (result) {
@@ -1410,7 +1376,7 @@ Once your client application receives the linkToken, you can use it to initializ
   </Tab>
 
   <Tab title="React Native">
-    ```jsx  theme={null}
+    ```jsx theme={null}
     import React from 'react';
     import { LinkConnect } from '@meshconnect/react-native-link-sdk';
 
@@ -1424,6 +1390,31 @@ Once your client application receives the linkToken, you can use it to initializ
         />
       );
     };
+    ```
+  </Tab>
+
+  <Tab title="Flutter">
+    ```dart theme={null}
+    import 'package:mesh_sdk_flutter/mesh_sdk_flutter.dart';
+
+    Future<void> openMeshLink(String linkToken) async {
+      final result = await MeshSdk.show(
+        context,
+        configuration: MeshConfiguration(
+          linkToken: linkToken,
+          onIntegrationConnected: (integration) { /* Handle success */ },
+          onTransferFinished: (transfer) { /* Handle transfer result */ },
+          onExit: (error) { /* Handle exit */ },
+        ),
+      );
+
+      switch (result) {
+        case MeshSuccess():
+          // Handle success
+        case MeshError():
+          // Handle error: result.type
+      }
+    }
     ```
   </Tab>
 </Tabs>
@@ -1459,11 +1450,22 @@ Your application needs to respond to events to know the outcome of a user's sess
   </Tab>
 
   <Tab title="React Native">
-    The `<LinkConnect>`component accepts props for callbacks:
+    The `<LinkConnect>` component accepts props for callbacks:
 
     * `onIntegrationConnected`: Called on successful connection.
     * `onTransferFinished`: Called when a transfer is complete.
     * `onExit`: Called when the user closes the UI.
+  </Tab>
+
+  <Tab title="Flutter">
+    The `MeshConfiguration` object accepts callbacks:
+
+    * `onIntegrationConnected`: Called on successful connection.
+    * `onTransferFinished`: Called when a transfer is complete.
+    * `onExit`: Called when the user closes the UI.
+    * `onEvent`: Called for various UI events.
+
+    The `MeshSdk.show()` method returns a `MeshResult` that can be `MeshSuccess` or `MeshError`.
   </Tab>
 </Tabs>
 
@@ -1479,8 +1481,8 @@ For detailed information on webhook security, payload structure, and how to resp
 
 To get more information about our SDKs, refer to the respective Github repository:
 
-| [Web](https://github.com/FrontFin/mesh-web-sdk) | [Android](https://github.com/FrontFin/mesh-android-sdk) | [iOS](https://github.com/FrontFin/mesh-ios-sdk) | [React Native](https://github.com/FrontFin/mesh-react-native-sdk) |
-| :---------------------------------------------: | :-----------------------------------------------------: | :---------------------------------------------: | :---------------------------------------------------------------- |
+| [Web](https://github.com/FrontFin/mesh-web-sdk) | [Android](https://github.com/FrontFin/mesh-android-sdk) | [iOS](https://github.com/FrontFin/mesh-ios-sdk) | [React Native](https://github.com/FrontFin/mesh-react-native-sdk) | [Flutter](https://github.com/FrontFin/mesh-flutter-sdk) |
+| :---------------------------------------------: | :-----------------------------------------------------: | :---------------------------------------------: | :---------------------------------------------------------------: | :-----------------------------------------------------: |
 
 ## Productionize
 
@@ -1564,17 +1566,19 @@ Source: https://docs.meshconnect.com/supported-tokens
 
 ### Major EVM Networks
 
-| **Network**     | **Tokens** | **Available Assets**                                                                                                                                                                                                                                   |
-| --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Ethereum**    | **42**     | AAVE, APE, ARB, BLUR, BUSD, CAKE, CRO, DAI, DEXE, ENA, ETH, FDUSD, FTM, GRT, IMX, INJ, LDO, LEO, LINK, MANA, MATIC, MKR, MNT, PAXG, PYUSD, QNT, RLUSD, RNDR, SAND, SHIB, SNX, TUSD, UNI, USD1, USDC, USDD, USDP, USDT, VIRTUAL, WBTC, WETH, USDG, EURC |
-| **Polygon**     | **6**      | POL, USDC, USDT, DAI, MATIC, WMATIC                                                                                                                                                                                                                    |
-| **BSC**         | **10**     | BNB, USDC, USDT, CAKE, FDUSD, WBNB, LTC, DEXE, FORM, USD1                                                                                                                                                                                              |
-| **Arbitrum**    | **7**      | ETH, USDC, USDT, DAI, ARB, PYUSD, WETH                                                                                                                                                                                                                 |
-| **Optimism**    | **7**      | ETH, USDC, USDT, DAI, OP, SNX, WETH                                                                                                                                                                                                                    |
-| **Base**        | **5**      | ETH, USDC, VIRTUAL, WETH, EURC                                                                                                                                                                                                                         |
-| **Avalanche C** | **6**      | AVAX, USDC, USDT, DAI, WAVAX, EURC                                                                                                                                                                                                                     |
-| **Blast**       | **3**      | BLAST, ETH, WETH                                                                                                                                                                                                                                       |
-| **HyperEVM**    | **2**      | HYPE, USDC                                                                                                                                                                                                                                             |
+| **Network**     | **Tokens** | **Available Assets**                                                                                                                                                                                                                                         |
+| --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Ethereum**    | **43**     | AAVE, APE, ARB, BLUR, BUSD, CAKE, CRO, DAI, DEXE, ENA, ETH, FDUSD, FTM, GRT, IMX, INJ, LDO, LEO, LINK, MANA, MATIC, MKR, MNT, PAXG, PYUSD, QNT, RLUSD, RNDR, SAND, SHIB, SNX, TUSD, UNI, USD1, USDC, USDD, USDP, USDT, VIRTUAL, WBTC, WETH, USDG, EURC, WLFI |
+| **Polygon**     | **6**      | POL, USDC, USDT, DAI, MATIC, WMATIC                                                                                                                                                                                                                          |
+| **BSC**         | **11**     | BNB, USDC, USDT, CAKE, FDUSD, WBNB, LTC, DEXE, FORM, USD1, WLFI                                                                                                                                                                                              |
+| **Arbitrum**    | **7**      | ETH, USDC, USDT, DAI, ARB, PYUSD, WETH                                                                                                                                                                                                                       |
+| **Optimism**    | **7**      | ETH, USDC, USDT, DAI, OP, SNX, WETH                                                                                                                                                                                                                          |
+| **Base**        | **5**      | ETH, USDC, VIRTUAL, WETH, EURC                                                                                                                                                                                                                               |
+| **Avalanche C** | **6**      | AVAX, USDC, USDT, DAI, WAVAX, EURC                                                                                                                                                                                                                           |
+| **Blast**       | **3**      | BLAST, ETH, WETH                                                                                                                                                                                                                                             |
+| **HyperEVM**    | **2**      | HYPE, USDC                                                                                                                                                                                                                                                   |
+| **SEI**         | **2**      | SEI, USDC                                                                                                                                                                                                                                                    |
+| **Monad**       | **5**      | MON, ETH, USD1, USDC, USDT                                                                                                                                                                                                                                   |
 
 ### Non-EVM Networks
 
@@ -1602,27 +1606,27 @@ Source: https://docs.meshconnect.com/supported-tokens
 
 ### Test Networks (Wallets only)
 
-| **Wallet** | **Testnet**   | **Native Token** | **Stablecoin** | **Get Tokens**          |
-| ---------- | ------------- | ---------------- | -------------- | ----------------------- |
-| MetaMask   | Sepolia       | SEPOLIAETH       | PYUSD, USDG    | sepoliafaucet.com       |
-| Rainbow    | Sepolia       | SEPOLIAETH       | PYUSD, USDG    | sepolia-faucet.pk910.de |
-| Phantom    | Solana Devnet | DEVNETSOL        | PYUSD, USDG    | faucet.solana.com       |
+| **Wallet** | **Testnet**   | **Native Token** | **Stablecoin** | **Get Tokens**    |
+| ---------- | ------------- | ---------------- | -------------- | ----------------- |
+| MetaMask   | Sepolia       | SEPOLIAETH       | PYUSD, USDG    | sepoliafaucet.com |
+| Phantom    | Solana Devnet | DEVNETSOL        | PYUSD, USDG    | faucet.solana.com |
 
 ## Stablecoin Coverage
 
-| **Stablecoin** | **Networks**          | **Coverage**                                                                                             |
-| -------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
-| **USDC**       | 12 networks           | Ethereum, Polygon, BSC, Arbitrum, Optimism, Base, Avalanche, Solana, Tron, Aptos, Stellar, Sui, HyperEVM |
-| **USDT**       | 11 networks           | Ethereum, Polygon, BSC, Arbitrum, Optimism, Avalanche, Solana, Tron, Aptos, Sui, TON                     |
-| **DAI**        | 5 networks            | Ethereum, Polygon, Arbitrum, Optimism, Avalanche                                                         |
-| **FDUSD**      | 4 networks            | Ethereum, BSC, Solana, Sui                                                                               |
-| **PYUSD**      | 3 networks + testnets | Ethereum, Arbitrum, Solana (+ Sepolia, Solana Devnet)                                                    |
-| **USD1**       | 2 networks            | Ethereum, BSC                                                                                            |
-| **TUSD**       | 1 network             | Ethereum                                                                                                 |
-| **USDP**       | 1 network             | Ethereum                                                                                                 |
-| **USDD**       | 1 network             | Ethereum                                                                                                 |
-| **RLUSD**      | 1 network             | Ethereum                                                                                                 |
-| **USDG**       | 2 networks            | Ethereum, Solana                                                                                         |
+| **Stablecoin** | **Networks**          | **Coverage**                                                                                                  |
+| -------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **USDC**       | 12 networks           | Ethereum, Polygon, BSC, Arbitrum, Optimism, Base, Avalanche, Solana, Tron, Aptos, Stellar, Sui, HyperEVM, SEI |
+| **USDT**       | 11 networks           | Ethereum, Polygon, BSC, Arbitrum, Optimism, Avalanche, Solana, Tron, Aptos, Sui, TON                          |
+| **DAI**        | 5 networks            | Ethereum, Polygon, Arbitrum, Optimism, Avalanche                                                              |
+| **FDUSD**      | 4 networks            | Ethereum, BSC, Solana, Sui                                                                                    |
+| **PYUSD**      | 3 networks + testnets | Ethereum, Arbitrum, Solana (+ Sepolia, Solana Devnet)                                                         |
+| **USD1**       | 2 networks            | Ethereum, BSC                                                                                                 |
+| **TUSD**       | 1 network             | Ethereum                                                                                                      |
+| **USDP**       | 1 network             | Ethereum                                                                                                      |
+| **USDD**       | 1 network             | Ethereum                                                                                                      |
+| **RLUSD**      | 1 network             | Ethereum                                                                                                      |
+| **USDG**       | 2 networks            | Ethereum, Solana                                                                                              |
+| **USDH**       | 1 network             | HyperEVM                                                                                                      |
 
 ## Exchange Integration
 
@@ -1699,13 +1703,13 @@ Statuses:
 | AddressMissing                                     | (TransferToAddress.Address) field was not provided.                                                                                                                                                                         |
 | SymbolMissing                                      | (TransferToAddress.Symbol) field was not provided.                                                                                                                                                                          |
 | UnsupportedSymbolByNetwork                         | Network does not currently support the requested symbol.                                                                                                                                                                    |
-| InvalidAddressPattern                              | Target address does not match network '{0}' address pattern.                                                                                                                                                                |
+| InvalidAddressPattern                              | Target address does not match network '' address pattern.                                                                                                                                                                   |
 | NetworkNotFound                                    | Network not found.                                                                                                                                                                                                          |
-| NetworkDisabled                                    | Network '{0}' is currently disabled and cannot be used.                                                                                                                                                                     |
-| InsufficientFunds                                  | Insufficient '{0}' funds.                                                                                                                                                                                                   |
-| InsufficientFeeFunds                               | Insufficient '{0}' funds for transfer fees.                                                                                                                                                                                 |
-| EmptyWalletSymbolBalance                           | Source wallet '{0}' balance is empty.                                                                                                                                                                                       |
-| KycRequired                                        | The provided '{0}' account requires KYC to be completed to perform transfers.                                                                                                                                               |
+| NetworkDisabled                                    | Network '' is currently disabled and cannot be used.                                                                                                                                                                        |
+| InsufficientFunds                                  | Insufficient '' funds.                                                                                                                                                                                                      |
+| InsufficientFeeFunds                               | Insufficient '' funds for transfer fees.                                                                                                                                                                                    |
+| EmptyWalletSymbolBalance                           | Source wallet '' balance is empty.                                                                                                                                                                                          |
+| KycRequired                                        | The provided '' account requires KYC to be completed to perform transfers.                                                                                                                                                  |
 | DepositAmountTooLow                                | The requested amount is lower than the minimum amount that can be accepted by the target institution.                                                                                                                       |
 | WrongPreviewRequestFromAuthTokenMissing            | (PreviewTransferRequest.FromAuthToken) is a mandatory field and should be provided.                                                                                                                                         |
 | WrongPreviewRequestNoSymbol                        | (PreviewTransferRequest.Symbol) is a mandatory field and should be provided.                                                                                                                                                |
@@ -1716,7 +1720,7 @@ Statuses:
 | WrongPreviewRequestUnsupportedSymbolBySourceWallet | Symbol to transfer not supported by the source wallet over the requested network.                                                                                                                                           |
 | WrongPreviewRequestUnsupportedSymbolByTargetWallet | Symbol to transfer not supported by the target wallet over the requested network.                                                                                                                                           |
 | WrongPreviewRequestNetwork                         | Requested network is not supported by the source wallet.                                                                                                                                                                    |
-| PriceNotFound                                      | Could not fetch '{0}' price.                                                                                                                                                                                                |
+| PriceNotFound                                      | Could not fetch '' price.                                                                                                                                                                                                   |
 | AmountMoreThanWithdrawMaximum                      | Could not preview the transfer. The requested amount (previewRequest.Amount) (requestDto.Request.Symbol) is greater than the maximum allowed amount (minimumMaximumAmount.WithdrawMaximumAmount requestDto.Request.Symbol). |
 | AmountLessThanWithdrawMinimum                      | Could not preview the transfer. The requested amount (previewRequest.Amount) (requestDto.Request.Symbol) is below the minimum allowable threshold (minimumMaximumAmount.WithdrawMinimumAmount requestDto.Request.Symbol).   |
 
@@ -1757,6 +1761,22 @@ The Sandbox is a dedicated testing environment that allows you to integrate and 
 * **Mocked Exchange Data:** Simulates responses from centralized exchanges for testing API calls and transfer flows.
 * **On-Chain Wallet Testing:** Supports the **Sepolia testnet** for validating real on-chain transactions with self-custody wallets.
 * **Dedicated API Endpoint:** Access the Sandbox API at: `https://sandbox-integration-api.meshconnect.com`.
+
+***
+
+Mesh Sandbox now supports Defi Wallet **transfers using browser extension wallets** for applicable testnet scenarios. This allows developers to test end-to-end flows involving DeFi wallets directly within the Sandbox environment.
+
+### **Supported Browser Extension Wallets & Networks**
+
+* **MetaMask → Sepolia (Ethereum Testnet)**
+
+  Use MetaMask on Sepolia network to test SEPOLIAETH/PYUSD/USDG transfers on Sandbox Environment
+
+* **Phantom → Solana Devnet**
+
+  Use Phantom on SolanaDevnet network to test DEVNETSOL/PYUSD/USDG transfers on Sandbox Environment
+
+These capabilities enable comprehensive testing of token movement and wallet behavior without interacting with mainnet environments.
 
 ***
 
@@ -1940,7 +1960,7 @@ If your business relies on transfer status updates to make business decisions (r
 
 This is the function we use for creating HMAC signature that is used in the request header:
 
-```csharp  theme={null}
+```csharp theme={null}
  public string GenerateHmacSignature(string payload, string webhookSecret)
     {
         using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(webhookSecret));
@@ -1953,7 +1973,7 @@ This is the function we use for creating HMAC signature that is used in the requ
 
 All the webhook calls from Mesh side will come from this static IP:
 
-```bash  theme={null}
+```bash theme={null}
 20.22.113.37
 ```
 
@@ -1987,7 +2007,7 @@ The webhook payload contains the core information related to a transfer update, 
 
 The payload format is JSON. Here is an example of payload.
 
-```json  theme={null}
+```json theme={null}
 {
   "Id": "358c6ab7-4518-416b-9266-c680fda3a8dd",
   "EventId": "56713e70-be74-4a37-0036-08da97f5941a",
@@ -2020,15 +2040,15 @@ The payload format is JSON. Here is an example of payload.
 * Go to [Account —> API Keys](https://dashboard.meshconnect.com/company/keys) in your Mesh Dashboard.
 * Scroll down to “Production Transfer Webhook URI” and “Sandbox Transfer Webhook URI”
 
-<img src="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=fe05ae7e40b11ba72bf76224a79a87f8" alt="Register Webhook" data-og-width="5760" width="5760" data-og-height="4096" height="4096" data-path="images/registerWebhookURI.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=280&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=5de51ea2ac7a95ebb29c909cfb3e9629 280w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=560&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=bd6a73ee76a4c9ce611b2699965ad7a5 560w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=840&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=7615e658aa3835e4d8e26821a49c8d9c 840w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=1100&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=60865389f000fe01df15e0b5a1ed761b 1100w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=1650&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=e0da5324c1b9ecc3461130e4224a5d4f 1650w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerWebhookURI.png?w=2500&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=864adc132bcaea03c101e61f94dc4b94 2500w" />
+<img alt="Register Webhook" />
 
 * When registering an endpoint, you’ll be prompted to store your secret key, as you won’t be able to view it again.
 
-<img src="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=535d6074015a8a816a4446e161135903" alt="Register Webhook" data-og-width="5760" width="5760" data-og-height="4096" height="4096" data-path="images/registerModal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=280&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=6b230327d5e5057eb8506bd916ff969c 280w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=560&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=935a1440123de1cb79f1d106995bf731 560w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=840&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=182d2a94417f1da8820cf34966bbd6d6 840w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=1100&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=b5d44371c22f2ed002e94642aedb0611 1100w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=1650&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=42507bb4903de9dcf1e9117b2e45a28a 1650w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registerModal.png?w=2500&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=3e3d66f7d6a1d37a5bd0478f4ee7bcd8 2500w" />
+<img alt="Register Webhook" />
 
 * You can only save one production URI and one Sandbox URI, but you can deactivate one and save a new one at any time.
 
-<img src="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=ca6d4f633383e94b7a80d32bc6941686" alt="Register Webhook" data-og-width="5760" width="5760" data-og-height="4096" height="4096" data-path="images/registeredWebhookURI.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=280&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=e95ece6bd3b8817f3a6e604f7db22e94 280w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=560&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=55c57bd627957a0ad96406d7f6d8bd34 560w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=840&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=d92b50688b93456c67be223a15a2c769 840w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=1100&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=5b270df1ce0468a15b25762961024b40 1100w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=1650&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=ea53f2fa12ac78c3dc67f344997aaf05 1650w, https://mintcdn.com/mesh-40/wbkTiMTetR6YzaN-/images/registeredWebhookURI.png?w=2500&fit=max&auto=format&n=wbkTiMTetR6YzaN-&q=85&s=a2e5d756e1c6e4a1e4ca59c5e121ec01 2500w" />
+<img alt="Register Webhook" />
 
 ### How to respond to a Mesh webhook event
 

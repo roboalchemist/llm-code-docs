@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/advanced/customizing-prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customizing Prompts
 
 > Dive deeper into low-level prompt customization for CrewAI, enabling super custom and complex use cases for different models and languages.

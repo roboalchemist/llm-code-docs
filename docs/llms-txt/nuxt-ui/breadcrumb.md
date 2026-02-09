@@ -10,7 +10,9 @@ Use the Breadcrumb component to show the current page's location in your site's 
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { BreadcrumbItem } from '@nuxt/ui'
+
+const items = ref<BreadcrumbItem[]>([
   {
     label: 'Docs',
     icon: 'i-lucide-book-open',
@@ -75,11 +77,8 @@ const items = ref<BreadcrumbItem[]>([
 </template>
 ```
 
-<note>
-
-A `span` is rendered instead of a link when the `to` property is not defined.
-
-</note>
+> [!NOTE]
+> A `span` is rendered instead of a link when the `to` property is not defined.
 
 ### Separator Icon
 
@@ -113,23 +112,15 @@ const items = ref<BreadcrumbItem[]>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronRight` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronRight` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronRight` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronRight` key.
 
 ## Examples
 
@@ -224,11 +215,9 @@ const items = [
 </template>
 ```
 
-<tip to="#slots">
-
-You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can also use the `#item`, `#item-leading`, `#item-label` and `#item-trailing` slots to customize all items.
 
 ## API
 
@@ -244,16 +233,16 @@ interface BreadcrumbProps {
    * @default "\"nav\""
    */
   as?: any;
-  items?: BreadcrumbItem[] | undefined;
+  items?: T[] | undefined;
   /**
    * The icon to use as a separator.
    */
-  separatorIcon?: string | object | undefined;
+  separatorIcon?: any;
   /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<BreadcrumbItem> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   ui?: { root?: ClassNameValue; list?: ClassNameValue; item?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLeadingAvatar?: ClassNameValue; linkLeadingAvatarSize?: ClassNameValue; linkLabel?: ClassNameValue; separator?: ClassNameValue; separatorIcon?: ClassNameValue; } | undefined;
 }
 ```
@@ -329,8 +318,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

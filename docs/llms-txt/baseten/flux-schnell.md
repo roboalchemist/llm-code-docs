@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/flux/flux-schnell.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flux-Schnell
 
 > Flux-Schnell is a state-of-the-art image generation model

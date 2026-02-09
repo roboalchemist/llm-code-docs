@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions-available.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Action Availability
 
 > Agent.ai provides actions across the builder and SDKs.

@@ -14,7 +14,7 @@ Modify service.xml and deployment.xml for production deployment.
 
 Only basic deployment configuration is available through this command. For advanced configuration see the relevant Vespa Cloud documentation and make changes to deployment.xml and services.xml directly.
 
-Reference:[https://docs.vespa.ai/en/reference/services.html](https://docs.vespa.ai/en/reference/services.html)[https://docs.vespa.ai/en/reference/deployment.html](https://docs.vespa.ai/en/reference/deployment.html)
+Reference:[https://docs.vespa.ai/en/reference/applications/services/services.html](https://docs.vespa.ai/en/reference/applications/services/services.html)[https://docs.vespa.ai/en/reference/applications/deployment.html](https://docs.vespa.ai/en/reference/applications/deployment.html)
 
 ```
 vespa prod init [flags]
@@ -42,7 +42,7 @@ vespa prod init [flags]
 
 - [vespa prod](vespa_prod.html) - Deploy an application package to production in Vespa Cloud
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

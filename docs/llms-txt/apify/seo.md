@@ -22,7 +22,7 @@ Let’s say you want to create a “YouTube Hashtag Scraper” Actor. After you 
 
 Keyword research is a very important part of your SEO success. Without that, you won’t know which keywords you should target with your Actor, and you might be leaving traffic on the table by not targeting all the angles or targeting the wrong one.
 
-We will do keyword research with free tools, but if you want to take this seriously, we highly recommend https://ahrefs.com/.
+We will do keyword research with free tools, but if you want to take this seriously, we highly recommend [Ahrefs](https://ahrefs.com/).
 
 ### Google autocomplete suggestions
 
@@ -70,7 +70,7 @@ Now, you can expand the “People Also Ask” questions. Click on each question 
 
 ### Google Keyword Planner
 
-Another way to collect more keywords is to use the official Google Keyword Planner. Go to https://ads.google.com/home/tools/keyword-planner/ and open the tool. You need a Google Ads account, so just create one for free if you don’t have one already.
+Another way to collect more keywords is to use the official Google Keyword Planner. Go to [Google Keyword Planner](https://ads.google.com/home/tools/keyword-planner/) and open the tool. You need a Google Ads account, so just create one for free if you don’t have one already.
 
 After you’re in the tool, click on “Discover new keywords”, make sure you’re in the “Start with keywords” tab, enter your Actor's main function or purpose, and then select the United States as the region and English as the language. Click “Get results” to see keywords related to your actor.
 
@@ -78,17 +78,17 @@ Write them down.
 
 ### Ahrefs Keyword Generator
 
-Go to https://ahrefs.com/keyword-generator, enter your Actor's main function or purpose, and click “Find keywords.” You should see a list of keywords related to your actor.
+Go to [Ahrefs Keyword Generator](https://ahrefs.com/keyword-generator), enter your Actor's main function or purpose, and click “Find keywords.” You should see a list of keywords related to your actor.
 
 Write them down.
 
 ## What to do with the keywords
 
-First, remove any duplicates that you might have on your list. You can use an online tool https://dedupelist.com/ for that.
+First, remove any duplicates that you might have on your list. You can use an online tool [like this one](https://dedupelist.com/) for that.
 
 After that, we need to get search volumes for your keywords. Put all your keywords in a spreadsheet, with one column being the keyword and the second one being the search volume.
 
-Go to the https://backlinko.com/tools/keyword, enter the keyword, and write down the search volume. You will also see other related keywords, so you might as well write them down if you don’t have them on your list yet.
+Go to the [Keyword Tool](https://backlinko.com/tools/keyword), enter the keyword, and write down the search volume. You will also see other related keywords, so you might as well write them down if you don’t have them on your list yet.
 
 At the end, you should have a list of keywords together with their search volumes that you can use to prioritize the keywords, use the keywords to name your Actor, choose the URL, etc.
 
@@ -114,7 +114,7 @@ Remember that while including keywords is important, always prioritize readabili
 
 If you want to learn more about SEO, these two free courses will get you started:
 
-* https://ahrefs.com/academy/seo-training-course by Ahrefs
-* https://www.semrush.com/academy/courses/seo/ by Semrush
+* [SEO Course for Beginners](https://ahrefs.com/academy/seo-training-course) by Ahrefs
+* [SEO Courses](https://www.semrush.com/academy/courses/seo/) by Semrush
 
-The https://www.youtube.com/@AhrefsCom/featured is also a great resource. You can start with https://www.youtube.com/watch?v=xsVTqzratPs.
+The [Ahrefs YouTube channel](https://www.youtube.com/@AhrefsCom/featured) is also a great resource. You can start with [this video](https://www.youtube.com/watch?v=xsVTqzratPs).

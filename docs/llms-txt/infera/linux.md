@@ -1,5 +1,9 @@
 # Source: https://docs.infera.org/node/linux.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Linux
 
 > Installing the Infera Node CLI program on Linux.
@@ -20,9 +24,9 @@ You **MUST** have a **GPU** to run an **Infera Node**.
   </Step>
 
   <Step title="Install the Infera Lite browser extension">
-    1.  Open the Chrome Browser (if you do not have Chrome installed, download it [here](https://www.google.com/intl/en_ca/chrome/))
-    2.  Go to the [Infera Lite](https://chromewebstore.google.com/detail/infera-lite/ffoccnmddajjohmmkccnkobelobgcdmp) extension on the Chrome Web Store.
-    3.  Click **"Add to your Chrome"** to install the extension in your browser.
+    1. Open the Chrome Browser (if you do not have Chrome installed, download it [here](https://www.google.com/intl/en_ca/chrome/))
+    2. Go to the [Infera Lite](https://chromewebstore.google.com/detail/infera-lite/ffoccnmddajjohmmkccnkobelobgcdmp) extension on the Chrome Web Store.
+    3. Click **"Add to your Chrome"** to install the extension in your browser.
 
     <Note>For Linux installation, the Infera Lite extension is not required. Nodes can run fully in CLI and be linked using CLI management commands which can be found [here](https://medium.com/@alex_85908/node-management-in-cli-be725a90d1c8). Use the extension if you are more comfortable with a graphical interface</Note>
   </Step>
@@ -36,13 +40,13 @@ You **MUST** have a **GPU** to run an **Infera Node**.
 
     #### For Linux with Intel
 
-    ```bash
+    ```bash  theme={null}
     curl -sSL http://downloads.infera.org/infera-linux-intel.sh | bash
     ```
 
     #### For Linux with AMD
 
-    ```bash
+    ```bash  theme={null}
     curl -sSL http://downloads.infera.org/infera-linux-amd.sh | bash
     ```
   </Step>
@@ -50,7 +54,7 @@ You **MUST** have a **GPU** to run an **Infera Node**.
   <Step title="Running an Infera Node">
     After installing, run the following command to start your node:
 
-    ```bash
+    ```bash  theme={null}
     init-infera
     ```
   </Step>
@@ -58,7 +62,7 @@ You **MUST** have a **GPU** to run an **Infera Node**.
   <Step title="Verify that your Infera Node is running">
     If your node is running correctly, your terminal will display a message like this:
 
-    <img width="100%" src="https://mintlify.s3.us-west-1.amazonaws.com/infera-a106b685/images/node/node-running.png" />
+    <img width="100%" src="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=1c71a706299a25cbfa122d1cb2647868" data-og-width="818" data-og-height="455" data-path="images/node/node-running.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=280&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=9a9d5fdd568e44aada177e226f8edb48 280w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=560&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=14f39375bae1a129a7d6e6647be33fc7 560w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=840&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=e6a4bf0380ac10aba69c6f855c366e44 840w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=1100&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=4b917b55d95a1264438e4a277e7fa948 1100w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=1650&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=c085f9f8771ace00a641fb1a50048829 1650w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/node/node-running.png?w=2500&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=b36fe505f9c52b66d0ec8958c9849fa3 2500w" />
   </Step>
 
   <Step title="Connect to your node">
@@ -94,14 +98,14 @@ To update the Infera Node on your computer, enter the following command into you
 
 **Linux on Intel CPU**
 
-```bash
+```bash  theme={null}
 rm -rf ~/infera
 curl -sSL http://downloads.infera.org/infera-apple-m.sh | bash
 ```
 
 **Linux on AMD CPU**
 
-```bash
+```bash  theme={null}
 rm -rf ~/infera
 curl -sSL http://downloads.infera.org/infera-linux-amd.sh | bash
 ```
@@ -114,7 +118,7 @@ curl -sSL http://downloads.infera.org/infera-linux-amd.sh | bash
 
 To delete infera from your computer, enter the following command into your Terminal.
 
-```bash
+```bash  theme={null}
 rm -rf ~/infera
 ```
 
@@ -122,9 +126,9 @@ rm -rf ~/infera
 
 ## Troubleshooting
 
-*   If the installation script fails, ensure your internet connection is active.
-*   Make sure you have the latest version of Ollama running before starting the Infera node.
-*   Make sure your computer has a **GPU**
-*   If having issues with updating Infera, try rebooting your PC after running `rm -rf ~/infera` command
+* If the installation script fails, ensure your internet connection is active.
+* Make sure you have the latest version of Ollama running before starting the Infera node.
+* Make sure your computer has a **GPU**
+* If having issues with updating Infera, try rebooting your PC after running `rm -rf ~/infera` command
 
 If you have any questions or encounter any issues, join our [Discord Community](https://discord.com/invite/infera) for assistance.

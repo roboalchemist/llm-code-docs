@@ -9,13 +9,17 @@ https://api.apify.com/v2/webhook-dispatches/:dispatchId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/WebhookDispatchClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/WebhookDispatchClient#getGets webhook dispatch object with all details.
+Gets webhook dispatch object with all details.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/accepting-additional-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Accepting Additional Fields
 
 > Create additional fields on the fly
@@ -17,7 +21,7 @@ In essence, the `allowAdditionalFields` feature is designed for scalability and 
 
 ## Example Blueprint w/ `allowAdditionalFields`
 
-```json
+```json  theme={null}
 {
   "sheets": [
     {

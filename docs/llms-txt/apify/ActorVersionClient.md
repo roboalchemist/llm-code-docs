@@ -2,19 +2,29 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionClient.md
-
 # ActorVersionClient<!-- -->
+
+Client for managing a specific Actor version.
+
+Actor versions represent specific builds or snapshots of an Actor's code. This client provides methods to get, update, and delete versions, as well as manage their environment variables.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const actorClient = client.actor('my-actor-id');
+
+  // Get a specific version
+  const versionClient = actorClient.version('0.1');
+  const version = await versionClient.get();
+
+  // Update version
+  await versionClient.update({ buildTag: 'latest' });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/development/actor-definition/versions>
 
 ### Hierarchy
 
@@ -45,25 +55,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -73,7 +83,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -83,19 +93,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -105,7 +115,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -113,21 +123,29 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L38)delete
+### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L68)delete
 
 * ****delete**(): Promise\<void>
 
-- <https://docs.apify.com/api/v2#/reference/actors/version-object/delete-version>
+- Deletes the Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-delete>
 
   ***
 
   #### Returns Promise\<void>
 
-### [**](#envVar)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L45)envVar
+### [**](#envVar)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L79)envVar
 
 * ****envVar**(envVarName): [ActorEnvVarClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ActorEnvVarClient.md)
 
-- TODO: <https://docs.apify.com/api/v2#/reference/actors/env-var-object>
+- Returns a client for the specified environment variable of this Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-env-var-get>
 
   ***
 
@@ -135,33 +153,53 @@ Inherited from ResourceClient.url
 
   * ##### envVarName: string
 
+    Name of the environment variable.
+
   #### Returns [ActorEnvVarClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ActorEnvVarClient.md)
 
-### [**](#envVars)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L58)envVars
+  A client for the environment variable.
+
+### [**](#envVars)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L94)envVars
 
 * ****envVars**(): [ActorEnvVarCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ActorEnvVarCollectionClient.md)
 
-- TODO: <https://docs.apify.com/api/v2#/reference/actors/env-var-collection>
+- Returns a client for the environment variables of this Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-env-vars-get>
 
   ***
 
   #### Returns [ActorEnvVarCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ActorEnvVarCollectionClient.md)
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L22)get
+  A client for the Actor version's environment variables.
+
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L46)get
 
 * ****get**(): Promise\<undefined | [FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
 
-- <https://docs.apify.com/api/v2#/reference/actors/version-object/get-version>
+- Retrieves the Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-get>
 
   ***
 
   #### Returns Promise\<undefined | [FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
 
-### [**](#update)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L29)update
+  The Actor version object, or `undefined` if it does not exist.
+
+### [**](#update)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L57)update
 
 * ****update**(newFields): Promise<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
 
-- <https://docs.apify.com/api/v2#/reference/actors/version-object/update-version>
+- Updates the Actor version with the specified fields.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-version-put>
 
   ***
 
@@ -169,4 +207,8 @@ Inherited from ResourceClient.url
 
   * ##### newFields: [ActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersion)
 
+    Fields to update.
+
   #### Returns Promise<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
+
+  The updated Actor version object.

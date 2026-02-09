@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/contents-retrieval.md
+# Source: https://exa.ai/docs/reference/contents-retrieval.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Contents Retrieval
 
@@ -9,6 +13,61 @@ When using the Exa API, you can request different types of content to be returne
 ## Text (text=True)
 
 Returns the full text content of the result, formatted as markdown. It extracts the main content (like article body text) while filtering out navigation elements, pop-ups, and other peripheral text. This is extractive content taken directly from the page's source.
+
+### Content Filtering Options
+
+<Note>
+  **Important**: Content filtering options (`verbosity`, `includeSections`, `excludeSections`) require `livecrawl: "always"` to take effect. These filters are applied during the live crawling process.
+</Note>
+
+You can control the level of detail and which page sections are included using these options:
+
+1. **Verbosity** - Controls overall content detail level:
+   * `compact` (default): Most concise output, main content only
+   * `standard`: Balanced content with more detail
+   * `full`: Complete content including all sections
+
+2. **Section Filtering** - Include or exclude specific semantic sections:
+
+   * `includeSections`: Only include content from specified sections
+   * `excludeSections`: Remove content from specified sections
+
+   Available section tags:
+
+   * `header` - Page header content
+   * `navigation` - Navigation menus
+   * `banner` - Banner/hero sections
+   * `body` - Main body content
+   * `sidebar` - Sidebar content
+   * `footer` - Page footer
+   * `metadata` - Page metadata
+
+Example configuration:
+
+```json  theme={null}
+{
+  "contents": {
+    "text": {
+      "verbosity": "standard",
+      "includeSections": ["body", "header"]
+    },
+    "livecrawl": "always"
+  }
+}
+```
+
+Or to exclude noisy sections:
+
+```json  theme={null}
+{
+  "contents": {
+    "text": {
+      "excludeSections": ["navigation", "footer", "sidebar"]
+    },
+    "livecrawl": "always"
+  }
+}
+```
 
 ## Summary (summary=True)
 
@@ -53,15 +112,13 @@ You can configure highlights in two ways:
      "contents": {
        "highlights": {
          "query": "Your specific highlight query",
-         "numSentences": 3,
-         "highlightsPerUrl": 5
+         "maxCharacters": 2000
        }
      }
    }
    ```
    * `query`: The specific query to use for generating highlights (if different from search query)
-   * `numSentences`: Number of sentences per highlight (minimum: 1)
-   * `highlightsPerUrl`: Maximum number of highlights to return per URL (minimum: 1)
+   * `maxCharacters`: Maximum number of characters to return for highlights
 
 ## Context String
 
@@ -133,8 +190,3 @@ for status in result.statuses:
 ```
 
 This allows you to handle different failure scenarios appropriately for each URL in your request.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

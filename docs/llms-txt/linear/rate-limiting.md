@@ -41,15 +41,15 @@ HTTP Header | Description
 `X-RateLimit-Requests-Remaining` | The number of API requests remaining in the current rate limit window.
 `X-RateLimit-Requests-Reset` | The time at which the current rate limit window resets in [UTC epoch milliseconds](https://en.wikipedia.org/wiki/Unix_time).
 
-When authenticated using an API key you can make up to **1,500 requests per hour**. Requests are associated with the authenticated user, which means all requests by the same user share the same quota even when using different API keys.
+When authenticated using an API key you can make up to **5,000 requests per hour**. Requests are associated with the authenticated user, which means all requests by the same user share the same quota even when using different API keys.
 
 When making unauthenticated requests, you are limited to **60 requests per hour**. These requests are associated with the originating IP address instead of the user making the request.
 
 Authentication | Limit | per | Period
 --- | --- | --- | ---
-API key | 1,500 | User | 1 hour
-OAuth App | 1,200 | User (or App User) | 1 hour
-OAuth App | 60 | IP Address | 1 hour
+API key | 5,000 | User | 1 hour
+OAuth App | 5,000 | User (or App User) | 1 hour
+Unauthenticated | 60 | IP Address | 1 hour
 
 ### Query- and mutation- specific request limits
 
@@ -81,8 +81,8 @@ Unauthenticated requests are limited to **10,000 points per hour**. These reques
 
 Authentication | Limit | Per | Period
 --- | --- | --- | ---
-API key | 250,000 | User | 1 hour
-OAuth app | 200,000 | User (or App User) | 1 hour
+API key | 3,000,000 | User | 1 hour
+OAuth app | 2,000,000 | User (or App User) | 1 hour
 Unauthenticated | 10,000 | IP Address | 1 hour
 
 #### Maximum complexity
@@ -127,9 +127,13 @@ query MyCreatedIssues {
 }
 ```
 
+### Dynamic rate limits
+
+We dynamically increase rate limits for workspace level OAuth apps using [Actor Authorization](https://linear.app/developers/oauth-actor-authorization) based on number of paid users in that workspace.
+
 ## Handling rate limit errors
 
-Once you actually exceed rate limits, Linear API will start returning rate limit error responses. With GraphQL requests, response http status code will still be 200, but you can catch these by inspecting the `errors` in the response body containing the `RATELIMITED` error code.
+Once you actually exceed rate limits, Linear API will start returning rate limit error responses. With GraphQL requests, response http status code will be 400, but you can catch these by inspecting the `errors` in the response body containing the `RATELIMITED` error code.
 
 ```json
 {

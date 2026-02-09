@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/deepseek.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DeepSeek
 
 > LLM service implementation using DeepSeek's API with OpenAI-compatible interface
@@ -47,8 +51,3 @@ Before using DeepSeek LLM services, you need:
 ### Required Environment Variables
 
 * `DEEPSEEK_API_KEY`: Your DeepSeek API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

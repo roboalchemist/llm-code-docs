@@ -2,14 +2,6 @@
 
 # Source: https://livecodes.io/docs/sdk/vue.html.md
 
-# Source: https://livecodes.io/docs/languages/vue.html.md
-
-# Source: https://livecodes.io/docs/sdk/vue.html.md
-
-# Source: https://livecodes.io/docs/languages/vue.html.md
-
-# Source: https://livecodes.io/docs/sdk/vue.html.md
-
 # Vue SDK
 
 import LiveCodes from '../../src/components/LiveCodes.tsx';

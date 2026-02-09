@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-aws-lambda.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with AWS Lambda
 
 > Learn how to send your first email using AWS Lambda.
@@ -13,7 +17,7 @@ To get the most out of this guide, you'll need to:
 
 ## 1. Create a AWS Lambda function
 
-Go to [aws.amazon.com](https://aws.amazon.com) and create a new Lambda function using the Node.js 18.x runtime.
+Go to [aws.amazon.com](https://aws.amazon.com) and create a new Lambda function using the Node.js 20.x or later runtime.
 
 <img alt="AWS Lambda - New Function" src="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=324a1181f685affebb1f50b18765538c" data-og-width="3414" width="3414" data-og-height="1886" height="1886" data-path="images/aws-lambda-new-function.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=280&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=a3182c8eb1966d9636f31456e00e2ec9 280w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=560&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=d797f2e3768184703be6627c29d23273 560w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=840&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=050e88c52777b8d38ce95bf8df426e95 840w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=1100&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=21f874a49461776f1c187428c8282ee0 1100w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=1650&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=c2df9c56cf87833cbfb7358e8d6fcbc1 1650w, https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/aws-lambda-new-function.png?w=2500&fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=b3fa3c2f80d29249d1aab8ae837b17bd 2500w" />
 
@@ -21,7 +25,7 @@ Go to [aws.amazon.com](https://aws.amazon.com) and create a new Lambda function 
 
 Paste the following code into the browser editor:
 
-```js index.mjs theme={null}
+```js index.mjs theme={"theme":{"light":"github-light","dark":"vesper"}}
 const RESEND_API_KEY = 're_xxxxxxxxx';
 
 export const handler = async (event) => {

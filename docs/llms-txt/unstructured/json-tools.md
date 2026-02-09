@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/json-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Working with Unstructured JSON output
 
 You can use tools such as the following to work with Unstructured JSON output.
@@ -50,7 +54,7 @@ See also:
 
 * [Table-specific metadata](/ui/document-elements#table-specific-metadata)
 * [VLM generated HTML elements](/ui/document-elements#vlm-generated-html-elements)
-* [Extract tables as HTML](/api-reference/partition/text-as-html) (Unstructured API Reference)
+* [Extract tables as HTML](/api-reference/legacy-api/partition/text-as-html) (Unstructured API Reference)
 * [Extract tables as HTML](/open-source/how-to/text-as-html) (Unstructured Open Source Reference)
 
 ### View image\_base64 field contents as an image in Visual Studio Code
@@ -78,7 +82,7 @@ do the following in Visual Studio Code.
 
 See also:
 
-* [Extract images and tables from documents](/api-reference/partition/extract-image-block-types) (Unstructured API Reference)
+* [Extract images and tables from documents](/api-reference/legacy-api/partition/extract-image-block-types) (Unstructured API Reference)
 * [Extract images and tables from documents](/open-source/how-to/extract-image-block-types) (Unstructured Open Source Reference)
 
 ### View orig\_elements field contents as original JSON in Visual Studio Code
@@ -113,7 +117,7 @@ do the following in Visual Studio Code:
 
 See also:
 
-* [Get chunked elements](/api-reference/partition/get-chunked-elements) (Unstructured API Reference)
+* [Get chunked elements](/api-reference/legacy-api/partition/get-chunked-elements) (Unstructured API Reference)
 * [Get chunked elements](/open-source/how-to/get-chunked-elements) (Unstructured Open Source Reference)
 
 ## Online web tools
@@ -188,7 +192,7 @@ See also:
 
 * [Table-specific metadata](/ui/document-elements#table-specific-metadata)
 * [VLM generated HTML elements](/ui/document-elements#vlm-generated-html-elements)
-* [Extract tables as HTML](/api-reference/partition/text-as-html) (Unstructured API Reference)
+* [Extract tables as HTML](/api-reference/legacy-api/partition/text-as-html) (Unstructured API Reference)
 * [Extract tables as HTML](/open-source/how-to/text-as-html) (Unstructured Open Source Reference)
 
 ### View image\_base64 field contents as an image online
@@ -213,7 +217,7 @@ do the following:
 
 See also:
 
-* [Extract images and tables from documents](/api-reference/partition/extract-image-block-types) (Unstructured API Reference)
+* [Extract images and tables from documents](/api-reference/legacy-api/partition/extract-image-block-types) (Unstructured API Reference)
 * [Extract images and tables from documents](/open-source/how-to/extract-image-block-types) (Unstructured Open Source Reference)
 
 ### View orig\_elements field contents as original JSON online
@@ -245,5 +249,5 @@ do the following:
 
 See also:
 
-* [Get chunked elements](/api-reference/partition/get-chunked-elements) (Unstructured API Reference)
+* [Get chunked elements](/api-reference/legacy-api/partition/get-chunked-elements) (Unstructured API Reference)
 * [Get chunked elements](/open-source/how-to/get-chunked-elements) (Unstructured Open Source Reference)

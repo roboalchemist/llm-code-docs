@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/langfuse.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Langfuse Integration
 
 > Integrate Helicone AI Gateway with Langfuse to access 100+ LLM providers with observability and LLM tracing.
@@ -270,8 +274,3 @@ analyze_text(text_to_analyze)
     Configure rate limits for your applications
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

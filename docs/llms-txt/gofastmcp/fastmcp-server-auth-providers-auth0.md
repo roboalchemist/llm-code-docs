@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-providers-auth0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # auth0
 
 # `fastmcp.server.auth.providers.auth0`
@@ -29,11 +33,7 @@ mcp = FastMCP("My Protected Server", auth=auth)
 
 ## Classes
 
-### `Auth0ProviderSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/auth0.py#L37" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-Settings for Auth0 OIDC provider.
-
-### `Auth0Provider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/auth0.py#L63" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `Auth0Provider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/auth0.py#L34" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 An Auth0 provider implementation for FastMCP.
 

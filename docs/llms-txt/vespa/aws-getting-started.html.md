@@ -68,7 +68,7 @@ To tear down a Vespa Cloud Enclave system, do the steps above in reverse order:
 
 It is important to undeploy the Vespa application(s) first. After running the Terraform, Vespa Cloud cannot manage the resources allocated, so you must clean up these yourself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

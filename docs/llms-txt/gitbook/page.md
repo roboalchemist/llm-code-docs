@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/content-structure/page.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/content-structure/page.md
-
-# Source: https://gitbook.com/docs/creating-content/content-structure/page.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/content-structure/page.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/content-structure/page.md
 
@@ -22,7 +18,7 @@ You can create as many pages as you need in a space. They’re all visible on th
 
 {% hint style="info" %}
 
-## Docs site landing page
+### Docs site landing page
 
 The first page in your table of contents is always your space's landing page, even if it's hidden from the table of contents.
 {% endhint %}

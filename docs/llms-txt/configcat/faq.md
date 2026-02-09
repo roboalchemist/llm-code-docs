@@ -2,6 +2,8 @@
 
 # FAQ - Frequently Asked Questions
 
+Copy page
+
 A collection of frequently asked questions.
 
 ## General[​](#general "Direct link to General")
@@ -12,13 +14,13 @@ You can book a free demo session [here](https://calendly.com/configcat/demo), wh
 
 ## Billing, Payments & Subscriptions[​](#billing-payments--subscriptions "Direct link to Billing, Payments & Subscriptions")
 
-### What if I exceed the [config JSON download](https://configcat.com/docs/docs/requests/.md) limit of my plan?[​](#what-if-i-exceed-the-config-json-download-limit-of-my-plan "Direct link to what-if-i-exceed-the-config-json-download-limit-of-my-plan")
+### What if I exceed the [config JSON download](https://configcat.com/docs/requests.md) limit of my plan?[​](#what-if-i-exceed-the-config-json-download-limit-of-my-plan "Direct link to what-if-i-exceed-the-config-json-download-limit-of-my-plan")
 
 Don't worry, we will keep serving your data and feature flags. Someone from our team will contact you to discuss your options. You can always check your Usage & Quota [here](https://app.configcat.com/organization/usage).
 
 ### Where can I find and download my invoices?[​](#where-can-i-find-and-download-my-invoices "Direct link to Where can I find and download my invoices?")
 
-All the invoices we've issued are available for download from the [Billing & Invoices page](https://app.configcat.com/organization/billing). You need to have the [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Billing & Invoices page.
+All the invoices we've issued are available for download from the [Billing & Invoices page](https://app.configcat.com/organization/billing). You need to have the [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Billing & Invoices page.
 
 ### Is it possible to pay via wire transfer?[​](#is-it-possible-to-pay-via-wire-transfer "Direct link to Is it possible to pay via wire transfer?")
 
@@ -26,7 +28,7 @@ Using a credit card via the ConfigCat Dashboard is the preferred way of payment,
 
 ### How do I upgrade / downgrade my billing plan?[​](#how-do-i-upgrade--downgrade-my-billing-plan "Direct link to How do I upgrade / downgrade my billing plan?")
 
-You can change your billing plan on the [Plans](https://app.configcat.com/organization/plans) page. You need to have the [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Plans page.
+You can change your billing plan on the [Plans](https://app.configcat.com/organization/plans) page. You need to have the [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Plans page.
 
 ### Can I get a discounted rate?[​](#can-i-get-a-discounted-rate "Direct link to Can I get a discounted rate?")
 
@@ -46,11 +48,11 @@ Please note: Switching emails means you'll lose preferences from your old accoun
 
 ### How do I change the billing email address where I receive my invoices?[​](#how-do-i-change-the-billing-email-address-where-i-receive-my-invoices "Direct link to How do I change the billing email address where I receive my invoices?")
 
-Go to the [Billing & Invoices page](https://app.configcat.com/organization/billing) and click the `Update billing details` link. You need to have the [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Billing & Invoices page.
+Go to the [Billing & Invoices page](https://app.configcat.com/organization/billing) and click the `Update billing details` link. You need to have the [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Billing & Invoices page.
 
 ### How do I change my payment method or billing information?[​](#how-do-i-change-my-payment-method-or-billing-information "Direct link to How do I change my payment method or billing information?")
 
-Go to the [Billing & Invoices page.](https://app.configcat.com/organization/billing) and click the `Update billing details` link. You need to have a [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Billing & Invoices page.
+Go to the [Billing & Invoices page.](https://app.configcat.com/organization/billing) and click the `Update billing details` link. You need to have a [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Billing & Invoices page.
 
 ### The ChargeBee payment gets stuck | Throws an error[​](#the-chargebee-payment-gets-stuck--throws-an-error "Direct link to The ChargeBee payment gets stuck | Throws an error")
 
@@ -58,11 +60,11 @@ If you're using Firefox, try switching to a Chromium-based browser that has exte
 
 ### How do I cancel my account?[​](#how-do-i-cancel-my-account "Direct link to How do I cancel my account?")
 
-Go to the [Plans](https://app.configcat.com/organization/plans) page and click the `Switch Plan` button under the Free plan. You need to have a [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Plans page.
+Go to the [Plans](https://app.configcat.com/organization/plans) page and click the `Switch Plan` button under the Free plan. You need to have a [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Plans page.
 
 ### How do I change my currency?[​](#how-do-i-change-my-currency "Direct link to How do I change my currency?")
 
-Go to the [Plans](https://app.configcat.com/organization/plans) page and use the currency toggle to switch between USD and EUR. You need to have a [Billing Manager](https://configcat.com/docs/docs/organization/.md#billing-manager-role) role to access the Plans page.
+Go to the [Plans](https://app.configcat.com/organization/plans) page and use the currency toggle to switch between USD and EUR. You need to have a [Billing Manager](https://configcat.com/docs/organization.md#billing-manager-role) role to access the Plans page.
 
 ## Security[​](#security "Direct link to Security")
 
@@ -123,7 +125,7 @@ ConfigCat doesn't collect any information about the customer's users.
 
 Our main infrastructure and database is in the EU, but CDN servers are located both in the EU and globally. You can set where you want us to keep your data, so its always within reach for your needs.
 
-You can read more [here](https://configcat.com/docs/docs/advanced/data-governance/.md).
+You can read more [here](https://configcat.com/docs/advanced/data-governance.md).
 
 ### Is it possible to export the feature flags?[​](#is-it-possible-to-export-the-feature-flags "Direct link to Is it possible to export the feature flags?")
 
@@ -148,7 +150,7 @@ We keep organization data as long as we see activity in that organization. After
 
 ### Can I use AND operators in my Targeting Rules?[​](#can-i-use-and-operators-in-my-targeting-rules "Direct link to Can I use AND operators in my Targeting Rules?")
 
-Yes, you can use AND operators in your Targeting Rules. (Only available in [Config V2](https://configcat.com/docs/docs/advanced/config-v2/.md) and later)
+Yes, you can use AND operators in your Targeting Rules. (Only available in [Config V2](https://configcat.com/docs/advanced/config-v2.md) and later)
 
 ### Are Percentage Options sticky?[​](#are-percentage-options-sticky "Direct link to Are Percentage Options sticky?")
 
@@ -159,11 +161,11 @@ Also, consider the following:
 * All SDKs evaluate the rules in the exact same way. (10% is the same 10% in all SDKs)
 * The percentage rules are sticky by feature flag. (10% is a different 10% for each feature flag)
 
-More on [stickiness](https://configcat.com/docs/docs/targeting/percentage-options/.md#stickiness) and [consistency](https://configcat.com/docs/docs/targeting/percentage-options/.md#consistency)
+More on [stickiness](https://configcat.com/docs/targeting/percentage-options.md#stickiness) and [consistency](https://configcat.com/docs/targeting/percentage-options.md#consistency)
 
 ### How to use Targeting Rules based on sensitive data?[​](#how-to-use-targeting-rules-based-on-sensitive-data "Direct link to How to use Targeting Rules based on sensitive data?")
 
-If you want to use Targeting Rules based on email address, phone number, or other sensitive data, you can use the [Confidential text comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators).
+If you want to use Targeting Rules based on email address, phone number, or other sensitive data, you can use the [Confidential text comparators](https://configcat.com/docs/targeting/targeting-rule/user-condition.md#confidential-text-comparators).
 
 ## Technical Debt[​](#technical-debt "Direct link to Technical Debt")
 
@@ -185,7 +187,7 @@ You can change the frequency, criteria and scope of the Zombie Feature Flag repo
 
 ### How to avoid technical debt caused by feature flags?[​](#how-to-avoid-technical-debt-caused-by-feature-flags "Direct link to How to avoid technical debt caused by feature flags?")
 
-The [ConfigCat CLI](https://configcat.com/docs/docs/advanced/code-references/overview/.md) can scan your code, upload code references to the [ConfigCat Dashboard](https://app.configcat.com/) and notify you about stale feature flags.
+The [ConfigCat CLI](https://configcat.com/docs/advanced/code-references/overview.md) can scan your code, upload code references to the [ConfigCat Dashboard](https://app.configcat.com/) and notify you about stale feature flags.
 
 ![Code references screenshot](/docs/assets/cli/code-refs.png)
 
@@ -213,7 +215,7 @@ Yes, you can rename almost everything within ConfigCat. Organizations, products,
 
 ### Can I change my Feature Flag based on a date?[​](#can-i-change-my-feature-flag-based-on-a-date "Direct link to Can I change my Feature Flag based on a date?")
 
-You can pass the current date as a [custom User Object attribute](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#comparison-attribute) to the ConfigCat SDK attribute when evaluating the feature flag, and you can use that attribute with our [Date and Time comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#date-and-time-comparators) in your targeting rules to target specific dates.
+You can pass the current date as a [custom User Object attribute](https://configcat.com/docs/targeting/targeting-rule/user-condition.md#comparison-attribute) to the ConfigCat SDK attribute when evaluating the feature flag, and you can use that attribute with our [Date and Time comparators](https://configcat.com/docs/targeting/targeting-rule/user-condition.md#date-and-time-comparators) in your targeting rules to target specific dates.
 
 ### Does ConfigCat guarantee percentage distribution?[​](#does-configcat-guarantee-percentage-distribution "Direct link to Does ConfigCat guarantee percentage distribution?")
 

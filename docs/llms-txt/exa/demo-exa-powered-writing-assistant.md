@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/demo-exa-powered-writing-assistant.md
+# Source: https://exa.ai/docs/examples/demo-exa-powered-writing-assistant.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Writing Assistant
 
@@ -38,8 +42,7 @@ let exaReturnedResults = await exa.searchAndContents(
         type: "neural",
         numResults: 10,
         highlights: {
-            numSentences: 1,
-            highlightsPerUrl: 1
+            maxCharacters: 500
         }
     }
 )
@@ -107,8 +110,3 @@ This demo illustrates the power of combining Exa's advanced search capabilities 
 This approach showcases how Exa can be integrated into AI-powered applications to enhance user experiences and productivity.
 
 [Click here to try the Exa-powered Writing Assistant](https://demo.exa.ai/writing)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/rules-of-hooks.md
 ---
-# react/rules-of-hooks&#x20;
 
 ### What it does
 

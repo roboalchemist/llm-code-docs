@@ -8,21 +8,9 @@
 
 # Source: https://smartcar.com/docs/api-reference/authorization/overview.md
 
-# Source: https://smartcar.com/docs/integrations/webhooks/overview.md
-
-# Source: https://smartcar.com/docs/integrations/webhooks/best-practices/overview.md
-
-# Source: https://smartcar.com/docs/getting-started/dashboard/overview.md
-
-# Source: https://smartcar.com/docs/api-reference/webhooks/events/overview.md
-
-# Source: https://smartcar.com/docs/api-reference/authorization/overview.md
-
-# Source: https://smartcar.com/docs/integrations/webhooks/overview.md
-
-# Source: https://smartcar.com/docs/getting-started/dashboard/overview.md
-
-# Source: https://smartcar.com/docs/api-reference/authorization/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 

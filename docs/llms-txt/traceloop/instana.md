@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/instana.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Instana and OpenLLMetry
 
 <Frame>
@@ -73,8 +77,3 @@ Here is the MCP traces from Instana UI:
 <Frame>
   <img src="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0da4830bf137b6a563e3e52cc93ee8c7" data-og-width="2898" width="2898" data-og-height="1662" height="1662" data-path="img/integrations/mcpTraces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=280&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=2c2794b2280807e2e18a1f94d0af7d5d 280w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=560&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=7d5939b5c91f97ae85ac8b93f41e8c30 560w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=840&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0b0db2d45a7cfd26c6c13d70469dbe08 840w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=1100&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=f31477e9f656609636abf6440a1b5333 1100w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=1650&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=0cf17f24a43245da05d78b4add3a6595 1650w, https://mintcdn.com/enrolla/-xQ9K52hAYrcQGvz/img/integrations/mcpTraces.png?w=2500&fit=max&auto=format&n=-xQ9K52hAYrcQGvz&q=85&s=e44c49fe2d1b41a8a46c4efbeb0627c5 2500w" />
 </Frame>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

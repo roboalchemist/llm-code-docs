@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 Webhooks allow you to get notified about events happening in your Plain workspace. You can react to these events in many ways, such as:

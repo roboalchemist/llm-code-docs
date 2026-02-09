@@ -2,6 +2,8 @@
 
 # Jira Cloud Plugin - Manage feature flags from Jira
 
+Copy page
+
 The [ConfigCat Feature Flags Jira Cloud Plugin](https://marketplace.atlassian.com/1222421) allows you to connect your Jira Issues and feature flags. Create or link existing flags to your Jira issues without leaving your Jira instance.
 
 Turn features On/Off right from a linked Issue on your Jira board. You can also easily modify the linked flags to edit or add new Targeting or Percentage Rules.
@@ -53,7 +55,7 @@ Your browser does not support the video tag.
 2. See the linked feature flags in the **Feature Flag (ConfigCat)** issue section.
 3. You can manage the selected feature flag from this Issue.
 4. You can add new Targeting Rules or Percentage Options to Feature Flags.
-5. You can add new Targeting Rules with User, Segment or Prerequisite Conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md)
+5. You can add new Targeting Rules with User, Segment or Prerequisite Conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md)
 6. You can remove Targeting Rules as well.
 
 Your browser does not support the video tag.

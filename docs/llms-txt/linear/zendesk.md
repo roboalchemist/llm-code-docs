@@ -38,6 +38,22 @@ Optionally, toggle "include message" in the widget to add message content from t
 > [!NOTE]
 > Get more out of the Zendesk integration by enabling the [Triage](https://linear.app/docs/triage) feature for your teams. Any issues created from Zendesk will go to Triage when enabled (otherwise, the issues will be added to the first backlog status in your team).
 
+### Create with Linear Agent
+
+In addition to creating issues manually from a Zendesk ticket, you can use the _Create with Linear Agent_ option to automatically create Linear issues using AI.
+
+When selected, Linear analyzes the entire conversation, including customer messages, support replies, metadata, and any attachments, and identifies the underlying product request or bug. The Linear Agent generates an informed title and description while pulling in the relevant context from your conversation with the customer. 
+
+![Create a new Linear issue automatically with the Linear Agent](https://webassets.linear.app/images/ornj730p/production/06255674e4a80db8c543e292bbfae51d52af9b1b-865x610.png?q=95&auto=format&dpr=2)
+
+A customer request is created when applicable, and the issue is routed to the desired team for review and prioritization.
+
+To use the Linear Agent in Zendesk, enable the integration in _Settings_ > _Integrations_ > _Zendesk_ and turn on the option to allow AI-generated issues. 
+
+![Zendesk integration settings to enable the Linear Agent for automatic issue creation](https://webassets.linear.app/images/ornj730p/production/00ef4032be96abf042dac6f746985985b98c4d23-1470x430.png?q=95&auto=format&dpr=2)
+
+Optionally, you can also provide additional guidance to help route issues to the correct teams or templates. This guidance can include examples, team mentions, or internal rules the Linear Agent should follow when interpreting feedback.
+
 ### Use templates
 
 Linear admins can designate up to 5 templates to be available for quick use from within the Linear integration in Zendesk. Selecting any of these templates will pre-fill issue property fields appropriately, helping to speed up issue creation and maintain a high level of data hygiene in your issues.

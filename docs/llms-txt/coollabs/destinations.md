@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/destinations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Destinations define where to deploy your application, database, or service.
@@ -10,8 +14,8 @@ Destinations define where to deploy your application, database, or service.
 
 ## Supported Destinations
 
-*   [Local Docker Engine](#local-docker-engine)
-*   [Remote Docker Engine](#remote-docker-engine)
+* [Local Docker Engine](#local-docker-engine)
+* [Remote Docker Engine](#remote-docker-engine)
 
 ## Local Docker Engine
 
@@ -19,9 +23,9 @@ It means all resources are deployed to the same server as Coolify is running on.
 
 ### Configuration
 
-1.  **Engine** - `/var/run/docker.sock` - You cannot modify this.
-2.  **Network** - Used to create docker networks within the defined Docker Engine.
-3.  **Coolify Proxy** - This is a special proxy based on [Traefik](https://traefik.io/traefik/), configured automatically by Coolify.
+1. **Engine** - `/var/run/docker.sock` - You cannot modify this.
+2. **Network** - Used to create docker networks within the defined Docker Engine.
+3. **Coolify Proxy** - This is a special proxy based on [Traefik](https://traefik.io/traefik/), configured automatically by Coolify.
 
 ## Remote Docker Engine
 
@@ -33,6 +37,6 @@ You can have one Coolify instance as a control-plane/dashboard and deploy to unl
 
 The server needs to have:
 
-1.  Install Docker Engine (20.11+) - [instructions](https://docs.docker.com/engine/install/).
-2.  Add SSH `public key` to `.ssh/authorized_keys` file in the proper user's home directory, recommended `root`, but it can be [any user who have access to `Docker Engine`](https://docs.docker.com/engine/install/linux-postinstall/).
-3.  Add the `private key` of the same SSH key added to the remote server in the `Settings/SSH Keys` menu.
+1. Install Docker Engine (20.11+) - [instructions](https://docs.docker.com/engine/install/).
+2. Add SSH `public key` to `.ssh/authorized_keys` file in the proper user's home directory, recommended `root`, but it can be [any user who have access to `Docker Engine`](https://docs.docker.com/engine/install/linux-postinstall/).
+3. Add the `private key` of the same SSH key added to the remote server in the `Settings/SSH Keys` menu.

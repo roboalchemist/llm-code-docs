@@ -86,5 +86,5 @@ $ cat JsonAccessLog.20230117* | jq '. |
   . +{iso8601date:(.time|todateiso8601)}'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

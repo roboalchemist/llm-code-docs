@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/mcp/sse.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SSE Transport
 
 > Learn how to connect CrewAI to remote MCP servers using Server-Sent Events (SSE) for real-time communication.

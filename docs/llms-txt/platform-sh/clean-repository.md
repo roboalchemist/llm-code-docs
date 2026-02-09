@@ -52,7 +52,7 @@ upsun integration:update --project <PROJECT_ID> <SOURCE_INTEGRATION_ID> --prune-
 Keeping too many files, especially large binary files, in your Git repository can cause performance and stability issues.
 Therefore, Upsun recommends that you only commit your source code in Git.
 
-To upload any other files to your app, [create mounts](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts)
+To upload any other files to your app, [create mounts](https://docs.upsun.com/create-apps/image-properties/mounts.md)
 and [transfer your files directly to them](https://docs.upsun.com/development/file-transfer.md#transfer-a-file-to-a-mount).
 
 **Note**: 

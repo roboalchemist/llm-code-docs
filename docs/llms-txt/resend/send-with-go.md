@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-go.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Go
 
 > Learn how to send your first email using the Resend Go SDK.
@@ -16,7 +20,7 @@ To get the most out of this guide, you'll need to:
 Get the Resend Go SDK.
 
 <CodeGroup>
-  ```bash bash theme={null}
+  ```bash bash theme={"theme":{"light":"github-light","dark":"vesper"}}
   go get github.com/resend/resend-go/v3
   ```
 </CodeGroup>
@@ -25,15 +29,13 @@ Get the Resend Go SDK.
 
 The easiest way to send an email is by using the `html` parameter.
 
-```Go main.go theme={null}
+```Go main.go theme={"theme":{"light":"github-light","dark":"vesper"}}
 package main
 
 import "github.com/resend/resend-go/v3"
 
 func main() {
-    apiKey := "re_xxxxxxxxx"
-
-    client := resend.NewClient(apiKey)
+    client := resend.NewClient("re_xxxxxxxxx")
 
     params := &resend.SendEmailRequest{
         From:    "Acme <onboarding@resend.dev>",

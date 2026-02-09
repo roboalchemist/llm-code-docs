@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:45.384Z.
+This document was rendered at 2026-02-03T03:25:32.083Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/http_mcp_client.md](https://docs.livekit.io/recipes/http_mcp_client.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

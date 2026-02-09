@@ -6,7 +6,7 @@ Learn how revenue recognition works with subscriptions and invoices.
 
 Because of the detailed information available on subscriptions and *invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice), Stripe Revenue Recognition can accurately defer and recognize revenue for these resources. Revenue recognition treats each invoice line item and subscription item as its own performance obligation.
 
-Revenue recognition amortizes revenue by the millisecond, but our example uses a daily interval.
+Revenue recognition amortizes revenue by the second, but our example uses a daily interval.
 
 ## Licensed subscriptions
 
@@ -40,7 +40,7 @@ In this example, the customer receives 20 days of service with the 90 USD monthl
 
 The algorithm for recognizing revenue for standalone invoices is the same as that of a licensed subscription—the main difference is that line item periods aren’t automatically populated.
 
-To recognize revenue correctly, remember to set the period for each invoice line item. If you don’t set a period on an invoice line item, the amount on that invoice line item is recognized immediately when the invoice finalizes.  If you need to override or add a new service period, use the [Data Import feature](https://docs.stripe.com/revenue-recognition/data-import.md) to configure your invoice data, or set [rules](https://docs.stripe.com/revenue-recognition/rules.md) to customize revenue treatments on different invoices.
+To recognize revenue correctly, remember to set the period for each invoice line item. If you don’t set a period on an invoice line item, the amount on that invoice line item is recognized immediately when the invoice finalizes. If you need to override or add a new service period, use the [Data Import feature](https://docs.stripe.com/revenue-recognition/data-import.md) to configure your invoice data, or set [rules](https://docs.stripe.com/revenue-recognition/rules.md) to customize revenue treatments on different invoices.
 
 In this example, an invoice has two line items, one with a period set, and one without.
 
@@ -172,3 +172,83 @@ In this case, the resulting account balances would look like
 | Cash            | +20.00 |
 | Revenue         | +31.00 |
 | CustomerBalance | -11.00 |
+
+## Cash application
+
+You can accept multiple, smaller payments against an invoice. Learn how to create and attach payments in [partial payments for invoices](https://docs.stripe.com/invoicing/partial-payments.md). This section explains how Revenue Recognition reflects applying and unapplying payments in your ledgers.
+
+### Apply a standalone payment to an invoice
+
+Before applying, we track the payment and the invoice separately.
+
+Example timeline:
+
+- On January 10, you receive a standalone payment of 20 USD (not yet attached to any invoice).
+- On January 15, an invoice for 31 USD finalizes for a service period of January 15 to February 14.
+- On February 1, you apply the 20 USD payment to the invoice.
+
+Standalone one-time payments behave as described in [One-time payments](https://docs.stripe.com/revenue-recognition/methodology.md#one-time-payments).
+
+Balances at the end of January (before allocation), shown separately:
+
+**Standalone payment:**
+
+| Account | Jan    |
+| ------- | ------ |
+| Cash    | +20.00 |
+| Revenue | +20.00 |
+
+**Invoice:**
+
+| Account            | Jan    |
+| ------------------ | ------ |
+| AccountsReceivable | +31.00 |
+| Revenue            | +17.00 |
+| DeferredRevenue    | +14.00 |
+
+After allocation, we remove the standalone payment entries and replace them with payment entries within the invoice, reducing its accounts receivable. Balances at the end of February (before applying), shown separately:
+
+**Standalone payment:**
+
+| Account | Jan    | Feb    | Total |
+| ------- | ------ | ------ | ----- |
+| Cash    | +20.00 | -20.00 | 0.00  |
+| Revenue | +20.00 | -20.00 | 0.00  |
+
+**Invoice:**
+
+| Account            | Jan    | Feb    | Total  |
+| ------------------ | ------ | ------ | ------ |
+| AccountsReceivable | +31.00 | -20.00 | +11.00 |
+| Revenue            | +17.00 | +14.00 | +31.00 |
+| DeferredRevenue    | +14.00 | -14.00 | 0.00   |
+
+### Unapplying a payment
+
+When you unapply a payment, we remove the payment entries for the invoice and record the payment as a standalone payment. If the invoice was previously paid because of the application, it transitions back to `open`.
+
+Example timeline (continuing the previous example):
+
+- On March 5, you unapply the 20 USD payment from the invoice.
+
+This removes the application and increases accounts receivable, returning the payment to an unapplied state. The tables below show monthly balances, including the February application and the March unapplying:
+
+**Standalone payment:**
+
+| Account | Jan    | Feb    | Mar    | Total  |
+| ------- | ------ | ------ | ------ | ------ |
+| Cash    | +20.00 | -20.00 | +20.00 | +20.00 |
+| Revenue | +20.00 | -20.00 | +20.00 | +20.00 |
+
+**Invoice:**
+
+| Account            | Jan    | Feb    | Mar    | Total  |
+| ------------------ | ------ | ------ | ------ | ------ |
+| AccountsReceivable | +31.00 | -20.00 | +20.00 | +31.00 |
+| Revenue            | +17.00 | +14.00 | 0.00   | +31.00 |
+| DeferredRevenue    | +14.00 | -14.00 | 0.00   | 0.00   |
+
+Correction behavior remains unchanged. The posting period for the unallocation depends on the payment date:
+
+- If the accounting period that includes the payment date is open, the unapplied payment posts there.
+- If that period is closed, we post a correction to your latest open period. See [Revenue Recognition accounting period control](https://docs.stripe.com/revenue-recognition/revenue-settings/accounting-period-control.md) for details on closing and reopening periods.

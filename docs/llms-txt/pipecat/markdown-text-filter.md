@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/text/markdown-text-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MarkdownTextFilter
 
 > Converts Markdown-formatted text to TTS-friendly plain text while preserving structure
@@ -99,8 +103,3 @@ md_filter = MarkdownTextFilter(
 * Efficiently converts HTML entities to plain text characters
 * Smart handling of code blocks and tables with state tracking
 * Integrates directly with TTS services in the Pipecat pipeline
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

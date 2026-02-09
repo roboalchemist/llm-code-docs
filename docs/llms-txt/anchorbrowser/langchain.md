@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/agent-frameworks/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain
 
 AI agents can leverage browser sessions to complete tasks on the web using LangChain, a framework that provides easy integration for AI-driven workflows.

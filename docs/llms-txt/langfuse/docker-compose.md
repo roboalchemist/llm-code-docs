@@ -2,22 +2,6 @@
 
 # Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
 
-# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
-
-# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
-
 ---
 title: Docker Compose (self-hosted)
 description: Step-by-step guide to run Langfuse on a VM using docker compose.
@@ -265,8 +249,8 @@ import { Cards } from "nextra/components";
   />
   <Cards.Card
     icon={<ServerCog size="24" />}
-    title="Organization Management API (EE)"
-    href="/self-hosting/administration/organization-management-api"
+    title="Instance Management API (EE)"
+    href="/self-hosting/administration/instance-management-api"
     arrow
   />
   <Cards.Card

@@ -1,6 +1,12 @@
 # Source: https://docs.unstructured.io/open-source/introduction/quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
+
+<Note>This quickstart uses the Unstructured open source library, which is designed as a starting point for quick prototyping and has [limits](#limits). For production scenarios, use the [Unstructured user interface (UI)](/ui/overview) or the [Unstructured API](/api-reference/overview) instead.</Note>
 
 In this quickstart, you use the [Unstructured open source library](/open-source/introduction/overview)
 ([GitHub](https://github.com/Unstructured-IO/unstructured),

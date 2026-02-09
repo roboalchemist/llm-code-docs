@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Schema
 
 If you need the schema programmatically for code generation or if you just want to read the schema you can view the [raw GraphQL schema](https://core-api.uk.plain.com/graphql/v1/schema.graphql).

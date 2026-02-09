@@ -1,5 +1,9 @@
 # Source: https://docs.livekit.io/recipes/ivr-navigator.md
 
+LiveKit docs › Telephony › IVR Agent
+
+---
+
 # Building an Automated IVR Menu Caller
 
 > Build an AI agent that can call phone numbers and navigate IVR menus by listening and sending DTMF codes.
@@ -13,8 +17,8 @@ To complete this guide, you need the following prerequisites:
 - Create an agent using the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 - Set up LiveKit SIP to make outgoing calls:
 
-- [Create and configure a SIP trunk](https://docs.livekit.io/sip/quickstarts/configuring-sip-trunk.md) with your trunking provider.
-- Create an [outbound trunk](https://docs.livekit.io/sip/trunk-outbound.md).
+- [Create and configure a SIP trunk](https://docs.livekit.io/telephony/start/sip-trunk-setup.md) with your trunking provider.
+- Create an [outbound trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md).
 
 ## Setting up the environment
 
@@ -156,6 +160,9 @@ async def entrypoint(ctx: JobContext):
         userdata = UserData(task=task)
 
         # Create and start the agent session
+        # Note: Using base_url with an OpenAI-compatible endpoint (DeepSeek)
+        # automatically uses Chat Completions mode, which is correct for
+        # OpenAI-compatible providers.
         session = AgentSession(
             userdata=userdata,
             stt=deepgram.STT(),
@@ -210,7 +217,7 @@ For a complete working example, see the [IVR agent repository](https://github.co
 
 ---
 
-This document was rendered at 2025-11-18T23:55:22.840Z.
+This document was rendered at 2026-02-03T03:25:28.319Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/ivr-navigator.md](https://docs.livekit.io/recipes/ivr-navigator.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

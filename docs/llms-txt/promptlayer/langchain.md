@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/languages/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain
 
 PromptLayer works seamlessly with [LangChain](https://langchain.readthedocs.io). LangChain is a popular Python library aimed at assisting in the development of LLM applications. It provides a lot of helpful features like chains, agents, and memory.
@@ -203,6 +207,8 @@ The [PromptLayer request ID](/features/prompt-history/request-id) is used to tag
   PROMPT_NAME = "ai-poet-test"
   INPUT_VARIABLES = {"topic": "PromptLayer the Premier Prompt Engineering Platform"}
   template = pl_client.templates.get(PROMPT_NAME, {"input_variables": INPUT_VARIABLES})
+  # Note: llm_kwargs structure is provider-specific and may change.
+  # See https://docs.promptlayer.com/features/prompt-registry/overview#setting-execution-parameters
   pl_messages = template["llm_kwargs"]["messages"]
 
   messages = [
@@ -213,6 +219,7 @@ The [PromptLayer request ID](/features/prompt-history/request-id) is used to tag
   PROMPT_NAME = "check-the-weather"
   INPUT_VARIABLES = {'location': 'New York'}
   template = pl_client.templates.get(PROMPT_NAME, {"input_variables": INPUT_VARIABLES})
+  # Note: llm_kwargs structure is provider-specific and may change.
   pl_messages = template["llm_kwargs"]["messages"]
   messages = [
       (convert_role(pl_message["role"]), convert_content(pl_message["content"])) for pl_message in pl_messages
@@ -255,8 +262,3 @@ See below for examples:
   llm("My name is")
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

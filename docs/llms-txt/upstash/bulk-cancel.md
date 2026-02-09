@@ -1,16 +1,8 @@
 # Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
 
-# Source: https://upstash.com/docs/qstash/api/messages/bulk-cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/bulk-cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/bulk-cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Bulk Cancel Workflows
 

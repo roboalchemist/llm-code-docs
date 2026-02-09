@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/pricing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pricing
 
 > View pricing for Writer AI models. Compare costs per million tokens for Palmyra models including X5, X4, Med, Fin, Creative, and Vision.
@@ -20,6 +24,14 @@ The table below outlines our [base model](/home/models#models), which is focused
 | [Palmyra Med](/home/models#palmyra-med)                       | `palmyra-med`            | \$5.00     | \$12.00     |
 | [Palmyra Fin](/home/models#palmyra-fin)                       | `palmyra-fin`            | \$5.00     | \$12.00     |
 | [Palmyra Creative](/home/models#palmyra-creative)             | `palmyra-creative`       | \$5.00     | \$12.00     |
+
+## WRITER Agent
+
+The table below outlines pricing for LLM usage in [WRITER Agent](https://support.writer.com/article/235-ask-writer), an intelligent interface that turns complexity into scale with repeatable, data-driven playbooks connected to the systems where work happens.
+
+| Input / 1M | Output / 1M |
+| ---------- | ----------- |
+| \$5.00     | \$12.00     |
 
 ## Palmyra Vision
 
@@ -48,11 +60,9 @@ Data connectors for Knowledge Graph are available for Enterprise plans. To learn
 
 The table below outlines pricing for the [Tools API](/api-reference/tool-api/), which provides utilities for pre-processing and comprehending text.
 
-| Tool                                                             | Cost                                        |
-| ---------------------------------------------------------------- | ------------------------------------------- |
-| [AI detection](/api-reference/tool-api/ai-detect)                | \$0.03 per request                          |
-| [Medical comprehend](/api-reference/tool-api/comprehend-medical) | \$0.02 per 1M words input (no output costs) |
-| [PDF parser](/api-reference/tool-api/pdf-parser)                 | \$0.055/page                                |
+| Tool                                             | Cost         |
+| ------------------------------------------------ | ------------ |
+| [PDF parser](/api-reference/tool-api/pdf-parser) | \$0.055/page |
 
 ## Translation API
 
@@ -64,9 +74,18 @@ The [Translation API](/api-reference/translation-api/translate) provides utiliti
 
 The table below show pricing for deprecated models. See the [deprecation policy](/home/models#deprecation-policy) for more information.
 
-| Model name             | Deprecation Date | Input / 1M | Output / 1M |
+| Model name             | Deprecation date | Input / 1M | Output / 1M |
 | ---------------------- | ---------------- | ---------- | ----------- |
 | Palmyra Fin 32k        | 2025-03-03       | \$5.00     | \$12.00     |
 | Palmyra X 002 32k      | 2024-09-06       | \$1.00     | \$2.00      |
 | Palmyra X 32k Instruct | 2024-09-06       | \$1.00     | \$2.00      |
 | Palmyra X 002 Instruct | 2024-09-06       | \$1.00     | \$2.00      |
+
+## Deprecated tools
+
+The table below shows pricing for deprecated tools. See the [deprecation policy](/home/models#deprecation-policy) for more information.
+
+| Tool               | Deprecation date | Cost                                        | Migration guide                                                           |
+| ------------------ | ---------------- | ------------------------------------------- | ------------------------------------------------------------------------- |
+| AI detection       | 2025-12-22       | \$0.03 per request                          | —                                                                         |
+| Medical comprehend | 2025-12-22       | \$0.02 per 1M words input (no output costs) | [Migrate to LLM tool](/api-reference/migration-guides/comprehend-medical) |

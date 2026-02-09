@@ -2,22 +2,6 @@
 
 # Source: https://www.daytona.io/docs/en/pty.md
 
-# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
-
-# Source: https://www.daytona.io/docs/en/pty.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
-
-# Source: https://www.daytona.io/docs/en/pty.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
-
-# Source: https://www.daytona.io/docs/en/pty.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
-
-# Source: https://www.daytona.io/docs/en/pty.md
-
 The Daytona SDK provides powerful pseudo terminal (PTY) capabilities through the `process` module in Sandboxes. PTY sessions allow you to create interactive terminal sessions that can execute commands, handle user input, and manage terminal operations.
 
 ## What is PTY?
@@ -103,7 +87,40 @@ await ptyHandle.sendInput('exit\n')
 // Wait for completion
 const result = await ptyHandle.wait()
 console.log(`Session completed with exit code: ${result.exitCode}`)
-````
+```
+
+
+```ruby
+require 'daytona'
+
+# Create PTY session
+pty_handle = sandbox.process.create_pty_session(
+  id: 'interactive-session',
+  pty_size: Daytona::PtySize.new(cols: 300, rows: 100)
+)
+
+# Handle output in a separate thread
+thread = Thread.new do
+  pty_handle.each { |data| print data }
+end
+
+# Send interactive command
+pty_handle.send_input('printf "Are you accepting the terms and conditions? (y/n): " && read confirm && if [ "$confirm" = "y" ]; then echo "You accepted"; else echo "You did not accept"; fi' + "\n")
+sleep(1)
+pty_handle.send_input("y\n")
+
+# Resize terminal
+pty_handle.resize(Daytona::PtySize.new(cols: 210, rows: 110))
+puts "\nPTY session resized"
+
+# Exit the session
+pty_handle.send_input("exit\n")
+
+# Wait for the thread to finish
+thread.join
+
+puts "Session completed with exit code: #{pty_handle.exit_code}"
+```
 
 
 ## Long-Running Processes with PTY
@@ -176,7 +193,30 @@ console.log(`\nProcess terminated with exit code: ${result.exitCode}`)
 if (result.error) {
     console.log(`Termination reason: ${result.error}`)
 }
-````
+```
+
+
+```ruby
+require 'daytona'
+
+# Create PTY session
+pty_handle = sandbox.process.create_pty_session(
+  id: 'long-running-session',
+  pty_size: Daytona::PtySize.new(cols: 120, rows: 30)
+)
+
+# Start a long-running process
+pty_handle.send_input('while true; do echo "Running... $(date)"; sleep 1; done' + "\n")
+
+# Handle output and kill process using threads
+[
+  Thread.new { pty_handle.each { |data| print data } },
+  Thread.new { sleep(3) and pty_handle.kill }
+].each(&:join)
+
+puts "\nProcess terminated with exit code: #{pty_handle.exit_code}"
+puts "Termination reason: #{pty_handle.error}" if pty_handle.error
+```
 
 
 ## Best Practices
@@ -210,6 +250,20 @@ try {
 }
 ```
 
+```ruby
+# Ruby: Use begin/ensure
+pty_handle = nil
+begin
+  pty_handle = sandbox.process.create_pty_session(
+    id: 'session',
+    pty_size: Daytona::PtySize.new(cols: 120, rows: 30)
+  )
+  # Do work...
+ensure
+  pty_handle&.kill
+end
+```
+
 ### Error Handling
 
 Monitor exit codes and handle errors appropriately:
@@ -228,6 +282,17 @@ if (result.exitCode !== 0) {
   console.log(`Command failed: ${result.exitCode}`)
   console.log(`Error: ${result.error}`)
 }
+```
+
+```ruby
+# Ruby: Check exit codes
+# The handle blocks until the PTY session completes
+pty_handle.each { |data| print data }
+
+if pty_handle.exit_code != 0
+  puts "Command failed: #{pty_handle.exit_code}"
+  puts "Error: #{pty_handle.error}"
+end
 ```
 
 ## Common Use Cases

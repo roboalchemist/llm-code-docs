@@ -1,82 +1,88 @@
 # Source: https://docs.datafold.com/api-reference/data-sources/test-a-data-source-connection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test a data source connection
+
+
 
 ## OpenAPI
 
 ````yaml post /api/v1/data_sources/{data_source_id}/test
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/data_sources/{data_source_id}/test
-  method: post
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path:
-        data_source_id:
+  /api/v1/data_sources/{data_source_id}/test:
+    post:
+      tags:
+        - Data sources
+      summary: Test a data source connection
+      operationId: test_data_source_api_v1_data_sources__data_source_id__test_post
+      parameters:
+        - in: path
+          name: data_source_id
+          required: true
           schema:
-            - type: integer
-              required: true
-              title: Data source id
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              job_id:
-                allOf:
-                  - title: Job Id
-                    type: integer
-            title: TestDataSourceAsyncResponse
-            refIdentifier: '#/components/schemas/TestDataSourceAsyncResponse'
-            requiredProperties:
-              - job_id
-        examples:
-          example:
-            value:
-              job_id: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            title: Data source id
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestDataSourceAsyncResponse'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    TestDataSourceAsyncResponse:
+      properties:
+        job_id:
+          title: Job Id
+          type: integer
+      required:
+        - job_id
+      title: TestDataSourceAsyncResponse
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     ValidationError:
       properties:
         loc:
@@ -98,5 +104,11 @@ components:
         - type
       title: ValidationError
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

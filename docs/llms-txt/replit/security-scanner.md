@@ -1,83 +1,209 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/security-scanner.md
 
-# Security Scanner
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Security Scanner helps you identify and fix potential security vulnerabilities in your application before publishing.
+# Security and Privacy Scanner
+
+> Scan your Replit App for high-impact security and privacy vulnerabilities, then fix them before you publish.
 
 <Frame>
-  <img src="https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=cc3c801265dc22228b543e7348df9759" alt="Security Scanner interface showing vulnerability scan results" data-og-width="1920" width="1920" data-og-height="1080" height="1080" data-path="images/security-scanner/bgs [teal].png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=280&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=d519ed0a4f25fbe3d8317bd1e25def08 280w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=560&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=42c788bffc845cc8cf81f962a358a86e 560w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=840&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=41ef680134ad40cd8ea0a2260c55ccbf 840w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=1100&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=7188393d327c74f91dde6b71d3b021e3 1100w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=1650&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=8bc1d83b4eab0755155be35d98571cec 1650w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/security-scanner/bgs%20%5Bteal%5D.png?w=2500&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=fd59ab46bc5ba998b49c210fdd34db2d 2500w" />
+  <img src="https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=0d9b9a0309d810bc22fa9456b9991516" alt="Security and Privacy Scanner interface showing vulnerability scan results" style={{ display: 'block', margin: '0 auto' }} data-og-width="1440" width="1440" data-og-height="1024" height="1024" data-path="images/security-scanner/bgs [teal].webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=280&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=18e64ac31da0e22fe8a9afaef9b7806a 280w, https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=560&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=52ac6881a37a3ce54d993dd67efa0e1d 560w, https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=840&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=2d641b7c95d49c661fd9a7f003408e8f 840w, https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=1100&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=4415e5bf177ea5be5240a4a446d3bf99 1100w, https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=1650&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=c831e7cfc6c8b0c6acf8ad475f96085d 1650w, https://mintcdn.com/replit/N2R3t7fLwcrQgBx9/images/security-scanner/bgs%20%5Bteal%5D.webp?w=2500&fit=max&auto=format&n=N2R3t7fLwcrQgBx9&q=85&s=d73537b0c634375568bafe1bfd67d8d4 2500w" />
 </Frame>
 
 <Note>
-  Security Scanner is currently still in beta. While it is powerful, it may occasionally report false positives or miss some issues. Review the results and use your judgment when addressing reported issues.
+  The scanner is currently in beta. It is powerful, but it may occasionally
+  report false positives or miss some issues. Review results carefully, and use
+  your own judgment before changing code or updating dependencies.
 </Note>
 
-## What is Security Scanner?
+## What is Security and Privacy Scanner?
 
-+Security Scanner is a tool that analyzes your dependencies and code for potential security vulnerabilities. Code analysis is powered by [Semgrep](https://semgrep.dev/) Community Edition.
+Security and Privacy Scanner helps you find and fix high-impact risks in your Replit App before you ship it.
 
-It helps you:
+It focuses on issues that are most likely to affect the safety of your application or your data:
 
-* Identify common security issues before publishing
-* Fix vulnerabilities with the Agent
-* Build more secure applications
+* **Dependency vulnerabilities**: Known issues in the packages your Replit App depends on
+* **Static analysis issues (SAST)**: Dangerous patterns in your source code
+* **Malicious or unsafe files**: Files that match known-bad or risky signatures
+* **Privacy issues**: Potential leaks of sensitive or personal data in your code
 
-## What is a security vulnerability?
+Scans run on Replit infrastructure and are powered by partners like **Semgrep Community Edition** and **HoundDog.ai**. Your code and data are **not** sent to these partners or any other third parties.
 
-A security vulnerability is like a weak spot in your application that could potentially be exploited. Think of it as leaving a window unlocked in your house - while it might not cause problems immediately, it's better to know about it and fix it before someone takes advantage of it.
+## Types of vulnerabilities
 
-Here are some common examples of security vulnerabilities:
+### Dependency vulnerabilities
 
-* **Hard-coded credentials**: Having passwords or API keys directly in your code
-  ```javascript  theme={null}
-  // Vulnerable code
-  const apiKey = "sk_live_123456789";
-  ```
+These come from a dependency audit of your project’s packages:
 
-* **SQL Injection**: When user input isn't properly sanitized before being used in database queries
-  ```javascript  theme={null}
-  // Vulnerable code
-  const query = `SELECT * FROM users WHERE username = '${userInput}'`;
-  ```
+* Supports many popular ecosystems (including **Node.js/npm**, **Python**, **Go**, **Rust**, **PHP**, and **Ruby**)
+* Captures whether the dependency is direct or transitive
+* Includes metadata about the vulnerable package and any available fixes
 
-* **Cross-Site Scripting (XSS)**: When user input is rendered as HTML without proper sanitization
-  ```javascript  theme={null}
-  // Vulnerable code
-  element.innerHTML = userInput; // Could contain malicious JavaScript
-  ```
+Examples include:
 
-* **Insecure dependencies**: When your application relies on vulnerable packages
-  ```json  theme={null}
-  {
-    "dependencies": {
-      "express": "^4.18.2" // Vulnerable version of Express
-    }
-  }
-  ```
+```json  theme={null}
+"express": "4.18.2" // version with a known vulnerability
+```
 
-The Security Scanner helps you identify these and other potential issues in your code before they can be exploited. When it finds a vulnerability, you can ask the Agent to fix it, making it easier to maintain a robust and secure application.
+Some dependency issues can be updated automatically, while others may require manual changes or may not have a fix available.
+
+### Static analysis (SAST) issues
+
+Static analysis scans your source files for insecure patterns, like:
+
+```javascript  theme={null}
+const query = `SELECT * FROM users WHERE username = '${userInput}'`;
+```
+
+SAST findings include:
+
+* File path and exact location (line and column)
+* Rule or check name
+* A message describing the issue
+
+These are the issues you’ll typically fix directly in your code.
+
+### Malicious or unsafe files
+
+Malicious file detection looks for files that match known-bad or high-risk signatures, such as:
+
+```bash  theme={null}
+# malicious setup script from a known supply-chain attack
+setup_bun.js
+```
+
+For these findings, the scanner shows:
+
+* Why the file is risky
+* The paths where it appears
+* Suggested mitigation text
+
+You should either remove or carefully inspect these files before continuing.
+
+### Privacy issues
+
+In addition to security issues, the scanner also surfaces potential privacy issues powered by **HoundDog.ai**, especially when sensitive data flows into risky sinks like logs, files, or third-party SDKs and APIs:
+
+* Locations where sensitive data may be exposed
+* Rules that describe the privacy concern
+* Suggested remediation strategies (for example, deletion vs. sanitization)
+
+For example, the scanner might flag code that logs an entire user profile (including contact details) to an application log:
+
+```javascript  theme={null}
+logger.info("New signup", {
+  email: user.email,
+  phoneNumber: user.phoneNumber,
+  address: user.address,
+});
+```
+
+These findings are powered by **HoundDog.ai** and are labeled as privacy or HoundDog vulnerabilities in the pane.
 
 ## Getting started
 
-You can access the Security Scanner in two ways:
+You can open Security and Privacy Scanner in a few ways:
 
-1. From the Deployments pane
-2. By searching for "Security Scanner" in the workspace search tool
+<Steps>
+  <Step>Open the **Security Scanner** pane.</Step>
 
-<Note>
-  The scanner doesn't run automatically during publishing - you'll need to initiate it manually when you're ready to check your code.
-</Note>
+  <Step>
+    Use the workspace search/tool palette and search for "Security Scanner".
+  </Step>
+</Steps>
+
+Once open, the pane will automatically run an initial scan if no previous results exist.
+
+Scans usually complete in minutes, but may take longer for large codebases or dependency graphs.
 
 ## Understanding scan results
 
-Not all vulnerabilities require immediate attention. For example:
+<Tip>
+  The results are organized into two tabs:
 
-* A low-severity issue like using an older version of a package in a development environment might not need immediate fixing
-* Some warnings might be false positives or related to test code
-* You can still publish your application even if some non-critical vulnerabilities are present
+  * **Active issues**: Issues that are currently considered in scope
+  * **Hidden issues**: Issues you have explicitly hidden
+</Tip>
+
+Within **Active issues**, you may see:
+
+* **Automatic dependency vulnerabilities**: Dependency issues that can be fixed by updating packages.
+* **Static analysis issues**: Code-level vulnerabilities with file and line references.
+* **Malicious file issues**: Known-bad or risky files in your project.
+* **Privacy issues**: Locations where sensitive or personal data might be at risk.
+
+### Severity
+
+Each issue has a severity:
+
+* **Critical**
+* **High**
+* (Lower severity level like moderate/low/info may be present in underlying data but are not prioritized in this pane.)
+
+The scanner focuses on **high** and **critical** issues so you can address the most impactful problems first.
+
+### Hiding and re-activating issues
+
+You can:
+
+* **Hide** a non-critical issue you understand and are willing to accept.
+* **Move to active** to bring a previously hidden issue back into the Active issues tab.
+
+## Fixing issues
+
+The scanner integrates with both dependency tooling and Replit AI Agent to help you fix problems quickly.
+
+### Automatic dependency updates (Node.js)
+
+For supported Node.js projects, you’ll see an **Update automatically** button for certain dependency vulnerabilities.
+
+If your project or ecosystem is not supported, you may still see dependency vulnerabilities, but the automatic update button might be disabled for your Replit App.
+
+### Fix with Agent
+
+Most vulnerability cards include a **Fix with Agent** button:
+
+* Opens or attaches to a Replit Agent session.
+* Sends the vulnerability details to Agent.
+* Agent proposes and applies fixes in your Replit App, while you stay in control.
+
+After fixes are applied, run the scanner again to confirm the issues are resolved.
+
+### Viewing existing Agent sessions
+
+If you already started fixing vulnerabilities with Agent, you may see a **View Agent Session** button on an issue:
+
+* Select it to jump back into the associated Agent chat.
+* Continue iterating on the fix or ask follow-up questions about the vulnerability.
+
+## Privacy and data handling
+
+Security and privacy scanning are powered by **Semgrep** and **HoundDog.ai**, but:
+
+* All scanning runs **locally on Replit infrastructure**.
+* Your code and data are **not sent** to Semgrep, HoundDog.ai, or other third parties.
+* Scan configuration and results stay attached to your Replit App.
+
+## Limitations and best practices
+
+Keep in mind:
+
+* **Beta**: The scanner may occasionally report false positives or miss issues.
+* **Language support**:
+  * Dependency scanning supports many popular ecosystems (including **Node.js/npm**, **Python**, **Go**, **Rust**, **PHP**, and **Ruby**).
+  * Automatic dependency fixing is currently focused on **Node.js/npm**.
+* **Not a full security review**: Use it alongside code review, tests, and live app checks.
+* **Re-run after changes**: Re-run the scanner after:
+  * Adding or updating dependencies
+  * Making major code changes
+  * Before publishing a new version
+
+For best results, treat the scanner as part of your normal development workflow, not a one-time check.
 
 ## Next steps
 
-* Learn about [Publishing](/category/replit-deployments) to understand how Security Scanner fits into the publishing process
-* Explore [Replit AI](/replitai/agent) to see how the Agent can help fix security vulnerabilities
-* Check out [Workspace Features](/category/workspace-features) for more tools to enhance your development experience
+* Learn more about [Publishing](/category/replit-deployments) and how to publish your Replit App once scans are clean.
+* Explore [Replit AI Agent](/replitai/agent) to fix security and privacy issues directly from the workspace.
+* Check out [Workspace Features](/category/workspace-features) for more tools to improve code quality, performance, and reliability.

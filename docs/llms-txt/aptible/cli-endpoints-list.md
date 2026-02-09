@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-endpoints-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible endpoints:list
 
 This command lists the Endpoints for an [App](/core-concepts/apps/overview) or [Database](/core-concepts/managed-databases/overview).
@@ -41,6 +45,8 @@ Hostname: elb-foobar-123.aptible.in
 Status: provisioned
 Type: https
 Port: default
+Load Balancing Algorithm Type: round_robin
+Shared: false
 Internal: false
 IP Whitelist: all traffic
 Default Domain Enabled: false

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/audiences/contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Contacts
 
 > Learn how to work with Contacts with Resend.
@@ -20,7 +24,7 @@ You can add a Contact in three different ways: via API, CSV upload, or manually.
 You can add contacts programmatically using the [contacts](/api-reference/contacts/create-contact) endpoint.
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -32,7 +36,7 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->contacts->create(
@@ -44,7 +48,7 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -58,7 +62,7 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   resend.Contacts.create(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -72,21 +76,26 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   Resend::Contacts.create(params)
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v2"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  params := &resend.CreateContactRequest{
-    Email:        "steve.wozniak@gmail.com",
-    FirstName:    "Steve",
-    LastName:     "Wozniak",
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	params := &resend.CreateContactRequest{
+  		Email:        "steve.wozniak@gmail.com",
+  		FirstName:    "Steve",
+  		LastName:     "Wozniak",
+  		Unsubscribed: false,
+  	}
+
+  	client.Contacts.Create(params)
   }
-
-  contact, err := client.Contacts.Create(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::ContactData, Resend, Result};
 
   #[tokio::main]
@@ -106,7 +115,7 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -124,7 +133,7 @@ You can add contacts programmatically using the [contacts](/api-reference/contac
   }
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/contacts' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -149,7 +158,7 @@ Once a Contact is created, you can update it using the [update contact](/api-ref
 
 You can also add Contacts by uploading a .csv file. This is a convenient way to add multiple Contacts at once.
 
-1. Go to the [Contacts](/audiences) page, and select **Add Contacts**.
+1. Go to the [Contacts](https://resend.com/audience) page, and select **Add Contacts**.
 2. Select **Import CSV**.
 3. Upload your CSV file from your computer.
 4. Map the fields you want to use. You can map the fields to: `email`, `first_name`, `last_name`, and `unsubscribed`, or any Contact properties you've already created.
@@ -158,7 +167,7 @@ You can also add Contacts by uploading a .csv file. This is a convenient way to 
 
 ### 3. Add Contacts manually
 
-1. Go to the [Contacts](/audiences) page, and select **Add Contacts**.
+1. Go to the [Contacts](https://resend.com/audience) page, and select **Add Contacts**.
 2. Select **Add Manually**.
 3. Add the email address of the contact in the text field (separated by commas or new lines for multiple contacts).
 4. Optionally add the contact to an existing Segment.
@@ -183,9 +192,9 @@ Learn more about [Contact Properties](/dashboard/audiences/properties).
 
 ## View Contacts
 
-You can view your Contacts in the [Contacts](/audiences) page.
+You can view your Contacts in the [Contacts](https://resend.com/audience) page.
 
-1. Go to the [Contacts](/audiences) page.
+1. Go to the [Contacts](https://resend.com/audience) page.
 2. Click on the Contact you want to view.
 3. View the Contact details.
 
@@ -197,7 +206,7 @@ You can also retrieve a [single Contact](/api-reference/contacts/get-contact) or
 
 ## Edit Contacts
 
-1. Go to the [Contacts](/audiences) page.
+1. Go to the [Contacts](https://resend.com/audience) page.
 2. Click on the **More options** <Icon icon="ellipsis" iconType="solid" /> button and then **Edit Contact**.
 3. Edit the Contact details and choose **Save**.
 
@@ -207,7 +216,7 @@ the Contact to a [Segment](/dashboard/segments/introduction) or [Topic](/dashboa
 You can also [update a Contact](/api-reference/contacts/update-contact) via the API or SDKs using the `id` or `email` of the Contact.
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -225,7 +234,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Update by contact id
@@ -245,7 +254,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -267,7 +276,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   resend.Contacts.update(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -289,7 +298,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   Resend::Contacts.update(params)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import "github.com/resend/resend-go/v3"
 
   client := resend.NewClient("re_xxxxxxxxx")
@@ -313,7 +322,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   contact, err := client.Contacts.Update(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::ContactChanges, Resend, Result};
 
   #[tokio::main]
@@ -338,7 +347,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -362,7 +371,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -390,7 +399,7 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   # Update by contact id
   curl -X PATCH 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
@@ -409,16 +418,29 @@ You can also [update a Contact](/api-reference/contacts/update-contact) via the 
   ```
 </CodeGroup>
 
+## Bulk Actions
+
+You can perform actions on multiple Contacts at once by selecting them from the [Contacts](https://resend.com/audience) page.
+
+1. Go to the [Contacts](https://resend.com/audience) page.
+2. Select multiple Contacts by clicking the checkbox next to each Contact.
+3. Click the **Edit** button in the bulk actions bar.
+4. Choose an action:
+   * **Add to segments**: Add the selected Contacts to one or more Segments.
+   * **Subscribe to topics**: Subscribe the selected Contacts to one or more Topics.
+
+You can also delete multiple Contacts at once by clicking the **Delete** button in the bulk actions bar.
+
 ## Delete Contacts
 
-1. Go to the [Contacts](/audiences) page.
+1. Go to the [Contacts](https://resend.com/audience) page.
 2. Click on the **More options** <Icon icon="ellipsis" iconType="solid" /> button and then **Delete Contact**.
 3. Confirm the deletion.
 
 You can also [delete a Contact](/api-reference/contacts/delete-contact) via the API or SDKs.
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -434,7 +456,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Delete by contact id
@@ -448,7 +470,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -464,7 +486,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   )
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -480,7 +502,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import "github.com/resend/resend-go/v3"
 
   client := resend.NewClient("re_xxxxxxxxx")
@@ -496,7 +518,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   )
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -519,7 +541,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -539,7 +561,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -555,7 +577,7 @@ You can also [delete a Contact](/api-reference/contacts/delete-contact) via the 
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   # Delete by contact id
   curl -X DELETE 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
        -H 'Authorization: Bearer re_xxxxxxxxx'

@@ -1,121 +1,126 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/teams/list-team-members.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List team members
 
 > Get a paginated list of team members for the provided team.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v3/teams/{teamId}/members
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v3/teams/{teamId}/members
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
+  /v3/teams/{teamId}/members:
+    get:
+      tags:
+        - teams
+      summary: List team members
+      description: Get a paginated list of team members for the provided team.
+      operationId: getTeamMembers
+      parameters:
+        - name: limit
+          description: Limit how many teams should be returned
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Limit how many teams should be returned
-              minimum: 1
-              example: 20
-        since:
+            description: Limit how many teams should be returned
+            example: 20
+            minimum: 1
+            type: number
+        - name: since
+          description: Timestamp in milliseconds to only include members added since then.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: >-
-                Timestamp in milliseconds to only include members added since
-                then.
-              example: 1540095775951
-        until:
+            description: >-
+              Timestamp in milliseconds to only include members added since
+              then.
+            example: 1540095775951
+            type: number
+        - name: until
+          description: Timestamp in milliseconds to only include members added until then.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: >-
-                Timestamp in milliseconds to only include members added until
-                then.
-              example: 1540095775951
-        search:
+            description: >-
+              Timestamp in milliseconds to only include members added until
+              then.
+            example: 1540095775951
+            type: number
+        - name: search
+          description: Search team members by their name, username, and email.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Search team members by their name, username, and email.
-        role:
+            description: Search team members by their name, username, and email.
+            type: string
+        - name: role
+          description: Only return members with the specified team role.
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - OWNER
-                - MEMBER
-                - DEVELOPER
-                - SECURITY
-                - BILLING
-                - VIEWER
-                - VIEWER_FOR_PLUS
-                - CONTRIBUTOR
-              required: false
-              description: Only return members with the specified team role.
-              example: OWNER
-        excludeProject:
+            description: Only return members with the specified team role.
+            example: OWNER
+            type: string
+            enum:
+              - OWNER
+              - MEMBER
+              - DEVELOPER
+              - SECURITY
+              - BILLING
+              - VIEWER
+              - VIEWER_FOR_PLUS
+              - CONTRIBUTOR
+        - name: excludeProject
+          description: Exclude members who belong to the specified project.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Exclude members who belong to the specified project.
-        eligibleMembersForProjectId:
+            description: Exclude members who belong to the specified project.
+            type: string
+        - name: eligibleMembersForProjectId
+          description: >-
+            Include team members who are eligible to be members of the specified
+            project.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                Include team members who are eligible to be members of the
-                specified project.
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getTeamMembers
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.teams.getTeamMembers({
-              limit: 20,
-              since: 1540095775951,
-              until: 1540095775951,
-              role: "OWNER",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              members:
-                allOf:
-                  - items:
+            description: >-
+              Include team members who are eligible to be members of the
+              specified project.
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  members:
+                    items:
                       properties:
                         avatar:
                           type: string
@@ -123,6 +128,9 @@ paths:
                           example: 123a6c5209bc3778245d011443644c8d27dc2c50
                         confirmed:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             Boolean that indicates if this member was confirmed
                             by an owner.
@@ -195,8 +203,8 @@ paths:
                               enum:
                                 - teams
                                 - link
-                                - mail
                                 - import
+                                - mail
                                 - github
                                 - gitlab
                                 - bitbucket
@@ -204,6 +212,7 @@ paths:
                                 - dsync
                                 - feedback
                                 - organization-teams
+                                - nsnb-auto-approve
                             commitId:
                               type: string
                             repoId:
@@ -245,25 +254,25 @@ paths:
                                   - ADMIN
                                   - PROJECT_DEVELOPER
                                   - PROJECT_VIEWER
+                                  - PROJECT_GUEST
                             required:
-                              - name
                               - id
+                              - name
                             type: object
                             description: Array of project memberships
                           type: array
                           description: Array of project memberships
                       required:
                         - confirmed
+                        - createdAt
                         - email
                         - role
                         - uid
                         - username
-                        - createdAt
                       type: object
                     type: array
-              emailInviteCodes:
-                allOf:
-                  - items:
+                  emailInviteCodes:
+                    items:
                       properties:
                         accessGroups:
                           items:
@@ -313,10 +322,15 @@ paths:
                           type: array
                         isDSyncUser:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                         createdAt:
                           type: number
                         expired:
                           type: boolean
+                          enum:
+                            - true
                         projects:
                           additionalProperties:
                             type: string
@@ -324,6 +338,7 @@ paths:
                               - ADMIN
                               - PROJECT_DEVELOPER
                               - PROJECT_VIEWER
+                              - PROJECT_GUEST
                           type: object
                         entitlements:
                           items:
@@ -334,11 +349,13 @@ paths:
                         - isDSyncUser
                       type: object
                     type: array
-              pagination:
-                allOf:
-                  - properties:
+                  pagination:
+                    properties:
                       hasNext:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       count:
                         type: number
                         description: Amount of items in the current page.
@@ -356,96 +373,30 @@ paths:
                           page.
                         example: 1540095775951
                     required:
-                      - hasNext
                       - count
+                      - hasNext
                       - next
                       - prev
                     type: object
-            requiredProperties:
-              - members
-              - pagination
-        examples:
-          example:
-            value:
-              members:
-                - avatar: 123a6c5209bc3778245d011443644c8d27dc2c50
-                  confirmed: true
-                  email: jane.doe@example.com
-                  github:
-                    login: <string>
-                  gitlab:
-                    login: <string>
-                  bitbucket:
-                    login: <string>
-                  role: OWNER
-                  uid: zTuNVUXEAvvnNN3IaqinkyMw
-                  username: jane-doe
-                  name: Jane Doe
-                  createdAt: 1588720733602
-                  accessRequestedAt: 1588820733602
-                  joinedFrom:
-                    origin: teams
-                    commitId: <string>
-                    repoId: <string>
-                    repoPath: <string>
-                    gitUserId: <string>
-                    gitUserLogin: <string>
-                    ssoUserId: <string>
-                    ssoConnectedAt: 123
-                    idpUserId: <string>
-                    dsyncUserId: <string>
-                    dsyncConnectedAt: 123
-                  projects:
-                    - name: <string>
-                      id: <string>
-                      role: ADMIN
-              emailInviteCodes:
-                - accessGroups:
-                    - <string>
-                  id: <string>
-                  email: <string>
-                  role: OWNER
-                  teamRoles:
-                    - OWNER
-                  teamPermissions:
-                    - IntegrationManager
-                  isDSyncUser: true
-                  createdAt: 123
-                  expired: true
-                  projects: {}
-                  entitlements:
-                    - <string>
-              pagination:
-                hasNext: true
-                count: 20
-                next: 1540095775951
-                prev: 1540095775951
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - members
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

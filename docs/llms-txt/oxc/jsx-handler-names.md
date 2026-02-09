@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/jsx-handler-names.md
 ---
-# react/jsx-handler-names&#x20;
 
 ### What it does
 
@@ -67,13 +66,13 @@ Event handler prop prefixes to check against.
 
 ### eventHandlerPropRegex
 
-type: `string | null`
+type: `string`
 
 Compiled regex for event handler prop prefixes.
 
 ### eventHandlerRegex
 
-type: `string | null`
+type: `string`
 
 Compiled regex for event handler prefixes.
 

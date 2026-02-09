@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/destinations/pinecone-destination-quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pinecone destination connector quickstart
 
 Unstructured can connect to several types of [destinations](/ui/connectors#destinations). In this quickstart, you create a [Pinecone](https://www.pinecone.io) destination connector that you can add to your Unstructured [workflows](/ui/workflows).

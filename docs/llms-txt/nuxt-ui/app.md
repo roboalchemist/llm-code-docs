@@ -24,23 +24,15 @@ Wrap your entire application with the App component in your `app.vue` file:
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/i18n/nuxt#locale">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/i18n/nuxt#locale
+> Learn how to use the `locale` prop to change the locale of your app. This also controls the date/time format in components like Calendar, InputDate, and InputTime.
 
-Learn how to use the `locale` prop to change the locale of your app.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/i18n/vue#locale">
-
-Learn how to use the `locale` prop to change the locale of your app.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/i18n/vue#locale
+> Learn how to use the `locale` prop to change the locale of your app. This also controls the date/time format in components like Calendar, InputDate, and InputTime.
 
 ## API
 
@@ -53,7 +45,7 @@ Learn how to use the `locale` prop to change the locale of your app.
 interface AppProps {
   tooltip?: TooltipProviderProps | undefined;
   toaster?: ToasterProps | null | undefined;
-  locale?: Locale<Messages> | undefined;
+  locale?: Locale<T> | undefined;
   /**
    * @default "\"body\""
    */
@@ -86,8 +78,4 @@ interface AppSlots {
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

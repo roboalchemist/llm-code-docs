@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/create-multiple-organizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Create Multiple Organizations
 
 > Learn how to create multiple organizations.

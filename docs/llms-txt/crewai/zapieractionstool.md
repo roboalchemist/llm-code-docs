@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/automation/zapieractionstool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier Actions Tool
 
 > The `ZapierActionsAdapter` exposes Zapier actions as CrewAI tools for automation.

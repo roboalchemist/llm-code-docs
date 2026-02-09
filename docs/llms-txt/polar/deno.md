@@ -1,14 +1,22 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/deno.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deno
 
 > Payments and Checkouts made dead simple with Deno
+
+## Examples
+
+* [With Deno](https://github.com/polarsource/examples/tree/main/with-deno)
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Checkout } from "jsr:@polar-sh/deno";
 
 Deno.serve(
@@ -35,7 +43,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { CustomerPortal } from "jsr:@polar-sh/deno";
 
 Deno.serve(
@@ -52,7 +60,7 @@ Deno.serve(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Webhooks } from "jsr:@polar-sh/deno";
 
 Deno.serve(

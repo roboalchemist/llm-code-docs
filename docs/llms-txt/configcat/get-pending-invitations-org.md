@@ -2,10 +2,7 @@
 
 # List Pending Invitations in Organization
 
-```
-GET 
-/v1/organizations/:organizationId/invitations
-```
+Copy page
 
 This endpoint returns the list of pending invitations within the given Organization identified by the `organizationId` parameter.
 

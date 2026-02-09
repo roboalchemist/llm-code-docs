@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-deprecated.md
 ---
-# typescript/no-deprecated&#x20;
 
 ### What it does
 

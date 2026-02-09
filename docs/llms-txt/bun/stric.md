@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/stric.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an HTTP server using StricJS and Bun
 
 [StricJS](https://github.com/bunsvr) is a Bun framework for building high-performance web applications and APIs.

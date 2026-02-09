@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/code-first-development.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python driven configuration for models 🆕
 
 > Use code-first development tools to streamline model production.
@@ -43,12 +47,12 @@ class RunningTotalCalculator(baseten.ModelBase):
         return self._running_total
 ```
 
-### Step 3: Deploy, patch, and public your model
+### Step 3: Deploy, patch, and publish your model
 
-In order to deploy the first version of your new model, you can run:
+In order to deploy a development version of your new model with live reload, you can run:
 
 ```bash  theme={"system"}
-truss push my_model.py
+truss push my_model.py --watch
 ```
 
 Please note that `push` (as well as all other commands below) will require that you pass the path to the file containing the model as the final argument.
@@ -57,6 +61,12 @@ This new workflow also supports patching, so you can quickly iterate during deve
 
 ```bash  theme={"system"}
 truss watch my_model.py
+```
+
+To deploy a production-ready version, use:
+
+```bash  theme={"system"}
+truss push my_model.py --publish
 ```
 
 ### Model Configuration

@@ -4,11 +4,7 @@
 
 LinkedIn Provider
 
-***
 
-title: LinkedIn
-description: LinkedIn Provider
-------------------------------
 
 <Steps>
   <Step>

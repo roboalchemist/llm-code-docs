@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/scrapegraphscrapetool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scrapegraph Scrape Tool
 
 > The `ScrapegraphScrapeTool` leverages Scrapegraph AI's SmartScraper API to intelligently extract content from websites.

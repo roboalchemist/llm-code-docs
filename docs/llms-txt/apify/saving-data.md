@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/saving-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/saving-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/saving-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/saving-data.md
-
 # Saving data with Node.js
 
 **In this lesson, we'll save the data we scraped in the popular formats, such as CSV or JSON. We'll use the json2csv library to export the files.**
@@ -81,11 +69,11 @@ if (response.ok) {
 ```
 
 
-Instead of printing each line, we now return the data for each product as a JavaScript object. We've replaced the `for` loop with https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map, which also iterates over the selection but, in addition, collects all the results and returns them as another array. Near the end of the program, we print this entire array.
+Instead of printing each line, we now return the data for each product as a JavaScript object. We've replaced the `for` loop with [.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), which also iterates over the selection but, in addition, collects all the results and returns them as another array. Near the end of the program, we print this entire array.
 
 Advanced syntax
 
-When returning the item object, we use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#property_definitions to set the title, and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax to set the prices. It's the same as if we wrote the following:
+When returning the item object, we use [shorthand property syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#property_definitions) to set the title, and [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) to set the prices. It's the same as if we wrote the following:
 
 
 ```
@@ -120,7 +108,7 @@ $ node index.js
 
 ## Saving data as JSON
 
-The JSON format is popular primarily among developers. We use it for storing data, configuration files, or as a way to transfer data between programs (e.g., APIs). Its origin stems from the syntax of JavaScript objects, but people now use it accross programming languages.
+The JSON format is popular primarily among developers. We use it for storing data, configuration files, or as a way to transfer data between programs (e.g., APIs). Its origin stems from the syntax of JavaScript objects, but people now use it across programming languages.
 
 We'll begin with importing the `writeFile` function from the Node.js standard library, so that we can, well, write files:
 
@@ -158,13 +146,13 @@ If you skim through the data, you'll notice that the `JSON.stringify()` function
 
 Pretty JSON
 
-While a compact JSON file without any whitespace is efficient for computers, it can be difficult for humans to read. You can call `JSON.stringify(data, null, 2)` for prettier output. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify for explanation of the parameters and more examples.
+While a compact JSON file without any whitespace is efficient for computers, it can be difficult for humans to read. You can call `JSON.stringify(data, null, 2)` for prettier output. See [documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) for explanation of the parameters and more examples.
 
 ## Saving data as CSV
 
 The CSV format is popular among data analysts because a wide range of tools can import it, including spreadsheets apps like LibreOffice Calc, Microsoft Excel, Apple Numbers, and Google Sheets.
 
-Neither JavaScript itself nor Node.js offers anything built-in to read and write CSV, so we'll need to install a library. We'll use https://juanjodiaz.github.io/json2csv/, a *de facto* standard for working with CSV in JavaScript:
+Neither JavaScript itself nor Node.js offers anything built-in to read and write CSV, so we'll need to install a library. We'll use [json2csv](https://juanjodiaz.github.io/json2csv/), a *de facto* standard for working with CSV in JavaScript:
 
 
 ```
@@ -232,13 +220,14 @@ Solution
 
 
 ```
-import { readFile } from "fs/promises";
+import { readFile } from 'node:fs/promises';
 
-const jsonData = await readFile("products.json");
+const jsonData = await readFile('products.json', 'utf8');
 const data = JSON.parse(jsonData);
+
 data
-  .filter(row => row.minPrice > 50000)
-  .forEach(row => console.log(row));
+  .filter((row) => row.minPrice > 50000)
+  .forEach((row) => console.log(row));
 ```
 
 
@@ -248,7 +237,7 @@ Open the `products.csv` file we created in the lesson using a spreadsheet applic
 
 Solution
 
-Let's use https://www.google.com/sheets/about/, which is free to use. After logging in with a Google account:
+Let's use [Google Sheets](https://www.google.com/sheets/about/), which is free to use. After logging in with a Google account:
 
 1. Go to **File > Import**, choose **Upload**, and select the file. Import the data using the default settings. You should see a table with all the data.
 2. Select the header row. Go to **Data > Create filter**.

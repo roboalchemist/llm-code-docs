@@ -6,7 +6,7 @@ You can use Jam to quickly record a video of your screen – along with all the 
 
 Unlike other screen recording tools, Jam's video recorder is purpose-built for product, engineering, support, and QA teams to aid in capturing bugs while automatically including all the technical details engineers require to address and fix them.
 
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FAwLvnapPbSGFyMg9cZPz%2Fvideo-recrd.gif?alt=media&#x26;token=cd27ee3c-286a-442d-8602-4a4945c70681" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FO1048cQEYtyOSjBDB48o%2FTab-recording.gif?alt=media&#x26;token=38c17188-c178-497d-9a69-c729a6fa687e" alt=""><figcaption></figcaption></figure>
 
 When you record a video of your screen with Jam, Jam captures the following technical diagnostics and auto-includes them to help your engineers debug faster:
 
@@ -24,21 +24,24 @@ And packages it all into one easy link to be shared with an engineer or pasted i
 
 When you record a video with Jam, you can optionally choose to record a voiceover for your videos. This helps in providing real-time explanations and context for the activities happening on the screen.
 
-To enable the microphone, you will need to have the correct permissions in your browser. You can enable these permissions by:
-
-1. Clicking the Jam extension
-2. Next to the Microphone icon, click the “Grant Permission” button (if it doesn't say "Grant Permission", then you already have the proper settings)
-3. On the browser modal, click “Allow”
-
 Then you can mute and un-mute your microphone and choose which microphone Jam should use to record your audio.
 
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FoxO0xloc2G6BtcbdxeeZ%2Fmic.gif?alt=media\&token=3704a985-dc14-495a-b4fc-205c5d62dd3c)
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSNWQvm5BdQppM30UP2rq%2FMic-controls.gif?alt=media&#x26;token=44ab7be5-9b36-49c9-ad34-e56c6d82e76a" alt=""><figcaption></figcaption></figure>
+
+### Microphone permission
+
+To use the microphone, you will need to have the correct permissions in your browser. You will be prompted to grant access the first time you try to use microphone.
+
+If you have previously denied microphone access, you can modify it in the browser extension settings:
+
+1. Go to extension site settings - copy and paste this URL in your search bar: <kbd>chrome://settings/content/siteDetails?site=chrome-extension://iohjgamcilhbgmhbnllfolmkmmekfmci</kbd>
+2. In the permission list, select “Allow” for microphone permission
 
 ## Tab vs Desktop Recording
 
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FuuzHPpnseVP0Y70twd9j%2FCleanShot%202023-07-07%20at%2020.54.28%402x.png?alt=media\&token=13849922-3d3a-4b8d-b07d-60df58559fd2)
-
 With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
+
+<div align="left" data-full-width="false"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FoQuHkqZfbdP2yknXFr1a%2FTabvsDesktop.gif?alt=media&#x26;token=0f385753-e91d-4bf1-91d6-a3dfe28fdfdf" alt=""><figcaption><p>Switching between tab and desktop recording</p></figcaption></figure></div>
 
 When you record a single tab, Jam only captures what's literally in that tab. That means Jam does not capture the browser URL bar, or any new windows (e.g. for login flows) that pop up external to the tab.
 
@@ -50,12 +53,8 @@ That means, if you're trying to demonstrate a bug that spans across multiple tab
 
 ### Recording incognito tabs
 
-Jam offers full support for incognito. To capture console logs and network requests occurring on your desktop in incognito tabs, simply enable Jam for incognito in your browser extension settings:
+Jam offers full support for incognito. See steps here to enable Jam on incognito windows:
 
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBqcVeRTPvm8HrRELfQlx%2Fa91f85b5-124d-4374-8da5-f53095acdc1b_796x540.gif?alt=media\&token=55467ee2-506a-4987-8c81-0cb86a58c5d1)
-
-<br>
-
-<br>
-
-<br>
+{% content-ref url="incognito-sessions" %}
+[incognito-sessions](https://jam.dev/docs/record-a-jam/incognito-sessions)
+{% endcontent-ref %}

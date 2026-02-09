@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/configuration/permissions.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/permissions.md
-
-# Source: https://docs.avaamo.com/user-guide/configuration/permissions.md
-
 # Permissions
 
 By default, when you create an agent, you are the **owner** of the agent. Additionally, when a user promotes an agent that the user is automatically the owner of the agent in the promoted stage. As an owner of the agent, you can assign permissions to different people within your company for your agent as required. This allows different users to participate and collaborate in each stage of the agent life-cycle.

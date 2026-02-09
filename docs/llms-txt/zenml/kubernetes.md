@@ -6,14 +6,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/kubernetes.md
 
-# Source: https://docs.zenml.io/stacks/popular-stacks/kubernetes.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/step-operators/kubernetes.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/deployers/kubernetes.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/kubernetes.md
-
 # Kubernetes Orchestrator
 
 Using the ZenML `kubernetes` integration, you can orchestrate and scale your ML pipelines on a [Kubernetes](https://kubernetes.io/) cluster without writing a single line of Kubernetes code.
@@ -153,6 +145,7 @@ The following configuration options can be set either through the orchestrator c
 * **`privileged`** (default: False): If the container should be run in privileged mode.
 * **`pod_settings`**: Node selectors, labels, affinity, and tolerations, secrets, environment variables, image pull secrets, the scheduler name and additional arguments to apply to the Kubernetes Pods running the steps of your pipeline. These can be either specified using the Kubernetes model objects or as dictionaries.
 * **`orchestrator_pod_settings`**: Node selectors, labels, affinity, tolerations, secrets, environment variables and image pull secrets to apply to the Kubernetes Pod that is responsible for orchestrating the pipeline and starting the other Pods. These can be either specified using the Kubernetes model objects or as dictionaries.
+  * If you're specifying `init_containers` as part of the `additional_pod_spec_args` of the pod settings, you can use an `"{{ image }}"` placeholder string. This placeholder will be replaced by the image that is also used to run the orchestration or step container.
 * **`pod_name_prefix`**: Prefix for the pod names. A random suffix and the step name will be appended to create unique pod names.
 * **`pod_startup_timeout`** (default: 600): The maximum time to wait for a pending step pod to start (in seconds). The orchestrator will delete the pending pod after this time has elapsed and raise an error. If configured, the `pod_failure_retry_delay` and `pod_failure_backoff` settings will also be used to calculate the delay between retries.
 * **`pod_failure_max_retries`** (default: 3): The maximum number of retries to create a step pod that fails to start.
@@ -417,19 +410,43 @@ To view your scheduled jobs and their status:
 kubectl get cronjobs -n zenml
 ```
 
-To update a schedule, use the following command:
+To update a schedule's cron expression:
 
-````bash
-# This deletes both the schedule metadata in ZenML as well as the underlying CronJob
+```bash
 zenml pipeline schedule update <SCHEDULE_NAME_OR_ID> --cron-expression='0 4 * * *'
+```
+
+#### Pausing and resuming a scheduled pipeline
+
+You can temporarily pause a scheduled pipeline without deleting it using the deactivate command. This sets the CronJob's `suspend` field to `true`, preventing any new executions while preserving the CronJob resource:
+
+```bash
+# Pause the schedule (sets suspend=true on the CronJob)
+zenml pipeline schedule deactivate <SCHEDULE_NAME_OR_ID>
+
+# Resume the schedule (sets suspend=false on the CronJob)
+zenml pipeline schedule activate <SCHEDULE_NAME_OR_ID>
+```
+
+You can verify the suspend status using kubectl:
+
+```shell
+kubectl get cronjob <cronjob-name> -n zenml -o jsonpath='{.spec.suspend}'
+```
 
 #### Deleting a scheduled pipeline
 
-When you no longer need a scheduled pipeline, you can delete the schedule as follows:
+When you no longer need a scheduled pipeline, you can delete the schedule. By default, deletion archives the schedule (soft delete), which preserves references in historical pipeline runs:
+
 ```bash
-# This deletes both the schedule metadata in ZenML as well as the underlying CronJob
+# Archive the schedule (soft delete - default)
+# This removes the CronJob from Kubernetes and archives the schedule in ZenML
 zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID>
-````
+
+# Permanently delete the schedule (hard delete)
+# This removes the CronJob and permanently deletes all schedule references
+zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID> --hard
+```
 
 #### Troubleshooting
 

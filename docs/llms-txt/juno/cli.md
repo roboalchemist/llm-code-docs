@@ -44,7 +44,7 @@ The authentication process requires a browser.
 
 If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing access key.
 
-This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
+This allows you to reuse your authorization, especially when creating new modules like Satellites or Orbiters.
 
 ---
 
@@ -52,7 +52,7 @@ This allows you to reuse your authorization, especially when creating new module
 
 **Caution:**
 
-This action currently does not remove the controllers from satellites and/or mission control and/or orbiter. It only logs out your local machine by removing the locally saved key (principal).
+This action currently does not remove the controllers from Satellites and/or Mission Control and/or Orbiter. It only logs out your local machine by removing the locally saved key (principal).
 
 Log out of the current device. â ï¸ This action does not remove the access keys from the module.
 
@@ -82,7 +82,7 @@ Usage: juno hosting clear [options]Options:  -f, --fullPath        Clear a parti
 
 **Note:**
 
-This command removes existing files from the satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+This command removes existing files from the Satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
 
 ---
 

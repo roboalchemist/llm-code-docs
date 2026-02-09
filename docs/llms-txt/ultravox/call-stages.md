@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/agents/call-stages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Stages
 
 > Create dynamic, multi-stage conversations.
@@ -185,8 +189,3 @@ Let's consider what the potential stages might be for **Customer Support**:
 ## Conclusion
 
 Call Stages in the Ultravox API give you the ability to create adaptive conversations for more complex scenarios like data gathering or switching contexts. By allowing granular control over system prompts and conversation parameters at different stages, you can create more dynamic and context-aware interactions.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

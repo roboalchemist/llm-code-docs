@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/file-system-router.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File System Router
 
 > Bun provides a fast API for resolving routes against file-system paths

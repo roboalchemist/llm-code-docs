@@ -1,12 +1,16 @@
 # Source: https://docs.unstructured.io/examplecode/tools/sharepoint-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SharePoint event triggers
 
 You can use SharePoint events, such as adding new files to—or updating existing files within—SharePoint document libraries, to automatically run Unstructured ETL+ workflows
 that rely on those document libraries as sources. This enables a no-touch approach to having Unstructured automatically process new and updated files in SharePoint document libraries as they are added or updated.
 
 This example shows how to automate this process by adding a custom [Power Automate](https://www.microsoft.com/power-platform/products/power-automate) flow to your Microsoft 365 or Office 365 account. This flow runs
-whenever a new or updated file is detected in the specified SharePoint document library. This flow then calls the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to automatically run the
+whenever a new or updated file is detected in the specified SharePoint document library. This flow then calls the [Unstructured API's workflow operations](/api-reference/workflow/overview) to automatically run the
 specified corresponding Unstructured ETL+ workflow within your Unstructured account.
 
 <Note>
@@ -55,10 +59,10 @@ To use this example, you will need the following:
      c. Follow the on-screen instructions to finish generating the key.<br />
      d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
 
-* The Unstructured Workflow Endpoint URL for your account, as follows:
+* The Unstructured API's workflow operations URL for your account, as follows:
 
   1. In the Unstructured UI, click **API Keys** on the sidebar.<br />
-  2. Note the value of the **Unstructured Workflow Endpoint** field.
+  2. Note the value of the **Unstructured API's workflow operations** field.
 
 * A SharePoint source connector in your Unstructured account. [Learn how](/ui/sources/sharepoint).
 
@@ -186,7 +190,7 @@ In this step, you store your Unstructured API key in an Azure key vault for your
 
     * For **URI**, enter `<unstructured-api-url>/workflows/<workflow-id>/run`, and replace the following placeholders:
 
-      * Replace `<unstructured-api-url>` with your Unstructured Workflow Endpoint value.
+      * Replace `<unstructured-api-url>` with your Unstructured API's workflow operations value.
       * Replace `<workflow-id>` with the ID of your Unstructured workflow.
 
       The **URI** should now look similar to the following:

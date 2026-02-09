@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/concepts/image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image Generation
 
 > Generate images through Helicone's AI Gateway using models with native image output like Nano Banana Pro
@@ -247,8 +251,3 @@ To enable image generation:
 
 * [Reasoning](/gateway/concepts/reasoning) - Enable reasoning for complex tasks
 * [Responses API](/gateway/concepts/responses-api) - Alternative API format with image support
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

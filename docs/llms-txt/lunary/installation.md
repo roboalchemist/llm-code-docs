@@ -2,6 +2,10 @@
 
 # Source: https://docs.lunary.ai/docs/integrations/javascript/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JavaScript SDK
 
 ## Installation
@@ -102,8 +106,3 @@ The `.init` method accepts the following arguments:
     Full list of methods and classes.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

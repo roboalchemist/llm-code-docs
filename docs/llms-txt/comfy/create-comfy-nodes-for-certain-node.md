@@ -1,163 +1,101 @@
 # Source: https://docs.comfy.org/api-reference/registry/create-comfy-nodes-for-certain-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # create comfy-nodes for certain node
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi post /nodes/{nodeId}/versions/{version}/comfy-nodes
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes/{nodeId}/versions/{version}/comfy-nodes
-  method: post
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
+  /nodes/{nodeId}/versions/{version}/comfy-nodes:
     parameters:
-      path:
-        nodeId:
-          schema:
-            - type: string
-              required: true
-        version:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              cloud_build_info:
-                allOf:
-                  - $ref: '#/components/schemas/ComfyNodeCloudBuildInfo'
-              nodes:
-                allOf:
-                  - additionalProperties:
-                      $ref: '#/components/schemas/ComfyNode'
-              reason:
-                allOf:
-                  - type: string
-              status:
-                allOf:
-                  - type: string
-              success:
-                allOf:
-                  - type: boolean
-            required: true
-        examples:
-          example:
-            value:
-              cloud_build_info:
-                build_id: <string>
-                location: <string>
-                project_id: <string>
-                project_number: <string>
-              nodes: {}
-              reason: <string>
-              status: <string>
-              success: true
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Comy Nodes created successfully
-        examples: {}
-        description: Comy Nodes created successfully
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Version not found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Existing Comfy Nodes exists
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+      - in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+    post:
+      tags:
+        - Registry
+      summary: create comfy-nodes for certain node
+      operationId: CreateComfyNodes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                cloud_build_info:
+                  $ref: '#/components/schemas/ComfyNodeCloudBuildInfo'
+                nodes:
+                  additionalProperties:
+                    $ref: '#/components/schemas/ComfyNode'
+                reason:
+                  type: string
+                status:
+                  type: string
+                success:
+                  type: boolean
+              type: object
+        required: true
+      responses:
+        '204':
+          description: Comy Nodes created successfully
+        '401':
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Version not found
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Existing Comfy Nodes exists
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    ComfyNodeCloudBuildInfo:
+      properties:
+        build_id:
+          type: string
+        location:
+          type: string
+        project_id:
+          type: string
+        project_number:
+          type: string
+      type: object
     ComfyNode:
       properties:
         category:
@@ -199,16 +137,15 @@ components:
           description: Specifies the types of outputs produced by the node.
           type: string
       type: object
-    ComfyNodeCloudBuildInfo:
+    ErrorResponse:
       properties:
-        build_id:
+        error:
           type: string
-        location:
+        message:
           type: string
-        project_id:
-          type: string
-        project_number:
-          type: string
+      required:
+        - error
+        - message
       type: object
     ComfyNodePolicy:
       enum:

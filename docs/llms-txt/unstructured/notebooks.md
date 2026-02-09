@@ -1,10 +1,51 @@
 # Source: https://docs.unstructured.io/examplecode/notebooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Notebooks
 
 > Notebooks contain complete working sample code for end-to-end solutions.
 
 <CardGroup cols={2}>
+  <Card title="Unstructured API: Convert Documents to Stylized HTML" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Convert_Documents_to_Stylized_HTML_using_the_Unstructured_API.ipynb">
+    <br />
+
+    Partition documents into structured elements using our VLM-based partitioning strategy, then convert the extracted HTML metadata into beautifully stylized web documents for RAG pipelines, knowledge bases, and AI-powered applications.
+
+    <br />
+
+    `Unstructured API` `On-demand jobs` `Local files`
+
+    <br />
+  </Card>
+
+  <Card title="Unstructured API: On-Demand Jobs Quickstart" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_API_On_Demand_Jobs_Quickstart.ipynb">
+    <br />
+
+    Learn the basics of how to use the Unstructured API to run an on-demand job with a short-lived workflow that takes one or more local files as input.
+
+    <br />
+
+    `Unstructured API` `On-demand jobs` `Local files` `Workflow operations` `Workflow templates`
+
+    <br />
+  </Card>
+
+  <Card title="Unstructured API: On-Demand Jobs Walkthrough" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_API_On_Demand_Jobs_Walkthrough.ipynb">
+    <br />
+
+    Learn how to use the Unstructured API to run an on-demand job with a short-lived workflow that takes one or more local files as input and applies basic partitioning and a few enrichments. Then, extend your knowledge of and skills
+    with Unstructured by adding chunking, more enrichments, and embeddings to your on-demand jobs.
+
+    <br />
+
+    `Unstructured API` `On-demand jobs` `Local files` `Workflow operations` `Workflow templates`
+
+    <br />
+  </Card>
+
   <Card title="Adding a Memory Layer to RAG with Unstructured and Mem0" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/MemoryLayer_for_RAG.ipynb">
     <br />
 
@@ -48,7 +89,7 @@
 
     <br />
 
-    `Unstructured API` `Workflows` `Workflow Endpoint` `Local File`
+    `Unstructured API` `Workflows` `Workflow Operations` `Local File`
 
     <br />
   </Card>
@@ -116,7 +157,7 @@
   <Card title="Unstructured Partition Endpoint Quickstart" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Partition_Endpoint_Quickstart.ipynb">
     <br />
 
-    This notebook calls the Unstructured Python SDK to have Unstructured process a local file by using the Unstructured Partition Endpoint.
+    This notebook calls the Unstructured Python SDK to have Unstructured process a local file by using the legacy Unstructured Partition Endpoint.
 
     <br />
 
@@ -174,7 +215,7 @@
   <Card title="Create a S3 to Qdrant Pipeline using the Unstructured API" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/S3_to_Qdrant_Workflow_using_Unstructured_API.ipynb">
     <br />
 
-    This notebook walks through using the Unstructured Workflow Endpoint to set up a complete pipeline that pulls documents from S3, processes them using Unstructured, and stores the resulting embeddings in Qdrant for fast vector search and retrieval.
+    This notebook walks through using the Unstructured API's workflow operations to set up a complete pipeline that pulls documents from S3, processes them using Unstructured, and stores the resulting embeddings in Qdrant for fast vector search and retrieval.
 
     <br />
 
@@ -291,10 +332,10 @@
     <br />
   </Card>
 
-  <Card title="Unstructured Workflow Endpoint Quickstart" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb">
+  <Card title="Unstructured API Workflow Operations Quickstart" href="https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_API_Workflow_Operations_Quickstart.ipynb">
     <br />
 
-    Build an end-to-end workflow in Unstructured programmatically by using the Unstructured Workflow Endpoint.
+    Build an end-to-end workflow in Unstructured programmatically by using the Unstructured API's workflow operations.
 
     <br />
 

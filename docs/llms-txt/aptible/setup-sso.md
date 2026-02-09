@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/setup-sso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up Single Sign On (SSO)
 
 > To use SSO, you must configure both the SSO provider and Aptible with metadata related to the SAML protocol. This documentation covers the process in general terms applicable to any SSO provider. Then, it covers in detail the setup process in Okta.
@@ -78,9 +82,9 @@ In the resulting modal box, enter either the URL or the XML contents of the file
 
 <img src="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=36c3e9fac78f1b9f515ff24864e4f5f2" alt="" data-og-width="1318" width="1318" data-og-height="1140" height="1140" data-path="images/sso3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=280&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=a1f537229583586a99264ae95cdedc00 280w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=560&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=eedab109764ed12a00e0f9ba20029035 560w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=840&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=55cce2671210110ad81679b143de8ba4 840w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=1100&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=aecf8824e06352abbe9603628c5ba4ce 1100w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=1650&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=68f008c5bb96e0d22e94970449e82d89 1650w, https://mintcdn.com/aptible/RWSo_H5DBAoWcXSD/images/sso3.png?w=2500&fit=max&auto=format&n=RWSo_H5DBAoWcXSD&q=85&s=ae4beb3e7ce74a6f9d595a9742758f3a 2500w" />
 
-> ❗️ Warning
-
-> When you retrieve the metadata, you should ensure the SSO provider's site is an HTTPS site. This ensure that the metadata is not tampered with during download. If an attacker could alter that metadata, they could substitute their own information and hi-jack your SSO configuration.
+<Warning>
+  Aptible requires HTTPS for metadata URLs. If you provide an HTTP URL, you'll receive an error: "metadata\_url invalid, ensure it uses https". HTTPS prevents tampering during download—without it, an attacker could substitute their own information and hijack your SSO configuration.
+</Warning>
 
 Once processing is complete, you should see data from your SSO provider. You can confirm these with the SSO provider's website to ensure they are correct.
 
@@ -161,6 +165,28 @@ As a complement to the generic guide, we will present a detailed walkthrough for
 ## Assign Users to Aptible Deploy
 
 * Follow [Okta's guide to assign users](https://developer.okta.com/docs/guides/saml-application-setup/assign-users-to-the-app/) to the new application.
+
+## Troubleshooting Common SSO Configuration Errors
+
+### Metadata URL Invalid Error
+
+If you get "metadata\_url invalid, ensure it uses https", your metadata URL is using HTTP instead of HTTPS. Aptible requires HTTPS for all metadata URLs to prevent the metadata from being tampered with during retrieval.
+
+Verify that your SSO provider's metadata URL begins with `https://`. Most modern SSO providers use HTTPS by default. If your provider only offers an HTTP metadata URL, use the metadata file XML content option instead.
+
+### Metadata URL Timeout Error
+
+If you get "metadata\_url request timed out", Aptible couldn't retrieve the metadata from your SSO provider within 5 seconds. This typically happens when the SSO provider's metadata endpoint is slow to respond, there are network connectivity issues between Aptible and your SSO provider, or the metadata endpoint is temporarily unavailable.
+
+To fix this:
+
+1. Wait a moment and try configuring the SSO provider again
+2. Check with your SSO provider to ensure the metadata endpoint is accessible and responding quickly
+3. Use the metadata file XML content option instead of the URL—download the metadata file from your SSO provider and paste its contents into the configuration form
+
+<Tip>
+  If you're experiencing repeated metadata URL issues, use the metadata file XML content option instead of the URL.
+</Tip>
 
 ## Frequently Asked Questions
 

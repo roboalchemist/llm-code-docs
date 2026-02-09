@@ -14,14 +14,8 @@ The ColorModeImage component uses the `<NuxtImg>` component when [`@nuxt/image`]
 </template>
 ```
 
-<note>
-
-Switch between light and dark mode to see the different images: <u-color-mode-select size="sm">
-
-
-
-</u-color-mode-select>
-</note>
+> [!NOTE]
+> Switch between light and dark mode to see the different images:
 
 ## API
 
@@ -47,16 +41,10 @@ interface ColorModeImageProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes">
-
-This component also supports all native `<img>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes
+> This component also supports all native `<img>` HTML attributes.
 
 ## Changelog
 
-<component-changelog prefix="color-mode">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

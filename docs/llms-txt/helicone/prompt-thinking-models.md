@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/prompt-thinking-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Prompt Thinking Models
 
 > Learn how to effectively prompt thinking models like DeepSeek R1 and OpenAI o1/o3 for optimal results.

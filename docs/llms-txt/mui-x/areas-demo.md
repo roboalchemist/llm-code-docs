@@ -33,7 +33,7 @@ export default function SimpleAreaChart() {
     <Box sx={{ width: '100%', height: 300 }}>
       <LineChart
         series={[{ data: uData, label: 'uv', area: true, showMark: false }]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         sx={{
           [`& .${lineElementClasses.root}`]: {
             display: 'none',
@@ -82,7 +82,7 @@ export default function StackedAreaChart() {
             showMark: false,
           },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
         sx={{
           [`& .${lineElementClasses.root}`]: {
@@ -195,6 +195,7 @@ export default function PercentAreaChart() {
             data: time,
             min: time[0].getTime(),
             max: time[time.length - 1].getTime(),
+            height: 28,
           },
         ]}
       />
@@ -218,12 +219,12 @@ export default function AreaChartConnectNulls() {
   return (
     <Stack sx={{ width: '100%', height: 400 }}>
       <LineChart
-        xAxis={[{ data: xData, scaleType: 'point' }]}
+        xAxis={[{ data: xData, scaleType: 'point', height: 28 }]}
         series={[{ data, showMark: false, area: true }]}
         margin={margin}
       />
       <LineChart
-        xAxis={[{ data: xData, scaleType: 'point' }]}
+        xAxis={[{ data: xData, scaleType: 'point', height: 28 }]}
         series={[{ data, showMark: false, area: true, connectNulls: true }]}
         margin={margin}
       />

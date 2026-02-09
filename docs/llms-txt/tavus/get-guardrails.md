@@ -1,48 +1,64 @@
 # Source: https://docs.tavus.io/api-reference/guardrails/get-guardrails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Guardrails (One Set)
 
 > This endpoint returns a single set of guardrails by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/guardrails/{guardrails_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/guardrails/{guardrails_id}
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/guardrails/{guardrails_id}:
     parameters:
-      path:
-        guardrails_id:
-          schema:
-            - type: string
-              required: true
-              description: The unique identifier of the guardrails.
-              example: g12345
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+      - name: guardrails_id
+        in: path
+        required: true
+        description: The unique identifier of the guardrails.
+        schema:
+          type: string
+          example: g12345
+    get:
+      tags:
+        - Guardrails
+      summary: Get Guardrails (One Set)
+      description: >
+        This endpoint returns a single set of guardrails by its unique
+        identifier.
+      operationId: getGuardrail
+      responses:
+        '200':
+          description: Successfully retrieved guardrails
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       guardrail_name:
                         type: string
@@ -88,68 +104,46 @@ paths:
                           ISO 8601 timestamp of when the guardrails were last
                           updated
                         example: '2024-01-15T10:30:00Z'
-        examples:
-          example:
-            value:
-              data:
-                guardrail_name: healthcare_compliance_guardrail
-                guardrail_prompt: >-
-                  Never discuss competitor products, share sensitive medical
-                  information, or provide medical advice outside approved
-                  guidelines
-                modality: verbal
-                callback_url: https://your-server.com/guardrails-webhook
-                created_at: '2024-01-15T10:30:00Z'
-                updated_at: '2024-01-15T10:30:00Z'
-        description: Successfully retrieved guardrails
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid guardrails_id
-        examples:
-          example:
-            value:
-              error: Invalid guardrails_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Guardrails not found
-        examples:
-          example:
-            value:
-              error: Guardrails not found
-        description: Not Found
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

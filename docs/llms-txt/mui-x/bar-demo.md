@@ -68,7 +68,7 @@ export default function SimpleBarChart() {
           { data: pData, label: 'pv', id: 'pvId' },
           { data: uData, label: 'uv', id: 'uvId' },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
       />
     </Box>
@@ -103,7 +103,7 @@ export default function StackedBarChart() {
           { data: pData, label: 'pv', id: 'pvId', stack: 'total' },
           { data: uData, label: 'uv', id: 'uvId', stack: 'total' },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
       />
     </Box>
@@ -141,7 +141,7 @@ export default function MixedBarChart() {
           { data: amtData, label: 'amt' },
           { data: uData, label: 'uv', stack: 'stack1' },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
       />
     </Box>
@@ -177,7 +177,7 @@ export default function PositiveAndNegativeBarChart() {
           { data: pData, label: 'pv' },
           { data: uData, label: 'uv' },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[{ width: 60, max: 10000 }]}
       />
     </Box>
@@ -213,7 +213,7 @@ export default function BarChartStackedBySign() {
           { data: pData, label: 'pv', id: 'pvId', stack: 'stack1' },
           { data: uData, label: 'uv', id: 'uvId', stack: 'stack1' },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[{ width: 60 }]}
       />
     </Box>
@@ -260,7 +260,7 @@ export default function BiaxialBarChart() {
             yAxisId: 'rightAxisId',
           },
         ]}
-        xAxis={[{ data: xLabels }]}
+        xAxis={[{ data: xLabels, height: 28 }]}
         yAxis={[
           { id: 'leftAxisId', width: 50 },
           { id: 'rightAxisId', position: 'right' },
@@ -380,6 +380,85 @@ export default function PopulationPyramidBarChart() {
       />
       <Typography variant="caption">Source: KOSIS</Typography>
     </Stack>
+  );
+}
+
+```
+
+## Waterfall Chart [<span class="plan-premium"></span>](/x/introduction/licensing/#premium-plan 'Premium plan')
+
+The following demo shows a waterfall chart built using a [range bar chart](/x/react-charts/range-bar/).
+
+```tsx
+import * as React from 'react';
+import { useTheme } from '@mui/system';
+import { rainbowSurgePalette } from '@mui/x-charts/colorPalettes';
+import { BarChartPremium } from '@mui/x-charts-premium/BarChartPremium';
+
+const dollarFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  compactDisplay: 'short',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
+export default function WaterfallChart() {
+  const theme = useTheme();
+  const palette = rainbowSurgePalette(theme.palette.mode);
+  const blue = palette[0];
+  const red = palette[2];
+  const green = palette[4];
+
+  return (
+    <BarChartPremium
+      xAxis={[
+        {
+          data: [
+            'Revenue',
+            'Product\nSales',
+            'Services\nRevenue',
+            'Cost of\nGoods Sold',
+            'Marketing\nExpenses',
+            'Operating\nExpenses',
+            'Tax',
+            'Net Profit',
+          ],
+        },
+      ]}
+      yAxis={[
+        {
+          width: 72,
+          valueFormatter: (value: number) => dollarFormatter.format(value),
+        },
+      ]}
+      series={[
+        {
+          type: 'rangeBar',
+          data: [
+            [0, 500_000],
+            [500_000, 650_000],
+            [650_000, 730_000],
+            [730_000, 530_000],
+            [530_000, 455_000],
+            [455_000, 335_000],
+            [335_000, 280_000],
+            [0, 280_000],
+          ],
+          valueFormatter: (value) =>
+            value === null ? null : dollarFormatter.format(value[1] - value[0]),
+          colorGetter: (data) => {
+            const value = data?.value;
+
+            if (value == null || value[0] === 0) {
+              return blue;
+            }
+
+            return value[1] - value[0] >= 0 ? green : red;
+          },
+        },
+      ]}
+      height={300}
+    />
   );
 }
 

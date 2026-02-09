@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/deployment-options/native/linux-package/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installation
 
 > Learn how to deploy Infisical using the Linux package

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/iframe-missing-sandbox.md
 ---
-# react/iframe-missing-sandbox&#x20;
 
 ### What it does
 

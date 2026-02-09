@@ -9,14 +9,17 @@ https://api.apify.com/v2/acts/:actorId/builds
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorClientAsync#buildhttps://docs.apify.com/api/client/js/reference/class/ActorClient#buildBuilds an Actor. The response is the build object as returned by the  endpoint.
+Builds an Actor. The response is the build object as returned by the  endpoint.
 
 ## Request
 
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

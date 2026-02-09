@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/jsx-max-depth.md
 ---
-# react/jsx-max-depth&#x20;
 
 ### What it does
 
@@ -50,6 +49,8 @@ This rule accepts a configuration object with the following properties:
 type: `integer`
 
 default: `2`
+
+The maximum allowed depth of nested JSX elements and fragments.
 
 ## How to use
 

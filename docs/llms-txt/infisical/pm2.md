@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/pm2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PM2
 
 > How to use Infisical to inject environment variables and secrets with PM2 into a Node.js app

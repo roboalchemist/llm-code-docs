@@ -6,80 +6,30 @@
 
 # Source: https://docs.giselles.ai/en/cookbooks/overview.md
 
-# Source: https://docs.giselles.ai/en/prompts/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.giselles.ai/en/models/providers/overview.md
+# What are Cookbooks
 
-# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
+> Step-by-step recipes for building practical AI apps with Giselle, from content generation to RAG-powered Q&A systems.
 
-# Source: https://docs.giselles.ai/en/cookbooks/overview.md
+Cookbooks are practical, step-by-step guides that show you how to build real-world AI apps with Giselle. Each recipe includes complete node configurations, prompts, and workflow diagrams you can follow to create your own apps.
 
-# Source: https://docs.giselles.ai/en/prompts/overview.md
+## Available Recipes
 
-# Source: https://docs.giselles.ai/en/models/providers/overview.md
+| Recipe                                                                          | What You'll Build                                                                         | Key Features                                                   |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [Blog Post & Social Media Generator](/en/cookbooks/blog-social-media-generator) | Content creation pipeline that generates blog posts and social media content from a topic | Sequential processing, multiple generators, content adaptation |
+| [Web Research Assistant](/en/cookbooks/web-research-assistant)                  | Research tool that combines fixed reference pages with real-time web search               | Webpage node, LLM Web Search, information synthesis            |
+| [Knowledge Base Q\&A](/en/cookbooks/knowledge-base-qa)                          | RAG system using Document and GitHub Vector Stores                                        | RAG, Vector Stores, query optimization, multi-source search    |
 
-# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
+## What You'll Learn
 
-# Source: https://docs.giselles.ai/en/prompts/overview.md
+Through these recipes, you'll learn how to:
 
-# Source: https://docs.giselles.ai/en/models/providers/overview.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
-
-# Source: https://docs.giselles.ai/en/prompts/overview.md
-
-# Source: https://docs.giselles.ai/en/models/providers/overview.md
-
-# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
-
-# Source: https://docs.giselles.ai/en/prompts/overview.md
-
-# Overview
-
-> Prompt Engineering in Giselle’s Node-Based UI.
-
-Prompt engineering involves crafting and refining prompts—structured instructions designed to guide AI models toward precise and high-quality outputs. Giselle enhances this practice through a rich node-based UI called Generator Nodes, enabling intuitive, visual, and efficient prompt construction.
-
-## What is a Prompt in Giselle?
-
-In Giselle, prompts are carefully structured instructions provided individually within each Generator Node through a rich text editor. Unlike conversational interfaces, Giselle primarily uses one-shot prompting, allowing each node to independently deliver precise instructions and receive AI-generated outputs tailored to specific tasks.
-
-Each prompt typically includes:
-
-* **Role Definition**: Specifies the AI model’s intended expertise or persona.
-* **Task Instructions**: Clearly states the task the model needs to perform.
-* **Context**: Provides relevant background information and supporting data.
-* **Input Data**: Delivers specific information or data sources for processing.
-* **Output Format**: Defines the required format and structure of the AI’s response.
-
-## Why Effective Prompts Matter
-
-Creating effective prompts in Giselle's Generator Nodes significantly enhances AI-driven workflows by:
-
-* **Improving Output Quality**: Clearly articulated prompts result in accurate and relevant responses.
-* **Minimizing Errors**: Reduces the likelihood of misunderstandings or incorrect outputs.
-* **Ensuring Consistency**: Promotes uniformity and reliability in outputs, crucial for downstream tasks.
-* **Optimizing Resources**: Well-crafted prompts reduce token consumption and processing time, enhancing cost efficiency.
-
-## Leveraging Giselle’s Generator Nodes
-
-Giselle’s Generator Nodes provide a robust platform for prompt engineering, allowing teams to:
-
-* **Adjust Model Parameters**: Fine-tune various LLM settings to suit specific task requirements.
-* **Integrate Diverse Data Sources**: Incorporate multiple data inputs and seamlessly manage them across nodes.
-* **Share Data Between Nodes**: Reuse outputs generated in one node as inputs for subsequent nodes, enabling sophisticated workflow automation.
-* **Visualize Workflows**: Clearly map out intellectual production processes for improved transparency, collaboration, and understanding within teams.
-
-## Recommended Practices
-
-To maximize the effectiveness of Giselle’s Generator Nodes, adhere to the following practices:
-
-* **Clearly Define Roles**: Explicitly establish the AI’s expected perspective or expertise.
-* **Write Precise Instructions**: Avoid ambiguity by providing clear, concise task descriptions.
-* **Provide Relevant Context**: Supply comprehensive background information to enhance understanding.
-* **Specify Structured Outputs**: Always include detailed output formatting to maintain consistency.
-* **Iteratively Refine Prompts**: Regularly test and refine prompts within the node-based UI to continuously improve outputs.
-
-Understanding the fundamentals of prompt engineering is crucial, as effectively designed prompts significantly influence the quality and reliability of AI-generated outputs.
-
-For detailed prompt examples, see [examples.mdx](./examples). For additional practical tips, refer to [tips.mdx](./tips).
+* **Connect nodes** to build multi-step AI workflows
+* **Use Vector Stores** for RAG (Retrieval-Augmented Generation)
+* **Combine information sources** like web pages, documents, and code repositories
+* **Optimize queries** to improve search results
+* **Chain generators** for sequential content processing

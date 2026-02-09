@@ -9,7 +9,7 @@ https://api.apify.com/v2/acts/:actorId/builds/default
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorClient#default_buildhttps://docs.apify.com/api/client/js/reference/class/ActorClient#defaultBuildGet the default build for an Actor.
+Get the default build for an Actor.
 
 Use the optional `waitForFinish` parameter to synchronously wait for the build to finish. This avoids the need for periodic polling when waiting for the build to complete.
 
@@ -20,6 +20,10 @@ This endpoint does not require an authentication token. Instead, calls are authe
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -22,8 +22,7 @@ You’ll learn how to:
 
 {% stepper %}
 {% step %}
-
-### Set Up the Sentry MCP Server
+**Set Up the Sentry MCP Server**
 
 Open the MCP panel in Warp:
 
@@ -56,8 +55,7 @@ Save the configuration and ensure it appears in the MCP panel.
 {% endstep %}
 
 {% step %}
-
-### Run Your App and Trigger an Error
+**Run Your App and Trigger an Error**
 
 We're using the [**Empower Plant** repository](https://github.com/sentry-demos/empower) — Sentry’s official demo project. This fake e-commerce app includes a React frontend and multiple backends, each containing intentional bugs for testing.
 
@@ -72,8 +70,7 @@ Open the site in your browser and trigger a few known errors.
 {% endstep %}
 
 {% step %}
-
-### Capture the Error in Sentry
+**Capture the Error in Sentry**
 
 1. Go to your **Sentry Dashboard**.
 2. Locate the triggered issue (for example, a `TypeError`).
@@ -88,8 +85,7 @@ https://sentry.io/organizations/demo/issues/12345/
 {% endstep %}
 
 {% step %}
-
-### Diagnose the Error Using Warp
+**Diagnose the Error Using Warp**
 
 Back in Warp, prompt the AI agent to fetch and analyze the issue:
 
@@ -108,15 +104,13 @@ Warp’s agent automatically writes a fix — changing the code to handle the ar
 {% endstep %}
 
 {% step %}
-
-### Apply the Generated Fix
+**Apply the Generated Fix**
 
 Warp produces a suggested code change inline. Review the diff and apply it automatically with one click.
 {% endstep %}
 
 {% step %}
-
-### Integrate Into Your Workflow
+**Integrate Into Your Workflow**
 
 Use Sentry MCP whenever you encounter production or staging errors. Warp can pull the latest issues, analyze them, and suggest patches.
 

@@ -4,11 +4,7 @@
 
 Getting started with Better Auth
 
-***
 
-title: Basic Usage
-description: Getting started with Better Auth
----------------------------------------------
 
 Better Auth provides built-in authentication support for:
 
@@ -262,7 +258,7 @@ Better Auth provides a `useSession` hook to easily access session data on the cl
   </Tab>
 
   <Tab value="Vanilla">
-    ```ts title="user.svelte"
+    ```ts title="auth-client.ts"
     import { authClient } from "~/lib/auth-client"; //import the auth client
 
     authClient.useSession.subscribe((value)=>{

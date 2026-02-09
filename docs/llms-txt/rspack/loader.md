@@ -149,5 +149,5 @@ For details, you can refer to [loader-api](/api/loader-api/index.md)
 
 Built-in Loaders offer superior performance compared to JS Loaders, without sacrificing the composability of JS Loaders. The following are some built-in loaders.
 
-* [builtin:swc-loader](/guide/features/builtin-swc-loader.md)
-* [builtin:lightningcss-loader](/guide/features/builtin-lightningcss-loader.md)
+- [builtin:swc-loader](/guide/features/builtin-swc-loader.md)
+- [builtin:lightningcss-loader](/guide/features/builtin-lightningcss-loader.md)

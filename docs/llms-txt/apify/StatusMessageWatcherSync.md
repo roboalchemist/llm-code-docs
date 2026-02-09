@@ -21,7 +21,7 @@ Sync variant of `StatusMessageWatcher` that is logging in thread.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__enter__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L521)\_\_enter\_\_
+### [**](#__enter__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L521)\_\_enter\_\_
 
 * ****\_\_enter\_\_**(): Self
 
@@ -31,7 +31,7 @@ Sync variant of `StatusMessageWatcher` that is logging in thread.
 
   #### Returns Self
 
-### [**](#__exit__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L526)\_\_exit\_\_
+### [**](#__exit__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L526)\_\_exit\_\_
 
 * ****\_\_exit\_\_**(exc\_type, exc\_val, exc\_tb): None
 
@@ -47,7 +47,7 @@ Sync variant of `StatusMessageWatcher` that is logging in thread.
 
   #### Returns None
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L487)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L487)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, run\_client, to\_logger, check\_period): None
 
@@ -73,7 +73,7 @@ Sync variant of `StatusMessageWatcher` that is logging in thread.
 
   #### Returns None
 
-### [**](#start)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L502)start
+### [**](#start)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L502)start
 
 * ****start**(): Thread
 
@@ -83,7 +83,7 @@ Sync variant of `StatusMessageWatcher` that is logging in thread.
 
   #### Returns Thread
 
-### [**](#stop)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L511)stop
+### [**](#stop)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L511)stop
 
 * ****stop**(): None
 

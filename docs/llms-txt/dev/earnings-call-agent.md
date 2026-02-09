@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/no-code/earnings-call-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an earnings call agent
 
 This agent takes information from an earnings call transcript and puts it together in a summary report. The report covers results for the period, future plans, and management opinions. It uses [Palmyra Financial](/home/models#palmyra-fin), a Writer model specifically trained for financial analysis with a large context window to handle the length of earnings call transcripts.

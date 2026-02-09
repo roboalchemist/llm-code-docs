@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/start/testing.md
 
-# Source: https://docs.livekit.io/agents/build/testing.md
-
-LiveKit docs › Building voice agents › Testing & evaluation
+LiveKit docs › Get Started › Testing & evaluation
 
 ---
 
@@ -48,8 +46,9 @@ from my_agent import Assistant
 
 @pytest.mark.asyncio
 async def test_assistant_greeting() -> None:
+    # Use Responses API (recommended)
     async with (
-        openai.LLM(model="gpt-4o-mini") as llm,
+        openai.responses.LLM(model="gpt-4o-mini") as llm,
         AgentSession(llm=llm) as session,
     ):
         await session.start(Assistant())
@@ -260,7 +259,7 @@ Access individual properties with the `event()` method:
 
 #### Agent handoff assertions
 
-Use `is_agent_handoff()` and `contains_agent_handoff()` to test that the agent performs a [handoff](https://docs.livekit.io/agents/build/workflows.md) to a new agent.
+Use `is_agent_handoff()` and `contains_agent_handoff()` to test that the agent performs a [handoff](https://docs.livekit.io/agents/logic/workflows.md) to a new agent.
 
 ```python
 # The next event must be an agent handoff to the specified agent
@@ -427,7 +426,7 @@ These examples and resources provide more help with testing and evaluation.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:05.583Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/testing.md](https://docs.livekit.io/agents/build/testing.md).
+This document was rendered at 2026-02-03T03:24:54.690Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/start/testing.md](https://docs.livekit.io/agents/start/testing.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

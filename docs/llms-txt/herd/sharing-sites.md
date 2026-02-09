@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/sites/sharing-sites.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sharing Sites
 
 # How to share a site

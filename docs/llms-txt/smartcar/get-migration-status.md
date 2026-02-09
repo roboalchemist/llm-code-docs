@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-migration-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migration Status
 
 > Indicates if the vehicle needs to migrate to Tesla's new API. See [Tesla - What's New](https://smartcar.com/docs/help/oem-integrations/tesla/whats-new) for more details.

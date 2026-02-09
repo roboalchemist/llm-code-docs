@@ -1,10 +1,14 @@
 # Source: https://docs.asapp.com/reporting/metadata-ingestion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metadata Ingestion API
 
 > Learn how to send metadata via Metadata Ingestion API.
 
-Customers with AI Services implementations use ASAPP's Metadata Ingestion API to send key attributes about conversations, customers, and agents. Metadata can be joined with AI Service output data to sort and filter reports and analyses using attributes important to your business.
+Customers with AI Services implementations use ASAPP's Metadata Ingestion API to send key attributes about conversations, customers, and agents. Developers can join metadata with AI Service output data to sort and filter reports and analyses using attributes important to your business.
 
 <Note>
   Metadata Ingestion API is not accessible by default. Reach out to your ASAPP account contact to ensure it is enabled for your implementation.
@@ -30,7 +34,7 @@ The Metadata Ingestion endpoints are used to send information about agents, conv
 
 ### Agent
 
-The OpenAPI specification for each agent endpoint shows the types of metadata that are accepted. Examples include information about lines of business, groups, locations, supervisors, languages spoken, vendor, job role, and email.
+The OpenAPI specification for each agent endpoint shows the types of metadata the API accepts. Examples include information about lines of business, groups, locations, supervisors, languages spoken, vendor, job role, and email.
 
 The endpoints also accept custom-defined `attributes` in key-value pairs if no existing field in the schema suits the type of metadata you wish to upload.
 
@@ -42,7 +46,7 @@ The endpoints also accept custom-defined `attributes` in key-value pairs if no e
 
 ### Conversation
 
-The OpenAPI specification for each conversation endpoint shows the types of metadata that are accepted. Examples include unique identifiers, lines of business, group and subdivision identifiers, routing codes, associated campaigns and business rules, browser and device information.
+The OpenAPI specification for each conversation endpoint shows the types of metadata the API accepts. Examples include unique identifiers, lines of business, group and subdivision identifiers, routing codes, associated campaigns and business rules, browser and device information.
 
 The endpoints also accept custom-defined `attributes` in key-value pairs if no existing field in the schema suits the type of metadata you wish to upload.
 
@@ -54,7 +58,7 @@ The endpoints also accept custom-defined `attributes` in key-value pairs if no e
 
 ### Customer
 
-The OpenAPI specification for each customer endpoint shows the types of metadata that are accepted. Examples include unique identifiers, statuses, contact details, and location information.
+The OpenAPI specification for each customer endpoint shows the types of metadata the API accepts. Examples include unique identifiers, statuses, contact details, and location information.
 
 The endpoints also accept custom-defined `attributes` in key-value pairs if no existing field in the schema suits the type of metadata you wish to upload.
 

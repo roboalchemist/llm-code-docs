@@ -1,60 +1,63 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/x402/cids-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List CIDs for Payment Instruction
 
 > Returns a paginated list of CIDs associated with a payment instruction
 
+
+
 ## OpenAPI
 
 ````yaml get /x402/payment_instructions/{id}/cids
+openapi: 3.0.0
+info:
+  title: Pinata x402 Payment Instructions API
+  description: API for managing x402 payment instructions and CID associations
+  version: 3.0.0
+servers:
+  - url: https://api.pinata.cloud/v3
+    description: Production server
+security: []
 paths:
-  path: /x402/payment_instructions/{id}/cids
-  method: get
-  servers:
-    - url: https://api.pinata.cloud/v3
-      description: Production server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Pinata API JWT token
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /x402/payment_instructions/{id}/cids:
+    get:
+      summary: List CIDs for Payment Instruction
+      description: Returns a paginated list of CIDs associated with a payment instruction
+      operationId: listCIDs
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Payment instruction ID
-      query:
-        limit:
+            type: string
+          description: Payment instruction ID
+        - name: limit
+          in: query
           schema:
-            - type: integer
-              description: Number of items to return
-              maximum: 1000
-              minimum: 1
-              default: 20
-        pageToken:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 20
+          description: Number of items to return
+        - name: pageToken
+          in: query
           schema:
-            - type: string
-              description: Token for pagination
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: string
+          description: Token for pagination
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       cids:
                         type: array
@@ -63,38 +66,20 @@ paths:
                       next_page_token:
                         type: string
                         description: Token for next page (omitted on last page)
-        examples:
-          example:
-            value:
-              data:
-                cids:
-                  - <string>
-                next_page_token: <string>
-        description: Successful operation
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Forbidden
-        examples: {}
-        description: Forbidden
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Not found
-        examples: {}
-        description: Not found
-  deprecated: false
-  type: path
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Pinata API JWT token
 
 ````

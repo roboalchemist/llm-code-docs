@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/calls/calls-events-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Call Events
 
 > Returns any events logged during the call
@@ -42,14 +46,21 @@ paths:
         - in: query
           name: minimum_severity
           schema:
-            type: string
             enum:
               - debug
-              - error
               - info
               - warning
+              - error
+            type: string
             default: info
-          description: The minimum severity of events to include.
+            minLength: 1
+          description: |-
+            The minimum severity of events to include.
+
+            * `debug` - debug
+            * `info` - info
+            * `warning` - warning
+            * `error` - error
         - name: pageSize
           required: false
           in: query
@@ -60,6 +71,7 @@ paths:
           name: type
           schema:
             type: string
+            minLength: 1
           description: If set, restricts returned events to those of the given type.
       responses:
         '200':
@@ -119,7 +131,10 @@ components:
         text:
           type: string
         extras:
+          type: object
+          additionalProperties: {}
           nullable: true
+          readOnly: true
         wallClockTimestamp:
           type: string
           nullable: true
@@ -128,6 +143,7 @@ components:
         - callId
         - callStageId
         - callTimestamp
+        - extras
         - severity
         - text
         - type
@@ -147,7 +163,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

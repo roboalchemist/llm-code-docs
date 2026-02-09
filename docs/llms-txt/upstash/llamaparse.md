@@ -2,131 +2,83 @@
 
 # Source: https://upstash.com/docs/vector/integrations/llamaparse.md
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/integrations/llamaparse.md
+# LlamaParse with Upstash Vector
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
+You can use LlamaParse with Upstash Vector to parse documents and perform semantic queries on the content. LlamaParse simplifies the extraction of structured information from files, which can then be indexed and queried using Upstash Vector.
 
-# Source: https://upstash.com/docs/vector/integrations/llamaparse.md
-
-# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
-
-# Source: https://upstash.com/docs/vector/integrations/llamaparse.md
-
-# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
-
-# Source: https://upstash.com/docs/vector/integrations/llamaparse.md
-
-# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
-
-# Parsing and Querying Documents with LlamaParse
-
-In this tutorial, we’ll learn how to parse a document using LlamaParse and then query it using an LLM with Upstash Vector.
-
-We’ll split this guide into two parts: parsing a document and then querying the parsed document.
-
-## Installation and Setup
-
-To get started, we need to set up our environment. You can install the necessary libraries using the following command in your terminal:
+## Install
 
 ```bash  theme={"system"}
 pip install llama-index upstash-vector llama-index-vector-stores-upstash python-dotenv
 ```
 
-We also need to create a Vector Index in the [Upstash Console](https://console.upstash.com). Make sure to set the index dimensions to 1536 and the distance metric to Cosine. To learn more about index creation, you can check out our [getting started page](https://docs.upstash.com/vector/overall/getstarted).
+## Setup
 
-Once we have our index, we will copy the `UPSTASH_VECTOR_REST_URL` and `UPSTASH_VECTOR_REST_TOKEN` and paste them into our `.env` file.
+Create a Vector Index in the [Upstash Console](https://console.upstash.com). Set the index with:
 
-#### Environment Variables
+* **Dimensions**: 1536
+* **Distance Metric**: Cosine
 
-Create a `.env` file in your project directory and add the following content:
+Add the required environment variables to a `.env` file:
 
-```plaintext  theme={"system"}
+```
 UPSTASH_VECTOR_REST_URL=your_upstash_url
 UPSTASH_VECTOR_REST_TOKEN=your_upstash_token
-OPENAI_API_KEY=your_openai_api_key
 LLAMA_CLOUD_API_KEY=your_llama_cloud_api_key
 ```
 
-To get your `LLAMA_CLOUD_API_KEY`, you can follow the instructions in [the LlamaCloud documentation](https://docs.cloud.llamaindex.ai/llamaparse/getting_started/get_an_api_key).
+## Usage
 
-## Part 1: Parsing a Document
+### Parsing Documents
 
-We can now move on to parsing a document. In this example, we’ll parse a file named `global_warming.txt`.
+Use LlamaParse to parse a document. For example:
 
 ```python  theme={"system"}
 from llama_parse import LlamaParse
 from llama_index.core import SimpleDirectoryReader
 
-# Initialize the LlamaParse parser with the desired result format
-parser = LlamaParse(result_type="markdown")  # "markdown" and "text" are available
+# Initialize the parser
+parser = LlamaParse(result_type="markdown")
 
-# Parse the document using the parser
+# Parse a document
 file_extractor = {".txt": parser}
-documents = SimpleDirectoryReader(input_files=["./documents/global_warming.txt"], file_extractor=file_extractor).load_data()
+documents = SimpleDirectoryReader(
+    input_files=["./documents/global_warming.txt"],
+    file_extractor=file_extractor
+).load_data()
 ```
 
-<Note type="info">
-  If you are using Jupyter Notebook, you need to allow nested event loops to parse the document.
+### Querying the Parsed Content
 
-  You can do this by adding the following code snippet to your file:
-
-  ```python  theme={"system"}
-  import nest_asyncio
-  nest_asyncio.apply()
-  ```
-</Note>
-
-Now that we have our parsed data, we can query it.
-
-## Part 2: Querying the Parsed Document with an LLM
-
-In this part, we’ll use the `UpstashVectorStore` to create an index, and query the content. We’ll use OpenAI as the language model to interpret the data and respond to questions based on the document. You can use other LLMs that are supported by LlamaIndex as well.
+Once the document is parsed, you can index it using Upstash Vector and query its content:
 
 ```python  theme={"system"}
 from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.upstash import UpstashVectorStore
 from llama_index.core import StorageContext
-import openai
-
-# Load environment variables for API keys and Upstash configuration
 from dotenv import load_dotenv
 import os
+
+# Load environment variables
 load_dotenv()
 
-# Set up OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
 # Set up Upstash Vector Store
-upstash_vector_store = UpstashVectorStore(
+vector_store = UpstashVectorStore(
     url=os.getenv("UPSTASH_VECTOR_REST_URL"),
-    token=os.getenv("UPSTASH_VECTOR_REST_TOKEN"),
+    token=os.getenv("UPSTASH_VECTOR_REST_TOKEN")
 )
 
-# Create a storage context for Upstash Vector and index the parsed document
-storage_context = StorageContext.from_defaults(vector_store=upstash_vector_store)
+# Create storage context and index the parsed document
+storage_context = StorageContext.from_defaults(vector_store=vector_store)
 index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
 
-# Create a query engine for the index and perform a query
+# Perform a query
 query_engine = index.as_query_engine()
-query = "What are the main points discussed in the document?"
-response = query_engine.query(query)
-print(response)
+response = query_engine.query("What is the main topic discussed in the document?")
 ```
 
-Here's the code output:
-
-```plaintext  theme={"system"}
-The main points discussed in the document include the impact of global warming on agriculture 
-and food production systems, the importance of adopting sustainable food practices to mitigate 
-these effects, the role of agriculture in contributing to global warming through GHG emissions, 
-deforestation, and the use of synthetic fertilizers, and the need for sustainable food systems 
-to address environmental challenges and ensure food security for future generations.
-```
-
-### Conclusion
-
-With the ability to parse and query documents, you can efficiently summarize content, extract essential information, and answer questions based on the document’s details.
-
-To learn more about LlamaIndex and its integration with Upstash Vector, you can visit the [LlamaIndex documentation](https://docs.llamaindex.ai/en/latest).
+To learn more, visit the [LlamaParse documentation](https://docs.cloud.llamaindex.ai/llamaparse/getting_started/get_an_api_key).

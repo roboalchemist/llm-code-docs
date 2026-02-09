@@ -185,18 +185,23 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 //! In case of cross-contract calls prefer using higher-level API available
 //! through [`crate::Promise`], and [`crate::PromiseOrValue<T>`].
 
+use std::convert::TryFrom;
 use std::convert::TryInto;
 use std::mem::{size_of, size_of_val};
 use std::panic as std_panic;
-use std::{convert::TryFrom, mem::MaybeUninit};
 
 #[cfg(all(not(target_arch = "wasm32"), feature = "unit-testing"))]
 use crate::mock::MockedBlockchain;
 use crate::promise::Allowance;
+#[cfg(feature = "global-contracts")]
+use crate::types::AccountIdRef;
 use crate::types::{
     AccountId, BlockHeight, Gas, NearToken, PromiseIndex, PromiseResult, PublicKey, StorageUsage,
 };
 use crate::{CryptoHash, GasWeight, PromiseError};
+
+#[cfg(feature = "deterministic-account-ids")]
+use crate::{AccountContract, ActionIndex, GlobalContractId};
 use near_sys as sys;
 
 const REGISTER_EXPECTED_ERR: &str =
@@ -217,44 +222,31 @@ const MIN_ACCOUNT_ID_LEN: u64 = 2;
 /// The maximum length of a valid account ID.
 const MAX_ACCOUNT_ID_LEN: u64 = 64;
 
+#[inline]
+#[track_caller]
 fn expect_register<T>(option: Option<T>) -> T {
     option.unwrap_or_else(|| panic_str(REGISTER_EXPECTED_ERR))
 }
 
-/// A simple macro helper to read blob value coming from host's method.
-macro_rules! try_method_into_register {
-    ( $method:ident ) => {{
-        unsafe { sys::$method(ATOMIC_OP_REGISTER) };
-        read_register(ATOMIC_OP_REGISTER)
-    }};
+/// A simple helper to read blob value coming from host's method.
+#[inline]
+fn try_method_into_register(method: unsafe extern "C" fn(u64)) -> Option<Vec<u8>> {
+    unsafe { method(ATOMIC_OP_REGISTER) };
+    read_register(ATOMIC_OP_REGISTER)
 }
 
 /// Same as `try_method_into_register` but expects the data.
-macro_rules! method_into_register {
-    ( $method:ident ) => {{
-        expect_register(try_method_into_register!($method))
-    }};
+#[inline]
+#[track_caller]
+fn method_into_register(method: unsafe extern "C" fn(u64)) -> Vec<u8> {
+    expect_register(try_method_into_register(method))
 }
 
-//* Note: need specific length functions because const generics don't work with mem::transmute
-//* https://github.com/rust-lang/rust/issues/61956
-
-pub(crate) unsafe fn read_register_fixed_20(register_id: u64) -> [u8; 20] {
-    let mut hash = [MaybeUninit::<u8>::uninit(); 20];
-    sys::read_register(register_id, hash.as_mut_ptr() as _);
-    std::mem::transmute(hash)
-}
-
-pub(crate) unsafe fn read_register_fixed_32(register_id: u64) -> [u8; 32] {
-    let mut hash = [MaybeUninit::<u8>::uninit(); 32];
-    sys::read_register(register_id, hash.as_mut_ptr() as _);
-    std::mem::transmute(hash)
-}
-
-pub(crate) unsafe fn read_register_fixed_64(register_id: u64) -> [u8; 64] {
-    let mut hash = [MaybeUninit::<u8>::uninit(); 64];
-    sys::read_register(register_id, hash.as_mut_ptr() as _);
-    std::mem::transmute(hash)
+#[inline]
+pub(crate) unsafe fn read_register_fixed<const N: usize>(register_id: u64) -> [u8; N] {
+    let mut buf = [0; N];
+    sys::read_register(register_id, buf.as_mut_ptr() as _);
+    buf
 }
 
 /// Replaces the current low-level blockchain interface accessible through `env::*` with another
@@ -287,9 +279,7 @@ pub fn set_blockchain_interface(blockchain_interface: MockedBlockchain) {
 
 /// Implements panic hook that converts `PanicInfo` into a string and provides it through the
 /// blockchain interface.
-// TODO: replace with std::panic::PanicHookInfo when MSRV becomes >= 1.81.0
-#[allow(deprecated)]
-fn panic_hook_impl(info: &std_panic::PanicInfo) {
+fn panic_hook_impl(info: &std_panic::PanicHookInfo) {
     panic_str(info.to_string().as_str());
 }
 
@@ -300,10 +290,24 @@ pub fn setup_panic_hook() {
 
 /// Reads the content of the `register_id`. If register is not used returns `None`.
 pub fn read_register(register_id: u64) -> Option<Vec<u8>> {
+    read_register_bounded(register_id, usize::MAX).map(|r| {
+        r
+            // vector can't be longer than usize::MAX
+            .unwrap_or_else(|_| unreachable!())
+    })
+}
+
+/// Same as [`read_register`] but bounded: if data in the register is
+/// longer than `max_len`, then `Some(Err(len))` is returned.
+pub fn read_register_bounded(register_id: u64, max_len: usize) -> Option<Result<Vec<u8>, usize>> {
     // Get register length and convert to a usize. The max register size in config is much less
     // than the u32 max so the abort should never be hit, but is there for safety because there
     // would be undefined behaviour during `read_register` if the buffer length is truncated.
     let len: usize = register_len(register_id)?.try_into().unwrap_or_else(|_| abort());
+
+    if len > max_len {
+        return Some(Err(len));
+    }
 
     // Initialize buffer with capacity.
     let mut buffer = Vec::with_capacity(len);
@@ -317,7 +321,7 @@ pub fn read_register(register_id: u64) -> Option<Vec<u8>> {
         // Set updated length after writing to buffer.
         buffer.set_len(len);
     }
-    Some(buffer)
+    Some(Ok(buffer))
 }
 
 /// Returns the size of the register. If register is not used returns `None`.
@@ -328,6 +332,18 @@ pub fn register_len(register_id: u64) -> Option<u64> {
     } else {
         Some(len)
     }
+}
+
+macro_rules! maybe_cached {
+    ($t:ty: $v:block) => {{
+        #[cfg(not(feature = "unit-testing"))]
+        {
+            static CACHED: ::std::sync::LazyLock<$t> = ::std::sync::LazyLock::new(|| $v);
+            CACHED.clone()
+        }
+        #[cfg(feature = "unit-testing")]
+        $v
+    }};
 }
 
 // ###############
@@ -344,7 +360,69 @@ pub fn register_len(register_id: u64) -> Option<u64> {
 /// assert_eq!(current_account_id(), "alice.near".parse::<AccountId>().unwrap());
 /// ```
 pub fn current_account_id() -> AccountId {
-    assert_valid_account_id(method_into_register!(current_account_id))
+    maybe_cached!(AccountId: {
+        assert_valid_account_id(method_into_register(sys::current_account_id))
+    })
+}
+
+/// The code of the current contract.
+///
+/// # Examples
+/// ```no_run
+/// use near_sdk::env::current_contract_code;
+/// use near_sdk::AccountContract;
+///
+/// assert!(matches!(current_contract_code(), AccountContract::Local(_)));
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn current_contract_code() -> AccountContract {
+    maybe_cached!(AccountContract: {
+        let mode = unsafe { sys::current_contract_code(ATOMIC_OP_REGISTER) };
+        match mode {
+            0 => AccountContract::None,
+            1 => AccountContract::Local(unsafe { read_register_fixed(ATOMIC_OP_REGISTER) }.into()),
+            2 => AccountContract::Global(unsafe { read_register_fixed(ATOMIC_OP_REGISTER) }.into()),
+            3 => AccountContract::GlobalByAccount(assert_valid_account_id(method_into_register(
+                sys::current_account_id,
+            ))),
+            _ => panic!("Invalid contract mode"),
+        }
+    })
+}
+
+/// Returns global contract identifier of the contract's code currently being
+/// executed. Otherwise, returns `None` if the current contract is not using
+/// globally deployed code.
+///
+/// # Examples
+/// ```no_run
+/// use near_sdk::env::current_global_contract_id;
+/// use near_sdk::GlobalContractId;
+///
+/// assert!(matches!(current_global_contract_id(), Some(GlobalContractId::CodeHash(_))));
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn current_global_contract_id() -> Option<GlobalContractId> {
+    Some(match current_contract_code() {
+        AccountContract::Global(hash) => GlobalContractId::CodeHash(hash),
+        AccountContract::GlobalByAccount(account_id) => GlobalContractId::AccountId(account_id),
+        _ => return None,
+    })
+}
+
+/// The account id that will receive the refund if the contract panics.
+///
+/// # Examples
+/// ```
+/// use near_sdk::env::refund_to_account_id;
+///
+/// assert_eq!(refund_to_account_id(), "bob.near".parse::<near_sdk::AccountId>().unwrap());
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn refund_to_account_id() -> AccountId {
+    maybe_cached!(AccountId: {
+        assert_valid_account_id(method_into_register(sys::refund_to_account_id))
+    })
 }
 
 /// The id of the account that either signed the original transaction or issued the initial
@@ -359,7 +437,9 @@ pub fn current_account_id() -> AccountId {
 /// assert_eq!(signer_account_id(), "bob.near".parse::<AccountId>().unwrap());
 /// ```
 pub fn signer_account_id() -> AccountId {
-    assert_valid_account_id(method_into_register!(signer_account_id))
+    maybe_cached!(AccountId: {
+        assert_valid_account_id(method_into_register(sys::signer_account_id))
+    })
 }
 
 /// The public key of the account that did the signing.
@@ -373,7 +453,10 @@ pub fn signer_account_id() -> AccountId {
 /// assert_eq!(signer_account_pk(), pk);
 /// ```
 pub fn signer_account_pk() -> PublicKey {
-    PublicKey::try_from(method_into_register!(signer_account_pk)).unwrap_or_else(|_| abort())
+    maybe_cached!(PublicKey: {
+        PublicKey::try_from(method_into_register(sys::signer_account_pk))
+            .unwrap_or_else(|_| abort())
+    })
 }
 
 /// The id of the account that was the previous contract in the chain of cross-contract calls.
@@ -388,7 +471,7 @@ pub fn signer_account_pk() -> PublicKey {
 /// assert_eq!(predecessor_account_id(), "bob.near".parse::<AccountId>().unwrap());
 /// ```
 pub fn predecessor_account_id() -> AccountId {
-    assert_valid_account_id(method_into_register!(predecessor_account_id))
+    maybe_cached!(AccountId: { assert_valid_account_id(method_into_register(sys::predecessor_account_id)) })
 }
 
 /// Helper function to convert and check the account ID from bytes from the runtime.
@@ -409,7 +492,7 @@ fn assert_valid_account_id(bytes: Vec<u8>) -> AccountId {
 /// ```
 /// See an example here [here](https://github.com/near-examples/update-migrate-rust/blob/a1a326de73c152831f93fbf6d90932e13a08b89f/self-updates/update/src/update.rs#L19)
 pub fn input() -> Option<Vec<u8>> {
-    try_method_into_register!(input)
+    try_method_into_register(sys::input)
 }
 
 /// Current block index.
@@ -434,7 +517,7 @@ pub fn block_index() -> BlockHeight {
 /// assert_eq!(block_height(), 0);
 /// ```
 pub fn block_height() -> BlockHeight {
-    unsafe { sys::block_height() }
+    maybe_cached!(BlockHeight: { unsafe { sys::block_height() } })
 }
 
 /// Current block timestamp, i.e, number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC.
@@ -446,7 +529,7 @@ pub fn block_height() -> BlockHeight {
 /// assert_eq!(block_timestamp(), 0);
 /// ```
 pub fn block_timestamp() -> u64 {
-    unsafe { sys::block_timestamp() }
+    maybe_cached!(u64: { unsafe { sys::block_timestamp() } })
 }
 
 /// Current block timestamp, i.e, number of non-leap-milliseconds since January 1, 1970 0:00:00 UTC.
@@ -470,7 +553,7 @@ pub fn block_timestamp_ms() -> u64 {
 /// assert_eq!(epoch_height(), 0);
 /// ```
 pub fn epoch_height() -> u64 {
-    unsafe { sys::epoch_height() }
+    maybe_cached!(u64: { unsafe { sys::epoch_height() } })
 }
 
 /// Current total storage usage of this smart contract that this account would be paying for.
@@ -499,8 +582,8 @@ pub fn storage_usage() -> StorageUsage {
 /// assert_eq!(account_balance(), NearToken::from_near(100));
 /// ```
 pub fn account_balance() -> NearToken {
-    let data = [0u8; size_of::<NearToken>()];
-    unsafe { sys::account_balance(data.as_ptr() as u64) };
+    let mut data = [0u8; size_of::<NearToken>()];
+    unsafe { sys::account_balance(data.as_mut_ptr() as u64) };
     NearToken::from_yoctonear(u128::from_le_bytes(data))
 }
 
@@ -514,8 +597,8 @@ pub fn account_balance() -> NearToken {
 /// assert_eq!(account_locked_balance(), NearToken::from_yoctonear(0));
 /// ```
 pub fn account_locked_balance() -> NearToken {
-    let data = [0u8; size_of::<NearToken>()];
-    unsafe { sys::account_locked_balance(data.as_ptr() as u64) };
+    let mut data = [0u8; size_of::<NearToken>()];
+    unsafe { sys::account_locked_balance(data.as_mut_ptr() as u64) };
     NearToken::from_yoctonear(u128::from_le_bytes(data))
 }
 
@@ -530,9 +613,11 @@ pub fn account_locked_balance() -> NearToken {
 /// assert_eq!(attached_deposit(), NearToken::from_yoctonear(0));
 /// ```
 pub fn attached_deposit() -> NearToken {
-    let data = [0u8; size_of::<NearToken>()];
-    unsafe { sys::attached_deposit(data.as_ptr() as u64) };
-    NearToken::from_yoctonear(u128::from_le_bytes(data))
+    maybe_cached!(NearToken: {
+        let mut data = [0u8; size_of::<NearToken>()];
+        unsafe { sys::attached_deposit(data.as_mut_ptr() as u64) };
+        NearToken::from_yoctonear(u128::from_le_bytes(data))
+    })
 }
 
 /// The amount of gas attached to the call that can be used to pay for the gas fees.
@@ -545,7 +630,7 @@ pub fn attached_deposit() -> NearToken {
 /// assert_eq!(prepaid_gas(), Gas::from_tgas(300));
 /// ```
 pub fn prepaid_gas() -> Gas {
-    Gas::from_gas(unsafe { sys::prepaid_gas() })
+    maybe_cached!(Gas: { Gas::from_gas(unsafe { sys::prepaid_gas() }) })
 }
 
 /// The gas that was already burnt during the contract execution (cannot exceed `prepaid_gas`)
@@ -629,13 +714,15 @@ pub fn random_seed() -> Vec<u8> {
 /// ```
 /// More info in [documentation](https://docs.near.org/develop/contracts/security/random)
 pub fn random_seed_array() -> [u8; 32] {
-    //* SAFETY: random_seed syscall will always generate 32 bytes inside of the atomic op register
-    //*         so the read will have a sufficient buffer of 32, and can transmute from uninit
-    //*         because all bytes are filled. This assumes a valid random_seed implementation.
-    unsafe {
-        sys::random_seed(ATOMIC_OP_REGISTER);
-        read_register_fixed_32(ATOMIC_OP_REGISTER)
-    }
+    maybe_cached!([u8; 32]: {
+        //* SAFETY: random_seed syscall will always generate 32 bytes inside of the atomic op register
+        //*         so the read will have a sufficient buffer of 32, and can transmute from uninit
+        //*         because all bytes are filled. This assumes a valid random_seed implementation.
+        unsafe {
+            sys::random_seed(ATOMIC_OP_REGISTER);
+            read_register_fixed(ATOMIC_OP_REGISTER)
+        }
+    })
 }
 
 /// Hashes the random sequence of bytes using sha256.
@@ -650,8 +737,8 @@ pub fn random_seed_array() -> [u8; 32] {
 ///     hex::decode("7fc38bc74a0d0e592d2b8381839adc2649007d5bca11f92eeddef78681b4e3a3").expect("Decoding failed")
 /// );
 /// ```
-pub fn sha256(value: &[u8]) -> Vec<u8> {
-    sha256_array(value).to_vec()
+pub fn sha256(value: impl AsRef<[u8]>) -> Vec<u8> {
+    sha256_array(value.as_ref()).to_vec()
 }
 
 /// Hashes the random sequence of bytes using keccak256.
@@ -667,8 +754,8 @@ pub fn sha256(value: &[u8]) -> Vec<u8> {
 ///         .expect("Decoding failed")
 /// );
 /// ```
-pub fn keccak256(value: &[u8]) -> Vec<u8> {
-    keccak256_array(value).to_vec()
+pub fn keccak256(value: impl AsRef<[u8]>) -> Vec<u8> {
+    keccak256_array(value.as_ref()).to_vec()
 }
 
 /// Hashes the random sequence of bytes using keccak512.
@@ -684,8 +771,8 @@ pub fn keccak256(value: &[u8]) -> Vec<u8> {
 ///         .expect("Decoding failed")
 /// );
 /// ```
-pub fn keccak512(value: &[u8]) -> Vec<u8> {
-    keccak512_array(value).to_vec()
+pub fn keccak512(value: impl AsRef<[u8]>) -> Vec<u8> {
+    keccak512_array(value.as_ref()).to_vec()
 }
 
 /// Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash.
@@ -702,13 +789,14 @@ pub fn keccak512(value: &[u8]) -> Vec<u8> {
 ///         .as_slice()
 /// );
 /// ```
-pub fn sha256_array(value: &[u8]) -> [u8; 32] {
+pub fn sha256_array(value: impl AsRef<[u8]>) -> CryptoHash {
+    let value = value.as_ref();
     //* SAFETY: sha256 syscall will always generate 32 bytes inside of the atomic op register
     //*         so the read will have a sufficient buffer of 32, and can transmute from uninit
     //*         because all bytes are filled. This assumes a valid sha256 implementation.
     unsafe {
         sys::sha256(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
-        read_register_fixed_32(ATOMIC_OP_REGISTER)
+        read_register_fixed(ATOMIC_OP_REGISTER)
     }
 }
 
@@ -726,13 +814,14 @@ pub fn sha256_array(value: &[u8]) -> [u8; 32] {
 ///         .as_slice()
 /// );
 /// ```
-pub fn keccak256_array(value: &[u8]) -> [u8; 32] {
+pub fn keccak256_array(value: impl AsRef<[u8]>) -> CryptoHash {
+    let value = value.as_ref();
     //* SAFETY: keccak256 syscall will always generate 32 bytes inside of the atomic op register
     //*         so the read will have a sufficient buffer of 32, and can transmute from uninit
     //*         because all bytes are filled. This assumes a valid keccak256 implementation.
     unsafe {
         sys::keccak256(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
-        read_register_fixed_32(ATOMIC_OP_REGISTER)
+        read_register_fixed(ATOMIC_OP_REGISTER)
     }
 }
 
@@ -750,13 +839,14 @@ pub fn keccak256_array(value: &[u8]) -> [u8; 32] {
 ///         .as_slice()
 /// );
 /// ```
-pub fn keccak512_array(value: &[u8]) -> [u8; 64] {
+pub fn keccak512_array(value: impl AsRef<[u8]>) -> [u8; 64] {
+    let value = value.as_ref();
     //* SAFETY: keccak512 syscall will always generate 64 bytes inside of the atomic op register
     //*         so the read will have a sufficient buffer of 64, and can transmute from uninit
     //*         because all bytes are filled. This assumes a valid keccak512 implementation.
     unsafe {
         sys::keccak512(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
-        read_register_fixed_64(ATOMIC_OP_REGISTER)
+        read_register_fixed(ATOMIC_OP_REGISTER)
     }
 }
 
@@ -774,13 +864,14 @@ pub fn keccak512_array(value: &[u8]) -> [u8; 64] {
 ///         .as_slice()
 /// );
 /// ```
-pub fn ripemd160_array(value: &[u8]) -> [u8; 20] {
+pub fn ripemd160_array(value: impl AsRef<[u8]>) -> [u8; 20] {
+    let value = value.as_ref();
     //* SAFETY: ripemd160 syscall will always generate 20 bytes inside of the atomic op register
     //*         so the read will have a sufficient buffer of 20, and can transmute from uninit
     //*         because all bytes are filled. This assumes a valid ripemd160 implementation.
     unsafe {
         sys::ripemd160(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
-        read_register_fixed_20(ATOMIC_OP_REGISTER)
+        read_register_fixed(ATOMIC_OP_REGISTER)
     }
 }
 
@@ -811,7 +902,7 @@ pub fn ecrecover(
         if return_code == 0 {
             None
         } else {
-            Some(read_register_fixed_64(ATOMIC_OP_REGISTER))
+            Some(read_register_fixed(ATOMIC_OP_REGISTER))
         }
     }
 }
@@ -857,7 +948,12 @@ pub fn ecrecover(
 ///     false
 /// );
 /// ```
-pub fn ed25519_verify(signature: &[u8; 64], message: &[u8], public_key: &[u8; 32]) -> bool {
+pub fn ed25519_verify(
+    signature: &[u8; 64],
+    message: impl AsRef<[u8]>,
+    public_key: &[u8; 32],
+) -> bool {
+    let message = message.as_ref();
     unsafe {
         sys::ed25519_verify(
             signature.len() as _,
@@ -876,7 +972,8 @@ pub fn ed25519_verify(signature: &[u8; 64], message: &[u8], public_key: &[u8; 32
 /// well-suited for ZK proofs.
 ///
 /// See also: [EIP-196](https://eips.ethereum.org/EIPS/eip-196)
-pub fn alt_bn128_g1_multiexp(value: &[u8]) -> Vec<u8> {
+pub fn alt_bn128_g1_multiexp(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::alt_bn128_g1_multiexp(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -892,7 +989,8 @@ pub fn alt_bn128_g1_multiexp(value: &[u8]) -> Vec<u8> {
 /// well-suited for ZK proofs.
 ///
 /// See also: [EIP-196](https://eips.ethereum.org/EIPS/eip-196)
-pub fn alt_bn128_g1_sum(value: &[u8]) -> Vec<u8> {
+pub fn alt_bn128_g1_sum(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::alt_bn128_g1_sum(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -907,7 +1005,8 @@ pub fn alt_bn128_g1_sum(value: &[u8]) -> Vec<u8> {
 /// well-suited for ZK proofs.
 ///
 /// See also: [EIP-197](https://eips.ethereum.org/EIPS/eip-197)
-pub fn alt_bn128_pairing_check(value: &[u8]) -> bool {
+pub fn alt_bn128_pairing_check(value: impl AsRef<[u8]>) -> bool {
+    let value = value.as_ref();
     unsafe { sys::alt_bn128_pairing_check(value.len() as _, value.as_ptr() as _) == 1 }
 }
 
@@ -918,7 +1017,8 @@ pub fn alt_bn128_pairing_check(value: &[u8]) -> bool {
 /// Compute BLS12-381 G1 sum.
 ///
 /// See also: [IETF draft-irtf-cfrg-pairing-friendly-curves](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-pairing-friendly-curves)
-pub fn bls12381_p1_sum(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_p1_sum(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_p1_sum(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -929,7 +1029,8 @@ pub fn bls12381_p1_sum(value: &[u8]) -> Vec<u8> {
 }
 
 /// Compute BLS12-381 G2 sum.
-pub fn bls12381_p2_sum(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_p2_sum(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_p2_sum(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -940,7 +1041,8 @@ pub fn bls12381_p2_sum(value: &[u8]) -> Vec<u8> {
 }
 
 /// Compute BLS12-381 G1 multiexponentiation.
-pub fn bls12381_g1_multiexp(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_g1_multiexp(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_g1_multiexp(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -951,7 +1053,8 @@ pub fn bls12381_g1_multiexp(value: &[u8]) -> Vec<u8> {
 }
 
 /// Compute BLS12-381 G2 multiexponentiation.
-pub fn bls12381_g2_multiexp(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_g2_multiexp(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_g2_multiexp(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -962,7 +1065,8 @@ pub fn bls12381_g2_multiexp(value: &[u8]) -> Vec<u8> {
 }
 
 /// Map an Fp element to a BLS12-381 G1 point.
-pub fn bls12381_map_fp_to_g1(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_map_fp_to_g1(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_map_fp_to_g1(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -973,7 +1077,8 @@ pub fn bls12381_map_fp_to_g1(value: &[u8]) -> Vec<u8> {
 }
 
 /// Map an Fp2 element to a BLS12-381 G2 point.
-pub fn bls12381_map_fp2_to_g2(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_map_fp2_to_g2(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_map_fp2_to_g2(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -984,12 +1089,14 @@ pub fn bls12381_map_fp2_to_g2(value: &[u8]) -> Vec<u8> {
 }
 
 /// Perform BLS12-381 pairing check. Returns true if the pairing check passes.
-pub fn bls12381_pairing_check(value: &[u8]) -> bool {
+pub fn bls12381_pairing_check(value: impl AsRef<[u8]>) -> bool {
+    let value = value.as_ref();
     unsafe { sys::bls12381_pairing_check(value.len() as _, value.as_ptr() as _) == 0 }
 }
 
 /// Decompress a BLS12-381 G1 point.
-pub fn bls12381_p1_decompress(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_p1_decompress(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_p1_decompress(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -1000,7 +1107,8 @@ pub fn bls12381_p1_decompress(value: &[u8]) -> Vec<u8> {
 }
 
 /// Decompress a BLS12-381 G2 point.
-pub fn bls12381_p2_decompress(value: &[u8]) -> Vec<u8> {
+pub fn bls12381_p2_decompress(value: impl AsRef<[u8]>) -> Vec<u8> {
+    let value = value.as_ref();
     unsafe {
         sys::bls12381_p2_decompress(value.len() as _, value.as_ptr() as _, ATOMIC_OP_REGISTER);
     };
@@ -1028,7 +1136,7 @@ pub fn bls12381_p2_decompress(value: &[u8]) -> Vec<u8> {
 ///     "increment",
 ///     serde_json::json!({
 ///         "value": 5
-///     }).to_string().into_bytes().as_slice(),
+///     }).to_string(),
 ///     NearToken::from_yoctonear(0),
 ///     Gas::from_tgas(30)
 /// );
@@ -1043,11 +1151,12 @@ pub fn bls12381_p2_decompress(value: &[u8]) -> Vec<u8> {
 pub fn promise_create(
     account_id: AccountId,
     function_name: &str,
-    arguments: &[u8],
+    arguments: impl AsRef<[u8]>,
     amount: NearToken,
     gas: Gas,
 ) -> PromiseIndex {
     let account_id = account_id.as_bytes();
+    let arguments = arguments.as_ref();
     unsafe {
         PromiseIndex(sys::promise_create(
             account_id.len() as _,
@@ -1099,11 +1208,12 @@ pub fn promise_then(
     promise_idx: PromiseIndex,
     account_id: AccountId,
     function_name: &str,
-    arguments: &[u8],
+    arguments: impl AsRef<[u8]>,
     amount: NearToken,
     gas: Gas,
 ) -> PromiseIndex {
     let account_id = account_id.as_bytes();
+    let arguments = arguments.as_ref();
     unsafe {
         PromiseIndex(sys::promise_then(
             promise_idx.0,
@@ -1240,9 +1350,145 @@ pub fn promise_batch_then(promise_index: PromiseIndex, account_id: &AccountId) -
     }
 }
 
+/// Set the account id that will receive the refund if the promise panics.
+/// Uses low-level [`crate::sys::promise_set_refund_to`]
+///
+/// # Examples
+/// ```
+/// use near_sdk::env::{promise_set_refund_to, promise_create};
+/// use near_sdk::{AccountId, Gas, NearToken};
+/// use std::str::FromStr;
+///
+/// let promise = promise_create(
+///     "account.near".parse().unwrap(),
+///     "method",
+///     [],
+///     NearToken::from_millinear(1),
+///     Gas::from_tgas(1),
+/// );
+/// promise_set_refund_to(promise, &"refund.near".parse().unwrap());
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn promise_set_refund_to(promise_index: PromiseIndex, account_id: &AccountId) {
+    let account_id: &str = account_id.as_ref();
+    unsafe {
+        sys::promise_set_refund_to(promise_index.0, account_id.len() as _, account_id.as_ptr() as _)
+    }
+}
+
+/// Appends `DeterministicStateInit` action to the batch of actions for the given promise
+/// pointed by `promise_index`.
+/// Uses low-level [`crate::sys::promise_batch_action_state_init`]
+///
+/// # Examples
+/// ```
+/// use near_sdk::env::{promise_batch_action_state_init, promise_create};
+/// use near_sdk::{AccountId, CryptoHash, Gas, NearToken};
+/// use std::str::FromStr;
+///
+/// let promise = promise_create(
+///     "account.near".parse().unwrap(),
+///     "method",
+///     [],
+///     NearToken::from_millinear(1),
+///     Gas::from_tgas(1),
+/// );
+/// promise_batch_action_state_init(promise, [0; 32], NearToken::from_millinear(1));
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn promise_batch_action_state_init(
+    promise_index: PromiseIndex,
+    code: CryptoHash,
+    amount: NearToken,
+) -> ActionIndex {
+    unsafe {
+        sys::promise_batch_action_state_init(
+            promise_index.0,
+            code.len() as _,
+            code.as_ptr() as _,
+            &amount.as_yoctonear() as *const u128 as _,
+        )
+    }
+}
+
+/// Appends `DeterministicStateInit` action to the batch of actions for the given promise
+/// pointed by `promise_index`.
+/// Uses low-level [`crate::sys::promise_batch_action_state_init_by_account_id`]
+///
+/// # Examples
+/// ```
+/// use near_sdk::env::{promise_batch_action_state_init_by_account_id, promise_create};
+/// use near_sdk::{AccountId, Gas, NearToken};
+///
+/// let account_id: AccountId = "account.near".parse().unwrap();
+/// let promise = promise_create(
+///     account_id.clone(),
+///     "method",
+///     [],
+///     NearToken::from_millinear(1),
+///     Gas::from_tgas(1),
+/// );
+/// promise_batch_action_state_init_by_account_id(promise, &account_id, NearToken::from_millinear(1));
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn promise_batch_action_state_init_by_account_id(
+    promise_index: PromiseIndex,
+    account_id: impl AsRef<AccountIdRef>,
+    amount: NearToken,
+) -> ActionIndex {
+    let account_id: &str = account_id.as_ref().as_str();
+    unsafe {
+        sys::promise_batch_action_state_init_by_account_id(
+            promise_index.0,
+            account_id.len() as _,
+            account_id.as_ptr() as _,
+            &amount.as_yoctonear() as *const u128 as _,
+        )
+    }
+}
+
+/// Appends a data entry to an existing `DeterministicStateInit` action.
+/// Uses low-level [`crate::sys::set_state_init_data_entry`]
+///
+/// # Examples
+/// ```
+/// use near_sdk::env::{set_state_init_data_entry, promise_batch_action_state_init_by_account_id, promise_create};
+/// use near_sdk::{AccountId, Gas, NearToken};
+/// use std::str::FromStr;
+///
+/// let account_id: AccountId = "account.near".parse().unwrap();
+/// let promise = promise_create(
+///     account_id.clone(),
+///     "method",
+///     [],
+///     NearToken::from_millinear(1),
+///     Gas::from_tgas(1),
+/// );
+/// let action_index = promise_batch_action_state_init_by_account_id(promise, &account_id, NearToken::from_millinear(1));
+/// set_state_init_data_entry(promise, action_index, b"key", b"value");
+/// ```
+#[cfg(feature = "deterministic-account-ids")]
+pub fn set_state_init_data_entry(
+    promise_index: PromiseIndex,
+    action_index: ActionIndex,
+    key: &[u8],
+    value: &[u8],
+) {
+    unsafe {
+        sys::set_state_init_data_entry(
+            promise_index.0,
+            action_index,
+            key.len() as _,
+            key.as_ptr() as _,
+            value.len() as _,
+            value.as_ptr() as _,
+        )
+    }
+}
 /// Attach a create account promise action to the NEAR promise index with the provided promise index.
 ///
 /// More info about batching [here](crate::env::promise_batch_create)
+///
 /// # Examples
 /// ```
 /// use near_sdk::env::{promise_batch_action_create_account, promise_batch_create};
@@ -1255,6 +1501,7 @@ pub fn promise_batch_then(promise_index: PromiseIndex, account_id: &AccountId) -
 ///
 /// promise_batch_action_create_account(promise);
 /// ```
+///
 /// More low-level info here: [`near_vm_runner::logic::VMLogic::promise_batch_action_create_account`]
 /// See example of usage [here](https://github.com/near/near-sdk-rs/blob/master/examples/factory-contract/low-level/src/lib.rs)
 pub fn promise_batch_action_create_account(promise_index: PromiseIndex) {
@@ -1732,10 +1979,13 @@ pub fn promise_batch_action_deploy_global_contract_by_account_id(
 /// use near_sdk::{env, PromiseIndex};
 ///
 /// let promise = env::promise_batch_create(&"alice.near".parse().unwrap());
-/// let code_hash = vec![0u8; 32]; // 32-byte hash
+/// let code_hash = [0u8; 32]; // 32-byte hash (CryptoHash)
 /// env::promise_batch_action_use_global_contract(promise, &code_hash);
 /// ```
-pub fn promise_batch_action_use_global_contract(promise_index: PromiseIndex, code_hash: &[u8]) {
+pub fn promise_batch_action_use_global_contract(
+    promise_index: PromiseIndex,
+    code_hash: &CryptoHash,
+) {
     unsafe {
         sys::promise_batch_action_use_global_contract(
             promise_index.0,
@@ -1765,9 +2015,9 @@ pub fn promise_batch_action_use_global_contract(promise_index: PromiseIndex, cod
 /// ```
 pub fn promise_batch_action_use_global_contract_by_account_id(
     promise_index: PromiseIndex,
-    account_id: &AccountId,
+    account_id: impl AsRef<AccountIdRef>,
 ) {
-    let account_id: &str = account_id.as_ref();
+    let account_id: &str = account_id.as_ref().as_str();
     unsafe {
         sys::promise_batch_action_use_global_contract_by_account_id(
             promise_index.0,
@@ -1791,7 +2041,7 @@ pub fn promise_batch_action_use_global_contract_by_account_id(
 ///
 /// See example of usage [here](https://github.com/near/near-sdk-rs/blob/master/examples/cross-contract-calls/low-level/src/lib.rs)
 pub fn promise_results_count() -> u64 {
-    unsafe { sys::promise_results_count() }
+    maybe_cached!(u64: { unsafe { sys::promise_results_count() } })
 }
 /// If the current function is invoked by a callback we can access the execution results of the
 /// promises that caused the callback.
@@ -1826,14 +2076,45 @@ pub fn promise_results_count() -> u64 {
 /// - [near-contract-standards/src/non_fungible_token](https://github.com/near/near-sdk-rs/blob/189897180649bce47aefa4e5af03664ee525508d/near-contract-standards/src/non_fungible_token/core/core_impl.rs#L433)
 /// - [examples/factory-contract/low-level](https://github.com/near/near-sdk-rs/blob/189897180649bce47aefa4e5af03664ee525508d/examples/factory-contract/low-level/src/lib.rs#L61)
 /// - [examples/cross-contract-calls/low-level](https://github.com/near/near-sdk-rs/blob/189897180649bce47aefa4e5af03664ee525508d/examples/cross-contract-calls/low-level/src/lib.rs#L46)
+#[deprecated = "use `promise_result_checked` to prevent out-of-gas errors"]
 pub fn promise_result(result_idx: u64) -> PromiseResult {
-    match promise_result_internal(result_idx) {
-        Ok(()) => {
-            let data = expect_register(read_register(ATOMIC_OP_REGISTER));
-            PromiseResult::Successful(data)
-        }
-        Err(PromiseError::Failed) => PromiseResult::Failed,
+    match promise_result_checked(result_idx, usize::MAX) {
+        Ok(data) => PromiseResult::Successful(data),
+        Err(err) => match err {
+            PromiseError::Failed => PromiseResult::Failed,
+            // vector can't be longer than usize::MAX
+            PromiseError::TooLong(_len) => unreachable!(),
+        },
     }
+}
+
+/// Same as [`promise_result`] but bounded: if the result is longer than
+/// `max_len`, then `Err(PromiseResultError::TooLong(len))` is returned.
+///
+/// This should be preferred when reading promise results from unknown
+/// contracts to prevent out-of-gas errors.
+///
+/// # Examples
+/// ```no_run
+/// use near_sdk::env::{promise_result_checked, promise_results_count, log_str, panic_str};
+/// use near_sdk::PromiseResult;
+///
+/// assert!(promise_results_count() > 0);
+///
+/// // The promise_index will be in the range [0, n)
+/// // where n is the number of promises triggering this callback,
+/// // retrieved from promise_results_count()
+/// let promise_index = 0;
+///
+/// let data = promise_result_checked(promise_index, 100)
+///     .unwrap_or_else(|_| panic_str("Promise failed or returned result is too long!"));
+/// log_str(format!("Result as Vec<u8>: {:?}", data).as_str());
+/// assert!(data.len() <= 100);
+/// ```
+pub fn promise_result_checked(result_idx: u64, max_len: usize) -> Result<Vec<u8>, PromiseError> {
+    promise_result_internal(result_idx)?;
+    expect_register(read_register_bounded(ATOMIC_OP_REGISTER, max_len))
+        .map_err(PromiseError::TooLong)
 }
 
 pub(crate) fn promise_result_internal(result_idx: u64) -> Result<(), PromiseError> {
@@ -1923,11 +2204,12 @@ pub fn promise_return(promise_idx: PromiseIndex) {
 /// See example of usage [here](https://github.com/near/mpc/blob/79ec50759146221e7ad8bb04520f13333b75ca07/chain-signatures/contract/src/lib.rs#L689) and [here](https://github.com/near/near-sdk-rs/blob/master/examples/mpc-contract/src/lib.rs#L45)
 pub fn promise_yield_create(
     function_name: &str,
-    arguments: &[u8],
+    arguments: impl AsRef<[u8]>,
     gas: Gas,
     weight: GasWeight,
     register_id: u64,
 ) -> PromiseIndex {
+    let arguments = arguments.as_ref();
     unsafe {
         PromiseIndex(sys::promise_yield_create(
             function_name.len() as _,
@@ -1939,6 +2221,23 @@ pub fn promise_yield_create(
             register_id as _,
         ))
     }
+}
+
+/// Helper function that creates a yield promise and returns both the promise index and the yield ID.
+///
+/// This is a convenience wrapper around [`promise_yield_create`] that automatically reads the
+/// yield ID from the register and returns it as a [`crate::YieldId`].
+pub fn promise_yield_create_id(
+    function_name: &str,
+    arguments: impl AsRef<[u8]>,
+    gas: Gas,
+    weight: GasWeight,
+) -> (PromiseIndex, crate::YieldId) {
+    let promise_index =
+        promise_yield_create(function_name, arguments, gas, weight, ATOMIC_OP_REGISTER);
+    // SAFETY: promise_yield_create writes a 32-byte yield ID to the register
+    let yield_id = crate::YieldId(unsafe { read_register_fixed(ATOMIC_OP_REGISTER) });
+    (promise_index, yield_id)
 }
 
 /// Accepts a resumption token `data_id` created by promise_yield_create on the local account.
@@ -1987,7 +2286,8 @@ pub fn promise_yield_create(
 /// ```
 /// More low-level info here: [`near_vm_runner::logic::VMLogic::promise_yield_resume`]
 /// See example of usage [here](https://github.com/near/mpc/blob/79ec50759146221e7ad8bb04520f13333b75ca07/chain-signatures/contract/src/lib.rs#L288) and [here](https://github.com/near/near-sdk-rs/blob/master/examples/mpc-contract/src/lib.rs#L84)
-pub fn promise_yield_resume(data_id: &CryptoHash, data: &[u8]) -> bool {
+pub fn promise_yield_resume(data_id: &CryptoHash, data: impl AsRef<[u8]>) -> bool {
+    let data = data.as_ref();
     unsafe {
         sys::promise_yield_resume(
             data_id.len() as _,
@@ -2017,9 +2317,13 @@ pub fn promise_yield_resume(data_id: &CryptoHash, data: &[u8]) -> bool {
 /// ```
 pub fn validator_stake(account_id: &AccountId) -> NearToken {
     let account_id: &str = account_id.as_ref();
-    let data = [0u8; size_of::<NearToken>()];
+    let mut data = [0u8; size_of::<NearToken>()];
     unsafe {
-        sys::validator_stake(account_id.len() as _, account_id.as_ptr() as _, data.as_ptr() as u64)
+        sys::validator_stake(
+            account_id.len() as _,
+            account_id.as_ptr() as _,
+            data.as_mut_ptr() as u64,
+        )
     };
     NearToken::from_yoctonear(u128::from_le_bytes(data))
 }
@@ -2037,8 +2341,8 @@ pub fn validator_stake(account_id: &AccountId) -> NearToken {
 /// );
 /// ```
 pub fn validator_total_stake() -> NearToken {
-    let data = [0u8; size_of::<NearToken>()];
-    unsafe { sys::validator_total_stake(data.as_ptr() as u64) };
+    let mut data = [0u8; size_of::<NearToken>()];
+    unsafe { sys::validator_total_stake(data.as_mut_ptr() as u64) };
     NearToken::from_yoctonear(u128::from_le_bytes(data))
 }
 
@@ -2065,7 +2369,8 @@ pub fn validator_total_stake() -> NearToken {
 /// );
 /// ```
 /// Example of usage [here](https://github.com/near/near-sdk-rs/blob/189897180649bce47aefa4e5af03664ee525508d/examples/cross-contract-calls/low-level/src/lib.rs#L18)
-pub fn value_return(value: &[u8]) {
+pub fn value_return(value: impl AsRef<[u8]>) {
+    let value = value.as_ref();
     unsafe { sys::value_return(value.len() as _, value.as_ptr() as _) }
 }
 /// Terminates the execution of the program with the UTF-8 encoded message.
@@ -2589,10 +2894,10 @@ mod tests {
             100, 107, 108, 97, 100, 106, 102, 107, 108, 106, 97, 100, 115, 107,
         ];
 
-        assert!(super::ed25519_verify(&SIGNATURE, &MESSAGE, &PUBLIC_KEY));
-        assert!(!super::ed25519_verify(&BAD_SIGNATURE, &MESSAGE, &FORGED_PUBLIC_KEY));
-        assert!(!super::ed25519_verify(&SIGNATURE, &MESSAGE, &FORGED_PUBLIC_KEY));
-        assert!(!super::ed25519_verify(&FORGED_SIGNATURE, &MESSAGE, &PUBLIC_KEY));
+        assert!(super::ed25519_verify(&SIGNATURE, MESSAGE, &PUBLIC_KEY));
+        assert!(!super::ed25519_verify(&BAD_SIGNATURE, MESSAGE, &FORGED_PUBLIC_KEY));
+        assert!(!super::ed25519_verify(&SIGNATURE, MESSAGE, &FORGED_PUBLIC_KEY));
+        assert!(!super::ed25519_verify(&FORGED_SIGNATURE, MESSAGE, &PUBLIC_KEY));
     }
 
     #[test]
@@ -2608,7 +2913,7 @@ mod tests {
         ];
 
         assert_eq!(
-            super::alt_bn128_g1_multiexp(&buffer),
+            super::alt_bn128_g1_multiexp(buffer),
             vec![
                 150, 94, 159, 52, 239, 226, 181, 150, 77, 86, 90, 186, 102, 219, 243, 204, 36, 128,
                 164, 209, 106, 6, 62, 124, 235, 104, 223, 195, 30, 204, 42, 20, 13, 158, 14, 197,
@@ -2629,7 +2934,7 @@ mod tests {
         ];
 
         assert_eq!(
-            super::alt_bn128_g1_sum(&buffer),
+            super::alt_bn128_g1_sum(buffer),
             vec![
                 11, 49, 94, 29, 152, 111, 116, 138, 248, 2, 184, 8, 159, 80, 169, 45, 149, 48, 32,
                 49, 37, 6, 133, 105, 171, 194, 120, 44, 195, 17, 180, 35, 137, 154, 4, 192, 211,
@@ -2665,7 +2970,7 @@ mod tests {
             254, 71, 70, 238, 51, 2, 23, 185, 152, 139, 134, 65, 107, 129, 114, 244, 47, 251, 240,
             80, 193, 23,
         ];
-        assert!(super::alt_bn128_pairing_check(&valid_pair));
+        assert!(super::alt_bn128_pairing_check(valid_pair));
 
         // Taken from https://github.com/near/nearcore/blob/8cd095ffc98a6507ed2d2a8982a6a3e42ebc1b62/runtime/near-vm-runner/src/logic/tests/alt_bn128.rs#L254-L265
         let invalid_pair = [
@@ -2691,13 +2996,13 @@ mod tests {
             238, 51, 2, 23, 185, 152, 139, 134, 65, 107, 129, 114, 244, 47, 251, 240, 80, 193, 23,
         ];
 
-        assert!(!super::alt_bn128_pairing_check(&invalid_pair));
+        assert!(!super::alt_bn128_pairing_check(invalid_pair));
     }
     #[test]
     fn bls12381_p1_sum_0_100() {
         let buffer: [u8; 0] = [];
         for _ in 0..100 {
-            let result = super::bls12381_p1_sum(&buffer);
+            let result = super::bls12381_p1_sum(buffer);
             assert!(!result.is_empty(), "Expected a non-empty result from bls12381_p1_sum");
         }
     }
@@ -2728,7 +3033,7 @@ mod tests {
     fn bls12381_p2_sum_0_100() {
         let buffer: [u8; 0] = [];
         for _ in 0..100 {
-            let result = super::bls12381_p2_sum(&buffer);
+            let result = super::bls12381_p2_sum(buffer);
             assert!(!result.is_empty(), "Expected a non-empty result from bls12381_p2_sum");
         }
     }
@@ -2766,7 +3071,7 @@ mod tests {
     #[test]
     fn bls12381_g1_multiexp_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_g1_multiexp(&buffer);
+        let result = super::bls12381_g1_multiexp(buffer);
         assert!(!result.is_empty(), "Expected a non-empty result from bls12381_g1_multiexp");
     }
 
@@ -2790,7 +3095,7 @@ mod tests {
     #[test]
     fn bls12381_g2_multiexp_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_g2_multiexp(&buffer);
+        let result = super::bls12381_g2_multiexp(buffer);
         assert!(!result.is_empty(), "Expected a non-empty result from bls12381_g2_multiexp");
     }
 
@@ -2818,7 +3123,7 @@ mod tests {
     #[test]
     fn bls12381_map_fp_to_g1_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_map_fp_to_g1(&buffer);
+        let result = super::bls12381_map_fp_to_g1(buffer);
         assert!(result.is_empty(), "Expected an empty result from bls12381_map_fp_to_g1");
     }
 
@@ -2837,7 +3142,7 @@ mod tests {
     #[test]
     fn bls12381_map_fp2_to_g2_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_map_fp2_to_g2(&buffer);
+        let result = super::bls12381_map_fp2_to_g2(buffer);
         assert!(result.is_empty(), "Expected an empty result from bls12381_map_fp2_to_g2");
     }
 
@@ -2859,7 +3164,7 @@ mod tests {
     #[test]
     fn bls12381_pairing_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_pairing_check(&buffer);
+        let result = super::bls12381_pairing_check(buffer);
         assert!(result, "Expected result to be true");
     }
 
@@ -2900,7 +3205,7 @@ mod tests {
     #[test]
     fn bls12381_p1_decompress_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_p1_decompress(&buffer);
+        let result = super::bls12381_p1_decompress(buffer);
         assert!(result.is_empty(), "Expected an empty result from bls12381_p1_decompress");
     }
 
@@ -2919,7 +3224,7 @@ mod tests {
     #[test]
     fn bls12381_p2_decompress_0_100() {
         let buffer: [u8; 0] = [];
-        let result = super::bls12381_p2_decompress(&buffer);
+        let result = super::bls12381_p2_decompress(buffer);
         assert!(result.is_empty(), "Expected an empty result from bls12381_p2_decompress");
     }
 
@@ -2946,8 +3251,8 @@ mod tests {
 
         let promise_index = super::promise_batch_create(&"alice.near".parse().unwrap());
         let code = vec![0u8; 100]; // Mock contract bytecode
-        let code_hash = vec![0u8; 32]; // Mock 32-byte hash
-        let account_id = "deployer.near".parse().unwrap();
+        let code_hash = [0u8; 32]; // Mock 32-byte hash (CryptoHash)
+        let account_id = crate::AccountIdRef::new_or_panic("deployer.near");
 
         // Test deploy_global_contract
         super::promise_batch_action_deploy_global_contract(promise_index, &code);
@@ -2959,7 +3264,7 @@ mod tests {
         super::promise_batch_action_use_global_contract(promise_index, &code_hash);
 
         // Test use_global_contract_by_account_id
-        super::promise_batch_action_use_global_contract_by_account_id(promise_index, &account_id);
+        super::promise_batch_action_use_global_contract_by_account_id(promise_index, account_id);
     }
 
     #[test]

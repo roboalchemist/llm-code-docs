@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/ruby-llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # RubyLLM
 
 [RubyLLM](https://rubyllm.com) is a Ruby gem that provides a unified interface for multiple AI providers including OpenAI, Anthropic, Google Gemini, AWS Bedrock, Mistral, and more. Braintrust traces RubyLLM applications to capture LLM calls, tool usage, and performance metrics across any supported provider.
@@ -60,9 +64,4 @@ All RubyLLM calls are automatically traced, including:
 
 * [RubyLLM documentation](https://rubyllm.com)
 * [Braintrust Ruby SDK](https://github.com/braintrustdata/braintrust-sdk-ruby)
-* [Tracing guide](/guides/traces)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Tracing guide](/instrument/custom-tracing)

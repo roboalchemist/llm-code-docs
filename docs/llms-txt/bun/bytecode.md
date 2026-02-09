@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/bundler/bytecode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bytecode Caching
 
 > Speed up JavaScript execution with bytecode caching in Bun's bundler
@@ -8,9 +12,9 @@ Bytecode caching is a build-time optimization that dramatically improves applica
 
 ## Usage
 
-### Basic usage
+### Basic usage (CommonJS)
 
-Enable bytecode caching with the `--bytecode` flag:
+Enable bytecode caching with the `--bytecode` flag. Without `--format`, this defaults to CommonJS:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --target=bun --bytecode --outdir=./dist
@@ -18,7 +22,7 @@ bun build ./index.ts --target=bun --bytecode --outdir=./dist
 
 This generates two files:
 
-* `dist/index.js` - Your bundled JavaScript
+* `dist/index.js` - Your bundled JavaScript (CommonJS)
 * `dist/index.jsc` - The bytecode cache file
 
 At runtime, Bun automatically detects and uses the `.jsc` file:
@@ -29,13 +33,23 @@ bun ./dist/index.js  # Automatically uses index.jsc
 
 ### With standalone executables
 
-When creating executables with `--compile`, bytecode is embedded into the binary:
+When creating executables with `--compile`, bytecode is embedded into the binary. Both ESM and CommonJS formats are supported:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# ESM (requires --compile)
+bun build ./cli.ts --compile --bytecode --format=esm --outfile=mycli
+
+# CommonJS (works with or without --compile)
 bun build ./cli.ts --compile --bytecode --outfile=mycli
 ```
 
 The resulting executable contains both the code and bytecode, giving you maximum performance in a single file.
+
+### ESM bytecode
+
+ESM bytecode requires `--compile` because Bun embeds module metadata (import/export information) in the compiled binary. This metadata allows the JavaScript engine to skip parsing entirely at runtime.
+
+Without `--compile`, ESM bytecode would still require parsing the source to analyze module dependencies—defeating the purpose of bytecode caching.
 
 ### Combining with other optimizations
 
@@ -91,34 +105,8 @@ Larger applications benefit more because they have more code to parse.
 * ❌ **Code that runs once**
 * ❌ **Development builds**
 * ❌ **Size-constrained environments**
-* ❌ **Code with top-level await** (not supported)
 
 ## Limitations
-
-### CommonJS only
-
-Bytecode caching currently works with CommonJS output format. Bun's bundler automatically converts most ESM code to CommonJS, but **top-level await** is the exception:
-
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-// This prevents bytecode caching
-const data = await fetch("https://api.example.com");
-export default data;
-```
-
-**Why**: Top-level await requires async module evaluation, which can't be represented in CommonJS. The module graph becomes asynchronous, and the CommonJS wrapper function model breaks down.
-
-**Workaround**: Move async initialization into a function:
-
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-async function init() {
-  const data = await fetch("https://api.example.com");
-  return data;
-}
-
-export default init;
-```
-
-Now the module exports a function that the consumer can await when needed.
 
 ### Version compatibility
 
@@ -236,8 +224,6 @@ It's normal for it it to log a cache miss multiple times since Bun doesn't curre
 * Using `--minify` to reduce code size before bytecode generation
 * Compressing `.jsc` files for network transfer (gzip/brotli)
 * Evaluating if the startup performance gain is worth the size increase
-
-**Top-level await**: Not supported. Refactor to use async initialization functions.
 
 ## What is bytecode?
 

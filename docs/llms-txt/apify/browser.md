@@ -39,7 +39,7 @@ When we run this code with the command `node index.js`, a browser will open up; 
 
 ## Launch options
 
-In order to see what's actually happening, we can pass an **options** object (https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-puppeteerlaunchoptions, https://playwright.dev/docs/api/class-browsertype#browser-type-launch) with **headless** set to **false**.
+In order to see what's actually happening, we can pass an **options** object ([Puppeteer](https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-puppeteerlaunchoptions), [Playwright](https://playwright.dev/docs/api/class-browsertype#browser-type-launch)) with **headless** set to **false**.
 
 * Playwright
 * Puppeteer
@@ -70,7 +70,7 @@ You can pass a whole lot more options to the `launch()` function. We'll be getti
 
 ## Browser methods
 
-The `launch()` function also returns a **Browser** object (https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-class-browser, https://playwright.dev/docs/api/class-browser), which is a representation of the browser. This object has many methods, which allow us to interact with the browser from our code. One of them is `close()`. Until now, we've been using **control^** + **C** to force quit the process, but with this function, we'll no longer have to do that.
+The `launch()` function also returns a **Browser** object ([Puppeteer](https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-class-browser), [Playwright](https://playwright.dev/docs/api/class-browser)), which is a representation of the browser. This object has many methods, which allow us to interact with the browser from our code. One of them is `close()`. Until now, we've been using **control^** + **C** to force quit the process, but with this function, we'll no longer have to do that.
 
 * Playwright
 * Puppeteer
@@ -103,4 +103,4 @@ await browser.close();
 
 ## Next up
 
-Now that we can open a browser, let's move onto the https://docs.apify.com/academy/puppeteer-playwright/page.md where we will learn how to create pages and visit websites programmatically.
+Now that we can open a browser, let's move onto the [next lesson](https://docs.apify.com/academy/puppeteer-playwright/page.md) where we will learn how to create pages and visit websites programmatically.

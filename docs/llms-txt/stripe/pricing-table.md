@@ -4,6 +4,8 @@
 
 Display a subscription pricing table on your website and take customers directly to Stripe Checkout.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 You can use the Stripe Dashboard to create an embeddable pricing table to:
 
 - Display *pricing information* (The pricing model consists of the products or services you sell, how much they cost, what currency you accept for payments, and the service period to charge (for subscriptions). To build the pricing model, you use Products—what you sell—and Prices—how much and how often to charge for your products) and take customers to a prebuilt checkout flow. The checkout flow uses [Stripe Checkout](https://docs.stripe.com/payments/checkout.md) to complete the purchase.

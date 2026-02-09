@@ -4,25 +4,13 @@
 
 # Source: https://docs.windsurf.com/chat/models.md
 
-# Source: https://docs.windsurf.com/windsurf/models.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.windsurf.com/plugins/cascade/models.md
+# Chat Models
 
-# Source: https://docs.windsurf.com/chat/models.md
-
-# Source: https://docs.windsurf.com/windsurf/models.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/models.md
-
-# Source: https://docs.windsurf.com/chat/models.md
-
-# Source: https://docs.windsurf.com/windsurf/models.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/models.md
-
-# Source: https://docs.windsurf.com/chat/models.md
-
-# Models
+> Available AI models for Windsurf Chat including Base Model, Windsurf Premier, GPT-4o, and Claude 3.5 Sonnet with different access levels.
 
 While we provide and train our own dedicated models for Chat, we also give you the flexibility choose your favorites.
 

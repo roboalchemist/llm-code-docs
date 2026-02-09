@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/agents/call-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Management
 
 > Retrieve call information, from active conversation monitoring to historical data analysis and cleanup.
@@ -193,8 +197,3 @@ const getDeletedCalls = async () => {
   return await response.json();
 };
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

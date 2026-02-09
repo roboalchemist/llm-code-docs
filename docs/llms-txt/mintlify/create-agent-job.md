@@ -1,103 +1,144 @@
-# Source: https://mintlify.com/docs/api/agent/create-agent-job.md
+# Source: https://www.mintlify.com/docs/api/agent/create-agent-job.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create agent job
 
 > Creates a new agent job that can generate and edit documentation based on provided messages and branch information.
 
+This endpoint creates an agent job based on provided messages and branch information. The job executes asynchronously and returns a streaming response with the execution details and results.
+
+If a branch doesn't exist, the agent creates one. If files are edited successfully, a pull request is automatically created at the end of the job.
+
+## Rate limits
+
+The agent API has the following limits:
+
+* 100 uses per Mintlify project per hour
+
+## Suggested usage
+
+For best results, use the [useChat hook from ai-sdk](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-chat#usechat) to send requests and handle responses.
+
+
 ## OpenAPI
 
-````yaml POST /agent/{projectId}/job
+````yaml admin-openapi.json post /agent/{projectId}/job
+openapi: 3.0.1
+info:
+  title: Mintlify Admin API
+  description: >-
+    An API for administrative operations including documentation updates and
+    agent management.
+  version: 1.0.0
+servers:
+  - url: https://api.mintlify.com/v1
+security:
+  - bearerAuth: []
 paths:
-  path: /agent/{projectId}/job
-  method: post
-  servers:
-    - url: https://api.mintlify.com/v1
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                The Authorization header expects a Bearer token. Create an
-                [Admin API
-                Key](https://dashboard.mintlify.com/settings/organization/api-keys)
-                here.
-          cookie: {}
-    parameters:
-      path:
-        projectId:
+  /agent/{projectId}/job:
+    post:
+      summary: Create agent job
+      description: >-
+        Creates a new agent job that can generate and edit documentation based
+        on provided messages and branch information.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: >-
-                Your project ID. Can be copied from the [API
-                keys](https://dashboard.mintlify.com/settings/organization/api-keys)
-                page in your dashboard.
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              branch:
-                allOf:
-                  - type: string
-                    description: >-
-                      The name of the Git branch that the agent should work on,
-                      will be automatically created if it doesn't exist
-              messages:
-                allOf:
-                  - type: array
-                    description: A list of previous messages to provide to the agent.
-                    items:
-                      type: object
-                      required:
-                        - role
-                        - content
-                      properties:
-                        role:
-                          type: string
-                          enum:
-                            - system
-                            - user
-                          description: The role of the message sender.
-                        content:
-                          type: string
-                          description: The content of the message.
-            required: true
-            requiredProperties:
-              - branch
-              - messages
-        examples:
-          example:
-            value:
-              branch: <string>
-              messages:
-                - role: system
-                  content: <string>
-  response:
-    '200':
-      text/plain:
-        schemaArray:
-          - type: string
-            description: >-
-              Streaming response containing the agent job execution details and
-              results.
-        examples:
-          example:
-            value: <string>
-        description: >-
-          Agent job created successfully (streaming response). X-Session-Id
-          Header is sent back in the response
-  deprecated: false
-  type: path
+            type: string
+          description: >-
+            Your project ID. Can be copied from the [API
+            keys](https://dashboard.mintlify.com/settings/organization/api-keys)
+            page in your dashboard.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - branch
+                - messages
+              properties:
+                branch:
+                  type: string
+                  description: >-
+                    The name of the Git branch that the agent should work on,
+                    will be automatically created if it doesn't exist
+                messages:
+                  type: array
+                  description: >-
+                    A list of messages to provide to the agent. A default system
+                    prompt is always prepended automatically, so you typically
+                    only need to include user messages.
+                  items:
+                    type: object
+                    required:
+                      - role
+                      - content
+                    properties:
+                      role:
+                        type: string
+                        enum:
+                          - system
+                          - user
+                        description: >-
+                          The role of the message sender. Use `user` for task
+                          instructions. Use `system` to add supplementary
+                          instructions that are appended after the default
+                          system prompt (does not replace it).
+                      content:
+                        type: string
+                        description: The content of the message.
+                asDraft:
+                  type: boolean
+                  default: true
+                  description: >-
+                    Control whether the pull request is created in draft or
+                    non-draft mode. When true, creates a draft pull request.
+                    When false, creates a regular (non-draft) pull request ready
+                    for review.
+                model:
+                  type: string
+                  enum:
+                    - sonnet
+                    - opus
+                  default: sonnet
+                  description: >-
+                    The AI model to use for the agent job. Use `sonnet` for
+                    faster, cost-effective processing. Use `opus` for more
+                    capable, but slower processing.
+      responses:
+        '200':
+          description: >-
+            Agent job created successfully (streaming response). X-Session-Id
+            Header is sent back in the response
+          headers:
+            X-Message-Id:
+              schema:
+                type: string
+              description: Message identifier for the created job
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: >-
+                  Streaming response containing the agent job execution details
+                  and results.
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        The Authorization header expects a Bearer token. Use an admin API key
+        (prefixed with `mint_`). This is a server-side secret key. Generate one
+        on the [API keys
+        page](https://dashboard.mintlify.com/settings/organization/api-keys) in
+        your dashboard.
 
 ````

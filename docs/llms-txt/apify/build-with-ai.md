@@ -12,7 +12,7 @@ This guide provides best practices for building new Actors or improving existing
 
 ## AI coding assistant instructions
 
-Use the following prompt in your AI coding assistant such as https://www.cursor.com/, https://www.claude.com/product/claude-code or https://github.com/features/copilot:
+Use the following prompt in your AI coding assistant such as [Cursor](https://www.cursor.com/), [Claude Code](https://www.claude.com/product/claude-code) or [GitHub Copilot](https://github.com/features/copilot):
 
 Use pre-built prompt for your AI coding assistant
 
@@ -33,7 +33,7 @@ The AI will follow the guide step-by-step, and you'll avoid copy-pasting from to
 
 ## Use Actor templates with AGENTS.md
 
-All https://apify.com/templates have AGENTS.md that will help you with AI coding. You can use the https://docs.apify.com/cli/docs to create Actors from Actor Templates.
+All [Actor Templates](https://apify.com/templates) have AGENTS.md that will help you with AI coding. You can use the [Apify CLI](https://docs.apify.com/cli/docs) to create Actors from Actor Templates.
 
 
 ```
@@ -41,7 +41,7 @@ apify create
 ```
 
 
-If you do not have Apify CLI installed, see the https://docs.apify.com/cli/docs/installation.
+If you do not have Apify CLI installed, see the [installation guide](https://docs.apify.com/cli/docs/installation).
 
 The command above will guide you through Apify Actor initialization, where you select an Actor Template that works for you. The result is an initialized Actor (with AGENTS.md) ready for development.
 
@@ -51,7 +51,57 @@ The Apify MCP Server has tools to search and fetch documentation. If you set it 
 
 Use Apify MCP server configuration
 
-We have prepared the https://mcp.apify.com/, which you can configure for your needs.
+We have prepared the [Apify MCP server configuration](https://mcp.apify.com/), which you can configure for your needs.
+
+* Cursor
+* VS Code
+* Claude
+
+To add Apify MCP server to Cursor manually:
+
+1. Create or open the `.cursor/mcp.json` file.
+
+2. Add the following to the configuration file:
+
+
+   ```
+   {
+     "mcpServers": {
+       "apify": {
+         "url": "https://mcp.apify.com/?tools=docs"
+       }
+     }
+   }
+   ```
+
+
+VS Code supports MCP through MCP-compatible extensions like *GitHub Copilot*, *Cline*, or *Roo Code*.
+
+1. Install an MCP-compatible extension (e.g., GitHub Copilot, Cline).
+
+2. Locate the extension's MCP settings or configuration file (often `mcp.json`).
+
+   * For *GitHub Copilot*: Run the **MCP: Open User Configuration** command.
+   * For *MCP-compatible extension*: Go to the MCP Servers tab in the extension interface.
+
+3. Add the Apify server configuration:
+
+
+   ```
+   {
+     "mcpServers": {
+       "apify": {
+         "url": "https://mcp.apify.com/?tools=docs"
+       }
+     }
+   }
+   ```
+
+
+1) Go to **Settings** > **Connectors** in Claude.
+2) Click **Add custom connector**.
+3) Set the name to `Apify` and the URL to `https://mcp.apify.com/?tools=docs`.
+4) When chatting, select the **+** button and choose the **Apify** connector to add documentation context.
 
 ## Provide context to assistants
 
@@ -63,7 +113,7 @@ Every page in the Apify documentation has a **** button. You can use it to add a
 
 The entire Apify documentation is available in Markdown format for use with LLMs and AI coding tools. Two consolidated files are available:
 
-* `https://docs.apify.com/llms.txt`: A Markdown file with an index of all documentation pages in Markdown format, based on the https://llmstxt.org/ standard.
+* `https://docs.apify.com/llms.txt`: A Markdown file with an index of all documentation pages in Markdown format, based on the [llmstxt.org](https://llmstxt.org/) standard.
 * `https://docs.apify.com/llms-full.txt`: All Apify documentation consolidated in a single Markdown file.
 
 Access Markdown source

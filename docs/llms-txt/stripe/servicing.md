@@ -4,7 +4,7 @@
 
 Support your Capital customers using Stripe-approved messaging.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 Stripe Capital for platforms works differently by country. Capital for platforms is only available in the United States (US) and United Kingdom (GB).
 

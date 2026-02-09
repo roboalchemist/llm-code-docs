@@ -2,6 +2,10 @@
 
 # RequestQueueClientListAndLockHeadResult<!-- -->
 
+Result of listing and locking requests from the queue head.
+
+Extends [RequestQueueClientListHeadResult](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientListHeadResult.md) with lock information.
+
 ### Hierarchy
 
 * [RequestQueueClientListHeadResult](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientListHeadResult.md)
@@ -21,37 +25,37 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#clientKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L625)clientKey
+### [**](#clientKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L906)clientKey
 
 **clientKey: string
 
-### [**](#hadMultipleClients)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L596)inheritedhadMultipleClients
+### [**](#hadMultipleClients)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L859)inheritedhadMultipleClients
 
 **hadMultipleClients: boolean
 
 Inherited from RequestQueueClientListHeadResult.hadMultipleClients
 
-### [**](#items)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L597)inheriteditems
+### [**](#items)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L860)inheriteditems
 
 **items: [RequestQueueClientListItem](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientListItem.md)\[]
 
 Inherited from RequestQueueClientListHeadResult.items
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L594)inheritedlimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L857)inheritedlimit
 
 **limit: number
 
 Inherited from RequestQueueClientListHeadResult.limit
 
-### [**](#lockSecs)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L623)lockSecs
+### [**](#lockSecs)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L904)lockSecs
 
 **lockSecs: number
 
-### [**](#queueHasLockedRequests)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L624)queueHasLockedRequests
+### [**](#queueHasLockedRequests)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L905)queueHasLockedRequests
 
 **queueHasLockedRequests: boolean
 
-### [**](#queueModifiedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L595)inheritedqueueModifiedAt
+### [**](#queueModifiedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L858)inheritedqueueModifiedAt
 
 **queueModifiedAt: Date
 

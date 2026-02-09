@@ -6,8 +6,6 @@ Learn how to create and send an invoice with code.
 
 The [Dashboard](https://dashboard.stripe.com/invoices) is the most common way to [create invoices](https://docs.stripe.com/invoicing/dashboard.md#create-invoice). If you’d like to automate invoice creation, you can integrate with the API. Build a full, working Invoicing integration using our [sample integration](https://docs.stripe.com/invoicing/integration/quickstart.md).
 
-> You don’t need to integrate with the Payments API to integrate with the Invoicing API.
-
 ## Set up Stripe
 
 Use our official libraries for access to the Stripe API:
@@ -62,7 +60,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -75,7 +73,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -98,13 +96,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -204,7 +202,7 @@ Product product = service.Create(options);
 
 [Prices](https://docs.stripe.com/api.md#prices) define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the billing interval (when the price is for a subscription). Like products, if you only have a few prices, it’s preferable to manage them in the Dashboard. Use the unit amount to express prices in the lowest unit of the currency—in this case, cents (10 USD is 1,000 cents, so the unit amount is 1000).
 
-> As an alternative, if you don’t need to create a price for your product, you can use the [amount](https://docs.stripe.com/api/invoiceitems/create.md#create_invoiceitem-amount) parameter during invoice item creation.
+As an alternative, if you don’t need to create a price for your product, you can use the [amount](https://docs.stripe.com/api/invoiceitems/create.md#create_invoiceitem-amount) parameter during invoice item creation.
 
 To create a price and assign it to the product, pass the product ID, unit amount, and currency. In the following example, the price for the “Gold Special” product is 10 USD:
 
@@ -316,7 +314,7 @@ Price price = service.Create(options);
 
 ## Create a customer
 
-The [Customer](https://docs.stripe.com/api.md#customer_object) object represents the customer purchasing your product. It’s required for creating an invoice. To create a customer with a `name`, `email`, and `description`, add the following code replacing the values with your own:
+The [Customer](https://docs.stripe.com/api.md#customer_object) object represents the customer purchasing your product. It’s required for creating an invoice. To [create a customer](https://docs.stripe.com/api/customers/create.md) with a `name`, `email`, and `description`, add the following code replacing the values with your own:
 
 ```curl
 curl https://api.stripe.com/v1/customers \
@@ -425,8 +423,6 @@ Customer customer = service.Create(options);
 ```
 
 After you create the customer, store the customer `id` in your database so that you can use it later. The next step, for example, uses the customer ID to create an invoice.
-
-> See [Create a customer](https://docs.stripe.com/api/customers/create.md) for additional parameters.
 
 ## Create an invoice
 
@@ -656,8 +652,6 @@ InvoiceItem invoiceItem = service.Create(options);
 
 If you set `auto_advance` to `false`, you can continue to modify the invoice until you [finalize](https://docs.stripe.com/invoicing/integration/workflow-transitions.md) it. To finalize a draft invoice, use the Dashboard, send it to the customer, or pay it. You can also use the [Finalize](https://docs.stripe.com/api/invoices/finalize.md) API:
 
-> If you created the invoice in error, [void](https://docs.stripe.com/invoicing/overview.md#void) it. You can also mark an invoice as [uncollectible](https://docs.stripe.com/invoicing/overview.md#uncollectible).
-
 ```curl
 curl -X POST https://api.stripe.com/v1/invoices/{{INVOICE_ID}}/finalize \
   -u "<<YOUR_SECRET_KEY>>:"
@@ -715,10 +709,9 @@ const invoice = await stripe.invoices.finalizeInvoice('{{INVOICE_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceFinalizeInvoiceParams{
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.FinalizeInvoice(context.TODO(), params)
+params := &stripe.InvoiceFinalizeInvoiceParams{}
+result, err := sc.V1Invoices.FinalizeInvoice(
+  context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -728,6 +721,8 @@ var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Invoices;
 Invoice invoice = service.FinalizeInvoice("{{INVOICE_ID}}");
 ```
+
+If you create an invoice in error, [void](https://docs.stripe.com/invoicing/overview.md#void) it. You can also mark an invoice as [uncollectible](https://docs.stripe.com/invoicing/overview.md#uncollectible).
 
 ## Accept invoice payment
 
@@ -794,10 +789,8 @@ const invoice = await stripe.invoices.sendInvoice('{{INVOICE_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceSendInvoiceParams{
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.SendInvoice(context.TODO(), params)
+params := &stripe.InvoiceSendInvoiceParams{}
+result, err := sc.V1Invoices.SendInvoice(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -812,7 +805,7 @@ Invoice invoice = service.SendInvoice("{{INVOICE_ID}}");
 
 When the invoice is finalized, a *PaymentIntent* (The Payment Intents API tracks the lifecycle of a customer checkout flow and triggers additional authentication steps when required by regulatory mandates, custom Radar fraud rules, or redirect-based payment methods) is generated and associated with the invoice. Use [Stripe Elements](https://docs.stripe.com/payments/elements.md) to collect payment details and confirm the invoice’s PaymentIntent.
 
-> You can’t edit monetary values or the `collection_method` parameter after an invoice is finalized. This restriction also applies to the finalized invoice’s PaymentIntent. When you update the an invoice’s PaymentIntent with an [update](https://docs.stripe.com/api/payment_intents/update.md) call, you can only modify the `setup_future_usage`, `metadata`, `payment_method`, `description`, `receipt_email`, `payment_method_data`, `payment_method_options`, and `shipping` parameters.
+You can’t edit monetary values or the `collection_method` parameter after an invoice is finalized. This restriction also applies to the finalized invoice’s PaymentIntent. When you update the an invoice’s PaymentIntent with an [update](https://docs.stripe.com/api/payment_intents/update.md) call, you can only modify the `setup_future_usage`, `metadata`, `payment_method`, `description`, `receipt_email`, `payment_method_data`, `payment_method_options`, and `shipping` parameters.
 
 #### Payment Element (recommended)
 
@@ -896,11 +889,10 @@ const invoice = await stripe.invoices.finalizeInvoice(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceFinalizeInvoiceParams{
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
+params := &stripe.InvoiceFinalizeInvoiceParams{}
 params.AddExpand("confirmation_secret")
-result, err := sc.V1Invoices.FinalizeInvoice(context.TODO(), params)
+result, err := sc.V1Invoices.FinalizeInvoice(
+  context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -1193,11 +1185,10 @@ const invoice = await stripe.invoices.finalizeInvoice(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceFinalizeInvoiceParams{
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
+params := &stripe.InvoiceFinalizeInvoiceParams{}
 params.AddExpand("confirmation_secret")
-result, err := sc.V1Invoices.FinalizeInvoice(context.TODO(), params)
+result, err := sc.V1Invoices.FinalizeInvoice(
+  context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -1362,7 +1353,7 @@ btn.addEventListener('click', async (e) => {
 
 Stripe sends an [invoice.paid](https://docs.stripe.com/api/events/types.md?event_types-invoice.paid) event when an invoice payment completes. Listen for this event to ensure reliable fulfillment. If your integration relies on only a client-side callback, the customer could lose connection before the callback executes, which would result in the customer being charged without your server being notified. Setting up your integration to listen for asynchronous events is also what enables you to accept [different types of payment methods](https://stripe.com/payments/payment-methods-guide) with a single integration.
 
-> Successful invoice payments trigger both an [invoice.paid](https://docs.stripe.com/api/events/types.md?event_types-invoice.paid) and [invoice.payment_succeeded](https://docs.stripe.com/api/events/types.md?event_types-invoice.payment_succeeded) event. Both event types contain the same invoice data, so it’s only necessary to listen to one of them to be notified of successful invoice payments. The difference is that `invoice.payment_succeeded` events are sent for successful invoice payments, but aren’t sent when you mark an invoice as [paid_out_of_band](https://docs.stripe.com/api/invoices/pay.md#pay_invoice-paid_out_of_band). `invoice.paid` events, on the other hand, are triggered for both successful payments and out of band payments. Because `invoice.paid` covers both scenarios, we typically recommend listening to `invoice.paid` rather than `invoice.payment_succeeded`.
+Successful invoice payments trigger both an [invoice.paid](https://docs.stripe.com/api/events/types.md?event_types-invoice.paid) and [invoice.payment_succeeded](https://docs.stripe.com/api/events/types.md?event_types-invoice.payment_succeeded) event. Both event types contain the same invoice data, so you only need to listen to one of them to be notified about successful invoice payments. The difference is that `invoice.payment_succeeded` events are sent for successful invoice payments, but aren’t sent when you mark an invoice as [paid_out_of_band](https://docs.stripe.com/api/invoices/pay.md#pay_invoice-paid_out_of_band). `invoice.paid` events, however, are triggered for both successful payments and out of band payments. Because `invoice.paid` covers both scenarios, we typically recommend listening to `invoice.paid` rather than `invoice.payment_succeeded`.
 
 Use the [Dashboard webhook tool](https://dashboard.stripe.com/webhooks) or follow the [webhook quickstart](https://docs.stripe.com/webhooks/quickstart.md) to receive these events and run actions, such as sending an order confirmation email to your customer, logging the sale in a database, or starting a shipping workflow.
 

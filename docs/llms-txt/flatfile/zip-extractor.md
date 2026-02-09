@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/zip-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zip Extractor
 
 > Automatically decompress .zip files uploaded to a Flatfile Space and extract their contents as individual files
@@ -12,7 +16,7 @@ This is particularly useful for workflows where users need to bulk-upload multip
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-zip-extractor
 ```
 
@@ -33,7 +37,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
 
@@ -46,7 +50,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
   // extract its contents and upload them back to the Space.
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
 
@@ -63,7 +67,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
 ### With Debug Enabled
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
 
@@ -73,7 +77,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
   listener.use(ZipExtractor({ debug: true }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
 
@@ -87,7 +91,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
 ### Combined with Other Extractors
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
   import { XlsxExtractor } from '@flatfile/plugin-xlsx-extractor';
@@ -102,7 +106,7 @@ By default, the plugin runs silently without printing extra diagnostic messages 
   listener.use(XlsxExtractor());
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { ZipExtractor } from '@flatfile/plugin-zip-extractor';
   import { XlsxExtractor } from '@flatfile/plugin-xlsx-extractor';

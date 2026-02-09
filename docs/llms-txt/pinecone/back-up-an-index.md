@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/back-up-an-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Back up an index
 
 > Create backups of serverless indexes for protection
@@ -126,7 +130,7 @@ You can [create a backup from a serverless index](/reference/api/latest/control-
       -H "Api-Key: $PINECONE_API_KEY" \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
         "name": "example-backup", 
         "description": "Monthly backup of production index"
@@ -342,7 +346,7 @@ You can [view the details of a backup](/reference/api/latest/control-plane/descr
 
   curl -X GET "https://api.pinecone.io/backups/$BACKUP_ID" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -H "accept: application/json"
   ```
 </CodeGroup>
@@ -574,7 +578,7 @@ Up to 100 backups are returned at a time by default, in sorted order (bitwise â€
 
   curl -X GET "https://api.pinecone.io/indexes/$INDEX_NAME/backups" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -H "accept: application/json"
   ```
 </CodeGroup>
@@ -842,7 +846,7 @@ Up to 100 backups are returned at a time by default, in sorted order (bitwise â€
 
   curl -X GET "https://api.pinecone.io/backups" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -H "accept: application/json"
   ```
 </CodeGroup>
@@ -1272,7 +1276,7 @@ You can [delete a backup](/reference/api/latest/control-plane/delete_backup) as 
 
   curl -X DELETE "https://api.pinecone.io/backups/$BACKUP_ID" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 

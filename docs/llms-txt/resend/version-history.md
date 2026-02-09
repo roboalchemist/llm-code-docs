@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/templates/version-history.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Version History
 
 > Best practices for using templates in production environments.
@@ -19,7 +23,7 @@ This separation allows you to:
 Once you **publish** a template, this published version will be used to send emails until you publish again. You can continue to work on a template in draft state without affecting the published version and the editor will automaticalyl save your progress.
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   // Create template
   import { Resend } from 'resend';
 
@@ -51,7 +55,7 @@ Once you **publish** a template, this published version will be used to send ema
   await resend.templates.create({ ... }).publish();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Create template
@@ -78,7 +82,7 @@ Once you **publish** a template, this published version will be used to send ema
   $resend->templates->publish('template_id');
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -109,7 +113,7 @@ Once you **publish** a template, this published version will be used to send ema
   resend.Templates.publish('template_id');
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -139,7 +143,7 @@ Once you **publish** a template, this published version will be used to send ema
   Resend::Templates.publish('template_id');
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import "github.com/resend/resend-go/v2"
 
   client := resend.NewClient("re_xxxxxxxxx")
@@ -170,7 +174,7 @@ Once you **publish** a template, this published version will be used to send ema
   client.Templates.Publish(template.Id)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateTemplateOptions, Resend, Result};
 
   #[tokio::main]
@@ -209,7 +213,7 @@ Once you **publish** a template, this published version will be used to send ema
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   // Create template
@@ -232,7 +236,7 @@ Once you **publish** a template, this published version will be used to send ema
   resend.templates().publish(data.content);
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create("re_xxxxxxxxx");
@@ -272,7 +276,7 @@ Once you **publish** a template, this published version will be used to send ema
   Console.WriteLine($"Template Id={resp.Content}");
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   # Create template
   curl -X POST 'https://api.resend.com/templates' \
    -H 'Authorization: Bearer re_xxxxxxxxx' \

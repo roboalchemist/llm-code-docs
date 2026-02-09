@@ -47,13 +47,14 @@ With NVIDIA DRIVE® platform, developers can build, extend, and leverage one dev
 - Suite of developer tools, including NvMedia, NvStreams, CUDA®, cuDNN, and TensorRT™
 
 ### Specifications
+
 [DRIVE AGX Thor Platform Overview](https://developer.nvidia.com/downloads/drive/docs/nvidia-drive-agx-thor-platform-for-developers.pdf)
 
 DRIVE AGX Thor Hardware Quick Start Guides:
 
 - 
 
-[English](https://developer.nvidia.com/downloads/drive-agx-thor-hardware-quick-start-guide) | [Traditional Chinese](https://developer.nvidia.com/downloads/drive/secure/thor/drive-agx-thor-devkit-qsg-traditional-chinese.pdf) | [Simplified Chinese](https://developer.nvidia.com/downloads/drive/secure/thor/drive-agx-thor-devkit-qsg-simplified-chinese.pdf)
+[English](https://developer.nvidia.com/downloads/drive-agx-thor-hardware-quick-start-guide) | [Traditional Chinese](https://developer.nvidia.com/downloads/drive-agx-thor-devkit-qsg-traditional-chinese.pdf) | [Simplified Chinese](https://developer.nvidia.com/downloads/drive-agx-thor-devkit-qsg-simplified-chinese.pdf)
 
 | **Component** | **Description** | **Details** |
 | --- | --- | --- |
@@ -77,7 +78,7 @@ DRIVE AGX Thor Hardware Quick Start Guides:
 | **DRIVE AGX Power Cord, China** 930-63960-1434-000 **Compatible: SKU 10** | N | N |
 | **DRIVE AGX Power Cord, Taiwan** 930-63960-1438-000 **Compatible: SKU 10** | N | N |
 | **DRIVE AGX Power Cord, US and Japan** 930-63960-1440-000 **Compatible: SKU 10** | N | N |
-| **DRIVE AGX Power Cord, EU** 930-63960-1436-000 **Compatible: SKU 10** | N | N |
+| **DRIVE AGX Power Cord, EU and South Korea** 930-63960-1436-000 **Compatible: SKU 10** | N | N |
 | **DRIVE AGX Power Cord, UK** 930-63960-1437-000 **Compatible: SKU 10** | N | N |
 | **DRIVE AGX Power Cord, India** 930-63960-1892-000 **Compatible: SKU 10** | N | N |
 | **DRIVE AGX Thor Vehicle Harness 1** NVPN 030-1789-000 **Compatible: SKU 10 &amp; SKU 12** | N | Y |
@@ -126,6 +127,7 @@ The highly scalable NVIDIA DRIVE platform allows developers to build, extend, an
 - Suite of developer tools, including NvMedia, NvStreams, CUDA®, cuDNN, and TensorRT™
 
 ### Specifications
+
 [DRIVE AGX Orin Platform Overview](https://developer.nvidia.com/downloads/drive/docs/nvidia-drive-agx-orin-platform-for-developers.pdf)
 
 DRIVE AGX Orin Hardware Quick Start Guides:
@@ -155,7 +157,7 @@ DRIVE AGX Orin Hardware Quick Start Guides:
 | **DRIVE AGX Power Cord, China** 930-63960-1434-000 | Y (version 200) |
 | **DRIVE AGX Power Cord, Taiwan** 930-63960-1438-000 | Y (version 200) |
 | **DRIVE AGX Power Cord, US and Japan** 930-63960-1440-000 | Y (version 200) |
-| **DRIVE AGX Power Cord, EU** 930-63960-1436-000 | Y (version 300) |
+| **DRIVE AGX Power Cord, EU and South Korea** 930-63960-1436-000 | Y (version 300) |
 | **DRIVE AGX Power Cord, UK** 930-63960-1437-000 | Y (version 300) |
 | **DRIVE AGX Power Cord, India** 930-63960-1892-000 | N |
 | **Vehicle Accessory Kit** NVPN 930-62482-0000-100 | N |

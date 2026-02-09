@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/vercel-ai-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK Integration
 
 > Integrate Helicone AI Gateway with Vercel AI SDK to access 100+ LLM providers with full observability.
@@ -30,7 +34,8 @@ export const strings = {
   installRequiredDependencies: "Install required dependencies",
   installSDK: tool => `Install ${tool}`,
   logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
+  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>.",
+  modifyBasePath: "Modify the base URL path",
   optional: "Optional",
   relatedGuides: "Related Guides",
   replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
@@ -42,10 +47,9 @@ export const strings = {
   useTheSDK: tool => `Use the ${tool} SDK`,
   verifyInHelicone: "Verify your requests in Helicone",
   verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
   viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
+  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
+  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently."
 };
 
 ## Introduction
@@ -115,6 +119,10 @@ export const strings = {
     <Info>
       You can switch between [100+ models](https://helicone.ai/models) without changing your code. Just update the model name!
     </Info>
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
   </Step>
 </Steps>
 
@@ -159,6 +167,41 @@ for await (const chunk of result.textStream) {
 }
 
 console.log('\n\nStream completed!');
+```
+
+### UI Message Stream Response
+
+Convert streaming results to a UI-compatible response format:
+
+```typescript  theme={null}
+import { createHelicone } from '@helicone/ai-sdk-provider';
+import { streamText } from 'ai';
+
+const helicone = createHelicone({
+  apiKey: process.env.HELICONE_API_KEY
+});
+
+const result = streamText({
+  model: helicone("gpt-4o-mini", {
+    extraBody: {
+      helicone: {
+        tags: ["simple-stream-test"],
+        properties: {
+          test: "toUIMessageStreamResponse",
+        },
+      },
+    },
+  }),
+  prompt: 'Say "Hello streaming world!"',
+});
+
+const response = result.toUIMessageStreamResponse();
+
+console.log(
+  "Response headers:",
+  Object.fromEntries(response.headers.entries())
+);
+// Just checks that we can create it - actual consumption needs to be in a server
 ```
 
 ### Provider Selection
@@ -250,6 +293,135 @@ const result = await generateText({
 console.log(result.text);
 ```
 
+### Agents
+
+Use Vercel AI SDK's Agent API with Helicone to build multi-step reasoning agents:
+
+```typescript  theme={null}
+import { createHelicone } from "@helicone/ai-sdk-provider";
+import { Experimental_Agent as Agent, tool, jsonSchema, stepCountIs } from "ai";
+
+const helicone = createHelicone({
+  apiKey: process.env.HELICONE_API_KEY!
+});
+
+const weatherAgent = new Agent({
+  model: helicone("claude-4.5-haiku"),
+  stopWhen: stepCountIs(5),
+  tools: {
+    getWeather: tool({
+      description: "Get the current weather for a location",
+      inputSchema: jsonSchema({
+        type: "object",
+        properties: {
+          location: {
+            type: "string",
+            description: "The city and state, e.g. San Francisco, CA",
+          },
+          unit: {
+            type: "string",
+            enum: ["celsius", "fahrenheit"],
+            default: "fahrenheit",
+            description: "Temperature unit",
+          },
+        },
+        required: ["location"],
+      }),
+      execute: async ({ location, unit }) => {
+        // Simulate weather API call
+        const temp =
+          unit === "celsius"
+            ? Math.floor(Math.random() * 30 + 5)
+            : Math.floor(Math.random() * 86 + 32);
+        const conditions = ["sunny", "cloudy", "rainy", "partly cloudy"][
+          Math.floor(Math.random() * 4)
+        ];
+        const result = {
+          location,
+          temperature: temp,
+          unit: unit || "fahrenheit",
+          conditions,
+          description: `It's ${conditions} in ${location} with a temperature of ${temp}°${unit?.charAt(0).toUpperCase() || "F"}.`,
+        };
+        console.log(`Result: ${JSON.stringify(result)}`);
+        return result;
+      },
+    }),
+    calculateWindChill: tool({
+      description: "Calculate wind chill temperature",
+      inputSchema: jsonSchema({
+        type: "object",
+        properties: {
+          temperature: {
+            type: "number",
+            description: "Temperature in Fahrenheit",
+          },
+          windSpeed: {
+            type: "number",
+            description: "Wind speed in mph",
+          },
+        },
+        required: ["temperature", "windSpeed"],
+      }),
+      execute: async ({ temperature, windSpeed }) => {
+        const windChill =
+          35.74 +
+          0.6215 * temperature -
+          35.75 * Math.pow(windSpeed, 0.16) +
+          0.4275 * temperature * Math.pow(windSpeed, 0.16);
+        const result = {
+          temperature,
+          windSpeed,
+          windChill: Math.round(windChill),
+          description: `With a temperature of ${temperature}°F and wind speed of ${windSpeed} mph, the wind chill feels like ${Math.round(windChill)}°F.`,
+        };
+        console.log(`Result: ${JSON.stringify(result)}`);
+        return result;
+      },
+    }),
+  },
+});
+
+try {
+  console.log("🌤️  Asking about weather in multiple cities...\n");
+
+  const result = await weatherAgent.generate({
+    prompt:
+      "You are a helpful weather assistant. When asked about weather, use the getWeather tool to provide accurate information.\n\nWhat is the weather like in San Francisco, CA and New York, NY? Also, if the wind speed in San Francisco is 15 mph, what would the wind chill feel like?"
+  });
+
+  console.log("=== Agent Response ===");
+  console.log(result.text);
+
+  console.log("\n=== Usage Statistics ===");
+  console.log(`Total tokens: ${result.usage?.totalTokens || "N/A"}`);
+  console.log(`Finish reason: ${result.finishReason}`);
+  console.log(`Steps taken: ${result.steps?.length || 0}`);
+
+  if (result.steps && result.steps.length > 0) {
+    console.log("\n=== Steps Breakdown ===");
+    result.steps.forEach((step, index) => {
+      console.log(`Step ${index + 1}: ${step.finishReason}`);
+      if (step.toolCalls && step.toolCalls.length > 0) {
+        console.log(
+          `  Tool calls: ${step.toolCalls.map((tc) => tc.toolName).join(", ")}`
+        );
+        step.toolCalls.forEach((tc, i) => {
+          console.log(
+            `    Tool ${i + 1}: ${tc.toolName}(${JSON.stringify(tc.input)})`
+          );
+        });
+      }
+    });
+  }
+} catch (error) {
+  console.error("❌ Error running agent:", error);
+  if (error instanceof Error) {
+    console.error("Error details:", error.message);
+  }
+}
+```
+
 ### Helicone Prompts Integration
 
 Use prompts created in your Helicone dashboard instead of hardcoding messages in your application:
@@ -299,7 +471,16 @@ const result = await generateText({
 
 ### Additional Examples
 
-For more comprehensive examples, check out the [GitHub repository](https://github.com/Helicone/ai-sdk-provider/tree/main/examples):
+For more comprehensive examples, check out the [GitHub repository](https://github.com/Helicone/ai-sdk-provider/tree/main/examples).
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
+## Additional Resources
+
+* [Vercel AI SDK Documentation](https://ai-sdk.dev/providers/community-providers/helicone)
+* [Helicone AI SDK Provider Github](https://github.com/Helicone/ai-sdk-provider)
 
 ## Related Documentation
 
@@ -336,9 +517,3 @@ For more comprehensive examples, check out the [GitHub repository](https://githu
     Reduce costs and latency with intelligent caching
   </Card>
 </CardGroup>
-
-## Additional Resources
-
-* [Vercel AI SDK Documentation](https://sdk.vercel.ai)
-* [Helicone AI SDK Provider GitHub](https://github.com/Helicone/ai-sdk-provider)
-* [Helicone AI SDK Provider on Vercel](https://ai-sdk.dev/providers/community-providers/helicone)

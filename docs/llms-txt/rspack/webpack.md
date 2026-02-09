@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/migration/webpack.md
 
-import { PackageManagerTabs } from '@theme';
-
 # Migrate from webpack
 
 Rspack's configuration is designed based on webpack, enabling you to migrate your project from webpack to Rspack with ease.
@@ -9,22 +7,60 @@ Rspack's configuration is designed based on webpack, enabling you to migrate you
 This document is primarily aimed at projects using webpack 5. Since Rspack's API and configuration align with webpack 5.
 For projects not using webpack 5, there are other migration guides that can be referenced:
 
-* For projects using webpack v4 or earlier versions, you can refer to [webpack - To v5 from v4](https://webpack.js.org/migrate/5/) to understand the differences.
-* For projects using create-react-app or CRACO, you can refer to [Migrating Create React App](/guide/migration/cra.md).
-* For projects using Vue CLI, you can refer to [Rsbuild - Migrating from Vue CLI](https://rsbuild.rs/guide/migration/vue-cli).
+- For projects using webpack v4 or earlier versions, you can refer to [webpack - To v5 from v4](https://webpack.js.org/migrate/5/) to understand the differences.
+- For projects using create-react-app or CRACO, you can refer to [Migrating Create React App](/guide/migration/cra.md).
+- For projects using Vue CLI, you can refer to [Rsbuild - Migrating from Vue CLI](https://rsbuild.rs/guide/migration/vue-cli).
 
 ## Installing Rspack
 
 In your project directory, install Rspack as a `devDependencies`:
 
-<PackageManagerTabs command="add @rspack/core @rspack/cli -D" />
+
+```sh [npm]
+npm add @rspack/core @rspack/cli -D
+```
+
+```sh [yarn]
+yarn add @rspack/core @rspack/cli -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/core @rspack/cli -D
+```
+
+```sh [bun]
+bun add @rspack/core @rspack/cli -D
+```
+
+```sh [deno]
+deno add npm:@rspack/core npm:@rspack/cli -D
+```
 
 Now you can remove the webpack-related dependencies from your project:
 
-<PackageManagerTabs command="remove webpack webpack-cli webpack-dev-server" />
+
+```sh [npm]
+npm remove webpack webpack-cli webpack-dev-server
+```
+
+```sh [yarn]
+yarn remove webpack webpack-cli webpack-dev-server
+```
+
+```sh [pnpm]
+pnpm remove webpack webpack-cli webpack-dev-server
+```
+
+```sh [bun]
+bun remove webpack webpack-cli webpack-dev-server
+```
+
+```sh [deno]
+deno remove npm:webpack npm:webpack-cli npm:webpack-dev-server
+```
 
 :::tip
-In some cases, you will still need to keep `webpack` as a dev dependency, such as when using [vue-loader](https://github.com/vuejs/vue-loader).
+In some cases, you will still need to keep `webpack` as a dev dependency, such as when using [vue-loader](https://github.com/vuejs/vue-loader) (you can use [rspack-vue-loader](https://github.com/rstackjs/rspack-vue-loader) instead).
 
 This is because these packages directly `import` subpaths of webpack and couple with webpack. If you encounter this issue, you can provide feedback to the maintainers of these plugins, asking them if they can make `webpack` an optional dependency.
 :::

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/prisma-postgres.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Prisma Postgres with Bun
 
 <Note>
@@ -60,7 +64,7 @@
   <Step title="Configure database connection">
     Set up your Postgres database URL in the `.env` file.
 
-    ```env .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
     DATABASE_URL="postgresql://username:password@localhost:5432/mydb?schema=public"
     ```
   </Step>

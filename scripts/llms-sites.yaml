@@ -8,14 +8,14 @@ sites:
   rate_limit_seconds: 5
 - name: agent
   base_url: https://docs.agent.ai/
-  description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics
-    of AI agents for beginners - [Co'
+  description: Agent AI documentation for building and understanding AI agents
 - name: agent-domain
   base_url: https://agentdomain.xyz/
   description: Agent Domain (.agent TLD) AI ecosystem
 - name: agent-client-protocol
   base_url: https://agentclientprotocol.com/
-  description: Agent Client Protocol (ACP) - standardizes communication between AI agents and client applications
+  description: Agent Client Protocol (ACP) - standardizes communication between AI
+    agents and client applications
 - name: agentskills-best
   base_url: https://agentskills.best/
   description: Agent Skills marketplace for Claude with tutorials and downloadable
@@ -62,10 +62,6 @@ sites:
 - name: aporia
   base_url: https://docs.aporia.com/
   description: Aporia ML observability and monitoring platform
-- name: apollo-graphql
-  base_url: https://www.apollographql.com/docs/
-  description: Apollo GraphQL platform - GraphQL client and server tools including
-    Apollo Client, Apollo Server, and GraphOS
 - name: appwrite
   base_url: https://appwrite.io/
   description: Open-source backend-as-a-service platform for web and mobile apps
@@ -100,7 +96,8 @@ sites:
   description: AWS SDK for Go (version 1) - Build Go applications that use AWS services
 - name: aws-sdk-go-v2
   base_url: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/
-  description: AWS SDK for Go v2 - Modern AWS SDK for Go with improved performance and features
+  description: AWS SDK for Go v2 - Modern AWS SDK for Go with improved performance
+    and features
 - name: astro
   base_url: https://docs.astro.build/
   description: Astro static site generator framework
@@ -149,9 +146,6 @@ sites:
 - name: braintrust
   base_url: https://www.braintrust.dev/docs/
   description: Braintrust LLM evaluation, logging, and prompt management platform
-- name: braintree
-  base_url: https://developer.paypal.com/braintree/
-  description: Braintree payment platform by PayPal
 - name: bun
   base_url: https://bun.sh/
   description: Bun JavaScript runtime and toolkit
@@ -221,6 +215,13 @@ sites:
 - name: cosette
   base_url: https://github.com/AnswerDotAI/cosette/blob/main/
   description: Cosette - Answer.AI OpenAI API wrapper
+- name: crawl4ai
+  base_url: https://api.crawl4ai.com/
+  description: Crawl4AI open-source web crawler optimized for LLM and AI applications
+- name: crafting
+  base_url: https://docs.sandboxes.cloud/
+  description: Crafting production-like cloud development environments for engineers
+    and AI agents
 - name: crewai
   base_url: https://docs.crewai.com/
   description: CrewAI multi-agent orchestration framework
@@ -230,6 +231,10 @@ sites:
 - name: daisyui
   base_url: https://daisyui.com/
   description: DaisyUI Tailwind CSS component library
+- name: datadog
+  base_url: https://docs.datadoghq.com/
+  description: Datadog observability platform with monitoring, logging, APM, security,
+    and incident management
 - name: dappier
   base_url: https://docs.dappier.com/
   description: Dappier real-time data platform for AI
@@ -244,7 +249,8 @@ sites:
   description: Daytona documentation
 - name: deepchecks
   base_url: https://deepchecks.com/
-  description: Deepchecks - Continuous validation for machine learning, LLM testing, evaluation, and monitoring
+  description: Deepchecks - Continuous validation for machine learning, LLM testing,
+    evaluation, and monitoring
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
@@ -311,9 +317,6 @@ sites:
 - name: fastcore
   base_url: https://fastcore.fast.ai/
   description: llms.txt - fastcore - Fast.ai
-- name: fasthtml
-  base_url: https://docs.fastht.ml/
-  description: FastHTML Python web framework
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
@@ -326,9 +329,6 @@ sites:
 - name: fireworks
   base_url: https://docs.fireworks.ai/
   description: Fireworks AI inference platform and API
-- name: fireworks-ai
-  base_url: https://docs.fireworks.ai/
-  description: Fireworks AI inference platform
 - name: flatfile
   base_url: https://flatfile.com/docs/
   description: Flatfile data import and transformation platform
@@ -358,7 +358,8 @@ sites:
   description: Giselles AI automation and workflow platform
 - name: gigaspaces
   base_url: https://gigaspaces.com/
-  description: GigaSpaces - in-memory computing platform for enterprise caching and AI-powered data
+  description: GigaSpaces - in-memory computing platform for enterprise caching and
+    AI-powered data
 - name: gitbook
   base_url: https://gitbook.com/docs/
   description: GitBook documentation platform
@@ -373,8 +374,8 @@ sites:
   description: Glide no-code app builder
 - name: gofastmcp
   base_url: https://gofastmcp.com/
-  description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle
-    ... python-sdk/fastmcp-cli-__i'
+  description: GoFastMCP - Fast Model Context Protocol (MCP) client implementation
+    in Go
 - name: gradio
   base_url: https://www.gradio.app/
   description: Python library for building ML web apps with comprehensive API reference
@@ -413,8 +414,7 @@ sites:
   description: Hugging Face Diffusers for image generation
 - name: huggingface-docs-hub
   base_url: https://huggingface.co/docs/hub/
-  description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker
-    ... llm.md) - [Use O'
+  description: Hugging Face Hub documentation for models, datasets, spaces, and repositories
 - name: huggingface-hub
   base_url: https://huggingface-projects-docs-llms-txt.hf.space/huggingface_hub/
   description: Hugging Face Hub Python client
@@ -447,6 +447,10 @@ sites:
 - name: inkeep
   base_url: https://docs.inkeep.com/
   description: Inkeep AI-powered documentation search
+- name: ironclad
+  base_url: https://clickwrap-developer.ironcladapp.com/
+  description: Ironclad Clickwrap API and SDK documentation for digital agreement
+    automation
 - name: inngest
   base_url: https://www.inngest.com/
   description: Inngest workflow orchestration platform
@@ -551,9 +555,6 @@ sites:
 - name: lm-studio
   base_url: https://lmstudio.ai/
   description: LM Studio local LLM development and inference
-- name: lmstudio
-  base_url: https://lmstudio.ai/
-  description: LM Studio local LLM runner
 - name: lobehub
   base_url: https://lobehub.com/
   description: LobeHub open source AI assistant
@@ -610,7 +611,8 @@ sites:
   description: NativeScript cross-platform framework
 - name: n8n
   base_url: https://docs.n8n.io/
-  description: n8n workflow automation platform with nodes, workflows, expressions, and API documentation
+  description: n8n workflow automation platform with nodes, workflows, expressions,
+    and API documentation
 - name: neon
   base_url: https://neon.com/
   description: Neon serverless Postgres database platform
@@ -671,7 +673,8 @@ sites:
   description: OpenRouter AI model aggregator and API
 - name: oxc
   base_url: https://oxc.rs/
-  description: Oxc - high-performance JavaScript/TypeScript toolchain written in Rust with linter and formatter
+  description: Oxc - high-performance JavaScript/TypeScript toolchain written in Rust
+    with linter and formatter
 - name: oxla
   base_url: https://docs.oxla.com/
   description: Oxla distributed SQL database
@@ -729,7 +732,8 @@ sites:
   description: Promptfoo LLM testing framework
 - name: promptlayer
   base_url: https://docs.promptlayer.com/
-  description: PromptLayer prompt versioning, logging, and A/B testing platform for LLMs
+  description: PromptLayer prompt versioning, logging, and A/B testing platform for
+    LLMs
 - name: pydantic
   base_url: https://docs.pydantic.dev/latest/
   description: Pydantic Python data validation library with comprehensive docs and
@@ -796,6 +800,9 @@ sites:
 - name: rspack
   base_url: https://rspack.dev/
   description: Rspack Rust-based bundler
+- name: runpod
+  base_url: https://docs.runpod.io/
+  description: RunPod GPU cloud computing platform - serverless endpoints, pods, templates, and SDK
 - name: saaspegasus
   base_url: https://docs.saaspegasus.com/
   description: Saaspegasus documentation
@@ -831,16 +838,15 @@ sites:
   description: Solidfi documentation
 - name: snyk
   base_url: https://docs.snyk.io/
-  description: Snyk security-focused code scanner detecting vulnerabilities in code and dependencies
+  description: Snyk security-focused code scanner detecting vulnerabilities in code
+    and dependencies
 - name: sourcegraph
   base_url: https://sourcegraph.com/docs/
   description: Sourcegraph code intelligence platform
 - name: sonarcloud
   base_url: https://docs.sonarsource.com/
-  description: SonarCloud cloud-based code quality and security platform with TypeScript and 26+ language support
-- name: sonarqube
-  base_url: https://docs.sonarsource.com/
-  description: SonarQube enterprise static analysis platform for code quality and security analysis across 26+ programming languages
+  description: SonarCloud cloud-based code quality and security platform with TypeScript
+    and 26+ language support
 - name: spacetimedb
   base_url: https://spacetimedb.com/
   description: SpacetimeDB serverless database
@@ -903,7 +909,8 @@ sites:
   description: Trigger.dev background job orchestration platform
 - name: traceloop
   base_url: https://www.traceloop.com/docs/
-  description: OpenLLMetry - open-source observability SDK for LLM applications based on OpenTelemetry
+  description: OpenLLMetry - open-source observability SDK for LLM applications based
+    on OpenTelemetry
 - name: turbo
   base_url: https://turbo.build/
   description: Turborepo monorepo build system
@@ -1059,9 +1066,6 @@ sites:
 - name: seed-design-breeze
   base_url: https://seed-design.io/breeze/
   description: Seed Design Breeze component library
-- name: svelte-typescript
-  base_url: https://svelte.dev/
-  description: Svelte TypeScript documentation
 - name: langgraph-js
   base_url: https://langchain-ai.github.io/langgraphjs/
   description: LangGraph.js documentation

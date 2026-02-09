@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/upgrade-redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade Redis
 
 This guide covers how to upgrade a Redis [Database](/core-concepts/managed-databases/managing-databases/overview) to a newer release.

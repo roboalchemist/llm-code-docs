@@ -1,55 +1,57 @@
 # Source: https://docs.squared.ai/api-reference/connector_definitions/connector_definitions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connector Definitions
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/connector_definitions
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connector_definitions
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        type:
+  /api/v1/connector_definitions:
+    get:
+      tags:
+        - Connector Definitions
+      summary: Retrieve connector definitions based on type
+      parameters:
+        - name: type
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - source
-                - destination
-              required: true
-              description: Type of the connector (source or destination)
-        category:
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector (source or destination)
+        - name: category
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - data
-                - ai_ml
-              required: true
-              description: Category of the connector
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - type: object
+            type: string
+            enum:
+              - data
+              - ai_ml
+          description: Category of the connector
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
                   properties:
                     name:
                       type: string
@@ -81,27 +83,13 @@ paths:
                         connection_specification:
                           type: object
                           additionalProperties: true
-        examples:
-          example:
-            value:
-              - name: <string>
-                connector_type: <string>
-                connector_subtype: <string>
-                documentation_url: <string>
-                github_issue_label: <string>
-                icon: <string>
-                license: <string>
-                release_stage: <string>
-                support_level: <string>
-                tags:
-                  - <string>
-                connector_spec:
-                  documentation_url: <string>
-                  connection_specification: {}
-        description: Successful response
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

@@ -4,11 +4,7 @@
 
 The organization plugin allows you to manage your organization's members and teams.
 
-***
 
-title: Organization
-description: The organization plugin allows you to manage your organization's members and teams.
-------------------------------------------------------------------------------------------------
 
 Organizations simplifies user access and permissions management. Assign roles and permissions to streamline project management, team coordination, and partnerships.
 
@@ -37,7 +33,7 @@ Organizations simplifies user access and permissions management. Assign roles an
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -83,7 +79,7 @@ Organizations simplifies user access and permissions management. Assign roles an
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -156,6 +152,7 @@ Once you've installed the plugin, you can start using the organization plugin to
 
 ### Create an organization
 
+
 ### Client Side
 
 ```ts
@@ -190,34 +187,35 @@ const data = await auth.api.createOrganization({
 
 ```ts
 type createOrganization = {
-  /**
-  * The organization name.
-  */
-  name: string = "My Organization"
-  /**
-  * The organization slug.
-  */
-  slug: string = "my-org"
-  /**
-  * The organization logo.
-  */
-  logo?: string = "https://example.com/logo.png"
-  /**
-  * The metadata of the organization.
-  */
-  metadata?: Record<string, any>
-  /**
-  * The user ID of the organization creator.
-  * @serverOnly - This is ignored if session headers are provided.
-  */
-  userId?: string = "some_user_id"
-  /**
-  * Whether to keep the current active organization active after creating a new one.
-  */
-  keepCurrentActiveOrganization?: boolean = false
-
+    /**
+    * The organization name.
+    */
+    name: string = "My Organization"
+    /**
+    * The organization slug.
+    */
+    slug: string = "my-org"
+    /**
+    * The organization logo.
+    */
+    logo?: string = "https://example.com/logo.png"
+    /**
+    * The metadata of the organization.
+    */
+    metadata?: Record<string, any>
+    /**
+    * The user ID of the organization creator.
+    * @serverOnly - This is ignored if session headers are provided.
+    */
+    userId?: string = "some_user_id"
+    /**
+    * Whether to keep the current active organization active after creating a new one.
+    */
+    keepCurrentActiveOrganization?: boolean = false
+  
 }
 ```
+
 
 <Callout type="warn">
   **Mutually Exclusive Parameters**
@@ -256,6 +254,7 @@ const auth = betterAuth({
 
 To check if an organization slug is taken or not you can use the `checkSlug` function provided by the client. The function takes an object with the following properties:
 
+
 ### Client Side
 
 ```ts
@@ -278,13 +277,14 @@ const data = await auth.api.checkOrganizationSlug({
 
 ```ts
 type checkOrganizationSlug = {
-    /**
-     * The organization slug to check.  
-     */
-    slug: string = "my-org"
-
+      /**
+       * The organization slug to check.  
+       */
+      slug: string = "my-org"
+  
 }
 ```
+
 
 ### Organization Hooks
 
@@ -728,6 +728,7 @@ To list the organizations that a user is a member of, you can use `useListOrgani
 
 Or alternatively, you can call `organization.list` if you don't want to use a hook.
 
+
 ### Client Side
 
 ```ts
@@ -752,6 +753,7 @@ type listOrganizations = {
 }
 ```
 
+
 ### Active Organization
 
 Active organization is the workspace the user is currently working on. By default when the user is signed in the active organization is set to `null`. You can set the active organization to the user session.
@@ -771,6 +773,7 @@ You can set the active organization by calling the `organization.setActive` func
   organization. In this case, you can call this endpoint with `organizationId`
   set to `null`.
 </Callout>
+
 
 ### Client Side
 
@@ -798,17 +801,18 @@ const data = await auth.api.setActiveOrganization({
 
 ```ts
 type setActiveOrganization = {
-    /**
-     * The organization ID to set as active. It can be null to unset the active organization.  
-     */
-    organizationId?: string | null = "org-id"
-    /**
-     * The organization slug to set as active. It can be null to unset the active organization if organizationId is not provided.  
-     */
-    organizationSlug?: string = "org-slug"
-
+      /**
+       * The organization ID to set as active. It can be null to unset the active organization.  
+       */
+      organizationId?: string | null = "org-id"
+      /**
+       * The organization slug to set as active. It can be null to unset the active organization if organizationId is not provided.  
+       */
+      organizationSlug?: string = "org-slug"
+  
 }
 ```
+
 
 To automatically set an active organization when a session is created, you can use [database hooks](/docs/concepts/database#database-hooks). You'll need to implement logic to determine which organization to set as the initial active organization.
 
@@ -902,6 +906,7 @@ To retrieve the active organization for the user, you can call the `useActiveOrg
 To get the full details of an organization, you can use the `getFullOrganization` function.
 By default, if you don't pass any properties, it will use the active organization.
 
+
 ### Client Side
 
 ```ts
@@ -930,25 +935,27 @@ const data = await auth.api.getFullOrganization({
 
 ```ts
 type getFullOrganization = {
-    /**
-     * The organization ID to get. By default, it will use the active organization.  
-     */
-    organizationId?: string = "org-id"
-    /**
-     * The organization slug to get.  
-     */
-    organizationSlug?: string = "org-slug"
-    /**
-     * The limit of members to get. By default, it uses the membershipLimit option which defaults to 100.
-     */
-    membersLimit?: number = 100
-
+      /**
+       * The organization ID to get. By default, it will use the active organization.  
+       */
+      organizationId?: string = "org-id"
+      /**
+       * The organization slug to get.  
+       */
+      organizationSlug?: string = "org-slug"
+      /**
+       * The limit of members to get. By default, it uses the membershipLimit option which defaults to 100.
+       */
+      membersLimit?: number = 100
+  
 }
 ```
+
 
 ### Update Organization
 
 To update organization info, you can use `organization.update`
+
 
 ### Client Side
 
@@ -982,32 +989,34 @@ const data = await auth.api.updateOrganization({
 
 ```ts
 type updateOrganization = {
-    /**
-     * A partial list of data to update the organization. 
-     */
-    data: {
-        /**
-         * The name of the organization. 
-         */
-        name?: string = "updated-name"
-        /**
-         * The slug of the organization. 
-         */
-        slug?: string = "updated-slug"
-        /**
-         * The logo of the organization. 
-         */
-        logo?: string = "new-logo.url"
-        /**
-         * The metadata of the organization. 
-         */
-        metadata?: Record<string, any> | null = { customerId: "test" 
+      /**
+       * A partial list of data to update the organization. 
+       */
+      data: {
+          /**
+           * The name of the organization. 
+           */
+          name?: string = "updated-name"
+          /**
+           * The slug of the organization. 
+           */
+          slug?: string = "updated-slug"
+          /**
+           * The logo of the organization. 
+           */
+          logo?: string = "new-logo.url"
+          /**
+           * The metadata of the organization. 
+           */
+          metadata?: Record<string, any> | null = { customerId: "test" 
 }
 ```
+
 
 ### Delete Organization
 
 To remove user owned organization, you can use `organization.delete`
+
 
 ### Client Side
 
@@ -1033,13 +1042,14 @@ const data = await auth.api.deleteOrganization({
 
 ```ts
 type deleteOrganization = {
-    /*
-    * The organization ID to delete.
-    */
-    organizationId: string = "org-id"
-
+      /*
+      * The organization ID to delete.
+      */
+      organizationId: string = "org-id"
+  
 }
 ```
+
 
 If the user has the necessary permissions (by default: role is owner) in the specified organization, all members, invitations and organization information will be removed.
 
@@ -1099,6 +1109,7 @@ export const auth = betterAuth({
 
 To invite users to an organization, you can use the `invite` function provided by the client. The `invite` function takes an object with the following properties:
 
+
 ### Client Side
 
 ```ts
@@ -1131,29 +1142,30 @@ const data = await auth.api.createInvitation({
 
 ```ts
 type createInvitation = {
-    /**
-     * The email address of the user to invite.  
-     */
-    email: string = "example@gmail.com"
-    /**
-     * The role(s) to assign to the user. It can be `admin`, `member`, `owner`
-     */
-    role: string | string[] = "member"
-    /**
-     * The organization ID to invite the user to. Defaults to the active organization.  
-     */
-    organizationId?: string = "org-id"
-    /**
-     * Resend the invitation email, if the user is already invited.  
-     */
-    resend?: boolean = true
-    /**
-     * The team ID to invite the user to.  
-     */
-    teamId?: string = "team-id"
-
+      /**
+       * The email address of the user to invite.  
+       */
+      email: string = "example@gmail.com"
+      /**
+       * The role(s) to assign to the user. It can be `admin`, `member`, `owner`
+       */
+      role: string | string[] = "member"
+      /**
+       * The organization ID to invite the user to. Defaults to the active organization.  
+       */
+      organizationId?: string = "org-id"
+      /**
+       * Resend the invitation email, if the user is already invited.  
+       */
+      resend?: boolean = true
+      /**
+       * The team ID to invite the user to.  
+       */
+      teamId?: string = "team-id"
+  
 }
 ```
+
 
 <Callout>
   * If the user is already a member of the organization, the invitation will be
@@ -1169,6 +1181,7 @@ type createInvitation = {
 When a user receives an invitation email, they can click on the invitation link to accept the invitation. The invitation link should include the invitation ID, which will be used to accept the invitation.
 
 Make sure to call the `acceptInvitation` function after the user is logged in.
+
 
 ### Client Side
 
@@ -1194,13 +1207,14 @@ const data = await auth.api.acceptInvitation({
 
 ```ts
 type acceptInvitation = {
-    /**
-     * The ID of the invitation to accept.  
-     */
-    invitationId: string = "invitation-id"
-
+      /**
+       * The ID of the invitation to accept.  
+       */
+      invitationId: string = "invitation-id"
+  
 }
 ```
+
 
 #### Email Verification Requirement
 
@@ -1228,6 +1242,7 @@ If a user has sent out an invitation, you can use this method to cancel it.
 
 If you're looking for how a user can reject an invitation, you can find that [here](#reject-invitation).
 
+
 ### Client Side
 
 ```ts
@@ -1252,17 +1267,19 @@ await auth.api.cancelInvitation({
 
 ```ts
 type cancelInvitation = {
-    /**
-     * The ID of the invitation to cancel.  
-     */
-    invitationId: string = "invitation-id"
-
+      /**
+       * The ID of the invitation to cancel.  
+       */
+      invitationId: string = "invitation-id"
+  
 }
 ```
+
 
 ### Reject Invitation
 
 If this user has received an invitation, but wants to decline it, this method will allow you to do so by rejecting it.
+
 
 ### Client Side
 
@@ -1288,13 +1305,14 @@ await auth.api.rejectInvitation({
 
 ```ts
 type rejectInvitation = {
-    /**
-     * The ID of the invitation to reject.  
-     */
-    invitationId: string = "invitation-id"
-
+      /**
+       * The ID of the invitation to reject.  
+       */
+      invitationId: string = "invitation-id"
+  
 }
 ```
+
 
 <Callout type="info">
   Like accepting invitations, rejecting invitations also requires email
@@ -1306,6 +1324,7 @@ type rejectInvitation = {
 ### Get Invitation
 
 To get an invitation you can use the `organization.getInvitation` function provided by the client. You need to provide the invitation id as a query parameter.
+
 
 ### Client Side
 
@@ -1331,17 +1350,19 @@ const data = await auth.api.getInvitation({
 
 ```ts
 type getInvitation = {
-    /**
-     * The ID of the invitation to get.  
-     */
-    id: string = "invitation-id"
-
+      /**
+       * The ID of the invitation to get.  
+       */
+      id: string = "invitation-id"
+  
 }
 ```
+
 
 ### List Invitations
 
 To list all invitations for a given organization you can use the `listInvitations` function provided by the client.
+
 
 ### Client Side
 
@@ -1367,13 +1388,14 @@ const data = await auth.api.listInvitations({
 
 ```ts
 type listInvitations = {
-    /**
-     * An optional ID of the organization to list invitations for. If not provided, will default to the user's active organization. 
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * An optional ID of the organization to list invitations for. If not provided, will default to the user's active organization. 
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 ### List user invitations
 
@@ -1403,6 +1425,7 @@ const invitations = await auth.api.listUserInvitations({
 ### List Members
 
 To list all members of an organization you can use the `listMembers` function.
+
 
 ### Client Side
 
@@ -1442,45 +1465,47 @@ const data = await auth.api.listMembers({
 
 ```ts
 type listMembers = {
-    /**
-     * An optional organization ID to list members for. If not provided, will default to the user's active organization.
-     */
-    organizationId?: string = "organization-id"
-    /**
-     * The limit of members to return.
-     */
-    limit?: number = 100
-    /**
-     * The offset to start from.
-     */
-    offset?: number = 0
-    /**
-     * The field to sort by.
-     */
-    sortBy?: string = "createdAt"
-    /**
-     * The direction to sort by.
-     */
-    sortDirection?: "asc" | "desc" = "desc"
-    /**
-     * The field to filter by.
-     */
-    filterField?: string = "createdAt"
-    /**
-     * The operator to filter by.
-     */
-    filterOperator?: "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "in" | "nin" | "contains" = "eq"
-    /**
-     * The value to filter by.
-     */
-    filterValue?: string = "value"
-
+      /**
+       * An optional organization ID to list members for. If not provided, will default to the user's active organization.
+       */
+      organizationId?: string = "organization-id"
+      /**
+       * The limit of members to return.
+       */
+      limit?: number = 100
+      /**
+       * The offset to start from.
+       */
+      offset?: number = 0
+      /**
+       * The field to sort by.
+       */
+      sortBy?: string = "createdAt"
+      /**
+       * The direction to sort by.
+       */
+      sortDirection?: "asc" | "desc" = "desc"
+      /**
+       * The field to filter by.
+       */
+      filterField?: string = "createdAt"
+      /**
+       * The operator to filter by.
+       */
+      filterOperator?: "eq" | "ne" | "gt" | "gte" | "lt" | "lte" | "in" | "nin" | "contains" = "eq"
+      /**
+       * The value to filter by.
+       */
+      filterValue?: string = "value"
+  
 }
 ```
+
 
 ### Remove Member
 
 To remove you can use `organization.removeMember`
+
 
 ### Client Side
 
@@ -1508,21 +1533,23 @@ const data = await auth.api.removeMember({
 
 ```ts
 type removeMember = {
-    /**
-     * The ID or email of the member to remove. 
-     */
-    memberIdOrEmail: string = "user@example.com"
-    /**
-     * The ID of the organization to remove the member from. If not provided, the active organization will be used. 
-     */
-    organizationId?: string = "org-id"
-
+      /**
+       * The ID or email of the member to remove. 
+       */
+      memberIdOrEmail: string = "user@example.com"
+      /**
+       * The ID of the organization to remove the member from. If not provided, the active organization will be used. 
+       */
+      organizationId?: string = "org-id"
+  
 }
 ```
+
 
 ### Update Member Role
 
 To update the role of a member in an organization, you can use the `organization.updateMemberRole`. If the user has the permission to update the role of the member, the role will be updated.
+
 
 ### Client Side
 
@@ -1552,25 +1579,27 @@ await auth.api.updateMemberRole({
 
 ```ts
 type updateMemberRole = {
-    /**
-     * The new role to be applied. This can be a string or array of strings representing the roles. 
-     */
-    role: string | string[] = ["admin", "sale"]
-    /**
-     * The member id to apply the role update to. 
-     */
-    memberId: string = "member-id"
-    /**
-     * An optional organization ID which the member is a part of to apply the role update. If not provided, you must provide session headers to get the active organization. 
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The new role to be applied. This can be a string or array of strings representing the roles. 
+       */
+      role: string | string[] = ["admin", "sale"]
+      /**
+       * The member id to apply the role update to. 
+       */
+      memberId: string = "member-id"
+      /**
+       * An optional organization ID which the member is a part of to apply the role update. If not provided, you must provide session headers to get the active organization. 
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 ### Get Active Member
 
 To get the current member of the active organization you can use the `organization.getActiveMember` function. This function will return the user's member details in their active organization.
+
 
 ### Client Side
 
@@ -1596,9 +1625,11 @@ type getActiveMember = {
 }
 ```
 
+
 ### Get Active Member Role
 
 To get the current role member of the active organization you can use the `organization.getActiveMemberRole` function. This function will return the user's member role in their active organization.
+
 
 ### Client Side
 
@@ -1624,9 +1655,11 @@ type getActiveMemberRole = {
 }
 ```
 
+
 ### Add Member
 
 If you want to add a member directly to an organization without sending an invitation, you can use the `addMember` function which can only be invoked on the server.
+
 
 ### Client Side
 
@@ -1656,29 +1689,31 @@ const data = await auth.api.addMember({
 
 ```ts
 type addMember = {
-    /**
-     * The user ID which represents the user to be added as a member. If `null` is provided, then it's expected to provide session headers. 
-     */
-    userId?: string | null = "user-id"
-    /**
-     * The role(s) to assign to the new member. 
-     */
-    role: string | string[] = ["admin", "sale"]
-    /**
-     * An optional organization ID to pass. If not provided, will default to the user's active organization. 
-     */
-    organizationId?: string = "org-id"
-    /**
-     * An optional team ID to add the member to. 
-     */
-    teamId?: string = "team-id"
-
+      /**
+       * The user ID which represents the user to be added as a member. If `null` is provided, then it's expected to provide session headers. 
+       */
+      userId?: string | null = "user-id"
+      /**
+       * The role(s) to assign to the new member. 
+       */
+      role: string | string[] = ["admin", "sale"]
+      /**
+       * An optional organization ID to pass. If not provided, will default to the user's active organization. 
+       */
+      organizationId?: string = "org-id"
+      /**
+       * An optional team ID to add the member to. 
+       */
+      teamId?: string = "team-id"
+  
 }
 ```
+
 
 ### Leave Organization
 
 To leave organization you can use `organization.leave` function. This function will remove the current user from the organization.
+
 
 ### Client Side
 
@@ -1704,13 +1739,14 @@ await auth.api.leaveOrganization({
 
 ```ts
 type leaveOrganization = {
-    /**
-     * The organization ID for the member to leave. 
-     */
-    organizationId: string = "organization-id"
-
+      /**
+       * The organization ID for the member to leave. 
+       */
+      organizationId: string = "organization-id"
+  
 }
 ```
+
 
 ## Access Control
 
@@ -2014,6 +2050,7 @@ Only users with roles which contain the `ac` resource with the `create` permissi
 By default, only the `admin` and `owner` roles have this permission. You also cannot add permissions that your
 current role in that organization can't already access.
 
+
 ### Client Side
 
 ```ts
@@ -2042,28 +2079,30 @@ await auth.api.createOrgRole({
 
 ```ts
 type createOrgRole = {
-    /**
-     * A unique name of the role to create.
-     */
-    role: string = "my-unique-role"
-    /**
-     * The permissions to assign to the role.
-     */
-    permission?: Record<string, string[]> = permission,
-    /**
-     * The organization ID which the role will be created in. Defaults to the active organization.
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * A unique name of the role to create.
+       */
+      role: string = "my-unique-role"
+      /**
+       * The permissions to assign to the role.
+       */
+      permission?: Record<string, string[]> = permission,
+      /**
+       * The organization ID which the role will be created in. Defaults to the active organization.
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
 
-Now you can freely call [`updateMemberRole`](#updating-a-member-role) to update the role of a member with your newly created role!
+
+Now you can freely call [`updateMemberRole`](#update-member-role) to update the role of a member with your newly created role!
 
 ### Deleting a role
 
 To delete a role, you can use the `deleteRole` function, then provide either a `roleName` or `roleId` parameter along
 with the `organizationId` parameter.
+
 
 ### Client Side
 
@@ -2093,26 +2132,28 @@ await auth.api.deleteOrgRole({
 
 ```ts
 type deleteOrgRole = {
-    /**
-     * The name of the role to delete. Alternatively, you can pass a `roleId` parameter instead.
-     */
-    roleName?: string = "my-role"
-    /**
-     * The id of the role to delete. Alternatively, you can pass a `roleName` parameter instead.
-     */
-    roleId?: string = "role-id"
-    /**
-     * The organization ID which the role will be deleted in. Defaults to the active organization.
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The name of the role to delete. Alternatively, you can pass a `roleId` parameter instead.
+       */
+      roleName?: string = "my-role"
+      /**
+       * The id of the role to delete. Alternatively, you can pass a `roleName` parameter instead.
+       */
+      roleId?: string = "role-id"
+      /**
+       * The organization ID which the role will be deleted in. Defaults to the active organization.
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 ### Listing roles
 
 To list roles, you can use the `listOrgRoles` function.
 This requires the `ac` resource with the `read` permission for the member to be able to list roles.
+
 
 ### Client Side
 
@@ -2138,18 +2179,20 @@ const roles = await auth.api.listOrgRoles({
 
 ```ts
 type listOrgRoles = {
-    /**
-     * The organization ID which the roles are under to list. Defaults to the user's active organization. 
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The organization ID which the roles are under to list. Defaults to the user's active organization. 
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 ### Getting a specific role
 
 To get a specific role, you can use the `getOrgRole` function and pass either a `roleName` or `roleId` parameter.
 This requires the `ac` resource with the `read` permission for the member to be able to get a role.
+
 
 ### Client Side
 
@@ -2179,25 +2222,27 @@ const role = await auth.api.getOrgRole({
 
 ```ts
 type getOrgRole = {
-    /**
-     * The name of the role to get. Alternatively, you can pass a `roleId` parameter instead.
-     */
-    roleName?: string = "my-role"
-    /**
-     * The id of the role to get. Alternatively, you can pass a `roleName` parameter instead.
-     */
-    roleId?: string = "role-id"
-    /**
-     * The organization ID from which the role will be retrieved. Defaults to the active organization.
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The name of the role to get. Alternatively, you can pass a `roleId` parameter instead.
+       */
+      roleName?: string = "my-role"
+      /**
+       * The id of the role to get. Alternatively, you can pass a `roleName` parameter instead.
+       */
+      roleId?: string = "role-id"
+      /**
+       * The organization ID from which the role will be retrieved. Defaults to the active organization.
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 ### Updating a role
 
 To update a role, you can use the `updateOrgRole` function and pass either a `roleName` or `roleId` parameter.
+
 
 ### Client Side
 
@@ -2231,28 +2276,29 @@ const updatedRole = await auth.api.updateOrgRole({
 
 ```ts
 type updateOrgRole = {
-    /**
-     * The name of the role to update. Alternatively, you can pass a `roleId` parameter instead.
-     */
-    roleName?: string = "my-role"
-    /**
-     * The id of the role to update. Alternatively, you can pass a `roleName` parameter instead.
-     */
-    roleId?: string = "role-id"
-    /**
-     * The organization ID which the role will be updated in. Defaults to the active organization.
-     */
-    organizationId?: string = "organization-id"
-    /**
-     * The data which will be updated
-    */
-    data: {
       /**
-       * Optionally update the permissions of the role.
+       * The name of the role to update. Alternatively, you can pass a `roleId` parameter instead.
        */
-      permission?: Record<string, string[]> = { project: ["create", "update", "delete"] 
+      roleName?: string = "my-role"
+      /**
+       * The id of the role to update. Alternatively, you can pass a `roleName` parameter instead.
+       */
+      roleId?: string = "role-id"
+      /**
+       * The organization ID which the role will be updated in. Defaults to the active organization.
+       */
+      organizationId?: string = "organization-id"
+      /**
+       * The data which will be updated
+      */
+      data: {
+        /**
+         * Optionally update the permissions of the role.
+         */
+        permission?: Record<string, string[]> = { project: ["create", "update", "delete"] 
 }
 ```
+
 
 ### Configuration Options
 
@@ -2406,6 +2452,7 @@ export const authClient = createAuthClient({
 
 Create a new team within an organization:
 
+
 ### Client Side
 
 ```ts
@@ -2430,21 +2477,23 @@ const data = await auth.api.createTeam({
 
 ```ts
 type createTeam = {
-    /**
-     * The name of the team. 
-     */
-    name: string = "my-team"
-    /**
-     * The organization ID which the team will be created in. Defaults to the active organization. 
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The name of the team. 
+       */
+      name: string = "my-team"
+      /**
+       * The organization ID which the team will be created in. Defaults to the active organization. 
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 #### List Teams
 
 Get all teams in an organization:
+
 
 ### Client Side
 
@@ -2470,17 +2519,19 @@ const data = await auth.api.listOrganizationTeams({
 
 ```ts
 type listOrganizationTeams = {
-    /**
-    * The organization ID which the teams are under to list. Defaults to the user's active organization. 
-    */
-    organizationId?: string = "organization-id"
-
+      /**
+      * The organization ID which the teams are under to list. Defaults to the user's active organization. 
+      */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 #### Update Team
 
 Update a team's details:
+
 
 ### Client Side
 
@@ -2516,37 +2567,39 @@ const data = await auth.api.updateTeam({
 
 ```ts
 type updateTeam = {
-    /**
-     * The ID of the team to be updated. 
-     */
-    teamId: string = "team-id"
-    /**
-     * A partial object containing options for you to update.
-     */
-    data: {
-        /**
-         * The name of the team to be updated.
-         */
-        name?: string = "My new team name"
-        /**
-         * The organization ID which the team falls under.
-         */
-        organizationId?: string = "My new organization ID for this team"
-        /**
-         * The timestamp of when the team was created.
-         */
-        createdAt?: Date = new Date()
-        /**
-         * The timestamp of when the team was last updated.
-         */
-        updatedAt?: Date = new Date()
-    
+      /**
+       * The ID of the team to be updated. 
+       */
+      teamId: string = "team-id"
+      /**
+       * A partial object containing options for you to update.
+       */
+      data: {
+          /**
+           * The name of the team to be updated.
+           */
+          name?: string = "My new team name"
+          /**
+           * The organization ID which the team falls under.
+           */
+          organizationId?: string = "My new organization ID for this team"
+          /**
+           * The timestamp of when the team was created.
+           */
+          createdAt?: Date = new Date()
+          /**
+           * The timestamp of when the team was last updated.
+           */
+          updatedAt?: Date = new Date()
+      
 }
 ```
+
 
 #### Remove Team
 
 Delete a team from an organization:
+
 
 ### Client Side
 
@@ -2572,21 +2625,23 @@ const data = await auth.api.removeTeam({
 
 ```ts
 type removeTeam = {
-    /**
-     * The team ID of the team to remove. 
-     */
-    teamId: string = "team-id"
-    /**
-     * The organization ID which the team falls under. If not provided, it will default to the user's active organization. 
-     */
-    organizationId?: string = "organization-id"
-
+      /**
+       * The team ID of the team to remove. 
+       */
+      teamId: string = "team-id"
+      /**
+       * The organization ID which the team falls under. If not provided, it will default to the user's active organization. 
+       */
+      organizationId?: string = "organization-id"
+  
 }
 ```
+
 
 #### Set Active Team
 
 Sets the given team as the current active team. If `teamId` is `null` the current active team is unset.
+
 
 ### Client Side
 
@@ -2612,17 +2667,19 @@ const data = await auth.api.setActiveTeam({
 
 ```ts
 type setActiveTeam = {
-    /**
-     * The team ID of the team to set as the current active team.
-     */
-    teamId?: string = "team-id"
-
+      /**
+       * The team ID of the team to set as the current active team.
+       */
+      teamId?: string = "team-id"
+  
 }
 ```
+
 
 #### List User Teams
 
 List all teams that the current user is a part of.
+
 
 ### Client Side
 
@@ -2648,9 +2705,11 @@ type listUserTeams = {
 }
 ```
 
+
 #### List Team Members
 
 List the members of the given team.
+
 
 ### Client Side
 
@@ -2676,17 +2735,19 @@ const data = await auth.api.listTeamMembers({
 
 ```ts
 type listTeamMembers = {
-    /**
-     * The team whose members we should return. If this is not provided the members of the current active team get returned.
-     */
-    teamId?: string = "team-id"
-
+      /**
+       * The team whose members we should return. If this is not provided the members of the current active team get returned.
+       */
+      teamId?: string = "team-id"
+  
 }
 ```
+
 
 #### Add Team Member
 
 Add a member to a team.
+
 
 ### Client Side
 
@@ -2714,21 +2775,23 @@ const data = await auth.api.addTeamMember({
 
 ```ts
 type addTeamMember = {
-    /**
-     * The team the user should be a member of.
-     */
-    teamId: string = "team-id"
-    /**
-     * The user ID which represents the user to be added as a member.
-     */
-    userId: string = "user-id"
-
+      /**
+       * The team the user should be a member of.
+       */
+      teamId: string = "team-id"
+      /**
+       * The user ID which represents the user to be added as a member.
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 #### Remove Team Member
 
 Remove a member from a team.
+
 
 ### Client Side
 
@@ -2756,17 +2819,18 @@ const data = await auth.api.removeTeamMember({
 
 ```ts
 type removeTeamMember = {
-    /**
-     * The team the user should be removed from.
-     */
-    teamId: string = "team-id"
-    /**
-     * The user which should be removed from the team.
-     */
-    userId: string = "user-id"
-
+      /**
+       * The team the user should be removed from.
+       */
+      teamId: string = "team-id"
+      /**
+       * The user which should be removed from the team.
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ### Team Permissions
 

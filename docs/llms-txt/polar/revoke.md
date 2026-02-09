@@ -4,301 +4,195 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
 
-# Source: https://polar.sh/docs/api-reference/subscriptions/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-seats/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/subscriptions/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-seats/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/subscriptions/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-seats/revoke.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Revoke Seat
 
-> **Scopes**: `customer_portal:write`
+
 
 ## OpenAPI
 
 ````yaml delete /v1/customer-portal/seats/{seat_id}
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customer-portal/seats/{seat_id}
-  method: delete
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: customer session
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Customer session tokens are specific tokens that are used to
-                authenticate customers on your organization. You can create
-                those sessions programmatically using the [Create Customer
-                Session
-                endpoint](/api-reference/customer-portal/sessions/create).
-          cookie: {}
-    parameters:
-      path:
-        seat_id:
+  /v1/customer-portal/seats/{seat_id}:
+    delete:
+      tags:
+        - customer_portal
+        - seats
+        - public
+      summary: Revoke Seat
+      operationId: customer_portal:seats:revoke_seat
+      parameters:
+        - name: seat_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Seat Id
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.Seats.RevokeSeat(ctx, operations.CustomerPortalSeatsRevokeSeatSecurity{\n        CustomerSession: os.Getenv(\"POLAR_CUSTOMER_SESSION\"),\n    }, \"4b3d74b3-01ff-4aac-bd03-320535cd5ce4\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerSeat != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          import polar_sdk
-          from polar_sdk import Polar
-
-
-          with Polar() as polar:
-
-              res = polar.customer_portal.seats.revoke_seat(security=polar_sdk.CustomerPortalSeatsRevokeSeatSecurity(
-                  customer_session="<YOUR_BEARER_TOKEN_HERE>",
-              ), seat_id="4b3d74b3-01ff-4aac-bd03-320535cd5ce4")
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar();
-
-          async function run() {
-            const result = await polar.customerPortal.seats.revokeSeat({
-              customerSession: process.env["POLAR_CUSTOMER_SESSION"] ?? "",
-            }, {
-              seatId: "4b3d74b3-01ff-4aac-bd03-320535cd5ce4",
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: >-
-          declare(strict_types=1);
-
-
-          require 'vendor/autoload.php';
-
-
-          use Polar;
-
-          use Polar\Models\Operations;
-
-
-          $sdk = Polar\Polar::builder()->build();
-
-
-
-          $requestSecurity = new
-          Operations\CustomerPortalSeatsRevokeSeatSecurity(
-              customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-          );
-
-
-          $response = $sdk->customerPortal->seats->revokeSeat(
-              security: $requestSecurity,
-              seatId: '4b3d74b3-01ff-4aac-bd03-320535cd5ce4'
-
-          );
-
-
-          if ($response->customerSeat !== null) {
-              // handle response
-          }
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Id
-                    description: The seat ID
-              subscription_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid
-                      - type: 'null'
-                    title: Subscription Id
-                    description: The subscription ID (for recurring seats)
-              order_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid
-                      - type: 'null'
-                    title: Order Id
-                    description: The order ID (for one-time purchase seats)
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/SeatStatus'
-                    description: Status of the seat
-              customer_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid
-                      - type: 'null'
-                    title: Customer Id
-                    description: The assigned customer ID
-              customer_email:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Customer Email
-                    description: The assigned customer email
-              invitation_token_expires_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Invitation Token Expires At
-                    description: When the invitation token expires
-              claimed_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Claimed At
-                    description: When the seat was claimed
-              revoked_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Revoked At
-                    description: When the seat was revoked
-              seat_metadata:
-                allOf:
-                  - anyOf:
-                      - additionalProperties: true
-                        type: object
-                      - type: 'null'
-                    title: Seat Metadata
-                    description: Additional metadata for the seat
-            title: CustomerSeat
-            refIdentifier: '#/components/schemas/CustomerSeat'
-            requiredProperties:
-              - created_at
-              - modified_at
-              - id
-              - status
-        examples:
-          example:
-            value:
-              created_at: '2023-11-07T05:31:56Z'
-              modified_at: '2023-11-07T05:31:56Z'
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              subscription_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              order_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              status: pending
-              customer_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              customer_email: <string>
-              invitation_token_expires_at: '2023-11-07T05:31:56Z'
-              claimed_at: '2023-11-07T05:31:56Z'
-              revoked_at: '2023-11-07T05:31:56Z'
-              seat_metadata: {}
-        description: Successful Response
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Authentication required
-        examples: {}
-        description: Authentication required
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Not permitted or seat-based pricing not enabled
-        examples: {}
-        description: Not permitted or seat-based pricing not enabled
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Seat not found
-        examples: {}
-        description: Seat not found
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            format: uuid4
+            title: Seat Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerSeat'
+        '401':
+          description: Authentication required
+        '403':
+          description: Not permitted or seat-based pricing not enabled
+        '404':
+          description: Seat not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - customer_session:
+            - customer_portal:write
+        - member_session:
+            - customer_portal:write
 components:
   schemas:
+    CustomerSeat:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The seat ID
+        subscription_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Subscription Id
+          description: The subscription ID (for recurring seats)
+        order_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Order Id
+          description: The order ID (for one-time purchase seats)
+        status:
+          $ref: '#/components/schemas/SeatStatus'
+          description: Status of the seat
+        customer_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Customer Id
+          description: >-
+            The customer ID. When member_model_enabled is true, this is the
+            billing customer (purchaser). When false, this is the seat member
+            customer.
+        member_id:
+          anyOf:
+            - type: string
+              format: uuid
+            - type: 'null'
+          title: Member Id
+          description: The member ID of the seat occupant
+        email:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Email
+          description: Email of the seat member (set when member_model_enabled is true)
+        customer_email:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Customer Email
+          description: The assigned customer email
+        invitation_token_expires_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Invitation Token Expires At
+          description: When the invitation token expires
+        claimed_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Claimed At
+          description: When the seat was claimed
+        revoked_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Revoked At
+          description: When the seat was revoked
+        seat_metadata:
+          anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          title: Seat Metadata
+          description: Additional metadata for the seat
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - status
+      title: CustomerSeat
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     SeatStatus:
       type: string
       enum:
@@ -327,5 +221,28 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
+    customer_session:
+      type: http
+      description: >-
+        Customer session tokens are specific tokens that are used to
+        authenticate customers on your organization. You can create those
+        sessions programmatically using the [Create Customer Session
+        endpoint](/api-reference/customer-portal/sessions/create).
+      scheme: bearer
+    member_session:
+      type: http
+      description: >-
+        Member session tokens are specific tokens that are used to authenticate
+        members on your organization. You can create those sessions
+        programmatically using the [Create Member Session
+        endpoint](/api-reference/member-portal/sessions/create).
+      scheme: bearer
 
 ````

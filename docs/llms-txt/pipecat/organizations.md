@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/cli/cloud/organizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # organizations
 
 > Organization and API key management commands
@@ -233,8 +237,3 @@ pipecat cloud organizations default-region eu-central
 <Card title="More about organizations" icon="people-group" href="/deployment/pipecat-cloud/fundamentals/accounts-and-organizations">
   Managing your account and collaborating on agents as part of a team
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

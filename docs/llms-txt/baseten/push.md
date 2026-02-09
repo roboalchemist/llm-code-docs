@@ -1,75 +1,113 @@
 # Source: https://docs.baseten.co/reference/cli/truss/push.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # truss push
 
-> Pushes a truss to a TrussRemote.
+> Deploy a model to Baseten.
 
-```Usage  theme={"system"}
+```sh  theme={"system"}
 truss push [OPTIONS] [TARGET_DIRECTORY]
 ```
 
-## Options
+Deploys a Truss to Baseten. By default, creates a published deployment.
+
+<Note>
+  Use `--watch` for development deployments with live reload support. Use `--publish` to explicitly create a published deployment.
+</Note>
+
+### Options
 
 <ParamField body="--remote" type="TEXT">
-  Name of the remote in .trussrc to patch changes to.
+  Name of the remote in .trussrc to push to.
 </ParamField>
 
-<ParamField body="--publish" type="BOOL">
-  Push the truss as a published deployment. If no production deployment exists, promote the truss to production after deploy completes.
+<ParamField body="--watch">
+  Push as a development deployment with live reload enabled. Use this for rapid iteration during development.
 </ParamField>
 
-<ParamField body="--promote" type="BOOL">
-  Push the truss as a published deployment. Even if a production deployment exists, promote the truss to production after deploy completes.
+<ParamField body="--publish">
+  Push as a published deployment. If no production deployment exists, promote to production after deploy completes.
+</ParamField>
+
+<ParamField body="--promote">
+  Push as a published deployment and promote to production, even if a production deployment already exists.
 </ParamField>
 
 <ParamField body="--environment" type="TEXT">
-  Push the truss as a published deployment. Promote the truss into the environment after deploy completes.
+  Push as a published deployment and promote into the specified environment.
 </ParamField>
 
-<ParamField body="--preserve-previous-production-deployment" type="BOOL">
-  Preserve the previous production deployment's autoscaling setting. When not specified, the previous production deployment will be updated to allow it to scale to zero. Can only be use in combination with `--promote` option.
+<ParamField body="--preserve-previous-production-deployment">
+  Preserve the previous production deployment's autoscaling settings. Can only be used with `--promote`.
 </ParamField>
 
 <ParamField body="--model-name" type="TEXT">
-  Name of the model
+  Name of the model.
 </ParamField>
 
 <ParamField body="--deployment-name" type="TEXT">
-  Name of the deployment created by the push. Can only be used in combination with `--publish` or `--environment`. Deployment name must only contain alphanumeric, '.', '-' or '\_' characters.
+  Name of the deployment. Can only be used with `--publish` or `--environment`. Must contain only alphanumeric, `.`, `-` or `_` characters.
 </ParamField>
 
-<ParamField body="--wait" type="BOOL">
-  Whether to wait for deployment to complete before returning. If the deploy or build fails, will return with a non-zero exit code.
+<ParamField body="--wait">
+  Wait for deployment to complete before returning. Returns non-zero exit code if deploy or build fails.
 </ParamField>
 
 <ParamField body="--timeout-seconds" type="INTEGER">
-  Maximum time to wait for deployment to complete in seconds. Without specifying, the command will not complete until the deployment is complete.
+  Maximum time to wait for deployment in seconds.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+<ParamField body="--team" type="TEXT">
+  Name of the team to deploy to. If not specified, Truss infers the team based on your team membership and existing models, or prompts for selection when ambiguous.
 </ParamField>
 
-## Arguments
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+### Arguments
+
+<ParamField body="TARGET_DIRECTORY" type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-## Examples
+**Example:**
 
-```
-truss push
-```
+To deploy a development deployment with live reload from the current directory, use the following:
 
-```
-truss push --publish /path/to/my-truss
+```sh  theme={"system"}
+truss push --watch
 ```
 
-```
-truss push --remote baseten --publish
+To deploy a published deployment, use the following:
+
+```sh  theme={"system"}
+truss push --publish
 ```
 
+To deploy and promote to production, use the following:
+
+```sh  theme={"system"}
+truss push --publish --promote
 ```
-truss push --remote baseten --publish --deployment-name my-truss_1.0
+
+To deploy to a specific environment, use the following:
+
+```sh  theme={"system"}
+truss push --environment staging
+```
+
+To deploy with a custom deployment name, use the following:
+
+```sh  theme={"system"}
+truss push --publish --deployment-name my-model_v1.0
+```
+
+To deploy to a specific team, use the following:
+
+```sh  theme={"system"}
+truss push --publish --team my-team-name
 ```

@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Schema Definition
 
 ## What is Schema?

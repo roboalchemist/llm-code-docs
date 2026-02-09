@@ -2,10 +2,6 @@
 
 # Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-checkout-scripts/step-5-qa-your-integration-and-publish-your-changes.md
 
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-duplicate-products/step-5-qa-your-integration-and-publish-your-changes.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-checkout-scripts/step-5-qa-your-integration-and-publish-your-changes.md
-
 # Step 5: QA your integration, and publish your changes
 
 After you have completed all previous integration steps, go through your store using Preview Mode in (you can access preview mode by clicking on the Eye icon next to your test, or by adding /?ig-preview=true to the end of your website's URL) and make sure everything looks correct. Follow our QA checklist [here](https://docs.intelligems.io/price-testing/price-test-qa-checklist)!

@@ -1,154 +1,161 @@
 # Source: https://docs.unstructured.io/api-reference/sources/get-source-connector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get source connector
 
 > Retrieve detailed information for a specific source connector by its ID.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/sources/{source_id}
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/sources/{source_id}
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        source_id:
+  /api/v1/sources/{source_id}:
+    get:
+      tags:
+        - sources
+      summary: Get source connector
+      description: Retrieve detailed information for a specific source connector by its ID.
+      operationId: get_source
+      parameters:
+        - name: source_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Source Id
-              format: uuid
-      query: {}
-      header:
-        unstructured-api-key:
+            type: string
+            format: uuid
+            title: Source Id
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Id
-              name:
-                allOf:
-                  - type: string
-                    title: Name
-              type:
-                allOf:
-                  - $ref: '#/components/schemas/SourceConnectorType'
-              config:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/AzureSourceConnectorConfig'
-                      - $ref: '#/components/schemas/BoxSourceConnectorConfig'
-                      - $ref: '#/components/schemas/ConfluenceSourceConnectorConfig'
-                      - $ref: '#/components/schemas/CouchbaseSourceConnectorConfig'
-                      - $ref: '#/components/schemas/DatabricksVolumesConnectorConfig'
-                      - $ref: '#/components/schemas/DropboxSourceConnectorConfig'
-                      - $ref: '#/components/schemas/ElasticsearchConnectorConfig'
-                      - $ref: '#/components/schemas/GCSSourceConnectorConfig'
-                      - $ref: '#/components/schemas/GoogleDriveSourceConnectorConfig'
-                      - $ref: '#/components/schemas/KafkaCloudSourceConnectorConfig'
-                      - $ref: '#/components/schemas/MongoDBConnectorConfig'
-                      - $ref: '#/components/schemas/OneDriveSourceConnectorConfig'
-                      - $ref: '#/components/schemas/OutlookSourceConnectorConfig'
-                      - $ref: '#/components/schemas/PostgresSourceConnectorConfig'
-                      - $ref: '#/components/schemas/S3SourceConnectorConfig'
-                      - $ref: '#/components/schemas/SalesforceSourceConnectorConfig'
-                      - $ref: '#/components/schemas/SharePointSourceConnectorConfig'
-                      - $ref: '#/components/schemas/SnowflakeSourceConnectorConfig'
-                      - $ref: '#/components/schemas/JiraSourceConnectorConfig'
-                      - $ref: '#/components/schemas/ZendeskSourceConnectorConfig'
-                      - additionalProperties: true
-                        type: object
-                    title: Config
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-              updated_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Updated At
-            title: SourceConnectorInformation
-            refIdentifier: '#/components/schemas/SourceConnectorInformation'
-            requiredProperties:
-              - id
-              - name
-              - type
-              - config
-              - created_at
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              name: <string>
-              type: azure
-              config:
-                remote_url: <string>
-                account_name: <string>
-                account_key: <string>
-                connection_string: <string>
-                sas_token: <string>
-                recursive: true
-              created_at: '2023-11-07T05:31:56Z'
-              updated_at: '2023-11-07T05:31:56Z'
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceConnectorInformation'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    SourceConnectorInformation:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        type:
+          anyOf:
+            - $ref: '#/components/schemas/SourceConnectorType'
+            - type: string
+          title: Type
+        config:
+          anyOf:
+            - $ref: '#/components/schemas/AzureSourceConnectorConfig'
+            - $ref: '#/components/schemas/BoxSourceConnectorConfig'
+            - $ref: '#/components/schemas/ConfluenceSourceConnectorConfig'
+            - $ref: '#/components/schemas/CouchbaseSourceConnectorConfig'
+            - $ref: '#/components/schemas/DatabricksVolumesConnectorConfig'
+            - $ref: '#/components/schemas/DropboxSourceConnectorConfig'
+            - $ref: '#/components/schemas/ElasticsearchConnectorConfig'
+            - $ref: '#/components/schemas/GCSSourceConnectorConfig'
+            - $ref: '#/components/schemas/GoogleDriveSourceConnectorConfig'
+            - $ref: '#/components/schemas/KafkaCloudSourceConnectorConfig'
+            - $ref: '#/components/schemas/MongoDBConnectorConfig'
+            - $ref: '#/components/schemas/OneDriveSourceConnectorConfig'
+            - $ref: '#/components/schemas/OpenSearchConnectorConfig'
+            - $ref: '#/components/schemas/OutlookSourceConnectorConfig'
+            - $ref: '#/components/schemas/PostgresSourceConnectorConfig'
+            - $ref: '#/components/schemas/S3SourceConnectorConfig'
+            - $ref: '#/components/schemas/SalesforceSourceConnectorConfig'
+            - $ref: '#/components/schemas/SharePointSourceConnectorConfig'
+            - $ref: '#/components/schemas/SnowflakeSourceConnectorConfig'
+            - $ref: '#/components/schemas/TeradataSourceConnectorConfig'
+            - $ref: '#/components/schemas/JiraSourceConnectorConfig'
+            - $ref: '#/components/schemas/ZendeskSourceConnectorConfig'
+            - additionalProperties: true
+              type: object
+          title: Config
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Updated At
+      type: object
+      required:
+        - id
+        - name
+        - type
+        - config
+        - created_at
+      title: SourceConnectorInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    SourceConnectorType:
+      type: string
+      enum:
+        - azure
+        - box
+        - confluence
+        - couchbase
+        - databricks_volumes
+        - dropbox
+        - elasticsearch
+        - gcs
+        - google_drive
+        - kafka-cloud
+        - mongodb
+        - onedrive
+        - opensearch
+        - outlook
+        - postgres
+        - s3
+        - salesforce
+        - sharepoint
+        - slack
+        - snowflake
+        - teradata
+        - jira
+        - zendesk
+      title: SourceConnectorType
     AzureSourceConnectorConfig:
       properties:
         remote_url:
@@ -359,12 +366,6 @@ components:
         - index_name
         - es_api_key
       title: ElasticsearchConnectorConfig
-    EncryptionType:
-      type: string
-      enum:
-        - rsa
-        - rsa_aes
-      title: EncryptionType
     GCSSourceConnectorConfig:
       properties:
         remote_url:
@@ -408,69 +409,6 @@ components:
         - service_account_key
         - recursive
       title: GoogleDriveSourceConnectorConfig
-    JiraSourceConnectorConfig:
-      properties:
-        url:
-          type: string
-          title: Url
-        username:
-          type: string
-          title: Username
-        password:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Password
-        token:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Token
-        cloud:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Cloud
-          default: false
-        projects:
-          anyOf:
-            - items:
-                type: string
-              type: array
-            - type: 'null'
-          title: Projects
-        boards:
-          anyOf:
-            - items:
-                type: string
-              type: array
-            - type: 'null'
-          title: Boards
-        issues:
-          anyOf:
-            - items:
-                type: string
-              type: array
-            - type: 'null'
-          title: Issues
-        status_filters:
-          anyOf:
-            - items:
-                type: string
-              type: array
-            - type: 'null'
-          title: Status Filters
-        download_attachments:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          title: Download Attachments
-          default: false
-      type: object
-      required:
-        - url
-        - username
-      title: JiraSourceConnectorConfig
     KafkaCloudSourceConnectorConfig:
       properties:
         bootstrap_servers:
@@ -555,6 +493,86 @@ components:
         - recursive
         - path
       title: OneDriveSourceConnectorConfig
+    OpenSearchConnectorConfig:
+      properties:
+        hosts:
+          items:
+            type: string
+          type: array
+          minItems: 1
+          title: Hosts
+          description: List of OpenSearch hosts to connect to
+        index_name:
+          type: string
+          title: Index Name
+          description: Name of the OpenSearch index to read from or write to
+        username:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Username
+          description: Username for basic authentication
+        password:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Password
+          description: Password for basic authentication
+        aws_access_key_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Access Key Id
+          description: >-
+            AWS access key ID for IAM authentication. When provided with
+            aws_secret_access_key, IAM authentication is used instead of basic
+            auth. Region and service type are auto-detected from the host URL.
+        aws_secret_access_key:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Secret Access Key
+          description: >-
+            AWS secret access key for IAM authentication. Required when
+            aws_access_key_id is provided.
+        aws_session_token:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Aws Session Token
+          description: >-
+            AWS session token for temporary credentials (optional). Only used
+            when aws_access_key_id and aws_secret_access_key are provided.
+        use_ssl:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Use Ssl
+          description: Whether to use SSL for the connection
+          default: true
+      type: object
+      required:
+        - hosts
+        - index_name
+      title: OpenSearchConnectorConfig
+      description: >-
+        OpenSearch connector configuration.
+
+
+        OpenSearch is a fork of Elasticsearch with similar functionality.
+
+        Supports two authentication methods:
+
+        1. Basic auth: username + password
+
+        2. AWS IAM auth: aws_access_key_id + aws_secret_access_key (+ optional
+        aws_session_token)
+
+
+        For AWS OpenSearch Service or OpenSearch Serverless, region and service
+        type
+
+        are auto-detected from the host URL.
     OutlookSourceConnectorConfig:
       properties:
         authority_url:
@@ -697,18 +715,6 @@ components:
         - private_key
         - categories
       title: SalesforceSourceConnectorConfig
-    SecretReference:
-      properties:
-        id:
-          type: string
-          title: Id
-        type:
-          $ref: '#/components/schemas/EncryptionType'
-          default: rsa
-      type: object
-      required:
-        - id
-      title: SecretReference
     SharePointSourceConnectorConfig:
       properties:
         site:
@@ -805,52 +811,116 @@ components:
         - table_name
         - id_column
       title: SnowflakeSourceConnectorConfig
-    SourceConnectorType:
-      type: string
-      enum:
-        - azure
-        - box
-        - confluence
-        - couchbase
-        - databricks_volumes
-        - dropbox
-        - elasticsearch
-        - gcs
-        - google_drive
-        - kafka-cloud
-        - mongodb
-        - onedrive
-        - outlook
-        - postgres
-        - s3
-        - salesforce
-        - sharepoint
-        - slack
-        - snowflake
-        - jira
-        - zendesk
-      title: SourceConnectorType
-    ValidationError:
+    TeradataSourceConnectorConfig:
       properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
+        host:
           type: string
-          title: Message
-        type:
+          title: Host
+        user:
           type: string
-          title: Error Type
+          title: User
+        password:
+          type: string
+          title: Password
+        database:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Database
+        dbs_port:
+          type: integer
+          minimum: 1
+          title: Dbs Port
+          default: 1025
+        id_column:
+          type: string
+          title: Id Column
+          default: id
+        table_name:
+          type: string
+          title: Table Name
+        batch_size:
+          type: integer
+          minimum: 1
+          title: Batch Size
+          default: 100
+        fields:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Fields
       type: object
       required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+        - host
+        - user
+        - password
+        - table_name
+      title: TeradataSourceConnectorConfig
+    JiraSourceConnectorConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        username:
+          type: string
+          title: Username
+        password:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Password
+        token:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Token
+        cloud:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Cloud
+          default: false
+        projects:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Projects
+        boards:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Boards
+        issues:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Issues
+        status_filters:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Status Filters
+        download_attachments:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Download Attachments
+          default: false
+      type: object
+      required:
+        - url
+        - username
+      title: JiraSourceConnectorConfig
     ZendeskSourceConnectorConfig:
       properties:
         subdomain:
@@ -880,5 +950,44 @@ components:
         - email
         - api_token
       title: ZendeskSourceConnectorConfig
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    SecretReference:
+      properties:
+        id:
+          type: string
+          title: Id
+        type:
+          $ref: '#/components/schemas/EncryptionType'
+          default: rsa
+      type: object
+      required:
+        - id
+      title: SecretReference
+    EncryptionType:
+      type: string
+      enum:
+        - rsa
+        - rsa_aes
+      title: EncryptionType
 
 ````

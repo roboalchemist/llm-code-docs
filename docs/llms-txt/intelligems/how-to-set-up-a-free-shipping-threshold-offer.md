@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-free-shipping-threshold-offer.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-free-shipping-threshold-offer.md
 
 # How to Set Up a Free Shipping Threshold Offer
 
@@ -7,7 +7,19 @@
 You can use **Offers** to power Free Shipping promotions. This type of offer reduces friction for customers, increases conversion, and incentivizes higher spend when paired with a threshold.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+{% endhint %}
+
+{% hint style="warning" %}
+With Offer Testing we can discount rates regardless of where they are provided from, including third party rate providers. We *cannot* increase the threshold already set in a third party to be higher, only lower.\
+\
+To configure with a third party app, you will need to take one of two actions:
+
+1. The highest threshold needs to be set in the third party app. The Offer will discount it at various thresholds.
+2. Remove the threshold rule from their third party shipping app entirely.
+
+\
+Customers using native Shopify shipping won't need to make any adjustments.
 {% endhint %}
 
 **Examples:** Free standard shipping at $75+, Free expedited shipping at $150+
@@ -43,7 +55,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/83022b093b9d40678e3ae62a15f27b9b?sid=23152c95-d144-4c2e-a3ac-55f13012cd3c>" %}
 
-1. Go to **Experiences → Offers**
+1. Go to Personalizations **→ Offers**
 2. Select **Free Shipping**
 3. Add an **Offer name** (internal), e.g., *Free Shipping on orders over $75*
 4. Add a **Discount name** that customers will see in cart/checkout, e.g., *Free shipping!*

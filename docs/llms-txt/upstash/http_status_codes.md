@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/devops/developer-api/http_status_codes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTP Status Codes
 
 > The Upstash API uses the following HTTP Status codes:

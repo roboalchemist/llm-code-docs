@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connect-apis/authentication-methods.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication Methods
 
 > Learn how to configure Authentication methods for API connections.
@@ -115,7 +119,7 @@ Some authentication flows require dynamic data from the client:
 * User-specific API keys
 * Custom tokens
 
-Client authentication data is provided through:
+You provide client authentication data through:
 
 <Tabs>
   <Tab title="Standalone GenerativeAgent">
@@ -123,7 +127,7 @@ Client authentication data is provided through:
   </Tab>
 
   <Tab title="ASAPP Messaging">
-    If you are using GenerativeAgent as part of ASAPP Messaging, this Auth data is passed via the [SDKs](/messaging-platform/integrations) depending on the chat channel you are using.
+    If you are using GenerativeAgent as part of ASAPP Messaging, this Auth data is passed via the [SDKs](/agent-desk/integrations) depending on the chat channel you are using.
   </Tab>
 </Tabs>
 
@@ -131,7 +135,7 @@ Client authentication data is provided through:
 
 Any authentication method that requires client data will store the auth data for the session.
 
-If the underlying API returns a `401`, we will require new client authentication data for the session.  This is communicated in the GenerativeAgent event stream as an [`authenticationRequested`](/generativeagent/integrate/handling-events#user-authentication-required) event.
+If the underlying API returns a `401`, the system will require new client authentication data for the session. GenerativeAgent communicates this in the event stream as an [`authenticationRequested`](/generativeagent/integrate/handling-events#user-authentication-required) event.
 
 ## Custom Authentication Methods
 
@@ -144,8 +148,8 @@ Contact your ASAPP account team to discuss your custom authentication requiremen
 Custom authentication methods work the same way as standard methods:
 
 * They appear in your authentication method list
-* Can be selected when configuring API connections
-* Support both sandbox and production environments
+* You can select them when configuring API connections
+* They support both sandbox and production environments
 
 <Note>
   Custom authentication methods are read-only configurations. To modify an existing custom authentication method, please work with your ASAPP account team.

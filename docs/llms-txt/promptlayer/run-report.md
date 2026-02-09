@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/run-report.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Full Evaluation
 
 > Run an evaluation pipeline
@@ -142,7 +146,3 @@ paths:
                   - message
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

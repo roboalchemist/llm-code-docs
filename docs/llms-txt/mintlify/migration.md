@@ -1,6 +1,10 @@
-# Source: https://mintlify.com/docs/migration.md
+# Source: https://www.mintlify.com/docs/migration.md
 
-# Migrations
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Migrate to Mintlify
 
 > Learn how to migrate to Mintlify from Docusaurus, ReadMe, or another platform.
 
@@ -158,17 +162,21 @@ This guide helps you move your existing documentation to Mintlify. Choose automa
     To migrate your content to Mintlify, you will need:
 
     * A valid `docs.json` for your site settings and navigation. See [Global settings](/organize/settings) and [Navigation](/organize/navigation) for more information.
-    * An `MDX` file for each page of your documentation. See [Pages](/organize/pages) for more information.
+    * A Markdown file (`.md` or `.mdx`) for each page of your documentation. MDX is the recommended format. See [Pages](/organize/pages) for more information.
     * (Optional) An OpenAPI specification for your API endpoint pages. See [OpenAPI setup](/api-playground/openapi-setup) for more information.
 
-    1. If your content is already in `MDX` format, copy the pages to your Mintlify project. Otherwise, convert your content to `MDX` format.
-    2. Create your `docs.json` referencing the paths to your `MDX` pages.
+    1. If your content is already in Markdown format, copy the content to your Mintlify project. Otherwise, convert your content to MDX format.
+    2. Create your `docs.json` referencing the paths to your Markdown pages.
     3. If you have OpenAPI specifications, add them to your `docs.json` and configure the API playground.
+
+    <Tip>
+      If you migrate your content as `.md` files, convert them to `.mdx` to support interactive features like React components.
+    </Tip>
 
     ### Asset migration
 
     1. Copy assets to your repository's `images/` directory.
-    2. Update references in your `MDX` files:
+    2. Update references in your Markdown files:
        ```mdx  theme={null}
        ![Alt text](/images/screenshot.png)
        ```

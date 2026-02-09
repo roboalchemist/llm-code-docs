@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/getting-started/developer-program.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Join the Developer Program
 
 > Join the Developer Program to build integrations with Fireflies.ai
@@ -35,6 +39,20 @@ To qualify for the Developer Program, please ensure you have:
 * **A company email**: A company email is preferred for verification purposes
 * **GitHub Repository**: Optionally, include a GitHub link to your code or previous work to help us understand your technical expertise
 * **Additional Comments**: Any additional information that can help us assess your project’s alignment with our platform goals
+
+## What to Do After You've Built Your Integration
+
+Once you've successfully built your integration with Fireflies.ai, you can apply to be listed as an official partner integration. To get your integration listed, please submit the [Partner Submission Form](https://yhw88ruu.paperform.co/) or contact us at [partners@fireflies.ai](mailto:partners@fireflies.ai).
+
+### Requirements for Listing as Partner Integration
+
+To be listed as a partner integration, you'll need to provide:
+
+1. **Your SOC2 report**: Security compliance documentation
+2. **A public helpdesk article to assist users**: Documentation to help users set up and use your integration
+3. **A support email for users to reach out**: Contact information for integration support
+4. **A short and long description for the listing**: Marketing copy describing your integration
+5. **Your company logo in SVG format**: High-quality logo for display on our integrations page
 
 ## Program Terms
 

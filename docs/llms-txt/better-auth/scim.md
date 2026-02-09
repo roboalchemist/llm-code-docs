@@ -4,11 +4,7 @@
 
 Integrate SCIM with your application.
 
-***
 
-title: System for Cross-domain Identity Management (SCIM)
-description: Integrate SCIM with your application.
---------------------------------------------------
 
 System for Cross-domain Identity Management ([SCIM](https://simplecloud.info/#Specification)) makes managing identities in multi-domain scenarios easier to support via a standardized protocol.
 This plugin exposes a [SCIM](https://simplecloud.info/#Specification) server that allows third party identity providers to sync identities to your service.
@@ -73,7 +69,7 @@ This plugin exposes a [SCIM](https://simplecloud.info/#Specification) server tha
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -119,7 +115,7 @@ This plugin exposes a [SCIM](https://simplecloud.info/#Specification) server tha
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -183,6 +179,7 @@ you need to generate a SCIM token that your identity provider will use to authen
 
 A SCIM token is a simple bearer token that you can generate:
 
+
 ### Client Side
 
 ```ts
@@ -209,17 +206,18 @@ const data = await auth.api.generateSCIMToken({
 
 ```ts
 type generateSCIMToken = {
-  /**
-  * The provider id
-  */
-  providerId: string = "acme-corp"
-  /**
-   * Optional organization id. When specified, the organizations plugin must also be enabled
-  */
-  organizationId?: string = "the-org"
-
+    /**
+    * The provider id
+    */
+    providerId: string = "acme-corp"
+    /**
+     * Optional organization id. When specified, the organizations plugin must also be enabled
+    */
+    organizationId?: string = "the-org"
+  
 }
 ```
+
 
 A `SCIM` token is always restricted to a provider, thus you are required to specify a `providerId`. This can be any provider your instance supports (e.g one of the built-in providers such as `credentials` or an external provider registered through an external plugin such as `@better-auth/sso`).
 Additionally, when the `organization` plugin is registered, you can optionally restrict the token to an organization via the `organizationId`.
@@ -250,6 +248,32 @@ scim({
 
 See the [hooks](#hooks) documentation for more details about supported hooks.
 
+#### Default SCIM token
+
+We also provide a way for you to specify a `SCIM` token to use by default. This allows you to test a SCIM connection without setting up providers in the database:
+
+```ts title="auth.ts"
+const auth = betterAuth({
+    plugins: [
+        scim({
+            defaultSCIM: [
+                {
+                    providerId: "default-scim", // ID of the existing provider you want to provision
+                    scimToken: "some-scim-token", // SCIM plain token
+                    organizationId: "the-org" // Optional organization id
+                }
+            ]
+        })
+    ]
+});
+```
+
+<Callout type="info">
+  **Important**: Please note that you must base64 encode your `scimToken` before you try to use as follows: `base64(scimToken:providerId[:organizationId])`.
+
+  In our example above, you would need to encode the `some-scim-token:default-scim:the-org` text to base64, resulting in the following scimToken: `c29tZS1zY2ltLXRva2VuOmRlZmF1bHQtc2NpbTp0aGUtb3Jn`
+</Callout>
+
 ### SCIM endpoints
 
 The following subset of the specification is currently supported:
@@ -257,6 +281,7 @@ The following subset of the specification is currently supported:
 #### List users
 
 Get a list of available users in the database. This is restricted to list only users associated to the same provider and organization than your SCIM token.
+
 
 ### Client Side
 
@@ -280,17 +305,19 @@ const data = await auth.api.listSCIMUsers({
 
 ```ts
 type listSCIMUsers = {
-    /**
-     * SCIM compliant filter expression
-    */
-    filter?: string = 'userName eq "user-a"'
-
+      /**
+       * SCIM compliant filter expression
+      */
+      filter?: string = 'userName eq "user-a"'
+  
 }
 ```
+
 
 #### Get user
 
 Get an user from the database. The user will be only returned if it belongs to the same provider and organization than the SCIM token.
+
 
 ### Client Side
 
@@ -314,17 +341,19 @@ const data = await auth.api.getSCIMUser({
 
 ```ts
 type getSCIMUser = {
-    /**
-     * Unique user identifier
-    */
-    userId: string = "user id"
-
+      /**
+       * Unique user identifier
+      */
+      userId: string = "user id"
+  
 }
 ```
+
 
 #### Create new user
 
 Provisions a new user to the database. The user will have an account associated to the same provider and will be member of the same org than the SCIM token.
+
 
 ### Client Side
 
@@ -356,33 +385,35 @@ const data = await auth.api.createSCIMUser({
 
 ```ts
 type createSCIMUser = {
-    /*
-     * Unique external (third party) identifier
-    */
-    externalId?: string = "third party id"
-    /**
-     * User name details
-    */
-    name?: {
-        /**
-         * Formatted name (takes priority over given and family name)
-        */
-        formatted?: string = "Daniel Perez"
-        /**
-         * Given name
-        */
-        givenName?: string = "Daniel"
-        /**
-         * Family name
-        */
-        familyName?: string = "Perez"
-    
+      /*
+       * Unique external (third party) identifier
+      */
+      externalId?: string = "third party id"
+      /**
+       * User name details
+      */
+      name?: {
+          /**
+           * Formatted name (takes priority over given and family name)
+          */
+          formatted?: string = "Daniel Perez"
+          /**
+           * Given name
+          */
+          givenName?: string = "Daniel"
+          /**
+           * Family name
+          */
+          familyName?: string = "Perez"
+      
 }
 ```
+
 
 #### Update an existing user
 
 Replaces an existing user details in the database. This operation can only update users that belong to the same provider and organization than the SCIM token.
+
 
 ### Client Side
 
@@ -414,33 +445,35 @@ const data = await auth.api.updateSCIMUser({
 
 ```ts
 type updateSCIMUser = {
-    /*
-     * Unique external (third party) identifier
-    */
-    externalId?: string = "third party id"
-    /**
-     * User name details
-    */
-    name?: {
-        /**
-         * Formatted name (takes priority over given and family name)
-        */
-        formatted?: string = "Daniel Perez"
-        /**
-         * Given name
-        */
-        givenName?: string = "Daniel"
-        /**
-         * Family name
-        */
-        familyName?: string = "Perez"
-    
+      /*
+       * Unique external (third party) identifier
+      */
+      externalId?: string = "third party id"
+      /**
+       * User name details
+      */
+      name?: {
+          /**
+           * Formatted name (takes priority over given and family name)
+          */
+          formatted?: string = "Daniel Perez"
+          /**
+           * Given name
+          */
+          givenName?: string = "Daniel"
+          /**
+           * Family name
+          */
+          familyName?: string = "Perez"
+      
 }
 ```
+
 
 #### Partial update an existing user
 
 Allows to apply a partial update to the user details. This operation can only update users that belong to the same provider and organization than the SCIM token.
+
 
 ### Client Side
 
@@ -466,20 +499,22 @@ const data = await auth.api.patchSCIMUser({
 
 ```ts
 type patchSCIMUser = {
-    /**
-     * Mandatory schema declaration
-    */
-    schemas: string[] = ["urn:ietf:params:scim:api:messages:2.0:PatchOp"]
-    /**
-     * List of JSON patch operations
-    */
-    Operations: Array<{ op: "replace" | "add" | "remove", path?: string, value: any 
+      /**
+       * Mandatory schema declaration
+      */
+      schemas: string[] = ["urn:ietf:params:scim:api:messages:2.0:PatchOp"]
+      /**
+       * List of JSON patch operations
+      */
+      Operations: Array<{ op: "replace" | "add" | "remove", path?: string, value: any 
 }
 ```
+
 
 #### Deletes a user resource
 
 Completely deletes a user resource from the database. This operation can only delete users that belong to the same provider and organization than the SCIM token.
+
 
 ### Client Side
 
@@ -503,14 +538,16 @@ const data = await auth.api.deleteSCIMUser({
 
 ```ts
 type deleteSCIMUser = {
-    userId: string
-
+      userId: string
+  
 }
 ```
+
 
 #### Get service provider config
 
 Get SCIM metadata describing supported features of this server.
+
 
 ### Client Side
 
@@ -528,13 +565,15 @@ const data = await auth.api.getSCIMServiceProviderConfig({});
 
 ```ts
 type getSCIMServiceProviderConfig = {
-
+  
 }
 ```
+
 
 #### Get SCIM schemas
 
 Get the list of supported SCIM schemas.
+
 
 ### Client Side
 
@@ -552,13 +591,15 @@ const data = await auth.api.getSCIMSchemas({});
 
 ```ts
 type getSCIMSchemas = {
-
+  
 }
 ```
+
 
 #### Get SCIM schema
 
 Get the details of a supported SCIM schema.
+
 
 ### Client Side
 
@@ -576,13 +617,15 @@ const data = await auth.api.getSCIMSchema({});
 
 ```ts
 type getSCIMSchema = {
-
+  
 }
 ```
+
 
 #### Get SCIM resource types
 
 Get the list of supported SCIM types.
+
 
 ### Client Side
 
@@ -600,13 +643,15 @@ const data = await auth.api.getSCIMResourceTypes({});
 
 ```ts
 type getSCIMResourceTypes = {
-
+  
 }
 ```
+
 
 #### Get SCIM resource type
 
 Get the details of a supported SCIM resource type.
+
 
 ### Client Side
 
@@ -624,9 +669,10 @@ const data = await auth.api.getSCIMResourceType({});
 
 ```ts
 type getSCIMResourceType = {
-
+  
 }
 ```
+
 
 #### SCIM attribute mapping
 
@@ -657,6 +703,7 @@ The plugin requires additional fields in the `scimProvider` table to store the p
 
 ### Server
 
+* `defaultSCIM`: Default list of SCIM tokens for testing.
 * `storeSCIMToken`: The method to store the SCIM token in your database, whether `encrypted`, `hashed` or `plain` text. Default is `plain` text.
 
 Alternatively, you can pass a custom encryptor or hasher to store the SCIM token in your database.

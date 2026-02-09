@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/payments/cashfree-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cashfree Payments
 
 > Make your users pay Lago invoices with Cashfree Payments, India's leading payments and API banking company.

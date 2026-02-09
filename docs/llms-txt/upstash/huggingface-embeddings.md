@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/tutorials/huggingface-embeddings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Hugging Face Embeddings with Upstash Vector
 
 In this tutorial, we'll demonstrate how to use Hugging Face embeddings with Upstash Vector and LangChain to perform a similarity search. We will upload a few sample documents, embed them using Hugging Face, and then perform a search query to find the most semantically similar documents.

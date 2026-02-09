@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/usage.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/usage.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Plans and Credit Usage
+
+> Understand Windsurf pricing plans, prompt credits, usage tracking, automatic refills, and how to upgrade from Free to Pro, Teams, or Enterprise.
 
 Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)
 
@@ -104,6 +98,22 @@ If you run out of prompt credits, you can purchase additional credits in the [bi
 
 For Team and Enterprise plans, additional credits are purchased within and treated as a pool amongst all members of the team at a rate of \$40 for 1000 pooled credits. Please contact your Teams admin to purchase more credits if you're on a team plan.
 
+## Add-on Credit Transfers
+
+If you upgrade your personal Pro plan to a Teams plan, any unused add-on prompt credits on your Pro account are moved over to your new team (and become part of the team's pooled add-on credits). If you're invited to a different team instead, your add-on credits do not automatically move with your user—you'll need to use them before switching, or submit a Support ticket to have them transferred.
+
+## Seat-Based Credit Allocation (Teams & Enterprise)
+
+On Teams and Enterprise plans, prompt credits are allocated on a per-seat basis. Each seat in your plan receives a fixed number of credits at the start of each billing cycle (500 for Teams, 1000 for Enterprise). These credits are tied to the seat itself, not the specific user occupying it.
+
+If a team member leaves mid-billing cycle and a new member joins to fill that seat, the new member inherits the seat's existing credit usage. For example, if your plan has 50 seats and all are in use, and one member departs after using 300 of their 500 credits, the person who takes that seat will start with only 200 credits remaining for the rest of the billing period. This is because the seat's credits were partially consumed before the new member arrived.
+
+When this happens, you may see a notice on your usage page indicating that you joined a seat that was previously used during the current billing period. This is expected behavior and does not indicate any error with your account. Your credits will fully reset to the plan's standard allocation at the start of the next billing cycle.
+
+<Tip>
+  If you are an admin managing a team where members frequently rotate, keep in mind that adding new members to recently vacated seats may result in those members starting with fewer credits for the remainder of the billing period. All seats reset to their full credit allocation at the beginning of each new billing cycle.
+</Tip>
+
 ## Usage examples
 
 To explain how credits work, here's a simple example:
@@ -175,7 +185,7 @@ Additional prompt credits can be purchased at a rate of \$40 for 1000 pooled cre
 
 Coming soon, Enterprise will be self-serviceable with month-to-month pricing. The Enterprise plan includes self-serve SSO integration and enhanced security features.
 
-For enterprise support, account management, and more involved deployments such as Hybrid or FedRAMP under an annual commitment, contact our enterprise team at [trust.windsurf.com](https://trust.windsurf.com) for any standard security collateral.
+For enterprise support, account management, and more involved deployments such as Custom Deployment Options or FedRAMP under an annual commitment, [contact our sales team](https://windsurf.com/contact/enterprise). For standard security collateral, visit [trust.windsurf.com](https://trust.windsurf.com).
 
 ### Using a Free plan
 

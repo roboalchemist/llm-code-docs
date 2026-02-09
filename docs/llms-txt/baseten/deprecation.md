@@ -1,25 +1,29 @@
 # Source: https://docs.baseten.co/development/model-apis/deprecation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deprecation
 
-> Overview of Baseten’s deprecation policy for Model APIs.
+> Baseten's deprecation policy for Model APIs
 
-## Deprecation Process
-
-As open source models advance rapidly, we prioritize serving the highest quality models and deprecate specific Model APIs when stronger alternatives are available. When a model is selected for deprecation we follow the below process:
+As open source models advance rapidly, Baseten prioritizes serving the highest quality models and deprecates specific Model APIs when stronger alternatives are available. When a model is selected for deprecation, Baseten follows this process:
 
 1. **Announcement**
-   * Deprecations are announced \~2 weeks prior to the deprecation date
-   * Updated documentation identifying the model to be deprecated along with a recommended replacement
-   * Affected users will be contacted via email
+   * Deprecations are announced approximately two weeks before the deprecation date.
+   * Documentation is updated to identify the model being deprecated and recommend a replacement.
+   * Affected users are contacted via email.
 2. **Transition**
-   * The deprecating model will remain fully functional until the final deprecation date. Following the initial deprecation announcement users have \~2 weeks to transition. There are two options:
-     1. Migrate to a dedicated deployment with the deprecated model weights [contact us](https://www.baseten.co/talk-to-us/deprecation-inquiry/)
-     2. Shift the Model API model ID to an active model (we provide a recommendation in the deprecation announcement)
+   * The deprecated model remains fully functional until the deprecation date. You have approximately two weeks to transition using one of these options:
+     1. Migrate to a dedicated deployment with the deprecated model weights. [Contact us](https://www.baseten.co/talk-to-us/deprecation-inquiry/) for assistance.
+     2. Update your code to use an active model (a recommendation is provided in the deprecation announcement).
 3. **Deprecation date**
-   * The model ID for the deprecated model will become inactive and return an error for all requests
-   * Changelog notification of deprecation with a recommended replacement
+   * The model ID for the deprecated model becomes inactive and returns an error for all requests.
+   * A changelog notification is published with the recommended replacement.
 
-## Planned Deprecations
+## Planned deprecations
 
-There are no planned deprecations at this time.
+| Deprecation Date | Model                          | Recommended Replacement                            | Dedicated Available |
+| :--------------- | :----------------------------- | :------------------------------------------------- | :-----------------: |
+| 2026-2-06        | Qwen3 Coder 480B A35B Instruct | [GLM 4.7](https://www.baseten.co/library/glm-4-7/) |          ✅          |

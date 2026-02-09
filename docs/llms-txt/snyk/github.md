@@ -95,7 +95,7 @@ The example that follows shows a fix pull request opened by Snyk.
 
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-3dd8b81ee085ea7c6e9ff08e239457a91d5ea7e0%2Fgithub_fix_pr_cropped-14july2022.png?alt=media" alt="Fix pull request opened by Snyk"><figcaption><p>Fix pull request opened by Snyk</p></figcaption></figure>
 
-To review and adjust the automatic fix pull request settings in the Snyk GitHub Integration settings page, navigate to Organization **Settings** **>** **Integrations > Source control > GitHub**.
+To review and adjust the automatic fix pull request settings in the Snyk GitHub Integration settings page, navigate to Organization **Settings** > **Integrations** > **Source control** > **GitHub**.
 
 Scroll down to the **Automatic fix PRs** section and set the options. For definitions, see [Configure automatic fix PRs at the integration level](https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/create-automatic-prs-for-backlog-issues-and-known-vulnerabilities-backlog-prs#configure-automatic-fix-prs-at-the-integration-level).
 
@@ -119,7 +119,7 @@ This example shows how Snyk PR checks appear on the GitHub pull request page.
 
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-c699eaf50fd40dfeac99b1f4e35356617403e19f%2Fpr_testing-14july2022.png?alt=media" alt="Snyk pull request checks on GitHub pull request page"><figcaption><p>Snyk pull request checks on GitHub pull request page</p></figcaption></figure>
 
-You can review and adjust the pull request test settings using the Snyk GitHub Integration settings page in Organization **Settings** **>** **Integrations > Source control > GitHub**.
+You can review and adjust the pull request test settings using the Snyk GitHub Integration settings page in Organization **Settings** > **Integrations** > **Source control** > **GitHub**.
 
 <div align="center"><figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-6ffc77f8380a8a7049f0a8c3fddf91ed3526c6f4%2FGithub-integrations-PR-request-status-checks.png?alt=media" alt="Pull request status checks settings" width="563"><figcaption><p>Pull request status checks settings</p></figcaption></figure></div>
 
@@ -149,7 +149,7 @@ The configured account is only used for opening PRs and posting issue summary an
 
 To use this feature, follow these steps:
 
-1. Navigate to the GitHub Integrations settings page in the Snyk Web UI using Organization **Settings** **>** **Integrations > Source control > GitHub.**
+1. Navigate to the GitHub Integrations settings page in the Snyk Web UI using Organization **Settings** **> Integrations** > **Source control** > **GitHub.**
 2. In the **Open Snyk automatic PRs from a fixed GitHub account** section, enter your GitHub personal access token.\
    You can [generate this from your GitHub account](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 3. Click **Save** to enable this feature.
@@ -157,7 +157,7 @@ To use this feature, follow these steps:
 <figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-7e385a84af40c5156f3ab354876ea6e2645c7af2%2Fpat_config.png?alt=media" alt=""><figcaption><p>Set an account to open Snyk PRs and to enable the Pull Request Experience</p></figcaption></figure>
 
 {% hint style="info" %}
-Ensure that the GitHub account that you designate to open Snyk PRs has **write-level** permissions or higher for the repos you want to monitor with Snyk.
+Ensure that the GitHub account that you designate to open Snyk PRs has write-level permissions or higher for the repos you want to monitor with Snyk.
 
 See [GitHub and GitHub Enterprise permissions requirements](https://docs.snyk.io/developer-tools/user-permissions-and-access-scopes#github-and-github-enterprise-permissions-requirements) for more information.
 {% endhint %}
@@ -178,7 +178,7 @@ Users can either be manually specified, and all will be assigned, or automatical
 
 #### **Enable Auto-assign for all Projects in the GitHub integration**
 
-To configure the Auto-assign settings for all the Projects from an imported private repository, go to the Github integration settings using Organization **Settings** **>** **Integrations > Source control > GitHub** and select **Enable pull request assignees**.
+To configure the Auto-assign settings for all the Projects from an imported private repository, go to the Github integration settings using Organization **Settings >** **Integrations** > **Source control** > **GitHub** and select **Enable pull request assignees**.&#x20;
 
 You can then choose to assign PRs to the last user to change the manifest file or specified contributors.
 
@@ -224,7 +224,7 @@ In addition, you must confirm that Snyk is not enabled on any existing **Branch 
 Note that branch protection is active only after a PR has been raised.
 {% endhint %}
 
-1. From the main page of your GitHub repository, go to **Settings > Branches > Branch protection rules.**
+1. From the main page of your GitHub repository, go to **Settings** > **Branches** > **Branch protection rules.**
 2. Ensure there are no **Status checks found in the last week for this repository.**
 
 {% hint style="info" %}

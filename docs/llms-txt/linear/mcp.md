@@ -56,12 +56,55 @@ claude mcp add --transport http linear-server https://mcp.linear.app/mcp
 
 Then run `/mcp` once you've opened a Claude Code session to go through the authentication flow.
 
+### Codex
+
+The setup steps for the MCP server are the same regardless of whether you use the IDE Extension or the CLI since the configuration is shared.
+
+**Configuration via CLI:**
+
+Run the following command in Terminal:
+
+```sh
+codex mcp add linear --url https://mcp.linear.app/mcp
+```
+
+This will automatically prompt you to log in with your Linear account and connect it to your Codex.
+
+**Note**: If this is the first time you are using an MCP in Codex you will need to enable the `rmcp` feature for this to work. Add the following into your `~/.codex/config.toml`:
+
+```sh
+[features]
+experimental_use_rmcp_client = true
+```
+
+**Configuration through environment variables:**
+
+1. Open the `~/.codex/config.toml` file in your preferred editor
+2. Add the following: 
+
+```sh
+[features]
+experimental_use_rmcp_client = true
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+```
+
+Run `codex mcp login linear` to move through the authentication flow.
+
 ### Cursor
 
-To add the MCP to Cursor, you can install by clicking [here](cursor://anysphere.cursor-deeplink/mcp/install?name=Linear&config=eyJ1cmwiOiJodHRwczovL21jcC5saW5lYXIuYXBwL3NzZSJ9), or searching for Linear from Cursor's [MCP tools page](https://docs.cursor.com/en/tools/mcp).  
+To add the MCP to Cursor, you can install by clicking [here](cursor://anysphere.cursor-deeplink/mcp/install?name=Linear&config=eyJ1cmwiOiJodHRwczovL21jcC5saW5lYXIuYXBwL21jcCJ9), or searching for Linear from Cursor's [MCP tools page](https://cursor.com/docs/context/mcp/directory).  
 
 
 ![C](https://webassets.linear.app/images/ornj730p/production/7ff4a8f3f3f95e1a25a241c49f5d46c66e17b80a-760x343.png?q=95&auto=format&dpr=2)
+
+### Jules
+
+* In Linear, go to **Settings** > **Account** > **Security & Access** and copy your API key
+* In Jules, go to [MCP Settings](https://jules.google.com/settings/mcp) 
+* Select **Connect** on the Linear server and paste your API key
+* Run a task invoking the server to confirm it works
 
 ### Visual Studio Code
 
@@ -84,6 +127,10 @@ To add the MCP to Cursor, you can install by clicking [here](cursor://anysphere.
 
 1. Enter the name **Linear** and hit enter.
 2. Activate the server using **MCP: List Servers** and selecting **Linear**, and selecting **Start Server**.
+
+### v0 by Vercel
+
+To add the MCP to v0, you can install from the [connections](https://v0.app/chat/settings/mcp-connections) page.
 
 ### Windsurf
 

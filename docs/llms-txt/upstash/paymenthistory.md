@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/account/paymenthistory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Payment History
 
 The Payment History page gives you information about your payments. You can open your

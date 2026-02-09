@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/companies/update-customer-company.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update customer company
 
 Plain automatically derives a customer's company for you, but you can also update it manually.

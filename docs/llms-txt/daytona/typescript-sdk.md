@@ -18,7 +18,9 @@ yarn add @daytonaio/sdk
 
 ## Getting Started
 
-Here's a simple example to help you get started with the Daytona TypeScript SDK:
+### Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment. The following snippet is an example “Hello World” program that runs securely inside a Daytona Sandbox.
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
@@ -43,7 +45,7 @@ main().catch(console.error)
 
 ## Configuration
 
-The SDK can be configured using environment variables or by passing options to the constructor:
+The Daytona SDK can be configured using environment variables or by passing options to the constructor:
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk';
@@ -53,23 +55,27 @@ const daytona = new Daytona();
 
 // Using explicit configuration
 const daytona = new Daytona({
-  apiKey: 'your-api-key',
+  apiKey: 'YOUR_API_KEY',
   apiUrl: 'https://app.daytona.io/api',
   target: 'us'
 });
 ```
 
-## Multiple Runtime Support
+For more information on configuring the Daytona SDK, see [configuration](https://www.daytona.io/docs/en/configuration.md).
 
-The Daytona TypeScript SDK works across multiple JavaScript runtimes including Node.js, Deno, Bun, browsers, and serverless platforms (Cloudflare Workers, AWS Lambda, Azure Functions, etc.).
+## Multiple runtime support
 
-:::note[Browser and Framework Configuration]
-When using the SDK in browser-based environments or frameworks like Vite and Next.js, you'll need to configure node polyfills. See the sections below for setup instructions.
-:::
+Daytona supports multiple programming language runtimes for direct code execution inside the sandbox.
 
-### Daytona in Vite Projects
+[TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) works across multiple **JavaScript runtimes** including **Node.js**, **browsers**, and **serverless platforms**: Cloudflare Workers, AWS Lambda, Azure Functions, etc.
 
-When using Daytona SDK in a Vite-based project, you need to configure node polyfills to ensure compatibility. Add the following configuration to your `vite.config.ts` file in the plugins array:
+Using the Daytona SDK in browser-based environments or frameworks like [**Vite**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-vite-projects) and [**Next.js**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-nextjs-projects) requires configuring node polyfills.
+
+### Daytona in Vite projects
+
+When using Daytona SDK in a Vite-based project, configure node polyfills to ensure compatibility.
+
+Add the following configuration to your `vite.config.ts` file in the `plugins` array:
 
 ```typescript
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
@@ -87,9 +93,11 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 })
 ```
 
-### Daytona in Next.js Projects
+### Daytona in Next.js projects
 
-When using Daytona SDK in a Next.js project, you need to configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers (depending on what you're using). Add the following configuration to your `next.config.ts` file:
+When using Daytona SDK in a Next.js project, configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers.
+
+Add the following configuration to your `next.config.ts` file:
 
 ```typescript
 import type { NextConfig } from 'next'

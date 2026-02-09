@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/signals/charge.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Signals
 
 ### Amperage
@@ -14,7 +18,7 @@ Current amperage flowing to the electric vehicle during a charging session, meas
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 32
 }
 ```
@@ -31,7 +35,7 @@ The maximum available amps available to charge.
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 48
 }
 ```
@@ -48,7 +52,7 @@ The requested amps to charge the vehicle.
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 32
 }
 ```
@@ -161,7 +165,7 @@ Current rate at which range is being added to the vehicle during an active charg
 
 ```json Example theme={null}
 {
-  "unit": "miles_per_hour",
+  "unit": "km/h",
   "value": 25
 }
 ```
@@ -364,13 +368,10 @@ Signal code: `charge-chargerphases`
 
 The number of phases available from the connected charger.
 
-<ParamField path="unit" type="string" required={false} />
-
 <ParamField path="value" type="integer" required={false} />
 
 ```json Example theme={null}
 {
-  "unit": "count",
   "value": 3
 }
 ```
@@ -417,7 +418,7 @@ Cumulative amount of electrical energy delivered to the vehicle during the curre
 
 ```json Example theme={null}
 {
-  "unit": "kilowatt_hours",
+  "unit": "kWh",
   "value": 25.5
 }
 ```

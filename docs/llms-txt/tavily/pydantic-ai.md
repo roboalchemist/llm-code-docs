@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/pydantic-ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pydantic AI
 
 > Tavily is now available for integration through Pydantic AI.
@@ -79,8 +83,3 @@ Here are some of the top recent news articles related to GenAI:
 2. **Real-time Data Integration**: Keep your AI agents up-to-date with the latest information
 3. **Technical Documentation**: Search and analyze technical documentation
 4. **Market Analysis**: Conduct comprehensive market research and analysis
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/fine-tuning-vlm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supervised Fine Tuning - Vision
 
 > Learn how to fine-tune vision-language models on Fireworks AI with image and text datasets
@@ -133,7 +137,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
                   }
                 },
                 {
-                  "type": "image_url", 
+                  "type": "image_url",
                   "image_url": {
                     "url": "data:image/jpeg;base64,/9j/4BBBSkZJRg..."
                   }
@@ -158,7 +162,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
               "content": "You are a helpful visual assistant that can analyze images and remember details from previous images in our conversation."
             },
             {
-              "role": "user", 
+              "role": "user",
               "content": [
                 {
                   "type": "text",
@@ -181,7 +185,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
               "content": "Now look at this living room. Do you think the styles would work well together?"
             },
             {
-              "role": "assistant", 
+              "role": "assistant",
               "content": "I'd be happy to help compare the styles! However, I don't see a living room image in your message. Could you please share the living room photo so I can analyze how well it would coordinate with the modern kitchen style we just discussed?"
             },
             {
@@ -223,7 +227,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
       <Tab title="Download with wget">
         ```bash  theme={null}
-        # Download the example dataset  
+        # Download the example dataset
         wget https://huggingface.co/datasets/fireworks-ai/vision-food-reasoning-dataset/resolve/main/food_reasoning.jsonl
         ```
       </Tab>
@@ -236,7 +240,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
     <Tabs>
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl create dataset my-vlm-dataset /path/to/vlm_training_data.jsonl
+        firectl dataset create my-vlm-dataset /path/to/vlm_training_data.jsonl
         ```
       </Tab>
 
@@ -258,7 +262,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
 
         const response = await fetch(`${BASE_URL}/datasets`, {
           method: "POST",
-          headers: { 
+          headers: {
             "Authorization": `Bearer ${API_KEY}`,
             "Content-Type": "application/json"
           },
@@ -289,7 +293,7 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
     <Tabs>
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl create sftj \
+        firectl sftj create \
           --base-model accounts/fireworks/models/qwen2p5-vl-32b-instruct \
           --dataset my-vlm-dataset \
           --output-model my-custom-vlm \
@@ -341,10 +345,10 @@ To see all vision models that support fine-tuning, visit the [Model Library for 
       <Tab title="firectl">
         ```bash  theme={null}
         # Create a deployment for your fine-tuned VLM
-        firectl create deployment my-custom-vlm
+        firectl deployment create my-custom-vlm
 
         # Check deployment status
-        firectl get deployment accounts/your-account/deployment/deployment-id
+        firectl deployment get accounts/your-account/deployment/deployment-id
         ```
       </Tab>
 
@@ -391,56 +395,31 @@ The cookbooks above cover the following:
 
 After deployment, test your fine-tuned VLM using the same API patterns as base VLMs:
 
-<CodeGroup>
-  ```python Python (OpenAI Compatible) theme={null}
-  import openai
+```python Python (OpenAI SDK) theme={null}
+import openai
 
-  client = openai.OpenAI(
-      base_url="https://api.fireworks.ai/inference/v1",
-      api_key="<FIREWORKS_API_KEY>",
-  )
+client = openai.OpenAI(
+    base_url="https://api.fireworks.ai/inference/v1",
+    api_key="<FIREWORKS_API_KEY>",
+)
 
-  response = client.chat.completions.create(
-      model="accounts/your-account/models/my-custom-vlm",
-      messages=[{
-          "role": "user",
-          "content": [{
-              "type": "image_url",
-              "image_url": {
-                  "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
-              },
-          },{
-              "type": "text",
-              "text": "What's in this image?",
-          }],
-      }]
-  )
-  print(response.choices[0].message.content)
-  ```
-
-  ```python Python (Fireworks SDK) theme={null}
-  from fireworks import LLM
-
-  # Use your fine-tuned model
-  llm = LLM(model="accounts/your-account/models/my-custom-vlm")
-
-  response = llm.chat.completions.create(
-      messages=[{
-          "role": "user",
-          "content": [{
-              "type": "image_url",
-              "image_url": {
-                  "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
-              },
-          },{
-              "type": "text",
-              "text": "What's in this image?",
-          }],
-      }]
-  )
-  print(response.choices[0].message.content)
-  ```
-</CodeGroup>
+response = client.chat.completions.create(
+    model="accounts/your-account/models/my-custom-vlm",
+    messages=[{
+        "role": "user",
+        "content": [{
+            "type": "image_url",
+            "image_url": {
+                "url": "https://raw.githubusercontent.com/fw-ai/cookbook/refs/heads/main/learn/vlm-finetuning/images/icecream.jpeg"
+            },
+        },{
+            "type": "text",
+            "text": "What's in this image?",
+        }],
+    }]
+)
+print(response.choices[0].message.content)
+```
 
 <Tip>
   If you fine-tuned using the example dataset, your model should include `<think></think>` tags in its response.

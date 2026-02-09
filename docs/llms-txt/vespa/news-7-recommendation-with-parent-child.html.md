@@ -243,7 +243,7 @@ Ultimately, these features are computed in real-time for every news article duri
 
 This tutorial introduced parent-child relationships and demonstrated it through a global CTR feature we used in ranking. As this feature was based on tensors, we also introduced ranking with tensor expressions. For a real-world use-case using parent-child tensors, see this [blog post](https://blog.vespa.ai/parent-child-joins-tensors-content-recommendation/).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

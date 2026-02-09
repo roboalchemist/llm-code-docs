@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/realtime-fal-ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image generation with Fal.ai and Trigger.dev Realtime
 
 > This example Next.js project generates an image from a prompt using Fal.ai and shows the progress of the task on the frontend using Trigger.dev Realtime.

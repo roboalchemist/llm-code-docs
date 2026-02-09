@@ -1,5 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/background-agents.md
 
+> ## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Background Agents
 
 > Describe what you want built or fixed in plain language, and Graphite spins up a remote sandbox to write the code, run tests, and open a pull request for your review.
@@ -45,8 +50,3 @@ Background Agents run in isolated, ephemeral sandboxes. Each task spins up a fre
 ## Related
 
 * [AI Privacy and Security](/ai-privacy-and-security) - Overview of Graphite's AI privacy practices
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt

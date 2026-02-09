@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/bulk-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bulk actions
 
 > Perform actions like replay and cancel on multiple runs at once.

@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/theme-switch-in-checkout.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Switch Checkout Theme
 
 > Learn how to switch the theme in a checkout session and a checkout link.

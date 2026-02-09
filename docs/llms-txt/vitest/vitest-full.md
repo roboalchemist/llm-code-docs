@@ -4377,7 +4377,7 @@ export default defineConfig({
 ::: info
 Vitest assigns port `63315` to avoid conflicts with the development server, allowing you to run both in parallel. You can change that with the [`browser.api`](/config/#browser-api) option.
 
-The CLI does not prints the Vite server URL automatically. You can press "b" to print the URL when running in watch mode.
+The CLI does not print the Vite server URL automatically. You can press "b" to print the URL when running in watch mode.
 :::
 
 If you have not used Vite before, make sure you have your framework's plugin installed and specified in the config. Some frameworks might require extra configuration to work - check their Vite related documentation to be sure.
@@ -4660,6 +4660,7 @@ However, Vitest also provides packages to render components for several popular 
 * [`vitest-browser-vue`](https://github.com/vitest-dev/vitest-browser-vue) to render [vue](https://vuejs.org) components
 * [`vitest-browser-svelte`](https://github.com/vitest-dev/vitest-browser-svelte) to render [svelte](https://svelte.dev) components
 * [`vitest-browser-react`](https://github.com/vitest-dev/vitest-browser-react) to render [react](https://react.dev) components
+* [`vitest-browser-angular`](https://github.com/vitest-community/vitest-browser-angular) to render [Angular](https://angular.dev) components
 
 Community packages are available for other frameworks:
 
@@ -4863,7 +4864,7 @@ test('renders a message', async () => {
 
 When using Vitest Browser, it's important to note that thread blocking dialogs like `alert` or `confirm` cannot be used natively. This is because they block the web page, which means Vitest cannot continue communicating with the page, causing the execution to hang.
 
-In such situations, Vitest provides default mocks with default returned values for these APIs. This ensures that if the user accidentally uses synchronous popup web APIs, the execution would not hang. However, it's still recommended for the user to mock these web APIs for better experience. Read more in [Mocking](/guide/mocking).
+In such situations, Vitest provides default mocks with default returned values for these APIs. This ensures that if the user accidentally uses synchronous popup web APIs, the execution would not hang. However, it's still recommended for the user to mock these web APIs for a better experience. Read more in [Mocking](/guide/mocking).
 
 ### Spying on Module Exports
 
@@ -5417,8 +5418,6 @@ url: /config/browser/provider.md
 # browser.provider {#browser-provider}
 
 * **Type:** `BrowserProviderOption`
-* **Default:** `'preview'`
-* **CLI:** `--browser.provider=playwright`
 
 The return value of the provider factory. You can import the factory from `@vitest/browser-<provider-name>` or make your own provider:
 
@@ -6204,13 +6203,6 @@ Specify which IP addresses the server should listen on. Set this to `0.0.0.0` or
 
 Set to true to exit if port is already in use, instead of automatically trying the next available port
 
-### browser.provider
-
-* **CLI:** `--browser.provider <name>`
-* **Config:** [browser.provider](/config/browser/provider)
-
-Provider used to run browser tests. Some browsers are only available for specific providers. Can be "webdriverio", "playwright", "preview", or the path to a custom provider. Visit [`browser.provider`](/config/browser/provider) for more information
-
 ### browser.isolate
 
 * **CLI:** `--browser.isolate`
@@ -6684,6 +6676,13 @@ Delete all Vitest caches, including `experimental.fsModuleCache`, without runnin
 
 Enable caching of modules on the file system between reruns.
 
+### experimental.printImportBreakdown
+
+* **CLI:** `--experimental.printImportBreakdown`
+* **Config:** [experimental.printImportBreakdown](/config/experimental#experimental-printimportbreakdown)
+
+Print import breakdown after the summary. If the reporter doesn't support summary, this will have no effect. Note that UI's "Module Graph" tab always has an import breakdown.
+
 ### changed
 
 * **Type**: `boolean | string`
@@ -6776,7 +6775,7 @@ it('handles files', async () => {
 
 ## CDP Session
 
-Vitest exposes access to raw Chrome Devtools Protocol via the `cdp` method exported from `vitest/browser`. It is mostly useful to library authors to build tools on top of it.
+Vitest exposes access to raw Chrome DevTools Protocol via the `cdp` method exported from `vitest/browser`. It is mostly useful to library authors to build tools on top of it.
 
 ```ts
 import { cdp } from 'vitest/browser'
@@ -6941,7 +6940,7 @@ export default defineConfig({
 })
 ```
 
-## Failed to terminate worker
+## Failed to Terminate Worker
 
 This error can happen when NodeJS's `fetch` is used with default [`pool: 'threads'`](/config/#threads). This issue is tracked on issue [Timeout abort can leave process(es) running in the background #3077](https://github.com/vitest-dev/vitest/issues/3077).
 
@@ -6965,7 +6964,55 @@ vitest --pool=forks
 
 :::
 
-## Segfaults and native code errors
+## Custom package conditions are not resolved
+
+If you are using custom conditions in your `package.json` [exports](https://nodejs.org/api/packages.html#package-entry-points) or [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), you may find that Vitest does not respect these conditions by default.
+
+For example, if you have the following in your `package.json`:
+
+```json
+{
+  "exports": {
+    ".": {
+      "custom": "./lib/custom.js",
+      "import": "./lib/index.js"
+    }
+  },
+  "imports": {
+    "#internal": {
+      "custom": "./src/internal.js",
+      "default": "./lib/internal.js"
+    }
+  }
+}
+```
+
+By default, Vitest will only use the `import` and `default` conditions. To make Vitest respect custom conditions, you need to configure [`ssr.resolve.conditions`](https://vite.dev/config/ssr-options#ssr-resolve-conditions) in your Vitest config:
+
+```ts [vitest.config.js]
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  ssr: {
+    resolve: {
+      conditions: ['custom', 'import', 'default'],
+    },
+  },
+})
+```
+
+::: tip Why `ssr.resolve.conditions` and not `resolve.conditions`?
+Vitest follows Vite's configuration convention:
+
+* [`resolve.conditions`](https://vite.dev/config/shared-options#resolve-conditions) applies to Vite's `client` environment, which corresponds to Vitest's browser mode, jsdom, happy-dom, or custom environments with `viteEnvironment: 'client'`.
+* [`ssr.resolve.conditions`](https://vite.dev/config/ssr-options#ssr-resolve-conditions) applies to Vite's `ssr` environment, which corresponds to Vitest's node environment or custom environments with `viteEnvironment: 'ssr'`.
+
+Since Vitest defaults to the `node` environment (which uses `viteEnvironment: 'ssr'`), module resolution uses `ssr.resolve.conditions`. This applies to both package exports and subpath imports.
+
+You can learn more about Vite environments and Vitest environments in [`environment`](/config/environment).
+:::
+
+## Segfaults and Native Code Errors
 
 Running [native NodeJS modules](https://nodejs.org/api/addons.html) in `pool: 'threads'` can run into cryptic errors coming from the native code.
 
@@ -7120,7 +7167,7 @@ Browser Mode catches issues that DOM simulation libraries might miss, including:
 
 :::
 
-### Purpose of this Guide
+### Purpose of This Guide
 
 This guide focuses specifically on **component testing patterns and best practices** using Vitest's capabilities. While many examples use Browser Mode (as it's the recommended approach), the focus here is on component-specific testing strategies rather than browser configuration details.
 
@@ -8172,6 +8219,46 @@ export const server: {
 }
 ```
 
+## `utils`
+
+Utility functions useful for custom render libraries.
+
+```ts
+export const utils: {
+  /**
+   * This is simillar to calling `page.elementLocator`, but it returns only
+   * locator selectors.
+   */
+  getElementLocatorSelectors(element: Element): LocatorSelectors
+  /**
+   * Prints prettified HTML of an element.
+   */
+  debug(
+    el?: Element | Locator | null | (Element | Locator)[],
+    maxLength?: number,
+    options?: PrettyDOMOptions,
+  ): void
+  /**
+   * Returns prettified HTML of an element.
+   */
+  prettyDOM(
+    dom?: Element | Locator | undefined | null,
+    maxLength?: number,
+    prettyFormatOptions?: PrettyDOMOptions,
+  ): string
+  /**
+   * Configures default options of `prettyDOM` and `debug` functions.
+   * This will also affect `vitest-browser-{framework}` package.
+   * @experimental
+   */
+  configurePrettyDOM(options: StringifyOptions): void
+  /**
+   * Creates "Cannot find element" error. Useful for custom locators.
+   */
+  getElementError(selector: string, container?: Element): Error
+}
+```
+
 ---
 
 ---
@@ -8632,7 +8719,7 @@ Coverage collection is performed during runtime by instructing V8 using [`node:i
 * ⚠️ There are some minor limitations set by V8 engine. See [`ast-v8-to-istanbul` | Limitations](https://github.com/AriPerkkio/ast-v8-to-istanbul?tab=readme-ov-file#limitations).
 * ❌ Does not work on environments that don't use V8, such as Firefox or Bun. Or on environments that don't expose V8 coverage via profiler, such as Cloudflare Workers.
 
-## Istanbul provider
+## Istanbul Provider
 
 [Istanbul code coverage tooling](https://istanbul.js.org/) has existed since 2012 and is very well battle-tested.
 This provider works on any Javascript runtime as coverage tracking is done by instrumenting user's source files.
@@ -8707,7 +8794,7 @@ export default defineConfig({
 
 :::
 
-## Including and excluding files from coverage report
+## Including and Excluding Files from Coverage Report
 
 You can define what files are shown in coverage report by configuring [`coverage.include`](/config/#coverage-include) and [`coverage.exclude`](/config/#coverage-exclude).
 
@@ -9208,7 +9295,7 @@ Your `CustomPoolRunner` will be controlling how your custom test runner worker l
 In your worker file, you can import helper utilities from `vitest/worker`:
 
 ```ts [my-worker.ts]
-import { init, runBaseTests } from 'vitest/worker'
+import { init, runBaseTests, setupEnvironment } from 'vitest/worker'
 
 init({
   post: (response) => {
@@ -9229,8 +9316,9 @@ init({
   deserialize: (value) => {
     // Optional, provide custom deserializer for `on` callbacks
   },
-  runTests: state => runBaseTests('run', state),
-  collectTests: state => runBaseTests('collect', state),
+  runTests: (state, traces) => runBaseTests('run', state, traces),
+  collectTests: (state, traces) => runBaseTests('collect', state, traces),
+  setup: setupEnvironment,
 })
 ```
 
@@ -11685,7 +11773,7 @@ You can use `expect.not` with this matcher to negate the expected value.
 
 This method adds custom serializers that are called when creating a snapshot. This is an advanced feature - if you want to know more, please read a [guide on custom serializers](/guide/snapshot#custom-serializer).
 
-If you are adding custom serializers, you should call this method inside [`setupFiles`](/config/#setupfiles). This will affect every snapshot.
+If you are adding custom serializers, you should call this method inside [`setupFiles`](/config/setupfiles). This will affect every snapshot.
 
 :::tip
 If you previously used Vue CLI with Jest, you might want to install [jest-serializer-vue](https://www.npmjs.com/package/jest-serializer-vue). Otherwise, your snapshots will be wrapped in a string, which cases `"` to be escaped.
@@ -11720,7 +11808,7 @@ test('custom matchers', () => {
 ```
 
 ::: tip
-If you want your matchers to appear in every test, you should call this method inside [`setupFiles`](/config/#setupfiles).
+If you want your matchers to appear in every test, you should call this method inside [`setupFiles`](/config/setupfiles).
 :::
 
 This function is compatible with Jest's `expect.extend`, so any library that uses it to create custom matchers will work with Vitest.
@@ -12401,6 +12489,26 @@ expectTypeOf(obj).toHaveProperty('b').toBeString()
 expectTypeOf(obj).toHaveProperty('a').not.toBeString()
 ```
 
+## branded
+
+* **Type:** `ExpectTypeOf<BrandedType>`
+
+You can use `.branded` to allow type assertions to succeed for types that are semantically equivalent but differ in representation.
+
+```ts
+import { expectTypeOf } from 'vitest'
+
+// Without .branded, this fails even though the types are effectively the same
+expectTypeOf<{ a: { b: 1 } & { c: 1 } }>().toEqualTypeOf<{ a: { b: 1; c: 1 } }>()
+
+// With .branded, the assertion succeeds
+expectTypeOf<{ a: { b: 1 } & { c: 1 } }>().branded.toEqualTypeOf<{ a: { b: 1; c: 1 } }>()
+```
+
+::: warning
+This helper comes at a performance cost and can cause the TypeScript compiler to 'give up' if used with excessively deep types. Use it sparingly and only when necessary.
+:::
+
 ---
 
 ---
@@ -12410,6 +12518,10 @@ url: /config/experimental.md
 # experimental
 
 ## experimental.fsModuleCache 4.0.11 {#experimental-fsmodulecache}
+
+::: tip FEEDBACK
+Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9221).
+:::
 
 * **Type:** `boolean`
 * **Default:** `false`
@@ -12466,6 +12578,34 @@ export default defineConfig({
 
 If you are a plugin author, consider defining a [cache key generator](/api/advanced/plugin#definecachekeygenerator) in your plugin if it can be registered with different options that affect the transform result.
 
+On the other hand, if your plugin should not affect the cache key, you can opt-out by setting `api.vitest.experimental.ignoreFsModuleCache` to `true`:
+
+```js [vitest.config.js]
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  plugins: [
+    {
+      name: 'vitest-cache',
+      api: {
+        vitest: {
+          experimental: {
+            ignoreFsModuleCache: true,
+          },
+        },
+      },
+    },
+  ],
+  test: {
+    experimental: {
+      fsModuleCache: true,
+    },
+  },
+})
+```
+
+Note that you can still define the cache key generator even the plugin opt-out of module caching.
+
 ## experimental.fsModuleCachePath 4.0.11 {#experimental-fsmodulecachepath}
 
 * **Type:** `string`
@@ -12479,15 +12619,23 @@ At the moment, Vitest ignores the [test.cache.dir](/config/cache) or [cacheDir](
 
 ## experimental.openTelemetry 4.0.11 {#experimental-opentelemetry}
 
+::: tip FEEDBACK
+Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9222).
+:::
+
 * **Type:**
 
 ```ts
 interface OpenTelemetryOptions {
   enabled: boolean
   /**
-   * A path to a file that exposes an OpenTelemetry SDK.
+   * A path to a file that exposes an OpenTelemetry SDK for Node.js.
    */
   sdkPath?: string
+  /**
+   * A path to a file that exposes an OpenTelemetry SDK for the browser.
+   */
+  browserSdkPath?: string
 }
 ```
 
@@ -12501,9 +12649,7 @@ OpenTelemetry may significantly impact Vitest performance; enable it only for lo
 
 You can use a [custom service](/guide/open-telemetry) together with Vitest to pinpoint which tests or files are slowing down your test suite.
 
-::: warning BROWSER SUPPORT
-At the moment, Vitest does not start any spans when running in [the browser](/guide/browser/).
-:::
+For browser mode, see the [Browser Mode](/guide/open-telemetry#browser-mode) section of the OpenTelemetry guide.
 
 An `sdkPath` is resolved relative to the [`root`](/config/root) of the project and should point to a module that exposes a started SDK instance as a default export. For example:
 
@@ -12543,6 +12689,26 @@ export default defineConfig({
 
 ::: warning
 It's important that Node can process `sdkPath` content because it is not transformed by Vitest. See [the guide](/guide/open-telemetry) on how to work with OpenTelemetry inside of Vitest.
+:::
+
+## experimental.printImportBreakdown 4.0.15 {#experimental-printimportbreakdown}
+
+::: tip FEEDBACK
+Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9224).
+:::
+
+* **Type:** `boolean`
+* **Default:** `false`
+
+Show import duration breakdown after tests have finished running. This option only works with [`default`](/guide/reporters#default), [`verbose`](/guide/reporters#verbose), or [`tree`](/guide/reporters#tree) reporters.
+
+* Self: the time it took to import the module, excluding static imports;
+* Total: the time it took to import the module, including static imports. Note that this does not include `transform` time of the current module.
+
+Note that if the file path is too long, Vitest will truncate it at the start until it fits 45 character limit.
+
+::: info
+[Vitest UI](/guide/ui#import-breakdown) shows a breakdown of imports automatically if at least one file took longer than 500 milliseconds to load. You can manually set this option to `false` to disable this.
 :::
 
 ---
@@ -13445,12 +13611,12 @@ Learn more about [IDE Integrations](/guide/ide)
 | `in-source-test` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/in-source-test) | [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/in-source-test?initialPath=__vitest__/) |
 | `lit` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/lit) | [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/lit?initialPath=__vitest__/) |
 | `vue` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/vue) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/vue?initialPath=__vitest__/) |
-| `marko` | [GitHub](https://github.com/marko-js/examples/tree/master/examples/library-ts) | [Play Online](https://stackblitz.com/fork/github/marko-js/examples/tree/master/examples/library-ts/) |
+| `marko` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/marko) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/marko?initialPath=__vitest__/) |
 | `preact` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/preact) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/preact?initialPath=__vitest__/) |
+| `qwik`| [Github](https://github.com/vitest-tests/browser-examples/tree/main/examples/qwik) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/qwik?initialPath=__vitest__/) |
 | `react` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/react) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/react?initialPath=__vitest__/) |
 | `solid` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/solid) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/solid?initialPath=__vitest__/) |
 | `svelte` | [GitHub](https://github.com/vitest-tests/browser-examples/tree/main/examples/svelte) | [Play Online](https://stackblitz.com/fork/github/vitest-tests/browser-examples/tree/main/examples/svelte?initialPath=__vitest__/) |
-| `sveltekit` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/sveltekit) | [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/sveltekit?initialPath=__vitest__/) |
 | `profiling` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/profiling) | Not Available |
 | `typecheck` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/typecheck) | [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/typecheck?initialPath=__vitest__/) |
 | `projects` | [GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/projects) | [Play Online](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/projects?initialPath=__vitest__/) |
@@ -13559,28 +13725,50 @@ url: /config/globalsetup.md
 
 * **Type:** `string | string[]`
 
-Path to global setup files, relative to project root.
+Path to global setup files relative to project [root](/config/root).
 
-A global setup file can either export named functions `setup` and `teardown` or a `default` function that returns a teardown function ([example](https://github.com/vitest-dev/vitest/blob/main/test/global-setup/vitest.config.ts)).
+A global setup file can either export named functions `setup` and `teardown` or a `default` function that returns a teardown function:
 
-::: info
-Multiple globalSetup files are possible. setup and teardown are executed sequentially with teardown in reverse order.
+::: code-group
+
+```js [exports]
+export function setup(project) {
+  console.log('setup')
+}
+
+export function teardown() {
+  console.log('teardown')
+}
+```
+
+```js [default]
+export default function setup(project) {
+  console.log('setup')
+
+  return function teardown() {
+    console.log('teardown')
+  }
+}
+```
+
 :::
 
-::: warning
-Global setup runs only if there is at least one running test. This means that global setup might start running during watch mode after test file is changed (the test file will wait for global setup to finish before running).
+Note that the `setup` method and a `default` function receive a [test project](/api/advanced/test-project) as the first argument. The global setup is called before the test workers are created and only if there is at least one test queued, and teardown is called after all test files have finished running. In [watch mode](/config/watch), the teardown is called before the process is exited instead. If you need to reconfigure your setup before the test rerun, you can use [`onTestsRerun`](#handling-test-reruns) hook instead.
 
-Beware that the global setup is running in a different global scope, so your tests don't have access to variables defined here. However, you can pass down serializable data to tests via [`provide`](#provide) method:
+Multiple global setup files are possible. `setup` and `teardown` are executed sequentially with teardown in reverse order.
+
+::: danger
+Beware that the global setup is running in a different global scope before test workers are even created, so your tests don't have access to global variables defined here. However, you can pass down serializable data to tests via [`provide`](/config/provide) method and read them in your tests via `inject` imported from `vitest`:
 
 :::code-group
 
-```ts [example.test.js]
+```ts [example.test.ts]
 import { inject } from 'vitest'
 
 inject('wsPort') === 3000
 ```
 
-```ts [globalSetup.ts <Version>3.0.0</Version>]
+```ts [globalSetup.ts]
 import type { TestProject } from 'vitest/node'
 
 export default function setup(project: TestProject) {
@@ -13594,23 +13782,12 @@ declare module 'vitest' {
 }
 ```
 
-```ts [globalSetup.ts <Version>2.0.0</Version>]
-import type { GlobalSetupContext } from 'vitest/node'
-
-export default function setup({ provide }: GlobalSetupContext) {
-  provide('wsPort', 3000)
-}
-
-declare module 'vitest' {
-  export interface ProvidedContext {
-    wsPort: number
-  }
-}
-```
-
+If you need to execute code in the same process as tests, use [`setupFiles`](/config/setupfiles) instead, but note that it runs before every test file.
 :::
 
-Since Vitest 3, you can define a custom callback function to be called when Vitest reruns tests. If the function is asynchronous, the runner will wait for it to complete before executing tests. Note that you cannot destruct the `project` like `{ onTestsRerun }` because it relies on the context.
+### Handling Test Reruns
+
+You can define a custom callback function to be called when Vitest reruns tests. The test runner will wait for it to complete before executing tests. Note that you cannot destruct the `project` like `{ onTestsRerun }` because it relies on the context.
 
 ```ts [globalSetup.ts]
 import type { TestProject } from 'vitest/node'
@@ -13690,7 +13867,7 @@ url: /guide/improving-performance.md
 ---
 # Improving Performance
 
-## Test isolation
+## Test Isolation
 
 By default Vitest runs every test file in an isolated environment based on the [pool](/config/#pool):
 
@@ -13765,7 +13942,7 @@ export default defineConfig({
 
 :::
 
-## Limiting directory search
+## Limiting Directory Search
 
 You can limit the working directory when Vitest searches for files using [`test.dir`](/config/#test-dir) option. This should make the search faster if you have unrelated folders and files in the root directory.
 
@@ -16116,7 +16293,7 @@ This allows V8 reports to be as accurate as `@vitest/coverage-istanbul` reports.
 * `coverage.experimentalAstAwareRemapping` is removed. This option is now enabled by default, and is the only supported remapping method.
 * `coverage.ignoreClassMethods` is now supported by V8 provider too.
 
-### Removed options `coverage.all` and `coverage.extensions`
+### Removed Options `coverage.all` and `coverage.extensions`
 
 In previous versions Vitest included all uncovered files in coverage report by default.
 This was due to `coverage.all` defaulting to `true`, and `coverage.include` defaulting to `**`.
@@ -16272,7 +16449,7 @@ expect(AutoMockedClass.prototype.method).toHaveBeenCalledTimes(4)
 * The mock `vi.fn(implementation).mockReset()` now correctly returns the mock implementation in `.getMockImplementation()`
 * `vi.fn().mock.invocationCallOrder` now starts with `1`, like Jest does, instead of `0`
 
-### Standalone mode with filename filter
+### Standalone Mode with Filename Filter
 
 To improve user experience, Vitest will now start running the matched files when [`--standalone`](/guide/cli#standalone) is used with filename filter.
 
@@ -16423,7 +16600,7 @@ New pool architecture allows Vitest to simplify many previously complex configur
 
 * `maxThreads` and `maxForks` are now `maxWorkers`.
 * Environment variables `VITEST_MAX_THREADS` and `VITEST_MAX_FORKS` are now `VITEST_MAX_WORKERS`.
-* `singleThread` and `singleFork` are now `maxWorkers: 1, isolate: false`. If your tests were relying on module reset between tests, you'll need to add [setupFile](/config/#setupfiles) that calls [`vi.resetModules()`](/api/vi.html#vi-resetmodules) in [`beforeAll` test hook](/api/#beforeall).
+* `singleThread` and `singleFork` are now `maxWorkers: 1, isolate: false`. If your tests were relying on module reset between tests, you'll need to add [setupFile](/config/setupfiles) that calls [`vi.resetModules()`](/api/vi.html#vi-resetmodules) in [`beforeAll` test hook](/api/#beforeall).
 * `poolOptions` is removed. All previous `poolOptions` are now top-level options. The `memoryLimit` of VM pools is renamed to `vmMemoryLimit`.
 * `threads.useAtomics` is removed. If you have a use case for this, feel free to open a new feature request.
 * Custom pool interface has been rewritten, see [Custom Pool](/guide/advanced/pool#custom-pool)
@@ -16483,11 +16660,11 @@ export default defineConfig({
     projects: [
       {
         name: 'Parallel',
-        exclude: ['**.sequantial.test.ts'],
+        exclude: ['**.sequential.test.ts'],
       },
       {
         name: 'Sequential',
-        include: ['**.sequantial.test.ts'],
+        include: ['**.sequential.test.ts'],
         fileParallelism: false,
       },
     ],
@@ -16545,7 +16722,7 @@ export default defineConfig({
 })
 ```
 
-### Snapshots using custom elements print the shadow root
+### Snapshots using Custom Elements Print the Shadow Root
 
 In Vitest 4.0 snapshots that include custom elements will print the shadow root contents. To restore the previous behavior, set the [`printShadowRoot` option](/config/#snapshotformat) to `false`.
 
@@ -16647,7 +16824,7 @@ For more details please refer to the [`vi.mock` api section](/api/vi#vi-mock).
 
 ### Auto-Mocking Behaviour
 
-Unlike Jest, mocked modules in `<root>/__mocks__` are not loaded unless `vi.mock()` is called. If you need them to be mocked in every test, like in Jest, you can mock them inside [`setupFiles`](/config/#setupfiles).
+Unlike Jest, mocked modules in `<root>/__mocks__` are not loaded unless `vi.mock()` is called. If you need them to be mocked in every test, like in Jest, you can mock them inside [`setupFiles`](/config/setupfiles).
 
 ### Importing the Original of a Mocked Package
 
@@ -17384,7 +17561,7 @@ vi.mock(import('./example.js'), () => {
 ```
 
 ::: tip
-Remember that you can call `vi.mock` in a [setup file](/config/#setupfiles) to apply the module mock in every test file automatically.
+Remember that you can call `vi.mock` in a [setup file](/config/setupfiles) to apply the module mock in every test file automatically.
 :::
 
 ::: tip
@@ -17760,7 +17937,7 @@ Mock Service Worker (MSW) works by intercepting the requests your tests make, al
 
 ## Configuration
 
-You can use it like below in your [setup file](/config/#setupfiles)
+You can use it like below in your [setup file](/config/setupfiles)
 
 ::: code-group
 
@@ -18923,7 +19100,7 @@ url: /config/onstacktrace.md
 
 * **Type**: `(error: Error, frame: ParsedStack) => boolean | void`
 
-Apply a filtering function to each frame of each stack trace when handling errors. This does not apply to stack traces printed by [`printConsoleTrace`](#printConsoleTrace). The first argument, `error`, is a `TestError`.
+Apply a filtering function to each frame of each stack trace when handling errors. This does not apply to stack traces printed by [`printConsoleTrace`](/config/printconsoletrace#printconsoletrace). The first argument, `error`, is a `TestError`.
 
 Can be useful for filtering out stack trace frames from third-party libraries.
 
@@ -19015,6 +19192,14 @@ url: /guide/open-telemetry.md
 ---
 # Open Telemetry Support  {#open-telemetry-support}
 
+::: tip FEEDBACK
+Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9222).
+:::
+
+::: tip Example Project
+[GitHub](https://github.com/vitest-dev/vitest/tree/main/examples/opentelemetry)
+:::
+
 [OpenTelemetry](https://opentelemetry.io/) traces can be a useful tool to debug the performance and behavior of your application inside tests.
 
 If enabled, Vitest integration generates spans that are scoped to your test's worker.
@@ -19023,7 +19208,7 @@ If enabled, Vitest integration generates spans that are scoped to your test's wo
 OpenTelemetry initialization increases the startup time of every test unless Vitest runs without [isolation](/config/isolate). You can see it as the `vitest.runtime.traces` span inside `vitest.worker.start`.
 :::
 
-To start using OpenTelemetry in Vitest, specify an SDK module path via [`experimental.openTelemetry.sdkPath`](/config/experimental#opentelemetry) and set `experimental.openTelemetry.enabled` to `true`. Vitest will automatically instrument the whole process and each individual test worker.
+To start using OpenTelemetry in Vitest, specify an SDK module path via [`experimental.openTelemetry.sdkPath`](/config/experimental#experimental-opentelemetry) and set `experimental.openTelemetry.enabled` to `true`. Vitest will automatically instrument the whole process and each individual test worker.
 
 Make sure to export the SDK as a default export, so that Vitest can flush the network requests before the process is closed. Note that Vitest doesn't automatically call `start`.
 
@@ -19094,6 +19279,62 @@ test('db connects properly', async () => {
 })
 ```
 
+## Browser Mode
+
+When running tests in [browser mode](/guide/browser/), Vitest propagates trace context between Node.js and the browser. Node.js side traces (test orchestration, browser driver communication) are available without additional configuration.
+
+To capture traces from the browser runtime, provide a browser-compatible SDK via `browserSdkPath`:
+
+```shell
+npm i @opentelemetry/sdk-trace-web @opentelemetry/exporter-trace-otlp-proto
+```
+
+::: code-group
+
+```js [otel-browser.js]
+import {
+  BatchSpanProcessor,
+  WebTracerProvider,
+} from '@opentelemetry/sdk-trace-web'
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
+
+const provider = new WebTracerProvider({
+  spanProcessors: [
+    new BatchSpanProcessor(new OTLPTraceExporter()),
+  ],
+})
+
+provider.register()
+export default provider
+```
+
+```js [vitest.config.js]
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  test: {
+    browser: {
+      enabled: true,
+      provider: 'playwright',
+      instances: [{ browser: 'chromium' }],
+    },
+    experimental: {
+      openTelemetry: {
+        enabled: true,
+        sdkPath: './otel.js',
+        browserSdkPath: './otel-browser.js',
+      },
+    },
+  },
+})
+```
+
+:::
+
+::: warning ASYNC CONTEXT
+Unlike Node.js, browsers do not have automatic async context propagation. Vitest handles this internally for test execution, but custom spans in deeply nested async code may not propagate context automatically.
+:::
+
 ## View Traces
 
 To generate traces, run Vitest as usual. You can run Vitest in either watch mode or run mode. Vitest will call `sdk.shutdown()` manually after everything is finished to make sure traces are handled properly.
@@ -19105,6 +19346,10 @@ You can view traces using any of the open source or commercial products that sup
 Vitest declares `@opentelemetry/api` as an optional peer dependency, which it uses internally to generate spans. When trace collection is not enabled, Vitest will not attempt to use this dependency.
 
 When configuring Vitest to use OpenTelemetry, you will typically install `@opentelemetry/sdk-node`, which includes `@opentelemetry/api` as a transitive dependency, thereby satisfying Vitest's peer dependency requirement. If you encounter an error indicating that `@opentelemetry/api` cannot be found, this typically means trace collection has not been enabled. If the error persists after proper configuration, you may need to install `@opentelemetry/api` explicitly.
+
+## Inter-Process Context Propagation
+
+Vitest supports automatic context propagation from parent processes via the `TRACEPARENT` and `TRACESTATE` environment variables as defined in the [OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/context/env-carriers.md). This is particularly useful when running Vitest as part of a larger distributed tracing system (e.g., CI/CD pipelines with OpenTelemetry instrumentation).
 
 ---
 
@@ -19322,7 +19567,7 @@ Define a generator that will be applied before hashing the cache key.
 
 Use this to make sure Vitest generates correct hash. It is a good idea to define this function if your plugin can be registered with different options.
 
-This is called only if [`experimental.fsModuleCache`](/config/experimental#fsmodulecache) is defined.
+This is called only if [`experimental.fsModuleCache`](/config/experimental#experimental-fsmodulecache) is defined.
 
 ```ts
 interface PluginOptions {
@@ -19435,18 +19680,17 @@ When you run Vitest it reports multiple time metrics of your tests:
 > Test Files  1 passed (1)
 >      Tests  1 passed (1)
 >   Start at  09:32:53
->   Duration  4.80s (transform 44ms, setup 0ms, collect 35ms, tests 4.52s, environment 0ms, prepare 81ms)
+>   Duration  4.80s (transform 44ms, setup 0ms, import 35ms, tests 4.52s, environment 0ms)
 >   # Time metrics ^^
 > ```
 
 * Transform: How much time was spent transforming the files. See [File Transform](#file-transform).
-* Setup: Time spent for running the [`setupFiles`](/config/#setupfiles) files.
-* Collect: Time spent for collecting all tests in the test files. This includes the time it took to import all file dependencies.
+* Setup: Time spent for running the [`setupFiles`](/config/setupfiles) files.
+* Import: Time it took to import your test files and their dependencies. This also includes the time spent collecting all tests. Note that this doesn't include dynamic imports inside of tests.
 * Tests: Time spent for actually running the test cases.
 * Environment: Time spent for setting up the test [`environment`](/config/#environment), for example JSDOM.
-* Prepare: Time Vitest uses to prepare the test runner. When running tests in Node, this is the time to import and execute all internal utilities inside the worker. When running tests in the browser, this also includes the time to initiate the iframe.
 
-## Test runner
+## Test Runner
 
 In cases where your test execution time is high, you can generate a profile of the test runner. See NodeJS documentation for following options:
 
@@ -19480,7 +19724,7 @@ After the tests have run there should be a `test-runner-profile/*.cpuprofile` an
 
 See [Profiling | Examples](https://github.com/vitest-dev/vitest/tree/main/examples/profiling) for example.
 
-## Main thread
+## Main Thread
 
 Profiling main thread is useful for debugging Vitest's Vite usage and [`globalSetup`](/config/#globalsetup) files.
 This is also where your Vite plugins are running.
@@ -19501,7 +19745,7 @@ $ node --cpu-prof --cpu-prof-dir=main-profile ./node_modules/vitest/vitest.mjs -
 
 After the tests have run there should be a `main-profile/*.cpuprofile` file generated. See [Inspecting profiling records](#inspecting-profiling-records) for instructions how to analyze these files.
 
-## File transform
+## File Transform
 
 This profiling strategy is a good way to identify unnecessary transforms caused by [barrel files](https://vitejs.dev/guide/performance.html#avoid-barrel-files).
 If these logs contain files that should not be loaded when your test is run, you might have barrel files that are importing files unnecessarily.
@@ -19552,7 +19796,7 @@ _x_examples_profiling_test_prime-number_test_ts-1413378098.js
 _src_prime-number_ts-525172412.js
 ```
 
-## Code coverage
+## Code Coverage
 
 If code coverage generation is slow on your project you can use `DEBUG=vitest:coverage` environment variable to enable performance logging.
 
@@ -19578,7 +19822,7 @@ This profiling approach is great for detecting large files that are accidentally
 For example if your configuration is accidentally including large built minified Javascript files in code coverage, they should appear in logs.
 In these cases you might want to adjust your [`coverage.include`](/config/#coverage-include) and [`coverage.exclude`](/config/#coverage-exclude) options.
 
-## Inspecting profiling records
+## Inspecting Profiling Records
 
 You can inspect the contents of `*.cpuprofile` and `*.heapprofile` with various tools. See list below for examples.
 
@@ -19664,7 +19908,7 @@ url: /guide/recipes.md
 
 # Recipes
 
-## Disabling isolation for specific test files only
+## Disabling Isolation for Specific Test Files Only
 
 You can speed up your test run by disabling isolation for specific set of files by specifying `isolate` per `projects` entries:
 
@@ -19690,7 +19934,7 @@ export default defineConfig({
 })
 ```
 
-## Parallel and Sequential test files
+## Parallel and Sequential Test Files
 
 You can split test files into parallel and sequential groups by using `projects` option:
 
@@ -19702,17 +19946,54 @@ export default defineConfig({
     projects: [
       {
         name: 'Parallel',
-        exclude: ['**.sequantial.test.ts'],
+        exclude: ['**.sequential.test.ts'],
       },
       {
         name: 'Sequential',
-        include: ['**.sequantial.test.ts'],
+        include: ['**.sequential.test.ts'],
         fileParallelism: false,
       },
     ],
   },
 })
 ```
+
+---
+
+---
+url: /todo.md
+---
+# Remove UnoCSS - Migration Complete
+
+UnoCSS was causing OOM in CI. Removed entirely and replaced with `@iconify/vue` + plain CSS.
+
+## Summary
+
+* Removed UnoCSS plugin from `vite.config.ts`
+* Removed `uno.css` import from `theme/index.ts`
+* Added `@iconify/vue` for icons
+* Converted all UnoCSS utilities to scoped CSS
+
+## Completed
+
+* \[x] `vite.config.ts` - removed UnoCSS plugin
+* \[x] `theme/index.ts` - removed `import 'uno.css'`
+* \[x] `CRoot.vue` - @iconify/vue + CSS
+* \[x] `ListItem.vue` - @iconify/vue + CSS (spinner, checkmark, close icons)
+* \[x] `CourseLink.vue` - @iconify/vue + CSS
+* \[x] `FeaturesList.vue` - plain CSS
+* \[x] `Advanced.vue` - plain CSS
+* \[x] `Experimental.vue` - plain CSS
+
+## Test pages
+
+* `/guide/features` - FeaturesList, ListItem, CourseLink
+* `/config/projects` - CRoot
+* `/api/advanced/vitest` - Experimental
+
+## Not used (skipped)
+
+* `HomePage.vue` - not used in new theme
 
 ---
 
@@ -20827,6 +21108,26 @@ export default defineConfig({
 })
 ```
 
+You can also use the `context` parameter to access the project's serialized config. This is useful when you have multiple [projects](/guide/projects) and want to store snapshots in different locations based on the project name:
+
+```ts
+import { basename, dirname, join } from 'node:path'
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  test: {
+    resolveSnapshotPath(testPath, snapExtension, context) {
+      return join(
+        dirname(testPath),
+        '__snapshots__',
+        context.config.name ?? 'default',
+        basename(testPath) + snapExtension,
+      )
+    },
+  },
+})
+```
+
 ---
 
 ---
@@ -21402,7 +21703,7 @@ Sharding is happening before sorting, and only if `--shard` option is provided.
 
 If [`sequencer.groupOrder`](#grouporder) is specified, the sequencer will be called once for each group and pool.
 
-## groupOrder
+## sequence.groupOrder
 
 * **Type:** `number`
 * **Default:** `0`
@@ -21474,7 +21775,7 @@ Tests in these projects will run in this order:
 
 If you want files and tests to run randomly, you can enable it with this option, or CLI argument [`--sequence.shuffle`](/guide/cli).
 
-Vitest usually uses cache to sort tests, so long running tests start earlier - this makes tests run faster. If your files and tests will run in random order you will lose this performance improvement, but it may be useful to track tests that accidentally depend on another run previously.
+Vitest usually uses cache to sort tests, so long-running tests start earlier, which makes tests run faster. If your files and tests run in random order, you will lose this performance improvement, but it may be useful to track tests that accidentally depend on another test run previously.
 
 ### sequence.shuffle.files {#sequence-shuffle-files}
 
@@ -21624,36 +21925,43 @@ url: /config/setupfiles.md
 
 * **Type:** `string | string[]`
 
-Path to setup files. They will be run before each test file.
+Paths to setup files resolved relative to the [`root`](/config/root). They will run before each *test file* in the same process. By default, all test files run in parallel, but you can configure it with [`sequence.setupFiles`](/config/sequence#sequence-setupfiles) option.
+
+Vitest will ignore any exports from these files.
+
+:::warning
+Note that setup files are executed in the same process as tests, unlike [`globalSetup`](/config/globalsetup) that runs once in the main thread before any test worker is created.
+:::
 
 :::info
 Editing a setup file will automatically trigger a rerun of all tests.
 :::
 
-You can use `process.env.VITEST_POOL_ID` (integer-like string) inside to distinguish between workers.
+If you have a heavy process running in the background, you can use `process.env.VITEST_POOL_ID` (integer-like string) inside to distinguish between workers and spread the workload.
 
-:::tip
-Note, that if you are running [`--isolate=false`](#isolate), this setup file will be run in the same global scope multiple times. Meaning, that you are accessing the same global object before each test, so make sure you are not doing the same thing more than you need.
-:::
+:::warning
+If [isolation](/config/isolate) is disabled, imported modules are cached, but the setup file itself is executed again before each test file, meaning that you are accessing the same global object before each test file. Make sure you are not doing the same thing more than necessary.
 
 For example, you may rely on a global variable:
 
 ```ts
 import { config } from '@some-testing-lib'
 
-if (!globalThis.defined) {
+if (!globalThis.setupInitialized) {
   config.plugins = [myCoolPlugin]
   computeHeavyThing()
-  globalThis.defined = true
+  globalThis.setupInitialized = true
 }
 
-// hooks are reset before each suite
+// hooks reset before each test file
 afterEach(() => {
   cleanup()
 })
 
 globalThis.resetBeforeEachTest = true
 ```
+
+:::
 
 ---
 
@@ -23603,7 +23911,7 @@ The `recordArtifact` function records an artifact during test execution and retu
 
 This function has to be used within a test, and the test has to still be running. Recording after test completion will throw an error.
 
-When an artifact is recorded on a test, it emits an `onTestArtifactRecord` runner event and a [`onTestCaseArtifactRecord` reporter event](/api/advanced/reporters#ontestcaseartifactrecord).
+When an artifact is recorded on a test, it emits an `onTestArtifactRecord` runner event and a [`onTestCaseArtifactRecord` reporter event](/api/advanced/reporters#ontestcaseartifactrecord). To retrieve recorded artifacts from a test case, use the [`artifacts()`](/api/advanced/test-case#artifacts) method.
 
 Note: annotations, [even though they're built on top of this feature](#relationship-with-annotations), won't appear in the `task.artifacts` array for backwards compatibility reasons until the next major version.
 
@@ -24150,6 +24458,12 @@ const test = baseTest.extend({
 })
 ```
 
+::: warning
+The built-in [`task`](#task) test context is **not available** in file-scoped or worker-scoped fixtures. These fixtures receive a different context object (file or worker context) that does not include test-specific properties like `task`.
+
+If you need access to file-level metadata like the file path, use `expect.getState().testPath` instead.
+:::
+
 The `worker` scope will run the fixture once per worker. The number of running workers depends on various factors. By default, every file runs in a separate worker, so `file` and `worker` scopes work the same way.
 
 However, if you disable [isolation](/config/#isolate), then the number of workers is limited by the [`maxWorkers`](/config/#maxworkers) configuration.
@@ -24447,6 +24761,23 @@ describe('another suite', () => {
   it.only('test', () => {
     // Only this test (and others marked with only) are run
     assert.equal(Math.sqrt(4), 2)
+  })
+})
+```
+
+Run Vitest with a file filter and a line number:
+
+```shell
+vitest ./test/example.test.ts:5
+```
+
+```ts:line-numbers
+import { assert, describe, it } from 'vitest'
+
+describe('suite', () => {
+  // Run only this test
+  it('test', () => {
+    assert.equal(Math.sqrt(4), 3)
   })
 })
 ```
@@ -24771,8 +25102,338 @@ Some of the configuration options are not allowed in a project config. Most nota
 * `resolveSnapshotPath`: only root-level resolver is respected
 * all other options that don't affect test runners
 
-All configuration options that are not supported inside a project configuration are marked with a  icon next to their name. They can onle be defined once in the root config file.
+All configuration options that are not supported inside a project configuration are marked with a  icon next to their name. They can only be defined once in the root config file.
 :::
+
+---
+
+---
+url: /guide/lifecycle.md
+---
+
+# Test Run Lifecycle
+
+Understanding the test run lifecycle is essential for writing effective tests, debugging issues, and optimizing your test suite. This guide explains when and in what order different lifecycle phases occur in Vitest, from initialization to teardown.
+
+## Overview
+
+A typical Vitest test run goes through these main phases:
+
+1. **Initialization** - Configuration loading and project setup
+2. **Global Setup** - One-time setup before any tests run
+3. **Worker Creation** - Test workers are spawned based on the [pool](/config/pool) configuration
+4. **Test File Collection** - Test files are discovered and organized
+5. **Test Execution** - Tests run with their hooks and assertions
+6. **Reporting** - Results are collected and reported
+7. **Global Teardown** - Final cleanup after all tests complete
+
+Phases 4–6 run once for each test file, so across your test suite they will execute multiple times and may also run in parallel across different files when you use more than [1 worker](/config/maxworkers).
+
+## Detailed Lifecycle Phases
+
+### 1. Initialization Phase
+
+When you run `vitest`, the framework first loads your configuration and prepares the test environment.
+
+**What happens:**
+
+* [Command-line](/guide/cli) arguments are parsed
+* [Configuration file](/config/) is loaded
+* Project structure is validated
+
+This phase can run again if the config file or one of its imports changes.
+
+**Scope:** Main process (before any test workers are created)
+
+### 2. Global Setup Phase
+
+If you have configured [`globalSetup`](/config/globalsetup) files, they run once before any test workers are created.
+
+**What happens:**
+
+* `setup()` functions (or exported `default` function) from global setup files execute sequentially
+* Multiple global setup files run in the order they are defined
+
+**Scope:** Main process (separate from test workers)
+
+**Important notes:**
+
+* Global setup runs in a **different global scope** from your tests
+* Tests cannot access variables defined in global setup (use [`provide`/`inject`](/config/provide) instead)
+* Global setup only runs if there is at least one test queued
+
+```ts [globalSetup.ts]
+export function setup(project) {
+  // Runs once before all tests
+  console.log('Global setup')
+
+  // Share data with tests
+  project.provide('apiUrl', 'http://localhost:3000')
+}
+
+export function teardown() {
+  // Runs once after all tests
+  console.log('Global teardown')
+}
+```
+
+### 3. Worker Creation Phase
+
+After global setup completes, Vitest creates test workers based on your [pool configuration](/config/pool).
+
+**What happens:**
+
+* Workers are spawned according to the `browser.enabled` or `pool` setting (`threads`, `forks`, `vmThreads`, or `vmForks`)
+* Each worker gets its own isolated environment (unless [isolation](/config/isolate) is disabled)
+* By default, workers are not reused to provide isolation. Workers are reused only if:
+  * [isolation](/config/isolate) is disabled
+  * OR pool is `vmThreads` or `vmForks` because [VM](https://nodejs.org/api/vm.html) provides enough isolation
+
+**Scope:** Worker processes/threads
+
+### 4. Test File Setup Phase
+
+Before each test file runs, [setup files](/config/setupfiles) are executed.
+
+**What happens:**
+
+* Setup files run in the same process as your tests
+* By default, setup files run in **parallel** (configurable via [`sequence.setupFiles`](/config/sequence#sequence-setupfiles))
+* Setup files execute before **each test file**
+* Any global *state* or configuration can be initialized here
+
+**Scope:** Worker process (same as your tests)
+
+**Important notes:**
+
+* If [isolation](/config/isolate) is disabled, setup files still rerun before each test file to trigger side effects, but imported modules are cached
+* Editing a setup file triggers a rerun of all tests in watch mode
+
+```ts [setupFile.ts]
+import { afterEach } from 'vitest'
+
+// Runs before each test file
+console.log('Setup file executing')
+
+// Register hooks that apply to all tests
+afterEach(() => {
+  cleanup()
+})
+```
+
+### 5. Test Collection and Execution Phase
+
+This is the main phase where your tests actually run.
+
+#### Test File Execution Order
+
+Test files are executed based on your configuration:
+
+* **Sequential by default** within a worker
+* Files will run in **parallel** across different workers, configured by [`maxWorkers`](/config/maxworkers)
+* Order can be randomized with [`sequence.shuffle`](/config/sequence#sequence-shuffle) or fine-tuned with [`sequence.sequencer`](/config/sequence#sequence-sequencer)
+* Long-running tests typically start earlier (based on cache) unless shuffle is enabled
+
+#### Within Each Test File
+
+The execution follows this order:
+
+1. **File-level code** - All code outside `describe` blocks runs immediately
+2. **Test collection** - `describe` blocks are processed, and tests are registered as side effects of importing the test file
+3. **`beforeAll` hooks** - Run once before any tests in the suite
+4. **For each test:**
+   * `beforeEach` hooks execute (in order defined, or based on [`sequence.hooks`](/config/sequence#sequence-hooks))
+   * Test function executes
+   * `afterEach` hooks execute (reverse order by default with `sequence.hooks: 'stack'`)
+   * [`onTestFinished`](/api/#ontestfinished) callbacks run (always in reverse order)
+   * If test failed: [`onTestFailed`](/api/#ontestfailed) callbacks run
+   * Note: if `repeats` or `retry` are set, all of these steps are executed again
+5. **`afterAll` hooks** - Run once after all tests in the suite complete
+
+**Example execution flow:**
+
+```ts
+// This runs immediately (collection phase)
+console.log('File loaded')
+
+describe('User API', () => {
+  // This runs immediately (collection phase)
+  console.log('Suite defined')
+
+  beforeAll(() => {
+    // Runs once before all tests in this suite
+    console.log('beforeAll')
+  })
+
+  beforeEach(() => {
+    // Runs before each test
+    console.log('beforeEach')
+  })
+
+  test('creates user', () => {
+    // Test executes
+    console.log('test 1')
+  })
+
+  test('updates user', () => {
+    // Test executes
+    console.log('test 2')
+  })
+
+  afterEach(() => {
+    // Runs after each test
+    console.log('afterEach')
+  })
+
+  afterAll(() => {
+    // Runs once after all tests in this suite
+    console.log('afterAll')
+  })
+})
+
+// Output:
+// File loaded
+// Suite defined
+// beforeAll
+// beforeEach
+// test 1
+// afterEach
+// beforeEach
+// test 2
+// afterEach
+// afterAll
+```
+
+#### Nested Suites
+
+When using nested `describe` blocks, hooks follow a hierarchical pattern:
+
+```ts
+describe('outer', () => {
+  beforeAll(() => console.log('outer beforeAll'))
+  beforeEach(() => console.log('outer beforeEach'))
+
+  test('outer test', () => console.log('outer test'))
+
+  describe('inner', () => {
+    beforeAll(() => console.log('inner beforeAll'))
+    beforeEach(() => console.log('inner beforeEach'))
+
+    test('inner test', () => console.log('inner test'))
+
+    afterEach(() => console.log('inner afterEach'))
+    afterAll(() => console.log('inner afterAll'))
+  })
+
+  afterEach(() => console.log('outer afterEach'))
+  afterAll(() => console.log('outer afterAll'))
+})
+
+// Output:
+// outer beforeAll
+// outer beforeEach
+// outer test
+// outer afterEach
+// inner beforeAll
+// outer beforeEach
+// inner beforeEach
+// inner test
+// inner afterEach (with stack mode)
+// outer afterEach (with stack mode)
+// inner afterAll
+// outer afterAll
+```
+
+#### Concurrent Tests
+
+When using `test.concurrent` or [`sequence.concurrent`](/config/sequence#sequence-concurrent):
+
+* Tests within the same file can run in parallel
+* Each concurrent test still runs its own `beforeEach` and `afterEach` hooks
+* Use [test context](/guide/test-context) for concurrent snapshots: `test.concurrent('name', async ({ expect }) => {})`
+
+### 6. Reporting Phase
+
+Throughout the test run, reporters receive lifecycle events and display results.
+
+**What happens:**
+
+* Reporters receive events as tests progress
+* Results are collected and formatted
+* Test summaries are generated
+* Coverage reports are generated (if enabled)
+
+For detailed information about the reporter lifecycle, see the [Reporters](/api/advanced/reporters) guide.
+
+### 7. Global Teardown Phase
+
+After all tests complete, global teardown functions execute.
+
+**What happens:**
+
+* `teardown()` functions from [`globalSetup`](/config/globalsetup) files run
+* Multiple teardown functions run in **reverse order** of their setup
+* In watch mode, teardown runs before process exit, not between test reruns
+
+**Scope:** Main process
+
+```ts [globalSetup.ts]
+export function teardown() {
+  // Clean up global resources
+  console.log('Global teardown complete')
+}
+```
+
+## Lifecycle in Different Scopes
+
+Understanding where code executes is crucial for avoiding common pitfalls:
+
+| Phase | Scope | Access to Test Context | Runs |
+|-------|-------|----------------------|------|
+| Config File | Main process | ❌ No | Once per Vitest run |
+| Global Setup | Main process | ❌ No (use `provide`/`inject`) | Once per Vitest run |
+| Setup Files | Worker (same as tests) | ✅ Yes | Before each test file |
+| File-level code | Worker | ✅ Yes | Once per test file |
+| `beforeAll` / `afterAll` | Worker | ✅ Yes | Once per suite |
+| `beforeEach` / `afterEach` | Worker | ✅ Yes | Per test |
+| Test function | Worker | ✅ Yes | Once (or more with retries/repeats) |
+| Global Teardown | Main process | ❌ No | Once per Vitest run |
+
+## Watch Mode Lifecycle
+
+In watch mode, the lifecycle repeats with some differences:
+
+1. **Initial run** - Full lifecycle as described above
+2. **On file change:**
+   * New [test run](/api/advanced/reporters#ontestrunstart) starts
+   * Only affected test files are re-run
+   * [Setup files](/config/setupfiles) run again for those test files
+   * [Global setup](/config/globalsetup) does **not** re-run (use [`project.onTestsRerun`](/config/globalsetup#handling-test-reruns) for rerun-specific logic)
+3. **On exit:**
+   * Global teardown executes
+   * Process terminates
+
+## Performance Considerations
+
+Understanding the lifecycle helps optimize test performance:
+
+* **Global setup** is ideal for expensive one-time operations (database seeding, server startup)
+* **Setup files** run before each test file - avoid heavy operations here if you have many test files
+* **`beforeAll`** is better than `beforeEach` for expensive setup that doesn't need isolation
+* **Disabling [isolation](/config/isolate)** improves performance, but setup files still execute before each file
+* **[Pool configuration](/config/pool)** affects parallelization and available APIs
+
+For tips on how to improve performance, read the [Improving Performance](/guide/improving-performance) guide.
+
+## Related Documentation
+
+* [Global Setup Configuration](/config/globalsetup)
+* [Setup Files Configuration](/config/setupfiles)
+* [Test Sequencing Options](/config/sequence)
+* [Isolation Configuration](/config/isolate)
+* [Pool Configuration](/config/pool)
+* [Extending Reporters](/guide/advanced/reporters) - for reporter lifecycle events
+* [Test API Reference](/api/) - for hook APIs and test functions
 
 ---
 
@@ -25046,6 +25707,22 @@ interface TestDiagnostic {
 ::: info
 `diagnostic()` will return `undefined` if the test was not scheduled to run yet.
 :::
+
+## annotations
+
+```ts
+function annotations(): ReadonlyArray<TestAnnotation>
+```
+
+[Test annotations](/guide/test-annotations) added via the [`task.annotate`](/guide/test-context#annotate) API during the test execution.
+
+## artifacts 4.0.11  {#artifacts}
+
+```ts
+function artifacts(): ReadonlyArray<TestArtifact>
+```
+
+[Test artifacts](/api/advanced/artifacts) recorded via the `recordArtifact` API during the test execution.
 
 ---
 
@@ -25432,6 +26109,10 @@ interface ImportDuration {
   totalTime: number
 }
 ```
+
+## viteEnvironment 4.0.15  {#viteenvironment}
+
+This is a Vite's [`DevEnvironment`](https://vite.dev/guide/api-environment) that transforms all files inside of the test module.
 
 ---
 
@@ -26497,7 +27178,7 @@ Substitutes all imported modules from provided `path` with another module. You c
 
 In order to hoist `vi.mock`, Vitest statically analyzes your files. It indicates that `vi` that was not directly imported from the `vitest` package (for example, from some utility file) cannot be used. Use `vi.mock` with `vi` imported from `vitest`, or enable [`globals`](/config/#globals) config option.
 
-Vitest will not mock modules that were imported inside a [setup file](/config/#setupfiles) because they are cached by the time a test file is running. You can call [`vi.resetModules()`](#vi-resetmodules) inside [`vi.hoisted`](#vi-hoisted) to clear all module caches before running a test file.
+Vitest will not mock modules that were imported inside a [setup file](/config/setupfiles) because they are cached by the time a test file is running. You can call [`vi.resetModules()`](#vi-resetmodules) inside [`vi.hoisted`](#vi-hoisted) to clear all module caches before running a test file.
 :::
 
 If the `factory` function is defined, all imports will return its result. Vitest calls factory only once and caches results for all subsequent imports until [`vi.unmock`](#vi-unmock) or [`vi.doUnmock`](#vi-dounmock) is called.
@@ -26517,7 +27198,7 @@ const result = calculator(1, 2)
 
 expect(result).toBe(3)
 expect(calculator).toHaveBeenCalledWith(1, 2)
-expect(calculator).toHaveReturned(3)
+expect(calculator).toHaveReturnedWith(3)
 ```
 
 Vitest also supports a module promise instead of a string in the `vi.mock` and `vi.doMock` methods for better IDE support. When the file is moved, the path will be updated, and `importOriginal` inherits the type automatically. Using this signature will also enforce factory return type to be compatible with the original module (keeping exports optional).
@@ -26625,7 +27306,7 @@ axios.get(`/apples/${increment(1)}`)
 ```
 
 ::: warning
-Beware that if you don't call `vi.mock`, modules **are not** mocked automatically. To replicate Jest's automocking behaviour, you can call `vi.mock` for each required module inside [`setupFiles`](/config/#setupfiles).
+Beware that if you don't call `vi.mock`, modules **are not** mocked automatically. To replicate Jest's automocking behaviour, you can call `vi.mock` for each required module inside [`setupFiles`](/config/setupfiles).
 :::
 
 If there is no `__mocks__` folder or a factory provided, Vitest will import the original module and auto-mock all its exports. For the rules applied, see [algorithm](/guide/mocking/modules#automocking-algorithm).
@@ -26910,7 +27591,7 @@ expect(Cart).toHaveBeenCalled()
 ### vi.mockObject 3.2.0
 
 ```ts
-function mockObject<T>(value: T): MaybeMockedDeep<T>
+function mockObject<T>(value: T, options?: MockOptions): MaybeMockedDeep<T>
 ```
 
 Deeply mocks properties and methods of a given object in the same way as `vi.mock()` mocks module exports. See [automocking](/guide/mocking.html#automocking-algorithm) for the detail.
@@ -29035,7 +29716,7 @@ function getSeed(): number | null
 
 Returns the seed, if tests are running in a random order.
 
-## experimental\_parseSpecification 4.0.0 experimental {#parsespecification}
+## experimental\_parseSpecification 4.0.0  {#parsespecification}
 
 ```ts
 function experimental_parseSpecification(
@@ -29067,7 +29748,7 @@ Vitest will only collect tests defined in the file. It will never follow imports
 Vitest collects all `it`, `test`, `suite` and `describe` definitions even if they were not imported from the `vitest` entry point.
 :::
 
-## experimental\_parseSpecifications 4.0.0 experimental {#parsespecifications}
+## experimental\_parseSpecifications 4.0.0  {#parsespecifications}
 
 ```ts
 function experimental_parseSpecifications(
@@ -29080,13 +29761,72 @@ function experimental_parseSpecifications(
 
 This method will [collect tests](#parsespecification) from an array of specifications. By default, Vitest will run only `os.availableParallelism()` number of specifications at a time to reduce the potential performance degradation. You can specify a different number in a second argument.
 
-## experimental\_clearCache 4.0.11 experimental {#clearcache}
+## experimental\_clearCache 4.0.11  {#clearcache}
 
 ```ts
 function experimental_clearCache(): Promise<void>
 ```
 
 Deletes all Vitest caches, including [`experimental.fsModuleCache`](/config/experimental#experimental-fsmodulecache).
+
+## experimental\_getSourceModuleDiagnostic 4.0.15  {#getsourcemodulediagnostic}
+
+```ts
+export function experimental_getSourceModuleDiagnostic(
+  moduleId: string,
+  testModule?: TestModule,
+): Promise<SourceModuleDiagnostic>
+```
+
+::: details Types
+
+```ts
+export interface ModuleDefinitionLocation {
+  line: number
+  column: number
+}
+
+export interface SourceModuleLocations {
+  modules: ModuleDefinitionDiagnostic[]
+  untracked: ModuleDefinitionDiagnostic[]
+}
+
+export interface ModuleDefinitionDiagnostic {
+  start: ModuleDefinitionLocation
+  end: ModuleDefinitionLocation
+  startIndex: number
+  endIndex: number
+  url: string
+  resolvedId: string
+}
+
+export interface ModuleDefinitionDurationsDiagnostic extends ModuleDefinitionDiagnostic {
+  selfTime: number
+  totalTime: number
+  external?: boolean
+}
+
+export interface UntrackedModuleDefinitionDiagnostic {
+  url: string
+  resolvedId: string
+  selfTime: number
+  totalTime: number
+  external?: boolean
+}
+
+export interface SourceModuleDiagnostic {
+  modules: ModuleDefinitionDurationsDiagnostic[]
+  untrackedModules: UntrackedModuleDefinitionDiagnostic[]
+}
+```
+
+:::
+
+Returns module's diagnostic. If [`testModule`](/api/advanced/test-module) is not provided, `selfTime` and `totalTime` will be aggregated across all tests that were running the last time. If the module was not transformed or executed, the diagnostic will be empty.
+
+::: warning
+At the moment, the [browser](/guide/browser/) modules are not supported.
+:::
 
 ---
 
@@ -29141,6 +29881,76 @@ npx vite preview --outDir ./html
 
 You can configure output with [`outputFile`](/config/#outputfile) config option. You need to specify `.html` path there. For example, `./html/index.html` is the default value.
 :::
+
+## Module Graph
+
+Module Graph's tab displays the module graph of the selected test file.
+
+::: info
+All of the provided images use [Zammad](https://github.com/zammad/zammad) repository as an example.
+:::
+
+If there are more than 50 modules, the module graph displays only the first two levels of the graph to reduce the visual clutter. You can always click on "Show Full Graph" icon to preview the full graph.
+
+::: warning
+Note that if your graph is too big, it may take some time before the node positions are stabilized.
+:::
+
+You can always restore the entry module graph by clicking on "Reset". To expand the module graph, right-click or hold Shift while clicking the node that interests you. It will display all nodes related to the selected one.
+
+By default, Vitest doesn't show the modules from `node_modules`. Usually, these modules are externalized. You can enable them by deselecting "Hide node\_modules".
+
+### Module Info
+
+By left-clicking on the module node, you open the Module Info view.
+
+This view is separated into two parts. The top part shows the full module ID and some diagnostics about the module. If [`experimental.fsModuleCache`](/config/experimental#experimental-fsmodulecache) is enabled, there will be a "cached" or "not cached" badge. On the right you can see time diagnostics:
+
+* Self Time: the time it took to import the module, excluding static imports.
+* Total Time: the time it took to import the module, including static imports. Note that this does not include `transform` time of the current module.
+* Transform: the time it took to transform the module.
+
+If you opened this view by clicking on an import, you will also see a "Back" button at the start that will take you to the previous module.
+
+The bottom part depends on the module type. If the module is external, you will only see the source code of that file. You will not be able to traverse the module graph any further, and you won't see how long it took to import static imports.
+
+If the module was inlined, you will see three more windows:
+
+* Source: unchanged source code of the module
+* Transformed: the transformed code that Vitest executes using Vite's [module runner](https://vite.dev/guide/api-environment-runtimes#modulerunner)
+* Source Map (v3): source map mappings
+
+All static imports in the "Source" window show a total time it took to evaluate them by the current module. If the import was already evaluated in the module graph, it will show `0ms` because it is cached by that point.
+
+If the module took longer than 500 milliseconds to load, the time will be displayed in red. If the module took longer than 100 milliseconds, the time will be displayed in orange.
+
+You can click on an import source to jump into that module and traverse the graph further (note `./support/assertions/index.ts` below).
+
+::: warning
+Note that type-only imports are not executed at runtime and do not display a total duration. They also cannot be opened.
+:::
+
+If another plugin injects a module import during transformation, those imports will be displayed at the start of the module in gray colour (for example, modules injected by `import.meta.glob`). They also show the total time and can be traversed further.
+
+::: tip
+If you are developing a custom integration on top of Vitest, you can use [`vitest.experimental_getSourceModuleDiagnostic`](/api/advanced/vitest#getsourcemodulediagnostic) to retrieve this information.
+:::
+
+### Import Breakdown
+
+::: tip FEEDBACK
+Please, leave feedback regarding this feature in a [GitHub Discussion](https://github.com/vitest-dev/vitest/discussions/9224).
+:::
+
+The Module Graph tab also provides an Import Breakdown with a list of modules that take the longest time to load (top 10 by default, but you can press "Show more" to load 10 more), sorted by Total Time.
+
+You can click on the module to see the Module Info. If the module is external, it will have the yellow color (the same color in the module graph).
+
+The breakdown shows a list of modules with self time, total time, and a percentage relative to the time it took to load the whole test file.
+
+The "Show Import Breakdown" icon will have a red color if there is at least one file that took longer than 500 milliseconds to load, and it will be orange if there is at least one file that took longer than 100 milliseconds.
+
+By default, Vitest shows the breakdown automatically if there is at least one module that took longer than 500 milliseconds to load. You can control the behaviour by setting the [`experimental.printImportBreakdown`](/config/experimental#experimental-printimportbreakdown) option.
 
 ---
 

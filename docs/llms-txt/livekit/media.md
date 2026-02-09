@@ -93,7 +93,7 @@ Learn how to work with realtime media tracks.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:37.019Z.
+This document was rendered at 2026-02-03T03:25:15.590Z.
 For the latest version of this document, see [https://docs.livekit.io/transport/media.md](https://docs.livekit.io/transport/media.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

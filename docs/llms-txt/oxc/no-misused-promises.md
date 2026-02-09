@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/typescript/no-misused-promises.md
 ---
-# typescript/no-misused-promises&#x20;
 
 ### What it does
 

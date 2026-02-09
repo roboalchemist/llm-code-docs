@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/constraints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Constraints Plugin
 
 > Extend Flatfile validation capabilities with custom validation logic for complex field and sheet-level constraints
@@ -19,7 +23,7 @@ The plugin works by matching a `validator` key in the blueprint with a correspon
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-constraints
 ```
 
@@ -57,7 +61,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
 ### Basic Field-Level Constraint
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // In your listener file (e.g., index.js)
   import { listener } from '@flatfile/listener'
   import { externalConstraint } from '@flatfile/plugin-constraints'
@@ -91,7 +95,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // In your listener file (e.g., index.ts)
   import { listener } from '@flatfile/listener'
   import { externalConstraint } from '@flatfile/plugin-constraints'
@@ -129,7 +133,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
 ### Configurable Constraint
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // In your listener file (e.g., index.js)
   import { listener } from '@flatfile/listener'
   import { externalConstraint } from '@flatfile/plugin-constraints'
@@ -177,7 +181,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // In your listener file (e.g., index.ts)
   import { listener } from '@flatfile/listener'
   import { externalConstraint } from '@flatfile/plugin-constraints'
@@ -229,7 +233,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
 ### Sheet-Level Constraint
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // In your listener file (e.g., index.js)
   import { listener } from '@flatfile/listener'
   import { externalSheetConstraint } from '@flatfile/plugin-constraints'
@@ -266,7 +270,7 @@ If no `external` type constraints are defined in the blueprint, the plugin will 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // In your listener file (e.g., index.ts)
   import { listener } from '@flatfile/listener'
   import { externalSheetConstraint } from '@flatfile/plugin-constraints'
@@ -312,7 +316,7 @@ Registers a listener for a field-level custom validation rule. The provided call
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 externalConstraint(
   validator: string, 
   cb: (
@@ -343,7 +347,7 @@ externalConstraint(
 **Error Handling Examples:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Using record.addError() (Recommended)
   listener.use(
     externalConstraint('must-be-positive', (value, key, { record }) => {
@@ -363,7 +367,7 @@ externalConstraint(
   )
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // Using record.addError() (Recommended)
   listener.use(
     externalConstraint('must-be-positive', (value, key, { record }) => {
@@ -390,7 +394,7 @@ Registers a listener for a sheet-level custom validation rule that involves mult
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 externalSheetConstraint(
   validator: string, 
   cb: (
@@ -421,7 +425,7 @@ externalSheetConstraint(
 **Error Handling Examples:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Using record.addError() - allows different error messages for different fields
   listener.use(
     externalSheetConstraint('date-range', (values, keys, { record }) => {
@@ -442,7 +446,7 @@ externalSheetConstraint(
   )
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // Using record.addError() - allows different error messages for different fields
   listener.use(
     externalSheetConstraint('date-range', (values, keys, { record }) => {

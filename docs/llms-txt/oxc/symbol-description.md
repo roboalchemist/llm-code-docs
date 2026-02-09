@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/symbol-description.md
 ---
-# eslint/symbol-description&#x20;
 
 ### What it does
 

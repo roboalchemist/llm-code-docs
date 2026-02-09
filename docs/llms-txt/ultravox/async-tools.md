@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/async-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async Tools
 
 > Handle long-running operations and optimize tool performance for real-time conversations.
@@ -130,8 +134,3 @@ For tools that take even longer, consider responding immediately and later using
 * **Start Small**: Begin with default 2.5s, increase only if needed.
 * **Set User Expectations**: Tell users when operations will take time.
 * **Fallback Plans**: Handle timeout failures gracefully.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

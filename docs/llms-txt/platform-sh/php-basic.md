@@ -3,7 +3,7 @@
 # Create a basic PHP app with a front controller
 
 To handle dynamic requests to your PHP app, you might want to use a [front controller](https://en.wikipedia.org/wiki/Front_controller).
-The following example shows how for such an app you might start defining [your web server](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
+The following example shows how for such an app you might start defining [your web server](https://docs.upsun.com/create-apps/image-properties/web.md).
 
 ## Define a document root
 

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/comments.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/comments.md
-
-# Source: https://gitbook.com/docs/collaboration/comments.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/comments.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/comments.md
 

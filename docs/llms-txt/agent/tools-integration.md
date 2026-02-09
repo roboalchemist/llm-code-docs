@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/knowledge-agents/tools-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tools & Integration
 
 > Give your knowledge agent the power to take action with workflow agents, MCP servers, and app integrations

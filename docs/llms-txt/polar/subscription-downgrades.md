@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/subscription-downgrades.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to perform subscription downgrades
 
 > Learn how to downgrade a subscription as a merchant or a customer.

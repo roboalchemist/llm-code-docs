@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/llm-docs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Docs
 
 The Pinata Docs have multiple ways they can be used in LLMs or AI empowered code editors like Cursor or Zed. Both of these options return raw text that can be pasted into the LLM or used in a prompt/docs feature for an editor.

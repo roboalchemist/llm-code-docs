@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/how-to/detect-charging-session.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Detect and Process Charging Sessions with Webhooks
 
 > Learn how to use Smartcar webhooks to detect when a vehicle starts and ends charging, and how to process charging session data.

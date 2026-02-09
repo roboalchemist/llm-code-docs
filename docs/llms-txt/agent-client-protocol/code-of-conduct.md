@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/community/code-of-conduct.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code of Conduct
 
 ## Our Pledge
@@ -127,8 +131,3 @@ enforcement ladder](https://github.com/mozilla/diversity).
 
 For answers to common questions about this code of conduct, see [the Contributor Covenant FAQ](https://www.contributor-covenant.org/faq).
 For translations, see [Contributor Covenant Translations](https://www.contributor-covenant.org/translations).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

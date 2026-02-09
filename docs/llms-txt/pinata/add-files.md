@@ -2,13 +2,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/groups/private/add-files.md
 
-# Source: https://docs.pinata.cloud/sdk/groups/public/add-files.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/add-files.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/add-files.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/add-files.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # addFiles
 

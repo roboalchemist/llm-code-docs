@@ -1,8 +1,12 @@
 # Source: https://bun.com/docs/guides/http/stream-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stream a file as an HTTP Response
 
-This snippet reads a file from disk using [`Bun.file()`](https://bun.com/docs/api/file-io#reading-files-bun-file). This returns a `BunFile` instance, which can be passed directly into the `new Response` constructor.
+This snippet reads a file from disk using [`Bun.file()`](/runtime/file-io#reading-files-bun-file). This returns a `BunFile` instance, which can be passed directly into the `new Response` constructor.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
@@ -30,7 +34,7 @@ new Response(Bun.file("./img.png")).headers.get("Content-Type");
 
 ***
 
-Putting it all together with [`Bun.serve()`](https://bun.com/docs/api/http#bun-serve).
+Putting it all together with [`Bun.serve()`](/runtime/http/server).
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // static file server
@@ -45,4 +49,4 @@ Bun.serve({
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.

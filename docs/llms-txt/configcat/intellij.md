@@ -2,6 +2,8 @@
 
 # JetBrains/IntelliJ Plugin - Manage your feature flags from JetBrains/IntelliJ IDEs
 
+Copy page
+
 [ConfigCat's JetBrains/IntelliJ IDE plugin](https://plugins.jetbrains.com/plugin/26096-configcat-feature-flags) to manage feature flags from IDEs.
 
 Connect your ConfigCat Product and Config to your JetBrains/IntelliJ IDE. Find your Feature Flag's usages in your code easily.

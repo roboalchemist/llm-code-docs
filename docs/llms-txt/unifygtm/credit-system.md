@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/management/credit-system.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unify Credit System
 
 > Learn how credits work in Unify.
@@ -38,7 +42,7 @@ credit consumption of each feature:
 | Person Enriched (Phone Number) | 4             | Per person enriched               | Phone number enrichment can be turned on in the prospecting node in Unify.                                                   |
 | New Hire Tracking              | 5             | Per new hire found                | A new hire is returned when someone within the customer defined specifications that has moved jobs in the last 90 days.      |
 | Champion Tracking              | 1             | Per champion track attempt        | Champions are set up by users and are tracked on a monthly basis.                                                            |
-| AI Agent                       | 1             | Per question answered per company | Agents can be configured to answer various per each company or person they are run on.                                       |
+| AI Agent                       | 0.1           | Per question answered per company | Agents can be configured to answer various per each company or person they are run on.                                       |
 
 ## Best practices
 

@@ -1,6 +1,6 @@
-# Source: https://docs.intelligems.io/offer-experiences/testing-offer-personalizations.md
+# Source: https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations.md
 
-# Testing Offer Experiences
+# Testing Offers
 
 Intelligems enables your org to run real-time split tests on different Offers. This article will walk you through how to run an Offers Test with Intelligems and some best practices.\
 \
@@ -38,7 +38,7 @@ Create between two and five groups to include in the test by clicking on the ‘
 The more groups you have, the longer it will take to get statistically significant results. You’ll need about 300 orders for each group in the test to detect a 10% change in conversion with 90% confidence.
 {% endhint %}
 
-## Step 4: Select which Offer Experience each group will be exposed to
+## Step 4: Select which Offer each group will be exposed to
 
 Once you've created your groups, go to the Modifications step. Here, you will choose what kind of Offers you're testing for each group. You can:
 
@@ -65,11 +65,11 @@ The targeting tool allows you to apply specific conditions to certain site visit
 You can learn more about targeting [here](https://docs.intelligems.io/general-features/targeting).
 
 {% hint style="warning" %}
-**A note on targeting: If you had any targeting options set on the Offer Experiences you used to define your test groups, these will be ignored in lieu of test-level targeting.**
+**A note on targeting: If you had any targeting options set on the Offer Personalizations you used to define your test groups, these will be ignored in lieu of test-level targeting.**
 
-* Experience-level audience targeting is ignored. The audience targeting used on the test (or lack thereof) is used in its place.
-* Experience-level currency targeting is ignored. The currency targeting used on the test (or lack thereof) is used in its place.
-* Experience-level page targeting is ignored. The page targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level audience targeting is ignored. The audience targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level currency targeting is ignored. The currency targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level page targeting is ignored. The page targeting used on the test (or lack thereof) is used in its place.
   {% endhint %}
 
 ## Step 6: Save your test and start it

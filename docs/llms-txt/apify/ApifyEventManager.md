@@ -25,13 +25,13 @@ This class should not be used directly. Use the `Actor.on` and `Actor.off` metho
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__aenter__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/events/_apify_event_manager.py#L70)\_\_aenter\_\_
+### [**](#__aenter__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/events/_apify_event_manager.py#L70)\_\_aenter\_\_
 
 * **async **\_\_aenter\_\_**(): Self
 
 - #### Returns Self
 
-### [**](#__aexit__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/events/_apify_event_manager.py#L88)\_\_aexit\_\_
+### [**](#__aexit__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/events/_apify_event_manager.py#L88)\_\_aexit\_\_
 
 * **async **\_\_aexit\_\_**(exc\_type, exc\_value, exc\_traceback): None
 
@@ -43,7 +43,7 @@ This class should not be used directly. Use the `Actor.on` and `Actor.off` metho
 
   #### Returns None
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/events/_apify_event_manager.py#L48)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/events/_apify_event_manager.py#L48)\_\_init\_\_
 
 * ****\_\_init\_\_**(configuration): None
 

@@ -9,11 +9,11 @@ Apps are developer-built experiences that are available in ChatGPT. They extend 
 
 
 Before you start designing your app visually, make sure you have reviewed our
-  recommended [UX principles](/apps-sdk/concepts/ux-principles).
+  recommended [UX principles](https://developers.openai.com/apps-sdk/concepts/ux-principles).
 
 
 
-![Example apps in the ChatGPT mobile interface](/images/apps-sdk/overview.png)
+![Example apps in the ChatGPT mobile interface](https://developers.openai.com/images/apps-sdk/overview.png)
 
 ## Design system
 
@@ -40,7 +40,7 @@ Using these consistently helps experiences stay simple and predictable.
 
 The inline display mode appears directly in the flow of the conversation. Inline surfaces currently always appear before the generated model response. Every app initially appears inline.
 
-![Examples of inline cards and carousels in ChatGPT](/images/apps-sdk/inline_display_mode.png)
+![Examples of inline cards and carousels in ChatGPT](https://developers.openai.com/images/apps-sdk/inline_display_mode.png)
 
 **Layout**
 
@@ -52,7 +52,7 @@ The inline display mode appears directly in the flow of the conversation. Inline
 
 Lightweight, single-purpose widgets embedded directly in conversation. They provide quick confirmations, simple actions, or visual aids.
 
-![Examples of inline cards](/images/apps-sdk/inline_cards.png)
+![Examples of inline cards](https://developers.openai.com/images/apps-sdk/inline_cards.png)
 
 **When to use**
 
@@ -62,7 +62,7 @@ Lightweight, single-purpose widgets embedded directly in conversation. They prov
 
 **Layout**
 
-![Diagram of inline cards](/images/apps-sdk/inline_card_layout.png)
+![Diagram of inline cards](https://developers.openai.com/images/apps-sdk/inline_card_layout.png)
 
 - **Title**: Include a title if your card is document-based or contains items with a parent element, like songs in a playlist.
 - **Expand**: Use to open a fullscreen display mode if the card contains rich media or interactivity like a map or an interactive diagram.
@@ -72,7 +72,7 @@ Lightweight, single-purpose widgets embedded directly in conversation. They prov
 
 **Interaction**
 
-![Diagram of interaction patterns for inline cards](/images/apps-sdk/inline_card_interaction.png)
+![Diagram of interaction patterns for inline cards](https://developers.openai.com/images/apps-sdk/inline_card_interaction.png)
 
 Cards support simple direct interaction.
 
@@ -87,13 +87,13 @@ Cards support simple direct interaction.
 - **No nested scrolling**. Cards should auto-fit their content and prevent internal scrolling.
 - **No duplicative inputs**. Don’t replicate ChatGPT features in a card.
 
-![Examples of patterns to avoid in inline cards](/images/apps-sdk/inline_card_rules.png)
+![Examples of patterns to avoid in inline cards](https://developers.openai.com/images/apps-sdk/inline_card_rules.png)
 
 #### Inline carousel
 
 A set of cards presented side-by-side, letting users quickly scan and choose from multiple options.
 
-![Example of inline carousel](/images/apps-sdk/inline_carousel.png)
+![Example of inline carousel](https://developers.openai.com/images/apps-sdk/inline_carousel.png)
 
 **When to use**
 
@@ -102,7 +102,7 @@ A set of cards presented side-by-side, letting users quickly scan and choose fro
 
 **Layout**
 
-![Diagram of inline carousel](/images/apps-sdk/inline_carousel_layout.png)
+![Diagram of inline carousel](https://developers.openai.com/images/apps-sdk/inline_carousel_layout.png)
 
 - **Image**: Items should always include an image or visual.
 - **Title**: Carousel items should typically include a title to explain the content.
@@ -121,7 +121,7 @@ A set of cards presented side-by-side, letting users quickly scan and choose fro
 
 Immersive experiences that expand beyond the inline card, giving users space for multi-step workflows or deeper exploration. The ChatGPT composer remains overlaid, allowing users to continue “talking to the app” through natural conversation in the context of the fullscreen view.
 
-![Example of fullscreen](/images/apps-sdk/fullscreen.png)
+![Example of fullscreen](https://developers.openai.com/images/apps-sdk/fullscreen.png)
 
 **When to use**
 
@@ -130,7 +130,7 @@ Immersive experiences that expand beyond the inline card, giving users space for
 
 **Layout**
 
-![Diagram of fullscreen](/images/apps-sdk/fullscreen_layout.png)
+![Diagram of fullscreen](https://developers.openai.com/images/apps-sdk/fullscreen_layout.png)
 
 - **System close**: Closes the sheet or view.
 - **Fullscreen view**: Content area.
@@ -138,7 +138,7 @@ Immersive experiences that expand beyond the inline card, giving users space for
 
 **Interaction**
 
-![Interaction patterns for fullscreen](/images/apps-sdk/fullscreen_interaction_a.png)
+![Interaction patterns for fullscreen](https://developers.openai.com/images/apps-sdk/fullscreen_interaction_a.png)
 
 - **Chat sheet**: Maintain conversational context alongside the fullscreen surface.
 - **Thinking**: The composer input “shimmers” to show that a response is streaming.
@@ -153,7 +153,7 @@ Immersive experiences that expand beyond the inline card, giving users space for
 
 A persistent floating window inside ChatGPT optimized for ongoing or live sessions like games or videos. PiP remains visible while the conversation continues, and it can update dynamically in response to user prompts.
 
-![Example of picture-in-picture](/images/apps-sdk/pip.png)
+![Example of picture-in-picture](https://developers.openai.com/images/apps-sdk/pip.png)
 
 **When to use**
 
@@ -162,7 +162,7 @@ A persistent floating window inside ChatGPT optimized for ongoing or live sessio
 
 **Interaction**
 
-![Interaction patterns for picture-in-picture](/images/apps-sdk/fullscreen_interaction.png)
+![Interaction patterns for picture-in-picture](https://developers.openai.com/images/apps-sdk/fullscreen_interaction.png)
 
 - **Activated:** On scroll, the PiP window stays fixed to the top of the viewport
 - **Pinned:** The PiP remains fixed until the user dismisses it or the session ends.
@@ -188,7 +188,7 @@ Visual and UX consistency helps improve the overall user experience of using app
 
 System-defined palettes help ensure actions and responses always feel consistent with the ChatGPT platform. Partners can add branding through accents, icons, or inline imagery, but should not redefine system colors.
 
-![Color palette](/images/apps-sdk/color.png)
+![Color palette](https://developers.openai.com/images/apps-sdk/color.png)
 
 **Rules of thumb**
 
@@ -197,11 +197,11 @@ System-defined palettes help ensure actions and responses always feel consistent
 - Avoid custom gradients or patterns that break ChatGPT’s minimal look.
 - Use brand accent colors on primary buttons inside app display modes.
 
-![Example color usage](/images/apps-sdk/color_usage_1.png)
+![Example color usage](https://developers.openai.com/images/apps-sdk/color_usage_1.png)
 
 _Use brand colors on accents and badges. Don't change text colors or other core component styles._
 
-![Example color usage](/images/apps-sdk/color_usage_2.png)
+![Example color usage](https://developers.openai.com/images/apps-sdk/color_usage_2.png)
 
 _Don't apply colors to backgrounds in text areas._
 
@@ -209,7 +209,7 @@ _Don't apply colors to backgrounds in text areas._
 
 ChatGPT uses platform-native system fonts (SF Pro on iOS, Roboto on Android) to ensure readability and accessibility across devices.
 
-![Typography](/images/apps-sdk/typography.png)
+![Typography](https://developers.openai.com/images/apps-sdk/typography.png)
 
 **Rules of thumb**
 
@@ -217,7 +217,7 @@ ChatGPT uses platform-native system fonts (SF Pro on iOS, Roboto on Android) to 
 - Use partner styling such as bold, italic, or highlights only within content areas, not for structural UI.
 - Limit variation in font size as much as possible, preferring body and body-small sizes.
 
-![Example typography](/images/apps-sdk/typography_usage.png)
+![Example typography](https://developers.openai.com/images/apps-sdk/typography_usage.png)
 
 _Don't use custom fonts, even in full screen modes. Use system font variables wherever possible._
 
@@ -225,7 +225,7 @@ _Don't use custom fonts, even in full screen modes. Use system font variables wh
 
 Consistent margins, padding, and alignment keep partner content scannable and predictable inside conversation.
 
-![Spacing & layout](/images/apps-sdk/spacing.png)
+![Spacing & layout](https://developers.openai.com/images/apps-sdk/spacing.png)
 
 **Rules of thumb**
 
@@ -238,7 +238,7 @@ Consistent margins, padding, and alignment keep partner content scannable and pr
 
 System iconography provides visual clarity, while partner logos and images help users recognize brand context.
 
-![Icons](/images/apps-sdk/icons.png)
+![Icons](https://developers.openai.com/images/apps-sdk/icons.png)
 
 **Rules of thumb**
 
@@ -246,7 +246,7 @@ System iconography provides visual clarity, while partner logos and images help 
 - Do not include your logo as part of the response. ChatGPT will always append your logo and app name before the widget is rendered.
 - All imagery must follow enforced aspect ratios to avoid distortion.
 
-![Icons & imagery](/images/apps-sdk/iconography.png)
+![Icons & imagery](https://developers.openai.com/images/apps-sdk/iconography.png)
 
 ### Accessibility
 

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/supabase-guides-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supabase overview
 
 > Guides and examples for using Supabase with Trigger.dev.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/model-types/multi-label-classification.md
 
-# Source: https://docs.aporia.com/model-types/multi-label-classification.md
-
-# Source: https://docs.aporia.com/v1/model-types/multi-label-classification.md
-
 # Multi-Label Classification
 
 Multi-label classification models predict multiple outcomes. In Aporia, these models are represented with the `multi-label` model type.

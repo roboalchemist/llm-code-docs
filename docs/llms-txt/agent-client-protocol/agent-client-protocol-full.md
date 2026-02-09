@@ -577,6 +577,472 @@ These IG and WG abstractions help provide an elegant on-ramp:
 On the [ACP Zulip Chat](/community/communication#zulip) there is a section of channels for each Working and Interest Group.
 
 
+# Agents
+Source: https://agentclientprotocol.com/get-started/agents
+
+Agents implementing the Agent Client Protocol.
+
+The following agents can be used with an ACP Client:
+
+* [AgentPool](https://phil65.github.io/agentpool/advanced/acp-integration/)
+* [Augment Code](https://docs.augmentcode.com/cli/acp)
+* [Blackbox AI](https://docs.blackbox.ai/features/blackbox-cli/introduction)
+* [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) (via [Zed's SDK adapter](https://github.com/zed-industries/claude-code-acp))
+* [Codex CLI](https://developers.openai.com/codex/cli) (via [Zed's adapter](https://github.com/zed-industries/codex-acp))
+* [Code Assistant](https://github.com/stippi/code-assistant?tab=readme-ov-file#configuration)
+* [Docker's cagent](https://github.com/docker/cagent)
+* [fast-agent](https://fast-agent.ai/acp)
+* [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+* [GitHub Copilot](https://github.com/features/copilot) (in [public preview](https://github.blog/changelog/2026-01-28-acp-support-in-copilot-cli-is-now-in-public-preview/))
+* [Goose](https://block.github.io/goose/docs/guides/acp-clients)
+* [JetBrains Junie *(coming soon)*](https://www.jetbrains.com/junie/)
+* [Kimi CLI](https://github.com/MoonshotAI/kimi-cli)
+* [Minion Code](https://github.com/femto/minion-code)
+* [Mistral Vibe](https://github.com/mistralai/mistral-vibe)
+* [OpenCode](https://github.com/sst/opencode)
+* [OpenHands](https://docs.openhands.dev/openhands/usage/run-openhands/acp)
+* [Pi](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent) (via [pi-acp adapter](https://github.com/svkozak/pi-acp))
+* [Qoder CLI](https://docs.qoder.com/cli/acp)
+* [Qwen Code](https://github.com/QwenLM/qwen-code)
+* [Stakpak](https://github.com/stakpak/agent?tab=readme-ov-file#agent-client-protocol-acp)
+* [VT Code](https://github.com/vinhnx/vtcode/blob/main/README.md#zed-ide-integration-agent-client-protocol)
+
+
+# Architecture
+Source: https://agentclientprotocol.com/get-started/architecture
+
+Overview of the Agent Client Protocol architecture.
+
+The Agent Client Protocol defines a standard interface for communication between AI agents and client applications. The architecture is designed to be flexible, extensible, and platform-agnostic.
+
+## Design Philosophy
+
+The protocol architecture follows several key principles:
+
+1. **MCP-friendly**: The protocol is built on JSON-RPC, and re-uses MCP types where possible so that integrators don't need to build yet-another representation for common data types.
+2. **UX-first**: It is designed to solve the UX challenges of interacting with AI agents; ensuring there's enough flexibility to render clearly the agents intent, but is no more abstract than it needs to be.
+3. **Trusted**: ACP works when you're using a code editor to talk to a model you trust. You still have controls over the agent's tool calls, but the code editor gives the agent access to local files and MCP servers.
+
+## Setup
+
+When the user tries to connect to an agent, the editor boots the agent sub-process on demand, and all communication happens over stdin/stdout.
+
+Each connection can support several concurrent sessions, so you can have multiple trains of thought going on at once.
+
+<img alt="Server Client setup" />
+
+ACP makes heavy use of JSON-RPC notifications to allow the agent to stream updates to the UI in real-time. It also uses JSON-RPC's bidirectional requests to allow the agent to make requests of the code editor: for example to request permissions for a tool call.
+
+## MCP
+
+Commonly the code editor will have user-configured MCP servers. When forwarding the prompt from the user, it passes configuration for these to the agent. This allows the agent to connect directly to the MCP server.
+
+<img alt="MCP Server connection" />
+
+The code editor may itself also wish to export MCP based tools. Instead of trying to run MCP and ACP on the same socket, the code editor can provide its own MCP server as configuration. As agents may only support MCP over stdio, the code editor can provide a small proxy that tunnels requests back to itself:
+
+<img alt="MCP connection to self" />
+
+
+# Clients
+Source: https://agentclientprotocol.com/get-started/clients
+
+Clients implementing the Agent Client Protocol.
+
+The following clients can be used with an ACP Agent:
+
+* [Agent Studio](https://github.com/sxhxliang/agent-studio)
+* [Agmente](https://agmente.halliharp.com) (iOS)
+* [AionUi](https://github.com/iOfficeAI/AionUi)
+* [aizen](https://aizen.win)
+* [DeepChat](https://github.com/ThinkInAIXYZ/deepchat)
+* DuckDB
+  * through the [sidequery/duckdb-acp](https://github.com/sidequery/duckdb-acp) extension
+* Emacs via [agent-shell.el](https://github.com/xenodium/agent-shell)
+* [JetBrains](https://www.jetbrains.com/help/ai-assistant/acp.html)
+* [marimo notebook](https://github.com/marimo-team/marimo)
+* [neovim](https://neovim.io)
+  * through the [CodeCompanion](https://github.com/olimorris/codecompanion.nvim) plugin
+  * through the [carlos-algms/agentic.nvim](https://github.com/carlos-algms/agentic.nvim) plugin
+  * through the [yetone/avante.nvim](https://github.com/yetone/avante.nvim) plugin
+* [Obsidian](https://obsidian.md)
+  * through the [Agent Client](https://github.com/RAIT-09/obsidian-agent-client) plugin
+* [Sidequery *(coming soon)*](https://sidequery.dev)
+* [Tidewave](https://tidewave.ai/)
+* [Toad](https://www.batrachian.ai/)
+* [Web Browser with AI SDK](https://github.com/mcpc-tech/ai-elements-remix-template) (powered by [@mcpc/acp-ai-provider](https://github.com/mcpc-tech/mcpc/tree/main/packages/acp-ai-provider))
+* [Zed](https://zed.dev/docs/ai/external-agents)
+
+
+# Introduction
+Source: https://agentclientprotocol.com/get-started/introduction
+
+Get started with the Agent Client Protocol.
+
+The Agent Client Protocol (ACP) standardizes communication between code editors/IDEs and coding agents and is suitable for both local and remote scenarios.
+
+## Why ACP?
+
+AI coding agents and editors are tightly coupled but interoperability isn't the default. Each editor must build custom integrations for every agent they want to support, and agents must implement editor-specific APIs to reach users.
+This creates several problems:
+
+* Integration overhead: Every new agent-editor combination requires custom work
+* Limited compatibility: Agents work with only a subset of available editors
+* Developer lock-in: Choosing an agent often means accepting their available interfaces
+
+ACP solves this by providing a standardized protocol for agent-editor communication, similar to how the [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) standardized language server integration.
+
+Agents that implement ACP work with any compatible editor. Editors that support ACP gain access to the entire ecosystem of ACP-compatible agents.
+This decoupling allows both sides to innovate independently while giving developers the freedom to choose the best tools for their workflow.
+
+## Overview
+
+ACP assumes that the user is primarily in their editor, and wants to reach out and use agents to assist them with specific tasks.
+
+ACP is suitable for both local and remote scenarios:
+
+* **Local agents** run as sub-processes of the code editor, communicating via JSON-RPC over stdio.
+* **Remote agents** can be hosted in the cloud or on separate infrastructure, communicating over HTTP or WebSocket
+
+<Info>
+  Full support for remote agents is a work in progress. We are actively
+  collaborating with agentic platforms to ensure the protocol addresses the
+  specific requirements of cloud-hosted and remote deployment scenarios.
+</Info>
+
+The protocol re-uses the JSON representations used in MCP where possible, but includes custom types for useful agentic coding UX elements, like displaying diffs.
+
+The default format for user-readable text is Markdown, which allows enough flexibility to represent rich formatting without requiring that the code editor is capable of rendering HTML.
+
+
+# ACP Registry
+Source: https://agentclientprotocol.com/get-started/registry
+
+The easiest way to find and install ACP-compatible agents.
+
+## Overview
+
+The ACP Registry is an easy way for developers to distribute their ACP-compatible agents to any client that speaks the protocol.
+
+At the moment, this is a curated set of agents, including only the ones that [support authentication](/rfds/auth-methods).
+
+Visit [the registry repository on GitHub](https://github.com/agentclientprotocol/registry) to learn more about it.
+
+<Warning>
+  The registry is under active development, so expect its format and contents to
+  change.
+</Warning>
+
+## Available Agents
+
+<CardGroup>
+  <Card
+    title="Auggie CLI"
+    href="https://github.com/augmentcode/auggie-zed-extension"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill="currentColor"
+      d="M9.972 13.193h2.577q.187 0 .277-.09t.091-.294V10.47q0-.324.133-.59.135-.27.36-.424a1 1 0 0 1 .099-.06 1 1 0 0 1-.1-.058 1.1 1.1 0 0 1-.359-.424 1.3 1.3 0 0 1-.133-.59v-2.33q0-.202-.091-.293t-.277-.089H9.972a.38.38 0 0 1-.294-.124.4.4 0 0 1-.108-.281q.002-.176.131-.293a.46.46 0 0 1 .313-.111h2.775c.36 0 .642.097.836.288q.293.29.294.832V8.24q0 .39.152.562.148.168.555.178a.4.4 0 0 1 .27.128.41.41 0 0 1 .104.287.44.44 0 0 1-.1.282.34.34 0 0 1-.277.132c-.266.006-.452.066-.55.177q-.151.174-.152.573v2.318c0 .235-.043.44-.128.607a.85.85 0 0 1-.389.387 1.3 1.3 0 0 1-.534.124V14h-2.854a.45.45 0 0 1-.315-.118.38.38 0 0 1-.129-.286q0-.164.109-.282a.38.38 0 0 1 .293-.123zM1.103 9.108a.4.4 0 0 1 .276-.128q.4-.008.55-.177.15-.173.151-.562V5.923q.002-.543.294-.832c.195-.191.477-.288.836-.288h2.775q.188 0 .313.111a.37.37 0 0 1 .131.293.4.4 0 0 1-.108.281.38.38 0 0 1-.293.123H3.45q-.186 0-.277.09t-.092.292v2.33c0 .213-.044.413-.133.59a1.1 1.1 0 0 1-.359.424 1 1 0 0 1-.1.059 1 1 0 0 1 .1.059q.225.156.359.423t.133.59v2.34q0 .203.092.293.088.09.277.089h2.577a.38.38 0 0 1 .294.123q.108.12.108.281a.38.38 0 0 1-.13.286.45.45 0 0 1-.314.118l-2.775-.003a1.4 1.4 0 0 1-.613-.126.87.87 0 0 1-.388-.387 1.34 1.34 0 0 1-.129-.608v-2.318q0-.4-.151-.572-.151-.168-.55-.177a.35.35 0 0 1-.278-.132.42.42 0 0 1-.102-.28q0-.173.103-.287"
+    />
+    <path
+      fill="currentColor"
+      d="M5.437 10.36a.986.986 0 0 1-.994-.975c0-.538.446-.976.994-.976s.994.438.994.976a.986.986 0 0 1-.994.976M10.562 8.41c.548 0 .994.437.994.975a.986.986 0 0 1-.994.976.986.986 0 0 1-.994-.976c0-.538.446-.976.994-.976M8.74 2c.37 0 .446.15.446.275v.034q0 .034-.009.201-.01.162-.017.549-.018.378-.044 1.06c0 .106-.065.233-.375.233-.311 0-.376-.126-.376-.23l-.07-1.835v-.003c0-.13.078-.284.446-.284M7.256 2c.369 0 .446.15.446.275v.034q0 .034-.01.201-.007.162-.017.549-.017.378-.043 1.06c0 .106-.065.233-.376.233-.31 0-.375-.126-.375-.23l-.07-1.835v-.003C6.81 2.154 6.887 2 7.256 2"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.15.0</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Claude Code"
+    href="https://github.com/zed-industries/claude-code-acp"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1200 1200"
+  >
+    <path
+      fill="currentColor"
+      d="M 233.959793 800.214905 L 468.644287 668.536987 L 472.590637 657.100647 L 468.644287 650.738403 L 457.208069 650.738403 L 417.986633 648.322144 L 283.892639 644.69812 L 167.597321 639.865845 L 54.926208 633.825623 L 26.577238 627.785339 L 3.3e-05 592.751709 L 2.73832 575.27533 L 26.577238 559.248352 L 60.724873 562.228149 L 136.187973 567.382629 L 249.422867 575.194763 L 331.570496 580.026978 L 453.261841 592.671082 L 472.590637 592.671082 L 475.328857 584.859009 L 468.724915 580.026978 L 463.570557 575.194763 L 346.389313 495.785217 L 219.543671 411.865906 L 153.100723 363.543762 L 117.181267 339.060425 L 99.060455 316.107361 L 91.248367 266.01355 L 123.865784 230.093994 L 167.677887 233.073853 L 178.872513 236.053772 L 223.248367 270.201477 L 318.040283 343.570496 L 441.825592 434.738342 L 459.946411 449.798706 L 467.194672 444.64447 L 468.080597 441.020203 L 459.946411 427.409485 L 392.617493 305.718323 L 320.778564 181.932983 L 288.80542 130.630859 L 280.348999 99.865845 C 277.369171 87.221436 275.194641 76.590698 275.194641 63.624268 L 312.322174 13.20813 L 332.8591 6.604126 L 382.389313 13.20813 L 403.248352 31.328979 L 434.013519 101.71814 L 483.865753 212.537048 L 561.181274 363.221497 L 583.812134 407.919434 L 595.892639 449.315491 L 600.40271 461.959839 L 608.214783 461.959839 L 608.214783 454.711609 L 614.577271 369.825623 L 626.335632 265.61084 L 637.771851 131.516846 L 641.718201 93.745117 L 660.402832 48.483276 L 697.530334 24.000122 L 726.52356 37.852417 L 750.362549 72 L 747.060486 94.067139 L 732.886047 186.201416 L 705.100708 330.52356 L 686.979919 427.167847 L 697.530334 427.167847 L 709.61084 415.087341 L 758.496704 350.174561 L 840.644348 247.490051 L 876.885925 206.738342 L 919.167847 161.71814 L 946.308838 140.29541 L 997.61084 140.29541 L 1035.38269 196.429626 L 1018.469849 254.416199 L 965.637634 321.422852 L 921.825562 378.201538 L 859.006714 462.765259 L 819.785278 530.41626 L 823.409424 535.812073 L 832.75177 534.92627 L 974.657776 504.724915 L 1051.328979 490.872559 L 1142.818848 475.167786 L 1184.214844 494.496582 L 1188.724854 514.147644 L 1172.456421 554.335693 L 1074.604126 578.496765 L 959.838989 601.449829 L 788.939636 641.879272 L 786.845764 643.409485 L 789.261841 646.389343 L 866.255127 653.637634 L 899.194702 655.409424 L 979.812134 655.409424 L 1129.932861 666.604187 L 1169.154419 692.537109 L 1192.671265 724.268677 L 1188.724854 748.429688 L 1128.322144 779.194641 L 1046.818848 759.865845 L 856.590759 714.604126 L 791.355774 698.335754 L 782.335693 698.335754 L 782.335693 703.731567 L 836.69812 756.885986 L 936.322205 846.845581 L 1061.073975 962.81897 L 1067.436279 991.490112 L 1051.409424 1014.120911 L 1034.496704 1011.704712 L 924.885986 929.234924 L 882.604126 892.107544 L 786.845764 811.48999 L 780.483276 811.48999 L 780.483276 819.946289 L 802.550415 852.241699 L 919.087341 1027.409424 L 925.127625 1081.127686 L 916.671204 1098.604126 L 886.469849 1109.154419 L 853.288696 1103.114136 L 785.073914 1007.355835 L 714.684631 899.516785 L 657.906067 802.872498 L 650.979858 806.81897 L 617.476624 1167.704834 L 601.771851 1186.147705 L 565.530212 1200 L 535.328857 1177.046997 L 519.302124 1139.919556 L 535.328857 1066.550537 L 554.657776 970.792053 L 570.362488 894.68457 L 584.536926 800.134277 L 592.993347 768.724976 L 592.429626 766.630859 L 585.503479 767.516968 L 514.22821 865.369263 L 405.825531 1011.865906 L 320.053711 1103.677979 L 299.516815 1111.812256 L 263.919525 1093.369263 L 267.221497 1060.429688 L 287.114136 1031.114136 L 405.825531 880.107361 L 477.422913 786.52356 L 523.651062 732.483276 L 523.328918 724.671265 L 520.590698 724.671265 L 205.288605 929.395935 L 149.154434 936.644409 L 124.993355 914.01355 L 127.973183 876.885986 L 139.409409 864.80542 L 234.201385 799.570435 L 233.879227 799.8927 Z"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.13.2</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Codex CLI"
+    href="https://github.com/zed-industries/codex-acp"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.9.0</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Factory Droid"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 900 900"
+    fill="none"
+  >
+    <path
+      fill="currentColor"
+      d="M622.037 192.524a10.58 10.58 0 0 1-4.056-2.001 10.573 10.573 0 0 1-3.98-7.89 10.595 10.595 0 0 1 .804-4.452c20.214-49.194 29.134-88.555 14.74-105.033-38.123-43.716-191.004 43.219-239.75 72.663a10.596 10.596 0 0 1-10.841.041 10.576 10.576 0 0 1-4.396-5.07c-20.491-49.089-42.031-83.233-63.865-84.714-57.871-3.96-104.516 165.624-118.17 220.895a10.574 10.574 0 0 1-1.993 4.057 10.572 10.572 0 0 1-7.884 3.977 10.586 10.586 0 0 1-4.447-.802c-49.194-20.215-88.572-29.134-105.033-14.74-43.717 38.123 43.202 191.005 72.644 239.75a10.553 10.553 0 0 1 1.454 4.279 10.573 10.573 0 0 1-6.481 10.958c-49.072 20.491-83.216 42.031-84.715 63.864-3.944 57.871 165.624 104.516 220.913 118.171a10.566 10.566 0 0 1 5.658 3.601 10.57 10.57 0 0 1 2.355 6.281 10.58 10.58 0 0 1-.799 4.442c-20.214 49.194-29.134 88.572-14.739 105.033 38.121 43.717 191.021-43.202 239.767-72.644a10.566 10.566 0 0 1 15.238 5.027c20.489 49.072 42.013 83.216 63.862 84.715 57.871 3.944 104.516-165.624 118.153-220.913a10.603 10.603 0 0 1 9.895-8.021 10.566 10.566 0 0 1 4.449.808c49.193 20.214 88.553 29.116 105.032 14.738 43.718-38.121-43.219-191.022-72.663-239.767a10.602 10.602 0 0 1 1.326-12.655 10.604 10.604 0 0 1 3.703-2.582c49.089-20.49 83.233-42.031 84.714-63.863 3.96-57.871-165.624-104.516-220.895-118.153Zm-66.394-55.478c11.123 19.938-46.196 152.797-88.83 245.724a8.36 8.36 0 0 1-8.239 4.855 8.374 8.374 0 0 1-7.412-6.043c-17.219-60.42-36.899-131.411-57.957-191.675a10.557 10.557 0 0 1 4.924-12.759c52.586-28.721 142.568-66.86 157.514-40.102ZM303.635 153.49c21.953 6.233 75.365 140.709 110.92 236.564a8.364 8.364 0 0 1-2.394 9.249 8.364 8.364 0 0 1-9.504.978c-54.943-30.493-119.013-66.824-176.522-94.546a10.565 10.565 0 0 1-5.528-12.501c16.926-57.44 53.532-148.095 83.028-139.744ZM137.064 343.322c19.921-11.123 152.795 46.197 245.707 88.83a8.369 8.369 0 0 1-1.189 15.652c-60.401 17.219-131.411 36.899-191.675 57.957a10.552 10.552 0 0 1-12.742-4.925c-28.668-52.584-66.876-142.568-40.101-157.514Zm16.443 252.009c6.217-21.953 140.709-75.365 236.564-110.921a8.368 8.368 0 0 1 10.227 11.898c-30.511 54.945-66.842 119.014-94.563 176.507a10.548 10.548 0 0 1-5.229 5.075 10.544 10.544 0 0 1-7.271.468c-57.441-16.822-148.095-53.531-139.728-83.027ZM343.34 761.902c-11.14-19.922 46.197-152.796 88.829-245.707a8.383 8.383 0 0 1 5.713-4.66 8.38 8.38 0 0 1 7.182 1.664 8.371 8.371 0 0 1 2.758 4.184c17.217 60.403 36.898 131.412 57.957 191.675a10.558 10.558 0 0 1-4.942 12.743c-52.568 28.668-142.568 66.875-157.445 40.101h-.052Zm252.009-16.443c-21.971-6.216-75.383-140.709-110.939-236.564a8.37 8.37 0 0 1 11.916-10.228c54.926 30.494 119.014 66.842 176.506 94.563a10.538 10.538 0 0 1 5.527 12.502c-16.909 57.526-53.515 148.094-83.01 139.727Zm166.57-189.834c-19.938 11.141-152.796-46.197-245.724-88.83a8.367 8.367 0 0 1-2.993-12.892 8.378 8.378 0 0 1 4.182-2.759c60.419-17.218 131.41-36.899 191.675-57.958a10.577 10.577 0 0 1 12.758 4.943c28.652 52.568 66.86 142.569 40.102 157.496Zm-16.444-252.009c-6.232 21.971-140.709 75.383-236.562 110.94a8.371 8.371 0 0 1-10.229-11.917c30.495-54.926 66.825-119.012 94.547-176.505a10.555 10.555 0 0 1 12.5-5.528c57.441 16.909 148.096 53.516 139.744 83.01Z"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.56.3</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Gemini CLI"
+    href="https://github.com/google-gemini/gemini-cli"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="currentColor"
+      d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.26.0</code>
+    </p>
+  </Card>
+
+  <Card
+    title="GitHub Copilot"
+    href="https://github.com/github/copilot-language-server-release"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.99816 14.2779C12.0678 14.2779 14.9997 11.6274 14.9997 10.9574V9.3189C14.939 8.77306 14.4165 7.82349 13.6074 7.48636C13.5959 7.42498 13.5859 7.36153 13.5756 7.29542C13.5506 7.13548 13.5231 6.95977 13.4649 6.75954C13.6409 6.31508 13.6873 5.81187 13.6873 5.31135C13.6873 4.54947 13.5757 3.76321 13.0811 3.13712C12.5745 2.4959 11.7737 2.15372 10.6972 2.03411C9.64215 1.91688 8.71828 2.06409 8.12157 2.70342C8.07827 2.74981 8.0345 2.79812 7.99655 2.84746C7.95861 2.79812 7.91805 2.74981 7.87475 2.70342C7.27804 2.06409 6.35416 1.91688 5.29908 2.03411C4.22263 2.15372 3.42181 2.4959 2.91521 3.13712C2.42057 3.76321 2.30905 4.54947 2.30905 5.31135C2.30905 5.81187 2.35539 6.31508 2.53142 6.75954C2.47323 6.95977 2.44574 7.13542 2.42072 7.29536C2.41037 7.3615 2.40044 7.42496 2.38893 7.48636C1.57983 7.82349 1.05728 8.77306 0.996582 9.3189V10.9574C0.996582 11.6274 3.92849 14.2779 7.99816 14.2779ZM10.5523 3.33859C9.63863 3.23707 9.25001 3.41798 9.0811 3.59896C8.90273 3.79007 8.76738 4.19254 8.86971 5.0112C8.94909 5.64627 9.13423 6.08757 9.41018 6.36929C9.67188 6.63645 10.0966 6.8426 10.8435 6.8426C11.6506 6.8426 11.9631 6.66867 12.1051 6.51046C12.2619 6.33577 12.3748 6.00462 12.3748 5.31135C12.3748 4.64141 12.2675 4.22455 12.0513 3.95077C11.8469 3.69214 11.4446 3.43773 10.5523 3.33859ZM6.91639 3.59896C6.74748 3.41798 6.35886 3.23707 5.44518 3.33859C4.55289 3.43773 4.15058 3.69214 3.94624 3.95077C3.72994 4.22455 3.62271 4.64141 3.62271 5.31135C3.62271 6.00462 3.73563 6.33577 3.89239 6.51046C4.03436 6.66867 4.34693 6.8426 5.15396 6.8426C5.90092 6.8426 6.32561 6.63645 6.58731 6.36929C6.86326 6.08757 7.0484 5.64627 7.12778 5.0112C7.23011 4.19254 7.09476 3.79007 6.91639 3.59896ZM7.99818 12.9788C9.99307 12.9788 12.0088 12.0076 12.3748 11.7248V8.00133L12.3546 7.90026C11.9257 8.08369 11.4142 8.1551 10.8435 8.1551C9.84049 8.1551 9.04148 7.86851 8.47257 7.28773C8.28092 7.09208 8.12536 6.87308 7.99978 6.6378C7.8742 6.87308 7.71544 7.09208 7.52378 7.28773C6.95488 7.86851 6.15587 8.1551 5.15283 8.1551C4.58212 8.1551 4.07068 8.08369 3.6418 7.90026L3.62158 8.00133V11.7248C3.98755 12.0076 6.00329 12.9788 7.99818 12.9788Z"
+      fill="currentColor"
+    />
+    <path
+      d="M6.46854 9.0301C6.83097 9.0301 7.12479 9.32391 7.12479 9.68635V10.9988C7.12479 11.3613 6.83097 11.6551 6.46854 11.6551C6.1061 11.6551 5.81229 11.3613 5.81229 10.9988V9.68635C5.81229 9.32391 6.1061 9.0301 6.46854 9.0301Z"
+      fill="currentColor"
+    />
+    <path
+      d="M10.1873 9.68635C10.1873 9.32391 9.89347 9.0301 9.53104 9.0301C9.1686 9.0301 8.87479 9.32391 8.87479 9.68635V10.9988C8.87479 11.3613 9.1686 11.6551 9.53104 11.6551C9.89347 11.6551 10.1873 11.3613 10.1873 10.9988V9.68635Z"
+      fill="currentColor"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>1.418.0</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Mistral Vibe"
+    href="https://github.com/mistralai/mistral-vibe"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8.8147 5.35803H5.35791V8.46914H8.8147V5.35803Z"
+      fill="currentColor"
+    />
+    <path
+      d="M22.6419 5.35803H19.1851V8.46914H22.6419V5.35803Z"
+      fill="currentColor"
+    />
+    <path
+      d="M15.7283 15.7284H12.2715V18.8395H15.7283V15.7284Z"
+      fill="currentColor"
+    />
+    <path
+      d="M8.8147 15.7284H5.35791V18.8395H8.8147V15.7284Z"
+      fill="currentColor"
+    />
+    <path
+      d="M22.6419 15.7284H19.1851V18.8395H22.6419V15.7284Z"
+      fill="currentColor"
+    />
+    <path
+      d="M12.2715 8.81482H5.35791V11.9259H12.2715V8.81482Z"
+      fill="currentColor"
+    />
+    <path
+      d="M12.2718 19.1852H1.90137V22.2963H12.2718V19.1852Z"
+      fill="currentColor"
+    />
+    <path
+      d="M26.0989 19.1852H15.7285V22.2963H26.0989V19.1852Z"
+      fill="currentColor"
+    />
+    <path
+      d="M22.6419 12.2716H5.35791V15.3827H22.6419V12.2716Z"
+      fill="currentColor"
+    />
+    <path
+      d="M22.6421 8.81482H15.7285V11.9259H22.6421V8.81482Z"
+      fill="currentColor"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>2.0.2</code>
+    </p>
+  </Card>
+
+  <Card
+    title="OpenCode"
+    href="https://github.com/sst/opencode"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M13 14H3V2H13V14ZM10.5 4.4H5.5V11.6H10.5V4.4Z"
+      fill="currentColor"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>1.1.48</code>
+    </p>
+  </Card>
+
+  <Card
+    title="Qwen Code"
+    href="https://github.com/QwenLM/qwen-code"
+    icon={
+  <svg
+    width="20"
+    height="20"
+    className="agent-icon"
+    aria-hidden="true"
+    focusable="false"
+    xmlns="http://www.w3.org/2000/svg"
+    data-name="图层 2"
+    viewBox="0 0 141.38 140"
+  >
+    <path
+      fill="currentColor"
+      d="m140.93 85-16.35-28.33-1.93-3.34 8.66-15a3.323 3.323 0 0 0 0-3.34l-9.62-16.67c-.3-.51-.72-.93-1.22-1.22s-1.07-.45-1.67-.45H82.23l-8.66-15a3.33 3.33 0 0 0-2.89-1.67H51.43c-.59 0-1.17.16-1.66.45-.5.29-.92.71-1.22 1.22L32.19 29.98l-1.92 3.33H12.96c-.59 0-1.17.16-1.66.45-.5.29-.93.71-1.22 1.22L.45 51.66a3.323 3.323 0 0 0 0 3.34l18.28 31.67-8.66 15a3.32 3.32 0 0 0 0 3.34l9.62 16.67c.3.51.72.93 1.22 1.22s1.07.45 1.67.45h36.56l8.66 15a3.35 3.35 0 0 0 2.89 1.67h19.25a3.34 3.34 0 0 0 2.89-1.67l18.28-31.67h17.32c.6 0 1.17-.16 1.67-.45s.92-.71 1.22-1.22l9.62-16.67a3.323 3.323 0 0 0 0-3.34ZM51.44 3.33 61.07 20l-9.63 16.66h76.98l-9.62 16.66H45.67l-11.54-20zM57.21 120H22.58l9.63-16.67h19.25l-38.5-66.67h19.25l9.62 16.67L68.78 100l-11.55 20Zm61.59-33.34-9.62-16.67-38.49 66.67-9.63-16.67 9.63-16.66 26.94-46.67h23.1l17.32 30z"
+      data-name="图层 1"
+    />
+  </svg>
+}
+  >
+    <p>
+      <code>0.8.2</code>
+    </p>
+  </Card>
+</CardGroup>
+
+## Using the Registry
+
+Clients can fetch the registry programmatically:
+
+```bash theme={null}
+curl https://cdn.agentclientprotocol.com/registry/v1/latest/registry.json
+```
+
+The registry JSON contains all agent metadata including distribution information for automatic installation.
+
+## Submit your Agent
+
+To add your agent to the registry:
+
+1. Fork the [registry repository on GitHub](https://github.com/agentclientprotocol/registry)
+2. Create a folder with your agent's ID (lowercase, hyphens allowed)
+3. Add an `agent.json` file following [the schema](https://github.com/agentclientprotocol/registry/blob/main/agent.schema.json)
+4. Optionally add an `icon.svg` (16x16 recommended)
+5. Submit a pull request
+
+See the [contributing guide](https://github.com/agentclientprotocol/registry/blob/main/CONTRIBUTING.md) for details.
+
+
 # Community
 Source: https://agentclientprotocol.com/libraries/community
 
@@ -597,6 +1063,11 @@ Community managed libraries for the Agent Client Protocol
 ## React
 
 * [use-acp](https://github.com/marimo-team/use-acp)
+
+## Swift
+
+* [swift-acp](https://github.com/wiedymi/swift-acp)
+* [swift-sdk](https://github.com/aptove/swift-sdk)
 
 
 # Kotlin
@@ -719,133 +1190,6 @@ You can find example implementations of both sides in the [main repository](http
 Browse the [TypeScript library reference](https://agentclientprotocol.github.io/typescript-sdk) for detailed API documentation.
 
 For a complete, production-ready implementation of an ACP agent, check out [Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/packages/cli/src/zed-integration/zedIntegration.ts).
-
-
-# Agents
-Source: https://agentclientprotocol.com/overview/agents
-
-Agents implementing the Agent Client Protocol
-
-The following agents can be used with an ACP Client:
-
-* [AgentPool](https://phil65.github.io/agentpool/advanced/acp-integration/)
-* [Augment Code](https://docs.augmentcode.com/cli/acp)
-* [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) (via [Zed's SDK adapter](https://github.com/zed-industries/claude-code-acp))
-* [Codex CLI](https://developers.openai.com/codex/cli) (via [Zed's adapter](https://github.com/zed-industries/codex-acp))
-* [Code Assistant](https://github.com/stippi/code-assistant?tab=readme-ov-file#configuration)
-* [Docker's cagent](https://github.com/docker/cagent)
-* [fast-agent](https://fast-agent.ai/acp)
-* [Gemini CLI](https://github.com/google-gemini/gemini-cli)
-* [Goose](https://block.github.io/goose/docs/guides/acp-clients)
-* [JetBrains Junie *(coming soon)*](https://www.jetbrains.com/junie/)
-* [Kimi CLI](https://github.com/MoonshotAI/kimi-cli)
-* [Mistral Vibe](https://github.com/mistralai/mistral-vibe)
-* [OpenCode](https://github.com/sst/opencode)
-* [OpenHands](https://docs.openhands.dev/openhands/usage/run-openhands/acp)
-* [Qwen Code](https://github.com/QwenLM/qwen-code)
-* [Stakpak](https://github.com/stakpak/agent?tab=readme-ov-file#agent-client-protocol-acp)
-* [VT Code](https://github.com/vinhnx/vtcode/blob/main/README.md#zed-ide-integration-agent-client-protocol)
-
-
-# Architecture
-Source: https://agentclientprotocol.com/overview/architecture
-
-Overview of the Agent Client Protocol architecture
-
-The Agent Client Protocol defines a standard interface for communication between AI agents and client applications. The architecture is designed to be flexible, extensible, and platform-agnostic.
-
-## Design Philosophy
-
-The protocol architecture follows several key principles:
-
-1. **MCP-friendly**: The protocol is built on JSON-RPC, and re-uses MCP types where possible so that integrators don't need to build yet-another representation for common data types.
-2. **UX-first**: It is designed to solve the UX challenges of interacting with AI agents; ensuring there's enough flexibility to render clearly the agents intent, but is no more abstract than it needs to be.
-3. **Trusted**: ACP works when you're using a code editor to talk to a model you trust. You still have controls over the agent's tool calls, but the code editor gives the agent access to local files and MCP servers.
-
-## Setup
-
-When the user tries to connect to an agent, the editor boots the agent sub-process on demand, and all communication happens over stdin/stdout.
-
-Each connection can support several concurrent sessions, so you can have multiple trains of thought going on at once.
-
-<img alt="Server Client setup" />
-
-ACP makes heavy use of JSON-RPC notifications to allow the agent to stream updates to the UI in real-time. It also uses JSON-RPC's bidirectional requests to allow the agent to make requests of the code editor: for example to request permissions for a tool call.
-
-## MCP
-
-Commonly the code editor will have user-configured MCP servers. When forwarding the prompt from the user, it passes configuration for these to the agent. This allows the agent to connect directly to the MCP server.
-
-<img alt="MCP Server connection" />
-
-The code editor may itself also wish to export MCP based tools. Instead of trying to run MCP and ACP on the same socket, the code editor can provide its own MCP server as configuration. As agents may only support MCP over stdio, the code editor can provide a small proxy that tunnels requests back to itself:
-
-<img alt="MCP connection to self" />
-
-
-# Clients
-Source: https://agentclientprotocol.com/overview/clients
-
-Clients implementing the Agent Client Protocol
-
-The following clients can be used with an ACP Agent:
-
-* [Agmente](https://agmente.halliharp.com) (iOS)
-* [AionUi](https://github.com/iOfficeAI/AionUi)
-* [aizen](https://aizen.win)
-* [DeepChat](https://github.com/ThinkInAIXYZ/deepchat)
-* DuckDB
-  * through the [sidequery/duckdb-acp](https://github.com/sidequery/duckdb-acp) extension
-* Emacs via [agent-shell.el](https://github.com/xenodium/agent-shell)
-* [JetBrains](https://www.jetbrains.com/help/ai-assistant/acp.html)
-* [marimo notebook](https://github.com/marimo-team/marimo)
-* [neovim](https://neovim.io)
-  * through the [CodeCompanion](https://github.com/olimorris/codecompanion.nvim) plugin
-  * through the [yetone/avante.nvim](https://github.com/yetone/avante.nvim) plugin
-* [Obsidian](https://obsidian.md)
-  * through the [Agent Client](https://github.com/RAIT-09/obsidian-agent-client) plugin
-* [Sidequery *(coming soon)*](https://sidequery.dev)
-* [Tidewave](https://tidewave.ai/)
-* [Toad](https://www.batrachian.ai/)
-* [Web Browser with AI SDK](https://github.com/mcpc-tech/ai-elements-remix-template) (powered by [@mcpc/acp-ai-provider](https://github.com/mcpc-tech/mcpc/tree/main/packages/acp-ai-provider))
-* [Zed](https://zed.dev/docs/ai/external-agents)
-
-
-# Introduction
-Source: https://agentclientprotocol.com/overview/introduction
-
-Get started with the Agent Client Protocol (ACP)
-
-The Agent Client Protocol standardizes communication between code editors/IDEs and coding agents and is suitable for both local and remote scenarios.
-
-## Why ACP?
-
-AI coding agents and editors are tightly coupled but interoperability isn't the default. Each editor must build custom integrations for every agent they want to support, and agents must implement editor-specific APIs to reach users.
-This creates several problems:
-
-* Integration overhead: Every new agent-editor combination requires custom work
-* Limited compatibility: Agents work with only a subset of available editors
-* Developer lock-in: Choosing an agent often means accepting their available interfaces
-
-ACP solves this by providing a standardized protocol for agent-editor communication, similar to how the [Language Server Protocol (LSP)](https://microsoft.github.io/language-server-protocol/) standardized language server integration.
-
-Agents that implement ACP work with any compatible editor. Editors that support ACP gain access to the entire ecosystem of ACP-compatible agents.
-This decoupling allows both sides to innovate independently while giving developers the freedom to choose the best tools for their workflow.
-
-## Overview
-
-ACP assumes that the user is primarily in their editor, and wants to reach out and use agents to assist them with specific tasks.
-
-ACP is suitable for both local and remote scenarios:
-
-* **Local agents** run as sub-processes of the code editor, communicating via JSON-RPC over stdio.
-* **Remote agents** can be hosted in the cloud or on separate infrastructure, communicating over HTTP or WebSocket
-
-> **Note:** Full support for remote agents is a work in progress. We are actively collaborating with agentic platforms to ensure the protocol addresses the specific requirements of cloud-hosted and remote deployment scenarios.
-
-The protocol re-uses the JSON representations used in MCP where possible, but includes custom types for useful agentic coding UX elements, like displaying diffs.
-
-The default format for user-readable text is Markdown, which allows enough flexibility to represent rich formatting without requiring that the code editor is capable of rendering HTML.
 
 
 # Agent Plan
@@ -1133,4172 +1477,6 @@ References to resources that the Agent can access.
   Optional metadata about how the content should be used or displayed. [Learn
   more](https://modelcontextprotocol.io/specification/2025-06-18/server/resources#annotations).
 </ParamField>
-
-
-# Cancellation
-Source: https://agentclientprotocol.com/protocol/draft/cancellation
-
-Mechanisms for request cancellation
-
-ACP uses JSON-RPC 2.0 for making requests and getting responses.
-
-The JSON-RPC specification doesn't define any standard mechanism for request cancellation and keeps it up to the implementation.
-
-## `$/cancel_request` Notification
-
-In order to provide a consistent approach to cancellation, ACP defines a `$/cancel_request` notification that can be sent to cancel requests.
-
-Cancellation will remain optional as it might not be implementable in all clients or servers. For example if the implementation uses a single threaded synchronous programming language then there is little it can do to react to a `$/cancel_request` notification.
-
-When a `$/cancel_request` notification is received by a supporting implementation, the implementation:
-
-* **MUST** cancel the corresponding request activity and all nested activities related to that request
-* **MAY** finish sending any pending notifications before responding
-* **MUST** send one of these responses for the original request:
-  * A valid response with appropriate data (such as partial results or cancellation marker)
-  * An error response with code [`-32800` (Request Cancelled)](./schema#errorcode)
-
-The calling side **MAY** implement graceful cancellation processing by waiting for the response from the remote side.
-
-Cancellation **MAY** also be done explicitly on a per-feature basis within the protocol to cover specific scenarios (e.g., cancellation of a [prompt turn](./prompt-turn#cancellation))
-
-## Internal Cancellation
-
-Requests can also be cancelled internally by the executing party without receiving `$/cancel_request`:
-
-* **Client-side examples**: User closes IDE, switches to different project, file becomes unavailable
-* **Agent-side examples**: LLM context limit reached, internal timeout, resource constraints
-
-When internal cancellation occurs, the executing party **MUST**:
-
-* Send the same `-32800` (Cancelled) error response as if `$/cancel_request` was received
-* Ensure consistent behavior regardless of cancellation source
-
-## Example: Cascading Cancellation Flow
-
-```mermaid theme={null}
-sequenceDiagram
-    participant Client
-    participant Agent
-
-    Note over Client,Agent: 1. Session prompt in progress
-    Client->>Agent: session/prompt (id=1, "Analyze file X")
-    Agent-->>Client: session/update (agent started processing)
-
-    Note over Client,Agent: 2. Agent makes concurrent requests
-    Agent->>Client: terminal/create (id=2, "grep pattern file.txt")
-    Agent->>Client: session/request_permission (id=3, "read sensitive file")
-
-    Note over Client,Agent: 3. Client cancels the prompt turn
-    Client->>Agent: session/cancel (sessionId)
-
-    Note over Client,Agent: 4. Agent cascades cancellation internally
-    Agent->>Client: $/cancel_request (id=2) [terminal request]
-  Agent->>Client: $/cancel_request (id=3) [permission request]
-
-    Note over Client,Agent: 5. Client confirms individual cancellations
-    Client->>Agent: response to id=2 (error -32800 "Cancelled")
-    Client->>Agent: response to id=3 (error -32800 "Cancelled")
-
-    Note over Client,Agent: 6. Agent completes prompt cancellation
-    Agent->>Client: response to id=1 (stopReason: "cancelled")
-```
-
-
-# Schema
-Source: https://agentclientprotocol.com/protocol/draft/schema
-
-Schema definitions for the Agent Client Protocol
-
-## Agent
-
-Defines the interface that all ACP-compliant agents must implement.
-
-Agents are programs that use generative AI to autonomously modify code. They handle
-requests from clients and execute tasks using language models and tools.
-
-### <span>authenticate</span>
-
-Authenticates the client using the specified authentication method.
-
-Called when the agent requires authentication before allowing session creation.
-The client provides the authentication method ID that was advertised during initialization.
-
-After successful authentication, the client can proceed to create sessions with
-`new_session` without receiving an `auth_required` error.
-
-See protocol docs: [Initialization](https://agentclientprotocol.com/protocol/initialization)
-
-#### <span>AuthenticateRequest</span>
-
-Request parameters for the authenticate method.
-
-Specifies which authentication method to use.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="methodId" type={"string"}>
-  The ID of the authentication method to use.
-  Must be one of the methods advertised in the initialize response.
-</ResponseField>
-
-#### <span>AuthenticateResponse</span>
-
-Response to the `authenticate` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-### <span>initialize</span>
-
-Establishes the connection with a client and negotiates protocol capabilities.
-
-This method is called once at the beginning of the connection to:
-
-* Negotiate the protocol version to use
-* Exchange capability information between client and agent
-* Determine available authentication methods
-
-The agent should respond with its supported protocol version and capabilities.
-
-See protocol docs: [Initialization](https://agentclientprotocol.com/protocol/initialization)
-
-#### <span>InitializeRequest</span>
-
-Request parameters for the initialize method.
-
-Sent by the client to establish connection and negotiate capabilities.
-
-See protocol docs: [Initialization](https://agentclientprotocol.com/protocol/initialization)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="clientCapabilities" type={<a href="#clientcapabilities">ClientCapabilities</a>}>
-  Capabilities supported by the client.
-
-  * Default: `{"fs":{"readTextFile":false,"writeTextFile":false},"terminal":false}`
-</ResponseField>
-
-<ResponseField name="clientInfo" type={<><span><a href="#implementation">Implementation</a></span><span> | null</span></>}>
-  Information about the Client name and version sent to the Agent.
-
-  Note: in future versions of the protocol, this will be required.
-</ResponseField>
-
-<ResponseField name="protocolVersion" type={<a href="#protocolversion">ProtocolVersion</a>}>
-  The latest protocol version supported by the client.
-</ResponseField>
-
-#### <span>InitializeResponse</span>
-
-Response to the `initialize` method.
-
-Contains the negotiated protocol version and agent capabilities.
-
-See protocol docs: [Initialization](https://agentclientprotocol.com/protocol/initialization)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="agentCapabilities" type={<a href="#agentcapabilities">AgentCapabilities</a>}>
-  Capabilities supported by the agent.
-
-  * Default: `{"loadSession":false,"mcpCapabilities":{"http":false,"sse":false},"promptCapabilities":{"audio":false,"embeddedContext":false,"image":false},"sessionCapabilities":{}}`
-</ResponseField>
-
-<ResponseField name="agentInfo" type={<><span><a href="#implementation">Implementation</a></span><span> | null</span></>}>
-  Information about the Agent name and version sent to the Client.
-
-  Note: in future versions of the protocol, this will be required.
-</ResponseField>
-
-<ResponseField name="authMethods" type={<a href="#authmethod">AuthMethod[]</a>}>
-  Authentication methods supported by the agent.
-
-  * Default: `[]`
-</ResponseField>
-
-<ResponseField name="protocolVersion" type={<a href="#protocolversion">ProtocolVersion</a>}>
-  The protocol version the client specified if supported by the agent,
-  or the latest protocol version supported by the agent.
-
-  The client should disconnect, if it doesn't support this version.
-</ResponseField>
-
-<a />
-
-### <span>session/cancel</span>
-
-Cancels ongoing operations for a session.
-
-This is a notification sent by the client to cancel an ongoing prompt turn.
-
-Upon receiving this notification, the Agent SHOULD:
-
-* Stop all language model requests as soon as possible
-* Abort all tool call invocations in progress
-* Send any pending `session/update` notifications
-* Respond to the original `session/prompt` request with `StopReason::Cancelled`
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/prompt-turn#cancellation)
-
-#### <span>CancelNotification</span>
-
-Notification to cancel ongoing operations for a session.
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/prompt-turn#cancellation)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to cancel operations for.
-</ResponseField>
-
-<a />
-
-### <span>session/fork</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Forks an existing session to create a new independent session.
-
-This method is only available if the agent advertises the `session.fork` capability.
-
-The agent should create a new session with the same conversation context as the
-original, allowing operations like generating summaries without affecting the
-original session's history.
-
-#### <span>ForkSessionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for forking an existing session.
-
-Creates a new session based on the context of an existing one, allowing
-operations like generating summaries without affecting the original session's history.
-
-Only available if the Agent supports the `session.fork` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"}>
-  The working directory for this session.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP servers to connect to for this session.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to fork.
-</ResponseField>
-
-#### <span>ForkSessionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from forking an existing session.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  Unique identifier for the newly created forked session.
-</ResponseField>
-
-<a />
-
-### <span>session/list</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Lists existing sessions known to the agent.
-
-This method is only available if the agent advertises the `listSessions` capability.
-
-The agent should return metadata about sessions with optional filtering and pagination support.
-
-#### <span>ListSessionsRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for listing existing sessions.
-
-Only available if the Agent supports the `listSessions` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cursor" type={"string | null"}>
-  Opaque cursor token from a previous response's nextCursor field for cursor-based pagination
-</ResponseField>
-
-<ResponseField name="cwd" type={"string | null"}>
-  Filter sessions by working directory. Must be an absolute path.
-</ResponseField>
-
-#### <span>ListSessionsResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from listing sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="nextCursor" type={"string | null"}>
-  Opaque cursor token. If present, pass this in the next request's cursor parameter
-  to fetch the next page. If absent, there are no more results.
-</ResponseField>
-
-<ResponseField name="sessions" type={<a href="#sessioninfo">SessionInfo[]</a>}>
-  Array of session information objects
-</ResponseField>
-
-<a />
-
-### <span>session/load</span>
-
-Loads an existing session to resume a previous conversation.
-
-This method is only available if the agent advertises the `loadSession` capability.
-
-The agent should:
-
-* Restore the session context and conversation history
-* Connect to the specified MCP servers
-* Stream the entire conversation history back to the client via notifications
-
-See protocol docs: [Loading Sessions](https://agentclientprotocol.com/protocol/session-setup#loading-sessions)
-
-#### <span>LoadSessionRequest</span>
-
-Request parameters for loading an existing session.
-
-Only available if the Agent supports the `loadSession` capability.
-
-See protocol docs: [Loading Sessions](https://agentclientprotocol.com/protocol/session-setup#loading-sessions)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"}>
-  The working directory for this session.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP servers to connect to for this session.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to load.
-</ResponseField>
-
-#### <span>LoadSessionResponse</span>
-
-Response from loading an existing session.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<a />
-
-### <span>session/new</span>
-
-Creates a new conversation session with the agent.
-
-Sessions represent independent conversation contexts with their own history and state.
-
-The agent should:
-
-* Create a new session context
-* Connect to any specified MCP servers
-* Return a unique session ID for future requests
-
-May return an `auth_required` error if the agent requires authentication.
-
-See protocol docs: [Session Setup](https://agentclientprotocol.com/protocol/session-setup)
-
-#### <span>NewSessionRequest</span>
-
-Request parameters for creating a new session.
-
-See protocol docs: [Creating a Session](https://agentclientprotocol.com/protocol/session-setup#creating-a-session)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"}>
-  The working directory for this session. Must be an absolute path.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP (Model Context Protocol) servers the agent should connect to.
-</ResponseField>
-
-#### <span>NewSessionResponse</span>
-
-Response from creating a new session.
-
-See protocol docs: [Creating a Session](https://agentclientprotocol.com/protocol/session-setup#creating-a-session)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  Unique identifier for the created session.
-
-  Used in all subsequent requests for this conversation.
-</ResponseField>
-
-<a />
-
-### <span>session/prompt</span>
-
-Processes a user prompt within a session.
-
-This method handles the whole lifecycle of a prompt:
-
-* Receives user messages with optional context (files, images, etc.)
-* Processes the prompt using language models
-* Reports language model content and tool calls to the Clients
-* Requests permission to run tools
-* Executes any requested tool calls
-* Returns when the turn is complete with a stop reason
-
-See protocol docs: [Prompt Turn](https://agentclientprotocol.com/protocol/prompt-turn)
-
-#### <span>PromptRequest</span>
-
-Request parameters for sending a user prompt to the agent.
-
-Contains the user's message and any additional context.
-
-See protocol docs: [User Message](https://agentclientprotocol.com/protocol/prompt-turn#1-user-message)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="prompt" type={<a href="#contentblock">ContentBlock[]</a>}>
-  The blocks of content that compose the user's message.
-
-  As a baseline, the Agent MUST support `ContentBlock::Text` and `ContentBlock::ResourceLink`,
-  while other variants are optionally enabled via `PromptCapabilities`.
-
-  The Client MUST adapt its interface according to `PromptCapabilities`.
-
-  The client MAY include referenced pieces of context as either
-  `ContentBlock::Resource` or `ContentBlock::ResourceLink`.
-
-  When available, `ContentBlock::Resource` is preferred
-  as it avoids extra round-trips and allows the message to include
-  pieces of context from sources the agent may not have access to.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to send this user message to
-</ResponseField>
-
-#### <span>PromptResponse</span>
-
-Response from processing a user prompt.
-
-See protocol docs: [Check for Completion](https://agentclientprotocol.com/protocol/prompt-turn#4-check-for-completion)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="stopReason" type={<a href="#stopreason">StopReason</a>}>
-  Indicates why the agent stopped processing the turn.
-</ResponseField>
-
-<a />
-
-### <span>session/resume</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Resumes an existing session without returning previous messages.
-
-This method is only available if the agent advertises the `session.resume` capability.
-
-The agent should resume the session context, allowing the conversation to continue
-without replaying the message history (unlike `session/load`).
-
-#### <span>ResumeSessionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for resuming an existing session.
-
-Resumes an existing session without returning previous messages (unlike `session/load`).
-This is useful for agents that can resume sessions but don't implement full session loading.
-
-Only available if the Agent supports the `session.resume` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"}>
-  The working directory for this session.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP servers to connect to for this session.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to resume.
-</ResponseField>
-
-#### <span>ResumeSessionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from resuming an existing session.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<a />
-
-### <span>session/set\_config\_option</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Sets the current value for a session configuration option.
-
-#### <span>SetSessionConfigOptionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for setting a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configId" type={<a href="#sessionconfigid">SessionConfigId</a>}>
-  The ID of the configuration option to set.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to set the configuration option for.
-</ResponseField>
-
-<ResponseField name="value" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>}>
-  The ID of the configuration option value to set.
-</ResponseField>
-
-#### <span>SetSessionConfigOptionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response to `session/set_config_option` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>}>
-  The full set of configuration options and their current values.
-</ResponseField>
-
-<a />
-
-### <span>session/set\_mode</span>
-
-Sets the current mode for a session.
-
-Allows switching between different agent modes (e.g., "ask", "architect", "code")
-that affect system prompts, tool availability, and permission behaviors.
-
-The mode must be one of the modes advertised in `availableModes` during session
-creation or loading. Agents may also change modes autonomously and notify the
-client via `current_mode_update` notifications.
-
-This method can be called at any time during a session, whether the Agent is
-idle or actively generating a response.
-
-See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-
-#### <span>SetSessionModeRequest</span>
-
-Request parameters for setting a session mode.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="modeId" type={<a href="#sessionmodeid">SessionModeId</a>}>
-  The ID of the mode to set.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to set the mode for.
-</ResponseField>
-
-#### <span>SetSessionModeResponse</span>
-
-Response to `session/set_mode` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"} />
-
-<a />
-
-### <span>session/set\_model</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Select a model for a given session.
-
-#### <span>SetSessionModelRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for setting a session model.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="modelId" type={<a href="#modelid">ModelId</a>}>
-  The ID of the model to set.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session to set the model for.
-</ResponseField>
-
-#### <span>SetSessionModelResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response to `session/set_model` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-## Client
-
-Defines the interface that ACP-compliant clients must implement.
-
-Clients are typically code editors (IDEs, text editors) that provide the interface
-between users and AI agents. They manage the environment, handle user interactions,
-and control access to resources.
-
-<a />
-
-### <span>fs/read\_text\_file</span>
-
-Reads content from a text file in the client's file system.
-
-Only available if the client advertises the `fs.readTextFile` capability.
-Allows the agent to access file contents within the client's environment.
-
-See protocol docs: [Client](https://agentclientprotocol.com/protocol/overview#client)
-
-#### <span>ReadTextFileRequest</span>
-
-Request to read content from a text file.
-
-Only available if the client supports the `fs.readTextFile` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="limit" type={"integer | null"}>
-  Maximum number of lines to read.
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="line" type={"integer | null"}>
-  Line number to start reading from (1-based).
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="path" type={"string"}>
-  Absolute path to the file to read.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-#### <span>ReadTextFileResponse</span>
-
-Response containing the contents of a text file.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={"string"} />
-
-<a />
-
-### <span>fs/write\_text\_file</span>
-
-Writes content to a text file in the client's file system.
-
-Only available if the client advertises the `fs.writeTextFile` capability.
-Allows the agent to create or modify files within the client's environment.
-
-See protocol docs: [Client](https://agentclientprotocol.com/protocol/overview#client)
-
-#### <span>WriteTextFileRequest</span>
-
-Request to write content to a text file.
-
-Only available if the client supports the `fs.writeTextFile` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={"string"}>
-  The text content to write to the file.
-</ResponseField>
-
-<ResponseField name="path" type={"string"}>
-  Absolute path to the file to write.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-#### <span>WriteTextFileResponse</span>
-
-Response to `fs/write_text_file`
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<a />
-
-### <span>session/request\_permission</span>
-
-Requests permission from the user for a tool call operation.
-
-Called by the agent when it needs user authorization before executing
-a potentially sensitive operation. The client should present the options
-to the user and return their decision.
-
-If the client cancels the prompt turn via `session/cancel`, it MUST
-respond to this request with `RequestPermissionOutcome::Cancelled`.
-
-See protocol docs: [Requesting Permission](https://agentclientprotocol.com/protocol/tool-calls#requesting-permission)
-
-#### <span>RequestPermissionRequest</span>
-
-Request for user permission to execute a tool call.
-
-Sent when the agent needs authorization before performing a sensitive operation.
-
-See protocol docs: [Requesting Permission](https://agentclientprotocol.com/protocol/tool-calls#requesting-permission)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="options" type={<a href="#permissionoption">PermissionOption[]</a>}>
-  Available permission options for the user to choose from.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-<ResponseField name="toolCall" type={<a href="#toolcallupdate">ToolCallUpdate</a>}>
-  Details about the tool call requiring permission.
-</ResponseField>
-
-#### <span>RequestPermissionResponse</span>
-
-Response to a permission request.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="outcome" type={<a href="#requestpermissionoutcome">RequestPermissionOutcome</a>}>
-  The user's decision on the permission request.
-</ResponseField>
-
-<a />
-
-### <span>session/update</span>
-
-Handles session update notifications from the agent.
-
-This is a notification endpoint (no response expected) that receives
-real-time updates about session progress, including message chunks,
-tool calls, and execution plans.
-
-Note: Clients SHOULD continue accepting tool call updates even after
-sending a `session/cancel` notification, as the agent may send final
-updates before responding with the cancelled stop reason.
-
-See protocol docs: [Agent Reports Output](https://agentclientprotocol.com/protocol/prompt-turn#3-agent-reports-output)
-
-#### <span>SessionNotification</span>
-
-Notification containing a session update from the agent.
-
-Used to stream real-time progress and results during prompt processing.
-
-See protocol docs: [Agent Reports Output](https://agentclientprotocol.com/protocol/prompt-turn#3-agent-reports-output)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The ID of the session this update pertains to.
-</ResponseField>
-
-<ResponseField name="update" type={<a href="#sessionupdate">SessionUpdate</a>}>
-  The actual update content.
-</ResponseField>
-
-<a />
-
-### <span>terminal/create</span>
-
-Executes a command in a new terminal
-
-Only available if the `terminal` Client capability is set to `true`.
-
-Returns a `TerminalId` that can be used with other terminal methods
-to get the current output, wait for exit, and kill the command.
-
-The `TerminalId` can also be used to embed the terminal in a tool call
-by using the `ToolCallContent::Terminal` variant.
-
-The Agent is responsible for releasing the terminal by using the `terminal/release`
-method.
-
-See protocol docs: [Terminals](https://agentclientprotocol.com/protocol/terminals)
-
-#### <span>CreateTerminalRequest</span>
-
-Request to create a new terminal and execute a command.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="args" type={<><span>"string"</span><span>[]</span></>}>
-  Array of command arguments.
-</ResponseField>
-
-<ResponseField name="command" type={"string"}>
-  The command to execute.
-</ResponseField>
-
-<ResponseField name="cwd" type={"string | null"}>
-  Working directory for the command (absolute path).
-</ResponseField>
-
-<ResponseField name="env" type={<a href="#envvariable">EnvVariable[]</a>}>
-  Environment variables for the command.
-</ResponseField>
-
-<ResponseField name="outputByteLimit" type={"integer | null"}>
-  Maximum number of output bytes to retain.
-
-  When the limit is exceeded, the Client truncates from the beginning of the output
-  to stay within the limit.
-
-  The Client MUST ensure truncation happens at a character boundary to maintain valid
-  string output, even if this means the retained output is slightly less than the
-  specified limit.
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-#### <span>CreateTerminalResponse</span>
-
-Response containing the ID of the created terminal.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"}>
-  The unique identifier for the created terminal.
-</ResponseField>
-
-<a />
-
-### <span>terminal/kill</span>
-
-Kills the terminal command without releasing the terminal
-
-While `terminal/release` will also kill the command, this method will keep
-the `TerminalId` valid so it can be used with other methods.
-
-This method can be helpful when implementing command timeouts which terminate
-the command as soon as elapsed, and then get the final output so it can be sent
-to the model.
-
-Note: `terminal/release` when `TerminalId` is no longer needed.
-
-See protocol docs: [Terminals](https://agentclientprotocol.com/protocol/terminals)
-
-#### <span>KillTerminalCommandRequest</span>
-
-Request to kill a terminal command without releasing the terminal.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"}>
-  The ID of the terminal to kill.
-</ResponseField>
-
-#### <span>KillTerminalCommandResponse</span>
-
-Response to terminal/kill command method
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<a />
-
-### <span>terminal/output</span>
-
-Gets the terminal output and exit status
-
-Returns the current content in the terminal without waiting for the command to exit.
-If the command has already exited, the exit status is included.
-
-See protocol docs: [Terminals](https://agentclientprotocol.com/protocol/terminals)
-
-#### <span>TerminalOutputRequest</span>
-
-Request to get the current output and status of a terminal.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"}>
-  The ID of the terminal to get output from.
-</ResponseField>
-
-#### <span>TerminalOutputResponse</span>
-
-Response containing the terminal output and exit status.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="exitStatus" type={<><span><a href="#terminalexitstatus">TerminalExitStatus</a></span><span> | null</span></>}>
-  Exit status if the command has completed.
-</ResponseField>
-
-<ResponseField name="output" type={"string"}>
-  The terminal output captured so far.
-</ResponseField>
-
-<ResponseField name="truncated" type={"boolean"}>
-  Whether the output was truncated due to byte limits.
-</ResponseField>
-
-<a />
-
-### <span>terminal/release</span>
-
-Releases a terminal
-
-The command is killed if it hasn't exited yet. Use `terminal/wait_for_exit`
-to wait for the command to exit before releasing the terminal.
-
-After release, the `TerminalId` can no longer be used with other `terminal/*` methods,
-but tool calls that already contain it, continue to display its output.
-
-The `terminal/kill` method can be used to terminate the command without releasing
-the terminal, allowing the Agent to call `terminal/output` and other methods.
-
-See protocol docs: [Terminals](https://agentclientprotocol.com/protocol/terminals)
-
-#### <span>ReleaseTerminalRequest</span>
-
-Request to release a terminal and free its resources.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"}>
-  The ID of the terminal to release.
-</ResponseField>
-
-#### <span>ReleaseTerminalResponse</span>
-
-Response to terminal/release method
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<a />
-
-### <span>terminal/wait\_for\_exit</span>
-
-Waits for the terminal command to exit and return its exit status
-
-See protocol docs: [Terminals](https://agentclientprotocol.com/protocol/terminals)
-
-#### <span>WaitForTerminalExitRequest</span>
-
-Request to wait for a terminal command to exit.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  The session ID for this request.
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"}>
-  The ID of the terminal to wait for.
-</ResponseField>
-
-#### <span>WaitForTerminalExitResponse</span>
-
-Response containing the exit status of a terminal command.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="exitCode" type={"integer | null"}>
-  The process exit code (may be null if terminated by signal).
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="signal" type={"string | null"}>
-  The signal that terminated the process (may be null if exited normally).
-</ResponseField>
-
-## Protocol Level
-
-Defines the interface that ACP-compliant agents and clients must both implement.
-
-Notifications whose methods start with '$/' are messages which are protocol
-implementation dependent and might not be implementable in all clients or
-agents. For example if the implementation uses a single threaded synchronous
-programming language then there is little it can do to react to a `$/cancel\_request\` notification. If an agent or client receives notifications
-starting with '\$/' it is free to ignore the notification.
-
-<a />
-
-### <span>\$/cancel\_request</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or
-changed at any point.
-
-Cancels an ongoing request.
-
-This is a notification sent by the the side that sent a request to cancel that request.
-
-Upon receiving this notification, the receiver:
-
-1. MUST cancel the corresponding request activity and all nested activities
-2. MAY send any pending notifications.
-3. MUST send one of these responses for the original request:
-
-* Valid response with appropriate data (partial results or cancellation marker)
-* Error response with code `-32800` (Cancelled)
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/cancellation)
-
-#### <span>CancelRequestNotification</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Notification to cancel an ongoing request.
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/cancellation)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="requestId" type={<a href="#requestid">RequestId</a>}>
-  The ID of the request to cancel.
-</ResponseField>
-
-## <span>AgentCapabilities</span>
-
-Capabilities supported by the agent.
-
-Advertised during initialization to inform the client about
-available features and content types.
-
-See protocol docs: [Agent Capabilities](https://agentclientprotocol.com/protocol/initialization#agent-capabilities)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="loadSession" type={"boolean"}>
-  Whether the agent supports `session/load`.
-
-  * Default: `false`
-</ResponseField>
-
-<ResponseField name="mcpCapabilities" type={<a href="#mcpcapabilities">McpCapabilities</a>}>
-  MCP capabilities supported by the agent.
-
-  * Default: `{"http":false,"sse":false}`
-</ResponseField>
-
-<ResponseField name="promptCapabilities" type={<a href="#promptcapabilities">PromptCapabilities</a>}>
-  Prompt capabilities supported by the agent.
-
-  * Default: `{"audio":false,"embeddedContext":false,"image":false}`
-</ResponseField>
-
-<ResponseField name="sessionCapabilities" type={<a href="#sessioncapabilities">SessionCapabilities</a>}>
-  * Default: `{}`
-</ResponseField>
-
-## <span>Annotations</span>
-
-Optional annotations for the client. The client can use annotations to inform how objects are used or displayed
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="audience" type={<><span><a href="#role">Role[]</a></span><span> | null</span></>} />
-
-<ResponseField name="lastModified" type={"string | null"} />
-
-<ResponseField name="priority" type={"number | null"} />
-
-## <span>AudioContent</span>
-
-Audio provided to or from an LLM.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-<ResponseField name="data" type={"string"} />
-
-<ResponseField name="mimeType" type={"string"} />
-
-## <span>AuthMethod</span>
-
-Describes an available authentication method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"}>
-  Optional description providing more details about this authentication method.
-</ResponseField>
-
-<ResponseField name="id" type={"string"}>
-  Unique identifier for this authentication method.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable name of the authentication method.
-</ResponseField>
-
-## <span>AvailableCommand</span>
-
-Information about a command.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string"}>
-  Human-readable description of what the command does.
-</ResponseField>
-
-<ResponseField name="input" type={<><span><a href="#availablecommandinput">AvailableCommandInput</a></span><span> | null</span></>}>
-  Input for the command if required
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Command name (e.g., `create_plan`, `research_codebase`).
-</ResponseField>
-
-## <span>AvailableCommandInput</span>
-
-The input specification for a command.
-
-**Type:** Union
-
-<ResponseField name="Variant">
-  All text that was typed after the command name is provided as input.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="hint" type={"string"}>
-      A hint to display when the input hasn't been provided yet
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## <span>AvailableCommandsUpdate</span>
-
-Available commands are ready or have changed
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="availableCommands" type={<a href="#availablecommand">AvailableCommand[]</a>}>
-  Commands the agent can execute
-</ResponseField>
-
-## <span>BlobResourceContents</span>
-
-Binary resource contents.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="blob" type={"string"} />
-
-<ResponseField name="mimeType" type={"string | null"} />
-
-<ResponseField name="uri" type={"string"} />
-
-## <span>ClientCapabilities</span>
-
-Capabilities supported by the client.
-
-Advertised during initialization to inform the agent about
-available features and methods.
-
-See protocol docs: [Client Capabilities](https://agentclientprotocol.com/protocol/initialization#client-capabilities)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="fs" type={<a href="#filesystemcapability">FileSystemCapability</a>}>
-  File system capabilities supported by the client.
-  Determines which file operations the agent can request.
-
-  * Default: `{"readTextFile":false,"writeTextFile":false}`
-</ResponseField>
-
-<ResponseField name="terminal" type={"boolean"}>
-  Whether the Client support all `terminal/*` methods.
-
-  * Default: `false`
-</ResponseField>
-
-## <span>ConfigOptionUpdate</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Session configuration options have been updated.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>}>
-  The full set of configuration options and their current values.
-</ResponseField>
-
-## <span>Content</span>
-
-Standard content block (text, images, resources).
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-  The actual content block.
-</ResponseField>
-
-## <span>ContentBlock</span>
-
-Content blocks represent displayable information in the Agent Client Protocol.
-
-They provide a structured way to handle various types of user-facing content—whether
-it's text from language models, images for analysis, or embedded resources for context.
-
-Content blocks appear in:
-
-* User prompts sent via `session/prompt`
-* Language model output streamed through `session/update` notifications
-* Progress updates and results from tool calls
-
-This structure is compatible with the Model Context Protocol (MCP), enabling
-agents to seamlessly forward content from MCP tool outputs without transformation.
-
-See protocol docs: [Content](https://agentclientprotocol.com/protocol/content)
-
-**Type:** Union
-
-<ResponseField name="text" type="object">
-  Text content. May be plain text or formatted with Markdown.
-
-  All agents MUST support text content blocks in prompts.
-  Clients SHOULD render this text as Markdown.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-    <ResponseField name="text" type={"string"} />
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="image" type="object">
-  Images for visual context or analysis.
-
-  Requires the `image` prompt capability when included in prompts.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-    <ResponseField name="data" type={"string"} />
-
-    <ResponseField name="mimeType" type={"string"} />
-
-    <ResponseField name="type" type={"string"} />
-
-    <ResponseField name="uri" type={"string | null"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="audio" type="object">
-  Audio data for transcription or analysis.
-
-  Requires the `audio` prompt capability when included in prompts.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-    <ResponseField name="data" type={"string"} />
-
-    <ResponseField name="mimeType" type={"string"} />
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="resource_link" type="object">
-  References to resources that the agent can access.
-
-  All agents MUST support resource links in prompts.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-    <ResponseField name="description" type={"string | null"} />
-
-    <ResponseField name="mimeType" type={"string | null"} />
-
-    <ResponseField name="name" type={"string"} />
-
-    <ResponseField name="size" type={"integer | null"} />
-
-    <ResponseField name="title" type={"string | null"} />
-
-    <ResponseField name="type" type={"string"} />
-
-    <ResponseField name="uri" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="resource" type="object">
-  Complete resource contents embedded directly in the message.
-
-  Preferred for including context as it avoids extra round-trips.
-
-  Requires the `embeddedContext` prompt capability when included in prompts.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-    <ResponseField name="resource" type={<a href="#embeddedresourceresource">EmbeddedResourceResource</a>} />
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-## <span>ContentChunk</span>
-
-A streamed item of content
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-  A single item of content
-</ResponseField>
-
-## <span>CurrentModeUpdate</span>
-
-The current mode of the session has changed
-
-See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="currentModeId" type={<a href="#sessionmodeid">SessionModeId</a>}>
-  The ID of the current mode
-</ResponseField>
-
-## <span>Diff</span>
-
-A diff representing file modifications.
-
-Shows changes to files in a format suitable for display in the client UI.
-
-See protocol docs: [Content](https://agentclientprotocol.com/protocol/tool-calls#content)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="newText" type={"string"}>
-  The new content after modification.
-</ResponseField>
-
-<ResponseField name="oldText" type={"string | null"}>
-  The original content (None for new files).
-</ResponseField>
-
-<ResponseField name="path" type={"string"}>
-  The file path being modified.
-</ResponseField>
-
-## <span>EmbeddedResource</span>
-
-The contents of a resource, embedded into a prompt or tool call result.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-<ResponseField name="resource" type={<a href="#embeddedresourceresource">EmbeddedResourceResource</a>} />
-
-## <span>EmbeddedResourceResource</span>
-
-Resource content that can be embedded in a message.
-
-**Type:** Union
-
-<ResponseField name="TextResourceContents">
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="mimeType" type={"string | null"} />
-
-    <ResponseField name="text" type={"string"} />
-
-    <ResponseField name="uri" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="BlobResourceContents">
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="blob" type={"string"} />
-
-    <ResponseField name="mimeType" type={"string | null"} />
-
-    <ResponseField name="uri" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-## <span>EnvVariable</span>
-
-An environment variable to set when launching an MCP server.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  The name of the environment variable.
-</ResponseField>
-
-<ResponseField name="value" type={"string"}>
-  The value to set for the environment variable.
-</ResponseField>
-
-## <span>Error</span>
-
-JSON-RPC error object.
-
-Represents an error that occurred during method execution, following the
-JSON-RPC 2.0 error object specification with optional additional data.
-
-See protocol docs: [JSON-RPC Error Object](https://www.jsonrpc.org/specification#error_object)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="code" type={<a href="#errorcode">ErrorCode</a>}>
-  A number indicating the error type that occurred. This must be an integer as
-  defined in the JSON-RPC specification.
-</ResponseField>
-
-<ResponseField name="data" type={"object"}>
-  Optional primitive or structured value that contains additional information
-  about the error. This may include debugging information or context-specific
-  details.
-</ResponseField>
-
-<ResponseField name="message" type={"string"}>
-  A string providing a short description of the error. The message should be
-  limited to a concise single sentence.
-</ResponseField>
-
-## <span>ErrorCode</span>
-
-Predefined error codes for common JSON-RPC and ACP-specific errors.
-
-These codes follow the JSON-RPC 2.0 specification for standard errors
-and use the reserved range (-32000 to -32099) for protocol-specific errors.
-
-**Type:** Union
-
-<ResponseField name="-32700" type="int32">
-  **Parse error**: Invalid JSON was received by the server. An error occurred on
-  the server while parsing the JSON text.
-</ResponseField>
-
-<ResponseField name="-32600" type="int32">
-  **Invalid request**: The JSON sent is not a valid Request object.
-</ResponseField>
-
-<ResponseField name="-32601" type="int32">
-  **Method not found**: The method does not exist or is not available.
-</ResponseField>
-
-<ResponseField name="-32602" type="int32">
-  **Invalid params**: Invalid method parameter(s).
-</ResponseField>
-
-<ResponseField name="-32603" type="int32">
-  **Internal error**: Internal JSON-RPC error. Reserved for
-  implementation-defined server errors.
-</ResponseField>
-
-<ResponseField name="-32800" type="int32">
-  **Request cancelled**: **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Execution of the method was aborted either due to a cancellation request from the caller or
-  because of resource constraints or shutdown.
-</ResponseField>
-
-<ResponseField name="-32000" type="int32">
-  **Authentication required**: Authentication is required before this operation
-  can be performed.
-</ResponseField>
-
-<ResponseField name="-32002" type="int32">
-  **Resource not found**: A given resource, such as a file, was not found.
-</ResponseField>
-
-<ResponseField name="integer" type="int32">
-  Other undefined error code.
-</ResponseField>
-
-## <span>ExtNotification</span>
-
-Allows the Agent to send an arbitrary notification that is not part of the ACP spec.
-Extension notifications provide a way to send one-way messages for custom functionality
-while maintaining protocol compatibility.
-
-See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-
-## <span>ExtRequest</span>
-
-Allows for sending an arbitrary request that is not part of the ACP spec.
-Extension methods provide a way to add custom functionality while maintaining
-protocol compatibility.
-
-See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-
-## <span>ExtResponse</span>
-
-Allows for sending an arbitrary response to an `ExtRequest` that is not part of the ACP spec.
-Extension methods provide a way to add custom functionality while maintaining
-protocol compatibility.
-
-See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-
-## <span>FileSystemCapability</span>
-
-Filesystem capabilities supported by the client.
-File system capabilities that a client may support.
-
-See protocol docs: [FileSystem](https://agentclientprotocol.com/protocol/initialization#filesystem)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="readTextFile" type={"boolean"}>
-  Whether the Client supports `fs/read_text_file` requests.
-
-  * Default: `false`
-</ResponseField>
-
-<ResponseField name="writeTextFile" type={"boolean"}>
-  Whether the Client supports `fs/write_text_file` requests.
-
-  * Default: `false`
-</ResponseField>
-
-## <span>HttpHeader</span>
-
-An HTTP header to set when making requests to the MCP server.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  The name of the HTTP header.
-</ResponseField>
-
-<ResponseField name="value" type={"string"}>
-  The value to set for the HTTP header.
-</ResponseField>
-
-## <span>ImageContent</span>
-
-An image provided to or from an LLM.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-<ResponseField name="data" type={"string"} />
-
-<ResponseField name="mimeType" type={"string"} />
-
-<ResponseField name="uri" type={"string | null"} />
-
-## <span>Implementation</span>
-
-Metadata about the implementation of the client or agent.
-Describes the name and version of an MCP implementation, with an optional
-title for UI representation.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Intended for programmatic or logical use, but can be used as a display
-  name fallback if title isn’t present.
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Intended for UI and end-user contexts — optimized to be human-readable
-  and easily understood.
-
-  If not provided, the name should be used for display.
-</ResponseField>
-
-<ResponseField name="version" type={"string"}>
-  Version of the implementation. Can be displayed to the user or used
-  for debugging or metrics purposes. (e.g. "1.0.0").
-</ResponseField>
-
-## <span>McpCapabilities</span>
-
-MCP capabilities supported by the agent
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="http" type={"boolean"}>
-  Agent supports `McpServer::Http`.
-
-  * Default: `false`
-</ResponseField>
-
-<ResponseField name="sse" type={"boolean"}>
-  Agent supports `McpServer::Sse`.
-
-  * Default: `false`
-</ResponseField>
-
-## <span>McpServer</span>
-
-Configuration for connecting to an MCP (Model Context Protocol) server.
-
-MCP servers provide tools and context that the agent can use when
-processing prompts.
-
-See protocol docs: [MCP Servers](https://agentclientprotocol.com/protocol/session-setup#mcp-servers)
-
-**Type:** Union
-
-<ResponseField name="http" type="object">
-  HTTP transport configuration
-
-  Only available when the Agent capabilities indicate `mcp_capabilities.http` is `true`.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="headers" type={<a href="#httpheader">HttpHeader[]</a>}>
-      HTTP headers to set when making requests to the MCP server.
-    </ResponseField>
-
-    <ResponseField name="name" type={"string"}>
-      Human-readable name identifying this MCP server.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} />
-
-    <ResponseField name="url" type={"string"}>
-      URL to the MCP server.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="sse" type="object">
-  SSE transport configuration
-
-  Only available when the Agent capabilities indicate `mcp_capabilities.sse` is `true`.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="headers" type={<a href="#httpheader">HttpHeader[]</a>}>
-      HTTP headers to set when making requests to the MCP server.
-    </ResponseField>
-
-    <ResponseField name="name" type={"string"}>
-      Human-readable name identifying this MCP server.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} />
-
-    <ResponseField name="url" type={"string"}>
-      URL to the MCP server.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="Variant">
-  Stdio transport configuration
-
-  All Agents MUST support this transport.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="args" type={<><span>"string"</span><span>[]</span></>}>
-      Command-line arguments to pass to the MCP server.
-    </ResponseField>
-
-    <ResponseField name="command" type={"string"}>
-      Path to the MCP server executable.
-    </ResponseField>
-
-    <ResponseField name="env" type={<a href="#envvariable">EnvVariable[]</a>}>
-      Environment variables to set when launching the MCP server.
-    </ResponseField>
-
-    <ResponseField name="name" type={"string"}>
-      Human-readable name identifying this MCP server.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## <span>McpServerHttp</span>
-
-HTTP transport configuration for MCP.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="headers" type={<a href="#httpheader">HttpHeader[]</a>}>
-  HTTP headers to set when making requests to the MCP server.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable name identifying this MCP server.
-</ResponseField>
-
-<ResponseField name="url" type={"string"}>
-  URL to the MCP server.
-</ResponseField>
-
-## <span>McpServerSse</span>
-
-SSE transport configuration for MCP.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="headers" type={<a href="#httpheader">HttpHeader[]</a>}>
-  HTTP headers to set when making requests to the MCP server.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable name identifying this MCP server.
-</ResponseField>
-
-<ResponseField name="url" type={"string"}>
-  URL to the MCP server.
-</ResponseField>
-
-## <span>McpServerStdio</span>
-
-Stdio transport configuration for MCP.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="args" type={<><span>"string"</span><span>[]</span></>}>
-  Command-line arguments to pass to the MCP server.
-</ResponseField>
-
-<ResponseField name="command" type={"string"}>
-  Path to the MCP server executable.
-</ResponseField>
-
-<ResponseField name="env" type={<a href="#envvariable">EnvVariable[]</a>}>
-  Environment variables to set when launching the MCP server.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable name identifying this MCP server.
-</ResponseField>
-
-## <span>ModelId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A unique identifier for a model.
-
-**Type:** `string`
-
-## <span>ModelInfo</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Information about a selectable model.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"}>
-  Optional description of the model.
-</ResponseField>
-
-<ResponseField name="modelId" type={<a href="#modelid">ModelId</a>}>
-  Unique identifier for the model.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable name of the model.
-</ResponseField>
-
-## <span>PermissionOption</span>
-
-An option presented to the user when requesting permission.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="kind" type={<a href="#permissionoptionkind">PermissionOptionKind</a>}>
-  Hint about the nature of this permission option.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable label to display to the user.
-</ResponseField>
-
-<ResponseField name="optionId" type={<a href="#permissionoptionid">PermissionOptionId</a>}>
-  Unique identifier for this permission option.
-</ResponseField>
-
-## <span>PermissionOptionId</span>
-
-Unique identifier for a permission option.
-
-**Type:** `string`
-
-## <span>PermissionOptionKind</span>
-
-The type of permission option being presented to the user.
-
-Helps clients choose appropriate icons and UI treatment.
-
-**Type:** Union
-
-<ResponseField name="allow_once" type="string">
-  Allow this operation only this time.
-</ResponseField>
-
-<ResponseField name="allow_always" type="string">
-  Allow this operation and remember the choice.
-</ResponseField>
-
-<ResponseField name="reject_once" type="string">
-  Reject this operation only this time.
-</ResponseField>
-
-<ResponseField name="reject_always" type="string">
-  Reject this operation and remember the choice.
-</ResponseField>
-
-## <span>Plan</span>
-
-An execution plan for accomplishing complex tasks.
-
-Plans consist of multiple entries representing individual tasks or goals.
-Agents report plans to clients to provide visibility into their execution strategy.
-Plans can evolve during execution as the agent discovers new requirements or completes tasks.
-
-See protocol docs: [Agent Plan](https://agentclientprotocol.com/protocol/agent-plan)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="entries" type={<a href="#planentry">PlanEntry[]</a>}>
-  The list of tasks to be accomplished.
-
-  When updating a plan, the agent must send a complete list of all entries
-  with their current status. The client replaces the entire plan with each update.
-</ResponseField>
-
-## <span>PlanEntry</span>
-
-A single entry in the execution plan.
-
-Represents a task or goal that the assistant intends to accomplish
-as part of fulfilling the user's request.
-See protocol docs: [Plan Entries](https://agentclientprotocol.com/protocol/agent-plan#plan-entries)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={"string"}>
-  Human-readable description of what this task aims to accomplish.
-</ResponseField>
-
-<ResponseField name="priority" type={<a href="#planentrypriority">PlanEntryPriority</a>}>
-  The relative importance of this task.
-  Used to indicate which tasks are most critical to the overall goal.
-</ResponseField>
-
-<ResponseField name="status" type={<a href="#planentrystatus">PlanEntryStatus</a>}>
-  Current execution status of this task.
-</ResponseField>
-
-## <span>PlanEntryPriority</span>
-
-Priority levels for plan entries.
-
-Used to indicate the relative importance or urgency of different
-tasks in the execution plan.
-See protocol docs: [Plan Entries](https://agentclientprotocol.com/protocol/agent-plan#plan-entries)
-
-**Type:** Union
-
-<ResponseField name="high" type="string">
-  High priority task - critical to the overall goal.
-</ResponseField>
-
-<ResponseField name="medium" type="string">
-  Medium priority task - important but not critical.
-</ResponseField>
-
-<ResponseField name="low" type="string">
-  Low priority task - nice to have but not essential.
-</ResponseField>
-
-## <span>PlanEntryStatus</span>
-
-Status of a plan entry in the execution flow.
-
-Tracks the lifecycle of each task from planning through completion.
-See protocol docs: [Plan Entries](https://agentclientprotocol.com/protocol/agent-plan#plan-entries)
-
-**Type:** Union
-
-<ResponseField name="pending" type="string">
-  The task has not started yet.
-</ResponseField>
-
-<ResponseField name="in_progress" type="string">
-  The task is currently being worked on.
-</ResponseField>
-
-<ResponseField name="completed" type="string">
-  The task has been successfully completed.
-</ResponseField>
-
-## <span>PromptCapabilities</span>
-
-Prompt capabilities supported by the agent in `session/prompt` requests.
-
-Baseline agent functionality requires support for `ContentBlock::Text`
-and `ContentBlock::ResourceLink` in prompt requests.
-
-Other variants must be explicitly opted in to.
-Capabilities for different types of content in prompt requests.
-
-Indicates which content types beyond the baseline (text and resource links)
-the agent can process.
-
-See protocol docs: [Prompt Capabilities](https://agentclientprotocol.com/protocol/initialization#prompt-capabilities)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="audio" type={"boolean"}>
-  Agent supports `ContentBlock::Audio`.
-
-  * Default: `false`
-</ResponseField>
-
-<ResponseField name="embeddedContext" type={"boolean"}>
-  Agent supports embedded context in `session/prompt` requests.
-
-  When enabled, the Client is allowed to include `ContentBlock::Resource`
-  in prompt requests for pieces of context that are referenced in the message.
-
-  * Default: `false`
-</ResponseField>
-
-<ResponseField name="image" type={"boolean"}>
-  Agent supports `ContentBlock::Image`.
-
-  * Default: `false`
-</ResponseField>
-
-## <span>ProtocolVersion</span>
-
-Protocol version identifier.
-
-This version is only bumped for breaking changes.
-Non-breaking changes should be introduced via capabilities.
-
-**Type:** `integer (uint16)`
-
-| Constraint | Value   |
-| ---------- | ------- |
-| Minimum    | `0`     |
-| Maximum    | `65535` |
-
-## <span>RequestId</span>
-
-JSON RPC Request Id
-
-An identifier established by the Client that MUST contain a String, Number, or NULL value if included. If it is not included it is assumed to be a notification. The value SHOULD normally not be Null \[1] and Numbers SHOULD NOT contain fractional parts \[2]
-
-The Server MUST reply with the same value in the Response object if included. This member is used to correlate the context between the two objects.
-
-\[1] The use of Null as a value for the id member in a Request object is discouraged, because this specification uses a value of Null for Responses with an unknown id. Also, because JSON-RPC 1.0 uses an id value of Null for Notifications this could cause confusion in handling.
-
-\[2] Fractional parts may be problematic, since many decimal fractions cannot be represented exactly as binary fractions.
-
-**Type:** Union
-
-## <span>RequestPermissionOutcome</span>
-
-The outcome of a permission request.
-
-**Type:** Union
-
-<ResponseField name="cancelled" type="object">
-  The prompt turn was cancelled before the user responded.
-
-  When a client sends a `session/cancel` notification to cancel an ongoing
-  prompt turn, it MUST respond to all pending `session/request_permission`
-  requests with this `Cancelled` outcome.
-
-  See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/prompt-turn#cancellation)
-
-  <Expandable title="Properties">
-    <ResponseField name="outcome" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="selected" type="object">
-  The user selected one of the provided options.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="optionId" type={<a href="#permissionoptionid">PermissionOptionId</a>}>
-      The ID of the option the user selected.
-    </ResponseField>
-
-    <ResponseField name="outcome" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-## <span>ResourceLink</span>
-
-A resource that the server is capable of reading, included in a prompt or tool call result.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-<ResponseField name="description" type={"string | null"} />
-
-<ResponseField name="mimeType" type={"string | null"} />
-
-<ResponseField name="name" type={"string"} />
-
-<ResponseField name="size" type={"integer | null"} />
-
-<ResponseField name="title" type={"string | null"} />
-
-<ResponseField name="uri" type={"string"} />
-
-## <span>Role</span>
-
-The sender or recipient of messages and data in a conversation.
-
-**Type:** Enumeration
-
-| Value         |
-| ------------- |
-| `"assistant"` |
-| `"user"`      |
-
-## <span>SelectedPermissionOutcome</span>
-
-The user selected one of the provided options.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="optionId" type={<a href="#permissionoptionid">PermissionOptionId</a>}>
-  The ID of the option the user selected.
-</ResponseField>
-
-## <span>SessionCapabilities</span>
-
-Session capabilities supported by the agent.
-
-As a baseline, all Agents **MUST** support `session/new`, `session/prompt`, `session/cancel`, and `session/update`.
-
-Optionally, they **MAY** support other session methods and notifications by specifying additional capabilities.
-
-Note: `session/load` is still handled by the top-level `load_session` capability. This will be unified in future versions of the protocol.
-
-See protocol docs: [Session Capabilities](https://agentclientprotocol.com/protocol/initialization#session-capabilities)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="fork" type={<><span><a href="#sessionforkcapabilities">SessionForkCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/fork`.
-</ResponseField>
-
-<ResponseField name="list" type={<><span><a href="#sessionlistcapabilities">SessionListCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/list`.
-</ResponseField>
-
-<ResponseField name="resume" type={<><span><a href="#sessionresumecapabilities">SessionResumeCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/resume`.
-</ResponseField>
-
-## <span>SessionConfigGroupId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option value group.
-
-**Type:** `string`
-
-## <span>SessionConfigId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option.
-
-**Type:** `string`
-
-## <span>SessionConfigOption</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A session configuration option selector and its current state.
-
-**Type:** Union
-
-<ResponseField name="select" type="object">
-  Single-value selector (dropdown).
-
-  <Expandable title="Properties">
-    <ResponseField name="currentValue" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>}>
-      The currently selected value.
-    </ResponseField>
-
-    <ResponseField name="options" type={<a href="#sessionconfigselectoptions">SessionConfigSelectOptions</a>}>
-      The set of selectable options.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-## <span>SessionConfigSelect</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A single-value selector (dropdown) session configuration option payload.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="currentValue" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>}>
-  The currently selected value.
-</ResponseField>
-
-<ResponseField name="options" type={<a href="#sessionconfigselectoptions">SessionConfigSelectOptions</a>}>
-  The set of selectable options.
-</ResponseField>
-
-## <span>SessionConfigSelectGroup</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A group of possible values for a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="group" type={<a href="#sessionconfiggroupid">SessionConfigGroupId</a>}>
-  Unique identifier for this group.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable label for this group.
-</ResponseField>
-
-<ResponseField name="options" type={<a href="#sessionconfigselectoption">SessionConfigSelectOption[]</a>}>
-  The set of option values in this group.
-</ResponseField>
-
-## <span>SessionConfigSelectOption</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A possible value for a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"}>
-  Optional description for this option value.
-</ResponseField>
-
-<ResponseField name="name" type={"string"}>
-  Human-readable label for this option value.
-</ResponseField>
-
-<ResponseField name="value" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>}>
-  Unique identifier for this option value.
-</ResponseField>
-
-## <span>SessionConfigSelectOptions</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Possible values for a session configuration option.
-
-**Type:** Union
-
-<ResponseField name="array" type="array">
-  A flat list of options with no grouping.
-</ResponseField>
-
-<ResponseField name="array" type="array">
-  A list of options grouped under headers.
-</ResponseField>
-
-## <span>SessionConfigValueId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option value.
-
-**Type:** `string`
-
-## <span>SessionForkCapabilities</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Capabilities for the `session/fork` method.
-
-By supplying `\{\}` it means that the agent supports forking of sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-## <span>SessionId</span>
-
-A unique identifier for a conversation session between a client and agent.
-
-Sessions maintain their own context, conversation history, and state,
-allowing multiple independent interactions with the same agent.
-
-See protocol docs: [Session ID](https://agentclientprotocol.com/protocol/session-setup#session-id)
-
-**Type:** `string`
-
-## <span>SessionInfo</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Information about a session returned by session/list
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"}>
-  The working directory for this session. Must be an absolute path.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>}>
-  Unique identifier for the session
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Human-readable title for the session
-</ResponseField>
-
-<ResponseField name="updatedAt" type={"string | null"}>
-  ISO 8601 timestamp of last activity
-</ResponseField>
-
-## <span>SessionInfoUpdate</span>
-
-Update to session metadata. All fields are optional to support partial updates.
-
-Agents send this notification to update session information like title or custom metadata.
-This allows clients to display dynamic session names and track session state changes.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Human-readable title for the session. Set to null to clear.
-</ResponseField>
-
-<ResponseField name="updatedAt" type={"string | null"}>
-  ISO 8601 timestamp of last activity. Set to null to clear.
-</ResponseField>
-
-## <span>SessionListCapabilities</span>
-
-Capabilities for the `session/list` method.
-
-By supplying `\{\}` it means that the agent supports listing of sessions.
-
-Further capabilities can be added in the future for other means of filtering or searching the list.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-## <span>SessionMode</span>
-
-A mode the agent can operate in.
-
-See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"} />
-
-<ResponseField name="id" type={<a href="#sessionmodeid">SessionModeId</a>} />
-
-<ResponseField name="name" type={"string"} />
-
-## <span>SessionModeId</span>
-
-Unique identifier for a Session Mode.
-
-**Type:** `string`
-
-## <span>SessionModeState</span>
-
-The set of modes and the one currently active.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="availableModes" type={<a href="#sessionmode">SessionMode[]</a>}>
-  The set of modes that the Agent can operate in
-</ResponseField>
-
-<ResponseField name="currentModeId" type={<a href="#sessionmodeid">SessionModeId</a>}>
-  The current mode the Agent is in.
-</ResponseField>
-
-## <span>SessionModelState</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-The set of models and the one currently active.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="availableModels" type={<a href="#modelinfo">ModelInfo[]</a>}>
-  The set of models that the Agent can use
-</ResponseField>
-
-<ResponseField name="currentModelId" type={<a href="#modelid">ModelId</a>}>
-  The current model the Agent is in.
-</ResponseField>
-
-## <span>SessionResumeCapabilities</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Capabilities for the `session/resume` method.
-
-By supplying `\{\}` it means that the agent supports resuming of sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-## <span>SessionUpdate</span>
-
-Different types of updates that can be sent during session processing.
-
-These updates provide real-time feedback about the agent's progress.
-
-See protocol docs: [Agent Reports Output](https://agentclientprotocol.com/protocol/prompt-turn#3-agent-reports-output)
-
-**Type:** Union
-
-<ResponseField name="user_message_chunk" type="object">
-  A chunk of the user's message being streamed.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-      A single item of content
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="agent_message_chunk" type="object">
-  A chunk of the agent's response being streamed.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-      A single item of content
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="agent_thought_chunk" type="object">
-  A chunk of the agent's internal reasoning being streamed.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-      A single item of content
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="tool_call" type="object">
-  Notification that a new tool call has been initiated.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<a href="#toolcallcontent">ToolCallContent[]</a>}>
-      Content produced by the tool call.
-    </ResponseField>
-
-    <ResponseField name="kind" type={<a href="#toolkind">ToolKind</a>}>
-      The category of tool being invoked.
-      Helps clients choose appropriate icons and UI treatment.
-    </ResponseField>
-
-    <ResponseField name="locations" type={<a href="#toolcalllocation">ToolCallLocation[]</a>}>
-      File locations affected by this tool call.
-      Enables "follow-along" features in clients.
-    </ResponseField>
-
-    <ResponseField name="rawInput" type={"object"}>
-      Raw input parameters sent to the tool.
-    </ResponseField>
-
-    <ResponseField name="rawOutput" type={"object"}>
-      Raw output returned by the tool.
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-
-    <ResponseField name="status" type={<a href="#toolcallstatus">ToolCallStatus</a>}>
-      Current execution status of the tool call.
-    </ResponseField>
-
-    <ResponseField name="title" type={"string"}>
-      Human-readable title describing what the tool is doing.
-    </ResponseField>
-
-    <ResponseField name="toolCallId" type={<a href="#toolcallid">ToolCallId</a>}>
-      Unique identifier for this tool call within the session.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="tool_call_update" type="object">
-  Update on the status or results of a tool call.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<><span><a href="#toolcallcontent">ToolCallContent[]</a></span><span> | null</span></>}>
-      Replace the content collection.
-    </ResponseField>
-
-    <ResponseField name="kind" type={<><span><a href="#toolkind">ToolKind</a></span><span> | null</span></>}>
-      Update the tool kind.
-    </ResponseField>
-
-    <ResponseField name="locations" type={<><span><a href="#toolcalllocation">ToolCallLocation[]</a></span><span> | null</span></>}>
-      Replace the locations collection.
-    </ResponseField>
-
-    <ResponseField name="rawInput" type={"object"}>
-      Update the raw input.
-    </ResponseField>
-
-    <ResponseField name="rawOutput" type={"object"}>
-      Update the raw output.
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-
-    <ResponseField name="status" type={<><span><a href="#toolcallstatus">ToolCallStatus</a></span><span> | null</span></>}>
-      Update the execution status.
-    </ResponseField>
-
-    <ResponseField name="title" type={"string | null"}>
-      Update the human-readable title.
-    </ResponseField>
-
-    <ResponseField name="toolCallId" type={<a href="#toolcallid">ToolCallId</a>}>
-      The ID of the tool call being updated.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="plan" type="object">
-  The agent's execution plan for complex tasks.
-  See protocol docs: [Agent Plan](https://agentclientprotocol.com/protocol/agent-plan)
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="entries" type={<a href="#planentry">PlanEntry[]</a>}>
-      The list of tasks to be accomplished.
-
-      When updating a plan, the agent must send a complete list of all entries
-      with their current status. The client replaces the entire plan with each update.
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="available_commands_update" type="object">
-  Available commands are ready or have changed
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="availableCommands" type={<a href="#availablecommand">AvailableCommand[]</a>}>
-      Commands the agent can execute
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="current_mode_update" type="object">
-  The current mode of the session has changed
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="currentModeId" type={<a href="#sessionmodeid">SessionModeId</a>}>
-      The ID of the current mode
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="config_option_update" type="object">
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Session configuration options have been updated.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>}>
-      The full set of configuration options and their current values.
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="session_info_update" type="object">
-  Session metadata has been updated (title, timestamps, custom metadata)
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} />
-
-    <ResponseField name="title" type={"string | null"}>
-      Human-readable title for the session. Set to null to clear.
-    </ResponseField>
-
-    <ResponseField name="updatedAt" type={"string | null"}>
-      ISO 8601 timestamp of last activity. Set to null to clear.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-## <span>StopReason</span>
-
-Reasons why an agent stops processing a prompt turn.
-
-See protocol docs: [Stop Reasons](https://agentclientprotocol.com/protocol/prompt-turn#stop-reasons)
-
-**Type:** Union
-
-<ResponseField name="end_turn" type="string">
-  The turn ended successfully.
-</ResponseField>
-
-<ResponseField name="max_tokens" type="string">
-  The turn ended because the agent reached the maximum number of tokens.
-</ResponseField>
-
-<ResponseField name="max_turn_requests" type="string">
-  The turn ended because the agent reached the maximum number of allowed agent
-  requests between user turns.
-</ResponseField>
-
-<ResponseField name="refusal" type="string">
-  The turn ended because the agent refused to continue. The user prompt and
-  everything that comes after it won't be included in the next prompt, so this
-  should be reflected in the UI.
-</ResponseField>
-
-<ResponseField name="cancelled" type="string">
-  The turn was cancelled by the client via `session/cancel`.
-
-  This stop reason MUST be returned when the client sends a `session/cancel`
-  notification, even if the cancellation causes exceptions in underlying operations.
-  Agents should catch these exceptions and return this semantically meaningful
-  response to confirm successful cancellation.
-</ResponseField>
-
-## <span>Terminal</span>
-
-Embed a terminal created with `terminal/create` by its id.
-
-The terminal must be added before calling `terminal/release`.
-
-See protocol docs: [Terminal](https://agentclientprotocol.com/protocol/terminals)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="terminalId" type={"string"} />
-
-## <span>TerminalExitStatus</span>
-
-Exit status of a terminal command.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="exitCode" type={"integer | null"}>
-  The process exit code (may be null if terminated by signal).
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="signal" type={"string | null"}>
-  The signal that terminated the process (may be null if exited normally).
-</ResponseField>
-
-## <span>TextContent</span>
-
-Text provided to or from an LLM.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="annotations" type={<><span><a href="#annotations">Annotations</a></span><span> | null</span></>} />
-
-<ResponseField name="text" type={"string"} />
-
-## <span>TextResourceContents</span>
-
-Text-based resource contents.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="mimeType" type={"string | null"} />
-
-<ResponseField name="text" type={"string"} />
-
-<ResponseField name="uri" type={"string"} />
-
-## <span>ToolCall</span>
-
-Represents a tool call that the language model has requested.
-
-Tool calls are actions that the agent executes on behalf of the language model,
-such as reading files, executing code, or fetching data from external sources.
-
-See protocol docs: [Tool Calls](https://agentclientprotocol.com/protocol/tool-calls)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={<a href="#toolcallcontent">ToolCallContent[]</a>}>
-  Content produced by the tool call.
-</ResponseField>
-
-<ResponseField name="kind" type={<a href="#toolkind">ToolKind</a>}>
-  The category of tool being invoked.
-  Helps clients choose appropriate icons and UI treatment.
-</ResponseField>
-
-<ResponseField name="locations" type={<a href="#toolcalllocation">ToolCallLocation[]</a>}>
-  File locations affected by this tool call.
-  Enables "follow-along" features in clients.
-</ResponseField>
-
-<ResponseField name="rawInput" type={"object"}>
-  Raw input parameters sent to the tool.
-</ResponseField>
-
-<ResponseField name="rawOutput" type={"object"}>
-  Raw output returned by the tool.
-</ResponseField>
-
-<ResponseField name="status" type={<a href="#toolcallstatus">ToolCallStatus</a>}>
-  Current execution status of the tool call.
-</ResponseField>
-
-<ResponseField name="title" type={"string"}>
-  Human-readable title describing what the tool is doing.
-</ResponseField>
-
-<ResponseField name="toolCallId" type={<a href="#toolcallid">ToolCallId</a>}>
-  Unique identifier for this tool call within the session.
-</ResponseField>
-
-## <span>ToolCallContent</span>
-
-Content produced by a tool call.
-
-Tool calls can produce different types of content including
-standard content blocks (text, images) or file diffs.
-
-See protocol docs: [Content](https://agentclientprotocol.com/protocol/tool-calls#content)
-
-**Type:** Union
-
-<ResponseField name="content" type="object">
-  Standard content block (text, images, resources).
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="content" type={<a href="#contentblock">ContentBlock</a>}>
-      The actual content block.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="diff" type="object">
-  File modification shown as a diff.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="newText" type={"string"}>
-      The new content after modification.
-    </ResponseField>
-
-    <ResponseField name="oldText" type={"string | null"}>
-      The original content (None for new files).
-    </ResponseField>
-
-    <ResponseField name="path" type={"string"}>
-      The file path being modified.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="terminal" type="object">
-  Embed a terminal created with `terminal/create` by its id.
-
-  The terminal must be added before calling `terminal/release`.
-
-  See protocol docs: [Terminal](https://agentclientprotocol.com/protocol/terminals)
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="terminalId" type={"string"} />
-
-    <ResponseField name="type" type={"string"} />
-  </Expandable>
-</ResponseField>
-
-## <span>ToolCallId</span>
-
-Unique identifier for a tool call within a session.
-
-**Type:** `string`
-
-## <span>ToolCallLocation</span>
-
-A file location being accessed or modified by a tool.
-
-Enables clients to implement "follow-along" features that track
-which files the agent is working with in real-time.
-
-See protocol docs: [Following the Agent](https://agentclientprotocol.com/protocol/tool-calls#following-the-agent)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="line" type={"integer | null"}>
-  Optional line number within the file.
-
-  * Minimum: `0`
-</ResponseField>
-
-<ResponseField name="path" type={"string"}>
-  The file path being accessed or modified.
-</ResponseField>
-
-## <span>ToolCallStatus</span>
-
-Execution status of a tool call.
-
-Tool calls progress through different statuses during their lifecycle.
-
-See protocol docs: [Status](https://agentclientprotocol.com/protocol/tool-calls#status)
-
-**Type:** Union
-
-<ResponseField name="pending" type="string">
-  The tool call hasn't started running yet because the input is either streaming
-  or we're awaiting approval.
-</ResponseField>
-
-<ResponseField name="in_progress" type="string">
-  The tool call is currently running.
-</ResponseField>
-
-<ResponseField name="completed" type="string">
-  The tool call completed successfully.
-</ResponseField>
-
-<ResponseField name="failed" type="string">
-  The tool call failed with an error.
-</ResponseField>
-
-## <span>ToolCallUpdate</span>
-
-An update to an existing tool call.
-
-Used to report progress and results as tools execute. All fields except
-the tool call ID are optional - only changed fields need to be included.
-
-See protocol docs: [Updating](https://agentclientprotocol.com/protocol/tool-calls#updating)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="content" type={<><span><a href="#toolcallcontent">ToolCallContent[]</a></span><span> | null</span></>}>
-  Replace the content collection.
-</ResponseField>
-
-<ResponseField name="kind" type={<><span><a href="#toolkind">ToolKind</a></span><span> | null</span></>}>
-  Update the tool kind.
-</ResponseField>
-
-<ResponseField name="locations" type={<><span><a href="#toolcalllocation">ToolCallLocation[]</a></span><span> | null</span></>}>
-  Replace the locations collection.
-</ResponseField>
-
-<ResponseField name="rawInput" type={"object"}>
-  Update the raw input.
-</ResponseField>
-
-<ResponseField name="rawOutput" type={"object"}>
-  Update the raw output.
-</ResponseField>
-
-<ResponseField name="status" type={<><span><a href="#toolcallstatus">ToolCallStatus</a></span><span> | null</span></>}>
-  Update the execution status.
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Update the human-readable title.
-</ResponseField>
-
-<ResponseField name="toolCallId" type={<a href="#toolcallid">ToolCallId</a>}>
-  The ID of the tool call being updated.
-</ResponseField>
-
-## <span>ToolKind</span>
-
-Categories of tools that can be invoked.
-
-Tool kinds help clients choose appropriate icons and optimize how they
-display tool execution progress.
-
-See protocol docs: [Creating](https://agentclientprotocol.com/protocol/tool-calls#creating)
-
-**Type:** Union
-
-<ResponseField name="read" type="string">
-  Reading files or data.
-</ResponseField>
-
-<ResponseField name="edit" type="string">
-  Modifying files or content.
-</ResponseField>
-
-<ResponseField name="delete" type="string">
-  Removing files or data.
-</ResponseField>
-
-<ResponseField name="move" type="string">
-  Moving or renaming files.
-</ResponseField>
-
-<ResponseField name="search" type="string">
-  Searching for information.
-</ResponseField>
-
-<ResponseField name="execute" type="string">
-  Running commands or code.
-</ResponseField>
-
-<ResponseField name="think" type="string">
-  Internal reasoning or planning.
-</ResponseField>
-
-<ResponseField name="fetch" type="string">
-  Retrieving external data.
-</ResponseField>
-
-<ResponseField name="switch_mode" type="string">
-  Switching the current session mode.
-</ResponseField>
-
-<ResponseField name="other" type="string">
-  Other tool types (default).
-</ResponseField>
-
-## <span>UnstructuredCommandInput</span>
-
-All text that was typed after the command name is provided as input.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="hint" type={"string"}>
-  A hint to display when the input hasn't been provided yet
-</ResponseField>
 
 
 # Extensibility
@@ -7449,7 +3627,7 @@ The input specification for a command.
 
 **Type:** Union
 
-<ResponseField name="Variant">
+<ResponseField name="unstructured">
   All text that was typed after the command name is provided as input.
 
   <Expandable title="Properties">
@@ -7941,7 +4119,7 @@ and use the reserved range (-32000 to -32099) for protocol-specific errors.
   **Resource not found**: A given resource, such as a file, was not found.
 </ResponseField>
 
-<ResponseField name="integer" type="int32">
+<ResponseField name="Other" type="int32">
   Other undefined error code.
 </ResponseField>
 
@@ -8182,7 +4360,7 @@ See protocol docs: [MCP Servers](https://agentclientprotocol.com/protocol/sessio
   </Expandable>
 </ResponseField>
 
-<ResponseField name="Variant">
+<ResponseField name="stdio">
   Stdio transport configuration
 
   All Agents MUST support this transport.
@@ -11075,6 +7253,137 @@ The environment variable approach:
 * 2025-12-04: Initial draft
 
 
+# Authentication Methods
+Source: https://agentclientprotocol.com/rfds/auth-methods
+
+
+
+Author(s): [anna239](https://github.com/anna239)
+
+## Elevator pitch
+
+> What are you proposing to change?
+
+I suggest adding more information about auth methods that agent supports, which will allow clients to draw more appropriate UI.
+
+## Status quo
+
+> How do things work today and what problems does this cause? Why would we change things?
+
+Agents have different ways of authenticating users: env vars with api keys, running a command like `<agent_name> login`, some just open a browser and use oauth.
+[AuthMethod](https://agentclientprotocol.com/protocol/schema#authmethod) does not really tell the client what should be done to authenticate. This means we can't show the user a control for entering key if an agent supports auth through env var.
+
+Very few agents can authenticate fully on their own without user input, so agents with ACP auth support are limited in the methods they can offer, or require manual setup before being run as an ACP agent.
+
+## What we propose to do about it
+
+> What are you proposing to improve the situation?
+
+We can add addition types of AuthMethods, to provide clients with additional information so they can assist in the login process.
+
+## Shiny future
+
+> How will things will play out once this feature exists?
+
+It will be easier for end-users to start using an agent from inside the IDE as auth process will be more straightforward
+
+## Implementation details and plan
+
+> Tell me more about your implementation. What is your detailed implementation plan?
+
+I suggest adding following auth types:
+
+1. Agent auth
+
+Same as what there is now – agent handles the auth itself, this should be a default type if no type is provided for backward compatibility
+
+```json theme={null}
+{
+  "id": "123",
+  "name": "Agent",
+  "description": "Authenticate through agent",
+  "type": "agent" // Optional/default value
+}
+```
+
+2. Env variable
+
+A user can enter a key and a client will pass it to the agent as an env variable
+
+```json theme={null}
+{
+  "id": "123",
+  "name": "OpenAI api key",
+  "description": "Provide your key",
+  "type": "env_var",
+  "varName": "OPEN_AI_KEY",
+  "link": "OPTIONAL link to a page where user can get their key"
+}
+```
+
+Since this would need to be supplied to the agent when the process is started, the client can check if it already passed such an env variable to the process, in which case the user can click on the button and the agent will read the already available key.
+
+Otherwise, when the user clicks the button, the client could restart the agent process with the desired env variable, and then automatically send the authenticate message with the correct id to sign in for the user.
+
+3. Terminal Auth
+
+There have been experiments for a "terminal-auth" experience as a fallback. This requires the client to be able to run an interactive terminal for the user to login via a TUI.
+
+```json theme={null}
+{
+  "id": "123",
+  "name": "Run in terminal",
+  "description": "Setup Label",
+  "type": "terminal",
+  "args": ["--setup"],
+  "env": { "VAR1": "value1", "VAR2": "value2" }
+}
+```
+
+The `command` cannot be specified, the client will invoke the exact same binary with the exact same setup. The agent can supply additional arguments and environment variables as necessary. These will be supplied in **addition** to any args/env supplied by default when the server is started. So agents will need to have a way to kickoff their interactive login flow even if normal acp commands/arguments are supplied as well.
+
+This is so that the agent doesn't need to know about the environment it is running in. It can't know the absolute path necessarily, and shouldn't be able to supply other commands or programs to minimize security issues.
+
+### AuthErrors
+
+It might be useful to include a list of AuthMethod ids to the AUTH\_REQUIRED JsonRpc error. Why do we need this if they're already shared during `initialize`:
+All supported auth methods are shared during `initialize`. When user starts a session, they've already selected a model, which can narrow down a list of options.
+
+```json theme={null}
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "error": {
+    "code": -32000,
+    "message": "Authentication required",
+    "authMethods": [
+      {
+        "id": "chatgpt",
+        "name": "Login with ChatGPT",
+        "description": "Use your ChatGPT login with Codex CLI (requires a paid ChatGPT subscription)"
+      }
+    ]
+  }
+}
+```
+
+## Frequently asked questions
+
+> What questions have arisen over the course of authoring this document or during subsequent discussions?
+
+### What alternative approaches did you consider, and why did you settle on this one?
+
+An alternative approach would be to include this information to an agent's declaration making it more static, see [Registry RFD](https://github.com/agentclientprotocol/agent-client-protocol/pull/289)
+
+There is also an alternative to adding a separate `elicitation` capability, which is to create a separate auth type for this. Then the client can decide themselves if they support it or not.
+
+## Revision history
+
+There was a part about elicitations [https://github.com/agentclientprotocol/agent-client-protocol/blob/939ef116a1b14016e4e3808b8764237250afa253/docs/rfds/auth.mdx](https://github.com/agentclientprotocol/agent-client-protocol/blob/939ef116a1b14016e4e3808b8764237250afa253/docs/rfds/auth.mdx) removed it for now, will move to a separate rfd
+
+* 2026-01-14: Updates based on Core Maintainer discussion
+
+
 # Introduce RFD Process
 Source: https://agentclientprotocol.com/rfds/introduce-rfd-process
 
@@ -11159,6 +7468,290 @@ Well, partly because "dialog" emphasizes conversation and exploration rather tha
 * 2025-10-28: Initial version, created alongside RFD infrastructure
 
 
+# MCP-over-ACP: MCP Transport via ACP Channels
+Source: https://agentclientprotocol.com/rfds/mcp-over-acp
+
+
+
+Author(s): [nikomatsakis](https://github.com/nikomatsakis)
+
+## Elevator pitch
+
+> What are you proposing to change?
+
+Add support for MCP servers that communicate over ACP channels instead of stdio or HTTP. This enables any ACP component to provide MCP tools and handle callbacks through the existing ACP connection, without spawning separate processes or managing additional transports.
+
+## Status quo
+
+> How do things work today and what problems does this cause? Why would we change things?
+
+ACP and MCP each solve different halves of the problem of interacting with an agent. ACP stands in "front" of the agent, managing sessions, sending prompts, and receiving responses. MCP stands "behind" the agent, providing tools that the agent can use to do its work.
+
+Many applications would benefit from being able to be both "in front" of the agent and "behind" it. This would allow a client, for example, to create custom MCP tools that are tailored to a specific request and which live in the client's address space.
+
+The only way to combine ACP and MCP today is to use some sort of "backdoor", such as opening an HTTP port for the agent to connect to or providing a binary that communicates with IPC. This is inconvenient to implement but also means that clients cannot be properly abstracted and sandboxed, as some of the communication with the agent is going through side channels. Imagine trying to host an ACP component (client, agent, or [agent extension](./proxy-chains.mdx)) that runs in a WASM sandbox or even on another machine: for that to work, the ACP protocol has to encompass all of the relevant interactions so that messages can be transmitted properly.
+
+## What we propose to do about it
+
+> What are you proposing to improve the situation?
+
+We propose adding `"acp"` as a new MCP transport type. When an ACP component (client or proxy) adds an MCP server with ACP transport to a session, tool invocations for that server are routed back through the ACP channel to the component that provided it.
+
+This enables patterns like:
+
+* A **client** that injects project-aware tools into every session and handles callbacks directly
+* An **[agent extension](./proxy-chains.mdx)** that adds context-aware tools based on the conversation state
+* A **bridge** that translates ACP-transport MCP servers to stdio for agents that don't support native ACP transport
+
+### How it works
+
+When the client connects, the agent advertises MCP-over-ACP support via `mcpCapabilities.acp` in its `InitializeResponse`. If supported, the client can add MCP servers to a `session/new` request with `"transport": "acp"` and an `id` that identifies the server:
+
+```json theme={null}
+{
+  "tools": {
+    "mcpServers": {
+      "project-tools": {
+        "transport": "acp",
+        "id": "550e8400-e29b-41d4-a716-446655440000"
+      }
+    }
+  }
+}
+```
+
+The `id` is generated by the component providing the MCP server.
+
+When the agent connects to the MCP server, an `mcp/connect` message is sent with the MCP server's `id`. This returns a fresh `connectionId`. MCP messages are then sent back and forth using `mcp/message` requests. Finally, `mcp/disconnect` signals that the connection is closing.
+
+### Bridging and compatibility
+
+Existing agents don't support ACP transport for MCP servers. To bridge this gap, a wrapper component can translate between ACP-transport MCP servers and the stdio/HTTP transports that agents already support. The wrapper spawns shim processes or HTTP servers that the agent connects to normally, then relays messages to/from the ACP channel.
+
+We've implemented this bridging as part of the conductor described in the [Proxy Chains RFD](./proxy-chains). The conductor always advertises `mcpCapabilities.acp: true` to its clients, handling the translation transparently regardless of whether the downstream agent supports native ACP transport.
+
+### Message flow example
+
+```mermaid theme={null}
+sequenceDiagram
+    participant Client
+    participant Agent
+
+    Client->>Agent: session/new (with ACP-transport MCP server)
+    Agent-->>Client: session created
+
+    Client->>Agent: prompt ("analyze this codebase")
+
+    Note over Agent: Agent decides to use the tool
+    Agent->>Client: mcp/connect (acpId: "<id>")
+    Client-->>Agent: connectionId: "conn-1"
+
+    Agent->>Client: mcp/message (list_files tool call)
+    Client-->>Agent: file listing results
+
+    Agent-->>Client: response using tool results
+
+    Agent->>Client: mcp/disconnect (connectionId: "conn-1")
+```
+
+## Shiny future
+
+> How will things play out once this feature exists?
+
+### Seamless tool injection
+
+Components can provide tools without any process management. A Rust development environment could inject cargo-aware tools, a cloud IDE could inject deployment tools, and a security scanner could inject vulnerability checking - all through the same ACP connection they're already using.
+
+### WebAssembly-based tooling
+
+Components running in sandboxed environments (like WASM) can provide MCP tools without needing filesystem or process spawning capabilities. The ACP channel is their only interface, and that's sufficient.
+
+### Transparent bridging
+
+For agents that don't natively support ACP transport, intermediaries can transparently bridge: accepting MCP-over-ACP from clients and spawning stdio- or HTTP-based MCP servers that the agent can use normally. This provides backwards compatibility while allowing the ecosystem to adopt ACP transport incrementally.
+
+## Implementation details and plan
+
+> Tell me more about your implementation. What is your detailed implementation plan?
+
+### Capability advertising
+
+Agents advertise MCP-over-ACP support via the [`mcpCapabilities`](/protocol/schema#mcpcapabilities) field in their `InitializeResponse`. We propose adding an `acp` field to this existing structure:
+
+```json theme={null}
+{
+  "capabilities": {
+    "mcpCapabilities": {
+      "http": false,
+      "sse": false,
+      "acp": true
+    }
+  }
+}
+```
+
+When `mcpCapabilities.acp` is `true`, the agent can handle MCP servers declared with `"transport": "acp"` natively - it will send `mcp/connect`, `mcp/message`, and `mcp/disconnect` messages through the ACP channel.
+
+Clients don't need to advertise anything - they simply check the agent's capabilities to determine whether bridging is needed.
+
+**Bridging intermediaries**: An intermediary that provides bridging can present `mcpCapabilities.acp: true` to its clients regardless of whether the downstream agent supports it, handling bridging transparently (see [Bridging](#bridging-for-agents-without-native-support) below).
+
+### MCP transport schema extension
+
+We extend the MCP JSON schema to include ACP as a transport option:
+
+```json theme={null}
+{
+  "type": "object",
+  "properties": {
+    "transport": {
+      "type": "string",
+      "enum": ["stdio", "http", "acp"]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "transport": { "const": "acp" } } },
+      "then": {
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": ["id"]
+      }
+    }
+  ]
+}
+```
+
+### Message reference
+
+**Connection lifecycle:**
+
+```json theme={null}
+// Establish MCP connection
+{
+  "method": "mcp/connect",
+  "params": {
+    "acpId": "550e8400-e29b-41d4-a716-446655440000",
+    "meta": { ... }
+  }
+}
+// Response:
+{
+  "connectionId": "conn-123",
+  "meta": { ... }
+}
+
+// Close MCP connection
+{
+  "method": "mcp/disconnect",
+  "params": {
+    "connectionId": "conn-123",
+    "meta": { ... }
+  }
+}
+```
+
+**MCP message exchange:**
+
+```json theme={null}
+// Send MCP message (bidirectional - works agent→client or client→agent)
+{
+  "method": "mcp/message",
+  "params": {
+    "connectionId": "conn-123",
+    "method": "<MCP_METHOD>",
+    "params": { ... },
+    "meta": { ... }
+  }
+}
+```
+
+The inner MCP message fields (`method`, `params`) are flattened into the params object. Whether the wrapped message is a request or notification is determined by the presence of an `id` field in the outer JSON-RPC envelope, following JSON-RPC conventions.
+
+### Routing by ID
+
+The `acpId` in `mcp/connect` matches the `id` that was provided by the component when it declared the MCP server in `session/new`. The receiving side uses this `id` to route messages to the correct handler.
+
+When a component provides multiple MCP servers in a single session, each gets a unique `id`, enabling proper message routing.
+
+### Connection multiplexing
+
+Multiple connections to the same MCP server are supported - each `mcp/connect` returns a unique `connectionId`. This allows scenarios where an agent opens multiple concurrent connections to the same tool server.
+
+### Bridging for agents without native support
+
+Not all agents will support MCP-over-ACP natively. To maintain compatibility, it is possible to write a bridge that translates ACP-transport MCP servers to transports the agent does support.
+
+**Bridging approaches:**
+
+* **Stdio shim**: Spawn a small shim process that the agent connects to via stdio. The shim relays MCP messages to/from the ACP channel. This is the most compatible approach since all MCP-capable agents support stdio.
+
+* **HTTP bridge**: Run a local HTTP server that the agent connects to. MCP messages are relayed to/from the ACP channel. This works for agents that prefer HTTP transport.
+
+**How bridging works:**
+
+When a client provides an MCP server with `"transport": "acp"`, and the agent doesn't advertise `mcpCapabilities.acp: true`, a bridge can:
+
+1. Rewrite the MCP server declaration in `session/new` to use stdio or HTTP transport
+2. Spawn the appropriate shim process or HTTP server
+3. Relay messages between the shim and the ACP channel
+
+From the agent's perspective, it's talking to a normal stdio/HTTP MCP server. From the client's perspective, it's handling MCP-over-ACP messages. The bridge handles the translation transparently.
+
+```mermaid theme={null}
+sequenceDiagram
+    participant Client
+    participant Bridge
+    participant Shim as Stdio Shim
+    participant Agent
+
+    Note over Bridge: Agent doesn't support mcpCapabilities.acp
+    Client->>Bridge: session/new (MCP server with acp transport)
+    Bridge->>Agent: session/new (MCP server with stdio transport)
+    Note over Bridge: Spawns shim for bridging
+
+    Agent->>Shim: MCP tool call (stdio)
+    Shim->>Bridge: relay
+    Bridge->>Client: mcp/message
+    Client-->>Bridge: tool result
+    Bridge-->>Shim: relay
+    Shim-->>Agent: MCP response (stdio)
+```
+
+A first implementation of this bridging exists in the `sacp-conductor` crate, part of the proposed new version of the [ACP Rust SDK](https://github.com/anthropics/rust-sdk).
+
+## Frequently asked questions
+
+> What questions have arisen over the course of authoring this document or during subsequent discussions?
+
+### Why use a separate `id` instead of server names?
+
+Server names in `mcpServers` are chosen by whoever adds them to the session, and could potentially collide if multiple components add servers. A component-generated `id` provides guaranteed uniqueness and allows the providing component to correlate incoming messages back to the correct session context.
+
+This also avoids a potential deadlock: some agents don't return the session ID until after MCP servers have been initialized. Using a component-generated `id` avoids any dependency on agent-provided identifiers.
+
+### How does this relate to proxy chains?
+
+MCP-over-ACP is a transport mechanism that works independently of proxy chains. However, proxy chains are a natural use case: a proxy can inject MCP servers into sessions it forwards, handle the tool callbacks, and use the results to enhance its transformations.
+
+See the [Proxy Chains RFD](./proxy-chains) for details on how MCP-over-ACP enables context-aware tooling.
+
+### What if the agent doesn't support ACP transport?
+
+See the [Bridging for agents without native support](#bridging-for-agents-without-native-support) section above. A bridge can transparently translate ACP-transport MCP servers to stdio or HTTP for agents that don't advertise `mcpCapabilities.acp` support.
+
+### What about security?
+
+MCP-over-ACP has the same trust model as regular MCP: you're allowing a component to handle tool invocations. The difference is transport, not trust. Components should only add MCP servers from sources they trust, same as with stdio or HTTP transport.
+
+## Revision history
+
+Split from proxy-chains RFD to enable independent use of MCP-over-ACP transport by any ACP component, not just proxies.
+
+
 # Meta Field Propagation Conventions
 Source: https://agentclientprotocol.com/rfds/meta-propagation
 
@@ -11228,7 +7821,7 @@ Here are several MCP SDKs that propagate W3C trace-context in `_meta`:
 * 2025-11-28: Initial draft
 
 
-# Proxy Chains: Composable Agent Architectures
+# Agent Extensions via ACP Proxies
 Source: https://agentclientprotocol.com/rfds/proxy-chains
 
 
@@ -11239,35 +7832,28 @@ Author(s): [nikomatsakis](https://github.com/nikomatsakis)
 
 > What are you proposing to change?
 
-Add proxy chain capabilities to ACP that allow components to intercept and transform messages between clients and agents, enabling composable agent architectures where techniques like context injection, tool coordination, and response filtering can be extracted into reusable components.
+Enable a universal agent extension mechanism via ACP proxies, components that sit between a client and an agent. Proxies can intercept and transform messages, enabling composable architectures where techniques like context injection, tool coordination, and response filtering can be extracted into reusable components.
 
 ## Status quo
 
 > How do things work today and what problems does this cause? Why would we change things?
 
-The AI agent ecosystem has developed a wide variety of extension mechanisms: AGENTS.md files, Claude Code plugins and skills, rules and steering files, hooks, MCP servers, etc. Of these, only MCP servers and AGENTS.md files have achieved any standardization across the ecosystem.
-
-The popularity of MCP servers demonstrates a clear desire for portable extensions that work across different clients and agents. Many MCP servers come with instructions like "add this text to your context to help the agent use the MCP server correctly," showing that developers want their tools to work seamlessly without manual configuration.
+The AI agent ecosystem has developed many extension mechanisms: AGENTS.md files, Claude Code plugins, rules files, hooks, MCP servers, etc. Of these, only MCP servers have achieved real standardization across the ecosystem.
 
 However, MCP servers are fundamentally limited because they sit "behind" the agent. They can provide tools and respond to function calls, but they cannot:
 
 * **Inject or modify prompts** before they reach the agent
 * **Add global context** that persists across conversations
 * **Transform responses** before they reach the user
-* **Respond to async events** outside the request-response cycle
 * **Coordinate between multiple agents** or manage conversation flow
 
-This creates a gap in the ecosystem. Developers want portable, composable extensions, but the only standardized mechanism (MCP) can't handle many common use cases. As a result, valuable techniques like context management, conversation orchestration, and response processing remain locked within individual agent implementations.
-
-Users end up choosing agents not just based on model quality, but on which specific extensions and capabilities are built in. There's no way to take the context injection from one system, the tool coordination from another, and the response filtering from a third, and combine them with your preferred base model.
+As a result, valuable techniques like context management and response processing remain locked within individual agent implementations, with no way to extract and reuse them across different agents.
 
 ## What we propose to do about it
 
 > What are you proposing to improve the situation?
 
-We propose extending ACP to enable creating *proxies*, ACP components that sit between the client and the agent. Because proxies can do anything a client could do, they serve as a kind of "universal extension mechanism" that can subsume AGENTS.md, hooks, MCP servers, etc.
-
-Part of the proxy protocol includes the ability to send and receive MCP messages, enabling a single component to (1) add an MCP server to a session and then (2) handle those MCP tool requests. This effectively creates a way for agents to "callback" to a proxy, enabling rich bidirectional interactions beyond simple message transformation.
+We propose implementing *agent extensions* via ACP *proxies*, a new kind of component that sits between the client and the agent, forwarding (and potentially altering or introducing) messages. Because proxies can do anything a client could do, they serve as a universal extension mechanism that can subsume AGENTS.md, hooks, MCP servers, etc.
 
 Proxies are limited to the customizations exposed by ACP itself, so they would benefit from future ACP extensions like mechanisms to customize system prompts. However, they can already handle the majority of common extension use cases through message interception and transformation.
 
@@ -11285,56 +7871,9 @@ flowchart LR
     P1 -->|final| Client
 ```
 
-(As described in the "Proxying in Practice" section, proxies in our design do not actually communicate directly with their successor, but instead use a central conductor. For the purposes of explaining the protocol, however, this section will continue to show diagrams "as if" proxies were in direct communication with each other.)
+### Proxying in practice: the role of the conductor
 
-### Proxying MCP requests through ACP
-
-When proxing a `session/new` request, proxies can add MCP servers using a new transport type, `"acp"`. When agents invoke an MCP server that uses `"acp"` transport, the MCP requests are sent through the ACP channel. (To accommodate existing agents, our conductor will automatically bridge MCP servers using `"acp"` transport to use `"stdio"` transport.)
-
-Leveraging `"acp"` transport allows a single ACP proxy to do all of the following:
-
-1. **Add context** by analyzing the project and injecting relevant documentation
-2. **Provide tools** via MCP server that understand the injected context
-3. **Handle callbacks** when the agent uses those tools, with full awareness of the conversation state
-
-**Example Flow (Idealized)**: Context Proxy (with MCP server) → Filter Proxy → Agent
-
-```mermaid theme={null}
-sequenceDiagram
-    participant Client
-    participant P1 as Context Proxy
-    participant P2 as Filter Proxy
-    participant Agent
-
-    Note over Client: User asks about project structure
-    Client->>P1: prompt request
-
-    Note over P1: Analyzes project, adds context + filesystem MCP server
-    P1->>P2: enhanced prompt + filesystem MCP server
-
-    Note over P2: Forwards enhanced prompt
-    P2->>Agent: prompt with context + tools available
-
-    Note over Agent: Decides to explore project structure
-    Agent->>P2: mcp/message (list files)
-
-    Note over P2: Forwards tool call back to Context Proxy
-    P2->>P1: mcp/message (list files)
-
-    Note over P1: Handles tool call with full project context
-    P1-->>P2: file listing with relevant details
-    P2-->>Agent: file listing with relevant details
-
-    Agent-->>P2: response using both context and tool results
-    P2-->>P1: response (potentially filtered)
-    P1-->>Client: final response
-```
-
-This demonstrates how proxy chains enable rich, context-aware tooling that would be difficult to achieve with traditional MCP servers alone.
-
-### Proxing in practice: the role of the conductor
-
-To allow for proxy isolation, our design does not have proxies communicate directly with their successor in the chain. Instead, there is a central conductor component that handles routing messages between components.
+To allow for proxy isolation, our design does not have proxies communicate directly with their successor in the chain. Instead, there is a central *conductor* component that orchestrates messages moving between components.
 
 ```mermaid theme={null}
 flowchart TB
@@ -11380,25 +7919,21 @@ sequenceDiagram
 
 ## Shiny future
 
-> How will things will play out once this feature exists?
+> How will things play out once this feature exists?
 
-### User Experience and Editor Integration
+### User experience and editor integration
 
 We expect editors to expose the ability to install proxies in the same way they currently support adding MCP servers - in fact, the distinction probably doesn't matter to users. Both are "extensions" that add capabilities to their AI workflow.
 
 When proxies are installed, editors would not start the agent directly, but instead invoke the conductor with the configured proxy chain. From the user's perspective, they're just getting enhanced agent capabilities - the proxy chain architecture remains transparent.
 
-### Language-Specific Proxy Ecosystems
+### Language-specific proxy ecosystems
 
 The monolithic nature of agent development has meant that most of the "action" happens within agents. We wish to invert this, with agents trending towards simple agentic loops, and the creativity being pushed outwards into the broader ecosystem.
 
 The Symposium project is one example exploring this concept, with a focus on Rust. The idea is to give Rust users an automatic set of extensions based on the dependencies they are using. These extensions would be packaged up as SACP proxies using WebAssembly for portability and sandboxing.
 
 Symposium aims to become the standard "Rust ACP experience" by providing both core Rust tooling and a framework for Rust libraries to contribute their own proxy components.
-
-### Standardized IDE Capabilities
-
-Proxy infrastructure could also enable editors to expose standardized IDE capabilities (diagnostics, file system access, terminal APIs) to agents via MCP servers provided by proxies. This keeps the core ACP protocol focused on agent communication while allowing rich IDE integration through the proxy layer.
 
 ```mermaid theme={null}
 flowchart LR
@@ -11422,11 +7957,39 @@ flowchart LR
     Symposium --> Agent
 ```
 
+### Standardized IDE capabilities
+
+Proxy infrastructure could also enable editors to expose standardized IDE capabilities (diagnostics, file system access, terminal APIs) to agents via MCP servers provided by proxies. This keeps the core ACP protocol focused on agent communication while allowing rich IDE integration through the proxy layer.
+
 ## Implementation details and plan
 
 > Tell me more about your implementation. What is your detailed implementation plan?
 
-### Component Roles
+### Component roles
+
+Each ACP proxy chain forms a sequence of components:
+
+```mermaid theme={null}
+flowchart LR
+    Client --> Proxy0 --> Proxy1 --> ... --> ProxyN --> Agent
+```
+
+The **client** and **agent** are *terminal* roles - the client has only a successor (no predecessor), and the agent has only a predecessor (no successor). Proxies are *non-terminal* - they have both a predecessor and a successor, forwarding messages between them.
+
+The **conductor** is a special component that orchestrates proxy chains. It spawns and manages proxy components, routes messages between them, and handles initialization. From the client's perspective, the conductor appears to be an ordinary agent:
+
+```mermaid theme={null}
+flowchart LR
+    Client -->|ACP| Conductor
+
+    subgraph Managed["Managed by Conductor"]
+        Proxy0 --> Proxy1 --> ... --> Agent
+    end
+
+    Conductor -.->|spawns & routes| Managed
+```
+
+We provide a canonical conductor implementation in Rust (`sacp-conductor`). Most editors would use this conductor directly to host proxies and agents, though they could also reimplement conductor functionality if needed.
 
 ACP defines client and agent as superroles, each with two specializations:
 
@@ -11449,7 +8012,7 @@ classDiagram
 
     class Conductor {
         +manages proxy chain
-        +sends successor/MCP messages
+        +sends successor messages
     }
 
     class TerminalAgent {
@@ -11460,7 +8023,7 @@ classDiagram
 
     class Proxy {
         +forwards to successor
-        +sends successor/MCP messages
+        +sends successor messages
     }
 
     Client <|-- TerminalClient
@@ -11468,10 +8031,6 @@ classDiagram
     Agent <|-- TerminalAgent
     Agent <|-- Proxy
 ```
-
-**Terminal roles**: Standard ACP behavior - direct client-to-agent communication.
-
-**Non-terminal roles**: Extended ACP behavior - clients manage proxy chains, agents forward to successors.
 
 **Example Architecture:**
 
@@ -11493,28 +8052,20 @@ flowchart TB
     TA -->|terminal agent| C
 ```
 
-### Capability Reference
-
-**MCP-over-ACP Transport** (`"mcp_acp_transport": true`)
-
-* Indicates a component can handle MCP messages with `"transport": "acp"`
-* Must handle `mcp/connect`, `mcp/message`, and `mcp/disconnect` messages
-* Enables seamless MCP server provision and tool callbacks
-
-### Proxy Initialization Protocol
+### Proxy initialization protocol
 
 Components discover their role from the initialization method they receive:
 
 * **Proxies** receive `proxy/initialize` - they have a successor and should forward messages
-* **Agents** receive `initialize` - they are terminal and process messages directly
+* **Agents** receive `initialize` - they are terminal (no successor) and process messages directly
 
 The `proxy/initialize` request has the same parameters as `initialize` and expects a standard `InitializeResponse`. The only difference is the method name, which signals to the component that it should operate as a proxy.
 
 **Conductor behavior:**
 
 * The conductor MUST send `proxy/initialize` to all proxy components
-* The conductor MUST send `initialize` to the final agent component
-* When a proxy forwards an `initialize` via `proxy/successor`, the conductor determines whether the successor is another proxy or the agent, and sends the appropriate method
+* The conductor MUST send `initialize` to the final agent component (if any)
+* When a proxy forwards an `initialize` via `proxy/successor`, the conductor determines whether the successor is another proxy or the agent, and sends `proxy/initialize` or `initialize` respectively.
 
 **Proxy behavior:**
 
@@ -11524,17 +8075,13 @@ The `proxy/initialize` request has the same parameters as `initialize` and expec
 
 Note: A conductor can be configured to run in either terminal mode (expecting `initialize`) or proxy mode (expecting `proxy/initialize`), enabling nested proxy chains.
 
-### MCP Transport Capability Initialization
+### MCP-over-ACP support
 
-MCP transport capability negotiation follows different rules depending on the relationship:
+Proxies that provide MCP servers use the [MCP-over-ACP transport](./mcp-over-acp) mechanism. The conductor always advertises `mcpCapabilities.acp: true` to proxies and handles bridging for agents that don't support native ACP transport.
 
-* **Conductor ↔ proxy initialization**: The conductor MUST offer `"mcp_acp_transport": true` in the `proxy/initialize` request. The proxy MUST respond with `"mcp_acp_transport": true` - all proxies are required to support MCP servers that use ACP transport.
+All proxies MUST respond to `proxy/initialize` with the MCP-over-ACP capability enabled. When the conductor sends `proxy/initialize`, proxies should be prepared to handle `mcp/connect`, `mcp/message`, and `mcp/disconnect` messages for any MCP servers they provide.
 
-* **Terminal client ↔ terminal agent initialization**: The client MAY offer `"mcp_acp_transport": true` in the `initialize` request. The agent MAY respond with `"mcp_acp_transport": true` if it supports native MCP-over-ACP transport.
-
-Note: Because a conductor MUST offer `"mcp_acp_transport"` to each proxy but terminal agents are not obligated to support it, the conductor MUST bridge MCP servers using ACP transport to alternative transport methods (such as stdio) when the agent lacks native support.
-
-### Message Reference
+### Message reference
 
 **Initialization:**
 
@@ -11548,7 +8095,7 @@ Note: Because a conductor MUST offer `"mcp_acp_transport"` to each proxy but ter
 
 Both methods use the same parameters as the standard ACP `InitializeRequest` and expect a standard `InitializeResponse`.
 
-**Proxy Messages:**
+**Proxy messages:**
 
 ```json theme={null}
 // Proxy sends message to successor, or conductor delivers message from successor
@@ -11565,108 +8112,11 @@ Both methods use the same parameters as the standard ACP `InitializeRequest` and
 
 The inner message fields (`method`, `params`) are flattened into the params object. Whether the wrapped message is a request or notification is determined by the presence of an `id` field in the outer JSON-RPC envelope, following JSON-RPC conventions.
 
-**MCP Messages:**
-
-```json theme={null}
-// Establish MCP connection
-{"method": "mcp/connect", "params": {"acpUrl": "acp:<UUID>", "meta": {...}}}
-// Response: {"connectionId": "<CONNECTION_ID>", "meta": {...}}
-
-// Send MCP message (bidirectional - agent↔proxy)
-{
-  "method": "mcp/message",
-  "params": {
-    "connectionId": "<CONNECTION_ID>",
-    "method": "<MCP_METHOD>",
-    "params": <MCP_PARAMS>,
-    "meta": { ... }
-  }
-}
-
-// Close MCP connection
-{"method": "mcp/disconnect", "params": {"connectionId": "<CONNECTION_ID>", "meta": {...}}}
-```
-
-The `connectionId` is obtained from the `mcp/connect` response. The inner MCP message fields are flattened into the params object, similar to `proxy/successor`. The `acpUrl` in the connect request identifies which proxy component owns the MCP server.
-
-### MCP Transport Extension
-
-We extend the MCP JSON schema to support ACP as a new transport type alongside existing stdio and HTTP transports.
-
-**Extended MCP Server Schema:**
-
-```json theme={null}
-{
-  "type": "object",
-  "properties": {
-    "transport": {
-      "type": "string",
-      "enum": ["stdio", "http", "acp"]
-    }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": { "transport": { "const": "stdio" } }
-      },
-      "then": {
-        "properties": {
-          "command": { "type": "string" },
-          "args": { "type": "array", "items": { "type": "string" } }
-        },
-        "required": ["command"]
-      }
-    },
-    {
-      "if": {
-        "properties": { "transport": { "const": "http" } }
-      },
-      "then": {
-        "properties": {
-          "url": { "type": "string" },
-          "headers": { "type": "object" }
-        },
-        "required": ["url"]
-      }
-    },
-    {
-      "if": {
-        "properties": { "transport": { "const": "acp" } }
-      },
-      "then": {
-        "properties": {
-          "uuid": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
-          }
-        },
-        "required": ["uuid"]
-      }
-    }
-  ]
-}
-```
-
-**Example ACP Transport Declaration:**
-
-```json theme={null}
-{
-  "tools": {
-    "mcpServers": {
-      "filesystem": {
-        "transport": "acp",
-        "uuid": "550e8400-e29b-41d4-a716-446655440000"
-      }
-    }
-  }
-}
-```
-
-### Examples (Non-normative)
+### Examples (non-normative)
 
 The following sequence diagrams illustrate common proxy chain scenarios for implementers.
 
-#### Initialization of a 4-Component Proxy Chain
+#### Initialization of a 4-component proxy chain
 
 This shows the initialization flow for: Terminal Client → Conductor → Context Proxy → Tool Filter Proxy → Terminal Agent
 
@@ -11683,27 +8133,27 @@ sequenceDiagram
     TC->>C: initialize
 
     Note over C: Conductor spawns proxy components
-    C->>P1: proxy/initialize (mcp_acp_transport: true)
+    C->>P1: proxy/initialize
 
     Note over P1: Proxy forwards to successor
     P1->>C: proxy/successor (initialize)
 
     Note over C: Conductor sends proxy/initialize to next proxy
-    C->>P2: proxy/initialize (mcp_acp_transport: true)
+    C->>P2: proxy/initialize
 
     Note over P2: Proxy forwards to successor
     P2->>C: proxy/successor (initialize)
 
     Note over C: Conductor sends initialize to final agent
-    C->>TA: initialize (mcp_acp_transport: true)
+    C->>TA: initialize
 
-    TA-->>C: InitializeResponse (may include mcp_acp_transport: true)
+    TA-->>C: InitializeResponse (mcpCapabilities.acp: true/false)
     C-->>P2: proxy/successor (InitializeResponse)
 
-    P2-->>C: InitializeResponse (mcp_acp_transport: true)
+    P2-->>C: InitializeResponse
     C-->>P1: proxy/successor (InitializeResponse)
 
-    P1-->>C: InitializeResponse (mcp_acp_transport: true)
+    P1-->>C: InitializeResponse
 
     Note over C: Conductor acts as terminal agent to client
     C-->>TC: InitializeResponse
@@ -11711,7 +8161,7 @@ sequenceDiagram
     Note over TC,TA: Proxy chain initialized and ready
 ```
 
-#### Context-Providing MCP Server with Session Notifications
+#### Context-providing proxy with session notifications
 
 This example shows how a proxy can handle initialization and forward session notifications. Sparkle (a collaborative AI framework) runs an embodiment sequence during session creation.
 
@@ -11766,26 +8216,57 @@ Earlier designs used a `"proxy": true` capability in the `InitializeRequest` and
 
 Using a distinct method makes the contract clearer: if you receive `proxy/initialize`, you're a proxy with a successor; if you receive `initialize`, you're the terminal agent. There's no capability dance, no risk of misconfiguration, and components know their role immediately from the method name.
 
-### How do proxies correlate MCP requests with sessions?
-
-When a proxy adds an MCP server to a `session/new` request, it uses a fresh ACP-ID (the `uuid` field) that the proxy controls. When MCP-over-ACP messages arrive with that ACP-ID, the proxy can correlate them back to the originating session.
-
-This approach avoids a potential deadlock: some agents don't return the `session-id` until after MCP servers have been initialized. If proxies needed the `session-id` to handle MCP requests during initialization, they would be stuck waiting for a value that depends on their response.
-
-By using a fresh ACP-ID per session instead, proxies maintain full correlation capability without circular dependencies. The proxy knows which session spawned which ACP-ID, so it can always map MCP requests back to their originating session context.
-
 ### How do proxies subsume existing agent extension mechanisms?
 
 Because proxies sit between the client and agent, they can replicate the functionality of existing extension mechanisms:
 
 * **AGENTS.md files**: Proxies can inject context and instructions into prompts before they reach the agent
 * **Claude Code plugins/skills**: Proxies can add contextual data for available skills and provide MCP resources with detailed skill instructions that are provided on-demand when requested by the agent
-* **MCP servers**: Proxies can provide tools via the MCP-over-ACP protocol and handle tool callbacks
+* **MCP servers**: Proxies can provide tools via [MCP-over-ACP](./mcp-over-acp) and handle tool callbacks
 * **Subagents**: Proxies can create "subagents" by initiating new sessions and coordinating between multiple agent instances
 * **Hooks and steering files**: Proxies can modify conversation flow by intercepting requests and responses
 * **System prompt customization**: Proxies can switch between predefined session modes or prepend system messages to prompts
 
 The key advantage is that proxy-based extensions work with any ACP-compatible agent without requiring agent-specific integration or modification.
+
+### How do proxies work with MCP servers?
+
+Proxies can provide MCP servers via [MCP-over-ACP transport](./mcp-over-acp), enabling a single proxy to add context, provide tools, and handle callbacks with full awareness of the conversation state.
+
+The conductor always advertises `mcpCapabilities.acp: true` to proxies, regardless of whether the downstream agent supports it natively. When the agent doesn't support ACP transport, the conductor handles bridging transparently - spawning stdio shims or HTTP servers that the agent connects to normally, then relaying messages to/from the proxy's ACP channel.
+
+This means proxy authors don't need to worry about agent compatibility - they implement MCP-over-ACP, and the conductor handles the rest.
+
+```mermaid theme={null}
+sequenceDiagram
+    participant Client
+    participant P1 as Context Proxy
+    participant P2 as Filter Proxy
+    participant Agent
+
+    Note over Client: User asks about project structure
+    Client->>P1: prompt request
+
+    Note over P1: Analyzes project, adds context + filesystem MCP server
+    P1->>P2: enhanced prompt + filesystem MCP server
+
+    Note over P2: Forwards enhanced prompt
+    P2->>Agent: prompt with context + tools available
+
+    Note over Agent: Decides to explore project structure
+    Agent->>P2: mcp/message (list files)
+
+    Note over P2: Forwards tool call back to Context Proxy
+    P2->>P1: mcp/message (list files)
+
+    Note over P1: Handles tool call with full project context
+    P1-->>P2: file listing with relevant details
+    P2-->>Agent: file listing with relevant details
+
+    Agent-->>P2: response using both context and tool results
+    P2-->>P1: response (potentially filtered)
+    P1-->>Client: final response
+```
 
 ### Are there any limitations to what proxies can do?
 
@@ -11794,34 +8275,6 @@ Yes, proxies are limited to what is available through the ACP protocol itself. T
 For example, proxies cannot directly modify an agent's system prompt or context window - they can only switch between predefined session modes (which may affect system prompts) or prepend additional messages to prompts. Similarly, proxies cannot access internal agent state, model parameters, or other implementation details that aren't exposed through ACP messages.
 
 This is actually a feature - it ensures that proxy-based extensions remain portable across different agent implementations and don't rely on agent-specific internals.
-
-### How does the standard conductor implementation work?
-
-The `sacp-conductor` reference implementation can form trees of proxy chains. It can be configured to run in proxy mode (expecting `proxy/initialize`) or terminal mode (expecting `initialize`). When the last proxy in its managed chain sends a message to its successor, the conductor forwards that message to its own parent conductor (if in proxy mode) or to the final agent (if in terminal mode).
-
-This enables hierarchical structures like:
-
-```
-client → conductor1 → final-agent
-             ↓ manages
-         proxy-a → conductor2 → proxy-d
-                      ↓ manages
-                  proxy-b → proxy-c
-```
-
-The conductor handles process management, capability negotiation, and message routing, but these are implementation details - the protocol only specifies the message formats and capability requirements.
-
-### What's the current implementation status?
-
-A prototype version of this proposal has been implemented and is available on crates.io as the crates
-
-* `sacp` -- base ACP protocol SDK
-  * `sacp-tokio` -- adds specific utilities for use with the `tokio` runtime
-* `sacp-proxy` -- extensions for implementing a proxy
-  * `sacp-rmcp` -- adds specific proxy extension traits for bridging to the rmcp crate
-* sacp-conductor -- reference conductor implementation
-
-The canonical sources for those crates is currently the \[symposium-dev/symposium-acp] repository. However, copies have been upstreamed to the [agentclientprotocol/rust-sdk](https://github.com/agentclientprotocol/rust-sdk/tree/main/src/sacp-conductor) repository and, if and when this RFD is accepted, that will become the canonical home.
 
 ### Why not just cascade ACP commands without protocol changes?
 
@@ -11844,6 +8297,22 @@ Even with a conductor, proxies could communicate directly with their successors 
 This supports running proxies as isolated WebAssembly components with minimal capabilities. It also removes redundant logic: without the conductor routing messages, each proxy would need to manage connections to its successor.
 
 The conductor handles process management, capability negotiation, and message routing, allowing proxies to focus on transformation logic.
+
+### How does the standard conductor implementation work?
+
+The `sacp-conductor` reference implementation can form trees of proxy chains. It can be configured to run in proxy mode (expecting `proxy/initialize`) or terminal mode (expecting `initialize`). When the last proxy in its managed chain sends a message to its successor, the conductor forwards that message to its own parent conductor (if in proxy mode) or to the final agent (if in terminal mode).
+
+This enables hierarchical structures like:
+
+```
+client → conductor1 → final-agent
+             ↓ manages
+         proxy-a → conductor2 → proxy-d
+                      ↓ manages
+                  proxy-b → proxy-c
+```
+
+The conductor handles process management, capability negotiation, and message routing, but these are implementation details - the protocol only specifies the message formats and capability requirements.
 
 ### What about security concerns with proxy chains?
 
@@ -11897,23 +8366,22 @@ The current design assumes a linear chain where each proxy has a single successo
 
 When `peer` is omitted, the message goes to the default successor (backwards compatible with the current linear chain model). When present, it specifies which peer the message is intended for. The `proxy/initialize` response could be extended to enumerate available peers, enabling proxies to discover and coordinate between multiple downstream components.
 
-### Why are MCP and proxy messages separate instead of unified as "peers"?
+### What's the current implementation status?
 
-The `mcp/*` messages and `proxy/successor` are structurally similar - both wrap an inner message and route it to a destination. A unified design might use `peer/connect`, `peer/message`, and `peer/disconnect` for everything, where the successor is just another peer (with `peer: "successor"`).
+A prototype version of this proposal has been implemented and is available on crates.io as the crates:
 
-We kept them separate because successors and MCP servers have different lifecycle semantics:
+* `sacp` -- base ACP protocol SDK
+  * `sacp-tokio` -- adds specific utilities for use with the `tokio` runtime
+* `sacp-proxy` -- extensions for implementing a proxy
+  * `sacp-rmcp` -- adds specific proxy extension traits for bridging to the rmcp crate
+* `sacp-conductor` -- reference conductor implementation
 
-* **Successors** are implicit and permanent. When a proxy receives `proxy/initialize`, its successor already exists and will exist for the proxy's entire lifetime. The proxy doesn't need to think about connecting or disconnecting - it just forwards messages. This simplicity is intentional: proxies shouldn't need to manage successor lifecycle, and the conductor doesn't need to handle dynamic successor creation.
-
-* **MCP servers** require explicit connection management. When the conductor bridges an MCP server via stdio, it spawns a new process. Multiple connections to the same MCP server are possible (different connection IDs). The `mcp/connect` and `mcp/disconnect` lifecycle is necessary because these connections are dynamic and multiplexed.
-
-A unified `peer/*` approach would require proxies to explicitly connect to their successor on startup, implying more generality than the current design intends. It would also require the conductor to support starting successors multiple times, which adds complexity for a capability we don't currently need.
-
-That said, if M:N topologies become common, revisiting this unification might make sense, and the MCP server protocol could be a model for more general "peers".
+The canonical sources for those crates is currently the \[symposium-dev/symposium-acp] repository. However, copies have been upstreamed to the [agentclientprotocol/rust-sdk](https://github.com/agentclientprotocol/rust-sdk/tree/main/src/sacp-conductor) repository and, if and when this RFD is accepted, that will become the canonical home.
 
 ## Revision history
 
-Initial draft based on working implementation in symposium-acp repository.
+* Initial draft based on working implementation in symposium-acp repository.
+* Split MCP-over-ACP transport into [separate RFD](./mcp-over-acp) to enable independent use by any ACP component.
 
 
 # Request Cancellation Mechanism
@@ -12115,6 +8583,928 @@ This ensures complete cleanup and prevents resource leaks.
 * 2025-12-09: Mirror LSP behavior.
 
 
+# Rust SDK based on SACP
+Source: https://agentclientprotocol.com/rfds/rust-sdk-v1
+
+
+
+Author(s): [nikomatsakis](https://github.com/nikomatsakis)
+
+## Elevator pitch
+
+> What are you proposing to change?
+
+Replace the current ACP Rust SDK with a new implementation based on SACP (Symposium ACP). The new SDK provides a component-based architecture with builder patterns, explicit message ordering guarantees, and first-class support for [Proxy Chains](./proxy-chains) and [MCP-over-ACP](./mcp-over-acp).
+
+## Status quo
+
+> How do things work today and what problems does this cause? Why would we change things?
+
+The current `agent-client-protocol` crate has a straightforward design with trait-based callbacks for common ACP methods and well-typed requests and responses. It's convenient for simple purposes but quickly becomes awkward when attempting more complex designs.
+
+Two examples that we found pushed the limits of the design are the *conductor* (from the [proxy chains](./proxy-chains) RFD) and the [patchwork-rs](https://patchwork-lang.github.io/patchwork-rs/) project:
+
+The Conductor is an orchestrator that routes messages between proxies, agents, and MCP servers. It must adapt messages as they flow through the system and maintain the correct ordering.
+
+Patchwork is a programmatic interface for working with agents. It allows Rust programs to run prompts that provide custom tools (implemented using [MCP-over-ACP](./mcp-over-acp)) and messages:
+
+```rust theme={null}
+let mut results = Vec::new();
+
+let _: () = patchwork.think()
+    .text("Process each item and record it using the `record` tool")
+    .tool(
+        "record",
+        "Record a processed item",
+        async |input: RecordInput, _cx| {
+            results.push(input.item);
+            Ok(RecordOutput { success: true })
+        },
+        acp::tool_fn_mut!(),
+    )
+    .await?;
+
+// After the think block, `results` contains all recorded items
+println!("Recorded: {:?}", results);
+```
+
+### Limitation: Handlers can't send messages
+
+The current SDK uses traits like `Agent` where handler methods receive only the request and return only the response:
+
+```rust theme={null}
+#[async_trait]
+pub trait Agent {
+    async fn prompt(&self, args: PromptRequest) -> Result<PromptResponse>;
+    // ...
+}
+```
+
+There's no (easy) way to send messages back to the client from within a handler. If you want to send a `SessionNotification` while processing a prompt, you need to obtain an `AgentSideConnection` through some other means and coordinate access yourself.
+
+This is awkward for agents (which want to stream progress during prompt processing) and prohibitive for proxies (which need to forward messages to their successor while handling a request from their predecessor).
+
+**Goal:** Handlers should receive a context parameter that provides methods to send requests and notifications back through the connection.
+
+### Limitation: Fixed set of handlers
+
+ACP is an extensible protocol where users can add their own method names beginning with `_`. The current SDK uses a trait which means that it cannot offer "first-class" support for user-defined requests/notifications. Instead, these are handled using extension methods (`ext_method`, `ext_notification`). These methods have no static typing and require the user to work with raw JSON.
+
+**Goal:** Allow SDK users to define their own request/notification types that are handled in the same fashion as built-in types.
+
+### Limitation: Message handlers must be the same across all session
+
+The current API always executes the same handler code for a particular method (e.g., a session/update). If different handling is required for a particular session, that handler must maintain some kind of map from session-id to identify what handling is required, which is non-trivial bookkeeping that can become awkward. As an example of how complex this can get, consider the [elaborate message forwarding scheme](https://nikomatsakis.github.io/threadbare/agent.html#full-trace-nested-think) used by older versions of patchwork.
+
+**Goal:** Allow SDK users to add/remove "dynamic" handlers that are specific to a particular session or other part of the protocol. These handlers should be closures so they can capture state.
+
+### Limitation: No ordering guarantees
+
+In the current SDK, every incoming request or notification results is handled in a freshly spawned task. This means that it is not possible to guarantee that requests or notifications are handled in the order they arrive. It is also not possible to be sure that a notification is fully handled before the response to another request; this makes it difficult to, for example, be sure that a `session/update` notification is handled before the turn is ended (which is sent as the response to the `prompt` request). This is essential for an application like patchwork, which wishes to fully capture the updates before returning.
+
+**Goal:** Handlers should block message processing to allow them to ensure that they fully process a message before other messages are processed.
+
+### Limitation: Confusing naming and 1:1 assumption
+
+`AgentSideConnection` is ambiguous - does this represent the agent, or the connection *to* an agent? What's more, the SDK currently assumes that each connection has a single peer, but [proxies](./proxy-chains) may wish to send/receive messages from multiple peers (client or agent). This was a constant source of confusion in early versions of the conductor and frequently required the author to get out a pencil and paper and work things out very carefully.
+
+**Goal:** Use directional naming like `ClientToAgent` that makes relationships explicit: "I am the client, the remote peer is an agent." Enable multiple peers.
+
+### Limitation: Awkward to connect components
+
+When building tests and other applications, it's convenient to be able to create a client and connect it directly to an agent, leaving the plumbing to the framework. The current SDK only accepts channels and byte-streams which creates unnecessary boilerplate.
+
+**Goal:** Provide a `Component` trait that abstracts over anything that can connect to an ACP transport, enabling uniform handling in orchestration scenarios.
+
+### Challenge: Executor independence and starvation freedom
+
+This isn't a limitation of the current SDK per se, but a common pitfall in async Rust designs that we want to address.
+
+We want the SDK to be independent from specific executors (not tied to tokio) while still supporting richer patterns like spawning background tasks. One specific common issue with Rust async APIs is *starvation*, which can occur with stream-like APIs where it is important to keep awaiting the stream so that items make progress. For example, in a setup like this one, the "connection" is not being "awaited" while each message is handled:
+
+```rust theme={null}
+// PROBLEMATIC: message handling starves while processing
+while let Some(message) = connection.next().await {
+    process(message).await; // connection is quiescent during this await!
+}
+```
+
+With careful design, it is possible to avoid these hazards. The most common way is either to spawn tasks (which then ties one to a specific executor) or to use "interior iteration" style APIs like `for_each` or `run_until`:
+
+```rust theme={null}
+// CORRECT: message handling continues concurrently
+connection.run_until(async |cx| {
+    // The connection processes messages while this code runs
+    let response = cx.send_request(request).block_task().await?;
+    process(response).await
+}).await
+```
+
+**Goal:** Provide APIs that are starvation-free by design, making it difficult to accidentally block message processing.
+
+## What we propose to do about it
+
+> What are you proposing to improve the situation?
+
+We propose to adopt the design and implementation from [`sacp`](https://github.com/symposium-dev/symposium-acp/) (developed as part of the [Symposium project](https://symposium.dev)) as the foundation for `agent-client-protocol` v1.0. The `sacp` crates will be imported into this repository and renamed:
+
+| Current             | New name                             |
+| ------------------- | ------------------------------------ |
+| `sacp`              | `agent-client-protocol` (v1.0)       |
+| `sacp-derive`       | `agent-client-protocol-derive`       |
+| `sacp-tokio`        | `agent-client-protocol-tokio`        |
+| `sacp-rmcp`         | `agent-client-protocol-rmcp`         |
+| `sacp-conductor`    | `agent-client-protocol-conductor`    |
+| `sacp-test`         | `agent-client-protocol-test`         |
+| `sacp-tee`          | `agent-client-protocol-tee`          |
+| `sacp-trace-viewer` | `agent-client-protocol-trace-viewer` |
+
+The `sacp` crates will then be deprecated in favor of the `agent-client-protocol` family. The new SDK addresses the limitations above through a builder-based API with explicit connection semantics.
+
+The following table summarizes the key API concepts and which goals they address:
+
+| API Concept                                                                         | Goals Addressed                           |
+| ----------------------------------------------------------------------------------- | ----------------------------------------- |
+| [Link types](#link-types-and-directional-naming) (`ClientToAgent`, `AgentToClient`) | Confusing naming, 1:1 assumption          |
+| [`Component` trait + `connect_to`](#the-component-trait-and-connect_to)             | Awkward to connect components             |
+| [Connection context (`cx`)](#sending-messages)                                      | Handlers can't send messages              |
+| [`on_receive_*` handlers](#handling-messages) with closure types                    | Fixed set of handlers                     |
+| [`serve` / `run_until`](#running-connections-serve-and-run_until)                   | Executor independence, starvation freedom |
+| [Session builders + dynamic handlers](#session-builders-and-mcp-servers)            | Handlers must be same across sessions     |
+| [Ordering guarantees + `spawn`](#controlling-ordering)                              | No ordering guarantees                    |
+
+We have validated the design by implementing a number of use cases:
+
+* **sacp-conductor** (to be renamed **agent-client-protocol-conductor**) - implementation of the conductor from the [proxy chains](./proxy-chains) RFD
+* [Patchwork](https://patchwork-lang.github.io/patchwork-rs/) - programmatic agent orchestration
+* **elizacp** - agent implementing the classic ELIZA program
+* **agent-client-protocol-tee** - proxy that logs messages before forwarding
+* **yopo** ("You Only Prompt Once") - CLI tool for single prompts
+
+The [Deep dive](#deep-dive) section below walks through each concept in detail.
+
+## Deep dive
+
+This section walks through the SDK concepts in detail, organized by what you're trying to do.
+
+### Getting up and going
+
+#### Link types and directional naming
+
+The SDK is organized around *link types* that describe who you are and who you're talking to. The two most common examples are:
+
+* `ClientToAgent` - "I am a client, connecting to an agent"
+* `AgentToClient` - "I am an agent, serving a client"
+
+To build a connection, start with the link type and invoke the `builder` method. Builders use the typical "fluent" style:
+
+```rust theme={null}
+// As a client connecting to an agent
+ClientToAgent::builder()
+    .name("my-client") // optional, useful for tracing
+```
+
+```rust theme={null}
+// As an agent serving clients
+AgentToClient::builder()
+    .name("my-agent") // optional, useful for tracing
+```
+
+Most types in the SDK are parameterized by the link type. This helps document the intent of the connection and also determines default method handling when no event handler is registered. (Both `ClientToAgent` and `AgentToClient` generally error on unhandled messages, but proxies default to forwarding.)
+
+#### The `Component` trait and `connect_to`
+
+The `connect_to` method connects your builder to the other side. The argument can be anything that implements the `Component<Link>` trait, which abstracts over anything that can communicate via JSON-RPC:
+
+```rust theme={null}
+// Connect to an agent over stdio
+ClientToAgent::builder()
+    .connect_to(acp::stdio())
+```
+
+The `AcpAgent` type allows connecting to an external ACP agent or agent extension:
+
+```rust theme={null}
+// Connect to a specific agent by command
+ClientToAgent::builder()
+    .connect_to(AcpAgent::from_str("some-command --acp"))
+
+// Connect to Zed's Claude Code integration
+ClientToAgent::builder()
+    .connect_to(AcpAgent::zed_claude_code())
+```
+
+For testing, you can connect builders directly to each other - no transport setup required:
+
+```rust theme={null}
+ClientToAgent::builder()
+    .connect_to(AgentToClient::builder())
+```
+
+Or connect to a struct that implements `Component`:
+
+```rust theme={null}
+impl Component<AgentToClient> for MyAgent {
+    async fn serve(self, client: impl Component<ClientToAgent>) -> Result<(), acp::Error> {
+        AgentToClient::builder()
+            .on_receive_request(/* ... */)
+            .serve(client)
+            .await
+    }
+}
+
+// Connect client directly to agent - useful for testing
+ClientToAgent::builder()
+    .connect_to(MyAgent::new())
+```
+
+#### Running connections: `serve` and `run_until`
+
+The `connect_to` method returns a `JrConnection`, but that connection is inert until executed. There are two ways to run it.
+
+**`serve()`** runs until the connection is closed. This is for "reactive" components that respond to incoming messages:
+
+```rust theme={null}
+AgentToClient::builder()
+    .name("my-agent")
+    .on_receive_request(/* ... */)
+    .connect_to(transport)?
+    .serve()
+    .await
+```
+
+**`run_until()`** takes an async closure and runs your code concurrently with message handling. The closure receives a *connection context* (conventionally called `cx`) - this is how you interact with the connection, sending messages, spawning tasks, and adding dynamic handlers. When the closure returns, the connection closes:
+
+```rust theme={null}
+ClientToAgent::builder()
+    .name("my-client")
+    .connect_to(transport)?
+    .run_until(async |cx| {
+        // Your code runs here while messages are handled in the background.
+        // Use `cx` to send requests and notifications.
+        let response = cx.send_request(InitializeRequest::new(ProtocolVersion::LATEST))
+            .block_task().await?;
+        Ok(response)
+    })
+    .await
+```
+
+The `run_until` pattern directly addresses starvation. Instead of exposing an async stream that users might accidentally block, `run_until` runs your code *concurrently* with message handling.
+
+The `cx` type (`JrConnectionCx`) follows the "handle" pattern: cloned values refer to the same connection. It's `'static` so it can be sent across threads or stored in structs. Handlers registered with `on_receive_*` also receive a `cx` parameter.
+
+### Sending messages
+
+#### Sending notifications
+
+Use `cx.send_notification()` to send a notification. It returns a `Result` that is `Err` if the connection is broken:
+
+```rust theme={null}
+cx.send_notification(StatusNotification::new("processing"))?;
+```
+
+#### Sending requests
+
+Use `cx.send_request()` to send a request. This returns a handle for managing the response:
+
+```rust theme={null}
+let response_handle = cx.send_request(PromptRequest::new(session_id, messages));
+```
+
+The handle is not the response itself - that may not have arrived yet. You have two options for getting it:
+
+**`on_response` / `on_ok_response`** registers a handler that runs when the response arrives:
+
+```rust theme={null}
+cx.send_request(PromptRequest::new(session_id, messages))
+    .on_ok_response(
+        async move |response: PromptResponse, cx| {
+            println!("Agent finished: {:?}", response.stop_reason);
+            Ok(())
+        },
+        acp::on_response!()
+    )?;
+```
+
+**`block_task`** returns a future you can await:
+
+```rust theme={null}
+let response: PromptResponse = cx.send_request(PromptRequest::new(session_id, messages))
+    .block_task()
+    .await?;
+```
+
+The `block_task` approach is convenient but dangerous in handlers (methods that begin with `on_`). See [Controlling ordering](#controlling-ordering) for details.
+
+### Controlling ordering
+
+#### Atomic handlers
+
+Handler methods (methods whose names begin with `on_`) execute in the order messages arrive. Each handler must complete before the next message is processed:
+
+```rust theme={null}
+.on_receive_request(async |req: PromptRequest, request_cx, cx| {
+    // No other messages will be processed while this runs
+    cx.send_notification(StatusNotification::new("processing"))?;
+    // The notification is guaranteed to be sent before the response
+    request_cx.respond(PromptResponse::new(StopReason::EndTurn))
+}, acp::on_receive_request!())
+```
+
+#### `block_task` and deadlock
+
+Using `block_task` inside a handler creates a deadlock: the handler waits for a response, but responses can't be processed until the handler completes.
+
+```rust theme={null}
+// WRONG - will deadlock
+.on_receive_request(async |req: PromptRequest, request_cx, cx| {
+    let response = cx.send_request(SomeOtherRequest::new())
+        .block_task()  // Deadlock! Handler blocks waiting for response
+        .await?;       // but responses can't be processed until handler returns
+    request_cx.respond(/* ... */)
+}, acp::on_receive_request!())
+```
+
+Use `on_response` instead, or spawn a task.
+
+#### Spawning tasks
+
+Use `cx.spawn` to run work concurrently with message handling:
+
+```rust theme={null}
+.on_receive_request(async |request: PromptRequest, request_cx, cx| {
+    cx.spawn(async move {
+        // Safe to use block_task here - we're in a spawned task
+        let response = cx.send_request(InitializeRequest::new(ProtocolVersion::LATEST))
+            .block_task()
+            .await?;
+        /* ... */
+        Ok(())
+    })?;
+
+    // Handler returns immediately, spawned work continues
+    request_cx.respond(/* ... */)
+}, acp::on_receive_request!())
+```
+
+Spawned tasks are tracked in the `JrConnectionCx` and don't require runtime-specific spawning.
+
+### Client sessions
+
+When a client sends a `NewSessionRequest`, agents typically need to set up session-specific state: handlers that only apply to this session, MCP servers with tools tailored to the workspace, or initialization logic that runs once the session is confirmed.
+
+#### Session builders
+
+The session builder API provides a fluent interface for configuring sessions. Start with `cx.build_session()` or `cx.build_session_from()` and chain configuration methods:
+
+```rust theme={null}
+cx.build_session("/path/to/workspace")
+    .with_mcp_server(my_mcp_server)?    // Attach MCP servers (see below)
+    // ... additional configuration
+```
+
+MCP servers provide tools that the agent can invoke. We'll show how to define them in the examples below.
+
+#### Running sessions with `run_until`
+
+The primary way to run a session is with `block_task().run_until()`. This pattern allows your closure to capture borrowed state from the surrounding scope - no `'static` requirement:
+
+```rust theme={null}
+// Inside a run_until closure (not a handler)
+let workspace_path = Path::new("/my/workspace");
+
+cx.build_session(workspace_path)
+    .with_mcp_server(
+        McpServer::builder("tools")
+            .tool_fn("get_path", "Returns the path", async move |_: (), _| {
+                // Can capture `workspace_path` by reference!
+                Ok(workspace_path.display().to_string())
+            }, acp::tool_fn!())
+            .build()
+    )?
+    .block_task()
+    .run_until(async |mut session| {
+        session.send_prompt("What is the workspace path?")?;
+        let response = session.read_to_string().await?;
+        println!("{response}");
+        Ok(())
+    })
+    .await?;
+```
+
+The `run_until` closure receives an `ActiveSession` with methods for interacting with the agent:
+
+* **`send_prompt(text)`** - Send a prompt to the agent
+* **`read_to_string()`** - Read all updates until the turn ends, returning text content
+* **`read_update()`** - Read individual updates for fine-grained control
+
+For more complex MCP servers, you can use the standard rmcp API via the `agent-client-protocol-rmcp` crate:
+
+```rust theme={null}
+use agent_client_protocol_rmcp::RmcpServer;
+
+cx.build_session(workspace_path)
+    .with_mcp_server(RmcpServer::new(my_rmcp_service))?
+    // ...
+```
+
+#### Non-blocking sessions with `on_session_start`
+
+When you need to start a session from inside an `on_receive_*` handler but can't block, use `on_session_start`. This spawns the session work and returns immediately:
+
+```rust theme={null}
+.on_receive_request(async |req: NewSessionRequest, request_cx, cx| {
+    cx.build_session_from(req)
+        .with_mcp_server(my_mcp_server)?
+        .on_session_start(async |mut session| {
+            session.send_prompt("Hello")?;
+            let response = session.read_to_string().await?;
+            Ok(())
+        })?;
+
+    // Handler returns immediately, session runs in background
+    Ok(())
+}, acp::on_receive_request!())
+```
+
+Note that `on_session_start` requires `'static` - closures and MCP servers cannot borrow from the surrounding scope. Use owned data or `Arc` for shared state.
+
+#### `start_session` and proxy sessions
+
+For cases where you want to avoid the rightward drift of `run_until` but still need blocking behavior, `start_session` returns an `ActiveSession` handle directly:
+
+```rust theme={null}
+let mut session = cx.build_session(workspace_path)
+    .with_mcp_server(my_mcp_server)?
+    .block_task()
+    .start_session()
+    .await?;
+
+session.send_prompt("Hello")?;
+let response = session.read_to_string().await?;
+```
+
+Like `on_session_start`, this requires `'static` for closures and MCP servers.
+
+For proxies that want to inject MCP servers but otherwise forward all messages, use `start_session_proxy`:
+
+```rust theme={null}
+.on_receive_request(async |req: NewSessionRequest, request_cx, cx| {
+    let session_id = cx.build_session_from(req)
+        .with_mcp_server(injected_tools)?
+        .block_task()
+        .start_session_proxy(request_cx)
+        .await?;
+
+    // Session messages are automatically proxied between client and agent
+    Ok(())
+}, acp::on_receive_request!())
+```
+
+### Handling messages
+
+#### Notification handlers
+
+Register handlers using `on_receive_notification`. The closure's first argument type determines which notification type it handles:
+
+```rust theme={null}
+AgentToClient::builder()
+    .on_receive_notification(
+        async |notif: SessionNotification, cx| {
+            //        -------------------
+            //        Expected notification type
+            println!("Session update: {:?}", notif.update);
+            Ok(())
+        },
+        acp::on_receive_notification!(), // <-- Hacky macro argument required
+    )
+```
+
+Note the 'hacky macro argument'. This is required due to current limitations in async closures. It can be removed once [Return Type Notation](https://github.com/rust-lang/rfcs/pull/3654) is stabilized and [issue #149407](https://github.com/rust-lang/rust/issues/149407) is fixed.
+
+#### Request handlers
+
+Request handlers receive an additional `request_cx` parameter for sending the response:
+
+```rust theme={null}
+.on_receive_request(
+    async |req: PromptRequest, request_cx, cx| {
+        // Process the request...
+        cx.send_notification(StatusNotification::new("processing"))?;
+
+        // Send the response
+        request_cx.respond(PromptResponse::new(StopReason::EndTurn))
+    },
+    acp::on_receive_request!(),
+)
+```
+
+The `request_cx` is `#[must_use]` - the compiler warns if you forget to send a response. It provides three methods:
+
+* **`respond(response)`** - Send a successful response
+* **`respond_with_error(error)`** - Send an error response
+* **`respond_with_result(result)`** - Send either, based on a `Result`
+
+The `request_cx` is `Send`, so you can move it to another task or thread if you need to respond asynchronously:
+
+```rust theme={null}
+.on_receive_request(
+    async |req: LongRunningRequest, request_cx, cx| {
+        cx.spawn(async move {
+            let result = do_expensive_work(&req).await;
+            request_cx.respond_with_result(result)
+        });
+        Ok(())
+    },
+    acp::on_receive_request!(),
+)
+```
+
+### Custom message types
+
+Define custom notifications and requests using derive macros:
+
+```rust theme={null}
+#[derive(Debug, Serialize, Deserialize, JsonSchema, JrNotification)]
+#[notification(method = "_myapp/progress")]
+struct ProgressNotification {
+    percent: u32,
+    message: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, JsonSchema, JrRequest)]
+#[request(method = "_myapp/compute", response = ComputeResponse)]
+struct ComputeRequest {
+    input: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, JsonSchema)]
+struct ComputeResponse {
+    result: String,
+}
+```
+
+Custom types work exactly like built-in types - no special `ext_notification` path required:
+
+```rust theme={null}
+ClientToAgent::builder()
+    .on_receive_notification(
+        async |notif: ProgressNotification, cx| {
+            println!("Progress: {}% - {}", notif.percent, notif.message);
+            Ok(())
+        },
+        acp::on_receive_notification!()
+    )
+```
+
+#### Generic message handlers
+
+Use `on_receive_message` with `MessageCx` to intercept any incoming message (request or notification) before typed handlers:
+
+```rust theme={null}
+.on_receive_message(
+    async |message: MessageCx, cx| {
+        // Forward all messages to another thread for processing
+        message_sender.send(message)?;
+        Ok(())
+    },
+    acp::on_receive_message!(),
+)
+```
+
+`MessageCx` is useful for forwarding, logging, or other scenarios where you need to intercept messages before typed dispatch.
+
+### Message handling in depth
+
+#### Handler chains
+
+A *message handler* takes ownership of a message and either handles it or returns a (possibly modified) copy to be tried by the next handler. Handlers are chained together - each gets a chance to claim the message before it passes to the next.
+
+```mermaid theme={null}
+flowchart TD
+    MSG[Incoming Message] --> STATIC
+
+    subgraph STATIC[Static Handlers]
+        S1[Handler 1] --> S2[Handler 2] --> S3[Handler n...]
+    end
+
+    STATIC -->|not claimed| DYNAMIC
+
+    subgraph DYNAMIC[Dynamic Handlers]
+        D1[Session handlers, etc.]
+    end
+
+    DYNAMIC -->|not claimed| DEFAULT[Link Default Handler]
+    DEFAULT -->|not claimed| UNHANDLED{Unhandled}
+
+    UNHANDLED -->|retry: false| ERROR[Send error response]
+    UNHANDLED -->|retry: true| QUEUE[Queue for retry]
+    QUEUE -->|new handler added| DYNAMIC
+```
+
+**Static handlers** are registered at build time via `.on_receive_request()`, etc. They're tried in registration order.
+
+**Dynamic handlers** are added at runtime via `cx.add_dynamic_handler()`. They're useful for sub-protocols where groups of related messages are identified by some kind of ID. For example, session messages all share a `session_id` - a dynamic handler can be registered for each session to handle its messages.
+
+**Link default handler** provides fallback behavior based on the link type (e.g., proxies forward unhandled messages).
+
+#### Message handlers
+
+The `JrMessageHandler` trait defines how handlers work:
+
+```rust theme={null}
+pub trait JrMessageHandler: Send {
+    type Link: JrLink;
+
+    async fn handle_message(
+        &mut self,
+        message: MessageCx,
+        cx: JrConnectionCx<Self::Link>,
+    ) -> Result<Handled<MessageCx>, Error>;
+}
+```
+
+The handler takes ownership of the message. If it handles the message, it returns `Handled::Yes`. If not, it returns ownership via `Handled::No { message, retry }` so the next handler can try:
+
+```rust theme={null}
+pub enum Handled<T> {
+    Yes,
+    No { message: T, retry: bool },
+}
+```
+
+**The `retry` flag**: If any of the static or dynamic handlers returns `retry: true`, and no handler ultimately claims the message, it gets queued and offered to each new dynamic handler as it's added. This solves a race condition with sessions: messages for a session may arrive before the session's dynamic handler is registered.
+
+The default handlers for `ClientToAgent` and `AgentToClient` already set `retry: true` for session messages with unrecognized session IDs, so you typically don't need to handle this yourself.
+
+For convenience, handlers can return `Ok(())` which is equivalent to `Handled::Yes`.
+
+Handlers can also modify the message before passing it along:
+
+```rust theme={null}
+.on_receive_request(async |mut req: EchoRequest, request_cx, cx| {
+    req.text.push("modified".to_string());
+    Ok(Handled::No {
+        message: (req, request_cx),
+        retry: false,
+    })
+}, acp::on_receive_request!())
+```
+
+#### Registering dynamic handlers
+
+Register dynamic handlers at runtime for session-specific or protocol-specific message handling:
+
+```rust theme={null}
+let registration = cx.add_dynamic_handler(MySessionHandler::new(session_id))?;
+```
+
+When `registration` is dropped, the dynamic handler is removed. To keep it alive indefinitely, call `run_indefinitely()`:
+
+```rust theme={null}
+registration.run_indefinitely();
+```
+
+#### Default handling from link type
+
+Each link type defines default handling for unhandled messages. For example:
+
+* **`ClientToAgent`** - Errors on unhandled requests, ignores unhandled notifications
+* **`ProxyToConductor`** - Forwards unhandled messages to the next component
+
+You only need to register handlers for messages you want to intercept.
+
+#### MatchMessage for implementing handlers
+
+When implementing `JrMessageHandler` directly, `MatchMessage` provides ergonomic dispatch:
+
+```rust theme={null}
+impl JrMessageHandler for MyHandler {
+    type Link = AgentToClient;
+
+    async fn handle_message(
+        &mut self,
+        message: MessageCx,
+        cx: JrConnectionCx<Self::Link>,
+    ) -> Result<Handled<MessageCx>, Error> {
+        MatchMessage::new(message)
+            .if_request(async |req: InitializeRequest, request_cx| {
+                request_cx.respond(InitializeResponse::new(req.protocol_version))
+            })
+            .if_request(async |req: PromptRequest, request_cx| {
+                request_cx.respond(PromptResponse::new(StopReason::EndTurn))
+            })
+            .if_notification(async |notif: SessionNotification| {
+                log::info!("Session update: {:?}", notif);
+                Ok(())
+            })
+            .await
+            .done()
+    }
+}
+```
+
+For proxies with multiple peers, `MatchMessageFrom` dispatches based on message source:
+
+```rust theme={null}
+MatchMessageFrom::new(message, &cx)
+    .if_request_from(Client, async |req: PromptRequest, request_cx| {
+        // Handle requests from the client
+    })
+    .if_notification_from(Agent, async |notif: SessionNotification| {
+        // Handle notifications from the agent
+    })
+    .await
+    .done()
+```
+
+### Error handling
+
+Errors in handlers tear down the connection. If a handler returns an `Err`, the connection closes and all pending operations fail.
+
+For request handlers, you can propagate error responses instead of tearing down the connection:
+
+```rust theme={null}
+.on_receive_request(async |req: ComputeRequest, request_cx, cx| {
+    match process(&req) {
+        Ok(result) => request_cx.respond(ComputeResponse { result }),
+        Err(e) => request_cx.respond_err(JsonRpcError::new(
+            ErrorCode::InvalidParams,
+            format!("Failed to process: {}", e),
+        )),
+    }
+}, acp::on_receive_request!())
+```
+
+### Writing proxies
+
+#### Multiple peers
+
+Simple link types like `ClientToAgent` have one remote peer. Proxy link types like `ProxyToConductor` have two: `Client` (predecessor) and `Agent` (successor).
+
+With multiple peers, you must explicitly name which peer you're communicating with:
+
+```rust theme={null}
+ProxyToConductor::builder()
+    .on_receive_notification_from(
+        acp::Agent, // <-- Receive from the agent
+        async |notif: SessionNotification, cx| {
+            cx.send_notification_to(acp::Client, notif)?;
+            //                      -----------
+            //                   Send to the client
+            Ok(())
+        },
+        acp::on_receive_notification!(),
+    )
+```
+
+#### Default forwarding
+
+For proxies, the default handling is typically `Forward` - unhandled messages pass through to the next component. You only need to register handlers for messages you want to intercept or modify.
+
+#### Session builders for proxies
+
+Proxies can add session-scoped handlers:
+
+```rust theme={null}
+cx.build_session_from(req)
+    .on_receive_notification(async |notif: SessionNotification, cx| {
+        // This handler only runs for this session
+        log_notification(&notif);
+        Ok(())
+    }, acp::on_receive_notification!())
+    .on_proxy_session_start(request_cx, async |_| Ok(()))
+```
+
+### Advanced: Defining custom link types
+
+Link types define the relationship between peers. The SDK provides built-in types, but you can define your own:
+
+```rust theme={null}
+use acp::link::{JrLink, LinkDirection};
+
+pub struct MyCustomLink;
+
+impl JrLink for MyCustomLink {
+    type ConnectsTo = OtherSideLink;
+
+    fn direction() -> LinkDirection {
+        LinkDirection::Outbound // We initiate the connection
+    }
+
+    fn default_request_handling() -> DefaultHandling {
+        DefaultHandling::Error // Unknown requests return an error
+    }
+
+    fn default_notification_handling() -> DefaultHandling {
+        DefaultHandling::Ignore // Unknown notifications are silently dropped
+    }
+}
+```
+
+## Shiny future
+
+> How will things play out once this feature exists?
+
+### Unified Rust ACP experience
+
+The Rust ecosystem will have a single SDK for ACP development. Whether you're building a simple client, a proxy chain, or a programmatic orchestration framework like patchwork-rs, the same SDK handles all cases.
+
+### Smooth transition from the current SDK
+
+The new SDK is more ergonomic than the current trait-based approach, so migration should be straightforward for most users. The builder pattern with context parameters (`cx`) replaces the `AgentSideConnection` pattern, and the directional naming (`ClientToAgent` vs `AgentSideConnection`) makes code clearer.
+
+We can provide migration guidance and potentially a thin compatibility layer for common patterns, but most users will find the new code simpler than the old.
+
+### Potential crate reorganization
+
+Currently, `agent-client-protocol` contains both generic JSON-RPC machinery (builder patterns, message handling, connection management) and ACP-specific types (link types, schema integration). In the future, it might be valuable to split the generic JSON-RPC layer into its own crate.
+
+However, this is complicated by the trait implementations: the generic traits need to be implemented for ACP types currently defined in the schema crate. We'd need to carefully consider where type definitions live to avoid orphan rule issues. This reorganization isn't blocking for the initial adoption.
+
+### Cross-language SDK alignment
+
+The design principles here - builder patterns, context parameters, directional naming, component abstractions - aren't Rust-specific. They represent good SDK design that could inform TypeScript and other language SDKs.
+
+This doesn't mean other SDKs should be ports of the Rust SDK. Each language has its own idioms. But the core ideas (explicit message ordering, composable components, context in callbacks) translate across languages.
+
+### Foundation for protocol evolution
+
+The builder pattern and component model make it easier to evolve the ACP protocol. New methods can be added without breaking existing code. New component types (beyond client/agent/proxy) can be introduced by implementing the Component trait.
+
+## Implementation details and plan
+
+> Tell me more about your implementation. What is your detailed implementation plan?
+
+### Crate structure
+
+The new SDK is organized into several crates with clear responsibilities:
+
+* **`agent-client-protocol`** - Core SDK with builder patterns, link types, and component abstractions
+* **`agent-client-protocol-tokio`** - Tokio runtime integration (spawn, timers, I/O)
+* **`agent-client-protocol-rmcp`** - Bridge to the rmcp crate for MCP integration
+* **`agent-client-protocol-conductor`** - Reference conductor implementation
+* **`agent-client-protocol-derive`** - Derive macros for JSON-RPC traits
+* **`agent-client-protocol-test`** - Test utilities and mock implementations
+* **`agent-client-protocol-tee`** - Debugging proxy that logs all traffic
+* **`agent-client-protocol-trace-viewer`** - Interactive sequence diagram viewer for trace files
+
+### Current status
+
+A working implementation exists in the [symposium-dev/symposium-acp](https://github.com/symposium-dev/symposium-acp) repository and is published on crates.io. It powers:
+
+* The conductor (proxy chain orchestration)
+* patchwork-rs (programmatic agent orchestration)
+* Symposium (Rust development environment)
+
+### Migration path
+
+The transition involves importing the `sacp` implementation into this repository:
+
+1. **Import `sacp` crates** into this repository with the new `agent-client-protocol-*` naming
+2. **Release `agent-client-protocol` v1.0** with the new builder-based API
+3. **Deprecate `sacp` crates** on crates.io, pointing users to the `agent-client-protocol` family
+4. **Provide migration guidance** for users of the current v0.x SDK
+
+Most users will find the migration straightforward - the builder pattern is more ergonomic than the trait-based approach, so the new code is often simpler than the old.
+
+## Frequently asked questions
+
+> What questions have arisen over the course of authoring this document or during subsequent discussions?
+
+### What alternative approaches did you consider?
+
+We first attempted to build on the existing SDK but due to the limitations decided to try an alternative approach.
+
+### What about other language SDKs?
+
+We would like to try and adapt these ideas to other languages. It would be good if the SDKs for all languages took the same general approach. Most of the concerns in this document are not Rust-specific, though as often happens, the limitations become more annoying in Rust because of the limits imposed by the ownership system.
+
+### How does this relate to the Proxy Chains and MCP-over-ACP RFDs?
+
+This expanded SDK design is motivated by working through the use cases enabled by [proxy chains](./proxy-chains) and [MCP-over-ACP](./mcp-over-acp).
+
+### How well-tested is this design?
+
+The design has been used for a wide range of projects but the majority were written by the SDK author, though Amazon's kiro-cli team and the Goose client adopted sacp for their use case with minimal difficulty. Before we finalize the design, it would be good to have more adopters to help ensure that it meets all common needs.
+
+### Can I derive `JrRequest`/`JrNotification` on enums?
+
+Not currently. The derive macros only support structs with a single method name. For enums that group related messages (e.g., all session-related requests), you would need to implement the traits manually.
+
+This is a potential future enhancement - enum derives could dispatch to different methods per variant, which would be useful for `MessageCx<Req, Notif>` typed handlers. For now, use the untyped `MessageCx` with `MatchMessage` for this pattern.
+
+### What changes are needed before stabilizing?
+
+We are in the process of changing how response messages work to simplify the implementation of the conductor. Before stabilizing we should do a thorough review of the methods and look for candidates that can be removed or simplified.
+
+The conductor is feature complete but the support for MCP-over-ACP needs a few minor improvements (in particular, it should detect when the agent only supports stdio bridging and not attempt to use HTTP, which it currently does not).
+
+## Revision history
+
+* Initial draft based on working implementation in symposium-acp repository.
+
+
 # Session Config Options
 Source: https://agentclientprotocol.com/rfds/session-config-options
 
@@ -12145,6 +9535,8 @@ Since this space is moving fast, we ideally would find a more flexible option wi
 > What are you proposing to improve the situation?
 
 Instead, we can allow Agents to provide configuration options in the `session/new` response that not only provide a list of options, but also a `key` of some kind that is a unique identifier for that selector.
+
+Additionally, we can optionally allow an Agent to mark each option with a semantic category so that Clients can reliably distinguish broadly common option types (e.g. model selector vs session mode selector vs thought/reasoning level), without needing to infer meaning from the option `id` or `name`. This is intended for UX only (e.g. keyboard shortcuts, icons, preferred placement), and MUST NOT be required for correctness.
 
 When the Client receives or sends an update to this selector, it would require both the selector key and the key for the new value.
 
@@ -12179,6 +9571,7 @@ Something like an `InitializeResponse` that looks like:
         "id": "mode", // this is the unique `key` for communication about which option is being used
         "name": "Session Mode", // Human-readable label for the option
         "description": "Optional description for the Client to display to the user."
+        "category": "mode",
         "type": "select",
         "currentValue": "ask",
         "options": [
@@ -12197,6 +9590,7 @@ Something like an `InitializeResponse` that looks like:
       {
         "id": "models",
         "name": "Model",
+        "category": "model",
         "type": "select",
         "currentValue": "ask",
         "options": [
@@ -12216,6 +9610,23 @@ Something like an `InitializeResponse` that looks like:
   }
 }
 ```
+
+### Option category (optional)
+
+Each top-level config option MAY include an optional `category` field. This is intended to help Clients distinguish broadly common selectors and provide a consistent UX (for example, attaching keyboard shortcuts to the first option of a given category).
+
+In addition to `category`, Clients SHOULD use the ordering of the `configOptions` array as provided by the Agent as the primary way to establish priority and resolve ties. For example, if multiple options share the same `category`, a Client can prefer the first matching option in the list when assigning keyboard shortcuts or deciding which options to surface most prominently.
+
+`category` is semantic metadata and MUST NOT be required for correctness. Clients MUST handle missing or unknown categories gracefully.
+
+Category names beginning with `_` are free for custom use. Category names that do not begin with `_` are reserved for the ACP spec.
+
+Proposed enum:
+
+* `mode` - Session mode selector
+* `model` - Model selector
+* `thought_level` - Thought/reasoning level selector
+* Any string beginning with `_` - Custom category (e.g., `_my_custom_category`)
 
 When we introduce this, we could also allow for grouped options, in case there are logical sub-headers and groupings for the options in an individual selector.
 
@@ -12358,6 +9769,8 @@ This is a question we should discuss of how much complexity we want to introduce
 ## Revision history
 
 * 2025-10-29: Initial draft
+* 2026-01-09: Add option categories
+* 2026-01-15: Allow for category extensions
 
 
 # Forking of existing sessions
@@ -13590,6 +11003,24 @@ For agents that only provide usage during active prompting, the client UI may no
 Source: https://agentclientprotocol.com/updates
 
 Updates and announcements about the Agent Client Protocol
+
+<Update label="January 15, 2026">
+  ## Rust SDK based on SACP RFD moves to Draft stage
+
+  The RFD for basing the Rust SDK on SACP has been moved to Draft stage. Please review the [RFD](./rfds/rust-sdk-v1) for more information on the current proposal and provide feedback as work on the implementation begins.
+</Update>
+
+<Update label="January 15, 2025">
+  ## Session Config Options RFD moves to Preview stage
+
+  The RFD for adding more generic Session Config Options to the protocol has been moved to Preview stage. Please review the [RFD](./rfds/session-config-options) for more information on the current proposal and provide feedback before the feature is stabilized.
+</Update>
+
+<Update label="January 14, 2026">
+  ## Authentication Methods RFD moves to Draft stage
+
+  The RFD for creating additional types of authentication methods has been moved to Draft stage. Please review the [RFD](./rfds/auth-methods) for more information on the current proposal and provide feedback as work on the implementation begins.
+</Update>
 
 <Update label="January 1, 2026">
   ## Agent Registry RFD moves to Draft stage

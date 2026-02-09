@@ -8,7 +8,7 @@ All of the variables can also be [overridden via script](#set-variables-via-scri
 
 ## Set variables in your app
 
-Set variables [in code](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#variables) using the `.upsun/config.yaml` file.
+Set variables [in code](https://docs.upsun.com/create-apps/image-properties/variables.md) using the `.upsun/config.yaml` file.
 These values are the same across all environments and present in the Git repository,
 which makes them a poor fit for API keys and other such secrets.
 
@@ -46,12 +46,13 @@ In particular, to expose a variable as its own environment variable,
 
 Variables have several Boolean options you can set in the Console or the CLI:
 
-| Option    | CLI flag            | Default | Description                                                                                                                                            |
-|-----------|---------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JSON      | `--json`            | `false` | Whether the variable is a JSON-serialized value (`true`) or a string (`false`).                                                                        |
-| Sensitive | `--sensitive`       | `false` | If set to `true`, the variable's value is hidden in the Console and in CLI responses for added security. It's still readable within the app container. |
-| Runtime   | `--visible-runtime` | `true`  | Whether the variable is available at runtime.                                                                                                          |
-| Build     | `--visible-build`   | `true`  | Whether the variable is available at build time.                                                                                                       |
+| Option              | CLI flag              | Default | Description                                                                                                                                            |
+|---------------------|-----------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| JSON                | `--json`              | `false` | Whether the variable is a JSON-serialized value (`true`) or a string (`false`).                                                                        |
+| Sensitive           | `--sensitive`         | `false` | If set to `true`, the variable's value is hidden in the Console and in CLI responses for added security. It's still readable within the app container. |
+| Runtime             | `--visible-runtime`   | `true`  | Whether the variable is available at runtime.                                                                                                          |
+| Build               | `--visible-build`     | `true`  | Whether the variable is available at build time.                                                                                                       |
+| Application scope   | `--app-scope`         | —       | Limits the variable visibility to specific apps. By default, the variable is available across all applications.                |
 
 So if you want the `foo` variable to be visible at build time but hidden during runtime,
 you can set it by running the following command:
@@ -66,9 +67,19 @@ For example, to make the `foo` variable visible at runtime and hidden during the
 ```bash
 upsun variable:update foo --visible-build false --visible-runtime true
 ```
+#### Limiting variables to specific applications
 
-Note that for changes to project variables to have effect,
-you need to [redeploy](https://docs.upsun.com../troubleshoot.md#force-a-redeploy) your environments.
+If you want the `foo` variable to be available only to certain applications, you can limit its scope using the `--app-scope` option:
+
+```bash
+upsun variable:create --level project --name foo --value bar --app-scope frontend1,frontend2
+```
+
+Where `frontend1` and `frontend2` are the names of your applications.
+
+**Note**: 
+
+Note that for changes to project variables to have effect, you need to [redeploy](https://docs.upsun.com/development/troubleshoot.md#force-a-redeploy) your environments.
 
 ## Create environment-specific variables
 

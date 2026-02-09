@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/websockets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WebSockets 🆕
 
 > Enable real-time, streaming, bidirectional communication using WebSockets for Truss models and Chainlets.
@@ -239,7 +243,7 @@ Measured at different percentiles (p50, p90, p95, p99):
 End-to-end connection duration is tracked as the duration of the connection. Just
 like connections/minute, this is tracked after connections are closed.
 
-## Connection input & output size
+## Connection input and output size
 
 Measured at different percentiles (p50, p90, p95, p99):
 

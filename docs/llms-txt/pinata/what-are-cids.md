@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/ipfs-101/what-are-cids.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What are CIDs?
 
 Content Identifiers (CIDs) are one of the most important parts of IPFS. Whenever you share a file through IPFS, that file or folder gets assigned a CID that looks like this:

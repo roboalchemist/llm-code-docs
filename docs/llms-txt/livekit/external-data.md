@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/external-data.md
 
-# Source: https://docs.livekit.io/agents/build/external-data.md
-
-LiveKit docs › Building voice agents › External data & RAG
+LiveKit docs › Logic & Structure › External data & RAG
 
 ---
 
@@ -55,7 +53,7 @@ async def my_agent(ctx: agents.JobContext):
     await session.start(
         room=ctx.room,
         agent=Assistant(chat_ctx=initial_ctx),
-        # ... room_input_options, etc.
+        # ... room_options, etc.
     )
 
     await session.generate_reply(
@@ -116,14 +114,14 @@ export default defineAgent({
 > If your agent requires external data in order to start, the following tips can help minimize the impact to the user experience:
 > 
 > 1. For static data (not user-specific) load it in the [prewarm function](https://docs.livekit.io/agents/server/options.md#prewarm)
-> 2. Send user specific data in the [job metadata](https://docs.livekit.io/agents/server/job.md#metadata), [room metadata](https://docs.livekit.io/home/client/state/room-metadata.md), or [participant attributes](https://docs.livekit.io/home/client/state/participant-attributes.md) rather than loading it in the entrypoint.
+> 2. Send user specific data in the [job metadata](https://docs.livekit.io/agents/server/job.md#metadata), [room metadata](https://docs.livekit.io/transport/data/state/room-metadata.md), or [participant attributes](https://docs.livekit.io/transport/data/state/participant-attributes.md) rather than loading it in the entrypoint.
 > 3. If you must make a network call in the entrypoint, do so before `ctx.connect()`. This ensures your frontend doesn't show the agent participant before it is listening to incoming audio.
 
 ## Tool calls
 
 To achieve the highest degree of precision or take external actions, you can offer the LLM a choice of [tools](https://docs.livekit.io/agents/build/tools.md) to use in its response. These tools can be as generic or as specific as needed for your use case.
 
-For instance, define tools for `search_calendar`, `create_event`, `update_event`, and `delete_event` to give the LLM complete access to the user's calendar. Use [participant attributes](https://docs.livekit.io/home/client/state/participant-attributes.md) or [job metadata](https://docs.livekit.io/agents/server/job.md#metadata) to pass the user's calendar ID and access tokens to the agent.
+For instance, define tools for `search_calendar`, `create_event`, `update_event`, and `delete_event` to give the LLM complete access to the user's calendar. Use [participant attributes](https://docs.livekit.io/transport/data/state/participant-attributes.md) or [job metadata](https://docs.livekit.io/agents/server/job.md#metadata) to pass the user's calendar ID and access tokens to the agent.
 
 - **[Tool definition and use](https://docs.livekit.io/agents/build/tools.md)**: Guide to defining and using custom tools in LiveKit Agents.
 
@@ -265,11 +263,9 @@ For more information, see the following article:
 
 ### "Thinking" sounds
 
-Available in:
-- [ ] Node.js
-- [x] Python
-
 Add [background audio](https://docs.livekit.io/agents/build/audio.md#background-audio) to play a "thinking" sound automatically when tool calls are ongoing. This can be useful to provide a more natural feel to the agent's responses.
+
+**Python**:
 
 ```python
 from livekit.agents import AgentServer, BackgroundAudioPlayer, AudioConfig, BuiltinAudioClip
@@ -296,6 +292,53 @@ async def my_agent(ctx: agents.JobContext):
     await background_audio.start(room=ctx.room, agent_session=session)
 
 ```
+
+---
+
+**Node.js**:
+
+```typescript
+import { type JobContext, defineAgent, log, voice } from '@livekit/agents';
+
+
+export default defineAgent({
+  entry: async (ctx: JobContext) => {
+    const logger = log();
+
+    await ctx.connect();
+    logger.info('Connected to room');
+
+    const agent = new voice.Agent({
+      instructions: 'You are a helpful assistant',
+      // ... tools, etc.
+    });
+
+    const session = new voice.AgentSession({
+      // ... stt, llm, tts, vad, turn_detection, etc.
+    });
+    await session.start({ agent, room: ctx.room });
+
+    const backgroundAudio = new voice.BackgroundAudioPlayer({
+      thinkingSound: [
+        { source: voice.BuiltinAudioClip.KEYBOARD_TYPING, volume: 0.8, probability: 0.6 },
+        { source: voice.BuiltinAudioClip.KEYBOARD_TYPING2, volume: 0.7, probability: 0.4 },
+      ],
+    });
+
+    await backgroundAudio.start({ room: ctx.room, agentSession: session });
+
+    // Play another audio file at any time using the play method:
+    // backgroundAudio.play('filepath.ogg');
+  },
+});
+
+```
+
+For a complete example, see the following:
+
+- **[Background audio](https://github.com/livekit/agents/blob/main/examples/voice_agents/background_audio.py)**: Guide to using background audio in your agent in Python.
+
+- **[Background audio](https://github.com/livekit/agents-js/blob/main/examples/src/background_audio.ts)**: Guide to using background audio in your agent in Node.js.
 
 ### Frontend UI
 
@@ -418,7 +461,7 @@ For more information and examples, see the following articles:
 
 - **[Web and mobile frontends](https://docs.livekit.io/agents/start/frontend.md)**: Guide to building a custom web or mobile frontend for your agent.
 
-- **[RPC](https://docs.livekit.io/home/client/data/rpc.md)**: Learn how to use RPC to communicate with your agent from the frontend.
+- **[RPC](https://docs.livekit.io/transport/data/rpc.md)**: Learn how to use RPC to communicate with your agent from the frontend.
 
 ## Fine-tuned models
 
@@ -442,11 +485,9 @@ The following examples show how to implement RAG and other techniques:
 
 - **[LlamaIndex RAG](https://github.com/livekit/agents/tree/main/examples/voice_agents/llamaindex-rag)**: A voice AI agent that uses LlamaIndex for RAG to answer questions from a knowledge base.
 
-- **[LiveKit Docs RAG](https://github.com/livekit-examples/python-agents-examples/tree/main/rag)**: An agent that can answer questions about LiveKit with lookups against the docs website.
-
 ---
 
-This document was rendered at 2025-11-18T23:55:05.377Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/external-data.md](https://docs.livekit.io/agents/build/external-data.md).
+This document was rendered at 2026-02-03T03:24:57.270Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/external-data.md](https://docs.livekit.io/agents/logic/external-data.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

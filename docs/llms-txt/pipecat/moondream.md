@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/vision/moondream.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Moondream
 
 > Vision service implementation using Moondream for local image analysis and question answering
@@ -64,8 +68,3 @@ The service automatically detects and uses the best available hardware:
   No API keys required - Moondream runs entirely locally for complete privacy
   and control.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

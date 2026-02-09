@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/audit-log-streams/audit-log-streams-with-fluentbit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stream to Non-HTTP providers
 
 > How to stream Infisical Audit Logs to Non-HTTP log providers

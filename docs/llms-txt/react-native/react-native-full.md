@@ -89,7 +89,7 @@ When building a cross-platform app, you'll want to re-use as much code as possib
 
 TV devices support has been implemented with the intention of making existing React Native applications work on Apple TV and Android TV, with few or no changes needed in the JavaScript code for the applications.
 
-- [Building For TV Devices](/docs/building-for-tv.md): TV devices support has been implemented with the intention of making existing React Native applications work on Apple TV and Android TV, with few or no changes needed in the JavaScript code for the applications.
+- [🗑️ Building For TV Devices](/docs/building-for-tv.md): TV devices support has been implemented with the intention of making existing React Native applications work on Apple TV and Android TV, with few or no changes needed in the JavaScript code for the applications.
 
 ### out-of-tree-platforms
 
@@ -7310,7 +7310,9 @@ If you use Expo, React Native 0.83 will be available in SDK 55, which will be re
 
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-[![React Native](/img/header_logo.svg)![React Native](/img/header_logo.svg)](/index.md)
+Re-watch the latest [React Native Keynote](https://www.youtube.com/watch?v=NiYwlvXsBKw) from React Conf 2025
+
+[![](/img/header_logo.svg)![](/img/header_logo.svg)](/index.md)
 
 [**React Native**](/index.md)
 
@@ -7515,14 +7517,16 @@ Explore More
 
 [![Meta Open Source Logo](/img/oss_logo.svg)![Meta Open Source Logo](/img/oss_logo.svg)](https://opensource.fb.com/)
 
-Copyright © 2025 Meta Platforms, Inc.
+Copyright © 2026 Meta Platforms, Inc.
 
 
 ---
 
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-[![React Native](/img/header_logo.svg)![React Native](/img/header_logo.svg)](/index.md)
+Re-watch the latest [React Native Keynote](https://www.youtube.com/watch?v=NiYwlvXsBKw) from React Conf 2025
+
+[![](/img/header_logo.svg)![](/img/header_logo.svg)](/index.md)
 
 [**React Native**](/index.md)
 
@@ -7642,7 +7646,7 @@ Explore More
 
 [![Meta Open Source Logo](/img/oss_logo.svg)![Meta Open Source Logo](/img/oss_logo.svg)](https://opensource.fb.com/)
 
-Copyright © 2025 Meta Platforms, Inc.
+Copyright © 2026 Meta Platforms, Inc.
 
 
 ---
@@ -10523,7 +10527,7 @@ Query whether reduce motion and prefer cross-fade transitions settings are curre
 
 ***
 
-### `setAccessibilityFocus()`[​](#setaccessibilityfocus "Direct link to setaccessibilityfocus")
+### 🗑️ `setAccessibilityFocus()`[​](#️-setaccessibilityfocus "Direct link to ️-setaccessibilityfocus")
 
 Deprecated
 
@@ -12100,7 +12104,7 @@ tsx
 </Animated.ScrollView>
 ```
 
-You can see the native driver in action by running the [RNTester app](https://github.com/facebook/react-native/blob/main/packages/rn-tester/), then loading the Native Animated Example. You can also take a look at the [source code](https://github.com/facebook/react-native/blob/master/packages/rn-tester/js/examples/NativeAnimation/NativeAnimationsExample.js) to learn how these examples were produced.
+You can see the native driver in action by running the [RNTester app](https://github.com/facebook/react-native/blob/main/packages/rn-tester/), then loading the Native Animated Example. You can also take a look at the [source code](https://github.com/facebook/react-native/blob/main/packages/rn-tester/js/examples/NativeAnimation/NativeAnimationsExample.js) to learn how these examples were produced.
 
 #### Caveats[​](#caveats "Direct link to Caveats")
 
@@ -12802,9 +12806,9 @@ This example will only ever appear to say "Current state is: active" because the
 
 This event is received when the app state has changed. The listener is called with one of [the current app state values](/docs/appstate.md#app-states).
 
-### `memoryWarning`[​](#memorywarning "Direct link to memorywarning")
+### `memoryWarning`iOS[​](#memorywarning-ios "Direct link to memorywarning-ios")
 
-This event is used in the need of throwing memory warning or releasing it.
+Fires when the app receives a memory warning from the operating system.
 
 ### `focus`Android[​](#focus-android "Direct link to focus-android")
 
@@ -13132,7 +13136,7 @@ The following instructions will work for **both Android & iOS**. If you're build
 
 We suggest to use [**ccache**](https://ccache.dev/) to cache the compilation of your native builds. Ccache works by wrapping the C++ compilers, storing the compilation results, and skipping the compilation if an intermediate compilation result was originally stored.
 
-Ccache is available in the package manager for most operating systems. On macOS, we can install ccache with `brew install ccache`. Or you can follow the [official installation instructions](https://github.com/ccache/ccache/blob/master/doc/INSTALL.md) to install from source.
+Ccache is available in the package manager for most operating systems. On macOS, we can install ccache with `brew install ccache`. Or you can follow the [official installation instructions](https://github.com/ccache/ccache/blob/master/doc/install.md) to install from source.
 
 You can then do two clean builds (e.g. on Android you can first run `yarn react-native run-android`, delete the `android/app/build` folder and run the first command once more). You will notice that the second build was way faster than the first one (it should take seconds rather than minutes). While building, you can verify that `ccache` works correctly and check the cache hits/miss rate `ccache -s`
 
@@ -13196,7 +13200,7 @@ We recommend to use [sccache](https://github.com/mozilla/sccache) to achieve thi
 
 ---
 
-# Building For TV Devices
+# 🗑️ Building For TV Devices
 
 TV devices support has been implemented with the intention of making existing React Native applications work on Apple TV and Android TV, with few or no changes needed in the JavaScript code for the applications.
 
@@ -14370,7 +14374,7 @@ shell
 
 In the above stack trace, entries like `p@1:132161` are minified function names and bytecode offsets. To debug these calls, we want to translate these into file, line, and function name, e.g. `AwesomeProject/App.js:54:initializeMap`. This is known as **symbolication.**
 
-You can symbolicate minified function names and bytecode like the above by passing the stack trace and a generated source map to [`metro-symbolicate`](http://npmjs.com/package/metro-symbolicate).
+You can symbolicate minified function names and bytecode like the above by passing the stack trace and a generated source map to [`metro-symbolicate`](https://www.npmjs.com/package/metro-symbolicate).
 
 ### Enabling source maps[​](#enabling-source-maps "Direct link to Enabling source maps")
 
@@ -15297,9 +15301,9 @@ From [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element):
     * ℹ️ Returns the value of the `id` or `nativeID` props.
   * [`lastElementChild`](https://developer.mozilla.org/en-US/docs/Web/API/Element/lastElementChild)
   * [`nextElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling)
-  * [`nodeName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/nodeName)
-  * [`nodeType`](https://developer.mozilla.org/en-US/docs/Web/API/Element/nodeType)
-  * [`nodeValue`](https://developer.mozilla.org/en-US/docs/Web/API/Element/nodeValue)
+  * [`nodeName`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName)
+  * [`nodeType`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType)
+  * [`nodeValue`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)
   * [`previousElementSibling`](https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling)
   * [`scrollHeight`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
   * [`scrollLeft`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft)
@@ -15309,7 +15313,7 @@ From [`Element`](https://developer.mozilla.org/en-US/docs/Web/API/Element):
   * [`scrollWidth`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollWidth)
   * [`tagName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName)
     * ℹ️ Returns a normalized native component name prefixed with `RN:`, like `RN:View`.
-  * [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Element/textContent)
+  * [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 * Methods
 
@@ -20577,7 +20581,7 @@ Note that image sources required this way include size (width, height) info for 
 
 ## Static Non-Image Resources[​](#static-non-image-resources "Direct link to Static Non-Image Resources")
 
-The `require` syntax described above can be used to statically include audio, video or document files in your project as well. Most common file types are supported including `.mp3`, `.wav`, `.mp4`, `.mov`, `.html` and `.pdf`. See [bundler defaults](https://github.com/facebook/metro/blob/master/packages/metro-config/src/defaults/defaults.js#L14-L44) for the full list.
+The `require` syntax described above can be used to statically include audio, video or document files in your project as well. Most common file types are supported including `.mp3`, `.wav`, `.mp4`, `.mov`, `.html`, `.pdf` and more. See [bundler defaults](https://github.com/facebook/metro/blob/main/packages/metro-config/src/defaults/defaults.js#L16-L51) for the full list.
 
 You can add support for other types by adding an [`assetExts` resolver option](https://metrobundler.dev/docs/configuration#resolver-options) in your [Metro configuration](https://metrobundler.dev/docs/configuration).
 
@@ -23025,7 +23029,9 @@ The following example shows how different properties can affect or shape a React
 
 ### `alignContent`[​](#aligncontent "Direct link to aligncontent")
 
-`alignContent` controls how rows align in the cross direction, overriding the `alignContent` of the parent. See <https://developer.mozilla.org/en-US/docs/Web/CSS/align-content> for more details.
+`alignContent` controls how rows align in the cross direction, overriding the `alignContent` of the parent.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content) for more details.
 
 | Type                                                                                                 | Required |
 | ---------------------------------------------------------------------------------------------------- | -------- |
@@ -23035,7 +23041,9 @@ The following example shows how different properties can affect or shape a React
 
 ### `alignItems`[​](#alignitems "Direct link to alignitems")
 
-`alignItems` aligns children in the cross direction. For example, if children are flowing vertically, `alignItems` controls how they align horizontally. It works like `align-items` in CSS (default: stretch). See <https://developer.mozilla.org/en-US/docs/Web/CSS/align-items> for more details.
+`alignItems` aligns children in the cross direction. For example, if children are flowing vertically, `alignItems` controls how they align horizontally. It works like `align-items` in CSS (default: stretch).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more details.
 
 | Type                                                            | Required |
 | --------------------------------------------------------------- | -------- |
@@ -23045,7 +23053,9 @@ The following example shows how different properties can affect or shape a React
 
 ### `alignSelf`[​](#alignself "Direct link to alignself")
 
-`alignSelf` controls how a child aligns in the cross direction, overriding the `alignItems` of the parent. It works like `align-self` in CSS (default: auto). See <https://developer.mozilla.org/en-US/docs/Web/CSS/align-self> for more details.
+`alignSelf` controls how a child aligns in the cross direction, overriding the `alignItems` of the parent. It works like `align-self` in CSS (default: auto).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self) for more details.
 
 | Type                                                                    | Required |
 | ----------------------------------------------------------------------- | -------- |
@@ -23055,13 +23065,15 @@ The following example shows how different properties can affect or shape a React
 
 ### `aspectRatio`[​](#aspectratio "Direct link to aspectratio")
 
-Aspect ratio controls the size of the undefined dimension of a node. See <https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio> for more details.
+Aspect ratio controls the size of the undefined dimension of a node.
 
 * On a node with a set width/height, aspect ratio controls the size of the unset dimension
 * On a node with a set flex basis, aspect ratio controls the size of the node in the cross axis if unset
 * On a node with a measure function, aspect ratio works as though the measure function measures the flex basis
 * On a node with flex grow/shrink, aspect ratio controls the size of the node in the cross axis if unset
 * Aspect ratio takes min/max dimensions into account
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23071,7 +23083,9 @@ Aspect ratio controls the size of the undefined dimension of a node. See <https:
 
 ### `borderBottomWidth`[​](#borderbottomwidth "Direct link to borderbottomwidth")
 
-`borderBottomWidth` works like `border-bottom-width` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width> for more details.
+`borderBottomWidth` works like `border-bottom-width` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-width) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23091,7 +23105,9 @@ When direction is `ltr`, `borderEndWidth` is equivalent to `borderRightWidth`. W
 
 ### `borderLeftWidth`[​](#borderleftwidth "Direct link to borderleftwidth")
 
-`borderLeftWidth` works like `border-left-width` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width> for more details.
+`borderLeftWidth` works like `border-left-width` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-left-width) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23101,7 +23117,9 @@ When direction is `ltr`, `borderEndWidth` is equivalent to `borderRightWidth`. W
 
 ### `borderRightWidth`[​](#borderrightwidth "Direct link to borderrightwidth")
 
-`borderRightWidth` works like `border-right-width` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width> for more details.
+`borderRightWidth` works like `border-right-width` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-width) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23121,7 +23139,9 @@ When direction is `ltr`, `borderStartWidth` is equivalent to `borderLeftWidth`. 
 
 ### `borderTopWidth`[​](#bordertopwidth "Direct link to bordertopwidth")
 
-`borderTopWidth` works like `border-top-width` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width> for more details.
+`borderTopWidth` works like `border-top-width` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-width) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23131,7 +23151,9 @@ When direction is `ltr`, `borderStartWidth` is equivalent to `borderLeftWidth`. 
 
 ### `borderWidth`[​](#borderwidth "Direct link to borderwidth")
 
-`borderWidth` works like `border-width` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/border-width> for more details.
+`borderWidth` works like `border-width` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-width) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23145,7 +23167,7 @@ When direction is `ltr`, `borderStartWidth` is equivalent to `borderLeftWidth`. 
 
 It works similarly to `bottom` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/bottom> for more details of how `bottom` affects layout.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/bottom) for more details of how `bottom` affects layout.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23165,7 +23187,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/bottom> for more details o
 
 ### `columnGap`[​](#columngap "Direct link to columngap")
 
-`columnGap` works like `column-gap` in CSS. Only pixel units are supported in React Native. See <https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap> for more details.
+`columnGap` works like `column-gap` in CSS. Only pixel units are supported in React Native.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23175,11 +23199,13 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/bottom> for more details o
 
 ### `direction`[​](#direction "Direct link to direction")
 
-`direction` specifies the directional flow of the user interface. The default is `inherit`, except for root node which will have value based on the current locale. See <https://www.yogalayout.dev/docs/styling/layout-direction> for more details.
+`direction` specifies the directional flow of the user interface. The default is `inherit`, except for root node which will have value based on the current locale.
 
-| Type                          | Required | Platform |
-| ----------------------------- | -------- | -------- |
-| enum('inherit', 'ltr', 'rtl') | No       | iOS      |
+See [MDN CSS Reference](https://www.yogalayout.dev/docs/styling/layout-direction) for more details.
+
+| Type                          | Required |
+| ----------------------------- | -------- |
+| enum('inherit', 'ltr', 'rtl') | No       |
 
 ***
 
@@ -23211,11 +23237,11 @@ This style takes precedence over the `left` and `right` styles.
 
 In React Native `flex` does not work the same way that it does in CSS. `flex` is a number rather than a string, and it works according to the [Yoga](https://github.com/facebook/yoga) layout engine.
 
-When `flex` is a positive number, it makes the component flexible, and it will be sized proportional to its flex value. So a component with `flex` set to 2 will take twice the space as a component with `flex` set to 1. `flex: <positive number>` equates to `flexGrow: <positive number>, flexShrink: 1, flexBasis: 0`.
+When `flex` is a positive number, it makes the component flexible, and it will be sized proportional to its flex value. So a component with `flex` set to `2` will take twice the space as a component with `flex` set to 1. `flex: <positive number>` equates to `flexGrow: <positive number>, flexShrink: 1, flexBasis: 0`.
 
-When `flex` is 0, the component is sized according to `width` and `height`, and it is inflexible.
+When `flex` is `0`, the component is sized according to `width` and `height`, and it is inflexible.
 
-When `flex` is -1, the component is normally sized according to `width` and `height`. However, if there's not enough space, the component will shrink to its `minWidth` and `minHeight`.
+When `flex` is `-1`, the component is normally sized according to `width` and `height`. However, if there's not enough space, the component will shrink to its `minWidth` and `minHeight`.
 
 `flexGrow`, `flexShrink`, and `flexBasis` work the same as in CSS.
 
@@ -23237,7 +23263,9 @@ When `flex` is -1, the component is normally sized according to `width` and `hei
 
 ### `flexDirection`[​](#flexdirection "Direct link to flexdirection")
 
-`flexDirection` controls which directions children of a container go. `row` goes left to right, `column` goes top to bottom, and you may be able to guess what the other two do. It works like `flex-direction` in CSS, except the default is `column`. See <https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction> for more details.
+`flexDirection` controls which directions children of a container go. `row` goes left to right, `column` goes top to bottom, and you may be able to guess what the other two do. It works like `flex-direction` in CSS, except the default is `column`.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) for more details.
 
 | Type                                                   | Required |
 | ------------------------------------------------------ | -------- |
@@ -23271,7 +23299,11 @@ When `flex` is -1, the component is normally sized according to `width` and `hei
 
 ### `flexWrap`[​](#flexwrap "Direct link to flexwrap")
 
-`flexWrap` controls whether children can wrap around after they hit the end of a flex container. It works like `flex-wrap` in CSS (default: nowrap). See <https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap> for more details. Note it does not work anymore with `alignItems: stretch` (the default), so you may want to use `alignItems: flex-start` for example (breaking change details: <https://github.com/facebook/react-native/releases/tag/v0.28.0>).
+`flexWrap` controls whether children can wrap around after they hit the end of a flex container. It works like `flex-wrap` in CSS (default: nowrap).
+
+Note it does not work anymore with `alignItems: stretch` (the default), so you may want to use `alignItems: flex-start` for example (breaking change details: <https://github.com/facebook/react-native/releases/tag/v0.28.0>).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) for more details.
 
 | Type                                   | Required |
 | -------------------------------------- | -------- |
@@ -23281,7 +23313,9 @@ When `flex` is -1, the component is normally sized according to `width` and `hei
 
 ### `gap`[​](#gap "Direct link to gap")
 
-`gap` works like `gap` in CSS. Only pixel units are supported in React Native. See <https://developer.mozilla.org/en-US/docs/Web/CSS/gap> for more details.
+`gap` works like `gap` in CSS. Only pixel units are supported in React Native.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/gap) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23293,7 +23327,121 @@ When `flex` is -1, the component is normally sized according to `width` and `hei
 
 `height` sets the height of this component.
 
-It works similarly to `height` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported. See <https://developer.mozilla.org/en-US/docs/Web/CSS/height> for more details.
+It works similarly to `height` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/height) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `inset`[​](#inset "Direct link to inset")
+
+note
+
+`inset` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Setting `inset` has the same effect as setting each of `top`, `bottom`, `right` and `left` props.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inset) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetBlock`[​](#insetblock "Direct link to insetblock")
+
+note
+
+`insetBlock` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Equivalent to [`top`](/docs/layout-props.md#top) and [`bottom`](/docs/layout-props.md#bottom).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetBlockEnd`[​](#insetblockend "Direct link to insetblockend")
+
+note
+
+`insetBlockEnd` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Equivalent to [`bottom`](/docs/layout-props.md#bottom).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetBlockStart`[​](#insetblockstart "Direct link to insetblockstart")
+
+note
+
+`insetBlockStart` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Equivalent to [`top`](/docs/layout-props.md#top).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block-start) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetInline`[​](#insetinline "Direct link to insetinline")
+
+note
+
+`insetInline` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Equivalent to [`right`](/docs/layout-props.md#right) and [`left`](/docs/layout-props.md#left).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetInlineEnd`[​](#insetinlineend "Direct link to insetinlineend")
+
+note
+
+`insetInlineEnd` is only available on the [New Architecture](/architecture/landing-page.md)
+
+When direction is `ltr`, `insetInlineEnd` is equivalent to [`right`](/docs/layout-props.md#right). When direction is `rtl`, `insetInlineEnd` is equivalent to [`left`](/docs/layout-props.md#left).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `insetInlineStart`[​](#insetinlinestart "Direct link to insetinlinestart")
+
+note
+
+`insetInlineStart` is only available on the [New Architecture](/architecture/landing-page.md)
+
+When direction is `ltr`, `insetInlineStart` is equivalent to [`left`](/docs/layout-props.md#left). When direction is `rtl`, `insetInlineStart` is equivalent to [`right`](/docs/layout-props.md#right).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-start) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23303,7 +23451,11 @@ It works similarly to `height` in CSS, but in React Native you must use points o
 
 ### `isolation`[​](#isolation "Direct link to isolation")
 
-`isolation` lets you form a [stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Stacking_context). This prop is only available on the [New Architecture](/architecture/landing-page.md).
+note
+
+`isolation` is only available on the [New Architecture](/architecture/landing-page.md)
+
+`isolation` lets you form a [stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Stacking_context).
 
 There are two values:
 
@@ -23318,7 +23470,9 @@ There are two values:
 
 ### `justifyContent`[​](#justifycontent "Direct link to justifycontent")
 
-`justifyContent` aligns children in the main direction. For example, if children are flowing vertically, `justifyContent` controls how they align vertically. It works like `justify-content` in CSS (default: flex-start). See <https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content> for more details.
+`justifyContent` aligns children in the main direction. For example, if children are flowing vertically, `justifyContent` controls how they align vertically. It works like `justify-content` in CSS (default: flex-start).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more details.
 
 | Type                                                                                      | Required |
 | ----------------------------------------------------------------------------------------- | -------- |
@@ -23332,7 +23486,7 @@ There are two values:
 
 It works similarly to `left` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/left> for more details of how `left` affects layout.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/left) for more details of how `left` affects layout.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23342,7 +23496,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/left> for more details of 
 
 ### `margin`[​](#margin "Direct link to margin")
 
-Setting `margin` has the same effect as setting each of `marginTop`, `marginLeft`, `marginBottom`, and `marginRight`. See <https://developer.mozilla.org/en-US/docs/Web/CSS/margin> for more details.
+Setting `margin` has the same effect as setting each of `marginTop`, `marginLeft`, `marginBottom`, and `marginRight`.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23352,7 +23508,43 @@ Setting `margin` has the same effect as setting each of `marginTop`, `marginLeft
 
 ### `marginBottom`[​](#marginbottom "Direct link to marginbottom")
 
-`marginBottom` works like `margin-bottom` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom> for more details.
+`marginBottom` works like `margin-bottom` in CSS. See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `marginBlock`[​](#marginblock "Direct link to marginblock")
+
+Equivalent to [`marginVertical`](/docs/layout-props.md#marginvertical).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-block) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `marginBlockEnd`[​](#marginblockend "Direct link to marginblockend")
+
+Equivalent to [`marginBottom`](/docs/layout-props.md#marginbottom).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-block-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `marginBlockStart`[​](#marginblockstart "Direct link to marginblockstart")
+
+Equivalent to [`marginTop`](/docs/layout-props.md#margintop).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-block-start) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23380,9 +23572,45 @@ Setting `marginHorizontal` has the same effect as setting both `marginLeft` and 
 
 ***
 
+### `marginInline`[​](#margininline "Direct link to margininline")
+
+Equivalent to [`marginHorizontal`](/docs/layout-props.md#marginhorizontal).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-inline) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `marginInlineEnd`[​](#margininlineend "Direct link to margininlineend")
+
+When direction is `ltr`, `marginInlineEnd` is equivalent to [`marginEnd`](/docs/layout-props.md#marginend) (i.e. `marginRight`). When direction is `rtl`, `marginInlineEnd` is equivalent to [`marginEnd`](/docs/layout-props.md#marginend) (i.e. `marginLeft`).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-inline-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `marginInlineStart`[​](#margininlinestart "Direct link to margininlinestart")
+
+When direction is `ltr`, `marginInlineStart` is equivalent to [`marginStart`](/docs/layout-props.md#marginstart) (i.e. `marginLeft`). When direction is `rtl`, `marginInlineStart` is equivalent to [`marginStart`](/docs/layout-props.md#marginstart) (i.e. `marginRight`).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/margin-inline-start) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
 ### `marginLeft`[​](#marginleft "Direct link to marginleft")
 
-`marginLeft` works like `margin-left` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left> for more details.
+`marginLeft` works like `margin-left` in CSS. See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23392,7 +23620,9 @@ Setting `marginHorizontal` has the same effect as setting both `marginLeft` and 
 
 ### `marginRight`[​](#marginright "Direct link to marginright")
 
-`marginRight` works like `margin-right` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right> for more details.
+`marginRight` works like `margin-right` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23412,7 +23642,9 @@ When direction is `ltr`, `marginStart` is equivalent to `marginLeft`. When direc
 
 ### `marginTop`[​](#margintop "Direct link to margintop")
 
-`marginTop` works like `margin-top` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top> for more details.
+`marginTop` works like `margin-top` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23436,7 +23668,7 @@ Setting `marginVertical` has the same effect as setting both `marginTop` and `ma
 
 It works similarly to `max-height` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/max-height> for more details.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23450,7 +23682,7 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/max-height> for more detai
 
 It works similarly to `max-width` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/max-width> for more details.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23464,7 +23696,7 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/max-width> for more detail
 
 It works similarly to `min-height` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/min-height> for more details.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/min-height) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23478,7 +23710,7 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/min-height> for more detai
 
 It works similarly to `min-width` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/min-width> for more details.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/min-width) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23488,7 +23720,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/min-width> for more detail
 
 ### `overflow`[​](#overflow "Direct link to overflow")
 
-`overflow` controls how children are measured and displayed. `overflow: hidden` causes views to be clipped while `overflow: scroll` causes views to be measured independently of their parents' main axis. It works like `overflow` in CSS (default: visible). See <https://developer.mozilla.org/en/docs/Web/CSS/overflow> for more details.
+`overflow` controls how children are measured and displayed. `overflow: hidden` causes views to be clipped while `overflow: scroll` causes views to be measured independently of their parents' main axis. It works like `overflow` in CSS (default: visible).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) for more details.
 
 | Type                                | Required |
 | ----------------------------------- | -------- |
@@ -23498,7 +23732,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/min-width> for more detail
 
 ### `padding`[​](#padding "Direct link to padding")
 
-Setting `padding` has the same effect as setting each of `paddingTop`, `paddingBottom`, `paddingLeft`, and `paddingRight`. See <https://developer.mozilla.org/en-US/docs/Web/CSS/padding> for more details.
+Setting `padding` has the same effect as setting each of `paddingTop`, `paddingBottom`, `paddingLeft`, and `paddingRight`.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23508,7 +23744,45 @@ Setting `padding` has the same effect as setting each of `paddingTop`, `paddingB
 
 ### `paddingBottom`[​](#paddingbottom "Direct link to paddingbottom")
 
-`paddingBottom` works like `padding-bottom` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom> for more details.
+`paddingBottom` works like `padding-bottom` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `paddingBlock`[​](#paddingblock "Direct link to paddingblock")
+
+Equivalent to [`paddingVertical`](/docs/layout-props.md#paddingvertical).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-block) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `paddingBlockEnd`[​](#paddingblockend "Direct link to paddingblockend")
+
+Equivalent to [`paddingBottom`](/docs/layout-props.md#paddingbottom).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-block-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `paddingBlockStart`[​](#paddingblockstart "Direct link to paddingblockstart")
+
+Equivalent to [`paddingTop`](/docs/layout-props.md#paddingtop).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-block-start) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23536,9 +23810,47 @@ Setting `paddingHorizontal` is like setting both of `paddingLeft` and `paddingRi
 
 ***
 
+### `paddingInline`[​](#paddinginline "Direct link to paddinginline")
+
+Equivalent to [`paddingHorizontal`](/docs/layout-props.md#paddinghorizontal).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-inline) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `paddingInlineEnd`[​](#paddinginlineend "Direct link to paddinginlineend")
+
+When direction is `ltr`, `paddingInlineEnd` is equivalent to [`paddingEnd`](/docs/layout-props.md#paddingend) (i.e. `paddingRight`). When direction is `rtl`, `paddingInlineEnd` is equivalent to [`paddingEnd`](/docs/layout-props.md#paddingend) (i.e. `paddingLeft`).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-inline-end) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
+### `paddingInlineStart`[​](#paddinginlinestart "Direct link to paddinginlinestart")
+
+When direction is `ltr`, `paddingInlineStart` is equivalent to [`paddingStart`](/docs/layout-props.md#paddingstart) (i.e. `paddingLeft`). When direction is `rtl`, `paddingInlineStart` is equivalent to [`paddingStart`](/docs/layout-props.md#paddingstart) (i.e. `paddingRight`).
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/padding-inline-start) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
+
+***
+
 ### `paddingLeft`[​](#paddingleft "Direct link to paddingleft")
 
-`paddingLeft` works like `padding-left` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left> for more details.
+`paddingLeft` works like `padding-left` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-left) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23548,7 +23860,9 @@ Setting `paddingHorizontal` is like setting both of `paddingLeft` and `paddingRi
 
 ### `paddingRight`[​](#paddingright "Direct link to paddingright")
 
-`paddingRight` works like `padding-right` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right> for more details.
+`paddingRight` works like `padding-right` in CSS.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-right) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23568,11 +23882,13 @@ When direction is `ltr`, `paddingStart` is equivalent to `paddingLeft`. When dir
 
 ### `paddingTop`[​](#paddingtop "Direct link to paddingtop")
 
-`paddingTop` works like `padding-top` in CSS. See <https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top> for more details.
+`paddingTop` works like `padding-top` in CSS.
 
-| Type            | Required |
-| --------------- | -------- |
-| number, ,string | No       |
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding-top) for more details.
+
+| Type           | Required |
+| -------------- | -------- |
+| number, string | No       |
 
 ***
 
@@ -23610,7 +23926,7 @@ For more information, see the [Layout with Flexbox docs](/docs/flexbox.md#positi
 
 It works similarly to `right` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/right> for more details of how `right` affects layout.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/right) for more details of how `right` affects layout.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23620,7 +23936,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/right> for more details of
 
 ### `rowGap`[​](#rowgap "Direct link to rowgap")
 
-`rowGap` works like `row-gap` in CSS. Only pixel units are supported in React Native. See <https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap> for more details.
+`rowGap` works like `row-gap` in CSS. Only pixel units are supported in React Native.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap) for more details.
 
 | Type   | Required |
 | ------ | -------- |
@@ -23646,7 +23964,7 @@ This style takes precedence over the `left`, `right`, and `end` styles.
 
 It works similarly to `top` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
 
-See <https://developer.mozilla.org/en-US/docs/Web/CSS/top> for more details of how `top` affects layout.
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/top) for more details of how `top` affects layout.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23658,7 +23976,9 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/top> for more details of h
 
 `width` sets the width of this component.
 
-It works similarly to `width` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported. See <https://developer.mozilla.org/en-US/docs/Web/CSS/width> for more details.
+It works similarly to `width` in CSS, but in React Native you must use points or percentages. Ems and other units are not supported.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/width) for more details.
 
 | Type           | Required |
 | -------------- | -------- |
@@ -23670,15 +23990,15 @@ It works similarly to `width` in CSS, but in React Native you must use points or
 
 `zIndex` controls which components display on top of others. Normally, you don't use `zIndex`. Components render according to their order in the document tree, so later components draw over earlier ones. `zIndex` may be useful if you have animations or custom modal interfaces where you don't want this behavior.
 
-It works like the CSS `z-index` property - components with a larger `zIndex` will render on top. Think of the z-direction like it's pointing from the phone into your eyeball. See <https://developer.mozilla.org/en-US/docs/Web/CSS/z-index> for more details.
+It works like the CSS `z-index` property - components with a larger `zIndex` will render on top. Think of the z-direction like it's pointing from the phone into your eyeball.
 
 On iOS, `zIndex` may require `View`s to be siblings of each other for it to work as expected.
+
+See [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) for more details.
 
 | Type   | Required |
 | ------ | -------- |
 | number | No       |
-
-***
 
 
 ---
@@ -28046,7 +28366,7 @@ Inherits [View Props](/docs/view.md#props).
 
 ***
 
-### `animated`[​](#animated "Direct link to animated")
+### 🗑️ `animated`[​](#️-animated "Direct link to ️-animated")
 
 Deprecated
 
@@ -34081,7 +34401,7 @@ Select the "SDK Platforms" tab from within the SDK Manager, then check the box n
 * `Android SDK Platform 35`
 * `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image` or (for Apple M1 Silicon) `Google APIs ARM 64 v8a System Image`
 
-Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that `35.0.0` is selected.
+Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that `36.0.0` and `Android SDK Command-line Tools (latest)` are selected.
 
 Finally, click "Apply" to download and install the Android SDK and related build tools.
 
@@ -34288,7 +34608,7 @@ Select the "SDK Platforms" tab from within the SDK Manager, then check the box n
 * `Android SDK Platform 35`
 * `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image`
 
-Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the `Android SDK Build-Tools` entry, then make sure that `35.0.0` is selected.
+Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the `Android SDK Build-Tools` entry, then make sure that `36.0.0` and `Android SDK Command-line Tools (latest)` are selected.
 
 Finally, click "Apply" to download and install the Android SDK and related build tools.
 
@@ -34431,7 +34751,7 @@ Select the "SDK Platforms" tab from within the SDK Manager, then check the box n
 * `Android SDK Platform 35`
 * `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image`
 
-Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that `35.0.0` is selected.
+Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that `36.0.0` and `Android SDK Command-line Tools (latest)` are selected.
 
 Finally, click "Apply" to download and install the Android SDK and related build tools.
 
@@ -35172,7 +35492,11 @@ Show or hide the status bar.
 
 ***
 
-### `setNetworkActivityIndicatorVisible()`iOS[​](#setnetworkactivityindicatorvisible-ios "Direct link to setnetworkactivityindicatorvisible-ios")
+### 🗑️ `setNetworkActivityIndicatorVisible()`iOS[​](#️-setnetworkactivityindicatorvisible-ios "Direct link to ️-setnetworkactivityindicatorvisible-ios")
+
+Deprecated
+
+The status bar network activity indicator is not supported in iOS 13 and later. This will be removed in a future release.
 
 tsx
 
@@ -36033,7 +36357,7 @@ Snapshots have several weak points:
 
 Snapshots themselves do not ensure that your component render logic is correct, they are merely good at guarding against unexpected changes and for checking that the components in the React tree under test receive the expected props (styles and etc.).
 
-We recommend that you only use small snapshots (see [`no-large-snapshots` rule](https://github.com/jest-community/eslint-plugin-jest/blob/master/docs/rules/no-large-snapshots.md)). If you want to test a *change* between two React component states, use [`snapshot-diff`](https://github.com/jest-community/snapshot-diff). When in doubt, prefer explicit expectations as described in the previous paragraph.
+We recommend that you only use small snapshots (see [`no-large-snapshots` rule](https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-large-snapshots.md)). If you want to test a *change* between two React component states, use [`snapshot-diff`](https://github.com/jest-community/snapshot-diff). When in doubt, prefer explicit expectations as described in the previous paragraph.
 
 ![ ](/docs/assets/p_tests-snapshot.svg)
 
@@ -37207,7 +37531,7 @@ If `true`, focuses the input. The default value is `false`.
 
 ***
 
-### `blurOnSubmit`[​](#bluronsubmit "Direct link to bluronsubmit")
+### 🗑️ `blurOnSubmit`[​](#️-bluronsubmit "Direct link to ️-bluronsubmit")
 
 Deprecated
 
@@ -42081,7 +42405,7 @@ Matrix transforms are useful when you need to apply pre-calculated transformatio
 
 ***
 
-### `decomposedMatrix`, `rotation`, `scaleX`, `scaleY`, `transformMatrix`, `translateX`, `translateY`[​](#decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey "Direct link to decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey")
+### 🗑️ `decomposedMatrix`, `rotation`, `scaleX`, `scaleY`, `transformMatrix`, `translateX`, `translateY`[​](#️-decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey "Direct link to ️-decomposedmatrix-rotation-scalex-scaley-transformmatrix-translatex-translatey")
 
 Deprecated
 
@@ -42679,6 +43003,10 @@ To create a specs file:
 info
 
 You can see all of the types you can use in your specification and the native types that are generated in the [Appendix](/docs/appendix.md) documentation.
+
+info
+
+If you want to change the name of your module and the related specs file, make sure to always use 'Native' as prefix (e.g. `NativeStorage` or `NativeUsersDefault`).
 
 Here is an implementation of the `localStorage` specification:
 
@@ -43357,7 +43685,7 @@ package.json
      "test": "jest"
    },
    "codegenConfig": {
-     "name": "AppSpecs",
+     "name": "NativeLocalStorageSpec",
      "type": "modules",
      "jsSrcsDir": "specs",
      "android": {
@@ -43541,7 +43869,7 @@ package.json
      "test": "jest"
    },
    "codegenConfig": {
-     "name": "AppSpecs",
+     "name": "NativeLocalStorageSpec",
      "type": "modules",
      "jsSrcsDir": "specs",
      "android": {
@@ -45336,6 +45664,41 @@ note
 
 ***
 
+### `mixBlendMode`[​](#mixblendmode "Direct link to mixblendmode")
+
+note
+
+`mixBlendMode` is only available on the [New Architecture](/architecture/landing-page.md)
+
+Controls how the `View` blends its colors with the other elements in its **stacking context**. Check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) for a full overview of each blending function.
+
+For more granular control over what should be blending together see [isolation](/docs/layout-props.md#isolation).
+
+##### mixBlendMode Values[​](#mixblendmode-values "Direct link to mixBlendMode Values")
+
+* `normal`: The element is drawn on top of its background without blending.
+* `multiply`: The source color is multiplied by the destination color and replaces the destination.
+* `screen`: Multiplies the complements of the backdrop and source color values, then complements the result.
+* `overlay`: Multiplies or screens the colors, depending on the backdrop color value.
+* `darken`: Selects the darker of the backdrop and source colors.
+* `lighten`: Selects the lighter of the backdrop and source colors.
+* `color-dodge`: Brightens the backdrop color to reflect the source color. Painting with black produces no changes.
+* `color-burn`: Darkens the backdrop color to reflect the source color. Painting with white produces no change.
+* `hard-light`: Multiplies or screens the colors, depending on the source color value. The effect is similar to shining a harsh spotlight on the backdrop.
+* `soft-light`: Darkens or lightens the colors, depending on the source color value. The effect is similar to shining a diffused spotlight on the backdrop.
+* `difference`: Subtracts the darker of the two constituent colors from the lighter color.
+* `exclusion`: Produces an effect similar to that of the Difference mode but lower in contrast.
+* `hue`: Creates a color with the hue of the source color and the saturation and luminosity of the backdrop color.
+* `saturation`: Creates a color with the saturation of the source color and the hue and luminosity of the backdrop color.
+* `color`: Creates a color with the hue and saturation of the source color and the luminosity of the backdrop color. This preserves the gray levels of the backdrop and is useful for coloring monochrome images or tinting color images.
+* `luminosity`: Creates a color with the luminosity of the source color and the hue and saturation of the backdrop color. This produces an inverse effect to that of the Color mode.
+
+| Type                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| enum(`'normal'`, `'multiply'`, `'screen'`, `'overlay'`, `'darken'`, `'lighten'`, `'color-dodge'`, `'color-burn'`, `'hard-light'`, `'soft-light'`, `'difference'`, `'exclusion'`, `'hue'`, `'saturation'`, `'color'`, `'luminosity'`) |
+
+***
+
 ### `opacity`[​](#opacity "Direct link to opacity")
 
 | Type   |
@@ -45664,7 +46027,7 @@ Styling for internal View for `ListHeaderComponent`.
 
 ***
 
-### `disableVirtualization`[​](#disablevirtualization "Direct link to disablevirtualization")
+### 🗑️ `disableVirtualization`[​](#️-disablevirtualization "Direct link to ️-disablevirtualization")
 
 Deprecated
 

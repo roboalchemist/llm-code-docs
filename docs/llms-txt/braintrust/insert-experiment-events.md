@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/experiments/insert-experiment-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Insert experiment events
 
 > Insert a set of events into the experiment
@@ -303,6 +307,12 @@ components:
           description: The timestamp the experiment event was created
         origin:
           $ref: '#/components/schemas/ObjectReferenceNullish'
+        facets:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: Facets for categorization (dictionary from facet id to value)
         _object_delete:
           type: boolean
           nullable: true
@@ -352,6 +362,35 @@ components:
             "bar": "baz"}, "output": {"d": 40}}`. In this case, due to the merge
             paths, we have replaced `input.a` and `output`, but have still
             deep-merged `input` and `input.c`.
+        _array_delete:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              path:
+                type: array
+                items:
+                  type: string
+              delete:
+                type: array
+                items:
+                  nullable: true
+            required:
+              - path
+              - delete
+          description: >-
+            The `_array_delete` field allows removing specific values from array
+            fields. It is an array of objects with `path` and `delete`
+            properties.
+
+
+            For example, to remove tags "foo" and "bar" from an existing row:
+            `{"_is_merge": true, "_array_delete": [{"path": ["tags"], "delete":
+            ["foo", "bar"]}]}`. For nested fields like `metadata.categories`,
+            use `[{"path": ["metadata", "categories"], "delete": ["value"]}]`.
+            This will remove those specific values from the array while
+            preserving others.
         _parent_id:
           type: string
           nullable: true
@@ -364,9 +403,8 @@ components:
 
             Use the `_parent_id` field to create this row as a subspan of an
             existing row. Tracking hierarchical relationships are important for
-            tracing (see the
-            [guide](https://www.braintrust.dev/docs/guides/tracing) for full
-            details).
+            tracing (see the [guide](https://www.braintrust.dev/docs/instrument)
+            for full details).
 
 
             For example, say we have logged a row `{"id": "abc", "input": "foo",
@@ -389,7 +427,7 @@ components:
             `_parent_id`, which is now deprecated. The span_id is a unique
             identifier describing the row's place in the a trace, and the
             root_span_id is a unique identifier for the whole trace. See the
-            [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+            [guide](https://www.braintrust.dev/docs/instrument) for full
             details.
 
 
@@ -415,7 +453,7 @@ components:
             `_parent_id`, which is now deprecated. The span_id is a unique
             identifier describing the row's place in the a trace, and the
             root_span_id is a unique identifier for the whole trace. See the
-            [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+            [guide](https://www.braintrust.dev/docs/instrument) for full
             details.
 
 
@@ -443,7 +481,7 @@ components:
             `_parent_id`, which is now deprecated. The span_id is a unique
             identifier describing the row's place in the a trace, and the
             root_span_id is a unique identifier for the whole trace. See the
-            [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+            [guide](https://www.braintrust.dev/docs/instrument) for full
             details.
 
 
@@ -519,6 +557,10 @@ components:
         - eval
         - task
         - tool
+        - automation
+        - facet
+        - preprocessor
+        - classifier
         - null
       description: Type of the span, for display purposes only
   securitySchemes:
@@ -533,7 +575,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

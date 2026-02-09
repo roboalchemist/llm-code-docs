@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/message-queue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Message Queue
 
 > Schedule follow-up tasks for Replit Agent while it's working. Queue messages to be executed in order after each Agent work loop completion.
@@ -18,8 +22,8 @@ When the Agent is actively handling a request, you can schedule a follow-up task
 messages to the Queue. These tasks or requests will be processed in order after every completion of
 an Agent work loop. The queue is automatically cleared when Agent finishes all tasks.
 
-All message options are available with the Queue, such as [Visual Editor](/replitai/visual-editor),
-file attachments, and [Dynamic Intelligence](/replitai/dynamic-intelligence).
+All message options are available with the Queue, such as [Visual Editor](/replitai/visual-editor)
+and file attachments.
 
 <Info>
   Queued messages will only be processed automatically while you have an active

@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/react-native.md
 
-# Source: https://docs.convex.dev/client/react-native.md
-
-# Source: https://docs.convex.dev/quickstart/react-native.md
-
 # React Native Quickstart
 
 Learn how to query data from Convex in a React Native app.

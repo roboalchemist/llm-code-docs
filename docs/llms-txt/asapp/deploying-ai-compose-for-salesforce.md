@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-compose/deploying-ai-compose-for-salesforce.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploying AI Compose for Salesforce
 
 > Use AI Compose on Salesforce Lightning Experience.
 
 ## Overview
 
-This page describes how to Integrate AI Compose in your Salesforce application.
+This page describes how to integrate AI Compose into your Salesforce application.
 
 ### Integration Steps
 
@@ -151,7 +155,7 @@ You will need the following information to configure ASAPP for Salesforce:
   <Frame>
     <img src="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=a8afc23ad01706158397d073750e5fd2" data-og-width="961" width="961" data-og-height="525" height="525" data-path="image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=280&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=769ddaf716801a57c6dab9ddd4c35d1b 280w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=560&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=f4976bf06c8d1d4deb39407627c18164 560w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=840&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=195a06632129edc20e939ff64b877a8f 840w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=1100&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=dd8ac6c40c09299e02796eaf4f0f039e 1100w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=1650&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=8de4d5a833e7dee04bd137e405e8ce05 1650w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-e2227892-55f8-1c17-16c7-61a1895bf19c.png?w=2500&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=d19d4657e22a6bb63073416e7c6d77cd 2500w" />
   </Frame>
-* Choose **Desktop** form factor, then click **Save**.
+* Choose the **Desktop** form factor, then click **Save**.
   <Frame>
     <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=896ff7c3620357aa1344554a8be3a597" data-og-width="649" width="649" data-og-height="187" height="187" data-path="image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=70307c8fdbea17186274b84dcc6c3099 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=50c9bbe471bc45564b832947a34987bd 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=90203eba34107d8681284872f93f0151 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=d8e621f5e3883d46b51805bd815d0fb4 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=4f0ce6f6b2fcda2f3c5e001de9915363 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-25a3c7b0-9a58-97be-28a4-799e4de6f3f3.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=d9bc0545c1266f03a22095168386f62e 2500w" />
   </Frame>
@@ -164,7 +168,7 @@ You will need the following information to configure ASAPP for Salesforce:
 
 ASAPP handles authentication through the customer's SSO service to confirm the identity of the agent.
 
-ASAPP acts as the Service Provider (SP) with the customer acting as the Identity Provider (IDP). The customer's authentication system performs user authentication using their existing user credentials.
+ASAPP acts as the Service Provider (SP), with the customer acting as the Identity Provider (IDP). The customer's authentication system performs user authentication using their existing user credentials.
 
 ASAPP supports SP-initiated SSO with either OIDC (preferred method) and SAML. Once the user initiates sign-in, ASAPP detects that the user is authenticated and requests an assertion from the customer's SSO service.
 

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/cli/commands/scan-install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # scan install
 
 > Add various scanning tools seamlessly into your development lifecycle

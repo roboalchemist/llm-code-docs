@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/create-checkout-session.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Create Checkout Session
 
 > Learn how to create checkout sessions via API.
@@ -39,7 +43,7 @@
     * \<YOUR\_ACCESS\_TOKEN> with your actual access token
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs you want to include in the session
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \

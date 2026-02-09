@@ -1,16 +1,13 @@
 # Source: https://rspack.dev/guide/tech/preact.md
 
-import { PackageManagerTabs } from '@theme';
-import { Stability } from '@components/ApiMeta.tsx';
-
 # Preact
 
 ## How to use
 
 Rspack provides two solutions to support Preact:
 
-* **Use Rsbuild**: Rsbuild provides out-of-the-box support for Preact, allowing you to quickly create a Preact project. See [Rsbuild - Preact](https://rsbuild.rs/guide/framework/preact) for details.
-* **Manually configure Rspack**: You can refer to the current document to manually add configurations for Preact.
+- **Use Rsbuild**: Rsbuild provides out-of-the-box support for Preact, allowing you to quickly create a Preact project. See [Rsbuild - Preact](https://rsbuild.rs/guide/framework/preact) for details.
+- **Manually configure Rspack**: You can refer to the current document to manually add configurations for Preact.
 
 ## Configure JSX/TSX
 
@@ -65,23 +62,42 @@ Refer to [examples/preact](https://github.com/rstackjs/rstack-examples/blob/main
 
 To enable Preact Refresh, the following steps are required:
 
-* Add the `@rspack/plugin-preact-refresh` plugin to inject runtime code
-* Add the loader for code transformation
+- Add the `@rspack/plugin-preact-refresh` plugin to inject runtime code
+- Add the loader for code transformation
 
 ### @rspack/plugin-preact-refresh
 
 First you need to install the dependencies:
 
-<PackageManagerTabs command="add @rspack/plugin-preact-refresh @prefresh/core @prefresh/utils -D" />
+
+```sh [npm]
+npm add @rspack/plugin-preact-refresh @prefresh/core @prefresh/utils -D
+```
+
+```sh [yarn]
+yarn add @rspack/plugin-preact-refresh @prefresh/core @prefresh/utils -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/plugin-preact-refresh @prefresh/core @prefresh/utils -D
+```
+
+```sh [bun]
+bun add @rspack/plugin-preact-refresh @prefresh/core @prefresh/utils -D
+```
+
+```sh [deno]
+deno add npm:@rspack/plugin-preact-refresh npm:@prefresh/core npm:@prefresh/utils -D
+```
 
 The enabling of the [Preact Refresh](https://github.com/preactjs/prefresh) is divided into two parts: code injection and code transformation
 
-* Code injection: injects code that interacts with `@prefresh/core` and `@prefresh/utils`, which has been integrated in the [@rspack/plugin-preact-refresh](https://github.com/rstackjs/rspack-plugin-preact-refresh) plugin
-* Code transformation requires a loader
-  * Use `builtin:swc-loader` or [`swc-loader`](https://swc.rs/docs/usage/swc-loader)
-    * Enable `jsc.transform.react.refresh` to support common react transformation
-    * Add [`@swc/plugin-prefresh`](https://github.com/swc-project/plugins/tree/main/packages/prefresh) into `jsc.experimental.plugins` to support the specific transformation of preact
-  * Use `babel-loader` and add official [babel plugin](https://github.com/preactjs/prefresh/tree/main/packages/babel) of prefresh.
+- Code injection: injects code that interacts with `@prefresh/core` and `@prefresh/utils`, which has been integrated in the [@rspack/plugin-preact-refresh](https://github.com/rstackjs/rspack-plugin-preact-refresh) plugin
+- Code transformation requires a loader
+  - Use `builtin:swc-loader` or [`swc-loader`](https://swc.rs/docs/usage/swc-loader)
+    - Enable `jsc.transform.react.refresh` to support common react transformation
+    - Add [`@swc/plugin-prefresh`](https://github.com/swc-project/plugins/tree/main/packages/prefresh) into `jsc.experimental.plugins` to support the specific transformation of preact
+  - Use `babel-loader` and add official [babel plugin](https://github.com/preactjs/prefresh/tree/main/packages/babel) of prefresh.
 
 :::warning
 In versions below 1.0.0, Rspack did not support preact refresh with `swc-loader`.

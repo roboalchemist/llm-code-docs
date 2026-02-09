@@ -4,17 +4,17 @@
 
 ## Apify Scraper for Facebook Data
 
-The Facebook Scraper modules from https://apify.com/ allow you to extract posts, comments, and profile data from Facebook.
+The Facebook Scraper modules from [Apify](https://apify.com/) allow you to extract posts, comments, and profile data from Facebook.
 
-To use these modules, you need an https://console.apify.com and an https://docs.apify.com/platform/integrations/api#api-token. You can find your token in the https://console.apify.com/ under **Settings > Integrations**. After connecting, you can automate data extraction and incorporate the results into your workflows.
+To use these modules, you need an [Apify account](https://console.apify.com) and an [API token](https://docs.apify.com/platform/integrations/api#api-token). You can find your token in the [Apify Console](https://console.apify.com/) under **Settings > Integrations**. After connecting, you can automate data extraction and incorporate the results into your workflows.
 
 ## Connect Apify Scraper for Facebook Data modules to Make
 
-1. Create an account at https://console.apify.com/. You can sign up using your email, Gmail, or GitHub account.
+1. Create an account at [Apify](https://console.apify.com/). You can sign up using your email, Gmail, or GitHub account.
 
    ![Sign up page](/assets/images/signup-9708d31d8ee3eee598de711064f649f3.png)
 
-2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **https://console.apify.com/settings/integrations** in the Apify Console.
+2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)** in the Apify Console.
 
    ![Apify Actor rental](/assets/images/actor-rental-f376d02ecb872d8399a7f664c8be2278.png)
 
@@ -22,7 +22,7 @@ To use these modules, you need an https://console.apify.com and an https://docs.
 
    ![Start Actor rental](/assets/images/start-rental-67a43c22c84cb3cb1d71c199909dc354.png)
 
-4. Connect your Apify account with Make, you need to get the Apify API token. In the Apify Console, navigate to **https://console.apify.com/settings/integrations**.
+4. Connect your Apify account with Make, you need to get the Apify API token. In the Apify Console, navigate to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)**.
 
    ![Apify Console token for Make.png](/assets/images/apify-console-token-for-make-cf75dbeb5effdcab9bc204cee94cdb6a.png)
 
@@ -114,7 +114,7 @@ You’ll get:
 
 Free plan limitations
 
-Features like *replies* and *comment sorting* are limited for users on Apify's Free Plan. Consider upgrading to a https://apify.com/pricing.
+Features like *replies* and *comment sorting* are limited for users on Apify's Free Plan. Consider upgrading to a [paid subscription](https://apify.com/pricing).
 
 Example (shortened)
 
@@ -264,11 +264,11 @@ Example (shortened)
 
 Looking for more than just Facebook? You can use other native Make apps powered by Apify:
 
-* https://docs.apify.com/platform/integrations/make/tiktok.md
-* https://docs.apify.com/platform/integrations/make/search.md
-* https://docs.apify.com/platform/integrations/make/maps.md
-* https://docs.apify.com/platform/integrations/make/youtube.md
-* https://docs.apify.com/platform/integrations/make/ai-crawling.md
-* https://docs.apify.com/platform/integrations/make/amazon.md
+* [TikTok Data](https://docs.apify.com/platform/integrations/make/tiktok.md)
+* [Google Search](https://docs.apify.com/platform/integrations/make/search.md)
+* [Google Maps Emails Data](https://docs.apify.com/platform/integrations/make/maps.md)
+* [YouTube Data](https://docs.apify.com/platform/integrations/make/youtube.md)
+* [AI crawling](https://docs.apify.com/platform/integrations/make/ai-crawling.md)
+* [Amazon](https://docs.apify.com/platform/integrations/make/amazon.md)
 
-And more! Because you can access any of thousands of our scrapers on Apify Store by using the https://www.make.com/en/integrations/apify.
+And more! Because you can access any of thousands of our scrapers on Apify Store by using the [general Apify connections](https://www.make.com/en/integrations/apify).

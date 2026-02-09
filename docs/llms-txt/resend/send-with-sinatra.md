@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-sinatra.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Sinatra
 
 > Learn how to send your first email using Sinatra and the Resend Ruby SDK.
@@ -16,11 +20,11 @@ To get the most out of this guide, you'll need to:
 Get the Resend Ruby SDK.
 
 <CodeGroup>
-  ```bash RubyGems theme={null}
+  ```bash RubyGems theme={"theme":{"light":"github-light","dark":"vesper"}}
   gem install resend
   ```
 
-  ```bash Gemfile theme={null}
+  ```bash Gemfile theme={"theme":{"light":"github-light","dark":"vesper"}}
   gem 'resend'
   ```
 </CodeGroup>
@@ -29,7 +33,7 @@ Get the Resend Ruby SDK.
 
 The easiest way to send an email is by using the `html` parameter.
 
-```rb index.rb theme={null}
+```rb index.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
 require "sinatra"
 require "resend"
 

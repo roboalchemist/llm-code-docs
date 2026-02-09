@@ -1,10 +1,8 @@
 # Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/entra-id.md
 
-# (Beta) User Provisioning (SCIM) with Entra ID (Azure AD)
+# User Provisioning (SCIM) with Entra ID (Azure AD)
 
-info
-
-**Beta Feature**: SCIM provisioning is in public beta. It has been thoroughly tested with various Identity Providers. We're now collecting feedback from real-world usage to fine-tune the experience. Share your feedback [here](https://configcat.com/support).
+Copy page
 
 ## Introduction[​](#introduction "Direct link to Introduction")
 
@@ -91,4 +89,4 @@ In ConfigCat, you can assign permissions only to groups that are synchronized fr
 
 ## 5. Next Steps[​](#5-next-steps "Direct link to 5. Next Steps")
 
-* Continue with [assigning ConfigCat permissions to the synced groups](https://configcat.com/docs/docs/advanced/team-management/scim/scim-overview/.md#groups).
+* Continue with [assigning ConfigCat permissions to the synced groups](https://configcat.com/docs/advanced/team-management/scim/scim-overview.md#groups).

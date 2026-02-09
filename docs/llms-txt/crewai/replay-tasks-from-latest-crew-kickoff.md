@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/replay-tasks-from-latest-crew-kickoff.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replay Tasks from Latest Crew Kickoff
 
 > Replay tasks from the latest crew.kickoff(...)

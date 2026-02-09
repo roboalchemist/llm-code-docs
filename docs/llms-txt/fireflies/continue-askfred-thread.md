@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/continue-askfred-thread.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Continue AskFred Thread
 
 > Continue an existing AskFred conversation with follow-up questions
@@ -212,8 +216,3 @@ mutation ContinueThread($input: ContinueAskFredThreadInput!) {
     Start a new conversation thread
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

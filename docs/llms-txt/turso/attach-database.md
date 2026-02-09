@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/attach-database.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attach Database (Deprecated)
 
 > Attach and read data across multiple databases.

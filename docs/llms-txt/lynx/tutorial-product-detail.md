@@ -1,3 +1,5 @@
+# Source: https://lynxjs.org/ai/start/tutorial-product-detail.md
+
 # Source: https://lynxjs.org/rspeedy/start/tutorial-product-detail.md
 
 # Source: https://lynxjs.org/react/start/tutorial-product-detail.md

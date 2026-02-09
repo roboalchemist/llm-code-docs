@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/flow-control/monitor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitoring
 
 You can monitor wait list size of your flow control key's from the console `FlowControl` tab.
@@ -12,8 +16,3 @@ Also you can get the same info using the REST API.
 
 * [List All Flow Control Keys](/workflow/rest/flow-control/list).
 * [Single Flow Control Key](/workflow/rest/flow-control/get).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

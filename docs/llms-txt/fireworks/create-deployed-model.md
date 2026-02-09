@@ -1,197 +1,147 @@
 # Source: https://docs.fireworks.ai/api-reference/create-deployed-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Load LoRA
+
+
 
 ## OpenAPI
 
 ````yaml post /v1/accounts/{account_id}/deployedModels
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/deployedModels
-  method: post
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/deployedModels:
+    post:
+      tags:
+        - Gateway
+      summary: Load LoRA
+      operationId: Gateway_CreateDeployedModel
+      parameters:
+        - name: replaceMergedAddon
+          description: >-
+            Merges new addon to the base model, while unmerging/deleting any
+            existing addon in the deployment. Must be specified for hot reload
+            deployments
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-      query:
-        replaceMergedAddon:
+            type: boolean
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: boolean
-              required: false
-              description: >-
-                Merges new addon to the base model, while unmerging/deleting any
-                existing addon in the deployment. Must be specified for hot
-                reload deployments
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              displayName:
-                allOf:
-                  - &ref_0
-                    type: string
-              description:
-                allOf:
-                  - &ref_1
-                    type: string
-                    description: Description of the resource.
-              model:
-                allOf:
-                  - &ref_2
-                    type: string
-                    title: |-
-                      The resource name of the model to be deployed.
-                      e.g. accounts/my-account/models/my-model
-              deployment:
-                allOf:
-                  - &ref_3
-                    type: string
-                    description: >-
-                      The resource name of the base deployment the model is
-                      deployed to.
-              default:
-                allOf:
-                  - &ref_4
-                    type: boolean
-                    description: >-
-                      If true, this is the default target when querying this
-                      model without
-
-                      the `#<deployment>` suffix.
-
-                      The first deployment a model is deployed to will have this
-                      field set to true.
-              state:
-                allOf:
-                  - &ref_5
-                    $ref: '#/components/schemas/gatewayDeployedModelState'
-                    description: The state of the deployed model.
-                    readOnly: true
-              serverless:
-                allOf:
-                  - &ref_6
-                    type: boolean
-                    title: True if the underlying deployment is managed by Fireworks
-              status:
-                allOf:
-                  - &ref_7
-                    $ref: '#/components/schemas/gatewayStatus'
-                    description: Contains model deploy/undeploy details.
-                    readOnly: true
-              public:
-                allOf:
-                  - &ref_8
-                    type: boolean
-                    description: If true, the deployed model will be publicly reachable.
-            required: true
-            title: 'Next ID: 20'
-            refIdentifier: '#/components/schemas/gatewayDeployedModel'
-        examples:
-          example:
-            value:
-              displayName: <string>
-              description: <string>
-              model: <string>
-              deployment: <string>
-              default: true
-              serverless: true
-              public: true
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    title: >-
-                      The resource name. e.g.
-                      accounts/my-account/deployedModels/my-deployed-model
-                    readOnly: true
-              displayName:
-                allOf:
-                  - *ref_0
-              description:
-                allOf:
-                  - *ref_1
-              createTime:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: The creation time of the resource.
-                    readOnly: true
-              model:
-                allOf:
-                  - *ref_2
-              deployment:
-                allOf:
-                  - *ref_3
-              default:
-                allOf:
-                  - *ref_4
-              state:
-                allOf:
-                  - *ref_5
-              serverless:
-                allOf:
-                  - *ref_6
-              status:
-                allOf:
-                  - *ref_7
-              public:
-                allOf:
-                  - *ref_8
-              updateTime:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: The update time for the deployed model.
-                    readOnly: true
-            title: 'Next ID: 20'
-            refIdentifier: '#/components/schemas/gatewayDeployedModel'
-        examples:
-          example:
-            value:
-              name: <string>
-              displayName: <string>
-              description: <string>
-              createTime: '2023-11-07T05:31:56Z'
-              model: <string>
-              deployment: <string>
-              default: true
-              state: STATE_UNSPECIFIED
-              serverless: true
-              status:
-                code: OK
-                message: <string>
-              public: true
-              updateTime: '2023-11-07T05:31:56Z'
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gatewayDeployedModel'
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayDeployedModel'
 components:
   schemas:
+    gatewayDeployedModel:
+      type: object
+      properties:
+        name:
+          type: string
+          title: >-
+            The resource name. e.g.
+            accounts/my-account/deployedModels/my-deployed-model
+          readOnly: true
+        displayName:
+          type: string
+        description:
+          type: string
+          description: Description of the resource.
+        createTime:
+          type: string
+          format: date-time
+          description: The creation time of the resource.
+          readOnly: true
+        model:
+          type: string
+          title: |-
+            The resource name of the model to be deployed.
+            e.g. accounts/my-account/models/my-model
+        deployment:
+          type: string
+          description: The resource name of the base deployment the model is deployed to.
+        default:
+          type: boolean
+          description: >-
+            If true, this is the default target when querying this model without
+
+            the `#<deployment>` suffix.
+
+            The first deployment a model is deployed to will have this field set
+            to true.
+        state:
+          $ref: '#/components/schemas/gatewayDeployedModelState'
+          description: The state of the deployed model.
+          readOnly: true
+        serverless:
+          type: boolean
+          title: True if the underlying deployment is managed by Fireworks
+        status:
+          $ref: '#/components/schemas/gatewayStatus'
+          description: Contains model deploy/undeploy details.
+          readOnly: true
+        public:
+          type: boolean
+          description: If true, the deployed model will be publicly reachable.
+        updateTime:
+          type: string
+          format: date-time
+          description: The update time for the deployed model.
+          readOnly: true
+      title: 'Next ID: 20'
+    gatewayDeployedModelState:
+      type: string
+      enum:
+        - STATE_UNSPECIFIED
+        - UNDEPLOYING
+        - DEPLOYING
+        - DEPLOYED
+        - UPDATING
+      default: STATE_UNSPECIFIED
+      description: |-
+        - UNDEPLOYING: The model is being undeployed.
+         - DEPLOYING: The model is being deployed.
+         - DEPLOYED: The model is deployed and ready for inference.
+         - UPDATING: there are updates happening with the deployed model
+      title: 'Next ID: 6'
+    gatewayStatus:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/gatewayCode'
+          description: The status code.
+        message:
+          type: string
+          description: A developer-facing error message in English.
+      title: >-
+        Mimics
+        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
     gatewayCode:
       type: string
       enum:
@@ -337,32 +287,13 @@ components:
       title: >-
         Mimics
         [https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto]
-    gatewayDeployedModelState:
-      type: string
-      enum:
-        - STATE_UNSPECIFIED
-        - UNDEPLOYING
-        - DEPLOYING
-        - DEPLOYED
-        - UPDATING
-      default: STATE_UNSPECIFIED
-      description: |-
-        - UNDEPLOYING: The model is being undeployed.
-         - DEPLOYING: The model is being deployed.
-         - DEPLOYED: The model is deployed and ready for inference.
-         - UPDATING: there are updates happening with the deployed model
-      title: 'Next ID: 6'
-    gatewayStatus:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/gatewayCode'
-          description: The status code.
-        message:
-          type: string
-          description: A developer-facing error message in English.
-      title: >-
-        Mimics
-        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

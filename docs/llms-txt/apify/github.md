@@ -10,7 +10,7 @@
 
 To use the Apify integration for GitHub, you will need:
 
-* An https://console.apify.com/.
+* An [Apify account](https://console.apify.com/).
 * A GitHub repository.
 
 ### Create an Actor from a GitHub repository
@@ -39,4 +39,4 @@ An Actor is created immediately from the selected repository.
 
 ### Create an issue when a run fails
 
-https://www.youtube-nocookie.com/embed/jZUp-rRbayc
+[YouTube video player](https://www.youtube-nocookie.com/embed/jZUp-rRbayc)

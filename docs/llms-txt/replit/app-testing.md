@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/app-testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Testing
 
 > Agent's self-testing feature that validates your app's functionality using an actual browser, with visual feedback and automatic issue resolution.
@@ -7,20 +11,22 @@
 **App Testing is a powerful new feature in Agent 3** that allows Agent to test itself using an actual browser. Agent tests the apps it builds by navigating through your application like a real user would, clicking around and validating functionality. This self-testing capability helps ensure your app works correctly and allows Agent to catch and fix issues automatically.
 
 <Info>
-  **New in Agent 3**: App Testing represents a major advancement in Agent's
-  autonomous capabilities, enabling more reliable and higher-quality app
-  development.
+  **New in Agent 3**: App Testing represents a major advancement in Agent's autonomous capabilities, enabling more reliable and higher-quality app development.
 </Info>
 
 ## How App Testing works
-
-When App Testing is enabled, Agent will periodically decide to test itself when it thinks enough has changed to deem it necessary. Agent doesn't test after 100% of user messages, but intelligently determines when testing would be most valuable.
 
 Watch App Testing in action as Agent navigates through your app:
 
 <Frame>
   <video autoPlay muted loop playsInline src="https://cdn.replit.com/sanity/app-testing-video.mp4" />
 </Frame>
+
+When App Testing is enabled, Agent will periodically decide to test itself when it thinks enough has changed to deem it necessary. Agent doesn't test after 100% of user messages, but intelligently determines when testing would be most valuable.
+
+<Note>
+  At this time, App Testing is available for Full Stack JavaScript and Streamlit Python web applications.
+</Note>
 
 ### Key Benefits
 
@@ -53,8 +59,7 @@ Agent intelligently tests your application by navigating through it like a real 
 App Testing can be toggled on/off within the "Agent Tools" section of the input box within your Repl. When enabled, Agent intelligently decides when to test based on the changes made to your app.
 
 <Note>
-  App Testing is part of Agent 3's autonomous capabilities. Learn more about
-  [Autonomy Level settings](/replitai/autonomy-level) and other [Agent
+  App Testing is part of Agent 3's autonomous capabilities. Learn more about [Autonomy Level settings](/replitai/autonomy-level) and other [Agent
   features](/replitai/agent).
 </Note>
 
@@ -63,7 +68,7 @@ App Testing can be toggled on/off within the "Agent Tools" section of the input 
 Sometimes the Agent will encounter a roadblock during testing that it needs your help with to continue. Most commonly this involves logging in to a user account (e.g. Gmail). In these cases, the Agent will pop up with a button to "Begin take over."
 
 <Frame>
-  <img src="https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=ec77a1a983265a80746092815b5f2be9" alt="App Testing take over interface showing Skip and Begin take over buttons with instructions for handling errors and CAPTCHAs" data-og-width="924" width="924" data-og-height="358" height="358" data-path="images/replitai/app-testing-takeover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=280&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=b6c05c965ef1038786ccdb2d271c2d46 280w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=560&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=44c733828be1d2047f379b5f4ba67c0c 560w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=840&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=8bb1b8290224c8652f9ecf7337255eef 840w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=1100&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=5cdcbbd18c9573ae716ae5c472022e80 1100w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=1650&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=877717c874a21b467cd05ee89f6c4d4a 1650w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=2500&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=6d2f5b2654d88b77d676a89fffaffa8a 2500w" />
+    <img src="https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=ec77a1a983265a80746092815b5f2be9" alt="App Testing take over interface showing Skip and Begin take over buttons with instructions for handling errors and CAPTCHAs" data-og-width="924" width="924" data-og-height="358" height="358" data-path="images/replitai/app-testing-takeover.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=280&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=b6c05c965ef1038786ccdb2d271c2d46 280w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=560&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=44c733828be1d2047f379b5f4ba67c0c 560w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=840&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=8bb1b8290224c8652f9ecf7337255eef 840w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=1100&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=5cdcbbd18c9573ae716ae5c472022e80 1100w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=1650&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=877717c874a21b467cd05ee89f6c4d4a 1650w, https://mintcdn.com/replit/kVUdilkonY2o8_tu/images/replitai/app-testing-takeover.png?w=2500&fit=max&auto=format&n=kVUdilkonY2o8_tu&q=85&s=6d2f5b2654d88b77d676a89fffaffa8a 2500w" />
 </Frame>
 
 Pressing "Begin take over" enables you to click into the testing preview, complete the requisite steps, then allow the Agent to continue. You can also press "Skip" to skip take over, ending the App Testing if the Agent cannot proceed without your help. If you do not respond within 10 minutes, the Agent will continue as if you pressed "Skip."
@@ -77,7 +82,7 @@ Pressing "Begin take over" enables you to click into the testing preview, comple
 The interactive replay interface allows you to review the complete testing session:
 
 <Frame>
-  <img src="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=04ba7222d61dfce14c55563ce4ef8393" alt="Interactive video replay interface showing the testing session with navigation controls" data-og-width="1764" width="1764" data-og-height="1394" height="1394" data-path="images/replitai/app-testing-replay-photo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=280&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=f95ae30324d4e2529f0ea9d36e04fb16 280w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=560&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=8d5ab84d50e9be3d2ce45bd1ac793b3e 560w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=840&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=d784b6c5a0bdb723fda722f78d3929bd 840w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=1100&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=cdeb1e504b440ae36a07b7c4f933bc9d 1100w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=1650&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=50d5f1c461ae6ec36bca96097a40ab0d 1650w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=2500&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=1e5bfc76e03703d960ff6c283a02fca5 2500w" />
+    <img src="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=04ba7222d61dfce14c55563ce4ef8393" alt="Interactive video replay interface showing the testing session with navigation controls" data-og-width="1764" width="1764" data-og-height="1394" height="1394" data-path="images/replitai/app-testing-replay-photo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=280&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=f95ae30324d4e2529f0ea9d36e04fb16 280w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=560&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=8d5ab84d50e9be3d2ce45bd1ac793b3e 560w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=840&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=d784b6c5a0bdb723fda722f78d3929bd 840w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=1100&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=cdeb1e504b440ae36a07b7c4f933bc9d 1100w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=1650&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=50d5f1c461ae6ec36bca96097a40ab0d 1650w, https://mintcdn.com/replit/fq3p5W3K0mVwvlo1/images/replitai/app-testing-replay-photo.png?w=2500&fit=max&auto=format&n=fq3p5W3K0mVwvlo1&q=85&s=1e5bfc76e03703d960ff6c283a02fca5 2500w" />
 </Frame>
 
 ## Troubleshooting
@@ -95,7 +100,7 @@ The interactive replay interface allows you to review the complete testing sessi
 
 **App Testing not working at all?**
 
-* App Testing only works with web applications at this time
+* App Testing only works with web applications[\*](#how-app-testing-works) at this time
 
 ## Pricing and usage
 
@@ -106,9 +111,7 @@ App Testing is included as part of Agent's effort-based pricing model with impor
 * **Efficient Development**: Automated approach reduces the need for manual debugging and rework
 
 <Tip>
-  **Cost-Effective Testing**: Although App Testing adds to your usage costs, it
-  often saves money overall by preventing the need for additional Agent sessions
-  to fix issues that could have been caught during testing.
+  **Cost-Effective Testing**: Although App Testing adds to your usage costs, it often saves money overall by preventing the need for additional Agent sessions to fix issues that could have been caught during testing.
 </Tip>
 
 ## Next steps

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/fts-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full-Text Search (FTS) Index
 
 > Create and tune BM25-based full-text search indexes in LanceDB.
@@ -18,6 +22,10 @@ LanceDB Cloud and Enterprise provide performant full-text search based on BM25, 
 
 ## Creating FTS Indexes
 
+### Synchronous API
+
+Use `create_fts_index` with synchronous LanceDB connections:
+
 <CodeGroup>
   <CodeBlock filename="Python" language="Python" icon="python">
     {FtsIndexCreate}
@@ -32,16 +40,18 @@ Check FTS index status using the API:
   </CodeBlock>
 </CodeGroup>
 
-<Note>
-  In LanceDB OSS, `create_fts_index` is not supported with `AsyncTable`. When working with async connections, use `create_index` with the `FTS` configuration instead.
+### Asynchronous API
 
-  <Expandable title="Code Example">
-    <CodeGroup>
-      <CodeBlock filename="Python" language="Python" icon="python">
-        {FtsIndexAsync}
-      </CodeBlock>
-    </CodeGroup>
-  </Expandable>
+When using async connections (`connect_async`), use `create_index` with the `FTS` configuration:
+
+<CodeGroup>
+  <CodeBlock filename="Python" language="Python" icon="python">
+    {FtsIndexAsync}
+  </CodeBlock>
+</CodeGroup>
+
+<Note>
+  The `create_fts_index` method is not available on `AsyncTable`. Use `create_index` with `FTS` config instead.
 </Note>
 
 ## Configuration Options
@@ -73,8 +83,3 @@ Enable phrase queries by setting:
 | :------------------ | :------------- | :-------------------------------------------- |
 | `with_position`     | `True`         | Track token positions for phrase matching     |
 | `remove_stop_words` | `False`        | Preserve stop words for exact phrase matching |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

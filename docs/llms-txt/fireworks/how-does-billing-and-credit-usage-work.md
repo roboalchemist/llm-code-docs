@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/billing-pricing/how-does-billing-and-credit-usage-work.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How does billing and credit usage work?
 
 Usage and billing operate through a **tiered system**:

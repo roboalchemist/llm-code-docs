@@ -82,8 +82,8 @@ The Form will construct itself based on the `fields` prop and the state will be 
 
 Use the `fields` prop as an array of objects with the following properties:
 
-- `name?: string`
-- `type?: 'text' | 'password' | 'email' | 'number' | 'checkbox' | 'select' | 'otp'`
+- `name: string`
+- `type: 'checkbox' | 'select' | 'otp' | 'InputHTMLAttributes['type']'`
 
 Each field must include a `type` property, which determines the input component and any additional props applied: `checkbox` fields use [Checkbox](/docs/components/checkbox#props) props, `select` fields use [SelectMenu](/docs/components/select-menu#props) props, `otp` fields use [PinInput](/docs/components/pin-input#props) props, and all other types use [Input](/docs/components/input#props) props.
 
@@ -304,10 +304,10 @@ interface AuthFormProps {
   /**
    * The icon displayed above the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   description?: string | undefined;
-  fields?: AuthFormField[] | undefined;
+  fields?: F[] | undefined;
   /**
    * Display a list of Button under the description.
    * `{ color: 'neutral', variant: 'subtle', block: true }`{lang="ts-type"}
@@ -322,9 +322,9 @@ interface AuthFormProps {
    * Display a submit button at the bottom of the form.
    * `{ label: 'Continue', block: true }`{lang="ts-type"}
    */
-  submit?: ButtonProps | undefined;
-  schema?: FormSchema | undefined;
-  validate?: ((state: Partial<any>) => FormError<string>[] | Promise<FormError<string>[]>) | undefined;
+  submit?: Omit<ButtonProps, LinkPropsKeys> | undefined;
+  schema?: T | undefined;
+  validate?: ((state: Partial<InferInput<T>>) => FormError<string>[] | Promise<FormError<string>[]>) | undefined;
   validateOn?: FormInputEvents[] | undefined;
   validateOnInputDelay?: number | undefined;
   disabled?: boolean | undefined;
@@ -342,11 +342,9 @@ interface AuthFormProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attributes">
-
-This component also supports all native `<form>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attributes
+> This component also supports all native `<form>` HTML attributes.
 
 ### Slots
 
@@ -373,7 +371,7 @@ interface AuthFormSlots {
  * Emitted events for the AuthForm component
  */
 interface AuthFormEmits {
-  submit: (payload: [payload: FormSubmitEvent<any>]) => void;
+  submit: (payload: [payload: FormSubmitEvent<Reactive<InferInput<T>>>]) => void;
 }
 ```
 
@@ -508,8 +506,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

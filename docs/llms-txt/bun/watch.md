@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/read-file/watch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Watch a directory for changes
 
 Bun implements the `node:fs` module, including the `fs.watch` function for listening for file system changes.
@@ -61,4 +65,4 @@ process.on("SIGINT", () => {
 
 ***
 
-Refer to [API > Binary data > Typed arrays](https://bun.com/docs/api/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
+Refer to [API > Binary data > Typed arrays](/runtime/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.

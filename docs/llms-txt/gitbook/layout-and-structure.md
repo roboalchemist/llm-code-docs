@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/customization/layout-and-structure.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/customization/layout-and-structure.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/customization/layout-and-structure.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/customization/layout-and-structure.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/customization/layout-and-structure.md
 

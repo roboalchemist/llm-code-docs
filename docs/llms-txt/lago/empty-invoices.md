@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/empty-invoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Empty invoice generation
 
 > Configure whether Lago should generate invoices with a total amount of zero.

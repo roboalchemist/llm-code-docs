@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/tasks/scheduled.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scheduled tasks (cron)
 
 > A task that is triggered on a recurring schedule using cron syntax.
@@ -13,7 +17,7 @@
 
 This task will run when any of the attached schedules trigger. They have a predefined payload with some useful properties:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 export const firstScheduledTask = schedules.task({
@@ -88,7 +92,7 @@ These sync when you run the [dev](/cli-dev) or [deploy](/cli-deploy) commands.
 
 To create them you add the `cron` property to your `schedules.task()`. This property is optional and is only used if you want to add a declarative schedule to your task:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const firstScheduledTask = schedules.task({
   id: "first-scheduled-task",
   //every two hours (UTC timezone)
@@ -101,7 +105,7 @@ export const firstScheduledTask = schedules.task({
 
 If you use a string it will be in UTC. Alternatively, you can specify a timezone like this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const secondScheduledTask = schedules.task({
   id: "second-scheduled-task",
   cron: {
@@ -185,7 +189,7 @@ You need to attach a schedule to a task before it will run on a schedule. You ca
 
 You call `schedules.create()` to create a schedule from your code. Here's the simplest possible example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const createdSchedule = await schedules.create({
   //The id of the scheduled task you want to attach to.
   task: firstScheduledTask.id,
@@ -202,7 +206,7 @@ You can create many schedules with the same `task`, `cron`, and `externalId` but
 
 This means you can have thousands of schedules attached to a single task, but only one schedule per `deduplicationKey`. Here's an example with all the options:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const createdSchedule = await schedules.create({
   //The id of the scheduled task you want to attach to.
   task: firstScheduledTask.id,
@@ -230,7 +234,7 @@ By using the `externalId` you can have schedules for your users. This is useful 
 
 A reminder task:
 
-```ts /trigger/reminder.ts theme={null}
+```ts /trigger/reminder.ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 //this task will run when any of the attached schedules trigger
@@ -252,7 +256,7 @@ export const reminderTask = schedules.task({
 
 Then in your backend code, you can create a schedule for each user:
 
-```ts Next.js API route theme={null}
+```ts Next.js API route theme={"theme":"css-variables"}
 import { reminderTask } from "~/trigger/reminder";
 
 //app/reminders/route.ts
@@ -300,7 +304,7 @@ You can test a scheduled task in the dashboard. Note that the `scheduleId` will 
 
 ### Retrieving an existing schedule
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const retrievedSchedule = await schedules.retrieve(scheduleId);
 ```
 
@@ -308,7 +312,7 @@ See [the SDK reference](/management/schedules/retrieve) for full details.
 
 ### Listing schedules
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const allSchedules = await schedules.list();
 ```
 
@@ -316,7 +320,7 @@ See [the SDK reference](/management/schedules/list) for full details.
 
 ### Updating a schedule
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const updatedSchedule = await schedules.update(scheduleId, {
   task: firstScheduledTask.id,
   cron: "0 0 1 * *",
@@ -329,7 +333,7 @@ See [the SDK reference](/management/schedules/update) for full details.
 
 ### Deactivating a schedule
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const deactivatedSchedule = await schedules.deactivate(scheduleId);
 ```
 
@@ -337,7 +341,7 @@ See [the SDK reference](/management/schedules/deactivate) for full details.
 
 ### Activating a schedule
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const activatedSchedule = await schedules.activate(scheduleId);
 ```
 
@@ -345,7 +349,7 @@ See [the SDK reference](/management/schedules/activate) for full details.
 
 ### Deleting a schedule
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const deletedSchedule = await schedules.del(scheduleId);
 ```
 
@@ -355,7 +359,7 @@ See [the SDK reference](/management/schedules/delete) for full details.
 
 You might want to show a dropdown menu in your UI so your users can select their timezone. You can get a list of all possible timezones using the SDK:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const timezones = await schedules.timezones();
 ```
 

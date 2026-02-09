@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-danger.md
 ---
-# react/no-danger&#x20;
 
 ### What it does
 

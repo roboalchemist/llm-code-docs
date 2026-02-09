@@ -43,7 +43,7 @@ Example:
 
 ## server
 
-The definition of a http server. Configure the server using[jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
+The definition of a http server. Configure the server using[jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
 
 | Attribute | Required | Value | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -108,7 +108,7 @@ Comma-separated list of TLS cipher suites to enable. The specified ciphers must 
 
 ## ssl-provider
 
-Setup TLS on the HTTP server through a programmatic Java interface. The specified class must implement the [SslProvider](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/jdisc/http/SslProvider.html) interface.
+Setup TLS on the HTTP server through a programmatic Java interface. The specified class must implement the [SslProvider](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/jdisc/http/SslProvider.html) interface.
 
 | Attribute | Required | Value | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -342,7 +342,7 @@ Example:
 </request-chain>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

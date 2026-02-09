@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/geocode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Geocode Address Data
 
 > Automatically enrich location data using the Google Maps Geocoding API to convert addresses into geographic coordinates and vice-versa.
@@ -18,7 +22,7 @@ The plugin operates during the data commit phase (`commit:created`), processing 
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-enrich-geocode
 ```
 
@@ -43,7 +47,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import enrichGeocode from "@flatfile/plugin-enrich-geocode";
 
   export default function (listener) {
@@ -52,7 +56,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from "@flatfile/listener";
   import enrichGeocode from "@flatfile/plugin-enrich-geocode";
 
@@ -66,7 +70,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
 ### Custom Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import enrichGeocode from "@flatfile/plugin-enrich-geocode";
 
   export default function (listener) {
@@ -81,7 +85,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from "@flatfile/listener";
   import enrichGeocode from "@flatfile/plugin-enrich-geocode";
 
@@ -101,7 +105,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
 ### Advanced Usage - Direct API Function
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { performGeocoding } from "@flatfile/plugin-enrich-geocode";
 
   async function geocodeSingleAddress(address, apiKey) {
@@ -117,7 +121,7 @@ If no configuration is provided, the plugin will attempt to run on a sheet with 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { performGeocoding } from "@flatfile/plugin-enrich-geocode";
 
   async function geocodeSingleAddress(address: string, apiKey: string) {
@@ -163,7 +167,7 @@ A Promise that resolves to either:
 
 **Success (GeocodingResult):**
 
-```javascript
+```javascript  theme={null}
 {
   latitude: number,
   longitude: number,
@@ -175,7 +179,7 @@ A Promise that resolves to either:
 
 **Failure (GeocodingError):**
 
-```javascript
+```javascript  theme={null}
 {
   message: string,
   field: string // 'address', 'coordinates', or 'input'
@@ -185,7 +189,7 @@ A Promise that resolves to either:
 **Example with Error Handling:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { performGeocoding } from "@flatfile/plugin-enrich-geocode";
 
   async function findCoordinates(apiKey) {
@@ -199,7 +203,7 @@ A Promise that resolves to either:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { performGeocoding } from "@flatfile/plugin-enrich-geocode";
 
   async function findCoordinates(apiKey: string) {

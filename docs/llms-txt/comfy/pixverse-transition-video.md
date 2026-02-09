@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/pixverse/pixverse-transition-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PixVerse Transition Video - ComfyUI Native Node Documentation
 
 > Create smooth transition videos between start and end frames using PixVerse AI

@@ -553,7 +553,7 @@ You can also write to your app without calling any Streamlit methods.
 Streamlit supports "[magic commands](/develop/api-reference/write-magic/magic)," which means you don't have to use
 [`st.write()`](/develop/api-reference/write-magic/st.write) at all! To see this in action try this snippet:
 
-```python
+```python try
 """
 # My first app
 Here's our first attempt at using data to create a table:
@@ -975,7 +975,7 @@ st.dataframe(df)
 
 Of course, you may be wondering where your username and password go. Streamlit has a convenient mechanism for [Secrets management](/develop/concepts/connections/secrets-management). For now, let's just see how `st.connection` works very nicely with secrets. In your local project directory, you can save a `.streamlit/secrets.toml` file. You save your secrets in the toml file and `st.connection` just uses them! For example, if you have an app file `streamlit_app.py` your project directory may look like this:
 
-```bash
+```none hideHeader
 your-LOCAL-repository/
 ├── .streamlit/
 │   └── secrets.toml # Make sure to gitignore this!
@@ -2978,12 +2978,13 @@ This guide covers advanced concepts about widgets. Generally, it begins with sim
 <Collapse title="🎈 TL;DR">{false}&gt;
 
 1. The actions of one user do not affect the widgets of any other user.
-2. A widget function call returns the widget's current value, which is a simple Python type. (e.g. `st.button` returns a boolean value.)
+2. A widget command returns the widget's current value, which is a simple Python type. For example, `st.button` returns a boolean value.
 3. Widgets return their default values on their first call before a user interacts with them.
-4. A widget's identity depends on the arguments passed to the widget function. Changing a widget's label, min or max value, default value, placeholder text, help text, or key will cause it to reset.
-5. If you don't call a widget function in a script run, Streamlit will delete the widget's information_including its key-value pair in Session State_. If you call the same widget function later, Streamlit treats it as a new widget.
+4. A widget's identity depends on the arguments passed to the widget command. **If a key is provided, only the key determines the widget's identity, with some limitations as this is still being implemented.** If no key is provided, changing a widget's label, min or max value, default value, placeholder text, or help text will cause it to reset.
+5. If you don't call a widget command in a script run, Streamlit will delete the widget's information_including its key-value pair in Session State_. If you call the same widget command later, Streamlit treats it as a new widget.
+6. Widgets are not stateful between pages. If you have two widgets with the same key on different pages, they will be treated as two different widgets.
 
-The last two points (widget identity and widget deletion) are the most relevant when dynamically changing widgets or working with multi-page applications. This is covered in detail later in this guide: [Statefulness of widgets](#statefulness-of-widgets) and [Widget life cycle](#widget-life-cycle).
+The last three points (widget identity and widget deletion) are the most relevant when dynamically changing widgets or working with multi-page applications. This is covered in detail later in this guide: [Statefulness of widgets](#statefulness-of-widgets) and [Widget life cycle](#widget-life-cycle).
 
 </Collapse>
 
@@ -6130,7 +6131,7 @@ Streamlit comes with [Source Sans](https://fonts.adobe.com/fonts/source-sans), [
 
 To use these default faults, you can set each of the following configuration options to `"sans-serif"` (Source Sans), `"serif"` (Source Serif), or `"monospace"` (Source Code) in `config.toml`:
 
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 font = "sans-serif"
 headingFont = "sans-serif"
@@ -6160,7 +6161,7 @@ When fonts are not declared in `[theme.sidebar]`, Streamlit will inherit each op
 
 In the following `config.toml` example, Streamlit uses Source Serif in the main body of the app and Source Sans in the sidebar.
 
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 font = "serif"
 [theme.sidebar]
@@ -6171,7 +6172,7 @@ font = "sans-serif"
 
 If you use a font service like Google Fonts or Adobe Fonts, you can use those fonts directly by encoding their font family (name) and CSS URL into a single string of the form `{font_name}:{css_url}`. If your font family includes a space, use inner quotes on the font family. In the following `config.toml` example, Streamlit uses Nunito font for all text except code, which is Space Mono instead. Space Mono has inner quotes because it has a space.
 
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 font = "Nunito:https://fonts.googleapis.com/css2?family=Nunito=swap"
 codeFont = "'Space Mono':https://fonts.googleapis.com/css2?family=Space+Mono=swap"
@@ -6213,9 +6214,7 @@ The following example uses static file serving to host Google's [Noto Sans](http
 
 A line-by-line explanation of this example is available in a [tutorial](/develop/tutorials/configuration-and-theming/variable-fonts).
 
-`.streamlit/config.toml`:
-
-```toml
+```toml filename=".streamlit/config.toml"
 [server]
 enableStaticServing = true
 
@@ -6236,9 +6235,7 @@ font="noto-sans"
 codeFont="noto-mono"
 ```
 
-Directory structure:
-
-```none
+```none filename="Directory structure"
 project_directory/
 ├── .streamlit/
 │   └── config.toml
@@ -6262,9 +6259,7 @@ If your app uses a font without a matching weight-style definition, the user's b
 
 A line-by-line explanation of this example is available in a [tutorial](/develop/tutorials/configuration-and-theming/static-fonts).
 
-`.streamlit/config.toml`:
-
-```toml
+```toml filename=".streamlit/config.toml"
 [server]
 enableStaticServing = true
 
@@ -6293,9 +6288,7 @@ weight=700
 font="tuffy"
 ```
 
-Directory structure:
-
-```none
+```none filename="Directory structure"
 project_directory/
 ├── .streamlit/
 │   └── config.toml
@@ -6319,9 +6312,7 @@ You can always include one of Streamlit's default fonts as a final fallback. The
 
 A line-by-line explanation of this example is available in a [tutorial](/develop/tutorials/configuration-and-theming/external-fonts).
 
-`.streamlit/config.toml`:
-
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 font="Nunito:https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000, sans-serif"
 codeFont="'Space Mono':https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700=swap, monospace"
@@ -6337,14 +6328,14 @@ If any of your font family names contain spaces and you are declaring a fallback
 
 You can set the base font size for your app in pixels. You must specify the base font size as an integer. The following configuration is equivalent to the default base font size of 16 pixels:
 
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 baseFontSize=16
 ```
 
 Additionally, you can set the font size for code blocks. The font size can be declared in pixels or rem. The following configuration is equivalent to the default code font size of 0.875rem.
 
-```toml
+```toml filename=".streamlit/config.toml"
 [theme]
 codeFontSize="0.875rem"
 ```
@@ -7993,7 +7984,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.title
 
 * Function signature:
 
-   st.title(body, anchor=None, *, help=None, width="stretch")
+   st.title(body, anchor=None, *, help=None, width="stretch", text_alignment="left")
 
 * Parameters:
 
@@ -8003,6 +7994,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.title
    | anchor | str or False |  | The anchor name of the header that can be accessed with #anchor in the URL. If omitted, it generates an anchor using the body. If False, the anchor is not shown in the UI. |
    | help | str or None |  | A tooltip that gets displayed next to the title. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | width | "stretch", "content", or int |  | The width of the title element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 
@@ -8013,7 +8005,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.header
 
 * Function signature:
 
-   st.header(body, anchor=None, *, help=None, divider=False, width="stretch")
+   st.header(body, anchor=None, *, help=None, divider=False, width="stretch", text_alignment="left")
 
 * Parameters:
 
@@ -8024,6 +8016,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.header
    | help | str or None |  | A tooltip that gets displayed next to the header. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | divider | bool, "blue", "green", "orange", "red", "violet", "yellow", "gray"/"grey", or "rainbow" |  | Shows a colored divider below the header. If this is True, successive headers will cycle through divider colors, except gray and rainbow. That is, the first header will have a blue line, the second header will have a green line, and so on. If this is a string, the color can be set to one of the following: blue, green, orange, red, violet, yellow, gray/grey, or rainbow. |
    | width | "stretch", "content", or int |  | The width of the header element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 
@@ -8034,7 +8027,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.subheader
 
 * Function signature:
 
-   st.subheader(body, anchor=None, *, help=None, divider=False, width="stretch")
+   st.subheader(body, anchor=None, *, help=None, divider=False, width="stretch", text_alignment="left")
 
 * Parameters:
 
@@ -8045,6 +8038,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.subheader
    | help | str or None |  | A tooltip that gets displayed next to the subheader. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | divider | bool, "blue", "green", "orange", "red", "violet", "yellow", "gray"/"grey", or "rainbow" |  | Shows a colored divider below the header. If this is True, successive headers will cycle through divider colors, except gray and rainbow. That is, the first header will have a blue line, the second header will have a green line, and so on. If this is a string, the color can be set to one of the following: blue, green, orange, red, violet, yellow, gray/grey, or rainbow. |
    | width | "stretch", "content", or int |  | The width of the subheader element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 
@@ -8055,7 +8049,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.markdown
 
 * Function signature:
 
-   st.markdown(body, unsafe_allow_html=False, *, help=None, width="stretch")
+   st.markdown(body, unsafe_allow_html=False, *, help=None, width="stretch", text_alignment="left")
 
 * Parameters:
 
@@ -8065,6 +8059,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.markdown
    | unsafe_allow_html | bool |  | Whether to render HTML within body. If this is False (default), any HTML tags found in body will be escaped and therefore treated as raw text. If this is True, any HTML expressions within body will be rendered. Adding custom HTML to your app impacts safety, styling, and maintainability.  Note If you only want to insert HTML or CSS without Markdown text, we recommend using st.html instead. |
    | help | str or None |  | A tooltip that gets displayed next to the Markdown. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | width | "stretch", "content", or int |  | The width of the Markdown element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 
@@ -8092,7 +8087,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.badge
 
 * Function signature:
 
-   st.badge(label, *, icon=None, color="blue", width="content")
+   st.badge(label, *, icon=None, color="blue", width="content", help=None)
 
 * Parameters:
 
@@ -8102,6 +8097,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.badge
    | icon | str or None |  | An optional emoji or icon to display next to the badge label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
    | color | str | s | The color to use for the badge. This defaults to "blue". This can be one of the following supported colors: red, orange, yellow, blue, green, violet, gray/grey, or primary. If you use "primary", Streamlit will use the default primary accent color unless you set the theme.primaryColor configuration option. |
    | width | "content", "stretch", or int |  | The width of the badge element. This can be one of the following:  "content" (default): The width of the element matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | help | str or None |  | A tooltip to display when hovering over the badge. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
 
 
 
@@ -8112,7 +8108,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.caption
 
 * Function signature:
 
-   st.caption(body, unsafe_allow_html=False, *, help=None, width="stretch")
+   st.caption(body, unsafe_allow_html=False, *, help=None, width="stretch", text_alignment="left")
 
 * Parameters:
 
@@ -8122,6 +8118,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.caption
    | unsafe_allow_html | bool |  | Whether to render HTML within body. If this is False (default), any HTML tags found in body will be escaped and therefore treated as raw text. If this is True, any HTML expressions within body will be rendered. Adding custom HTML to your app impacts safety, styling, and maintainability.  Note If you only want to insert HTML or CSS without Markdown text, we recommend using st.html instead. |
    | help | str or None |  | A tooltip that gets displayed next to the caption. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | width | "stretch", "content", or int |  | The width of the caption element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 <Image src="/images/api/st.caption.png"/>
@@ -8301,7 +8298,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.text
 
 * Function signature:
 
-   st.text(body, *, help=None, width="content")
+   st.text(body, *, help=None, width="content", text_alignment="left")
 
 * Parameters:
 
@@ -8310,6 +8307,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.text
    | body | str |  | The string to display. |
    | help | str or None |  | A tooltip that gets displayed next to the text. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | width | "content", "stretch", or int |  | The width of the text element. This can be one of the following:  "content" (default): The width of the element matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | text_alignment | "left", "center", "right", or "justify" |  | The horizontal alignment of the text within the element. This can be one of the following:  "left" (default): Text is aligned to the left edge. "center": Text is centered. "right": Text is aligned to the right edge. "justify": Text is justified (stretched to fill the available width with the last line left-aligned).   Note For text alignment to have a visible effect, the element's width must be wider than its content. If you use width="content" with short text, the alignment may not be noticeable. |
 
 
 
@@ -8320,7 +8318,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.help
 
 * Function signature:
 
-   st.help(obj=&lt;module 'streamlit' from '/Users/dmatthews/Documents/GitHub/streamlit/lib/streamlit/__init__.py'&gt;, *, width="stretch")
+   st.help(obj=&lt;module 'streamlit' from '/opt/anaconda3/envs/latest313/lib/python3.13/site-packages/streamlit/__init__.py'&gt;, *, width="stretch")
 
 * Parameters:
 
@@ -8338,7 +8336,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.html
 
 * Function signature:
 
-   st.html(body, *, width="stretch")
+   st.html(body, *, width="stretch", unsafe_allow_javascript=False)
 
 * Parameters:
 
@@ -8346,6 +8344,7 @@ Source: https://docs.streamlit.io/develop/api-reference/text/st.html
    |---|---|---|---|
    | body | any |  | The HTML code to insert. This can be one of the following:  A string of HTML code. A path to a local file with HTML code. The path can be a str or Path object. Paths can be absolute or relative to the working directory (where you execute streamlit run). Any object. If body is not a string or path, Streamlit will convert the object to a string. body._repr_html_() takes precedence over str(body) when available.  If the resulting HTML content is empty, Streamlit will raise an error. If body is a path to a CSS file, Streamlit will wrap the CSS content in  tags automatically. When the resulting HTML content only contains style tags, Streamlit will send the content to the event container instead of the main container to avoid taking up space in the app. |
    | width | "stretch", "content", or int |  | The width of the HTML element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | unsafe_allow_javascript | bool |  | Whether to execute JavaScript contained in your HTML. If this is False (default), JavaScript is ignored. If this is True, JavaScript is executed. Use this with caution and never pass untrusted input. |
 
 
 
@@ -8542,7 +8541,7 @@ Learn more in our [Dataframes](/develop/concepts/design/dataframes) guide and ch
 
 * Function signature:
 
-   st.dataframe(data=None, width="stretch", height="auto", *, use_container_width=None, hide_index=None, column_order=None, column_config=None, key=None, on_select="ignore", selection_mode="multi-row", row_height=None)
+   st.dataframe(data=None, width="stretch", height="auto", *, use_container_width=None, hide_index=None, column_order=None, column_config=None, key=None, on_select="ignore", selection_mode="multi-row", row_height=None, placeholder=None)
 
 * Parameters:
 
@@ -8550,7 +8549,7 @@ Learn more in our [Dataframes](/develop/concepts/design/dataframes) guide and ch
    |---|---|---|---|
    | data | dataframe-like, collection-like, or None |  | The data to display. Dataframe-like objects include dataframe and series objects from popular libraries like Dask, Modin, Numpy, pandas, Polars, PyArrow, Snowpark, Xarray, and more. You can use database cursors and clients that comply with the Python Database API Specification v2.0 (PEP 249). Additionally, you can use anything that supports the Python dataframe interchange protocol. For example, you can use the following:  pandas.DataFrame, pandas.Series, pandas.Index, pandas.Styler, and pandas.Array polars.DataFrame, polars.LazyFrame, and polars.Series snowflake.snowpark.dataframe.DataFrame, snowflake.snowpark.table.Table  If a data type is not recognized, Streamlit will convert the object to a pandas.DataFrame or pyarrow.Table using a .to_pandas() or .to_arrow() method, respectively, if available. If data is a pandas.Styler, it will be used to style its underlying pandas.DataFrame. Streamlit supports custom cell values, colors, and font weights. It does not support some of the more exotic styling options, like bar charts, hovering, and captions. For these styling options, use column configuration instead. Text and number formatting from column_config always takes precedence over text and number formatting from pandas.Styler. Collection-like objects include all Python-native Collection types, such as dict, list, and set. If data is None, Streamlit renders an empty table. |
    | width | "stretch", "content", or int |  | The width of the dataframe element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
-   | height | "auto", "stretch", or int |  | The height of the dataframe element. This can be one of the following:  "auto" (default): Streamlit sets the height to show at most ten rows. "stretch": The height of the element expands to fill the available vertical space in its parent container. When multiple elements with stretch height are in the same container, they share the available vertical space evenly. The dataframe will maintain a minimum height to display up to three rows, but otherwise won't exceed the available height in its parent container. An integer specifying the height in pixels: The element has a fixed height.  Vertical scrolling within the dataframe element is enabled when the height does not accommodate all rows. |
+   | height | "auto", "content", "stretch", or int |  | The height of the dataframe element. This can be one of the following:  "auto" (default): Streamlit sets the height to show at most ten rows. "content": The height of the element matches the height of its content. The height is capped at 10,000 pixels to prevent performance issues with very large dataframes. "stretch": The height of the element expands to fill the available vertical space in its parent container. When multiple elements with stretch height are in the same container, they share the available vertical space evenly. The dataframe will maintain a minimum height to display up to three rows, but otherwise won't exceed the available height in its parent container. An integer specifying the height in pixels: The element has a fixed height.  Vertical scrolling within the dataframe element is enabled when the height does not accommodate all rows. |
    | use_container_width | bool |  | Whether to override width with the width of the parent container. If this is True (default), Streamlit sets the width of the dataframe to match the width of the parent container. If this is False, Streamlit sets the dataframe's width according to width. |
    | hide_index | bool or None |  | Whether to hide the index column(s). If hide_index is None (default), the visibility of index columns is automatically determined based on the data and other configurations. |
    | column_order | Iterable[str] or None |  | The ordered list of columns to display. If this is None (default), Streamlit displays all columns in the order inherited from the underlying data structure. If this is a list, the indicated columns will display in the order they appear within the list. Columns may be omitted or repeated within the list. For example, column_order=("col2", "col1") will display "col2" first, followed by "col1", and will hide all other non-index columns. column_order does not accept positional column indices and can't move the index column(s). |
@@ -8559,6 +8558,7 @@ Learn more in our [Dataframes](/develop/concepts/design/dataframes) guide and ch
    | on_select | "ignore" or "rerun" or callable |  | How the dataframe should respond to user selection events. This controls whether or not the dataframe behaves like an input widget. on_select can be one of the following:  "ignore" (default): Streamlit will not react to any selection events in the dataframe. The dataframe will not behave like an input widget. "rerun": Streamlit will rerun the app when the user selects rows, columns, or cells in the dataframe. In this case, st.dataframe will return the selection data as a dictionary. A callable: Streamlit will rerun the app and execute the callable as a callback function before the rest of the app. In this case, st.dataframe will return the selection data as a dictionary. |
    | selection_mode | "single-row", "multi-row", "single-column",             "multi-column", "single-cell", "multi-cell", or Iterable of these |  | The types of selections Streamlit should allow when selections are enabled with on_select. This can be one of the following:  "multi-row" (default): Multiple rows can be selected at a time. "single-row": Only one row can be selected at a time. "multi-column": Multiple columns can be selected at a time. "single-column": Only one column can be selected at a time. "multi-cell": A rectangular range of cells can be selected. "single-cell": Only one cell can be selected at a time. An Iterable of the above options: The table will allow selection based on the modes specified. For example, to allow the user to select multiple rows and multiple cells, use ["multi-row", "multi-cell"].  When column selections are enabled, column sorting is disabled. |
    | row_height | int or None | row | The height of each row in the dataframe in pixels. If row_height is None (default), Streamlit will use a default row height, which fits one line of text. |
+   | placeholder | str or None |  | The text that should be shown for missing values. If this is None (default), missing values are displayed as "None". To leave a cell empty, use an empty string (""). Other common values are "null", "NaN" and "-". |
 
 * Returns: element or dict
 
@@ -8613,16 +8613,6 @@ dictionary schema.
 
 
 
-## Interactivity
-
-Dataframes displayed with `st.dataframe` are interactive. End users can sort, resize, search, and copy data to their clipboard. For on overview of features, read our [Dataframes](/develop/concepts/design/dataframes#additional-ui-features) guide.
-
-## Configuring columns
-
-You can configure the display and editing behavior of columns in `st.dataframe` and `st.data_editor` via the [Column configuration API](/develop/api-reference/data/st.column_config). We have developed the API to let you add images, charts, and clickable URLs in dataframe and data editor columns. Additionally, you can make individual columns editable, set columns as categorical and specify which options they can take, hide the index of the dataframe, and much more.
-
-<Cloud height="480px" name="doc-column-config-overview" query="embed_options=disable_scrolling"/>
-
 ---
 
 Source: https://docs.streamlit.io/develop/api-reference/data/st.data_editor
@@ -8635,7 +8625,7 @@ This page only contains information on the `st.data_editor` API. For an overview
 
 * Function signature:
 
-   st.data_editor(data, *, width="stretch", height="auto", use_container_width=None, hide_index=None, column_order=None, column_config=None, num_rows="fixed", disabled=False, key=None, on_change=None, args=None, kwargs=None, row_height=None)
+   st.data_editor(data, *, width="stretch", height="auto", use_container_width=None, hide_index=None, column_order=None, column_config=None, num_rows="fixed", disabled=False, key=None, on_change=None, args=None, kwargs=None, row_height=None, placeholder=None)
 
 * Parameters:
 
@@ -8643,18 +8633,19 @@ This page only contains information on the `st.data_editor` API. For an overview
    |---|---|---|---|
    | data | Anything supported by st.dataframe | to | The data to edit in the data editor.  Note  Styles from pandas.Styler will only be applied to non-editable columns. Text and number formatting from column_config always takes precedence over text and number formatting from pandas.Styler. If your dataframe starts with an empty column, you should set the column datatype in the underlying dataframe to ensure your intended datatype, especially for integers versus floats. Mixing data types within a column can make the column uneditable. Additionally, the following data types are not yet supported for editing: complex, tuple, bytes, bytearray, memoryview, dict, set, frozenset, fractions.Fraction, pandas.Interval, and pandas.Period. To prevent overflow in JavaScript, columns containing datetime.timedelta and pandas.Timedelta values will default to uneditable, but this can be changed through column configuration. |
    | width | "stretch", "content", or int |  | The width of the data editor. This can be one of the following:  "stretch" (default): The width of the editor matches the width of the parent container. "content": The width of the editor matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The editor has a fixed width. If the specified width is greater than the width of the parent container, the width of the editor matches the width of the parent container. |
-   | height | int, "auto", or "stretch" |  | The height of the editor. This can be one of the following:  "auto" (default): Streamlit sets the height to show at most ten rows. "stretch": The height of the editor expands to fill the available vertical space in its parent container. When multiple elements with stretch height are in the same container, they share the available vertical space evenly. The editor will maintain a minimum height to display up to three rows, but otherwise won't exceed the available height in its parent container. An integer specifying the height in pixels: The editor has a fixed height.  Vertical scrolling within the editor is enabled when the height does not accommodate all rows. |
+   | height | "auto", "content", "stretch", or int |  | The height of the data editor. This can be one of the following:  "auto" (default): Streamlit sets the height to show at most ten rows. "content": The height of the editor matches the height of its content. The height is capped at 10,000 pixels to prevent performance issues with very large dataframes. "stretch": The height of the editor expands to fill the available vertical space in its parent container. When multiple elements with stretch height are in the same container, they share the available vertical space evenly. The editor will maintain a minimum height to display up to three rows, but otherwise won't exceed the available height in its parent container. An integer specifying the height in pixels: The editor has a fixed height.  Vertical scrolling within the editor is enabled when the height does not accommodate all rows. |
    | use_container_width | bool |  | Whether to override width with the width of the parent container. If this is True (default), Streamlit sets the width of the data editor to match the width of the parent container. If this is False, Streamlit sets the data editor's width according to width. |
    | hide_index | bool or None |  | Whether to hide the index column(s). If hide_index is None (default), the visibility of index columns is automatically determined based on the data. |
    | column_order | Iterable[str] or None |  | The ordered list of columns to display. If this is None (default), Streamlit displays all columns in the order inherited from the underlying data structure. If this is a list, the indicated columns will display in the order they appear within the list. Columns may be omitted or repeated within the list. For example, column_order=("col2", "col1") will display "col2" first, followed by "col1", and will hide all other non-index columns. column_order does not accept positional column indices and can't move the index column(s). |
    | column_config | dict or None |  | Configuration to customize how columns are displayed. If this is None (default), columns are styled based on the underlying data type of each column. Column configuration can modify column names, visibility, type, width, format, editing properties like min/max, and more. If this is a dictionary, the keys are column names (strings) and/or positional column indices (integers), and the values are one of the following:  None to hide the column. A string to set the display label of the column. One of the column types defined under st.column_config. For example, to show a column as dollar amounts, use st.column_config.NumberColumn("Dollar values", format="$ %d"). See more info on the available column types and config options here.  To configure the index column(s), use "_index" as the column name, or use a positional column index where 0 refers to the first index column. |
-   | num_rows | "fixed" or "dynamic" | s | Specifies if the user can add and delete rows in the data editor. If "fixed", the user cannot add or delete rows. If "dynamic", the user can add and delete rows in the data editor, but column sorting is disabled. Defaults to "fixed". |
+   | num_rows | "fixed", "dynamic", "add", or "delete" |  | Specifies if the user can add and/or delete rows in the data editor.  "fixed" (default): The user can't add or delete rows. "dynamic": The user can add and delete rows, and column sorting is disabled. "add": The user can only add rows (no deleting), and column sorting is disabled. "delete": The user can only delete rows (no adding), and column sorting remains enabled. |
    | disabled | bool or Iterable[str | int] |  | Controls the editing of columns. This can be one of the following:  False (default): All columns that support editing are editable. True: All columns are disabled for editing. An Iterable of column names and/or positional indices: The specified columns are disabled for editing while the remaining columns are editable where supported. For example, disabled=["col1", "col2"] will disable editing for the columns named "col1" and "col2".  To disable editing for the index column(s), use "_index" as the column name, or use a positional column index where 0 refers to the first index column. |
    | key | str |  | An optional string to use as the unique key for this widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | on_change | callable |  | An optional callback invoked when this data_editor's value changes. |
    | args | list or tuple |  | An optional list or tuple of args to pass to the callback. |
    | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
    | row_height | int or None | row | The height of each row in the data editor in pixels. If row_height is None (default), Streamlit will use a default row height, which fits one line of text. |
+   | placeholder | str or None |  | The text that should be shown for missing values. If this is None (default), missing values are displayed as "None". To leave a cell empty, use an empty string (""). Other common values are "null", "NaN" and "-". |
 
 * Returns: pandas.DataFrame, pandas.Series, pyarrow.Table, numpy.ndarray, list, set, tuple, or dict.
 
@@ -9345,23 +9336,25 @@ Source: https://docs.streamlit.io/develop/api-reference/data/st.metric
 
 * Function signature:
 
-   st.metric(label, value, delta=None, delta_color="normal", *, help=None, label_visibility="visible", border=False, width="stretch", height="content", chart_data=None, chart_type="line")
+   st.metric(label, value, delta=None, delta_color="normal", *, help=None, label_visibility="visible", border=False, width="stretch", height="content", chart_data=None, chart_type="line", delta_arrow="auto", format=None)
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | The header or title for the metric. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | value | int, float, decimal.Decimal, str, or None |  | Value of the metric. None is rendered as a long dash. |
-   | delta | int, float, decimal.Decimal, str, or None |  | Indicator of how the metric changed, rendered with an arrow below the metric. If delta is negative (int/float) or starts with a minus sign (str), the arrow points down and the text is red; else the arrow points up and the text is green. If None (default), no delta indicator is shown. |
-   | delta_color | "normal", "inverse", or "off" |  | If "normal" (default), the delta indicator is shown as described above. If "inverse", it is red when positive and green when negative. This is useful when a negative change is considered good, e.g. if cost decreased. If "off", delta is  shown in gray regardless of its value. |
+   | value | int, float, decimal.Decimal, str, or None |  | Value of the metric. None is rendered as a long dash. The value can optionally contain GitHub-flavored Markdown, subject to the same limitations described in the label parameter. |
+   | delta | int, float, decimal.Decimal, str, or None |  | Amount or indicator of change in the metric. An arrow is shown next to the delta, oriented according to its sign:  If the delta is None or an empty string, no arrow is shown. If the delta is a negative number or starts with a minus sign, the arrow points down and the delta is red. Otherwise, the arrow points up and the delta is green.  You can modify the display, color, and orientation of the arrow using the delta_color and delta_arrow parameters. The delta can optionally contain GitHub-flavored Markdown, subject to the same limitations described in the label parameter. |
+   | delta_color | str |  | The color of the delta and chart. This can be one of the following:  "normal" (default): The color is red when the delta is negative and green otherwise. "inverse": The color is green when the delta is negative and red otherwise. This is useful when a negative change is considered good, like a decrease in cost. "off": The color is gray regardless of the delta. A named color from the basic palette: The chart and delta are the specified color regardless of their value. This can be one of the following: "red", "orange", "yellow", "green", "blue", "violet", "gray"/"grey", or "primary". |
    | help | str or None |  | A tooltip that gets displayed next to the metric label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | label_visibility | "visible", "hidden", or "collapsed" | is | The visibility of the label. The default is "visible". If this is "hidden", Streamlit displays an empty spacer instead of the label, which can help keep the widget aligned with other widgets. If this is "collapsed", Streamlit displays no label or spacer. |
    | border | bool |  | Whether to show a border around the metric container. If this is False (default), no border is shown. If this is True, a border is shown. |
    | height | "content", "stretch", or int |  | The height of the metric element. This can be one of the following:  "content" (default): The height of the element matches the height of its content. "stretch": The height of the element matches the height of its content or the height of the parent container, whichever is larger. If the element is not in a parent container, the height of the element matches the height of its content. An integer specifying the height in pixels: The element has a fixed height. If the content is larger than the specified height, scrolling is enabled. |
    | width | "stretch", "content", or int |  | The width of the metric element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
-   | chart_data | Iterable or None |  | A sequence of numeric values to display as a sparkline chart. If this is None (default), no chart is displayed. The sequence can be anything supported by st.dataframe, including a list or set. If the sequence is dataframe-like, the first column will be used. Each value will be cast to float internally by default. |
+   | chart_data | Iterable or None |  | A sequence of numeric values to display as a sparkline chart. If this is None (default), no chart is displayed. The sequence can be anything supported by st.dataframe, including a list or set. If the sequence is dataframe-like, the first column will be used. Each value will be cast to float internally by default. The chart uses the color of the delta indicator, which can be modified using the delta_color parameter. |
    | chart_type | "line", "bar", or "area" |  | The type of sparkline chart to display. This can be one of the following:  "line" (default): A simple sparkline. "area": A sparkline with area shading. "bar": A bar chart. |
+   | delta_arrow | "auto", "up", "down", or "off" |  | Controls the direction of the delta indicator arrow. This can be one of the following strings:  "auto" (default): The arrow direction follows the sign of delta. "up" or "down": The arrow is forced to point in the specified direction. "off": No arrow is shown, but the delta value remains visible. |
+   | format | str or None | locale | A format string controlling how numbers are displayed for value and delta. The format is only applied if the value or delta is numeric. If the value or delta is a string with non-numeric characters, the format is ignored. The format can be one of the following values:  None (default): No formatting is applied. "plain": Show the full number without any formatting (e.g. "1234.567"). "localized": Show the number in the default locale format (e.g. "1,234.567"). "percent": Show the number as a percentage (e.g. "123456.70%"). "dollar": Show the number as a dollar amount (e.g. "$1,234.57"). "euro": Show the number as a euro amount (e.g. "€1,234.57"). "yen": Show the number as a yen amount (e.g. "¥1,235"). "accounting": Show the number in an accounting format (e.g. "1,234.00"). "bytes": Show the number in a byte format (e.g. "1.2KB"). "compact": Show the number in a compact format (e.g. "1.2K"). "scientific": Show the number in scientific notation (e.g. "1.235E3"). "engineering": Show the number in engineering notation (e.g. "1.235E3"). printf-style format string: Format the number with a printf specifier, like "%d" to show a signed integer (e.g. "1234") or "%.2f" to show a float with 2 decimal places. |
 
 
 
@@ -9888,7 +9881,7 @@ Source: https://docs.streamlit.io/develop/api-reference/charts/st.altair_chart
    | name | type | default | description |
    |---|---|---|---|
    | altair_chart | altair.Chart |  | The Altair chart object to display. See https://altair-viz.github.io/gallery/ for examples of graph descriptions. |
-   | width | "stretch", "content", int, or None |  | The width of the chart element. This can be one of the following:  "stretch": The width of the element matches the width of the parent container.  "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container.  An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container.  None (default): Streamlit uses "stretch" for most charts, and uses "content" for the following multi-view charts:   Facet charts: the spec contains "facet" or encodings for "row", "column", or "facet". Horizontal concatenation charts: the spec contains "hconcat". Repeat charts: the spec contains "repeat". |
+   | width | "stretch", "content", int, or None |  | The width of the chart element. This can be one of the following:  "stretch": The width of the element matches the width of the parent container.  "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container.  An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container.  None (default): Streamlit uses "stretch" for most charts, and uses "content" for the following multi-view charts:   Facet charts: the spec contains "facet" or encodings for "row", "column", or "facet". Horizontal concatenation charts: the spec contains "hconcat". Repeat charts: the spec contains "repeat". Nested composition charts: the spec contains "vconcat" with nested "hconcat", "vconcat", "concat", or "layer" operators (e.g., scatter plots with marginal histograms). |
    | height | "content", "stretch", or int |  | The height of the chart element. This can be one of the following:  "content" (default): The height of the element matches the height of its content. "stretch": The height of the element matches the height of its content or the height of the parent container, whichever is larger. If the element is not in a parent container, the height of the element matches the height of its content. An integer specifying the height in pixels: The element has a fixed height. If the content is larger than the specified height, scrolling is enabled. |
    | use_container_width | bool or None |  | Whether to override the chart's native width with the width of the parent container. This can be one of the following:  None (default): Streamlit will use the parent container's width for all charts except those with known incompatibility (altair.Facet, altair.HConcatChart, and altair.RepeatChart). True: Streamlit sets the width of the chart to match the width of the parent container. False: Streamlit sets the width of the chart to fit its contents according to the plotting library, up to the width of the parent container. |
    | theme | "streamlit" or None | behavior | The theme of the chart. If theme is "streamlit" (default), Streamlit uses its own design default. If theme is None, Streamlit falls back to the default behavior of the library. The "streamlit" theme can be partially customized through the configuration options theme.chartCategoricalColors and theme.chartSequentialColors. Font configuration options are also applied. |
@@ -9935,119 +9928,6 @@ dictionary schema.
 
 
 
-## Theming
-
-Altair charts are displayed using the Streamlit theme by default. This theme is sleek, user-friendly, and incorporates Streamlit's color palette. The added benefit is that your charts better integrate with the rest of your app's design.
-
-The Streamlit theme is available from Streamlit 1.16.0 through the `theme="streamlit"` keyword argument. To disable it, and use Altair's native theme, use `theme=None` instead.
-
-Let's look at an example of charts with the Streamlit theme and the native Altair theme:
-
-```python
-import altair as alt
-from vega_datasets import data
-
-source = data.cars()
-
-chart = alt.Chart(source).mark_circle().encode(
-    x='Horsepower',
-    y='Miles_per_Gallon',
-    color='Origin',
-).interactive()
-
-tab1, tab2 = st.tabs(["Streamlit theme (default)", "Altair native theme"])
-
-with tab1:
-    # Use the Streamlit theme.
-    # This is the default. So you can also omit the theme argument.
-    st.altair_chart(chart, theme="streamlit", use_container_width=True)
-with tab2:
-    # Use the native Altair theme.
-    st.altair_chart(chart, theme=None, use_container_width=True)
-```
-
-Click the tabs in the interactive app below to see the charts with the Streamlit theme enabled and disabled.
-
-<Cloud height="500px" name="doc-altair-chart"/>
-
-If you're wondering if your own customizations will still be taken into account, don't worry! You can still make changes to your chart configurations. In other words, although we now enable the Streamlit theme by default, you can overwrite it with custom colors or fonts. For example, if you want a chart line to be green instead of the default red, you can do it!
-
-Here's an example of an Altair chart where manual color passing is done and reflected:
-
-<Collapse title="See the code">
-
-```python
-import altair as alt
-import streamlit as st
-from vega_datasets import data
-
-source = data.seattle_weather()
-
-scale = alt.Scale(
-    domain=["sun", "fog", "drizzle", "rain", "snow"],
-    range=["#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd"],
-)
-color = alt.Color("weather:N", scale=scale)
-
-# We create two selections:
-# - a brush that is active on the top panel
-# - a multi-click that is active on the bottom panel
-brush = alt.selection_interval(encodings=["x"])
-click = alt.selection_multi(encodings=["color"])
-
-# Top panel is scatter plot of temperature vs time
-points = (
-    alt.Chart()
-    .mark_point()
-    .encode(
-        alt.X("monthdate(date):T", title="Date"),
-        alt.Y(
-            "temp_max:Q",
-            title="Maximum Daily Temperature (C)",
-            scale=alt.Scale(domain=[-5, 40]),
-        ),
-        color=alt.condition(brush, color, alt.value("lightgray")),
-        size=alt.Size("precipitation:Q", scale=alt.Scale(range=[5, 200])),
-    )
-    .properties(width=550, height=300)
-    .add_selection(brush)
-    .transform_filter(click)
-)
-
-# Bottom panel is a bar chart of weather type
-bars = (
-    alt.Chart()
-    .mark_bar()
-    .encode(
-        x="count()",
-        y="weather:N",
-        color=alt.condition(click, color, alt.value("lightgray")),
-    )
-    .transform_filter(brush)
-    .properties(
-        width=550,
-    )
-    .add_selection(click)
-)
-
-chart = alt.vconcat(points, bars, data=source, title="Seattle Weather: 2012-2015")
-
-tab1, tab2 = st.tabs(["Streamlit theme (default)", "Altair native theme"])
-
-with tab1:
-    st.altair_chart(chart, theme="streamlit", use_container_width=True)
-with tab2:
-    st.altair_chart(chart, theme=None, use_container_width=True)
-```
-
-</Collapse>
-
-Notice how the custom colors are still reflected in the chart, even when the Streamlit theme is enabled 👇
-
-<Cloud height="675px" name="doc-altair-custom-colors"/>
-
-For many more examples of Altair charts with and without the Streamlit theme, check out the [altair.streamlit.app](https://altair.streamlit.app).
-
 ---
 
 Source: https://docs.streamlit.io/develop/api-reference/charts/st.bokeh_chart
@@ -10093,7 +9973,7 @@ Source: https://docs.streamlit.io/develop/api-reference/charts/st.plotly_chart
 
 * Function signature:
 
-   st.plotly_chart(figure_or_data, use_container_width=None, *, width="stretch", theme="streamlit", key=None, on_select="ignore", selection_mode=('points', 'box', 'lasso'), config=None, **kwargs)
+   st.plotly_chart(figure_or_data, use_container_width=None, *, width="stretch", height="content", theme="streamlit", key=None, on_select="ignore", selection_mode=('points', 'box', 'lasso'), config=None, **kwargs)
 
 * Parameters:
 
@@ -10101,6 +9981,7 @@ Source: https://docs.streamlit.io/develop/api-reference/charts/st.plotly_chart
    |---|---|---|---|
    | figure_or_data | plotly.graph_objs.Figure, plotly.graph_objs.Data,            or dict/list of plotly.graph_objs.Figure/Data |  | The Plotly Figure or Data object to render. See https://plot.ly/python/ for examples of graph descriptions.  Note If your chart contains more than 1000 data points, Plotly will use a WebGL renderer to display the chart. Different browsers have different limits on the number of WebGL contexts per page. If you have multiple WebGL contexts on a page, you may need to switch to SVG rendering mode. You can do this by setting render_mode="svg" within the figure. For example, the following code defines a Plotly Express line chart that will render in SVG mode when passed to st.plotly_chart: px.line(df, x="x", y="y", render_mode="svg"). |
    | width | "stretch", "content", or int |  | The width of the chart element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
+   | height | "content", "stretch", or int |  | The height of the chart element. This can be one of the following:  "content" (default): The height of the element matches the height of its content. "stretch": The height of the element matches the height of its content or the height of the parent container, whichever is larger. If the element is not in a parent container, the height of the element matches the height of its content. An integer specifying the height in pixels: The element has a fixed height. If the content is larger than the specified height, scrolling is enabled. |
    | use_container_width | bool or None |  | Whether to override the figure's native width with the width of the parent container. This can be one of the following:  None (default): Streamlit will use the value of width. True: Streamlit sets the width of the figure to match the width of the parent container. False: Streamlit sets the width of the figure to fit its contents according to the plotting library, up to the width of the parent container. |
    | theme | "streamlit" or None | behavior | The theme of the chart. If theme is "streamlit" (default), Streamlit uses its own design default. If theme is None, Streamlit falls back to the default behavior of the library. The "streamlit" theme can be partially customized through the configuration options theme.chartCategoricalColors and theme.chartSequentialColors. Font configuration options are also applied. |
    | key | str |  | An optional string to use for giving this element a stable identity. If key is None (default), this element's identity will be determined based on the values of the other parameters. Additionally, if selections are activated and key is provided, Streamlit will register the key in Session State to store the selection state. The selection state is read-only. |
@@ -10335,7 +10216,7 @@ Source: https://docs.streamlit.io/develop/api-reference/charts/st.vega_lite_char
    |---|---|---|---|
    | data | Anything supported by st.dataframe |  | Either the data to be plotted or a Vega-Lite spec containing the data (which more closely follows the Vega-Lite API). |
    | spec | dict or None |  | The Vega-Lite spec for the chart. If spec is None (default), Streamlit uses the spec passed in data. You cannot pass a spec to both data and spec. See https://vega.github.io/vega-lite/docs/ for more info. |
-   | width | "stretch", "content", int, or None |  | The width of the chart element. This can be one of the following:  "stretch": The width of the element matches the width of the parent container.  "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container.  An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container.  None (default): Streamlit uses "stretch" for most charts, and uses "content" for the following multi-view charts:   Facet charts: the spec contains "facet" or encodings for "row", "column", or "facet". Horizontal concatenation charts: the spec contains "hconcat". Repeat charts: the spec contains "repeat". |
+   | width | "stretch", "content", int, or None |  | The width of the chart element. This can be one of the following:  "stretch": The width of the element matches the width of the parent container.  "content": The width of the element matches the width of its content, but doesn't exceed the width of the parent container.  An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container.  None (default): Streamlit uses "stretch" for most charts, and uses "content" for the following multi-view charts:   Facet charts: the spec contains "facet" or encodings for "row", "column", or "facet". Horizontal concatenation charts: the spec contains "hconcat". Repeat charts: the spec contains "repeat". Nested composition charts: the spec contains "vconcat" with nested "hconcat", "vconcat", "concat", or "layer" operators (e.g., scatter plots with marginal histograms). |
    | height | "content", "stretch", or int |  | The height of the chart element. This can be one of the following:  "content" (default): The height of the element matches the height of its content. "stretch": The height of the element matches the height of its content or the height of the parent container, whichever is larger. If the element is not in a parent container, the height of the element matches the height of its content. An integer specifying the height in pixels: The element has a fixed height. If the content is larger than the specified height, scrolling is enabled. |
    | use_container_width | bool or None |  | Whether to override the chart's native width with the width of the parent container. This can be one of the following:  None (default): Streamlit will use the parent container's width for all charts except those with known incompatibility (altair.Facet, altair.HConcatChart, and altair.RepeatChart). True: Streamlit sets the width of the chart to match the width of the parent container. False: Streamlit sets the width of the chart to fit its contents according to the plotting library, up to the width of the parent container. |
    | theme | "streamlit" or None | behavior | The theme of the chart. If theme is "streamlit" (default), Streamlit uses its own design default. If theme is None, Streamlit falls back to the default behavior of the library. The "streamlit" theme can be partially customized through the configuration options theme.chartCategoricalColors and theme.chartSequentialColors. Font configuration options are also applied. |
@@ -10382,56 +10263,6 @@ dictionary schema.
    | **kwargs | pandas.DataFrame, numpy.ndarray, Iterable, dict, or None |  | The named dataset to concat. Optional. You can only pass in 1 dataset (including the one in the data parameter). |
 
 
-
-## Theming
-
-Vega-Lite charts are displayed using the Streamlit theme by default. This theme is sleek, user-friendly, and incorporates Streamlit's color palette. The added benefit is that your charts better integrate with the rest of your app's design.
-
-The Streamlit theme is available from Streamlit 1.16.0 through the `theme="streamlit"` keyword argument. To disable it, and use Vega-Lite's native theme, use `theme=None` instead.
-
-Let's look at an example of charts with the Streamlit theme and the native Vega-Lite theme:
-
-```python
-import streamlit as st
-from vega_datasets import data
-
-source = data.cars()
-
-chart = {
-    "mark": "point",
-    "encoding": {
-        "x": {
-            "field": "Horsepower",
-            "type": "quantitative",
-        },
-        "y": {
-            "field": "Miles_per_Gallon",
-            "type": "quantitative",
-        },
-        "color": {"field": "Origin", "type": "nominal"},
-        "shape": {"field": "Origin", "type": "nominal"},
-    },
-}
-
-tab1, tab2 = st.tabs(["Streamlit theme (default)", "Vega-Lite native theme"])
-
-with tab1:
-    # Use the Streamlit theme.
-    # This is the default. So you can also omit the theme argument.
-    st.vega_lite_chart(
-        source, chart, theme="streamlit", use_container_width=True
-    )
-with tab2:
-    st.vega_lite_chart(
-        source, chart, theme=None, use_container_width=True
-    )
-```
-
-Click the tabs in the interactive app below to see the charts with the Streamlit theme enabled and disabled.
-
-<Cloud height="500px" name="doc-vega-lite-theme"/>
-
-If you're wondering if your own customizations will still be taken into account, don't worry! You can still make changes to your chart configurations. In other words, although we now enable the Streamlit theme by default, you can overwrite it with custom colors or fonts. For example, if you want a chart line to be green instead of the default red, you can do it!
 
 ---
 
@@ -10674,6 +10505,18 @@ Display a date input widget.
 
 ```python
 date = st.date_input("Your birthday")
+```
+
+</Image></RefCard>
+<RefCard href="/develop/api-reference/widgets/st.datetime_input">
+<Image>alt="screenshot" src="/images/api/datetime_input.jpg" /&gt;
+
+<h4>Datetime input</h4>
+
+Display a datetime input widget.
+
+```python
+datetime = st.datetime_input("Schedule your event")
 ```
 
 </Image></RefCard>
@@ -10931,7 +10774,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.button
 
 * Function signature:
 
-   st.button(label, key=None, help=None, on_click=None, args=None, kwargs=None, *, type="secondary", icon=None, disabled=False, use_container_width=None, width="content")
+   st.button(label, key=None, help=None, on_click=None, args=None, kwargs=None, *, type="secondary", icon=None, icon_position="left", disabled=False, use_container_width=None, width="content", shortcut=None)
 
 * Parameters:
 
@@ -10944,10 +10787,12 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.button
    | args | list or tuple |  | An optional list or tuple of args to pass to the callback. |
    | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
    | type | "primary", "secondary", or "tertiary" |  | An optional string that specifies the button type. This can be one of the following:  "primary": The button's background is the app's primary color for additional emphasis. "secondary" (default): The button's background coordinates with the app's background color for normal emphasis. "tertiary": The button is plain text without a border or background for subtlety. |
-   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
+   | icon_position | "left" or "right" | s | The position of the icon relative to the button label. This defaults to "left". |
    | disabled | bool | is | An optional boolean that disables the button if set to True. The default is False. |
    | use_container_width | bool |  | Whether to expand the button's width to fill its parent container. If use_container_width is False (default), Streamlit sizes the button to fit its contents. If use_container_width is True, the width of the button matches its parent container. In both cases, if the contents of the button are wider than the parent container, the contents will line wrap. |
    | width | "content", "stretch", or int |  | The width of the button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container. |
+   | shortcut | str or None |  | An optional keyboard shortcut that triggers the button. This can be one of the following strings:  A single alphanumeric key like "K" or "4". A function key like "F11". A special key like "Enter", "Esc", or "Tab". Any of the above combined with modifiers. For example, you can use "Ctrl+K" or "Cmd+Shift+O".   Important The keys "C" and "R" are reserved and can't be used, even with modifiers. Punctuation keys like "." and "," aren't currently supported.  The following special keys are supported: Backspace, Delete, Down, End, Enter, Esc, Home, Left, PageDown, PageUp, Right, Space, Tab, and Up. The following modifiers are supported: Alt, Ctrl, Cmd, Meta, Mod, Option, Shift.  Ctrl, Cmd, Meta, and Mod are interchangeable and will display to the user to match their platform. Option and Alt are interchangeable and will display to the user to match their platform. |
 
 * Returns: bool
 
@@ -10977,14 +10822,14 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.download_butt
 
 * Function signature:
 
-   st.download_button(label, data, file_name=None, mime=None, key=None, help=None, on_click="rerun", args=None, kwargs=None, *, type="secondary", icon=None, disabled=False, use_container_width=None, width="content")
+   st.download_button(label, data, file_name=None, mime=None, key=None, help=None, on_click="rerun", args=None, kwargs=None, *, type="secondary", icon=None, icon_position="left", disabled=False, use_container_width=None, width="content", shortcut=None)
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this button is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | data | str, bytes, or file |  | The contents of the file to be downloaded. To prevent unncecessary recomputation, use caching when converting your data for download. For more information, see the Example 1 below. |
+   | data | str, bytes, file-like, or callable |  | The contents of the file to be downloaded or a callable that returns the contents of the file. File contents can be a string, bytes, or file-like object. File-like objects include io.BytesIO, io.StringIO, or any class that implements the abstract base class io.RawIOBase. If a callable is passed, it is executed when the user clicks the download button and runs on a separate thread from the resulting script rerun. This deferred generation is helpful for large files to avoid blocking the page script. The callable can't accept any arguments. If any Streamlit commands are executed inside the callable, they will be ignored. To prevent unnecessary recomputation, use caching when converting your data for download. For more information, see the Example 1 below. |
    | file_name | str |  | An optional string to use as the name of the file to be downloaded, such as "my_file.csv". If not specified, the name will be automatically generated. |
    | mime | str or None |  | The MIME type of the data. If this is None (default), Streamlit sets the MIME type depending on the value of data as follows:  If data is a string or textual file (i.e. str or io.TextIOWrapper object), Streamlit uses the "text/plain" MIME type. If data is a binary file or bytes (i.e. bytes, io.BytesIO, io.BufferedReader, or io.RawIOBase object), Streamlit uses the "application/octet-stream" MIME type.  For more information about MIME types, see https://www.iana.org/assignments/media-types/media-types.xhtml. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
@@ -10993,10 +10838,12 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.download_butt
    | args | list or tuple |  | An optional list or tuple of args to pass to the callback. |
    | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
    | type | "primary", "secondary", or "tertiary" |  | An optional string that specifies the button type. This can be one of the following:  "primary": The button's background is the app's primary color for additional emphasis. "secondary" (default): The button's background coordinates with the app's background color for normal emphasis. "tertiary": The button is plain text without a border or background for subtlety. |
-   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
+   | icon_position | "left" or "right" | s | The position of the icon relative to the button label. This defaults to "left". |
    | disabled | bool | is | An optional boolean that disables the download button if set to True. The default is False. |
    | use_container_width | bool |  | Whether to expand the button's width to fill its parent container. If use_container_width is False (default), Streamlit sizes the button to fit its contents. If use_container_width is True, the width of the button matches its parent container. In both cases, if the contents of the button are wider than the parent container, the contents will line wrap. |
    | width | "content", "stretch", or int |  | The width of the download button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container. |
+   | shortcut | str or None |  | An optional keyboard shortcut that triggers the button. This can be one of the following strings:  A single alphanumeric key like "K" or "4". A function key like "F11". A special key like "Enter", "Esc", or "Tab". Any of the above combined with modifiers. For example, you can use "Ctrl+K" or "Cmd+Shift+O".   Important The keys "C" and "R" are reserved and can't be used, even with modifiers. Punctuation keys like "." and "," aren't currently supported.  For a list of supported keys and modifiers, see the documentation for st.button. |
 
 * Returns: bool
 
@@ -11012,7 +10859,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.link_button
 
 * Function signature:
 
-   st.link_button(label, url, *, help=None, type="secondary", icon=None, disabled=False, use_container_width=None, width="content")
+   st.link_button(label, url, *, help=None, type="secondary", icon=None, icon_position="left", disabled=False, use_container_width=None, width="content", shortcut=None)
 
 * Parameters:
 
@@ -11022,10 +10869,12 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.link_button
    | url | str |  | The url to be opened on user click |
    | help | str or None |  | A tooltip that gets displayed when the button is hovered over. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | type | "primary", "secondary", or "tertiary" |  | An optional string that specifies the button type. This can be one of the following:  "primary": The button's background is the app's primary color for additional emphasis. "secondary" (default): The button's background coordinates with the app's background color for normal emphasis. "tertiary": The button is plain text without a border or background for subtlety. |
-   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
+   | icon_position | "left" or "right" | s | The position of the icon relative to the button label. This defaults to "left". |
    | disabled | bool | is | An optional boolean that disables the link button if set to True. The default is False. |
    | use_container_width | bool |  | Whether to expand the button's width to fill its parent container. If use_container_width is False (default), Streamlit sizes the button to fit its contents. If use_container_width is True, the width of the button matches its parent container. In both cases, if the contents of the button are wider than the parent container, the contents will line wrap. |
    | width | "content", "stretch", or int |  | The width of the link button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container. |
+   | shortcut | str or None |  | An optional keyboard shortcut that triggers the button. This can be one of the following strings:  A single alphanumeric key like "K" or "4". A function key like "F11". A special key like "Enter", "Esc", or "Tab". Any of the above combined with modifiers. For example, you can use "Ctrl+K" or "Cmd+Shift+O".   Important The keys "C" and "R" are reserved and can't be used, even with modifiers. Punctuation keys like "." and "," aren't currently supported.  For a list of supported keys and modifiers, see the documentation for st.button. |
 
 
 
@@ -11041,7 +10890,7 @@ Check out our [tutorial](/develop/tutorials/multipage/st.page_link-nav) to learn
 
 * Function signature:
 
-   st.page_link(page, *, label=None, icon=None, help=None, disabled=False, use_container_width=None, width="content")
+   st.page_link(page, *, label=None, icon=None, icon_position="left", help=None, disabled=False, use_container_width=None, width="content", query_params=None)
 
 * Parameters:
 
@@ -11049,11 +10898,13 @@ Check out our [tutorial](/develop/tutorials/multipage/st.page_link-nav) to learn
    |---|---|---|---|
    | page | str, Path, or StreamlitPage |  | The file path (relative to the main script) or a StreamlitPage indicating the page to switch to. Alternatively, this can be the URL to an external page (must start with "http://" or "https://"). |
    | label | str |  | The label for the page link. Labels are required for external pages. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), the icon is inferred from the StreamlitPage object or no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str or None |  | An optional emoji or icon to display next to the link label. If icon is None (default), the icon is inferred from the StreamlitPage object or no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
+   | icon_position | "left" or "right" | s | The position of the icon relative to the link label. This defaults to "left". |
    | help | str or None |  | A tooltip that gets displayed when the link is hovered over. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | disabled | bool | is | An optional boolean that disables the page link if set to True. The default is False. |
    | use_container_width | bool | is | Whether to expand the link's width to fill its parent container. The default is True for page links in the sidebar and False for those in the main app. |
    | width | "content", "stretch", or int |  | The width of the page-link button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container. |
+   | query_params | dict, list of tuples, or None |  | Query parameters to apply when navigating to the target page. This can be a dictionary or an iterable of key-value tuples. Values can be strings or iterables of strings (for repeated keys). When this is None (default), all non-embed query parameters are cleared during navigation. |
 
 
 
@@ -11427,7 +11278,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.select_slider
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this slider is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
-   | options | Iterable |  | Labels for the select options in an Iterable. This can be a list, set, or anything supported by st.dataframe. If options is dataframe-like, the first column will be used. Each label will be cast to str internally by default. |
+   | options | Iterable |  | Labels for the select options in an Iterable. This can be a list, set, or anything supported by st.dataframe. If options is dataframe-like, the first column will be used. Each label will be cast to str internally by default. Each item in the iterable can optionally contain GitHub-flavored Markdown, subject to the same limitations described in the label parameter. |
    | value | a supported type or a tuple/list of supported types or None | first | The value of the slider when it first renders. If a tuple/list of two values is passed here, then a range slider with those lower and upper bounds is rendered. For example, if set to (1, 10) the slider will have a selectable range between 1 and 10. Defaults to first option. |
    | format_func | function |  | Function to modify the display of the labels from the options. argument. It receives the option as an argument and its output will be cast to str. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
@@ -11512,7 +11363,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.number_input
    | placeholder | str or None |  | An optional string displayed when the number input is empty. If None, no placeholder is displayed. |
    | disabled | bool | is | An optional boolean that disables the number input if set to True. The default is False. |
    | label_visibility | "visible", "hidden", or "collapsed" | is | The visibility of the label. The default is "visible". If this is "hidden", Streamlit displays an empty spacer instead of the label, which can help keep the widget aligned with other widgets. If this is "collapsed", Streamlit displays no label or spacer. |
-   | icon | str, None |  | An optional emoji or icon to display within the input field to the left of the value. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str, None |  | An optional emoji or icon to display within the input field to the left of the value. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the number input widget. This can be one of the following:  "stretch" (default): The width of the widget matches the width of the parent container. An integer specifying the width in pixels: The widget has a fixed width. If the specified width is greater than the width of the parent container, the width of the widget matches the width of the parent container. |
 
 * Returns: int or float or None
@@ -11540,7 +11391,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.slider
    | max_value | a supported type or None |  | The maximum permitted value. If this is None (default), the maximum value depends on the type as follows:  integer: 100 float: 1.0 date or datetime: value + timedelta(days=14) time: time.max |
    | value | a supported type or a tuple/list of supported types or None | s | The value of the slider when it first renders. If a tuple/list of two values is passed here, then a range slider with those lower and upper bounds is rendered. For example, if set to (1, 10) the slider will have a selectable range between 1 and 10. This defaults to min_value. If the type is not otherwise specified in any of the numeric parameters, the widget will have an integer value. |
    | step | int, float, timedelta, or None | 1 | The stepping interval. Defaults to 1 if the value is an int, 0.01 if a float, timedelta(days=1) if a date/datetime, timedelta(minutes=15) if a time (or if max_value - min_value |
-   | format | str or None |  | A printf-style format string controlling how the interface should display numbers. This does not impact the return value. For information about formatting integers and floats, see sprintf.js. For example, format="%0.1f" adjusts the displayed decimal precision to only show one digit after the decimal. For information about formatting datetimes, dates, and times, see momentJS. For example, format="ddd ha" adjusts the displayed datetime to show the day of the week and the hour ("Tue 8pm"). |
+   | format | str or None |  | A printf-style format string or a predefined format name controlling how the interface should display values. This does not impact the return value. For integers and floats, you can use a printf-style format string or one of the following predefined formats:  "plain": Show the full number without formatting (e.g. 1234.567). "localized": Show the number in the user's locale format (e.g. 1,234.567). "percent": Show as a percentage (e.g. 50% from 0.5). "dollar": Show as US dollars (e.g. $1,234.57). "euro": Show as euros (e.g. €1,234.57). "yen": Show as Japanese yen (e.g. ¥1,235). "compact": Show in compact notation (e.g. 1.2K). "scientific": Show in scientific notation (e.g. 1.235E3). "engineering": Show in engineering notation (e.g. 1.235E3). "accounting": Show in accounting format with parentheses for negatives. "bytes": Show in byte units (e.g. 1.2KB).  For information about printf-style format strings, see sprintf.js. For example, format="%0.1f" adjusts the displayed decimal precision to only show one digit after the decimal. For datetimes, dates, and times, you can use a momentJS format string or one of the following predefined formats:  "localized": Show in the user's locale format. "distance": Show as relative time (e.g. "2 hours ago"). "calendar": Show as calendar time (e.g. "Tomorrow 12:00"). Works best with datetime values. For date-only values, displays relative day names (e.g. "Yesterday"). For time-only values, this format may produce unexpected results. "iso8601": Show in ISO 8601 format.  For information about momentJS format strings, see momentJS. For example, format="ddd ha" adjusts the displayed datetime to show the day of the week and the hour ("Tue 8pm"). |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | help | str or None |  | A tooltip that gets displayed next to the widget label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | on_change | callable |  | An optional callback invoked when this slider's value changes. |
@@ -11579,7 +11430,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.date_input
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this date input is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
-   | value | "today", datetime.date, datetime.datetime, str, list/tuple of these, or None |  | The value of this widget when it first renders. This can be one of the following:  "today" (default): The widget initializes with the current date. A datetime.date or datetime.datetime object: The widget initializes with the given date, ignoring any time if included. An ISO-formatted date ("YYYY-MM-DD") or datetime ("YYYY-MM-DD hh:mm:ss") string: The widget initializes with the given date, ignoring any time if included. A list or tuple with up to two of the above: The widget will initialize with the given date interval and return a tuple of the selected interval. You can pass an empty list to initialize the widget with an empty interval or a list with one value to initialize only the beginning date of the iterval. None: The widget initializes with no date and returns None until the user selects a date. |
+   | value | "today", datetime.date, datetime.datetime, str, list/tuple of these, or None |  | The value of this widget when it first renders. This can be one of the following:  "today" (default): The widget initializes with the current date. A datetime.date or datetime.datetime object: The widget initializes with the given date, ignoring any time if included. An ISO-formatted date (YYYY-MM-DD) or datetime (YYYY-MM-DD hh:mm:ss) string: The widget initializes with the given date, ignoring any time if included. A list or tuple with up to two of the above: The widget will initialize with the given date interval and return a tuple of the selected interval. You can pass an empty list to initialize the widget with an empty interval or a list with one value to initialize only the beginning date of the iterval. None: The widget initializes with no date and returns None until the user selects a date. |
    | min_value | "today", datetime.date, datetime.datetime, str, or None |  | The minimum selectable date. This can be any of the date types accepted by value, except list or tuple. If this is None (default), the minimum selectable date is ten years before the initial value. If the initial value is an interval, the minimum selectable date is ten years before the start date of the interval. If no initial value is set, the minimum selectable date is ten years before today. |
    | max_value | "today", datetime.date, datetime.datetime, str, or None |  | The maximum selectable date. This can be any of the date types accepted by value, except list or tuple. If this is None (default), the maximum selectable date is ten years after the initial value. If the initial value is an interval, the maximum selectable date is ten years after the end date of the interval. If no initial value is set, the maximum selectable date is ten years after today. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
@@ -11601,6 +11452,41 @@ selected.
 
 ---
 
+Source: https://docs.streamlit.io/develop/api-reference/widgets/st.datetime_input
+
+
+* Function signature:
+
+   st.datetime_input(label, value="now", min_value=None, max_value=None, *, key=None, help=None, on_change=None, args=None, kwargs=None, format="YYYY/MM/DD", step=0:15:00, disabled=False, label_visibility="visible", width="stretch")
+
+* Parameters:
+
+   | name | type | default | description |
+   |---|---|---|---|
+   | label | str |  | A short label explaining to the user what this datetime input is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
+   | value | "now", datetime.datetime, datetime.date, datetime.time, str, or None |  | The value of this widget when it first renders. This can be one of the following:  "now" (default): The widget initializes with the current date and time. A datetime.datetime object: The widget initializes with the given datetime, stripping any timezone information. A datetime.date object: The widget initializes with the given date at 00:00. A datetime.time object: The widget initializes with today's date and the provided time. An ISO-formatted datetime (YYYY-MM-DD hh:mm[:ss]) or date/time string: The widget initializes with the parsed value. None: The widget initializes with no value and returns None until the user selects a datetime. |
+   | min_value | "now", datetime.datetime, datetime.date, datetime.time, str, or None |  | The minimum selectable datetime. This can be any of the datetime types accepted by value. If this is None (default), the minimum selectable datetime is ten years before the initial value. If no initial value is set, the minimum selectable datetime is ten years before today at 00:00. |
+   | max_value | "now", datetime.datetime, datetime.date, datetime.time, str, or None |  | The maximum selectable datetime. This can be any of the datetime types accepted by value. If this is None (default), the maximum selectable datetime is ten years after the initial value. If no initial value is set, the maximum selectable datetime is ten years after today at 23:59. |
+   | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
+   | help | str or None |  | A tooltip that gets displayed next to the widget label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
+   | on_change | callable |  | An optional callback invoked when this datetime_input's value changes. |
+   | args | list or tuple |  | An optional list or tuple of args to pass to the callback. |
+   | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
+   | format | str |  | A format string controlling how the interface displays dates. Supports "YYYY/MM/DD" (default), "DD/MM/YYYY", or "MM/DD/YYYY". You may also use a period (.) or hyphen (-) as separators. This doesn't affect the time format. |
+   | step | int or timedelta | s | The stepping interval in seconds. This defaults to 900 (15 minutes). You can also pass a datetime.timedelta object. The value must be between 60 seconds and 23 hours. |
+   | disabled | bool | is | An optional boolean that disables the widget if set to True. The default is False. |
+   | label_visibility | "visible", "hidden", or "collapsed" | is | The visibility of the label. The default is "visible". If this is "hidden", Streamlit displays an empty spacer instead of the label, which can help keep the widget aligned with other widgets. If this is "collapsed", Streamlit displays no label or spacer. |
+   | width | "stretch" or int |  | The width of the widget. This can be one of the following:  "stretch" (default): The width of the widget matches the width of the parent container. An integer specifying the width in pixels: The widget has a fixed width. If the specified width is greater than the width of the parent container, the widget matches the container width. |
+
+* Returns: datetime.datetime or None
+
+    The current value of the datetime input widget (without timezone)
+or None if no value has been selected.
+
+
+
+---
+
 Source: https://docs.streamlit.io/develop/api-reference/widgets/st.time_input
 
 
@@ -11613,7 +11499,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.time_input
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this time input is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
-   | value | "now", datetime.time, datetime.datetime, str, or None |  | The value of this widget when it first renders. This can be one of the following:  "now" (default): The widget initializes with the current time. A datetime.time or datetime.datetime object: The widget initializes with the given time, ignoring any date if included. An ISO-formatted time ("hh:mm", "hh:mm:ss", or "hh:mm:ss.sss") or datetime ("YYYY-MM-DD hh:mm:ss") string: The widget initializes with the given time, ignoring any date if included. None: The widget initializes with no time and returns None until the user selects a time. |
+   | value | "now", datetime.time, datetime.datetime, str, or None |  | The value of this widget when it first renders. This can be one of the following:  "now" (default): The widget initializes with the current time. A datetime.time or datetime.datetime object: The widget initializes with the given time, ignoring any date if included. An ISO-formatted time (hh:mm[:ss.sss]) or datetime (YYYY-MM-DD hh:mm[:ss]) string: The widget initializes with the given time, ignoring any date if included. None: The widget initializes with no time and returns None until the user selects a time. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | help | str or None |  | A tooltip that gets displayed next to the widget label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | on_change | callable |  | An optional callback invoked when this time_input's value changes. |
@@ -11621,7 +11507,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.time_input
    | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
    | disabled | bool | is | An optional boolean that disables the time input if set to True. The default is False. |
    | label_visibility | "visible", "hidden", or "collapsed" | is | The visibility of the label. The default is "visible". If this is "hidden", Streamlit displays an empty spacer instead of the label, which can help keep the widget aligned with other widgets. If this is "collapsed", Streamlit displays no label or spacer. |
-   | step | int or timedelta | 900 | The stepping interval in seconds. Defaults to 900, i.e. 15 minutes. You can also pass a datetime.timedelta object. |
+   | step | int or timedelta | s | The stepping interval in seconds. This defaults to 900 (15 minutes). You can also pass a datetime.timedelta object. The value must be between 60 seconds and 23 hours. |
    | width | "stretch" or int |  | The width of the time input widget. This can be one of the following:  "stretch" (default): The width of the widget matches the width of the parent container. An integer specifying the width in pixels: The widget has a fixed width. If the specified width is greater than the width of the parent container, the width of the widget matches the width of the parent container. |
 
 * Returns: datetime.time or None
@@ -11691,7 +11577,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.text_input
    | placeholder | str or None |  | An optional string displayed when the text input is empty. If None, no text is displayed. |
    | disabled | bool | is | An optional boolean that disables the text input if set to True. The default is False. |
    | label_visibility | "visible", "hidden", or "collapsed" | is | The visibility of the label. The default is "visible". If this is "hidden", Streamlit displays an empty spacer instead of the label, which can help keep the widget aligned with other widgets. |
-   | icon | str, None |  | An optional emoji or icon to display within the input field to the left of the value. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str, None |  | An optional emoji or icon to display within the input field to the left of the value. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the text input widget. This can be one of the following:  "stretch" (default): The width of the widget matches the width of the parent container. An integer specifying the width in pixels: The widget has a fixed width. If the specified width is greater than the width of the parent container, the width of the widget matches the width of the parent container. |
 
 * Returns: str or None
@@ -11755,7 +11641,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.audio_input
    | name | type | default | description |
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this widget is used for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
-   | sample_rate | int or None | 16000 | The target sample rate for the audio recording in Hz. This defaults to 16000 Hz, which is optimal for speech recognition. The following sample rates are supported: 8000, 11025, 16000, 22050, 24000, 32000, 44100, or 48000. If this is None, the widget uses the browser's default sample rate (typically 44100 or 48000 Hz). |
+   | sample_rate | int or None | s | The target sample rate for the audio recording in Hz. This defaults to 16000, which is optimal for speech recognition. The following values are supported: 8000 (telephone quality), 11025, 16000 (speech-recognition quality), 22050, 24000, 32000, 44100, 48000 (high-quality), or None. If this is None, the widget uses the browser's default sample rate (typically 44100 or 48000 Hz). |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | help | str or None |  | A tooltip that gets displayed next to the widget label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | on_change | callable |  | An optional callback invoked when this audio input's value changes. |
@@ -11985,7 +11871,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.file_uploader
 
 * Function signature:
 
-   st.file_uploader(label, type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="visible", width="stretch")
+   st.file_uploader(label, type=None, accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, max_upload_size=None, disabled=False, label_visibility="visible", width="stretch")
 
 * Parameters:
 
@@ -11993,6 +11879,7 @@ Source: https://docs.streamlit.io/develop/api-reference/widgets/st.file_uploader
    |---|---|---|---|
    | label | str |  | A short label explaining to the user what this file uploader is for. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. For accessibility reasons, you should never set an empty label, but you can hide it with label_visibility if needed. In the future, we may disallow empty labels by raising an exception. |
    | type | str, list of str, or None |  | The allowed file extension(s) for uploaded files. This can be one of the following types:  None (default): All file extensions are allowed. A string: A single file extension is allowed. For example, to only accept CSV files, use "csv". A sequence of strings: Multiple file extensions are allowed. For example, to only accept JPG/JPEG and PNG files, use ["jpg", "jpeg", "png"].   Note This is a best-effort check, but doesn't provide a security guarantee against users uploading files of other types or type extensions. The correct handling of uploaded files is part of the app developer's responsibility. |
+   | max_upload_size | int or None |  | The maximum allowed size of each uploaded file in megabytes. If this is None (default), the maximum file size is set by the server.maxUploadSize configuration option in your config.toml file. If this is an integer, it must be positive and will override the server.maxUploadSize configuration option. |
    | accept_multiple_files | bool or "directory" |  | Whether to accept more than one file in a submission. This can be one of the following values:  False (default): The user can only submit one file at a time. True: The user can upload multiple files at the same time. "directory": The user can select a directory to upload all files in the directory and its subdirectories. If type is set, only files matching those type(s) will be uploaded.  When this is True or "directory", the return value will be a list and a user can additively select files if they click the browse button on the widget multiple times. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | help | str or None |  | A tooltip that gets displayed next to the widget label. Streamlit only displays the tooltip when label_visibility="visible". If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
@@ -12494,7 +12381,7 @@ Source: https://docs.streamlit.io/develop/api-reference/layout/st.columns
    | name | type | default | description |
    |---|---|---|---|
    | spec | int or Iterable of numbers |  | Controls the number and width of columns to insert. Can be one of:  An integer that specifies the number of columns. All columns have equal width in this case. An Iterable of numbers (int or float) that specify the relative width of each column. E.g. [0.7, 0.3] creates two columns where the first one takes up 70% of the available with and the second one takes up 30%. Or [1, 2, 3] creates three columns where the second one is two times the width of the first one, and the third one is three times that width. |
-   | gap | "small", "medium", "large", or None |  | The size of the gap between the columns. This can be one of the following:  "small" (default): 1rem gap between the columns. "medium": 2rem gap between the columns. "large": 4rem gap between the columns. None: No gap between the columns.  The rem unit is relative to the theme.baseFontSize configuration option. |
+   | gap | "xxsmall", "xsmall", "small", "medium", "large", "xlarge", "xxlarge", or None |  | The size of the gap between the columns. This can be one of the following:  "xxsmall": 0.25rem gap between the columns. "xsmall": 0.5rem gap between the columns. "small" (default): 1rem gap between the columns. "medium": 2rem gap between the columns. "large": 4rem gap between the columns. "xlarge": 6rem gap between the columns. "xxlarge": 8rem gap between the columns. None: No gap between the columns.  The rem unit is relative to the theme.baseFontSize configuration option. |
    | vertical_alignment | "top", "center", or "bottom" | is | The vertical alignment of the content inside the columns. The default is "top". |
    | border | bool |  | Whether to show a border around the column containers. If this is False (default), no border is shown. If this is True, a border is shown around each column. |
    | width | "stretch" or int |  | The width of the column group. This can be one of the following:  "stretch" (default): The width of the column group matches the width of the parent container. An integer specifying the width in pixels: The column group has a fixed width. If the specified width is greater than the width of the parent container, the width of the column group matches the width of the parent container. |
@@ -12525,7 +12412,7 @@ Source: https://docs.streamlit.io/develop/api-reference/layout/st.container
    | horizontal | bool |  | Whether to use horizontal flexbox layout. If this is False (default), the container's elements are laid out vertically. If this is True, the container's elements are laid out horizontally and will overflow to the next line if they don't fit within the container's width. |
    | horizontal_alignment | "left", "center", "right", or "distribute" |  | The horizontal alignment of the elements inside the container. This can be one of the following:  "left" (default): Elements are aligned to the left side of the container.  "center": Elements are horizontally centered inside the container.  "right": Elements are aligned to the right side of the container.  "distribute": Elements are distributed evenly in the container. This increases the horizontal gap between elements to fill the width of the container. A standalone element is aligned to the left. When horizontal is False, "distribute" aligns the elements the same as "left". |
    | vertical_alignment | "top", "center", "bottom", or "distribute" |  | The vertical alignment of the elements inside the container. This can be one of the following:  "top" (default): Elements are aligned to the top of the container.  "center": Elements are vertically centered inside the container.  "bottom": Elements are aligned to the bottom of the container.  "distribute": Elements are distributed evenly in the container. This increases the vertical gap between elements to fill the height of the container. A standalone element is aligned to the top. When horizontal is True, "distribute" aligns the elements the same as "top". |
-   | gap | "small", "medium", "large", or None |  | The minimum gap size between the elements inside the container. This can be one of the following:  "small" (default): 1rem gap between the elements. "medium": 2rem gap between the elements. "large": 4rem gap between the elements. None: No gap between the elements.  The rem unit is relative to the theme.baseFontSize configuration option. The minimum gap applies to both the vertical and horizontal gaps between the elements. Elements may have larger gaps in one direction if you use a distributed horizontal alignment or fixed height. |
+   | gap | "xxsmall", "xsmall", "small", "medium", "large", "xlarge", "xxlarge", or None |  | The minimum gap size between the elements inside the container. This can be one of the following:  "xxsmall": 0.25rem gap between the elements. "xsmall": 0.5rem gap between the elements. "small" (default): 1rem gap between the elements. "medium": 2rem gap between the elements. "large": 4rem gap between the elements. "xlarge": 6rem gap between the elements. "xxlarge": 8rem gap between the elements. None: No gap between the elements.  The rem unit is relative to the theme.baseFontSize configuration option. The minimum gap applies to both the vertical and horizontal gaps between the elements. Elements may have larger gaps in one direction if you use a distributed horizontal alignment or fixed height. |
 
 
 
@@ -12555,7 +12442,7 @@ Source: https://docs.streamlit.io/develop/api-reference/layout/st.expander
    |---|---|---|---|
    | label | str |  | A string to use as the header for the expander. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
    | expanded | bool | s | If True, initializes the expander in "expanded" state. Defaults to False (collapsed). |
-   | icon | str, None |  | An optional emoji or icon to display next to the expander label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the expander label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the expander container. This can be one of the following:  "stretch" (default): The width of the container matches the width of the parent container. An integer specifying the width in pixels: The container has a fixed width. If the specified width is greater than the width of the parent container, the width of the container matches the width of the parent container. |
 
 
@@ -12576,7 +12463,7 @@ Source: https://docs.streamlit.io/develop/api-reference/layout/st.popover
    | label | str |  | The label of the button that opens the popover container. The label can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
    | help | str or None |  | A tooltip that gets displayed when the popover button is hovered over. If this is None (default), no tooltip is displayed. The tooltip can optionally contain GitHub-flavored Markdown, including the Markdown directives described in the body parameter of st.markdown. |
    | type | "primary", "secondary", or "tertiary" |  | An optional string that specifies the button type. This can be one of the following:  "primary": The button's background is the app's primary color for additional emphasis. "secondary" (default): The button's background coordinates with the app's background color for normal emphasis. "tertiary": The button is plain text without a border or background for subtlety. |
-   | icon | str |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library. |
+   | icon | str |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
    | disabled | bool | is | An optional boolean that disables the popover button if set to True. The default is False. |
    | use_container_width | bool |  | Whether to expand the button's width to fill its parent container. If use_container_width is False (default), Streamlit sizes the button to fit its content. If use_container_width is True, the width of the button matches its parent container. In both cases, if the content of the button is wider than the parent container, the content will line wrap. The popover container's minimum width matches the width of its button. The popover container may be wider than its button to fit the container's content. |
    | width | int, "stretch", or "content" |  | The width of the button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container.  The popover container's minimum width matches the width of its button. The popover container may be wider than its button to fit the container's contents. |
@@ -12667,7 +12554,7 @@ Source: https://docs.streamlit.io/develop/api-reference/layout/st.space
 
    | name | type | default | description |
    |---|---|---|---|
-   | size | "small", "medium", "large", "stretch", or int |  | The size of the space. This can be one of the following values:  "small" (default): 0.75rem, which is the height of a widget label. This is useful for aligning buttons with labeled widgets. "medium": 2.5rem, which is the height of a button or (unlabeled) input field. "large": 4.25rem, which is the height of a labeled input field or unlabeled media widget, like st.file_uploader. "stretch": Expands to fill remaining space in the container. An integer: Fixed size in pixels. |
+   | size | "xxsmall", "xsmall", "small", "medium", "large", "xlarge", "xxlarge", "stretch", or int |  | The size of the space. This can be one of the following values:  "xxsmall": 0.25rem, matching the "xxsmall" gap in st.container and st.columns. "xsmall": 0.5rem, matching the "xsmall" gap in st.container and st.columns. "small" (default): 0.75rem, which is the height of a widget label. This is useful for aligning buttons with labeled widgets. "medium": 2.5rem, which is the height of a button or (unlabeled) input field. "large": 4.25rem, which is the height of a labeled input field or unlabeled media widget, like st.file_uploader. "xlarge": 6rem, matching the "xlarge" gap in st.container and st.columns. "xxlarge": 8rem, matching the "xxlarge" gap in st.container and st.columns. "stretch": Expands to fill remaining space in the container. An integer: Fixed size in pixels. |
 
 
 
@@ -12773,7 +12660,7 @@ Read the [Build a basic LLM chat app](/develop/tutorials/llms/build-conversation
 
 * Function signature:
 
-   st.chat_input(placeholder="Your message", *, key=None, max_chars=None, accept_file=False, file_type=None, disabled=False, on_submit=None, args=None, kwargs=None, width="stretch")
+   st.chat_input(placeholder="Your message", *, key=None, max_chars=None, max_upload_size=None, accept_file=False, file_type=None, accept_audio=False, audio_sample_rate=16000, disabled=False, on_submit=None, args=None, kwargs=None, width="stretch")
 
 * Parameters:
 
@@ -12782,8 +12669,11 @@ Read the [Build a basic LLM chat app](/develop/tutorials/llms/build-conversation
    | placeholder | str | s | A placeholder text shown when the chat input is empty. This defaults to "Your message". For accessibility reasons, you should not use an empty string. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | max_chars | int or None |  | The maximum number of characters that can be entered. If this is None (default), there will be no maximum. |
+   | max_upload_size | int or None |  | The maximum allowed size of each uploaded file in megabytes. If this is None (default), the maximum file size is set by the server.maxUploadSize configuration option in your config.toml file. If this is an integer, it must be positive and will override the server.maxUploadSize configuration option. |
    | accept_file | bool, "multiple", or "directory" |  | Whether the chat input should accept files. This can be one of the following values:  False (default): No files are accepted and the user can only submit a message. True: The user can add a single file to their submission. "multiple": The user can add multiple files to their submission. "directory": The user can add multiple files to their submission by selecting a directory. If file_type is set, only files matching those type(s) will be uploaded.  By default, uploaded files are limited to 200 MB each. You can configure this using the server.maxUploadSize config option. For more information on how to set config options, see config.toml. |
    | file_type | str, Sequence[str], or None |  | The allowed file extension(s) for uploaded files. This can be one of the following types:  None (default): All file extensions are allowed. A string: A single file extension is allowed. For example, to only accept CSV files, use "csv". A sequence of strings: Multiple file extensions are allowed. For example, to only accept JPG/JPEG and PNG files, use ["jpg", "jpeg", "png"].   Note This is a best-effort check, but doesn't provide a security guarantee against users uploading files of other types or type extensions. The correct handling of uploaded files is part of the app developer's responsibility. |
+   | accept_audio | bool | s | Whether to show an audio recording button in the chat input. This defaults to False. If this is True, users can record and submit audio messages. Recorded audio is available as an UploadedFile object with MIME type audio/wav. |
+   | audio_sample_rate | int or None | s | The target sample rate for audio recording in Hz when accept_audio is True. This defaults to 16000, which is optimal for speech recognition. The following values are supported: 8000 (telephone quality), 11025, 16000 (speech-recognition quality), 22050, 24000, 32000, 44100, 48000 (high-quality), or None. If this is None, the widget uses the browser's default sample rate (typically 44100 or 48000 Hz). |
    | disabled | bool | s | Whether the chat input should be disabled. This defaults to False. |
    | on_submit | callable |  | An optional callback invoked when the chat input's value is submitted. |
    | args | list or tuple |  | An optional list or tuple of args to pass to the callback. |
@@ -12794,30 +12684,39 @@ Read the [Build a basic LLM chat app](/develop/tutorials/llms/build-conversation
 
     The user's submission. This is one of the following types:
 
-None: If the user didn't submit a message or file in the last
-rerun, the widget returns None.
-A string: When the widget is not configured to accept files and
-the user submitted a message in the last rerun, the widget
-returns the user's message as a string.
+None: If the user didn't submit a message, file, or audio
+recording in the last rerun, the widget returns None.
+A string: When the widget isn't configured to accept files or
+audio recordings, and the user submitted a message in the last
+rerun, the widget returns the user's message as a string.
 A dict-like object: When the widget is configured to accept files
-and the user submitted a message and/or file(s) in the last
-rerun, the widget returns a dict-like object with two attributes,
-text and files.
+or audio recordings, and the user submitted any content in the
+last rerun, the widget returns a dict-like object.
+The object always includes the text attribute, and
+optionally includes files and/or audio attributes depending
+on the accept_file and accept_audio parameters.
 
-When the widget is configured to accept files and the user submits
-something in the last rerun, you can access the user's submission
-with key or attribute notation from the dict-like object. This is
-shown in Example 3 below.
-The text attribute holds a string, which is the user's message.
+When the widget is configured to accept files or audio recordings,
+and the user submitted content in the last rerun, you can access
+the user's submission with key or attribute notation from the
+dict-like object. This is shown in Example 3 below.
+
+The text attribute holds a string that is the user's message.
 This is an empty string if the user only submitted one or more
-files.
-The files attribute holds a list of UploadedFile objects.
-The list is empty if the user only submitted a message. Unlike
+files or audio recordings.
+The files attribute is only present when accept_file
+isn't False. When present, it holds a list of
+UploadedFile objects. The list is empty if the user only
+submitted a message or audio recording. Unlike
 st.file_uploader, this attribute always returns a list, even
 when the widget is configured to accept only one file at a time.
-The UploadedFile class is a subclass of BytesIO, and therefore is
-"file-like". This means you can pass an instance of it anywhere a
-file is expected.
+The audio attribute is only present when accept_audio is
+True. When present, it holds an UploadedFile object if
+audio was recorded or None if no audio was recorded.
+
+The UploadedFile class is a subclass of BytesIO and
+therefore is "file-like". This means you can pass an instance of it
+anywhere a file is expected.
 
 
 
@@ -12844,7 +12743,7 @@ Read the [Build a basic LLM chat app](/develop/tutorials/llms/build-conversation
    | name | type | default | description |
    |---|---|---|---|
    | name | "user", "assistant", "ai", "human", or str |  | The name of the message author. Can be "human"/"user" or "ai"/"assistant" to enable preset styling and avatars. Currently, the name is not shown in the UI but is only set as an accessibility label. For accessibility reasons, you should not use an empty string. |
-   | avatar | Anything supported by st.image (except list), str, or None | user | The avatar shown next to the message. If avatar is None (default), the icon will be determined from name as follows:  If name is "user" or "human", the message will have a default user icon. If name is "ai" or "assistant", the message will have a default bot icon. For all other values of name, the message will show the first letter of the name.  In addition to the types supported by st.image (except list), the following strings are valid:  A single-character emoji. For example, you can set avatar="🧑‍💻" or avatar="🦖". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | avatar | Anything supported by st.image (except list), str, or None | user | The avatar shown next to the message. If avatar is None (default), the icon will be determined from name as follows:  If name is "user" or "human", the message will have a default user icon. If name is "ai" or "assistant", the message will have a default bot icon. For all other values of name, the message will show the first letter of the name.  In addition to the types supported by st.image (except list), the following strings are valid:  A single-character emoji. For example, you can set avatar="🧑‍💻" or avatar="🦖". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch", "content", or int |  | The width of the chat message container. This can be one of the following:  "stretch" (default): The width of the container matches the width of the parent container. "content": The width of the container matches the width of its content, but doesn't exceed the width of the parent container. An integer specifying the width in pixels: The container has a fixed width. If the specified width is greater than the width of the parent container, the width of the container matches the width of the parent container. |
 
 * Returns: Container
@@ -13076,7 +12975,7 @@ Source: https://docs.streamlit.io/develop/api-reference/status/st.success
    | name | type | default | description |
    |---|---|---|---|
    | body | str |  | The text to display as GitHub-flavored Markdown. Syntax information can be found at: https://github.github.com/gfm. See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the success element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
 
 
@@ -13095,7 +12994,7 @@ Source: https://docs.streamlit.io/develop/api-reference/status/st.info
    | name | type | default | description |
    |---|---|---|---|
    | body | str |  | The text to display as GitHub-flavored Markdown. Syntax information can be found at: https://github.github.com/gfm. See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the info element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
 
 
@@ -13114,7 +13013,7 @@ Source: https://docs.streamlit.io/develop/api-reference/status/st.warning
    | name | type | default | description |
    |---|---|---|---|
    | body | str |  | The text to display as GitHub-flavored Markdown. Syntax information can be found at: https://github.github.com/gfm. See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the warning element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
 
 
@@ -13133,7 +13032,7 @@ Source: https://docs.streamlit.io/develop/api-reference/status/st.error
    | name | type | default | description |
    |---|---|---|---|
    | body | str |  | The text to display as GitHub-flavored Markdown. Syntax information can be found at: https://github.github.com/gfm. See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | width | "stretch" or int |  | The width of the alert element. This can be one of the following:  "stretch" (default): The width of the element matches the width of the parent container. An integer specifying the width in pixels: The element has a fixed width. If the specified width is greater than the width of the parent container, the width of the element matches the width of the parent container. |
 
 
@@ -13247,7 +13146,7 @@ Source: https://docs.streamlit.io/develop/api-reference/status/st.toast
    | name | type | default | description |
    |---|---|---|---|
    | body | str |  | The string to display as GitHub-flavored Markdown. Syntax information can be found at: https://github.github.com/gfm. See the body parameter of st.markdown for additional, supported Markdown directives. |
-   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str, None |  | An optional emoji or icon to display next to the alert. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
    | duration | "short", "long", "infinite", or int |  | The time to display the toast message. This can be one of the following:  "short" (default): Displays for 4 seconds. "long": Displays for 10 seconds. "infinite": Shows the toast until the user dismisses it. An integer: Displays for the specified number of seconds. |
 
 
@@ -13369,6 +13268,20 @@ Source: https://docs.streamlit.io/develop/api-reference/user/st.user
    | name | type | default | description |
    |---|---|---|---|
    | is_logged_in | bool |  | Whether a user is logged in. For a locally running app, this attribute is only available when authentication (st.login()) is configured in secrets.toml. Otherwise, it does not exist. |
+   | tokens | TokensProxy |  | A read-only, dict-like object for accessing exposed tokens from the identity provider. |
+
+
+
+* Function signature:
+
+   TokensProxy
+
+* Parameters:
+
+   | name | type | default | description |
+   |---|---|---|---|
+   | id | str |  | The identity token. This is only available if "id" is in expose_tokens. |
+   | access | str |  | The access token. This is only available if "access" is in expose_tokens. |
 
 
 
@@ -13491,7 +13404,7 @@ Source: https://docs.streamlit.io/develop/api-reference/navigation/st.page
    |---|---|---|---|
    | page | str, Path, or callable |  | The page source as a Callable or path to a Python file. If the page source is defined by a Python file, the path can be a string or pathlib.Path object. Paths can be absolute or relative to the entrypoint file. If the page source is defined by a Callable, the Callable can't accept arguments. |
    | title | str or None |  | The title of the page. If this is None (default), the page title (in the browser tab) and label (in the navigation menu) will be inferred from the filename or callable name in page. For more information, see Overview of multipage apps. |
-   | icon | str or None |  | An optional emoji or icon to display next to the page title and label. If icon is None (default), no icon is displayed next to the page label in the navigation menu, and a Streamlit icon is displayed next to the title (in the browser tab). If icon is a string, the following options are valid:   A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.     An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str or None | Streamlit | An optional emoji or icon to display next to the page title and label. If icon is None (default), no icon is displayed next to the page label in the navigation menu, and a Streamlit icon is displayed next to the title (in the browser tab). If icon is a string, the following options are valid:   A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.     An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.    "spinner": Displays a spinner as an icon. In this case, the spinner only displays next to the page label in the navigation menu. The spinner isn't used as the page favicon next to the title in the browser tab. The favicon is the default Streamlit icon unless otherwise specified with the page_icon parameter of st.set_page_config. |
    | url_path | str or None | page | The page's URL pathname, which is the path relative to the app's root URL. If this is None (default), the URL pathname will be inferred from the filename or callable name in page. For more information, see Overview of multipage apps. The default page will have a pathname of "", indicating the root URL of the app. If you set default=True, url_path is ignored. url_path can't include forward slashes; paths can't include subdirectories. |
    | default | bool | page | Whether this page is the default page to be shown when the app is loaded. If default is False (default), the page will have a nonempty URL pathname. However, if no default page is passed to st.navigation and this is the first page, this page will become the default page. If default is True, then the page will have an empty pathname and url_path will be ignored. |
 
@@ -13528,13 +13441,14 @@ Source: https://docs.streamlit.io/develop/api-reference/navigation/st.switch_pag
 
 * Function signature:
 
-   st.switch_page(page)
+   st.switch_page(page, *, query_params=None)
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
    | page | str, Path, or st.Page |  | The file path (relative to the main script) or an st.Page indicating the page to switch to. |
+   | query_params | dict, list of tuples, or None |  | Query parameters to apply when navigating to the target page. This can be a dictionary or an iterable of key-value tuples. Values can be strings or iterables of strings (for repeated keys). When this is None (default), all non-embed query parameters are cleared during navigation. |
 
 
 
@@ -13689,7 +13603,7 @@ Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.dialog
 
 * Function signature:
 
-   st.dialog(title, *, width="small", dismissible=True, on_dismiss="ignore")
+   st.dialog(title, *, width="small", dismissible=True, icon=None, on_dismiss="ignore")
 
 * Parameters:
 
@@ -13698,6 +13612,7 @@ Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.dialog
    | title | str |  | The title to display at the top of the modal dialog. It cannot be empty. The title can optionally contain GitHub-flavored Markdown of the following types: Bold, Italics, Strikethroughs, Inline Code, Links, and Images. Images display like icons, with a max height equal to the font height. Unsupported Markdown elements are unwrapped so only their children (text contents) render. Display unsupported elements as literal characters by backslash-escaping them. E.g., "1\. Not an ordered list". See the body parameter of st.markdown for additional, supported Markdown directives. |
    | width | "small", "medium", "large" |  | The width of the modal dialog. This can be one of the following:  "small" (default): The modal dialog will be a maximum of 500 pixels wide. "medium": The modal dialog will be up to 750 pixels wide. "large": The modal dialog will be up to 1280 pixels wide. |
    | dismissible | bool |  | Whether the modal dialog can be dismissed by the user. If this is True (default), the user can dismiss the dialog by clicking outside of it, clicking the "X" in its upper-right corner, or pressing ESC on their keyboard. If this is False, the "X" in the upper-right corner is hidden and the dialog must be closed programmatically by calling st.rerun() inside the dialog function.  Note Setting dismissible to False does not guarantee that all interactions in the main app are blocked. Don't rely on dismissible for security-critical checks. |
+   | icon | str or None |  | An optional emoji or icon to display next to the dialog title. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols  font library.  "spinner": Displays a spinner as an icon. |
    | on_dismiss | "ignore", "rerun", or callable |  | How the dialog should respond to dismissal events. This can be one of the following:  "ignore" (default): Streamlit will not rerun the app when the user dismisses the dialog. "rerun": Streamlit will rerun the app when the user dismisses the dialog. A callable: Streamlit will rerun the app when the user dismisses the dialog and execute the callable as a callback function before the rest of the app. |
 
 
@@ -13736,7 +13651,7 @@ Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.form_s
 
 * Function signature:
 
-   st.form_submit_button(label="Submit", help=None, on_click=None, args=None, kwargs=None, *, key=None, type="secondary", icon=None, disabled=False, use_container_width=None, width="content")
+   st.form_submit_button(label="Submit", help=None, on_click=None, args=None, kwargs=None, *, key=None, type="secondary", icon=None, icon_position="left", disabled=False, use_container_width=None, width="content", shortcut=None)
 
 * Parameters:
 
@@ -13749,10 +13664,12 @@ Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.form_s
    | kwargs | dict |  | An optional dict of kwargs to pass to the callback. |
    | key | str or int |  | An optional string or integer to use as the unique key for the widget. If this is omitted, a key will be generated for the widget based on its content. No two widgets may have the same key. |
    | type | "primary", "secondary", or "tertiary" |  | An optional string that specifies the button type. This can be one of the following:  "primary": The button's background is the app's primary color for additional emphasis. "secondary" (default): The button's background coordinates with the app's background color for normal emphasis. "tertiary": The button is plain text without a border or background for subtlety. |
-   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library. |
+   | icon | str or None |  | An optional emoji or icon to display next to the button label. If icon is None (default), no icon is displayed. If icon is a string, the following options are valid:  A single-character emoji. For example, you can set icon="🚨" or icon="🔥". Emoji short codes are not supported.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.  "spinner": Displays a spinner as an icon. |
+   | icon_position | "left" or "right" | s | The position of the icon relative to the button label. This defaults to "left". |
    | disabled | bool |  | Whether to disable the button. If this is False (default), the user can interact with the button. If this is True, the button is grayed-out and can't be clicked. If the first st.form_submit_button in the form is disabled, the form will override submission behavior with enter_to_submit=False. |
    | use_container_width | bool |  | Whether to expand the button's width to fill its parent container. If use_container_width is False (default), Streamlit sizes the button to fit its contents. If use_container_width is True, the width of the button matches its parent container. In both cases, if the contents of the button are wider than the parent container, the contents will line wrap. |
    | width | "content", "stretch", or int |  | The width of the button. This can be one of the following:  "content" (default): The width of the button matches the width of its content, but doesn't exceed the width of the parent container. "stretch": The width of the button matches the width of the parent container. An integer specifying the width in pixels: The button has a fixed width. If the specified width is greater than the width of the parent container, the width of the button matches the width of the parent container. |
+   | shortcut | str or None |  | An optional keyboard shortcut that triggers the button. This can be one of the following strings:  A single alphanumeric key like "K" or "4". A function key like "F11". A special key like "Enter", "Esc", or "Tab". Any of the above combined with modifiers. For example, you can use "Ctrl+K" or "Cmd+Shift+O".   Important The keys "C" and "R" are reserved and can't be used, even with modifiers. Punctuation keys like "." and "," aren't currently supported.  For a list of supported keys and modifiers, see the documentation for st.button. |
 
 * Returns: bool
 
@@ -13989,7 +13906,7 @@ This page only contains information on the `st.cache_data` API. For a deeper div
 
 * Function signature:
 
-   st.cache_data(func=None, *, ttl, max_entries, show_spinner, show_time=False, persist, hash_funcs=None)
+   st.cache_data(func=None, *, ttl, max_entries, show_spinner, show_time=False, persist, hash_funcs=None, scope="global")
 
 * Parameters:
 
@@ -14002,6 +13919,7 @@ This page only contains information on the `st.cache_data` API. For a deeper div
    | show_time | bool |  | Whether to show the elapsed time next to the spinner text. If this is False (default), no time is displayed. If this is True, elapsed time is displayed with a precision of 0.1 seconds. The time format is not configurable. |
    | persist | "disk", bool, or None | None | Optional location to persist cached data to. Passing "disk" (or True) will persist the cached data to the local disk. None (or False) will disable persistence. The default is None. |
    | hash_funcs | dict or None |  | Mapping of types or fully qualified names to hash functions. This is used to override the behavior of the hasher inside Streamlit's caching mechanism: when the hasher encounters an object, it will first check to see if its type matches a key in this dict and, if so, will use the provided function to generate a hash for it. See below for an example of how this can be used. |
+   | scope | "global" or "session" |  | The scope for the data cache. If this is "global" (default), the data is cached globally. If this is "session", the data is removed from the cache when the session disconnects. Because a session-scoped cache is cleared when a session disconnects, an unstable network connection can cause the cache to populate multiple times in a single session. If this is a problem, you might consider adjusting the server.websocketPingInterval configuration option. |
 
 
 <Warning>
@@ -14118,19 +14036,21 @@ This page only contains information on the `st.cache_resource` API. For a deeper
 
 * Function signature:
 
-   st.cache_resource(func, *, ttl, max_entries, show_spinner, show_time=False, validate, hash_funcs=None)
+   st.cache_resource(func, *, ttl, max_entries, show_spinner, show_time=False, validate, hash_funcs=None, on_release=None, scope="global")
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
    | func | callable |  | The function that creates the cached resource. Streamlit hashes the function's source code. |
-   | ttl | float, timedelta, str, or None |  | The maximum time to keep an entry in the cache. Can be one of:  None if cache entries should never expire (default). A number specifying the time in seconds. A string specifying the time in a format supported by Pandas's Timedelta constructor, e.g. "1d", "1.5 days", or "1h23s". A timedelta object from Python's built-in datetime library, e.g. timedelta(days=1). |
-   | max_entries | int or None | None | The maximum number of entries to keep in the cache, or None for an unbounded cache. When a new entry is added to a full cache, the oldest cached entry will be removed. Defaults to None. |
+   | ttl | float, timedelta, str, or None |  | The maximum age of a returned entry from the cache. This can be one of the following values:  None if cache entries should never expire (default). A number specifying the time in seconds. A string specifying the time in a format supported by Pandas's Timedelta constructor, e.g. "1d", "1.5 days", or "1h23s". Note that number strings without units are treated by Pandas as nanoseconds. A timedelta object from Python's built-in datetime library, e.g. timedelta(days=1).  Changes to this value will trigger a new cache to be created. |
+   | max_entries | int or None | None | The maximum number of entries to keep in the cache, or None for an unbounded cache. When a new entry is added to a full cache, the oldest cached entry will be removed. Defaults to None. Changes to this value will trigger a new cache to be created. |
    | show_spinner | bool or str | True | Enable the spinner. Default is True to show a spinner when there is a "cache miss" and the cached resource is being created. If string, value of show_spinner param will be used for spinner text. |
    | show_time | bool |  | Whether to show the elapsed time next to the spinner text. If this is False (default), no time is displayed. If this is True, elapsed time is displayed with a precision of 0.1 seconds. The time format is not configurable. |
-   | validate | callable or None |  | An optional validation function for cached data. validate is called each time the cached value is accessed. It receives the cached value as its only parameter and it must return a boolean. If validate returns False, the current cached value is discarded, and the decorated function is called to compute a new value. This is useful e.g. to check the health of database connections. |
+   | validate | callable or None |  | An optional validation function for cached resources. validate is called each time the cached value is accessed. It receives the cached value as its only parameter and it must return a boolean. If validate returns False, the current cached value is discarded, and the decorated function is called to compute a new value. This is useful e.g. to check the health of database connections. |
    | hash_funcs | dict or None |  | Mapping of types or fully qualified names to hash functions. This is used to override the behavior of the hasher inside Streamlit's caching mechanism: when the hasher encounters an object, it will first check to see if its type matches a key in this dict and, if so, will use the provided function to generate a hash for it. See below for an example of how this can be used. |
+   | on_release | callable or None |  | A function to call when an entry is removed from the cache. The removed item will be provided to the function as an argument. This is only useful for caches that remove entries normally. Most commonly, this is used session-scoped caches to release per-session resources. This can also be used with max_entries or ttl settings. TTL expiration only happens when expired resources are accessed. Therefore, don't rely on TTL expiration to guarantee timely cleanup. Also, expiration can happen on any script run. Ensure that on_release functions are thread-safe and don't rely on session state. The on_release function isn't guaranteed to be called when an app is shut down. |
+   | scope | "global" or "session" |  | The scope for the resource cache. If this is "global" (default), the resource is cached globally. If this is "session", the resource is removed from the cache when the session disconnects. Because a session-scoped cache is cleared when a session disconnects, an unstable network connection can cause the cache to populate multiple times in a single session. If this is a problem, you might consider adjusting the server.websocketPingInterval configuration option. |
 
 
 
@@ -14869,7 +14789,7 @@ This page only contains the `st.connection` API. For a deeper dive into creating
    | name | type | default | description |
    |---|---|---|---|
    | name | str |  | The connection name used for secrets lookup in secrets.toml. Streamlit uses secrets under [connections.] for the connection. type will be inferred if name is one of the following: "snowflake", "snowpark", or "sql". |
-   | type | str, connection class, or None |  | The type of connection to create. This can be one of the following:  None (default): Streamlit will infer the connection type from name. If the type is not inferable from name, the type must be specified in secrets.toml instead. "snowflake": Streamlit will initialize a connection with SnowflakeConnection. "snowpark": Streamlit will initialize a connection with SnowparkConnection. This is deprecated. "sql": Streamlit will initialize a connection with SQLConnection. A string path to an importable class: This must be a dot-separated module path ending in the importable class. Streamlit will import the class and initialize a connection with it. The class must extend st.connections.BaseConnection. An imported class reference: Streamlit will initialize a connection with the referenced class, which must extend st.connections.BaseConnection. |
+   | type | str, connection class, or None |  | The type of connection to create. This can be one of the following:  None (default): Streamlit will infer the connection type from name. If the type is not inferable from name, the type must be specified in secrets.toml instead. "snowflake": Streamlit will initialize a connection with SnowflakeConnection. "snowflake-callers-rights": Streamlit will initialize a "snowflake"-type connection, except the connection uses the current viewer's identity tokens instead of the app's connection configuration. "snowpark": Streamlit will initialize a connection with SnowparkConnection. This is deprecated. "sql": Streamlit will initialize a connection with SQLConnection. A string path to an importable class: This must be a dot-separated module path ending in the importable class. Streamlit will import the class and initialize a connection with it. The class must extend st.connections.BaseConnection. An imported class reference: Streamlit will initialize a connection with the referenced class, which must extend st.connections.BaseConnection.   Important Connections of type "snowflake-callers-rights" only work when they run in a Snowflake Snowpark Container Services environment. If they are used in a local environment, they will raise exceptions. For local development, use an environment variable or secret to logically switch between a "snowflake" and "snowflake-callers-rights" connection depending on the runtime environment. |
    | max_entries | int or None |  | The maximum number of connections to keep in the cache. If this is None (default), the cache is unbounded. Otherwise, when a new entry is added to a full cache, the oldest cached entry is removed. |
    | ttl | float, timedelta, or None |  | The maximum number of seconds to keep results in the cache. If this is None (default), cached results do not expire with time. |
    | **kwargs | any |  | Connection-specific keyword arguments that are passed to the connection's ._connect() method. **kwargs are typically combined with (and take precedence over) key-value pairs in secrets.toml. To learn more, see the specific connection's documentation. |
@@ -15092,6 +15012,22 @@ This page only contains information on the `st.connections.BaseConnection` class
 
 
 
+* Function signature:
+
+   BaseConnection.close()
+
+* Returns: None
+
+
+
+* Function signature:
+
+   BaseConnection.scope(cls)
+
+* Returns: "global" or "session"
+
+
+
 ---
 
 Source: https://docs.streamlit.io/develop/api-reference/connections/st.experimental_connection
@@ -15173,7 +15109,7 @@ my_component()
 ```
 
 </RefCard>
-<RefCard href="/develop/api-reference/custom-components/st.components.v2.types.bidicomponentcallable">
+<RefCard href="/develop/api-reference/custom-components/st.components.v2.types.componentrenderer">
 <h4>Mount</h4>
 
 Mount a custom component.
@@ -15202,43 +15138,43 @@ npm i @streamlit/component-v2-lib
 ```
 
 </RefCard>
-<RefCard href="/develop/api-reference/custom-components/component-v2-lib-component">
-<h4>Component</h4>
+<RefCard href="/develop/api-reference/custom-components/component-v2-lib-frontendrenderer">
+<h4>FrontendRenderer</h4>
 
 Type alias for the component function.
 
 ```typescript
-import { Component } from "@streamlit/component-v2-lib";
+import { FrontendRenderer } from "@streamlit/component-v2-lib";
 ```
 
 </RefCard>
-<RefCard href="/develop/api-reference/custom-components/component-v2-lib-componentargs">
-<h4>ComponentArgs</h4>
+<RefCard href="/develop/api-reference/custom-components/component-v2-lib-frontendrendererargs">
+<h4>FrontendRendererArgs</h4>
 
 Type alias for the component arguments.
 
 ```typescript
-import { ComponentArgs } from "@streamlit/component-v2-lib";
+import { FrontendRendererArgs } from "@streamlit/component-v2-lib";
 ```
 
 </RefCard>
-<RefCard href="/develop/api-reference/custom-components/component-v2-lib-componentstate">
-<h4>ComponentState</h4>
+<RefCard href="/develop/api-reference/custom-components/component-v2-lib-frontendstate">
+<h4>FrontendState</h4>
 
 Type alias for the component state.
 
 ```typescript
-import { ComponentState } from "@streamlit/component-v2-lib";
+import { FrontendState } from "@streamlit/component-v2-lib";
 ```
 
 </RefCard>
-<RefCard href="/develop/api-reference/custom-components/component-v2-lib-optionalcomponentcleanupfunction" size="two-third">
-<h4>OptionalComponentCleanupFunction</h4>
+<RefCard href="/develop/api-reference/custom-components/component-v2-lib-cleanupfunction" size="two-third">
+<h4>CleanupFunction</h4>
 
 Type alias for the component cleanup function.
 
 ```typescript
-import { OptionalComponentCleanupFunction } from "@streamlit/component-v2-lib";
+import { CleanupFunction } from "@streamlit/component-v2-lib";
 ```
 
 </RefCard>
@@ -15291,23 +15227,53 @@ iframe(
 
 ---
 
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v2.types.bidicomponentcallable
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v2.component
 
 
 * Function signature:
 
-   BidiComponentCallable(*args, **kwargs)
+   st.components.v2.component(name, *, html=None, css=None, js=None, isolate_styles=True)
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
-   | key | str or None |  | An optional string to use as the unique key for the component instance. If this is omitted, an internal key is generated for the component instance based on its mounting parameters. No two Streamlit elements may have the same key. When a key is defined, the component's state is available in Session State via the key.  Note If you want to access this key in your component's frontend, you must pass it explicitly within the data parameter. The key parameter in BidiComponentCallable is not the same as the key property in ComponentArgs in the component's frontend code. The frontend key is automatically generated to be unique among all instances of all components and to avoid collisions with classes and IDs in the app's DOM. |
+   | name | str |  | A short, descriptive identifier for the component. This is used internally by Streamlit to manage instances of the component. Component names must be unique across an app. The names of imported components are prefixed by their module name to avoid collisions. If you register multiple components with the same name, a warning is logged and the last-registered component is used. Because this can lead to unexpected behavior, ensure that component names are unique. If you intend to have multiple instances of a component in one app, avoid wrapping a component definition together with its mounting command so you don't re-register your component with each instance. |
+   | html | str or None |  | Inline HTML markup for the component root. This can be one of the following strings:  Raw HTML. This doesn't require any , , or  tags; just provide the inner HTML. A path or glob to an HTML file, relative to the component's asset directory.  If any HTML depends on data passed at mount time, use a placeholder element and populate it via JavaScript. Alternatively, you can append a new element to the parent. For more information, see Example 2. |
+   | css | str or None |  | Inline CSS. This can be one of the following strings:  Raw CSS (without a  block). A path or glob to a CSS file, relative to the component's asset directory. |
+   | js | str or None |  | Inline JavaScript. This can be one of the following strings:  Raw JavaScript (without a  block). A path or glob to a JS file, relative to the component's asset directory. |
+   | isolate_styles | bool |  | Whether to sandbox the component styles in a shadow root. If this is True (default), the component's HTML is mounted inside a shadow DOM and, in your component's JavaScript, parentElement returns a ShadowRoot. If this is False, the component's HTML is mounted directly into the app's DOM tree, and parentElement returns a regular HTMLElement. |
+
+* Returns: ComponentRenderer
+
+    The component's mounting command.
+This callable accepts the component parameters like key and
+data and returns a BidiComponentResult object with the
+component's state. The mounting command can be included in a
+user-friendly wrapper function to provide a simpler API. A mounting
+command can be called multiple times in an app to create multiple
+instances of the component.
+
+
+
+---
+
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v2.types.componentrenderer
+
+
+* Function signature:
+
+   ComponentRenderer(*args, **kwargs)
+
+* Parameters:
+
+   | name | type | default | description |
+   |---|---|---|---|
+   | key | str or None |  | An optional string to use as the unique key for the component instance. If this is omitted, an internal key is generated for the component instance based on its mounting parameters. No two Streamlit elements may have the same key. When a key is defined, the component's state is available in Session State via the key.  Note If you want to access this key in your component's frontend, you must pass it explicitly within the data parameter. The key parameter in ComponentRenderer is not the same as the key property in FrontendRendererArgs in the component's frontend code. The frontend key is automatically generated to be unique among all instances of all components and to avoid collisions with classes and IDs in the app's DOM. |
    | data | Any or None |  | Data to pass to the component. This can be one of the following:  A JSON-serializable object, like Dict[str, str | int] or List[str]. An Arrow-serializable object, like pandas.DataFrame. Raw bytes. A dictionary of JSON-serializable and Arrow-serializable objects. The dictionary's keys must be Python primitives.  Because this data is sent to the frontend, it must be serializable by one of the supported serialization methods (JSON, Arrow, or raw bytes). You can't pass arbitrary Python objects. Arrow-serialization is only supported at the top level of the data parameter or one level deep in a dictionary. Raw bytes are only supported at the top level. |
    | default | dict[str, Any] or None | state | Default state values for the component. Each key in the dictionary must correspond to a valid state attribute with an on__change callback. This callback can be empty, but must be included as a parameter when the component is mounted. Trigger values do not support manual defaults. All trigger and state values defined by an associated callback are initialized to None by default. |
    | width | "stretch", "content", or int |  | Width of the component. This can be one of the following:  "stretch" (default): The component is wrapped in a  with CSS style width: 100%;. "content": The component is wrapped in a  with CSS style width: fit-content;. An integer specifying the width in pixels: The component is wrapped in a  with the specified pixel width.  You are responsible for ensuring the component's inner HTML content is responsive to the  wrapper. |
    | height | "content", "stretch", or int |  | Height of the component. This can be one of the following:  "content" (default): The component is wrapped in a  with CSS style height: auto;. "stretch": The component is wrapped in a  with CSS style height: 100%;. An integer specifying the height in pixels: The component is wrapped in a  with the specified pixel height. If the component content is larger than the specified height, scrolling is enabled.   Note Use scrolling containers sparingly. If you use scrolling containers, avoid heights that exceed 500 pixels. Otherwise, the scroll surface of the container might cover the majority of the screen on mobile devices, which makes it hard to scroll the rest of the app. If you want to disable scrolling for a fixed-height component, include an inner  wrapper in your component's HTML to control the overflow behavior.  You are responsible for ensuring the component's inner HTML content is responsive to the  wrapper. |
-   | isolate_styles | bool |  | Whether to sandbox the component styles in a shadow root. If this is True (default), the component's HTML is mounted inside a shadow DOM and, in your component's JavaScript, parentElement returns a ShadowRoot. If this is False, the component's HTML is mounted directly into the app's DOM tree, and parentElement returns a regular HTMLElement. |
    | **callbacks | Callable or None |  | Callbacks with the naming pattern on__change for each state and trigger key. For example, if your component has a state key of "value" and a trigger key of "click", its callbacks can include on_value_change and on_click_change. Only names that follow this pattern are recognized. Custom components don't currently support callbacks with arguments. Callbacks are required for any state values defined in the default parameter. Otherwise, a callback is optional. To ensure your component's result always returns the expected attributes, you can pass empty callbacks like lambda: None. |
 
 * Returns: BidiComponentResult
@@ -15326,36 +15292,6 @@ Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.com
    |---|---|---|---|
    | &amp;lt;state_keys&amp;gt; | Any |  | All state values from the component. State values are persistent across app reruns until explicitly changed. You can have multiple state keys as attributes. |
    | &amp;lt;trigger_keys&amp;gt; | Any |  | All trigger values from the component. Trigger values are transient and reset to None after one script run. You can have multiple trigger keys as attributes. |
-
-
-
----
-
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v2.component
-
-
-* Function signature:
-
-   st.components.v2.component(name, *, html=None, css=None, js=None)
-
-* Parameters:
-
-   | name | type | default | description |
-   |---|---|---|---|
-   | name | str |  | A short, descriptive identifier for the component. This is used internally by Streamlit to manage instances of the component. Component names must be unique across an app. The names of imported components are prefixed by their module name to avoid collisions. If you register multiple components with the same name, a warning is logged and the last-registered component is used. Because this can lead to unexpected behavior, ensure that component names are unique. If you intend to have multiple instances of a component in one app, avoid wrapping a component definition together with its mounting command so you don't re-register your component with each instance. |
-   | html | str or None |  | Inline HTML markup for the component root. This can be one of the following strings:  Raw HTML. This doesn't require any , , or  tags; just provide the inner HTML. A path or glob to an HTML file, relative to the component's asset directory.  If any HTML depends on data passed at mount time, use a placeholder element and populate it via JavaScript. Alternatively, you can append a new element to the parent. For more information, see Example 2. html and js can't both be None. At least one of them must be provided. |
-   | css | str or None |  | Inline CSS. This can be one of the following strings:  Raw CSS (without a  block). A path or glob to a CSS file, relative to the component's asset directory. |
-   | js | str or None |  | Inline JavaScript. This can be one of the following strings:  Raw JavaScript (without a  block). A path or glob to a JS file, relative to the component's asset directory.  html and js can't both be None. At least one of them must be provided. |
-
-* Returns: BidiComponentCallable
-
-    The component's mounting command.
-This callable accepts the component parameters like key and
-data and returns a BidiComponentResult object with the
-component's state. The mounting command can be included in a
-user-friendly wrapper function to provide a simpler API. A mounting
-command can be called multiple times in an app to create multiple
-instances of the component.
 
 
 
@@ -15385,20 +15321,20 @@ This package enables type-safe development when creating custom Streamlit compon
 
 ---
 
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-component
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-frontendrenderer
 
 
 * Function signature:
 
-   Component&amp;lt;TComponentState extends ComponentState = ComponentState, TDataShape = unknown&amp;gt; = (componentArgs: ComponentArgs&amp;lt;TComponentState, TDataShape&amp;gt;) =&amp;gt; OptionalComponentCleanupFunction
+   FrontendRenderer&amp;lt;TState extends FrontendState = FrontendState, TData = unknown&amp;gt; = (componentArgs: FrontendRendererArgs&amp;lt;TState, TData&amp;gt;) =&amp;gt; CleanupFunction | void
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
-   | componentArgs | ComponentArgs&amp;lt;TComponentState, TDataShape&amp;gt; |  | The inputs and utilities provided by Streamlit to your component. |
+   | FrontendRendererArgs | FrontendRendererArgs&amp;lt;TState, TData&amp;gt; |  | The inputs and utilities provided by Streamlit to your component. |
 
-* Returns: OptionalComponentCleanupFunction
+* Returns: CleanupFunction | void
 
     An optional cleanup function that Streamlit will call when the component is unmounted.
 
@@ -15406,21 +15342,21 @@ Source: https://docs.streamlit.io/develop/api-reference/custom-components/compon
 
 ---
 
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-componentargs
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-frontendrendererargs
 
 
 * Function signature:
 
-   ComponentArgs&amp;lt;TComponentState = ComponentState, TDataShape = unknown,&amp;gt;
+   FrontendRendererArgs&amp;lt;TState extends FrontendState = FrontendState, TData = unknown,&amp;gt;
 
 * Parameters:
 
    | name | type | default | description |
    |---|---|---|---|
-   | data | TDataShape |  | The data payload sent from Python through the component's mounting command. This is the primary input for your component, typed by the component author via the TDataShape generic. |
+   | data | TData |  | The data payload sent from Python through the component's mounting command. This is the primary input for your component, typed by the component author via the TData generic. |
    | key | string |  | A stable identifier for this component instance generated by Streamlit. This key is independent from the key parameter passed to the component's mounting command in Python. This frontend key is automatically generated to be unique among all instances of all components and to avoid collisions with classes and IDs in the app's DOM. Important If a component is mounted without a key parameter in Python, and one of the parameters in the mounting command changes, then this frontend key may change between app runs. |
    | name | string |  | The component's name, as registered by Streamlit on the Python side. This is the same as the name parameter passed to st.components.v2.component. |
-   | parentElement | HTMLElement or ShadowRoot |  | The host element for your component. Your HTML, JavaScript, and CSS are mounted inside this container. This is a ShadowRoot if isolate_styles is set to true in the component definition, otherwise it's an HTMLElement. |
+   | parentElement | HTMLElement or ShadowRoot |  | The host element for your component. Your HTML, JavaScript, and CSS are mounted inside this container. This is a ShadowRoot if isolate_styles is set to true in the component definition, otherwise it's an HTMLElement.Avoid directly setting the inner HTML of this element, as it may overwrite the HTML, CSS, and JavaScript from the component definition. Instead, update its children or append new elements to it. |
 
 
 
@@ -15432,8 +15368,8 @@ Source: https://docs.streamlit.io/develop/api-reference/custom-components/compon
 
    | name | type | default | description |
    |---|---|---|---|
-   | name | string |  | The state key to set. If you are using TypeScript, this should be a key from TComponentState.To assign a value to a state key, in the component's mounting command in Python, an on__change callback isn't required. However, the presence of a callback will ensure that the state key is always present in the result. |
-   | value | Any |  | The value to associate with the key. Type must match the corresponding property type in your TComponentState interface. |
+   | name | string |  | The state key to set. If you are using TypeScript, this should be a key from TState.To assign a value to a state key, in the component's mounting command in Python, an on__change callback isn't required. However, the presence of a callback will ensure that the state key is always present in the result. |
+   | value | Any |  | The value to associate with the key. Type must match the corresponding property type in your TState interface. |
 
 * Returns: None
 
@@ -15447,8 +15383,8 @@ Source: https://docs.streamlit.io/develop/api-reference/custom-components/compon
 
    | name | type | default | description |
    |---|---|---|---|
-   | name | string |  | The trigger key to set. If you are using TypeScript, this should be a key from TComponentState.To assign a value to a trigger key, in the component's mounting command in Python, an on__change callback isn't required. However, the presence of a callback will ensure that the trigger key is always present in the result. |
-   | value | Any |  | The value for this trigger. If you are using TypeScript, this should match the corresponding property type in your TComponentState interface. |
+   | name | string |  | The trigger key to set. If you are using TypeScript, this should be a key from TState.To assign a value to a trigger key, in the component's mounting command in Python, an on__change callback isn't required. However, the presence of a callback will ensure that the trigger key is always present in the result. |
+   | value | Any |  | The value for this trigger. If you are using TypeScript, this should match the corresponding property type in your TState interface. |
 
 * Returns: None
 
@@ -15456,29 +15392,23 @@ Source: https://docs.streamlit.io/develop/api-reference/custom-components/compon
 
 ---
 
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-componentstate
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-frontendstate
 
 
 * Function signature:
 
-   ComponentState = Record&amp;lt;string, unknown&amp;gt;
+   FrontendState = Record&amp;lt;string, unknown&amp;gt;
 
 
 
 ---
 
-Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-optionalcomponentcleanupfunction
+Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib-cleanupfunction
 
 
 * Function signature:
 
-   OptionalComponentCleanupFunction = ComponentCleanupFunction | void
-
-
-
-* Function signature:
-
-   ComponentCleanupFunction = () =&gt; void
+   CleanupFunction = () =&gt; void
 
 
 
@@ -17025,8 +16955,8 @@ Source: https://docs.streamlit.io/develop/api-reference/configuration/st.set_pag
    |---|---|---|---|
    | page_title | str or None |  | The page title, shown in the browser tab. If this is None (default), the page title is inherited from the previous call of st.set_page_config. If this is None and no previous call exists, the page title is inferred from the page source. If a page source is a Python file, its inferred title is derived from the filename. If a page source is a callable object, its inferred title is derived from the callable's name. |
    | page_icon | Anything supported by st.image (except list), str, or None |  | The page favicon. If page_icon is None (default), the page icon is inherited from the previous call of st.set_page_config. If this is None and no previous call exists, the favicon is a monochrome Streamlit logo. In addition to the types supported by st.image (except list), the following strings are valid:  A single-character emoji. For example, you can set page_icon="🦈".  An emoji short code. For example, you can set page_icon=":shark:". For a list of all supported codes, see https://share.streamlit.io/streamlit/emoji-shortcodes.  The string literal, "random". You can set page_icon="random" to set a random emoji from the supported list above.  An icon from the Material Symbols library (rounded style) in the format ":material/icon_name:" where "icon_name" is the name of the icon in snake case. For example, page_icon=":material/thumb_up:" will display the Thumb Up icon. Find additional icons in the Material Symbols font library.    Note Colors are not supported for Material icons. When you use a Material icon for favicon, it will be black, regardless of browser theme. |
-   | layout | "centered", "wide", or None |  | How the page content should be laid out. If this is None (default), the page layout is inherited from the previous call of st.set_page_config. If this is None and no previous call exists, the page layout is "centered". "centered" constrains the elements into a centered column of fixed width. "wide" uses the entire screen. |
-   | initial_sidebar_state | "auto", "expanded", "collapsed", or None |  | How the sidebar should start out. If this is None (default), the sidebar state is inherited from the previous call of st.set_page_config. If no previous call exists, the sidebar state is "auto". The folowing states are supported:  "auto": The sidebar is hidden on small devices and shown otherwise. "expanded": The sidebar is shown initially. "collapsed": The sidebar is hidden initially.  In most cases, "auto" provides the best user experience across devices of different sizes. |
+   | layout | "centered", "wide", or None |  | Layout of the page content. The following layouts are supported:  None (default): The page layout is inherited from the previous call of st.set_page_config. If no previous call exists, the page layout is "centered". "centered": Page elements are constrained to a centered column of fixed width. "wide": Page elements use the entire screen width. |
+   | initial_sidebar_state | "auto", "expanded", "collapsed", int, or None |  | Initial state of the sidebar. The following states are supported:  None (default): The sidebar state is inherited from the previous call of st.set_page_config. If no previous call exists, the sidebar state is "auto". "auto": The sidebar is hidden on small devices and shown otherwise. "expanded": The sidebar is shown initially. "collapsed": The sidebar is hidden initially. int: The sidebar will use "auto" behavior but start with the specified width in pixels. The width must be between 200 and 600 pixels, inclusive.  In most cases, "auto" provides the best user experience across devices of different sizes. |
    | menu_items | dict |  | Configure the menu that appears on the top-right side of this app. The keys in this dict denote the menu item to configure. The following keys can have string or None values:  "Get help": The URL this menu item should point to. "Report a Bug": The URL this menu item should point to. "About": A markdown string to show in the About dialog.  A URL may also refer to an email address e.g. mailto:john@example.com. If you do not include a key, its menu item will be hidden (unless it was set by a previous call to st.set_page_config). To remove an item that was specified in a previous call to st.set_page_config, set its value to None in the dictionary. |
 
 
@@ -21389,7 +21319,7 @@ Get a sneak peek at what we have scheduled for the next year.
 Source: https://docs.streamlit.io/develop/quick-reference/cheat-sheet
 
 
-This is a summary of the docs for the latest version of Streamlit, [v1.51.0](https://pypi.org/project/streamlit/1.51.0/).
+This is a summary of the docs for the latest version of Streamlit, [v1.53.0](https://pypi.org/project/streamlit/1.53.0/).
 
 <Masonry>
 <CodeTile>
@@ -21479,57 +21409,80 @@ pip install --upgrade streamlit
 
 </Tip>
 
-## **Version 1.51.0 (latest)**
+## **Version 1.53.0 (latest)**
 
-_Release date: October 29, 2025_
+_Release date: January 14, 2026_
 
 **Highlights**
 
-- 🧩 Announcing [custom components](/develop/api-reference/custom-components/st.components.v2.component), version 2! Easily create frameless custom UI with bidirectional data flow.
-- 🌗 Introducing custom [light and dark theme](/develop/concepts/configuration/theming) configuration! You can simultaneously define custom light and dark themes in your app.
-- 🎨 Announcing [reusable themes](/develop/api-reference/configuration/config.toml#theme)! You can define a theme in a sharable file and use it as a base in other themes.
-- 💫 Introducing [`st.space`](/develop/api-reference/layout/st.space) for adding vertical and horizontal spaces in your app.
+- ❄️ You can create session-scoped [caller's rights connections](/develop/api-reference/connections/st.connections.snowflakeconnection) in Streamlit in Snowflake and other Snowpark Container Services environments.
+- ⭐ Announcing experimental support for running Streamlit with Starlette with the new [`server.useStarlette`](/develop/api-reference/configuration/config.toml#server) configuration option.
+- 🌐 Introducing [`st.App`](https://issues.streamlit.app/spec_renderer?pr=13449), an experimental ASGI-compatible entry point that enables custom HTTP routes, middleware, lifecycle hooks, and integration with Python web frameworks like FastAPI and Starlette ([#13537](https://github.com/streamlit/streamlit/pull/13537)).
+- 🔑 You can expose OIDC ID and access tokens in [`st.user.tokens`](/develop/api-reference/user/st.user) ([#12044](https://github.com/streamlit/streamlit/pull/12044)). Thanks, [velochy](https://github.com/velochy)!
+
+<Note>
+
+To comment on the Starlette and ASGI support, see the [discussion on GitHub](https://github.com/streamlit/streamlit/issues/13600).
+
+</Note>
 
 **Notable Changes**
 
-- 🔗 New configuration options, `theme.codeTextColor` and `theme.linkColor`, let you configure the color of code and link text.
-- 📊 [`ProgressColumn`](/develop/api-reference/data/st.column_config/st.column_config.progresscolumn) has a new `color` parameter.
-- 🌈 You can set `color="auto"` in [`MultiselectColumn`](/develop/api-reference/data/st.column_config/st.column_config.multiselectcolumn) to inherit colors from `theme.chartCategoricalColors`.
-- 📌 `MultiselectColumn` has a `pinned` parameter to match other column types.
-- ⭐ You can set a `default` value for [`st.feedback`](/develop/api-reference/widgets/st.feedback) ([#12578](https://github.com/streamlit/streamlit/pull/12578), [#9469](https://github.com/streamlit/streamlit/issues/9469)). Thanks, [andreasntr](https://github.com/andreasntr)!
-- 👆 [`st.write_stream`](/develop/api-reference/write-magic/st.write_stream) has a `cursor` parameter to set a custom cursor for the typewriter effect.
-- 🍿 [`st.popover`](/develop/api-reference/layout/st.popover) has a `type` parameter to match `st.button` styling options.
-- 🔑 To prevent widgets from resetting when you change a parameter, widgets are transitioning to an identity based only on their keys (if provided). The following widgets use only their key for their identity:
-  - `st.color_picker`
-  - `st.segmented_control`
-  - `st.radio`
-  - `st.audio_input`
-  - `st.slider`
-  - `st.select_slider`
-  - `st.chat_input`
-  - `st.feedback`
-  - `st.pills`
-- ↕️ `st.dataframe`, `st.data_editor`, `st.altair_chart`, `st.pydeck_chart`, and all simple charts have height parameters to use with flex containers.
-- ↔️ `st.plotly_chart`, `st.vega_lite_chart`, `st.altair_chart`, `st.pydeck_chart`, and all simple charts have width parameters to use with flex containers.
-- 🐍 Due to end of life, Python 3.9 is no longer supported.
+- 🚪 [`st.logout`](/develop/api-reference/user/st.logout) logs users out of your identity provider, if supported by your OIDC setup ([#12693](https://github.com/streamlit/streamlit/pull/12693)). Thanks, [velochy](https://github.com/velochy)!
+- 🌀 To prevent unwanted stale elements, especially in chat layouts, Streamlit treats spinners as transient elements and doesn't include them in the element refresh that happens with reruns ([#12826](https://github.com/streamlit/streamlit/pull/12826), [#9239](https://github.com/streamlit/streamlit/issues/9239), [#10199](https://github.com/streamlit/streamlit/issues/10199), [#13166](https://github.com/streamlit/streamlit/pull/13166)).
+- 🧩 For custom components v2, style isolation is set in [`st.components.v2.component`](/develop/api-reference/custom-components/st.components.v2.component) instead of when an instance is mounted ([#13518](https://github.com/streamlit/streamlit/pull/13518)).
+- 🎨 To access heading font size and weights in custom components without using JavaScript to parse an array, CSS custom properties in an app include individual properties for each heading font size and weight ([#13268](https://github.com/streamlit/streamlit/pull/13268)).
+- ✂️ For custom components v2, `html`, `js`, and `css` are all fully optional ([#13511](https://github.com/streamlit/streamlit/pull/13511)).
+- 🔗 [`BaseConnection`](/develop/api-reference/connections/st.connections.baseconnection) has a new class method to scope connections globally or by session ([#13506](https://github.com/streamlit/streamlit/pull/13506)).
+- 💾 [`st.cache_data`](/develop/api-reference/caching-and-state/st.cache_data) and [`st.cache_resource`](/develop/api-reference/caching-and-state/st.cache_resource) can be scoped to a session ([#13482](https://github.com/streamlit/streamlit/pull/13482), [#6703](https://github.com/streamlit/streamlit/issues/6703)).
+- 🧹 `st.cache_resource` has a new parameter `on_release` to use to clean up resources, like closing connections ([#13439](https://github.com/streamlit/streamlit/pull/13439), [#8674](https://github.com/streamlit/streamlit/issues/8674)).
+- 🏷️ `st.multiselect` doesn't include `options` in widget identity when a `key` is provided ([#13448](https://github.com/streamlit/streamlit/pull/13448), [#7855](https://github.com/streamlit/streamlit/issues/7855)).
+- 🔢 `st.number_input` doesn't include `min` and `max` in widget identity when a `key` is provided ([#13512](https://github.com/streamlit/streamlit/pull/13512), [#11277](https://github.com/streamlit/streamlit/issues/11277)).
+- 📋 `st.selectbox` doesn't include `options` in widget identity when a `key` is provided ([#13383](https://github.com/streamlit/streamlit/pull/13383), [#6352](https://github.com/streamlit/streamlit/issues/6352), [#8496](https://github.com/streamlit/streamlit/issues/8496), [#4854](https://github.com/streamlit/streamlit/issues/4854)).
+- 🎚️ You can format values for [`st.slider`](/develop/api-reference/widgets/st.slider) with a new `format` parameter ([#13392](https://github.com/streamlit/streamlit/pull/13392), [#13243](https://github.com/streamlit/streamlit/issues/13243)).
+- 🖼️ [`st.dialog`](/develop/api-reference/execution-flow/st.dialog) has a new `icon` parameter to add an icon next to the dialog title ([#13244](https://github.com/streamlit/streamlit/pull/13244), [#13202](https://github.com/streamlit/streamlit/issues/13202)). Thanks, [KaranPradhan266](https://github.com/KaranPradhan266)!
+- ✏️ You can configure [`st.data_editor`](/develop/api-reference/data/st.data_editor) to allow only adding or only deleting rows ([#13228](https://github.com/streamlit/streamlit/pull/13228), [#7091](https://github.com/streamlit/streamlit/issues/7091)).
+- ➡️ You can display a [button](/develop/api-reference/widgets/st.button) icon on the right instead of the left with a new `icon_position` parameter ([#13150](https://github.com/streamlit/streamlit/pull/13150), [#13069](https://github.com/streamlit/streamlit/issues/13069)). Thanks, [SiddhantSadangi](https://github.com/SiddhantSadangi)!
+- ↔️ [`st.columns`](/develop/api-reference/layout/st.columns), [`st.container`](/develop/api-reference/layout/st.container), and [`st.space`](/develop/api-reference/layout/st.space) support larger and smaller `gap` and `size` values ([#13345](https://github.com/streamlit/streamlit/pull/13345)).
+- 📦 You can configure the maximum file size for [`st.file_uploader`](/develop/api-reference/widgets/st.file_uploader) and [`st.chat_input`](/develop/api-reference/chat/st.chat_input) with a new parameter that overrides the `server.maxUploadSize` configuration option ([#12816](https://github.com/streamlit/streamlit/pull/12816), [#12692](https://github.com/streamlit/streamlit/issues/12692), [#12579](https://github.com/streamlit/streamlit/issues/12579)). Thanks, [rishabhjain1712](https://github.com/rishabhjain1712)!
+- 📐 You can configure the default width of the sidebar with [`st.set_page_config`](/develop/api-reference/configuration/st.set_page_config) ([#12154](https://github.com/streamlit/streamlit/pull/12154), [#11980](https://github.com/streamlit/streamlit/issues/11980)). Thanks, [jose-mindwayai](https://github.com/jose-mindwayai)!
+- 📝 The `options` parameter in [`st.select_slider`](/develop/api-reference/widgets/st.select_slider) supports Markdown ([#12960](https://github.com/streamlit/streamlit/pull/12960), [#11774](https://github.com/streamlit/streamlit/issues/11774)). Thanks, [jensonjohnathon](https://github.com/jensonjohnathon)!
+- 📊 The `delta` and `value` parameters in [`st.metric`](/develop/api-reference/data/st.metric) support Markdown ([#13094](https://github.com/streamlit/streamlit/pull/13094), [#11773](https://github.com/streamlit/streamlit/issues/11773)). Thanks, [jensonjohnathon](https://github.com/jensonjohnathon)!
+- 🔣 You can configure number format in `st.metric` ([#13193](https://github.com/streamlit/streamlit/pull/13193), [#12229](https://github.com/streamlit/streamlit/issues/12229), [#6951](https://github.com/streamlit/streamlit/issues/6951)).
+- 🌈 You can set the color of `st.metric` delta indicators from the basic color palette ([#13153](https://github.com/streamlit/streamlit/pull/13153), [#4052](https://github.com/streamlit/streamlit/issues/4052), [#6665](https://github.com/streamlit/streamlit/issues/6665)).
 
 **Other Changes**
 
-- ⚡ If you don't pass a file to `streamlit run`, it will try `streamlit_app.py` by default ([#12599](https://github.com/streamlit/streamlit/pull/12599)).
-- 🥷 `st.dataframe` hides its index column by default when row selections are enabled ([#12448](https://github.com/streamlit/streamlit/pull/12448), [#12237](https://github.com/streamlit/streamlit/issues/12237)). Thanks, [plumol](https://github.com/plumol)!
-- 👩‍🎨 For compatibility with new theming options, the app settings menu no longer supports theme editing ([#12648](https://github.com/streamlit/streamlit/pull/12648)).
-- 👋 The Streamlit hello app preloads its Python packages on its home page for a faster user experience ([#12617](https://github.com/streamlit/streamlit/pull/12617)).
-- 👍 Slider thumbs don't extend beyond the edge of their track ([#12549](https://github.com/streamlit/streamlit/pull/12549), [#4284](https://github.com/streamlit/streamlit/issues/4284)).
-- ℹ️ Material icons and emojis were updated ([#12669](https://github.com/streamlit/streamlit/pull/12669)).
-- 🦠 Bug fix: Pyplot charts render correctly in fragments, containers, and expanders ([#12807](https://github.com/streamlit/streamlit/pull/12807), [#12678](https://github.com/streamlit/streamlit/issues/12678), [#12763](https://github.com/streamlit/streamlit/issues/12763)).
-- 🪰 Bug fix: Dataframes correctly resize and align when using `width="content"` ([#12682](https://github.com/streamlit/streamlit/pull/12682)).
-- 🪳 Bug fix: Fuzzy search in select boxes is case insensitive ([#12849](https://github.com/streamlit/streamlit/pull/12849), [#11724](https://github.com/streamlit/streamlit/issues/11724)).
-- 🕷️ Bug fix: 500 errors display correctly ([#12845](https://github.com/streamlit/streamlit/pull/12845)).
-- 🐞 Bug fix: Deprecation warnings respect `client.showErrorDetails` ([#12794](https://github.com/streamlit/streamlit/pull/12794), [#12743](https://github.com/streamlit/streamlit/issues/12743)).
-- 🐝 Bug fix: Path handling in the file watcher was improved to prevent a `ValueError` in Windows environments ([#12741](https://github.com/streamlit/streamlit/pull/12741), [#12731](https://github.com/streamlit/streamlit/issues/12731)).
-- 🐜 Bug fix: `st.pills` shows its value when disabled ([#12555](https://github.com/streamlit/streamlit/pull/12555), [#12388](https://github.com/streamlit/streamlit/issues/12388)). Thanks, [davidsjoberg1](https://github.com/davidsjoberg1)!
-- 🪲 Bug fix: Plotly charts hide overflow to prevent flickering behavior from scrollbars [(#12594](https://github.com/streamlit/streamlit/pull/12594)).
-- 🐛 Bug fix: Streamlit's handling of Altair charts was improved for thread safety and prevention of an "Unrecognized data set" race condition ([#12673](https://github.com/streamlit/streamlit/pull/12673), [#11911](https://github.com/streamlit/streamlit/pull/11911), [#11342](https://github.com/streamlit/streamlit/issues/11342), [#11906](https://github.com/streamlit/streamlit/issues/11906)).
+- 🔌 You can exclude the port from your Streamlit auth redirect URI to use the current port ([#12251](https://github.com/streamlit/streamlit/pull/12251), [#12249](https://github.com/streamlit/streamlit/issues/12249)). Thanks, [velochy](https://github.com/velochy)!
+- 📛 Various custom components v2 types were semantically renamed ([#13515](https://github.com/streamlit/streamlit/pull/13515)).
+- 📜 When an item is removed from `st.multiselect`, the scroll position of the drop down is preserved ([#13384](https://github.com/streamlit/streamlit/pull/13384), [#13317](https://github.com/streamlit/streamlit/issues/13317)). Thanks, [kagawa0710](https://github.com/kagawa0710)!
+- 🐍 Pydantic sequences are treated as dataframe-like by Streamlit commands ([#13348](https://github.com/streamlit/streamlit/pull/13348), [#13344](https://github.com/streamlit/streamlit/issues/13344)).
+- 🏠 The logo displayed by `st.logo` links to the app's homepage ([#13222](https://github.com/streamlit/streamlit/pull/13222), [#13155](https://github.com/streamlit/streamlit/issues/13155)).
+- ⌨️ For improved accessibility, tooltips are keyboard focusable ([#13379](https://github.com/streamlit/streamlit/pull/13379), [#13330](https://github.com/streamlit/streamlit/issues/13330)).
+- ⚓ For improved accessibility, anchor links are keyboard focusable ([#13378](https://github.com/streamlit/streamlit/pull/13378), [#13329](https://github.com/streamlit/streamlit/issues/13329)).
+- 🗺️ `st.json` displays a tooltip on hover for each element to show its full path ([#13113](https://github.com/streamlit/streamlit/pull/13113), [#13057](https://github.com/streamlit/streamlit/issues/13057)).
+- 💬 `st.chat_input` was redesigned for improved style and accessibility ([#13088](https://github.com/streamlit/streamlit/pull/13088), [#13223](https://github.com/streamlit/streamlit/pull/13223), [#13364](https://github.com/streamlit/streamlit/pull/13364), [#13532](https://github.com/streamlit/streamlit/pull/13532), [#13556](https://github.com/streamlit/streamlit/pull/13556), [#13546](https://github.com/streamlit/streamlit/pull/13546), [#13542](https://github.com/streamlit/streamlit/pull/13542), [#13535](https://github.com/streamlit/streamlit/pull/13535), [#13554](https://github.com/streamlit/streamlit/pull/13554), [#13553](https://github.com/streamlit/streamlit/pull/13553), [#13555](https://github.com/streamlit/streamlit/pull/13555), [#13547](https://github.com/streamlit/streamlit/pull/13547)).
+- 💅 Various style updates for consistency ([#13536](https://github.com/streamlit/streamlit/pull/13536), [#13557](https://github.com/streamlit/streamlit/pull/13557)).
+- 🔐 `st.auth` is compatible with Authlib version 1.6.6 ([#13333](https://github.com/streamlit/streamlit/pull/13333), [#13335](https://github.com/streamlit/streamlit/issues/13335), [#13424](https://github.com/streamlit/streamlit/pull/13424)).
+- 👽 Bug fix: Embedded apps respect the theme embedding option when they are configured with a custom theme ([#13498](https://github.com/streamlit/streamlit/pull/13498), [#13496](https://github.com/streamlit/streamlit/issues/13496)). Thanks, [ranmocy](https://github.com/ranmocy)!
+- 👻 Bug fix: `st.number_input` accounts for floating point precision when incrementing and decrementing its value ([#13484](https://github.com/streamlit/streamlit/pull/13484)).
+- 🦀 Bug fix: `st.altair_chart` correctly displays HConcat and VConcat charts ([#13423](https://github.com/streamlit/streamlit/pull/13423), [#13410](https://github.com/streamlit/streamlit/issues/13410)).
+- 🦋 Bug fix: `st.selectbox` is initialized correctly when its value is set from Session State ([#13438](https://github.com/streamlit/streamlit/pull/13438), [#13435](https://github.com/streamlit/streamlit/issues/13435)).
+- 🦎 Bug fix: `st.html` indents list items correctly ([#13437](https://github.com/streamlit/streamlit/pull/13437), [#13426](https://github.com/streamlit/streamlit/issues/13426)).
+- 🐌 Bug fix: A logger message for `SnowflakeConnection` references the correct URL to the Snowflake docs ([#13363](https://github.com/streamlit/streamlit/pull/13363), [#13361](https://github.com/streamlit/streamlit/issues/13361)).
+- 🕸️ Bug fix: Tooltip text with newlines renders correctly ([#13365](https://github.com/streamlit/streamlit/pull/13365), [#13339](https://github.com/streamlit/streamlit/issues/13339)).
+- 🦗 Bug fix: The DOM elements within `st.spinner` are properly aligned when showing elapsed time ([#13388](https://github.com/streamlit/streamlit/pull/13388), [#13387](https://github.com/streamlit/streamlit/issues/13387)).
+- 🦂 Bug fix: Custom components v2 have the same cross-origin behavior as other elements in the app ([#13376](https://github.com/streamlit/streamlit/pull/13376)).
+- 🦟 Bug fix: CSS custom properties in custom components handle null or unset values correctly ([#13240](https://github.com/streamlit/streamlit/pull/13240)).
+- 🦠 Bug fix: Theme preference is persisted into new app sessions ([#13306](https://github.com/streamlit/streamlit/pull/13306), [#13280](https://github.com/streamlit/streamlit/issues/13280)).
+- 🪰 Bug fix: `st.dialog` doesn't show stale elements from a previous dialog ([#13297](https://github.com/streamlit/streamlit/pull/13297), [#10907](https://github.com/streamlit/streamlit/issues/10907)).
+- 🪳 Bug fix: `st.data_editor` behaves correctly when starting with a column of `None` values ([#13309](https://github.com/streamlit/streamlit/pull/13309), [#13305](https://github.com/streamlit/streamlit/issues/13305)).
+- 🕷️ Bug fix: To correctly reflect edits to the theme configuration during development, theme settings are properly hashed ([#13173](https://github.com/streamlit/streamlit/pull/13173)).
+- 🐞 Bug fix: In v2 custom components, app-level keyboard shortcuts (like `R` for rerun) are disabled in typing contexts to prevent unintentional usage ([#13264](https://github.com/streamlit/streamlit/pull/13264)).
+- 🐝 Bug fix: Custom component v2 includes default values in component identity, unless a key is provided ([#13266](https://github.com/streamlit/streamlit/pull/13266)).
+- 🐜 Bug fix: The sidebar navigation is correctly hidden when topbar navigation is used ([#13227](https://github.com/streamlit/streamlit/pull/13227), [#13224](https://github.com/streamlit/streamlit/issues/13224)).
+- 🪲 Bug fix: `st.logo` displays the logo correctly when an app uses top navigation ([#13226](https://github.com/streamlit/streamlit/pull/13226), [#13225](https://github.com/streamlit/streamlit/issues/13225)).
+- 🐛 Bug fix: Error messages are clearer when width or height are invalidly set to `0` ([#13206](https://github.com/streamlit/streamlit/pull/13206), [#12868](https://github.com/streamlit/streamlit/issues/12868)).
 
 ## Older versions of Streamlit
 
@@ -21543,12 +21496,149 @@ _Release date: October 29, 2025_
 
 ---
 
+# 2026 release notes
+
+Source: https://docs.streamlit.io/develop/quick-reference/release-notes/2026
+
+
+This page contains release notes for Streamlit versions released in 2026. For the latest version of Streamlit, see [Release notes](/develop/quick-reference/release-notes).
+
+## **Version 1.53.0**
+
+_Release date: January 14, 2026_
+
+**Highlights**
+
+- ❄️ You can create session-scoped [caller's rights connections](/develop/api-reference/connections/st.connections.snowflakeconnection) in Streamlit in Snowflake and other Snowpark Container Services environments.
+- ⭐ Announcing experimental support for running Streamlit with Starlette with the new [`server.useStarlette`](/develop/api-reference/configuration/config.toml#server) configuration option.
+- 🌐 Introducing [`st.App`](https://issues.streamlit.app/spec_renderer?pr=13449), an experimental ASGI-compatible entry point that enables custom HTTP routes, middleware, lifecycle hooks, and integration with Python web frameworks like FastAPI and Starlette ([#13537](https://github.com/streamlit/streamlit/pull/13537)).
+- 🔑 You can expose OIDC ID and access tokens in [`st.user.tokens`](/develop/api-reference/user/st.user) ([#12044](https://github.com/streamlit/streamlit/pull/12044)). Thanks, [velochy](https://github.com/velochy)!
+
+**Notable Changes**
+
+- 🚪 [`st.logout`](/develop/api-reference/user/st.logout) logs users out of your identity provider, if supported by your OIDC setup ([#12693](https://github.com/streamlit/streamlit/pull/12693)). Thanks, [velochy](https://github.com/velochy)!
+- 🌀 To prevent unwanted stale elements, especially in chat layouts, Streamlit treats spinners as transient elements and doesn't include them in the element refresh that happens with reruns ([#12826](https://github.com/streamlit/streamlit/pull/12826), [#9239](https://github.com/streamlit/streamlit/issues/9239), [#10199](https://github.com/streamlit/streamlit/issues/10199), [#13166](https://github.com/streamlit/streamlit/pull/13166)).
+- 🧩 For custom components v2, style isolation is set in [`st.components.v2.component`](/develop/api-reference/custom-components/st.components.v2.component) instead of when an instance is mounted ([#13518](https://github.com/streamlit/streamlit/pull/13518)).
+- 🎨 To access heading font size and weights in custom components without using JavaScript to parse an array, CSS custom properties in an app include individual properties for each heading font size and weight ([#13268](https://github.com/streamlit/streamlit/pull/13268)).
+- ✂️ For custom components v2, `html`, `js`, and `css` are all fully optional ([#13511](https://github.com/streamlit/streamlit/pull/13511)).
+- 🔗 [`BaseConnection`](/develop/api-reference/connections/st.connections.baseconnection) has a new class method to scope connections globally or by session ([#13506](https://github.com/streamlit/streamlit/pull/13506)).
+- 💾 [`st.cache_data`](/develop/api-reference/caching-and-state/st.cache_data) and [`st.cache_resource`](/develop/api-reference/caching-and-state/st.cache_resource) can be scoped to a session ([#13482](https://github.com/streamlit/streamlit/pull/13482), [#6703](https://github.com/streamlit/streamlit/issues/6703)).
+- 🧹 `st.cache_resource` has a new parameter `on_release` to use to clean up resources, like closing connections ([#13439](https://github.com/streamlit/streamlit/pull/13439), [#8674](https://github.com/streamlit/streamlit/issues/8674)).
+- 🏷️ `st.multiselect` doesn't include `options` in widget identity when a `key` is provided ([#13448](https://github.com/streamlit/streamlit/pull/13448), [#7855](https://github.com/streamlit/streamlit/issues/7855)).
+- 🔢 `st.number_input` doesn't include `min` and `max` in widget identity when a `key` is provided ([#13512](https://github.com/streamlit/streamlit/pull/13512), [#11277](https://github.com/streamlit/streamlit/issues/11277)).
+- 📋 `st.selectbox` doesn't include `options` in widget identity when a `key` is provided ([#13383](https://github.com/streamlit/streamlit/pull/13383), [#6352](https://github.com/streamlit/streamlit/issues/6352), [#8496](https://github.com/streamlit/streamlit/issues/8496), [#4854](https://github.com/streamlit/streamlit/issues/4854)).
+- 🎚️ You can format values for [`st.slider`](/develop/api-reference/widgets/st.slider) with a new `format` parameter ([#13392](https://github.com/streamlit/streamlit/pull/13392), [#13243](https://github.com/streamlit/streamlit/issues/13243)).
+- 🖼️ [`st.dialog`](/develop/api-reference/execution-flow/st.dialog) has a new `icon` parameter to add an icon next to the dialog title ([#13244](https://github.com/streamlit/streamlit/pull/13244), [#13202](https://github.com/streamlit/streamlit/issues/13202)). Thanks, [KaranPradhan266](https://github.com/KaranPradhan266)!
+- ✏️ You can configure [`st.data_editor`](/develop/api-reference/data/st.data_editor) to allow only adding or only deleting rows ([#13228](https://github.com/streamlit/streamlit/pull/13228), [#7091](https://github.com/streamlit/streamlit/issues/7091)).
+- ➡️ You can display a [button](/develop/api-reference/widgets/st.button) icon on the right instead of the left with a new `icon_position` parameter ([#13150](https://github.com/streamlit/streamlit/pull/13150), [#13069](https://github.com/streamlit/streamlit/issues/13069)). Thanks, [SiddhantSadangi](https://github.com/SiddhantSadangi)!
+- ↔️ [`st.columns`](/develop/api-reference/layout/st.columns), [`st.container`](/develop/api-reference/layout/st.container), and [`st.space`](/develop/api-reference/layout/st.space) support larger and smaller `gap` and `size` values ([#13345](https://github.com/streamlit/streamlit/pull/13345)).
+- 📦 You can configure the maximum file size for [`st.file_uploader`](/develop/api-reference/widgets/st.file_uploader) and [`st.chat_input`](/develop/api-reference/chat/st.chat_input) with a new parameter that overrides the `server.maxUploadSize` configuration option ([#12816](https://github.com/streamlit/streamlit/pull/12816), [#12692](https://github.com/streamlit/streamlit/issues/12692), [#12579](https://github.com/streamlit/streamlit/issues/12579)). Thanks, [rishabhjain1712](https://github.com/rishabhjain1712)!
+- 📐 You can configure the default width of the sidebar with [`st.set_page_config`](/develop/api-reference/configuration/st.set_page_config) ([#12154](https://github.com/streamlit/streamlit/pull/12154), [#11980](https://github.com/streamlit/streamlit/issues/11980)). Thanks, [jose-mindwayai](https://github.com/jose-mindwayai)!
+- 📝 The `options` parameter in [`st.select_slider`](/develop/api-reference/widgets/st.select_slider) supports Markdown ([#12960](https://github.com/streamlit/streamlit/pull/12960), [#11774](https://github.com/streamlit/streamlit/issues/11774)). Thanks, [jensonjohnathon](https://github.com/jensonjohnathon)!
+- 📊 The `delta` and `value` parameters in [`st.metric`](/develop/api-reference/data/st.metric) support Markdown ([#13094](https://github.com/streamlit/streamlit/pull/13094), [#11773](https://github.com/streamlit/streamlit/issues/11773)). Thanks, [jensonjohnathon](https://github.com/jensonjohnathon)!
+- 🔣 You can configure number format in `st.metric` ([#13193](https://github.com/streamlit/streamlit/pull/13193), [#12229](https://github.com/streamlit/streamlit/issues/12229), [#6951](https://github.com/streamlit/streamlit/issues/6951)).
+- 🌈 You can set the color of `st.metric` delta indicators from the basic color palette ([#13153](https://github.com/streamlit/streamlit/pull/13153), [#4052](https://github.com/streamlit/streamlit/issues/4052), [#6665](https://github.com/streamlit/streamlit/issues/6665)).
+
+**Other Changes**
+
+- 🔌 You can exclude the port from your Streamlit auth redirect URI to use the current port ([#12251](https://github.com/streamlit/streamlit/pull/12251), [#12249](https://github.com/streamlit/streamlit/issues/12249)). Thanks, [velochy](https://github.com/velochy)!
+- 📛 Various custom components v2 types were semantically renamed ([#13515](https://github.com/streamlit/streamlit/pull/13515)).
+- 📜 When an item is removed from `st.multiselect`, the scroll position of the drop down is preserved ([#13384](https://github.com/streamlit/streamlit/pull/13384), [#13317](https://github.com/streamlit/streamlit/issues/13317)). Thanks, [kagawa0710](https://github.com/kagawa0710)!
+- 🐍 Pydantic sequences are treated as dataframe-like by Streamlit commands ([#13348](https://github.com/streamlit/streamlit/pull/13348), [#13344](https://github.com/streamlit/streamlit/issues/13344)).
+- 🏠 The logo displayed by `st.logo` links to the app's homepage ([#13222](https://github.com/streamlit/streamlit/pull/13222), [#13155](https://github.com/streamlit/streamlit/issues/13155)).
+- ⌨️ For improved accessibility, tooltips are keyboard focusable ([#13379](https://github.com/streamlit/streamlit/pull/13379), [#13330](https://github.com/streamlit/streamlit/issues/13330)).
+- ⚓ For improved accessibility, anchor links are keyboard focusable ([#13378](https://github.com/streamlit/streamlit/pull/13378), [#13329](https://github.com/streamlit/streamlit/issues/13329)).
+- 🗺️ `st.json` displays a tooltip on hover for each element to show its full path ([#13113](https://github.com/streamlit/streamlit/pull/13113), [#13057](https://github.com/streamlit/streamlit/issues/13057)).
+- 💬 `st.chat_input` was redesigned for improved style and accessibility ([#13088](https://github.com/streamlit/streamlit/pull/13088), [#13223](https://github.com/streamlit/streamlit/pull/13223), [#13364](https://github.com/streamlit/streamlit/pull/13364), [#13532](https://github.com/streamlit/streamlit/pull/13532), [#13556](https://github.com/streamlit/streamlit/pull/13556), [#13546](https://github.com/streamlit/streamlit/pull/13546), [#13542](https://github.com/streamlit/streamlit/pull/13542), [#13535](https://github.com/streamlit/streamlit/pull/13535), [#13554](https://github.com/streamlit/streamlit/pull/13554), [#13553](https://github.com/streamlit/streamlit/pull/13553), [#13555](https://github.com/streamlit/streamlit/pull/13555), [#13547](https://github.com/streamlit/streamlit/pull/13547)).
+- 💅 Various style updates for consistency ([#13536](https://github.com/streamlit/streamlit/pull/13536), [#13557](https://github.com/streamlit/streamlit/pull/13557)).
+- 🔐 `st.auth` is compatible with Authlib version 1.6.6 ([#13333](https://github.com/streamlit/streamlit/pull/13333), [#13335](https://github.com/streamlit/streamlit/issues/13335), [#13424](https://github.com/streamlit/streamlit/pull/13424)).
+- 👽 Bug fix: Embedded apps respect the theme embedding option when they are configured with a custom theme ([#13498](https://github.com/streamlit/streamlit/pull/13498), [#13496](https://github.com/streamlit/streamlit/issues/13496)). Thanks, [ranmocy](https://github.com/ranmocy)!
+- 👻 Bug fix: `st.number_input` accounts for floating point precision when incrementing and decrementing its value ([#13484](https://github.com/streamlit/streamlit/pull/13484)).
+- 🦀 Bug fix: `st.altair_chart` correctly displays HConcat and VConcat charts ([#13423](https://github.com/streamlit/streamlit/pull/13423), [#13410](https://github.com/streamlit/streamlit/issues/13410)).
+- 🦋 Bug fix: `st.selectbox` is initialized correctly when its value is set from Session State ([#13438](https://github.com/streamlit/streamlit/pull/13438), [#13435](https://github.com/streamlit/streamlit/issues/13435)).
+- 🦎 Bug fix: `st.html` indents list items correctly ([#13437](https://github.com/streamlit/streamlit/pull/13437), [#13426](https://github.com/streamlit/streamlit/issues/13426)).
+- 🐌 Bug fix: A logger message for `SnowflakeConnection` references the correct URL to the Snowflake docs ([#13363](https://github.com/streamlit/streamlit/pull/13363), [#13361](https://github.com/streamlit/streamlit/issues/13361)).
+- 🕸️ Bug fix: Tooltip text with newlines renders correctly ([#13365](https://github.com/streamlit/streamlit/pull/13365), [#13339](https://github.com/streamlit/streamlit/issues/13339)).
+- 🦗 Bug fix: The DOM elements within `st.spinner` are properly aligned when showing elapsed time ([#13388](https://github.com/streamlit/streamlit/pull/13388), [#13387](https://github.com/streamlit/streamlit/issues/13387)).
+- 🦂 Bug fix: Custom components v2 have the same cross-origin behavior as other elements in the app ([#13376](https://github.com/streamlit/streamlit/pull/13376)).
+- 🦟 Bug fix: CSS custom properties in custom components handle null or unset values correctly ([#13240](https://github.com/streamlit/streamlit/pull/13240)).
+- 🦠 Bug fix: Theme preference is persisted into new app sessions ([#13306](https://github.com/streamlit/streamlit/pull/13306), [#13280](https://github.com/streamlit/streamlit/issues/13280)).
+- 🪰 Bug fix: `st.dialog` doesn't show stale elements from a previous dialog ([#13297](https://github.com/streamlit/streamlit/pull/13297), [#10907](https://github.com/streamlit/streamlit/issues/10907)).
+- 🪳 Bug fix: `st.data_editor` behaves correctly when starting with a column of `None` values ([#13309](https://github.com/streamlit/streamlit/pull/13309), [#13305](https://github.com/streamlit/streamlit/issues/13305)).
+- 🕷️ Bug fix: To correctly reflect edits to the theme configuration during development, theme settings are properly hashed ([#13173](https://github.com/streamlit/streamlit/pull/13173)).
+- 🐞 Bug fix: In v2 custom components, app-level keyboard shortcuts (like `R` for rerun) are disabled in typing contexts to prevent unintentional usage ([#13264](https://github.com/streamlit/streamlit/pull/13264)).
+- 🐝 Bug fix: Custom component v2 includes default values in component identity, unless a key is provided ([#13266](https://github.com/streamlit/streamlit/pull/13266)).
+- 🐜 Bug fix: The sidebar navigation is correctly hidden when topbar navigation is used ([#13227](https://github.com/streamlit/streamlit/pull/13227), [#13224](https://github.com/streamlit/streamlit/issues/13224)).
+- 🪲 Bug fix: `st.logo` displays the logo correctly when an app uses top navigation ([#13226](https://github.com/streamlit/streamlit/pull/13226), [#13225](https://github.com/streamlit/streamlit/issues/13225)).
+- 🐛 Bug fix: Error messages are clearer when width or height are invalidly set to `0` ([#13206](https://github.com/streamlit/streamlit/pull/13206), [#12868](https://github.com/streamlit/streamlit/issues/12868)).
+
+---
+
 # 2025 release notes
 
 Source: https://docs.streamlit.io/develop/quick-reference/release-notes/2025
 
 
 This page contains release notes for Streamlit versions released in 2025. For the latest version of Streamlit, see [Release notes](/develop/quick-reference/release-notes).
+
+## **Version 1.52.0**
+
+_Release date: December 3, 2025_
+
+**Highlights**
+
+- 📅 Introducing [`st.datetime_input`](/develop/api-reference/widgets/st.datetime_input) to set date and time in a single widget.
+- 📩 To avoid blocking your script, you can pass a callable to [`st.download_button`](/develop/api-reference/widgets/st.download_button) for on-demand download generation ([#12942](https://github.com/streamlit/streamlit/pull/12942), [#5053](https://github.com/streamlit/streamlit/issues/5053)).
+- 🎤 [`st.chat_input`](/develop/api-reference/chat/st.chat_input) can optionally accept audio input ([#12836](https://github.com/streamlit/streamlit/pull/12836), [#13054](https://github.com/streamlit/streamlit/pull/13054)).
+
+**Notable Changes**
+
+- 🎹 You can configure keyboard shortcuts for [buttons](/develop/api-reference/widgets/st.button) ([#12975](https://github.com/streamlit/streamlit/pull/12975), [#1291](https://github.com/streamlit/streamlit/issues/1291)).
+- ❓ You can now pass query parameters to [`st.switch_page`](/develop/api-reference/navigation/st.switch_page) and [`st.page_link`](/develop/api-reference/widgets/st.page_link) ([#13027](https://github.com/streamlit/streamlit/pull/13027), [#8102](https://github.com/streamlit/streamlit/issues/8102), [#8112](https://github.com/streamlit/streamlit/issues/8112), [#13093](https://github.com/streamlit/streamlit/pull/13093)).
+- 〰️ [`st.html`](/develop/api-reference/text/st.html) has a new `unsafe_allow_javascript` parameter to execute JavaScript ([#12918](https://github.com/streamlit/streamlit/pull/12918)).
+- ⬆️ [`st.metric`](/develop/api-reference/data/st.metric) has a new `delta_arrow` parameter to configure the visibility and orientation of the delta arrow ([#12982](https://github.com/streamlit/streamlit/pull/12982), [#4775](https://github.com/streamlit/streamlit/issues/4775)).
+- ⌨️ You can configure the horizontal alignment of [`st.markdown`](/develop/api-reference/text/st.markdown), `st.caption`, `st.title`, `st.header`, `st.subheader`, and `st.text` with a new `text_alignment` parameter ([#13032](https://github.com/streamlit/streamlit/pull/13032), [#4109](https://github.com/streamlit/streamlit/issues/4109), [#13034](https://github.com/streamlit/streamlit/pull/13034), [#13036](https://github.com/streamlit/streamlit/pull/13036)).
+- 🌀 You can use a spinner everywhere you can set an `icon` and in the `avatar` parameter of [`st.chat_message`](/develop/api-reference/chat/st.chat_message). The spinner can't be used as a page favicon ([#13045](https://github.com/streamlit/streamlit/pull/13045), [#6415](https://github.com/streamlit/streamlit/issues/6415)).
+- 🛠️ You can now add tooltips to [`st.badge`](/develop/api-reference/text/st.badge) ([#12897](https://github.com/streamlit/streamlit/pull/12897), [#12878](https://github.com/streamlit/streamlit/issues/12878)). Thanks, [marcolanfranchi](https://github.com/marcolanfranchi)!
+- 🕳️ You can configure placeholder text for null values in [`st.dataframe`](/develop/api-reference/data/st.dataframe) and [`st.data_editor`](/develop/api-reference/data/st.data_editor) with a new `placeholder` parameter ([#12968](https://github.com/streamlit/streamlit/pull/12968), [#7360](https://github.com/streamlit/streamlit/issues/7360)).
+- 🔑 To prevent widgets from resetting when you change a parameter, widgets are transitioning to an identity based only on their keys (if provided). The following widgets use only their key for their identity:
+  - `st.file_uploader`
+  - `st.camera_input`
+- ↕️ `st.plotly_chart` has a height parameter to use with flex containers ([#12593](https://github.com/streamlit/streamlit/pull/12593)).
+- ↔️ `st.container`, `st.dataframe`, and `st.data_editor` support `width="content"` ([#12848](https://github.com/streamlit/streamlit/pull/12848), [#12875](https://github.com/streamlit/streamlit/pull/12875), [#12391](https://github.com/streamlit/streamlit/issues/12391)).
+- 🐍 Streamlit supports Python 3.14 and Vega-Altair 6!
+- 👻 `st.bokeh_chart` has been removed. Use the `streamlit-bokeh` custom component instead.
+- ☠️ `**kwargs` is deprecated in `st.vega_lite_chart` ([#13141](https://github.com/streamlit/streamlit/pull/13141)).
+- 💩 The `.add_rows()` method is under consideration for removal. Please leave feedback ([#13063](https://github.com/streamlit/streamlit/issues/13063)).
+- 👥 We're improving community contributions by using a public workflow for discussing feature specs ([#12248](https://github.com/streamlit/streamlit/pull/12248)).
+
+**Other Changes**
+
+- 🪥 For better performance, Streamlit uses `uvloop` if it's installed ([#13047](https://github.com/streamlit/streamlit/pull/13047)).
+- 🧼 For improved performance, Markdown plugins are lazy loaded ([#13152](https://github.com/streamlit/streamlit/pull/13152)).
+- 🧽 To improve load times, we reduced the bundle size ([#13071](https://github.com/streamlit/streamlit/pull/13071), [#13077](https://github.com/streamlit/streamlit/pull/13077), [#13099](https://github.com/streamlit/streamlit/pull/13099), [#13115](https://github.com/streamlit/streamlit/pull/13115), [#13128](https://github.com/streamlit/streamlit/pull/13128)).
+- 🛁 To improve performance, we've refactored session context data ([#12788](https://github.com/streamlit/streamlit/pull/12788), [#12789](https://github.com/streamlit/streamlit/pull/12789), [#12790](https://github.com/streamlit/streamlit/pull/12790), [#12791](https://github.com/streamlit/streamlit/pull/12791)).
+- 🚿 The hovering performance of `st.line_chart` was improved ([#13156](https://github.com/streamlit/streamlit/pull/13156), [#13154](https://github.com/streamlit/streamlit/issues/13154)).
+- 🧹 `st.metric` was optimized to prevent poor hovering performance with large data sets ([#12983](https://github.com/streamlit/streamlit/pull/12983)).
+- 👽 The `packaging` Python dependency is no longer version-capped ([#13073](https://github.com/streamlit/streamlit/pull/13073)).
+- 🫥 For clarity, Streamlit logs a warning if you try to hide a non-range index when using `st.data_editor` with `num_rows="dynamic"`. A non-range index must be editable to add rows ([#12978](https://github.com/streamlit/streamlit/pull/12978), [#8263](https://github.com/streamlit/streamlit/issues/8263)).
+- 🦋 Bug fix: Streamlit auth raises a warning instead of an error when browser back navigation revisits a consumed OAuth callback ([#13127](https://github.com/streamlit/streamlit/pull/13127), [#13101](https://github.com/streamlit/streamlit/issues/13101)).
+- 🦀 Bug fix: The WebSocket timeout was increased on Android to improve `st.file_uploader` performance ([#13132](https://github.com/streamlit/streamlit/pull/13132), [#11419](https://github.com/streamlit/streamlit/issues/11419)).
+- 🦎 Bug fix: Query parameters are preserved when using browser back and forward navigation ([#13129](https://github.com/streamlit/streamlit/pull/13129), [#9279](https://github.com/streamlit/streamlit/issues/9279)).
+- 🐌 Bug fix: For custom components v2, the frontend key is correctly computed to be stable if it has a key in Python and otherwise change when its parameters change ([#12950](https://github.com/streamlit/streamlit/pull/12950)).
+- 🕸️ Bug fix: Empty code blocks in Markdown don't display "undefined" ([#13074](https://github.com/streamlit/streamlit/pull/13074), [#12986](https://github.com/streamlit/streamlit/issues/12986)). Thanks, [ashm-dev](https://github.com/ashm-dev)!
+- 🦗 Bug fix: `st.feedback` is prevented from wrapping ([#12970](https://github.com/streamlit/streamlit/pull/12970), [#12068](https://github.com/streamlit/streamlit/issues/12068)).
+- 🦂 Bug fix: Custom components v2 don't raise a warning when placeholders are replaced as a result of the initial manifest scan ([#13043](https://github.com/streamlit/streamlit/pull/13043), [#13042](https://github.com/streamlit/streamlit/issues/13042)).
+- 🦟 Bug fix: `st.audio_input` has the correct padding for its waveform ([#13010](https://github.com/streamlit/streamlit/pull/13010)).
+- 🦠 Bug fix: The date and time icons in `st.data_editor` are visible in dark mode ([#12994](https://github.com/streamlit/streamlit/pull/12994), [#12852](https://github.com/streamlit/streamlit/issues/12852)). Thanks, [aritradhabal](https://github.com/aritradhabal)!
+- 🪰 Bug fix: `st.pills` and `st.segmented_control` wrap correctly when `width="content"` ([#12969](https://github.com/streamlit/streamlit/pull/12969), [#12067](https://github.com/streamlit/streamlit/issues/12067), [#12879](https://github.com/streamlit/streamlit/pull/12879), [#12857](https://github.com/streamlit/streamlit/issues/12857)).
+- 🪳 Bug fix: `st.color_picker` has a minimum width to prevent a pixel width below its intrinsic size ([#12962](https://github.com/streamlit/streamlit/pull/12962), [#12872](https://github.com/streamlit/streamlit/issues/12872)).
+- 🕷️ Bug fix: Disabled widgets hide their borders ([#12949](https://github.com/streamlit/streamlit/pull/12949)).
+- 🐞 `st.audio_input` and `st.chat_input` show a clearer message when microphone permissions are insufficient ([#12914](https://github.com/streamlit/streamlit/pull/12914)).
+- 🐝 Bug fix: `st.navigation` uses the sidebar font and Streamlit falls back to its built-in fonts if a font can't be found ([#12948](https://github.com/streamlit/streamlit/pull/12948)).
+- 🐜 Bug fix: `MultiselectColumn` doesn't raise a `ValueError` when adding new rows in `st.data_editor` ([#12860](https://github.com/streamlit/streamlit/pull/12860), [#12936](https://github.com/streamlit/streamlit/pull/12936), [#12815](https://github.com/streamlit/streamlit/issues/12815)). Thanks, [kkchemboli](https://github.com/kkchemboli)!
+- 🪲 Bug fix: `MultiselectColumn` works correctly when the underlying dataframe has an empty column ([#12935](https://github.com/streamlit/streamlit/pull/12935), [#12842](https://github.com/streamlit/streamlit/issues/12842)).
+- 🐛 Bug fix: `st.text_area` avoids negative height calculations that produce invalid CSS ([#12891](https://github.com/streamlit/streamlit/pull/12891), [#12867](https://github.com/streamlit/streamlit/issues/12867)).
 
 ## **Version 1.51.0**
 
@@ -21617,6 +21707,7 @@ _Release date: September 23, 2025_
 - 🔑 To prevent widgets from resetting when you change a parameter, widgets are transitioning to an identity based only on their keys (if provided). The following widgets use only their key for their identity:
   - `st.button`
   - `st.download_button`
+  - `st.form_submit_button`
   - `st.checkbox`
   - `st.toggle`
   - `st.text_area`

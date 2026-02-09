@@ -1,8 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-7.md
 
-import { PackageManagerTabs } from '@theme';
-
-*May 28, 2024*
+_May 28, 2024_
 
 # Announcing Rspack 0.7
 
@@ -14,9 +12,9 @@ This is the last minor release before the Rspack v1.0. After this, the Rspack te
 
 Notable changes in Rspack v0.7:
 
-* [Support for Lazy Compilation](#support-for-lazy-compilation): Significantly improves the dev startup performance of large applications by compiling on demand.
-* [Faster CSS Build](#faster-css-builds): Introducing a new css-module-lexer, which increases CSS bundling speed by 4 times.
-* [Breaking changes](#breaking-changes): Removed some unstable APIs to make default behaviors more consistent with webpack.
+- [Support for Lazy Compilation](#support-for-lazy-compilation): Significantly improves the dev startup performance of large applications by compiling on demand.
+- [Faster CSS Build](#faster-css-builds): Introducing a new css-module-lexer, which increases CSS bundling speed by 4 times.
+- [Breaking changes](#breaking-changes): Removed some unstable APIs to make default behaviors more consistent with webpack.
 
 ## Support for lazy compilation
 
@@ -90,8 +88,8 @@ The CSS parsing process before and after the refactor is shown in the diagram be
 
 `css-module-lexer` has also brought significant performance improvements to Rspack's `experiments.css`. In performance tests, the building performance of `bootstrap.css` has increased by about 4x.
 
-* Before refactoring: ~84 ms (analyzing CSS dependencies ~71 ms)
-* After refactoring: ~25 ms (analyzing CSS dependencies ~11 ms)
+- Before refactoring: \~84 ms (analyzing CSS dependencies \~71 ms)
+- After refactoring: \~25 ms (analyzing CSS dependencies \~11 ms)
 
 ## Breaking changes
 
@@ -105,13 +103,13 @@ In v0.7, we reorganized the currently exposed APIs and their interface definitio
 
 The following APIs are deprecated:
 
-* `compiler.builtinPlugins`
-* `compiler.compilation`
-* `compiler.compilationParams`
-* `compiler.getAsset(name)`
-* `statsError.formatted`
-* `statsWarning.formatted`
-* ...
+- `compiler.builtinPlugins`
+- `compiler.compilation`
+- `compiler.compilationParams`
+- `compiler.getAsset(name)`
+- `statsError.formatted`
+- `statsWarning.formatted`
+- ...
 
 For details about the deprecated API, please refer to [rspack#6448](https://github.com/web-infra-dev/rspack/pull/6448), [rspack#6505](https://github.com/web-infra-dev/rspack/pull/6505).
 
@@ -174,8 +172,8 @@ For more details, please see this [document](https://swc.rs/docs/plugin/selectin
 
 If you previously configured `resolve.browserField`, you will need to replace it with `resolve.aliasFields`:
 
-* `resolve.browserField = true` is replaced with `resolve.aliasFields = ["browser"]`
-* `resolve.browserField = false` is replaced with `resolve.aliasFields = []`
+- `resolve.browserField = true` is replaced with `resolve.aliasFields = ["browser"]`
+- `resolve.browserField = false` is replaced with `resolve.aliasFields = []`
 
 ### Remove generator.css.exportsConvention
 

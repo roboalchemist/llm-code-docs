@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/customer-cards/protocol.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Protocol
 
 > Learn how we request customer cards from your API and how to respond to these requests.

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/usage/hightouch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hightouch
 
 > Hightouch is a Data Activation platform that syncs data from sources (database, warehouses, spreadsheet and much more) to business  applications and developer tools. This data can be sent to Lago, our usage-based billing platform, to automate your billing process  and ensure accurate invoicing for your customers.

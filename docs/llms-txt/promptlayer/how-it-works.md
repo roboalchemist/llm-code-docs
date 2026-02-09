@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/how-it-works.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How PromptLayer Works
 
 > Data-driven prompt engineering
@@ -70,8 +74,3 @@ To discuss specific requirements or to learn more about our Enterprise offerings
 ## **Conclusion**
 
 PromptLayer is a powerful devtool that makes it easy to track, manage, and share your GPT prompt engineering. With its easy integration, prod-ready design, and collaboration features, it is an essential tool for anyone working with LLMs in production or development. Sign up for an account on the PromptLayer website to get started today!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

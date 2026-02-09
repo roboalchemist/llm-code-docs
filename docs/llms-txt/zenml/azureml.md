@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/azureml.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/step-operators/azureml.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/azureml.md
-
 # AzureML Orchestrator
 
 [AzureML](https://azure.microsoft.com/en-us/products/machine-learning) is a cloud-based orchestration service provided by Microsoft, that enables data scientists, machine learning engineers, and developers to build, train, deploy, and manage machine learning models. It offers a comprehensive and integrated environment that supports the entire machine learning lifecycle, from data preparation and model development to deployment and monitoring.

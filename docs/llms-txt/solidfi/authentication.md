@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/v2/api-reference/getting-started/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 > API key based authentication
@@ -11,7 +15,7 @@ As an example:
 1. Proceed to Create a Sub Account Holder with the API key. Set the api-key in the header.
 2. Once you create a Sub Account Holder, you will receive the Sub Account Holder ID in the response.
 
-```bash EXAMPLE
+```bash EXAMPLE theme={null}
 curl --request POST \
   --url https://api.sandbox.solidfi.com/v2/accounts/sub_account_holder \
   --header 'Content-Type: application/json' \

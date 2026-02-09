@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/replit-core-sponsorships.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Core Sponsorships
 
 > Learn how to gift Replit Core subscriptions to developers outside your organization through sponsorships for hackathons, bootcamps, and other events.

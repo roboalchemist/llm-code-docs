@@ -12,44 +12,6 @@
 
 # Source: https://livecodes.io/docs/features/index.html.md
 
-# Source: https://livecodes.io/docs/api/internal/index.html.md
-
-# Source: https://livecodes.io/docs/examples/display-modes/index.html.md
-
-# Source: https://livecodes.io/docs/languages/index.html.md
-
-# Source: https://livecodes.io/docs/advanced/index.html.md
-
-# Source: https://livecodes.io/docs/sdk/index.html.md
-
-# Source: https://livecodes.io/docs/configuration/index.html.md
-
-# Source: https://livecodes.io/docs/features/index.html.md
-
-# Source: https://livecodes.io/docs/api/internal/index.html.md
-
-# Source: https://livecodes.io/docs/examples/display-modes/index.html.md
-
-# Source: https://livecodes.io/docs/languages/index.html.md
-
-# Source: https://livecodes.io/docs/advanced/index.html.md
-
-# Source: https://livecodes.io/docs/sdk/index.html.md
-
-# Source: https://livecodes.io/docs/configuration/index.html.md
-
-# Source: https://livecodes.io/docs/features/index.html.md
-
-# Source: https://livecodes.io/docs/languages/index.html.md
-
-# Source: https://livecodes.io/docs/advanced/index.html.md
-
-# Source: https://livecodes.io/docs/sdk/index.html.md
-
-# Source: https://livecodes.io/docs/configuration/index.html.md
-
-# Source: https://livecodes.io/docs/features/index.html.md
-
 # Features
 
 ## Overview

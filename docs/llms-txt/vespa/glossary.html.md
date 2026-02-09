@@ -104,5 +104,5 @@ This is a glossary of both Vespa-specific terminology, and general terms useful 
 
 - **Visit**
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

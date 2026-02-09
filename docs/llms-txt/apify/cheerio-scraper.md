@@ -2,17 +2,17 @@
 
 #
 
-This scraping tutorial will go into the nitty gritty details of extracting data from **https://apify.com/store** using **Cheerio Scraper** (https://apify.com/apify/cheerio-scraper). If you arrived here from the https://docs.apify.com/academy/apify-scrapers/getting-started.md, tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
+This scraping tutorial will go into the nitty gritty details of extracting data from **[https://apify.com/store](https://apify.com/store)** using **Cheerio Scraper** ([apify/cheerio-scraper](https://apify.com/apify/cheerio-scraper)). If you arrived here from the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md), tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
 
 ## Getting to know our tools
 
-In the https://docs.apify.com/academy/apify-scrapers/getting-started.md tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
+In the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md) tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
 
-To do that, we'll be using the https://github.com/cheeriojs/cheerio library. This may not sound familiar, so let's try again. Does https://jquery.com/ ring a bell? If it does you're in luck, because Cheerio is like jQuery that doesn't need an actual browser to run. Everything else is the same. All the functions you already know are there and even the familiar `$` is used. If you still have no idea what either of those are, don't worry. We'll walk you through using them step by step.
+To do that, we'll be using the [Cheerio](https://github.com/cheeriojs/cheerio) library. This may not sound familiar, so let's try again. Does [jQuery](https://jquery.com/) ring a bell? If it does you're in luck, because Cheerio is like jQuery that doesn't need an actual browser to run. Everything else is the same. All the functions you already know are there and even the familiar `$` is used. If you still have no idea what either of those are, don't worry. We'll walk you through using them step by step.
 
-> https://github.com/cheeriojs/cheerio to learn more about it.
+> [Check out the Cheerio docs](https://github.com/cheeriojs/cheerio) to learn more about it.
 
-Now that's out of the way, let's open one of the Actor detail pages in the Store, for example the **Web Scraper** (https://apify.com/apify/web-scraper) page, and use our DevTools-Fu to scrape some data.
+Now that's out of the way, let's open one of the Actor detail pages in the Store, for example the **Web Scraper** ([apify/web-scraper](https://apify.com/apify/web-scraper)) page, and use our DevTools-Fu to scrape some data.
 
 > If you're wondering why we're using Web Scraper as an example instead of Cheerio Scraper, it's only because we didn't want to triple the number of screenshots we needed to make. Lazy developers!
 
@@ -29,7 +29,7 @@ Before we start, let's do a quick recap of the data we chose to scrape:
 
 ![$1](https://raw.githubusercontent.com/apify/actor-scraper/master/docs/img/scraping-practice.webp)
 
-We've already scraped numbers 1 and 2 in the https://docs.apify.com/academy/apify-scrapers/getting-started.md tutorial, so let's get to the next one on the list: title.
+We've already scraped numbers 1 and 2 in the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md) tutorial, so let's get to the next one on the list: title.
 
 ### Title
 
@@ -230,9 +230,9 @@ If you paid close attention, you may now see a problem. How do we click a button
 
 ### Analyzing the page
 
-While with Web Scraper and **Puppeteer Scraper** (https://apify.com/apify/puppeteer-scraper), we could get away with clicking a button, with Cheerio Scraper we need to dig a little deeper into the page's architecture. For this, we will use the Network tab of the Chrome DevTools.
+While with Web Scraper and **Puppeteer Scraper** ([apify/puppeteer-scraper](https://apify.com/apify/puppeteer-scraper)), we could get away with clicking a button, with Cheerio Scraper we need to dig a little deeper into the page's architecture. For this, we will use the Network tab of the Chrome DevTools.
 
-> DevTools is a powerful tool with many features, so if you're not familiar with it, please https://developer.chrome.com/docs/devtools/, which explains everything much better than we ever could.
+> DevTools is a powerful tool with many features, so if you're not familiar with it, please [see Google's tutorial](https://developer.chrome.com/docs/devtools/), which explains everything much better than we ever could.
 
 We want to know what happens when we click the **Show more** button, so we open the DevTools **Network** tab and clear it. Then we click the **Show more** button and wait for incoming requests to appear in the list.
 
@@ -288,7 +288,7 @@ for (const item of data.props.pageProps.items) {
 
 We iterate through the items we found, build Actor detail URLs from the available properties and then enqueue those URLs into the request queue. We need to specify the label too, otherwise our page function wouldn't know how to route those requests.
 
-> If you're wondering how we know the structure of the URL, see the https://docs.apify.com/academy/apify-scrapers/getting-started.md tutorial again.
+> If you're wondering how we know the structure of the URL, see the [Getting started with Apify Scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md) tutorial again.
 
 ### Plugging it into the Page function
 
@@ -436,13 +436,13 @@ async function pageFunction(context) {
 
 ## Final word
 
-Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify and effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, https://discord.gg/jyEM2PRvMU!
+Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify and effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, [join us on Discord](https://discord.gg/jyEM2PRvMU)!
 
 ## What's next
 
-* Check out the https://docs.apify.com/sdk and its https://docs.apify.com/sdk/js/docs/guides/apify-platform tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
-* https://docs.apify.com/platform/actors.md, from how they work to https://docs.apify.com/platform/actors/publishing.md them in Apify Store, and even https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/ on Actors.
-* Found out you're not into the coding part but would still to use Apify Actors? Check out our https://apify.com/store or https://apify.com/contact-sales from an Apify-certified developer.
+* Check out the [Apify SDK](https://docs.apify.com/sdk) and its [Getting started](https://docs.apify.com/sdk/js/docs/guides/apify-platform) tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
+* [Take a deep dive into Actors](https://docs.apify.com/platform/actors.md), from how they work to [publishing](https://docs.apify.com/platform/actors/publishing.md) them in Apify Store, and even [making money](https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/) on Actors.
+* Found out you're not into the coding part but would still to use Apify Actors? Check out our [ready-made solutions](https://apify.com/store) or [order a custom Actor](https://apify.com/contact-sales) from an Apify-certified developer.
 
 **Learn how to scrape a website using Apify's Cheerio Scraper. Build an Actor's page function, extract information from a web page and download your data.**
 

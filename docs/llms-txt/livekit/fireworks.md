@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/fireworks.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Fireworks
+LiveKit docs › Models › LLM › Plugins › Fireworks
 
 ---
 
@@ -14,7 +14,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Fireworks AI](https://fireworks.ai/) as an LLM provider for your voice agents.
+This plugin allows you to use [Fireworks AI](https://fireworks.ai/) as an LLM provider for your voice agents. Fireworks AI compatibility is provided by the OpenAI plugin using the Fireworks AI Chat Completions API.
 
 ## Usage
 
@@ -23,7 +23,7 @@ Install the OpenAI plugin to add Fireworks AI support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -99,7 +99,7 @@ The following links provide more information about the Fireworks AI LLM integrat
 
 ---
 
-This document was rendered at 2025-11-18T23:55:11.001Z.
+This document was rendered at 2026-02-03T03:25:00.194Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/fireworks.md](https://docs.livekit.io/agents/models/llm/plugins/fireworks.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

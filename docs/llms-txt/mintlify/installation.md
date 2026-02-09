@@ -1,6 +1,10 @@
-# Source: https://mintlify.com/docs/installation.md
+# Source: https://www.mintlify.com/docs/installation.md
 
-# CLI installation
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Install the CLI
 
 > Use the CLI to preview docs locally, test changes in real-time, and catch issues before deploying your documentation site.
 
@@ -8,17 +12,54 @@
 
 <img className="hidden dark:block my-0 pointer-events-none" src="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=ef0bb527eb258f8d720180d106ea6625" alt="Decorative graphic representing the CLI." data-og-width="1184" width="1184" data-og-height="320" height="320" data-path="images/installation/local-development-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=280&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=b6ab6647def97748df5303d2add7877c 280w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=560&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=83a49f961c12baf9aa9755d972160915 560w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=840&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=9f44e898560aaa47af54ff0f6079ca6e 840w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=1100&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=1bc3413b87f72bb848de2a518cf16c3a 1100w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=1650&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=9b79a51b960489e0d41ffd61b9d7120d 1650w, https://mintcdn.com/mintlify/Y6rP0BmbzgwHuEoU/images/installation/local-development-dark.png?w=2500&fit=max&auto=format&n=Y6rP0BmbzgwHuEoU&q=85&s=db35248ff88939a314d4ecc547ffd463 2500w" />
 
-Use the CLI to preview your documentation locally as you write and edit. View changes in real-time before deploying, test your documentation site's appearance and functionality, and catch issues like broken links or accessibility problems.
+Use the [CLI](https://www.npmjs.com/package/mint) to preview your documentation locally as you write and edit. View changes in real-time before deploying, test your documentation site's appearance and functionality, and catch issues like broken links or accessibility problems.
 
 The CLI also has utilities for maintaining your documentation, including commands to rename files, validate OpenAPI specifications, and migrate content between formats.
 
+## Prerequisites
+
+* [Node.js](https://nodejs.org/en) v20.17.0+ (LTS versions recommended) installed
+* [Git](https://git-scm.com/downloads) installed
+* Your documentation repository cloned locally
+
+### Clone your repository
+
+<Steps>
+  <Step title="Locate your repository">
+    1. Go to the [Git settings](https://dashboard.mintlify.com/settings/deployment/git-settings) page of your dashboard.
+    2. Note your repository location. It is one of these formats:
+
+    * `mintlify-community/docs-{org-name}-{id}` (Mintlify-hosted repository)
+    * `your-org/your-repo` (your own GitHub repository)
+  </Step>
+
+  <Step title="Clone your repository">
+    <Tabs>
+      <Tab title="Your own repository">
+        Replace `your-org/your-repo` with your actual repository details from [Git settings](https://dashboard.mintlify.com/settings/deployment/git-settings).
+
+        ```bash  theme={null}
+        git clone https://github.com/your-org/your-repo
+        cd your-repo
+        ```
+
+        <Tip>
+          **GitHub App required.** To enable automatic deployments when you push changes, you must install the GitHub app. See [GitHub](/deploy/github) for more information.
+        </Tip>
+      </Tab>
+
+      <Tab title="Mintlify-hosted repository">
+        You can clone your repository as a private or public repository. Public repositories are visible to anyone who navigates to the repository URL. Private repositories are only visible to people in your organization.
+
+        On the [Git settings](https://dashboard.mintlify.com/settings/deployment/git-settings) page of your dashboard, select **Clone as private** or **Clone as public**.
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>
+
 ## Install the CLI
 
-<Info>
-  **Prerequisite**: The CLI requires [Node.js](https://nodejs.org/en) v19 through v24. LTS versions are preferred.
-</Info>
-
-Run the following command to install the [CLI](https://www.npmjs.com/package/mint):
+Run the following command to install the CLI:
 
 <CodeGroup>
   ```bash npm theme={null}
@@ -32,7 +73,7 @@ Run the following command to install the [CLI](https://www.npmjs.com/package/min
 
 ## Preview locally
 
-To generate a local preview, navigate to your documentation directory (where your `docs.json` file is located) and run the following command:
+Navigate to your documentation directory containing your `docs.json` file and run:
 
 ```bash  theme={null}
 mint dev
@@ -54,15 +95,23 @@ By default, the CLI uses port 3000. You can customize the port using the `--port
 mint dev --port 3333
 ```
 
-If you attempt to run on a port that is already in use, it will use the next available port:
+If you attempt to run on a port that is already in use, the CLI uses the next available port:
 
 ```mdx  theme={null}
 Port 3000 is already in use. Trying 3001 instead.
 ```
 
+## Skip OpenAPI processing
+
+If you have many OpenAPI files, skip OpenAPI file processing during local development to improve performance by using the `--disable-openapi` flag:
+
+```bash  theme={null}
+mint dev --disable-openapi
+```
+
 ### Preview as a specific group
 
-If you use partial authentication to restrict access to your documentation, you can preview as a specific authentication group by using the `--groups [groupname]` flag.
+If you use group-based access control to restrict access to your documentation, you can preview as a specific authentication group by using the `--groups [groupname]` flag.
 
 For example, if you have a group named `admin`, you can preview as a member of that group with the command:
 
@@ -78,25 +127,27 @@ To create a new documentation project, run the following command:
 mint new [directory]
 ```
 
-This command clones the [starter kit](https://github.com/mintlify/starter) into a specified directory. If no directory is specified, the CLI tool prompts you to create a new subdirectory or overwrite the current directory.
+This command clones the [starter kit](https://github.com/mintlify/starter) into a specified directory. If you do not specify a directory, the CLI tool prompts you to create a new subdirectory or overwrite the current directory.
 
 <Warning>
-  If you overwrite the current directory, any existing files in the directory will be deleted.
+  Overwriting the current directory deletes any existing files.
 </Warning>
 
 The CLI tool prompts you for a project name and [theme](/customize/themes) to finish setting up your project.
 
-You can run `mint new` with the following flags:
+### Flags
 
-* `--theme`: Set the theme of the new project.
-* `--name`: Set the name of the new project.
-* `--force`: Overwrite the current directory if it already exists.
+| Flag      | Description                                                                            | Required |
+| --------- | -------------------------------------------------------------------------------------- | -------- |
+| `--name`  | Set the name of the new project.                                                       | Yes      |
+| `--theme` | Set the [theme](/customize/themes) of the new project.                                 | Yes      |
+| `--force` | Overwrite the current directory without prompting, even if it contains existing files. | No       |
 
-For example, to create a new project in the `docs` directory with the name `my-project` and the theme `linden`, run the following command:
+When running `mint new` in non-interactive environments like CI/CD pipelines or with AI coding agents, you must provide all required flags (`--name` and `--theme`).
 
-```bash  theme={null}
-mint new docs --name my-project --theme linden
-```
+<Tip>
+  The CLI automatically detects non-interactive environments. If required flags are missing, it outputs usage instructions instead of hanging on prompts.
+</Tip>
 
 ## Update the CLI
 
@@ -128,6 +179,8 @@ Identify any broken internal links with the following command:
 mint broken-links
 ```
 
+The command ignores files matching [.mintignore](/organize/mintignore) patterns. Links that point to ignored files are reported as broken.
+
 ### Find accessibility issues
 
 Test the color contrast ratios and search for missing alt text on images and videos in your documentation with the following command:
@@ -135,6 +188,29 @@ Test the color contrast ratios and search for missing alt text on images and vid
 ```bash  theme={null}
 mint a11y
 ```
+
+Use flags to check for specific accessibility issues.
+
+```bash  theme={null}
+# Check only for missing alt text
+mint a11y --skip-contrast
+
+# Check only for color contrast issues
+mint a11y --skip-alt-text
+```
+
+### Validate documentation build
+
+Validate your documentation build in strict mode, which exits with an error if there are any warnings or errors. Use this command for CI/CD pipelines to prevent broken documentation deployments.
+
+```bash  theme={null}
+mint validate
+```
+
+Use flags to configure the validation command.
+
+* `--groups [groupname]`: Mock user groups for validation (useful when testing group-based access control)
+* `--disable-openapi`: Disable OpenAPI file generation during validation
 
 ### Check OpenAPI spec
 
@@ -166,7 +242,7 @@ This command converts individual MDX endpoint pages to autogenerated pages defin
 
 ## Formatting
 
-While developing locally, we recommend using extensions in your IDE to recognize and format `MDX` files.
+While developing locally, we recommend using extensions in your IDE to recognize and format MDX files.
 
 If you use Cursor, Windsurf, or VS Code, we recommend the [MDX VS Code extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
 
@@ -223,5 +299,11 @@ If you use JetBrains, we recommend the [MDX IntelliJ IDEA plugin](https://plugin
     ```bash  theme={null}
     npm i -g mint
     ```
+  </Accordion>
+
+  <Accordion title="Client version shows 'none' after installation">
+    If you run `mint version` and the client version displays as `none`, the CLI may be unable to download the client application due to a corporate firewall or VPN blocking the download.
+
+    **Solution:** Ask your IT administrator to whitelist `releases.mintlify.com` to enable local development with the CLI.
   </Accordion>
 </AccordionGroup>

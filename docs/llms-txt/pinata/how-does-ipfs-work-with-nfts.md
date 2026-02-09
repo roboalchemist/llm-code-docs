@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/ipfs-101/how-does-ipfs-work-with-nfts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How does IPFS work with NFTs?
 
 Pinata has been empowering the NFT space since 2018 and there's a good reason for that. IPFS is the perfect pairing for NFTs for several reasons.

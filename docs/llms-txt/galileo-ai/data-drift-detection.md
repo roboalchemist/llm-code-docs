@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo-ai-research/data-drift-detection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Drift Detection
 
 > Discover Galileo's data drift detection methods to monitor AI model performance, identify data changes, and maintain model reliability in production.
@@ -68,7 +72,7 @@ The foundation of nearest neighbor algorithms is a representation of the embeddi
 
 > K Core-Distance(x) = cosine distance to x's kth nearest neighbor
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/data-drift-detecion-k-core.png)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=43f4c96e1f4b6f520505e0933c2d01e3" alt="" data-og-width="961" width="961" data-og-height="499" height="499" data-path="images/data-drift-detecion-k-core.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=27e07bb3e266e23fa48a0b69546016e8 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=340ca2b7baeae724b7076dec911e4deb 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=67af096252775d5de6e4e57313a9e714 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=155f5a11ff5872d0dd0b4d51cdffaaca 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=a7daea820d550d016fb27c8c3d7f7bbb 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-detecion-k-core.png?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=b337175d2cbfa88f79b5800111383293 2500w" />
 
 ### The Drift Detection Algorithm
 
@@ -86,7 +90,7 @@ For these reasons, we determine a threshold as a *threshold at x% precision*.
 
 > e.g. Threshold at 95% precision - The K Core-Distance representing the 95th percentile of the reference distribution
 
-![K Core-Distance threshold based on a Threshold at 95% Precision](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/data-drift-k-core-distribution.png)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=f3cb12040cbd06b96e4c50ba99ba8a53" alt="K Core-Distance threshold based on a Threshold at 95% Precision" data-og-width="963" width="963" data-og-height="642" height="642" data-path="images/data-drift-k-core-distribution.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=befe4d8c02c55f3bad005a68824fcb89 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=045519899a0487f0c778606faf3566d9 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=eb0f5a0f1847abf8ea155c28c6c3568d 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=e7047f75fc7fca2bb63ff822e88b7ae0 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=d5e8198513bc8838ffe2ecc912aba9cd 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution.png?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=98ec10929d755a3b09a04fbf81ba45db 2500w" />
 
 #### 3. Determining that a Sample is Drifted / Out of Coverage
 
@@ -98,7 +102,7 @@ Given a query data sample *q*, we can quickly determine whether *q* should be co
 
 3. Compare *q's* K Core-Distance to the threshold determined for the reference distribution.
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/data-drift-k-core-distribution-marked-up.png)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=d4c83ecc2de451ea4ffb0cc5591c92f8" alt="" data-og-width="957" width="957" data-og-height="643" height="643" data-path="images/data-drift-k-core-distribution-marked-up.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=ae6c27ea90929fe5d2ce57acc88a7f4a 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=f27d49af827703c001f336e2ef1d2e1f 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=79a854c0359ca8a8b737abf011fe02d7 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=57362b3e014b4989377bff6b69fd93f7 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=497e7a479676f2d667d40ac35050cfd4 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-marked-up.png?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=c248fd6a8c662709ccc11d4a968d6623 2500w" />
 
 ### Interpretability
 
@@ -116,7 +120,7 @@ Unlike analyzing K Core-Distances directly, our *drift / out of coverage score* 
 
 With a K Core-Distance of 0.33 and a threshold of 0.21, we considered the *q* as drifted. However, in general 0.33 has very little meaning without the context. In comparison, a *drift\_score of 0.99* captures the necessary distributional context - indicating that *q* falls within the 99th percentile of the reference distribution and is very likely to be out of distribution.
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/data-drift-k-core-distribution-drift-score.png)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=5d47b481a703419a5277f3cdde1429ed" alt="" data-og-width="1262" width="1262" data-og-height="846" height="846" data-path="images/data-drift-k-core-distribution-drift-score.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=1260398cadc8d8a1dd24bee23def5e21 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=2406544a628a4d464978448d0af44e31 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=0f000f04531eacb4140d8eb83b0672aa 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=3c73b3ee234d616622455ba66cddd3bd 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=8d3186b6d6737fc5b87c4dc07a6a038a 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/data-drift-k-core-distribution-drift-score.png?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=63dda2a6c1b8970e184d4bb88925f67c 2500w" />
 
 ### References + Additional Resources
 

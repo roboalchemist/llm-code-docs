@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/using-record-hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Record Hooks
 
 > Process data with Record Hooks
@@ -70,7 +74,7 @@ The `getLinks` method is a feature of the FlatfileRecord class. When a field in 
 
 When processing a record, you may find references to a related record. To retrieve the fields from the related record, use the `getLinks` method. Provide the field key of the Reference Field type, the part of the record that holds the reference to the other records, like this:
 
-```javascript
+```javascript  theme={null}
 const relatedRecords = record.getLinks("referenceFieldKey");
 ```
 
@@ -95,7 +99,7 @@ There are primarily two use cases for deleting records:
 
 To delete a subset of records first import the `@flatfile/api` package, then use the `api.records.delete()` helper method. This method takes in an array of record IDs and deletes them from the sheet.
 
-```javascript
+```javascript  theme={null}
 await api.records.delete(sheetId, { ids: [...] });
 ```
 
@@ -103,7 +107,7 @@ await api.records.delete(sheetId, { ids: [...] });
 
 For clearing an entire sheet of its records, set up a bulk delete job. This task will comprehensively wipe out every record on the specified sheet. Check out our [jobs documentation](/core-concepts/jobs).
 
-```javascript
+```javascript  theme={null}
 await api.jobs.create({
   type: "workbook",
   operation: "delete-records",

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/evaluation-and-ranking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scoring & Ranking Prompts
 
 One of the biggest challenges in prompt engineering is understanding if Prompt A performs better than Prompt B. PromptLayer helps you solve this.
@@ -65,8 +69,3 @@ Each request history page will tell you its individual cost:
 You can also see the lifetime cost of a template in the Prompt Registry template page.
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=0ddc98b2295ce675adfe43f343f0c064" data-og-width="2000" width="2000" data-og-height="442" height="442" data-path="images/lifetime-cost.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=1353a80dee3ec5e6f27318ccb786ac69 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=ee1e26db04ae68b6cac1f3409f1f94a7 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=93d62d1014244ce3fd4d5bde4d014988 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=0712df57aba61d9750129289342fd7fa 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=f8ab4a9ccea1135e6d4edb4eef692b17 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/lifetime-cost.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=b7c6801dcdf9a8f3382df1cac88c83d6 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

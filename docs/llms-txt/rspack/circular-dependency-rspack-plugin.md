@@ -1,12 +1,9 @@
 # Source: https://rspack.dev/plugins/rspack/circular-dependency-rspack-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # CircularDependencyRspackPlugin
 
-<ApiMeta specific={['Rspack']} addedVersion="1.3.0" />
-
-Detects circular import dependencies between modules that will exist at runtime. Import cycles are often *not* indicative of a bug when used by functions called at runtime, but may cause bugs or errors when the imports are used during initialization. This plugin does not distinguish between the two, but can be used to help identify and resolve cycles after a bug has been encountered.
+[Added in v1.3.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.3.0)Rspack only
+Detects circular import dependencies between modules that will exist at runtime. Import cycles are often _not_ indicative of a bug when used by functions called at runtime, but may cause bugs or errors when the imports are used during initialization. This plugin does not distinguish between the two, but can be used to help identify and resolve cycles after a bug has been encountered.
 
 ```js
 new rspack.CircularDependencyRspackPlugin(options);
@@ -24,13 +21,13 @@ Because `CircularDependencyRspackPlugin` is implemented in Rust, it is able to i
 
 `CircularDependencyRspackPlugin` aims to be compatible with the features of `circular-dependency-plugin`, with modifications to give finer control over cycle detection and behavior.
 
-One notable difference between the two is the use of module *identifiers* for cycle entries in Rspack rather than relative paths. Identifiers represent the entire unique name for a bundled module, including the set of loaders that processed it, the absolute module path, and any request parameters that were provided when importing. While matching on just the path of the module is still possible, identifiers allow for matching against loaders and rulesets as well.
+One notable difference between the two is the use of module _identifiers_ for cycle entries in Rspack rather than relative paths. Identifiers represent the entire unique name for a bundled module, including the set of loaders that processed it, the absolute module path, and any request parameters that were provided when importing. While matching on just the path of the module is still possible, identifiers allow for matching against loaders and rulesets as well.
 
 This plugin also provides a new option, `ignoredConnections` to allow for more granular control over whether a cycle is ignored. The `exclude` option from the original plugin is still implemented to match existing behavior, but causes any cycle containing the module to be ignored entirely. When only specific cycles are meant to be ignored, `ignoredConnections` allows for specifying both a `from` and a `to` pattern to match against, ignoring only cycles where an explicit dependency between two modules is present.
 
 ## Examples
 
-* Detect all cycles present in a compilation, ignoring any that include external packages from `node_modules`, and emitting compilation errors for each cycle.
+- Detect all cycles present in a compilation, ignoring any that include external packages from `node_modules`, and emitting compilation errors for each cycle.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -46,7 +43,7 @@ export default {
 };
 ```
 
-* Ignore a specific connection between two modules, as well as any connection `to` any module matching a given pattern.
+- Ignore a specific connection between two modules, as well as any connection `to` any module matching a given pattern.
 
 ```ts title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -68,8 +65,8 @@ export default {
 
 ### failOnError
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 When `true`, detected cycles will generate Error level diagnostics rather than Warnings. This will have no noticeable effect in watch mode, but will cause full builds to fail when the errors are emitted.
 
@@ -87,8 +84,8 @@ export default {
 
 ### exclude
 
-* **Type:** `RegExp`
-* **Default:** `undefined`
+- **Type:** `RegExp`
+- **Default:** `undefined`
 
 Similar to `exclude` from the original [`circular-dependency-plugin`](https://github.com/aackerman/circular-dependency-plugin), detected cycles containing any module resource path that matches this pattern will be ignored.
 
@@ -107,8 +104,8 @@ export default {
 
 ### ignoredConnections
 
-* **Type:** `Array<[string | RegExp, string | RegExp]>`
-* **Default:** `[]`
+- **Type:** `Array<[string | RegExp, string | RegExp]>`
+- **Default:** `[]`
 
 A list of explicit connections that should cause a detected cycle to be ignored. Each entry in the list represents a connection as `[from, to]`, matching any connection where `from` depends on `to`.
 
@@ -133,14 +130,14 @@ export default {
 
 Each pattern can be represented as either a plain string or a `RegExp`. Plain strings will be matched as substrings against the module identifier for that part of a connection, and RegExps will match anywhere in the entire identifier. For example:
 
-* The string `'some/module/'` will match any module in the `some/module` directory, like `some/module/a` and `some/module/b`.
-* The RegExp `!file-loader!.*\.mdx` will match any `.mdx` module processed by `file-loader`.
-* Empty strings effectively match any module, since an empty string is always a substring of any other string.
+- The string `'some/module/'` will match any module in the `some/module` directory, like `some/module/a` and `some/module/b`.
+- The RegExp `!file-loader!.*\.mdx` will match any `.mdx` module processed by `file-loader`.
+- Empty strings effectively match any module, since an empty string is always a substring of any other string.
 
 ### onDetected
 
-* **Type:** `(entrypoint: string, modules: string[], compilation: Compilation) => void`
-* **Default:** `undefined`
+- **Type:** `(entrypoint: string, modules: string[], compilation: Compilation) => void`
+- **Default:** `undefined`
 
 Handler function called for every detected cycle. Providing this handler overrides the default behavior of adding diagnostics to the compilation, meaning the value of `failOnError` will be effectively unused.
 
@@ -168,8 +165,8 @@ This handler can be used to process detected cycles further before emitting warn
 
 ### onIgnored
 
-* **Type:** `(entrypoint: string, modules: string[], compilation: Compilation) => void`
-* **Default:** `undefined`
+- **Type:** `(entrypoint: string, modules: string[], compilation: Compilation) => void`
+- **Default:** `undefined`
 
 Handler function called for every detected cycle that was intentionally ignored, whether by the `exclude` pattern, any match of an `ignoredConnection`, or any other possible reason.
 
@@ -190,8 +187,8 @@ export default {
 
 ### onStart
 
-* **Type:** `(compilation: Compilation) => void`
-* **Default:** `undefined`
+- **Type:** `(compilation: Compilation) => void`
+- **Default:** `undefined`
 
 Hook function called immediately before cycle detection begins, useful for setting up temporary state to use in the `onDetected` handler or logging progress.
 
@@ -211,8 +208,8 @@ export default {
 
 ### onEnd
 
-* **Type:** `(compilation: Compilation) => void`
-* **Default:** `undefined`
+- **Type:** `(compilation: Compilation) => void`
+- **Default:** `undefined`
 
 Hook function called immediately after cycle detection finishes, useful for cleaning up temporary state or logging progress.
 

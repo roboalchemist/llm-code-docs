@@ -199,7 +199,7 @@ Note that each '.' in the parameter's definition corresponds to a child element 
 
 Assigning values to _arrays_ is done by using the `<item>` element. This ensures that the given config values do not overwrite any existing array elements from higher-level xml elements in services, or from Vespa itself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

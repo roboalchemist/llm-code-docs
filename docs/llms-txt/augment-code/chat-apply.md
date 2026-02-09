@@ -2,56 +2,13 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-apply.md
 
-# Source: https://docs.augmentcode.com/using-augment/chat-apply.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-apply.md
-
-# Source: https://docs.augmentcode.com/using-augment/chat-apply.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-apply.md
-
-# Source: https://docs.augmentcode.com/using-augment/chat-apply.md
-
-# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-apply.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Applying code blocks from Chat
 
 > Use Chat to explore your codebase, quickly get up to speed on unfamiliar code, and get help working through a technical problem.
-
-export const Availability = ({tags}) => {
-  const tagTypes = {
-    invite: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    beta: {
-      styles: "border border-zinc-500/20 bg-zinc-50/50 dark:border-zinc-500/30 dark:bg-zinc-500/10 text-zinc-900 dark:text-zinc-200"
-    },
-    vscode: {
-      styles: "border border-sky-500/20 bg-sky-50/50 dark:border-sky-500/30 dark:bg-sky-500/10 text-sky-900 dark:text-sky-200"
-    },
-    jetbrains: {
-      styles: "border border-amber-500/20 bg-amber-50/50 dark:border-amber-500/30 dark:bg-amber-500/10 text-amber-900 dark:text-amber-200"
-    },
-    vim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    neovim: {
-      styles: "bg-gray-700 text-white dark:border-gray-50/10"
-    },
-    default: {
-      styles: "bg-gray-200"
-    }
-  };
-  return <div className="flex items-center space-x-2 border-b pb-4 border-gray-200 dark:border-white/10">
-      <span className="text-sm font-medium">Availability</span>
-      {tags.map(tag => {
-    const tagType = tagTypes[tag] || tagTypes.default;
-    return <div key={tag} className={`px-2 py-0.5 rounded-md text-xs font-medium ${tagType.styles}`}>
-            {tag}
-          </div>;
-  })}
-    </div>;
-};
 
 export const MoreVertIcon = () => <div className="inline-block w-4 h-4 mr-2">
     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">

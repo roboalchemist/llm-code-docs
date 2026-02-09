@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/instructblip.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/instructblip.md
 
 # InstructBLIP
 
@@ -28,16 +28,16 @@ The attributes can be obtained from model config, as `model.config.num_query_tok
 
 #### transformers.InstructBlipConfig[[transformers.InstructBlipConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/configuration_instructblip.py#L206)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/configuration_instructblip.py#L206)
 
-[InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig) is the configuration class to store the configuration of a
-[InstructBlipForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipForConditionalGeneration). It is used to instantiate a InstructBLIP model according to the specified
+[InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig) is the configuration class to store the configuration of a
+[InstructBlipForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipForConditionalGeneration). It is used to instantiate a InstructBLIP model according to the specified
 arguments, defining the vision model, Q-Former model and language model configs. Instantiating a configuration with
 the defaults will yield a similar configuration to that of the InstructBLIP
 [Salesforce/instruct-blip-flan-t5](https://huggingface.co/Salesforce/instruct-blip-flan-t5) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -71,11 +71,11 @@ Example:
 
 **Parameters:**
 
-vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [InstructBlipVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipVisionConfig).
+vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [InstructBlipVisionConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipVisionConfig).
 
-qformer_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [InstructBlipQFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipQFormerConfig).
+qformer_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [InstructBlipQFormerConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipQFormerConfig).
 
-text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize any [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig).
+text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize any [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig).
 
 num_query_tokens (`int`, *optional*, defaults to 32) : The number of query tokens passed through the Transformer. 
 
@@ -87,15 +87,15 @@ kwargs (*optional*) : Dictionary of keyword arguments.
 
 #### transformers.InstructBlipVisionConfig[[transformers.InstructBlipVisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/configuration_instructblip.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/configuration_instructblip.py#L25)
 
-This is the configuration class to store the configuration of a [InstructBlipVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipVisionModel). It is used to
+This is the configuration class to store the configuration of a [InstructBlipVisionModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipVisionModel). It is used to
 instantiate a InstructBLIP vision encoder according to the specified arguments, defining the model architecture.
 Instantiating a configuration defaults will yield a similar configuration to that of the InstructBLIP
 [Salesforce/instruct-blip-flan-t5](https://huggingface.co/Salesforce/instruct-blip-flan-t5) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -140,16 +140,16 @@ qkv_bias (`bool`, *optional*, defaults to `True`) : Whether to add a bias to the
 
 #### transformers.InstructBlipQFormerConfig[[transformers.InstructBlipQFormerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/configuration_instructblip.py#L110)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/configuration_instructblip.py#L109)
 
-This is the configuration class to store the configuration of a [InstructBlipQFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipQFormerModel). It is used to
+This is the configuration class to store the configuration of a [InstructBlipQFormerModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipQFormerModel). It is used to
 instantiate a InstructBLIP Querying Transformer (Q-Former) model according to the specified arguments, defining the
 model architecture. Instantiating a configuration with the defaults will yield a similar configuration to that of
 the InstructBLIP [Salesforce/instruct-blip-flan-t5](https://huggingface.co/Salesforce/instruct-blip-flan-t5)
-architecture. Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs.
-Read the documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+architecture. Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs.
+Read the documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
-Note that [InstructBlipQFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipQFormerModel) is very similar to [BertLMHeadModel](/docs/transformers/v5.0.0rc1/en/model_doc/bert#transformers.BertLMHeadModel) with interleaved cross-attention.
+Note that [InstructBlipQFormerModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipQFormerModel) is very similar to [BertLMHeadModel](/docs/transformers/v5.0.0/en/model_doc/bert#transformers.BertLMHeadModel) with interleaved cross-attention.
 
 Examples:
 
@@ -199,38 +199,59 @@ encoder_hidden_size (`int`, *optional*, defaults to 1408) : The hidden size of t
 
 #### transformers.InstructBlipProcessor[[transformers.InstructBlipProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/processing_instructblip.py#L47)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/processing_instructblip.py#L45)
 
-Constructs an InstructBLIP processor which wraps a BLIP image processor and a LLaMa/T5 tokenizer into a single
-processor.
+Constructs a InstructBlipProcessor which wraps a image processor, a tokenizer, and a qformer tokenizer into a single processor.
 
-[InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor) offers all the functionalities of [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor) and [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See the
-docstring of `__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor) offers all the functionalities of [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast), [GPT2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/gpt2#transformers.GPT2Tokenizer), and `{qformer_tokenizer_class}`. See the
+[~BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast), [~GPT2Tokenizer](/docs/transformers/v5.0.0/en/model_doc/gpt2#transformers.GPT2Tokenizer), and `~{qformer_tokenizer_class}` for more information.
+
+__call__transformers.InstructBlipProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/processing_instructblip.py#L63[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.instructblip.processing_instructblip.InstructBlipProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`) -- Dictionary of lists/arrays/tensors returned by the __call__ method ('pixel_values', etc.).
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 **Parameters:**
 
-image_processor (`BlipImageProcessor`) : An instance of [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor). The image processor is a required input.
+image_processor (`BlipImageProcessorFast`) : The image processor is a required input.
 
-tokenizer (`AutoTokenizer`) : An instance of ['PreTrainedTokenizer`]. The tokenizer is a required input.
+tokenizer (`GPT2Tokenizer`) : The tokenizer is a required input.
 
 qformer_tokenizer (`AutoTokenizer`) : An instance of ['PreTrainedTokenizer`]. The Q-Former tokenizer is a required input.
 
-num_query_tokens (`int`, *optional*) --" Number of tokens used by the Qformer as queries, should be same as in model's config.
+num_query_tokens (`int`, *optional*) : " Number of tokens used by the Qformer as queries, should be same as in model's config.
+
+**Returns:**
+
+````
+
+- **data** (`dict`) -- Dictionary of lists/arrays/tensors returned by the __call__ method ('pixel_values', etc.).
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 ## InstructBlipVisionModel[[transformers.InstructBlipVisionModel]]
 
 #### transformers.InstructBlipVisionModel[[transformers.InstructBlipVisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L374)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L390)
 
-forwardtransformers.InstructBlipVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L394[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.InstructBlipVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L410[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor). See [BlipImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor) for processing images).
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
-  Whether to interpolate the pre-trained position encodings.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast). See [BlipImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast) for processing images).
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
+  Whether to interpolate the pre-trained position encodings.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -246,7 +267,7 @@ elements depending on the configuration ([InstructBlipConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [InstructBlipVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipVisionModel) forward method, overrides the `__call__` special method.
+The [InstructBlipVisionModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipVisionModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -254,17 +275,17 @@ the latter silently ignores them.
 
 **Parameters:**
 
-pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor). See [BlipImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor) for processing images).
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast). See [BlipImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast) for processing images).
 
-interpolate_pos_encoding (`bool`, defaults to `False`) : Whether to interpolate the pre-trained position encodings.
+interpolate_pos_encoding (`bool`, *optional*, defaults to `False`) : Whether to interpolate the pre-trained position encodings.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -285,16 +306,16 @@ elements depending on the configuration ([InstructBlipConfig](/docs/transformers
 
 #### transformers.InstructBlipQFormerModel[[transformers.InstructBlipQFormerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L768)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L784)
 
 Querying Transformer (Q-Former), used in InstructBLIP. Slightly modified from BLIP-2 as it also takes the
 instruction as input.
 
-forwardtransformers.InstructBlipQFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L848[{"name": "input_ids", "val": ": LongTensor"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "query_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.InstructBlipQFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L864[{"name": "input_ids", "val": ": LongTensor"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "query_embeds", "val": ": torch.Tensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -319,9 +340,9 @@ forwardtransformers.InstructBlipQFormerModel.forwardhttps://github.com/huggingfa
   the cross-attention if the model is configured as a decoder. Mask values selected in `[0, 1]`:
 
   - 1 for tokens that are **not masked**,
-  - 0 for tokens that are **masked**.0[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
+  - 0 for tokens that are **masked**.0[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -342,12 +363,12 @@ elements depending on the configuration ([InstructBlipConfig](/docs/transformers
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-The [InstructBlipQFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipQFormerModel) forward method, overrides the `__call__` special method.
+The [InstructBlipQFormerModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipQFormerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -355,7 +376,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
 
 attention_mask (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
 
@@ -369,11 +390,11 @@ encoder_attention_mask (`torch.FloatTensor` of shape `(batch_size, sequence_leng
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -394,7 +415,7 @@ elements depending on the configuration ([InstructBlipConfig](/docs/transformers
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -404,11 +425,11 @@ elements depending on the configuration ([InstructBlipConfig](/docs/transformers
 
 #### transformers.InstructBlipModel[[transformers.InstructBlipModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L928)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L944)
 
 InstructBLIP base Model consisting of language model, qformer and vision encoder.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -416,15 +437,15 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.InstructBlipModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L992[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "qformer_input_ids", "val": ": FloatTensor"}, {"name": "qformer_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "input_ids", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.InstructBlipModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L1008[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "qformer_input_ids", "val": ": FloatTensor"}, {"name": "qformer_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "input_ids", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor). See [BlipImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor) for processing images).
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast). See [BlipImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast) for processing images).
 - **qformer_input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary of the Q-Former. Input tokens can optionally be provided
   to serve as text prompt, which the Q-Former model will encode.
 
-  Indices can be obtained using [InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor). See `InstructBlipProcessor.__call__()` for
+  Indices can be obtained using [InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor). See [InstructBlipProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor.__call__) for
   details.
 
   [What are input IDs?](../glossary#input-ids)
@@ -438,8 +459,8 @@ forwardtransformers.InstructBlipModel.forwardhttps://github.com/huggingface/tran
 - **input_ids** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -452,8 +473,8 @@ forwardtransformers.InstructBlipModel.forwardhttps://github.com/huggingface/tran
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.BoolTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
@@ -465,17 +486,17 @@ forwardtransformers.InstructBlipModel.forwardhttps://github.com/huggingface/tran
   Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
   model's internal embedding lookup matrix.
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
   Whether to interpolate the pre-trained position encodings.0`transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor`, *optional*, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Language modeling loss from the language model.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head of the language model.
-- **vision_outputs** (`torch.FloatTensor`, *optional*, defaults to `None`) -- Outputs of the vision encoder.
-- **qformer_outputs** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
+- **vision_outputs** (`~modeling_outputs.BaseModelOutputWithPooling | None.vision_outputs`, defaults to `None`) -- Outputs of the vision encoder.
+- **qformer_outputs** (`~modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions | None.qformer_outputs`, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
 - **language_model_outputs** (`CausalLMOutputWithPast` or `Seq2SeqLMOutput`) -- Outputs of the language model.
-The [InstructBlipModel](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipModel) forward method, overrides the `__call__` special method.
+The [InstructBlipModel](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -483,7 +504,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -491,16 +512,16 @@ config ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructb
 
 A `transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor`, *optional*, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Language modeling loss from the language model.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head of the language model.
-- **vision_outputs** (`torch.FloatTensor`, *optional*, defaults to `None`) -- Outputs of the vision encoder.
-- **qformer_outputs** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
+- **vision_outputs** (`~modeling_outputs.BaseModelOutputWithPooling | None.vision_outputs`, defaults to `None`) -- Outputs of the vision encoder.
+- **qformer_outputs** (`~modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions | None.qformer_outputs`, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
 - **language_model_outputs** (`CausalLMOutputWithPast` or `Seq2SeqLMOutput`) -- Outputs of the language model.
 #### get_placeholder_mask[[transformers.InstructBlipModel.get_placeholder_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L977)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L993)
 
 Obtains multimodal placeholder mask from `input_ids` or `inputs_embeds`.
 
@@ -508,7 +529,7 @@ Obtains multimodal placeholder mask from `input_ids` or `inputs_embeds`.
 
 #### transformers.InstructBlipForConditionalGeneration[[transformers.InstructBlipForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L1100)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L1116)
 
 InstructBLIP Model for generating text given an image and an optional text prompt. The model consists of a vision
 encoder, Querying Transformer (Q-Former) and a language model.
@@ -516,7 +537,7 @@ encoder, Querying Transformer (Q-Former) and a language model.
 One can optionally pass `input_ids` to the model, which serve as a text prompt, to make the language model continue
 the prompt. Otherwise, the language model starts generating text from the [BOS] (beginning-of-sequence) token.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -524,15 +545,15 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.InstructBlipForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L1239[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "qformer_input_ids", "val": ": FloatTensor"}, {"name": "qformer_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "input_ids", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.InstructBlipForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L1273[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "qformer_input_ids", "val": ": FloatTensor"}, {"name": "qformer_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "input_ids", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor). See [BlipImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
-  [BlipImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/blip#transformers.BlipImageProcessor) for processing images).
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast). See [BlipImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor) uses
+  [BlipImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/blip#transformers.BlipImageProcessorFast) for processing images).
 - **qformer_input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary of the Q-Former. Input tokens can optionally be provided
   to serve as text prompt, which the Q-Former model will encode.
 
-  Indices can be obtained using [InstructBlipProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipProcessor). See `InstructBlipProcessor.__call__()` for
+  Indices can be obtained using [InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor). See [InstructBlipProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor.__call__) for
   details.
 
   [What are input IDs?](../glossary#input-ids)
@@ -546,8 +567,8 @@ forwardtransformers.InstructBlipForConditionalGeneration.forwardhttps://github.c
 - **input_ids** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -560,8 +581,8 @@ forwardtransformers.InstructBlipForConditionalGeneration.forwardhttps://github.c
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.BoolTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
@@ -577,17 +598,17 @@ forwardtransformers.InstructBlipForConditionalGeneration.forwardhttps://github.c
   Labels for computing the language modeling loss. Indices should be in `[-100, 0, ..., config.vocab_size -
   1]`. All labels set to `-100` are ignored (masked), the loss is only computed for labels in `[0, ...,
   config.vocab_size]`
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
   Whether to interpolate the pre-trained position encodings.0`transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor`, *optional*, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Language modeling loss from the language model.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head of the language model.
-- **vision_outputs** (`torch.FloatTensor`, *optional*, defaults to `None`) -- Outputs of the vision encoder.
-- **qformer_outputs** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
+- **vision_outputs** (`~modeling_outputs.BaseModelOutputWithPooling | None.vision_outputs`, defaults to `None`) -- Outputs of the vision encoder.
+- **qformer_outputs** (`~modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions | None.qformer_outputs`, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
 - **language_model_outputs** (`CausalLMOutputWithPast` or `Seq2SeqLMOutput`) -- Outputs of the language model.
-The [InstructBlipForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [InstructBlipForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -599,7 +620,8 @@ Examples:
 >>> from transformers import InstructBlipProcessor, InstructBlipForConditionalGeneration
 >>> import torch
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> model = InstructBlipForConditionalGeneration.from_pretrained("Salesforce/instructblip-vicuna-7b")
 >>> processor = InstructBlipProcessor.from_pretrained("Salesforce/instructblip-vicuna-7b")
@@ -607,7 +629,8 @@ Examples:
 >>> device = "cuda" if torch.cuda.is_available() else "cpu"
 >>> model.to(device)
 >>> url = "https://raw.githubusercontent.com/salesforce/LAVIS/main/docs/_static/Confusing-Pictures.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw).convert("RGB")
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read())).convert("RGB")
 >>> prompt = "What is unusual about this image?"
 >>> inputs = processor(images=image, text=prompt, return_tensors="pt").to(device)
 
@@ -629,7 +652,7 @@ The unusual aspect of this image is that a man is ironing clothes on the back of
 
 **Parameters:**
 
-config ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -637,16 +660,16 @@ config ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructb
 
 A `transformers.models.instructblip.modeling_instructblip.InstructBlipForConditionalGenerationModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0rc1/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor`, *optional*, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Language modeling loss from the language model.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head of the language model.
-- **vision_outputs** (`torch.FloatTensor`, *optional*, defaults to `None`) -- Outputs of the vision encoder.
-- **qformer_outputs** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
+- **vision_outputs** (`~modeling_outputs.BaseModelOutputWithPooling | None.vision_outputs`, defaults to `None`) -- Outputs of the vision encoder.
+- **qformer_outputs** (`~modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions | None.qformer_outputs`, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
 - **language_model_outputs** (`CausalLMOutputWithPast` or `Seq2SeqLMOutput`) -- Outputs of the language model.
 #### generate[[transformers.InstructBlipForConditionalGeneration.generate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/instructblip/modeling_instructblip.py#L1368)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L1407)
 
 Overrides `generate` function to be able to use the model as a conditional generator.
 
@@ -671,4 +694,69 @@ interpolate_pos_encoding (`bool`, *optional*, defaults to `False`) : Whether to 
 `captions (list)`
 
 A list of strings of length batch_size * num_captions.
+#### get_image_features[[transformers.InstructBlipForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/instructblip/modeling_instructblip.py#L1191)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, InstructBlipForConditionalGeneration
+
+>>> model = InstructBlipForConditionalGeneration.from_pretrained("Salesforce/instruct-blip-flan-t5")
+>>> processor = AutoProcessor.from_pretrained("Salesforce/instruct-blip-flan-t5")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+qformer_input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of input sequence tokens in the vocabulary of the Q-Former. Input tokens can optionally be provided to serve as text prompt, which the Q-Former model will encode.  Indices can be obtained using [InstructBlipProcessor](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor). See [InstructBlipProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipProcessor.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+
+qformer_attention_mask (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
+
+interpolate_pos_encoding (`bool`, *optional*, defaults to `False`) : Whether to interpolate the pre-trained position encodings.
+
+**Returns:**
+
+``transformers.models.instructblip.modeling_instructblip.BaseModelOutputWithVisionQformerOutputs` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.instructblip.modeling_instructblip.BaseModelOutputWithVisionQformerOutputs` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([InstructBlipConfig](/docs/transformers/v5.0.0/en/model_doc/instructblip#transformers.InstructBlipConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **vision_outputs** (`~modeling_outputs.BaseModelOutputWithPooling | None.vision_outputs`, defaults to `None`) -- Outputs of the vision encoder.
+- **qformer_outputs** (`~modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions | None.qformer_outputs`, defaults to `None`) -- Outputs of the Q-Former (Querying Transformer).
 

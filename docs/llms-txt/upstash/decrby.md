@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # DECRBY
 
@@ -28,24 +14,24 @@ If a key does not exist, it is initialized as 0 before performing the operation.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to decrement.
 </ParamField>
 
-<ParamField body="decrementBy" type="integer" required>
+<ParamField body="decrement" type="int" required>
   The amount to decrement by.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The value at the key after the decrementing.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", 6);
-  await redis.decrby("key", 4);
-  // returns 2
+  ```py Example theme={"system"}
+  redis.set("key", 6)
+
+  assert redis.decrby("key", 4) == 2
   ```
 </RequestExample>

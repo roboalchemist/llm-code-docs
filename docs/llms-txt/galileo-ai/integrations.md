@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrations | Galileo Evaluate
 
 > Discover Galileo Evaluate's integrations with AI tools and platforms, enabling seamless connectivity and enhanced generative AI evaluation workflows.

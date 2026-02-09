@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pattern.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployment pattern
 
 > Basic deployment pattern for Pipecat bots
@@ -175,7 +179,6 @@ async def main(room_url: str, token: str):
                 audio_in_enabled=True,
                 audio_out_enabled=True,
                 video_out_enabled=False,
-                vad_analyzer=SileroVADAnalyzer(),
                 transcription_enabled=True,
             ),
         )
@@ -195,21 +198,26 @@ async def main(room_url: str, token: str):
             },
         ]
 
-        tma_in = LLMUserResponseAggregator(messages)
-        tma_out = LLMAssistantResponseAggregator(messages)
+        context = LLMContext(messages)
+        user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+            context,
+            user_params=LLMUserAggregatorParams(
+                vad_analyzer=SileroVADAnalyzer(),
+            ),
+        )
 
         pipeline = Pipeline(
             [
                 transport.input(),
-                tma_in,
+                user_aggregator,
                 llm,
                 tts,
                 transport.output(),
-                tma_out,
+                assistant_aggregator,
             ]
         )
 
-        task = PipelineTask(pipeline, params=PipelineParams(allow_interruptions=True))
+        task = PipelineTask(pipeline)
 
         @transport.event_handler("on_first_participant_joined")
         async def on_first_participant_joined(transport, participant):
@@ -467,8 +475,3 @@ pip install -r requirements.txt
 
 python bot_runner.py --host localhost --reload
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/sso-and-saml/sso-members-vs-non-sso.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/sso-and-saml/sso-members-vs-non-sso.md
-
-# Source: https://gitbook.com/docs/account-management/sso-and-saml/sso-members-vs-non-sso.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/sso-and-saml/sso-members-vs-non-sso.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/sso-and-saml/sso-members-vs-non-sso.md
 

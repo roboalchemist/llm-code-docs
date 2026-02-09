@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/manual.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual
 
 This guide provides a step-by-step walkthrough for integrating the Mesh SDK across all supported platforms. The core flow is the same everywhere: your secure backend creates a linkToken, which your client-side application then uses to open the Link UI.
@@ -148,6 +152,27 @@ Once your client application receives the linkToken, you can use it to initializ
     npm install --save react-native-webview
     ```
   </Tab>
+
+  <Tab title="Flutter">
+    Add to your `pubspec.yaml`:
+
+    ```yaml  theme={null}
+    dependencies:
+      mesh_sdk_flutter: <latest_version>
+    ```
+
+    Then add localization delegates to your `MaterialApp`:
+
+    ```dart  theme={null}
+    import 'package:mesh_sdk_flutter/mesh_sdk_flutter.dart';
+
+    MaterialApp(
+      localizationsDelegates: [
+        ...MeshLocalizations.localizationsDelegates,
+      ],
+    );
+    ```
+  </Tab>
 </Tabs>
 
 **Code Implementation**
@@ -229,6 +254,31 @@ Once your client application receives the linkToken, you can use it to initializ
     };
     ```
   </Tab>
+
+  <Tab title="Flutter">
+    ```dart  theme={null}
+    import 'package:mesh_sdk_flutter/mesh_sdk_flutter.dart';
+
+    Future<void> openMeshLink(String linkToken) async {
+      final result = await MeshSdk.show(
+        context,
+        configuration: MeshConfiguration(
+          linkToken: linkToken,
+          onIntegrationConnected: (integration) { /* Handle success */ },
+          onTransferFinished: (transfer) { /* Handle transfer result */ },
+          onExit: (error) { /* Handle exit */ },
+        ),
+      );
+
+      switch (result) {
+        case MeshSuccess():
+          // Handle success
+        case MeshError():
+          // Handle error: result.type
+      }
+    }
+    ```
+  </Tab>
 </Tabs>
 
 ### Handle Events
@@ -262,11 +312,22 @@ Your application needs to respond to events to know the outcome of a user's sess
   </Tab>
 
   <Tab title="React Native">
-    The `<LinkConnect>`component accepts props for callbacks:
+    The `<LinkConnect>` component accepts props for callbacks:
 
     * `onIntegrationConnected`: Called on successful connection.
     * `onTransferFinished`: Called when a transfer is complete.
     * `onExit`: Called when the user closes the UI.
+  </Tab>
+
+  <Tab title="Flutter">
+    The `MeshConfiguration` object accepts callbacks:
+
+    * `onIntegrationConnected`: Called on successful connection.
+    * `onTransferFinished`: Called when a transfer is complete.
+    * `onExit`: Called when the user closes the UI.
+    * `onEvent`: Called for various UI events.
+
+    The `MeshSdk.show()` method returns a `MeshResult` that can be `MeshSuccess` or `MeshError`.
   </Tab>
 </Tabs>
 
@@ -282,8 +343,8 @@ For detailed information on webhook security, payload structure, and how to resp
 
 To get more information about our SDKs, refer to the respective Github repository:
 
-| [Web](https://github.com/FrontFin/mesh-web-sdk) | [Android](https://github.com/FrontFin/mesh-android-sdk) | [iOS](https://github.com/FrontFin/mesh-ios-sdk) | [React Native](https://github.com/FrontFin/mesh-react-native-sdk) |
-| :---------------------------------------------: | :-----------------------------------------------------: | :---------------------------------------------: | :---------------------------------------------------------------- |
+| [Web](https://github.com/FrontFin/mesh-web-sdk) | [Android](https://github.com/FrontFin/mesh-android-sdk) | [iOS](https://github.com/FrontFin/mesh-ios-sdk) | [React Native](https://github.com/FrontFin/mesh-react-native-sdk) | [Flutter](https://github.com/FrontFin/mesh-flutter-sdk) |
+| :---------------------------------------------: | :-----------------------------------------------------: | :---------------------------------------------: | :---------------------------------------------------------------: | :-----------------------------------------------------: |
 
 ## Productionize
 

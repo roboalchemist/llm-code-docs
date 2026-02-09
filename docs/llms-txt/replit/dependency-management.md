@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/dependency-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dependency Management
 
 > Replit supports a variety of languages and dependency management systems through the Dependencies tool. This section will cover the different types of dependencies and how to manage them in your Replit App.

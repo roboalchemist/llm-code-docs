@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ReleaseNotes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generating release notes and hill-climbing to improve them
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ReleaseNotes/ReleaseNotes.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-02-02</div>
@@ -8,7 +12,7 @@ This tutorial walks through how to automatically generate release notes for a re
 the Github API and an LLM. Automatically generated release notes are tough to evaluate,
 and you often don't have pre-existing benchmark data to evaluate them on.
 
-To work around this, we'll use [hill climbing](https://braintrust.dev/docs/guides/evals#hill-climbing) to iterate on our prompt, comparing new results to previous experiments to see if we're making progress.
+To work around this, we'll use [hill climbing](/evaluate/run-evaluations#hill-climbing) to iterate on our prompt, comparing new results to previous experiments to see if we're making progress.
 
 ## Installing dependencies
 
@@ -506,7 +510,7 @@ Release Notes:
 
 ### Hill climbing
 
-We'll use [hill climbing](https://www.braintrust.dev/docs/guides/evals#hill-climbing) to automatically use data from the previous experiment to compare to this one. Hill climbing is inspired by, but not exactly the same as, the term used in [numerical optimization](https://en.wikipedia.org/wiki/Hill_climbing). In the context of Braintrust, hill climbing is a way to iteratively improve a model's performance by comparing new experiments to previous ones. This is especially useful when you don't have a pre-existing benchmark to evaluate against.
+We'll use [hill climbing](/evaluate/run-evaluations#hill-climbing) to automatically use data from the previous experiment to compare to this one. Hill climbing is inspired by, but not exactly the same as, the term used in [numerical optimization](https://en.wikipedia.org/wiki/Hill_climbing). In the context of Braintrust, hill climbing is a way to iteratively improve a model's performance by comparing new experiments to previous ones. This is especially useful when you don't have a pre-existing benchmark to evaluate against.
 
 Both the `Comprehensiveness` and `WritingQuality` scores evaluate the `output` against the `input`, without considering a comparison point. To take advantage of hill climbing, we'll add another scorer, `Summary`, which will compare the `output` against the `data` from the previous experiment. To learn more about the `Summary` scorer, check out its [prompt](https://github.com/braintrustdata/autoevals/blob/main/templates/summary.yaml).
 
@@ -928,8 +932,3 @@ As a next step, we should dig into the example where we produced a worse summary
 <img src="https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=306ccecfcbd543507e29f500c480e759" alt="Output vs Expected" data-og-width="1942" width="1942" data-og-height="962" height="962" data-path="cookbook/assets/ReleaseNotes/output_v_expected.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=280&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=105a828de46e0902bc20ee897f22ad20 280w, https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=560&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=c44f67a315412ca5556759224e49675c 560w, https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=840&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=72bcfa9f798520698428ec9c33d5f1a8 840w, https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=1100&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=76d234214ddaf26b78639a8bb9eb48b0 1100w, https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=1650&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=e6a344a38ed6015c8ae9aabecc0a60cb 1650w, https://mintcdn.com/braintrust/cnpybiCnmDJAdQWI/cookbook/assets/ReleaseNotes/output_v_expected.png?w=2500&fit=max&auto=format&n=cnpybiCnmDJAdQWI&q=85&s=d399feb783557d9fac773403110ad923 2500w" />
 
 Happy evaluating!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

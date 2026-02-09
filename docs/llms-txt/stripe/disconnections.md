@@ -82,10 +82,9 @@ const account = await stripe.financialConnections.accounts.disconnect(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.FinancialConnectionsAccountDisconnectParams{
-  Account: stripe.String("{{FINANCIALCONNECTIONSACCOUNT_ID}}"),
-}
-result, err := sc.V1FinancialConnectionsAccounts.Disconnect(context.TODO(), params)
+params := &stripe.FinancialConnectionsAccountDisconnectParams{}
+result, err := sc.V1FinancialConnectionsAccounts.Disconnect(
+  context.TODO(), "{{FINANCIALCONNECTIONSACCOUNT_ID}}", params)
 ```
 
 ```dotnet

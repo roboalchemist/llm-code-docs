@@ -1,121 +1,109 @@
 # Source: https://docs.unstructured.io/api-reference/jobs/get-job-processing-details.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Job processing details
 
 > Retrieve processing details for a specific job by its ID.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/jobs/{job_id}/details
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/jobs/{job_id}/details
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        job_id:
+  /api/v1/jobs/{job_id}/details:
+    get:
+      tags:
+        - jobs
+      summary: Get Job processing details
+      description: Retrieve processing details for a specific job by its ID.
+      operationId: get_job_details
+      parameters:
+        - name: job_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Job Id
-              format: uuid
-      query: {}
-      header:
-        unstructured-api-key:
+            type: string
+            format: uuid
+            title: Job Id
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Id
-              processing_status:
-                allOf:
-                  - $ref: '#/components/schemas/JobProcessingStatus'
-              node_stats:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/JobNodeDetails'
-                    type: array
-                    title: Node Stats
-              message:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Message
-            title: JobDetails
-            refIdentifier: '#/components/schemas/JobDetails'
-            requiredProperties:
-              - id
-              - processing_status
-              - node_stats
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              processing_status: SCHEDULED
-              node_stats:
-                - node_name: <string>
-                  node_type: <string>
-                  node_subtype: <string>
-                  ready: 123
-                  in_progress: 123
-                  success: 123
-                  failure: 123
-              message: <string>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobDetails'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    JobDetails:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        processing_status:
+          $ref: '#/components/schemas/JobProcessingStatus'
+        node_stats:
+          items:
+            $ref: '#/components/schemas/JobNodeDetails'
+          type: array
+          title: Node Stats
+        message:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Message
+      type: object
+      required:
+        - id
+        - processing_status
+        - node_stats
+      title: JobDetails
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    JobProcessingStatus:
+      type: string
+      enum:
+        - SCHEDULED
+        - IN_PROGRESS
+        - SUCCESS
+        - COMPLETED_WITH_ERRORS
+        - STOPPED
+        - FAILED
+      title: JobProcessingStatus
     JobNodeDetails:
       properties:
         node_name:
@@ -152,16 +140,6 @@ components:
         - success
         - failure
       title: JobNodeDetails
-    JobProcessingStatus:
-      type: string
-      enum:
-        - SCHEDULED
-        - IN_PROGRESS
-        - SUCCESS
-        - COMPLETED_WITH_ERRORS
-        - STOPPED
-        - FAILED
-      title: JobProcessingStatus
     ValidationError:
       properties:
         loc:

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 > Connecting an app to Zapier starts with authentication. Users select an app they wish to use in their Zap, authenticating their account with that app to allow Zapier to access their data.

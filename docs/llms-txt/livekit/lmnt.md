@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/tts/plugins/lmnt.md
 
-LiveKit docs › Models › Text-to-speech (TTS) › Plugins › LMNT
+LiveKit docs › Models › TTS › Plugins › LMNT
 
 ---
 
@@ -25,7 +25,7 @@ This section provides a quick reference for the LMNT TTS plugin. For more inform
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[lmnt]~=1.2"
+uv add "livekit-agents[lmnt]~=1.3"
 
 ```
 
@@ -81,7 +81,7 @@ The following resources provide more information about using LMNT with LiveKit A
 
 ---
 
-This document was rendered at 2025-11-18T23:55:13.801Z.
+This document was rendered at 2026-02-03T03:25:05.277Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/plugins/lmnt.md](https://docs.livekit.io/agents/models/tts/plugins/lmnt.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

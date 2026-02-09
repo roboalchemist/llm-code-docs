@@ -102,214 +102,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/messages/create.md
 
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/members/create.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/invites/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/members/create.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/versions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills/create.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/invites/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/completions/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/create.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/create.md
-
 ## Create
 
 **post** `/v1/messages`
@@ -1682,7 +1474,7 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
           - `WebSearchToolRequestError = object { error_code, type }`
 
-            - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 2 more`
+            - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 3 more`
 
               - `"invalid_tool_input"`
 
@@ -1693,6 +1485,8 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
               - `"too_many_requests"`
 
               - `"query_too_long"`
+
+              - `"request_too_large"`
 
             - `type: "web_search_tool_result_error"`
 
@@ -1836,6 +1630,22 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
     An external identifier for the user who is associated with the request.
 
     This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
+
+- `output_config: optional object { format }`
+
+  Configuration options for the model's output, such as the output format.
+
+  - `format: optional object { schema, type }`
+
+    A schema to specify Claude's output format in responses. See [structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)
+
+    - `schema: map[unknown]`
+
+      The JSON schema of the format
+
+    - `type: "json_schema"`
+
+      - `"json_schema"`
 
 - `service_tier: optional "auto" or "standard_only"`
 
@@ -2140,7 +1950,7 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
   See our [guide](https://docs.claude.com/en/docs/tool-use) for more details.
 
-  - `Tool = object { input_schema, name, cache_control, 2 more }`
+  - `Tool = object { input_schema, name, cache_control, 3 more }`
 
     - `input_schema: object { type, properties, required }`
 
@@ -2191,11 +2001,15 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
       Tool descriptions should be as detailed as possible. The more information that the model has about what the tool is and how to use it, the better it will perform. You can use natural language descriptions to reinforce important aspects of the tool input JSON schema.
 
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
     - `type: optional "custom"`
 
       - `"custom"`
 
-  - `ToolBash20250124 = object { name, type, cache_control }`
+  - `ToolBash20250124 = object { name, type, cache_control, strict }`
 
     - `name: "bash"`
 
@@ -2232,7 +2046,11 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
         - `"1h"`
 
-  - `ToolTextEditor20250124 = object { name, type, cache_control }`
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `ToolTextEditor20250124 = object { name, type, cache_control, strict }`
 
     - `name: "str_replace_editor"`
 
@@ -2269,7 +2087,11 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
         - `"1h"`
 
-  - `ToolTextEditor20250429 = object { name, type, cache_control }`
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `ToolTextEditor20250429 = object { name, type, cache_control, strict }`
 
     - `name: "str_replace_based_edit_tool"`
 
@@ -2306,7 +2128,11 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
         - `"1h"`
 
-  - `ToolTextEditor20250728 = object { name, type, cache_control, max_characters }`
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `ToolTextEditor20250728 = object { name, type, cache_control, 2 more }`
 
     - `name: "str_replace_based_edit_tool"`
 
@@ -2347,7 +2173,11 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
       Maximum number of characters to display when viewing a file. If not specified, defaults to displaying the full file.
 
-  - `WebSearchTool20250305 = object { name, type, allowed_domains, 4 more }`
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
+
+  - `WebSearchTool20250305 = object { name, type, allowed_domains, 5 more }`
 
     - `name: "web_search"`
 
@@ -2395,6 +2225,10 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
     - `max_uses: optional number`
 
       Maximum number of times the tool can be used in the API request.
+
+    - `strict: optional boolean`
+
+      When true, guarantees schema validation on tool names and inputs
 
     - `user_location: optional object { type, city, country, 2 more }`
 
@@ -2625,7 +2459,7 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 
         - `WebSearchToolResultError = object { error_code, type }`
 
-          - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 2 more`
+          - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 3 more`
 
             - `"invalid_tool_input"`
 
@@ -2636,6 +2470,8 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
             - `"too_many_requests"`
 
             - `"query_too_long"`
+
+            - `"request_too_large"`
 
           - `type: "web_search_tool_result_error"`
 
@@ -2867,7 +2703,9 @@ Learn more about the Messages API in our [user guide](https://docs.claude.com/en
 ```http
 curl https://api.anthropic.com/v1/messages \
     -H 'Content-Type: application/json' \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY" \
+    --max-time 600 \
     -d '{
           "max_tokens": 1024,
           "messages": [

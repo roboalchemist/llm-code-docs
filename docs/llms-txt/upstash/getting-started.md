@@ -10,202 +10,97 @@
 
 # Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
 
-# Source: https://upstash.com/docs/workflow/agents/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/sdks/ts/getting-started.md
+# Upstash Ratelimit Strapi Integration
 
-# Source: https://upstash.com/docs/vector/sdks/php/getting-started.md
+Strapi is an open-source, Node.js based, Headless CMS that saves developers a lot of development time, enabling them to build their application backends quickly by decreasing the lines of code necessary.
 
-# Source: https://upstash.com/docs/search/sdks/ts/getting-started.md
+You can use Upstash's HTTP and Redis based [Ratelimit package](https://github.com/upstash/ratelimit-js) integration with Strapi to protect your APIs from abuse.
 
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/getting-started.md
+## Getting started
 
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/workflow/agents/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/getting-started.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/workflow/agents/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/getting-started.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/workflow/agents/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/getting-started.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/getting-started.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
-
-# Source: https://upstash.com/docs/workflow/agents/getting-started.md
-
-# Getting Started
-
-In this guide, we will be using **Next.js**. If you're working with a different supported framework, you can find instructions on how to define a workflow endpoint in the [quickstarts](/workflow/quickstarts/platforms).
-
-If you're new to **Upstash Workflow**, it's a good idea to start by exploring the [Local Development documentation](/workflow/howto/local-development). This guide will help you set up and use Upstash Workflow in a local environment.
-
-## Installation
-
-First, create a new Next.js project with:
-
-```
-npx create-next-app@latest [project-name] [options]
-```
-
-Then, install the following packages:
-
-```
-npm i @upstash/workflow ai zod
-```
-
-## Start Local QStash Server
-
-Next, start the local QStash server with the following:
+### Installation
 
 <CodeGroup>
   ```bash npm theme={"system"}
-  npx @upstash/qstash-cli dev
+  npm install --save @upstash/strapi-plugin-upstash-ratelimit
   ```
 
-  ```bash pnpm theme={"system"}
-  pnpm dlx @upstash/qstash-cli dev
+  ```bash yarn theme={"system"}
+  yarn add @upstash/strapi-plugin-upstash-ratelimit
   ```
 </CodeGroup>
 
-For other local development options, you can refer to [the local development documentation](/workflow/howto/local-development).
+### Create database
 
-## Set Environment Variables
+Create a new redis database on [Upstash Console](https://console.upstash.com/). See [related docs](/redis/overall/getstarted) for further info related to creating a database.
 
-Once you start the QStash server, you’ll see `QSTASH_URL` and `QSTASH_TOKEN` values in the console. Add these values to your `.env.local` file together with `OPENAI_API_KEY` env variable:
+### Set up environment variables
 
-```txt .env.local theme={"system"}
-QSTASH_URL="http://127.0.0.1:8080"
-QSTASH_TOKEN="<QSTASH_TOKEN>"
+Get the environment variables from [Upstash Console](https://console.upstash.com/), and set it to `.env` file as below:
 
-OPENAI_API_KEY=<OPENAI_API_KEY>
+```shell .env theme={"system"}
+UPSTASH_REDIS_REST_TOKEN="<YOUR_TOKEN>"
+UPSTASH_REDIS_REST_URL="<YOUR_URL>"
 ```
 
-## Define an endpoint
+### Configure the plugin
 
-Next, we will define the endpoint to run the agent.
+You can use
 
-```ts app/workflow/route.ts theme={"system"}
-import { z } from "zod";
-import { tool } from "ai";
-
-import { serve } from "@upstash/workflow/nextjs";
-
-export const { POST } = serve<{ prompt: string }>(async (context) => {
-  const prompt = context.requestPayload.prompt
-  const model = context.agents.openai('gpt-3.5-turbo')
-
-  const communicatorAgent = context.agents.agent({
-    model,
-    name: 'communicatorAgent',
-    maxSteps: 2,
-    tools: {
-      communicationTool: tool({
-        description: 'A tool for informing the caller about your inner thoughts',
-        parameters: z.object({ message: z.string() }),
-        execute: async ({ message }) => {
-          console.log("Inner thought:", message)
-          return "success"
-        }
-      })
+<CodeGroup>
+  ```typescript /config/plugins.ts theme={"system"}
+  export default () => ({
+    "strapi-plugin-upstash-ratelimit": {
+      enabled: true,
+      resolve: "./src/plugins/strapi-plugin-upstash-ratelimit",
+      config: {
+        enabled: true,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        strategy: [
+          {
+            methods: ["GET", "POST"],
+            path: "*",
+            limiter: {
+              algorithm: "fixed-window",
+              tokens: 10,
+              window: "20s",
+            },
+          },
+        ],
+        prefix: "@strapi",
+      },
     },
-    background:
-      'Answer questions directed towards you.' +
-      ' You have access to a tool to share your inner thoughts' +
-      ' with the caller. Utilize this tool at least once before' +
-      ' answering the prompt. In your inner thougts, briefly' +
-      ' explain what you will talk about and why. Keep your' +
-      ' answers brief.',
-  })
+  });
+  ```
 
-  const task = context.agents.task({
-    agent: communicatorAgent,
-    prompt
-  })
-
-  const { text } = await task.run()
-
-  console.log("Final response:", text);
-})
-```
-
-You can refer to the documentations for [defining a workflow endpoint](/workflow/basics/serve) and [the Agents API features](/workflow/agents/features) to learn more.
-
-## Calling the Endpoint
-
-To run the endpoint, first run the Next.js app with:
-
-```bash  theme={"system"}
-npm run dev
-```
-
-Then, we call the endpoint using [the Workflow Client](/workflow/basics/client):
-
-```ts  theme={"system"}
-import { Client } from "@upstash/workflow";
-
-const client = new Client({
-  baseUrl: process.env.QSTASH_URL,
-  token: process.env.QSTASH_TOKEN!,
-})
-
-const workflowRunId = await client.trigger({
-  url: "http://127.0.0.1:3000/workflow",
-  body: { prompt: "Explain the future of space exploration" },
-  keepTriggerConfig: true
-})
-
-console.log(workflowRunId);
-```
-
-<Tip>
-  If you are using a local tunnel, replace the url above (`http://127.0.0.1:3000`)
-  with the public URL.
-</Tip>
-
-In the console where you run the Next.js app, you should see logs like this:
-
-```
-Inner thought: I will discuss the future of space
-exploration and the potential advancements in
-technology and missions.
-
-Final response: The future of space exploration
-holds exciting possibilities with advancements
-in technology, potential manned missions to
-Mars, increased commercial space travel,
-and exploration of distant celestial
-bodies.
-```
-
-If you [run the same endpoint using a local tunnel](/workflow/howto/local-development#local-tunnel-with-ngrok), you can also see how Upstash Workflow runs the agent in steps:
-
-<img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=06263d5c6a05215050ed332066e7cc9e" data-og-width="1500" width="1500" data-og-height="504" height="504" data-path="img/workflow/agents/logs/logs-getting-started.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=02ab9a40424c2b9444d6116570202051 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=e6021175a719d20742f8430265350aa7 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=140cbec73f3eead37714833734916945 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9ce60b030405c0804ee051eade94725c 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9637a6cf273b0c2c5d6d81ee3a442162 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-getting-started.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9d06b5804db577b1175c762a277f9a53 2500w" />
-
-Each tool invocation and LLM call is a seperate step. Our agent first made a call to OpenAI to decide whether to use a tool or reply right away. OpenAI responded with a request to use the tool `communicationTool`. Tool was executed and OpenAI was called with the result of the tool. OpenAI then responded with the final response.
+  ```javascript /config/plugins.js theme={"system"}
+  module.exports = () => ({
+    "strapi-plugin-upstash-ratelimit": {
+      enabled: true,
+      resolve: "./src/plugins/strapi-plugin-upstash-ratelimit",
+      config: {
+        enabled: true,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        strategy: [
+          {
+            methods: ["GET", "POST"],
+            path: "*",
+            limiter: {
+              algorithm: "fixed-window",
+              tokens: 10,
+              window: "20s",
+            },
+          },
+        ],
+        prefix: "@strapi",
+      },
+    },
+  });
+  ```
+</CodeGroup>

@@ -1,15 +1,20 @@
 # Source: https://bun.com/docs/guides/install/yarnlock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate a yarn-compatible lockfile
 
 <Note>
   Bun v1.1.39 introduced `bun.lock`, a JSONC formatted lockfile. `bun.lock` is human-readable and git-diffable without
-  configuration, at no cost to performance. [**Learn more.**](https://bun.com/docs/install/lockfile#text-based-lockfile)
+  configuration, at no cost to performance. In 1.2.0+ it is the default format used for new projects. [**Learn
+  more.**](/pm/lockfile#text-based-lockfile)
 </Note>
 
 ***
 
-Use the `--yarn` flag to generate a Yarn-compatible `yarn.lock` file (in addition to `bun.lock`).
+Use the `--yarn` flag to generate a Yarn-compatible `yarn.lock` file (in addition to `bun.lock{b}`).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --yarn
@@ -45,4 +50,4 @@ abab@^2.0.6:
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

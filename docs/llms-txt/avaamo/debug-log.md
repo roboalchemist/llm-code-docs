@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/prompt-skill/debug-log.md
 
-# Source: https://docs.avaamo.com/user-guide/debug/debug-log.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/prompt-skill/debug-log.md
-
 # Debug Log
 
 In case you are unable to receive the expected response from the **Prompt** skill, you can debug using the following troubleshooting tips:

@@ -27,5 +27,5 @@ On each of the nodes needing recovery:
   - Check if a node is up using [/state/v1/health](../../reference/api/state-v1.html#state-v1-health). 
   - Check the `vds.idealstate.merge_bucket.pending.average` metric on content nodes. When 0, all buckets are in sync - see [example](../metrics.html). 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

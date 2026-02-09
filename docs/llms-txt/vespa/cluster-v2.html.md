@@ -229,7 +229,7 @@ Responses are in JSON format, with the following fields:
 | message | An error message — included for failed requests. |
 | ToDo | Add more fields here. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

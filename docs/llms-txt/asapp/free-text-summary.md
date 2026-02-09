@@ -1,14 +1,18 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/free-text-summary.md
 
-# Free text Summary
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Generate conversation summaries with Free text summary
+# Free Text Summary
 
-A Free text summary is a generated summary or description from a conversation.
+> Generate conversation summaries with Free Text Summary
+
+A Free Text Summary is a generated summary or description from a conversation.
 
 AI Summary generates high-quality, free-text summaries that are fully configurable in both format and content. You have the flexibility to include or exclude targeted elements based on your needs.
 
-This eliminates the need for agents to take notes during, or after calls, and to minimize post-call forms.
+This eliminates the need for agents to take notes during or after calls and minimizes post-call forms.
 
 ## How it works
 
@@ -29,7 +33,7 @@ To help understand how free-text summary works, let's use an example conversatio
 > **Customer**: No, that's all. Have a nice day.\
 > **Agent**: You too. Goodbye!
 
-Each word in a paragraph summary is selected uniquely for a given conversation transcript, rather than using predefined tags. The paragraph incorporates language used by the customer and agent in order to create a faithful representation of what was discussed in the conversation.
+The system selects each word in a paragraph summary uniquely for a given conversation transcript, rather than using predefined tags. The paragraph incorporates language used by the customer and agent to create a faithful representation of what was discussed in the conversation.
 
 <Info>Since the summary is generated, there may be minor variations in grammar if you repeatedly generate  summaries for the same conversation.</Info>
 
@@ -41,13 +45,13 @@ For conversations that involve transfers or multiple agents, AI Summary can gene
 
 ## Generate a free text summary
 
-To generate a free text summary, provide the conversation transcript into ASAPP first.
+To generate a free text summary, first provide the conversation transcript to ASAPP.
 
-This example uses our conversation API, but you have options to use AI Transcribe or batch integration options.
+This example uses our Conversation API, but you have options to use AI Transcribe or batch integration options.
 
 ### Step 1: Create a conversation
 
-To create a **`conversation`**. Provide your Ids for the conversation and customer.
+To create a **`conversation`**, provide your IDs for the conversation and customer.
 
 ```javascript  theme={null}
 curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations' \
@@ -64,13 +68,13 @@ curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations' \
 }'
 ```
 
-A successfully created conversation returns a status code of 200 and a conversation Id.
+A successfully created conversation returns a status code of 200 and a conversation ID.
 
 ### Step 2: Add messages
 
 You need to add the messages for the conversation.
 
-In this example, we are using the `/messages/batch` endpoint to add the whole example conversation.
+In this example, we use the `/messages/batch` endpoint to add the entire example conversation.
 
 ```javascript  theme={null}
 curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations/5544332211/messages/batch' \
@@ -157,7 +161,7 @@ curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations/554433
 
 Now that you have a conversation with messages, you can generate a free text summary.
 
-To generate the summary, provide the id of the conversation.
+To generate the summary, provide the ID of the conversation.
 
 ```javascript  theme={null}
 curl -X GET 'https://api.sandbox.asapp.com/autosummary/v1/free-text-summaries/5544332211' \
@@ -179,9 +183,9 @@ This summary is for the entire conversation, regardless of the number of agents.
 
 ## Multi-leg summaries
 
-You may have a conversation where one end user talks to multiple agents about different topics. With AI Summary, you can generate summaries for a conversation based on which agent you want to summarize.
+You may have a conversation where one end user talks to multiple agents about different topics. With AI Summary, you can generate summaries for a conversation based on the agent interactions you want to summarize.
 
-To generate a summary for one leg, provide the id of the conversation in the path, and the agent id as a query parameter.
+To generate a summary for one leg, provide the ID of the conversation in the path and the agent ID as a query parameter.
 
 ```javascript  theme={null}
 curl -X GET 'https://api.sandbox.asapp.com/autosummary/v1/free-text-summaries/5544332211?agentExternalId=agent_1234 \
@@ -189,7 +193,7 @@ curl -X GET 'https://api.sandbox.asapp.com/autosummary/v1/free-text-summaries/55
 --header 'asapp-api-secret: <API TOKEN>'
 ```
 
-This generates a summary for the conversation, only for the parts of conversation that specific agent participated in.
+This generates a summary for the conversation, only for the parts of the conversation that the specific agent participated in.
 
 ## Customization
 

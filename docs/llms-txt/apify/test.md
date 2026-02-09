@@ -12,7 +12,7 @@ We want to make sure that all Actors in Apify Store are top-notch, or at least a
 
 ### How we test
 
-The test runs the Actor with its default input (defined by the https://docs.apify.com/platform/actors/development/actor-definition/input-schema/specification/v1#prefill-vs-default-vs-required option in the input schema file) and expects it to finish with a **Succeeded** status and non-empty default dataset within 5 minutes of the beginning of the run.
+The test runs the Actor with its default input (defined by the [prefill](https://docs.apify.com/platform/actors/development/actor-definition/input-schema/specification/v1#prefill-vs-default-vs-required) option in the input schema file) and expects it to finish with a **Succeeded** status and non-empty default dataset within 5 minutes of the beginning of the run.
 
 ![Actor page](/assets/images/actor-test-06ec218b357a5e86a8c3ea01b1050ac7.webp)
 
@@ -24,8 +24,8 @@ The best course of action is to fix the Actor and rebuild it. The automatic test
 
 ## What if my Actor cannot comply with the test logic?
 
-Actors that require some sort of authentication will always fail the tests despite being fully functional. Also, some Actors inherently run for longer than 5 minutes. If that's the case with your Actor, please contact support at mailto:support@apify.com and explain your specific use case that justifies why the Actor should be excluded from the automated tests.
+Actors that require some sort of authentication will always fail the tests despite being fully functional. Also, some Actors inherently run for longer than 5 minutes. If that's the case with your Actor, please contact support at [support@apify.com](mailto:support@apify.com) and explain your specific use case that justifies why the Actor should be excluded from the automated tests.
 
 ## Advanced Actor testing
 
-You can easily implement your own tests and customize them to fit your Actor's particularities by using our public https://apify.com/pocesar/actor-testing tool available in Apify Store. For more information, see the https://docs.apify.com/platform/actors/development/automated-tests.md section.
+You can easily implement your own tests and customize them to fit your Actor's particularities by using our public [Actor Testing](https://apify.com/pocesar/actor-testing) tool available in Apify Store. For more information, see the [automated testing](https://docs.apify.com/platform/actors/development/automated-tests.md) section.

@@ -1,67 +1,60 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/get-integration-resources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Integration Resources
 
 > Get all resources for a given installation ID.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/installations/{integrationConfigurationId}/resources
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/installations/{integrationConfigurationId}/resources
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        integrationConfigurationId:
+  /v1/installations/{integrationConfigurationId}/resources:
+    get:
+      tags:
+        - marketplace
+      summary: Get Integration Resources
+      description: Get all resources for a given installation ID.
+      operationId: get-integration-resources
+      parameters:
+        - name: integrationConfigurationId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: get-integration-resources
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.marketplace.getIntegrationResources({
-              integrationConfigurationId: "<id>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              resources:
-                allOf:
-                  - items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  resources:
+                    items:
                       properties:
                         partnerId:
                           type: string
@@ -77,13 +70,13 @@ paths:
                         status:
                           type: string
                           enum:
+                            - error
                             - ready
                             - pending
                             - onboarding
                             - suspended
                             - resumed
                             - uninstalled
-                            - error
                           description: The current status of the resource
                         productId:
                           type: string
@@ -94,6 +87,9 @@ paths:
                               properties:
                                 edgeConfigSyncingEnabled:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                 edgeConfigId:
                                   type: string
                                 edgeConfigTokenId:
@@ -105,14 +101,14 @@ paths:
                             its product's protocols
                         notification:
                           properties:
+                            title:
+                              type: string
                             level:
                               type: string
                               enum:
                                 - error
                                 - info
                                 - warn
-                            title:
-                              type: string
                             message:
                               type: string
                             href:
@@ -134,7 +130,6 @@ paths:
                             oneOf:
                               - type: string
                               - type: number
-                              - type: boolean
                               - items:
                                   type: string
                                 type: array
@@ -147,66 +142,39 @@ paths:
                                 description: >-
                                   The configured metadata for the resource as
                                   defined by its product's Metadata Schema
+                              - type: boolean
+                                enum:
+                                  - false
+                                  - true
                           type: object
                           description: >-
                             The configured metadata for the resource as defined
                             by its product's Metadata Schema
                       required:
-                        - partnerId
                         - internalId
                         - name
+                        - partnerId
                         - productId
                       type: object
                     type: array
-            requiredProperties:
-              - resources
-        examples:
-          example:
-            value:
-              resources:
-                - partnerId: <string>
-                  internalId: <string>
-                  name: <string>
-                  status: ready
-                  productId: <string>
-                  protocolSettings:
-                    experimentation:
-                      edgeConfigSyncingEnabled: true
-                      edgeConfigId: <string>
-                      edgeConfigTokenId: <string>
-                  notification:
-                    level: error
-                    title: <string>
-                    message: <string>
-                    href: <string>
-                  billingPlanId: <string>
-                  metadata: {}
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - resources
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

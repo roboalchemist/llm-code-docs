@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/stt/whisper.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Whisper
 
 > Speech-to-text service implementation using locally-downloaded Whisper models
@@ -61,8 +65,3 @@ Before using Whisper STT services, you need:
 <Tip>
   No API keys required - Whisper runs entirely locally for complete privacy.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

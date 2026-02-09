@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/frameworks/pulumi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pulumi
 
 > Using Infisical with Pulumi via the Terraform Bridge

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/isbn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ISBN Validator Plugin
 
 > A Flatfile plugin that validates and formats International Standard Book Number (ISBN) data during the import process, supporting both ISBN-10 and ISBN-13 standards with automatic formatting and conversion capabilities.
@@ -12,7 +16,7 @@ Key features include the ability to automatically format valid ISBNs with hyphen
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-isbn
 ```
 
@@ -50,7 +54,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from "@flatfile/listener";
     import validateISBN from "@flatfile/plugin-validate-isbn";
 
@@ -63,7 +67,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from "@flatfile/listener";
     import validateISBN from "@flatfile/plugin-validate-isbn";
 
@@ -80,7 +84,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     import { FlatfileListener } from "@flatfile/listener";
     import validateISBN from "@flatfile/plugin-validate-isbn";
 
@@ -99,7 +103,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     import { FlatfileListener } from "@flatfile/listener";
     import validateISBN from "@flatfile/plugin-validate-isbn";
 
@@ -122,7 +126,7 @@ The plugin accepts a configuration object with the following parameters:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```javascript
+    ```javascript  theme={null}
     // Using the exported utility function for standalone validation
     import { validateAndFormatISBN } from "@flatfile/plugin-validate-isbn";
 
@@ -141,7 +145,7 @@ The plugin accepts a configuration object with the following parameters:
   </Tab>
 
   <Tab title="TypeScript">
-    ```typescript
+    ```typescript  theme={null}
     // Using the exported utility function for standalone validation
     import { validateAndFormatISBN } from "@flatfile/plugin-validate-isbn";
 

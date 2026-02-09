@@ -1,156 +1,111 @@
 # Source: https://docs.comfy.org/api-reference/registry/create-a-new-personal-access-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a new personal access token
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi post /publishers/{publisherId}/tokens
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /publishers/{publisherId}/tokens
-  method: post
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        publisherId:
+  /publishers/{publisherId}/tokens:
+    post:
+      tags:
+        - Registry
+      summary: Create a new personal access token
+      operationId: CreatePersonalAccessToken
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              createdAt:
-                allOf:
-                  - description: '[Output Only]The date and time the token was created.'
-                    format: date-time
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonalAccessToken'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  token:
+                    description: The newly created personal access token.
                     type: string
-              description:
-                allOf:
-                  - description: >-
-                      Optional. A more detailed description of the token's
-                      intended use.
-                    type: string
-              id:
-                allOf:
-                  - description: Unique identifier for the GitCommit
-                    format: uuid
-                    type: string
-              name:
-                allOf:
-                  - description: >-
-                      Required. The name of the token. Can be a simple
-                      description.
-                    type: string
-              token:
-                allOf:
-                  - description: >-
-                      [Output Only]. The personal access token. Only returned
-                      during creation.
-                    type: string
-            required: true
-            refIdentifier: '#/components/schemas/PersonalAccessToken'
-        examples:
-          example:
-            value:
-              createdAt: '2023-11-07T05:31:56Z'
-              description: <string>
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              name: <string>
-              token: <string>
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              token:
-                allOf:
-                  - description: The newly created personal access token.
-                    type: string
-        examples:
-          example:
-            value:
-              token: <string>
-        description: Token created successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request, invalid input data.
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                type: object
+          description: Token created successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request, invalid input data.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+      security:
+        - BearerAuth: []
 components:
-  schemas: {}
+  schemas:
+    PersonalAccessToken:
+      properties:
+        createdAt:
+          description: '[Output Only]The date and time the token was created.'
+          format: date-time
+          type: string
+        description:
+          description: Optional. A more detailed description of the token's intended use.
+          type: string
+        id:
+          description: Unique identifier for the GitCommit
+          format: uuid
+          type: string
+        name:
+          description: Required. The name of the token. Can be a simple description.
+          type: string
+        token:
+          description: >-
+            [Output Only]. The personal access token. Only returned during
+            creation.
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
+  securitySchemes:
+    BearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
 
 ````

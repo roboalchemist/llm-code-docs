@@ -4,11 +4,7 @@
 
 TikTok provider setup and usage.
 
-***
 
-title: TikTok
-description: TikTok provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

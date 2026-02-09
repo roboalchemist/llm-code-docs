@@ -230,6 +230,10 @@ specification into your workflow:
   Drupal 10.3+ site
 - [`llms-txt-php`](https://github.com/raphaelstolt/llms-txt-php) - A
   library for writing and reading llms.txt Markdown files
+- [`VS Code PagePilot Extension`](https://dmux.github.io/pagepilot) -
+  PagePilot is a VS Code Chat participant that automatically loads
+  external context (documentation, APIs, README files) to provide
+  enhanced responses.
 
 ## Next steps
 

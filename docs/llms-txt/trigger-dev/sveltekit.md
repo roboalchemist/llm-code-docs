@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/community/sveltekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SvelteKit setup guide
 
 > A plugin for SvelteKit to integrate with Trigger.dev.
@@ -27,7 +31,7 @@ This is a community developed Vite plugin from [@cptCrunch\_](https://x.com/cptC
 
 [View setup guide on npm](https://www.npmjs.com/package/triggerkit)
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npm i triggerkit
 ```
 

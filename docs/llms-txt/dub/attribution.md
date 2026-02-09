@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/deep-links/attribution.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deep link attribution
 
 > Learn how to use deep link attribution to track conversions events with Dub.

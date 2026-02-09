@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/mcp/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCPClient
 
 > Service to connect to MCP (Model Context Protocol) servers
@@ -131,8 +135,3 @@ async def register_tools(self, llm) -> ToolsSchema:
   See [MCP's docs](https://github.com/modelcontextprotocol/python-sdk) for MCP
   related updates.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

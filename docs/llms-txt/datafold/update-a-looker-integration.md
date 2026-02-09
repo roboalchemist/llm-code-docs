@@ -1,141 +1,136 @@
 # Source: https://docs.datafold.com/api-reference/bi/update-a-looker-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update a Looker integration
 
 > It can only update the schedule. Returns the integration with changed fields.
 
+
+
 ## OpenAPI
 
 ````yaml put /api/v1/lineage/bi/looker/{bi_datasource_id}/
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/lineage/bi/looker/{bi_datasource_id}/
-  method: put
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path:
-        bi_datasource_id:
+  /api/v1/lineage/bi/looker/{bi_datasource_id}/:
+    put:
+      tags:
+        - BI
+        - bi_modified
+      summary: Update a Looker integration
+      description: >-
+        It can only update the schedule. Returns the integration with changed
+        fields.
+      operationId: >-
+        update_looker_integration_api_v1_lineage_bi_looker__bi_datasource_id___put
+      parameters:
+        - in: path
+          name: bi_datasource_id
+          required: true
           schema:
-            - type: integer
-              required: true
-              title: Looker integration id
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              base_url:
-                allOf:
-                  - title: Base Url
-                    type: string
-              bindings:
-                allOf:
-                  - default: []
-                    items:
-                      $ref: '#/components/schemas/DataSourceBinding'
-                    title: Bindings
-                    type: array
-              client_id:
-                allOf:
-                  - title: Client Id
-                    type: string
-              client_secret:
-                allOf:
-                  - format: password
-                    title: Client Secret
-                    type: string
-                    writeOnly: true
-              indexing_cron:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Indexing Cron
-              name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Name
-              project_ids:
-                allOf:
-                  - default: []
-                    items:
-                      type: string
-                    title: Project Ids
-                    type: array
-              repo_id:
-                allOf:
-                  - title: Repo Id
-                    type: integer
-            required: true
-            title: LookerDataSourceConfig
-            refIdentifier: '#/components/schemas/LookerDataSourceConfig'
-            requiredProperties:
-              - base_url
-              - client_id
-              - repo_id
-              - client_secret
-        examples:
-          example:
-            value:
-              base_url: <string>
-              bindings: []
-              client_id: <string>
-              client_secret: <string>
-              indexing_cron: <string>
-              name: <string>
-              project_ids: []
-              repo_id: 123
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            title: Looker integration id
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LookerDataSourceConfig'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    LookerDataSourceConfig:
+      properties:
+        base_url:
+          title: Base Url
+          type: string
+        bindings:
+          default: []
+          items:
+            $ref: '#/components/schemas/DataSourceBinding'
+          title: Bindings
+          type: array
+        client_id:
+          title: Client Id
+          type: string
+        client_secret:
+          format: password
+          title: Client Secret
+          type: string
+          writeOnly: true
+        indexing_cron:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Indexing Cron
+        name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Name
+        project_ids:
+          default: []
+          items:
+            type: string
+          title: Project Ids
+          type: array
+        repo_id:
+          title: Repo Id
+          type: integer
+      required:
+        - base_url
+        - client_id
+        - repo_id
+        - client_secret
+      title: LookerDataSourceConfig
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     DataSourceBinding:
       properties:
         boundIds:
@@ -172,5 +167,11 @@ components:
         - type
       title: ValidationError
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

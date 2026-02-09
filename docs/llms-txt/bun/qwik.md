@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/qwik.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an app with Qwik and Bun
 
 Initialize a new Qwik app with `bunx create-qwik`.
@@ -63,14 +67,14 @@ bun create qwik
 │  bun qwik add                                        │
 │                                                      │
 │  Relevant docs:                                      │
-│  https://qwik.builder.io/docs/getting-started/       │
+│  https://qwik.dev/docs/getting-started/              │
 │                                                      │
 │  Questions? Start the conversation at:               │
-│  https://qwik.builder.io/chat                        │
+│  https://qwik.dev/chat                               │
 │  https://twitter.com/QwikDev                         │
 │                                                      │
 │  Presentations, Podcasts and Videos:                 │
-│  https://qwik.builder.io/media/                      │
+│  https://qwik.dev/media/                             │
 │                                                      │
 │  Next steps:                                         │
 │  cd my-app                                           │
@@ -109,4 +113,4 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 
 ***
 
-Refer to the [Qwik docs](https://qwik.builder.io/docs/getting-started/) for complete documentation.
+Refer to the [Qwik docs](https://qwik.dev/docs/getting-started/) for complete documentation.

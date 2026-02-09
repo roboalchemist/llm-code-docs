@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/querying-asr-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Speech to Text
 
 > Convert audio to text with streaming and pre-recorded transcription

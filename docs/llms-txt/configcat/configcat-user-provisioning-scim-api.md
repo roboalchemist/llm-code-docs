@@ -4,6 +4,8 @@ Version: v1
 
 # ConfigCat User Provisioning (SCIM) API
 
+Copy page
+
 The purpose of this API is to allow user and group synchronization from your Identity Provider into a ConfigCat Organization via the SCIM protocol.
 
 [Here](https://configcat.com/docs/advanced/team-management/scim/scim-overview/) you can read more about the user provisioning process.

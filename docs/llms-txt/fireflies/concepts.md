@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/fundamentals/concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # General concepts
 
 > Foundational guide to the core aspects of the Fireflies API

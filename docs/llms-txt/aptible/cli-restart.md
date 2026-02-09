@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-restart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible restart
 
 This command restarts an [App](/core-concepts/apps/overview) and all its associated [Services](/core-concepts/apps/deploying-apps/services).
@@ -8,7 +12,7 @@ This command restarts an [App](/core-concepts/apps/overview) and all its associa
 
 ```
 Usage:
-  aptible restart
+  aptible restart [--app APP]
 
 Options:
       [--simulate-oom], [--no-simulate-oom]  # Add this flag to simulate an OOM restart and test your app's response (not recommended on production apps).

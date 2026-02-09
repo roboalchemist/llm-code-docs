@@ -6,22 +6,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/guides/plugins.md
 
-# Source: https://docs.slatejs.org/v0.47/slate-react/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/general/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/guides/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-react/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/general/plugins.md
-
-# Source: https://docs.slatejs.org/v0.47/guides/plugins.md
-
 # Plugins
 
 With Slate, *all* of your editor's logic is controlled by "plugins".

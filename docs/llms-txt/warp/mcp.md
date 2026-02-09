@@ -4,7 +4,7 @@
 
 ## Model Context Protocol (MCP)
 
-MCP servers extend Warp’s [agents](https://docs.warp.dev/agents/using-agents) in a modular, flexible way by exposing custom tools or data sources through a standardized interface — essentially acting as plugins for Warp. Warp supports a variety of connection protocols, including Streamable HTTPS and SSE, along with custom headers and environmental variables.
+MCP servers extend Warp’s [agents](https://docs.warp.dev/agents/using-agents/) in a modular, flexible way by exposing custom tools or data sources through a standardized interface — essentially acting as plugins for Warp. Warp supports a variety of connection protocols, including Streamable HTTPS and SSE, along with custom headers and environmental variables.
 
 MCP is an open source protocol. Check out the official [MCP documentation](https://modelcontextprotocol.io/introduction) for more detailed information on how this protocol is engineered.
 
@@ -19,7 +19,7 @@ You can navigate to the MCP servers page in any of the following ways:
 
 This will show a list of all configured MCP servers, including which are currently running. If you close Warp with an MCP server running, it will run again on next start of Warp. MCP servers that are stopped will remain so on next launch of Warp.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-283d9028a4afc65587d4b98162806c8e8022cace%2Fmcp-servers-list.png?alt=media" alt=""><figcaption><p>MCP servers page</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-283d9028a4afc65587d4b98162806c8e8022cace%2Fmcp-servers-list.png?alt=media" alt=""><figcaption><p>MCP servers page</p></figcaption></figure>
 
 ### Adding an MCP Server
 
@@ -31,7 +31,7 @@ MCP server types you can add:
 {% tab title="CLI Server (Command)" %}
 Provide a startup command. Warp will launch this command when starting up and shut it down on exit.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-bba6b7d98c6a6cb85e60f20cc6561a85282e9faf%2Fmcp-servers-add-cli.png?alt=media" alt=""><figcaption><p>Adding a CLI MCP Server (Command)</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-bba6b7d98c6a6cb85e60f20cc6561a85282e9faf%2Fmcp-servers-add-cli.png?alt=media" alt=""><figcaption><p>Adding a CLI MCP Server (Command)</p></figcaption></figure>
 
 {% hint style="info" %}
 Always set `working_directory` explicitly when your MCP server command or args include relative paths. This ensures consistent and predictable behavior across machines and sessions.
@@ -50,7 +50,7 @@ Always set `working_directory` explicitly when your MCP server command or args i
 {% tab title="Streamable HTTP or SSE Server (URL)" %}
 Provide a URL where Warp can reach an already-running MCP server that supports Server-Sent Events.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-99cfe94e81f4c647bf54139fc7d7840f5d60c8e5%2Fmcp-servers-add-sse.png?alt=media" alt=""><figcaption><p>Adding an SSE MCP Server (URL)</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-99cfe94e81f4c647bf54139fc7d7840f5d60c8e5%2Fmcp-servers-add-sse.png?alt=media" alt=""><figcaption><p>Adding an SSE MCP Server (URL)</p></figcaption></figure>
 
 **Streamable HTTP or SSE Server (URL) MCP Configuration Properties**
 
@@ -98,7 +98,7 @@ You can rename and edit a server's name, as well as delete the server. If you ar
 
 MCP servers can be shared with your teammates by clicking the share icon. When sharing, sensitive values in the `env` configuration will be automatically scrubbed and replaced with variables.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-ef9c07a456898ea115daf5db087e5f778fbafa24%2Fmcp-servers-share.png?alt=media" alt=""><figcaption><p>Sharing a MCP Server</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-ef9c07a456898ea115daf5db087e5f778fbafa24%2Fmcp-servers-share.png?alt=media" alt=""><figcaption><p>Sharing a MCP Server</p></figcaption></figure>
 
 Your teammates can find shared MCP servers under the `Shared` section of their MCP settings. When your teammates install your server configuration, they will be prompted to enter any scrubbed `env` values.
 
@@ -445,10 +445,10 @@ Enter the following configuration into Warp > `Warp Drive` > `MCP Servers` > `+ 
 
 ### MCP Server Demos
 
-[Warp University](https://app.gitbook.com/o/-MbqIZLCtzerswjFm7mh/s/c5dAwvMCRiTxUOdDicqy/) hosts a collection of demos and walkthroughs showing how MCP servers can extend your workflows. Each example highlights practical use cases you can try today:
+[Warp University](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) hosts a collection of demos and walkthroughs showing how MCP servers can extend your workflows. Each example highlights practical use cases you can try today:
 
-* [**GitHub**](https://app.gitbook.com/s/c5dAwvMCRiTxUOdDicqy/mcp-servers/github-mcp-summarizing-open-prs-and-creating-gh-issues) — access repositories, issues, and pull requests through MCP.
-* [**Sentry**](https://app.gitbook.com/s/c5dAwvMCRiTxUOdDicqy/mcp-servers/sentry-mcp-fix-sentry-error-in-empower-website) — surface error monitoring and alerts as agent-usable data.
-* [**Linear**](https://app.gitbook.com/s/c5dAwvMCRiTxUOdDicqy/mcp-servers/linear-mcp-retrieve-issue-data) — integrate project management tasks and tickets.
-* [**Puppeteer**](https://app.gitbook.com/s/c5dAwvMCRiTxUOdDicqy/mcp-servers/puppeteer-mcp-scraping-amazon-web-reviews) — run automated browser workflows via MCP.
-* [**Context7**](https://app.gitbook.com/s/c5dAwvMCRiTxUOdDicqy/mcp-servers/context7-mcp-update-astro-project-with-best-practices) — experiment with external data integrations.
+* [**GitHub**](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) — access repositories, issues, and pull requests through MCP.
+* [**Sentry**](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) — surface error monitoring and alerts as agent-usable data.
+* [**Linear**](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) — integrate project management tasks and tickets.
+* [**Puppeteer**](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) — run automated browser workflows via MCP.
+* [**Context7**](https://docs.warp.dev/knowledge-and-collaboration/broken-reference) — experiment with external data integrations.

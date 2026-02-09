@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/bounties.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bounties
 
 > Learn how to earn Cycles by completing coding tasks or post your own Bounties to get help with development projects on Replit.

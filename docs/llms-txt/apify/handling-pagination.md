@@ -38,7 +38,7 @@ Sometimes pagination uses **cursor** instead of **offset**. Cursor is a marker o
 
 One of the most painful things about scraping APIs with cursor pagination is that you can't skip to, for example, the 5th page. You have to paginate through each page one by one.
 
-> Note: SoundCloud https://developers.soundcloud.com/blog/pagination-updates-on-our-api/ over to using cursor-based pagination; however, they did not change the parameter name from **offset** to **cursor**. Always be on the lookout for this type of stuff!
+> Note: SoundCloud [migrated](https://developers.soundcloud.com/blog/pagination-updates-on-our-api/) over to using cursor-based pagination; however, they did not change the parameter name from **offset** to **cursor**. Always be on the lookout for this type of stuff!
 
 ## Using "next page"
 
@@ -149,7 +149,7 @@ const scrape100Items = async () => {
 
 All that's left to do now is flesh out this `while` loop with pagination logic and finally return the **items** array once the loop has finished.
 
-> Note that it's better to add requests to a requests queue rather than processing them in memory. The crawlers offered by https://crawlee.dev/docs/ provide this functionality out of the box.
+> Note that it's better to add requests to a requests queue rather than processing them in memory. The crawlers offered by [Crawlee](https://crawlee.dev/docs/) provide this functionality out of the box.
 
 
 ```
@@ -197,7 +197,7 @@ const scrape100Items = async () => {
 ```
 
 
-> We are using the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat method when returning the **items** array to turn our array of arrays into a single array of items.
+> We are using the [.flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) method when returning the **items** array to turn our array of arrays into a single array of items.
 
 Here's what the output of this code looks like:
 
@@ -209,7 +209,7 @@ Here's what the output of this code looks like:
 
 ## Final note
 
-Sometimes, APIs have limited pagination. That means that they limit the total number of results that can appear for a set of pages, or that they limit the pages to a certain number. To learn how to handle these cases, take a look at the https://docs.apify.com/academy/advanced-web-scraping/crawling/crawling-with-search.md article.
+Sometimes, APIs have limited pagination. That means that they limit the total number of results that can appear for a set of pages, or that they limit the pages to a certain number. To learn how to handle these cases, take a look at the [Crawling with search](https://docs.apify.com/academy/advanced-web-scraping/crawling/crawling-with-search.md) article.
 
 ## Next up
 
@@ -222,4 +222,4 @@ This is the last lesson in the API scraping tutorial for now, but be on the look
 5. Farm API tokens using Puppeteer
 6. Use paginated APIs
 
-If you'd still like to read more about API scraping, check out the https://docs.apify.com/academy/api-scraping/graphql-scraping.md course! GraphQL is the king of API scraping.
+If you'd still like to read more about API scraping, check out the [GraphQL scraping](https://docs.apify.com/academy/api-scraping/graphql-scraping.md) course! GraphQL is the king of API scraping.

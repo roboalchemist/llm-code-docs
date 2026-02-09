@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/add-tarball.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a tarball dependency
 
 Bun's package manager can install any publicly available tarball URL as a dependency of your project.
@@ -30,4 +34,4 @@ import { z } from "zod";
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

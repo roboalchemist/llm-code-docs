@@ -2,118 +2,457 @@
 
 # Source: https://docs.stripe.com/issuing/cards/replacements.md
 
-# Source: https://docs.stripe.com/capital/replacements.md
+# Replacement cards
 
-# Source: https://docs.stripe.com/issuing/cards/replacements.md
+Learn how to replace cards that are expired, damaged, lost, or stolen.
 
-# Source: https://docs.stripe.com/capital/replacements.md
+You can replace cards that are expired, damaged, lost, or stolen. The process differs slightly for each kind of card replacement.
 
-# Source: https://docs.stripe.com/issuing/cards/replacements.md
+- **Card expired**: The card has reached its expiration date and is no longer valid.
+- **Card damaged**: The cardholder requests a new card for a reason other than lost or stolen (for example, a physical card’s chip no longer reads properly).
+- **Card lost/stolen**: The card is reported lost or stolen and a new card number, expiry, security code are issued.
 
-# Source: https://docs.stripe.com/capital/replacements.md
+Depending on the scenario, the replacement card might have a different card number, expiry, or security code from the original:
 
-# Source: https://docs.stripe.com/issuing/cards/replacements.md
+| Scenario             | New card number | New security code | New expiry |
+| -------------------- | --------------- | ----------------- | ---------- |
+| **Card expired**     | No              | Yes               | Yes        |
+| **Card damaged**     | No              | Yes               | Yes        |
+| **Card lost/stolen** | Yes             | Yes               | Yes        |
 
-# Source: https://docs.stripe.com/capital/replacements.md
+## Replacements for expired or damaged cards
 
-# Replacements
+Physical cards can get damaged, and both physical cards and virtual cards expire, but you can create replacement cards that have the same card number. The cardholder can continue to use the original card before the replacement card is activated, as long as the card isn’t too damaged or already expired. Activating the replacement card cancels the original card if it isn’t already canceled.
 
-Learn how to handle financing offer replacements.
+You can use the [Dashboard](https://dashboard.stripe.com/issuing/cards) or the [Create a card](https://docs.stripe.com/api/issuing/cards.md) endpoint to replace an expired or damaged card.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+# Dashboard
 
-Capital financing applications allow connected accounts to link third-party data to receive updated financing offer terms, such as a higher financing amount. Financing offer replacements give your platform visibility into the offer history of your connected accounts. This guide describes how to manage financing offer replacements.
+> This is a Dashboard for when testing-method is without-code. View the full page at https://docs.stripe.com/issuing/cards/replacements?testing-method=without-code.
 
-Without replacements, when an account receives an offer with new terms, Stripe updates the existing [FinancingOffer](https://docs.stripe.com/api/capital/connect_financing_object.md). Your platform can’t access any record of previous offers. With replacements, Stripe creates a `FinancingOffer` object representing the new offer, giving your platform the ability to access both existing and new offers.
+1. Visit the [Cards tab](https://dashboard.stripe.com/issuing/cards) in the Issuing Dashboard.
+![Issuing cards page](https://b.stripecdn.com/docs-statics-srv/assets/cards-page.e8e9728de4c5cbf6bf3b557dc634ed56.png)
+   
+1. Search for the card you want to replace and click it to view its details.
+![Issuing card details sidebar](https://b.stripecdn.com/docs-statics-srv/assets/card-details.46b3256598769441da31758fd9dba482.png)
+   
+1. Click **Replace card** in the sidebar on the right.
 
-The following example illustrates how a connected account might receive a replacement offer:
+1. Select **Your card is expiring or expired** or **Your card is damaged** and click **Continue** if you’re replacing a physical card, or **Replace card** if you’re replacing a virtual card.
+![Issuing card replace modal](https://b.stripecdn.com/docs-statics-srv/assets/replace-card-modal.05577a2adead1b5c67e9e2edb9ac20b0.png)
+   
+1. If the card you’re replacing is a physical card, enter the shipping details for the replacement card and click **Replace card**.
+![Issuing card replace modal shipping details form](https://b.stripecdn.com/docs-statics-srv/assets/replace-card-shipping-details.cf8cae31bb586a5f68020f9d6ec4412f.png)
 
-1. Stripe creates an undelivered financing offer for the connected account with a maximum loan amount of 5,000 USD.
-1. Your platform sends the connected account an offer email and marks the offer as delivered.
-1. The connected account navigates to the Capital financing application and links their bank account.
-1. Stripe determines the connected account is eligible for a new maximum loan amount of 10,000 USD.
-1. Stripe replaces the connected account’s original 5,000 USD offer with a new 10,000 USD offer.
 
-## Before you begin
+# API
 
-- This guide assumes you completed an [API integration](https://docs.stripe.com/capital/api-integration.md).
-- Financing offer replacements aren’t enabled by default. After you update your integration to support replacements, you must [contact us](mailto:capital-review@stripe.com) to enable them.
+> This is a API for when testing-method is with-code. View the full page at https://docs.stripe.com/issuing/cards/replacements?testing-method=with-code.
 
-## Create a delivered test offer
+To create a replacement card for an expired or damaged card, create a [Card](https://docs.stripe.com/api.md#issuing_card_object) with `replacement_for` using the expired or damaged `Card` ID and `replacement_reason` set to `expired` or `damaged`.
 
-1. [Create a sandbox](https://docs.stripe.com/sandboxes/dashboard/manage.md#create-a-sandbox).
-
-1. Go to the [Capital](https://dashboard.stripe.com/test/connect/capital) page in the Dashboard.
-
-1. To generate a test offer, click **Create** and select the parameters for the offer creation.
-
-   - For the connected account, select an existing connected account by searching for the account’s ID or leave it blank and Stripe will generate an account for you.
-   - You can select the type of offer and, if it’s a refill, the test account. You can also select the offer terms (amount, fee, and payment rate).
-   - If you prefer, create a new connected account in the [Stripe Dashboard](https://docs.stripe.com/connect/dashboard/managing-individual-accounts.md#creating-accounts).
-   - For test offers, you don’t need to link the bank account.
-   - View account details of your newly created connected account: `https://dashboard.stripe.com/test/connect/accounts/:merchant_id`.
-
-1. Before finalizing the offer creation by clicking **Create Financing Offer**, first set the offer status to `delivered` because the actual offer delivery in an email isn’t necessary for testing.
-
-1. Click **Create Financing Offer** to create the offer for the test connected account.
-
-   The result is a `delivered` test financing offer. In the Dashboard, you can view each financing offer for your connected accounts in the [Financing Reporting](https://dashboard.stripe.com/test/connect/capital/financing_offers) page. You can view [metrics](https://docs.stripe.com/capital/reporting.md) in the [Financing Overview](https://dashboard.stripe.com/test/connect/capital) page.
-
-## Replace the offer
-
-1. Click the overflow menu (⋯) next to the delivered offer, and select **Replace offer**.
-
-   > **Replace offer** only appears for offers that have never been replaced and have a `status` of `undelivered` or `delivered`.
-
-1. Click **Replace** at the bottom of the modal to replace the offer.
-
-   Stripe sends the `capital.financing_offer.replacement_created` webhook after a replacement [financing offer](https://docs.stripe.com/api/capital/connect_financing_object.md) is created. The body of the webhook contains details about the replacement financing offer.
-
-   ```json
-   {
-       "type": "capital.financing_offer.replacement_created",
-       "data": {
-           "object": {
-               "id": "financingoffer_xyz456",
-               "object": "capital.financing_offer",
-               "account": "acct_efg678",
-               "status": "delivered",
-               "financing_type": "flex_loan",
-               "offered_terms": {
-                   "currency": "usd",
-                   "advance_amount": 100000,
-                   "fee_amount": 10000,
-                   "withhold_rate": 0.15,
-               },
-               "replacement_for": "financingoffer_abc123",
-               ...
-           }
-       }
-   }
-   ```
-
-   Notice that the replacement offer has status delivered. When a connected account receives a replacement offer, it becomes their current active offer.
-
-1. Update your *webhook* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) integration to handle the `capital.financing_offer.replacement_created` webhook. If your internal data models store the connected account’s active financing offer ID, make sure you update the ID to the connected account’s replacement offer.
-
-## Retrieve the replaced offer
-
-After replacing the offer, you’re redirected to a page with details about the replacement offer. The events table contains an event **Account acct\_egg678 has a replacement financing offer for financingoffer\_abc123**, providing a reference to the user’s original offer ID.
-
-[Retrieve](https://docs.stripe.com/api/capital/financing_offers/retrieve.md#retrieve_financing_offer) `financingoffer_abc123`. Notice that the status is `replaced`, and the `replacement` attribute has the value `financingoffer_xyz456`, indicating `financingoffer_xyz456` replaced `financingoffer_abc123`.
-
-```json
-{
-  "id": "financingoffer_abc123",
-  "object": "capital.financing_offer",
-  "status": "replaced",
-  "replacement": "financingoffer_xyz456",
-  ...
-}
+```curl
+curl https://api.stripe.com/v1/issuing/cards \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d cardholder=ich_1Cm3pZIyNTgGDVfzI83rasFP \
+  -d currency=usd \
+  -d type=virtual \
+  -d replacement_for=ic_1LL8wgLUVt6Jcs5dgLLfwcAE \
+  -d replacement_reason=expired
 ```
 
-`Replaced` is a terminal state. If the connected account accepts their replacement offer, all future offer state transitions affect the replacement offer.
+```cli
+stripe issuing cards create  \
+  --cardholder=ich_1Cm3pZIyNTgGDVfzI83rasFP \
+  --currency=usd \
+  --type=virtual \
+  --replacement-for=ic_1LL8wgLUVt6Jcs5dgLLfwcAE \
+  --replacement-reason=expired
+```
 
-## See also
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-- [Set up an API integration](https://docs.stripe.com/capital/api-integration.md)
+card = client.v1.issuing.cards.create({
+  cardholder: 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  currency: 'usd',
+  type: 'virtual',
+  replacement_for: 'ic_1LL8wgLUVt6Jcs5dgLLfwcAE',
+  replacement_reason: 'expired',
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+card = client.v1.issuing.cards.create({
+  "cardholder": "ich_1Cm3pZIyNTgGDVfzI83rasFP",
+  "currency": "usd",
+  "type": "virtual",
+  "replacement_for": "ic_1LL8wgLUVt6Jcs5dgLLfwcAE",
+  "replacement_reason": "expired",
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$card = $stripe->issuing->cards->create([
+  'cardholder' => 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  'currency' => 'usd',
+  'type' => 'virtual',
+  'replacement_for' => 'ic_1LL8wgLUVt6Jcs5dgLLfwcAE',
+  'replacement_reason' => 'expired',
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CardCreateParams params =
+  CardCreateParams.builder()
+    .setCardholder("ich_1Cm3pZIyNTgGDVfzI83rasFP")
+    .setCurrency("usd")
+    .setType(CardCreateParams.Type.VIRTUAL)
+    .setReplacementFor("ic_1LL8wgLUVt6Jcs5dgLLfwcAE")
+    .setReplacementReason(CardCreateParams.ReplacementReason.EXPIRED)
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Card card = client.v1().issuing().cards().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const card = await stripe.issuing.cards.create({
+  cardholder: 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  currency: 'usd',
+  type: 'virtual',
+  replacement_for: 'ic_1LL8wgLUVt6Jcs5dgLLfwcAE',
+  replacement_reason: 'expired',
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.IssuingCardCreateParams{
+  Cardholder: stripe.String("ich_1Cm3pZIyNTgGDVfzI83rasFP"),
+  Currency: stripe.String(stripe.CurrencyUSD),
+  Type: stripe.String(stripe.IssuingCardTypeVirtual),
+  ReplacementFor: stripe.String("ic_1LL8wgLUVt6Jcs5dgLLfwcAE"),
+  ReplacementReason: stripe.String(stripe.IssuingCardReplacementReasonExpired),
+}
+result, err := sc.V1IssuingCards.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Issuing.CardCreateOptions
+{
+    Cardholder = "ich_1Cm3pZIyNTgGDVfzI83rasFP",
+    Currency = "usd",
+    Type = "virtual",
+    ReplacementFor = "ic_1LL8wgLUVt6Jcs5dgLLfwcAE",
+    ReplacementReason = "expired",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Issuing.Cards;
+Stripe.Issuing.Card card = service.Create(options);
+```
+
+
+## Replacements for lost or stolen cards
+
+Lost or stolen cards get new card numbers for security reasons. We need to cancel the original cards before we can create the replacement card.
+
+# Dashboard
+
+> This is a Dashboard for when testing-method is without-code. View the full page at https://docs.stripe.com/issuing/cards/replacements?testing-method=without-code.
+
+1. Visit the [Cards tab](https://dashboard.stripe.com/issuing/cards) in the Issuing Dashboard.
+![Issuing cards page](https://b.stripecdn.com/docs-statics-srv/assets/cards-page.e8e9728de4c5cbf6bf3b557dc634ed56.png)
+   
+1. Search for the card you want to replace and click it to view its details.
+![Issuing card details sidebar](https://b.stripecdn.com/docs-statics-srv/assets/card-details.46b3256598769441da31758fd9dba482.png)
+   
+1. Click **Replace card** in the sidebar on the right.
+
+1. Select **Your card is lost** or **Your card was stolen or used fraudulently** and click **Continue** if you’re replacing a physical card, or **Replace card** if you’re replacing a virtual card.
+![Issuing card replace modal](https://b.stripecdn.com/docs-statics-srv/assets/replace-card-modal.05577a2adead1b5c67e9e2edb9ac20b0.png)
+   
+1. If the card you’re replacing is a physical card, enter the shipping details for the replacement card and click **Replace card**.
+![Issuing card replace modal shipping details form](https://b.stripecdn.com/docs-statics-srv/assets/replace-card-shipping-details.cf8cae31bb586a5f68020f9d6ec4412f.png)
+
+
+# API
+
+> This is a API for when testing-method is with-code. View the full page at https://docs.stripe.com/issuing/cards/replacements?testing-method=with-code.
+
+To create a replacement card for a lost or stolen card:
+
+1. Cancel the lost or stolen card by using the [update card](https://docs.stripe.com/api.md#update_issuing_card) endpoint to set its `status` to `canceled` and its `cancellation_reason` to `lost` or `stolen`.
+
+1. Create a [Card](https://docs.stripe.com/api.md#issuing_card_object) with `replacement_for` using the lost or stolen `Card` ID and `replacement_reason` set to `lost` or `stolen`.
+
+```curl
+curl https://api.stripe.com/v1/issuing/cards/ic_1CoYuRKEl2ztzE5GIEDjQiUI \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d status=canceled \
+  -d cancellation_reason=lost
+```
+
+```cli
+stripe issuing cards update ic_1CoYuRKEl2ztzE5GIEDjQiUI \
+  --status=canceled \
+  --cancellation-reason=lost
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+card = client.v1.issuing.cards.update(
+  'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  {
+    status: 'canceled',
+    cancellation_reason: 'lost',
+  },
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+card = client.v1.issuing.cards.update(
+  "ic_1CoYuRKEl2ztzE5GIEDjQiUI",
+  {"status": "canceled", "cancellation_reason": "lost"},
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$card = $stripe->issuing->cards->update(
+  'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  [
+    'status' => 'canceled',
+    'cancellation_reason' => 'lost',
+  ]
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CardUpdateParams params =
+  CardUpdateParams.builder()
+    .setStatus(CardUpdateParams.Status.CANCELED)
+    .setCancellationReason(CardUpdateParams.CancellationReason.LOST)
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Card card = client.v1().issuing().cards().update("ic_1CoYuRKEl2ztzE5GIEDjQiUI", params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const card = await stripe.issuing.cards.update(
+  'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  {
+    status: 'canceled',
+    cancellation_reason: 'lost',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.IssuingCardUpdateParams{
+  Status: stripe.String(stripe.IssuingCardStatusCanceled),
+  CancellationReason: stripe.String(stripe.IssuingCardCancellationReasonLost),
+}
+result, err := sc.V1IssuingCards.Update(
+  context.TODO(), "ic_1CoYuRKEl2ztzE5GIEDjQiUI", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Issuing.CardUpdateOptions
+{
+    Status = "canceled",
+    CancellationReason = "lost",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Issuing.Cards;
+Stripe.Issuing.Card card = service.Update("ic_1CoYuRKEl2ztzE5GIEDjQiUI", options);
+```
+
+```curl
+curl https://api.stripe.com/v1/issuing/cards \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d cardholder=ich_1Cm3pZIyNTgGDVfzI83rasFP \
+  -d currency=usd \
+  -d type=virtual \
+  -d replacement_for=ic_1CoYuRKEl2ztzE5GIEDjQiUI \
+  -d replacement_reason=lost
+```
+
+```cli
+stripe issuing cards create  \
+  --cardholder=ich_1Cm3pZIyNTgGDVfzI83rasFP \
+  --currency=usd \
+  --type=virtual \
+  --replacement-for=ic_1CoYuRKEl2ztzE5GIEDjQiUI \
+  --replacement-reason=lost
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+card = client.v1.issuing.cards.create({
+  cardholder: 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  currency: 'usd',
+  type: 'virtual',
+  replacement_for: 'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  replacement_reason: 'lost',
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+card = client.v1.issuing.cards.create({
+  "cardholder": "ich_1Cm3pZIyNTgGDVfzI83rasFP",
+  "currency": "usd",
+  "type": "virtual",
+  "replacement_for": "ic_1CoYuRKEl2ztzE5GIEDjQiUI",
+  "replacement_reason": "lost",
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$card = $stripe->issuing->cards->create([
+  'cardholder' => 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  'currency' => 'usd',
+  'type' => 'virtual',
+  'replacement_for' => 'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  'replacement_reason' => 'lost',
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CardCreateParams params =
+  CardCreateParams.builder()
+    .setCardholder("ich_1Cm3pZIyNTgGDVfzI83rasFP")
+    .setCurrency("usd")
+    .setType(CardCreateParams.Type.VIRTUAL)
+    .setReplacementFor("ic_1CoYuRKEl2ztzE5GIEDjQiUI")
+    .setReplacementReason(CardCreateParams.ReplacementReason.LOST)
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Card card = client.v1().issuing().cards().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const card = await stripe.issuing.cards.create({
+  cardholder: 'ich_1Cm3pZIyNTgGDVfzI83rasFP',
+  currency: 'usd',
+  type: 'virtual',
+  replacement_for: 'ic_1CoYuRKEl2ztzE5GIEDjQiUI',
+  replacement_reason: 'lost',
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.IssuingCardCreateParams{
+  Cardholder: stripe.String("ich_1Cm3pZIyNTgGDVfzI83rasFP"),
+  Currency: stripe.String(stripe.CurrencyUSD),
+  Type: stripe.String(stripe.IssuingCardTypeVirtual),
+  ReplacementFor: stripe.String("ic_1CoYuRKEl2ztzE5GIEDjQiUI"),
+  ReplacementReason: stripe.String(stripe.IssuingCardReplacementReasonLost),
+}
+result, err := sc.V1IssuingCards.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Issuing.CardCreateOptions
+{
+    Cardholder = "ich_1Cm3pZIyNTgGDVfzI83rasFP",
+    Currency = "usd",
+    Type = "virtual",
+    ReplacementFor = "ic_1CoYuRKEl2ztzE5GIEDjQiUI",
+    ReplacementReason = "lost",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Issuing.Cards;
+Stripe.Issuing.Card card = service.Create(options);
+```
+
+
+## All replacements
+
+All replacement cards have renewed expiration dates and new security codes. Authorizations made on the original cards are migrated to the replacements, but might still clear on the original cards. Like the originals, replacement cards must be activated before use.
+
+## Card-on-file updating
+
+For many of our card programs, Stripe automatically updates the card details on file with acquiring merchants, even when a card is completely reissued. This feature offers several benefits, including saving your cardholders the hassle of manually re-entering card details when their cards expire.
+
+### Card expired or damaged
+
+Updating the payment details for a card that has been replaced due to expiration or damage ensures that recurring payments and stored payment details continue to function. This enables cardholders to continue making payments when they replace a card.
+
+### Card lost or stolen
+
+Stripe doesn’t update businesses with the new card number, expiry, and security code of a replacement card if the old card is marked as being lost or stolen.

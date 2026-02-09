@@ -4,181 +4,248 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/chef.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/chef.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://infisical.com/docs/integrations/app-connections/chef.md
+# Chef
 
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/chef.md
+> Learn how to configure a Chef Certificate Sync for Infisical PKI.
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/chef.md
+**Prerequisites:**
 
-# Source: https://infisical.com/docs/integrations/app-connections/chef.md
+* Create a [Chef Connection](/integrations/app-connections/chef)
+* Ensure your network security policies allow incoming requests from Infisical to this certificate sync provider, if network restrictions apply.
 
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/chef.md
+<Note>
+  The Chef Certificate Sync requires the following permissions to be set on the Chef user
+  for Infisical to sync certificates to Chef: `data bag read`, `data bag create`, `data bag update`, `data bag delete`.
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/chef.md
+  Any role with these permissions would work such as a custom role with **Data Bag** permissions.
+</Note>
 
-# Source: https://infisical.com/docs/integrations/app-connections/chef.md
-
-# Chef Connection
-
-> Learn how to configure a Chef Connection for Infisical.
-
-<Info>
-  Chef App Connection is a paid feature.
-
-  If you're using Infisical Cloud, then it is available under the **Enterprise Tier**. If you're self-hosting Infisical,
-  then you should contact [team@infisical.com](mailto:team@infisical.com) to purchase an enterprise license to use it.
-</Info>
-
-Infisical supports the use of User Private Key to connect with Chef Server.
-
-Please access your **starter kit** to get all the required information to create a Chef Connection.
-
-<Accordion title="If you don't have a starter kit">
-  <Warning>
-    If you download a new starter kit, your previous private key/user key will
-    no longer be valid. Please make sure to update all the places that use the
-    previous private key.
-  </Warning>
-
-  <Steps>
-    <Step title="Navigate to your Chef Server Dashboard, and click on the 'Organizations' tab">
-            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/chef-dashboard.png" alt="Chef Server User Keys" />
-    </Step>
-
-    <Step title="Click on the organization you want to connect to, and then click on the 'Starter Kit' button">
-            <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/starter-kit.png" alt="Starter Kit" />
-    </Step>
-
-    <Step title="Click on the 'Download Starter Kit' button to download the starter kit">
-            <img
-              src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/download-starter-kit.png"
-              alt="Download Starter
-      Kit"
-            />
-    </Step>
-
-    <Step title="Download the starter kit zip file and extract the contents">
-            <img
-              src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/extract-starter-kit.png"
-              alt="Extract Starter
-      Kit"
-            />
-    </Step>
-  </Steps>
-</Accordion>
-
-<Steps>
-  <Step title="Open your starter kit's folder">
-    Open your starter kit's folder(or `chef-repo`) and navigate to the `.chef`
-    folder.
-
-    <Note>
-      Please make sure you have hidden files visible in your file explorer.
-    </Note>
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/chef-folder.png" alt=".chef folder" />
-  </Step>
-
-  <Step title="Copy the private key">
-    In the `.chef` folder, you will find a `[your-username].pem` file. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/private-key-file.png" alt="Private
-    Key File" />
-
-    **Private Key:** Copy the content of the private key file.
-  </Step>
-
-  <Step title="Open the config.rb file">
-    Open the `config.rb` file and copy the content of the file.
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/chef-connection-details.png" alt="Config.rb File Content" />
-
-    **User Name(1):** The user name of the chef user.
-
-    **Server URL(2):** The server url of the chef server.
-
-    **Organization Name(3):** The organization name of the chef server.
-  </Step>
-</Steps>
-
-## Create a Chef Connection in Infisical via UI
+<Note>
+  Certificates synced to Chef will be stored as data bag items within the specified data bag,
+  preserving both the certificate and private key components as separate fields.
+</Note>
 
 <Tabs>
   <Tab title="Infisical UI">
-    <Steps>
-      <Step title="Navigate to App Connections">
-        In your Infisical dashboard, navigate to the **App Connections** page in the desired project.
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
-      </Step>
+    1. Navigate to **Project** > **Integrations** > **Certificate Syncs** and press **Add Sync**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/general/create-certificate-sync.png" alt="Certificate Syncs Tab" />
 
-      <Step title="Select Chef Connection">
-        Click **+ Add Connection** and choose **Chef** Connection from the list of integrations.
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/app-connection-option.png" alt="Select Chef Connection" />
-      </Step>
+    2. Select the **Chef** option.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/select-chef-option.png" alt="Select Chef" />
 
-      <Step title="Fill out the Chef Connection form">
-        Complete the form by providing:
+    3. Configure the **Destination** to where certificates should be deployed, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-destination.png" alt="Configure Destination" />
 
-        * A descriptive name for the connection
-        * An optional description
-        * Server URL(optional): The URL of the Chef server to connect with (defaults to [https://api.chef.io](https://api.chef.io))
-        * Organization short name
-        * User name
-        * Private key: Your Chef user's private key (.pem file)
+       * **Chef Connection**: The Chef Connection to authenticate with.
+       * **Data Bag Name**: The name of the Chef data bag where certificates will be stored.
 
-                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/app-connection-form.png" alt="Chef Connection Modal" />
-      </Step>
+    4. Configure the **Sync Options** to specify how certificates should be synced, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-options.png" alt="Configure Options" />
 
-      <Step title="Connection created">
-        After submitting the form, your **Chef Connection** will be successfully created and ready to use with your Infisical project.
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/chef/app-connection-generated.png" alt="Chef Connection Created" />
-      </Step>
-    </Steps>
+       * **Enable Removal of Expired/Revoked Certificates**: If enabled, Infisical will remove certificates from the destination if they are no longer active in Infisical.
+       * **Preserve Data Bag Item on Renewal**: Only applies to certificate renewals. When a certificate is renewed in Infisical, this option controls how the renewed certificate is handled. If enabled, the renewed certificate will update the existing data bag item, preserving the same item name. If disabled, the renewed certificate will be created as a new data bag item with a new name.
+       * **Include Root CA**: If enabled, the Root CA certificate will be included in the certificate chain when syncing to Chef data bags. If disabled, only intermediate certificates will be included.
+       * **Certificate Name Schema** (Optional): Customize how certificate item names are generated in Chef data bags. Use `{{certificateId}}` as a placeholder for the certificate ID.
+       * **Auto-Sync Enabled**: If enabled, certificates will automatically be synced when changes occur. Disable to enforce manual syncing only.
+
+    5. Configure the **Field Mappings** to customize how certificate data is stored in Chef data bag items, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-field-mappings.png" alt="Configure Field Mappings" />
+
+       * **Certificate Field**: The field name where the certificate will be stored in the data bag item (default: `certificate`)
+       * **Private Key Field**: The field name where the private key will be stored in the data bag item (default: `private_key`)
+       * **Certificate Chain Field**: The field name where the full certificate chain excluding the root CA certificate will be stored (default: `certificate_chain`)
+       * **CA Certificate Field**: The field name where the root CA certificate will be stored (default: `ca_certificate`)
+
+    <Tip>
+      **Chef Data Bag Item Structure**: Certificates are stored in Chef data bags as items with the following structure (field names can be customized via field mappings):
+
+      ```json  theme={"dark"}
+      {
+        "id": "certificate-item-name",
+        "certificate": "-----BEGIN CERTIFICATE-----\n...",
+        "private_key": "-----BEGIN PRIVATE KEY-----\n...",
+        "certificate_chain": "-----BEGIN CERTIFICATE-----\n...",
+        "ca_certificate": "-----BEGIN CERTIFICATE-----\n..."
+      }
+      ```
+
+      **Example with Custom Field Mappings**:
+
+      ```json  theme={"dark"}
+      {
+        "id": "certificate-item-name",
+        "ssl_cert": "-----BEGIN CERTIFICATE-----\n...",
+        "ssl_key": "-----BEGIN PRIVATE KEY-----\n...",
+        "ssl_chain": "-----BEGIN CERTIFICATE-----\n...",
+        "ssl_ca": "-----BEGIN CERTIFICATE-----\n..."
+      }
+      ```
+    </Tip>
+
+    6. Configure the **Details** of your Chef Certificate Sync, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-details.png" alt="Configure Details" />
+
+       * **Name**: The name of your sync. Must be slug-friendly.
+       * **Description**: An optional description for your sync.
+
+    7. Select which certificates should be synced to Chef.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-certificates.png" alt="Select Certificates" />
+
+    8. Review your Chef Certificate Sync configuration, then click **Create Sync**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-review.png" alt="Confirm Configuration" />
+
+    9. If enabled, your Chef Certificate Sync will begin syncing your certificates to the destination endpoint.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/chef/chef-synced.png" alt="Sync Certificates" />
   </Tab>
 
   <Tab title="API">
-    To create a Chef Connection via API, send a request to the [Create Chef Connection](/api-reference/endpoints/app-connections/chef/create) endpoint.
+    To create a **Chef Certificate Sync**, make an API request to the [Create Chef Certificate Sync](/api-reference/endpoints/pki/syncs/chef/create) API endpoint.
 
     ### Sample request
 
+    <Note>
+      You can optionally specify `certificateIds` during sync creation to immediately add certificates to the sync.
+      If not provided, you can add certificates later using the certificate management endpoints.
+    </Note>
+
     ```bash Request theme={"dark"}
-    curl    --request POST \
-            --url https://app.infisical.com/api/v1/app-connections/chef \
-            --header 'Content-Type: application/json' \
-            --data '{
-                "name": "my-chef-connection",
-                "method": "user-key",
-                "projectId": "7ffbb072-2575-495a-b5b0-127f88caef78",
-                "credentials": {
-                    "orgName": "my-org",
-                    "userName": "my-user",
-                    "privateKey": "your-private-key"
-                }
-            }'
+    curl --request POST \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/chef \
+    --header 'Authorization: Bearer <access-token>' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "my-chef-cert-sync",
+        "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "description": "an example certificate sync",
+        "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "destination": "chef",
+        "isAutoSyncEnabled": true,
+        "certificateIds": [
+            "550e8400-e29b-41d4-a716-446655440000",
+            "660f1234-e29b-41d4-a716-446655440001"
+        ],
+        "syncOptions": {
+            "canRemoveCertificates": true,
+            "preserveSecretOnRenewal": true,
+            "canImportCertificates": false,
+            "includeRootCa": false,
+            "certificateNameSchema": "myapp-{{certificateId}}",
+            "fieldMappings": {
+                "certificate": "ssl_cert",
+                "privateKey": "ssl_key",
+                "certificateChain": "ssl_chain",
+                "caCertificate": "ssl_ca"
+            }
+        },
+        "destinationConfig": {
+            "dataBagName": "ssl_certificates"
+        }
+    }'
+    ```
+
+    ### Example with Default Field Mappings
+
+    ```bash Request theme={"dark"}
+    curl --request POST \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/chef \
+    --header 'Authorization: Bearer <access-token>' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "my-chef-cert-sync-default",
+        "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "description": "Chef sync with default field mappings",
+        "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "destination": "chef",
+        "isAutoSyncEnabled": true,
+        "syncOptions": {
+            "canRemoveCertificates": true,
+            "preserveSecretOnRenewal": true,
+            "canImportCertificates": false,
+            "includeRootCa": false,
+            "certificateNameSchema": "{{commonName}}-{{certificateId}}",
+            "fieldMappings": {
+                "certificate": "certificate",
+                "privateKey": "private_key",
+                "certificateChain": "certificate_chain",
+                "caCertificate": "ca_certificate"
+            }
+        },
+        "destinationConfig": {
+            "dataBagName": "certificates"
+        }
+    }'
     ```
 
     ### Sample response
 
-    ```bash Response theme={"dark"}
+    ```json Response theme={"dark"}
     {
-      "appConnection": {
-          "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
-          "name": "my-chef-connection",
-          "description": null,
-          "projectId": "7ffbb072-2575-495a-b5b0-127f88caef78",
-          "version": 1,
-          "orgId": "abcdef12-3456-7890-abcd-ef1234567890",
-          "createdAt": "2025-10-13T10:15:00.000Z",
-          "updatedAt": "2025-10-13T10:15:00.000Z",
-          "isPlatformManagedCredentials": false,
-          "credentialsHash": "d41d8cd98f00b204e9800998ecf8427e",
-          "app": "chef",
-          "method": "user-key",
-          "credentials": {
-            "orgName": "my-org",
-            "userName": "my-user",
-          }
-      }
+        "pkiSync": {
+            "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "name": "my-chef-cert-sync",
+            "description": "an example certificate sync",
+            "destination": "chef",
+            "isAutoSyncEnabled": true,
+            "destinationConfig": {
+                "dataBagName": "ssl_certificates"
+            },
+            "syncOptions": {
+                "canRemoveCertificates": true,
+                "preserveSecretOnRenewal": true,
+                "canImportCertificates": false,
+                "includeRootCa": false,
+                "certificateNameSchema": "myapp-{{certificateId}}",
+                "fieldMappings": {
+                    "certificate": "ssl_cert",
+                    "privateKey": "ssl_key",
+                    "certificateChain": "ssl_chain",
+                    "caCertificate": "ssl_ca"
+                }
+            },
+            "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "createdAt": "2023-01-01T00:00:00.000Z",
+            "updatedAt": "2023-01-01T00:00:00.000Z"
+        }
     }
     ```
   </Tab>
 </Tabs>
+
+## Certificate Management
+
+Your Chef Certificate Sync will:
+
+* **Automatic Deployment**: Deploy certificates in Infisical to Chef data bags with customizable field names
+* **Certificate Updates**: Update certificates in Chef data bags when renewals occur
+* **Expiration Handling**: Optionally remove expired certificates from Chef data bags (if enabled)
+* **Format Preservation**: Maintain certificate format during sync operations
+* **Field Customization**: Map certificate data to custom field names that match your Chef cookbook requirements
+* **CA Certificate Support**: Include CA certificates in data bag items for complete certificate chain management
+
+<Note>
+  Chef Certificate Syncs support both automatic and manual
+  synchronization modes. When auto-sync is enabled, certificates are
+  automatically deployed as they are issued or renewed.
+</Note>
+
+## Manual Certificate Sync
+
+You can manually trigger certificate synchronization to Chef using the sync certificates functionality. This is useful for:
+
+* Initial setup when you have existing certificates to deploy
+* One-time sync of specific certificates
+* Testing certificate sync configurations
+* Force sync after making changes
+
+To manually sync certificates, use the [Sync Certificates](/api-reference/endpoints/pki/syncs/chef/sync-certificates) API endpoint or the manual sync option in the Infisical UI.
+
+<Note>
+  Chef does not support importing certificates back into Infisical
+  due to the nature of Chef data bags where certificates are stored as data
+  rather than managed certificate objects.
+</Note>

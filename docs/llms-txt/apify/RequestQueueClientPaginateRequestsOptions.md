@@ -2,6 +2,8 @@
 
 # RequestQueueClientPaginateRequestsOptions<!-- -->
 
+Options for paginating through requests in the queue.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,7 +14,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#exclusiveStartId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L608)optionalexclusiveStartId
+### [**](#exclusiveStartId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L878)optionalexclusiveStartId
 
 **exclusiveStartId?
 
@@ -20,7 +22,7 @@
 
 : string
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L606)optionallimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L876)optionallimit
 
 **limit?
 
@@ -28,7 +30,7 @@
 
 : number
 
-### [**](#maxPageLimit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L607)optionalmaxPageLimit
+### [**](#maxPageLimit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L877)optionalmaxPageLimit
 
 **maxPageLimit?
 

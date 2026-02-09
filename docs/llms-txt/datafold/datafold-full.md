@@ -76,14 +76,6 @@ delete /api/v1/lineage/bi/{bi_datasource_id}/
 
 
 
-# Rename a Power BI integration
-Source: https://docs.datafold.com/api-reference/bi/rename-a-power-bi-integration
-
-openapi-public.json put /api/v1/lineage/bi/powerbi/{bi_datasource_id}/
-It can only update the name. Returns the integration with changed fields.
-
-
-
 # Sync a BI integration
 Source: https://docs.datafold.com/api-reference/bi/sync-a-bi-integration
 
@@ -124,6 +116,14 @@ It can only update the schedule. Returns the integration with changed fields.
 
 
 
+# Update a Power BI integration
+Source: https://docs.datafold.com/api-reference/bi/update-a-power-bi-integration
+
+openapi-public.json put /api/v1/lineage/bi/powerbi/{bi_datasource_id}/
+Updates the integration configuration. Returns the integration with changed fields.
+
+
+
 # Update a Tableau integration
 Source: https://docs.datafold.com/api-reference/bi/update-a-tableau-integration
 
@@ -157,6 +157,14 @@ post /api/v1/ci/{ci_config_id}/{pr_num}
 Source: https://docs.datafold.com/api-reference/data-diffs/create-a-data-diff
 
 post /api/v1/datadiffs
+Launches a new data diff to compare two datasets (tables or queries).
+
+A data diff identifies differences between two datasets by comparing:
+- Row-level changes (added, removed, modified rows)
+- Schema differences
+- Column-level statistics
+
+The diff runs asynchronously. Use the returned diff ID to poll for status and retrieve results.
 
 
 
@@ -171,6 +179,24 @@ get /api/v1/datadiffs/{datadiff_id}
 Source: https://docs.datafold.com/api-reference/data-diffs/get-a-data-diff-summary
 
 get /api/v1/datadiffs/{datadiff_id}/summary_results
+
+
+
+# Get a human-readable summary of a DataDiff comparison
+Source: https://docs.datafold.com/api-reference/data-diffs/get-a-human-readable-summary-of-a-datadiff-comparison
+
+openapi-public.json get /api/v1/datadiffs/{datadiff_id}/summary
+Retrieves a comprehensive, human-readable summary of a completed data diff.
+
+This endpoint provides the most useful information for understanding diff results:
+- Overall status and result (success/failure)
+- Human-readable feedback explaining the differences found
+- Key statistics (row counts, differences, match rates)
+- Configuration details (tables compared, primary keys used)
+- Error messages if the diff failed
+
+Use this after a diff completes to get actionable insights. For diffs still running,
+check status with get_datadiff first.
 
 
 
@@ -201,6 +227,25 @@ patch /api/v1/datadiffs/{datadiff_id}
 Source: https://docs.datafold.com/api-reference/data-sources/create-a-data-source
 
 post /api/v1/data_sources
+
+
+
+# Execute a SQL query against a data source
+Source: https://docs.datafold.com/api-reference/data-sources/execute-a-sql-query-against-a-data-source
+
+openapi-public.json post /api/v1/data_sources/{data_source_id}/query
+Executes a SQL query against the specified data source and returns the results.
+
+This endpoint allows you to run ad-hoc SQL queries for data exploration, validation, or analysis.
+The query is executed using the data source's native query runner with the appropriate credentials.
+
+**Streaming mode**: Use query parameter `?stream=true` or set `X-Stream-Response: true` header.
+Streaming is only supported for certain data sources (e.g., Databricks).
+When streaming, results are sent incrementally as valid JSON for memory efficiency.
+
+Returns:
+- Query results as rows with column metadata (name, type, description)
+- Limited to a reasonable number of rows for performance
 
 
 
@@ -236,6 +281,10 @@ get /api/v1/data_sources/types
 Source: https://docs.datafold.com/api-reference/data-sources/list-data-sources
 
 get /api/v1/data_sources
+Retrieves all data sources accessible to the authenticated user.
+
+Returns active data sources (not deleted, hidden, or draft) that the user has permission to access.
+For non-admin users, only data sources belonging to their assigned groups are returned.
 
 
 
@@ -244,6 +293,38 @@ Source: https://docs.datafold.com/api-reference/data-sources/test-a-data-source-
 
 post /api/v1/data_sources/{data_source_id}/test
 
+
+
+# Datafold API
+Source: https://docs.datafold.com/api-reference/datafold-api
+
+
+
+<CardGroup>
+  <Card title="Introduction" icon="file-lines" href="/api-reference/introduction">
+    The Datafold API reference is a guide to our available endpoints and...
+  </Card>
+
+  <Card title="CI" icon="file-lines" href="/api-reference/ci/list-ci-runs">
+    3 items
+  </Card>
+
+  <Card title="Data sources" icon="folder-open" href="/api-reference/data-sources/list-data-sources">
+    7 items
+  </Card>
+
+  <Card title="Data diffs" icon="folder-open" href="/api-reference/data-diffs/list-data-diffs">
+    5 items
+  </Card>
+
+  <Card title="BI" icon="folder-open" href="/api-reference/bi/list-all-integrations">
+    14 items
+  </Card>
+
+  <Card title="Audit Logs" icon="folder-open" href="/api-reference/audit-logs/get-audit-logs">
+    1 item
+  </Card>
+</CardGroup>
 
 
 # Datafold SDK
@@ -277,13 +358,13 @@ pip install datafold-sdk
 
 To use the Datafold CLI, you need to set up some environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 export DATAFOLD_API_KEY=XXXXXXXXX
 ```
 
 If your Datafold app URL is different from the default `app.datafold.com`, set the custom domain as the variable:
 
-```bash  theme={null}
+```bash theme={null}
 export DATAFOLD_HOST=<CUSTOM_DATAFOLD_APP_DOMAIN>
 ```
 
@@ -299,7 +380,7 @@ Please see our detailed docs on how to [set up Datafold in CI for dbt Core](../i
 
 #### CLI
 
-```bash  theme={null}
+```bash theme={null}
     datafold dbt upload \
     --ci-config-id <ci_config_id> \
     --run-type <run-type> \
@@ -309,7 +390,7 @@ Please see our detailed docs on how to [set up Datafold in CI for dbt Core](../i
 
 #### Python
 
-```python  theme={null}
+```python theme={null}
 import os
 
 from datafold_sdk.sdk.dbt import submit_artifacts
@@ -331,7 +412,7 @@ submit_artifacts(host=host,
 
 It can be beneficial to diff between two dbt environments before opening a pull request. This can be done using the Datafold SDK from the command line:
 
-```bash  theme={null}
+```bash theme={null}
 datafold diff dbt
 ```
 
@@ -353,7 +434,7 @@ This executes dbt locally and triggers a Data Diff to preview data changes witho
 
 #### Option 1: Add variables to the `dbt_project.yml`
 
-```yaml  theme={null}
+```yaml theme={null}
 # dbt_project.yml
 vars:
   data_diff:
@@ -373,13 +454,13 @@ This variable is used when a model has a custom schema and becomes ***dynamic***
 
 *If your prod environment looks like this ...*
 
-```bash  theme={null}
+```bash theme={null}
 PROD.ANALYTICS
 ```
 
 *... your data-diff configuration should look like this:*
 
-```yaml  theme={null}
+```yaml theme={null}
   vars:
       data_diff:
           prod_database: PROD
@@ -390,7 +471,7 @@ PROD.ANALYTICS
 
 *If your prod environment looks like this ...*
 
-```bash  theme={null}
+```bash theme={null}
 PROD.ANALYTICS
 PROD.PROD_MARKETING
 PROD.PROD_SALES
@@ -398,7 +479,7 @@ PROD.PROD_SALES
 
 *... your data-diff configuration should look like this:*
 
-```yaml  theme={null}
+```yaml theme={null}
   vars:
       data_diff:
           prod_database: PROD
@@ -410,7 +491,7 @@ PROD.PROD_SALES
 
 *If your prod environment looks like this ...*
 
-```yaml  theme={null}
+```yaml theme={null}
 PROD.ANALYTICS
 PROD.MARKETING
 PROD.SALES
@@ -418,7 +499,7 @@ PROD.SALES
 
 *... your data-diff configuration should look like this:*
 
-```yaml  theme={null}
+```yaml theme={null}
 vars:
   data_diff:
     prod_database: PROD
@@ -432,7 +513,7 @@ vars:
 
 > Note: `dbt ls` is preferred over `dbt compile` as it runs faster and data diffing does not require fully compiled models to work.
 
-```bash  theme={null}
+```bash theme={null}
 dbt ls -t prod # compile a manifest.json using the "prod" target
 mv target/manifest.json prod_manifest.json # move the file up a directory and rename it to prod_manifest.json
 dbt run # run your entire dbt project or only a subset of models with `dbt run --select <model_name>`
@@ -445,7 +526,7 @@ To connect to your database, navigate to **Settings** → **Integrations** → *
 
 After you **Test and Save**, add the ID (which can be found on Integrations > Data connections) to your **dbt\_project.yml**.
 
-```yaml  theme={null}
+```yaml theme={null}
 # dbt_project.yml
 vars:
   data_diff:
@@ -466,6 +547,54 @@ The following optional arguments are available:
 | `-pd, --prod-database TEXT`        | Override the dbt production database configuration within `dbt_project.yml`.                                                                                                                                       |
 | `-ps, --prod-schema TEXT`          | Override the dbt production schema configuration within `dbt_project.yml`.                                                                                                                                         |
 | `--help`                           | Show this message and exit.                                                                                                                                                                                        |
+
+
+# Get translation projects
+Source: https://docs.datafold.com/api-reference/dma/get-translation-projects
+
+openapi-public.json get /api/v1/dma/projects
+Get all translation projects for an organization.
+This is used for DMA v1 and v2, since it's TranslationProject is a SQLAlchemy model.
+Version is used to track if it's a DMA v1 or v2 project.
+
+
+
+# Check status of a DMA translation job
+Source: https://docs.datafold.com/api-reference/dma_v2/check-status-of-a-dma-translation-job
+
+openapi-public.json get /api/v1/dma/v2/projects/{project_id}/translate/jobs/{job_id}
+Get the current status and results of a DMA translation job.
+
+Poll this endpoint to monitor translation progress and retrieve results when complete.
+Translation jobs can run for several minutes to hours depending on project size.
+
+
+
+# Get translation summaries for all transforms in a project
+Source: https://docs.datafold.com/api-reference/dma_v2/get-translation-summaries-for-all-transforms-in-a-project
+
+openapi-public.json get /api/v1/dma/v2/projects/{project_id}/transforms
+Get translation summaries for all transforms in a project.
+
+Returns a list of transform summaries including transform group metadata,
+validation status, and execution results. Use this to monitor translation
+progress and identify failed transforms.
+
+
+
+# Start a DMA translation job
+Source: https://docs.datafold.com/api-reference/dma_v2/start-a-dma-translation-job
+
+openapi-public.json post /api/v1/dma/v2/projects/{project_id}/translate/jobs
+Start a translation job for a DMA project.
+
+Executes the DMA translation pipeline to convert source SQL code to target dialect.
+The pipeline processes code through multiple stages (file operations, reference extraction,
+template creation, SQL translation, validation, and bundling).
+
+This endpoint launches a long-running background workflow and returns immediately with
+a job_id. Use the get_translation_status endpoint to poll for progress and results.
+
 
 
 # Get column downstreams
@@ -515,7 +644,7 @@ Open the Datafold app, visit Settings > Account, and select **Create API Key**.
   Store your API key somewhere safe. If you lose it, you'll need to generate a new one.
 </Note>
 
-<img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e01e1d4e974f64bc105d9f84be2832ad" alt="Create an API key" data-og-width="2742" width="2742" data-og-height="1126" height="1126" data-path="images/create-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=097e301bb425134d419f5faa9f02de32 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c8496a16d3e4f24af0c1712d485bfe91 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=60e57f3cc4b71dbf91fe669ff9218fd5 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=fc6b27ac503686211a5846e47156b028 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=12e9e42e7a7b002e41ea4cb78dfc20a1 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-api-key.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0b53a6f6a3a1235e43db9f5ae21c9ac5 2500w" />
+<img alt="Create an API key" />
 
 ## Use your API Key
 
@@ -527,8 +656,8 @@ Authorization: Key {API_KEY}
 
 For example, if you're using cURL:
 
-```bash  theme={null}
-curl https://api.datafold.com/api/v1/... -H "Authorization: Key {API_KEY}"
+```bash theme={null}
+curl https://app.datafold.com/api/v1/... -H "Authorization: Key {API_KEY}"
 ```
 
 ## Datafold SDK
@@ -538,6 +667,357 @@ Rather than hit our REST API endpoints directly, we offer a convenient Python SD
 ## Need help?
 
 If you have any questions about how to use our REST API, please reach out to our team via Slack, in-app chat, or email us at [support@datafold.com](mailto:support@datafold.com).
+
+
+# Execute custom Cypher queries against the lineage graph
+Source: https://docs.datafold.com/api-reference/lineagev2/execute-custom-cypher-queries-against-the-lineage-graph
+
+openapi-public.json post /api/v1/lineagev2/cypher
+Execute custom Cypher queries for advanced lineage analysis.
+
+Allows running arbitrary Cypher queries against the Memgraph lineage database.
+Returns results in both tabular format and graph format (nodes and edges).
+
+WARNING: This is a power-user endpoint. All queries are logged for audit purposes.
+
+Use this for custom analysis beyond the standard lineage endpoints, such as:
+- Finding circular dependencies
+- Complex multi-hop patterns
+- Aggregation queries across lineage paths
+- Custom graph algorithms
+
+
+
+# Get all columns for a specific table
+Source: https://docs.datafold.com/api-reference/lineagev2/get-all-columns-for-a-specific-table
+
+openapi-public.json get /api/v1/lineagev2/table/{table_id}/columns
+List all columns in a dataset with metadata.
+
+Returns the complete schema of a table/view including column names, data types,
+usage statistics, and popularity scores. Useful for exploring table structure
+before diving into column-level lineage.
+
+
+
+# Get available type filters for search
+Source: https://docs.datafold.com/api-reference/lineagev2/get-available-type-filters-for-search
+
+openapi-public.json get /api/v1/lineagev2/search/types
+Returns available type filters for narrowing search results (e.g., type:table, type:column).
+
+
+
+# Get column-level lineage (field-level data flow)
+Source: https://docs.datafold.com/api-reference/lineagev2/get-column-level-lineage-field-level-data-flow
+
+openapi-public.json get /api/v1/lineagev2/column-lineage/{column_id}
+Get the lineage graph for a specific column.
+
+Returns upstream source columns (where this column's data originates) and downstream
+dependent columns (where this column's data flows to). Provides fine-grained lineage
+tracking at the field level.
+
+Use this for precise impact analysis, data quality root cause analysis, and understanding
+transformations applied to specific fields.
+
+
+
+# Get column-level lineage for a dataset
+Source: https://docs.datafold.com/api-reference/lineagev2/get-column-level-lineage-for-a-dataset
+
+openapi-public.json get /api/v1/lineagev2/dataset-column-lineage/{dataset_id}
+Get column-level lineage for a dataset (table, PowerBI visual, tile, etc.).
+
+For PowerBI visuals/tiles: shows columns they USES and their DERIVED_FROM lineage.
+For regular tables: shows columns that BELONGS_TO the table and their DERIVED_FROM lineage.
+
+This endpoint is particularly useful for PowerBI assets that use columns from multiple tables.
+
+
+
+# Get Column Lineage
+Source: https://docs.datafold.com/api-reference/lineagev2/get-column-lineage
+
+openapi-public.json get /api/internal/lineagev2/column-lineage/{column_id}
+Get column-level lineage.
+
+Args:
+    column_id: Full column identifier (format: database.schema.table.column or similar path)
+    direction: Lineage direction - "upstream", "downstream", or "both" (default: "both")
+    depth: Maximum traversal depth (default: configured system depth, typically 3-5 hops)
+
+Returns:
+    ColumnLineageResponse containing:
+    - column: The requested column with table context and metadata
+    - upstream: List of source columns this column derives from
+    - downstream: List of dependent columns derived from this column
+    - edges: DERIVED_FROM relationships between all returned columns
+
+Example:
+    - Get full column lineage: column_id="analytics.fact_orders.customer_id", direction="both"
+    - Trace column origin: column_id="analytics.dim_customer.email", direction="upstream"
+    - Find column usage: column_id="raw.users.user_id", direction="downstream", depth=3
+
+Note: depth parameter is interpolated into Cypher query using f-string because
+Cypher does not support parameterized variable-length path patterns (*1..{depth}).
+Input is validated as int by FastAPI.
+
+
+
+# Get Config
+Source: https://docs.datafold.com/api-reference/lineagev2/get-config
+
+openapi-public.json get /api/internal/lineagev2/config
+Get client-side configuration values.
+
+
+
+# Get Dataset Column Lineage
+Source: https://docs.datafold.com/api-reference/lineagev2/get-dataset-column-lineage
+
+openapi-public.json get /api/internal/lineagev2/dataset-column-lineage/{dataset_id}
+Get column-level lineage for a dataset.
+
+
+
+# Get lineage configuration settings
+Source: https://docs.datafold.com/api-reference/lineagev2/get-lineage-configuration-settings
+
+openapi-public.json get /api/v1/lineagev2/config
+Returns configuration values used by the lineage system.
+
+
+
+# Get lineage for a specific query
+Source: https://docs.datafold.com/api-reference/lineagev2/get-lineage-for-a-specific-query
+
+openapi-public.json get /api/v1/lineagev2/query/{fingerprint}/lineage
+Returns tables and columns used by a query with lineage relationships.
+
+
+
+# Get lineage graph statistics and health metrics
+Source: https://docs.datafold.com/api-reference/lineagev2/get-lineage-graph-statistics-and-health-metrics
+
+openapi-public.json get /api/v1/lineagev2/stats
+Get overall statistics about the lineage graph.
+
+Returns counts of all major entities in the lineage graph including datasets,
+columns, relationships, queries, and source files. Useful for understanding
+the scope and health of the lineage data.
+
+Use this to get a quick overview before exploring specific lineage paths.
+
+
+
+# Get Queries
+Source: https://docs.datafold.com/api-reference/lineagev2/get-queries
+
+openapi-public.json get /api/internal/lineagev2/queries
+Get top queries by execution count.
+
+
+
+# Get queries that read from a table
+Source: https://docs.datafold.com/api-reference/lineagev2/get-queries-that-read-from-a-table
+
+openapi-public.json get /api/v1/lineagev2/table/{table_id}/queries
+Returns queries that read from this table, ordered by execution count.
+
+
+
+# Get Query Lineage Endpoint
+Source: https://docs.datafold.com/api-reference/lineagev2/get-query-lineage-endpoint
+
+openapi-public.json get /api/internal/lineagev2/query/{fingerprint}/lineage
+Get tables and columns used by a query.
+
+
+
+# Get Search Types Endpoint
+Source: https://docs.datafold.com/api-reference/lineagev2/get-search-types-endpoint
+
+openapi-public.json get /api/internal/lineagev2/search/types
+Get available type filters for search autocomplete.
+
+
+
+# Get Stats
+Source: https://docs.datafold.com/api-reference/lineagev2/get-stats
+
+openapi-public.json get /api/internal/lineagev2/stats
+Get graph statistics.
+
+Returns:
+    StatsResponse containing:
+    - datasets: Total number of tables and views in the graph
+    - columns: Total number of columns tracked
+    - relationships: Total number of lineage edges (DEPENDS_ON + DERIVED_FROM)
+    - queries: Total number of SELECT queries analyzed
+    - sourceFiles: Total number of source SQL/dbt files processed
+
+Example response:
+    {
+        "datasets": 1250,
+        "columns": 15680,
+        "relationships": 8932,
+        "queries": 4521,
+        "sourceFiles": 892
+    }
+
+Use this to assess lineage coverage and data quality.
+
+
+
+# Get Table Columns
+Source: https://docs.datafold.com/api-reference/lineagev2/get-table-columns
+
+openapi-public.json get /api/internal/lineagev2/table/{table_id}/columns
+Get all columns for a table.
+
+Args:
+    table_id: Full table identifier (format: database.schema.table or similar path)
+
+Returns:
+    TableColumnsResponse containing:
+    - columns: List of all columns in the table with:
+        - id: Unique column identifier
+        - name: Column name
+        - dataType: Column data type (if available)
+        - totalQueries30d: Number of queries using this column in last 30 days
+        - popularity: Relative popularity score (0-100) based on query usage
+
+Example:
+    - List table schema: table_id="analytics.fact_orders"
+    - Returns all columns like order_id, customer_id, amount, created_at with their metadata
+
+Use this to understand table structure and identify important columns before
+exploring column-level lineage.
+
+
+
+# Get table-level lineage (upstream and downstream dependencies)
+Source: https://docs.datafold.com/api-reference/lineagev2/get-table-level-lineage-upstream-and-downstream-dependencies
+
+openapi-public.json get /api/v1/lineagev2/table-lineage/{table_id}
+Get the lineage graph for a specific dataset (table or view).
+
+Returns upstream sources (tables this dataset depends on) and downstream consumers
+(tables that depend on this dataset), along with dependency edges. Supports configurable
+traversal depth and direction.
+
+Use this to understand data flow and impact analysis at the table level.
+
+
+
+# Get Table Lineage
+Source: https://docs.datafold.com/api-reference/lineagev2/get-table-lineage
+
+openapi-public.json get /api/internal/lineagev2/table-lineage/{table_id}
+Get upstream/downstream table lineage.
+
+Args:
+    table_id: Full table identifier (format: database.schema.table or similar path)
+    direction: Lineage direction - "upstream", "downstream", or "both" (default: "both")
+    depth: Maximum traversal depth (default: configured system depth, typically 3-5 hops)
+
+Returns:
+    TableLineageResponse containing:
+    - dataset: The requested table/view with metadata
+    - upstream: List of source tables this dataset depends on
+    - downstream: List of dependent tables that use this dataset
+    - edges: Dependency relationships between all returned datasets
+
+Example:
+    - Get full lineage: table_id="analytics.fact_orders", direction="both"
+    - Get only sources: table_id="analytics.fact_orders", direction="upstream", depth=2
+    - Get only consumers: table_id="raw.customers", direction="downstream"
+
+Note: depth parameter is interpolated into Cypher query using f-string because
+Cypher does not support parameterized variable-length path patterns (*1..{depth}).
+Input is validated as int by FastAPI.
+
+
+
+# Get Table Queries
+Source: https://docs.datafold.com/api-reference/lineagev2/get-table-queries
+
+openapi-public.json get /api/internal/lineagev2/table/{table_id}/queries
+Get queries that read from this table.
+
+
+
+# Get top queries by execution count
+Source: https://docs.datafold.com/api-reference/lineagev2/get-top-queries-by-execution-count
+
+openapi-public.json get /api/v1/lineagev2/queries
+Returns the most frequently executed queries with metadata.
+
+
+
+# Run Cypher
+Source: https://docs.datafold.com/api-reference/lineagev2/run-cypher
+
+openapi-public.json post /api/internal/lineagev2/cypher
+Execute arbitrary Cypher query and return results.
+
+Args:
+    request: CypherRequest with query string
+
+Returns:
+    CypherResponse containing:
+    - columns: List of column names returned by the query
+    - results: List of result rows as dictionaries (tabular view)
+    - nodes: All graph nodes returned by the query
+    - edges: All graph edges/relationships returned by the query
+
+Example queries:
+    - Find all tables: "MATCH (t:Dataset) RETURN t.name LIMIT 10"
+    - Find circular dependencies: "MATCH (t:Dataset)-[:DEPENDS_ON*]->(t) RETURN t"
+    - Count by type: "MATCH (d:Dataset) RETURN d.asset_type, count(*) as count"
+    - Complex lineage: "MATCH path=(c1:Column)-[:DERIVED_FROM*1..3]->(c2:Column) RETURN path"
+
+WARNING: This endpoint executes arbitrary Cypher queries. It is intended for
+internal debugging and power users only. All queries are logged for audit purposes.
+
+Note: Results include both tabular data (for displaying in tables) and graph data
+(nodes/edges for graph visualization).
+
+
+
+# Search Entities
+Source: https://docs.datafold.com/api-reference/lineagev2/search-entities
+
+openapi-public.json get /api/internal/lineagev2/search
+Search for datasets and columns by name.
+
+Args:
+    q: Search query string (minimum 2 characters). Searches in dataset/column names and IDs.
+    limit: Maximum number of results to return per type (default: 50)
+
+Returns:
+    SearchResponse containing:
+    - datasets: List of matching tables/views with metadata (asset type, column count, row count, popularity)
+    - columns: List of matching columns with table context and popularity
+
+Example:
+    - Search for tables: q="customer" returns all datasets with "customer" in the name
+    - Search for columns: q="email" returns all columns with "email" in the name
+
+
+
+# Search for datasets and columns in the lineage graph
+Source: https://docs.datafold.com/api-reference/lineagev2/search-for-datasets-and-columns-in-the-lineage-graph
+
+openapi-public.json get /api/v1/lineagev2/search
+Search for datasets (tables, views) and columns by name in the lineage graph.
+
+Returns matching datasets and columns with metadata including popularity scores,
+query counts, and structural information. Results are ranked by name match.
+
+Use this to discover data assets before exploring their lineage relationships.
+
 
 
 # Create a Data Diff Monitor
@@ -624,66 +1104,6 @@ openapi-public.json patch /api/v1/monitors/{id}/update
 
 
 
-# Connection Budgets
-Source: https://docs.datafold.com/data-diff/connection-budgets
-
-How connection budgets are enforced across data diffs in Datafold
-
-## Overview
-
-Datafold now supports **shared connection budgeting** across
-
-* in-database diffs
-* cross-database diffs
-* in-memory diffs
-
-This feature ensures consistent, predictable behavior for database usage across the system—particularly important in environments with limited database connection capacity.
-
-***
-
-## ✨ Shared Connection Budgeting
-
-Datafold now enforces a **shared connection limit per database** across all supported diff runs.
-
-When a maximum number of connections is configured on a data source, this limit is respected **collectively** across all running diffs that target that source—regardless of the type of diff.
-
-This ensures that no combination of diff runs will exceed the specified connection cap for the database, providing:
-
-* ✅ More predictable resource usage
-* ✅ Protection against overloading the database
-* ✅ Simpler configuration and expectation management
-
-Connection limits are enforced automatically once set—no need to configure them at the individual diff level.
-
-***
-
-## ✅ Scope of This Feature
-
-| Jobs                 | Connection Budget Applied? |
-| -------------------- | -------------------------- |
-| in-database diffs    | ✅ Yes                      |
-| cross-database diffs | ✅ Yes                      |
-| in-memory diffs      | ✅ Yes                      |
-| Schema Fetching      | ❌ No                       |
-| Lineage & Profiling  | ❌ No                       |
-| SQL History          | ❌ No                       |
-| Monitors             | ❌ No                       |
-
-***
-
-## ⚙️ Configuration
-
-Shared connection budgeting is controlled via your **data source configuration**.
-
-Once a `Max Connections` limit is set, it will be automatically enforced **across all supported diff runs** targeting that database.
-
-## 📬 Feedback
-
-Questions, suggestions, or unexpected behavior? Reach out to the Datafold team via your usual support or engineering channels.
-
-***
-
-
 # Best Practices
 Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices
 
@@ -751,7 +1171,7 @@ In order to avoid long-running diffs, we recommend the following:
 In the screenshot below, we see that exactly 4 differences were found in `user_id`, but “at least 4,704 differences” were found in `total_runtime_seconds`. `user_id` has a number of differences below the per-column diff limit, and so we state the exact number. On the other hand, `total_runtime_seconds` has a number of differences greater than the per-column diff limit, so we state “at least.” Note that due to our algorithm’s approach, we often find significantly more differences than the limit before diffing is halted, and in that scenario, we report the value that was found, while stating that more differences may exist.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e5e4bc527ed248a8f06c1e6910dcf75e" data-og-width="1476" width="1476" data-og-height="1523" height="1523" data-path="images/screenshot.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=a5d6f86893b6306a12b78e7aa08bcf2a 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8b1ec0d83758bfbbe37f93688390ce42 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cbb81cf1d896810821449a957e2a1f4e 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3d2aa8c5375d44bb76757f76691be05a 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=df4562154b3d6a8af753fa041a61117e 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/screenshot.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1ee252f9dccad4d836c2990ac8719f88 2500w" />
+  <img />
 </Frame>
 
 ## Executing queries in parallel
@@ -761,7 +1181,7 @@ Increase the number of concurrent connections to the database in Datafold. This 
 Navigate to the **Settings** option in the left sidebar menu of Datafold. Adjust the **max connections** setting to increase the number of concurrent connections Datafold can establish with your data. Note that the maximum allowable value for concurrent connections is 64.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=cd52afb88ab462f6b3f69f3ea6ead45b" data-og-width="1534" width="1534" data-og-height="836" height="836" data-path="images/connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4cb4a75c28a66a51fa69e7cec884ce7c 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b7dde14c80d168e9c43fd2968b3abe51 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=45bb326072ea3b59e2f7cecaf834ecfd 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4f2090603a806a9f4f360d889684a2ef 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=325f96db65116e034e81c64df6882339 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/connection.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=98926e3cb27d393a85d09803377423d7 2500w" />
+  <img />
 </Frame>
 
 ## Optimize column selection
@@ -786,7 +1206,7 @@ As a general rule, primary keys should be of the same (or similar) type in both 
 </Note>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=aea91ec007c4c3b6f02a651d1f509141" data-og-width="1434" width="1434" data-og-height="1726" height="1726" data-path="images/data1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f77fe2030286efa0f69414ab836db7e0 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=72d4d2cfbb2ff26c44af7705b2d88c32 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=319b67c88bdd689f984061b21579496b 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=dbdc457cf596af8e77748b0f288ea6f9 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e340b852cbe1711e8ba79c496fef6d2e 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data1.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c1d00e992e47d24a9dbab3317028c7fe 2500w" />
+  <img />
 </Frame>
 
 
@@ -800,7 +1220,7 @@ This powerful algorithm provides full row-, column-, and value-level detail into
 ## Creating a new data diff
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=51b3d0c833d953bc4c773a3cb9852a1a" data-og-width="1414" width="1414" data-og-height="1540" height="1540" data-path="images/creating.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=25d6e6399462fda4e49a15595530b1da 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=46933ba2c7f36514ff9f64d951073f3e 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=39df2f5bbff7af814d08f317266874f9 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a2084bf150cb297459092928e06120a6 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b3a327e131204aba94717368790a338a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/creating.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4ee7a1980c87da54411e4ceafaa13d48 2500w" />
+  <img />
 </Frame>
 
 Setting up a new data diff in Datafold is straightforward. You can configure your data diffs with the following parameters and options:
@@ -902,7 +1322,7 @@ Once your data diff is complete, Datafold provides a concise, high-level summary
 ## Overview
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=dfb2b6c8d95632782f33082cd32fef46" data-og-width="3032" width="3032" data-og-height="1716" height="1716" data-path="images/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f781b8b739c36996213743bfdc4672f3 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=13405f054e2b826a3674ef43e4bfab2f 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=12d421fac1618936be457938eaa78a7c 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9fcea4c4a22bc1f43f7dd73b5b7604fe 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=95f372d97128840e8f445ca97b510946 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/overview.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5c15b56749bd776c57fcd56a7efe7198 2500w" />
+  <img />
 </Frame>
 
 The top-level menu displays the diff status, job ID, creation and completed times, runtime, and data connection.
@@ -910,7 +1330,7 @@ The top-level menu displays the diff status, job ID, creation and completed time
 ## Columns
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ac6c1544f226b273327ecc43cd48d73f" data-og-width="2984" width="2984" data-og-height="1692" height="1692" data-path="images/columns.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a9460414bdee320a50efcb48c76b6691 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e1a2ba2a72f07642c021b6a70abd5d36 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1b7ad4841814550a14c18242a8556ec0 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ed71f0451159487de75976ff9c8a389d 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a6174dcc4937b49a86cd45331320ea9a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/columns.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=339e7bc4dc6ff2531202512abcf625d7 2500w" />
+  <img />
 </Frame>
 
 The Columns tab displays a table with detailed column and type mappings from the two datasets being diffed, with status indicators for each column comparison (e.g., identical, percentage of values different). This provides a quick way to identify data inconsistencies and prioritize updates.
@@ -918,7 +1338,7 @@ The Columns tab displays a table with detailed column and type mappings from the
 ## Primary keys
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c37832ea5462bba8e883165c1b4f3e71" data-og-width="2986" width="2986" data-og-height="1718" height="1718" data-path="images/primarykeys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cd2a6b78def0d742873821dca35c6827 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=875e5e8e3e9876dc050c8e8dabd60158 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5d767e5850460b8c1d1153ac90701782 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4fb58adce588950286daf490d3e3eb18 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=50d3ebdaa886dea515022f6eff83c485 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/primarykeys.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cd23ad6685d95488bc2d210a0895d8cc 2500w" />
+  <img />
 </Frame>
 
 This tab highlights rows that are unique to the Target dataset in a data diff ("Rows exclusive to Target"). As this identifies rows that exist only in the Target dataset and not in the Source dataset based on the primary key, it flags potential data discrepancies.
@@ -928,7 +1348,7 @@ The Clone **diffs and materialize results** button allows you to rerun existing 
 ## Values
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=eeefef58cfe6776d6d768b4062b03a59" data-og-width="3038" width="3038" data-og-height="1720" height="1720" data-path="images/values.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=a234902e17b71d481d5e9ec7300d9f92 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=cd4ed9f61cc6bc53f1392f6a770cd1f9 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=4a907912eb3a9cf8bd39683f44fa37e6 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=83f8e29e4f0b869ac75572940a35b6c7 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=2a46e3fd9f201d65775a6409984fac40 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/values.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=df76fcf99f3b2c8433c2e3598b8bb1e4 2500w" />
+  <img />
 </Frame>
 
 This tab displays rows where at least one column value differs between the datasets being compared. It is useful for quickly assessing the extent of discrepancies between the two datasets.
@@ -937,43 +1357,6 @@ The **Show filters** button enables the following features:
 
 * Highlight characters: highlight value differences between tables
 * % of difference: filters and displays columns based on the specified percentage range of value differences
-
-
-# File Diffing
-Source: https://docs.datafold.com/data-diff/file-diffing
-
-Datafold allows you to diff files (e.g. CSV, Excel, Parquet, etc.) in a similar way to how you diff tables.
-
-<Note>
-  If you'd like to enable file diffing for your organization, please contact [support@datafold.com](mailto:support@datafold.com).
-</Note>
-
-In addition to diffing data in tables, views, and SQL queries, Datafold allows you to diff data in files hosted in cloud storage. For example, you can diff between an Excel file and a Snowflake table, or between a CSV file and an Excel file.
-
-## Supported cloud storage providers
-
-Datafold supports diffing files in the following cloud storage providers, with plans to support more in the future:
-
-* Amazon S3
-* Azure Blob Storage
-* Azure Data Lake Storage (ADLS)
-* Google Cloud Storage
-
-## Supported file types
-
-Datafold supports diffing the following file types:
-
-* Tabular text files (e.g. `.csv`, `.tsv`, `.txt`, `.dat`)
-* Excel (`.xlsx`, `.xls`)
-* Parquet (`.parquet`)
-
-## Type-specific options
-
-Depending on the type of file you're diffing, you'll have a few options to specify how you'd like to parse the file.
-
-For example, when diffing a tabular text file, you can specify the delimiter and skip header/footer rows.
-
-<img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bfbe8fbf183c9bf80bdedd39a5f8e110" alt="File diffing options" data-og-width="1440" width="1440" data-og-height="732" height="732" data-path="images/data_diff/file-diffing/adls-file-diff-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=5607d6a653192d345ede77ab89f7ff25 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=7f0bbf12eecac1b5c0ac76468c72daa7 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c2f297820dd0c454d8c563a1c31982f7 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=f5721a09b770a556877b6859c45d4539 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=54d0ef8b5cfb2b49492cdaba2158361b 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/file-diffing/adls-file-diff-options.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=61a426a8f98cb76c65b487577fd486bb 2500w" />
 
 
 # How Datafold Diffs Data
@@ -1048,7 +1431,7 @@ Source: https://docs.datafold.com/data-diff/in-database-diffing/creating-a-new-d
 Setting up a new data diff in Datafold is straightforward.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=25b0433c23469aff83f6603b3a7d05f3" data-og-width="1442" width="1442" data-og-height="1088" height="1088" data-path="images/in-diff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=14a32e8169a208e9273e29e7a07a4f17 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8fff25fd285124e58075e96e7cbe8999 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0c3f4e8a649e6d7f6a3d0bd58b83e8ff 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e238dbbd86db167374f84b51f2b58507 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=24f536b65aad54de72fac9f1ca9c4c7c 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-diff.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=86bd17bda0cdfd99c65c8e444638ef6a 2500w" />
+  <img />
 </Frame>
 
 You can configure your data diffs with the following parameters and options:
@@ -1114,7 +1497,7 @@ If a time-series dimension is selected, this produces a Timeline plot of diff re
 This is useful for identifying trends or anomalies when a given column does not match between tables in a certain date range. By selecting a time-based column, you can visualize differences and patterns across time, measured as column match rates.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=161da454ca34d1d8f4a37bd5f874a2e1" data-og-width="2564" width="2564" data-og-height="1242" height="1242" data-path="images/timeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=7244fa9ff4adc20953d2ee1f8d53e7e6 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=fffd38b458593ead056bd8971467f7a6 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=0b10dec6830905e889547e1ee83f0f10 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=16ce589445187f6ec73b99035f7da443 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=f8deb9b6b3d195c9474ef25f728399e8 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=724568a3fdf9746783f05b0cb831ee7d 2500w" />
+  <img />
 </Frame>
 
 ### Materialize diff results to table
@@ -1181,7 +1564,7 @@ Once your data diff is complete, Datafold provides a concise, high-level summary
 ## Overview
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=56d613ef5b60a81549939fd5d3ea419f" data-og-width="2958" width="2958" data-og-height="1713" height="1713" data-path="images/in-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=12a0391f570b88009bc3f474800f32f7 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1b97820bde958760470b1ed532beb949 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=25e137ba597ec73fea4f1756ae13fa83 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=82c8c1a2285fd141e196a448382671cc 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ece29a760cdef2f792abaeded442a0d7 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-overview.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=64fabb64fc190d3aa2499c08cbd06478 2500w" />
+  <img />
 </Frame>
 
 The top-level menu displays the diff status, job ID, creation and completed times, runtime, and data connection.
@@ -1189,7 +1572,7 @@ The top-level menu displays the diff status, job ID, creation and completed time
 ## Columns
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ee2f7d3885d5508738a30d1f088eec15" data-og-width="2990" width="2990" data-og-height="1680" height="1680" data-path="images/in-columns.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9eded42869908a4ee041918d6ca6fae4 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=eacedfd1b2b044424953e303041f0c09 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5e274d1e0ca64b1e0edf5f4ccca0cfa6 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9adbb3f95cf30d8c298057a4e9a0c473 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=172cf03e96cd60563f12d77e0d58923b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-columns.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=befe3e9abd9e3e0207da1945f5375f26 2500w" />
+  <img />
 </Frame>
 
 The Columns tab displays a table with detailed column and type mappings from the two datasets being diffed, with status indicators for each column comparison (e.g., identical, percentage of values different). This provides a quick way to identify data inconsistencies and prioritize updates.
@@ -1197,7 +1580,7 @@ The Columns tab displays a table with detailed column and type mappings from the
 ## Primary keys
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=fc7a9f9e39ff4f0c6df74980d535e2c2" data-og-width="2990" width="2990" data-og-height="1728" height="1728" data-path="images/in-primary.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=82ff789de0718c8f62d22223a0df2f27 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9884e9642f9f1b05f7e707ce4eba678f 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=632974d975998807d81bd1824c54aafd 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bee160f4fef40c912c631412758c3789 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b6fa3f1aec05f784a10e6d639a96d6aa 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-primary.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4a2cbcf62e3fa196d90909dc918b62a9 2500w" />
+  <img />
 </Frame>
 
 This tab highlights rows that are unique to the Test dataset in a data diff ("Rows exclusive to Test"). As this identifies rows that exist only in the Test dataset and not in the Main dataset based on the primary key, it flags potential data discrepancies.
@@ -1209,7 +1592,7 @@ The **Clone diffs and materialize** results button allows you to rerun existing 
 ## Column Profiles
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8b42ff31ff3dec65f2261c2827bf3270" data-og-width="3044" width="3044" data-og-height="1732" height="1732" data-path="images/in-profiles.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ab068999c886c5dfd17e47697037fd79 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=42dce3c20cbfccddb55384e9ea59df2f 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c36f03c1179dc217377711e3f3c6ae18 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9855ed1b9b31fddfefa0cce9bb528718 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=144efa39045abb960039b1848c0c2271 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-profiles.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=3a172f3962ca08f74b62eda7ed587617 2500w" />
+  <img />
 </Frame>
 
 Column Profiles displays aggregate statistics and distributions including averages, counts, ranges, and histogram charts representing column-level differences.
@@ -1219,7 +1602,7 @@ The **Show filters** button allows you to adjust chart values by relative (perce
 ## Values
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=48c363eee25ed62c10fb43aba69db754" data-og-width="3040" width="3040" data-og-height="1716" height="1716" data-path="images/in-values.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=748f95900bedc05f851bbb3b7b0f1647 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0b33e7e1d93ea27122d7de13bef64fc6 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=474bbaa67a573a6c9c8285163cf6c58e 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9140512b92e149a55ebe16f952711138 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9d635058b2c1c296f3791d874dc60799 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/in-values.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a5e1ad787282cf446a7eef2a926a30ca 2500w" />
+  <img />
 </Frame>
 
 This tab displays rows where at least one column value differs between the datasets being compared. It is useful for quickly assessing the extent of discrepancies between the two datasets.
@@ -1232,7 +1615,7 @@ The **Show** filters button enables the following features:
 ## Timeline
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=161da454ca34d1d8f4a37bd5f874a2e1" data-og-width="2564" width="2564" data-og-height="1242" height="1242" data-path="images/timeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=7244fa9ff4adc20953d2ee1f8d53e7e6 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=fffd38b458593ead056bd8971467f7a6 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=0b10dec6830905e889547e1ee83f0f10 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=16ce589445187f6ec73b99035f7da443 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=f8deb9b6b3d195c9474ef25f728399e8 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/timeline.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=724568a3fdf9746783f05b0cb831ee7d 2500w" />
+  <img />
 </Frame>
 
 The Timeline tab is a specialized feature that only appears if the time-series dimension column has been selected. It graphically represents data differences over time to highlight discrepancies. It only displays columns with data differences, and differences are presented as the share of mismatched data (percentage mismatched).
@@ -1246,7 +1629,7 @@ It is also useful in correlating data differences with specific time intervals t
 ## Downstream Impact
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=77ee5e8334440ebcfe24ad80b9bd25c3" data-og-width="3042" width="3042" data-og-height="1706" height="1706" data-path="images/downstream.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c5bc92b3b97c36bfdb2bd850189430e6 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ce10d6a9a5ee9c517f00afd9a2bd6b77 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9fd790cad393047aacf9d929f5597d4b 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=71181b15370f77f5f63aa08e0b2acbd0 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cba768caffa7cf0f52e668ce74387a7e 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/downstream.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5784cf4b1f0553b22e35d8ae758f37d6 2500w" />
+  <img />
 </Frame>
 
 This tab displays all associated BI and data app dependencies, such as dashboards and views, linked to the compared datasets. This helps visually illustrate the impact of data changes on downstream data assets.
@@ -1261,7 +1644,7 @@ A data diff is the value-level comparison between two tables, used to identify c
 
 When you **git diff** your code, you’re comparing two versions of your code files to see what has changed, such as lines added, removed, or modified. Similarly, a **data diff** compares two versions of a dataset or two databases to identify differences in individual cells in the data.
 
-<img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9c6fdaf4be1e5f7ff097e35e236aad4c" alt="what's a data diff" data-og-width="2400" width="2400" data-og-height="1350" height="1350" data-path="images/data_diff/what_is_data_diff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=729bba594d308250446243de02d4f99d 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a4db13429bfb4d5dff9c2d4c9b0fb488 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=8e2907a41e5244333a7393d9ee5f4e48 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a98f715a31041441606278f26f2b9c7a 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=0f8f72e0eded067cf0258b1e06ab3aa1 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff/what_is_data_diff.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3ef6e9f7143d2a03512dc5b304cb0fb5 2500w" />
+<img alt="what's a data diff" />
 
 ## Why do I need to diff data?
 
@@ -1285,7 +1668,7 @@ Datafold's [Data Diff](https://www.datafold.com/data-diff) is a tool that compar
 Here's how you can identify row-level discrepancies in Datafold:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=414ebe833488adcc05e8c6f196db307a" data-og-width="8271" width="8271" data-og-height="6306" height="6306" data-path="images/data-diff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ea5f6d9604a64fc668bcd6a05377dad7 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2033ff369770ceed8eb7c9aaf7040b3b 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=54b5f3618d3fb0b7a0f5b61d205e5803 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d324c0f4af625fc0dd044a3739aedaea 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6fd0a5f4f4551a5c258ed6b364438b5c 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-diff.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8575823e25178f8407b3fae24672df6b 2500w" />
+  <img />
 </Frame>
 
 Datafold provides end-to-end solutions for automating testing, including column-level lineage, ML-based anomaly detection, and enterprise-scale infrastructure support. It caters to complex and production-ready scenarios, including:
@@ -1347,7 +1730,7 @@ The following model-level information can be synced:
 
 Here's an example configuration in YAML format:
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     description: "Description of the table"
@@ -1372,7 +1755,7 @@ The following column-level information can be synced:
 
 Here's an example configuration for columns in YAML format:
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     ...
@@ -1401,14 +1784,14 @@ Our **Data Explorer** offers a comprehensive overview of your data assets, inclu
 
 You can filter data assets by Data Connections, Tags, Data Owners, and Asset Types (e.g., tables, columns, and BI-created assets such as views, reports, and syncs). You can also search directly to find specific data assets for lineage analysis.
 
-<Frame caption="Data App Lineage Overview">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9014fc5bee3d6f583a7ea851cf7558fe" data-og-width="1703" width="1703" data-og-height="887" height="887" data-path="images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8a1a5e2cfab0c5b299b49a93215ccd01 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=630385a4c30cf26ebdb5c1c6e8cde749 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a94f066e41e1a6776f1b0f0bfa1876a4 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6ea25f18b750438941c9fd88dfe044fe 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=df229108a49b3697e09fa89ceea0369e 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_overview-3ffe6ae5a34c4e7d8918fae232eb1ed1.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=cdb6e9c57eb24c8b9f6fb2afa82e7e82 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 After selecting a table or data asset, the UI will display a **graph of table-level lineage** by default. You can toggle between **Upstream** and **Downstream** perspectives and customize the lineage view by adjusting the **Max Depth** parameter to your preference.
 
-<Frame caption="Lineage Graph">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e55cacaf6922d256a43f3f78d90ea8b4" data-og-width="1703" width="1703" data-og-height="767" height="767" data-path="images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b4f9bf05eb17c2adb144347d3fe1b778 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c815bd96fa6fdb0ca3a4a534daa30288 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d000be10b365da1e8e06ba4e952def9d 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2f4b67b0d071d16c4b05f7e8f687b3b4 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=90b34018ad4eea7f9a50d48d2f9680a6 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph-c33d286a7a8c4787f229e5590d32d2ff.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=179c1da5fc08e093049589ac22aebbb0 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -1423,16 +1806,16 @@ Datafold's column-level lineage helps users trace and document the history, tran
 
 To view column-level lineage, click on the **Columns** dropdown menu of the selected asset.
 
-<Frame caption="Lineage Graph Columns Dropdown">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a02dc2c18664786f79cf7bd4524e704e" data-og-width="1288" width="1288" data-og-height="717" height="717" data-path="images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9c130d844b643b166ae9c463cfcaadd8 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6444916bc9372372c91ebbe23fb182b1 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=661b8a083b296f41c04cf75e14b2a87a 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8e89ac4be0530963c65fe8e57005299b 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f34ded861320eacb7669d0ce3854d48a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_lineage_graph_columns-97a1aa84140dc7bd0b242eb70d6e5d81.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=493551ea4043f4bb8a70e8fc9a53bd07 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Highlight path between assets
 
 To highlight the column path between assets, click the specific column. Reset the view by clicking the **Exit the selected path** button.
 
-<Frame caption="Selected Path in Lineage Graph">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=0e261d393437069ff59ed1dd705569d8" data-og-width="1293" width="1293" data-og-height="704" height="704" data-path="images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=85ec0c08ca5571b544020a049a15e129 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=4ad457085f4061895693d9726c70a31f 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b7c97e3362a57d82b8b1789a445b7d51 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c5863c1fe1ca5b72c4d1501de23ffeb2 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=f5057227221485113c49196dbf14838c 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_lineage_selected_path-ae2fb8bab8b62f9479a6e148a399bc5a.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=72bb9126db549b41e5c72af6ea5abcba 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Tabular lineage
@@ -1441,8 +1824,8 @@ Datafold also offers a tabular lineage view.
 
 You can sort lineage information by depth, asset type, identifier, and owner. Click on the **Actions** button for further options:
 
-<Frame caption="Tabular Lineage Actions Dropdown">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=a2b72b5aafae515768c8f6bf8163ce66" data-og-width="1354" width="1354" data-og-height="432" height="432" data-path="images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=3daefd5b54ef180640eb3deb64e113bd 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=081c4d17bebe79f6dccc8f5f3d359f49 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=bfee4d7eda4bbf77d5fba112221e992e 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=9fa959dcf2358129f123981519ed7ef3 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=16970be473f622f0f0e9abd6ceca2fa0 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_dropdown-b583e8f59c747058d8a5c95ed6d12843.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=920fe4f1ceca3857b536787d4a9980a9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Focus lineage on current node
@@ -1453,16 +1836,16 @@ Drill down onto the data node or column of interest.
 
 Access the SQL query associated with the selected column to understand how the data was queried from the source:
 
-<Frame caption="Show SQL Query in Tabular Lineage">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=285cc3de38895e398d74761a28927821" data-og-width="1229" width="1229" data-og-height="843" height="843" data-path="images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=f12dcffce34beaa8ad4bfb0434e2333d 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=e96b0225d99ce65bc67d0975b8b0377a 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=f1500087ef7bde586d1bd2d86b856bd2 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=bf8960aabf1aaf015413805961daec3c 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=17e50d7085c2a4b7a5419343f68e3695 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_show_sql_code-da905cea8201954e3b0eb17f3fe108de.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=db96f6c20a7785ad87267bff806439ba 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Show usage details
 
 Access detailed information about the column's read, write, and cumulative read (the sum of read count including read count of downstream columns) for the previous 7 days:
 
-<Frame caption="Usage Details in Tabular Lineage">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=962e7831072bdca9461ea7af185013ba" data-og-width="822" width="822" data-og-height="386" height="386" data-path="images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=0934f90a0698e59d071c0f902a1617b7 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=756536e2c1a7e72138599791b8cd5391 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=122bbab0f679498212f36d1809e50201 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=5d7834b2f9f087f922affb5f3aa41c98 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=77a66bcd0c894b7d96acee1dd3277a71 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_usage_details-c0462ebd7bee2bc769169ff2b7640d56.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=96229297db67384394c45837691729a0 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Search and filters
@@ -1471,8 +1854,8 @@ Datafold offers powerful search and filtering capabilities to help users quickly
 
 In both the graphical and tabular lineage views, you can filter by tables or columns within tables, allowing you to go as granular as needed.
 
-<Frame caption="Search and Filter in Tabular Lineage">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=e43f245bfe7f2a29932374343f0dd517" data-og-width="1351" width="1351" data-og-height="317" height="317" data-path="images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=a5a1facf226109031703a89d1f5a05bd 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=6a28c0454db7627b922a1da187fef03f 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=8df129d079244a5d215ac03e697d6cc8 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=6c435a95a550e571ebc81efade558be4 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=50cdbd69157005ac330044d95380659c 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tabular_lineage_actions_search-f5cef28a24e5a1603e5c04d9696a4ff8.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=65de7f503af7c341b30029275457241c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Table filtering
@@ -1487,8 +1870,8 @@ To focus specifically on columns, you can search using a combination of keywords
 
 You can configure the settings for Lineage under Settings > Data Connections > Advanced Settings:
 
-<Frame caption="Lineage Advanced Settings">
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=685c29c694dcf151d533fb4d6922293f" data-og-width="1180" width="1180" data-og-height="581" height="581" data-path="images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=28e503fd88a4b984ee5657bd1e55c1ae 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9fdeb699720d9174b6fe8ba74a505cbd 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d960bb0706bce3d3d75e16d75d52db7d 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be841f4e6e774ab5b146b2eae9cb5829 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b08aa127e50c1476119ce04388cb927d 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage_advanced_settings-8787d8f5b01d1a6572b2d73f486ad49a.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f3ce489186e05783c2855f6cd8796520 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Schema indexing schedule
@@ -1531,153 +1914,8 @@ Source: https://docs.datafold.com/data-explorer/profile
 View a data profile that summarizes key table and column-level statistics, and any upstream dependencies.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=93b2e9ead80d9ae101833634957832d8" data-og-width="1186" width="1186" data-og-height="879" height="879" data-path="images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=da067d78595210d086ac15ae7bfe748b 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=82e5038fe9a5b1a442d582fad3ce24e5 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=aa2bbb45b4e4ee0f7b5f179a9493f2b2 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b9696dd27de9899a7bfd3dd91e070eb2 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2b751ead0ebb70e60cd82647682086d1 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_data_explorer_profile-347ca38a3ae0a32084fd9d02f3a0d667.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6fad6be593cce611ef0e6616df22261a 2500w" />
+  <img />
 </Frame>
-
-
-# Cross-Database Diffing for Migrations
-Source: https://docs.datafold.com/data-migration-automation/cross-database-diffing-migrations
-
-Validate migration parity with Datafold's cross-database diffing solution.
-
-When migrating data from one system to another, ensuring that the data is accurately transferred and remains consistent is critical. Datafold’s cross-database diffing provides a robust method to validate parity between the source and target databases. It compares data across databases, identifying discrepancies at the dataset, column, and row levels, ensuring full confidence in your migration process.
-
-## How cross-database diffing works
-
-Datafold connects to any SQL source and target databases, similar to how BI tools do. Datasets from both data connections are co-located in a centralized database to execute comparisons and identify specific rows, columns, and values with differences. To perform diffs at massive scale and increased speed, users can apply sampling, filtering, and column selection.
-
-### What kind of information does Datafold output?
-
-Datafold’s cross-database diffing will produce the following results:
-
-* **High-Level Summary:**
-  * Total number of different rows
-  * Total number of rows (primary keys) that are present in one database but not the other
-  * Aggregate schema differences
-* **Schema Differences:** Per-column mapping of data types, column order, etc.
-* **Primary Key Differences:** Sample of specific rows that are present in one database but not the other.
-* **Value-Level Differences:** Sample of differing column values for each column with identified discrepancies. The full dataset of differences can be downloaded or materialized to the warehouse.
-
-### How does a user run a data diff?
-
-Users can run data diffs through the following methods:
-
-* Via Datafold’s interactive UI
-* Via the Datafold API
-* On a schedule (as a monitor) with optional alerting via Slack, email, PagerDuty, etc.
-
-### Can I run multiple data diffs at the same time?
-
-Yes, users can run as many diffs as they would like, with concurrency limited by the underlying database.
-
-### What if my data is changing and replicated live, how can I ensure proper comparison?
-
-In such cases, we recommend using watermarking—diffing data within a specified time window of row creation or update (e.g., `updated_at timestamp`).
-
-### What if the data types do not match between source and target?
-
-Datafold performs best-effort type matching for cases where deterministic type casting is possible, e.g., comparing `VARCHAR` type with `STRING` type. When automatic type casting without information loss is not possible, the user can define type casting manually using diffing in Query mode.
-
-### Can data diff help if the dataset in the source and target databases has a different shape/schema/column naming?
-
-Yes, users can reshape input datasets by writing a SQL query and diffing in Query mode to bring the dataset to a comparable shape. Datafold also supports column remapping for datasets with different column names between tables.
-
-## Learn more
-
-To learn more, check out our guide on [how cross-database diffing works](../data-diff/cross-database-diffing/creating-a-new-data-diff) in Datafold, or explore our extensive [FAQ section](../faq/data-migration-automation) covering cross-database diffing and data migration.
-
-
-# Datafold Migration Agent
-Source: https://docs.datafold.com/data-migration-automation/datafold-migration-agent
-
-Automatically migrate data environments of any scale and complexity with Datafold's Migration Agent.
-
-Datafold provides a full-cycle migration automation solution for data teams, which includes code translation and cross-database reconciliation.
-
-## How does DMA work?
-
-Datafold performs complete SQL codebase translation and validation using an AI-powered architecture. This approach leverages a large language model (LLM) with a feedback loop optimized for achieving full parity between the migration source and target. DMA analyzes metadata, including schema, data types, and relationships, to ensure accuracy in translation.
-
-<img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4472535367a2544e0fc7bce54d43b9e6" alt="datafold migration agent architecture" data-og-width="1561" width="1561" data-og-height="974" height="974" data-path="images/data-migration/datafold_migration_agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a4f2f90cfea623e5d276e4befb1375a2 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=33e9c4d42a7721007c3a036a27afb7a4 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6c11775d4c737d0dd5dc6ef2f4b9e1ab 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=603b1e80b7b5cfa35ed59651729e0b65 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f38f8488278f57d2b976e5c6e517356a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-migration/datafold_migration_agent.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=567ee1b4c54d471dd0dacaed97c15233 2500w" />
-
-Datafold provides a comprehensive report at the end of the migration. This report includes links to data diffs validating parity and highlighting any discrepancies at the dataset, column, and row levels between the source and target databases.
-
-## Why migrate with DMA?
-
-Unlike traditional deterministic transpilers, DMA offers several distinct benefits:
-
-* **Full parity between source and target:** DMA ensures not just code that compiles, but code that delivers the same results in your new database, complete with explicit validation.
-* **Flexible dialect handling:** DMA can adapt to any arbitrary input/output dialect without requiring a full grammar definition, which is especially valuable for legacy systems.
-* **Self-correction capabilities:** The AI-driven DMA can account for and correct mistakes based on both compilation errors and data discrepancies.
-* **Modernizing code structure:** DMA can convert complex stored procedures into clean, modern formats such as dbt projects, following best practices.
-
-## Getting started with DMA
-
-<Note>
-  **Want to learn more?**
-
-  If you're interested in diving deeper, please take a moment to [fill out our intake form](https://nw1wdkq3rlx.typeform.com/to/VC2TbEbz) to connect with the Datafold team.
-</Note>
-
-1. Connect your source and target data sources to Datafold.
-2. Provide Datafold access to your codebase, typically by installing the Datafold GitHub/GitLab/ADO app or via system catalog access for stored procedures.
-
-Once you connect your source and target systems and Datafold ingests the codebase, DMA's translation process is supervised by the Datafold team. In most cases, no additional input is required from the customer.
-
-The migration process timeline depends on the technologies, scale, and complexity of the migration. After setup, migrations typically take several days to several weeks.
-
-## Security
-
-Datafold is SOC 2 Type II, GDPR, and HIPAA-compliant. We offer flexible deployment options, including in-VPC setups in AWS, GCP, or Azure. The LLM infrastructure is local, ensuring no data is exposed to external subprocessors beyond the cloud provider. For VPC deployments, data stays entirely within the customer’s private network.
-
-## FAQ
-
-For more information, please see our extensive [FAQ section](../faq/data-migration-automation).
-
-
-# Datafold for Migration Automation
-Source: https://docs.datafold.com/data-migration-automation/datafold-migration-automation
-
-Datafold provides full-cycle migration automation with SQL code translation and cross-database validation for data warehouse, transformation framework, and hybrid migrations.
-
-Datafold offers flexible migration validation options to fit your data migration workflow. Data teams can choose to leverage the full power of the [Datafold Migration Agent (DMA)](../data-migration-automation/datafold-migration-agent) alongside [cross-database diffing](../data-diff/how-datafold-diffs-data#how-cross-database-diffing-works), or use ad-hoc diffing exclusively for validation.
-
-## Supported migrations
-
-Datafold supports a wide range of migrations to meet the needs of modern data teams. The platform enables smooth transitions between different databases and transformation frameworks, ensuring both code translation and data validation throughout the migration process. Datafold can handle:
-
-* **Data Warehouse Migrations:** Seamlessly migrate between data warehouses, for example, from PostgreSQL to Databricks.
-
-* **Data Transformation Framework Migrations:** Transition your transformation framework from legacy stored procedures to modern tools like dbt.
-
-* **Hybrid Migrations:** Migrate across a combination of data platforms and transformation frameworks. For example, moving from MySQL + stored procedures to Databricks + dbt.
-
-## Migration options
-
-<AccordionGroup>
-  <Accordion title="Option 1: DMA + Ad-Hoc Diffing">
-    The AI-powered Datafold Migration Agent (DMA) provides automated SQL code translation and validation to simplify and automate data migrations. Teams can pair DMA with ad-hoc cross-database diffing to enhance the validation process with additional manual checks when necessary.
-
-    **How it works:**
-
-    * **Step 1:** Connect your legacy and new databases to Datafold, along with your codebase.
-    * **Step 2:** DMA translates and validates SQL code automatically.
-    * **Step 3:** Pair the DMA output with ad-hoc cross-database diffing to reconcile data between legacy and new databases.
-
-    This combination streamlines the migration process, offering automatic validation with the flexibility of manual diffing for fine-tuned control.
-  </Accordion>
-
-  <Accordion title="Option 2: Ad-Hoc Diffing Only">
-    For teams that prefer to handle code translation manually or are working with third-party migrations, Datafold's ad-hoc cross-database diffing is available as a stand-alone validation tool.
-
-    **How it works:**
-
-    * Validate data across databases manually without using DMA for code translation.
-    * Run ad-hoc diffing as needed, via the [Datafold REST API](../api-reference/introduction), or schedule it with [Monitors](../data-monitoring) for continuous validation.
-
-    This option gives you full control over the migration validation process, making it suitable for in-house or outsourced migrations.
-  </Accordion>
-</AccordionGroup>
 
 
 # Monitor Types
@@ -1742,7 +1980,7 @@ Leave the file blank for now—we'll come back to it in a moment.
 
 If you're using GitHub Actions, create a new YAML file under `.github/workflows/` using the following template. Be sure to tailor it to your particular setup:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: Apply monitors as code config to Datafold
 
 on:
@@ -1786,7 +2024,7 @@ Now return to your YAML configuration file to add your first monitor. Reference 
 
 [Data Diff monitors](/data-monitoring/monitors/data-diff-monitors) detect differences between any two datasets, within or across databases.
 
-```yaml  theme={null}
+```yaml theme={null}
 monitors:
   replication_test_example:
     name: 'Example of a custom name'
@@ -1914,7 +2152,7 @@ monitors:
 
 [Metric monitors](/data-monitoring/monitors/metric-monitors) identify anomalies in standard metrics like row count, freshness, and cardinality, or in any custom metric.
 
-```yaml  theme={null}
+```yaml theme={null}
 monitors:
   table_metric_example:
     type: metric
@@ -1999,7 +2237,7 @@ For more details on supported metrics, see the docs for [Metric monitors](/data-
 
 [Data Test monitors](/data-monitoring/monitors/data-test-monitors) validate your data with business rules and surface specific records that fail your tests.
 
-```yaml  theme={null}
+```yaml theme={null}
 monitors:
   custom_data_test_example:
     type: test
@@ -2066,7 +2304,7 @@ monitors:
 
 [Schema Change monitors](/data-monitoring/monitors/schema-change-monitors) detect when changes occur to a table's schema.
 
-```yaml  theme={null}
+```yaml theme={null}
 monitors:
   schema_change_example:
     type: schema
@@ -2085,7 +2323,7 @@ monitors:
 
 For certain monitor types—[Freshness](/data-monitoring/monitors/metric-monitors), [Row Count](/data-monitoring/monitors/metric-monitors), and [Schema Change](/data-monitoring/monitors/schema-change-monitors)—it's possible to create/manage many monitors at once using the following wildcard syntax:
 
-```yaml  theme={null}
+```yaml theme={null}
 row_count_monitors:
   type: metric
   connection_id: 123
@@ -2114,7 +2352,7 @@ This is particularly useful if you want to create the same monitor type for many
   <Accordion title="What happens to a monitor in the app if it's removed from the code?">
     By default, nothing—it remains in the app. However, you can add the `--dangling-monitors-strategy [delete|pause]` flag to your `run` command to either delete or pause notifications if they're removed from your code. For example:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     datafold monitors provision monitors.yaml --dangling-monitors-strategy delete
     ```
 
@@ -2124,7 +2362,7 @@ This is particularly useful if you want to create the same monitor type for many
   <Accordion title="How do I delete or pause all of my monitors?">
     Add the `--dangling-monitors-strategy [delete|pause]` flag to your `run` command and replace the contents of your YAML file with the following:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     monitors: {}
     ```
 
@@ -2144,7 +2382,7 @@ This is particularly useful if you want to create the same monitor type for many
     Note that when exporting monitors, pay attention to the `id` field in the YAML. If you want to preserve monitor history, keep the `id` field as this will update the original monitor to be managed as code. If you don't want to preserve your monitor history, **delete** the `id` field to create a new monitor as code while keeping the original monitor intact.
 
     <Frame>
-      <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=270724bc299c4667a4779996f836c951" data-og-width="2156" width="2156" data-og-height="1360" height="1360" data-path="images/monitors/view_as_code.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ce292c7e2b3a9b4ef0e9e013f5d7c634 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9608398b57c0c74c9a63030d89685b4b 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8b57b836482764fc8861b9de63af1b72 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=72dfda906a348eb2e098481600620bab 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1b0f6867e6ee6506335dc1bdbcdc489b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/view_as_code.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f7d5bed39ca385d47cdd515c0a24c6c8 2500w" />
+      <img />
     </Frame>
   </Accordion>
 </AccordionGroup>
@@ -2183,22 +2421,22 @@ If you need to compare just a subset of data (e.g., for a particular city or las
 
 Select **Materialize inputs** to improve diffing speed when query is heavy on compute, or if filters are applied to non-indexed columns, or if primary keys are transformed using concatenation, coalesce, or another function.
 
-<Frame caption="Data Diff General Settings">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a06294be7daca047c2f4d40d47f2c69f" data-og-width="1497" width="1497" data-og-height="1005" height="1005" data-path="images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=213af5fdb48e1012d925a8be5203943a 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=51eb58c7cfd9012a4e801be46e44880e 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=89639c2d9c761dcfbdabf9d3900f9161 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1f0b0df1baeaa5f720449433d3a2f62a 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=e047642410f555d62c95b5ddc98bdf0d 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_general-bdcc461b033ca6c91e5831339673e522.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=21c33bf84a0a60743205df808fcb2b8d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Column remapping
 
 When columns are the same data type but are named differently, column remapping allows you to align and compare them. This is useful when datasets have semantically identical columns with different names, such as `userID` and `user_id`. Datafold will surface any differences under the column name used in Dataset A.
 
-<Frame caption="Column Remapping Settings">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=30f8c1dfd4fc510154c421eeb817cc21" data-og-width="1499" width="1499" data-og-height="455" height="455" data-path="images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=0c0a4eed190fa23f92df206b7ea5bfe9 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bf3a422997eab6ba6643a8c831cfd5dd 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=026c103728585781724d615ac7603092 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=cd3cf76a5f59560645284b636c3a4d72 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=ff1e41e1b13a26651a145972bd981a9e 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_column_remapping-59552ddfda90200e3eba4ab4461757f8.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b5211e308e7986c49164bf9f167beec7 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Diff settings
 
-<Frame caption="Diff Settings">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=8eabf23bd47e14ba6dcd5337c99c6f20" data-og-width="1494" width="1494" data-og-height="1263" height="1263" data-path="images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=2acf7e0252c0342a0a0d2107b6b11b45 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b52751b92261f735321ebefe513908a2 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3d13cdec6683755445b58d4a9464169e 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1ecde098cc2ed4039b19edd30baa294c 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3d37646ea7df295d3e31a9c97e69b04f 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_diff_settings-cd905714f5f522817bcd503f38a1fefc.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=7b749a57785dd6d6d310ed45cad1c7a5 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 #### Primary key
@@ -2232,7 +2470,7 @@ There are two ways to enable sampling in Monitors: [Tolerance](#tolerance) and [
 Tolerance defines the allowable margin of error for our estimate. It sets the acceptable percentage of rows with primary key errors (like nulls, duplicates, or primary keys exclusive to one dataset) before disabling sampling.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=4febbf2598a8185c272232032d52de65" data-og-width="1494" width="1494" data-og-height="640" height="640" data-path="images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c6efacf6edb6b8c79ea1b606fcc8a1c6 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=28a2b6ae6a74f6016306275e487447a5 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=34b87a7124ceaeeb1af06576fe24d4a8 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a5ac9fcaf55e9b75177cca0f4acd53f4 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=71c98168b3b65380d590d3925051e87b 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_tolerance-c48e5b3c707d1e6cec2a5cde995c6d01.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=286afa738b16dc2f4f2f9d98d590270d 2500w" />
+  <img />
 </Frame>
 
 When sampling tolerance is enabled, not every row is examined, which introduces a probability of missing certain discrepancies. This threshold represents the level of difference we are willing to accept before considering the results unreliable and thereby disabling sampling. It essentially sets a limit on how much variance is tolerable in the sample compared to the complete dataset.
@@ -2272,7 +2510,7 @@ Sampling confidence reflects our level of certainty that our sample accurately r
 Percent of rows sampling defines the proportion of the dataset to be included in the sample by specifying a percentage of the total number of rows. For example, setting the sampling percentage to 0.1% means that only 0.1% of the total rows will be sampled for analysis or comparison.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c682330c2d754021ef6b20164c2cf3c9" data-og-width="1482" width="1482" data-og-height="498" height="498" data-path="images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=6d14ee08e3e68fec35d1d2f173ddc174 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=edf6b8bb2703d6f79f1d579cb2fd2888 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=97119c1709e2a26dca8df8aa80c5ce5b 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c9e0b7637dfee4e8d1edba0bf510acf2 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=065ee528210828e9a0d45b26286b27c8 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_settings_sampling_percent-48c1e9b953a45b49213d5a9799842875.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a55178c8b732905ba9a01585e7da4c12 2500w" />
+  <img />
 </Frame>
 
 When percent of rows sampling is enabled, a fixed percentage of rows is selected randomly from the dataset. This method simplifies the sampling process, making it easy to understand and configure without needing to adjust complex statistical parameters. However, it lacks the statistical assurances provided by methods like sampling tolerance.
@@ -2296,7 +2534,7 @@ This parameter is the [same one used in sampling tolerance](#sample-size).
 You can choose to run your monitor daily, hourly, or even input a cron expression for more complex scheduling:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bba568fdc3049b5cf68cf1b8786eb97e" data-og-width="1184" width="1184" data-og-height="304" height="304" data-path="images/monitors/schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=23963e43888a23fa582b2ca0acb14278 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be1bd4311a6edba905d6b0ac05ed9e40 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=84c1074e12d76ed7e1bb58a5b226f9ab 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5a23b013dfdd0808925417e2890e5d53 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a46bd2d3dbeeecf2f5371f6549646331 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a1003bb0bc5401af01a645062f9eb279 2500w" />
+  <img />
 </Frame>
 
 ### Add notifications
@@ -2309,7 +2547,7 @@ Notifications are sent when either or both predefined thresholds are reached dur
 * Percentage of different rows
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=87bfb30d98bd8da832bcdd3192d9c559" data-og-width="1576" width="1576" data-og-height="578" height="578" data-path="images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f7d5d2b6c2819122c487d7a25a69ff00 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9187a82760eb2bf34b8567640887793e 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=aee0c94c2479f59f69ef009adc46bb72 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8c6ee9ee72739450f84e7a1016f412bd 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4059e04a333762886bff02f601f68fcd 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=da1b7bebb6c322791e71a98bce66a2cf 2500w" />
+  <img />
 </Frame>
 
 ## Results
@@ -2317,7 +2555,7 @@ Notifications are sent when either or both predefined thresholds are reached dur
 The diff monitor run history shows the results from each run.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=d069f23a21e684fb6401fa7502f120a0" data-og-width="3059" width="3059" data-og-height="1502" height="1502" data-path="images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=74049ae838daa9b01486825d44485e92 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=23712bc34bd61835cc6e57263cddf9ac 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3aa7dae0bf0f4eaed0d379d0f987c539 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=6ab08d1c38569298ed0670526706564a 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=e916691a3ed08749f8448c03d9c63520 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_diff_results-0ed255b70929f8b7a501b59d042d7958.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=db0aba8cb426d05c65c76f2e0ca06d58 2500w" />
+  <img />
 </Frame>
 
 Each run includes basic stats, along with metrics such as:
@@ -2369,7 +2607,7 @@ Standard tests allow you to validate your data against off-the-shelf checks for 
 After choosing your data connection, select **Standard** and the specific test that you'd like to run. If you don't see the test you're looking for, you can always write a [Custom test](/data-monitoring/monitors/data-test-monitors#custom-data-tests).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6b3e4ff63c23d378a1afa1b9f5333e12" data-og-width="1182" width="1182" data-og-height="646" height="646" data-path="images/monitors/standard_data_test_types.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a346f265b2fb277ccb5a81594e066b2b 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=16a80272596a95655accea963760bec0 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d423caaacff78f3591f7b641fec1773e 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d82c4d294e0289df2ee4b63bc3955e34 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f417b36d008c59024b1cbe4f7e7f6c20 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/standard_data_test_types.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=462eb1ef1287f983e137e231b64933a0 2500w" />
+  <img />
 </Frame>
 
 #### Quoting variables
@@ -2378,7 +2616,7 @@ Some test types (e.g. accepted values) require you to provide one or more values
 
 Quoting **enabled** for `EXAMPLE_VALUE` (default):
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM DB.SCHEMA.TABLE1
 WHERE "COLUMN1" < 'EXAMPLE_VALUE';
@@ -2386,7 +2624,7 @@ WHERE "COLUMN1" < 'EXAMPLE_VALUE';
 
 Quoting **disabled** for `EXAMPLE_VALUE`:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM DB.SCHEMA.TABLE1
 WHERE "COLUMN1" < EXAMPLE_VALUE;
@@ -2402,7 +2640,7 @@ Importantly, keep in mind that your query should return records that *fail* the 
 
 Say your company defines active users as individuals who have signed into your application at least 3 times in the past week. You could write a test that validates this logic by checking for users marked as active who *haven't* reached this threshold:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM users
 WHERE status = 'active'
@@ -2413,7 +2651,7 @@ WHERE status = 'active'
 
 If you wanted to validate that all phone numbers in your contacts table are 10 digits and only contain numbers, you'd return records that are not 10 digits or use non-numeric characters:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM contacts
 WHERE LENGTH(phone_number) != 10
@@ -2425,7 +2663,7 @@ WHERE LENGTH(phone_number) != 10
 You can choose to run your monitor daily, hourly, or even input a cron expression for more complex scheduling:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bba568fdc3049b5cf68cf1b8786eb97e" data-og-width="1184" width="1184" data-og-height="304" height="304" data-path="images/monitors/schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=23963e43888a23fa582b2ca0acb14278 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be1bd4311a6edba905d6b0ac05ed9e40 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=84c1074e12d76ed7e1bb58a5b226f9ab 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5a23b013dfdd0808925417e2890e5d53 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a46bd2d3dbeeecf2f5371f6549646331 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a1003bb0bc5401af01a645062f9eb279 2500w" />
+  <img />
 </Frame>
 
 ## Add notifications
@@ -2433,7 +2671,7 @@ You can choose to run your monitor daily, hourly, or even input a cron expressio
 Receive notifications via Slack or email when at least one record fails your test:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=87bfb30d98bd8da832bcdd3192d9c559" data-og-width="1576" width="1576" data-og-height="578" height="578" data-path="images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f7d5d2b6c2819122c487d7a25a69ff00 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9187a82760eb2bf34b8567640887793e 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=aee0c94c2479f59f69ef009adc46bb72 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8c6ee9ee72739450f84e7a1016f412bd 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4059e04a333762886bff02f601f68fcd 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=da1b7bebb6c322791e71a98bce66a2cf 2500w" />
+  <img />
 </Frame>
 
 ## Attach CSVs to notifications
@@ -2442,7 +2680,7 @@ Datafold allows attaching a CSV of failed records to Slack and email notificatio
 
 This option is configured separately per notification destination as shown here:
 
-<img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=622b524bab2bb9ef79c263ec2f46ea87" alt="Attach CSVs to Data Tests notifications" data-og-width="1180" width="1180" data-og-height="742" height="742" data-path="images/data-test-csv-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7876e84a312785296030b43008f2c1c9 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d605241e8d8717b8dc79ab185eb303d1 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=98936a7b2311a8ef3e0dff84c78b0ca9 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6ebe2a07c4573a310491353e536663c6 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1432625f83e7ed5e73086b6f012201d0 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-1.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=dff2347dfe87444ad794488769039c7a 2500w" />
+<img alt="Attach CSVs to Data Tests notifications" />
 
 <Note>
   CSV attachments are limited to the lesser of 1,000 rows or 1 MB in file size.
@@ -2455,7 +2693,7 @@ In order to attach CSVs to Slack notifications, you need to complete 1-2 additio
 1. If you installed the Datafold Slack app prior to October 2024, you'll need to reinstall the app by visiting Settings > Integrations > Notifications, selecting your Slack integration, then **Reinstall Slack integration**.
 2. Invite the Datafold app to the channel you wish to send notifications to using the `/invite` command shown below:
 
-<img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0442451287ed6a89c1c9c680ae6a32d2" alt="Invite Datafold app to Slack channel" data-og-width="1068" width="1068" data-og-height="666" height="666" data-path="images/data-test-csv-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f6e7b2a1da58a51aff55d6a884840a9a 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=21996a48dce46a32b0f97130d545a373 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c1c34e7b106bd225191ac63bb3404603 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=16b04f6cdf970298e1ee84c3faaf74d1 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c4a74cdac2ddd9875608fe87dcf0e2af 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data-test-csv-2.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=650487221f06e815f762b7dc13adaf01 2500w" />
+<img alt="Invite Datafold app to Slack channel" />
 
 ## Run Tests in CI
 
@@ -2472,7 +2710,7 @@ First, create a new file (e.g. `tests.yaml`) in the root of your repository. The
 
 Here's an example:
 
-```yaml  theme={null}
+```yaml theme={null}
 monitors:
   null_pk_test:
     type: test
@@ -2507,7 +2745,7 @@ monitors:
 
 If you're using GitHub Actions, create a new YAML file under `.github/workflows/` using the following template. Be sure to tailor it to your particular setup:
 
-```yaml  theme={null}
+```yaml theme={null}
   on:
     push:
       branches:
@@ -2552,7 +2790,7 @@ If you're using GitHub Actions, create a new YAML file under `.github/workflows/
 When your CI workflow is triggered (e.g. by a pull request), you can view the terminal output for your test results:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=8343173f20f186775988ed8edc5e7f07" data-og-width="1498" width="1498" data-og-height="812" height="812" data-path="images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9fc0a8d51af0d5bd0e39a2b43685269f 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fe3e2e88ba833cb4dd8f5599a360adca 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=61f7f849fe901b4a9230ea6f647f6138 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fcb782b280969c750172fd1b9fc8f19d 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1cc0fbc6734157601122b1c62a2111b2 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_tests_in_ci_output-9be8c97e4d32734e71edee4f201e0ffc.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=184d1348cbf54c03144147559c32a356 2500w" />
+  <img />
 </Frame>
 
 ## Need help?
@@ -2627,7 +2865,7 @@ Our custom metric framework is extremely flexible and supports several approache
 </Note>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=538ed4183ea523c46e2a3fa093697e1f" data-og-width="4768" width="4768" data-og-height="3200" height="3200" data-path="images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=fc94579a5279f3ba6036ff574f9eb30b 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=add70a4caf25b88e6de28371f8533ae3 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e34f719fcf3fdaecf30f0aa11845ea80 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=95e0a279fc8cea4d3940f55e9df6fa98 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=cee550c72ac472133a84c5d3728577e7 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/custom_metric_matrix-7f38681722ab77f7d52e0b9350af9ab9.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=cddada2b6514065818b7d8117b5bcaa7 2500w" />
+  <img />
 </Frame>
 
 The following questions will help you decide which approach is best for you:
@@ -2653,7 +2891,7 @@ Enable anomaly detection to get the most out of metric monitors. You have severa
 * **Manual**: specific thresholds beyond which you'd like the monitor to trigger an alert. **Fixed Values** are specific minimum and/or maximum values, while **Percent Change** measure the magnitude of change from one observation to the next.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=dde08288db7476b9dde7ea5bdcf74fb7" data-og-width="1184" width="1184" data-og-height="532" height="532" data-path="images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d124cd790d7ccb2a3b4ccb9d8aa37362 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3252044af65d97323bed87564d17e65b 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3e9bdbb3e4ccc1babacddaf8ad5e6829 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2e64d316d1dd09d938d20d609f0cff7f 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c9a611a0f41235b45c912276bdbaaa68 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/anomaly_detection_menu-bec86b18752d4a0a3081de8ce1983485.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f2c1502ca43decc8de2b523fcdd565da 2500w" />
+  <img />
 </Frame>
 
 ## Add a schedule
@@ -2661,7 +2899,7 @@ Enable anomaly detection to get the most out of metric monitors. You have severa
 You can choose to run your monitor daily, hourly, or even input a cron expression for more complex scheduling:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bba568fdc3049b5cf68cf1b8786eb97e" data-og-width="1184" width="1184" data-og-height="304" height="304" data-path="images/monitors/schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=23963e43888a23fa582b2ca0acb14278 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be1bd4311a6edba905d6b0ac05ed9e40 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=84c1074e12d76ed7e1bb58a5b226f9ab 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5a23b013dfdd0808925417e2890e5d53 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a46bd2d3dbeeecf2f5371f6549646331 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a1003bb0bc5401af01a645062f9eb279 2500w" />
+  <img />
 </Frame>
 
 ## Add notifications
@@ -2669,7 +2907,7 @@ You can choose to run your monitor daily, hourly, or even input a cron expressio
 Send notifications via Slack or email when your monitor exceeds a threshold (automatic or manual):
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=87bfb30d98bd8da832bcdd3192d9c559" data-og-width="1576" width="1576" data-og-height="578" height="578" data-path="images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f7d5d2b6c2819122c487d7a25a69ff00 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9187a82760eb2bf34b8567640887793e 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=aee0c94c2479f59f69ef009adc46bb72 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8c6ee9ee72739450f84e7a1016f412bd 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4059e04a333762886bff02f601f68fcd 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=da1b7bebb6c322791e71a98bce66a2cf 2500w" />
+  <img />
 </Frame>
 
 ## Need help?
@@ -2710,7 +2948,7 @@ To set up a Schema Change monitor, simply select your data connection and the ta
 You can choose to run your monitor daily, hourly, or even input a cron expression for more complex scheduling:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bba568fdc3049b5cf68cf1b8786eb97e" data-og-width="1184" width="1184" data-og-height="304" height="304" data-path="images/monitors/schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=23963e43888a23fa582b2ca0acb14278 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be1bd4311a6edba905d6b0ac05ed9e40 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=84c1074e12d76ed7e1bb58a5b226f9ab 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5a23b013dfdd0808925417e2890e5d53 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a46bd2d3dbeeecf2f5371f6549646331 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitors/schedule.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a1003bb0bc5401af01a645062f9eb279 2500w" />
+  <img />
 </Frame>
 
 ## Add notifications
@@ -2718,7 +2956,7 @@ You can choose to run your monitor daily, hourly, or even input a cron expressio
 Receive notifications via Slack or email when at least one record fails your test:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=87bfb30d98bd8da832bcdd3192d9c559" data-og-width="1576" width="1576" data-og-height="578" height="578" data-path="images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f7d5d2b6c2819122c487d7a25a69ff00 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9187a82760eb2bf34b8567640887793e 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=aee0c94c2479f59f69ef009adc46bb72 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8c6ee9ee72739450f84e7a1016f412bd 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4059e04a333762886bff02f601f68fcd 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/monitor_settings_notifications-c4bd20b39b0ec478ae4a5e46a0dce0e8.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=da1b7bebb6c322791e71a98bce66a2cf 2500w" />
+  <img />
 </Frame>
 
 ## FAQ
@@ -2889,19 +3127,19 @@ For setting up Datafold, it is required to set up a separate account within your
 First, create a new account for Datafold. Go to **My Organization** to add an account:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ecb7e602c3b08de265dacb1df1eac10e" data-og-width="1593" width="1593" data-og-height="878" height="878" data-path="images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1d1dd34b489ca092788995df5ba5a6a5 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c631068d953452483122091b2ff8aa42 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d7abac8ab1dc7620a03a5ba1f59d0a03 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5004316cbd8cacc25d30522a4e869640 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2cd359c13851e11163c35f3e3492af1b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_landing-329bb3e7015c52b1b3a9d4872ff71d66.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8ad47cba5e59c951e16413618733c07d 2500w" />
+  <img />
 </Frame>
 
 Click **Add an AWS Account**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=549b03369b95e7623fe57e5dc532b957" data-og-width="1593" width="1593" data-og-height="878" height="878" data-path="images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=3add6311c17236abacca7c817aafe03a 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=97e5fa312b986eecde33780f82eb2f1f 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=29998282119a491d95edee409fc00ff7 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bccdcc52d6c5d7ee423188ff4ab8c88a 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=63bff3ac6c8e33920fd9568c8130dab0 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_add_account-e8f6d7c449b5763c1962b0df7322ecf0.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d54a5a18bb61f457c16a44bd0ac0201d 2500w" />
+  <img />
 </Frame>
 
 You can name this account anything that helps identify it clearly. In our examples, we name it **Datafold**. Make sure that the email address of the owner isn't used by another account.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e0b959106f88d7ede59ded7fb7997a54" data-og-width="1593" width="1593" data-og-height="1136" height="1136" data-path="images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7bd72307ea05f4bcdd77d35826744103 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=966d93f01380181036384e4a1e7e8ee0 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=eaab173b708c779b307e492ccb756219 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=932ad5b38472837e76e6a747fb645dc3 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5c53c5787dc6dd9c6aadc9bfe15144fd 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_account-41993b39bb1c092bd085a1727f5537e9.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=055e3adc3b951f5eba043280543f7886 2500w" />
+  <img />
 </Frame>
 
 When you click the **Create AWS Account** button, you'll be returned back the organization screen, and see the notification that the new account is being created. After refresh a few minutes later, the account should appear in the organizations list.
@@ -2913,7 +3151,7 @@ To make sure that deployment runs as expected, your Datafold Support Engineer ma
 To grant access, log into the account created in the previous step. You can switch to the newly created account using the [Switch Role page](https://signin.aws.amazon.com/switchrole):
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=43de213f0410fc802ed38ef6f6f44ded" data-og-width="1593" width="1593" data-og-height="872" height="872" data-path="images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=47b26c7efda81871101e132b5972f853 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=94d86401db3b4ab1303a0c956d06287d 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7d058ff7c3af83e9ebfec6fe3da143e6 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=51afba04ebc6c906b68db9a2eac01cbd 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=502d5ec9a4535a063dae99adb31bdddf 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_switch_role-f8ff2e8a925e444830b7db4afd41a14d.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=18413ef3f774045bb57cffa4eff6fd6a 2500w" />
+  <img />
 </Frame>
 
 By default, the role name is **OrganizationAccountAccessRole**.
@@ -2925,25 +3163,25 @@ Click **Switch Role** to log in to the Datafold account.
 Next, we need to allow Datafold to access the account. We do this by allowing the Datafold AWS account to access your AWS workspace. Go to the [IAM page](https://console.aws.amazon.com/iam/home) or type **IAM** in the search bar:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8132e03e72c2f723790206113dbf13b2" data-og-width="1484" width="1484" data-og-height="854" height="854" data-path="images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0224906492782f6b4ad2190c1cf22f16 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0f49a249de61c0cbc37db5652e026c26 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e58a1a6015f9e70bff52be81c7a2f963 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=77c44b7423dbf73e4131a4cad605a091 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=854526199c25a4b4835a88e11619c60b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_iam-dc7c1aa1e6e33ef4c37d46f0092c5268.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=132fa23b5cb5c06a71f789b1266fe412 2500w" />
+  <img />
 </Frame>
 
 Go to the Roles page, and click the **Create Role** button:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8417176c60c7b467090588b20b216222" data-og-width="1484" width="1484" data-og-height="854" height="854" data-path="images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f67e6f63b968dbab9b24a2f601e8d2a0 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d8032e0c8fbfeb25cf3b08f2953e7e48 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=99edbba40c4799d4455b03b0557ee4e3 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=136f812410de0edc50bff12a05cc161b 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0f77d10a11640acf8e5b7cd201e05b43 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_create_role-82ea0f25999413532214cae7b4cf1c89.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=199490033f59d5e2b308109502255523 2500w" />
+  <img />
 </Frame>
 
 Select **Another AWS Account**, and use account ID `710753145501`, which is Datafold's account ID. Select **Require MFA** and click **Next: Permissions**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6f71fb94b0427e11f18738e9c9639bb5" data-og-width="1484" width="1484" data-og-height="854" height="854" data-path="images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=95c2292924300065c552da526a647474 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=87c379d8fe9f02b9b24d971008f0c114 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=93d44d5470c9d7541bd7c13bd51443b4 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=cbfdd71748f7512c10b5d6f9b6b97181 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be4801b775469da2befae6b399dcc242 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/onprem_aws_role_config-11a94bf4eb4fb1921544b0824d65d223.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ec36f881a225bffc97015169773425db 2500w" />
+  <img />
 </Frame>
 
 On the Permissions page, attach the **AdministratorAccess** permissions for Datafold to have control over the resources within the account, or see [Minimal IAM Permissions](#minimal-iam-permissions).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8da938f9d77fffe2fbb7b419fd52e14e" data-og-width="1484" width="1484" data-og-height="933" height="933" data-path="images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d8cc13e9f3674b5e74ec2ad2d05adfb8 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f15b9f9974e816105d6aebf313ab6aed 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fd552639c1f531f8dc46a597f451eaa4 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=99b1cfafe1afd6b54b93489f42f00670 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0b2ec43ba66d36dc09a8a48f23920a95 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_aws_role_permissions-72630b3366b32c6e1a4986c52f98f439.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9406b62f38814e4fe7861fccf33e1af1 2500w" />
+  <img />
 </Frame>
 
 Next, you can set **Tags**; however, they are not a requirement.
@@ -2962,7 +3200,7 @@ After validating the deployment with your support engineer, and making sure that
 
 Because we work in a Account dedicated to Datafold, there is no direct access to your resources unless explicitly configured (e.g., VPC Peering). The following IAM policy are required to update and maintain the infrastructure.
 
-```JSON  theme={null}
+```JSON theme={null}
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -3049,7 +3287,7 @@ Because we work in a Account dedicated to Datafold, there is no direct access to
 
 Some policies we need from time to time. For example, when we do the first deployment. Since those are IAM-related, we will ask for temporary permissions when required.
 
-```JSON  theme={null}
+```JSON theme={null}
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -3402,7 +3640,7 @@ Once the deployment is complete, you will point that A-record to the IP address 
 For isolation reasons, it is best practice to [create a new project](https://console.cloud.google.com/projectcreate) within your GCP organization. Please call it something like `yourcompany-datafold` to make it easy to identify:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=723db80c5ab11885a5c68f4783de2795" data-og-width="1972" width="1972" data-og-height="906" height="906" data-path="images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=66c280f699f6c7fb8dd2030440654b30 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ae23c8cf867466a00a27c8bfb66925aa 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9b22f156d54fbb52d9c51757be289d1a 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d624b674fad3bf9cfdbe937843ca0cac 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=71c9fb467747ddce2ad410f0f13c7e67 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_create-2b10d24df91f7f09ff3bd8c216edb511.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=83160e2df8dd689757d55c9a27877f76 2500w" />
+  <img />
 </Frame>
 
 After a minute or so, you should receive confirmation that the project has been created. Afterward, you should be able to see the new project.
@@ -3412,7 +3650,7 @@ After a minute or so, you should receive confirmation that the project has been 
 Navigate to the **IAM** tab in the sidebar and click **Grant Access** to invite Datafold to the project.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1f120a9192d42aa0f142a68ce3cfd12c" data-og-width="1954" width="1954" data-og-height="720" height="720" data-path="images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2ebcc1af578ef3bfae3d84d10a15b5e7 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b0f878553c3ebdd32f60a768cf149844 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0feac9134f245a4083d5849a6e2a5be2 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9362c81f7959768af1098cc2449989dc 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=138a377b7b8e9959c8ff5e4674833041 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_gcp_iam-7c29989550ec1f3636e6270d866fe740.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=00dabc22d0cca62db4b4ce56c721e458 2500w" />
+  <img />
 </Frame>
 
 Add your Datafold solutions engineer as a **principal**. You have two options for assigning IAM permissions to the Datafold Engineers.
@@ -3442,7 +3680,7 @@ Once the access has been granted, make sure to notify Datafold so we can initiat
 
 Because we work in a Project dedicated to Datafold, there is no direct access to your resources unless explicitly configured (e.g., VPC Peering). The following IAM roles are required to update and maintain the infrastructure.
 
-```Bash  theme={null}
+```Bash theme={null}
 Cloud SQL Admin
 Compute Load Balancer Admin
 Compute Network Admin
@@ -3459,7 +3697,7 @@ Viewer
 
 Some roles we need from time to time. For example, when we do the first deployment. Since those are IAM-related, we will ask for temporary permissions when required.
 
-```Bash  theme={null}
+```Bash theme={null}
 Role Administrator
 Security Admin
 Service Account Key Admin
@@ -3613,22 +3851,6 @@ and reliability required for production workloads. The combination of automated 
 and network isolation provides a robust foundation for the application's data storage needs.
 
 
-# Best Practices
-Source: https://docs.datafold.com/deployment-testing/best-practices
-
-Explore best practices for CI/CD testing in Datafold.
-
-<CardGroup>
-  <Card title="Slim Diff" href="/deployment-testing/best-practices/slim-diff" icon="file" horizontal>
-    Optimize time and cost by choosing which downstream tables to diff.
-  </Card>
-
-  <Card title="Handling Data Drift" href="/deployment-testing/best-practices/handling-data-drift" icon="file" horizontal>
-    Learn how to prevent and manage data drift in CI pipelines.
-  </Card>
-</CardGroup>
-
-
 # Handling Data Drift
 Source: https://docs.datafold.com/deployment-testing/best-practices/handling-data-drift
 
@@ -3691,7 +3913,7 @@ This method involves two CI builds: one representing PR data, and another repres
 3. Datafold compares these two data environments, both created in CI, and detects differences.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4af6a3be0e9c23b3749718e509b3f685" data-og-width="1600" width="1600" data-og-height="1073" height="1073" data-path="images/deployment_testing/data-drift-architecture-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=efb5672ba068149181dd52467eced4a9 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e16e4dab91e5ab3262259f3cbf6a757e 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=84776475ba7379451f5c7083f6ef3e85 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=94e2c2b507e3b053e3ebec23a43a9fdc 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=448aa14941898078c2f6811b2f848b62 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-architecture-diagram.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a456e60067785874ff9f7c53fffe93c1 2500w" />
+  <img />
 </Frame>
 
 <Note>
@@ -3711,7 +3933,7 @@ This method involves comparing a CI build based on a snapshot of the upstream so
 3. Datafold compares the CI data environment with production data and detects differences.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=dfb3fea3a072ed93dfd9d1df61e612a7" data-og-width="1600" width="1600" data-og-height="1073" height="1073" data-path="images/deployment_testing/data-drift-solution-clone-of-prod.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c3135ad5a87531f0dbfcfb42d8bb0888 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3cd32956e685bd09274d50f67b602a33 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=07b9d676204f1b700433ca859948a5d0 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=82eb0091dbcddd7a4197eb3624c1a830 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a5476d1c597ae7efbfcf5b3ec973a690 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/data-drift-solution-clone-of-prod.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=edea7eb9c4fb444a74b30f6d8f129135 2500w" />
+  <img />
 </Frame>
 
 
@@ -3727,7 +3949,7 @@ That's why we created Slim Diff.
 With Slim Diff enabled, Datafold will only diff models with dbt code changes in your Pull Request (PR).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=7f8df7c3088ee7de6303eba741627e5b" data-og-width="1600" width="1600" data-og-height="1073" height="1073" data-path="images/deployment_testing/slim-diff-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=7c1e3d7326d4b2c4bcdf5c8a9408d6ed 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e0477c72f52c568e2a17b3ae87cc8caf 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4da34a62237b4a9c780b179a87fc8d25 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e6101b2ee0015bcb5bcee4522883ac77 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f2894cb5950383fd85990d9d66374c94 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff-diagram.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4bf3a98d8595c537b00533e39f4a02a1 2500w" />
+  <img />
 </Frame>
 
 ## Setting up Slim Diff
@@ -3735,7 +3957,7 @@ With Slim Diff enabled, Datafold will only diff models with dbt code changes in 
 In Datafold, Slim Diff can be enabled by adjusting your diff settings by navigating to Settings → Integrations → CI → Select your CI tool → Advanced Settings and check the Slim Diff box:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=47702904f2d17c9cdeb39b99e6454b95" data-og-width="883" width="883" data-og-height="688" height="688" data-path="images/deployment_testing/slim-diff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=8adae9bb4e6df64a9a4ecb4ae16733d1 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6d01d60c69efa14b65dcc562f485929f 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=709b877b189afb6f3d648639e5bb285e 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5fceec0f457ccd32402349936bf79a73 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=beecbe434fb9d97388d72a0406727454 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/deployment_testing/slim-diff.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=532581c6f5c4c052e6d18219b3e59d31 2500w" />
+  <img />
 </Frame>
 
 ## Diffing only modified models
@@ -3743,7 +3965,7 @@ In Datafold, Slim Diff can be enabled by adjusting your diff settings by navigat
 With this setting turned on, only the modified models will be diffed by default.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e0707c61bf5e85634a3924ef30650492" data-og-width="1886" width="1886" data-og-height="802" height="802" data-path="images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1eb8c1594ac03c0c2d5bcfaf30d2b13f 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f57bd3e88ed16e9db6267a690319b6cb 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1d6db32c3365da0ac92a5f634432a2cf 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0f490ba01fbe6c53f44b30d09737dbca 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=345a3a197c39924a24e6b38229344bcb 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832523-c3552417-8975-4460-91ed-fd7b0df7d7b7.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=04e1b5fca810ee9c2b42b2730dc84e0f 2500w" />
+  <img />
 </Frame>
 
 ## Diff individual downstream models
@@ -3751,7 +3973,7 @@ With this setting turned on, only the modified models will be diffed by default.
 Once Datafold has diffed only the modified models, you still have the option of diffing individual downstream models right within your PR.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=dc39127b63705424aa89cc2f504d7b4a" data-og-width="1734" width="1734" data-og-height="700" height="700" data-path="images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b3884df7d44e0ef5430cf095a546d55c 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9a1cff3b0991afcddbe46dc7bcbdea8e 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=74cd9f3e2d5c3a7bcd18a637da99615c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fe210acaef87f3e69fcb946d113743eb 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2f1585b55169073505a424cd434bb3c3 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208832659-e3cdb9d9-c468-459f-85ff-990b2a68b57c.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=bde7b6c2b15c7f153bbf869996812100 2500w" />
+  <img />
 </Frame>
 
 ## Diff all downstream models
@@ -3759,7 +3981,7 @@ Once Datafold has diffed only the modified models, you still have the option of 
 You can also add the `datafold:diff-all-downstream` label within your PR, which will automatically diff *all* downstream models.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ee1105716276b26d932c303a0db51733" data-og-width="1884" width="1884" data-og-height="870" height="870" data-path="images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f36e4fedc137345a6d7314542a118289 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2152ddb5c3d92e55f124621d8960b625 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1637c775d06e35b5f03679002e8364e4 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=18d225eb875b9a1fd6c0fc07a5fa50c6 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b7ad5d7ade28ed877cb2c5325e71489c 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833093-f853bde7-d12a-4b9f-b5ac-a4d8d9666076.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=97ba0d9d4a62d99b078673e9093b6d2b 2500w" />
+  <img />
 </Frame>
 
 ## Explicitly define which models to always diff
@@ -3768,7 +3990,7 @@ Finally, with Slim Diff turned on, there might be certain models or subdirectori
 
 Apply the `slim_diff: diff_when_downstream` meta tag to individual models or entire folders in your `dbt_project.yml` file:
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   <project_name>:
     <directory_name>:
@@ -3791,7 +4013,7 @@ These meta tags can also be added in individual yaml files or in config blocks. 
 With this configuration in place, Slim Diff will prevent downstream models from being run *unless* they have been designated as exceptions with the `slim_diff: diff_when_downstream` dbt meta tag.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1f117e6880687fabc1575f4964a91722" data-og-width="1924" width="1924" data-og-height="874" height="874" data-path="images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=faa6bc4aeefa6ab362cc19ee1f7fb28d 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f41b1cb4db53e415bf3030f44e80200d 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=04313891c34afe163d0741ebf059b5bf 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c1fbf4c72b4ba74fb70203548c0b6cc9 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0f6efbef8db741e874fefa7ae030a211 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/208833985-031a04fe-864a-4487-8a64-ec80e4c232e1.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c848d3307d3760207c2d6a7f683765ff 2500w" />
+  <img />
 </Frame>
 
 As usual, once the PR has been opened, you'll still have the option of diffing individual downstream models that weren't diffed, or diffing all downstream models using the `datafold:diff-all-downstream` label.
@@ -3803,19 +4025,19 @@ Source: https://docs.datafold.com/deployment-testing/configuration
 Explore configuration options for CI/CD testing in Datafold.
 
 <CardGroup>
-  <Card title="Primary Key Inference" href="/deployment-testing/configuration/primary-key" icon="file" horizontal>
+  <Card title="Primary Key Inference" href="/deployment-testing/configuration/primary-key" icon="file">
     Learn how Datafold infers primary keys for accurate Data Diffs.
   </Card>
 
-  <Card title="Column Remapping" href="/deployment-testing/configuration/column-remapping" icon="file" horizontal>
+  <Card title="Column Remapping" href="/deployment-testing/configuration/column-remapping" icon="file">
     Map renamed columns in PRs to their production counterparts.
   </Card>
 
-  <Card title="Datafold CI Triggers" href="/deployment-testing/configuration/datafold-ci/on-demand" icon="folder-open" horizontal>
+  <Card title="Datafold CI Triggers" href="/deployment-testing/configuration/datafold-ci/on-demand" icon="folder-open">
     Configure when Datafold runs in CI, including on-demand triggers.
   </Card>
 
-  <Card title="Model-specific CI Configs" href="/deployment-testing/configuration/model-specific-ci/sql-filters" icon="folder-open" horizontal>
+  <Card title="Model-specific CI Configs" href="/deployment-testing/configuration/model-specific-ci/sql-filters" icon="folder-open">
     Set model-specific filters and configurations for CI runs.
   </Card>
 </CardGroup>
@@ -3833,20 +4055,20 @@ When your PR includes updates to column names, it's important to specify these u
 By specifying column remapping in the commit message, instead of interpreting the change as a removing one column and adding another:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c492d769326e6c4c3a8882a3198332c8" data-og-width="2326" width="2326" data-og-height="602" height="602" data-path="images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=24e5cd73df50dc8ca97c3de3b0d4cdac 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=06f4da44a0f76e49812320b077d875c7 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=be2d7bd3cb7f9b1e8718568449b5f454 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9b2716806833b8d9967a3b4bf715b72b 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8edae7e8b4d940c119038abce698c45d 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_schema_difference_collapsed-f4fcb478c3a3e43b57f5b79b3f0bf15f.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=09cca214fdc5908a8d36c0e51df3dfd7 2500w" />
+  <img />
 </Frame>
 
 Datafold will recognize that the column has been renamed:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=dac069059db9f6c994eac39bdfab09a6" data-og-width="2360" width="2360" data-og-height="884" height="884" data-path="images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4a51e513227eab1210b06b7fab9cc41f 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=bb90eca4fa0a7970ca1e3a953cfff443 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9c11cec9893cea6f21e0f2a2f56fc905 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=eb4351b13b52430ffb7aacab6e0ed05e 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0105a05b53050cad0cf531805a471769 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_no_schema_diff-d727e739b814160b72cde19f667ee7da.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5e30f215d3d1fe885b836247d5d2f228 2500w" />
+  <img />
 </Frame>
 
 ## Syntax for column remapping
 
 You can use any of the following syntax styles as a single line to a commit message to instruct Datafold in CI to remap a column from `oldcol` to `newcol`.
 
-```Bash  theme={null}
+```Bash theme={null}
 # All models/tables in the PR:
 datafold remap oldcol newcol
 X-Datafold: rename oldcol newcol
@@ -3867,7 +4089,7 @@ Commit messages can be chained together to reflect sequential changes. This mean
 For example, if your commit history looks like this:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2f980e14e0eee444c14eedb9b75f094c" data-og-width="1098" width="1098" data-og-height="254" height="254" data-path="images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=aebc576141e678c0ff75e3742df43e41 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=628675b62c028d16bfdf20c4be130b7b 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2ca1f2c9129c3fbd7c92011a02087cb4 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0689e2432d0ec94a4ae177b8b1cdc716 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=70e977b6cb99a56272f63f8221ccaec8 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/column_remapping_commit_messages-8ef04d36b80ee9f509fdb976d4dcb16e.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a2989342a14ba2047110a914b3a0234d 2500w" />
+  <img />
 </Frame>
 
 Datafold will understand that the production column `name` has been renamed to `first_name` in the PR branch.
@@ -3907,7 +4129,7 @@ By default, Datafold CI runs on every new pull/merge request and commits to exis
 To **only** run Datafold CI when the user explicitly requests it, you can set **Run only when tagged** option in the Datafold app [CI settings](https://app.datafold.com/settings/integrations/ci) which will only allow Datafold CI to run if a `datafold` tag/label is assigned to the pull/merge request.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a1872bbe27be3779fa79908ecff53ba1" data-og-width="1980" width="1980" data-og-height="1030" height="1030" data-path="images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c04d7824efb2d2943058fabfd4bd3740 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=667677d57e58e9acae205bf7fdf1cc1d 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=59f3ccbc8e78e3b696090910cce116af 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9368ce4d5832ca5f77f1b38cfad40328 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a8819937fa20899398b770f344d1c92f 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/datafold_label_in_pr-81dfcfe40ff4c9c43bb14fde407894d5.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a978e793c77796292c89145d197df739 2500w" />
+  <img />
 </Frame>
 
 ## Running data diff on specific file changes
@@ -3918,7 +4140,7 @@ By default, Datafold CI will run on any file change in the repo. To skip Datafol
 
 Let's say the dbt project is a folder in a repo that contains other code (e.g., Airflow). We want to run Datafold CI for changes to dbt models but skip it for other files. For that, we exclude all files in the repo except those the /dbt folder. We also want to filter out `.md` files in the /dbt folder:
 
-```Bash  theme={null}
+```Bash theme={null}
 *!dbt/*dbt/*.md
 ```
 
@@ -3942,7 +4164,7 @@ Source: https://docs.datafold.com/deployment-testing/configuration/model-specifi
 
 Specify a `time_column` to visualize match rates between tables for each column over time.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     meta:
@@ -3957,7 +4179,7 @@ Source: https://docs.datafold.com/deployment-testing/configuration/model-specifi
 
 Use `never_diff` to exclude a model or subdirectory of models from data diffs.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     meta:
@@ -3972,7 +4194,7 @@ Source: https://docs.datafold.com/deployment-testing/configuration/model-specifi
 
 Specify columns to include or exclude from the data diff using `include_columns` and `exclude_columns`.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     meta:
@@ -4014,9 +4236,9 @@ Source: https://docs.datafold.com/deployment-testing/configuration/model-specifi
 
 Use `prod_time_travel` and `pr_time_travel` to diff tables from specific points in time.
 
-If your database supports <Tooltip tip="The ability to query or compare data from a specific point in the past, often using a timestamp or version history. Commonly used in databases like Snowflake and Big Query, which store historical snapshots of data.">time travel</Tooltip>, you can diff tables from a particular point in time by specifying `prod_time_travel` for a production model and `pr_time_travel` for a PR model.
+If your database supports <Tooltip>time travel</Tooltip>, you can diff tables from a particular point in time by specifying `prod_time_travel` for a production model and `pr_time_travel` for a PR model.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     meta:
@@ -4040,7 +4262,7 @@ Datafold supports composite primary keys, meaning that you can assign multiple c
 
 The first option is setting the `primary-key` key in the dbt metadata. There are [several ways to configure this](https://docs.getdbt.com/reference/resource-configs/meta) in your dbt project using either the `meta` key in a yaml file or a model-specific config block.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     columns:
@@ -4057,7 +4279,7 @@ models:
 
 If the primary key is not found in the metadata, it will go through the [tags](https://docs.getdbt.com/reference/resource-properties/tags).
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     columns:
@@ -4075,7 +4297,7 @@ models:
 
 If the primary key isn't provided explicitly, Datafold will try to infer a primary key from dbt's uniqueness tests. If you have a single column uniqueness test defined, it will use this column as the PK.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: users
     columns:
@@ -4086,7 +4308,7 @@ models:
 
 Also, model-level uniqueness tests can be used for inferring the PK.
 
-```Bash  theme={null}
+```Bash theme={null}
 models:
   - name: sales
     columns:
@@ -4150,7 +4372,7 @@ Learn how to set up and configure Datafold's API for CI/CD testing.
 Integrate your code repository using the appropriate [integration](/integrations/code-repositories).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=45fd70946a2add757d79098af039b429" data-og-width="2084" width="2084" data-og-height="742" height="742" data-path="images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a69e88590a390b61e72569c53a496d24 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd0d01e133d73d97290b898e2f53623b 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3cc0312866dc746c1654834ce3d07382 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=2ada31061cc7d4abc5d4939d4e8d80c3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=cf99b0fd987b5dbc15bc46d84fc7d927 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b4ab64b5e13ef955ff4aab55f4d16879 2500w" />
+  <img />
 </Frame>
 
 ## 2. Create an API integration
@@ -4158,7 +4380,7 @@ Integrate your code repository using the appropriate [integration](/integrations
 In the Datafold app, create an API integration.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7be3befc9aa261a2f155ee155143944f" data-og-width="2072" width="2072" data-og-height="1094" height="1094" data-path="images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5d13b05cc2d3dd048ad48377bb57949f 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0e86d492621fd5f2659d3cb40a837dbd 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=50a25d67b9a037262eb9b655aff8fa47 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0e1e685b014a75fc3fb1c2089c72618a 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=128ba338ad334a2fe0d45e75905ded8a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4a47c0ba9c62d731a7da05666aac7cd5 2500w" />
+  <img />
 </Frame>
 
 ## 3. Set up the API integration
@@ -4198,14 +4420,14 @@ Complete the configuration by specifying the following fields:
 Generate a new Datafold API Key and obtain the CI config ID from the CI API integration settings page:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e65dd3975cef3b16ad203a0e6dfc1e7c" data-og-width="2310" width="2310" data-og-height="972" height="972" data-path="images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2e0e7022637f64e95d0f4c01e6f09db1 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4fc016fc32528e5f1f08b4f9edc88cc7 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b570523c1b5d58809b253754f6fbe82f 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cc99d5527fc2951e3c3919f784b15955 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=23aaa8a8a35b8d3bfe814868517fca80 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8d376a542ad6683d9418572183ba8542 2500w" />
+  <img />
 </Frame>
 
 You will need these values later on when setting up the CI Jobs.
 
 ## 5. Install Datafold SDK into your Python environment
 
-```Bash  theme={null}
+```Bash theme={null}
 pip install datafold-sdk
 ```
 
@@ -4213,13 +4435,13 @@ pip install datafold-sdk
 
 Using the Datafold SDK, configure your CI script(s) to use the Datafold SDK `ci submit` command. The example below should be adapted to match your specific use-case.
 
-```Bash  theme={null}
+```Bash theme={null}
 datafold ci submit --ci-config-id <datafold_ci_config_id> --pr-num <pr_num> --diffs ./diffs.json
 ```
 
 Since Datafold cannot infer which tables have changed, you'll need to manually provide this information in a specific `json` file format. Datafold can then determine which models to diff in a CI run based on the `diffs.json` you pass in to the Datafold SDK `ci submit` command.
 
-```Bash  theme={null}
+```Bash theme={null}
 [
   {
     "prod": "MY.PROD.TABLE", // Production table to compare PR changes against
@@ -4234,7 +4456,7 @@ Since Datafold cannot infer which tables have changed, you'll need to manually p
 
 Note: The `JSON` file is optional and you can also achieve the same effect by using standard input (stdin) as shown here. However, for brevity, we'll use the `JSON` file approach in this example:
 
-```Bash  theme={null}
+```Bash theme={null}
 datafold ci submit \
     --ci-config-id <datafold_ci_config_id> \
     --pr-num <pr_num> <<- EOF
@@ -4267,7 +4489,7 @@ To add Datafold to your CI tool, add `datafold ci submit` step in your PR CI job
 
 <Tabs>
   <Tab title="GitHub Actions">
-    ```Bash  theme={null}
+    ```Bash theme={null}
     name: Datafold PR Job
 
     # Run this job when a commit is pushed to any branch except main
@@ -4312,7 +4534,7 @@ To add Datafold to your CI tool, add `datafold ci submit` step in your PR CI job
   </Tab>
 
   <Tab title="CircleCI">
-    ```Bash  theme={null}
+    ```Bash theme={null}
     version: 2.1
 
     jobs:
@@ -4357,7 +4579,7 @@ To add Datafold to your CI tool, add `datafold ci submit` step in your PR CI job
   </Tab>
 
   <Tab title="GitLab CI">
-    ```Bash  theme={null}
+    ```Bash theme={null}
 
     image:
     name: ghcr.io/dbt-labs/dbt-core:1.x # your name will vary
@@ -4404,98 +4626,6 @@ To add Datafold to your CI tool, add `datafold ci submit` step in your PR CI job
 To skip the Datafold step in CI, include the string `datafold-skip-ci` in the last commit message.
 
 
-# Fully-Automated
-Source: https://docs.datafold.com/deployment-testing/getting-started/universal/fully-automated
-
-Automatically diff tables modified in a pull request with Datafold's Fully-Automated CI integration.
-
-Our Fully-Automated CI integration enables you to automatically diff tables modified in a pull request so you know exactly how your data will change before going to production.
-
-We do this by analyzing the SQL in any changed files, extracting the relevant table names, and diffing those tables between your staging and production environments. We then post the results of those diffs—including any downstream impact—to your pull request for all to see. All without manual intervention.
-
-## Prerequisites
-
-* Your code must be hosted in one of our supported version control integrations
-* Your tables/views must be defined in SQL
-* Your schema names must be parameterized ([see below](#4-parameterize-schema-names))
-* You must be automatically generating staging data ([more info](/deployment-testing/how-it-works))
-
-## Get Started
-
-Get started in just a few easy steps.
-
-### 1. Generate a Datafold API key
-
-If you haven't already generated an API key (you only need one), visit Settings > Account and select **Create API Key**. Save the key somewhere safe like a password manager, as you won't be able to view it later.
-
-### 2. Set up a version control integration
-
-Open the Datafold app and navigate to Settings > Integrations > Repositories to connect the repository that contains the code you'd like to automatically diff.
-
-### 3. Add a step to your CI workflow
-
-<Note>This example assumes you're using GitHub actions, but the approach generalizes to any version control tool we support including GitLab, Bitbucket, etc.</Note>
-
-Either [create a new GitHub Action](https://docs.github.com/en/actions/writing-workflows/quickstart) or add the following steps to an existing one:
-
-```yaml  theme={null}
-- name: Install datafold-sdk
-  run: pip install -q datafold-sdk
-
-- name: Trigger Datafold CI
-  run: |
-    datafold ci auto trigger --ci-config-id $CI_CONF_ID --pr-num $PR_NUM 
-    --base-sha $BASE_SHA --pr-sha $PR_SHA --reference-params "$REFERENCE_PARAMS" 
-    --pr-params "$PR_PARAMS"
-  env:
-    DATAFOLD_API_KEY: ${{ secrets.DATAFOLD_API_KEY }}
-    CI_CONF_ID: 436
-    PR_NUM:  "${{ steps.findPr.outputs.pr }}"
-    PR_SHA: "${{ github.event.pull_request.head.sha }}"
-    BASE_SHA: ${{ github.event.pull_request.base.sha }}
-    REFERENCE_PARAMS: '{ "target_schema": "nc_default" }'
-    PR_PARAMS: "{ \"target_schema\": \"${{ env.TARGET_SCHEMA }}\" }"
-```
-
-### 4. Parameterize schema names
-
-If it's not already the case, you'll need to parameterize the schema for any table paths you'd like Datafold to diff. For example, let's say you have a file called `dim_orgs.sql` that defines a table called `DIM_ORGS` in your warehouse. Your SQL should look something like this:
-
-```sql  theme={null}
--- datafold: pk=org_id
-CREATE OR REPLACE TABLE analytics.${target_schema}.dim_orgs AS (
-  SELECT
-    org_id,
-    org_name,
-    employee_count,
-    created_at
-  FROM analytics.${target_schema}.org_created
-);
-```
-
-### 5. Provide primary keys (optional)
-
-<Note>While this step is technically optional, we strongly recommend providing primary keys for any tables you'd like Datafold to diff.</Note>
-
-In order for Datafold to perform full value-level comparisons between staging and production tables, Datafold needs to know the primary keys. To provide this information, place a comment above each query using the `-- datafold: pk=<your_pk>` syntax shown below:
-
-```sql  theme={null}
--- datafold: pk=org_id
-CREATE OR REPLACE TABLE analytics.${target_schema}.dim_orgs AS (
-  SELECT
-    org_id,
-...
-```
-
-### 6. Create a pull request
-
-When you create a pull request, Datafold will automatically detect it, attempt to diff any tables modified in the code, and post a summary as a comment in the PR. You can click through on the comment to view a more complete analysis of the changes in the Datafold app. Happy diffing!
-
-## Need help?
-
-If you have any questions about Fully-Automated CI, please reach out to our team via Slack, in-app chat, or email us at [support@datafold.com](mailto:support@datafold.com).
-
-
 # No-Code
 Source: https://docs.datafold.com/deployment-testing/getting-started/universal/no-code
 
@@ -4512,7 +4642,7 @@ Get up and running with our No-Code CI integration in just a few steps.
 Connect your code repository using the appropriate [integration](/integrations/code-repositories).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=45fd70946a2add757d79098af039b429" data-og-width="2084" width="2084" data-og-height="742" height="742" data-path="images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a69e88590a390b61e72569c53a496d24 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd0d01e133d73d97290b898e2f53623b 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3cc0312866dc746c1654834ce3d07382 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=2ada31061cc7d4abc5d4939d4e8d80c3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=cf99b0fd987b5dbc15bc46d84fc7d927 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_app_repo_integration-d436bfd0149ef5b49b3cd2baff167737.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b4ab64b5e13ef955ff4aab55f4d16879 2500w" />
+  <img />
 </Frame>
 
 ### 2. Create a No-Code integration
@@ -4520,7 +4650,7 @@ Connect your code repository using the appropriate [integration](/integrations/c
 From the integrations page, create a new No-Code CI integration.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7be3befc9aa261a2f155ee155143944f" data-og-width="2072" width="2072" data-og-height="1094" height="1094" data-path="images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5d13b05cc2d3dd048ad48377bb57949f 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0e86d492621fd5f2659d3cb40a837dbd 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=50a25d67b9a037262eb9b655aff8fa47 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0e1e685b014a75fc3fb1c2089c72618a 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=128ba338ad334a2fe0d45e75905ded8a 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_ci_integration-63a004100ab880d71821d7f41a5aeebb.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4a47c0ba9c62d731a7da05666aac7cd5 2500w" />
+  <img />
 </Frame>
 
 ### 3. Set up the No-Code integration
@@ -4547,7 +4677,7 @@ Complete the configuration by specifying the following fields:
 Datafold will automatically post a comment on your pull request with a link to generate a CI run that corresponds to the latest set of changes.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e8dc9f691dd36c5b59f8a832f7c5ef90" data-og-width="1033" width="1033" data-og-height="622" height="622" data-path="images/1-7a001321004a1afa68a3bd74a4bb822d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=59cb82e2ee41b716816ede9085085353 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=239b202662245ccb9c78fd41786d5f91 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f387cd9dc8c008824f6eeca5ec21e71c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a8b9eee6e6aef7d0c0f8d280858cfb15 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5c44de689cfb9f78de714064eb6d3609 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-7a001321004a1afa68a3bd74a4bb822d.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=dc5ca756ef235c762cde0f0f9e941212 2500w" />
+  <img />
 </Frame>
 
 ### 5. Add diffs to your CI run
@@ -4555,7 +4685,7 @@ Datafold will automatically post a comment on your pull request with a link to g
 Once in Datafold, add as many pull requests as you'd like to the CI run. If you need a refresher on how to configure data diffs, check out [our docs](/data-diff/in-database-diffing/creating-a-new-data-diff).
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b8de0e72e6d42738e3538834bd51ad19" data-og-width="1292" width="1292" data-og-height="696" height="696" data-path="images/4-800a438c5251d6888b83a1f9e3c811bb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a322fb992c2f19bc19aeee0370e1e0bb 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8d24e8bbd9faf0e9e0968391dc7a4da9 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a556956ee858b83f15df1183405742eb 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=46d75ba6cb4e9f6d2987c9f97fd58186 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2654e257f99837a8e9311575632577d0 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-800a438c5251d6888b83a1f9e3c811bb.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1f77b255c440ee8f54e24e4f91efbd22 2500w" />
+  <img />
 </Frame>
 
 ### 6. Add a summary to your pull request
@@ -4563,13 +4693,13 @@ Once in Datafold, add as many pull requests as you'd like to the CI run. If you 
 Click on **Save and Add Preview to PR** to post a summary to your pull request.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=386e1a389aae5b12600fc22912f5f48b" data-og-width="1321" width="1321" data-og-height="522" height="522" data-path="images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=eca70eecd76a85c1bc0240f7049ef059 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e4bb9cfe5324703779943c9db4324bc0 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d962ce1398ce803578a3af02bcaa851f 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0e88cf6e1992e2bbe6b9f4282698f6e8 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e4de295c456d6de6f98e79c40e20eedb 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-cb3997ac8f47fe7d5ad651478f1fe7d8.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=488eae433e397515264c7ec6c7f75055 2500w" />
+  <img />
 </Frame>
 
 ### 7. View the summary in your pull request
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b43855e4da91adf49b0dfbab2da269f1" data-og-width="934" width="934" data-og-height="789" height="789" data-path="images/3-33123cf19f9ff7f5fa1aef9952d8208d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=847b01768e805d2de27656f71b4d6a14 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e870cd6078f7a841649326c90ae40faa 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1123c9dbd70ed78a60a10431feab998a 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=76db4ba13ca6dbd931f2cca19715120a 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d788e7d68bac7eb90e8e204e8dd467a9 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-33123cf19f9ff7f5fa1aef9952d8208d.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0decfea251860812a4fdca7bfcade7b4 2500w" />
+  <img />
 </Frame>
 
 ## Cloning diffs from the last CI run
@@ -4582,7 +4712,7 @@ If you make additional changes to your pull request, clicking the **Add data dif
 You can also diff downstream tables by clicking on the **Add Data Diff** button in the Downstream Impact table. This creates additional Data Diffs:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cfddbf0cccec7c25713c3ef567b27096" data-og-width="1143" width="1143" data-og-height="743" height="743" data-path="images/5-c411b13fcdaebb9587fabcfcef92c740.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a8f12789bbbc07e1c70f14fbc19b7581 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=24b431abf786e2daa6e4711c8f55e007 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3a1d9f4d32c7393e774a5fd1fc05f0b4 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=dd996cbef054a8180126ac567c6b2fb0 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=282130b7029845acf13096e609cdfa0b 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-c411b13fcdaebb9587fabcfcef92c740.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=adbf58519948c822bc29e4dce9c64fdb 2500w" />
+  <img />
 </Frame>
 
 You can then post another summary to your pull request by clicking **Save and Add Preview to PR**.
@@ -4605,7 +4735,7 @@ Continuous Integration (or CI) is a process for building and testing changes to 
 
 ### Datafold in CI
 
-For Datafold to work in CI, you need to add a step that builds <Tooltip tip="Staging data is created using the version of the code in your PR/MR branch, which contains the edits you're currently working on.">staging data</Tooltip> in your CI process (e.g., GitHub).
+For Datafold to work in CI, you need to add a step that builds <Tooltip>staging data</Tooltip> in your CI process (e.g., GitHub).
 
 <Note>
   **Prerequisite: Building staging data in CI**
@@ -4618,7 +4748,7 @@ For Datafold to work in CI, you need to add a step that builds <Tooltip tip="Sta
 In this short clip, see how the Datafold bot automatically comments on your PR, highlighting data differences between the production and development versions of your code:
 
 <Frame>
-  <video src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/small-video-01.mp4?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=547067fb87c55ddcf11071999197c33e" controls data-path="images/small-video-01.mp4" />
+  <video />
 </Frame>
 
 ## Creating production and staging data
@@ -4660,7 +4790,7 @@ We'll walk through the setup steps in more detail in the [Getting Started](/depl
 While Datafold can be added to CI no matter what orchestrator you use, it's worth detailing exactly how this works with dbt, a popular and opinionated tool for which we have specific recommendations.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fc7be62f6921f1442259d7ab7a16dbbf" data-og-width="2700" width="2700" data-og-height="1650" height="1650" data-path="images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=79fbf7fc5316de70238ee374a2bb8f92 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3c29bc65f8b9b8790ba7b86e6bab86f0 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=549d668227fc5d89efd287d1f5a4a321 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1a7df0e01c5f28f56d98de5138f978ad 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c03bb87c3a2fc317f00fb6d3ade17d99 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/Datafold_in_dbt_CI-750487e5bd8ef031a87c205cbc6e5fea.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f5c30b8af26e3c37106d963a69dc7042 2500w" />
+  <img />
 </Frame>
 
 Here is how Datafold + dbt in CI works:
@@ -4758,89 +4888,6 @@ Source: https://docs.datafold.com/faq/data-diffing
 
   <Accordion title="Can I materialize diff results back to my database?">
     Yes, while the Datafold App UI provides advanced exploration of diff results, you can also materialize these results back to your database. This allows you to further investigate with SQL queries or maintain audit logs, providing flexibility in how you handle and review diff outcomes. Teams may additionally choose to download diff results as a CSV directly from the Datafold App to share with their team members.
-  </Accordion>
-</AccordionGroup>
-
-
-# Data Migration Automation
-Source: https://docs.datafold.com/faq/data-migration-automation
-
-
-
-<AccordionGroup>
-  <Accordion title="How does DMA work?">
-    Datafold performs complete SQL codebase translation and validation. It uses an AI agent architecture that performs the translation leveraging an LLM model with a feedback loop optimized for achieving full parity between migration source and target. DMA takes into account metadata, including schema, data types, and relationships in the source system.
-  </Accordion>
-
-  <Accordion title="How is this approach different from other tools on the market?">
-    DMA offers several key advantages over deterministic transpilers that rely on static code parsing with predefined grammars:
-
-    * **Full parity between source and target:** DMA not only returns code that compiles, but code that produces the same result in your new database with explicit validation.
-    * **Flexible dialect handling:** Ability to adapt to any arbitrary dialect for input/output without the need to provide full grammar, which is especially valuable for numerous legacy systems and their versions.
-    * **Self-correction capabilities:** DMA can self-correct mistakes, taking into account compilation errors and data discrepancies.
-    * **Modernizing code structure:** DMA can convert convoluted stored procedures into dbt projects following best practices.
-  </Accordion>
-
-  <Accordion title="How do I know if the output is correct?">
-    Upon delivery, customers get a comprehensive report with links to data diffs validating parity and discrepancies (if any) on dataset-, column-, and row-level between source and target.
-  </Accordion>
-
-  <Accordion title="How does my team use DMA?">
-    Once source and target systems are connected and Datafold ingests the code base, translations with DMA are automatically supervised by the Datafold team. In most cases, no input is required from the customer.
-  </Accordion>
-
-  <Accordion title="What do I need to start working with DMA?">
-    Connect source and target data sources to Datafold. Provide Datafold access to the codebase (usually by installing the Datafold GitHub/GitLab/ADO app or via system catalog for stored procedures).
-  </Accordion>
-
-  <Accordion title="What are the security implications of using DMA?">
-    Datafold is SOC 2 Type II, GDPR, and HIPAA-compliant and provides flexible deployment options, including in-VPC deployment in AWS, GCP, or Azure. The LLM infrastructure relies on local models and does not expose data to any sub-processor besides the cloud provider. In case of a VPC deployment, none of the data leaves the customer’s private network.
-  </Accordion>
-
-  <Accordion title="How long will it take to translate?">
-    After the initial setup, the migration process can take several days to several weeks, depending on the source and target technologies, scale, and complexity.
-  </Accordion>
-
-  <Accordion title="What if I want to change data model/definitions?">
-    DMA is an ideal fit for lift-and-shift migrations with parity between source and target as the goal. Some customization is possible and needs to be scoped on a case-by-case basis.
-  </Accordion>
-
-  <Accordion title="How does cross-database diffing work?">
-    Datafold connects to any SQL source and target databases, similar to how BI tools do. Datasets from both data connections are co-located in a centralized database to execute comparisons and identify specific rows, columns, and values with differences. To perform diffs at massive scale and increased speed, users can apply sampling, filtering, and column selection.
-  </Accordion>
-
-  <Accordion title="What kind of information does Datafold output?">
-    Datafold’s cross-database diffing will produce the following results:
-
-    * **High-Level Summary:**
-      * Total number of different rows
-      * Total number of rows (primary keys) that are present in one database but not the other
-      * Aggregate schema differences
-    * **Schema Differences:** Per-column mapping of data types, column order, etc.
-    * **Primary Key Differences:** Sample of specific rows that are present in one database but not the other
-    * **Value-Level Differences:** Sample of differing column values for each column with identified discrepancies; full dataset of differences can be downloaded or materialized to the warehouse
-  </Accordion>
-
-  <Accordion title="How does a user run a data diff?">
-    * Via Datafold’s interactive UI
-    * Via the Datafold API
-    * On schedule (as a monitor) with optional alerting via Slack, email, PagerDuty, etc.
-  </Accordion>
-
-  <Accordion title="Can I run multiple data diffs at the same time?">
-    Yes, users can run as many diffs as they would like with concurrency limited by the underlying database.
-  </Accordion>
-
-  <Accordion title="What if my data is changing and replicated live, how can I ensure proper comparison?">
-    In such cases, we recommend using watermarking—diffing data within a specified time window of row creation/update (e.g., `updated_at timestamp`).
-  </Accordion>
-
-  <Accordion title="What if the data types do not match between source and target?">
-    Datafold performs best-effort type matching for cases where deterministic type casting is possible, e.g., comparing `VARCHAR` type with `STRING` type. When automatic type casting without information loss is not possible, the user can define type casting manually using diffing in Query mode.
-  </Accordion>
-
-  <Accordion title="Can data diff help if the dataset in the source and target databases has a different shape/schema/column naming?">
-    Users can reshape input datasets by writing a SQL query and diffing in Query mode to bring the dataset to a comparable shape. Datafold also supports column remapping for datasets with different column names between tables.
   </Accordion>
 </AccordionGroup>
 
@@ -4958,7 +5005,7 @@ Source: https://docs.datafold.com/faq/datafold-with-dbt
 
     For dbt-specific diff performance, you can exclude certain columns or tables from data diffs in your CI/CD pipeline by adjusting the **Advanced settings** in your Datafold CI/CD configuration. This helps reduce processing load by focusing diffs on only the most relevant columns.
 
-        <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1a22a2d006506c4181030d7a6417daf4" alt="" data-og-width="2090" width="2090" data-og-height="1772" height="1772" data-path="images/faq/advanced_ci_columns_to_ignore.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=08c8c210035ff613a62d8453b70a3964 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d0766e0559b5093c0204882b7cd2896d 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6b1fe94bfdfa7eb27d6c26aac1f9bda1 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9b22e9e57064d8fba203c166040f83da 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=96cfef3957167e0b7d52269211c6c2a7 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/advanced_ci_columns_to_ignore.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4c4c4b4bcc81d2854b11bdaa31c4bb68 2500w" />
+    <img alt="" />
   </Accordion>
 
   <Accordion title="Can I run Data Diffs before opening a PR?">
@@ -4966,7 +5013,7 @@ Source: https://docs.datafold.com/faq/datafold-with-dbt
 
     You can trigger a Data Diff by first creating a **draft PR** and then running the following command via the CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     dbt run && datafold diff dbt
     ```
 
@@ -5040,24 +5087,24 @@ Get answers to the most common questions regarding our product.
 
 Have a question that isn’t answered here? Feel free to reach out to us at [support@datafold.com](mailto:support@datafold.com), and we’ll be happy to assist you!
 
-<CardGroup cols={2}>
-  <Card title="Data Diffing" href="/faq/data-diffing" horizontal />
+<CardGroup>
+  <Card title="Data Diffing" href="/faq/data-diffing" />
 
-  <Card title="CI/CD Testing" href="/faq/ci-cd-testing" horizontal />
+  <Card title="CI/CD Testing" href="/faq/ci-cd-testing" />
 
-  <Card title="Data Migration Automation" href="/faq/data-migration-automation" horizontal />
+  <Card title="Data Migration Automation" href="/faq/data-migration-automation" />
 
-  <Card title="Data Reconciliation" href="/faq/data-reconciliation" horizontal />
+  <Card title="Data Reconciliation" href="/faq/data-reconciliation" />
 
-  <Card title="Data Monitoring & Observability" href="/faq/data-monitoring-observability" horizontal />
+  <Card title="Data Monitoring & Observability" href="/faq/data-monitoring-observability" />
 
-  <Card title="Datafold with dbt" href="/faq/datafold-with-dbt" horizontal />
+  <Card title="Datafold with dbt" href="/faq/datafold-with-dbt" />
 
-  <Card title="Data Storage & Security" href="/faq/data-storage-and-security" horizontal />
+  <Card title="Data Storage & Security" href="/faq/data-storage-and-security" />
 
-  <Card title="Performance & Scalability" href="/faq/performance-and-scalability" horizontal />
+  <Card title="Performance & Scalability" href="/faq/performance-and-scalability" />
 
-  <Card title="Resource Management" href="/faq/resource-management" horizontal />
+  <Card title="Resource Management" href="/faq/resource-management" />
 </CardGroup>
 
 
@@ -5083,7 +5130,7 @@ Source: https://docs.datafold.com/faq/performance-and-scalability
     You can exclude columns when you create a new Data Diff or when you clone an existing one:
 
     <Frame>
-            <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=115abf94cf44b4455815c3ba6590fffe" alt="" data-og-width="1384" width="1384" data-og-height="884" height="884" data-path="images/faq/new_diff_exclude_columns.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=60532a82cd20ef169777bed2b18daa2f 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=7b9258cb4d2db96623ed5759de7381d4 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=958c95dc67f34afc38445e991a4cfe76 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1675889d188645eee642fee41a3179d4 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=64fa8499cce7deddfd8f5730d04c910a 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/faq/new_diff_exclude_columns.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=394aff3dbd3bef65acc013a6baa2e521 2500w" />
+      <img alt="" />
     </Frame>
 
     To exclude them in your CI/CD pipeline, [follow this guide](/integrations/orchestrators/dbt-core#advanced-settings-configuration) to specify them in the Advanced settings of your CI/CD configuration in Datafold.
@@ -5126,43 +5173,6 @@ Source: https://docs.datafold.com/faq/resource-management
 </Accordion>
 
 
-# dbt Exposures
-Source: https://docs.datafold.com/integrations/bi-data-apps/dbt
-
-Incorporate dbt Exposures into your Datafold lineage.
-
-In dbt, Exposures allow you to define downstream uses of your data (e.g., in dashboards). You can include dbt Exposures in lineage within Data Explorer using our dbt Exposures integration.
-
-## Set up the integration
-
-<Note>
-  If you haven't aleady created a dbt CI integration, please start [there](/integrations/orchestrators/).
-</Note>
-
-1. Visit Settings > BI & Data Apps > Add new integration
-2. Select "dbt Exposures"
-3. Enter a name for the integration (this can be anything)
-4. Select your existing dbt CI integration from the dropdown
-5. Save the integration
-
-<img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=46667baf3b545a6f0665c15874359703" alt="Add dbt Exposures integration" data-og-width="2176" width="2176" data-og-height="766" height="766" data-path="images/dbt-exposures-add-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ae8ea705a4713091682b412adb5b5f13 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=58b3982ad41999bed202c0719b217e51 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fb0fbf4dedd43ae2400d43b0b22e3e15 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5cd052a02b04d0f2caf8fd0abc2a1e4a 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6723bcf6bad8c9b6ce2e137d91341c80 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-add-integration.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=52cf2abad78cf3b0b7cf87b0d6bf2ea6 2500w" />
-<img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ebeb4396e6ef3fa3eda620f1783950fa" alt="Configure dbt Exposures integration" data-og-width="1378" width="1378" data-og-height="318" height="318" data-path="images/dbt-exposures-integration-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c85f719dfda4413e898551a6758e6bd4 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=daae5797a2c526c102e4c4518af37317 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=97f74960a66aae3376cefbdba316435b 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=27d566789c4c9c7be1bd6bad4dec745e 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=011bcf46f08639a3065fd87da95a752a 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-integration-config.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=65f9196b17a53707b96c6e10dc5615e9 2500w" />
-
-## View dbt Exposures in Data Explorer
-
-<Note>
-  Your dbt Exposures may not appear in lineage immediately after setting up the integration. To force an update, return to the integration settings and select "Sync now".
-</Note>
-
-When you visit Data Explorer, you'll now see the option to filter for dbt Exposures:
-
-<img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2269a6543d2ef3112cd727d79e717bb2" alt="Filter for dbt Exposures" data-og-width="3420" width="3420" data-og-height="1436" height="1436" data-path="images/dbt-exposures-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f2e5dae9572c375abdd47d185998c94b 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=8ec7cf3f0bc7b5a5b6eec594e1478ed4 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1e5b7e8106c84f5475a1e6374b8f703a 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=58803f774dfde2d2be4089f71f4742e6 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=19b1754db1f11145fa86a2d38fa4abcd 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-filters.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=824b540aefcc17bcacd7c2b896734f8d 2500w" />
-
-Your dbt Exposures will also appear in lineage:
-
-<img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f0f28de9f5aa1e521d94184efe3d9342" alt="View dbt Exposures in lineage" data-og-width="3420" width="3420" data-og-height="1962" height="1962" data-path="images/dbt-exposures-lineage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=901ebd14c0f0c372f49d08043c0c1af9 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=16b748b2821b30abea415022e45c3bec 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=44ba5a4d17759b61c1b63851e5b1729e 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4d8bde289da0695e6d6540d4ea6418df 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1773f4a8d1730e2f90e0415ed8b7b7f8 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt-exposures-lineage.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c98d0fc7fdea2fed0b983154e8a482e3 2500w" />
-
-
 # Hightouch
 Source: https://docs.datafold.com/integrations/bi-data-apps/hightouch
 
@@ -5170,12 +5180,12 @@ Navigate to Settings > Integrations > Data Apps and add a Hightouch Integration.
 
 ## Create a Hightouch Integration
 
-<Frame caption="Create Integration">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bd09718379ccede369a6e1b6738524c4" data-og-width="2102" width="2102" data-og-height="646" height="646" data-path="images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=83919832e4b23599314017b45690d2c1 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1414d4d3bb1c055da9b1c52341916473 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b8f0350c0caf989153ac7c824fc516df 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd39b2c1819b171dcbab2fd23bee84d3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=710aebc070a215d8943c9cf7321b8406 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3558cfab5dc27eff9323d9e64d4902b7 2500w" />
+<Frame>
+  <img />
 </Frame>
 
-<Frame caption="Create Integration">
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0c5ab498f228ff4c438a41c191f1b1ec" data-og-width="1890" width="1890" data-og-height="1382" height="1382" data-path="images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=656bab2e4aec843fafc46429901adc7a 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b18f7c09fb9a54aee4b7a43565dc91b8 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=642cbcacea223543b26f9d0917d50607 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=599441c611a6b2f3ef84757eb8ed7560 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=90daee1aa50b35123b04d14ca899ddd4 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_blank_integration_form-379e98ee744aa52224d2dd6ccd110a44.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=88054a2835acec251412be410f3bf96d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Complete the configuration by specifying the following fields:
@@ -5187,16 +5197,16 @@ Complete the configuration by specifying the following fields:
 | API Key                 | Log into your [Hightouch account](https://app.hightouch.com/login) and navigate to **Settings** → **API keys** tab → **Add API key** to generate a new, unique API key.  <Icon icon="triangle-exclamation" /> Your API key will appear only once, so please copy and save it to your password manager for further use. |
 | Data connection mapping | When the correct credentials are entered we will begin to populate data connections in Hightouch (on the left side) that will need to be mapped to data connections configured in Datafold (on the right side). See image below.                                                                                       |
 
-<Frame caption="Create Integration">
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b9a551a7e7aabd27daee6405532d7fa4" data-og-width="1739" width="1739" data-og-height="1456" height="1456" data-path="images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=56663b1343950a02570cbc5ed80b29b8 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=439ce7ac9e8386fde85b64c15ef04a03 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=769d278bf05c33f41032a97ae3d6cc8e 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5683b5897a085405d14a9ca439ed6f72 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bfdbc027916f0366260f4c2f5adae5cc 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_data_source_match-3ed927400af746ec7b2b637b09cdd055.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6f44f5335e5f150d202353e1145d82b0 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 When completed, click **Submit**.
 
 It may take some time to sync all the Hightouch entities to Datafold and for Data Explorer to populate. When completed, your Hightouch models and sync will appear in Data Explorer as search results.
 
-<Frame caption="Create Integration">
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=325349ccd3e600e527208667d58908b4" data-og-width="1716" width="1716" data-og-height="810" height="810" data-path="images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4109de427de9da033df0e8f60473cd71 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2a3986ab719cc7bd675706ad362732f3 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0a79dbdec28e5a302b69af2d584a7730 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8788cfdbe768de579d85bd18acf39089 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=be8c670f5a39c7725eb1a0fc2a487c31 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/hightouch_sync_results-6865862cb8cd146928f7783fd2a67f56.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4d7679d3bfdcc41470350e1e0c99f80c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Tip>
@@ -5220,11 +5230,11 @@ Source: https://docs.datafold.com/integrations/bi-data-apps/looker
 Navigate to Settings > Integrations > Data Apps and add a Looker integration.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bd09718379ccede369a6e1b6738524c4" alt="Add New Integration" data-og-width="2102" width="2102" data-og-height="646" height="646" data-path="images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=83919832e4b23599314017b45690d2c1 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1414d4d3bb1c055da9b1c52341916473 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b8f0350c0caf989153ac7c824fc516df 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd39b2c1819b171dcbab2fd23bee84d3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=710aebc070a215d8943c9cf7321b8406 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3558cfab5dc27eff9323d9e64d4902b7 2500w" />
+  <img alt="Add New Integration" />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9d4bc08ae0d3c7a49dc97e61d314518f" alt="Looker Integration Form" data-og-width="2368" width="2368" data-og-height="1476" height="1476" data-path="images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a773a6f47f081d0274890d3654cb3b60 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=dbdb207bd25b3a6ea8949a8cafdd49ed 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=3558d7d083e00569cf4d1339bda59912 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b61a6aedfe005f461ed44a4396b4e399 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=baf3d3f5a1fad6c055f11a759b0240b1 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_blank_integration_form-2891846b6665064a633f376d99acbde0.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=db094298f134e63291ad6a7c481e7ef5 2500w" />
+  <img alt="Looker Integration Form" />
 </Frame>
 
 Complete the configuration by specifying the following fields:
@@ -5239,7 +5249,7 @@ Complete the configuration by specifying the following fields:
 | Data connection mapping | When the correct credentials are entered we will begin to populate data connections in Looker (on the left side) that will need to be mapped to data connections configured in Datafold (on the right side). See image below.                                                                                                                                                                                                                                                                                                                                            |
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=981c663e0a1ec781941ea554bd1d7d58" alt="Looker Configuration" data-og-width="1900" width="1900" data-og-height="1956" height="1956" data-path="images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=52f156d66bdee410a63e58ac889d310d 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4bc90dafdd128278c14eea268e64a065 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1b3d4ca6ede404f1a02fcce3892a637e 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d6bfcce9c9ff3ae9815339b991c858a8 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f319647cf8af529b02c66a36f7d523a2 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_configuration-0410bbaf211f889bf36bb8f93d378500.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5f597a0ac5030cb8710fcb63368ac0ea 2500w" />
+  <img alt="Looker Configuration" />
 </Frame>
 
 When completed, click **Submit**.
@@ -5247,7 +5257,7 @@ When completed, click **Submit**.
 It may take some time to sync all the Looker entities to Datafold and for Data Explorer to populate. When completed, your Looker assets will appear in Data Explorer as search results.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b4ba365cff063876985e52e3fa0b7462" alt="Looker Sync Results" data-og-width="1722" width="1722" data-og-height="976" height="976" data-path="images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=40d4a67c89d46ddbdef3daf8b84723f9 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2976d7c058a3cd398dc0d8714a40d37d 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c5f61aa4fbb3b8c67d60424d16e45181 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9a9a0ee2f6c1d5221d7553c86f791c41 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=579b68573daf518b8bfb8e6e29d6c48a 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/looker_sync_results-e610d030d6891b22cffbceeae9d9a8d1.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=835f1340c118927efac7804f5b6fd455 2500w" />
+  <img alt="Looker Sync Results" />
 </Frame>
 
 <Tip>
@@ -5346,8 +5356,8 @@ In **Mode**, navigate to **Workspace Settings** → **Privacy & Security** → *
 
 Click the <Icon icon="gear" /> icon, and choose **Create new token**.
 
-<Frame caption="Tokens">
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=218032a87bc1d3f56b623a1eec0a9a00" data-og-width="1691" width="1691" data-og-height="267" height="267" data-path="images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=58c1cb56a809187118184cd69200a35b 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=e8b3268bc2db3bb2aa31045bce9631b2 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=e817ac0717fd115a7d277df6cc108027 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=a59203a5a10594174ea08cdd2b97af9e 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=633af3fa499865c6c8d363c01c987e7e 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tokens-40fd2f50b2ec5d0acc295c11ae9e0548.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=83502a7e22c1f9a5d96203f221833d84 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Take note of:
@@ -5364,20 +5374,20 @@ Take note of `{workspace}` part, we will need it when configuring Datafold.
 
 Navigate to **Settings** → **Integrations** → **BI & Data Apps**.
 
-<Frame caption="Add New Integration">
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bd09718379ccede369a6e1b6738524c4" data-og-width="2102" width="2102" data-og-height="646" height="646" data-path="images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=83919832e4b23599314017b45690d2c1 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1414d4d3bb1c055da9b1c52341916473 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b8f0350c0caf989153ac7c824fc516df 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd39b2c1819b171dcbab2fd23bee84d3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=710aebc070a215d8943c9cf7321b8406 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3558cfab5dc27eff9323d9e64d4902b7 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Choose **Mode** Integration to add.
 
-<Frame caption="Choose Type">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=064bac3962b7e9812daae5972457b5c2" data-og-width="1073" width="1073" data-og-height="667" height="667" data-path="images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=dbdaaf4597a7d6cba715ab6df01d9fca 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7fcd5d2a579d4623982ce61dad054fa1 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a302a76e06c0ad63b8658519c10bba04 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=11102d708ea0b66c27013da12bbcc548 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=700f899f072a1b4da648e15ed4e9c3d4 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/choose-type-bf9b2d554dc7739742b1f007c9bef227.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0e436b0081860afe17c309aa747e604f 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 This will bring up **Mode** integration parameters.
 
-<Frame caption="Create Integration">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7ec9e93eb717c2a1c1becefe2c29a768" data-og-width="1059" width="1059" data-og-height="706" height="706" data-path="images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2f88f8562400cd02c7b32b2421b4b33b 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=590aaaa136ed31c276f8b85e0828f470 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=662051cc22c31fcc70cfc762ff9610c7 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=337a027c1e0bc4bb091de29f18c1491c 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4c6105cbd370fffab35add37d5ccfa38 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/create-585f8b3a1e9f38c5bde10e6528e0c6b4.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ef510d1b9ffa273419ac34279184095b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Complete the configuration by specifying the following fields:
@@ -5409,8 +5419,8 @@ Datafold will start to sync your reports. It can take some time to fetch all the
 
 Now that Mode sync has completed — you can browse your Mode reports!
 
-<Frame caption="Tokens">
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5d53ed5013896c0e70df4d551e6478ab" data-og-width="1720" width="1720" data-og-height="1082" height="1082" data-path="images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5172bb0c7607aa6a4b8a96dcfa869ba9 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a52b6998b01c3799b768cc0c0a8f22c6 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f5e659695bdc8ffcd6b904b191554511 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c5ab2ddfed858c2ba9637742dfb8db79 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e29cda5dc55550bcee43f6c027012ea1 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/mode_sync_results-dd76443d59234b676d29c6999f278c48.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d31fdcc6533c62543ba8918e76ef860d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -5427,85 +5437,197 @@ Our Power BI integration can help you visualize column-level lineage dependencie
 * Reports (with Fields)
 * Dashboards
 
-## Set up the integration
+## Choose your authentication method
+
+Datafold supports two authentication methods for Power BI. Choose the one that best fits your organization's needs. Key difference:
+
+* <strong>Delegated auth</strong> uses your user's identity, is tied to your account and permissions, also requiring you to be a <strong>Power Platform Administrator</strong>;
+* <strong>Service Principal</strong> is an independent application identity that doesn't depend on any user, but can be a bit more complicated to setup.
+
+<Tabs>
+  <Tab title="Delegated (User OAuth)">
+    ### Set up the integration
+
+    <Steps>
+      <Step title="Open Microsoft 365 admin center">
+        Navigate to [**Microsoft 365 admin center** -> **Active users**](https://admin.microsoft.com/#/users) and choose the user that Datafold will authenticate under.
+
+        <Frame>
+          <img />
+        </Frame>
+
+        As highlighted in the screenshot above, this user should have the **Power Platform Administrator** role assigned to it.
+      </Step>
+
+      <Step title="If the role is missing, assign it">
+        Click **Manage roles**, enable the **Power Platform Administrator** role, and save changes.
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Configure Power BI API">
+        Navigate to [Power BI Admin Portal](https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi) and enable the following two settings:
+
+        * Enhance admin APIs responses with detailed metadata
+        * Enhance admin APIs responses with DAX and mashup expressions
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Create Power BI integration in Datafold">
+        In the Datafold app, navigate to **Settings** -> **BI & Data Apps**, and click **+ Add new integration**. Choose **Power BI** from the list.
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Fill in the name for your new integration">
+        ...and then **Save**.
+
+        <Frame>
+          <img />
+        </Frame>
+
+        On clicking **Save**, the system will redirect you to Power BI.
+      </Step>
+
+      <Step title="Sign in to Power BI">
+        ...if not already signed in.
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Grant permissions to Datafold">
+        Allow the Datafold integration to use Power BI. Depending on the roles configured for your user in the Admin center, you may require a confirmation from a **Global Administrator**. Follow the steps in the wizard.
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Integration is ready">
+        You will be redirected back to Datafold and see a message that Power BI is successfully connected.
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Service Principal">
+    ### Set up the integration
+
+    <Steps>
+      <Step title="Create a Microsoft Entra ID App Registration">
+        1. Go to [Microsoft Entra admin center - New Registration](https://entra.microsoft.com/?l=en.en-us#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade/quickStartType~/null/isMSAApp~/false)
+        2. Configure the application:
+           * **Name**: `Datafold Power BI Integration` (or similar)
+           * **Supported account types**: "Accounts in this organizational directory only"
+           * **Redirect URI**: Leave blank (not needed for Service Principal)
+
+        <Frame>
+          <img />
+        </Frame>
+
+        3. Click **Register**
+        4. Note the **Application (client) ID** and **Directory (tenant) ID** from the Overview page
+      </Step>
+
+      <Step title="Create a Client Secret">
+        1. In the App Registration, go to **Certificates & secrets**
+        2. Click **New client secret**
+        3. Add a description (e.g., "Datafold integration") and choose an expiration period
+        4. Click **Add**
+
+        <Frame>
+          <img />
+        </Frame>
+
+        5. **Important**: Copy the secret **Value** immediately—it won't be shown again
+      </Step>
+
+      <Step title="Create a Security Group">
+        1. Go to [Microsoft Entra admin center - Groups](https://entra.microsoft.com/?l=en.en-us#view/Microsoft_AAD_IAM/AddGroupBlade)
+        2. Click **New group**
+        3. Configure:
+           * **Group type**: Security
+           * **Group name**: `Power BI Service Principals` (or similar)
+           * **Group description**: "Service principals allowed to access Power BI APIs"
+           * **Membership type**: Assigned
+        4. In the **Members** section, click **Add members**
+        5. Search for and add your App Registration (by name or Client ID)
+
+        <Frame>
+          <img />
+        </Frame>
+
+        6. Click **Create**
+      </Step>
+
+      <Step title="Configure Power BI Admin Portal">
+        1. Go to [Power BI Admin Portal](https://app.powerbi.com/admin-portal/tenantSettings)
+        2. Navigate to **Tenant settings**
+        3. Enable these settings and apply them to your security group (or to the whole organization, as you see fit):
+
+        * **Allow service principals to use Power BI APIs**
+        * **Allow service principals to use read-only admin APIs**
+        * **Enhance admin APIs responses with detailed metadata**
+        * **Enhance admin APIs responses with DAX and mashup expressions**
+
+        <Frame>
+          <img />
+        </Frame>
+      </Step>
+
+      <Step title="Grant Workspace Access">
+        You must explicitly grant access to each workspace you want Datafold to sync:
+
+        1. Open the Power BI workspace you want to sync
+        2. Click **Access** (or the gear icon -> Manage access)
+
+        <Frame>
+          <img />
+        </Frame>
+
+        3. Add your App Registration as an **Admin** or **Member**
+        4. Repeat for each workspace you want Datafold to access
+      </Step>
+
+      <Step title="Configure Datafold">
+        1. Go to Datafold -> **Settings** -> **BI & Data Apps**
+        2. Click **+ Add new integration** -> **Power BI**
+        3. Select **Service Principal** as the authentication type
+        4. Enter the credentials:
+           * **Client ID**: The Application (client) ID from Step 1
+           * **Client Secret**: The secret value from Step 2
+           * **Tenant ID**: The Directory (tenant) ID from Step 1
+
+        <Frame>
+          <img />
+        </Frame>
+
+        5. Click **Save**
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Verify the integration
 
 <Steps>
-  <Step title="Open Microsoft 365 admin center">
-    Navigate to [**Microsoft 365 admin center** -> 👤 **Active users**](https://admin.microsoft.com/#/users) and choose the user that Datafold will authenticate under.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=38be66f2206263532520e4dc5ccd56a9" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/microsoft-admin-user.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c239123f4290a9343a5f9623578fc50a 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=a6e8e8e842a76bf59f82e9280918d639 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1a8d05276bfa28413b56ca27c0fc7647 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9a5d3dfb92285c4ee6e660835b477699 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3a4fc4206ed16e884f9286dc23c3332c 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-admin-user.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f5ef23e3b54795de89b11cd448b91dd7 2500w" />
-    </Frame>
-
-    As highlighted in the screenshot above, this user should have the **Power Platform Administrator** role assigned to it.
-  </Step>
-
-  <Step title="If the role is missing, assign it">
-    Click **Manage roles**, enable the **Power Platform Administrator** role, and save changes.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=10a2d7a38614008498702ea653240b45" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/microsoft-role.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=135fedd2022b556e6c743e17c6a874d1 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=707191572a27daa24a7c19ec9cf98775 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2c255e4049b67b1c23bcdef6409c0923 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e19cf19b04387d5e640612acc9a5cc5c 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ceb86ec7519bb644dde283c300fd82c7 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/microsoft-role.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=53811079ed2129f6eaed889c2a02c3d1 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Configure Power BI API">
-    Navigate to [Power BI Admin Portal](https://app.powerbi.com/admin-portal/tenantSettings?experience=power-bi) and enable the following two settings:
-
-    * Enhance admin APIs responses with detailed metadata
-    * Enhance admin APIs responses with DAX and mashup expressions
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=947277d450e3507854f041e1dc1bf924" data-og-width="2060" width="2060" data-og-height="1179" height="1179" data-path="images/power-bi/admin-portal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=03c6e0431149d3b69eccc559613c6233 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c4a9720692c6da78b09d6e2ebcd5f252 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e34423eff722ab3da9a50584f45fe096 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0b26f8d48a81d35a829f7a95d4aa2f4e 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2ae52e01cc773182c4222690ceb182ef 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/admin-portal.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=efc8d3ccca4113fb3d9171dbb74659f8 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Create Power BI integration in Datafold">
-    In the Datafold app, navigate to **Settings** -> **BI & Data Apps**, and click **+ Add new integration**. Choose **Power BI** from the list.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b19abe212823cc0404644d16668aa588" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cb41d2c71af15c48ccf4b5fe13cca705 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7ef487fcf9f95185a0b17a47e27deb4a 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4fab71dda7d3bcbc45a72b75932c8586 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=876a313842469e44916c7b58369ba5a7 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e3f9c38e910776ce55d9bf271ed17bfe 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/create.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=527c729ffc3699385eb9c2044e5995e5 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Fill in the name for your new integration">
-    ...and then **Save**.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=dd2456c5ce5f75e9a21a3e7512f6a185" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=a8331be34f53169e87489d717dd79a2f 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d8c5750189a08759f887454212b6a8bb 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4dc6e1ae5da5f606957852bd83e728cf 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=a2cc9a84fba89dc44bdf8436dcf70edd 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=eba79ddc95ec4195db9141301e044524 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/new.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=dbd0c8fe63944e77f4898e16efe65b6e 2500w" />
-    </Frame>
-
-    On clicking **Save**, the system will redirect you to Power BI.
-  </Step>
-
-  <Step title="Sign in to Power BI">
-    ...if not already signed in.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9bb6c26dca422fdc86ee250477dc0d5c" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/sign-in.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9af33152cd51cb5e02045af45a22225a 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=628c843aaae78cecda7331ba1aa0bf55 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0ba10f215486c0d56ed48eb05fac81cb 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=483e864be52f27b1d2df28dc0009d17b 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=20a52a33dd3ac6e3d67b7c6869dbf69d 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/sign-in.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c9ad62068f7a74d7907c40f903f3c2ae 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Grant permissions to Datafold">
-    Allow the Datafold integration to use Power BI. Depending on the roles configured for your user in the Admin center, you may require a confirmation from a **Global Administrator**. Follow the steps in the wizard.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6a1ad1535bbf09d220fb5c2783e1d6aa" data-og-width="2060" width="2060" data-og-height="1179" height="1179" data-path="images/power-bi/consent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=42bab1e9bc0bfffa60c7f866b9fc7198 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=485af431c98886614bf02eef0f24ec6e 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5dda72b878229f133d2ff4a532622f96 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4d8d47bd55db39bcfae0cabea0d69119 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c940d24cf6c2cfa07f5280b31a35b152 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/consent.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7bd105a4ce6f55287b68f2cbc6ec1c9f 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Integration is ready">
-    You will be redirected back to Datafold and see a message that Power BI is successfully connected.
-
-    <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=756557c082662c5834d34daa351ddc60" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/success.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=10a59c3d5bf3d152580f9da10d2cf3e5 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=286cfcce60a83035fb0ee2102fd7316e 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b683cd8370384a46df812b142e5ebe11 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=97695434f3d811edfd556acae9f63134 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6d403cde6068c0c5d9b7db41221cd68a 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/success.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cecdaca2a75ad077c6db925235195f1d 2500w" />
-    </Frame>
-  </Step>
-
   <Step title="Power BI integration needs some time to sync">
     You can check out **Jobs** -> **BI & Data Apps** for the status of the sync job.
 
     <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=a1288e76fb558f0c37875a812f1bc119" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/jobs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=58cce51b5b9b130375500cd331dde57a 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b89d04036a352969d0c940c6c088222f 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=445452b8324ea69be064142a79795f53 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=95084316d73d3e0132819ae007393a26 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2a01cbad96e2516b90cda37be1bbe23b 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/jobs.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=afe0e676178e7fc871e8c04cc3802f1b 2500w" />
+      <img />
     </Frame>
 
     See [Tracking Jobs](/integrations/bi-data-apps/tracking-jobs) for more details.
@@ -5515,13 +5637,13 @@ Our Power BI integration can help you visualize column-level lineage dependencie
     When the sync is complete, you will see Power BI entities in **Data Explorer**.
 
     <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4d97fd3f9b6da71c68b07af43723c3e5" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/data-explorer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b3f4b58d3892ba3b88f52bd90a345d22 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=54197de01b02d766838a5f036949ecdb 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=dccf4ff5939cf98aa43a9eb776a8c933 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ddd08530b3363569eaf07fe08771298e 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e5686245370a9e74d0ce07fb7b726166 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/data-explorer.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=15fbf0b692c6064f4d835103d4ae1a34 2500w" />
+      <img />
     </Frame>
   </Step>
 
   <Step title="Lineage is now available">
     <Frame>
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ab5d1896b8ccfa79e156cec7a604b6bb" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/power-bi/lineage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3e50a4292b7f81104131474360a6547e 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ee6a1bd7c66158437c917829881d0e2b 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cd61db20c1fbc090bb25d47e1d5f88e0 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1389caf0e01891afe363c01cb5547959 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ce0f73e05c0a5912bdcb655aa98b579f 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/power-bi/lineage.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=985117daf40d54d725ee6a1808086ca3 2500w" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -5606,13 +5728,13 @@ Then:
 Ensure that **Personal Access Tokens** are enabled on your Tableau site. For that, navigate to **Settings** and there, on the **General** tab, search for `Personal Access Tokens`. That feature needs to be enabled — not necessarily for everyone but for the user for whom we will be creating the token Datafold will use.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9147e3ad4b9630086b4b2a15094fe672" alt="Enable Personal Access Tokens" data-og-width="4152" width="4152" data-og-height="2260" height="2260" data-path="images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=61703e834866aa0f644f6327f10030db 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b94c052f038e27e9ea686f69ed2b9e64 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=845a7fc83e6b2fac8fc0d09e976cafcf 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=839cadd96b3255caf253f3905b5535e6 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=11657c4aebc7313be52033c558956a57 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/tableau_enable_personal_access_tokens-a099600ff7a46573c1a2a34cd805323f.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8c2afd4c26429bd332f19b7d442eaf2b 2500w" />
+  <img alt="Enable Personal Access Tokens" />
 </Frame>
 
 Now that Personal Access Tokens are enabled, click on your user’s avatar in the top right, choose **My Account Settings** in the pop-up menu, and then search for **Personal Access Tokens** on your settings page.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=70570c0c794fc6664c8ed6febd7fb95d" alt="Personal Access Token" data-og-width="4152" width="4152" data-og-height="2260" height="2260" data-path="images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=26a0b77aa78e1696eb0cb8151ceeff75 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=2e3db19e49035cf91f69e5e5241df4d5 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=d79c59740cfd51aa58be6c0e67f56d8d 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=6ee36de0e9148448313842543a1094f8 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=d78e0f48dfa13785633663915f498621 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_personal_access_token-c39d6a9b98100f46a893e473dd8608f9.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=31c439ef3bb28b25c212755889944166 2500w" />
+  <img alt="Personal Access Token" />
 </Frame>
 
 Input a desired name, say `datafold`, into the **Token Name** field, and click **Create Token**.
@@ -5624,13 +5746,13 @@ This will open a popup window. Click **Copy Secret** and save the copied value s
 Navigate to **<Icon icon="gear" /> Settings** → **Integrations** → **Data Apps**. Click **<Icon icon="plus" /> Add new integration**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=bd09718379ccede369a6e1b6738524c4" alt="Add New Integration" data-og-width="2102" width="2102" data-og-height="646" height="646" data-path="images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=83919832e4b23599314017b45690d2c1 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=1414d4d3bb1c055da9b1c52341916473 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b8f0350c0caf989153ac7c824fc516df 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=fd39b2c1819b171dcbab2fd23bee84d3 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=710aebc070a215d8943c9cf7321b8406 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/data_apps_add_new_integration-8fa569d0d0beb7191934287bdcdda2f1.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3558cfab5dc27eff9323d9e64d4902b7 2500w" />
+  <img alt="Add New Integration" />
 </Frame>
 
 A click on **Tableau** will lead you to the integration creation screen. Fill in the fields with data we obtained earlier. See the screenshot for hints.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=99a0ac07d9cf4d1c93d6301663773993" alt="Tableau Integration Settings" data-og-width="4152" width="4152" data-og-height="2260" height="2260" data-path="images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=7ac8a831e722ccb0aeb3493b9ed7d7c3 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=837dbea1c86db2cd6191a62c73ead900 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=82c984a8d119b70831679f974be9620e 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=0f40f9ef8e9e536b398c955705d3e8a0 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=57470c8ec01687f50bd8d5294f53f197 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/tableau_settings-a8bedc87ed42a07c156b097ddca43779.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=0272092dec7b91e1d6e4bcad7e426034 2500w" />
+  <img alt="Tableau Integration Settings" />
 </Frame>
 
 …and click **Save**.
@@ -5646,13 +5768,13 @@ The initial sync might take some time; it depends on the number of objects at yo
 </Tip>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5c50a2f796a1b466fe221383084af2bc" alt="Search Tableau Entities" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=26d31ae71d4396e9f41492ca3ddc93f9 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=764c6f049e78c350c444967ff78b576f 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ef01f54fdc4a078f33843d80c236d3e2 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0f8f3a9981eb9523b427e7c128fce4c4 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9f451b2233ba03700748f084d6924e91 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/search-4538ec5be9e0ecce0829e7e7eee94bd9.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f1e3ce5b6c7a4135a177556c8d5a055d 2500w" />
+  <img alt="Search Tableau Entities" />
 </Frame>
 
 Clicking on a Tableau entity will lead you to the Lineage screen:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a47f739973d5178eba9b9d1b9160e034" alt="Tableau Lineage Screen" data-og-width="2056" width="2056" data-og-height="915" height="915" data-path="images/lineage-cbcb37952c6d09346c7877038c9f3e39.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8cff9920b5413823694c2513f9c90b74 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8985891daae8f58656eb4cd208441e73 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e240416086ff4eaff8ffee6826d22888 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0523d2936aa81b4501449255c3d46b41 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=03e340e89f327ce4da9473f937fd305b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/lineage-cbcb37952c6d09346c7877038c9f3e39.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=479546b7f2f99b1088b3cbaeec21eb9b 2500w" />
+  <img alt="Tableau Lineage Screen" />
 </Frame>
 
 <Tip>
@@ -5683,8 +5805,8 @@ Track the completion and success of your data app integration syncs.
 
 To track the progress of your data app integration, go to the **<Icon icon="wrench" /> Jobs** tab in the left sidebar.
 
-<Frame caption="Data App Jobs">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1902c9e03d710e05d544f1cdecc60abb" data-og-width="4152" width="4152" data-og-height="2260" height="2260" data-path="images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=72a2a7e53dd001979e0079240fefa85d 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0643c3c9e9a8efb5aa27513b4d299244 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=459dcbec87eb73fc17a1427d6b116c4f 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1b4fc0db04805c030014979ac6e6e142 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b5c0640c3d0c316629e0ca694a432bcc 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_jobs-46476d10e9860210c1889b5b9ff196f8.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=be3ab6c21579ed8f6d0958bcb4573073 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Your **Search** and **Lineage** features will be available once you see a job marked as `Done` for your integration on this screen.
@@ -5710,13 +5832,13 @@ Connect your code repositories with Datafold.
 </Info>
 
 <CardGroup>
-  <Card title="GitHub" icon="file" href="/integrations/code-repositories/github" horizontal />
+  <Card title="GitHub" icon="file" href="/integrations/code-repositories/github" />
 
-  <Card title="GitLab" icon="file" href="/integrations/code-repositories/gitlab" horizontal />
+  <Card title="GitLab" icon="file" href="/integrations/code-repositories/gitlab" />
 
-  <Card title="Bitbucket" icon="file" href="/integrations/code-repositories/bitbucket" horizontal />
+  <Card title="Bitbucket" icon="file" href="/integrations/code-repositories/bitbucket" />
 
-  <Card title="Azure DevOps" icon="file" href="/integrations/code-repositories/azure-devops" horizontal />
+  <Card title="Azure DevOps" icon="file" href="/integrations/code-repositories/azure-devops" />
 </CardGroup>
 
 
@@ -5737,7 +5859,7 @@ When configuring your token, enable following permissions:
 We need write access to the repository to post reports with Data Diff results to pull requests, and read access to identities to be able to properly display Azure DevOps users in the Datafold UI.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=79b790bb635c11e7b92e046ff26ff193" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1a9c8b05e52cd7cc63fa37a0856e9eaa 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a9b631782274cc2200e89fd0dbb92ffe 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c7af01cd57c6ce4d42ffe11912e50df7 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=315e5317bf383a490093666fdcb99325 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0a2bdbaf542c8837df118334980bf94b 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure_devops_access_token-7bd79728ae3447aa77f4246a1e66b249.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5855c1335750b1b7ada5081fd672b267 2500w" />
+  <img />
 </Frame>
 
 ## 2. Configure integration in Datafold
@@ -5772,8 +5894,8 @@ When configuring your token, enable following permissions:
 * **Pull requests** -> **Write**, so that Datafold can post reports with Data Diff results to pull requests.
 * **Webhooks** -> **Read and write**, so that Datafold can configure all webhooks that we need automatically.
 
-<Frame caption="Bitbucket Access Token">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8f59ced50090f42d1c8126a9a816c86a" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a8c5abd09425e95ad760081c3a461fe1 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5956cdaead951b18d186e4fa896f1480 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=597c82abfed30f0c62b2ae780249ffdf 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5f108a2379805bd2202d12826ac7396e 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=75df67fbd366291cb00b18b4a7c0d15f 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_access_token-31e43bcafa70921b2f847623fbc149e5.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ab81b22af16b5f1e373c98f1f86d14d1 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Bitbucket Data Center / Server
@@ -5783,8 +5905,8 @@ To get a [repository access token](https://confluence.atlassian.com/bitbucketser
 When configuring your token, enable **Repository admin** permissions.
 We need admin access to the repository to be able to post reports with Data Diff results to pull requests, and also configure all necessary webhooks automatically.
 
-<Frame caption="Bitbucket Server Access Token">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=fe7a17de6da297d97624585a9c6415ba" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=24c9641828996ace84a453d73f2fcb79 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a015dacba7bca059ccc2bd0cd2fb0ff5 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5d55f42df68f5f9e804882cdceb00557 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=c03ff8b4f2236f7f4efae41ac718ab67 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b1a45716ff752606d26f83f4d4e69b92 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bitbucket_server_access_token-c2504c12d9bef6081251b9eb6aa0b12b.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=59e569fcb832271a9dfc56596828d516 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 2. Configure integration in Datafold
@@ -5820,7 +5942,7 @@ Source: https://docs.datafold.com/integrations/code-repositories/github
 To set up a new integration, click the repository field and select the **Install GitHub app** button.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=05a583165e696cf4d8191cefb37d6ed9" data-og-width="2200" width="2200" data-og-height="926" height="926" data-path="images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=84e1ae6bce9b0005b6bebe64cdd50419 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9938eca7a9b6e490e78b5cdb157e0c90 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fcadb062275a2f2a19a1cad8565afd12 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=aa5415f0b1d845bf78dd0fb9f394dff3 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5bb5b709bf66c29e08f9278a03d5912f 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/github_install_button-27ecc75b58ccbe7681aa70223cc0e21b.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=226f0c8dcc9b79efee20a28cc23ab2ce 2500w" />
+  <img />
 </Frame>
 
 From here, GitHub will redirect you to login to your account and choose which organization you would like to connect. After choosing the right organization, you may choose to allow access to all repositories or specific ones.
@@ -5851,7 +5973,7 @@ VPC clients of Datafold need to create their own GitHub app, rather than use the
 Start by navigating to **Settings** → **Global Settings**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=064ce50091eaab88a16f0314e60103b0" data-og-width="2522" width="2522" data-og-height="1252" height="1252" data-path="images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3e56fc9b9cd2b1c23e4dc6afca485b59 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=33871ca1d5cd170f7b0393445b8dc553 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa0b6b1cfc74be40ee5eb534ce0972fe 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=508aa055d66678e9fc08fe19be33d61b 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e5903eb74f03ac6d5b07109d61114e9d 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_settings-4ba347a4179f693ad9cf851188d3cd3c.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2244e0facc8b84411a791d5d7c78c8ae 2500w" />
+  <img />
 </Frame>
 
 To begin the set up process, enter the domain that was registered for the VPC deployment in [AWS](/datafold-deployment/dedicated-cloud/aws) or [GCP](/datafold-deployment/dedicated-cloud/gcp). Then, enter the name of the GitHub organization where you'd like to install the application. When filled, click **Create GitHub App**.
@@ -5863,7 +5985,7 @@ After authentication, you should be directed to enter a description for the GitH
 Once the application is created, you should be returned to the Datafold settings screen. The button should then have disappeared, and the details for the GitHub App should be visible.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1f647e225a50e347520543a74fb723f5" data-og-width="1421" width="1421" data-og-height="1017" height="1017" data-path="images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c023b6d6e7864ca9472c63ce96232117 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=77e0cc92b48c790229f8b19c3aaf4a97 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cdaaa3e226a502fa20d171c786652bbc 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3b3b4d3a9d91b52dacc47b170e1b0eaf 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=af589570089dce593316a501c0ac0902 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/onprem_github_confirmation-040de7316a509d880b13d6be431da24d.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=47b8dd90d161524aecfb53fdeb1794fb 2500w" />
+  <img />
 </Frame>
 
 ### Making the GitHub application public
@@ -5902,22 +6024,22 @@ To get the [project access token](https://docs.gitlab.com/ee/user/project/settin
 
 When configuring your token, select the **Maintainer** role and select the **api** scope.
 
-<Frame caption="GitLab Access Token">
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3b4f13fecd884a73f79fc5f29ed635d0" data-og-width="1541" width="1541" data-og-height="970" height="970" data-path="images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e14c77bfa9c922fe95bf31ca0816daa5 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=49cafe904b45ca280c0277eaae1990f9 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=415d7a83e6355e9af220a0b29301c702 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=921ef53fc15fc1f17c35dcc0beb58e8a 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5b2ef6941943b34a7149dfa897643ab1 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gitlab_access_token-3c34d99f464332fd5e1a3dc672c89d36.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f92882e757e73d4396d4dba68b5eb700 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 **Project Name** is your Gitlab project URL after `gitlab.com/`. For example, if your Gitlab project URL is `https://gitlab.com/datafold/dbt/`, your Project Name is `datafold/dbt/`
 
 Finally, navigate back to Datafold and enter the **Project Token** and the name of your **Project** before hitting **Save**:
 
-<Frame caption="New GitLab Integration in Datafold">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1c65ed01289e60b48693cca20d5e9d75" data-og-width="897" width="897" data-og-height="423" height="423" data-path="images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=542c25d2b59aa6f014e80327300c85f9 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9586ccb24ce5515ac01d1ec30bbca3ec 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ef74c6101145fc1fb404dce3769b286f 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a8572ad991d2ff8989fd8ca64f09521f 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a37dde70dedfc2cb91012079968455f0 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_new_integration-556436f49dbd3ab4da5448a17540abd9.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a9998b17350a04b42154524cd793d8b3 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 If you want to change the GitLab URL, you can do so after setting up the integration. To do so, navigate to **Settings**, then **Org Settings**:
 
-<Frame caption="Change GitLab URL">
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=bcfd8113d0beecd9fc51341f22ce3c8b" data-og-width="1058" width="1058" data-og-height="819" height="819" data-path="images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=33418eb4e8b420075d4bbb4ce3c3a0a2 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f31735ff0fe22efda30df333e113f09c 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=29d5e7a86c9de7e402ef9280f26c52b2 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=95df988be241f25cfd157960193515da 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=43560ac997f5146c34681ca6a9c0a1d5 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/data_app_gitlab_change_url-f8ee1e8babed20cf8cb78318526d9f3e.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=84ffdd694df48e54815ec8bcdc34a9e6 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -5933,175 +6055,46 @@ Set up your Data Connection with Datafold.
 </Info>
 
 <CardGroup>
-  <Card title="Amazon S3" icon="file" href="/integrations/databases/amazon-s3" horizontal />
+  <Card title="Amazon S3" icon="file" href="/integrations/databases/amazon-s3" />
 
-  <Card title="Azure Data Lake Storage (ADLS)" icon="file" href="/integrations/databases/adls" horizontal />
+  <Card title="Azure Data Lake Storage (ADLS)" icon="file" href="/integrations/databases/adls" />
 
-  <Card title="Athena" icon="file" href="/integrations/databases/athena" horizontal />
+  <Card title="Athena" icon="file" href="/integrations/databases/athena" />
 
-  <Card title="BigQuery" icon="file" href="/integrations/databases/bigquery" horizontal />
+  <Card title="BigQuery" icon="file" href="/integrations/databases/bigquery" />
 
-  <Card title="Databricks" icon="file" href="/integrations/databases/databricks" horizontal />
+  <Card title="Databricks" icon="file" href="/integrations/databases/databricks" />
 
-  <Card title="Dremio" icon="file" href="/integrations/databases/dremio" horizontal />
+  <Card title="Dremio" icon="file" href="/integrations/databases/dremio" />
 
-  <Card title="Google Cloud Storage (GCS)" icon="file" href="/integrations/databases/google-cloud-storage" horizontal />
+  <Card title="Google Cloud Storage (GCS)" icon="file" href="/integrations/databases/google-cloud-storage" />
 
-  <Card title="MongoDB" icon="file" href="/integrations/databases/mongodb" horizontal />
+  <Card title="MySQL" icon="file" href="/integrations/databases/mysql" />
 
-  <Card title="MySQL" icon="file" href="/integrations/databases/mysql" horizontal />
+  <Card title="MariaDB" icon="file" href="/integrations/databases/mariadb" />
 
-  <Card title="MariaDB" icon="file" href="/integrations/databases/mariadb" horizontal />
+  <Card title="Microsoft SQL Server" icon="file" href="/integrations/databases/sql-server" />
 
-  <Card title="Netezza" icon="file" href="/integrations/databases/netezza" horizontal />
+  <Card title="Netezza" icon="file" href="/integrations/databases/netezza" />
 
-  <Card title="Oracle" icon="file" href="/integrations/databases/oracle" horizontal />
+  <Card title="OpenText Analytics Database (Vertica)" icon="file" href="/integrations/databases/vertica" />
 
-  <Card title="Snowflake" icon="file" href="/integrations/databases/snowflake" horizontal />
+  <Card title="Oracle" icon="file" href="/integrations/databases/oracle" />
 
-  <Card title="PostgreSQL" icon="file" href="/integrations/databases/postgresql" horizontal />
+  <Card title="Snowflake" icon="file" href="/integrations/databases/snowflake" />
 
-  <Card title="Redshift" icon="file" href="/integrations/databases/redshift" horizontal />
+  <Card title="PostgreSQL" icon="file" href="/integrations/databases/postgresql" />
 
-  <Card title="SAP HANA" icon="file" href="/integrations/databases/sap-hana" horizontal />
+  <Card title="Redshift" icon="file" href="/integrations/databases/redshift" />
 
-  <Card title="Teradata" icon="file" href="/integrations/databases/teradata" horizontal />
+  <Card title="SAP HANA" icon="file" href="/integrations/databases/sap-hana" />
 
-  <Card title="Trino" icon="file" href="/integrations/databases/trino" horizontal />
+  <Card title="Starburst" icon="file" href="/integrations/databases/starburst" />
 
-  <Card title="Vertica" icon="file" href="/integrations/databases/vertica" horizontal />
+  <Card title="Teradata" icon="file" href="/integrations/databases/teradata" />
 
-  <Card title="Microsoft SQL Server" icon="file" href="/integrations/databases/sql-server" horizontal />
-
-  <Card title="Starburst" icon="file" href="/integrations/databases/starburst" horizontal />
+  <Card title="Trino" icon="file" href="/integrations/databases/trino" />
 </CardGroup>
-
-
-# Azure Data Lake Storage (ADLS)
-Source: https://docs.datafold.com/integrations/databases/adls
-
-
-
-<Note>
-  This integration supports both Azure Data Lake Storage and Azure Blob Storage.
-</Note>
-
-**Steps to complete:**
-
-1. [Create an app and service principal in Microsoft Entra](#create-an-app-and-service-principal-in-microsoft-entra)
-2. [Configure your data connection in Datafold](#configure-your-data-connection-in-datafold)
-3. [Create your first file diff](#create-your-first-file-diff)
-
-## Create an app and service principal in Microsoft Entra
-
-Create an app and service principal in Entra using a client secret (not certificate). Check out [Microsoft's documentation](https://learn.microsoft.com/en-us/entra/architecture/service-accounts-principal) on this topic if you need help.
-
-<img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e710f7b59ebdd0cbe835516cb7419841" alt="Use client secret" data-og-width="1612" width="1612" data-og-height="1008" height="1008" data-path="images/adls-client-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5f1a774c196aa3ca0a0d94684e2a4f25 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2cc28f7dad1af49b7c530f5ab0fc9b61 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=12f01e13d8ff8ccb9fa7ac1fb19f2bd1 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0fd552548c9e3d81ed987c483d28c5c3 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4829d2e4473dffcf074a506b12769400 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-client-secret.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=241ff1a2ff4b3bfc61f4201ca9359f8d 2500w" />
-
-## Configure your data connection in Datafold
-
-<img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3e431654ca4c81a250d38eb240d5cbaa" alt="ADLS Data Connection" data-og-width="2084" width="2084" data-og-height="856" height="856" data-path="images/adls-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=66bad0a74f27f22f3c6e2762b752838d 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ec7b672ace0875d685304d00a5322e74 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=29f1f2c17174c58b3f7691fbcfa9c1dd 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c1f8754079db110a411fbbc0cd5bd56b 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4f243432651b296c800952cd86e96e03 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/adls-connection.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f94b7a55513d23bf3d0fd96c10cbf6b2 2500w" />
-
-| Field Name      | Description                                                                                              |
-| --------------- | -------------------------------------------------------------------------------------------------------- |
-| Connection name | The name you'd like to give to this connection in Datafold                                               |
-| Account Name    | This is in the URL of any filepath in ADLS, e.g. `<account>.dfs.core.windows.net/<container>/<filepath>` |
-| Client ID       | The client ID of the app you created in Microsoft Entra                                                  |
-| Client Secret   | The client secret of the app you created in Microsoft Entra                                              |
-| Tenant ID       | The tenant ID of the app you created in Microsoft Entra                                                  |
-
-## Create your first file diff
-
-For general guidance on how file diffs work in Datafold, check out our [file diffing docs](/data-diff/file-diffing).
-
-When creating a diff, note that the file path you provide may differ depending on whether you're using ADLS or Blob Storage. For example:
-
-* ADLS: `abfss://<my_filesystem>/<path>/<my_file>.<csv, xlsx, parquet, etc.>`
-* Blob Storage: `az://<my_container>/<path>/<my_file>.<csv, xlsx, parquet, etc.>`
-
-
-# Amazon S3
-Source: https://docs.datafold.com/integrations/databases/amazon-s3
-
-
-
-**Steps to complete:**
-
-1. [Create a user with access to S3](/integrations/databases/google-cloud-storage#create-a-service-account)
-2. [Assign the user to the S3 bucket](/integrations/databases/google-cloud-storage#service-account-access-and-permissions)
-3. [Create an access key for the user](/integrations/databases/google-cloud-storage#generate-a-service-account-key)
-4. [Configure your data connection in Datafold](/integrations/databases/google-cloud-storage#configure-in-datafold)
-
-## Create a user with access to S3
-
-To connect your Amazon S3 bucket, you will need to create a user for Datafold to use.
-
-* Navigate to the [AWS Console](https://console.aws.amazon.com/).
-* Click on the search bar in the top header, then find **IAM** service and click on it.
-* Click on the **Users** item of the Access Management section.
-* Click on the **Create user** button.
-* Create a user named `Datafold`.
-* Assign the user to the `AmazonS3FullAccess` policy.
-* When done, keep ARN of the user handy as you'll need it in the next step.
-
-## Assign the user to the S3 bucket
-
-* Go to S3 panel and select the bucket.
-* Click on the **Permissions** tab.
-* Click on **Edit** next to the **Bucket Policy**.
-* Add the following policy:
-  ```json  theme={null}
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "arn:aws:iam:::user/Datafold" // Replace with your user's ARN
-        },
-        "Action": [
-          "s3:GetObject",
-          "s3:PutObject" // Optional: Only needed if you're planning to use this data connection as a destination for materialized diff results.
-        ],
-        "Resource": [
-          "arn:aws:s3:::your-bucket-name/*", // Replace with your bucket's ARN
-          "arn:aws:s3:::your-bucket-name" // Replace with your bucket's ARN
-        ]
-      }
-    ]
-  }
-  ```
-
-<Note>
-  The Datafold user requires the following roles and permissions:
-
-  * **s3:GetObject** for read access.
-  * **s3:PutObject** for write access if you're planning to use this data connection as a destination for materialized diff results.
-</Note>
-
-## Create an access key for the user
-
-Next, go back to the **IAM** page to generate a key for Datafold.
-
-* Click on the **Users** page.
-* Click on the **Datafold** user.
-* Click on the **Security Credentials** tab.
-* Click on **Create access key** and select **Create new access key**.
-* Select **JSON** and click **Create**.
-
-## Configure in Datafold
-
-| Field Name                                                | Description                                                                                                                           |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Connection name                                           | A name given to the data connection within Datafold                                                                                   |
-| Bucket Name                                               | The name of the bucket you want to connect to.                                                                                        |
-| Bucket region                                             | The region of the bucket you want to connect to.                                                                                      |
-| Key ID                                                    | The key file generated in the [Create an access key for the user](#create-an-access-key-for-the-user) step                            |
-| Secret Access Key                                         | The secret access key generated in the [Create an access key for the user](#create-an-access-key-for-the-user) step                   |
-| Directory for writing diff results                        | Optional. The directory in the bucket where diff results will be written. Service account should have write access to this directory. |
-| Default maximum number of rows to include in diff results | Optional. The maximum number of rows that a file with materialized results will contain.                                              |
-
-Click **Create**. Your data connection is ready!
 
 
 # Athena
@@ -6177,7 +6170,7 @@ The Datafold service account requires the following roles and permissions:
 * **BigQuery Resource Viewer** to fetch the query logs for parsing lineage.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d519e227abd888a332872e582764c3c3" data-og-width="1632" width="1632" data-og-height="1080" height="1080" data-path="images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=51fd294a51129d4c58c48030d39f68be 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f5b37ca01498895ee6214b4c42988edf 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8a93d315df5aa90f2f2774311a5c95c1 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=216434403ab8d42368e76cc5c7b55930 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=bec30f822676a52428d61e5e82de1469 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_permissions-a7a43ded62c06a55f0337cf36924dcf5.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=213d9b15664c6924c53f9bdd14dd65c5 2500w" />
+  <img />
 </Frame>
 
 ## Create a Temporary Dataset
@@ -6189,7 +6182,7 @@ Datafold utilizes a temporary dataset to materialize scratch work and keep data 
 Let's navigate to BigQuery in the console and create a new dataset.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=80e39c735cf8b56cb83911e5b89bd29f" data-og-width="1632" width="1632" data-og-height="1080" height="1080" data-path="images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6df91c1c6119ad83e48f072d4f18cfad 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=387a99b64f99a91a69f9dd055b05c126 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a6b8f7dc3852a90f5b35160e08e7be16 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0920bafeaad7a67472f868f74baf327e 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0c59f9877e2d49ab39a4eee644b03920 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bigquery_tempdataset-b7d4da9e04f4239b90067a7d4858f183.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d6045097feb58d974bbe7c09d8ca3203 2500w" />
+  <img />
 </Frame>
 
 * Give the dataset a name like `datafold_tmp` and grant the Datafold service account the **BigQuery Data Editor** role.
@@ -6199,7 +6192,7 @@ Let's navigate to BigQuery in the console and create a new dataset.
 Next, go back to the **IAM & Admin** page to generate a key for Datafold.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8507cf5601ad67bf1757082daee45bf9" data-og-width="1632" width="1632" data-og-height="1080" height="1080" data-path="images/bigquery_key-368911548a71c512d065b1a227dace96.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=18b2b546fd64d40c1261cb66d072844f 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b8a730cd3879954da974790fc9047304 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9254addd372c20c779d0dd3ba2590437 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d00fe16de4302197e6c174abb1e226de 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=99d9d2490db846e5d2e75e65a51dc78a 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/bigquery_key-368911548a71c512d065b1a227dace96.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fb26fd122245d0151cfb3d7643a3161d 2500w" />
+  <img />
 </Frame>
 
 We recommend using the json formatted key. After creating the key, it will be saved on your local machine.
@@ -6234,7 +6227,7 @@ Source: https://docs.datafold.com/integrations/databases/databricks
 Visit **Settings** → **User Settings**, and then switch to **Personal Access Tokens** tab.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=77790371e1ab9da75072541115e76ef3" data-og-width="2638" width="2638" data-og-height="1644" height="1644" data-path="images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c7b74e10b593263d0cc301624721bfb3 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=ae39c6e82f203dd6c3c5b1f9334b48d0 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=83b3833dc6231cc68cd41e6ab3551d0b 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=6150f351a20c0d48f7fddeea8bdf2e91 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=4db8795496564e463a41237244b5636c 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_new_token-a2d1a65a0105ce7ad38fca457967b07c.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b1e324220abdd51fe0c8b8e2bb41c4c2 2500w" />
+  <img />
 </Frame>
 
 Then, click **Generate new token**. Save the generated token somewhere, you'll need it later on.
@@ -6244,7 +6237,7 @@ Then, click **Generate new token**. Save the generated token somewhere, you'll n
 In **SQL** mode, navigate to **SQL Warehouses**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b9b5121c2a90cc855b8c2a5b0ef447ef" data-og-width="724" width="724" data-og-height="455" height="455" data-path="images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=4e71648f9866e2051eca35f6f4b1930b 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=41bc7c67a4c9ce7a7f4ac2f7d7db8765 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=15e096e254600bfb0de3bb96b30de6f3 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=cca8159fd049d6198ae0f02809e134ed 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=5ab9363e2bdab2a0254bf7640e95b6dc 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databricks_sql_warehouse-80e1f70713a973cb310a7b1d4d32a409.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c538938c20ac5236d8eda63c3de67072 2500w" />
+  <img />
 </Frame>
 
 Choose the preferred warehouse and copy the following fields values from its **Connection Details** tab:
@@ -6253,7 +6246,7 @@ Choose the preferred warehouse and copy the following fields values from its **C
 * HTTP path
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c08e73c1c329dfe0120cc7a6287dd4a7" data-og-width="2638" width="2638" data-og-height="1644" height="1644" data-path="images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=a554bf925d1acb4c0d65f7c459ba901c 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9e38ad072bd7875aae1731d6f835bb76 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=04b92efdc808ad8ad63eb4b25c55d8ab 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c6b1832bae9efb023c665709eb1d72af 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=20a9617da84665fd3f8ffcf7bc7bacc9 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/databrick_connection_details-5b5208f53126fa0d4dd18dc21f3ffd61.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=8fec93f2fc8b8b819c4304d93895260f 2500w" />
+  <img />
 </Frame>
 
 ## Create schema for Datafold
@@ -6325,170 +6318,6 @@ Datafold utilizes a temporary dataset to materialize scratch work and keep data 
 Click **Create**. Your data connection is now ready!
 
 
-# Google Cloud Storage (GCS)
-Source: https://docs.datafold.com/integrations/databases/google-cloud-storage
-
-
-
-**Steps to complete:**
-
-1. [Create a Service Account](/integrations/databases/google-cloud-storage#create-a-service-account)
-2. [Give the Service Account Storage Object Admin access](/integrations/databases/google-cloud-storage#service-account-access-and-permissions)
-3. [Generate a Service Account JSON key](/integrations/databases/google-cloud-storage#generate-a-service-account-key)
-4. [Configure your data connection in Datafold](/integrations/databases/google-cloud-storage#configure-in-datafold)
-
-## Create a Service Account
-
-To connect Datafold to your Google Cloud Storage bucket, you will need to create a *service account* for Datafold to use.
-
-* Navigate to the [Google Cloud Console](https://console.cloud.google.com/), click on the drop-down to the left of the search bar, and select the project you want to connect to.
-  * *Note: If you do not see your project, you may need to switch accounts.*
-* Click on the hamburger menu in the upper left, then select **IAM & Admin** followed by **Service Accounts**.
-* Create a service account named `Datafold`.
-
-## Service Account Access and Permissions
-
-The Datafold service account requires the following roles and permissions:
-
-* **Storage Object Admin** for read and write access on all the datasets in the project.
-
-## Generate a Service Account Key
-
-Next, go back to the **IAM & Admin** page to generate a key for Datafold.
-
-* Click on the **Service Accounts** page.
-* Click on the **Datafold** service account.
-* Click on the **Keys** tab.
-* Click on **Add Key** and select **Create new key**.
-* Select **JSON** and click **Create**.
-
-We recommend using the JSON formatted key. After creating the key, it will be saved on your local machine.
-
-## Configure in Datafold
-
-| Field Name                                                | Description                                                                                                                                           |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Connection name                                           | A name given to the data connection within Datafold                                                                                                   |
-| Bucket Name                                               | The name of the bucket you want to connect to.                                                                                                        |
-| Bucket region                                             | The region of the bucket you want to connect to.                                                                                                      |
-| JSON Key File                                             | The key file generated in the [Generate a Service Account JSON key](/integrations/databases/google-cloud-storage#generate-a-service-account-key) step |
-| Directory for writing diff results                        | Optional. The directory in the bucket where diff results will be written. Service account should have write access to this directory.                 |
-| Default maximum number of rows to include in diff results | Optional. The maximum number of rows that a file with materialized results will contain.                                                              |
-
-Click **Create**. Your data connection is ready!
-
-
-# MariaDB
-Source: https://docs.datafold.com/integrations/databases/mariadb
-
-
-
-<Note>
-  **INFO**
-
-  Column-level Lineage is not currently supported for MariaDB.
-</Note>
-
-**Steps to complete:**
-
-1. [Run SQL script for permissions and create schema for Datafold](/integrations/databases/mariadb#run-sql-script-and-create-schema-for-datafold)
-2. [Configure your data connection in Datafold](/integrations/databases/mariadb#configure-in-datafold)
-
-### Run SQL script and create schema for Datafold
-
-To connect to MariaDB, create a user with read-only access to all tables you wish to diff. Include read and write access to a Datafold-specific dataset:
-
-```Bash  theme={null}
--- Create a temporary dataset for Datafold to utilize
-CREATE DATABASE IF NOT EXISTS datafold_tmp;
-
--- Create a Datafold user
-CREATE USER 'datafold_user'@'%' IDENTIFIED BY 'SOMESECUREPASSWORD';
-
--- Grant read access to diff tables in YourSchema
-GRANT SELECT ON `YourSchema`.* TO 'datafold_user'@'%';
-
--- Grant access to all tables in a datafold_tmp database
-GRANT ALL ON `datafold_tmp`.* TO 'datafold_user'@'%';
-
--- Apply the changes
-FLUSH PRIVILEGES;
-```
-
-Datafold utilizes a temporary dataset, named `datafold_tmp` in the above script, to materialize scratch work and keep data processing in the your warehouse.
-
-### Configure in Datafold
-
-| Field Name                   | Description                                                                       |
-| ---------------------------- | --------------------------------------------------------------------------------- |
-| Connection name              | A name given to the data connection within Datafold                               |
-| Host                         | The hostname for your MariaDB instance                                            |
-| Port                         | MariaDB connection port; default value is 3306                                    |
-| Username                     | The user created in our SQL script, named datafold\_user                          |
-| Password                     | The password created in our SQL script                                            |
-| Database                     | The name of the MariaDB database (schema) you want to connect to, e.g. YourSchema |
-| Dataset for temporary tables | The datafold\_tmp database created in our SQL script                              |
-
-Click **Create**. Your data connection is ready!
-
-
-# MongoDB
-Source: https://docs.datafold.com/integrations/databases/mongodb
-
-Our MongoDB integration allows you to diff data within MongoDB, or between MongoDB and a relational database (or even a file!).
-
-<Note>
-  Our MongoDB integration is still in beta. Some features, such as column-level lineage, are not yet supported. Please contact us if you need assistance.
-</Note>
-
-**Steps to complete:**
-
-1. [Configure user in MongoDB](#configure-user-in-mongodb)
-2. [Configure your data connection in Datafold](#configure-in-datafold)
-3. [Diff your data](#diff-your-data)
-
-## Configure user in MongoDB
-
-To connect to MongoDB, create a user with read-only access to all databases you plan to diff.
-
-## Configure in Datafold
-
-| Field Name              | Description                                                      |
-| ----------------------- | ---------------------------------------------------------------- |
-| Connection Name         | The name you'd like to assign to this connection in Datafold     |
-| Host                    | The hostname for your MongoDB instance                           |
-| Port                    | MongoDB endpoint port (default value is 27017)                   |
-| User ID                 | User ID (e.g. `DATAFOLD`)                                        |
-| Password                | Password for the user provided above                             |
-| Database                | Database to connect to                                           |
-| Authentication Database | Database name associated with the user credentials (e.g. `main`) |
-
-Click **Create**. Your data connection is now ready!
-
-## Diff your data
-
-<img src="https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=b34d51e42a44012a9a8bb7f1c838d123" alt="Write your MongoDB query" data-og-width="1156" width="1156" data-og-height="786" height="786" data-path="images/mongodb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=280&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=1e5d1e043b3e2d6ac81b3a7bb74c48d9 280w, https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=560&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=70602df16b4660d64755427f261133ba 560w, https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=840&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=11e11ba68b97e45b21dadd64cb45441f 840w, https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=1100&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=4213b5d6dca1b6b0cee35fb668d0fee1 1100w, https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=1650&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=55ccabd3ac64ec4244e9750df68b57f7 1650w, https://mintcdn.com/datafold/6lw1Jw9hmpKMxP4_/images/mongodb.png?w=2500&fit=max&auto=format&n=6lw1Jw9hmpKMxP4_&q=85&s=8af2b8e31c760ae48d6cf12cc0da9857 2500w" />
-
-MongoDB works a bit differently from our other integrations. Under the hood, we flatten your collections into datasets you can query with SQL. Here's how to diff your MongoDB data:
-
-1. Create a new data diff
-2. Select your MongoDB data connection
-3. Select `Query` diff (`Table` diffs aren't supported at this time)
-4. Write a SQL query against the flattened dataset, including a `PRAGMA` statement with the collection name on the first line. Here's an example:
-   ```sql  theme={null}
-   PRAGMA mongodb_collections('tracks_v1_1m');
-
-   SELECT point_id,
-       device_id,
-       timestamp,
-       location.longitude as longitude,
-       location.latitude as latitude
-   FROM mongo_tracks_v1_1m
-   WHERE point_id < 100000;
-   ```
-5. Configure the rest of your diff and run it!
-
-
 # MySQL
 Source: https://docs.datafold.com/integrations/databases/mysql
 
@@ -6515,7 +6344,7 @@ Source: https://docs.datafold.com/integrations/databases/mysql
 
 To connect to MySQL, create a user with read-only access to all tables you wish to diff. Include read and write access to a Datafold-specific dataset:
 
-```Bash  theme={null}
+```Bash theme={null}
 -- Create a temporary dataset for Datafold to utilize
 CREATE DATABASE IF NOT EXISTS datafold_tmp;
 
@@ -6616,7 +6445,7 @@ Source: https://docs.datafold.com/integrations/databases/oracle
 
 To connect to Oracle, create a user with read-only access to all tables you wish to diff. Include read and write access to a Datafold-specific temp schema:
 
-```Bash  theme={null}
+```Bash theme={null}
 -- Switch container context (default is "XEPDB1")
 ALTER SESSION SET CONTAINER = YOURCONTAINER;
 
@@ -6681,7 +6510,7 @@ Source: https://docs.datafold.com/integrations/databases/postgresql
 
 To connect to Postgres, you need to create a user with read-only access to all tables in all schemas, write access to Datafold-specific schema for temporary tables:
 
-```Bash  theme={null}
+```Bash theme={null}
 /* Datafold utilizes a temporary dataset to materialize scratch work and keep data processing in your warehouse. */
 
 CREATE SCHEMA datafold_tmp;
@@ -6734,7 +6563,7 @@ This will guide you through setting up Column-level Lineage with AWS Aurora & RD
 
 To connect to Postgres, you need to create a user with read-only access to all tables in all schemas, write access to Datafold-specific schema for temporary tables:
 
-```Bash  theme={null}
+```Bash theme={null}
 /* Datafold utilizes a temporary dataset to materialize scratch work and keep data processing in the your warehouse. */
 
 CREATE SCHEMA datafold_tmp;
@@ -6757,13 +6586,13 @@ GRANT SELECT ON ALL TABLES IN SCHEMA <myschema> TO datafold;
 ### Increase logging verbosity
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9714c4922ccea50fd944c73765583084" data-og-width="1277" width="1277" data-og-height="820" height="820" data-path="images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5892e6b7f262fd48952d484b7fbeecd0 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5e5f0c59794c822122d6d068027ec288 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=186f4698af0774324dd98257b5473cca 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa0f4b0353acda27d205cf19db73ff58 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6bde0405bbeb3bf9ce3a351c7efdf250 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_dbs-89843982d984ed977c0254adca7a5fa0.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f448733acfbb18e4b43ccda538d934f8 2500w" />
+  <img />
 </Frame>
 
 Then, create a new `Parameter Group`. Database instances run with default parameters that do not include logging verbosity. To turn on the logging verbosity, you'll need to create a new Parameter Group. Hit **Parameter Groups** on the menu and create a new Parameter Group.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6bffe4b697e92e129c84c504967b3b4e" data-og-width="1277" width="1277" data-og-height="886" height="886" data-path="images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2041e8487561dc68a632f4b0e2146a57 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3f4bdd72d5beca4ef1d1ab3786e5238c 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6030776af5fa07f7f9c3c829b03f2504 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9c1abf936a8486048f9df6770bbb33e8 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2b76bb13e41e3036efdff2202abce1de 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_parameter_group-044563cebd48ae81a9d22ab2319d160e.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=eba29682db0813d1cd2fc571d138ba25 2500w" />
+  <img />
 </Frame>
 
 Next, select the `aurora-postgresql10` parameter group family. This depends on the cluster that you're running. For Aurora serverless, this is the appropriate family.
@@ -6771,13 +6600,13 @@ Next, select the `aurora-postgresql10` parameter group family. This depends on t
 Finally, set the `log_statement` enum field to `mod` - meaning that it will log all the DDL statements, plus data-modifying statements. Note: This field isn't set by default.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b1243c6b87aaa2c4b9efea52f51b8b61" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=59e3a715d3073f4e86fede0f67b76618 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=902351c9a3648501d87d4e5c3b5e8202 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d3fb96d7d514ef4e653ab88fde3bf946 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9767a83de15f37aae0411f5e0d80d7f1 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c6dd5452612e966f6552444b3f965c2d 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_logstatement-6f0ba20fd7217047ae62fd01cbfa50d4.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=9edc31c9df62dc827068629124d59ccd 2500w" />
+  <img />
 </Frame>
 
 After saving the parameter group, go back to your database, and select the database cluster parameter group.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5fed528e2e74cbc506ca4ddda648eede" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e0c72e0110c73e39886248a33bc88d8b 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f9df5cb6534a765cca36ad27a1b5a484 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=cfc93b154ba010abd7b33494ccd60029 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1533f80eeafef52f89330efe764ed921 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=12f6acc1a4312b193baaf31a1698cee8 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_clustergroup-6a1c25e3eae1563130b7565a5b5f0ba7.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8a9ee9cb47064620821294b0c82fd031 2500w" />
+  <img />
 </Frame>
 
 ### Connect Datafold to CloudWatch
@@ -6785,19 +6614,19 @@ After saving the parameter group, go back to your database, and select the datab
 Start by creating a new user to isolate the permissions as much as possible. Go to IAM and create a new user.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=aa54c7573e13e8eaff8e277bd549b692" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=96e5b50dfd4a19ef3d614ea73a18f33a 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=21a72f6e384694ff0720c3e79b8d5a0d 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c4c587d5be8b2798703061b4bd6282fd 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fceab1ef25b9cc390873b16a61b4b335 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3ec007a2e3ea3628f010734dae89ee9c 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_iam_user-0d82fc2408ab78e2bd94b20e0e2d363e.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=eacf5a8a9d312cacbf028d16244c3124 2500w" />
+  <img />
 </Frame>
 
 Next, create a new group named `CloudWatchLogsReadOnly` and attach the `CloudWatchLogsReadOnlyAccess` policy to it. Next, select the group.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=130f10b905ba8f0c7360b671ec6459b1" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=14889ace18815496827c61737f4502e9 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=004bf17bb2b50ed79e38922b010171fd 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=94a4957af7561fe701efe0b1ca0628cd 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7765c8d5939dcead840e602494e5ea2e 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=58e3d859eea26a6a22d162c4117476c1 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_permissions-f48596fc79a01aea8d9aadd3688381ce.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=06db75d6ad2b1ef631329ac4ebce8eed 2500w" />
+  <img />
 </Frame>
 
 When reviewing the user, it should have the freshly created group attached to it.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6f96f214f462c92d2304250cad4c11e5" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=07ee7e456f35447302edcd92861c9175 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=19abeb9bebff8315c7e66b8dedc598f1 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=408286dc865ce8808d5b91cec556a3ea 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2a056ee5a24578d14afd3fcce43e1f81 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ab153ddbf6bd25f4e3b06d134247e960 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_user_review-637256675791599a381ee290bd7e05b7.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=adee5a0232d4f6a4c27a41602d6f11b7 2500w" />
+  <img />
 </Frame>
 
 After confirming the new user you should be given the `Access Key` and `Secret Key`. Save these two codes securely to finish configurations on Datafold.
@@ -6805,7 +6634,7 @@ After confirming the new user you should be given the `Access Key` and `Secret K
 The last piece of information Datafold needs is the CloudWatch Log Group. You will find this in CloudWatch under the Log Group section in the sidebar. It will be formatted as `/aws/rds/cluster/<my_cluster_name>/postgresql`.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0178488e4be5c0b38a28d569bf0d799f" data-og-width="1682" width="1682" data-og-height="927" height="927" data-path="images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7ef3458807c7936a1cbbdf293c4ce462 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d82747cd6550946fcb86d0f0f03373cc 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f60eafe13510cae11665893aca6b32a8 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=219611a2a8db03a439b44921dc5e6b61 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=17536d004b1d58015cb6a7c9899967fd 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/psql_aurora_log_group-5dd6c4c2728cf4d55352976449d05c12.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=54ef54cd781e6b548f4e2f4026065b4c 2500w" />
+  <img />
 </Frame>
 
 ### Configure in Datafold
@@ -6994,7 +6823,7 @@ GRANT ALL ON SCHEMA <database_name>.DATAFOLD_TMP TO DATAFOLDROLE;
 
 Datafold will only scan the tables that it has access to. The snippet below will give Datafold read access to a database. If you have more than one database that you want to use in Datafold, rerun the script below for each one.
 
-```Bash  theme={null}
+```Bash theme={null}
 /* Repeat for every DATABASE to be usable in Datafold. This allows Datafold to
 correctly discover, profile & diff each table */
 GRANT USAGE ON WAREHOUSE <warehouse_name> TO ROLE DATAFOLDROLE;
@@ -7019,7 +6848,7 @@ GRANT SELECT ON FUTURE DYNAMIC TABLES IN DATABASE <database_name> TO ROLE DATAFO
 
 ## Full Script
 
-```Bash  theme={null}
+```Bash theme={null}
 --Step 1: Create a user and role for Datafold
 CREATE ROLE DATAFOLDROLE;
 CREATE USER DATAFOLD DEFAULT_ROLE = "DATAFOLDROLE" MUST_CHANGE_PASSWORD = FALSE;
@@ -7077,7 +6906,7 @@ SHOW GRANTS ON DATABASE <database_name>;
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=242ae31d65b18810648b26d7124c8161" data-og-width="1634" width="1634" data-og-height="167" height="167" data-path="images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a8b95f3f0969bb3eb017d9aa87cb1a7c 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=bce109e8aa6bb78f4f7b89acdf376e92 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a4b3404e2b21c32411676d7a7844f7d0 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2e768bab9f7a701c32495dec981919d8 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=54c6fdeb3e359eefcdfec99a0f78a7cc 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_database-cbcb5fd91f9d1ba6a680641fd1ed2cde.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ea23f295a92e29580646b27723c97505 2500w" />
+  <img />
 </Frame>
 
 ```
@@ -7086,7 +6915,7 @@ SHOW GRANTS ON WAREHOUSE <warehouse_name>;
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5e98412c95861ed744dcfd60275a5b6d" data-og-width="1643" width="1643" data-og-height="170" height="170" data-path="images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=caafcc40d0f21ad5a07865393981d714 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7497892f736cefbe3a09d9988ebdb464 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6c242b835643e7e112a27da7d9d29f51 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=08e81bfd1b66ee1aec62e851b6a3ed66 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=974ef96a9e48f1f8aeb443d6736834e4 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_warehouse-45351631336f32ccbeeaa6646a1a9199.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6da58b89ba217cccb3531a0363eb008c 2500w" />
+  <img />
 </Frame>
 
 ```
@@ -7095,14 +6924,14 @@ SHOW GRANTS ON SCHEMA <database_name>.DATAFOLD_TMP;
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5513f6f7210fcf3ead5b3c2049da36a4" data-og-width="1644" width="1644" data-og-height="926" height="926" data-path="images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4e1ad627c40506aeaf0d7d6a38ac8171 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=29b4e004070780f24db2d9ee7e5f943d 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4fc4fb151564fdaaa2dd278006281aa8 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9aba8c9f8c64bc46333c503056b61bcf 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1e8222b8cf320c449c77287e97f1b1bc 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/grants_on_schema-6955ab0c695f05ab0fd245a231a20837.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8b6ab2cf2fe70c524d2e38e04b00ed6e 2500w" />
+  <img />
 </Frame>
 
 ## A note on future grants
 
 The above database grants will be insufficient if any future grants have been defined at the schema level, because [schema-level grants will override database-level grants](https://docs.snowflake.com/en/sql-reference/sql/grant-privilege#considerations). In that case, you will need to execute future grants for every existing *schema* that Datafold will operate on.
 
-```Bash  theme={null}
+```Bash theme={null}
 GRANT SELECT ON FUTURE TABLES IN SCHEMA <database_name>.<schema_name> TO ROLE DATAFOLDROLE;
 GRANT SELECT ON FUTURE VIEWS IN SCHEMA <database_name>.<schema_name> TO ROLE DATAFOLDROLE;
 GRANT SELECT ON FUTURE MATERIALIZED VIEWS IN SCHEMA <database_name>.<schema_name> TO ROLE DATAFOLDROLE;
@@ -7151,7 +6980,7 @@ Source: https://docs.datafold.com/integrations/databases/sql-server
 
 To connect to Microsoft SQL Server, create a user with read-only access to all tables you wish to diff. Include read and write access to a Datafold-specific temp schema:
 
-```Bash  theme={null}
+```Bash theme={null}
 /* Select the database that will contain the temp schema */
 USE DatabaseName;
 
@@ -7162,11 +6991,14 @@ CREATE SCHEMA datafold_tmp;
 CREATE LOGIN DatafoldUser WITH PASSWORD = 'SOMESECUREPASSWORD';
 CREATE USER DatafoldUser FOR LOGIN DatafoldUser;
 
+/* Allow the user to create views */
+GRANT CREATE VIEW TO DatafoldUser;
+
 /* Grant read access to diff tables */
 GRANT SELECT ON SCHEMA::YourSchema TO DatafoldUser;
 
 /* Grant read + write access to datafold_tmp schema */
-GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::datafold_tmp TO DatafoldUser;
+GRANT CONTROL ON SCHEMA::datafold_tmp TO DatafoldUser;
 ```
 
 ## Configure in Datafold
@@ -7278,286 +7110,6 @@ GRANT ALL ON DATAFOLD_TMP TO DATAFOLD;
 Click **Create**. Your data connection is now ready!
 
 
-# Trino
-Source: https://docs.datafold.com/integrations/databases/trino
-
-
-
-<Note>
-  **INFO**
-
-  Lineage is not currently supported for Trino.
-</Note>
-
-**Steps to complete:**
-
-1. [Configure user in Trino](#configure-user-in-trino)
-2. [Create schema for Datafold](#create-schema-for-datafold)
-3. [Configure your data connection in Datafold](#configure-in-datafold)
-
-## Configure user in Trino
-
-To connect to Trino, create a user with read-only access to all data sources you wish to diff. Datafold also requires a schema set up with read/write permissions within one of the catalogs.
-
-## Create schema for Datafold
-
-Datafold utilizes a temporary dataset to materialize scratch work and keep data processing in the your warehouse.
-
-## Configure in Datafold
-
-| Field Name                  | Description                                                  |
-| --------------------------- | ------------------------------------------------------------ |
-| Connection name             | A name given to the data connection within Datafold.         |
-| Host                        | The hostname for your trino instance.                        |
-| Port                        | Trino endpoint port; default value is 443.                   |
-| Encryption                  | Should be checked, possibly unchecked for local deployments. |
-| User ID                     | User ID as created in Trino.                                 |
-| Password                    | Password, as created in Trino.                               |
-| Schema for temporary tables | Use `<catalog>.<schema>` format.                             |
-
-Click **Create**. Your data source is now ready!
-
-
-# OpenText Analytics Database (Vertica)
-Source: https://docs.datafold.com/integrations/databases/vertica
-
-
-
-<Note>
-  **INFO**
-
-  Column-level Lineage is not supported for Vertica.
-</Note>
-
-**Steps to complete:**
-
-1. [Run SQL script and create schema for Datafold](/integrations/databases/vertica#run-sql-script-and-create-schema-for-datafold)
-2. [Configure your data connection in Datafold](/integrations/databases/vertica#configure-in-datafold)
-
-## Run SQL script and create schema for Datafold
-
-To connect to Vertica, you need to create a user with read-only access to all tables in all schemas, write access to Datafold-specific schema for temporary tables:
-
-```Bash  theme={null}
-/* Datafold utilizes a temporary dataset to materialize scratch work and keep data processing in your warehouse. */
-
-CREATE SCHEMA datafold_tmp;
-
-/* Create a datafold user */
-
-CREATE ROLE datafold WITH LOGIN ENCRYPTED PASSWORD 'SOMESECUREPASSWORD';
-
-/* Give the datafold role write access to the temporary schema */
-
-GRANT ALL ON SCHEMA datafold_tmp TO datafold;
-
-/* Make sure that the user has read permissions on the tables */
-
-GRANT USAGE ON SCHEMA <myschema> TO datafold;
-GRANT SELECT ON ALL TABLES IN SCHEMA <myschema> TO datafold;
-
-```
-
-Datafold utilizes a temporary schema, named `datafold_tmp` in the above script, to materialize scratch work and keep data processing in the your warehouse.
-
-### Configure in Datafold
-
-| Field Name    | Description                                                               |
-| ------------- | ------------------------------------------------------------------------- |
-| Name          | A name given to the data connection within Datafold                       |
-| Host          | The hostname address for your database; default value 127.0.0.1           |
-| Port          | Vertica connection port; default value is 5433                            |
-| User          | The user role created in the SQL script; datafold                         |
-| Password      | The password created in the SQL permissions script                        |
-| Database Name | The name of the Vertica database you want to connect to, default is VMart |
-
-Click **Create**. Your data connection is ready!
-
-
-# Microsoft Teams
-Source: https://docs.datafold.com/integrations/notifications/microsoft-teams
-
-Receive notifications for monitors in Microsoft Teams.
-
-## Prerequisites
-
-* Microsoft Teams admin access or permissions to manage integrations
-* A Datafold account with admin privileges
-
-## Configure the Integration
-
-1. In Datafold, go to Settings > Integrations > Notifications
-2. Click "Add New Integration"
-3. Select "Microsoft Teams"
-4. You'll be automatically redirected to the Microsoft Office login page
-5. Sign in using the Microsoft Office account with admin privileges
-6. Click "Accept" to grant Datafold the necessary permissions
-7. You'll be redirected back to Datafold
-8. Open the Teams app in a separate browser tab
-9. Next to the channel where you'd like to receive notifications, click "..." and select "Workflows"
-10. Select the template called "Post to a channel when a webhook request is received"
-11. Advance through the wizard (the defaults should be fine)
-12. At the end of the wizard, copy the webhook URL
-13. Return to Datafold and click "Add channel configuration"
-14. Select the relevant Team and Channel, then paste the webhook URL
-15. Repeat steps 8-14 for as many channels as you'd like
-16. Save the integration settings in Datafold
-
-You're all set! When you configure a monitor in Datafold, you'll now have the option to send notifications to the Teams channel(s) you configured.
-
-## Monitors as Code Configuration
-
-If you're using [monitors as code](/data-monitoring/monitors-as-code), you can configure Teams notifications by adding a `notifications` section to your monitor definition as follows:
-
-```yaml  theme={null}
-monitors:
-  <monitor_name>:
-    ...
-    notifications:
-      - type: teams
-        integration: <integration_id>
-        channel: <team_name>:<channel_name>
-        mentions:
-          - <tag_name>
-          - <user_name>
-          ...
-```
-
-* `<integration_id>` can be found in Datafold -> Settings -> Integrations -> Notifications -> \<your\_ms\_teams\_integration>
-
-#### Full example
-
-```yaml  theme={null}
-monitors:
-  uniqueness_test_example:
-    type: test
-    enabled: true
-    connection_id: 1123
-    test:
-      type: unique
-      tables:
-        - path: DEV.DATA_DEV.USERS
-          columns:
-            - USERNAME
-    schedule:
-      interval:
-        every: hour
-    notifications:
-      - type: teams
-        integration: 23
-        channel: Dev Team:Notifications Channel
-        mentions:
-          - NotifyDevCustomTag
-          - Dima Cherenkov
-```
-
-## Need help?
-
-If you have any questions about integrating with Microsoft Teams, please reach out to our team via Slack, in-app chat, or email us at [support@datafold.com](mailto:support@datafold.com).
-
-
-# PagerDuty
-Source: https://docs.datafold.com/integrations/notifications/pagerduty
-
-Receive notifications for monitors in PagerDuty.
-
-## Prerequisites
-
-* PagerDuty access with permissions to manage `Services`
-* A Datafold account with admin privileges
-
-## Configure the Integration
-
-1. In Datafold, go to Settings > Integrations > Notifications
-2. Click "Add New Integration"
-3. Select "PagerDuty"
-4. Go to the PagerDuty console and [create a new `Service`](https://support.pagerduty.com/main/docs/services-and-integrations#create-a-service)
-5. Select `Events API V2` as a service integration
-6. Go to your service's `Integrations` page and copy the `Integration Key` (or [generate a new one](https://support.pagerduty.com/main/docs/services-and-integrations#generate-a-new-integration-key))
-7. Return to Datafold and provide `Service Name` and `Integration Key`
-8. Save the integration settings in Datafold
-
-You're all set! When you configure a monitor in Datafold, you'll now have the option to send notifications to the PagerDuty integration you configured.
-
-## Need help?
-
-If you have any questions about integrating with PagerDuty, please reach out to our team via Slack, in-app chat, or email us at [support@datafold.com](mailto:support@datafold.com).
-
-
-# Slack
-Source: https://docs.datafold.com/integrations/notifications/slack
-
-Receive notifications for monitors in Slack.
-
-## Prerequisites
-
-* Slack admin access or permissions to manage integrations
-* A Datafold account with admin privileges
-
-## Configure the Integration
-
-1. In Datafold, go to Settings > Integrations > Notifications
-2. Click "Add New Integration"
-3. Select "Slack"
-4. You'll be automatically redirected to Slack
-5. If you're not already signed in, sign in to your Slack account
-6. Click "Allow" to grant Datafold the necessary permissions
-7. You'll be redirected back to Datafold
-
-You're all set! When you configure a monitor in Datafold, you'll now have the option to send notifications to Slack.
-
-## Monitors as Code Configuration
-
-If you're using [monitors as code](/data-monitoring/monitors-as-code), you can configure Slack notifications by adding a `notifications` section to your monitor definition as follows:
-
-```yaml  theme={null}
-monitors:
-  <monitor_name>:
-    ...
-    notifications:
-      - type: slack
-        integration: <integration_id>
-        channel: <channel_name>
-        mentions:
-          - <user_name>
-          - here
-          - channel
-          ...
-```
-
-* `<integration_id>` can be found in Datafold -> Settings -> Integrations -> Notifications -> \<your\_slack\_integration>
-
-#### Full example
-
-```yaml  theme={null}
-monitors:
-  uniqueness_test_example:
-    type: test
-    enabled: true
-    connection_id: 1123
-    test:
-      type: unique
-      tables:
-        - path: DEV.DATA_DEV.USERS
-          columns:
-            - USERNAME
-    schedule:
-      interval:
-        every: hour
-    notifications:
-      - type: slack
-        integration: 13
-        channel: dev-notifications
-        mentions:
-          - John Doe
-          - channel
-```
-
-## Need help?
-
-If you have any questions about integrating with Slack, please reach out to our team via Slack, in-app chat, or email us at [support@datafold.com](mailto:support@datafold.com).
-
-
 # OAuth Support
 Source: https://docs.datafold.com/integrations/oauth
 
@@ -7576,7 +7128,7 @@ OAuth support empowers users to run data diffs based on their individual permiss
 When you attempt to run a data diff, you will notice that it won't run without authentication:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cd7e4bebaad25ee87ee8f9af1276b394" data-og-width="1351" width="1351" data-og-height="506" height="506" data-path="images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=195e49c927a5fe592e1b102f2a29b7be 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f0cb562f9843f7ce6dab563e5b59bed0 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d02eaac4cdaf17c39ccc1e59e13417dc 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7a2da244a27834108940f1678e31978c 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cdc4d1406b80309fd8b0af97a9e2c49d 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-b9afb4d6ec25ca58b9a033ff1eaf6efb.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e476b20694e97943353a1137c225ad8f 2500w" />
+  <img />
 </Frame>
 
 ### 2. Authorize the Data Diff
@@ -7584,7 +7136,7 @@ When you attempt to run a data diff, you will notice that it won't run without a
 Authorize the data diff by clicking the **Authenticate** button. This will redirect you to the data warehouse for authentication:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ed69e89b64e6a3d78420304cad83aa56" data-og-width="692" width="692" data-og-height="689" height="689" data-path="images/2-01bbf79b7aaf007bc33dc4652a825e31.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cc3033abe34ccb7baae0e1a4275c94d1 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d33a10f83a772a4d80313f38d627a0b0 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=14172780ba3b63b6ccbaf4ea6b9b6f03 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c48a994bb8c896960bd3512d88c52048 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0559d8f1be5b5a75fab27b48c0624d2d 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-01bbf79b7aaf007bc33dc4652a825e31.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4e3214159c568cf8c5ea1505da0dbdb7 2500w" />
+  <img />
 </Frame>
 
 Upon successful authentication, you will be redirected back.
@@ -7592,7 +7144,7 @@ Upon successful authentication, you will be redirected back.
 ### 3. The Data Diff is now running <Icon icon="party-horn" />
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0cd380754dc3b5894e055590d2638473" data-og-width="1444" width="1444" data-og-height="660" height="660" data-path="images/3-7d49f847dba2d6ebefe0215a7251d3e7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6d875f7e171d67f3b3df4116ba70508d 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e49c8e8d0b648191c88f47526212fb21 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=bcd2d270da75b7c4e3b597057a1ed24f 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=badcae551df707e90656f61fc1e25eb2 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4ff503167e0ed264596f730d485a3bbc 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-7d49f847dba2d6ebefe0215a7251d3e7.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8f1948bba26c08ba890505297c338e36 2500w" />
+  <img />
 </Frame>
 
 ### 4. View the Data Diff results
@@ -7600,19 +7152,19 @@ Upon successful authentication, you will be redirected back.
 The results reflect your permissions within the data warehouse:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=897aa005c633ba7fdea578447a97828a" data-og-width="616" width="616" data-og-height="329" height="329" data-path="images/4-1e3cf172b19bd6616700f3c82f17b256.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cc7668dbfdeb95b0e6324454303aaeea 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c9b739c02576debd0b5ff99c8e4561dc 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=671d55c6418991662e95fa42fbd67fb8 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e2efd53df3ab32f243b0d3ec6054401e 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=edea40bb30e8b0b022442b10797aea60 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-1e3cf172b19bd6616700f3c82f17b256.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=613e912826a8622e7bc4227bdbd8c0ef 2500w" />
+  <img />
 </Frame>
 
 Note that running the same data diff, as a different user, renders different results:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5e89ea4ea01811b1ffcdab58f0c7990e" data-og-width="668" width="668" data-og-height="348" height="348" data-path="images/5-585c0ee49689bb8af229ad44eb260ace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=431e0250ed4b32083ed9c3eebd0bf709 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f8f7871c7a7c078733d187d781ee7dc1 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9f6eebe93cf67954ec76fc73649d111c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e52cfccd6a7532e9f9aa559154b64cc9 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=96039c2a7908da697d0d8e046dabd9cf 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-585c0ee49689bb8af229ad44eb260ace.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=616915ffae6110716f613cd70d9f6995 2500w" />
+  <img />
 </Frame>
 
 The masked values represent the data retrieved from the data warehouse. We do not conduct any post-processing:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3783c5502d8e301edc487ddb2d7fbef3" data-og-width="2019" width="2019" data-og-height="522" height="522" data-path="images/6-f09d99fb5db326846be80a54d24606b0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=898f215c8d9f08234cd03eab7fc97b5b 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d99bce0c4d6369d098264344a65b94ef 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f18094e55a094528dbbb1a8e61b2f10b 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=25b02a547eaca94a10e4186325a7b206 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=abd90ef895528566cd7c2cc3446b35c9 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-f09d99fb5db326846be80a54d24606b0.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2f91c45870ff384f6046de39f0b55202 2500w" />
+  <img />
 </Frame>
 
 By default, results are only visible for their authors. Users can still clone the data diffs, but the results might be different depending on their data warehouse access levels.
@@ -7620,7 +7172,7 @@ By default, results are only visible for their authors. Users can still clone th
 For example, as a different user, I won't be able to access the data diff results for Filip's data diff:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=abbc65d13fd6f9fd766ae84fb815d9b1" data-og-width="1253" width="1253" data-og-height="526" height="526" data-path="images/7-0e23da80a3e63960a91301cdf38d8207.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0378959d5f546b39a207f8f024a24074 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d24b78901f302d1da0b8a4d7896247a1 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=91a5499844c9e2099ff8f9a422d6bba4 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c4c591f7d274d17ab4f32e296a091e7c 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=aea6ad16c4fa9c52f362d83ef0ca4b08 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-0e23da80a3e63960a91301cdf38d8207.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4853922ce3561089f308e9a890d4df6a 2500w" />
+  <img />
 </Frame>
 
 ### 5. Sharing Data Diffs
@@ -7630,25 +7182,25 @@ Data diff sharing is a feature that enables you to share data diffs with other u
 Sharing can be accessed via the **Actions** dropdown on the data diff page:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=789165034442807be5003399934f40f7" data-og-width="379" width="379" data-og-height="356" height="356" data-path="images/1-2f00e7c34ec87bada9d464dcb97053df.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1c47a66df147dae821908122196e1b8c 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3d465a16f8a27bbc4b5265efc71ac3e4 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5bf23de8a42cefdfae16c515b15dfdf1 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ff9442ca8ad8369bba31d0553f45f74b 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=afde9ca1305e4527f972cef28244d84c 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-2f00e7c34ec87bada9d464dcb97053df.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=47d15d0d6d5532f6ac22c76e1880844e 2500w" />
+  <img />
 </Frame>
 
 Note that data diff sharing is disabled by default:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ebfb0bfc01a1ced78c489906b41354fc" data-og-width="693" width="693" data-og-height="329" height="329" data-path="images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=327942722007ab9d72a72e26c4ef4972 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f3e66b6655803bb6820ced0d5b9c9fbc 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8462a78617cc020dd74b34f5d90a6e96 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5decc53f6eaaaa66a560412009e69a5c 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=70d95b33939cecbcd4b2262afd528914 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-badcc3a6ac297bc1c3ff27f8f4b6c9e0.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ae3ce479550c239cb9a85fe3c697cb2f 2500w" />
+  <img />
 </Frame>
 
 It can be enabled under **Org Settings** by clicking on **Allow Data Diff sharing**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=bc1bf09028d88aa65d3a3ce75508810f" data-og-width="1154" width="1154" data-og-height="422" height="422" data-path="images/3-889664da5c85c56985659d0c9e675340.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=85a09f0a67c449242acbdf091905b5a7 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a2f515b93844dd745b05a6363f017209 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5f138b74c733b74d576673be4b1e314c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9c18444a04effb2a40ca19c9c83d4125 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6b20db867e2b9f9f6f1971a4b41e9f75 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-889664da5c85c56985659d0c9e675340.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a46ab3bc37c9301847e3b235017da8aa 2500w" />
+  <img />
 </Frame>
 
 Once enabled, you can share data diffs with other users:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=12830c2279779e7344273e1b9ce72aab" data-og-width="913" width="913" data-og-height="774" height="774" data-path="images/4-58827ded9574bddc7ef7ce0d4f156bf8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d74d11242338eeee30293c968916c526 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d37928e13b15fa8ffc1602edeb9ae532 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5232f81d8a7dc8ec0d6e96188902d003 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c532fa8733fd87c2f04e6cd3b3a484e9 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0f4e85b16c10c2ffb857567661da38cd 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-58827ded9574bddc7ef7ce0d4f156bf8.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a7527c6188f94bb08df9704e036aaccc 2500w" />
+  <img />
 </Frame>
 
 ## Configuring OAuth
@@ -7656,7 +7208,7 @@ Once enabled, you can share data diffs with other users:
 Navigate to **Settings** and click on your data connection. Then, click on **Advanced settings** and under **OAuth**, set the **Client Id** and **Client Secret** fields:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=483e82a0cfd9eb259f7423eb1ff97498" data-og-width="1639" width="1639" data-og-height="623" height="623" data-path="images/1-6541ee9948bb173fe28a64cb72b7ba8d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=408053f47c35658e971dda9d833c69b6 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=15bb1af0700abb2cb4deb39481091c77 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8824e49c7507464fc9b7dbf5303d7d27 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e7cba352e262d8d64812aeb3e9f9d294 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=693f103e21314927d4d68169bde97d19 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-6541ee9948bb173fe28a64cb72b7ba8d.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2805e57d72531297123e2b9e5e6aea28 2500w" />
+  <img />
 </Frame>
 
 ## Example: Databricks
@@ -7667,7 +7219,7 @@ To create a new Databricks app connection:
 2. Click **Add connection** in the top right of the screen.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a69989f57df0f8720e00a76f98816b38" data-og-width="714" width="714" data-og-height="835" height="835" data-path="images/2-f59b84118a8979128d2476989b4f5262.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d4f2ea05d78059e3a3300a763969df76 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d2c8eb7c9d29ba6945e1416ea48f10f5 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5d148bb26eb06c028c864464184f20ae 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6e8adc1d158298733ba2e415a4a5ac52 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8568eb3d1032c28650f861d84cd1a244 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-f59b84118a8979128d2476989b4f5262.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2d260e633142df1e9fe7f8baeea766d8 2500w" />
+  <img />
 </Frame>
 
 3. Fill in the required fields:
@@ -7697,13 +7249,13 @@ https://app.datafold.com/api/internal/oauth_dwh/callback
 ### 3. Click **Add** to obtain the **Client ID** and **Client Secret** <Icon icon="hand-sparkles" />
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=589b0cf2f42d86c1ec263cc47fb33365" data-og-width="628" width="628" data-og-height="391" height="391" data-path="images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=788520c072a39c4b79e5f9f445318717 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1b6edd2eba304c11f6f6137ed63c222f 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=32c72eaaf56e232a33466419557c0deb 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=628e6af54f7d45d902d37367e5894e6a 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b5e1ed3327453efe695e140c4e25a4d2 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-c59900f8bd662e3ee8036f40eb2fcc4d.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d48001fa82d678b45d86d1a32c8b9c2e 2500w" />
+  <img />
 </Frame>
 
 ### 4. Fill in the **Client ID** and **Client Secret** fields in Datafold's Data Connection advanced settings:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=52b22b3c356fb6b6d7e4a905687d2715" data-og-width="1584" width="1584" data-og-height="338" height="338" data-path="images/4-75640ad5d18710fced1d22c108bbd0c9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d4a4a92da61693b411ef9a6f0c8d72fc 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=460a00a3e82040db37043021196ff93d 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e5e4d08f2c193f8757110771197341c6 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f8d16340673a6cae96b9c1004a113741 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1222e977e30b8fdf9ab67cb3db8e5ffe 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=02ced3c862f91a53fd7a982f2f820216 2500w" />
+  <img />
 </Frame>
 
 ### 5. Click **Test and save OAuth**
@@ -7713,7 +7265,7 @@ You will be redirected to Databricks to complete authentication. If you are alre
 This notification signals a successful OAuth configuration:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=821eded0675f2c3319efee82e368caed" data-og-width="1647" width="1647" data-og-height="1284" height="1284" data-path="images/5-63f6c2f97041e030191e9abc5ca70637.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ec404016b242bc7beb77b9b4ba87a4dc 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=166115bb5eddaa0dbb2d647224c70cfd 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7637451d19df712e3ea3eaf27b6a37cb 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2e067e3595978265bb27f425993f1c25 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c0c30eff5a3404e582c8539b19ead006 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=df269d44e95b405748512cfa1198c32d 2500w" />
+  <img />
 </Frame>
 
 ### Additional steps for Databricks
@@ -7726,7 +7278,7 @@ To ensure that users have correct access rights to temporary tables (stored in *
 This will ensure that materialization results from data diffs are only readable by their authors.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6a231a976529a7d6fbfdfa11e9638197" data-og-width="1138" width="1138" data-og-height="1239" height="1239" data-path="images/6-c4186dd5e91cd8aabf283649efe7461e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1c55ec5ab9301d127e478adc3d818454 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a52216ec9ffb28ae8230685bac7b22f2 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4cf511433f16971d49d64a3b3241d8a9 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e8aee9090c7cf5302d325d269173bcf8 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=483d6c66c63e65d6f64e8c31acf20275 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-c4186dd5e91cd8aabf283649efe7461e.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9631df3758a018a8bf371883486e7edf 2500w" />
+  <img />
 </Frame>
 
 ## Example: Snowflake
@@ -7735,7 +7287,7 @@ To create a new Snowflake app connection:
 
 1. Go to Snowflake and run this SQL:
 
-```Bash  theme={null}
+```Bash theme={null}
 CREATE SECURITY INTEGRATION DATAFOLD_OAUTH
 TYPE = OAUTH
 ENABLED = TRUE
@@ -7774,13 +7326,13 @@ select system$show_oauth_client_secrets('DATAFOLD_OAUTH');
 ### Example result:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ce9a57e787e1d1a98b9cb10bc77cc2be" data-og-width="1471" width="1471" data-og-height="71" height="71" data-path="images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e967abadcafc11c197a5581463da69dd 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=11553ac290971c5a55596b0335f2c76d 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7ad4f68ee71fecd7f62edd169c77d2c3 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=57586b5686ef991a592b731b92714ac2 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1775b83d05ba34fab6b6731375ec405e 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/oauth_snowflake_client_creds-47b11899ea2d5df0fce5f17f1711dc62.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c90744de328ea48873a9eebe68c44000 2500w" />
+  <img />
 </Frame>
 
 1. Fill in the **Client ID** and **Client Secret** fields in Datafold's Data Connection advanced settings:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=52b22b3c356fb6b6d7e4a905687d2715" data-og-width="1584" width="1584" data-og-height="338" height="338" data-path="images/4-75640ad5d18710fced1d22c108bbd0c9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d4a4a92da61693b411ef9a6f0c8d72fc 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=460a00a3e82040db37043021196ff93d 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e5e4d08f2c193f8757110771197341c6 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f8d16340673a6cae96b9c1004a113741 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1222e977e30b8fdf9ab67cb3db8e5ffe 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-75640ad5d18710fced1d22c108bbd0c9.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=02ced3c862f91a53fd7a982f2f820216 2500w" />
+  <img />
 </Frame>
 
 2. Click **Test and save OAuth**
@@ -7794,7 +7346,7 @@ Your default Snowflake role will be used for the generated **access token**.
 This notification signals a successful OAuth configuration:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=821eded0675f2c3319efee82e368caed" data-og-width="1647" width="1647" data-og-height="1284" height="1284" data-path="images/5-63f6c2f97041e030191e9abc5ca70637.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ec404016b242bc7beb77b9b4ba87a4dc 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=166115bb5eddaa0dbb2d647224c70cfd 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7637451d19df712e3ea3eaf27b6a37cb 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2e067e3595978265bb27f425993f1c25 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c0c30eff5a3404e582c8539b19ead006 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-63f6c2f97041e030191e9abc5ca70637.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=df269d44e95b405748512cfa1198c32d 2500w" />
+  <img />
 </Frame>
 
 ### Additional steps for Snowflake
@@ -7803,7 +7355,7 @@ To guarantee correct access rights to temporary tables (stored in **Dataset for 
 
 * Grant the required privileges on the database and `TEMP` schema for all roles that will be using the OAuth flow. This must be done for all roles that will be utilizing the OAuth flow.
 
-```Bash  theme={null}
+```Bash theme={null}
 GRANT USAGE ON WAREHOUSE <WH_NAME> TO ROLE <ROLENAME>;
 GRANT USAGE ON DATABASE <DB_NAME> TO ROLE <ROLENAME>;
 GRANT USAGE ON ALL SCHEMAS IN DATABASE <DB_NAME> TO ROLE <ROLENAME>;
@@ -7813,7 +7365,7 @@ GRANT ALL ON SCHEMA <DB_NAME>.<TEMP_SCHEMA_NAME> TO ROLE <ROLENAME>;
 
 * Revoke `SELECT` privileges for tables in the `TEMP` schema for all roles that will be using the OAuth flow (except for the `DATAFOLDROLE` role), if they were provided. This action must be performed for all roles utilizing the OAuth flow\..
 
-```Bash  theme={null}
+```Bash theme={null}
 -- Revoke SELECT privileges for the TEMP SCHEMA
 revoke SELECT ON ALL TABLES IN SCHEMA <DB_NAME>.<TEMP_SCHEMA_NAME> FROM ROLE <ROLENAME>;
 revoke SELECT ON FUTURE TABLES IN SCHEMA <DB_NAME>.<TEMP_SCHEMA_NAME> FROM ROLE <ROLENAME>;
@@ -7842,7 +7394,7 @@ Redshift does not support OAuth2. To execute data diffs on behalf of a specific 
 
 1. Configure permissions on the Redshift side. Grant the necessary access rights to temporary tables (stored in the **Dataset for temporary tables** provided in the **Basic settings** for Redshift connection):
 
-```Bash  theme={null}
+```Bash theme={null}
 GRANT USAGE on SCHEMA <TEMP_SCHEMA_NAME> to <USERNAME>;
 GRANT CREATE on SCHEMA <TEMP_SCHEMA_NAME> to <USERNAME>;
 ```
@@ -7850,7 +7402,7 @@ GRANT CREATE on SCHEMA <TEMP_SCHEMA_NAME> to <USERNAME>;
 1. As an Administrator, select the **Enabled** toggle in Datafold's Redshift Data Connection **Advanced settings**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1225a8001fa74dbeeead41b1675b2af1" data-og-width="573" width="573" data-og-height="357" height="357" data-path="images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fb743cd936ef569429288dc7f9783463 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=6903a604b069ec8507e82d18c0c3abe8 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b88989e4cae2f4dc098776904f830144 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0259bf2891b63e2b6d5df436dfa9fae9 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2e2eb149539e059e5a34c186288638db 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_enable_toggle-df94b6b675d5b7a080b0569fed4943b0.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4e343749a80f2d5a4fbf8c5caadec60f 2500w" />
+  <img />
 </Frame>
 
 Then, click the **Test and Save** button.
@@ -7858,19 +7410,19 @@ Then, click the **Test and Save** button.
 1. As a User, add your Redshift credentials into Datafold. Click on your Datafold username to **Edit Profile**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=94bb0a38ce1502c37884fbfdcce735b4" data-og-width="428" width="428" data-og-height="276" height="276" data-path="images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=11b8e43702d1bd72c843979730163c74 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f94d7f62dbf31b31730c8cb8b2697317 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b3226c0af0dd1340fa57135097e75679 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ea6b6fe0b6d2740fff30c9a44d3b2e51 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7d91a7ddf0d2b3394b12aa06ea363296 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_credentials_ui-749a49c20ca40f8857831a49526473cc.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4b343c2b6e1ec13859f0819046a49ec6 2500w" />
+  <img />
 </Frame>
 
 Then, click **Add credentials** and select the required Redshift data connection from the **Data Connections** list:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4bd6e92d2df678a8625f8b69be7c4580" data-og-width="533" width="533" data-og-height="365" height="365" data-path="images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=dc5a30a103a1ecbad292db61119689ab 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f40447f504254a4ecb3018473e8cf372 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f7fd9cce0fd6316814a34974de843267 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=391c4cbc8e222ac90b219f3a2e0087ce 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fdb5b74a3b8cec8d82f56ceef57d4f97 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_before_create_creds-09bad0b040c673230f8890d35e883533.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=790da9b6820bb16d72ebaeec28c081c3 2500w" />
+  <img />
 </Frame>
 
 Finally, provide your Redshift username and password, and configure the **Delete on** field (after this date, your credentials will be removed from Datafold):
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d3f72a0e9d5dabfb88870f81f1e7bdfc" data-og-width="531" width="531" data-og-height="475" height="475" data-path="images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=40b9e30cd983f877c1f3444d2fd8507f 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=04b711aaf0388fdb3eca481dc1d9670e 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=93404ca422fb458ccdd2586170ef37c3 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3d0cad66495744e7a99927326cbcd5da 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=df4f8d3c2c4b222165507ff4faf0dd3a 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/redshift_create_creds-efc65762308b064bfd208a0b3f19c4b3.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ca6d4dff56a9f605c93e1db9604b15fe 2500w" />
+  <img />
 </Frame>
 
 Click **Create credentials**.
@@ -7880,47 +7432,47 @@ Click **Create credentials**.
 1. To create a new Google Cloud OAuth 2.0 Client ID, go to the Google Cloud console, navigate to **APIs & Services**, then **Credentials**, and click **+ CREATE CREDENTIALS**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4905913a31f2f328e7a755ac5d09650d" data-og-width="1034" width="1034" data-og-height="304" height="304" data-path="images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f84077faf4c5f9d8a0a0dd793074ab1c 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f471870433e12a1e2b2c0ee329aa3e04 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5af4cee4f923ee74e7454cd4015bee5b 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f47c3a4ffb798c56e66dd627559a4fa1 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=64fe7791bddeb58e0e3b1f33d6f651aa 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_btn-15e16ea9d19edb6d0ad61835bd774970.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=496a6fa90f5d61129e2bf2024dc72217 2500w" />
+  <img />
 </Frame>
 
 Select **OAuth client ID**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0e709d4a6a5916bf21c6f940553c2a9c" data-og-width="502" width="502" data-og-height="275" height="275" data-path="images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=898c4b21c76bcfa8e5176ca2530f2343 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6b8ad94acd03f8926abc0178d91b8227 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=41e45dec682a86e69e0c04decf3c8b14 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=558b1b690e8969ea444ee02c7a4a897c 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9db85c16d696451c7891343a181fca0d 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_create_type-6412ecce9428e3aaf21722c81daa0ac9.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=db5c1c7d7e8c78a87b91d8d182936de7 2500w" />
+  <img />
 </Frame>
 
 From the list of **Application type**, select **Web application**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c197423a208dc2d144b9dcd2cbc905a9" data-og-width="617" width="617" data-og-height="459" height="459" data-path="images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d7b7aa8076045631f2bed9f8082c48b7 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=aae4f30e3c363dde551fb7bd7b952b68 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=45737eb052d7829449d01573da6e2eb1 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e4e8eab900e3bb47b1a2ab30ce278a67 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=073a9e055566e913b524cfc319eae15c 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_select_type-a21194f9850db4fe9d6babea49a36ba9.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=312eedd9efd3adf3467abab254fc53e7 2500w" />
+  <img />
 </Frame>
 
 Provide a name in the **Name** field:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d35dc1be31c0bc487576675f6e6d07ea" data-og-width="605" width="605" data-og-height="335" height="335" data-path="images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cdace1632c44a6c2a3e7c94c1edb6743 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2324d310af9db1d69df98251d6b759f7 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=21f44cc1336e67c55309c0fc1154114c 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e8434dd68bf74cdc3f6f523732319ce6 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4a2b937c2579b5676480ab890a3abd72 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_oauth_name-b31b7e54a61b764134fd8f8bab61ccda.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e9ddce0aecb9360480f4701926c144f8 2500w" />
+  <img />
 </Frame>
 
 In **Authorized redirect URIs**, provide `https://app.datafold.com/api/internal/oauth_dwh/callback`:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6a5dee352c37fa168fa413932070893e" data-og-width="606" width="606" data-og-height="391" height="391" data-path="images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=df5bdb9757734ec9f2703fa7b1557312 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5fdd1e2603724c593b3a749e40a0ca9e 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=48747cd3568ab6de8d6ba6b32495fdd6 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=decdeb4b34ba1cbb86986fe63cbb6a25 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=db48b4fb4904a31499857d8961c53dc4 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_redirect_uri-81f4b0fd9d93db76bf043170c6b027d6.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3af4afe07a253c2d98a75f20efb1462f 2500w" />
+  <img />
 </Frame>
 
 Click **CREATE**. Then, download the OAuth Client credentials as a JSON file:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1d5f2345d0c3b8dae42fd05ff31010a7" data-og-width="959" width="959" data-og-height="157" height="157" data-path="images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=62661927034a0a7190e848eac80a0fda 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f3ff896f467d2eddc5815f1e5db7eb7e 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=81f66feec8f4e354f62496c51b3cf57d 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=33ddf7aef7b4996b1618f2828e7e2b39 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fe6c5ed672f9d69de489c9eebf6cd8b2 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json1-1dfd1d02cbe9a84bd1124f24b28a293b.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a3fa18761b17014b9284e4986ceed700 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=dce5fb185e1daeccad692b9e2de95ce5" data-og-width="570" width="570" data-og-height="464" height="464" data-path="images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f61119b3df9b48fcdcb6049ef7f73b5c 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4b33ed12674578fd86ab8455cfbfed71 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0756eb523c38eebeced406ab85d6fac2 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a3f9c163ab7ab6f5db00997f846b0be3 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4a45ab9e608dc23a8de2f5f08673dcc5 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_download_json2-c6002a086c551afe7f06615bd1189ad9.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1f38bd4ea7b00fbb549ee6bd2c5fa9e4 2500w" />
+  <img />
 </Frame>
 
 1. Activate BigQuery OAuth in Datafold by uploading the JSON OAuth credentials in the **JSON OAuth keys file** section, in Datafold's BigQuery Data Connection **Advanced settings**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ec7651764c65ca5944a9fba3ecc7abff" data-og-width="565" width="565" data-og-height="364" height="364" data-path="images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9436aa79fdadce93824eab16119ea947 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3ccbfb449fd888aed90a7d9cc0fbf083 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c935fb29b47c9b401ecc973b8cc63a47 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0ade161dfdf86396751f758cf36ec253 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=50241ab3380af18544eb7adcf9b9a2c9 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcloud_upload_json-72298dc179c0244871824afa1c0d1362.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=70df8d3ce62aa6ae1285f026246758be 2500w" />
+  <img />
 </Frame>
 
 Click **Test and Save**.
@@ -7932,13 +7484,13 @@ Click **Test and Save**.
 Go to Google Cloud console, navigate to BigQuery, select your project in BigQuery, and click on **Create dataset**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=d96e1d0baa2f541b8982e561ccd7dec0" data-og-width="854" width="854" data-og-height="461" height="461" data-path="images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=88cf832b4449cb152cb26812acea5198 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=231980b9bbbef86b2cccfaa52d2a722d 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e700db87e381d871cb2730bd0d17255b 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=42dbfb7bdad770d3837a7fb6608b976a 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=da30326201a549ab8e6ede307f6f0b0c 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset1-56868087d2d2829fcf35c92046361179.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9d1633799da92ff4a2d72919c629c8bb 2500w" />
+  <img />
 </Frame>
 
 Provide `datafold_tmp_<username>` as the **Dataset ID** and set the same region as configured for other datasets. Click **CREATE DATASET**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6f5eee9e23b5e0cc17ac5cf4cf3bbfea" data-og-width="600" width="600" data-og-height="717" height="717" data-path="images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=04f480bd675d118869dcdbeb72a2fe80 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5fe7c1fc99db3fe9bf276f7ea7c4af10 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2ce3538d70cf07e4df09d864c7231e5c 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=630de468106efe6f17e0380bc4e5f96f 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8b333589474cbd5a28ee7adb41f41581 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_create_dataset2-ae5cb54f7dfb02699c0a8c6baf991205.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=54acc1cfdb6d8039b7c8a169a22f3e58 2500w" />
+  <img />
 </Frame>
 
 1. Configure permissions for `datafold_tmp_<username>`.
@@ -7948,13 +7500,13 @@ Grant read/write/create/delete permissions to the user for their `datafold_tmp_<
 Go to Google Cloud console, navigate to BigQuery, select `datafold_tmp_<username>` dataset, and click **Create dataset** → **Manage Permissions**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9989c77e33d9c8d40101e5aac7c2a979" data-og-width="739" width="739" data-og-height="361" height="361" data-path="images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f0b1f01e2b49e73fcb542a1ed7a69aeb 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=0a2ba425ab7469349354c9aa984b1804 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e81e037ad7933777de21dad0147e31f3 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=63f72fdf7be3976d4c84a81bb930018d 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9167ba1e691a3657ee37d853b4fddc9e 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions1-c085ec5f619915d10c8e1819aa31420c.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9b37b86665feec3ee743aa49de073855 2500w" />
+  <img />
 </Frame>
 
 Click **+ ADD PRINCIPAL**, specify the user and role, then click **SAVE**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a3e60b12eaa6d54d9e221013bed04a21" data-og-width="604" width="604" data-og-height="732" height="732" data-path="images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7f1050dc093e9657511d7bf62daf4016 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=32691682ea6ebf87393fb27461736e65 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=23d9328c76f4a7b8caf926d911509a0d 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=dce6e5f68c8ad6fcafd51eaa4dbe1895 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4426be737dbe82574a823a6a0cc72025 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_config_schema_permissions2-2cea1df20480853fe7f9aacf1e786280.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=05fc2a428a4afa31225c9afc459f42ca 2500w" />
+  <img />
 </Frame>
 
 caution
@@ -7966,19 +7518,19 @@ Ensure that only the specified user (excluding admins) has read/write/create/del
 As a user, navigate to `https://app.datafold.com/users/me`. If the user lacks credentials for BigQuery, click on **+ Add credentials**, select BigQuery datasource from the list, and click **Create credentials**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=e2622cd1e1be8568cfc8c3c2de089d8f" data-og-width="528" width="528" data-og-height="308" height="308" data-path="images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=56a929eb8b7c869a94460bdb249d78d7 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=bd1de29114cc4240425340791a1f2916 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9ee2c65f1dd8ad5256c977966112b2d3 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=4524a4c45873f75f4f742b2332a05e3d 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6eaa79c59e13da3bc8a50dcb0c270c80 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema1-0ed07791aae93db489b72f56d9a8b956.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6711bc955c5a8ff7885aea5840121027 2500w" />
+  <img />
 </Frame>
 
 The user will be redirected to `accounts.google.com` and then returned to the previous page:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=ec94dfc0f8a0cad000a4e5ed291d278d" data-og-width="945" width="945" data-og-height="568" height="568" data-path="images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=f58954c9249c8d998ea97b2500fed64a 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b9dd1c7d4728b27d2f837ba0302e6000 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8b722f3609424923fa411ef497e72aae 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=89ec8306292fa155aab0924abc201877 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=9dd6a09b7ace6eb77195913e500f0b96 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema2-dc4418e6faa3aaceb9ecccd773618fd4.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=b2322e97a0d94120955d68b7feaecb90 2500w" />
+  <img />
 </Frame>
 
 Select BigQuery credentials from the list, input the **Temporary Schema** field in the format `<project>.<datafold_tmp_<username>>`, and click **Update**:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=8ec2d70ffeee17a7318a66784aca373a" data-og-width="526" width="526" data-og-height="365" height="365" data-path="images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=5058d821083509dde08712f76a87bd90 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=419485442d5532209ff26f1fb8b2eaa7 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1d10d6ac876cd7f2c4b115fe4ca1c33d 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=01b731418e545edf5f9d67d2e7243feb 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=a01890857e91623ce9a2e6beaff1c190 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/bq_datafold_temp_schema3-19e078cdc1acee794bfb92a2abb907a4.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=be3ef9191263981497cad5e8ff623cfa 2500w" />
+  <img />
 </Frame>
 
 <Note>
@@ -8001,15 +7553,15 @@ Integrate Datafold with dbt Core, dbt Cloud, Airflow, or custom orchestrators to
 </Info>
 
 <CardGroup>
-  <Card title="dbt Core" icon="file" href="/integrations/orchestrators/dbt-core" horizontal>
+  <Card title="dbt Core" icon="file" href="/integrations/orchestrators/dbt-core">
     Set up Datafold with dbt Core to enable automated data diffs and CI/CD integration.
   </Card>
 
-  <Card title="dbt Cloud" icon="file" href="/integrations/orchestrators/dbt-cloud" horizontal>
+  <Card title="dbt Cloud" icon="file" href="/integrations/orchestrators/dbt-cloud">
     Integrate with dbt Cloud to enable automated data diffs and CI/CD integration.
   </Card>
 
-  <Card title="Custom Integrations" icon="file" href="/integrations/orchestrators/custom-integrations" horizontal>
+  <Card title="Custom Integrations" icon="file" href="/integrations/orchestrators/custom-integrations">
     Use Datafold's API and SDK to build custom CI integrations tailored to your workflow.
   </Card>
 </CardGroup>
@@ -8058,7 +7610,7 @@ Navigate in the Datafold UI to Settings > Integrations > CI. After selecting `da
 
 ## Add commands to your custom orchestration
 
-```bash  theme={null}
+```bash theme={null}
 export DATAFOLD_API_KEY=XXXXXXXXX
 
 # only needed if your Datafold app url is not app.datafold.com
@@ -8069,7 +7621,7 @@ To submit diffs for a CI run, replace `ci_config_id`, `pr_num`, and `diffs_file`
 
 #### CLI
 
-```bash  theme={null}
+```bash theme={null}
 datafold ci submit \
   --ci-config-id <ci_config_id> \
   --pr-num <pr_num> \
@@ -8078,7 +7630,7 @@ datafold ci submit \
 
 #### Python
 
-```python  theme={null}
+```python theme={null}
 import os
 
 from datafold_sdk.sdk.ci import run_diff
@@ -8099,7 +7651,7 @@ run_diff(host=host,
 
 The `JSON` file should define the production and pull request tables to compare, along with any primary keys and columns to include or exclude in the comparison.
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "prod": "YOUR_PROJECT.PRODUCTION_TABLE_A",
@@ -8145,15 +7697,15 @@ The Artifacts job generates production `manifest.json` on merge to main/master, 
 Example dbt Cloud artifact job settings and successful run:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cf58a3156778571d811e995c186a60ab" data-og-width="1592" width="1592" data-og-height="916" height="916" data-path="images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=b49999afef6210c65540b26b35405d8d 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=b826caa7c2d0ef0d9935e28b31aed4d7 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4a71e7da80a014c6fdc5ba72fa92d55f 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=13a4e60fc51d4ab8845071b01cf7c301 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a7beb8c2ce700409b4205346b77640b0 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_select_merge_job-590292c72209454e660444ea1a78fb5f.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e267803f50ef3e2ac00562ea12a8063d 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6e21263f5fa0b9317a58d335f59d02ec" data-og-width="2010" width="2010" data-og-height="1854" height="1854" data-path="images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0775d8bbe2360ce68a896d09ffa670a7 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d6a5b6271d4073fc60eb86f6b346d01b 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a526b0ac3e33ceab5fce9a35ef557a86 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d73678e8ddd48d24eaacea3a642f9989 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e8dbdee5ce84f68d4334b716f22fe5d4 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_artifacts_job_settings-939f1ce3f456698459c9045115706775.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fac813f0fe74aeee26672f67271ffd5e 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5889e462f19a3cbba05fd60f7f1a26bf" data-og-width="1841" width="1841" data-og-height="1210" height="1210" data-path="images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e9c9f109f7a7273b442e7276d5d2a950 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9ad27fd2667a61813bcde95460f2c93f 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=79f2d1de22adc241d3dabb4574f2dd71 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=37e8dc56d3f3e10723743d7f4eb7a4fe 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=8777748ffa6404d73bfd7632b3ec3632 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_ls_artifacts_job_example-2839e9104f9a64ca2833966db3900131.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f1c41706ec622fbc37c82810a29841a7 2500w" />
+  <img />
 </Frame>
 
 <Accordion title="Continuous Deployment">
@@ -8175,11 +7727,11 @@ Please note that the use of User API Keys for this purpose is no longer recommen
 1. Navigate to **Account Settings → Service Tokens → + New Token**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a1853f25fa9a05cd5346385fe9de836b" data-og-width="2023" width="2023" data-og-height="832" height="832" data-path="images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=75f7c9808844db6e8f375e03264adbdf 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=884faa5d94bc096d9478521a925c7aca 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1858d0ef767eadb26037b57e0e7b1578 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0ddea931e0c9a5ba475e437fe40f6931 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=98b4c7baa4cb7b9d4eb7af0a8a74ce4a 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token-2367d19382e6d25416b452ec5378bbfb.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=8603849aa46bdfdbfc2f0e89972bd238 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=84146d65087fe8a89d0037d5b158018d" data-og-width="1322" width="1322" data-og-height="864" height="864" data-path="images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=834fbaca8bab6e64f77c140a5774e715 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e7672e8ec2a88e2e66aadf52071706cc 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cd502aad0a0716ed1ea25be21605c63a 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4f0757783da2259ad5b4b6f95e8d8fd8 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a0e8887e9d3b56dcfb8cec48c8853083 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_add_service_token_permission-9fbdbb501c79f8a0bdee4abbf7483270.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3c0c5054d2879c4bb61cc9baca41996e 2500w" />
+  <img />
 </Frame>
 
 1. Add a Permission Set and select `Member` or `Developer`.
@@ -8187,7 +7739,7 @@ Please note that the use of User API Keys for this purpose is no longer recommen
 3. Save your changes.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=87fc12ff14d1a74898d821e87b935c77" data-og-width="1308" width="1308" data-og-height="886" height="886" data-path="images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=10e3c018d832c6a955d7243ccc3a58a3 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=70bfb9cdf1d7db62075057264b25fff5 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6cefe9e7c967c8d56cd852b7b36f4e84 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=edfc4503837b70c884003ed5abe8c0dc 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=03436a64c167e679b6911c1fb94d39d7 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_service_token-5a4c080cb6b778f030eaf02988c36978.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9a9d578f71fd670b3ee9231344f0143f 2500w" />
+  <img />
 </Frame>
 
 1. Navigate to **Your Profile → API Access** and copy the token.
@@ -8209,11 +7761,11 @@ If you have any questions or require further assistance, please don't hesitate t
 * Navigate to Settings > Integrations > CI and create a new dbt Cloud integration.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f7e0c8fb8d7fd554c4fdc36adf746cb7" data-og-width="2306" width="2306" data-og-height="496" height="496" data-path="images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f45ee4ad2bd8d407c1108c591cfcdf28 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=41827079f10c7fa05944138c2a7c1bd8 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cff0a79a8878070ff17a997fbdc20a51 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fc241868e30d85d6306c9e18051a1391 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=a4cc47cc9738ace1cf6d827fb98d7a2d 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_setup-b9dab8af8ca813283d0aaa3b99556eb0.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f71b1ca704af7318afca6fd774f42c2c 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=52c6d10f5b06085543f09dcff9106f97" data-og-width="1436" width="1436" data-og-height="640" height="640" data-path="images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f6c08b4a490fdda4c93ff0347d388dce 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e179f0a9cb37cc6b8c0a34f26f03497a 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=36acbde6d839dd22b1025263f3bbc254 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cd8ebc2c3207c0d5a004d202fb6351d7 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1551ad0d625bb0ed3bcb907e09df3e48 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_api_key-f3e2f3669695bdedf80f47fa1ccc91b3.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=bae50b6b6085801874fe965a421dd38f 2500w" />
+  <img />
 </Frame>
 
 ## Configuration
@@ -8221,7 +7773,7 @@ If you have any questions or require further assistance, please don't hesitate t
 ### Basic Settings
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cffb2b8c4bc7893601e6268b88fcbdc3" data-og-width="2294" width="2294" data-og-height="1354" height="1354" data-path="images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=98da01d5853b7937aa6b7383fbbd66d0 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d744c777a4f34448b8bad2403f0b10b1 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4900264b8e46454f00a7684d8e1754c2 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=15dfbfe23d1d65df71070d08bc96ddda 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=496dd997a76f6706071de42485d914b7 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_basic_settings-022522ea2690dcc55c4bc7d3b1e4a411.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=06c5de14ae2640627cda4eef6ded9d2a 2500w" />
+  <img />
 </Frame>
 
 * **Repository**: Select a repository that you set up in [the Code Repositories setup step](/integrations/code-repositories).
@@ -8235,7 +7787,7 @@ If you have any questions or require further assistance, please don't hesitate t
 ### Advanced Settings
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ac03933bcc83efe52d9fae35874ee500" data-og-width="2306" width="2306" data-og-height="1432" height="1432" data-path="images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=36be894c12c54d680c65c00ec31e7377 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9e424e6606c2bc34bb2ed7b2bf025d18 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4cd6464cb569f6d61c3f28bfb257bdc3 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4617f1e0877d5d5dd2d3b855a1c83868 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3b221781ca235a27113b3943825ba23e 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_cloud_advanced_settings-c862158fc664963c51377f0daaadaca3.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=655f696a55d9a7d6c0a8c0f3f260e218 2500w" />
+  <img />
 </Frame>
 
 * **Enable Datafold in CI/CD**: High-level switch to turn Datafold off or on in CI (but we hope you'll leave it on!).
@@ -8273,7 +7825,7 @@ To add Datafold to your continuous integration (CI) pipeline using dbt Core, fol
 ### 1. Create a dbt Core integration.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=6dc1d0706b51de98a38563f38d646ade" data-og-width="3012" width="3012" data-og-height="848" height="848" data-path="images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9738742fe98563394a86ee75b79b76e7 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e7d85efc1e91f61da211521ea152ab5c 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c62eda8b4ce4668324e0fcb57b4137ba 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=cd836180d5f6000e9ff94e363801408b 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=03acf893f29bf6a0cb3239fe49cc0c9e 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_integration-e8e0468f1f20a3436a47cb37d08639c0.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=e188550bb0508832a5ceee3f1b923936 2500w" />
+  <img />
 </Frame>
 
 ### 2. Set up the dbt Core integration.
@@ -8320,7 +7872,7 @@ Sampling allows you to compare large datasets more efficiently by checking only 
 After saving the settings in step 2, scroll down and generate a new Datafold API Key and obtain the CI config ID.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e65dd3975cef3b16ad203a0e6dfc1e7c" data-og-width="2310" width="2310" data-og-height="972" height="972" data-path="images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2e0e7022637f64e95d0f4c01e6f09db1 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4fc016fc32528e5f1f08b4f9edc88cc7 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b570523c1b5d58809b253754f6fbe82f 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cc99d5527fc2951e3c3919f784b15955 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=23aaa8a8a35b8d3bfe814868517fca80 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/api_key_and_config_id-634de74aeb5f3904e366c412b4c61ba1.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8d376a542ad6683d9418572183ba8542 2500w" />
+  <img />
 </Frame>
 
 ### 4. Configure your CI script(s) with the Datafold SDK.
@@ -8341,7 +7893,7 @@ You will need to configure orchestration to upload the dbt `manifest.json` files
 The dbt Core integration creation form automatically generates code snippets that can be added to CI runners.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f16553310e2b26b26e5d4b2a2c76c002" data-og-width="2678" width="2678" data-og-height="1344" height="1344" data-path="images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d41ecff2ee924e3178072beef8fd2320 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c54d42a6a1ff01d4e9fe988fefa77637 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=5af384917ff7c83177e0f0bb4447ab38 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=efb57b00d07f874cb04ae7ae5f3f6df5 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2022c86903d2d8dd48405a8fed515025 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config-b0a800dc1e86cfa3c0af64d97ca52af8.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=84045f617f0fe9d4eae200cba3d9a131 2500w" />
+  <img />
 </Frame>
 
 By storing and comparing these `manifest.json` files, Datafold determines which dbt models to diff in a CI run.
@@ -8355,7 +7907,7 @@ After updating your CI scripts, trigger jobs that will upload `manifest.json` fi
 Then, open a new pull request with changes to a SQL file to trigger a CI run.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=14dbcf392db072b3af4f9dbb7ab3860e" data-og-width="1306" width="1306" data-og-height="560" height="560" data-path="images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9bab4f4b53965a53df7e33ac3a3be0f5 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d3c6edc647c091269d3849f9d18857c3 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0425c279a0c6aa9f74b0e5aae6c6fc98 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d1e11df09a985d7e1e386a0c84cc3c66 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=fe0198eb1cddd43a81e51bbf46f37855 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/dbt_core_ci_config_test-7c78a7e83802c4273cdec4600a09e01d.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=8b8f378175ac7cc466e950cc4144402f 2500w" />
+  <img />
 </Frame>
 
 ## CI implementation tools
@@ -8385,7 +7937,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your dbt prod job kicks off on merges to the base branch, add a `datafold dbt upload` step after the `dbt build` step.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     name: Production Job
     on:
       push:
@@ -8408,7 +7960,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your existing Production Job runs on a schedule and not on merges to the base branch, create a dedicated job that runs on merges to the base branch which generates and uploads a `manifest.json` file to Datafold.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     name: Artifacts Job
     on:
       push:
@@ -8433,7 +7985,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     Include the `datafold dbt upload` step in your CI job that builds PR data.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     name: Pull Request Job
     on:
       pull_request:
@@ -8468,7 +8020,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your dbt prod job kicks off on merges to the base branch, add a `datafold dbt upload` step after the `dbt build` step.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     version: 2.1
     jobs:
       prod-job:
@@ -8495,7 +8047,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your existing Production Job runs on a schedule and not on merges to the base branch, create a dedicated job that runs on merges to the base branch which generates and uploads a `manifest.json` file to Datafold.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     version: 2.1
     jobs:
       artifacts-job:
@@ -8531,7 +8083,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your dbt prod job kicks off on merges to the base branch, add a `datafold dbt upload` step after the `dbt build` step.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     image:
       name: ghcr.io/dbt-labs/dbt-core:1.x
     run_pipeline:
@@ -8547,7 +8099,7 @@ This ensures Datafold always has the necessary `manifest.json` files, enabling u
 
     If your existing Production Job runs on a schedule and not on merges to the base branch, create a dedicated job that runs on merges to the base branch which generates and uploads a `manifest.json` file to Datafold.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     image:
       name: ghcr.io/dbt-labs/dbt-core:1.x
     run_pipeline:
@@ -8605,7 +8157,7 @@ Add a new Datafold SDK command after uploading the manifest in a PR job:
   `${{ github.sha }}` defaults to the latest commit SHA on the branch and **will not work correctly for pull requests**.
 </Tip>
 
-```Bash  theme={null}
+```Bash theme={null}
   - -name: Trigger CI
     run: |
       set -ex
@@ -8638,27 +8190,6 @@ Source: https://docs.datafold.com/security/compilance-trust-center
 
 
 
-
-
-# Database OAuth
-Source: https://docs.datafold.com/security/database-oauth
-
-Datafold enables secure workflows like data diffs through OAuth, ensuring compliance with user-specific database permissions.
-
-To improve data security and privacy, Datafold supports running workflows like data diffs through OAuth. This ensures queries are executed using the user's own database credentials, fully complying with granular access controls like data masking and object-level permissions.
-
-The diagram below illustrates how the authentication flow proceeds:
-
-1. Users authenticate using the configured OAuth provider.
-2. Users can then create diffs between data sets that their user can access using OAuth database permissions.
-3. During Continuous Integration (CI), Datafold executes diffs using a Service Account with the least privileges, thus masking sensitive/PII data.
-4. If a user needs to see sensitive/PII data from a CI diff, and they have permission via OAuth to do so, they can rerun the diff, and then Datafold will authenticate the user using OAuth database permissions. Then, the user will have access to the data based on these permissions.
-
-This structure ensures that diffs are executed with the user's database credentials with their configured roles and permissions. Data access permissions are thus fully managed by the database, and Datafold only passes through queries.
-
-<Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=c97a5cc781ff4bd1209c9efe06e5c1c6" data-og-width="3898" width="3898" data-og-height="2950" height="2950" data-path="images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4cb1a240af1a8ef1c8a1a6fe4d5042e0 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3c4de42e0b5ce184e5bf2a29771e1245 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=59dddd239015bd7ca4a9db203ecd3e17 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ded86dded41cde0752adc01c543bfd2a 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2ccf9b36a6cf6963c5274185a20bd867 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/rbac-with-sso-auth-flow-f641e578b9ee12f4ab09e5573125cb0a.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=50eb3fcc49b9bbe49b592547905a46ff 2500w" />
-</Frame>
 
 
 # Securing Connections
@@ -8695,8 +8226,8 @@ Note that at any given time, you will only see one of these addresses in use. Ho
 
     The following diagram shows the architecture for a customer with a High Availability RDS setup:
 
-    <Frame caption="SaaS with PrivateLink">
-      <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=65b88c7ff34cc84894b60d27691bbe88" data-og-width="2480" width="2480" data-og-height="1296" height="1296" data-path="images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ce35baacdc5cdfd99ecca2350df43249 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=01d156c2eff63bdb78b10e4109d86b67 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=f569417d66283f168b84c4cb23ea92a9 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=b6529b2dd6158a729dd4185760904f76 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=73881be7675758882f8de1ef81698b14 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saas_with_privatelink-1294c819a7e75474a9eb736bfac2cc95.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=892c9b54e12f3de7dc08df77a01ebfae 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     ### Setup
@@ -8751,7 +8282,7 @@ Note that at any given time, you will only see one of these addresses in use. Ho
     Google Cloud's Private Service Connect is only available if both parties are in the same cloud region. This option is only available for Datafold Dedicated Cloud customers. The diagram below illustrates how the solution works:
 
     <Frame>
-      <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=38c439b9f588193c87956ef53895a424" data-og-width="1008" width="1008" data-og-height="586" height="586" data-path="images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=be06d8ff89a08b4df409ecfede8a683b 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=0b583f6cb0578ee985d1195d03834a21 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ccf8914007440e0cb88fe9839abd2f89 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2753bd770bb50ff04c7bc89d428df1f9 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=4f33eb651737d66fef59dd4c929f52b0 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/gcp-psc-endpoint-overview-codelabs-b94101869413df5385a0a6406b9ff859.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d94d78eb8007a0a5b49ecb36ddbc2711 2500w" />
+      <img />
     </Frame>
 
     The basics of Private Service Connect are available [here](https://cloud.google.com/vpc/docs/private-service-connect).
@@ -8763,7 +8294,7 @@ Note that at any given time, you will only see one of these addresses in use. Ho
     Azure Private Link is only available if both parties are in the same cloud region. This option is only available for Datafold Dedicated Cloud customers. The diagram below illustrates how the solution works:
 
     <Frame>
-      <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e8a1369ee4fd7f7866ec7550337f0c23" data-og-width="1140" width="1140" data-og-height="729" height="729" data-path="images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0cdc802a43333d995b7161feb6021374 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=05bbed6ba750dbb4538db193265bf181 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d01a70b96bf8e75b3a26cf6ae91c9e45 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=315e8750c5cda55724d638efa3f5c899 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b8d4907b690435efb419d259574260af 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/azure-cross-tenant-secure-access-private-endpoints-architecture-bcf92a6fe7e8007d278b3256c1ef666d.svg?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f788286a9ffaa42293d3ea1e22f03742 2500w" />
+      <img />
     </Frame>
 
     The basics of Private Link are available [here](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview).
@@ -8826,11 +8357,11 @@ Source: https://docs.datafold.com/security/single-sign-on
 Set up Single Sign-On with one of the following options.
 
 <CardGroup>
-  <Card title="Okta (OIDC)" href="/security/single-sign-on/okta" icon="file" horizontal />
+  <Card title="Okta (OIDC)" href="/security/single-sign-on/okta" icon="file" />
 
-  <Card title="Google OAuth" href="/security/single-sign-on/google-oauth" icon="file" horizontal />
+  <Card title="Google OAuth" href="/security/single-sign-on/google-oauth" icon="file" />
 
-  <Card title="SAML" href="/security/single-sign-on/saml/" icon="folder-open" horizontal />
+  <Card title="SAML" href="/security/single-sign-on/saml/" icon="folder-open" />
 </CardGroup>
 
 <Tip>
@@ -8841,7 +8372,7 @@ Set up Single Sign-On with one of the following options.
   Admin users will still be able to login using email and password.
 
   <Frame>
-    <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=29f90cc886243d77cd3ceac6fa825ad7" data-og-width="843" width="843" data-og-height="399" height="399" data-path="images/disable_non_admin_email_password_login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=795d023925dfc27b455e5478c8488b92 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=bd259b872d305adce12884d34822ef76 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9fbff485e2d7b6c18b909f7e8f4a0bcc 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2e8feed2012315c85c5b6fa6503c1107 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=2d479a6c5825d4695a12fa25cc6ac1ef 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/disable_non_admin_email_password_login.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9976e83d3bb4e81221150dc1e6c24618 2500w" />
+    <img />
   </Frame>
 </Tip>
 
@@ -8876,7 +8407,7 @@ For Datafold SaaS the setup only involves enabling Google SSO integration.
 If Google SSO is already enabled for your organization you will see it in the **Settings** → **Integrations** → **SSO**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e7bb80685a41723dfa3c34b3b1d7a805" data-og-width="2658" width="2658" data-og-height="680" height="680" data-path="images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f51be9cc7fef460deba05481652f7192 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c2d390e4ebb466aa3741d6c8bd58c003 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=39a1e787718342851cb3faf64d47743b 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9625b01d4558d8e1bef2d065d0aeb820 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=903f432652191545e0c04ad5384cd171 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_list-5b0c84c5bdddde31c6e82cce055ba758.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=69202005106959bd93244e33b67af714 2500w" />
+  <img />
 </Frame>
 
 If this is not the case, create a new Google SSO Integration by clicking on the **Add new integration** button.
@@ -8889,7 +8420,7 @@ If you are not using Datafold SaaS, please see below.
 To begin, navigate to the [Google admin console](https://console.cloud.google.com/apis/credentials?authuser=1%5C\&folder=%5C) for your organization, click **Create Credentials**, and select **OAuth Client ID**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2dd9a41200dbec554854e8f2152d4967" data-og-width="2546" width="2546" data-og-height="1212" height="1212" data-path="images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5c04ab9c87f3433a4321ad094cff0444 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=3237419a4fbc116379685d0f3baf3ee0 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d79b7171c609bafcf9f214a74ceaa2b7 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0d6e57a10068535692854bb690d680dc 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=81386a187e89ad982cd136fc168b44ec 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create_credential-95776eb793bc1a1115c5fe1b18d9203f.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=738ceb21992881ed330289cc0d781296 2500w" />
+  <img />
 </Frame>
 
 <Tip>
@@ -8899,7 +8430,7 @@ To begin, navigate to the [Google admin console](https://console.cloud.google.co
 </Tip>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f8fbe61a51916af96fac74baba6e0c57" data-og-width="1100" width="1100" data-og-height="928" height="928" data-path="images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=85a18952eaa280999dca0b9d7d7c4fac 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=bda6ab56698d40e1e0bf0981ea705725 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=1d8b214ee69deba0807a3d8265484b4b 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=43e2ef08d691297c9f52ce6dd1d6ea40 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d2f3fd70ae47170db93229c4ac7f5db4 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_consent_screen-6fd858ff5d1fc5fd43be910f055fe0ca.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ab043b43d1570852e18186d29c44d827 2500w" />
+  <img />
 </Frame>
 
 ### Configure OAuth[](#configure-oauth "Direct link to Configure OAuth")
@@ -8909,7 +8440,7 @@ To begin, navigate to the [Google admin console](https://console.cloud.google.co
 * **Authorized redirect URIs**: `https://<your.domain.name>/oauth/google`
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d81a93fc47ce61af186a44b1e3032d73" data-og-width="1301" width="1301" data-og-height="1224" height="1224" data-path="images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=d38aff3864a2f31b85cf4279d768b225 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ef1fda51909f5b439221d1775330bfe5 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=05ded4cda10a1342c47b4199e0fff443 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=9dbfe9a60e75feaa9b053b4611cab4f7 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=f44d8a4fbc916f5e92488c87deb604e1 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/google_oauth_authorizations-002a9446a71ba66ba4d375d897c4cdf7.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=88e03d3a62ead7ce5afd9c8c771d8922 2500w" />
+  <img />
 </Frame>
 
 Finally, click **Create**. You will see a set of credentials that you will copy over to your Datafold Global Settings.
@@ -8921,7 +8452,7 @@ To finish the configuration, create a Google SSO Integration in Datafold.
 To complete the integration in Datafold, create a new integration by navigating to **Settings** → **Integrations** → **SSO** → **Add new integration** → **Google**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f6236303e7386aa134d770bc9004ba80" data-og-width="2070" width="2070" data-og-height="666" height="666" data-path="images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7e3406de67b5c070cd7ac99c440f248e 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ebc3357ab62687407deb5d9fd63e6067 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b10e57e922bcfb26dd6fc27031b41555 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=224b5d6d21fcec28cb2a45aece520f5f 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=184fecd1f44546ff584188b888aba4a9 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/google_oauth_create-463bc5c0d7cd049e0ba4ae8fdd577185.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=921da1190b889757ca1f86f21f8ddd34 2500w" />
+  <img />
 </Frame>
 
 * Enable the **Google OAuth** switch.
@@ -8957,7 +8488,7 @@ Next, log in to Okta interface and navigate to **Applications** and click **Crea
 Then, in the configuration form, select **OpenId Connect (OIDC)** and **Web Application** as the Application Type.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=cd99a119a39d2e15d3ca3584783311d1" data-og-width="2796" width="2796" data-og-height="2120" height="2120" data-path="images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=cb914e5cd780c78edb7d4387d9e6dda8 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=cf9347ff420148fb85989217583fed0c 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0a56b06a16cfb02e8d16798d37545725 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0a820232d15b1226f6ca3eac5a8ddb2c 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ca39877292b3a2b12449ae01affeedde 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create_new_app-0b8566bc3dd329ef3d80f849c0065fef.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c8a2be1ae8ac2402e9be775b34bdd58e 2500w" />
+  <img />
 </Frame>
 
 In the following section, you will set:
@@ -8987,7 +8518,7 @@ In the following section, you will set:
 * Click "Save" to create the app integration in Okta.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=47fe81beba56d13cbbc6e3e5e7cd061c" data-og-width="915" width="915" data-og-height="733" height="733" data-path="images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9c7caf3ed96608bf9639fcf93f993253 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2b8d1aa51a2b32c28c7c6fadbffa3f44 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ab630f62ba5587489e2ba9ea76df774e 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e4fcfbc510a482468b8239fa89680449 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c303f1bb514d6ab2dae609b168bb7353 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_redirect_uri-b64d1ac6c24ab8577bf8a52f14da842b.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2044f3cc5192388676699fe9eea5a7b1 2500w" />
+  <img />
 </Frame>
 
 Once the save is successful, on the next screen, you'll be presented with Client ID and Client Secret. We need these IDs to update the redirect URLs that Datafold needs. We'll also apply the Client ID and Client Secret in the Datafold integration later.
@@ -9031,7 +8562,7 @@ Users in your organization can log in to the application directly from the Okta 
 </Tabs>
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b6ee8ab50310409a28abd3d7de8d6461" data-og-width="1398" width="1398" data-og-height="1206" height="1206" data-path="images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=fcf22e2b4132131726db58c35ce17172 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4f08bc2138da08428cff82a9b023ce4f 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=73f277df42db7db8092fbdde06cf8144 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a63bc6f8d1be025ce82640f95ffc0fbb 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=8a90c035fad8640ab3cf1620b90ac05b 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_initiated_login-8a7541151582487dd21f8381207e25fd.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=fe75b2e60c9b96cb0db5d1fa06373a4f 2500w" />
+  <img />
 </Frame>
 
 1. Click "Save" to persist the changes.
@@ -9045,7 +8576,7 @@ To finish the configuration, create an Okta integration in Datafold.
 To complete the integration in Datafold, create a new integration by navigating to **Settings** → **Integrations** → **SSO** → **Add new integration** → **Okta**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=805f5b088b6fb89000adb5533c4df0da" data-og-width="2072" width="2072" data-og-height="762" height="762" data-path="images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=840215cc19908a03df300dd3100c2952 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5a40fcabb66de9c8003303075dc3c64f 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b5c462ec60a76a86f944a98bae702e05 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a7531d669ae279ed8749e1eb93b4219a 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0ff47734f6144b3494b6d7220ce41c61 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_create-8269c208d4fa7df43a8c5ad99e675297.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5d439d069e5acc348e9897de5d21182e 2500w" />
+  <img />
 </Frame>
 
 * Paste in your Okta **Client Id** and **Client Secret**.
@@ -9071,7 +8602,7 @@ This step is essential if you want to ensure that users from your organization a
 6. Go to Datafold and generate a secret token in **Settings** → **Integrations** → **SSO** → **Okta**. Click the **Generate** button, copy it by using the **Copy** button and click **Save**. Use the pasted code in the **Authentication secret** field in Okta.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=36e3752ce79f7e792d543efcb9012fc0" data-og-width="1756" width="1756" data-og-height="216" height="216" data-path="images/generate_token_input-3ef82f777565226aa5da10b52464549e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=280&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=42cdb90429a3a9c1ac36888fc9277617 280w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=560&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=bf21a126379a58a2fa8dd94bd21cd30c 560w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=840&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=ca29ed5c6a2fd6a7dfebc34891031ebb 840w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=1100&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=c06e7ece043a1c514be15aaa9484b529 1100w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=1650&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=3c20b9682b00d32fdd6cb6ee2625dacc 1650w, https://mintcdn.com/datafold/6zQ11m2yiOVjYXTT/images/generate_token_input-3ef82f777565226aa5da10b52464549e.png?w=2500&fit=max&auto=format&n=6zQ11m2yiOVjYXTT&q=85&s=da00aaac4c96e48594c0bde2039ce3ef 2500w" />
+  <img />
 </Frame>
 
 <Warning>
@@ -9084,13 +8615,13 @@ This step is essential if you want to ensure that users from your organization a
 8. Click **Save & Continue**
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=aa1f13e3d70bef5f4a2660eb91da93cd" data-og-width="1466" width="1466" data-og-height="1484" height="1484" data-path="images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=280&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=2f61f0553001c73c059076e15531fa8d 280w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=560&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=1fb17f3a93e18e547fa114cc75a34390 560w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=840&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=086e57959bf93c73d5c0dae7ecc5262f 840w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=1100&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=7e2739c1430dd272623cf379caeda9bc 1100w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=1650&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=6126ae5abd4292a7386a5bd21afca293 1650w, https://mintcdn.com/datafold/hQ4DukKOuaj6vjhH/images/config_okta_event_hooks-ed108690a4e2e94d8158527dcc2f4196.png?w=2500&fit=max&auto=format&n=hQ4DukKOuaj6vjhH&q=85&s=38ef84c1a464f499ee3d02ab6c66a0ff 2500w" />
+  <img />
 </Frame>
 
 . On **Verify Endpoint Ownership** click **Verify**
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=697f26bc7f857a68847d006d0fa4d9c7" data-og-width="1368" width="1368" data-og-height="650" height="650" data-path="images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=280&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=5a2317b502377f247113237261a3d467 280w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=560&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=df89bf3c345b9d9445864a73199931fe 560w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=840&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=f24c0068d11085cea226aa4f527a1540 840w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=1100&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=63658165aaf8da903275cda34e0efb55 1100w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=1650&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=bcbb4899597517b563e03c3388725a29 1650w, https://mintcdn.com/datafold/4ZNRDufNo9R1p08Q/images/verify_okta_event_hooks-57c17ee772834faf39e6c7689743d1f5.png?w=2500&fit=max&auto=format&n=4ZNRDufNo9R1p08Q&q=85&s=c0d3d8173cd58326b94639dcb77cc066 2500w" />
+  <img />
 </Frame>
 
 * If the verification is successful, you have completed the setup.
@@ -9146,7 +8677,7 @@ To configure a SAML provider:
 1. Go to `Datafold`. Create a new integration by navigating to **Settings** → **Integrations** → **SSO** → **Add new integration** → **SAML**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d664571269b205f66ed0bfb051107a91" data-og-width="2088" width="2088" data-og-height="1452" height="1452" data-path="images/saml_create-3716c6fe01352ea69c647a7856adf189.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=76044b6a16ff8722c525b333d51fbd12 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa234c47b6a466e6cba5e6ab39b26651 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1a6dc91b3981557cbe15b08e888a42aa 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=93bfe67c8679b40af1d1f92daac66ad2 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=642e67455b35e8e364736f993039efbf 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=242b9f474139a637af404a556c3746f2 2500w" />
+  <img />
 </Frame>
 
 1. Go to the organization's `Identity Provider`, create a **SAML application** (sometimes called a **single sign-on** or **SSO** method).
@@ -9213,13 +8744,13 @@ Enable SAML in your Google Workspace. Check [Set up your own custom SAML app](ht
 * Select **Basic Information > Primary email** as the Name ID.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8d366ab86b7b5ea4da4f28610f663a7a" data-og-width="1036" width="1036" data-og-height="1092" height="1092" data-path="images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=031e650d4205833f3c37804f02f91163 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=3e95a625f8140fa3eb94acc2d3bcd046 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5eadb572afb12e36279b4bb353f883d1 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e0b07aa098ee8c5109e157716a701447 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2f3e3605ac2301683f9b01f410ee8835 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_settings-22d5c2a5018e3bd88139f63f41aeb5a8.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=8405af2810d95e13cb7cf2b851817f82 2500w" />
+  <img />
 </Frame>
 
 * Go to `Datafold` and create a new SSO integration. Navigate to **Settings** → **Integrations** → **Add new integration** → **SAML**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d664571269b205f66ed0bfb051107a91" data-og-width="2088" width="2088" data-og-height="1452" height="1452" data-path="images/saml_create-3716c6fe01352ea69c647a7856adf189.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=76044b6a16ff8722c525b333d51fbd12 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa234c47b6a466e6cba5e6ab39b26651 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1a6dc91b3981557cbe15b08e888a42aa 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=93bfe67c8679b40af1d1f92daac66ad2 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=642e67455b35e8e364736f993039efbf 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=242b9f474139a637af404a556c3746f2 2500w" />
+  <img />
 </Frame>
 
 * Copy the read-only field **Service Provider ACS URL**, go to `Google` and paste it into **ACS URL**.
@@ -9231,7 +8762,7 @@ Enable SAML in your Google Workspace. Check [Set up your own custom SAML app](ht
   * **Last Name** → `last_name`
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=ab8e093dd14d4ee27f8ace796fcbde82" data-og-width="710" width="710" data-og-height="454" height="454" data-path="images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7dd71eaebd2d6367b7b5ac4b4caeb567 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=86be5fdb3065ef5eeacdd5b5a8bfe13f 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fc03a15b3ddf993248d758df5923d659 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2ee4c189d5fde064c7c7ec80ede0214c 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=2a2aa8ce965eb043a66b51cad1fe75b4 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_google_mappings-60f0f4105c1debd2b14a95aa982727fa.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=300534eb2e002dbeef1036a2c7a21bb0 2500w" />
+  <img />
 </Frame>
 
 
@@ -9245,13 +8776,13 @@ Source: https://docs.datafold.com/security/single-sign-on/saml/examples/microsof
 You can create an **Enterprise Application** and use that to configure access to Datafold. Click on **New application** and **Create your own application**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f046f4325a41d25294d72b72bc7e7f32" data-og-width="1724" width="1724" data-og-height="1402" height="1402" data-path="images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=de93f751f26594bf7ceccae6faf8e77e 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=898fdf7626a40eb02aad3faf01df5ac2 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=51e99f275914f83519d44b439cc53a96 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6d2345fce559388084ea7c67b993a9f3 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2ccb5f8f0c12a7e52eee28f086dc3c9b 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseApp-ac80b4305fc06a4a80a45532d718710a.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=00c5efffa1fc825981f4cafa1e8f7446 2500w" />
+  <img />
 </Frame>
 
 **Copy** the **App Federation Metadata Url**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c0e3cd95b03d1101df57c76076ad7b50" data-og-width="1334" width="1334" data-og-height="1798" height="1798" data-path="images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=026b9993d32dfe5bceac3978be48843c 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e5ba0a04ae8b5cc94a617c60af845a47 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=08e9563168b51212b2679b6fa6090e9f 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0b776887156cc1c241e25abbdd399863 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9661eb58da718e492d8d3a3516c20046 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppInitialConfig-6d5935f0a7efeec4595856d5171c3182.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=39f380af3ef1d5835ffe852ce15a1f5b 2500w" />
+  <img />
 </Frame>
 
 Go to `Datafold` and create a new SSO integration. Navigate to **Settings** → **Integrations** → **Add new Integration** → **SAML**.
@@ -9259,7 +8790,7 @@ Go to `Datafold` and create a new SSO integration. Navigate to **Settings** → 
 Paste the **copied** URL into **Identity Provider Metadata URL**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d664571269b205f66ed0bfb051107a91" data-og-width="2088" width="2088" data-og-height="1452" height="1452" data-path="images/saml_create-3716c6fe01352ea69c647a7856adf189.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=76044b6a16ff8722c525b333d51fbd12 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa234c47b6a466e6cba5e6ab39b26651 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1a6dc91b3981557cbe15b08e888a42aa 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=93bfe67c8679b40af1d1f92daac66ad2 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=642e67455b35e8e364736f993039efbf 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=242b9f474139a637af404a556c3746f2 2500w" />
+  <img />
 </Frame>
 
 Go to `Azure` and edit the **Basic SAML Configuration** in your Enterprise App.
@@ -9269,7 +8800,7 @@ Copy from Datafold the read-only field **Service Provider ACS URL** and paste it
 Copy from Datafold the read-only field **Service Provider Entity ID** and paste it into **Identifier**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=914fa717d4ab2ed87ffc04a67c99cf0e" data-og-width="1204" width="1204" data-og-height="1468" height="1468" data-path="images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6873da5c93e3285802f4baa7f63de352 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8d29d9e0220af510ca1f43012d733c6b 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=ac5df0793d3e284d24dc3827f06259c6 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=cbe142abb7edde1201f94f447eb837f3 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1559322e5f79844cdfc5b60b54162be4 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLConfig-f04cd556cd232163a85a3ff2e47e5e7e.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d457a8b558e1471283770e9c35b5570c 2500w" />
+  <img />
 </Frame>
 
 Go to `Datafold` and click **Save** to create the SAML integration.
@@ -9279,13 +8810,13 @@ Next, edit the **Attributes & Claims**. By default, the **Unique User Identifier
 (Optional step) Add two attributes: `first_name` and `last_name`.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=0e1e60e7e3feeff95983c959da115188" data-og-width="1146" width="1146" data-og-height="682" height="682" data-path="images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=059871ba16b0dca0df447d4a96345169 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7f1f56994ee73a39f36f9df4b2975e97 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6e96d0da5262399f7a4307635acb2fce 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=3b4ff99a38d1abc00139b71c39756cb6 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=557c9791479c726fbf9b85cd165804ca 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppSAMLAttribute-99692a9fa1d102a1eaa818d36c6b812e.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=07c12c1155388628296ca370e8230cfd 2500w" />
+  <img />
 </Frame>
 
 Finally, edit the **SAML Certificates**. Set the signing option to **Sign SAML response and assertion**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8fd247f9d4d784561868cf9359a16d6f" data-og-width="1338" width="1338" data-og-height="602" height="602" data-path="images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f1766d6b5ba167419c6bb2d52d398a9e 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d0f09c10f614a3ea19e5b0641ecf2fac 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8faa2bc002e73892f79c8ebd6fcabc79 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1962a7fd24c571a4aa7a9fa0fdfc9454 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9be749d54d9e3d8a19fa7f9f991d4321 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/AzureEntraIDSAMLEnterpriseAppCertificates-c4582a0cf51f8dcdae03013810278e00.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=9cea58d918d93857cba205444fedbbaa 2500w" />
+  <img />
 </Frame>
 
 After you made sure you are added as a user to the Enterprise Application, log out from Datafold. Click on **Test** under **Test single sign-on with DatafoldSSO**.
@@ -9300,47 +8831,47 @@ This step is essential if you want to ensure that users from your organization a
    2.2 Select Microsoft Graph.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a720a15fa9d640f9391f8fab7c9211c0" data-og-width="1480" width="1480" data-og-height="866" height="866" data-path="images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a25702f6a99c94c2cdbf5bd3127ce974 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7f562bc34d34d354980b285c455ceffe 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5a683ac0aa1d92a51cfc323bf09f5b92 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a97a7878468733590510d7cf6974dcda 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=a151bee4d4843e1a242d16b9305ff61e 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/1-e2efd77a0267ffe5f9fb14ef6be44c1f.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6ff7f11fc5d973b8473801e0e60fa825 2500w" />
+  <img />
 </Frame>
 
 2.3 Select application permissions and add the required permissions.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=13b9a24078632afb55d8c665f4e40f1f" data-og-width="1514" width="1514" data-og-height="834" height="834" data-path="images/2-00a764fe8abf4ef520abeaf7ae07d49e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e47cf793035c8d3adda0dfe576e73645 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=58930216ba894ce2ab91a95e363b2413 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4b0469c605fbcbcb6a8eef7c5e2b2eb1 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5bd6f5ac487bed1e3ca3dd12ff79537a 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=bf2f7ac7b77c5a1414f53807864bb5f4 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/2-00a764fe8abf4ef520abeaf7ae07d49e.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c9310570c1f792009f9c0ab656ad63f6 2500w" />
+  <img />
 
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fd83b4f6265f71cc3ca338d47104ada1" data-og-width="1506" width="1506" data-og-height="398" height="398" data-path="images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=651036156b7cc97e6ffaa7ddf75bfb19 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8735ba819b72607bb5961d95e2c4bc0d 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=de9b2a3b4ec77e482e56fcc78863d98c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=698c12aa77ead7b1ea0bc165d2d64fc5 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f16f68e97dda83d07e0d6bcef17fa297 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/3-eadbef3fd2f9c1d0326ed8a9721c16c2.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=c895f2b2fd4f783b242f8fefc05d6306 2500w" />
+  <img />
 </Frame>
 
 3. Grant admin consent.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fb0aa1f158f2aec6d6f4a1b3a081c20f" data-og-width="1580" width="1580" data-og-height="784" height="784" data-path="images/4-40f90f212a27572e669806bc36325bc7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=51ee70d63cf050166ae395368bde47c5 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1d169c59f4d35f2c981ebd100042d765 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=8e13134c745e095000a314f5ca732224 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=97f61ab8401a3e7d45458fe8c4beec31 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=1a76d9ba1937a7f05fbd2a810e902925 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/4-40f90f212a27572e669806bc36325bc7.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=114422090662fc1ae07dc5a095f9e79c 2500w" />
+  <img />
 </Frame>
 
 4. You should now see a <Icon icon="square-check" /> next to the permissions.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=f28ea21f758290a2876d69fa51dc2da7" data-og-width="1544" width="1544" data-og-height="482" height="482" data-path="images/5-257e23569930de31a6168ac10aaf5bf3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=b1d0875d532398d95008632958452b2e 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=fa7943196a09d31f37b403fd4c99e35f 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4d7c28a4ea0369882cace5789d860e33 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=936d8a3fa927bb9d5f8ee3fcce5df48f 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5d926e9b710be602ffa685f6bdb84c27 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/5-257e23569930de31a6168ac10aaf5bf3.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=382fda0f951a59164bf7de038bd8a908 2500w" />
+  <img />
 </Frame>
 
 5. Generate a secret so that Datafold can interact with the API.
    5.1 Click `Certificates & secrets`.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=53b9bd989e8c0fabbe436dfd3464a1c1" data-og-width="2044" width="2044" data-og-height="446" height="446" data-path="images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e2f726689f11faddc7f0bc477b7b4d99 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5852df798cfd0208f65cb8e1ebbe44ce 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=74d8b57a302f04acc6c885f302c1e89c 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=6744fd8c2c8e689994b987a5da8540b1 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=336ff98fb4f3de13b872314e2b344a31 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/6-015ef3a0d51e4ee205d6bd5d5c888e8d.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d9532ee1fda03cf024f2c06244453f5c 2500w" />
+  <img />
 </Frame>
 
 5.2 Click `New client secret`.
 5.3 Type in a description and click `Add`.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=552b5f52d806aa8b90681cc449584711" data-og-width="1042" width="1042" data-og-height="478" height="478" data-path="images/7-a95118698bae900f1620b47905433fc4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=45b2016d891ab27ff93834e318e42a05 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=4f061905fce7d16a58067712917b8d75 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=d350b8860f9056026379653cf89f984e 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=e72580916c2efb756d0f800bcf59c5e5 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=029758725feefdfd5ebe1bac525614bf 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/7-a95118698bae900f1620b47905433fc4.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=5fb5b80a5c36cd7dd9b354cca544c872 2500w" />
+  <img />
 </Frame>
 
 6. Go to `Datafold` and navigate to **Settings** → **Integrations** → **SSO** → **Add new Integration** and select the Microsoft Entra ID Logo.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=53e7d8df3ed9743261d59ffb842bd934" data-og-width="2072" width="2072" data-og-height="622" height="622" data-path="images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=280&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=695f6ad6681d3b195df963e5d8e038bd 280w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=560&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=34c3175a4ce27ee1ffe2a24c0d2c78db 560w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=840&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=13861a8cce2a92c8c2026838abb41191 840w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=1100&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=121071fbb10fbb61183e0480edfd08ae 1100w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=1650&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=7c2fa73221f65be599a4a290d503bf35 1650w, https://mintcdn.com/datafold/7pWtpSckJi2T0xZR/images/8-bfcf9d1f0679293415dad2a9b7c5ef6c.png?w=2500&fit=max&auto=format&n=7pWtpSckJi2T0xZR&q=85&s=2782c0fb51f3237343f075d977442562 2500w" />
+  <img />
 </Frame>
 
 7. Paste in the four required fields:<br />
@@ -9366,26 +8897,26 @@ You can create an **Application** and use that to configure access to Datafold. 
 Select **SAML 2.0**
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f1e88c43eab60863bde238f5a35e84b4" data-og-width="1928" width="1928" data-og-height="1198" height="1198" data-path="images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=065f897e1373c16c11d208f5b2684d96 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=38d8159b3000a9fd76a0f5532dc586c6 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=675cb8f5b2e908d9f4221dc25b813310 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=831e2ea74ba5dca9f7348506b074934a 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=a0c19c262a31a8e883560a0aa6ded124 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_2_0-f56d1d05fe14ca913026c4618dc1518b.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e27a73428efaded05ef86b01baa752a2 2500w" />
+  <img />
 </Frame>
 
 Enter "Datafold" in **App name** and click **Next**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c35496d4b016980452723e6f355c14af" data-og-width="1462" width="1462" data-og-height="760" height="760" data-path="images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=85dc7bb56960acbd31053e4d37283417 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b2dc3d43c79924382c5ef676b571d8f4 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=1e9647f795b2a5b51d14f00884b49973 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=d725841ce4aa54c45f252dfecc1f7293 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e903aad0df74a49abd4395a915b7c880 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_app_name-495773bcc2261378919673c58e49b91b.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=dd16b9331292f8f9da08aeb196aaaa3a 2500w" />
+  <img />
 </Frame>
 
 Go to `Datafold` and create a new SSO integration. Navigate to **Settings** → **Integrations** → **Add new Integration** → **SAML**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=d664571269b205f66ed0bfb051107a91" data-og-width="2088" width="2088" data-og-height="1452" height="1452" data-path="images/saml_create-3716c6fe01352ea69c647a7856adf189.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=76044b6a16ff8722c525b333d51fbd12 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=fa234c47b6a466e6cba5e6ab39b26651 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=1a6dc91b3981557cbe15b08e888a42aa 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=93bfe67c8679b40af1d1f92daac66ad2 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=642e67455b35e8e364736f993039efbf 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_create-3716c6fe01352ea69c647a7856adf189.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=242b9f474139a637af404a556c3746f2 2500w" />
+  <img />
 </Frame>
 
 * Copy the read-only field **Service Provider ACS URL** and paste it into **Single sign-on URL**.
 * Copy the read-only field **Service Provider Entity ID** and paste it into **Audience URI (SP Entity ID)**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=3d7efa5d1edc4303f2e99ab252ca37a3" data-og-width="1454" width="1454" data-og-height="1222" height="1222" data-path="images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=b56b79c5f7aa164461fb2da87b525a34 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=aec39beb8a250784523b42e83b7aa1f7 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9593f9bec36d853f25b850c3bf307cf1 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=f3fd976dd4c320182bb1dcc2ca26261c 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6726530e699a933d97de7fcefd4d3b4c 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_settings1-a3440ff6356c33c17b630039f9d0401f.jpeg?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e46220fe1a58e0462739b0cecd690aa2 2500w" />
+  <img />
 </Frame>
 
 (Optional step) In **Attribute Statements (optional)** add fields:
@@ -9394,7 +8925,7 @@ Go to `Datafold` and create a new SSO integration. Navigate to **Settings** → 
 * Name: `last_name`, Value: `user.lastName`
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=45f14e02b732212e1b2258fd00348222" data-og-width="1472" width="1472" data-og-height="628" height="628" data-path="images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ea6a4db29e1c55bcb0bf8440a5de5ee3 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ed79b3805fbee166406fd3d779b2a5ee 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2f52e463d4f9e579aa89b3ab0cd9fcff 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=c91dec1834154752b7a2719cfa481513 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=9923abb0b0479c0efb7b21ca6692e487 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_attr_statements-e51a953c5ef2853fdbd6821d07322e9f.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2dbe632c9fd07ab9ebbbab9172e9153c 2500w" />
+  <img />
 </Frame>
 
 Click **Next** and **Finish**.
@@ -9402,7 +8933,7 @@ Click **Next** and **Finish**.
 Go to `Okta` and copy the **Metadata URL** field from **Datafold** → **Sign On** → **Metadata details**.
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7cfdd7e54f625e288fab124fb02c8019" data-og-width="1448" width="1448" data-og-height="1530" height="1530" data-path="images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=4b1bdad40566ec0bf868e4143fc9a843 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=067c83302e8cee16196f10c81c4817a1 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ac9ee21d6d5576085261a91ca7f9c2d6 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=e5565b1d8ec44206b8b57bf4eeea0fd7 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0756e1590df84c626664362699098951 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_saml_meta_url-137efd7dd40576337ee02f984c8841bc.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=56a76605830ededd38d07f7828b88842 2500w" />
+  <img />
 </Frame>
 
 Go back to `Datafold` and paste it into **Identity Provider Metadata URL** field.
@@ -9422,7 +8953,7 @@ Automatically sync group membership with your SAML Identity Provider (IdP).
 ## 1. Create desired groups in the IdP
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7b1a4b911b31f70a7d7db3b95739586c" data-og-width="2206" width="2206" data-og-height="1138" height="1138" data-path="images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=280&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=ea9ebef6fb14013d8e93b161c30a1c0f 280w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=560&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=5d9c07e5cf547a9638b5c766696d95bd 560w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=840&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=7fd3d8be8c721165c57b80f415645e71 840w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=1100&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=2c0eef63671955ee29df544c44c0be8a 1100w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=1650&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=6ca9d7d82602d721f63b1b73bdb20a70 1650w, https://mintcdn.com/datafold/BHI8Zy_v4DyXlmzL/images/okta_groups-61f1b6cf7b4075477ff1275ceeea6d09.png?w=2500&fit=max&auto=format&n=BHI8Zy_v4DyXlmzL&q=85&s=0234e8f1489f0f5e752db118555790b5 2500w" />
+  <img />
 </Frame>
 
 ## 2. Assign the desired users to groups
@@ -9433,18 +8964,18 @@ Assign the relevant users to groups reflecting their roles and permissions.
 
 Configure your SAML SSO provider to include a `groups` attribute. This attribute should list all the groups you want to sync.
 
-```Bash  theme={null}
+```Bash theme={null}
   <saml2:Attribute Name="groups" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">datafold_admin</saml2:AttributeValue><saml2:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">datafold_read_write</saml2:AttributeValue></saml2:Attribute></saml2:AttributeStatement></saml2:Assertion></saml2p:Response>
 ```
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=7754980607aca71912bd8372bd5500a4" data-og-width="1536" width="1536" data-og-height="580" height="580" data-path="images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=280&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=0cb877d6a9f30c6c6ec70faa455c783c 280w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=560&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=5b77cb7d1f4495562e6ee8878fc4ff60 560w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=840&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=52e4c47f3d047b82818692b39cd9afd2 840w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=1100&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=e00c227f7a09d308161b6b9420cb21db 1100w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=1650&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=53a08b08ee61f52f31390974cb5c63e0 1650w, https://mintcdn.com/datafold/9DgdnO4sVNte36u-/images/saml_groups_attribute-00b426150ceab3149d619b067aee26fc.png?w=2500&fit=max&auto=format&n=9DgdnO4sVNte36u-&q=85&s=4f4c1fb489b45a227cf379b42065ab2c 2500w" />
+  <img />
 </Frame>
 
 ## 4. Map IdP groups to Datafold groups
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=30af41ee0d9f1d6d35f0f5103e7df359" data-og-width="1534" width="1534" data-og-height="828" height="828" data-path="images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=aafe7736b71c01e627d381a3a92c86e5 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=95366201a0c794119c68cff9a4bf0152 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c6799569133c31debca635d36199a38e 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=2cf8a00fba05fd8832e016c6f636cd91 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9ab032dd79103de6d0d03629277a117b 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_group-f66ae2d5b9f378e444f70d1b5851dfaf.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9e9ba0246f56f34ca8ee3fdd2a891000 2500w" />
+  <img />
 </Frame>
 
 The `datafold_admin` group, created in the IdP through [step 1](#1-create-desired-groups-in-the-idp), will be automatically synced. Users in this IdP group will also be members of the corresponding group in Datafold.
@@ -9456,22 +8987,8 @@ The `datafold_admin` group, created in the IdP through [step 1](#1-create-desire
 Here's how you might configure three groups to map to the three default Datafold groups, `admin`, `default` and `viewonly`:
 
 <Frame>
-  <img src="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c2f082b931c0619c6c740eb0269f2a48" data-og-width="1934" width="1934" data-og-height="758" height="758" data-path="images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=280&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=9615a1b078a16f35ccdefadf3ef858ad 280w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=560&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=3244a994952564cdbdda2f48bb3bc5c9 560w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=840&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=c83f2424d4872e9da9b7e613a5a3b95a 840w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=1100&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b68cfadcee9109ac44efea44bec022e4 1100w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=1650&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=4efb937d6fda70251701bcb3e0960e0e 1650w, https://mintcdn.com/datafold/Q7OqZ4fuuETHBSvX/images/datafold_groups-5e7f4e7afb9d99dee113a03b8599040a.png?w=2500&fit=max&auto=format&n=Q7OqZ4fuuETHBSvX&q=85&s=b1573c190d7ce95d53bb126532c0c02e 2500w" />
+  <img />
 </Frame>
-
-
-# User Roles and Permissions
-Source: https://docs.datafold.com/security/user-roles-and-permissions
-
-Datafold uses role-based access control to manage user permissions and actions.
-
-Datafold has three default roles:
-
-| Role     | Description    | Permissions                                                                                          |
-| -------- | -------------- | ---------------------------------------------------------------------------------------------------- |
-| default  | Full user role | Create and modify monitors, create diffs, explore data and lineage                                   |
-| admin    | Administrator  | Default permissions plus the ability to manage users and configurations such as database connections |
-| viewonly | View-only role | View diffs and monitors without the ability to create or modify them                                 |
 
 
 # FAQ
@@ -9524,36 +9041,36 @@ Whether it's for [CI/CD testing](deployment-testing/how-it-works) or [data migra
 
 Data quality is a complex and multifaceted problem. Datafold’s unified platform helps embed proactive data quality testing in your workflows:
 
-<CardGroup cols={2}>
-  <Card title="Data Diffs" href="/data-diff/what-is-data-diff" horizontal>
+<CardGroup>
+  <Card title="Data Diffs" href="/data-diff/what-is-data-diff">
     Use value-level data diffs to isolate and identify changes in your data. Catch unintended modifications before they disrupt production or downstream data usage.
   </Card>
 
-  <Card title="Data Monitors" href="/data-monitoring/monitor-types" horizontal>
+  <Card title="Data Monitors" href="/data-monitoring/monitor-types">
     Create monitors for data diffs, data quality metrics, SQL metrics, SQL rules, and schema changes to send alerts when inconsistencies are detected.
   </Card>
 
-  <Card title="Datafold Migration Agent" href="/data-migration-automation" horizontal>
+  <Card title="Datafold Migration Agent" href="/data-migration-automation">
     Discover how DMA provides full-cycle migration automation with SQL code translation and cross-database validation.
   </Card>
 
-  <Card title="Data Explorer & Column-Level Lineage" href="/data-explorer/how-it-works" horizontal>
+  <Card title="Data Explorer & Column-Level Lineage" href="/data-explorer/how-it-works">
     Learn how your data assets move and change across systems with column-level lineage, metadata, and profiles, to track the impacts of changes made upstream.
   </Card>
 </CardGroup>
 
 ## Use cases
 
-<CardGroup cols={3}>
-  <Card title="CI/CD Data Testing" href="" horizontal>
+<CardGroup>
+  <Card title="CI/CD Data Testing" href="">
     Catch data quality issues early with automated testing during development and deployment.
   </Card>
 
-  <Card title="Accelerated Data Migrations" href="" horizontal>
+  <Card title="Accelerated Data Migrations" href="">
     Speed up migrations with our full-cycle migration automation solution for data teams.
   </Card>
 
-  <Card title="Data Monitoring & Observability" href="" horizontal>
+  <Card title="Data Monitoring & Observability" href="">
     Shift monitoring upstream to proactively prevent disruptions and ensure data quality.
   </Card>
 </CardGroup>
@@ -9563,19 +9080,19 @@ Data quality is a complex and multifaceted problem. Datafold’s unified platfor
 There are a few ways to get started with your first data diff:
 
 <Steps>
-  <Step title="Create a data diff" stepNumber="1">
+  <Step title="Create a data diff">
     Once you’ve integrated a [data connection](/integrations) and [code repository](/integrations/code-repositories), you can run a new [in-database](/data-diff/in-database-diffing/creating-a-new-data-diff) or [cross-database](/data-diff/cross-database-diffing/creating-a-new-data-diff) data diff or explore your [data lineage](data-explorer/lineage).
   </Step>
 </Steps>
 
 <Steps>
-  <Step title="Create automated monitors" stepNumber="2">
+  <Step title="Create automated monitors">
     Create [monitors](data-monitoring/monitor-types) to send alerts when data diffs fall outside predefined ranges.
   </Step>
 </Steps>
 
 <Steps>
-  <Step title="Set up CI/CD testing" stepNumber="3">
+  <Step title="Set up CI/CD testing">
     Get started with deployment testing through our universal ([No-Code](deployment-testing/getting-started/universal/no-code), [API](deployment-testing/getting-started/universal/api)) or [dbt](integrations/orchestrators/dbt-core) integrations.
   </Step>
 </Steps>

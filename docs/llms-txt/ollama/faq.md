@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQ
 
 ## How can I upgrade Ollama?
@@ -14,15 +18,15 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ## How can I view the logs?
 
-Review the [Troubleshooting](./troubleshooting.md) docs for more about using logs.
+Review the [Troubleshooting](./troubleshooting) docs for more about using logs.
 
 ## Is my GPU compatible with Ollama?
 
-Please refer to the [GPU docs](./gpu.md).
+Please refer to the [GPU docs](./gpu).
 
 ## How can I specify the context window size?
 
-By default, Ollama uses a context window size of 2048 tokens.
+By default, Ollama uses a context window size of 4096 tokens.
 
 This can be overridden with the `OLLAMA_CONTEXT_LENGTH` environment variable. For example, to set the default context window to 8K, use:
 
@@ -57,8 +61,12 @@ ollama ps
 ```
 
 <Info>
-  **Output**: `NAME ID SIZE PROCESSOR UNTIL llama3:70b bcfb190ca3a7 42 GB
-    100% GPU 4 minutes from now`
+  **Output**:
+
+  ```
+  NAME        ID            SIZE    PROCESSOR   UNTIL
+  llama3:70b  bcfb190ca3a7  42 GB   100% GPU    4 minutes from now
+  ```
 </Info>
 
 The `Processor` column will show which memory the model was loaded in to:

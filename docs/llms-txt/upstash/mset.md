@@ -6,64 +6,28 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mset.md
+# JSON.MSET
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
-
-# MSET
-
-> Set multiple keys in one go.
-
-For billing purposes, this counts as a single command.
+> Sets multiple JSON values at multiple paths in multiple keys.
 
 ## Arguments
 
-<ParamField body="params" type="Record<string, TValue>" required>
-  An object where the keys are the keys to set, and the values are the values to set.
+<ParamField body="key_path_value_tuples" type="List[Tuple[string, string, TValue]]" required>
+  A list of tuples where each tuple contains a key, a path, and a value.
 </ParamField>
 
 ## Response
 
-<ResponseField type="string" required>
-  "OK"
+<ResponseField type="true" required>
+  Returns true if the operation was successful.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.mset({
-      key1: 1,
-      key2: "hello",
-      key3: { a: 1, b: "hello" },
-  });
+  ```py Example theme={"system"}
+  redis.json.mset([(key, "$.path", value), (key2, "$.path2", value2)])
   ```
 </RequestExample>

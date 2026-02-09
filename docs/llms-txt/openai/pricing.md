@@ -2,11 +2,11 @@
 
 # Codex Pricing
 
-<PageHeader
-  title="Codex Pricing"
-  descriptionClass="mb-12"
-  description="Codex is included in your ChatGPT Plus, Pro, Business, Edu, or Enterprise plan."
-/>
+<DocsTip>
+  For a limited time, **try Codex for free in ChatGPT Free and Go**, or enjoy
+  **2x Codex rate limits** with Plus, Pro, Business and Enterprise
+  subscriptions.
+</DocsTip>
 
 <div class="codex-pricing-grid">
   <PricingCard
@@ -18,8 +18,8 @@
     ctaHref="https://chatgpt.com/explore/plus?utm_internal_source=openai_developers_codex"
   >
 
-    - Codex on the web, CLI, IDE Extension, and iOS
-    - Cloud-based integrations like automatic code review and Slack
+    - Codex on the web, in the CLI, in the IDE extension, and on iOS
+    - Cloud-based integrations like automatic code review and Slack integration
     - The latest models, including GPT-5.2-Codex
     - GPT-5.1-Codex-Mini for up to 4x higher usage limits for local messages
     - Flexibly extend usage with [ChatGPT credits](#credits-overview)
@@ -36,7 +36,7 @@
     highlight="Everything in Plus and:"
   >
 
-    - Priority-speed processing of requests
+    - Priority request processing
     - 6x higher usage limits for local and cloud tasks
     - 10x more cloud-based code reviews
     - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the Pro plan
@@ -71,16 +71,16 @@
     highlight="Everything in Business and:"
   >
 
-    - Priority-speed processing of requests
-    - Enterprise-level security and controls, including SCIM, EKM, user analytics, domain verification, and role-based access controls ([RBAC](https://help.openai.com/en/articles/11750701-rbac))
-    - Audit logs and usage monitoring through the [Compliance API](https://chatgpt.com/admin/api-reference#tag/Codex-Tasks)
-    - Compliant with data retention and residency controls
+    - Priority request processing
+    - Enterprise-level security and controls, including SCIM, EKM, user analytics, domain verification, and role-based access control ([RBAC](https://help.openai.com/en/articles/11750701-rbac))
+    - Audit logs and usage monitoring via the [Compliance API](https://chatgpt.com/admin/api-reference#tag/Codex-Tasks)
+    - Data retention and data residency controls
     - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the Enterprise plan
 
   </PricingCard>
 </div>
 
-<div class="mt-8 mb-32 codex-pricing-grid">
+<div class="mt-8 mb-10 codex-pricing-grid">
   <PricingCard
     class="codex-pricing-card--span-two"
     name="API Key"
@@ -88,14 +88,14 @@
     price=""
     interval=""
     ctaLabel="Learn more"
-    ctaHref="/codex/guides/api-key"
+    ctaHref="/codex/auth"
     highlight=""
   >
 
-    - Codex in the CLI, SDK, or IDE Extension
+    - Codex in the CLI, SDK, or IDE extension
     - No cloud-based features (GitHub code review, Slack, etc.)
     - Delayed access to new models like GPT-5.2-Codex
-    - Only pay for the tokens used by Codex based on [API pricing](https://platform.openai.com/docs/pricing)
+    - Pay only for the tokens Codex uses, based on [API pricing](https://platform.openai.com/docs/pricing)
 
   </PricingCard>
 </div>
@@ -104,7 +104,7 @@
 
 ### What are the usage limits for my plan?
 
-The number of Codex messages you can send varies based on the size and complexity of your coding tasks and where you run them. Small scripts or simple functions may only consume a fraction of your allowance, while larger codebases, long-running tasks, or extended sessions that require Codex to hold more context will use significantly more per message.
+The number of Codex messages you can send depends on the size and complexity of your coding tasks and whether you run them locally or in the cloud. Small scripts or simple functions may consume only a fraction of your allowance, while larger codebases, long-running tasks, or extended sessions that require Codex to hold more context will use significantly more per message.
 
 <div id="usage-limits">
 
@@ -162,11 +162,11 @@ The number of Codex messages you can send varies based on the size and complexit
 </div>
 
 <a id="shared-limits" class="footnote">
-  *The usage limit of local messages and cloud tasks is a **shared five-hour
+  *The usage limits for local messages and cloud tasks share a **five-hour
   window**. Additional weekly limits may apply.
 </a>
 
-Enterprise and Edu plans without flexible pricing include the same per-seat usage limits as Plus for most features.
+Enterprise and Edu plans without flexible pricing have the same per-seat usage limits as Plus for most features.
 
 GPT-5.1-Codex-Mini can be used for local tasks, providing up to 4x more usage.
 
@@ -188,7 +188,7 @@ You can find your current limits in the [Codex usage dashboard](https://chatgpt.
 
 Credits let you continue using Codex after you reach your included usage limits. Usage draws down from your available credits based on the models and features you use, allowing you to extend work without interruption.
 
-Credits per message vary based on the task size, complexity, and reasoning required. Rates listed in the table are average credit rates and also apply to the respective legacy GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini models. Average rates may evolve over time as new capabilities are introduced.
+Credit cost per message varies based on task size, complexity, and the reasoning required. The table shows average credit costs; these averages also apply to legacy GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and GPT-5-Codex-Mini. Average rates may evolve over time as new capabilities are introduced.
 
 <div id="credits-overview">
 
@@ -205,13 +205,13 @@ Credits per message vary based on the task size, complexity, and reasoning requi
 
 ### What counts as Code Review usage?
 
-Code Review usage only applies when Codex runs reviews through GitHub — for example, when you tag `@Codex` review in a pull request or enable automatic reviews on your repository. Reviews run locally or outside of GitHub count toward your general usage limits instead.
+Code Review usage applies only when Codex runs reviews through GitHub — for example, when you tag `@Codex` for review in a pull request or enable automatic reviews on your repository. Reviews run locally or outside of GitHub count toward your general usage limits.
 
 ### What can I do to make my usage limits last longer?
 
 The usage limits and credits above are average rates. You can try the following tips to maximize your limits:
 
-- **Control the size of your prompts.** Be precise with the instructions you give Codex but remove unnecessary context.
-- **Reduce the size of your AGENTS.md.** If you work on a larger project you can control the context you are injecting through AGENTS.md files by [nesting them within your repository](/codex/guides/agents-md#layer-project-instructions).
-- **Limit the amount of MCPs you use.** Every [MCP](/codex/mcp) you add to Codex adds more context to your messages and drains your usage limits further. Disable any MCP servers when you don’t need them.
+- **Control the size of your prompts.** Be precise with the instructions you give Codex, but remove unnecessary context.
+- **Reduce the size of your AGENTS.md.** If you work on a larger project, you can control how much context you inject through AGENTS.md files by [nesting them within your repository](https://developers.openai.com/codex/guides/agents-md#layer-project-instructions).
+- **Limit the number of MCP servers you use.** Every [MCP](https://developers.openai.com/codex/mcp) you add to Codex adds more context to your messages and uses more of your limit. Disable MCP servers when you don’t need them.
 - **Switch to GPT-5.1-Codex-Mini for simple tasks.** Using the mini model should extend your usage limits by roughly 4x.

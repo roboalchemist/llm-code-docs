@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/custom-commands-examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Slash Commands Examples
 
 > Ready-to-use examples of custom slash commands for common development workflows.

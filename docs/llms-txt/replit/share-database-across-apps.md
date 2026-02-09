@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/tutorials/share-database-across-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Share a database across multiple apps
 
 > Learn how to expose your Replit database as a REST API to share data securely across multiple apps and external services.
@@ -189,8 +193,3 @@ Only share your API key with apps you trust.
 * [Database](/cloud-services/storage-and-databases/sql-database) - Create and manage databases
 * [Connect to a database](/getting-started/quickstarts/database-connection) - Learn connection methods
 * [Production databases](/cloud-services/storage-and-databases/production-databases) - Set up production databases
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

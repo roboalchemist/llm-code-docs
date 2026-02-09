@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/sequin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sequin database triggers
 
 > This guide will show you how to trigger tasks from database changes using Sequin
@@ -38,41 +42,41 @@ Start by creating a new Trigger.dev task that takes in a Sequin change event as 
     In your `src/trigger/tasks` directory, create a new file called `create-embedding-for-post.ts` and add the following code:
 
     <CodeGroup>
-      ```ts trigger/create-embedding-for-post.ts theme={null}
+      ```ts trigger/create-embedding-for-post.ts theme={"theme":"css-variables"}
       import { task } from "@trigger.dev/sdk";
       import { OpenAI } from "openai";
       import { upsertEmbedding } from "../util";
 
       const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+        apiKey: process.env.OPENAI_API_KEY,
       });
 
       export const createEmbeddingForPost = task({
-      id: "create-embedding-for-post",
-      run: async (payload: {
-      record: {
-      id: number;
-      title: string;
-      body: string;
-      author: string;
-      createdAt: string;
-      embedding: string | null;
-      },
-      metadata: {
-      table_schema: string,
-      table_name: string,
-      consumer: {
-      id: string;
-      name: string;
-      };
-      };
-      }) => {
-      // Create an embedding using the title and body of payload.record
-      const content = `${payload.record.title}\n\n${payload.record.body}`;
-      const embedding = (await openai.embeddings.create({
-      model: "text-embedding-ada-002",
-      input: content,
-      })).data[0].embedding;
+        id: "create-embedding-for-post",
+        run: async (payload: {
+          record: {
+            id: number;
+            title: string;
+            body: string;
+            author: string;
+            createdAt: string;
+            embedding: string | null;
+          },
+          metadata: {
+            table_schema: string,
+            table_name: string,
+            consumer: {
+              id: string;
+              name: string;
+            };
+          };
+        }) => {
+          // Create an embedding using the title and body of payload.record
+          const content = `${payload.record.title}\n\n${payload.record.body}`;
+          const embedding = (await openai.embeddings.create({
+            model: "text-embedding-ada-002",
+            input: content,
+          })).data[0].embedding;
 
           // Upsert the embedding in the database. See utils.ts for the implementation -> ->
           await upsertEmbedding(embedding, payload.record.id);
@@ -83,12 +87,10 @@ Start by creating a new Trigger.dev task that takes in a Sequin change event as 
             embedding: JSON.stringify(embedding),
           };
         }
-
       });
-
       ```
 
-      ```ts utils.ts theme={null}
+      ```ts utils.ts theme={"theme":"css-variables"}
       import pg from "pg";
 
       export async function upsertEmbedding(embedding: number[], id: number) {
@@ -126,7 +128,7 @@ Start by creating a new Trigger.dev task that takes in a Sequin change event as 
   <Step title="Add the task to your Trigger.dev project">
     Register the `create-embedding-for-post` task to your Trigger.dev cloud project by running the following command:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     npx trigger.dev@latest dev
     ```
 
@@ -157,7 +159,7 @@ You'll now create an API endpoint that will receive posts from Sequin and then t
   <Step title="Create a route handler">
     Add a route handler by creating a new `route.ts` file in a `/app/api/create-embedding-for-post` directory:
 
-    ```ts app/api/create-embedding-for-post/route.ts theme={null}
+    ```ts app/api/create-embedding-for-post/route.ts theme={"theme":"css-variables"}
     import type { createEmbeddingForPost } from "@/trigger/create-embedding-for-post";
     import { tasks } from "@trigger.dev/sdk";
     import { NextResponse } from "next/server";
@@ -183,7 +185,7 @@ You'll now create an API endpoint that will receive posts from Sequin and then t
   <Step title="Set secret keys">
     You'll need to set four secret keys in a `.env.local` file:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     SEQUIN_WEBHOOK_SECRET=your-secret-key
     TRIGGER_SECRET_KEY=secret-from-trigger-dev
     OPENAI_API_KEY=sk-proj-asdfasdfasdf
@@ -218,7 +220,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
 
     3. Follow the instructions to create a publication and a replication slot by running two SQL commands in your database:
 
-    ```sql  theme={null}
+    ```sql  theme={"theme":"css-variables"}
     create publication sequin_pub for all tables;
     select pg_create_logical_replication_slot('sequin_slot', 'pgoutput');
     ```
@@ -238,7 +240,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
     1. In the Sequin console, open the **HTTP Endpoint** tab and click the **Create HTTP Endpoint** button.
     2. Enter a name for your endpoint (i.e. `local_endpoint`) and flip the **Use localhost** switch. Follow the instructions in the Sequin console to [install the Sequin CLI](https://sequinstream.com/docs/cli), then run:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     sequin tunnel --ports=3001:local_endpoint
     ```
 
@@ -286,7 +288,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
   </Step>
 
   <Step title="Create a new post in your database">
-    ```sql  theme={null}
+    ```sql  theme={"theme":"css-variables"}
     insert into
     posts (title, body, author)
     values
@@ -309,7 +311,7 @@ You'll now configure Sequin to send every row in your `posts` table to your Trig
   <Step title="Confirm the event was received by your endpoint">
     In your local terminal, you should see a `200` response in your Next.js app:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     POST /api/create-embedding-for-post 200 in 262ms
     ```
   </Step>

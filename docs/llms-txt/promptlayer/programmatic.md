@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/programmatic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Online or Programmatic Evals
 
 PromptLayer offers powerful options for configuring and running evaluation pipelines programmatically in your workflows. This is ideal for users who require the flexibility to run evaluations from code, enabling seamless integration with existing CI/CD pipelines or custom automation scripts.
@@ -424,7 +428,11 @@ Below is a complete reference of all available column types and their configurat
 
 #### PROMPT\_TEMPLATE
 
-Executes a prompt template from your Prompt Registry.
+Executes a prompt template from your Prompt Registry or an inline template defined directly in the configuration.
+
+**Option A: Registry Reference**
+
+Reference a prompt template stored in the Prompt Registry:
 
 ```json  theme={null}
 {
@@ -453,6 +461,52 @@ Executes a prompt template from your Prompt Registry.
   "report_id": 456
 }
 ```
+
+**Option B: Inline Template**
+
+Define a prompt template directly in the configuration without saving it to the registry. This is useful for quick experimentation, one-off evaluations, or iterating on prompts before committing them to the registry.
+
+```json  theme={null}
+{
+  "column_type": "PROMPT_TEMPLATE",
+  "name": "Generate Response",
+  "configuration": {
+    "inline_template": {
+      "inline": true,
+      "prompt_template": {              // Required: The template content
+        "type": "chat",
+        "messages": [
+          {
+            "role": "system",
+            "content": [{"type": "text", "text": "You are a helpful assistant."}]
+          },
+          {
+            "role": "user",
+            "content": [{"type": "text", "text": "Answer this question: {question}"}]
+          }
+        ]
+      },
+      "metadata": {                     // Optional: Model configuration
+        "model": {
+          "provider": "openai",
+          "name": "gpt-4",
+          "parameters": {"temperature": 0.7}
+        }
+      },
+      "source_prompt_name": null,       // Optional: Track which registry prompt this was derived from
+      "source_prompt_version": null     // Optional: Track the source version number
+    },
+    "prompt_template_variable_mappings": {
+      "question": "question"            // Map template variables to columns
+    }
+  },
+  "report_id": 456
+}
+```
+
+<Info>
+  You must provide exactly one of `template` (registry reference) or `inline_template` (inline content) in the configuration. They are mutually exclusive.
+</Info>
 
 #### ENDPOINT
 
@@ -1157,8 +1211,3 @@ Your code must return a dictionary with at least a `score` key (0-100):
 ```python  theme={null}
 return {"score": 85.5}
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

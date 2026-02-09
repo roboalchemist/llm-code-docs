@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/icons.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Icon Reference
 
 > Reference of all available icons
@@ -10,7 +14,7 @@ Icons may be set for custom action buttons. Here's a list of all available icons
 
 Icons can be used in [Actions](/core-concepts/actions) to provide visual cues for different operations:
 
-```javascript
+```javascript  theme={null}
 const action = {
   operation: "export-data",
   label: "Export",

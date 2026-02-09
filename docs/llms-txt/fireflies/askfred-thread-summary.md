@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/askfred-thread-summary.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AskFredThreadSummary
 
 > Lightweight schema for AskFred thread listings
@@ -66,8 +70,3 @@ query GetThreadsSummary {
     Individual messages within threads
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

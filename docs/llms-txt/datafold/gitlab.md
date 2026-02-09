@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/code-repositories/gitlab.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitLab
 
 To get the [project access token](https://docs.gitlab.com/ee/user/project/settings/project%5Faccess%5Ftokens.html), navigate to your GitLab project settings and create a new token.

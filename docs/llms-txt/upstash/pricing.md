@@ -8,69 +8,46 @@
 
 # Source: https://upstash.com/docs/realtime/overall/pricing.md
 
-# Source: https://upstash.com/docs/qstash/overall/pricing.md
-
-# Source: https://upstash.com/docs/workflow/pricing.md
-
-# Source: https://upstash.com/docs/vector/overall/pricing.md
-
-# Source: https://upstash.com/docs/search/overall/pricing.md
-
-# Source: https://upstash.com/docs/redis/overall/pricing.md
-
-# Source: https://upstash.com/docs/realtime/overall/pricing.md
-
-# Source: https://upstash.com/docs/qstash/overall/pricing.md
-
-# Source: https://upstash.com/docs/workflow/pricing.md
-
-# Source: https://upstash.com/docs/vector/overall/pricing.md
-
-# Source: https://upstash.com/docs/search/overall/pricing.md
-
-# Source: https://upstash.com/docs/redis/overall/pricing.md
-
-# Source: https://upstash.com/docs/qstash/overall/pricing.md
-
-# Source: https://upstash.com/docs/workflow/pricing.md
-
-# Source: https://upstash.com/docs/vector/overall/pricing.md
-
-# Source: https://upstash.com/docs/search/overall/pricing.md
-
-# Source: https://upstash.com/docs/redis/overall/pricing.md
-
-# Source: https://upstash.com/docs/qstash/overall/pricing.md
-
-# Source: https://upstash.com/docs/workflow/pricing.md
-
-# Source: https://upstash.com/docs/vector/overall/pricing.md
-
-# Source: https://upstash.com/docs/search/overall/pricing.md
-
-# Source: https://upstash.com/docs/redis/overall/pricing.md
-
-# Source: https://upstash.com/docs/qstash/overall/pricing.md
-
-# Source: https://upstash.com/docs/workflow/pricing.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pricing
 
-Upstash Workflow is based on QStash and uses a "pay-as-you-go" pricing model. You only incur costs when your app receives traffic, meaning there's no charge when it's not in use. Click [here](https://upstash.com/pricing/workflow) to view the pricing.
+**Upstash Realtime is designed to be extremely cost-efficient.** With minimal Redis commands per operation and smart connection management, you can build real-time features at scale without worrying about costs.
 
-A workflow run consists of several QStash messages, with the total cost determined by the number of messages used.
+Upstash Realtime is built on Redis Streams and Pub/Sub. Every operation translates to one or more Redis commands, detailed below.
 
-You can track your current message usage and associated costs in the [Overview tab of the console](https://console.upstash.com/qstash?tab=details).
+## Command Overview
 
-<Frame>
-  <img src="https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=87f8e5ad70e6b84bf131fe4d681ea33d" data-og-width="1962" width="1962" data-og-height="956" height="956" data-path="img/qstash/message_cost.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=280&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=847ec477e510538e4b832fd60f48e78b 280w, https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=560&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=90552de39d3caf419425a3b22bae650c 560w, https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=840&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=ed22633e5fe15edca00a02ec3388e46a 840w, https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=1100&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=45e43cc65aeae17a139596e0e6313eff 1100w, https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=1650&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=402d24ff3531ddcfdcf7d81261b82c96 1650w, https://mintcdn.com/upstash/P7f-vmkf9yuOavEy/img/qstash/message_cost.png?w=2500&fit=max&auto=format&n=P7f-vmkf9yuOavEy&q=85&s=b10ff096e02b745252e5229afbae3cc3 2500w" />
-</Frame>
+### Client-Side Operations
 
-For detailed pricing information based on different plans, visit our [Workflow pricing page](https://upstash.com/pricing/workflow).
+When using [`useRealtime`](/realtime/features/client-side#basic-usage) in your React components:
 
-### Message Usage per Workflow Run
+| Operation                                      | Commands                       | Count |
+| ---------------------------------------------- | ------------------------------ | ----- |
+| Initial connection                             | SUBSCRIBE, XRANGE              | 2     |
+| Reconnection every 300 seconds                 | UNSUBSCRIBE, XRANGE, SUBSCRIBE | 3     |
+| Ping to keep connection alive every 60 seconds | PUBLISH                        | 1     |
 
-* [context.run](/workflow/basics/context#context-run), [context.sleep](/workflow/basics/context#context-sleep), [context.sleepUntil](/workflow/basics/context#context-sleepuntil), or [context.waitForEvent](/workflow/basics/context#context-waitforevent) commands generate a single message.
-* The [context.call](/workflow/basics/context#context-call) command generates two messages.
-* Each step in a [parallel run](/workflow/howto/parallel-runs) costs 1 extra message.
-* If the workflow endpoint or URL in [context.call](/workflow/basics/context#context-call) returns an error or is unreachable, the workflow SDK will retry the call (up to 3 times by default). Each retry counts as a new message.
+### Server-Side Operations
+
+When using the [server-side API](/realtime/features/server-side):
+
+| Operation                                                                         | Commands              | Count |
+| --------------------------------------------------------------------------------- | --------------------- | ----- |
+| [Emit event](/realtime/features/server-side#emit-events)                          | PUBLISH, XADD         | 2     |
+| Emit with [`expireAfterSecs`](/realtime/features/history#param-expire-after-secs) | PUBLISH, XADD, EXPIRE | 3     |
+| [Read history](/realtime/features/history#server-side-history)                    | XRANGE                | 1     |
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Client-Side Usage" icon="browser" href="/realtime/features/client-side">
+    Learn how to use the useRealtime hook in React
+  </Card>
+
+  <Card title="History" icon="clock-rotate-left" href="/realtime/features/history">
+    Learn how to read event history
+  </Card>
+</CardGroup>

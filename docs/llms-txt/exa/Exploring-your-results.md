@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/walkthroughs/Exploring-your-results.md
+# Source: https://exa.ai/docs/websets/dashboard/walkthroughs/Exploring-your-results.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exploring your results 
 
@@ -13,8 +17,3 @@
 <Info>
   Evaluated Results: evaluated results are all the possible results that were analyzed by Websets - some were deemed matches, some were deemed that they did not comply with your criteria.
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

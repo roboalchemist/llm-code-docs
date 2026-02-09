@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/support/subscription/changing-plan.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changing your subscription plan
 
 > Learn how to change your Comfy Cloud subscription plan
@@ -47,8 +51,3 @@ If your current subscription plan price is lower than the target plan, you will 
 ### Downgrading to a lower-priced plan
 
 If your current subscription plan price is higher than the target plan, your subscription will switch to the new plan after the current billing cycle ends. The new subscription will be based on the new pricing plan.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

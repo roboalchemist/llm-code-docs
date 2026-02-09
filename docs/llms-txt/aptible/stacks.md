@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/architecture/stacks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stacks
 
 > Learn about using Stacks to deploy resources to various regions

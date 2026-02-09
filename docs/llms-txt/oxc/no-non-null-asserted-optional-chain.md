@@ -4,7 +4,6 @@
 url: >-
   /docs/guide/usage/linter/rules/typescript/no-non-null-asserted-optional-chain.md
 ---
-# typescript/no-non-null-asserted-optional-chain&#x20;
 
 ### What it does
 

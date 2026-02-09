@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/export-indexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export indexes
 
 Pinecone does not support an export function. It is on our roadmap for the future, however.

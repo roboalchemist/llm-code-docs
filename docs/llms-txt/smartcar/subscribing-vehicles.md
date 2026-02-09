@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/subscribing-vehicles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Subscribing Vehicles
 
 > Learn how to subscribe and unsubscribe vehicles to webhooks using auto-enrollment, the Dashboard, or the API
@@ -161,8 +165,3 @@ For programmatic control, use the subscribe and unsubscribe API endpoints.
     Ensure your endpoint passes Smartcar's verification challenge
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

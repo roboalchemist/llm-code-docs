@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/pay-as-you-go-pricings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pay-as-you-go credits explained
 
 > Prices for additional avatars (clones and influencers) and credits purchases 

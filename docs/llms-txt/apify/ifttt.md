@@ -6,7 +6,7 @@
 
 ***
 
-https://ifttt.com is a service that helps you create automated workflows called Applets. With the https://ifttt.com/apify, you can connect your Apify Actors to hundreds of services like Twitter, Gmail, Google Sheets, Slack, and more.
+[IFTTT](https://ifttt.com) is a service that helps you create automated workflows called Applets. With the [Apify integration for IFTTT](https://ifttt.com/apify), you can connect your Apify Actors to hundreds of services like Twitter, Gmail, Google Sheets, Slack, and more.
 
 This guide shows you how to integrate Apify Actors with IFTTT to build automated workflows. You'll learn how to create IFTTT Applets that can be triggered by Apify events or that can execute Apify tasks.
 
@@ -22,14 +22,14 @@ The Apify integration lets you trigger workflows when an Actor or task run finis
 
 Before using the Apify integration with IFTTT, you need:
 
-* An https://console.apify.com/
-* An https://ifttt.com/
+* An [Apify account](https://console.apify.com/)
+* An [IFTTT account](https://ifttt.com/)
 
 ## Connect Apify with IFTTT
 
 To connect your Apify account to IFTTT:
 
-1. Visit the https://ifttt.com/apify on IFTTT.
+1. Visit the [Apify service page](https://ifttt.com/apify) on IFTTT.
 2. Click the **Connect** button.
 3. When redirected to the Apify login page, sign in to your Apify account.
 
@@ -41,7 +41,7 @@ To connect your Apify account to IFTTT:
 
 To create an Applet that starts when Apify event occurs:
 
-1. Go to the https://ifttt.com/explore section on IFTTT.
+1. Go to the [Explore](https://ifttt.com/explore) section on IFTTT.
 2. Click the **Create** button.
 3. In the **If this** section, click **Add**.
 4. Search for and select **Apify** in the service list.
@@ -83,12 +83,12 @@ IFTTT displays up to 50 recent items in a dropdown. If your Actor or task isn't 
 
 1. Configure the action parameters:
 
-   | Parameter                   | Description                                                                                                                                                              | Example Values        |
-   | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- |
-   | **Wait until run finishes** | Defines how the Actor should be executed.                                                                                                                                | `yes`, `no`           |
-   | **Input overrides**         | JSON input that overrides the Actor's default input.                                                                                                                     | `{"key": "value"}`    |
-   | **Build**                   | Specifies the Actor build to run. Can be a build tag or build number. See https://docs.apify.com/platform/actors/running/runs-and-builds.md#builds for more information. | `0.2.10`, `version-0` |
-   | **Memory**                  | Memory limit for the run in megabytes. See https://docs.apify.com/platform/actors/running/usage-and-resources.md#memory for more information.                            | `256`                 |
+   | Parameter                   | Description                                                                                                                                                                        | Example Values        |
+   | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+   | **Wait until run finishes** | Defines how the Actor should be executed.                                                                                                                                          | `yes`, `no`           |
+   | **Input overrides**         | JSON input that overrides the Actor's default input.                                                                                                                               | `{"key": "value"}`    |
+   | **Build**                   | Specifies the Actor build to run. Can be a build tag or build number. See [Builds](https://docs.apify.com/platform/actors/running/runs-and-builds.md#builds) for more information. | `0.2.10`, `version-0` |
+   | **Memory**                  | Memory limit for the run in megabytes. See [Memory](https://docs.apify.com/platform/actors/running/usage-and-resources.md#memory) for more information.                            | `256`                 |
 
 2. Click **Create action** to finish setting up the action.
 
@@ -119,13 +119,13 @@ To check if your Applet is working properly:
 
 ### Queries
 
-* **Get Dataset Items**: Retrieves items from a https://docs.apify.com/platform/storage/dataset.md
+* **Get Dataset Items**: Retrieves items from a [dataset](https://docs.apify.com/platform/storage/dataset.md)
 * **Scrape Single URL**: Runs a scraper for a specified website and returns its content
-* **Get Key-Value Store Record**: Retrieves a value from a https://docs.apify.com/platform/storage/key-value-store.md
+* **Get Key-Value Store Record**: Retrieves a value from a [key-value store](https://docs.apify.com/platform/storage/key-value-store.md)
 
 ## Troubleshooting
 
 * Ensure your JSON inputs in the "Input overrides" field are valid and properly formatted.
 * If an Applet fails to trigger, check your Apify API token permissions.
 
-If you have any questions or need help, feel free to reach out to us on our https://discord.com/invite/jyEM2PRvMU.
+If you have any questions or need help, feel free to reach out to us on our [developer community on Discord](https://discord.com/invite/jyEM2PRvMU).

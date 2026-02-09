@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/using-api-and-client.md
 
-# IV - Using the Apify API & JavaScript client
+# Using the Apify API & JavaScript client
 
 **Learn how to interact with the Apify API directly through the well-documented RESTful routes, or by using the proprietary Apify JavaScript client.**
 
@@ -107,7 +107,7 @@ const withAPI = async () => {
 ```
 
 
-To add the query parameters to the URL, we could create a super long string literal, plugging in all of our input values; however, there is a much better way: https://nodejs.org/api/url.html#new-urlsearchparams. By using `URLSearchParams`, we can add the query parameters in an object:
+To add the query parameters to the URL, we could create a super long string literal, plugging in all of our input values; however, there is a much better way: [URLSearchParams](https://nodejs.org/api/url.html#new-urlsearchparams). By using `URLSearchParams`, we can add the query parameters in an object:
 
 
 ```
@@ -126,7 +126,7 @@ const withAPI = async () => {
 ```
 
 
-Finally, let's make a `POST` request to our endpoint. You can use any library you want, but in this example, we'll use https://www.npmjs.com/package/axios. Don't forget to run `npm install axios` if you're going to use this package too!
+Finally, let's make a `POST` request to our endpoint. You can use any library you want, but in this example, we'll use [axios](https://www.npmjs.com/package/axios). Don't forget to run `npm install axios` if you're going to use this package too!
 
 
 ```
@@ -266,7 +266,7 @@ await Actor.exit();
 
 **A:** The Apify client mimics the Apify API, so there aren't any super significant differences. It's super handy as it helps with managing the API calls (parsing, error handling, retries, etc) and even adds convenience functions.
 
-The one main difference is that the Apify client automatically uses https://docs.apify.com/api/client/js/docs#retries-with-exponential-backoff to deal with errors.
+The one main difference is that the Apify client automatically uses [exponential backoff](https://docs.apify.com/api/client/js/docs#retries-with-exponential-backoff) to deal with errors.
 
 **Q: How do you pass input when running an Actor or task via API?**
 

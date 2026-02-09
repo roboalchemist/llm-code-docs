@@ -19,7 +19,7 @@ proxy\_settings = {'useApifyProxy': true, 'apifyProxyGroups': \[]}
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/middlewares/apify_proxy.py#L28)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/middlewares/apify_proxy.py#L28)\_\_init\_\_
 
 * ****\_\_init\_\_**(proxy\_settings): None
 
@@ -35,7 +35,7 @@ proxy\_settings = {'useApifyProxy': true, 'apifyProxyGroups': \[]}
 
   #### Returns None
 
-### [**](#from_crawler)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/middlewares/apify_proxy.py#L39)from\_crawler
+### [**](#from_crawler)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/middlewares/apify_proxy.py#L39)from\_crawler
 
 * ****from\_crawler**(crawler): [ApifyHttpProxyMiddleware](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyHttpProxyMiddleware.md)
 
@@ -51,7 +51,7 @@ proxy\_settings = {'useApifyProxy': true, 'apifyProxyGroups': \[]}
 
   #### Returns [ApifyHttpProxyMiddleware](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyHttpProxyMiddleware.md)
 
-### [**](#process_exception)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/middlewares/apify_proxy.py#L89)process\_exception
+### [**](#process_exception)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/middlewares/apify_proxy.py#L89)process\_exception
 
 * ****process\_exception**(request, exception, spider): None
 
@@ -75,7 +75,7 @@ proxy\_settings = {'useApifyProxy': true, 'apifyProxyGroups': \[]}
 
   #### Returns None
 
-### [**](#process_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/middlewares/apify_proxy.py#L67)process\_request
+### [**](#process_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/middlewares/apify_proxy.py#L67)process\_request
 
 * **async **process\_request**(request, spider): None
 

@@ -58,5 +58,5 @@ Some fields have a different color code. To understand the types of fields, read
 - `Removed` are deleted documents, either by the application, or the document replica has been moved to another node
 - `Documentmetastore` is the document ID mapping - see [attributes](../content/attributes.html#document-meta-store)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

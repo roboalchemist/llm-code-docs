@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with SMTP
 
 > Learn how to integrate Resend via SMTP.
@@ -39,7 +43,7 @@ Ports help to instruct the type of security you want to use in your SMTP connect
 
 Idempotency keys are used to prevent duplicate emails. You can add the `Resend-Idempotency-Key` header to your emails sent with SMTP to prevent duplicate emails.
 
-```yaml SMTP {4} theme={null}
+```yaml SMTP {4} theme={"theme":{"light":"github-light","dark":"vesper"}}
 From: Acme <onboarding@resend.dev>
 To: delivered@resend.dev
 Subject: hello world

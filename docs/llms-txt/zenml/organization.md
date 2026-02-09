@@ -2,17 +2,11 @@
 
 # Organizations
 
-ZenML Pro arranges various aspects of your work experience around the concept\
-of an **Organization**. This is the top-most level structure within the ZenML Cloud environment.\
-Generally, an organization contains a group of users and one or more [workspaces](https://docs.zenml.io/pro/core-concepts/workspaces).
+ZenML Pro arranges various aspects of your work experience around the concept of an **Organization**. This is the top-most level structure within the ZenML Cloud environment. Generally, an organization contains a group of users and one or more [workspaces](https://docs.zenml.io/pro/core-concepts/workspaces).
 
 ## Inviting Team Members to Your Organization
 
-Inviting users to your organization to work on the organization's workspaces is\
-easy. Simply click `Add Member` in the Organization settings, and give them an\
-initial Role. The user will be sent an invitation email. If a user is part of an\
-organization, they can utilize their login on all workspaces they have authority to\
-access.
+Inviting users to your organization to work on the organization's workspaces is easy. Simply click `Add Member` in the Organization settings, and give them an initial Role. The user will be sent an invitation email. If a user is part of an organization, they can utilize their login on all workspaces they have authority to access.
 
 ![Image showing invite flow](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-13a081483e5b51dfa6295b1d8886cbf789a6583b%2Fadd_org_members.png?alt=media)
 

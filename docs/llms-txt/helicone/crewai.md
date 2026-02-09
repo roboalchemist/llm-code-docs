@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/crewai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Crew AI Integration
 
 > Integrate Helicone with Crew AI, a multi-agent framework supporting multiple LLM providers. Monitor AI-driven tasks and agent interactions across providers.

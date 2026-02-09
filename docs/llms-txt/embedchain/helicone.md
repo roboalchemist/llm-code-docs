@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/integration/helicone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🧊 Helicone
 
 > Implement Helicone, the open-source LLM observability platform, with Embedchain. Monitor, debug, and optimize your AI applications effortlessly.
@@ -24,7 +28,7 @@ To use Helicone, you need to do the following steps.
     You can configure your base\_url and OpenAI API key in your codebase
 
     <CodeGroup>
-      ```python main.py
+      ```python main.py theme={null}
       import os
       from embedchain import App
 
@@ -45,7 +49,7 @@ To use Helicone, you need to do the following steps.
   </Step>
 
   <Step title="Now you can see all passing requests through Embedchain in Helicone">
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/embedchain/images/helicone-embedchain.png" alt="Embedchain requests" />
+    <img src="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=3455738c4278b838b11f36648ad33be4" alt="Embedchain requests" data-og-width="3024" width="3024" data-og-height="1538" height="1538" data-path="images/helicone-embedchain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=280&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=c4565530813ffda0d501f9b81e3356a4 280w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=560&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=628666c3e6a3aa1d444aaeb1bd990190 560w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=840&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=9d14eb377a4dd3c7d249695c901e6e72 840w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=1100&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=885a6e26b9e78186d360619e3bb86a8f 1100w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=1650&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=f9e5c35a8f38cde1ee1c08fd4694bd30 1650w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/helicone-embedchain.png?w=2500&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=5ebe76bd1b5ab86e2fd8d15c2a5c1258 2500w" />
   </Step>
 </Steps>
 

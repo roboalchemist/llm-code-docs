@@ -2,99 +2,63 @@
 
 # Source: https://upstash.com/docs/qstash/integrations/resend.md
 
-# Source: https://upstash.com/docs/workflow/integrations/resend.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/qstash/integrations/resend.md
+# Email - Resend
 
-# Source: https://upstash.com/docs/workflow/integrations/resend.md
+The `qstash-js` SDK offers an integration to easily send emails using [Resend](https://resend.com/), streamlining email delivery in your applications.
 
-# Source: https://upstash.com/docs/qstash/integrations/resend.md
+## Basic Email Sending
 
-# Source: https://upstash.com/docs/workflow/integrations/resend.md
+To send a single email, use the `publishJSON` method with the `resend` provider. Ensure your `QSTASH_TOKEN` and `RESEND_TOKEN` are set for authentication.
 
-# Source: https://upstash.com/docs/qstash/integrations/resend.md
+```typescript  theme={"system"}
+import { Client, resend } from "@upstash/qstash";
+const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-# Source: https://upstash.com/docs/workflow/integrations/resend.md
-
-# Source: https://upstash.com/docs/qstash/integrations/resend.md
-
-# Source: https://upstash.com/docs/workflow/integrations/resend.md
-
-# Resend
-
-The standard way to call a third-party endpoint in your workflow is by using [`context.call`](/workflow/basics/context#context-call).
-
-However, if you need to call the Resend endpoint to send emails ([`/emails`](https://resend.com/docs/api-reference/emails/send-email) or [`/emails/batch`](https://resend.com/docs/api-reference/emails/send-batch-emails)), you can leverage the type-safe method `context.api.resend.call` method:
-
-<Note>
-  `context.api.resend.call` is not yet available in
-  [workflow-py](https://github.com/upstash/workflow-py). You can use `context.call` instead to work with Resend. See our
-  [Roadmap](/workflow/roadmap) for feature parity plans and
-  [Changelog](/workflow/changelog) for updates.
-</Note>
-
-<CodeGroup>
-  ```typescript Single Email theme={"system"}
-  const { status, body } = await context.api.resend.call(
-    "Call Resend",
-    {
-      token: "<RESEND_API_KEY>",
-      body: {
-        from: "Acme <onboarding@resend.dev>",
-        to: ["delivered@resend.dev"],
-        subject: "Hello World",
-        html: "<p>It works!</p>",
-      },
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  );
-  ```
-
-  ```typescript Batch Email {4} theme={"system"}
-  const { status, body } = await context.api.resend.call(
-    "Call Resend",
-    {
-      batch: true,
-      token: "<RESEND_API_KEY>",
-      body: [
-        {
-          from: "Acme <onboarding@resend.dev>",
-          to: ["delivered@resend.dev"],
-          subject: "Hello World",
-          html: "<p>It works!</p>",
-        },
-        {
-          from: "Acme <onboarding@resend.dev>",
-          to: ["delivered@resend.dev"],
-          subject: "Hello World",
-          html: "<p>It works!</p>",
-        },
-      ],
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  );
-  ```
-</CodeGroup>
-
-The SDK provides predefined types for the body field in both the request parameters and the response, simplifying common use cases. If you need to customize these types, you can override them as shown below:
-
-```ts  theme={"system"}
-type IsBatch = true; // Set to either true or false
-type ResponseBodyType = { ... }; // Define your response body type
-type RequestBodyType = { ... };  // Define your request body type
-
-const { status, body } = await context.api.resend.call<
-  IsBatch,
-  ResponseBodyType,
-  RequestBodyType
->(
-  "Call Resend",
-  {
-    ...
-  }
-);
+await client.publishJSON({
+  api: {
+    name: "email",
+    provider: resend({ token: "<RESEND_TOKEN>" }),
+  },
+  body: {
+    from: "Acme <onboarding@resend.dev>",
+    to: ["delivered@resend.dev"],
+    subject: "Hello World",
+    html: "<p>It works!</p>",
+  },
+});
 ```
+
+In the `body` field, specify any parameters supported by [the Resend Send Email API](https://resend.com/docs/api-reference/emails/send-email), such as `from`, `to`, `subject`, and `html`.
+
+## Sending Batch Emails
+
+To send multiple emails at once, use Resend’s [Batch Email API](https://resend.com/docs/api-reference/emails/send-batch-emails). Set the `batch` option to `true` to enable batch sending. Each email configuration is defined as an object within the `body` array.
+
+```typescript  theme={"system"}
+await client.publishJSON({
+  api: {
+    name: "email",
+    provider: resend({ token: "<RESEND_TOKEN>", batch: true }),
+  },
+  body: [
+    {
+      from: "Acme <onboarding@resend.dev>",
+      to: ["foo@gmail.com"],
+      subject: "Hello World",
+      html: "<h1>It works!</h1>",
+    },
+    {
+      from: "Acme <onboarding@resend.dev>",
+      to: ["bar@outlook.com"],
+      subject: "World Hello",
+      html: "<p>It works!</p>",
+    },
+  ],
+});
+```
+
+Each entry in the `body` array represents an individual email, allowing customization of `from`, `to`, `subject`, `html`, and any other Resend-supported fields.

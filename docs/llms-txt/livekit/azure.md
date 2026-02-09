@@ -8,31 +8,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/integrations/azure.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/integrations/azure.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/integrations/azure.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
-
-LiveKit docs › Partner spotlight › Azure › Azure AI Speech STT Plugin
+LiveKit docs › Models › STT › Plugins › Azure
 
 ---
 
@@ -57,7 +33,7 @@ This section provides a brief overview of the Azure Speech STT plugin. For more 
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[azure]~=1.2"
+uv add "livekit-agents[azure]~=1.3"
 
 ```
 
@@ -128,7 +104,7 @@ The following resources provide more information about using Azure Speech with L
 
 ---
 
-This document was rendered at 2025-11-18T23:55:07.191Z.
+This document was rendered at 2026-02-03T03:25:02.972Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/azure.md](https://docs.livekit.io/agents/models/stt/plugins/azure.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

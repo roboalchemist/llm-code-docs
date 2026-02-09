@@ -4,7 +4,7 @@
 
 Build marketing assets for Capital.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 This guide shows how to build marketing assets for Capital that educate your users and promote the Capital program. Learn how to co-brand your product with Stripe and develop content that adheres to [regulatory requirements](https://docs.stripe.com/capital/regulatory-compliance.md) applicable to Capital.
 
@@ -331,7 +331,7 @@ Follow this format for partnership logos:
 - Place your logo on the left with the Stripe logo on the right.
 - Join the two logos with a `|` symbol or `+` symbol.
 - Make both logos the same size. Don’t make one larger or smaller than the other.
-- Use the [downloadable Stripe logo kit](https://brandfolder.com/s/h3jbwkqfhbv9s9k4b9qpt3x). Don’t use the badge or Connect button.
+- Use the [downloadable Stripe logo kit](https://stripe.com/newsroom/information#:~:text=The%20Stripe%20Logo). Don’t use the badge or Connect button.
 
 ### Main message 
 
@@ -467,22 +467,19 @@ Evergreen content like landing pages and blog posts can be a great way to excite
 
 #### Landing page URL and site navigation 
 
-Here are a few templates for landing page URL options and site navigation categories. You can also use the name of your program such as “[Platform name] Capital” as the navigation category.
+Here are a few examples for landing page URL options and site navigation categories. You can also use the name of your program such as “[Platform name] Capital” as the navigation category.
 
 - `/capital`
 - `/financing`
 - `/business-financing`
-![Lightspeed's website featuring the Capital category name in the product navigation](https://b.stripecdn.com/docs-statics-srv/assets/capital-marketing-mockup.d208c97734e52710ffabc629962980eb.png)
-
-An example Lightspeed’s website that features the Capital category name in the product navigation
 
 ### Blog-post content 
 
 We understand that blog posts are a common tool to increase your own company’s organic growth, so you might decide to promote Stripe Capital through such content. Because blog posts are not space constrained, you have some additional things to consider when creating this type of marketing content:
 
 - Comparisons: Due to the additional regulatory complexity of comparing Stripe Capital against other competitors or different loan products, you may not directly compare Stripe Capital against any competitors’ offerings.
-- Testimonials: Writing about your customers experiences in a blog post related to Stripe Capital falls under “testimonials” rules. These requirements are found [here](https://docs.stripe.com/capital/regulatory-compliance.md#testimonials).
-- Substantiating Claims: Blog posts sometimes make large claims about overall successes, such as “Stripe Capital helps our users double their output.” Make sure that you have accurate and verifiable data for any quantifiable claims. You must validate these claims and provide supporting evidence upon request. Every claim must be substantiated and readily available for the duration the content is active, and for up to five years following its last use.
+- Testimonials: Writing about your customer’s experiences in a blog post related to Stripe Capital falls under “testimonials” rules and must adhere to specific [requirements](https://docs.stripe.com/capital/regulatory-compliance.md#testimonials).
+- Substantiating claims: Blog posts sometimes make large claims about overall successes, such as “Stripe Capital helps our users double their output.” Make sure that you have accurate and verifiable data for any quantifiable claims. You must validate these claims and provide supporting evidence upon request. Every claim must be substantiated and readily available for the duration the content is active, and for up to five years following its last use.
 
 ### Social posts 
 
@@ -510,7 +507,7 @@ Image guidelines: See the X [creative specs](https://business.x.com/en/help/camp
 
 ### Press releases 
 
-You can use press releases as a way to attract new customers or develop a larger story about your company’s investment in embedded finance. We’re happy to help you develop the right story and support its release. If you’re interested in doing a press release, reach out to [capital-review@stripe.com](mailto:capital-review@stripe.com).
+You can use press releases as a way to attract new customers or develop a larger story about your company’s investment in embedded finance. We’re happy to help you develop the right story and support its release. If you’re interested in doing a press release, submit a draft using the [Change Request Form](https://form.asana.com/?k=8K51UWmWhttehNFD5qBLdg&d=974470123217835).
 
 ## See also
 

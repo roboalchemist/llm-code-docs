@@ -18,7 +18,7 @@ The RPC API enables you to query future maintenance windows for a specific valid
 
 | Method | Purpose | Parameters |
 |--------|---------|------------|
-| [`EXPERIMENTAL_maintenance_windows`](#maintenance-windows) | Get validator maintenance windows | `account_id` |
+| [`maintenance_windows`](#maintenance-windows) | Get validator maintenance windows | `account_id` |
 
 ---
 
@@ -31,7 +31,7 @@ The RPC API enables you to query future maintenance windows for a specific valid
     If the provided account is not a validator, then it will return the range
     from now to the end of the epoch.
 
-    - **method**: `EXPERIMENTAL_maintenance_windows`
+    - **method**: `maintenance_windows`
     - **params**:
       - `account_id`: The validator account ID to query
   </SplitLayoutLeft>
@@ -42,7 +42,7 @@ The RPC API enables you to query future maintenance windows for a specific valid
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "EXPERIMENTAL_maintenance_windows",
+          "method": "maintenance_windows",
           "params": {
             "account_id": "node0"
           }
@@ -54,7 +54,7 @@ The RPC API enables you to query future maintenance windows for a specific valid
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=EXPERIMENTAL_maintenance_windows \
+          method=maintenance_windows \
           params:='{
             "account_id": "node0"
           }'

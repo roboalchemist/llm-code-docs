@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/telephony/daily-pstn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily PSTN
 
 > Complete guide to Daily's PSTN capabilities including dial-in, dial-out, and call transfers
@@ -141,7 +145,6 @@ async def bot(runner_args: RunnerArguments):
             dialin_settings=daily_dialin_settings,
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         )
     )
 
@@ -253,7 +256,6 @@ async def bot(args: RunnerArguments):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -361,8 +363,3 @@ For self-hosted production deployment, ensure your servers are:
 * Explore the [complete examples](https://github.com/pipecat-ai/pipecat/tree/main/examples) for full implementations
 * Learn about [Daily's SIP integration](./twilio-daily-sip) for more advanced telephony scenarios
 * Check out [Daily's REST API documentation](https://docs.daily.co/reference) for additional configuration options
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

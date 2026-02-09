@@ -4,7 +4,7 @@
 
 When logged in on your own machine, agents like Cursor and Claude Code can run CLI commands like `npx convex env list` that use your logged-in credentials run commands against your personal dev environment as if you ran the commands yourself. This works well when you're collaborating with an agent; just like when the agent runs `git commit -am "Fix."`, the commit will use your local git credentials.
 
-But when cloud-based coding agents like Jules, Devin, Codex, or Cursor background agents run Convex CLI commands, they can't log in. And if you do log in for them, the agent will use your default dev deployment to develop, conflicting with your own changes!
+But when cloud-based coding agents like Jules, Devin, Codex, or Cursor Cloud Agents run Convex CLI commands, they can't log in. And if you do log in for them, the agent will use your default dev deployment to develop, conflicting with your own changes!
 
 Instead, set `CONVEX_AGENT_MODE=anonymous` in this environment, causing the agent to use [anonymous development](/cli/local-deployments.md) to run a separate Convex backend on the VM where the agent is working.
 

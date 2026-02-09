@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/intro/mcp-server.md
 
-# Source: https://docs.livekit.io/home/get-started/mcp-server.md
-
-LiveKit docs › Get Started › LiveKit Docs MCP Server
+LiveKit docs › Get Started › Docs MCP server
 
 ---
 
@@ -20,6 +18,15 @@ The server is available at the following URL:
 https://docs.livekit.io/mcp
 
 ```
+
+### Features
+
+The LiveKit Docs MCP server provides the following capabilities:
+
+- **Documentation browsing and search** - Access and search the entire LiveKit documentation site
+- **GitHub code search** - Full code search across all public repositories in the [livekit](https://github.com/livekit) and [livekit-examples](https://github.com/livekit-examples) organizations
+- **Changelog access** - Pull changelogs for any LiveKit package or SDK repository
+- **Python examples** - Browse and access many examples that use the Python Agents SDK
 
 ## Installation
 
@@ -101,7 +108,7 @@ LiveKit Agents is a fast-evolving project, and the documentation is updated freq
 
 Each page on the LiveKit docs site is available in Markdown format, optimized for pasting into AI assistants when MCP is unavailable.
 
-To access the Markdown version of any page on the site, append `.md` to the end of the URL. For example, this page is available at [https://docs.livekit.io/home/get-started/mcp-server.md](https://docs.livekit.io/home/get-started/mcp-server.md). You can also use the "Copy page" button on the top right of any docs page.
+To access the Markdown version of any page on the site, append `.md` to the end of the URL. For example, this page is available at [https://docs.livekit.io/intro/mcp-server.md](https://docs.livekit.io/intro/mcp-server.md). You can also use the "Copy page" button on the top right of any docs page.
 
 ### LLMs.txt
 
@@ -111,7 +118,7 @@ For more about how to use LLMs.txt files, see [llmstxt.org](https://llmstxt.org/
 
 ---
 
-This document was rendered at 2025-11-18T23:54:49.819Z.
-For the latest version of this document, see [https://docs.livekit.io/home/get-started/mcp-server.md](https://docs.livekit.io/home/get-started/mcp-server.md).
+This document was rendered at 2026-02-03T03:24:51.108Z.
+For the latest version of this document, see [https://docs.livekit.io/intro/mcp-server.md](https://docs.livekit.io/intro/mcp-server.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

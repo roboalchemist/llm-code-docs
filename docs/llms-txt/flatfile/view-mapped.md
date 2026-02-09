@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/view-mapped.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # View Mapped Data Plugin
 
 > Automatically hides unmapped columns after the mapping stage to provide a cleaner data review experience
@@ -12,7 +16,7 @@ The primary use case is to simplify the "Review" stage of an import by showing o
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-view-mapped
 ```
 
@@ -33,7 +37,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
 ## Usage Examples
 
 <CodeGroup>
-  ```javascript Basic Usage
+  ```javascript Basic Usage theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -42,7 +46,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
   }
   ```
 
-  ```typescript Basic Usage
+  ```typescript Basic Usage theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -53,7 +57,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
 </CodeGroup>
 
 <CodeGroup>
-  ```javascript With Configuration
+  ```javascript With Configuration theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -64,7 +68,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
   }
   ```
 
-  ```typescript With Configuration
+  ```typescript With Configuration theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -77,7 +81,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
 </CodeGroup>
 
 <CodeGroup>
-  ```javascript Complete Example
+  ```javascript Complete Example theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -92,7 +96,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
   }
   ```
 
-  ```typescript Complete Example
+  ```typescript Complete Example theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { viewMappedPlugin } from '@flatfile/plugin-view-mapped'
 
@@ -114,7 +118,7 @@ By default, the plugin will hide all unmapped fields, including those that are r
 
 The plugin includes built-in error handling. If an issue occurs while updating the sheet view, the job will fail and log the error to the console:
 
-```javascript
+```javascript  theme={null}
 try {
   // The plugin's internal job handler logic runs here
 } catch (error) {

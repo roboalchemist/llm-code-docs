@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/faq/data-storage-and-security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Storage and Security
 
 <Accordion title="What data does Datafold ingest and store?">

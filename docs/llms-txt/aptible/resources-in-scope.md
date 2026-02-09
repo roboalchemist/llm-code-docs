@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-compliance-dashboard/resources-in-scope.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resources in Scope
 
 Aptible considers any containerized apps, databases, and their associated endpoints across different Aptible environments hosted on your Shared and Dedicated Stacks and users with access to these workloads. Aptible tests each resource for various security controls Aptible has identified as per our [division of responsibilities](https://www.aptible.com/secured-by-aptible).

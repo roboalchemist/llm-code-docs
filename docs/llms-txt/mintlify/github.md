@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/deploy/github.md
+# Source: https://www.mintlify.com/docs/deploy/github.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GitHub
 
@@ -6,7 +10,37 @@
 
 Mintlify uses a GitHub App to automatically sync your documentation with your GitHub repository.
 
-## Installing the GitHub App
+<Tip>
+  **Do you need the GitHub App?**
+
+  * **Mintlify-hosted repository** in the `mintlify-community` organization: No. The GitHub App is already configured.
+  * **Your own repository**: Yes. Install the GitHub App to enable automatic deployments when you push changes.
+
+  See your repository in the [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) page of your dashboard.
+</Tip>
+
+If your repository is in a private repository owned by the Mintlify organization, the GitHub App is automatically configured and managed by Mintlify. You can use the web editor to make changes to your documentation. If you want to work on your documentation locally, clone the repository to your own organization and update your Git settings to use your own repository.
+
+## Clone to your own repository
+
+If you skipped connecting your own Git repository during onboarding, your documentation lives in a private repository owned by the Mintlify organization. To move it to your own account or organization:
+
+1. Go to [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) in your dashboard.
+2. Click **Clone as Private** or **Clone as Public**. Public repos allow anyone to view your documentation source and submit issues or suggestions. Private repos restrict access to your team.
+3. Install the GitHub App by following the steps in [Install the GitHub App](#install-the-github-app) below.
+
+### Alternative: Download and create your own repository
+
+If you want a private repository without granting elevated OAuth permissions, you can manually transfer your documentation:
+
+1. Go to [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) in your dashboard.
+2. Download your documentation as a zip file.
+3. Create a new repository on GitHub or GitLab.
+4. Extract the zip contents and push them to your new repository.
+5. Return to [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) and connect your new repository to Mintlify.
+6. Install the GitHub App by following the steps in [Install the GitHub App](#install-the-github-app) below.
+
+## Install the GitHub App
 
 <Note>
   You must have organization ownership or administrator permissions in a repository to install the app. If you lack the necessary permissions, the repository owner must approve the installation request.
@@ -15,7 +49,7 @@ Mintlify uses a GitHub App to automatically sync your documentation with your Gi
 Install the Mintlify GitHub App through your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
 
 <Tip>
-  We recommend granting access only to the repository where your docs are hosted.
+  We recommend only granting access to your documentation repository.
 </Tip>
 
 <Frame>
@@ -24,7 +58,7 @@ Install the Mintlify GitHub App through your [dashboard](https://dashboard.mintl
 
 ## Permissions
 
-When you install the GitHub app, you will be prompted to grant the following permissions:
+When you install the GitHub App, grant the following permissions.
 
 Read permissions:
 
@@ -41,13 +75,13 @@ Read and write permissions:
   The app only accesses repositories that you explicitly grant it access to. If you have branch protection rules enabled, the app can't push directly to protected branches.
 </Info>
 
-## Managing repository access
+## Manage repository access
 
-When installing our GitHub App, you can grant access to all of your repositories or specific ones. We recommend only granting access to the repositories where your documentation is located. You can modify this selection anytime in your [GitHub app settings](https://github.com/apps/mintlify/installations/new).
+When installing the GitHub App, you can grant access to all of your repositories or specific ones. We recommend only granting access to your documentation repository and any repositories that you want to provide as context for the agent. You can modify this selection anytime in your [GitHub App settings](https://github.com/apps/mintlify/installations/new).
 
-## Configuring docs source
+## Configure docs source
 
-Change the organization, repository, or branch that your documentation is built from in the [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) section of your dashboard.
+Change the organization, repository, or branch that your documentation builds from in the [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings) section of your dashboard.
 
 ## GitHub Enterprise with IP allowlists
 
@@ -57,7 +91,27 @@ Follow [GitHub's documentation](https://docs.github.com/en/enterprise-cloud@late
 
 ## Troubleshooting
 
-### GitHub app connection issues
+### Deployment not triggering automatically
+
+If pushes to your repository don't trigger deployments, check the following possible problems.
+
+<AccordionGroup>
+  <Accordion title="Verify GitHub App installation">
+    Check that the correct repository has the app installed.
+
+    1. Go to [GitHub App settings](https://dashboard.mintlify.com/settings/organization/github-app) in your dashboard.
+    2. Check that your repository is on the active app installations list.
+  </Accordion>
+
+  <Accordion title="Check deployment branch">
+    Ensure that you're pushing to the correct branch.
+
+    1. Go to [Git Settings](https://dashboard.mintlify.com/settings/deployment/git-settings)
+    2. Verify the branch in your dashboard matches the branch that you're pushing to.
+  </Accordion>
+</AccordionGroup>
+
+### GitHub App connection issues
 
 If you encounter problems with the GitHub app, resetting the connection can solve most problems.
 
@@ -83,7 +137,7 @@ If you cannot enable the edit suggestions or raise issues options in your dashbo
   </Step>
 
   <Step title="Revalidate your settings">
-    Click the green check mark in the corner of the Git settings box to revalidate your repository settings. This will force update your repository settings to reflect whether your repository is public or private.
+    Click the green check mark in the corner of the Git settings box to revalidate your repository settings. This forces an update to your repository settings to reflect whether your repository is public or private.
 
     <Frame>
       <img src="https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=b3c7c421876bb4a2921ece22fc4b4777" alt="The Git Settings page in the Mintlify dashboard. An orange arrow points to the green check mark that revalidates the repository settings." className="block dark:hidden" data-og-width="1996" width="1996" data-og-height="1168" height="1168" data-path="images/github/revalidate-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=280&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=5788d2b87586e6ae6b96b25a27c6d00f 280w, https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=560&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=e872c3b592d441835267a344b0024a17 560w, https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=840&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=cd4b7c7445b9b080a00687d341f4819c 840w, https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=1100&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=0707fcbc7f54ce1f4655ea14de94b001 1100w, https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=1650&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=e08810b8c1987134bb191385722f77e4 1650w, https://mintcdn.com/mintlify/0GhkFxoI6iPIzBkf/images/github/revalidate-settings-light.png?w=2500&fit=max&auto=format&n=0GhkFxoI6iPIzBkf&q=85&s=12ba6216beb5594c78bfafa9fb8c36d2 2500w" />

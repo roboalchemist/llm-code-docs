@@ -16,41 +16,9 @@
 
 # Source: https://dub.co/docs/api-reference/introduction.md
 
-# Source: https://dub.co/docs/sdks/client-side/introduction.md
-
-# Source: https://dub.co/docs/sdks/client-side-mobile/introduction.md
-
-# Source: https://dub.co/docs/introduction.md
-
-# Source: https://dub.co/docs/conversions/sales/introduction.md
-
-# Source: https://dub.co/docs/conversions/leads/introduction.md
-
-# Source: https://dub.co/docs/concepts/webhooks/introduction.md
-
-# Source: https://dub.co/docs/concepts/links/introduction.md
-
-# Source: https://dub.co/docs/concepts/analytics/introduction.md
-
-# Source: https://dub.co/docs/api-reference/introduction.md
-
-# Source: https://dub.co/docs/sdks/client-side/introduction.md
-
-# Source: https://dub.co/docs/sdks/client-side-mobile/introduction.md
-
-# Source: https://dub.co/docs/introduction.md
-
-# Source: https://dub.co/docs/conversions/sales/introduction.md
-
-# Source: https://dub.co/docs/conversions/leads/introduction.md
-
-# Source: https://dub.co/docs/concepts/webhooks/introduction.md
-
-# Source: https://dub.co/docs/concepts/links/introduction.md
-
-# Source: https://dub.co/docs/concepts/analytics/introduction.md
-
-# Source: https://dub.co/docs/api-reference/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introduction
 

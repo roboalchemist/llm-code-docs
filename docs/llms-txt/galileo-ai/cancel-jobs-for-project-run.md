@@ -1,97 +1,82 @@
 # Source: https://docs.galileo.ai/api-reference/evaluate/cancel-jobs-for-project-run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cancel Jobs For Project Run
 
 > Get all jobs for a project and run.
 
 Revoke them from Celery.
 
+
+
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json put /v1/projects/{project_id}/runs/{run_id}/cancel-jobs
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json put /v1/projects/{project_id}/runs/{run_id}/cancel-jobs
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/projects/{project_id}/runs/{run_id}/cancel-jobs
-  method: put
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            Galileo-API-Key:
-              type: apiKey
-          cookie: {}
-      - title: OAuth2PasswordBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: oauth2
-          cookie: {}
-      - title: HTTPBasic
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path:
-        project_id:
+  /v1/projects/{project_id}/runs/{run_id}/cancel-jobs:
+    put:
+      tags:
+        - evaluate
+      summary: Cancel Jobs For Project Run
+      description: |-
+        Get all jobs for a project and run.
+
+        Revoke them from Celery.
+      operationId: >-
+        cancel_jobs_for_project_run_v1_projects__project_id__runs__run_id__cancel_jobs_put
+      parameters:
+        - name: project_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Project Id
-              format: uuid4
-        run_id:
+            type: string
+            format: uuid4
+            title: Project Id
+        - name: run_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Run Id
-              format: uuid4
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            format: uuid4
+            title: Run Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
+        - OAuth2PasswordBearer: []
+        - HTTPBasic: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -113,5 +98,19 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: Galileo-API-Key
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://api.staging.galileo.ai/login
+    HTTPBasic:
+      type: http
+      scheme: basic
 
 ````

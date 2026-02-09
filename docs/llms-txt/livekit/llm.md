@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/agents/models/llm.md
 
-LiveKit docs › Models › Large language models (LLM) › Overview
+LiveKit docs › Models › LLM › Overview
 
 ---
 
-# Large language models (LLM)
+# Large language models (LLM) overview
 
 > Conversational intelligence for your voice agents.
 
@@ -14,7 +14,7 @@ The core reasoning, response, and orchestration of your voice agent is powered b
 
 You can choose a model served through LiveKit Inference, which is included in LiveKit Cloud, or you can use a plugin to connect directly to a wider range of model providers with your own account.
 
-## LiveKit Inference
+### LiveKit Inference
 
 The following models are available in [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference). Refer to the guide for each model for more details on additional configuration options.
 
@@ -28,19 +28,54 @@ The following models are available in [LiveKit Inference](https://docs.livekit.i
 |   | GPT-5 | Azure, OpenAI |
 |   | GPT-5 mini | Azure, OpenAI |
 |   | GPT-5 nano | Azure, OpenAI |
+|   | GPT-5.1 | Azure, OpenAI |
+|   | GPT-5.1 Chat Latest | Azure, OpenAI |
+|   | GPT-5.2 | Azure, OpenAI |
+|   | GPT-5.2 Chat Latest | Azure, OpenAI |
 |   | GPT OSS 120B | Baseten, Groq, Cerebras |
-| Gemini | Gemini 2.5 Pro | Google |
+| Gemini | Gemini 3 Pro | Google |
+|   | Gemini 3 Flash | Google |
+|   | Gemini 2.5 Pro | Google |
 |   | Gemini 2.5 Flash | Google |
 |   | Gemini 2.5 Flash Lite | Google |
 |   | Gemini 2.0 Flash | Google |
 |   | Gemini 2.0 Flash Lite | Google |
-| Qwen | Qwen3 235B A22B Instruct | Baseten |
 | Kimi | Kimi K2 Instruct | Baseten |
 | DeepSeek | DeepSeek V3 | Baseten |
+|   | DeepSeek V3.2 | Baseten |
+
+### Plugins
+
+The LiveKit Agents framework also includes a variety of open source [plugins](https://docs.livekit.io/agents/models.md#plugins) for a wide range of LLM providers. Plugins are especially useful if you need custom or fine-tuned models. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
+
+| Provider | Python | Node.js |
+| -------- | ------ | ------- |
+| [Amazon Bedrock](https://docs.livekit.io/agents/models/llm/plugins/aws.md) | ✓ | — |
+| [Anthropic](https://docs.livekit.io/agents/models/llm/plugins/anthropic.md) | ✓ | — |
+| [Baseten](https://docs.livekit.io/agents/models/llm/plugins/baseten.md) | ✓ | — |
+| [Google Gemini](https://docs.livekit.io/agents/models/llm/plugins/gemini.md) | ✓ | ✓ |
+| [Groq](https://docs.livekit.io/agents/models/llm/plugins/groq.md) | ✓ | ✓ |
+| [LangChain](https://docs.livekit.io/agents/models/llm/plugins/langchain.md) | ✓ | — |
+| [Mistral AI](https://docs.livekit.io/agents/models/llm/plugins/mistralai.md) | ✓ | — |
+| [OpenAI](https://docs.livekit.io/agents/models/llm/plugins/openai.md) | ✓ | ✓ |
+| [Azure OpenAI](https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md) | ✓ | ✓ |
+| [Cerebras](https://docs.livekit.io/agents/models/llm/plugins/cerebras.md) | ✓ | ✓ |
+| [DeepSeek](https://docs.livekit.io/agents/models/llm/plugins/deepseek.md) | ✓ | ✓ |
+| [Fireworks](https://docs.livekit.io/agents/models/llm/plugins/fireworks.md) | ✓ | ✓ |
+| [Letta](https://docs.livekit.io/agents/models/llm/plugins/letta.md) | ✓ | — |
+| [Ollama](https://docs.livekit.io/agents/models/llm/plugins/ollama.md) | ✓ | ✓ |
+| [OpenRouter](https://docs.livekit.io/agents/models/llm/plugins/openrouter.md) | ✓ | — |
+| [OVHCloud](https://docs.livekit.io/agents/models/llm/plugins/ovhcloud.md) | ✓ | ✓ |
+| [Perplexity](https://docs.livekit.io/agents/models/llm/plugins/perplexity.md) | ✓ | ✓ |
+| [Telnyx](https://docs.livekit.io/agents/models/llm/plugins/telnyx.md) | ✓ | ✓ |
+| [Together AI](https://docs.livekit.io/agents/models/llm/plugins/together.md) | ✓ | ✓ |
+| [xAI](https://docs.livekit.io/agents/models/llm/plugins/xai.md) | ✓ | ✓ |
+
+Have another provider in mind? LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
 
 ## Usage
 
-To set up an LLM in an `AgentSession`, provide the model id to the `llm` argument. LiveKit Inference manages the connection to the model automatically. Consult the [models list](#inference) for available models.
+To set up an LLM in an `AgentSession`, provide the model ID to the `llm` argument. LiveKit Inference manages the connection to the model automatically. Consult the [models list](#inference) for available models.
 
 **Python**:
 
@@ -70,34 +105,6 @@ session = new AgentSession({
 
 More configuration options, such as reasoning effort, are available for each model. To set additional parameters, use the `LLM` class from the `inference` module. Consult each model reference for examples and available parameters.
 
-## Plugins
-
-The LiveKit Agents framework also includes a variety of open source [plugins](https://docs.livekit.io/agents/models.md#plugins) for a wide range of LLM providers. Plugins are especially useful if you need custom or fine-tuned models. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
-
-| Provider | Python | Node.js |
-| -------- | ------ | ------- |
-| [Amazon Bedrock](https://docs.livekit.io/agents/models/llm/plugins/aws.md) | ✓ | — |
-| [Anthropic](https://docs.livekit.io/agents/models/llm/plugins/anthropic.md) | ✓ | — |
-| [Baseten](https://docs.livekit.io/agents/models/llm/plugins/baseten.md) | ✓ | — |
-| [Google Gemini](https://docs.livekit.io/agents/models/llm/plugins/gemini.md) | ✓ | ✓ |
-| [Groq](https://docs.livekit.io/agents/models/llm/plugins/groq.md) | ✓ | ✓ |
-| [LangChain](https://docs.livekit.io/agents/models/llm/plugins/langchain.md) | ✓ | — |
-| [Mistral AI](https://docs.livekit.io/agents/models/llm/plugins/mistralai.md) | ✓ | — |
-| [OpenAI](https://docs.livekit.io/agents/models/llm/plugins/openai.md) | ✓ | ✓ |
-| [Azure OpenAI](https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md) | ✓ | ✓ |
-| [Cerebras](https://docs.livekit.io/agents/models/llm/plugins/cerebras.md) | ✓ | ✓ |
-| [DeepSeek](https://docs.livekit.io/agents/models/llm/plugins/deepseek.md) | ✓ | ✓ |
-| [Fireworks](https://docs.livekit.io/agents/models/llm/plugins/fireworks.md) | ✓ | ✓ |
-| [Letta](https://docs.livekit.io/agents/models/llm/plugins/letta.md) | ✓ | — |
-| [Ollama](https://docs.livekit.io/agents/models/llm/plugins/ollama.md) | ✓ | ✓ |
-| [OpenRouter](https://docs.livekit.io/agents/models/llm/plugins/openrouter.md) | ✓ | — |
-| [Perplexity](https://docs.livekit.io/agents/models/llm/plugins/perplexity.md) | ✓ | ✓ |
-| [Telnyx](https://docs.livekit.io/agents/models/llm/plugins/telnyx.md) | ✓ | ✓ |
-| [Together AI](https://docs.livekit.io/agents/models/llm/plugins/together.md) | ✓ | ✓ |
-| [xAI](https://docs.livekit.io/agents/models/llm/plugins/xai.md) | ✓ | ✓ |
-
-Have another provider in mind? LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
-
 ## Advanced features
 
 The following sections cover more advanced topics common to all LLM providers. For more detailed reference on individual provider configuration, consult the model reference or plugin documentation for that provider.
@@ -114,7 +121,8 @@ You can use an `LLM` instance as a standalone component with its streaming inter
 from livekit.agents import ChatContext
 from livekit.plugins import openai
 
-llm = openai.LLM(model="gpt-4o-mini")
+# Use Responses API (recommended for direct OpenAI usage)
+llm = openai.responses.LLM(model="gpt-4o-mini")
     
 chat_ctx = ChatContext()
 chat_ctx.add_message(role="user", content="Hello, this is a test message!")
@@ -127,7 +135,7 @@ async with llm.chat(chat_ctx=chat_ctx) as stream:
 
 ### Vision
 
-LiveKit Agents supports image input from URL or from [realtime video frames](https://docs.livekit.io/home/client/tracks.md). Consult your model provider for details on compatible image types, external URL support, and other constraints. For more information, see [Vision](https://docs.livekit.io/agents/build/vision.md).
+LiveKit Agents supports image input from URL or from [realtime video frames](https://docs.livekit.io/transport/media.md). Consult your model provider for details on compatible image types, external URL support, and other constraints. For more information, see [Vision](https://docs.livekit.io/agents/build/vision.md).
 
 ## Additional resources
 
@@ -143,7 +151,7 @@ The following resources cover related topics that may be useful for your applica
 
 ---
 
-This document was rendered at 2025-11-18T23:55:09.672Z.
+This document was rendered at 2026-02-03T03:24:58.661Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm.md](https://docs.livekit.io/agents/models/llm.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

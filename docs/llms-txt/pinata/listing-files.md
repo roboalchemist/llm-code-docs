@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/listing-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List & Query Files
 
 Pinata gives you the ability to query uploaded files based on different filters and attributes such as name, [key-values](/files/key-values), date, and more. This is different from retrieving the actual contents of a file, which you can learn more about [here](/gateways/retrieving-files).

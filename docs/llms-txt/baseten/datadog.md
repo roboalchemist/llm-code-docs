@@ -1,10 +1,12 @@
 # Source: https://docs.baseten.co/observability/export-metrics/datadog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export to Datadog
 
 > Export metrics from Baseten to Datadog
-
-<Info> Exporting metrics is in beta mode. </Info>
 
 The Baseten metrics endpoint can be integrated with [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) by configuring a Prometheus receiver that scrapes the endpoint. This allows Baseten metrics to be pushed to a variety of popular exporters—see the [OpenTelemetry registry](https://opentelemetry.io/ecosystem/registry/?component=exporter) for a full list.
 

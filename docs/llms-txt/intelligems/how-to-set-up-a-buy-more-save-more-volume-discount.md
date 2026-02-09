@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-buy-more-save-more-volume-discount.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-buy-more-save-more-volume-discount.md
 
 # How to Set Up a Buy More, Save More Volume Discount
 
@@ -7,7 +7,7 @@
 You can use Offers to power your spend more, save more tiered volume discount. Use tiered thresholds to nudge bigger baskets (e.g. spend $100, get 10% off, spend $200, get 20% off). Intelligems makes creating and powering these offers, including a progress bar, super simple.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Increase AOV
@@ -40,7 +40,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/f4882cc1e3984048a93597c9afe09352?sid=89efbb40-9d7d-44aa-8ee6-258b3bd73fab>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Volume Discount**
 3. Add an Offer name (internal name) like Spend $100, Get 10% Scaling
 4. Create three offer tiers
@@ -71,6 +71,6 @@ We recommend setting up a Sale collection in Shopify and then select that collec
 15. Add **Targeting** to choose which shoppers you want to see this Buy More, Save More Offer
 16. **Save** your Offer
 17. **Preview** your Offer on desktop and mobile
-18. When everything looks good, **Schedule Your Offer Experience** or **Activate** to go live
+18. When everything looks good, **Schedule Your Offer Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when scheduling
 19. Boost your AOV!

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/dependencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dependencies
 
 > Understand Galileo deployment prerequisites and dependencies to ensure a smooth installation and integration across supported platforms.

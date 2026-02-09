@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/form-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use form mode to setup your API calls
 
 > In the Platform UI, when building your authentication, triggers and actions, the default setting under _API Configuration_ is to create each component of your integration using Form Mode.

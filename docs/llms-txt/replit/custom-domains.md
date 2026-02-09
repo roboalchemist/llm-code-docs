@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/custom-domains.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Domains
 
 > Use your domain name for your Replit published apps to showcase your app from a professional, branded web address.

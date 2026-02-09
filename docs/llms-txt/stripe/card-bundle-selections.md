@@ -1,28 +1,14 @@
 # Source: https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md
 
-# Card bundle options
+# Customize card bundle
 
 Make your card bundle selections.
 
 During the design phase, Stripe provides a design form where you can choose from the following standard options. Additionally, there are many innovative products in the physical cards market, such as LED-powered cards that light up in point-of-sale terminals, wooden cards, and recycled ocean plastic cards. These options are outside our standard offerings, but we can arrange expert-driven sessions to help you learn more about them.
 
-| [Choose card body](https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md#choose-card-body)                            | - Standard Plastic
-  - Recycled Plastic
-  - Metal       |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| [Choose carrier type](https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md#choose-carrier)                           | - Standard Trifold
-  - Custom Trifold
-  - Custom Bifold |
-| [Choose envelope type](https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md#choose-envelope)                         | - Window #10
-  - 6x9
-  - Enhanced packaging             |
-| (Optional) [Add specialty treatments](https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md#add-specialty-treatments) | - Metallic foil
-  - Logo knockouts                      |
-| (Optional) [Add activation labels](https://docs.stripe.com/issuing/cards/physical/card-bundle-selections.md#activation-labels)           | - White with black text                                 |
-
 ## Choose card body
 
-The following tables lists the different card body options we offer. We can also arrange to ship you generic samples of these materials. (The core color options is the color on the edge of the card.)
+The following table displays the available card body options. We can also ship you generic samples of these materials. “Core color options” refers to the color on the edge of the card.
 
 | **Card material** | **Description**                                                                                                                             | **Core color options**                                                              | **Weight (grams)** |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------ |

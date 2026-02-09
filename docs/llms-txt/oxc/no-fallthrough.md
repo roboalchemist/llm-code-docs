@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-fallthrough.md
 ---
-# eslint/no-fallthrough&#x20;
 
 ### What it does
 
@@ -190,7 +189,7 @@ Whether to allow empty case clauses to fall through.
 
 ### commentPattern
 
-type: `string | null`
+type: `string`
 
 Custom regex pattern to match fallthrough comments.
 

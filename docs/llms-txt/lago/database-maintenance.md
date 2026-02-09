@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/lago-self-hosted/database-maintenance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database maintenance
 
 > Keeping your Postgres at its best

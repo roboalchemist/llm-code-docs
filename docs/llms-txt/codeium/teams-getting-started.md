@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Getting started with Teams and Enterprise
+
+> Set up Teams and Enterprise plans with team management, SSO, analytics, user groups, and priority support for your organization.
 
 Windsurf scales from solo projects to large-scale enterprise codebases. Our Teams and Enterprise plans unlock collaboration features such as team management, Single Sign-On (SSO), advanced analytics, and priority support.
 

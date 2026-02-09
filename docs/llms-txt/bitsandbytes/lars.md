@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/lars.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/lars.md
 
 # LARS
 
@@ -8,9 +8,9 @@
 
 #### bitsandbytes.optim.LARS[[bitsandbytes.optim.LARS]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L11)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L11)
 
-__init__bitsandbytes.optim.LARS.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L12[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LARS.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L12[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.
@@ -63,9 +63,9 @@ max_unorm (`float`, defaults to 0.02) : The maximum gradient norm.
 
 #### bitsandbytes.optim.LARS8bit[[bitsandbytes.optim.LARS8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L71)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L71)
 
-__init__bitsandbytes.optim.LARS8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L72[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LARS8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L72[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.
@@ -114,9 +114,9 @@ max_unorm (`float`, defaults to 0.02) : The maximum gradient norm.
 
 #### bitsandbytes.optim.LARS32bit[[bitsandbytes.optim.LARS32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L128)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L128)
 
-__init__bitsandbytes.optim.LARS32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lars.py#L129[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.LARS32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lars.py#L129[{"name": "params", "val": ""}, {"name": "lr", "val": ""}, {"name": "momentum", "val": " = 0"}, {"name": "dampening", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "nesterov", "val": " = False"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "max_unorm", "val": " = 0.02"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`) --
   The learning rate.

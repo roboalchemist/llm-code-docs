@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/self-hosting/env/supervisor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supervisor
 
 > Environment variables for the supervisor container.

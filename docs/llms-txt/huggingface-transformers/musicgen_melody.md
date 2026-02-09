@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/musicgen_melody.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/musicgen_melody.md
 
 # MusicGen Melody
 
@@ -31,7 +31,7 @@ Transformers supports both mono (1-channel) and stereo (2-channel) variants of M
 
 ### Audio Conditional Generation
 
-The model can generate an audio sample conditioned on a text and an audio prompt through use of the [MusicgenMelodyProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor) to pre-process the inputs.
+The model can generate an audio sample conditioned on a text and an audio prompt through use of the [MusicgenMelodyProcessor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor) to pre-process the inputs.
 
 In the following examples, we load an audio file using the 🤗 Datasets library, which can be pip installed through the command below:
 
@@ -123,7 +123,7 @@ Or save them as a `.wav` file using a third-party library, e.g. `soundfile`:
 
 ### Text-only Conditional Generation
 
-The same [MusicgenMelodyProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor) can be used to pre-process a text-only prompt.
+The same [MusicgenMelodyProcessor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor) can be used to pre-process a text-only prompt.
 
 ```python
 >>> from transformers import AutoProcessor, MusicgenMelodyForConditionalGeneration
@@ -168,7 +168,7 @@ You can also generate in batch:
 
 ### Unconditional Generation
 
-The inputs for unconditional (or 'null') generation can be obtained through the method [MusicgenMelodyProcessor.get_unconditional_inputs()](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor.get_unconditional_inputs):
+The inputs for unconditional (or 'null') generation can be obtained through the method [MusicgenMelodyProcessor.get_unconditional_inputs()](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor.get_unconditional_inputs):
 
 ```python
 >>> from transformers import MusicgenMelodyForConditionalGeneration, MusicgenMelodyProcessor
@@ -208,7 +208,7 @@ The MusicGen model can be de-composed into three distinct stages:
 2. MusicGen Melody decoder: a language model (LM) that auto-regressively generates audio tokens (or codes) conditional on the encoder hidden-state representations
 3. Audio decoder: used to recover the audio waveform from the audio tokens predicted by the decoder.
 
-Thus, the MusicGen model can either be used as a standalone decoder model, corresponding to the class [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM), or as a composite model that includes the text encoder and audio encoder, corresponding to the class [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration). If only the decoder needs to be loaded from the pre-trained checkpoint, it can be loaded by first specifying the correct config, or be accessed through the `.decoder` attribute of the composite model:
+Thus, the MusicGen model can either be used as a standalone decoder model, corresponding to the class [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM), or as a composite model that includes the text encoder and audio encoder, corresponding to the class [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration). If only the decoder needs to be loaded from the pre-trained checkpoint, it can be loaded by first specifying the correct config, or be accessed through the `.decoder` attribute of the composite model:
 
 ```python
 >>> from transformers import AutoConfig, MusicgenMelodyForCausalLM, MusicgenMelodyForConditionalGeneration
@@ -221,7 +221,7 @@ Thus, the MusicGen model can either be used as a standalone decoder model, corre
 >>> decoder = MusicgenMelodyForConditionalGeneration.from_pretrained("facebook/musicgen-melody").decoder
 ```
 
-Since the text encoder and audio encoder models are frozen during training, the MusicGen decoder [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM) can be trained standalone on a dataset of encoder hidden-states and audio codes. For inference, the trained decoder can be combined with the frozen text encoder and audio encoder to recover the composite [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration) model.
+Since the text encoder and audio encoder models are frozen during training, the MusicGen decoder [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM) can be trained standalone on a dataset of encoder hidden-states and audio codes. For inference, the trained decoder can be combined with the frozen text encoder and audio encoder to recover the composite [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration) model.
 
 ## Checkpoint Conversion
 
@@ -241,15 +241,15 @@ Tips:
 
 #### transformers.MusicgenMelodyDecoderConfig[[transformers.MusicgenMelodyDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/configuration_musicgen_melody.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/configuration_musicgen_melody.py#L24)
 
 This is the configuration class to store the configuration of an `MusicgenMelodyDecoder`. It is used to instantiate a
 Musicgen Melody decoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the Musicgen Melody
 [facebook/musicgen-melody](https://huggingface.co/facebook/musicgen-melody) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -293,20 +293,35 @@ eos_token_id (`int`, *optional*) : The id of the *end-of-sequence* token.
 
 tie_word_embeddings (`bool`, *optional*, defaults to `False`) : Whether to tie word embeddings with the text encoder.
 
+is_decoder (`bool`, *optional*, defaults to `False`) : Whether to only use the decoder in an encoder-decoder architecture, otherwise it has no effect on decoder-only or encoder-only architectures.
+
+add_cross_attention (`bool`, *optional*, defaults to `False`) : Whether cross-attention layers should be added to the model.
+
 ## MusicgenMelodyProcessor[[transformers.MusicgenMelodyProcessor]]
 
 #### transformers.MusicgenMelodyProcessor[[transformers.MusicgenMelodyProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/processing_musicgen_melody.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/processing_musicgen_melody.py#L29)
 
-Constructs a MusicGen Melody processor which wraps a Wav2Vec2 feature extractor - for raw audio waveform processing - and a T5 tokenizer into a single processor
-class.
+Constructs a MusicgenMelodyProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-[MusicgenProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen#transformers.MusicgenProcessor) offers all the functionalities of [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor) and [T5Tokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/t5#transformers.T5Tokenizer). See
-`__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[MusicgenMelodyProcessor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyProcessor) offers all the functionalities of [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor) and [T5Tokenizer](/docs/transformers/v5.0.0/en/model_doc/t5#transformers.T5Tokenizer). See the
+[~MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor) and [~T5Tokenizer](/docs/transformers/v5.0.0/en/model_doc/t5#transformers.T5Tokenizer) for more information.
 
-get_unconditional_inputstransformers.MusicgenMelodyProcessor.get_unconditional_inputshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/processing_musicgen_melody.py#L109[{"name": "num_samples", "val": " = 1"}, {"name": "return_tensors", "val": " = 'pt'"}]- **num_samples** (int, *optional*) --
-  Number of audio samples to unconditionally generate.0
+__call__transformers.MusicgenMelodyProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/processing_musicgen_melody.py#L37[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0
+
+**Parameters:**
+
+feature_extractor (`MusicgenMelodyFeatureExtractor`) : The feature extractor is a required input.
+
+tokenizer (`T5Tokenizer`) : The tokenizer is a required input.
+#### get_unconditional_inputs[[transformers.MusicgenMelodyProcessor.get_unconditional_inputs]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/processing_musicgen_melody.py#L90)
 
 Helper function to get null inputs for unconditional generation, enabling the model to be used without the
 feature extractor or tokenizer.
@@ -326,19 +341,17 @@ Example:
 
 **Parameters:**
 
-feature_extractor (`MusicgenMelodyFeatureExtractor`) : An instance of [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor). The feature extractor is a required input.
-
-tokenizer (`T5Tokenizer`) : An instance of [T5Tokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/t5#transformers.T5Tokenizer). The tokenizer is a required input.
+num_samples (int, *optional*) : Number of audio samples to unconditionally generate.
 
 ## MusicgenMelodyFeatureExtractor[[transformers.MusicgenMelodyFeatureExtractor]]
 
 #### transformers.MusicgenMelodyFeatureExtractor[[transformers.MusicgenMelodyFeatureExtractor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/feature_extraction_musicgen_melody.py#L41)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/feature_extraction_musicgen_melody.py#L40)
 
 Constructs a MusicgenMelody feature extractor.
 
-This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
+This feature extractor inherits from [SequenceFeatureExtractor](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.SequenceFeatureExtractor) which contains
 most of the main methods. Users should refer to this superclass for more information regarding those methods.
 
 This class extracts chroma features from audio processed by [Demucs](https://github.com/adefossez/demucs/tree/main) or
@@ -368,15 +381,15 @@ stem_indices (`list[int]`, *optional*, defaults to `[3, 2]`) : Stem channels to 
 
 #### transformers.MusicgenMelodyConfig[[transformers.MusicgenMelodyConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/configuration_musicgen_melody.py#L137)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/configuration_musicgen_melody.py#L143)
 
-This is the configuration class to store the configuration of a [MusicgenMelodyModel](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [MusicgenMelodyModel](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyModel). It is used to instantiate a
 Musicgen Melody model according to the specified arguments, defining the text encoder, audio encoder and Musicgen Melody decoder
 configs. Instantiating a configuration with the defaults will yield a similar configuration to that of the Musicgen Melody
 [facebook/musicgen-melody](https://huggingface.co/facebook/musicgen-melody) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -431,11 +444,11 @@ chroma_length (`int`, *optional*, defaults to 235) : Maximum chroma duration if 
 
 #### transformers.MusicgenMelodyModel[[transformers.MusicgenMelodyModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L646)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L649)
 
 The bare Musicgen Melody Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -443,11 +456,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MusicgenMelodyModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L659[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size * num_codebooks, sequence_length)`) --
+forwardtransformers.MusicgenMelodyModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L662[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size * num_codebooks, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary, corresponding to the sequence of audio codes.
 
   Indices can be obtained by encoding an audio prompt with an audio encoder model to predict audio codes,
-  such as with the [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
+  such as with the [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -455,7 +468,7 @@ forwardtransformers.MusicgenMelodyModel.forwardhttps://github.com/huggingface/tr
 
   The `input_ids` will automatically be converted from shape `(batch_size * num_codebooks,
   target_sequence_length)` to `(batch_size, num_codebooks, target_sequence_length)` in the forward pass. If
-  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
+  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
   frames is equal to 1, and that you reshape the audio codes from `(frames, batch_size, num_codebooks,
   target_sequence_length)` to `(batch_size * num_codebooks, target_sequence_length)` prior to passing them as
   `input_ids`.
@@ -484,8 +497,8 @@ forwardtransformers.MusicgenMelodyModel.forwardhttps://github.com/huggingface/tr
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -506,19 +519,19 @@ forwardtransformers.MusicgenMelodyModel.forwardhttps://github.com/huggingface/tr
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -532,7 +545,7 @@ elements depending on the configuration ([MusicgenMelodyConfig](/docs/transforme
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MusicgenMelodyModel](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyModel) forward method, overrides the `__call__` special method.
+The [MusicgenMelodyModel](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -540,21 +553,21 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([MusicgenMelodyDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyDecoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MusicgenMelodyDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyDecoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -573,11 +586,11 @@ elements depending on the configuration ([MusicgenMelodyConfig](/docs/transforme
 
 #### transformers.MusicgenMelodyForCausalLM[[transformers.MusicgenMelodyForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L746)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L749)
 
 The Musicgen Melody decoder model with a language modelling head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -585,11 +598,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L774[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size * num_codebooks, sequence_length)`) --
+forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L777[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size * num_codebooks, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary, corresponding to the sequence of audio codes.
 
   Indices can be obtained by encoding an audio prompt with an audio encoder model to predict audio codes,
-  such as with the [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
+  such as with the [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -597,7 +610,7 @@ forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingf
 
   The `input_ids` will automatically be converted from shape `(batch_size * num_codebooks,
   target_sequence_length)` to `(batch_size, num_codebooks, target_sequence_length)` in the forward pass. If
-  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
+  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
   frames is equal to 1, and that you reshape the audio codes from `(frames, batch_size, num_codebooks,
   target_sequence_length)` to `(batch_size * num_codebooks, target_sequence_length)` prior to passing them as
   `input_ids`.
@@ -626,8 +639,8 @@ forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingf
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -648,7 +661,7 @@ forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingf
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length, num_codebooks)`, *optional*) --
   Labels for language modeling. Note that the labels **are shifted** inside the model, i.e. you can set
   `labels = input_ids` Indices are selected in `[-100, 0, ..., config.vocab_size]` All labels set to `-100`
@@ -658,26 +671,26 @@ forwardtransformers.MusicgenMelodyForCausalLM.forwardhttps://github.com/huggingf
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **encoder_hidden_states** (`torch.FloatTensor` of shape `(batch_size, encoder_sequence_length, hidden_size)`, *optional*) -- Sequence of conditional hidden-states representing the concatenation of the projected text encoder output and the projected audio encoder output.
   Used as a conditional signal.
-The [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM) forward method, overrides the `__call__` special method.
+The [MusicgenMelodyForCausalLM](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -690,7 +703,7 @@ Example:
 
 **Parameters:**
 
-config ([MusicgenMelodyDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyDecoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MusicgenMelodyDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyDecoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -698,19 +711,19 @@ config ([MusicgenMelodyDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/
 
 A `transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -722,11 +735,11 @@ elements depending on the configuration ([MusicgenMelodyConfig](/docs/transforme
 
 #### transformers.MusicgenMelodyForConditionalGeneration[[transformers.MusicgenMelodyForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L1231)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L1227)
 
 The Musicgen Melody Model for token generation conditioned on other modalities (e.g. image-text-to-text generation).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -734,11 +747,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L1527[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/musicgen_melody/modeling_musicgen_melody.py#L1523[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.BoolTensor | None = None"}, {"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.BoolTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.BoolTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -750,13 +763,13 @@ forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github
   [What are attention masks?](../glossary#attention-mask)
 - **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor). See `MusicgenMelodyFeatureExtractor.__call__()` for details (`processor_class` uses
-  [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor) for processing audios).
+  [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor). See `MusicgenMelodyFeatureExtractor.__call__()` for details (`processor_class` uses
+  [MusicgenMelodyFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyFeatureExtractor) for processing audios).
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size * num_codebooks, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary, corresponding to the sequence of audio codes.
 
   Indices can be obtained by encoding an audio prompt with an audio encoder model to predict audio codes,
-  such as with the [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
+  such as with the [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel). See [EncodecModel.encode()](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel.encode) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 
@@ -764,7 +777,7 @@ forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github
 
   The `decoder_input_ids` will automatically be converted from shape `(batch_size * num_codebooks,
   target_sequence_length)` to `(batch_size, num_codebooks, target_sequence_length)` in the forward pass. If
-  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0rc1/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
+  you obtain audio codes from an audio encoding model, such as [EncodecModel](/docs/transformers/v5.0.0/en/model_doc/encodec#transformers.EncodecModel), ensure that the number of
   frames is equal to 1, and that you reshape the audio codes from `(frames, batch_size, num_codebooks,
   target_sequence_length)` to `(batch_size * num_codebooks, target_sequence_length)` prior to passing them as
   `decoder_input_ids`.
@@ -778,8 +791,8 @@ forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -815,28 +828,28 @@ forwardtransformers.MusicgenMelodyForConditionalGeneration.forwardhttps://github
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **encoder_hidden_states** (`torch.FloatTensor` of shape `(batch_size, encoder_sequence_length, hidden_size)`, *optional*) -- Sequence of conditional hidden-states representing the concatenation of the projected text encoder output and the projected audio encoder output.
   Used as a conditional signal.
-The [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [MusicgenMelodyForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -869,7 +882,7 @@ torch.Size([8, 249, 2048])
 
 **Parameters:**
 
-config ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig), *optional*) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 text_encoder (`PreTrainedModel`, *optional*) : The text encoder model that encodes text into hidden states for conditioning.
 
@@ -883,19 +896,19 @@ decoder (`MusicgenMelodyForCausalLM`, *optional*) : The decoder model that gener
 
 A `transformers.models.musicgen_melody.modeling_musicgen_melody.MusicgenMelodyOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0rc1/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
+elements depending on the configuration ([MusicgenMelodyConfig](/docs/transformers/v5.0.0/en/model_doc/musicgen_melody#transformers.MusicgenMelodyConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

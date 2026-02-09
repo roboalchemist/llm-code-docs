@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/observability/openlit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenLIT Integration
 
 > Quickly start monitoring your Agents in just a single line of code with OpenTelemetry.

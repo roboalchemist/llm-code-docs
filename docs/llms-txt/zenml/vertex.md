@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/vertex.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/step-operators/vertex.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/vertex.md
-
 # Google Cloud VertexAI Orchestrator
 
 [Vertex AI Pipelines](https://cloud.google.com/vertex-ai/docs/pipelines/introduction) is a serverless ML workflow tool running on the Google Cloud Platform. It is an easy way to quickly run your code in a production-ready, repeatable cloud orchestrator that requires minimal setup without provisioning and paying for standby compute.

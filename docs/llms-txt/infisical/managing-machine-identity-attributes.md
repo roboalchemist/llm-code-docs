@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/access-controls/abac/managing-machine-identity-attributes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Machine identities
 
 > Learn how to set metadata and leverage authentication attributes for machine identities.

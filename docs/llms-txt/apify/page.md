@@ -6,7 +6,7 @@
 
 ***
 
-When you open up your regular browser and visit a website, you open up a new page (or tab) before entering the URL in the search bar and hitting the **Enter** key. In Playwright and Puppeteer, you also have to open up a new page before visiting a URL. This can be done with the `browser.newPage()` function, which will return a **Page** object (https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-class-page, https://playwright.dev/docs/api/class-page).
+When you open up your regular browser and visit a website, you open up a new page (or tab) before entering the URL in the search bar and hitting the **Enter** key. In Playwright and Puppeteer, you also have to open up a new page before visiting a URL. This can be done with the `browser.newPage()` function, which will return a **Page** object ([Puppeteer](https://pptr.dev/#?product=Puppeteer&version=v13.7.0&show=api-class-page), [Playwright](https://playwright.dev/docs/api/class-page)).
 
 * Playwright
 * Puppeteer
@@ -37,7 +37,7 @@ await browser.close();
 ```
 
 
-Then, we can visit a website with the `page.goto()` method. Let's go to https://google.com for now. We'll also use the `page.waitForTimeout()` function, which will force the program to wait for a number of seconds before quitting (otherwise, everything will flash before our eyes and we won't really be able to tell what's going on):
+Then, we can visit a website with the `page.goto()` method. Let's go to [Google](https://google.com) for now. We'll also use the `page.waitForTimeout()` function, which will force the program to wait for a number of seconds before quitting (otherwise, everything will flash before our eyes and we won't really be able to tell what's going on):
 
 * Playwright
 * Puppeteer
@@ -84,4 +84,4 @@ await browser.close();
 
 ## Next up
 
-Now that we know how to open up a page, https://docs.apify.com/academy/puppeteer-playwright/page/interacting-with-a-page.md how to automate page interaction, such as clicking, typing, and pressing keys.
+Now that we know how to open up a page, [let's learn](https://docs.apify.com/academy/puppeteer-playwright/page/interacting-with-a-page.md) how to automate page interaction, such as clicking, typing, and pressing keys.

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/domains/update-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Domain
 
 > Update an existing domain.
@@ -81,7 +85,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -94,7 +98,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->domains->update(
@@ -107,7 +111,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -122,7 +126,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Domains.update(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = "re_xxxxxxxxx"
 
   Resend::Domains.update({
@@ -133,21 +137,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   })
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  updateDomainParams := &resend.UpdateDomainRequest{
-    OpenTracking:  false,
-    ClickTracking: true,
-    Tls: resend.Enforced,
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	updateDomainParams := &resend.UpdateDomainRequest{
+  		OpenTracking:  false,
+  		ClickTracking: true,
+  		Tls:           resend.Enforced,
+  	}
+
+  	client.Domains.Update("b8617ad3-b712-41d9-81a0-f7c3d879314e", updateDomainParams)
   }
-
-  updated, err := client.Domains.Update("b8617ad3-b712-41d9-81a0-f7c3d879314e", updateDomainParams)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::{DomainChanges, Tls}, Resend, Result};
 
   #[tokio::main]
@@ -168,7 +176,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   UpdateDomainOptions params = UpdateDomainOptions.builder()
@@ -181,7 +189,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.domains().update(params);
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -197,7 +205,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X PATCH 'https://api.resend.com/domains/b8617ad3-b712-41d9-81a0-f7c3d879314e' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -210,7 +218,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "domain",
     "id": "b8617ad3-b712-41d9-81a0-f7c3d879314e"

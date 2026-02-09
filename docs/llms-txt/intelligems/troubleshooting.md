@@ -2,10 +2,6 @@
 
 # Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/troubleshooting.md
 
-# Source: https://docs.intelligems.io/developer-resources/mcp-server/troubleshooting.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/troubleshooting.md
-
 # Troubleshooting
 
 ## Background <a href="#intelligems-isnt-updating-a-price-for-a-product-that-is-included-in-the-test" id="intelligems-isnt-updating-a-price-for-a-product-that-is-included-in-the-test"></a>

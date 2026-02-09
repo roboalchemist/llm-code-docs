@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/aqlm.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/aqlm.md
 
 # AQLM
 
@@ -12,7 +12,7 @@ Run the command below to install the AQLM library with kernel support for both G
 pip install aqlm[gpu,cpu]
 ```
 
-Load an AQLM-quantized model with [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
+Load an AQLM-quantized model with [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM

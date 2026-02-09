@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration/primary-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Primary Key Inference
 
 > Datafold requires a primary key to perform data diffs. Using dbt metadata, Datafold identifies the column to use as the primary key for accurate data diffs.

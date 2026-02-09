@@ -6,14 +6,6 @@
 
 # Source: https://developers.raycast.com/basics/getting-started.md
 
-# Source: https://developers.raycast.com/utilities/getting-started.md
-
-# Source: https://developers.raycast.com/teams/getting-started.md
-
-# Source: https://developers.raycast.com/ai/getting-started.md
-
-# Source: https://developers.raycast.com/basics/getting-started.md
-
 # Getting Started
 
 ## System Requirements

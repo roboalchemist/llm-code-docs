@@ -26,62 +26,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/messages/batches/results.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/results.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/results.md
-
 ## Results
 
 **get** `/v1/messages/batches/{message_batch_id}/results`
@@ -305,7 +249,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
               - `WebSearchToolResultError = object { error_code, type }`
 
-                - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 2 more`
+                - `error_code: "invalid_tool_input" or "unavailable" or "max_uses_exceeded" or 3 more`
 
                   - `"invalid_tool_input"`
 
@@ -316,6 +260,8 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
                   - `"too_many_requests"`
 
                   - `"query_too_long"`
+
+                  - `"request_too_large"`
 
                 - `type: "web_search_tool_result_error"`
 
@@ -650,5 +596,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
 ```http
 curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/results \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

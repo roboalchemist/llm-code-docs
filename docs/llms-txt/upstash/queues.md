@@ -4,82 +4,169 @@
 
 # Source: https://upstash.com/docs/qstash/features/queues.md
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/features/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/features/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/features/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/queues.md
-
-# Source: https://upstash.com/docs/qstash/features/queues.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Queues
 
-#### Create a queue with parallelism 2
+The queue concept in QStash allows ordered delivery (FIFO).
+See the [API doc](/qstash/api/queues/upsert) for the full list of related Rest APIs.
+Here we list common use cases for Queue and how to use them.
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
-const client = new Client({ token: "<QSTASH_TOKEN>" });
+## Ordered Delivery
 
-const queueName = "upstash-queue";
-await client.queue({ queueName }).upsert({ parallelism: 2 });
+With Queues, the ordered delivery is guaranteed by default.
+This means:
 
-const queueDetails = await client.queue({ queueName }).get();
-```
+* Your messages will be queued without blocking the REST API and sent one by one in FIFO order. Queued means [CREATED](/qstash/howto/debug-logs) event will be logged.
+* The next message will wait for retries of the current one if it can not be delivered because your endpoint returns non-2xx code.
+  In other words, the next message will be [ACTIVE](/qstash/howto/debug-logs) only after the last message is either [DELIVERED](/qstash/howto/debug-logs) or
+  [FAILED](/qstash/howto/debug-logs).
+* Next message will wait for [callbacks](/qstash/features/callbacks#what-is-a-callback) or [failure callbacks](/qstash/features/callbacks#what-is-a-failure-callback) to finish.
 
-#### Delete Queue
+<CodeGroup>
+  ```bash cURL theme={"system"}
+  curl -XPOST -H 'Authorization: Bearer XXX' \
+              -H "Content-type: application/json" \
+    'https://qstash.upstash.io/v2/enqueue/my-queue/https://example.com' -d '{"message":"Hello, World!"}'
+  ```
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
-const client = new Client({ token: "<QSTASH_TOKEN>" });
+  ```typescript TypeScript theme={"system"}
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-const queueName = "upstash-queue";
-await client.queue({ queueName: queueName }).delete();
-```
+  const queue = client.queue({
+    queueName: "my-queue"
+  })
+
+  await queue.enqueueJSON({
+    url: "https://example.com",
+    body: {
+      "Hello": "World"
+    }
+  })
+  ```
+
+  ```python Python theme={"system"}
+  from qstash import QStash
+
+  client = QStash("<QSTASH_TOKEN>")
+  client.message.enqueue_json(
+      queue="my-queue",
+      url="https://example.com",
+      body={
+          "Hello": "World",
+      },
+  )
+  ```
+</CodeGroup>
+
+## Controlled Parallelism
 
 <Warning>
-  Resuming or creating a queue may take up to a minute.
-  Therefore, it is not recommended to pause or delete a queue during critical operations.
+  For the parallelism limit, we introduced an easier and less limited API with publish.
+  Please check the [Flow Control](/qstash/features/flowcontrol) page for the detailed information.
+
+  Setting parallelism with queues will be deprecated at some point.
 </Warning>
 
-#### Pause/Resume a queue
+To ensure that your endpoint is not overwhelmed and also you want more than one-by-one delivery for better throughput,
+you can achieve controlled parallelism with queues.
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
-const client = new Client({ token: "<QSTASH_TOKEN>" });
+By default, queues have parallelism 1.
+Depending on your [plan](https://upstash.com/pricing/qstash), you can configure the parallelism of your queues as follows:
 
-const name = "upstash-pause-resume-queue";
-const queue = client.queue({ queueName: name });
-await queue.upsert({ parallelism: 1 });
+<CodeGroup>
+  ```bash cURL theme={"system"}
+  curl -XPOST https://qstash.upstash.io/v2/queues/ \
+    -H "Authorization: Bearer <token>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "queueName": "my-queue", 
+      "parallelism": 5,
+    }'
+  ```
 
-// pause queue
-await queue.pause();
+  ```typescript TypeScript theme={"system"}
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-const queueInfo = await queue.get();
-console.log(queueInfo.paused); // prints true
+  const queue = client.queue({
+    queueName: "my-queue"
+  })
 
-// resume queue
-await queue.resume();
-```
+  await queue.upsert({
+    parallelism: 1,
+  })
+  ```
 
-<Warning>
-  Resuming or creating a queue may take up to a minute.
-  Therefore, it is not recommended to pause or delete a queue during critical operations.
-</Warning>
+  ```python Python theme={"system"}
+  from qstash import QStash
+
+  client = QStash("<QSTASH_TOKEN>")
+  client.queue.upsert("my-queue", parallelism=5)
+  ```
+</CodeGroup>
+
+After that, you can use the `enqueue` path to send your messages.
+
+<CodeGroup>
+  ```bash cURL theme={"system"}
+  curl -XPOST -H 'Authorization: Bearer XXX' \ 
+              -H "Content-type: application/json" \
+    'https://qstash.upstash.io/v2/enqueue/my-queue/https://example.com' -d '{"message":"Hello, World!"}'
+  ```
+
+  ```typescript TypeScript theme={"system"}
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+
+  const queue = QStashClient.queue({
+    queueName: "my-queue"
+  })
+
+  await queue.enqueueJSON({
+    url: "https://example.com",
+    body: {
+      "Hello": "World"
+    }
+  })
+  ```
+
+  ```python Python theme={"system"}
+  from qstash import QStash
+
+  client = QStash("<QSTASH_TOKEN>")
+  client.message.enqueue_json(
+      queue="my-queue",
+      url="https://example.com",
+      body={
+          "Hello": "World",
+      },
+  )
+  ```
+</CodeGroup>
+
+You can check the parallelism of your queues with the following API:
+
+<CodeGroup>
+  ```bash cURL theme={"system"}
+  curl https://qstash.upstash.io/v2/queues/my-queue \
+    -H "Authorization: Bearer <token>"
+  ```
+
+  ```typescript TypeScript theme={"system"}
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+
+  const queue = client.queue({
+    queueName: "my-queue"
+  })
+
+  const res = await queue.get()
+  ```
+
+  ```python Python theme={"system"}
+  from qstash import QStash
+
+  client = QStash("<QSTASH_TOKEN>")
+  client.queue.get("my-queue")
+  ```
+</CodeGroup>

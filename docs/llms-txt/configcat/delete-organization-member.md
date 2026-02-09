@@ -2,10 +2,7 @@
 
 # Delete Member from Organization
 
-```
-DELETE 
-/v1/organizations/:organizationId/members/:userId
-```
+Copy page
 
 This endpoint removes a Member identified by the `userId` from the given Organization identified by the `organizationId` parameter.
 

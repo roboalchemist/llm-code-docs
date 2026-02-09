@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HRANDFIELD
 
@@ -26,52 +12,55 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="count" type="integer">
+<ParamField body="count" type="int">
   Optionally return more than one field.
 </ParamField>
 
-<ParamField body="withValues" type="boolean">
+<ParamField body="withvalues" type="boolean">
   Return the values of the fields as well.
 </ParamField>
 
 ## Response
 
-<ResponseField type="Record<string, unknown>" required>
+<ResponseField type="Record<str, unknown>" required>
   An object containing the fields and their values.
 </ResponseField>
 
 <RequestExample>
-  ```ts Basic theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas"
-   });
-  const randomField = await redis.hrandfield("key");
-  console.log(randomField); // one of "id", "username" or  "name"
+  ```py Single theme={"system"}
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hrandfield("myhash") in ["field1", "field2"]
   ```
 
-  ```ts Multiple Fields theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas",
-  });
-  const randomFields = await redis.hrandfield("key", 2);
-  console.log(randomFields); // ["id", "username"] or any other combination
+  ```py Multiple theme={"system"}
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hrandfield("myhash", count=2) in [
+      ["field1", "field2"],
+      ["field2", "field1"]
+  ]
   ```
 
-  ```ts With Values theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    name: "andreas",
-  });
-  const randomFields = await redis.hrandfield("key", 2, true);
-  console.log(randomFields); // { id: "1", username: "chronark" } or any other combination
+  ```py With Values theme={"system"}
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hrandfield("myhash", count=1, withvalues=True) in [
+      {"field1": "Hello"},
+      {"field2": "World"}
+  ]
   ```
 </RequestExample>

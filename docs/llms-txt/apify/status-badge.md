@@ -8,7 +8,7 @@ The Actor status badge can be embedded in the README or documentation to show us
 
 <!-- -->
 
-This is the badge generated for the https://apify.com/apify/website-content-crawler Actor:
+This is the badge generated for the [Apify's Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor:
 
 https://apify.com/apify/website-content-crawler
 
@@ -49,7 +49,7 @@ In order to embed the badge in the HTML documentation, just use it as an image w
 
 ### Supported Actor states
 
-The badge indicates the state of the Actor in the Apify platform as the result of the https://docs.apify.com/platform/actors/development/automated-tests.md.
+The badge indicates the state of the Actor in the Apify platform as the result of the [automated testing](https://docs.apify.com/platform/actors/development/automated-tests.md).
 
 #### Actor OK
 

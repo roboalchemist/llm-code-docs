@@ -16,7 +16,7 @@ Browsers create a separate process for each tab. That means each tab lives with 
 
 ### Memory solution
 
-If you use https://crawlee.dev/, your concurrency automatically scales up and down to fit in the allocated memory. You can change the allocated memory using the environment variable or the https://crawlee.dev/docs/guides/configuration class. But very hungry pages can still occasionally cause sudden memory spikes, and you might have to limit the https://crawlee.dev/docs/guides/scaling-crawlers#minconcurrency-and-maxconcurrency of the crawler. This problem is very rare, though.
+If you use [Crawlee](https://crawlee.dev/), your concurrency automatically scales up and down to fit in the allocated memory. You can change the allocated memory using the environment variable or the [Configuration](https://crawlee.dev/docs/guides/configuration) class. But very hungry pages can still occasionally cause sudden memory spikes, and you might have to limit the [maxConcurrency](https://crawlee.dev/docs/guides/scaling-crawlers#minconcurrency-and-maxconcurrency) of the crawler. This problem is very rare, though.
 
 Without Crawlee, you will need to predict the maximum concurrency the particular use case can handle or increase the allocated memory.
 
@@ -26,9 +26,9 @@ If you close the page before executing all code that tries to access the page, y
 
 ### Page closed solution
 
-https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors to see exactly at which point the crash occurs. See if you can spot one of the above mentioned problems. Adding missing `await` is simple but if your code runs in an event handler, you will need to wrap it in try/catch block and ensure that you give it enough time to execute before you close the main crawling handler.
+[Add logs to your code](https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors) to see exactly at which point the crash occurs. See if you can spot one of the above mentioned problems. Adding missing `await` is simple but if your code runs in an event handler, you will need to wrap it in try/catch block and ensure that you give it enough time to execute before you close the main crawling handler.
 
-If you use Crawlee and utilize https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#preNavigationHooks to execute event handlers like `page.on` asynchronously be aware that this can cause the above mentioned problem that the https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#requestHandler already finishes before we access the `page` in the event handler. You can solve this issue by making sure the `requestHandler` waits for all promises from the `preNavigationHooks`. This can be achieved by passing the promises to the `context` which is accessible to both functions and awaiting them before the scraping code starts.
+If you use Crawlee and utilize [preNavigationHooks](https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#preNavigationHooks) to execute event handlers like `page.on` asynchronously be aware that this can cause the above mentioned problem that the [requestHandler](https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#requestHandler) already finishes before we access the `page` in the event handler. You can solve this issue by making sure the `requestHandler` waits for all promises from the `preNavigationHooks`. This can be achieved by passing the promises to the `context` which is accessible to both functions and awaiting them before the scraping code starts.
 
 
 ```
@@ -56,4 +56,4 @@ const crawler = new PlaywrightCrawler({
 ```
 
 
-If you are still unsure what causes your particular error, check with the community and Apify team on https://discord.com/invite/jyEM2PRvMU.
+If you are still unsure what causes your particular error, check with the community and Apify team on [Discord](https://discord.com/invite/jyEM2PRvMU).

@@ -2,7 +2,7 @@
 
 # Agent Session Sharing
 
-**Agent Session Sharing** extends Warp’s regular [](https://docs.warp.dev/knowledge-and-collaboration/session-sharing "mention") to include full visibility and control over Agent activity. Anyone viewing a shared session can now see Agent messages, thinking indicators, credit usage, and, if granted permission, send their own Agent queries from the shared environment.
+**Agent Session Sharing** extends Warp's regular [Session Sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing) to include full visibility and control over Agent activity. Anyone viewing a shared session can now see Agent messages, thinking indicators, credit usage, and, if granted permission, send their own Agent queries from the shared environment.
 
 {% embed url="<https://www.loom.com/share/89e0e99c9bbf463a8a5e5bc2e96dabe4>" %}
 
@@ -30,9 +30,9 @@ Open a session and share it through:
 
 Choose your starting point (full scrollback, no scrollback, or a specific block), just like standard Session Sharing.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f6498d5fe7a37a067dc00f33f213506183509395%2Fagent-session-sharing-right-click-menu.png?alt=media" alt="" width="341"><figcaption><p>Start a shared session via the right click menu.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f6498d5fe7a37a067dc00f33f213506183509395%2Fagent-session-sharing-right-click-menu.png?alt=media" alt="" width="341"><figcaption><p>Start a shared session via the right click menu.</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8343825979e5d6cd5018ceb9285a92931c1044f5%2Fagent-session-sharing-command-palette.png?alt=media" alt="" width="375"><figcaption><p>Start a shared session via the Command Palette.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-8343825979e5d6cd5018ceb9285a92931c1044f5%2Fagent-session-sharing-command-palette.png?alt=media" alt="" width="375"><figcaption><p>Start a shared session via the Command Palette.</p></figcaption></figure>
 
 #### 2. Open the shared session on another device
 
@@ -50,7 +50,7 @@ Viewers see:
 * Agent thinking animations
 * Tool use
 * Planning steps
-* [ai-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits "mention") usage
+* [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits) usage
 * Final responses
 
 This happens live as the sharer interacts with the Agent.

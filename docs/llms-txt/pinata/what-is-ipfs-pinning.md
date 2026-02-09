@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/ipfs-101/what-is-ipfs-pinning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is Pinning?
 
 IPFS "Pinning" is the foundation to getting content on IPFS. When you upload a file to IPFS, the IPFS node will create a [CID](/ipfs-101/what-are-cids) for that file which will act as the identifier and the address. Then it will "pin" that file to the IPFS network, making it available for other nodes to request it. At that point any other IPFS node can request the content for a CID, and the content will pass through other nodes leaving a cache on that node. This makes it faster to fetch files again if those nodes are used.

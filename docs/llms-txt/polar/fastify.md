@@ -1,12 +1,46 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/fastify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fastify
 
 > Payments and Checkouts made dead simple with Fastify
 
-```bash  theme={null}
-pnpm install @polar-sh/fastify zod
-```
+## Examples
+
+* [With Fastify](https://github.com/polarsource/examples/tree/main/with-fastify)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/fastify
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 

@@ -11,7 +11,7 @@ Baseten is a platform for building, serving, and scaling AI models in production
 
 It supports multiple entry points depending on your workflow—whether you're deploying a dedicated model, calling an open-source LLM via our Model API, or training from scratch.
 
-**At the core is the Baseten Inference Stack:** performant model runtimes on top of Inference optimized infrastructure. Instead of managing infrastructure, scaling policies, and performance optimization, you can focus on building and iterating on your AI-powered applications.
+**At the core is the Baseten Inference Stack:** performant model engines on top of Inference optimized infrastructure. Instead of managing infrastructure, scaling policies, and performance optimization, you can focus on building and iterating on your AI-powered applications.
 
 ***
 
@@ -25,12 +25,12 @@ Baseten’s deployment stack is structured around four key pillars:
 
 Package any model using Truss, our open-source framework for defining dependencies, hardware, and custom logic—no Docker required. For more advanced use cases, build compound inference systems using Chains, orchestrating multiple models, APIs, and processing steps.
 
-<CardGroup cols={2}>
-  <Card title="Developing a model" href="/development/model" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c320f770ea283b7d13e89533d202016d" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/how-baseten-works-truss.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=23b6782ea9c86030a14db14c36075704 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3d04a8c7770d8f8d9f2d52f9063d01e2 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d33af8a0f99292fad4285ff2e5483d65 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b411bb63f8f7fe75b87238373cb57a36 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=ead28695833c12dc1d5bf1a69416215c 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e8e8158fb146440aa46530fb4d88d539 2500w">
+<CardGroup>
+  <Card title="Developing a model" href="/development/model">
     Package and deploy any AI/ML model as an API with Truss or a Custom Server.
   </Card>
 
-  <Card title="Developing a Chain" href="/development/chain" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=672e515bad1fd2888cc65381c5a5010c" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/how-baseten-works-chains.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8f1be4c10da7f8ca84c726152936cd75 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=70a1a3e26bb1429518857a1195eced27 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b1e97197db352d3b68b0c02f5c61ae27 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=454929ec2319e4f64eaded013e5d58a0 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=7a720c4d02fc41515678a7dfd189bc55 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4455e2b78247363a9ca0564a628a1aee 2500w">
+  <Card title="Developing a Chain" href="/development/chain">
     Build multi-model workflows by chaining models, pre/post-processing, and
     business logic.
   </Card>
@@ -40,21 +40,21 @@ Package any model using Truss, our open-source framework for defining dependenci
 
 Deploy models to dedicated, autoscaling infrastructure. Use Environments for controlled versioning, rollouts, and promotion between staging and production. Support includes scale-to-zero, canary deploys, and structured model management.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=833c7f33c3a39b50502326b9cec14090" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=85501a364b60a6f564dfbdfb79af9038 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=bc9e92a71bc5bc07b8a712e8583f00b8 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=687778fd0bf01755091841abba9f2c16 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=12ca03f794ef57bb9b92d87ece692527 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=cea81f5e83fad83853169baae69d24b7 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=17a1fbe9a5dd58f733b350400a9acfe7 2500w" />
+<img />
 
 ### Inference
 
 Serve synchronous, asynchronous, and streaming predictions with configurable execution controls. Optimize for latency, throughput, or cost depending on your application’s needs.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=eac4b2c5cb0945c753d3a1353da65bed" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/inference.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d999899a70e25aaa499b50585acd5d0a 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=61e98026b32c791687eb620f9f12d736 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=31e8c1b82ed6c1735b9a15ac5f3c0d66 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8f7fce9302b66c76e132fd4420118524 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c76330ea0c581db8514aa776ed5cb529 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=cf13be55ca64546fabf0e55cf3ad6255 2500w" />
+<img />
 
 ### Observability
 
 Monitor model health and performance with real-time metrics, logs, and detailed request traces. Export data to observability tools like Datadog or Prometheus. Debug behavior with full visibility into inputs, outputs, and errors.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a81bbd59a02719c6814e62fdbfa89ec3" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/observability.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=15a3fb2106b5f51cd50b261131541f01 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1aa2af207e9f007781838fbd8ca63f50 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=90b0499c358c033b78985f2e08386e2e 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e6dfb73381b1ac4f70a7299f473c2fe7 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=537db025cbccafe7f54dbe0d99c736fe 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=daf4644abc87786401d3959d0f05d7d7 2500w" />
+<img />
 
-This full-stack infrastructure, from packaging to observability, is powered by the **Baseten Inference Stack**: performant model runtimes, cross-cloud availability, and seamless developer workflows.
+This full-stack infrastructure, from packaging to observability, is powered by the **Baseten Inference Stack**: performant model engines, cross-cloud availability, and seamless developer workflows.
 
 ***
 
@@ -88,7 +88,7 @@ Source: https://docs.baseten.co/concepts/whybaseten
 
 Baseten delivers fast, scalable AI/ML inference with enterprise-grade security and reliability—whether in our cloud or yours.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=c40bb99430c86f6b6da6d32767c9b86e" data-og-width="1446" width="1446" data-og-height="828" height="828" data-path="images/why-baseten.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=280&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=20238e37ad89da2c6063745b437f05b7 280w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=560&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=bfcd9dd6b0fb7fe547bfb060876ec87c 560w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=840&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=d8e8116ce0b3e9c2978d8e14285fdc26 840w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=1100&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=d7f3ac8ec4ea64b861ff665734246100 1100w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=1650&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=849a009a35bba9b5a7e1d323395d1c30 1650w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/why-baseten.png?w=2500&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=ed84669856c850977b20e85ac41c30f9 2500w" />
+<img />
 
 ## Mission-critical inference
 
@@ -118,8 +118,7 @@ Get hands-on support with deep inference-specific expertise and 24/7 on-call ava
 
 #### Model training and finetuning, all in one platform
 
-Baseten Training provides a fast, scalable, and flexible platform for training and finetuning models. Deploy checkpoints immediately with the click of a button
-to run end to end evals and seemlessly launch to prod.
+Baseten Training provides a fast, scalable, and flexible platform for training and finetuning models. Deploy checkpoints immediately with the click of a button to run end-to-end evals and seamlessly launch to production.
 
 
 # Autoscaling
@@ -127,7 +126,7 @@ Source: https://docs.baseten.co/deployment/autoscaling
 
 Autoscaling dynamically adjusts the number of active replicas to **handle variable traffic** while minimizing idle compute costs.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f867eb7ccef178bae2fd11117365bebb" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-autoscaling.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b88950b4dd0eb765a37d74991ce29062 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f0b5d2412ebf1a9117c165f9b5711f18 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5eb7a1b115bd723b732d5889382742df 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=74fb3e685e86eddade1e04ef92b9e424 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b9c25eb323072c47121cde1c20c12a44 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=61671a961d7da633fb3a95ab4becd92c 2500w" />
+<img />
 
 ## Configuring autoscaling
 
@@ -138,7 +137,7 @@ Configure autoscaling through:
 * **UI** → Manage settings in your Baseten workspace.
 * **API** → Use the **[autoscaling API](/reference/management-api/deployments/autoscaling)**.
 
-### Replica Scaling
+### Replica scaling
 
 Each deployment scales within a configured range of replicas:
 
@@ -171,7 +170,7 @@ usage on each replica, where a lower number means more headroom and buffer for t
 
 ## Autoscaling behavior
 
-### Scaling Up
+### Scaling up
 
 When the **average requests per active replica** exceed the **concurrency target** within the **autoscaling window**, more replicas are created until:
 
@@ -181,7 +180,7 @@ When the **average requests per active replica** exceed the **concurrency target
 Note here that the amount of headroom is determined by the **target utilization percentage**. For example, with a concurrency target of 10 requests and a
 target utilization percentage of 70%, scaling will begin when the average requests per active replica exceeds 7.
 
-### Scaling Down
+### Scaling down
 
 When traffic drops below the **concurrency target**, excess replicas are flagged for removal. The **scale-down delay** ensures that replicas are not removed prematurely:
 
@@ -214,7 +213,7 @@ A **cold start** is the time required to **initialize a new replica** when scali
 * **Scaled-to-zero deployments** → The first request must wait for a new replica to start.
 * **Scaling events** → When traffic spikes and a deployment requires more replicas.
 
-### Cold Start Optimizations
+### Cold start optimizations
 
 **Network accelerator**
 
@@ -271,31 +270,31 @@ Source: https://docs.baseten.co/deployment/concepts
 
 
 
-Baseten provides a flexible and scalable infrastructure for deploying and managing machine learning models. This page introduces key concepts - [deployments](/deployment/deployments), [environments](/deployment/environments) , [resources](/deployment/resources) , and [autoscaling](/deployment/autoscaling) — that shape how models are served, tested, and optimized for performance and cost efficiency.
+Baseten provides a flexible and scalable infrastructure for deploying and managing machine learning models. This page introduces key concepts - [deployments](/deployment/deployments), [environments](/deployment/environments), [resources](/deployment/resources), and [autoscaling](/deployment/autoscaling) — that shape how models are served, tested, and optimized for performance and cost efficiency.
 
 ## Deployments
 
 [Deployments](/deployment/deployments) define how models are served, scaled, and updated. They optimize resource use with autoscaling, scaling to zero, and controlled traffic shifts while ensuring minimal downtime. Deployments can be deactivated to pause resource usage or deleted permanently when no longer needed.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=833c7f33c3a39b50502326b9cec14090" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=85501a364b60a6f564dfbdfb79af9038 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=bc9e92a71bc5bc07b8a712e8583f00b8 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=687778fd0bf01755091841abba9f2c16 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=12ca03f794ef57bb9b92d87ece692527 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=cea81f5e83fad83853169baae69d24b7 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployments.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=17a1fbe9a5dd58f733b350400a9acfe7 2500w" />
+<img />
 
 ## Environments
 
 [Environments](/deployment/environments) group deployments, providing stable endpoints and autoscaling to manage model release cycles. They enable structured testing, controlled rollouts, and seamless transitions between staging and production. Each environment maintains its own settings and metrics, ensuring reliable and scalable deployments.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e922f3e12c24577d6594ca58f80431ee" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-environments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=210053dfe7b0d3398f261f1105ac6bf9 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3a7e2675275ae1f78ac5fe83330e926c 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=874b4335f21d8939c58dcd2c2b978c8c 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=09f864b743a3921b713612d54ed9708b 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a6397fff11d9c0edfd8103f44b8b501e 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=23a5dd05c6ee1ab42cecb3698098cbb3 2500w" />
+<img />
 
 ## Resources
 
 [Resources](/deployment/resources) define the hardware allocated to a model server, balancing performance and cost. Choosing the right instance type ensures efficient inference without unnecessary overhead. Resources can be set before deployment in Truss or adjusted later in the model dashboard to match workload demands.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=028f7b8a7c5e1d92f0b55f2eec8aad11" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-resources.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5bc11192879c6aa199388df6c531a5a0 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=acbafbbe854fa0701fc63f47ab84a8f0 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5d677c56115318ebfb994e554a1f657c 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b1fd3e5c69b2b965884044cb6975d2c6 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5ed48475146334e0a2fc56f11511d599 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c8045c2ee7a60d89a940119536d71005 2500w" />
+<img />
 
 ## Autoscaling
 
 [Autoscaling](/deployment/autoscaling) dynamically adjusts model resources to handle traffic fluctuations efficiently while minimizing costs. Deployments scale between a defined range of replicas based on demand, with settings for concurrency, scaling speed, and scale-to-zero for low-traffic models. Optimizations like network acceleration and cold start pods ensure fast response times even when scaling up from zero.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f867eb7ccef178bae2fd11117365bebb" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-autoscaling.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b88950b4dd0eb765a37d74991ce29062 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f0b5d2412ebf1a9117c165f9b5711f18 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5eb7a1b115bd723b732d5889382742df 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=74fb3e685e86eddade1e04ef92b9e424 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b9c25eb323072c47121cde1c20c12a44 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-autoscaling.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=61671a961d7da633fb3a95ab4becd92c 2500w" />
+<img />
 
 
 # Deployments
@@ -307,7 +306,7 @@ A **deployment** in Baseten is a **containerized instance of a model** that serv
 
 Every deployment is **automatically wrapped in a REST API**. Once deployed, models can be queried with a simple HTTP request:
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 
 resp = requests.post(
@@ -338,7 +337,7 @@ Once promoted, the development deployment transitions to a **deployment** and ca
 
 ***
 
-# Environments & Promotion
+# Environments and promotion
 
 Environments provide **logical isolation** for managing deployments but are **not required** for a deployment to function. A deployment can be executed independently or promoted to an environment for controlled traffic allocation and scaling.
 
@@ -398,7 +397,7 @@ Manage your model’s release cycles with environments.
 
 Environments provide structured management for deployments, ensuring controlled rollouts, stable endpoints, and autoscaling. They help teams stage, test, and release models without affecting production traffic.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e922f3e12c24577d6594ca58f80431ee" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-environments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=210053dfe7b0d3398f261f1105ac6bf9 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3a7e2675275ae1f78ac5fe83330e926c 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=874b4335f21d8939c58dcd2c2b978c8c 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=09f864b743a3921b713612d54ed9708b 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a6397fff11d9c0edfd8103f44b8b501e 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-environments.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=23a5dd05c6ee1ab42cecb3698098cbb3 2500w" />
+<img />
 
 Deployments can be promoted to an environment (e.g., "staging") to validate outputs before moving to production, allowing for safer model iteration and evaluation.
 
@@ -408,7 +407,7 @@ Deployments can be promoted to an environment (e.g., "staging") to validate outp
 
 Environments support **structured validation** before promoting a deployment, including:
 
-* **Automated tests & evaluations**
+* **Automated tests and evaluations**
 * **Manual testing in pre-production**
 * **Gradual traffic shifts with canary deployments**
 * **Shadow serving for real-world analysis**
@@ -418,7 +417,7 @@ Promoting a deployment ensures it inherits **environment-specific scaling and mo
 * **Dedicated API endpoint** → [Predict API Reference](/reference/inference-api/overview#predict-endpoints)
 * **Autoscaling controls** → Scale behavior is managed per environment.
 * **Traffic ramp-up** → Enable [canary rollouts](/deployment/deployments#canary-deployments).
-* **Monitoring & Metrics** → [Export environment metrics](/observability/export-metrics/overview).
+* **Monitoring and metrics** → [Export environment metrics](/observability/export-metrics/overview).
 
 A **production environment** operates like any other environment but has restrictions:
 
@@ -462,7 +461,7 @@ Previous deployments are **demoted but remain in the system**, retaining their *
 
 You can **skip development stage** and deploy directly to an environment by specifying `--environment` in `truss push`:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 cd my_model/
 truss push --environment {environment_name}
 ```
@@ -475,7 +474,7 @@ truss push --environment {environment_name}
 
 The **environment name** is available in `model.py` via the `environment` keyword argument:
 
-```python  theme={"system"}
+```python theme={"system"}
 def __init__(self, **kwargs):
     self._environment = kwargs["environment"]
 ```
@@ -502,18 +501,18 @@ Manage and configure model resources
 
 Every AI/ML model on Baseten runs on an **instance**, a dedicated set of hardware allocated to the model server. Selecting the right instance type ensures **optimal performance** while controlling **compute costs**.
 
-* **Insufficient resources** → Slow inference or failures.
-* **Excess resources** → Higher costs without added benefit.
+* **Insufficient resources**: Slow inference or failures.
+* **Excess resources**: Higher costs without added benefit.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=028f7b8a7c5e1d92f0b55f2eec8aad11" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/deployment-resources.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5bc11192879c6aa199388df6c531a5a0 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=acbafbbe854fa0701fc63f47ab84a8f0 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5d677c56115318ebfb994e554a1f657c 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b1fd3e5c69b2b965884044cb6975d2c6 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5ed48475146334e0a2fc56f11511d599 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/deployment-resources.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c8045c2ee7a60d89a940119536d71005 2500w" />
+<img />
 
 ## Instance type resource components
 
-* **Instance** → The allocated hardware for inference.
-* **vCPU** → Virtual CPU cores for general computing.
-* **RAM** → Memory available to the CPU.
-* **GPU** → Specialized hardware for accelerated ML workloads.
-* **VRAM** → Dedicated GPU memory for model execution.
+* **Instance**: The allocated hardware for inference.
+* **vCPU**: Virtual CPU cores for general computing.
+* **RAM**: Memory available to the CPU.
+* **GPU**: Specialized hardware for accelerated ML workloads.
+* **VRAM**: Dedicated GPU memory for model execution.
 
 ***
 
@@ -523,51 +522,78 @@ Resources can be defined **before deployment** in Truss or **adjusted later** vi
 
 ### Defining resources in Truss
 
-Define resource requirements in `config.yaml` before running `truss push`. Any changes after deployment will not impact previous deployments. Running `truss push` again will create a new deployment using the resources specified in the `config.yaml`.
+Define resource requirements in [`config.yaml`](/development/model/configuration) before running `truss push`.
+
+* **Development deployment** (`truss push --watch`): Deploys or overwrites the existing development deployment with live reload enabled. Use [`truss watch`](/development/model/deploy-and-iterate) for rapid iteration without redeploying.
+* **Published deployment** (`truss push --publish`): Creates a new deployment (named sequentially: `deployment-1`, `deployment-2`, etc.) using the resources in [`config.yaml`](/development/model/configuration).
+* **Production deployment** (`truss push --promote`): Creates a new deployment and promotes it to production, replacing the active deployment.
+* **Environment deployment** (`truss push --environment <name>`): Deploys directly to a [custom environment](/deployment/environments) like staging.
+
+<Note>
+  When no flag is specified, `truss push` defaults to a published deployment. Use `--watch` for development deployments with live reload support.
+</Note>
 
 <Info>
-  The only exception is the **development** deployment. It will be redeployed with the new specified resources.
+  Changes to `config.yaml` only affect new deployments. To update resources on an existing published deployment, edit resources in the [Baseten UI](#updating-resources-in-the-baseten-ui).
 </Info>
 
-**Example (Stable Diffusion XL):**
+You can configure resources in two ways:
+
+**Option 1: Specify individual resource fields**
 
 ```yaml config.yaml theme={"system"}
 resources:
   accelerator: L4
   cpu: "4"
   memory: 16Gi
-  use_gpu: true
 ```
 
 Baseten provisions the **smallest instance that meets the specified constraints**:
 
-* \*\*cpu: "3" or "4" → \*\*Maps to a 4-core instance.
-* \*\*cpu: "5" to "8" → \*\*Maps to an 8-core instance.
+* cpu: "3" or "4" → Maps to a 4-core instance.
+* cpu: "5" to "8" → Maps to an 8-core instance.
 
 <Info>
   `Gi` in `resources.memory` refers to **Gibibytes**, which are slightly larger
   than **Gigabytes**.
 </Info>
 
+**Option 2: Specify an exact instance type**
+
+An instance type is the full SKU name that uniquely identifies a specific hardware configuration. When you specify individual resource fields like `cpu` and `accelerator`, Baseten selects the smallest instance that meets your requirements. With `instance_type`, you specify exactly which instance you want—no guessing required.
+
+Use `instance_type` when you:
+
+* Know the exact hardware configuration you need.
+* Want to ensure consistent instance selection across deployments.
+* Are following a recommendation for a specific model (e.g., "use an L4 with 4 vCPUs and 16 GiB RAM").
+
+```yaml config.yaml theme={"system"}
+resources:
+  instance_type: "L4:4x16"
+```
+
+The format encodes the hardware specs: `<GPU>:<vCPU>x<MEMORY>`. For example, `L4:4x16` means an L4 GPU with 4 vCPUs and 16 GiB of RAM. When `instance_type` is specified, other resource fields (`cpu`, `memory`, `accelerator`, `use_gpu`) are ignored.
+
 ### Updating resources in the Baseten UI
 
-Once deployed, resource configurations can only be updated **through the Baseten UI**. Changing the instance type will deploy a new copy of the deployment using the new specified instance type.
+Once deployed, resource configurations can only be updated **through the Baseten UI**. Changing the instance type deploys a copy of the deployment using the specified instance type.
 
 <Info>
-  Like when running `truss push`, the **development** deployment will be redeployed with the new specified instance type.
+  Like when running `truss push --watch`, the **development** deployment will be redeployed with the new specified instance type.
 </Info>
 
 For a list of available instance types, see the [instance type reference](/deployment/resources#instance-type-reference).
 
 ***
 
-# Instance Type Reference
+# Instance type reference
 
 Specs and benchmarks for every Baseten instance type.
 
 Choosing the right instance for model inference means balancing performance and cost. This page lists all available instance types on Baseten to help you deploy and serve models effectively.
 
-## CPU-only Instances
+## CPU-only instances
 
 Cost-effective options for lighter workloads. No GPU.
 
@@ -576,12 +602,14 @@ Cost-effective options for lighter workloads. No GPU.
 
 | Instance | \$/min    | vCPU | RAM    |
 | -------- | --------- | ---- | ------ |
-| 1×2      | \$0.00058 | 1    | 2 GiB  |
-| 1×4      | \$0.00086 | 1    | 4 GiB  |
-| 2×8      | \$0.00173 | 2    | 8 GiB  |
-| 4×16     | \$0.00346 | 4    | 16 GiB |
-| 8×32     | \$0.00691 | 8    | 32 GiB |
-| 16×64    | \$0.01382 | 16   | 64 GiB |
+| 1x2      | \$0.00058 | 1    | 2 GiB  |
+| 1x4      | \$0.00086 | 1    | 4 GiB  |
+| 2x8      | \$0.00173 | 2    | 8 GiB  |
+| 4x16     | \$0.00346 | 4    | 16 GiB |
+| 8x32     | \$0.00691 | 8    | 32 GiB |
+| 16x64    | \$0.01382 | 16   | 64 GiB |
+
+To select a CPU-only instance, use the format `CPU:<vCPU>x<MEMORY>` (e.g., `instance_type: "CPU:4x16"`).
 
 **Example workloads:**
 
@@ -589,7 +617,7 @@ Cost-effective options for lighter workloads. No GPU.
 * `4x16`: LayoutLM Document QA
 * `4x16+`: Sentence Transformers embeddings on larger corpora
 
-## GPU Instances
+## GPU instances
 
 Accelerated inference for LLMs, diffusion models, and Whisper.
 
@@ -599,7 +627,7 @@ Accelerated inference for LLMs, diffusion models, and Whisper.
 | T4x8x32        | \$0.01504 | 8    | 32 GiB   | NVIDIA T4              | 16 GiB  |
 | T4x16x64       | \$0.02408 | 16   | 64 GiB   | NVIDIA T4              | 16 GiB  |
 | L4x4x16        | \$0.01414 | 4    | 16 GiB   | NVIDIA L4              | 24 GiB  |
-| L4:2x4x16      | \$0.04002 | 24   | 96 GiB   | 2 NVIDIA L4s           | 48 GiB  |
+| L4:2x24x96     | \$0.04002 | 24   | 96 GiB   | 2 NVIDIA L4s           | 48 GiB  |
 | L4:4x48x192    | \$0.08003 | 48   | 192 GiB  | 4 NVIDIA L4s           | 96 GiB  |
 | A10Gx4x16      | \$0.02012 | 4    | 16 GiB   | NVIDIA A10G            | 24 GiB  |
 | A10Gx8x32      | \$0.02424 | 8    | 32 GiB   | NVIDIA A10G            | 24 GiB  |
@@ -607,7 +635,6 @@ Accelerated inference for LLMs, diffusion models, and Whisper.
 | A10G:2x24x96   | \$0.05672 | 24   | 96 GiB   | 2 NVIDIA A10Gs         | 48 GiB  |
 | A10G:4x48x192  | \$0.11344 | 48   | 192 GiB  | 4 NVIDIA A10Gs         | 96 GiB  |
 | A10G:8x192x768 | \$0.32576 | 192  | 768 GiB  | 8 NVIDIA A10Gs         | 188 GiB |
-| V100x8x61      | \$0.06120 | 16   | 61 GiB   | NVIDIA V100            | 16 GiB  |
 | A100x12x144    | \$0.10240 | 12   | 144 GiB  | 1 NVIDIA A100          | 80 GiB  |
 | A100:2x24x288  | \$0.20480 | 24   | 288 GiB  | 2 NVIDIA A100s         | 160 GiB |
 | A100:3x36x432  | \$0.30720 | 36   | 432 GiB  | 3 NVIDIA A100s         | 240 GiB |
@@ -622,7 +649,14 @@ Accelerated inference for LLMs, diffusion models, and Whisper.
 | H100:8         | \$0.86667 | -    | -        | 8 NVIDIA H100s         | 640 GiB |
 | H100MIG        | \$0.06250 | -    | -        | Fractional NVIDIA H100 | 40 GiB  |
 
-## GPU Details & Workloads
+To select a GPU instance with `instance_type`:
+
+* **Single GPU**: `<GPU>:<vCPU>x<MEMORY>` (e.g., `"L4:4x16"`).
+* **Multi-GPU**: `<GPU>:<COUNT>x<vCPU>x<MEMORY>` (e.g., `"A100:2x24x288"`).
+* **H100**: `H100` or `H100:<COUNT>` (e.g., `"H100:2"`).
+* **Fractional H100**: `"H100_40GB"`.
+
+## GPU details and workloads
 
 ### T4
 
@@ -638,7 +672,6 @@ Ada Lovelace-series GPU
 
 * 7,680 CUDA / 240 Tensor cores
 * 24 GiB VRAM, 300 GiB/s
-* 24 GiB VRAM, 300 GiB/s
 * 121 TFLOPS (fp16)
 * **Best for**: Stable Diffusion XL
 * **Limit**: Not suitable for LLMs due to bandwidth
@@ -651,13 +684,6 @@ Ampere-series GPU
 * 24 GiB VRAM, 600 GiB/s
 * 70 TFLOPS (fp16)
 * **Best for**: Mistral 7B, Whisper, Stable Diffusion/SDXL
-
-### V100
-
-Volta-series GPU
-
-* 16 GiB VRAM
-* **Best for**: Legacy workloads needing V100-specific support
 
 ### A100
 
@@ -675,7 +701,7 @@ Hopper-series GPU
 * 16,896 CUDA / 640 Tensor cores
 * 80 GiB VRAM, 3.35 TB/s
 * 990 TFLOPS (fp16)
-* **Best for**: Mixtral 8x7B, Llama 2 70B (2×H100), SDXL
+* **Best for**: Mixtral 8x7B, Llama 2 70B (2xH100), SDXL
 
 ### H100MIG
 
@@ -711,7 +737,7 @@ include binary data: numpy array support and raw bytes.
 To include numpy arrays in a pydantic model, chains has a special field type
 implementation `NumpyArrayField`. For example:
 
-```python  theme={"system"}
+```python theme={"system"}
 import numpy as np
 import pydantic
 
@@ -737,7 +763,7 @@ print(data)
 `NumpyArrayField` is a wrapper around the actual numpy array. Inside your
 python code, you can work with its `array` attribute:
 
-```python  theme={"system"}
+```python theme={"system"}
 data.some_numbers.array += 10
 # some_numbers=NumpyArrayField(shape=(3, 2), dtype=float64, data=[
 #   [10.39595027 10.23837526]
@@ -759,7 +785,7 @@ For Chainlet-Chainlet RPCs this is done automatically for you by enabling binary
 mode of the dependency Chainlets, see
 [all options](/reference/sdk/chains#truss-chains-depends):
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -788,7 +814,7 @@ which often gives performance increases.
 If you want to send such data as input to a chain or parse binary output
 from a chain, you have to add the `msgpack` serialization client-side:
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import msgpack
 import msgpack_numpy
@@ -829,7 +855,7 @@ on the client.
 The JSON-schema to represent the array is a dict of `shape (tuple[int]), 
 dtype (str), data_b64 (str)`. E.g.
 
-```python  theme={"system"}
+```python theme={"system"}
 print(data.model_dump_json())
 '{"some_numbers":{"shape":[3,2],"dtype":"float64", "data_b64":"30d4/rnKJEAsvm...'
 ```
@@ -881,7 +907,7 @@ This is the simplest possible Chainlet — only the
 [`run_remote()`](/development/chain/concepts#run-remote-chaining-chainlets) method is
 required — and we can layer in other concepts to create a more capable Chainlet.
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -910,7 +936,7 @@ Configuration is set using the
 [`remote_config`](/reference/sdk/chains#remote-configuration) class variable
 within the Chainlet:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -923,6 +949,14 @@ class MyChainlet(chains.ChainletBase):
         assets=chains.Assets(secret_keys=["hf_access_token"], ...),
     )
 ```
+
+To select an exact instance type instead of specifying individual resource fields, use `instance_type`:
+
+```python theme={"system"}
+compute=chains.Compute(instance_type="H100:8x80")
+```
+
+When `instance_type` is specified, `cpu_count`, `memory`, and `gpu` fields are ignored.
 
 See the
 [remote configuration reference](/reference/sdk/chains#remote-configuration)
@@ -938,7 +972,7 @@ weights once then re-use it every time we run inference.
 We do this setup in `__init__()`, which is run exactly once when the Chainlet is
 deployed or scaled up.
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -971,7 +1005,7 @@ This allows you to use secrets within your Chainlet, such as using
 a `hf_access_token` to access a gated model on Hugging Face (note that when
 using secrets, they also need to be added to the `assets`).
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -1011,7 +1045,7 @@ Once a dependency Chainlet is added with
 call this dependency Chainlet, e.g. below `HelloAll` we can make calls to
 `SayHello`:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -1037,7 +1071,7 @@ annotations.
 In `run_remote()` you implement the actual work of the Chainlet, such as model
 inference or data chunking:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -1082,7 +1116,7 @@ Using the
 [`@chains.mark_entrypoint`](/reference/sdk/chains#truss-chains-mark-entrypoint)
 decorator, one Chainlet within a file is set as the entrypoint to the chain.
 
-```python  theme={"system"}
+```python theme={"system"}
 @chains.mark_entrypoint
 class HelloAll(chains.ChainletBase):
 ```
@@ -1090,7 +1124,7 @@ class HelloAll(chains.ChainletBase):
 Optionally you can also set a Chain display name (not to be confused with
 Chainlet display name) with this decorator:
 
-```python  theme={"system"}
+```python theme={"system"}
 @chains.mark_entrypoint("My Awesome Chain")
 class HelloAll(chains.ChainletBase):
 ```
@@ -1112,7 +1146,7 @@ can be:
 
 An example of pydantic input and output types for a Chainlet is given below:
 
-```python  theme={"system"}
+```python theme={"system"}
 import enum
 import pydantic
 
@@ -1174,7 +1208,7 @@ settings.
 
 The default behavior for pushing a chain is to create a development deployment:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss chains push ./my_chain.py
 ```
 
@@ -1191,7 +1225,7 @@ guide](/development/chain/watch).
 
 To deploy a Chain to an environment, run:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss chains push ./my_chain.py --environment {env_name}
 ```
 
@@ -1202,7 +1236,7 @@ which is relegated to the published deployments list.
 [Learn more](/deployment/environments) about environments.
 
 
-# Architecture & Design
+# Architecture and design
 Source: https://docs.baseten.co/development/chain/design
 
 How to structure your Chainlets
@@ -1216,7 +1250,7 @@ Then it splits it into smaller chunks, transcribes each chunk in parallel
 results.
 
 <Frame>
-  <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=135870ba1fc2e86cf319815eafe14441" data-og-width="1280" width="1280" data-og-height="155" height="155" data-path="development/chain/images/audio-transcription.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=349246b63271305875316013222b8c90 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3cd50bb5fff404036b210ff33feebc53 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=839c92448e904237050e9dc56f19a1e7 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5ed90d4e49b2a27c35f35706cf53cfa7 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=35ab233489e8de235bf7cd390ba5963d 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/audio-transcription.svg?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=ed9e02564abf1e48ec71fdd4c60fd034 2500w" />
+  <img />
 </Frame>
 
 To build an efficient Chain, we recommend drafting your high level
@@ -1252,18 +1286,18 @@ design pattern is extensively used in the
 </Warning>
 
 
-# Engine Builder Models
+# Engine-Builder LLM Models
 Source: https://docs.baseten.co/development/chain/engine-builder-models
 
-Engine Builder models are pre-trained models that are optimized for specific inference tasks.
+Engine-Builder LLM models are pre-trained models that are optimized for specific inference tasks.
 
-Baseten's [Engine Builder](/development/model/performance/engine-builder-overview) enables the deployment of optimized model inference engines. Currently, it supports TensorRT-LLM. Truss Chains allows seamless integration of these engines into structured workflows. This guide provides a quick entry point for Chains users.
+Baseten's [Engine-Builder](/engines/engine-builder-llm/overview) enables the deployment of optimized model inference engines. Currently, it supports TensorRT-LLM. Truss Chains allows seamless integration of these engines into structured workflows. This guide provides a quick entry point for Chains users.
 
 ## LLama 7B Example
 
-Use the `EngineBuilderLLMChainlet` baseclass to configure an LLM engine. The additional `engine_builder_config` field specifies model architecture, repository, and runtime parameters and more, the full options are detailed in the [Engine Builder configuration guide](/development/model/performance/engine-builder-config).
+Use the `EngineBuilderLLMChainlet` baseclass to configure an LLM engine. The additional `engine_builder_config` field specifies model architecture, repository, and engine parameters and more, the full options are detailed in the [Engine-Builder configuration guide](/engines/engine-builder-llm/engine-builder-config).
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 from truss.base import trt_llm_config, truss_config
 
@@ -1292,17 +1326,17 @@ class Llama7BChainlet(chains.EngineBuilderLLMChainlet):
 * No `run_local` ([guide](/development/chain/localdev)) and `watch` ([guide](/development/chain/watch)) Standard Chains support a local debugging mode and watch. However, when using `EngineBuilderLLMChainlet`, local execution is not available, and testing must be done after deployment.
   For a faster dev loop of the rest of your chain (everything except the engine builder chainlet) you can substitute those chainlets with stubs like you can do for an already deployed truss model \[[guide](/development/chain/stub)].
 
-## Integrate the Engine Builder Chainlet
+## Integrate the Engine-Builder Chainlet
 
 After defining an `EngineBuilderLLMInput` like `Llama7BChainlet` above, you can use it as a dependency in other conventional chainlets:
 
-```python  theme={"system"}
+```python theme={"system"}
 from typing import AsyncIterator
 import truss_chains as chains
 
 @chains.mark_entrypoint
 class TestController(chains.ChainletBase):
-    """Example using the Engine Builder Chainlet in another Chainlet."""
+    """Example using the Engine-Builder Chainlet in another Chainlet."""
 
     def __init__(self, llm=chains.depends(Llama7BChainlet)) -> None:
         self._llm = llm
@@ -1312,7 +1346,6 @@ class TestController(chains.ChainletBase):
         llm_input = chains.EngineBuilderLLMInput(messages=messages)
         async for chunk in self._llm.run_remote(llm_input):
             yield chunk
-
 ```
 
 
@@ -1382,7 +1415,7 @@ parts). `depends` can be configured with additional
 Below example shows how you can add automatic retries and error handling for
 the call to `TextReplicator` in `TextToNum`:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -1428,16 +1461,16 @@ This quickstart guide contains instructions for creating two Chains:
 
 To use Chains, install a recent Truss version and ensure pydantic is v2:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 pip install --upgrade truss 'pydantic>=2.0.0'
 ```
 
 <Accordion title="Help for setting up a clean development environment">
-  Truss requires python `>=3.8,<3.13`. To set up a fresh development environment,
+  Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
   you can use the following commands, creating a environment named `chains_env`
   using `pyenv`:
 
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   curl https://pyenv.run | bash
   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
   echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -1464,7 +1497,7 @@ export BASETEN_API_KEY="nPh8..."
 Chains are written in Python files. In your working directory,
 create `hello_chain/hello.py`:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir hello_chain
 cd hello_chain
 touch hello.py
@@ -1515,11 +1548,11 @@ endpoint for the entrypoint Chainlet and the function that other Chainlets can
 use as a dependency. The
 [`run_remote()`](/development/chain/concepts#run-remote-chaining-chainlets)
 method must be fully type-annotated
-with <Tooltip tip="E.g. `int`, `str`, `list[float]`">primitive python
+with <Tooltip>primitive python
 types</Tooltip>
-or <Tooltip tip="They have builtin JSON serialization.">[pydantic models](https://docs.pydantic.dev/latest/)</Tooltip>.
+or <Tooltip>[pydantic models](https://docs.pydantic.dev/latest/)</Tooltip>.
 
-Chainlets cannot be <Tooltip tip="I.e. creating instances like `chainlet = RandInt()` in arbitrary locations in your code.">naively</Tooltip> instantiated. The only correct usages are:
+Chainlets cannot be <Tooltip>naively</Tooltip> instantiated. The only correct usages are:
 
 1. Make one Chainlet depend on another one via the
    [`chains.depends()`](/reference/sdk/chains#truss-chains-depends) directive
@@ -1540,7 +1573,7 @@ imports from other files, and so forth.
 
 To deploy your Chain to Baseten, run:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss chains push hello.py
 ```
 
@@ -1565,7 +1598,7 @@ curl -X POST 'https://chain-.../run_remote' \
 Wait for the status to turn to `ACTIVE` and test invoking your Chain (replace
 `$INVOCATION_URL` in below command):
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl -X POST $INVOCATION_URL \
   -H "Authorization: Api-Key $BASETEN_API_KEY" \
   -d '{"max_value": 10}'
@@ -1585,13 +1618,13 @@ This Chain takes a list of words and returns a poem about each word, written by
 Phi-3. Here's the architecture:
 
 <Frame>
-  <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f6d5826651ed54b5464edb18e21112d4" data-og-width="971" width="971" data-og-height="118" height="118" data-path="development/chain/images/poems.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=94a069566ed45a94e144cd5b5d82289e 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=fe60b7bdd7c7b113547a915c773aad60 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1e8f723e57f205675dbfde2014e320a5 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=6cf0e32c25402c8628de88e29ff0b4f4 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=441a6836e2430a400929d66cd532f80c 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/poems.svg?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f5ef9b81e5e444b95485c61a06b5e171 2500w" />
+  <img />
 </Frame>
 
 We build this Chain in a new working directory (if you are still inside
 `hello_chain/`, go up one level with `cd ..` first):
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir poetry_chain
 cd poetry_chain
 touch poems.py
@@ -1743,14 +1776,14 @@ so for those even a single instance can serve concurrent request.
 
 To deploy your Chain to Baseten, run:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss chains push poems.py
 ```
 
 Wait for the status to turn to `ACTIVE` and test invoking your Chain (replace
 `$INVOCATION_URL` in below command):
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl -X POST $INVOCATION_URL \
     -H "Authorization: Api-Key $BASETEN_API_KEY" \
     -d '{"words": ["bird", "plane", "superman"]}'
@@ -1804,13 +1837,13 @@ in your entrypoint Chainlet.
 
 For example, for the Hello Chain, `HelloAll.run_remote()`:
 
-```python  theme={"system"}
+```python theme={"system"}
 async def run_remote(self, names: list[str]) -> str:
 ```
 
 You'd pass the following JSON payload:
 
-```json  theme={"system"}
+```json theme={"system"}
 { "names": ["Marius", "Sid", "Bola"] }
 ```
 
@@ -1870,20 +1903,20 @@ deployment experiences.
   **Developer experience principles**
 
   <Steps>
-    <Step title="Type safety and validation" stepNumber="4">
+    <Step title="Type safety and validation">
       Eliminate entire taxonomies of bugs by writing typed Python code and
       validating inputs, outputs, module initializations, function signatures,
       and even remote server configurations.
     </Step>
 
-    <Step title="Local debugging" stepNumber="5">
+    <Step title="Local debugging">
       Seamless local testing and cloud deployments: test Chains locally with
       support for mocking the output of any step and simplify your cloud
       deployment loops by separating large model deployments from quick
       updates to glue code.
     </Step>
 
-    <Step title="Incremental adoption" stepNumber="6">
+    <Step title="Incremental adoption">
       Use Chains to orchestrate existing model deployments, like pre-packaged
       models from Baseten’s model library, alongside new model pipelines built
       entirely within Chains.
@@ -1900,8 +1933,7 @@ production.
   The best thing you can do while developing locally with Chains is to run your
   code frequently, even if you do not have a  `__main__` section: the Chains
   framework runs various validations at
-  <Tooltip tip="i.e. just executing the Chainlet class definitions, but not 
-  running their implementation code yet.">module initialization</Tooltip> to help
+  <Tooltip>module initialization</Tooltip> to help
   you catch issues early.
 
   Additionally, running `mypy` and fixing reported type errors can help you
@@ -1959,7 +1991,7 @@ When the `__main__()` module is run, local instances of the Chainlets are
 created, allowing you to test functionality of your chain just by executing the
 Python file:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 cd hello_chain
 python hello.py
 # Hello, Marius
@@ -2010,7 +2042,7 @@ if __name__ == "__main__":
 
 And run your Python file:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 python poems.py
 # ['Here's a poem about bird', 'Here's a poem about plane', 'Here's a poem about superman']
 ```
@@ -2025,7 +2057,7 @@ However, this works at runtime because we constructed `FakePhiLLM` to
 implement the same *protocol* as the real thing. We can make this explicit by
 defining a `Protocol` as a type annotation:
 
-```python  theme={"system"}
+```python theme={"system"}
 from typing import Protocol
 
 
@@ -2036,7 +2068,7 @@ class PhiProtocol(Protocol):
 
 and changing the argument type in `PoemGenerator`:
 
-```python  theme={"system"}
+```python theme={"system"}
 @chains.mark_entrypoint
 class PoemGenerator(chains.ChainletBase):
     def __init__(self, phi_llm: PhiProtocol = chains.depends(PhiLLM)) -> None:
@@ -2058,7 +2090,7 @@ challenges of managing latency, cost and dependencies for complex workflows,
 while leveraging Truss’ existing battle-tested performance, reliability and
 developer toolkit.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/development/chain/images/animation.mp4?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=79e3b77431748c2b54674fcb2ab94133" data-path="development/chain/images/animation.mp4" />
+<video />
 
 # User Guides
 
@@ -2066,44 +2098,44 @@ Guides focus on specific features and use cases. Also refer to
 [getting started](/development/chain/getting-started) and
 [general concepts](/development/chain/concepts).
 
-<CardGroup cols={3}>
-  <Card title="Design" icon="chart-network" iconType="light" href="/development/chain/design">
+<CardGroup>
+  <Card title="Design" icon="chart-network" href="/development/chain/design">
     How to structure your Chainlets, concurrency, file structure
   </Card>
 
-  <Card title="Local Dev" icon="flask" iconType="light" href="/development/chain/localdev">
+  <Card title="Local Dev" icon="flask" href="/development/chain/localdev">
     Iterating, Debugging, Testing, Mocking
   </Card>
 
-  <Card title="Deploy" icon="rocket" iconType="light" href="/development/chain/deploy">
+  <Card title="Deploy" icon="rocket" href="/development/chain/deploy">
     Deploy your Chain on Baseten
   </Card>
 
-  <Card title="Invocation" icon="circle-play" iconType="light" href="/development/chain/invocation">
+  <Card title="Invocation" icon="circle-play" href="/development/chain/invocation">
     Call your deployed Chain
   </Card>
 
-  <Card title="Watch" icon="rotate" iconType="light" href="/development/chain/watch">
+  <Card title="Watch" icon="rotate" href="/development/chain/watch">
     Live-patch deployed code
   </Card>
 
-  <Card title="Subclassing" icon="sitemap" iconType="light" href="/development/chain/subclassing">
+  <Card title="Subclassing" icon="sitemap" href="/development/chain/subclassing">
     Modularize and re-use Chainlet implementations
   </Card>
 
-  <Card title="Streaming" icon="wind" iconType="light" href="/development/chain/streaming">
+  <Card title="Streaming" icon="wind" href="/development/chain/streaming">
     Streaming outputs, reducing latency, SSEs
   </Card>
 
-  <Card title="Binary IO" icon="binary" iconType="light" href="/development/chain/binaryio">
+  <Card title="Binary IO" icon="binary" href="/development/chain/binaryio">
     Performant serialization of numeric data
   </Card>
 
-  <Card title="Error Propagation" icon="triangle-exclamation" iconType="light" href="/development/chain/errorhandling">
+  <Card title="Error Propagation" icon="triangle-exclamation" href="/development/chain/errorhandling">
     Understanding and handling Chains errors
   </Card>
 
-  <Card title="Truss Integration" icon="cube" iconType="light" href="/development/chain/stub">
+  <Card title="Truss Integration" icon="cube" href="/development/chain/stub">
     Integrate deployed Truss models with stubs
   </Card>
 </CardGroup>
@@ -2155,20 +2187,20 @@ three for architecture and three for developer experience.
 **Developer experience principles**
 
 <Steps>
-  <Step title="Type safety and validation" stepNumber="4">
+  <Step title="Type safety and validation">
     Eliminate entire taxonomies of bugs by writing typed Python code and
     validating inputs, outputs, module initializations, function signatures,
     and even remote server configurations.
   </Step>
 
-  <Step title="Local debugging" stepNumber="5">
+  <Step title="Local debugging">
     Seamless local testing and cloud deployments: test Chains locally with
     support for mocking the output of any step and simplify your cloud
     deployment loops by separating large model deployments from quick
     updates to glue code.
   </Step>
 
-  <Step title="Incremental adoption" stepNumber="6">
+  <Step title="Incremental adoption">
     Use Chains to orchestrate existing model deployments, like pre-packaged
     models from Baseten’s model library, alongside new model pipelines built
     entirely within Chains.
@@ -2217,7 +2249,7 @@ action for each person on the list.
 
 <AccordionGroup>
   <Accordion title="RAG: retrieval-augmented generation" icon="book">
-    Connect to a vector databases and augment LLM results with additional
+    Connect to vector databases and augment LLM results with additional
     context information without introducing overhead to the model inference
     step.
 
@@ -2233,7 +2265,7 @@ action for each person on the list.
   </Accordion>
 
   <Accordion title="Efficient multi-model pipelines" icon="hand-holding-dollar">
-    Build powerful experiences wit optimal scaling in each step like:
+    Build powerful experiences with optimal scaling in each step like:
 
     * AI phone calling (transcription + LLM + speech synthesis)
     * Multi-step image generation (SDXL + LoRAs + ControlNets)
@@ -2276,7 +2308,7 @@ Low-level, streaming works by sending byte chunks (unicode strings will be
 implicitly encoded) via HTTP. The most primitive way of doing this in Chains
 is by implementing `run_remote` as a bytes- or string-iterator, e.g.:
 
-```python  theme={"system"}
+```python theme={"system"}
 from typing import AsyncIterator
 import truss_chains as chains
 
@@ -2350,7 +2382,7 @@ To have a single source of truth for the types that can be shared between
 the producing Chainlet and the consuming client (either a Chainlet in the
 Chain or an external client), the chains framework uses a `StreamType`-object:
 
-```python  theme={"system"}
+```python theme={"system"}
 import pydantic
 from truss_chains import streaming
 
@@ -2365,7 +2397,7 @@ STREAM_TYPES = streaming.stream_types(
 
 Note that header and footer types are optional and can be left out:
 
-```python  theme={"system"}
+```python theme={"system"}
 STREAM_TYPES = streaming.stream_types(MyDataChunk)
 ```
 
@@ -2373,7 +2405,7 @@ STREAM_TYPES = streaming.stream_types(MyDataChunk)
 
 Use the `STREAM_TYPES` to create a matching stream writer:
 
-```python  theme={"system"}
+```python theme={"system"}
 from typing import AsyncIterator
 import pydantic
 import truss_chains as chains
@@ -2409,7 +2441,7 @@ matching `StreamReader` is created form your `StreamTypes`. Besides the
 types, you connect the reader to the bytes generator that you obtain from the
 remote invocation of the streaming Chainlet:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 from truss_chains import streaming
 
@@ -2459,7 +2491,7 @@ model. They also require
 [`context`](/development/chain/concepts#context-access-information) to be initialized
 (for authentication).
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -2526,7 +2558,7 @@ Below are some example code snippets - they can all be combined with each other!
 
 ### Example base class
 
-```python  theme={"system"}
+```python theme={"system"}
 import asyncio
 import truss_chains as chains
 
@@ -2564,7 +2596,7 @@ for a different client with different request/response schema), you can create
 a subclass which does the I/O conversion. The actual computation is delegated to
 the base classes above.
 
-```python  theme={"system"}
+```python theme={"system"}
 class ChainletStringIO(MyBaseChainlet):
     async def run_remote(self, number: str) -> str:
         return str(await super().run_remote(int(number)))
@@ -2586,7 +2618,7 @@ you want to use a different variant of preprocessing - while keeping
 subclass of `MyBaseChainlet` where you use a different dependency
 `Preprocess8x`, which multiplies by 8 instead of 2.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Preprocess8x(chains.ChainletBase):
     async def run_remote(self, number: int) -> int:
         return 8 * number
@@ -2610,7 +2642,7 @@ with chains.run_local():
 If you want to re-deploy a chain, but change some deployment options, e.g. run
 on different hardware, you can create a subclass and override `remote_config`.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Chainlet16Core(MyBaseChainlet):
     remote_config = chains.RemoteConfig(
         compute=chains.Compute(cpu_count=16, memory="100Mi"),
@@ -2627,7 +2659,7 @@ class Chainlet16Core(MyBaseChainlet):
   If you want to share config between the base class and subclasses, you can
   define them in additional variables e.g. for the image:
 
-  ```python  theme={"system"}
+  ```python theme={"system"}
 
   DOCKER_IMAGE = chains.DockerImage(pip_requirements=[...], ...)
 
@@ -2683,7 +2715,7 @@ and reloading the heavy model Chainlet.
 
 Add the Chainlet names you want to watch as a comma separated list:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 truss chains watch ... --experimental-chainlet-names=ChainletA,ChainletB
 ```
 
@@ -2695,12 +2727,12 @@ Source: https://docs.baseten.co/development/concepts
 
 Baseten provides two core development workflows: [developing a model with Truss](/development/model/) and orchestrating models with [Chains](/development/chain/). Both are building blocks for production-grade ML systems, but they solve different problems.
 
-<CardGroup cols={2}>
-  <Card title="Developing a model with Truss" href="/development/model" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c320f770ea283b7d13e89533d202016d" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/how-baseten-works-truss.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=23b6782ea9c86030a14db14c36075704 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3d04a8c7770d8f8d9f2d52f9063d01e2 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d33af8a0f99292fad4285ff2e5483d65 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b411bb63f8f7fe75b87238373cb57a36 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=ead28695833c12dc1d5bf1a69416215c 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-truss.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e8e8158fb146440aa46530fb4d88d539 2500w">
+<CardGroup>
+  <Card title="Developing a model with Truss" href="/development/model">
     Package and deploy any AI/ML model as an API with Truss or a Custom Server.
   </Card>
 
-  <Card title="Developing a Chain" href="/development/chain" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=672e515bad1fd2888cc65381c5a5010c" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/how-baseten-works-chains.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8f1be4c10da7f8ca84c726152936cd75 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=70a1a3e26bb1429518857a1195eced27 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=b1e97197db352d3b68b0c02f5c61ae27 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=454929ec2319e4f64eaded013e5d58a0 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=7a720c4d02fc41515678a7dfd189bc55 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/how-baseten-works-chains.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4455e2b78247363a9ca0564a628a1aee 2500w">
+  <Card title="Developing a Chain" href="/development/chain">
     Orchestrate multiple models and logic, enabling complex inference workflows.
   </Card>
 </CardGroup>
@@ -2715,7 +2747,7 @@ Baseten provides two core development workflows: [developing a model with Truss]
 
 * **You’re deploying a single model.** Whether it’s a fine-tuned transformer, diffusion model, or traditional classifier, Truss helps you package it with code, configuration, and system requirements to deploy at scale.
 
-* **You want flexibility across tools and frameworks.** Build with your preferred model frameworks (e.g. **PyTorch**, **transformers**, **diffusers**), inference engines (e.g. **TensorRT-LLM**, **SGLang**, **vLLM**), and serving technologies (like **Triton**) as well as [any package](/development/model/configuration) installable via `pip` or `apt`.
+* **You want flexibility across tools and frameworks.** Build with your preferred model frameworks (e.g. PyTorch, transformers, diffusers), inference engines (e.g. TensorRT-LLM, SGLang, vLLM), and serving technologies (like Triton) as well as [any package](/development/model/configuration) installable via `pip` or `apt`.
 
 * **You need control over how your model runs.** Define pre- and post-processing, batching, logging, and custom inference logic. Truss gives you full access to environment settings and dependencies, versioned and deployable.
 
@@ -2740,77 +2772,80 @@ Baseten provides two core development workflows: [developing a model with Truss]
 # Deprecation
 Source: https://docs.baseten.co/development/model-apis/deprecation
 
-Overview of Baseten’s deprecation policy for Model APIs.
+Baseten's deprecation policy for Model APIs
 
-## Deprecation Process
-
-As open source models advance rapidly, we prioritize serving the highest quality models and deprecate specific Model APIs when stronger alternatives are available. When a model is selected for deprecation we follow the below process:
+As open source models advance rapidly, Baseten prioritizes serving the highest quality models and deprecates specific Model APIs when stronger alternatives are available. When a model is selected for deprecation, Baseten follows this process:
 
 1. **Announcement**
-   * Deprecations are announced \~2 weeks prior to the deprecation date
-   * Updated documentation identifying the model to be deprecated along with a recommended replacement
-   * Affected users will be contacted via email
+   * Deprecations are announced approximately two weeks before the deprecation date.
+   * Documentation is updated to identify the model being deprecated and recommend a replacement.
+   * Affected users are contacted via email.
 2. **Transition**
-   * The deprecating model will remain fully functional until the final deprecation date. Following the initial deprecation announcement users have \~2 weeks to transition. There are two options:
-     1. Migrate to a dedicated deployment with the deprecated model weights [contact us](https://www.baseten.co/talk-to-us/deprecation-inquiry/)
-     2. Shift the Model API model ID to an active model (we provide a recommendation in the deprecation announcement)
+   * The deprecated model remains fully functional until the deprecation date. You have approximately two weeks to transition using one of these options:
+     1. Migrate to a dedicated deployment with the deprecated model weights. [Contact us](https://www.baseten.co/talk-to-us/deprecation-inquiry/) for assistance.
+     2. Update your code to use an active model (a recommendation is provided in the deprecation announcement).
 3. **Deprecation date**
-   * The model ID for the deprecated model will become inactive and return an error for all requests
-   * Changelog notification of deprecation with a recommended replacement
+   * The model ID for the deprecated model becomes inactive and returns an error for all requests.
+   * A changelog notification is published with the recommended replacement.
 
-## Planned Deprecations
+## Planned deprecations
 
-There are no planned deprecations at this time.
+| Deprecation Date | Model                          | Recommended Replacement                            | Dedicated Available |
+| :--------------- | :----------------------------- | :------------------------------------------------- | :-----------------: |
+| 2026-2-06        | Qwen3 Coder 480B A35B Instruct | [GLM 4.7](https://www.baseten.co/library/glm-4-7/) |          ✅          |
 
 
-# Using Model APIs on Baseten
+# Model APIs
 Source: https://docs.baseten.co/development/model-apis/overview
 
-Use Baseten's OpenAI-compatible Model APIs for LLMs, including structured outputs and tool calling.
+OpenAI-compatible endpoints for high-performance LLMs
 
-Baseten provides **OpenAI-compatible API endpoints** for all available Model APIs. This means you can use standard OpenAI client libraries—no wrappers, no rewrites, no surprises. If your code already works with OpenAI, it'll work with Baseten.
-
-This guide walks you through getting started, making your first call, and using advanced features like structured outputs and tool calling.
+*Model APIs* provide instant access to high-performance LLMs through OpenAI-compatible endpoints. Point your existing OpenAI SDK at Baseten's inference endpoint and start making calls—no model deployment required.
 
 ## Prerequisites
 
-Before you begin, make sure you have:
+To use Model APIs, you need:
 
 1. A [Baseten account](https://app.baseten.co/signup/)
 2. An [API key](https://app.baseten.co/settings/api_keys)
-3. The [OpenAI client library](https://platform.openai.com/docs/libraries) for your language of choice
+3. The [OpenAI SDK](https://platform.openai.com/docs/libraries) for your language
 
 ## Supported models
 
-Baseten currently offers several high-performing open-source LLMs as [Models APIs](https://app.baseten.co/model-apis/create):
+Enable a model from the [Model APIs page](https://app.baseten.co/model-apis/create) in the Baseten dashboard.
 
-* **OpenAI GPT OSS 120B** (slug: `openai/gpt-oss-120b`)
-* **Qwen3 235B 2507** (slug: `Qwen/Qwen3-235B-A22B-Instruct-2507`)
-* **Qwen3 Coder 480B** (slug: `Qwen/Qwen3-Coder-480B-A35B-Instruct`)
-* **Kimi K2 0905** (slug: `moonshotai/Kimi-K2-Instruct-0905`)
-* **Deepseek V3.1** (slug: `deepseek-ai/DeepSeek-V3.1`)
-* **Deepseek R1 0528** (slug: `deepseek-ai/DeepSeek-R1-0528`)
-* **Deepseek V3 0324** (slug: `deepseek-ai/DeepSeek-V3-0324`)
-* **Z AI GLM4.6** (slug: `zai-org/GLM-4.6`)
-* **Kimi K2 Thinking** (slug: `moonshotai/Kimi-K2-Thinking`)
+| Model               | Slug                                  | Context |
+| ------------------- | ------------------------------------- | ------- |
+| OpenAI GPT OSS 120B | `openai/gpt-oss-120b`                 | 128k    |
+| DeepSeek V3.2       | `deepseek-ai/DeepSeek-V3.2`           | 131k    |
+| DeepSeek V3.1       | `deepseek-ai/DeepSeek-V3.1`           | 164k    |
+| DeepSeek V3 0324    | `deepseek-ai/DeepSeek-V3-0324`        | 164k    |
+| Kimi K2 Thinking    | `moonshotai/Kimi-K2-Thinking`         | 262k    |
+| Kimi K2 0905        | `moonshotai/Kimi-K2-Instruct-0905`    | 128k    |
+| Qwen3 Coder 480B    | `Qwen/Qwen3-Coder-480B-A35B-Instruct` | 262k    |
+| GLM 4.7             | `zai-org/GLM-4.7`                     | 200k    |
+| GLM 4.6             | `zai-org/GLM-4.6`                     | 200k    |
 
-Please update the `model` in the examples below to the slug of the model you'd like to test.
-
-## Make your first API call
+## Create a chat completion
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
+    Initialize the OpenAI client with Baseten's base URL and your API key:
+
+    ```python theme={"system"}
+    from openai import OpenAI
+    import os
+
     client = OpenAI(
         base_url="https://inference.baseten.co/v1",
         api_key=os.environ.get("BASETEN_API_KEY")
     )
 
     response = client.chat.completions.create(
-        model="deepseek-ai/DeepSeek-V3-0324",
+        model="deepseek-ai/DeepSeek-V3.2",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Your question here"}
+            {"role": "user", "content": "Explain gradient descent in one sentence."}
         ]
     )
 
@@ -2819,449 +2854,283 @@ Please update the `model` in the examples below to the slug of the model you'd l
   </Tab>
 
   <Tab title="JavaScript">
-    ```jsx  theme={"system"}
+    Initialize the OpenAI client with Baseten's base URL and your API key:
+
+    ```jsx theme={"system"}
+    import OpenAI from "openai";
+
     const client = new OpenAI({
         baseURL: "https://inference.baseten.co/v1",
         apiKey: process.env.BASETEN_API_KEY,
     });
 
-    // Use the client
-    try {
-        const response = await client.chat.completions.create({
-            model: "deepseek-ai/DeepSeek-V3-0324",
-            messages: [
-                { role: "system", content: "You are a helpful assistant." },
-                { role: "user", content: "Hello, how are you?" },
-            ],
-        })
-    ```
-  </Tab>
-
-  <Tab title="cURL">
-    ```bash  theme={"system"}
-    curl https://inference.baseten.co/v1/chat/completions \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Api-Key $BASETEN_API_KEY" \
-    -d '{
-          "model": "deepseek-ai/DeepSeek-V3-0324",
-          "messages": [{ "role": "user", "content": "Your content here" }],
-          "stream": true,
-          "max_tokens": 10
-        }'
-    echo # Add a newline for cleaner output
-    ```
-  </Tab>
-</Tabs>
-
-## Request parameters
-
-Model APIs support all commonly used [OpenAI ChatCompletions](https://platform.openai.com/docs/api-reference/chat) parameters, including:
-
-* `model`: Slug of the model you want to call (see below)
-* `messages`: Array of message objects (`role` + `content`)
-* `temperature`: Controls randomness (0-2, default 1)
-* `max_tokens`: Maximum number of tokens to generate
-* `stream`: Boolean to enable streaming responses
-
-## Structured outputs
-
-To get structured JSON output from the model, you can use the `response_format` parameter. Set `response_format={"type": "json_object"}` to enable JSON mode. For more complex schemas, you can define a JSON schema.
-
-Let's say you want to extract specific information from a user's query, like a name and an email address.
-
-<Tabs>
-  <Tab title="Python">
-    ```python  theme={"system"}
-    client = OpenAI(
-        base_url="https://inference.baseten.co/v1",
-        api_key=os.environ.get("BASETEN_API_KEY")
-    )
-
-    response = client.chat.completions.create(
-        model="deepseek-ai/DeepSeek-V3-0324", # Or any other supported model
-        messages=[
-            {"role": "system", "content": "You are an expert at extracting information."},
-            {"role": "user", "content": "My name is Jane Doe and my email is jane.doe@example.com. I\'d like to know more about your services."}
+    const response = await client.chat.completions.create({
+        model: "deepseek-ai/DeepSeek-V3.2",
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: "Explain gradient descent in one sentence." }
         ],
-        response_format={
-            "type": "json_object",
-            "json_schema": {
-                "name": "user_details",
-                "description": "User contact information",
-                "schema": {
-                    "type": "object",
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "description": "The user\'s full name"
-                        },
-                        "email": {
-                            "type": "string",
-                            "description": "The user\'s email address"
-                        }
-                    },
-                    "required": ["name", "email"]
-                },
-                "strict": True # Enforce schema adherence
-            }
-        }
-    )
-
-    output = json.loads(response.choices[0].message.content)
-    print(output)
-    # Expected output:
-    # {
-    #   "name": "Jane Doe",
-    #   "email": "jane.doe@example.com"
-    # }
-    ```
-  </Tab>
-
-  <Tab title="JavaScript">
-    ```jsx  theme={"system"}
-    const client = new OpenAI({
-        baseURL: "https://inference.baseten.co/v1",
-        apiKey: process.env.BASETEN_API_KEY,
     });
 
-    // Use the client for structured output
-    try {
-        const response = await client.chat.completions.create({
-            model: "deepseek-ai/DeepSeek-V3-0324",
-            messages: [
-                { role: "system", content: "You are an expert at extracting information." },
-                { role: "user", content: "My name is Jane Doe and my email is jane.doe@example.com. I'd like to know more about your services." },
-            ],
-            response_format: {
-                type: "json_object",
-                json_schema: {
-                    name: "user_details",
-                    description: "User contact information",
-                    schema: {
-                        type: "object",
-                        properties: {
-                            name: { 
-                                type: "string", 
-                                description: "The user's full name" 
-                            },
-                            email: { 
-                                type: "string", 
-                                description: "The user's email address" 
-                            }
-                        },
-                        required: ["name", "email"]
-                    },
-                    strict: true
-                }
-            }
-        })
+    console.log(response.choices[0].message.content);
     ```
   </Tab>
 
   <Tab title="cURL">
-    ```bash  theme={"system"}
-    curl -s "https://inference.baseten.co/v1/chat/completions" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Api-Key $BASETEN_API_KEY" \
-    -d @- << EOF
-    {
-    "model": "deepseek-ai/DeepSeek-V3-0324",
-    "messages": [
-    {"role": "system", "content": "You are an expert at extracting information."},
-    {"role": "user", "content": "My name is Jane Doe and my email is jane.doe@example.com. I'd like to know more about your services."}
-    ],
-    "response_format": {
-    "type": "json_object",
-    "json_schema": {
-      "name": "user_details",
-      "description": "User contact information",
-      "schema": {
-        "type": "object",
-        "properties": {
-          "name": { "type": "string", "description": "The user's full name" },
-          "email": { "type": "string", "description": "The user's email address" }
-        },
-        "required": ["name", "email"]
-      },
-      "strict": true
-    }
-    }
-    }
-    EOF
+    Send a POST request to the chat completions endpoint with your API key in the header:
 
-    echo # Add a newline for cleaner output
+    ```bash theme={"system"}
+    curl https://inference.baseten.co/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -d '{
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "messages": [
+          {"role": "system", "content": "You are a helpful assistant."},
+          {"role": "user", "content": "Explain gradient descent in one sentence."}
+        ]
+      }'
     ```
   </Tab>
 </Tabs>
 
-When `strict: true` is specified within the `json_schema`, the model is constrained to produce output that strictly adheres to the provided schema. If the model cannot or will not produce output that matches the schema, it may return an error or a refusal.
+Replace the model slug with any model from the supported models table.
 
-## Tool calling
+## Features
 
-<Warning>
-  **Model compatibility note:** We recommend using **Deepseek V3** for tool calling functionality. We do not recommend using *Deepseek R1* for tool calling as the model was not post-trained for tool calling.
-</Warning>
+Model APIs support the full OpenAI Chat Completions API:
 
-Tool calling is fully supported. Simply define a list of tools and pass them via the `tools` parameter:
+* **[Structured outputs](/engines/performance-concepts/structured-outputs)**: Generate JSON that conforms to a schema.
+* **[Tool calling](/engines/performance-concepts/function-calling)**: Let the model call functions you define.
+* **[Reasoning](/development/model-apis/reasoning)**: Control extended thinking for complex tasks.
+* **Streaming**: Set `stream: true` to receive responses as server-sent events.
 
-* `type`: The type of tool to call. Currently, the only supported value is `function`.
-* `function`: A dictionary with the following keys:
-  * `name`: The name of the function to be called
-  * `description`: A description of what the function does
-  * `parameters`: A JSON Schema object describing the function parameters
+For the complete parameter reference, see the [Chat Completions API documentation](/reference/inference-api/chat-completions).
 
-```python  theme={"system"}
-# Example list of tools
-{
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "get_weather",
-        "description": "Get the weather for a location",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {
-              "type": "string",
-              "description": "City and state"
-            }
-          },
-          "required": ["location"]
-        }
-      }
-    }
-  ]
-}
+## Migrate from OpenAI
+
+To migrate existing OpenAI code to Baseten, change three values:
+
+1. Replace your API key with a [Baseten API key](https://app.baseten.co/settings/api_keys).
+2. Change the base URL to `https://inference.baseten.co/v1`.
+3. Update the model name to a Baseten model slug.
+
+```python theme={"system"}
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    base_url="https://inference.baseten.co/v1",  # [!code ++]
+    api_key=os.environ["BASETEN_API_KEY"]  # [!code ++]
+)
+
+response = client.chat.completions.create(
+    model="deepseek-ai/DeepSeek-V3.2",  # [!code ++]
+    messages=[{"role": "user", "content": "Hello"}]
+)
 ```
 
-Here's how you might implement tool calling:
+## Handle errors
 
-<Tabs>
-  <Tab title="Python">
-    ```python  theme={"system"}
-    client = OpenAI(
-        base_url="https://inference.baseten.co/v1",
-        api_key=os.environ.get("BASETEN_API_KEY")
-    )
+Model APIs return standard HTTP error codes:
 
-    # Define the message and available tools
-    messages = [{"role": "user", "content": "What's the weather like in Boston?"}]
-    tools = [
-        {
-            "type": "function",
-            "function": {
-                "name": "get_weather",
-                "description": "Get the current weather",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "location": {"type": "string", "description": "City name"},
-                        "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}
-                    },
-                    "required": ["location"]
-                }
-            }
-        }
-    ]
+| Code | Meaning                                 |
+| ---- | --------------------------------------- |
+| 400  | Invalid request (check your parameters) |
+| 401  | Invalid or missing API key              |
+| 402  | Payment required                        |
+| 404  | Model not found                         |
+| 429  | Rate limit exceeded                     |
+| 500  | Internal server error                   |
 
-    # Make the initial request
-    response = client.chat.completions.create(
-        model="deepseek-ai/DeepSeek-V3-0324",
-        messages=messages,
-        tools=tools,
-        tool_choice="auto"
-    )
+The response body contains details about the error and suggested resolutions.
 
-    # Process tool calls if any
-    if response.choices[0].message.tool_calls:
-        # Get the function call details
-        tool_call = response.choices[0].message.tool_calls[0]
-        function_args = json.loads(tool_call.function.arguments)
-        
-        # Call the function and get the result
-        function_response = get_weather(location=function_args.get("location"))
-        
-        # Add function response to conversation
-        messages.append(response.choices[0].message)
-        messages.append({
-            "tool_call_id": tool_call.id,
-            "role": "tool",
-            "name": tool_call.function.name,
-            "content": function_response
-        })
-        
-        # Get the final response with the function result
-        final_response = client.chat.completions.create(
-            model="deepseek-ai/DeepSeek-V3-0324",
-            messages=messages
-        )
-        print(final_response.choices[0].message.content)
-    ```
-  </Tab>
+## Next steps
 
-  <Tab title="JavaScript">
-    ```jsx  theme={"system"}
-    const client = new OpenAI({
-        baseURL: "https://inference.baseten.co/v1",
-        apiKey: process.env.BASETEN_API_KEY,
-    });
+<CardGroup>
+  <Card title="Reasoning" icon="brain" href="/development/model-apis/reasoning">
+    Control extended thinking for complex tasks
+  </Card>
 
-    // Make initial request with tools
-    const response = await client.chat.completions.create({
-        model: "deepseek-ai/DeepSeek-V3-0324",
-        messages: [{ role: "user", content: "What's the weather like in Boston?" }],
-        tools: [{
-            type: "function",
-            function: {
-                name: "get_weather",
-                description: "Get the current weather",
-                parameters: {
-                    type: "object",
-                    properties: {
-                        location: { type: "string", description: "City name" }
-                    },
-                    required: ["location"]
-                }
-            }
-        }]
-    });
+  <Card title="Rate limits" icon="gauge" href="/development/model-apis/rate-limits-and-budgets">
+    Understand and configure rate limits
+  </Card>
 
-    // Process tool calls if any
-    if (response.choices[0].message.tool_calls) {
-        const toolCall = response.choices[0].message.tool_calls[0];
-        const args = JSON.parse(toolCall.function.arguments);
-        
-        // Call function and get result
-        const functionResponse = getWeather(args.location);
-        
-        // Submit function result back to model
-        const messages = [
-            { role: "user", content: "What's the weather like in Boston?" },
-            response.choices[0].message,
-            { tool_call_id: toolCall.id, role: "tool", name: "get_weather", content: functionResponse }
-        ];
-        
-        const finalResponse = await client.chat.completions.create({
-            model: "deepseek-ai/DeepSeek-V3-0324",
-            messages: messages
-        })
-    ```
-  </Tab>
+  <Card title="API reference" icon="code" href="/reference/inference-api/chat-completions">
+    Complete parameter documentation
+  </Card>
 
-  <Tab title="cURL">
-    ```bash  theme={"system"}
-    curl -s "https://inference.baseten.co/v1/chat/completions" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Api-Key $BASETEN_API_KEY" \
-    -d '{
-    "model": "deepseek-ai/DeepSeek-V3-0324",
-    "messages": [{"role": "user", "content": "What'\''s the weather like in Boston?"}],
-    "tools": [{
-      "type": "function",
-      "function": {
-        "name": "get_weather",
-        "description": "Get the current weather",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {"type": "string", "description": "City name"}
-          },
-          "required": ["location"]
-        }
-      }
-    }]
-    }')
-
-    # Extract tool call details
-    TOOL_CALL_ID=$(
-    # If we have a tool call, prepare the weather data and send it back
-    if [ -n "$TOOL_CALL_ID" ]; then
-    WEATHER_DATA='{"location":"Boston","temperature":"72","forecast":"sunny"}'
-
-    # Send the function result back to the API
-    FINAL_RESPONSE=$(curl -s "https://inference.baseten.co/v1/chat/completions" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Api-Key $BASETEN_API_KEY" \
-    -d '{
-      "model": "deepseek-ai/DeepSeek-V3-0324",
-      "messages": [
-        {"role": "user", "content": "What'\''s the weather like in Boston?"},
-        {"role": "assistant", "content": null, "tool_calls": [{"id": "'$TOOL_CALL_ID'", "type": "function", "function": {"name": "get_weather", "arguments": "{\"location\":\"Boston\"}"}}]},
-        {"role": "tool", "tool_call_id": "'$TOOL_CALL_ID'", "name": "get_weather", "content": "'$WEATHER_DATA'"}
-      ]
-    }')
-
-    # Print the final response
-    fi
-    ```
-  </Tab>
-</Tabs>
-
-## Error Handling
-
-The API returns standard HTTP error codes:
-
-* `400`: Bad request (malformed input)
-* `401`: Unauthorized (invalid or missing API key)
-* `402`: Payment required
-* `404`: Model not found
-* `429`: Rate limit exceeded
-* `500`: Internal server error
-
-Check the response body for specific error details and suggested resolutions.
-
-## Migrating from OpenAI
-
-To migrate from OpenAI to Baseten's OpenAI-compatible API, you need to make these changes to your existing code:
-
-1. Replace your OpenAI API key with your Baseten API key
-2. Change the base URL to `https://inference.baseten.co/v1.`
-3. Update model names to match Baseten-supported slugs.
+  <Card title="Structured outputs" icon="brackets-curly" href="/engines/performance-concepts/structured-outputs">
+    Generate JSON that conforms to a schema
+  </Card>
+</CardGroup>
 
 
-# Rate Limits & Budgets
+# Rate limits and budgets
 Source: https://docs.baseten.co/development/model-apis/rate-limits-and-budgets
 
-Learn about rate limits for Baseten's Model APIs and how to set usage budgets to control costs.
+Rate limits and usage budgets for Model APIs
 
-## Rate Limits
+Baseten enforces two rate limits to ensure fair use and system stability:
 
-To ensure fair use and system stability, Baseten enforces two rate limits:
+* **Request rate limits**: Maximum API requests per minute.
+* **Token rate limits**: Maximum tokens processed per minute (input + output combined).
 
-* **Request rate limits** — maximum number of API requests per minute
-* **Token rate limits** — maximum number of tokens processed per minute (input + output combined)
+Default limits vary by account status.
 
-Default limits vary based on your account status.
-
-| Account                  |                                         RPM |                                         TPM |
-| :----------------------- | ------------------------------------------: | ------------------------------------------: |
-| **Starter** (unverified) |                                          15 |                                     100,000 |
-| **Starter** (verified)   |                                         120 |                                     500,000 |
-| **Business**             |                                         120 |                                   1,000,000 |
-| **Enterprise**           | [Custom](https://www.baseten.co/talk-to-us) | [Custom](https://www.baseten.co/talk-to-us) |
+| Account                |                                         RPM |                                         TPM |
+| :--------------------- | ------------------------------------------: | ------------------------------------------: |
+| **Basic** (unverified) |                                          15 |                                     100,000 |
+| **Basic** (verified)   |                                         120 |                                     500,000 |
+| **Pro**                |                                         120 |                                   1,000,000 |
+| **Enterprise**         | [Custom](https://www.baseten.co/talk-to-us) | [Custom](https://www.baseten.co/talk-to-us) |
 
 <Warning>
-  If you exceed these limits, the API will return a `429 Too Many Requests`
-  error. Request a higher rate limit by [contacting us](https://www.baseten.co/talk-to-us/increase-rate-limits/).
+  If you exceed these limits, the API returns a `429 Too Many Requests` error.
+  To request a rate limit increase, [contact us](https://www.baseten.co/talk-to-us/increase-rate-limits/).
 </Warning>
-
-### Requesting higher limits
-
-If you have high volume, are a verified customer, and need more headroom, you can [contact us](https://www.baseten.co/talk-to-us/increase-rate-limits/) to request a rate limit increase.
 
 ***
 
-## Setting budgets
+## Set budgets
 
-Setting a budget allows you to control your Model API usage and avoid unexpected costs. Usage budgets apply only to Model APIs (not dedicated deployments). Your team will be notified by email at 75%, 90%, and 100% of budget.
+Budgets let you control Model API usage and avoid unexpected costs. Budgets apply only to Model APIs, not dedicated deployments. Your team receives email notifications at 75%, 90%, and 100% of budget.
 
-### Enforcing budgets
+### Enforce budgets
 
-When setting a budget, you can choose to enforce it or not.
+Budgets can be enforced or non-enforced:
 
-* **If you choose to enforce it**, requests will be rejected once the budget is reached.
-* **If you choose not to enforce it**, you will be notified at 75%, 90%, and 100% of budget and you'll be responsible for any costs incurred over the budget.
+* **Enforced**: Requests are rejected when the budget is reached.
+* **Not enforced**: You receive notifications but remain responsible for costs over the budget.
+
+
+# Reasoning
+Source: https://docs.baseten.co/development/model-apis/reasoning
+
+Control extended thinking for reasoning-capable models
+
+Some Model APIs support *extended thinking*, where the model reasons through a problem before producing a final answer. The reasoning process generates additional tokens that appear in a separate `reasoning_content` field, distinct from the final response.
+
+## Supported models
+
+| Model            | Slug                           | Reasoning          |
+| ---------------- | ------------------------------ | ------------------ |
+| DeepSeek V3.2    | `deepseek-ai/DeepSeek-V3.2`    | Enabled by default |
+| DeepSeek V3.1    | `deepseek-ai/DeepSeek-V3.1`    | Enabled by default |
+| DeepSeek V3 0324 | `deepseek-ai/DeepSeek-V3-0324` | Enabled by default |
+| Kimi K2 Thinking | `moonshotai/Kimi-K2-Thinking`  | Always enabled     |
+| GLM 4.7          | `zai-org/GLM-4.7`              | Enabled by default |
+| GLM 4.6          | `zai-org/GLM-4.6`              | Enabled by default |
+
+Models not listed here do not support reasoning.
+
+## Control reasoning depth
+
+The `reasoning_effort` parameter controls how thoroughly the model reasons through a problem.
+
+| Value    | Behavior                                  |
+| -------- | ----------------------------------------- |
+| `low`    | Faster responses, less thorough reasoning |
+| `medium` | Balanced (default)                        |
+| `high`   | Slower responses, more thorough reasoning |
+
+<Tabs>
+  <Tab title="Python">
+    Pass `reasoning_effort` through `extra_body` since it extends the standard OpenAI API:
+
+    ```python theme={"system"}
+    from openai import OpenAI
+    import os
+
+    client = OpenAI(
+        base_url="https://inference.baseten.co/v1",
+        api_key=os.environ.get("BASETEN_API_KEY")
+    )
+
+    response = client.chat.completions.create(
+        model="deepseek-ai/DeepSeek-V3.2",
+        messages=[
+            {"role": "user", "content": "What is the sum of the first 100 prime numbers?"}
+        ],
+        extra_body={"reasoning_effort": "high"}  # [!code ++]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    Include `reasoning_effort` directly in the request options:
+
+    ```jsx theme={"system"}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+        baseURL: "https://inference.baseten.co/v1",
+        apiKey: process.env.BASETEN_API_KEY,
+    });
+
+    const response = await client.chat.completions.create({
+        model: "deepseek-ai/DeepSeek-V3.2",
+        messages: [
+            { role: "user", content: "What is the sum of the first 100 prime numbers?" }
+        ],
+        reasoning_effort: "high"  // [!code ++]
+    });
+
+    console.log(response.choices[0].message.content);
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    Include `reasoning_effort` in the JSON request body:
+
+    ```bash theme={"system"}
+    curl https://inference.baseten.co/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -d '{
+        "model": "deepseek-ai/DeepSeek-V3.2",
+        "messages": [{"role": "user", "content": "What is the sum of the first 100 prime numbers?"}],
+        "reasoning_effort": "high"
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Parse the response
+
+The model's thinking process appears in `reasoning_content`, separate from the final answer in `content`.
+
+```json theme={"system"}
+{
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "The sum of the first 100 prime numbers is 24,133.",
+        "reasoning_content": "Let me work through this step by step. The first prime number is 2..."
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 18,
+    "completion_tokens": 245,
+    "total_tokens": 263,
+    "completion_tokens_details": {
+      "reasoning_tokens": 198
+    }
+  }
+}
+```
+
+The `reasoning_tokens` field in `completion_tokens_details` shows how many tokens the model used for reasoning. These tokens count toward your total usage and billing.
+
+## Decide when to reason
+
+Reasoning improves quality for tasks that benefit from step-by-step thinking: mathematical calculations, multi-step logic problems, code generation with complex requirements, and analysis requiring multiple considerations.
+
+For straightforward tasks like simple Q\&A or text generation, reasoning adds latency and token cost without improving quality. In these cases, use a model without reasoning support or set `reasoning_effort` to `low`.
 
 
 # b10cache 🆕
@@ -3360,7 +3229,7 @@ RUN pip install cython==0.29.30
 
 Ensure Docker is installed and running. Then, build, tag, and push your image:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 docker build -t my-custom-base-image:0.1 .
 docker tag my-custom-base-image:0.1 your-docker-username/my-custom-base-image:0.1
 docker push your-docker-username/my-custom-base-image:0.1
@@ -3385,7 +3254,7 @@ The `build_commands` feature allows you to **run custom Docker commands** during
 
 Add `build_commands` to your `config.yaml`:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 build_commands:
   - git clone https://github.com/comfyanonymous/ComfyUI.git
   - cd ComfyUI && git checkout b1fd26fe9e55163f780bf9e5f56bf9bf5f035c93 && pip install -r requirements.txt
@@ -3407,7 +3276,7 @@ resources:
 
 Use `build_commands` to **create directories** directly in the container.
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 build_commands:
   - git clone https://github.com/comfyanonymous/ComfyUI.git
   - cd ComfyUI && mkdir ipadapter
@@ -3422,7 +3291,7 @@ build_commands:
 
 For smaller weights, **use** `wget` in `build_commands`:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 build_commands:
   - git clone https://github.com/comfyanonymous/ComfyUI.git
   - cd ComfyUI && pip install -r requirements.txt
@@ -3465,16 +3334,16 @@ using Baseten's Truss framework.
 
 To use Truss, install a recent Truss version and ensure pydantic is v2:
 
-```bash  theme={"system"}
+```bash theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
 pip install --upgrade truss 'pydantic>=2.0.0'
 ```
 
 <Accordion title="Help for setting up a clean development environment">
-  Truss requires python `>=3.8,<3.13`. To set up a fresh development environment,
+  Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
   you can use the following commands, creating a environment named `truss_env`
   using `pyenv`:
 
-  ```bash  theme={"system"}
+  ```bash theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
   curl https://pyenv.run | bash
   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
   echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -3492,7 +3361,7 @@ To deploy Truss remotely, you also need a
 [Baseten account](https://app.baseten.co/signup).
 It is handy to export your API key to the current shell session or permanently in your `.bashrc`:
 
-```bash ~/.bashrc theme={"system"}
+```bash ~/.bashrc theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"} theme={"system"}
 export BASETEN_API_KEY="nPh8..."
 ```
 
@@ -3502,7 +3371,7 @@ Truss is a tool that helps you package your model code and configuration, and sh
 
 To create your first model, you can use the `truss init` command.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 $ truss init hello-world
 ? 📦 Name this model: HelloWorld
 Truss HelloWorld was created in ~/hello-world
@@ -3555,7 +3424,7 @@ See the [Configuration](/development/model/configuration) page for more informat
 
 Next, let's take a look at the `model.py` file.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Model:
     def __init__(self, **kwargs):
         pass
@@ -3575,19 +3444,23 @@ In Truss models, we expect users to provide a Python class with the following me
 
 ## Deploy your model
 
-To deploy your model, you can use the `truss push` command.
+To deploy your model for development with live reload, run:
 
-```bash  theme={"system"}
-$ truss push
+```bash theme={"system"}
+$ truss push --watch
 ```
 
-This will deploy your model to Baseten.
+This will deploy your model to Baseten as a development deployment with live reload enabled.
+
+<Note>
+  When no flag is specified, `truss push` defaults to a published deployment. Use `--watch` for development deployments with live reload support, or `--publish` explicitly for production-ready deployments.
+</Note>
 
 ## Invoke your model
 
 After deploying your model, you can invoke it with the invocation URL provided:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 $ curl -X POST https://model-{model-id}.api.baseten.co/development/predict \
   -H "Authorization: Api-Key $BASETEN_API_KEY" \
   -d '"some text"'
@@ -3633,15 +3506,15 @@ class Model:
 
 ## Running inference
 
-Similarly to our previous example, we can deploy this model using `truss push`
+Similarly to our previous example, we can deploy this model using `truss push --watch`
 
-```bash  theme={"system"}
-$ truss push
+```bash theme={"system"}
+$ truss push --watch
 ```
 
 And then invoke it using the invocation URL on Baseten.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 $ curl -X POST https://model-{model-id}.api.baseten.co/development/predict \
   -H "Authorization: Api-Key $BASETEN_API_KEY" \
   -d '{"text": "some text"}'
@@ -3672,7 +3545,7 @@ In this guide, we go through deploying a simple Model using this new framework.
 
 We leverage traditional `truss init` functionality with a new flag to create the directory structure:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss init my-new-model --python-config
 ```
 
@@ -3698,20 +3571,26 @@ class RunningTotalCalculator(baseten.ModelBase):
         return self._running_total
 ```
 
-### Step 3: Deploy, patch, and public your model
+### Step 3: Deploy, patch, and publish your model
 
-In order to deploy the first version of your new model, you can run:
+In order to deploy a development version of your new model with live reload, you can run:
 
-```bash  theme={"system"}
-truss push my_model.py
+```bash theme={"system"}
+truss push my_model.py --watch
 ```
 
 Please note that `push` (as well as all other commands below) will require that you pass the path to the file containing the model as the final argument.
 
 This new workflow also supports patching, so you can quickly iterate during development without building new images every time.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss watch my_model.py
+```
+
+To deploy a production-ready version, use:
+
+```bash theme={"system"}
+truss push my_model.py --publish
 ```
 
 ### Model Configuration
@@ -3752,7 +3631,7 @@ class RunningTotalCalculator(baseten.ModelBase):
 
 If you want to include modules in your model, you can easily create them from the root of the project:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 my-new-model/
     module_1/
 	    submodule/
@@ -3780,39 +3659,84 @@ class RunningTotalCalculator(baseten.ModelBase):
 * This new framework does not support `preprocess` or `postprocess` hooks. We typically recommend inlining functionality from those functions if easy, or utilizing `chains` if the needs are more complex.
 
 
+# Request concurrency
+Source: https://docs.baseten.co/development/model/concurrency
+
+A guide to setting concurrency for your model
+
+Configuring concurrency optimizes **model performance**, balancing **throughput** and **latency**.
+
+In Baseten and Truss, concurrency is managed at **two levels**:
+
+1. **Concurrency Target** – Limits the number of requests **sent** to a single replica.
+2. **Predict Concurrency** – Limits how many requests the predict function handles **inside the model container**.
+
+## 1. Concurrency Target
+
+* **Set in the Baseten UI** – Defines how many requests a single replica can process at once.
+* **Triggers autoscaling** – If all replicas hit the concurrency target, additional replicas spin up.
+
+**Example:**
+
+* **Concurrency Target = 2, Single Replica**
+* **5 requests arrive** → 2 are processed immediately, **3 are queued**.
+* If max replicas aren't reached, **autoscaling spins up a new replica**.
+
+## 2. Predict Concurrency
+
+* **Set in** `config.yaml` – Controls how many requests can be **processed by** predict simultaneously.
+* **Protects GPU resources** – Prevents multiple requests from overloading the GPU.
+
+### Configuring Predict Concurrency
+
+```yaml config.yaml theme={"system"}
+model_name: "My model with concurrency limits"
+runtime:
+  predict_concurrency: 2  # Default is 1
+```
+
+### How It Works Inside a Model Pod
+
+1. **Requests arrive** → All begin preprocessing (e.g., downloading images from S3).
+2. **Predict runs on GPU** → Limited by `predict_concurrency`.
+3. **Postprocessing begins** → Can run while other requests are still in inference.
+
+## When to Use Predict Concurrency
+
+* ✅ **Protect GPU resources** – Prevent multiple requests from degrading performance.
+* ✅ **Allow parallel preprocessing/postprocessing** – I/O tasks can continue even when inference is blocked.
+
+<Warning>Ensure `Concurrency Target` is set high enough to send enough requests to the container.</Warning>
+
+
 # Configuration
 Source: https://docs.baseten.co/development/model/configuration
 
 How to configure your model.
 
-ML models often have dependencies on external libraries, data,
-and other resources. These models also typically have particular
-hardware configurations.
+ML models depend on external libraries, data files, and specific hardware configurations.
 
-In this guide, we'll cover the basics of how to configure your model
-to specify this information.
+This guide shows you how to configure your model's dependencies and resources.
 
-Configuration for models is specified in the `config.yaml` file. Here are some
-of the common configuration options:
+The `config.yaml` file defines your model's configuration. Common options include:
 
 # Environment variables
 
-You can specify environment variables to be set in the model serving environment
-using the `environment_variables` key.
+To set environment variables in the model serving environment, use the `environment_variables` key:
 
 ```yaml config.yaml theme={"system"}
 environment_variables:
   MY_ENV_VAR: my_value
 ```
 
-# Python Packages
+# Python packages
 
 Python packages can be specified in two ways in the `config.yaml` file:
 
 1. `requirements`: A list of Python packages to install.
 2. `requirements_file`: A requirements.txt file to install pip packages from.
 
-For example, if you have a simple list of packages, you can specify them as follows:
+To specify Python packages as a list, use the following:
 
 ```yaml config.yaml theme={"system"}
 requirements:
@@ -3820,7 +3744,7 @@ requirements:
   - package_name2
 ```
 
-Note that you can pin versions using the `==` operator.
+Pin package versions using the `==` operator:
 
 ```yaml config.yaml theme={"system"}
 requirements:
@@ -3836,11 +3760,11 @@ instead.
 requirements_file: ./requirements.txt
 ```
 
-# System Packages
+# System packages
 
-Truss also has support for installing apt-installable Debian packages. to
-add system packages to your model serving environment, add the following to
-your `config.yaml` file:
+Truss also has support for installing apt-installable Debian packages. To add
+system packages to your model serving environment, add the following to your
+`config.yaml` file:
 
 ```yaml config.yaml theme={"system"}
 system_packages:
@@ -3848,7 +3772,7 @@ system_packages:
   - package_name2
 ```
 
-For a more concrete examples,
+For example, to install Tesseract OCR:
 
 ```yaml config.yaml theme={"system"}
 system_packages:
@@ -3857,19 +3781,19 @@ system_packages:
 
 # Resources
 
-Another key part of configuring your model is specifying hardware resources needed.
-You can use the `resources` key to specify these. For a CPU model, your resources
-configuration might look something like:
+Specify hardware resources in the `resources` section.
+
+**Option 1: Specify individual resource fields**
+
+For a CPU model:
 
 ```yaml config.yaml theme={"system"}
 resources:
-  accelerator: null
   cpu: "1"
   memory: 2Gi
-  use_gpu: false
 ```
 
-For a GPU model, your resources configuration might look like:
+For a GPU model:
 
 ```yaml config.yaml theme={"system"}
 resources:
@@ -3878,6 +3802,15 @@ resources:
 
 When you push your model, it will be assigned an instance type matching the
 specifications required.
+
+**Option 2: Specify an exact instance type**
+
+```yaml config.yaml theme={"system"}
+resources:
+  instance_type: "L4:4x16"
+```
+
+Using `instance_type` lets you select an exact SKU. When specified, other resource fields are ignored.
 
 See the [Resources](/deployment/resources) page for more information on
 options available.
@@ -3895,7 +3828,7 @@ of the other guides:
 * [Custom Health Checks](/development/model/custom-health-checks)
 
 
-# Custom health checks 🆕
+# Custom health checks
 Source: https://docs.baseten.co/development/model/custom-health-checks
 
 Customize the health of your deployments.
@@ -3905,14 +3838,36 @@ Customize the health of your deployments.
 * **Control traffic and restarts** by configuring failure thresholds to suit your needs.
 * **Define replica health with custom logic** (e.g. fail after a certain number of 500s or a specific CUDA error).
 
-By default, health checks run every 10 seconds to verify that each replica of your deployment is running successfully and can receive requests. If a health check fails for an extended period, one or both of the following actions may occur:
+By default, health checks run every 10 seconds to verify that each replica of
+your deployment is running successfully and can receive requests. If a health
+check fails for an extended period, one or both of the following actions may
+occur:
 
 * Traffic is immediately stopped from reaching the failing replica.
 * The failing replica is restarted.
 
 The thresholds for each of these actions are configurable.
 
-**Understanding readiness vs. liveness**: Baseten uses two types of Kubernetes health probes. The **readiness probe** determines when to stop traffic (controlled by `stop_traffic_threshold_seconds`), while the **liveness probe** determines when to restart the container (controlled by `restart_threshold_seconds`). Both probes check the same health endpoint, but serve different purposes: readiness controls traffic routing, while liveness controls container lifecycle.
+## Understanding readiness vs. liveness
+
+Baseten uses two types of Kubernetes health probes that run continuously after
+your container starts:
+
+**Readiness probe** answers "Can I handle requests right now?" When it fails,
+Kubernetes stops sending traffic to the container but doesn't restart it. Use
+this to prevent traffic during startup or temporary unavailability. The failure
+threshold is controlled by `stop_traffic_threshold_seconds`.
+
+**Liveness probe** answers "Am I healthy enough to keep running?" When it fails,
+Kubernetes restarts the container. Use this to recover from deadlocks or hung
+processes. The failure threshold is controlled by `restart_threshold_seconds`.
+
+For most servers, using the same endpoint (like `/health`) for both probes is
+sufficient. The key difference is the action taken: readiness controls traffic
+routing, while liveness controls container lifecycle.
+
+Both probes wait before starting checks to allow your server time to initialize.
+Configure this delay with `restart_check_delay_seconds`.
 
 Custom health checks can be implemented in two ways:
 
@@ -3923,21 +3878,22 @@ Custom health checks can be implemented in two ways:
 
 ### Parameters
 
-You can customize the behavior of health checks on your deployments by setting the following parameters:
+You can customize the behavior of health checks on your deployments by setting
+the following parameters:
 
-<ParamField body="stop_traffic_threshold_seconds" type="integer" default={1800}>
+<ParamField type="integer">
   The duration that health checks must continuously fail before traffic to the failing replica is stopped.
 
   `stop_traffic_threshold_seconds` must be between `30` and `1800` seconds, inclusive.
 </ParamField>
 
-<ParamField body="restart_check_delay_seconds" type="integer" default={0}>
+<ParamField type="integer">
   How long to wait before running health checks.
 
   `restart_check_delay_seconds` must be between `0` and `1800` seconds, inclusive.
 </ParamField>
 
-<ParamField body="restart_threshold_seconds" type="integer" default={1800}>
+<ParamField type="integer">
   The duration that health checks must continuously fail before triggering a restart of the failing replica.
 
   `restart_threshold_seconds` must be between `30` and `1800` seconds, inclusive.
@@ -3953,11 +3909,13 @@ Configure health checks in your `config.yaml`.
 runtime:
   health_checks:
     restart_check_delay_seconds: 60 # Waits 60 seconds after deployment before starting health checks
-    restart_threshold_seconds: 300 # Triggers a restart if health checks fail for 5 minutes
-    stop_traffic_threshold_seconds: 600 # Stops traffic if health checks fail for 10 minutes
+    restart_threshold_seconds: 600 # Triggers a restart if health checks fail for 10 minutes
+    stop_traffic_threshold_seconds: 300 # Stops traffic if health checks fail for 5 minutes
 ```
 
-You can also specify custom health check endpoints for custom servers. [See here](/development/model/custom-server#1-configuring-a-custom-server-in-config-yaml) for more details.
+You can also specify custom health check endpoints for custom servers.
+[See here](/development/model/custom-server#1-configuring-a-custom-server-in-config-yaml)
+for more details.
 
 ### Chains
 
@@ -3969,7 +3927,7 @@ class CustomHealthChecks(chains.ChainletBase):
         options=chains.ChainletOptions(
             health_checks=truss_config.HealthChecks(
                 restart_check_delay_seconds=30,     # Waits 30 seconds before starting health checks
-                restart_threshold_seconds=120,      # Restart replicas after 2 minutes of failure
+                restart_threshold_seconds=600,      # Restart replicas after 10 minutes of failure
                 stop_traffic_threshold_seconds=300, # Stop traffic after 5 minutes of failure
             )
         )
@@ -3978,15 +3936,12 @@ class CustomHealthChecks(chains.ChainletBase):
 
 ## Writing custom health checks
 
-You can write custom health checks in both **model deployments** and **chain deployments**.
+You can write custom health checks in both **model deployments** and **chain
+deployments**.
 
 <Info>
-  {" "}
-
-  Custom health checks are currently not supported in development deployments.{" "}
+  Custom health checks are currently not supported in development deployments.
 </Info>
-
-{" "}
 
 ### Custom health checks in models
 
@@ -4071,189 +4026,216 @@ These refer to two separate health checks we run every 10 seconds:
 
 ### Does stopped traffic or replica restarts affect autoscaling?
 
-Yes, both can impact autoscaling. If traffic stops or replicas restart, the remaining replicas handle more load. If the load exceeds the concurrency target during the autoscaling window, additional replicas are spun up. Similarly, when traffic stabilizes, excess replicas are scaled down after the scale down delay. [See here](/deployment/autoscaling#autoscaling-behavior) for more details on autoscaling.
+Yes, both can impact autoscaling. If traffic stops or replicas restart, the
+remaining replicas handle more load. If the load exceeds the concurrency target
+during the autoscaling window, additional replicas are spun up. Similarly, when
+traffic stabilizes, excess replicas are scaled down after the scale down delay.
+[See here](/deployment/autoscaling#autoscaling-behavior) for more details on
+autoscaling.
 
 ### How does billing get affected?
 
-You are billed for the uptime of your deployment. This includes the time a replica is running, even if it is failing health checks, until it scales down.
+You are billed for the uptime of your deployment. This includes the time a
+replica is running, even if it is failing health checks, until it scales down.
 
 ### Will failing health checks cause my deployment to stay up forever?
 
-No. If your deployment is configured with a scale down delay and the minimum number of replicas is set to 0, the replicas will scale down once the model is no longer receiving traffic for the duration of the scale down delay. This applies even if the replicas are failing health checks. [See here](/deployment/autoscaling#scale-to-zero) for more details on autoscaling.
+No. If your deployment is configured with a scale down delay and the minimum
+number of replicas is set to 0, the replicas will scale down once the model is
+no longer receiving traffic for the duration of the scale down delay. This
+applies even if the replicas are failing health checks.
+[See here](/deployment/autoscaling#scale-to-zero) for more details on
+autoscaling.
 
 ### What happens when my deployment is loading?
 
-When your deployment is loading, your custom health check will not be running. Once `load()` is completed, we'll start using your custom `is_healthy()` health check.
+When your deployment is loading, your custom health check will not be running.
+Once `load()` is completed, we'll start using your custom `is_healthy()` health
+check.
 
 
-# Deploy Custom servers from Docker Images
+# Deploy custom Docker images
 Source: https://docs.baseten.co/development/model/custom-server
 
-A config.yaml is all you need
+Deploy custom Docker images to run inference servers like vLLM, SGLang, Triton, or any containerized application.
 
-If you have an existing API server packaged in a **Docker image**—whether an open-source server like [vLLM](https://github.com/vllm-project/vllm) or a custom-built image—you can deploy it on Baseten **with just a `config.yaml` file**.
+When you write a `Model` class, Truss uses the
+[Truss server base image](https://hub.docker.com/r/baseten/truss-server-base/tags)
+by default. However, you can deploy pre-built containers.
 
-<Info>
-  Custom servers also support WebSocket deployments. For WebSocket-specific configuration, see [WebSockets documentation](/development/model/websockets#websocket-usage-with-custom-servers).
-</Info>
+In this guide, you will learn how to set the your configuration file to run a
+custom Docker image and deploy it to Baseten using Truss.
 
-## 1. Configuring a Custom Server in `config.yaml`
+## Configuration
 
-Define a **Docker-based server** by adding `docker_server`:
+To deploy a custom Docker image, set
+[`base_image`](/reference/truss-configuration#base-image-image) to your image
+and use the `docker_server` argument to specify how to run it.
 
 ```yaml config.yaml theme={"system"}
 base_image:
-  image: vllm/vllm-openai:latest
+  image: your-registry/your-image:latest
 docker_server:
-  start_command: vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --port 8000 --max-model-len 1024
+  start_command: your-server-start-command
+  server_port: 8000
+  predict_endpoint: /predict
   readiness_endpoint: /health
   liveness_endpoint: /health
-  predict_endpoint: /v1/chat/completions
-  server_port: 8000
 ```
 
-### Key Configurations
-
-| Field                | Required | Description                                                                                                                                                                                                                                         |
-| -------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `start_command`      | ✅        | Command to start the server                                                                                                                                                                                                                         |
-| `predict_endpoint`   | ✅        | Endpoint for serving requests (only one per model). This maps your server's inference endpoint to Baseten's prediction endpoint                                                                                                                     |
-| `server_port`        | ✅        | Port where the server runs                                                                                                                                                                                                                          |
-| `readiness_endpoint` | ✅        | Used for [Kubernetes readiness probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/#readiness-probe) to determine when the container is ready to accept traffic. This must match an endpoint on your server |
-| `liveness_endpoint`  | ✅        | Used for [Kubernetes liveness probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/#liveness-probe) to determine if the container **needs to be restarted**. This must match an endpoint on your server      |
-
-### Understanding Readiness vs. Liveness
-
-Both probes run continuously after your container starts, but serve different purposes:
-
-* **Readiness probe**: Answers "Can I handle requests right now?" When it fails, Kubernetes stops sending traffic to the container (but doesn't restart it). Use this to prevent traffic during startup or temporary unavailability.
-
-* **Liveness probe**: Answers "Am I healthy enough to keep running?" When it fails, Kubernetes restarts the container. Use this to recover from deadlocks or hung processes.
-
-For most servers, using the same endpoint (like `/health`) for both is sufficient—as long as it accurately reflects whether your server can handle requests. The key difference is the action taken: readiness controls traffic routing, while liveness controls container lifecycle.
-
-**Initial delays**: Both probes wait before starting checks to allow your server time to start up. See [Custom health checks](/development/model/custom-health-checks) for configuration details.
-
-### Important: Docker Image Requirements
-
-**Container file system**: The `/app` directory is used internally by Baseten. The model container runs as a nonroot user on some configurations, but `/app` and `/tmp` directories are still writable.
+* `image`: The Docker image to use.
+* `start_command`: The command to start the server.
+* `server_port`: The port to listen on.
+* `predict_endpoint`: The endpoint to forward requests to.
+* `readiness_endpoint`: The endpoint to check if the server is ready.
+* `liveness_endpoint`: The endpoint to check if the server is alive.
 
 <Warning>
-  **Image caching**: When using tags like `:latest`, Baseten may not detect changes in the image and may use the cached copy instead. If you update an image with the same tag, Baseten might not detect the change and will reload the cached version. To avoid this, use **image digests** instead of tags when referencing updated images:
-
-  ```yaml  theme={"system"}
-  base_image:
-    image: your-registry/your-image@sha256:abc123def456...
-  ```
-
-  This ensures Baseten always pulls the exact version you specify.
+  Port 8080 is reserved by Baseten's internal reverse proxy. If your server binds to port 8080, the deployment fails with `[Errno 98] address already in use`.
 </Warning>
 
-### Endpoint Mapping
+For the full list of fields, see the
+[configuration reference](/reference/truss-configuration#docker_server).
 
-<Tip>
-  While `predict_endpoint` is required, you can still access any route in your server using the [sync](https://docs.baseten.co/inference/calling-your-model#sync-api-endpoints) endpoint.
-</Tip>
+<Accordion title="Endpoint mapping">
+  While `predict_endpoint` maps your server's inference route to Baseten's
+  `/predict` endpoint, you can access any route in your server using the
+  [sync endpoint](/inference/calling-your-model#sync-api-endpoints).
 
-**Mapping Rules:**
+  | Baseten endpoint                            | Maps to                       |
+  | ------------------------------------------- | ----------------------------- |
+  | `/environments/production/predict`          | Your `predict_endpoint` route |
+  | `/environments/production/sync/{any/route}` | `/{any/route}` in your server |
 
-| Baseten Endpoint                             | Maps To                       | Description                            |
-| -------------------------------------------- | ----------------------------- | -------------------------------------- |
-| `environments/{production}/predict`          | `predict_endpoint` route      | Default endpoint for model predictions |
-| `environments/{production}/sync/{any/route}` | `/{any/route}` in your server | Access any route in your server        |
+  **Example:** If you set `predict_endpoint: /v1/chat/completions`:
 
-**Example:** If you set `predict_endpoint: /my/custom/route`:
+  | Baseten endpoint                          | Maps to                |
+  | ----------------------------------------- | ---------------------- |
+  | `/environments/production/predict`        | `/v1/chat/completions` |
+  | `/environments/production/sync/v1/models` | `/v1/models`           |
+</Accordion>
 
-| Baseten Endpoint                                 | Maps To            |
-| ------------------------------------------------ | ------------------ |
-| `environments/{production}/predict`              | `/my/custom/route` |
-| `environments/{production}/sync/my/custom/route` | `/my/custom/route` |
-| `environments/{production}/sync/my/other/route`  | `/my/other/route`  |
+## Deploy Ollama
 
-## 2. Example: Running a vLLM Server
+This example deploys [Ollama](https://ollama.com/) with the TinyLlama model
+using a custom Docker image. Ollama is a popular lightweight LLM inference
+server, similar to vLLM or SGLang. TinyLlama is small enough to run on a CPU.
 
-This example deploys **Meta-Llama-3.1-8B-Instruct** using **vLLM** on an **L4 GPU**, with `/health` as the readiness and liveness probe.
+### 1. Create the config
 
-```yaml config.yaml theme={"system"}
-base_image:
-  image: vllm/vllm-openai:latest
-docker_server:
-  start_command: sh -c "HF_TOKEN=$(cat /secrets/hf_access_token) vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --port 8000 --max-model-len 1024"
-  readiness_endpoint: /health
-  liveness_endpoint: /health
-  predict_endpoint: /v1/chat/completions
-  server_port: 8000
-resources:
-  accelerator: L4
-model_name: vllm-model-server
-secrets:
-  hf_access_token: null
-runtime:
-  predict_concurrency: 128
-```
-
-<Tip>
-  vLLM's /health endpoint is used to determine when the server is ready or needs
-  restarting.
-</Tip>
-
-<Info>More examples available in Truss examples repo.</Info>
-
-## 3. Installing custom Python packages
-
-To install additional Python dependencies, add a `requirements.txt` file to your Truss.
-
-#### Example: Infinity embedding model server
+Create a `config.yaml` file with the following configuration:
 
 ```yaml config.yaml theme={"system"}
+model_name: ollama-tinyllama
 base_image:
   image: python:3.11-slim
+build_commands:
+  - curl -fsSL https://ollama.com/install.sh | sh
 docker_server:
-  start_command: sh -c "infinity_emb v2 --model-id BAAI/bge-small-en-v1.5"
-  readiness_endpoint: /health
-  liveness_endpoint: /health
-  predict_endpoint: /embeddings
-  server_port: 7997
+  start_command: sh -c "ollama serve & sleep 5 && ollama pull tinyllama && wait"
+  readiness_endpoint: /api/tags
+  liveness_endpoint: /api/tags
+  predict_endpoint: /api/generate
+  server_port: 11434
 resources:
-  accelerator: L4
-  use_gpu: true
-model_name: infinity-embedding-server
-requirements:
-  - infinity-emb[all]
-environment_variables:
-  hf_access_token: null
+  cpu: "4"
+  memory: 8Gi
 ```
 
-## 4. Accessing secrets in custom servers
+The `base_image` field specifies the Docker image to use as your starting
+point, in this case a lightweight Python image. The `build_commands` section
+installs Ollama into the container at build time. You can also use this to
+install model weights or other dependencies.
 
-To use **API keys or other secrets**, first store them in Baseten. Baseten can then inject secrets into your container. They will be available at `/secrets/{secret_name}`.
+The `start_command` launches the Ollama server, waits for it to initialize, and
+then pulls the TinyLlama model.
 
-#### Example: Accessing a Hugging Face token
+The `readiness_endpoint` and `liveness_endpoint`
+both point to `/api/tags`, which returns successfully when Ollama is running.
+The `predict_endpoint` maps Baseten's `/predict` route to Ollama's
+`/api/generate` endpoint.
 
-Add secrets with placeholder values in `config.yaml`:
+Finally, declare your resource requirements. This example only needs 4 CPUs and
+8GB of memory. For a complete list of resource options, see the
+[Resources](/deployment/resources) page.
 
-```yaml config.yaml theme={"system"}
-secrets:
-  hf_access_token: null
+### 2. Deploy
+
+To deploy the model, use the following:
+
+```sh theme={"system"}
+truss push --publish
 ```
 
-<Warning>Never store actual secret values in `config.yaml`. Store secrets in the [workspace settings](https://app.baseten.co/settings/secrets).</Warning>
+This will build the Docker image and deploy it to Baseten.
+Once the `readiness_endpoint` and `liveness_endpoint` are successful, the model will be ready to use.
 
-Then, inside your server's `start_command` or application code, read secrets from the `/secrets` directory:
+### 3. Run inference
 
-```sh  theme={"system"}
-HF_TOKEN=$(cat /secrets/hf_access_token)
+Ollama uses OpenAI API compatible endpoints to run inference and calls
+`/api/generate` to generate text. Since you mapped the `/predict` route to
+Ollama's `/api/generate` endpoint, you can run inference by calling the
+`/predict` endpoint.
+
+<Tabs>
+  <Tab title="Truss CLI">
+    To run inference with Truss, use the `predict` command:
+
+    ```sh theme={"system"}
+    truss predict -d '{"model": "tinyllama", "prompt": "Write a short story about a robot dreaming", "options": {"num_predict": 50}}'
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    To run inference with cURL, use the following command:
+
+    ```sh theme={"system"}
+    curl -s -X POST "https://model-MODEL_ID.api.baseten.co/development/predict" \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -d '{"model": "tinyllama", "prompt": "Write a short story about a robot dreaming", "options": {"num_predict": 50}}' \
+      | jq -j '.response'
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    To run inference with Python, use the following:
+
+    ```python theme={"system"}
+    import os
+    import requests
+
+    model_id = "MODEL_ID"
+    baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+    response = requests.post(
+        f"https://model-{model_id}.api.baseten.co/development/predict",
+        headers={"Authorization": f"Api-Key {baseten_api_key}"},
+        json={
+            "model": "tinyllama",
+            "prompt": "Write a short story about a robot dreaming",
+            "options": {"num_predict": 50},
+        },
+    )
+    print(response.json()["response"])
+    ```
+  </Tab>
+</Tabs>
+
+The following is an example of its response:
+
+```output theme={"system"}
+It was a dreary, grey day when the robots started to dream. 
+They had been programmed to think like humans, but it wasn't until they began to dream that they realized just how far apart they actually were.
 ```
 
-Or in your application code:
+Congratulations! You have successfully deployed and ran inference on a custom Docker image.
 
-```python  theme={"system"}
-# Python example
-with open('/secrets/hf_access_token', 'r') as f:
-    hf_token = f.read().strip()
-```
+## Next steps
 
-<Info>More on secrets management [here](/development/model/secrets).</Info>
+* [Private registries](/development/model/private-registries) — Pull images from AWS ECR, Google Artifact Registry, or Docker Hub
+* [Secrets](/development/model/secrets#custom-docker-images) — Access API keys and tokens in your container
+* [WebSockets](/development/model/websockets#websocket-usage-with-custom-servers) — Enable WebSocket connections
+* [vLLM](/examples/vllm), [SGLang](/examples/sglang), [TensorRT-LLM](/examples/tensorrt-llm) — Deploy LLMs with popular inference servers
 
 
 # Data and storage
@@ -4272,7 +4254,7 @@ Store model files **inside Truss** using the `data/` directory.
 
 **Example: Stable Diffusion 2.1 Truss structure**
 
-```pssql  theme={"system"}
+```pssql theme={"system"}
 data/
     scheduler/
         scheduler_config.json
@@ -4294,7 +4276,7 @@ data/
 
 **Access bundled files in `model.py`:**
 
-```python  theme={"system"}
+```python theme={"system"}
 class Model:
     def __init__(self, **kwargs):
         self._data_dir = kwargs["data_dir"]
@@ -4318,7 +4300,7 @@ If using **private S3 storage**, first **configure secure authentication**.
 
 ### Step 1: Define AWS secrets in `config.yaml`
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 secrets:
   aws_access_key_id: null
   aws_secret_access_key: null
@@ -4333,7 +4315,7 @@ secrets:
 
 ### Step 2: Authenticate with AWS in `model.py`
 
-```python  theme={"system"}
+```python theme={"system"}
 import boto3
 
 def __init__(self, **kwargs):
@@ -4350,8 +4332,16 @@ def __init__(self, **kwargs):
 
 ### Step 3: Deploy
 
-```sh  theme={"system"}
-truss push
+Deploy for development:
+
+```sh theme={"system"}
+truss push --watch
+```
+
+Or deploy for production:
+
+```sh theme={"system"}
+truss push --publish
 ```
 
 
@@ -4363,7 +4353,7 @@ Deploy your model and quickly iterate on it.
 In [Your First Model](/development/model/build-your-first-model), we walked through
 how to deploy a basic model to Baseten. If you are trying to rapidly make changes
 and iterate on your model, you'll notice that there is quite a bit of time between
-running `truss push` and when the changes are reflected on Baseten.
+running `truss push --publish` and when the changes are reflected on Baseten.
 
 Also, a lot of models require special hardware that you may not immediately have
 access to.
@@ -4373,17 +4363,17 @@ live reload your model as you work.
 
 # Truss Watch
 
-To make use of `truss watch`, start by deploying your model:
+To make use of `truss watch`, start by deploying your model as a development deployment:
 
-```bash  theme={"system"}
-$ truss push
+```bash theme={"system"}
+$ truss push --watch
 ```
 
-By default, this will deploy a "development" version of your model. This means that the model
-has a live reload server attached to it and supports hot reloading. To get the hot reload
-loop working, simply run `truss watch` afterwards:
+This will deploy a "development" version of your model with live reload enabled. The model
+has a live reload server attached to it and supports hot reloading. To continue the hot reload
+loop, simply run `truss watch` afterwards:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 $ truss watch
 ```
 
@@ -4398,13 +4388,13 @@ Once you've iterated on your model, and you're ready to deploy it to production,
 you can use the `truss push --publish` command. This will deploy a "published"
 version of your model
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push --publish
 ```
 
 Note that development models have slightly worse performance, and have more
-limited scaling properites, so it's highly recommend to not use these for
-any production use-case.
+limited scaling properties, so it's highly recommended to not use these for
+any production use case.
 
 
 # Access model environments
@@ -4418,7 +4408,7 @@ Model environments help configure behavior based on **deployment stage** (e.g., 
 
 Access the environment in `__init__`:
 
-```python  theme={"system"}
+```python theme={"system"}
 def __init__(self, **kwargs):
     self._environment = kwargs["environment"]
 ```
@@ -4427,7 +4417,7 @@ def __init__(self, **kwargs):
 
 Use environment variables in the `load` function:
 
-```python  theme={"system"}
+```python theme={"system"}
 def load(self):
     if self._environment.get("name") == "production":
         # Production setup
@@ -4478,12 +4468,12 @@ and push the server to Baseten.
 ### Installation
 
 1. **Install Truss:**
-   ```bash  theme={"system"}
+   ```bash theme={"system"}
    pip install --upgrade truss
    ```
 
 2. **Install Protocol Buffer compiler:**
-   ```bash  theme={"system"}
+   ```bash theme={"system"}
    # On macOS
    brew install protobuf
 
@@ -4494,7 +4484,7 @@ and push the server to Baseten.
    ```
 
 3. **Install gRPC tools:**
-   ```bash  theme={"system"}
+   ```bash theme={"system"}
    pip install grpcio-tools
    ```
 
@@ -4528,7 +4518,7 @@ message HelloReply {
 
 Generate the Python code from your `.proto` file:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 python -m grpc_tools.protoc --python_out=. --grpc_python_out=. --proto_path . example.proto
 ```
 
@@ -4637,7 +4627,7 @@ protobuf
 
 Build and push your Docker image to a container registry:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 docker build -t your-registry/truss-grpc-demo:latest . --platform linux/amd64
 docker push your-registry/truss-grpc-demo:latest
 ```
@@ -4674,7 +4664,7 @@ runtime:
 
 Deploy your model using the Truss CLI. You need to use the `--promote` or `--publish` flags, since gRPC models aren't supported in the development environment.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push --promote
 ```
 
@@ -4724,7 +4714,7 @@ you can do so by adding headers to your gRPC calls:
 
 **Target a specific environment:**
 
-```python  theme={"system"}
+```python theme={"system"}
 metadata = [
     ('authorization', 'Api-Key YOUR_API_KEY'),
     ('baseten-model-id', 'model-{YOUR_MODEL_ID}'),
@@ -4734,7 +4724,7 @@ metadata = [
 
 **Target a specific deployment ID:**
 
-```python  theme={"system"}
+```python theme={"system"}
 metadata = [
     ('authorization', 'Api-Key YOUR_API_KEY'),
     ('baseten-model-id', 'model-{YOUR_MODEL_ID}'),
@@ -4746,7 +4736,7 @@ metadata = [
 
 Run your client to test the deployed model:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 python client.py
 ```
 
@@ -5067,8 +5057,11 @@ However, if you want to deploy a model from a gated repo like [Llama 2](https://
     ```yaml config.yaml theme={"system"}
     model_cache:
     - repo_id: your-org/your-private-repo
+      revision: main # refs/pr/1
       runtime_secret_name: hf_access_token
     ```
+
+    Note: Once your truss is pushed, we resolve the sha behind your branch (main), and protect the deployment against changes on this branch.
   </Step>
 </Steps>
 
@@ -5107,7 +5100,10 @@ If you want to deploy a model from a private GCS bucket to Baseten, there are a 
       volume_folder: your-model-weights
       runtime_secret_name: gcs_service_account
       kind: "gcs"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 
@@ -5139,12 +5135,15 @@ If you want to deploy a model from a private S3 bucket to Baseten, there are a f
 
     ```yaml config.yaml theme={"system"}
     model_cache:
-    - repo_id: s3://your-private-bucket
+    - repo_id: s3://your-bucket-west-2-name/path/to/model/
       use_volume: true
-      volume_folder: your-model-weights
+      volume_folder: your-model-weights # sync of s3 path/to/model/* to /app/model_cache/your-model-weights/*
       runtime_secret_name: aws_secret_json
       kind: "s3"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 
@@ -5174,12 +5173,15 @@ If you want to deploy a model from a private Azure container to Baseten, there a
 
     ```yaml config.yaml theme={"system"}
     model_cache:
-    - repo_id: az://your-private-container
+    - repo_id: az://your-private-container/path/to/model/
       use_volume: true
       volume_folder: your-model-weights
       runtime_secret_name: azure_secret_json
       kind: "azure"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 
@@ -5320,9 +5322,9 @@ If you want to enable b10cache, feel free to reach out to our support.
 # Developing a Model on Baseten
 Source: https://docs.baseten.co/development/model/overview
 
-This page introduces the key concepts and workflow you'll use to package, configure, and iterate on models using Baseten’s developer tooling.
+This page introduces the key concepts and workflow you'll use to package, configure, and iterate on models using Baseten's developer tooling.
 
-Baseten makes it easy to go from a trained machine learning model to a fully-deployed, production-ready API. You’ll use Truss—our open-source model packaging tool—to containerize your model code and configuration, and ship it to Baseten for deployment, testing, and scaling.
+Baseten makes it easy to go from a trained machine learning model to a fully-deployed, production-ready API. You'll use Truss—our open-source model packaging tool—to containerize your model code and configuration, and ship it to Baseten for deployment, testing, and scaling.
 
 ## What does it mean to develop a model?
 
@@ -5341,7 +5343,7 @@ Once your model works the way you want, you can promote it to [production](/depl
 
 ## Development flow on Baseten
 
-Here’s what the typical model development loop looks like:
+Here's what the typical model development loop looks like:
 
 1. **Initialize a new model project** using the Truss CLI.
 
@@ -5349,16 +5351,16 @@ Here’s what the typical model development loop looks like:
 
 3. **Configure dependencies** in a YAML or Python config.
 
-4. **Deploy the model** in development mode using truss push.
+4. **Deploy the model** in development mode using `truss push --watch`.
 
-5. **Iterate fast** with truss watch—live-reload your dev deployment as you make changes.
+5. **Iterate fast** with `truss watch`—live-reload your dev deployment as you make changes.
 
-6. **Test and tune** the model until it’s production-ready.
+6. **Test and tune** the model until it's production-ready.
 
-7. **Promote the model** to production when you’re ready to scale.
+7. **Promote the model** to production when you're ready to scale.
 
 <Frame>
-  <img src="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=df89988292282d68e9935d114b51aaa0" data-og-width="3044" width="3044" data-og-height="724" height="724" data-path="images/user-workflow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=280&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=a395805a347b57629d3afc9eb56493a0 280w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=560&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=c29be1657bb6d62a36b21f13a7dfe13f 560w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=840&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=1d622675190444d25854dc3287d1e171 840w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=1100&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=95642ffbb4a3e28aca22198536b7b7e1 1100w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=1650&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=67c2cce9acec4e04b09375b2569507e3 1650w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/user-workflow.png?w=2500&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=a987524997f71289cda701fe9a8566ec 2500w" />
+  <img />
 </Frame>
 
 <Note>
@@ -5382,9 +5384,9 @@ With Truss, you can create a containerized model server **without needing to lea
 
 Truss is **flexible enough to support a wide range of ML stacks**, including:
 
-* Model frameworks like **PyTorch**, **transformers**, and **diffusers**
-* [Inference engines](development/model/performance/concepts) like **TensorRT-LLM**, **SGLang**, **vLLM**
-* Serving technologies like **Triton**
+* Model frameworks like PyTorch, transformers, and diffusers
+* [Inference engines](/development/model/performance-optimization) like TensorRT-LLM, SGLang, vLLM
+* Serving technologies like Triton
 * Any package installable with `pip` or `apt`
 
 We'll use Truss throughout this guide, but the focus will stay on **how you develop models**, not just how Truss works.
@@ -5410,813 +5412,98 @@ The only special deployment is **development**.
 * **All others deployments**
   Stable, autoscaled, and ready for live traffic but **don't support live-reloading**.
 
-You’ll use the dev deployment to build and test, then promote it to an environment like **staging** or **production** once you're satisfied.
+You'll use the dev deployment to build and test, then promote it to an environment like **staging** or **production** once you're satisfied.
 
 
-# Concepts
-Source: https://docs.baseten.co/development/model/performance/concepts
+# Performance optimization
+Source: https://docs.baseten.co/development/model/performance-optimization
 
-Improve your latency and throughput
+Optimize model latency, throughput, and cost with Baseten engines
 
 Model performance means optimizing every layer of your model serving infrastructure to balance four goals:
 
-1. **Latency**: on a per-request basis, how quickly does each user get output from the model?
-2. **Throughput**: how many requests or users can the deployment handle at once?
-3. **Cost**: how much does a standardized unit of work (e.g. 1M tokens from an LLM) cost?
-4. **Quality**: does your model consistently deliver high-quality output after optimization?
+1. **Latency**: How quickly does each user get output from the model?
+2. **Throughput**: How many requests can the deployment handle at once?
+3. **Cost**: How much does a standardized unit of work cost?
+4. **Quality**: Does your model consistently deliver high-quality output after optimization?
 
-## Model performance tooling
+## Performance engines
 
-<Card title="TensorRT-LLM Engine Builder" icon="train-tram" iconType="duotone" href="/development/model/performance/engine-builder-overview">
-  Baseten's TensorRT-LLM engine builder simplifies and automates the process of
-  using TensorRT-LLM for development and production.
-</Card>
+Baseten's performance-optimized engines deliver the best possible inference speed and efficiency:
 
-## Full-stack model performance
+### **[Engine-Builder-LLM](/engines/engine-builder-llm/overview)** - Dense Models
 
-### Model and GPU selection
+* **Best for**: Llama, Mistral, Qwen, and other causal language models
+* **Features**: TensorRT-LLM optimization, lookahead decoding, quantization
+* **Performance**: Lowest latency and highest throughput for dense models
 
-Two of the highest-impact choices for model performance come before the optimization process: picking the best model size and implementation and picking the right GPU to run it on.
+### **[BIS-LLM](/engines/bis-llm/overview)** - MoE Models
 
-<AccordionGroup>
-  <Accordion title="Model selection" icon="robot-astromech">
-    *Tradeoff: Latency/Throughput/Cost vs Quality*
+* **Best for**: DeepSeek, Mixtral, and other mixture-of-experts models
+* **Features**: V2 inference stack, expert routing, structured outputs
+* **Performance**: Optimized for large-scale MoE inference
 
-    The biggest factor in your latency, throughput, cost, and quality is what model you use. Before you jump into optimizing a foundation model, consider:
+### **[BEI](/engines/bei/overview)** - Embedding Models
 
-    * Can you use a smaller size, like Llama 8B instead of 70B? Can you fine-tune the smaller model for your use case?
-    * Can you use a different model, like [SDXL Lightning](https://www.baseten.co/library/sdxl-lightning/) instead of SDXL?
-    * Can you use a different implementation, like [Faster Whisper](https://github.com/basetenlabs/truss-examples/tree/main/whisper/faster-whisper-v3) instead of Whisper?
+* **Best for**: Sentence transformers, rerankers, classification models
+* **Features**: OpenAI-compatible, high-performance embeddings
+* **Performance**: Fastest embedding inference with optimized batching
 
-    Usually, model selection is bound by quality. For example SDXL Lightning makes images incredibly quickly, but they may not be detailed enough for your use case.
+## Performance concepts
 
-    Experiment with alternative models to see if they can reset your performance expectations while meeting your quality bar.
-  </Accordion>
+Detailed performance optimization guides are now organized in the **[Performance Concepts](/engines/performance-concepts/quantization-guide)** section:
 
-  <Accordion title="GPU selection" icon="server">
-    *Tradeoff: Latency/Throughput vs Cost*
+* **[Quantization Guide](/engines/performance-concepts/quantization-guide)** - FP8/FP4 trade-offs and hardware requirements
+* **[Structured Outputs](/engines/performance-concepts/structured-outputs)** - JSON schema validation and controlled generation
+* **[Function Calling](/engines/performance-concepts/function-calling)** - Tool use and function selection
+* **[Performance Client](/engines/performance-concepts/performance-client)** - High-throughput client library
+* **[Deployment Guide](/engines/performance-concepts/deployment-from-training-and-s3)** - Training checkpoints and cloud storage
 
-    The minimum requirement for a GPU instance is that it must have enough VRAM to load model weights with headroom left for inference.
+## ⚡ Quick performance wins
 
-    It often makes sense to use a more powerful (but more expensive) GPU than the minimum requirement, especially if you have ambitious latency goals and/or high utilization.
+### **Quantization**
 
-    For example, you might choose:
+Reduce memory usage and improve speed with post-training quantization:
 
-    * (Multiple) H100 GPUs for [deployments optimized with TensorRT/TensorRT-LLM](https://www.baseten.co/blog/unlocking-the-full-power-of-nvidia-h100-gpus-for-ml-inference-with-tensorrt/)
-    * H100 MIGs for [high-throughput deployments of smaller models like Llama 3 8B and SDXL](https://www.baseten.co/blog/using-fractional-h100-gpus-for-efficient-model-serving/)
-    * L4 GPUs for autoscaling Whisper deployments
-
-    The [GPU instance reference](/deployment/resources#choosing-the-right-instance-type) lists all available options.
-  </Accordion>
-</AccordionGroup>
-
-### GPU-level optimizations
-
-Our first goal is to get the best possible performance out of a single GPU or GPU cluster.
-
-<AccordionGroup>
-  <Accordion title="Inference engine" icon="train-tram">
-    *Benefit: Latency/Throughput/Cost*
-
-    You can just use `transformers` and `pytorch` out of the box to serve your model. But best-in-class performance comes from using a dedicated inference engine, like:
-
-    1. [TensorRT](https://developer.nvidia.com/tensorrt)/[TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM), maintained by NVIDIA
-    2. [vLLM](https://github.com/vllm-project/vllm), an independent open source project
-    3. [TGI](https://github.com/huggingface/text-generation-inference), maintained by Hugging Face
-
-    We [often recommend TensorRT/TensorRT-LLM](https://www.baseten.co/blog/high-performance-ml-inference-with-nvidia-tensorrt/) for best performance. The easiest way to get started with TensorRT-LLM is our [TRT-LLM engine builder](/development/model/performance/engine-builder-overview).
-  </Accordion>
-
-  <Accordion title="Inference server" icon="train-track">
-    *Benefit: Latency/Throughput*
-
-    In addition to an optimized inference engine, you need an inference server to handle requests and supply features like in-flight batching.
-
-    Baseten runs a modified version of Triton for compatible model deployments. Other models use `TrussServer`, a capable general-purpose model inference server built into Truss.
-  </Accordion>
-
-  <Accordion title="Quantization" icon="minimize">
-    *Tradeoff: Latency/Throughput/Cost vs Quality*
-
-    By default, model inference happens in `fp16`, meaning that model weights and other values are represented as 16-bit floating-point numbers.
-
-    Through a process called [post-training quantization](https://www.baseten.co/blog/fp8-efficient-model-inference-with-8-bit-floating-point-numbers/), you can instead run inference in a different format, like `fp8`, `int8`, or `int4`. This has massive benefits: more teraFLOPS at lower precision means lower latency, smaller numbers being retrieved from VRAM means higher throughput, and smaller model weights means saving on cost and potentially using fewer GPUs.
-
-    However, quantization can affect output quality. Thoroughly review quantized model outputs by hand and with standard checks like perplexity to ensure that the output of the quantized model matches the original.
-
-    We've had a lot of success with [fp8 for faster inference without quality loss](https://www.baseten.co/blog/33-faster-llm-inference-with-fp8-quantization/) and encourage experimenting with quantization, especially when using the TRT-LLM engine builder.
-  </Accordion>
-
-  <Accordion title="Model-level optimizations" icon="snake">
-    *Tradeoff: Latency/Throughput/Cost vs Quality*
-
-    There are a number of exciting cutting-edge techniques for model inference that can massively improve latency and/or throughput for a model. For example, LLMs can use Speculative Decoding or Medusa to generate multiple tokens per forward pass, improving TPS.
-
-    When using a new technique to improve model performance, always run real-world benchmarks and carefully validate output quality to ensure the performance improvements aren't undermining the model's usefulness.
-  </Accordion>
-
-  <Accordion title="Batching (GPU concurrency)" icon="object-group">
-    *Tradeoff: Latency vs Throughput/Cost*
-
-    Batch size is how many requests are processed concurrently on the GPU. It is a direct tradeoff between latency and throughput:
-
-    * Increase batch size to improve throughput and cost
-    * Reduce batch size to improve latency
-  </Accordion>
-</AccordionGroup>
-
-### Infrastructure-level optimizations
-
-Once we squeeze as much TPS as possible out of the GPU, we scale that out horizontally with infrastructure optimization.
-
-<AccordionGroup>
-  <Accordion title="Autoscaling" icon="layer-group">
-    *Tradeoff: Latency/Throughput vs Cost*
-
-    If traffic to a deployment is high enough, even an optimized model server won't be able to keep up. By creating replicas, you keep latency consistent for all users.
-
-    Learn more about [autoscaling model replicas](/deployment/autoscaling).
-  </Accordion>
-
-  <Accordion title="Replica-level concurrency" icon="object-ungroup">
-    *Tradeoff: Latency vs Throughput/Cost*
-
-    Replica-level concurrency sets the number of requests that can be sent to the model server at one time. This is different from the on-GPU concurrency as your model server may perform pre- and post-processing tasks on CPU.
-
-    Replica-level concurrency should always be greater than or equal to on-device concurrency (batch size).
-  </Accordion>
-
-  <Accordion title="Network latency" icon="globe">
-    *Tradeoff: Latency vs Cost*
-
-    If your GPU is in us-east-1 and your customer is in Australia, it doesn't matter how much you've optimized TTFT — your real-world latency will be terrible.
-
-    Region-specific deployments are available on a per-customer basis. Contact us at [support@baseten.co](mailto:support@baseten.co) to discuss your needs.
-  </Accordion>
-</AccordionGroup>
-
-### Application-level optimizations
-
-There are also application-level steps that you can take to make sure you're getting the most value from your optimized endpoint.
-
-<AccordionGroup>
-  <Accordion title="Good prompts" icon="lightbulb">
-    *Benefits: Latency, Quality*
-
-    Every token an LLM doesn't have to process or generate is a token that you don't have to wait for or pay for.
-
-    Prompt engineering can be as simple as saying "be concise" or as complex as making sure your RAG system returns the minimum number of highly-relevant retrievals.
-  </Accordion>
-
-  <Accordion title="Consistent sequence shapes" icon="shapes">
-    *Benefits: Latency, Throughput*
-
-    When using TensorRT-LLM, make sure that your input and output sequences are a consistent length. The inference engine is built for a specific number of tokens, and going outside of those sequence shapes will hurt performance.
-  </Accordion>
-
-  <Accordion title="Chains for multi-step inference" icon="link">
-    *Benefits: Latency, Cost*
-
-    The only thing running on your GPU should be the AI model. Other tasks like retrievals, secondary models, and business logic should be deployed and scaled separately to avoid bottlenecks.
-
-    Use [Chains](/development/chain/overview) for performant multi-step and multi-model inference.
-  </Accordion>
-
-  <Accordion title="Session reuse during inference" icon="terminal">
-    *Benefit: Latency*
-
-    Use sessions rather than individual requests to avoid unnecessary network latency. See [inference documentation](/inference/concepts) for details.
-  </Accordion>
-</AccordionGroup>
-
-
-# Request concurrency
-Source: https://docs.baseten.co/development/model/performance/concurrency
-
-A guide to setting concurrency for your model
-
-Configuring concurrency optimizes **model performance**, balancing **throughput** and **latency**.
-
-In Baseten & Truss, concurrency is managed at **two levels**:
-
-1. **Concurrency Target** – Limits the number of requests **sent** to a single replica.
-2. **Predict Concurrency** – Limits how many requests the predict function handles **inside the model container**.
-
-## 1. Concurrency Target
-
-* **Set in the Baseten UI** – Defines how many requests a single replica can process at once.
-* **Triggers autoscaling** – If all replicas hit the concurrency target, additional replicas spin up.
-
-**Example:**
-
-* **Concurrency Target = 2, Single Replica**
-* **5 requests arrive** → 2 are processed immediately, **3 are queued**.
-* If max replicas aren't reached, **autoscaling spins up a new replica**.
-
-## 2. Predict Concurrency
-
-* **Set in** `config.yaml` – Controls how many requests can be **processed by** predict simultaneously.
-* **Protects GPU resources** – Prevents multiple requests from overloading the GPU.
-
-### Configuring Predict Concurrency
-
-```yaml config.yaml theme={"system"}
-model_name: "My model with concurrency limits"
-runtime:
-  predict_concurrency: 2  # Default is 1
-```
-
-### How It Works Inside a Model Pod
-
-1. **Requests arrive** → All begin preprocessing (e.g., downloading images from S3).
-2. **Predict runs on GPU** → Limited by `predict_concurrency`.
-3. **Postprocessing begins** → Can run while other requests are still in inference.
-
-## When to Use Predict Concurrency
-
-* ✅ **Protect GPU resources** – Prevent multiple requests from degrading performance.
-* ✅ **Allow parallel preprocessing/postprocessing** – I/O tasks can continue even when inference is blocked.
-
-<Warning>Ensure `Concurrency Target` is set high enough to send enough requests to the container.</Warning>
-
-
-# Engine builder configuration
-Source: https://docs.baseten.co/development/model/performance/engine-builder-config
-
-Configure your TensorRT-LLM inference engine
-
-This reference lists every configuration option for the TensorRT-LLM Engine Builder. These options are used in `config.yaml`, such as for this Llama 3.1 8B example:
-
-```yaml config.yaml theme={"system"}
-model_name: Llama 3.1 8B Engine
-resources:
-  accelerator: H100:1
-secrets:
-  hf_access_token: "set token in baseten workspace"
+```yaml theme={"system"}
 trt_llm:
   build:
-    base_model: decoder
-    checkpoint_repository:
-      repo: meta-llama/Llama-3.1-8B-Instruct
-      source: HF
+    quantization_type: fp8  # 50% memory reduction
 ```
 
-## `trt_llm.build`
+### **Lookahead Decoding**
 
-TRT-LLM engine build configuration. TensorRT-LLM attempts to build a highly optimized network based on input shapes representative of your workload.
+Accelerate inference for predictable content (code, JSON):
 
-### `base_model`
-
-The base model architecture of your model checkpoint. Supported architectures include:
-
-* `decoder` - for CausalLM such as `Llama/Mistral/Qwen3ForCausalLM`
-* `encoder` - for `Bert/Roberta/LLamaForSequenceClassification`, sentence-transformer models, embedding models
-
-### `checkpoint_repository`
-
-Specification of the model checkpoint to be leveraged for engine building. E.g.
-
-```yaml  theme={"system"}
-checkpoint_repository:
-  source: HF | GCS | REMOTE_URL
-  repo: meta-llama/Llama-3.1-8B-Instruct | gs://bucket_name | https://your-checkpoint.com/model.tar.gz
-  revision: main  # Optional, only applicable to HF models
-```
-
-To configure access to private model checkpoints, [register secrets in your Baseten workspace](/observability/secrets#best-practices-for-secrets), namely the `hf_access_token` or `trt_llm_gcs_service_account` secrets with a valid service account json for HuggingFace or GCS, respectively.
-
-#### `checkpoint_repository.source`
-
-Source where the checkpoint is stored. This should contain assets as if using git clone with lfs for a Hugging Face repository.
-This includes the tokenizer files, remote code and safetensor files and any json file related to configuration.
-For GCS/REMOTE\_URL, we require the files to be organized in the same folder structured to a huggingface transformers repository.
-Supported sources include:
-
-* `HF` (HuggingFace)
-* `GCS` (Google Cloud Storage)
-* `REMOTE_URL` A tarball containing your checkpoint. **Important**: the archive must unpack with all required files (e.g., `config.json`) at the root level. For example, `config.json` should be directly in the tarball, not nested under a subdirectory like `model_name/config.json`.
-
-#### `checkpoint_repository.repo`
-
-Checkpoint repository name, bucket, or url.
-
-#### `checkpoint_repository.revision`
-
-(default: `"main"`)
-
-The specific model version to use. It can be a branch name, a tag name, or a commit id. This field is only applicable to HF (HuggingFace) models.
-
-### `max_batch_size`
-
-(default: `256`)
-
-Maximum number of input sequences to pass through the engine concurrently. Batch size and throughput share a direct relation, whereas batch size and single request latency share an indirect relation.
-Tune this value according to your SLAs and latency budget.
-
-### `max_seq_len`
-
-(default: max\_position\_embeddings from the model repo)
-
-Defines the maximum sequence length (context) of single request​.
-
-### `max_num_tokens`
-
-(default: `8192`)
-
-Defines the maximum number of batched input tokens after padding is removed in each batch. Tuning this value more efficiently allocates memory to KV cache and executes more requests together.
-
-### `max_prompt_embedding_table_size`
-
-(default: `0`)
-
-Maximum prompt embedding table size for [prompt tuning](https://developer.nvidia.com/blog/an-introduction-to-large-language-models-prompt-engineering-and-p-tuning/).
-
-### `num_builder_gpus`
-
-(default: `auto`)
-
-Number of GPUs to be used at build time, defaults to configured `resource.accelerator` count – useful for FP8 quantization in particular, when more GPU memory is required at build time relative to memory usage at inference.
-
-### `plugin_configuration`
-
-Config for inserting plugin nodes into network graph definition for execution of user-defined kernels.
-
-#### `plugin_configuration.paged_kv_cache`
-
-(default: `True`)
-
-Decompose KV cache into page blocks. Read more about what this does [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/gpt-attention.md#paged-kv-cache).
-
-#### `plugin_configuration.use_paged_context_fmha`
-
-(default: `True`)
-
-Utilize paged context for fused multihead attention. This configuration is necessary to enable KV cache reuse. Read more about this configuration [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/kv-cache-reuse.md#how-to-enable-kv-cache-reuse).
-
-#### `plugin_configuration.use_fp8_context_fmha`
-
-(default: `False`)
-
-Utilize FP8 quantization for context fused multihead attention to accelerate attention. To use this configuration, also set `plugin_configuration.use_paged_context_fmha`. Recommended: true
-Read more about when to enable this [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/gpt-attention.md#fp8-context-fmha).
-
-### `quantization_type`
-
-(default: `no_quant`)
-
-Quantization format with which to build the engine. Supported formats include:
-
-* `no_quant` (meaning bf16 or fp16 depending on `torch_dtype` in the huggingface repo)
-* `fp8` (sm 89+)
-* `fp8_kv` (sm 89+)
-* `fp4` (sm 100+)
-* `fp4_kv` (sm 100+)
-
-Additionally, refer to the hardware and quantization technique [support matrix](https://nvidia.github.io/TensorRT-LLM/reference/support-matrix.html).
-
-### `strongly_typed`
-
-(default: `False`)
-
-Whether to build the engine using strong typing, enabling TensorRT's optimizer to statically infer intermediate tensor types which can speed up build time for some formats.
-Automatically typed is always enabled for fp4 and fp8 engines.
-Weak typing enables the optimizer to elect tensor types, which may result in a faster runtime. For more information refer to TensorRT documentation [here](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#strong-vs-weak-typing).
-
-### `tensor_parallel_count`
-
-(default: `1`)
-
-Tensor parallelism count. For more information refer to NVIDIA documentation [here](https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/features/parallelisms.html#tensor-parallelism).
-
-### `speculator`
-
-(default: `None`)
-
-Config for inserting optional speculative decoding options.
-
-#### Speculation with lookahead decoding
-
-Speculation with lookahead decoding can be used by any model and does not require training.
-The implemenation is based on the work at [lmsys.](https://lmsys.org/blog/2023-11-21-lookahead-decoding/)
-We currently disallow performing structured generation and tool-calling with this optimization.
-
-```yaml  theme={"system"}
-model_name: Llama-3.1-8B-Instruct (lookahead decoding)
-resources:
-  accelerator: H100
-  use_gpu: true
+```yaml theme={"system"}
 trt_llm:
   build:
-    base_model: llama
-    checkpoint_repository:
-      repo: meta-llama/Llama-3.1-8B-Instruct
-      source: HF
-    max_batch_size: 32
-    quantization_type: fp8_kv
     speculator:
       speculative_decoding_mode: LOOKAHEAD_DECODING
-      windows_size: 7
-      ngram_size: 5
-      verification_set_size: 7
-  runtime:
-    kv_cache_free_gpu_mem_fraction: 0.62
+      lookahead_windows_size: 5
 ```
 
-#### `speculator.lookahead_ngram_size`, `speculator.lookahead_windows_size`, `speculator.lookahead_verification_set_size`
+### **Performance Client**
 
-Usage of ngram size, window size, verification\_set\_size in the lookahead algorithm.
+Maximize client-side throughput with Rust-based client:
 
-* `windows_size` is the Jacobi window size, meaning number of n-grams in lookahead branch that explores future draft tokens.
-* `ngram_size` is the n-gram size, meaning the maximum number of draft tokens accepted per iteration.
-* `verification_set_size` is the maximum number of n-grams considered for verification, meaning the number of draft token beam hypotheses.
-
-A good default value could be \[5,5,5]. Often, lookahead\_verification\_set\_size is set to lookahead\_windows\_size.
-`lookahead_ngram_size` is often increased when the generated tokens are simlar to contents of the prompt, and decreased if dissimilar.
-
-### `lora_adapters`
-
-(default: `None`)
-
-A mapping from LoRA names to checkpoint repositories.
-For example.
-
-```yaml  theme={"system"}
-checkpoint_repository:
-  repo: meta-llama/Llama-2-13b-hf
-  source: HF
-lora_adapters:
-  lora1:
-    repo: hfl/chinese-llama-2-lora-13b
-    source: HF
+```bash theme={"system"}
+pip install baseten-performance-client
 ```
 
-See [`checkpoint_repository`](/development/model/performance/engine-builder-config#checkpoint-repository) for details on how to configure checkpoint repositories.
-
-Lora naming:
-In addition to specifying the LoRAs here, you need to specify the [`served_model_name`](/development/model/performance/engine-builder-config#served-model-name) that is used to refer to the base model.
-The `served_model_name` is required for deploying LoRAs.
-The LoRA name (in the example above, this is "lora1") is used to query the model using the specified LoRA.
-
-Lora sizes:
-For optimal experience wrt efficency and stability we recommend inference with homogenious adapters (all the adapters have the same ranks and target the same modules).
-
-## `trt_llm.runtime`
-
-TRT-LLM engine runtime configuration.
-
-### `kv_cache_free_gpu_mem_fraction`
-
-(default: `0.9`)
-
-Used to control the fraction of free gpu memory allocated for the KV cache. For more information, refer to the documentation [here](https://nvidia.github.io/TensorRT-LLM/performance/performance-tuning-guide/useful-runtime-flags.html#max-tokens-in-paged-kv-cache-and-kv-cache-free-gpu-memory-fraction).
-If you are using DRAFT\_TOKENS\_EXTERNAL, we recommend to lower this, depending on the draft model size.
-
-### `enable_chunked_context`
-
-(default: `True`)
-
-Enables chunked context, increasing the chance of batch processing between context and generation phase – which may be useful to increase throughput.
-Note that one must set `plugin_configuration.use_paged_context_fmha: True` in order to leverage this feature.
-
-### `batch_scheduler_policy`
-
-(default: `guaranteed_no_evict`)
-
-Supported scheduler policies are as follows:
-
-* `guaranteed_no_evict`
-* `max_utilization`
-
-`guaranteed_no_evict` ensures that an in progress request is never evicted by reserving KV cache space for the maximum possible tokens that can be returned for a request.
-`max_utilization` packs as many requests as possible during scheduling, which may increase throughput at the expense of additional latency.
-For more information refer to the NVIDIA documentation [here](https://nvidia.github.io/TensorRT-LLM/performance/performance-tuning-guide/useful-runtime-flags.html#capacity-scheduler-policy).
-
-### `request_default_max_tokens`
-
-(default: `None`)
-
-Default server configuration for the maximum number of tokens to generate for a single sequence, if one is not provided in the request body.
-Sensible settings depend on your use case, a general value to set can be around 1000 tokens.
-
-### `served_model_name`
-
-(default: `None`)
-
-The name used to refer to the base model when using LoRAs.
-At least one LoRA must be specified under [`lora_adapters`](/development/model/performance/engine-builder-config#lora-adapters) to use LoRAs.
-
-
-# Engine control in Python
-Source: https://docs.baseten.co/development/model/performance/engine-builder-customization
-
-Use `model.py` to customize engine behavior
-
-When you create a new Truss with `truss init`, it creates two files: `config.yaml` and `model/model.py`. While you configure the Engine Builder in `config.yaml`, you may use `model/model.py` to access and control the engine object during inference.
-
-You have two options:
-
-1. Delete the `model/model.py` file and your TensorRT-LLM engine will run according to its base spec.
-2. Update the code to support TensorRT-LLM.
-
-<Warning>
-  You must either update `model/model.py` to pass `trt_llm` as an argument to the `__init__` method OR delete the file. Otherwise you will get an error on deployment as the default `model/model.py` file is not written for TensorRT-LLM.
-</Warning>
-
-The `engine` object is a property of the `trt_llm` argument and must be initialized in `__init__` to be accessed in `load()` (which runs once on server start-up) and `predict()` (which runs for each request handled by the server).
-
-This example applies a chat template with the Llama 3.1 8B tokenizer to the model prompt:
-
-```python model/model.py theme={"system"}
-import orjson  # faster serialization/deserialization than built-in json
-from typing import Any, AsyncIterator
-from transformers import AutoTokenizer
-from fastapi.responses import StreamingResponse
-
-SSE_PREFIX = "data: "
-
-class Model:
-    def __init__(self, trt_llm, **kwargs) -> None:
-        self._secrets = kwargs["secrets"]
-        self._engine = trt_llm["engine"]
-        self._model = None
-        self._tokenizer = None
-
-    def load(self) -> None:
-        self._tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.1-8B-Instruct", token=self._secrets["hf_access_token"])
-
-    async def predict(self, model_input: Any) -> Any:
-        # Apply chat template to prompt
-        model_input["prompt"] = self._tokenizer.apply_chat_template(model_input["prompt"], tokenize=False)
-        response = await self._engine.predict(model_input)
-
-        # If the response is streaming, post-process each chunk
-        if isinstance(response, StreamingResponse):
-            token_gen = response.body_iterator
-
-            async def processed_stream():
-                async for chunk in some_post_processing_function(token_gen):
-                    yield chunk
-
-            return StreamingResponse(processed_stream(), media_type="text/event-stream")
-
-        # Otherwise, return the raw output
-        else:
-            return response
-
-# --- Post-processing helpers for SSE ---
-
-def parse_sse_chunk(chunk: bytes) -> dict | None:
-    """Parses an SSE-formatted chunk and returns the JSON payload."""
-    try:
-        text = chunk.decode("utf-8").strip()
-        if not text.startswith(SSE_PREFIX):
-            return None
-        return orjson.loads(text[len(SSE_PREFIX):])
-    except Exception:
-        return None
-
-def format_sse_chunk(payload: dict) -> bytes:
-    """Formats a JSON payload back into an SSE chunk."""
-    return f"{SSE_PREFIX}".encode("utf-8") + orjson.dumps(payload) + b"\n\n"
-
-def transform_payload(payload: dict) -> dict:
-    """Add a new field to the SSE payload."""
-    payload["my_new_field"] = "my_new_value"
-    return payload
-
-async def some_post_processing_function(
-    token_gen: AsyncIterator[bytes]
-) -> AsyncIterator[bytes]:
-    """Post-process each SSE chunk in the stream."""
-    async for chunk in token_gen:
-        payload = parse_sse_chunk(chunk)
-        if payload is None:
-            yield chunk
-            continue
-
-        transformed = transform_payload(payload)
-        yield format_sse_chunk(transformed)
-```
-
-
-# Engine builder overview
-Source: https://docs.baseten.co/development/model/performance/engine-builder-overview
-
-Deploy optimized model inference servers in minutes
-
-If you have a foundation model like Llama 3 or a fine-tuned variant and want to create a low-latency, high-throughput model inference server, TensorRT-LLM via the Engine Builder is likely the tool for you.
-
-TensorRT-LLM is an open source performance optimization toolbox created by NVIDIA. It helps you build TensorRT engines for large language models like Llama and Mistral as well as certain other models like Whisper and large vision models.
-
-Baseten's TensorRT-LLM Engine Builder simplifies and automates the process of using TensorRT-LLM for development and production. All you need to do is write a few lines of configuration and an optimized model serving engine will be built automatically during the model deployment process.
-
-## FAQs
-
-### Where are the engines stored?
-
-The engines are stored in Baseten but owned by the user — we're working on a mechanism for downloading them. In the meantime, reach out if you need access to an engine that you created using the Engine Builder.
-
-### Does the Engine Builder support quantization?
-
-Yes. The Engine Builder can perform post-training quantization during the building process. For supported options, see [quantization in the config reference](/development/model/performance/engine-builder-config#quantization-type).
-
-### Can I customize the engine behavior?
-
-For further control over the TensorRT-LLM engine during inference, use the `model/model.py` file to access the engine object at runtime. See [controlling engines with Python](/development/model/performance/engine-builder-customization) for details.
-
-
-# Performance client
-Source: https://docs.baseten.co/development/model/performance/performance-client
-
-The **Baseten Performance Client** is a high-performance library for interacting with model endpoints, supporting **embeddings, reranking, and classification**. It is available for both **Python (pip)** and **Node.js (npm)**.
-
-<Card title="View on GitHub" icon="github" horizontal href="https://github.com/basetenlabs/truss/tree/main/baseten-performance-client" />
-
-Built in Rust and integrated with Python and Node.js, the client is optimized for **massive concurrent POST requests**. It releases the Python GIL while executing requests, enabling simultaneous sync and async usage.
-
-In our [benchmarks](https://www.baseten.co/blog/your-client-code-matters-10x-higher-embedding-throughput-with-python-and-rust/), the Performance Client reached **1200+ requests per second** per client.
-
-It can be used when **deploying on Baseten**, as well as **third-party providers** such as OpenAI and Mixedbread.
-
-<img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8b1df45b528b98df2154736919de105c" alt="benchmarks" data-og-width="1200" width="1200" data-og-height="565" height="565" data-path="images/performance-client-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=7974921583e72f195778a892e0fa9af1 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=6c97fe1f29ba0ac098d247965943f2eb 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=de2c7b3177be0adba10dc5c032523d08 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4545ef1bff98f1877d5c4adb4231d5ad 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=61697cd3af7479fac9e0bf497b538c82 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/performance-client-diagram.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5c407d6f55103b325ca7547b3f11902b 2500w" />
+## 🔧 Where to start
+
+1. **Choose your engine**: [Engines overview](/engines)
+2. **Configure your model**: Engine-specific configuration guides
+3. **Optimize performance**: [Performance concepts](/engines/performance-concepts/quantization-guide)
+4. **Deploy and monitor**: Use [performance client](/engines/performance-concepts/performance-client) for maximum throughput
 
 ***
 
-## Installation
-
-### Python
-
-```bash  theme={"system"}
-pip install baseten_performance_client
-```
-
-### Node.js
-
-```bash  theme={"system"}
-npm install baseten-performance-client
-```
-
-## Getting Started
-
-### Python
-
-```python  theme={"system"}
-from baseten_performance_client import PerformanceClient
-
-client = PerformanceClient(
-    base_url="https://model-yqv4yjjq.api.baseten.co/environments/production/sync",
-    api_key="YOUR_API_KEY"
-)
-```
-
-### Node.js
-
-```javascript  theme={"system"}
-const { PerformanceClient } = require("baseten-performance-client");
-
-const client = new PerformanceClient(
-  "https://model-yqv4yjjq.api.baseten.co/environments/production/sync",
-  process.env.BASETEN_API_KEY
-);
-```
-
-You can also use **OpenAI** or **Mixedbread** endpoints by replacing the `base_url`.
-
-## Embeddings
-
-The client provides efficient embedding requests with configurable batching, concurrency, and latency optimizations.
-
-### Example (Python)
-
-```python  theme={"system"}
-texts = ["Hello world", "Example text", "Another sample"] * 10
-
-response = client.embed(
-    input=texts,
-    model="my_model",
-    batch_size=16,
-    max_concurrent_requests=256,
-    max_chars_per_request=10000,
-    hedge_delay=15,
-    timeout_s=360
-)
-```
-
-**Advanced parameters**
-
-* `max_chars_per_request`, `batch_size`: Packs/Batches requests by number of entries or character count, whatever limit is reached first. Useful for optimial distribution across all your replicas on baseten.
-* `hedge_delay`: Send duplicate requests after a delay (≥0.2s) to reduce the p99.5 latency. After hedge\_delay (s) is met, your request will be cloned once and race the original request. Limited by a 5% budget. Default: disabled.
-* `timeout_s`: Timeout on each request. Raised a request.TimeoutError once a single request can't be retried. 429 and 5xx errors are always retried.
-
-Async usage is also supported:
-
-```python  theme={"system"}
-response = await client.async_embed(input=texts, model="my_model")
-```
-
-### Example (Node.js)
-
-```javascript  theme={"system"}
-const response = await client.embed(
-  ["Hello world", "Example text", "Another sample"],
-  "my_model"
-);
-```
-
-## Batch POST
-
-Use `batch_post` for sending POST requests to any URL.
-Built for benchmarks (p90/p95/p99 timings). Useful for starting off massive batch tasks, or benchmarking the performance of individual requests, while retaining a capped concurrency.
-Releasing the GIL during all calls - you can do work in parallel without impacting performance.
-
-### Example (Python) - completions/chat completions
-
-```python  theme={"system"}
-# requires stream=false / non-sse response.
-payloads = [
-    {"model": "my_model", "prompt": "Batch request 1", stream="false"},
-    {"model": "my_model", "input": "Batch request 2", stream="false"}
-] * 10
-
-response = client.batch_post(
-    url_path="/v1/completions",
-    payloads=payloads,
-    max_concurrent_requests=96,
-    timeout_s=720,
-    hedge_delay=30,
-)
-responses = response.data # array with 20 dicts
-# timings = response.individual_request_times # array with the time.time() for each request
-```
-
-### Example (Node.js)
-
-```javascript  theme={"system"}
-const payloads = [
-  { model: "my_model", input: ["Batch request 1"] },
-  { model: "my_model", input: ["Batch request 2"] },
-];
-
-const response = await client.batchPost("/v1/embeddings", payloads, 96);
-```
-
-***
-
-## Reranking
-
-Compatible with BEI and text-embeddings-inference.
-
-### Example (Python)
-
-```python  theme={"system"}
-response = client.rerank(
-    query="What is the best framework?",
-    texts=["Doc 1", "Doc 2", "Doc 3"]
-)
-```
-
-***
-
-## Classification
-
-Supports classification endpoints such as BEI or text-embeddings-inference.
-
-### Example (Python)
-
-```python  theme={"system"}
-response = client.classify(inputs=[
-    "This is great!",
-    "I did not like it.",
-    "Neutral experience."
-])
-```
-
-***
-
-## Error Handling
-
-The client raises standard Python/Node.js errors:
-
-* **HTTPError**: Authentication failures, 4xx/5xx responses.
-* **ValueError**: Invalid inputs (e.g., empty list, invalid batch size).
-
-Example:
-
-```python  theme={"system"}
-try:
-    response = client.embed(input=["Hello"], model="my_model")
-except requests.exceptions.HTTPError as e:
-    print("HTTP error:", e)
-```
-
-***
-
-## More examples, contribute to the open-source libary or more detailed usage:
-
-Check out the readme in in [Github truss repo: baseten-performance-client](https://github.com/basetenlabs/truss/tree/main/baseten-performance-client)
+**💡 Tip**: Start with the default engine configuration, then apply quantization and other optimizations based on your specific performance requirements.
 
 
-# Private Docker Registries
+# Private Docker registries
 Source: https://docs.baseten.co/development/model/private-registries
 
 A guide to configuring a private container registry for your truss
@@ -6276,7 +5563,7 @@ secrets:
 
 1. Get the a **Base64-encoded** secret:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 PASSWORD=`aws ecr get-login-password --region {us-east-1}`
 echo -n "AWS:$PASSWORD" | base64
 ```
@@ -6337,7 +5624,7 @@ secrets:
 
 1. Get the a **Base64-encoded** secret:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 echo -n 'username:password' | base64
 ```
 
@@ -6366,7 +5653,7 @@ Get more control by directly using the request object.
 Truss processes client requests by extracting and validating payloads. For **advanced use cases**, you can access the raw request object to:
 
 * **Customize payload deserialization** (e.g., binary protocol buffers).
-* **Handle disconnections & cancel long-running predictions.**
+* **Handle disconnections and cancel long-running predictions.**
 
 <Tip>You can mix request objects with standard inputs or use requests exclusively for performance optimization.</Tip>
 
@@ -6374,7 +5661,7 @@ Truss processes client requests by extracting and validating payloads. For **adv
 
 You can define request objects in `preprocess`, `predict`, and `postprocess`:
 
-```python  theme={"system"}
+```python theme={"system"}
 import fastapi
 
 class Model:
@@ -6398,7 +5685,7 @@ class Model:
   * `postprocess` cannot use only the request—it must receive the model’s output.
   * If `predict` only uses the request, `preprocess` cannot be used.
 
-```python  theme={"system"}
+```python theme={"system"}
 import fastapi, asyncio, logging
 
 class Model:
@@ -6423,9 +5710,9 @@ class Model:
 
 ### TRT-LLM (Polling-Based Cancellation)
 
-For **TensorRT-LLM**, use `response_iterator.cancel()` to terminate streaming requests:
+For TensorRT-LLM, use `response_iterator.cancel()` to terminate streaming requests:
 
-```python  theme={"system"}
+```python theme={"system"}
 async for request_output in response_iterator:
     if await is_cancelled_fn():
         logging.info("Request cancelled. Cancelling Triton request.")
@@ -6437,9 +5724,9 @@ async for request_output in response_iterator:
 
 ### vLLM (Abort API)
 
-For **vLLM**, use `engine.abort()` to stop processing:
+For vLLM, use `engine.abort()` to stop processing:
 
-```python  theme={"system"}
+```python theme={"system"}
 async for request_output in results_generator:
     if await request.is_disconnected():
         await engine.abort(request_id)
@@ -6454,7 +5741,7 @@ async for request_output in results_generator:
 * **Client-side headers** – Most headers are stripped; include necessary metadata in the payload.
 
 
-# Custom Responses
+# Custom responses
 Source: https://docs.baseten.co/development/model/responses
 
 Get more control by directly creating the response object.
@@ -6470,7 +5757,7 @@ By default, Truss wraps prediction results into an HTTP response. For **advanced
 
 Any subclass of starlette.responses.Response is supported.
 
-```python  theme={"system"}
+```python theme={"system"}
 import fastapi
 
 class Model:
@@ -6484,7 +5771,7 @@ class Model:
 
 For **server-sent events (SSEs)**, use `StreamingResponse`:
 
-```python  theme={"system"}
+```python theme={"system"}
 import time
 from starlette.responses import StreamingResponse
 
@@ -6508,36 +5795,66 @@ class Model:
 </Info>
 
 
-# Security and secrets
+# Secrets
 Source: https://docs.baseten.co/development/model/secrets
 
-Using secrets securely in your ML models
+Use secrets securely in your models
 
-Truss allows you to securely manage **API keys**, **access tokens**, **passwords**, **and other secrets** without exposing them in code.
+Truss allows you to securely manage API keys, access tokens, passwords, and other secrets without exposing them in code.
 
-## 1. Define Secrets in `config.yaml`
+## Create a secret
 
-Add secrets with **placeholder** values in `config.yaml`:
+<Tabs>
+  <Tab title="Baseten UI">
+    1. Go to [Secrets](https://app.baseten.co/settings/secrets) in your account settings.
+    2. Enter the name and value of the secret, for example `hf_access_token` and `hf_...`.
+    3. Select **Add secret**.
+  </Tab>
 
-```yaml  theme={"system"}
+  <Tab title="cURL">
+    To create a secret with the API, use the following command:
+
+    ```bash theme={"system"}
+    curl --request POST \
+      --url https://api.baseten.co/v1/secrets \
+      --header "Authorization: Api-Key $BASETEN_API_KEY" \
+      --data '{
+        "name": "hf_access_token",
+        "value": "hf_..."
+      }'
+    ```
+
+    For more information, see the
+    [Upsert a secret](/reference/management-api/secrets/upserts-a-secret) reference.
+  </Tab>
+</Tabs>
+
+## Use secrets in your model
+
+Once you've created a secret, declare it in your `config.yaml` and access it in your model code.
+
+<Warning>
+  Never store actual secret values in `config.yaml`. Use `null` as a placeholder.
+  The secret in your `config.yaml` is a reference to the key in the secret manager.
+</Warning>
+
+Specify the reference to the secret in `config.yaml`:
+
+```yaml config.yaml theme={"system"}
 secrets:
   hf_access_token: null
 ```
 
-<Warning>Never store actual secret values in `config.yaml`. Store secrets in the [workspace settings](https://app.baseten.co/settings/secrets).</Warning>
+Secrets are passed as keyword arguments to the `Model` class. To access them, store the secrets in `__init__`:
 
-## 2. Access Secrets in `model.py`
-
-Secrets are passed as **keyword arguments** to the `Model` class:
-
-```python  theme={"system"}
+```python main.py theme={"system"}
 def __init__(self, **kwargs):
     self._secrets = kwargs["secrets"]
 ```
 
-Use secrets inside load or predict:
+Then use the secret in `load` or `predict` section of your model by accessing the secret using the key:
 
-```python  theme={"system"}
+```python main.py theme={"system"}
 def load(self):
     self._model = pipeline(
         "fill-mask",
@@ -6546,14 +5863,38 @@ def load(self):
     )
 ```
 
-## 3. Store Secrets on Your Remote
+## Use secrets in custom Docker images
 
-* On **Baseten**, add secrets in the [workspace settings](https://app.baseten.co/settings/secrets).
-* Use the **exact name** from `config.yaml` (case-sensitive).
+When using [custom Docker images](/development/model/custom-server), Truss
+injects secrets into your container at `/secrets/{secret_name}` instead of
+passing them through `kwargs`.
 
-## 4. Deploying with Secrets
+You must specify the reference to the secret and then access it in your `start_command` or application code.
 
-By default, models have access to any secrets on a workspace.
+Specify the reference to the secret in `config.yaml`:
+
+```yaml config.yaml theme={"system"}
+secrets:
+  hf_access_token: null
+```
+
+### Read secrets in your `start_command`
+
+To read a secret in your `start_command`:
+
+```yaml config.yaml theme={"system"}
+docker_server:
+  start_command: sh -c "HF_TOKEN=$(cat /secrets/hf_access_token) my-server --port 8000"
+```
+
+### Read secrets in application code
+
+To read a secret in application code:
+
+```python main.py theme={"system"}
+with open("/secrets/hf_access_token", "r") as f:
+    hf_token = f.read().strip()
+```
 
 
 # Streaming output
@@ -6563,7 +5904,7 @@ Streaming Output for LLMs
 
 Streaming output significantly reduces wait time for generative AI models by returning results as they are generated instead of waiting for the full response.
 
-## Why Streaming?
+## Why streaming?
 
 * ✅ **Faster response time** – Get initial results in under **1 second** instead of waiting **10+ seconds**.
 * ✅ **Improved user experience** – Partial outputs are **immediately usable**.
@@ -6572,7 +5913,7 @@ This guide walks through **deploying Falcon 7B** with streaming enabled.
 
 ### 1. Initialize Truss
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss init falcon-7b && cd falcon-7b
 ```
 
@@ -6694,22 +6035,28 @@ resources:
   accelerator: L4
 ```
 
-### 5. Deploy & Invoke
+### 5. Deploy and invoke
 
-Deploy the model:
+Deploy the model for development:
 
-```sh  theme={"system"}
-truss push
+```sh theme={"system"}
+truss push --watch
+```
+
+Or deploy for production:
+
+```sh theme={"system"}
+truss push --publish
 ```
 
 Invoke with:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss predict -d '{"prompt": "Tell me about falcons", "do_sample": true}'
 ```
 
 
-# Torch Compile Caching 🆕
+# Torch compile caching 🆕
 Source: https://docs.baseten.co/development/model/torch-compile-cache
 
 Accelerate cold starts by loading in previous compilation artifacts.
@@ -6782,7 +6129,7 @@ Here is an example of compile caching for Flux, an image generation model. Note 
 
 Under requirements, add `b10-transfer`:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 requirements:
   - b10-transfer
 ```
@@ -6791,7 +6138,7 @@ requirements:
 
 Import the library and use the two functions to speed up torch compilation time:
 
-```python  theme={"system"}
+```python theme={"system"}
 from b10_transfer import load_compile_cache, save_compile_cache, OperationStatus
 
 class Model:
@@ -6863,7 +6210,7 @@ There are two changes to make in `config.yaml`:
 
 Under requirements, add `b10-transfer`:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 requirements:
   - b10-transfer
 ```
@@ -6872,7 +6219,7 @@ requirements:
 
 Under start command, add `b10-compile-cache &` right before the `vllm serve` call:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 start_command: "... b10-compile-cache & vllm serve ..."
 ```
 
@@ -6942,7 +6289,7 @@ start_command: "... b10-compile-cache & vllm serve ..."
 
   ### Example Configuration
 
-  ```yaml  theme={"system"}
+  ```yaml theme={"system"}
   # config.yaml
   environment_variables:
     MAX_CACHE_SIZE_MB: "2048"
@@ -6981,7 +6328,7 @@ In Truss models, WebSockets replace the conventional request/response flow: a si
 
 1. **Initialize your Truss**:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss init websocket-model
 ```
 
@@ -6989,7 +6336,7 @@ For more detailed information about this command, refer to the [truss init docum
 
 2. Replace the `predict` method with a `websocket` method to your Truss in `model/model.py`. For example:
 
-```python  theme={"system"}
+```python theme={"system"}
 import fastapi
 
 class Model:
@@ -7004,7 +6351,7 @@ class Model:
 
 3. Set `runtime.transport.kind=websocket` in `config.yaml`:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 ...
 runtime:
   transport:
@@ -7023,7 +6370,7 @@ runtime:
 
 Using `websocat` ([get it](https://github.com/vi/websocat)), you can call the model like this:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 websocat -H="Authorization: Api-Key $BASETEN_API_KEY" \
    wss://model-{MODEL_ID}.api.baseten.co/environments/production/websocket
 Hello # Your input.
@@ -7046,7 +6393,7 @@ For Chains, WebSockets are wrapped in a reduced API object `WebSocketProtocol`. 
 
 ### Implementation Example
 
-```python  theme={"system"}
+```python theme={"system"}
 import fastapi
 import truss_chains as chains
 
@@ -7084,7 +6431,7 @@ class WSEntrypoint(chains.ChainletBase):
 
 Using `websocat` ([get it](https://github.com/vi/websocat)), you can call the chain like this:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 websocat -H="Authorization: Api-Key $BASETEN_API_KEY" \
    wss://chain-{CHAIN_ID}.api.baseten.co/environments/production/websocket
 ```
@@ -7130,7 +6477,7 @@ runtime:
 
 Using `websocat`, you can connect to your custom WebSocket server:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 websocat -H="Authorization: Api-Key $BASETEN_API_KEY" \
    wss://model-{MODEL_ID}.api.baseten.co/environments/production/websocket
 ```
@@ -7202,12 +6549,5530 @@ Measured at different percentiles (p50, p90, p95, p99):
 End-to-end connection duration is tracked as the duration of the connection. Just
 like connections/minute, this is tracked after connections are closed.
 
-## Connection input & output size
+## Connection input and output size
 
 Measured at different percentiles (p50, p90, p95, p99):
 
 * **Connection input size:** Bytes sent by the client to the server for the duration of the connection.
 * **Connection output size:** Bytes sent by the client to the server for the duration of the connection.
+
+
+# BEI-Bert
+Source: https://docs.baseten.co/engines/bei/bei-bert
+
+BERT-optimized embeddings with cold-start performance
+
+BEI-Bert is a specialized variant of Baseten Embeddings Inference optimized for BERT-based model architectures. It provides superior cold-start performance and 16-bit precision for models that benefit from bidirectional attention patterns.
+
+## When to use BEI-Bert
+
+### Ideal use cases
+
+**Model architectures:**
+
+* **Sentence-transformers**: `sentence-transformers/all-MiniLM-L6-v2`
+* **Jina models**: `jinaai/jina-embeddings-v2-base-en`, `jinaai/jina-embeddings-v2-base-code`
+* **Nomic models**: `nomic-ai/nomic-embed-text-v1.5`, `nomic-ai/nomic-embed-code-v1.5`
+* **BERT variants**: `FacebookAI/roberta-base`, `cardiffnlp/twitter-roberta-base`
+* **Gemma3Bidirectional**: `google/embeddinggemma-300m`
+* **ModernBERT**: `answerdotai/ModernBERT-base`
+* **Qwen2Bidirectional**: `Alibaba-NLP/gte-Qwen2-7B-instruct`
+* **QWen3Bidirectional** `voyageai/voyage-4-nano`
+* **LLama3Bidrectional** `nvidia/llama-embed-nemotron-8b`
+
+**Deployment scenarios:**
+
+* **Cold-start sensitive applications**: Where first-request latency is critical
+* **Small to medium models**: (under 4B parameters) where quantization isn't needed
+* **High-accuracy requirements**: Where 16-bit precision is preferred
+* **Bidirectional attention**: Models with bidirectional attention run best on this engine.
+
+### BEI-Bert vs BEI comparison
+
+| Feature      | BEI-Bert                             | BEI                               |
+| ------------ | ------------------------------------ | --------------------------------- |
+| Architecture | BERT-based (bidirectional)           | Causal (unidirectional)           |
+| Precision    | FP16 (16-bit)                        | BF16/FP16/FP8/FP4 (quantized)     |
+| Cold-start   | Optimized for fast initialization    | Standard startup                  |
+| Quantization | Not supported                        | FP8/FP4 supported                 |
+| Memory usage | Lower for small models               | Higher or equal                   |
+| Throughput   | 600-900 embeddings/sec               | 800-1400 embeddings/sec           |
+| Best for     | Small BERT models, accuracy-critical | Large models, throughput-critical |
+
+## Recommended models (MTEB ranking)
+
+### Top-tier embeddings
+
+**High performance (rank 2-8):**
+
+* `Alibaba-NLP/gte-Qwen2-7B-instruct` (7.61B): Bidirectional.
+* `intfloat/multilingual-e5-large-instruct` (560M): Multilingual.
+* `google/embeddinggemma-300m` (308M): Google's compact model.
+
+**Mid-range performance (rank 15-35):**
+
+* `Alibaba-NLP/gte-Qwen2-1.5B-instruct` (1.78B): Cost-effective.
+* `Salesforce/SFR-Embedding-2_R` (7.11B): Salesforce model.
+* `Snowflake/snowflake-arctic-embed-l-v2.0` (568M): Snowflake large.
+* `Snowflake/snowflake-arctic-embed-m-v2.0` (305M): Snowflake medium.
+
+**Efficient models (rank 52-103):**
+
+* `WhereIsAI/UAE-Large-V1` (335M): UAE large model.
+* `nomic-ai/nomic-embed-text-v1` (137M): Nomic original.
+* `nomic-ai/nomic-embed-text-v1.5` (137M): Nomic improved.
+* `sentence-transformers/all-mpnet-base-v2` (109M): MPNet base.
+
+**Specialized models:**
+
+* `nomic-ai/nomic-embed-text-v2-moe` (475M-A305M): Mixture of experts.
+* `Alibaba-NLP/gte-large-en-v1.5` (434M): Alibaba large English.
+* `answerdotai/ModernBERT-large` (396M): Modern BERT large.
+* `jinaai/jina-embeddings-v2-base-en` (137M): Jina English.
+* `jinaai/jina-embeddings-v2-base-code` (137M): Jina code.
+
+### Re-ranking models
+
+**Top re-rankers:**
+
+* `BAAI/bge-reranker-large`: XLM-RoBERTa based.
+* `BAAI/bge-reranker-base`: XLM-RoBERTa base.
+* `Alibaba-NLP/gte-multilingual-reranker-base`: GTE multilingual.
+* `Alibaba-NLP/gte-reranker-modernbert-base`: ModernBERT reranker.
+
+### Classification models
+
+**Sentiment analysis:**
+
+* `SamLowe/roberta-base-go_emotions`: RoBERTa for emotions.
+
+## Supported model families
+
+### Popular Hugging Face models
+
+Find supported models on Hugging Face:
+
+* [Embedding Models](https://huggingface.co/models?pipeline_tag=feature-extraction\&other=text-embeddings-inference\&sort=trending)
+* [Classification Models](https://huggingface.co/models?pipeline_tag=text-classification\&other=text-embeddings-inference\&sort=trending)
+
+### Sentence-transformers
+
+The most common BERT-based embedding models, optimized for semantic similarity.
+
+**Popular models:**
+
+* `sentence-transformers/all-MiniLM-L6-v2` (384D, 22M params)
+* `sentence-transformers/all-mpnet-base-v2` (768D, 110M params)
+* `sentence-transformers/multi-qa-mpnet-base-dot-v1` (768D, 110M params)
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "sentence-transformers/all-MiniLM-L6-v2"
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+### Voyage and Nemotron Bidrectional LLMs
+
+Large-decoder architectures with bidirectional attention like Qwen3 (`voyageai/voyage-4-nano`) or Llama3 (`nvidia/llama-embed-nemotron-8b`) can be deployed with BEi-bert.
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "voyageai/voyage-4-nano"
+      # rewrite of the config files for compatability (no custom code support)
+      revision: "refs/pr/5"
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+### Jina AI embeddings
+
+Jina's BERT-based models optimized for various domains including code.
+
+**Popular models:**
+
+* `jinaai/jina-embeddings-v2-base-en` (512D, 137M params)
+* `jinaai/jina-embeddings-v2-base-code` (512D, 137M params)
+* `jinaai/jina-embeddings-v2-base-es` (512D, 137M params)
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "jinaai/jina-embeddings-v2-base-en"
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+### Nomic AI embeddings
+
+Nomic's models with specialized training for text and code.
+
+**Popular models:**
+
+* `nomic-ai/nomic-embed-text-v1.5` (768D, 137M params)
+* `nomic-ai/nomic-embed-code-v1.5` (768D, 137M params)
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "nomic-ai/nomic-embed-text-v1.5"
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+### Alibaba GTE and Qwen models
+
+Advanced multilingual models with instruction-tuning and long-context support.
+
+**Popular models:**
+
+* `Alibaba-NLP/gte-Qwen2-7B-instruct`: Top-ranked multilingual.
+* `Alibaba-NLP/gte-Qwen2-1.5B-instruct`: Cost-effective alternative.
+* `intfloat/multilingual-e5-large-instruct`: E5 multilingual variant.
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "Alibaba-NLP/gte-Qwen2-7B-instruct"
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+## Configuration examples
+
+### Cost-effective GTE-Qwen deployment
+
+```yaml theme={"system"}
+model_name: BEI-Bert-GTE-Qwen-1.5B
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 15Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "Alibaba-NLP/gte-Qwen2-1.5B-instruct"
+      revision: main
+    max_num_tokens: 8192
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.85
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### Basic sentence-transformer deployment
+
+```yaml theme={"system"}
+model_name: BEI-Bert-MiniLM
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "sentence-transformers/all-MiniLM-L6-v2"
+      revision: main
+    max_num_tokens: 8192
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### Jina code embeddings deployment
+
+```yaml theme={"system"}
+model_name: BEI-Bert-Jina-Code
+resources:
+  accelerator: H100
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "jinaai/jina-embeddings-v2-base-code"
+      revision: main
+    max_num_tokens: 8192
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### Nomic text embeddings with custom routing
+
+```yaml theme={"system"}
+model_name: BEI-Bert-Nomic-Text
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "nomic-ai/nomic-embed-text-v1.5"
+      revision: main
+    max_num_tokens: 16384
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.85
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+## Integration examples
+
+### OpenAI client with Qwen3 instructions
+
+```python theme={"system"}
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.embeddings.create(
+    input="This is a test sentence for embedding.",
+    model="not-required"
+)
+
+# Batch embedding with multiple documents
+documents = [
+    "Product documentation for software library",
+    "User question about API usage",
+    "Code snippet example"
+]
+
+response = client.embeddings.create(
+    input=documents,
+    model="not-required"
+)
+
+print(f"Embedding dimension: {len(response.data[0].embedding)}")
+print(f"Processed {len(response.data)} embeddings")
+```
+
+### Baseten Performance Client
+
+For maximum throughput with BEI-Bert:
+
+```python theme={"system"}
+from baseten_performance_client import PerformanceClient
+
+client = PerformanceClient(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync"
+)
+
+# High-throughput batch processing
+texts = [f"Sentence {i}" for i in range(1000)]
+response = client.embed(
+    input=texts,
+    model="not-required",
+    batch_size=8,
+    max_concurrent_requests=16,
+    timeout_s=300
+)
+
+print(f"Processed {len(response.numpy())} embeddings")
+print(f"Embedding shape: {response.numpy().shape}")
+```
+
+### Direct API usage
+
+```python theme={"system"}
+import requests
+import os
+import json
+
+headers = {
+    "Authorization": f"Api-Key {os.environ['BASETEN_API_KEY']}",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "input": ["Text to embed", "Another text"],
+    "encoding_format": "float"
+}
+
+response = requests.post(
+    "https://model-xxxxxx.api.baseten.co/environments/production/sync/v1/embeddings",
+    headers=headers,
+    json=data
+)
+
+result = response.json()
+print(f"Embeddings: {len(result['data'])} embeddings generated")
+```
+
+## Best practices
+
+### Model selection guide
+
+Choose based on your primary constraint:
+
+**Cost-effective (balanced performance/cost):**
+
+* `Alibaba-NLP/gte-Qwen2-7B-instruct`: Instruction-tuned, ranked #1 for multilingual.
+* `Alibaba-NLP/gte-Qwen2-1.5B-instruct`: 1/5 the size, still top-tier.
+* `Snowflake/snowflake-arctic-embed-m-v2.0`: Multilingual-optimized, MRL support.
+
+**Lightweight & fast (under 500M):**
+
+* `google/embeddinggemma-300m`: 300M params, 100+ languages.
+* `Snowflake/snowflake-arctic-embed-m-v2.0`: 305M, compression-friendly.
+* `nomic-ai/nomic-embed-text-v1.5`: 137M, minimal latency.
+* `sentence-transformers/all-MiniLM-L6-v2`: 22M, legacy standard.
+
+**Specialized:**
+
+* **Code:** `jinaai/jina-embeddings-v2-base-code`
+* **Long sequences:** `Alibaba-NLP/gte-large-en-v1.5`
+* **Re-ranking:** `BAAI/bge-reranker-large`, `Alibaba-NLP/gte-reranker-modernbert-base`
+
+### Hardware optimization
+
+**Cost-effective deployments:**
+
+* L4 GPUs for models `<200M` parameters
+* H100 GPUs for models 200-500M parameters
+* Enable autoscaling for variable traffic
+
+**Performance optimization:**
+
+* Use `max_num_tokens: 8192` for most use cases
+* Use `max_num_tokens: 16384` for long documents
+* Tune `batch_scheduler_policy` based on traffic patterns
+
+### Deployment strategies
+
+**For development:**
+
+* Start with smaller models (MiniLM)
+* Use L4 GPUs for cost efficiency
+* Enable detailed logging
+
+**For production:**
+
+* Use larger models (MPNet) for better quality
+* Use H100 GPUs for better performance
+* Implement monitoring and alerting
+
+**For edge deployments:**
+
+* Use smallest suitable models
+* Optimize for cold-start performance
+* Consider model size constraints
+
+## Troubleshooting
+
+### Common issues
+
+**Slow cold-start times:**
+
+* Ensure model is properly cached
+* Consider using smaller models
+* Check GPU memory availability
+
+**Lower than expected throughput:**
+
+* Verify `max_num_tokens` is appropriate
+* Check `batch_scheduler_policy` settings
+* Monitor GPU utilization
+
+**Memory issues:**
+
+* Reduce `max_num_tokens` if needed
+* Use smaller models for available memory
+* Monitor memory usage during deployment
+
+### Performance tuning
+
+**For lower latency:**
+
+* Reduce `max_num_tokens`
+* Use `batch_scheduler_policy: guaranteed_no_evict`
+* Consider smaller models
+
+**For higher throughput:**
+
+* Increase `max_num_tokens` appropriately
+* Use `batch_scheduler_policy: max_utilization`
+* Optimize batch sizes in client code
+
+**For cost optimization:**
+
+* Use L4 GPUs when possible
+* Choose appropriately sized models
+* Implement efficient autoscaling
+
+## Migration from other systems
+
+### From sentence-transformers library
+
+**Python code:**
+
+```python theme={"system"}
+# Before (sentence-transformers)
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('all-MiniLM-L6-v2')
+embeddings = model.encode(sentences)
+
+# After (BEI-Bert)
+from openai import OpenAI
+client = OpenAI(api_key=BASETEN_API_KEY, base_url=BASE_URL)
+embeddings = client.embeddings.create(input=sentences, model="not-required")
+```
+
+### From other embedding services
+
+BEI-Bert provides OpenAI-compatible endpoints:
+
+1. **Update base URL**: Point to Baseten deployment
+2. **Update API key**: Use Baseten API key
+3. **Test compatibility**: Verify embedding dimensions and quality
+4. **Optimize**: Tune batch sizes and concurrency for performance
+
+## Further reading
+
+* [BEI overview](/engines/bei/overview) - General BEI documentation
+* [BEI reference config](/engines/bei/bei-reference) - Complete configuration options
+* [Embedding examples](/examples/bei) - Concrete deployment examples
+* [Performance client documentation](/engines/performance-concepts/performance-client) - Client Usage with Embeddings
+* [Performance optimization](/development/model/performance-optimization) - General performance guidance
+
+
+# Configuration reference
+Source: https://docs.baseten.co/engines/bei/bei-reference
+
+Complete reference config for BEI and BEI-Bert engines
+
+This reference covers all configuration options for BEI and BEI-Bert deployments. All settings use the `trt_llm` section in `config.yaml`.
+
+## Configuration structure
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v1  # Always v1 for BEI
+  build:
+    base_model: encoder | encoder_bert
+    checkpoint_repository: {...}
+    max_num_tokens: 16384
+    quantization_type: no_quant | fp8 | fp4 | fp4_kv
+    quantization_config: {...}
+    plugin_configuration: {...}
+  runtime:
+    webserver_default_route: /v1/embeddings | /rerank | /predict
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+## Build configuration
+
+The `build` section configures model compilation and optimization settings.
+
+<ParamField type="string">
+  The base model architecture determines which BEI variant to use.
+
+  **Options:**
+
+  * `encoder`: BEI - for causal embedding models (Llama, Mistral, Qwen, Gemma)
+  * `encoder_bert`: BEI-Bert - for BERT-based models (BERT, RoBERTa, Jina, Nomic)
+
+  ```yaml theme={"system"}
+  build:
+    base_model: encoder
+  ```
+</ParamField>
+
+<ParamField type="object">
+  Specifies where to find the model checkpoint. Repository must follow the standard HuggingFace structure.
+
+  **Source options:**
+
+  * `HF`: Hugging Face Hub (default)
+  * `GCS`: Google Cloud Storage
+  * `S3`: AWS S3
+  * `AZURE`: Azure Blob Storage
+  * `REMOTE_URL`: HTTP URL to tar.gz file
+  * `BASETEN_TRAINING`: Baseten Training checkpoints
+
+  For detailed configuration options including training checkpoints and cloud storage setup, see [Deploy training and S3 checkpoints](/engines/performance-concepts/deployment-from-training-and-s3).
+
+  ```yaml theme={"system"}
+  checkpoint_repository:
+    source: HF
+    repo: "BAAI/bge-large-en-v1.5"
+    revision: main
+    runtime_secret_name: hf_access_token  # Optional, for private repos
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Maximum number of tokens that can be processed in a single batch. BEI and BEI-Bert run without chunked-prefill for performance reasons. This limits the effective context length to the `max_position_embeddings` value.
+
+  **Range:** 64 to 131072, must be multiple of 64. Use higher values (up to 131072) for long context models. Most models use 16384 as default.
+
+  ```yaml theme={"system"}
+  build:
+    max_num_tokens: 16384
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Not supported for BEI engines. Leave this value unset. BEI automatically sets it and truncates if context length is exceeded.
+</ParamField>
+
+<ParamField type="string">
+  Specifies the quantization format for model weights. `FP8` quantization maintains accuracy within 1% of `FP16` for embedding models.
+
+  **Options for BEI:**
+
+  * `no_quant`: `FP16`/`BF16` precision
+  * `fp8`: `FP8` weights + 16-bit KV cache
+  * `fp4`: `FP4` weights + 16-bit KV cache (B200 only)
+  * `fp4_mlp_only`: `FP4` MLP weights only (B200 only)
+
+  **Options for BEI-Bert:**
+
+  * `no_quant`: `FP16` precision (only option)
+
+  For detailed quantization guidance, see [Quantization guide](/engines/performance-concepts/quantization-guide).
+
+  ```yaml theme={"system"}
+  build:
+    quantization_type: fp8
+  ```
+</ParamField>
+
+<ParamField type="object">
+  Configuration for post-training quantization calibration.
+
+  **Fields:**
+
+  * `calib_size`: Size of calibration dataset (64-16384, multiple of 64)
+  * `calib_dataset`: HuggingFace dataset for calibration
+  * `calib_max_seq_length`: Maximum sequence length for calibration
+
+  ```yaml theme={"system"}
+  quantization_config:
+    calib_size: 512
+    calib_dataset: "cnn_dailymail"
+    calib_max_seq_length: 1024
+  ```
+</ParamField>
+
+<ParamField type="object">
+  BEI automatically configures optimal TensorRT-LLM plugin settings. Manual configuration is not required or supported.
+
+  **Automatic optimizations:**
+
+  * XQA kernels for maximum throughput
+  * Dynamic batching for optimal utilization
+  * Memory-efficient attention mechanisms
+  * Hardware-specific optimizations
+
+  **Note:** Plugin configuration is only available for Engine-Builder-LLM engine.
+</ParamField>
+
+## Runtime configuration
+
+The `runtime` section configures serving behavior.
+
+<ParamField type="string">
+  The default API endpoint for the deployment.
+
+  **Options:**
+
+  * `/v1/embeddings`: OpenAI-compatible embeddings endpoint
+  * `/rerank`: Reranking endpoint
+  * `/predict`: Classification/prediction endpoint
+
+  BEI automatically detects embedding models and sets `/v1/embeddings`. Classification models default to `/predict`.
+
+  ```yaml theme={"system"}
+  runtime:
+    webserver_default_route: /v1/embeddings
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Not applicable to BEI engines. Only used for generative models.
+</ParamField>
+
+<ParamField type="boolean">
+  Not applicable to BEI engines. Only used for generative models.
+</ParamField>
+
+<ParamField type="string">
+  Not applicable to BEI engines. Only used for generative models.
+</ParamField>
+
+## HuggingFace Model Repository Structure
+
+All model sources (S3, GCS, HuggingFace, or tar.gz) must follow the standard HuggingFace repository structure. Files must be in the root directory, similar to running:
+
+```bash theme={"system"}
+git clone https://huggingface.co/michaelfeil/bge-small-en-v1.5
+```
+
+### Model configuration
+
+**config.json**
+
+* `max_position_embeddings`: Limits maximum context size (content beyond this is truncated)
+* `id2label`: Required dictionary mapping IDs to labels for classification models.
+  * **Note**: Needs to have len of the shape of the last dense layer. Each dense output needs a `name` for the json response.
+* `architecture`: Must be `ModelForSequenceClassification` or similar (cannot be `ForCausalLM`)
+  * **Note**: Remote code execution is not supported; architecture is inferred automatically
+* `torch_dtype`: Default inference dtype (BEI-Bert: always `fp16`, BEI: `float16`, `bfloat16`)
+  * **Note**: We don't support `pre-quantized` loading, meaning your weights need to be `float16`, `bfloat16` or `float32` for all engines.
+* `quant_config`: Not allowed, as no `pre-quantized` weights.
+
+#### Model weights
+
+**model.safetensors** (preferred)
+
+* Or: `model.safetensors.index.json` + `model-xx-of-yy.safetensors` (sharded)
+* **Note**: Convert to safetensors if you encounter issues with other formats
+
+#### Tokenizer files
+
+**tokenizer\_config.json** and **tokenizer.json**
+
+* Must be "FAST" tokenizers compatible with Rust
+* Typically cannot contain custom Python code, will be unread.
+
+#### Embedding model files (sentence-transformers)
+
+**1\_Pooling/config.json**
+
+* Required for embedding models to define pooling strategy
+
+**modules.json**
+
+* Required for embedding models
+* Shows available pooling layers and configurations
+
+### Pooling layer support
+
+| **Engine**   | **Classification Layers**  | **Pooling Types**                             | **Notes**                |
+| ------------ | -------------------------- | --------------------------------------------- | ------------------------ |
+| **BEI**      | 1 layer maximum            | Last token, first token                       | Limited pooling options  |
+| **BEI-Bert** | Multiple layers or 1 layer | Last token, first token, mean, SPLADE pooling | Advanced pooling support |
+
+## Complete configuration examples
+
+### BEI with `FP8` quantization (embedding model)
+
+```yaml theme={"system"}
+model_name: BEI-BGE-Large-FP8
+resources:
+  accelerator: H100
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-Embedding-8B"
+      revision: main
+    max_num_tokens: 16384
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1536
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: false
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### BEI-Bert for small BERT model
+
+```yaml theme={"system"}
+model_name: BEI-Bert-MiniLM-L6
+resources:
+  accelerator: L4
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "sentence-transformers/all-MiniLM-L6-v2"
+      revision: main
+    max_num_tokens: 8192
+    quantization_type: no_quant
+    plugin_configuration:  # Limited options for encoder models
+      paged_kv_cache: false  # Disabled for encoder_bert
+      use_paged_context_fmha: false
+      use_fp8_context_fmha: false
+  runtime:
+    webserver_default_route: /v1/embeddings
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### BEI for reranking model
+
+```yaml theme={"system"}
+model_name: BEI-BGE-Reranker
+resources:
+  accelerator: H100
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "BAAI/bge-reranker-large"
+      revision: main
+    max_num_tokens: 16384
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    webserver_default_route: /rerank
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+### BEI-Bert for classification model
+
+```yaml theme={"system"}
+model_name: BEI-Bert-Language-Detection
+resources:
+  accelerator: L4
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: HF
+      repo: "papluca/xlm-roberta-base-language-detection"
+      revision: main
+    max_num_tokens: 8192
+    quantization_type: no_quant
+  runtime:
+    webserver_default_route: /predict
+    kv_cache_free_gpu_mem_fraction: 0.9
+    batch_scheduler_policy: guaranteed_no_evict
+```
+
+## Validation and troubleshooting
+
+### Common configuration errors
+
+**Error:** `encoder does not have a kv-cache, therefore a kv specfic datatype is not valid`
+
+* **Cause:** Using KV quantization (fp8\_kv, fp4\_kv) with encoder models
+* **Fix:** Use `fp8` or `no_quant` instead
+
+**Error:** `FP8 quantization is only supported on L4, H100, H200, B200`
+
+* **Cause:** Using `FP8` quantization on unsupported GPU.
+* **Fix:** Use H100 or newer GPU, or use `no_quant`.
+
+**Error:** `FP4 quantization is only supported on B200`
+
+* **Cause:** Using `FP4` quantization on unsupported GPU.
+* **Fix:** Use B200 GPU or `FP8` quantization.
+
+### Performance tuning
+
+**For maximum throughput:**
+
+* Use `max_num_tokens: 16384` for BEI.
+* Enable `FP8` quantization on supported hardware.
+* Use `batch_scheduler_policy: max_utilization` for high load.
+
+**For lowest latency:**
+
+* Use smaller `max_num_tokens` for your use case
+* Use `batch_scheduler_policy: guaranteed_no_evict`
+* Consider BEI-Bert for small models with cold-start optimization
+
+**For cost optimization:**
+
+* Use L4 GPUs with `FP8` quantization.
+* Use BEI-Bert for small models.
+* Tune `max_num_tokens` to your actual requirements.
+
+## Migration from older configurations
+
+If you're migrating from older BEI configurations:
+
+1. **Update base\_model**: Change from specific model types to `encoder` or `encoder_bert`
+2. **Add checkpoint\_repository**: Use the new structured repository configuration
+3. **Review quantization**: Ensure quantization type matches hardware capabilities
+4. **Update engine**: Add engine configuration for better performance
+
+**Old configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    model_type: "bge"
+    checkpoint_repo: "BAAI/bge-large-en-v1.5"
+```
+
+**New configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "BAAI/bge-large-en-v1.5"
+    max_num_tokens: 16384
+    quantization_type: fp8
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+
+# Overview
+Source: https://docs.baseten.co/engines/bei/overview
+
+Production-grade embeddings, reranking, and classification models
+
+Baseten Embeddings Inference (BEI) is Baseten's solution for production-grade inference on embedding, classification, and reranking models using TensorRT-LLM. BEI delivers the lowest latency and highest throughput inference across any embedding solution.
+
+## BEI vs BEI-Bert
+
+BEI comes in two variants, each optimized for different model architectures:
+
+<CardGroup>
+  <Card title="BEI" href="#bei-features" icon="brain-circuit">
+    Causal embedding models with quantization support and maximum throughput.
+  </Card>
+
+  <Card title="BEI-Bert" href="#bei-bert-features" icon="microchip">
+    BERT-based models with cold-start optimization, 16-bit precision and bidirectional attention.
+  </Card>
+</CardGroup>
+
+### BEI features
+
+**Use BEI when:**
+
+* Model uses causal architecture (Llama, Mistral, Qwen for embeddings)
+* You need quantization support (FP8, FP4)
+* Maximum throughput is required
+* Models like BAAI/bge, Qwen3-Embedding, Salesforce/SFR-Embedding
+
+**Benefits:**
+
+* **Quantization Support**: FP8 and FP4 quantization for 2-4x speedup
+* **Highest Throughput**: Up to 1400 client embeddings per second
+* **XQA Kernels**: Optimized attention kernels for maximum performance
+* **Dynamic Batching**: Automatic batch optimization for varying loads
+
+**Supported Architectures:**
+
+* `LlamaModel` (e.g., BAAI/bge-multilingual-gemma2)
+* `MistralModel` (e.g., Salesforce/SFR-Embedding-Mistral)
+* `Qwen2Model` (e.g., Qwen/Qwen3-Embedding-8B)
+* `Gemma2Model` (e.g., Google/EmbeddingGemma)
+
+### BEI-Bert features
+
+**Use BEI-Bert when:**
+
+* Model uses BERT-based architecture (sentence-transformers, jinaai, nomic-ai) or generic bidirectional attention models
+* You need cold-start optimization for small models (`<4B` parameters)
+* 16-bit precision is sufficient for your use case
+* Model architectures like Jina-BERT, Nomic, or ModernBERT
+
+**Benefits:**
+
+* **Cold-Start Optimization**: Optimized for fast initialization and small models
+* **16-bit Precision**: Models run in FP16 precision
+* **BERT Architecture Support**: Specialized optimization for bidirectional models
+* **Low Memory Footprint**: Efficient for smaller models and edge deployments
+
+**Supported Architectures:**
+
+* `BertModel` (e.g., sentence-transformers/all-MiniLM-L6-v2)
+* `RobertaModel` (e.g., FacebookAI/roberta-base)
+* `Jina-BERT` (e.g., jinaai/jina-embeddings-v2-base-en)
+* `Nomic-BERT` (e.g., nomic-ai/nomic-embed-text-v1.5)
+* `Alibaba-GTE` (e.g., Alibaba-NLP/gte-large-en-v1.5)
+* `Llama Bidirectional` (e.g., nvidia/llama-embed-nemotron-8b)
+
+## Model types and use cases
+
+### Embedding models
+
+Embedding models convert text into numerical representations for semantic search, clustering, and retrieval-augmented generation (RAG).
+
+**Examples:**
+
+* **BAAI/bge-large-en-v1.5**: General-purpose English embeddings
+* **michaelfeil/Qwen3-Embedding-8B-auto**: Multilingual embeddings with quantization support
+* **Salesforce/SFR-Embedding-Mistral**: Instruction-tuned embeddings
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "BAAI/bge-large-en-v1.5"
+    quantization_type: no_quant  # Supported for causal models
+```
+
+### Reranking models
+
+Reranking models are actually classification models that score document relevance for search and retrieval tasks. They work by classifying query-document pairs as relevant or not relevant.
+
+**How rerankers work:**
+
+* Rerankers are sequence classification models (ending with `ForSequenceClassification`)
+* They take a query and document as input and output a relevance score
+* The "reranking" is accomplished by scoring multiple documents and ranking them by the classification score
+* You can implement reranking by using the classification endpoint with proper prompt templates
+
+**Recommended:**
+
+* **BAAI/bge-reranker-v2-m3**: Great reranking model (279M params). Performs well in RAG systems where a first pass of vector retrieval surfaces dozens of snippets of data.
+* **michaelfeil/Qwen3-Reranker-8B-seq**: Best multilingual and general-purpose reranker. **Note:** Needs to be used with the `webserver_default_route: /predict` setting.
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "BAAI/bge-reranker-v2-m3"
+    max_num_tokens: 16384
+  runtime:
+    webserver_default_route: /rerank
+```
+
+**Implementation:**
+Use the `/predict` endpoint with proper prompt formatting for query-document pairs. The baseten-performance-client handles reranking template formatting automatically.
+
+### Classification models
+
+Classification models categorize text into predefined classes for tasks like sentiment analysis, content moderation, and language detection.
+
+**Examples:**
+
+* **papluca/xlm-roberta-base-language-detection**: Language identification
+* **samlowe/roberta-base-go\_emotions**: Emotion classification
+* **Reward Models**: RLHF reward model examples
+
+**Configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder
+    checkpoint_repository:
+      source: HF
+      repo: "papluca/xlm-roberta-base-language-detection"
+    quantization_type: no_quant  # BEI-Bert required for classification models
+  runtime:
+    webserver_default_route: /predict
+```
+
+## Performance and optimization
+
+### Throughput benchmarks
+
+For detailed performance benchmarks, see: [Run Qwen3 Embedding on NVIDIA Blackwell GPUs](https://www.baseten.co/blog/run-qwen3-embedding-on-nvidia-blackwell-gpus/#bei-provides-the-fastest-embeddings-inference-on-b200s)
+
+| Framework | Precision | GPU  | Max Token/s Throughput | Max Request/s Throughput |
+| --------- | --------- | ---- | ---------------------- | ------------------------ |
+| TEI       | FP16      | H100 | 34,055                 | 824.25                   |
+| BEI-Bert  | FP16      | H100 | 36,520                 | 841.05                   |
+| vLLM      | BF16      | H100 | 36,625                 | 155.23                   |
+| BEI       | BF16      | H100 | 47,549                 | 761.44                   |
+| BEI       | FP8       | H100 | 77,107                 | 855.96                   |
+| BEI       | FP8       | B200 | 121,443                | 1,310.52                 |
+
+* **Token Throughput/s**: Measured on 500 tokens per request
+* **Request Throughput/s**: Measured on 5 tokens per request
+
+### Quantization impact
+
+| **Quantization** | **Speed Improvement** | **Memory Reduction** | **Accuracy Impact** |
+| ---------------- | --------------------- | -------------------- | ------------------- |
+| FP16/BF16 vLLM   | Baseline              | None                 | None                |
+| FP16/BF16 BEI    | 1.3x                  | None                 | None                |
+| FP8 BEI          | 2x faster             | 50%                  | \~1%                |
+| FP4 BEI          | 3.5x faster           | 75%                  | 1-2%                |
+
+### Hardware requirements
+
+| **GPU Type** | **BEI Support** | **BEI-Bert Support** | **Recommended For**        |
+| ------------ | --------------- | -------------------- | -------------------------- |
+| L4           | Full            | Full                 | Cost-effective deployments |
+| A10G, A100   | Full            | Full                 | Legacy support             |
+| T4           | No              | Full                 | Legacy support             |
+| H100         | Full            | Full                 | Maximum performance        |
+| B200         | Full            | Full                 | FP4 quantization           |
+
+## OpenAI compatibility
+
+BEI deployments are fully OpenAI compatible for embeddings:
+
+```python theme={"system"}
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+embedding = client.embeddings.create(
+    input=["Baseten Embeddings are fast.", "Embed this sentence!"],
+    model="not-required"
+)
+```
+
+### Baseten Performance Client
+
+For maximum throughput, use the [Baseten Performance Client](/engines/performance-concepts/performance-client).
+
+```python theme={"system"}
+from baseten_performance_client import PerformanceClient
+
+client = PerformanceClient(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync"
+)
+
+texts = ["Hello world", "Example text", "Another sample"]
+response = client.embed(
+    input=texts,
+    model="my_model",
+    batch_size=4,
+    max_concurrent_requests=32,
+    timeout_s=360
+)
+```
+
+## Reference config
+
+For complete configuration options, see the [BEI reference config](/engines/bei/bei-reference).
+
+### Key configuration options
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder  # or encoder_bert for BEI-Bert
+    checkpoint_repository:
+      source: HF  # or GCS, S3, AZURE, REMOTE_URL
+      repo: "model-repo-name"
+      revision: main
+      runtime_secret_name: hf_access_token
+    max_num_tokens: 16384  # BEI automatically upgrades to 16384
+    quantization_type: fp8  # or no_quant for BEI-Bert
+  runtime:
+    webserver_default_route: /v1/embeddings  # or /rerank, /predict
+```
+
+## Production best practices
+
+### GPU selection guidelines
+
+* **L4**: Best for models `<4B` parameters, cost-effective
+* **H100**: Required for models 4B+ parameters or long context (>8K tokens)
+* **H100\_40GB**: Use for models with memory constraints
+
+### Build job optimization
+
+```yaml theme={"system"}
+# H100 builds (default)
+trt_llm:
+  build:
+    num_builder_gpus: 2
+
+# L4 builds (memory-constrained)
+trt_llm:
+  build:
+    num_builder_gpus: 4
+```
+
+### Model-specific recommendations
+
+**BERT-based models (BEI-Bert):**
+
+* Use `encoder_bert` base model
+* No quantization support (FP16/BF16 only)
+* Best for models `<200M` parameters on L4
+
+**ModernBERT and newer architectures:**
+
+* Support longer contexts (up to 8192 tokens)
+* Use H100 for models >1B parameters
+* Consider memory requirements for long sequences
+
+**Qwen embedding models:**
+
+* Use regular FP8 quantization
+* Support very long contexts (up to 131K tokens)
+* Higher memory requirements for long sequences
+
+### Token limit optimization
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    max_num_tokens: 16384  # Default, automatically set by BEI
+    # Override for specific use cases:
+    # max_num_tokens: 8192   # Standard embeddings
+    # max_num_tokens: 131072  # Qwen long-context models
+```
+
+## Getting started
+
+1. **Choose your variant**: BEI for causal models and quantization, BEI-Bert for BERT models
+2. **Review configuration**: See [BEI reference config](/engines/bei/bei-reference)
+3. **Deploy your model**: Use the configuration templates and examples
+4. **Test integration**: Use OpenAI client or Performance Client for maximum throughput
+
+## Examples and further reading
+
+* [BEI-Bert examples](/engines/bei/bei-bert) - BERT-specific configurations
+* [BEI reference config](/engines/bei/bei-reference) - Complete configuration options
+* [Embedding examples](/examples/bei) - Concrete deployment examples
+* [Performance client documentation](/engines/performance-concepts/performance-client) - Client Usage with Embeddings
+
+
+# Gated features for BIS-LLM
+Source: https://docs.baseten.co/engines/bis-llm/advanced-features
+
+KV-aware routing, disaggregated serving, and other gated features
+
+BIS-LLM provides features for large-scale deployments: KV cache optimization, disaggregated serving, and specialized inference strategies.
+
+<Note>
+  These advanced features are not fully self-serviceable. [Contact us](mailto:support@baseten.co) to enable them for your organization.
+</Note>
+
+## Available advanced features
+
+### Routing and scaling
+
+*KV-aware routing* and *disaggregated serving* optimize multi-replica deployments. KV-aware routing directs requests to replicas with the best cache hit potential, while disaggregated serving separates prefill and decode phases into independent clusters that scale separately. *Separate prefill and decode autoscaling* uses token-exact metrics to right-size each phase.
+
+### MoE optimization
+
+*WideEP* (expert parallelism) distributes experts across multiple GPUs for extremely large expert counts. These features work together to maximize hardware utilization on models like DeepSeek-V3 and Qwen3MoE.
+
+### Attention and memory
+
+*DP attention for MLA* (Multi-Head Latent Attention) compresses KV cache by projecting attention tensors into a compact latent space, *DP attention* helps to managed KV-Cache across GPU ranks, and tunes DeepSeek deployments for high throughput. *DeepSparseAttention* sparsifies the attention matrix based on token relevance. *Distributed KV storage* spreads KV cache across devices for long-context inference beyond single-device memory limits.
+
+### Speculative decoding
+
+*Speculative n-gram automata-based decoding* uses automata to predict tokens from n-gram patterns without full model computation. *Speculative MTP or Eagle3 decoding* uses draft-model approaches to predict and verify multiple future tokens.
+
+### Kernel optimization
+
+*Zero-overlap scheduling* overlaps computation and communication to hide latency. *Auto-tuned kernels* optimize kernel parameters for your specific hardware and model topology.
+
+## KV-aware routing
+
+KV-aware routing directs requests to replicas with the best chance of KV cache hits, routing based on cache availability and replica utilization.
+
+KV-aware routing reduces inter-token latency by distributing load across replicas, improves time-to-first-token through cache hits on repeated queries, and increases global throughput through cache reuse.
+
+## Disaggregated serving
+
+Disaggregated serving separates prefill and decode phases into independent clusters, allowing each to scale and be optimized independently. This architecture is particularly valuable for large MoE models.
+
+Disaggregated serving is available as a gated feature. [Contact us](mailto:support@baseten.co) to be paired with an engineer to discuss your needs.
+
+Disaggregated serving enables independent scaling of prefill and decode resources, isolates time-critical TTFT metrics from throughput-focused phases, and optimizes costs by right-sizing each phase for its workload.
+
+## Get started
+
+### Choose the right configuration
+
+**For advanced deployments** with large MoE models and planet-scale inference, [contact us](mailto:support@baseten.co).
+
+**For standard deployments**:
+Use the standard BIS-LLM configuration as documented in [BIS-LLM configuration](/engines/bis-llm/bis-llm-config).
+
+## Model recommendations
+
+### Models that benefit from advanced features
+
+**Large MoE models:**
+
+* DeepSeek-V3
+* Qwen3MoE
+* Kimi-K2
+* GLM-4.7
+* GPT-OSS
+
+**Ideal use cases:**
+
+* High-throughput API services
+* Complex reasoning tasks
+* Long-context applications, including agentic coding
+* Planet-scale deployments
+
+### When to use standard BIS-LLM or Engine-Builder-LLM
+
+* Dense models under 70B parameters
+* Standard MoE models under 30B parameters
+* Development and testing environments
+* Workloads with low KV cache hit rates
+
+## Further reading
+
+* [BIS-LLM overview](/engines/bis-llm/overview): Main engine documentation.
+* [BIS-LLM reference config](/engines/bis-llm/bis-llm-config): Configuration options.
+* [Structured outputs documentation](/engines/performance-concepts/structured-outputs): JSON schema validation.
+* [Examples section](/examples/overview): Deployment examples.
+
+
+# Reference Config (BIS-LLM)
+Source: https://docs.baseten.co/engines/bis-llm/bis-llm-config
+
+Complete reference config for V2 inference stack and MoE models
+
+This reference provides complete configuration options for BIS-LLM (Baseten Inference Stack V2) engine. BIS-LLM uses the V2 inference stack with simplified configuration and enhanced features for MoE models and advanced use cases.
+
+## Configuration structure
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2  # Always v2 for BIS-LLM
+  build:
+    checkpoint_repository: {...}
+    quantization_type: no_quant | fp8 | fp4
+    quantization_config: {...}
+    num_builder_gpus: 1
+    skip_build_result: false
+  runtime:
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 8192
+    tensor_parallel_size: 1
+    enable_chunked_prefill: true
+    served_model_name: "model-name"
+    patch_kwargs: {...}
+```
+
+## Build configuration
+
+### `checkpoint_repository`
+
+Specifies where to find the model checkpoint. Same structure as V1 but with V2-specific optimizations.
+
+**Structure:**
+
+```yaml theme={"system"}
+checkpoint_repository:
+  source: HF | GCS | S3 | AZURE | REMOTE_URL | BASETEN_TRAINING
+  repo: "model-repository-name"
+  revision: main  # Optional, only for HF
+  runtime_secret_name: hf_access_token  # Optional, for private repos
+```
+
+For detailed configuration options including training checkpoints and cloud storage setup, see [Deploy training and S3 checkpoints](/engines/performance-concepts/deployment-from-training-and-s3).
+
+### `quantization_type`
+
+Quantization options for V2 inference stack (simplified from V1):
+
+**Options:**
+
+* `no_quant`: precision of the repo. This can be fp16 / bf16. Unique to BIS-LLM is that we also do support quantized checkpoints from nvidia-modelopt libraries.
+* `fp8`: FP8 weights + 16-bit KV cache
+* `fp4`: FP4 weights + 16-bit KV cache (B200 only)
+* `fp4_mlp_only`: FP4 MLP layers only + 16-bit KV cache
+
+For detailed quantization guidance including hardware requirements, calibration strategies, and model-specific recommendations, see [Quantization Guide](/engines/performance-concepts/quantization-guide).
+
+### `quantization_config`
+
+Configuration for post-training quantization calibration:
+
+**Structure:**
+
+```yaml theme={"system"}
+quantization_config:
+  calib_size: 1024
+  calib_dataset: "cnn_dailymail"
+  calib_max_seq_length: 2048
+```
+
+### `num_builder_gpus`
+
+Number of GPUs to use during the build process.
+
+**Default:** `1` (auto-detected from resources)\
+**Range:** 1 to 8
+
+**Example:**
+
+```yaml theme={"system"}
+build:
+  num_builder_gpus: 4  # For large models or complex quantization
+```
+
+### `skip_build_result`
+
+Skip the engine build step and use a pre-built model, that does not require any quantization.
+
+**Default:** `false`\
+**Use case:** When you have a pre-built engine from model cache
+
+**Example:**
+
+```yaml theme={"system"}
+build:
+  skip_build_result: true
+```
+
+## Engine configuration
+
+### `max_seq_len`
+
+Maximum sequence length (context) for single requests.
+
+**Default:** `32768` (64K)\
+**Range:** 1 to 1048576
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+  max_seq_len: 131072  # 128K context
+```
+
+### `max_batch_size`
+
+Maximum number of input sequences processed concurrently.
+
+**Default:** `256`\
+**Range:** 1 to 2048
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+  max_batch_size: 128  # Lower for better latency
+```
+
+### `max_num_tokens`
+
+Maximum number of batched input tokens after padding removal.
+
+**Default:** `8192`\
+**Range:** 64 to 131072
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+  max_num_tokens: 16384  # Higher for better throughput
+```
+
+### `tensor_parallel_size`
+
+Number of GPUs to use for tensor parallelism.
+
+**Default:** `1` (auto-detected from resources)\
+**Range:** 1 to 8
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+  tensor_parallel_size: 4  # For large models
+```
+
+### `enable_chunked_prefill`
+
+Enable chunked prefilling for long sequences.
+
+**Default:** `true`
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+  enable_chunked_prefill: true
+```
+
+### `served_model_name`
+
+Model name returned in API responses.
+
+**Default:** `None` (uses model name from config)
+
+**Example:**
+
+```yaml theme={"system"}
+runtime:
+   served_model_name: "gpt-oss-120b"
+```
+
+### `patch_kwargs`
+
+Advanced configuration patches for V2 inference stack.
+
+**Structure:**
+
+```yaml theme={"system"}
+patch_kwargs:
+  custom_setting: "value"
+  advanced_config:
+    nested_setting: true
+```
+
+**Note:** This is a preview feature and may change in future versions.
+
+## Complete configuration examples
+
+### Qwen3-30B-A3B-Instruct-2507 MoE with FP4 on B200
+
+```yaml theme={"system"}
+model_name: Qwen3-30B-A3B-Instruct-2507-FP4
+resources:
+  accelerator: B200:1
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-Coder-30B-A3B-Instruct"
+      revision: main
+    quantization_type: fp4
+    quantization_config:
+      calib_size: 2048
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 4096
+    num_builder_gpus: 1
+  runtime:
+    max_seq_len: 65536
+    max_batch_size: 256
+    max_num_tokens: 8192
+    tensor_parallel_size: 1
+    enable_chunked_prefill: true
+    served_model_name: "Qwen3-30B-A3B-Instruct-2507"
+```
+
+### GPT-OSS 120B on B200:1 with no\_quant
+
+**Note**: We have GPT-OSS much more optimized. The below example is functional, but you can sequeeze much more performance using `B200`, e.g. with Baseten's custom Eagle Heads.
+
+```yaml theme={"system"}
+model_name: gpt-oss-120b-b200
+resources:
+  accelerator: B200:1
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "openai/gpt-oss-120b"
+      revision: main
+      runtime_secret_name: hf_access_token
+    quantization_type: no_quant
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 16384
+    tensor_parallel_size: 1
+    enable_chunked_prefill: true
+    served_model_name: "gpt-oss-120b"
+```
+
+### DeepSeek V3
+
+**Note**: We have DeepSeek V3 / V3.1 / V3.2 much more optimized. The below example is functional, but you can sequeeze much more performance using `B200:4`, e.g. with MTP Heads and disaggregated serving, or data-parallel attention.
+
+```yaml theme={"system"}
+model_name: nvidia/DeepSeek-V3.1-NVFP4
+resources:
+  accelerator: B200:4
+  cpu: '8'
+  memory: 80Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "nvidia/DeepSeek-V3.1-NVFP4"
+      revision: main
+      runtime_secret_name: hf_access_token
+    quantization_type: no_quant # nvidia/DeepSeek-V3.1-NVFP4 is already modelopt compatible
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 16384
+    tensor_parallel_size: 8
+    enable_chunked_prefill: true
+    served_model_name: "nvidia/DeepSeek-V3.1-NVFP4"
+```
+
+## V2 vs V1 configuration differences
+
+### Simplified build configuration
+
+**V1 build configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 4
+    plugin_configuration: {...}
+    speculator: {...}
+```
+
+**V2 build configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository: {...}
+    quantization_type: fp8
+    num_builder_gpus: 4
+  runtime:
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    tensor_parallel_size: 4
+```
+
+### Key differences
+
+1. **`inference_stack`**: Explicitly set to `v2`
+2. **Simplified build options**: Many V1 options moved to engine
+3. **No `base_model`**: Automatically detected from checkpoint
+4. **No `plugin_configuration`**: Handled automatically
+5. **No `speculator`**: Lookahead decoding requires FDE involement.
+6. **Tensor parallel**: Moved to engine as `tensor_parallel_size`
+
+## Validation and troubleshooting
+
+### Common V2 configuration errors
+
+**Error:** `Field trt_llm.build.base_model is not allowed to be set when using v2 inference stack`
+
+* **Cause:** Setting `base_model` in V2 configuration
+* **Fix:** Remove `base_model` field, V2 detects automatically
+
+**Error:** `Field trt_llm.build.quantization_type is not allowed to be set when using v2 inference stack`
+
+* **Cause:** Using unsupported quantization type
+* **Fix:** Use supported quantization: `no_quant`, `fp8`, `fp4`, `fp4_mlp_only`, `fp4_kv`, `fp8_kv`
+
+**Error:** `Field trt_llm.build.speculator is not allowed to be set when using v2 inference stack`
+
+* **Cause:** Trying to use lookahead decoding in V2
+* **Fix:** Use V1 stack for lookahead decoding, or V2 without speculation or reach out to us to use V2 with speculation.
+
+## Migration from V1
+
+### V1 to V2 migration
+
+**V1 configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-4B"
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+```
+
+**V2 configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-4B"
+    quantization_type: fp8_kv
+  runtime:
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 8192
+    tensor_parallel_size: 1
+    enable_chunked_prefill: true
+```
+
+### Migration steps
+
+1. **Add `inference_stack: v2`**
+2. **Remove `base_model`** (auto-detected)
+3. \*\*Move `max_seq_len`, `max_batch_size`, `max_num_tokens` to engine
+4. **Change `tensor_parallel_count` to `tensor_parallel_size`**
+5. **Remove `plugin_configuration`** (handled automatically)
+6. **Update quantization type** (V2 has simplified options)
+7. **Remove `speculator`** (not supported in V2)
+
+## Hardware selection
+
+**GPU recommendations for V2:**
+
+* **B200**: Best for FP4 quantization and next-gen performance
+* **H100**: Best for FP8 quantization and production workloads
+* **Multi-GPU**: Required for large MoE models (>30B parameters)
+
+**Configuration guidelines:**
+
+| **Model Size** | **Recommended GPU** | **Quantization** | **Tensor Parallel** |
+| -------------- | ------------------- | ---------------- | ------------------- |
+| `<30B` MoE     | H100:2-4            | FP8              | 2-4                 |
+| 30-100B MoE    | H100:4-8            | FP8              | 4-8                 |
+| 100B+ MoE      | B200:4-8            | FP4              | 4-8                 |
+| Dense >30B     | H100:2-4            | FP8              | 2-4                 |
+
+## Further reading
+
+* [BIS-LLM overview](/engines/bis-llm/overview) - Main engine documentation
+* [Advanced features documentation](/engines/bis-llm/advanced-features) - Enterprise features and capabilities
+* [Structured outputs for BIS-LLM](/engines/performance-concepts/structured-outputs) - Advanced JSON schema validation
+* [Examples section](/examples/overview) - Concrete deployment examples
+
+
+# Overview
+Source: https://docs.baseten.co/engines/bis-llm/overview
+
+Next-generation engine for MoE models with advanced optimizations
+
+BIS-LLM (Baseten Inference Stack V2) is Baseten's next-generation engine for Mixture of Experts (MoE) models and advanced text generation use cases. Built on the V2 inference stack, it provides cutting-edge optimizations including KV-aware routing, disaggregated serving, expert parallel load balancing and DP attention.
+Before you continue reading - we have enabled a small subset of features for customers - the primary way to deploy these large models is though Forward Deployed Engineers.
+
+## Overview and use cases
+
+BIS-LLM is designed for MoE models and scenarios requiring the most advanced inference optimizations.
+
+### Ideal for:
+
+**MoE model families:**
+
+* **DeepSeek**: `deepseek-ai/DeepSeek-R1`, `deepseek-ai/DeepSeek-V3.1`, `deepseek-ai/DeepSeek-V3.2`
+* **Qwen MoE**: `Qwen/Qwen3-30B-A3B`, `Qwen/Qwen3-Coder-480B-A35B-Instruct`
+* **Kimi**: `moonshotai/Kimi-K2-Instruct`
+* **GLM**: `zai-org/GLM-4.7`
+* **LLama4**: `meta-llama/llama-4-maverick`
+* **GPT-OSS**: Various open-source GPT variants
+
+**Advanced use cases:**
+
+* **High-performance inference**: FP4 quantization on GB200/B200 GPUs
+* **Complex reasoning**: Advanced tool calling and structured outputs
+* **Large-scale deployments**: Multi-node setups and distributed inference
+
+## Forward Deployed Engineer Gated Features
+
+We gated some more advanced features behind feature flags that we internally toggle.
+They are not the easiest to use, and some are mutually exclusive - making them hard to maintain on our docs page.
+
+The features below power some of the largest LLM deployments for the customer logos on our website and a couple of [world-records on GPUs](https://www.baseten.co/blog/how-we-made-the-fastest-gpt-oss-on-nvidia-gpus-60-percent-faster/).
+
+For detailed information on each advanced feature, see [Gated Features for BIS-LLM](/engines/bis-llm/advanced-features).
+
+## Architecture support
+
+### MoE model support
+
+BIS-LLM specifically optimizes for Mixture of Experts architectures:
+
+**Primary MoE architectures:**
+
+* `DeepseekV32ForCausalLM` - DeepSeek family
+* `Qwen3MoEForCausalLM` - Qwen3 MoE family
+* `KimiK2ForCausalLM` - Kimi K2 family
+* `Glm4MoeForCausalLM` - GLM MoE variants
+* `GPTOSS` - OpenAI GPT-OSS variants
+* ...
+
+### Dense model support
+
+While optimized for MoE, BIS-LLM also supports dense models with advanced features:
+
+**Benefits for dense models:**
+
+* **GB200/B200 optimization**: Advanced GPU kernel optimization
+* **FP4 quantization**: Next-generation quantization support
+* **Enhanced memory management**: Improved KV cache handling
+
+**When to use BIS-LLM for dense models:**
+
+* Models >30B parameters requiring maximum performance
+* Deployments on GB200/B200 GPUs with advanced quantization
+* You tried out V1 and want to compare against V2
+* You want to try V2 features like KV routing or Disaggregated Serving.
+* Speculation on GB200/B200
+
+### Advanced quantization
+
+BIS-LLM supports next-generation quantization formats for maximum performance:
+
+**Quantization options:**
+
+* `no_quant`: FP16/BF16 precision, or automatically uses hf\_quant\_config.json from modelopt if available
+* `fp8`: FP8 weights + 16-bit KV cache
+* `fp4`: FP4 weights + 16-bit KV cache
+* `fp8_kv`: FP8 weights + 8-bit synmetric kv cache
+* `fp4_kv`: FP8 weights + 8-bit synmetric kv cache
+* `fp4_mlp_only`: FP4 weights (mlp layers) + 16-bit kv-cache and attn computation
+
+**B200 optimization:**
+
+* **FP4 kernels**: Custom B200 kernels for maximum performance
+* **Memory efficiency**: 75% memory reduction with FP4, some models like DeepSeekV3 strongly prefered on B200 due to kernel selection.
+* **Speed improvement**: 4x-8x faster inference with minimal accuracy loss
+* **Cascaded improvments**: More memory and faster inference leading to improved system performance, especially under high load.
+
+**Example:**
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-30B-A3B"
+    quantization_type: fp4  # B200 only
+```
+
+### Structured outputs and tool calling
+
+Advanced JSON schema validation and function calling capabilities:
+
+**Features:**
+
+* **JSON schema validation**: Precise structured output generation
+* **Function calling**: Advanced tool selection and execution
+* **Multi-tool support**: Complex tool chains and reasoning
+* **Schema inheritance**: Nested and complex schema support
+
+**Example:**
+
+```python theme={"system"}
+from pydantic import BaseModel
+from openai import OpenAI
+
+class ResearchResult(BaseModel):
+    topic: str
+    findings: list[str]
+    confidence: float
+    sources: list[str]
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.beta.chat.completions.parse(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Analyze the latest AI research papers"}
+    ],
+    response_format=ResearchResult
+)
+
+result = response.choices[0].message.parsed
+```
+
+## Configuration examples
+
+**Note**: The below examples are just functional examples -- advanced features are frequently changing. Please reach out how to best configure a specific or fine-tuned model, we are happy to help.
+
+### GPT-OSS 120B deployment
+
+```yaml theme={"system"}
+model_name: gpt-oss-120b
+resources:
+  accelerator: H100:8  # 8 GPUs for large dense model
+  cpu: '8'
+  memory: 80Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "openai/gpt-oss-120b"
+      revision: main
+      runtime_secret_name: hf_access_token
+    quantization_type: fp8
+    num_builder_gpus: 8
+  runtime:
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 16384
+    tensor_parallel_size: 8
+    enable_chunked_prefill: true
+    served_model_name: "gpt-oss-120b"
+```
+
+### Qwen3-30B-A3B-Instruct-2507 MoE with FP4 quantization
+
+```yaml theme={"system"}
+model_name: Qwen3-30B-A3B-Instruct-2507-FP4
+resources:
+  accelerator: B200:2
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-30B-A3B-Instruct-2507"
+      revision: main
+    quantization_type: fp4
+    num_builder_gpus: 2
+  runtime:
+    max_seq_len: 65536
+    max_batch_size: 128
+    max_num_tokens: 8192
+    tensor_parallel_size: 2
+    enable_chunked_prefill: true
+    served_model_name: "Qwen3-30B-A3B-Instruct-2507"
+```
+
+### Dense model with BIS-LLM V2
+
+```yaml theme={"system"}
+model_name: Llama-3.3-70B-V2
+resources:
+  accelerator: H100:4
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+      revision: main
+      runtime_secret_name: hf_access_token
+    quantization_type: fp8
+    num_builder_gpus: 4
+  runtime:
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    tensor_parallel_size: 4
+    enable_chunked_prefill: true
+    served_model_name: "Llama-3.3-70B-Instruct"
+```
+
+## Integration examples
+
+### OpenAI-compatible inference
+
+```python theme={"system"}
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+# Standard chat completion 
+response = client.chat.completions.create(
+    model="not-required",
+    messages=[
+        {"role": "system", "content": "You are an advanced AI assistant."},
+        {"role": "user", "content": "Explain the concept of mixture of experts in AI."}
+    ],
+    temperature=0.7,
+    max_tokens=1000
+)
+
+print(response.choices[0].message.content)
+```
+
+### Advanced structured outputs
+
+```python theme={"system"}
+from pydantic import BaseModel
+from openai import OpenAI
+
+class ExpertAnalysis(BaseModel):
+    routing_decision: str
+    expert_utilization: dict[str, float]
+    processing_time: float
+    confidence_score: float
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.beta.chat.completions.parse(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Analyze the expert routing for this complex query"}
+    ],
+    response_format=ExpertAnalysis
+)
+
+analysis = response.choices[0].message.parsed
+print(f"Routing decision: {analysis.routing_decision}")
+print(f"Expert utilization: {analysis.expert_utilization}")
+```
+
+### Multi-tool function calling
+
+```python theme={"system"}
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "analyze_expert_routing",
+            "description": "Analyze expert routing patterns",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string"},
+                    "expert_count": {"type": "integer"}
+                }
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "optimize_performance",
+            "description": "Optimize model performance",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "target_tps": {"type": "number"},
+                    "memory_budget": {"type": "integer"}
+                }
+            }
+        }
+    }
+]
+
+response = client.chat.completions.create(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Analyze and optimize the performance of this MoE model"}
+    ],
+    tools=tools
+)
+
+for tool_call in response.choices[0].message.tool_calls:
+    print(f"Function: {tool_call.function.name}")
+    print(f"Arguments: {tool_call.function.arguments}")
+```
+
+## Best practices
+
+### Hardware selection
+
+**GPU recommendations:**
+
+* **B200**: Best for FP4 quantization and next-gen performance
+* **H100**: Best for FP8 quantization and production workloads
+* **Multi-GPU**: Required for large MoE models (>30B parameters)
+* **Multi-Node**:
+
+**Configuration guidelines:**
+
+| **Model Size** | **Recommended GPU** | **Quantization** | **Tensor Parallel** |
+| -------------- | ------------------- | ---------------- | ------------------- |
+| `<30B` MoE     | H100:2-4            | FP8              | 2-4                 |
+| 30-100B MoE    | H100:4-8            | FP8              | 4-8                 |
+| 100B+ MoE      | B200:4-8            | FP4              | 4-8                 |
+| Dense >30B     | H100:2-4            | FP8              | 2-4                 |
+
+## Production best practices
+
+### V2 inference stack optimization
+
+#### Configuration differences from V1
+
+```yaml theme={"system"}
+# V2 (recommended for MoE and advanced models)
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "openai/gpt-oss-120b"
+    quantization_type: fp8
+  runtime:
+    max_seq_len: 32768  # Set in engine for V2
+    max_batch_size: 32
+    tensor_parallel_size: 8  # Engine configuration
+```
+
+## Migration guide
+
+### From Engine-Builder-LLM
+
+**V1 configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-32B"
+    quantization_type: fp8_kv
+    tensor_parallel_count: 8
+```
+
+**V2 configuration:**
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2
+  build:
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen3-32B"
+    quantization_type: fp8_kv
+  runtime:
+    tensor_parallel_size: 8
+    enable_chunked_prefill: true
+```
+
+### Key differences
+
+1. **`inference_stack`**: Explicitly set to `v2`
+2. **Build configuration**: Simplified with fewer options
+3. **Engine configuration**: Enhanced with V2-specific features
+4. **Performance**: Better optimization for MoE models
+
+## Further reading
+
+* [BIS-LLM reference config](/engines/bis-llm/bis-llm-config) - Complete V2 configuration options
+* [Advanced features documentation](/engines/bis-llm/advanced-features) - Enterprise features and capabilities
+* [Structured outputs](/engines/performance-concepts/structured-outputs) - Advanced JSON schema validation
+* [Examples section](/examples/overview) - Concrete deployment examples
+
+
+# Custom engine builder
+Source: https://docs.baseten.co/engines/engine-builder-llm/custom-engine-builder
+
+Implement custom model.py for business logic, logging, and advanced inference patterns
+
+Implement custom business logic, request handling, and inference patterns in `model.py` while maintaining TensorRT-LLM performance. Custom engine builder enables billing integration, request tracing, fan-out generation, and multi-response workflows.
+
+## Overview
+
+The custom engine builder lets you:
+
+* **Implement business logic**: Billing, usage tracking, access control.
+* **Add custom logging**: Request tracing, performance monitoring, audit trails.
+* **Create advanced inference patterns**: Fan-out generation, custom chat templates.
+* **Integrate external services**: APIs, databases, monitoring systems.
+* **Optimize performance**: Concurrent processing, custom batching strategies.
+
+## When to use custom engine builder
+
+### Ideal use cases
+
+**Business logic integration:**
+
+* **Usage tracking**: Monitor token usage per customer/request.
+* **Access control**: Implement custom authentication/authorization.
+* **Rate limiting**: Custom rate limiting based on user tiers.
+* **Audit logging**: Compliance and security requirements.
+
+**Advanced inference patterns:**
+
+* **Fan-out generation**: Generate multiple responses from one request.
+* **Custom chat templates**: Domain-specific conversation formats.
+* **Multi-response workflows**: Parallel processing of variations.
+* **Conditional generation**: Business rule-based output modification.
+
+**Performance and monitoring:**
+
+* **Custom logging**: Request tracing, performance metrics.
+* **Concurrent processing**: Parallel generation for improved throughput.
+* **Usage analytics**: Track patterns and optimize accordingly.
+* **Error handling**: Custom error responses and fallback logic.
+
+## Implementation
+
+### Fan-out generation example
+
+Multi-generation fan-out generates multiple texts from a single request. Running them sequentially ensures the KV cache is created before subsequent generations.
+
+```python model/model.py theme={"system"}
+# model/model.py
+import copy
+import asyncio
+from typing import Any, Dict, List, Optional, Tuple
+from fastapi import HTTPException, Request
+from starlette.responses import JSONResponse, StreamingResponse
+
+Message = Dict[str, str]  # {"role": "...", "content": "..."}
+
+class Model:
+    def __init__(self, trt_llm, **kwargs) -> None:
+        self._secrets = kwargs["secrets"]
+        self._engine = trt_llm["engine"]
+
+    async def predict(self, model_input: Dict[str, Any], request: Request) -> Any:
+        # Validate request structure
+        if not isinstance(model_input, dict):
+            raise HTTPException(status_code=400, detail="Request body must be a JSON object.")
+
+        # Enforce non-streaming for this example
+        if bool(model_input.get("stream", False)):
+            raise HTTPException(status_code=400, detail="stream=true is not supported here; set stream=false.")
+
+        # Extract base messages and fan-out tasks
+        prompt_key, base_messages = self._get_base_messages(model_input)
+        n, suffix_tasks = self._parse_fanout(model_input)
+
+        # Build reusable request (don't forward fan-out params to engine)
+        base_req = copy.deepcopy(model_input)
+        base_req.pop("suffix_messages", None)
+        
+        # Extract debug ID for logging/tracing
+        debug_id = request.headers.get("X-Debug-ID", "")
+
+        # Run sequential generations
+        per_gen_payloads: List[Any] = []
+
+        async def run_generation(i: int) -> Any:
+            msgs_i = copy.deepcopy(base_messages)
+            if suffix_tasks is not None:
+                msgs_i.extend(suffix_tasks[i])
+            base_req[prompt_key] = msgs_i
+            
+            # Debug logging
+            if debug_id:
+                print(f"Running generation {debug_id} {i} with messages: {msgs_i}")
+            
+            # Time the generation
+            start_time = asyncio.get_event_loop().time()
+            resp = await self._engine.chat_completions(request=request, model_input=base_req)
+            end_time = asyncio.get_event_loop().time()
+            
+            # Debug logging
+            if debug_id:
+                duration = end_time - start_time
+                print(f"Result Generation {debug_id} {i} response: {resp} (took {duration:.3f}s)")
+            
+            # Validate response type
+            if isinstance(resp, StreamingResponse) or hasattr(resp, "body_iterator"):
+                raise HTTPException(status_code=400, detail="Engine returned streaming but stream=false was requested.")
+
+            return resp
+
+        # Run first generation
+        payload = await run_generation(0)
+        per_gen_payloads.append(payload)
+        
+        # Run remaining generations concurrently
+        if n > 1:
+            results = await asyncio.gather(*(run_generation(i) for i in range(1, n)))
+            per_gen_payloads.extend(results)
+
+        # Convert to OpenAI-ish multi-choice response
+        out = self._to_openai_choices(per_gen_payloads)
+        return JSONResponse(content=out.model_dump())
+
+    # Helper methods
+    def _get_base_messages(self, model_input: Dict[str, Any]) -> Tuple[str, List[Message]]:
+        """Extract and validate base messages from request."""
+        if "prompt" in model_input:
+            raise HTTPException(status_code=400, detail='Use "messages" instead of "prompt" for chat models.')
+        if "messages" not in model_input:
+            raise HTTPException(status_code=400, detail='Request must include "messages" field.')
+        
+        key = "messages"
+        msgs = model_input.get(key)
+        if not isinstance(msgs, list):
+            raise HTTPException(status_code=400, detail=f'"{key}" must be a list of messages.')
+
+        for m in msgs:
+            if not isinstance(m, dict) or "role" not in m or "content" not in m:
+                raise HTTPException(status_code=400, detail=f'Each item in "{key}" must have role+content.')
+        
+        return key, msgs
+
+    def _parse_fanout(self, model_input: Dict[str, Any]) -> Tuple[int, Optional[List[List[Message]]]]:
+        """Parse and validate fan-out configuration."""
+        suffix = model_input.get("suffix_messages", None)
+
+        if not isinstance(suffix, list) or any(not isinstance(t, list) for t in suffix):
+            raise HTTPException(status_code=400, detail='"suffix_messages" must be a list of tasks (each task is a list of messages).')
+        if len(suffix) < 1 or len(suffix) > 256:
+            raise HTTPException(status_code=400, detail='"suffix_messages" must have between 1 and 256 tasks.')
+
+        for task in suffix:
+            for m in task:
+                if not isinstance(m, dict) or "role" not in m or "content" not in m:
+                    raise HTTPException(status_code=400, detail="Each suffix message must have role+content.")
+
+        return len(suffix), suffix
+
+    def _to_openai_choices(self, payloads: List[Any]) -> Any:
+        """Convert multiple payloads to OpenAI-style choices."""
+        base = payloads[0]
+
+        if hasattr(base, "choices") and hasattr(base, "model_dump"):
+            new_choices = []
+            for i, p in enumerate(payloads):
+                c0 = p.choices[0]
+                # Ensure index matches OpenAI n semantics
+                try:
+                    c0.index = i
+                except Exception:
+                    c0 = c0.model_copy(update={"index": i})
+                new_choices.append(c0)
+
+                # Aggregate usage statistics
+                base.usage.completion_tokens += p.usage.completion_tokens
+                base.usage.prompt_tokens += p.usage.prompt_tokens
+                base.usage.total_tokens += p.usage.total_tokens
+
+            base.choices = new_choices
+            return base
+
+        raise HTTPException(status_code=500, detail=f"Unsupported engine response type for fanout. {type(base)}")
+    
+    async def chat_completions( # if you need to use /v1/completions use def completions(..)
+        self,
+        model_input: Dict[str, Any],
+        request: Request,
+    ) -> Any:
+        # alias to predict, so that both /predict and (/sync)/v1/chat/completions work
+        return await self.predict(model_input, request)
+```
+
+### Fan-out generation configuration
+
+To deploy the above example, create a new directory, e.g. `fanout` and create a `fanout/model/model.py` file.
+
+Then create the following `config.yaml` at `fanout/config.yaml`
+
+```yaml config.yaml theme={"system"}
+model_name: Multi-Generation-LLM
+resources:
+  accelerator: H100
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.1-8B-Instruct"
+    quantization_type: fp8
+  runtime:
+    served_model_name: "Multi-Generation-LLM"
+```
+
+At last, push the model with `truss push --publish`.
+
+## Limitations and considerations
+
+### What custom engine builder cannot do
+
+**Custom tokenization:**
+
+* Cannot modify the underlying tokenizer implementation
+* Cannot add custom vocabulary or special tokens
+* Must use the model's native tokenization
+
+**Model architecture changes:**
+
+* Cannot modify the TensorRT-LLM engine structure
+* Cannot change attention mechanisms or model layers
+* Cannot add custom model components
+
+### When to use standard engine instead
+
+* Standard chat completions without special requirements
+* No need for business logic integration
+
+## Monitoring and debugging
+
+### Request tracing
+
+```python theme={"system"}
+import uuid
+import os
+from contextlib import asynccontextmanager
+
+class Model:
+    def __init__(self, trt_llm, **kwargs):
+        self._engine = trt_llm["engine"]
+        self._trace_enabled = os.environ.get("enable_tracing", True)
+        
+    @asynccontextmanager
+    async def _trace_request(self, request_id: str):
+        """Context manager for request tracing."""
+        if self._trace_enabled:
+            print(f"[TRACE] Start: {request_id}")
+            start_time = time.time()
+        
+        try:
+            yield
+        finally:
+            if self._trace_enabled:
+                duration = time.time() - start_time
+                print(f"[TRACE] End: {request_id} (duration: {duration:.3f}s)")
+                
+    async def predict(self, model_input: Dict[str, Any], request: Request) -> Any:
+        request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+        
+        async with self._trace_request(request_id):
+            # Main logic here
+            response = await self._engine.chat_completions(request=request, model_input=model_input)
+            return response
+```
+
+## Further reading
+
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview): Main engine documentation.
+* [Engine-Builder-LLM configuration](/engines/engine-builder-llm/engine-builder-config): Complete reference config.
+* [Examples section](/examples/overview): Deployment examples.
+* [Chains documentation](/development/chain/overview): Multi-model workflows.
+
+
+# Reference config (Engine-Builder-LLM)
+Source: https://docs.baseten.co/engines/engine-builder-llm/engine-builder-config
+
+Complete reference config for dense text generation models
+
+This reference covers all build and runtime options for Engine-Builder-LLM deployments. All settings use the `trt_llm` section in `config.yaml`.
+
+## Configuration structure
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v1  # Always v1 for Engine-Builder-LLM
+  build:
+    base_model: decoder
+    checkpoint_repository: {...}
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: no_quant | fp8 | fp8_kv | fp4 | fp4_kv | fp4_mlp_only
+    quantization_config: {...}
+    tensor_parallel_count: 1
+    plugin_configuration: {...}
+    speculator: {...}  # Optional for lookahead decoding
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "model-name"
+    total_token_limit: 500000
+```
+
+## Build configuration
+
+The `build` section configures model compilation and optimization settings.
+
+<ParamField type="string">
+  The base model architecture for your model checkpoint.
+
+  **Options:**
+
+  * `decoder`: For CausalLM models (Llama, Mistral, Qwen, Gemma, Phi)
+
+  ```yaml theme={"system"}
+  build:
+    base_model: decoder
+  ```
+</ParamField>
+
+<ParamField type="object">
+  Specifies where to find the model checkpoint. Repository must be a valid Hugging Face model repository with the standard structure (config.json, tokenizer files, model weights).
+
+  **Source options:**
+
+  * `HF`: Hugging Face Hub (default)
+  * `GCS`: Google Cloud Storage
+  * `S3`: AWS S3
+  * `AZURE`: Azure Blob Storage
+  * `REMOTE_URL`: HTTP URL to tar.gz file
+  * `BASETEN_TRAINING`: Baseten Training checkpoints
+
+  For detailed configuration options including training checkpoints and cloud storage setup, see [Deploy training and S3 checkpoints](/engines/performance-concepts/deployment-from-training-and-s3).
+
+  ```yaml theme={"system"}
+  checkpoint_repository:
+    source: HF
+    repo: "meta-llama/Llama-3.3-70B-Instruct"
+    revision: main
+    runtime_secret_name: hf_access_token
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Maximum sequence length (context) for single requests. Range: 1 to 1048576.
+
+  ```yaml theme={"system"}
+  build:
+    max_seq_len: 131072  # 128K context
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Maximum number of input sequences processed concurrently. Range: 1 to 2048.
+
+  Unless lookahead decoding is enabled, this parameter has little effect on performance. Keep it at 256 for most cases.
+  Recommended not to be set below 8 to keep performance dynamic for various problems.
+
+  ```yaml theme={"system"}
+  build:
+    max_batch_size: 256
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Maximum number of batched input tokens after padding removal in each batch. Range: 256 to 131072, must be multiple of 64.
+
+  If `enable_chunked_prefill: false`, this also limits the `max_seq_len` that can be processed. Recommended: `8192` or `16384`.
+
+  ```yaml theme={"system"}
+  build:
+    max_num_tokens: 16384
+  ```
+</ParamField>
+
+<ParamField type="string">
+  Specifies the quantization format for model weights.
+
+  **Options:**
+
+  * `no_quant`: `FP16`/`BF16` precision
+  * `fp8`: `FP8` weights + 16-bit KV cache
+  * `fp8_kv`: `FP8` weights + `FP8` KV cache
+  * `fp4`: `FP4` weights + 16-bit KV cache (B200 only)
+  * `fp4_kv`: `FP4` weights + `FP8` KV cache (B200 only)
+  * `fp4_mlp_only`: `FP4` MLP only + 16-bit KV (B200 only)
+
+  For detailed quantization guidance, see [Quantization Guide](/engines/performance-concepts/quantization-guide).
+
+  ```yaml theme={"system"}
+  build:
+    quantization_type: fp8_kv
+  ```
+</ParamField>
+
+<ParamField type="object">
+  Configuration for post-training quantization calibration.
+
+  **Fields:**
+
+  * `calib_size`: Size of calibration dataset (64-16384, multiple of 64). Defines how many rows of the train split with text column to take.
+  * `calib_dataset`: HuggingFace dataset for calibration. Dataset must have 'text' column (str type) for samples, or 'train' split as subsection.
+  * `calib_max_seq_length`: Maximum sequence length for calibration.
+
+  ```yaml theme={"system"}
+  build:
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1536
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 1024
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Number of GPUs to use for tensor parallelism. Range: 1 to 8.
+
+  ```yaml theme={"system"}
+  build:
+    tensor_parallel_count: 4  # For 70B+ models
+  ```
+</ParamField>
+
+<ParamField type="object">
+  TensorRT-LLM plugin configuration for performance optimization.
+
+  **Fields:**
+
+  * `paged_kv_cache`: Enable paged KV cache (recommended: true)
+  * `use_paged_context_fmha`: Enable paged context FMHA (recommended: true)
+  * `use_fp8_context_fmha`: Enable `FP8` context FMHA (requires `FP8_KV` quantization)
+
+  ```yaml theme={"system"}
+  build:
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true  # For FP8_KV quantization
+  ```
+</ParamField>
+
+<ParamField type="object">
+  Configuration for speculative decoding with lookahead. For detailed configuration, see [Lookahead decoding](/engines/engine-builder-llm/lookahead-decoding).
+
+  **Fields:**
+
+  * `speculative_decoding_mode`: `LOOKAHEAD_DECODING` (recommended)
+  * `lookahead_windows_size`: Window size for speculation (1-8)
+  * `lookahead_ngram_size`: N-gram size for patterns (1-16)
+  * `lookahead_verification_set_size`: Verification buffer size (1-8)
+  * `enable_b10_lookahead`: Enable Baseten's lookahead algorithm
+
+  ```yaml theme={"system"}
+  build:
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Number of GPUs to use during the build job. Only set this if you encounter errors during the build job. It has no impact once the model reaches the deploying stage. If not set, equals `tensor_parallel_count`.
+
+  ```yaml theme={"system"}
+  build:
+    num_builder_gpus: 2
+  ```
+</ParamField>
+
+## Runtime configuration
+
+The `runtime` section configures inference engine behavior.
+
+<ParamField type="number">
+  Fraction of GPU memory to reserve for KV cache. Range: 0.1 to 1.0.
+
+  ```yaml theme={"system"}
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.85
+  ```
+</ParamField>
+
+<ParamField type="boolean">
+  Enable chunked prefilling for long sequences.
+
+  ```yaml theme={"system"}
+  runtime:
+    enable_chunked_context: true
+  ```
+</ParamField>
+
+<ParamField type="string">
+  Policy for scheduling requests in batches.
+
+  **Options:**
+
+  * `max_utilization`: Maximize GPU utilization (may evict requests)
+  * `guaranteed_no_evict`: Guarantee request completion (recommended)
+
+  ```yaml theme={"system"}
+  runtime:
+    batch_scheduler_policy: guaranteed_no_evict
+  ```
+</ParamField>
+
+<ParamField type="string">
+  Model name returned in API responses.
+
+  ```yaml theme={"system"}
+  runtime:
+    served_model_name: "Llama-3.3-70B-Instruct"
+  ```
+</ParamField>
+
+<ParamField type="number">
+  Maximum number of tokens that can be scheduled at once. Range: 1 to 1000000.
+
+  ```yaml theme={"system"}
+  runtime:
+    total_token_limit: 1000000
+  ```
+</ParamField>
+
+## Configuration examples
+
+### Llama 3.3 70B
+
+```yaml theme={"system"}
+model_name: Llama-3.3-70B-Instruct
+resources:
+  accelerator: H100:4
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+      revision: main
+      runtime_secret_name: hf_access_token
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 4
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.3-70B-Instruct"
+```
+
+### Qwen 2.5 32B with lookahead decoding
+
+```yaml theme={"system"}
+model_name: Qwen-2.5-32B-Lookahead
+resources:
+  accelerator: H100:2
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-32B-Instruct"
+      revision: main
+    max_seq_len: 32768
+    max_batch_size: 128
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 2
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.85
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Qwen-2.5-32B-Instruct"
+```
+
+### Small model on L4
+
+```yaml theme={"system"}
+model_name: Llama-3.2-3B-Instruct
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.2-3B-Instruct"
+      revision: main
+    max_seq_len: 8192
+    max_batch_size: 256
+    max_num_tokens: 4096
+    quantization_type: fp8
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: false
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.2-3B-Instruct"
+```
+
+### B200 with `FP4` quantization
+
+```yaml theme={"system"}
+model_name: Qwen-2.5-32B-FP4
+resources:
+  accelerator: B200
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-32B-Instruct"
+      revision: main
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp4_kv
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Qwen-2.5-32B-Instruct"
+```
+
+## Validation and troubleshooting
+
+### Common errors
+
+**Error:** `FP8 quantization is only supported on L4, H100, H200, B200`
+
+* **Cause:** Using `FP8` quantization on unsupported GPU.
+* **Fix:** Use H100 or newer GPU, or use `no_quant`.
+
+**Error:** `FP4 quantization is only supported on B200`
+
+* **Cause:** Using `FP4` quantization on unsupported GPU.
+* **Fix:** Use B200 GPU or `FP8` quantization.
+
+**Error:** `Using fp8 context fmha requires fp8 kv, or fp4 with kv cache dtype`
+
+* **Cause:** Mismatch between quantization and context FMHA settings.
+* **Fix:** Use `fp8_kv` quantization or disable `use_fp8_context_fmha`.
+
+**Error:** `Tensor parallelism and GPU count must be the same`
+
+* **Cause:** Mismatch between `tensor_parallel_count` and GPU count.
+* **Fix:** Ensure `tensor_parallel_count` matches `accelerator` count.
+
+### Performance tuning
+
+**For lowest latency:**
+
+* Reduce `max_batch_size` and `max_num_tokens`.
+* Use `batch_scheduler_policy: guaranteed_no_evict`.
+* Consider smaller models or quantization.
+
+**For highest throughput:**
+
+* Increase `max_batch_size` and `max_num_tokens`.
+* Use `batch_scheduler_policy: max_utilization`.
+* Enable quantization on supported hardware.
+
+**For cost optimization:**
+
+* Use L4 GPUs with `FP8` quantization.
+* Choose appropriately sized models.
+* Tune `max_seq_len` to your actual requirements.
+
+## Model repository structure
+
+All model sources (S3, GCS, HuggingFace, or tar.gz) must follow the standard HuggingFace repository structure. Files must be in the root directory, similar to running:
+
+```bash theme={"system"}
+git clone https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+```
+
+### Required files
+
+**Model configuration (`config.json`):**
+
+* `max_position_embeddings`: Limits maximum context size (content beyond this is truncated).
+* `vocab_size`: Vocabulary size for the model.
+* `architectures`: Must include `LlamaForCausalLM`, `MistralForCausalLM`, or similar causal LM architectures. Custom code is typically not read.
+* `torch_dtype`: Default inference dtype (`float16` or `bfloat16`). Cannot be a pre-quantized model.
+
+**Model weights (`model.safetensors`):**
+
+* Or: `model.safetensors.index.json` + `model-xx-of-yy.safetensors` (sharded).
+* Convert to safetensors if you encounter issues with other formats.
+* Cannot be a pre-quantized model. Model must be an `fp16`, `bf16`, or `fp32` checkpoint.
+
+**Tokenizer files (`tokenizer_config.json` and `tokenizer.json`):**
+
+* For maximum compatibility, use "FAST" tokenizers compatible with Rust.
+* Cannot contain custom Python code.
+* For chat completions: must contain `chat_template`, a Jinja2 template.
+
+### Architecture support
+
+| **Model family** | **Supported architectures**            | **Notes**                                           |
+| ---------------- | -------------------------------------- | --------------------------------------------------- |
+| **Llama**        | `LlamaForCausalLM`                     | Full support for Llama 3. For Llama 4, use BIS-LLM. |
+| **Mistral**      | `MistralForCausalLM`                   | Including v0.3 and Small variants.                  |
+| **Qwen**         | `Qwen2ForCausalLM`, `Qwen3ForCausalLM` | Including Qwen 2.5 and Qwen 3 series.               |
+| **QwenMoE**      | `Qwen3MoEForCausalLM`                  | Specfic support for Qwen3MoE.                       |
+| **Gemma**        | `GemmaForCausalLM`                     | Including Gemma 2 and Gemma 3 series, bf16 only.    |
+
+## Best practices
+
+### Model size and GPU selection
+
+| **Model size** | **Recommended GPU** | **Quantization** | **Tensor parallel** |
+| -------------- | ------------------- | ---------------- | ------------------- |
+| `<8B`          | L4/H100             | `FP8_KV`         | 1                   |
+| 8B-70B         | H100                | `FP8_KV`         | 1-2                 |
+| 70B+           | H100/B200           | `FP8_KV`/`FP4`   | 4+                  |
+
+### Production recommendations
+
+* Use `quantization_type: fp8_kv` for best performance/accuracy balance.
+* Set `max_batch_size` based on your expected traffic patterns.
+* Enable `paged_kv_cache` and `use_paged_context_fmha` for optimal performance.
+
+### Development recommendations
+
+* Use `quantization_type: no_quant` for fastest iteration.
+* Set smaller `max_seq_len` to reduce build time.
+* Use `batch_scheduler_policy: guaranteed_no_evict` for predictable behavior.
+
+
+# Speculative decoding guide
+Source: https://docs.baseten.co/engines/engine-builder-llm/lookahead-decoding
+
+Faster inference with speculative decoding for coding agents and text generation
+
+Lookahead decoding is a speculative decoding technique that provides 2x-4x faster inference for suitable workloads by predicting future tokens using n-gram patterns. It's particularly effective for coding agents and content with predictable patterns.
+
+## Overview
+
+Lookahead decoding identifies n-gram patterns in the input context and past tokens, speculates on future tokens by generating candidate sequences, verifies predictions against the model's actual output, and accepts verified tokens in a single step.
+
+The technique works with any model compatible with Engine-Builder-LLM. Baseten's B10 Lookahead implementation searches up to 10M past tokens for n-gram matches across language patterns.
+
+## When to use lookahead decoding
+
+Lookahead decoding excels at code generation where programming language syntax creates predictable patterns, and function signatures, variable names, and common idioms all benefit. It also accelerates prompt lookup scenarios where you provide example completions in the prompt, and general low-latency use cases where you can trade slightly decreased throughput for faster individual responses.
+
+### Limitations
+
+* Lookahead is supported on A10G, L4, A100, H100\_40GB, H200, and H100. Other GPUs may not be supported.
+* During speculative decoding, sampling is disabled and temperature is set to 0.0.
+* Speculative decoding does not affect output quality. The output depends only on model weights and prompt.
+* Speculative decoding generates multiple tokens at a time. Structured output (xgrammar, outlines) with state-machine guarantees (enforced json via `response_format`) is not possible with `engine-builder-llm`.
+* For few versions, chunked prefill is now allowed with lookahead decoding, we will dynamically disable chunked prefill in this case.
+
+## Configuration
+
+### Basic lookahead configuration
+
+Add a `speculator` section to your build configuration:
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-7B-Instruct"
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+```
+
+### Configuration parameters
+
+**`speculative_decoding_mode`**: Set to `LOOKAHEAD_DECODING` to enable Baseten's lookahead decoding algorithm.
+
+**`lookahead_ngram_size`**: Size of n-gram patterns for speculation. Range: 1-64, default: 8. Use `4` for simple patterns, `8` for general use (recommended), or `16-32` for complex, highly predictable patterns.
+
+**`lookahead_verification_set_size`**: Size of verification buffer for speculation. Range: 1-8. Use `1` for high-confidence patterns, `3` for general use (recommended), or `5` for complex patterns requiring more verification.
+
+**`lookahead_windows_size`**: Size of the speculation window. Range: 1-8. Set to the same value as `lookahead_verification_set_size`.
+
+**`enable_b10_lookahead`**: Enable Baseten's optimized lookahead algorithm. Default: `true`. Recommenedation to keep it to `true`.
+
+### Performance tuning
+
+**For coding agents:** Use smaller window sizes with moderate n-gram sizes:
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 1
+  lookahead_ngram_size: 8
+  lookahead_verification_set_size: 3
+  enable_b10_lookahead: true
+```
+
+**For general text generation:** Use balanced window and n-gram sizes:
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 3
+  lookahead_ngram_size: 8
+  lookahead_verification_set_size: 3
+  enable_b10_lookahead: true
+```
+
+**For highly predictable content:** Use larger n-gram sizes with conservative verification:
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 1
+  lookahead_ngram_size: 32
+  lookahead_verification_set_size: 1
+  enable_b10_lookahead: true
+```
+
+## Performance impact
+
+### Batch size considerations
+
+Lookahead decoding performs best with smaller batch sizes. Set `max_batch_size` to 32 or 64, depending on your use case.
+
+### Memory overhead
+
+Lookahead decoding does not require additional GPU memory.
+
+## Production best practices
+
+### Recommended configurations
+
+**Standard (general purpose):** Balanced settings for general-purpose text generation:
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 3
+  lookahead_ngram_size: 8
+  lookahead_verification_set_size: 3
+  enable_b10_lookahead: true
+```
+
+**Dynamic content (less predictable):**
+
+Setting `enable_b10_lookahead: true` and `lookahead_windows_size: 1 + lookahead_verification_set_size: 1` will enable dynamic length speculation.
+The speculated length will depend on the quality of the lookup match. By default we will speculate "a n-gram of k tokens for a k token suffix match".
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 1
+  lookahead_ngram_size: 32
+  lookahead_verification_set_size: 1
+  enable_b10_lookahead: true
+```
+
+**Code generation (highly predictable):** Code has predictable syntax patterns, so you can use larger windows:
+
+```yaml theme={"system"}
+speculator:
+  speculative_decoding_mode: LOOKAHEAD_DECODING
+  lookahead_windows_size: 7
+  lookahead_ngram_size: 5
+  lookahead_verification_set_size: 7
+  enable_b10_lookahead: true
+```
+
+### Build configuration
+
+Set `max_batch_size` to control batch size limits:
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    max_batch_size: 64  # Recommended for lookahead decoding
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      # ... other speculator config
+```
+
+### Engine optimization
+
+* Use smaller batch sizes for maximum benefit (1-8 requests)
+* Monitor memory overhead and adjust KV cache allocation
+* Test with your specific workload for optimal parameters
+
+## Examples
+
+### Code generation example
+
+Deploy a coding model with lookahead decoding on an H100:
+
+```yaml theme={"system"}
+model_name: Qwen-Coder-7B-Lookahead
+resources:
+  accelerator: H100
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-7B-Instruct"
+    quantization_type: fp8
+    max_batch_size: 64
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 1
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 1
+      enable_b10_lookahead: true
+  runtime:
+    served_model_name: "Qwen-Coder-7B"
+```
+
+## Integration examples - Python code generation
+
+Generate code using the chat completions API:
+
+```python theme={"system"}
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+# Generate Python function refactor with lookahead decoding
+code = "python\ndef hello_world(name):\n    print(42)"
+
+response = client.chat.completions.create(
+    model="not-required",
+    messages=[
+        {
+            "role": "system", 
+            "content": "You are a Python programming assistant. Write clean, efficient code."
+        },
+        {
+            "role": "user", # By providing the code anywhere in the prompt, the generation is much faster.
+            "content": f"Please refactor the follwing function to have docstrings. {code}"
+        }
+    ],
+    temperature=0.0,
+    max_tokens=200
+)
+
+print(response.choices[0].message.content)
+```
+
+## Best practices
+
+### Configuration optimization
+
+For coding assistants, use `lookahead_windows_size: 1` with `lookahead_ngram_size: 8` and keep batch sizes under 16 for best performance. For structured content like yamls or xml, use `lookahead_windows_size: 1` with `lookahead_ngram_size: 8`, note that `"response_format"` enforcement is not available with Engine-Builder-LLM Lookeahead decoding. For general use, start with default settings (window=3, ngram=8) and adjust based on your content patterns.
+
+### Performance monitoring
+
+Track tokens/second with and without lookahead to measure speed improvement, verification accuracy to see how often speculations succeed, and memory usage to catch overhead. If speed improvement diminishes, reduce batch size. Adjust window size based on content predictability and ngram size based on verification accuracy.
+
+### Troubleshooting
+
+**Common issues:**
+
+**Low speed improvement:**
+
+* Check if content is suitable for lookahead decoding
+* Reduce batch size for better performance
+* Adjust window and ngram sizes
+
+**Blackwell support**
+
+* Lookahead is not fully supported in `Engine-Builder-LLM`, check [BIS-LLM overview](/engines/bis-llm/overview) for Blackwell support.
+
+## Further reading
+
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview): Main engine documentation.
+* [Engine-Builder-LLM configuration](/engines/engine-builder-llm/engine-builder-config): Complete reference config.
+* [Structured outputs documentation](/engines/performance-concepts/structured-outputs): JSON schema validation.
+* [Examples section](/examples/speculative-decoding): Deployment examples.
+
+
+# LoRA support
+Source: https://docs.baseten.co/engines/engine-builder-llm/lora-support
+
+Multi-LoRA adapters for Engine-Builder-LLM engine
+
+Engine-Builder-LLM supports multi-LoRA deployments with runtime adapter switching. Share base model weights across fine-tuned variants and switch adapters without redeployment.
+
+## Overview
+
+Deploy multiple LoRA adapters on a single base model and switch between them at inference time. The engine shares base model weights across all adapters for memory efficiency.
+
+## Configuration
+
+### Basic LoRA configuration
+
+```yaml theme={"system"}
+model_name: Qwen2.5-Coder-LoRA
+resources:
+  accelerator: H100
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-Coder-1.5B-Instruct"
+      revision: "2e1fd397ee46e1388853d2af2c993145b0f1098a"
+    lora_adapters:
+      lora1:
+        repo: "ai-blond/Qwen-Qwen2.5-Coder-1.5B-Instruct-lora"
+        revision: "9cde18d8ed964b0519fb481cca6acd936b2ca811"
+        source: "HF"
+    max_lora_rank: 16
+    plugin_configuration:
+      lora_plugin: "float16"
+  runtime:
+    served_model_name: "Qwen2.5-Coder-base"
+```
+
+## Limitations
+
+* **Same rank and same modules**: For optimal performance and stability, the LoRA adapters for one deployment should be uniform. All target modules must be the same.
+* **Build time availability**: The engine relies on numpy-style weights. These need to be pre-converted during deployment and distributed to each replica. For Engine-Builder-LLM, these repos must be known ahead of time.
+* **Inference performance**: If you're using only one LoRA adapter, merging the adapter into the base weights provides better performance. Additional LoRA adapters add complexity to kernel selection and fundamentally increase flops.
+
+## LoRA adapter configuration
+
+### Adapter repository structure
+
+LoRA adapters must follow the standard HuggingFace repository structure:
+
+```
+adapter-repo/
+├── adapter_config.json
+├── adapter_model.safetensors
+└── README.md
+```
+
+### Required files
+
+**adapter\_config.json**
+
+```yaml theme={"system"}
+  # same base model for all configs 
+  "base_model_name_or_path": "Qwen/Qwen2.5-Coder-1.5B-Instruct", 
+  # same target modules among all lora adapters 
+  "target_modules": [
+    "attn_q",
+    "attn_k", 
+    "attn_v",
+    "attn_dense",
+    "mlp_h_to_4h",
+    "mlp_4h_to_h",
+    "mlp_gate"
+  ],
+  # same rank among all lora adapters
+  "r": 16
+```
+
+**model.lora\_weights.npy**
+
+* NumPy array containing LoRA weight matrices
+* Shape: `(num_layers, rank, hidden_size, hidden_size)`
+* Must match the target modules specified in config
+
+**model.lora\_config.npy**
+
+* NumPy array containing LoRA configuration
+* Includes scaling factors and other parameters
+* Must match the adapter\_config.json specifications
+
+## Build configuration options
+
+### `lora_adapters`
+
+Dictionary of LoRA adapters to load during build:
+
+```yaml theme={"system"}
+lora_adapters:
+  adapter_name:
+    repo: "username/model-name"
+    revision: "main"
+    source: "HF"  # or "GCS", "S3", "AZURE"
+```
+
+### `max_lora_rank`
+
+Maximum LoRA rank for all adapters.
+
+```yaml theme={"system"}
+max_lora_rank: 16  # Default: 8
+```
+
+**Range**: 1 to 64, must be power of 2
+**Recommended**: Set to exactly the rank `r` that you use for all adapters.
+
+### `plugin_configuration`
+
+LoRA plugin configuration:
+
+```yaml theme={"system"}
+plugin_configuration:
+  lora_plugin: "float16" 
+```
+
+**Options:**
+
+* `float16`: Reduced memory usage, slight accuracy impact.
+* `float32`: Higher precision, much slower inference.
+
+## Engine inference configuration
+
+The model parameter in OpenAI-format requests selects which adapter to use. For the above example, valid model names are `Qwen2.5-Coder-base` or `lora1`.
+
+This lets you select different adapters at runtime through the OpenAI client.
+
+## Further reading
+
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview): Main engine documentation.
+* [Engine-Builder-LLM configuration](/engines/engine-builder-llm/engine-builder-config): Complete reference config.
+* [Custom engine builder](/engines/engine-builder-llm/custom-engine-builder): Custom model.py implementation.
+* [Quantization guide](/engines/performance-concepts/quantization-guide): Performance optimization.
+
+
+# Overview
+Source: https://docs.baseten.co/engines/engine-builder-llm/overview
+
+Dense LLM text generation with lookahead decoding and structured outputs
+
+Engine-Builder-LLM optimizes dense text generation models with [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM), delivering up to 4000 tokens/second for code generation with [lookahead decoding](/engines/engine-builder-llm/lookahead-decoding). The engine supports [structured outputs](/engines/performance-concepts/structured-outputs) for JSON schema validation.
+
+## Use cases
+
+**Model families:**
+
+* **Llama**: `meta-llama/Llama-3.3-70B-Instruct`, `meta-llama/Llama-3.2-3B-Instruct`.
+* **Qwen**: `Qwen/Qwen2.5-72B-Instruct`, `Qwen3/Qwen3-8B`, `Qwen/QwQ-32B-Preview`.
+* **Mistral**: `mistralai/Mistral-7B-Instruct-v0.3`, `mistralai/Mistral-Small-24B-Instruct`.
+* **DeepSeek**: `deepseek-ai/DeepSeek-R1-Distill-Llama-70B`.
+* **Gemma 3**: `google/gemma-3-27b-it`, `google/gemma-3-12b-it`.
+* **Microsoft**: `microsoft/Phi-4`.
+
+Engine-Builder-LLM handles high-throughput dialogue systems, coding assistants with lookahead decoding, and content generation with structured outputs. The engine's speculative decoding accelerates code generation by 2-4x, making it ideal for coding agents and JSON-heavy workloads.
+
+### LoRA support
+
+Engine-Builder-LLM supports [multi-LoRA](/engines/engine-builder-llm/lora-support) deployments with engine adapter switching:
+
+<CardGroup>
+  <Card title="Multi-LoRA" href="/engines/engine-builder-llm/lora-support" icon="layers">
+    Multiple adapters, engine switching, parameter-efficient fine-tuning
+  </Card>
+
+  <Card title="Quick start" href="/engines/engine-builder-llm/lora-support" icon="rocket-launch">
+    Deploy LoRA adapters in minutes
+  </Card>
+</CardGroup>
+
+### Structured outputs
+
+Engine-Builder-LLM supports OpenAI-compatible structured outputs with JSON schema validation:
+
+<CardGroup>
+  <Card title="Features" href="/engines/performance-concepts/structured-outputs#engine-builder-llm" icon="check-circle">
+    Full OpenAI compatibility, JSON schema validation, complex nested schemas
+  </Card>
+
+  <Card title="Quick start" href="/engines/performance-concepts/structured-outputs" icon="rocket-launch">
+    Get started with structured outputs in minutes
+  </Card>
+</CardGroup>
+
+### Key benefits
+
+<CardGroup>
+  <Card title="Low latency" icon="lightning-bolt">
+    TensorRT-LLM compilation optimizes time-to-first-token.
+  </Card>
+
+  <Card title="High throughput" icon="rocket-launch">
+    Batching and kernel optimization maximize tokens per second.
+  </Card>
+
+  <Card title="Lookahead decoding" icon="eye">
+    Speculative decoding accelerates coding agents and predictable content.
+  </Card>
+
+  <Card title="Structured outputs" icon="shapes">
+    JSON schema validation for controlled text generation.
+  </Card>
+</CardGroup>
+
+## Architecture support
+
+### Supported model types
+
+Engine-Builder-LLM supports all causal language model architectures that end with `ForCausalLM`:
+
+**Primary architectures:**
+
+* `LlamaForCausalLM`: Llama family models.
+* `Qwen2ForCausalLM`: Qwen family models.
+* `MistralForCausalLM`: Mistral family models.
+* `Gemma2ForCausalLM`: Gemma family models.
+* `Phi3ForCausalLM`: Phi family models.
+
+**Automatic detection:**
+
+The engine automatically detects the model architecture from the checkpoint repository and applies appropriate optimizations.
+
+### Model size support
+
+| **Model Size** | **Single GPU** | **Tensor Parallel** | **Recommended GPU** |
+| -------------- | -------------- | ------------------- | ------------------- |
+| `<8B`          | L4, A10G, H100 | N/A                 | L4 (cost-effective) |
+| 8B-70B         | H100           | TP1-TP2             | H100 (2 GPUs)       |
+| 70B+           | H100 / B200    | TP4+                | H100 (4+ GPUs)      |
+
+## Advanced features
+
+### Lookahead decoding
+
+Lookahead decoding accelerates inference for code generation, JSON output, and templated content by speculating on future tokens using n-gram patterns.
+
+**Best for:**
+
+* **Code generation**: Highly predictable patterns in code.
+* **Structured content**: Reliable JSON, YAML, XML generation.
+* **Mathematical expressions**: Predictable mathematical notation.
+* **Template completion**: Filling in predictable templates.
+
+Enable lookahead decoding by adding a `speculator` section:
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 1
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 1
+      enable_b10_lookahead: true
+```
+
+**Performance impact:**
+
+* **Speed improvement**: Up to 2x faster for code and structured content.
+* **Prompt lookup**: Up to 10x faster for prompt-lookup workloads like code apply, reaching 4000 tokens/s per request on Qwen-3-8B with a single H100.
+* **Optimal batch size**: Less than 32 requests for best performance.
+
+### Structured outputs
+
+Generate text that conforms to JSON schemas for reliable data extraction and controlled generation.
+
+**Use cases:**
+
+* **Data extraction**: Extract structured information from unstructured text.
+* **API response generation**: Generate JSON responses for APIs.
+* **Configuration generation**: Create structured configuration files.
+* **Content validation**: Ensure generated content meets specific criteria.
+
+Structured outputs work out of the box with no extra configuration. Define a Pydantic schema:
+
+```python theme={"system"}
+import os
+from pydantic import BaseModel
+from openai import OpenAI
+
+class User(BaseModel):
+    name: str
+    age: int
+    email: str
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.beta.chat.completions.parse(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Extract user info from: John is 25 years old and his email is john@example.com"}
+    ],
+    response_format=User
+)
+
+user = response.choices[0].message.parsed
+print(f"Name: {user.name}, Age: {user.age}, Email: {user.email}")
+```
+
+### Quantization options
+
+Engine-Builder-LLM supports multiple [quantization](/engines/performance-concepts/quantization-guide) formats for different performance and accuracy trade-offs.
+
+**Quantization types:**
+
+* `no_quant`: `FP16`/`BF16` precision (baseline).
+* `fp8`: `FP8` weights + 16-bit KV cache (2x speedup).
+* `fp8_kv`: `FP8` weights + `FP8` KV cache (2.5x speedup).
+* `fp4`: `FP4` weights + 16-bit KV cache (4x speedup, B200 only).
+* `fp4_kv`: `FP4` weights + `FP8` KV cache (4.5x speedup, B200 only).
+* `fp4_mlp_only`: `FP4` MLP only + 16-bit KV (3x speedup, B200 only).
+
+**Hardware requirements:**
+
+Hardware requirements vary by quantization type.
+
+| **Quantization**                | **Minimum GPU**      | **Memory reduction** | **Speed improvement** |
+| ------------------------------- | -------------------- | -------------------- | --------------------- |
+| `no_quant`                      | A100                 | None                 | Baseline              |
+| `fp8`                           | L4, H100, H200, B200 | 50%                  | 2x                    |
+| `fp8_kv`                        | L4, H100, H200, B200 | 60%                  | 2.5x                  |
+| `fp4`, `fp4_kv`, `fp4_mlp_only` | B200 only            | 75%                  | 3-4.5x                |
+
+## Configuration examples
+
+### Basic Llama 3.3 70B deployment
+
+Llama 3.3 70B on H100 GPUs with `FP8` quantization:
+
+```yaml theme={"system"}
+model_name: Llama-3.3-70B-Instruct
+resources:
+  accelerator: H100:4  # 4 GPUs for 70B model
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+      revision: main
+      runtime_secret_name: hf_access_token
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 4
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.3-70B-Instruct"
+```
+
+### Qwen 2.5 32B with lookahead decoding
+
+Qwen 2.5 32B with *speculative decoding* for faster inference. Read more on [lookahead decoding here](/engines/engine-builder-llm/lookahead-decoding.mdx)
+
+```yaml theme={"system"}
+model_name: Qwen-2.5-32B-Lookahead
+resources:
+  accelerator: H100:1
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-Coder-32B-Instruct"
+      revision: main
+    max_seq_len: 32768
+    max_batch_size: 128
+    max_num_tokens: 8192
+    quantization_type: fp8 # no fp8_kv for qwen2.5 models
+    tensor_parallel_count: 1
+    num_builder_gpus: 2 # will be loaded in bf16 for quantization, will require `2x32Gb memory -> 2H100s
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.85
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Qwen-2.5-Coder-32B-Instruct"
+```
+
+### Small model for cost-effective deployment
+
+Llama 3.2 3B on an L4 GPU for cost efficiency:
+
+```yaml theme={"system"}
+model_name: Llama-3.2-3B-Instruct
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.2-3B-Instruct"
+      revision: main
+    max_seq_len: 8192
+    max_batch_size: 256
+    max_num_tokens: 4096
+    quantization_type: fp8
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: false
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.2-3B-Instruct"
+```
+
+## Performance characteristics
+
+### Latency and throughput factors
+
+Performance depends on model size (smaller models respond faster), quantization (`FP8`/`FP4` reduces memory and improves throughput), lookahead decoding (effective for code and structured content), batch size (larger batches improve throughput at the cost of latency), and hardware (H100 and B200 GPUs deliver the best results).
+
+### Memory usage considerations
+
+**Memory optimization factors:**
+
+* **Quantization**: `FP8` reduces memory by \~50%, `FP4` by \~75%.
+* **Lookahead decoding**: Minimal additional memory overhead.
+* **Tensor parallelism**: Distributes memory across multiple GPUs.
+* **KV cache management**: Configurable memory allocation for context handling.
+
+## Integration examples
+
+### OpenAI-compatible inference
+
+Engine-Builder-LLM deployments are OpenAI compatible, enabling use of the standard OpenAI SDK.
+
+```python theme={"system"}
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+# Standard chat completion
+response = client.chat.completions.create(
+    model="not-required",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Explain quantum computing in simple terms."}
+    ],
+    temperature=0.7,
+    max_tokens=500
+)
+
+print(response.choices[0].message.content)
+
+# Streaming completion
+for chunk in client.chat.completions.create(
+    model="not-required",
+    messages=[{"role": "user", "content": "Write a poem about AI"}],
+    stream=True,
+):
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+Point `base_url` to your model's production endpoint. Find this URL in your Baseten dashboard after deployment. The `model` parameter can be any string since Baseten routes based on the URL, not this field. Set `stream=True` to receive tokens as they're generated.
+
+Running this returns a chat completion response with the model's answer in `response.choices[0].message.content`, or streams chunks with partial content in `delta.content`.
+
+### Performant Client Usage
+
+For high-throughput batch processing, use the [Performance Client](/engines/performance-concepts/performance-client) which handles concurrent requests efficiently.
+
+```python theme={"system"}
+from baseten_performance_client import PerformanceClient
+
+client = PerformanceClient(
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync", 
+    api_key=os.environ['BASETEN_API_KEY']
+)
+
+# Batch chat completions with stream=False
+payloads = [
+    {
+        "model": "model",
+        "messages": [{"role": "user", "content": "Explain quantum computing"}],
+        "stream": False,
+        "max_tokens": 500
+    },
+    {
+        "model": "model", 
+        "messages": [{"role": "user", "content": "Write a poem about AI"}],
+        "stream": False,
+        "max_tokens": 300
+    }
+] * 10  # 20 total requests
+
+response = client.batch_post(
+    url_path="/v1/chat/completions",
+    payloads=payloads,
+)
+
+# Access 20 responses
+for i, resp in enumerate(response.data):
+    print(f"Response {i+1}: {resp['choices'][0]['message']['content']}")
+```
+
+**Use cases:** Bulk content generation, Unlocked GIL during Request, batch data processing, performance benchmarking.
+
+### Structured outputs
+
+*Structured outputs* guarantee the response matches your Pydantic schema.
+
+```python theme={"system"}
+import os
+from pydantic import BaseModel
+from openai import OpenAI
+
+class Task(BaseModel):
+    title: str
+    priority: str
+    due_date: str
+    description: str
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.beta.chat.completions.parse(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Create a task for: Review the quarterly report by next Friday"}
+    ],
+    response_format=Task
+)
+
+task = response.choices[0].message.parsed
+print(f"Task: {task.title}")
+print(f"Priority: {task.priority}")
+```
+
+Define your schema as a Pydantic model with typed fields. Pass it to `response_format` and use `beta.chat.completions.parse` instead of the regular `create` method.
+
+The response includes a `parsed` attribute with your data already converted to a `Task` object, so no JSON parsing is needed.
+
+### Function calling
+
+*Function calling* lets the model invoke your functions with structured arguments. Define available tools, and the model returns function calls when appropriate.
+
+```python theme={"system"}
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+tools = [{
+    "type": "function",
+    "function": {
+        "name": "get_weather",
+        "description": "Get current weather for a location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City name, e.g., San Francisco"
+                }
+            },
+            "required": ["location"]
+        }
+    }
+}]
+
+response = client.chat.completions.create(
+    model="not-required",
+    messages=[{"role": "user", "content": "What's the weather like in Boston?"}],
+    tools=tools
+)
+
+tool_call = response.choices[0].message.tool_calls[0]
+print(f"Function: {tool_call.function.name}")
+print(f"Arguments: {tool_call.function.arguments}")
+```
+
+Define each tool with a `name`, `description`, and JSON schema for `parameters`. The description helps the model decide when to use the tool.
+
+When the model chooses to call a function, `tool_calls` contains the function name and JSON-encoded arguments. Your code executes the function and optionally sends the result back for a final response.
+
+## Best practices
+
+### Model selection
+
+**For cost-effective deployments:**
+
+* Use models under 8B parameters on L4 GPUs, H100 or H100\_40GB.
+* Consider quantization for memory efficiency.
+* Implement autoscaling for variable traffic.
+
+**For high-performance deployments:**
+
+* Use H100 GPUs with `FP8` quantization.
+* Enable lookahead decoding for code generation.
+* Use tensor parallelism for large models.
+
+**For coding assistants:**
+
+* Use models trained on code (Qwen-Coder, CodeLlama).
+* Enable lookahead decoding with window size 1 for maximum throughput.
+* Consider smaller models for faster response times.
+
+### Hardware optimization
+
+**GPU selection:**
+
+* **L4 or H100\_40GB**: Best for models under 15B parameters, cost-effective.
+* **H100\_80GB**: Recommended for models 15-70B parameters for optimal performance.
+* **H100**: Best for models 15-70B parameters, high performance.
+* **B200**: Required for `FP4` quantization.
+
+**Memory optimization:**
+
+* Use quantization to reduce memory usage.
+* Lower max\_seq\_len or enable chunked prefill.
+* Monitor memory usage during deployment.
+
+### Performance tuning
+
+**For lowest latency:**
+
+* Use smaller models when possible.
+* Enable lookahead decoding for code generation.
+
+**For highest throughput:**
+
+* Use larger batch sizes.
+* Enable `FP8`/`FP4` quantization.
+* Use tensor parallelism for large models.
+
+**For cost efficiency:**
+
+* Use L4 GPUs with quantization.
+* Implement efficient autoscaling.
+* Choose appropriately sized models.
+
+## Migration guide
+
+### From other deployment systems
+
+Coming from vLLM? Here's how the configuration maps:
+
+```yaml theme={"system"}
+# vLLM configuration (old)
+model: "meta-llama/Llama-3.3-70B-Instruct"
+tensor_parallel_size: 4
+quantization: "fp8"
+
+# Engine-Builder-LLM configuration (new)
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+    quantization_type: fp8_kv
+    tensor_parallel_count: 4
+```
+
+## Further reading
+
+* [Engine-Builder-LLM reference config](/engines/engine-builder-llm/engine-builder-config): Complete configuration options.
+* [Structured outputs](/engines/performance-concepts/structured-outputs): JSON schema validation and controlled generation.
+* [Lookahead decoding guide](/engines/engine-builder-llm/lookahead-decoding): Advanced speculative decoding.
+* [Custom engine builder](/engines/engine-builder-llm/custom-engine-builder): Custom model.py implementation.
+* [Quantization guide](/engines/performance-concepts/quantization-guide): `FP8`/`FP4` trade-offs and hardware requirements.
+* [TensorRT-LLM examples](/examples/tensorrt-llm): Concrete deployment examples.
+
+
+# Overview
+Source: https://docs.baseten.co/engines/index
+
+Engine selection guide for embeddings, dense LLMs, and MoE models
+
+Baseten engines optimize model inference for specific architectures using [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM). Select an engine based on your model type (embeddings, dense LLMs, or mixture-of-experts) to achieve the best latency and throughput.
+
+## Engine ecosystem
+
+<CardGroup>
+  <Card title="BEI (Embeddings & Classification)" href="/engines/bei/overview" icon="brain-circuit">
+    Embeddings, reranking, and classification models with up to 1400 embeddings/sec throughput.
+  </Card>
+
+  <Card title="Engine-Builder-LLM (Dense Models)" href="/engines/engine-builder-llm/overview" icon="microchip">
+    Dense text generation models with [lookahead decoding](/engines/engine-builder-llm/lookahead-decoding), [structured outputs](/engines/performance-concepts/structured-outputs), and single node inference.
+  </Card>
+
+  <Card title="BIS-LLM (MoE & Advanced)" href="/engines/bis-llm/overview" icon="network">
+    MoE models with [KV-aware routing](/engines/bis-llm/advanced-features#kv-aware-routing), [tool calling](/engines/performance-concepts/function-calling), and speculative decoding.
+  </Card>
+
+  <Card title="Specialized Deployments" href="#specialized-deployments" icon="server">
+    Specialized engines for models like Whisper, Orpheus, or Flux, available as dedicated deployments rather than self-serviceable options.
+  </Card>
+</CardGroup>
+
+## Engine selection
+
+Select an engine based on your model's architecture and expected workload.
+
+| Model type         | Architecture                  | Recommended engine | Key features                              | **Hardware**             |
+| ------------------ | ----------------------------- | ------------------ | ----------------------------------------- | ------------------------ |
+| **Dense LLM**      | CausalLM (text generation)    | Engine-Builder-LLM | Lookahead decoding, structured outputs    | H100, B200               |
+| **MoE Models**     | Mixture of Experts            | BIS-LLM            | KV-aware routing, advanced quantization   | H100, B200               |
+| **Large Models**   | 700B+ parameters              | BIS-LLM            | Distributed inference, `FP4` support      | H100, B200               |
+| **Embeddings**     | BERT-based (bidirectional)    | BEI-Bert           | Cold-start optimization, 16-bit precision | T4, L4, A10G, H100, B200 |
+| **Embeddings**     | Causal (Llama, Mistral, Qwen) | BEI                | `FP8` quantization, high throughput       | L4, A10G, H100, B200     |
+| **Reranking**      | Cross-encoder architectures   | BEI / BEI-Bert     | Low latency, batch processing             | L4, A10G, H100, B200     |
+| **Classification** | Sequence classification       | BEI / BEI-Bert     | High throughput, cached weights           | L4, A10G, H100, B200     |
+
+### Feature availability
+
+| Feature                              | BIS-LLM | Engine-Builder-LLM | BEI | BEI-Bert | Notes                                            |
+| ------------------------------------ | ------- | ------------------ | --- | -------- | ------------------------------------------------ |
+| **Quantization**                     | ✅       | ✅                  | ✅   | ❌        | BEI-Bert: `FP16`/`BF16` only                     |
+| **KV quantization**                  | ✅       | ✅                  | ⚠️  | ⚠️       | `FP8_KV`, `FP4_KV` supported                     |
+| **Speculative lookahead decoding**   | Gated   | ✅                  | ❌   | ❌        | n-gram based speculation                         |
+| **Self-serviceable**                 | Gated/✅ | ✅                  | ✅   | ✅        | All engines self-service                         |
+| **KV-routing**                       | Gated   | ❌                  | ❌   | ❌        | BIS-LLM only                                     |
+| **Disaggregated serving**            | Gated   | ❌                  | ❌   | ❌        | BIS-LLM enterprise                               |
+| **Tool calling & structured output** | ✅       | ✅                  | ❌   | ❌        | Function calling support                         |
+| **Classification models**            | ❌       | ❌                  | ✅   | ✅        | Sequence classification                          |
+| **Embedding models**                 | ❌       | ❌                  | ✅   | ✅        | Embedding generation                             |
+| **Mixture-of-experts**               | ✅       | ⚠️ (Qwen3MoE only) | ❌   | ❌        | Mixture of Experts models like DeepSeek          |
+| **MTP and Eagle 3 speculation**      | Gated   | ❌                  | ❌   | ❌        | Model-based speculation                          |
+| **HTTP request cancellation**        | ✅       | ❌                  | ✅   | ✅        | Engine-Builder supports it within the first 10ms |
+| **MultiModal Inputs**                | Gated   | ❌                  | ⚠️  | ❌        | Selected architectures only                      |
+
+## Architecture recommendations
+
+### BEI vs BEI-Bert (embeddings)
+
+BEI-Bert optimizes BERT-based architectures (sentence-transformers, jinaai, nomic-ai) with fast cold-start performance and 16-bit precision. Choose BEI-Bert for bidirectional models under 4B parameters where cold-start latency matters. Jina-BERT, Nomic, and ModernBERT architectures all run well on this engine.
+
+BEI handles causal embedding architectures (Llama, Mistral, Qwen) with `FP8`/`FP4` quantization support. Choose BEI when you need maximum throughput or want to run larger embedding models like BAAI/bge, Qwen3-Embedding, or Salesforce/SFR-Embedding with quantization.
+
+### Engine-Builder-LLM vs BIS-LLM (text generation)
+
+Engine-Builder-LLM serves dense models (non-MoE) with lookahead decoding and structured outputs. Choose it for Llama 3.3, Qwen-3, Qwen2.5, Mistral, or Gemma-3 when you need speculative decoding for coding agents or JSON schema validation.
+
+BIS-LLM serves large MoE models with KV-aware routing and advanced tool calling. Choose it for DeepSeek-R1, Qwen3MoE, Kimi-K2, Llama-4, or GLM-4.7 when you need enterprise features like disaggregated serving or H100/B200 optimization.
+
+## Performance benchmarks
+
+Benchmark results depend on model size, GPU type, and quantization settings. The figures below represent typical performance on H100 GPUs.
+
+### Embedding performance (BEI/BEI-Bert)
+
+* **Throughput**: Up to 1400 client embeddings per second.
+* **Latency**: Sub-millisecond response times.
+* **Quantization**: `FP8`/`FP4` provides 2x speedup with less than 1% accuracy loss.
+
+### Text generation performance (Engine-Builder-LLM/BIS-LLM)
+
+* **Speculative decoding**: Faster inference for code and structured content through lookahead decoding.
+* **Quantization**: Memory reduction and speed improvements with `FP8`/`FP4`.
+* **Distributed inference**: Scalable deployment with tensor parallelism.
+
+## Hardware requirements and optimization
+
+*[Quantization](/engines/performance-concepts/quantization-guide)* reduces memory usage and improves inference speed.
+
+| Quantization  | Minimum GPU | Recommended GPU | Memory reduction | Notes                                       |
+| ------------- | ----------- | --------------- | ---------------- | ------------------------------------------- |
+| `FP16`/`BF16` | A100        | H100            | None             | Baseline precision                          |
+| `FP8`         | L4          | H100            | \~50%            | Good balance of performance and accuracy    |
+| `FP8_KV`      | L4          | H100            | \~60%            | KV cache quantization for memory efficiency |
+| `FP4`         | B200        | B200            | \~75%            | B200-only quantization                      |
+| `FP4_KV`      | B200        | B200            | \~80%            | Maximum memory reduction                    |
+
+<Note>
+  Some models require specialized engines that are not self-serviceable:
+
+  * **Whisper**: Audio transcription and speech recognition.
+  * **Orpheus**: Audio generation.
+</Note>
+
+## Next steps
+
+* [BEI documentation](/engines/bei/overview): Embeddings and classification.
+* [Engine-Builder-LLM documentation](/engines/engine-builder-llm/overview): Dense text generation.
+* [BIS-LLM documentation](/engines/bis-llm/overview): MoE and advanced features.
+
+**Examples:**
+
+* [BEI deployment guide](/examples/bei): Complete embedding model setup.
+* [TensorRT-LLM examples](/examples/tensorrt-llm): Dense LLM deployment.
+* [DeepSeek examples](/examples/models/deepseek/deepseek-r1): Large MoE deployment.
+
+
+# Auto-Scaling Engines
+Source: https://docs.baseten.co/engines/performance-concepts/autoscaling-engines
+
+Performant auto-scaling custom tailored to Embedding and Generation Models on Baseten
+
+# Auto-Scaling Engines
+
+Beyond the [Introduction to autoscaling](/deployment/autoscaling), some adjustments specialized to models using dynamic batching are helpful.
+
+Both BEI and Engine-Builder-LLM use **dynamic batching** to process parallel multiple requests. This increase in throughput comes at the cost of increased p50 latency.
+Combining this feature with engine-specific autoscaling becomes a powerful tool for maintaining optimal performance across varying traffic patterns.
+
+## BEI
+
+BEI provides millisecond-range inference times and scales differently than other models. With too few replicas, backpressure can build up quickly.
+
+**Key recommendations:**
+
+* **Enable autoscaling** - BEI's millisecond-range inference and dynamic batching require autoscaling to handle variable traffic efficiently
+* **Target utilization: 25%** - Low target provides headroom for traffic spikes and accommodates dynamic batching behavior
+* **Concurrency: 96+ requests** - High concurrency allows maximum throughput. If unsure, start with 64 and 40% utilization and tune on live traffic.
+* **Minimum concurrency: ≥8** - Never set below 8 for optimal performance
+
+**Multi-payload routes** (`/rerank`, `/v1/embeddings`) can send multiple requests at once, challenging autoscaling based on concurrent requests. Use the [Performance client](/engines/performance-concepts/performance-client) for optimal scaling.
+
+## Engine-Builder-LLM
+
+Engine-Builder-LLM uses dynamic batching to maximize throughput, similar to BEI, but doesn't face the multi-payload challenge that BEI does with `/rerank` and `/v1/embeddings` routes.
+
+**Key recommendations:**
+
+* **Target utilization: 40-50%** - Lower than default to accommodate dynamic batching and provide headroom
+* **Concurrency: 16-256 requests** - If unsure, start with 64 and 40% utilization and tune on live traffic.
+* **Batch cases** - Use the Performance client for batch processing
+* **Minimum concurrency: ≥8** - Never set below 8 for optimal performance
+* **Lookahead works slightly better with lower batch-size** - Tune the concurrency to a same or slightly below `max_batch_size`, so that lookahead is aware that it can perform optimizations. This is partially also helpful for any `engine-builder-llm` engine, even if you're not using lookahead.
+
+**Important**: Do not set concurrency above `max_batch_size` as it leads to on-replica queueing and negates the benefits of autoscaling.
+
+General advice:
+Tune the equilibrium on your live-traffic, cost, thoughput and latency targets. Your mean expected concurrency will be the concurrency\_target \* target\_utilization. Most engines are only provide marginal thoughput improvements when paired with 128 requests vs working on 256 requests at a time. Keeping a mean expected concurrency around 16-64 will allow for the best stability guarantees and proactive scaling descisions under variable traffic.
+
+## Quick Reference
+
+| **Setting**        | **BEI**      | **Engine-Builder-LLM** |
+| ------------------ | ------------ | ---------------------- |
+| Target utilization | 25%          | 40-50%                 |
+| Concurrency        | 96+ (min ≥8) | 32-256                 |
+| Batch size         | Flexible     | Flexible               |
+
+## Further reading
+
+* [BEI overview](/engines/bei/overview) - General BEI documentation
+* [BEI reference config](/engines/bei/bei-reference) - Complete configuration options
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview) - Generation model details
+* [Embedding examples](/examples/bei) - Concrete deployment examples
+* [Performance client documentation](/engines/performance-concepts/performance-client) - Client usage with embeddings
+* [Quantization guide](/engines/performance-concepts/quantization-guide) - Hardware considerations
+* [Performance optimization](/development/model/performance-optimization) - General performance guidance
+
+
+# Deploy training and S3 checkpoints
+Source: https://docs.baseten.co/engines/performance-concepts/deployment-from-training-and-s3
+
+Deploy training checkpoints and cloud storage models with TensorRT-LLM optimization.
+
+Deploy training checkpoints and cloud storage models with Engine-Builder-LLM, BEI, or BIS-LLM.
+
+## Training checkpoint deployment
+
+Deploy fine-tuned models from Baseten Training with Engine-Builder-LLM. Specify `BASETEN_TRAINING` as the source:
+
+```yaml config.yaml theme={"system"}
+model_name: My Fine-Tuned LLM
+resources:
+  accelerator: H100:1
+  use_gpu: true
+secrets:
+  hf_access_token: null # do not set value here
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: BASETEN_TRAINING
+      repo: YOUR_TRAINING_JOB_ID
+      revision: checkpoint-100
+```
+
+**Key fields:**
+
+* `base_model`: `decoder` for LLMs, `encoder`/`encoder_bert` for embeddings
+* `source`: `BASETEN_TRAINING` for Baseten Training checkpoints
+* `repo`: Your training job ID
+* `revision`: Checkpoint folder name (e.g., `checkpoint-100`, `checkpoint-final`)
+
+Find your checkpoint details with:
+
+```sh theme={"system"}
+truss train get_checkpoint_urls --job-id=YOUR_TRAINING_JOB_ID
+```
+
+### Encoder model requirements
+
+To deploy a fine-tuned encoder model (embeddings, rerankers) from training checkpoints, use `encoder` or `encoder_bert` as the base model:
+
+```yaml config.yaml theme={"system"}
+model_name: My Fine-Tuned Embeddings
+resources:
+  accelerator: L4:1
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: encoder_bert
+    checkpoint_repository:
+      source: BASETEN_TRAINING
+      repo: YOUR_TRAINING_JOB_ID
+      revision: checkpoint-final
+  runtime:
+    webserver_default_route: /v1/embeddings
+```
+
+Use `encoder_bert` for BERT-based models (sentence-transformers, classification, reranking). Use `encoder` for causal embedding models.
+
+Encoder models have specific requirements:
+
+* **No tensor parallelism**: Omit `tensor_parallel_count` or set it to `1`.
+* **Fast tokenizer required**: Your checkpoint must include a `tokenizer.json` file. Models using only the legacy `vocab.txt` format are not supported.
+* **Embedding model files**: For sentence-transformer models, include `modules.json` and `1_Pooling/config.json` in your checkpoint.
+
+The `webserver_default_route` configures the inference endpoint. Options include `/v1/embeddings` for embeddings, `/rerank` for rerankers, and `/predict` for classification.
+
+## Cloud storage deployment
+
+Deploy models directly from S3, GCS, or Azure. Specify the storage source and bucket path:
+
+```yaml config.yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: S3  # or GCS, AZURE, HF
+      repo: s3://your-bucket/path/to/model/
+```
+
+**Storage sources:**
+
+* `S3`: Amazon S3 buckets
+* `GCS`: Google Cloud Storage
+* `AZURE`: Azure Blob Storage
+* `HF`: Hugging Face repositories
+
+### Private storage setup
+
+All runtimes use the same downloader system as [model\_cache](/development/model/model-cache). As a result, you configure the `runtime_secret_name` and `repo` identically across model\_cache and runtimes like Engine-Builder-LLM or BEI.
+
+**Secret Setup:**
+
+Add these JSON secrets to your [Baseten secrets manager](https://app.baseten.co/settings/secrets).
+For more details, refer to the documentation in [model\_cache](/development/model/model-cache).
+
+**S3:**
+
+```json theme={"system"}
+{
+  "access_key_id": "XXXXX",
+  "secret_access_key": "xxxxx/xxxxxx",
+  "region": "us-west-2"
+}
+```
+
+**GCS:**
+
+```json theme={"system"}
+{
+  "private_key_id": "xxxxxxx",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMI",
+  "client_email": "b10-some@xxx-example.iam.gserviceaccount.com"
+}
+```
+
+**Azure:**
+
+```json theme={"system"}
+{
+  "account_key": "xxxxx"
+}
+```
+
+Reference the secret in your config:
+
+```yaml theme={"system"}
+secrets:
+  aws_secret_json: "set token in baseten workspace"
+trt_llm:
+  build:
+    checkpoint_repository:
+      source: S3
+      repo: s3://your-private-bucket/model
+      runtime_secret_name: aws_secret_json
+```
+
+**For Baseten Training deployments:** These secrets are automatically mounted and available to your deployment.
+
+## Further reading
+
+* [Engine-Builder-LLM configuration](/engines/engine-builder-llm/engine-builder-config): Complete build and runtime options for LLMs.
+* [BEI reference configuration](/engines/bei/bei-reference): Complete configuration for encoder models.
+* [Model cache documentation](/development/model/model-cache): Caching strategies used by the engines.
+* [Secrets management](/development/model/secrets): Configure credentials for private storage.
+
+
+# Function calling
+Source: https://docs.baseten.co/engines/performance-concepts/function-calling
+
+Tool selection and structured function calls with LLMs
+
+<Note>
+  Function calling is supported by Baseten engines including [BIS-LLM](/engines/bis-llm/overview) and [Engine-Builder-LLM](/engines/engine-builder-llm/overview), as well as [Model APIs](/development/model-apis/overview) for instant access. It's also compatible with other inference frameworks like [vLLM](/examples/vllm) and [SGLang](/examples/sglang).
+</Note>
+
+## Overview
+
+*Function calling* (also known as *tool calling*) lets a model **choose a tool and produce arguments** based on a user request.
+
+**Important:** the model **does not execute** your Python function. Your application must:
+
+1. run the tool, and
+2. optionally send the tool’s output back to the model to produce a final, user-facing response.
+
+This is a great fit for [chains](/development/chain/overview) and other orchestrators.
+
+***
+
+## How tool calling works
+
+A typical tool-calling loop looks like:
+
+1. **Send** the user message and a list of tools.
+2. The model returns either normal text or one or more **tool calls** (name and JSON arguments).
+3. **Execute** the tool calls in your application.
+4. **Send tool output** back to the model.
+5. Receive a **final response** or additional tool calls.
+
+***
+
+## 1. Define tools
+
+Tools can be anything: API calls, database queries, internal scripts, etc.
+
+Docstrings matter. Models use them to decide which tool to call and how to fill parameters:
+
+```python theme={"system"}
+def multiply(a: float, b: float):
+    """Multiply two numbers.
+
+    Args:
+        a: The first number.
+        b: The second number.
+    """
+    return a * b
+
+
+def divide(a: float, b: float):
+    """Divide two numbers.
+
+    Args:
+        a: The dividend.
+        b: The divisor (must be non-zero).
+    """
+    return a / b
+
+
+def add(a: float, b: float):
+    """Add two numbers.
+
+    Args:
+        a: The first number.
+        b: The second number.
+    """
+    return a + b
+
+
+def subtract(a: float, b: float):
+    """Subtract two numbers.
+
+    Args:
+        a: The number to subtract from.
+        b: The number to subtract.
+    """
+    return a - b
+```
+
+### Tool-writing tips
+
+Design small, single-purpose tools and document constraints in docstrings (units, allowed values, required fields). Treat model-provided arguments as untrusted input and validate before execution.
+
+***
+
+## 2. Serialize functions
+
+Convert functions into JSON-schema tool definitions (OpenAI-compatible format):
+
+```python theme={"system"}
+from transformers.utils import get_json_schema
+
+calculator_functions = {
+    "multiply": multiply,
+    "divide": divide,
+    "add": add,
+    "subtract": subtract,
+}
+
+tools = [get_json_schema(f) for f in calculator_functions.values()]
+```
+
+***
+
+## 3. Call the model
+
+Include the `tools` array in your request:
+
+```python theme={"system"}
+import requests
+
+payload = {
+    "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is 3.14 + 3.14?"},
+    ],
+    "tools": tools,
+    "tool_choice": "auto",  # default
+}
+
+MODEL_ID = ""
+BASETEN_API_KEY = ""
+
+resp = requests.post(
+    f"https://model-{MODEL_ID}.api.baseten.co/production/predict",
+    headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"},
+    json=payload,
+)
+```
+
+***
+
+## 4. Control tool selection
+
+Set `tool_choice` to control how the model uses tools. With `auto` (default), the model may respond with text or tool calls. With `required`, the model must return at least one tool call. With `none`, the model returns plain text only. To force a specific tool:
+
+```python theme={"system"}
+"tool_choice": {"type": "function", "function": {"name": "subtract"}}
+```
+
+***
+
+## 5. Parse and execute tool calls
+
+Depending on the engine and model, tool calls are typically returned in an assistant message under `tool_calls`:
+
+```python theme={"system"}
+import json
+
+data = resp.json()
+message = data["choices"][0]["message"]
+
+tool_calls = message.get("tool_calls") or []
+
+for tool_call in tool_calls:
+    name = tool_call["function"]["name"]
+    args = json.loads(tool_call["function"]["arguments"])
+
+    # Validate args in production.
+    result = calculator_functions[name](**args)
+    print(result)
+```
+
+### Full loop: send tool output back for a final answer
+
+If you want the model to turn raw tool output into a user-facing response, append the assistant message and a tool response with the matching `tool_call_id`:
+
+```python theme={"system"}
+# Continue the conversation
+messages = payload["messages"]
+messages.append(message)  # assistant tool call message
+
+# Example: respond to the first tool call
+tool_call = tool_calls[0]
+name = tool_call["function"]["name"]
+args = json.loads(tool_call["function"]["arguments"])
+result = calculator_functions[name](**args)
+
+messages.append({
+    "role": "tool",
+    "tool_call_id": tool_call["id"],
+    "content": json.dumps({"result": result}),
+})
+
+final_payload = {
+    **payload,
+    "messages": messages,
+}
+
+final_resp = requests.post(
+    f"https://model-{MODEL_ID}.api.baseten.co/production/predict",
+    headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"},
+    json=final_payload,
+)
+
+print(final_resp.json()["choices"][0]["message"].get("content"))
+```
+
+***
+
+## Practical tips
+
+Use low temperature (0.0–0.3) for reliable tool selection and argument values. Add `enum` and `required` constraints in your JSON schema to guide model outputs. Consider parallel tool calls only if your model supports them. Always validate and sanitize inputs before calling real systems.
+
+***
+
+## Further reading
+
+* [Chains](/development/chain/overview): Orchestrate multi-step workflows.
+* [Custom engine builder](/engines/engine-builder-llm/custom-engine-builder): Advanced configuration options.
+
+
+# Performance client
+Source: https://docs.baseten.co/engines/performance-concepts/performance-client
+
+High-performance client library for embeddings, reranking, classification, and generic batch requests
+
+<Card title="View on GitHub" icon="github" href="https://github.com/basetenlabs/truss/tree/main/baseten-performance-client" />
+
+Built in Rust and integrated with Python, Node.js, and native Rust, the *Performance Client* handles concurrent POST requests efficiently. It releases the Python GIL while executing requests, enabling simultaneous sync and async usage.
+
+[Benchmarks](https://www.baseten.co/blog/your-client-code-matters-10x-higher-embedding-throughput-with-python-and-rust/) show the Performance Client reaches 1200+ requests per second per client.
+
+Use it with **Baseten deployments** or **third-party providers** like OpenAI.
+
+<img alt="benchmarks" />
+
+***
+
+## Install the client
+
+<Tabs>
+  <Tab title="Python">
+    To install the Performance Client for Python, use pip:
+
+    ```bash theme={"system"}
+    pip install baseten_performance_client>=0.1.0
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To install the Performance Client for JavaScript, use npm:
+
+    ```bash theme={"system"}
+    npm install baseten-performance-client
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Get started
+
+<Tabs>
+  <Tab title="Python">
+    To initialize the Performance Client in Python, import the class and provide your base URL and API key:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient
+
+    client = PerformanceClient(
+        base_url="https://model-YOUR_MODEL_ID.api.baseten.co/environments/production/sync",
+        api_key="YOUR_API_KEY"
+    )
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To initialize the Performance Client with JavaScript, require the package and create a new instance:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient } = require("baseten-performance-client");
+
+    const client = new PerformanceClient(
+      "https://model-YOUR_MODEL_ID.api.baseten.co/environments/production/sync",
+      process.env.BASETEN_API_KEY
+    );
+    ```
+  </Tab>
+</Tabs>
+
+The client also works with third-party providers like OpenAI by replacing the `base_url`.
+
+### Advanced setup
+
+Configure HTTP version selection and *connection pooling* for optimal performance.
+
+<Tabs>
+  <Tab title="Python">
+    To configure HTTP version and connection pooling in Python, use the `http_version` parameter and `HttpClientWrapper`:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, HttpClientWrapper
+
+    # HTTP/1.1 (default, better for high concurrency)
+    client_http1 = PerformanceClient(BASE_URL, API_KEY, http_version=1)
+
+    # HTTP/2 (not recommended on Baseten)
+    client_http2 = PerformanceClient(BASE_URL, API_KEY, http_version=2)
+
+    # Connection pooling for multiple clients
+    wrapper = HttpClientWrapper(http_version=1)
+    client1 = PerformanceClient(base_url="https://api1.example.com", client_wrapper=wrapper)
+    client2 = PerformanceClient(base_url="https://api2.example.com", client_wrapper=wrapper)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To configure HTTP version and connection pooling with JavaScript, pass the version as the third argument and use `HttpClientWrapper`:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, HttpClientWrapper } = require('baseten-performance-client');
+
+    // HTTP/1.1 (default, better for high concurrency)
+    const clientHttp1 = new PerformanceClient(BASE_URL, API_KEY, 1);
+
+    // HTTP/2
+    const clientHttp2 = new PerformanceClient(BASE_URL, API_KEY, 2);
+
+    // Connection pooling for multiple clients
+    const wrapper = new HttpClientWrapper(1);
+    const pooledClient1 = new PerformanceClient(BASE_URL_1, API_KEY, 1, wrapper);
+    const pooledClient2 = new PerformanceClient(BASE_URL_2, API_KEY, 1, wrapper);
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Core features
+
+### Embeddings
+
+The client provides efficient embedding requests with configurable *batching*, concurrency, and latency optimizations. Compatible with [BEI](/engines/bei/overview).
+
+<Tabs>
+  <Tab title="Python">
+    To generate embeddings with Python, configure a `RequestProcessingPreference` and call `client.embed()`:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, RequestProcessingPreference
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+    texts = ["Hello world", "Example text", "Another sample"] * 10
+
+    preference = RequestProcessingPreference(
+        batch_size=16,
+        max_concurrent_requests=256,
+        max_chars_per_request=10000,
+        hedge_delay=0.5,
+        timeout_s=360,
+        total_timeout_s=600,
+        extra_headers={"x-custom-header": "value"}
+    )
+
+    response = client.embed(
+        input=texts,
+        model="my_model",
+        preference=preference
+    )
+
+    print(f"Model used: {response.model}")
+    print(f"Total tokens used: {response.usage.total_tokens}")
+    print(f"Total time: {response.total_time:.4f}s")
+
+    # Convert to numpy array (requires numpy)
+    numpy_array = response.numpy()
+    print(f"Embeddings shape: {numpy_array.shape}")
+    ```
+
+    For async usage, call `await client.async_embed(input=texts, model="my_model", preference=preference)`.
+  </Tab>
+
+  <Tab title="JavaScript">
+    To generate embeddings with JavaScript, configure a `RequestProcessingPreference` and call `client.embed()`:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+    const texts = ["Hello world", "Example text", "Another sample"];
+
+    const preference = new RequestProcessingPreference(
+        32,        // maxConcurrentRequests
+        4,         // batchSize
+        10000,     // maxCharsPerRequest
+        360.0,     // timeoutS
+        0.5        // hedgeDelay
+    );
+
+    const response = await client.embed(
+        texts,                      // input
+        "my_model",                 // model
+        null,                       // encodingFormat
+        null,                       // dimensions
+        null,                       // user
+        preference                  // preference parameter
+    );
+
+    console.log(`Model used: ${response.model}`);
+    console.log(`Total tokens used: ${response.usage.total_tokens}`);
+    console.log(`Total time: ${response.total_time.toFixed(4)}s`);
+    ```
+  </Tab>
+</Tabs>
+
+### Generic batch POST
+
+Send HTTP requests to any URL with any JSON payload. Compatible with [Engine-Builder-LLM](/engines/engine-builder-llm/overview) and other models. Set `stream=False` for SSE endpoints.
+
+<Tabs>
+  <Tab title="Python">
+    To send batch POST requests with Python, define your payloads and call `client.batch_post()`:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, RequestProcessingPreference
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+
+    payloads = [
+        {"model": "my_model", "prompt": "Batch request 1", "stream": False},
+        {"model": "my_model", "prompt": "Batch request 2", "stream": False}
+    ] * 10
+
+    preference = RequestProcessingPreference(
+        max_concurrent_requests=96,
+        timeout_s=720,
+        hedge_delay=0.5,
+        extra_headers={"x-custom-header": "value"}
+    )
+
+    response = client.batch_post(
+        url_path="/v1/completions",
+        payloads=payloads,
+        preference=preference,
+        method="POST"
+    )
+
+    print(f"Total time: {response.total_time:.4f}s")
+    ```
+
+    Supported methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, `OPTIONS`.
+
+    For async usage, call `await client.async_batch_post(url_path, payloads, preference, method)`.
+  </Tab>
+
+  <Tab title="JavaScript">
+    To send batch POST requests with JavaScript, define your payloads and call `client.batchPost()`:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+
+    const payloads = [
+      { model: "my_model", prompt: "Batch request 1", stream: false },
+      { model: "my_model", prompt: "Batch request 2", stream: false }
+    ];
+
+    const preference = new RequestProcessingPreference(
+        32,        // maxConcurrentRequests
+        undefined, // batchSize
+        undefined, // maxCharsPerRequest
+        360.0,     // timeoutS
+        0.5        // hedgeDelay
+    );
+
+    const response = await client.batchPost(
+      "/v1/completions",
+      payloads,
+      preference,
+      "POST"
+    );
+
+    console.log(`Total time: ${response.total_time.toFixed(4)}s`);
+    ```
+  </Tab>
+</Tabs>
+
+### Reranking
+
+Rerank documents by relevance to a query. Compatible with [BEI](/engines/bei/overview), [BEI-Bert](/engines/bei/overview), and text-embeddings-inference reranking endpoints.
+
+<Tabs>
+  <Tab title="Python">
+    To rerank documents with Python, provide a query and list of documents to `client.rerank()`:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, RequestProcessingPreference
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+
+    query = "What is the best framework?"
+    documents = ["Doc 1 text", "Doc 2 text", "Doc 3 text"]
+
+    preference = RequestProcessingPreference(
+        batch_size=16,
+        max_concurrent_requests=32,
+        timeout_s=360,
+        max_chars_per_request=256000,
+        hedge_delay=0.5,
+        extra_headers={"x-rerank-header": "value"}
+    )
+
+    response = client.rerank(
+        query=query,
+        texts=documents,
+        model="rerank-model",
+        return_text=True,
+        preference=preference
+    )
+
+    for res in response.data:
+        print(f"Index: {res.index} Score: {res.score}")
+    ```
+
+    For async usage, call `await client.async_rerank(query, texts, model, return_text, preference)`.
+  </Tab>
+
+  <Tab title="JavaScript">
+    To rerank documents with JavaScript, provide a query and list of documents to `client.rerank()`:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+
+    const query = "What is the best framework?";
+    const documents = ["Doc 1 text", "Doc 2 text", "Doc 3 text"];
+
+    const preference = new RequestProcessingPreference(
+        32,        // maxConcurrentRequests
+        16,        // batchSize
+        undefined, // maxCharsPerRequest
+        360.0,     // timeoutS
+        0.5        // hedgeDelay
+    );
+
+    const response = await client.rerank(query, documents, "rerank-model", true, preference);
+
+    response.data.forEach(res => console.log(`Index: ${res.index} Score: ${res.score}`));
+    ```
+  </Tab>
+</Tabs>
+
+### Classification
+
+Classify text inputs into categories. Compatible with [BEI](/engines/bei/overview) and text-embeddings-inference classification endpoints.
+
+<Tabs>
+  <Tab title="Python">
+    To classify text with Python, provide a list of inputs to `client.classify()`:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, RequestProcessingPreference
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+
+    texts_to_classify = [
+        "This is great!",
+        "I did not like it.",
+        "Neutral experience."
+    ]
+
+    preference = RequestProcessingPreference(
+        batch_size=16,
+        max_concurrent_requests=32,
+        timeout_s=360.0,
+        max_chars_per_request=256000,
+        hedge_delay=0.5,
+        extra_headers={"x-classify-header": "value"}
+    )
+
+    response = client.classify(
+        inputs=texts_to_classify,
+        model="classification-model",
+        preference=preference
+    )
+
+    for group in response.data:
+        for result in group:
+            print(f"Label: {result.label}, Score: {result.score}")
+    ```
+
+    For async usage, call `await client.async_classify(inputs, model, preference)`.
+  </Tab>
+
+  <Tab title="JavaScript">
+    To classify text with JavaScript, provide a list of inputs to `client.classify()`:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+
+    const texts = ["This is great!", "I did not like it.", "Neutral experience."];
+
+    const preference = new RequestProcessingPreference(32, 16, undefined, 360.0, 0.5);
+    const response = await client.classify(texts, "classification-model", preference);
+
+    response.data.forEach(group => {
+        group.forEach(result => console.log(`Label: ${result.label}, Score: ${result.score}`));
+    });
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Advanced features
+
+### Configure RequestProcessingPreference
+
+The `RequestProcessingPreference` class provides unified configuration for all request processing parameters.
+
+<Tabs>
+  <Tab title="Python">
+    To configure request processing in Python, create a `RequestProcessingPreference` instance:
+
+    ```python theme={"system"}
+    from baseten_performance_client import RequestProcessingPreference
+
+    preference = RequestProcessingPreference(
+        max_concurrent_requests=64,
+        batch_size=32,
+        timeout_s=30.0,
+        hedge_delay=0.5,
+        hedge_budget_pct=0.15,
+        retry_budget_pct=0.08,
+        total_timeout_s=300.0
+    )
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To configure request processing with JavaScript, create a `RequestProcessingPreference` instance:
+
+    ```javascript theme={"system"}
+    const { RequestProcessingPreference } = require('baseten-performance-client');
+
+    const preference = new RequestProcessingPreference(
+        64,        // maxConcurrentRequests
+        32,        // batchSize
+        undefined, // maxCharsPerRequest
+        30.0,      // timeoutS
+        0.5,       // hedgeDelay
+        undefined, // totalTimeoutS
+        0.15,      // hedgeBudgetPct
+        0.08       // retryBudgetPct
+    );
+    ```
+  </Tab>
+</Tabs>
+
+#### Parameter reference
+
+| Parameter                 | Type  | Default | Range       | Description                                 |
+| ------------------------- | ----- | ------- | ----------- | ------------------------------------------- |
+| `max_concurrent_requests` | int   | 128     | 1-1024      | Maximum parallel requests                   |
+| `batch_size`              | int   | 128     | 1-1024      | Items per batch                             |
+| `timeout_s`               | float | 3600.0  | 1.0-7200.0  | Per-request timeout in seconds              |
+| `hedge_delay`             | float | None    | 0.2-30.0    | *Hedge delay* in seconds (see below)        |
+| `hedge_budget_pct`        | float | 0.10    | 0.0-3.0     | Percentage of requests allowed for hedging  |
+| `retry_budget_pct`        | float | 0.05    | 0.0-3.0     | Percentage of requests allowed for retries  |
+| `total_timeout_s`         | float | None    | ≥timeout\_s | Total operation timeout                     |
+| `extra_headers`           | dict  | None    | -           | Custom headers to include with all requests |
+
+*Hedge delay* sends duplicate requests after a specified delay to reduce p99 latency. After the delay, the request is cloned and raced against the original. The 429 and 5xx errors are always retried automatically.
+
+### Select HTTP version
+
+Choose between HTTP/1.1 and HTTP/2 for optimal performance. HTTP/1.1 is recommended for high concurrency workloads.
+
+<Tabs>
+  <Tab title="Python">
+    To select the HTTP version in Python, use the `http_version` parameter:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient
+
+    # HTTP/1.1 (default, better for high concurrency)
+    client_http1 = PerformanceClient(BASE_URL, API_KEY, http_version=1)
+
+    # HTTP/2 (better for single requests)
+    client_http2 = PerformanceClient(BASE_URL, API_KEY, http_version=2)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To select the HTTP version with JavaScript, pass the version as the third argument:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient } = require('baseten-performance-client');
+
+    // HTTP/1.1 (default, better for high concurrency)
+    const clientHttp1 = new PerformanceClient(BASE_URL, API_KEY, 1);
+
+    // HTTP/2 (better for single requests)
+    const clientHttp2 = new PerformanceClient(BASE_URL, API_KEY, 2);
+    ```
+  </Tab>
+</Tabs>
+
+### Share connection pools
+
+Share connection pools across multiple client instances to reduce overhead when connecting to multiple endpoints.
+
+<Tabs>
+  <Tab title="Python">
+    To share a connection pool in Python, create an `HttpClientWrapper` and pass it to each client:
+
+    ```python theme={"system"}
+    from baseten_performance_client import PerformanceClient, HttpClientWrapper
+
+    wrapper = HttpClientWrapper(http_version=1)
+
+    client1 = PerformanceClient(base_url="https://api1.example.com", client_wrapper=wrapper)
+    client2 = PerformanceClient(base_url="https://api2.example.com", client_wrapper=wrapper)
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To share a connection pool with JavaScript, create an `HttpClientWrapper` and pass it to each client:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, HttpClientWrapper } = require('baseten-performance-client');
+
+    const wrapper = new HttpClientWrapper(1);
+
+    const client1 = new PerformanceClient(BASE_URL_1, API_KEY, 1, wrapper);
+    const client2 = new PerformanceClient(BASE_URL_2, API_KEY, 1, wrapper);
+    ```
+  </Tab>
+</Tabs>
+
+### Cancel operations
+
+Cancel long-running operations using `CancellationToken`. The token provides immediate cancellation, resource cleanup, Ctrl+C support, token sharing across operations, and status checking with `is_cancelled()`.
+
+<Tabs>
+  <Tab title="Python">
+    To cancel operations in Python, create a `CancellationToken` and pass it to your preference:
+
+    ```python theme={"system"}
+    from baseten_performance_client import (
+        PerformanceClient,
+        CancellationToken,
+        RequestProcessingPreference
+    )
+    import threading
+    import time
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+
+    cancel_token = CancellationToken()
+    preference = RequestProcessingPreference(
+        max_concurrent_requests=32,
+        batch_size=16,
+        timeout_s=360.0,
+        cancel_token=cancel_token
+    )
+
+    def long_operation():
+        try:
+            response = client.embed(
+                input=["large batch"] * 1000,
+                model="embedding-model",
+                preference=preference
+            )
+            print("Operation completed")
+        except ValueError as e:
+            if "cancelled" in str(e):
+                print("Operation was cancelled")
+
+    threading.Thread(target=long_operation).start()
+    time.sleep(2)
+    cancel_token.cancel()
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To cancel operations with JavaScript, create a `CancellationToken` and pass it to your preference:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, CancellationToken, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+
+    const cancelToken = new CancellationToken();
+    const preference = new RequestProcessingPreference(
+        32, 16, undefined, 360.0, undefined, undefined,
+        undefined, undefined, undefined, undefined, cancelToken
+    );
+
+    const operation = client.embed(
+        ["large batch"].concat(Array(1000).fill("sample")),
+        "model",
+        undefined,
+        undefined,
+        undefined,
+        preference
+    );
+
+    setTimeout(() => cancelToken.cancel(), 2000);
+
+    try {
+        const response = await operation;
+        console.log("Operation completed");
+    } catch (error) {
+        if (error.message.includes("cancelled")) {
+            console.log("Operation was cancelled");
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Handle errors
+
+The client raises standard exceptions for error conditions:
+
+* **`HTTPError`**: Authentication failures (403), server errors (5xx), endpoint not found (404).
+* **`Timeout`**: Request or total operation timeout based on `timeout_s` or `total_timeout_s`.
+* **`ValueError`**: Invalid input parameters (empty input list, invalid batch size, inconsistent embedding dimensions).
+
+<Tabs>
+  <Tab title="Python">
+    To handle errors in Python, catch the appropriate exception types:
+
+    ```python theme={"system"}
+    import requests
+    from baseten_performance_client import PerformanceClient, RequestProcessingPreference
+
+    client = PerformanceClient(base_url=BASE_URL, api_key=API_KEY)
+    preference = RequestProcessingPreference(timeout_s=30.0)
+
+    try:
+        response = client.embed(input=["text"], model="model", preference=preference)
+        print(f"Model used: {response.model}")
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e}, status code: {e.response.status_code}")
+    except requests.exceptions.Timeout as e:
+        print(f"Timeout error: {e}")
+    except ValueError as e:
+        print(f"Input error: {e}")
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To handle errors with JavaScript, use a try-catch block and inspect the error object:
+
+    ```javascript theme={"system"}
+    const { PerformanceClient, RequestProcessingPreference } = require('baseten-performance-client');
+
+    const client = new PerformanceClient(BASE_URL, API_KEY);
+    const preference = new RequestProcessingPreference(32, 16, undefined, 30.0);
+
+    try {
+        const response = await client.embed(texts, "model", undefined, undefined, undefined, preference);
+        console.log("Success:", response.model);
+    } catch (error) {
+        if (error.response) {
+            console.log(`HTTP error: ${error.response.status}`);
+        } else if (error.code === 'TIMEOUT') {
+            console.log("Timeout error");
+        } else {
+            console.log(`Error: ${error.message}`);
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Configure the client
+
+### Environment variables
+
+* **`BASETEN_API_KEY`**: Your Baseten API key. Also checks `OPENAI_API_KEY` as fallback.
+* **`PERFORMANCE_CLIENT_LOG_LEVEL`**: Logging level. Overrides `RUST_LOG`. Valid values: `trace`, `debug`, `info`, `warn`, `error`. Default: `warn`.
+* **`PERFORMANCE_CLIENT_REQUEST_ID_PREFIX`**: Custom prefix for request IDs. Default: `perfclient`.
+
+### Configure logging
+
+To set the logging level, use the `PERFORMANCE_CLIENT_LOG_LEVEL` environment variable:
+
+```bash theme={"system"}
+PERFORMANCE_CLIENT_LOG_LEVEL=info python script.py
+PERFORMANCE_CLIENT_LOG_LEVEL=debug cargo run
+```
+
+The `PERFORMANCE_CLIENT_LOG_LEVEL` variable takes precedence over `RUST_LOG`.
+
+***
+
+## Use with Rust
+
+The Performance Client is also available as a native Rust library.
+
+To use the Performance Client in Rust, add the dependencies and create a `PerformanceClientCore` instance:
+
+```rust theme={"system"}
+use baseten_performance_client_core::{PerformanceClientCore, ClientError};
+use tokio;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let api_key = std::env::var("BASETEN_API_KEY").expect("BASETEN_API_KEY not set");
+    let base_url = "https://model-YOUR_MODEL_ID.api.baseten.co/environments/production/sync";
+
+    let client = PerformanceClientCore::new(base_url, Some(api_key), None, None);
+
+    // Generate embeddings
+    let texts = vec!["Hello world".to_string(), "Example text".to_string()];
+    let embedding_response = client.embed(
+        texts,
+        "my_model".to_string(),
+        Some(16),
+        Some(32),
+        Some(360.0),
+        Some(256000),
+        Some(0.5),
+        Some(360.0),
+    ).await?;
+
+    println!("Model: {}", embedding_response.model);
+    println!("Total tokens: {}", embedding_response.usage.total_tokens);
+
+    // Send batch POST requests
+    let payloads = vec![
+        serde_json::json!({"model": "my_model", "input": ["Rust sample 1"]}),
+        serde_json::json!({"model": "my_model", "input": ["Rust sample 2"]}),
+    ];
+
+    let batch_response = client.batch_post(
+        "/v1/embeddings".to_string(),
+        payloads,
+        Some(32),
+        Some(360.0),
+        Some(0.5),
+        Some(360.0),
+        None,
+    ).await?;
+
+    println!("Batch POST total time: {:.4}s", batch_response.total_time);
+
+    Ok(())
+}
+```
+
+Add these dependencies to your `Cargo.toml`:
+
+```toml theme={"system"}
+[dependencies]
+baseten_performance_client_core = "0.1.4"
+tokio = { version = "1.0", features = ["full"] }
+serde_json = "1.0"
+```
+
+***
+
+## Further reading
+
+* [GitHub: baseten-performance-client](https://github.com/basetenlabs/truss/tree/main/baseten-performance-client): Complete source code and additional examples.
+* [Performance benchmarks blog](https://www.baseten.co/blog/your-client-code-matters-10x-higher-embedding-throughput-with-python-and-rust/): Detailed performance analysis and comparisons.
+
+
+# Quantization guide
+Source: https://docs.baseten.co/engines/performance-concepts/quantization-guide
+
+FP8 and FP4 trade-offs and hardware requirements for all engines
+
+*Quantization* trades precision for speed and memory efficiency. This guide covers Baseten's supported formats, hardware requirements, and model-specific recommendations.
+
+## Quantization options
+
+Quantization type availability depends on the engine and GPU.
+
+### Engine support
+
+| **Quantization** | [**BIS-LLM**](/engines/bis-llm/overview) | [**Engine-Builder-LLM**](/engines/engine-builder-llm/overview) | [**BEI**](/engines/bei/overview) |
+| ---------------- | ---------------------------------------- | -------------------------------------------------------------- | -------------------------------- |
+| `FP8`            | ✅                                        | ✅                                                              | ✅                                |
+| `FP8_KV`         | ✅                                        | ✅                                                              | ⚠️                               |
+| `FP4`            | ✅                                        | ✅                                                              | ⚠️                               |
+| `FP4_KV`         | ✅                                        | ✅                                                              | ⚠️                               |
+| `FP4_MLP_ONLY`   | ✅                                        | ✅                                                              | ✅                                |
+
+### GPU support
+
+| **GPU type** | `FP8` | `FP8_KV` | `FP4` | `FP4_KV` | `FP4_MLP_ONLY` |
+| ------------ | ----- | -------- | ----- | -------- | -------------- |
+| **L4**       | ✅     | ✅        | ❌     | ❌        | ❌              |
+| **H100**     | ✅     | ✅        | ❌     | ❌        | ❌              |
+| **H200**     | ✅     | ✅        | ❌     | ❌        | ❌              |
+| **B200**     | ✅     | ✅        | ✅     | ✅        | ✅              |
+
+## Model recommendations
+
+Some model families have specific quantization requirements that affect accuracy.
+
+### Qwen2 models
+
+Qwen2 retains QKV projection bias (attention bias), while Qwen3, Llama3, Llama2, and most other models remove it. This makes Qwen2 sensitive to symmetric KV cache quantization, so `FP8_KV` causes quality degradation. Use regular `FP8` instead and increase calibration size to 1024 or greater for better accuracy.
+
+### Llama models
+
+Llama variants work well with `FP8_KV` and standard calibration sizes (1024-1536). For B200 deployments, use `FP4_MLP_ONLY` for the best balance of speed and quality.
+
+### BEI models (embeddings)
+
+Use `FP8` for embedding models for causal models. Skip quantization for smaller models since the overhead isn't worth the minimal benefit and Bert is not supported. BEI doesn't support `FP8_KV`.
+
+## Calibration
+
+Quantization requires calibration data to determine optimal scaling factors. Larger models generally need more calibration samples.
+
+### Calibration datasets
+
+The default dataset is `cnn_dailymail` (general news text). For specialized models, or fine-tunes specific to a chat template, use domain-specific datasets when available.
+For using a custom dataset, reference the huggingface name under `calib_dataset`, and make sure the dataset has a `train` split with a `text`/`messages` column.
+
+When using the `messages` column, we require the tokenizer of your model to have a `apply_chat_template()` function on which we can apply `apply_chat_template(row["messages"]) for row in rows`.
+If you want to use a dataset without preprocessing, you can provide a `text` column.
+
+For chat-based calibration with thinking , we open-sourced [`baseten/quant_calibration_dataset_v1`](https://huggingface.co/datasets/baseten/quant_calibration_dataset_v1), to showcase an example.
+
+### Calibration configuration
+
+```yaml theme={"system"}
+quantization_config:
+  calib_size: 768                    # Number of samples
+  calib_dataset: "cnn_dailymail"      # Dataset name
+  calib_max_seq_length: 1024          # Max sequence length
+```
+
+Increase `calib_size` for larger models. Use domain-specific datasets when available for better accuracy on specialized tasks.
+
+## Hardware requirements
+
+`FP4` quantization requires B200 GPUs. `FP8` runs on L4 and above.
+
+| **Quantization** | **Minimum GPU** | **Recommended GPU** | **Memory reduction** |
+| ---------------- | --------------- | ------------------- | -------------------- |
+| `FP16`/`BF16`    | A100            | H100                | None                 |
+| `FP8`            | L4              | H100                | \~50%                |
+| `FP8_KV`         | L4              | H100                | \~60%                |
+| `FP4`            | B200            | B200                | \~75%                |
+| `FP4_KV`         | B200            | B200                | \~80%                |
+
+### Configuration examples
+
+**Engine-Builder-LLM:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: decoder
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1024
+```
+
+**BIS-LLM:**
+
+```yaml theme={"system"}
+trt_llm:
+  inference_stack: v2
+  build:
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1024
+  runtime:
+    max_seq_len: 32768
+```
+
+**BEI:**
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    base_model: encoder
+    quantization_type: fp8
+    max_num_tokens: 16384
+```
+
+Set `quantization_type` in the build section and add `quantization_config` to customize calibration. BIS-LLM uses `inference_stack: v2` while Engine-Builder-LLM uses `base_model: decoder`.
+
+## Best practices
+
+### When to use quantization
+
+Use `FP8` for production deployments to achieve cost-effective scaling. For memory-constrained environments, `FP8_KV` or `FP4` variants provide additional memory reduction. Quantization becomes essential for models over 15B parameters where memory and cost savings are significant.
+
+### When to avoid quantization
+
+Skip quantization when maximum accuracy is critical. Use `FP16`/`BF16` instead. Small models under 8B parameters see minimal benefit from quantization. BEI-Bert models don't support quantization at all. During research and development, `FP16` provides faster iteration without calibration overhead.
+
+### Optimization tips
+
+Use calibration datasets that match your domain for best accuracy. Test quantized models with your specific data before production deployment. Monitor the accuracy vs. performance trade-off and consider your hardware constraints when selecting quantization type.
+
+## Further reading
+
+* [Engine-Builder-LLM configuration](/engines/engine-builder-llm/engine-builder-config): Dense model configuration.
+* [BIS-LLM configuration](/engines/bis-llm/bis-llm-config): MoE model configuration.
+* [BEI configuration](/engines/bei/bei-reference): Embedding model configuration.
+
+
+# Structured outputs
+Source: https://docs.baseten.co/engines/performance-concepts/structured-outputs
+
+JSON schema validation and controlled text generation across all engines
+
+Structured outputs let you generate text that conforms to specific JSON schemas, providing reliable data extraction and controlled text generation. This feature is supported by Baseten engines like [BIS-LLM](/engines/bis-llm/overview) and [Engine-Builder-LLM](/engines/engine-builder-llm/overview), as well as other inference frameworks like [vLLM](/examples/vllm) and [SGLang](/examples/sglang).
+
+## Quick start
+
+Structured outputs require two components: a Pydantic schema defining your expected output format, and an API call that enforces that schema.
+
+### Define a schema
+
+```python theme={"system"}
+from pydantic import BaseModel
+
+class Task(BaseModel):
+    title: str
+    priority: str  # "low", "medium", "high"
+    due_date: str
+    description: str
+```
+
+Each field requires a type annotation. The model's response will conform to these types exactly.
+
+### Generate structured output
+
+```python theme={"system"}
+import os
+from pydantic import BaseModel
+from openai import OpenAI
+
+class Task(BaseModel):
+    title: str
+    priority: str
+    due_date: str
+    description: str
+
+client = OpenAI(
+    api_key=os.environ['BASETEN_API_KEY'],
+    base_url="https://model-xxxxxx.api.baseten.co/environments/production/sync/v1"
+)
+
+response = client.beta.chat.completions.parse(
+    model="not-required",
+    messages=[
+        {"role": "user", "content": "Create a task for: Review the quarterly report by next Friday"}
+    ],
+    response_format=Task
+)
+
+task = response.choices[0].message.parsed
+print(f"Task: {task.title}")
+print(f"Priority: {task.priority}")
+```
+
+Point `base_url` to your model's production endpoint. Pass your Pydantic class to `response_format` and use `beta.chat.completions.parse` instead of the regular `create` method.
+
+The response includes a `parsed` attribute with your data already converted to a `Task` object, so no JSON parsing is needed.
+
+## Engine support
+
+Structured outputs are compatible with:
+
+* **Engine-Builder-LLM**, except when Lookahead speculative decoding is configured.
+* **BIS-LLM**: except for a few exceptions like overlap scheduler enabled.
+
+### Model support
+
+All Engine-Builder-LLM and BIS-LLM models support structured outputs out of the box with no additional configuration required.
+
+## Best practices
+
+### Schema design
+
+* **Keep schemas simple**: 2-3 levels max nesting for best results.
+* **Use basic types**: str, int, float, bool when possible.
+* **Set defaults**: Provide reasonable default values for optional fields.
+* **Descriptive names**: Use clear, descriptive field names.
+
+### Prompt engineering
+
+* **Low temperature**: Use 0.1-0.3 for consistent outputs.
+* **Provide schema**: Dump the model schema and few-shot examples into context.
+* **Provide context**: Give background for complex schemas.
+
+## Further reading
+
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview): Dense model documentation.
+* [BIS-LLM overview](/engines/bis-llm/overview): MoE model documentation.
+* [Quantization guide](/engines/performance-concepts/quantization-guide): `FP8`/`FP4` trade-offs.
 
 
 # Embeddings with BEI
@@ -7254,14 +12119,14 @@ trt_llm:
 
 With `config.yaml` in your local directory, you can deploy the model to Baseten.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push --publish --promote
 ```
 
 Deployed embedding models are OpenAI compatible without any additional settings.
 You may use the client code below to consume the model.
 
-```python  theme={"system"}
+```python theme={"system"}
 from openai import OpenAI
 import os
 
@@ -7283,7 +12148,7 @@ Besides embedding models, BEI deploys high-throughput rerank and classification 
 You can identify suitable architectures by their `ForSequenceClassification` suffix in the huggingface repo.
 The use-case for these models is either Reward Modeling, Reranking documents in RAG or tasks like content moderation.
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 model_name: BEI-mixedbread-rerank-large-v2-fp8
 resources:
   accelerator: H100_40GB
@@ -7304,7 +12169,7 @@ trt_llm:
 As OpenAI does not offer reranking or classification, we are sending a simple request to the endpoint.
 Depending on the model, you might want to apply a specific prompt template first.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import os
 
@@ -7338,7 +12203,7 @@ and reranking models retain the ranking order - despite a difference in the reta
 For more details, check out the [technical launch post](https://www.baseten.co/blog/how-we-built-high-throughput-embedding-inference-with-tensorrt-llm/).
 
 <Frame>
-  <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=46c3aee1c00acb0a4b1cb375322f8050" data-og-width="3436" width="3436" data-og-height="2628" height="2628" data-path="images/bei-throughput.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c7b18eaf46bf53ff032652ab3615b70b 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=fa2ad40709ff9d7ab1a6a5e6e3559c39 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f921e370210539ce5fb4fc56fbedb922 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=268a8a4b9c30d9e128bfb8e899d51076 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2132c94a044cb85cff61b71cf8d64b1a 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/bei-throughput.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3a6f7ef261968fee930140e89faf15bd 2500w" />
+  <img />
 </Frame>
 
 The team at Baseten has additional options for sharing cached model weights across replicas - for very fast horizontal scaling.
@@ -7375,7 +12240,7 @@ Source: https://docs.baseten.co/examples/chains-audio-transcription
 
 Process hours of audio in seconds using efficient chunking, distributed inference, and optimized GPU resources.
 
-<Card title="View example on GitHub" horizontal icon="github" iconType="light" href="https://github.com/basetenlabs/truss-examples/tree/main/chains-examples/docs/audio-transcription" />
+<Card title="View example on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/chains-examples/docs/audio-transcription" />
 
 This guide walks through building an audio transcription pipeline using Chains. You'll break down large media files, distribute transcription tasks across autoscaling deployments, and leverage high-performance GPUs for rapid inference.
 
@@ -7405,7 +12270,7 @@ Handles transcription requests and dispatches tasks to worker Chainlets.
 
 Function signature:
 
-```python  theme={"system"}
+```python theme={"system"}
 async def run_remote(
   self,
   media_url: str,
@@ -7423,13 +12288,13 @@ async def run_remote(
 
 **Example request:**
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl -X POST $INVOCATION_URL \
     -H "Authorization: Api-Key $BASETEN_API_KEY" \
     -d '<JSON_INPUT>'
 ```
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "media_url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
   "params": {
@@ -7473,7 +12338,7 @@ Even for very large files, **processing time remains bounded** by parallel execu
 
 Example speedup:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "input_duration_sec": 734.26,
   "processing_duration_sec": 82.42,
@@ -7481,11 +12346,11 @@ Example speedup:
 }
 ```
 
-# 5. Deploy & Run the Chain
+# 5. Deploy and run the Chain
 
 ## Deploy WhisperModel first:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss chains push whisper_chainlet.py
 ```
 
@@ -7493,13 +12358,13 @@ Copy the **invocation URL** and update `WHISPER_URL` in `transcribe.py`.
 
 ## Deploy the transcription Chain:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss chains push transcribe.py
 ```
 
 ## Run transcription on a sample file:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl -X POST $INVOCATION_URL \
     -H "Authorization: Api-Key $BASETEN_API_KEY" \
     -d '<JSON_INPUT>'
@@ -7525,16 +12390,16 @@ Build a RAG (retrieval-augmented generation) pipeline with  Chains
 
 To use Chains, install a recent Truss version and ensure pydantic is v2:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 pip install --upgrade truss 'pydantic>=2.0.0'
 ```
 
 <Accordion title="Help for setting up a clean development environment">
-  Truss requires python `>=3.8,<3.13`. To set up a fresh development environment,
+  Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
   you can use the following commands, creating a environment named `chains_env`
   using `pyenv`:
 
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   curl https://pyenv.run | bash
   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
   echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
@@ -7560,7 +12425,7 @@ If you want to run this example in
 [local debugging mode](/development/chain/localdev#test-a-chain-locally), you'll also need to
 install chromadb:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 pip install chromadb
 ```
 
@@ -7591,7 +12456,7 @@ Let's dive in!
 
 Create a file `rag.py` in a new directory with:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir rag
 touch rag/rag.py
 cd rag
@@ -7685,7 +12550,7 @@ to the deployed model.
 
 For our LLM, we'll use Phi-3 Mini Instruct, a small-but-mighty open source LLM.
 
-<Card title="Deploy Phi-3 Mini Instruct 4k" icon="rocket" iconType="duotone" href="https://www.baseten.co/library/phi-3-mini-4k-instruct/">
+<Card title="Deploy Phi-3 Mini Instruct 4k" icon="rocket" href="https://www.baseten.co/library/phi-3-mini-4k-instruct/">
   One-click model deployment from Baseten's model library.
 </Card>
 
@@ -7788,7 +12653,7 @@ if __name__ == "__main__":
 
 We can run our Chain locally:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 python rag.py
 ```
 
@@ -7800,7 +12665,7 @@ alumni selected from the database.
 Once we're satisfied with our Chain's local behavior, we can deploy it to
 production on Baseten. To deploy the Chain, run:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss chains push rag.py
 ```
 
@@ -7809,7 +12674,7 @@ deployed, we can call it from its API endpoint.
 
 You can do this in the console with cURL:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 curl -X POST 'https://chain-5wo86nn3.api.baseten.co/development/run_remote' \
     -H "Authorization: Api-Key $BASETEN_API_KEY" \
     -d '{"new_bio": "Sam just moved to Manhattan for his new job at a large bank.In college, he enjoyed building sets for student plays."}'
@@ -7842,7 +12707,7 @@ print(resp.json())
 When we're happy with the deployed Chain, we can promote it to production via
 the UI or by running:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss chains push --promote rag.py
 ```
 
@@ -7856,7 +12721,7 @@ Source: https://docs.baseten.co/examples/comfyui
 
 Deploy your ComfyUI workflow as an API endpoint
 
-<Card title="View example on GitHub" horizontal icon="github" iconType="light" href="https://github.com/basetenlabs/truss-examples/tree/main/comfyui-truss" />
+<Card title="View example on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/comfyui-truss" />
 
 In this example, we'll deploy an **anime style transfer** ComfyUI workflow using truss.
 This example won't require any Python code, but there are a few pre-requisites in order to get started.
@@ -7870,7 +12735,7 @@ Pre-Requisites:
 
 Clone the truss-examples repository and navigate to the `comfyui-truss` directory
 
-```bash  theme={"system"}
+```bash theme={"system"}
 git clone https://github.com/basetenlabs/truss-examples.git
 cd truss-examples/comfyui-truss
 ```
@@ -7883,7 +12748,7 @@ There are just two files we need to modify:
 
 ## Setting up the `config.yaml`
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 build_commands:
 - git clone https://github.com/comfyanonymous/ComfyUI.git
 - cd ComfyUI && git checkout b1fd26fe9e55163f780bf9e5f56bf9bf5f035c93 && pip install -r requirements.txt
@@ -7927,7 +12792,7 @@ The `comfy_ui_workflow.json` contains the entire ComfyUI workflow in an API comp
 Here is the workflow we will be using for this example.
 
 <Accordion title="Anime Style Transfer Workflow">
-  ```json  theme={"system"}
+  ```json theme={"system"}
   {
       "1": {
         "inputs": {
@@ -8304,7 +13169,7 @@ Once you have both your `config.yaml` and `data/comfy_ui_workflow.json` filled o
 
 When you deploy the truss, it will spin up a new deployment in your Baseten account. Each deployment will expose a REST API endpoint which we can use to call this workflow.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import os
 import base64
@@ -8348,7 +13213,7 @@ for item in results:
 
 If you recall, we templatized two variables in our workflow: `prompt` and `input_image`. In our API call we can specify the values for these two variables like so:
 
-```json  theme={"system"}
+```json theme={"system"}
 values = {
  "prompt": "Maltipoo",
  "input_image": {"type": "image", "data": pil_to_b64(Image.open("/path/to/dog.png"))}
@@ -8360,79 +13225,110 @@ If your workflow contains more variables, simply add them to the dictionary abov
 The API call returns an image in the form of a base64 string, which we convert to a PNG image.
 
 <Frame>
-  <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2c74f510d7b1c09d20a6ed1a189ee94f" data-og-width="2400" width="2400" data-og-height="981" height="981" data-path="images/pic-to-anime.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=64cc5319254a073201e30a7eaf8c1711 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=15d8f0484852d14155a190b5a21b7d32 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=155d16198263c8afe5bca85a97437455 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8b53df3d76801809aa7e6fe04feade1c 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1d6892ab6b39a445bdea9f4b9597ba41 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/pic-to-anime.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=130e8c15418e8c78f103c3a3ee453ffc 2500w" />
+  <img />
 </Frame>
 
 
 # Deploy your first model
 Source: https://docs.baseten.co/examples/deploy-your-first-model
 
-From model weights to API endpoint
+Learn how to package and deploy an AI model as a production-ready API endpoint on Baseten.
 
-This guide walks through packaging and deploying [Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct), a 3.8B parameter LLM, as a production-ready API endpoint.
+Deploying a model to Baseten turns your model code into a production-ready API endpoint. You package your model with [Truss](https://pypi.org/project/truss/), push it to Baseten, and receive a URL you can call from any application.
 
-We'll cover:
+This guide walks through deploying [Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct), a 3.8B parameter LLM, from local code to a production API. You'll create a Truss project, write model code, configure dependencies and GPU resources, deploy to Baseten, and call your model's API endpoint.
 
-1. **Loading model weights** from Hugging Face
-2. **Running inference** on a GPU
-3. **Configuring dependencies and infrastructure**
-4. **Iterating with live reload development**
-5. **Deploying to production with autoscaling**
+## Set up your environment
 
-By the end, you’ll have an AI model running on scalable infrastructure, callable via an API.
+Before you begin, [sign up](https://app.baseten.co/signup) or [sign in](https://app.baseten.co/login) to Baseten.
 
-## 1. Setup
+### Install Truss
 
-Before you begin:
+[Truss](https://pypi.org/project/truss/) is Baseten's model packaging framework. It handles containerization, dependencies, and deployment configuration.
 
-1. [Sign up](https://app.baseten.co/signup) or [sign in](https://app.baseten.co/login) to Baseten
-2. Generate an [API key](https://app.baseten.co/settings/account/api_keys) and store it securely
-3. Install [Truss](https://pypi.org/project/truss/), our model packaging framework
+<Note>
+  Using a virtual environment is recommended to avoid dependency conflicts with other Python projects.
+</Note>
 
-```sh  theme={"system"}
-pip install --upgrade truss
-```
+<Tabs>
+  <Tab title="uv (recommended)">
+    [uv](https://docs.astral.sh/uv/) is a fast Python package manager. These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh theme={"system"}
+    uv venv && source .venv/bin/activate
+    uv pip install truss
+    ```
+  </Tab>
+
+  <Tab title="pip (macOS/Linux)">
+    These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh theme={"system"}
+    python -m venv .venv && source .venv/bin/activate
+    pip install --upgrade truss
+    ```
+  </Tab>
+
+  <Tab title="pip (Windows)">
+    These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh theme={"system"}
+    python -m venv .venv && .venv\Scripts\activate
+    pip install --upgrade truss
+    ```
+  </Tab>
+</Tabs>
 
 <Tip>
-  New accounts include free credits—this guide should use less than \$1 in GPU
+  New accounts include free credits; this guide should use less than \$1 in GPU
   costs.
 </Tip>
 
 ***
 
-## 2. Create a Truss
+## Create a Truss
 
-A **Truss** packages your model into a **deployable container** with all dependencies and configurations.
+A **Truss** packages your model into a deployable container with all dependencies and configurations.
 
 Create a new Truss:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss init phi-3-mini && cd phi-3-mini
 ```
 
 When prompted, give your Truss a name like `Phi 3 Mini`.
 
-You should see the following file structure:
+This command scaffolds a project with the following structure:
 
-```arduino  theme={"system"}
+```
 phi-3-mini/
-  data/
   model/
     __init__.py
     model.py
-  packages/
   config.yaml
+  data/
+  packages/
 ```
 
-You'll primarily edit `model/model.py` and `config.yaml`.
+The key files are:
+
+* `model/model.py`: Your model code with `load()` and `predict()` methods.
+* `config.yaml`: Dependencies, resources, and deployment settings.
+* `data/`: Optional directory for data files bundled with your model.
+* `packages/`: Optional directory for local Python packages.
+
+Truss uses this structure to build and deploy your model automatically. You
+define your model in `model.py` and your infrastructure in `config.yaml`, no
+Dockerfiles or container management required.
 
 ***
 
-## 3. Load model weights
+## Implement model code
 
-[Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) is available on Hugging Face. We’ll **load its weights using** transformers.
-
-Edit `model/model.py`:
+In this example, you'll implement the model code for
+[Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct).
+You'll use the `transformers` library to load the model and tokenizer and PyTorch to run inference.
+Replace the contents of `model/model.py` with the following code:
 
 ```python model/model.py theme={"system"}
 import torch
@@ -8452,17 +13348,7 @@ class Model:
         self._tokenizer = AutoTokenizer.from_pretrained(
             "microsoft/Phi-3-mini-4k-instruct"
         )
-```
 
-***
-
-## 4. Implement Model Inference
-
-Define how the model processes incoming requests by implementing the `predict()` function:
-
-```python model/model.py theme={"system"}
-class Model:
-    ...
     def predict(self, request):
         messages = request.pop("messages")
         model_inputs = self._tokenizer.apply_chat_template(
@@ -8474,21 +13360,56 @@ class Model:
         return {"output": self._tokenizer.decode(outputs[0], skip_special_tokens=True)}
 ```
 
-This function:
+Truss models follow a three-method pattern that separates initialization from inference:
 
-* ✅ Accepts a list of messages
-* ✅ Uses Hugging Face’s tokenizer
-* ✅ Generates a response with max 256 tokens
+| Method     | When it's called                     | What to do here                                           |
+| ---------- | ------------------------------------ | --------------------------------------------------------- |
+| `__init__` | Once when the class is created       | Initialize variables, store configuration, set secrets    |
+| `load`     | Once at startup, before any requests | Load model weights, tokenizers, and other heavy resources |
+| `predict`  | On every API request                 | Process input, run inference, return response             |
+
+**Why separate `load` from `__init__`?**
+
+The `load` method runs during the container's cold start, before your model
+receives traffic. This keeps expensive operations (like downloading
+large model weights) out of the request path.
+
+### Understand the request/response flow
+
+The `predict` method receives `request`, a dictionary containing the JSON body
+from the API call:
+
+```python theme={"system"}
+# API call with: {"messages": [{"role": "user", "content": "Hello"}]}
+def predict(self, request):
+    messages = request.pop("messages")  # Extract from request
+    # ... run inference ...
+    return {"output": result}  # Return dict becomes JSON response
+```
+
+Whatever dictionary you return becomes the API response. You control the input
+parameters and output format.
+
+### GPU and memory patterns
+
+A few patterns in this code are common across GPU models:
+
+* **`device_map="cuda"`**: Loads model weights directly to GPU.
+* **`.to("cuda")`**: Moves input tensors to GPU for inference.
+* **`torch.no_grad()`**: Disables gradient tracking to save memory (gradients aren't needed for inference).
 
 ***
 
-## 5. Configure Dependencies & GPU
+## Configure dependencies and GPU
 
-In `config.yaml`, define the **Python environment** and **compute resources**:
+The `config.yaml` file defines your model's environment and compute resources.
+This configuration determines how your container is built and what hardware it
+runs on.
 
-### Set Dependencies
+### Set Python version and dependencies
 
 ```yaml config.yaml theme={"system"}
+python_version: py311
 requirements:
   - six==1.17.0
   - accelerate==0.30.1
@@ -8497,9 +13418,25 @@ requirements:
   - torch==2.3.0
 ```
 
+**Key configuration options:**
+
+| Field             | Purpose                                  | Example                           |
+| ----------------- | ---------------------------------------- | --------------------------------- |
+| `python_version`  | Python version for your container        | `py39`, `py310`, `py311`, `py312` |
+| `requirements`    | Python packages to install (pip format)  | `torch==2.3.0`                    |
+| `system_packages` | System-level dependencies (apt packages) | `ffmpeg`, `libsm6`                |
+
+For the complete list of configuration options, see the [Truss reference config](/reference/truss-configuration).
+
+<Note>
+  Always pin exact versions (e.g., `torch==2.3.0` not `torch>=2.0`). This
+  ensures reproducible builds and your model behaves the same way every time it's
+  deployed.
+</Note>
+
 ### Allocate a GPU
 
-Phi-3-mini needs \~7.6GB VRAM. A T4 GPU (16GB VRAM) is a good choice.
+The `resources` section specifies what hardware your model runs on:
 
 ```yaml config.yaml theme={"system"}
 resources:
@@ -8507,107 +13444,216 @@ resources:
   use_gpu: true
 ```
 
-***
+**Choosing the right GPU:** Match your GPU to your model's VRAM requirements. For Phi-3-mini (\~7.6GB), a T4 (16GB) provides headroom for inference.
 
-## 6. Deploy the Model
+| GPU  | VRAM    | Good for                                    |
+| ---- | ------- | ------------------------------------------- |
+| T4   | 16GB    | Small models, embeddings, fine-tuned models |
+| L4   | 24GB    | Medium models (7B parameters)               |
+| A10G | 24GB    | Medium models, image generation             |
+| A100 | 40/80GB | Large models (13B-70B parameters)           |
+| H100 | 80GB    | Very large models, high throughput          |
 
-### 1. Get Your API Key
-
-🔗 Generate an API Key
-
-You can generate the API key from the Baseten UI. Click on the User icon at the top-right, then click API keys. Save your API-key, because we will use it in the next step.
-
-### 2. Push Your Model to Baseten
-
-```sh  theme={"system"}
-truss push
-```
-
-Since this is a first-time deployment, `truss` will ask for your API-key and save it for future runs.
-
-Monitor the deployment from [your Baseten dashboard](https://app.baseten.co/models/).
+<Tip>
+  **Estimating VRAM:** A rough rule is 2GB of VRAM per billion parameters for float16 models. A 7B model needs \~14GB VRAM minimum.
+</Tip>
 
 ***
 
-## 7. Call the Model API
+## Deploy the model
 
-After the deployment is complete, we can call the model API. First, store the Baseten API key as an environment variable:
+### Authenticate with Baseten
 
-```sh  theme={"system"}
-export BASETEN_API_KEY=<your_api_key>
+First, generate an API key from the [Baseten settings](https://app.baseten.co/settings/account/api_keys). Then log in:
+
+```sh theme={"system"}
+truss login
 ```
 
-Below is the client code. Be sure to replace `model_id` from your deployment.
+The expected output is:
 
-```python  theme={"system"}
-import requests
-import os
-
-model_id = "your_model_id"
-baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-resp = requests.post(
-    f"https://model-{model_id}.api.baseten.co/development/predict",
-    headers={"Authorization": f"Api-Key {baseten_api_key}"},
-    json={"messages": ["What is AGI?"]}
-)
-
-print(resp.json())
+```output theme={"system"}
+💻 Let's add a Baseten remote!
+🤫 Quietly paste your API_KEY:
 ```
+
+Paste your API key when prompted. Truss saves your credentials for future deployments.
+
+### Push your model to Baseten
+
+For development with live reload:
+
+```sh theme={"system"}
+truss push --watch
+```
+
+The expected output is:
+
+```output theme={"system"}
+Deploying truss using T4x4x16 instance type.
+✨ Model Phi 3 Mini was successfully pushed ✨
+
+🪵  View logs for your deployment at https://app.baseten.co/models/abc1d2ef/logs/xyz123
+```
+
+<Note>
+  When no flag is specified, `truss push` defaults to a published deployment. Use `--watch` for development deployments with live reload support.
+</Note>
+
+In this example, the logs URL contains two IDs:
+
+* **Model ID**: The string after `/models/` (e.g., `abc1d2ef`) which you'll use this to call the model API.
+* **Deployment ID**: The string after `/logs/` (e.g., `xyz123`) identifies this specific deployment.
+
+You can also find your model ID in [your Baseten dashboard](https://app.baseten.co/models/) by clicking on your model.
 
 ***
 
-## 8. Live Reload for Development
+## Call the model API
 
-Avoid long deploy times when testing changes—use **live reload**:
+After the deployment is complete, you can call the model API:
 
-```sh  theme={"system"}
+<Tabs>
+  <Tab title="Truss CLI">
+    From your Truss project directory, run:
+
+    ```sh theme={"system"}
+    truss predict --data '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
+    ```
+
+    The expected output is:
+
+    ```output theme={"system"}
+    Calling predict on development deployment...
+    {
+      "output": "AGI stands for Artificial General Intelligence..."
+    }
+    ```
+
+    The Truss CLI uses your saved credentials and automatically targets the correct deployment.
+  </Tab>
+
+  <Tab title="cURL">
+    Set your API key and replace `YOUR_MODEL_ID` with your model ID (e.g., `abc1d2ef`):
+
+    ```sh theme={"system"}
+    export BASETEN_API_KEY=YOUR_API_KEY
+
+    curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/development/predict \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
+    ```
+
+    The expected output is:
+
+    ```output theme={"system"}
+    {'output': 'AGI stands for Artificial General Intelligence...'}
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    Set your API key as an environment variable, then replace `YOUR_MODEL_ID` with your model ID:
+
+    ```sh theme={"system"}
+    export BASETEN_API_KEY=YOUR_API_KEY
+    ```
+
+    ```python main.py theme={"system"}
+    import requests
+    import os
+
+    model_id = "YOUR_MODEL_ID"  # Replace with your model ID (e.g., "abc1d2ef")
+    baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+    resp = requests.post(
+        f"https://model-{model_id}.api.baseten.co/development/predict",
+        headers={"Authorization": f"Api-Key {baseten_api_key}"},
+        json={
+            "messages": [
+                {"role": "user", "content": "What is AGI?"}
+            ]
+        }
+    )
+
+    print(resp.json())
+    ```
+
+    The expected output is:
+
+    ```output theme={"system"}
+    {'output': 'AGI stands for Artificial General Intelligence...'}
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Use live reload for development
+
+To avoid long deploy times when testing changes, use **live reload**:
+
+```sh theme={"system"}
 truss watch
 ```
 
-* Saves time by **patching only the updated code**
-* Skips rebuilding Docker containers
-* Keeps the model server running while iterating
+The expected output is:
 
-Make changes to `model.py`, save, and test the API again.
-
-## 9. Promote to Production
-
-Once you're happy with the model, deploy it to production:
-
-```sh  theme={"system"}
-truss push --publish
+```output theme={"system"}
+🪵  View logs for your deployment at https://app.baseten.co/models/<model_id>/logs/<deployment_id>
+🚰 Attempting to sync truss with remote
+No changes observed, skipping patching.
+👀 Watching for changes to truss...
 ```
 
-This updates the **API endpoint** from:
+When you save changes to `model.py`, Truss automatically patches the deployed model:
 
-* ❌ **Development**: /development/predict
-* ✅ **Production**: /production/predict
-
-```python  theme={"system"}
-resp = requests.post(
-    f"https://model-{model_id}.api.baseten.co/production/predict",
-    headers={"Authorization": f"Api-Key {baseten_api_key}"},
-    json={
-        "messages": [
-            {"role": "user", "content": "What is AGI?"}
-        ],
-    }
-)
+```output theme={"system"}
+Changes detected, creating patch...
+Created patch to update model code file: model/model.py
+Model Phi 3 Mini patched successfully.
 ```
+
+This saves time by patching only the updated code without rebuilding Docker containers or restarting the model server.
 
 ***
 
-## Next Steps
+## Promote to production
 
-🚀 You’ve successfully packaged, deployed, and invoked an AI model with Truss!
+Once you're happy with the model, deploy it to production:
 
-Explore more:
+```sh theme={"system"}
+truss push --publish
+```
 
-* Learning more about [model serving with Truss](/development/model/overview).
-* [Example implementations](https://github.com/basetenlabs/truss-examples) for dozens of open source models.
-* [Inference examples](/inference/concepts) and [Baseten integrations](/inference/integrations).
-* Using [autoscaling settings](/deployment/autoscaling) to spin up and down multiple GPU replicas.
+This changes the API endpoint from `/development/predict` to `/production/predict`:
+
+```sh theme={"system"}
+curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/production/predict \
+  -H "Authorization: Api-Key $BASETEN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
+```
+
+<Tip>
+  To call your production endpoint, you need your model ID. The output of `truss push --publish` includes a logs URL:
+
+  ```output theme={"system"}
+  🪵  View logs for your deployment at https://app.baseten.co/models/abc1d2ef/logs/xyz123
+  ```
+
+  Your model ID is the string after `/models/` (e.g., `abc1d2ef`). You can also find it in your [Baseten dashboard](https://app.baseten.co/models/).
+</Tip>
+
+***
+
+## Next steps
+
+Now that you've deployed your first model, continue learning:
+
+* [Model serving with Truss](/development/model/overview): Configure dependencies, secrets, and resources.
+* [Example implementations](https://github.com/basetenlabs/truss-examples): Deploy dozens of open source models.
+* [Autoscaling settings](/deployment/autoscaling): Scale GPU replicas based on demand.
 
 
 # Dockerized model
@@ -8615,7 +13661,7 @@ Source: https://docs.baseten.co/examples/docker
 
 Deploy any model in a pre-built Docker container
 
-<Card title="View on GitHub" horizontal icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/custom-server/infinity-embedding-server" />
+<Card title="View on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/custom-server/infinity-embedding-server" />
 
 In this example, we deploy a dockerized model for [infinity embedding server](https://github.com/michaelfeil/infinity), a high-throughput, low-latency REST API server for serving vector embeddings.
 
@@ -8700,7 +13746,7 @@ environment_variables:
 
 Deploy the model like you would other Trusses, with:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push infinity-embedding-server --publish
 ```
 
@@ -8710,7 +13756,7 @@ Source: https://docs.baseten.co/examples/image-generation
 
 Building a text-to-image model with Flux Schnell
 
-<Card title="View example on GitHub" horizontal icon="github" iconType="light" href="https://github.com/basetenlabs/truss-examples/tree/main/04-image-generation" />
+<Card title="View example on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/04-image-generation" />
 
 In this example, we go through a Truss that serves a text-to-image model. We
 use Flux Schnell, which is one of the highest performing text-to-image models out
@@ -8888,7 +13934,7 @@ subsequently.
 
 To enable caching, add the following to the config:
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 model_cache:
   - repo_id: black-forest-labs/FLUX.1-schnell
     allow_patterns:
@@ -8902,7 +13948,7 @@ model_cache:
 
 Deploy the model like you would other Trusses, with:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push flux/schnell --publish
 ```
 
@@ -8951,10 +13997,6 @@ Source: https://docs.baseten.co/examples/models/deepseek/deepseek-r1
 
 A state-of-the-art 671B-parameter MoE LLM with o1-style reasoning licensed for commercial use
 
-export const DeepSeekIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.7896 6.25856C21.5779 6.15323 21.4862 6.35453 21.3629 6.45731C21.3204 6.49043 21.2846 6.53375 21.2487 6.57282C20.9388 6.91002 20.5771 7.13086 20.1046 7.10453C19.4138 7.06546 18.8238 7.28629 18.3021 7.82479C18.1913 7.16058 17.823 6.76478 17.263 6.50997C16.9697 6.37747 16.673 6.24582 16.4672 5.95788C16.3238 5.75318 16.2847 5.5247 16.213 5.30047C16.1672 5.16457 16.1213 5.02612 15.9688 5.00319C15.8022 4.97686 15.7372 5.1187 15.6722 5.23762C15.4114 5.72345 15.3105 6.25856 15.3205 6.80045C15.343 8.02014 15.848 8.99182 16.8522 9.68236C16.9663 9.76135 16.9955 9.84119 16.9597 9.9567C16.8913 10.1945 16.8097 10.4256 16.738 10.6642C16.6922 10.8163 16.6238 10.8485 16.4638 10.7831C15.9232 10.5463 15.4322 10.2061 15.0172 9.78088C14.303 9.07761 13.6581 8.30129 12.8531 7.69314C12.6666 7.55267 12.475 7.41923 12.2789 7.29309C11.4581 6.48024 12.3873 5.81264 12.6022 5.73365C12.8272 5.65041 12.6797 5.36672 11.9531 5.37012C11.2264 5.37351 10.5615 5.62068 9.71397 5.95108C9.58804 6.00027 9.45846 6.03918 9.32648 6.06745C8.53452 5.91535 7.72455 5.88615 6.92403 5.98081C5.35322 6.15918 4.09908 6.91682 3.1766 8.2087C2.06829 9.76135 1.80746 11.5263 2.12662 13.3661C2.46245 15.306 3.4341 16.9122 4.92657 18.1675C6.47487 19.4696 8.25733 20.1075 10.2915 19.9852C11.5264 19.913 12.9022 19.744 14.453 18.4054C14.8447 18.6041 15.2547 18.6831 15.9364 18.7426C16.4613 18.7927 16.9663 18.7171 17.3572 18.6338C17.9696 18.5013 17.9271 17.9229 17.7063 17.8176C15.9105 16.9648 16.3047 17.3122 15.9455 17.0311C16.8588 15.9303 18.2338 14.7871 18.7721 11.083C18.8138 10.7882 18.778 10.6031 18.7721 10.3652C18.7688 10.2209 18.8013 10.1639 18.9638 10.1478C19.4146 10.1001 19.852 9.96309 20.2513 9.74436C21.4146 9.09629 21.8846 8.03289 21.9954 6.75713C22.0121 6.56178 21.9921 6.36133 21.7896 6.25856ZM11.6506 17.7403C9.9098 16.3456 9.06565 15.8861 8.71733 15.9057C8.39066 15.9261 8.44983 16.3057 8.5215 16.5537C8.59649 16.7984 8.69399 16.9665 8.83066 17.1814C8.92565 17.3233 8.99065 17.5348 8.73649 17.6936C8.17567 18.0469 7.20152 17.5747 7.15569 17.5518C6.02154 16.8706 5.0724 15.9719 4.40491 14.7429C3.75992 13.5597 3.38493 12.2908 3.32327 10.936C3.3066 10.6082 3.40076 10.4927 3.72076 10.4332C4.14084 10.3513 4.57126 10.3401 4.9949 10.4001C6.77153 10.6651 8.28317 11.4745 9.55148 12.7562C10.2748 13.4867 10.8223 14.359 11.3864 15.2117C11.9864 16.1172 12.6314 16.9801 13.4531 17.6868C13.7431 17.9348 13.9739 18.1234 14.1956 18.2618C13.5272 18.3383 12.4123 18.3553 11.6506 17.7403ZM12.4839 12.2704C12.4838 12.2282 12.4937 12.1866 12.5129 12.1492C12.532 12.1118 12.5598 12.0797 12.5939 12.0557C12.6279 12.0317 12.6672 12.0165 12.7083 12.0114C12.7494 12.0064 12.7911 12.0116 12.8297 12.0266C12.879 12.0446 12.9216 12.0779 12.9515 12.1217C12.9813 12.1656 12.9971 12.2178 12.9964 12.2712C12.9965 12.3057 12.9899 12.3399 12.9769 12.3717C12.964 12.4036 12.9449 12.4325 12.9208 12.4568C12.8968 12.481 12.8683 12.5002 12.8369 12.5131C12.8055 12.526 12.7719 12.5324 12.7381 12.532C12.7045 12.5321 12.6712 12.5254 12.6402 12.5122C12.6092 12.4991 12.5811 12.4798 12.5575 12.4554C12.5339 12.4311 12.5153 12.4021 12.5028 12.3704C12.4903 12.3386 12.4834 12.3046 12.4839 12.2704ZM15.0755 13.626C14.9089 13.6948 14.743 13.7542 14.5839 13.7619C14.3444 13.7704 14.1095 13.6942 13.9189 13.5461C13.6906 13.3508 13.5272 13.2421 13.4589 12.9023C13.4353 12.7363 13.4398 12.5674 13.4722 12.4029C13.5306 12.1251 13.4656 11.9468 13.2731 11.7854C13.1172 11.6529 12.9181 11.6164 12.6997 11.6164C12.625 11.6119 12.5524 11.5892 12.4881 11.5501C12.3964 11.5043 12.3214 11.3887 12.3931 11.246C12.4164 11.2002 12.5264 11.0881 12.5531 11.0677C12.8497 10.8961 13.1922 10.9522 13.5081 11.0813C13.8014 11.2036 14.0231 11.4278 14.3422 11.7455C14.668 12.1285 14.7272 12.2347 14.913 12.5218C15.0597 12.7469 15.193 12.9779 15.2839 13.2421C15.3397 13.4077 15.268 13.5427 15.0755 13.626Z" fill="#4D6BFE" />
-</svg>} horizontal />;
-
 <DeepSeekIconCard title="Deploy Deepseek R1" href="https://www.baseten.co/talk-to-us/deepseek/" />
 
 # Example usage
@@ -8963,12 +14005,12 @@ DeepSeek-R1 is optimized using SGLang and uses an OpenAI-compatible API endpoint
 
 ## Input
 
-```python  theme={"system"}
+```python theme={"system"}
 import httpx
 import os
 
-MODEL_ID = "abcd1234"  # Replace with your model ID
-DEPLOYMENT_ID = "abcd1234"  # [Optional] Replace with your deployment ID
+MODEL_ID = "abcd1234"  # Replace this with your model ID
+DEPLOYMENT_ID = "abcd1234"  # [Optional] Replace this with your deployment ID
 API_KEY = os.environ["BASETEN_API_KEY"]
 
 resp = httpx.post(
@@ -8990,7 +14032,7 @@ print(resp.json())
 
 ## Output
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "id": "8456fe51db3548789f199cfb8c8efd35",
   "object": "text_completion",
@@ -9020,17 +14062,13 @@ Source: https://docs.baseten.co/examples/models/deepseek/deepseek-r1-qwen-7b
 
 Qwen 7B fine-tuned for CoT reasoning capabilities with DeepSeek R1
 
-export const DeepSeekIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.7896 6.25856C21.5779 6.15323 21.4862 6.35453 21.3629 6.45731C21.3204 6.49043 21.2846 6.53375 21.2487 6.57282C20.9388 6.91002 20.5771 7.13086 20.1046 7.10453C19.4138 7.06546 18.8238 7.28629 18.3021 7.82479C18.1913 7.16058 17.823 6.76478 17.263 6.50997C16.9697 6.37747 16.673 6.24582 16.4672 5.95788C16.3238 5.75318 16.2847 5.5247 16.213 5.30047C16.1672 5.16457 16.1213 5.02612 15.9688 5.00319C15.8022 4.97686 15.7372 5.1187 15.6722 5.23762C15.4114 5.72345 15.3105 6.25856 15.3205 6.80045C15.343 8.02014 15.848 8.99182 16.8522 9.68236C16.9663 9.76135 16.9955 9.84119 16.9597 9.9567C16.8913 10.1945 16.8097 10.4256 16.738 10.6642C16.6922 10.8163 16.6238 10.8485 16.4638 10.7831C15.9232 10.5463 15.4322 10.2061 15.0172 9.78088C14.303 9.07761 13.6581 8.30129 12.8531 7.69314C12.6666 7.55267 12.475 7.41923 12.2789 7.29309C11.4581 6.48024 12.3873 5.81264 12.6022 5.73365C12.8272 5.65041 12.6797 5.36672 11.9531 5.37012C11.2264 5.37351 10.5615 5.62068 9.71397 5.95108C9.58804 6.00027 9.45846 6.03918 9.32648 6.06745C8.53452 5.91535 7.72455 5.88615 6.92403 5.98081C5.35322 6.15918 4.09908 6.91682 3.1766 8.2087C2.06829 9.76135 1.80746 11.5263 2.12662 13.3661C2.46245 15.306 3.4341 16.9122 4.92657 18.1675C6.47487 19.4696 8.25733 20.1075 10.2915 19.9852C11.5264 19.913 12.9022 19.744 14.453 18.4054C14.8447 18.6041 15.2547 18.6831 15.9364 18.7426C16.4613 18.7927 16.9663 18.7171 17.3572 18.6338C17.9696 18.5013 17.9271 17.9229 17.7063 17.8176C15.9105 16.9648 16.3047 17.3122 15.9455 17.0311C16.8588 15.9303 18.2338 14.7871 18.7721 11.083C18.8138 10.7882 18.778 10.6031 18.7721 10.3652C18.7688 10.2209 18.8013 10.1639 18.9638 10.1478C19.4146 10.1001 19.852 9.96309 20.2513 9.74436C21.4146 9.09629 21.8846 8.03289 21.9954 6.75713C22.0121 6.56178 21.9921 6.36133 21.7896 6.25856ZM11.6506 17.7403C9.9098 16.3456 9.06565 15.8861 8.71733 15.9057C8.39066 15.9261 8.44983 16.3057 8.5215 16.5537C8.59649 16.7984 8.69399 16.9665 8.83066 17.1814C8.92565 17.3233 8.99065 17.5348 8.73649 17.6936C8.17567 18.0469 7.20152 17.5747 7.15569 17.5518C6.02154 16.8706 5.0724 15.9719 4.40491 14.7429C3.75992 13.5597 3.38493 12.2908 3.32327 10.936C3.3066 10.6082 3.40076 10.4927 3.72076 10.4332C4.14084 10.3513 4.57126 10.3401 4.9949 10.4001C6.77153 10.6651 8.28317 11.4745 9.55148 12.7562C10.2748 13.4867 10.8223 14.359 11.3864 15.2117C11.9864 16.1172 12.6314 16.9801 13.4531 17.6868C13.7431 17.9348 13.9739 18.1234 14.1956 18.2618C13.5272 18.3383 12.4123 18.3553 11.6506 17.7403ZM12.4839 12.2704C12.4838 12.2282 12.4937 12.1866 12.5129 12.1492C12.532 12.1118 12.5598 12.0797 12.5939 12.0557C12.6279 12.0317 12.6672 12.0165 12.7083 12.0114C12.7494 12.0064 12.7911 12.0116 12.8297 12.0266C12.879 12.0446 12.9216 12.0779 12.9515 12.1217C12.9813 12.1656 12.9971 12.2178 12.9964 12.2712C12.9965 12.3057 12.9899 12.3399 12.9769 12.3717C12.964 12.4036 12.9449 12.4325 12.9208 12.4568C12.8968 12.481 12.8683 12.5002 12.8369 12.5131C12.8055 12.526 12.7719 12.5324 12.7381 12.532C12.7045 12.5321 12.6712 12.5254 12.6402 12.5122C12.6092 12.4991 12.5811 12.4798 12.5575 12.4554C12.5339 12.4311 12.5153 12.4021 12.5028 12.3704C12.4903 12.3386 12.4834 12.3046 12.4839 12.2704ZM15.0755 13.626C14.9089 13.6948 14.743 13.7542 14.5839 13.7619C14.3444 13.7704 14.1095 13.6942 13.9189 13.5461C13.6906 13.3508 13.5272 13.2421 13.4589 12.9023C13.4353 12.7363 13.4398 12.5674 13.4722 12.4029C13.5306 12.1251 13.4656 11.9468 13.2731 11.7854C13.1172 11.6529 12.9181 11.6164 12.6997 11.6164C12.625 11.6119 12.5524 11.5892 12.4881 11.5501C12.3964 11.5043 12.3214 11.3887 12.3931 11.246C12.4164 11.2002 12.5264 11.0881 12.5531 11.0677C12.8497 10.8961 13.1922 10.9522 13.5081 11.0813C13.8014 11.2036 14.0231 11.4278 14.3422 11.7455C14.668 12.1285 14.7272 12.2347 14.913 12.5218C15.0597 12.7469 15.193 12.9779 15.2839 13.2421C15.3397 13.4077 15.268 13.5427 15.0755 13.626Z" fill="#4D6BFE" />
-</svg>} horizontal />;
-
 <DeepSeekIconCard title="Deploy DeepSeek-R1 Qwen 7B" href="https://app.baseten.co/deploy/deepseek-r1-qwen-7b" />
 
 # Example usage
 
 The fine-tuned version of Qwen is OpenAI compatible and can be called using the OpenAI client.
 
-```python  theme={"system"}
+```python theme={"system"}
 import os
 from openai import OpenAI
 
@@ -9057,7 +14095,7 @@ for chunk in stream:
 
 # JSON output
 
-```json  theme={"system"}
+```json theme={"system"}
 ["streaming", "output", "text"]
 ```
 
@@ -9066,11 +14104,6 @@ for chunk in stream:
 Source: https://docs.baseten.co/examples/models/flux/flux-schnell
 
 Flux-Schnell is a state-of-the-art image generation model
-
-export const BFLIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 20.683L12.01 2.5L24 20.683H21.767L12.009 5.878L3.471 18.806H15.593L16.832 20.683H0Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.069 16.724L10.142 13.609L12.216 16.724H8.069ZM18.24 20.683L12.572 11.976H14.749L20.435 20.683H18.24ZM19.74 11.676L21.87 8.48602L24 11.676H19.74Z" fill="black" />
-</svg>} horizontal />;
 
 <BFLIconCard title="Deploy Flux-Schnell" href="https://app.baseten.co/deploy/flux.1-schnell" />
 
@@ -9082,7 +14115,7 @@ The output JSON object contains a key called `data` which represents the generat
 
 ### Input
 
-```python  theme={"system"}
+```python theme={"system"}
 import httpx
 import os
 import base64
@@ -9113,7 +14146,7 @@ img.save("output_image.jpg")
 
 ### JSON output
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "output": "iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAIAAA..."
 }
@@ -9125,20 +14158,13 @@ Source: https://docs.baseten.co/examples/models/gemma/gemma-3-27b-it
 
 Instruct-tuned open model by Google with excellent ELO/size tradeoff and vision capabilities
 
-export const GoogleIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23 12.245C23 11.34 22.925 10.68 22.764 9.995H12.224V14.078H18.41C18.286 15.092 17.613 16.62 16.116 17.647L16.095 17.783L19.427 20.313L19.657 20.335C21.779 18.417 23 15.593 23 12.245Z" fill="#4285F4" />
-<path d="M12.225 23C15.255 23 17.799 22.022 19.658 20.335L16.116 17.647C15.168 18.295 13.896 18.747 12.225 18.747C10.8164 18.7471 9.44319 18.3063 8.29791 17.4863C7.15263 16.6664 6.29277 15.5084 5.83899 14.175L5.70699 14.186L2.24199 16.814L2.19699 16.938C4.04299 20.531 7.83499 23 12.225 23Z" fill="#34A853" />
-<path d="M5.84 14.175C5.59404 13.4761 5.46662 12.7409 5.463 12C5.463 11.242 5.601 10.509 5.824 9.825L5.818 9.678L2.31 7.008L2.195 7.062C1.41079 8.58997 1.00119 10.2825 1 12C1 13.772 1.436 15.447 2.197 16.938L5.84 14.175Z" fill="#FBBC05" />
-<path d="M12.225 5.253C14.333 5.253 15.754 6.145 16.565 6.891L19.732 3.86C17.787 2.088 15.255 1 12.225 1C7.83399 1 4.04299 3.469 2.19699 7.062L5.82699 9.825C6.28468 8.49166 7.14717 7.33445 8.29413 6.51484C9.44108 5.69522 10.8153 5.25409 12.225 5.253Z" fill="#EB4335" />
-</svg>} horizontal />;
-
 <GoogleIconCard title="Deploy Gemma 3 27B IT" href="https://app.baseten.co/deploy/gemma_3_27b_it" />
 
 # Example usage
 
 Gemma 3 is an OpenAI-compatible model and can be called using the OpenAI SDK in any language.
 
-```python  theme={"system"}
+```python theme={"system"}
 from openai import OpenAI
 import os
 
@@ -9172,7 +14198,7 @@ print(response_chat)
 
 **JSON Output**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "id": "143",
   "choices": [
@@ -9210,11 +14236,6 @@ Source: https://docs.baseten.co/examples/models/kokoro/kokoro
 
 Kokoro is a frontier TTS model for its size of 82 million parameters (text in/audio out).
 
-export const LibraryIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.33334 16.25C3.33334 15.6975 3.55283 15.1676 3.94353 14.7769C4.33423 14.3862 4.86413 14.1667 5.41667 14.1667H16.6667" stroke="#8999AC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M5.41667 1.66669H16.6667V18.3334H5.41667C4.86413 18.3334 4.33423 18.1139 3.94353 17.7232C3.55283 17.3325 3.33334 16.8026 3.33334 16.25V3.75002C3.33334 3.19749 3.55283 2.66758 3.94353 2.27688C4.33423 1.88618 4.86413 1.66669 5.41667 1.66669V1.66669Z" stroke="#8999AC" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-</svg>} horizontal />;
-
 <LibraryIconCard title="Deploy Kokoro" href="https://app.baseten.co/deploy/kokoro" />
 
 ## Example usage
@@ -9233,7 +14254,7 @@ response:
 {"base64": "base64 encoded bytestring"}
 ```
 
-```python  theme={"system"}
+```python theme={"system"}
 import httpx
 import base64
 
@@ -9266,7 +14287,7 @@ print("Audio saved to output.wav")
 
 **JSON Output**
 
-```json  theme={"system"}
+```json theme={"system"}
 null
 ```
 
@@ -9276,17 +14297,13 @@ Source: https://docs.baseten.co/examples/models/llama/llama-3.3-70B-instruct
 
 Llama 3.3 70B Instruct is a large language model that is optimized for instruction following.
 
-export const MetaIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.13523 13.5079C4.13523 10.377 5.77224 7.10995 7.69395 7.10995C8.76157 7.10995 9.61566 7.72251 10.968 9.56021C9.68683 11.466 8.90391 12.623 8.90391 12.623C7.19573 15.2094 6.62633 15.7539 5.70107 15.7539C4.7758 15.822 4.13523 15.0052 4.13523 13.5079ZM15.3096 12.3508L14.0996 10.445C13.8149 9.96859 13.4591 9.49215 13.1744 9.08377C14.242 7.51832 15.0961 6.70157 16.1637 6.70157C18.2989 6.70157 20.0071 9.7644 20.0071 13.5759C20.0071 15.0052 19.5089 15.822 18.5125 15.822C17.516 15.822 17.1601 15.2094 15.3096 12.3508ZM12.2491 7.72251C10.6833 5.74869 9.33096 5 7.76512 5C4.4911 5 2 9.15183 2 13.5079C2 16.2304 3.35231 17.9319 5.62989 17.9319C7.2669 17.9319 8.40569 17.1832 10.5409 13.644C10.5409 13.644 11.395 12.1466 12.0356 11.1257C12.2491 11.466 12.4626 11.8063 12.6762 12.2147L13.6726 13.8482C15.5943 16.9791 16.6619 18 18.5836 18C20.79 18 22 16.2304 22 13.4398C21.9288 8.81152 19.3665 5 16.3061 5C14.669 5 13.3879 6.22513 12.2491 7.72251Z" fill="#0081FB" />
-</svg>} horizontal />;
-
 <MetaIconCard title="Deploy Llama 3.3 70B Instruct" href="https://app.baseten.co/deploy/llama-3-3-70b-instruct" />
 
 # Example usage
 
 Llama is OpenAI compatible and can be called using the OpenAI client.
 
-```python  theme={"system"}
+```python theme={"system"}
 import os
 from openai import OpenAI
 
@@ -9314,7 +14331,7 @@ for chunk in stream:
 
 **JSON Output**
 
-```json  theme={"system"}
+```json theme={"system"}
 ["streaming", "output", "text"]
 ```
 
@@ -9323,19 +14340,6 @@ for chunk in stream:
 Source: https://docs.baseten.co/examples/models/mars/MARS6
 
 MARS6 is a frontier text-to-speech model by CAMB.AI with voice/prosody cloning capabilities in 10 languages. MARS6 must be licensed for commercial use, we can help!
-
-export const MarsIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_631_10869)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.63156 18.1049L8.57257 18.2142C8.49832 18.3766 8.47037 18.5619 8.50142 18.7515C8.58658 19.2656 9.07928 19.6143 9.60131 19.53C9.86988 19.487 10.0939 19.3379 10.2364 19.1336L10.3133 19.0025L10.8178 18.1398C10.8208 18.1325 10.8243 18.1256 10.8274 18.1183C10.8588 18.0512 10.8968 17.9881 10.9405 17.9296L11.846 16.3821L12.7455 17.9193C12.7926 17.9812 12.8332 18.0478 12.8669 18.1187C12.872 18.1299 12.8768 18.1411 12.8817 18.1523L13.3736 18.9931L13.4614 19.1431C13.6042 19.343 13.8256 19.4879 14.0899 19.5305C14.6123 19.6143 15.1046 19.2656 15.1902 18.752C15.2226 18.5568 15.1915 18.3654 15.1116 18.1991L15.0692 18.1205L13.7435 15.6581L13.5976 15.3873L13.5251 15.2528C13.3526 15.0061 13.1254 14.7988 12.8603 14.6488C12.562 14.4798 12.2155 14.3831 11.8469 14.3831C11.4773 14.3831 11.131 14.4803 10.8322 14.6496C10.5636 14.8018 10.3338 15.0125 10.1608 15.2643L9.95551 15.6457L8.63109 18.1062L8.63156 18.1049Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.72147 19.175L10.1396 9.01879C10.168 8.98181 10.1977 8.94614 10.2287 8.91132C10.6219 8.46725 11.201 8.18611 11.8471 8.18611C12.4935 8.18611 13.0732 8.46769 13.4668 8.91259C13.4969 8.94656 13.5258 8.98138 13.5533 9.01749L13.8638 9.39191L21.9453 19.1419L22.0374 19.2532C22.212 19.4337 22.4585 19.5468 22.7319 19.5468C23.2609 19.5468 23.6898 19.1247 23.6898 18.6041C23.6898 18.4142 23.633 18.2375 23.5347 18.0896L23.4523 17.9829L16.7682 9.31368L15.4 7.53915L15.2607 7.35903L13.8633 5.54626L13.5043 5.0807C13.4873 5.0605 13.4703 5.04073 13.4528 5.02095C13.0596 4.58463 12.4857 4.30951 11.8462 4.30951C11.2068 4.30951 10.6328 4.58463 10.2396 5.02095C10.2222 5.03986 10.2057 5.05963 10.189 5.07941L10.0846 5.21483L9.82908 5.54583L8.42857 7.36247L8.29277 7.53872L6.92165 9.31711L0.255963 17.9623L0.140661 18.1119C0.0515526 18.255 0 18.4235 0 18.6036C0 19.1243 0.428953 19.5464 0.957925 19.5464C1.24666 19.5464 1.50525 19.4209 1.68128 19.2223L1.72059 19.175H1.72147Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10.0556 10.4893L4.29329 17.9627L4.17751 18.1127C4.08841 18.2558 4.03729 18.4243 4.03729 18.6045C4.03729 19.1251 4.46626 19.5472 4.99523 19.5472C5.28396 19.5472 5.54298 19.4212 5.71859 19.2227L5.75658 19.177L10.2649 13.7379C10.6572 13.3158 11.2219 13.0505 11.8492 13.0505C12.4769 13.0505 13.0417 13.3158 13.4339 13.7383L17.9138 19.1427L18.0055 19.2535C18.1803 19.4346 18.427 19.5472 18.7006 19.5472C19.2294 19.5472 19.6585 19.1251 19.6585 18.6045C19.6585 18.4149 19.6016 18.2378 19.5033 18.0903L19.4208 17.9834L13.4693 10.2641C13.4562 10.2495 13.4436 10.2353 13.43 10.2211C13.0377 9.80067 12.4747 9.53717 11.8492 9.53717C11.2219 9.53717 10.6572 9.80196 10.2649 10.2241C10.2531 10.237 10.2413 10.2499 10.2295 10.2632L10.0556 10.4893Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_631_10869">
-<rect width="24" height="16" fill="white" transform="translate(0 4)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
 
 <MarsIconCard title="Deploy MARS6" href="https://app.baseten.co/deploy/mars-6r-tts" />
 
@@ -9365,7 +14369,7 @@ data = {"text": "The quick brown fox jumps over the lazy dog",
 
 ## Input
 
-```python  theme={"system"}
+```python theme={"system"}
 import base64
 import time
 import torchaudio
@@ -9448,7 +14452,7 @@ final_full_audio = torch.concat(audio_samples, dim=0)  # (T,) float waveform @ 4
 
 ## Output
 
-```json  theme={"system"}
+```json theme={"system"}
 {
     "reuslt": "base64 encoded audio data",\
 }
@@ -9460,13 +14464,6 @@ Source: https://docs.baseten.co/examples/models/microsoft/all-mpnet-base-v2
 
 A text embedding model with a context window of 384 tokens and a dimensionality of 768 values.
 
-export const MicrosoftIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.49 2H2V11.492H11.492V2H11.49Z" fill="#F25022" />
-<path d="M22 2H12.508V11.492H22V2Z" fill="#7FBA00" />
-<path d="M11.49 12.508H2V22H11.492V12.508H11.49Z" fill="#00A4EF" />
-<path d="M22 12.508H12.508V22H22V12.508Z" fill="#FFB900" />
-</svg>} horizontal />;
-
 <MicrosoftIconCard title="Deploy All MPNet Base V2" href="https://app.baseten.co/deploy/all-mpnet-base-v2" />
 
 ## Example usage
@@ -9475,7 +14472,7 @@ This model takes a list of strings and returns a list of embeddings, where each 
 
 Strings can be up to 384 tokens in length (approximately 280 words). If the strings are longer, they'll be truncated before being run through the embedding model.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import os
 
@@ -9500,7 +14497,7 @@ print(res.json())
 
 ## JSON output
 
-```json  theme={"system"}
+```json theme={"system"}
 [
   [0.2593194842338562, "...", -1.4059709310531616],
   [0.11028853803873062, "...", -0.9492666125297546]
@@ -9512,21 +14509,6 @@ print(res.json())
 Source: https://docs.baseten.co/examples/models/nomic/nomic-embed-v1-5
 
 SOTA text embedding model with variable dimensionality — outperforms OpenAI text-embedding-ada-002 and text-embedding-3-small models.
-
-export const NomicIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_603_2944)">
-<path d="M2.96725 16.2278V3.5H3.69541V20.4705H2.96725L0.782782 7.74262V20.4705H0.0546265V3.5H0.782782L2.96725 16.2278Z" fill="black" />
-<path d="M7.40443 19.7326C7.60164 19.7326 7.76851 19.6635 7.90504 19.5251C8.05673 19.3867 8.13259 19.21 8.13259 18.9948V4.97569C8.13259 4.77586 8.05673 4.60677 7.90504 4.46842C7.76851 4.31471 7.60164 4.23785 7.40443 4.23785C7.19205 4.23785 7.0176 4.31471 6.88107 4.46842C6.74454 4.60677 6.67628 4.77586 6.67628 4.97569V18.9948C6.67628 19.21 6.74454 19.3867 6.88107 19.5251C7.0176 19.6635 7.19205 19.7326 7.40443 19.7326ZM7.40443 20.4705C6.99485 20.4705 6.64594 20.3321 6.3577 20.0554C6.08465 19.7633 5.94812 19.4099 5.94812 18.9948V4.97569C5.94812 4.57603 6.08465 4.23016 6.3577 3.9381C6.64594 3.64603 6.99485 3.5 7.40443 3.5C7.79885 3.5 8.14017 3.64603 8.4284 3.9381C8.71663 4.23016 8.86074 4.57603 8.86074 4.97569V18.9948C8.86074 19.4099 8.71663 19.7633 8.4284 20.0554C8.14017 20.3321 7.79885 20.4705 7.40443 20.4705Z" fill="black" />
-<path d="M15.3003 3.5H16.0285V20.4705H15.3003V6.45139L13.48 13.8299L11.6596 6.45139V20.4705H10.9314V3.5H11.6596L13.48 10.8785L15.3003 3.5Z" fill="black" />
-<path d="M18.1902 20.4705V3.5H18.9184V20.4705H18.1902Z" fill="black" />
-<path d="M22.5365 20.4705C22.1268 20.4705 21.7779 20.3321 21.4897 20.0554C21.2166 19.7633 21.0802 19.4099 21.0802 18.9948V4.97569C21.0802 4.57603 21.2166 4.23016 21.4897 3.9381C21.7779 3.64603 22.1268 3.5 22.5365 3.5C22.9308 3.5 23.2722 3.64603 23.5604 3.9381C23.8487 4.23016 23.9928 4.57603 23.9928 4.97569V6.45139H23.2646V4.97569C23.2646 4.77586 23.1887 4.60677 23.037 4.46842C22.9004 4.31471 22.7336 4.23785 22.5365 4.23785C22.3241 4.23785 22.1496 4.31471 22.013 4.46842C21.8765 4.60677 21.8083 4.77586 21.8083 4.97569V18.9948C21.8083 19.21 21.8765 19.3867 22.013 19.5251C22.1496 19.6635 22.3241 19.7326 22.5365 19.7326C22.7336 19.7326 22.9004 19.6635 23.037 19.5251C23.1887 19.3867 23.2646 19.21 23.2646 18.9948V17.5191H23.9928V18.9948C23.9928 19.4099 23.8487 19.7633 23.5604 20.0554C23.2722 20.3321 22.9308 20.4705 22.5365 20.4705Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_603_2944">
-<rect width="24" height="17" fill="white" transform="translate(0 3.5)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
 
 <NomicIconCard title="Deploy Nomic Embed v1.5" href="https://app.baseten.co/deploy/nomic_embed_v1_5?_gl=1*dnaf1c*_gcl_au*MTYzMTk5MDI1OS4xNzM2NjM4OTMw" />
 
@@ -9545,7 +14527,7 @@ Nomic Embed v1.5 takes the following parameters:
 
 This code sample demonstrates embedding a set of sentences for retrieval with a dimensionality of 512.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import os
 
@@ -9572,7 +14554,7 @@ print(res.json())
 
 ## JSON output
 
-```json  theme={"system"}
+```json theme={"system"}
 [
   [-0.03811980411410332, "...", -0.023593541234731674],
   [-0.042617011815309525, "...", -0.0191882885992527]
@@ -9585,63 +14567,9 @@ Source: https://docs.baseten.co/examples/models/overview
 
 Browse our library of open source models that are ready to deploy behind an API endpoint in seconds.
 
-export const QwenIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.604 1.33998C12.997 2.02998 13.388 2.72198 13.778 3.41498C13.7938 3.4427 13.8166 3.46573 13.8442 3.48171C13.8718 3.4977 13.9031 3.50608 13.935 3.50598H19.487C19.661 3.50598 19.809 3.61598 19.933 3.83298L21.387 6.40298C21.577 6.73998 21.627 6.88098 21.411 7.23998C21.151 7.66998 20.898 8.10398 20.651 8.53998L20.284 9.19798C20.178 9.39398 20.061 9.47798 20.244 9.70998L22.896 14.347C23.068 14.648 23.007 14.841 22.853 15.117C22.416 15.902 21.971 16.681 21.518 17.457C21.359 17.729 21.166 17.832 20.838 17.827C20.061 17.811 19.286 17.817 18.511 17.843C18.4944 17.8438 18.4783 17.8489 18.4641 17.8576C18.4499 17.8663 18.4382 17.8785 18.43 17.893C17.5358 19.4773 16.6342 21.0573 15.725 22.633C15.556 22.926 15.345 22.996 15 22.997C14.003 23 12.998 23.001 11.983 22.999C11.8885 22.9987 11.7957 22.9735 11.7141 22.9259C11.6325 22.8784 11.5648 22.8101 11.518 22.728L10.183 20.405C10.1752 20.3898 10.1633 20.3771 10.1486 20.3684C10.1339 20.3598 10.1171 20.3554 10.1 20.356H4.982C4.697 20.386 4.429 20.355 4.177 20.264L2.574 17.494C2.52659 17.412 2.50146 17.319 2.50111 17.2243C2.50076 17.1295 2.5252 17.0363 2.572 16.954L3.779 14.834C3.79619 14.804 3.80524 14.77 3.80524 14.7355C3.80524 14.7009 3.79619 14.667 3.779 14.637C3.15027 13.5485 2.52526 12.4578 1.904 11.365L1.114 9.96998C0.954 9.65998 0.941 9.47398 1.209 9.00498C1.674 8.19198 2.136 7.37998 2.596 6.56898C2.728 6.33498 2.9 6.23498 3.18 6.23398C4.04299 6.23035 4.906 6.23001 5.769 6.23298C5.7908 6.23281 5.81217 6.2269 5.83095 6.21584C5.84974 6.20478 5.86528 6.18896 5.876 6.16998L8.682 1.27498C8.72452 1.20052 8.78592 1.13857 8.86 1.09538C8.93409 1.0522 9.01825 1.02929 9.104 1.02898C9.628 1.02798 10.157 1.02898 10.687 1.02298L11.704 0.999982C12.045 0.996982 12.428 1.03198 12.604 1.33998ZM9.172 1.74298C9.16146 1.74298 9.15111 1.74574 9.14198 1.75101C9.13285 1.75628 9.12527 1.76386 9.12 1.77298L6.254 6.78798C6.24024 6.81162 6.22054 6.83124 6.19687 6.84493C6.17319 6.85861 6.14635 6.86587 6.119 6.86598H3.253C3.197 6.86598 3.183 6.89098 3.212 6.93998L9.022 17.096C9.047 17.138 9.035 17.158 8.988 17.159L6.193 17.174C6.15214 17.1726 6.11172 17.1828 6.07635 17.2033C6.04099 17.2238 6.0121 17.2538 5.993 17.29L4.673 19.6C4.629 19.678 4.652 19.718 4.741 19.718L10.457 19.726C10.503 19.726 10.537 19.746 10.561 19.787L11.964 22.241C12.01 22.322 12.056 22.323 12.103 22.241L17.109 13.481L17.892 12.099C17.8968 12.0904 17.9037 12.0833 17.9122 12.0784C17.9206 12.0734 17.9302 12.0708 17.94 12.0708C17.9498 12.0708 17.9594 12.0734 17.9678 12.0784C17.9763 12.0833 17.9832 12.0904 17.988 12.099L19.412 14.629C19.4227 14.6479 19.4382 14.6636 19.4571 14.6745C19.4759 14.6854 19.4973 14.6911 19.519 14.691L22.282 14.671C22.2891 14.671 22.2961 14.6692 22.3022 14.6657C22.3083 14.6622 22.3135 14.6571 22.317 14.651C22.3204 14.6449 22.3222 14.638 22.3222 14.631C22.3222 14.624 22.3204 14.6171 22.317 14.611L19.417 9.52498C19.4066 9.50798 19.401 9.48843 19.401 9.46848C19.401 9.44854 19.4066 9.42898 19.417 9.41198L19.71 8.90498L20.83 6.92798C20.854 6.88698 20.842 6.86598 20.795 6.86598H9.2C9.141 6.86598 9.127 6.83998 9.157 6.78898L10.591 4.28398C10.6017 4.26691 10.6074 4.24715 10.6074 4.22698C10.6074 4.20681 10.6017 4.18705 10.591 4.16998L9.225 1.77398C9.21978 1.76452 9.21209 1.75665 9.20276 1.75119C9.19344 1.74573 9.18281 1.7429 9.172 1.74298ZM15.462 9.76298C15.508 9.76298 15.52 9.78298 15.496 9.82298L14.664 11.288L12.051 15.873C12.0461 15.8819 12.0388 15.8893 12.03 15.8944C12.0212 15.8995 12.0112 15.9022 12.001 15.902C11.9909 15.9019 11.9809 15.8992 11.9721 15.8942C11.9634 15.8891 11.9561 15.8818 11.951 15.873L8.498 9.84098C8.478 9.80698 8.488 9.78898 8.526 9.78698L8.742 9.77498L15.464 9.76298H15.462Z" fill="url(#paint0_linear_631_10870)" />
-<defs>
-<linearGradient id="paint0_linear_631_10870" x1="0.999512" y1="0.999817" x2="2201.03" y2="0.999817" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00055F" stop-opacity="0.84" />
-<stop offset="1" stop-color="#6F69F7" stop-opacity="0.84" />
-</linearGradient>
-</defs>
-</svg>} horizontal />;
-
-export const OpenAIIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_430_1585)">
-<path d="M20.6862 10.1843C20.9129 9.51086 20.9914 8.79746 20.9162 8.09176C20.8411 7.38605 20.6142 6.70428 20.2506 6.09199C19.1446 4.19312 16.9218 3.2163 14.7511 3.6752C14.15 3.01567 13.3835 2.52377 12.5287 2.24889C11.6739 1.97402 10.7608 1.92585 9.88118 2.10922C9.00152 2.29259 8.18627 2.70105 7.51729 3.29358C6.84831 3.8861 6.34916 4.64183 6.06998 5.48486C5.36512 5.62745 4.69924 5.91681 4.11683 6.33358C3.53442 6.75036 3.0489 7.28496 2.69272 7.90165C1.57472 9.79744 1.82849 12.1889 3.3202 13.8153C3.09266 14.4884 3.01347 15.2017 3.08793 15.9075C3.16239 16.6132 3.38878 17.2951 3.75195 17.9076C4.85916 19.8072 7.0834 20.7839 9.25547 20.3244C9.73304 20.8549 10.3198 21.2787 10.9767 21.5676C11.6335 21.8566 12.3453 22.0039 13.0645 21.9999C15.2895 22.0019 17.2609 20.585 17.9404 18.4951C18.6452 18.3523 19.311 18.0628 19.8933 17.6461C20.4757 17.2293 20.9613 16.6949 21.3177 16.0783C22.4222 14.1858 22.1674 11.8073 20.6862 10.1843ZM13.0644 20.691C12.1762 20.6924 11.3159 20.3854 10.6343 19.8238L10.7543 19.7567L14.791 17.4582C14.8915 17.4001 14.9749 17.3172 15.033 17.2176C15.0912 17.1181 15.1221 17.0053 15.1227 16.8905V11.2763L16.8294 12.2502C16.8378 12.2544 16.8451 12.2605 16.8506 12.2681C16.8562 12.2756 16.8599 12.2843 16.8614 12.2935V16.9457C16.857 19.0124 15.1596 20.6868 13.0644 20.6911V20.691ZM4.90293 17.2532C4.45754 16.4946 4.29761 15.6053 4.45127 14.7419L4.5712 14.8128L8.61192 17.1112C8.71191 17.1691 8.82574 17.1996 8.94167 17.1996C9.05761 17.1996 9.17144 17.1691 9.27143 17.1112L14.2074 14.3043V16.248C14.207 16.258 14.2042 16.2678 14.1994 16.2767C14.1945 16.2855 14.1877 16.2932 14.1795 16.2991L10.0908 18.6252C8.27384 19.6577 5.95257 19.0438 4.90293 17.2532ZM3.83974 8.57987C4.28823 7.81633 4.99615 7.23395 5.83815 6.93583V11.6667C5.83663 11.781 5.86624 11.8937 5.9239 11.9928C5.98155 12.092 6.06514 12.1741 6.16593 12.2306L11.0779 15.0258L9.37133 15.9996C9.36209 16.0045 9.3518 16.007 9.34134 16.007C9.33089 16.007 9.3206 16.0045 9.31136 15.9996L5.2307 13.6774C3.41734 12.6407 2.7955 10.3526 3.83974 8.56012V8.57987ZM17.8605 11.793L12.9326 8.97015L14.6351 8.00031C14.6443 7.99548 14.6546 7.99295 14.6651 7.99295C14.6755 7.99295 14.6858 7.99548 14.6951 8.00031L18.7759 10.3264C19.3997 10.6815 19.9084 11.2044 20.2423 11.834C20.5762 12.4636 20.7217 13.1739 20.6618 13.882C20.6019 14.59 20.339 15.2667 19.9038 15.833C19.4687 16.3992 18.8792 16.8317 18.2043 17.0799V12.3487C18.2007 12.2346 18.1672 12.1234 18.107 12.0259C18.0467 11.9285 17.9618 11.8483 17.8605 11.793ZM19.5591 9.27371L19.4392 9.20273L15.4065 6.88461C15.3059 6.82638 15.1914 6.79568 15.0748 6.79568C14.9581 6.79568 14.8436 6.82638 14.743 6.88461L9.811 9.69144V7.74774C9.80998 7.73788 9.81167 7.72794 9.81589 7.71894C9.82011 7.70995 9.82671 7.70225 9.83498 7.69663L13.9156 5.37437C14.5411 5.01896 15.2562 4.84656 15.9773 4.87734C16.6984 4.90811 17.3957 5.14079 17.9877 5.54815C18.5797 5.95552 19.0419 6.52073 19.3201 7.17767C19.5984 7.83462 19.6813 8.55615 19.5591 9.25786V9.27371ZM8.87973 12.7194L7.17311 11.7495C7.16458 11.7444 7.15729 11.7376 7.15176 11.7294C7.14623 11.7212 7.14258 11.7119 7.14109 11.7022V7.06182C7.14204 6.34998 7.34841 5.65312 7.73607 5.0527C8.12373 4.45229 8.67666 3.97313 9.33021 3.67127C9.98375 3.3694 10.7109 3.25729 11.4267 3.34805C12.1424 3.43881 12.8172 3.72868 13.3721 4.18378L13.2522 4.25085L9.21542 6.54934C9.11496 6.60747 9.03155 6.69037 8.97339 6.78991C8.91523 6.88944 8.88432 7.00219 8.88369 7.11707L8.87973 12.7194ZM9.80704 10.7481L12.0053 9.49837L14.2074 10.7481V13.2476L12.0132 14.4975L9.81112 13.2476L9.80704 10.7481Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_430_1585">
-<rect width="20" height="20" fill="white" transform="translate(2 2)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
-
-export const MetaIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.13523 13.5079C4.13523 10.377 5.77224 7.10995 7.69395 7.10995C8.76157 7.10995 9.61566 7.72251 10.968 9.56021C9.68683 11.466 8.90391 12.623 8.90391 12.623C7.19573 15.2094 6.62633 15.7539 5.70107 15.7539C4.7758 15.822 4.13523 15.0052 4.13523 13.5079ZM15.3096 12.3508L14.0996 10.445C13.8149 9.96859 13.4591 9.49215 13.1744 9.08377C14.242 7.51832 15.0961 6.70157 16.1637 6.70157C18.2989 6.70157 20.0071 9.7644 20.0071 13.5759C20.0071 15.0052 19.5089 15.822 18.5125 15.822C17.516 15.822 17.1601 15.2094 15.3096 12.3508ZM12.2491 7.72251C10.6833 5.74869 9.33096 5 7.76512 5C4.4911 5 2 9.15183 2 13.5079C2 16.2304 3.35231 17.9319 5.62989 17.9319C7.2669 17.9319 8.40569 17.1832 10.5409 13.644C10.5409 13.644 11.395 12.1466 12.0356 11.1257C12.2491 11.466 12.4626 11.8063 12.6762 12.2147L13.6726 13.8482C15.5943 16.9791 16.6619 18 18.5836 18C20.79 18 22 16.2304 22 13.4398C21.9288 8.81152 19.3665 5 16.3061 5C14.669 5 13.3879 6.22513 12.2491 7.72251Z" fill="#0081FB" />
-</svg>} horizontal />;
-
-export const MarsIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_631_10869)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.63156 18.1049L8.57257 18.2142C8.49832 18.3766 8.47037 18.5619 8.50142 18.7515C8.58658 19.2656 9.07928 19.6143 9.60131 19.53C9.86988 19.487 10.0939 19.3379 10.2364 19.1336L10.3133 19.0025L10.8178 18.1398C10.8208 18.1325 10.8243 18.1256 10.8274 18.1183C10.8588 18.0512 10.8968 17.9881 10.9405 17.9296L11.846 16.3821L12.7455 17.9193C12.7926 17.9812 12.8332 18.0478 12.8669 18.1187C12.872 18.1299 12.8768 18.1411 12.8817 18.1523L13.3736 18.9931L13.4614 19.1431C13.6042 19.343 13.8256 19.4879 14.0899 19.5305C14.6123 19.6143 15.1046 19.2656 15.1902 18.752C15.2226 18.5568 15.1915 18.3654 15.1116 18.1991L15.0692 18.1205L13.7435 15.6581L13.5976 15.3873L13.5251 15.2528C13.3526 15.0061 13.1254 14.7988 12.8603 14.6488C12.562 14.4798 12.2155 14.3831 11.8469 14.3831C11.4773 14.3831 11.131 14.4803 10.8322 14.6496C10.5636 14.8018 10.3338 15.0125 10.1608 15.2643L9.95551 15.6457L8.63109 18.1062L8.63156 18.1049Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.72147 19.175L10.1396 9.01879C10.168 8.98181 10.1977 8.94614 10.2287 8.91132C10.6219 8.46725 11.201 8.18611 11.8471 8.18611C12.4935 8.18611 13.0732 8.46769 13.4668 8.91259C13.4969 8.94656 13.5258 8.98138 13.5533 9.01749L13.8638 9.39191L21.9453 19.1419L22.0374 19.2532C22.212 19.4337 22.4585 19.5468 22.7319 19.5468C23.2609 19.5468 23.6898 19.1247 23.6898 18.6041C23.6898 18.4142 23.633 18.2375 23.5347 18.0896L23.4523 17.9829L16.7682 9.31368L15.4 7.53915L15.2607 7.35903L13.8633 5.54626L13.5043 5.0807C13.4873 5.0605 13.4703 5.04073 13.4528 5.02095C13.0596 4.58463 12.4857 4.30951 11.8462 4.30951C11.2068 4.30951 10.6328 4.58463 10.2396 5.02095C10.2222 5.03986 10.2057 5.05963 10.189 5.07941L10.0846 5.21483L9.82908 5.54583L8.42857 7.36247L8.29277 7.53872L6.92165 9.31711L0.255963 17.9623L0.140661 18.1119C0.0515526 18.255 0 18.4235 0 18.6036C0 19.1243 0.428953 19.5464 0.957925 19.5464C1.24666 19.5464 1.50525 19.4209 1.68128 19.2223L1.72059 19.175H1.72147Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10.0556 10.4893L4.29329 17.9627L4.17751 18.1127C4.08841 18.2558 4.03729 18.4243 4.03729 18.6045C4.03729 19.1251 4.46626 19.5472 4.99523 19.5472C5.28396 19.5472 5.54298 19.4212 5.71859 19.2227L5.75658 19.177L10.2649 13.7379C10.6572 13.3158 11.2219 13.0505 11.8492 13.0505C12.4769 13.0505 13.0417 13.3158 13.4339 13.7383L17.9138 19.1427L18.0055 19.2535C18.1803 19.4346 18.427 19.5472 18.7006 19.5472C19.2294 19.5472 19.6585 19.1251 19.6585 18.6045C19.6585 18.4149 19.6016 18.2378 19.5033 18.0903L19.4208 17.9834L13.4693 10.2641C13.4562 10.2495 13.4436 10.2353 13.43 10.2211C13.0377 9.80067 12.4747 9.53717 11.8492 9.53717C11.2219 9.53717 10.6572 9.80196 10.2649 10.2241C10.2531 10.237 10.2413 10.2499 10.2295 10.2632L10.0556 10.4893Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_631_10869">
-<rect width="24" height="16" fill="white" transform="translate(0 4)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
-
-export const GoogleIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23 12.245C23 11.34 22.925 10.68 22.764 9.995H12.224V14.078H18.41C18.286 15.092 17.613 16.62 16.116 17.647L16.095 17.783L19.427 20.313L19.657 20.335C21.779 18.417 23 15.593 23 12.245Z" fill="#4285F4" />
-<path d="M12.225 23C15.255 23 17.799 22.022 19.658 20.335L16.116 17.647C15.168 18.295 13.896 18.747 12.225 18.747C10.8164 18.7471 9.44319 18.3063 8.29791 17.4863C7.15263 16.6664 6.29277 15.5084 5.83899 14.175L5.70699 14.186L2.24199 16.814L2.19699 16.938C4.04299 20.531 7.83499 23 12.225 23Z" fill="#34A853" />
-<path d="M5.84 14.175C5.59404 13.4761 5.46662 12.7409 5.463 12C5.463 11.242 5.601 10.509 5.824 9.825L5.818 9.678L2.31 7.008L2.195 7.062C1.41079 8.58997 1.00119 10.2825 1 12C1 13.772 1.436 15.447 2.197 16.938L5.84 14.175Z" fill="#FBBC05" />
-<path d="M12.225 5.253C14.333 5.253 15.754 6.145 16.565 6.891L19.732 3.86C17.787 2.088 15.255 1 12.225 1C7.83399 1 4.04299 3.469 2.19699 7.062L5.82699 9.825C6.28468 8.49166 7.14717 7.33445 8.29413 6.51484C9.44108 5.69522 10.8153 5.25409 12.225 5.253Z" fill="#EB4335" />
-</svg>} horizontal />;
-
-export const DeepSeekIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.7896 6.25856C21.5779 6.15323 21.4862 6.35453 21.3629 6.45731C21.3204 6.49043 21.2846 6.53375 21.2487 6.57282C20.9388 6.91002 20.5771 7.13086 20.1046 7.10453C19.4138 7.06546 18.8238 7.28629 18.3021 7.82479C18.1913 7.16058 17.823 6.76478 17.263 6.50997C16.9697 6.37747 16.673 6.24582 16.4672 5.95788C16.3238 5.75318 16.2847 5.5247 16.213 5.30047C16.1672 5.16457 16.1213 5.02612 15.9688 5.00319C15.8022 4.97686 15.7372 5.1187 15.6722 5.23762C15.4114 5.72345 15.3105 6.25856 15.3205 6.80045C15.343 8.02014 15.848 8.99182 16.8522 9.68236C16.9663 9.76135 16.9955 9.84119 16.9597 9.9567C16.8913 10.1945 16.8097 10.4256 16.738 10.6642C16.6922 10.8163 16.6238 10.8485 16.4638 10.7831C15.9232 10.5463 15.4322 10.2061 15.0172 9.78088C14.303 9.07761 13.6581 8.30129 12.8531 7.69314C12.6666 7.55267 12.475 7.41923 12.2789 7.29309C11.4581 6.48024 12.3873 5.81264 12.6022 5.73365C12.8272 5.65041 12.6797 5.36672 11.9531 5.37012C11.2264 5.37351 10.5615 5.62068 9.71397 5.95108C9.58804 6.00027 9.45846 6.03918 9.32648 6.06745C8.53452 5.91535 7.72455 5.88615 6.92403 5.98081C5.35322 6.15918 4.09908 6.91682 3.1766 8.2087C2.06829 9.76135 1.80746 11.5263 2.12662 13.3661C2.46245 15.306 3.4341 16.9122 4.92657 18.1675C6.47487 19.4696 8.25733 20.1075 10.2915 19.9852C11.5264 19.913 12.9022 19.744 14.453 18.4054C14.8447 18.6041 15.2547 18.6831 15.9364 18.7426C16.4613 18.7927 16.9663 18.7171 17.3572 18.6338C17.9696 18.5013 17.9271 17.9229 17.7063 17.8176C15.9105 16.9648 16.3047 17.3122 15.9455 17.0311C16.8588 15.9303 18.2338 14.7871 18.7721 11.083C18.8138 10.7882 18.778 10.6031 18.7721 10.3652C18.7688 10.2209 18.8013 10.1639 18.9638 10.1478C19.4146 10.1001 19.852 9.96309 20.2513 9.74436C21.4146 9.09629 21.8846 8.03289 21.9954 6.75713C22.0121 6.56178 21.9921 6.36133 21.7896 6.25856ZM11.6506 17.7403C9.9098 16.3456 9.06565 15.8861 8.71733 15.9057C8.39066 15.9261 8.44983 16.3057 8.5215 16.5537C8.59649 16.7984 8.69399 16.9665 8.83066 17.1814C8.92565 17.3233 8.99065 17.5348 8.73649 17.6936C8.17567 18.0469 7.20152 17.5747 7.15569 17.5518C6.02154 16.8706 5.0724 15.9719 4.40491 14.7429C3.75992 13.5597 3.38493 12.2908 3.32327 10.936C3.3066 10.6082 3.40076 10.4927 3.72076 10.4332C4.14084 10.3513 4.57126 10.3401 4.9949 10.4001C6.77153 10.6651 8.28317 11.4745 9.55148 12.7562C10.2748 13.4867 10.8223 14.359 11.3864 15.2117C11.9864 16.1172 12.6314 16.9801 13.4531 17.6868C13.7431 17.9348 13.9739 18.1234 14.1956 18.2618C13.5272 18.3383 12.4123 18.3553 11.6506 17.7403ZM12.4839 12.2704C12.4838 12.2282 12.4937 12.1866 12.5129 12.1492C12.532 12.1118 12.5598 12.0797 12.5939 12.0557C12.6279 12.0317 12.6672 12.0165 12.7083 12.0114C12.7494 12.0064 12.7911 12.0116 12.8297 12.0266C12.879 12.0446 12.9216 12.0779 12.9515 12.1217C12.9813 12.1656 12.9971 12.2178 12.9964 12.2712C12.9965 12.3057 12.9899 12.3399 12.9769 12.3717C12.964 12.4036 12.9449 12.4325 12.9208 12.4568C12.8968 12.481 12.8683 12.5002 12.8369 12.5131C12.8055 12.526 12.7719 12.5324 12.7381 12.532C12.7045 12.5321 12.6712 12.5254 12.6402 12.5122C12.6092 12.4991 12.5811 12.4798 12.5575 12.4554C12.5339 12.4311 12.5153 12.4021 12.5028 12.3704C12.4903 12.3386 12.4834 12.3046 12.4839 12.2704ZM15.0755 13.626C14.9089 13.6948 14.743 13.7542 14.5839 13.7619C14.3444 13.7704 14.1095 13.6942 13.9189 13.5461C13.6906 13.3508 13.5272 13.2421 13.4589 12.9023C13.4353 12.7363 13.4398 12.5674 13.4722 12.4029C13.5306 12.1251 13.4656 11.9468 13.2731 11.7854C13.1172 11.6529 12.9181 11.6164 12.6997 11.6164C12.625 11.6119 12.5524 11.5892 12.4881 11.5501C12.3964 11.5043 12.3214 11.3887 12.3931 11.246C12.4164 11.2002 12.5264 11.0881 12.5531 11.0677C12.8497 10.8961 13.1922 10.9522 13.5081 11.0813C13.8014 11.2036 14.0231 11.4278 14.3422 11.7455C14.668 12.1285 14.7272 12.2347 14.913 12.5218C15.0597 12.7469 15.193 12.9779 15.2839 13.2421C15.3397 13.4077 15.268 13.5427 15.0755 13.626Z" fill="#4D6BFE" />
-</svg>} horizontal />;
-
-export const BFLIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 20.683L12.01 2.5L24 20.683H21.767L12.009 5.878L3.471 18.806H15.593L16.832 20.683H0Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.069 16.724L10.142 13.609L12.216 16.724H8.069ZM18.24 20.683L12.572 11.976H14.749L20.435 20.683H18.24ZM19.74 11.676L21.87 8.48602L24 11.676H19.74Z" fill="black" />
-</svg>} horizontal />;
-
 ## Featured models
 
-<CardGroup cols={1}>
+<CardGroup>
   <DeepSeekIconCard title="DeepSeek R1" href="/examples/models/deepseek/deepseek-r1" />
 
   <OpenAIIconCard title="Whisper V3" href="/examples/models/whisper/whisper-v3-fastest" />
@@ -9663,21 +14591,11 @@ Source: https://docs.baseten.co/examples/models/qwen/qwen-2-5-32b-coder-instruct
 
 Qwen 2.5 32B Coder is an OpenAI-compatible model and can be called using the OpenAI SDK in any language.
 
-export const QwenIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.604 1.33998C12.997 2.02998 13.388 2.72198 13.778 3.41498C13.7938 3.4427 13.8166 3.46573 13.8442 3.48171C13.8718 3.4977 13.9031 3.50608 13.935 3.50598H19.487C19.661 3.50598 19.809 3.61598 19.933 3.83298L21.387 6.40298C21.577 6.73998 21.627 6.88098 21.411 7.23998C21.151 7.66998 20.898 8.10398 20.651 8.53998L20.284 9.19798C20.178 9.39398 20.061 9.47798 20.244 9.70998L22.896 14.347C23.068 14.648 23.007 14.841 22.853 15.117C22.416 15.902 21.971 16.681 21.518 17.457C21.359 17.729 21.166 17.832 20.838 17.827C20.061 17.811 19.286 17.817 18.511 17.843C18.4944 17.8438 18.4783 17.8489 18.4641 17.8576C18.4499 17.8663 18.4382 17.8785 18.43 17.893C17.5358 19.4773 16.6342 21.0573 15.725 22.633C15.556 22.926 15.345 22.996 15 22.997C14.003 23 12.998 23.001 11.983 22.999C11.8885 22.9987 11.7957 22.9735 11.7141 22.9259C11.6325 22.8784 11.5648 22.8101 11.518 22.728L10.183 20.405C10.1752 20.3898 10.1633 20.3771 10.1486 20.3684C10.1339 20.3598 10.1171 20.3554 10.1 20.356H4.982C4.697 20.386 4.429 20.355 4.177 20.264L2.574 17.494C2.52659 17.412 2.50146 17.319 2.50111 17.2243C2.50076 17.1295 2.5252 17.0363 2.572 16.954L3.779 14.834C3.79619 14.804 3.80524 14.77 3.80524 14.7355C3.80524 14.7009 3.79619 14.667 3.779 14.637C3.15027 13.5485 2.52526 12.4578 1.904 11.365L1.114 9.96998C0.954 9.65998 0.941 9.47398 1.209 9.00498C1.674 8.19198 2.136 7.37998 2.596 6.56898C2.728 6.33498 2.9 6.23498 3.18 6.23398C4.04299 6.23035 4.906 6.23001 5.769 6.23298C5.7908 6.23281 5.81217 6.2269 5.83095 6.21584C5.84974 6.20478 5.86528 6.18896 5.876 6.16998L8.682 1.27498C8.72452 1.20052 8.78592 1.13857 8.86 1.09538C8.93409 1.0522 9.01825 1.02929 9.104 1.02898C9.628 1.02798 10.157 1.02898 10.687 1.02298L11.704 0.999982C12.045 0.996982 12.428 1.03198 12.604 1.33998ZM9.172 1.74298C9.16146 1.74298 9.15111 1.74574 9.14198 1.75101C9.13285 1.75628 9.12527 1.76386 9.12 1.77298L6.254 6.78798C6.24024 6.81162 6.22054 6.83124 6.19687 6.84493C6.17319 6.85861 6.14635 6.86587 6.119 6.86598H3.253C3.197 6.86598 3.183 6.89098 3.212 6.93998L9.022 17.096C9.047 17.138 9.035 17.158 8.988 17.159L6.193 17.174C6.15214 17.1726 6.11172 17.1828 6.07635 17.2033C6.04099 17.2238 6.0121 17.2538 5.993 17.29L4.673 19.6C4.629 19.678 4.652 19.718 4.741 19.718L10.457 19.726C10.503 19.726 10.537 19.746 10.561 19.787L11.964 22.241C12.01 22.322 12.056 22.323 12.103 22.241L17.109 13.481L17.892 12.099C17.8968 12.0904 17.9037 12.0833 17.9122 12.0784C17.9206 12.0734 17.9302 12.0708 17.94 12.0708C17.9498 12.0708 17.9594 12.0734 17.9678 12.0784C17.9763 12.0833 17.9832 12.0904 17.988 12.099L19.412 14.629C19.4227 14.6479 19.4382 14.6636 19.4571 14.6745C19.4759 14.6854 19.4973 14.6911 19.519 14.691L22.282 14.671C22.2891 14.671 22.2961 14.6692 22.3022 14.6657C22.3083 14.6622 22.3135 14.6571 22.317 14.651C22.3204 14.6449 22.3222 14.638 22.3222 14.631C22.3222 14.624 22.3204 14.6171 22.317 14.611L19.417 9.52498C19.4066 9.50798 19.401 9.48843 19.401 9.46848C19.401 9.44854 19.4066 9.42898 19.417 9.41198L19.71 8.90498L20.83 6.92798C20.854 6.88698 20.842 6.86598 20.795 6.86598H9.2C9.141 6.86598 9.127 6.83998 9.157 6.78898L10.591 4.28398C10.6017 4.26691 10.6074 4.24715 10.6074 4.22698C10.6074 4.20681 10.6017 4.18705 10.591 4.16998L9.225 1.77398C9.21978 1.76452 9.21209 1.75665 9.20276 1.75119C9.19344 1.74573 9.18281 1.7429 9.172 1.74298ZM15.462 9.76298C15.508 9.76298 15.52 9.78298 15.496 9.82298L14.664 11.288L12.051 15.873C12.0461 15.8819 12.0388 15.8893 12.03 15.8944C12.0212 15.8995 12.0112 15.9022 12.001 15.902C11.9909 15.9019 11.9809 15.8992 11.9721 15.8942C11.9634 15.8891 11.9561 15.8818 11.951 15.873L8.498 9.84098C8.478 9.80698 8.488 9.78898 8.526 9.78698L8.742 9.77498L15.464 9.76298H15.462Z" fill="url(#paint0_linear_631_10870)" />
-<defs>
-<linearGradient id="paint0_linear_631_10870" x1="0.999512" y1="0.999817" x2="2201.03" y2="0.999817" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00055F" stop-opacity="0.84" />
-<stop offset="1" stop-color="#6F69F7" stop-opacity="0.84" />
-</linearGradient>
-</defs>
-</svg>} horizontal />;
-
 <QwenIconCard title="Deploy Qwen 2.5 32B Coder Instruct" href="https://app.baseten.co/deploy/qwen-2-5-32b-coder-instruct" />
 
 ## Example usage
 
-```python  theme={"system"}
+```python theme={"system"}
 from openai import OpenAI
 import os
 
@@ -9702,7 +14620,7 @@ print(response_chat)
 
 ## JSON output
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "id": "143",
   "choices": [
@@ -9740,13 +14658,6 @@ Source: https://docs.baseten.co/examples/models/stable-diffusion/sdxl-lightning
 
 A variant of Stable Diffusion XL that generates 1024x1024 px images in 4 UNet steps, enabling near real-time image creation.
 
-export const LightningIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.944 18.587L13.24 18.142V10.01L15.064 9.54801C16.064 9.29401 16.904 9.08701 16.944 9.09501C16.976 9.09501 17 11.33 17 14.067V19.04L16.824 19.032C16.72 19.032 15.872 18.826 14.944 18.587Z" fill="#00C8D2" />
-<path d="M7 16.5421C7 13.8061 7.024 11.5621 7.064 11.5621C7.096 11.5541 7.936 11.7621 8.944 12.0161L10.76 12.4771L10.744 16.5271L10.72 20.5761L9.088 20.9981C8.192 21.2281 7.352 21.4431 7.232 21.4671L7 21.5231V16.5421Z" fill="#3C8CFF" />
-<path d="M19.24 12.477C19.24 3.44703 19.248 2.96203 19.384 3.00203C19.456 3.02603 20.168 3.20903 20.96 3.40803C21.752 3.61503 22.536 3.81303 22.704 3.85303L23 3.93303L22.984 12.493L22.96 21.061L21.336 21.475C20.448 21.705 19.608 21.912 19.48 21.945L19.24 22V12.477Z" fill="#78E6DC" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.509C1 7.83103 1.024 4.00403 1.064 4.00403C1.096 4.00403 1.936 4.21103 2.936 4.45803L4.76 4.91903V12.501C4.76 16.661 4.744 20.075 4.728 20.075C4.704 20.075 3.856 20.29 2.848 20.545L1 21.013V12.509Z" fill="#325AB4" />
-</svg>} horizontal />;
-
 <LightningIconCard title="Deploy SDXL Lightning" href="https://app.baseten.co/deploy/sdxl_lightning" />
 
 # Example usage
@@ -9755,7 +14666,7 @@ The model accepts a single input, prompt, and returns a base64 string of the ima
 
 This implementation uses the 4-step UNet checkpoint to balance speed and quality. You can [deploy your own version](https://github.com/basetenlabs/truss-examples/tree/main/stable-diffusion/sdxl-lightning) with either 2 steps for even faster results or 8 steps for even higher quality.
 
-```python  theme={"system"}
+```python theme={"system"}
 import base64
 import requests
 import os
@@ -9790,7 +14701,7 @@ os.system("open sdxl-output-1.png")
 
 **JSON Output**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "result": "iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAIAAA..."
 }
@@ -9802,17 +14713,6 @@ Source: https://docs.baseten.co/examples/models/whisper/whisper-v3-fastest
 
 Whisper V3 is a fast and accurate speech recognition model.
 
-export const OpenAIIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_430_1585)">
-<path d="M20.6862 10.1843C20.9129 9.51086 20.9914 8.79746 20.9162 8.09176C20.8411 7.38605 20.6142 6.70428 20.2506 6.09199C19.1446 4.19312 16.9218 3.2163 14.7511 3.6752C14.15 3.01567 13.3835 2.52377 12.5287 2.24889C11.6739 1.97402 10.7608 1.92585 9.88118 2.10922C9.00152 2.29259 8.18627 2.70105 7.51729 3.29358C6.84831 3.8861 6.34916 4.64183 6.06998 5.48486C5.36512 5.62745 4.69924 5.91681 4.11683 6.33358C3.53442 6.75036 3.0489 7.28496 2.69272 7.90165C1.57472 9.79744 1.82849 12.1889 3.3202 13.8153C3.09266 14.4884 3.01347 15.2017 3.08793 15.9075C3.16239 16.6132 3.38878 17.2951 3.75195 17.9076C4.85916 19.8072 7.0834 20.7839 9.25547 20.3244C9.73304 20.8549 10.3198 21.2787 10.9767 21.5676C11.6335 21.8566 12.3453 22.0039 13.0645 21.9999C15.2895 22.0019 17.2609 20.585 17.9404 18.4951C18.6452 18.3523 19.311 18.0628 19.8933 17.6461C20.4757 17.2293 20.9613 16.6949 21.3177 16.0783C22.4222 14.1858 22.1674 11.8073 20.6862 10.1843ZM13.0644 20.691C12.1762 20.6924 11.3159 20.3854 10.6343 19.8238L10.7543 19.7567L14.791 17.4582C14.8915 17.4001 14.9749 17.3172 15.033 17.2176C15.0912 17.1181 15.1221 17.0053 15.1227 16.8905V11.2763L16.8294 12.2502C16.8378 12.2544 16.8451 12.2605 16.8506 12.2681C16.8562 12.2756 16.8599 12.2843 16.8614 12.2935V16.9457C16.857 19.0124 15.1596 20.6868 13.0644 20.6911V20.691ZM4.90293 17.2532C4.45754 16.4946 4.29761 15.6053 4.45127 14.7419L4.5712 14.8128L8.61192 17.1112C8.71191 17.1691 8.82574 17.1996 8.94167 17.1996C9.05761 17.1996 9.17144 17.1691 9.27143 17.1112L14.2074 14.3043V16.248C14.207 16.258 14.2042 16.2678 14.1994 16.2767C14.1945 16.2855 14.1877 16.2932 14.1795 16.2991L10.0908 18.6252C8.27384 19.6577 5.95257 19.0438 4.90293 17.2532ZM3.83974 8.57987C4.28823 7.81633 4.99615 7.23395 5.83815 6.93583V11.6667C5.83663 11.781 5.86624 11.8937 5.9239 11.9928C5.98155 12.092 6.06514 12.1741 6.16593 12.2306L11.0779 15.0258L9.37133 15.9996C9.36209 16.0045 9.3518 16.007 9.34134 16.007C9.33089 16.007 9.3206 16.0045 9.31136 15.9996L5.2307 13.6774C3.41734 12.6407 2.7955 10.3526 3.83974 8.56012V8.57987ZM17.8605 11.793L12.9326 8.97015L14.6351 8.00031C14.6443 7.99548 14.6546 7.99295 14.6651 7.99295C14.6755 7.99295 14.6858 7.99548 14.6951 8.00031L18.7759 10.3264C19.3997 10.6815 19.9084 11.2044 20.2423 11.834C20.5762 12.4636 20.7217 13.1739 20.6618 13.882C20.6019 14.59 20.339 15.2667 19.9038 15.833C19.4687 16.3992 18.8792 16.8317 18.2043 17.0799V12.3487C18.2007 12.2346 18.1672 12.1234 18.107 12.0259C18.0467 11.9285 17.9618 11.8483 17.8605 11.793ZM19.5591 9.27371L19.4392 9.20273L15.4065 6.88461C15.3059 6.82638 15.1914 6.79568 15.0748 6.79568C14.9581 6.79568 14.8436 6.82638 14.743 6.88461L9.811 9.69144V7.74774C9.80998 7.73788 9.81167 7.72794 9.81589 7.71894C9.82011 7.70995 9.82671 7.70225 9.83498 7.69663L13.9156 5.37437C14.5411 5.01896 15.2562 4.84656 15.9773 4.87734C16.6984 4.90811 17.3957 5.14079 17.9877 5.54815C18.5797 5.95552 19.0419 6.52073 19.3201 7.17767C19.5984 7.83462 19.6813 8.55615 19.5591 9.25786V9.27371ZM8.87973 12.7194L7.17311 11.7495C7.16458 11.7444 7.15729 11.7376 7.15176 11.7294C7.14623 11.7212 7.14258 11.7119 7.14109 11.7022V7.06182C7.14204 6.34998 7.34841 5.65312 7.73607 5.0527C8.12373 4.45229 8.67666 3.97313 9.33021 3.67127C9.98375 3.3694 10.7109 3.25729 11.4267 3.34805C12.1424 3.43881 12.8172 3.72868 13.3721 4.18378L13.2522 4.25085L9.21542 6.54934C9.11496 6.60747 9.03155 6.69037 8.97339 6.78991C8.91523 6.88944 8.88432 7.00219 8.88369 7.11707L8.87973 12.7194ZM9.80704 10.7481L12.0053 9.49837L14.2074 10.7481V13.2476L12.0132 14.4975L9.81112 13.2476L9.80704 10.7481Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_430_1585">
-<rect width="20" height="20" fill="white" transform="translate(2 2)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
-
 <OpenAIIconCard title="Deploy Whisper V3" href="https://www.baseten.co/talk-to-us/?ref=model-library-whisper&model=the%20world%27s%20fastest%20Whisper%20inference" />
 
 # Example usage
@@ -9821,7 +14721,7 @@ Transcribe audio files at up to a 400x real-time factor — that's 1 hour of aud
 
 For quick deployments of Whisper suitable for shorter audio files and lower traffic volume, you can deploy Whisper V3 and Whisper V3 Turbo directly from the model library.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import os
 
@@ -9844,7 +14744,7 @@ print(resp.content.decode("utf-8"))
 
 **JSON Output**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "segments": [
     {
@@ -9863,60 +14763,20 @@ Source: https://docs.baseten.co/examples/overview
 
 
 
-export const QwenIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.604 1.33998C12.997 2.02998 13.388 2.72198 13.778 3.41498C13.7938 3.4427 13.8166 3.46573 13.8442 3.48171C13.8718 3.4977 13.9031 3.50608 13.935 3.50598H19.487C19.661 3.50598 19.809 3.61598 19.933 3.83298L21.387 6.40298C21.577 6.73998 21.627 6.88098 21.411 7.23998C21.151 7.66998 20.898 8.10398 20.651 8.53998L20.284 9.19798C20.178 9.39398 20.061 9.47798 20.244 9.70998L22.896 14.347C23.068 14.648 23.007 14.841 22.853 15.117C22.416 15.902 21.971 16.681 21.518 17.457C21.359 17.729 21.166 17.832 20.838 17.827C20.061 17.811 19.286 17.817 18.511 17.843C18.4944 17.8438 18.4783 17.8489 18.4641 17.8576C18.4499 17.8663 18.4382 17.8785 18.43 17.893C17.5358 19.4773 16.6342 21.0573 15.725 22.633C15.556 22.926 15.345 22.996 15 22.997C14.003 23 12.998 23.001 11.983 22.999C11.8885 22.9987 11.7957 22.9735 11.7141 22.9259C11.6325 22.8784 11.5648 22.8101 11.518 22.728L10.183 20.405C10.1752 20.3898 10.1633 20.3771 10.1486 20.3684C10.1339 20.3598 10.1171 20.3554 10.1 20.356H4.982C4.697 20.386 4.429 20.355 4.177 20.264L2.574 17.494C2.52659 17.412 2.50146 17.319 2.50111 17.2243C2.50076 17.1295 2.5252 17.0363 2.572 16.954L3.779 14.834C3.79619 14.804 3.80524 14.77 3.80524 14.7355C3.80524 14.7009 3.79619 14.667 3.779 14.637C3.15027 13.5485 2.52526 12.4578 1.904 11.365L1.114 9.96998C0.954 9.65998 0.941 9.47398 1.209 9.00498C1.674 8.19198 2.136 7.37998 2.596 6.56898C2.728 6.33498 2.9 6.23498 3.18 6.23398C4.04299 6.23035 4.906 6.23001 5.769 6.23298C5.7908 6.23281 5.81217 6.2269 5.83095 6.21584C5.84974 6.20478 5.86528 6.18896 5.876 6.16998L8.682 1.27498C8.72452 1.20052 8.78592 1.13857 8.86 1.09538C8.93409 1.0522 9.01825 1.02929 9.104 1.02898C9.628 1.02798 10.157 1.02898 10.687 1.02298L11.704 0.999982C12.045 0.996982 12.428 1.03198 12.604 1.33998ZM9.172 1.74298C9.16146 1.74298 9.15111 1.74574 9.14198 1.75101C9.13285 1.75628 9.12527 1.76386 9.12 1.77298L6.254 6.78798C6.24024 6.81162 6.22054 6.83124 6.19687 6.84493C6.17319 6.85861 6.14635 6.86587 6.119 6.86598H3.253C3.197 6.86598 3.183 6.89098 3.212 6.93998L9.022 17.096C9.047 17.138 9.035 17.158 8.988 17.159L6.193 17.174C6.15214 17.1726 6.11172 17.1828 6.07635 17.2033C6.04099 17.2238 6.0121 17.2538 5.993 17.29L4.673 19.6C4.629 19.678 4.652 19.718 4.741 19.718L10.457 19.726C10.503 19.726 10.537 19.746 10.561 19.787L11.964 22.241C12.01 22.322 12.056 22.323 12.103 22.241L17.109 13.481L17.892 12.099C17.8968 12.0904 17.9037 12.0833 17.9122 12.0784C17.9206 12.0734 17.9302 12.0708 17.94 12.0708C17.9498 12.0708 17.9594 12.0734 17.9678 12.0784C17.9763 12.0833 17.9832 12.0904 17.988 12.099L19.412 14.629C19.4227 14.6479 19.4382 14.6636 19.4571 14.6745C19.4759 14.6854 19.4973 14.6911 19.519 14.691L22.282 14.671C22.2891 14.671 22.2961 14.6692 22.3022 14.6657C22.3083 14.6622 22.3135 14.6571 22.317 14.651C22.3204 14.6449 22.3222 14.638 22.3222 14.631C22.3222 14.624 22.3204 14.6171 22.317 14.611L19.417 9.52498C19.4066 9.50798 19.401 9.48843 19.401 9.46848C19.401 9.44854 19.4066 9.42898 19.417 9.41198L19.71 8.90498L20.83 6.92798C20.854 6.88698 20.842 6.86598 20.795 6.86598H9.2C9.141 6.86598 9.127 6.83998 9.157 6.78898L10.591 4.28398C10.6017 4.26691 10.6074 4.24715 10.6074 4.22698C10.6074 4.20681 10.6017 4.18705 10.591 4.16998L9.225 1.77398C9.21978 1.76452 9.21209 1.75665 9.20276 1.75119C9.19344 1.74573 9.18281 1.7429 9.172 1.74298ZM15.462 9.76298C15.508 9.76298 15.52 9.78298 15.496 9.82298L14.664 11.288L12.051 15.873C12.0461 15.8819 12.0388 15.8893 12.03 15.8944C12.0212 15.8995 12.0112 15.9022 12.001 15.902C11.9909 15.9019 11.9809 15.8992 11.9721 15.8942C11.9634 15.8891 11.9561 15.8818 11.951 15.873L8.498 9.84098C8.478 9.80698 8.488 9.78898 8.526 9.78698L8.742 9.77498L15.464 9.76298H15.462Z" fill="url(#paint0_linear_631_10870)" />
-<defs>
-<linearGradient id="paint0_linear_631_10870" x1="0.999512" y1="0.999817" x2="2201.03" y2="0.999817" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00055F" stop-opacity="0.84" />
-<stop offset="1" stop-color="#6F69F7" stop-opacity="0.84" />
-</linearGradient>
-</defs>
-</svg>} horizontal />;
-
-export const PyTorchIconCard = ({title, href}) => <Card title={title} href={href} icon={<img src="/images/PyTorch.png" alt="PyTorch" width="24" height="24" />} horizontal />;
-
-export const OpenAIIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_430_1585)">
-<path d="M20.6862 10.1843C20.9129 9.51086 20.9914 8.79746 20.9162 8.09176C20.8411 7.38605 20.6142 6.70428 20.2506 6.09199C19.1446 4.19312 16.9218 3.2163 14.7511 3.6752C14.15 3.01567 13.3835 2.52377 12.5287 2.24889C11.6739 1.97402 10.7608 1.92585 9.88118 2.10922C9.00152 2.29259 8.18627 2.70105 7.51729 3.29358C6.84831 3.8861 6.34916 4.64183 6.06998 5.48486C5.36512 5.62745 4.69924 5.91681 4.11683 6.33358C3.53442 6.75036 3.0489 7.28496 2.69272 7.90165C1.57472 9.79744 1.82849 12.1889 3.3202 13.8153C3.09266 14.4884 3.01347 15.2017 3.08793 15.9075C3.16239 16.6132 3.38878 17.2951 3.75195 17.9076C4.85916 19.8072 7.0834 20.7839 9.25547 20.3244C9.73304 20.8549 10.3198 21.2787 10.9767 21.5676C11.6335 21.8566 12.3453 22.0039 13.0645 21.9999C15.2895 22.0019 17.2609 20.585 17.9404 18.4951C18.6452 18.3523 19.311 18.0628 19.8933 17.6461C20.4757 17.2293 20.9613 16.6949 21.3177 16.0783C22.4222 14.1858 22.1674 11.8073 20.6862 10.1843ZM13.0644 20.691C12.1762 20.6924 11.3159 20.3854 10.6343 19.8238L10.7543 19.7567L14.791 17.4582C14.8915 17.4001 14.9749 17.3172 15.033 17.2176C15.0912 17.1181 15.1221 17.0053 15.1227 16.8905V11.2763L16.8294 12.2502C16.8378 12.2544 16.8451 12.2605 16.8506 12.2681C16.8562 12.2756 16.8599 12.2843 16.8614 12.2935V16.9457C16.857 19.0124 15.1596 20.6868 13.0644 20.6911V20.691ZM4.90293 17.2532C4.45754 16.4946 4.29761 15.6053 4.45127 14.7419L4.5712 14.8128L8.61192 17.1112C8.71191 17.1691 8.82574 17.1996 8.94167 17.1996C9.05761 17.1996 9.17144 17.1691 9.27143 17.1112L14.2074 14.3043V16.248C14.207 16.258 14.2042 16.2678 14.1994 16.2767C14.1945 16.2855 14.1877 16.2932 14.1795 16.2991L10.0908 18.6252C8.27384 19.6577 5.95257 19.0438 4.90293 17.2532ZM3.83974 8.57987C4.28823 7.81633 4.99615 7.23395 5.83815 6.93583V11.6667C5.83663 11.781 5.86624 11.8937 5.9239 11.9928C5.98155 12.092 6.06514 12.1741 6.16593 12.2306L11.0779 15.0258L9.37133 15.9996C9.36209 16.0045 9.3518 16.007 9.34134 16.007C9.33089 16.007 9.3206 16.0045 9.31136 15.9996L5.2307 13.6774C3.41734 12.6407 2.7955 10.3526 3.83974 8.56012V8.57987ZM17.8605 11.793L12.9326 8.97015L14.6351 8.00031C14.6443 7.99548 14.6546 7.99295 14.6651 7.99295C14.6755 7.99295 14.6858 7.99548 14.6951 8.00031L18.7759 10.3264C19.3997 10.6815 19.9084 11.2044 20.2423 11.834C20.5762 12.4636 20.7217 13.1739 20.6618 13.882C20.6019 14.59 20.339 15.2667 19.9038 15.833C19.4687 16.3992 18.8792 16.8317 18.2043 17.0799V12.3487C18.2007 12.2346 18.1672 12.1234 18.107 12.0259C18.0467 11.9285 17.9618 11.8483 17.8605 11.793ZM19.5591 9.27371L19.4392 9.20273L15.4065 6.88461C15.3059 6.82638 15.1914 6.79568 15.0748 6.79568C14.9581 6.79568 14.8436 6.82638 14.743 6.88461L9.811 9.69144V7.74774C9.80998 7.73788 9.81167 7.72794 9.81589 7.71894C9.82011 7.70995 9.82671 7.70225 9.83498 7.69663L13.9156 5.37437C14.5411 5.01896 15.2562 4.84656 15.9773 4.87734C16.6984 4.90811 17.3957 5.14079 17.9877 5.54815C18.5797 5.95552 19.0419 6.52073 19.3201 7.17767C19.5984 7.83462 19.6813 8.55615 19.5591 9.25786V9.27371ZM8.87973 12.7194L7.17311 11.7495C7.16458 11.7444 7.15729 11.7376 7.15176 11.7294C7.14623 11.7212 7.14258 11.7119 7.14109 11.7022V7.06182C7.14204 6.34998 7.34841 5.65312 7.73607 5.0527C8.12373 4.45229 8.67666 3.97313 9.33021 3.67127C9.98375 3.3694 10.7109 3.25729 11.4267 3.34805C12.1424 3.43881 12.8172 3.72868 13.3721 4.18378L13.2522 4.25085L9.21542 6.54934C9.11496 6.60747 9.03155 6.69037 8.97339 6.78991C8.91523 6.88944 8.88432 7.00219 8.88369 7.11707L8.87973 12.7194ZM9.80704 10.7481L12.0053 9.49837L14.2074 10.7481V13.2476L12.0132 14.4975L9.81112 13.2476L9.80704 10.7481Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_430_1585">
-<rect width="20" height="20" fill="white" transform="translate(2 2)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
-
-export const MetaIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.13523 13.5079C4.13523 10.377 5.77224 7.10995 7.69395 7.10995C8.76157 7.10995 9.61566 7.72251 10.968 9.56021C9.68683 11.466 8.90391 12.623 8.90391 12.623C7.19573 15.2094 6.62633 15.7539 5.70107 15.7539C4.7758 15.822 4.13523 15.0052 4.13523 13.5079ZM15.3096 12.3508L14.0996 10.445C13.8149 9.96859 13.4591 9.49215 13.1744 9.08377C14.242 7.51832 15.0961 6.70157 16.1637 6.70157C18.2989 6.70157 20.0071 9.7644 20.0071 13.5759C20.0071 15.0052 19.5089 15.822 18.5125 15.822C17.516 15.822 17.1601 15.2094 15.3096 12.3508ZM12.2491 7.72251C10.6833 5.74869 9.33096 5 7.76512 5C4.4911 5 2 9.15183 2 13.5079C2 16.2304 3.35231 17.9319 5.62989 17.9319C7.2669 17.9319 8.40569 17.1832 10.5409 13.644C10.5409 13.644 11.395 12.1466 12.0356 11.1257C12.2491 11.466 12.4626 11.8063 12.6762 12.2147L13.6726 13.8482C15.5943 16.9791 16.6619 18 18.5836 18C20.79 18 22 16.2304 22 13.4398C21.9288 8.81152 19.3665 5 16.3061 5C14.669 5 13.3879 6.22513 12.2491 7.72251Z" fill="#0081FB" />
-</svg>} horizontal />;
-
-export const MarsIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_631_10869)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.63156 18.1049L8.57257 18.2142C8.49832 18.3766 8.47037 18.5619 8.50142 18.7515C8.58658 19.2656 9.07928 19.6143 9.60131 19.53C9.86988 19.487 10.0939 19.3379 10.2364 19.1336L10.3133 19.0025L10.8178 18.1398C10.8208 18.1325 10.8243 18.1256 10.8274 18.1183C10.8588 18.0512 10.8968 17.9881 10.9405 17.9296L11.846 16.3821L12.7455 17.9193C12.7926 17.9812 12.8332 18.0478 12.8669 18.1187C12.872 18.1299 12.8768 18.1411 12.8817 18.1523L13.3736 18.9931L13.4614 19.1431C13.6042 19.343 13.8256 19.4879 14.0899 19.5305C14.6123 19.6143 15.1046 19.2656 15.1902 18.752C15.2226 18.5568 15.1915 18.3654 15.1116 18.1991L15.0692 18.1205L13.7435 15.6581L13.5976 15.3873L13.5251 15.2528C13.3526 15.0061 13.1254 14.7988 12.8603 14.6488C12.562 14.4798 12.2155 14.3831 11.8469 14.3831C11.4773 14.3831 11.131 14.4803 10.8322 14.6496C10.5636 14.8018 10.3338 15.0125 10.1608 15.2643L9.95551 15.6457L8.63109 18.1062L8.63156 18.1049Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M1.72147 19.175L10.1396 9.01879C10.168 8.98181 10.1977 8.94614 10.2287 8.91132C10.6219 8.46725 11.201 8.18611 11.8471 8.18611C12.4935 8.18611 13.0732 8.46769 13.4668 8.91259C13.4969 8.94656 13.5258 8.98138 13.5533 9.01749L13.8638 9.39191L21.9453 19.1419L22.0374 19.2532C22.212 19.4337 22.4585 19.5468 22.7319 19.5468C23.2609 19.5468 23.6898 19.1247 23.6898 18.6041C23.6898 18.4142 23.633 18.2375 23.5347 18.0896L23.4523 17.9829L16.7682 9.31368L15.4 7.53915L15.2607 7.35903L13.8633 5.54626L13.5043 5.0807C13.4873 5.0605 13.4703 5.04073 13.4528 5.02095C13.0596 4.58463 12.4857 4.30951 11.8462 4.30951C11.2068 4.30951 10.6328 4.58463 10.2396 5.02095C10.2222 5.03986 10.2057 5.05963 10.189 5.07941L10.0846 5.21483L9.82908 5.54583L8.42857 7.36247L8.29277 7.53872L6.92165 9.31711L0.255963 17.9623L0.140661 18.1119C0.0515526 18.255 0 18.4235 0 18.6036C0 19.1243 0.428953 19.5464 0.957925 19.5464C1.24666 19.5464 1.50525 19.4209 1.68128 19.2223L1.72059 19.175H1.72147Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M10.0556 10.4893L4.29329 17.9627L4.17751 18.1127C4.08841 18.2558 4.03729 18.4243 4.03729 18.6045C4.03729 19.1251 4.46626 19.5472 4.99523 19.5472C5.28396 19.5472 5.54298 19.4212 5.71859 19.2227L5.75658 19.177L10.2649 13.7379C10.6572 13.3158 11.2219 13.0505 11.8492 13.0505C12.4769 13.0505 13.0417 13.3158 13.4339 13.7383L17.9138 19.1427L18.0055 19.2535C18.1803 19.4346 18.427 19.5472 18.7006 19.5472C19.2294 19.5472 19.6585 19.1251 19.6585 18.6045C19.6585 18.4149 19.6016 18.2378 19.5033 18.0903L19.4208 17.9834L13.4693 10.2641C13.4562 10.2495 13.4436 10.2353 13.43 10.2211C13.0377 9.80067 12.4747 9.53717 11.8492 9.53717C11.2219 9.53717 10.6572 9.80196 10.2649 10.2241C10.2531 10.237 10.2413 10.2499 10.2295 10.2632L10.0556 10.4893Z" fill="black" />
-</g>
-<defs>
-<clipPath id="clip0_631_10869">
-<rect width="24" height="16" fill="white" transform="translate(0 4)" />
-</clipPath>
-</defs>
-</svg>} horizontal />;
-
-export const DeepSeekIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21.7896 6.25856C21.5779 6.15323 21.4862 6.35453 21.3629 6.45731C21.3204 6.49043 21.2846 6.53375 21.2487 6.57282C20.9388 6.91002 20.5771 7.13086 20.1046 7.10453C19.4138 7.06546 18.8238 7.28629 18.3021 7.82479C18.1913 7.16058 17.823 6.76478 17.263 6.50997C16.9697 6.37747 16.673 6.24582 16.4672 5.95788C16.3238 5.75318 16.2847 5.5247 16.213 5.30047C16.1672 5.16457 16.1213 5.02612 15.9688 5.00319C15.8022 4.97686 15.7372 5.1187 15.6722 5.23762C15.4114 5.72345 15.3105 6.25856 15.3205 6.80045C15.343 8.02014 15.848 8.99182 16.8522 9.68236C16.9663 9.76135 16.9955 9.84119 16.9597 9.9567C16.8913 10.1945 16.8097 10.4256 16.738 10.6642C16.6922 10.8163 16.6238 10.8485 16.4638 10.7831C15.9232 10.5463 15.4322 10.2061 15.0172 9.78088C14.303 9.07761 13.6581 8.30129 12.8531 7.69314C12.6666 7.55267 12.475 7.41923 12.2789 7.29309C11.4581 6.48024 12.3873 5.81264 12.6022 5.73365C12.8272 5.65041 12.6797 5.36672 11.9531 5.37012C11.2264 5.37351 10.5615 5.62068 9.71397 5.95108C9.58804 6.00027 9.45846 6.03918 9.32648 6.06745C8.53452 5.91535 7.72455 5.88615 6.92403 5.98081C5.35322 6.15918 4.09908 6.91682 3.1766 8.2087C2.06829 9.76135 1.80746 11.5263 2.12662 13.3661C2.46245 15.306 3.4341 16.9122 4.92657 18.1675C6.47487 19.4696 8.25733 20.1075 10.2915 19.9852C11.5264 19.913 12.9022 19.744 14.453 18.4054C14.8447 18.6041 15.2547 18.6831 15.9364 18.7426C16.4613 18.7927 16.9663 18.7171 17.3572 18.6338C17.9696 18.5013 17.9271 17.9229 17.7063 17.8176C15.9105 16.9648 16.3047 17.3122 15.9455 17.0311C16.8588 15.9303 18.2338 14.7871 18.7721 11.083C18.8138 10.7882 18.778 10.6031 18.7721 10.3652C18.7688 10.2209 18.8013 10.1639 18.9638 10.1478C19.4146 10.1001 19.852 9.96309 20.2513 9.74436C21.4146 9.09629 21.8846 8.03289 21.9954 6.75713C22.0121 6.56178 21.9921 6.36133 21.7896 6.25856ZM11.6506 17.7403C9.9098 16.3456 9.06565 15.8861 8.71733 15.9057C8.39066 15.9261 8.44983 16.3057 8.5215 16.5537C8.59649 16.7984 8.69399 16.9665 8.83066 17.1814C8.92565 17.3233 8.99065 17.5348 8.73649 17.6936C8.17567 18.0469 7.20152 17.5747 7.15569 17.5518C6.02154 16.8706 5.0724 15.9719 4.40491 14.7429C3.75992 13.5597 3.38493 12.2908 3.32327 10.936C3.3066 10.6082 3.40076 10.4927 3.72076 10.4332C4.14084 10.3513 4.57126 10.3401 4.9949 10.4001C6.77153 10.6651 8.28317 11.4745 9.55148 12.7562C10.2748 13.4867 10.8223 14.359 11.3864 15.2117C11.9864 16.1172 12.6314 16.9801 13.4531 17.6868C13.7431 17.9348 13.9739 18.1234 14.1956 18.2618C13.5272 18.3383 12.4123 18.3553 11.6506 17.7403ZM12.4839 12.2704C12.4838 12.2282 12.4937 12.1866 12.5129 12.1492C12.532 12.1118 12.5598 12.0797 12.5939 12.0557C12.6279 12.0317 12.6672 12.0165 12.7083 12.0114C12.7494 12.0064 12.7911 12.0116 12.8297 12.0266C12.879 12.0446 12.9216 12.0779 12.9515 12.1217C12.9813 12.1656 12.9971 12.2178 12.9964 12.2712C12.9965 12.3057 12.9899 12.3399 12.9769 12.3717C12.964 12.4036 12.9449 12.4325 12.9208 12.4568C12.8968 12.481 12.8683 12.5002 12.8369 12.5131C12.8055 12.526 12.7719 12.5324 12.7381 12.532C12.7045 12.5321 12.6712 12.5254 12.6402 12.5122C12.6092 12.4991 12.5811 12.4798 12.5575 12.4554C12.5339 12.4311 12.5153 12.4021 12.5028 12.3704C12.4903 12.3386 12.4834 12.3046 12.4839 12.2704ZM15.0755 13.626C14.9089 13.6948 14.743 13.7542 14.5839 13.7619C14.3444 13.7704 14.1095 13.6942 13.9189 13.5461C13.6906 13.3508 13.5272 13.2421 13.4589 12.9023C13.4353 12.7363 13.4398 12.5674 13.4722 12.4029C13.5306 12.1251 13.4656 11.9468 13.2731 11.7854C13.1172 11.6529 12.9181 11.6164 12.6997 11.6164C12.625 11.6119 12.5524 11.5892 12.4881 11.5501C12.3964 11.5043 12.3214 11.3887 12.3931 11.246C12.4164 11.2002 12.5264 11.0881 12.5531 11.0677C12.8497 10.8961 13.1922 10.9522 13.5081 11.0813C13.8014 11.2036 14.0231 11.4278 14.3422 11.7455C14.668 12.1285 14.7272 12.2347 14.913 12.5218C15.0597 12.7469 15.193 12.9779 15.2839 13.2421C15.3397 13.4077 15.268 13.5427 15.0755 13.626Z" fill="#4D6BFE" />
-</svg>} horizontal />;
-
-export const BFLIconCard = ({title, href}) => <Card title={title} href={href} icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 20.683L12.01 2.5L24 20.683H21.767L12.009 5.878L3.471 18.806H15.593L16.832 20.683H0Z" fill="black" />
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.069 16.724L10.142 13.609L12.216 16.724H8.069ZM18.24 20.683L12.572 11.976H14.749L20.435 20.683H18.24ZM19.74 11.676L21.87 8.48602L24 11.676H19.74Z" fill="black" />
-</svg>} horizontal />;
-
 These examples cover a variety of use cases on Baseten, from [deploying your first LLM](/examples/deploy-your-first-model) and [image generation](/examples/image-generation) to [transcription](/examples/chains-audio-transcription), [embeddings](/examples/bei), and [RAG pipelines](/examples/chains-build-rag). Whether you're optimizing inference with [TensorRT-LLM](/examples/tensorrt-llm) or deploying a model with [Truss](/development/model/overview), these guides help you build and scale efficiently.
+
+## Choosing the right engine
+
+Not sure which engine to use? Check out our [engine documentation](/engines) to:
+
+* **Select the appropriate engine** for your model architecture (embeddings, dense LLMs, or MoE models)
+* **Understand performance trade-offs** between different engine options
+* **Configure advanced features** like quantization and speculative decoding
+* **Optimize for your specific use case** with engine-specific guidance
 
 ## Featured examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Deploy your first model" href="/examples/deploy-your-first-model" />
 
   <Card title="Fast LLMs with TensorRT-LLM" href="/examples/tensorrt-llm" />
@@ -9934,26 +14794,16 @@ These examples cover a variety of use cases on Baseten, from [deploying your fir
 
 For a **quick start**, explore the [model library](/examples/models/overview) with prebuilt, ready to deploy in one click models like DeepSeek, Llama, and Qwen.
 
-<CardGroup cols={2}>
+<CardGroup>
   <DeepSeekIconCard title="DeepSeek R1" href="/examples/models/deepseek/deepseek-r1" />
-
-  {" "}
 
   <OpenAIIconCard title="Whisper V3" href="/examples/models/whisper/whisper-v3-fastest" />
 
-  {" "}
-
   <QwenIconCard title="Qwen 2.5 32B Coder Instruct" href="/examples/models/qwen/qwen-2-5-32b-coder-instruct" />
-
-  {" "}
 
   <MetaIconCard title="Llama 3.3 70B Instruct" href="/examples/models/llama/llama-3.3-70B-instruct" />
 
-  {" "}
-
   <BFLIconCard title="flux-schnell" href="/examples/models/flux/flux-schnell" />
-
-  {" "}
 
   <MarsIconCard title="MARS6" href="/examples/models/mars/MARS6" />
 </CardGroup>
@@ -9962,7 +14812,7 @@ For a **quick start**, explore the [model library](/examples/models/overview) wi
 
 Train and fine-tune models with Baseten's scalable training infrastructure. From [fine-tuning large language models](/training/getting-started) to training custom models, our platform provides the tools and compute you need.
 
-<CardGroup cols={2}>
+<CardGroup>
   <OpenAIIconCard title="GPT OSS 20B with LoRA" href="https://github.com/basetenlabs/ml-cookbook/tree/main/examples/oss-gpt-20b-axolotl/training" />
 
   <MetaIconCard title="Llama 3.1 8B SFT" href="https://github.com/basetenlabs/ml-cookbook/tree/main/examples/llama-8b-lora-unsloth/training" />
@@ -9980,11 +14830,11 @@ Source: https://docs.baseten.co/examples/sglang
 
 Optimized inference for LLMs with SGLang
 
-Another great option for inference is [SGlang](#), which supports a wide range of models and performance optimizations. Besides TensorRT-LLM it is in many cases the state-of-the-art engine for serving LLMs.
+Another great option for inference is [SGLang](https://docs.sglang.ai/), which supports a wide range of models and performance optimizations. Besides TensorRT-LLM it is in many cases the state-of-the-art engine for serving LLMs.
 
 ## Example: Deploy Qwen 2.5 3B on an L4 via SGLang
 
-This configuration serves [Qwen 2.5 3B](#) with SGLang on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration serves [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) with SGLang on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 
@@ -9994,7 +14844,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Create an API key for your Baseten account">
     Create an [API key](https://app.baseten.co/settings/api_keys) and save it as an environment variable:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     export BASETEN_API_KEY="abcd.123456"
     ```
   </Step>
@@ -10010,7 +14860,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Install Truss in your local development environment">
     Install the latest version of Truss, our open-source model packaging framework, as well as OpenAI's model inference SDK, with:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     pip install --upgrade truss openai
     ```
   </Step>
@@ -10020,7 +14870,7 @@ Before you deploy a model, you'll need three quick setup steps.
 
 Start with an empty configuration file.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir qwen-2-5-3b-engine
 touch qwen-2-5-3b-engine/config.yaml
 ```
@@ -10063,7 +14913,7 @@ runtime:
 
 Pushing the model to Baseten kicks off a multi-stage deployment process.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss push qwen-2-5-3b-engine --publish
 ```
 
@@ -10102,12 +14952,120 @@ for chunk in stream:
 That's it! You have successfully deployed and called a model using SGLang.
 
 
+# Speculative Decoding Examples
+Source: https://docs.baseten.co/examples/speculative-decoding
+
+Lookahead decoding configurations for faster inference
+
+Speculative decoding with [lookahead decoding](/engines/engine-builder-llm/lookahead-decoding) accelerates inference for predictable workloads using n-gram patterns.
+
+## Quick start
+
+```yaml theme={"system"}
+trt_llm:
+  build:
+    speculator:
+      enable_b10_lookahead: true
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 8
+      lookahead_ngram_size: 1
+      lookahead_verification_set_size: 1
+```
+
+## Engine compatibility
+
+| Feature                | [Engine-Builder-LLM](/engines/engine-builder-llm/overview) | [BIS-LLM](/engines/bis-llm/overview) |
+| ---------------------- | ---------------------------------------------------------- | ------------------------------------ |
+| **Lookahead decoding** | ✅ Supported                                                | ✅ Gated Feature                      |
+| **Structured outputs** | ❌ Incompatible                                             | ✅ Supported                          |
+| **Tool calling**       | ❌ Incompatible                                             | ✅ Supported                          |
+| **Eagle speculation**  | ❌ Not supported                                            | ✅ Gated Feature                      |
+
+## Configuration examples
+
+### Code generation (Qwen2.5-Coder)
+
+```yaml theme={"system"}
+model_name: Qwen2.5-Coder-7B-Lookahead
+resources:
+  accelerator: H100
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-Coder-7B-Instruct"
+    quantization_type: fp8_kv
+    speculator:
+      enable_b10_lookahead: true
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+```
+
+### Large model (Llama-3.3-70B)
+
+```yaml theme={"system"}
+model_name: Llama-3.3-70B-Lookahead
+resources:
+  accelerator: H100:2
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+    quantization_type: fp8_kv
+    tensor_parallel_count: 2
+    speculator:
+      enable_b10_lookahead: true
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 5
+      lookahead_verification_set_size: 3
+```
+
+## Parameter tuning
+
+See [lookahead decoding documentation](/engines/engine-builder-llm/lookahead-decoding) for detailed parameter explanations.
+
+**Quick guidelines:**
+
+* **lookahead\_windows\_size**: 1-7 (set to 1 for predictable content, 3 or 5 for others.)
+* **lookahead\_ngram\_size**: 4-32 (large for code, smaller for creative tasks)
+* **lookahead\_verification\_set\_size**: Usually equal to lookahead\_windows\_size
+
+## Use cases
+
+| Use case                | lookahead\_windows\_size | lookahead\_ngram\_size | Why                            |
+| ----------------------- | ------------------------ | ---------------------- | ------------------------------ |
+| **Code generation**     | 7                        | 3                      | Code patterns, smaller n-grams |
+| **free form JSON/YAML** | 5                        | 5                      | Balanced for structured data   |
+| **Template completion** | 7-10                     | 5-7                    | Highly predictable content     |
+
+## Limitations
+
+❌ **Not compatible with:**
+
+* [Structured outputs](/engines/performance-concepts/structured-outputs) - Use BIS-LLM instead
+* [Function calling](/engines/performance-concepts/function-calling) - Use BIS-LLM instead
+* BIS-LLM engine - V2 stack doesn't support lookahead that is self-serviceable.
+
+## Further reading
+
+* [Lookahead decoding guide](/engines/engine-builder-llm/lookahead-decoding) - Complete reference config
+* [Engine-Builder-LLM overview](/engines/engine-builder-llm/overview) - Dense model engine
+* [BIS-LLM overview](/engines/bis-llm/overview) - MoE engine with structured outputs
+* [Quantization guide](/engines/performance-concepts/quantization-guide) - Performance optimization
+
+
 # LLM with Streaming
 Source: https://docs.baseten.co/examples/streaming
 
 Building an LLM with streaming output
 
-<Card title="View on GitHub" icon="github" horizontal href="https://github.com/basetenlabs/truss-examples/tree/main/qwen/qwen-7b-chat" />
+<Card title="View on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/qwen/qwen-7b-chat" />
 
 In this example, we go through a Truss that serves the Qwen 7B Chat LLM, and streams the output to the client.
 
@@ -10285,7 +15243,7 @@ resources:
 
 Deploy the model like you would other Trusses, with:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push qwen-7b-chat --publish
 ```
 
@@ -10295,23 +15253,23 @@ Source: https://docs.baseten.co/examples/tensorrt-llm
 
 Optimize LLMs for low latency and high throughput
 
-To get the best performance, we recommend using our [TensorRT-LLM Engine Builder](#) when deploying LLMs. Models deployed with the Engine Builder are [OpenAI compatible](#), support [structured output](#) and [function calling](#), and offer deploy-time post-training quantization to FP8 with Hopper GPUs.
+To get the best performance, we recommend using our [TensorRT-LLM Engine-Builder](/engines/engine-builder-llm/overview) when deploying LLMs. Models deployed with the Engine-Builder are [OpenAI compatible](/inference/calling-your-model), support [structured output](/engines/performance-concepts/structured-outputs) and [function calling](/engines/performance-concepts/function-calling), and offer deploy-time post-training quantization to FP8 with Hopper GPUs and NVFP4 with Blackwell GPUs.
 
-The Engine Builder supports LLMs from the following families, both foundation models and fine-tunes:
+The Engine-Builder supports LLMs from the following families, both foundation models and fine-tunes:
 
 * Llama 3.0 and later (including DeepSeek-R1 distills)
 * Qwen 2.5 and later (including Math, Coder, and DeepSeek-R1 distills)
 * Mistral (all LLMs)
 
-You can download preset Engine Builder configs for common models from the [model library](#).
+You can download preset Engine-Builder configs for common models from the [model library](/examples/models/overview).
 
 <Note>
-  The Engine Builder does not support vision-language models like [Llama 3.2 11B](#) or [Pixtral](#). For these models, we recommend [vLLM](/examples/vllm).
+  The Engine-Builder does not support vision-language models like Llama 3.2 11B or Pixtral. For these models, we recommend [vLLM](/examples/vllm).
 </Note>
 
 ## Example: Deploy Qwen 2.5 3B on an H100
 
-This configuration builds an inference engine to serve [Qwen 2.5 3B](#) on an H100 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration builds an inference engine to serve [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) on an H100 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 
@@ -10321,7 +15279,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Create an API key for your Baseten account">
     Create an [API key](https://app.baseten.co/settings/api_keys) and save it as an environment variable:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     export BASETEN_API_KEY="abcd.123456"
     ```
   </Step>
@@ -10337,7 +15295,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Install Truss in your local development environment">
     Install the latest version of Truss, our open-source model packaging framework, as well as OpenAI's model inference SDK, with:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     pip install --upgrade truss openai
     ```
   </Step>
@@ -10347,12 +15305,12 @@ Before you deploy a model, you'll need three quick setup steps.
 
 Start with an empty configuration file.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir qwen-2-5-3b-engine
 touch qwen-2-5-3b-engine/config.yaml
 ```
 
-This configuration file specifies model information and Engine Builder arguments. You can find dozens of examples in the [model library](#) as well as details on each config option in the [engine builder reference](#).
+This configuration file specifies model information and Engine-Builder arguments. You can find dozens of examples in the [model library](/examples/models/overview) as well as details on each config option in the [engine builder reference](/engines/engine-builder-llm/engine-builder-config).
 
 Below is an example for Qwen 2.5 3B.
 
@@ -10370,7 +15328,7 @@ model_metadata:
   repo_id: Qwen/Qwen2.5-3B-Instruct
 model_name: Qwen 2.5 3B Instruct
 python_version: py39
-resources: # Engine Builder GPU cannot be changed post-deployment
+resources: # Engine-Builder GPU cannot be changed post-deployment
   accelerator: H100
   use_gpu: true
 secrets: {}
@@ -10398,7 +15356,7 @@ trt_llm:
 
 Pushing the model to Baseten kicks off a multi-stage build and deployment process.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss push qwen-2-5-3b-engine --publish
 ```
 
@@ -10408,7 +15366,7 @@ Upon deployment, check your terminal logs or Baseten account to find the URL for
 
 This model is OpenAI compatible and can be called using the OpenAI client.
 
-```python  theme={"system"}
+```python theme={"system"}
 import os
 from openai import OpenAI
 
@@ -10434,7 +15392,7 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-That's it! You have successfully deployed and called an LLM optimized with the TensorRT-LLM Engine Builder. Check the [model library](#) for more examples and the [engine builder reference](#) for details on each config option.
+That's it! You have successfully deployed and called an LLM optimized with the TensorRT-LLM Engine-Builder. Check the [model library](/examples/models/overview) for more examples and the [engine builder reference](/engines/engine-builder-llm/engine-builder-config) for details on each config option.
 
 
 # Text to speech
@@ -10442,7 +15400,7 @@ Source: https://docs.baseten.co/examples/text-to-speech
 
 Building a text-to-speech model with Kokoro
 
-<Card title="View example on GitHub" horizontal icon="github" iconType="light" href="https://github.com/basetenlabs/truss-examples/tree/main/kokoro" />
+<Card title="View example on GitHub" icon="github" href="https://github.com/basetenlabs/truss-examples/tree/main/kokoro" />
 
 In this example, we go through a Truss that serves Kokoro, a frontier text-to-speech model.
 
@@ -10695,7 +15653,7 @@ system_packages:
 
 Deploy the model like you would other Trusses by running the following command:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss push kokoro --publish
 ```
 
@@ -10740,11 +15698,11 @@ Source: https://docs.baseten.co/examples/vllm
 
 Serve a wide range of models
 
-Another great option for inference is [vLLM](#), which supports a wide range of models and performance optimizations.
+Another great option for inference is [vLLM](https://docs.vllm.ai/), which supports a wide range of models and performance optimizations.
 
 ## Example: Deploy Qwen 2.5 3B on an L4
 
-This configuration serves [Qwen 2.5 3B](#) with vLLM on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration serves [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) with vLLM on an L4 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 
@@ -10754,7 +15712,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Create an API key for your Baseten account">
     Create an [API key](https://app.baseten.co/settings/api_keys) and save it as an environment variable:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     export BASETEN_API_KEY="abcd.123456"
     ```
   </Step>
@@ -10770,7 +15728,7 @@ Before you deploy a model, you'll need three quick setup steps.
   <Step title="Install Truss in your local development environment">
     Install the latest version of Truss, our open-source model packaging framework, as well as OpenAI's model inference SDK, with:
 
-    ```sh  theme={"system"}
+    ```sh theme={"system"}
     pip install --upgrade truss openai
     ```
   </Step>
@@ -10780,7 +15738,7 @@ Before you deploy a model, you'll need three quick setup steps.
 
 Start with an empty configuration file.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 mkdir qwen-2-5-3b-engine
 touch qwen-2-5-3b-engine/config.yaml
 ```
@@ -10821,7 +15779,7 @@ environment_variables:
 
 Pushing the model to Baseten kicks off a multi-stage deployment process.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss push qwen-2-5-3b-engine --publish
 ```
 
@@ -10865,265 +15823,46 @@ Source: https://docs.baseten.co/inference/async
 
 Run asynchronous inference on deployed models
 
-Async requests are a "fire and forget" way of executing model inference requests. Instead of waiting for a response from a model, making an async request queues the request, and immediately returns with a request identifier. Optionally, async request results are sent via a `POST` request to a user-defined webhook upon completion.
-
-Use async requests for:
-
-* Long-running inference tasks that may otherwise hit request timeouts.
-* Batched inference jobs.
-* Prioritizing certain inference requests.
+Async inference is a *fire and forget* pattern for model requests. Instead of
+waiting for a response, you receive a request ID immediately while inference
+runs in the background. When complete, results are delivered to your webhook
+endpoint.
 
 <Note>
-  Async fast facts:
-
-  * Async requests can be made to any model—**no model code changes necessary**.
-  * Async requests can remain queued for up to 72 hours and run for up to 1 hour.
-  * Async requests are **not** compatible with streaming model output.
-  * Async request inputs and model outputs are **not** stored after an async request has been completed. Instead, model outputs will be sent to your webhook via a `POST` request.
+  Async requests work with any deployed model, no code changes are required.
+  Requests can queue for up to 72 hours and run for up to 1 hour. Async inference is not
+  compatible with streaming output.
 </Note>
+
+Use async inference for:
+
+* **Long-running tasks** that would otherwise hit request timeouts.
+* **Batch processing** where you don't need immediate responses.
+* **Priority queuing** to serve VIP customers faster.
+
+<Warning>
+  Baseten does not store model outputs. If webhook delivery fails after all retries,
+  your data is lost. See [Webhook delivery](#webhook-delivery) for mitigation
+  strategies.
+</Warning>
 
 ## Quick start
 
-There are two ways to use async inference:
+<Steps>
+  <Step title="Set up a webhook endpoint">
+    Create an HTTPS endpoint to receive results.
+    Use [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point, or deploy to any service that can receive POST requests.
+  </Step>
 
-1. Provide a webhook endpoint where model outputs will be sent via a `POST` request. If providing a webhook, you can **use async inference on any model, without making any changes to your model code**.
-2. Inside your Truss' `model.py`, save prediction results to cloud storage. If a webhook endpoint is provided, your model outputs will also be sent to your webhook.
+  <Step title="Make an async request">
+    Call your model's `/async_predict` endpoint with your webhook URL:
 
-Note that Baseten **does not** store model outputs. If you do not wish to use a webhook, your `model.py` must write model outputs to a cloud storage bucket or database as part of its implementation.
-
-<Tabs>
-  <Tab title="Quick start with webhook">
-    <Steps>
-      <Step title="Setup webhook endpoint">
-        Set up a webhook endpoint for handling completed async requests. Since Baseten doesn't store model outputs, model outputs from async requests will be sent to your webhook endpoint.
-
-        Before creating your first async request, try running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Check out [this example webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-        We recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point.
-
-        <iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-      </Step>
-
-      <Step title="Schedule an async predict request">
-        Call `/async_predict` on your model. The body of an `/async_predict` request includes the model input in `model_input` field, with the addition of a webhook endpoint (from the previous step) in the `webhook_endpoint` field.
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""  # Replace this with your model ID
-        webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        # Call the async_predict endpoint of the production deployment
-        resp = requests.post(
-            f"https://model-{model_id}.api.baseten.co/production/async_predict",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"},
-            json={
-                "model_input": {"prompt": "hello world!"},
-                "webhook_endpoint": webhook_endpoint
-                # Optional fields for priority, max_time_in_queue_seconds, etc
-            },
-        )
-
-        print(resp.json())
-        ```
-
-        Save the `request_id` from the `/async_predict` response to check its status or cancel it.
-
-        ```json 201 theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba"
-        }
-        ```
-
-        See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
-      </Step>
-
-      <Step title="Check async predict results">
-        Using the `request_id` saved from the previous step, check the status of your async predict request:
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""
-        request_id = ""
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        resp = requests.get(
-            f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"}
-        )
-
-        print(resp.json())
-        ```
-
-        Once your model has finished executing the request, the async predict result will be sent to your webhook in a `POST` request.
-
-        ```json  theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba",
-          "model_id": "my_model_id",
-          "deployment_id": "my_deployment_id",
-          "type": "async_request_completed",
-          "time": "2024-04-30T01:01:08.883423Z",
-          "data": {
-            "my_model_output": "hello world!"
-          },
-          "errors": []
-        }
-        ```
-      </Step>
-
-      <Step title="Secure your webhook">
-        We strongly recommend securing the requests sent to your webhooks to validate that they are from Baseten.
-
-        For instructions, see our [guide to securing async requests](/inference/async#securing-async-inference).
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="Quick start with saving model outputs">
-    <Steps>
-      <Step title="Update your model to save prediction results">
-        Update your Truss's `model.py` to save prediction results to cloud storage, such as S3 or GCS. We recommend implementing this in your model's `postprocess()` method, which will run on CPU after the prediction has completed.
-      </Step>
-
-      <Step title="Setup webhook endpoint">
-        Optionally, set up a webhook endpoint so Baseten can notify you when your async request completes.
-
-        Before creating your first async request, try running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Check out [this example webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-        We recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point.
-
-        <iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-      </Step>
-
-      <Step title="Schedule an async predict request">
-        Call `/async_predict` on your model. The body of an `/async_predict` request includes the model input in `model_input` field, with the addition of a webhook endpoint (from the previous step) in the `webhook_endpoint` field.
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""  # Replace this with your model ID
-        webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        # Call the async_predict endpoint of the production deployment
-        resp = requests.post(
-            f"https://model-{model_id}.api.baseten.co/production/async_predict",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"},
-            json={
-                "model_input": {"prompt": "hello world!"},
-                "webhook_endpoint": webhook_endpoint
-                # Optional fields for priority, max_time_in_queue_seconds, etc
-            },
-        )
-
-        print(resp.json())
-        ```
-
-        Save the `request_id` from the `/async_predict` response to check its status or cancel it.
-
-        ```json 201 theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba"
-        }
-        ```
-
-        See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
-      </Step>
-
-      <Step title="Check async predict results">
-        Using the `request_id` saved from the previous step, check the status of your async predict request:
-
-        {" "}
-
-        ```py Python theme={"system"}
-        import requests
-        import os
-
-        model_id = ""
-        request_id = ""
-        # Read secrets from environment variables
-        baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-        resp = requests.get(
-            f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-            headers={"Authorization": f"Api-Key {baseten_api_key}"}
-        )
-
-        print(resp.json())
-        ```
-
-        Once your model has finished executing the request, the async predict result will be sent to your webhook in a `POST` request.
-
-        ```json  theme={"system"}
-        {
-          "request_id": "9876543210abcdef1234567890fedcba",
-          "model_id": "my_model_id",
-          "deployment_id": "my_deployment_id",
-          "type": "async_request_completed",
-          "time": "2024-04-30T01:01:08.883423Z",
-          "data": {
-            "my_model_output": "hello world!"
-          },
-          "errors": []
-        }
-        ```
-      </Step>
-
-      <Step title="Secure your webhook">
-        We strongly recommend securing the requests sent to your webhooks to validate that they are from Baseten.
-
-        For instructions, see our [guide to securing async requests](/inference/async#securing-async-inference).
-      </Step>
-    </Steps>
-  </Tab>
-</Tabs>
-
-<Tip>
-  **Chains**: this guide is written for Truss models, but
-  [Chains](/development/chain/overview) support async inference likewise. An
-  Chain entrypoint can be invoked via its `async_run_remote` endpoint, e.g.
-  `https://chain-{chain_id}.api.baseten.co/production/async_run_remote`. The
-  internal Chainlet-Chainlet call will still run synchronously.
-</Tip>
-
-## User guide
-
-### Configuring the webhook endpoint
-
-Configure your webhook endpoint to handle `POST` requests with [async predict results](/inference/async#processing-async-predict-results). We require that webhook endpoints use HTTPS.
-
-We recommend running a sample request against your webhook endpoint to ensure that it can consume async predict results properly. Try running [this webhook test](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#test_webhook.py).
-
-For local development, we recommend using [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code) as a starting point. This code validates the webhook request and logs the payload.
-
-<iframe src="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code?embed=true" width="100%" height="400" />
-
-### Making async requests
-
-<Tabs>
-  <Tab title="Production deployment">
-    ```py Python theme={"system"}
+    ```python theme={"system"}
     import requests
     import os
 
-    model_id = ""  # Replace this with your model ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
+    model_id = "YOUR_MODEL_ID"
+    webhook_endpoint = "YOUR_WEBHOOK_ENDPOINT"
     baseten_api_key = os.environ["BASETEN_API_KEY"]
 
     # Call the async_predict endpoint of the production deployment
@@ -11132,264 +15871,414 @@ For local development, we recommend using [this Repl](https://replit.com/@basete
         headers={"Authorization": f"Api-Key {baseten_api_key}"},
         json={
             "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
+            "webhook_endpoint": webhook_endpoint,
+            # "priority": 0,
+            # "max_time_in_queue_seconds": 600,
         },
     )
 
     print(resp.json())
     ```
-  </Tab>
 
-  <Tab title="Development deployment">
-    ```py Python theme={"system"}
-    import requests
-    import os
+    You'll receive a `request_id` immediately.
+  </Step>
 
-    model_id = ""  # Replace this with your model ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+  <Step title="Receive results">
+    When inference completes, Baseten sends a POST request to your webhook with the model output.
+    See [Webhook payload](#webhook-payload) for the response format.
+  </Step>
+</Steps>
 
-    # Call the async_predict endpoint of the development deployment
-    resp = requests.post(
-        f"https://model-{model_id}.api.baseten.co/development/async_predict",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"},
-        json={
-            "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
-        },
-    )
+<Tip>
+  **Chains** support async inference through `async_run_remote`.
+  Inference requests to the entrypoint are queued, but internal Chainlet-to-Chainlet calls run synchronously.
+</Tip>
 
-    print(resp.json())
-    ```
-  </Tab>
+## How async works
 
-  <Tab title="Other published deployments">
-    ```py Python theme={"system"}
-    import requests
-    import os
+Async inference decouples request submission from processing, letting you queue work without waiting for results.
 
-    model_id = ""  # Replace this with your model ID
-    deployment_id = "" # Replace this with your deployment ID
-    webhook_endpoint = ""  # Replace this with your webhook endpoint URL
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+### Request lifecycle
 
-    # Call the async_predict endpoint of the given deployment
-    resp = requests.post(
-        f"https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/async_predict",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"},
-        json={
-            "model_input": {"prompt": "hello world!"},
-            "webhook_endpoint": webhook_endpoint
-            # Optional fields for priority, max_time_in_queue_seconds, etc
-        },
-    )
+When you submit an async request:
 
-    print(resp.json())
-    ```
-  </Tab>
-</Tabs>
+1. You call `/async_predict` and immediately receive a `request_id`.
+2. Your request enters a queue managed by the Async Request Service.
+3. A background worker picks up your request and calls your model's predict endpoint.
+4. Your model runs inference and returns a response.
+5. Baseten sends the response to your webhook URL using POST.
 
-Create an async request by calling a model's `/async_predict` endpoint. See the [async inference API reference](/reference/inference-api/predict-endpoints/environments-async-predict) for more endpoint details.
+The `max_time_in_queue_seconds` parameter controls how long a request waits
+before expiring. It defaults to 10 minutes but can extend to 72 hours.
 
-### Getting and canceling async requests
+### Autoscaling behavior
 
-<Tabs>
-  <Tab title="Get async request details">
-    <Info> You may get the status of an async request for up to 1 hour after the request has been completed. </Info>
+The async queue is decoupled from model scaling. Requests queue successfully
+even when your model has zero replicas.
 
-    ```py Python theme={"system"}
-    import requests
-    import os
+When your model is scaled to zero:
 
-    model_id = ""
-    request_id = ""
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+1. Your request enters the queue while the model has no running replicas.
+2. The queue processor attempts to call your model, triggering the autoscaler.
+3. Your request waits while the model cold-starts.
+4. Once the model is ready, inference runs and completes.
+5. Baseten delivers the result to your webhook.
 
-    resp = requests.get(
-        f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"}
-    )
+If the model doesn't become ready within `max_time_in_queue_seconds`, the
+request expires with status `EXPIRED`. Set this parameter to account for your
+model's startup time. For models with long cold starts, consider keeping minimum
+replicas running using
+[autoscaling settings](/deployment/autoscaling).
 
-    print(resp.json())
-    ```
-  </Tab>
+### Async priority
 
-  <Tab title="Cancel async request">
-    ```py Python theme={"system"}
-    import requests
-    import os
+Async requests are subject to two levels of priority: how they compete with sync
+requests for model capacity, and how they're ordered relative to other async
+requests in the queue.
 
-    model_id = ""
-    request_id = ""
-    # Read secrets from environment variables
-    baseten_api_key = os.environ["BASETEN_API_KEY"]
+#### Sync vs async concurrency
 
-    resp = requests.delete(
-        f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
-        headers={"Authorization": f"Api-Key {baseten_api_key}"}
-    )
+Sync and async requests share your model's concurrency pool, controlled by
+`predict_concurrency` in your model configuration:
 
-    print(resp.json())
-    ```
-  </Tab>
-</Tabs>
+```yaml config.yaml theme={"system"}
+runtime:
+  predict_concurrency: 10
+```
 
-Manage async requests using the [get async request API endpoint](/reference/inference-api/status-endpoints/get-async-request-status) and the [cancel async request API endpoint](/reference/inference-api/predict-endpoints/cancel-async-request).
+The `predict_concurrency` setting defines how many requests your model can
+process simultaneously per replica. When both sync and async requests are in
+flight, sync requests take priority. The queue processor monitors your model's
+capacity and backs off when it receives 429 responses, ensuring sync traffic
+isn't starved.
 
-### Processing async predict results
+For example, if your model has `predict_concurrency=10` and 8 sync requests are
+running, only 2 slots remain for async requests. The remaining async requests
+stay queued until capacity frees up.
 
-Baseten does not store async predict results. Ensure that prediction outputs are either processed by your webhook, or saved to cloud storage in your model code (for example, in your model's `postprocess` method).
+#### Async queue priority
 
-If a webhook endpoint was provided in the `/async_predict` request, the async predict results will be sent in a `POST` request to the webhook endpoint. Errors in executing the async prediction will be included in the `errors` field of the async predict result.
+Within the async queue itself, you can control processing order using the
+`priority` parameter. This is useful for serving specific requests faster or
+ensuring critical batch jobs run before lower-priority work.
 
-Async predict result schema:
+```python theme={"system"}
+import requests
+import os
 
-* `request_id` (string): the ID of the completed async request. This matches the `request_id` field of the `/async_predict` response.
-* `model_id` (string): the ID of the model that executed the request
-* `deployment_id` (string): the ID of the deployment that executed the request
-* `type` (string): the type of the async predict result. This will always be `"async_request_completed"`, even in error cases.
-* `time` (datetime): the time in UTC at which the request was sent to the webhook
-* `data` (dict or string): the prediction output
-* `errors` (list): any errors that occurred in processing the async request
+model_id = "YOUR_MODEL_ID"
+webhook_endpoint = "YOUR_WEBHOOK_URL"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
 
-Example async predict result:
+resp = requests.post(
+    f"https://model-{model_id}.api.baseten.co/production/async_predict",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"},
+    json={
+        "webhook_endpoint": webhook_endpoint,
+        "model_input": {"prompt": "hello world!"},
+        "priority": 0,
+    },
+)
 
-```json  theme={"system"}
+print(resp.json())
+```
+
+The `priority` parameter accepts values 0, 1, or 2. Lower values indicate higher
+priority: a request with `priority: 0` is processed before requests with
+`priority: 1` or `priority: 2`. If you don't specify a priority, requests
+default to priority 1.
+
+Use priority 0 sparingly for truly urgent requests. If all requests are marked
+priority 0, the prioritization has no effect.
+
+## Webhooks
+
+Baseten delivers async results to your webhook endpoint when inference completes.
+
+### Request format
+
+When inference completes, Baseten sends a POST request to your webhook with these headers and body:
+
+```text theme={"system"}
+POST /your-webhook-path HTTP/2.0
+Content-Type: application/json
+X-BASETEN-REQUEST-ID: 9876543210abcdef1234567890fedcba
+X-BASETEN-SIGNATURE: v1=abc123...
+```
+
+The `X-BASETEN-REQUEST-ID` header contains the request ID for correlating webhooks with your original requests.
+The `X-BASETEN-SIGNATURE` header is only included if a [webhook secret](#secure-webhooks) is configured.
+
+<Note>
+  Webhook endpoints must use HTTPS (except `localhost` for development). Baseten
+  supports HTTP/2 and HTTP/1.1 connections.
+</Note>
+
+```json theme={"system"}
 {
   "request_id": "9876543210abcdef1234567890fedcba",
-  "model_id": "my_model_id",
-  "deployment_id": "my_deployment_id",
+  "model_id": "abc123",
+  "deployment_id": "def456",
   "type": "async_request_completed",
   "time": "2024-04-30T01:01:08.883423Z",
-  "data": {
-    "my_model_output": "hello world!"
-  },
+  "data": { "output": "model response here" },
   "errors": []
 }
 ```
 
+The body contains the `request_id` matching your original `/async_predict`
+response, along with `model_id` and `deployment_id` identifying which deployment
+ran the request. The `data` field contains your model output, or `null` if an
+error occurred. The `errors` array is empty on success, or contains error
+objects on failure.
+
+### Webhook delivery
+
+<Warning>
+  If all delivery attempts fail, your model output is permanently lost.
+</Warning>
+
+Baseten delivers webhooks on a best-effort basis with automatic retries:
+
+| Setting         | Value                      |
+| --------------- | -------------------------- |
+| Total attempts  | 3 (1 initial + 2 retries). |
+| Backoff         | 1 second, then 4 seconds.  |
+| Timeout         | 10 seconds per attempt.    |
+| Retryable codes | 500, 502, 503, 504.        |
+
+**To prevent data loss:**
+
+1. **Save outputs in your model.** Use the `postprocess()` function to write to
+   cloud storage:
+
+```python theme={"system"}
+import json
+import boto3
+
+class Model:
+  # ...
+    def postprocess(self, model_output):
+        s3 = boto3.client("s3")
+        s3.put_object(
+            Bucket="my-bucket",
+            Key=f"outputs/{self.context.get('request_id')}.json",
+            Body=json.dumps(model_output)
+        )
+        return model_output
+```
+
+This will process your model output and save it to your desired location.
+
+The `postprocess` method runs after inference completes. Use
+`self.context.get('request_id')` to access the async request ID for correlating
+outputs with requests.
+
+2. **Use a reliable endpoint.** Deploy your webhook to a highly available
+   service like a cloud function or message queue.
+
+### Secure webhooks
+
+Create a webhook secret in the
+[Secrets tab](https://app.baseten.co/settings/secrets) to verify requests are
+from Baseten.
+
+When configured, Baseten includes an `X-BASETEN-SIGNATURE` header:
+
+```text theme={"system"}
+X-BASETEN-SIGNATURE: v1=abc123...
+```
+
+To validate, compute an HMAC-SHA256 of the request body using your secret and compare:
+
+```python theme={"system"}
+import hashlib
+import hmac
+
+def verify_signature(body: bytes, signature: str, secret: str) -> bool:
+    expected = hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
+    actual = signature.replace("v1=", "").split(",")[0]
+    return hmac.compare_digest(expected, actual)
+```
+
+The function computes an HMAC-SHA256 hash of the raw request body using your
+webhook secret. It extracts the signature value after `v1=` and uses
+`compare_digest` for timing-safe comparison to prevent timing attacks.
+
+Rotate secrets periodically. During rotation, both old and new secrets remain
+valid for 24 hours.
+
+## Manage requests
+
+You can check the status of async requests or cancel them while they're queued.
+
+### Check request status
+
+To check the status of an async request, call the status endpoint with your request ID:
+
+```python theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+request_id = "YOUR_REQUEST_ID"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.get(
+    f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"}
+)
+
+print(resp.json())
+```
+
+Status is available for 1 hour after completion. See the
+[status API reference](/reference/inference-api/status-endpoints/get-async-request-status)
+for details.
+
+| Status           | Description                                      |
+| ---------------- | ------------------------------------------------ |
+| `QUEUED`         | Waiting in queue.                                |
+| `IN_PROGRESS`    | Currently processing.                            |
+| `SUCCEEDED`      | Completed successfully.                          |
+| `FAILED`         | Failed after retries.                            |
+| `EXPIRED`        | Exceeded `max_time_in_queue_seconds`.            |
+| `CANCELED`       | Canceled by user.                                |
+| `WEBHOOK_FAILED` | Inference succeeded but webhook delivery failed. |
+
+### Cancel a request
+
+Only `QUEUED` requests can be canceled. To cancel a request, call the cancel
+endpoint with your request ID:
+
+```python theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+request_id = "YOUR_REQUEST_ID"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.delete(
+    f"https://model-{model_id}.api.baseten.co/async_request/{request_id}",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"}
+)
+
+print(resp.json())
+```
+
+For more information, see the [cancel async request API reference](/reference/inference-api/predict-endpoints/cancel-async-request).
+
+## Error codes
+
+When inference fails, the webhook payload returns an `errors` array:
+
+```json theme={"system"}
+{
+  "errors": [{ "code": "MODEL_PREDICT_ERROR", "message": "Details here" }]
+}
+```
+
+| Code                    | HTTP    | Description                     | Retried |
+| ----------------------- | ------- | ------------------------------- | ------- |
+| `MODEL_NOT_READY`       | 400     | Model is loading or starting.   | Yes     |
+| `MODEL_DOES_NOT_EXIST`  | 404     | Model or deployment not found.  | No      |
+| `MODEL_INVALID_INPUT`   | 422     | Invalid input format.           | No      |
+| `MODEL_PREDICT_ERROR`   | 500     | Exception in `model.predict()`. | Yes     |
+| `MODEL_UNAVAILABLE`     | 502/503 | Model crashed or scaling.       | Yes     |
+| `MODEL_PREDICT_TIMEOUT` | 504     | Inference exceeded timeout.     | Yes     |
+
+### Inference retries
+
+When inference fails with a retryable error, Baseten automatically retries the
+request using exponential backoff. Configure this behavior with
+`inference_retry_config`:
+
+```python theme={"system"}
+import requests
+import os
+
+model_id = "YOUR_MODEL_ID"
+webhook_endpoint = "YOUR_WEBHOOK_URL"
+baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+resp = requests.post(
+    f"https://model-{model_id}.api.baseten.co/production/async_predict",
+    headers={"Authorization": f"Api-Key {baseten_api_key}"},
+    json={
+        "model_input": {"prompt": "hello world!"},
+        "webhook_endpoint": webhook_endpoint,
+        "inference_retry_config": {
+            "max_attempts": 3,
+            "initial_delay_ms": 1000,
+            "max_delay_ms": 5000
+        }
+    },
+)
+
+print(resp.json())
+```
+
+| Parameter          | Range    | Default | Description                                      |
+| ------------------ | -------- | ------- | ------------------------------------------------ |
+| `max_attempts`     | 1-10     | 3       | Total inference attempts including the original. |
+| `initial_delay_ms` | 0-10,000 | 1000    | Delay before the first retry (ms).               |
+| `max_delay_ms`     | 0-60,000 | 5000    | Maximum delay between retries (ms).              |
+
+Retries use exponential backoff with a multiplier of 2. With the default
+configuration, delays progress as: 1s → 2s → 4s → 5s (capped at `max_delay_ms`).
+
+Only requests that fail with retryable error codes (500, 502, 503, 504) are
+retried. Non-retryable errors like invalid input (422) or model not found (404)
+fail immediately.
+
+<Note>
+  Inference retries are distinct from [webhook delivery retries](#webhook-delivery).
+  Inference retries happen when calling your model fails. Webhook retries happen
+  when delivering results to your endpoint fails.
+</Note>
+
+## Rate limits
+
+There are rate limits for the async predict endpoint and the status polling endpoint.
+If you exceed these limits, you will receive a 429 status code.
+
+| Endpoint                                     | Limit                               |
+| -------------------------------------------- | ----------------------------------- |
+| Predict endpoint requests (`/async_predict`) | 12,000 requests/minute (org-level). |
+| Status polling                               | 20 requests/second.                 |
+| Cancel request                               | 20 requests/second.                 |
+
+Use webhooks instead of polling to avoid status endpoint limits. Contact
+[support@baseten.co](mailto:support@baseten.co) to request increases.
+
 ## Observability
 
-Metrics for async request execution are available on the [Metrics tab](/observability/metrics#async-queue-metrics) of your model dashboard.
+Async metrics are available on the
+[Metrics tab](/observability/metrics#async-queue-metrics) of your model
+dashboard:
 
-* Async requests are included in inference latency and volume metrics.
-* A time in async queue chart displays the time an async predict request spent in the `QUEUED` state before getting processed by the model.
-* A async queue size chart displays the current number of queued async predict requests.
+* **Inference latency/volume**: includes async requests.
+* **Time in async queue**: time spent in `QUEUED` state.
+* **Async queue size**: number of queued requests.
 
-<Frame caption="The time in async queue chart.">
-  <img src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1dad9805fe14469dcec6d4a34de6177d" data-og-width="1183" width="1183" data-og-height="674" height="674" data-path="images/async-metrics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=45f877ef07f77b697b8c32b29fd89ace 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=0eff92e843c7801b7fe1c708ae424df9 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=bac3852551a0194b12cdd376a3221a1d 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5c44d8f82786d4fd3511f9cbca34d1ea 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=47e9439cda73a7709776ad4a8c802562 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/async-metrics.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c4400b8e7eec5caaacd4dd23ba2f922f 2500w" />
+<Frame>
+  <img />
 </Frame>
 
-# Securing async inference
+## Resources
 
-Since async predict results are sent to a webhook available to anyone over the internet with the endpoint, you'll want to have some verification that these results sent to the webhook are actually coming from Baseten.
+For more information and resources, see the following:
 
-We recommend leveraging webhook signatures to secure webhook payloads and ensure they are from Baseten.
+<CardGroup>
+  <Card title="Webhook starter code" icon="code" href="https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code">
+    Fork this Repl to quickly set up a webhook endpoint for testing async inference.
+  </Card>
 
-This is a two-step process:
-
-1. Create a webhook secret.
-2. Validate a webhook signature sent as a header along with the webhook request payload.
-
-## Creating webhook secrets
-
-Webhook secrets can be generated via the [Secrets tab](https://app.baseten.co/settings/secrets).
-
-<Frame caption="Generate a webhook secret with the &#x22;Add webhook secret&#x22; button.">
-  <img src="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=21bbb82f4d935acb8d2bef093976ee5c" data-og-width="1276" width="1276" data-og-height="387" height="387" data-path="images/webhook-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=280&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=6363c0d708393aae40a2dea2552fef05 280w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=560&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=9d8e6ca890928b6b17c06fc964c8d07d 560w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=840&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=35f91f3f4cf3ab3c91a23be8e65c20ac 840w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=1100&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=1eddd1a9b52b0d959bb7108772933973 1100w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=1650&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=42d2b29476c3e1e3ef2ac11b5f7eb73a 1650w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/webhook-secret.png?w=2500&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=19a19ea3aec8c1d8854bf61f23c7893e 2500w" />
-</Frame>
-
-A webhook secret looks like:
-
-```
-whsec_AbCdEf123456GhIjKlMnOpQrStUvWxYz12345678
-```
-
-Ensure this webhook secret is saved securely. It can be viewed at any time and [rotated if necessary](/inference/async#creating-webhook-secrets) in the Secrets tab.
-
-## Validating webhook signatures
-
-If a webhook secret exists, Baseten will include a webhook signature in the `"X-BASETEN-SIGNATURE"` header of the webhook request so you can verify that it is coming from Baseten.
-
-A Baseten signature header looks like:
-
-`"X-BASETEN-SIGNATURE": "v1=signature"`
-
-Where `signature` is an [HMAC](https://docs.python.org/3.12/library/hmac.html#module-hmac) generated using a [SHA-256](https://en.wikipedia.org/wiki/SHA-2) hash function calculated over the whole async predict result and signed using a webhook secret.
-
-If multiple webhook secrets are active, a signature will be generated using each webhook secret. In the example below, the newer webhook secret was used to create `newsignature` and the older (soon to expire) webhook secret was used to create `oldsignature`.
-
-`"X-BASETEN-SIGNATURE": "v1=newsignature,v1=oldsignature"`
-
-To validate a Baseten signature, we recommend the following. A full Baseten signature validation example can be found in [this Repl](https://replit.com/@baseten-team/Baseten-Async-Inference-Starter-Code#validation.py).
-
-<Steps>
-  <Step title="Compare timestamps">
-    Compare the async predict result timestamp with the current time and decide if it was received within an acceptable tolerance window.
-
-    ```python  theme={"system"}
-    TIMESTAMP_TOLERANCE_SECONDS = 300
-
-    # Check timestamp in async predict result against current time to ensure its within our tolerance
-    if (datetime.now(timezone.utc) -
-        async_predict_result.time).total_seconds() > TIMESTAMP_TOLERANCE_SECONDS:
-      logging.error(
-          f"Async predict result was received after {TIMESTAMP_TOLERANCE_SECONDS} seconds and is considered stale, Baseten signature was not validated."
-      )
-    ```
-  </Step>
-
-  <Step title="Recompute Baseten signature">
-    Recreate the Baseten signature using webhook secret(s) and the async predict result.
-
-    ```python  theme={"system"}
-    WEBHOOK_SECRETS = [] # Add your webhook secrets here
-
-    async_predict_result_json = async_predict_result.model_dump_json()
-
-    # We recompute expected Baseten signatures with each webhook secret
-    for webhook_secret in WEBHOOK_SECRETS:
-      for actual_signature in baseten_signature.replace("v1=", "").split(","):
-        expected_signature = hmac.digest(
-            webhook_secret.encode("utf-8"),
-            async_predict_result_json.encode("utf-8"),
-            hashlib.sha256,
-        ).hex()
-    ```
-  </Step>
-
-  <Step title="Compare signatures">
-    Compare the expected Baseten signature with the actual computed signature using [`compare_digest`](https://docs.python.org/3/library/hmac.html#hmac.compare_digest), which will return a boolean representing whether the signatures are indeed the same.
-
-    ```python  theme={"system"}
-    hmac.compare_digest(expected_signature, actual_signature)
-    ```
-  </Step>
-</Steps>
-
-## Keeping webhook secrets secure
-
-<Tip> We recommend periodically rotating webhook secrets. </Tip>
-
-In the event that a webhook secret is exposed, you're able to rotate or remove it.
-
-Rotating a secret in the UI will set the existing webhook secret to expire in 24 hours, and generate a new webhook secret. During this period, Baseten will include multiple signatures in the signature headers.
-
-Removing webhook secrets could cause your signature validation to fail. Recreate a webhook secret after deleting and ensure your signature validation code is up to date with the new webhook secret.
-
-## FAQs
-
-### Can I run sync and async requests on the same model?
-
-Yes, you can run both sync and async requests on the same model. Sync requests always take priority over async requests. Keep the following in mind:
-
-* **Rate Limits**: Ensure you adhere to rate limits, as they apply to async requests. [Learn more](/reference/inference-api/predict-endpoints/environments-async-predict#rate-limits)
-* **Concurrency**: Both sync and async requests count toward the total number of concurrent requests. [Learn more](/development/model/performance/concurrency)
+  <Card title="Webhook secrets" icon="key" href="https://app.baseten.co/settings/secrets">
+    Configure webhook secrets in your Baseten settings to secure webhook delivery.
+  </Card>
+</CardGroup>
 
 
 # Call your model
@@ -11397,11 +16286,40 @@ Source: https://docs.baseten.co/inference/calling-your-model
 
 Run inference on deployed models
 
-Once deployed, your model is accessible via an [API endpoint](/reference/inference-api/overview). To make an inference request, you'll need:
+Once deployed, your model is accessible through an [API endpoint](/reference/inference-api/overview). To make an inference request, you'll need:
 
-* **Model ID**
-* An [API key](https://app.baseten.co/settings/api_keys) for your Baseten account.
-* **JSON-serializable model input**
+* **Model ID**: Found in the Baseten dashboard or returned when you deploy.
+* **[API key](/organization/api-keys)**: Authenticates your requests.
+* **JSON-serializable model input**: The data your model expects.
+
+## Authentication
+
+Include your API key in the `Authorization` header:
+
+```sh theme={"system"}
+curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/environments/production/predict \
+  -H "Authorization: Api-Key $BASETEN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Hello, world!"}'
+```
+
+In Python with requests:
+
+```python theme={"system"}
+import requests
+import os
+
+api_key = os.environ["BASETEN_API_KEY"]
+model_id = "YOUR_MODEL_ID"
+
+response = requests.post(
+    f"https://model-{model_id}.api.baseten.co/environments/production/predict",
+    headers={"Authorization": f"Api-Key {api_key}"},
+    json={"prompt": "Hello, world!"},
+)
+
+print(response.json())
+```
 
 ## Predict API endpoints
 
@@ -11420,7 +16338,7 @@ Custom servers support both `predict` endpoints as well as a special `sync` endp
 https://model-{model-id}.api.baseten.co/environments/{production}/sync/{route}
 ```
 
-Here are a few example for the given example that show how the sync endpoint maps to the custom server's routes.
+Here are a few examples that show how the sync endpoint maps to the custom server's routes.
 
 * `https://model-{model_id}.../sync/health` -> `/health`
 * `https://model-{model_id}.../sync/items` -> `/items`
@@ -11428,9 +16346,9 @@ Here are a few example for the given example that show how the sync endpoint map
 
 ## OpenAI SDK
 
-When deploying a model with Engine Builder, you will get an OpenAI compatible server. If you are already using one of the OpenAI SDKs, you will simply need to update the base url to your Baseten model URL and include your Baseten API Key.
+When deploying a model with Engine-Builder, you will get an OpenAI compatible server. If you are already using one of the OpenAI SDKs, you will simply need to update the base url to your Baseten model URL and include your Baseten API Key.
 
-```python  theme={"system"}
+```python theme={"system"}
 import os
 from openai import OpenAI
 
@@ -11468,9 +16386,9 @@ Source: https://docs.baseten.co/inference/concepts
 
 
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=eac4b2c5cb0945c753d3a1353da65bed" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/inference.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d999899a70e25aaa499b50585acd5d0a 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=61e98026b32c791687eb620f9f12d736 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=31e8c1b82ed6c1735b9a15ac5f3c0d66 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8f7fce9302b66c76e132fd4420118524 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c76330ea0c581db8514aa776ed5cb529 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=cf13be55ca64546fabf0e55cf3ad6255 2500w" />
+<img />
 
-Inference on Baseten is designed for flexibility, efficiency, and scalability. Models can be served [synchronously](/inference/calling-your-model), [asynchronously](/inference/async), or via [streaming](/inference/streaming) to meet different performance and latency needs.
+Inference on Baseten is designed for flexibility, efficiency, and scalability. Models can be served [synchronously](/inference/calling-your-model), [asynchronously](/inference/async), or with [streaming](/inference/streaming) to meet different performance and latency needs.
 
 * [Synchronously](/inference/calling-your-model) inference is ideal for low-latency, real-time responses.
 * [Asynchronously](/inference/async) inference handles long-running tasks efficiently without blocking resources.
@@ -11479,189 +16397,46 @@ Inference on Baseten is designed for flexibility, efficiency, and scalability. M
 Baseten supports various input and output formats, including structured data, binary files, and function calls, making it adaptable to different workloads.
 
 
-# Function calling (tool use)
-Source: https://docs.baseten.co/inference/function-calling
-
-Use an LLM to select amongst provided tools
-
-<Note>
-  Function calling requires an LLM deployed using the [TensorRT-LLM Engine
-  Builder](/development/model/performance/engine-builder-overview).
-</Note>
-
-To use function calling:
-
-1. Define a set of functions/tools in Python.
-2. Pass the function set to the LLM with the `tools` argument.
-3. Receive selected function(s) as output.
-
-With function calling, it's essential to understand that **the LLM itself is not capable of executing the code in the function**. Instead, the LLM is used to suggest appropriate function(s), if they exist, based on the prompt. Any code execution must be handled outside of the LLM call – a great use for [chains](/development/chain/overview).
-
-## Define functions in Python
-
-Functions can be anything: API calls, ORM access, SQL queries, or just a script. It's essential that functions are well-documented; the LLM relies on the docstrings to select the correct function.
-
-As a simple example, consider the four basic functions of a calculator:
-
-```python  theme={"system"}
-def multiply(a: float, b: float):
-    """
-    A function that multiplies two numbers
-
-    Args:
-        a: The first number to multiply
-        b: The second number to multiply
-    """
-    return a * b
-
-def divide(a: float, b: float):
-    """
-    A function that divides two numbers
-
-    Args:
-        a: The dividend
-        b: The divisor
-    """
-    return a / b
-
-def add(a: float, b: float):
-    """
-    A function that adds two numbers
-
-    Args:
-        a: The first number
-        b: The second number
-    """
-    return a + b
-
-def subtract(a: float, b: float):
-    """
-    A function that subtracts two numbers
-
-    Args:
-        a: The number to subtract from
-        b: The number to subtract
-    """
-    return a - b
-```
-
-These functions must be serialized into LLM-accessible tools:
-
-```python  theme={"system"}
-from transformers.utils import get_json_schema
-
-calculator_functions = {
-    'multiply': multiply,
-    'divide': divide,
-    'add': add,
-    'subtract': subtract
-}
-
-tools = [get_json_schema(f) for f in calculator_functions.values()]
-```
-
-## Pass functions to the LLM
-
-The input spec for models like Llama 3.1 includes a `tools` key that we use to pass the functions:
-
-```python  theme={"system"}
-import json
-import requests
-
-payload = {
-    "messages": [
-        {"role": "system", "content": "You are a helpful assistant"},
-        {"role": "user", "content": "What is 3.14+3.14?"},
-    ],
-    "tools": tools,  # tools are provided in the same format as OpenAI's API
-    "tool_choice": "auto",  # auto is default - the model will choose whether or not to make a function call
-}
-
-MODEL_ID = ""
-BASETEN_API_KEY = ""
-
-resp = requests.post(
-    f"https://model-{MODEL_ID}.api.baseten.co/production/predict",
-    headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"},
-    json=payload,
-)
-```
-
-### tool\_choice: auto (default) – may return a function
-
-The default `tool_choice` option, `auto`, leaves it up to the LLM whether to return one function, multiple functions, or no functions at all, depending on what the model feels is most appropriate based on the prompt.
-
-### tool\_choice: required – will always return a function
-
-The `required` option for `tool_choice` means that the LLM is guaranteed to chose at least one function, no matter what.
-
-### tool\_choice: none – will always return a function
-
-The `none` option for `tool_choice` means that the LLM will **not** return a function, and will instead produce ordinary text output. This is useful when you want to provide the full context of a conversation without adding and dropping the `tools` parameter call-by-call.
-
-### tool\_choice: direct – will return a specified function
-
-You can also pass a specific function directly into the call, which is guaranteed to be returned. This is useful if you want to hardcode specific behavior into your model call for testing or conditional execution.
-
-```python  theme={"system"}
-"tool_choice": {"type": "function", "function": {"name": "subtract"}}
-```
-
-## Receive function(s) as output
-
-When the model returns functions, they'll be a list that can be parsed as follows:
-
-```python  theme={"system"}
-func_calls = json.loads(resp.text)
-
-# In this example, we execute the first function (one of +-/*) on the provided parameters
-func_call = func_calls[0]
-calculator_functions[func_call["name"]](**func_call["parameters"])
-```
-
-After reading the LLM's selection, your execution environment can run the necessary functions. For more on combining LLMs with other logic, see the [chains documentation](/development/chain/overview).
-
-
 # Integrations
 Source: https://docs.baseten.co/inference/integrations
 
 Integrate your models with tools like LangChain, LiteLLM, and more.
 
-<CardGroup cols={2}>
-  <Card title="Chainlit" icon="link" iconType="light" href="https://github.com/Chainlit/cookbook/tree/main/baseten-llama-2-chat">
-    Build your own open-source ChatGPT with Baseten and Chainlit.
+<CardGroup>
+  <Card title="Cline" icon="robot" href="https://www.baseten.co/blog/from-prompt-to-production-baseten-inference-in-your-ide-with-cline/">
+    Use frontier open-source models like Kimi K2 Thinking, GLM 4.6, DeepSeek V3.2 inside your IDE with Baseten and Cline.
   </Card>
 
-  <Card title="Cline" icon="robot" iconType="light" href="https://www.baseten.co/blog/from-prompt-to-production-baseten-inference-in-your-ide-with-cline/">
-    Use frontier open-source models like Kimi K2 and Qwen3 Coder inside your IDE with Baseten and Cline.
-  </Card>
-
-  <Card title="HumanLayer" icon="person" iconType="light" href="https://www.humanlayer.dev">
+  <Card title="HumanLayer" icon="person" href="https://www.humanlayer.dev">
     Build agents with human-in-the-loop powered by Baseten LLMs and HumanLayer.
   </Card>
 
-  <Card title="LlamaIndex" icon="horse" iconType="light" href="https://docs.llamaindex.ai/en/latest/api_reference/llms/baseten/">
+  <Card title="LlamaIndex" icon="horse" href="https://docs.llamaindex.ai/en/latest/api_reference/llms/baseten/">
     Use Baseten models within your RAG applications with LlamaIndex.
   </Card>
 
-  <Card title="LangChain" icon="bird" iconType="light" href="https://docs.langchain.com/oss/python/integrations/providers/baseten">
+  <Card title="LangChain" icon="bird" href="https://docs.langchain.com/oss/python/integrations/providers/baseten">
     Use your Baseten models with LangChain V1.0 to build workflows and agents.
   </Card>
 
-  <Card title="LiteLLM" icon="grapes" iconType="light" href="https://docs.litellm.ai/docs/providers/baseten">
+  <Card title="LiteLLM" icon="grapes" href="https://docs.litellm.ai/docs/providers/baseten">
     Use your Baseten models in LiteLLM projects.
   </Card>
 
-  <Card title="LiveKit" icon="microphone-lines" iconType="light" href="https://docs.livekit.io/agents/integrations/tts/baseten/">
+  <Card title="LiveKit" icon="microphone-lines" href="https://docs.livekit.io/agents/integrations/tts/baseten/">
     Build real-time voice agents with TTS models hosted on Baseten.
   </Card>
 
-  <Card title="Vercel" icon="computer" iconType="light" href="https://ai-sdk.dev/providers/ai-sdk-providers/baseten">
+  <Card title="Roo Code" icon="rabbit" href="https://docs.roocode.com/providers/baseten">
+    Use frontier open-source models like Kimi K2 Thinking, GLM 4.6, DeepSeek V3.2 inside your IDE with Baseten and Roo Code.
+  </Card>
+
+  <Card title="Vercel" icon="computer" href="https://ai-sdk.dev/providers/ai-sdk-providers/baseten">
     Power your Next.js web apps using Baseten models through AI SDK v5.
   </Card>
 </CardGroup>
 
-<Card title="Build your own" icon="hammer" iconType="light" href="mailto:support@baseten.co">
+<Card title="Build your own" icon="hammer" href="mailto:support@baseten.co">
   Want to integrate Baseten with your platform or project? Reach out to
   [support@baseten.co](mailto:support@baseten.co) and we'll help with building
   and marketing the integration.
@@ -11684,7 +16459,7 @@ If you need a deployed model to try the invocation examples below, follow these 
     <Step title="Create a Truss">
       To create a Truss, run:
 
-      ```sh  theme={"system"}
+      ```sh theme={"system"}
       truss init binary_test
       ```
 
@@ -11703,10 +16478,16 @@ If you need a deployed model to try the invocation examples below, follow these 
     </Step>
 
     <Step title="Deploy the Truss">
-      Deploy the Truss to Baseten with:
+      Deploy the Truss to Baseten for development:
 
-      ```sh  theme={"system"}
-      truss push
+      ```sh theme={"system"}
+      truss push --watch
+      ```
+
+      Or for production:
+
+      ```sh theme={"system"}
+      truss push --publish
       ```
     </Step>
   </Steps>
@@ -11728,8 +16509,8 @@ import requests
 import msgpack
 
 
-model_id = "MODEL_ID" # Replace with your model ID
-deployment = "development" # `development`, `production`, or a deployment ID
+model_id = "MODEL_ID"  # Replace this with your model ID
+deployment = "development"  # `development`, `production`, or a deployment ID
 baseten_api_key = os.environ["BASETEN_API_KEY"]
 # Specify the URL to which you want to send the POST request
 url = f"https://model-{model_id}.api.baseten.co/{deployment}/predict"
@@ -11804,8 +16585,8 @@ import os
 import requests
 import json
 
-model_id = "MODEL_ID" # Replace with your model ID
-deployment = "development" # `development`, `production`, or a deployment ID
+model_id = "MODEL_ID"  # Replace this with your model ID
+deployment = "development"  # `development`, `production`, or a deployment ID
 baseten_api_key = os.environ["BASETEN_API_KEY"]
 # Specify the URL to which you want to send the POST request
 url = f"https://model-{model_id}.api.baseten.co/{deployment}/predict"
@@ -11873,7 +16654,7 @@ The Truss CLI has a `-f` flag to pass file input. If you're using the API endpoi
 
 The `-f` flag for `truss predict` only applies to JSON-serializable content. For other files, like the audio files required by [MusicGen Melody](https://www.baseten.co/library/musicgen-melody), the file content needs to be base64 encoded before it is sent.
 
-```python  theme={"system"}
+```python theme={"system"}
 import urllib3
 
 model_id = ""
@@ -11909,7 +16690,7 @@ Rather than encoding and serializing a file to send in the HTTP request, you can
 
 Here's an example from [Whisper in the model library](https://www.baseten.co/library/whisper-v3).
 
-```python  theme={"system"}
+```python theme={"system"}
 from tempfile import NamedTemporaryFile
 import requests
 
@@ -11999,7 +16780,7 @@ LLMs in chat applications are the perfect use case for streaming model output.
 
 The Truss CLI has built-in support for streaming model output.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss predict -d '{"prompt": "What is the Mistral wind?", "stream": true}'
 ```
 
@@ -12009,7 +16790,7 @@ When using a streaming endpoint with cURL, use the `--no-buffer` flag to stream 
 
 As with all cURL invocations, you'll need a model ID and API key.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 curl -X POST https://app.baseten.co/models/MODEL_ID/predict \
   -H 'Authorization: Api-Key YOUR_API_KEY' \
   -d '{"prompt": "What is the Mistral wind?", "stream": true}' \
@@ -12020,7 +16801,7 @@ curl -X POST https://app.baseten.co/models/MODEL_ID/predict \
 
 Let's take things a step further and look at how to integrate streaming output with a Python application.
 
-```python  theme={"system"}
+```python theme={"system"}
 import requests
 import json
 import os
@@ -12051,201 +16832,10 @@ with s.post(
 ```
 
 
-# Structured output (JSON mode)
-Source: https://docs.baseten.co/inference/structured-output
-
-Enforce an output schema on LLM inference
-
-<Note>
-  Structured outputs requires an LLM deployed using the [TensorRT-LLM Engine Builder](/development/model/performance/engine-builder-overview).
-
-  If you want to try this structured output example code for yourself, deploy [this implementation of Llama 3.1 8B](/examples/tensorrt-llm).
-</Note>
-
-To generate structured outputs:
-
-1. Define an object schema with [Pydantic](https://docs.pydantic.dev/latest/).
-2. Pass the schema to the LLM with the `response_format` argument.
-3. Receive output that is guaranteed to match the provided schema, including types and validations like `max_length`.
-
-Using structured output, you should observe approximately equivalent tokens per second output speed to an ordinary call to the model after an initial delay for schema processing. If you're interested in the mechanisms behind structured output, check out this [engineering deep dive on our blog](https://www.baseten.co/blog/how-to-build-function-calling-and-json-mode-for-open-source-and-fine-tuned-llms).
-
-## Schema generation with Pydantic
-
-[Pydantic](https://docs.pydantic.dev/latest/) is an industry standard Python library for data validation. With Pydantic, we'll build precise schemas for LLM output to match.
-
-For example, here's a schema for a basic `Person` object.
-
-```python  theme={"system"}
-from pydantic import BaseModel, Field
-from typing import Optional
-from datetime import date
-
-class Person(BaseModel):
-    first_name: str = Field(..., description="The person's first name", max_length=50)
-    last_name: str = Field(..., description="The person's last name", max_length=50)
-    age: int = Field(..., description="The person's age, must be a non-negative integer")
-    email: str = Field(..., description="The person's email address")
-```
-
-Structured output supports multiple data types, required and optional fields, and additional validations like `max_length`.
-
-## Add response format to LLM call
-
-<Warning>
-  The first time that you pass a given schema for the model, it can take a
-  minute for the schema to be processed and cached. Subsequent calls with the
-  same schema will run at normal speeds.
-</Warning>
-
-Once your object is defined, you can add it as a parameter to your LLM call with the `response_format` field:
-
-```python  theme={"system"}
-import json
-import requests
-
-
-payload = {
-    "messages": [
-        {"role": "system", "content": "You are a helpful assistant"},
-        { "role": "user", "content": "Make up a new person!"},
-    ],
-    "max_tokens": 512,
-    "response_format": {  # Add this parameter to use structured outputs
-        "type": "json_schema",
-        "json_schema": {"schema": Person.model_json_schema()},
-    },
-}
-
-MODEL_ID = ""
-BASETEN_API_KEY = ""
-
-resp = requests.post(
-    f"https://model-{MODEL_ID}.api.baseten.co/production/predict",
-    headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"},
-    json=payload,
-)
-
-json.loads(resp.text)
-```
-
-The response may have an end of sequence token, which will need to be removed before the JSON can be parsed.
-
-## Parsing LLM output
-
-From the LLM, we expect output in the following format:
-
-```json  theme={"system"}
-{
-  "first_name": "Astrid",
-  "last_name": "Nyxoria",
-  "age": 28,
-  "email": "astrid.nyxoria@starlightmail.com"
-}
-```
-
-This example output is valid, which can be double-checked with:
-
-```python  theme={"system"}
-Person.parse_raw(resp.text)
-```
-
-
-# Workspace access control
-Source: https://docs.baseten.co/observability/access
-
-Workspaces use role-based access control (RBAC) with two roles:
-
-| Permission     | Admin | Creator |
-| :------------- | ----- | ------- |
-| Manage members | ✅     | ❌       |
-| Manage billing | ✅     | ❌       |
-| Deploy models  | ✅     | ✅       |
-| Call models    | ✅     | ✅       |
-
-<Note>
-  **Note:** Startup plan workspaces are limited to five users. [Contact us](mailto:support@baseten.co) if you need to increase this limit.
-</Note>
-
-
-# Best practices for API keys
-Source: https://docs.baseten.co/observability/api-keys
-
-Securely access your Baseten models
-
-API keys enable secure access to Baseten models for:
-
-* **Model deployment** via Truss CLI
-* **Inference API calls** (`truss predict`, `/wake` requests)
-* **Model management** via the [management API](/reference/management-api/overview)
-* **Metrics export** via the `/metrics` endpoint
-
-You can create and revoke API keys from your [Baseten account](https://app.baseten.co/settings/api_keys).
-
-## API key scope: Personal vs Workspace
-
-There are two types of API keys on Baseten:
-
-**Personal API Keys:**
-
-* Tied to a user account.
-* Inherit full workspace permissions.
-* Actions are linked to the specific user.
-
-**Workspace API Keys:**
-
-* Shared across a workspace.
-* Can have full access or be restricted to specific models.
-
-<Note>Use personal keys for testing and workspace keys for automation and production.</Note>
-
-## Using API keys with Truss
-
-Add your API key to `~/.trussrc` for authentication:
-
-```sh ~/.trussrc theme={"system"}
-[baseten]
-remote_provider = baseten
-api_key = abcdefgh.1234567890ABCDEFGHIJKL1234567890
-remote_url = https://app.baseten.co
-```
-
-If rotating keys, update the file with the new key.
-
-### Using API keys with endpoints
-
-Include the API key in request headers:
-
-```sh  theme={"system"}
-curl -X POST https://app.baseten.co/models/MODEL_ID/predict \
--H 'Authorization: Api-Key abcdefgh.1234567890ABCDEFGHIJKL1234567890' \
--d 'MODEL_INPUT'
-```
-
-Or in Python:
-
-```python  theme={"system"}
-headers = {"Authorization": "Api-Key abcdefgh.1234567890ABCDEFGHIJKL1234567890"}
-```
-
-## Tips for managing API keys
-
-Best practices for API key use apply to your Baseten API keys:
-
-* Always store API keys securely.
-* Never commit API keys to your codebase.
-* Never share or leak API keys in notebooks or screenshots.
-* Name your API keys to keep them organized.
-
-The [API key list on your Baseten account](https://app.baseten.co/settings/api_keys) shows when each key was first created and last used. Rotate API keys regularly and remove any unused API keys to reduce the risk of accidental leaks.
-
-
 # Export to Datadog
 Source: https://docs.baseten.co/observability/export-metrics/datadog
 
 Export metrics from Baseten to Datadog
-
-<Info> Exporting metrics is in beta mode. </Info>
 
 The Baseten metrics endpoint can be integrated with [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) by configuring a Prometheus receiver that scrapes the endpoint. This allows Baseten metrics to be pushed to a variety of popular exporters—see the [OpenTelemetry registry](https://opentelemetry.io/ecosystem/registry/?component=exporter) for a full list.
 
@@ -12293,7 +16883,7 @@ The Baseten + Grafana Cloud integration enables you to get real-time inference m
 
 See below for step-by-step details from the video.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jS-JgwbTVH8?si=UZdHWFgV6hc85ptH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Set up the integration
 
@@ -12333,8 +16923,6 @@ For visual reference in navigating the dashboard, please see the video above.
 Source: https://docs.baseten.co/observability/export-metrics/new-relic
 
 Export metrics from Baseten to New Relic
-
-<Info> Exporting metrics is in beta mode. </Info>
 
 Export Baseten metrics to New Relic by integrating with [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/). This involves configuring a Prometheus receiver that scrapes Baseten's metrics endpoint and configuring a New Relic exporter to send the metrics to your observability backend.
 
@@ -12387,7 +16975,7 @@ Baseten provides a metrics endpoint in Prometheus format, allowing integration w
   <Step title="Authentication">
     Use the Authorization header with a [Baseten API key](https://app.baseten.co/settings/api_keys):
 
-    ```json  theme={"system"}
+    ```json theme={"system"}
     {"Authorization": "Api-Key YOUR_API_KEY"}
     ```
   </Step>
@@ -12420,8 +17008,6 @@ Source: https://docs.baseten.co/observability/export-metrics/prometheus
 
 Export metrics from Baseten to Prometheus
 
-<Info> Exporting metrics is in beta mode. </Info>
-
 To integrate with Prometheus, specify the Baseten metrics endpoint in a scrape config. For example:
 
 ```yaml prometheus.yml theme={"system"}
@@ -12446,8 +17032,6 @@ Source: https://docs.baseten.co/observability/export-metrics/supported-metrics
 
 Which metrics can be exported
 
-<Info> Exporting metrics is in beta mode. </Info>
-
 ## `baseten_inference_requests_total`
 
 Cumulative number of requests to the model.
@@ -12456,31 +17040,31 @@ Type: `counter`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="status_code" type="label" required>
+<ParamField type="label">
   The status code of the response.
 </ParamField>
 
-<ParamField query="is_async" type="label" required>
+<ParamField type="label">
   Whether the request was an [async inference request](/inference/async).
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12497,31 +17081,31 @@ Type: `histogram`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="status_code" type="label" required>
+<ParamField type="label">
   The status code of the response.
 </ParamField>
 
-<ParamField query="is_async" type="label" required>
+<ParamField type="label">
   Whether the request was an [async inference request](/inference/async).
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12538,28 +17122,28 @@ Type: `counter`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="replica" type="label" required>
+<ParamField type="label">
   The ID of the replica.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is
   not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12576,24 +17160,24 @@ Type: `gauge`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is
   not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12610,24 +17194,24 @@ Type: `gauge`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is
   not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12638,33 +17222,222 @@ Labels:
 
 ## `baseten_container_cpu_memory_working_set_bytes`
 
-Cumulative CPU time consumed by the container in seconds.
+Working set memory usage of the container in bytes.
 
 Type: `gauge`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="replica" type="label" required>
+<ParamField type="label">
   The ID of the replica.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_request_size_bytes`
+
+Request size in bytes. Proxy for input tokens.
+
+Type: `histogram`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The status code of the response.
+</ParamField>
+
+<ParamField type="label">
+  Whether the request was an [async inference request](/inference/async).
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_response_size_bytes`
+
+Response size in bytes. Proxy for generated tokens.
+
+Type: `histogram`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The status code of the response.
+</ParamField>
+
+<ParamField type="label">
+  Whether the request was an [async inference request](/inference/async).
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_time_to_first_byte_seconds`
+
+Time to first byte/write in seconds. Proxy for time-to-first-token (TTFT).
+
+Type: `histogram`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The status code of the response.
+</ParamField>
+
+<ParamField type="label">
+  Whether the request was an [async inference request](/inference/async).
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_time_in_async_queue_seconds`
+
+Time async requests spend queued before processing.
+
+Type: `histogram`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_async_queue_size`
+
+Number of queued async requests over time.
+
+Type: `gauge`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12681,31 +17454,31 @@ Type: `gauge`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="replica" type="label" required>
+<ParamField type="label">
   The ID of the replica.
 </ParamField>
 
-<ParamField query="gpu" type="label" required>
+<ParamField type="label">
   The ID of the GPU.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
+<ParamField type="label">
   The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
@@ -12722,32 +17495,65 @@ Type: `gauge`
 
 Labels:
 
-<ParamField query="model_id" type="label" required>
+<ParamField type="label">
   The ID of the model.
 </ParamField>
 
-<ParamField query="model_name" type="label" required>
+<ParamField type="label">
   The name of the model.
 </ParamField>
 
-<ParamField query="deployment_id" type="label" required>
+<ParamField type="label">
   The ID of the deployment.
 </ParamField>
 
-<ParamField query="replica" type="label" required>
+<ParamField type="label">
   The ID of the replica.
 </ParamField>
 
-<ParamField query="gpu" type="label" required>
+<ParamField type="label">
   The ID of the GPU.
 </ParamField>
 
-<ParamField query="environment" type="label">
+<ParamField type="label">
   The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
 </ParamField>
 
-<ParamField query="rollout_phase" type="label">
-  The phase of the deployment in the promote to production process. Empty if the deployment is not associated with an environment.
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
+
+  Possible values:
+
+  * `"promoting"`
+  * `"stable"`
+</ParamField>
+
+## `baseten_ongoing_websocket_connections`
+
+Number of ongoing websocket connections.
+
+Type: `gauge`
+
+Labels:
+
+<ParamField type="label">
+  The ID of the model.
+</ParamField>
+
+<ParamField type="label">
+  The name of the model.
+</ParamField>
+
+<ParamField type="label">
+  The ID of the deployment.
+</ParamField>
+
+<ParamField type="label">
+  The environment that the deployment corresponds to. Empty if the deployment is not associated with an environment.
+</ParamField>
+
+<ParamField type="label">
+  The phase of the deployment in the [promote to production process](/deployment/deployments#environments-and-promotion). Empty if the deployment is not associated with an environment.
 
   Possible values:
 
@@ -12788,7 +17594,7 @@ Understand the load and performance of your model
 
 The Metrics tab in the model dashboard provides deployment-specific insights into model load and performance. Use the dropdowns to filter by environment or deployment and time range.
 
-<img noZoom src="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a81bbd59a02719c6814e62fdbfa89ec3" data-og-width="964" width="964" data-og-height="552" height="552" data-path="images/observability.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=15a3fb2106b5f51cd50b261131541f01 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1aa2af207e9f007781838fbd8ca63f50 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=90b0499c358c033b78985f2e08386e2e 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e6dfb73381b1ac4f70a7299f473c2fe7 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=537db025cbccafe7f54dbe0d99c736fe 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/observability.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=daf4644abc87786401d3959d0f05d7d7 2500w" />
+<img />
 
 ## Inference volume
 
@@ -12869,55 +17675,6 @@ Shows GPU utilization across replicas.
 
 * Large queue size indicates requests are queued faster than they are processed.
 * To improve async throughput, increase the max replicas or adjust autoscaling concurrency.
-
-
-# Best practices for secrets
-Source: https://docs.baseten.co/observability/secrets
-
-Securely store and access passwords, tokens, keys, and more
-
-Store sensitive credentials like API keys and passwords using the [secrets dashboard](https://app.baseten.co/settings/secrets).
-
-* Secrets are stored as **key-value pairs** (name → token).
-* **Naming rules**: Non-alphanumeric characters are treated the same (e.g., `hf_access_token` and `hf-access-token` are identical). Creating a new secret with a similar name overwrites the existing one.
-* Changes to secrets **immediately** affect all models using them.
-
-Any model deployed to a workspace will have access to any secrets specified on the workspace.
-
-## Using secrets in Truss
-
-<Steps>
-  <Step title="Add the secret name to config.yaml, setting the value to null:">
-    ```yaml config.yaml theme={"system"}
-    ...
-    secrets:
-      hf_access_token: null
-    ...
-    ```
-
-    <Warning>
-      Never set the actual value of the secret in `config.yaml` or any other file that gets committed to your codebase.
-    </Warning>
-  </Step>
-
-  <Step title="Access secrets in model.py:">
-    ```py model/model.py theme={"system"}
-    def __init__(self, **kwargs):
-        self._secrets = kwargs["secrets"]
-    ```
-  </Step>
-
-  <Step title="Use secrets in load or predict:">
-    ```py model/model.py theme={"system"}
-    def load(self):
-        self._model = pipeline(
-            "fill-mask",
-            model="baseten/docs-example-gated-model",
-            use_auth_token=self._secrets["hf_access_token"]
-        )
-    ```
-  </Step>
-</Steps>
 
 
 # Secure model inference
@@ -13100,41 +17857,531 @@ For full details, see our [pricing page](https://www.baseten.co/pricing/), but h
 * Yes, discounts are available for educational and nonprofit ML projects. [Contact support](mailto:support@baseten.co) to apply.
 
 
+# Access control
+Source: https://docs.baseten.co/organization/access
+
+Manage access to your Baseten organization with role-based access control.
+
+Baseten uses role-based access control (RBAC) to manage organization access.
+Every organization member has one of two roles.
+
+| Permission               | Admin | Member |
+| :----------------------- | ----- | ------ |
+| Manage members           | ✅     | ❌      |
+| Manage billing           | ✅     | ❌      |
+| Deploy models and Chains | ✅     | ✅      |
+| Call models              | ✅     | ✅      |
+
+**Admins** have full control over the organization, including member management and billing.
+**Members** can deploy and call models but cannot manage organization settings or other users.
+
+<Note>
+  If your organization uses multiple teams, see [Teams](/organization/teams) for information about team-level roles and permissions.
+</Note>
+
+
+# API keys
+Source: https://docs.baseten.co/organization/api-keys
+
+Authenticate requests to Baseten for deployment, inference, and management.
+
+API keys authenticate your requests to Baseten. You need an API key to:
+
+* Deploy models, Chains, and training projects with the Truss CLI.
+* Call model endpoints for inference.
+* Use the management API.
+
+## API key types
+
+Baseten supports two types of API keys:
+
+**Personal API keys** are tied to your user account. Actions performed with a personal key are attributed to you. Use personal keys for local development and testing.
+
+**Team API keys** are not tied to an individual user. When your organization has [teams](/organization/teams) enabled, team keys can be scoped to a specific team. Team keys can have different permission levels:
+
+* **Full access** - Deploy models, call endpoints, and manage resources.
+* **Inference only** - Call model endpoints but cannot deploy or manage.
+* **Metrics only** - Export metrics but cannot deploy or call models.
+
+Use team keys for CI/CD pipelines, production applications, and shared automation.
+
+<Note>
+  If your organization uses [teams](/organization/teams), Team Admins can create team API keys scoped to their team. See [Teams](/organization/teams) for more information.
+</Note>
+
+## Create an API key
+
+To create an API key:
+
+1. Navigate to [API keys](https://app.baseten.co/settings/api_keys) in your account settings.
+2. Select **Create API key**.
+3. Choose **Personal** or **Team** key type.
+4. Enter a name for the key (lowercase letters, numbers, and hyphens only).
+5. For team keys, select the permission level.
+6. Select **Next**.
+
+Copy the key immediately, you won't be able to view it again.
+
+## Use API keys with the CLI
+
+The first time you run `truss push`, the CLI prompts you for your API key and saves it to `~/.trussrc`:
+
+```
+$ truss push --watch
+💻 Let's add a Baseten remote!
+🤫 Quietly paste your API_KEY:
+💾 Remote config `baseten` saved to `~/.trussrc`.
+```
+
+To manually configure or update your API key, edit `~/.trussrc`:
+
+```sh theme={"system"}
+[baseten]
+remote_provider = baseten
+api_key = YOUR_API_KEY
+```
+
+## Use API keys with endpoints
+
+To call model endpoints with your API key, see [Call your model](/inference/calling-your-model).
+
+## Manage API keys
+
+The [API keys page](https://app.baseten.co/settings/api_keys) shows all your keys with their creation date and last used timestamp. Use this information to identify unused keys.
+
+To rename a key, select the pencil icon next to the key name.
+
+To rotate a key, create a new key, update your applications to use it, then revoke the old key.
+
+To revoke a key, select the trash icon next to the key. Revoked keys cannot be restored.
+
+You can also manage API keys programmatically with the [REST API](/reference/management-api/api-keys/creates-an-api-key).
+
+### Security recommendations
+
+* Store API keys in environment variables or secret managers, not in code.
+* Never commit API keys to version control.
+* Use team keys with minimal permissions for production applications.
+* Rotate keys periodically and revoke unused keys.
+
+
+# Organization settings
+Source: https://docs.baseten.co/organization/overview
+
+Manage your Baseten organization's access, security, and resources.
+
+* **[Access control](/organization/access)**: Manage roles and permissions.
+* **[Teams](/organization/teams)**: Segment resources across multiple teams (Enterprise).
+* **[API keys](/organization/api-keys)**: Authenticate requests for deployment, inference, and management.
+* **[Secrets](/organization/secrets)**: Store and access sensitive credentials in deployed models.
+* **[Restricted environments](/organization/restricted-environments)**: Control environment access.
+
+
+# Restricted environments
+Source: https://docs.baseten.co/organization/restricted-environments
+
+Control access to sensitive environments like production with environment-level permissions.
+
+Restricted environments let organization Admins lock down specific environments so that
+only designated users can modify settings and configurations.
+Use restricted environments to prevent unauthorized changes to critical
+environments like production.
+
+For more information on user roles, see
+[Access control](/organization/access) and
+[Environments](/deployment/environments).
+
+## How restricted environments work
+
+By default, environments are unrestricted, meaning any organization member can modify
+deployments, autoscaling settings, and other configurations.
+When you mark an environment as restricted, only users you explicitly grant access can
+make changes.
+
+Restricted environments apply across all models and Chains in your organization.
+For example, if you restrict an environment named `production`, that restriction applies to
+every model and chain's production environment, not just one specific model or chain.
+
+<Note>
+  If your organization uses [teams](/organization/teams), restricted environments are scoped to individual teams.
+  Team Admins can create and manage restricted environments for their team.
+</Note>
+
+### Permissions by access level
+
+| Action                                 | With access | Without access |
+| :------------------------------------- | ----------- | -------------- |
+| View environment and configuration     | ✅           | ✅ (read-only)  |
+| View metrics                           | ✅           | ✅ (read-only)  |
+| Call inference on models and chains    | ✅           | ✅              |
+| View logs                              | ✅           | ✅              |
+| Modify deployment settings             | ✅           | ❌              |
+| Change autoscaling configurations      | ✅           | ❌              |
+| Promote deployments to the environment | ✅           | ❌              |
+| Manage environment-specific settings   | ✅           | ❌              |
+
+Users without access see a grayed-out UI for restricted actions.
+They retain full read access and can still call inference endpoints.
+
+## Managing restricted environments
+
+Only organization **Admins** can create or modify restricted environments.
+Members (non-admin users) can only create unrestricted environments and cannot change
+environment restrictions.
+
+### From the environments page
+
+1. Navigate to **Settings** and then choose **Environments**.
+2. Select an existing environment to modify, or select **Create environment** to create a new one.
+3. Set the access level to **Restricted**.
+4. Add users by searching by name or by email.
+5. Select **Save changes** or **Create environment**.
+
+### From a model or chain
+
+1. Go to your model or chain's management page.
+2. Select an existing environment to modify, or select **Add environment** then **Create environment** to create a new one.
+3. Set the access level to **Restricted**.
+4. Add users by searching by name or by email.
+5. Select **Save changes** or **Create environment**.
+
+<Note>
+  Only admins can create restricted environments, and all admins have implicit
+  access to every restricted environment. If an admin is later demoted to a member
+  role, they lose this implicit access and can be removed from the environment
+  like any other member.
+</Note>
+
+## API behavior
+
+Restricted environments apply the same permission checks to
+[API](/reference/management-api/environments/create-an-environment) and
+[truss CLI](/reference/cli/truss/push) operations as the UI. API keys inherit
+the permissions of their associated user.
+
+If you attempt to modify a restricted environment using an API key associated with a
+user without access, you'll receive a `403 Forbidden` error.
+
+This includes operations like:
+
+* Promoting deployments through the
+  [promote endpoint](/reference/management-api/deployments/promote/promotes-a-deployment-to-an-environment).
+
+* Updating autoscaling settings through the
+  [autoscaling endpoint](/reference/management-api/deployments/autoscaling/updates-a-deployments-autoscaling-settings).
+
+* Modifying environment configurations through the
+  [update environment endpoint](/reference/management-api/environments/update-an-environments-settings).
+
+Users without access can still call inference endpoints, as restrictions only apply to
+management operations.
+
+
+# Secrets
+Source: https://docs.baseten.co/organization/secrets
+
+Store and access sensitive credentials in your deployed models.
+
+Secrets store sensitive credentials like API keys, access tokens, and passwords that your models need at runtime.
+Secrets are encrypted and injected into your model's environment when it runs.
+
+<Note>
+  If your organization uses [teams](/organization/teams), secrets are scoped to individual teams.
+  Models, Chains, and training projects deployed to a team can only access that team's secrets.
+</Note>
+
+## Create a secret
+
+To create a secret:
+
+1. Navigate to the **Secrets** tab in your settings. If your organization uses [teams](/organization/teams), navigate to the team's settings page.
+2. Enter a name for the secret.
+3. Enter the secret value.
+4. Select **Add secret**.
+
+Secret names follow these rules:
+
+* Non-alphanumeric characters are normalized (for example, `hf_access_token` and `hf-access-token` are treated as the same name).
+* Editing a secret's value overwrites the previous value.
+* Changes take effect immediately for all deployments using the secret.
+
+## Use secrets in your model
+
+To use secrets in your Truss model, see [Secrets](/development/model/secrets).
+
+## Security recommendations
+
+* Create secrets through the Baseten dashboard, not in code.
+* Use descriptive names that indicate the secret's purpose.
+* Rotate secrets periodically by updating the value in the dashboard.
+* Delete unused secrets to reduce exposure risk.
+
+
+# Teams 🆕
+Source: https://docs.baseten.co/organization/teams
+
+Organize your organization into multiple teams with isolated resources and granular access control.
+
+Teams let you segment your Baseten organization into multiple isolated
+groups, each with its own resources, members, and access controls. Use teams to
+separate environments by function, project, or access level.
+
+<Note>
+  Teams are available for organizations on our Enterprise tier.
+  [Contact us](mailto:support@baseten.co) to enable teams for your
+  organization.
+</Note>
+
+## How teams work
+
+Every organization has a **default team** that contains all existing resources.
+In the single-team world, you work within this default team without seeing any
+team-specific UI.
+
+When teams are enabled, Organization Admins can create additional teams within the
+organization. Each team operates as an isolated unit with its own:
+
+* Models, Chains, and training projects
+* Secrets
+* Team-level API keys
+* Restricted environments
+* Team members and roles
+
+Billing remains at the organization level. All teams within an organization
+share the same billing account and usage tracking.
+
+## Roles and permissions
+
+Teams introduce a two-level role hierarchy:
+
+* Organization roles
+* Team roles
+
+### Organization roles
+
+Organization-level roles determine what a user can do across the entire organization:
+
+| Permission                  | Admin | Member |
+| :-------------------------- | ----- | ------ |
+| Manage billing              | ✅     | ❌      |
+| Manage teams                | ✅     | ❌      |
+| Manage organization members | ✅     | ❌      |
+| View all teams              | ✅     | ❌      |
+
+Organization Admins have implicit admin-level access to all teams and all restricted environments.
+
+### Team roles
+
+Team-level roles determine what a user can do within a specific team:
+
+| Permission                                   | Team Admin | Team Member |
+| :------------------------------------------- | ---------- | ----------- |
+| Manage team members                          | ✅          | ❌           |
+| Create restricted environments               | ✅          | ❌           |
+| Create team API keys                         | ✅          | ❌           |
+| Deploy models, Chains, and training projects | ✅          | ✅           |
+| Call models                                  | ✅          | ✅           |
+| View team resources                          | ✅          | ✅           |
+
+A user can have different roles in different teams. For example, a data scientist might be a Team Admin for the Research team where they run experiments, while having Team Member access to the Inference team to deploy trained models.
+
+## Manage teams
+
+Organization Admins can create and delete teams. Team Admins can manage membership within their teams.
+
+### Create a team
+
+To create a team:
+
+1. From the left navigation, select the dropdown next to the team name and select **Create new team**.
+2. Enter a team name and optionally select an icon.
+3. Choose **Create team**.
+
+The default team cannot be deleted, but you can rename it.
+
+### Invite members to a team
+
+To invite a new member and add them to teams:
+
+1. Navigate to **Organization settings** and select the **Members** tab.
+2. Select **Invite member**.
+3. Enter the member's email address.
+4. Select the organization role: **Admin** or **Member**.
+5. Select the teams to add them to.
+6. For each team, set their team role: **Team Admin** or **Team Member**.
+7. Select **Invite member**.
+
+The invited user receives an email to join the organization and is automatically added to the selected teams with the specified roles.
+
+To add an existing organization member to a team, navigate to the team's settings page, select the **Members** tab, and add them from there.
+
+### Remove a member
+
+To remove a member from the organization:
+
+1. Navigate to **Organization settings** and select the **Members** tab.
+2. Find the member you want to remove.
+3. Select the trash icon next to their name.
+
+Removing a member from the organization removes them from all teams.
+
+To remove a member from a specific team without removing them from the organization, navigate to the team's settings page, select the **Members** tab, and remove them from there.
+
+### Change a member's role
+
+To change a member's organization or team roles:
+
+1. Navigate to **Organization settings** and select the **Members** tab.
+2. Select the pencil icon next to the member's name.
+3. Update their organization role or team assignments as needed.
+4. Select **Save changes**.
+
+You can also change a member's team role from the team's settings page by navigating to the **Members** tab.
+
+### Switch between teams
+
+Use the team selector in the navigation to switch between teams.
+The team selector displays all teams you have access to.
+Selecting a team filters the view to show only that team's resources and settings.
+
+## Team-scoped resources
+
+### Secrets
+
+Secrets are scoped to individual teams.
+Each team maintains its own set of secrets, and models deployed to a team can only access that team's secrets.
+
+To manage secrets for a team:
+
+1. Switch to the team using the team selector in the navigation.
+2. Navigate to **Settings** and select **Secrets**.
+3. Add or modify secrets for that team.
+
+For more information, see [Best practices for secrets](/organization/secrets).
+
+### API keys
+
+API keys can be personal or team-scoped:
+
+* **Personal API keys** are tied to your user account and provide access to resources across all teams you belong to. Use personal keys for local development and testing.
+* **Team API keys** are scoped to a single team and can only access that team's resources. Use team keys for automation and production deployments. Only Team Admins and organization Admins can create team API keys.
+
+To create a team API key:
+
+1. Navigate to **Settings** and select **API Keys**.
+2. Select **Create API Key**.
+3. Choose the team to scope the key to.
+4. Name the key and select **Create**.
+
+For more information, see [Best practices for API keys](/organization/api-keys).
+
+### Restricted environments
+
+Restricted environments work at the team level. When you create a restricted
+environment, it applies to all models and Chains within that team.
+
+For more information, see
+[Restricted environments](/organization/restricted-environments).
+
+## Deploy to a team
+
+To deploy to a team, you can use the Truss CLI or the UI.
+
+### Use the Truss CLI
+
+To deploy a model to a specific team, use the `--team` flag with `truss push`. For development:
+
+```sh theme={"system"}
+truss push --watch --team your-team-name
+```
+
+Or for production:
+
+```sh theme={"system"}
+truss push --publish --team your-team-name
+```
+
+If you omit the `--team` flag, Truss infers the target team using the following logic:
+
+1. If you belong to only one team, Truss deploys to that team.
+2. If a model with the same name exists in only one of your accessible teams, Truss deploys to that team.
+3. If there is ambiguity (for example, the same model name exists in multiple teams), Truss prompts you to select a team.
+
+### Use the UI
+
+The team selector determines which team a model belongs to when you create or deploy through the Baseten console.
+To deploy to a specific team, switch to that team before creating or deploying resources.
+
+## Considerations
+
+### Model APIs
+
+Model APIs are only available in the default team.
+You cannot create or access Model APIs from other teams.
+
+### Billing
+
+Billing is managed at the organization level.
+There is no team-level billing breakdown or budget controls.
+All usage across teams is aggregated in the organization's billing dashboard, which is visible only to organization Admins.
+
+### Resource naming
+
+Model and Chain names must be unique within a team.
+The same name can exist in different teams, but this may require explicit team specification when using the Truss CLI.
+
+## Migrate to multiple teams
+
+When teams are enabled for your organization, all existing resources remain in the default team.
+You can then create additional teams and organize resources based on your needs.
+
+Common team structures include:
+
+* **By organizational structure**: Create teams for distinct departments or groups within your organization using Baseten. The recommended way to manage environments on Baseten is with [deployment environments](/deployment/environments), since this allows for centralized management, promotion workflows, and varying levels of access control.
+* **By function**: Separate teams for different projects or use cases (for example, a training team and an inference team).
+* **By access level**: Separate teams based on who should have access to modify production resources.
+
+There is no single correct way to structure teams.
+Consider your organization's access control needs, how you want to isolate secrets and credentials, and how different groups within your organization work with Baseten.
+
+To move a model or Chain to a different team, redeploy it while switched to the target team. The original resource in the default team can then be deleted if no longer needed.
+
+
 # Documentation
 Source: https://docs.baseten.co/overview
 
 Baseten is a platform for deploying and serving AI models performantly, scalably, and cost-efficiently.
 
-<div class="homepage-bg" />
+<div />
 
-<div class="homepage-content flex flex-col box-border w-full relative grow mx-auto 2xl:max-w-2xl xl:w-[calc(100%-19rem)] max-w-2xl lg:mt-12">
-  <h1 class="inline-block mb-4 text-2xl sm:text-3xl text-gray-900 tracking-tight dark:text-gray-200 font-semibold text-center">
+<div>
+  <h1>
     Build with Baseten
   </h1>
 
-  <div class="mb-8 text-lg prose prose-gray dark:prose-invert text-center px-8">
+  <div>
     Baseten is a platform for deploying and serving AI models performantly,
     scalably, and cost-efficiently.
   </div>
 
-  <CardGroup cols={2}>
-    <Card title="Quick start" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=0d260319305f9d33dcd9709c24fb2856" href="/quickstart" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/homepage-quick-start.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f50847061bb46c24995c2b2324dcd317 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=9b5c1c16a1c0bc8629c399ec9c4b06ff 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=264a9551ca3c213d60382360b60f79db 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c750084d5cdd920bb63aa759432e156d 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3634e8b3c9a1b5b5965da76f8b7bc621 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-quick-start.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=47cc9d8cb99ddbc5209200974f29803c 2500w">
+  <CardGroup>
+    <Card title="Quick start" href="/quickstart">
       Choose from common AI/ML usecases and modalities to get started on Baseten quickly.
     </Card>
 
-    <Card title="How Baseten works" href="/concepts/howbasetenworks" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=140d3dccd789bd16e2b29f0f02533c11" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/homepage-how-baseten-works.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1943018606dc849ff843dba0a706f96d 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=55180fb766000c4a93444e80fde92828 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=35d1f18bc94b7ff2615b1d0e657ee60f 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=af7a160bb34e1adc25ad4e2fb52bf78f 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=edf3d42a2ebe2e507283af54bf0733d5 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/homepage-how-baseten-works.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8078061dba89c6e7d823e39f4e98e068 2500w">
+    <Card title="How Baseten works" href="/concepts/howbasetenworks">
       Baseten makes it easy to deploy, serve, and scale AI models so you can focus on building, not infrastructure.
     </Card>
   </CardGroup>
 
-  <div class="mb-8 mt-8  prose prose-gray dark:prose-invert ">
-    <h2 class="inline-block mb-4 text-2xl sm:text-2xl text-gray-900 tracking-tight dark:text-gray-200 font-semibold text-center w-full">
+  <div>
+    <h2>
       Baseten is an inference and training platform that lets you:
     </h2>
 
     #### Deploy dedicated models with full control
 
-    * [Package any model for production](/development/model/overview): Define dependencies, hardware, and custom code without needing to learn Docker. Build with your preferred frameworks (e.g. **PyTorch**, **transformers**, **diffusers**), [inference engines](development/model/performance/concepts) (e.g. **TensorRT-LLM**, **SGLang**, **vLLM**), and serving tools (e.g. **Triton**) as well as [any package](/development/model/configuration) installable via `pip` or `apt`.
+    * [Package any model for production](/development/model/overview): Define dependencies, hardware, and custom code without needing to learn Docker. Build with your preferred frameworks (e.g., PyTorch, transformers, diffusers), [inference engines](/development/model/performance-optimization) (e.g., TensorRT-LLM, SGLang, vLLM), and serving tools (e.g., Triton) as well as [any package](/development/model/configuration) installable via `pip` or `apt`.
 
     * [Build complex AI systems](/development/chain/overview): Orchestrate multi-step workflows with [Chains](/development/chain/overview), combining models, business logic, and external APIs.
 
@@ -13155,11 +18402,11 @@ Baseten is a platform for deploying and serving AI models performantly, scalably
     * [Manage artifacts and streamline workflows](/training/management): Track experiments, organize training runs, and handle large artifacts like checkpoints and logs. Seamlessly transition from training to deployment within the Baseten ecosystem.
   </div>
 
-  <h1 class="inline-block mb-4 text-2xl sm:text-2xl text-gray-900 tracking-tight dark:text-gray-200 font-semibold">
+  <h1>
     Resources
   </h1>
 
-  <CardGroup cols={1}>
+  <CardGroup>
     <Card title="Examples" href="/examples/overview">
       From deploying AI models to optimizing inference and scaling ML models.
     </Card>
@@ -13182,36 +18429,36 @@ Source: https://docs.baseten.co/quickstart
 
 
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="What modality are you working with?">
     Choose from common modalities like LLMs, transcription, and image generation to get started quickly.
 
-    <CardGroup cols={3}>
-      <Card title="LLMs" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=9e6ec9242ff323addbe7f8ab810e9f92" href="/quickstart/large-language-models" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-chat.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2f0ac4d1005a5c00ccd71d653608b115 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8146013c52f4a1f51da785b02fadf7d6 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=a3bef04d68ef9bcc2a78c3c379f26595 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=500eccc135316c9acc3eb9f54f6a60a2 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=181ed7322a8807e256e6e618ff71b3a5 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-chat.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=20af635a21ad4905e5344af2812bd0f1 2500w">
+    <CardGroup>
+      <Card title="LLMs" href="/quickstart/large-language-models">
         Build and deploy large language models
       </Card>
 
-      <Card title="Transcription" img="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=bc62896847fd112218b9024252e54514" href="/quickstart/transcription" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-transcription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=280&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=e25f6438c8905ef1618db355d9a85ace 280w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=560&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=06e991d9121e8d081bb3468bddac43bb 560w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=840&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=c3fa359449541049e314577d761f7f7c 840w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=1100&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=9bc8633c958bf11bd4f193ba7c92c938 1100w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=1650&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=7bd53f6bbad23d2e1321c95b5cb74aca 1650w, https://mintcdn.com/baseten-preview/QSTsjlPJ_dU4jrB6/images/quick-start-transcription.png?w=2500&fit=max&auto=format&n=QSTsjlPJ_dU4jrB6&q=85&s=e6eba7c1a8b5b6648fa6c3360c6727f4 2500w">
+      <Card title="Transcription" href="/quickstart/transcription">
         Transcribe audio and video
       </Card>
 
-      <Card title="Image generation" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=ed7eb39a55a2c2fa3e99e66de74f247f" href="/quickstart/image-generation" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-image-gen.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=820b3e6ea189259b59c204ab06c8e6c7 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5d5e52ff83cf55b01963e86c189ade0d 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=761bc5a39d202e89c03ecdb987a285ee 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8102b269426cb242a2f5aa98256a7b4a 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2be9b8b78ed8073b03bfe64b7526ed75 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-image-gen.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=6047e9c5ab15286e42a67b0f0fbc7f3d 2500w">
+      <Card title="Image generation" href="/quickstart/image-generation">
         Rapidly generate images
       </Card>
 
-      <Card title="Text to speech" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4a23cb748e01520527912d9dac1d8f24" href="/quickstart/text-to-speech" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-text-to-speech.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=8e62c3935c0246bc3d72b321cb58cdb6 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=adc40e12b4fd2d779e3e474db70caba2 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=cba0c443ea6707799f43064e17d84419 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=69b00fe8ca0b71a0be1ff15dbc2523ab 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=9ce923a49a7d4ae7e91d0e8706edf33d 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-text-to-speech.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4d4afb876a79e626d3fef80e80364662 2500w">
+      <Card title="Text to speech" href="/quickstart/text-to-speech">
         Build humanlike experiences
       </Card>
 
-      <Card title="Compound AI" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=35d94f79ebcd5a864f528a475e3e5892" href="/quickstart/compound-ai" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-compound-ai.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d000a88a7d8f6fbf70c34292fa538639 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3c0dac476ae1619d241510a64619a1b3 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=6a3cab628b2c474b75c2b89891bea1be 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4396cf8eaab9cac66dc5e7682865f283 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=806e8c4fffa5726a89e64bac50e32fe4 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-compound-ai.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1c4f4517d07b30aa6ac10a0b6d5ed4ce 2500w">
+      <Card title="Compound AI" href="/quickstart/compound-ai">
         Build real-time AI-native applications
       </Card>
 
-      <Card title="Embeddings" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c301c14c9e64ce66a7b8a4463204ee6d" href="/quickstart/embeddings" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-embeddings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2b130318e315108095b3bcc69b3fe0d0 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=d128ff9feb4617c708c7e307829c138c 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e65a33bf999c5a562965da1e4ed4e73d 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=87ff24deebcc76dd08b49adae3138ff7 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=858016ede7fdba4fcdc76389e81c5510 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-embeddings.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=fc004b9d74cd7c16a7be1e39b5b0d794 2500w">
+      <Card title="Embeddings" href="/quickstart/embeddings">
         Process millions of data points
       </Card>
 
-      <Card title="Custom models" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=5b311851b5ef3c64457a5427a018490e" href="/quickstart/custom-models" data-og-width="956" width="956" data-og-height="700" height="700" data-path="images/quick-start-custom-models.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e90f3d039b9bb98b54b68d5aa647e121 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=f47980b0fc8b91e47d1d8b960e132e84 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=af5e40a6052d67e79aab5649537c5faa 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=6ed11fdf4929d98bf0ccb2ea56de2981 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=3080035003d95f38c5042f9f5824a83a 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/quick-start-custom-models.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=60d4eb0e4bdb201d50aa26372089a35c 2500w">
+      <Card title="Custom models" href="/quickstart/custom-models">
         Deploy any model
       </Card>
     </CardGroup>
@@ -13228,88 +18475,258 @@ Source: https://docs.baseten.co/reference/cli/chains/chains-cli
 
 Deploy, manage, and develop Chains using the Truss CLI.
 
-# Deploy a Chain
+```sh theme={"system"}
+truss chains [OPTIONS] COMMAND [ARGS]...
+```
+
+| Command           | Description                |
+| ----------------- | -------------------------- |
+| [`init`](#init)   | Initialize a Chain project |
+| [`push`](#push)   | Deploy a Chain             |
+| [`watch`](#watch) | Live reload development    |
+
+***
+
+## `init`
+
+Initialize a Chain project.
+
+```sh theme={"system"}
+truss chains init [OPTIONS] [DIRECTORY]
+```
+
+* `DIRECTORY` (optional): Path to a new or empty directory for the Chain. Defaults to the current directory if omitted.
+
+**Options:**
+
+* `--log` `[humanfriendly | INFO | DEBUG]`: Set log verbosity.
+* `--help`: Show this message and exit.
+
+**Example:**
+
+To create a new Chain project in a directory called `my-chain`, use the following:
+
+```sh theme={"system"}
+truss chains init my-chain
+```
+
+***
 
 ## `push`
 
-```sh  theme={"system"}
+Deploy a Chain.
+
+```sh theme={"system"}
 truss chains push [OPTIONS] SOURCE [ENTRYPOINT]
 ```
 
-Deploys a chain to a remote environment.
-
-* `SOURCE`: Path to a python file that contains the entrypoint chainlet.
+* `SOURCE`: Path to a Python file that contains the entrypoint chainlet.
 * `ENTRYPOINT` (optional): Class name of the entrypoint chainlet. If omitted, the chainlet tagged with `@chains.mark_entrypoint` is used.
 
 **Options:**
 
-* `--name` (TEXT): Custom name for the chain (defaults to entrypoint name).
+* `--name` (TEXT): Custom name for the Chain (defaults to entrypoint name).
 * `--publish / --no-publish`: Create chainlets as a published deployment.
 * `--promote / --no-promote`: Promote newly deployed chainlets into production.
 * `--environment` (TEXT): Deploy chainlets into a particular environment.
-* `--wait / --no-wait`: Wait until all chainlets are ready (or deployment
-  failed).
-* `--watch / --no-watch`: Watches the chains source code and applies live
-  patches. Using this option will wait for the chain to be deployed
-  (i.e.`--wait` flag is applied), before starting to watch for changes.
-  This option requires the deployment to be a development deployment.
-* `--experimental-chainlet-names`: (TEXT): Runs `watch`, but only applies
-  patches to specified chainlets. The option is a comma-separated list of
-  chainlet (display) names. This option can give faster dev loops, but also
-  lead to inconsistent deployments. Use with caution and refer to
-  [docs](/development/chain/watch).
-* `--dryrun`: Produces only generated files, but doesn't deploy anything.
+* `--wait / --no-wait`: Wait until all chainlets are ready (or deployment failed).
+* `--watch / --no-watch`: Watch the Chains source code and apply live patches. Using this option waits for the Chain to be deployed (the `--wait` flag is applied) before starting to watch for changes. This option requires the deployment to be a development deployment.
+* `--experimental-chainlet-names` (TEXT): Run `watch`, but only apply patches to specified chainlets. The option is a comma-separated list of chainlet (display) names. This option can give faster dev loops, but also lead to inconsistent deployments. Use with caution and refer to [docs](/development/chain/watch).
+* `--dryrun`: Produce only generated files, but don't deploy anything.
 * `--remote` (TEXT): Name of the remote in .trussrc to push to.
-* `--log` `[humanfriendly|I|INFO|D|DEBUG]`: Customizes logging.
+* `--team` (TEXT): Name of the team to deploy to. If not specified, Truss infers the team or prompts for selection.
+* `--log` `[humanfriendly|I|INFO|D|DEBUG]`: Customize logging.
 * `--help`: Show this message and exit.
+
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
+
+**Example:**
+
+To deploy a Chain as a development deployment, use the following:
+
+```sh theme={"system"}
+truss chains push my_chain.py
+```
+
+To deploy and promote to production, use the following:
+
+```sh theme={"system"}
+truss chains push my_chain.py --publish --promote
+```
+
+To deploy to a specific team, use the following:
+
+```sh theme={"system"}
+truss chains push my_chain.py --team my-team-name
+```
 
 ***
 
-# Live Reload Development
-
 ## `watch`
 
-```sh  theme={"system"}
+Live reload development.
+
+```sh theme={"system"}
 truss chains watch [OPTIONS] SOURCE [ENTRYPOINT]
 ```
-
-Watches for source code changes and applies live updates to a development deployment.
 
 * `SOURCE`: Path to a Python file containing the entrypoint chainlet.
 * `ENTRYPOINT` (optional): Class name of the entrypoint chainlet. If omitted, the chainlet tagged with `@chains.mark_entrypoint` is used.
 
 **Options:**
 
-* `--name` (TEXT): Name of the chain to be deployed, if not given, the
-  entrypoint name is used.
-* `--remote`: (TEXT): Name of the remote in .trussrc to
-  push to.
-* `--experimental-chainlet-names`: (TEXT): Runs `watch`, but only applies
-  patches to specified chainlets. The option is a comma-separated list of
-  chainlet (display) names. This option can give faster dev loops, but also
-  lead to inconsistent deployments. Use with caution and refer to
-  [docs](/development/chain/watch).
-* `--log [humanfriendly|W|WARNING|I|INFO|D|DEBUG]`: Customizes logging.
+* `--name` (TEXT): Name of the Chain to be deployed. If not given, the entrypoint name is used.
+* `--remote` (TEXT): Name of the remote in .trussrc to push to.
+* `--team` (TEXT): Name of the team to deploy to. If not specified, Truss infers the team or prompts for selection.
+
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
+
+* `--experimental-chainlet-names` (TEXT): Run `watch`, but only apply patches to specified chainlets. The option is a comma-separated list of chainlet (display) names. This option can give faster dev loops, but also lead to inconsistent deployments. Use with caution and refer to [docs](/development/chain/watch).
+* `--log` `[humanfriendly|W|WARNING|I|INFO|D|DEBUG]`: Customize logging.
 * `--help`: Show this message and exit.
 
-***
+**Example:**
 
-# Initialize a Chain Project
+To watch a Chain for live reload during development, use the following:
 
-## `init`
-
-```sh  theme={"system"}
-truss chains init [OPTIONS] [DIRECTORY]
+```sh theme={"system"}
+truss chains watch my_chain.py
 ```
 
-Initializes a chains project directory.
 
-* `DIRECTORY` (optional): Path to a **new or empty directory** for the chain. Defaults to the **current directory** if omitted.
+# Truss CLI overview
+Source: https://docs.baseten.co/reference/cli/index
 
-Options:
+Install and configure the Truss CLI for deploying models, chains, and training jobs.
 
-* `--log LEVEL` → Set log verbosity `[humanfriendly | INFO | DEBUG]`.
-* `--help` → Show command details.
+The `truss` CLI is your primary interface for everything from packaging and
+deploying AI models to building and orchestrating multi-step chains to launching and
+managing training jobs.
+
+Use the following commands to manage your models, chains, and training jobs:
+
+* **Models**: Package and deploy individual model servers.
+* **Chains**: Build and deploy multi-step inference pipelines.
+* **Training**: Launch and manage training jobs.
+
+<Accordion title="Install the Truss CLI">
+  To use Truss, install a recent Truss version and ensure pydantic is v2:
+
+  ```bash theme={"system"}
+  pip install --upgrade truss 'pydantic>=2.0.0'
+  ```
+
+  <Accordion title="Help for setting up a clean development environment">
+    Truss requires python `>=3.9,<3.15`. To set up a fresh development environment,
+    you can use the following commands, creating a environment named `truss_env`
+    using `pyenv`:
+
+    ```bash theme={"system"}
+    curl https://pyenv.run | bash
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+    source ~/.bashrc
+    pyenv install 3.11.0
+    ENV_NAME="truss_env"
+    pyenv virtualenv 3.11.0 $ENV_NAME
+    pyenv activate $ENV_NAME
+    pip install --upgrade truss 'pydantic>=2.0.0'
+    ```
+  </Accordion>
+
+  To deploy Truss remotely, you also need a
+  [Baseten account](https://app.baseten.co/signup).
+  It is handy to export your API key to the current shell session or permanently in your `.bashrc`:
+
+  ```bash ~/.bashrc theme={"system"}
+  export BASETEN_API_KEY="nPh8..."
+  ```
+</Accordion>
+
+## CLI structure
+
+The `truss` CLI organizes commands by workflow:
+
+```
+truss [OPTIONS] COMMAND [ARGS]...
+```
+
+### Model commands
+
+Use these commands to package, deploy, and iterate on individual models.
+
+| Command                                               | Description                       |
+| ----------------------------------------------------- | --------------------------------- |
+| [`truss login`](/reference/cli/truss/login)           | Authenticate with Baseten         |
+| [`truss init`](/reference/cli/truss/init)             | Create a new Truss project        |
+| [`truss push`](/reference/cli/truss/push)             | Deploy a model to Baseten         |
+| [`truss watch`](/reference/cli/truss/watch)           | Live reload during development    |
+| [`truss predict`](/reference/cli/truss/predict)       | Call the packaged model           |
+| [`truss model-logs`](/reference/cli/truss/model-logs) | Fetch logs for the packaged model |
+
+### Chain commands
+
+Use these commands to build multi-model pipelines with shared dependencies.
+
+| Command                                                        | Description                    |
+| -------------------------------------------------------------- | ------------------------------ |
+| [`truss chains init`](/reference/cli/chains/chains-cli#init)   | Initialize a new Chain project |
+| [`truss chains push`](/reference/cli/chains/chains-cli#push)   | Deploy a Chain to Baseten      |
+| [`truss chains watch`](/reference/cli/chains/chains-cli#watch) | Live reload Chain development  |
+
+### Training commands
+
+Use these commands to launch, monitor, and manage training jobs.
+
+| Command                                                         | Description                     |
+| --------------------------------------------------------------- | ------------------------------- |
+| [`truss train init`](/reference/cli/training/training-cli#init) | Initialize a training project   |
+| [`truss train push`](/reference/cli/training/training-cli#push) | Deploy and run a training job   |
+| [`truss train logs`](/reference/cli/training/training-cli#logs) | Stream logs from a training job |
+| [`truss train view`](/reference/cli/training/training-cli#view) | List and inspect training jobs  |
+
+## Authentication
+
+After installing Truss, authenticate with Baseten using either method:
+
+**Option 1: Environment variable (recommended for CI/CD)**
+
+```sh theme={"system"}
+export BASETEN_API_KEY="YOUR_API_KEY"
+```
+
+**Option 2: Interactive login**
+
+```sh theme={"system"}
+truss login
+```
+
+This opens a browser window to authenticate and stores your credentials locally.
+
+## Next steps
+
+<CardGroup>
+  <Card title="Deploy your first model" icon="rocket" href="/examples/deploy-your-first-model">
+    Package and deploy a model in minutes.
+  </Card>
+
+  <Card title="Build a Chain" icon="link" href="/development/chain/getting-started">
+    Create multi-step inference pipelines.
+  </Card>
+
+  <Card title="Launch a training job" icon="dumbbell" href="/training/getting-started">
+    Fine-tune models on Baseten infrastructure.
+  </Card>
+
+  <Card title="Truss configuration" icon="gear" href="/reference/truss-configuration">
+    Configure dependencies, resources, and more.
+  </Card>
+</CardGroup>
 
 
 # Training CLI reference
@@ -13317,197 +18734,503 @@ Source: https://docs.baseten.co/reference/cli/training/training-cli
 
 Deploy, manage, and monitor training jobs using the Truss CLI.
 
-# Initialize Training Jobs
+The `truss train` command provides subcommands for managing the full training job lifecycle.
 
-## `init`
+```sh theme={"system"}
+truss train [COMMAND] [OPTIONS]
+```
 
-```sh  theme={"system"}
+### Universal options
+
+The following options are available for all `truss train` commands:
+
+* `--help`: Show help message and exit.
+* `--non-interactive`: Disable interactive prompts (for CI/automated environments).
+* `--remote TEXT`: Name of the remote in `.trussrc`.
+
+***
+
+## init
+
+Initialize a training project from templates or create an empty project.
+
+```sh theme={"system"}
 truss train init [OPTIONS]
 ```
 
-Initializes files needed to launch a training job. If no options passed, initializes an empty training project.
+### Options
 
-**Options:**
+<ParamField type="string">
+  Template name or comma-separated list of templates to initialize. See the [ML Cookbook](https://github.com/basetenlabs/ml-cookbook) for available examples.
+</ParamField>
 
-* `--examples`: A single example or comma separated list of verified [examples](https://github.com/basetenlabs/ml-cookbook/tree/main/examples).
-* `--target-directory`: Location to initialize the example/s or empty training project.
+<ParamField type="string">
+  Directory to initialize the project in. Defaults to current directory.
+</ParamField>
+
+<ParamField>
+  List all available example templates.
+</ParamField>
+
+### Examples
+
+Initialize a project from a template:
+
+```sh theme={"system"}
+truss train init --examples llama-8b-lora-unsloth
+```
+
+Initialize multiple templates:
+
+```sh theme={"system"}
+truss train init --examples llama-8b-lora-unsloth,qwen3-8b-lora-dpo-trl
+```
+
+List available templates:
+
+```sh theme={"system"}
+truss train init --list-examples
+```
+
+Create an empty training project:
+
+```sh theme={"system"}
+truss train init
+```
 
 ***
 
-# Deploy Training Jobs
+## push
 
-## `push`
+Submit and run a training job.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss train push [OPTIONS] CONFIG
 ```
 
-Deploys and runs a training job.
+### Arguments
 
-* `CONFIG`: Path to a training configuration file.
+<ParamField type="string">
+  Path to the training configuration file (e.g., `config.py`).
+</ParamField>
 
-**Options:**
+### Options
 
-* `--tail`: Tail status and logs after pushing the training job.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc to push to.
+<ParamField>
+  Stream status and logs after submitting the job.
+</ParamField>
+
+<ParamField type="string">
+  Name for the training job.
+</ParamField>
+
+<ParamField type="string">
+  Team name for the training project. If not specified, Truss infers the team or prompts for selection.
+</ParamField>
+
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
+
+### Examples
+
+Submit a training job:
+
+```sh theme={"system"}
+truss train push config.py
+```
+
+Submit and stream logs:
+
+```sh theme={"system"}
+truss train push config.py --tail
+```
+
+Submit to a specific team:
+
+```sh theme={"system"}
+truss train push config.py --team my-team-name
+```
+
+Submit with a custom job name:
+
+```sh theme={"system"}
+truss train push config.py --job-name fine-tune-v1
+```
 
 ***
 
-# Monitor Training Jobs
+## logs
 
-## `logs`
+Fetch and stream logs from a training job.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss train logs [OPTIONS]
 ```
 
-Fetch and display logs for a training job.
+### Options
 
-**Options:**
+<ParamField type="string">
+  Job ID to fetch logs from.
+</ParamField>
 
-* `--job-id` (TEXT): Job ID to fetch logs from.
-* `--tail`: Continuously stream new logs.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField type="string">
+  Project name or project ID.
+</ParamField>
 
-## `metrics`
+<ParamField type="string">
+  Project ID.
+</ParamField>
 
-```sh  theme={"system"}
-truss train metrics [OPTIONS]
+<ParamField>
+  Continuously stream new logs.
+</ParamField>
+
+### Examples
+
+Stream logs for a specific job:
+
+```sh theme={"system"}
+truss train logs --job-id abc123 --tail
 ```
 
-Get metrics for a training job.
+View logs for a job without streaming:
 
-**Options:**
-
-* `--job-id` (TEXT): Job ID to fetch metrics from.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-## `view`
-
-```sh  theme={"system"}
-truss train view [OPTIONS]
+```sh theme={"system"}
+truss train logs --job-id abc123
 ```
-
-List and view training jobs.
-
-**Options:**
-
-* `--project` (TEXT): View training jobs for a specific project (ID or name).
-* `--job-id` (TEXT): View details of a specific training job.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
 
 ***
 
-# Manage Training Jobs
+## metrics
 
-## `stop`
+View real-time metrics for a training job including CPU, GPU, and storage usage.
 
-```sh  theme={"system"}
-truss train stop [OPTIONS]
+```sh theme={"system"}
+truss train metrics [OPTIONS]
 ```
+
+### Options
+
+<ParamField type="string">
+  Job ID to fetch metrics from.
+</ParamField>
+
+<ParamField type="string">
+  Project name or project ID.
+</ParamField>
+
+<ParamField type="string">
+  Project ID.
+</ParamField>
+
+### Examples
+
+View metrics for a specific job:
+
+```sh theme={"system"}
+truss train metrics --job-id abc123
+```
+
+***
+
+## view
+
+List training projects and jobs, or view details for a specific job.
+
+```sh theme={"system"}
+truss train view [OPTIONS]
+```
+
+### Options
+
+<ParamField type="string">
+  View details for a specific training job.
+</ParamField>
+
+<ParamField type="string">
+  View jobs for a specific project (name or ID).
+</ParamField>
+
+<ParamField type="string">
+  View jobs for a specific project ID.
+</ParamField>
+
+### Examples
+
+List all training projects:
+
+```sh theme={"system"}
+truss train view
+```
+
+View jobs in a specific project:
+
+```sh theme={"system"}
+truss train view --project my-project
+```
+
+View details for a specific job:
+
+```sh theme={"system"}
+truss train view --job-id abc123
+```
+
+***
+
+## stop
 
 Stop a running training job.
 
-**Options:**
-
-* `--project` (TEXT): Specify the project (ID or name) to stop a training job from.
-* `--job-id` (TEXT): ID of the job to stop.
-* `--all`: Stop all running jobs.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-# Manage Training Cache
-
-The training cache is scoped to a specific training project. The CLI allows you to see a summary of the contents in the cache to
-help you manage your storage.
-
-## `cache summarize`
-
-```sh  theme={"system"}
-truss train cache summarize <project_name or project_id> [OPTIONS]
+```sh theme={"system"}
+truss train stop [OPTIONS]
 ```
 
-View the contents of the training cache in a table. Optionally sort by different column names (e.g. modified, size, etc.)
+### Options
 
-**Options:**
+<ParamField type="string">
+  Job ID to stop.
+</ParamField>
 
-* `--sort` (TEXT): column to sort by
-* `--order` (TEXT): Ascending (asc) or descending (desc) order for sorting
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField type="string">
+  Project name or project ID.
+</ParamField>
 
-# Manage Checkpoints
+<ParamField type="string">
+  Project ID.
+</ParamField>
 
-## `deploy_checkpoints`
+<ParamField>
+  Stop all running jobs. Prompts for confirmation.
+</ParamField>
 
-```sh  theme={"system"}
-truss train deploy_checkpoints [OPTIONS]
+### Examples
+
+Stop a specific job:
+
+```sh theme={"system"}
+truss train stop --job-id abc123
 ```
 
-Deploy model checkpoints from a training job.
+Stop all running jobs:
 
-## `get_checkpoint_urls`
-
-```sh  theme={"system"}
-truss train get_checkpoint_urls [OPTIONS]
+```sh theme={"system"}
+truss train stop --all
 ```
 
-Get a list of URL's to checkpoint artifacts for a training job
+***
 
-**Options:**
+## recreate
 
-* `--job-id` (TEXT): Job ID containing the checkpoints.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+Recreate an existing training job with the same configuration.
 
-**Options:**
-
-* `--project` (TEXT): Project (ID or name) name containing the checkpoints.
-* `--job-id` (TEXT): Job ID containing the checkpoints.
-* `--config` (TEXT): Path to a Python file defining a DeployCheckpointsConfig.
-* `--dry-run`: Generate a truss config without deploying.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-## `recreate`
-
-```sh  theme={"system"}
+```sh theme={"system"}
 truss train recreate [OPTIONS]
 ```
 
-Recreate an existing training job from an existing job ID. If no job ID is provided, it will default to the last created active training job and ask for confirmation first.
+### Options
 
-**Options:**
+<ParamField type="string">
+  Job ID of the training job to recreate. If not provided, defaults to the last created job.
+</ParamField>
 
-* `--job-id` (TEXT): Existing Job ID of Training Job to recreate.
-* `--tail`: Tail status and logs after recreation.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField>
+  Stream status and logs after recreating the job.
+</ParamField>
 
-## `download`
+### Examples
 
-```sh  theme={"system"}
+Recreate a specific job:
+
+```sh theme={"system"}
+truss train recreate --job-id abc123
+```
+
+Recreate and stream logs:
+
+```sh theme={"system"}
+truss train recreate --job-id abc123 --tail
+```
+
+***
+
+## download
+
+Download training job artifacts to your local machine.
+
+```sh theme={"system"}
 truss train download [OPTIONS]
 ```
 
-Download training job artifacts.
+### Options
 
-**Options:**
+<ParamField type="string">
+  Job ID to download artifacts from.
+</ParamField>
 
-* `--job-id` (TEXT): Job ID to download artifacts from. (Required)
-* `--target-directory` (PATH): Directory where the file should be downloaded. Defaults to current directory.
-* `--no-unzip`: Instructs truss to not unzip the compressed file upon download.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField type="path">
+  Directory to download files to. Defaults to current directory.
+</ParamField>
 
-# Ignoring files and folders
+<ParamField>
+  Keep the compressed archive without extracting.
+</ParamField>
 
-To ignore specific files or folders, place a `.truss_ignore` file in the root directory of your project. Define the files or folders you want `truss` to ignore.
+### Examples
 
-These can be absolute paths or paths relative to the location of the `.truss_ignore`
+Download artifacts to current directory:
+
+```sh theme={"system"}
+truss train download --job-id abc123
+```
+
+Download to a specific directory:
+
+```sh theme={"system"}
+truss train download --job-id abc123 --target-directory ./downloads
+```
+
+Download without extracting:
+
+```sh theme={"system"}
+truss train download --job-id abc123 --no-unzip
+```
+
+***
+
+## deploy\_checkpoints
+
+Deploy a trained model checkpoint to Baseten's inference platform.
+
+```sh theme={"system"}
+truss train deploy_checkpoints [OPTIONS]
+```
+
+### Options
+
+<ParamField type="string">
+  Job ID containing the checkpoints to deploy.
+</ParamField>
+
+<ParamField type="string">
+  Project name or project ID.
+</ParamField>
+
+<ParamField type="string">
+  Project ID.
+</ParamField>
+
+<ParamField type="string">
+  Path to a Python file defining a `DeployCheckpointsConfig`.
+</ParamField>
+
+<ParamField>
+  Generate a Truss config without deploying. Useful for previewing the deployment configuration.
+</ParamField>
+
+<ParamField type="string">
+  Path to output the generated Truss config. Defaults to `truss_configs/<model_version_name>_<model_version_id>`.
+</ParamField>
+
+### Examples
+
+Deploy checkpoints interactively:
+
+```sh theme={"system"}
+truss train deploy_checkpoints
+```
+
+Deploy checkpoints from a specific job:
+
+```sh theme={"system"}
+truss train deploy_checkpoints --job-id abc123
+```
+
+Preview deployment without deploying:
+
+```sh theme={"system"}
+truss train deploy_checkpoints --job-id abc123 --dry-run
+```
+
+***
+
+## get\_checkpoint\_urls
+
+Get presigned URLs for checkpoint artifacts.
+
+```sh theme={"system"}
+truss train get_checkpoint_urls [OPTIONS]
+```
+
+### Options
+
+<ParamField type="string">
+  Job ID containing the checkpoints.
+</ParamField>
+
+### Examples
+
+Get checkpoint URLs for a job:
+
+```sh theme={"system"}
+truss train get_checkpoint_urls --job-id abc123
+```
+
+***
+
+## cache summarize
+
+View a summary of the training cache for a project.
+
+```sh theme={"system"}
+truss train cache summarize [OPTIONS] PROJECT
+```
+
+### Arguments
+
+<ParamField type="string">
+  Project name or project ID.
+</ParamField>
+
+### Options
+
+<ParamField type="string">
+  Sort files by column. Options: `filepath`, `size`, `modified`, `type`, `permissions`.
+</ParamField>
+
+<ParamField type="string">
+  Sort order: `asc` (ascending) or `desc` (descending).
+</ParamField>
+
+<ParamField type="string">
+  Output format: `cli-table` (default), `csv`, or `json`.
+</ParamField>
+
+### Examples
+
+View cache summary:
+
+```sh theme={"system"}
+truss train cache summarize my-project
+```
+
+Sort by size descending:
+
+```sh theme={"system"}
+truss train cache summarize my-project --sort size --order desc
+```
+
+Export as JSON:
+
+```sh theme={"system"}
+truss train cache summarize my-project --output-format json
+```
+
+***
+
+## Ignore files and folders
+
+Create a `.truss_ignore` file in your project root to exclude files from upload. Uses `.gitignore` syntax.
 
 ```plaintext .truss_ignore theme={"system"}
 # Python cache files
@@ -13518,243 +19241,322 @@ __pycache__/
 
 # Type checking
 .mypy_cache/
+
 # Testing
 .pytest_cache/
 
-# Some large files
+# Large data files
 data/
+*.bin
 ```
 
 
 # truss cleanup
 Source: https://docs.baseten.co/reference/cli/truss/cleanup
 
-Clean up truss data.
+Clean up Truss data.
 
-```
+```sh theme={"system"}
 truss cleanup [OPTIONS]
 ```
 
-Truss creates temporary directories for various operations such as for building Docker images. This command clears that data to free up disk space.
+Clears temporary directories created by Truss for operations like building Docker images. Use this to free up disk space.
 
-### Options
+**Example:**
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+To clean up temporary Truss data, use the following:
+
+```sh theme={"system"}
+truss cleanup
+```
+
+
+# truss configure
+Source: https://docs.baseten.co/reference/cli/truss/configure
+
+Configure Truss settings.
+
+```sh theme={"system"}
+truss configure [OPTIONS]
+```
+
+Configures Truss settings interactively. Use this command to set up or modify your local Truss configuration.
+
+**Example:**
+
+To configure Truss settings interactively, use the following:
+
+```sh theme={"system"}
+truss configure
+```
+
+You should see a configuration file that you can edit, for example:
+
+```yaml ~/.trussrc theme={"system"}
+[baseten]
+remote_provider = baseten
+api_key = YOUR_API_KEY
+remote_url = https://app.baseten.co
+```
 
 
 # truss container
 Source: https://docs.baseten.co/reference/cli/truss/container
 
-Subcommands for truss container.
+Run and manage Truss containers locally.
 
-```
+```sh theme={"system"}
 truss container [OPTIONS] COMMAND [ARGS]...
 ```
 
-### Options
+Manage Docker containers for your Truss.
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+***
 
-## truss container kill
+## `kill`
 
-Kills containers related to Truss.
+Kill containers related to a specific Truss.
 
-```
+```sh theme={"system"}
 truss container kill [OPTIONS] [TARGET_DIRECTORY]
 ```
 
-### Options
-
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="str">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-## truss container kill-all
+**Example:**
 
-Kills all Truss containers that are not manually persisted.
+To kill containers for the current Truss, use the following:
 
+```sh theme={"system"}
+truss container kill
 ```
+
+***
+
+## `kill-all`
+
+Kill all Truss containers that are not manually persisted.
+
+```sh theme={"system"}
 truss container kill-all [OPTIONS]
 ```
 
-### Options
+**Example:**
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+To kill all Truss containers, use the following:
 
-## truss container logs
-
-Get logs in a container is running for a Truss.
-
+```sh theme={"system"}
+truss container kill-all
 ```
+
+***
+
+## `logs`
+
+Get logs from a running Truss container.
+
+```sh theme={"system"}
 truss container logs [OPTIONS] [TARGET_DIRECTORY]
 ```
 
-### Options
-
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="str">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
+
+**Example:**
+
+To view logs from the current Truss container, use the following:
+
+```sh theme={"system"}
+truss container logs
+```
 
 
 # truss image
 Source: https://docs.baseten.co/reference/cli/truss/image
 
-Subcommands for truss image.
+Build and manage Truss Docker images.
 
-```
+```sh theme={"system"}
 truss image [OPTIONS] COMMAND [ARGS]...
 ```
 
-### Options
+Build and manage Docker images for your Truss.
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+***
 
-## truss image build
+## `build`
 
-Builds the docker image for a Truss.
+Build the Docker image for a Truss.
 
-```
+```sh theme={"system"}
 truss image build [OPTIONS] [TARGET_DIRECTORY] [BUILD_DIR]
 ```
 
 ### Options
 
-<ParamField body="--tag" type="TEXT">
+<ParamField type="TEXT">
   Docker image tag.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Image context. If none, a temp directory is created.
+<ParamField type="TEXT">
+  Image context directory. If not provided, a temp directory is created.
 </ParamField>
 
-## truss image build-context
+**Example:**
 
-Create a docker build context for a Truss.
+To build a Docker image for your Truss, use the following:
 
+```sh theme={"system"}
+truss image build
 ```
+
+To build with a custom tag, use the following:
+
+```sh theme={"system"}
+truss image build --tag my-model:v1
+```
+
+***
+
+## `build-context`
+
+Create a Docker build context for a Truss without building the image.
+
+```sh theme={"system"}
 truss image build-context [OPTIONS] BUILD_DIR [TARGET_DIRECTORY]
 ```
 
-### Options
-
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Folder where image context is built for Truss.
+<ParamField type="TEXT">
+  Directory where image context is created.
 </ParamField>
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-## truss image run
+**Example:**
 
-Runs the docker image for a Truss.
+To create a build context in a specific directory, use the following:
 
+```sh theme={"system"}
+truss image build-context ./build-context
 ```
+
+***
+
+## `run`
+
+Run the Docker image for a Truss locally.
+
+```sh theme={"system"}
 truss image run [OPTIONS] [TARGET_DIRECTORY] [BUILD_DIR]
 ```
 
 ### Options
 
-<ParamField body="--tag" type="TEXT">
-  Docker build image tag.
+<ParamField type="TEXT">
+  Docker image tag to run.
 </ParamField>
 
-<ParamField body="--port" type="INTEGER">
-  Local port used to run image.
+<ParamField type="INTEGER">
+  Local port to expose the model on.
 </ParamField>
 
-<ParamField body="--attach">
-  Flag for attaching the process.
-</ParamField>
-
-<ParamField body="--help">
-  Show help message and exit.
+<ParamField>
+  Attach to the container process.
 </ParamField>
 
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Image context. If none, a temp directory is created.
+<ParamField type="TEXT">
+  Image context directory. If not provided, a temp directory is created.
 </ParamField>
+
+**Example:**
+
+To build and run a Truss locally, use the following:
+
+```sh theme={"system"}
+truss image run
+```
+
+To run on a specific port, use the following:
+
+```sh theme={"system"}
+truss image run --port 8080
+```
+
+To run in attached mode, use the following:
+
+```sh theme={"system"}
+truss image run --attach
+```
 
 
 # truss init
 Source: https://docs.baseten.co/reference/cli/truss/init
 
-Create a new Truss.
+Create a new Truss project.
 
-```
+```sh theme={"system"}
 truss init [OPTIONS] TARGET_DIRECTORY
 ```
 
-## Options
+Creates a new Truss project in the specified directory with the standard file structure.
 
-<ParamField body="-b, --backend" type="TrussServer|TGI|VLLM">
-  What type of server to create. Default: `TrussServer`.
+### Options
+
+<ParamField type="TrussServer | TRT_LLM">
+  Server type to create. Default: `TrussServer`.
 </ParamField>
 
-<ParamField body="-n, --name" type="STRING">
+<ParamField type="TEXT">
   The value assigned to `model_name` in `config.yaml`.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+### Arguments
+
+<ParamField type="TEXT">
+  Directory where the Truss project is created.
 </ParamField>
 
-## Arguments
+**Example:**
 
-<ParamField body="TARGET_DIRECTORY" type="str">
-  A Truss is created in this directory.
-</ParamField>
+To create a new Truss project, use the following:
 
-## Example
-
-```
-truss init my_truss_directory
+```sh theme={"system"}
+truss init my-model
 ```
 
+To create a Truss with a custom name, use the following:
+
+```sh theme={"system"}
+truss init --name "My Model" my-model
 ```
-truss init --name "My Truss" my_truss_directory
+
+To create a Truss with TRT\_LLM backend, use the following:
+
+```sh theme={"system"}
+truss init --backend TRT_LLM my-trt-model
 ```
 
 
@@ -13763,9 +19565,7 @@ Source: https://docs.baseten.co/reference/cli/truss/login
 
 Authenticate with Baseten.
 
-Authenticate with Baseten.
-
-```
+```sh theme={"system"}
 truss login [OPTIONS]
 ```
 
@@ -13775,271 +19575,496 @@ If used with no options, runs in interactive mode. Otherwise, the API key can be
 
 ### Options
 
-<ParamField body="--api-key">
-  Baseten API Key. If this is passed, the command runs in non-interactive mode.
+<ParamField type="TEXT">
+  Baseten API key. If provided, the command runs in non-interactive mode.
 </ParamField>
 
+**Example:**
 
-# Overview
-Source: https://docs.baseten.co/reference/cli/truss/overview
+To authenticate interactively, use the following:
 
-Details on Truss CLI and configuration options
-
-```Usage  theme={"system"}
-truss [OPTIONS] COMMAND [ARGS]...
+```sh theme={"system"}
+truss login
 ```
+
+To authenticate with your API key, use the following:
+
+```sh theme={"system"}
+truss login --api-key YOUR_API_KEY
+```
+
+
+# truss model-logs
+Source: https://docs.baseten.co/reference/cli/truss/model-logs
+
+Fetch logs for a deployed model.
+
+```sh theme={"system"}
+truss model-logs [OPTIONS]
+```
+
+Fetches logs for a deployed model. Use this command to debug issues or monitor model behavior in production.
 
 ### Options
 
-<ParamField body="--version">Show the version and exit.</ParamField>
+<ParamField type="TEXT">
+  The ID of the model to fetch logs from.
+</ParamField>
 
-<ParamField body="--help">Show help message and exit.</ParamField>
+<ParamField type="TEXT">
+  The ID of the deployment to fetch logs from.
+</ParamField>
 
-### Main usage
+<ParamField>
+  Tail for ongoing logs. Streams new log entries as they arrive.
+</ParamField>
 
-<CardGroup cols={1}>
-  <Card title="truss login" href="/reference/cli/truss/login">
-    Authenticate with Baseten.
-  </Card>
+<ParamField type="TEXT">
+  Name of the remote in .trussrc to fetch logs from.
+</ParamField>
 
-  <Card title="truss init" href="/reference/cli/truss/init">
-    Create a new Truss.
-  </Card>
+**Example:**
 
-  <Card title="truss push" href="/reference/cli/truss/push">
-    Pushes a Truss to a TrussRemote.
-  </Card>
+To fetch logs for a specific deployment, use the following:
 
-  <Card title="truss watch" href="/reference/cli/truss/watch">
-    Seamless remote development with Truss.
-  </Card>
+```sh theme={"system"}
+truss model-logs --model-id YOUR_MODEL_ID --deployment-id YOUR_DEPLOYMENT_ID
+```
 
-  <Card title="truss predict" href="/reference/cli/truss/predict">
-    Invokes the packaged model.
-  </Card>
-</CardGroup>
+To stream logs in real-time, use the following:
 
-### Advanced usage
+```sh theme={"system"}
+truss model-logs --model-id YOUR_MODEL_ID --deployment-id YOUR_DEPLOYMENT_ID --tail
+```
 
-<CardGroup cols={1}>
-  <Card title="truss run-python" href="/reference/cli/truss/run-python">
-    Runs a Python script in the same environment as your Truss.
-  </Card>
 
-  <Card title="truss image" href="/reference/cli/truss/image">
-    Subcommands for `truss image`.
-  </Card>
+# Truss CLI reference
+Source: https://docs.baseten.co/reference/cli/truss/overview
 
-  <Card title="truss container" href="/reference/cli/truss/container">
-    Subcommands for `truss container`.
-  </Card>
+Deploy, manage, and develop models using the Truss CLI.
 
-  <Card title="truss cleanup" href="/reference/cli/truss/cleanup">
-    Clean up Truss data.
-  </Card>
-</CardGroup>
+```sh theme={"system"}
+truss [OPTIONS] COMMAND [ARGS]...
+```
+
+**Options:**
+
+<ParamField>
+  Show the version and exit.
+</ParamField>
+
+<ParamField type="[humanfriendly|w|warning|i|info|d|debug]">
+  Customize logging verbosity.
+</ParamField>
+
+<ParamField>
+  Disable interactive prompts. Use in CI or automated execution contexts.
+</ParamField>
+
+<ParamField>
+  Show help message and exit.
+</ParamField>
+
+### Main commands
+
+| Command                                         | Description                       |
+| ----------------------------------------------- | --------------------------------- |
+| [`init`](/reference/cli/truss/init)             | Create a new Truss project        |
+| [`push`](/reference/cli/truss/push)             | Deploy a model to Baseten         |
+| [`watch`](/reference/cli/truss/watch)           | Live reload during development    |
+| [`predict`](/reference/cli/truss/predict)       | Call the packaged model           |
+| [`model-logs`](/reference/cli/truss/model-logs) | Fetch logs for the packaged model |
+
+### Advanced commands
+
+| Command                                       | Description                             |
+| --------------------------------------------- | --------------------------------------- |
+| [`image`](/reference/cli/truss/image)         | Build and manage Truss Docker images    |
+| [`container`](/reference/cli/truss/container) | Run and manage Truss containers locally |
+| [`cleanup`](/reference/cli/truss/cleanup)     | Clean up Truss data                     |
+
+### Other commands
+
+| Command                                         | Description                                  |
+| ----------------------------------------------- | -------------------------------------------- |
+| [`login`](/reference/cli/truss/login)           | Authenticate with Baseten                    |
+| [`configure`](/reference/cli/truss/configure)   | Configure Truss settings                     |
+| [`run-python`](/reference/cli/truss/run-python) | Run a Python script in the Truss environment |
+| [`whoami`](/reference/cli/truss/whoami)         | Show user information and exit               |
+
+<Note>
+  All commands support `--help` to display usage information.
+</Note>
 
 
 # truss predict
 Source: https://docs.baseten.co/reference/cli/truss/predict
 
-Invokes the packaged model.
+Call the packaged model.
 
+```sh theme={"system"}
+truss predict [OPTIONS] [TARGET_DIRECTORY]
 ```
-truss predict [OPTIONS]
-```
 
-## Options
+Calls the packaged model with the provided input data. Use this to test your model locally or remotely.
 
-<ParamField body="--remote" type="TEXT">
-  Name of the remote in .trussrc to patch changes to.
+### Options
+
+<ParamField type="TEXT">
+  JSON string representing the request payload.
 </ParamField>
 
-<ParamField body="-d, --data" type="TEXT">
-  String formatted as json that represents request.
+<ParamField type="PATH">
+  Path to a JSON file containing the request payload.
 </ParamField>
 
-<ParamField body="-f, --file" type="PATH">
-  Path to json file containing the request.
+<ParamField type="TEXT">
+  Name of the remote in .trussrc to invoke.
 </ParamField>
 
-<ParamField body="--model_version" type="TEXT">
-  ID of model version to invoke.
+<ParamField type="TEXT">
+  ID of the model to invoke.
 </ParamField>
 
-<ParamField body="--model" type="TEXT">
-  ID of model to invoke.
+<ParamField type="TEXT">
+  ID of the model version to invoke.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+<ParamField>
+  Invoke the published (production) deployment.
 </ParamField>
 
-## Arguments
+### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-## Examples
+**Example:**
 
-```
+To call a model with inline JSON data, use the following:
+
+```sh theme={"system"}
 truss predict -d '{"prompt": "What is the meaning of life?"}'
 ```
 
+To call a model using a JSON file, use the following:
+
+```sh theme={"system"}
+truss predict -f request.json
 ```
-truss predict --published -f my-prompt.json
+
+To call the production deployment, use the following:
+
+```sh theme={"system"}
+truss predict --published -d '{"prompt": "Hello, world!"}'
 ```
 
 
 # truss push
 Source: https://docs.baseten.co/reference/cli/truss/push
 
-Pushes a truss to a TrussRemote.
+Deploy a model to Baseten.
 
-```Usage  theme={"system"}
+```sh theme={"system"}
 truss push [OPTIONS] [TARGET_DIRECTORY]
 ```
 
-## Options
+Deploys a Truss to Baseten. By default, creates a published deployment.
 
-<ParamField body="--remote" type="TEXT">
-  Name of the remote in .trussrc to patch changes to.
+<Note>
+  Use `--watch` for development deployments with live reload support. Use `--publish` to explicitly create a published deployment.
+</Note>
+
+### Options
+
+<ParamField type="TEXT">
+  Name of the remote in .trussrc to push to.
 </ParamField>
 
-<ParamField body="--publish" type="BOOL">
-  Push the truss as a published deployment. If no production deployment exists, promote the truss to production after deploy completes.
+<ParamField>
+  Push as a development deployment with live reload enabled. Use this for rapid iteration during development.
 </ParamField>
 
-<ParamField body="--promote" type="BOOL">
-  Push the truss as a published deployment. Even if a production deployment exists, promote the truss to production after deploy completes.
+<ParamField>
+  Push as a published deployment. If no production deployment exists, promote to production after deploy completes.
 </ParamField>
 
-<ParamField body="--environment" type="TEXT">
-  Push the truss as a published deployment. Promote the truss into the environment after deploy completes.
+<ParamField>
+  Push as a published deployment and promote to production, even if a production deployment already exists.
 </ParamField>
 
-<ParamField body="--preserve-previous-production-deployment" type="BOOL">
-  Preserve the previous production deployment's autoscaling setting. When not specified, the previous production deployment will be updated to allow it to scale to zero. Can only be use in combination with `--promote` option.
+<ParamField type="TEXT">
+  Push as a published deployment and promote into the specified environment.
 </ParamField>
 
-<ParamField body="--model-name" type="TEXT">
-  Name of the model
+<ParamField>
+  Preserve the previous production deployment's autoscaling settings. Can only be used with `--promote`.
 </ParamField>
 
-<ParamField body="--deployment-name" type="TEXT">
-  Name of the deployment created by the push. Can only be used in combination with `--publish` or `--environment`. Deployment name must only contain alphanumeric, '.', '-' or '\_' characters.
+<ParamField type="TEXT">
+  Name of the model.
 </ParamField>
 
-<ParamField body="--wait" type="BOOL">
-  Whether to wait for deployment to complete before returning. If the deploy or build fails, will return with a non-zero exit code.
+<ParamField type="TEXT">
+  Name of the deployment. Can only be used with `--publish` or `--environment`. Must contain only alphanumeric, `.`, `-` or `_` characters.
 </ParamField>
 
-<ParamField body="--timeout-seconds" type="INTEGER">
-  Maximum time to wait for deployment to complete in seconds. Without specifying, the command will not complete until the deployment is complete.
+<ParamField>
+  Wait for deployment to complete before returning. Returns non-zero exit code if deploy or build fails.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+<ParamField type="INTEGER">
+  Maximum time to wait for deployment in seconds.
 </ParamField>
 
-## Arguments
-
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  Name of the team to deploy to. If not specified, Truss infers the team based on your team membership and existing models, or prompts for selection when ambiguous.
 </ParamField>
 
-## Examples
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
 
+### Arguments
+
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
+</ParamField>
+
+**Example:**
+
+To deploy a development deployment with live reload from the current directory, use the following:
+
+```sh theme={"system"}
+truss push --watch
 ```
-truss push
+
+To deploy a published deployment, use the following:
+
+```sh theme={"system"}
+truss push --publish
 ```
 
-```
-truss push --publish /path/to/my-truss
+To deploy and promote to production, use the following:
+
+```sh theme={"system"}
+truss push --publish --promote
 ```
 
-```
-truss push --remote baseten --publish
+To deploy to a specific environment, use the following:
+
+```sh theme={"system"}
+truss push --environment staging
 ```
 
+To deploy with a custom deployment name, use the following:
+
+```sh theme={"system"}
+truss push --publish --deployment-name my-model_v1.0
 ```
-truss push --remote baseten --publish --deployment-name my-truss_1.0
+
+To deploy to a specific team, use the following:
+
+```sh theme={"system"}
+truss push --publish --team my-team-name
 ```
 
 
 # truss run-python
 Source: https://docs.baseten.co/reference/cli/truss/run-python
 
-Subcommands for truss run-python.
+Run a Python script in the Truss environment.
 
-```
+```sh theme={"system"}
 truss run-python [OPTIONS] SCRIPT [TARGET_DIRECTORY]
 ```
 
-Runs selected script in the same environment as your Truss. It builds a Docker
-image matching your Truss environment, mounts the script you supply, and then
-runs the script.
-
-### Options
-
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+Runs a Python script in the same environment as your Truss. This builds a Docker
+image matching your Truss environment, mounts the script, and executes it. Use
+this to test scripts with the same dependencies your model uses.
 
 ### Arguments
 
-<ParamField body="SCRIPT" type="Required">
-  Path to Python script to run.
+<ParamField type="PATH">
+  Path to the Python script to run.
 </ParamField>
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
+
+**Example:**
+
+To run a script in the Truss environment, use the following:
+
+```sh theme={"system"}
+truss run-python test_script.py
+```
+
+To run a script with a specific Truss directory, use the following:
+
+```sh theme={"system"}
+truss run-python test_script.py /path/to/my-truss
+```
 
 
 # truss watch
 Source: https://docs.baseten.co/reference/cli/truss/watch
 
-Seamless remote development with truss.
+Live reload during development.
 
-```
+```sh theme={"system"}
 truss watch [OPTIONS] [TARGET_DIRECTORY]
 ```
 
+Watches for source code changes and applies live patches to a development deployment. This enables rapid iteration without redeploying.
+
 ### Options
 
-<ParamField body="--remote" type="TEXT">
+<ParamField type="TEXT">
   Name of the remote in .trussrc to patch changes to.
 </ParamField>
 
-<ParamField body="--logs" type="BOOL">
-  Automatically open remote logs tab.
+<ParamField type="TEXT">
+  Name of the team to deploy to. If not specified, Truss infers the team or prompts for selection.
+
+  <Note>
+    The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+  </Note>
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+<ParamField>
+  Automatically open remote logs tab.
 </ParamField>
 
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-### Examples
+**Example:**
 
-```
+To watch for changes in the current directory, use the following:
+
+```sh theme={"system"}
 truss watch
 ```
 
-```
+To watch a specific Truss directory, use the following:
+
+```sh theme={"system"}
 truss watch /path/to/my-truss
 ```
 
+To watch and automatically open logs, use the following:
+
+```sh theme={"system"}
+truss watch --logs
 ```
-truss watch --remote baseten
+
+
+# truss whoami
+Source: https://docs.baseten.co/reference/cli/truss/whoami
+
+Show user information.
+
+```sh theme={"system"}
+truss whoami [OPTIONS]
 ```
+
+Shows the currently authenticated user information and exits. Use this command to verify your authentication status.
+
+### Options
+
+<ParamField type="TEXT">
+  Name of the remote in .trussrc to check.
+</ParamField>
+
+**Example:**
+
+To check the current authenticated user, use the following:
+
+```sh theme={"system"}
+truss whoami
+```
+
+
+# Chat Completions
+Source: https://docs.baseten.co/reference/inference-api/chat-completions
+
+reference/inference-api/llm-openapi-spec.json post /v1/chat/completions
+Creates a chat completion for the provided conversation. This endpoint is fully compatible with the OpenAI Chat Completions API, allowing you to use standard OpenAI SDKs by changing only the base URL and API key.
+
+<Tip>
+  Download the [OpenAPI schema](/reference/inference-api/llm-openapi-spec.json) for code generation and client libraries.
+</Tip>
+
+[Model APIs](https://app.baseten.co/model-apis/create) provide instant access to high-performance open-source LLMs through an OpenAI-compatible endpoint.
+
+## Replace OpenAI with Baseten
+
+Switching from OpenAI to Baseten takes two changes: the base URL and API key.
+
+<Tabs>
+  <Tab title="Python">
+    To switch to Baseten with the Python SDK, change `base_url` and `api_key` when initializing the client:
+
+    ```python theme={"system"}
+    from openai import OpenAI
+    import os
+
+    client = OpenAI(
+        base_url="https://inference.baseten.co/v1",
+        api_key=os.environ["BASETEN_API_KEY"],
+    )
+
+    response = client.chat.completions.create(
+        model="deepseek-ai/DeepSeek-V3.1",
+        messages=[{"role": "user", "content": "Hello!"}],
+    )
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    To switch to Baseten with the JavaScript SDK, change `baseURL` and `apiKey` when initializing the client:
+
+    ```javascript theme={"system"}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+        baseURL: "https://inference.baseten.co/v1",
+        apiKey: process.env.BASETEN_API_KEY,
+    });
+
+    const response = await client.chat.completions.create({
+        model: "deepseek-ai/DeepSeek-V3.1",
+        messages: [{ role: "user", content: "Hello!" }],
+    });
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    To call Baseten with cURL, send a POST request to `inference.baseten.co` with your API key:
+
+    ```bash theme={"system"}
+    curl https://inference.baseten.co/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -d '{
+        "model": "deepseek-ai/DeepSeek-V3.1",
+        "messages": [{"role": "user", "content": "Hello!"}]
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+Deploy a [Model API](https://app.baseten.co/model-apis/create) to get started.
+
+<Info>
+  For detailed usage guides including structured outputs and tool calling, see [Using Model APIs](/development/model-apis/overview).
+</Info>
 
 
 # Overview
@@ -14083,8 +20108,8 @@ For long-running tasks, the inference API supports [asynchronous inference](/inf
     | `POST`      | [`/development/async_predict`](/reference/inference-api/predict-endpoints/development-async-predict)               | For [Async inference](/inference/async), call the **development deployment**.                               |
     | `POST`      | [`/deployment/{deployment_id}/async_predict`](/reference/inference-api/predict-endpoints/deployment-async-predict) | For [Async inference](/inference/async), call any published **deployment** of your model.                   |
     | `WEBSOCKET` | [`/environments/{env_name}/websocket`](/reference/inference-api/predict-endpoints/environments-websocket)          | For WebSockets, connect to an **environment**.                                                              |
-    | `WEBSOCKET` | [`/development/websocket`](/reference/inference-api/predict-endpoints/development-websocket.mdx)                   | For WebSockets, connect to the **development deployment**.                                                  |
-    | `WEBSOCKET` | [`/deployment/{deployment_id}/websocket`](/reference/inference-api/predict-endpoints/deployment-websocket.mdx)     | For WebSockets, connect to a **deployment**.                                                                |
+    | `WEBSOCKET` | [`/development/websocket`](/reference/inference-api/predict-endpoints/development-websocket)                       | For WebSockets, connect to the **development deployment**.                                                  |
+    | `WEBSOCKET` | [`/deployment/{deployment_id}/websocket`](/reference/inference-api/predict-endpoints/deployment-websocket)         | For WebSockets, connect to a **deployment**.                                                                |
   </Tab>
 
   <Tab title="Chains">
@@ -14097,8 +20122,8 @@ For long-running tasks, the inference API supports [asynchronous inference](/inf
     | `POST`      | [`/development/async_run_remote`](/reference/inference-api/predict-endpoints/development-async-run-remote)               | For [Async inference](/inference/async), call a Chain **development deployment**.                                 |
     | `POST`      | [`/deployment/{deployment_id}/async_run_remote`](/reference/inference-api/predict-endpoints/deployment-async-run-remote) | For [Async inference](/inference/async), call any published Chain **deployment**.                                 |
     | `WEBSOCKET` | [`/environments/{env_name}/websocket`](/reference/inference-api/predict-endpoints/environments-websocket)                | For WebSockets, connect to an **environment**.                                                                    |
-    | `WEBSOCKET` | [`/development/websocket`](/reference/inference-api/predict-endpoints/development-websocket.mdx)                         | For WebSockets, connect to the **development deployment**.                                                        |
-    | `WEBSOCKET` | [`/deployment/{deployment_id}/websocket`](/reference/inference-api/predict-endpoints/deployment-websocket.mdx)           | For WebSockets, connect to a **deployment**.                                                                      |
+    | `WEBSOCKET` | [`/development/websocket`](/reference/inference-api/predict-endpoints/development-websocket)                             | For WebSockets, connect to the **development deployment**.                                                        |
+    | `WEBSOCKET` | [`/deployment/{deployment_id}/websocket`](/reference/inference-api/predict-endpoints/deployment-websocket)               | For WebSockets, connect to a **deployment**.                                                                      |
   </Tab>
 </Tabs>
 
@@ -14133,39 +20158,39 @@ Only `QUEUED` requests may be canceled.
 
 <Tabs>
   <Tab title="Model">
-    <ParamField path="model_id" type="string" required>
+    <ParamField type="string">
       The ID of the model.
     </ParamField>
   </Tab>
 
   <Tab title="Chain">
-    <ParamField path="chain_id" type="string" required>
+    <ParamField type="string">
       The ID of the chain.
     </ParamField>
   </Tab>
 </Tabs>
 
-<ParamField path="request_id" type="string" required>
+<ParamField type="string">
   The ID of the async request.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Response
 
-<ResponseField name="request_id" type="string" required>
+<ResponseField name="request_id" type="string">
   The ID of the async request.
 </ResponseField>
 
-<ResponseField name="canceled" type="boolean" required>
+<ResponseField name="canceled" type="boolean">
   Whether the request was canceled.
 </ResponseField>
 
-<ResponseField name="message" type="string" required>
+<ResponseField name="message" type="string">
   Additional details about whether the request was canceled.
 </ResponseField>
 
@@ -14174,7 +20199,7 @@ Only `QUEUED` requests may be canceled.
 Calls to the cancel async request status endpoint are limited to **20 requests per second**. If this limit is exceeded, subsequent requests will receive a 429 status code.
 
 <RequestExample>
-  ```py Python (Model) theme={"system"}
+  ```python Python (Model) theme={"system"}
   import requests
   import os
 
@@ -14193,7 +20218,7 @@ Calls to the cancel async request status endpoint are limited to **20 requests p
   print(resp.json())
   ```
 
-  ```py Python (Chain) theme={"system"}
+  ```python Python (Chain) theme={"system"}
   import requests
   import os
 
@@ -14222,63 +20247,63 @@ Use this endpoint to call any [published deployment](/deploy/lifecycle) of your 
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the specific deployment you want to call.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-There is a 256 KiB size limit to `/async_predict` request payloads.
+There is a 256 KiB size limit to `/async_predict` request payloads.
 
-<ParamField body="model_input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
-<ParamField body="webhook_endpoint" type="string" default="null">
+<ParamField type="string">
   <Note> Baseten **does not** store model outputs. If `webhook_endpoint` is empty, your model must save prediction outputs so they can be accessed later. </Note>
 
   URL of the webhook endpoint. We require that webhook endpoints use HTTPS. Both HTTP/2 and HTTP/1.1 protocols are supported.
 </ParamField>
 
-<ParamField body="priority" type="integer" default={0}>
+<ParamField type="integer">
   Priority of the request. A lower value corresponds to a higher priority (e.g. requests with priority 0 are scheduled before requests of priority 1).
 
   `priority` is between 0 and 2, inclusive.
 </ParamField>
 
-<ParamField body="max_time_in_queue_seconds" type="integer" default={600}>
+<ParamField type="integer">
   Maximum time a request will spend in the queue before expiring.
 
   `max_time_in_queue_seconds` must be between 10 seconds and 72 hours, inclusive.
 </ParamField>
 
-<ParamField body="inference_retry_config" type="json">
+<ParamField type="json">
   Exponential backoff parameters used to retry the model predict request.
 
   <Expandable>
-    <ParamField body="max_attempts" type="integer" default={3}>
+    <ParamField type="integer">
       Number of predict request attempts.
 
       `max_attempts` must be between 1 and 10, inclusive.
     </ParamField>
 
-    <ParamField body="initial_delay_ms" type="integer" default={1000}>
+    <ParamField type="integer">
       Minimum time between retries in milliseconds.
 
       `initial_delay_ms` must be between 0 and 10,000 milliseconds, inclusive.
     </ParamField>
 
-    <ParamField body="max_delay_ms" type="integer" default={5000}>
+    <ParamField type="integer">
       Maximum time between retries in milliseconds.
 
       `max_delay_ms` must be between 0 and 60,000 milliseconds, inclusive.
@@ -14288,7 +20313,7 @@ There is a 256 KiB size limit to `/async_predict` request payloads.
 
 ### Response
 
-<ResponseField name="request_id" type="string" required>
+<ResponseField name="request_id" type="string">
   The ID of the async request.
 </ResponseField>
 
@@ -14298,7 +20323,7 @@ Two types of rate limits apply when making async requests:
 
 * Calls to the `/async_predict` endpoint are limited to **200 requests per second**.
 
-* Each organization is limited to **5,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
+* Each organization is limited to **50,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
 
 If either limit is exceeded, subsequent `/async_predict` requests will receive a 429 status code.
 
@@ -14308,7 +20333,7 @@ To avoid hitting these rate limits, we advise:
 * Monitoring the [async queue size metric](/observability/metrics#async-queue-metrics). If your model is accumulating a backlog of requests, consider increasing the number of requests your model can process at once by increasing the number of max replicas or the concurrency target in your autoscaling settings.
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import requests
   import os
 
@@ -14350,7 +20375,7 @@ To avoid hitting these rate limits, we advise:
   }'
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -14395,27 +20420,27 @@ POST https://chain-{chain_id}.api.baseten.co/deployment/{deployment-id}/async_ru
 Use this endpoint to call any [deployment](/deployment/deployments) of your
 chain asynchronously.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/async_run_remote
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the specific deployment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the signature
   of the entrypoint's `run_remote` method. I.e. The top-level keys are the
   argument names. The values are the corresponding JSON representation of the
@@ -14423,7 +20448,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/async_run_rem
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -14452,7 +20477,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/async_run_rem
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -14486,32 +20511,32 @@ POST https://model-{model_id}.api.baseten.co/deployment/{deployment-id}/predict
 
 Use this endpoint to call any [published deployment](/deployment/deployments) of your model.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/predict
 ```
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the specific deployment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Model input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -14543,7 +20568,7 @@ https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/predict
   truss predict --model-version DEPLOYMENT_ID -d '{}' # JSON-serializable model input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -14576,27 +20601,27 @@ POST https://chain-{chain_id}.api.baseten.co/deployment/{deployment-id}/run_remo
 Use this endpoint to call any [deployment](/deployment/deployments) of your
 chain.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/run_remote
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the specific deployment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the signature
   of the entrypoint's `run_remote` method. I.e. The top-level keys are the
   argument names. The values are the corresponding JSON representation of the
@@ -14604,7 +20629,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/run_remote
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -14633,7 +20658,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/run_remote
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -14667,7 +20692,7 @@ Use this endpoint to connect via WebSockets to a specific deployment.
 
 Note that `entity` here could be either `model` or `chain`, depending on whether you using Baseten models or Chains.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 wss://{entity}-{entity_id}.api.baseten.co/deployment/{deployment_id}/websocket"
 ```
 
@@ -14675,19 +20700,19 @@ See [WebSockets](/development/model/websockets) for more details.
 
 ### Parameters
 
-<ParamField path="entity" type="string" required>
+<ParamField type="string">
   The type of entity you want to connect to. Either `model` or `chain`.
 </ParamField>
 
-<ParamField path="entity_id" type="string" required>
+<ParamField type="string">
   The ID of the model or chain you want to connect to.
 </ParamField>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the deployment you want to connect to.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -14707,13 +20732,13 @@ Use this endpoint to call the [development deployment](/deploy/lifecycle) of you
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -14721,45 +20746,45 @@ Use this endpoint to call the [development deployment](/deploy/lifecycle) of you
 
 There is a 256 KiB size limit to `/async_predict` request payloads.
 
-<ParamField body="model_input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
-<ParamField body="webhook_endpoint" type="string" default="null">
+<ParamField type="string">
   <Note> Baseten **does not** store model outputs. If `webhook_endpoint` is empty, your model must save prediction outputs so they can be accessed later. </Note>
 
   URL of the webhook endpoint. We require that webhook endpoints use HTTPS. Both HTTP/2 and HTTP/1.1 protocols are supported.
 </ParamField>
 
-<ParamField body="priority" type="integer" default={0}>
+<ParamField type="integer">
   Priority of the request. A lower value corresponds to a higher priority (e.g. requests with priority 0 are scheduled before requests of priority 1).
 
   `priority` is between 0 and 2, inclusive.
 </ParamField>
 
-<ParamField body="max_time_in_queue_seconds" type="integer" default={600}>
+<ParamField type="integer">
   Maximum time a request will spend in the queue before expiring.
 
   `max_time_in_queue_seconds` must be between 10 seconds and 72 hours, inclusive.
 </ParamField>
 
-<ParamField body="inference_retry_config" type="json">
+<ParamField type="json">
   Exponential backoff parameters used to retry the model predict request.
 
   <Expandable>
-    <ParamField body="max_attempts" type="integer" default={3}>
+    <ParamField type="integer">
       Number of predict request attempts.
 
       `max_attempts` must be between 1 and 10, inclusive.
     </ParamField>
 
-    <ParamField body="initial_delay_ms" type="integer" default={1000}>
+    <ParamField type="integer">
       Minimum time between retries in milliseconds.
 
       `initial_delay_ms` must be between 0 and 10,000 milliseconds, inclusive.
     </ParamField>
 
-    <ParamField body="max_delay_ms" type="integer" default={5000}>
+    <ParamField type="integer">
       Maximum time between retries in milliseconds.
 
       `max_delay_ms` must be between 0 and 60,000 milliseconds, inclusive.
@@ -14769,7 +20794,7 @@ There is a 256 KiB size limit to `/async_predict` request payloads.
 
 ### Response
 
-<ResponseField name="request_id" type="string" required>
+<ResponseField name="request_id" type="string">
   The ID of the async request.
 </ResponseField>
 
@@ -14779,7 +20804,7 @@ Two types of rate limits apply when making async requests:
 
 * Calls to the `/async_predict` endpoint are limited to **200 requests per second**.
 
-* Each organization is limited to **5,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
+* Each organization is limited to **50,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
 
 If either limit is exceeded, subsequent `/async_predict` requests will receive a 429 status code.
 
@@ -14789,7 +20814,7 @@ To avoid hitting these rate limits, we advise:
 * Monitoring the [async queue size metric](/observability/metrics#async-queue-metrics). If your model is accumulating a backlog of requests, consider increasing the number of requests your model can process at once by increasing the number of max replicas or the concurrency target in your autoscaling settings.
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import requests
   import os
 
@@ -14830,7 +20855,7 @@ To avoid hitting these rate limits, we advise:
   }'
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -14875,23 +20900,23 @@ POST https://chain-{chain_id}.api.baseten.co/development/async_run_remote
 Use this endpoint to call the [development deployment](/development/chain/deploy#development) of
 your chain asynchronously.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain_id}.api.baseten.co/development/async_run_remote
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the
   signature of the entrypoint's `run_remote` method. I.e. The top-level keys
   are the argument names. The values are the corresponding JSON representation of
@@ -14899,7 +20924,7 @@ https://chain-{chain_id}.api.baseten.co/development/async_run_remote
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -14926,7 +20951,7 @@ https://chain-{chain_id}.api.baseten.co/development/async_run_remote
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require('node-fetch');
 
   const resp = await fetch(
@@ -14960,28 +20985,28 @@ POST https://model-{model_id}.api.baseten.co/development/predict
 
 Use this endpoint to call the [development deployment](/deployment/deployments) of your model.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/development/predict
 ```
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Model input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -15012,7 +21037,7 @@ https://model-{model_id}.api.baseten.co/development/predict
   truss predict --model-version DEPLOYMENT_ID -d '{}' # JSON-serializable model input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -15045,23 +21070,23 @@ POST https://chain-{chain_id}.api.baseten.co/development/run_remote
 Use this endpoint to call the [development deployment](/development/chain/deploy#development) of
 your chain.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain_id}.api.baseten.co/development/run_remote
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the
   signature of the entrypoint's `run_remote` method. I.e. The top-level keys
   are the argument names. The values are the corresponding JSON representation of
@@ -15069,7 +21094,7 @@ https://chain-{chain_id}.api.baseten.co/development/run_remote
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -15096,7 +21121,7 @@ https://chain-{chain_id}.api.baseten.co/development/run_remote
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require('node-fetch');
 
   const resp = await fetch(
@@ -15129,7 +21154,7 @@ WEBSOCKET wss://{entity}-{entity_id}.api.baseten.co/development/websocket
 
 Use this endpoint to connect via WebSockets to the development deployment of a model or chain.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 wss://{entity}-{entity_id}.api.baseten.co/development/websocket"
 ```
 
@@ -15137,15 +21162,15 @@ See [WebSockets](/development/model/websockets) for more details.
 
 ### Parameters
 
-<ParamField path="entity" type="string" required>
+<ParamField type="string">
   The type of entity you want to connect to. Either `model` or `chain`.
 </ParamField>
 
-<ParamField path="entity_id" type="string" required>
+<ParamField type="string">
   The ID of the model or chain you want to connect to.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -15165,17 +21190,17 @@ Use this endpoint to call the model associated with the specified environment as
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the model's environment you want to call.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -15183,45 +21208,45 @@ Use this endpoint to call the model associated with the specified environment as
 
 There is a 256 KiB size limit to `/async_predict` request payloads.
 
-<ParamField body="model_input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
-<ParamField body="webhook_endpoint" type="string" default="null">
+<ParamField type="string">
   <Note> Baseten **does not** store model outputs. If `webhook_endpoint` is empty, your model must save prediction outputs so they can be accessed later. </Note>
 
   URL of the webhook endpoint. We require that webhook endpoints use HTTPS. Both HTTP/2 and HTTP/1.1 protocols are supported.
 </ParamField>
 
-<ParamField body="priority" type="integer" default={0}>
+<ParamField type="integer">
   Priority of the request. A lower value corresponds to a higher priority (e.g. requests with priority 0 are scheduled before requests of priority 1).
 
   `priority` is between 0 and 2, inclusive.
 </ParamField>
 
-<ParamField body="max_time_in_queue_seconds" type="integer" default={600}>
+<ParamField type="integer">
   Maximum time a request will spend in the queue before expiring.
 
   `max_time_in_queue_seconds` must be between 10 seconds and 72 hours, inclusive.
 </ParamField>
 
-<ParamField body="inference_retry_config" type="json">
+<ParamField type="json">
   Exponential backoff parameters used to retry the model predict request.
 
   <Expandable>
-    <ParamField body="max_attempts" type="integer" default={3}>
+    <ParamField type="integer">
       Number of predict request attempts.
 
       `max_attempts` must be between 1 and 10, inclusive.
     </ParamField>
 
-    <ParamField body="initial_delay_ms" type="integer" default={1000}>
+    <ParamField type="integer">
       Minimum time between retries in milliseconds.
 
       `initial_delay_ms` must be between 0 and 10,000 milliseconds, inclusive.
     </ParamField>
 
-    <ParamField body="max_delay_ms" type="integer" default={5000}>
+    <ParamField type="integer">
       Maximum time between retries in milliseconds.
 
       `max_delay_ms` must be between 0 and 60,000 milliseconds, inclusive.
@@ -15231,7 +21256,7 @@ There is a 256 KiB size limit to `/async_predict` request payloads.
 
 ### Response
 
-<ResponseField name="request_id" type="string" required>
+<ResponseField name="request_id" type="string">
   The ID of the async request.
 </ResponseField>
 
@@ -15249,7 +21274,7 @@ Two types of rate limits apply when making async requests:
 
 * Calls to the `/async_predict` endpoint are limited to **200 requests per second**.
 
-* Each organization is limited to **5,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
+* Each organization is limited to **50,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
 
 If either limit is exceeded, subsequent `/async_predict` requests will receive a 429 status code.
 
@@ -15265,27 +21290,27 @@ Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/enviro
 POST https://chain-{chain_id}.api.baseten.co/environments/{env_name}/async_run_remote
 Use this endpoint to call the deployment associated with the specified environment asynchronously.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain_id}.api.baseten.co/environments/{env_name}/async_run_remote"
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the chain's environment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the
   signature of the entrypoint's `run_remote` method. I.e. The top-level keys
   are the argument names. The values are the corresponding JSON representation of
@@ -15293,7 +21318,7 @@ https://chain-{chain_id}.api.baseten.co/environments/{env_name}/async_run_remote
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -15318,7 +21343,7 @@ https://chain-{chain_id}.api.baseten.co/environments/{env_name}/async_run_remote
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require('node-fetch');
 
   const resp = await fetch(
@@ -15352,32 +21377,32 @@ POST https://model-{model_id}.api.baseten.co/environments/{env_name}/predict
 
 Use this endpoint to call the deployment associated with the specified [environment](/deployment/environments).
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/environments/{env_name}/predict
 ```
 
 ### Parameters
 
-<ParamField path="model_id" type="string" required>
+<ParamField type="string">
   The ID of the model you want to call.
 </ParamField>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the model's environment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Model input" type="json" required>
+<ParamField type="json">
   JSON-serializable model input.
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -15405,7 +21430,7 @@ https://model-{model_id}.api.baseten.co/environments/{env_name}/predict
     -d '{}' # JSON-serializable model input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -15436,27 +21461,27 @@ Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/enviro
 POST https://chain-{chain_id}.api.baseten.co/environments/{env_name}/run_remote
 Use this endpoint to call the deployment associated with the specified environment.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://chain-{chain}.api.baseten.co/environments/{env_name}/run_remote"
 ```
 
 ### Parameters
 
-<ParamField path="chain_id" type="string" required>
+<ParamField type="string">
   The ID of the chain you want to call.
 </ParamField>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the chain's environment you want to call.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Body
 
-<ParamField body="Chain input" type="json" required>
+<ParamField type="json">
   JSON-serializable chain input. The input schema corresponds to the
   signature of the entrypoint's `run_remote` method. I.e. The top-level keys
   are the argument names. The values are the corresponding JSON representation of
@@ -15464,7 +21489,7 @@ https://chain-{chain}.api.baseten.co/environments/{env_name}/run_remote"
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -15489,7 +21514,7 @@ https://chain-{chain}.api.baseten.co/environments/{env_name}/run_remote"
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require('node-fetch');
 
   const resp = await fetch(
@@ -15524,7 +21549,7 @@ Use this endpoint to connect via WebSockets to the deployment associated with th
 
 Note that `entity` here could be either `model` or `chain`, depending on whether you using Baseten models or Chains.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 wss://{entity}-{entity_id}.api.baseten.co/environments/{env_name}/websocket"
 ```
 
@@ -15532,19 +21557,19 @@ See [WebSockets](/development/model/websockets) for more details.
 
 ### Parameters
 
-<ParamField path="entity" type="string" required>
+<ParamField type="string">
   The type of entity you want to connect to. Either `model` or `chain`.
 </ParamField>
 
-<ParamField path="entity_id" type="string" required>
+<ParamField type="string">
   The ID of the model or chain you want to connect to.
 </ParamField>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the environment you want to connect to.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -15566,43 +21591,43 @@ Use this endpoint to get the status of a published deployment's async queue.
 
 <Tabs>
   <Tab title="Model">
-    <ParamField path="model_id" type="string" required>
+    <ParamField type="string">
       The ID of the model.
     </ParamField>
   </Tab>
 
   <Tab title="Chain">
-    <ParamField path="chain_id" type="string" required>
+    <ParamField type="string">
       The ID of the chain.
     </ParamField>
   </Tab>
 </Tabs>
 
-<ParamField path="deployment_id" type="string" required>
+<ParamField type="string">
   The ID of the deployment.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Response
 
-<ResponseField name="model_id" type="string" required>
+<ResponseField name="model_id" type="string">
   The ID of the model.
 </ResponseField>
 
-<ResponseField name="deployment_id" type="string" required>
+<ResponseField name="deployment_id" type="string">
   The ID of the deployment.
 </ResponseField>
 
-<ResponseField name="num_queued_requests" type="integer" required>
+<ResponseField name="num_queued_requests" type="integer">
   The number of requests in the deployment's async queue with `QUEUED` status (i.e. awaiting processing by the model).
 </ResponseField>
 
-<ResponseField name="num_in_progress_requests" type="integer" required>
+<ResponseField name="num_in_progress_requests" type="integer">
   The number of requests in the deployment's async queue with `IN_PROGRESS` status (i.e. currently being processed by the model).
 </ResponseField>
 
@@ -15670,13 +21695,13 @@ Use this endpoint to get the status of a development deployment's async queue.
 
 <Tabs>
   <Tab title="Model">
-    <ParamField path="model_id" type="string" required>
+    <ParamField type="string">
       The ID of the model.
     </ParamField>
   </Tab>
 
   <Tab title="Chain">
-    <ParamField path="chain_id" type="string" required>
+    <ParamField type="string">
       The ID of the chain.
     </ParamField>
   </Tab>
@@ -15684,25 +21709,25 @@ Use this endpoint to get the status of a development deployment's async queue.
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Response
 
-<ResponseField name="model_id" type="string" required>
+<ResponseField name="model_id" type="string">
   The ID of the model.
 </ResponseField>
 
-<ResponseField name="deployment_id" type="string" required>
+<ResponseField name="deployment_id" type="string">
   The ID of the deployment.
 </ResponseField>
 
-<ResponseField name="num_queued_requests" type="integer" required>
+<ResponseField name="num_queued_requests" type="integer">
   The number of requests in the deployment's async queue with `QUEUED` status (i.e. awaiting processing by the model).
 </ResponseField>
 
-<ResponseField name="num_in_progress_requests" type="integer" required>
+<ResponseField name="num_in_progress_requests" type="integer">
   The number of requests in the deployment's async queue with `IN_PROGRESS` status (i.e. currently being processed by the model).
 </ResponseField>
 
@@ -15768,43 +21793,43 @@ Use this endpoint to get the async queue status for a model associated with the 
 
 <Tabs>
   <Tab title="Model">
-    <ParamField path="model_id" type="string" required>
+    <ParamField type="string">
       The ID of the model.
     </ParamField>
   </Tab>
 
   <Tab title="Chain">
-    <ParamField path="chain_id" type="string" required>
+    <ParamField type="string">
       The ID of the chain.
     </ParamField>
   </Tab>
 </Tabs>
 
-<ParamField path="env_name" type="string" required>
+<ParamField type="string">
   The name of the environment.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 ### Response
 
-<ResponseField name="model_id" type="string" required>
+<ResponseField name="model_id" type="string">
   The ID of the model.
 </ResponseField>
 
-<ResponseField name="deployment_id" type="string" required>
+<ResponseField name="deployment_id" type="string">
   The ID of the deployment.
 </ResponseField>
 
-<ResponseField name="num_queued_requests" type="integer" required>
+<ResponseField name="num_queued_requests" type="integer">
   The number of requests in the deployment's async queue with `QUEUED` status (i.e. awaiting processing by the model).
 </ResponseField>
 
-<ResponseField name="num_in_progress_requests" type="integer" required>
+<ResponseField name="num_in_progress_requests" type="integer">
   The number of requests in the deployment's async queue with `IN_PROGRESS` status (i.e. currently being processed by the model).
 </ResponseField>
 
@@ -15872,25 +21897,25 @@ Use this endpoint to get the status of an async request.
 
 <Tabs>
   <Tab title="Model">
-    <ParamField path="model_id" type="string" required>
+    <ParamField type="string">
       The ID of the model.
     </ParamField>
   </Tab>
 
   <Tab title="Chain">
-    <ParamField path="chain_id" type="string" required>
+    <ParamField type="string">
       The ID of the chain.
     </ParamField>
   </Tab>
 </Tabs>
 
-<ParamField path="request_id" type="string" required>
+<ParamField type="string">
   The ID of the async request.
 </ParamField>
 
 ### Headers
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
@@ -15898,49 +21923,49 @@ Use this endpoint to get the status of an async request.
 
 <Tabs>
   <Tab title="Model">
-    <ResponseField name="request_id" type="string" required>
+    <ResponseField name="request_id" type="string">
       The ID of the async request.
     </ResponseField>
 
-    <ResponseField name="model_id" type="string" required>
+    <ResponseField name="model_id" type="string">
       The ID of the model that executed the request.
     </ResponseField>
 
-    <ResponseField name="deployment_id" type="string" required>
+    <ResponseField name="deployment_id" type="string">
       The ID of the deployment that executed the request.
     </ResponseField>
 
-    <ResponseField name="status" type="string" required>
+    <ResponseField name="status" type="string">
       An enum representing the status of the request.
 
       Available options: `QUEUED`, `IN_PROGRESS`, `SUCCEEDED`, `FAILED`, `EXPIRED`, `CANCELED`, `WEBHOOK_FAILED`
     </ResponseField>
 
-    <ResponseField name="webhook_status" type="string" required>
+    <ResponseField name="webhook_status" type="string">
       An enum representing the status of sending the predict result to the provided webhook.
 
       Available options: `PENDING`, `SUCCEEDED`, `FAILED`, `CANCELED`, `NO_WEBHOOK_PROVIDED`
     </ResponseField>
 
-    <ResponseField name="created_at" type="string" required>
+    <ResponseField name="created_at" type="string">
       The time in UTC at which the async request was created.
     </ResponseField>
 
-    <ResponseField name="status_at" type="string" required>
+    <ResponseField name="status_at" type="string">
       The time in UTC at which the async request's status was updated.
     </ResponseField>
 
-    <ResponseField name="errors" type="object[]" required default={[]}>
+    <ResponseField name="errors" type="object[]">
       Any errors that occurred in processing the async request. Empty if no errors occurred.
 
       <Expandable>
-        <ResponseField name="code" type="string" required>
+        <ResponseField name="code" type="string">
           An enum representing the type of error that occurred.
 
           Available options: `MODEL_PREDICT_ERROR`, `MODEL_PREDICT_TIMEOUT`, `MODEL_NOT_READY`, `MODEL_DOES_NOT_EXIST`, `MODEL_UNAVAILABLE`, `MODEL_INVALID_INPUT`, `ASYNC_REQUEST_NOT_SUPPORTED`, `INTERNAL_SERVER_ERROR`
         </ResponseField>
 
-        <ResponseField name="message" type="string" required>
+        <ResponseField name="message" type="string">
           A message containing details of the error that occurred.
         </ResponseField>
       </Expandable>
@@ -15948,49 +21973,49 @@ Use this endpoint to get the status of an async request.
   </Tab>
 
   <Tab title="Chain">
-    <ResponseField name="request_id" type="string" required>
+    <ResponseField name="request_id" type="string">
       The ID of the async request.
     </ResponseField>
 
-    <ResponseField name="chain_id" type="string" required>
+    <ResponseField name="chain_id" type="string">
       The ID of the chain that executed the request.
     </ResponseField>
 
-    <ResponseField name="deployment_id" type="string" required>
+    <ResponseField name="deployment_id" type="string">
       The ID of the deployment that executed the request.
     </ResponseField>
 
-    <ResponseField name="status" type="string" required>
+    <ResponseField name="status" type="string">
       An enum representing the status of the request.
 
       Available options: `QUEUED`, `IN_PROGRESS`, `SUCCEEDED`, `FAILED`, `EXPIRED`, `CANCELED`, `WEBHOOK_FAILED`
     </ResponseField>
 
-    <ResponseField name="webhook_status" type="string" required>
+    <ResponseField name="webhook_status" type="string">
       An enum representing the status of sending the predict result to the provided webhook.
 
       Available options: `PENDING`, `SUCCEEDED`, `FAILED`, `CANCELED`, `NO_WEBHOOK_PROVIDED`
     </ResponseField>
 
-    <ResponseField name="created_at" type="string" required>
+    <ResponseField name="created_at" type="string">
       The time in UTC at which the async request was created.
     </ResponseField>
 
-    <ResponseField name="status_at" type="string" required>
+    <ResponseField name="status_at" type="string">
       The time in UTC at which the async request's status was updated.
     </ResponseField>
 
-    <ResponseField name="errors" type="object[]" required default={[]}>
+    <ResponseField name="errors" type="object[]">
       Any errors that occurred in processing the async request. Empty if no errors occurred.
 
       <Expandable>
-        <ResponseField name="code" type="string" required>
+        <ResponseField name="code" type="string">
           An enum representing the type of error that occurred.
 
           Available options: `MODEL_PREDICT_ERROR`, `MODEL_PREDICT_TIMEOUT`, `MODEL_NOT_READY`, `MODEL_DOES_NOT_EXIST`, `MODEL_UNAVAILABLE`, `MODEL_INVALID_INPUT`, `ASYNC_REQUEST_NOT_SUPPORTED`, `INTERNAL_SERVER_ERROR`
         </ResponseField>
 
-        <ResponseField name="message" type="string" required>
+        <ResponseField name="message" type="string">
           A message containing details of the error that occurred.
         </ResponseField>
       </Expandable>
@@ -16043,7 +22068,7 @@ Calls to the get async request status endpoint are limited to **20 requests per 
 To avoid hitting this rate limit, we recommend [configuring a webhook endpoint](/inference/async#configuring-the-webhook-endpoint) to receive async predict results instead of frequently polling this endpoint for async request statuses.
 
 <RequestExample>
-  ```py Python (Model) theme={"system"}
+  ```python Python (Model) theme={"system"}
   import requests
   import os
 
@@ -16060,7 +22085,7 @@ To avoid hitting this rate limit, we recommend [configuring a webhook endpoint](
   print(resp.json())
   ```
 
-  ```py Python (Chain) theme={"system"}
+  ```python Python (Chain) theme={"system"}
   import requests
   import os
 
@@ -16086,26 +22111,26 @@ POST https://model-{model_id}.api.baseten.co/deployment/{deployment-id}/wake
 
 Use this endpoint to wake any scaled-to-zero [deployment](/deployment/deployments) of your model.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/wake
 ```
 
 ### Parameters
 
-<ParamField path="Model ID" type="string" required>
+<ParamField type="string">
   The ID of the model you want to wake.
 </ParamField>
 
-<ParamField path="Deployment ID" type="string" required>
+<ParamField type="string">
   The ID of the specific deployment you want to wake.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -16131,7 +22156,7 @@ https://model-{model_id}.api.baseten.co/deployment/{deployment_id}/wake
     -H 'Authorization: Api-Key YOUR_API_KEY' \
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -16162,22 +22187,22 @@ POST https://model-{model_id}.api.baseten.co/development/wake
 
 Use this endpoint to wake the [development deployment](/deployment/deployments#development-deployment) of your model if it is scaled to zero.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/development/wake
 ```
 
 ### Parameters
 
-<ParamField path="Model ID" type="string" required>
+<ParamField type="string">
   The ID of the model you want to wake.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -16202,7 +22227,7 @@ https://model-{model_id}.api.baseten.co/development/wake
     -H 'Authorization: Api-Key YOUR_API_KEY' \
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -16233,22 +22258,22 @@ POST https://model-{model_id}.api.baseten.co/production/wake
 
 Use this endpoint to wake the [production environment](/deployment/deployments#environments-and-promotion) of your model if it is scaled to zero.
 
-```sh  theme={"system"}
+```sh theme={"system"}
 https://model-{model_id}.api.baseten.co/production/wake
 ```
 
 ### Parameters
 
-<ParamField path="Model ID" type="string" required>
+<ParamField type="string">
   The ID of the model you want to wake.
 </ParamField>
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   Your Baseten API key, formatted with prefix `Api-Key` (e.g. `{"Authorization": "Api-Key abcd1234.abcd1234"}`).
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -16273,7 +22298,7 @@ https://model-{model_id}.api.baseten.co/production/wake
     -H 'Authorization: Api-Key YOUR_API_KEY' \
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(
@@ -16388,6 +22413,9 @@ Source: https://docs.baseten.co/reference/management-api/deployments/autoscaling
 patch /v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings
 Updates a deployment's autoscaling settings and returns the update status.
 
+<Note>
+  To update autoscaling settings at the environment level, use the [update environment settings](/reference/management-api/environments/update-an-environments-settings) endpoint.
+</Note>
 
 
 # Development model deployment
@@ -16396,6 +22424,9 @@ Source: https://docs.baseten.co/reference/management-api/deployments/autoscaling
 patch /v1/models/{model_id}/deployments/development/autoscaling_settings
 Updates a development deployment's autoscaling settings and returns the update status.
 
+<Note>
+  To update autoscaling settings at the environment level, use the [update environment settings](/reference/management-api/environments/update-an-environments-settings) endpoint.
+</Note>
 
 
 # Any deployment by ID
@@ -16609,6 +22640,20 @@ Updates an environment's settings and returns the updated environment.
 
 
 
+# All instance types
+Source: https://docs.baseten.co/reference/management-api/instance-types/gets-all-instance-types
+
+get /v1/instance_types
+
+
+
+# Instance type prices
+Source: https://docs.baseten.co/reference/management-api/instance-types/gets-instance-type-prices
+
+get /v1/instance_type_prices
+
+
+
 # Delete models
 Source: https://docs.baseten.co/reference/management-api/models/deletes-a-model-by-id
 
@@ -16635,7 +22680,7 @@ Source: https://docs.baseten.co/reference/management-api/overview
 
 The management API is used to manage models and deployments. It supports monitoring, CI/CD, and automation at both the model and workspace levels.
 
-# Model endpoints
+## Model endpoints
 
 | Method | Endpoint                                                                          | Description      |
 | :----- | :-------------------------------------------------------------------------------- | :--------------- |
@@ -16643,7 +22688,7 @@ The management API is used to manage models and deployments. It supports monitor
 | `GET`  | [`/v1/models/{model_id}`](/reference/management-api/models/gets-a-model-by-id)    | Get models by ID |
 | `DEL`  | [`/v1/models/{model_id}`](/reference/management-api/models/deletes-a-model-by-id) | Delete models    |
 
-# Chain endpoints
+## Chain endpoints
 
 | Method | Endpoint                                                                          | Description          |
 | :----- | :-------------------------------------------------------------------------------- | :------------------- |
@@ -16651,25 +22696,25 @@ The management API is used to manage models and deployments. It supports monitor
 | `GET`  | [`/v1/chains/{chain_id}`](/reference/management-api/chains/gets-a-chain-by-id)    | Get all Chains by ID |
 | `DEL`  | [`/v1/chains/{chain_id}`](/reference/management-api/chains/deletes-a-chain-by-id) | Delete Chains        |
 
-# Deployment endpoints
+## Deployment endpoints
 
 <Tabs>
   <Tab title="Models">
     ### Activate a model deployment
 
-    | Method | Endpoint                                                                                                                                                         | Description                |
-    | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------- |
-    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/activate`](/reference/management-api/deployments/activate/activates-a-deployment-associated-with-an-environment) | **Activate** a environment |
-    | `POST` | [`/v1/models/{model_id}/deployments/development/activate`](/reference/management-api/deployments/activate/activates-a-development-deployment)                    | **Activate** development   |
-    | `POST` | [`/v1/models/{model_id}/deployments/{deployment_id}/activate`](/reference/management-api/deployments/activate/activates-a-deployment)                            | **Activate** a deployment  |
+    | Method | Endpoint                                                                                                                                                         | Description                 |
+    | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- |
+    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/activate`](/reference/management-api/deployments/activate/activates-a-deployment-associated-with-an-environment) | **Activate** an environment |
+    | `POST` | [`/v1/models/{model_id}/deployments/development/activate`](/reference/management-api/deployments/activate/activates-a-development-deployment)                    | **Activate** development    |
+    | `POST` | [`/v1/models/{model_id}/deployments/{deployment_id}/activate`](/reference/management-api/deployments/activate/activates-a-deployment)                            | **Activate** a deployment   |
 
     ### Deactivate a model deployment
 
-    | Method | Endpoint                                                                                                                                                             | Description                  |
-    | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------- |
-    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/activate`](/reference/management-api/deployments/deactivate/deactivates-a-deployment-associated-with-an-environment) | **Deactivate** a environment |
-    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/activate`](/reference/management-api/deployments/deactivate/deactivates-a-development-deployment)                    | **Deactivate** development   |
-    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/activate`](/reference/management-api/deployments/deactivate/deactivates-a-deployment)                                | **Deactivate** a deployment  |
+    | Method | Endpoint                                                                                                                                                               | Description                   |
+    | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------- |
+    | `POST` | [`/v1/models/{model_id}/environments/{env_name}/deactivate`](/reference/management-api/deployments/deactivate/deactivates-a-deployment-associated-with-an-environment) | **Deactivate** an environment |
+    | `POST` | [`/v1/models/{model_id}/deployments/development/deactivate`](/reference/management-api/deployments/deactivate/deactivates-a-development-deployment)                    | **Deactivate** development    |
+    | `POST` | [`/v1/models/{model_id}/deployments/{deployment_id}/deactivate`](/reference/management-api/deployments/deactivate/deactivates-a-deployment)                            | **Deactivate** a deployment   |
 
     ### Promote a model deployment
 
@@ -16721,7 +22766,7 @@ The management API is used to manage models and deployments. It supports monitor
   </Tab>
 </Tabs>
 
-# Environment endpoints
+## Environment endpoints
 
 <Tabs>
   <Tab title="Models">
@@ -16744,35 +22789,52 @@ The management API is used to manage models and deployments. It supports monitor
   </Tab>
 </Tabs>
 
-# Secret endpoints
+## Instance type endpoints
 
-| Method | Endpoint                                                            | Description                                               |
-| :----- | :------------------------------------------------------------------ | :-------------------------------------------------------- |
-| `GET`  | [`/v1/secrets`](/reference/management-api/secrets/gets-all-secrets) | Get all secrets                                           |
-| `POST` | [`/v1/secrets`](/reference/management-api/secrets/upserts-a-secret) | Create a new secret or updates an existing secret secret. |
+| Method | Endpoint                                                                                         | Description              |
+| :----- | :----------------------------------------------------------------------------------------------- | :----------------------- |
+| `GET`  | [`/v1/instance_types`](/reference/management-api/instance-types/gets-all-instance-types)         | Get all instance types   |
+| `GET`  | [`/v1/instance_type_prices`](/reference/management-api/instance-types/gets-instance-type-prices) | Get instance type prices |
 
-# API Key endpoints
+## Team endpoints
 
-| Method   | Endpoint                                                                      | Description                      |
-| :------- | :---------------------------------------------------------------------------- | :------------------------------- |
-| `GET`    | [`/v1/api_keys`](/reference/management-api/api-keys/lists-the-users-api-keys) | Get all API keys.                |
-| `POST`   | [`/v1/api_keys`](/reference/management-api/api-keys/creates-an-api-key)       | Create a new API key.            |
-| `DELETE` | [`/v1/api_keys`](/reference/management-api/api-keys/delete-an-api-key)        | Delete an API key by its prefix. |
+| Method | Endpoint                                                       | Description   |
+| :----- | :------------------------------------------------------------- | :------------ |
+| `GET`  | [`/v1/teams`](/reference/management-api/teams/lists-all-teams) | Get all teams |
 
-# Training Job endpoints
+## Secret endpoints
 
-| Method | Endpoint                                                                                                                                           | Description                       |
-| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------- |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs`](/reference/training-api/list-training-jobs)                                                   | Get all training jobs             |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}`](/reference/training-api/get-training-job)                                   | Get training job by ID            |
-| `POST` | [`/v1/training_jobs/search`](/reference/training-api/search-training-jobs)                                                                         | Search training jobs              |
-| `POST` | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/stop`](/reference/training-api/stop-training-job)                             | Stop a training job               |
-| `POST` | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/recreate`](/reference/training-api/recreate-training-job)                     | Recreate a training job           |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints`](/reference/training-api/get-training-job-checkpoints)           | Get training job checkpoints      |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files`](/reference/training-api/get-training-job-checkpoint-files) | Get training job checkpoint files |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/logs`](/reference/training-api/get-training-job-logs)                         | Get training job logs             |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics`](/reference/training-api/get-training-job-metrics)                   | Get training job metrics          |
-| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/download`](/reference/training-api/download-training-job)                     | Download training job artifacts   |
+| Method | Endpoint                                                                               | Description                    |
+| :----- | :------------------------------------------------------------------------------------- | :----------------------------- |
+| `GET`  | [`/v1/secrets`](/reference/management-api/secrets/gets-all-secrets)                    | Get all secrets                |
+| `POST` | [`/v1/secrets`](/reference/management-api/secrets/upserts-a-secret)                    | Create or update a secret      |
+| `GET`  | [`/v1/teams/{team_id}/secrets`](/reference/management-api/teams/gets-all-team-secrets) | Get all team secrets           |
+| `POST` | [`/v1/teams/{team_id}/secrets`](/reference/management-api/teams/upserts-a-team-secret) | Create or update a team secret |
+
+## API Key endpoints
+
+| Method   | Endpoint                                                                                 | Description           |
+| :------- | :--------------------------------------------------------------------------------------- | :-------------------- |
+| `GET`    | [`/v1/api_keys`](/reference/management-api/api-keys/lists-the-users-api-keys)            | Get all API keys      |
+| `POST`   | [`/v1/api_keys`](/reference/management-api/api-keys/creates-an-api-key)                  | Create an API key     |
+| `DELETE` | [`/v1/api_keys/{api_key_prefix}`](/reference/management-api/api-keys/delete-an-api-key)  | Delete an API key     |
+| `POST`   | [`/v1/teams/{team_id}/api_keys`](/reference/management-api/teams/creates-a-team-api-key) | Create a team API key |
+
+## Training endpoints
+
+| Method | Endpoint                                                                                                                                           | Description                     |
+| :----- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
+| `POST` | [`/v1/teams/{team_id}/training_projects`](/reference/management-api/teams/creates-a-team-training-project)                                         | Create a team training project  |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs`](/reference/training-api/list-training-jobs)                                                   | Get all training jobs           |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}`](/reference/training-api/get-training-job)                                   | Get training job by ID          |
+| `POST` | [`/v1/training_jobs/search`](/reference/training-api/search-training-jobs)                                                                         | Search training jobs            |
+| `POST` | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/stop`](/reference/training-api/stop-training-job)                             | Stop a training job             |
+| `POST` | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/recreate`](/reference/training-api/recreate-training-job)                     | Recreate a training job         |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoints`](/reference/training-api/get-training-job-checkpoints)           | Get training job checkpoints    |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/checkpoint_files`](/reference/training-api/get-training-job-checkpoint-files) | Get checkpoint files            |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/logs`](/reference/training-api/get-training-job-logs)                         | Get training job logs           |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/metrics`](/reference/training-api/get-training-job-metrics)                   | Get training job metrics        |
+| `GET`  | [`/v1/training_projects/{training_project_id}/jobs/{training_job_id}/download`](/reference/training-api/download-training-job)                     | Download training job artifacts |
 
 
 # Get all secrets
@@ -16790,6 +22852,45 @@ Creates a new secret or updates an existing secret if one with the provided name
 
 
 
+# Create a team API key
+Source: https://docs.baseten.co/reference/management-api/teams/creates-a-team-api-key
+
+post /v1/teams/{team_id}/api_keys
+Creates a team API key with the provided name and type. The API key is returned in the response.
+
+
+
+# Create a team training project
+Source: https://docs.baseten.co/reference/management-api/teams/creates-a-team-training-project
+
+post /v1/teams/{team_id}/training_projects
+Upserts a training project with the specified metadata for a team.
+
+
+
+# Get all team secrets
+Source: https://docs.baseten.co/reference/management-api/teams/gets-all-team-secrets
+
+get /v1/teams/{team_id}/secrets
+
+
+
+# List all teams
+Source: https://docs.baseten.co/reference/management-api/teams/lists-all-teams
+
+get /v1/teams
+Returns a list of all teams the authenticated user has access to.
+
+
+
+# Upsert a team secret
+Source: https://docs.baseten.co/reference/management-api/teams/upserts-a-team-secret
+
+post /v1/teams/{team_id}/secrets
+Creates a new secret or updates an existing secret if one with the provided name already exists. The name and creation date of the created or updated secret is returned. This secret belongs to the specified team
+
+
+
 # Reference documentation
 Source: https://docs.baseten.co/reference/overview
 
@@ -16797,21 +22898,21 @@ For deploying, managing, and interacting with machine learning models on Baseten
 
 This reference section documents our API, CLI, and Python SDK—whether you're deploying models, managing inference chains, or calling endpoints in production.
 
-# API Reference
+## API Reference
 
 Baseten provides two sets of API endpoints:
 
-<CardGroup cols={2}>
-  <Card title="Inference API" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=db298df57b8b5162245c0288b629fdfe" href="/reference/inference-api/overview" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/inference-api.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=9982f03f0affc8312745a1402b3447d8 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=2fb9c1e0c4a4665921d18d549698f481 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e371e48cce82d0a299c6a405404c7aa2 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=7b833151112352f77ced33630d746667 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=e6a0d200eb8c50b4b20ae1292d158a28 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/inference-api.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=4f37b7f16aa2f537df2cc38038ef8780 2500w">
+<CardGroup>
+  <Card title="Inference API" href="/reference/inference-api/overview">
     For calling deployed models and chains.
   </Card>
 
-  <Card title="Management API" img="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=54a53f56d9b3798b3473734288242684" href="/reference/management-api/overview" data-og-width="956" width="956" data-og-height="458" height="458" data-path="images/management-api.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=280&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=acca67a3e8b37964c3c411edc05d5b95 280w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=560&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=c1fd71607497ce40f17af54bd6c3eace 560w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=840&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=1683d63e774c01bff1dac560c8bbf4f1 840w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=1100&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=98e34a8389f74d2c1915e4447f648ef6 1100w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=1650&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=59fa9aacaa64df5f1d25a4d48360fc78 1650w, https://mintcdn.com/baseten-preview/W3NbEem9OZkF5rdB/images/management-api.png?w=2500&fit=max&auto=format&n=W3NbEem9OZkF5rdB&q=85&s=35509add742aeb071e5ff90ada2f130a 2500w">
+  <Card title="Management API" href="/reference/management-api/overview">
     For managing models, workspaces, and training jobs.
   </Card>
 </CardGroup>
 
-# CLI Reference
+## CLI Reference
 
 The CLI provides a command-line interface for managing deployments, running local inference, and configuring Truss models.
 
@@ -16821,7 +22922,7 @@ The CLI provides a command-line interface for managing deployments, running loca
 
 ***
 
-# SDK Reference
+## SDK Reference
 
 The Python SDK provides an abstraction for deploying models, managing deployments, and interacting with models via code.
 
@@ -17008,7 +23109,7 @@ giving a custom default value for the `name` arg of the CLI push command).
 
 Example usage:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 @chains.mark_entrypoint
@@ -17033,7 +23134,7 @@ Bundles config values needed to deploy a chainlet remotely.
 
 This is specified as a class variable for each chainlet class, e.g.:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 
 
@@ -17094,7 +23195,10 @@ uses GPUs, drivers will be included in the image.
 | ----------- | ------- |
 | `PY39`      | *py39*  |
 | `PY310`     | *py310* |
-| `PY311 `    | *py311* |
+| `PY311`     | *py311* |
+| `PY312`     | *py312* |
+| `PY313`     | *py313* |
+| `PY314`     | *py314* |
 
 ### *class* `truss_chains.CustomImage`
 
@@ -17131,7 +23235,7 @@ Specifies which compute resources a chainlet has in the *remote* deployment.
 | `gpu_count`           | *int*                         | `1`     | Number of GPUs to allocate.                                                                                     |
 | `predict_concurrency` | *int\|Literal\['cpu\_count']* | `1`     | Number of concurrent requests a single replica of a deployed chainlet handles.                                  |
 
-Concurrency concepts are explained in [this guide](/development/model/performance/concurrency#2-predict-concurrency).
+Concurrency concepts are explained in [this guide](/development/model/concurrency#2-predict-concurrency).
 It is important to understand the difference between predict\_concurrency and
 the concurrency target (used for autoscaling, i.e. adding or removing replicas).
 Furthermore, the `predict_concurrency` of a single instance is implemented in
@@ -17148,7 +23252,7 @@ Specifies which assets a chainlet can access in the remote deployment.
 
 For example, model weight caching can be used like this:
 
-```python  theme={"system"}
+```python theme={"system"}
 import truss_chains as chains
 from truss.base import truss_config
 
@@ -17238,7 +23342,7 @@ Helper to specify file paths relative to the *immediately calling* module.
 
 E.g. in you have a project structure like this:
 
-```default  theme={"system"}
+```default theme={"system"}
 root/
     chain.py
     common_requirements.text
@@ -17250,7 +23354,7 @@ root/
 You can now in `root/sub_package/chainlet.py` point to the requirements
 file like this:
 
-```python  theme={"system"}
+```python theme={"system"}
 shared = make_abs_path_here("../common_requirements.text")
 specific = make_abs_path_here("chainlet_requirements.text")
 ```
@@ -17263,7 +23367,7 @@ specific = make_abs_path_here("chainlet_requirements.text")
 
   Ok:
 
-  ```python  theme={"system"}
+  ```python theme={"system"}
   def foo(path: AbsPath):
       abs_path = path.abs_path
 
@@ -17273,7 +23377,7 @@ specific = make_abs_path_here("chainlet_requirements.text")
 
   Not Ok:
 
-  ```python  theme={"system"}
+  ```python theme={"system"}
   def foo(path: str):
       dangerous_value = make_abs_path_here(path).abs_path
 
@@ -17308,7 +23412,7 @@ corresponding fields of [`DeploymentContext`](#class-truss-chains-deploymentcont
 
 Example usage (as trailing main section in a chain file):
 
-```python  theme={"system"}
+```python theme={"system"}
 import os
 import truss_chains as chains
 
@@ -17368,7 +23472,7 @@ It is used internally for RPCs to dependency chainlets, but it can also be used
 in user-code for wrapping a deployed truss model into the Chains framework. It
 flexibly supports JSON and pydantic inputs and output. Example usage:
 
-```python  theme={"system"}
+```python theme={"system"}
 import pydantic
 import truss_chains as chains
 
@@ -17474,64 +23578,242 @@ Raised when calling a remote chainlet results in an error and it is not possible
 to re-raise the same exception that was raise remotely in the caller.
 
 
-# Training
+# Training SDK
 Source: https://docs.baseten.co/reference/sdk/training
 
-Reference documentation for Baseten's Training SDK classes and configuration.
+Configure and manage training jobs with Baseten's training SDK.
 
-The Training SDK provides classes for configuring and managing machine learning model training jobs on Baseten. This reference documents the key classes used to define training configurations.
+## Installation
 
-# Deploy a `TrainingJob`
+The training SDK is included with Truss:
 
-To deploy a training job, use the following command:
+<Tabs>
+  <Tab title="uv (recommended)">
+    [uv](https://docs.astral.sh/uv/) is a fast Python package manager:
 
-```bash  theme={"system"}
-truss train push <path_to_config_file>
+    ```sh theme={"system"}
+    uv pip install truss
+    ```
+  </Tab>
+
+  <Tab title="pip (macOS/Linux)">
+    ```sh theme={"system"}
+    pip install --upgrade truss
+    ```
+  </Tab>
+
+  <Tab title="pip (Windows)">
+    ```sh theme={"system"}
+    pip install --upgrade truss
+    ```
+  </Tab>
+</Tabs>
+
+Import classes from `truss_train`:
+
+```python theme={"system"}
+from truss_train import definitions
 ```
 
-The following classes are used to configure and deploy training jobs:
+***
 
-## TrainingJob
+## Programmatic job submission
 
-Defines a complete training job configuration.
+### push
 
-```python  theme={"system"}
-class TrainingJob:
-    image: Image              # Container image configuration
-    compute: Compute         # Compute resource configuration
-    runtime: Runtime        # Runtime environment configuration
+Submits a training job programmatically from Python code. Use this when you need to:
+
+* Build an API endpoint that receives training requests.
+* Dynamically configure training jobs based on user input.
+* Integrate training into your application workflow.
+
+<Note>
+  Before using `push()`, authenticate with `truss login` or ensure your Baseten API key is configured.
+  See [CLI authentication](/reference/cli/truss/login).
+</Note>
+
+```python theme={"system"}
+from truss_train.public_api import push
+
+def push(
+    config: Path,            # Path to config.py defining the training project
+    remote: str = "baseten"  # Remote provider (defaults to "baseten")
+) -> dict
 ```
 
-Example usage:
+The function returns a dictionary containing the created training project and job:
 
-```python  theme={"system"}
-training_job = TrainingJob(
-    image=Image(base_image="pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime"),
-    compute=Compute(cpu_count=4, memory="16Gi"),
-    runtime=Runtime(
-        start_commands=["python train.py"],
-        checkpointing_config=CheckpointingConfig(enabled=True),
-        cache_config=CacheConfig(enabled=True),
-    )
+```python theme={"system"}
+{
+    "training_project": TrainingProject,
+    "training_job": TrainingJob,
+}
+```
+
+**Example:**
+
+To submit a training job programmatically, create a `config.py` file and call `push`:
+
+```python theme={"system"}
+from pathlib import Path
+from truss_train.public_api import push
+
+result = push(config=Path("./training/config.py"))
+
+print(f"Project ID: {result['training_project']['id']}")
+print(f"Job ID: {result['training_job']['id']}")
+```
+
+For dynamic job configuration, write runtime parameters to a file before calling `push`:
+
+```python theme={"system"}
+import json
+import shutil
+import tempfile
+from pathlib import Path
+
+from truss_train.public_api import push
+
+
+def submit_training_job(dataset_id: str, model_id: str) -> dict:
+    """Submit a training job with dynamic configuration."""
+    template_dir = Path("./training_template")
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        tmp_path = Path(tmp_dir)
+
+        # Copy training template
+        shutil.copytree(template_dir, tmp_path, dirs_exist_ok=True)
+
+        # Write runtime configuration
+        runtime_config = {
+            "dataset_id": dataset_id,
+            "model_id": model_id,
+        }
+        (tmp_path / "runtime_config.json").write_text(
+            json.dumps(runtime_config, indent=2)
+        )
+
+        # Submit the job
+        return push(config=tmp_path / "config.py")
+
+
+result = submit_training_job(
+    dataset_id="HuggingFaceH4/Multilingual-Thinking",
+    model_id="meta-llama/Llama-3.1-8B",
 )
 ```
+
+Your `config.py` can read the runtime configuration at import time:
+
+```python theme={"system"}
+import json
+from pathlib import Path
+
+from truss.base import truss_config
+from truss_train import definitions
+
+# Read dynamic configuration
+config_path = Path(__file__).parent / "runtime_config.json"
+runtime_config = json.loads(config_path.read_text())
+
+training_runtime = definitions.Runtime(
+    start_commands=["python train.py"],
+    environment_variables={
+        "MODEL_ID": runtime_config["model_id"],
+        "DATASET_ID": runtime_config["dataset_id"],
+        "HF_TOKEN": definitions.SecretReference(name="hf_access_token"),
+    },
+    checkpointing_config=definitions.CheckpointingConfig(enabled=True),
+)
+
+training_compute = definitions.Compute(
+    accelerator=truss_config.AcceleratorSpec(
+        accelerator=truss_config.Accelerator.H100,
+        count=2,
+    ),
+)
+
+training_job = definitions.TrainingJob(
+    image=definitions.Image(base_image="pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime"),
+    compute=training_compute,
+    runtime=training_runtime,
+)
+
+training_project = definitions.TrainingProject(
+    name=runtime_config.get("project_name", "dynamic-training"),
+    job=training_job,
+)
+```
+
+**After submitting:**
+
+Once a job is submitted, use the Training API to monitor progress:
+
+* [Get job status](/reference/training-api/get-training-job).
+* [Get job logs](/reference/training-api/get-training-job-logs).
+* [Get job metrics](/reference/training-api/get-training-job-metrics).
+* [List checkpoints](/reference/training-api/get-training-job-checkpoints).
+
+For a complete working example, see the [programmatic training API recipe](https://github.com/basetenlabs/ml-cookbook/tree/main/recipes/programmatic-training-api).
+
+***
 
 ## TrainingProject
 
 Organizes training jobs and provides project-level configuration.
 
-```python  theme={"system"}
+```python theme={"system"}
 class TrainingProject:
-    name: str           # Project name
-    job: TrainingJob   # Training job configuration
+    name: str                        # Project name (required)
+    job: TrainingJob                 # Training job configuration (required)
+    team_name: Optional[str] = None  # Team that owns this project
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-project = TrainingProject(
+```python theme={"system"}
+from truss_train import definitions
+
+project = definitions.TrainingProject(
     name="llm-fine-tuning",
-    job=training_job
+    job=training_job,
+    team_name="my-team"  # Optional
+)
+```
+
+## TrainingJob
+
+Defines a complete training job configuration.
+
+```python theme={"system"}
+class TrainingJob:
+    image: Image                     # Container image configuration (required)
+    compute: Compute = Compute()     # Compute resource configuration
+    runtime: Runtime = Runtime()     # Runtime environment configuration
+    name: Optional[str] = None       # Job name
+```
+
+**Example:**
+
+```python theme={"system"}
+from truss_train import definitions
+from truss.base import truss_config
+
+training_job = definitions.TrainingJob(
+    name="fine-tune-v1",
+    image=definitions.Image(base_image="pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime"),
+    compute=definitions.Compute(
+        accelerator=truss_config.AcceleratorSpec(
+            accelerator=truss_config.Accelerator.H100,
+            count=4
+        )
+    ),
+    runtime=definitions.Runtime(
+        start_commands=["chmod +x ./run.sh && ./run.sh"],
+        checkpointing_config=definitions.CheckpointingConfig(enabled=True),
+        cache_config=definitions.CacheConfig(enabled=True),
+    )
 )
 ```
 
@@ -17539,63 +23821,81 @@ project = TrainingProject(
 
 Specifies the container image for the training environment.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Image:
-    base_image: str  # Docker image to use for training
-    docker_auth: Optional[DockerAuth] # Authentication details for private docker images
+    base_image: str                          # Docker image to use (required)
+    docker_auth: Optional[DockerAuth] = None # Authentication for private images
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-image = Image(base_image="pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime")
+```python theme={"system"}
+image = definitions.Image(
+    base_image="pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime"
+)
 ```
 
 ### DockerAuth
 
-Configures authentication for private Docker registries. Ensure that any SecretReference
-used has been set in your Baseten Workspace. See [secrets](/observability/secrets) for more details.
+Configures authentication for private Docker registries. Store secrets in your [Baseten workspace](/organization/secrets).
 
-```python  theme={"system"}
+```python theme={"system"}
 class DockerAuth:
-    auth_method: truss_config.DockerAuthType  # Authentication method type
-    registry: str                              # Docker registry URL
-    aws_iam_docker_auth: Optional[AWSIAMDockerAuth] = None
-    gcp_service_account_json_docker_auth: Optional[GCPServiceAccountJSONDockerAuth] = None
+    auth_method: truss_config.DockerAuthType                                   # Authentication method
+    registry: str                                                              # Docker registry URL
+    aws_iam_docker_auth: Optional[AWSIAMDockerAuth] = None                     # AWS ECR auth
+    gcp_service_account_json_docker_auth: Optional[GCPServiceAccountJSONDockerAuth] = None  # GCP auth
 ```
 
 #### AWSIAMDockerAuth
 
 Authenticates with AWS ECR using IAM credentials.
 
-```python  theme={"system"}
+```python theme={"system"}
 class AWSIAMDockerAuth:
-    access_key_secret_ref: SecretReference      # AWS access key ID as a secret reference
-    secret_access_key_secret_ref: SecretReference  # AWS secret access key as a secret reference
+    access_key_secret_ref: SecretReference          # AWS access key ID
+    secret_access_key_secret_ref: SecretReference   # AWS secret access key
+```
+
+**Example:**
+
+```python theme={"system"}
+from truss.base import truss_config
+
+image = definitions.Image(
+    base_image="123456789.dkr.ecr.us-east-1.amazonaws.com/my-image:latest",
+    docker_auth=definitions.DockerAuth(
+        auth_method=truss_config.DockerAuthType.AWS_IAM,
+        registry="123456789.dkr.ecr.us-east-1.amazonaws.com",
+        aws_iam_docker_auth=definitions.AWSIAMDockerAuth(
+            access_key_secret_ref=definitions.SecretReference(name="aws_access_key"),
+            secret_access_key_secret_ref=definitions.SecretReference(name="aws_secret_key")
+        )
+    )
+)
 ```
 
 #### GCPServiceAccountJSONDockerAuth
 
 Authenticates with Google Container Registry using service account JSON.
 
-```python  theme={"system"}
+```python theme={"system"}
 class GCPServiceAccountJSONDockerAuth:
-    service_account_json_secret_ref: SecretReference  # GCP service account JSON secret reference
+    service_account_json_secret_ref: SecretReference  # GCP service account JSON
 ```
 
-#### Example
+**Example:**
 
-Example usage with GCP:
+```python theme={"system"}
+from truss.base import truss_config
 
-```python  theme={"system"}
-# Configure image with GCP authentication
-image = Image(
-    base_image="gcr.io/my-project/my-repo/my-private-image:latest",
-    docker_auth=DockerAuth(
+image = definitions.Image(
+    base_image="gcr.io/my-project/my-image:latest",
+    docker_auth=definitions.DockerAuth(
         auth_method=truss_config.DockerAuthType.GCP_SERVICE_ACCOUNT_JSON,
         registry="gcr.io",
-        gcp_service_account_json_docker_auth=GCPServiceAccountJSONDockerAuth(
-            service_account_json_secret_ref=SecretReference(name="gcp_service_account_json")
+        gcp_service_account_json_docker_auth=definitions.GCPServiceAccountJSONDockerAuth(
+            service_account_json_secret_ref=definitions.SecretReference(name="gcp_service_account_json")
         )
     )
 )
@@ -17605,224 +23905,400 @@ image = Image(
 
 Specifies compute resources for training jobs.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Compute:
-    node_count: int = 1      # Number of nodes for distributed training
-    cpu_count: int = 1       # Number of CPU cores
-    memory: str = "2Gi"      # Memory allocation
-    accelerator: Optional[AcceleratorSpec] = None  # GPU configuration
+    node_count: int = 1                              # Number of nodes for distributed training
+    cpu_count: int = 1                               # Number of CPU cores
+    memory: str = "2Gi"                              # Memory allocation
+    accelerator: Optional[AcceleratorSpec] = None    # GPU configuration
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-# Configure a training job with 2 GPUs and 4 CPUs
-compute = Compute(
-    accelerator=AcceleratorSpec(accelerator="H100", count=4)
+```python theme={"system"}
+from truss.base import truss_config
+
+compute = definitions.Compute(
+    node_count=2,
+    cpu_count=8,
+    memory="64Gi",
+    accelerator=truss_config.AcceleratorSpec(
+        accelerator=truss_config.Accelerator.H100,
+        count=4
+    )
 )
 ```
+
+### AcceleratorSpec
+
+Configures GPU resources.
+
+```python theme={"system"}
+class AcceleratorSpec:
+    accelerator: Optional[Accelerator] = None  # GPU type
+    count: int = 1                             # Number of GPUs
+```
+
+### Accelerator
+
+Supported GPU types for training jobs.
+
+| Value       | Description        |
+| ----------- | ------------------ |
+| `T4`        | NVIDIA T4          |
+| `L4`        | NVIDIA L4          |
+| `A10G`      | NVIDIA A10G        |
+| `V100`      | NVIDIA V100        |
+| `A100`      | NVIDIA A100 (80GB) |
+| `A100_40GB` | NVIDIA A100 (40GB) |
+| `H100`      | NVIDIA H100 (80GB) |
+| `H100_40GB` | NVIDIA H100 (40GB) |
+| `H200`      | NVIDIA H200        |
+| `B200`      | NVIDIA B200        |
 
 ## Runtime
 
 Defines the runtime environment for training jobs.
 
-```python  theme={"system"}
+```python theme={"system"}
 class Runtime:
-    start_commands: List[str] = []  # Commands to run at job start
-    environment_variables: Dict[str, Union[str, SecretReference]] = {}
-    enable_cache: bool = False      # Enable caching
-    checkpointing_config: CheckpointingConfig = CheckpointingConfig()
+    start_commands: List[str] = []                                       # Commands to run at job start
+    environment_variables: Dict[str, Union[str, SecretReference]] = {}   # Environment variables
+    checkpointing_config: CheckpointingConfig = CheckpointingConfig()    # Checkpointing settings
+    cache_config: Optional[CacheConfig] = None                           # Cache settings
+    load_checkpoint_config: Optional[LoadCheckpointConfig] = None        # Load checkpoints from previous jobs
 ```
 
-Example usage:
+<Note>
+  The `enable_cache` field is deprecated. Use `cache_config` with `enabled=True` instead.
+</Note>
 
-```python  theme={"system"}
-runtime = Runtime(
-    start_commands=["python train.py"],
+**Example:**
+
+```python theme={"system"}
+runtime = definitions.Runtime(
+    start_commands=["chmod +x ./run.sh && ./run.sh"],
     environment_variables={
         "BATCH_SIZE": "32",
-        "WANDB_API_KEY": SecretReference(name="WANDB_KEY")
+        "WANDB_API_KEY": definitions.SecretReference(name="wandb_api_key"),
+        "HF_TOKEN": definitions.SecretReference(name="hf_access_token"),
     },
-    checkpointing_config=CheckpointingConfig(enabled=True)
-)
-```
-
-### Training Cache
-
-By default, the training cache provides two mount locations:
-
-* [`$BT_PROJECT_CACHE_DIR`](#baseten-provided-environment-variables), which is shared and accessible by all jobs within a Project ID
-* [`$BT_TEAM_CACHE_DIR`](#baseten-provided-environment-variables) which is shared by jobs that belong to the same Team.
-
-Baseten will export these variables in your job's environment.
-
-The cache storage is separate from ephemeral storage limits of your training job. Training Projects provide storage segragation within the cache. Training jobs within the same project share the same cache, while training jobs in different projects cannot access each other's data.
-
-Example usage:
-
-```python  theme={"system"}
-runtime = Runtime(
-    start_commands=["python train.py"],
-    environment_variables={
-        "BATCH_SIZE": "32",
-        "WANDB_API_KEY": SecretReference(name="WANDB_KEY")
-    },
-    cache_config=CacheConfig(enabled=True)
+    checkpointing_config=definitions.CheckpointingConfig(enabled=True),
+    cache_config=definitions.CacheConfig(enabled=True),
 )
 ```
 
 ### SecretReference
 
-Used to securely reference secrets stored in your Baseten workspace.
+Securely references secrets stored in your [Baseten workspace](/organization/secrets).
 
-```python  theme={"system"}
+```python theme={"system"}
 class SecretReference:
     name: str  # Name of the secret in your workspace
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-# Reference a secret named "WANDB_API_KEY" 
-secret_ref = SecretReference(name="WANDB_API_KEY")
+```python theme={"system"}
+secret_ref = definitions.SecretReference(name="wandb_api_key")
 ```
 
 ### CheckpointingConfig
 
-Configures model checkpointing behavior during training. Baseten will export the [`$BT_CHECKPOINT_DIR`](#baseten-provided-environment-variables) within
-the Training Job's environment. The checkpointing storage is independent of the ephemeral stroage of the pod
+Configures model checkpointing behavior during training. When enabled, Baseten exports `$BT_CHECKPOINT_DIR` in your job's environment. Save your model to this directory to preserve checkpoints for deployment.
 
-```python  theme={"system"}
+```python theme={"system"}
 class CheckpointingConfig:
-    enabled: bool = False              # Enable/disable checkpointing
-    checkpoint_path: Optional[str] = None  # Custom checkpoint directory path
-    volume_size_gib: Optional[int] = None # Custom size of your checkpointing directory
+    enabled: bool = False                      # Enable checkpointing
+    checkpoint_path: Optional[str] = None      # Custom checkpoint directory path
+    volume_size_gib: Optional[int] = None      # Custom checkpoint volume size
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-# Enable checkpointing with default path
-checkpointing = CheckpointingConfig(enabled=True)
+```python theme={"system"}
+checkpointing = definitions.CheckpointingConfig(
+    enabled=True,
+    volume_size_gib=500  # 500 GiB checkpoint storage
+)
 ```
 
-### Baseten Provided Environment Variables
+### CacheConfig
 
-Baseten automatically provides several environment variables in your training job's environment to help integrate your code with the Baseten platform.
+Configures caching for training jobs. The cache persists data between jobs within a project or team.
 
-#### Environment Variables
-
-| Environment Variable       | Description                                                              | Example                         |
-| -------------------------- | ------------------------------------------------------------------------ | ------------------------------- |
-| `BT_TRAINING_JOB_ID`       | ID of the Training Job                                                   | `"gvpql31"`                     |
-| `BT_TRAINING_PROJECT_ID`   | ID of the Training Project                                               | `"aghi527"`                     |
-| `BT_NUM_GPUS`              | Number of available GPUs per node                                        | `"4"`                           |
-| `BT_PROJECT_CACHE_DIR`     | Directory shared across Training Jobs within a singular Training Project | `"/root/.cache/user_artifacts"` |
-| `BT_TEAM_CACHE_DIR`        | Directory shared across Training Jobs within a singular Team             | `/root/.cache/team_artifacts`   |
-| `BT_CHECKPOINT_DIR`        | Directory where checkpoints are automatically saved during training      | `"/mnt/ckpts"`                  |
-| `BT_LOAD_CHECKPOINT_DIR`   | Directory of where loaded checkpoints will be                            | `"/tmp/loaded_checkpoints"`     |
-| `BT_TRAINING_JOB_NAME`     | Name your the Training Job                                               | `"gpt-oss-20b-lora"`            |
-| `BT_TRAINING_PROJECT_NAME` | Name your the Training Project                                           | `"gpt-oss-finetunes"`           |
-
-#### Multinode Environment Variables
-
-The following environment variables are particularly useful for multinode training jobs:
-
-| Environment Variable | Description                                 | Example      |
-| -------------------- | ------------------------------------------- | ------------ |
-| `BT_GROUP_SIZE`      | Number of nodes in the multinode deployment | `"2"`        |
-| `BT_LEADER_ADDR`     | Address of the leader node                  | `"10.0.0.1"` |
-| `BT_NODE_RANK`       | Rank of the node                            | `"0"`        |
-
-For multinode deployments, any traditionally used port number (e.g. `29500`) will work. There is no specific port number required by Baseten.
-
-# Deploy Checkpoints as a Model
-
-## Deploy checkpoints CLI wizard
-
-The easiest way to deploy your checkpoints is by using the CLI wizard:
-
-```bash  theme={"system"}
-truss train deploy_checkpoints --job-id <job id>
+```python theme={"system"}
+class CacheConfig:
+    enabled: bool = False                 # Enable caching
+    enable_legacy_hf_mount: bool = False  # Enable legacy Hugging Face cache mount
+    require_cache_affinity: bool = True   # Prefer nodes with cached data
+    mount_base_path: str = "/root/.cache" # Base path for cache mounts
 ```
 
-Follow the setup wizard to choose your hardware and the checkpoint you'd like to deploy. Baseten will automatically recognize checkpoints for full finetunes and LoRAs for LLMs and Whisper models. Note that FSDP checkpoints aren't supported by `deploy_checkpoints` today and must be manually configured in the truss config.
+When enabled, Baseten provides two cache directories.
 
-Once you've completed the wizard, Baseten will generate a truss and deploy a published model according to the specs provided.
+| Environment Variable    | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `$BT_PROJECT_CACHE_DIR` | Shared across jobs within the same project |
+| `$BT_TEAM_CACHE_DIR`    | Shared across jobs within the same team    |
 
-## Deploy checkpoints via static configuration
+**Example:**
 
-If you'd like to keep a static config of your checkpoint deploy, you can create a python config file defining the configuration you'd like to reference:
-
-```bash  theme={"system"}
-truss train deploy_checkpoints <path_to_config_file>
+```python theme={"system"}
+cache = definitions.CacheConfig(
+    enabled=True,
+    require_cache_affinity=True
+)
 ```
 
-## DeployCheckpointsRuntime
+### LoadCheckpointConfig
 
-Configures the runtime environment for deployed checkpoints.
+Configures loading checkpoints from previous training jobs to resume training.
 
-```python  theme={"system"}
-class DeployCheckpointsRuntime:
-    environment_variables: Dict[str, Union[str, SecretReference]] = {}
+```python theme={"system"}
+class LoadCheckpointConfig:
+    enabled: bool = False                    # Enable checkpoint loading
+    checkpoints: List[BasetenCheckpoint]     # Checkpoints to load
+    download_folder: str = "/tmp/loaded_checkpoints"  # Where to download checkpoints
 ```
 
-## Checkpoint
+**Example:**
 
-Represents metadata for a saved model checkpoint.
-
-```python  theme={"system"}
-class Checkpoint:
-    training_job_id: str   # ID of the training job
-    id: str               # Checkpoint ID
-    name: str            # Checkpoint name 
-    lora_rank: Optional[int] = None  # LoRA rank if applicable. Auto-detected if not specified.
+```python theme={"system"}
+load_config = definitions.LoadCheckpointConfig(
+    enabled=True,
+    download_folder="/tmp/loaded_checkpoints",
+    checkpoints=[
+        definitions.BasetenCheckpoint.from_latest_checkpoint(project_name="my-project"),
+        definitions.BasetenCheckpoint.from_named_checkpoint(
+            checkpoint_name="checkpoint-24",
+            job_id="abc123"
+        )
+    ]
+)
 ```
 
-## CheckpointList
+### BasetenCheckpoint
 
-Manages a collection of checkpoints and their download configuration.
+Factory class for referencing checkpoints from previous training jobs.
 
-```python  theme={"system"}
-class CheckpointList:
-    download_folder: str = "training_checkpoints"  # Local download location upon deployment
-    base_model_id: Optional[str] = None           # Base model identifier. Auto-dtected if not specified.
-    checkpoints: List[Checkpoint] = []            # List of checkpoints
+#### from\_latest\_checkpoint
+
+Load the most recent checkpoint from a project or job.
+
+```python theme={"system"}
+BasetenCheckpoint.from_latest_checkpoint(
+    project_name: Optional[str] = None,  # Project name
+    job_id: Optional[str] = None         # Job ID
+)
+```
+
+At least one of `project_name` or `job_id` is required.
+
+#### from\_named\_checkpoint
+
+Load a specific checkpoint by name.
+
+```python theme={"system"}
+BasetenCheckpoint.from_named_checkpoint(
+    checkpoint_name: str,  # Checkpoint name (required)
+    job_id: str            # Job ID (required)
+)
+```
+
+**Example:**
+
+```python theme={"system"}
+# Load most recent checkpoint from a project
+latest = definitions.BasetenCheckpoint.from_latest_checkpoint(
+    project_name="my-fine-tuning-project"
+)
+
+# Load specific checkpoint
+specific = definitions.BasetenCheckpoint.from_named_checkpoint(
+    checkpoint_name="checkpoint-100",
+    job_id="abc123"
+)
+
+# Use in LoadCheckpointConfig
+runtime = definitions.Runtime(
+    start_commands=["python train.py"],
+    load_checkpoint_config=definitions.LoadCheckpointConfig(
+        enabled=True,
+        checkpoints=[latest, specific]
+    )
+)
+```
+
+## Environment variables
+
+Baseten automatically provides environment variables in your training job's environment.
+
+### Standard variables
+
+| Variable                   | Description                     | Example                         |
+| -------------------------- | ------------------------------- | ------------------------------- |
+| `BT_TRAINING_JOB_ID`       | Training job ID                 | `"gvpql31"`                     |
+| `BT_TRAINING_PROJECT_ID`   | Training project ID             | `"aghi527"`                     |
+| `BT_TRAINING_JOB_NAME`     | Training job name               | `"gpt-oss-20b-lora"`            |
+| `BT_TRAINING_PROJECT_NAME` | Training project name           | `"gpt-oss-finetunes"`           |
+| `BT_NUM_GPUS`              | Number of GPUs per node         | `"4"`                           |
+| `BT_CHECKPOINT_DIR`        | Checkpoint save directory       | `"/mnt/ckpts"`                  |
+| `BT_LOAD_CHECKPOINT_DIR`   | Loaded checkpoints directory    | `"/tmp/loaded_checkpoints"`     |
+| `BT_PROJECT_CACHE_DIR`     | Project-level cache directory   | `"/root/.cache/user_artifacts"` |
+| `BT_TEAM_CACHE_DIR`        | Team-level cache directory      | `"/root/.cache/team_artifacts"` |
+| `BT_RW_CACHE_DIR`          | Base read-write cache directory | `"/root/.cache"`                |
+| `BT_RETRY_COUNT`           | Job retry attempt count         | `"0"`                           |
+
+### Multi-node variables
+
+For distributed training across multiple nodes:
+
+| Variable         | Description                   | Example      |
+| ---------------- | ----------------------------- | ------------ |
+| `BT_GROUP_SIZE`  | Number of nodes in deployment | `"2"`        |
+| `BT_LEADER_ADDR` | Leader node address           | `"10.0.0.1"` |
+| `BT_NODE_RANK`   | Node rank (0 for leader)      | `"0"`        |
+
+Any standard port number (e.g., `29500`) works for distributed training.
+
+***
+
+## Deploy checkpoints
+
+Deploy trained model checkpoints to Baseten's inference platform.
+
+### Deploy with CLI wizard
+
+Deploy checkpoints interactively with the CLI wizard:
+
+```bash theme={"system"}
+truss train deploy_checkpoints --job-id <job_id>
+```
+
+The wizard guides you through selecting checkpoints and configuring deployment. Baseten automatically recognizes checkpoints for full fine-tunes and LoRAs for LLMs and Whisper models.
+
+<Note>
+  FSDP checkpoints aren't supported by `deploy_checkpoints` and must be manually configured in the Truss config.
+</Note>
+
+<Note>
+  For optimized inference with TensorRT-LLM, see [Deploy checkpoints with Engine Builder](/engines/performance-concepts/deployment-from-training-and-s3).
+</Note>
+
+### Deploy with static configuration
+
+Create a Python config file for repeatable deployments:
+
+```bash theme={"system"}
+truss train deploy_checkpoints --config <path_to_config_file>
 ```
 
 ## DeployCheckpointsConfig
 
 Specifies configuration for deploying trained model checkpoints.
 
-```python  theme={"system"}
+```python theme={"system"}
 class DeployCheckpointsConfig:
-    checkpoint_details: Optional[CheckpointList] = None  # Checkpoints to deploy
-    model_name: Optional[str] = None                    # Name for the deployed model
-    deployment_name: Optional[str] = None               # Name for the deployment
-    runtime: Optional[DeployCheckpointsRuntime] = None  # Runtime configuration
-    compute: Optional[Compute] = None                   # Compute resources
+    checkpoint_details: Optional[CheckpointList] = None          # Checkpoints to deploy
+    model_name: Optional[str] = None                             # Name for the deployed model
+    runtime: Optional[DeployCheckpointsRuntime] = None           # Runtime configuration
+    compute: Optional[Compute] = None                            # Compute resources
 ```
 
-Example usage:
+**Example:**
 
-```python  theme={"system"}
-deploy_config = DeployCheckpointsConfig(
+```python theme={"system"}
+from truss_train import definitions
+from truss.base import truss_config
+
+deploy_config = definitions.DeployCheckpointsConfig(
     model_name="fine-tuned-llm",
-    deployment_name="production-llm",
-    checkpoint_details=CheckpointList(
+    checkpoint_details=definitions.CheckpointList(
+        base_model_id="meta-llama/Llama-3.1-8B-Instruct",
         checkpoints=[
-            Checkpoint(
+            definitions.LoRACheckpoint(
                 training_job_id="gvpql31",
-                id="checkpoint_1",
-                name="checkpoint_1"
+                checkpoint_name="checkpoint-100",
+                lora_details=definitions.LoRADetails(rank=16)
             )
         ]
     ),
-    compute=Compute(
-        accelerator=AcceleratorSpec(accelerator="H100", count=1)
+    compute=definitions.Compute(
+        accelerator=truss_config.AcceleratorSpec(
+            accelerator=truss_config.Accelerator.H100,
+            count=1
+        )
     )
 )
 ```
+
+### DeployCheckpointsRuntime
+
+Configures the runtime environment for deployed checkpoints.
+
+```python theme={"system"}
+class DeployCheckpointsRuntime:
+    environment_variables: Dict[str, Union[str, SecretReference]] = {}
+```
+
+### CheckpointList
+
+Manages a collection of checkpoints for deployment.
+
+```python theme={"system"}
+class CheckpointList:
+    download_folder: str = "/tmp/training_checkpoints"  # Download location
+    base_model_id: Optional[str] = None                 # Base model identifier
+    checkpoints: List[Checkpoint] = []                  # List of checkpoints
+```
+
+### Checkpoint types
+
+Baseten supports two checkpoint types based on model weight format.
+
+#### FullCheckpoint
+
+For full model fine-tunes.
+
+```python theme={"system"}
+class FullCheckpoint:
+    training_job_id: str                                # Training job ID (required)
+    checkpoint_name: str                                # Checkpoint name (required)
+    model_weight_format: ModelWeightsFormat = "full"    # Auto-set
+```
+
+#### LoRACheckpoint
+
+For LoRA adapter weights.
+
+```python theme={"system"}
+class LoRACheckpoint:
+    training_job_id: str                                # Training job ID (required)
+    checkpoint_name: str                                # Checkpoint name (required)
+    model_weight_format: ModelWeightsFormat = "lora"    # Auto-set
+    lora_details: LoRADetails = LoRADetails()           # LoRA configuration
+```
+
+### LoRADetails
+
+Configuration for LoRA adapters.
+
+```python theme={"system"}
+class LoRADetails:
+    rank: int = 16  # LoRA rank
+```
+
+**Valid ranks:** 8, 16, 32, 64, 128, 256, 320, 512.
+
+### ModelWeightsFormat
+
+Enum for checkpoint weight formats.
+
+| Value  | Description          |
+| ------ | -------------------- |
+| `lora` | LoRA adapter weights |
+| `full` | Full model weights   |
 
 
 # Truss SDK Reference
@@ -17830,9 +24306,9 @@ Source: https://docs.baseten.co/reference/sdk/truss
 
 Python SDK for deploying and managing models with Truss.
 
-# Authentication
+## Authentication
 
-## `truss.login(api_key: str) → None`
+### `truss.login(api_key: str) → None`
 
 Authenticates with Baseten using an API key.
 
@@ -17844,9 +24320,9 @@ Authenticates with Baseten using an API key.
 
 ***
 
-# Deploying a Model
+## Deploying a Model
 
-## `truss.push(target_directory: str, **kwargs) → ModelDeployment`
+### `truss.push(target_directory: str, **kwargs) → ModelDeployment`
 
 Deploys a **Truss** model to Baseten.
 
@@ -17859,7 +24335,7 @@ Deploys a **Truss** model to Baseten.
 | `model_name`                              | *Optional\[str]* | Override the model name in `config.yaml`.                                                                                |
 | `publish`                                 | *bool*           | Deploy as **published**. If no production deployment exists, promote it to production.                                   |
 | `promote`                                 | *bool*           | Deploy as **published** and promote to production, even if a production deployment exists.                               |
-| `preserve_previous_production_deployment` | *bool*           | Preserve the previous production deployment’s **autoscaling settings** (only with `promote`).                            |
+| `preserve_previous_production_deployment` | *bool*           | Preserve the previous production deployment's **autoscaling settings** (only with `promote`).                            |
 | `trusted`                                 | *bool*           | Grants **access to secrets** on the remote host.                                                                         |
 | `deployment_name`                         | *Optional\[str]* | Custom deployment name (must contain only alphanumeric, `.`, `-`, or `_` characters). (Requires `publish` or `promote`.) |
 
@@ -17867,16 +24343,16 @@ Deploys a **Truss** model to Baseten.
 
 ***
 
-# Model Deployment Object
+## Model Deployment Object
 
-## *class* `truss.api.definitions.ModelDeployment`
+### *class* `truss.api.definitions.ModelDeployment`
 
 Represents a deployed model (returned by `truss.push()`).
 
 **Attributes**
 
-`model_id` → `str` – Unique ID of the deployed model.
-`model_deployment_id` → `str` – Unique ID of the model deployment.
+`model_id` → `str`: Unique ID of the deployed model.
+`model_deployment_id` → `str`:Unique ID of the model deployment.
 
 **Methods**
 
@@ -17951,6 +24427,14 @@ List all training projects for the organization.
 
 
 
+# List training jobs
+Source: https://docs.baseten.co/reference/training-api/list-training-jobs
+
+get /v1/training_projects/{training_project_id}/jobs
+List all training jobs for the training project.
+
+
+
 # Overview
 Source: https://docs.baseten.co/reference/training-api/overview
 
@@ -17966,7 +24450,7 @@ The Training API allows you to manage training projects, jobs, and related resou
 
 All Training API requests require authentication using an API key:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 Authorization: Api-Key YOUR_API_KEY
 ```
 
@@ -18036,61 +24520,69 @@ Stops a training job.
 
 
 
-# Configure Truss
+# Truss configuration
 Source: https://docs.baseten.co/reference/truss-configuration
 
 Set your model resources, dependencies, and more
 
-Truss is configurable to its core. Every Truss must include a file config.yaml in its root directory, which is automatically generated when the Truss is created. However, configuration is optional. Every configurable value has a sensible default, and a completely empty config file is valid.
+The `config.yaml` file defines how your model runs on Baseten: its dependencies,
+compute resources, secrets, and runtime behavior. You specify what your model
+needs; Baseten handles the infrastructure.
 
-<Accordion title="YAML syntax help">
-  YAML syntax can be a bit non-obvious when dealing with empty lists and dictionaries. You may notice the following in the default Truss config file:
+Every Truss includes a `config.yaml` in its root directory. Configuration is
+optional, every value has a sensible default.
 
-  ```yaml  theme={"system"}
+Common configuration tasks include:
+
+* [Allocate GPU and memory](#resources): compute resources for your instance.
+* [Declare environment variables](#environment-variables): environment variables for your model.
+* [Configure concurrency](#runtime): parallel request handling.
+* [Use a custom Docker image](#base-image): deploy pre-built inference servers.
+
+<Accordion title="YAML syntax">
+  If you're new to YAML, here's a quick primer.
+  The default config uses `[]` for empty lists and `{}` for empty dictionaries.
+  When adding values, the syntax changes to indented lines:
+
+  ```yaml theme={"system"}
+  # Empty
   requirements: []
   secrets: {}
-  ```
 
-  When you fill them in with values, lists and dictionaries should look like this:
-
-  ```yaml  theme={"system"}
+  # With values
   requirements:
-    - dep1
-    - dep2
+    - torch
+    - transformers
   secrets:
-    key1: default_value1
-    key2: default_value2
+    hf_access_token: null
   ```
 </Accordion>
 
 ## Example
 
-Here's an example config file for a Truss that uses the [WizardLM](https://huggingface.co/WizardLM/WizardLM-7B-V1.0) model:
+The following example shows a config file for a GPU-accelerated text generation model:
 
-```yaml WizardLM config theme={"system"}
-description: An instruction-following LLM Using Evol-Instruct.
-environment_variables: {}
-model_name: WizardLM
+```yaml config.yaml theme={"system"}
+model_name: my-llm
+description: A text generation model.
 requirements:
-  - accelerate==0.20.3
-  - bitsandbytes==0.39.1
-  - peft==0.3.0
-  - protobuf==4.23.3
-  - sentencepiece==0.1.99
-  - torch==2.0.1
-  - transformers==4.30.2
+  - torch
+  - transformers
+  - accelerate
 resources:
   cpu: "4"
   memory: 16Gi
-  use_gpu: true
   accelerator: L4
-secrets: {}
-system_packages: []
+secrets:
+  hf_access_token: null
 ```
 
-## Full config reference
+For more examples, see the
+[truss-examples](https://github.com/basetenlabs/truss-examples) repository.
 
-<Snippet file="config-params.mdx" />
+## Reference
+
+<Snippet />
 
 
 # Baseten platform status
@@ -18100,32 +24592,32 @@ Current operational status of Baseten's services.
 
 This page automatically refreshes with real-time data from our status monitoring system.
 
-<div id="status-cards">
-  <div className="status-banner">
-    <div className="banner-icon">
-      <Icon icon="circle-check" iconType="solid" />
+<div>
+  <div>
+    <div>
+      <Icon icon="circle-check" />
     </div>
 
-    <div className="banner-text">All systems are operational.</div>
+    <div>All systems are operational.</div>
   </div>
 
-  <CardGroup cols={3}>
-    <Card title="Model Inference" icon="circle-check" iconType="solid" href="https://status.baseten.co/">
-      <div className="status-indicator">Normal</div>
+  <CardGroup>
+    <Card title="Model Inference" icon="circle-check" href="https://status.baseten.co/">
+      <div>Normal</div>
     </Card>
 
-    <Card title="Management API" icon="circle-check" iconType="solid" href="https://status.baseten.co/">
-      <div className="status-indicator">Normal</div>
+    <Card title="Management API" icon="circle-check" href="https://status.baseten.co/">
+      <div>Normal</div>
     </Card>
 
-    <Card title="Web Application" icon="circle-check" iconType="solid" href="https://status.baseten.co/">
-      <div className="status-indicator">Normal</div>
+    <Card title="Web Application" icon="circle-check" href="https://status.baseten.co/">
+      <div>Normal</div>
     </Card>
   </CardGroup>
 </div>
 
-<div style={{textAlign: "right", fontSize: "0.8rem", color: "#666", marginTop: "1rem", marginBottom: "2rem"}}>
-  <span id="last-refreshed">Last updated: Loading...</span>
+<div>
+  <span>Last updated: Loading...</span>
 </div>
 
 
@@ -18134,33 +24626,38 @@ Source: https://docs.baseten.co/training/concepts/basics
 
 Learn how to get up and running on Baseten Training
 
-This page covers the essential building blocks of Baseten Training. These are the core concepts you'll need to understand to effectively organize and execute your training workflows.
+This page covers the essential building blocks of Baseten Training. These are
+the core concepts you'll need to understand to effectively organize and execute
+your training workflows.
 
-## How Baseten Training Works
+## How Baseten Training works
 
 Baseten Training jobs can be launched from any terminal. Training jobs are created from within a directory, and when created, that directory is packaged up and can be pushed up to Baseten.
 
 This allows you to define your Baseten training config, scripts, code, and any other dependencies within the folder.
 
-Within the folder, we require you to include a Baseten training config file, e.g. `config.py`. The `config.py` includes a list of `run_commands`, which can be anything from running a Python file (`python train.py`) to a bash script (e.g. `chmod +x run.sh && ./run.sh`).
+Within the folder, we require you to include a Baseten training config file such as `config.py`. The `config.py` includes a list of `run_commands`, which can be anything from running a Python file (`python train.py`) to a bash script (`chmod +x run.sh && ./run.sh`).
 
 <Tip>
-  If you're looking to upload more than 1GB of files, we strongly suggest uploading your data to an object store and including a download command before running your training code. To avoid duplicate downloads, check out our documentation on the [cache](/training/concepts/cache).
+  If you're looking to upload more than 1GB of files, we strongly suggest
+  uploading your data to an object store and including a download command before
+  running your training code. To avoid duplicate downloads, check out our
+  documentation on the [cache](/training/concepts/cache).
 </Tip>
 
-## Setting Up Your Workspace
+## Setting up your workspace
 
-If you'd like to start from one of our existing recipies, you can check out one of the following examples:
+If you'd like to start from one of our existing recipes, you can check out one of the following examples:
 
 **Simple CPU job with raw PyTorch:**
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss train init --examples mnist-pytorch
 ```
 
 **More complex example that trains GPT-OSS-20b:**
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss train init --examples oss-gpt-20b-axolotl
 ```
 
@@ -18168,7 +24665,7 @@ Your `config.py` contains all infrastructure configuration for your job, which w
 
 Your `run.sh` is invoked by the command that runs when the job first begins. Here you can install any Python dependencies not already included in your Docker image, and begin the execution of your code either by calling a Python file with your training code or a launch command.
 
-## Organizing Your Work with `TrainingProject`s
+## Organizing your work with `TrainingProject`s
 
 A `TrainingProject` is a lightweight organization tool to help you group different `TrainingJob`s together.
 
@@ -18186,7 +24683,7 @@ Once you have a `TrainingProject`, the actual work of training a model happens w
 * **Why use it:** Each job is a self-contained, reproducible experiment. If you want to try training your model with a different learning rate, more GPUs, or a slightly modified script, you can create new `TrainingJob`s while knowing that previous ones have been persisted on Baseten.
 * **Lifecycle:** A job goes through various stages, from being created (`TRAINING_JOB_CREATED`), to resources being set up (`TRAINING_JOB_DEPLOYING`), to actively running your script (`TRAINING_JOB_RUNNING`), and finally to a terminal state like `TRAINING_JOB_COMPLETED`. More details on the job lifecycle can be found on the [Lifecycle](/training/lifecycle) page.
 
-## Compute Resources
+## Compute resources
 
 The `Compute` configuration defines the computational resources your training job will use. This includes:
 
@@ -18194,7 +24691,10 @@ The `Compute` configuration defines the computational resources your training jo
 * **CPU and memory** - Configure the amount of CPU and RAM allocated to your job
 * **Node count** - For single-node or multi-node training setups
 
-## Base Images
+Baseten Training supports H100, H200, and A10G GPUs. Choose your GPU type based
+on your model's memory requirements and performance needs.
+
+## Base images
 
 Baseten provides pre-configured base images that include common ML frameworks and dependencies. These images are optimized for training workloads and include:
 
@@ -18204,14 +24704,14 @@ Baseten provides pre-configured base images that include common ML frameworks an
 
 You can also use [custom or private images](/development/model/private-registries) if you have specific requirements.
 
-## Securely Integrate with External Services with `SecretReference`
+## Securely integrate with external services with `SecretReference`
 
 Successfully training a model often requires many tools and services. Baseten provides **`SecretReference`** for secure handling of secrets.
 
 * **How to use it:** Store your secret (e.g., an API key for Weights & Biases) in your Baseten workspace with a specific name. In your job's configuration (e.g., environment variables), you refer to this secret by its name using `SecretReference`. The actual secret value is never exposed in your code.
 * **How it works:** Baseten injects the secret value at runtime under the environment variable name that you specify.
 
-```python  theme={"system"}
+```python theme={"system"}
 from truss_train import definitions
 
 runtime = definitions.Runtime(
@@ -18222,7 +24722,7 @@ runtime = definitions.Runtime(
 )
 ```
 
-## Running Inference on Trained Models
+## Running inference on trained models
 
 The journey from training to a usable model in Baseten typically follows this path:
 
@@ -18230,7 +24730,7 @@ The journey from training to a usable model in Baseten typically follows this pa
 2. You run `truss train deploy_checkpoint` to deploy a model from your most recent training job. You can read more about this at [Serving Trained Models](/training/deployment).
 3. Once deployed, your model will be available for inference via API. See more at [Calling Your Model](/inference/calling-your-model).
 
-## Next Steps: Advanced Topics
+## Next steps: advanced topics
 
 Now that you understand the basics of Baseten Training, explore these advanced topics to optimize your training workflows:
 
@@ -18250,7 +24750,7 @@ The training cache enables you to persist data between training jobs. This can s
 
 Set the cache configuration in your `Runtime`:
 
-```python  theme={"system"}
+```python theme={"system"}
 from truss_train import definitions
 
 training_runtime = definitions.Runtime(
@@ -18281,6 +24781,10 @@ For a 400 GB HF Dataset, you can expect to save *nearly an hour* of compute time
 
 You can inspect the contents of the cache through CLI with `truss train cache summarize <project_name or project_id>`. This visibility into what's in the cache can help you verify your code is working as expected, and additionally manage files and artifacts you no longer need.
 
+<Warning>
+  When you delete a project, all data in the project's training cache (`$BT_PROJECT_CACHE_DIR`) is permanently deleted with no archival or recovery option. See [Management](/training/management) for details.
+</Warning>
+
 
 # Checkpointing
 Source: https://docs.baseten.co/training/concepts/checkpointing
@@ -18299,7 +24803,7 @@ With checkpointing enabled, you can manage your model checkpoints seamlessly and
 
 To enable checkpointing, add a `CheckpointingConfig` to the `Runtime` and set `enabled` to `True`:
 
-```python  theme={"system"}
+```python theme={"system"}
 from truss_train import definitions
 
 training_runtime = definitions.Runtime(
@@ -18320,6 +24824,10 @@ Baseten will automatically export the [`$BT_CHECKPOINT_DIR`](/reference/sdk/trai
 
 Once your training is complete, you can serve your model checkpoints using Baseten's serving infrastructure. Learn more about [serving checkpoints](/training/deployment).
 
+<Warning>
+  When you delete a job or project, all undeployed checkpoints are permanently deleted with no archival or recovery option. Deployed checkpoints aren't affected. See [Management](/training/management) for details.
+</Warning>
+
 
 # Multinode Training
 Source: https://docs.baseten.co/training/concepts/multinode
@@ -18334,7 +24842,7 @@ To deploy a multinode training job:
 
 * Configure the `Compute` resource in your `TrainingJob` by setting the `node_count` to the number of nodes you'd like to use (e.g. 2).
 
-```python  theme={"system"}
+```python theme={"system"}
 from truss_train import definitions
 
 compute = definitions.Compute(
@@ -18359,7 +24867,7 @@ Baseten provides high-speed infiniband networking between nodes to ensure effici
 
 Checkpointing behavior varies across training frameworks in multinode setups. One common pattern is to use the shared cache directory that all nodes can access:
 
-```bash  theme={"system"}
+```bash theme={"system"}
 # Use shared volume with job name for checkpointing
 ckpt_dir="${BT_PROJECT_CACHE_DIR}/${BT_TRAINING_JOB_NAME}"
 ```
@@ -18376,7 +24884,7 @@ When setting up multinode training:
 3. **Monitoring**: Monitor training metrics across all nodes to ensure balanced training
 
 
-# Serving Your Trained Model
+# Serving your trained model
 Source: https://docs.baseten.co/training/deployment
 
 How to deploy checkpoints from Baseten Training jobs as usable models.
@@ -18385,9 +24893,13 @@ Baseten Training seamlessly integrates with Baseten's model deployment capabilit
 
 **This feature works with HuggingFace compatible LLMs**, allowing you to easily deploy fine-tuned language models directly from your training checkpoints with a single command.
 
+<Note>
+  For optimized inference performance with TensorRT-LLM, BEI and Baseten Inference Stack, see [Deploy checkpoints with Engine Builder](/engines/performance-concepts/deployment-from-training-and-s3).
+</Note>
+
 To leverage deploying checkpoints, first ensure you have a `TrainingJob` that's running with a `checkpointing_config` enabled.
 
-```python  theme={"system"}
+```python theme={"system"}
 runtime = definitions.Runtime(
     start_commands=[
         "/bin/sh -c './run.sh'",
@@ -18398,7 +24910,7 @@ runtime = definitions.Runtime(
 )
 ```
 
-In your training code or configuration, ensure that your checkpoints are being written to the checkpointing directory, which can be referenced in via [`$BT_CHECKPOINT_DIR`](/reference/sdk/training#baseten-provided-environment-variables).
+In your training code or configuration, ensure that your checkpoints are being written to the checkpointing directory, which can be referenced via [`$BT_CHECKPOINT_DIR`](/reference/sdk/training#baseten-provided-environment-variables).
 The contents of this directory are uploaded to Baseten's storage and made immediately available for deployment.
 *(You can optionally specify a `checkpoint_path` in your `checkpointing_config` if you prefer to write to a specific directory).* The default location is "/tmp/training\_checkpoints".
 
@@ -18406,7 +24918,7 @@ To deploy your checkpoint(s) as a `Deployment`, you can:
 
 ### CLI Deployment
 
-```bash  theme={"system"}
+```bash theme={"system"}
 truss train deploy_checkpoints [OPTIONS]
 ```
 
@@ -18442,7 +24954,7 @@ To download the files you saved to the checkpointing directory or understand the
 
 The JSON file contains the following structure:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "timestamp": "2025-06-23T13:44:16.485905+00:00",
   "job": {
@@ -18486,11 +24998,11 @@ The JSON file contains the following structure:
 ## Complex and Custom Use Cases
 
 * Custom Model Architectures
-* Weights Sharded Across Nodes (Contact Baseten for help implementating this)
+* Weights Sharded Across Nodes (Contact Baseten for help implementing this)
 
 Examine the structure of your files with `truss train get_checkpoint_urls --job-id=<your-training-job-id>`. If a file looks like this:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "url": "https://bt-training-eqwnwwp-f815d6cd-19bf-4589-bfcb-da76cd8432c0.s3.amazonaws.com/training_projects/lqz9o34/jobs/03yv1l3/rank-4/checkpoint-10/weights.safetensors?AWSAccessKeyId=AKIARLZO4BEQO4Q2A5NH&Signature=0vdzJf0686wNE1d9bm4%2Bw9ik5lY%3D&Expires=1751291056",
   "relative_file_name": "checkpoint-10/weights.safetensors",
@@ -18498,9 +25010,9 @@ Examine the structure of your files with `truss train get_checkpoint_urls --job-
 }
 ```
 
-In your Truss configuration, add a section like this: Wilcards `*` match to to an arbitrary number of chars while `?` matches to one.
+In your Truss configuration, add a section like this: Wildcards `*` match to an arbitrary number of chars while `?` matches to one.
 
-```yaml  theme={"system"}
+```yaml theme={"system"}
 training_checkpoints:
   download_folder: /tmp/training_checkpoints
   artifact_references:
@@ -18516,166 +25028,174 @@ When your model pod starts up, you can read the file from the path `/tmp/trainin
 ```
 
 
-# Getting started
+# Get started
 Source: https://docs.baseten.co/training/getting-started
 
-Your first steps to creating and running training jobs on Baseten.
+Run your first training job and deploy it to production.
 
-This guide will walk you through the initial setup and the process of submitting
-your first `TrainingJob` using Baseten Training. In this demo, we'll create a finetuned revision
-of OpenAI's `gpt-oss-20b`!
+Learn to fine-tune a model on Baseten, monitor your training job, and deploy the result as an endpoint.
 
 ## Prerequisites
 
-Before you begin, ensure you have the following:
+Before you begin, ensure you have:
 
-1. **Baseten Account:** You'll need an active Baseten account. If you don't
-   have one, please sign up on the [Baseten web app](https://app.baseten.co/).
-2. **API Key:** Obtain an API key for your [Baseten account](https://app.baseten.co/settings/api_keys).
-   This key is
-   required to authenticate with the Baseten API and SDK.
-3. **Truss SDK and CLI:** The `truss` package provides a python-native way for defining and running your training jobs.
-   jobs. The CLI provides a convenient way to deploy and manage your training jobs. Install or update it:
-   ```bash  theme={"system"}
-   pip install -U truss 
-   ```
-4. **Dependencies**: In this demo, we'll use Huggingface to access and upload models. It's recommended that
-   you create a [Huggingface access token](https://huggingface.co/docs/hub/en/security-tokens) and add it
-   to your [Baseten Secrets](https://app.baseten.co/settings/secrets). Additionally, it can be
-   helpful to visualize your training run. In this example, we use [Weights & Biases (wandb)](https://wandb.ai/site/). This is optional.
+* **Baseten account**: Sign up at [app.baseten.co](https://app.baseten.co/).
+* **Truss**: Install Truss:
 
-## Step 1: Define your training configuration
+  <Tabs>
+    <Tab title="uv (recommended)">
+      [uv](https://docs.astral.sh/uv/) is a fast Python package manager.
 
-### Optional: Initialize configuration with [truss train init](https://docs.baseten.co/reference/cli/training/training-cli#training-cli-reference)
+      ```bash theme={"system"}
+      uv venv && source .venv/bin/activate
+      uv pip install truss
+      ```
+    </Tab>
 
-To download everything described in this step, run
+    <Tab title="pip (macOS/Linux)">
+      ```bash theme={"system"}
+      python -m venv .venv && source .venv/bin/activate
+      pip install --upgrade truss
+      ```
+    </Tab>
 
-```sh  theme={"system"}
+    <Tab title="pip (Windows)">
+      ```bash theme={"system"}
+      python -m venv .venv && .venv\Scripts\activate
+      pip install --upgrade truss
+      ```
+    </Tab>
+  </Tabs>
+
+<Tip>
+  You can add keys like `hf_access_token` or `wandb_api_key` in
+  [Baseten Secrets](/organization/secrets) to access gated models on Hugging Face
+  or track experiment metrics in Weights & Biases.
+</Tip>
+
+## Create your training project
+
+To create a new training project, use the `truss train init` command.
+
+```bash theme={"system"}
 truss train init --examples oss-gpt-20b-axolotl
 cd oss-gpt-20b-axolotl
 ```
 
-Now you can skip over to [Step 2](https://docs.baseten.co/training/getting-started#step-2%3A-submit-your-training-job) to launch your training job.
+Baseten provides starter templates for common frameworks like Axolotl, Unsloth, and TRL.
+Browse the [ML Cookbook](https://github.com/basetenlabs/ml-cookbook) for more examples.
 
-### Training configuration details
+Skip to [Submit your training job](#submit-your-training-job) if you're using the template.
 
-The primary way to define your training jobs is through a Python configuration
-file, typically named `config.py`. This file uses the `truss` package to specify all
-aspects of your `TrainingProject` and `TrainingJob`.
+### Write your configuration file
 
-A simple example of a `config.py` file is shown below:
+Define your training job in a Python configuration file, typically named `config.py`.
+This file specifies your [`TrainingProject`](/reference/sdk/training#trainingproject) and [`TrainingJob`](/reference/sdk/training#trainingjob). The configuration uses classes like [`Image`](/reference/sdk/training#image), [`Compute`](/reference/sdk/training#compute), [`Runtime`](/reference/sdk/training#runtime), and [`SecretReference`](/reference/sdk/training#secretreference):
 
 ```python config.py theme={"system"}
-# Import necessary classes from the Baseten Training SDK
-from truss_train import definitions
-from truss.base import truss_config
+from truss_train import (
+    TrainingProject,
+    TrainingJob,
+    Image,
+    Compute,
+    Runtime,
+    SecretReference,
+    CacheConfig,
+    CheckpointingConfig,
+)
+from truss.base.truss_config import AcceleratorSpec
 
-# 1. Define a base image for your training job. You can also use
-# private images via AWS IAM or GCP Service Account authentication.
+# Base image with your training dependencies (use any Docker image)
 BASE_IMAGE = "pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime"
 
-# 2. Define the Runtime Environment for the Training Job
-# This includes start commands and environment variables.
-# Secrets from the baseten workspace like API keys are referenced using 
-# `SecretReference`.
-training_runtime = definitions.Runtime(
-    start_commands = [
+# Runtime configuration
+training_runtime = Runtime(
+    start_commands=[
         "chmod +x ./run.sh && ./run.sh",
     ],
     environment_variables={
-        "HF_TOKEN": definitions.SecretReference(name="hf_access_token"), # The name of the HF Access Token secret in your B10 account
-        # Uncomment to export your wandb api key.
-        # "WANDB_API_KEY" : definitions.SecretReference(name="wandb_api_key"),
+        # "HF_TOKEN": SecretReference(name="hf_access_token"),
+        # "WANDB_API_KEY": SecretReference(name="wandb_api_key"),
     },
-    cache_config=definitions.CacheConfig(
-        enabled=True,
-    ),
-    checkpointing_config=definitions.CheckpointingConfig(
-        enabled=True,
-    ),
+    cache_config=CacheConfig(enabled=True),
+    checkpointing_config=CheckpointingConfig(enabled=True),
 )
 
-# 3. Define the Compute Resources for the Training Job
-training_compute = definitions.Compute(
-    accelerator=truss_config.AcceleratorSpec(
-        accelerator=truss_config.Accelerator.H100,  
-        count=4,  
-    ),
+# Compute resources
+training_compute = Compute(
+    accelerator=AcceleratorSpec(accelerator="H100", count=2),
 )
 
-# 4. Define the Training Job
-# This brings together the image, compute, and runtime configurations.
-training_job = definitions.TrainingJob(
-    image=definitions.Image(base_image=BASE_IMAGE),
+# Training job definition
+training_job = TrainingJob(
+    image=Image(base_image=BASE_IMAGE),
     compute=training_compute,
-    runtime=training_runtime
+    runtime=training_runtime,
 )
 
-
-# This config will be pushed using the Truss CLI.
-# The association of the job to the project happens at the time of push.
-training_project = definitions.TrainingProject(
+# Project groups related training jobs together
+training_project = TrainingProject(
     name="LoRA Training Job - gpt-oss-20b",
     job=training_job
 )
 ```
 
-### Key considerations for your Baseten training configuration file
+This example uses the `pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime` base image. You can use other base images to support your framework:
 
-* **Local Artifacts:** If your training requires local scripts (like
-  a `train.py` or a `run.sh`), helper files, or
-  configuration files (e.g., accelerate config), place them in the same
-  directory as your `config.py` or in subdirectories. When you push the training
-  job, `truss` will package these artifacts and upload them. They will be copied
-  into the container at the root of the base image's working directory.
-* **Ignore Folders and Files**: You can exclude specific files from being pushed by creating a `.truss_ignore` file in root directory of your project.
-  In this file, you can add entries in a style similar to `.gitignore`. Refer to the [CLI reference](/reference/cli/training/training-cli#ignoring-files-and-folders) for more details.
-* **Secrets:** Ensure any secrets referenced via `SecretReference` (e.g.,
-  `hf_access_token`, `wandb_api_key`) are defined in your Baseten
-  [workspace settings](https://app.baseten.co/settings/secrets).
-* **Private Images:** You can deploy your jobs with private images by specifying a `DockerAuth` in your `Image` configuration.
-  See [our DockerAuth SDK](/reference/sdk/training#dockerauth) for more details.
+| Framework | Base image                                                                              |
+| --------- | --------------------------------------------------------------------------------------- |
+| PyTorch   | `pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime`                                         |
+| Axolotl   | `axolotlai/axolotl:main-20250811-py3.11-cu126-2.7.1`                                    |
+| Unsloth   | `unsloth/unsloth:2025.10.9-pt2.8.0-cu12.8-updates-fixes`                                |
+| VeRL      | `verlai/verl:verl0.3.0.post1`                                                           |
+| Megatron  | `baseten/megatron:py3.11.11-cuda12.8.1-torch2.8.0-fa2.8.1-megatron0.14.1-msswift3.10.3` |
 
-For a complete guide on the `TrainingJob` type, check out our [SDK-reference](/reference/sdk/training).
+For information on using private images, see the [Training SDK reference](/reference/sdk/training#dockerauth).
 
-### What can I run in the `start_commands`?
+To configure your project, you should set:
 
-In short, anything! Baseten Training is a framework-agnostic training platform. Any training framework and training methodology
-is supported. Typically, a `run.sh` script is used. An example might look like this:
+* **Local artifacts**: Place scripts (`train.py`, `run.sh`), config files, and data in the same directory as `config.py`. Truss packages everything and uploads it to the container's working directory.
+* **Ignore files**: Create a `.truss_ignore` file to exclude files from upload, using `.gitignore` syntax. For more information, see the [Training reference](/reference/cli/training/training-cli#ignoring-files-and-folders).
+* **Secrets**: Store secrets in your [Baseten workspace](/organization/secrets) and reference them with [`SecretReference`](/reference/sdk/training#secretreference).
+
+### Create your training scripts
+
+Baseten Training is framework-agnostic.
+Typically, you use a `run.sh` script to install dependencies and launch training.
+For example:
 
 ```bash run.sh theme={"system"}
 #!/bin/bash
-
-# Exit immediately if a command exits with a non-zero status
 set -eux
 
 # Install dependencies
-pip install "trl>=0.20.0" "peft>=0.17.0" "transformers>=4.55.0" 
-# Uncomment to enable wandb
-# pip install wandb
+pip install "trl>=0.20.0" "peft>=0.17.0" "transformers>=4.55.0"
 
-# Let's run! 
+# Run training
 python3 train.py
 ```
 
-To complete the example, we provide the `train.py` below.
+Here's a corresponding `train.py`:
 
-```python  theme={"system"}
+```python train.py theme={"system"}
+import os
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, Mxfp4Config
 import torch
-
+from peft import LoraConfig, get_peft_model
 from trl import SFTConfig, SFTTrainer
 
-## TODO: update your dataset here
-dataset = load_dataset("HuggingFaceH4/Multilingual-Thinking", split="train")
+MODEL_ID = "openai/gpt-oss-20b"
+DATASET_ID = "HuggingFaceH4/Multilingual-Thinking"
 
+# Load dataset and tokenizer
+dataset = load_dataset(DATASET_ID, split="train")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
 
-tokenizer = AutoTokenizer.from_pretrained("openai/gpt-oss-20b")
-
-
+# Load model with quantization
 quantization_config = Mxfp4Config(dequantize=True)
-model_kwargs = dict(
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
     attn_implementation="eager",
     torch_dtype=torch.bfloat16,
     quantization_config=quantization_config,
@@ -18683,10 +25203,7 @@ model_kwargs = dict(
     device_map="auto",
 )
 
-model = AutoModelForCausalLM.from_pretrained("openai/gpt-oss-20b", **model_kwargs)
-
-from peft import LoraConfig, get_peft_model
-
+# Configure LoRA
 peft_config = LoraConfig(
     r=8,
     lora_alpha=16,
@@ -18703,10 +25220,11 @@ peft_config = LoraConfig(
 peft_model = get_peft_model(model, peft_config)
 peft_model.print_trainable_parameters()
 
+# Training configuration
 training_args = SFTConfig(
     learning_rate=2e-4,
     gradient_checkpointing=True,
-    num_train_epochs=0.3,
+    num_train_epochs=1,
     logging_steps=1,
     per_device_train_batch_size=4,
     gradient_accumulation_steps=4,
@@ -18714,10 +25232,10 @@ training_args = SFTConfig(
     warmup_ratio=0.03,
     lr_scheduler_type="cosine_with_min_lr",
     lr_scheduler_kwargs={"min_lr_rate": 0.1},
-    output_dir="gpt-oss-20b-multilingual-reasoner",
-    push_to_hub=False,
+    output_dir=os.getenv("BT_CHECKPOINT_DIR", "./checkpoints"),
 )
 
+# Train
 trainer = SFTTrainer(
     model=peft_model,
     args=training_args,
@@ -18726,52 +25244,186 @@ trainer = SFTTrainer(
 )
 trainer.train()
 
+# Save to checkpoint directory for deployment
 trainer.save_model(training_args.output_dir)
-# Push the trained model in output_dir to a Hugging Face model repo
-trainer.push_to_hub("baseten-admin/gpt-oss-20b-multilingual-reasoner")
 ```
 
-### Training Different Models
+<Important>
+  Save your trained model to `$BT_CHECKPOINT_DIR` so Baseten can automatically back up and preserve your checkpoints for deployment.
+  Baseten automatically sets this environment variable when you enable checkpointing in your configuration.
+</Important>
 
-This recipe and more can be found at [Baseten's ML Cookbook](https://github.com/basetenlabs/ml-cookbook). Clone the repo
-to get the starter code for this demo, along with other training and finetuning examples!
+## Submit your training job
 
-### Additional features
+With your `config.py` and training scripts ready, submit the job:
 
-We've kept the above config simple to help you get off the ground - but there's a lot more you can do Baseten Training:
-
-* [Checkpointing](/training/concepts/checkpointing) - automatically save and deploy your model checkpoints.
-* [Training Cache](/training/concepts/cache) - speed up training by caching data and models between jobs.
-* [Multinode Training](/training/concepts/multinode) - train on multiple GPU nodes to make the most out of your compute.
-
-## Step 2: Submit Your Training Job
-
-Once your `config.py` and any local artifacts are ready, you submit the training
-job using the `truss` [CLI](/reference/cli/training/training-cli):
-
-```bash  theme={"system"}
+```bash theme={"system"}
 truss train push config.py
 ```
 
-This command does the following:
+This command parses your `config.py` file, packages local files in the directory
+alongside `config.py`, creates or updates the `TrainingProject`, and submits the
+`TrainingJob`.
 
-1. Parses your `config.py`.
-2. Packages any local files in the directory (and subdirectories) alongside
-   `config.py`.
-3. Creates or updates the `TrainingProject` specified in your config.
-4. Submits the defined `TrainingJob` under that project.
+On successful submission, you'll see:
 
-Upon successful submission, the CLI will print out a training job id with some helpful commands. You can also navigate to
-the Baseten Web UI to view your logs and metrics: `https://app.baseten.co/training/`
+```output theme={"system"}
+✨ Training job successfully created!
+🪵 View logs for your job via 'truss train logs --job-id <job_id> --tail'
+🔍 View metrics for your job via 'truss train metrics --job-id <job_id>'
+🌐 View job in the UI: https://app.baseten.co/training/<project_id>/logs/<job_id>
+```
 
-## Next steps
+Copy the `job_id` from this output to use in the monitoring commands below.
 
-* [Basics](/training/concepts/basics): Learn about the fundamental building blocks of Baseten Training
-* [Cache](/training/concepts/cache): Speed up your training iterations with persistent caching
-* [Checkpointing](/training/concepts/checkpointing): Manage model checkpoints seamlessly
-* [Multinode Training](/training/concepts/multinode): Scale your training across multiple nodes
-* [Management](/training/management): Learn how to check status,
-  view logs and metrics, and stop jobs.
+## Monitor your training job
+
+Use the job ID from the submission output to monitor your training job:
+
+```bash theme={"system"}
+truss train logs --job-id <job_id> --tail
+```
+
+You can also view logs, metrics, and job status in the [Baseten dashboard](https://app.baseten.co/training/).
+
+See [Monitor and manage jobs](/training/management) for detailed monitoring commands including metrics, job status, and stopping jobs.
+
+## Deploy your trained model
+
+Once you see the model saved successfully in your logs, you're ready to deploy.
+For example, you might see:
+
+```output theme={"system"}
+[2026-01-01 12:00:00] [INFO] Model successfully saved to /workspace/checkpoints
+Job has exited. Syncing checkpoints...
+```
+
+<Tabs>
+  <Tab title="CLI">
+    Deploy your fine-tuned model directly to Baseten's inference platform:
+
+    ```bash theme={"system"}
+    truss train deploy_checkpoints
+    ```
+
+    The interactive wizard guides you through deployment:
+
+    ```output theme={"system"}
+    Fetching checkpoints for training job <job_id>...
+    ? Use spacebar to select/deselect checkpoints to deploy.
+      ○ .
+    ❯ ○ checkpoint-15
+
+    ? Enter the model name for your deployment: my-fine-tuned-model
+    ? Select the GPU type to use for deployment: A100
+    ? Select the number of A100 GPUs to use for deployment: 2
+    ? Enter the huggingface secret name: hf_access_token
+
+    Successfully created model version: deployment-1
+    Model version ID: <model_version_id>
+    ```
+  </Tab>
+
+  <Tab title="Dashboard">
+    Deploy from the [Baseten dashboard](https://app.baseten.co/training/):
+
+    1. Select your training job.
+    2. Open the **Checkpoints** tab and choose a checkpoint.
+    3. Click **Deploy** and configure your model name, instance type, and scaling settings.
+  </Tab>
+</Tabs>
+
+### Test your deployment
+
+After deployment, call your model using the OpenAI-compatible chat format:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash theme={"system"}
+    truss predict --model <model-id> --data '{"model": "<checkpoint-name>", "messages": [{"role": "user", "content": "Hello!"}]}'
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    ```python theme={"system"}
+    import baseten
+
+    model = baseten.deployed_model_id("<model-id>")
+    response = model.predict({
+        "model": "<checkpoint-name>",
+        "messages": [{"role": "user", "content": "Hello!"}]
+    })
+    print(response)
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    ```bash theme={"system"}
+    curl -X POST https://model-<id>.api.baseten.co/v1/predict \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"model": "<checkpoint-name>", "messages": [{"role": "user", "content": "Hello!"}]}'
+    ```
+  </Tab>
+</Tabs>
+
+### Training framework examples
+
+| Framework    | Example                                                                                                      | Description            |
+| ------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------- |
+| **TRL**      | [oss-gpt-20b-lora-trl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/oss-gpt-20b-lora-trl)   | LoRA fine-tuning       |
+| **TRL**      | [qwen3-8b-lora-dpo-trl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/qwen3-8b-lora-dpo-trl) | DPO training           |
+| **Axolotl**  | [oss-gpt-20b-axolotl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/oss-gpt-20b-axolotl)     | Axolotl fine-tuning    |
+| **Axolotl**  | [gemma-27b-axolotl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/gemma-27b-axolotl)         | Multi-node fine-tuning |
+| **Unsloth**  | [llama-8b-lora-unsloth](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/llama-8b-lora-unsloth) | Fast LoRA fine-tuning  |
+| **VeRL**     | [qwen3-8b-fft-verl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/qwen3-8b-fft-verl)         | RL with custom rewards |
+| **MS-Swift** | [glm-4-7-msswift](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/glm-4-7-msswift)             | GLM-4 fine-tuning      |
+| **MS-Swift** | [qwen3-235b-mswift](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/qwen3-235b-mswift)         | Large model training   |
+
+See the [ML Cookbook](https://github.com/basetenlabs/ml-cookbook) for all examples and [advanced recipes](https://github.com/basetenlabs/ml-cookbook/tree/main/recipes).
+
+
+# Lifecycle
+Source: https://docs.baseten.co/training/lifecycle
+
+Understanding the different states and transitions in a Baseten training job's lifecycle.
+
+A training job in Baseten progresses through several states from creation to completion. Understanding these states helps you monitor and manage your training jobs effectively.
+
+## Job states
+
+| State                        | Description                                                                                                                 | Active | Terminal |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------ | -------- |
+| `TRAINING_JOB_CREATED`       | Initial state when a job is first created. Baseten has received the training configuration and persisted it to our records. | ✅      |          |
+| `TRAINING_JOB_DEPLOYING`     | Baseten is deploying the job, including provisioning compute resources and installing dependencies.                         | ✅      |          |
+| `TRAINING_JOB_RUNNING`       | The training code is actively executing.                                                                                    | ✅      |          |
+| `TRAINING_JOB_COMPLETED`     | The job has successfully finished execution. Any checkpoints or artifacts have been saved and uploaded.                     |        | ✅        |
+| `TRAINING_JOB_DEPLOY_FAILED` | The job failed to deploy. This is likely due to a bad image or a resource allocation issue.                                 |        | ✅        |
+| `TRAINING_JOB_FAILED`        | The job encountered an error and could not complete successfully. Check the logs for error details.                         |        | ✅        |
+| `TRAINING_JOB_STOPPED`       | The job was manually stopped by a user.                                                                                     |        | ✅        |
+
+## State transitions
+
+Jobs typically progress through states in the following order:
+
+1. `TRAINING_JOB_CREATED` → `TRAINING_JOB_DEPLOYING`: Automatic transition once resources are allocated
+2. `TRAINING_JOB_DEPLOYING` → `TRAINING_JOB_RUNNING`: Automatic transition once environment setup is complete
+3. `TRAINING_JOB_RUNNING` → `TRAINING_JOB_COMPLETED`: Automatic transition upon successful completion
+
+A job may enter `TRAINING_JOB_FAILED` from any state if an error occurs. Similarly, `TRAINING_JOB_STOPPED` can be entered from any active state (`DEPLOYING` or `RUNNING`) when manually stopped.
+
+You can monitor these state transitions using the CLI command:
+
+```bash theme={"system"}
+truss train view # shows all active jobs
+truss train view --job-id <your_job_id> # shows a specific job
+```
+
+Or track a specific job's progress with:
+
+```bash theme={"system"}
+truss train logs --job-id <your_job_id> --tail
+```
 
 
 # Loading Checkpoints
@@ -18800,7 +25452,7 @@ Create references to checkpoints using the `BasetenCheckpoint` factory:
 
 ### From Latest
 
-```python  theme={"system"}
+```python theme={"system"}
 # Load the latest checkpoint from a project 
 BasetenCheckpoint.from_latest_checkpoint(project_name="my-training-project")  
 
@@ -18816,7 +25468,7 @@ BasetenCheckpoint.from_latest_checkpoint(job_id="gvpql31")
 
 ### From Named
 
-```python  theme={"system"}
+```python theme={"system"}
 # Pin your starting point to a specific checkpoint
 BasetenCheckpoint.from_named_checkpoint(checkpoint_name="checkpoint-20", job_id="gvpql31")
 ```
@@ -18833,7 +25485,7 @@ Here are practical examples of how to configure checkpoint loading in your train
 
 ### From Latest
 
-```python  theme={"system"}
+```python theme={"system"}
 # Latest checkpoint from project
 load_config = LoadCheckpointConfig(
     enabled=True,
@@ -18853,7 +25505,7 @@ load_config = LoadCheckpointConfig(
 
 ### From Named
 
-```python  theme={"system"}
+```python theme={"system"}
 # Specific named checkpoint
 load_config = LoadCheckpointConfig(
     enabled=True,
@@ -18886,7 +25538,7 @@ load_config = LoadCheckpointConfig(
 
 ## Complete TrainingJob Setup
 
-```python  theme={"system"}
+```python theme={"system"}
 from truss_train import LoadCheckpointConfig, BasetenCheckpoint, CheckpointingConfig, TrainingJob, Image, Runtime, TrainingProject
 from truss_train.definitions import CacheConfig
 
@@ -18923,7 +25575,7 @@ project = TrainingProject(name="my-training-project", job=job)
 
 Access loaded checkpoints using the `BT_LOAD_CHECKPOINT_DIR` environment variable:
 
-```python  theme={"system"}
+```python theme={"system"}
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, TrainingArguments, Trainer
 from transformers.trainer_utils import get_last_checkpoint
 import os
@@ -18969,33 +25621,48 @@ Once you have submitted training jobs, Baseten provides tools to manage your `Tr
 ## `TrainingProject` management
 
 * **Listing Projects:** To view all your training projects:
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   truss train view
   ```
   This command will list all `TrainingProject`s you have access to, typically showing their names and IDs. Additionally, this command will show all active jobs.
 
 * **Viewing Jobs within a Project:** To see all jobs associated with a specific project, use its `project` (obtained when creating the project or from `truss train view`):
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   truss train view --project <project_id or project_name>
   ```
+
+* **Deleting a `TrainingProject`:** To delete a training project from the Baseten dashboard:
+
+  1. Select the training project you want to delete.
+  2. Type the project name (for example, `demo/qwen3-0.6b`) to confirm.
+  3. Select **Delete**.
+
+  <Warning>
+    When you delete a project, the following data is permanently deleted with no archival or recovery option:
+
+    * All undeployed [checkpoints](/training/concepts/checkpointing) from every job in the project
+    * All data in the project's [training cache](/training/concepts/cache) (`$BT_PROJECT_CACHE_DIR`)
+
+    Checkpoints that have been [deployed](/training/deployment) aren't affected.
+  </Warning>
 
 ## `TrainingJob` management
 
 After submitting a job with `truss train push config.py`, you receive a `project_id` and `job_id`.
 
 * **Listing Jobs:** As shown above, you can list all jobs within a project using:
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   truss train view --project <project_id or project_name>
   ```
   This will typically show job IDs, statuses, creation times, etc.
 
 * **Checking Status and Retrieving Logs:** To view the logs for a specific job, you can tail them in real-time or fetch existing logs.
   * To view logs for the most recently submitted job in the current context (e.g., if you just pushed a job from your current terminal directory):
-    ```bash  theme={"system"}
+    ```bash theme={"system"}
     truss train logs --tail
     ```
   * To view logs for a specific job using its `job-id`:
-    ```bash  theme={"system"}
+    ```bash theme={"system"}
     truss train logs --job-id <your_job_id> [--tail]
     ```
     Add `--tail` to follow the logs live.
@@ -19004,11 +25671,22 @@ After submitting a job with `truss train push config.py`, you receive a `project
   The `truss train view` and `truss train logs` commands will help you track which status a job is in. For more on the job lifecycle, see the [Lifecycle](/training/lifecycle) page.
 
 * **Stopping a `TrainingJob`:** If you need to stop a running job, use the `stop` command with the job's project ID and job ID:
-  ```bash  theme={"system"}
+  ```bash theme={"system"}
   truss train stop --job-id <your_job_id>
   truss train stop --all # Stops all active jobs; Will prompt the user for confirmation.
   ```
   This will transition the job to the `TRAINING_JOB_STOPPED` state.
+
+* **Deleting a `TrainingJob`:** To delete a training job from the Baseten dashboard:
+
+  1. Select the project containing the job.
+  2. Select the job you want to delete.
+  3. Type the job name (for example, `job-2`) to confirm.
+  4. Select **Delete**.
+
+  <Warning>
+    When you delete a job, all undeployed checkpoints are deleted permanently. There's no archival or recovery option. Checkpoints that have been [deployed](/training/deployment) aren't affected.
+  </Warning>
 
 * **Understanding Job Outputs & Checkpoints:**
   * The primary outputs of a successful `TrainingJob` are model **checkpoints** (if checkpointing is enabled and configured).
@@ -19017,57 +25695,96 @@ After submitting a job with `truss train push config.py`, you receive a `project
   * You can see the available checkpoints for a job via the [Training API](/reference/training-api/get-training-job-checkpoints).
 
 
-# Overview
+# Training on Baseten
 Source: https://docs.baseten.co/training/overview
 
-An introduction on how to train and finetune models on Baseten.
+Own your intelligence and train custom models with our developer-first training infrastructure.
 
-Welcome to Baseten **Training**, a powerful product designed to streamline and manage the entire lifecycle of model training.
+Baseten provides a flexible training platform that enables you to bring your own training scripts, utilize the latest training techniques, and fine tune the newest models.
 
-## Who it's for
+Train models and serve them in production, all on one platform. Baseten automatically stores your checkpoints during training and makes them ready for deployment. No downloading weights, no re-uploading, no separate infrastructure. Your fine-tuned model goes from checkpoint to production endpoint in a single command.
 
-Baseten Training is for MLEs, Engineers, and Developers who are looking for a fast, flexible, and scalable platform for training
-and finetuning models – and getting these models into production.
+```bash theme={"system"}
+# Train your model
+truss train push config.py
 
-## Use cases
+# Deploy from the checkpoint
+truss train deploy_checkpoints --job-id <job_id>
+```
 
-Training on Baseten allows you to easily:
+## Train and serve on one platform
 
-* **Optimize on cost and latency:** Train a smaller, faster, and cheaper model from a larger, more general, expensive one.
-* **Develop specialized and agentic models:** Finetune a model with RL to do specific tasks, like [code completion](https://github.com/basetenlabs/ml-cookbook/tree/main/recipes/rl/ocaml_sepcialist) and tool calling.
-* **Craft customized voice models:** Finetune a voice model like Orpheus to speak with specific [intonations and accents](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/orpheus-transformers/training).
-* **Get to prod:** Productionize trained models to scalable deployments with a click of a button.
+The train-to-serve workflow is seamless:
 
-## Why Baseten Training
+1. **Set up your training project:** Bring any framework or start with a template.
+2. **Configure your training job:** Define compute, runtime, and checkpointing settings.
+3. **Run on managed infrastructure:** Use H100, H200, or A10G GPUs—single-node or multi-node.
+4. **Checkpoints sync automatically:** Baseten stores checkpoints as training progresses.
+5. **Deploy your fine-tuned model:** Go from checkpoint to production endpoint in one command.
 
-### Streamline your path from training to prod
+No infrastructure management. No manual file transfers. Bring any framework—Axolotl, TRL, VeRL, Megatron, or your own training code—and your trained model serves traffic within minutes of training completion.
 
-We want to make sure you're getting to impact as fast as possible. Our training platform prioritizes the end-to-end model development cycle with these key features:
+## Supported frameworks
 
-* **Instantly up and running:** Check out our [getting started guide](/training/getting-started) for a step-by-step how-to and our [ml-cookbook](https://github.com/basetenlabs/ml-cookbook) for recipes and examples spanning Supervised Finetuning, Reinforcement Learning, and a variety of frameworks.
-* **Flexibility:** Stay up to date with the most impactful training recipes and techniques across text, vision, and audio with our framework-agnostic training API.
-* **Seamless Deploys:** Transition from training to inference and evals seamlessly within the Baseten ecosystem.
+Baseten Training is framework-agnostic. Use whatever framework fits your workflow.
 
-### Seamlessly scale your experimentation
+| Framework | Best for                                         | Example                                                                                                                |
+| --------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| Axolotl   | Configuration-driven fine-tuning with LoRA/QLoRA | [oss-gpt-20b-axolotl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/oss-gpt-20b-axolotl)               |
+| TRL       | SFT, DPO, and GRPO with Hugging Face             | [oss-gpt-20b-lora-trl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/oss-gpt-20b-lora-trl)             |
+| Unsloth   | Fast single-GPU LoRA training                    | [llama-8b-lora-unsloth](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/llama-8b-lora-unsloth)           |
+| VeRL      | Reinforcement learning with custom rewards       | [qwen3-8b-lora-verl](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/qwen3-8b-lora-verl)                 |
+| MS-Swift  | Long-context and multilingual training           | [qwen3-30b-mswift-multinode](https://github.com/basetenlabs/ml-cookbook/tree/main/examples/qwen3-30b-mswift-multinode) |
 
-We know training and finetuning are experimental in nature. Our platform provides the infrastructure you need to scale out and scale up:
+Browse the [ML Cookbook](https://github.com/basetenlabs/ml-cookbook) for more examples including multi-node training with FSDP and DeepSpeed.
 
-* **Reproducibility:** Ensure consistent training runs by precisely defining your environment, code, and configurations.
-* **Scalability:** Easily scale your training jobs from single-gpu, to multi-gpu, and even to multi-node distributed training. Handle large datasets, large sequence lengths, and complex models  - all without any commits.
-* **Simplified Management:** Organize, monitor, and manage your training projects and jobs in a centralized platform.
-* **Artifact Management:** Expedite handling of large artifacts like models, checkpoints, and datasets efficiently with Baseten storage.
+## Key features
 
-## Get Started
+### Checkpoint management
 
-Check out our [Getting Started](/training/getting-started) guide to get started with training on Baseten.
+Checkpoints sync automatically to Baseten storage during training. You can:
 
-## Go deeper
+* **Deploy** any checkpoint as a production endpoint with [`truss train deploy_checkpoints`](/training/deployment).
+* **Download** checkpoints for local evaluation and analysis.
+* **Resume** from any checkpoint if a job fails or you want to train further.
 
-Use the following resources to learn more about training on Baseten:
+Learn more about [checkpointing](/training/concepts/checkpointing).
 
-* [CLI Reference](/reference/cli/training/training-cli)
-* [SDK Reference](/reference/sdk/training)
-* [API Reference](/reference/training-api/overview)
+### Persistent caching
+
+Speed up training iterations by caching models, datasets, and preprocessed data between jobs. The cache persists across training runs, so you don't re-download 70B models every time.
+
+Learn more about the [training cache](/training/concepts/cache).
+
+### Multi-node training
+
+Scale training across multiple GPU nodes with InfiniBand networking. Baseten handles node orchestration, communication setup, and environment variables—you just set `node_count` in your configuration.
+
+Learn more about [multi-node training](/training/concepts/multinode).
+
+### Interactive development with rSSH
+
+Debug training jobs interactively with SSH-like access to your training environment. Rapidly experiment, inspect state, and iterate without losing reproducibility.
+
+[Contact us](https://www.baseten.co/talk-to-us/) to learn more about rSSH.
+
+## Next steps
+
+<CardGroup>
+  <Card title="Get started" icon="rocket" href="/training/getting-started">
+    Run your first training job and deploy the result.
+  </Card>
+
+  <Card title="ML Cookbook" icon="book" href="https://github.com/basetenlabs/ml-cookbook">
+    Production-ready examples for various frameworks and models.
+  </Card>
+</CardGroup>
+
+## Reference
+
+* [CLI reference](/reference/cli/training/training-cli)
+* [SDK reference](/reference/sdk/training)
+* [API reference](/reference/training-api/overview)
 
 
 # Deployments
@@ -19077,7 +25794,7 @@ Troubleshoot common problems during model deployment
 
 ## Issue: `truss push` can't find `config.yaml`
 
-```sh  theme={"system"}
+```sh theme={"system"}
 [Errno 2] No such file or directory: '/Users/philipkiely/Code/demo_docs/config.yaml'
 ```
 
@@ -19085,8 +25802,8 @@ Troubleshoot common problems during model deployment
 
 The directory `truss push` is looking at is not a Truss. Make sure you're giving `truss push` access to the correct directory by:
 
-* Running `truss push` from the directory containing the Truss. You should see the file `config.yaml` when you run `ls` in your working directory.
-* Or passing the target directory as an argument, such as `truss push /path/to/my-truss`.
+* Running `truss push --watch` or `truss push --publish` from the directory containing the Truss. You should see the file `config.yaml` when you run `ls` in your working directory.
+* Or passing the target directory as an argument, such as `truss push /path/to/my-truss --watch`.
 
 ## Issue: unexpected failure during model build
 
@@ -19112,7 +25829,7 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 
 This error means you're attempting to pass a model input that is not JSON-serializable. For example, you might have left out the double quotes required for a valid string:
 
-```sh  theme={"system"}
+```sh theme={"system"}
 truss predict -d 'This is not a string' # Wrong
 truss predict -d '"This is a string"'   # Correct
 ```

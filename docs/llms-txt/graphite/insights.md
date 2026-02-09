@@ -1,6 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/insights.md
 
-# Insights
+## Documentation Index
+
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+## Insights
 
 > Learn how to track your team's engineering velocity with Graphite Insights.
 
@@ -51,10 +56,6 @@ For each individual user:
 <Frame caption="">
   <img src="https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=38ddd1e4915f88582c1a924433ffa369" data-og-width="6668" width="6668" data-og-height="3388" height="3388" data-path="images/92368f05-1688789123-insights-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=280&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=7d493068a8c07ad1ff4c3b72d3cf5f89 280w, https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=560&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=732ba3cf3ece91ff393ece4300ceba0e 560w, https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=840&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=f2050542bed77617bd30a4c9199c3435 840w, https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=1100&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=30612858fff614e4dfef3c02b2611f20 1100w, https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=1650&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=5d53933f13a4430b90f8a345aa330c5d 1650w, https://mintcdn.com/graphite-58cc94ce/v5snjlX4njZhFyeg/images/92368f05-1688789123-insights-table.png?w=2500&fit=max&auto=format&n=v5snjlX4njZhFyeg&q=85&s=2822c804ac13d9046275d05b14f637f4 2500w" />
 </Frame>
-
-<Note>
-  Is there a stat you want to see that isn't captured by Graphite Insights? Reach out to us at **[support@graphite.dev](mailto:support@graphite.dev)** or message us in our [Slack community](https://graphite-community.slack.com/).
-</Note>
 
 ### Adjust the Insights time period
 

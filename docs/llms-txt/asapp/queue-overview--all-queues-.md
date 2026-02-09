@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/queue-overview--all-queues-.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Queue Overview (All Queues)
 
 > Learn how to view and customize the performance overview for all queues and queue groups.
@@ -13,7 +17,7 @@ Live Insights highlights metrics that are outside the normal performance range. 
 </Frame>
 
 1. **Queue count**: Displays the total number of queues available.
-2. **Customization**: Tools to customize the display of queues are available to users.
+2. **Customization**: Users can access tools to customize the display of queues.
    * Queue visibility: Show/hide queues to customize the Overview page
    * Queue groups: Create new queue groups, edit existing groups.
 3. **Single Queues & Queue groups**: Displays performance overview for each queue and queue groups. Each tile leads to a drilled down view.
@@ -41,12 +45,12 @@ Click the **Customize** button on the All Queues page to sort and select the **q
 1. **Find a queue**: Use the search field to find a specific queue. Type in the **queue name** to filter the list of queues down to relevant matches.
 2. **Sort queues**: You can sort in ascending or descending order. Click the **Sort** dropdown to select the desired sort order.
 3. **Bulk selection**: To select all queues, or deselect all queues, click the **bulk selection feature** to view all queues. Click again to deselect all queues.
-4. **Single queue selection**: select and deselect **queues** in the list. Deselected queues are hidden on the Overview page.
+4. **Single queue selection**: Select and deselect **queues** in the list. The system hides deselected queues on the Overview page.
 5. **Apply and cancel**: To confirm your selection, click **Apply**. To dismiss changes or close the modal, select **Cancel**.
 
 ## Create and Edit Queue Groups
 
-You can create groups of queues to more efficiently monitor performance across multiple queues. When you create a queue group, a drill-down view of the queue group appears.
+You can create groups of queues to more efficiently monitor performance across multiple queues. When you create a queue group, the system displays a drill-down view of the queue group.
 
 A queue group behaves similarly to a single queue: you get access to all live transcripts across all queues selected in the group.
 
@@ -60,7 +64,7 @@ Queue groups are unique to each user. You can edit and create an unlimited numbe
 
 1. **Create new group**: Click this **button** to create a new queue group.
 2. **Existing queue group**: You can view, edit or delete them.
-3. **Organizational group**: Queue groups created by your organization display with a 'Preset' tag. Queues with this tag are visible by all Live Insights users. These groups cannot be edited or deleted.
+3. **Organizational group**: Your organization creates queue groups that display with a 'Preset' tag. Queues with this tag are visible by all Live Insights users. These groups cannot be edited or deleted.
 4. **Edit a group**: To edit an existing queue group, click the **Edit** icon.
 5. **Delete a group**: To delete an existing queue group, click the **Delete** icon.
 
@@ -72,7 +76,7 @@ Queue groups are unique to each user. You can edit and create an unlimited numbe
 
 1. **Queue group name**: Name assigned to the queue group.
 2. **Available queues**: List of all queues that you can add to a group. Select **queues** to add the queues to the group, and vice versa.
-3. **Queues added to group**: Queues currently selected appear under the queue name.
+3. **Queues added to group**: The system displays currently selected queues under the queue name.
 4. **Apply and cancel**: To apply changes, click the **Apply** button. To dismiss changes or close the modal, click the **Cancel** button.
 
 ## Overflow Queue Routing
@@ -81,8 +85,8 @@ Overflow Queue Routing enables administrators to redirect traffic from one queue
 
 Overflow Queue Routing can use two rules:
 
-1. **Business Hours Rule**: Traffic from Queue A is redirected to Queue B when it is outside the operating business hours for Queue B.
-2. **Agent Availability Rule**: Traffic from Queue A is redirected to Queue B when there are no available agents serving Queue A.
+1. **Business Hours Rule**: The system redirects traffic from Queue A to Queue B when it is outside the operating business hours for Queue B.
+2. **Agent Availability Rule**: The system redirects traffic from Queue A to Queue B when there are no available agents serving Queue A.
 
 <Note>
   Work with your ASAPP account team to configure overflow routing rules that align with your business needs.
@@ -98,19 +102,19 @@ To transfer all chats from one queue to another:
 
 1. Click the dropdown menu in the queue card
 2. Select "Transfer all chats"
-3. A queue selection modal appears asking "Select the queue which you want to transfer all chats to?"
+3. The system displays a queue selection modal asking "Select the queue which you want to transfer all chats to?"
 4. Select the target queue from the dropdown list
 5. Click "Transfer chats" to complete the action
 
-A toast message will confirm that all chats have been transferred. The end customer will not see any change on their side and will assume they are still waiting in a queue.
+The system will display a toast message confirming that all chats have been transferred. The end customer will not see any change on their side and will assume they are still waiting in a queue.
 
 ### Bulk Chat Closure
 
 To close all chats in a queue:
 
-1. Click the 3 dots in the upper right hand corner of the queue card
+1. Click the 3 dots in the upper right-hand corner of the queue card
 2. Select "End all chats" from the dropdown menu
-3. A confirmation modal appears asking "Are you sure you want to end all chats in this queue?"
+3. The system displays a confirmation modal asking "Are you sure you want to end all chats in this queue?"
 4. Click "Confirm" or "Yes" to complete the action
 
 <Note>

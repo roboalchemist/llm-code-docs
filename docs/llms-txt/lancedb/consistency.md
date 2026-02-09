@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/tables/consistency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Consistency
 
 > Learn about consistency settings and versioning in LanceDB tables.
@@ -70,8 +74,3 @@ also choose one of the following options:
   A bad vector `[1.0, NaN, 3.0]` will be replaced with `null` if the column is
   nullable. If the vector column is non-nullable, then bad vectors will cause an
   error
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

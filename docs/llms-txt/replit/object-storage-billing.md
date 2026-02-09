@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/object-storage-billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Storage Billing
 
 > Learn how Replit charges for App Storage.

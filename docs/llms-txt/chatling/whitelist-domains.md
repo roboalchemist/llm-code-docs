@@ -1,19 +1,21 @@
 # Source: https://docs.chatling.ai/web-widget/whitelist-domains.md
 
-# Source: https://docs.chatling.ai/general-settings/whitelist-domains.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Whitelist domains
 
 > Learn how to whitelist domains for your chatbot to prevent it from being added to unauthorized websites.
 
-If you want to prevent your chatbot from being added to unauthorized websites, you can whitelist domains.
+If you want to prevent your widget from being added to unauthorized websites, you can whitelist domains.
 
-By adding whitelisted domains, the chatbot will only appear on websites that match the whitelisted domains.
+By adding whitelisted domains, the widget will only appear on websites that match the whitelisted domains.
 
 ## How to whitelist domains
 
 1. Open your chatbot's dashboard.
-2. Go to chatbot settings.
+2. Go to Settings.
 
 <img src="https://chatling-assets.b-cdn.net/open-chatbot-settings.jpg" width="300" alt="Open chatbot settings" />
 

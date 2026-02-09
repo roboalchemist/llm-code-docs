@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/deploy/custom/deployments.md
 
-LiveKit docs › Agent deployment › Custom deployments
+LiveKit docs › Agent deployment › Self-hosted deployments
 
 ---
 
-# Custom agent deployments
+# Self-hosted deployments
 
 > Guide to running LiveKit agents on your own infrastructure.
 
@@ -26,7 +26,7 @@ The following starter projects each include a working Dockerfile and CI configur
 
 LiveKit Agents can be deployed almost anywhere. The LiveKit team and community have found the following deployment platforms to be the easiest and most cost-effective to use.
 
-- **[LiveKit Cloud](https://docs.livekit.io/deploy/agents/cloud/start.md)**: Run your agent on the same network and infrastructure that serves LiveKit Cloud, with builds, deployment, and scaling handled for you.
+- **[LiveKit Cloud](https://docs.livekit.io/deploy/agents.md)**: Run your agent on the same network and infrastructure that serves LiveKit Cloud, with builds, deployment, and scaling handled for you.
 
 - **[Kubernetes](https://github.com/livekit-examples/agent-deployment/tree/main/kubernetes)**: Sample configuration for deploying and autoscaling LiveKit Agents on Kubernetes.
 
@@ -134,7 +134,7 @@ Job crashes are written to agent server logs for monitoring. If a job process cr
 
 ---
 
-This document was rendered at 2025-12-31T18:29:38.499Z.
+This document was rendered at 2026-02-03T03:25:22.700Z.
 For the latest version of this document, see [https://docs.livekit.io/deploy/custom/deployments.md](https://docs.livekit.io/deploy/custom/deployments.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

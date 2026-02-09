@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/account-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Account settings
 
 > Issues with logging in (Google Sign up and normal email sign up)

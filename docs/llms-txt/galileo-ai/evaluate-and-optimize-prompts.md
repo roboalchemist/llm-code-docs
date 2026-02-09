@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluate and Optimize Prompts
 
 > How to use Galileo Evaluate for prompt engineering
@@ -10,7 +14,7 @@ Galileo Evaluate enables you to evaluate and optimize your prompts with out-of-t
 
 2. Next, you execute **promptquality.run()** like shown below.
 
-```Bash
+```Bash  theme={null}
 
     import promptquality as pq
 

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/templating/init.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun init
 
 > Scaffold an empty Bun project with the interactive `bun init` command

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/threads/create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create threads
 
 Creating a thread is useful in scenarios where you want to programmatically start a support interaction.

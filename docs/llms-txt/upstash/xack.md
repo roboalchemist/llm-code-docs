@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XACK
 
@@ -26,33 +12,30 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the stream.
 </ParamField>
 
-<ParamField body="group" type="string" required>
+<ParamField body="group" type="str" required>
   The consumer group name.
 </ParamField>
 
-<ParamField body="id" type="string | string[]" required>
-  The ID(s) of the message(s) to acknowledge. Can be a single ID or an array of IDs.
+<ParamField body="ids" type="str" required>
+  The ID(s) of the message(s) to acknowledge. Can be multiple IDs as separate arguments.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number">
+<ResponseField type="int">
   The number of messages successfully acknowledged.
 </ResponseField>
 
 <RequestExample>
-  ```ts Single message theme={"system"}
-  const result = await redis.xack("mystream", "mygroup", "1638360173533-0");
+  ```py Single message theme={"system"}
+  result = redis.xack("mystream", "mygroup", "1638360173533-0")
   ```
 
-  ```ts Multiple messages theme={"system"}
-  const result = await redis.xack("mystream", "mygroup", [
-    "1638360173533-0",
-    "1638360173533-1"
-  ]);
+  ```py Multiple messages theme={"system"}
+  result = redis.xack("mystream", "mygroup", "1638360173533-0", "1638360173533-1")
   ```
 </RequestExample>

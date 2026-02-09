@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
 
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Access your invoices
 

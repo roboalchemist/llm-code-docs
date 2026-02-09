@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/saving-stats.md
 
-# VII - Saving run stats
+# Saving run stats
 
 **Implement the saving of general statistics about an Actor's run, as well as adding request-specific statistics to dataset items.**
 

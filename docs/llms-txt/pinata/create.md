@@ -1,8 +1,4 @@
-# Source: https://docs.pinata.cloud/sdk/keys/create.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/create.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/create.md
+# Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/create.md
 
 # Source: https://docs.pinata.cloud/sdk/keys/create.md
 
@@ -10,11 +6,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/groups/private/create.md
 
-# Source: https://docs.pinata.cloud/sdk/keys/create.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/create.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/create.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # create
 

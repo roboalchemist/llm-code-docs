@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/views/partially-update-view.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partially update view
 
 > Partially update a view object. Specify the fields to update in the payload. Any object-type fields will be deep-merged with existing content. Currently we do not support removing fields or setting them to null.
@@ -141,10 +145,12 @@ components:
             - prompts
             - tools
             - scorers
+            - classifiers
             - logs
-            - agents
             - monitor
-            - for_review
+            - for_review_project_log
+            - for_review_experiments
+            - for_review_datasets
             - null
           description: Type of object that the view corresponds to.
         name:
@@ -189,10 +195,12 @@ components:
             - prompts
             - tools
             - scorers
+            - classifiers
             - logs
-            - agents
             - monitor
-            - for_review
+            - for_review_project_log
+            - for_review_experiments
+            - for_review_datasets
             - null
           description: Type of object that the view corresponds to.
         name:
@@ -483,7 +491,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

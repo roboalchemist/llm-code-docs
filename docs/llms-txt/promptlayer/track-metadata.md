@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/track-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Track Metadata
 
 Associate a metadata dictionary with a request. This can be used for things like session\_ids, user\_ids, location, etc.
@@ -10,8 +14,8 @@ Associate a metadata dictionary with a request. This can be used for things like
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-metadata",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "request_id": "<REQUEST_ID>",
       "metadata": {"session_id": "abc123", "user_id": "user123"}
   },
@@ -35,6 +39,13 @@ paths:
         - metadata
       summary: Track Metadata
       operationId: trackMetadata
+      parameters:
+        - name: X-API-KEY
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Your PromptLayer API Key.
       requestBody:
         required: true
         content:
@@ -42,9 +53,6 @@ paths:
             schema:
               type: object
               properties:
-                api_key:
-                  type: string
-                  description: Your PromptLayer API Key.
                 request_id:
                   type: integer
                   description: >-
@@ -57,7 +65,6 @@ paths:
                     A dictionary of metadata items to associate with the
                     request. Can include session_ids, user_ids, location, etc.
               required:
-                - api_key
                 - request_id
                 - metadata
       responses:
@@ -81,7 +88,3 @@ paths:
           description: Unauthorized
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

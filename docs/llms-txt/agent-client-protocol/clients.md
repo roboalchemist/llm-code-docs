@@ -1,11 +1,16 @@
-# Source: https://agentclientprotocol.com/overview/clients.md
+# Source: https://agentclientprotocol.com/get-started/clients.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Clients
 
-> Clients implementing the Agent Client Protocol
+> Clients implementing the Agent Client Protocol.
 
 The following clients can be used with an ACP Agent:
 
+* [Agent Studio](https://github.com/sxhxliang/agent-studio)
 * [Agmente](https://agmente.halliharp.com) (iOS)
 * [AionUi](https://github.com/iOfficeAI/AionUi)
 * [aizen](https://aizen.win)
@@ -17,6 +22,7 @@ The following clients can be used with an ACP Agent:
 * [marimo notebook](https://github.com/marimo-team/marimo)
 * [neovim](https://neovim.io)
   * through the [CodeCompanion](https://github.com/olimorris/codecompanion.nvim) plugin
+  * through the [carlos-algms/agentic.nvim](https://github.com/carlos-algms/agentic.nvim) plugin
   * through the [yetone/avante.nvim](https://github.com/yetone/avante.nvim) plugin
 * [Obsidian](https://obsidian.md)
   * through the [Agent Client](https://github.com/RAIT-09/obsidian-agent-client) plugin
@@ -25,8 +31,3 @@ The following clients can be used with an ACP Agent:
 * [Toad](https://www.batrachian.ai/)
 * [Web Browser with AI SDK](https://github.com/mcpc-tech/ai-elements-remix-template) (powered by [@mcpc/acp-ai-provider](https://github.com/mcpc-tech/mcpc/tree/main/packages/acp-ai-provider))
 * [Zed](https://zed.dev/docs/ai/external-agents)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/web-apis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web APIs
 
 > Web-standard APIs supported by Bun for server-side JavaScript

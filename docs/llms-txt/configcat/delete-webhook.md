@@ -2,10 +2,7 @@
 
 # Delete Webhook
 
-```
-DELETE 
-/v1/webhooks/:webhookId
-```
+Copy page
 
 This endpoint removes a Webhook identified by the `webhookId` parameter.
 

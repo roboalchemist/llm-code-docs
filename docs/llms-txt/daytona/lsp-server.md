@@ -1,20 +1,6 @@
 # Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
 
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
-
-# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
+# Source: https://www.daytona.io/docs/en/ruby-sdk/lsp-server.md
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
 
@@ -30,18 +16,18 @@ IDE-like features such as code completion, symbol search, and more.
 #### LspServer.\_\_init\_\_
 
 ```python
-def __init__(language_id: LspLanguageId, path_to_project: str,
-             api_client: LspApi)
+def __init__(language_id: LspLanguageId | LspLanguageIdLiteral,
+             path_to_project: str, api_client: LspApi)
 ```
 
 Initializes a new LSP server instance.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.TYPESCRIPT).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type
+  (e.g., LspLanguageId.TYPESCRIPT).
 - `path_to_project` _str_ - Absolute path to the project root directory.
 - `api_client` _LspApi_ - API client for Sandbox operations.
-- `instance` _SandboxInstance_ - The Sandbox instance this server belongs to.
 
 #### LspServer.start
 
@@ -138,7 +124,7 @@ lsp.did_close("workspace/project/src/index.ts")
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from document: ")
-def document_symbols(path: str) -> List[LspSymbol]
+def document_symbols(path: str) -> list[LspSymbol]
 ```
 
 Gets symbol information (functions, classes, variables, etc.) from a document.
@@ -151,7 +137,7 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
+- `list[LspSymbol]` - List of symbols in the document. Each symbol includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
@@ -173,7 +159,7 @@ for symbol in symbols:
     reason=
     "Method is deprecated. Use `sandbox_symbols` instead. This method will be removed in a future version."
 )
-def workspace_symbols(query: str) -> List[LspSymbol]
+def workspace_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -186,13 +172,13 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files.
+- `list[LspSymbol]` - List of matching symbols from all files.
 
 #### LspServer.sandbox\_symbols
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from sandbox: ")
-def sandbox_symbols(query: str) -> List[LspSymbol]
+def sandbox_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -205,7 +191,7 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files. Each symbol
+- `list[LspSymbol]` - List of matching symbols from all files. Each symbol
   includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
@@ -265,7 +251,7 @@ for item in completions.items:
 ## LspLanguageId
 
 ```python
-class LspLanguageId(Enum)
+class LspLanguageId(str, Enum)
 ```
 
 Language IDs for Language Server Protocol (LSP).
@@ -278,6 +264,7 @@ Language IDs for Language Server Protocol (LSP).
 ## LspCompletionPosition
 
 ```python
+@dataclass
 class LspCompletionPosition()
 ```
 
@@ -285,19 +272,6 @@ Represents a zero-based completion position in a text document,
 specified by line number and character offset.
 
 **Attributes**:
-
-- `line` _int_ - Zero-based line number in the document.
-- `character` _int_ - Zero-based character offset on the line.
-
-#### LspCompletionPosition.\_\_init\_\_
-
-```python
-def __init__(line: int, character: int)
-```
-
-Initialize a new LspCompletionPosition instance.
-
-**Arguments**:
 
 - `line` _int_ - Zero-based line number in the document.
 - `character` _int_ - Zero-based character offset on the line.

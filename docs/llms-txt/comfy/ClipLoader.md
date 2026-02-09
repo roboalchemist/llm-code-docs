@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipLoader.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipLoader - ComfyUI Built-in Node Documentation
 
 > The ClipLoader node is used to load CLIP text encoder models independently.

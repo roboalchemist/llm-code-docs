@@ -2,10 +2,7 @@
 
 # List Organization Members
 
-```
-GET 
-/v2/organizations/:organizationId/members
-```
+Copy page
 
 This endpoint returns the list of Members that belongs to the given Organization, identified by the `organizationId` parameter.
 

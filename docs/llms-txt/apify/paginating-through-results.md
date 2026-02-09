@@ -6,13 +6,13 @@
 
 ***
 
-If you're trying to https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/collecting-data.md on a website that has millions, thousands, or even hundreds of results, it is very likely that they are paginating their results to reduce strain on their back-end as well as on the users loading and rendering the content.
+If you're trying to [collect data](https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/collecting-data.md) on a website that has millions, thousands, or even hundreds of results, it is very likely that they are paginating their results to reduce strain on their back-end as well as on the users loading and rendering the content.
 
 ![Amazon pagination](data:image/png;base64,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)
 
 ## Page number-based pagination
 
-At the time of writing this lesson, Facebook has https://github.com/orgs/facebook/repositories. By default, GitHub lists repositories in descending order based on when they were last updated (the most recently updated ones are at the top of the list).
+At the time of writing this lesson, Facebook has [over a hundred repositories on GitHub](https://github.com/orgs/facebook/repositories). By default, GitHub lists repositories in descending order based on when they were last updated (the most recently updated ones are at the top of the list).
 
 We want to scrape the titles, links, and descriptions of all of Facebook's repositories; however, GitHub only displays 30 repositories per page. This means we need to paginate through the results. Let's start by defining some variables:
 
@@ -86,7 +86,7 @@ await browser.close();
 
 :nth-last-child
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child about the `:nth-last-child` pseudo-class. It works like `:nth-child`, but starts from the bottom of the parent element's children instead of from the top.
+[Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child) about the `:nth-last-child` pseudo-class. It works like `:nth-child`, but starts from the bottom of the parent element's children instead of from the top.
 
 When we run the code, it prints the total number of pages, which is `4` at the time of writing this lesson. Now let's scrape repositories from all the pages.
 
@@ -399,7 +399,7 @@ await browser.close();
 ```
 
 
-At the time of writing this lesson, a summary at the top of the https://github.com/orgs/facebook/repositories claims that Facebook has 115 repositories. Whatever is the number you are seeing, it should be equal to the number you get if you run the program:
+At the time of writing this lesson, a summary at the top of the [listing page](https://github.com/orgs/facebook/repositories) claims that Facebook has 115 repositories. Whatever is the number you are seeing, it should be equal to the number you get if you run the program:
 
 
 ```
@@ -410,11 +410,11 @@ $ node index.js
 
 ## Lazy-loading pagination
 
-Pagination based on page numbers is straightforward to automate, but many websites use https://en.wikipedia.org/wiki/Lazy_loading instead.
+Pagination based on page numbers is straightforward to automate, but many websites use [lazy-loading](https://en.wikipedia.org/wiki/Lazy_loading) instead.
 
-> On websites with lazy-loading pagination, if https://docs.apify.com/academy/api-scraping.md is a viable option, it is a much better approach due to reliability and performance.
+> On websites with lazy-loading pagination, if [API scraping](https://docs.apify.com/academy/api-scraping.md) is a viable option, it is a much better approach due to reliability and performance.
 
-Take a moment to look at and scroll through the women's clothing section https://www.aboutyou.com/c/women/clothing-20204. Notice that the items are loaded as you scroll, and that there are no page numbers. Because of how drastically different this pagination implementation is from the previous one, it also requires a different workflow to scrape.
+Take a moment to look at and scroll through the women's clothing section [on About You's website](https://www.aboutyou.com/c/women/clothing-20204). Notice that the items are loaded as you scroll, and that there are no page numbers. Because of how drastically different this pagination implementation is from the previous one, it also requires a different workflow to scrape.
 
 We're going to scrape the brand and price from the first 75 results on the **About You** page linked above. Here's our basic setup:
 

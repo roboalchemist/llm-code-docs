@@ -1,110 +1,103 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/environment/retrieve-a-custom-environment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a custom environment
 
 > Retrieve a custom environment for the project. Must not be named 'Production' or 'Preview'.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v9/projects/{idOrName}/custom-environments/{environmentSlugOrId}:
+    get:
+      tags:
+        - environment
+      summary: Retrieve a custom environment
+      description: >-
+        Retrieve a custom environment for the project. Must not be named
+        'Production' or 'Preview'.
+      operationId: getCustomEnvironment
+      parameters:
+        - name: idOrName
+          description: The unique project identifier or the project name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique project identifier or the project name
-        environmentSlugOrId:
+            description: The unique project identifier or the project name
+            type: string
+        - name: environmentSlugOrId
+          description: The unique custom environment identifier within the project
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique custom environment identifier within the project
-      query:
-        teamId:
+            description: The unique custom environment identifier within the project
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getCustomEnvironment
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.environment.getCustomEnvironment({
-              idOrName: "<value>",
-              environmentSlugOrId: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
                     description: >-
                       Unique identifier for the custom environment (format:
                       env_*)
-              slug:
-                allOf:
-                  - type: string
+                  slug:
+                    type: string
                     description: URL-friendly name of the environment
-              type:
-                allOf:
-                  - type: string
+                  type:
+                    type: string
                     enum:
-                      - preview
                       - production
+                      - preview
                       - development
                     description: >-
                       The type of environment (production, preview, or
                       development)
-              description:
-                allOf:
-                  - type: string
+                  description:
+                    type: string
                     description: Optional description of the environment's purpose
-              branchMatcher:
-                allOf:
-                  - properties:
+                  branchMatcher:
+                    properties:
                       type:
                         type: string
                         enum:
@@ -116,15 +109,14 @@ paths:
                         type: string
                         description: The pattern to match against branch names
                     required:
-                      - type
                       - pattern
+                      - type
                     type: object
                     description: >-
                       Configuration for matching git branches to this
                       environment
-              domains:
-                allOf:
-                  - items:
+                  domains:
+                    items:
                       properties:
                         name:
                           type: string
@@ -139,9 +131,9 @@ paths:
                           nullable: true
                           type: number
                           enum:
-                            - 307
                             - 301
                             - 302
+                            - 307
                             - 308
                         gitBranch:
                           nullable: true
@@ -155,6 +147,9 @@ paths:
                           type: number
                         verified:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             `true` if the domain is verified for use with the
                             project. If `false` it will not be used as an alias
@@ -172,10 +167,10 @@ paths:
                               reason:
                                 type: string
                             required:
-                              - type
                               - domain
-                              - value
                               - reason
+                              - type
+                              - value
                             type: object
                             description: >-
                               A list of verification challenges, one of which
@@ -197,93 +192,50 @@ paths:
                             will be checked for a TXT record matching
                             `verification.value`.
                       required:
-                        - name
                         - apexName
+                        - name
                         - projectId
                         - verified
                       type: object
                       description: List of domains associated with this environment
                     type: array
                     description: List of domains associated with this environment
-              currentDeploymentAliases:
-                allOf:
-                  - items:
+                  currentDeploymentAliases:
+                    items:
                       type: string
                     type: array
                     description: List of aliases for the current deployment
-              createdAt:
-                allOf:
-                  - type: number
+                  createdAt:
+                    type: number
                     description: Timestamp when the environment was created
-              updatedAt:
-                allOf:
-                  - type: number
+                  updatedAt:
+                    type: number
                     description: Timestamp when the environment was last updated
-            description: >-
-              Internal representation of a custom environment with all required
-              properties
-            requiredProperties:
-              - id
-              - slug
-              - type
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              id: <string>
-              slug: <string>
-              type: preview
-              description: <string>
-              branchMatcher:
-                type: endsWith
-                pattern: <string>
-              domains:
-                - name: <string>
-                  apexName: <string>
-                  projectId: <string>
-                  redirect: <string>
-                  redirectStatusCode: 307
-                  gitBranch: <string>
-                  customEnvironmentId: <string>
-                  updatedAt: 123
-                  createdAt: 123
-                  verified: true
-                  verification:
-                    - type: <string>
-                      domain: <string>
-                      value: <string>
-                      reason: <string>
-              currentDeploymentAliases:
-                - <string>
-              createdAt: 123
-              updatedAt: 123
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - createdAt
+                  - id
+                  - slug
+                  - type
+                  - updatedAt
+                type: object
+                description: >-
+                  Internal representation of a custom environment with all
+                  required properties
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

@@ -2,10 +2,14 @@
 
 # Source: https://rspack.dev/config/stats.md
 
-import PropertyType from '../../../components/PropertyType.tsx';
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/stats/](https://webpack.js.org/configuration/stats/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/stats/" />
 
 # Stats
 
@@ -13,19 +17,14 @@ Generate packaging information that can be used to analyze module dependencies a
 
 :::info Output JSON file of stats
 
-* Using `@rspack/cli`, `rspack build --json stats.json`.
-* Using Rspack's JavaScript API, `stats.toJson(options)`, `stats.toString(options)`.
+- Using `@rspack/cli`, `rspack build --json stats.json`.
+- Using Rspack's JavaScript API, `stats.toJson(options)`, `stats.toString(options)`.
 
 :::
 
-<PropertyType
-  type="boolean | string | Object"
-  defaultValueList={[
-  {
-    defaultValue: `{"preset":"errors-warnings","timings":true}`,
-  },
-]}
-/>
+- Type: `boolean | string | Object`
+- Default:`{"preset":"errors-warnings","timings":true}`
+
 
 ## Stats presets
 
@@ -46,7 +45,9 @@ You can specify exactly which packing information to output, all the following f
 
 ### stats.all
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'undefined' }]} />
+- Type: `boolean`
+- Default:`undefined`
+
 
 A fallback value for stats options when an option is not defined. It has precedence over local Rspack defaults.
 
@@ -56,7 +57,9 @@ Enabling `stats.all` will lead to a large amount of data transmission between Ru
 
 ### stats.preset
 
-<PropertyType type="boolean | string" defaultValueList={[{ defaultValue: 'undefined' }]} />
+- Type: `boolean | string`
+- Default:`undefined`
+
 
 Sets the [preset](/config/stats.md#stats-presets) for the type of information that gets displayed. It is useful for [extending stats behaviours](/config/stats.md#extending-stats-behaviours).
 
@@ -64,37 +67,49 @@ Sets the [preset](/config/stats.md#stats-presets) for the type of information th
 
 ### stats.assets
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the asset information. See [Asset Object](/api/javascript-api/stats-json.md#asset-object) for more details.
 
 ### stats.assetsSort
 
-<PropertyType type="string" defaultValueList={[{ defaultValue: '"id"' }]} />
+- Type: `string`
+- Default:`"id"`
+
 
 Sort the assets by a given field. All of the [sorting fields](/config/stats.md#sorting-fields) are allowed to be used. Use `!` prefix in the value to reverse the sort order by a given field.
 
 ### stats.assetsSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '15' }]} />
+- Type: `number`
+- Default:`15`
+
 
 How many items of assets should be displayed (groups will be collapsed to fit this space).
 
 ### stats.relatedAssets
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display information about assets that are related to other assets (like SourceMaps for assets).
 
 ### stats.excludeAssets
 
-<PropertyType type="Array<string | RegExp | (name: string) => boolean> | string | RegExp | (name: string) => boolean | false" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `Array<string | RegExp | (name: string) => boolean> | string | RegExp | (name: string) => boolean | false`
+- Default:`false`
+
 
 Exclude the matching assets information. This can be done with a string, a RegExp, a function that is getting the assets name as an argument and returns a boolean. `stats.excludeAssets` can be an array of any of the above.
 
 ### stats.cachedAssets
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the cached assets. Setting `stats.cachedAssets` to `false` will tell stats to only show the emitted files (not the ones that were built).
 
@@ -102,31 +117,36 @@ Whether to display information about the cached assets. Setting `stats.cachedAss
 
 ### stats.groupAssetsByChunk
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group assets by how their are related to chunks.
 
 ### stats.groupAssetsByEmitStatus
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group assets by their status (emitted, compared for emit or cached).
 
 ### stats.groupAssetsByExtension
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group assets by their extension.
 
 ### stats.groupAssetsByInfo
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group assets by their asset info (immutable, development, hotModuleReplacement, etc).
 
 ### stats.groupAssetsByPath
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group assets by their asset path.
 
@@ -134,49 +154,65 @@ Whether to group assets by their asset path.
 
 ### stats.chunks
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the chunk, see [chunk object](/api/javascript-api/stats-json.md#chunk-object) for more details.
 
 ### stats.chunkModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the built modules to information about the chunk.
 
 ### stats.chunkModulesSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '10' }]} />
+- Type: `number`
+- Default:`10`
+
 
 How many items of chunk modules should be displayed (groups will be collapsed to fit this space).
 
 ### stats.dependentModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display chunk modules that are dependencies of other modules of the chunk.
 
 ### stats.chunkOrigins
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the origins of chunks and chunk merging.
 
 ### stats.chunkRelations
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display chunk parents, children and siblings.
 
 ### stats.chunksSort
 
-<PropertyType type="string" defaultValueList={[{ defaultValue: '"id"' }]} />
+- Type: `string`
+- Default:`"id"`
+
 
 Sort the chunks by a given field. All of the [sorting fields](/config/stats.md#sorting-fields) are allowed to be used. Use `!` prefix in the value to reverse the sort order by a given field.
 
 ### stats.ids
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display IDs of modules and chunks.
 
@@ -184,31 +220,41 @@ Whether to display IDs of modules and chunks.
 
 ### stats.chunkGroups
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the `namedChunkGroups`, see [chunk group object](/api/javascript-api/stats-json.md#entrychunkgroup-object) for more details.
 
 ### stats.chunkGroupAuxiliary
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display auxiliary assets in chunk groups.
 
 ### stats.chunkGroupChildren
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display children of the chunk groups (e.g. prefetched, preloaded chunks and assets).
 
 ### stats.chunkGroupMaxAssets
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '5' }]} />
+- Type: `number`
+- Default:`5`
+
 
 How many assets should be displayed in chunk groups.
 
 ### stats.entrypoints
 
-<PropertyType type="boolean | 'auto'" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean | 'auto'`
+- Default:`false`
+
 
 Whether to display the entry points with the corresponding bundles, , see [entrypoint object](/api/javascript-api/stats-json.md#entrychunkgroup-object) for more details.
 
@@ -218,61 +264,81 @@ When `stats.entrypoints` is set to `'auto'`, Rspack will decide automatically wh
 
 ### stats.modules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the built modules, see [module object](/api/javascript-api/stats-json.md#module-object) for more details.
 
 ### stats.moduleTrace
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display dependencies and the origin of warnings/errors.
 
 ### stats.moduleAssets
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to add information about assets inside modules.
 
 ### stats.modulesSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '15' }]} />
+- Type: `number`
+- Default:`15`
+
 
 How many items of modules should be displayed (groups will be collapsed to fit this space).
 
 ### stats.modulesSort
 
-<PropertyType type="string" defaultValueList={[{ defaultValue: '"id"' }]} />
+- Type: `string`
+- Default:`"id"`
+
 
 Sort the modules by a given field. All of the [sorting fields](/config/stats.md#sorting-fields) are allowed to be used. Use `!` prefix in the value to reverse the sort order by a given field.
 
 ### stats.reasons
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the reasons of why modules are included.
 
 ### stats.reasonsSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '1000' }]} />
+- Type: `number`
+- Default:`1000`
+
 
 How many characters should the reasons be displayed (groups will be collapsed to fit this space).
 
 ### stats.source
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the source code of modules.
 
 ### stats.depth
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the distance from the entry point for each module.
 
 ### stats.orphanModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the orphan modules.
 
@@ -280,7 +346,9 @@ Whether to display the orphan modules.
 
 ### stats.runtimeModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about runtime modules.
 
@@ -288,25 +356,33 @@ Whether to display information about runtime modules.
 
 ### stats.cachedModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about cached (not built) modules.
 
 ### stats.excludeModules
 
-<PropertyType type="Array<string | RegExp | (name: string) => boolean> | string | RegExp | (name: string) => boolean | false" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `Array<string | RegExp | (name: string) => boolean> | string | RegExp | (name: string) => boolean | false`
+- Default:`false`
+
 
 Exclude the matching modules information. This can be done with a string, a RegExp, a function that is getting the modules name as an argument and returns a boolean. `stats.excludeAssets` can be an array of any of the above.
 
 ### stats.nestedModules
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about modules nested in other modules (like with module concatenation).
 
 ### stats.nestedModulesSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '10' }]} />
+- Type: `number`
+- Default:`10`
+
 
 How many items of nested modules should be displayed (groups will be collapsed to fit this space).
 
@@ -314,43 +390,50 @@ How many items of nested modules should be displayed (groups will be collapsed t
 
 ### stats.groupModulesByAttributes
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their attributes (errors, warnings, assets, optional, orphan, or dependent).
 
 ### stats.groupModulesByCacheStatus
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their cache status (cached or built and cacheable).
 
 ### stats.groupModulesByExtension
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their extension.
 
 ### stats.groupModulesByPath
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their path.
 
 ### stats.groupModulesByType
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their type.
 
 ### stats.groupModulesByLayer
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Whether to group modules by their layer.
 
 ### stats.groupReasonsByOrigin
 
-<PropertyType type="boolean" />
+- Type: `boolean`
+
 
 Group reasons by their origin module to avoid large set of reasons.
 
@@ -358,19 +441,25 @@ Group reasons by their origin module to avoid large set of reasons.
 
 ### stats.providedExports
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the exports of the modules.
 
 ### stats.usedExports
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display which exports of a module are used.
 
 ### stats.optimizationBailout
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the reasons why optimization bailed out for modules.
 
@@ -378,49 +467,65 @@ Whether to display the reasons why optimization bailed out for modules.
 
 ### stats.errors
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the errors.
 
 ### stats.errorsCount
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the errors count.
 
 ### stats.errorDetails
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the details to the errors. It defaults to `'auto'` which will show error details when there're only 2 or less errors.
 
 ### stats.errorsSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '5' }]} />
+- Type: `number`
+- Default:`5`
+
 
 How many lines should an error be displayed.
 
 ### stats.errorStack
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display stack trace of errors.
 
 ### stats.warnings
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the warnings.
 
 ### stats.warningsCount
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the warnings count.
 
 ### stats.warningsSpace
 
-<PropertyType type="number" defaultValueList={[{ defaultValue: '5' }]} />
+- Type: `number`
+- Default:`5`
+
 
 How many lines should a warning be displayed.
 
@@ -428,20 +533,22 @@ How many lines should a warning be displayed.
 
 ### stats.logging
 
-<PropertyType type="'info' | 'none' | 'error' | 'warn' | 'log' | 'verbose' | boolean" />
+- Type: `'info' | 'none' | 'error' | 'warn' | 'log' | 'verbose' | boolean`
+
 
 Whether to add logging output:
 
-* `'none'`, `false`: disable logging
-* `'error'`: errors only
-* `'warn'`: errors and warnings only
-* `'info'`: errors, warnings, and info messages
-* `'log'`, `true`: errors, warnings, info messages, log messages, groups, clears. Collapsed groups are displayed in a collapsed state.
-* `'verbose'`: log everything except debug and trace. Collapsed groups are displayed in expanded state.
+- `'none'`, `false`: disable logging
+- `'error'`: errors only
+- `'warn'`: errors and warnings only
+- `'info'`: errors, warnings, and info messages
+- `'log'`, `true`: errors, warnings, info messages, log messages, groups, clears. Collapsed groups are displayed in a collapsed state.
+- `'verbose'`: log everything except debug and trace. Collapsed groups are displayed in expanded state.
 
 ### stats.loggingDebug
 
-<PropertyType type="Array<string | RegExp | function (name) => boolean>" />
+- Type: `Array<string | RegExp | function (name) => boolean>`
+
 
 Whether to display the debug information of the specified [loggers](/api/javascript-api/logger.md) such as Plugins or Loaders. When `stats.logging` is set to `false`, `stats.loggingDebug` option is ignored.
 
@@ -459,13 +566,17 @@ export default {
 
 ### stats.loggingTrace
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display stack traces in the logging output for errors, warnings and traces.
 
 ### stats.colors
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to output in the different colors.
 
@@ -475,61 +586,80 @@ Defaults to `true` when executing `rspack build` in an environment that supports
 
 ### stats.hash
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display information about the hash of the compilation.
 
 ### stats.env
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Whether to display the `--env` information.
 
 ### stats.builtAt
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the build date and the build time information.
 
 ### stats.version
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to add information about the Rspack version used.
 
 ### stats.context
 
-<PropertyType type="string" />
+- Type: `string`
+
 
 Whether to display the [base directory](/config/context.md) as an absolute path for shortening the module specifier.
 
 ### stats.publicPath
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the [`publicPath`](/config/output.md#outputpublicpath).
 
 ### stats.outputPath
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the [`output.path`](/config/output.md#outputpath).
 
 ### stats.children
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the [`output.path`](/config/output.md#outputpath).
 
 ### stats.performance
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display performance hint when the file size exceeds [`performance.maxAssetSize`](/config/performance.md#performancemaxassetsize).
 
 ### stats.timings
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+- Type: `boolean`
+- Default:`true`
+
 
 Whether to display the timing information.
 
@@ -537,24 +667,23 @@ Whether to display the timing information.
 
 For `assetsSort`, `chunksSort` and `modulesSort` there are several possible fields that you can sort items by:
 
-* `'id'`: the item's id, an item is an asset, a module or a chunk.
-* `'name'`: the item's name that was assigned to it upon importing.
-* `'size'`: the size of item in bytes.
-* `'chunks'`: what chunks the item originates from (for example, if there are multiple subchunks for one chunk: the subchunks will be grouped according to their main chunk).
-* `'errors'`: number of errors in items.
-* `'warnings'`: number of warnings in items.
-* `'failed'`: whether the item has failed compilation.
-* `'cacheable'`: whether the item is cacheable.
-* `'built'`: whether the item has been built.
-* `'prefetched'`: whether the item will be prefetched.
-* `'optional'`: whether the item is optional.
-* `'identifier'`: identifier of the item.
-* `'index'`: item's processing index.
-* `'profile'`: items's processing cost.
-* `'issuer'`: the identifier of the issuer.
-* `'issuerId'`: the id of the issuer.
-* `'issuerName'`: the name of the issuer.
-* `'issuerPath'`: the full issuer path.
+- `'id'`: the item's id, an item is an asset, a module or a chunk.
+- `'name'`: the item's name that was assigned to it upon importing.
+- `'size'`: the size of item in bytes.
+- `'chunks'`: what chunks the item originates from (for example, if there are multiple subchunks for one chunk: the subchunks will be grouped according to their main chunk).
+- `'errors'`: number of errors in items.
+- `'warnings'`: number of warnings in items.
+- `'failed'`: whether the item has failed compilation.
+- `'cacheable'`: whether the item is cacheable.
+- `'built'`: whether the item has been built.
+- `'prefetched'`: whether the item will be prefetched.
+- `'optional'`: whether the item is optional.
+- `'identifier'`: identifier of the item.
+- `'index'`: item's processing index.
+- `'issuer'`: the identifier of the issuer.
+- `'issuerId'`: the id of the issuer.
+- `'issuerName'`: the name of the issuer.
+- `'issuerPath'`: the full issuer path.
 
 ## Extending stats behaviours
 

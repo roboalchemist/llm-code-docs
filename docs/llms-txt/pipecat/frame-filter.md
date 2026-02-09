@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/frame-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FrameFilter
 
 > Processor that selectively passes through only specified frame types
@@ -62,8 +66,3 @@ graph TD
 * Always allows system frames to pass through for proper pipeline operation
 * Can be used to isolate specific parts of your pipeline from certain frame types
 * Efficient implementation with minimal overhead
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/local-development.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local Development
 
 > Build locally using SQLite, libSQL Server or Turso.

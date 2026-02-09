@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/security-and-access-control.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 #   Security &  Access Control
 
 > This page covers networking, security and access control provisions that Galileo deployments enable

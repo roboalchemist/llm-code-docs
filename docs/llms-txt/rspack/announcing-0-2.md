@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-2.md
 
-*June 02, 2023*
+_June 02, 2023_
 
 # Announcing Rspack 0.2
 
@@ -72,11 +72,11 @@ We have restructured the existing implementation of `SplitChunksPlugin` in Rspac
 
 After the restructuring, we are confident to implement more features on SplitChunksPlugin. We are pleased to announce that in version 0.2, SplitChunksPlugin supports the following configuration options:
 
-* `splitChunks.maxSize`
-* `splitChunks.maxAsyncSize`
-* `splitChunks.maxInitialSize`
-* `splitChunks.maxAsyncRequests`
-* `splitChunks.maxInitialRequests`
+- `splitChunks.maxSize`
+- `splitChunks.maxAsyncSize`
+- `splitChunks.maxInitialSize`
+- `splitChunks.maxAsyncRequests`
+- `splitChunks.maxInitialRequests`
 
 In version 0.2, we will use the new `SplitChunksPlugin` by default. If you encounter problems, please provide feedback promptly, and we will fix them as soon as possible. You can switch back to the deprecated implementation by using the `experiments.newSplitChunks: false` option, but we strongly recommend using the new version. In version 0.3, we will remove the deprecated implementation.
 
@@ -105,7 +105,7 @@ export default {
 
 ## Breaking changes
 
-* Alignment of Filename Generation Logic
+- Alignment of Filename Generation Logic
 
   In version 0.1.12, we further aligned the file name generation logic with webpack, and refactored the implementation of file name generation. However, the \[ext] in `output.filename`, `output.chunkFilename`, `output.cssFilename`, and `output.cssChunkFilename` will no longer be replaced. This behavior is now consistent with webpack but is a breaking change for versions of Rspack prior to 0.1.12. If you used \[ext] in the above 4 filename configurations, you need to change it to the corresponding `.js` or `.css`, for example:
 
@@ -127,19 +127,19 @@ export default {
   }
   ```
 
-  Details: https://github.com/web-infra-dev/rspack/issues/3270
+  Details: [https://github.com/web-infra-dev/rspack/issues/3270](https://github.com/web-infra-dev/rspack/issues/3270)
 
-* Enabled realContentHash by default in production
+- Enabled realContentHash by default in production
 
-  Details: https://github.com/web-infra-dev/rspack/pull/3338
+  Details: [https://github.com/web-infra-dev/rspack/pull/3338](https://github.com/web-infra-dev/rspack/pull/3338)
 
-* Modified the Extensions of Resolve
+- Modified the Extensions of Resolve
 
-  Details: https://github.com/web-infra-dev/rspack/pull/3242
+  Details: [https://github.com/web-infra-dev/rspack/pull/3242](https://github.com/web-infra-dev/rspack/pull/3242)
 
-* Modified the Export Method of @rspack/dev-middleware and @rspack/html-plugin, and Removed `getRspackMemoryAssets` Exported by @rspack/dev-middleware
+- Modified the Export Method of @rspack/dev-middleware and @rspack/html-plugin, and Removed `getRspackMemoryAssets` Exported by @rspack/dev-middleware
 
-  Details: https://github.com/web-infra-dev/rspack/pull/3358
+  Details: [https://github.com/web-infra-dev/rspack/pull/3358](https://github.com/web-infra-dev/rspack/pull/3358)
 
 ## Webpack compatibility updates
 
@@ -199,12 +199,6 @@ With the help of the [Valor](https://valor-software.com/) team, Rspack has compl
 
 With the help of [Rosa](https://rosa.be/), [Nx](https://nx.dev/), and [Valor](https://valor-software.com/), Rspack has completed the compilation support for [NestJS](https://nestjs.com/). You can use Rspack to package NestJS applications, and in actual projects, tests have shown that Rspack has a 5-10 times build performance improvement compared to the webpack version.
 
-## Benchmark
-
-Added a benchmark comparison with esbuild. Please refer to the following link for more details: https://github.com/web-infra-dev/performance-compare
-
-<img src="https://raw.githubusercontent.com/web-infra-dev/performance-compare/main/assets/benchmark.png" alt="benchmark" />
-
 ## Dev guide
 
 The Rspack team cherishes the valuable contributions made by the open source community and wants to actively fosters collaboration. We are committed to maintaining an open approach, striving to engage and involve the community at every step.
@@ -218,10 +212,10 @@ In the future, the guide will offer an insightful overview of Rspack's architect
 
 In order to ship with confidence, we are currently:
 
-* Building and testing a list of examples in the Rspack repository (currently 38 examples)
-* Porting all webpack tests from the webpack repository
-* Running all tests on Node 14, 16 and 18
-* Maintaining a separate ecosystem-ci repository for integration tests
+- Building and testing a list of examples in the Rspack repository (currently 38 examples)
+- Porting all webpack tests from the webpack repository
+- Running all tests on Node 14, 16 and 18
+- Maintaining a separate ecosystem-ci repository for integration tests
 
 ## Nightly release
 
@@ -233,15 +227,15 @@ With the release of Rspack 0.2, we wholeheartedly thank all the contributors who
 
 Special thanks to:
 
-* [@TheLarkInn](https://github.com/TheLarkInn) and [@alexander-akait](https://github.com/alexander-akait), for answering and resolving many of Rspack team's questions about Webpack.
-* [@zackarychapple](https://github.com/zackarychapple), [@valorkin](https://github.com/valorkin), [@edusperoni](https://github.com/edusperoni), and [@Coly101](https://github.com/Coly010) for assisting the Rspack team with basic support for Angular and [@zackarychapple](https://github.com/zackarychapple) for reviewing this release blog.
-* [@suxin2017](https://github.com/suxin2017), for supporting System.js format and optional-dependency functionality in Rspack, as well as contributing a lot in terms of Windows compatibility.
-* [@faga295](https://github.com/faga295), for supporting the decompression code comment feature and rspack preview feature in Rspack.
-* [@lippzhang](https://github.com/lippzhang), for making numerous contributions in aligning Rspack's behavior with Webpack.
-* [@HerringtonDarkholme](https://github.com/HerringtonDarkholme), for allowing Rspack to use rspack.config.ts as a configuration file.
-* [@dhruvkelawala](https://github.com/dhruvkelawala), for implementing the builtins.provide feature in Rspack.
-* [@magic-akari](https://github.com/magic-akari), for supporting the `new URL("./foo", import.meta.url)` syntax in Rspack.
-* [@tuchg](https://github.com/tuchg), for supporting the packing of .wasm files in Rspack.
+- [@TheLarkInn](https://github.com/TheLarkInn) and [@alexander-akait](https://github.com/alexander-akait), for answering and resolving many of Rspack team's questions about Webpack.
+- [@zackarychapple](https://github.com/zackarychapple), [@valorkin](https://github.com/valorkin), [@edusperoni](https://github.com/edusperoni), and [@Coly101](https://github.com/Coly010) for assisting the Rspack team with basic support for Angular and [@zackarychapple](https://github.com/zackarychapple) for reviewing this release blog.
+- [@suxin2017](https://github.com/suxin2017), for supporting System.js format and optional-dependency functionality in Rspack, as well as contributing a lot in terms of Windows compatibility.
+- [@faga295](https://github.com/faga295), for supporting the decompression code comment feature and rspack preview feature in Rspack.
+- [@lippzhang](https://github.com/lippzhang), for making numerous contributions in aligning Rspack's behavior with Webpack.
+- [@HerringtonDarkholme](https://github.com/HerringtonDarkholme), for allowing Rspack to use rspack.config.ts as a configuration file.
+- [@dhruvkelawala](https://github.com/dhruvkelawala), for implementing the builtins.provide feature in Rspack.
+- [@magic-akari](https://github.com/magic-akari), for supporting the `new URL("./foo", import.meta.url)` syntax in Rspack.
+- [@tuchg](https://github.com/tuchg), for supporting the packing of .wasm files in Rspack.
 
 We also want to thank all the users of Rspack, for showing trust in such a young open-source project. Your valuable feedback plays a key role in our project improvements and optimizations. Your support and trust is our motivation to move forward.
 

@@ -1,10 +1,44 @@
 # Source: https://dev.writer.com/home/changelog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changelog
 
 > Stay up to date with the latest changes to the Writer API and SDKs.
 
 <Tip>To see the latest features and major improvements across the Writer platform, check out [What's new at Writer](https://support.writer.com/article/40-whats-new-at-writer).</Tip>
+
+<Update label="2025-12-02" description="External models and guardrails">
+  ## External models and guardrails now available
+
+  You can now add external models from providers like AWS Bedrock to use alongside Palmyra models in AI Studio. You can also configure guardrails from third-party providers such as AWS Bedrock to monitor and filter agent inputs and outputs, helping enforce content safety and compliance.
+
+  ### External models
+
+  Add models from AWS Bedrock directly in the AI Studio UI. Once configured, external models appear in the [list models endpoint](/api-reference/completion-api/list-models) and can be used in chat completions by specifying the model ID.
+
+  To use an external model, pass its model ID to the `model` parameter in your API requests:
+
+  ```bash  theme={null}
+  curl -X POST https://api.writer.com/v1/chat \
+    -H "Authorization: Bearer $WRITER_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "your-external-model-id",
+      "messages": [{"role": "user", "content": "Hello!"}]
+    }'
+  ```
+
+  For setup instructions, see the [external models guide](/home/external-models).
+
+  ### Guardrails
+
+  Configure AWS Bedrock Guardrails to enforce content safety, PII protection, and compliance policies across your AI agents. Guardrails can evaluate requests before, during, or after model calls.
+
+  For setup instructions, see the [guardrails guide](/home/guardrails).
+</Update>
 
 <Update label="2025-10-03" description="Python and Node SDK v2.3.2">
   ## Released version 2.3.2 of the Python and Node SDKs

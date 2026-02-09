@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-services-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible services:settings
 
 This command lets you configure [Services](/core-concepts/apps/deploying-apps/services) for a given [App](/core-concepts/apps/overview).
@@ -8,7 +12,7 @@ This command lets you configure [Services](/core-concepts/apps/deploying-apps/se
 
 ```
 Usage:
-  aptible services:settings [--app APP] SERVICE [--force-zero-downtime|--no-force-zero-downtime] [--simple-health-check|--no-simple-health-check] [--stop-timeout SECONDS]
+  aptible services:settings [--app APP] SERVICE [--force-zero-downtime|--no-force-zero-downtime] [--simple-health-check|--no-simple-health-check] [--restart-free-scaling|--no-restart-free-scaling] [--stop-timeout SECONDS]
 
 Options:
       [--app=APP]
@@ -16,6 +20,7 @@ Options:
   -r, [--remote=REMOTE]
       [--force-zero-downtime|--no-force-zero-downtime]
       [--simple-health-check|--no-simple-health-check]
+      [--restart-free-scaling|--no-restart-free-scaling]
       [--stop-timeout=SECONDS]
 ```
 
@@ -39,3 +44,7 @@ For Services without endpoints, you can force a zero downtime deployment strateg
 #### Simple Health Check
 
 When enabled, instead of using Docker healthchecks, Aptible will ensure your container can stay up for 30 seconds before continuing the deployment.
+
+#### Restart Free Scaling
+
+When enabled, scaling operations that only change the number of containers will not restart existing containers.

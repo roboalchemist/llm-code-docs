@@ -1,11 +1,31 @@
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/api-validation-errors.md
 
-# Source: https://docs.unstructured.io/api-reference/partition/api-validation-errors.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Endpoint errors
 
-For the [Unstructured Python SDK](/api-reference/partition/sdk-python),
-the [Unstructured Partition Endpoint](/api-reference/partition/overview) returns errors primarily through
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
+
+For the [Unstructured Python SDK](/api-reference/legacy-api/partition/sdk-python),
+the [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview) returns errors primarily through
 the `UnstructuredClientError` class (the base class for all errors raised by the Unstructured Python SDK) and
 the `HTTPValidationError` class (inherited from `UnstructuredClientError`). Less common errors are returned through the following classes:
 

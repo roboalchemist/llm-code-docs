@@ -1,0 +1,92 @@
+# Source: https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_account_private_key_file_not_defined.md
+
+---
+title: Service account private key file not defined
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > Code Security > Infrastructure as Code (IaC)
+  Security > IaC Security Rules > Service account private key file not defined
+---
+
+# Service account private key file not defined
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+{% alert level="danger" %}
+This product is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site). ().
+{% /alert %}
+
+{% /callout %}
+
+## Metadata{% #metadata %}
+
+**Id:** `ccc98ff7-68a7-436e-9218-185cb0b0b780`
+
+**Cloud Provider:** Kubernetes
+
+**Platform:** Kubernetes
+
+**Severity:** Medium
+
+**Category:** Encryption
+
+#### Learn More{% #learn-more %}
+
+- [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
+### Description{% #description %}
+
+When `kube-controller-manager` is used, the `--service-account-private-key-file` flag should be set. This rule checks the `containers` and `initContainers` `command` fields for `kube-controller-manager` and verifies the presence of the `--service-account-private-key-file` flag. Setting this flag ensures the controller manager has a private key to sign service account tokens.
+
+## Compliant Code Examples{% #compliant-code-examples %}
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: ["--service-account-private-key-file=/path/to/key/file.pem"]
+  restartPolicy: OnFailure
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager","--service-account-private-key-file=/path/to/key/file.pem"]
+      args: []
+  restartPolicy: OnFailure
+```
+
+## Non-Compliant Code Examples{% #non-compliant-code-examples %}
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: []
+  restartPolicy: OnFailure
+```

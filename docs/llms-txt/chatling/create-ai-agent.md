@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/whatsapp/create-ai-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a WhatsApp AI Agent
 
 > Learn how to create a WhatsApp AI agent in Chatling.

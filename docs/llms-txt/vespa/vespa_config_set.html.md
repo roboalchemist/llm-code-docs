@@ -54,7 +54,7 @@ $ vespa config set --local zone dev.aws-us-east-1c
 
 - [vespa config](vespa_config.html) - Manage persistent values for global flags
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/playht.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PlayHT
 
 > Text-to-speech services using PlayHT's WebSocket and HTTP APIs
@@ -48,8 +52,3 @@ Before using PlayHT TTS services, you need:
 
 * `PLAY_HT_USER_ID`: Your PlayHT user ID
 * `PLAY_HT_API_KEY`: Your PlayHT API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

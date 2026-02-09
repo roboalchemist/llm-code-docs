@@ -1,16 +1,16 @@
-# Source: https://mintlify.com/docs/deploy/route53-cloudfront.md
+# Source: https://www.mintlify.com/docs/deploy/route53-cloudfront.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AWS Route 53 and CloudFront
 
-> Deploy documentation on AWS with Route 53 DNS and CloudFront CDN.
+> Deploy documentation at a subpath on AWS with Route 53 DNS and CloudFront CDN.
 
-To host your documentation at a custom subpath such as `yoursite.com/docs` using AWS Route 53 and CloudFront, you need to configure your DNS provider to point to your CloudFront distribution.
+To host your documentation at a subpath such as `yoursite.com/docs` using AWS Route 53 and CloudFront, you must configure your DNS provider to point to your CloudFront distribution.
 
-## Repository structure
-
-Your documentation files must be organized within your repository to match your chosen subpath structure. For example, if you want your documentation at `yoursite.com/docs`, you would create a `docs/` directory with all of your documentation files.
-
-## High-level overview
+## Overview
 
 Route traffic to these paths with a Cache Policy of **CachingDisabled**:
 
@@ -112,7 +112,7 @@ For "Cache policy," select **CachingDisabled** to ensure these verification requ
   * `/.well-known/acme-challenge/*` - Required for Let's Encrypt certificate verification
 </Info>
 
-### Your custom subpath
+### Your subpath
 
 Create a behavior with a **Path pattern** of your chosen subpath, for example `/docs`, with **Origin and origin groups** pointing to the `.mintlify.dev` URL (in our case `acme.mintlify.dev`).
 
@@ -124,7 +124,7 @@ Create a behavior with a **Path pattern** of your chosen subpath, for example `/
     <img src="https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=0ce9e6db0d16c0c095abf1bc44e68833" alt="CloudFront &#x22;Create behavior&#x22; page with a &#x22;Path pattern&#x22; of &#x22;/docs/*&#x22; and &#x22;Origin and origin groups&#x22; pointing to the acme.mintlify.dev URL." data-og-width="1520" width="1520" data-og-height="1117" height="1117" data-path="images/cloudfront/behavior-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=280&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=7ab1bb41895bb54e7e6aa14f6f83ac50 280w, https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=560&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=bb5384522a0a391acc94fd837abd4351 560w, https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=840&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=d56f68b911e11ce2a022e5740f80a7fe 840w, https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=1100&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=51107e34efbe3a0724823989b7c19221 1100w, https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=1650&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=17211bee07269e1ca4e013a7e8414b8c 1650w, https://mintcdn.com/mintlify/in3v2q9tGvWcAFWD/images/cloudfront/behavior-1.png?w=2500&fit=max&auto=format&n=in3v2q9tGvWcAFWD&q=85&s=275446c0ebfc6ad984632f2071291185 2500w" />
 </Frame>
 
-### Your custom subpath with wildcard
+### Your subpath with wildcard
 
 Create a behavior with a **Path pattern** of your chosen subpath followed by `/*`, for example `/docs/*`, and **Origin and origin groups** pointing to the same `.mintlify.dev` URL.
 

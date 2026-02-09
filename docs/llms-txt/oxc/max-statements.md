@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/max-statements.md
 ---
-# eslint/max-statements&#x20;
 
 ### What it does
 

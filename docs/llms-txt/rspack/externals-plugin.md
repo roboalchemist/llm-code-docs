@@ -91,6 +91,6 @@ type ModuleFactoryCreateDataContextInfo = {
 };
 ```
 
-**Prevent bundling** of certain `import`ed packages and instead retrieve these *external dependencies* at runtime.
+**Prevent bundling** of certain `import`ed packages and instead retrieve these _external dependencies_ at runtime.
 
 For more details, refer to [externals](/config/externals.md#externals-1).

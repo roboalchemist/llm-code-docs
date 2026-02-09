@@ -92,7 +92,7 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [C](https://duckdb.org/docs/clients/c/overview)
 - [C++](https://duckdb.org/docs/clients/cpp)
 - [CLI](https://duckdb.org/docs/clients/cli/overview)
-- [Go](https://github.com/marcboeker/go-duckdb)
+- [Go](https://github.com/duckdb/duckdb-go)
 - [Haskell](https://github.com/Tritlo/duckdb-haskell)
 - [Julia](https://duckdb.org/docs/clients/julia)
 - [Node.js](https://duckdb.org/docs/stable/clients/node_neo/overview)
@@ -144,16 +144,20 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [Greybeam](https://www.greybeam.ai/) - Routes your Snowflake queries to a DuckDB powered warehouse to reduce costs and speed up queries.
 - [Datakit](https://datakit.page/) - The privacy-first data analysis toolkit.
 - [Tailpipe](https://github.com/turbot/tailpipe) - An open-source SIEM for instant log insights.
-- [ETLX](https://github.com/realdatadriven/etlx) - DuckDB-powered ETL tool written in Go, inspired by evidence.dev’s syntax. It uses a structured Markdown config where heading levels define nested blocks, yaml code blocks specify metadata, and sql code blocks handle data interactions. Enables clean, code-light orchestration with minimal setup.
+- [ETLX](https://github.com/realdatadriven/etlx) - DuckDB-powered ETL tool written in Go, inspired by evidence.dev's syntax. It uses a structured Markdown config where heading levels define nested blocks, yaml code blocks specify metadata, and sql code blocks handle data interactions. Enables clean, code-light orchestration with minimal setup.
 - [Hugr](https://hugr-lab.github.io/) - An data mesh platform and high-performance GraphQL backend powered by DuckDB.
 - [DuckDB OPFS Todo List App](https://github.com/markwylde/duckdb-opfs-todo-list) - A fully-functional todo list application that demonstrates DuckDB WASM OPFS (Origin Private File System) persistence using a pure functional programming approach.
 - [Apple Embedding Atlas](https://apple.github.io/embedding-atlas/) - A tool that provides interactive visualizations for large embeddings. Uses DuckDB.
-- [Sloggo](https://github.com/phare/sloggo) - Minimal RFC 5424 syslog collector and viewer based on DuckDB. Runs as a single, resource-friendly process. 
+- [Sloggo](https://github.com/phare/sloggo) - Minimal RFC 5424 syslog collector and viewer based on DuckDB. Runs as a single, resource-friendly process.
 - [Boilstream](https://boilstream.com/) - Manage with SQL, like for creating topics (tables) and derived topics (materialised views) - all landing on object storage in DuckLake as optimised Parquet files.
 - [Arc](https://github.com/Basekick-Labs/arc) - Time-series data warehouse built on DuckDB.
-- [Shaper](https://github.com/taleshape-com/shaper) - Open Source, SQL-driven Data Dashboards powered by DuckDB.
+- [Shaper](https://github.com/taleshape-com/shaper) - Open-source SQL-driven data dashboards, powering Taleshape, built on DuckDB.
 - [Cosmograph](https://cosmograph.app/) - Beautiful visualization and analytics right in the browser.
 - [Cloudspecs](https://cloudspecs.fyi/) - Live visualization tool that enables cloud system architects to answer specific instance selection questions, powered by DuckDB-Wasm.
+- [geol](https://github.com/opt-nc/geol) - A command line tool to efficiently show end-of-life dates for a number of products in your terminal using the [`endoflife.date`](https://endoflife.date) API, makes it possible to export the whole `endofife.date` database as a fully featured DuckDB file.
+- [Kavla](https://kavla.dev/) - A collaborative data analysis tool.
+- [Enso Analytics](https://www.ensoanalytics.com/) - Dual visual/textual programming language and analytics platform, allowing DuckDB to be used as a data engine for its visual analytics and low-code workflows.
+- [OpenSheet](https://opensheet.app) - Spreadsheet-style data tool with visual canvas, inline editing, and AI commands for SQL transformations.
 
 ## Backends
 
@@ -181,6 +185,7 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [SQLRooms](https://sqlrooms.org/) - An open-source react framework for single-node data analytics powered by DuckDB.
 - [Omilayers](https://github.com/dkioroglou/omilayers) - A Python library for efficient data management that wraps the APIs of SQLite and DuckDB and offers a high-level interface analytical tasks that involve fast storage, processing and retrieval of data.
 - [Unleasharp.DB.DuckDB](https://github.com/TraberSoftware/Unleasharp.DB.DuckDB) - Lightweight DuckDB query-building client for C#.
+- [Snowflake Emulator](https://github.com/nnnkkk7/snowflake-emulator) - A lightweight Snowflake emulator built with Go and DuckDB for local development and testing.
 
 ## DuckDB Clients and UIs
 
@@ -188,6 +193,7 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 
 - [Online DuckDB Shell](https://shell.duckdb.org/) - Online DuckDB shell powered by DuckDB-Wasm.
 - [SQL Workbench](https://sql-workbench.com) - DuckDB-Wasm based SQL Workbench for running queries on local or remote data, being able to show data as tables or visually as graphs, and sharing queries via URLs.
+- [DuckDB Terminal](https://terminal.sql-workbench.com/) - Online DuckDB shell powered by DuckDB WASM and Ghostty.
 - [SQL Workbench Embedded](https://embedded.sql-workbench.com) - A lightweight JavaScript library that turns SQL code blocks into interactive, browser-based database environments. Powered by DuckDB WASM.
 - [Sekuel Playground](https://sekuel.com/playground/) - Query your local Parquet, CSV, JSON. Your data will not be sent out of the device you are using.
 - [Codapi](https://codapi.org/duckdb/) - Embed executable code snippets directly into your product documentation, online course or blog post.
@@ -199,13 +205,15 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [Preswald](https://github.com/StructuredLabs/preswald) - WASM packager for Python-based interactive data apps.
 - [Medama](https://github.com/medama-io/medama) - Self-hostable, privacy-focused website analytics.
 - [TabulaStudio](https://tabulastudio.com) - Browser-only enterprise data analytics platform with Jupyter-style notebooks, AI-powered visualizations, and enterprise performance (10M+ rows/second). Direct access to files and live databases like (Neon and Supabase ) without servers, cloud uploads, or setup—your data never leaves your browser.
+- [dbxlite](https://dbxlite.com/) - DuckDB workbench for native & browser.
+- [Joinery](https://github.com/joinery-labs/joinery) - Privacy-first local data analytics with a modern SQL editor, multi-format support (CSV, Excel, JSON, Parquet), and parameterized saved queries. Available as browser app and Tauri desktop client.
 
 ## SQL Clients and IDE that Support DuckDB
 
 - [Harlequin](https://harlequin.sh) - The DuckDB IDE (TUI) for your terminal.
 - [qStudio](https://www.timestored.com/qstudio/) - A free SQL tool specialized for data analysts. It runs on every operating system and allows easy browsing of tables and charting of results.
 - [DuckDB SQL Tools](https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.duckdb-sql-tools) - Free DuckDB SQL Tools for VS Code IDE. [Premium version available](https://github.com/RandomFractals/pro-data-tools/blob/main/duckdb-tools.md#duckdb-pro-tools) with advanced features.
-- [VSCode SQLTools (free)](https://marketplace.visualstudio.com/items?itemName=Evidence.sqltools-duckdb-driver) - Free open-source VSCode extension to query and explore your DuckDB databases with latest DuckDB support.
+- [VSCode SQLTools](https://marketplace.visualstudio.com/items?itemName=Evidence.sqltools-duckdb-driver) - Free open-source VSCode extension to query and explore your DuckDB databases with latest DuckDB support.
 - [DBeaver](https://dbeaver.com) - DBeaver is a universal database access and development tool that can be used to connect almost any type of database.
 - [DataGrip](https://www.jetbrains.com/datagrip/) - Paid SQL IDE by JetBrains that supports many different database technologies, including DuckDB.
 - [Duckling](https://github.com/l1xnan/duckling) - A fast viewer for CSV/Parquet files and DuckDB/SQLite, based on Tauri.
@@ -226,8 +234,9 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [duckdb-embedding-search](https://github.com/patricktrainer/duckdb-embedding-search) - A search engine for DuckDB that uses embedding vectors to find similar documents.
 - [DuckDB PyPI stats live dashboard](https://duckdbstats.com/) - Live dashboard of PyPI downloads using DuckDB, dbt, Evidence and MotherDuck with code source to build your own.
 - [PyStack't](https://github.com/LienBosmans/pystackt) - Python package that supports data preparation for object-centric process mining.
-- [Georgia State University Book Prices](https://crimede-coder.com/graphs/GSUBooksQuery) - DuckDB powered WASM app where you can search how much students spend on books at Georgia State University
-- [duckdb-claude-slack](https://github.com/sidequery/duckdb-claude-slack) - A Slack data analysis agent powered by DuckDB and Claude Code
+- [Georgia State University Book Prices](https://crimede-coder.com/graphs/GSUBooksQuery) - DuckDB powered WASM app where you can search how much students spend on books at Georgia State University.
+- [duckdb-claude-slack](https://github.com/sidequery/duckdb-claude-slack) - A Slack data analysis agent powered by DuckDB and Claude Code.
+- [Ducklings](https://github.com/tobilg/ducklings) - A minimal DuckDB WASM build for browsers and serverless environments like Cloudflare Workers.
 
 ## Integrations
 
@@ -256,6 +265,7 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [duckdb-teradata](https://github.com/duckdb/duckdb-teradata) - Teradata connector.
 - [Kotlin DataFrame](https://kotlin.github.io/dataframe/duckdb.html) - Supports reading from DuckDB databases using JDBC.
 - [Sidemantic](https://github.com/sidequery/sidemantic) - A semantic layer with DuckDB integration.
+- [Cloudflare R2 Data Catalog connector](https://developers.cloudflare.com/r2/data-catalog/config-examples/duckdb/) - Connect to Cloudflare R2 Data Catalog with DuckDB.
 
 ## Client-Server Setups
 
@@ -269,6 +279,7 @@ The DuckLake file format was released on 2025-05-27: see the [website](https://d
 - [Hatch](https://github.com/TFMV/hatch) - A Go-based implementation of a DuckDB Arrow Flight SQL Server.
 - [Termux DuckDB package](https://packages.termux.dev/apt/termux-main/pool/main/libd/libduckdb/) - DuckDB CLI client for the Termux Android terminal emulator.
 - [pg_lake](https://github.com/snowflake-labs/pg_lake) - `pg_lake` integrates Iceberg and data lake files into Postgres. Uses DuckDB to execute queries.
+- [AliSQL](https://github.com/alibaba/AliSQL) - A MySQL branch originated from Alibaba Group. Integrates DuckDB as a native storage engine.
 
 ## Extensions
 
@@ -285,7 +296,9 @@ Official DuckDB extensions, which can installed via `INSTALL ⟨extension_name�
 - [`fts`](https://duckdb.org/docs/extensions/full_text_search) - To support full-text search.
 - [`iceberg`](https://github.com/duckdb/duckdb_iceberg) - For reading Iceberg tables.
 - [`inet`](https://github.com/duckdb/duckdb_inet) - For storing and handling IPv4 and IPv6 Internet addresses.
+- [`json`](https://duckdb.org/docs/stable/data/json/overview) - For reading and writing JSON data.
 - [`mysql`](https://duckdb.org/docs/extensions/mysql) - To read from and write to MySQL databases.
+- [`parquet`](https://duckdb.org/docs/stable/data/parquet/overview) - For reading and writing Parquet data.
 - [`postgres`](https://duckdb.org/docs/extensions/postgres) - To read from and write to PostgreSQL databases.
 - [`spatial`](https://duckdb.org/docs/extensions/spatial) - Enables geospatial processing.
 - [`sqlite`](https://duckdb.org/docs/extensions/sqlite) - To read from and write to SQLite databases.
@@ -334,6 +347,7 @@ Community-contributed DuckDB extensions, which can be installed via `INSTALL ⟨
 - [FlockMTL](https://github.com/dsg-polymtl/flockmtl) - Integrate language model (LLM) capabilities directly into your queries and workflows.
 - [ERPL Web](https://github.com/DataZooDE/erpl-web) - ERPL Web is a DuckDB extension that connects API-based ecosystems via standard interfaces like OData, GraphQL, and REST.
 - [quack-zig](https://github.com/mlafeldt/quack-zig) - The infamous DuckDB quack extension rewritten in C and built with Zig. Proof that you can develop DuckDB extensions without drowning in boilerplate.
+- [DuckDB.ExtensionKit](https://github.com/Giorgi/DuckDB.ExtensionKit) - Build native DuckDB extensions in C#.
 
 ### Extension Statistics
 

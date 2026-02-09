@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/integrations/tools/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Helicone MCP Server
 
 > Query your Helicone observability data directly from MCP-compatible AI assistants using the Helicone MCP server.
@@ -170,8 +174,3 @@ Both tools support comprehensive filtering options:
 * [Custom Properties](/features/advanced-usage/custom-properties) - Add metadata to your requests for better filtering
 * [Sessions](/features/sessions) - Group related requests into sessions
 * [User Metrics](/features/advanced-usage/user-metrics) - Track usage by user
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

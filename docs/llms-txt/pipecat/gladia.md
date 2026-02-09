@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/stt/gladia.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gladia
 
 > Speech-to-text service implementation using Gladia's API
@@ -48,8 +52,3 @@ Before using Gladia STT services, you need:
 
 * `GLADIA_API_KEY`: Your Gladia API key for authentication
 * `GLADIA_REGION`: Your preferred region (optional, defaults to "eu-west")
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

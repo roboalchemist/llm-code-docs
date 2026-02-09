@@ -2,6 +2,10 @@
 
 # Source: https://docs.lunary.ai/docs/integrations/javascript/manual.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Usage
 
 If your application requires more flexibility and you can't use the `wrap` helpers, you can use the `trackEvent` method directly.
@@ -118,8 +122,3 @@ myAgentFunction('some input')
   .then(output => console.log('Output:', output))
   .catch(error => console.error('Error:', error));
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

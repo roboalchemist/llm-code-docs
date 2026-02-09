@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/jsonsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JSON RAG Search
 
 > The `JSONSearchTool` is designed to search JSON files and return the most relevant results.
@@ -63,10 +67,10 @@ tool = JSONSearchTool(
             },
         },
         "embedding_model": {
-            "provider": "google", # or openai, ollama, ...
+            "provider": "google-generativeai", # or openai, ollama, ...
             "config": {
-                "model": "models/embedding-001",
-                "task_type": "retrieval_document",
+                "model_name": "gemini-embedding-001",
+                "task_type": "RETRIEVAL_DOCUMENT",
                 # Further customization options can be added here.
             },
         },

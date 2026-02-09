@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/accounts/service-accounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Service Accounts
 
 > How to manage and use service accounts in Fireworks
@@ -8,20 +12,48 @@ Service accounts in Fireworks allow applications, scripts, and automated systems
 
 Service accounts can take actions using an API key, like creating deployments, running models or creating datasets (see [API reference](https://fireworks.ai/docs/api-reference/introduction)). Service accounts cannot login through the web interface or use OIDC tokens.
 
+To manage service accounts via the Fireworks web UI visit [app.fireworks.ai/account/users](https://app.fireworks.ai/account/users).
+
 ## Creating a Service Account
 
 Using our firectl you can create service accounts
 
 ```bash  theme={null}
-firectl create user --user-id "my-service-account" --service-account
+firectl user create --user-id "my-service-account" --service-account
 ```
 
-## Creating an API Key for Service Account
+## Creating an API Key for a Service Account
 
-Using our firectl you can create an api key on behalf of a service account
+Using firectl you can create an API key on behalf of a service account:
 
 ```bash  theme={null}
-firectl create api-key --service-account "my-service-account"
+firectl api-key create --service-account "my-service-account"
+```
+
+## Roles
+
+You can assign a role when creating a service account using the `--role` flag:
+
+```bash  theme={null}
+firectl user create --user-id "my-service-account" --service-account --role=contributor
+```
+
+If not specified, the default service account role is `user`.
+
+To change the role of an existing service account, use the update command:
+
+```bash  theme={null}
+firectl user update my-service-account --role=inference-user
+```
+
+See [Managing users](/accounts/users) for available roles.
+
+## Listing Service Accounts
+
+To list all service accounts in your account:
+
+```bash  theme={null}
+firectl user list --filter 'service_account=true'
 ```
 
 ## Billing

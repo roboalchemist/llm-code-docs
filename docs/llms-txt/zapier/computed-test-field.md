@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/computed-test-field.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compute a field from the data of the Test API call
 
 > Zapier doesn't store the responses from the test API call for OAuth v2 and session authentication. Using computed fields, you can use data from a test API call later in your Zapier integration.

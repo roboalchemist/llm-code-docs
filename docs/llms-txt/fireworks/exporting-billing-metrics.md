@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/accounts/exporting-billing-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Exporting Billing Metrics
 
 > Export billing and usage metrics for all Fireworks services
@@ -14,10 +18,10 @@ Use the Fireworks CLI to export a billing CSV that includes all usage:
 
 ```bash  theme={null}
 # Authenticate (once)
-firectl auth login
+firectl login
 
 # Export billing metrics to CSV
-firectl export billing-metrics
+firectl billing export-metrics
 ```
 
 ## Examples
@@ -25,13 +29,13 @@ firectl export billing-metrics
 Export all billing metrics for an account:
 
 ```bash  theme={null}
-firectl export billing-metrics
+firectl billing export-metrics
 ```
 
 Export metrics for a specific date range and filename:
 
 ```bash  theme={null}
-firectl export billing-metrics \
+firectl billing export-metrics \
   --start-time "2025-01-01" \
   --end-time "2025-01-31" \
   --filename january_metrics.csv
@@ -66,14 +70,15 @@ You can automate exports in cron jobs and load the CSV into your internal system
 
 ```bash  theme={null}
 # Example: Daily export with dated filename
-firectl export billing-metrics \
+firectl billing export-metrics \
   --start-time "$(date -v-1d '+%Y-%m-%d')" \
   --end-time "$(date '+%Y-%m-%d')" \
   --filename "billing_$(date '+%Y%m%d').csv"
 ```
 
 <Tip>
-  Run `firectl export billing-metrics --help` to see all available flags and options.
+  Run `firectl billing export-metrics --help` to see all available flags and
+  options.
 </Tip>
 
 ## Coverage
@@ -86,7 +91,9 @@ This export includes:
 * **Other services**: All billable Fireworks services
 
 <Note>
-  For real-time monitoring of on-demand deployment performance metrics (latency, throughput, etc.), use the [Prometheus metrics endpoint](/deployments/exporting-metrics) instead.
+  For real-time monitoring of on-demand deployment performance metrics (latency,
+  throughput, etc.), use the [Prometheus metrics
+  endpoint](/deployments/exporting-metrics) instead.
 </Note>
 
 ## See also

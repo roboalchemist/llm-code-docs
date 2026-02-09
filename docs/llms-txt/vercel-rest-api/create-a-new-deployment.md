@@ -1,677 +1,593 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/deployments/create-a-new-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a new deployment
 
 > Create a new deployment with all the required and intended data. If the deployment is not a git deployment, all files must be provided with the request, either referenced or inlined. Additionally, a deployment id can be specified to redeploy a previous deployment.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v13/deployments
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v13/deployments
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        forceNew:
+  /v13/deployments:
+    post:
+      tags:
+        - deployments
+      summary: Create a new deployment
+      description: >-
+        Create a new deployment with all the required and intended data. If the
+        deployment is not a git deployment, all files must be provided with the
+        request, either referenced or inlined. Additionally, a deployment id can
+        be specified to redeploy a previous deployment.
+      operationId: createDeployment
+      parameters:
+        - name: forceNew
+          description: >-
+            Forces a new deployment even if there is a previous similar
+            deployment
+          in: query
           schema:
-            - type: enum<string>
-              enum:
-                - '0'
-                - '1'
-              description: >-
-                Forces a new deployment even if there is a previous similar
-                deployment
-        skipAutoDetectionConfirmation:
+            description: >-
+              Forces a new deployment even if there is a previous similar
+              deployment
+            enum:
+              - '0'
+              - '1'
+        - name: skipAutoDetectionConfirmation
+          description: >-
+            Allows to skip framework detection so the API would not fail to ask
+            for confirmation
+          in: query
           schema:
-            - type: enum<string>
-              enum:
-                - '0'
-                - '1'
-              description: >-
-                Allows to skip framework detection so the API would not fail to
-                ask for confirmation
-        teamId:
+            description: >-
+              Allows to skip framework detection so the API would not fail to
+              ask for confirmation
+            enum:
+              - '0'
+              - '1'
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              customEnvironmentSlugOrId:
-                allOf:
-                  - description: >-
-                      Deploy to a custom environment, which will override the
-                      default environment
-                    type: string
-              deploymentId:
-                allOf:
-                  - description: An deployment id for an existing deployment to redeploy
-                    type: string
-                    example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
-              files:
-                allOf:
-                  - description: A list of objects with the files to be deployed
-                    items:
-                      oneOf:
-                        - additionalProperties: false
-                          description: >-
-                            Used in the case you want to inline a file inside
-                            the request
-                          properties:
-                            data:
-                              description: >-
-                                The file content, it could be either a `base64`
-                                (useful for images, etc.) of the files or the
-                                plain content for source code
-                              type: string
-                            encoding:
-                              description: >-
-                                The file content encoding, it could be either a
-                                base64 (useful for images, etc.) of the files or
-                                the plain text for source code.
-                              enum:
-                                - base64
-                                - utf-8
-                            file:
-                              description: The file name including the whole path
-                              example: folder/file.js
-                              type: string
-                          required:
-                            - file
-                            - data
-                          title: InlinedFile
-                          type: object
-                        - additionalProperties: false
-                          description: >-
-                            Used in the case you want to reference a file that
-                            was already uploaded
-                          properties:
-                            file:
-                              description: The file path relative to the project root
-                              example: folder/file.js
-                              type: string
-                            sha:
-                              description: >-
-                                The file contents hashed with SHA1, used to
-                                check the integrity
-                              type: string
-                            size:
-                              description: The file size in bytes
-                              type: integer
-                          required:
-                            - file
-                          title: UploadedFile
-                          type: object
-                    type: array
-              gitMetadata:
-                allOf:
-                  - description: >-
-                      Populates initial git metadata for different git
-                      providers.
-                    additionalProperties: false
-                    type: object
-                    properties:
-                      remoteUrl:
-                        type: string
-                        description: The git repository's remote origin url
-                        example: https://github.com/vercel/next.js
-                      commitAuthorName:
-                        type: string
-                        description: The name of the author of the commit
-                        example: kyliau
-                      commitAuthorEmail:
-                        type: string
-                        description: The email of the author of the commit
-                        example: kyliau@example.com
-                      commitMessage:
-                        type: string
-                        description: The commit message
-                        example: >-
-                          add method to measure Interaction to Next Paint (INP)
-                          (#36490)
-                      commitRef:
-                        type: string
-                        description: The branch on which the commit was made
-                        example: main
-                      commitSha:
-                        type: string
-                        description: The hash of the commit
-                        example: dc36199b2234c6586ebe05ec94078a895c707e29
-                      dirty:
-                        type: boolean
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              additionalProperties: false
+              properties:
+                customEnvironmentSlugOrId:
+                  description: >-
+                    Deploy to a custom environment, which will override the
+                    default environment
+                  type: string
+                deploymentId:
+                  description: An deployment id for an existing deployment to redeploy
+                  type: string
+                  example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
+                files:
+                  description: A list of objects with the files to be deployed
+                  items:
+                    oneOf:
+                      - additionalProperties: false
                         description: >-
-                          Whether or not there have been modifications to the
-                          working tree since the latest commit
-                        example: true
-                      ci:
-                        type: boolean
-                        description: True if process.env.CI was set when deploying
-                        example: true
-                      ciType:
-                        type: string
-                        description: The type of CI system used
-                        example: github-actions
-                      ciGitProviderUsername:
-                        type: string
+                          Used in the case you want to inline a file inside the
+                          request
+                        properties:
+                          data:
+                            description: >-
+                              The file content, it could be either a `base64`
+                              (useful for images, etc.) of the files or the
+                              plain content for source code
+                            type: string
+                          encoding:
+                            description: >-
+                              The file content encoding, it could be either a
+                              base64 (useful for images, etc.) of the files or
+                              the plain text for source code.
+                            enum:
+                              - base64
+                              - utf-8
+                          file:
+                            description: The file name including the whole path
+                            example: folder/file.js
+                            type: string
+                        required:
+                          - file
+                          - data
+                        title: InlinedFile
+                        type: object
+                      - additionalProperties: false
                         description: >-
-                          The username used for the Git Provider (e.g. GitHub)
-                          if their CI (e.g. GitHub Actions) was used, if
-                          available
-                        example: rauchg
-                      ciGitRepoVisibility:
-                        type: string
-                        description: >-
-                          The visibility of the Git repository if their CI (e.g.
-                          GitHub Actions) was used, if available
-                        example: private
-              gitSource:
-                allOf:
-                  - description: >-
-                      Defines the Git Repository source to be deployed. This
-                      property can not be used in combination with `files`.
-                    anyOf:
-                      - properties:
-                          ref:
+                          Used in the case you want to reference a file that was
+                          already uploaded
+                        properties:
+                          file:
+                            description: The file path relative to the project root
+                            example: folder/file.js
                             type: string
-                            example: main
-                          repoId:
-                            oneOf:
-                              - type: number
-                              - type: string
-                            example: 123456789
                           sha:
+                            description: >-
+                              The file contents hashed with SHA1, used to check
+                              the integrity
                             type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - github
-                            type: string
+                          size:
+                            description: The file size in bytes
+                            type: integer
                         required:
-                          - type
-                          - ref
-                          - repoId
+                          - file
+                        title: UploadedFile
                         type: object
-                      - properties:
-                          org:
-                            type: string
-                            example: vercel
-                          ref:
-                            type: string
-                            example: main
-                          repo:
-                            type: string
-                            example: next.js
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - github
-                            type: string
-                        required:
-                          - type
-                          - ref
-                          - org
-                          - repo
-                        type: object
-                      - properties:
-                          ref:
-                            type: string
-                            example: main
-                          repoId:
-                            oneOf:
-                              - type: number
-                              - type: string
-                            example: 123456789
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - github-limited
-                            type: string
-                        required:
-                          - type
-                          - ref
-                          - repoId
-                        type: object
-                      - properties:
-                          org:
-                            type: string
-                            example: vercel
-                          ref:
-                            type: string
-                            example: main
-                          repo:
-                            type: string
-                            example: next.js
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - github-limited
-                            type: string
-                        required:
-                          - type
-                          - ref
-                          - org
-                          - repo
-                        type: object
-                      - properties:
-                          projectId:
-                            oneOf:
-                              - type: number
-                              - type: string
-                            example: 987654321
-                          ref:
-                            type: string
-                            example: main
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - gitlab
-                            type: string
-                        required:
-                          - type
-                          - ref
-                          - projectId
-                        type: object
-                      - properties:
-                          ref:
-                            type: string
-                            example: main
-                          repoUuid:
-                            type: string
-                            example: 123e4567-e89b-12d3-a456-426614174000
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          type:
-                            enum:
-                              - bitbucket
-                            type: string
-                          workspaceUuid:
-                            type: string
-                            example: 987e6543-e21b-12d3-a456-426614174000
-                        required:
-                          - type
-                          - ref
-                          - repoUuid
-                        type: object
-                      - properties:
-                          owner:
-                            type: string
-                            example: bitbucket_user
-                          ref:
-                            type: string
-                            example: main
-                          sha:
-                            type: string
-                            example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                          slug:
-                            type: string
-                            example: my-awesome-project
-                          type:
-                            enum:
-                              - bitbucket
-                            type: string
-                        required:
-                          - type
-                          - ref
-                          - owner
-                          - slug
-                        type: object
-              meta:
-                allOf:
-                  - additionalProperties:
-                      maxLength: 65536
+                  type: array
+                gitMetadata:
+                  description: Populates initial git metadata for different git providers.
+                  additionalProperties: false
+                  type: object
+                  properties:
+                    remoteUrl:
                       type: string
-                    description: >-
-                      An object containing the deployment's metadata. Multiple
-                      key-value pairs can be attached to a deployment
-                    example:
-                      foo: bar
-                    maxProperties: 100
-                    type: object
-              monorepoManager:
-                allOf:
-                  - description: >-
-                      The monorepo manager that is being used for this
-                      deployment. When `null` is used no monorepo manager is
-                      selected
+                      description: The git repository's remote origin url
+                      example: https://github.com/vercel/next.js
+                    commitAuthorName:
+                      type: string
+                      description: The name of the author of the commit
+                      example: kyliau
+                    commitAuthorEmail:
+                      type: string
+                      description: The email of the author of the commit
+                      example: kyliau@example.com
+                    commitMessage:
+                      type: string
+                      description: The commit message
+                      example: >-
+                        add method to measure Interaction to Next Paint (INP)
+                        (#36490)
+                    commitRef:
+                      type: string
+                      description: The branch on which the commit was made
+                      example: main
+                    commitSha:
+                      type: string
+                      description: The hash of the commit
+                      example: dc36199b2234c6586ebe05ec94078a895c707e29
+                    dirty:
+                      type: boolean
+                      description: >-
+                        Whether or not there have been modifications to the
+                        working tree since the latest commit
+                      example: true
+                    ci:
+                      type: boolean
+                      description: True if process.env.CI was set when deploying
+                      example: true
+                    ciType:
+                      type: string
+                      description: The type of CI system used
+                      example: github-actions
+                    ciGitProviderUsername:
+                      type: string
+                      description: >-
+                        The username used for the Git Provider (e.g. GitHub) if
+                        their CI (e.g. GitHub Actions) was used, if available
+                      example: rauchg
+                    ciGitRepoVisibility:
+                      type: string
+                      description: >-
+                        The visibility of the Git repository if their CI (e.g.
+                        GitHub Actions) was used, if available
+                      example: private
+                gitSource:
+                  description: >-
+                    Defines the Git Repository source to be deployed. This
+                    property can not be used in combination with `files`.
+                  anyOf:
+                    - properties:
+                        ref:
+                          type: string
+                          example: main
+                        repoId:
+                          oneOf:
+                            - type: number
+                            - type: string
+                          example: 123456789
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - github
+                      required:
+                        - type
+                        - ref
+                        - repoId
+                      type: object
+                    - properties:
+                        org:
+                          type: string
+                          example: vercel
+                        ref:
+                          type: string
+                          example: main
+                        repo:
+                          type: string
+                          example: next.js
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - github
+                      required:
+                        - type
+                        - ref
+                        - org
+                        - repo
+                      type: object
+                    - properties:
+                        ref:
+                          type: string
+                          example: main
+                        repoId:
+                          oneOf:
+                            - type: number
+                            - type: string
+                          example: 123456789
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - github-limited
+                      required:
+                        - type
+                        - ref
+                        - repoId
+                      type: object
+                    - properties:
+                        org:
+                          type: string
+                          example: vercel
+                        ref:
+                          type: string
+                          example: main
+                        repo:
+                          type: string
+                          example: next.js
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - github-limited
+                      required:
+                        - type
+                        - ref
+                        - org
+                        - repo
+                      type: object
+                    - properties:
+                        projectId:
+                          oneOf:
+                            - type: number
+                            - type: string
+                          example: 987654321
+                        ref:
+                          type: string
+                          example: main
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - gitlab
+                      required:
+                        - type
+                        - ref
+                        - projectId
+                      type: object
+                    - properties:
+                        ref:
+                          type: string
+                          example: main
+                        repoUuid:
+                          type: string
+                          example: 123e4567-e89b-12d3-a456-426614174000
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        type:
+                          type: string
+                          enum:
+                            - bitbucket
+                        workspaceUuid:
+                          type: string
+                          example: 987e6543-e21b-12d3-a456-426614174000
+                      required:
+                        - type
+                        - ref
+                        - repoUuid
+                      type: object
+                    - properties:
+                        owner:
+                          type: string
+                          example: bitbucket_user
+                        ref:
+                          type: string
+                          example: main
+                        sha:
+                          type: string
+                          example: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+                        slug:
+                          type: string
+                          example: my-awesome-project
+                        type:
+                          type: string
+                          enum:
+                            - bitbucket
+                      required:
+                        - type
+                        - ref
+                        - owner
+                        - slug
+                      type: object
+                meta:
+                  additionalProperties:
+                    maxLength: 65536
                     type: string
+                  description: >-
+                    An object containing the deployment's metadata. Multiple
+                    key-value pairs can be attached to a deployment
+                  example:
+                    foo: bar
+                  maxProperties: 100
+                  type: object
+                monorepoManager:
+                  description: >-
+                    The monorepo manager that is being used for this deployment.
+                    When `null` is used no monorepo manager is selected
+                  type: string
+                  nullable: true
+                name:
+                  description: A string with the project name used in the deployment URL
+                  example: my-instant-deployment
+                  type: string
+                project:
+                  description: >-
+                    The target project identifier in which the deployment will
+                    be created. When defined, this parameter overrides name
+                  example: my-deployment-project
+                  type: string
+                projectSettings:
+                  additionalProperties: false
+                  description: >-
+                    Project settings that will be applied to the deployment. It
+                    is required for the first deployment of a project and will
+                    be saved for any following deployments
+                  properties:
+                    buildCommand:
+                      description: >-
+                        The build command for this project. When `null` is used
+                        this value will be automatically detected
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                      example: next build
+                    commandForIgnoringBuildStep:
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                    devCommand:
+                      description: >-
+                        The dev command for this project. When `null` is used
+                        this value will be automatically detected
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                    framework:
+                      description: >-
+                        The framework that is being used for this project. When
+                        `null` is used no framework is selected
+                      type: string
+                      enum:
+                        - null
+                        - blitzjs
+                        - nextjs
+                        - gatsby
+                        - remix
+                        - react-router
+                        - astro
+                        - hexo
+                        - eleventy
+                        - docusaurus-2
+                        - docusaurus
+                        - preact
+                        - solidstart-1
+                        - solidstart
+                        - dojo
+                        - ember
+                        - vue
+                        - scully
+                        - ionic-angular
+                        - angular
+                        - polymer
+                        - svelte
+                        - sveltekit
+                        - sveltekit-1
+                        - ionic-react
+                        - create-react-app
+                        - gridsome
+                        - umijs
+                        - sapper
+                        - saber
+                        - stencil
+                        - nuxtjs
+                        - redwoodjs
+                        - hugo
+                        - jekyll
+                        - brunch
+                        - middleman
+                        - zola
+                        - hydrogen
+                        - vite
+                        - tanstack-start
+                        - vitepress
+                        - vuepress
+                        - parcel
+                        - fastapi
+                        - flask
+                        - fasthtml
+                        - sanity-v3
+                        - sanity
+                        - storybook
+                        - nitro
+                        - hono
+                        - express
+                        - h3
+                        - koa
+                        - nestjs
+                        - elysia
+                        - fastify
+                        - xmcp
+                        - python
+                        - ruby
+                        - rust
+                        - node
+                        - services
+                      nullable: true
+                    installCommand:
+                      description: >-
+                        The install command for this project. When `null` is
+                        used this value will be automatically detected
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                      example: pnpm install
+                    nodeVersion:
+                      description: >-
+                        Override the Node.js version that should be used for
+                        this deployment
+                      enum:
+                        - 24.x
+                        - 22.x
+                        - 20.x
+                        - 18.x
+                        - 16.x
+                        - 14.x
+                        - 12.x
+                        - 10.x
+                        - 8.10.x
+                      type: string
+                    outputDirectory:
+                      description: >-
+                        The output directory of the project. When `null` is used
+                        this value will be automatically detected
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                    rootDirectory:
+                      description: >-
+                        The name of a directory or relative path to the source
+                        code of your project. When `null` is used it will
+                        default to the project root
+                      maxLength: 256
+                      type: string
+                      nullable: true
+                    serverlessFunctionRegion:
+                      description: >-
+                        The region to deploy Serverless Functions in this
+                        project
+                      maxLength: 4
+                      type: string
+                      nullable: true
+                    skipGitConnectDuringLink:
+                      description: >-
+                        Opts-out of the message prompting a CLI user to connect
+                        a Git repository in `vercel link`.
+                      type: boolean
+                      deprecated: true
+                    sourceFilesOutsideRootDirectory:
+                      description: >-
+                        Indicates if there are source files outside of the root
+                        directory, typically used for monorepos
+                      type: boolean
+                  type: object
+                target:
+                  description: >-
+                    Either not defined, `staging`, `production`, or a custom
+                    environment identifier. If `staging`, a staging alias in the
+                    format `<project>-<team>.vercel.app` will be assigned. If
+                    `production`, any aliases defined in `alias` will be
+                    assigned. If omitted, the target will be `preview`.
+                  type: string
+                  example: production
+                withLatestCommit:
+                  description: >-
+                    When `true` and `deploymentId` is passed in, the sha from
+                    the previous deployment's `gitSource` is removed forcing the
+                    latest commit to be used.
+                  type: boolean
+              required:
+                - name
+              type: object
+        required: true
+      responses:
+        '200':
+          description: The successfully created deployment
+          content:
+            application/json:
+              schema:
+                properties:
+                  aliasAssignedAt:
                     nullable: true
-              name:
-                allOf:
-                  - description: A string with the project name used in the deployment URL
-                    example: my-instant-deployment
-                    type: string
-              project:
-                allOf:
-                  - description: >-
-                      The target project identifier in which the deployment will
-                      be created. When defined, this parameter overrides name
-                    example: my-deployment-project
-                    type: string
-              projectSettings:
-                allOf:
-                  - additionalProperties: false
-                    description: >-
-                      Project settings that will be applied to the deployment.
-                      It is required for the first deployment of a project and
-                      will be saved for any following deployments
-                    properties:
-                      buildCommand:
-                        description: >-
-                          The build command for this project. When `null` is
-                          used this value will be automatically detected
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                        example: next build
-                      commandForIgnoringBuildStep:
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                      devCommand:
-                        description: >-
-                          The dev command for this project. When `null` is used
-                          this value will be automatically detected
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                      framework:
-                        description: >-
-                          The framework that is being used for this project.
-                          When `null` is used no framework is selected
-                        type: string
-                        enum:
-                          - null
-                          - blitzjs
-                          - nextjs
-                          - gatsby
-                          - remix
-                          - react-router
-                          - astro
-                          - hexo
-                          - eleventy
-                          - docusaurus-2
-                          - docusaurus
-                          - preact
-                          - solidstart-1
-                          - solidstart
-                          - dojo
-                          - ember
-                          - vue
-                          - scully
-                          - ionic-angular
-                          - angular
-                          - polymer
-                          - svelte
-                          - sveltekit
-                          - sveltekit-1
-                          - ionic-react
-                          - create-react-app
-                          - gridsome
-                          - umijs
-                          - sapper
-                          - saber
-                          - stencil
-                          - nuxtjs
-                          - redwoodjs
-                          - hugo
-                          - jekyll
-                          - brunch
-                          - middleman
-                          - zola
-                          - hydrogen
-                          - vite
-                          - vitepress
-                          - vuepress
-                          - parcel
-                          - fastapi
-                          - flask
-                          - fasthtml
-                          - sanity-v3
-                          - sanity
-                          - storybook
-                          - nitro
-                          - hono
-                          - express
-                          - h3
-                          - nestjs
-                          - fastify
-                          - xmcp
-                        nullable: true
-                      installCommand:
-                        description: >-
-                          The install command for this project. When `null` is
-                          used this value will be automatically detected
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                        example: pnpm install
-                      nodeVersion:
-                        description: >-
-                          Override the Node.js version that should be used for
-                          this deployment
-                        enum:
-                          - 22.x
-                          - 20.x
-                          - 18.x
-                          - 16.x
-                          - 14.x
-                          - 12.x
-                          - 10.x
-                          - 8.10.x
-                        type: string
-                      outputDirectory:
-                        description: >-
-                          The output directory of the project. When `null` is
-                          used this value will be automatically detected
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                      rootDirectory:
-                        description: >-
-                          The name of a directory or relative path to the source
-                          code of your project. When `null` is used it will
-                          default to the project root
-                        maxLength: 256
-                        type: string
-                        nullable: true
-                      serverlessFunctionRegion:
-                        description: >-
-                          The region to deploy Serverless Functions in this
-                          project
-                        maxLength: 4
-                        type: string
-                        nullable: true
-                      skipGitConnectDuringLink:
-                        description: >-
-                          Opts-out of the message prompting a CLI user to
-                          connect a Git repository in `vercel link`.
-                        type: boolean
-                        deprecated: true
-                      sourceFilesOutsideRootDirectory:
-                        description: >-
-                          Indicates if there are source files outside of the
-                          root directory, typically used for monorepos
-                        type: boolean
-                    type: object
-              target:
-                allOf:
-                  - description: >-
-                      Either not defined, `staging`, `production`, or a custom
-                      environment identifier. If `staging`, a staging alias in
-                      the format `<project>-<team>.vercel.app` will be assigned.
-                      If `production`, any aliases defined in `alias` will be
-                      assigned. If omitted, the target will be `preview`.
-                    type: string
-                    example: production
-              withLatestCommit:
-                allOf:
-                  - description: >-
-                      When `true` and `deploymentId` is passed in, the sha from
-                      the previous deployment's `gitSource` is removed forcing
-                      the latest commit to be used.
-                    type: boolean
-            required: true
-            requiredProperties:
-              - name
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              customEnvironmentSlugOrId: <string>
-              deploymentId: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
-              files:
-                - data: <string>
-                  encoding: base64
-                  file: folder/file.js
-              gitMetadata:
-                remoteUrl: https://github.com/vercel/next.js
-                commitAuthorName: kyliau
-                commitAuthorEmail: kyliau@example.com
-                commitMessage: add method to measure Interaction to Next Paint (INP) (#36490)
-                commitRef: main
-                commitSha: dc36199b2234c6586ebe05ec94078a895c707e29
-                dirty: true
-                ci: true
-                ciType: github-actions
-                ciGitProviderUsername: rauchg
-                ciGitRepoVisibility: private
-              gitSource:
-                ref: main
-                repoId: 123456789
-                sha: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-                type: github
-              meta:
-                foo: bar
-              monorepoManager: <string>
-              name: my-instant-deployment
-              project: my-deployment-project
-              projectSettings:
-                buildCommand: next build
-                commandForIgnoringBuildStep: <string>
-                devCommand: <string>
-                framework: blitzjs
-                installCommand: pnpm install
-                nodeVersion: 22.x
-                outputDirectory: <string>
-                rootDirectory: <string>
-                serverlessFunctionRegion: <string>
-                skipGitConnectDuringLink: true
-                sourceFilesOutsideRootDirectory: true
-              target: production
-              withLatestCommit: true
-    codeSamples:
-      - label: createDeployment
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Deployments.CreateDeployment(ctx, operations.CreateDeploymentRequest{\n        RequestBody: &operations.CreateDeploymentRequestBody{\n            Files: []operations.Files{\n                operations.CreateFilesUploadedFile(\n                    operations.UploadedFile{\n                        File: \"folder/file.js\",\n                    },\n                ),\n                operations.CreateFilesUploadedFile(\n                    operations.UploadedFile{\n                        File: \"folder/file.js\",\n                    },\n                ),\n            },\n            GitMetadata: &operations.GitMetadata{\n                RemoteURL: vercel.String(\"https://github.com/vercel/next.js\"),\n                CommitAuthorName: vercel.String(\"kyliau\"),\n                CommitMessage: vercel.String(\"add method to measure Interaction to Next Paint (INP) (#36490)\"),\n                CommitRef: vercel.String(\"main\"),\n                CommitSha: vercel.String(\"dc36199b2234c6586ebe05ec94078a895c707e29\"),\n                Dirty: vercel.Bool(true),\n            },\n            Meta: map[string]string{\n                \"foo\": \"bar\",\n            },\n            Name: \"my-instant-deployment\",\n            Project: vercel.String(\"my-deployment-project\"),\n        },\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: createDeployment
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.deployments.createDeployment({
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
-                files: [
-                  {
-                    data: "<value>",
-                    file: "folder/file.js",
-                  },
-                ],
-                gitMetadata: {
-                  remoteUrl: "https://github.com/vercel/next.js",
-                  commitAuthorName: "kyliau",
-                  commitAuthorEmail: "kyliau@example.com",
-                  commitMessage: "add method to measure Interaction to Next Paint (INP) (#36490)",
-                  commitRef: "main",
-                  commitSha: "dc36199b2234c6586ebe05ec94078a895c707e29",
-                  dirty: true,
-                  ci: true,
-                  ciType: "github-actions",
-                  ciGitProviderUsername: "rauchg",
-                  ciGitRepoVisibility: "private",
-                },
-                gitSource: {
-                  projectId: 987654321,
-                  ref: "main",
-                  sha: "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-                  type: "gitlab",
-                },
-                meta: {
-                  "foo": "bar",
-                },
-                name: "my-instant-deployment",
-                project: "my-deployment-project",
-                projectSettings: {
-                  buildCommand: "next build",
-                  installCommand: "pnpm install",
-                },
-                target: "production",
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              aliasAssignedAt:
-                allOf:
-                  - nullable: true
                     oneOf:
                       - type: number
                       - type: boolean
-              alwaysRefuseToBuild:
-                allOf:
-                  - type: boolean
-              build:
-                allOf:
-                  - properties:
+                        enum:
+                          - false
+                          - true
+                  alwaysRefuseToBuild:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  build:
+                    properties:
                       env:
                         items:
                           type: string
@@ -679,14 +595,12 @@ paths:
                     required:
                       - env
                     type: object
-              buildArtifactUrls:
-                allOf:
-                  - items:
+                  buildArtifactUrls:
+                    items:
                       type: string
                     type: array
-              builds:
-                allOf:
-                  - items:
+                  builds:
+                    items:
                       properties:
                         use:
                           type: string
@@ -699,24 +613,37 @@ paths:
                         - use
                       type: object
                     type: array
-              env:
-                allOf:
-                  - items:
+                  env:
+                    items:
                       type: string
                     type: array
-              inspectorUrl:
-                allOf:
-                  - nullable: true
+                  inspectorUrl:
+                    nullable: true
                     type: string
-              isInConcurrentBuildsQueue:
-                allOf:
-                  - type: boolean
-              isInSystemBuildsQueue:
-                allOf:
-                  - type: boolean
-              projectSettings:
-                allOf:
-                  - properties:
+                  isInConcurrentBuildsQueue:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  isInSystemBuildsQueue:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  projectSettings:
+                    properties:
+                      nodeVersion:
+                        type: string
+                        enum:
+                          - 24.x
+                          - 22.x
+                          - 20.x
+                          - 18.x
+                          - 16.x
+                          - 14.x
+                          - 12.x
+                          - 10.x
+                          - 8.10.x
                       buildCommand:
                         nullable: true
                         type: string
@@ -766,6 +693,7 @@ paths:
                           - zola
                           - hydrogen
                           - vite
+                          - tanstack-start
                           - vitepress
                           - vuepress
                           - parcel
@@ -779,9 +707,16 @@ paths:
                           - hono
                           - express
                           - h3
+                          - koa
                           - nestjs
+                          - elysia
                           - fastify
                           - xmcp
+                          - python
+                          - ruby
+                          - rust
+                          - node
+                          - services
                       commandForIgnoringBuildStep:
                         nullable: true
                         type: string
@@ -803,6 +738,9 @@ paths:
                             type: number
                           hasData:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           paidAt:
                             type: number
                         required:
@@ -820,16 +758,16 @@ paths:
                             type: number
                           hasData:
                             type: boolean
+                            enum:
+                              - true
                         required:
                           - id
                         type: object
                     type: object
-              readyStateReason:
-                allOf:
-                  - type: string
-              integrations:
-                allOf:
-                  - properties:
+                  readyStateReason:
+                    type: string
+                  integrations:
+                    properties:
                       status:
                         type: string
                         enum:
@@ -847,12 +785,11 @@ paths:
                       skippedBy:
                         type: string
                     required:
-                      - status
                       - startedAt
+                      - status
                     type: object
-              images:
-                allOf:
-                  - properties:
+                  images:
+                    properties:
                       sizes:
                         items:
                           type: number
@@ -927,6 +864,9 @@ paths:
                         type: array
                       dangerouslyAllowSVG:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       contentSecurityPolicy:
                         type: string
                       contentDispositionType:
@@ -935,9 +875,8 @@ paths:
                           - inline
                           - attachment
                     type: object
-              alias:
-                allOf:
-                  - items:
+                  alias:
+                    items:
                       type: string
                     type: array
                     description: >-
@@ -945,31 +884,31 @@ paths:
                       aliases and production aliases) that were assigned upon
                       deployment creation
                     example: []
-              aliasAssigned:
-                allOf:
-                  - type: boolean
+                  aliasAssigned:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       A boolean that will be true when the aliases from the
                       alias property were assigned successfully
                     example: true
-              bootedAt:
-                allOf:
-                  - type: number
-              buildingAt:
-                allOf:
-                  - type: number
-              buildContainerFinishedAt:
-                allOf:
-                  - type: number
+                  bootedAt:
+                    type: number
+                  buildingAt:
+                    type: number
+                  buildContainerFinishedAt:
+                    type: number
                     description: >-
                       Since April 2025 it necessary for On-Demand Concurrency
                       Minutes calculation
-              buildSkipped:
-                allOf:
-                  - type: boolean
-              creator:
-                allOf:
-                  - properties:
+                  buildSkipped:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  creator:
+                    properties:
                       uid:
                         type: string
                         description: The ID of the user that created the deployment
@@ -985,15 +924,15 @@ paths:
                       - uid
                     type: object
                     description: Information about the deployment creator
-              initReadyAt:
-                allOf:
-                  - type: number
-              isFirstBranchDeployment:
-                allOf:
-                  - type: boolean
-              lambdas:
-                allOf:
-                  - items:
+                  initReadyAt:
+                    type: number
+                  isFirstBranchDeployment:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  lambdas:
+                    items:
                       properties:
                         id:
                           type: string
@@ -1019,8 +958,8 @@ paths:
                               functionName:
                                 type: string
                             required:
-                              - path
                               - functionName
+                              - path
                             type: object
                           type: array
                       required:
@@ -1031,19 +970,19 @@ paths:
                         A partial representation of a Build used by the
                         deployment endpoint.
                     type: array
-              public:
-                allOf:
-                  - type: boolean
+                  public:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       A boolean representing if the deployment is public or not.
                       By default this is `false`
                     example: false
-              ready:
-                allOf:
-                  - type: number
-              status:
-                allOf:
-                  - type: string
+                  ready:
+                    type: number
+                  status:
+                    type: string
                     enum:
                       - QUEUED
                       - BUILDING
@@ -1051,9 +990,8 @@ paths:
                       - INITIALIZING
                       - READY
                       - CANCELED
-              team:
-                allOf:
-                  - properties:
+                  team:
+                    properties:
                       id:
                         type: string
                       name:
@@ -1068,9 +1006,8 @@ paths:
                       - slug
                     type: object
                     description: The team that owns the deployment if any
-              userAliases:
-                allOf:
-                  - items:
+                  userAliases:
+                    items:
                       type: string
                     type: array
                     description: >-
@@ -1079,19 +1016,22 @@ paths:
                     example:
                       - sub1.example.com
                       - sub2.example.com
-              previewCommentsEnabled:
-                allOf:
-                  - type: boolean
+                  previewCommentsEnabled:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       Whether or not preview comments are enabled for the
                       deployment
                     example: false
-              ttyBuildLogs:
-                allOf:
-                  - type: boolean
-              customEnvironment:
-                allOf:
-                  - oneOf:
+                  ttyBuildLogs:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  customEnvironment:
+                    oneOf:
                       - properties:
                           id:
                             type: string
@@ -1126,8 +1066,8 @@ paths:
                                 type: string
                                 description: The pattern to match against branch names
                             required:
-                              - type
                               - pattern
+                              - type
                             type: object
                             description: >-
                               Configuration for matching git branches to this
@@ -1164,6 +1104,9 @@ paths:
                                   type: number
                                 verified:
                                   type: boolean
+                                  enum:
+                                    - false
+                                    - true
                                   description: >-
                                     `true` if the domain is verified for use
                                     with the project. If `false` it will not be
@@ -1181,10 +1124,10 @@ paths:
                                       reason:
                                         type: string
                                     required:
-                                      - type
                                       - domain
-                                      - value
                                       - reason
+                                      - type
+                                      - value
                                     type: object
                                     description: >-
                                       A list of verification challenges, one of
@@ -1209,8 +1152,8 @@ paths:
                                     `verification.domain` will be checked for a
                                     TXT record matching `verification.value`.
                               required:
-                                - name
                                 - apexName
+                                - name
                                 - projectId
                                 - verified
                               type: object
@@ -1229,10 +1172,10 @@ paths:
                             type: number
                             description: Timestamp when the environment was last updated
                         required:
+                          - createdAt
                           - id
                           - slug
                           - type
-                          - createdAt
                           - updatedAt
                         type: object
                         description: >-
@@ -1249,14 +1192,12 @@ paths:
                           If the deployment was created using a Custom
                           Environment, then this property contains information
                           regarding the environment used.
-              oomReport:
-                allOf:
-                  - type: string
+                  oomReport:
+                    type: string
                     enum:
                       - out-of-memory
-              aliasWarning:
-                allOf:
-                  - nullable: true
+                  aliasWarning:
+                    nullable: true
                     properties:
                       code:
                         type: string
@@ -1270,21 +1211,18 @@ paths:
                       - code
                       - message
                     type: object
-              id:
-                allOf:
-                  - type: string
+                  id:
+                    type: string
                     description: A string holding the unique ID of the deployment
                     example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
-              createdAt:
-                allOf:
-                  - type: number
+                  createdAt:
+                    type: number
                     description: >-
                       A number containing the date when the deployment was
                       created in milliseconds
                     example: 1540257589405
-              readyState:
-                allOf:
-                  - type: string
+                  readyState:
+                    type: string
                     enum:
                       - QUEUED
                       - BUILDING
@@ -1296,21 +1234,18 @@ paths:
                       The state of the deployment depending on the process of
                       deploying, or if it is ready or in an error state
                     example: READY
-              name:
-                allOf:
-                  - type: string
+                  name:
+                    type: string
                     description: >-
                       The name of the project associated with the deployment at
                       the time that the deployment was created
                     example: my-project
-              type:
-                allOf:
-                  - type: string
+                  type:
+                    type: string
                     enum:
                       - LAMBDAS
-              aliasError:
-                allOf:
-                  - nullable: true
+                  aliasError:
+                    nullable: true
                     properties:
                       code:
                         type: string
@@ -1324,70 +1259,59 @@ paths:
                       An object that will contain a `code` and a `message` when
                       the aliasing fails, otherwise the value will be `null`
                     example: null
-              aliasFinal:
-                allOf:
-                  - nullable: true
+                  aliasFinal:
+                    nullable: true
                     type: string
-              autoAssignCustomDomains:
-                allOf:
-                  - type: boolean
+                  autoAssignCustomDomains:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: applies to custom domains only, defaults to `true`
-              automaticAliases:
-                allOf:
-                  - items:
+                  automaticAliases:
+                    items:
                       type: string
                     type: array
-              buildErrorAt:
-                allOf:
-                  - type: number
-              checksState:
-                allOf:
-                  - type: string
+                  buildErrorAt:
+                    type: number
+                  checksState:
+                    type: string
                     enum:
                       - registered
                       - running
                       - completed
-              checksConclusion:
-                allOf:
-                  - type: string
+                  checksConclusion:
+                    type: string
                     enum:
                       - succeeded
                       - failed
                       - skipped
                       - canceled
-              deletedAt:
-                allOf:
-                  - nullable: true
+                  deletedAt:
+                    nullable: true
                     type: number
                     description: >-
                       A number containing the date when the deployment was
                       deleted at milliseconds
                     example: 1540257589405
-              defaultRoute:
-                allOf:
-                  - type: string
+                  defaultRoute:
+                    type: string
                     description: >-
                       Computed field that is only available for deployments with
                       a microfrontend configuration.
-              canceledAt:
-                allOf:
-                  - type: number
-              errorCode:
-                allOf:
-                  - type: string
-              errorLink:
-                allOf:
-                  - type: string
-              errorMessage:
-                allOf:
-                  - nullable: true
+                  canceledAt:
+                    type: number
+                  errorCode:
                     type: string
-              errorStep:
-                allOf:
-                  - type: string
-              passiveRegions:
-                allOf:
-                  - items:
+                  errorLink:
+                    type: string
+                  errorMessage:
+                    nullable: true
+                    type: string
+                  errorStep:
+                    type: string
+                  passiveRegions:
+                    items:
                       type: string
                     type: array
                     description: >-
@@ -1395,9 +1319,8 @@ paths:
                       that we will deploy the lambda to passively Lambdas will
                       be deployed to these regions but only invoked if all of
                       the primary `regions` are marked as out of service
-              gitSource:
-                allOf:
-                  - oneOf:
+                  gitSource:
+                    oneOf:
                       - properties:
                           type:
                             type: string
@@ -1416,8 +1339,8 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - repoId
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1437,9 +1360,9 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - org
                           - repo
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1461,9 +1384,9 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - host
                           - repoId
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1485,10 +1408,10 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - host
                           - org
                           - repo
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1508,8 +1431,8 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - repoId
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1529,9 +1452,9 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - org
                           - repo
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1551,8 +1474,8 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - projectId
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1572,8 +1495,8 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - repoUuid
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1593,9 +1516,9 @@ paths:
                             nullable: true
                             type: number
                         required:
-                          - type
                           - owner
                           - slug
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1609,10 +1532,10 @@ paths:
                           gitUrl:
                             type: string
                         required:
-                          - type
+                          - gitUrl
                           - ref
                           - sha
-                          - gitUrl
+                          - type
                         type: object
                         description: >-
                           Allows custom git sources (local folder mounted to the
@@ -1633,10 +1556,10 @@ paths:
                           repo:
                             type: string
                         required:
-                          - type
                           - ref
-                          - sha
                           - repoId
+                          - sha
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1656,11 +1579,11 @@ paths:
                           repo:
                             type: string
                         required:
-                          - type
                           - host
                           - ref
-                          - sha
                           - repoId
+                          - sha
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1678,10 +1601,10 @@ paths:
                           repo:
                             type: string
                         required:
-                          - type
                           - ref
-                          - sha
                           - repoId
+                          - sha
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1695,10 +1618,10 @@ paths:
                           projectId:
                             type: number
                         required:
-                          - type
+                          - projectId
                           - ref
                           - sha
-                          - projectId
+                          - type
                         type: object
                       - properties:
                           type:
@@ -1718,24 +1641,41 @@ paths:
                           repoUuid:
                             type: string
                         required:
-                          - type
                           - ref
-                          - sha
-                          - workspaceUuid
                           - repoUuid
+                          - sha
+                          - type
+                          - workspaceUuid
                         type: object
-              meta:
-                allOf:
-                  - additionalProperties:
+                  manualProvisioning:
+                    properties:
+                      state:
+                        type: string
+                        enum:
+                          - PENDING
+                          - COMPLETE
+                          - TIMEOUT
+                        description: Current provisioning state
+                      completedAt:
+                        type: number
+                        description: Timestamp when manual provisioning completed
+                    required:
+                      - state
+                    type: object
+                    description: >-
+                      Present when deployment was created with
+                      VERCEL_MANUAL_PROVISIONING=true. The deployment stays in
+                      INITIALIZING until /continue is called.
+                  meta:
+                    additionalProperties:
                       type: string
                     type: object
-              originCacheRegion:
-                allOf:
-                  - type: string
-              nodeVersion:
-                allOf:
-                  - type: string
+                  originCacheRegion:
+                    type: string
+                  nodeVersion:
+                    type: string
                     enum:
+                      - 24.x
                       - 22.x
                       - 20.x
                       - 18.x
@@ -1747,9 +1687,8 @@ paths:
                     description: >-
                       If set it overrides the `projectSettings.nodeVersion` for
                       this deployment.
-              project:
-                allOf:
-                  - properties:
+                  project:
+                    properties:
                       id:
                         type: string
                       name:
@@ -1764,9 +1703,13 @@ paths:
                     description: >-
                       The public project information associated with the
                       deployment.
-              readySubstate:
-                allOf:
-                  - type: string
+                  prebuilt:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  readySubstate:
+                    type: string
                     enum:
                       - STAGED
                       - ROLLING
@@ -1777,24 +1720,24 @@ paths:
                       STAGED: never seen production traffic - ROLLING: in the
                       process of having production traffic gradually
                       transitioned. - PROMOTED: has seen production traffic
-              regions:
-                allOf:
-                  - items:
+                  regions:
+                    items:
                       type: string
                     type: array
                     description: The regions the deployment exists in
                     example:
                       - sfo1
-              softDeletedByRetention:
-                allOf:
-                  - type: boolean
+                  softDeletedByRetention:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       flag to indicate if the deployment was deleted by
                       retention policy
                     example: 'true'
-              source:
-                allOf:
-                  - type: string
+                  source:
+                    type: string
                     enum:
                       - api-trigger-git-deploy
                       - cli
@@ -1806,9 +1749,8 @@ paths:
                       - v0-web
                     description: Where was the deployment created from
                     example: cli
-              target:
-                allOf:
-                  - nullable: true
+                  target:
+                    nullable: true
                     type: string
                     enum:
                       - staging
@@ -1819,30 +1761,36 @@ paths:
                       creation, or `production` if the aliases from `alias` were
                       assigned. `null` value indicates the "preview" deployment.
                     example: null
-              undeletedAt:
-                allOf:
-                  - type: number
+                  undeletedAt:
+                    type: number
                     description: >-
                       A number containing the date when the deployment was
                       undeleted at milliseconds
                     example: 1540257589405
-              url:
-                allOf:
-                  - type: string
+                  url:
+                    type: string
                     description: A string with the unique URL of the deployment
                     example: my-instant-deployment-3ij3cxz9qr.now.sh
-              version:
-                allOf:
-                  - type: number
+                  userConfiguredDeploymentId:
+                    type: string
+                    description: >-
+                      Since January 2025 User-configured deployment ID for skew
+                      protection with pre-built deployments. This is set when
+                      users configure a custom deploymentId in their
+                      next.config.js file. This allows Next.js to use skew
+                      protection even when deployments are pre-built outside of
+                      Vercel's build system.
+                    example: abc123
+                  version:
+                    type: number
                     enum:
                       - 2
                     description: >-
                       The platform version that was used to create the
                       deployment.
                     example: 2
-              oidcTokenClaims:
-                allOf:
-                  - properties:
+                  oidcTokenClaims:
+                    properties:
                       iss:
                         type: string
                       sub:
@@ -1861,52 +1809,50 @@ paths:
                         type: string
                       environment:
                         type: string
+                      plan:
+                        type: string
                     required:
-                      - iss
-                      - sub
-                      - scope
                       - aud
+                      - environment
+                      - iss
                       - owner
                       - owner_id
                       - project
                       - project_id
-                      - environment
+                      - scope
+                      - sub
                     type: object
-              projectId:
-                allOf:
-                  - type: string
-              plan:
-                allOf:
-                  - type: string
+                  projectId:
+                    type: string
+                  plan:
+                    type: string
                     enum:
                       - pro
                       - enterprise
                       - hobby
-              connectBuildsEnabled:
-                allOf:
-                  - type: boolean
-              connectConfigurationId:
-                allOf:
-                  - type: string
-              createdIn:
-                allOf:
-                  - type: string
-              crons:
-                allOf:
-                  - items:
+                  connectBuildsEnabled:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  connectConfigurationId:
+                    type: string
+                  createdIn:
+                    type: string
+                  crons:
+                    items:
                       properties:
                         schedule:
                           type: string
                         path:
                           type: string
                       required:
-                        - schedule
                         - path
+                        - schedule
                       type: object
                     type: array
-              functions:
-                allOf:
-                  - nullable: true
+                  functions:
+                    nullable: true
                     additionalProperties:
                       properties:
                         architecture:
@@ -1967,10 +1913,17 @@ paths:
                                   greater. Use 0 for no initial delay. Behavior
                                   when not specified depends on the server's
                                   default configuration.
+                              maxConcurrency:
+                                type: number
+                                description: >-
+                                  Maximum number of concurrent executions for
+                                  this consumer (OPTIONAL) Must be at least 1 if
+                                  specified. Behavior when not specified depends
+                                  on the server's default configuration.
                             required:
-                              - type
-                              - topic
                               - consumer
+                              - topic
+                              - type
                             type: object
                             description: >-
                               Queue trigger event for Vercel's queue system.
@@ -1979,25 +1932,24 @@ paths:
                           type: array
                         supportsCancellation:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                       type: object
                     type: object
-              monorepoManager:
-                allOf:
-                  - nullable: true
+                  monorepoManager:
+                    nullable: true
                     type: string
-              ownerId:
-                allOf:
-                  - type: string
-              passiveConnectConfigurationId:
-                allOf:
-                  - type: string
+                  ownerId:
+                    type: string
+                  passiveConnectConfigurationId:
+                    type: string
                     description: >-
                       Since November 2023 this field defines a Secure Compute
                       network that will only be used to deploy passive lambdas
                       to (as in passiveRegions)
-              routes:
-                allOf:
-                  - nullable: true
+                  routes:
+                    nullable: true
                     items:
                       oneOf:
                         - properties:
@@ -2015,14 +1967,29 @@ paths:
                               type: array
                             continue:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             override:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             caseSensitive:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             check:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             important:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             status:
                               type: number
                             has:
@@ -2113,8 +2080,8 @@ paths:
                                                 type: number
                                             type: object
                                     required:
-                                      - type
                                       - key
+                                      - type
                                     type: object
                               type: array
                             missing:
@@ -2205,8 +2172,8 @@ paths:
                                                 type: number
                                             type: object
                                     required:
-                                      - type
                                       - key
+                                      - type
                                     type: object
                               type: array
                             mitigate:
@@ -2276,11 +2243,19 @@ paths:
                                       - items:
                                           type: string
                                         type: array
+                                  env:
+                                    items:
+                                      type: string
+                                    type: array
                                 required:
-                                  - type
                                   - op
                                   - target
+                                  - type
                                 type: object
+                              type: array
+                            env:
+                              items:
+                                type: string
                               type: array
                             locale:
                               properties:
@@ -2307,6 +2282,11 @@ paths:
                               description: >-
                                 A middleware index in the `middleware` key under
                                 the build result
+                            respectOriginCacheControl:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
                           required:
                             - src
                           type: object
@@ -2334,19 +2314,21 @@ paths:
                               type: string
                             continue:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                             middleware:
                               type: number
                               enum:
                                 - 0
                           required:
-                            - src
                             - continue
                             - middleware
+                            - src
                           type: object
                     type: array
-              gitRepo:
-                allOf:
-                  - nullable: true
+                  gitRepo:
+                    nullable: true
                     oneOf:
                       - properties:
                           namespace:
@@ -2367,21 +2349,24 @@ paths:
                             type: string
                           private:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           ownerType:
                             type: string
                             enum:
                               - team
                               - user
                         required:
+                          - defaultBranch
+                          - name
                           - namespace
+                          - ownerType
+                          - path
+                          - private
                           - projectId
                           - type
                           - url
-                          - path
-                          - defaultBranch
-                          - name
-                          - private
-                          - ownerType
                         type: object
                       - properties:
                           org:
@@ -2404,22 +2389,25 @@ paths:
                             type: string
                           private:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           ownerType:
                             type: string
                             enum:
                               - team
                               - user
                         required:
-                          - org
-                          - repo
-                          - repoId
-                          - type
-                          - repoOwnerId
-                          - path
                           - defaultBranch
                           - name
-                          - private
+                          - org
                           - ownerType
+                          - path
+                          - private
+                          - repo
+                          - repoId
+                          - repoOwnerId
+                          - type
                         type: object
                       - properties:
                           owner:
@@ -2442,26 +2430,28 @@ paths:
                             type: string
                           private:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           ownerType:
                             type: string
                             enum:
                               - team
                               - user
                         required:
+                          - defaultBranch
+                          - name
                           - owner
+                          - ownerType
+                          - path
+                          - private
                           - repoUuid
                           - slug
                           - type
                           - workspaceUuid
-                          - path
-                          - defaultBranch
-                          - name
-                          - private
-                          - ownerType
                         type: object
-              flags:
-                allOf:
-                  - oneOf:
+                  flags:
+                    oneOf:
                       - properties:
                           definitions:
                             additionalProperties:
@@ -2501,12 +2491,13 @@ paths:
                           Flags defined in the Build Output API, used by this
                           deployment. Primarily used by the Toolbar to know
                           about the used flags.
-              microfrontends:
-                allOf:
-                  - oneOf:
+                  microfrontends:
+                    oneOf:
                       - properties:
                           isDefaultApp:
                             type: boolean
+                            enum:
+                              - false
                           defaultAppProjectName:
                             type: string
                             description: >-
@@ -2519,23 +2510,15 @@ paths:
                               default path in preview links when a domain for
                               this microfrontend is shown in the UI.
                           groupIds:
-                            items:
-                              oneOf:
-                                - type: string
-                                - type: string
-                            maxItems: 2
-                            minItems: 2
                             type: array
+                            items:
+                              type: string
+                            minItems: 1
                             description: >-
                               The group of microfrontends that this project
                               belongs to. Each microfrontend project must belong
                               to a microfrontends group that is the set of
                               microfrontends that are used together.
-                          microfrontendsAlias2Enabled:
-                            type: boolean
-                            description: >-
-                              Whether the MicrofrontendsAlias2 team flag should
-                              be considered enabled for this deployment or not.
                         required:
                           - defaultAppProjectName
                           - groupIds
@@ -2543,49 +2526,8 @@ paths:
                       - properties:
                           isDefaultApp:
                             type: boolean
-                          applications:
-                            additionalProperties:
-                              properties:
-                                isDefaultApp:
-                                  type: boolean
-                                productionHost:
-                                  type: string
-                                  description: >-
-                                    This is the production alias, it will always
-                                    show the most up to date of each
-                                    application.
-                                deploymentAlias:
-                                  type: string
-                                  description: >-
-                                    Use the fixed deploymentAlias and
-                                    deploymentHost so that the microfrontend
-                                    preview stays in sync with the deployment.
-                                    These are only present for mono-repos when a
-                                    single commit creates multiple deployments.
-                                    If they are not present, productionHost will
-                                    be used.
-                                deploymentHost:
-                                  type: string
-                              required:
-                                - productionHost
-                              type: object
-                              description: >-
-                                A map of the other applications that are part of
-                                this group. Only defined on the default
-                                application. The field is set after deployments
-                                have been created, so can be undefined, but
-                                should be there for a successful deployment.
-                                Note: this field will be removed when MFE alias
-                                routing is fully rolled out.
-                            type: object
-                            description: >-
-                              A map of the other applications that are part of
-                              this group. Only defined on the default
-                              application. The field is set after deployments
-                              have been created, so can be undefined, but should
-                              be there for a successful deployment. Note: this
-                              field will be removed when MFE alias routing is
-                              fully rolled out.
+                            enum:
+                              - true
                           mfeConfigUploadState:
                             type: string
                             enum:
@@ -2632,38 +2574,29 @@ paths:
                               default path in preview links when a domain for
                               this microfrontend is shown in the UI.
                           groupIds:
-                            items:
-                              oneOf:
-                                - type: string
-                                - type: string
-                            maxItems: 2
-                            minItems: 2
                             type: array
+                            items:
+                              type: string
+                            minItems: 1
                             description: >-
                               The group of microfrontends that this project
                               belongs to. Each microfrontend project must belong
                               to a microfrontends group that is the set of
                               microfrontends that are used together.
-                          microfrontendsAlias2Enabled:
-                            type: boolean
-                            description: >-
-                              Whether the MicrofrontendsAlias2 team flag should
-                              be considered enabled for this deployment or not.
                         required:
-                          - isDefaultApp
                           - defaultAppProjectName
                           - groupIds
+                          - isDefaultApp
                         type: object
-              config:
-                allOf:
-                  - properties:
+                  config:
+                    properties:
                       version:
                         type: number
                       functionType:
                         type: string
                         enum:
-                          - fluid
                           - standard
+                          - fluid
                       functionMemoryType:
                         type: string
                         enum:
@@ -2681,12 +2614,90 @@ paths:
                         type: string
                       isUsingActiveCPU:
                         type: boolean
+                        enum:
+                          - false
+                          - true
+                      resourceConfig:
+                        properties:
+                          buildQueue:
+                            properties:
+                              configuration:
+                                type: string
+                                enum:
+                                  - SKIP_NAMESPACE_QUEUE
+                                  - WAIT_FOR_NAMESPACE_QUEUE
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                            type: object
+                            description: >-
+                              Build resource configuration snapshot for this
+                              deployment.
+                          buildMachine:
+                            properties:
+                              default:
+                                type: string
+                                enum:
+                                  - enhanced
+                                  - turbo
+                                  - standard
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                              purchaseType:
+                                type: string
+                                enum:
+                                  - enhanced
+                                  - turbo
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                              isDefaultBuildMachine:
+                                type: boolean
+                                enum:
+                                  - false
+                                  - true
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                              cores:
+                                type: number
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                              memory:
+                                type: number
+                                description: >-
+                                  Build resource configuration snapshot for this
+                                  deployment.
+                            type: object
+                            description: >-
+                              Build resource configuration snapshot for this
+                              deployment.
+                          elasticConcurrency:
+                            type: string
+                            enum:
+                              - TEAM_SETTING
+                              - PROJECT_SETTING
+                              - SKIP_QUEUE
+                            description: >-
+                              When elastic concurrency is used for this
+                              deployment, a value is set. The value tells the
+                              reason where the setting was coming from. -
+                              TEAM_SETTING: Inherited from team settings -
+                              PROJECT_SETTING: Inherited from project settings -
+                              SKIP_QUEUE: Manually triggered by user to skip the
+                              queues
+                        type: object
+                        description: >-
+                          Build resource configuration snapshot for this
+                          deployment.
                     required:
-                      - functionType
                       - functionMemoryType
                       - functionTimeout
-                      - secureComputePrimaryRegion
+                      - functionType
                       - secureComputeFallbackRegion
+                      - secureComputePrimaryRegion
                     type: object
                     description: >-
                       Since February 2025 the configuration must include
@@ -2695,9 +2706,8 @@ paths:
                       endpoint utilized for displaying Deployment Configuration
                       on the frontend This is optional because older deployments
                       may not have this data captured
-              checks:
-                allOf:
-                  - properties:
+                  checks:
+                    properties:
                       deployment-alias:
                         properties:
                           state:
@@ -2711,8 +2721,8 @@ paths:
                           completedAt:
                             type: number
                         required:
-                          - state
                           - startedAt
+                          - state
                         type: object
                         description: >-
                           Condensed check data. Retrieve individual check and
@@ -2720,366 +2730,64 @@ paths:
                     required:
                       - deployment-alias
                     type: object
-            description: The successfully created deployment
-            requiredProperties:
-              - build
-              - env
-              - inspectorUrl
-              - isInConcurrentBuildsQueue
-              - isInSystemBuildsQueue
-              - projectSettings
-              - aliasAssigned
-              - bootedAt
-              - buildingAt
-              - buildSkipped
-              - creator
-              - public
-              - status
-              - id
-              - createdAt
-              - readyState
-              - name
-              - type
-              - meta
-              - regions
-              - url
-              - version
-              - projectId
-              - plan
-              - createdIn
-              - ownerId
-              - routes
-        examples:
-          example:
-            value:
-              aliasAssignedAt: 123
-              alwaysRefuseToBuild: true
-              build:
-                env:
-                  - <string>
-              buildArtifactUrls:
-                - <string>
-              builds:
-                - use: <string>
-                  src: <string>
-                  config: {}
-              env:
-                - <string>
-              inspectorUrl: <string>
-              isInConcurrentBuildsQueue: true
-              isInSystemBuildsQueue: true
-              projectSettings:
-                buildCommand: <string>
-                devCommand: <string>
-                framework: blitzjs
-                commandForIgnoringBuildStep: <string>
-                installCommand: <string>
-                outputDirectory: <string>
-                speedInsights:
-                  id: <string>
-                  enabledAt: 123
-                  disabledAt: 123
-                  canceledAt: 123
-                  hasData: true
-                  paidAt: 123
-                webAnalytics:
-                  id: <string>
-                  disabledAt: 123
-                  canceledAt: 123
-                  enabledAt: 123
-                  hasData: true
-              readyStateReason: <string>
-              integrations:
-                status: skipped
-                startedAt: 123
-                completedAt: 123
-                skippedAt: 123
-                skippedBy: <string>
-              images:
-                sizes:
-                  - 123
-                qualities:
-                  - 123
-                domains:
-                  - <string>
-                remotePatterns:
-                  - protocol: http
-                    hostname: <string>
-                    port: <string>
-                    pathname: <string>
-                    search: <string>
-                localPatterns:
-                  - pathname: <string>
-                    search: <string>
-                minimumCacheTTL: 123
-                formats:
-                  - image/avif
-                dangerouslyAllowSVG: true
-                contentSecurityPolicy: <string>
-                contentDispositionType: inline
-              alias: []
-              aliasAssigned: true
-              bootedAt: 123
-              buildingAt: 123
-              buildContainerFinishedAt: 123
-              buildSkipped: true
-              creator:
-                uid: 96SnxkFiMyVKsK3pnoHfx3Hz
-                username: john-doe
-                avatar: <string>
-              initReadyAt: 123
-              isFirstBranchDeployment: true
-              lambdas:
-                - id: <string>
-                  createdAt: 123
-                  readyState: BUILDING
-                  entrypoint: <string>
-                  readyStateAt: 123
-                  output:
-                    - path: <string>
-                      functionName: <string>
-              public: false
-              ready: 123
-              status: QUEUED
-              team:
-                id: <string>
-                name: <string>
-                slug: <string>
-                avatar: <string>
-              userAliases:
-                - sub1.example.com
-                - sub2.example.com
-              previewCommentsEnabled: false
-              ttyBuildLogs: true
-              customEnvironment:
-                id: <string>
-                slug: <string>
-                type: production
-                description: <string>
-                branchMatcher:
-                  type: endsWith
-                  pattern: <string>
-                domains:
-                  - name: <string>
-                    apexName: <string>
-                    projectId: <string>
-                    redirect: <string>
-                    redirectStatusCode: 307
-                    gitBranch: <string>
-                    customEnvironmentId: <string>
-                    updatedAt: 123
-                    createdAt: 123
-                    verified: true
-                    verification:
-                      - type: <string>
-                        domain: <string>
-                        value: <string>
-                        reason: <string>
-                currentDeploymentAliases:
-                  - <string>
-                createdAt: 123
-                updatedAt: 123
-              oomReport: out-of-memory
-              aliasWarning:
-                code: <string>
-                message: <string>
-                link: <string>
-                action: <string>
-              id: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
-              createdAt: 1540257589405
-              readyState: READY
-              name: my-project
-              type: LAMBDAS
-              aliasError: null
-              aliasFinal: <string>
-              autoAssignCustomDomains: true
-              automaticAliases:
-                - <string>
-              buildErrorAt: 123
-              checksState: registered
-              checksConclusion: succeeded
-              deletedAt: 1540257589405
-              defaultRoute: <string>
-              canceledAt: 123
-              errorCode: <string>
-              errorLink: <string>
-              errorMessage: <string>
-              errorStep: <string>
-              passiveRegions:
-                - <string>
-              gitSource:
-                type: github
-                repoId: <string>
-                ref: <string>
-                sha: <string>
-                prId: 123
-              meta: {}
-              originCacheRegion: <string>
-              nodeVersion: 22.x
-              project:
-                id: <string>
-                name: <string>
-                framework: <string>
-              readySubstate: STAGED
-              regions:
-                - sfo1
-              softDeletedByRetention: 'true'
-              source: cli
-              target: null
-              undeletedAt: 1540257589405
-              url: my-instant-deployment-3ij3cxz9qr.now.sh
-              version: 2
-              oidcTokenClaims:
-                iss: <string>
-                sub: <string>
-                scope: <string>
-                aud: <string>
-                owner: <string>
-                owner_id: <string>
-                project: <string>
-                project_id: <string>
-                environment: <string>
-              projectId: <string>
-              plan: pro
-              connectBuildsEnabled: true
-              connectConfigurationId: <string>
-              createdIn: <string>
-              crons:
-                - schedule: <string>
-                  path: <string>
-              functions: {}
-              monorepoManager: <string>
-              ownerId: <string>
-              passiveConnectConfigurationId: <string>
-              routes:
-                - src: <string>
-                  dest: <string>
-                  headers: {}
-                  methods:
-                    - <string>
-                  continue: true
-                  override: true
-                  caseSensitive: true
-                  check: true
-                  important: true
-                  status: 123
-                  has:
-                    - type: host
-                      value: <string>
-                  missing:
-                    - type: host
-                      value: <string>
-                  mitigate:
-                    action: challenge
-                  transforms:
-                    - type: request.headers
-                      op: append
-                      target:
-                        key: <string>
-                      args: <string>
-                  locale:
-                    redirect: {}
-                    cookie: <string>
-                  middlewarePath: <string>
-                  middlewareRawSrc:
-                    - <string>
-                  middleware: 123
-              gitRepo:
-                namespace: <string>
-                projectId: 123
-                type: gitlab
-                url: <string>
-                path: <string>
-                defaultBranch: <string>
-                name: <string>
-                private: true
-                ownerType: team
-              flags:
-                definitions: {}
-              microfrontends:
-                isDefaultApp: true
-                defaultAppProjectName: <string>
-                defaultRoute: <string>
-                groupIds:
-                  - <string>
-                microfrontendsAlias2Enabled: true
-              config:
-                version: 123
-                functionType: fluid
-                functionMemoryType: standard
-                functionTimeout: 123
-                secureComputePrimaryRegion: <string>
-                secureComputeFallbackRegion: <string>
-                isUsingActiveCPU: true
-              checks:
-                deployment-alias:
-                  state: succeeded
-                  startedAt: 123
-                  completedAt: 123
-        description: The successfully created deployment
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '402':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: >-
-              The account was soft-blocked for an unhandled reason.
+                required:
+                  - aliasAssigned
+                  - bootedAt
+                  - build
+                  - buildSkipped
+                  - buildingAt
+                  - createdAt
+                  - createdIn
+                  - creator
+                  - env
+                  - id
+                  - inspectorUrl
+                  - isInConcurrentBuildsQueue
+                  - isInSystemBuildsQueue
+                  - meta
+                  - name
+                  - ownerId
+                  - plan
+                  - projectId
+                  - projectSettings
+                  - public
+                  - readyState
+                  - regions
+                  - routes
+                  - status
+                  - type
+                  - url
+                  - version
+                type: object
+                description: The successfully created deployment
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '402':
+          description: >-
+            The account was soft-blocked for an unhandled reason.
 
-              The account is missing a payment so payment method must be updated
+            The account is missing a payment so payment method must be updated
 
-              Pro customers are allowed to deploy Serverless Functions to up to
-              `proMaxRegions` regions, or if the project was created before the
-              limit was introduced.
+            Pro customers are allowed to deploy Serverless Functions to up to
+            `proMaxRegions` regions, or if the project was created before the
+            limit was introduced.
 
-              Deploying to Serverless Functions to multiple regions requires a
-              plan update
-        examples: {}
-        description: >-
-          The account was soft-blocked for an unhandled reason.
-
-          The account is missing a payment so payment method must be updated
-
-          Pro customers are allowed to deploy Serverless Functions to up to
-          `proMaxRegions` regions, or if the project was created before the
-          limit was introduced.
-
-          Deploying to Serverless Functions to multiple regions requires a plan
-          update
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '409':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The deployment project is being transferred
-        examples: {}
-        description: The deployment project is being transferred
-    '500': {}
-  deprecated: false
-  type: path
+            Deploying to Serverless Functions to multiple regions requires a
+            plan update
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '409':
+          description: The deployment project is being transferred
+        '500':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
     FlagJSONValue:
@@ -3087,7 +2795,6 @@ components:
       oneOf:
         - type: string
         - type: number
-        - type: boolean
         - items:
             $ref: '#/components/schemas/FlagJSONValue'
           type: array
@@ -3097,5 +2804,14 @@ components:
         - additionalProperties:
             $ref: '#/components/schemas/FlagJSONValue'
           type: object
+        - type: boolean
+          enum:
+            - false
+            - true
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

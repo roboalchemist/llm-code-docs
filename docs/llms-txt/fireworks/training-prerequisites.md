@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/training-prerequisites.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Training Prerequisites & Validation
 
 > Requirements, validation checks, and common issues when launching RFT jobs
@@ -152,7 +156,7 @@ If validation fails, you'll receive specific error messages with instructions to
     --learning-rate 1e-4  # Use default value
     ```
 
-    See [Parameter Reference](/fine-tuning/rft-parameters-reference) for all valid ranges.
+    See [CLI Reference](tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create) for all available parameters.
   </Accordion>
 
   <Accordion title="Evaluator build timeout">

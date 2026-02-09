@@ -1,8 +1,12 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/example-use-cases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Example Use Cases
 
-> See examples on how AI Summary can be used
+> See examples of how AI Summary can be used
 
 AI Summary can be applied to various industries and use cases. This section provides examples of how AI Summary can be implemented to solve specific business challenges.
 
@@ -10,7 +14,7 @@ Each use case includes a brief overview, key components, and a high-level archit
 
 ## Regulatory Compliance Monitoring
 
-AI Summary can be used to automatically flag customer conversations that trigger regulatory compliance requirements, such as Regulation Z (Truth in Lending Act) and Regulation E (Electronic Funds Transfer Act) in the financial services industry.
+AI Summary automatically flags customer conversations that trigger regulatory compliance requirements, such as Regulation Z (Truth in Lending Act) and Regulation E (Electronic Funds Transfer Act) in the financial services industry.
 
 | Industry           | Category   | AI Summary Features                                                         |
 | :----------------- | :--------- | :-------------------------------------------------------------------------- |
@@ -31,7 +35,7 @@ AI Summary can be used to automatically flag customer conversations that trigger
 
 ## Real-time Product Quality Monitoring (Retail, Telecommunications)
 
-AI Summary can generate free-text summaries of customer complaints about product quality, allowing for real-time identification of defects and issues. This could be data such as specific products, complaint or issue types.
+AI Summary generates free-text summaries of customer complaints about product quality, allowing for real-time identification of defects and issues. This includes data such as specific products, complaints, or issue types.
 
 | Industry                  | Category          | AI Summary Features |
 | :------------------------ | :---------------- | :------------------ |
@@ -53,7 +57,7 @@ AI Summary can generate free-text summaries of customer complaints about product
 
 AI Summary can automate the process of summarizing customer interactions, eliminating the need for manual note-taking by agents and providing consistent, high-quality call summaries.
 
-The summary and specific data elements can be directly inserted into your contact center or CRM tool to remove manual steps.
+You can directly insert the summary and specific data elements into your contact center or CRM tool to remove manual steps.
 
 | Industry                                                                                                       | Category                                                            | AI Summary Features                                                                                                   |
 | :------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------- |
@@ -74,7 +78,7 @@ The summary and specific data elements can be directly inserted into your contac
 
 ## Trade Confirmations (Financial Services)
 
-AI Summary can be used to ensure compliance with financial regulations like FINRA by automatically verifying if agents have confirmed trade details with customers before entering orders into the system. Structured Data can be use to extract price, type of order, the security being bought or sold, etc.
+AI Summary ensures compliance with financial regulations like FINRA by automatically verifying if agents have confirmed trade details with customers before entering orders into the system. You can use Structured Data to extract the price, type of order, the security being bought or sold, etc.
 
 | Industry           | Category   | AI Summary Features |
 | :----------------- | :--------- | :------------------ |
@@ -85,7 +89,7 @@ AI Summary can be used to ensure compliance with financial regulations like FINR
 1. Configure Structured Data extraction to identify order type, security name/symbol, quantity, and price.
 2. Set up Entity Extraction to capture customer account numbers and trade confirmation phrases.
 3. Integrate with trading platforms for real-time verification.
-4. Implement alerting system for non-compliant trade confirmations.
+4. Implement an alerting system for non-compliant trade confirmations.
 
 ### Architecture
 

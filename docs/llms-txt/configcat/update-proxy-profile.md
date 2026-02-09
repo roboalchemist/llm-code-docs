@@ -2,10 +2,7 @@
 
 # Update Proxy Profile
 
-```
-PATCH 
-/v1/proxy-profiles/:proxyProfileId
-```
+Copy page
 
 This endpoint updates a Proxy Profile identified by the `proxyProfileId` parameter with a collection of [JSON Patch](https://jsonpatch.com) operations.
 
@@ -13,7 +10,7 @@ The advantage of using JSON Patch is that you can describe individual update ope
 
 For example: We have the following resource.
 
-```
+```json
 {
   "proxyProfileId": "4ebe288d-6415-44a8-85c8-7b9f78316a86",
   "name": "production",
@@ -25,11 +22,12 @@ For example: We have the following resource.
   },
   "sdkKeySelectionRules": []
 }
+
 ```
 
 If we send an update request body as below (it changes the `sdkPollInterval` field and adds a new Proxy Webhook URL):
 
-```
+```json
 [
   {
     "op": "replace", 
@@ -44,11 +42,12 @@ If we send an update request body as below (it changes the `sdkPollInterval` fie
     }
   }
 ]
+
 ```
 
 Only the `sdkPollInterval` and `webhookProxyUrl` are updated and all the other attributes remain unchanged. So we get a response like this:
 
-```
+```json
 {
   "proxyProfileId": "4ebe288d-6415-44a8-85c8-7b9f78316a86",
   "name": "production",
@@ -64,6 +63,7 @@ Only the `sdkPollInterval` and `webhookProxyUrl` are updated and all the other a
   },
   "sdkKeySelectionRules": []
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

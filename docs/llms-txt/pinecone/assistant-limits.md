@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/reference/api/assistant/assistant-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pinecone Assistant limits
 
 Pinecone Assistant limits vary based on [subscription plan](https://www.pinecone.io/pricing/).
@@ -27,7 +31,7 @@ Additionally, the following limits apply to [multimodal PDFs](/guides/assistant/
 | :---------------------------- | :----------- | :------------ | :-------------- |
 | Max file size                 | 10 MB        | 50 MB         | 50 MB           |
 | Page limit                    | 100          | 100           | 100             |
-| Multimodal PDFs per assistant | 1            | 20            | 20              |
+| Multimodal PDFs per assistant | 10           | 20            | 20              |
 
 ### Rate limits
 

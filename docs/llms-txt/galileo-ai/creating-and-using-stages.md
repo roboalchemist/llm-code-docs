@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/how-to/creating-and-using-stages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creating And Using Stages
 
 > Learn to create and manage stages in Galileo Protect, enabling structured AI monitoring and progressive error resolution throughout the deployment lifecycle.
@@ -16,7 +20,7 @@ All stages must have names and belong to a project. The project ID is required t
 
 To create a stage, you can use the following code snippet:
 
-```py
+```py  theme={null}
 import galileo_protect as gp
 
 gp.create_stage(name="my first stage", project_id="<project_id>", description="This is my first stage", type="local")  # type can be "central" or "local", default is "local"
@@ -24,7 +28,7 @@ gp.create_stage(name="my first stage", project_id="<project_id>", description="T
 
 If you're using central stages, we recommend including the ruleset definitions during stage creation. This way, you can manage the rulesets centrally and update them without changing the invocation code.
 
-```py
+```py  theme={null}
 import galileo_protect as gp
 
 gp.create_stage(name="my first stage", project_id="<project_id>", description="This is my first stage", type="central", prioritized_rulesets=[
@@ -60,7 +64,7 @@ Actions define the operation to perform when a ruleset is triggered when using G
 
 Actions include configuration for subscriptions which can be set to event destinations (like webhooks) to HTTP POST requests notifications are sent when the ruleset is triggered. Subscriptions can be configured in actions of any type as:
 
-```py
+```py  theme={null}
 "action": {
     "type": "OVERRIDE",
     "choices": [
@@ -72,7 +76,7 @@ Actions include configuration for subscriptions which can be set to event destin
 
 By default, notifications are sent to the subscription when they are triggered, but notifications can be sent based on any of the execution statuses. In the below example, notifications will be sent to the specified webhook if there's an error or the ruleset is not triggered.
 
-```py
+```py  theme={null}
 "action": {
     "type": "OVERRIDE",
     "choices": [
@@ -84,7 +88,7 @@ By default, notifications are sent to the subscription when they are triggered, 
 
 The subscribers are sent HTTP POST requests with a payload that matches the [response from the Protect invocation](https://protect.docs.rungalileo.io/#galileo_protect.Response) and is of schema:
 
-```py
+```py  theme={null}
 {
   "text": "string",
   "trace_metadata": {

@@ -20,9 +20,9 @@ Using these CUPTI APIs, independent software developers can create profiling too
   
   
 
-**There is currently no CUPTI update to the CUDA Toolkit 13.1. You may obtain the latest version of CUPTI by Downloading the CUDA Toolkit 13.1.0**
+**There is currently no CUPTI update to the CUDA Toolkit 13.1 Update 1. You may obtain the latest version of CUPTI by Downloading the CUDA Toolkit 13.1.1**
 
-[Download the CUDA Toolkit 13.1 Now](https://developer.nvidia.com/cuda-13-1-0-download-archive)  
+[Download the CUDA Toolkit 13.1 Update 1 Now](https://developer.nvidia.com/cuda-13-1-1-download-archive)[Download the CUDA Toolkit 13.1 Now](https://developer.nvidia.com/cuda-13-1-0-download-archive)  
 [Download the CUPTI Python API 13.0.0 Now](https://pypi.org/project/cupti-python/13.0.0/)
 ##### [Revision History](/cupti-history)
 
@@ -50,11 +50,20 @@ Using these CUPTI APIs, independent software developers can create profiling too
 - Device-wide sampling of the program counter (PC). The PC Sampling gives the number of samples for each source and assembly line with various stall reasons.
 
  See the CUPTI User Guide for a complete listing of hardware and software event counters available for performance analysis tools. 
+#### Updates in CUDA Toolkit 13.1 Update 1 
+
+##### Resolved Issues
+
+  - Fixed incorrect correlation IDs for `cudaGraphLaunch` API calls and their associated kernel launches in profiling sessions after the first session.
+  - Fixed issue where CUPTI graph creation callbacks were not triggered for CUDA device graphs under green context.
+  - Fixed linker error when linking the static CUPTI library from CUDA 13.0 and 13.1 GA releases.
+  - Fixed issue where CUPTI limited activity buffer records to 2GB regardless of the configured activity buffer size.
+
 #### Updates in CUDA Toolkit 13.1 
 
 ##### New Features
 
-  - Added support for Compute Engine context switch events. For more details, refer to the section [Compute Engine Context Switch](https://docs.nvidia.com/cupti/html/main/main.html#activity-ce-context-switch).
+  - Added support for Compute Engine context switch events. For more details, refer to the section [Compute Engine Context Switch](https://docs.nvidia.com/cupti/main/main.html#activity-ce-context-switch).
   - Added tracing for host execution nodes in CUDA Graphs i.e. nodes of type `CU_GRAPH_NODE_TYPE_HOST`. Enable with the activity kind `CUPTI_ACTIVITY_KIND_GRAPH_HOST_NODE`; records are reported as `CUpti_ActivityGraphHostNode`. 
   - Added tracing for host launches done by CUDA through `cudaLaunchHostFunc()` API. This is important in understanding the device bubbles in the stream timeline. Enable with the activity kind `CUPTI_ACTIVITY_KIND_HOST_LAUNCH`; records are reported as `CUpti_ActivityHostLaunch`. 
   - Users can query the collection scope for any metric. The `CUpti_MetricCollectionScope` enum lists the possible scopes: context or device. A parameter, `metricCollectionScope`, is added to `CUpti_Profiler_Host_GetMetricProperties_Params` to return the collection scope for a metric. 
@@ -95,13 +104,13 @@ Using these CUPTI APIs, independent software developers can create profiling too
 
 ##### CUDA Toolkit
 
-  - CUPTI can be found in the [CUDA Toolkit 13.1](https://developer.nvidia.com/cuda-downloads) production release
+  - CUPTI can be found in the [CUDA Toolkit 13.1 Update 1](https://developer.nvidia.com/cuda-downloads) production release
 
 ##### Drivers
 
  Please use the following drivers 
-    - 591.39 (Windows) available at the [NVIDIA Driver Download page](https://www.nvidia.com/Download/index.aspx).
-    - 590.44.01 (Linux) provided with [CUDA Toolkit 13.1](https://developer.nvidia.com/cuda-downloads) production release.
+    - 591.59 (Windows) available at the [NVIDIA Driver Download page](https://www.nvidia.com/Download/index.aspx).
+    - 590.48.01 (Linux) provided with [CUDA Toolkit 13.1 Update 1](https://developer.nvidia.com/cuda-downloads) production release.
 
 #### Documentation
 
@@ -113,6 +122,6 @@ To provide feedback, request additional features, or report issues, please use t
 
 #### Installation Overview
 
-When installing [CUDA Toolkit 13.1](https://developer.nvidia.com/cuda-downloads) and specifying options, be sure to select CUDA \&gt; Development \&gt; Tools \&gt; CUPTI.
+When installing [CUDA Toolkit 13.1 Update 1](https://developer.nvidia.com/cuda-downloads) and specifying options, be sure to select CUDA \&gt; Development \&gt; Tools \&gt; CUPTI.
 
 

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/git-push-permission-denied.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # git Push Permission Denied
 
 When pushing to your [App](/core-concepts/apps/overview)'s [Git Remote](/how-to-guides/app-guides/deploy-from-git#git-remote), you may encounter a Permission denied error. Below are a few common reasons this may occur and steps to resolve them.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/v3_migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # V3 Migration
 
 > How to migrate your existing V1 nodes to the new V3 schema.

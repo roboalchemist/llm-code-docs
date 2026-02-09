@@ -1,14 +1,18 @@
 # Source: https://dev.writer.com/api-reference/translation-api/language-support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # View supported languages
 
-The Translation API allows you to translate text from one language to another. Below are the languages supported for the translation API and the [formality](#formality), [length control](#length-control), and [profanity masking](#profanity-masking) parameters.
+Writer's translation capabilities support translating text from one language to another. Below are the supported languages and the [formality](#formality), [length control](#length-control), and [profanity masking](#profanity-masking) parameters.
 
 ## Supported languages
 
-To specify a language for the translation API, use the [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) language code. For example, `en` for English, `zh` for Chinese, `fr` for French, `es` for Spanish. If the language has a variant, the code appends the two-digit [ISO-3166 country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). For example, Mexican Spanish is `es-MX`.
+To specify a language for translation, use the [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) language code. For example, `en` for English, `zh` for Chinese, `fr` for French, `es` for Spanish. If the language has a variant, the code appends the two-digit [ISO-3166 country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes). For example, Mexican Spanish is `es-MX`.
 
-The Translation API supports the following languages:
+The following languages are supported for translation:
 
 | Language              | Language code |
 | --------------------- | ------------- |

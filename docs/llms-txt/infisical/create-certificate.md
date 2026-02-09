@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/certificates/create-certificate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Issue Certificate
 
 
@@ -25,6 +29,7 @@ paths:
     post:
       tags:
         - PKI Certificates
+      operationId: createCertificate
       requestBody:
         content:
           application/json:
@@ -42,6 +47,26 @@ paths:
                   type: object
                   properties:
                     commonName:
+                      type: string
+                      minLength: 1
+                      maxLength: 100
+                    organization:
+                      type: string
+                      minLength: 1
+                      maxLength: 100
+                    organizationalUnit:
+                      type: string
+                      minLength: 1
+                      maxLength: 100
+                    country:
+                      type: string
+                      minLength: 1
+                      maxLength: 100
+                    state:
+                      type: string
+                      minLength: 1
+                      maxLength: 100
+                    locality:
                       type: string
                       minLength: 1
                       maxLength: 100
@@ -109,13 +134,21 @@ paths:
                         - EC_secp521r1
                     ttl:
                       type: string
-                      minLength: 1
                     notBefore:
                       type: string
                     notAfter:
                       type: string
-                  required:
-                    - ttl
+                    basicConstraints:
+                      type: object
+                      properties:
+                        isCA:
+                          type: boolean
+                        pathLength:
+                          type: integer
+                          minimum: 0
+                      required:
+                        - isCA
+                      additionalProperties: false
                   additionalProperties: false
                 removeRootsFromChain:
                   anyOf:
@@ -159,6 +192,16 @@ paths:
                     nullable: true
                   certificateRequestId:
                     type: string
+                  status:
+                    type: string
+                    enum:
+                      - pending_approval
+                      - pending
+                      - issued
+                      - failed
+                      - rejected
+                  message:
+                    type: string
                 required:
                   - certificate
                   - certificateRequestId
@@ -180,6 +223,7 @@ paths:
                     type: string
                   error:
                     type: string
+                  details: {}
                 required:
                   - reqId
                   - statusCode
@@ -302,7 +346,3 @@ paths:
                 additionalProperties: false
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

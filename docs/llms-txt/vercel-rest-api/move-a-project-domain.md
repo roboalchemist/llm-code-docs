@@ -1,146 +1,155 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/move-a-project-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Move a project domain
 
 > Move one project's domain to another project. Also allows the move of all redirects pointed to that domain in the same project.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/projects/{idOrName}/domains/{domain}/move
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{idOrName}/domains/{domain}/move
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/projects/{idOrName}/domains/{domain}/move:
+    post:
+      tags:
+        - projects
+      summary: Move a project domain
+      description: >-
+        Move one project's domain to another project. Also allows the move of
+        all redirects pointed to that domain in the same project.
+      operationId: moveProjectDomain
+      parameters:
+        - name: idOrName
+          description: The unique project identifier or the project name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique project identifier or the project name
-        domain:
+            description: The unique project identifier or the project name
+            type: string
+        - name: domain
+          description: The project domain name
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The project domain name
-              example: www.example.com
-      query:
-        teamId:
+            description: The project domain name
+            type: string
+            example: www.example.com
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              projectId:
-                allOf:
-                  - description: The unique target project identifier
-                    example: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
-                    oneOf:
-                      - type: string
-            requiredProperties:
-              - projectId
-        examples:
-          example:
-            value:
-              projectId: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
-    codeSamples:
-      - label: moveProjectDomain
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.projects.moveProjectDomain({
-              idOrName: "<value>",
-              domain: "www.example.com",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-              apexName:
-                allOf:
-                  - type: string
-              projectId:
-                allOf:
-                  - type: string
-              redirect:
-                allOf:
-                  - nullable: true
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - projectId
+              properties:
+                projectId:
+                  description: The unique target project identifier
+                  example: prj_XLKmu1DyR1eY7zq8UgeRKbA7yVLA
+                  oneOf:
+                    - type: string
+                gitBranch:
+                  description: Git branch to link the project domain
+                  example: null
+                  type: string
+                  maxLength: 250
+                  nullable: true
+                redirect:
+                  description: Target destination domain for redirect
+                  example: foobar.com
+                  type: string
+                  nullable: true
+                redirectStatusCode:
+                  description: Status code for domain redirect
+                  example: 307
+                  type: integer
+                  enum:
+                    - null
+                    - 301
+                    - 302
+                    - 307
+                    - 308
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: The domain was updated successfuly
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
                     type: string
-              redirectStatusCode:
-                allOf:
-                  - nullable: true
+                  apexName:
+                    type: string
+                  projectId:
+                    type: string
+                  redirect:
+                    nullable: true
+                    type: string
+                  redirectStatusCode:
+                    nullable: true
                     type: number
                     enum:
-                      - 307
                       - 301
                       - 302
+                      - 307
                       - 308
-              gitBranch:
-                allOf:
-                  - nullable: true
+                  gitBranch:
+                    nullable: true
                     type: string
-              customEnvironmentId:
-                allOf:
-                  - nullable: true
+                  customEnvironmentId:
+                    nullable: true
                     type: string
-              updatedAt:
-                allOf:
-                  - type: number
-              createdAt:
-                allOf:
-                  - type: number
-              verified:
-                allOf:
-                  - type: boolean
+                  updatedAt:
+                    type: number
+                  createdAt:
+                    type: number
+                  verified:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
                     description: >-
                       `true` if the domain is verified for use with the project.
                       If `false` it will not be used as an alias on this project
                       until the challenge in `verification` is completed.
-              verification:
-                allOf:
-                  - items:
+                  verification:
+                    items:
                       properties:
                         type:
                           type: string
@@ -151,10 +160,10 @@ paths:
                         reason:
                           type: string
                       required:
-                        - type
                         - domain
-                        - value
                         - reason
+                        - type
+                        - value
                       type: object
                       description: >-
                         A list of verification challenges, one of which must be
@@ -173,65 +182,30 @@ paths:
                       domain. Possible challenges: - If `verification.type =
                       TXT` the `verification.domain` will be checked for a TXT
                       record matching `verification.value`.
-            requiredProperties:
-              - name
-              - apexName
-              - projectId
-              - verified
-        examples:
-          example:
-            value:
-              name: <string>
-              apexName: <string>
-              projectId: <string>
-              redirect: <string>
-              redirectStatusCode: 307
-              gitBranch: <string>
-              customEnvironmentId: <string>
-              updatedAt: 123
-              createdAt: 123
-              verified: true
-              verification:
-                - type: <string>
-                  domain: <string>
-                  value: <string>
-                  reason: <string>
-        description: The domain was updated successfuly
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '409':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The project is currently being transferred
-        examples: {}
-        description: The project is currently being transferred
-  deprecated: false
-  type: path
+                required:
+                  - apexName
+                  - name
+                  - projectId
+                  - verified
+                type: object
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+            The domain redirect is not valid
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '409':
+          description: The project is currently being transferred
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

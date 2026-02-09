@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/flow-control/parallelism.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parallelism
 
 The parallelism limit controls the maximum number of calls that can be executed concurrently.
@@ -15,8 +19,7 @@ const { workflowRunId } = await client.trigger({
   flowControl: {
     key: "user-signup",
     parallelism: 10,
-  },
-  keepTriggerConfig: true,
+  }
 })
 ```
 
@@ -45,33 +48,3 @@ The step in the waitlist will wait for a step to complete and hand off it's toke
 <Frame caption="A failing step is automatically retried three times">
   <img src="https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=e9d284cf4ed9a0a8fcbe20f1cdefbedf" data-og-width="2342" width="2342" data-og-height="1126" height="1126" data-path="img/workflow/parallelism_3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=280&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=cea665805f66c25cd546f71faddf26c8 280w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=560&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=1eddc37c697205d2502a9e8365410fd5 560w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=840&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=6f3c09fffa80698a3a0f308563e60401 840w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=1100&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=b669d35cb7827b3de34c934b9777be35 1100w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=1650&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=10623e574cbe4312d1351f525e013ccd 1650w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/parallelism_3.png?w=2500&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=19fc76d5912e823bfa437217c7492c1d 2500w" />
 </Frame>
-
-## Monitoring
-
-You can monitor wait list size of your flow control key's using the REST API.
-
-<CodeGroup>
-  ```bash Single Flow Control Key theme={"system"}
-  curl -X GET https://qstash.upstash.io/v2/flowControl/YOUR_FLOW_CONTROL_KEY \
-    -H "Authorization: Bearer <token>"
-  ```
-
-  ```bash List All Flow Control Keys theme={"system"}
-  curl -X GET https://qstash.upstash.io/v2/flowControl/ \
-    -H "Authorization: Bearer <token>"
-  ```
-</CodeGroup>
-
-It will return the wait list size. In case you request all flow-control keys, it is an array response.
-
-<ResponseField name="flowControlKey" type="string">
-  The identifier for your flow control configuration
-</ResponseField>
-
-<ResponseField name="waitListSize" type="number">
-  Number of steps waiting to be executed due to parallelism limits
-</ResponseField>
-
-<Info>
-  Adding a dashboard to list and manage flow control key's is on our roadmap.
-</Info>

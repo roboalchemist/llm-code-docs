@@ -19,7 +19,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### threaded
 
->  threaded (process=False)
+``` python
+
+def threaded(
+    process:bool=False
+):
+
+```
 
 *Run `f` in a `Thread` (or `Process` if `process=True`), and returns it*
 
@@ -55,12 +61,18 @@ a.result
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L45"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L46"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### startthread
 
->  startthread (f)
+``` python
+
+def startthread(
+    f
+):
+
+```
 
 *Like [`threaded`](https://fastcore.fast.ai/parallel.html#threaded), but
 start thread immediately*
@@ -85,12 +97,18 @@ time.sleep(0.1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L50"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L51"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### startproc
 
->  startproc (f)
+``` python
+
+def startproc(
+    f
+):
+
+```
 
 *Like `threaded(True)`, but start Process immediately*
 
@@ -114,23 +132,34 @@ time.sleep(0.1)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L66"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L67"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parallelable
 
->  parallelable (param_name, num_workers, f=None)
+``` python
+
+def parallelable(
+    param_name, num_workers, f:NoneType=None
+):
+
+```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L75"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L76"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ThreadPoolExecutor
 
->  ThreadPoolExecutor (max_workers=4, on_exc=<built-in function print>,
->                          pause=0, **kwargs)
+``` python
+
+def ThreadPoolExecutor(
+    max_workers:int=4, on_exc:builtin_function_or_method=print, pause:int=0, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Same as Python’s ThreadPoolExecutor, except can pass `max_workers==0`
 for serial execution*
@@ -138,14 +167,19 @@ for serial execution*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L94"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L95"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### ProcessPoolExecutor
 
->  ProcessPoolExecutor (max_workers=4, on_exc=<built-in function print>,
->                           pause=0, mp_context=None, initializer=None,
->                           initargs=())
+``` python
+
+def ProcessPoolExecutor(
+    max_workers:int=4, on_exc:builtin_function_or_method=print, pause:int=0, mp_context:NoneType=None,
+    initializer:NoneType=None, initargs:tuple=(), max_tasks_per_child:NoneType=None
+):
+
+```
 
 *Same as Python’s ProcessPoolExecutor, except can pass `max_workers==0`
 for serial execution*
@@ -153,14 +187,19 @@ for serial execution*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L120"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L121"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parallel
 
->  parallel (f, items, *args, n_workers=4, total=None, progress=None,
->                pause=0, method=None, threadpool=False, timeout=None,
->                chunksize=1, **kwargs)
+``` python
+
+def parallel(
+    f, items, args:VAR_POSITIONAL, n_workers:int=4, total:NoneType=None, progress:NoneType=None, pause:int=0,
+    method:NoneType=None, threadpool:bool=False, timeout:NoneType=None, chunksize:int=1, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Applies `func` in parallel to `items`, using `n_workers`*
 
@@ -195,22 +234,28 @@ def print_time(i):
 parallel(print_time, range(5), n_workers=2, pause=0.25);
 ```
 
-    0 2024-10-11 23:06:05.920741
-    1 2024-10-11 23:06:06.171470
-    2 2024-10-11 23:06:06.431925
-    3 2024-10-11 23:06:06.689940
-    4 2024-10-11 23:06:06.937109
+    0 2026-01-29 10:59:46.704165
+    1 2026-01-29 10:59:46.954594
+    2 2026-01-29 10:59:47.204557
+    3 2026-01-29 10:59:47.455629
+    4 2026-01-29 10:59:47.707717
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L144"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L145"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parallel_async
 
->  parallel_async (f, items, *args, n_workers=16, timeout=None, chunksize=1,
->                      on_exc=<built-in function print>, **kwargs)
+``` python
+
+def parallel_async(
+    f, items, args:VAR_POSITIONAL, n_workers:int=16, timeout:NoneType=None, chunksize:int=1,
+    on_exc:builtin_function_or_method=print, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Applies `f` to `items` in parallel using asyncio and a semaphore to
 limit concurrency.*
@@ -228,34 +273,46 @@ async def print_time_async(i):
 await parallel_async(print_time_async, range(6), n_workers=3);
 ```
 
-    0 2024-10-11 23:06:39.545583 0.10292732609738675
-    3 2024-10-11 23:06:39.900393 0.3516179734831676
-    4 2024-10-11 23:06:39.941094 0.03699593757956876
-    2 2024-10-11 23:06:39.957677 0.5148658606540902
-    1 2024-10-11 23:06:40.099716 0.6574035385815227
-    5 2024-10-11 23:06:40.654097 0.7116319667399102
+    0 2026-01-29 10:59:48.007998 0.21615721710303581
+    3 2026-01-29 10:59:48.027639 0.018363443750668673
+    2 2026-01-29 10:59:48.487320 0.6952425451756079
+    1 2026-01-29 10:59:48.550808 0.7519131063729974
+    5 2026-01-29 10:59:48.703458 0.21434694863260173
+    4 2026-01-29 10:59:48.914600 0.8860713333269471
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L159"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L160"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### run_procs
 
->  run_procs (f, f_done, args)
+``` python
+
+def run_procs(
+    f, f_done, args
+):
+
+```
 
 *Call `f` for each item in `args` in parallel, yielding `f_done`*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L173"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/parallel.py#L175"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### parallel_gen
 
->  parallel_gen (cls, items, n_workers=4, **kwargs)
+``` python
+
+def parallel_gen(
+    cls, items, n_workers:int=4, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Instantiate `cls` in `n_workers` procs & call each on a subset of
 `items` in parallel.*
@@ -297,19 +354,22 @@ test_eq(res.sorted().itemgot(1), x+1)
 ```
 
 <style>
-    /* Turns off some styling */
-    progress {
-        /* gets rid of default border in Firefox and Opera. */
-        border: none;
-        /* Needs to be in here for Safari polyfill so background images work as expected. */
-        background-size: auto;
-    }
-    progress:not([value]), progress:not([value])::-webkit-progress-bar {
-        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
-    }
-    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-        background: #F44336;
-    }
+    progress { appearance: none; border: none; border-radius: 4px; width: 300px;
+        height: 20px; vertical-align: middle; background: #e0e0e0; }
+&#10;    progress::-webkit-progress-bar { background: #e0e0e0; border-radius: 4px; }
+    progress::-webkit-progress-value { background: #2196F3; border-radius: 4px; }
+    progress::-moz-progress-bar { background: #2196F3; border-radius: 4px; }
+&#10;    progress:not([value]) {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px); }
+&#10;    progress.progress-bar-interrupted::-webkit-progress-value { background: #F44336; }
+    progress.progress-bar-interrupted::-moz-progress-value { background: #F44336; }
+    progress.progress-bar-interrupted::-webkit-progress-bar { background: #F44336; }
+    progress.progress-bar-interrupted::-moz-progress-bar { background: #F44336; }
+    progress.progress-bar-interrupted { background: #F44336; }    
+&#10;    table.fastprogress { border-collapse: collapse; margin: 1em 0; font-size: 0.9em; }
+    table.fastprogress th, table.fastprogress td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+    table.fastprogress thead tr { background: #f8f9fa; font-weight: bold; }
+    table.fastprogress tbody tr:nth-of-type(even) { background: #f8f9fa; }
 </style>
 
 ``` python

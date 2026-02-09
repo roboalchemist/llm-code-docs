@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/concepts/rule.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rule
 
 > A condition or rule you never want your application to break. It's composed of three ingredients
@@ -24,7 +28,7 @@ In the example above, the "*input/output shall never contain PII*" is encoded in
 
 Or:
 
-```py
+```py  theme={null}
 gp.Rule(
     metric=gp.RuleMetrics.pii,
     operator=gp.RuleOperator.contains,

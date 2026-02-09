@@ -1,11 +1,11 @@
-# Source: https://docs.warp.dev/support-and-billing/sending-us-feedback.md
+# Source: https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback.md
 
 # Sending Feedback & Logs
 
 ### Sending Warp feedback
 
 * Open a new bugs or feature request in our [GitHub repository](https://github.com/warpdotdev/warp/issues/new/choose).
-* Join our [Warp Community Slack](https://go.warp.dev/join-preview) and share feedback in **#feedback-general**, or **#feedback-preview** if it is specific to [Warp Preview](https://docs.warp.dev/community/warp-preview-and-alpha-program).
+* Join our [Warp Community Slack](https://go.warp.dev/join-preview) and share feedback in **#feedback-general**, or **#feedback-preview** if it is specific to [Warp Preview](https://docs.warp.dev/support-and-community/community/warp-preview-and-alpha-program).
 * Join our [Discord](https://discord.com/invite/warpdotdev) server, and ask questions or share feedback in [`#questions-and-feedback`](https://discord.com/channels/851854972600451112/1154432424873296012).
 * For security issues or questions, email <security@warp.dev>.
 * For questions about privacy, email <privacy@warp.dev>.
@@ -16,31 +16,31 @@
 * For subscriber billing issues or questions (refunds, cancellation, etc.), email <billing@warp.dev>.
 * For enterprise, please direct all feedback and issues to your designated Slack Channel.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-9268c761926444cfe505027d78b13dcce21275d0%2Fsend-feedback-demo.gif?alt=media&#x26;token=7cf44db2-d508-46db-ab0e-1ae419fdd709" alt="sending feedback from the mac menu and warp essentials"><figcaption><p>Send Feedback</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-9268c761926444cfe505027d78b13dcce21275d0%2Fsend-feedback-demo.gif?alt=media" alt="sending feedback from the mac menu and warp essentials"><figcaption><p>Send Feedback</p></figcaption></figure>
 
 ## Gathering Warp Logs
 
 You can retrieve Warp's logs by following the instructions for your platform below. Locate the log file and attach it to your GitHub issue or email.
 
 {% hint style="info" %}
-Warp's logs and crash reports ***do not*** contain any console input or output. See more on how we handle [Crash Reports and Telemetry](https://docs.warp.dev/privacy/privacy#what-telemetry-data-are-you-collecting-and-why).
+Warp's logs and crash reports ***do not*** contain any console input or output. See more on how we handle [Crash Reports and Telemetry](https://docs.warp.dev/support-and-community/privacy-and-security/privacy#what-telemetry-data-are-you-collecting-and-why).
 {% endhint %}
 
 {% tabs %}
 {% tab title="macOS" %}
 The Warp log files are located at `~/Library/Logs/`.
 
-#### Warp logs on macOS
+**Warp logs on macOS**
 
-Close Warp and run the following from another terminal to zip the logs to your Desktop:
+Run the following to zip the Warp logs to your Desktop:
 
 ```bash
 zip -j ~/Desktop/warp-logs.zip ~/Library/Logs/warp.log*
 ```
 
-#### Warp Preview logs on macOS
+**Warp Preview logs on macOS**
 
-Close Warp Preview and run the following from another terminal to zip the logs to your Desktop:
+Run the following to zip the Warp Preview logs to your Desktop:
 
 ```bash
 zip -j ~/Desktop/warp_preview-logs.zip ~/Library/Logs/warp_preview.log*
@@ -63,7 +63,7 @@ RUST_LOG=wgpu_core=info,wgpu_hal=info /Applications/WarpPreview.app/Contents/Mac
 {% tab title="Windows" %}
 The Warp log files are located at `$env:LOCALAPPDATA\warp\Warp\data\logs\`.
 
-#### Warp logs on Windows
+**Warp logs on Windows**
 
 Close Warp and run the following from another terminal to zip the logs to your Desktop:
 
@@ -71,7 +71,7 @@ Close Warp and run the following from another terminal to zip the logs to your D
 Compress-Archive -Path "$env:LOCALAPPDATA\warp\Warp\data\logs\warp.log*" -DestinationPath "$([Environment]::GetFolderPath('Desktop'))\warp-logs.zip"
 ```
 
-#### Warp Preview logs on Windows
+**Warp Preview logs on Windows**
 
 Close Warp Preview and run the following from another terminal to zip the logs to your Desktop:
 
@@ -102,17 +102,17 @@ $env:RUST_LOG="wgpu_core=info,wgpu_hal=info"; & "$env:PROGRAMFILES\WarpPreview\p
 {% tab title="Linux" %}
 The Warp log files are located at `~/.local/state/warp-terminal/`.
 
-#### Warp logs on Linux
+**Warp logs on Linux**
 
-Close Warp and run the following from another terminal to zip the logs to your home directory:
+Run the following to zip the Warp logs to your home directory:
 
 ```bash
 tar -czf ~/warp-logs.tar.gz -C ~/.local/state/warp-terminal warp.log*
 ```
 
-#### Warp Preview logs on Linux
+**Warp Preview logs on Linux**
 
-Close Warp and run the following from another terminal to zip the logs to your home directory:
+Run the following to zip the Warp Preview logs to your home directory:
 
 ```bash
 tar -czf ~/warp_preview-logs.tar.gz -C ~/.local/state/warp-terminal-preview warp_preview.log*
@@ -121,10 +121,10 @@ tar -czf ~/warp_preview-logs.tar.gz -C ~/.local/state/warp-terminal-preview warp
 {% hint style="warning" %}
 If your issue is graphical (e.g. no display of windows) or a crash, please run Warp with the following command to capture more log information:
 
-<pre class="language-bash"><code class="lang-bash"># Run if Warp on macOS is installed
+<pre class="language-bash"><code class="lang-bash"># Run if Warp on Linux is installed
 <strong>RUST_LOG=wgpu_core=info,wgpu_hal=info MESA_DEBUG=1 EGL_LOG_LEVEL=debug warp-terminal
-</strong><strong>
-</strong># Run if Warp Preview on Linux is installed
+</strong>
+# Run if Warp Preview on Linux is installed
 RUST_LOG=wgpu_core=info,wgpu_hal=info MESA_DEBUG=1 EGL_LOG_LEVEL=debug warp-terminal-preview
 </code></pre>
 
@@ -138,4 +138,4 @@ To gather the debugging ID, `RIGHT-CLICK` on the AI conversation block in questi
 
 Whenever there is an error in the Agent Conversation, there will also be an option to directly copy the debugging ID for the bug report.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-e7404c6201c657b444be485af3941d97f7024e67%2Fsend-feedback-debugging-information.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-e7404c6201c657b444be485af3941d97f7024e67%2Fsend-feedback-debugging-information.png?alt=media" alt=""><figcaption></figcaption></figure>

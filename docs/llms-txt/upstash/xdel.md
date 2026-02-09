@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XDEL
 
@@ -26,30 +12,26 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the stream.
 </ParamField>
 
-<ParamField body="ids" type="string | string[]" required>
-  The ID(s) of the message(s) to delete. Can be a single ID or an array of IDs.
+<ParamField body="ids" type="str" required>
+  The ID(s) of the message(s) to delete. Can be multiple IDs as separate arguments.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number">
+<ResponseField type="int">
   The number of entries actually deleted from the stream.
 </ResponseField>
 
 <RequestExample>
-  ```ts Single message theme={"system"}
-  const result = await redis.xdel("mystream", "1638360173533-0");
+  ```py Single message theme={"system"}
+  result = redis.xdel("mystream", "1638360173533-0")
   ```
 
-  ```ts Multiple messages theme={"system"}
-  const result = await redis.xdel("mystream", [
-    "1638360173533-0",
-    "1638360173533-1",
-    "1638360173533-2"
-  ]);
+  ```py Multiple messages theme={"system"}
+  result = redis.xdel("mystream", "1638360173533-0", "1638360173533-1", "1638360173533-2")
   ```
 </RequestExample>

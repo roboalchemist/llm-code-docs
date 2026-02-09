@@ -2,16 +2,16 @@
 
 # n8n - Website Content Crawler by Apify
 
-Website Content Crawler from https://apify.com/apify/website-content-crawler lets you extract text content from websites to feed AI models, LLM applications, vector databases, or Retrieval Augmented Generation (RAG) pipelines. It supports rich formatting using Markdown, cleans the HTML of irrelevant elements, downloads linked files, and integrates with AI ecosystems like Langchain, LlamaIndex, and other LLM frameworks.
+Website Content Crawler from [Apify](https://apify.com/apify/website-content-crawler) lets you extract text content from websites to feed AI models, LLM applications, vector databases, or Retrieval Augmented Generation (RAG) pipelines. It supports rich formatting using Markdown, cleans the HTML of irrelevant elements, downloads linked files, and integrates with AI ecosystems like Langchain, LlamaIndex, and other LLM frameworks.
 
-To use these modules, you need an https://docs.apify.com/platform/integrations/api#api-token. You can find your token in the https://console.apify.com/ under **Settings > Integrations**. After connecting, you can automate content extraction at scale and incorporate the results into your AI workflows.
+To use these modules, you need an [API token](https://docs.apify.com/platform/integrations/api#api-token). You can find your token in the [Apify Console](https://console.apify.com/) under **Settings > Integrations**. After connecting, you can automate content extraction at scale and incorporate the results into your AI workflows.
 
 ## Prerequisites
 
 Before you begin, make sure you have:
 
-* An https://console.apify.com/
-* An https://docs.n8n.io/learning-path/ (self‑hosted or cloud)
+* An [Apify account](https://console.apify.com/)
+* An [n8n instance](https://docs.n8n.io/learning-path/) (self‑hosted or cloud)
 
 ## n8n Cloud setup
 
@@ -57,8 +57,8 @@ If you're running a self-hosted n8n instance, you can install the Apify communit
 1. Open your n8n instance.
 2. Go to **Settings > Community Nodes**.
 3. Select **Install**.
-4. Enter the npm package name: `@apify/n8n-nodes-apify-content-crawler` (for latest version). To install a specific https://www.npmjs.com/package/@apify/n8n-nodes-apify-content-crawler?activeTab=versions enter e.g `@apify/n8n-nodes-apify-content-crawler@0.0.1`.
-5. Agree to the https://docs.n8n.io/integrations/community-nodes/risks/ of using community nodes and select **Install**.
+4. Enter the npm package name: `@apify/n8n-nodes-apify-content-crawler` (for latest version). To install a specific [version](https://www.npmjs.com/package/@apify/n8n-nodes-apify-content-crawler?activeTab=versions) enter e.g `@apify/n8n-nodes-apify-content-crawler@0.0.1`.
+5. Agree to the [risks](https://docs.n8n.io/integrations/community-nodes/risks/) of using community nodes and select **Install**.
 6. You can now use the node in your workflows.
 
 ![Apify Install Node](/assets/images/install-47f9478698870739791b2eb55454db90.png)
@@ -67,11 +67,11 @@ If you're running a self-hosted n8n instance, you can install the Apify communit
 
 ### Connect
 
-1. Create an account at https://console.apify.com/. You can sign up using your email, Gmail, or GitHub account.
+1. Create an account at [Apify](https://console.apify.com/). You can sign up using your email, Gmail, or GitHub account.
 
    ![Sign up page](/assets/images/wcc-signup-05f272efdc2e70fddd89ff59d8600031.png)
 
-2. To connect your Apify account to n8n, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **https://console.apify.com/settings/integrations** in the Apify Console.
+2. To connect your Apify account to n8n, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)** in the Apify Console.
 
    ![Apify Console token for n8n](/assets/images/apify-console-token-for-make-cf75dbeb5effdcab9bc204cee94cdb6a.png)
 
@@ -145,7 +145,7 @@ Sample output (shortened)
 ```
 
 
-You can access any of thousands of our scrapers on Apify Store by using the https://n8n.io/integrations/apify.
+You can access any of thousands of our scrapers on Apify Store by using the [general Apify app](https://n8n.io/integrations/apify).
 
 ### Configuration options
 

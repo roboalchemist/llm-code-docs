@@ -180,7 +180,7 @@ Styling for internal View for `ListHeaderComponent`.
 
 ***
 
-### `disableVirtualization`[​](#disablevirtualization "Direct link to disablevirtualization")
+### 🗑️ `disableVirtualization`[​](#️-disablevirtualization "Direct link to ️-disablevirtualization")
 
 Deprecated
 

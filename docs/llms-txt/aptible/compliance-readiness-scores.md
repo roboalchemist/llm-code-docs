@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-compliance-dashboard/compliance-readiness-scores.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compliance Readiness Scores
 
 The performance of the security controls in the Security & Compliance Dashboard affects your readiness score towards regulations and frameworks like HIPAA and HITRUST. These scores tell you how effectively you have implemented infrastructure controls to meet these frameworks’ requirements.

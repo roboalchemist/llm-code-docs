@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/updating-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Updating Metadata Tags
 
 You may want to update the metadata tags on a request log after it's already been reported. For instance, if you notice that a certain completion from your fine-tuned model was flawed,
@@ -7,7 +11,7 @@ you can mark it to be imported into one of your datasets and relabeled with GPT-
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     import os
     from openpipe import OpenPipe, OpenAI
     from openpipe.client import UpdateLogTagsRequestFiltersItem
@@ -52,7 +56,7 @@ you can mark it to be imported into one of your datasets and relabeled with GPT-
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
     import OpenPipe from "openpipe/client";
 

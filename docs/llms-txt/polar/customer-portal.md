@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/customer-portal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer Portal
 
 > Enable customers to view & manage orders and subscriptions easily
@@ -44,7 +48,7 @@ async function run() {
 run();
 ```
 
-Or, if you use NextJS as your framework, we have a handy utility which shortens down your code significantly.
+Or, if you use Next.js as your framework, we have a handy utility which shortens down your code significantly.
 
 ```typescript  theme={null}
 // app/portal/route.ts

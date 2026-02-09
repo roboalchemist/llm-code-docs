@@ -2,10 +2,7 @@
 
 # Get Permission Group
 
-```
-GET 
-/v1/permissions/:permissionGroupId
-```
+Copy page
 
 This endpoint returns the metadata of a Permission Group identified by the `permissionGroupId`.
 

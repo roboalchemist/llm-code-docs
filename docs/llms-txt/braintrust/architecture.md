@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/reference/architecture.md
+# Source: https://braintrust.dev/docs/admin/architecture.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Architecture
 
@@ -8,7 +12,7 @@ data never leaves your account, and never flows through Braintrust's infrastruct
 as the *data plane*.
 
 At its core, the data plane deployment works by installing an API layer along with a database in your environment.
-On [AWS](/guides/self-hosting/aws), this is packaged as [AWS Lambda](https://aws.amazon.com/lambda/) functions, a [Postgres database](https://www.postgresql.org/),
+On [AWS](/admin/self-hosting/aws), this is packaged as [AWS Lambda](https://aws.amazon.com/lambda/) functions, a [Postgres database](https://www.postgresql.org/),
 and other services in a [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html), packaged up
 as a [Terraform module](https://github.com/braintrustdata/terraform-aws-braintrust-data-plane). Braintrust also provides Terraform modules for [GCP](https://github.com/braintrustdata/terraform-google-braintrust-data-plane) and [Azure](https://github.com/braintrustdata/terraform-azure-braintrust-data-plane) using Kubernetes.
 
@@ -21,9 +25,4 @@ servers. And when you visit the UI (on [https://www.braintrustdata.com/app](http
 
 Brainstore is Braintrust's high-performance database for ingesting and querying AI data. It uses object storage and a streaming Rust engine to load spans in real time, cutting down on latency and enabling deep search capabilities.
 
-Braintrust automatically uses Brainstore on our hosted platform and requires it when setting up the Braintrust data plane on your own infrastructure. Check out the [self-hosting guide](/guides/self-hosting) for more information.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+Braintrust automatically uses Brainstore on our hosted platform and requires it when setting up the Braintrust data plane on your own infrastructure. Check out the [self-hosting guide](/admin/self-hosting) for more information.

@@ -16,6 +16,10 @@ Check out  for full reference.
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

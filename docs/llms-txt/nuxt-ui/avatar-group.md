@@ -190,11 +190,8 @@ Wrap an avatar with a CSS mask to display it with a custom shape.
 </style>
 ```
 
-<warning>
-
-The `chip` prop does not work correctly when using a mask. Chips may be cut depending on the mask shape.
-
-</warning>
+> [!WARNING]
+> The `chip` prop does not work correctly when using a mask. Chips may be cut depending on the mask shape.
 
 ## API
 
@@ -209,7 +206,7 @@ interface AvatarGroupProps {
    * The element or component this component should render as.
    */
   as?: any;
-  size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "3xs" | "2xl" | "3xl" | undefined;
+  size?: "md" | "xs" | "sm" | "lg" | "xl" | "3xs" | "2xs" | "2xl" | "3xl" | undefined;
   /**
    * The maximum number of avatars to display.
    */
@@ -280,8 +277,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

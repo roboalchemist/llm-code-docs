@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/avatar/plugins/anam.md
 
-LiveKit docs › Models › Virtual avatars › Plugins › Anam
+LiveKit docs › Models › Virtual avatar › Plugins › Anam
 
 ---
 
@@ -9,7 +9,7 @@ LiveKit docs › Models › Virtual avatars › Plugins › Anam
 > How to use the Anam virtual avatar plugin for LiveKit Agents.
 
 Available in:
-- [ ] Node.js
+- [x] Node.js
 - [x] Python
 
 ## Overview
@@ -22,10 +22,19 @@ This section includes a basic usage example and some reference material. For lin
 
 ### Installation
 
-Install the plugin from PyPI:
+**Python**:
 
 ```shell
-uv add "livekit-agents[anam]~=1.2"
+uv add "livekit-agents[anam]~=1.3"
+
+```
+
+---
+
+**Node.js**:
+
+```shell
+pnpm add @livekit/agents-plugin-anam
 
 ```
 
@@ -39,9 +48,11 @@ Set `ANAM_API_KEY` in your `.env` file.
 
 Use the plugin in an `AgentSession`. For example, you can use this avatar in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
+**Python**:
+
 ```python
 from livekit import agents
-from livekit.agents import AgentServer, AgentSession, RoomOutputOptions
+from livekit.agents import AgentServer, AgentSession
 from livekit.plugins import anam
 
 server = AgentServer()
@@ -64,8 +75,37 @@ async def my_agent(ctx: agents.JobContext):
 
    # Start your agent session with the user
    await session.start(
-      # ... room, agent, room_input_options, etc....
+      # ... room, agent, room_options, etc....
    )
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+import { voice } from '@livekit/agents';
+import * as anam from '@livekit/agents-plugin-anam';
+
+const session = new voice.AgentSession({
+   // ... stt, llm, tts, etc.
+});
+
+const avatar = new anam.AvatarSession({
+   personaConfig: {
+      name: "...",  // Name of the avatar to use.
+      avatarId: "...",  // ID of the avatar to use. See "Avatar setup" for details.
+   },
+});
+
+// Start the avatar and wait for it to join
+await avatar.start(session, room);
+
+// Start your agent session with the user
+await session.start(
+   // ... room, agent, room_options, etc.
+);
 
 ```
 
@@ -95,12 +135,6 @@ This section describes some of the available parameters. See the [plugin referen
 
 The following resources provide more information about using Anam with LiveKit Agents.
 
-- **[Python package](https://pypi.org/project/livekit-plugins-anam/)**: The `livekit-plugins-anam` package on PyPI.
-
-- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/anam/index.html.md)**: Reference for the Anam avatar plugin.
-
-- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-anam)**: View the source or contribute to the LiveKit Anam avatar plugin.
-
 - **[Anam API docs](https://docs.anam.ai/third-party-integrations/livekit)**: Anam's LiveKit integration docs.
 
 - **[Agents Playground](https://docs.livekit.io/agents/start/playground.md)**: A virtual workbench to test your avatar agent.
@@ -109,7 +143,7 @@ The following resources provide more information about using Anam with LiveKit A
 
 ---
 
-This document was rendered at 2025-11-18T23:55:15.925Z.
+This document was rendered at 2026-02-03T03:25:06.874Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/avatar/plugins/anam.md](https://docs.livekit.io/agents/models/avatar/plugins/anam.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -70,7 +70,7 @@ Required information:
 
 - Full company legal entity name that matches the legal entity name in your settings
 - Tax ID from the local tax authority that matches what’s in your settings (excluding Canada)
-- Company address that matches what’s in your settings
+- Company address that matches what’s in your settings unless specified otherwise.
 
 #### Item 1
 

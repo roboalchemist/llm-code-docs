@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/no-unknown-property.md
 ---
-# react/no-unknown-property&#x20;
 
 ### What it does
 

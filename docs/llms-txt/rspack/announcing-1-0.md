@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-1-0.md
 
-*August 28, 2024*
+_August 28, 2024_
 
 # Announcing Rspack 1.0
 
@@ -38,7 +38,7 @@ Since the release of 0.1, Rspack has introduced numerous important features and 
 
 As a Rust-based bundler, performance has always been a core focus for Rspack. Since the release of Rspack 0.1, we have made numerous performance improvements, optimized its performance for different scenarios, and added key features such as [lazy compilation](/config/experiments.md#experimentslazycompilation) to ensure better performance in large projects.
 
-Here is a comparison of build performance between Rspack 0.1 and Rspack 1.0 from the [benchmark](https://github.com/rstackjs/performance-compare). Rspack has significantly improved build performance while also adding many new features:
+Here is a comparison of build performance between Rspack 0.1 and Rspack 1.0 from the [benchmark](https://github.com/rstackjs/build-tools-performance). Rspack has significantly improved build performance while also adding many new features:
 
 ![Rspack benchmark](https://assets.rspack.rs/rspack/assets/rspack-v1-0-benchmark.png)
 
@@ -82,9 +82,9 @@ Over the past two years, the community has seen the birth of several Rust-based 
 
 The current goals of Rspack are:
 
-* To help existing webpack projects progressively migrate to a high performance bundler, so that build performance is no longer a bottleneck for fast iterations.
-* Rspack is not just suitable for environments like browser and Node.js that we are familiar with; its goal is to cover all environments where JavaScript runs. This means that Rspack can easily support Deno, Electron, cross-platform applications, MiniApps, and any other JavaScript runtime.
-* We found that balancing "flexibility" and "out-of-the-box" in a single tool was a challenging task. Therefore, after open-sourcing Rspack, we developed a set of Rstack toolchains, including projects such as Rsbuild, Rspress, Rsdoctor, and Rslib, each targeting different use cases. For example, to reduce the complexity and high barriers to configuring Rspack, we provide Rsbuild for an out-of-the-box development experience.
+- To help existing webpack projects progressively migrate to a high performance bundler, so that build performance is no longer a bottleneck for fast iterations.
+- Rspack is not just suitable for environments like browser and Node.js that we are familiar with; its goal is to cover all environments where JavaScript runs. This means that Rspack can easily support Deno, Electron, cross-platform applications, MiniApps, and any other JavaScript runtime.
+- We found that balancing "flexibility" and "out-of-the-box" in a single tool was a challenging task. Therefore, after open-sourcing Rspack, we developed a set of Rstack toolchains, including projects such as Rsbuild, Rspress, Rsdoctor, and Rslib, each targeting different use cases. For example, to reduce the complexity and high barriers to configuring Rspack, we provide Rsbuild for an out-of-the-box development experience.
 
 ### Rstack
 
@@ -92,11 +92,11 @@ The current goals of Rspack are:
 
 Rstack is short for "Rspack Stack" and stands for the tech stack centered on Rspack. It consists of the following tools:
 
-* [Rspack](https://github.com/web-infra-dev/rspack): Focuses on implementing the high performance bundler, balancing performance and flexible configuration.
-* [Rsbuild](https://github.com/web-infra-dev/rsbuild): Focuses on building web applications, providing an out-of-the-box development experience.
-* [Rslib](https://github.com/web-infra-dev/rslib): Focuses on building libraries, providing high quality ESM and CJS outputs.
-* [Rspress](https://github.com/web-infra-dev/rspress) Focuses on generating static sites and supports MDX for building documentation sites and blogs.
-* [Rsdoctor](https://github.com/web-infra-dev/rsdoctor) Focuses on build analysis, helping developers resolve build-related issues.
+- [Rspack](https://github.com/web-infra-dev/rspack): Focuses on implementing the high performance bundler, balancing performance and flexible configuration.
+- [Rsbuild](https://github.com/web-infra-dev/rsbuild): Focuses on building web applications, providing an out-of-the-box development experience.
+- [Rslib](https://github.com/web-infra-dev/rslib): Focuses on building libraries, providing high quality ESM and CJS outputs.
+- [Rspress](https://github.com/web-infra-dev/rspress) Focuses on generating static sites and supports MDX for building documentation sites and blogs.
+- [Rsdoctor](https://github.com/web-infra-dev/rsdoctor) Focuses on build analysis, helping developers resolve build-related issues.
 
 Together these tools make up the Rstack. We aim to provide a unified set of web development tools that deliver a top tier experience for both developers and users.
 
@@ -104,8 +104,8 @@ Together these tools make up the Rstack. We aim to provide a unified set of web 
 
 Rspack 1.0 is designed to be compatible with webpack v5, which will help many projects using webpack to migrate smoothly to Rspack. While maintaining compatibility with webpack, Rspack 1.0 also embraces modern web standards and aims for ultimate build performance.
 
-* For web standards, Rspack actively follows the evolution of modern web standards and the latest developments from TC39 and web standards. For example, Rspack already supports the use of Web Workers through [new Worker()](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker), supports importing JSON modules through [Import Attributes](https://github.com/tc39/proposal-import-attributes), and supports importing CSS based on the [CSS Module Scripts](https://web.dev/articles/css-module-scripts) specification.
-* For performance, we have introduced many optimizations in 1.0. For example, if a JavaScript-side hook is not used, the Rust side will not invoke communication with the JavaScript side. Also, Rspack performs lazy loading for many message objects. Even if the message object is large, if JavaScript only consumes a subset of its properties, Rspack will only transfer the consumed data, minimizing the communication overhead between Rust and JavaScript. And Rspack plans to provide even more lightweight hooks in the future to achieve more efficient communication between Rust and JavaScript.
+- For web standards, Rspack actively follows the evolution of modern web standards and the latest developments from TC39 and web standards. For example, Rspack already supports the use of Web Workers through [new Worker()](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker), supports importing JSON modules through [Import Attributes](https://github.com/tc39/proposal-import-attributes), and supports importing CSS based on the [CSS Module Scripts](https://web.dev/articles/css-module-scripts) specification.
+- For performance, we have introduced many optimizations in 1.0. For example, if a JavaScript-side hook is not used, the Rust side will not invoke communication with the JavaScript side. Also, Rspack performs lazy loading for many message objects. Even if the message object is large, if JavaScript only consumes a subset of its properties, Rspack will only transfer the consumed data, minimizing the communication overhead between Rust and JavaScript. And Rspack plans to provide even more lightweight hooks in the future to achieve more efficient communication between Rust and JavaScript.
 
 In future major releases, Rspack will evolve based on the webpack API to better meet the needs of modern web development.
 
@@ -119,11 +119,11 @@ If you have never used Rspack before, please see [Quick Start](/guide/start/quic
 
 Rspack 1.0 marks a new beginning. Following this release, the Rspack team will focus on the following goals:
 
-* **Develop Rspack 1.x.** Rspack 1.x will iterate over 12 to 18 months, bringing more new features and improvements.
-* **Release Rsbuild 1.0.** It is based on Rspack 1.0 and supports [multi-environment builds](https://rsbuild.rs/guide/advanced/environments). Currently, Rsbuild has released version 1.0 RC, and the official release is expected in September.
-* **Release Rsdoctor 1.0.** This release will improve support for Vue and provide [report formats](https://github.com/web-infra-dev/rsdoctor/issues/408) for CI/CD.
-* **Develop Rslib 0.x.** Rslib is a library building tool based on Rsbuild. See [Rslib repository](https://github.com/web-infra-dev/rslib) for more details.
-* **Develop Rspress 2.0.** It will be based on React 19 and will improve some of the API designs. See [Rspress v2.0 planning](https://github.com/web-infra-dev/rspress/discussions/1105) for more details.
+- **Develop Rspack 1.x.** Rspack 1.x will iterate over 12 to 18 months, bringing more new features and improvements.
+- **Release Rsbuild 1.0.** It is based on Rspack 1.0 and supports [multi-environment builds](https://rsbuild.rs/guide/advanced/environments). Currently, Rsbuild has released version 1.0 RC, and the official release is expected in September.
+- **Release Rsdoctor 1.0.** This release will improve support for Vue and provide [report formats](https://github.com/web-infra-dev/rsdoctor/issues/408) for CI/CD.
+- **Develop Rslib 0.x.** Rslib is a library building tool based on Rsbuild. See [Rslib repository](https://github.com/web-infra-dev/rslib) for more details.
+- **Develop Rspress 2.0.** It will be based on React 19 and will improve some of the API designs. See [Rspress v2.0 planning](https://github.com/web-infra-dev/rspress/discussions/1105) for more details.
 
 Here are some key features we plan to support in Rspack 1.x:
 
@@ -157,13 +157,13 @@ ESM is the standard for JavaScript modules. We are currently improving Rspack an
 
 The development of Rspack would not have been possible without the contributions and support of the awesome community. Special thanks to:
 
-* The [NX team](https://nx.dev/) for trusting in Rspack and integrating it early during its open-source phase.
-* [Zack Chapple](https://github.com/zackarychapple) and the [Zephyr team](https://www.zephyr-cloud.io/) for helping to promote Rspack.
-* The [Unplugin team](https://github.com/unjs/unplugin) for actively helping to integrate Rspack and enriching the plugin ecosystem.
-* [Brandon Dail](https://github.com/aweary) for using Rspack on Discord and helping us spread the word.
-* [Kaffi Y](https://github.com/xc2) for tirelessly helping users and answering Rspack-related questions on GitHub and Discord.
-* All the developers participating in ByteDance's Rspack Innovator project, such as [Kelvin Omereshone](https://x.com/Dominus_Kelvin), [Yannik Peschke](https://x.com/_yanpes), [Russell Canfield](https://x.com/RussellCanfield), and [Kyrylo](https://x.com/KyryloBashtenko) who gave us early feedback and advice.
-* All the companies and users who have been using Rspack since version 0.x, their valuable suggestions have helped Rspack to progress.
+- The [NX team](https://nx.dev/) for trusting in Rspack and integrating it early during its open-source phase.
+- [Zack Chapple](https://github.com/zackarychapple) and the [Zephyr team](https://www.zephyr-cloud.io/) for helping to promote Rspack.
+- The [Unplugin team](https://github.com/unjs/unplugin) for actively helping to integrate Rspack and enriching the plugin ecosystem.
+- [Brandon Dail](https://github.com/aweary) for using Rspack on Discord and helping us spread the word.
+- [Kaffi Y](https://github.com/xc2) for tirelessly helping users and answering Rspack-related questions on GitHub and Discord.
+- All the developers participating in ByteDance's Rspack Innovator project, such as [Kelvin Omereshone](https://x.com/Dominus_Kelvin), [Yannik Peschke](https://x.com/_yanpes), [Russell Canfield](https://x.com/RussellCanfield), and [Kyrylo](https://x.com/KyryloBashtenko) who gave us early feedback and advice.
+- All the companies and users who have been using Rspack since version 0.x, their valuable suggestions have helped Rspack to progress.
 
 In the open source community, Rspack won the 2024 [Breakthrough of the Year Award](https://osawards.com/javascript/), which is a great encouragement for the Rspack team. We would like to thank all the developers who voted for Rspack.
 
@@ -171,9 +171,9 @@ In the open source community, Rspack won the 2024 [Breakthrough of the Year Awar
 
 Since the 0.1 release, we have established good collaborations with several community teams:
 
-* While aligning with webpack, we worked with the webpack team to improve support for native CSS and ESM output. In the process, the Rspack team submitted over 100 commits to webpack. Special thanks to [Alexander Akait](https://github.com/alexander-akait) for his review feedback.
-* We also worked with the SWC team, contributing the Preact Refresh SWC plugin and fixing some transform and minify bugs in SWC. Thanks to [kdy](https://github.com/kdy1) for his review feedback.
-* Rspack has embraced the [unplugin](https://github.com/unjs/unplugin) ecosystem and fully supports the unplugin API. Thanks to [sxzz](https://github.com/sxzz) for his review feedback and [antfu](https://github.com/antfu) for his remarkable creativity.
+- While aligning with webpack, we worked with the webpack team to improve support for native CSS and ESM output. In the process, the Rspack team submitted over 100 commits to webpack. Special thanks to [Alexander Akait](https://github.com/alexander-akait) for his review feedback.
+- We also worked with the SWC team, contributing the Preact Refresh SWC plugin and fixing some transform and minify bugs in SWC. Thanks to [kdy](https://github.com/kdy1) for his review feedback.
+- Rspack has embraced the [unplugin](https://github.com/unjs/unplugin) ecosystem and fully supports the unplugin API. Thanks to [sxzz](https://github.com/sxzz) for his review feedback and [antfu](https://github.com/antfu) for his remarkable creativity.
 
 We are also excited to see Rspack being used or integrated into a wider ecosystem, including [Bazel](https://medium.com/@yanirmanor/why-moving-to-rspack-and-how-to-use-it-with-bazel-9f66139fe493), [Storybook](https://github.com/rstackjs/storybook-rsbuild), [Electron](https://github.com/noshower/electron-forge-plugin-rspack), and more.
 
@@ -211,8 +211,8 @@ Rspack is built on SWC, which is currently in the pre-1.0 phase. To keep up with
 
 In minor releases, the types exported by Rspack may change for the following reasons:
 
-* TypeScript itself does not follow semver. It may introduce some breaking changes in minor releases that require Rspack to adjust its types.
-* Rspack may use some features introduced in higher versions of TypeScript, which could affect projects using lower versions of TypeScript.
+- TypeScript itself does not follow semver. It may introduce some breaking changes in minor releases that require Rspack to adjust its types.
+- Rspack may use some features introduced in higher versions of TypeScript, which could affect projects using lower versions of TypeScript.
 
 #### Bugfix for webpack compatibility
 

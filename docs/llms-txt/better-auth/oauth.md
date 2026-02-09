@@ -4,11 +4,7 @@
 
 How Better Auth handles OAuth
 
-***
 
-title: OAuth
-description: How Better Auth handles OAuth
-------------------------------------------
 
 Better Auth comes with built-in support for OAuth 2.0 and OpenID Connect. This allows you to authenticate users via popular OAuth providers like Google, Facebook, GitHub, and more.
 

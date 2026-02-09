@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/integrations/slack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Slack
 
 > Get daily or weekly messages about your AI flows directly in Slack
@@ -53,8 +57,3 @@ You'll now receive automated messages in your chosen Slack channel with insights
 <Frame>
   <img src="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=c0489636d1a9bb96f431e06b9185b327" data-og-width="568" width="568" data-og-height="361" height="361" data-path="img/traceloop-integrations/slack-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=280&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=0032e3b3a6138314e51d0547c6f2443e 280w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=560&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=ce474ab1a81fd62eb7fccfd07c32586a 560w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=840&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=76557b8fb9f0299d0d2cdf525a46c1e7 840w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=1100&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=fec5942168d4b07f7acf52d30eaa15b6 1100w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=1650&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=d2786691a3d03ec2899486ccdc980814 1650w, https://mintcdn.com/enrolla/pLLlNcf8Qyyp9R0l/img/traceloop-integrations/slack-example.png?w=2500&fit=max&auto=format&n=pLLlNcf8Qyyp9R0l&q=85&s=ed9a750e25e04bc5d7ba574d68ff9087 2500w" />
 </Frame>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/aptGet.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # apt-get
 
 > Use the aptGet build extension to install system packages into the deployed image
 
 You can install system packages into the deployed image using the `aptGet` extension:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { aptGet } from "@trigger.dev/build/extensions/core";
 
@@ -21,7 +25,7 @@ export default defineConfig({
 
 If you want to install a specific version of a package, you can specify the version like this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({

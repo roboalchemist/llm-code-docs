@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/partner-program.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partner Program
 
 > The [Zapier Partner Program](https://zapier.com/developer-platform/partner-program) is a program for Zapier's [8,000+ integration partners](https://zapier.com/apps). It is designed to give all public partners a clear path to success for their integrations and reward them with benefits along the way.
@@ -30,6 +34,12 @@ Zapier won't externally share your tier in the Partner Program with anyone, incl
 ### Active users
 
 The active users metric looks at how many people are actively using your Zapier integration this quarter. Since this number accumulates over the quarter, it is normal to see a drop at the beginning of each quarter compared to the end of last quarter.
+
+The minimum number of active users to achieve each tier above Bronze are:
+
+* Silver - 50
+* Gold - 350
+* Platinum - 3,000 OR minimum 350 with a 20% growth rate over last quarter
 
 To increase usage of your Zapier integration, try out [these 10 tactics](/platform/publish/partner-faq).
 

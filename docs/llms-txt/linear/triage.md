@@ -41,20 +41,22 @@ To ask for more information from the user who created the issue, comment on the 
 
 **Snoozing** will hide the issue from the triage queue to return at a time of your choosing, or when there's new activity on that issue: whichever comes first. See snoozed Triage issues by toggling the preference in View Options. Snoozing hides the issue in Triage from other users by default as well.
 
-### Product Intelligence
+### Triage Intelligence
 
-On Business and Enterprise plans, our Product Intelligence feature allows LLMs to analyze every new issue in triage against your existing issues to suggest properties like assignee and label, and pro-actively surface likely related issues or duplicates based on the analysis of the issue's content against historical behavior in your workspace. Learn more about Product Intelligence [here](https://linear.app/docs/product-intelligence).
+On Business and Enterprise plans, our Triage Intelligence feature allows LLMs to analyze every new issue in triage against your existing issues to suggest properties like assignee and label, and pro-actively surface likely related issues or duplicates based on the analysis of the issue's content against historical behavior in your workspace. Learn more about Triage Intelligence [here](https://linear.app/docs/triage-intelligence).
 
 ### Triage rules
 
 > [!NOTE]
-> Triage rules functionality is supported on our Enterprise plan.
+> Triage rules functionality is supported on Business and Enterprise plans.
 
-On Enterprise plans, configure custom rules to take automated actions on issues when they enter Triage. Triggered on filterable properties, triage rules can update an issue's team, status, assignee, label, project and priority. 
+On Business/Enterprise plans, configure custom rules to take automated actions on issues when they enter Triage. Triggered on filterable properties, triage rules can update an issue's team, status, assignee, label, project and priority. 
 
 Once configured, rules are executed in order from the top down. When moving issues to another team's Triage via rule, the new team's rules are applied to the issue as well. If rules conflict, this is surfaced in the interface.
 
 Consider combining triage routing with [custom Asks fields](https://linear.app/docs/linear-asks#creating-additional-fields) to create a scalable system to intake issues from Slack. Users fill out what they know and automations send the issue to the right team or assignee.
+
+To create a rule that triggers on when any condition in a set is true (like Customer name includes any of 3 customers,) hold `Shift` while selecting each customer name in the filter menu.
 
 ![two triage rules; if any of three customers set priority to high, and if labeled iOS move to team Mobile](https://webassets.linear.app/images/ornj730p/production/f41716bdc477cee4fadc5fabeff3bf47c09f27bc-1832x934.png?q=95&auto=format&dpr=2)
 

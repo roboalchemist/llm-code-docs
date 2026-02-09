@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/oem-integrations/tesla/developers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tesla Permission Info
 
 > This page has information regarding Smartcar's upgraded Tesla integration.

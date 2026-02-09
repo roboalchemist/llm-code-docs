@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/contributing/platform/backend/how-to-create-a-feature.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Backend development guide
 
 Suppose you're interested in implementing a new feature in Infisical's backend, let's call it "feature-x." Here are the general steps you should follow.

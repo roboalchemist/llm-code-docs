@@ -1,12 +1,16 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-client-elicitation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # elicitation
 
 # `fastmcp.client.elicitation`
 
 ## Functions
 
-### `create_elicitation_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/elicitation.py#L37" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `create_elicitation_callback` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/client/elicitation.py#L38" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 create_elicitation_callback(elicitation_handler: ElicitationHandler) -> ElicitationFnT

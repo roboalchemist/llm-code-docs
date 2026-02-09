@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/langgraph.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/langgraph.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LangGraph
 
@@ -132,8 +136,3 @@ Configure a global LangChain callback handler to automatically trace all graph o
 
 * [LangGraph documentation](https://langchain-ai.github.io/langgraph/)
 * [LangChain integration](/integrations/sdk-integrations/langchain)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

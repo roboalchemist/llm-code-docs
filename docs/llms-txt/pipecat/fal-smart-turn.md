@@ -1,8 +1,19 @@
 # Source: https://docs.pipecat.ai/server/utilities/smart-turn/fal-smart-turn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fal Smart Turn
 
 > Cloud-hosted Smart Turn detection using Fal.ai
+
+<Warning>
+  DEPRECATED: `FalSmartTurnAnalyzer` is deprecated. Please use
+  [LocalSmartTurnAnalyzerV3](/server/utilities/smart-turn/smart-turn-overview#local-smart-turn)
+  instead, which provides fast CPU inference without requiring external API
+  calls.
+</Warning>
 
 ## Overview
 
@@ -54,7 +65,13 @@ import aiohttp
 from pipecat.audio.turn.smart_turn.fal_smart_turn import FalSmartTurnAnalyzer
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 async def setup_transport():
     async with aiohttp.ClientSession() as session:
@@ -63,11 +80,22 @@ async def setup_transport():
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-                turn_analyzer=FalSmartTurnAnalyzer(
-                    api_key=os.getenv("FAL_SMART_TURN_API_KEY"),
-                    aiohttp_session=session
+            ),
+        )
+
+        # Configure Smart Turn Detection via user turn strategies
+        user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+            context,
+            user_params=LLMUserAggregatorParams(
+                user_turn_strategies=UserTurnStrategies(
+                    stop=[TurnAnalyzerUserTurnStopStrategy(
+                        turn_analyzer=FalSmartTurnAnalyzer(
+                            api_key=os.getenv("FAL_SMART_TURN_API_KEY"),
+                            aiohttp_session=session
+                        )
+                    )]
                 ),
+                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
             ),
         )
 
@@ -79,10 +107,12 @@ async def setup_transport():
 You can also deploy the Smart Turn model yourself on Fal.ai and point to your custom deployment:
 
 ```python  theme={null}
-turn_analyzer=FalSmartTurnAnalyzer(
-    url="https://fal.run/your-username/your-deployment/raw",
-    api_key=os.getenv("FAL_API_KEY"),
-    aiohttp_session=session
+TurnAnalyzerUserTurnStopStrategy(
+    turn_analyzer=FalSmartTurnAnalyzer(
+        url="https://fal.run/your-username/your-deployment/raw",
+        api_key=os.getenv("FAL_API_KEY"),
+        aiohttp_session=session
+    )
 )
 ```
 
@@ -97,8 +127,3 @@ turn_analyzer=FalSmartTurnAnalyzer(
 * Fal handles the model hosting, scaling, and infrastructure management
 * The session timeout is controlled by the `stop_secs` parameter
 * For high-throughput applications, consider deploying your own inference service
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

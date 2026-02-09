@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/flow-control/rate-period.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate and Period
 
 The rate specifies the maximum number of requests allowed in a given period (time window).
@@ -15,8 +19,7 @@ const { workflowRunId } = await client.trigger({
     key: "user-signup",
     rate: 10,
     period: 100,
-  },
-  keepTriggerConfig: true,
+  }
 })
 ```
 

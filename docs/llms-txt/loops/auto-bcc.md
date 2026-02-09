@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/auto-bcc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auto BCC
 
 > Import emails and contacts to your CRM by adding a BCC address to your marketing emails.

@@ -4,9 +4,9 @@
 
 Layer is a powerful feature provided by Rspack that allows you to categorize and manage modules. By assigning different layers to modules, you can perform differentiated processing for different types of modules, such as:
 
-* Using different compilation targets based on different layers
-* Splitting modules from different layers into different output directories
-* Applying different compilation strategies for code in different environments (such as server-side and client-side)
+- Using different compilation targets based on different layers
+- Splitting modules from different layers into different output directories
+- Applying different compilation strategies for code in different environments (such as server-side and client-side)
 
 ## Ways to specify layers
 
@@ -58,8 +58,8 @@ The layer assigned by [`rules[].layer`](/config/module-rules.md#ruleslayer) will
 
 To better understand how Layer works, we categorize modules into two types:
 
-* **Regular modules**: Modules that are not explicitly assigned a layer
-* **Layer modules**: Modules that have been assigned a layer
+- **Regular modules**: Modules that are not explicitly assigned a layer
+- **Layer modules**: Modules that have been assigned a layer
 
 ### Layer inheritance rules
 
@@ -75,8 +75,8 @@ When a regular module is depended upon by multiple modules with different layers
 
 **Example:** If both `'client'` layer and `'server'` layer depend on the same `lib.js` module, then:
 
-* The build output will contain two copies of `lib.js`: one belonging to the `'client'` layer and another to the `'server'` layer
-* The dependency modules of these two copies will also be duplicated and assigned according to the same rules
+- The build output will contain two copies of `lib.js`: one belonging to the `'client'` layer and another to the `'server'` layer
+- The dependency modules of these two copies will also be duplicated and assigned according to the same rules
 
 ## Applying different processing rules to different layers
 

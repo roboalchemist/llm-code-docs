@@ -1,8 +1,12 @@
 # Source: https://docs.pinecone.io/reference/api/versioning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API versioning
 
-Pinecone's APIs are versioned to ensure that your applications continue to work as expected as the platform evolves. Versions are named by release date in the format `YYYY-MM`, for example, `2025-04`.
+Pinecone's APIs are versioned to ensure that your applications continue to work as expected as the platform evolves. Versions are named by release date in the format `YYYY-MM`, for example, `2025-10`.
 
 ## Release schedule
 
@@ -24,27 +28,19 @@ Below is an example of Pinecone's release schedule:
   When using the API directly, it is important to specify an API version in your requests. If you don't, requests default to the oldest supported stable version. Once support for that version ends, your requests will default to the next oldest stable version, which could include breaking changes that require you to update your integration.
 </Warning>
 
-To specify an API version, set the `X-Pinecone-API-Version` header to the version name.
+To specify an API version, set the `X-Pinecone-Api-Version` header to the version name.
 
-For example, based on the version support diagram above, if it is currently July 2024 and you want to use the latest stable version to describe an index, you would set `"X-Pinecone-API-Version: 2024-07"`:
-
-```shell curl theme={null}
-PINECONE_API_KEY="YOUR_API_KEY"
-
-curl -i -X GET "https://api.pinecone.io/indexes/movie-recommendations" \
-    -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2024-07"
-```
-
-If you want to use the release candidate of the next stable version instead, you would set `"X-Pinecone-API-Version: 2024-10"`:
+For example, based on the version support diagram above, if it is currently October 2025 and you want to use the latest stable version to describe an index, you would set `"X-Pinecone-Api-Version: 2025-10"`:
 
 ```shell curl theme={null}
 PINECONE_API_KEY="YOUR_API_KEY"
 
 curl -i -X GET "https://api.pinecone.io/indexes/movie-recommendations" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2024-10"
+    -H "X-Pinecone-Api-Version: 2025-10"
 ```
+
+To use an older version, specify that version instead.
 
 ## SDK versions
 

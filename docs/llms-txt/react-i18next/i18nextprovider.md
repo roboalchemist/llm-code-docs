@@ -2,10 +2,6 @@
 
 # Source: https://react.i18next.com/latest/i18nextprovider.md
 
-# Source: https://react.i18next.com/legacy-v9/i18nextprovider.md
-
-# Source: https://react.i18next.com/latest/i18nextprovider.md
-
 # I18nextProvider
 
 ## What it does

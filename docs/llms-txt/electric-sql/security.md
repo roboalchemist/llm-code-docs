@@ -11,7 +11,7 @@ How to secure data access and [encrypt data](#encryption) with Electric.
 
 ## Data access
 
-Electric is a [sync service](/product/electric) that runs in front of Postgres. It connects to a Postgres database using a [`DATABASE_URL`](/docs/api/config#database-url) and exposes the data in that database via an [HTTP API](/docs/api/http).
+Electric is a [sync service](/products/postgres-sync) that runs in front of Postgres. It connects to a Postgres database using a [`DATABASE_URL`](/docs/api/config#database-url) and exposes the data in that database via an [HTTP API](/docs/api/http).
 
 This API is [public by default](#public-by-default). It should be secured in production using an [API token](#api-token), [network security](#network-security) and/or an [authorization proxy](#authorization).
 

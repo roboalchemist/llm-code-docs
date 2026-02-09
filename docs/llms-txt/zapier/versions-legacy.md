@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/versions-legacy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage a legacy integration
 
 ## Legacy API configuration settings

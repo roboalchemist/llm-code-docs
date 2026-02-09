@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/monitor/query-insights.md
 
-# Source: https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/agent-api/query-insights.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/monitor-and-analyze/query-insights.md
-
-# Source: https://docs.avaamo.com/user-guide/monitor/query-insights.md
-
 # Query insights
 
 The query insights feature helps gives you a closer look into the conversations that users have with your agent. You can also use the insights to search and export the data for these words/phrases.

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/charge-models/graduated-percentage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Graduated percentage
 
 Select the graduated percentage model if you want to define several percentage tiers. You can also

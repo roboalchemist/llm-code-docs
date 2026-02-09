@@ -4,7 +4,7 @@
 
 ### Free
 
-All our premium features. For free.
+All our premium features. For free.        
 
 No credit card required.
 
@@ -36,7 +36,7 @@ Option to purchase bulk credits at a discount.
 ) 
 
 *   30,000 credits included free
-*   5 active users (
+*    5 active users (
     
     Add additional users for $15/month.
     

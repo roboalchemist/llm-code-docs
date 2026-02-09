@@ -40,11 +40,8 @@ Use the `color` prop to change the color of the Banner.
 
 Use the `close` prop to display a [Button](/docs/components/button) to dismiss the Banner. Defaults to `false`.
 
-<tip>
-
-A `close` event will be emitted when the close button is clicked.
-
-</tip>
+> [!TIP]
+> A `close` event will be emitted when the close button is clicked.
 
 ```vue [BannerExample.vue]
 <script setup lang="ts">
@@ -82,13 +79,11 @@ onBeforeMount(() => {
 </template>
 ```
 
-<note>
+> [!NOTE]
+> When closed, `banner-${id}` will be stored in the local storage to prevent it from being displayed again.  For the example above, `banner-example` will be stored in the local storage.
 
-When closed, `banner-${id}` will be stored in the local storage to prevent it from being displayed again. <br />
-
- For the example above, `banner-example` will be stored in the local storage.
-
-</note>
+> [!CAUTION]
+> To persist the dismissed state across page reloads, you must specify an `id` prop. Without an explicit `id`, the banner will only be hidden for the current session and will reappear on page reload.
 
 ### Close Icon
 
@@ -130,39 +125,32 @@ onBeforeMount(() => {
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Actions
 
 Use the `actions` prop to add some [Button](/docs/components/button) actions to the Banner.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UBanner title="This is a banner with actions." />
 </template>
 ```
 
-<note>
-
-The action buttons default to `color="neutral"` and `size="xs"`. You can customize these values by passing them directly to each action button.
-
-</note>
+> [!NOTE]
+> The action buttons default to `color="neutral"` and `size="xs"`. You can customize these values by passing them directly to each action button.
 
 ### Link
 
@@ -174,11 +162,8 @@ You can pass any property from the [`<NuxtLink>`](https://nuxt.com/docs/api/comp
 </template>
 ```
 
-<note>
-
-The `NuxtLink` component will inherit all other attributes you pass to the `User` component.
-
-</note>
+> [!NOTE]
+> The `NuxtLink` component will inherit all other attributes you pass to the `User` component.
 
 ## Examples
 
@@ -219,31 +204,31 @@ interface BannerProps {
   as?: any;
   /**
    * A unique id saved to local storage to remember if the banner has been dismissed.
-   * Change this value to show the banner again.
+   * Without an explicit id, the banner will not be persisted and will reappear on page reload.
    */
   id?: string | undefined;
   /**
    * The icon displayed next to the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   /**
    * Display a list of actions next to the title.
    * `{ color: 'neutral', size: 'xs' }`{lang="ts-type"}
    */
   actions?: ButtonProps[] | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   color?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   /**
    * Display a close button to dismiss the banner.
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   ui?: { root?: ClassNameValue; container?: ClassNameValue; left?: ClassNameValue; center?: ClassNameValue; right?: ClassNameValue; icon?: ClassNameValue; title?: ClassNameValue; actions?: ClassNameValue; close?: ClassNameValue; } | undefined;
 }
 ```
@@ -382,8 +367,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

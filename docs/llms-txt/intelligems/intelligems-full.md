@@ -54,7 +54,7 @@ Intelligems can run A/B tests for website imagery and copy, landing pages, Shopi
 
 ### Experiences & Offers
 
-[Experiences ](https://docs.intelligems.io/personalizations)let you offer code-less content changes, promotions, volume discounts, and free gifts to particular audiences or all site visitors. You can test Offers via Experiences before deploying them to optimize your discount strategy. Integrate with Klaviyo flows, external advertisements, and landing pages to ensure consistent experiences for visitors. This includes things like testing your welcome offer, or gift-with-purchase thresholds to boost AOV.
+[Experiences ](https://github.com/intelligems-io/docs/blob/main/public-docs/broken-reference/README.md)let you offer code-less content changes, promotions, volume discounts, and free gifts to particular audiences or all site visitors. You can test Offers via Experiences before deploying them to optimize your discount strategy. Integrate with Klaviyo flows, external advertisements, and landing pages to ensure consistent experiences for visitors. This includes things like testing your welcome offer, or gift-with-purchase thresholds to boost AOV.
 
 {% content-ref url="personalizations/personalizations-getting-started" %}
 [personalizations-getting-started](https://docs.intelligems.io/personalizations/personalizations-getting-started)
@@ -82,7 +82,7 @@ Get inspired by some of our [test suggestions](https://docs.intelligems.io/getti
 
 ## Add Intelligems to Your Theme
 
-First and foremost, you need to add the Intelligems script to your Shopify theme. This is a prerequisite for every use case with Intelligems. It's very easy and should not require a developer. [Here is a quick guide](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) on adding the Intelligems Script to your theme!&#x20;
+First and foremost, you need to add the Intelligems script to your Shopify theme. This is a prerequisite for every use case with Intelligems. It's very easy and should not require a developer. [Here is a quick guide](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) on adding the Intelligems Script to your theme!
 
 ## Price Test Integrations
 
@@ -120,7 +120,7 @@ For any **password protected store**, we will not be able to automatically detec
 ## Option 2: Add to Your Theme Code
 
 {% hint style="info" %}
-If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.&#x20;
+If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -129,7 +129,7 @@ This will need to be manually removed if you uninstall Intelligems.
 
 To complete this, go to the settings page in the Intelligems app. Once there, you'll see a section called "Theme Script". Click the blue button in that block that says "Copy Script". This will copy your unique Intelligems script to your clipboard.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FqvWfk91wEFeZyv5joSHW%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media&#x26;token=d06b3072-4307-499b-a878-b3b3ed6c9da8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c397ff4b2768cc623336aea8cc0d1844d214f9d0%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Now head over to your Shopify account, and paste the Intelligems Script as a source into the `<head>` of each of these files:
 
@@ -140,11 +140,13 @@ Here's a video walking through those steps as well:
 
 {% embed url="<https://www.loom.com/share/187128fe3b9c4334b5904d4c4de48dbf?sid=477d7023-fb18-4218-accd-fbd0775fee88>" %}
 
-### Post-Purchase Page for Theme Tests
+### Post-Purchase Page for Theme Tests (Legacy Checkout Only)
 
-If you are planning to run a theme test, you should also add our script to the Additional Scripts section for the Post-purchase page. This will hide the theme preview bar from showing up on your thank you page. You can get to the Additional Scripts section pictured below by going to Settings -> Checkout -> Scroll about halfway down to "Post-purchase page".
+**Note:** *This step only applies if your store still has access to the legacy Shopify checkout (`checkout.liquid`). Most stores have been migrated to Checkout Extensibility and will not see this section in their Shopify admin. If you don't see a "Post-purchase page" section under Settings → Checkout, you can skip this step—the preview bar will be hidden automatically.*
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FOsLZwxGXsZL8j5WgmVZJ%2FScreenshot%202024-07-31%20at%2012.22.21%20PM.png?alt=media&#x26;token=6f666104-afcd-4963-95a5-c18f07f8b890" alt=""><figcaption></figcaption></figure>
+If you are planning to run a theme test and still have access to the Additional Scripts section for the Post-purchase page, you should add our script there. This will hide the theme preview bar from showing up on your thank you page.
+
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0e043169cb168eea43b0239be9661bf1a7a840b0%2FScreenshot%202024-07-31%20at%2012.22.21%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 
 # Updating the Intelligems Script
@@ -189,7 +191,7 @@ The first eight lines of the script remain unchanged.
 
 If you are seeing the below error in your Intelligems app:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F4jgbV64NN5IdIBsAvcSg%2FScreenshot%202025-03-10%20at%2010.08.32%20AM.png?alt=media&#x26;token=a234f891-6ada-4a5d-b7ae-007e9ee3461a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-7a84f4af637cfff79b678c59fbc31b5295d0c9f8%2FScreenshot%202025-03-10%20at%2010.08.32%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 This means you need to update your theme code to reflect the new ESM Script. Here are the steps to do so:
 
@@ -208,7 +210,7 @@ Here is a video walking through those steps:
 
 If you are planning to run a theme test, you should also update your script in the Additional Scripts section for the Post-purchase page if you are using this. This will hide the theme preview bar from showing up on your thank you page. You can get to the Additional Scripts section pictured below by going to Settings -> Checkout -> Scroll about halfway down to "Post-purchase page".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FOsLZwxGXsZL8j5WgmVZJ%2FScreenshot%202024-07-31%20at%2012.22.21%20PM.png?alt=media&#x26;token=6f666104-afcd-4963-95a5-c18f07f8b890" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0e043169cb168eea43b0239be9661bf1a7a840b0%2FScreenshot%202024-07-31%20at%2012.22.21%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 
 # Common Use Cases
@@ -294,7 +296,7 @@ Try out different Compare-At prices while keeping the actual price consistent. P
 
 *What this test design might look like:*
 
-<table data-header-hidden><thead><tr><th></th><th width="133"></th><th width="158"></th><th width="122"></th><th></th></tr></thead><tbody><tr><td> </td><td><strong>Control Price</strong></td><td><strong>Control Compare-At Price</strong></td><td><strong>Group A Price</strong></td><td><strong>Group A Compare-At Price</strong></td></tr><tr><td><strong>Product A</strong></td><td>$20</td><td>$25</td><td>$20</td><td>$30</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th></th><th width="133"></th><th width="158"></th><th width="122"></th><th></th></tr></thead><tbody><tr><td></td><td><strong>Control Price</strong></td><td><strong>Control Compare-At Price</strong></td><td><strong>Group A Price</strong></td><td><strong>Group A Compare-At Price</strong></td></tr><tr><td><strong>Product A</strong></td><td>$20</td><td>$25</td><td>$20</td><td>$30</td></tr></tbody></table>
 
 
 # The Great Discount Debate
@@ -312,7 +314,7 @@ Test Volume Discounts in comparison to reduced product prices. Check out this [c
 
 *What this test design might look like:*\\
 
-<table data-header-hidden><thead><tr><th></th><th></th><th width="209"></th><th></th><th></th></tr></thead><tbody><tr><td> </td><td><strong>Control Price</strong></td><td><strong>Volume Discount</strong></td><td><strong>Lower Price</strong></td><td><strong>Volume Discount</strong></td></tr><tr><td><strong>Product A</strong></td><td>$49.99</td><td><p>10% off 2+ Units</p><p>15% off 3+ Units</p><p>20% off 4+ Units</p></td><td>$39.99</td><td>None</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th></th><th></th><th width="209"></th><th></th><th></th></tr></thead><tbody><tr><td></td><td><strong>Control Price</strong></td><td><strong>Volume Discount</strong></td><td><strong>Lower Price</strong></td><td><strong>Volume Discount</strong></td></tr><tr><td><strong>Product A</strong></td><td>$49.99</td><td><p>10% off 2+ Units</p><p>15% off 3+ Units</p><p>20% off 4+ Units</p></td><td>$39.99</td><td>None</td></tr></tbody></table>
 
 
 # Shipping Test Common Use Cases
@@ -336,7 +338,7 @@ Ever since Amazon made free shipping the norm, many brands have felt like they h
 
 *What this test design might look like:*
 
-<table data-header-hidden><thead><tr><th width="310"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td> </td><td><strong>Control Group</strong></td><td><strong>Slightly Higher</strong></td><td><strong>Highest</strong></td></tr><tr><td><strong>Flat Shipping Rate</strong></td><td>Free</td><td>$5</td><td>$10</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="310"></th><th></th><th></th><th></th></tr></thead><tbody><tr><td></td><td><strong>Control Group</strong></td><td><strong>Slightly Higher</strong></td><td><strong>Highest</strong></td></tr><tr><td><strong>Flat Shipping Rate</strong></td><td>Free</td><td>$5</td><td>$10</td></tr></tbody></table>
 
 
 # The Threshold Trials
@@ -347,7 +349,7 @@ In line with the above test, some brands have have moved towards free shipping o
 
 *What this test design might look like:*
 
-<table data-header-hidden><thead><tr><th width="162"></th><th></th><th></th><th width="243"></th><th></th></tr></thead><tbody><tr><td> </td><td><strong>Control Group</strong></td><td><strong>Lower Threshold</strong></td><td><strong>Higher Threshold</strong></td><td><strong>Highest Threshold</strong></td></tr><tr><td><strong>Threshold</strong></td><td>$75</td><td>$50</td><td>$100</td><td>$125</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="162"></th><th></th><th></th><th width="243"></th><th></th></tr></thead><tbody><tr><td></td><td><strong>Control Group</strong></td><td><strong>Lower Threshold</strong></td><td><strong>Higher Threshold</strong></td><td><strong>Highest Threshold</strong></td></tr><tr><td><strong>Threshold</strong></td><td>$75</td><td>$50</td><td>$100</td><td>$125</td></tr></tbody></table>
 
 {% hint style="info" %}
 We recommend taking a look at a histogram of your order values for the last month (or more) when deciding what thresholds to test. For example, if a majority of your orders come in around $90-$100, but your current threshold is $50, you may want to consider testing out a $100 threshold to push people to add one more item to their cart.
@@ -413,7 +415,7 @@ You can use Intelligems to test landing pages in a few different ways. Here, we'
 
 ### Option 1: Split URL Test
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FXNCBDK6Uv0lSnn3k6lv3%2Fimage.png?alt=media&#x26;token=44520344-d507-478a-9509-61b1a9759689" alt=""><figcaption><p>Two example landing pages that we'd like to test against each other</p></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9c7d6e184c69910c4671a8cf43321ddb3f72d4e4%2Fimage.png?alt=media" alt=""><figcaption><p>Two example landing pages that we'd like to test against each other</p></figcaption></figure>
 
 Split URL tests let you test pages against each other using redirects. When a visitor lands on the control page, they are randomized into a test group, and, if they're not in the control group, they'll be redirected to the corresponding page for their group.
 
@@ -426,13 +428,15 @@ To set up a Split URL landing page test:
 3. **Create a test group for each variation you'd like to test**. In my example, I'll be testing the existing control page against one variant, so I'll have two test groups total: Control and Test.\
    \\
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FHLzFHAUJHFp7QSE1tbkQ%2Fimage.png?alt=media&#x26;token=dbf6b016-865f-4e30-9c01-c689266e6f1a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-cf6da5e7a16936838e08c16e1be0f35e33aac358%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 4. **Enter the URLs of the two landing pages** in the test setup. A "Simple" redirect should work for our purposes, since we just want to split between two known URLs. "Advanced" redirects are for when you'd like to match or replace wildcard text.\
    \
-   Choose "Redirect Every Time" if a visitor who's assigned to test page should be redirected sent to it any time they reach the Control. Choose "Redirect One Time" if they should be redirected only the first time. In our case, since we're testing fully replacing the control page with the test page, we'll choose "Redirect Every Time."\\
+   Choose "Redirect Every Time" if a visitor who's assigned to test page should be redirected sent to it any time they reach the Control. Choose "Redirect One Time" if they should be redirected only the first time. In our case, since we're testing fully replacing the control page with the test page, we'll choose "Redirect Every Time."
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FH0Wr06xD0Xhl2AIEMtHd%2Fimage.png?alt=media&#x26;token=8aabc3eb-a779-48c9-a0d1-b360fa16ca5f" alt="" width="563"><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ba6982237bb435ab137730d1e43639ff4fc43342%2Fimage.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
+
+   **Multi-domain brands:** If you operate multiple domains (e.g., yourbrand.com and yourbrand.co.uk), make sure all domains are registered in **Settings → Domain Settings**. You can then set up separate Split URL tests for landing pages on each domain.
 5. **Save and preview your experiment**. You can refer to our [QA guide](https://docs.intelligems.io/content-testing/content-test-qa-checklist#page-redirect-tests) for tips on what to look for when testing.
 6. **Launch!**
 
@@ -453,7 +457,7 @@ To set up an Onsite Edit landing page test:
 3. **Create a test group for each variation you'd like to test**. Here, we're testing the existing control page against one variant with an added section, so we'll have two test groups total: Control and Test
 4. **Use Page Targeting to target the test on the landing page**. We want the onsite edits to execute only on the landing page, and we want to make sure only visitors to the landing page enter the test and factor into analytics. We can do this by targeting the test on the landing page by URL. For example:\\
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FK3grtepFmDBW8kTyCzMk%2Fpage-targeting.png?alt=media&#x26;token=3ae613da-de5e-4533-84c3-12ebd07b02a7" alt=""><figcaption><p>Page Targeting in an Onsite Edits Test</p></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-e31a2b7dc1b3f3ccb3314e43b103fe9016f7b2e5%2Fpage-targeting.png?alt=media" alt=""><figcaption><p>Page Targeting in an Onsite Edits Test</p></figcaption></figure>
 5. **Set up the onsite edit.**
    1. Injected CSS: one way to test a new section of a page is to put the section in the page, but hidden by default, and then inject CSS to unhide it for the test group. For example, you could add a CSS class to your theme:\
       \
@@ -465,20 +469,20 @@ To set up an Onsite Edit landing page test:
       \
       `.hidden-section { display: block !important; }`\\
 
-      <div data-full-width="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fir774t9q7Y9axPNfP8NC%2Fcss-styles.png?alt=media&#x26;token=339cf24d-e6c2-4bd7-9ea1-323710001236" alt=""><figcaption><p>CSS injection in an Onsite Edits Test</p></figcaption></figure></div>
+      <div data-full-width="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9c0c7f7c730d141cdf60e57d916014c601b376cd%2Fcss-styles.png?alt=media" alt=""><figcaption><p>CSS injection in an Onsite Edits Test</p></figcaption></figure></div>
    2. Insert the section: another way to test a new section is to insert it using Intelligems' onsite editor. For example, to insert a testimonials section above the featured collection on this page, first open the Intelligems onsite editor, then choose the featured collection section and choose "Edit HTML / CSS":\\
 
-      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FMfeuW9pbdp8rwXMcd3aA%2Fimage.png?alt=media&#x26;token=64dc6d75-b7a9-470e-9302-25bed4ab08de" alt=""><figcaption></figcaption></figure>
+      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6d8814e4acc1e926c796668981f8acd76867abc4%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
       In the dialog, choose "Prepend Outside" in the dropdown in the bottom left. This tells Intelligems to inject the HTML you enter before the section you selected, instead of replacing it.\\
 
-      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F79BnIUVom9MuDBAD21bX%2Fimage.png?alt=media&#x26;token=635967a6-580e-49fd-a8c7-f82b7462e2dc" alt=""><figcaption></figcaption></figure>
+      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-3f895396929f7008eb328ba9b05b023be790334e%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
       Next, enter the HTML for the new section in the text editor, and click "Apply." You'll now see the new section appear above the one we selected:\\
 
-      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FFtAFJGLsG8MHuwIMCL3a%2Fimage.png?alt=media&#x26;token=14c7af78-e48b-4af4-9bff-395226fcefe5" alt=""><figcaption></figcaption></figure>
+      <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-4d68cf4f5ff3bcbc688118cd10d95f54e368a689%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 6. **Save and preview your experiment**. You can refer to our [QA guide](https://docs.intelligems.io/content-testing/content-test-qa-checklist#page-redirect-tests) for tips on what to look for when testing.
-7. **Launch!**&#x20;
+7. **Launch!**
 
 
 # Testing a Brand New Theme
@@ -500,7 +504,7 @@ To set up a Theme Test for your new theme:
 3. Rename "New Group 1" to match the name of your new theme.
 4. Select your live theme for the control group, and your new theme for the test group.
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FJZAvrCWTeh1Mxn7XDOPN%2FScreenshot%202024-10-14%20at%2010.53.28%20AM.png?alt=media&#x26;token=9e156dbe-f749-40bb-8037-fa15bb90b0df" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-db3afa5028716b81b2a67677611c1406677b0dd4%2FScreenshot%202024-10-14%20at%2010.53.28%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
 5. Save and preview your experiment. You can refer to our [QA guide](https://docs.intelligems.io/content-testing/content-test-qa-checklist#page-redirect-tests) for tips on what to look for when testing.
 6. Launch!
 
@@ -508,7 +512,7 @@ A few things to keep in mind while testing your new theme:
 
 * If the new theme is performing well, you can gradually increase the percent of traffic being sent to that theme by editing your test in the Test Groups tab:
 
-<div data-full-width="false"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F9GXU43PAz2vfq3XV1CTF%2Ftheme-traffic-split.png?alt=media&#x26;token=e2724187-89c4-4581-8dc4-5b8c2abe0f38" alt=""><figcaption></figcaption></figure></div>
+<div data-full-width="false"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-aa063070633b2b95e64d2340e7c85c4ed6bd00cc%2Ftheme-traffic-split.png?alt=media" alt=""><figcaption></figcaption></figure></div>
 
 * Running a theme test means that you need to keep all themes that are part of the test up to date! Any changes that you make to your live theme while a Theme Test is running must also be made to any themes included in your test.
 * When you end a Theme Test, do not delete any themes that were part of the test. You can read more on why [here](https://docs.intelligems.io/content-testing/ending-a-theme-test)!
@@ -536,7 +540,7 @@ When it comes to your site’s cart, there are endless elements you could test. 
 
 The best way to set these tests up in Intelligems depends on a few factors, including what exactly you are looking to test, how your cart is set up on your site, and your team’s technical aptitude. See below for a few examples:
 
-* If you are looking to test a relatively small and non-complicated portion of your cart, you may be able to set your test up using Intelligems’ [Find & Replace tool](https://docs.intelligems.io/content-testing/find-and-replace)!&#x20;
+* If you are looking to test a relatively small and non-complicated portion of your cart, you may be able to set your test up using Intelligems’ [Find & Replace tool](https://docs.intelligems.io/content-testing/find-and-replace)!
   * Test the call-to-action text in the checkout button
   * Show vs. hide components like a progress bar or discount code input field
   * Show vs. hide upsells in the cart
@@ -634,27 +638,27 @@ Here's how you can achieve this:
 1. On Shopify, go to **Online Store > Navigation**, and create a new menu through the **Add menu** option.
 2. Create a menu containing all the sections that will be presented to both groups A and B:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F4XFMr7QgzJietV7RyVJd%2Fimage.png?alt=media&#x26;token=c1e64573-48d2-4881-82ae-61849c2a9a24" alt="" width="563"><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-3eaf81f4184ca485f9a7794b9fd01099657318c5%2Fimage.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
 3. Go to **Online Store > Themes**, and duplicate your current theme. We don't want to set up your live theme with the new menu quite yet, as all those options would be visible, so we will set everything up using a duplicate theme, which you can then publish when you turn on your test.
 4. Next to the newly created theme, click on **Customize** to access the Theme Editor. Click on your theme's header, and change the current menu by the one you just created:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FZo8TKj6j5if340RrzDhC%2Fimg2.gif?alt=media&#x26;token=0c6524f1-b785-47a9-ae42-825411694797" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c60fc2cf6cc327285ebfcc500aaf7dfbdd591382%2Fimg2.gif?alt=media" alt=""><figcaption></figcaption></figure>
 5. On Intelligems, create a new Content Test, selecting the type Onsite Edits (see [How to Set Up an Onsite Edits Test](https://docs.intelligems.io/content-testing/content-testing-getting-started/how-to-set-up-an-onsite-edits-test)). When you get to the final step, click on **Edit** next to **Content Edits**, then **Add & Edit Changes in Visual Editor**, and select the duplicate theme you created:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fq8h1c9b0exjVHvXeQ6Ei%2Fimg3.gif?alt=media&#x26;token=7333e846-f6b0-48be-b4e5-f2ba77f4ddce" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-df2bb3d334a21d06a7bcb2fd9af1c32e2c219152%2Fimg3.gif?alt=media" alt=""><figcaption></figcaption></figure>
 6. With Group A selected, enable the element selecting tool, then select each menu element that needs to be hidden for Group A, creating a replacement for each one. When selecting each menu element, make sure you're selecting the most outer portion of it, as this will ensure that we are targeting the correct portion of the menu that needs to be hidden. You'll hide each of these elements for Group A, while leaving them as originally set for Group B:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fz8sZIgwCcGSbJwk0sbQc%2Fimg4.gif?alt=media&#x26;token=dc42ebb0-f6a6-4f72-978e-53f2a7c3c821" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ae35deeb102686fe0782599913630e344e074db0%2Fimg4.gif?alt=media" alt=""><figcaption></figcaption></figure>
 7. Repeat this for the elements that won't be visible to Group B, this time leaving them as originally set for Group A, and hiding them only for Group B. Make sure to **Save** your changes before closing the editor:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FhzaR34zQB9uFJMC9A3up%2Fimg5.gif?alt=media&#x26;token=e21e11b1-9566-43d2-ab40-1e773afc2c02" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-bc9bd9bee1d041ffb266fec19ecbe1f6facb57d8%2Fimg5.gif?alt=media" alt=""><figcaption></figcaption></figure>
 8. As you switch between groups A and B in preview mode, you'll notice that the right menu elements are displayed for each test group.
 9. Once you are ready to start your test, simply publish the duplicate theme that has the test menu in it, or set your live theme with that menu, then start the test on Intelligems. You'll want to make sure to keep the interval between these two actions as minimal as possible, so your visitors don't see all the menu options once the test menu is set on your live theme.
 
 {% hint style="info" %}
 If you are using [Audience Targeting](https://docs.intelligems.io/general-features/targeting/audience-targeting) to run this test only for a subset of visitors, make sure you use **Advanced Targeting**, setting up a condition so, if the visitor doesn't meet the audience's criteria, they get assigned to your control group, and select the option to exclude them from Analytics. This will ensure that they see your default menu instead of all the menu items. For example, if you wanted to target Desktop visitors only, this is how you would set this up:
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FbRMXXLDZig0IEgueV2pV%2Fimage.png?alt=media&#x26;token=86249d13-f506-47f5-8748-67ae8d23f1d8" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-7dbd6c40925730bbd2260eea249d029a354e88f9%2Fimage.png?alt=media" alt="" data-size="original">
 {% endhint %}
 
 #### Presentation and Styles
@@ -665,10 +669,10 @@ Perhaps you are happy with the options presented on your menu, but you want to t
 2. Load your test's preview, access the Onsite Editor, and go into editing mode.
 3. Click on the "\</>" icon to open the Global CSS / JS editor:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F1Y22rm0UyxXgDPV0Tdf3%2Fimg6.png?alt=media&#x26;token=a637d91e-7af1-4baa-9284-17dfef6b31d2" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ca1d8dde20e4e1253882b337488b228d007719d5%2Fimg6.png?alt=media" alt=""><figcaption></figcaption></figure>
 4. In the Group selector, switch to your test group, then add in your custom CSS that targets and modifies the elements on your navigation menu. This will be CSS that you've written yourself, with the help of a theme developer, or an AI generating tool, for example:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FNe9A77O9NeykcTvhxFph%2Fimg7.png?alt=media&#x26;token=caa58b40-167b-4d70-93d8-66b2a262800d" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-fce57191c17e8410ac36e2397bea5e28e33e5748%2Fimg7.png?alt=media" alt=""><figcaption></figcaption></figure>
 5. Make sure you click **Apply** on the editor, and then **Save** on our widget.
 
 #### Wording
@@ -679,13 +683,13 @@ Changing labels can often enhance the understanding of the underlying content an
 2. Load your test's preview, access the Onsite Editor, and go into editing mode.
 3. Click the button on the bottom-left to **enable element selecting**:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FGfVu3OY4P4pH467yaYpO%2Fimg8.png?alt=media&#x26;token=81984678-949b-46e1-8c70-4b37cfbea6b7" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9bc2af2a8b7ba94a743d366446d2ad08ecef9538%2Fimg8.png?alt=media" alt=""><figcaption></figcaption></figure>
 4. Click on the menu item you wish to test, then **Edit Text**:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FkBwZE58XIwAHkQla4fRi%2Fimg9.png?alt=media&#x26;token=c831e8ff-c7b2-47a3-a2eb-3557650e1383" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f215f64838d2b574cae527962af9c3d27a76344b%2Fimg9.png?alt=media" alt=""><figcaption></figcaption></figure>
 5. Make no changes for Group A (Leave as is). For Group B, add in the text that should replace the original text:
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FLH4756KCM21AI6bevhkj%2Fimg10.png?alt=media&#x26;token=e6667e42-13cf-4831-bb18-858ef785c3e0" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-419a708652b2abd012d160e324795320044ae699%2Fimg10.png?alt=media" alt=""><figcaption></figcaption></figure>
 6. Make sure you click **Done** on the editor, and then **Save** on our widget.
 
 ***
@@ -698,9 +702,9 @@ The methods for testing a navigation menu aren't limited to those mentioned abov
 * If you want to modify your menu without creating new menu items on Shopify, and you have a developer to assist you with front-end coding, you can use our [JavaScript injection capabilities](https://docs.intelligems.io/general-features/css-and-javascript-injection), adding custom JavaScript to the test group to programmatically modify your menu.
 
 
-# Testing Checkout Blocks
+# Testing Shopify Checkout Blocks
 
-Test components on Checkout created through the Checkout Blocks app in Shopify
+Test components on Checkout created through the Shopify Checkout Blocks app
 
 {% hint style="info" %}
 You can now use Intelligems to power and test Checkout Experiences like trust badges, guarantees, and custom content in your checkout. Learn more about [testing-checkout-experiences](https://docs.intelligems.io/checkout/testing-checkout-experiences "mention")
@@ -708,7 +712,7 @@ You can now use Intelligems to power and test Checkout Experiences like trust ba
 
 ### Introduction
 
-Testing elements on the Checkout page is a functionality that many stores have been longing for. While Shopify still doesn't allow changes to their native components by 3rd party apps, stores on the Shopify Plus plan have access to the [Checkout Blocks app](https://apps.shopify.com/checkout-blocks), through which you can add custom blocks to checkout that can be controlled through an A/B Test in Intelligems.
+Testing elements on the Checkout page is a functionality that many stores have been longing for. While Shopify still doesn't allow changes to their native components by 3rd party apps, stores on the Shopify Plus plan have access to the [Shopify Checkout Blocks app](https://apps.shopify.com/checkout-blocks), through which you can add custom blocks to checkout that can be controlled through an A/B Test in Intelligems.
 
 ### How It Works
 
@@ -722,13 +726,13 @@ See the example below for how you can test a block that **allows your customers 
 
 In the [Checkout Blocks app](https://apps.shopify.com/checkout-blocks), click on 'Blocks', then 'Create block'. In this example, we'll be selecting the 'Line item edit' block:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FPQIvFmO0qhRSNDSsyyO6%2F01%20-%20create%20block.gif?alt=media&#x26;token=09e0bd57-6721-4501-8e97-7d3e28f61b1a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-746bbb95770f0113ec86758f4cc9f7d03e928bce%2F01%20-%20create%20block.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### Step 2: Set up a Display Rule
 
 The block will be conditioned to a cart attribute set through the test on Intelligems. Under 'Display Rules' click on 'Add display rule' and select 'Cart attributes'. Next, set 'Key' as '\_igShowBlock' and 'Value' as 'true':
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FNheAADXqHZiIeROL6tZ2%2F02%20-%20set%20attribute.gif?alt=media&#x26;token=ba3b8b65-c057-4313-a620-4b152c37d34c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b79ba31f299d827e2dfb887eda43853a829f0b50%2F02%20-%20set%20attribute.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The key/value pair configured at this step is arbitrary. You can set a different attribute key and value if you like, as long as that matches the key and value you'll be setting up through your test.
@@ -736,9 +740,9 @@ The key/value pair configured at this step is arbitrary. You can set a different
 
 #### Step 3: Activate your block and add it to Checkout
 
-Follow the instructions on the Checkout Blocks apps to activate your newly created block and add it to Checkout. Once the block is active, you'll open the Checkout editor, click the '+' icon next to 'Line item edit', and add it to the 'Information' section. Make sure to 'Save' your changes:
+Follow the instructions on the Shopify Checkout Blocks app to activate your newly created block and add it to Checkout. Once the block is active, you'll open the Checkout editor, click the '+' icon next to 'Line item edit', and add it to the 'Information' section. Make sure to 'Save' your changes:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F2PGTRiam0n71go54T3cI%2F03%20-%20add%20to%20checkout.gif?alt=media&#x26;token=0e32eeab-e630-46d7-bcba-a58e23c00adc" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-52ff1fd2c8e664e7d0ad99c8a90a698780a8bee2%2F03%20-%20add%20to%20checkout.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 When viewing your Checkout sections, you'll locate the block under 'Order summary > Items in cart'.
 
@@ -748,13 +752,13 @@ In the editor, if you click on your newly added block, you'll see a few customiz
 
 You may now close the editor and go back to the Checkout Blocks app, where you'll close the popup where the editor steps are listed, and mark that step as done. Your block is now active, and you can proceed with the next steps on Intelligems:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F6LisOiRDvdcKuDf9CofP%2F04%20-%20mark%20as%20done.gif?alt=media&#x26;token=d5dcc9f3-1edf-464d-a6b5-c72f73cc2ef6" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-847c8e8281b34b2af82d379af4983a7c5821805a%2F04%20-%20mark%20as%20done.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### Step 4: Create an Onsite Edits Test with a Javascript injection
 
 On Intelligems, create a Content Test of the type 'Onsite Edits Test' (you may refer to the steps [here](https://docs.intelligems.io/content-testing/content-testing-getting-started/how-to-set-up-an-onsite-edits-test)), with two test groups - in this example, we will call the groups 'Block OFF' and 'Block ON':
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FoncC8v9maEQOia2VAZ0y%2Fimage.png?alt=media&#x26;token=94dd43ef-1063-4ee0-ab0a-67515ab78442" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-dd1be8674d666d94a7358eb8c8c596661a3dfdd4%2Fimage.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
 
 Move on to the 'Modifications' tab, and expand the section 'Styles & Javascript'. Within it, switch to the 'Javascript' tab, and paste the following code for the group 'Block OFF':
 
@@ -776,11 +780,11 @@ Additionally, switch the setting 'Javascript Injection Timing' to 'Delay', with 
 
 Here's a quick video on the steps you'll be taking:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FbJgZxhs4iyjtZIjPfArj%2Fcb-update-01.gif?alt=media&#x26;token=5b8a5a12-a1e3-4a09-81e6-c3e1a5eb1614" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b4b1b3a877c511f28a65d470c3329d2a95569e69%2Fcb-update-01.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 Next, switch over to the group 'Block ON', and add the same code, but this time change the attribute's value from 'false' to 'true'. Also remember to set the 'Delay' to '2500 ms'. You may now 'Save' the test:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FG25RKUd0ujb24SD4fMk1%2Fcb-update-02.gif?alt=media&#x26;token=ae4981fd-2b42-46a4-85e3-fdb54f5f8543" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ba02f19b7b4a25aee4286ae0eed99004bbf5ed0a%2Fcb-update-02.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 The code above will run for each test group, and add the '\_igShowBlock' attribute to the cart. In the group 'Block OFF', having the attribute's value set to 'false' will ensure that it is not displayed for visitors in that group. For the group 'Block ON', the attribute's value will be set to 'true', ensuring its display rule is met, so visitors in that group see the 'edit' option on Checkout.
 
@@ -794,7 +798,7 @@ You can now preview your test the same way you preview any other Content Tests. 
 
 ### Other Block types
 
-The Checkout Blocks app offers various block types you can test:
+The Shopify Checkout Blocks app offers various block types you can test:
 
 * **Product Upsells**: Test additional product recommendations
 * **Dynamic Content**: Test personalized checkout messaging
@@ -818,7 +822,7 @@ Track these key performance indicators:
 * Cart abandonment rate
 * Average order value
 * Time spent on checkout page
-* Customer satisfaction scores&#x20;
+* Customer satisfaction scores
 
 
 # Tariff Testing: On vs Off
@@ -916,7 +920,7 @@ Use these insights to optimize your tariff strategy and improve the overall cust
 
 ### Introduction
 
-Testing whether to offer express payment options (like PayPal, Klarna, Afterpay, etc.) on your checkout page can be done using Intelligems with [Shopify Checkout Blocks](https://apps.shopify.com/checkout-blocks). Because the Shopify Checkout Block app is only available for brands on the Shopify Plus plan, this type of test is only possible for brands on Shopify Plus.&#x20;
+Testing whether to offer express payment options (like PayPal, Klarna, Afterpay, etc.) on your checkout page can be done using Intelligems with [Shopify Checkout Blocks](https://apps.shopify.com/checkout-blocks). Because the Shopify Checkout Block app is only available for brands on the Shopify Plus plan, this type of test is only possible for brands on Shopify Plus.
 
 ### Setup Instructions
 
@@ -936,7 +940,7 @@ You can find this information by clicking on the three dots in the top right of 
 4. Give your Function a title, and choose "Cart rules" under "Type"
 5. Click "Add method", select which payment method(s) you'd like to hide from the dropdown, and click "Add rule"
 6. Select "Cart attributes", set the "Key" as "igTestGroups" and paste the ID you copied from the Intelligems app in the Value field
-7. Save your new Function and set the status to "Active" - it will only hide the payment method(s) when it finds the test group ID associated with your test group in the cart, which will not happen until you preview or start your test&#x20;
+7. Save your new Function and set the status to "Active" - it will only hide the payment method(s) when it finds the test group ID associated with your test group in the cart, which will not happen until you preview or start your test
 
 {% embed url="<https://www.loom.com/share/f765433e1b2447f7b671b5f38d54d00d?sid=84698a8c-cf66-4312-b5b6-e11f5590d274>" %}
 
@@ -978,9 +982,9 @@ Check out the below common test designs for inspiration on how to get started:
 
 # The Volume Discount Duel
 
-[Experiences](https://docs.intelligems.io/personalizations) allow you to serve specific discounts and offers to your site visitors. One of these types of Offers is a Volume Discount. While you can have such an Experience on all the time, Intelligems can also help you test which thresholds and discounts drive the most value.
+[Experiences](https://github.com/intelligems-io/docs/blob/main/public-docs/getting-started/common-use-cases/offer-test-common-use-cases/broken-reference/README.md) allow you to serve specific discounts and offers to your site visitors. One of these types of Offers is a Volume Discount. While you can have such an Experience on all the time, Intelligems can also help you test which thresholds and discounts drive the most value.
 
-You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 *What this test design might look like:*
 
@@ -995,7 +999,7 @@ We recommend taking a look at a histogram of your order values for the last mont
 
 Offers allow you to serve specific discounts and offers to your site visitors using. One of these types of Offers is a Gift With Purchase. While you can have such an Experience on all the time, Intelligems can also help you test which thresholds and gifts drive the most value.
 
-You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 *What these test designs might look like:*
 
@@ -1345,7 +1349,7 @@ Here are the steps we recommend you take when your test goes live to monitor res
 
 1. Always check in on your test after \~4 hours to make sure your data is flowing - this can be a helpful time to catch any errors in the test configuration (don't launch a test end of day on a Friday, when you won't be able to monitor it)
 2. Try not to end any tests before a full week. This allows you to observe a mix of weekdays and weekends, and early results often change.
-3. Take a look at the "Trend" tab in the Intelligems analytics dashboard. Have those charts shown consistent results, or are they still varying from day to day? If there is still a lot of variability, it may make sense to run the test for a few more days.
+3. Take a look at the "Time Series" in the Key Metrics dashboard. Have those charts shown consistent results, or are they still varying from day to day? If there is still a lot of variability, it may make sense to run the test for a few more days.
 4. Once a week has passed, you can check the “statistical significance” tab to get a read on the “probability to be best” for each group. Check out our [article on statistical significance](https://docs.intelligems.io/analytics/experiment-analytics/statistical-significance) to understand what you are looking for here!
 5. You should have a risk tolerance in your head.
 
@@ -1413,7 +1417,7 @@ Customers on your site will not see anything to indicate that an Intelligems tes
 
 Here is an example of what an order would look like in Shopify:
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FS8EFFHGl7wkrKelgagGH%2FScreenshot%202025-02-14%20at%2010.16.21%20AM.png?alt=media&#x26;token=e5255e3b-4a1b-4b71-8212-5908fe6817fa" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0c1cbb373b27d102650d9a530c8c30835c763e8a%2FScreenshot%202025-02-14%20at%2010.16.21%20AM.png?alt=media" alt="" data-size="original">
 
 </details>
 
@@ -1451,18 +1455,50 @@ We detect all major bots and will block execution when one is detected - this en
 
 <summary>Can I test across domains or stores?</summary>
 
-**No, Intelligems does not currently support testing across multiple domains, or multiple Shopify stores.** Each test is limited to a single domain and store where the [Intelligems script](https://docs.intelligems.io/getting-started/updating-the-intelligems-script) is installed - you can find which domain this is and update it if needed on the [settings page](https://app.intelligems.io/settings) in the Intelligems app. Please note that after a domain change all visitors to tests will be considered 'new' for targeting purposes, so we would recommend ending any ongoing tests and restarting them after the domain migration.
+Yes! Intelligems supports registering multiple domains for brands operating several domains under one Shopify account (e.g., yourbrand.com and yourbrand.co.uk).
 
-#### Current limitations:
+**To add multiple domains:**
 
-* Tests can only run on the domain configured on the Intelligems settings page - this domain must be associated with the Shopify ID you are installed on
+1. Navigate to the Settings page in the Intelligems app
+2. In the Domain Settings section, click "Add Domain" to register additional domains
+3. All registered domains will appear in a list where you can manage them
+
+**What this enables:**
+
+* Run Split URL tests on any of your registered domains
+* Set up subdomain redirects for each domain (e.g., yourbrand.com → try.yourbrand.com AND yourbrand.co.uk → try.yourbrand.co.uk)
+
+**Current limitations:**
+
+* Cross-domain redirects are not supported. Visitors cannot be redirected from one top-level domain to another (e.g., yourbrand.com → yourbrand.co.uk will not work)
 * Visitor assignments and tracking do not persist across different domains
-* Results cannot be aggregated from multiple domains within a single test
+* Each domain's tests operate independently
 
-#### Alternative approaches:
+**Alternative approaches:**
 
-* **Use subdomains** instead of separate domains when possible (e.g., shop.yourbrand.com vs yourbrand.com)
-* **Focus on single-domain user journeys** to get meaningful test results
+* Use subdomains instead of separate domains when possible (e.g., shop.yourbrand.com vs yourbrand.com)
+* Focus on single-domain user journeys within each registered domain to get meaningful test results
+
+</details>
+
+<details>
+
+<summary>How to Identify the Test Group of a Live Test</summary>
+
+Use the Intelligems JavaScript API to check which test group a user is assigned to in a live test.
+
+**Key Steps:**
+
+1. Get your experiment ID from the test dashboard (Show Info → Test ID)
+2. Open JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+3. Use: `window.igData?.user.getTestGroup("your-test-id-here")`
+4. Review the returned group assignment
+
+**What to verify:** Function returns the correct test group name or `null` if no assignment.
+
+<https://www.loom.com/share/231ab61adca7484b91417d72b55c765c>
+
+&#x20;
 
 </details>
 
@@ -1489,8 +1525,7 @@ Intelligems has experience integrating with various page builders for different 
 5. **PageFly:** Typically works out of the box for Content Testing once the [Intelligems JavaScript](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) has been added to your theme.liquid file & to the PageFly layout files. These pages may not be compatible with Price Testing - please reach out to our team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you are interested in testing prices on a PageFly page so we can help scope this out!
 6. **Funnelish:** Typically works out of the box for Content Testing once the [Intelligems JavaScript](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) has been added to your theme.liquid file & to the Custom CSS / JS > Head HTML section in the Funnelish app. These pages may not be compatible with Price Testing - please reach out to our team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you are interested in testing prices on a Funnelish page so we can help scope this out!
 7. **Webflow:** Typically works out of the box for Content Testing once the [Intelligems JavaScript](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) has been added to your theme.liquid file & to the Webflow layout files. These pages may not be compatible with Price Testing - please reach out to our team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you are interested in testing prices on a Webflow page so we can help scope this out!
-8. **Fermat:** Typically works out of the box for Split URL Testing once the [Intelligems JavaScript](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) has been added to your theme.liquid file & to the Fermat layout files. These pages are not currently compatible with Price Testing.
-9. **Builder.io:** These pages are typically built using the Storefront API, which is Headless & can cause complexities. If you are using Builder.io, please reach out to our team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) to discuss what will be possible.
+8. **Builder.io:** These pages are typically built using the Storefront API, which is Headless & can cause complexities. If you are using Builder.io, please reach out to our team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) to discuss what will be possible.
 
 </details>
 
@@ -1530,6 +1565,26 @@ If you'd like Intelligems to investigate the errors, please [share error reports
 <summary>Can I preview a Shopify theme and Intelligems test at the same time?</summary>
 
 Yes, you can! This is a very common practice we use here at Intelligems. You can do this by entering preview mode for your theme and then entering preview mode for your test. The theme should be cached when you open your test preview.
+
+</details>
+
+<details>
+
+<summary>How to Block Intelligems from Running Locally</summary>
+
+Temporarily disable Intelligems on your browser to troubleshoot issues or test baseline functionality.
+
+**Key Steps:**
+
+1. Open Chrome Developer Tools → Network tab (`F12` or `Cmd+Option+I` Mac / `Ctrl+Shift+I` Windows)
+2. Filter for "intelligems" and refresh the page
+3. Right-click `bundle.js` and select "Block Request URL"
+4. Refresh page to test without Intelligems running
+5. **Important:** Unblock when finished testing
+
+**What to verify:** Intelligems widget disappears when blocked, reappears when unblocked.
+
+<https://www.loom.com/share/fbf21e4ba1c642e3b4558feb5817535c>
 
 </details>
 
@@ -1586,7 +1641,7 @@ if (window.history.pushState && window.location.pathname.includes('blog')) {
 
 Set up the below Audience Targeting on your test. Note that this will need to be added to **each test that you want to exclude blog traffic**, and **will only exclude that traffic moving forward.**
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FrOLj0YNoZJ1na8oI52nh%2Fimage.png?alt=media\&token=6356384d-2ab0-42b8-83f4-ed5e6a264dec)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5613a70143eca9f422ec29f647d7bfa8967b59cd%2Fimage%20\(37\).png?alt=media)
 
 </details>
 
@@ -1653,7 +1708,7 @@ If you do need to remove the Intelligems script from your site, delete or commen
 ✨ We'd hate to see you go! If you plan on testing again any time in the future, we recommend moving to a Pause Plan instead of uninstalling. This will allow you to keep the integration live so it's easy to start a new test down the road, as well as maintain access to the analytics from any tests you've already run. If this sounds like a better option, you can do this from the Settings page of the Intelligems app. If you don't see the option there, please reach out to <billing@intelligems.io> to get set up with a Pause Plan.
 
 {% hint style="info" %}
-Note: We do *not* recommend uninstalling and reinstalling the app as a technical troubleshooting step, as this will cause you to be charged again for the new installation. If you're experiencing an issue with the app or with a test, please reach out to <support@intelligems.io> for assistance.&#x20;
+Note: We do *not* recommend uninstalling and reinstalling the app as a technical troubleshooting step, as this will cause you to be charged again for the new installation. If you're experiencing an issue with the app or with a test, please reach out to <support@intelligems.io> for assistance.
 {% endhint %}
 
 **Step 1: Stop any tests.**
@@ -1668,7 +1723,7 @@ Follow Shopify's steps [here](https://help.shopify.com/en/manual/apps/uninstalli
 
 During the integration, you or the Intelligems team added JavaScript as a source into your theme.liquid file - you can now remove the Intelligems script from your site. To do so, delete or comment it out in your theme.liquid file. For Shopify Plus customers, this may also be located in your checkout.liquid file. The JavaScript to remove or comment out will look like this:
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fc102Q8LAcprswpUFZiyA%2FScreenshot%202024-02-06%20at%203.50.14%20PM.png?alt=media&#x26;token=f0a47297-f9d0-4aef-8813-15bb25918261" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-56b581da7daa58252fa1d1c8f05b4455592a9d1f%2FScreenshot%202024-02-06%20at%203.50.14%20PM.png?alt=media" alt="" data-size="original">
 
 ❗Note that if you do not complete this step, we will continue to append an igId onto your orders in the 'Additional Details' section in Shopify. Customers will not see this, and it will not cause any issues, but may cause confusion for your team if they do not know where it is coming from!
 
@@ -1820,7 +1875,7 @@ This is the easiest installation method that works for most stores!
 
 The fastest way to add Intelligems JavaScript to your theme is to enable it in the "Customize" section of your theme editor. You can do so by logging into your Shopify Admin, and navigating to Sales Channels > Online Store > Live theme - Customize > App Embeds. Search "Intelligems", make sure it is toggled on, and click "Save" in the top right.\
 \
-This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://app.gitbook.com/o/HNmChKUZY1pAEPfel38z/s/2SvefuMLsJyJPAcVXeWc/~/changes/736/performance-optimization/optimizing-your-price-test-integration).
+This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://docs.intelligems.io/performance-optimization/optimizing-your-price-test-integration).
 
 {% hint style="warning" %}
 For any **password protected store**, we will not be able to automatically detect the script, so you will continue to get an error message in the app regarding the script not being in your theme.
@@ -1829,7 +1884,7 @@ For any **password protected store**, we will not be able to automatically detec
 ## Option 2: Add to Your Theme Code
 
 {% hint style="info" %}
-If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.&#x20;
+If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -1838,7 +1893,7 @@ This will need to be manually removed if you uninstall Intelligems.
 
 To complete this, go to the settings page in the Intelligems app. Once there, you'll see a section called "Theme Script". Click the blue button in that block that says "Copy Script". This will copy your unique Intelligems script to your clipboard.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FqvWfk91wEFeZyv5joSHW%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media&#x26;token=d06b3072-4307-499b-a878-b3b3ed6c9da8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c397ff4b2768cc623336aea8cc0d1844d214f9d0%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Now head over to your Shopify account, and paste the Intelligems Script as a source into the `<head>` of each of these files:
 
@@ -1869,7 +1924,7 @@ To get started, you'll need to create a price test in the Intelligems app, and o
 
 Once you are in Preview mode, select the "Edit" button followed by the dollar sign. The video below will walk you through this process:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F21VfDyeKkfLCwBZ6rOqz%2F12%20-%20preview%20selectors.gif?alt=media&#x26;token=521a127e-9eba-4063-85a6-77d2b095d381" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f356697b5849898d37325f1ad158f6886e831b9%2F12%20-%20preview%20selectors.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The Intelligems Widget offers full support for **Google Chrome**. Support for any other browsers is limited. If you are having an issue with the Widget in another browser, we suggest trying to run it in Google Chrome. For more support, please open a ticket with our support team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)!
@@ -1882,13 +1937,13 @@ Now that you are in Edit mode, it is time to tag price elements everywhere on yo
 1. **Enable price tagging mode** - Click the $ icon in the edit widget
 2. **Enable price selector mode** - Click the box labeled 2 in the image below
 3. **Tag price elements** - Move your cursor to see blue dotted lines around page elements. Click a price element to add it to the query selector list. Click Save to highlight the element:
-   * <mark style="color:$success;">Green</mark> = product is in the test you are currently previewing
+   * Green = product is in the test you are currently previewing
    * <mark style="color:blue;">Blue</mark> = product is **not** in the test you are currently previewing
    * If the price for a product in your test is highlighted in blue, Intelligems can't identify the product or variant ID - see [this guide](https://docs.intelligems.io/price-testing/price-testing-integration-guides/troubleshooting/how-to-add-the-data-product-id-and-or-data-variant-id-attribute-to-an-element) for the required theme change
 4. **Tag all prices** - Add query selectors to the correct section (compare at price for strikethrough prices, price for regular prices, etc.) for all prices on your site, except for products added to your cart or your checkout page
 5. **Save your work** - Click Save periodically to avoid losing progress
 
-<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FFAVT2RDDlLDgDz8lteMN%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media&#x26;token=2e249b15-67c0-4905-81ea-d67170b1db48" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br> 6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-65658f56dd772da04b1b57df9c3a28c86eb56b6b%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br>6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
 
 <details>
 
@@ -1977,7 +2032,7 @@ Most Shopify stores use a convention that states that any line item property wit
 
 If this convention is not already set up for your store, You may see something like this in the cart when you test it in preview mode:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FxosWliarzNzsSygrwdEZ%2FScreenshot%202024-03-08%20at%201.17.37%20PM.png?alt=media&#x26;token=d54e3471-2e3e-484d-8545-b2687bb18d9c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1786d3af7f6635547f08b1b40e4bb3705aadf525%2FScreenshot%202024-03-08%20at%201.17.37%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Here is an example of how you can fix this by implementing the below in a liquid cart (i.e. cart-line-items.liquid or a similar file). The key lines are as follows:
 
@@ -2059,7 +2114,7 @@ This is the easiest installation method that works for most stores!
 
 The fastest way to add Intelligems JavaScript to your theme is to enable it in the "Customize" section of your theme editor. You can do so by logging into your Shopify Admin, and navigating to Sales Channels > Online Store > Live theme - Customize > App Embeds. Search "Intelligems", make sure it is toggled on, and click "Save" in the top right.\
 \
-This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://app.gitbook.com/o/HNmChKUZY1pAEPfel38z/s/2SvefuMLsJyJPAcVXeWc/~/changes/736/performance-optimization/optimizing-your-price-test-integration).
+This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://docs.intelligems.io/performance-optimization/optimizing-your-price-test-integration).
 
 {% hint style="warning" %}
 For any **password protected store**, we will not be able to automatically detect the script, so you will continue to get an error message in the app regarding the script not being in your theme.
@@ -2068,7 +2123,7 @@ For any **password protected store**, we will not be able to automatically detec
 ## Option 2: Add to Your Theme Code
 
 {% hint style="info" %}
-If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.&#x20;
+If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -2077,7 +2132,7 @@ This will need to be manually removed if you uninstall Intelligems.
 
 To complete this, go to the settings page in the Intelligems app. Once there, you'll see a section called "Theme Script". Click the blue button in that block that says "Copy Script". This will copy your unique Intelligems script to your clipboard.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FqvWfk91wEFeZyv5joSHW%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media&#x26;token=d06b3072-4307-499b-a878-b3b3ed6c9da8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c397ff4b2768cc623336aea8cc0d1844d214f9d0%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Now head over to your Shopify account, and paste the Intelligems Script as a source into the `<head>` of each of these files:
 
@@ -2108,7 +2163,7 @@ To get started, you'll need to create a price test in the Intelligems app, and o
 
 Once you are in Preview mode, select the "Edit" button followed by the dollar sign. The video below will walk you through this process:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FMISntvysIsTcu6doGJZj%2F12%20-%20preview%20selectors.gif?alt=media&#x26;token=37bcd4c1-0189-467c-be5e-884610cf47f5" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f356697b5849898d37325f1ad158f6886e831b9%2F12%20-%20preview%20selectors.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The Intelligems Widget offers full support for **Google Chrome**. Support for any other browsers is limited. If you are having an issue with the Widget in another browser, we suggest trying to run it in Google Chrome. For more support, please open a ticket with our support team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)!
@@ -2121,13 +2176,13 @@ Now that you are in Edit mode, it is time to tag price elements everywhere on yo
 1. **Enable price tagging mode** - Click the $ icon in the edit widget
 2. **Enable price selector mode** - Click the box labeled 2 in the image below
 3. **Tag price elements** - Move your cursor to see blue dotted lines around page elements. Click a price element to add it to the query selector list. Click Save to highlight the element:
-   * <mark style="color:$success;">Green</mark> = product is in the test you are currently previewing
+   * Green = product is in the test you are currently previewing
    * <mark style="color:blue;">Blue</mark> = product is **not** in the test you are currently previewing
    * If the price for a product in your test is highlighted in blue, Intelligems can't identify the product or variant ID - see [this guide](https://docs.intelligems.io/price-testing/price-testing-integration-guides/troubleshooting/how-to-add-the-data-product-id-and-or-data-variant-id-attribute-to-an-element) for the required theme change
 4. **Tag all prices** - Add query selectors to the correct section (compare at price for strikethrough prices, price for regular prices, etc.) for all prices on your site, except for products added to your cart or your checkout page
 5. **Save your work** - Click Save periodically to avoid losing progress
 
-<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FFAVT2RDDlLDgDz8lteMN%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media&#x26;token=2e249b15-67c0-4905-81ea-d67170b1db48" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br> 6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-65658f56dd772da04b1b57df9c3a28c86eb56b6b%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br>6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
 
 <details>
 
@@ -2522,7 +2577,7 @@ This is the easiest installation method that works for most stores!
 
 The fastest way to add Intelligems JavaScript to your theme is to enable it in the "Customize" section of your theme editor. You can do so by logging into your Shopify Admin, and navigating to Sales Channels > Online Store > Live theme - Customize > App Embeds. Search "Intelligems", make sure it is toggled on, and click "Save" in the top right.\
 \
-This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://app.gitbook.com/o/HNmChKUZY1pAEPfel38z/s/2SvefuMLsJyJPAcVXeWc/~/changes/736/performance-optimization/optimizing-your-price-test-integration).
+This will load Intelligems in a fashion that works optimally for performance and A/B testing on most stores. If for any reason you encounter performance concerns, see our docs on [performance optimization](https://docs.intelligems.io/performance-optimization/optimizing-your-price-test-integration).
 
 {% hint style="warning" %}
 For any **password protected store**, we will not be able to automatically detect the script, so you will continue to get an error message in the app regarding the script not being in your theme.
@@ -2531,7 +2586,7 @@ For any **password protected store**, we will not be able to automatically detec
 ## Option 2: Add to Your Theme Code
 
 {% hint style="info" %}
-If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.&#x20;
+If you are on Shopify Plus and are still using checkout.liquid, you will still need to manually add Intelligems JavaScript to your checkout.liquid file in order to hide the discount or preview bar at checkout. Your individual script tag is located on the settings page in the Intelligems App.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -2540,7 +2595,7 @@ This will need to be manually removed if you uninstall Intelligems.
 
 To complete this, go to the settings page in the Intelligems app. Once there, you'll see a section called "Theme Script". Click the blue button in that block that says "Copy Script". This will copy your unique Intelligems script to your clipboard.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FqvWfk91wEFeZyv5joSHW%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media&#x26;token=d06b3072-4307-499b-a878-b3b3ed6c9da8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c397ff4b2768cc623336aea8cc0d1844d214f9d0%2FScreenshot%202025-09-25%20at%205.30.44%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Now head over to your Shopify account, and paste the Intelligems Script as a source into the `<head>` of each of these files:
 
@@ -2571,7 +2626,7 @@ To get started, you'll need to create a price test in the Intelligems app, and o
 
 Once you are in Preview mode, select the "Edit" button followed by the dollar sign. The video below will walk you through this process:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FMISntvysIsTcu6doGJZj%2F12%20-%20preview%20selectors.gif?alt=media&#x26;token=37bcd4c1-0189-467c-be5e-884610cf47f5" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f356697b5849898d37325f1ad158f6886e831b9%2F12%20-%20preview%20selectors.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The Intelligems Widget offers full support for **Google Chrome**. Support for any other browsers is limited. If you are having an issue with the Widget in another browser, we suggest trying to run it in Google Chrome. For more support, please open a ticket with our support team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)!
@@ -2584,13 +2639,13 @@ Now that you are in Edit mode, it is time to tag price elements everywhere on yo
 1. **Enable price tagging mode** - Click the $ icon in the edit widget
 2. **Enable price selector mode** - Click the box labeled 2 in the image below
 3. **Tag price elements** - Move your cursor to see blue dotted lines around page elements. Click a price element to add it to the query selector list. Click Save to highlight the element:
-   * <mark style="color:$success;">Green</mark> = product is in the test you are currently previewing
+   * Green = product is in the test you are currently previewing
    * <mark style="color:blue;">Blue</mark> = product is **not** in the test you are currently previewing
    * If the price for a product in your test is highlighted in blue, Intelligems can't identify the product or variant ID - see [this guide](https://docs.intelligems.io/price-testing/price-testing-integration-guides/troubleshooting/how-to-add-the-data-product-id-and-or-data-variant-id-attribute-to-an-element) for the required theme change
 4. **Tag all prices** - Add query selectors to the correct section (compare at price for strikethrough prices, price for regular prices, etc.) for all prices on your site, except for products added to your cart or your checkout page
 5. **Save your work** - Click Save periodically to avoid losing progress
 
-<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FFAVT2RDDlLDgDz8lteMN%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media&#x26;token=2e249b15-67c0-4905-81ea-d67170b1db48" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br> 6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-65658f56dd772da04b1b57df9c3a28c86eb56b6b%2FScreenshot%202025-10-06%20at%2010.59.01%E2%80%AFAM.png?alt=media" alt=""><figcaption><p>1. The type of selector - see more below for what each type is for.<br>2. Enable selector mode - clicking this button will allow you click on your prices on your site and automatically add a new selector.<br>3. Query selectors that have been added.<br>4. Delete a query selector.<br>5. Simplify a selector - use this function if the selector added was too specific.<br>6. Add a query selector manually.<br>7. Auto add all price selectors on your site using AI.</p></figcaption></figure></div>
 
 <details>
 
@@ -2700,13 +2755,13 @@ You'll need to follow these steps for *every* price test you set up.
 
 <details>
 
-<summary>Step 1: Finding duplicate products in Shopify.</summary>
+<summary>Step 1: Finding duplicate products in Shopify</summary>
 
 The tag `price_test` will be added to all duplicates created by Intelligems, as well as a few additional tags specific to each test and test group.
 
 However, the easiest place to access and check the status of your duplicate products is from directly within the Intelligems app! Next to any price test in the app, click the three dots on the far right to see more options, then select "View Duplicates". This will bring you to the duplicates status page.
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FUd33riBHWXAXLmJUJezo%2F13%20-%20View%20Duplicates.gif?alt=media\&token=e323be33-9e8b-4ed3-b53a-9d3db5ef3bfe)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d346bf7e1f492ed7a7ce1c744be6465e8cbc000b%2F13%20-%20View%20Duplicates.gif?alt=media)
 
 From here, you can:
 
@@ -2722,7 +2777,7 @@ If you would like to see duplicate products that have been created for *any* tes
 
 <details>
 
-<summary>Step 2: Remove duplicate products from third-party channels.</summary>
+<summary>Step 2: Remove duplicate products from third-party channels</summary>
 
 Follow these steps to remove the duplicate products from all channels other than `Online Store` and any that you use for reporting. This prevents any channels from showing multiple versions of the product with different prices.
 
@@ -2738,7 +2793,7 @@ Follow these steps to remove the duplicate products from all channels other than
 
 <details>
 
-<summary>Step 3: Configure inventory tracking.</summary>
+<summary>Step 3: Configure inventory tracking</summary>
 
 The following steps will allow you to keep an accurate count of duplicate products sold during the test and reconcile inventory after the test. However, stores manage inventory differently - some through Shopify, some through an app, and some have another method. Please consider how selling duplicate products will impact your inventory tracking before following these steps and launching a test.
 
@@ -2756,7 +2811,7 @@ If you use Shopify to track inventory, you'll need to reset this option to 'Stop
 
 <details>
 
-<summary>Step 4: Add duplicate products to custom shipping profiles, if necessary.</summary>
+<summary>Step 4: Add duplicate products to custom shipping profiles, if necessary</summary>
 
 *This step is only necessary if you have custom shipping profiles configured through Shopify. If only the General Shipping profile is used, you can skip this step.*
 
@@ -2776,7 +2831,7 @@ If any of the products you are testing are in a custom shipping profile, you'll 
 
 <details>
 
-<summary>Step 5: Add duplicate products to discount codes.</summary>
+<summary>Step 5: Add duplicate products to discount codes</summary>
 
 *This step is only necessary if you have discount codes configured for specific products or collections. If you do not have discount codes or all your discount codes are configured to apply store-wide, then you can skip these steps.*
 
@@ -2792,9 +2847,42 @@ If you have any discount codes that apply to `Specific collections`, you'll need
 
 <details>
 
-<summary>Step 6: Configuring search apps, if necessary.</summary>
+<summary>Step 6: Configuring search apps, if necessary</summary>
 
 If you use a search app, such as Searchanise, you may need to hide duplicate products in the search app. You can do this by adding `price_test` to "Hide products with these tags" in your search app settings.
+
+</details>
+
+<details>
+
+<summary>Step 7: Configure duplicate products in third-party apps</summary>
+
+The following steps will help you configure duplicate products within third-party apps, if necessary.
+
+Note that if you **don't see your duplicate products** in a third-party app, you may need to set your duplicate products to 'Active' status in Shopify in order to access them. Don't worry - as long as you've completed the above steps, users won’t be able to navigate to these pages until the test is live, unless they are given the URL directly, as long as you completed all the steps above.
+
+**Configuring subscription management apps**
+
+There are many subscription management apps, but the documentation for configuring duplicate products on some of the apps we’ve come across can be found at the following links:
+
+* [Skio](https://help.intelligems.io/pricing-test-using-duplicate-products-and-skio)
+* Don't see yours here yet? [Contact us here.](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)
+
+**Configuring ratings and reviews apps**
+
+Most applications for ratings and reviews offer a solution for grouping products so that multiple products display the same ratings and reviews. We recommend utilizing these features to ensure that duplicate products display the same content as the original products.
+
+There are many different ratings and reviews apps, but the documentation for creating groups on some of the apps we’ve come across can be found at the following links:
+
+* [Stamped](https://support.stamped.io/article/1097-groups-group-reviews-by-product)
+* [Loox](https://help.loox.io/article/79-how-do-i-group-product-reviews-together)
+* [Okendo](https://support.okendo.io/en/articles/3086164-creating-groups)
+* [Judge.me](https://support.judge.me/support/solutions/articles/44001260470-share-reviews-across-product-groups)
+* [Junip](https://help.junip.co/en/articles/4607273-product-groups-bundle-family)
+
+**Configuring bundle or volume discount apps**
+
+There are several bundle or volume discount apps available, such as Kaching or Shrine, where you may find it easier to redirect to a new PDP so that Kaching or Shrine can reflect the correct prices. Once your duplicate products have been created, head over to your volume discount app and set the same options up for your new product.
 
 </details>
 
@@ -2859,7 +2947,7 @@ On the price that is not updating, right click and select 'Inspect' from the men
 
 In the developer tools, the element you are inspecting should be highlighted. In one of the **parent** elements for the price that is not updating, find a unique combination of classes, IDs, and/or attributes. In the screenshot below, `intelli-price intelli-span_USD_37.04`would be a good spot to start. However, you're not looking for this intelli-price class; you're looking for the `price-container__price` class in this case.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FsUafzmjrl68YYNUL0apa%2FScreenshot%202024-03-01%20at%203.07.23%20PM.png?alt=media&#x26;token=ce063551-16a7-4ff6-b398-1f5300a87cf2" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-28f080c7f4bd088552cc27482ddb45e0df88fd70%2FScreenshot%202024-03-01%20at%203.07.23%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### **Step 3: Download the 'Shopify Theme File Search by EZFY' Chrome extension**
 
@@ -2873,11 +2961,11 @@ In another window, got to your Shopify admin account and select 'Sales Channels'
 
 Once in the theme file of your choice navigate to the `edit code` option of the themes dropdown. \\
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FD69RKK2bil0JXAlbGiYJ%2FScreenshot%202023-08-24%20at%2011.09.38%20AM.png?alt=media&#x26;token=521b70bc-5d21-4228-b4ff-64eb750bb470" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d7828af81e713f8e58659794d46243ae72706bf0%2FScreenshot%202023-08-24%20at%2011.09.38%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 The Chrome extension you just downloaded should render a search box at the top of your screen like the one in the screenshot below once you are in the code editor. If you don't see it, you may need to refresh, or exit the code editor and come back by repeating the step above.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FEh20YwvUPm68dtl90dRJ%2FScreenshot%202023-08-24%20at%2011.12.07%20AM.png?alt=media&#x26;token=c2ba8f00-3a77-4388-a95a-626b7f0dd3c9" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1966cd25c6e279ddf8de4b9a682ab501dadaef90%2FScreenshot%202023-08-24%20at%2011.12.07%20AM.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
 
 In that search box, enter the unique combination of classes, IDs, and/or attributes that you found while inspecting your price in step 2. (It was `price-container__price` in the example above; yours will vary.) This will search all of your files, and any files that contains a match will be highlighted in blue.
 
@@ -2942,15 +3030,15 @@ Check out the steps below to learn how to set up a price test!
 
 Go to the **Tests** tab in the left menu in the Intelligems app. Click **Create New Test** above the experiments table.
 
-Enter a **Name** and **Description** for your test. This information is internal only - add enough detail so you'll remember your goals when reviewing results weeks later. Select **Pricing Test** and **Create Test**.&#x20;
+Enter a **Name** and **Description** for your test. This information is internal only - add enough detail so you'll remember your goals when reviewing results weeks later. Select **Pricing Test** and **Create Test**.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F6vq64WLbytT2Bm4LLAq7%2Fpricing.gif?alt=media&#x26;token=0a2d3b3d-ed29-4b90-b697-f791f297a0a3" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0a39ce7ab59190f09e46c94e4ef56bf84aff4273%2Fpricing.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 2: Create your test groups
 
 Create 2-5 groups by clicking **+**. Name each group and use the slider to allocate traffic percentage. Click **Next step** when ready.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F7rXH6W7Z0EHymi6N64wB%2Ftest%20groups.gif?alt=media&#x26;token=c2432f5b-546b-4b5f-9fb2-047b65967d02" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-2739082419b331410d0060bb73416741fc77043b%2Ftest%20groups.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The more groups you have, the longer it will take to get statistically significant results. You’ll need about 300 orders for each group in the test to detect a 10% change in conversion with 90% confidence.
@@ -2989,7 +3077,7 @@ This is best suited for cases where you have already set up your prices in a CSV
 
 To upload a spreadsheet, first click on the 'Quick Fill' button, navigate to the 'Fill By Upload' tab, and then click 'Download Template'. Wait until we load the template, then click 'Template Ready - Click to Download' - your download will start automatically.
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FrBIHVWP67ZZ2LqHaZTox%2F06%20-%20Download%20Template.gif?alt=media&#x26;token=80be507d-f588-4535-a084-cb095e826fb2" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-a2dda3e5ee61de8782a0e00a8d433d1abd6e116a%2F06%20-%20Download%20Template.gif?alt=media" alt="" data-size="original">
 
 Using Microsoft Excel, Google Sheets, Numbers, or another spreadsheet editing tool, manually input the prices for the test groups and save the file with a .csv, .xls or .xlsx extension.
 
@@ -3018,7 +3106,7 @@ This is best suited for cases where you want to test uniform changes to all prod
 
 To use this option, click 'Quick Fill', then configure the percentage or dollar amount change for each group and whether the change should be an increase or decrease relative to the control, as well as whether the amount should be rounded. Note that increase / decrease, the amount and % / $ selector are three separate fields. Click 'Apply All' when you are done.
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F0RDgQkDlG8MMtHcdqz8l%2F07%20-%20Quick%20Fill.gif?alt=media\&token=dd02fc45-69ce-4f74-8b65-a09feb76b407)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6f04cfbdac942a52ebb1cee7c3cdf4f9c21acc67%2F07%20-%20Quick%20Fill.gif?alt=media)
 
 </details>
 
@@ -3032,7 +3120,7 @@ Input the prices and 'compare at' prices (if desired) for each product and test 
 
 You can expand all rows or collapse all rows by pressing 'Expand All' or 'Collapse All' at the top left of the table.
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FJ7SqKvlfklqmyXatDXgl%2F08%20-%20Set%20Prices%20manually.gif?alt=media\&token=542965aa-aac0-41f7-8880-c9e3c1ca0ed1)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d5d164cacc99e01157c443f9774c564598059e5b%2F08%20-%20Set%20Prices%20manually.gif?alt=media)
 
 </details>
 
@@ -3066,8 +3154,8 @@ Once you have completed all the steps, you'll be able to save your test with the
 
 In the **Preview** tab, you'll find a few options to load the test's preview:
 
-* **Open Full Screen Preview:** this will open your website with the Intelligems widget loaded, so you can easily alternate between test groups to preview each group's experience, as well as do onsite edits if necessary (see [step 8](#step-8-edit-content-on-your-site-if-needed) for more details). You can also choose which theme you'd like to preview in if you need to be somewhere other than your live theme!&#x20;
-* **Open Mobile Preview:** you'll see a QR code for each test group, so you can load the preview directly on your mobile device.&#x20;
+* **Open Full Screen Preview:** this will open your website with the Intelligems widget loaded, so you can easily alternate between test groups to preview each group's experience, as well as do onsite edits if necessary (see [step 8](#step-8-edit-content-on-your-site-if-needed) for more details). You can also choose which theme you'd like to preview in if you need to be somewhere other than your live theme!
+* **Open Mobile Preview:** you'll see a QR code for each test group, so you can load the preview directly on your mobile device.
 * **Copy Preview URL:** this will copy the preview URL to your clipboard automatically.
 
 {% hint style="danger" %}
@@ -3078,7 +3166,7 @@ Don’t worry, this won’t set the test live yet and you can come back and edit
 
 In the 'Goals' tab, you'll find the option to select what your primary goal is, as well as whether analytics should by default consider only orders containing certain products, or orders containing any products in your shop.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FfiUXNdv1Tqp3bxMhEhU7%2Fimage.png?alt=media&#x26;token=949795fa-51f5-4370-9769-0aa2bf5d5aec" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-46f4a7c5c7552888c83a54e1b59aaa3412f0b832%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Neither of these choices will affect what data is tracked or available to view, but will allow Intelligems to display analytics so that the most important information is surfaced first. You can change this later after the test has started by changing the option in your Analytics filters.
 
@@ -3106,7 +3194,7 @@ Before heading to your site, there are a few things you should check to make sur
 
 Once you have confirmed both of those items are true, you can preview the test on your live site. Enter Preview mode by clicking the `...` next to your test and select `Preview`
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FIzg2aHQBECwHQ4Xl6CQc%2F10%20-%20Open%20Preview.gif?alt=media&#x26;token=e61108ce-6657-46a5-89d3-8368d08b4f49" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-cb507b5295da0da7f5f07ff1a316b4851eaf8c86%2F10%20-%20Open%20Preview.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 This will open your site up in a new window with the Intelligems preview widget enabled. In the preview widget, you'll see:
 
@@ -3115,7 +3203,7 @@ This will open your site up in a new window with the Intelligems preview widget 
 3. A toggle to highlight any replacements in the top right
 4. An edit button in the bottom right. This enables integration mode where you can edit price selectors and text replacements
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F5H4JjgIvisCTzXuqr77A%2Fimage.png?alt=media&#x26;token=b133337b-4e23-43fd-9f99-a238c239529d" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-dea4176bb6abc678c2b5b43aa11f2a896a76948c%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Please note that if you sell in multiple currencies, a price test which includes prices higher than the control group's prices may have implications for any non-default currencies if they are set to dynamically convert against your store's default currency.\
@@ -3148,7 +3236,7 @@ To get started in preview mode, turn the `Highlight Replaces` toggle on in the t
 
 Now that you have confirmed prices look right everywhere on the site, go through the add to cart process and click checkout for a handful of products that are a part of the test.
 
-* [ ] Confirm that status of duplicate products (if not on Shopify Plus) has been changed from Draft to Active.
+* [ ] Confirm that the status of duplicate products (if applicable) has been set to Unlisted.
 * [ ] Confirm price is being calculated correctly at each step (e.g. in the mini cart, on the cart page, and on the checkout page) based on which test group is selected in the widget. *Note that if you are using Duplicate Products for your test, the price should match the test group in the cart.*
 * [ ] Increase the quantity of a test item to two from within the cart; confirm that the prices are still correct.
 * [ ] If you offer options other than one-time purchase, such as subscription or bulk, confirm that these are correct at each step.
@@ -3181,27 +3269,27 @@ In addition to Intelligems Javascript, confirm any other theme changes completed
 
 In the Intelligems app, navigate to the A/B Tests tab and click the play button next to the pricing test you are wanting to start.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fssi9JaM6zTCfpLWA8liS%2Fimage.png?alt=media&#x26;token=b308fe22-23d5-4855-8c5d-aa722976c706" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0d9edbf40d91f9e668832be1ea8f4d554eb3b8c9%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 3: confirmed you've done the integration and also QA'd your test**
 
 At this point, we display two checkboxes so you can confirm you've done the [Price Test Integration](https://docs.intelligems.io/price-testing/price-testing-integration-guides), and that you've also [QA'd your test](https://docs.intelligems.io/price-testing/price-test-qa-checklist). If you've done both, check both checkboxes, and click 'Confirm'.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F4ihzzcgIjP2Aem4ywx80%2Fimage.png?alt=media&#x26;token=8bf294e2-6063-4e99-8c4e-6016bd55ca47" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0340af8671f4dabb08217e46f6998ade1d3f3b49%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 4: Click "Yes, Update My Prices and Start Test"**
 
-**If C*****heckout Scripts***\*\* or **\_**&#x46;unction&#x73;**\_** are being used to run your test,\*\* after you click `Start`, you'll see a pop-up asking if you want the Intelligems Wizard to update your Shopify prices. Please select 'Yes, Update My Prices and Start Test' in the pop-up. This will allow Intelligems to automatically update your product prices to the highest price in the test for each product, which is necessary for your test to run correctly.
+**If C*****heckout Scripts*****&#x20;or&#x20;*****Functions*****&#x20;are being used to run your test,** after you click `Start`, you'll see a pop-up asking if you want the Intelligems Wizard to update your Shopify prices. Please select 'Yes, Update My Prices and Start Test' in the pop-up. This will allow Intelligems to automatically update your product prices to the highest price in the test for each product, which is necessary for your test to run correctly.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FVYG7p7vw37hw9cyEk19G%2Fimage.png?alt=media&#x26;token=730ccbb1-e2e6-4113-aebd-8466e0970856" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-e4c2add7f0a9424064d3a84fa46e2db0ff13ae3f%2Fimage%20(115).png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 While there are certain scenarios where prices do not need to be updated, we do not recommend selecting "No, I'll Update My Prices" unless you 100% know what you're doing!
 {% endhint %}
 
-**If \_duplicate products**\_\*\* were used to create the test,\*\* this pop up will not come up. Instead, you'll see a modal displaying your duplicate products, and the option to start the test. Duplicate products were created when you set your test up for each price group. As long as you followed [these steps](https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-duplicate-products/step-4-configure-duplicate-products)[ ](https://docs.intelligems.io/getting-started/price-testing-integration-guides/integration-guide-using-duplicate-products/step-4-configure-duplicate-products)to configure your duplicate products, your test is ready to go, so you can click on 'Start Test'.
+**If&#x20;*****Duplicate Products*** **were used to create the test,** this pop up will not come up. Instead, you'll see a modal displaying your duplicate products, and the option to start the test. Duplicate products were created when you set your test up for each price group. As long as you followed [these steps](https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-duplicate-products/step-4-configure-duplicate-products)[ ](https://docs.intelligems.io/getting-started/price-testing-integration-guides/integration-guide-using-duplicate-products/step-4-configure-duplicate-products)to configure your duplicate products, your test is ready to go, so you can click on 'Start Test'.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F7x6sSsfakeWhKiCOKT1c%2Fimage.png?alt=media&#x26;token=4d69231e-72c8-4d20-8dd0-a4101760891a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-fafc02a6ae4610dc57da5c4b4f2f3d9e781b969b%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 4: Check Your Site**
 
@@ -3216,13 +3304,13 @@ Follow these steps to end your Price Test.
 
 To end a test, navigate to the Tests tab in the menu on the left-hand side of the Intelligems app. Once you're there, locate the test you'd like to end in the Intelligems tests list and click the stop button, which you can find circled in red below.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FuDAciQN5YXXqpcEaGhQ8%2FScreenshot%202025-09-25%20at%205.19.41%E2%80%AFPM.png?alt=media&#x26;token=35158b64-241d-49f5-9cc8-c130cb072471" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-2986d71a700dd250521f9b8be6a46d78b11e0fbd%2FScreenshot%202025-09-25%20at%205.19.41%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 2: Roll Out Prices
 
 Once you click the stop button, a modal will pop up with the key metrics for each test group. Choose which group's prices to implement in Shopify, then click Apply Prices and End Test.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FZb8Lxb4TVG6JIiCxdN6X%2FScreenshot%202025-09-25%20at%205.14.09%E2%80%AFPM.png?alt=media&#x26;token=9cdad65c-d434-4c7c-9be0-99a5504141df" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d968ff2240a5917b19be6063e7ba91058d2fa123%2FScreenshot%202025-09-25%20at%205.14.09%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 * If ***checkout scripts or Shopify Functions*** were used to run the test, prices for the products in Shopify will be updated and the Intelligems Checkout Script or Functions will no longer be applied.
 * If ***duplicate products*** were used to run the test, prices for the original products in Shopify will be updated, if needed, and traffic will no longer be directed to the duplicate products.
@@ -3243,7 +3331,7 @@ Did you roll out new prices based on the results of the test? If so, you'll want
 
 ## Step 4: Update Subscriptions As Needed
 
-If ***checkout scripts*** were used to run the test, there is no action needed here! By default, subscriptions will continue to run at the price the customer subscribed, which may not always be equal to the price on your site.&#x20;
+If ***checkout scripts*** were used to run the test, there is no action needed here! By default, subscriptions will continue to run at the price the customer subscribed, which may not always be equal to the price on your site.
 
 For example, if you ran a test where the subscription price was $10 for one group and $8 for another and I signed up for the subscription in the $8 group, I would continue to pay $8 monthly, even if the $10 price point is rolled out to the entire site post-test.
 
@@ -3272,7 +3360,7 @@ Read this article to understand how to run price tests if your store offers subs
 If you offer subscriptions as an option on your product(s), testing prices is a bit more complex. Intelligems supports testing both one-time and subscription prices for your store's products, and this article will walk through the basics on what is possible, and how to get started.
 
 {% hint style="warning" %}
-Testing subscriptions is currently only supported on our annual plans. Please [reach out to Intelligems support](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you are interested in testing subscriptions.
+Testing subscriptions is only available on our **Blue** plan.
 {% endhint %}
 
 ## What kind of subscription tests are supported?
@@ -3305,7 +3393,7 @@ Intelligems is generally compatible with all major subscription providers. Most 
 
 ## Which Intelligems plans qualify for subscription testing?
 
-You must be on an annual plan that includes price testing to qualify for subscription testing.
+You must be on a **Blue** plan to qualify for subscription testing. [See plan details](https://www.intelligems.io/pricing).
 
 ## Can I perform the integration with Intelligems on my own if I offer subscriptions?
 
@@ -3337,28 +3425,12 @@ Check out the guides below to learn more about setting up a price test where sub
 This document shows how to set up Intelligems if you want to test prices and you're using Recharge 2.0 or Stay.ai.
 
 {% hint style="danger" %}
-This article only applies if you use Stay.AI or Recharge (Unified Checkout aka 2.0), you are using Shopify Plus, and have access to the Script Editor app. If you are using Stay.AI, you must also only offer one delivery option (i.e. Every 30 Days). If any of these are not true, please see our following guides on using duplicate products, or reach out to support [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request).
+This article only applies if you use Stay.AI, you are using Shopify Plus, and have access to the Script Editor app. If you are using Stay.AI, you must also only offer one delivery option (i.e. Every 30 Days). If any of these are not true, please see our following guides on using duplicate products, or reach out to support [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request).
 {% endhint %}
 
 ### Step 1: Authorize the integration
 
 In the Intelligems App, navigate to "Integrations" on the bottom left.
-
-<details>
-
-<summary>Recharge</summary>
-
-In the Integrations page, click "Enable" next to the Recharge icon. If instead of "Enable" you see the word "Refresh", your integration is already enabled and no need to take further action!
-
-Then click "Install" when you see this screen.
-
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FAmoM5uRzRHr5nvy91tBp%2Fimage.png?alt=media\&token=c477c193-24b4-4f23-80fc-41f754fe924f)
-
-</details>
-
-<details>
-
-<summary>Stay.ai</summary>
 
 You need to create an API key from your Stay.AI dashboard. Log into Stay, under Settings > API keys, create a new key.
 
@@ -3367,13 +3439,11 @@ You need to create an API key from your Stay.AI dashboard. Log into Stay, under 
 * Email: **Your email**
 * Scopes: **All**
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FbvHSG1jhVtvrhFSzBCCy%2Fimage.png?alt=media\&token=658b4326-5baf-4bbf-992a-d0aec1ae4d6f)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-280d834c01d4d0e880125efe6b330225e8c5387f%2Fimage.png?alt=media)
 
 Then Copy the API key into the Intelligems dashboard into the Stay.ai API key
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FXnIDukimdM14Idid03lp%2Fimage.png?alt=media\&token=de3a4f98-a4d2-4f02-853d-31dbdbb3bbf2)
-
-</details>
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-80bead7632ad5d80d9de6cb25d325efecca28f52%2Fimage.png?alt=media)
 
 ### Step 2: Set up test in the Intelligems app
 
@@ -3387,7 +3457,7 @@ Assuming you've already completed the [integration](https://docs.intelligems.io/
 
 If you're not using a standard widget from your subscription provider on your PDP, our onboarding team would be happy to help integrate your own custom UI with Intelligems. It's relatively straightforward, we just need to identify the PDP elements identified in this example screenshot.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FDQLccDDOEk5nGYPGS9oQ%2Fimage.png?alt=media&#x26;token=e4c5e86b-8d0e-4e47-b209-61957f447e6a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-70aa7d844f9e05c9ffb91e112576588c1249aaa5%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 If you have questions, please reach out to support [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)!
 
@@ -3515,7 +3585,7 @@ The tag `price_test` will be added to all duplicates created by Intelligems, as 
 
 However, the easiest place to access and check the status of your duplicate products is from directly within the Intelligems app! Next to any price test in the app, click the three dots on the far right to see more options, then select "View Duplicates". This will bring you to the duplicates status page.
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FUd33riBHWXAXLmJUJezo%2F13%20-%20View%20Duplicates.gif?alt=media\&token=e323be33-9e8b-4ed3-b53a-9d3db5ef3bfe)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d346bf7e1f492ed7a7ce1c744be6465e8cbc000b%2F13%20-%20View%20Duplicates.gif?alt=media)
 
 From here, you can:
 
@@ -3546,25 +3616,7 @@ Follow these steps to remove the duplicate products from all channels other than
 
 <details>
 
-<summary>Step 3: Remove duplicate products from collections</summary>
-
-Follow these steps to remove the duplicate products from all collections. This prevents both versions of duplicate products from appearing in collections on the website.
-
-**1.** Select all the products using the checkbox in the top left.
-
-**2.** Select the three dots in the menu that pops up, followed by `Remove from collection(s)`.
-
-**3.** Select all collections.
-
-**4.** Select `Save`.
-
-If you use **auto-collections** on your site, specifically to power any collection pages, you may **need to do a couple extra steps here to exclude duplicate products from those pages.** How you manage this may depend slightly on how you have your auto-collections set up, but we typically find that updating the duplicate products' **Product Type** to **Test Products** and then excluding that product type from any auto-collections to be a great solution. [Please reach out to our support team](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you need assistance with this.
-
-</details>
-
-<details>
-
-<summary>Step 4: Configure inventory tracking</summary>
+<summary>Step 3: Configure inventory tracking</summary>
 
 The following steps will allow you to keep an accurate count of duplicate products sold during the test and reconcile inventory after the test. However, stores manage inventory differently, some through Shopify, some through an app, and some though other methods. Please consider how selling duplicate products will affect your inventory tracking before following these steps and launching a test.
 
@@ -3582,7 +3634,7 @@ If you use Shopify to track inventory, you'll need to reset this option to **Sto
 
 <details>
 
-<summary>Step 5: Add duplicate products to custom shipping profiles, if necessary</summary>
+<summary>Step 4: Add duplicate products to custom shipping profiles, if necessary</summary>
 
 *This step is only necessary if you have custom shipping profiles configured through Shopify. If only the General Shipping profile is used, you can skip this step.*
 
@@ -3602,7 +3654,7 @@ If any of the products you are testing are in a custom shipping profile, you'll 
 
 <details>
 
-<summary>Step 6: Add duplicate products to discount codes as needed</summary>
+<summary>Step 5: Add duplicate products to discount codes as needed</summary>
 
 *This step is only necessary if you have discount codes configured for specific products or collections. If you do not have discount codes or all your discount codes are configured to apply store-wide, then you can skip these steps.*
 
@@ -3618,7 +3670,7 @@ If you have any discount codes that apply to `Specific collections`, you'll need
 
 <details>
 
-<summary>Step 7: Configure search apps, if necessary</summary>
+<summary>Step 6: Configure search apps, if necessary</summary>
 
 If you use a search app, such as Searchanise, you may need to hide duplicate products in the search app. You can do this by adding `price_test` to "Hide products with these tags" in your search app settings.
 
@@ -3626,7 +3678,7 @@ If you use a search app, such as Searchanise, you may need to hide duplicate pro
 
 <details>
 
-<summary>Step 8: Configure duplicate products in third-party apps</summary>
+<summary>Step 7: Configure duplicate products in third-party apps</summary>
 
 The following steps will help you configure duplicate products within third-party apps, if necessary.
 
@@ -3683,9 +3735,9 @@ Creating a multi-currency test is generally similar to any other Price Test, wit
 
 The main differences in setting up a Price Test that is not in your default currency are:
 
-1. You will need to update the currency on the Modifications tab to match your test currency as shown in the screenshot below:
+1. Once you've added your test product(s) in the Modifications tab, you will need to update the currency to match your desired test currency as shown in the screenshot below:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fjt1Lk7WLNFxNQyPqTGt8%2Fimage.png?alt=media&#x26;token=b1632abb-a39b-40c9-a982-2872911834a3" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f107855e1bb4ea8f689c564b19b13e0f78e7d63%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 This option will not be available until an Intelligems team member has enabled the multi-currency setting for you.
@@ -3696,12 +3748,12 @@ This option will not be available until an Intelligems team member has enabled t
 {% hint style="warning" %}
 Quick filling test groups based on control prices is not available for multi-currency tests. While you'll see the Quick Fill option in the app, clicking on it will take you directly to the 'Fill by Upload' option.
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FxL9HfOVXJPhH6gyFg7Pe%2F14%20-%20Multi-currency%20no%20quickfill.gif?alt=media&#x26;token=85f6047a-08cb-4341-a8cd-3eba352bb21b" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5cabda4eb1d04f7360d2eae07b8cdb17cfe2c9fc%2F14%20-%20Multi-currency%20no%20quickfill.gif?alt=media" alt="" data-size="original">
 {% endhint %}
 
 3. Currency targeting is set to your selected test currency by default, and will not be editable directly in the targeting section.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FZRSSIu9zMHKqGteu8vdc%2Fimage.png?alt=media&#x26;token=2e724cae-c16e-4783-88d7-8e0e5b910e6c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c07808ec47312ff70be706681fbeaecd6b18f1c4%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: QA your Test**
 
@@ -3709,9 +3761,9 @@ This will be generally the same as QAing any other Price Test. You can see our c
 
 ## **Step 3: Starting a Test**
 
-Your prices need to be set to the highest-priced test group in order for the test to run properly. When you hit the play button for your test, Intelligems will prompt you to download a price CSV that you'll use to update the prices in [Global-e](https://www.shopify.com/markets) or [Shopify Markets](https://www.shopify.com/markets) to the highest prices in your test.&#x20;
+Your prices need to be set to the highest-priced test group in order for the test to run properly. When you hit the play button for your test, Intelligems will prompt you to download a price CSV that you'll use to update the prices in [Global-e](https://www.shopify.com/markets) or [Shopify Markets](https://www.shopify.com/markets) to the highest prices in your test.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fw45FtkCcf9zkxMJJofMQ%2Fimage.png?alt=media&#x26;token=9001497a-2eb2-4fb9-ae17-75f8816c5bfe" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d6d9a9b068c6ed695a0f6c0235e50fc7c2e6d51c%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Once you have this CSV, you should:
 
@@ -3725,8 +3777,8 @@ Reach out to your account manager at Global-e with this CSV. They will help you 
    1. From your Shopify admin, go to Products.
    2. Export your products, making sure to include catalog pricing, international pricing, and variants. If you are able to set up any filters in Shopify to limit the export to products you will be price testing, this will make the next steps easier.
 2. Edit Prices in a Spreadsheet:
-   1. Use the "Variant SKU" column in the Shopify export and the "sku" column in the Intelligems export to match your products.&#x20;
-   2. Add the prices and compare prices in the Intelligems export to the appropriate Market columns in the Shopify export. There should be one column for the price and one column for the compare price for each Market you have set up in Shopify Markets - ensure you merge the prices from Intelligems in the correct columns.&#x20;
+   1. Use the "Variant SKU" column in the Shopify export and the "sku" column in the Intelligems export to match your products.
+   2. Add the prices and compare prices in the Intelligems export to the appropriate Market columns in the Shopify export. There should be one column for the price and one column for the compare price for each Market you have set up in Shopify Markets - ensure you merge the prices from Intelligems in the correct columns.
 3. Import Your Changes:
    1. Save your updated spreadsheet file. From your Shopify admin, go to Products.
    2. Import the file back into your Shopify admin, using the same app or the built-in import tool. The system will analyze your changes and update your products accordingly.
@@ -3739,7 +3791,7 @@ You cannot have a product in more than one experiment *if* the experiments are s
 
 When pausing or ending a test, you'll be prompted to download a CSV with the prices that you want to roll out either while the test is paused, or permanently. You'll need to upload the file with the new prices either to [Shopify Markets](https://www.shopify.com/markets) or [Global-e](https://www.shopify.com/markets).
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FsgYp4ABM7Iz8SxqcsFmh%2Fimage.png?alt=media&#x26;token=eeb9e195-50a2-4fcf-af4a-06b1476815c5" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-92a640dc4ce95cf85aeaa63e5e7fa842d8f85665%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Once you have this CSV, you should:
 
@@ -3753,8 +3805,8 @@ Reach out to your account manager at Global-e with this CSV. They will help you 
    1. From your Shopify admin, go to Products.
    2. Export your products, making sure to include catalog pricing, international pricing, and variants. If you are able to set up any filters in Shopify to limit the export to products that were price tested, this will make the next steps easier.
 2. Edit Prices in a Spreadsheet:
-   1. Use the "Variant SKU" column in the Shopify export and the "sku" column in the Intelligems export to match your products.&#x20;
-   2. Add the prices and compare prices in the Intelligems export to the appropriate Market columns in the Shopify export. There should be one column for the price and one column for the compare price for each Market you have set up in Shopify Markets - ensure you merge the prices from Intelligems in the correct columns.&#x20;
+   1. Use the "Variant SKU" column in the Shopify export and the "sku" column in the Intelligems export to match your products.
+   2. Add the prices and compare prices in the Intelligems export to the appropriate Market columns in the Shopify export. There should be one column for the price and one column for the compare price for each Market you have set up in Shopify Markets - ensure you merge the prices from Intelligems in the correct columns.
 3. Import Your Changes:
    1. Save your updated spreadsheet file. From your Shopify admin, go to Products.
    2. Import the file back into your Shopify admin. The system will analyze your changes and update your products accordingly.
@@ -3778,11 +3830,11 @@ We limit price tests to 500 products by default, but you can [reach out to our s
 
 <summary>Can I price test just one variant of a product?</summary>
 
-Products get added to a price test at the product level, which means all variants are technically included in a test, but if you are only looking to test one (or a few) variants of the product, you can set the price to be the same as the control price in all test groups for the variants that you do not want to test.&#x20;
+Products get added to a price test at the product level, which means all variants are technically included in a test, but if you are only looking to test one (or a few) variants of the product, you can set the price to be the same as the control price in all test groups for the variants that you do not want to test.
 
 Here's an example of what that would look like if we only wanted to test the "Cream / Small" variant of our Ceramic Dinner Plate product:
 
-<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FjplJFn0r0bRlgTmSlxAq%2FScreenshot%202024-07-08%20at%203.35.14%20PM.png?alt=media&#x26;token=f28f5c6d-b01e-4897-b3d6-95da93fe488a" alt="" data-size="original">
+<img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f3fa40454ab626c7c4a4af1e4678fd0ed0e98883%2FScreenshot%202024-07-08%20at%203.35.14%20PM.png?alt=media" alt="" data-size="original">
 
 </details>
 
@@ -3792,24 +3844,24 @@ Here's an example of what that would look like if we only wanted to test the "Cr
 
 Shopify Bundle products cannot be price tested due to a limitation with Cart Transform Functions. Both bundle products and our price testing feature rely on Shopify's Cart Transform functionality, but **Shopify only allows one cart transform function to run per line item**.
 
-#### What are cart transform functions?
+**What are cart transform functions?**
 
 Cart transform functions are Shopify's mechanism for modifying cart contents, pricing, and line items dynamically. They're essential for creating product bundles and implementing dynamic pricing features.
 
-#### Why does this create a conflict?
+**Why does this create a conflict?**
 
 * **Bundle products** use Cart Transform Functions to group items together and apply bundle pricing
 * **Our price testing** uses cart transform functions to display different prices to different customer segments
 * Since only one transform can run per line item, these two features cannot operate simultaneously
 
-#### Are there any workarounds?
+**Are there any workarounds?**
 
 Currently, there are no reliable workarounds due to this Shopify platform limitation. You'll need to choose between:
 
 * Using bundle products with standard pricing
 * Price testing individual (non-bundle) products
 
-#### Will this limitation be resolved?
+**Will this limitation be resolved?**
 
 This depends on Shopify updating their platform to allow multiple Cart Transform Functions per line item. We'll continue monitoring Shopify's roadmap for any changes to this functionality.
 
@@ -3867,6 +3919,40 @@ Yes! Intelligems works with Recharge and other subscription management services 
 
 </details>
 
+<details>
+
+<summary>Why does Intelligems update my Shopify prices when I start a test?</summary>
+
+Intelligems automatically updates your Shopify prices to the highest price in your test. This ensures accurate pricing across your store and connected channels.
+
+**Technical requirements**
+
+**Shopify Checkout Scripts** can only decrease prices dynamically. Setting the highest price in Shopify allows the script to apply lower test prices at checkout.
+
+**Shopify Functions** can increase prices, but we still set the highest price in Shopify as best practice, which we explain more below. If you would prefer not to increase your prices in Shopify and you are using our Functions integration, please [reach out to our support team](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) as we can enable this advanced setting in your account.
+
+**Multi-channel accuracy**
+
+Your Shopify product data feeds into other channels like Google Shopping, Facebook, Instagram, and Shopify Markets. When these channels display your products, they sync with your Shopify prices.
+
+Setting the highest test price in Shopify prevents customers from seeing a lower price in Google Shopping (or other channels) and then encountering a higher price on your site. This creates a better customer experience and prevents potential conversion issues.
+
+**What this means for you**
+
+When you start a price test, any channel connected to Shopify will display the highest price from your test. This includes:
+
+* Google Shopping feeds
+* Facebook and Instagram shops
+* Shopify Markets
+* Third-party marketplaces
+* Email marketing platforms syncing product data
+
+If you're running tests across multiple channels, factor this into your test strategy to ensure consistent pricing where needed.
+
+Please note that if you are only testing lower prices, your Shopify prices will not be altered when you start a price test.
+
+</details>
+
 ## Multi-Currency
 
 <details>
@@ -3909,7 +3995,7 @@ Duplicating products may be necessary if:
 2. You offer subscriptions and do not have access to the Script Editor app, or you are using an app other than Stay.Ai or Recharge to power your subscriptions.
 3. You are using another third party app on your PDP that is not compatible.
 
-If you need to use duplicate products for one of the above or another reason, please [reach out to Intelligems support](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) for assistance enabling this feature in your account. Once enabled, one duplicate product will be created automatically for every product and every price point that you add to a price test.&#x20;
+If you need to use duplicate products for one of the above or another reason, please [reach out to Intelligems support](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) for assistance enabling this feature in your account. Once enabled, one duplicate product will be created automatically for every product and every price point that you add to a price test.
 
 </details>
 
@@ -3921,7 +4007,7 @@ The duplicate products will be nearly identical to the original products with a 
 
 1. They will have different product and variant IDs. Note that duplicates will have the same SKUs as their originals.
 2. They will be tagged with a ‘price\_test’ tag, as well as a tag with the experiment ID, test group ID and a unique ID to that product.
-3. They will be set to ‘Draft’ status when created.
+3. They will be set to Unlisted status when created.
 
 </details>
 
@@ -3929,7 +4015,7 @@ The duplicate products will be nearly identical to the original products with a 
 
 <summary>Can I delete duplicate products once a price test is over?</summary>
 
-We typically recommend waiting a few days after a test is over before doing this. Customers will not be able to see them unless the duplicate products are still in their cart. Keeping the duplicates live for a few days will allow these edge-case customers to be able to check out, creating a better customer experience.&#x20;
+We typically recommend waiting a few days after a test is over before doing this. Customers will not be able to see them unless the duplicate products are still in their cart. Keeping the duplicates live for a few days will allow these edge-case customers to be able to check out, creating a better customer experience.
 
 When ending a test, you'll be asked if you would like to archive the products now or within 48 hours. Intelligems will automatically archive duplicates after 48 hours.
 
@@ -4004,13 +4090,13 @@ Go to the **Tests** tab in the left menu in the Intelligems app. Click **Create 
 
 Enter a **Name** and **Description** for your test. This information is internal only - add enough detail so you'll remember your goals when reviewing results weeks later. Select **Shipping Test** and then **Create Test**.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fxs6mHvC2P0HURw1UbVRR%2FOct-13-2025%2015-41-07.gif?alt=media&#x26;token=288c8738-a79a-47d4-addd-e29c8babe540" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c690e6f7ed68e894583b0935b66158603894dd0c%2FOct-13-2025%2015-41-07.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 2: Create your test groups
 
 Create 2-5 groups by clicking **+**. Name each group and use the slider to allocate traffic percentage. Click **Next step** when ready.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FUr8A7mZESuYUlzIi2yYy%2Ftest%20groups.gif?alt=media&#x26;token=9f5ffb49-6f33-43c0-a5da-faad984fc30b" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-2739082419b331410d0060bb73416741fc77043b%2Ftest%20groups.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The more groups you have, the longer it will take to get statistically significant results. You’ll need about 300 orders for each group in the test to detect a 10% change in conversion with 90% confidence.
@@ -4020,7 +4106,7 @@ The more groups you have, the longer it will take to get statistically significa
 
 Using the expander for each shipping profile, select the zone(s) where the Intelligems rate will be added. The Intelligems rate will *only* apply to the profiles and zones selected here and will apply to *all* orders that meet the criteria for the selected profiles and zones, subject to other cart value and weight criteria which you'll configure in the next step.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FYpuxta94XsPyPMLVHH2r%2FSelect%20Profile.gif?alt=media&#x26;token=c9205f3c-9c85-4335-801e-a998cd02ed64" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b56e47ce59251032dcb3f06c12f4ea0ab3781d9f%2FSelect%20Profile.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
 Consider carefully which profile(s) you add the Intelligems rate to. If your store's products are spread across multiple profiles, adding the Intelligems rate to a subset of profiles may lead to unexpected behavior at checkout. Learn more about how Shopify combines rates [here.](https://help.shopify.com/en/manual/shipping/setting-up-and-managing-your-shipping/shipping-profiles/combined-shipping-rates)
@@ -4030,13 +4116,13 @@ Consider carefully which profile(s) you add the Intelligems rate to. If your sto
 
 Once you have selected the profiles and zones you want Intelligems rates to apply to, you will select which rates from those zones you want to test. These rates will be hidden during the test and replaced by an Intelligems rate, which will vary by test group.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FKfkyRaVoj08cNoCwe0uV%2FRates%20To%20Remove.gif?alt=media&#x26;token=7bc1eef7-3453-43c4-8992-6027604e0ba4" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-00a412216460c6c7f50f3520801e361aa67801d9%2FRates%20To%20Remove.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 6: Configure the Intelligems rate(s)
 
 In this step, you will configure the rate(s) to be added to the previously selected profiles and zones for each test group.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FEid9l5RmMO0gz0Rnizji%2FSet%20Rates%20Per%20Group.gif?alt=media&#x26;token=bc3466f5-2254-4fba-8bd5-e37124766c8a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9b8cf9d4f799e295c63e0486397de20aec382723%2FSet%20Rates%20Per%20Group.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 For each group, choose the rate type that most closely aligns with what you're *testing* (i.e. what you want to change in each test group). See below for some tips on when to select each rate type and examples of combined rates:
 
@@ -4054,11 +4140,7 @@ For each group, choose the rate type that most closely aligns with what you're *
 
 <figure><img src="https://hs.intelligems.io/hs-fs/hubfs/3-1.png?width=449&#x26;height=115&#x26;name=3-1.png" alt=""><figcaption><p>Example 3: Testing flat rate and a threshold</p></figcaption></figure>
 
-#### **Threshold Only**: You are testing a free shipping threshold but want to keep your existing rates for those that do not reach the threshold&#x20;
-
-{% hint style="danger" %}
-Thresholds in a shipping test are based on the **pre-discount subtotal**. This means that discount codes and automatic discounts applied at checkout may put the shopper below the threshold but still give them free shipping. This is a limitation of Shopify's Third Party Rate Carrier feature.
-{% endhint %}
+#### **Threshold Only**: You are testing a free shipping threshold but want to keep your existing rates for those that do not reach the threshold
 
 <figure><img src="https://hs.intelligems.io/hs-fs/hubfs/4.png?width=449&#x26;height=92&#x26;name=4.png" alt=""><figcaption><p>Example 4: Testing a free threshold with rates under threshold provided by third party app</p></figcaption></figure>
 
@@ -4070,7 +4152,7 @@ Thresholds in a shipping test are based on the **pre-discount subtotal**. This m
 
 <figure><img src="https://hs.intelligems.io/hs-fs/hubfs/7.png?width=445&#x26;height=91&#x26;name=7.png" alt=""><figcaption><p>Example 7: Testing rates and conditions for each weight-based tier</p></figcaption></figure>
 
-#### **Custom**: Have something else you want to test?&#x20;
+#### **Custom**: Have something else you want to test?
 
 [Let us know](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) and we'll see what we can do!
 
@@ -4086,7 +4168,7 @@ Use the drop-downs to review profiles, zones, and test groups.
 Rates displayed at checkout during the test may differ from preview if order products are included in multiple shipping profiles.
 {% endhint %}
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FqHeF9q58jO34UbWm6sZJ%2Fimage.png?alt=media&#x26;token=5d01b2d0-08dc-4ef6-a937-f11458a87220" alt=""><figcaption><p>Review combined rates</p></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-8575b0569773069e59a259c5141537ac5fe2e32d%2Fimage.png?alt=media" alt=""><figcaption><p>Review combined rates</p></figcaption></figure>
 
 ## Step 8: Enable & customize your progress bar if needed
 
@@ -4123,8 +4205,8 @@ Once you have completed all the steps, you'll be able to save your test with the
 
 In the **Preview** tab, you'll find a few options to load the test's preview:
 
-* **Open Full Screen Preview:** this will open your website with the Intelligems widget loaded, so you can easily alternate between test groups to preview each group's experience, as well as do onsite edits if necessary (see [Step 8](#step-8-edit-content-on-your-site-if-needed) for more details). You can also choose which theme you'd like to preview in if you need to be somewhere other than your live theme!&#x20;
-* **Open Mobile Preview:** you'll see a QR code for each test group, so you can load the preview directly on your mobile device.&#x20;
+* **Open Full Screen Preview:** this will open your website with the Intelligems widget loaded, so you can easily alternate between test groups to preview each group's experience, as well as do onsite edits if necessary (see [Step 8](#step-8-edit-content-on-your-site-if-needed) for more details). You can also choose which theme you'd like to preview in if you need to be somewhere other than your live theme!
+* **Open Mobile Preview:** you'll see a QR code for each test group, so you can load the preview directly on your mobile device.
 * **Copy Preview URL:** this will copy the preview URL to your clipboard automatically.
 
 Once the test is saved, you should be able to see Intelligems as a rate carrier in your Shopify shipping settings for each profile and zone you selected in step 2. If you do not see it there automatically, you may need to click 'Add rate' and select it from the carrier options.
@@ -4163,14 +4245,14 @@ Before heading to your site to preview your test, there are a few things you sho
   3. Scroll down to the zone you've chosen to run your shipping test in.
   4. In the zone you'll be testing in, you should see "Intelligems Shipping (Rates priovided by app)" under "Carrier and app rates" like the screenshot below.
 
-     <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FeA1vVZRSyxMyGgWrLL48%2FScreenshot%202024-02-22%20at%2011.44.04%20AM.png?alt=media&#x26;token=4057f81f-f650-4cc9-925f-09709f1f0eb9" alt=""><figcaption></figcaption></figure>
+     <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-3eec3961119132b89fef02a5037e030b4b1883ab%2FScreenshot%202024-02-22%20at%2011.44.04%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
   5. If you do not see 'Intelligems Shipping (Rates provided by app)' listed, please [reach out to Intelligems Support ](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)for help troubleshooting.
 
 ## Previewing your Test:
 
 Once you have confirmed both of those items are true, you can preview the test on your live site. Enter Preview mode by clicking on the eyeball icon next to your test.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FeOup1vjmEJoyeyEF1FZP%2FScreenshot%202024-12-05%20at%2010.13.31%20AM.png?alt=media&#x26;token=9e5408be-2ae7-45ab-8a06-a995f254a0a9" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-8ea64d8459b26f69a8b992af991aeb457d142a2e%2FScreenshot%202024-12-05%20at%2010.13.31%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 This will open your site up in a new window with the Intelligems preview widget enabled. In the preview widget, you'll see:
 
@@ -4179,7 +4261,7 @@ This will open your site up in a new window with the Intelligems preview widget 
 3. A toggle to highlight any replacements in the top right
 4. An edit button in the bottom right: this enables integration mode, where you can edit price selectors and text replacements
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FVuDCUAgvnX9tu5qFDtLG%2Fimage.png?alt=media&#x26;token=0ee7a70f-8beb-4cb3-a16e-ce06228f0f27" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1defc4f1a22458167719b236da5b7fb1f608f1a3%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Step 1: Confirm that Onsite Edits are working correctly
 
@@ -4202,7 +4284,8 @@ Choose one of the test groups, and empty your cart if it is not already. Add a p
   * When using a discount
   * Adding to cart from different locations on the site
   * Adding products from different shipping profiles and zones
-  * Test on multiple devices and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies.
+  * Test on multiple devices and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies
+  * Test using discounts to confirm shipping rates are still as expected
 
 Complete these steps in each test group, being sure to empty your cart when you switch to a new test group! If you notice any issues, or have any questions, please feel free to [reach out to Intelligems support!](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)
 
@@ -4232,11 +4315,11 @@ In the Intelligems app, navigate to the A/B Tests tab and click the green play b
 1. From the Shopify admin console, navigate to Settings → Shipping and Delivery.
 2. Select the relevant shipping profile(s).
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F21SocbISS80poBrghOFj%2FScreenshot%202024-12-05%20at%2011.46.16%E2%80%AFAM.png?alt=media&#x26;token=1505081b-5f0a-4b80-8732-031fffd9e279" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6a026ad03d457fa8cd4139a9d1b7cb410af91d5f%2FScreenshot%202024-12-05%20at%2011.46.16%E2%80%AFAM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 3. Scroll down to the section titled "Shipping zones" and navigate to the region(s) you've chosen to run your shipping test in. Verify that Intelligems is installed as a rate provider. This will look like the below.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FGHxE2KIF9BDVui1qtvBs%2FScreenshot%202024-12-05%20at%2011.48.56%E2%80%AFAM.png?alt=media&#x26;token=314abe07-64ed-4886-ade9-57d4f29b8ec7" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-40c8064053ec9cf6721ed4b38115a526d7a91a73%2FScreenshot%202024-12-05%20at%2011.48.56%E2%80%AFAM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 4: Check Your Site**
 
@@ -4259,7 +4342,7 @@ To end a test, navigate to the "A/B Tests" tab in the menu on the left-hand side
 
 Navigate to "Settings" → "Shipping and Delivery" from within the Shopify admin console and select the shipping profile(s) you'd like to update. Update to match what you'd like to roll out.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F21SocbISS80poBrghOFj%2FScreenshot%202024-12-05%20at%2011.46.16%E2%80%AFAM.png?alt=media&#x26;token=1505081b-5f0a-4b80-8732-031fffd9e279" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6a026ad03d457fa8cd4139a9d1b7cb410af91d5f%2FScreenshot%202024-12-05%20at%2011.46.16%E2%80%AFAM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 3: Update Your Progress Bar, if Applicable
 
@@ -4317,7 +4400,7 @@ You can customize the Intelligems Cart Progress Bar in the Global Styless tab. S
 
 You can use the Intelligems Shipping Progress Bar with your existing Shopify rates using an Intelligems Offer Experience. You'll simply add the code snippet above to your Shopify theme and configure the visual appearance of the progress bar in the Intelligems app. Then in the Intelligems app, create a new free shipping offer, ensure you opt for the offer to be "powered by Shopify", and save your offer.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fg18Uo8SzEkxOeAkgaXcR%2FShipping%20Progress%20Bars.png?alt=media&#x26;token=e25d2a97-b925-430c-9bd9-87d835246629" alt=""><figcaption><p>Edit Shipping Progress Bar</p></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-62da580cf884915a47b500cb930f4b8f908dabc9%2FShipping%20Progress%20Bars.png?alt=media" alt=""><figcaption><p>Edit Shipping Progress Bar</p></figcaption></figure>
 
 
 # Shipping Testing FAQs
@@ -4328,19 +4411,7 @@ Common Questions about Shipping Testing
 
 <summary>Is a shipping threshold based on a pre or post discount subtotal?</summary>
 
-The shipping threshold is based on the pre-discount subtotal.
-
-When Shopify is providing shipping rates, they use a visitor's post-discount subtotal to determine whether that visitor qualifies for free shipping. However, Shopify only provides the pre-discount subtotal to the Third Party Rate Carrier, which is what Intelligems uses to run shipping tests. Because of this, while running a shipping test with Intelligems, we will use a visitor's pre-discount subtotal to determine whether they qualify for free shipping. This is a limitation of Shopify's Third Party Rate Carrier feature.
-
-</details>
-
-<details>
-
-<summary>I have more than one ship-from location! Can I test my shipping prices?</summary>
-
-Shipping from multiple locations can cause issues with shipping tests due to Shopify's Third Party Rate Carrier feature. This feature treats products from different locations as separate carts, leading to multiple shipping charges if a customer buys products from different locations.&#x20;
-
-To determine if this setup will affect your shipping tests, consider whether customers often buy products from different locations simultaneously. If they do, your current setup may not work well for shipping tests. If they don't, your setup should be fine, but be aware that some customers might have questions.
+The shipping threshold is based on the post-discount subtotal. This matches how Shopify provides shipping rates when set up directly within Shopify.&#x20;
 
 </details>
 
@@ -4388,7 +4459,7 @@ That said, if you’re looking to test how shipping impacts conversion or AOV, w
 
 <summary>Can I run a shipping test in a currency other than my store's default currency?</summary>
 
-**Yes, you can run shipping tests in currencies other than your store's default currency. You can update the currency for the shipping rates by using the Rate Currency dropdown at the top of the "Set Rates Per Group" test setup step.**&#x20;
+**Yes, you can run shipping tests in currencies other than your store's default currency. You can update the currency for the shipping rates by using the Rate Currency dropdown at the top of the "Set Rates Per Group" test setup step.**
 
 However, there's an important technical limitation to be aware of:
 
@@ -4411,7 +4482,7 @@ However, there's an important technical limitation to be aware of:
 
 <summary>I duplicated my shipping test. What are the steps I need to take to complete the setup?</summary>
 
-Once you've duplicated a shipping test, you will need to edit the test and select the profiles, zones and rates that you'd like to test. [Here is a video](https://www.loom.com/share/e7dd1ec7b5174eb6ac0fefdf7ea6df75) walking through these steps. Please reach out to support [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you have any questions!&#x20;
+Once you've duplicated a shipping test, you will need to edit the test and select the profiles, zones and rates that you'd like to test. [Here is a video](https://www.loom.com/share/e7dd1ec7b5174eb6ac0fefdf7ea6df75) walking through these steps. Please reach out to support [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you have any questions!
 
 </details>
 
@@ -4461,7 +4532,7 @@ Video: How to create and set up a Split URL Test with Intelligems
 
 Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click 'Create New Test' above the experiments table. Give it a name, and a helpful description. Then select "Content Test" , then "Split URL Test", then "Create Test".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FYgbXTcztGcAZQpU1iDIH%2FStep%201.gif?alt=media&#x26;token=500b6fa2-1aae-40d5-b0b6-5ef6afd60149" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-14655bd151e01d03cfce92763d4d8299a66cd965%2FStep%201.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: Create your test groups**
 
@@ -4469,7 +4540,7 @@ Create a test group for each redirect variation you want to include in the test.
 
 You can add new groups to include in the test by clicking on the ‘+’ button. Name the groups for the experiment and use the slider to allocate what percentage of traffic will go to each group. Click ‘Next Step’ when you are done.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FiM5J7If40luIhZexuvnB%2FStep%202.gif?alt=media&#x26;token=57d11f86-50f0-4de9-a96f-2d184eeb903b" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-773ff2f961fca4dcfb3be8a16e743d7b5ea6f01b%2FStep%202.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 3:** Set up redirects
 
@@ -4484,7 +4555,7 @@ Enter the URL you want to *redirect from* in the Origin URL field. Then, for eac
 
 In the example below, we redirect from <https://deepdish-pizza.myshopify.com/page-a> to <https://deepdish-pizza.myshopify.com/page-b>. When visitors land on <https://deepdish-pizza.myshopify.com/page-a>, those in the Control Group will remain at the original URL, while those in the test group "Redirect Test Group" will be redirected to <https://deepdish-pizza.myshopify.com/page-b>. Create a Redirect for each origin URL you want to redirect from.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FHE3o4T9wIPcRxVsfRPdR%2FScreenshot%202024-12-06%20at%2012.55.02%E2%80%AFPM.png?alt=media&#x26;token=90506dd7-8c1e-42ef-abf7-7d6cfa9bfa1f" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-a8a234632ae2176b141198ab138b06a0faec78a3%2FScreenshot%202024-12-06%20at%2012.54.01%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Advanced Redirect Setup
 
@@ -4492,7 +4563,7 @@ Advanced redirects allow for more flexibility when defining the criteria for a q
 
 Start by choosing a matching option and entering a value to match against.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FkkByCvbn7ljjbsjNgQcO%2Fstep%203.gif?alt=media&#x26;token=7f9ef0c3-45b4-4155-84ac-47ee5e489655" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b93925d6103458f66ea8bf74ca06330693b5d454%2Fstep%203.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 Here are some examples of different matching options with values:
 
@@ -4522,7 +4593,7 @@ After selecting a matching option and entering a condition, select which type of
 
 If you choose `Replace Full URL`, you'll need to enter a full valid URL for each test group redirect. If you choose `Replace Matching Text`, you'll need to enter valid find and replace values.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FYbxeLPrHiwey9HfSKqxx%2Fstep%204.gif?alt=media&#x26;token=b26da8de-6621-432a-b885-5d8b2f4d6efe" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-067e3387bd768c44c3f357492c0fb2ef22fc33a2%2Fstep%204.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Additional Features
 
@@ -4536,13 +4607,13 @@ An example of when you'd want to select `Redirect Every Time`: say you're testin
 
 You can test different URLs in the Redirect Checker to see where a user in each test group would get redirected.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FeH3gwObbrJnD8qEj1Imj%2Fstep%205.gif?alt=media&#x26;token=46567608-d70e-44b4-95a9-3b166b9cbe46" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-559b12e9f1b52e798b3b264f17089e24316dc328%2Fstep%205.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### Query Parameters
 
 You can add or modify query parameters for each redirect. Query parameters will *not* be evaluated when deciding if an origin URL qualifies for a redirect. Only the domain and pathname will be evaluated.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fe3jxy07TwzzkBM7ngX6j%2Fstep%206.gif?alt=media&#x26;token=e25fe30e-c381-41e7-8cc0-f871b0d35a0f" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f4c2b9c0229cff5807a9b2bf7d02c27fca9672a4%2Fstep%206.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Note: Query parameters from the origin URL *will be persisted* to the redirect URL even if they are not added in Intelligems. Use Intelligems query parameters to add new values or modify existing values.
@@ -4552,7 +4623,23 @@ Note: Query parameters from the origin URL *will be persisted* to the redirect U
 
 Intelligems allows you to test redirects between subdomains. All subdomains used in a redirect test must be registered as a subdomain on your primary domain.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fb2nY2OGIdiaXUm47fP1E%2Fstep%207.gif?alt=media&#x26;token=37fb03ed-5327-417d-92e8-2d5b195c9750" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9fb2ca4b0d597652a58b80a455aed49645e2fdee%2Fstep%207.gif?alt=media" alt=""><figcaption></figcaption></figure>
+
+#### Multiple Domain Support
+
+If your brand operates multiple domains under one Shopify account (e.g., dogsuppy.com and dogsuppy.co.uk), you can register all of them in your Intelligems Settings. This allows you to set up Split URL tests for each domain without manually switching your primary domain.
+
+**Example setup for multi-domain brands:**
+
+| Origin URL             | Redirect URL               | Supported? |
+| ---------------------- | -------------------------- | ---------- |
+| dogsuppy.com/landing   | try.dogsuppy.com/landing   | ✅ Yes      |
+| dogsuppy.co.uk/landing | try.dogsuppy.co.uk/landing | ✅ Yes      |
+| dogsuppy.com/landing   | dogsuppy.co.uk/landing     | ❌ No       |
+
+**Important:** Cross-domain redirects (redirecting visitors from one top-level domain to a different top-level domain) are not supported. Each domain's redirects must stay within that domain or its subdomains.
+
+To register additional domains, go to **Settings → Domain Settings** in the Intelligems app.
 
 ## **Step 4: Set up targeting if needed**
 
@@ -4577,9 +4664,9 @@ You can learn more about targeting [here](https://docs.intelligems.io/content-te
 
 Finally, select whether analytics should by default consider only orders containing certain products you want to test (for example something related to a particular PDP), or orders containing any products in your shop.\
 \
-You can always change this later after the test has started by changing the option in your Analytics filters.&#x20;
+You can always change this later after the test has started by changing the option in your Analytics filters.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FlezSQlH6wjhXj6xsl64f%2Fstep%208.gif?alt=media&#x26;token=cfaeadfd-45c0-4f4b-a4d4-aae81de8910d" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6d8a8153d12df819de248b2eceab169cc920d521%2Fstep%208.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 
 # How to Set Up an Onsite Edits Test
@@ -4594,7 +4681,7 @@ How to use the onsite editor
 
 Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click 'Create New Test' above the experiments table. Give it a name, and a specific description of what you're testing. Select "Content Test", then "Onsite Edits", then "Create Test".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FjlKNMeJVW6ZFrXO5JGSD%2FStep%201.gif?alt=media&#x26;token=8f81f125-6a7c-4e8e-9f74-9a6071e981ce" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-8cfe55d79d88a166ba4872991e164b34ed9332e6%2FStep%201.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: Create your test groups**
 
@@ -4602,7 +4689,7 @@ Create a test group for each variation you want to include in the test. Fill in 
 
 You can add new groups to include in the test by clicking on the ‘+’ button. Name the groups for the experiment and use the slider to allocate what percentage of traffic will go to each group. Click ‘Continue’ when you are done.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F2SCIJvjUTevR5gQlq2Rn%2FStep%202%20.gif?alt=media&#x26;token=90e5c6b4-c971-4b05-b6bb-adb4821c48c8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-eaf623d22e76dad8cb3e9d3dac29cf6a0c703c34%2FStep%202%20.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 3: Set up targeting if needed**
 
@@ -4633,7 +4720,7 @@ Finally, select whether analytics should by default consider only orders contain
 \
 You can always change this later after the test has started by changing the option in your Analytics filters.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F9XiQdweqkXxbF6C4ni3w%2FStep%203.gif?alt=media&#x26;token=ab1046eb-ca39-4814-8715-0204083547d8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-45c617f544a5a3fefa3f2162cd82df11bef56e28%2FStep%203.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 
 # How to Set Up a Template Test
@@ -4656,7 +4743,7 @@ All templates for a Template Test must be in a live theme.
 
 Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click 'Create New Test' above the experiments table. Select "Content Test" , then "Template Test", then "Create Test".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FlZNT5plPG99jO0SAo3j4%2FStep%201.gif?alt=media&#x26;token=05c4376a-9b24-4477-9fd3-7b5953c266a7" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5bf931c709fedb6bc8ddc670d392f5caecc58980%2FStep%201.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: Create your test groups**
 
@@ -4664,13 +4751,13 @@ Create a test group for each template variation you want to include in the test.
 
 You can add new groups to include in the test by clicking on the ‘+’ button. Name the groups for the experiment and use the slider to allocate what percentage of traffic will go to each group. Click ‘Continue’ when you are done.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FxTzFqNK8tip04GoGiutp%2FTest%20Groups.gif?alt=media&#x26;token=b2473bd7-b6c2-4989-af4c-c8a7720e2958" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-e60ceeed21b77b8fccffbfc784190adbec485cd9%2FTest%20Groups.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 3:** Assign a template for each test group
 
 Select a template for each test group. You can choose an existing template or duplicate the template selected for the control group by selecting `Duplicate Control:`
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F5UhzXAaz62jV68XWWNNU%2FStep%202.gif?alt=media&#x26;token=7ef4c316-337c-40ff-b88c-a48cff7d3343" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c83d5b9644709e0ae444f6b04308b3ca452d5df8%2FStep%202.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Please note that only templates chosen for your test groups will be tested. For example, if you choose `product-template-a` (control group) vs. `product-template-b`, only products assigned to the template in the control group will be affected by the test.
@@ -4687,7 +4774,7 @@ You can hover over each test group screenshot to view the following options:
 
 If you have made changes to a selected template in Shopify, you can use the "refresh" button next to the test group name to refresh the screenshot shown.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FbRxOsREceLtgr5rKXbfy%2FStep%204.gif?alt=media&#x26;token=9f0efa64-5223-4bd6-9a56-58a5a091d5b8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-dc54f1c54560833b5c66de9b8d0d9b1cb2e4b6fa%2FStep%204.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 4: Set up targeting if needed**
 
@@ -4710,7 +4797,7 @@ Finally, select whether analytics should by default consider only orders contain
 \
 You can always change this later after the test has started by changing the option in your Analytics filters.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fvye4zpgbBQQIDgwhRGo6%2FGoals.gif?alt=media&#x26;token=d4af6661-9bba-4582-84ad-828c5e6070eb" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-30759deb494b8ba43c416c776fdac30a0f3d3a2c%2FGoals.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 
 # How to Set Up a Theme Test
@@ -4723,7 +4810,7 @@ Theme testing allows you to split test Shopify themes to determine which is the 
 
 Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click 'Create New Test' above the experiments table. Select "Content Test" , then "Theme Test", then "Create Test".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FSZ9uKgcNFivr3vDzqJNs%2FStep%201.gif?alt=media&#x26;token=2bfedc04-7464-492d-9af8-1d3abb5ea566" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-6e622c44b830e3e55cfdb81f36864a390c643427%2FStep%201.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: Create your test groups**
 
@@ -4731,13 +4818,13 @@ Create a test group for each theme you want to include in the test. Fill in the 
 
 You can add new groups to include in the test by clicking on the ‘+’ button. Name the groups for the experiment and use the slider to allocate what percentage of traffic will go to each group. Click ‘Continue’ when you are done.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FxTzFqNK8tip04GoGiutp%2FTest%20Groups.gif?alt=media&#x26;token=b2473bd7-b6c2-4989-af4c-c8a7720e2958" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-e60ceeed21b77b8fccffbfc784190adbec485cd9%2FTest%20Groups.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 3:** Select the themes you want to test
 
 Select the theme you'd like to test for each test group.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F9yoAUYXEu3cu3VzEWyK2%2FStep%202.gif?alt=media&#x26;token=ae558c90-2759-4cd5-a987-bc30f48c7159" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-bc3217f51a2029e0eeaadb320e3b97542a17a154%2FStep%202.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 Make sure the [Intelligems script is installed](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) in all themes that you're testing! This is how we will hide the preview bar at the bottom of the theme. If you have checkout.liquid, ensure you have installed the Intelligems script on this page as well, so that the preview bar is hidden at checkout (if you do not have checkout.liquid, the bar will be hidden automatically).
@@ -4768,7 +4855,7 @@ Finally, select whether analytics should by default consider only orders contain
 \
 You can always change this later after the test has started by changing the option in your Analytics filters.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fvye4zpgbBQQIDgwhRGo6%2FGoals.gif?alt=media&#x26;token=d4af6661-9bba-4582-84ad-828c5e6070eb" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-30759deb494b8ba43c416c776fdac30a0f3d3a2c%2FGoals.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Previewing Themes through Shopify Admin
 
@@ -4797,13 +4884,13 @@ Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelli
 
 Fill in the Name and Description for the experiment you are creating. This information is all internal - the more detail you include here the better! Tests can be live for several weeks, and your future self will thank you for including the details here. Select 'Content Test", then "Onsite Edits", and then "Create Test".
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FeFLfoxkPKPoQQUaS73QN%2FAPI-%20Create%20New%20Test.gif?alt=media&#x26;token=46779aa2-9078-4c02-ae67-11e4339e3003" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f7de4f4d4a5fb1fd5c99bd00db1ae83abcfdb443%2FAPI-%20Create%20New%20Test.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Step 2: Create your test groups**
 
 Create between two and five groups to include in the test by clicking on the ‘+’ button. Name the groups for the experiment and use the slider to allocate what percentage of traffic will go to each group. When you are done adding groups, click "Next step" in the top right.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FZbyxqCX2H6NgZ6ycHPCs%2FCreate%20Test%20Groups.gif?alt=media&#x26;token=c60b45a8-6749-4aa2-9f03-08198ccd8743" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b37b8dbcd56e53048fbd0b39abb406ff684a5acb%2FCreate%20Test%20Groups.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The more groups you have, the longer it will take to get statistically significant results. You’ll need about 300 orders for each group in the test to detect a 10% change in conversion with 90% confidence.
@@ -4832,13 +4919,13 @@ You can learn more about targeting [here](https://docs.intelligems.io/content-te
 
 Finally, select whether analytics should by default consider only orders containing certain products you want to test (for example something related to a particular PDP), or orders containing any products in your shop. You can change this later after the test has started by changing the option in your Analytics filters. Go ahead and save the test, and move on to step 6.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FXPBl2k1zjZ820OMwJCYq%2Fimage.png?alt=media&#x26;token=28fcf285-d0e2-4e5c-b636-92448f361687" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-916f96ab2473a85ca5179def3563b28c0ee4a1af%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 6: Get relevant IDs
 
 Custom content tests require you to know the experiment ID and test group IDs so that you can branch your design or logic accordingly. You can get this information by clicking the "Show Info" button in the more menu:
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F1peMjMRgXmTlRzWfmCGK%2FGet%20Relevant%20IDs.gif?alt=media&#x26;token=aa8600b0-5179-440e-9f11-4d390f0ff861" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-bf71e1d6c19fb211f6f3860be91973d1fa4f45b2%2FGet%20Relevant%20IDs.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Step 7: Use the Intelligems window object API to set up your custom test
 
@@ -4859,7 +4946,7 @@ Once your content test is setup, you'll need to QA your site to make sure everyt
 
 Once you have confirmed all of the above, you can preview the test on your live site. Enter Preview mode by clicking the `...` next to your test and select `Preview`
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FRvF5EuxjerzLdavTX0c6%2FScreenshot%202023-08-30%20at%2010.19.27%20AM.png?alt=media&#x26;token=0248cfa8-efcd-41d4-98cb-af2748d1bdac" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5592dfbbfebbec7b54aad766bb3a8fe672c06f6f%2FScreenshot%202023-08-30%20at%2010.19.27%20AM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 This will open your site up in a new window with the Intelligems preview widget enabled. In the preview widget, you'll see:
 
@@ -4868,7 +4955,7 @@ This will open your site up in a new window with the Intelligems preview widget 
 3. A toggle to highlight any replacements in the top right
 4. An edit button in the bottom right; this enables integration mode, where you can edit any replacements
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fa76ZRgerGtWVK3SkWr51%2Fimage.png?alt=media&#x26;token=495d4e1f-0418-4351-8a37-9b8b821a8ae9" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5a4a1f2cd8a39ab512cb2dfeecfe33154d385823%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 Now that you are on your site, use the preview widget to toggle between your test groups to make sure the correct content is showing on your site for each test group. What you should check depends on what type of content test you are previewing. For a few areas you should check for each test type, see below.
 
@@ -4876,12 +4963,32 @@ Now that you are on your site, use the preview widget to toggle between your tes
 
 * [ ] When you switch test groups in the dropdown, does the theme update to display the correct theme? You can check this based on differences that you know of in the test theme, or by searching the source code for the current theme name. You should also see a message similar to the below at the bottom of the preview widget for any themes that are not currently live.
 
-  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FR9sabTtuEFhVU5QXI8BO%2FScreenshot%202023-10-20%20at%203.38.01%20PM.png?alt=media&#x26;token=efe77db0-385d-4a88-98e9-505a535dee3d" alt=""><figcaption></figcaption></figure>
+  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-db71becacc192f075f3615a2501c2a3a7d2c2b68%2FScreenshot%202023-10-20%20at%203.38.01%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 * [ ] Does a Shopify preview bar show at the bottom of your window when you are in a test theme? This shouldn't happen; confirm that the Intelligems JavaScript is in all themes included in the test in both the theme.liquid and the checkout.liquid files.
+* [ ] **Key Steps:**
+
+  1. Enter preview mode in the control group
+  2. Open JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+  3. Type `Shopify.theme` to see current theme details
+  4. Switch groups and check that theme changes
+
+  **What to verify:** Control shows your live theme name and version, variant shows the different test theme name and version.
+
+{% embed url="<https://www.loom.com/share/2d8b66808aa64e038e76dd60d5f49bcb>" %}
 
 #### Theme Template Tests
 
 * [ ] When you switch test groups in the dropdown, are the correct templates used where they are being tested? You can check this based on differences that you know of in the templates.
+* [ ] **Key Steps:**
+
+  1. Start in preview mode on the control group
+  2. Open Chrome Developer Tools → JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+  3. Type `_template` to see the current template name
+  4. Switch groups and verify the template name changes
+
+  **What to verify:** Control shows base template (e.g., `product`), variant shows template with suffix (e.g., `product.123456`)
+
+{% embed url="<https://www.loom.com/share/a0252eca479a4ea3b092089e15343e45>" %}
 
 #### Page Redirect Tests
 
@@ -4899,7 +5006,7 @@ Now that you are on your site, use the preview widget to toggle between your tes
 
 * [ ] Do you have Page Targeting set up on your test? If so, if you are on a URL that does not match your targeting, you'll see a message like the below in the preview widget. This will confirm that your page targeting is working as expected since you are not meeting any of the conditions.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FcQzDkkvCsYyBYWOUXzeZ%2Fimage.png?alt=media&#x26;token=f6af2709-6dd6-42e5-8c75-662832eaacb7" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f4330b499b6e779677e9ccd56f5150857add2f3%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 * [ ] You can further confirm that Page Targeting is working by going to one of the URLs that does match your targeting. Once you do so, you'll see the widget will no longer show a message on the bottom about being excluded.
 
@@ -4961,7 +5068,7 @@ If you still notice any flashing after making that change, please reach out to o
 
 Unfortunately we cannot A/B test the One Page vs Three Page checkout currently - this option has to be either on or off, so there isn't a way for us to turn it on for some visitors and not others. This is a Shopify limitation.
 
-We can test other components on the checkout page if you are on Shopify Plus. You can test components on that page using our Checkout Experiences feature, which you can read more about [here](https://docs.intelligems.io/checkout/testing-checkout-experiences). This feature is limited to Shopify Plus because it uses Shopify's Checkout Blocks feature, which is only available for brands on Shopify Plus.&#x20;
+We can test other components on the checkout page if you are on Shopify Plus. You can test components on that page using our Checkout Experiences feature, which you can read more about [here](https://docs.intelligems.io/checkout/testing-checkout-experiences). This feature is limited to Shopify Plus because it uses Shopify's Checkout Blocks feature, which is only available for brands on Shopify Plus.
 
 </details>
 
@@ -5014,6 +5121,19 @@ If you'd prefer to change this setting, please see our help guide [here](https:/
 
 </details>
 
+<details>
+
+<summary>Can I run Split URL tests on multiple domains?</summary>
+
+Yes! If your brand operates multiple domains under one Shopify account, you can register all of them in **Settings → Domain Settings**. This allows you to:
+
+* Set up Split URL tests for any registered domain
+* Use subdomain redirects for each domain (e.g., shop.yourbrand.com → landing.yourbrand.com)
+
+**Important limitation:** Cross-domain redirects are not supported. You cannot redirect visitors from one top-level domain to another (e.g., yourbrand.com → yourbrand.co.uk). Redirects must stay within the same domain or its subdomains.
+
+</details>
+
 ## Onsite Edits Tests
 
 <details>
@@ -5038,7 +5158,7 @@ Yes! This can be done using an [HTML Onsite Edit](https://docs.intelligems.io/ge
 
 Yes!
 
-### **Overview**
+**Overview**
 
 Testing pop-ups is a common way to evaluate the impact of on-site messaging, promotions, or lead capture strategies without making permanent code changes.
 
@@ -5046,11 +5166,11 @@ With Intelligems, you can run A/B or multivariate tests on pop-ups to measure th
 
 Pop-ups are often powered by third-party apps (e.g. Klaviyo, Justuno, Alia, Privy, Postscript etc.), or sometimes implemented natively in a Shopify theme. Intelligems can generally integrate with either approach by letting you toggle visibility, edit content, or inject custom logic on who sees the pop-up.
 
-### Test Setup Types
+**Test Setup Types**
 
 Pop-ups can be tested using multiple Intelligems test setups. The right choice depends on how the pop-up is built and what aspect you want to test:
 
-#### 1. Onsite Edits Test - CSS or Javascript **Injection**
+**1. Onsite Edits Test - CSS or Javascript Injection**
 
 * **Best for:**
   * Turning a third-party app’s pop-up hide/show.
@@ -5083,7 +5203,7 @@ Pop-ups can be tested using multiple Intelligems test setups. The right choice d
 
 If you would like us to take a deeper look at your set up, please reach out to our support team for help!
 
-#### 2. **Split URL Test**
+**2. Split URL Test**
 
 * **Best for:**
   * Comparing two entirely different pop-up designs built in Shopify or a page builder (e.g. Replo, Shogun).
@@ -5093,7 +5213,7 @@ If you would like us to take a deeper look at your set up, please reach out to o
 
 ***
 
-### Setup
+**Setup**
 
 To test pop-ups with Intelligems, you’ll generally follow one of these approaches:
 
@@ -5108,9 +5228,9 @@ To test pop-ups with Intelligems, you’ll generally follow one of these approac
    * Change when or how the pop-up fires (e.g. on scroll, after X seconds, exit intent).
    * Compare whether different timing increases conversions without disrupting browsing.
 
-### Use Custom Events to Filter Results
+**Use Custom Events to Filter Results**
 
-#### Tracking Engagement with Custom Events
+**Tracking Engagement with Custom Events**
 
 For deeper analysis, you can use [**custom events**](https://docs.intelligems.io/analytics/custom-events) to track whether a visitor actually engaged with a pop-up. This allows you to segment and filter results in reporting (e.g., conversion rates among users who saw or clicked the pop-up vs. those who did not).
 
@@ -5118,13 +5238,13 @@ For deeper analysis, you can use [**custom events**](https://docs.intelligems.io
 
 By tagging these events, you can evaluate whether the pop-up itself is influencing conversion behavior — not just whether the variant group had higher performance. This makes results easier to interpret and helps confirm if engagement with the pop-up is the driver of uplift.
 
-### Best Practices
+**Best Practices**
 
 * **Isolate one variable at a time**: Test *either* the offer, design, or timing, but not all at once, to avoid confounding results.
 * **Connect to downstream KPIs**: Go beyond email sign-ups—measure profit per visitor by adding your COGS in Intelligems to confirm the pop-up improves business results.
 * **Consider device experience**: Pop-ups can behave differently on mobile vs. desktop. Always QA on both.
 
-### Limitations
+**Limitations**
 
 * **Third-party app restrictions**: Some pop-up apps don’t expose all timing/triggering logic to external scripts. In these cases, Intelligems can usually control *visibility* or *injection*, but not the app’s internal scheduling.
 * **Theme-level vs. app-level**: If the pop-up is baked into the theme code, edits must be structured as content tests. If powered by an app, you may need to coordinate app settings with Intelligems settings and targeting.
@@ -5162,7 +5282,7 @@ Shopify doesn't allow you to switch homepage templates. The winning template wil
 
 An easy way to do this is within the theme editor. Find the test template and copy its contents into the default template (usually `index.json`).
 
-![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FWU5KFmuLEdiuZNY2HVjr%2Fimage%20\(13\).png?alt=media\&token=16677177-3642-413c-8bd1-1999c2188396)
+![](https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0d56f6bf7fdff603a65918567a58a7342ff236bd%2Fimage%20\(13\).png?alt=media)
 
 </details>
 
@@ -5189,27 +5309,27 @@ Theme tests are relatively high performing, however, there may be a performance 
 </details>
 
 
-# Getting Started with Experiences
+# Getting Started with Personalizations
 
-Experiences allow you to custom tailor every visitor’s shopping experience with targeted offers, layouts, branding and copy - saving time and maximizing profits.
+Personalizations allow you to custom tailor every visitor’s shopping experience with targeted offers, layouts, branding and copy - saving time and maximizing profits.
 
 {% embed url="<https://www.youtube.com/watch?v=HVfyqao3XRg>" %}
 
-## What are Experiences?
+## What are Personalizations?
 
-An Experience shows one or more site modifications to all visitors or a targeted audience, temporarily or permanently.
+A Personalization shows one or more site modifications to all visitors or a targeted audience, temporarily or permanently.
 
-With a broad range of Modifications including URL redirects, text changes, offers and price changes, layout changes, javascript injections, Global Style components like progress bar, quantity buttons, slideouts, and more, an Experience can be used to completely overhaul your site or simply fine tune text and layouts.
+With a broad range of Modifications including URL redirects, text changes, offers and price changes, layout changes, javascript injections, Global Style components like progress bar, quantity buttons, slideouts, and more, a Personalization can be used to completely overhaul your site or simply fine tune text and layouts.
 
 {% hint style="info" %}
-**How do Experiences relate to Personalizations?** Intelligems Personalizations have been upgraded and renamed to Experiences. Experiences offer the same discounts, targeting, and testing features of Campaigns, but go above and beyond allowing you to serve additional site changes to your visitors, target with more sophistication, add more flexible components, better analyze metrics, and more.
+**How do Personalizations relate to Experiences?** Experiences have been renamed to Personalizations. Nothing else changed.&#x20;
 {% endhint %}
 
-## What can you achieve with Experiences?
+## What can you achieve with Personalizations?
 
-While Intelligems’ testing tools allow you to pit experiences against each other to find which ones produce the best results, Experiences allow you to act on those findings and show the right experience to the right shop visitors quickly, all without writing code.
+While Intelligems’ testing tools allow you to pit experiences against each other to find which ones produce the best results, Personalizations allow you to act on those findings and show the right experience to the right shop visitors quickly, all without writing code.
 
-With Experiences you can:
+With Personalizations you can:
 
 * **Deploy, test, and target offers:** Offer codeless promotions, volume discounts, and free gifts, displaying popups, progress bars, quantity buttons, and other components. For example, you can offer a discount and modified copy to all returning visitors. To make informed decisions, you can also test offers against each other to determine which ones work best for a target audience before deploying them.
 * **Quickly ship codeless edits**: Immediately go live with changes without Shopify limitations or developer delays. For example, you could deploy a warning about delayed international shipping to everyone outside your country.
@@ -5217,32 +5337,32 @@ With Experiences you can:
 * **Personalize product discovery:** Boost conversions by showing different collections for certain customers. For example, redirect athletes to a version of your home page that highlights sports-related products in your main collection.
 * **Overhaul your site’s look and feel:** Show a completely different Shopify theme with altered navigation for users in a different country.
 * **Lower your prices:** Show lower prices for one or more products during a special event or when overstocked.
-* **(Coming soon) Take action on your test results:** Quickly roll out winning variants to all visitors or specific customer segments.
+* **Take action on your test results:** Quickly roll out winning variants to all visitors or specific customer segments.
 
-## How do you make and use an Experience?
+## How do you make and use a Personalization?
 
-Before using Experiences and most other Intelligems features, you'll need to add the Intelligems script to your theme; [here is our help guide](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme). Once you've done that:
+Before using Personalizations and most other Intelligems features, you'll need to add the Intelligems script to your theme; [here is our help guide](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme). Once you've done that:
 
-* **Step 1 - Initialize:** There are three ways to create an Experiences.
-  * Option 1: Go to the Experiences > Site Content > Select which type of Content change(s) you want to create
-  * Option 2: Go to Experiences > Offers > Select which type of Offer(s) you want to create
-  * Option 3: Go to one of your tests and use the “Roll out” button to Roll a winning test group into a Experience. This will carry out many of the steps below automatically, saving you time.
-* **Step 2 - Modifications:** Add one or more modifications based on your goal, whether it’s a simple text change, adding a component like progress bar, quantity button, or slideout,  or as complicated as a rebrand with interactive javascript elements. Click [here](https://docs.intelligems.io/personalizations/personalization-modifications) to read more about Modifications.
-* **Step 3 - Targeting:** Decide who should see the Experience, if not all visitors to your site. Intelligems allows you to limit visitors to those that match robust rules, those coming in via a special link, and those shopping in a certain currency. You can also limit which site pages the modifications should appear on, if not all. Click [here](https://docs.intelligems.io/personalizations/targeting-personalizations) to read more about Targeting.
+* **Step 1 - Initialize:** There are three ways to create a Personalization.
+  * Option 1: Go to the Personalizations > Site Content > Select which type of Content change(s) you want to create
+  * Option 2: Go to Personalizations > Offers > Select which type of Offer(s) you want to create
+  * Option 3: Go to one of your tests and use the “Roll out” button to Roll a winning test group into a Personalization. This will carry out many of the steps below automatically, saving you time.
+* **Step 2 - Modifications:** Add one or more modifications based on your goal, whether it’s a simple text change, adding a component like progress bar, quantity button, or slideout, or as complicated as a rebrand with interactive javascript elements. Click [here](https://docs.intelligems.io/personalizations/personalization-modifications) to read more about Modifications.
+* **Step 3 - Targeting:** Decide who should see the Personalization, if not all visitors to your site. Intelligems allows you to limit visitors to those that match robust rules, those coming in via a special link, and those shopping in a certain currency. You can also limit which site pages the modifications should appear on, if not all. Click [here](https://docs.intelligems.io/personalizations/targeting-personalizations) to read more about Targeting.
 * **Step 4 - Preview:** Make sure everything looks and works as you’d expect before activating it. Click [here](https://docs.intelligems.io/personalizations/previewing-personalizations) to read more about Previewing.
 * **Step 5 - Activate it:** Once you’re ready, activate it. You can pause and resume as many times as you need, which is useful for recurring promotions.
 
 You can also:
 
-* **Track Stats:** Check how many visitors saw each Experience and which ones delivered the most orders and revenue.
-* **Update:** Edit a Experience at any time to change its modifications, targeting, and more.
-* **Combine:** Stack Experiences, allowing a visitor to be presented with more than one Experience at the same time. For example, a visitor can be exposed to a “New visitors discount” Experience while also seeing the homepage layout tweaks of the “Mobile users Optimization” Experience.
-* **Duplicate:** When creating multiple similar Experiences, you can save time by duplicating an existing one and editing it rather than starting from scratch. This is also a handy way to preview changes you want to make to an active Experience without needing to turn it off.
-* **Launch Offers:** One type of modification within an Experience is an "Offer". An example of this may be a discount or free gift with purchase. Intelligems allows you to launch Offers as an Experience, outside of a test.&#x20;
-* **Launch Checkout Blocks:** With Checkout, you can launch content blocks on your Checkout page for Shopify Plus customers. Trust badges, social proof, shipping messages, you name it. More blocks coming soon.&#x20;
+* **Track Stats:** Check how many visitors saw each Personalization and which ones delivered the most orders and revenue.
+* **Update:** Edit a Personalization at any time to change its modifications, targeting, and more.
+* **Combine:** Stack Personalizations, allowing a visitor to be presented with more than one Personalization at the same time. For example, a visitor can be exposed to a “New visitors discount” Personalization while also seeing the homepage layout tweaks of the “Mobile users Optimization” Personalization.
+* **Duplicate:** When creating multiple similar Personalizations, you can save time by duplicating an existing one and editing it rather than starting from scratch. This is also a handy way to preview changes you want to make to an active Personalization without needing to turn it off.
+* **Launch Offers:** One type of modification within a Personalization is an "Offer". An example of this may be a discount or free gift with purchase. Intelligems allows you to launch Offers as a Personalization, outside of a test.
+* **Launch Checkout Blocks:** With Checkout, you can launch content blocks on your Checkout page for Shopify Plus customers. Trust badges, social proof, shipping messages, product upsell, you name it. More blocks coming soon.
 
 {% hint style="info" %}
-**Pricing:** While you can create Experiences - Site Content and Offers - on any Intelligems plan, you'll need to be on Plus or Blue to test Offers.
+**Pricing:** You can create and test Site Content and Offer Personalizations on Core, Plus, and Blue plans. To create and test Checkout Personalizations, you need to be on Core, Plus, or Blue plans *and* on a Shopify Plus plan. &#x20;
 {% endhint %}
 
 ## Next Steps
@@ -5261,8 +5381,8 @@ See the guides below to delve deeper into Personalizations:
 [previewing-personalizations](https://docs.intelligems.io/personalizations/previewing-personalizations)
 {% endcontent-ref %}
 
-{% content-ref url="../offer-experiences/testing-offer-personalizations" %}
-[testing-offer-personalizations](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations)
+{% content-ref url="../offer-personalizations/testing-offer-personalizations" %}
+[testing-offer-personalizations](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations)
 {% endcontent-ref %}
 
 {% content-ref url="personalizations-faqs" %}
@@ -5270,11 +5390,11 @@ See the guides below to delve deeper into Personalizations:
 {% endcontent-ref %}
 
 
-# Experience Modifications
+# Personalization Modifications
 
-This article walks you through the first step of setting up an Experience - choosing the Modifications that determine what changes will be applied to your site.
+This article walks you through the first step of setting up a Personlization - choosing the Modifications that determine what changes will be applied to your site.
 
-When setting up a Experience, you can add one or more modifications based on your goal - whether it’s as simple as a text change or as complicated as a rebrand with interactive javascript elements.
+When setting up a Personalization, you can add one or more modifications based on your goal - whether it’s as simple as a text change or as complicated as a rebrand with interactive javascript elements.
 
 There are 3 classes of modifications:
 
@@ -5282,7 +5402,7 @@ There are 3 classes of modifications:
 * **Price changes -** used to update the prices on one or more products directly
 * **Offers -** these deliver discounts and other promotions that appear on the PDP, in the cart, and at checkout without the need for coupon codes.
 
-You can combine several modifications in one Experience, subject to limitations.
+You can combine several modifications in one Personalization, subject to limitations.
 
 You can also limit which site pages your changes apply to by using [Page Targeting](https://docs.intelligems.io/targeting-personalizations#page-targeting).
 
@@ -5290,17 +5410,17 @@ You can also limit which site pages your changes apply to by using [Page Targeti
 
 URL Redirects allow you to set rules that re-route visitors from one page to another permanently or on a one time basis. This is useful in a variety of scenarios, and especially for showing a different version of a PDP to visitors coming from a specific channel or campaign.
 
-**When to use Redirects:** URL redirects should be limited to a particular audience. When an Experience is aimed at all visitors rather than a specific segment, it’s best practice to just update all of your links directly in Shopify. This ensures better performance and keeps your baseline site set up the way you want it.
+**When to use Redirects:** URL redirects should be limited to a particular audience. When a Personalization is aimed at all visitors rather than a specific segment, it’s best practice to just update all of your links directly in Shopify. This ensures better performance and keeps your baseline site set up the way you want it.
 
 You can read more about URL Redirects [here](https://docs.intelligems.io/content-testing/content-testing-getting-started/how-to-set-up-a-split-url-test).
 
 {% hint style="danger" %}
-**Mixing URL Redirects with other Modifications:** Any modifications mixed with URL Redirects in the same Experience will not take effect until visitors hit the redirect origin page. For example, if your Experience contains a redirect from page A to page B, and also contains CSS change and Content Edit modifications, the CSS and Content Edits will not be visible until a visitor has visited page A. Once they have, all modifications will take effect and continue taking effect on all pages where they are applicable. To get around this, you can create two Experiences with identical audiences - one with the URL Redirect and the other with remaining modifications.
+**Mixing URL Redirects with other Modifications:** Any modifications mixed with URL Redirects in the same Personalization will not take effect until visitors hit the redirect origin page. For example, if your Personalization contains a redirect from page A to page B, and also contains CSS change and Content Edit modifications, the CSS and Content Edits will not be visible until a visitor has visited page A. Once they have, all modifications will take effect and continue taking effect on all pages where they are applicable. To get around this, you can create two Personalizations with identical audiences - one with the URL Redirect and the other with remaining modifications.
 {% endhint %}
 
 ## **Content Edits**
 
-Content Edits allow you spot edit, hide and rearrange text and page elements on various page of your site. Content Edits are made by clicking elements directly in your site using our visual builder. To make one or more content edits:
+Content edits allow you to modify text, images, and other page elements. Content Edits are made by clicking elements directly in your site using our visual builder. To make one or more content edits:
 
 * Add the Content Edits modification
 * Click to enter the visual editor in a new tab. Once you're there, click the icons on the top left to select text, images, and other page elements that you wish to change.
@@ -5316,7 +5436,7 @@ Content Edits allow you spot edit, hide and rearrange text and page elements on 
 
 ## **Styles & Javascript**
 
-If you're a technical user, you can use this Modification to inject custom CSS or Javascript into your site’s pages for visitors to this Experience. CSS modifications can be used to hide buttons or text, change layouts and spacing, swap backgrounds, or change your color palette and fonts. Javascript changes can be used to pop up messages, modify button behavior, send information elsewhere, and much more.
+If you're a technical user, you can use this Modification to inject custom CSS or Javascript into your site’s pages for visitors to this Personalization. CSS modifications can be used to hide buttons or text, change layouts and spacing, swap backgrounds, or change your color palette and fonts. Javascript changes can be used to pop up messages, modify button behavior, send information elsewhere, and much more.
 
 {% hint style="info" %}
 You can find additional tips and tricks for writing effective CSS and javascript [here](https://docs.intelligems.io/general-features/css-and-javascript-injection), including how to ensure the page has loaded before your code runs.
@@ -5324,18 +5444,18 @@ You can find additional tips and tricks for writing effective CSS and javascript
 
 ## **Theme Changes**
 
-This modification allows you completely overhaul your site - from branding to navigation - by showing a different Shopify theme for visitors in this Experience.
+This modification allows you completely overhaul your site - from branding to navigation - by showing a different Shopify theme for visitors in this Personalization.
 
 To set up a theme change, choose the theme you’d like to be shown instead of your shop’s live theme, making sure the theme is integrated so that Intelligems can function correctly.
 
-Note that an Experience can not contain both a Theme Change and Template Change modification, as a particular template may not be present in the target theme.
+Note that a Personalization can not contain both a Theme Change and Template Change modification, as a particular template may not be present in the target theme.
 
 {% hint style="danger" %}
 Theme changes can leave your site unstable so generally should be[ applied directly in Shopify](https://help.shopify.com/en/manual/online-store/themes/adding-themes) if you are targeting all visitors. If you are targeting a specific audience, you should follow a number of precautions, preview carefully, and test your live site frequently. [Learn more here](https://docs.intelligems.io/personalizations/theme-personalization-precautions).
 {% endhint %}
 
 {% hint style="danger" %}
-To ensure that your shop continues to function smoothly, do not delete your chosen theme for at least a month, even after stopping an Experience. [Learn more here](https://docs.intelligems.io/personalizations/theme-personalization-precautions).
+To ensure that your shop continues to function smoothly, do not delete your chosen theme for at least a month, even after stopping a Personalization. [Learn more here](https://docs.intelligems.io/personalizations/theme-personalization-precautions).
 {% endhint %}
 
 {% hint style="info" %}
@@ -5349,14 +5469,14 @@ Template Changes allow you to overhaul the layout and appearance of a particular
 You can read more about the ins and outs of Template Changes [here](https://docs.intelligems.io/content-testing/content-testing-getting-started/how-to-set-up-a-template-test).
 
 {% hint style="info" %}
-Note that an Experience can not contain both a Theme Change and Template Change modification.
+Note that a Personalization can not contain both a Theme Change and Template Change modification.
 {% endhint %}
 
 {% hint style="info" %}
-We encourage using Template Changes targeted to specific audiences, but if you are targeting all visitors it's best to just change the template directly in Shopify to maximize performance, stability, and prevent unforeseen interactions between tests and Experiences.
+We encourage using Template Changes targeted to specific audiences, but if you are targeting all visitors it's best to just change the template directly in Shopify to maximize performance, stability, and prevent unforeseen interactions between tests and Personalizations.
 {% endhint %}
 
-Note also that each Experience is limited to swapping one single template for another. If you’d like to swap more than one template you can create multiple Experiences and assign them the same audience.
+Note also that each Personalization is limited to swapping one single template for another. If you’d like to swap more than one template you can create multiple Personalizations and assign them the same audience.
 
 ## **Offers**
 
@@ -5368,11 +5488,11 @@ There are multiple Offer modifications:
 * Free shipping
 * Free gift
 
-Offers can be configured to display customizable popups, progress bars, and quantity button components. Learn more about **Global Styles components**.&#x20;
+Offers can be configured to display customizable popups, progress bars, and quantity button components. Learn more about **Global Styles components**.
 
 Unlike Price Modifications, Offers do not update prices on your site pages and collections. Instead, like Shopify discount codes, they update the costs and totals shown in your cart and at checkout. If you want to update the prices shown on your site’s pages directly, use a Price modification instead.
 
-[Have a look at this guide](https://docs.intelligems.io/offer-experiences/offer-modifications) for more details on offers and how to set them up.
+[Have a look at this guide](https://docs.intelligems.io/offer-personalizations/offer-modifications) for more details on offers and how to set them up.
 
 {% hint style="info" %}
 You cannot combine Offers and Price Modifications in a single Personalization
@@ -5393,15 +5513,15 @@ To set up the Price Modification
 * Note that you can only reduce prices on products in a Personalization for technical reasons.
 
 {% hint style="info" %}
-You cannot combine Price Modifications and Offers in a single Experience
+You cannot combine Price Modifications and Offers in a single Personalization.
 {% endhint %}
 
 {% hint style="info" %}
-Duplicate products and Subscriptions products are not supported for Experiences.
+Duplicate products and Subscriptions products are not supported for Personalizations.
 {% endhint %}
 
 {% hint style="info" %}
-Price Modifications do not work across currencies. Any Experience using a Price Modification will have [currency targeting ](https://docs.intelligems.io/targeting-personalizations#currency-targeting)activated and set to the default store currency. This means only visitors using the store's default currency will see the Experience.
+Price Modifications do not work across currencies. Any Personalization using a Price Modification will have [currency targeting ](https://docs.intelligems.io/targeting-personalizations#currency-targeting)activated and set to the default store currency. This means only visitors using the store's default currency will see the Personalization.
 {% endhint %}
 
 Click [here](https://docs.intelligems.io/price-testing/price-testing-getting-started) to read more about price changes.
@@ -5410,49 +5530,49 @@ Click [here](https://docs.intelligems.io/price-testing/price-testing-getting-sta
 
 Once you’ve set up your Modifications, you can go on to:
 
-* Preview them to make sure everything functions correctly on your site before activating the Experience. Click [here](https://docs.intelligems.io/personalizations/previewing-personalizations) to read our Preview guide.
-* Optionally Set Audience Targeting to limit who should see this Experience and which pages, if not all, the modifications should appear on. Click [here](https://docs.intelligems.io/personalizations/targeting-personalizations) to read the full Targeting guide.
+* Preview them to make sure everything functions correctly on your site before activating the Personalization. Click [here](https://docs.intelligems.io/personalizations/previewing-personalizations) to read our Preview guide.
+* Optionally Set Audience Targeting to limit who should see this Personalization and which pages, if not all, the modifications should appear on. Click [here](https://docs.intelligems.io/personalizations/targeting-personalizations) to read the full Targeting guide.
 
 
-# Theme Experience Precautions
+# Theme Personalization Precautions
 
-## Setting up Experiences involving a Theme Change
+## Setting up Personalizations involving a Theme Change
 
-A few reminders to make sure your Theme Experiences runs smoothly:
+A few reminders to make sure your Theme Personalizations runs smoothly:
 
 * Make sure the [Intelligems script is installed](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) in all themes that you're testing! This is how we will hide the preview bar at the bottom of the theme. If you have checkout.liquid file, ensure you have installed the Intelligems script on this page as well, so that the preview bar is hidden at checkout. If you do not have checkout.liquid, the bar will be hidden automatically.
 * Product page templates are set at the product level, and the template name must be available in the live theme. When testing two different themes, make sure the template names match, so that the templates you've chosen for each product exist in both themes. If the product pages look correct when previewing the test theme(s), then you're good to go!
 
-## Ending Experiences involving a Theme Change
+## Ending Personalizations involving a Theme Change
 
 {% hint style="warning" %}
-After ending a Theme Experience, we recommend you do not delete the theme that was present in the Experience for at least a month.
+After ending a Theme Personalization, we recommend you do not delete the theme that was present in the Personalization for at least a month.
 {% endhint %}
 
-While the Experience is active, visitors are sent to draft themes, and their browser will "remember" which theme to open the next time they visit your store via a session cookie. Once the Experience is stopped, if a visitor who was exposed to the Experience re-visits your store and the cookie is still active, Shopify will load the draft theme, and Intelligems will then immediately reset them back to the live theme.
+While the Personalization is active, visitors are sent to draft themes, and their browser will "remember" which theme to open the next time they visit your store via a session cookie. Once the Personalization is stopped, if a visitor who was exposed to the Personalization re-visits your store and the cookie is still active, Shopify will load the draft theme, and Intelligems will then immediately reset them back to the live theme.
 
-However, if the draft theme that was in the Experience has since been deleted, Intelligems won't be loaded and won't have the opportunity to reset the visitor's theme. Instead, the visitor sees an error from Shopify, since they're trying to load a theme that does not exist. So, its important to leave any themes that were in a Experience in draft mode (rather than deleting them) for at least 30 days after the Experience has been stopped, to ensure any returning visitors are reset back to the live theme correctly.
+However, if the draft theme that was in the Personalization has since been deleted, Intelligems won't be loaded and won't have the opportunity to reset the visitor's theme. Instead, the visitor sees an error from Shopify, since they're trying to load a theme that does not exist. So, its important to leave any themes that were in a Personalization in draft mode (rather than deleting them) for at least 30 days after the Personalization has been stopped, to ensure any returning visitors are reset back to the live theme correctly.
 
 
-# Adding Targeting to an Experience
+# Adding Targeting to a Personalization
 
-Once you’ve set up Modifications, go to the Targeting tab to optionally decide who should see the Experience once it’s active. Experiences by default show to all visitors.
+Once you’ve set up Modifications, go to the Targeting tab to optionally decide who should see the Personalization once it’s active. Personalizations by default show to all visitors.
 
 ## **Audience Targeting**
 
-Intelligems offers three ways of picking an audience for an Experience.
+Intelligems offers three ways of picking an audience for an Personalization.
 
 * **Common Audience:** limit to users on certain devices, new or returning, channels, or countries. You can read about this in depth [**here**](https://docs.intelligems.io/content-testing/targeting/audience-targeting).
 * **Custom Audiences:** use additional conditions such as cookie, landing page, custom javascript, and define complex logic to combine them. You can read about this in depth [here](https://docs.intelligems.io/general-features/targeting/audience-targeting#custom-audiences).
-* **Link-based:** This option is used if you would prefer for the Experience to only be accessible for a link. Intelligems will create a custom link for you, which you will then need to use in the locations you wish to drive traffic from. \*\*\*\*To use this option, select "Link" and input what page you'd like visitors to land on - if not just the homepage. After saving your Experience, your unique link will be accessible here or from the Experience list. You can change this link at any time if you’d prefer to have some people land on a different page. The Intelligems link builder simply appends a special parameter to whatever URL you specify, which ensures that a visitor coming through that link is assigned that Experience going forward as long as it’s active - regardless of the presence of the link on subsequent visits.
+* **Link-based:** This option is used if you would prefer for the Personalization to only be accessible for a link. Intelligems will create a custom link for you, which you will then need to use in the locations you wish to drive traffic from. \*\*\*\*To use this option, select "Link" and input what page you'd like visitors to land on - if not just the homepage. After saving your Personalization, your unique link will be accessible here or from the Personalization list. You can change this link at any time if you’d prefer to have some people land on a different page. The Intelligems link builder simply appends a special parameter to whatever URL you specify, which ensures that a visitor coming through that link is assigned that Personalization going forward as long as it’s active - regardless of the presence of the link on subsequent visits.
 
 {% hint style="info" %}
-**Audiences ignored in Tests:** Intelligems allows you to test Experiences containing Offers against eachother to see which one is more effective before activating it. Note that the audience targeting rules of individual Experiences are ignored when testing in lieu of test-wide audience targeting settings. [Learn more about testing Experiences](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+**Audiences ignored in Tests:** Intelligems allows you to test Offers against each other to see which one is more effective before activating it. Note that the audience targeting rules of individual Personalizations are ignored when testing in lieu of test-wide audience targeting settings. [Learn more about testing Offers](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 {% endhint %}
 
 ## **Currency Targeting**
 
-You can also show Experiences only to users shopping in a certain currency if your site supports multiple currencies. This can be combined with any of the audience targeting settings.
+You can also show Personalizations only to users shopping in a certain currency if your site supports multiple currencies. This can be combined with any of the audience targeting settings.
 
 Read more about currency targeting in the context of tests [here](https://docs.intelligems.io/general-features/targeting/currency-targeting).
 
@@ -5462,7 +5582,7 @@ By default, your modifications apply to all site pages. But you may for example 
 
 Page targeting can be used if your Modifications are limited to Template Changes, Content Edits, CSS/JS, and Offers.
 
-Note that the same targeting applies to all modifications in the Experience. There is currently no way to limit some Modifications to one page and others to another. Here is how page targeting acts for each modification:
+Note that the same targeting applies to all modifications in the Personalization. There is currently no way to limit some Modifications to one page and others to another. Here is how page targeting acts for each modification:
 
 * Template change, Onsite Edits, CSS/JS: the changes are only shown on selected page(s)
 * Offers: popup components only display on selected page(s). There is no way to hide updated prices, progress bar components, or quantity buttons from the cart and checkout pages.
@@ -5472,21 +5592,21 @@ Note that the same targeting applies to all modifications in the Experience. The
 Once you’ve set up your Targeting, you can go on to:
 
 * **Preview:** Make sure everything looks and functions correctly on your site before activating the Personalization. Click [here](https://docs.intelligems.io/personalizations/previewing-personalizations) to read our Preview guide.
-* **Activate the** Experienc&#x65;**:** You can pause and resume as many times as you need, which helps with recurring promotions.
+* **Activate the** **Personalization:** You can pause and resume as many times as you need, which helps with recurring promotions.
 
 
-# Targeting Modes for Experiences
+# Targeting Modes for Personalizations
 
 Intelligems offers two broad modes of Audience Targeting: **Permanent** and **Temporary.**
 
-* [**Permanent**](#permanent-audience) **-** is useful if once someone is eligible for an Experience, and as long as that personalization is active you want them to continue to receive that experience.
-* [**Temporary**](#temporary-audience) - is useful if the conditions by which someone qualifies may "expire". For example, if you target New Visitors, a new visitor will see a Experience but eventually no longer qualify. Similarly, if someone who comes via a specific link qualifies, after a certain amount of time they may no longer qualify.
+* [**Permanent**](#permanent-audience) **-** is useful if once someone is eligible for a Personalization, and as long as that personalization is active you want them to continue to receive that experience.
+* [**Temporary**](#temporary-audience) - is useful if the conditions by which someone qualifies may "expire". For example, if you target New Visitors, a new visitor will see a Personalization but eventually no longer qualify. Similarly, if someone who comes via a specific link qualifies, after a certain amount of time they may no longer qualify.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FHc817s5tVzafWvycojKB%2FScreenshot%202024-10-03%20at%2012.29.37%E2%80%AFPM.png?alt=media&#x26;token=481154bf-e4b5-4a13-a874-236c749dafee" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-aea4c9c323c11010686368771d10f5efbbd4e9e2%2FScreenshot%202024-10-03%20at%2012.29.37%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Permanent Audience**
 
-A **Permanent Audience** is a group of users that are permanently included or excluded from an Experience. Once a user is evaluated and placed in or excluded from a permanent audience, their status remains unchanged for the duration of the experiment.
+A **Permanent Audience** is a group of users that are permanently included or excluded from a Personalization. Once a user is evaluated and placed in or excluded from a permanent audience, their status remains unchanged for the duration of the experiment.
 
 #### Characteristics:
 
@@ -5495,7 +5615,7 @@ A **Permanent Audience** is a group of users that are permanently included or ex
 
 ### Temporary Audience
 
-A **Temporary Audience** is a group of users who are dynamically included or excluded from an Experience based on an evaluation frequency. Users in a temporary audience are re-evaluated periodically to determine if they should remain included in the experiment or be excluded.
+A **Temporary Audience** is a group of users who are dynamically included or excluded from a Personalization based on an evaluation frequency. Users in a temporary audience are re-evaluated periodically to determine if they should remain included in the experiment or be excluded.
 
 #### Characteristics:
 
@@ -5503,28 +5623,28 @@ A **Temporary Audience** is a group of users who are dynamically included or exc
 * **Evaluation Frequency**: This is the number of days between re-evaluations. During each re-evaluation, the user can be included or excluded based on the defined conditions.
 
 
-# Previewing Experiences
+# Previewing Personalizations
 
-Once you’ve set up Modifications, you can go to the Preview tab to make sure everything looks and works well before activating it, or just to see how an active Experience appears to visitors.
+Once you’ve set up Modifications, you can go to the Preview tab to make sure everything looks and works well before activating it, or just to see how an active Personalization appears to visitors.
 
 ## How does Preview help?
 
-* Before you’ve ever activated an Experience, preview to make sure everything looks good
-* While an Experience is active, preview to see what it looks like for its target audience
+* Before you’ve ever activated a Personalization, preview to make sure everything looks good
+* While a Personalization is active, preview to see what it looks like for its target audience
 
 {% hint style="info" %}
-At the moment you cannot preview an Experience that has been previously active but is now stopped. To work around this, you can either re-activate the Experience, or you can duplicate it and preview the duplicated version.
+At the moment you cannot preview a Personalization that has been previously active but is now stopped. To work around this, you can either re-activate the Personalization, or you can duplicate it and preview the duplicated version.
 {% endhint %}
 
-## How to Preview your Experience
+## How to preview your Personalization
 
-In an Experience, go to the Preview tab.
+In a Personalization, go to the Preview tab.
 
 #### **STEP 1: Save your changes**
 
-The Intelligems preview (screenshots and full screen) will only show what’s already saved in your Experience. If you’ve made additional changes since your last save, you should save the Experience to see them in the Preview.
+The Intelligems preview (screenshots and full screen) will only show what’s already saved in your Personalization. If you’ve made additional changes since your last save, you should save the Personalization to see them in the Preview.
 
-If you are editing an active Experience, you may not feel comfortable saving your changes just to preview, since saving would automatically apply these changes to visitors. To work around this, you should *either re-activate the Experience, or you can duplicate it and preview the duplicated version.*
+If you are editing an active Personalization, you may not feel comfortable saving your changes just to preview, since saving would automatically apply these changes to visitors. To work around this, you should *either re-activate the Personalization, or you can duplicate it and preview the duplicated version.*
 
 #### **STEP 2: Optionally adjust which page you want to see**
 
@@ -5540,71 +5660,71 @@ If you prefer to override this and always see previews beginning on a particular
 #### **STEP 3: View screenshots and Full Screen Preview**
 
 * **Screenshots:** Have a look at the screenshots for a rough at-a-glance view of your site. These should never be used as a substitute for a full screen preview.
-* **Full Screen Preview:** Click the “Full Screen Preview” button to view your site in the browser as visitors in the Experience would see it. Or click the “Mobile Preview” button to get a link for your mobile device.
+* **Full Screen Preview:** Click the “Full Screen Preview” button to view your site in the browser as visitors in the Personalization would see it. Or click the “Mobile Preview” button to get a link for your mobile device.
 
 #### **TIP: In full screen preview, make sure to “include” yourself:**
 
-If your Experience is targeted to a Particular audience, it may be that your own circumstances (location, device, etc) make you ineligible for the Experience. To account for this, full screen preview allows you to view the site in two ways:
+If your Personalization is targeted to a Particular audience, it may be that your own circumstances (location, device, etc) make you ineligible for the Personalization. To account for this, full screen preview allows you to view the site in two ways:
 
-* **As yourself:** If you do not match the Experience audience, you will receive a message like the one below. This helps you confirm that the targeting is excluding people correctly. Click the “Include” button to force yourself into the audience of the Experience - this will allow you to see what it will look like for those visitors.
+* **As yourself:** If you do not match the Personalization audience, you will receive a message like the one below. This helps you confirm that the targeting is excluding people correctly. Click the “Include” button to force yourself into the audience of the Personalization - this will allow you to see what it will look like for those visitors.
 
-  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FlkT7sSxOWKoi6ck4pOKD%2Fimage.png?alt=media&#x26;token=28c13b6d-3318-4b7a-8f25-0b0055baaa81" alt=""><figcaption></figcaption></figure>
-* **As a member of the audience**: once you click “Include” you will see the site as it appears for the Experience's audience. This is the mode you should spend most of your time in.
+  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-e84786a6cb41e4e73fbfcd765d9e0bea44b90f19%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
+* **As a member of the audience**: once you click “Include” you will see the site as it appears for the Personalization's audience. This is the mode you should spend most of your time in.
 
 Other buttons in this blue banner that you may find useful are:
 
 * **The refresh icon:** This resets the preview so that your site appears the way it did when you first previewed it. This can be handy when using a URL Redirect modification that's set to only redirect from Page A to Page B *a single time*. Clicking refresh will allow you to test the redirect more than once.
-* **Highlight Replaces:** If you have used Content Edits in your Experience, this toggle will show which elements on each page have been affected.
+* **Highlight Replaces:** If you have used Content Edits in your Personalization, this toggle will show which elements on each page have been affected.
 
 ## Next Steps
 
-Once you’ve Previewed your Experience, you can go on to:
+Once you’ve previewed your Personalization, you can go on to:
 
 * **Fine tune your modifications:** Click [here](https://docs.intelligems.io/personalizations/personalization-modifications) to read our Modifications guide.
-* **Activate the Experience**: If everything looks good, activate your Experience or leave it pending until ready. You can pause and resume as many times as you need, which helps with recurring promotions.
+* **Activate the Experience**: If everything looks good, activate your Personalization or leave it pending until ready. You can pause and resume as many times as you need, which helps with recurring promotions.
 
 
-# Scheduling Experiences
+# Scheduling Personalizations
 
-## **Scheduling Experiences Overview**
+## **Scheduling** Personalizations **Overview**
 
-The **Scheduling Experiences** feature allows you to control *when* specific modifications will appear on your site by setting start and end times. This makes it easy to automate updates, ensuring that changes go live exactly when you want and stop at the right time. Whether it’s a promotional banner for a flash sale or a seasonal announcement, scheduling makes it easy to automate time-sensitive personalizations without having to manually turn them on and off.
+The **Scheduling Personalizations** feature allows you to control *when* specific modifications will appear on your site by setting start and end times. This makes it easy to automate updates, ensuring that changes go live exactly when you want and stop at the right time. Whether it’s a promotional banner for a flash sale or a seasonal announcement, scheduling makes it easy to automate time-sensitive personalizations without having to manually turn them on and off.
 
-## **Why Would I Need to Use Scheduling for Experiences?**
+## **Why Would I Need to Use Scheduling for** Personalization&#x73;**?**
 
-Scheduling is essential for making sure your Experiences are displayed at the right moment without requiring constant oversight. This feature allows you to time your modifications to align with key business events and user behavior patterns. For example:
+Scheduling is essential for making sure your Personalizations are displayed at the right moment without requiring constant oversight. This feature allows you to time your modifications to align with key business events and user behavior patterns. For example:
 
 * **Launching Timed Promotions:** Automatically show a discount banner during a flash sale.
 * **Managing Seasonal Campaigns:** Set up a special message for a holiday campaign, so it starts and stops exactly as needed.
-* **Future Planning:** Schedule Experiences to launch new content or variations at a future date, so you can "set it and forget it."
+* **Future Planning:** Schedule Personalizations to launch new content or variations at a future date, so you can "set it and forget it."
 
 ## **How to Set Up a Schedule**
 
-You can choose to set a schedule **when creating a new Experience** or add a schedule to **an existing Experience**.
+You can choose to set a schedule **when creating a new Personalization** or add a schedule to **an existing Personalization.**
 
 1. **Where to Find Scheduling:**
 
-   * **Scheduling for New Experience:** After you save your Experience, go to the header and select the **down arrow** next to **Activate**. From the dropdown menu, select **Schedule**. This will open the schedule dialogue where you can define the start and end times for your Experience.
+   * **Scheduling for New Personalization:** After you save your Personalization, go to the header and select the **down arrow** next to **Activate**. From the dropdown menu, select **Schedule**. This will open the schedule dialogue where you can define the start and end times for your Personalization.
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FWURDgT79TDNq4jvsRGnv%2FFrame%201.png?alt=media&#x26;token=77a06759-66c2-4eeb-8d60-a5c1b99ad186" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-683db8b1471dcd1ffcdf64faa6ff0af996270abb%2FFrame%201.png?alt=media" alt=""><figcaption></figcaption></figure>
 
-   * **Scheduling for Existing Experiences:** In your personalizations list, click the **three-dot menu** on the right of a personalization and select **Schedule Experience**.
+   * **Scheduling for Existing Personalization:** In your personalizations list, click the **three-dot menu** on the right of a personalization and select **Schedule Personalization**.
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FjGbj6oPONBfl2YsGyu26%2FFrame%202.png?alt=media&#x26;token=f71304f4-12d5-4148-9e24-1c1f45ca82e0" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-7111d21b8b4c987cf58c17f5c889f14c4b0916af%2FFrame%202.png?alt=media" alt=""><figcaption></figcaption></figure>
 2. **Set Up Timing:**
 
-   * **Start Date & Time**: Set the exact date and time when your Experience should begin displaying (e.g., October 15th at 8:00 AM).
+   * **Start Date & Time**: Set the exact date and time when your Personalization should begin displaying (e.g., October 15th at 8:00 AM).
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FLQGIqb8RzihdhoAYTHWa%2FScreenshot%202024-10-09%20at%208.34.13%E2%80%AFPM.png?alt=media&#x26;token=865c8d03-a225-4b16-927f-2cbd32be75b9" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-954c1c609abfc7f47d04f1bff744558086ebca12%2FScreenshot%202024-10-09%20at%208.34.13%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
-   * **End Date & Time (Optional)**: If your Experience should only run for a limited period, set an end date and time. Leaving this field blank means the Experience will run indefinitely until you manually stop it.
+   * **End Date & Time (Optional)**: If your Personalization should only run for a limited period, set an end date and time. Leaving this field blank means the Personalization will run indefinitely until you manually stop it.
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FGyXUeOiiQfqvHXFAlhrZ%2FScreenshot%202024-10-09%20at%208.34.47%E2%80%AFPM.png?alt=media&#x26;token=4b9cdded-b6d6-47e4-9682-58ab7762dd8a" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-b80db9e2689bbe474815d4e25113a2394f565e2e%2FScreenshot%202024-10-09%20at%208.34.47%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 3. **Review and Confirm:**
 
-   * Use the **Preview** feature to check that the Experience appears as expected.
+   * Use the **Preview** feature to check that the Personalization appears as expected.
 
-   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FPoOn3f1fwADB9KMjwT4W%2FScreenshot%202024-10-09%20at%208.35.20%E2%80%AFPM.png?alt=media&#x26;token=f49a2b2e-db12-4f7e-91e3-a60f801512e3" alt=""><figcaption></figcaption></figure>
+   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-53db8d291f7168ecb2e65bc504b9965e59b52c11%2FScreenshot%202024-10-09%20at%208.35.20%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## **Example Use Cases**
 
@@ -5612,12 +5732,12 @@ You can choose to set a schedule **when creating a new Experience** or add a sch
 * **Seasonal Promotions:** Set a start date for a holiday campaign and let it run indefinitely until you want to turn it off manually.
 * **Ongoing Variations:** Use scheduling to launch new variants for long-term testing without setting an expiration date.
 
-For more information, refer to our Experiences Guide​ ([Intelligems Docs](https://docs.intelligems.io/personalizations/personalizations-getting-started)).
+For more information, refer to our Personalizations Guide​ ([Intelligems Docs](https://docs.intelligems.io/personalizations/personalizations-getting-started)).
 
 
 # Rolling Out Tests
 
-Quickly apply the most successful variant in an experiment to all visitors or to a limited audience by rolling it out as an Experience.
+Quickly apply the most successful variant in an experiment to all visitors or to a limited audience by rolling it out as a Personalization.
 
 ## Why Roll out tests?
 
@@ -5632,11 +5752,11 @@ When viewing the results of your Intelligems experiment, you may find that one v
 
 ## How do Rollouts work?
 
-Rolling out a winning test variant **ends the test and creates an Experience** with the same site modifications as the variant. You can [learn more about Experiences here](https://docs.intelligems.io/personalizations/personalizations-getting-started) but in general, you can
+Rolling out a winning test variant **ends the test and creates a Personalization** with the same site modifications as the variant. You can [learn more about Personalizations here](https://docs.intelligems.io/personalizations/personalizations-getting-started) but in general, you can
 
-* **Limit the audience:** configure the Experience to target all site visitors or a particular audience, including only visitors holding a special link.
+* **Limit the audience:** configure the Personalization to target all site visitors or a particular audience, including only visitors holding a special link.
 * **Start whenever:** turn it on immediately or only once you’re ready.
-* **Stop or resume any time:** for example, you may roll out a test variant just for a few days while you work on implementing your changes natively in Shopify and once you’re ready, you can turn off the resulting Experience.
+* **Stop or resume any time:** for example, you may roll out a test variant just for a few days while you work on implementing your changes natively in Shopify and once you’re ready, you can turn off the resulting Personalization.
 
 **What kinds of tests can you roll out?**
 
@@ -5647,7 +5767,7 @@ A test can be rolled out if it is active, paused, or ended.
 * PRICE TESTS: a particular variant in a price test can be rolled out to all Visitors on your site, but it can not be rolled out to a specific audience only. Additionally, price tests can only be rolled out *once*, the moment you end them.
 * SHIPPING TESTS: cannot be rolled out due to technical limitations
 
-**Native Rollouts:** There are two situations in which Intelligems, for technical and safety reasons, rolls out changes *“natively”* - meaning directly to Shopify rather than to an Experience. This occurs when
+**Native Rollouts:** There are two situations in which Intelligems, for technical and safety reasons, rolls out changes *“natively”* - meaning directly to Shopify rather than to a Personalization. This occurs when
 
 * You choose to roll out a **theme test** to All Visitors: It’s much safer and more performant for Intelligems to change the Shopify theme directly.
 * You roll out a Price test: for technical reasons Intelligems must update your Shopify prices directly.
@@ -5656,35 +5776,35 @@ A test can be rolled out if it is active, paused, or ended.
 
 **Step 1: Open the Rollout Wizard**
 
-The Rollout Wizard guides you through a few steps to roll out a test variant into a single Experience. If you are rolling out more than once from the same test, you'll need to go through the wizard multiple times. When you complete the Rollout Wizard you'll still have a chance to review and modify the resulting Experience before activating it.
+The Rollout Wizard guides you through a few steps to roll out a test variant into a single Personalization. If you are rolling out more than once from the same test, you'll need to go through the wizard multiple times. When you complete the Rollout Wizard you'll still have a chance to review and modify the resulting Personalization before activating it.
 
 There are several ways to reach the Rollout Wizard.
 
 * FROM THE TESTS LIST: click the Stop Test button or the Roll Out button
 * FROM THE ANALYTICS PAGE: The same two buttons are available at the top of a test’s Analytics page
 
-  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FwDywGgI7MIVzUmMb1WYi%2Fimage.png?alt=media&#x26;token=ef6cdfd4-b6cd-4881-aa7b-fbd583c1804b" alt=""><figcaption><p>Rolling out a test group from the top of the test's Analytics page</p></figcaption></figure>
+  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-a55c1389f50238d7540d1694036805c1a16a3bd1%2Fimage.png?alt=media" alt=""><figcaption><p>Rolling out a test group from the top of the test's Analytics page</p></figcaption></figure>
 * FROM THE ANALYTICS AUDIENCES TABLE:
   * In the All Visitors tab at the bottom of the Analytics Overview page, click the name of the variant you’d like to roll out
   * From one of the Audience tabs of this table, you can roll out a variant to a specific audience that it performed best for
 
-    <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F2JTtM56Z5s2WVjYBZmVv%2Fimage.png?alt=media&#x26;token=f7d0ea68-5a12-4be9-b493-32871eb91b5e" alt=""><figcaption><p>Rolling out a test group to a particular audience from the Audiences Table in Analytics</p></figcaption></figure>
+    <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-27b832972046936e0196dbb5f3e0bbea9fe8e585%2Fimage.png?alt=media" alt=""><figcaption><p>Rolling out a test group to a particular audience from the Audiences Table in Analytics</p></figcaption></figure>
 
 **Step 2: Choose the group you want to roll out**
 
 This is usually the winner, based on your primary goal. If you’re reached the wizard from the Audiences table, a group will be pre-selected for you.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FOM6dzInppwJo0EwYI8Cm%2Fimage.png?alt=media&#x26;token=a0f2654b-9cbc-4034-9d3d-6cd9097c759b" alt=""><figcaption><p>Selecting a test group to roll out</p></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-bcd481552da1622cef273dca078d39022ca2f46c%2Fimage.png?alt=media" alt=""><figcaption><p>Selecting a test group to roll out</p></figcaption></figure>
 
 {% hint style="info" %}
 **Price Tests:** If you’re rolling out a Price test, this is as far as the wizard goes. You can now click Roll Out. Intelligems will apply your prices directly to Shopify, for all visitors.
 
-**Warning:** If your test contained any additional on-site edits such as text changes, those will ***not*** be rolled out. You can either apply those in Shopify yourself or create an Experience from scratch with those changes.
+**Warning:** If your test contained any additional on-site edits such as text changes, those will ***not*** be rolled out. You can either apply those in Shopify yourself or create a Personalization from scratch with those changes.
 {% endhint %}
 
 **Step 3: Choose the audience you’d like to roll this variant out to**
 
-You can build an audience of your choosing using our robust audience targeting conditions and combination logic. You can also show the resulting Experience only to visitors with a special link, which is handy for rolling out offers.
+You can build an audience of your choosing using our robust audience targeting conditions and combination logic. You can also show the resulting Personalization only to visitors with a special link, which is handy for rolling out offers.
 
 Intelligems will automatically suggest an audience for you depending on your test settings and how you entered the Rollout Wizard. You can change or clear this if you wish.
 
@@ -5692,46 +5812,46 @@ Intelligems will automatically suggest an audience for you depending on your tes
 * If you come in from Analytics and you had filters active, we’ll copy those filters
 * If you come from an audience in the Analytics table, we’ll copy that as well.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fd3VIuh3efONlNu6ST06O%2Fimage.png?alt=media&#x26;token=4f67ad84-08e6-4f1b-b58f-a00414048d1d" alt=""><figcaption><p>Selecting an audience for your roll out</p></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-a6c1a28fe5be9856b57604d6c0697e89ee889ca9%2Fimage.png?alt=media" alt=""><figcaption><p>Selecting an audience for your roll out</p></figcaption></figure>
 
-If your test made use of Advanced Targeting, we will not be able to auto-suggest an audience for the Experience but you should be able to build it yourself if needed.
+If your test made use of Advanced Targeting, we will not be able to auto-suggest an audience for the Personalization but you should be able to build it yourself if needed.
 
 {% hint style="info" %}
 **Other types of targeting:** The test you’re rolling out may have used additional types of targeting:
 
-* **Currency or Page Targeting** will be copied into the resulting Experience but you should check to make sure before activating the Experience. This does not apply when rolling out price tests or rolling out theme tests to all visitors, since these kinds of changes are applied directly to Shopify.
-* **Mutually exclusive behavior** will not be rolled out. If your test was in a Mutual Exclusion Group (meaning visitors cannot see it and another test at the same time), the resulting Experience will have no such limitations.
+* **Currency or Page Targeting** will be copied into the resulting Personalization but you should check to make sure before activating the Personalization. This does not apply when rolling out price tests or rolling out theme tests to all visitors, since these kinds of changes are applied directly to Shopify.
+* **Mutually exclusive behavior** will not be rolled out. If your test was in a Mutual Exclusion Group (meaning visitors cannot see it and another test at the same time), the resulting Personalization will have no such limitations.
   {% endhint %}
 
 **Step 3.5: Additional step for theme rollouts**
 
-If you are rolling out a Theme test to all visitors, Intelligems will roll out natively - meaning it will apply the new theme directly to your Shopify store rather than creating an Experience. However, if your test also contained additional changes such as onsite edits - for example text, colors, CSS, javascript - you'll be asked whether you want to discard those changes or roll them out separately as an Experience.
+If you are rolling out a Theme test to all visitors, Intelligems will roll out natively - meaning it will apply the new theme directly to your Shopify store rather than creating a Personalization. However, if your test also contained additional changes such as onsite edits - for example text, colors, CSS, javascript - you'll be asked whether you want to discard those changes or roll them out separately as a Personalization.
 
 {% hint style="warning" %}
-If you do choose to roll them out as an Experience, you should activate the resulting Experience as soon as possible, since the Theme change will be applied to Shopify as soon as you finish the Rollout Wizard.
+If you do choose to roll them out as a Personalization, you should activate the resulting Personalization as soon as possible, since the Theme change will be applied to Shopify as soon as you finish the Rollout Wizard.
 {% endhint %}
 
 **Step 4: Confirm the changes and roll out**
 
 Look over the summary of your Rollout, fixing anything if needed. If everything looks good, click Roll Out and End Test (or “Roll Out” if your test has already ended).
 
-Your test will end if it’s not already ended and you will be taken to a draft of your resulting Experience where you can
+Your test will end if it’s not already ended and you will be taken to a draft of your resulting Personalization where you can
 
 * give it a more descriptive name
 * check to make sure everything looks okay and make any changes
-* click the “Activate” button whenever you’re ready to activate your Rollout Experience
+* click the “Activate” button whenever you’re ready to activate your Rollout Personalization
 
 {% hint style="info" %}
-**Cleaning up after Offer Rollouts:** Offer tests can be created by choosing one or more already-existing Offer Experiences and testing them against each other. When you roll out a winning group in an Offer Test, Intelligems creates a new Experience from the winning group. At this point you may want to do some tidying up in your Experiences list to:
+**Cleaning up after Offer Rollouts:** Offer tests can be created by choosing one or more already-existing Offer Personalizations and testing them against each other. When you roll out a winning group in an Offer Test, Intelligems creates a new Personalization from the winning group. At this point you may want to do some tidying up in your Personalizations list to:
 
-* remove the Offer Experience that gave rise to your winning group
-* remove the other Offer Experiences that gave rise to your non-winning groups, if you’re not planning on using them or testing them again
+* remove the Offer Personalization that gave rise to your winning group
+* remove the other Offer Personalizations that gave rise to your non-winning groups, if you’re not planning on using them or testing them again
   {% endhint %}
 
 
-# Offer Experiences
+# Offer Personalizations
 
-A complete guide to using Intelligems Offers to create promotions, discounts, and special deals that boost sales and improve customer experience.
+A complete guide to using Intelligems Offer Personalizations to create promotions, discounts, and special deals that boost sales and improve customer experience.
 
 ## Offers User Guide
 
@@ -5861,7 +5981,7 @@ Follow these simple steps to create any type of offer:
 
 #### Step 1: Choose Your Offer Type
 
-1. Go to the Offers page in your dashboard
+1. On the left navigation under Personalizations, click on Offers
 2. Click "Create New Offer"
 3. Pick one of the five offer types
 4. Give your offer a clear name (like "Summer Sale - 20% Off Dresses")
@@ -5898,7 +6018,7 @@ You can limit who sees your offer:
 
 ### Understanding Offer Components
 
-#### [Quantity Buttons](https://docs.intelligems.io/offer-experiences/quantity-buttons)
+#### [Quantity Buttons](https://docs.intelligems.io/offer-personalizations/quantity-buttons)
 
 These buttons appear on product pages and help customers quickly add multiple items to their cart.
 
@@ -5920,7 +6040,7 @@ These buttons appear on product pages and help customers quickly add multiple it
 2. Customize the button colors and styles in Global Styles
 3. Add the code snippet to your product pages (your developer can help with this)
 
-#### [Progress Bar](https://docs.intelligems.io/offer-experiences/progress-bars)
+#### [Progress Bar](https://docs.intelligems.io/offer-personalizations/progress-bars)
 
 This bar shows customers how much more they need to spend or buy to earn rewards.
 
@@ -5940,9 +6060,9 @@ This bar shows customers how much more they need to spend or buy to earn rewards
 
 1. Add the progress bar component when creating your offer
 2. Customize the colors and messages in Global Styles
-3. Add the code snippet to your cart page (your developer can help with this, following [this guide](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets#offer-progress-bar))
+3. Add the code snippet to your cart page (your developer can help with this, following [this guide](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets#offer-progress-bar))
 
-#### [Offer Message](https://docs.intelligems.io/offer-experiences/slide-outs)
+#### [Offer Message](https://docs.intelligems.io/offer-personalizations/slide-outs)
 
 This component displays promotional messages about your offer throughout your website.
 
@@ -6028,26 +6148,26 @@ If you need assistance with setting up offers:
 * Contact Intelligems support for help with complex configurations
 * Work with your developer for custom implementations
 
-For more technical details about integrating offer components, see [Integrating Components with Offers](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets).
+For more technical details about integrating offer components, see [Integrating Components with Offers](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets).
 
-To learn about testing different offers against each other, see [Testing Offer Experiences](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+To learn about testing different offers against each other, see [Testing Offers](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 
-# Experiences FAQs
+# Personalizations FAQs
 
 <details>
 
-<summary>Checklist: What to consider before activating a Experience</summary>
+<summary>Checklist: What to consider before activating a Personalization</summary>
 
-* **Unforeseen combinations:** Because a visitor can be subject to multiple Experiences at the same time, you should be careful when designing and targeting your Experiences to make sure that you don't create conflicts or unpredictable states for users. For example, you wouldn't want the same visitor to be redirected from page A to B but also from A to C. Likewise, you don't want a visitor experiencing a theme change as well as a template change where the new theme doesn't actually contain the new template. Try to avoid having too many broadly-targeted Experiences active at the same time and take stock of your Experiences regularly. Make sure you [follow the precautions ](https://docs.intelligems.io/personalizations/theme-personalization-precautions)when using theme changes.
-* **Interactions with tests:** You should also be careful to make sure your active Experiences don't conflict with any active tests.
-* **Performance of non-native changes:** While Experiences can help you enact quick site changes without the need to go into Shopify, some changes will likely perform better and more safely if they are implemented 'natively' in Shopify. For example, URL redirects, price changes, and theme changes targeting all visitors (rather than a specific audience) should ideally be done in Shopify. If you have the option, consider minimizing how many of these types of Experiences you run.
+* **Unforeseen combinations:** Because a visitor can be subject to multiple Personalizations at the same time, you should be careful when designing and targeting your Personalizations to make sure that you don't create conflicts or unpredictable states for users. For example, you wouldn't want the same visitor to be redirected from page A to B but also from A to C. Likewise, you don't want a visitor experiencing a theme change as well as a template change where the new theme doesn't actually contain the new template. Try to avoid having too many broadly-targeted Personalizations active at the same time and take stock of your Personalizations regularly. Make sure you [follow the precautions ](https://docs.intelligems.io/personalizations/theme-personalization-precautions)when using theme changes.
+* **Interactions with tests:** You should also be careful to make sure your active Personalizations don't conflict with any active tests.
+* **Performance of non-native changes:** While Personalizations can help you enact quick site changes without the need to go into Shopify, some changes will likely perform better and more safely if they are implemented 'natively' in Shopify. For example, URL redirects, price changes, and theme changes targeting all visitors (rather than a specific audience) should ideally be done in Shopify. If you have the option, consider minimizing how many of these types of Personalizations you run.
 
 </details>
 
 <details>
 
-<summary>When does a visitor start seeing my Experience? And what happens if I stop it?</summary>
+<summary>When does a visitor start seeing my Personalization? And what happens if I stop it?</summary>
 
 A site visitor starts seeing a Personalization the moment they become eligible for it, according to its targeting criteria. Even if they are not eligible on their first site visit or the first few pages they browse on your site, they still remain eligible.
 
@@ -6057,17 +6177,16 @@ The moment you stop a Personalization, visitors who saw the Personalization will
 
 <details>
 
-<summary>Do I need to be on a certain plan to use Experiences?</summary>
+<summary>Do I need to be on a certain plan to use Personalizations?</summary>
 
-You can create and launch Experiences on any of our plans.
+You can create and launch Personalizations on any of our plans.
 
 * The use of Content modifications (URL Redirect, Content Edit, Styles & JS, theme change, and template change) is available on all plans.
+* The ability to test Offers requires the Plus or Blue plan.
 
-- The ability to test Offers requires the Plus or Blue plan.
+When editing an active Personalization you will not be able to add these types of modifications without the corresponding plan unless you first stop the Personalization.
 
-When editing an active Experience you will not be able to add these types of modifications without the corresponding plan unless you first stop the Experience.
-
-The Intelligems free trial will allow you to activate Experiences with all of the above modifications during your trial period.
+The Intelligems free trial will allow you to activate Personalizations with all of the above modifications during your trial period.
 
 [See our Pricing Page for more information](https://www.intelligems.io/pricing).
 
@@ -6077,39 +6196,39 @@ The Intelligems free trial will allow you to activate Experiences with all of th
 
 <summary>Why am I not able to Preview or why is Preview unavailable?</summary>
 
-It may be that you are not in the target audience of the Experience, so Intelligems is effectively showing you what a visitor sees when they are outside the target audience. To "force" yourself into the Experience, click the "Include" button at the bottom right of the blue Preview widget in the Full Screen preview.
+It may be that you are not in the target audience of the Personalization, so Intelligems is effectively showing you what a visitor sees when they are outside the target audience. To "force" yourself into the Personalization, click the "Include" button at the bottom right of the blue Preview widget in the Full Screen preview.
 
-It may also be that you have paused an Experience that was once active but is now stopped. Intelligems currently does not support the preview of such Experiences. To get around this, you can duplicate the Experience and preview its duplicate, or stop the Experience temporarily.
+It may also be that you have paused a Personalization that was once active but is now stopped. Intelligems currently does not support the preview of such Personalizations. To get around this, you can duplicate the Personalization and preview its duplicate, or stop the Personalization temporarily.
 
-It may also be that you have not yet saved your most recent changes in this Experience. The Preview shows only saved changes. Save your changes and then click Preview again. Read more on the [Previews](https://docs.intelligems.io/previewing-personalizations#tip-in-full-screen-preview-make-sure-to-include-yourself) page.
-
-</details>
-
-<details>
-
-<summary>Can the same visitor be exposed to multiple Experiences at once?</summary>
-
-Yes, absolutely! For example, a new visitor on a mobile device may be exposed to a "New Visitors" Experience with a "20% off" offer, and a "Mobile" Experience that moves the Call to Action button higher up on the page.
-
-You should be careful when designing and targeting your Experiences to make sure that you don't create conflicts or unpredictable states for users. For example, you wouldn't want the same visitor to be redirected from page A to B but also from A to C. Likewise you don't want a visitor experiencing a theme change as well as a template change where the new theme doesn't actually contain the new template. You should try to avoid having too many broadly-targeted Experiences active at the same time.
-
-You should make sure your active Experiences don't conflict with any active *tests*.
-
-Experiences cannot be made mutually exclusive the way that tests can, but this feature is coming soon.
+It may also be that you have not yet saved your most recent changes in this Personalization. The Preview shows only saved changes. Save your changes and then click Preview again. Read more on the [Previews](https://docs.intelligems.io/previewing-personalizations#tip-in-full-screen-preview-make-sure-to-include-yourself) page.
 
 </details>
 
 <details>
 
-<summary>What happens if two Experiences seen by a visitor are in 'conflict'?</summary>
+<summary>Can the same visitor be exposed to multiple Personalizations at once?</summary>
 
-You should aim to avoid scenarios where the same visitor is exposed to two active Experiences that both use a theme change, a Template change on the same origin template, or similar. Intelligems will break the tie at random, potentially leading to unpredictable experiences.
+Yes, absolutely! For example, a new visitor on a mobile device may be exposed to a "New Visitors" Personalization with a "20% off" offer, and a "Mobile" Personalization that moves the Call to Action button higher up on the page.
+
+You should be careful when designing and targeting your Personalizations to make sure that you don't create conflicts or unpredictable states for users. For example, you wouldn't want the same visitor to be redirected from page A to B but also from A to C. Likewise you don't want a visitor experiencing a theme change as well as a template change where the new theme doesn't actually contain the new template. You should try to avoid having too many broadly-targeted Personalizations active at the same time.
+
+You should make sure your active Personalizations don't conflict with any active *tests*.
+
+Personalizations cannot be made mutually exclusive the way that tests can, but this feature is coming soon.
 
 </details>
 
 <details>
 
-<summary>When using a popup component in an Offer Experience, how can I prevent the pop-up from displaying on a specific page of my site?</summary>
+<summary>What happens if two Personalizations seen by a visitor are in 'conflict'?</summary>
+
+You should aim to avoid scenarios where the same visitor is exposed to two active Personalizations that both use a theme change, a Template change on the same origin template, or similar. Intelligems will break the tie at random, potentially leading to unpredictable experiences.
+
+</details>
+
+<details>
+
+<summary>When using a popup component in an Offer Personalization, how can I prevent the pop-up from displaying on a specific page of my site?</summary>
 
 On any page you want to remove the pop-up, add the following snippet. For example, to remove on the home page, add this snippet to `templates/index.liquid`
 
@@ -6133,7 +6252,7 @@ At this time, price changes are only supported for non-subscription products.
 
 <details>
 
-<summary>Can I use Experiences to serve different prices to different customer segments?</summary>
+<summary>Can I use Personalizations to serve different prices to different customer segments?</summary>
 
 Intelligems allows you price products differently based on the customer, but you cannot raise prices over the Shopify list price for technical reasons.
 
@@ -6153,7 +6272,7 @@ You may have other apps or automatic discounts active that also count towards th
 
 To resolve this error, you can either:
 
-* [Archive](https://docs.intelligems.io/offer-experiences/offers-limits#archiving-offers) existing Intelligems offers that you're no longer using within Intelligems
+* [Archive](https://docs.intelligems.io/offer-personalizations/offers-limits#archiving-offers) existing Intelligems offers that you're no longer using within Intelligems
 * Deactivate or delete non-Intelligems discounts that are currently active in Shopify
 
 If neither of these actions resolve the error, please [reach out to our support team](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) and we'd be glad to help!
@@ -6161,18 +6280,18 @@ If neither of these actions resolve the error, please [reach out to our support 
 </details>
 
 
-# Getting Started with Offer Experiences
+# Getting Started with Offer Personalizations
 
-Offers are special Experience Modifications that allow you to serve discounts and promotions to your visitors without code leakage, test them against each other, and track their success.
+Offers are special Personalization Modifications that allow you to serve discounts and promotions to your visitors without code leakage, test them against each other, and track their success.
 
 ## What are Offers?
 
-Offers are Intelligems tool built to serve your visitors promotions, volume based discounts, and gifts with purchases. Just like any other [modification in an Experience](https://docs.intelligems.io/personalizations/personalization-modifications), Offers can be targeted to the right channels and visitors to optimize discount spend and maximize your bottom line. They can also be configured to display useful site components such as popups, cart progress bars, and quantity buttons using our **Global Styles components**.
+Offers are Intelligems tool built to serve your visitors promotions, volume based discounts, and gifts with purchases. Just like any other [modification in a Personalization](https://docs.intelligems.io/personalizations/personalization-modifications), Offers can be targeted to the right channels and visitors to optimize discount spend and maximize your bottom line. They can also be configured to display useful site components such as popups, cart progress bars, and quantity buttons using our **Global Styles components**.
 
-Offers can also be tested against each other: creating a test with multiple Offer Experiences (Experiences containing an Offer) lets you take the guess work out of your discount strategy by discovering which offer works best before activating it.
+Offers can also be tested against each other: creating a test with multiple Offer Personalizations (Personalizations containing an Offer) lets you take the guess work out of your discount strategy by discovering which offer works best before activating it.
 
 {% hint style="info" %}
-When setting up an Experience containing an Offer, it can be useful to mix in a Content Edit modification as well. This allows you to fine-tune any text on the site that mentions your offer, such as in your announcement bar or on the homepage.
+When setting up a Personalization containing an Offer, it can be useful to mix in a Content Edit modification as well. This allows you to fine-tune any text on the site that mentions your offer, such as in your announcement bar or on the homepage.
 {% endhint %}
 
 ## Types of Offers
@@ -6186,7 +6305,7 @@ There are multiple types of Offer modifications.
 * Free gift
 
 {% hint style="info" %}
-You can place at only Offer one into each Experience.
+You can place at only Offer one into each Personalization.
 {% endhint %}
 
 Each one can optionally be configured to display popups, progress bars, and other **Global Styles components** to help you communicate the offers to visitors.
@@ -6194,7 +6313,7 @@ Each one can optionally be configured to display popups, progress bars, and othe
 ## **Promotions**
 
 * **Eligible Products:** Select which products are eligible for your Promotion. If no products are selected, then all products will be eligible.
-* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Experiences. If you leave this unchecked, customers will not be able to stack multiple Experiences containing offers together.
+* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Personalizations. If you leave this unchecked, customers will not be able to stack multiple Personalizations containing offers together.
 * **Offer Type and Amount:** This can be a percentage off, dollar amount off per order, or dollar amount off per item.
 * **Minimum Purchase Requirement:** The number of units or dollar amount needed to achieve the discount. "No Minimum Requirement" will be selected by default.
 * **Maximum Discount Amount:** The maximum dollar amount discount that a customer can receive in the case of a percentage off offer.
@@ -6207,7 +6326,7 @@ Each one can optionally be configured to display popups, progress bars, and othe
 ## Gift with Purchase
 
 * **Select a Gift with Purchase:** Select which product will be provided as a gift with purchase. Note that you can only select one product, and one variant if there are multiple variants of that product. If you would like your customers to be able to choose a variant, please note that Intelligems does not currently provide the front end component for this.
-* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Experiences. If you leave this unchecked, customers will not be able to stack multiple Experiences containing offers together.
+* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Experiences. If you leave this unchecked, customers will not be able to stack multiple Personalizations containing offers together.
 * **Minimum Purchase Requirement:** The number of units or dollar amount needed to achieve the discount. "No Minimum Requirement" will be selected by default.
   * **Eligible Products:** If the gift with purchase should only be applied when visitors buy select products, you can additionally specify which products count toward the gift here. If you specify eligible products, only these will count toward the minimum you set. For example, if visitors only get GWP if they buy 3 items (or $30 worth of items) and only products A and B are eligible, then they will have to buy 3 of A and/or B (or $30 worth of A and/or B) to get the gift.
 * **Automatically Add Gift to Cart:** Toggling this option on will automatically add the gift to cart when a customer has met the requirements. If this is left off, a customer will need to manually add the product to cart to receive the free gift. Please note that you'll need to choose one product variant to be able to turn this option on.
@@ -6226,7 +6345,7 @@ The free shipping offer activates free shipping under certain conditions, automa
   * **By amount:** for example, use this if it would be too expensive for you to discount shipping on large expensive-to-ship items.
 * **Discount Label:** This is the discount name that'll be visible at checkout for customers who receive the discount.
 
-  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FPcY96glQ6PSbsVAlgGy6%2Fimage.png?alt=media&#x26;token=67061237-1f24-45aa-bc66-eb8a13a3da7d" alt=""><figcaption><p>Discount Label Placement</p></figcaption></figure>
+  <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-05114b70ce3a59588ca241b948c68588c1007d0a%2Fimage.png?alt=media" alt=""><figcaption><p>Discount Label Placement</p></figcaption></figure>
 
 {% embed url="<https://www.loom.com/share/d111b5f7b7574d4e8ca3a73c3615cedf?sid=6e1e2b3c-7803-4c9f-b825-af418d23e4e8>" %}
 
@@ -6235,8 +6354,8 @@ The free shipping offer activates free shipping under certain conditions, automa
 To configure a Volume Discount, fill out the following fields:
 
 * **Eligible Products:** Select which products are eligible for your Volume Discount. If no products are selected, then all products will be eligible.
-* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Experiences. If you leave this unchecked, customers will not be able to stack multiple Experiences containing offers together.
-* **Discount Tiers:** You are able to create up to four different discount tiers using the blue + sign. For each tier, you will select:
+* **Should Stack:** Select whether the offer should combine with other offers that are running at the same time in different Personalizations. If you leave this unchecked, customers will not be able to stack multiple Personalizations containing offers together.
+* **Discount Tiers:** You are able to create up to four different discount tiers using the blue <mark style="color:blue;">`+`</mark> sign. For each tier, you will select:
   * Whether eligibility for the discount should be based on the quantity of items or the cart subtotal.
   * Whether the discount should be a percentage off, dollar amount off per order, or dollar amount off per item.
   * The number of units or dollar amount needed to achieve the discount.
@@ -6262,11 +6381,11 @@ You can optionally show various components that communicate your offer to users.
 * **Pop Up / Slide Out:** This pop up location can be configured during setup. The language and colors are fully customizable so you can use this feature to highlight what you want.
 
 {% hint style="warning" %}
-**Pop Up / Slide Out Messages** are only shown on the homepage and cannot be configured to be shown on any other pages at this time.&#x20;
+**Pop Up / Slide Out Messages** are only shown on the homepage and cannot be configured to be shown on any other pages at this time.
 {% endhint %}
 
-* **Quantity Buttons:** These buttons will appear on your product pages for customers to quickly add multiple units to cart. They are automatically installed via the Intelligems script. If you have any trouble with these showing up inside an Offer Experience, email <support@intelligems.io>.&#x20;
-* **Shipping Progress Bar & Offer Progress Bar:** This bar will appear in the cart view to show your customers how much more they need to purchase to achieve specific discounts or free shipping, prompting them to buy more to get the best deal without ever leaving their cart. More info [here](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets).
+* **Quantity Buttons:** These buttons will appear on your product pages for customers to quickly add multiple units to cart. They are automatically installed via the Intelligems script. If you have any trouble with these showing up inside an Offer Personalization, [please use this form to contact our support team](https://portal.usepylon.com/intelligems/forms/intelligems-support-request). Let us know which experience and specific URLs we can help you with.
+* **Shipping Progress Bar & Offer Progress Bar:** This bar will appear in the cart view to show your customers how much more they need to purchase to achieve specific discounts or free shipping, prompting them to buy more to get the best deal without ever leaving their cart. More info [here](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets).
 
 {% hint style="danger" %}
 **Headless Stores:** Components do not work out-of-the-box and customers must build their own front-end implementation.
@@ -6274,7 +6393,7 @@ You can optionally show various components that communicate your offer to users.
 
 ## Testing Offers
 
-You can test offers against each other to see which one is best. You can do this in two ways: create and Offer and then add it to a Test or Create an Offer Test. Both flows achieve the same results. You can follow either setup flow below.&#x20;
+You can test offers against each other to see which one is best. You can do this in two ways: create and Offer and then add it to a Test or Create an Offer Test. Both flows achieve the same results. You can follow either setup flow below.
 
 ### Setting Up an Offer Test from Offer Creation Flow
 
@@ -6284,7 +6403,7 @@ You can test offers against each other to see which one is best. You can do this
 
 {% embed url="<https://www.loom.com/share/402158d0b8c845c39e07477e3b401e84>" %}
 
-You can read our [full guide here](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+You can read our [full guide here](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 ## How do Offers Work?
 
@@ -6307,13 +6426,13 @@ You'll need the Intelligems JavaScript snippet installed in your theme to use In
 
 ## Offer Message
 
-No installation required. This component is automatically available to be added to an Offer once Intelligems is installed in your theme.&#x20;
+No installation required. This component is automatically available to be added to an Offer once Intelligems is installed in your theme.
 
 ## Shipping Progress Bar
 
 ### Step 1: Add the shipping progress bar to your Shopify theme
 
-Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add a Shipping Progress Bar to a Test or Experience. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, etc. We recommend adding this code snippet at the top of the section that relates to your cart:
+Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add a Shipping Progress Bar to a Test or Personalization. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, etc. We recommend adding this code snippet at the top of the section that relates to your cart:
 
 ```html
 <ig-shipping-progress-container></ig-shipping-progress-container>
@@ -6338,7 +6457,7 @@ You can customize the Intelligems Shipping Progress Bar in the [Global Styles](h
 
 ## Quantity Buttons
 
-No installation required. This component is automatically available to be added to an Offer once Intelligems is installed in your theme.&#x20;
+No installation required. This component is automatically available to be added to an Offer once Intelligems is installed in your theme.
 
 You can customize the Intelligems Offer quantity buttons in the [**Global Styles**](https://docs.intelligems.io/general-features/global-styles) located in the left menu. Stylizing options include:
 
@@ -6346,13 +6465,13 @@ You can customize the Intelligems Offer quantity buttons in the [**Global Styles
 * Button primary, secondary and border colors
 * Customizable for both desktop and mobile
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FCRjOATNnViLiEyiE2dl2%2FGlobal%20Styles.png?alt=media&#x26;token=77667ed3-7c61-4739-90b5-e9ccd0905e96" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-17694df854247cb6ed85e3b56f06f81c0e1e7564%2FGlobal%20Styles.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
-Note that quantity buttons will only reflect your store's default currency, so if you are choosing to use quantity buttons for your Offer Experience or Offer Test, you should also set up targeting for your store's default currency.&#x20;
+Note that quantity buttons will only reflect your store's default currency, so if you are choosing to use quantity buttons for your Offer Experience or Offer Test, you should also set up targeting for your store's default currency.
 {% endhint %}
 
-**If you want to use components with multiple currencies, follow the steps below:**&#x20;
+**If you want to use components with multiple currencies, follow the steps below:**
 
 1. Add the script below to the `<head>` section of your **theme.liquid** file
 
@@ -6375,19 +6494,19 @@ Note that quantity buttons will only reflect your store's default currency, so i
 
 2. Inside Intelligems, go to Settings and scroll down to **Currency Function**
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F6bAmGWelpAV22PfyAaFR%2FScreenshot%202025-11-04%20at%202.06.59%E2%80%AFPM.png?alt=media&#x26;token=2908fc71-12ea-4f13-a5e0-4e7ff24a8077" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-fa858a14b1c28bb7c35e014c61a8e8cda86d6efe%2FScreenshot%202025-11-04%20at%202.06.59%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 3. Add `window.igCurrencyFn` into the **Currency Function** field and click **Save Configurations**\\
 
 {% hint style="danger" %}
-The quantity buttons are a layer over top of your store's quantity buttons and only available when added to a a Offer Experience or Offer Test. To change the default quantity selected in an offer, you'll need to change the default quantity within Shopify.
+The quantity buttons are a layer over top of your store's quantity buttons and only available when added to an Offer Personalization or Offer Test. To change the default quantity selected in an offer, you'll need to change the default quantity within Shopify.
 {% endhint %}
 
 ## Offer Progress Bar
 
 ### Step 1: Add the progress bar to your Shopify theme
 
-Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add an Offer Progress Bar to an Offer Experience or Offer Test. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, `cart-template.liquid`, etc. We recommend adding this near to the top of the cart in most instances.
+Paste the following code snippet into your Shopify theme code, in the theme file that renders your cart in order to add an Offer Progress Bar to an Offer Personalization or Offer Test. This file may be called something like `cart.liquid`, `slideout-cart.liquid`, `cart-template.liquid`, etc. We recommend adding this near to the top of the cart in most instances.
 
 ```markup
 <ig-volume-progress-bar-widget></ig-volume-progress-bar-widget>
@@ -6461,30 +6580,32 @@ If you use Rebuy for your slide out cart, you'll need to follow these steps to a
 
 # Quantity Buttons
 
-Add fully customizable Quantity Buttons component to an Experience or Test
+Add fully customizable Quantity Buttons component to a Personalization or Test
 
 ### Overview
 
-Quantity Buttons replace standard quantity selectors within an Offer Experience with promotional buttons that highlight savings and encourage larger purchases. They showcase volume discounts and tiered pricing to drive higher average order values.&#x20;
+Quantity Buttons replace standard quantity selectors within an Offer Personalization with promotional buttons that highlight savings and encourage larger purchases. They showcase volume discounts and tiered pricing to drive higher average order values.
 
 {% hint style="warning" %}
-**Important:**&#x20;
+**Important:**
 
-* Quantity Buttons are automatically installed via the Intelligems script
+* Quantity Buttons are automatically installed via the Intelligems script. If you are not seeing them when you preview your Offer on an eligible product, please see [the below](#installing-the-quantity-buttons) for help.&#x20;
 * You must select specific products for Quantity Buttons to be available as a component option when setting up an Offer
-* To set up a Price Test with Quantity Buttons [follow these steps](https://docs.intelligems.io/offer-experiences/broken-reference).&#x20;
+* To set up a Price Test with Quantity Buttons [follow these steps](https://docs.intelligems.io/offer-experiences/how-to-set-up-a-price-test-with-quantity-buttons).
   {% endhint %}
 
 {% hint style="info" %}
-**Note**: Quantity Buttons are only available on Volume discount Offers.
+**Note**: Quantity Buttons are only available on Quantity Discounts.
 {% endhint %}
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FlEi5IyZZgCQwjL2X7feE%2FQuantity%20button%20config5.png?alt=media&#x26;token=6d2c3c3f-3e6d-49f8-b83e-c17eba569588" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-21edf96134456a2cc03b1c219bee7850a3385430%2FQuantity%20button%20config5.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Key Features
 
 * **Multiple Button Styles**: Choose from Classic List, Image Cards, or Compact layouts
-* **Dynamic Pricing Display**: Real-time pricing, savings calculations, and discount percentages
+* **Dynamic Pricing Display**: Real-time pricing, savings calculations, price per item, and discount percentages
+* **Choose Default Variant:** Choose which variant is selected as default - instead of the lowest or single unit, you can select a higher tier to increase AOV
+* **Show Prices per Item:** Update the price shown on PDP as a price per item for multiple units
 * **Enhanced Text Customization**: Add badges, labels, subtitles, and custom messaging
 * **Free Shipping & Gift Integration**: Display badges and callouts directly on buttons
 
@@ -6493,17 +6614,17 @@ Quantity Buttons replace standard quantity selectors within an Offer Experience 
 **Classic List**\
 Clean, vertical layout with organized quantity tiers. Best for traditional presentations with detailed pricing.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F6tSiub1gQsX05rPmysEF%2FScreenshot%202025-10-13%20at%203.22.14%E2%80%AFPM.png?alt=media&#x26;token=492a2d31-b4f2-46da-b097-9981bd75335b" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1dac7546f816f31ee90cbf20a9e0eabb8d39de41%2FScreenshot%202025-10-13%20at%203.22.14%E2%80%AFPM.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
 
 **Image Cards**\
 Includes product images for each option. Ideal for bundles, gift sets, and visual product storytelling.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FycJcT8zdvPVSodlJdzD4%2FAccordionA.png?alt=media&#x26;token=12b8b055-b293-4d4f-a951-4f6444837264" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-d57ccbe2fade75f543c214b38198f7a3b09e05fb%2FAccordionA.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 **Compact**\
 Space-saving horizontal layout for quick comparison. Perfect for limited space and mobile experiences.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FELyOvO9kd2jQI3zRNuol%2FAccordionC.png?alt=media&#x26;token=34cc208b-695d-4de8-90fa-75675838c99a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-61de82a3ebcba25266132a15dd5f02dd202c18ef%2FAccordionC.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Configuration
 
@@ -6545,7 +6666,7 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 
 **Example Usage:** "Save {Saved percentage} on {Product title}"
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FTnWLuiGvyy38cRdnOPrQ%2FQuantity%20button%20configvariables.png?alt=media&#x26;token=0616a823-985f-4398-889f-731bb83be943" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-8124e78e321d8dbd24e2ddf035fa3083286eb333%2FQuantity%20button%20configvariables.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Example Use Cases
 
@@ -6560,7 +6681,7 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 
 ### How It Works
 
-**Volume discount Offers:**
+**Quantity Discount Offers:**
 
 1. Configure discount trigger and discount value
 2. Add specific products this Offer should apply to (cannot be left empty for all products)
@@ -6572,11 +6693,10 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 8. Style to match brand preferences
 9. Preview with product switching
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F0kM3Jqsf5Msix5iAQLa8%2FOffer%20setup%20-%20expanded%20viewVD.png?alt=media&#x26;token=14d1511d-557f-49c4-9969-6b2dc42227ee" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-5ddfa27c8d7b9a96b979343acd9448191eb78c0e%2FOffer%20setup%20-%20expanded%20viewVD.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
-
-### Tips
+**Tips**
 
 * **Compelling Tiers**: Clear value progression with meaningful savings increases
 * **Visual Hierarchy**: Use badges and colors to guide toward preferred options
@@ -6584,34 +6704,43 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 * **A/B Testing**: Test layouts, messaging, and promotional strategies
   {% endhint %}
 
-### Troubleshooting
+### Installing the Quantity Buttons&#x20;
 
-**Buttons Not Appearing**: Verify Offer is active, products selected, and requirements met
+Quantity Buttons are automatically installed on your product pages once the [Intelligems script](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) is added to your theme. Our script detects the standard quantity selector on your product detail pages and installs the buttons there.
 
-**Pricing Issues**: Check discount calculations and product pricing in offer settings
+**When will I see the buttons?** The buttons will appear on your product pages once you've either:
 
-**Variable Display**: Verify variable syntax and test with different product selections
+* Started previewing an Offer with Quantity Buttons enabled, or
+* Launched a live Offer with Quantity Buttons enabled
 
-**Previous Variant & Quantity buttons displaying:** Hide these elements with a Content Edit&#x20;
+**What if the buttons aren't showing up?** If you don't see the buttons, your theme may use a custom quantity selector that differs from the standard format. To resolve this, add the following snippet to your product page (PDP) liquid code:
 
-Still having trouble? Email <support@intelligems.io>
+```liquid
+<ig-volume-quantity-widget></ig-volume-quantity-widget>
+```
 
-Last updated: 7/29/25
+**What if the buttons are showing up, but not in the correct location?** If you see the buttons but they are not in the location you would like them to be on your PDP, your theme may use a custom quantity selector that differs from the standard format. To resolve this, add the following snippet to your product page (PDP) liquid code in the location you would like the buttons to be:
+
+```liquid
+<ig-volume-quantity-widget></ig-volume-quantity-widget>
+```
+
+This will ensure the buttons display correctly on your site. Please reach out to our support team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you would like help completing this!&#x20;
 
 
 # Progress Bars
 
-Add a fully customizable Progress Bar component to an Experience or Test
+Add a fully customizable Progress Bar component to a Personalization or Test
 
 ### Overview
 
-Progress bars visually show customers their progress toward rewards like discounts or free shipping in an Offer Experience or Offer Test. They motivate customers by showing "how close am I to unlocking this discount?" and help drive larger cart values.
+Progress bars visually show customers their progress toward rewards like discounts or free shipping in an Offer Personalization or Offer Test. They motivate customers by showing "how close am I to unlocking this discount?" and help drive larger cart values.
 
 {% hint style="warning" %}
-**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets)
+**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets)
 {% endhint %}
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FRJEdIAY3l8PnpjMO3OM0%2FQuantity%20button%20config.png?alt=media&#x26;token=a0caf840-921e-4152-a59c-3345330265c1" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f4901ee56d4567b553acb11efb6ef40a75a6247%2FQuantity%20button%20config.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Key Features
 
@@ -6626,7 +6755,7 @@ Progress bars require a minimum purchase requirement (dollar amount or quantity)
 
 On Volume discount and Free shipping Offers, Progress bars are automatically available to use.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F3KEBYVQcFLf72KCRlRkW%2FAmount%20off%20products%20-%20Offer%20settings%20-%20expanded.png?alt=media&#x26;token=02190cbc-d25e-4f63-9acf-65e5a97be55a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-588fb252e20f2079078e8d72ef614363cd97d6d3%2FAmount%20off%20products%20-%20Offer%20settings%20-%20expanded.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Configuration
 
@@ -6636,7 +6765,7 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 * **Dollar Amount**: Set spending-based thresholds (e.g., "Spend $75 for free shipping")
 * **Multiple Tiers**: Configure escalating rewards at different levels
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F0sFfZixdM6EFms64M60T%2FOffer%20setup%20-%20expanded%20view.png?alt=media&#x26;token=bd9dac75-5b11-4dc8-84bb-2558364f4a69" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-87975ca2e775c5c90c929cc8b3172edf051d25c4%2FOffer%20setup%20-%20expanded%20view.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### Styling Controls
 
@@ -6644,7 +6773,7 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 * **Text**: Dynamic progress messaging, completion text, breakpoint labels
 * **Typography**: Font size & font style
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FhyIf44cJaVbBvheM6sEX%2FQuantity%20button%20config1.png?alt=media&#x26;token=de417e21-5d93-4e18-9b93-fb8118e431d5" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-57e04f350312a4326c0e2c95f1f33dafd7748798%2FQuantity%20button%20config1.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Dynamic Variables
 
@@ -6660,19 +6789,19 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 **Free Shipping Threshold**\
 "Spend $15 more to get free shipping!" → "You've unlocked free shipping!"
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FYV4KOkbnWQyGtgtABdIA%2FAccordion1.png?alt=media&#x26;token=e06d9263-d76e-41d5-9904-d4115ae679b6" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-133d468e1deda111045606ca2ef70435b19f70ef%2FAccordion1.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 \
 **Volume Discount**\
 "Buy 2 more items to unlock 15% off!" with locks on milestones
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FL5xE1wFLJ9CwlbmEtAFQ%2FAccordion3.png?alt=media&#x26;token=50381916-87c9-4de1-9824-c8d981dca36d" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-83db7e2878310d02664284a666d4e81af0edf7ec%2FAccordion3.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 \
 **Gift with purchase**\
 "Spend $20 more to get a free tote bag!" with gift icon breakpoint
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F9XrJM5vq9RIgrlmps5xc%2FAccordion4.png?alt=media&#x26;token=763060f3-9e54-4973-ba8c-0695ec6e1a52" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-0006edcf92b3b76d20bac874b05040dbfc42b735%2FAccordion4.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### How It Works
 
@@ -6686,7 +6815,7 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 6. Configure styling to match your brand
 7. Preview with different cart values
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FElrQUtHM54z8s5rm2ZV4%2FAmount%20off%20order%20-%20Offer%20settings.png?alt=media&#x26;token=d02a279f-6f1a-40ba-93fe-5d89698fde82" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-dea32fc4db284ed22cbc5e0236839be03cc08854%2FAmount%20off%20order%20-%20Offer%20settings.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 \
 **Volume discount Offers:**
@@ -6698,7 +6827,7 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 5. Configure styling to match your brand
 6. Preview with different cart values
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FQqueBDQTDy4SMMTHCxxc%2FOffer%20setup%20-%20expanded%20view1.png?alt=media&#x26;token=9cac3bca-979c-446b-ba9a-98e82c55cdca" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f6efff65bfdd9438aada0007f787d27de35dfa66%2FOffer%20setup%20-%20expanded%20view1.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 \
 **Free shipping Offers:**
@@ -6711,11 +6840,10 @@ On Volume discount and Free shipping Offers, Progress bars are automatically ava
 6. Configure styling to match your brand
 7. Preview with different cart values
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FFFtpeQJt0koOYvRPW5Yh%2FOffer%20setup%20-%20expanded%20view2.png?alt=media&#x26;token=35542975-ea4c-46ce-b8ba-eaf1807d89ce" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ded8f6b5c84f85a6106c19554757019866091d3d%2FOffer%20setup%20-%20expanded%20view2.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
-
-### Tips
+**Tips**
 
 * **Set Achievable Goals**: Start with 1.5-2x your average order value
 * **Use Brand Colors**: Integrate with your site's color scheme
@@ -6734,13 +6862,13 @@ Last updated: 7/29/25
 
 # Offer Messages
 
-Add a slideout message to your Offers and other Experiences
+Add a slideout message to your Offer Personalizations and Offer Tests.
 
 ### Overview
 
-Offer Messages are promotional call-outs that appear as overlays to highlight special offers and drive engagement. They capture customer attention at key moments in the shopping journey. They can be added to an Offer Experience or Offer Test.
+Offer Messages are promotional call-outs that appear as overlays to highlight special offers and drive engagement. They capture customer attention at key moments in the shopping journey. They can be added to an Offer Personalization or Offer Test.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F3aRkHGaOfdYcVjAgrXF6%2FOffer%20message%20-%20pop%20up%20message.png?alt=media&#x26;token=b103f521-dae9-4823-ac6c-83a16dcdc6f4" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-86a6792d3b307b7f48b3f0fa9f61505b64cbb3a4%2FOffer%20message%20-%20pop%20up%20message%20(1).png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Key Features
 
@@ -6755,12 +6883,12 @@ Offer Messages are promotional call-outs that appear as overlays to highlight sp
 **Pop Up**\
 Standard promotional overlay for high-priority announcements and urgent offers.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FmOk3NWQFXRJQICq7iFF7%2FFrame%202147226290.png?alt=media&#x26;token=b73ca9a5-2047-4826-8751-9c61ff92bf74" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1342260b85413233856df6832578d6bc8f4cc6dc%2FFrame%202147226290.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 **Slide Out**\
 Smooth animated entrance for subtle promotional messaging without disrupting site flow.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F5kN2rVuO53L5lydqTWNM%2FFrame%202910.png?alt=media&#x26;token=acaa1a41-52b8-4373-8022-4a8644810cf0" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-63f451bd1e71bbab96f3f41e81184bd4a99397ba%2FFrame%202910.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Configuration
 
@@ -6781,7 +6909,7 @@ Body: "Get [discount/offer details] when you [action]. Limited time."
 * **Appearance**: Corner radius, color themes, typography
 * **Placement**: Top-left or top-right positioning
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FHlfp1JeTqmiuArtfXQ0R%2FQuantity%20button%20config3.png?alt=media&#x26;token=5785f43b-ab62-438d-9a59-a33e04d7f268" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-166ae0268cd79dd7c24fbaff3436600fab5fbc77%2FQuantity%20button%20config3.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Example Use Cases
 
@@ -6801,11 +6929,10 @@ Body: "Get [discount/offer details] when you [action]. Limited time."
 6. Set styling and placement preferences
 7. Preview and test
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FgBaYKgqLgGpAT4eRz8cd%2FOffer%20message%20-%20pop%20up%20message2.png?alt=media&#x26;token=05d54fa7-13d7-4ae4-8e6a-bc74c1476ea2" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-346ede5cb99954624acd81e0d0a820fccd1dabd8%2FOffer%20message%20-%20pop%20up%20message2%20(1).png?alt=media" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
-
-### Tips
+**Tips**
 
 * **Clear Value Props**: Immediately communicate what customers receive
 * **Action Language**: Use "Save," "Get," "Unlock" in your messaging
@@ -6820,7 +6947,7 @@ Body: "Get [discount/offer details] when you [action]. Limited time."
 Last updated: 7/29/25
 
 
-# Upgrade Offer components
+# Upgrade Offer Components
 
 Update your existing offers to use the latest component versions for improved performance and styling options.
 
@@ -6830,37 +6957,37 @@ Update your existing offers to use the latest component versions for improved pe
 
 Navigate to the offer containing the component you want to upgrade.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FTgemsk7Hq9k0dMdcv9u5%2FScreenshot%202025-08-05%20at%202.27.14%E2%80%AFPM.png?alt=media&#x26;token=ad8160c7-0f5b-4857-9f48-b0968c06364c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-ee61b6f4b675b4b16f3ca188718da6a433b3e05d%2FScreenshot%202025-08-05%20at%202.27.14%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 2. Access component settings
 
 In the Mods section, click the three-dot menu next to the component you want to upgrade, then select "Edit component."
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F5D5wn96NMbQtVKdeCdBx%2FFrame%202147226308.png?alt=media&#x26;token=555f0890-51a8-4913-88cb-9e6137f052db" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-bcdaa9279dfe3c014613d686cb54b9f5fe719295%2FFrame%202147226308.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 3. Open styling options
 
 The Color & Style section is collapsed by default. Click to expand it.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FBMfsYLpQq0tzRsHqalGX%2FFrame%202147226306.png?alt=media&#x26;token=cf06e4c4-d3f9-4337-9e53-8e2957d1c249" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-428577dced920ff35fafa2ce0aaeac1fccff74e8%2FFrame%202147226306.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 4. Change component style
 
 Click the "Change \[button] \[bar] \[message] style" link to view available component options.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FdZBHMNgoeiLVGxJa7ozd%2FFrame%202147226309.png?alt=media&#x26;token=d0a2a406-7d0d-47a0-9aaa-7b07b418ec2f" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-18c08531d8b7d908e3e62c5e13dbb262fe2f86c3%2FFrame%202147226309.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 5. Select new component
 
 Choose your preferred component from the available options.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FcU8FhD5bfj1cHRa7jldv%2FScreenshot%202025-08-05%20at%202.28.31%E2%80%AFPM.png?alt=media&#x26;token=36f09013-0772-460d-85ff-a03e8024820a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-29e0ad37bd83e2393f0684839af47cab3cef3fe6%2FScreenshot%202025-08-05%20at%202.28.31%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 6. Configure your component
 
 Adjust color & styling as needed for your offer.
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FU9IE9kh5o0u7bxNui6yf%2FScreenshot%202025-08-05%20at%202.30.24%E2%80%AFPM.png?alt=media&#x26;token=a27c4736-bff4-46de-90b3-487718b760d8" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-99d1ac41e73ca96ca86d054f044273cb82a2e0e4%2FScreenshot%202025-08-05%20at%202.30.24%E2%80%AFPM.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### 7. Save changes
 
@@ -6870,14 +6997,14 @@ Click "Save" to apply your component upgrade.
 **Note:** If your offer uses multiple components, the system will prompt you to review each one. You can skip components that don't need updates, but you'll need to confirm changes on each screen before finalizing.
 {% endhint %}
 
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fd3MqlWQ42sgIWWgagvMR%2FFrame%202147226307.png?alt=media&#x26;token=d78bd625-ad8c-486a-bb2d-99d8ba07dd17" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-c0a3260f7e13edd1adbb0276cc0e217da52f4054%2FFrame%202147226307.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 
-# Offer Experiences Library
+# Offer Personalizations Library
 
-Learn how to build 8 Offer Experiences in your store
+Learn how to build 8 Offer Personalizations in your store
 
-We built Offer Experiences to be a robust tool to power any almost any offer you can imagine, right inside of Intelligems.&#x20;
+We built Offer Personalizations to be a robust tool to power any almost any offer you can imagine, right inside of Intelligems.
 
 ## How to Think About Offers
 
@@ -6898,30 +7025,30 @@ Every great promotion/offer comes down to three simple questions: **When**, **Wh
 
 When you combine these, you’ve got the full picture of your offer. And the final piece to keep in mind is the **Why** — the goal you’re trying to achieve, whether that’s boosting conversion, increasing order value, rewarding loyalty, or driving urgency.
 
-Put simply: *a strong offer connects the right incentive, to the right people, at the right time — all in service of your bigger growth goals.*&#x20;
+Put simply: *a strong offer connects the right incentive, to the right people, at the right time — all in service of your bigger growth goals.*
 
 ## 8 Offers To Build Right Now with Intelligems
 
-1. [Holiday Sale](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-holiday-sale)
-2. [Early Access Sale](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-an-early-access-sale)
-3. [Buy More, Save More Volume ($) Discount](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-buy-more-save-more-volume-discount)
-4. [Buy More, Save More Quantity (units) Discount](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-buy-more-save-more-quantity-discount)
-5. [Partner Exclusive Discount (Influencer, Ambassador, Affiliate)](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-partner-offer-influencer-ambassador-affiliate-etc.)
-6. [Free Gift with Purchase Threshold](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-free-gift-with-purchase-threshold-offer)&#x20;
-7. [Seasonal Clearance Extra % Off Discount](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-seasonal-clearance-discount)
-8. [Free Shipping Threshold](https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-free-shipping-threshold-offer)
+1. [Holiday Sale](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-holiday-sale)
+2. [Early Access Sale](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-an-early-access-sale)
+3. [Buy More, Save More Volume ($) Discount](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-buy-more-save-more-volume-discount)
+4. [Buy More, Save More Quantity (units) Discount](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-buy-more-save-more-quantity-discount)
+5. [Partner Exclusive Discount (Influencer, Ambassador, Affiliate)](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-partner-offer-influencer-ambassador-affiliate-etc.)
+6. [Free Gift with Purchase Threshold](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-free-gift-with-purchase-threshold-offer)
+7. [Seasonal Clearance Extra % Off Discount](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-seasonal-clearance-discount)
+8. [Free Shipping Threshold](https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-free-shipping-threshold-offer)
 
 
 # How to Set Up a Holiday Sale
 
-Steps to launch a Holiday Sale using an Offer Experience
+Steps to launch a Holiday Sale using an Offer Personalization
 
 ## Holiday Sale
 
-You can use Offers to power your holiday sales. Whether you're running the offer to 100% of traffic, or a segment in Klaviyo, Intelligems makes it easy to create, schedule, and automate your offer. Our customers user Offers to power their holiday sales like Valentine's Day, Mother's Day, 4th of July, Black Friday, etc.
+You can use Offer Personalizations to power your holiday sales. Whether you're running the offer to 100% of traffic, or a segment in Klaviyo, Intelligems makes it easy to create, schedule, and automate your offer. Our customers user Offers to power their holiday sales like Valentine's Day, Mother's Day, 4th of July, Black Friday, etc.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.&#x20;
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Increase revenue, move through inventory, make money!
@@ -6938,10 +7065,10 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 * This amount might be set based on the goal of the sale, competitive landscape, or MAP policy with retailers
 
-**Offer Experience:**&#x20;
+**Offer Experience:**
 
 * Timing: Time-limited, typically 3-5 days
-* Where:&#x20;
+* Where:
   * Website
     * Homepage
     * PDP banners
@@ -6953,16 +7080,16 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
   * Other marketing channels
 * Activation: Automatic, no code, with a scheduled start time and scheduled end time
 
-**Why it works:** Customers expect deals during holidays, especially when competitors are running sales, and it's a natural urgency moment since it's time-bound.&#x20;
+**Why it works:** Customers expect deals during holidays, especially when competitors are running sales, and it's a natural urgency moment since it's time-bound.
 
 ### How to Set Up This Offer in Intelligems
 
 {% embed url="<https://www.loom.com/share/0b78f3282d864f6281da6ae9766c36bc?sid=805939c9-cf3d-46a2-a425-e1501d8df3b9>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Amount off Order**
 3. Add an Offer name (internal name)
-4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.&#x20;
+4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.
    1. e.g. Fall 30% off Sale
 5. Select discount value
    1. Choose **percentage off order** to offer a discount amount on their order
@@ -6971,12 +7098,11 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
    1. Select quantity of items if you want a customer to purchase a minimum X units to qualify for the discount
    2. Select subtotal of items if you want a customer to purchase a minimum $ amount to qualify for the discount
 7. Leave the box unchecked if there are no minimum requirements for the discount to be applied
-8. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.&#x20;
+8. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.
    1. You can select products based on Product Type, Vendor, Status, Collections, and also search for individual products
 
 {% hint style="info" %}
 We recommend setting up a Sale collection in Shopify and then select that collection\\
-
 {% endhint %}
 
 9. Choose if you want this discount to combine with other Shopify discounts
@@ -6987,25 +7113,25 @@ We recommend setting up a Sale collection in Shopify and then select that collec
 12. Click **Complete offer setup**
 13. At this point, you can make additional modifications by clicking **+ Add modification**
     1. You can update the content, launch a different Theme or Template, and update styles or javascript
-14. Add **Targeting** to choose which shoppers you want to see this 30% off discount Offer. It will be set to all visitors by default.&#x20;
+14. Add **Targeting** to choose which shoppers you want to see this 30% off discount Offer. It will be set to all visitors by default.
     1. If you're running a specific offer to a smaller group of your shoppers, you can select your audience in the Targeting tab
 15. **Save** your Offer
 16. **Preview** your Offer on desktop and mobile
-17. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+17. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
-18. Double-check everything else on your list to make sure you're supporting this sale like email, sms, and other marketing channels.&#x20;
+18. Double-check everything else on your list to make sure you're supporting this sale like email, sms, and other marketing channels.
 
 
 # How to Set Up an Early Access Sale
 
-Steps to launch an Early Access sale using an Offer Experience
+Steps to launch an Early Access sale using an Offer Personalization
 
 ## Early Access Sale
 
-You can use Offers to power your Early Access Sales. If you'd like to create a rich experience for VIP customers that you offer Early Access to, use build an Offer that updates the content, powers the discount automatically, and makes the customer feel special.&#x20;
+You can use Offers to power your Early Access Sales. If you'd like to create a rich experience for VIP customers that you offer Early Access to, use build an Offer that updates the content, powers the discount automatically, and makes the customer feel special.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Create VIP early access moment; replicate the public sale experience
@@ -7022,10 +7148,10 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 * This amount might be set based on the goal of the sale, competitive landscape, or MAP policy with retailers
 
-**Offer Experience:**&#x20;
+**Offer Experience:**
 
 * Timing: Time-limited, typically 2-5 days
-* Where:&#x20;
+* Where:
   * Website
     * Homepage
     * PDP banners
@@ -7035,16 +7161,16 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
   * VIP Facebook or WhatsApp group
 * Activation: Automatic, no code, with a scheduled start time and scheduled end time
 
-**Why it works:** Customers love feeling like VIPs and getting early access to sales, plus it's a natural urgency moment since it's time-bound.&#x20;
+**Why it works:** Customers love feeling like VIPs and getting early access to sales, plus it's a natural urgency moment since it's time-bound.
 
 ### How to Set Up This Offer in Intelligems
 
 {% embed url="<https://www.loom.com/share/d57f558e19a743d396d0c692bc485f35?sid=40bbddb4-f8a2-4144-8bec-57aa65fa306c>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Amount off Order**
 3. Add an Offer name (internal name) like Early Access 25% off
-4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.&#x20;
+4. Add a Discount name that matches the sale. This will be shown to shoppers in their cart and at checkout.
    1. e.g. Exclusive Early Access 25% off
 5. Select discount value
    1. Choose **percentage off order** to offer a discount amount on their order
@@ -7053,12 +7179,11 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
    1. Select quantity of items if you want a customer to purchase a minimum X units to qualify for the discount
    2. Select subtotal of items if you want a customer to purchase a minimum $ amount to qualify for the discount
 7. Leave the box unchecked if there are no minimum requirements for the discount to be applied
-8. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.&#x20;
+8. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.
    1. You can select products based on Product Type, Vendor, Status, Collections, and also search for individual products
 
 {% hint style="info" %}
-We recommend setting up a Sale collection in Shopify and then select that collection\\
-
+We recommend setting up a Sale collection in Shopify and then select that collection
 {% endhint %}
 
 9. Choose if you want this discount to combine with other Shopify discounts
@@ -7074,27 +7199,27 @@ We recommend setting up a Sale collection in Shopify and then select that collec
 15. Copy that link
 16. **Save** your Offer
 17. **Preview** your Offer on desktop and mobile
-18. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+18. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when scheduling
-19. Share the link with your VIP Early Access customers via SMS, email etc.&#x20;
+19. Share the link with your VIP Early Access customers via SMS, email etc.
 
 {% hint style="info" %}
-Shoppers will only be able to access that Offer via that link. All other visitors will see your current site with no Offer.&#x20;
+Shoppers will only be able to access that Offer via that link. All other visitors will see your current site with no Offer.
 {% endhint %}
 
-20. Double-check everything else on your list to make sure you're supporting this Early Access sale as intended.&#x20;
+20. Double-check everything else on your list to make sure you're supporting this Early Access sale as intended.
 
 
 # How to Set Up a Buy More, Save More Volume Discount
 
-Steps to launch a Buy More, Save More Volume Discount using an Offer Experience
+Steps to launch a Buy More, Save More Volume Discount using an Offer Personalization
 
 ## Buy More, Save More Volume Discount
 
-You can use Offers to power your spend more, save more tiered volume discount. Use tiered thresholds to nudge bigger baskets (e.g. spend $100, get 10% off, spend $200, get 20% off). Intelligems makes creating and powering these offers, including a progress bar, super simple.&#x20;
+You can use Offers to power your spend more, save more tiered volume discount. Use tiered thresholds to nudge bigger baskets (e.g. spend $100, get 10% off, spend $200, get 20% off). Intelligems makes creating and powering these offers, including a progress bar, super simple.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Goal:** Increase AOV
@@ -7111,10 +7236,10 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 * This amount might be set based on the goal of the sale, competitive landscape, or MAP policy with retailers
 
-**Offer Experience:**&#x20;
+**Offer Experience:**
 
 * Timing: Always on
-* Where:&#x20;
+* Where:
   * Website
     * Homepage
     * PDP messaging
@@ -7127,21 +7252,20 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/f4882cc1e3984048a93597c9afe09352?sid=89efbb40-9d7d-44aa-8ee6-258b3bd73fab>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Volume Discount**
 3. Add an Offer name (internal name) like Spend $100, Get 10% Scaling
 4. Create three offer tiers
-5. Add a discount name to match each offer tier. This will be shown to shoppers in their cart and at checkout.&#x20;
+5. Add a discount name to match each offer tier. This will be shown to shoppers in their cart and at checkout.
    1. e.g. Spend $100, Save 10%; Spend $200, Save 20%
 6. Select discount value
    1. Choose **Percentage off** and **Subtotal of items** to offer a discount amount on their order
-   2. You can also select Dollar off per order or Dollar off per item as options. More on that setup here.&#x20;
-7. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.&#x20;
+   2. You can also select Dollar off per order or Dollar off per item as options. More on that setup here.
+7. Select which products you want this discount to be applied to. It will apply to all products by default if no products are selected.
    1. You can select products based on Product Type, Vendor, Status, Collections, and also search for individual products
 
 {% hint style="info" %}
 We recommend setting up a Sale collection in Shopify and then select that collection\\
-
 {% endhint %}
 
 9. Set up each of your tiers
@@ -7159,7 +7283,7 @@ We recommend setting up a Sale collection in Shopify and then select that collec
 15. Add **Targeting** to choose which shoppers you want to see this Buy More, Save More Offer
 16. **Save** your Offer
 17. **Preview** your Offer on desktop and mobile
-18. When everything looks good, **Schedule Your Offer Experience** or **Activate** to go live
+18. When everything looks good, **Schedule Your Offer Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when scheduling
 19. Boost your AOV!
 

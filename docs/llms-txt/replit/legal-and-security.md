@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/legal-and-security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Legal and Security
 
 > Learn about Replit's policies on security, privacy, licensing, usage limits, and other legal matters to help you use the platform safely and effectively.

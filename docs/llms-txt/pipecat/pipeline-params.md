@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/pipeline/pipeline-params.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PipelineParams
 
 > Configure pipeline execution with PipelineParams
@@ -18,7 +22,6 @@ params = PipelineParams()
 
 # Or customize specific parameters
 params = PipelineParams(
-    allow_interruptions=True,
     audio_in_sample_rate=16000,
     enable_metrics=True
 )
@@ -31,8 +34,15 @@ task = PipelineTask(pipeline, params=params)
 ## Available Parameters
 
 <ParamField path="allow_interruptions" type="bool" default="False">
-  Whether to allow pipeline interruptions. When enabled, a user's speech will
-  immediately interrupt the bot's response.
+  <Warning>
+    DEPRECATED: This parameter is deprecated. Configure interruption behavior
+    via [User Turn
+    Strategies](/server/utilities/turn-management/user-turn-strategies) instead.
+    See the `enable_interruptions` parameter on start strategies.
+  </Warning>
+
+  Whether to allow pipeline interruptions. When enabled, a user's speech will immediately
+  interrupt the bot's response.
 </ParamField>
 
 <ParamField path="audio_in_sample_rate" type="int" default="16000">
@@ -126,7 +136,6 @@ from pipecat.pipeline.runner import PipelineRunner
 
 # Create comprehensive parameters
 params = PipelineParams(
-    allow_interruptions=True,
     audio_in_sample_rate=8000,
     audio_out_sample_rate=8000,
     enable_heartbeats=True,
@@ -161,8 +170,3 @@ await runner.run(task)
 * Parameters are immutable once the pipeline starts
 * The `start_metadata` dictionary can contain any serializable data
 * For metrics collection to work properly, `enable_metrics` must be set to `True`
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

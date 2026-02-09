@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/agent-telemetry-export.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Telemetry Export
 
 * Author(s): [@codefromthecrypt](https://github.com/codefromthecrypt)
@@ -165,8 +169,3 @@ The environment variable approach:
 ## Revision history
 
 * 2025-12-04: Initial draft
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

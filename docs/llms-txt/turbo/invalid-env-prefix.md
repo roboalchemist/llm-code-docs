@@ -1,7 +1,6 @@
 # Source: https://turbo.build/messages/invalid-env-prefix.md
 
 # Invalid environment variable prefix
-Description: Learn more about errors with invalid environment variable prefixes in Turborepo.
 
 ## Why this error occurred
 
@@ -28,3 +27,7 @@ Remove the `$` prefix from your environment variable declaration.
 
 You can migrate to the `env` and `globalEnv` keys using `npx @turbo/codemod migrate-env-var-dependencies`.
 Check out [the codemod's documentation for more details](/docs/reference/turbo-codemod#turborepo-1x).
+
+---
+
+[View full sitemap](/sitemap.md)

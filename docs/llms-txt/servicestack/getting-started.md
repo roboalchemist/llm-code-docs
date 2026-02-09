@@ -2,18 +2,6 @@
 
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/ormlite/getting-started.md
 
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/redis/getting-started.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/ormlite/getting-started.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/redis/getting-started.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/ormlite/getting-started.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/redis/getting-started.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/ormlite/getting-started.md
-
 ---
 title: Getting started with OrmLite
 ---
@@ -200,7 +188,7 @@ services.AddOrmLite(options => {
 
 ## OrmLite Connection Factory
 
-Alternatively to configure OrmLite outside of an ASP .NET 8+ App you can use the `OrmLiteConnectionFactory` 
+Alternatively to configure OrmLite outside of an ASP .NET 10+ App you can use the `OrmLiteConnectionFactory` 
 directly using your App's DB Connection string along the RDBMS Dialect Provider of your choice, e.g:
 
 ```csharp
@@ -335,19 +323,19 @@ dotnet add package ServiceStack.OrmLite.MySql       // MySql
 Or you can add the following to your `csproj` file.
 
 :::copy
-`<PackageReference Include="ServiceStack.OrmLite.SqlServer" Version="8.*" />`
+`<PackageReference Include="ServiceStack.OrmLite.SqlServer" Version="10.*" />`
 :::
 
 :::copy
-`<PackageReference Include="ServiceStack.OrmLite.Sqlite" Version="8.*" />`
+`<PackageReference Include="ServiceStack.OrmLite.Sqlite" Version="10.*" />`
 :::
 
 :::copy
-`<PackageReference Include="ServiceStack.OrmLite.PostgreSQL" Version="8.*" />`
+`<PackageReference Include="ServiceStack.OrmLite.PostgreSQL" Version="10.*" />`
 :::
 
 :::copy
-`<PackageReference Include="ServiceStack.OrmLite.MySql" Version="8.*" />`
+`<PackageReference Include="ServiceStack.OrmLite.MySql" Version="10.*" />`
 :::
 
 The next step is creating a connection to your database. Here's how you do it for SQLite:
@@ -360,15 +348,15 @@ This snippet establishes an in-memory SQLite database connection. In a real-worl
 
 OrmLite supports multiple database types, including MS SQL Server, MySQL, and PostgreSQL. To use these, simply install the corresponding NuGet package and replace `SqliteDialect.Provider` with the appropriate provider (i.e., `SqlServerDialect.Provider`, `MySqlDialect.Provider`, or `PostgreSqlDialect.Provider`).
 
-If you're planning on using OrmLite within a ServiceStack project, you can streamline the setup process with the ServiceStack .NET tool `x` and the command `x mix <database technology>`. For SQLite, use `x mix sqlite`.
+If you're planning on using OrmLite within a ServiceStack project, you can streamline the setup process with the ServiceStack .NET tool `x` and the command `npx add-in <database technology>`. For SQLite, use `npx add-in sqlite`.
 
 ```bash
 # Create new project
-x new web MyApp
+npx create-net web MyApp
 # Navigate into new project
 cd MyApp
 # Mix in OrmLite SQLite support
-x mix sqlite
+npx add-in sqlite
 ```
 
 After setup, you're now ready to establish a database connection and execute queries from your project.
@@ -805,7 +793,7 @@ public class QueryOrders : QueryDb<Order>
 ServiceStack also supports a database-first approach, especially useful when working with an existing database. In this scenario, you can leverage AutoQuery's `GeneratedServices` feature. It allows you to create ready-to-use services based on your database schema.
 
 ```csharp
-appHost.Plugins.Add(new AutoQueryFeature {
+services.AddPlugin(new AutoQueryFeature {
     MaxLimit = 1000,
     GenerateCrudServices = new GenerateCrudServices
     {

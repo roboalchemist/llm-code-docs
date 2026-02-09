@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/ssh.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SSH
 
 > Learn how to set up and use SSH to connect your local development environment to Replit Apps for secure remote access and file synchronization.

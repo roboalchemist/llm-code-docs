@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/export.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export invoices
 
 > Lago enables you to filter invoices and export them as a simple or advanced CSV file, tailored to your needs.

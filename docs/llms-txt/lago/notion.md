@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/templates/per-seat/notion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clone Notion pricing
 
 > Replicate Notion's per-seat pricing model with Lago.

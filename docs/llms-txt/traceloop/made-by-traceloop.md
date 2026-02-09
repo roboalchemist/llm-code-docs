@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/evaluators/made-by-traceloop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Made by Traceloop
 
 > Pre-configured evaluators by Traceloop for common assessment tasks
@@ -159,8 +163,3 @@ Each evaluator comes with a predefined input and output schema. When using an ev
     Detect whether the user's primary intent or workflow changed significantly during a conversation.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

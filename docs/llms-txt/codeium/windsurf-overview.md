@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/command/windsurf-overview.md
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
-
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
-
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
-
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
-
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
-
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Command
 
-> Cmd/Ctrl + I for in-line code generations and edits
+> Use Windsurf Command (Cmd/Ctrl+I) for inline code generation and edits with natural language. No premium credits required.
 
 **Command** generates new or edits existing code via natural language inputs, directly in the editor window.
 

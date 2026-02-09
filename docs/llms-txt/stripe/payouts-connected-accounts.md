@@ -34,6 +34,10 @@ You can track all payout activity on connected accounts with webhooks by creatin
 - `payout.paid`
 - `payout.failed`
 
+> #### Accounts v2 API
+> 
+> Regardless of the Accounts API version that you use, payouts trigger only the v1 events described here. They don’t have equivalent v2 events.
+
 For most payouts, event notifications occur over a series of days. Instant payouts typically send `payout.paid` within 30 minutes.
 
-When a payout can’t be completed, a `payout.failed` event occurs. The event’s `failure_code` property indicates the reason. A failed payout also disables the external account involved in that payout, triggering an `account.external_account.updated` event. No payouts can be made to that external account until the platform updates the connected account’s external accounts.
+When a payout can’t be completed, a `payout.failed` event occurs. The event’s `failure_code` property indicates the reason. A failed payout also disables the external account involved in that payout, triggering an `account.external_account.updated` event. That external account can’t receive payouts until the platform updates the connected account’s external accounts.

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/automate-agent.md
+# Source: https://www.mintlify.com/docs/guides/automate-agent.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tutorial: Auto-update documentation when code is changed
 
@@ -31,10 +35,31 @@ This tutorial assumes your documentation is in a separate repository from your a
     ## Prerequisites
 
     * GitHub Actions enabled on your code and documentation repositories
+    * [Mintlify GitHub App](/deploy/github) installed in both your code and documentation repositories
     * [Mintlify admin API key](https://dashboard.mintlify.com/settings/organization/api-keys)
     * [Mintlify project ID](https://dashboard.mintlify.com/settings/organization/api-keys)
-    * [Mintlify Pro or Custom plan](https://mintlify.com/pricing)
+    * [Mintlify Enterprise plan](https://mintlify.com/pricing)
     * Admin access to the GitHub repositories for your code and documentation
+
+    ### Install the Mintlify app on your code repository
+
+    The Mintlify app must be installed on your code repository so the agent can fetch context from your codebase. To add the app to new repositories:
+
+    1. Open the agent panel in your Mintlify dashboard.
+       <Frame>
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=56ee8c375606ca4a50b9b889474fc769" alt="The agent panel in light mode." className="block dark:hidden" data-og-width="2056" width="2056" data-og-height="840" height="840" data-path="images/agent/dashboard-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=62e3a171a1923a8afc5e958979c9fa67 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=9b670552f1cd97b14fabef128ae051ee 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=cdf9081b352d9dc74f66b10ea1761333 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=2648dfc256eef274a6b2988da72b64db 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=2c179d8a203d364d04ca1201ce2caa83 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=52eaedba495900766dc706d0bda7e1bf 2500w" />
+
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=ad82516ec69eb247ac0475fd3397c338" alt="The agent panel in dark mode." className="hidden dark:block" data-og-width="2056" width="2056" data-og-height="840" height="840" data-path="images/agent/dashboard-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=bd58d31fcf5d51daaa7eec5dd3f565ce 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=98225e13a7b5d9052e7d9cb08d14d08a 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=1e82d5cf5b33c24744db75d4acff5f0e 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=76f753872cb7dca5446e2a98c8c7f6e8 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=50053641543ddeeeb18818da997132ea 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=b1de133975f47c6a4f99eead9069d99e 2500w" />
+       </Frame>
+    2. Click the **Settings** button.
+       <Frame>
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=ecb555eecfddf7480baaaf7d2fd6bce9" alt="The settings button in light mode." className="block dark:hidden" data-og-width="668" width="668" data-og-height="112" height="112" data-path="images/agent/dashboard-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=f6663dbc0d65a673d8d40a1a5021c4e6 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=8f16ed84866ed266b6c94ee063504e86 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=0f09f59a375b2d0fa1a52e7105b9983a 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=9bd984bb1301430689ca1f80a55949da 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=27abd64a63bcba9de2cb2ca4fea13c76 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=0fbcc0de8221607fd1ddddc91ff7299c 2500w" />
+
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=a3250fa23cac19e8914b7185ac24c6d0" alt="The settings button in dark mode." className="hidden dark:block" data-og-width="670" width="670" data-og-height="112" height="112" data-path="images/agent/dashboard-settings-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=e24b9bd26f3ae15ba38467da9e9fd650 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=1dbb09e9fc6d17ab545c6ad46e7e5585 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=05978a332b79eb6ccf7d86ae3c579039 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=38f053dd12cc6197779a368756b5eb34 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=c1d8e1cd78e6a494852b809cbeb1a695 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=508da1702ec011fa336b0fd7738c60c1 2500w" />
+       </Frame>
+    3. Click **Add to New Organization**. This will take you to the app installation page on GitHub.
+    4. Select the repositories you want to grant access to from the list.
+    5. Save your changes.
 
     ### Get your admin API key
 
@@ -53,81 +78,82 @@ This tutorial assumes your documentation is in a separate repository from your a
        name: Update Docs
 
        on:
-       push:
+         push:
            branches:
-           - main
+             - main
 
        jobs:
-       update-docs:
+         update-docs:
            runs-on: ubuntu-latest
            steps:
-           - uses: actions/github-script@v8
+             - uses: actions/github-script@v8
                env:
-               MINTLIFY_API_KEY: ${{ secrets.MINTLIFY_API_KEY }}
-               PROJECT_ID: ${{ secrets.MINTLIFY_PROJECT_ID }}
+                 MINTLIFY_API_KEY: ${{ secrets.MINTLIFY_API_KEY }}
+                 PROJECT_ID: ${{ secrets.MINTLIFY_PROJECT_ID }}
                with:
-               script: |
+                 script: |
                    const { owner, repo } = context.repo;
                    const projectId = process.env.PROJECT_ID;
                    const apiKey = process.env.MINTLIFY_API_KEY;
 
                    if (!projectId || !apiKey) {
-                   core.setFailed('Missing MINTLIFY_PROJECT_ID or MINTLIFY_API_KEY secrets');
-                   return;
+                     core.setFailed('Missing MINTLIFY_PROJECT_ID or MINTLIFY_API_KEY secrets');
+                     return;
                    }
 
                    const url = `https://api.mintlify.com/v1/agent/${projectId}/job`;
                    const payload = {
-                   branch: `mintlify/docs-update-${Date.now()}`,
-                   messages: [
+                     branch: `mintlify/docs-update-${Date.now()}`,
+                     messages: [
                        {
-                       role: 'system',
-                       content: 'You are an action runner that updates documentation based on code changes. You should never ask questions. If you are not able to access the repository, report the error and exit.'
+                         role: 'system',
+                         content: 'You are an action runner that updates documentation based on code changes. You should never ask questions. If you are not able to access the repository, report the error and exit.'
                        },
                        {
-                       role: 'user',
-                       content: `Update the documentation for our recent pushes to main:\n\nRepository: ${owner}/${repo}`
+                         role: 'user',
+                         content: `Update the documentation for our recent pushes to main:\n\nRepository: ${owner}/${repo}`
                        }
-                   ]
+                     ],
+                     asDraft: false
                    };
 
                    try {
-                       const response = await fetch(url, {
+                     const response = await fetch(url, {
                        method: 'POST',
                        headers: {
-                           'Authorization': `Bearer ${apiKey}`,
-                           'Content-Type': 'application/json'
+                         'Authorization': `Bearer ${apiKey}`,
+                         'Content-Type': 'application/json'
                        },
                        body: JSON.stringify(payload)
-                       });
+                     });
 
-                       if (!response.ok) {
+                     if (!response.ok) {
                        throw new Error(`API request failed with status ${response.status}: ${await response.text()}`);
-                       }
+                     }
 
-                       const reader = response.body.getReader();
-                       const decoder = new TextDecoder();
-                       let buffer = '';
+                     const reader = response.body.getReader();
+                     const decoder = new TextDecoder();
+                     let buffer = '';
 
-                       while (true) {
+                     while (true) {
                        const { done, value } = await reader.read();
                        if (done) break;
                        buffer += decoder.decode(value, { stream: true });
                        const lines = buffer.split('\n');
                        buffer = lines.pop() || '';
                        for (const line of lines) {
-                           if (line.trim()) {
+                         if (line.trim()) {
                            console.log(line);
-                           }
+                         }
                        }
-                       }
-                       if (buffer.trim()) {
+                     }
+                     if (buffer.trim()) {
                        console.log(buffer);
-                       }
+                     }
 
-                       core.notice(`Documentation update job triggered for ${owner}/${repo}`);
+                     core.notice(`Documentation update job triggered for ${owner}/${repo}`);
                    } catch (error) {
-                       core.setFailed(`Failed to create documentation update job: ${error.message}`);
+                     core.setFailed(`Failed to create documentation update job: ${error.message}`);
                    }
        ```
 
@@ -181,10 +207,31 @@ This tutorial assumes your documentation is in a separate repository from your a
     ## Prerequisites
 
     * n8n workspace
+    * [Mintlify Enterprise plan](https://mintlify.com/pricing)
+    * Mintlify app installed on your code repository
     * Mintlify admin API key
-    * [Mintlify Pro or Custom plan](https://mintlify.com/pricing)
     * Admin access to the GitHub repositories for your code and documentation
     * GitHub personal access token
+
+    ### Install the Mintlify app on your code repository
+
+    The Mintlify app must be installed on your code repository so the agent can fetch context from your codebase. To add the app to new repositories:
+
+    1. Open the agent panel in your Mintlify dashboard.
+       <Frame>
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=56ee8c375606ca4a50b9b889474fc769" alt="The agent panel in light mode." className="block dark:hidden" data-og-width="2056" width="2056" data-og-height="840" height="840" data-path="images/agent/dashboard-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=62e3a171a1923a8afc5e958979c9fa67 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=9b670552f1cd97b14fabef128ae051ee 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=cdf9081b352d9dc74f66b10ea1761333 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=2648dfc256eef274a6b2988da72b64db 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=2c179d8a203d364d04ca1201ce2caa83 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-light.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=52eaedba495900766dc706d0bda7e1bf 2500w" />
+
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=ad82516ec69eb247ac0475fd3397c338" alt="The agent panel in dark mode." className="hidden dark:block" data-og-width="2056" width="2056" data-og-height="840" height="840" data-path="images/agent/dashboard-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=bd58d31fcf5d51daaa7eec5dd3f565ce 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=98225e13a7b5d9052e7d9cb08d14d08a 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=1e82d5cf5b33c24744db75d4acff5f0e 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=76f753872cb7dca5446e2a98c8c7f6e8 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=50053641543ddeeeb18818da997132ea 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-dark.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=b1de133975f47c6a4f99eead9069d99e 2500w" />
+       </Frame>
+    2. Click the **Settings** button.
+       <Frame>
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=ecb555eecfddf7480baaaf7d2fd6bce9" alt="The settings button in light mode." className="block dark:hidden" data-og-width="668" width="668" data-og-height="112" height="112" data-path="images/agent/dashboard-settings-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=f6663dbc0d65a673d8d40a1a5021c4e6 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=8f16ed84866ed266b6c94ee063504e86 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=0f09f59a375b2d0fa1a52e7105b9983a 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=9bd984bb1301430689ca1f80a55949da 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=27abd64a63bcba9de2cb2ca4fea13c76 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-light.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=0fbcc0de8221607fd1ddddc91ff7299c 2500w" />
+
+         <img src="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=a3250fa23cac19e8914b7185ac24c6d0" alt="The settings button in dark mode." className="hidden dark:block" data-og-width="670" width="670" data-og-height="112" height="112" data-path="images/agent/dashboard-settings-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=280&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=e24b9bd26f3ae15ba38467da9e9fd650 280w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=560&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=1dbb09e9fc6d17ab545c6ad46e7e5585 560w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=840&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=05978a332b79eb6ccf7d86ae3c579039 840w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=1100&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=38f053dd12cc6197779a368756b5eb34 1100w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=1650&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=c1d8e1cd78e6a494852b809cbeb1a695 1650w, https://mintcdn.com/mintlify/l1-TgESjTbrqcwOU/images/agent/dashboard-settings-dark.png?w=2500&fit=max&auto=format&n=l1-TgESjTbrqcwOU&q=85&s=508da1702ec011fa336b0fd7738c60c1 2500w" />
+       </Frame>
+    3. Click **Add to New Organization**. This will take you to the app installation page on GitHub.
+    4. Select the repositories you want to grant access to from the list.
+    5. Save your changes.
 
     ### Get your admin API key
 
@@ -320,7 +367,8 @@ This tutorial assumes your documentation is in a separate repository from your a
            "role": "system",
            "content": "{{ $json.agentMessage }}"
            }
-       ]
+       ],
+       "asDraft": false
        }
        ```
 

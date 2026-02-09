@@ -26,6 +26,10 @@ This will install Apache Camel as the `camel` command within JBang, meaning that
 
 Note: It requires access to the internet, in case of using a proxy, please ensure that the proxy is configured for your system. If Camel JBang is not working with your current configuration, please look to [Proxy configuration in JBang documentation](https://www.jbang.dev/documentation/jbang/latest/configuration.html#proxy-configuration).
 
+### Installing without JBang
+
+It is also possible to install and run Camel JBang without _JBang_ using the [Camel JBang Launcher](camel-jbang-launcher.md) which essentially is a standard Java _fat-jar_ with launch scripts.
+
 ### Installing a specific Camel JBang version
 
 By default, Camel JBang installs the latest release, which may not be the desired version.
@@ -46,13 +50,13 @@ jbang app install --force --fresh -Dcamel.jbang.version=4.14.1 -Dcamel-kamelets.
 
 When installing Camel JBang as a JBang app via `jbang app install â¦â` then JBang would usually check occasionally if the upstream version has changed and then automatic update. This can be undesired if you want to ensure your Camel JBang app is not automatically updated, such as when there are newer Apache Camel releases.
 
-1.  Download [CamelJBang.java](https://github.com/apache/camel/blob/main/dsl/camel-jbang/camel-jbang-main/dist/CamelJBang.java) file to local disk.\\
+1.  Download [CamelJBang.java](https://github.com/apache/camel/blob/main/dsl/camel-jbang/camel-jbang-main/dist/CamelJBang.java) file to local disk
     
-2.  Edit the `CamelJBang.java` file with the desired Camel version you want to use.
+2.  Edit the `CamelJBang.java` file with the desired Camel version you want to use
     
-3.  And then install via `jbang app install CamelJBang.java`.
+3.  And then install via `jbang app install CamelJBang.java`
     
-4.  After this you can delete the `CamelJBang.java` file.
+4.  After this you can delete the `CamelJBang.java` file
     
 
 ## Container Image
@@ -111,6 +115,9 @@ camel --help
 > The first time you run this command, it may cause dependencies to be cached, therefore taking a few extra seconds to run. If you are already using JBang and you get first time to run errors such as `Exception in thread "main" java.lang.NoClassDefFoundError: "org/apache/camel/dsl/jbang/core/commands/CamelJBangMain"` you may try clearing the JBang cache and re-install again.
 
 All the commands support the `--help` and will display the appropriate help if that flag is provided.
+
+> **Tip**
+> For a complete reference of all commands and their options, see the [Camel JBang Command Reference](jbang-commands/camel-jbang-commands.md).
 
 ### Enable shell completion
 
@@ -554,6 +561,83 @@ To set properties when running a route, you can use the `--property` or `--prope
 > You have to use the `=` sign right after the `--property`, as in the examples above.
 
 If both parameters are used, the properties will be merged in a single `application.properties` file.
+
+### History of last completed message
+
+**Available from Camel 4.17**
+
+When developers are coding Camel using the high level DSL with EIPs and components then it can appear as a mystery box what happened when Camel processed an incoming message. There are of course many ways to find out with logging, tracing, debugging, and good old System.out.println.
+
+In Camel 4.17 there is the `camel get history` command that show a summary of the last completed message of every step of the message; with a column that shows curanted important information. This is a high level summary to quickly allow users to see what happened.
+
+For example the following `foo.java` source file contains a Camel route that consumes a file, split the file line by line, and filter if the line contains world. After the split then calls a non-existing page on the Camel website, and then logs at the end.
+
+```java
+import org.apache.camel.builder.RouteBuilder;
+
+public class foo extends RouteBuilder {
+
+    @Override
+    public void configure() throws Exception {
+        from("file:inbox?noop=true")
+            .log("Incoming file")
+            .split(body().tokenize("\n"))
+              .filter(body().contains("world"))
+                .log("Stop the world")
+                .stop()
+              .end()
+              .to("log:line")
+            .end()
+            .to("https://camel.apache.org/xxx?throwExceptionOnFailure=false")
+            .to("log:after-http")
+            .log("complete");
+    }
+}
+```
+
+And the file contains 4 lines:
+
+```text
+hello
+world
+from
+me
+```
+
+And when you execute the `camel get history` you would see:
+
+```bash
+$ camel get history --source
+Message History of last completed (id:32E020F6050C165-0000000000000000 status:success ago:4s pid:91133 name:foo)
+       ID           PROCESSOR                                              ELAPSED   EXCHANGE
+ *-->  foo.java:7   from[file://inbox?noop=true]                                 0       0000  File: foo.txt (19 bytes)
+       foo.java:8     log[Incoming file]                                         0       0000
+       foo.java:9     split[tokenize(body, \n)]                                  8       0000  Split (4)
+       foo.java:10      filter[{body contains world}]                            0  0001/0000  Filter: false
+       foo.java:14      to[log:line]                                             0  0001/0000
+       foo.java:10      filter[{body contains world}]                            0  0002/0000  Filter: true
+       foo.java:11        log[Stop the world]                                    0  0002/0000
+       foo.java:12        stop                                                   0  0002/0000
+       foo.java:10      filter[{body contains world}]                            0  0003/0000  Filter: false
+       foo.java:14      to[log:line]                                             0  0003/0000
+       foo.java:10      filter[{body contains world}]                            0  0004/0000  Filter: false
+       foo.java:14      to[log:line]                                             0  0004/0000
+       foo.java:16    to[https:\/\/camel.apache.org\/xxx?throwExceptionOâ¦      143       0000  404=Not Found Content-Type=text/html; charset=utf-8
+       foo.java:17    to[log:after-http]                                         1       0000
+       foo.java:18    log[complete]                                              0       0000
+ *<--  foo.java:7   from[file://inbox?noop=true]                               157       0000  Success
+```
+
+The history command shows what happened and as you can see we are able to show that the there are 4 entries in the Split, and also how each splitted message has its own unique exchange id, that links to the parent exchange id. Also notice how the HTTP call we can see the 404 error code, and the response body is in text/plain.
+
+#### Interactive mode with full message history details
+
+The `camel get history` command can be used in _interactive mode_ via `camel get history --it` which shows more detailed information for each step. (similar screen like `camel debug`). This allows you to see the content of the message including message headers, body, etc.
+
+You can then go forward (press ENTER), or go back (press P + ENTER).
+
+> **Tip**
+> Use `camel get history --help` to see all available options.
 
 ### Using profiles
 
@@ -1273,6 +1357,56 @@ As you can see this is more cumbersome as we need to provide all the configurati
 ```bash
 $ camel cmd send --body=file:payload.json --uri='kamelet:mqtt-sink?brokerUrl=tcp://mybroker:1883&topic=temperature'
 ```
+
+#### Sending messages to infrastructure services
+
+**Available since Camel 4.18**
+
+You can use `camel cmd send` to send messages directly to infrastructure services that are started with `camel infra run`. This eliminates the need to manually specify server connection details, as the command automatically reads connection information from JSON files created by infrastructure services.
+
+This is done by using the `--infra` option to specify which infrastructure service to send to:
+
+```bash
+$ camel infra run nats
+$ camel cmd send --body=file:payload.json --infra=nats
+```
+
+The command automatically discovers the running infrastructure service, reads its connection details from the JSON file (stored in `~/.camel/`), and constructs the appropriate endpoint URI with the server information using the Camel Catalog.
+
+##### Specifying a custom endpoint
+
+If you donât specify an `--endpoint`, the command automatically creates a default endpoint based on the infrastructure service type (e.g., `kafka:default`, `nats:default`).
+
+You can also combine the `--infra` option with a specific endpoint to customize the destination:
+
+```bash
+$ camel cmd send --endpoint='kafka:myTopic' --body=file:payload.json --infra=kafka
+$ camel cmd send --endpoint='nats:mySubject' --body=file:payload.json --infra=nats
+```
+
+> **Note**
+> If your endpoint already contains query parameters (e.g., `kafka:myTopic?groupId=myGroup`), the connection details from the infrastructure service will not override them.
+
+##### Automatic credential handling
+
+For services that support authentication (such as artemis, ftp, sftp), the command automatically appends credentials from the connection details to the endpoint URI if the Camel component supports them:
+
+```bash
+$ camel infra run artemis
+$ camel cmd send --endpoint='jms:myQueue' --body='Hello' --infra=artemis
+```
+
+The resulting endpoint will automatically include authentication parameters like `username` and `password=RAW(â¦â)`.
+
+##### Multiple service detection
+
+If multiple instances of the same infrastructure service are running, the command will display an error and ask you to be more specific:
+
+```bash
+Multiple running infrastructure services found for: kafka. Found 2 services.
+```
+
+In this case, stop the unwanted service or specify the exact PID.
 
 #### Poll messages via Camel
 

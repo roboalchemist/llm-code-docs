@@ -25,7 +25,7 @@ One subscription can host all your Vespa applications, there is no need for mult
 
 The subscription must be prepared for deploying Vespa applications. Use [Terraform](https://www.terraform.io/) to set up the necessary resources using the[modules](https://registry.terraform.io/modules/vespa-cloud/enclave/azure/latest)published by the Vespa team.
 
-Feel free to use the[multi-region example](https://github.com/vespa-cloud/terraform-azure-enclave/blob/main/examples/multi-region/main.tf)to get started.
+Feel free to use the[example](https://github.com/vespa-cloud/terraform-azure-enclave/blob/main/examples/basic/main.tf)to get started.
 
 If you are unfamiliar with Terraform: It is a tool to manage resources and their configuration in various cloud providers, like AWS, Azure, and GCP. Terraform has published a[Get Started - Azure](https://developer.hashicorp.com/terraform/tutorials/azure-get-started)tutorial, and we strongly encourage enclave users to read and follow the Terraform recommendations for[CI/CD](https://developer.hashicorp.com/terraform/tutorials/automation/automate-terraform).
 
@@ -62,7 +62,7 @@ To tear down a Vespa Cloud Enclave system, do the steps above in reverse order:
 
 It is important to undeploy the Vespa application(s) first. After running the Terraform, Vespa Cloud cannot manage the resources allocated, so you must clean up these yourself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

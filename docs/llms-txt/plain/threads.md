@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/threads.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Threads
 
 Threads are the core of Plain's data model and equivalent to tickets or conversations in other support platforms. When you use Plain to help a customer you assign yourself to a thread and then mark the thread as `Done` once you're done helping.

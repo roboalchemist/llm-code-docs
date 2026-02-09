@@ -62,21 +62,21 @@ Mighty needles, sew like the wind! This needle set is the only one you'll need f
   
 Each pack contains 20 gold-eye sharps, with eye sizes ranging from #3 (1.75" long) to #9...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/615)
 [Related Guides to the Product](https://learn.adafruit.com/products/615/guides)
 
 ## Related Guides
 
-- [EL Wire Animal Masks](https://learn.adafruit.com/el-wire-animal-masks.md)
-- [Light Up your Costume with Noods](https://learn.adafruit.com/light-up-your-costume-with-noods.md)
-- [EL Wire Sign](https://learn.adafruit.com/el-wire-sign.md)
-- [Glowing Star Chuck Taylor Sneakers](https://learn.adafruit.com/glowing-star-chucks.md)
-- [EL Stick Figure](https://learn.adafruit.com/el-stick-figure.md)
-- [EL Bowtie](https://learn.adafruit.com/el-bowtie.md)
-- [TRON Bag](https://learn.adafruit.com/tron-bag.md)
 - [Electron Bow](https://learn.adafruit.com/electron-bow.md)
+- [EL Wire Sign](https://learn.adafruit.com/el-wire-sign.md)
+- [EL Wire Animal Masks](https://learn.adafruit.com/el-wire-animal-masks.md)
+- [EL Bowtie](https://learn.adafruit.com/el-bowtie.md)
 - [EL Wire](https://learn.adafruit.com/el-wire.md)
+- [TRON Bag](https://learn.adafruit.com/tron-bag.md)
+- [Light Up your Costume with Noods](https://learn.adafruit.com/light-up-your-costume-with-noods.md)
+- [EL Stick Figure](https://learn.adafruit.com/el-stick-figure.md)
 - [TRON Hoodie](https://learn.adafruit.com/tron-hoodie.md)
 - [EL Wire Stocking](https://learn.adafruit.com/el-wire-stocking.md)
 - [Glowing Bean Bags with EL Wire](https://learn.adafruit.com/glowing-bean-bags-with-el-wire.md)
+- [Glowing Star Chuck Taylor Sneakers](https://learn.adafruit.com/glowing-star-chucks.md)

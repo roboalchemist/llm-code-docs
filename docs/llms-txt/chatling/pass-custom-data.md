@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/pass-custom-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to pass custom data to your chatbot
 
 > Learn how to send any data, such as customer information, to the chatbot widget.

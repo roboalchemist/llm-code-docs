@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/common-actions.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/common-actions.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/common-actions.md
-
 # Common actions
 
 ## Auto sync
@@ -97,7 +91,7 @@ When email notifiers are configured, the system sends a notification to the spec
 
 You can view different versions of a job by clicking the dropdown option located at the top-right corner of the job.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 **Note:** This option is available only for `SharePoint`, `ServiceNow`, and `Website` connectors.
 {% endhint %}
 
@@ -109,3 +103,42 @@ To view different versions of a job:
 2. Locate the dropdown menu at the top-right corner of the page. Click the dropdown and select a version from the list. The selected job version, along with its ingested articles or documents, is displayed.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fgq47ckL3FwVCQOiJcVSq%2FScreenshot%202025-10-23%20at%2011.37.42%E2%80%AFAM.png?alt=media&#x26;token=744dc8b9-8f31-4667-883d-4794da33e665" alt=""><figcaption></figcaption></figure>
+
+## Advanced Attributes Handler
+
+If you missed configuring attributes during ingestion, or if you want to update attributes for already ingested documents or articles, you can use the `Advanced Attribute Handler`. This feature allows you to apply or modify document attributes using custom JavaScript logic during a sync run.
+
+This approach allows you to safely validate attribute logic before applying it across documents during a sync operation.
+
+**To configure the advanced attribute handler**
+
+1. Navigate to the required DataSync job.
+2. Click the three-dot menu next to the job name and select `Advanced Attribute Handler`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FMiQJ5vNgK6hDQYS7ucNO%2FScreenshot%202026-01-29%20at%205.10.53%E2%80%AFPM.png?alt=media&#x26;token=0f70520f-085d-44b1-8652-3f655cdaaca8" alt=""><figcaption></figcaption></figure>
+
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
+
+{% hint style="info" %}
+**Note**:&#x20;
+
+1. The configured JavaScript is saved as part of the post-processing configuration and is applied **only when a Sync Now or Auto Sync operation is triggered**.&#x20;
+2. Disabling the attribute handler prevents the script from running during subsequent syncs.
+   {% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FprEToJbyD8H3grVAHf4O%2FScreenshot%202026-01-29%20at%205.11.01%E2%80%AFPM.png?alt=media&#x26;token=14cb23a3-a405-4a43-b831-2e4fc2701a44" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fi6uvg6vdGq5QDJMA5dL4%2FScreenshot%202026-01-29%20at%205.11.16%E2%80%AFPM.png?alt=media&#x26;token=b5be0b22-f953-47b0-ba97-0e44a3467b71" alt=""><figcaption></figcaption></figure>
+
+6. Click **Test** to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FOWZZOLqYuQtbT7xhqcPx%2FScreenshot%202026-01-29%20at%205.11.24%E2%80%AFPM.png?alt=media&#x26;token=765643f1-0475-4fd9-9a63-51bd05d33c39" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration. The attribute handler will be applied the next time [AutoSync](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/auto-sync) or [SyncNow](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/sync-now) is triggered.
+* **Save & Apply** – Save the configuration and immediately run a `manual sync` to apply the attribute handler to the selected documents.

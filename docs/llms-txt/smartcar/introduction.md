@@ -1,11 +1,16 @@
 # Source: https://smartcar.com/docs/getting-started/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started with Smartcar
 
 > Welcome to Smartcar's Developer Documentation! Here, you'll learn how to integrate your application with over 40 OEM brands, securely connect to vehicles, and receive the dynamic vehicle data you need, delivered directly to your systems.
 
 <CardGroup cols={3}>
   <Card title="Start a tutorial" icon="play" href="/getting-started/tutorials/ios" icontype="duotone">Learn how to configure your first application and connect a vehicle in under 10 minutes.</Card>
+  <Card title="Browse Available Data" href="/api-reference/signals/schema" icon="database" icontype="duotone">Explore the complete catalog of vehicle data points (signals) you can access.</Card>
   <Card title="Read How-To Guides" href="/getting-started/how-to/configure-permissions" icon="graduation-cap" icontype="duotone">Solve common implementation challenges with step-by-step instructions.</Card>
 
   <Card title="Connecting Vehicles" href="/getting-started/connect-vehicles" icon="mobile" icontype="duotone">
@@ -20,7 +25,7 @@
   <Card title="Browse our SDKs" href="/connect/connect-sdks" icon="computer" icontype="duotone">Connect with other developers, share ideas, and get help.</Card>
 </CardGroup>
 
-Learn how to connect your app to Smartcar so you can access vehicle data like odometer, location, battery level, issue vehicle commands, and more. In this guide, you’ll register your app, walk through the Smartcar Connect flow, and configure a webhook to receive data.
+Learn how to connect your app to Smartcar so you can access [vehicle data signals](/api-reference/signals/schema) like odometer, location, battery level, issue vehicle commands, and more. In this guide, you'll register your app, walk through the Smartcar Connect flow, and configure a webhook to receive data.
 
 By the end of this guide, you’ll have a working setup with access to a vehicle’s data through Smartcar’s platform.
 

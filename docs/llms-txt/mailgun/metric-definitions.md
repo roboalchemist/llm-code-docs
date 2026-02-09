@@ -148,7 +148,7 @@ td
 The unsubscribe rate accounts for the total number of unsubscribes divided by the total number of emails delivered and multiplied by 100, expressed as a percentage.
 # Metrics API and Usage Reporting
 
-Mailgun collects a variety of different events and generates analytic reports based on both account and usage metrics. Visit [Metrics API](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Metrics/) for more details.
+Mailgun collects a variety of different events and generates analytic reports based on both account and usage metrics. Visit [Metrics API](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/metrics) for more details.
 
 Note:
 Usage data is available starting 09/01/24.
@@ -175,7 +175,7 @@ Mailgun retains event data for 30 days. Access to this data varies by plan. Refe
 You can access Events through a few interfaces:
 
 - Webhooks (we POST data to your configured URL(s))
-- [The Logs API](https://documentation.mailgun.com/docs/mailgun/api-reference/openapi-final/tag/Logs/).
+- [The Logs API](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs).
 - The **Logs** tab of the Control Panel (GUI)
 
 

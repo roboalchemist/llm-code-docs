@@ -44,9 +44,9 @@ Changing an email address will change the email address for **_all_** workspaces
 > [!NOTE]
 > If your organization is changing domains and you'd like to change all emails in your workspace, please reach out to us at [support@linear.app](mailto:support@linear.app) from the existing domain and let us know the domain you would like to change to.
 
-## Personal integrations
+## Connected Accounts
 
-Personal integrations are software integrations in which each user has their own specific account. This helps Linear to associate your Linear user when an action taken in the third-party integration. You can see which of your account integrations are connected with Linear, as well as disconnect them.
+Connected Accounts are software integrations in which each user has their own specific account. This helps Linear to associate your Linear user when an action taken in the third-party integration. You can see which of your account integrations are connected with Linear, as well as disconnect them.
 
 ## Leave your workspace
 

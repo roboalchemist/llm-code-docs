@@ -63,5 +63,5 @@ mydoctype.mystructarray{$x}.field1=="foo" AND mydoctype.mystructarray{$x}.field2
 
 Variables either have a `key` value (for maps and weighted sets), or an `index` value (for arrays). Variables cannot be used across such contexts (that is, a map key cannot be used to index into an array).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

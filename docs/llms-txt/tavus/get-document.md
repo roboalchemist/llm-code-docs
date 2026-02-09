@@ -1,188 +1,169 @@
 # Source: https://docs.tavus.io/api-reference/documents/get-document.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Document
 
 > Retrieve a specific document by ID
 
+Retrieve detailed information about a specific document using its unique identifier.
+
+
 ## OpenAPI
 
 ````yaml get /v2/documents/{document_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/documents/{document_id}
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path:
-        document_id:
+  /v2/documents/{document_id}:
+    get:
+      tags:
+        - Documents
+      summary: Get Document
+      description: >
+        Retrieve detailed information about a specific document using its unique
+        identifier.
+      operationId: getDocument
+      parameters:
+        - in: path
+          name: document_id
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the document to retrieve
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: curl
-        source: >
-          curl
-          https://tavusapi.com/v2/documents/d290f1ee-6c54-4b01-90e6-d701748f0851
-          \
-            -H "x-api-key: YOUR_API_KEY"
-      - lang: Python
-        source: |
-          import requests
-
-          headers = {
-              "x-api-key": "YOUR_API_KEY"
-          }
-
-          response = requests.get(
-              "https://tavusapi.com/v2/documents/d290f1ee-6c54-4b01-90e6-d701748f0851",
-              headers=headers
-          )
-      - lang: JavaScript
-        source: |
-          const response = await fetch(
-            "https://tavusapi.com/v2/documents/d290f1ee-6c54-4b01-90e6-d701748f0851",
-            {
-              headers: {
-                "x-api-key": "YOUR_API_KEY"
-              }
-            }
-          );
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              uuid:
-                allOf:
-                  - type: string
+            type: string
+          description: The unique identifier of the document to retrieve
+          example: d8-5c71baca86fc
+      responses:
+        '200':
+          description: Document details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  document_id:
+                    type: string
                     description: Unique identifier for the document
-                    example: d290f1ee-6c54-4b01-90e6-d701748f0851
-              document_name:
-                allOf:
-                  - type: string
+                    example: d8-5c71baca86fc
+                  document_name:
+                    type: string
                     description: Name of the document
-                    example: Important Document
-              document_url:
-                allOf:
-                  - type: string
+                    example: Example Docs
+                  document_url:
+                    type: string
                     description: URL of the document
-                    example: https://example.com/document.pdf
-              status:
-                allOf:
-                  - type: string
+                    example: https://docs.example.com/
+                  status:
+                    type: string
                     description: Current status of the document processing
                     example: ready
-              created_at:
-                allOf:
-                  - type: string
+                  progress:
+                    type: string
+                    nullable: true
+                    description: Progress indicator for document processing
+                    example: null
+                  created_at:
+                    type: string
                     description: ISO 8601 timestamp of when the document was created
                     example: '2024-01-01T12:00:00Z'
-              updated_at:
-                allOf:
-                  - type: string
+                  updated_at:
+                    type: string
                     description: ISO 8601 timestamp of when the document was last updated
                     example: '2024-01-01T12:05:00Z'
-              callback_url:
-                allOf:
-                  - type: string
+                  callback_url:
+                    type: string
                     description: URL that receives status updates
                     example: https://your-server.com/webhook
-              tags:
-                allOf:
-                  - type: array
+                  tags:
+                    type: array
                     description: Array of document tags
                     items:
                       type: string
                     example:
-                      - important
-                      - meeting
-              properties:
-                allOf:
-                  - type: object
-                    description: Additional document properties
+                      - docs
+                      - website
+                  crawl_config:
+                    type: object
+                    nullable: true
+                    description: >-
+                      The crawl configuration used for this document (only
+                      present for crawled websites)
+                    properties:
+                      depth:
+                        type: integer
+                        description: Crawl depth setting
+                        example: 2
+                      max_pages:
+                        type: integer
+                        description: Maximum pages setting
+                        example: 10
+                  crawled_urls:
+                    type: array
+                    nullable: true
+                    description: >-
+                      List of URLs that were crawled (only present for crawled
+                      websites after processing completes)
+                    items:
+                      type: string
                     example:
-                      department: sales
-                      priority: high
-        examples:
-          example:
-            value:
-              uuid: d290f1ee-6c54-4b01-90e6-d701748f0851
-              document_name: Important Document
-              document_url: https://example.com/document.pdf
-              status: ready
-              created_at: '2024-01-01T12:00:00Z'
-              updated_at: '2024-01-01T12:05:00Z'
-              callback_url: https://your-server.com/webhook
-              tags:
-                - important
-                - meeting
-              properties:
-                department: sales
-                priority: high
-        description: Document details
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+                      - https://docs.example.com/
+                      - https://docs.example.com/getting-started
+                      - https://docs.example.com/api
+                  last_crawled_at:
+                    type: string
+                    nullable: true
+                    description: ISO 8601 timestamp of when the document was last crawled
+                    example: '2024-01-01T12:00:00Z'
+                  crawl_count:
+                    type: integer
+                    nullable: true
+                    description: Number of times the document has been crawled
+                    example: 1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message
-                    example: Invalid or missing authentication
-        examples:
-          example:
-            value:
-              error: Invalid or missing authentication
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    description: The error message
-                    example: Access denied
-        examples:
-          example:
-            value:
-              error: Access denied
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+                    example: Invalid access token
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message
                     example: Document not found
-        examples:
-          example:
-            value:
-              error: Document not found
-        description: Not Found
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

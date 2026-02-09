@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/LLM.md
+# Source: https://exa.ai/docs/websets/api/LLM.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LLM prompt for writing Python
 
@@ -5299,8 +5303,3 @@ exa = Exa(os.environ.get("EXA_API_KEY"))
 ```
 
 where websets is accessed via exa.websets….
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

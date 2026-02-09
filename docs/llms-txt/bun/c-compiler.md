@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/c-compiler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # C Compiler
 
 > Compile and run C from JavaScript with low overhead
@@ -14,7 +18,7 @@ See the [introduction blog post](https://bun.com/blog/compile-and-run-c-in-js) f
 
 JavaScript:
 
-```ts hello.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts hello.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { cc } from "bun:ffi";
 import source from "./hello.c" with { type: "file" };
 
@@ -88,7 +92,7 @@ You can also pass a `napi_env` to receive the N-API environment used to call the
 
 For example, if you have a string in C, you can return it to JavaScript like this:
 
-```ts hello.js theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts hello.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { cc } from "bun:ffi";
 import source from "./hello.c" with { type: "file" };
 

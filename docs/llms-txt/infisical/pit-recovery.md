@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pit-recovery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Point-in-Time Recovery
 
 > Learn how to rollback secrets and configurations to any snapshot with Infisical.

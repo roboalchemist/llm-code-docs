@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xlen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xlen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XLEN
 
@@ -26,18 +12,18 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the stream.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number">
+<ResponseField type="int">
   The number of entries in the stream. Returns 0 if the stream does not exist.
 </ResponseField>
 
 <RequestExample>
-  ```ts Get stream length theme={"system"}
-  const result = await redis.xlen("mystream");
+  ```py Get stream length theme={"system"}
+  result = redis.xlen("mystream")
   ```
 </RequestExample>

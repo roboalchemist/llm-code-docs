@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/re-auth/handle-response.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handle the Response
 
 > If the re-auth is successful, the redirect to your application will contain a vehicle ID. In the case of an error, we'll provide an error and description as parameters instead.

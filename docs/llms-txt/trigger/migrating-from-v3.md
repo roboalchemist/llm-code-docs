@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/migrating-from-v3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrating from v3
 
 > What's new in v4, how to migrate, and breaking changes.
@@ -32,11 +36,11 @@ Trigger.dev runs your tasks on specific Node.js versions:
 
 * Node.js `21.7.3` (default)
 * Node.js `22.16.0` (`node-22`)
-* Bun `1.2.20` (`bun`)
+* Bun `1.3.3` (`bun`)
 
 You can change the runtime by setting the `runtime` field in your `trigger.config.ts` file.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -73,7 +77,7 @@ Note that between steps 4 and 5, runs triggered with the v4 package will continu
 Use the prompt in the accordion below to help you migrate your v3 tasks to v4. The prompt gives good results when using Claude 4 Sonnet. You’ll need a relatively large token limit.
 
 <Accordion title="Copy paste this prompt in full" icon="sparkles">
-  ```md  theme={null}
+  ```md  theme={"theme":"css-variables"}
 
   I would like you to help me migrate my v3 task code to v4. Here are the important differences:
 
@@ -287,15 +291,15 @@ Use the prompt in the accordion below to help you migrate your v3 tasks to v4. T
 To opt-in to using v4, you will need to update your dependencies to the latest version:
 
 <CodeGroup>
-  ```bash npx theme={null}
+  ```bash npx theme={"theme":"css-variables"}
   npx trigger.dev@latest update
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest update
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest update
   ```
 </CodeGroup>
@@ -310,7 +314,7 @@ We've deprecated the following APIs:
 
 We've deprecated the `@trigger.dev/sdk/v3` import path and moved to a new path:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // This still works, but will be removed in a future version
 import { task } from "@trigger.dev/sdk/v3";
 
@@ -324,7 +328,7 @@ We've renamed the `handleError` hook to `catchError` to better reflect that it c
 
 `init` was previously used to initialize data used in the run function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 const myTask = task({
@@ -346,7 +350,7 @@ This has now been deprecated in favor of the `locals` API and middleware. See th
 
 We've deprecated the `toolTask` function, which created both a Trigger.dev task and a tool compatible with the Vercel [AI SDK](https://vercel.com/docs/ai-sdk):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { toolTask, schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { generateText } from "ai";
@@ -381,13 +385,13 @@ We've replaced the `toolTask` function with the `ai.tool` function, which create
 
 Previously, it was possible to specify a queue name of a queue that did not exist, along with a concurrency limit. The queue would then be created "on-demand" with the specified concurrency limit. If the queue did exist, the concurrency limit of the queue would be updated to the specified value:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }, { queue: { name: "my-queue", concurrencyLimit: 10 } });
 ```
 
 This is no longer possible, and queues must now be defined ahead of time using the `queue` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { queue } from "@trigger.dev/sdk";
 
 const myQueue = queue({
@@ -398,13 +402,13 @@ const myQueue = queue({
 
 Now when you trigger a task, you can only specify the queue by name:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }, { queue: "my-queue" });
 ```
 
 Or you can set the queue on the task:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { queue, task } from "@trigger.dev/sdk";
 
 const myQueue = queue({
@@ -431,14 +435,14 @@ export const myTask2 = task({
 
 Now you can trigger these tasks without having to specify the queue name in the trigger options:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await myTask.trigger({ foo: "bar" }); // Will use the queue defined on the task
 await myTask2.trigger({ foo: "bar" }); // Will use the queue defined on the task
 ```
 
 If you're using `concurrencyKey` you can specify the `queue` and `concurrencyKey` like this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const handle = await generatePullRequest.trigger(data, {
   queue: "paid-users",
   concurrencyKey: data.userId,
@@ -453,7 +457,7 @@ We've changed the function signatures of the lifecycle hooks to be more consiste
 
 Previously, hooks received a payload as the first argument and then an additional object as the second argument:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -465,7 +469,7 @@ export const myTask = task({
 
 Now, all the parameters are passed in a single object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -478,7 +482,7 @@ export const myTask = task({
 
 This is true for all the lifecycle hooks:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -505,7 +509,7 @@ We've made a few small changes to the `ctx` object:
 
 The `batchTrigger` function no longer returns a `runs` list directly. In v3, you could access the runs directly from the batch handle:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // In v3
 const batchHandle = await tasks.batchTrigger([
   [myTask, { foo: "bar" }],
@@ -518,7 +522,7 @@ console.log(batchHandle.runs);
 
 In v4, you now need to use the `batch.retrieve()` method to get the batch with its runs:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // In v4
 const batchHandle = await tasks.batchTrigger([
   [myTask, { foo: "bar" }],

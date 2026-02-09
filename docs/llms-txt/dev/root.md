@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/components/root.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Root
 
 The root component of the application, which serves as the starting point of the component hierarchy.

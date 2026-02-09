@@ -1,8 +1,8 @@
-# Source: https://docs.warp.dev/integrations/github-actions.md
+# Source: https://docs.warp.dev/agent-platform/integrations/github-actions.md
 
 # Github Actions
 
-Warp’s GitHub Actions integration lets you run Warp agents directly inside your CI workflows. Using the `warp-agent-action` Github Action, you can delegate tasks such as code review, issue triage, bug fixing, or automated maintenance to the agent as part of a standard Actions pipeline.&#x20;
+Warp’s GitHub Actions integration lets you run Warp agents directly inside your CI workflows. Using the `warp-agent-action` Github Action, you can delegate tasks such as code review, issue triage, bug fixing, or automated maintenance to the agent as part of a standard Actions pipeline.
 
 The agent runs inside your workflow, uses your repository context, and can open pull requests or comment on issues using your GitHub permissions.
 
@@ -38,7 +38,7 @@ The `warp-agent-action` is a GitHub Action that wraps the Warp CLI and:
 
 To use Warp agents in GitHub Actions, you need:
 
-* A [**Warp API Key**](https://docs.warp.dev/developers/cli#api-key-authentication) stored as a [GitHub secret](https://docs.github.com/en/actions/concepts/security/secrets)
+* A [**Warp API Key**](https://docs.warp.dev/reference/cli/cli#generating-api-keys) stored as a [GitHub secret](https://docs.github.com/en/actions/concepts/security/secrets)
 * A workflow with permissions that match your intended actions (for example, write access to PRs if the agent should commit or comment)
 * The `warp-agent-action` step added to your workflow
 * Familiarity with GitHub Actions concepts — see the official docs for [GitHub Actions](https://docs.github.com/en/actions)
@@ -61,10 +61,6 @@ To run Warp agents from GitHub Actions, **you must store your Warp API Key as a 
 6. Click **Add secret**
 
 Your secret will now appear in the list of available Actions secrets:
-
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0d162d24bdbbd0424ade6214f26a2f89095c1ffc%2Factions-secrets-and-variables.png?alt=media" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-bba3f921e555895823e26d9f328932a47f461d90%2Factions-add-a-secret.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### Add the Warp Agent Action to your workflow
 
@@ -114,7 +110,16 @@ with:
   share: true
 ```
 
-This posts an [Ambient Agents Session Sharing link](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing) to the job logs. Anyone with the link can inspect the agent’s execution directly.
+This posts an [Ambient Agents Session Sharing link](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing) to the job logs. Anyone with the link can inspect the agent's execution directly.
+
+The session sharing option also accepts multi-line configuration for the recipients of the share link.
+
+```
+with:
+  share:
+    | jane@example.com
+    | john@example.com
+```
 
 ***
 

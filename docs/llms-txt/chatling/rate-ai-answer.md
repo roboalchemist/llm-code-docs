@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/conversations/rate-ai-answer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate AI answer
 
 Use this endpoint to rate an AI answer as helpful or not helpful. You can only rate AI answers generated using the Knowledge Base.

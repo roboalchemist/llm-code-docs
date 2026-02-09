@@ -1,275 +1,307 @@
 # Source: https://docs.pinecone.io/reference/api/2025-10/inference/generate-embeddings.md
 
-# Source: https://docs.pinecone.io/reference/api/2025-04/inference/generate-embeddings.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Generate vectors
 
 > Generate vector embeddings for input data. This endpoint uses Pinecone's [hosted embedding models](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models).
 
+<RequestExample>
+  ```shell curl theme={null}
+  PINECONE_API_KEY="YOUR_API_KEY"
+
+  curl https://api.pinecone.io/embed \
+    -H "Api-Key: $PINECONE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
+    -d '{
+        "model": "llama-text-embed-v2",
+        "parameters": {
+          "input_type": "passage",
+          "truncate": "END"
+        },
+        "inputs": [
+          {"text": "Apple is a popular fruit known for its sweetness and crisp texture."},
+          {"text": "The tech company Apple is known for its innovative products like the iPhone."},
+          {"text": "Many people enjoy eating apples as a healthy snack."},
+          {"text": "Apple Inc. has revolutionized the tech industry with its sleek designs and user-friendly interfaces."},
+          {"text": "An apple a day keeps the doctor away, as the saying goes."},
+          {"text": "Apple Computer Company was founded on April 1, 1976, by Steve Jobs, Steve Wozniak, and Ronald Wayne as a partnership."}
+        ]
+    }'
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json curl theme={null}
+  {
+    "data": [
+      {
+        "values": [
+          0.04925537109375,
+          -0.01313018798828125,
+          -0.0112762451171875,
+          ...
+        ]
+      }, 
+      ...
+    ],
+    "model": "llama-text-embed-v2",
+    "usage": {
+      "total_tokens": 130
+    }
+  }
+  ```
+</ResponseExample>
+
+
 ## OpenAPI
 
-````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-04/inference_2025-04.oas.yaml post /embed
+````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-10/inference_2025-10.oas.yaml post /embed
+openapi: 3.0.3
+info:
+  title: Pinecone Inference API
+  description: >-
+    Pinecone is a vector database that makes it easy to search and retrieve
+    billions of high-dimensional vectors.
+  contact:
+    name: Pinecone Support
+    url: https://support.pinecone.io
+    email: support@pinecone.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 2025-10
+servers:
+  - url: https://api.pinecone.io
+    description: Production API endpoints
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Inference
+    description: Model inference
+externalDocs:
+  description: More Pinecone.io API docs
+  url: https://docs.pinecone.io/introduction
 paths:
-  path: /embed
-  method: post
-  servers:
-    - url: https://api.pinecone.io
-      description: Production API endpoints
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Api-Key:
-              type: apiKey
-              description: >-
-                An API Key is required to call Pinecone APIs. Get yours from the
-                [console](https://app.pinecone.io/).
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              model:
-                allOf:
-                  - example: multilingual-e5-large
-                    description: >-
-                      The
-                      [model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
-                      to use for embedding generation.
-                    type: string
-              parameters:
-                allOf:
-                  - example:
-                      input_type: passage
-                      truncate: END
-                    description: >-
-                      Additional model-specific parameters. Refer to the [model
-                      guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
-                      for available model parameters.
-                    type: object
-                    additionalProperties: true
-              inputs:
-                allOf:
-                  - description: List of inputs to generate embeddings for.
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        text:
-                          example: The quick brown fox jumps over the lazy dog.
-                          type: string
-            refIdentifier: '#/components/schemas/EmbedRequest'
-            requiredProperties:
-              - model
-              - inputs
-        examples:
-          example:
-            value:
-              model: multilingual-e5-large
-              parameters:
-                input_type: passage
-                truncate: END
-              inputs:
-                - text: The quick brown fox jumps over the lazy dog.
+  /embed:
+    post:
+      tags:
+        - Inference
+      summary: Generate vectors
+      description: >-
+        Generate vector embeddings for input data. This endpoint uses Pinecone's
+        [hosted embedding
+        models](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models).
+      operationId: embed
+      parameters:
+        - in: header
+          name: X-Pinecone-Api-Version
+          description: Required date-based version header
+          required: true
+          schema:
+            default: 2025-10
+            type: string
+          style: simple
+      requestBody:
         description: Generate embeddings for inputs.
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              model:
-                allOf:
-                  - example: multilingual-e5-large
-                    description: The model used to generate the embeddings
-                    type: string
-              vector_type:
-                allOf:
-                  - example: dense
-                    description: >-
-                      Indicates whether the response data contains 'dense' or
-                      'sparse' embeddings.
-                    type: string
-              data:
-                allOf:
-                  - description: The embeddings generated for the inputs.
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Embedding'
-              usage:
-                allOf:
-                  - description: Usage statistics for the model inference.
-                    type: object
-                    properties:
-                      total_tokens:
-                        example: 205
-                        description: Total number of tokens consumed across all inputs.
-                        type: integer
-                        format: int32
-                        minimum: 0
-            description: Embeddings generated for the input.
-            refIdentifier: '#/components/schemas/EmbeddingsList'
-            requiredProperties:
-              - model
-              - vector_type
-              - data
-              - usage
-        examples:
-          example:
-            value:
-              model: multilingual-e5-large
-              vector_type: dense
-              data:
-                - values:
-                    - 0.1
-                    - 0.2
-                    - 0.3
-                  vector_type: <string>
-              usage:
-                total_tokens: 205
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - &ref_0
-                    example: 500
-                    description: The HTTP status code of the error.
-                    type: integer
-              error:
-                allOf:
-                  - &ref_1
-                    example:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbedRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingsList'
+        '400':
+          description: Bad request. The request body included invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                index-metric-validation-error:
+                  summary: Validation error
+                  value:
+                    error:
                       code: INVALID_ARGUMENT
                       message: >-
-                        Index name must contain only lowercase alphanumeric
-                        characters or hyphens, and must not begin or end with a
-                        hyphen.
-                    description: Detailed information about the error that occurred.
-                    type: object
-                    properties:
-                      code:
-                        type: string
-                        enum:
-                          - OK
-                          - UNKNOWN
-                          - INVALID_ARGUMENT
-                          - DEADLINE_EXCEEDED
-                          - QUOTA_EXCEEDED
-                          - NOT_FOUND
-                          - ALREADY_EXISTS
-                          - PERMISSION_DENIED
-                          - UNAUTHENTICATED
-                          - RESOURCE_EXHAUSTED
-                          - FAILED_PRECONDITION
-                          - ABORTED
-                          - OUT_OF_RANGE
-                          - UNIMPLEMENTED
-                          - INTERNAL
-                          - UNAVAILABLE
-                          - DATA_LOSS
-                          - FORBIDDEN
-                      message:
-                        example: >-
-                          Index name must contain only lowercase alphanumeric
-                          characters or hyphens, and must not begin or end with
-                          a hyphen.
-                        type: string
-                      details:
-                        description: >-
-                          Additional information about the error. This field is
-                          not guaranteed to be present.
-                        type: object
-                    required:
-                      - code
-                      - message
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - status
-              - error
-            example: &ref_3
-              error:
-                code: QUOTA_EXCEEDED
-                message: >-
-                  The index exceeds the project quota of 5 pods by 2 pods.
-                  Upgrade your account or change the project settings to
-                  increase the quota.
-              status: 429
-        examples:
-          index-metric-validation-error:
-            summary: Validation error
-            value:
-              error:
-                code: INVALID_ARGUMENT
-                message: >-
-                  Bad request. The request body included invalid request
-                  parameters.
-              status: 400
-        description: Bad request. The request body included invalid request parameters.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          unauthorized:
-            summary: Unauthorized
-            value:
-              error:
-                code: UNAUTHENTICATED
-                message: Invalid API key.
-              status: 401
-        description: 'Unauthorized. Possible causes: Invalid API key.'
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          internal-server-error:
-            summary: Internal server error
-            value:
-              error:
-                code: UNKNOWN
-                message: Internal server error
-              status: 500
-        description: Internal server error.
-  deprecated: false
-  type: path
+                        Bad request. The request body included invalid request
+                        parameters.
+                    status: 400
+        '401':
+          description: 'Unauthorized. Possible causes: Invalid API key.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unauthorized:
+                  summary: Unauthorized
+                  value:
+                    error:
+                      code: UNAUTHENTICATED
+                      message: Invalid API key.
+                    status: 401
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                internal-server-error:
+                  summary: Internal server error
+                  value:
+                    error:
+                      code: UNKNOWN
+                      message: Internal server error
+                    status: 500
 components:
   schemas:
+    EmbedRequest:
+      type: object
+      properties:
+        model:
+          example: multilingual-e5-large
+          description: >-
+            The
+            [model](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
+            to use for embedding generation.
+          type: string
+        parameters:
+          example:
+            input_type: passage
+            truncate: END
+          description: >-
+            Additional model-specific parameters. Refer to the [model
+            guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
+            for available model parameters.
+          type: object
+          additionalProperties: true
+        inputs:
+          description: List of inputs to generate embeddings for.
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                example: The quick brown fox jumps over the lazy dog.
+                description: The text input to generate embeddings for.
+                type: string
+      required:
+        - model
+        - inputs
+    EmbeddingsList:
+      description: Embeddings generated for the input.
+      type: object
+      properties:
+        model:
+          example: multilingual-e5-large
+          description: The model used to generate the embeddings
+          type: string
+        vector_type:
+          example: dense
+          description: >-
+            Indicates whether the response data contains 'dense' or 'sparse'
+            embeddings.
+          type: string
+        data:
+          description: The embeddings generated for the inputs.
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+        usage:
+          description: Usage statistics for the model inference.
+          type: object
+          properties:
+            total_tokens:
+              example: 205
+              description: Total number of tokens consumed across all inputs.
+              type: integer
+              format: int32
+              minimum: 0
+      required:
+        - model
+        - vector_type
+        - data
+        - usage
+    ErrorResponse:
+      example:
+        error:
+          code: QUOTA_EXCEEDED
+          message: >-
+            The index exceeds the project quota of 5 pods by 2 pods. Upgrade
+            your account or change the project settings to increase the quota.
+        status: 429
+      description: The response shape used for all error responses.
+      type: object
+      properties:
+        status:
+          example: 500
+          description: The HTTP status code of the error.
+          type: integer
+        error:
+          example:
+            code: INVALID_ARGUMENT
+            message: >-
+              Index name must contain only lowercase alphanumeric characters or
+              hyphens, and must not begin or end with a hyphen.
+          description: Detailed information about the error that occurred.
+          type: object
+          properties:
+            code:
+              description: >-
+                The error code.
+
+                Possible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`,
+                `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`,
+                `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`,
+                `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`,
+                `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`,
+                `DATA_LOSS`, or `FORBIDDEN`.
+              x-enum:
+                - OK
+                - UNKNOWN
+                - INVALID_ARGUMENT
+                - DEADLINE_EXCEEDED
+                - QUOTA_EXCEEDED
+                - NOT_FOUND
+                - ALREADY_EXISTS
+                - PERMISSION_DENIED
+                - UNAUTHENTICATED
+                - RESOURCE_EXHAUSTED
+                - FAILED_PRECONDITION
+                - ABORTED
+                - OUT_OF_RANGE
+                - UNIMPLEMENTED
+                - INTERNAL
+                - UNAVAILABLE
+                - DATA_LOSS
+                - FORBIDDEN
+              type: string
+            message:
+              example: >-
+                Index name must contain only lowercase alphanumeric characters
+                or hyphens, and must not begin or end with a hyphen.
+              description: A human-readable error message describing the error.
+              type: string
+            details:
+              description: >-
+                Additional information about the error. This field is not
+                guaranteed to be present.
+              type: object
+          required:
+            - code
+            - message
+      required:
+        - status
+        - error
     Embedding:
       description: Embedding of a single input
       discriminator:
@@ -282,6 +314,7 @@ components:
         - $ref: '#/components/schemas/DenseEmbedding'
         - $ref: '#/components/schemas/SparseEmbedding'
     DenseEmbedding:
+      title: Dense embedding
       description: A dense embedding of a single input
       type: object
       properties:
@@ -300,10 +333,8 @@ components:
       required:
         - values
         - vector_type
-    VectorType:
-      description: Indicates whether this is a 'dense' or 'sparse' embedding.
-      type: string
     SparseEmbedding:
+      title: Sparse embedding
       description: A sparse embedding of a single input
       type: object
       properties:
@@ -344,5 +375,16 @@ components:
         - sparse_values
         - sparse_indices
         - vector_type
+    VectorType:
+      description: Indicates whether this is a 'dense' or 'sparse' embedding.
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: >-
+        An API Key is required to call Pinecone APIs. Get yours from the
+        [console](https://app.pinecone.io/).
 
 ````

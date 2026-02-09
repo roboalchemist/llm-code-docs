@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/deploy/admin/sandbox.md
 
-# Source: https://docs.livekit.io/home/cloud/sandbox.md
-
-LiveKit docs › LiveKit Cloud › Sandbox
+LiveKit docs › Administration › Sandbox
 
 ---
 
@@ -22,7 +20,7 @@ LiveKit docs › LiveKit Cloud › Sandbox
 
 Once you've created a LiveKit Cloud account, you can head to the [Sandboxes](https://cloud.livekit.io/projects/p_/sandbox) page to create a new sandbox, choosing from one of our templates.
 
-1. Create a LiveKit Cloud account and [Install the LiveKit CLI](https://docs.livekit.io/home/cli.md).
+1. Create a LiveKit Cloud account and [Install the LiveKit CLI](https://docs.livekit.io/intro/basics/cli.md).
 2. If you're setting up the CLI for the first time, authenticate with your LiveKit Cloud account:
 
 ```shell
@@ -41,7 +39,7 @@ lk app create \
 
 ## Moving to production
 
-When you're ready to move on from the prototyping stage and own the code yourself, every sandbox app can be cloned to your local machine, ready for customization. The quickest way to do this is via the [LiveKit CLI](https://docs.livekit.io/home/cli.md):
+When you're ready to move on from the prototyping stage and own the code yourself, every sandbox app can be cloned to your local machine, ready for customization. The quickest way to do this is via the [LiveKit CLI](https://docs.livekit.io/intro/basics/cli.md):
 
 ```shell
 lk app create --template <template-name>
@@ -56,7 +54,7 @@ If you're interested in creating and sharing your own templates with the larger 
 
 ---
 
-This document was rendered at 2025-11-18T23:54:58.674Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cloud/sandbox.md](https://docs.livekit.io/home/cloud/sandbox.md).
+This document was rendered at 2026-02-03T03:25:23.586Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/admin/sandbox.md](https://docs.livekit.io/deploy/admin/sandbox.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

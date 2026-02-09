@@ -9,6 +9,10 @@
 Use the PageLinks component to display a list of links.
 
 ```vue
+<script setup lang="ts">
+import type { PageLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageLinks />
 </template>
@@ -51,11 +55,8 @@ import type { PageLink } from '@nuxt/ui'
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -136,7 +137,7 @@ interface PageLinksProps {
    */
   as?: any;
   title?: string | undefined;
-  links?: PageLink[] | undefined;
+  links?: T[] | undefined;
   ui?: { root?: ClassNameValue; title?: ClassNameValue; list?: ClassNameValue; item?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLabel?: ClassNameValue; linkLabelExternalIcon?: ClassNameValue; } | undefined;
 }
 ```
@@ -192,8 +193,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

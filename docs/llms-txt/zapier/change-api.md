@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/change-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changes to your API can impact your integration
 
 ## Change scenario

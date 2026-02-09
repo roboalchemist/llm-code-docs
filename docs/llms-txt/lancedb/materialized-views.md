@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/geneva/jobs/materialized-views.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Materialized Views with UDFs
 
 > Learn how to use Geneva's materialized view feature to declaratively manage batch updates of expensive operations using UDFs.
@@ -106,8 +110,3 @@ No. The UDF does not but any UDF calculated values in the original table come to
 ### On MV refresh, do we force materialization of UDFs cols on the source table?
 
 No. They are managed at the source table only. If it is null the null values are propagated. Future options may force materialization/backfill "recursively".
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

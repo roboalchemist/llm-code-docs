@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/managing-members.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Members
 
 > You can manage members on your Replit team to control access, collaboration, and permissions across your organization's apps and projects.

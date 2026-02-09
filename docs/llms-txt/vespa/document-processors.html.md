@@ -236,7 +236,7 @@ The framework core supports asynchronous processing, processing one or multiple 
 - A Processing has a `context`, which is a Map of named values which can be used to pass arguments between processors. 
 - Processings are prepared to be stored to disk, to allow a high number of ongoing long-term processings per node. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

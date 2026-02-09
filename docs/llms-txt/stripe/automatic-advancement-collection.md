@@ -89,11 +89,8 @@ const invoice = await stripe.invoices.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceUpdateParams{
-  AutoAdvance: stripe.Bool(false),
-  Invoice: stripe.String("id"),
-}
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+params := &stripe.InvoiceUpdateParams{AutoAdvance: stripe.Bool(false)}
+result, err := sc.V1Invoices.Update(context.TODO(), "id", params)
 ```
 
 ```dotnet

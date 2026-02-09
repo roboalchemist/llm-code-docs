@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-open-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (OpenCode)
 
 > Get started with Augment Context Engine MCP in OpenCode in minutes
 
 ## Quick Start with OpenCode
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -33,7 +37,7 @@ Paste this configuration:
   "mcp": {
     "augment-context-engine": {
       "type": "local",
-      "command": ["auggie", "--mcp"],
+      "command": ["auggie", "--mcp", "--mcp-auto-workspace"],
       "enabled": true
     }
   }
@@ -43,7 +47,7 @@ Paste this configuration:
 ### 4. Test the integration
 
 ```
-Prompt : "What is this project ? Please use codebase retrieval tool to get the answer."
+Prompt: "What is this project? Please use codebase retrieval tool to get the answer."
 ```
 
 OpenCode should confirm it has access to the `codebase-retrieval` tool.
@@ -77,7 +81,7 @@ Add the `env` section to your configuration:
   "mcp": {
     "augment-context-engine": {
       "type": "local",
-      "command": ["auggie", "--mcp"],
+      "command": ["auggie", "--mcp", "--mcp-auto-workspace"],
       "enabled": true,
       "env": {
         "AUGMENT_API_TOKEN": "your-access-token",
@@ -89,8 +93,3 @@ Add the `env` section to your configuration:
 ```
 
 Replace `your-access-token` and `your-tenant-url` with the values from step 1.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

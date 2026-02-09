@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.STRAPPEND
 
@@ -26,26 +12,26 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
-  The path of the value.
+<ParamField body="path" type="str" required>
+  The path of the string.
 </ParamField>
 
-<ParamField body="value" type="string" required>
+<ParamField body="value" type="str" required>
   The value to append to the existing string.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer[]" required>
-  The length of the array after the appending.
+<ResponseField type="List[int]" required>
+  The length of the string after the appending.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.json.strappend("key", "$.path.to.str", "abc");
+  ```py Example theme={"system"}
+  redis.json.strappend("key", "$.path.to.str", "abc")
   ```
 </RequestExample>

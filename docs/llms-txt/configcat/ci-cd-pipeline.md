@@ -2,6 +2,8 @@
 
 # CI/CD Pipeline - Streamlining Software Delivery
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 In the ever-evolving realm of software development, efficiency and speed are paramount. The CI/CD pipeline emerges as a cornerstone in achieving these goals, merging coding, testing, and deployment into a streamlined and automated process. Let’s unpack the components of CI/CD pipelines and their impact on software delivery.

@@ -22,53 +22,9 @@
 
 # Source: https://docs.pipecat.ai/client/android/introduction.md
 
-# Source: https://docs.pipecat.ai/server/services/serializers/introduction.md
-
-# Source: https://docs.pipecat.ai/server/introduction.md
-
-# Source: https://docs.pipecat.ai/server/frameworks/rtvi/introduction.md
-
-# Source: https://docs.pipecat.ai/getting-started/introduction.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/introduction.md
-
-# Source: https://docs.pipecat.ai/client/react/introduction.md
-
-# Source: https://docs.pipecat.ai/client/react-native/introduction.md
-
-# Source: https://docs.pipecat.ai/client/js/introduction.md
-
-# Source: https://docs.pipecat.ai/client/ios/introduction.md
-
-# Source: https://docs.pipecat.ai/client/introduction.md
-
-# Source: https://docs.pipecat.ai/client/c++/introduction.md
-
-# Source: https://docs.pipecat.ai/client/android/introduction.md
-
-# Source: https://docs.pipecat.ai/server/services/serializers/introduction.md
-
-# Source: https://docs.pipecat.ai/server/introduction.md
-
-# Source: https://docs.pipecat.ai/server/frameworks/rtvi/introduction.md
-
-# Source: https://docs.pipecat.ai/getting-started/introduction.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/introduction.md
-
-# Source: https://docs.pipecat.ai/client/react/introduction.md
-
-# Source: https://docs.pipecat.ai/client/react-native/introduction.md
-
-# Source: https://docs.pipecat.ai/client/js/introduction.md
-
-# Source: https://docs.pipecat.ai/client/ios/introduction.md
-
-# Source: https://docs.pipecat.ai/client/introduction.md
-
-# Source: https://docs.pipecat.ai/client/c++/introduction.md
-
-# Source: https://docs.pipecat.ai/client/android/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SDK Introduction
 
@@ -127,8 +83,3 @@ client.startBotAndConnect(startBotParams).withCallback {
     WebRTC implementation using Daily
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

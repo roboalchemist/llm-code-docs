@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/perplexity.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Perplexity
+LiveKit docs › Models › LLM › Plugins › Perplexity
 
 ---
 
@@ -14,7 +14,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Perplexity](https://www.perplexity.ai/) as an LLM provider for your voice agents.
+This plugin allows you to use [Perplexity](https://www.perplexity.ai/) as an LLM provider for your voice agents. Perplexity compatibility is provided by the OpenAI plugin using the Perplexity Chat Completions API.
 
 ## Usage
 
@@ -23,7 +23,7 @@ Install the OpenAI plugin to add Perplexity support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -99,7 +99,7 @@ The following links provide more information about the Perplexity LLM integratio
 
 ---
 
-This document was rendered at 2025-11-18T23:55:11.935Z.
+This document was rendered at 2026-02-03T03:25:01.451Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/perplexity.md](https://docs.livekit.io/agents/models/llm/plugins/perplexity.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

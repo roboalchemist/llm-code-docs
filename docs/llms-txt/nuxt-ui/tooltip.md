@@ -16,17 +16,12 @@ Use a [Button](/docs/components/button) or any other component in the default sl
 </template>
 ```
 
-<warning>
+> [!WARNING]
+> Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`TooltipProvider`](https://reka-ui.com/docs/components/tooltip#provider) component from Reka UI.
 
-Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`TooltipProvider`](https://reka-ui.com/docs/components/tooltip#provider) component from Reka UI.
-
-</warning>
-
-<tip to="/docs/components/app#props">
-
-You can check the `App` component `tooltip` prop to see how to configure the Tooltip globally.
-
-</tip>
+> [!TIP]
+> See: /docs/components/app#props
+> You can check the `App` component `tooltip` prop to see how to configure the Tooltip globally.
 
 ### Text
 
@@ -52,11 +47,8 @@ Use the `kbds` prop to render [Kbd](/docs/components/kbd) components in the Tool
 </template>
 ```
 
-<tip>
-
-You can use special keys like `meta` that displays as `⌘` on macOS and `Ctrl` on other platforms.
-
-</tip>
+> [!TIP]
+> You can use special keys like `meta` that displays as `⌘` on macOS and `Ctrl` on other platforms.
 
 ### Delay
 
@@ -70,11 +62,8 @@ Use the `delay-duration` prop to change the delay before the Tooltip appears. Fo
 </template>
 ```
 
-<tip>
-
-This can be configured globally through the `tooltip.delayDuration` option in the [`App`](/docs/components/app) component.
-
-</tip>
+> [!TIP]
+> This can be configured globally through the `tooltip.delayDuration` option in the [`App`](/docs/components/app) component.
 
 ### Content
 
@@ -134,17 +123,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Tooltip by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Tooltip by pressing .
 
 ### With following cursor
 
@@ -179,7 +159,7 @@ const reference = computed(() => ({
       class="flex items-center justify-center rounded-md border border-dashed border-accented text-sm aspect-video w-72"
       @pointerenter="open = true"
       @pointerleave="open = false"
-      @pointermove="(ev) => {
+      @pointermove="(ev: PointerEvent) => {
         anchor.x = ev.clientX
         anchor.y = ev.clientY
       }"
@@ -312,8 +292,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

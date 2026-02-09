@@ -1,8 +1,12 @@
 # Source: https://smartcar.com/docs/api-reference/authorization/refreshing-access-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Refreshing Access Tokens
 
-> Your access token will expire **2 hours** after it is issued. When this happens, your application can retrieve a new one by using the corresponding `REFRESH_TOKEN` without requiring the user to re-authenticate.
+> Your access token will expire **2 hours** after it is issued. When this happens, your application can retrieve a new one by using the corresponding `refresh_token` without requiring the user to re-authenticate.
 
 <Warning>
   A refresh token is invalidated 10 minutes after use. If your first attempt at refreshing tokens fails, ensure you retry within 10 minutes.

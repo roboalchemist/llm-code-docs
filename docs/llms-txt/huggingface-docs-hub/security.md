@@ -2,22 +2,6 @@
 
 # Source: https://huggingface.co/docs/hub/security.md
 
-# Source: https://huggingface.co/docs/hub/xet/security.md
-
-# Source: https://huggingface.co/docs/hub/security.md
-
-# Source: https://huggingface.co/docs/hub/xet/security.md
-
-# Source: https://huggingface.co/docs/hub/security.md
-
-# Source: https://huggingface.co/docs/hub/xet/security.md
-
-# Source: https://huggingface.co/docs/hub/security.md
-
-# Source: https://huggingface.co/docs/hub/xet/security.md
-
-# Source: https://huggingface.co/docs/hub/security.md
-
 # Security
 
 The Hugging Face Hub offers several security features to ensure that your code and data are secure. Beyond offering [private repositories](./repositories-settings#private-repositories) for models, datasets, and Spaces, the Hub supports access tokens, resource groups, MFA, commit signatures, malware scanning, and more.

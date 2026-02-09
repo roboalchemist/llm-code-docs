@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3.md
 
-# Source: https://docs.apify.com/sdk/python/docs/upgrading/upgrading-to-v3.md
-
-# Source: https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3.md
-
-# Source: https://docs.apify.com/sdk/python/docs/upgrading/upgrading-to-v3.md
-
-# Source: https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3.md
-
-# Source: https://docs.apify.com/sdk/python/docs/upgrading/upgrading-to-v3.md
-
-# Source: https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3.md
-
 # Upgrading to v3
 
 Copy for LLM

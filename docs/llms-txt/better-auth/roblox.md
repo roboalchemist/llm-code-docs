@@ -4,11 +4,7 @@
 
 Roblox provider setup and usage.
 
-***
 
-title: Roblox
-description: Roblox provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

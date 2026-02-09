@@ -2,82 +2,72 @@
 
 # Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
+# Privacy & Security FAQ
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+> Frequently asked questions about Giselle privacy and security measures
 
-# Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
+## Is my data used for AI model training?
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+**No.** When you use Giselle, your data is sent to AI providers (Anthropic, OpenAI, Google) via their APIs. All of these providers explicitly state that API data is **not used for model training** by default.
 
-# Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
+### Anthropic
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+Anthropic's Commercial Terms of Service clearly states:
 
-# Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
+> "Anthropic may not train models on Customer Content from Services."
 
-# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+This means your inputs and outputs when using Claude models through Giselle are not used to train Anthropic's models.
 
-# Privacy & Security
+Additionally, Anthropic's Privacy Center states:
 
-> Manage your account security and privacy settings
+> "Anthropic does not use Customer Content to train our models."
 
-A guide to Giselle’s privacy settings, data handling, security practices, and our commitment to information protection.
+**Sources:**
 
-Giselle is developed and operated by [ROUTE06, Inc.](https://route06.com), a company that has obtained **ISO/IEC 27001:2013 (JIS Q 27001:2014)** [certification(IS 779274)](https://www.bsigroup.com/en-US/products-and-services/assessment-and-certification/validation-and-verification/client-directory-profile/ROUTE0-0047877345-000) for its **Information Security Management System (ISMS)**. This means your data is protected not only by modern infrastructure and encryption standards but also by strict organizational policies that meet global compliance benchmarks.
+* [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) (Section B. Customer Content)
+* [Is my data used for model training?](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training)
 
-***
+### OpenAI
 
-## Quick Links
+OpenAI's official documentation states:
 
-* [Privacy Policy](https://giselles.ai/legal/privacy)
-* [Terms of Service](https://giselles.ai/legal/terms)
-* [Billing Portal](https://studio.giselles.ai/settings/team/billing)
-* [ROUTE06 ISMS Certification Announcement](https://route06.com/news/isms)
+> "By default, we do not train on any inputs or outputs from our products for business users, including ChatGPT Business, ChatGPT Enterprise, and the API. We offer API customers a way to opt-in to share data with us, such as by providing feedback in the Playground, which we then use to improve our models. Unless they explicitly opt-in, organizations are opted out of data-sharing by default."
 
-***
+**Sources:**
 
-## ISMS Certification
+* [How your data is used to improve model performance](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)
+* [Data controls in the OpenAI platform](https://platform.openai.com/docs/guides/your-data)
 
-ROUTE06 is officially certified under the **ISO/IEC 27001** standard by **BSI Group Japan K.K.**
+### Google
 
-* **Certification ID**: IS 779274
-* **Scope**: Enterprise software provision, digital product design and development, DX consulting, and more
-* **Date of Initial Certification**: February 12, 2023
+Giselle uses Gemini models through Google Cloud's Vertex AI. The Vertex AI documentation states:
 
-> This certification demonstrates ROUTE06’s commitment to **confidentiality, integrity, and availability** of data. We continually monitor and improve our systems to maintain high standards of information security.
+> "Google does not use your data, including your prompts, inputs, and outputs, to train foundation models without your permission."
+>
+> "By default, Google Cloud does not use your data for training."
 
-***
+This applies to all managed models on Vertex AI, including Gemini models used through Giselle.
 
-## Security Overview
+**Note:** For those using the Gemini API directly via Google AI Studio (not through Giselle), the terms differ. With paid services:
 
-Giselle benefits from ROUTE06’s ISMS-backed security infrastructure, including:
+> "Google doesn't use your prompts (including associated system instructions, cached content, and files such as images, videos, or documents) or responses to improve our products"
 
-### Organizational Security
+**Sources:**
 
-* ISMS certification under **ISO/IEC 27001:2013**
-* Role-based access control for internal staff
-* Regular audits, internal self-assessments, and third-party penetration tests
+* [Data governance for Generative AI on Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance)
+* [Vertex AI Zero Data Retention](https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention)
+* [Google API Service Terms (Generative AI)](https://ai.google.dev/gemini-api/terms)
 
-### Administrative Measures
+## Summary
 
-* Confidentiality agreements and security training for employees
-* Defined procedures for incident reporting and escalation
-* Data protection roles clearly defined
+| Provider  | Data Used for Training | Source                                                                                                              |
+| --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Anthropic | No                     | [Commercial Terms](https://www.anthropic.com/legal/commercial-terms)                                                |
+| OpenAI    | No                     | [Data Usage Policy](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance) |
+| Google    | No                     | [Data Governance](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance)                            |
 
-### Technical Safeguards
-
-* TLS encryption in transit
-* Strict access controls and API rate limiting
-* Secure cloud infrastructure (AWS, Supabase, Vercel)
-
-### Physical Safeguards
-
-* Secure facilities via our cloud providers
-* Hardware and device-level protection policies for remote-first teams
-
-***
-
-Submit requests via your account or by emailing [support@giselles.ai](mailto:support@giselles.ai).
+Giselle uses these providers' APIs, so your data benefits from the same protections. Your prompts, inputs, and outputs are processed to generate responses but are not used to train or improve the AI models.

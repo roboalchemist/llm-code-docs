@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-can-i-delete-my-resend-account.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How can I delete my Resend account?
 
 > How to request your Resend account and data to be deleted.

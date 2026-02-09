@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/elk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up a self-hosted Elasticsearch Log Drain with Logstash and Kibana (ELK)
 
 > This guide will walk you through setting up a self-hosted Elasticsearch - Logstash - Kibana (ELK) stack on Aptible.

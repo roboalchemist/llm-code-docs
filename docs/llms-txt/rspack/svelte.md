@@ -6,8 +6,8 @@
 
 Rspack provides two solutions to support Svelte:
 
-* **Use Rsbuild**: Rsbuild provides out-of-the-box support for Svelte, allowing you to quickly create a Svelte project. See ["Rsbuild - Svelte"](https://rsbuild.rs/guide/framework/svelte) for details.
-* **Manually configure Rspack**: You can refer to the current document to manually add configurations for Svelte.
+- **Use Rsbuild**: Rsbuild provides out-of-the-box support for Svelte, allowing you to quickly create a Svelte project. See ["Rsbuild - Svelte"](https://rsbuild.rs/guide/framework/svelte) for details.
+- **Manually configure Rspack**: You can refer to the current document to manually add configurations for Svelte.
 
 ## Configure svelte-loader
 

@@ -4,11 +4,9 @@
 
 > A ready to use CommandPalette to add to your documentation.
 
-<warning to="/docs/getting-started/integrations/content">
-
-This component is only available when the `@nuxt/content` module is installed.
-
-</warning>
+> [!WARNING]
+> See: /docs/getting-started/integrations/content
+> This component is only available when the `@nuxt/content` module is installed.
 
 ## Usage
 
@@ -20,7 +18,7 @@ Use the `files` and `navigation` props with the `files` and `navigation` values 
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
 
-const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('docs'), {
+const { data: files } = useLazyAsyncData('content-search-example', () => queryCollectionSearchSections('docs'), {
   server: false
 })
 
@@ -43,23 +41,8 @@ const searchTerm = ref('')
 </template>
 ```
 
-<tip>
-
-You can open the CommandPalette by pressing <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="K">
-
-
-
-</kbd>
-
-, by using the [ContentSearchButton](/docs/components/content-search-button) component or by using the `useContentSearch` composable: `const { open } = useContentSearch()`.
-
-</tip>
+> [!TIP]
+> You can open the CommandPalette by pressing  , by using the [ContentSearchButton](/docs/components/content-search-button) component or by using the `useContentSearch` composable: `const { open } = useContentSearch()`.
 
 ### Shortcut
 
@@ -169,11 +152,8 @@ const searchTerm = ref('')
 </template>
 ```
 
-<tip>
-
-It is recommended to wrap the `ContentSearch` component in a [ClientOnly](https://nuxt.com/docs/api/components/client-only) component so it's not rendered on the server.
-
-</tip>
+> [!TIP]
+> It is recommended to wrap the `ContentSearch` component in a [ClientOnly](https://nuxt.com/docs/api/components/client-only) component so it's not rendered on the server.
 
 ## API
 
@@ -184,10 +164,11 @@ It is recommended to wrap the `ContentSearch` component in a [ClientOnly](https:
  * Props for the ContentSearch component
  */
 interface ContentSearchProps {
+  size?: "sm" | "md" | "xs" | "lg" | "xl" | undefined;
   /**
    * The icon displayed in the input.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * The placeholder text for the input.
    */
@@ -203,17 +184,17 @@ interface ContentSearchProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * Display a close button in the input (useful when inside a Modal for example).
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * Keyboard shortcut to open the search (used by [`defineShortcuts`](https://ui.nuxt.com/docs/composables/define-shortcuts))
    * @default "\"meta_k\""
@@ -222,7 +203,7 @@ interface ContentSearchProps {
   /**
    * Links group displayed as the first group in the command palette.
    */
-  links?: ContentSearchLink[] | undefined;
+  links?: T[] | undefined;
   navigation?: ContentNavigationItem[] | undefined;
   /**
    * Custom groups displayed between navigation and color mode group.
@@ -232,7 +213,7 @@ interface ContentSearchProps {
   /**
    * Options for [useFuse](https://vueuse.org/integrations/useFuse) passed to the [CommandPalette](https://ui.nuxt.com/docs/components/command-palette).
    */
-  fuse?: UseFuseOptions<ContentSearchLink> | undefined;
+  fuse?: n<T> | undefined;
   /**
    * When `true`, the theme command will be added to the groups.
    * @default "true"
@@ -387,14 +368,34 @@ export default defineAppConfig({
     contentSearch: {
       slots: {
         modal: '',
-        input: '[&>input]:text-base/5'
+        input: ''
       },
       variants: {
         fullscreen: {
           false: {
-            modal: 'sm:max-w-3xl sm:h-[28rem]'
+            modal: 'sm:max-w-3xl h-full sm:h-[28rem]'
+          }
+        },
+        size: {
+          xs: {
+            input: '[&>input]:text-sm'
+          },
+          sm: {
+            input: '[&>input]:text-sm'
+          },
+          md: {
+            input: '[&>input]:text-base/5'
+          },
+          lg: {
+            input: '[&>input]:text-base/5'
+          },
+          xl: {
+            input: '[&>input]:text-lg'
           }
         }
+      },
+      defaultVariants: {
+        size: 'md'
       }
     }
   }
@@ -403,8 +404,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog prefix="content">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

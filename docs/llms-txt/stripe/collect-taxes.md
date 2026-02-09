@@ -677,9 +677,8 @@ params := &stripe.CustomerUpdateParams{
     Country: stripe.String("{{COUNTRY}}"),
   },
   Tax: &stripe.CustomerUpdateTaxParams{ValidateLocation: stripe.String("immediately")},
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
 }
-result, err := sc.V1Customers.Update(context.TODO(), params)
+result, err := sc.V1Customers.Update(context.TODO(), "{{CUSTOMER_ID}}", params)
 ```
 
 ```dotnet
@@ -1176,7 +1175,7 @@ curl -G https://api.stripe.com/v1/credit_notes/preview \
   -u "<<YOUR_SECRET_KEY>>:" \
   -d invoice="{{INVOICE_ID}}" \
   -d "lines[0][type]"=invoice_line_item \
-  -d "lines[0][invoice_line_item]"="{{line item id from invoice}}" \
+  --data-urlencode "lines[0][invoice_line_item]"="{{line item id from invoice}}" \
   -d "lines[0][amount]"=1000
 ```
 
@@ -1461,9 +1460,8 @@ params := &stripe.SubscriptionItemUpdateParams{
     stripe.String("txr_1F6kmAAJVYItwOKqV9IWehUH"),
     stripe.String("txr_2J8lmBBGHJYyuUJqF6QJtkNM"),
   },
-  Item: stripe.String("si_F2yjdxUlCCOAtv"),
 }
-result, err := sc.V1SubscriptionItems.Update(context.TODO(), params)
+result, err := sc.V1SubscriptionItems.Update(context.TODO(), "si_F2yjdxUlCCOAtv", params)
 ```
 
 ```dotnet
@@ -1574,9 +1572,8 @@ params := &stripe.SubscriptionUpdateParams{
     stripe.String("txr_1EO66sClCIKljWvs98IiVfHW"),
     stripe.String("txr_1EEOvcClCIKljWvsqYb9U0MB"),
   },
-  SubscriptionExposedID: stripe.String("sub_BVxXIrxAAYb7Fb"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(context.TODO(), "sub_BVxXIrxAAYb7Fb", params)
 ```
 
 ```dotnet

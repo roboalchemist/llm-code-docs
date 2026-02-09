@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/hono.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an HTTP server using Hono and Bun
 
 [Hono](https://github.com/honojs/hono) is a lightweight ultrafast web framework designed for the edge.

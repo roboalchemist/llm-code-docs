@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/adding-a-sending-avatar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a sending avatar
 
 > Set up your email sending avatar through third-party platforms like Gmail and Outlook.

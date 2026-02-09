@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/fix-with-augment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fix in Augment
 
 > Automatically address issues found during code review directly using the agent in your IDE or paste the details into your preferred environment to address it yourself.
@@ -26,8 +30,3 @@ Options include:
 **Update the PR**: After pushing your fix, you can reply to the Code Review comment to indicate you've addressed the issue.
 
 **Request Follow-up Review**: If you make significant changes, consider requesting another review by commenting `auggie review` on your PR.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

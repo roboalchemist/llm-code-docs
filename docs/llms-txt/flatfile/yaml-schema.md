@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/yaml-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # YAML Schema to Flatfile Blueprint Converter
 
 > Automates the creation of a Flatfile Blueprint (Workbook and Sheets) from one or more YAML schema definitions, streamlining the setup of a Flatfile Space by converting existing data models into a Flatfile-compatible format.
@@ -8,7 +12,7 @@
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-yaml-schema
 ```
 
@@ -47,7 +51,7 @@ Configuration for the parent Workbook:
 
 Optional function executed after Space and Workbook configuration:
 
-```typescript
+```typescript  theme={null}
 (event: FlatfileEvent, workbookIds: string[], tick: TickFunction) => any | Promise<any>
 ```
 
@@ -56,7 +60,7 @@ Optional function executed after Space and Workbook configuration:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceWithYamlSchema } from '@flatfile/plugin-convert-yaml-schema'
 
@@ -69,7 +73,7 @@ Optional function executed after Space and Workbook configuration:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceWithYamlSchema } from '@flatfile/plugin-convert-yaml-schema'
 
@@ -86,7 +90,7 @@ Optional function executed after Space and Workbook configuration:
 ### Advanced Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceWithYamlSchema } from '@flatfile/plugin-convert-yaml-schema'
 
@@ -121,7 +125,7 @@ Optional function executed after Space and Workbook configuration:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import {
     configureSpaceWithYamlSchema,
@@ -164,7 +168,7 @@ Optional function executed after Space and Workbook configuration:
 ### Using Callback Function
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import api from '@flatfile/api'
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceWithYamlSchema } from '@flatfile/plugin-convert-yaml-schema'
@@ -190,7 +194,7 @@ Optional function executed after Space and Workbook configuration:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import api from '@flatfile/api'
   import { FlatfileEvent, FlatfileListener } from '@flatfile/listener'
   import { TickFunction } from '@flatfile/plugin-job-handler'
@@ -228,7 +232,7 @@ Optional function executed after Space and Workbook configuration:
 
 The most effective troubleshooting tool is the `debug: true` option. When enabled, the complete generated Blueprint object is printed to the console where the listener is running. This allows you to inspect the exact Workbook, Sheet, and Field configuration that the plugin produced.
 
-```javascript
+```javascript  theme={null}
 listener.use(
   configureSpaceWithYamlSchema(
     [{ sourceUrl: 'https://example.com/schemas/person.yml' }],

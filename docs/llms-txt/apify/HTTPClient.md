@@ -16,7 +16,7 @@
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_http_client.py#L33)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_http_client.py#L33)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, token, max\_retries, min\_delay\_between\_retries\_millis, timeout\_secs, stats): None
 
@@ -32,7 +32,7 @@
 
   #### Returns None
 
-### [**](#call)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_http_client.py#L141)call
+### [**](#call)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_http_client.py#L141)call
 
 * ****call**(\*, method, url, headers, params, data, json, stream, timeout\_secs): impit.Response
 

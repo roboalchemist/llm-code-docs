@@ -2,11 +2,13 @@
 
 # Bitbucket - Scan your code for feature flag usages
 
+Copy page
+
 ConfigCat's<!-- --> [Bitbucket Pipe](https://bitbucket.org/product/features/pipelines/integrations?p=configcat/scan-repository-pipe) <!-- -->has the ability to scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
 
 This feature makes the elimination of the technical debt easier, as it can show which repositories reference your feature flags and settings in one centralized place on your [Dashboard](https://app.configcat.com).
 
-[Here](https://configcat.com/docs/docs/advanced/code-references/overview/.md) you can find more details about how this feature works.
+[Here](https://configcat.com/docs/advanced/code-references/overview.md) you can find more details about how this feature works.
 
 This section describes how to use ConfigCat's [Bitbucket Pipe](https://bitbucket.org/product/features/pipelines/integrations?p=configcat/scan-repository-pipe) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat. You can find more information about Bitbucket Pipelines [here](https://bitbucket.org/product/features/pipelines).
 
@@ -16,11 +18,11 @@ This section describes how to use ConfigCat's [Bitbucket Pipe](https://bitbucket
 
    ![Bitbucket Pipe secrets](/docs/assets/cli/scan/pipe_secrets.png)
 
-2. Get your selected [Config's ID](https://configcat.com/docs/docs/advanced/code-references/overview/.md#config-id).
+2. Get your selected [Config's ID](https://configcat.com/docs/advanced/code-references/overview.md#config-id).
 
 3. Add the following snippet to the script section of your `bitbucket-pipelines.yml` file. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
 
-   ```
+   ```yaml
    - pipe: configcat/scan-repository-pipe:1.8.1
      variables:
        CONFIG_ID: 'PASTE-YOUR-CONFIG-ID-HERE'
@@ -33,6 +35,7 @@ This section describes how to use ConfigCat's [Bitbucket Pipe](https://bitbucket
        # ALIAS_PATTERNS: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\)  # optional
        # USAGE_PATTERNS: feature_flags\.enabled\(:CC_KEY\)
        # VERBOSE: 'true'         # optional
+
    ```
 
 4. Commit & push your changes.

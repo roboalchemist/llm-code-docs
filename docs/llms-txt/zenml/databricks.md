@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/orchestrators/databricks.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/model-deployers/databricks.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/orchestrators/databricks.md
-
 # Databricks Orchestrator
 
 [Databricks](https://www.databricks.com/) is a unified data analytics platform that combines the best of data warehouses and data lakes to offer an integrated solution for big data processing and machine learning. It provides a collaborative environment for data scientists, data engineers, and business analysts to work together on data projects. Databricks offers optimized performance and scalability for big data workloads.

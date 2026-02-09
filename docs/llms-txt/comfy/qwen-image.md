@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/qwen/qwen-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen-Image ComfyUI Native Workflow Example
 
 > Qwen-Image is a 20B parameter MMDiT (Multimodal Diffusion Transformer) model open-sourced under the Apache 2.0 license.
@@ -54,12 +58,16 @@ Currently Qwen-Image has multiple ControlNet support options available:
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
   </Tabs>
 </Tip>
+
+<a href="https://cloud.comfy.org/?template=image_qwen_image&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#7c3aed', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginBottom: '1rem'}}>
+  Run on Comfy Cloud
+</a>
 
 There are three different models used in the workflow attached to this document:
 
@@ -164,6 +172,10 @@ Qwen\_image\_distill
 
 This is a ControlNet model, so you can use it as normal ControlNet.
 
+<a href="https://cloud.comfy.org/?template=image_qwen_image_instantx_controlnet&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#7c3aed', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginBottom: '1rem'}}>
+  Run on Comfy Cloud
+</a>
+
 ### 1. Workflow and Input Images
 
 Download the image below and drag it into ComfyUI to load the workflow
@@ -215,6 +227,10 @@ ComfyUI/
 4. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to run the workflow
 
 ## Qwen Image ControlNet DiffSynth-ControlNets Model Patches Workflow
+
+<a href="https://cloud.comfy.org/?template=image_qwen_image_controlnet_patch&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#7c3aed', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginBottom: '1rem'}}>
+  Run on Comfy Cloud
+</a>
 
 This model is actually not a ControlNet, but a Model patch that supports three different control modes: canny, depth, and inpaint.
 
@@ -281,6 +297,10 @@ For the Inpaint model, it requires using the [Mask Editor](/interface/maskeditor
 6. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to run the workflow
 
 ## Qwen Image Union ControlNet LoRA Workflow
+
+<a href="https://cloud.comfy.org/?template=image_qwen_image_union_control_lora&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#7c3aed', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginBottom: '1rem'}}>
+  Run on Comfy Cloud
+</a>
 
 Original model address: [DiffSynth-Studio/Qwen-Image-In-Context-Control-Union](https://www.modelscope.cn/models/DiffSynth-Studio/Qwen-Image-In-Context-Control-Union/)
 Comfy Org rehost address: [qwen\_image\_union\_diffsynth\_lora.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-DiffSynth-ControlNets/blob/main/split_files/loras/qwen_image_union_diffsynth_lora.safetensors): Image structure control LoRA supporting canny, depth, pose, lineart, softedge, normal, openpose

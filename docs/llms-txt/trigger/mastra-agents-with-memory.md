@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/mastra-agents-with-memory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mastra agents with memory sharing + Trigger.dev task orchestration
 
 > Multi-agent workflow with persistent memory sharing using Mastra and Trigger.dev for clothing recommendations based on weather data.

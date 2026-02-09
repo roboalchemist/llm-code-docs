@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/advanced-usage/herd-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Command Line
 
 # Herd Command Line Interface

@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/examples/environment-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Environment Variables
 
 > Learn how to use the Vercel SDK through real-life examples.
@@ -115,4 +119,66 @@ async function manageEnvironmentVariables() {
 }
 
 manageEnvironmentVariables();
+```
+
+## Add variables to custom environments
+
+In this example, you will add environment variables to a [custom environment](https://vercel.com/docs/deployments/environments#custom-environments) in a project. You can find the project name from the [project settings page](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings\&title=Find+your+project+name) and the custom environment slug from the [custom environments page](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fenvironments\&title=Find+your+project+environments).
+
+```ts run.ts theme={"system"}
+import { Vercel } from '@vercel/sdk';
+
+const vercel = new Vercel({
+  bearerToken: process.env.VERCEL_TOKEN,
+});
+
+const projectName = 'my-project'; // The project name that you find in the project settings page
+const customEnvironmentSlug = 'staging'; // The custom environment slug that you want to add the variable to
+
+async function addEnvToCustomEnvironment() {
+  try {
+    // Get custom environments for the project
+    const customEnvs = await vercel.environment.getV9ProjectsIdOrNameCustomEnvironments({
+      idOrName: projectName,
+    });
+
+    console.log('Custom environments:', customEnvs);
+
+    // Find the staging environment
+    const stagingEnv = customEnvs.environments.find(
+      (env) => env.slug === customEnvironmentSlug,
+    );
+    const stagingEnvId = stagingEnv?.id; // This will be in format "env_xxx"
+
+    console.log(`Staging environment ID: ${stagingEnvId || 'not found'}`);
+
+    if (stagingEnvId) {
+      // Create/upsert an environment variable for the custom environment
+      console.log('Creating project environment variable...');
+      const createEnvResult = await vercel.projects.createProjectEnv({
+        idOrName: projectName,
+        upsert: 'true', // Upsert the variable if it already exists
+        requestBody: {
+          key: 'TEST_VAR',
+          value: 'test-value',
+          type: 'plain', // or "encrypted", "sensitive"
+          customEnvironmentIds: [stagingEnvId], // Array of custom environment IDs
+          comment: 'Test variable created via SDK',
+        },
+      });
+
+      console.log('Environment variable created:', createEnvResult);
+    } else {
+      console.log(
+        'Staging environment not found, skipping environment variable creation',
+      );
+    }
+  } catch (error) {
+    console.error(
+      error instanceof Error ? `Error: ${error.message}` : String(error),
+    );
+  }
+}
+
+addEnvToCustomEnvironment();
 ```

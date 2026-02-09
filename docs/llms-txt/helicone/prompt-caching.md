@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/concepts/prompt-caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Caching
 
 > Cache frequently-used context across LLM providers for reduced costs and faster responses

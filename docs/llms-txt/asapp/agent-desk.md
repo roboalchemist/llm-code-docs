@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Desk
 
 > Use the Agent Desk to empower agents to deliver fast and exceptional customer service.
@@ -10,7 +14,7 @@
 
 Agent Desk is an end-to-end AI-native® messaging platform designed for digital customer service. It enhances digital adoption, maintains customer satisfaction (CSAT), and increases contact center capacity efficiently.
 
-At its core, Agent Desk uses an AI-Native design approach. AI is not just an added feature, but the foundation upon which the entire platform is built.
+At its core, Agent Desk uses an AI-Native design approach. AI is not just an added feature, but the foundation for building the entire platform.
 
 Agent Desk leverages advanced machine learning algorithms and generative AI to provide comprehensive support for digital customer service. This holistic approach benefits agents, leaders, and customers alike, offering a seamless and intelligent messaging experience across various channels.
 
@@ -47,32 +51,32 @@ By seamlessly blending AI capabilities with human expertise, Agent Desk elevates
 
 ### Virtual Agent
 
-Virtual Agent is our cutting-edge automation solution that enables:
+Virtual Agent is our cutting-edge automation solution that enables organizations to:
 
-* Intelligent intent recognition and seamless routing
-* Automating common customer inquiries with natural language.
-* Handling dynamic input and secure forms.
-* Customizable workflows tailored to your brand's unique requirements
+* Recognize intent intelligently and route seamlessly
+* Automate common customer inquiries with natural language
+* Handle dynamic input and secure forms
+* Customize workflows tailored to your brand's unique requirements
 
 <Card title="Virtual Agent" href="messaging-platform/virtual-agent">Learn more about Virtual Agent</Card>
 
 ### Digital Agent Desk
 
-Digital Agent Desk is our AI-enhanced app empowering agents to deliver exceptional customer service via messaging:
+Digital Agent Desk is our AI-enhanced app that empowers agents to deliver exceptional customer service via messaging:
 
-* Send and receive messages across multiple channels.
-* Manage concurrent conversations with intelligent prioritization.
-* Access interaction history for context-aware support.
-* Use AI tools like AI Compose, Autopilot, and AI Summary for faster Average Handle Time (AHT).
-* Intuitive interface with integrated knowledge and customer info.
+* Send and receive messages across multiple channels
+* Manage concurrent conversations with intelligent prioritization
+* Access interaction history for context-aware support
+* Use AI tools like AI Compose, Autopilot, and AI Summary for faster Average Handle Time (AHT)
+* Navigate an intuitive interface with integrated knowledge and customer information
 
 <Card title="Digital Agent Desk" href="messaging-platform/digital-agent-desk">Learn more about Digital Agent Desk</Card>
 
 ### Insights Manager
 
-Insights Manager is our powerful analytics tool to optimize contact center operations:
+Insights Manager is our powerful analytics tool that optimizes contact center operations:
 
-* Identify and respond to customer trends in real-time
+* Identify and respond to customer trends in real time
 * Monitor contact center activity with intuitive dashboards
 * Manage conversation volume and agent workload efficiently
 * Gain insights through performance analysis and reporting

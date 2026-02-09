@@ -18,46 +18,6 @@
 
 # Source: https://react-spectrum.adobe.com/CheckboxGroup/testing.md
 
-# Source: https://react-spectrum.adobe.com/testing.md
-
-# Source: https://react-spectrum.adobe.com/TreeView/testing.md
-
-# Source: https://react-spectrum.adobe.com/Tabs/testing.md
-
-# Source: https://react-spectrum.adobe.com/TableView/testing.md
-
-# Source: https://react-spectrum.adobe.com/RadioGroup/testing.md
-
-# Source: https://react-spectrum.adobe.com/Picker/testing.md
-
-# Source: https://react-spectrum.adobe.com/Menu/testing.md
-
-# Source: https://react-spectrum.adobe.com/Dialog/testing.md
-
-# Source: https://react-spectrum.adobe.com/ComboBox/testing.md
-
-# Source: https://react-spectrum.adobe.com/CheckboxGroup/testing.md
-
-# Source: https://react-spectrum.adobe.com/testing.md
-
-# Source: https://react-spectrum.adobe.com/TreeView/testing.md
-
-# Source: https://react-spectrum.adobe.com/Tabs/testing.md
-
-# Source: https://react-spectrum.adobe.com/TableView/testing.md
-
-# Source: https://react-spectrum.adobe.com/RadioGroup/testing.md
-
-# Source: https://react-spectrum.adobe.com/Picker/testing.md
-
-# Source: https://react-spectrum.adobe.com/Menu/testing.md
-
-# Source: https://react-spectrum.adobe.com/Dialog/testing.md
-
-# Source: https://react-spectrum.adobe.com/ComboBox/testing.md
-
-# Source: https://react-spectrum.adobe.com/CheckboxGroup/testing.md
-
 # Testing CheckboxGroup
 
 ## Test utils

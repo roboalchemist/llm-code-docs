@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/novita.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Novita AI Integration
 
 > Connect Helicone with Novita AI, a platform that provides powerful LLM models including DeepSeek, Llama, Mistral, and more.

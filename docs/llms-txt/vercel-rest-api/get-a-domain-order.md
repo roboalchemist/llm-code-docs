@@ -1,76 +1,73 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domain-order.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a domain order
 
 > Get information about a domain order by its ID
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/registrar/orders/{orderId}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/registrar/orders/{orderId}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        orderId:
+  /v1/registrar/orders/{orderId}:
+    get:
+      tags:
+        - domains-registrar
+      summary: Get a domain order
+      description: Get information about a domain order by its ID
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            $ref: '#/components/schemas/OrderId'
+          required: true
+        - name: teamId
+          in: query
           schema:
-            - type: string
-              required: false
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getOrder
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.domainsRegistrar.getOrder({
-              orderId: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              orderId:
-                allOf:
-                  - type: string
-              domains:
-                allOf:
-                  - type: array
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - orderId
+                  - domains
+                  - status
+                properties:
+                  orderId:
+                    $ref: '#/components/schemas/OrderId'
+                  domains:
+                    type: array
                     items:
                       anyOf:
                         - type: object
@@ -105,8 +102,82 @@ paths:
                                 - refund-failed
                             price:
                               type: number
-                              description: The price for the domain.
                               minimum: 0.01
+                            error:
+                              anyOf:
+                                - anyOf:
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - unsupported-language-code
+                                        details:
+                                          type: object
+                                          required:
+                                            - detectedLanguageCode
+                                          properties:
+                                            detectedLanguageCode:
+                                              type: string
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - client-transfer-prohibited
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - claims-notice-required
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - cannot-transfer-in-until
+                                        details:
+                                          type: object
+                                          required:
+                                            - numDaysUntilTransferrable
+                                          properties:
+                                            numDaysUntilTransferrable:
+                                              type: number
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - price-change
+                                      additionalProperties: false
+                                - type: object
+                                  required:
+                                    - code
+                                  properties:
+                                    code:
+                                      type: string
+                                    details:
+                                      title: unknown
+                                  additionalProperties: false
                           additionalProperties: false
                         - type: object
                           required:
@@ -137,8 +208,82 @@ paths:
                                 - refund-failed
                             price:
                               type: number
-                              description: The price for the domain.
                               minimum: 0.01
+                            error:
+                              anyOf:
+                                - anyOf:
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - unsupported-language-code
+                                        details:
+                                          type: object
+                                          required:
+                                            - detectedLanguageCode
+                                          properties:
+                                            detectedLanguageCode:
+                                              type: string
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - client-transfer-prohibited
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - claims-notice-required
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - cannot-transfer-in-until
+                                        details:
+                                          type: object
+                                          required:
+                                            - numDaysUntilTransferrable
+                                          properties:
+                                            numDaysUntilTransferrable:
+                                              type: number
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - price-change
+                                      additionalProperties: false
+                                - type: object
+                                  required:
+                                    - code
+                                  properties:
+                                    code:
+                                      type: string
+                                    details:
+                                      title: unknown
+                                  additionalProperties: false
                           additionalProperties: false
                         - type: object
                           required:
@@ -172,351 +317,399 @@ paths:
                                 - refund-failed
                             price:
                               type: number
-                              description: The price for the domain.
                               minimum: 0.01
+                            error:
+                              anyOf:
+                                - anyOf:
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - unsupported-language-code
+                                        details:
+                                          type: object
+                                          required:
+                                            - detectedLanguageCode
+                                          properties:
+                                            detectedLanguageCode:
+                                              type: string
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - client-transfer-prohibited
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - claims-notice-required
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                        - details
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - cannot-transfer-in-until
+                                        details:
+                                          type: object
+                                          required:
+                                            - numDaysUntilTransferrable
+                                          properties:
+                                            numDaysUntilTransferrable:
+                                              type: number
+                                          additionalProperties: false
+                                      additionalProperties: false
+                                    - type: object
+                                      required:
+                                        - code
+                                      properties:
+                                        code:
+                                          type: string
+                                          enum:
+                                            - price-change
+                                      additionalProperties: false
+                                - type: object
+                                  required:
+                                    - code
+                                  properties:
+                                    code:
+                                      type: string
+                                    details:
+                                      title: unknown
+                                  additionalProperties: false
                           additionalProperties: false
-              status:
-                allOf:
-                  - type: string
+                  status:
+                    type: string
                     enum:
                       - draft
                       - purchasing
                       - completed
                       - failed
-              error:
-                allOf:
-                  - anyOf:
-                      - type: object
-                        required:
-                          - code
-                        properties:
-                          code:
-                            type: string
-                            enum:
-                              - payment-failed
-                        additionalProperties: false
-                      - type: object
-                        required:
-                          - code
-                          - details
-                        properties:
-                          code:
-                            type: string
-                            enum:
-                              - tld-outage
-                          details:
-                            type: object
+                  error:
+                    anyOf:
+                      - anyOf:
+                          - type: object
                             required:
-                              - tlds
+                              - code
                             properties:
-                              tlds:
-                                type: array
-                                items:
-                                  type: object
-                                  required:
-                                    - tldName
-                                    - endsAt
-                                  properties:
-                                    tldName:
-                                      type: string
-                                    endsAt:
-                                      type: string
-                                  additionalProperties: false
+                              code:
+                                type: string
+                                enum:
+                                  - payment-failed
                             additionalProperties: false
-                        additionalProperties: false
-                      - type: object
-                        required:
-                          - code
-                          - details
-                        properties:
-                          code:
-                            type: string
-                            enum:
-                              - price-mismatch
-                          details:
-                            type: object
+                          - type: object
                             required:
-                              - expectedPrice
+                              - code
+                              - details
                             properties:
-                              expectedPrice:
-                                type: number
-                              actualPrice:
-                                type: number
+                              code:
+                                type: string
+                                enum:
+                                  - tld-outage
+                              details:
+                                type: object
+                                required:
+                                  - tlds
+                                properties:
+                                  tlds:
+                                    type: array
+                                    items:
+                                      type: object
+                                      required:
+                                        - tldName
+                                        - endsAt
+                                      properties:
+                                        tldName:
+                                          type: string
+                                        endsAt:
+                                          type: string
+                                      additionalProperties: false
+                                additionalProperties: false
                             additionalProperties: false
-                        additionalProperties: false
+                          - type: object
+                            required:
+                              - code
+                              - details
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - price-mismatch
+                              details:
+                                type: object
+                                required:
+                                  - expectedPrice
+                                properties:
+                                  expectedPrice:
+                                    type: number
+                                  actualPrice:
+                                    type: number
+                                additionalProperties: false
+                            additionalProperties: false
+                          - type: object
+                            required:
+                              - code
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - unexpected-error
+                            additionalProperties: false
+                          - type: object
+                            required:
+                              - code
+                              - details
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - claims-required
+                              details:
+                                type: object
+                                required:
+                                  - message
+                                  - domainNames
+                                properties:
+                                  message:
+                                    type: string
+                                  domainNames:
+                                    items:
+                                      type: string
+                                    type: array
+                                additionalProperties: false
+                            additionalProperties: false
+                          - type: object
+                            required:
+                              - code
+                            properties:
+                              code:
+                                type: string
+                                enum:
+                                  - domain-mismatch
+                            additionalProperties: false
                       - type: object
                         required:
                           - code
                         properties:
                           code:
                             type: string
-                            enum:
-                              - unexpected-error
+                          details:
+                            title: unknown
                         additionalProperties: false
-            requiredProperties:
-              - orderId
-              - domains
-              - status
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              orderId: <string>
-              domains:
-                - purchaseType: purchase
-                  autoRenew: true
-                  years: 123
-                  domainName: <string>
-                  status: pending
-                  price: 1.01
-              status: draft
-              error:
-                code: payment-failed
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              issues:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/Issue'
-              message:
-                allOf:
-                  - type: string
-            description: The request did not match the expected schema
-            refIdentifier: '#/components/schemas/HttpApiDecodeError'
-            requiredProperties:
-              - issues
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              issues:
-                - path:
-                    - <string>
-                  message: <string>
-              message: <string>
-        description: There was something wrong with the request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 401
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - unauthorized
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Unauthorized'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 401
-              code: unauthorized
-              message: <string>
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 403
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - not_authorized_for_scope
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/NotAuthorizedForScope'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 403
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - forbidden
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Forbidden'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 403
-              code: not_authorized_for_scope
-              message: <string>
-        description: NotAuthorizedForScope
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 404
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - not_found
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/NotFound'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 404
-              code: not_found
-              message: <string>
-        description: NotFound
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 429
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - too_many_requests
-              message:
-                allOf:
-                  - type: string
-              retryAfter:
-                allOf:
-                  - type: object
-                    required:
-                      - value
-                      - str
-                    properties:
-                      value:
-                        type: number
-                      str:
-                        type: string
-                    additionalProperties: false
-              limit:
-                allOf:
-                  - type: object
-                    required:
-                      - total
-                      - remaining
-                      - reset
-                    properties:
-                      total:
-                        type: number
-                      remaining:
-                        type: number
-                      reset:
-                        type: number
-                    additionalProperties: false
-            refIdentifier: '#/components/schemas/TooManyRequests'
-            requiredProperties:
-              - status
-              - code
-              - message
-              - retryAfter
-              - limit
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 429
-              code: too_many_requests
-              message: <string>
-              retryAfter:
-                value: 123
-                str: <string>
-              limit:
-                total: 123
-                remaining: 123
-                reset: 123
-        description: TooManyRequests
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 500
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - internal_server_error
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/InternalServerError'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 500
-              code: internal_server_error
-              message: <string>
-        description: InternalServerError
-  deprecated: false
-  type: path
+                additionalProperties: false
+        '400':
+          description: There was something wrong with the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpApiDecodeError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: NotAuthorizedForScope
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/NotAuthorizedForScope'
+                  - $ref: '#/components/schemas/Forbidden'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '429':
+          description: TooManyRequests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequests'
+        '500':
+          description: InternalServerError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+        - bearerToken: []
 components:
   schemas:
+    OrderId:
+      type: string
+      description: A valid order ID
+    DomainName:
+      type: string
+      description: A valid domain name
+    HttpApiDecodeError:
+      type: object
+      required:
+        - issues
+        - message
+      properties:
+        issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Issue'
+        message:
+          type: string
+      additionalProperties: false
+      description: The request did not match the expected schema
+    Unauthorized:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 401
+        code:
+          type: string
+          enum:
+            - unauthorized
+        message:
+          type: string
+      additionalProperties: false
+    NotAuthorizedForScope:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 403
+        code:
+          type: string
+          enum:
+            - not_authorized_for_scope
+        message:
+          type: string
+      additionalProperties: false
+    Forbidden:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 403
+        code:
+          type: string
+          enum:
+            - forbidden
+        message:
+          type: string
+      additionalProperties: false
+    NotFound:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 404
+        code:
+          type: string
+          enum:
+            - not_found
+        message:
+          type: string
+      additionalProperties: false
+    TooManyRequests:
+      type: object
+      required:
+        - status
+        - code
+        - message
+        - retryAfter
+        - limit
+      properties:
+        status:
+          type: number
+          enum:
+            - 429
+        code:
+          type: string
+          enum:
+            - too_many_requests
+        message:
+          type: string
+        retryAfter:
+          type: object
+          required:
+            - value
+            - str
+          properties:
+            value:
+              type: number
+            str:
+              type: string
+          additionalProperties: false
+        limit:
+          type: object
+          required:
+            - total
+            - remaining
+            - reset
+          properties:
+            total:
+              type: number
+            remaining:
+              type: number
+            reset:
+              type: number
+          additionalProperties: false
+      additionalProperties: false
+    InternalServerError:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 500
+        code:
+          type: string
+          enum:
+            - internal_server_error
+        message:
+          type: string
+      additionalProperties: false
     Issue:
       type: object
       required:
@@ -552,7 +745,10 @@ components:
               type: string
           additionalProperties: false
           description: an object to be decoded into a globally shared symbol
-    DomainName:
-      type: string
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

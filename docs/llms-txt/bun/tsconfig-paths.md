@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/tsconfig-paths.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Re-map import paths
 
 Bun reads the `paths` field in your `tsconfig.json` to re-write import paths. This is useful for aliasing package names or avoiding long relative paths.
@@ -26,4 +30,4 @@ import { Button } from "@components/Button"; // imports from "./src/components/B
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.

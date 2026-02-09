@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/wallet-and-prepaid-credits/wallet-top-up-and-void.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Top-up and void credits
 
 > Add and void credits, to the customer's wallet.

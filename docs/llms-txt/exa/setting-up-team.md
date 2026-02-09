@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/setting-up-team.md
+# Source: https://exa.ai/docs/reference/setting-up-team.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Managing Your Team
 
@@ -45,8 +49,3 @@ Once accepted, you'll see both members are 'Accepted'. All Team members share th
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=9be5765f24c53a129c58542a681a9932" alt="" data-og-width="2954" width="2954" data-og-height="1916" height="1916" data-path="images/dashboard_invite_accepted.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=280&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=76abe2fcf0c0084c2047be6e5d38bbf0 280w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=560&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=d1c7e910620860ac802d562ba96099ae 560w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=840&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=dfe0010090fa00f0801554df5a95d347 840w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=1100&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=a57e0ec9e75523d7cff608697a149b83 1100w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=1650&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=c97f89b69a4c84f464f90ff3c038854a 1650w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/dashboard_invite_accepted.png?w=2500&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=b1bc8435d7897128ea6ced1b8bd1c5dc 2500w" />
 
 [Go to API Dashboard](https://dashboard.exa.ai)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

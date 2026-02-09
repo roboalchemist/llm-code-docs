@@ -10,6 +10,26 @@
 Looking for older updates? You can find them on our [**Previous releases**](https://docs.bito.ai/changelog/previous-releases) page.
 {% endhint %}
 
+## AI Code Review Agent - 19th Jan 2026
+
+<mark style="color:blue;">**New feature**</mark>
+
+**Introducing AI Code Reviews in CLI:** Get AI-powered code reviews directly in your terminal. Catch security vulnerabilities, bugs, and performance issues early – before they reach production.
+
+Integrate seamlessly into your CI/CD pipeline!
+
+Ship code with confidence knowing critical issues are caught early when they're cheapest to fix.
+
+<a href="ai-code-reviews-in-cli/overview" class="button primary">Learn more</a>
+
+## AI Architect - 12th Jan 2026
+
+<mark style="color:blue;">**New feature**</mark>
+
+**Kubernetes deployment support:** [AI Architect](https://docs.bito.ai/ai-architect/overview) now supports Kubernetes deployment alongside Docker Compose. Deploy to your existing K8s cluster to leverage enterprise orchestration, advanced scaling capabilities, and seamless integration with your containerized infrastructure.
+
+<a href="ai-architect/install-ai-architect-self-hosted" class="button primary">Learn more</a>
+
 ## AI Architect - 11th Dec 2025
 
 <mark style="color:blue;">**New feature**</mark>

@@ -72,6 +72,6 @@ Pull and modify a model.
 
 Then save it as a custom model with new settings like temperature or system prompt.
 
-Use Warp to generate a model file automatically.&#x20;
+Use Warp to generate a model file automatically.
 
 This adds a structured system prompt for that task — ready to use instantly.

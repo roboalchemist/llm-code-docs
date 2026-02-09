@@ -6,13 +6,11 @@
 
 ## Usage
 
-<code-preview>
-<u-empty :actions="[{"icon":"i-lucide-plus","label":"Create new"},{"icon":"i-lucide-refresh-cw","label":"Refresh","color":"neutral","variant":"subtle"}]" description="It looks like you haven't added any projects. Create one to get started." icon="i-lucide-file" title="No projects found">
-
-
-
-</u-empty>
-</code-preview>
+```vue
+<template>
+  <u-empty :actions=[{"icon":"i-lucide-plus","label":"Create new"},{"icon":"i-lucide-refresh-cw","label":"Refresh","color":"neutral","variant":"subtle"}] description=It looks like you haven't added any projects. Create one to get started. icon=i-lucide-file title=No projects found />
+</template>
+```
 
 ### Title
 
@@ -195,7 +193,7 @@ interface EmptyProps {
   /**
    * The icon displayed above the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   avatar?: AvatarProps | undefined;
   title?: string | undefined;
   description?: string | undefined;
@@ -304,8 +302,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

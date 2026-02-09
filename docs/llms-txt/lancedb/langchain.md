@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain
 
 export const PyFrameworksLangchainVectorStoreConfig = "db_url = \"db://lang_test\"  # url of db you created\napi_key = \"xxxxx\"  # your API key\nregion = \"us-east-1-dev\"  # your selected region\n\nvector_store = LanceDB(\n    uri=db_url,\n    api_key=api_key,  # (dont include for local API)\n    region=region,  # (dont include for local API)\n    embedding=embeddings,\n    table_name=\"langchain_test\",  # Optional\n)\n";
@@ -228,8 +232,3 @@ It returns list of IDs of the added images.
 <CodeBlock filename="Python" language="Python" icon="python">
   {PyFrameworksLangchainAddImages}
 </CodeBlock>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

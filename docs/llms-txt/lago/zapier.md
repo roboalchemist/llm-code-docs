@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/alerting/zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier
 
 Here is a typical use case of using Lago with Zapier to create powerful alerting automation.

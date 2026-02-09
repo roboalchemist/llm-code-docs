@@ -4,15 +4,55 @@
 
 ## A
 
+### ADE
+
+An Agentic Development Environment (ADE), also known as an Agentic IDE, is a engineering workspace where AI agents execute defined tasks.
+
 ### Advisor
 
 See [Snyk Advisor](https://snyk.io/advisor/).
 
-### **Asset (Snyk Essentials)**
+### Agent
+
+A software entity that uses an artificial intelligence model to reason, make decisions, and take autonomous actions to achieve a goal. It uses LLMs and various tools, memory, and external systems, not just generated text, to accomplish a specific task on the user’s behalf.
+
+### Agent frameworks
+
+Software libraries and platforms that provide the tools to build, manage, and coordinate the behavior of autonomous AI agents.
+
+### AI evaluation
+
+The process of measuring an AI system’s performance, quality, and safety against defined goals and benchmarks, using tests, metrics, and human judgement.
+
+### Agentic
+
+The ability of an AI system to plan, reason, and act independently toward a goal without explicit human instruction. Following multiple instructions, it can determine next steps by itself, without direction.
+
+### AI observability
+
+The ability to monitor and trace the internal behavior, performance, and decision-making processes of AI systems in real time. It’s critical for traceability especially in the context of complex, distributed, or agentic systems.
+
+### AI orchestration
+
+The management and coordination of multiple AI models, agents, and tools to complete complex tasks as a unified system, using frameworks.
+
+### AI runtime
+
+The execution environment where AI models actually run in production, and, based on a trained model or agent and input executes inference or actions and returns results. For example laptops or endpoints, a container, or the cloud.
+
+### AI training
+
+The process of teaching an AI model how to perform tasks. It involves feeding the model large datasets so it can learn patterns, facts, and how to respond to different situations.
+
+### AI-SPM
+
+AI Security Posture Management (AISPM) is a category of security tooling focused on discovering, monitoring, and governing artificial intelligence systems, including their models, data sources, and infrastructure.
+
+### Asset (Snyk Essentials)
 
 A Snyk Essentials asset is an identifiable entity that is part of an application, and relevant for security and developers. Snyk is generally focused on the development stages of application software, secures repository assets containing software package assets, and builds artifacts like container image assets.
 
-### Application (Snyk **Essentials**)
+### Application (Snyk Essentials)
 
 An application is software that serves a business purpose and consists of assets that form the app. Organizations often define the scope of an application differently.
 
@@ -44,21 +84,25 @@ Information related to the organization's objectives, priorities, and regulatory
 
 Continuous integration (CI), continuous delivery (CD), and continuous deployment (CD) together comprise a Software Development Lifecycle (SDLC) model, guiding developers to automate the development and delivery of small, frequent changes. This ensures all team members have access to the latest codebase and can ensure the compatibility of committed code during development. See [Snyk CI/CD](https://docs.snyk.io/developer-tools/snyk-ci-cd-integrations) for details of Snyk CI/CD integrations.
 
-### **Class (Snyk Essentials)**
+### Class (Snyk Essentials)
 
 A way to assign business context to assets and categorize an asset based on the business criticality. Assets can be assigned Classes A, B, C, or D, where Class A (assets that are business critical, deal with sensitive data, are subject to compliance, and so on) is the most important, and Class D (test apps, sandbox environments, and so on) the least important. Assets are assigned Class C by default. A class can be used in policies as well as defined in a policy.
 
 ### CLI
 
-Command Line Interface. See [Snyk CLI](#snyk-cli).
+Command Line Interface. A text-based tool that interacts with an operating system or application by typing specific commands into a terminal to perform tasks and automate workflows. See [Snyk CLI](#snyk-cli).
 
 ### Cloud Native Application Security
 
 Implementing security throughout the CI/CD pipeline, automating security embedding in microservices, and maximizing repetition to reduce the introduction of vulnerabilities. Snyk provides a comprehensive [CNAS platform](https://snyk.io/product/cloud-native-application-security/). See [Cloud-native security guide for building secure applications](https://snyk.io/learn/cloud-native-security-for-cloud-native-applications/).
 
-### Code assets (Snyk **Essentials**)
+### Code assets (Snyk Essentials)
 
 A hierarchical list of all assets retrieved from the scanned repositories.
+
+### Command directive
+
+A Command directive is a type of [Directive](#directive) that is manually invoked by you or an AI agent to codify and standardize complex rulesets. For more information, visit [Command directives](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives#command-directives).
 
 ### Container
 
@@ -76,7 +120,11 @@ One or more files that, when instantiated by a container engine or runtime, prov
 
 A server that provides a mechanism to store and retrieve container images.
 
-### **Controls (Snyk Essentials)**
+### Context window
+
+The maximum amount of information that an artificial intelligence model can consider and remember at a single point in time during a conversation or task.
+
+### Controls (Snyk Essentials)
 
 The security controls associated with the asset. Navigate to the Snyk Essentials Controls section to see all available statuses for security controls.
 
@@ -105,6 +153,10 @@ Common Weakness Enumeration. An online glossary that categorizes software and ha
 ### DAST
 
 Dynamic Application Security Testing. A security analysis technique that tests a running application from the outside to find security issues. See also[ IAST](#iast) and [SAST](#sast).
+
+### Directive
+
+A directive is a rule (also known as a command, instruction, and more) which guides an AI agent to produce code in the specified method. Snyk offers code examples for different directive types to implement in your organisation and potentially distribute company wide if you operate in an enterprise model. This is used in context with Snyk Studio. To learn more, visit [Directives](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives).
 
 ### Dependency
 
@@ -135,6 +187,10 @@ A text file format used to build container images using Docker. The Dockerfile c
 
 ## E
 
+### Embedded agent
+
+An AI assistant built directly into an existing software application or workflow to provide assistance in context.
+
 ### Environment
 
 Can refer to a cloud environment, a [Project attribute](https://docs.snyk.io/snyk-platform-administration/snyk-projects/project-attributes), or an interface for working with Snyk, such as the Snyk [CLI](#cli), [Web UI](#snyk-web-ui), or an [IDE](#ide).
@@ -163,6 +219,10 @@ A pull request with an automatic fix for discovered vulnerabilities that Snyk ca
 
 A distributed version control system for tracking changes in source code during software development.
 
+### Guardrail directive
+
+A Guardrail directive is a type of [Directive](#directive) that is automatically injected into AI agent interactions to govern AI agent behaviour. For more information, visit [Guardrail directives](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives#guardrail-directives).
+
 ## I
 
 ### IaC
@@ -184,6 +244,10 @@ The stored instance of a container that holds a set of software needed to run an
 ### Image layer
 
 Container images typically consist of several different file system layers, which are combined together at runtime into a single file system.
+
+### Inference
+
+The real-time process of using a trained AI model to generate an output from new input data without changing the model's parameters.
 
 ### Integrations
 
@@ -215,15 +279,37 @@ A specific type of package.
 
 A set of criteria for evaluating open-source license issues. License policies enable you to set the severity level and define legal instructions for each license. See [License policies](https://docs.snyk.io/manage-risk/policies/license-policies).
 
+### LLM
+
+Large Language Model. A type of AI model trained on vast amounts of data to understand, generate, and reason over human language and code. It understands logic, reasoning, and grammar, but it’s based on static knowledge.
+
+### LLM red teaming
+
+The practice of stress-testing AI models to discover security, safety, and reliability flaws through simulated adversarial attacks. As opposed to DAST (focused on code security issues), it looks for behavior-based security issues in running AI systems.
+
 ## M
 
 ### Manifest
 
 A file containing metadata about other files in a package.
 
+### MCP
+
+Model Context Protocol. An open standard that allows developers to create secure, bidirectional connections between AI-powered tools and their data sources. Visit [Agentic security with Snyk studio](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations).
+
 ### Monitor
 
 The `snyk monitor` command tests a Project and uploads the results to Snyk. See the CLI help for [Monitor](https://docs.snyk.io/developer-tools/snyk-cli/commands/monitor).
+
+## N
+
+### NLP
+
+Natural Language Processing.The technology that enables computers to understand, interpret, and generate human language. It is used with chatbots, threat detection, and intelligence gathering.
+
+### NPX
+
+`npx` (Node Package Execute) is a command-line tool bundled with `npm` that allows you to run `Node.js` packages wihout requiring install.
 
 ## O
 
@@ -285,6 +371,10 @@ Snyk scores issues, including vulnerabilities and licenses for Open Source, to h
 
 An external item scanned by Snyk with configuration to define how to run that scan. Projects appear on the **Projects** menu on the Snyk dashboard. See also [Target](#target). For details, see [Snyk Projects](https://docs.snyk.io/snyk-platform-administration/snyk-projects).
 
+### Prompt
+
+The input or set of instructions provided to an AI model that defines what task to perform, what context to use, and how it should respond.
+
 ## R
 
 ### Reachability
@@ -294,6 +384,10 @@ Whether an application contains code that will hit a vulnerable code path during
 ### Registry
 
 See [Container registry](#container-registry) or [Package registry](#package-registry).
+
+### Remediation directive
+
+A Remediation directive is a type of [Command directive](#command-directive) that triggers a full, end-to-end security remediation playbook that results in a secure pull request. For more information, visit [Remediation directives](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives#remediation-directives).
 
 ### Repository
 
@@ -349,9 +443,9 @@ The SCM Repository freshness provides an immediate understanding of the current 
 
 Software Development Lifecycle. A process followed by a development team, describing how to develop and maintain software.
 
-### Secure at inception
+### Secure at inception directive
 
-Secure at inception is a strategic imperative of Snyk Studio which ensures that code generated by AI coding assistants (for example, Cursor, Devin, Claude Code) is immediately scanned, verified, and fixed for security issues before you accept the code. This prevents the introduction of new vulnerabilities into the codebase and prevents building on top of insecure foundations which could require more significant refactoring and necessary human intervention. To learn more about this concept, see[ Secure at Inception for AI with Snyk.](https://snyk.io/solutions/secure-at-inception-for-ai/) To learn more about Secure at inception in the context of agentic workflows, see [Secure at inception rules](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio/windsurf-guide#secure-at-inception-rules).
+A Secure at inception directive is a type of [Guardrail directive](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives#guardrail-directives), used with Snyk Studio and your coding assistant. For more information, visit [Secure at inception directives](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/directives#secure-at-inception-directives).
 
 ### Security policy
 
@@ -405,6 +499,10 @@ A Snyk product. Enables developers to find and fix vulnerabilities in container 
 
 A Snyk product. Enables developers to find and fix vulnerabilities in Kubernetes, Helm, and Terraform configuration files. See [Snyk IaC](https://docs.snyk.io/scan-with-snyk/snyk-iac).
 
+### Snyk MCP Server
+
+A MCP server that enables easy integration with coding assistants, providing security context to AI agents. This runs locally using the Snyk CLI. For more information, visit [Agentic security with Snyk Studio](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations).
+
 ### Snyk Open Source
 
 A Snyk product. Enables developers to find and fix open-source vulnerabilities. See [Snyk Open Source](https://docs.snyk.io/scan-with-snyk/snyk-open-source).
@@ -456,6 +554,10 @@ A way to categorize assets. Helps you recognize or handle assets differently acc
 
 The top level of the Snyk hierarchy. It encompasses all your Groups and Organizations and all their corresponding Snyk work items. For more information, see [Tenants, Groups, and Organizations](https://docs.snyk.io/snyk-platform-administration/groups-and-organizations).
 
+Token
+
+<br>
+
 ## U
 
 ### Upgradable / Patchable
@@ -463,6 +565,10 @@ The top level of the Snyk hierarchy. It encompasses all your Groups and Organiza
 A fix type: a problem can be fixed by upgrading a version of a package or by applying a patch.
 
 ## V
+
+### Vector DB
+
+Vector database. A database that stores information as numerical representations, and it enables users to retrieve the most semantically relevant information instead of keyword matches.
 
 ### Vulnerability
 

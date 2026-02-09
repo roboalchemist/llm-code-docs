@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/json-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JSON Extractor
 
 > Parse JSON and JSON Lines files uploaded to Flatfile and extract data into Sheets within a Workbook
@@ -17,7 +21,7 @@ The plugin also intelligently handles nested JSON objects by flattening them int
 
 Install the JSON Extractor plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-json-extractor
 ```
 
@@ -42,14 +46,14 @@ If no options are provided, the plugin processes files by inserting data in chun
 This example shows how to add the JSON extractor to a Flatfile listener with its default settings.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
   listener.use(JSONExtractor());
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
@@ -62,7 +66,7 @@ This example shows how to add the JSON extractor to a Flatfile listener with its
 This example configures the extractor to use a smaller chunk size and process two chunks in parallel.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
@@ -74,7 +78,7 @@ This example configures the extractor to use a smaller chunk size and process tw
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
@@ -92,7 +96,7 @@ This example configures the extractor to use a smaller chunk size and process tw
 This example shows how to use the exported `jsonParser` function directly to parse a JSON file buffer outside of the Flatfile listener context.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import * as fs from 'fs';
   import { jsonParser } from '@flatfile/plugin-json-extractor';
 
@@ -103,7 +107,7 @@ This example shows how to use the exported `jsonParser` function directly to par
   // Output: { Sheet1: { headers: [...], data: [...] } }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import * as fs from 'fs';
   import { jsonParser } from '@flatfile/plugin-json-extractor';
 
@@ -134,7 +138,7 @@ Returns a Flatfile `Extractor` instance, which is a type of listener middleware.
 **Usage Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
@@ -145,7 +149,7 @@ Returns a Flatfile `Extractor` instance, which is a type of listener middleware.
   listener.use(JSONExtractor({ chunkSize: 1000, parallel: 5 }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { JSONExtractor } from '@flatfile/plugin-json-extractor';
 
@@ -177,7 +181,7 @@ Example: `{ "MySheet": { headers: ["id", "name"], data: [{ id: {value: 1}, name:
 **Usage Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import * as fs from 'fs';
   import { jsonParser } from '@flatfile/plugin-json-extractor';
 
@@ -192,7 +196,7 @@ Example: `{ "MySheet": { headers: ["id", "name"], data: [{ id: {value: 1}, name:
   // workbookL -> { Sheet1: { headers: ['id'], data: [...] } }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import * as fs from 'fs';
   import { jsonParser } from '@flatfile/plugin-json-extractor';
 

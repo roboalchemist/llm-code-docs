@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/evaluation-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluation overview
 
 > Learn about evaluating the correctness and completeness of assistant responses.
@@ -16,7 +20,7 @@ Response evaluation is useful when performing tasks like the following:
 
 ## SDK support
 
-You can [evaluate responses](/reference/api/latest/assistant/metrics_alignment) directly or through the [Pinecone Python SDK](/reference/python-sdk).
+You can [evaluate responses](/reference/api/latest/assistant/metrics_alignment) directly or through the [Pinecone Python SDK](/reference/sdks/python/overview).
 
 ## Request
 

@@ -13,10 +13,10 @@ Response to prolong request lock calls.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#lock_expires_at)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L31)lock\_expires\_at
+### [**](#lock_expires_at)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L31)lock\_expires\_at
 
 **lock\_expires\_at: datetime
 
-### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L29)model\_config
+### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L29)model\_config
 
 **model\_config: Undefined

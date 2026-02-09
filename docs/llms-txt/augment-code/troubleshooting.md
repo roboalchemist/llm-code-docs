@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
 > Common issues and solutions for Augment Code Review setup and configuration.
@@ -41,8 +45,3 @@ If you are unable to see the repositories from an organization you just added, t
     Follow the steps in [Configure Repo Access](/codereview/setup-guide-enterprise#configure-repo-access-inside-of-the-augment-github-app) again to install the app
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

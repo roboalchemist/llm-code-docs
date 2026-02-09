@@ -4,11 +4,7 @@
 
 OAuth Proxy plugin for Better Auth
 
-***
 
-title: OAuth Proxy
-description: OAuth Proxy plugin for Better Auth
------------------------------------------------
 
 A proxy plugin, that allows you to proxy OAuth requests. Useful for development and preview deployments where the redirect URL can't be known in advance to add to the OAuth provider.
 

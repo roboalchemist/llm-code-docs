@@ -28,7 +28,7 @@ Apify Store offers flexible pricing models that let you match your Actor's value
 
 All models give you 80% of revenue, with platform usage costs deducted for PPR and PPE models.
 
-Learn more in https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-actor-monetization-works.md.
+Learn more in [How Actor monetization works](https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-actor-monetization-works.md).
 
 ## Why developers publish Actors
 
@@ -38,8 +38,8 @@ Developers successfully monetize their Actors through the Apify platform. Once p
 
 Check out their success stories:
 
-* https://blog.apify.com/web-scraping-freelance-financial-freedom/ - Achieved financial freedom through Actor development.
-* https://apify.com/success-stories/paid-actor-journey-apify-freelancer-tugkan - Built a successful freelance career with paid Actors.
+* [Caleb David (microworlds)](https://blog.apify.com/web-scraping-freelance-financial-freedom/) - Achieved financial freedom through Actor development.
+* [Tugkan (epctex)](https://apify.com/success-stories/paid-actor-journey-apify-freelancer-tugkan) - Built a successful freelance career with paid Actors.
 
 ### Build your portfolio
 
@@ -53,23 +53,23 @@ Apify Store is a growing library of thousands of Actors, most created by communi
 
 ### Maintain quality
 
-Public Actors require higher standards than private ones. Since users depend on your Actor, you'll need to commit to regular maintenance—reserve approximately 2 hours per week for bug fixes, updates, and user support. Thorough documentation is essential; write clear README files using simple language since users may not be developers. Set up automated testing or use manual testing to prevent user issues, and respond promptly to issues through the Issues tab, where your response time is publicly visible. Learn more about metrics determining quality in https://docs.apify.com/platform/actors/publishing/quality-score.md.
+Public Actors require higher standards than private ones. Since users depend on your Actor, you'll need to commit to regular maintenance—reserve approximately 2 hours per week for bug fixes, updates, and user support. Thorough documentation is essential; write clear README files using simple language since users may not be developers. Set up automated testing or use manual testing to prevent user issues, and respond promptly to issues through the Issues tab, where your response time is publicly visible. Learn more about metrics determining quality in [Actor quality score documentation](https://docs.apify.com/platform/actors/publishing/quality-score.md).
 
 ### When you need to change things
 
-If you need to make breaking changes to your Actor, contact mailto:community@apify.com beforehand. Major pricing changes require 14-day notice and are limited to once per month. The platform helps communicate changes to your users.
+If you need to make breaking changes to your Actor, contact [community@apify.com](mailto:community@apify.com) beforehand. Major pricing changes require 14-day notice and are limited to once per month. The platform helps communicate changes to your users.
 
 ## Getting started
 
 Ready to publish? The process involves four main stages:
 
-1. Development: Build your Actor using https://docs.apify.com/sdk, https://crawlee.dev/, or https://apify.com/templates
+1. Development: Build your Actor using [Apify SDKs](https://docs.apify.com/sdk), [Crawlee](https://crawlee.dev/), or [Actor templates](https://apify.com/templates)
 2. Publication: Set up display information, description, README, and monetization
 3. Testing: Ensure your Actor works reliably with automated or manual tests
 4. Promotion: Optimize for SEO, share on social media, and create tutorials
 
 Learn more:
 
-* https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-to-build-actors.md
-* https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-store-works.md
-* https://docs.apify.com/platform/actors/publishing/publish.md
+* [How to build Actors](https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-to-build-actors.md)
+* [How Apify Store works](https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-store-works.md)
+* [Publish your Actor](https://docs.apify.com/platform/actors/publishing/publish.md)

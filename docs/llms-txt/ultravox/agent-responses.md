@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/agent-responses.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Responses to Tools
 
 > Configure when and how your agent responds after tool calls - whether to speak immediately, listen for input, or speak conditionally.
@@ -17,8 +21,3 @@ Ultravox Realtime allows you to define how the agent reacts after a tool call by
 | speaks      | Agent will speak immediately after the tool call returns. This is the default behavior if agent reaction is not set. Should be used for tools that gather information. |
 | listens     | Agent listens for user input and doesn't speak.                                                                                                                        |
 | speaks-once | Agent speaks only if it didn't speak immediately before the tool call. Prevents agent repeating things before and after the tool call.                                 |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

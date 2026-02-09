@@ -1,54 +1,56 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/x402/cids-add.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add CID to Payment Instruction
 
 > Associates a CID with a payment instruction
 
+
+
 ## OpenAPI
 
 ````yaml put /x402/payment_instructions/{id}/cids/{cid}
+openapi: 3.0.0
+info:
+  title: Pinata x402 Payment Instructions API
+  description: API for managing x402 payment instructions and CID associations
+  version: 3.0.0
+servers:
+  - url: https://api.pinata.cloud/v3
+    description: Production server
+security: []
 paths:
-  path: /x402/payment_instructions/{id}/cids/{cid}
-  method: put
-  servers:
-    - url: https://api.pinata.cloud/v3
-      description: Production server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Pinata API JWT token
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /x402/payment_instructions/{id}/cids/{cid}:
+    put:
+      summary: Add CID to Payment Instruction
+      description: Associates a CID with a payment instruction
+      operationId: addCID
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Payment instruction ID
-        cid:
+            type: string
+          description: Payment instruction ID
+        - name: cid
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Content Identifier (CID)
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: string
+          description: Content Identifier (CID)
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       payment_instruction_id:
                         type: string
@@ -57,45 +59,22 @@ paths:
                       created_at:
                         type: string
                         format: date-time
-        examples:
-          example:
-            value:
-              data:
-                payment_instruction_id: <string>
-                cid: <string>
-                created_at: '2023-11-07T05:31:56Z'
-        description: Successful operation
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Bad request
-        examples: {}
-        description: Bad request
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Forbidden
-        examples: {}
-        description: Forbidden
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Not found
-        examples: {}
-        description: Not found
-  deprecated: false
-  type: path
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Pinata API JWT token
 
 ````

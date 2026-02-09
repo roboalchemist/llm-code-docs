@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/docs/learn/server-concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understanding MCP servers
 
 MCP servers are programs that expose specific capabilities to AI applications through standardized protocol interfaces.
@@ -278,4 +282,4 @@ Consider a personalized AI travel planner application, with three connected serv
    * `createCalendarEvent()` - Adds the trip to the user's calendar
    * `sendEmail()` - Sends confirmation with trip details
 
-**The result:** Through multiple MCP servers, the user researched and booked a Barcelona trip tailored to their schedule. The "Plan a Vacation" prompt guided the AI to combine Resources (calendar availability and travel history) with Tools (searching flights, booking hotels, updating calendars) across different servers—gathering context and executing the booking. A task that could've taken hours was completed in minutes using MCP.
+**The result:** Through multiple MCP servers, the user researched and booked a Barcelona trip tailored to their schedule. The "Plan a Vacation" prompt guided the AI to combine Resources (calendar availability and travel history) with Tools (searching flights, booking hotels, updating calendars) across different servers—gathering context and executing the booking. A task that could have taken hours was completed in minutes using MCP.

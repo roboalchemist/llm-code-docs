@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/runs/update-run-score.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update run score
 
 
@@ -51,7 +55,3 @@ paths:
           description: Invalid input
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

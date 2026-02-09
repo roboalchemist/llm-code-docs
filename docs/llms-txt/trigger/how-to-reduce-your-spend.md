@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/how-to-reduce-your-spend.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to reduce your spend
 
 > Tips and best practices to reduce your costs on Trigger.dev
@@ -24,6 +28,11 @@ Configure billing alerts in your dashboard to get notified when you approach spe
 * Catch unexpected cost increases early
 * Identify runaway tasks before they become expensive
 
+The billing alerts page includes two types of alerts:
+
+* **Standard alerts**: Get notified at 75%, 90%, 100%, 200%, and 500% of your monthly budget
+* **Spike alerts**: Catch runaway usage from bugs or errors with alerts at 10x (1000%), 20x (2000%), 50x (5000%), and 100x (10000%) of your monthly budget. We recommend keeping these enabled as a safety net.
+
 <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=cc2a66d8aab0d8941f81dd70bc7fb61f" alt="Billing alerts" data-og-width="925" width="925" data-og-height="757" height="757" data-path="images/billing-alerts-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=1239c92296178c20b1fa90beb3a516f2 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=bbadf36f5ec87cac2007f8f6075974ca 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=c741c8297876d7cfadedba38ed28853f 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=594b1eec851cd8d5199d47a6b35a6b40 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=692aebc1193500cc97c275f0bd5ddb0c 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/billing-alerts-ui.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=813b55e61d9c1bffd376f06acd7f7d3f 2500w" />
 
 You can view your billing alerts page by clicking the "Organization" menu in the top left of the dashboard and then clicking "Settings".
@@ -34,7 +43,7 @@ The larger the machine, the more it costs per second. [View the machine pricing]
 
 Start with the smallest machine that works, then scale up only if needed:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Default: small-1x (0.5 vCPU, 0.5 GB RAM)
 export const lightTask = task({
   id: "light-task",
@@ -62,7 +71,7 @@ Idempotency keys prevent expensive duplicate work by ensuring the same operation
 
 When you use an idempotency key, Trigger.dev remembers the result and skips re-execution, saving you compute costs:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const expensiveApiCall = task({
   id: "expensive-api-call",
   run: async (payload: { userId: string }) => {
@@ -83,7 +92,7 @@ export const expensiveApiCall = task({
 
 You can use idempotency keys with various wait functions:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Skip waits during retries
 const token = await wait.createToken({
   idempotencyKey: `daily-report-${new Date().toDateString()}`,
@@ -106,7 +115,7 @@ The `idempotencyKeyTTL` controls how long the result is cached. Use shorter TTLs
 
 Sometimes it's more efficient to do more work in a single task than split across many. This is particularly true when you're doing lots of async work such as API calls – most of the time is spent waiting, so it's an ideal candidate for doing calls in parallel inside the same task.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const processItems = task({
   id: "process-items",
   run: async (payload: { items: string[] }) => {
@@ -124,7 +133,7 @@ When an error is thrown in a task, your run will be automatically reattempted ba
 
 Try setting lower `maxAttempts` for less critical tasks:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const apiTask = task({
   id: "api-task",
   retry: {
@@ -138,7 +147,7 @@ export const apiTask = task({
 
 This is very useful for intermittent errors, but if there's a permanent error you don't want to retry because you will just keep failing and waste compute. Use [AbortTaskRunError](/errors-retrying#using-aborttaskrunerror) to prevent a retry:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, AbortTaskRunError } from "@trigger.dev/sdk";
 
 export const someTask = task({
@@ -160,7 +169,7 @@ export const someTask = task({
 
 Set realistic maxDurations to prevent runs from executing for too long:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const boundedTask = task({
   id: "bounded-task",
   maxDuration: 300, // 5 minutes max
@@ -169,3 +178,45 @@ export const boundedTask = task({
   },
 });
 ```
+
+## Use waitpoints instead of polling
+
+Waits longer than 5 seconds automatically checkpoint your task, meaning you don't pay for compute while waiting. Use `wait.for()`, `wait.until()`, or `triggerAndWait()` instead of polling loops.
+
+```ts  theme={"theme":"css-variables"}
+import { task, wait } from "@trigger.dev/sdk";
+
+export const waitpointTask = task({
+  id: "waitpoint-task",
+  run: async (payload) => {
+    // This wait is free - your task is checkpointed
+    await wait.for({ minutes: 5 });
+
+    // Parent is also checkpointed while waiting for child tasks
+    const result = await childTask.triggerAndWait({ data: payload });
+    return result;
+  },
+});
+```
+
+[Read more about waitpoints](/wait-for).
+
+## Use debounce to consolidate multiple triggers
+
+When a task might be triggered multiple times in quick succession, use debounce to consolidate them into a single run. This is useful for document indexing, webhook aggregation, cache invalidation, and real-time sync scenarios.
+
+```ts  theme={"theme":"css-variables"}
+// Multiple rapid triggers consolidate into 1 run
+await updateIndex.trigger(
+  { docId: "doc-123" },
+  { debounce: { key: "doc-123", delay: "5s" } }
+);
+
+// Use trailing mode to process the most recent payload
+await processUpdate.trigger(
+  { version: 2 },
+  { debounce: { key: "update-123", delay: "10s", mode: "trailing" } }
+);
+```
+
+[Read more about debounce](/triggering#debounce).

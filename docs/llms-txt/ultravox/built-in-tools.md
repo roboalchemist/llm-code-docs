@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/built-in-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Built-in Tools
 
 > Ready-to-use tools for common functionality in voice applications.
@@ -545,8 +549,3 @@ Built-in tools handle authentication automatically - no additional setup require
 ## Next Steps
 
 * For more advanced tool usage, see our guides on [parameter overrides](/tools/custom/parameter-overrides) and [async tools](/tools/async-tools).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -9,13 +9,17 @@ https://api.apify.com/v2/request-queues/:queueId/requests/:requestId/lock
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#delete_request_lockhttps://docs.apify.com/api/client/js/reference/class/RequestQueueClient#deleteRequestLockDeletes a request lock. The request lock can be deleted only by the client that has locked it using .
+Deletes a request lock. The request lock can be deleted only by the client that has locked it using .
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

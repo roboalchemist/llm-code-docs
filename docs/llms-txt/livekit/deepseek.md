@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
 
-# Source: https://docs.livekit.io/agents/models/llm/plugins/deepseek.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/deepseek.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/deepseek.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
-
-LiveKit docs › Models › Large language models (LLM) › LiveKit Inference › DeepSeek
+LiveKit docs › Models › LLM › Inference › DeepSeek
 
 ---
 
@@ -29,6 +17,7 @@ LiveKit Inference offers DeepSeek models through Baseten. Pricing is available o
 | Model name | Model ID | Providers |
 | ---------- | -------- | -------- |
 | DeepSeek V3 | `deepseek-ai/deepseek-v3` | `baseten` |
+| DeepSeek V3.2 | `deepseek-ai/deepseek-v3.2` | `baseten` |
 
 ## Usage
 
@@ -122,7 +111,7 @@ The following links provide more information about DeepSeek in LiveKit Inference
 
 ---
 
-This document was rendered at 2025-11-18T23:55:10.419Z.
+This document was rendered at 2026-02-03T03:24:58.810Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/inference/deepseek.md](https://docs.livekit.io/agents/models/llm/inference/deepseek.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,8 +1,12 @@
 # Source: https://docs.fireflies.ai/schema/app-output.md
 
-# App Output
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Schema for App Output
+# AppOutput
+
+> Schema for AppOutput
 
 <ParamField path="transcript_id" type="String">
   The ID of the meeting transcript.

@@ -20,18 +20,18 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#headers)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/request_loaders/_apify_request_list.py#L25)headers
+### [**](#headers)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/request_loaders/_apify_request_list.py#L25)headers
 
 **headers: dict\[str, str]
 
-### [**](#method)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/request_loaders/_apify_request_list.py#L23)method
+### [**](#method)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/request_loaders/_apify_request_list.py#L23)method
 
 **method: HttpMethod
 
-### [**](#payload)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/request_loaders/_apify_request_list.py#L24)payload
+### [**](#payload)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/request_loaders/_apify_request_list.py#L24)payload
 
 **payload: str
 
-### [**](#user_data)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/request_loaders/_apify_request_list.py#L26)user\_data
+### [**](#user_data)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/request_loaders/_apify_request_list.py#L26)user\_data
 
 **user\_data: dict\[str, str]

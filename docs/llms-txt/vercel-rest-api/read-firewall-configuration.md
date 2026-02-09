@@ -1,118 +1,117 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/security/read-firewall-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read Firewall Configuration
 
 > Retrieve the specified firewall configuration for a project. The deployed configVersion will be `active`
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/security/firewall/config/{configVersion}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/security/firewall/config/{configVersion}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        configVersion:
+  /v1/security/firewall/config/{configVersion}:
+    get:
+      tags:
+        - security
+      summary: Read Firewall Configuration
+      description: >-
+        Retrieve the specified firewall configuration for a project. The
+        deployed configVersion will be `active`
+      operationId: getFirewallConfig
+      parameters:
+        - name: projectId
+          in: query
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The deployed configVersion for the firewall configuration
-      query:
-        projectId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              required: true
-        teamId:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: my-team-url-slug
+        - description: The deployed configVersion for the firewall configuration
+          in: path
+          name: configVersion
+          required: true
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getFirewallConfig
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Security.GetFirewallConfig(ctx, \"<id>\", \"<value>\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getFirewallConfig
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.security.getFirewallConfig({
-              projectId: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              configVersion: "<value>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              ownerId:
-                allOf:
-                  - type: string
-              projectKey:
-                allOf:
-                  - type: string
-              id:
-                allOf:
-                  - type: string
-              version:
-                allOf:
-                  - type: number
-              updatedAt:
-                allOf:
-                  - type: string
-              firewallEnabled:
-                allOf:
-                  - type: boolean
-              crs:
-                allOf:
-                  - properties:
+            type: string
+      responses:
+        '200':
+          description: >-
+            If the firewall configuration includes a [custom managed
+            ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets),
+            it will include a `crs` item that has the following values: sd:
+            Scanner Detection ma: Multipart Attack lfi: Local File Inclusion
+            Attack rfi: Remote File Inclusion Attack rce: Remote Execution
+            Attack php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL
+            Injection Attack sf: Session Fixation Attack java: Java Attack
+          content:
+            application/json:
+              schema:
+                properties:
+                  ownerId:
+                    type: string
+                  projectKey:
+                    type: string
+                  id:
+                    type: string
+                  version:
+                    type: number
+                  updatedAt:
+                    type: string
+                  firewallEnabled:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  crs:
+                    properties:
                       sd:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Scanner Detection - Detect and prevent reconnaissance
@@ -121,14 +120,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Multipart Attack - Block attempts to bypass security
@@ -137,14 +139,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Local File Inclusion Attack - Prevent unauthorized
@@ -153,14 +158,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Remote File Inclusion Attack - Prohibit unauthorized
@@ -169,14 +177,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Remote Execution Attack - Prevent unauthorized
@@ -185,14 +196,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           PHP Attack - Safeguard against vulnerability exploits
@@ -201,14 +215,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Generic Attack - Provide broad protection from various
@@ -217,14 +234,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           XSS Attack - Prevent injection of malicious scripts
@@ -233,14 +253,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           SQL Injection Attack - Prohibit unauthorized use of
@@ -249,14 +272,17 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Session Fixation Attack - Prevent unauthorized
@@ -266,192 +292,387 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
                               - deny
                               - log
                         required:
-                          - active
                           - action
+                          - active
                         type: object
                         description: >-
                           Java Attack - Mitigate risks of exploitation targeting
                           Java-based applications or components.
                     required:
-                      - sd
-                      - ma
-                      - lfi
-                      - rfi
-                      - rce
-                      - php
                       - gen
-                      - xss
-                      - sqli
-                      - sf
                       - java
+                      - lfi
+                      - ma
+                      - php
+                      - rce
+                      - rfi
+                      - sd
+                      - sf
+                      - sqli
+                      - xss
                     type: object
                     description: Custom Ruleset
-              rules:
-                allOf:
-                  - items:
-                      properties:
-                        id:
-                          type: string
-                        name:
-                          type: string
-                        description:
-                          type: string
-                        active:
-                          type: boolean
-                        conditionGroup:
-                          items:
-                            properties:
-                              conditions:
-                                items:
-                                  properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - host
-                                        - path
-                                        - method
-                                        - header
-                                        - query
-                                        - cookie
-                                        - target_path
-                                        - route
-                                        - raw_path
-                                        - ip_address
-                                        - protocol
-                                        - region
-                                        - scheme
-                                        - environment
-                                        - user_agent
-                                        - geo_continent
-                                        - geo_country
-                                        - geo_country_region
-                                        - geo_city
-                                        - geo_as_number
-                                        - ja4_digest
-                                        - ja3_digest
-                                        - rate_limit_api_id
-                                        - server_action
-                                      description: >-
-                                        [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters)
-                                        from the incoming traffic.
-                                    op:
-                                      type: string
-                                      enum:
-                                        - re
-                                        - eq
-                                        - ex
-                                        - inc
-                                        - pre
-                                        - suf
-                                        - sub
-                                        - gt
-                                        - gte
-                                        - lt
-                                        - lte
-                                        - nex
-                                        - ninc
-                                        - neq
-                                    neg:
-                                      type: boolean
-                                    key:
-                                      type: string
-                                    value:
-                                      oneOf:
-                                        - type: string
-                                        - type: number
-                                        - items:
-                                            type: string
-                                          type: array
-                                  required:
-                                    - type
-                                    - op
-                                  type: object
-                                type: array
-                            required:
-                              - conditions
-                            type: object
-                          type: array
-                        action:
-                          properties:
-                            mitigate:
+                  rules:
+                    items:
+                      oneOf:
+                        - properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            active:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
+                            conditionGroup:
+                              items:
+                                properties:
+                                  conditions:
+                                    items:
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                            - host
+                                            - path
+                                            - method
+                                            - header
+                                            - query
+                                            - cookie
+                                            - target_path
+                                            - route
+                                            - raw_path
+                                            - ip_address
+                                            - protocol
+                                            - region
+                                            - scheme
+                                            - environment
+                                            - user_agent
+                                            - geo_continent
+                                            - geo_country
+                                            - geo_country_region
+                                            - geo_city
+                                            - geo_as_number
+                                            - ja4_digest
+                                            - ja3_digest
+                                            - rate_limit_api_id
+                                            - server_action
+                                            - bot_name
+                                            - bot_category
+                                        op:
+                                          type: string
+                                          enum:
+                                            - sub
+                                            - re
+                                            - eq
+                                            - ex
+                                            - inc
+                                            - pre
+                                            - suf
+                                            - gt
+                                            - gte
+                                            - lt
+                                            - lte
+                                            - nex
+                                            - ninc
+                                            - neq
+                                        neg:
+                                          type: boolean
+                                          enum:
+                                            - false
+                                            - true
+                                        key:
+                                          type: string
+                                        value:
+                                          oneOf:
+                                            - type: string
+                                            - type: number
+                                            - items:
+                                                type: string
+                                              type: array
+                                      required:
+                                        - op
+                                        - type
+                                      type: object
+                                    type: array
+                                required:
+                                  - conditions
+                                type: object
+                              type: array
+                            action:
                               properties:
-                                action:
-                                  type: string
-                                  enum:
-                                    - deny
-                                    - log
-                                    - challenge
-                                    - bypass
-                                    - rate_limit
-                                    - redirect
-                                rateLimit:
-                                  nullable: true
+                                mitigate:
                                   properties:
-                                    algo:
-                                      type: string
-                                      enum:
-                                        - fixed_window
-                                        - token_bucket
-                                    window:
-                                      type: number
-                                    limit:
-                                      type: number
-                                    keys:
-                                      items:
-                                        type: string
-                                      type: array
                                     action:
-                                      nullable: true
                                       type: string
                                       enum:
                                         - deny
                                         - log
                                         - challenge
+                                        - bypass
                                         - rate_limit
-                                  required:
-                                    - algo
-                                    - window
-                                    - limit
-                                    - keys
-                                  type: object
-                                redirect:
-                                  nullable: true
-                                  properties:
-                                    location:
+                                        - redirect
+                                    rateLimit:
+                                      nullable: true
+                                      properties:
+                                        algo:
+                                          type: string
+                                          enum:
+                                            - fixed_window
+                                            - token_bucket
+                                        window:
+                                          type: number
+                                        limit:
+                                          type: number
+                                        keys:
+                                          items:
+                                            type: string
+                                          type: array
+                                        action:
+                                          nullable: true
+                                          type: string
+                                          enum:
+                                            - deny
+                                            - log
+                                            - challenge
+                                            - rate_limit
+                                      required:
+                                        - algo
+                                        - keys
+                                        - limit
+                                        - window
+                                      type: object
+                                    redirect:
+                                      nullable: true
+                                      properties:
+                                        location:
+                                          type: string
+                                        permanent:
+                                          type: boolean
+                                          enum:
+                                            - false
+                                            - true
+                                      required:
+                                        - location
+                                        - permanent
+                                      type: object
+                                    actionDuration:
+                                      nullable: true
                                       type: string
-                                    permanent:
+                                    bypassSystem:
+                                      nullable: true
                                       type: boolean
+                                      enum:
+                                        - false
+                                        - true
                                   required:
-                                    - location
-                                    - permanent
+                                    - action
                                   type: object
-                                actionDuration:
-                                  nullable: true
-                                  type: string
-                                bypassSystem:
-                                  nullable: true
-                                  type: boolean
-                              required:
-                                - action
                               type: object
+                            valid:
+                              type: boolean
+                              enum:
+                                - true
+                            validationErrors:
+                              nullable: true
+                          required:
+                            - action
+                            - active
+                            - conditionGroup
+                            - id
+                            - name
+                            - valid
+                            - validationErrors
                           type: object
-                      required:
-                        - id
-                        - name
-                        - active
-                        - conditionGroup
-                        - action
-                      type: object
+                        - properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+                            description:
+                              type: string
+                            active:
+                              type: boolean
+                              enum:
+                                - false
+                                - true
+                            conditionGroup:
+                              items:
+                                properties:
+                                  conditions:
+                                    items:
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                            - host
+                                            - path
+                                            - method
+                                            - header
+                                            - query
+                                            - cookie
+                                            - target_path
+                                            - route
+                                            - raw_path
+                                            - ip_address
+                                            - protocol
+                                            - region
+                                            - scheme
+                                            - environment
+                                            - user_agent
+                                            - geo_continent
+                                            - geo_country
+                                            - geo_country_region
+                                            - geo_city
+                                            - geo_as_number
+                                            - ja4_digest
+                                            - ja3_digest
+                                            - rate_limit_api_id
+                                            - server_action
+                                            - bot_name
+                                            - bot_category
+                                        op:
+                                          type: string
+                                          enum:
+                                            - sub
+                                            - re
+                                            - eq
+                                            - ex
+                                            - inc
+                                            - pre
+                                            - suf
+                                            - gt
+                                            - gte
+                                            - lt
+                                            - lte
+                                            - nex
+                                            - ninc
+                                            - neq
+                                        neg:
+                                          type: boolean
+                                          enum:
+                                            - false
+                                            - true
+                                        key:
+                                          type: string
+                                        value:
+                                          oneOf:
+                                            - type: string
+                                            - type: number
+                                            - items:
+                                                type: string
+                                              type: array
+                                      required:
+                                        - op
+                                        - type
+                                      type: object
+                                    type: array
+                                required:
+                                  - conditions
+                                type: object
+                              type: array
+                            action:
+                              properties:
+                                mitigate:
+                                  properties:
+                                    action:
+                                      type: string
+                                      enum:
+                                        - deny
+                                        - log
+                                        - challenge
+                                        - bypass
+                                        - rate_limit
+                                        - redirect
+                                    rateLimit:
+                                      nullable: true
+                                      properties:
+                                        algo:
+                                          type: string
+                                          enum:
+                                            - fixed_window
+                                            - token_bucket
+                                        window:
+                                          type: number
+                                        limit:
+                                          type: number
+                                        keys:
+                                          items:
+                                            type: string
+                                          type: array
+                                        action:
+                                          nullable: true
+                                          type: string
+                                          enum:
+                                            - deny
+                                            - log
+                                            - challenge
+                                            - rate_limit
+                                      required:
+                                        - algo
+                                        - keys
+                                        - limit
+                                        - window
+                                      type: object
+                                    redirect:
+                                      nullable: true
+                                      properties:
+                                        location:
+                                          type: string
+                                        permanent:
+                                          type: boolean
+                                          enum:
+                                            - false
+                                            - true
+                                      required:
+                                        - location
+                                        - permanent
+                                      type: object
+                                    actionDuration:
+                                      nullable: true
+                                      type: string
+                                    bypassSystem:
+                                      nullable: true
+                                      type: boolean
+                                      enum:
+                                        - false
+                                        - true
+                                  required:
+                                    - action
+                                  type: object
+                              type: object
+                            valid:
+                              type: boolean
+                              enum:
+                                - false
+                            validationErrors:
+                              items:
+                                type: string
+                              type: array
+                          required:
+                            - action
+                            - active
+                            - conditionGroup
+                            - id
+                            - name
+                            - valid
+                            - validationErrors
+                          type: object
                     type: array
-              ips:
-                allOf:
-                  - items:
+                  ips:
+                    items:
                       properties:
                         id:
                           type: string
@@ -469,24 +690,25 @@ paths:
                             - challenge
                             - bypass
                       required:
-                        - id
-                        - hostname
-                        - ip
                         - action
+                        - hostname
+                        - id
+                        - ip
                       type: object
                     type: array
-              changes:
-                allOf:
-                  - items:
+                  changes:
+                    items:
                       type: object
                     type: array
-              managedRules:
-                allOf:
-                  - properties:
+                  managedRules:
+                    properties:
                       bot_protection:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
@@ -506,6 +728,9 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
@@ -525,6 +750,31 @@ paths:
                         properties:
                           active:
                             type: boolean
+                            enum:
+                              - false
+                              - true
+                          action:
+                            type: string
+                            enum:
+                              - deny
+                              - log
+                              - challenge
+                          updatedAt:
+                            type: string
+                          userId:
+                            type: string
+                          username:
+                            type: string
+                        required:
+                          - active
+                        type: object
+                      vercel_ruleset:
+                        properties:
+                          active:
+                            type: boolean
+                            enum:
+                              - false
+                              - true
                           action:
                             type: string
                             enum:
@@ -541,151 +791,38 @@ paths:
                           - active
                         type: object
                     type: object
-              botIdEnabled:
-                allOf:
-                  - type: boolean
-            requiredProperties:
-              - ownerId
-              - projectKey
-              - id
-              - version
-              - updatedAt
-              - firewallEnabled
-              - crs
-              - rules
-              - ips
-              - changes
-        examples:
-          example:
-            value:
-              ownerId: <string>
-              projectKey: <string>
-              id: <string>
-              version: 123
-              updatedAt: <string>
-              firewallEnabled: true
-              crs:
-                sd:
-                  active: true
-                  action: deny
-                ma:
-                  active: true
-                  action: deny
-                lfi:
-                  active: true
-                  action: deny
-                rfi:
-                  active: true
-                  action: deny
-                rce:
-                  active: true
-                  action: deny
-                php:
-                  active: true
-                  action: deny
-                gen:
-                  active: true
-                  action: deny
-                xss:
-                  active: true
-                  action: deny
-                sqli:
-                  active: true
-                  action: deny
-                sf:
-                  active: true
-                  action: deny
-                java:
-                  active: true
-                  action: deny
-              rules:
-                - id: <string>
-                  name: <string>
-                  description: <string>
-                  active: true
-                  conditionGroup:
-                    - conditions:
-                        - type: host
-                          op: re
-                          neg: true
-                          key: <string>
-                          value: <string>
-                  action:
-                    mitigate:
-                      action: deny
-                      rateLimit:
-                        algo: fixed_window
-                        window: 123
-                        limit: 123
-                        keys:
-                          - <string>
-                        action: deny
-                      redirect:
-                        location: <string>
-                        permanent: true
-                      actionDuration: <string>
-                      bypassSystem: true
-              ips:
-                - id: <string>
-                  hostname: <string>
-                  ip: <string>
-                  notes: <string>
-                  action: deny
-              changes:
-                - {}
-              managedRules:
-                bot_protection:
-                  active: true
-                  action: deny
-                  updatedAt: <string>
-                  userId: <string>
-                  username: <string>
-                ai_bots:
-                  active: true
-                  action: deny
-                  updatedAt: <string>
-                  userId: <string>
-                  username: <string>
-                owasp:
-                  active: true
-                  action: deny
-                  updatedAt: <string>
-                  userId: <string>
-                  username: <string>
-              botIdEnabled: true
-        description: >-
-          If the firewall configuration includes a [custom managed
-          ruleset](https://vercel.com/docs/security/vercel-waf/managed-rulesets),
-          it will include a `crs` item that has the following values: sd:
-          Scanner Detection ma: Multipart Attack lfi: Local File Inclusion
-          Attack rfi: Remote File Inclusion Attack rce: Remote Execution Attack
-          php: PHP Attack gen: Generic Attack xss: XSS Attack sqli: SQL
-          Injection Attack sf: Session Fixation Attack java: Java Attack
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                  botIdEnabled:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                required:
+                  - changes
+                  - crs
+                  - firewallEnabled
+                  - id
+                  - ips
+                  - ownerId
+                  - projectKey
+                  - rules
+                  - updatedAt
+                  - version
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

@@ -1,10 +1,14 @@
 # Source: https://docs.comfy.org/interface/credits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credits Management
 
 > In this article, we will introduce ComfyUI's credit management features, including how to obtain, use, and view credits.
 
-The credit system was added to support the `API Nodes`, as calling closed-source AI models requires token consumption, so proper credit management is necessary. By default, the credits interface is not displayed. Please first log in to your ComfyUI account in `Settings` -> `User`, and then you can view your associated account's credit information in `Settings` -> `Credits`.
+The credit system was added to support the `Partner Nodes`, as calling closed-source AI models requires token consumption, so proper credit management is necessary. By default, the credits interface is not displayed. Please first log in to your ComfyUI account in `Settings` -> `User`, and then you can view your associated account's credit information in `Settings` -> `Credits`.
 
 <img src="https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=23c731ee1aca4095c148b557d21211a1" alt="ComfyUI Credits Interface" data-og-width="3358" width="3358" data-og-height="1820" height="1820" data-path="images/interface/setting/menu-credits.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=280&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=336c1785fbafbfa259e2a990ba0f0137 280w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=560&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=2be585162b11f5200d0df5a1bb008ae8 560w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=840&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=0048dc13fdba2649100698c54f0d5ea5 840w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=1100&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=254e3d38a542a261a993031e8312e8a1 1100w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=1650&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=61ec275a6a88b1b488515f5d266df29e 1650w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/menu-credits.jpg?w=2500&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=a97b297afef95f9d651bc8993fbd0c40 2500w" />
 
@@ -47,8 +51,8 @@ Detailed steps are as follows:
     3. Choose your payment method
 
     * Credit Card
-    * WeChat (only supported when paying in USD)
-    * Alipay (only supported when paying in USD)
+    * WeChat (only supported when paying in Comfy Credits)
+    * Alipay (only supported when paying in Comfy Credits)
 
     4. Click the `Pay` button or the `Generate QR Code` button to complete the payment process
   </Step>
@@ -63,7 +67,7 @@ Detailed steps are as follows:
 
 <AccordionGroup>
   <Accordion title="Can credits go negative?">
-    No, when your credit balance is negative, you will not be able to run API Nodes
+    No, when your credit balance is negative, you will not be able to run Partner Nodes
   </Accordion>
 
   <Accordion title="Can I get a refund for unused credits?">
@@ -83,7 +87,7 @@ Detailed steps are as follows:
   </Accordion>
 
   <Accordion title="Why don't I see WeChat or Alipay payment options?">
-    Please ensure you are paying in USD, as WeChat and Alipay are only supported when paying in USD
+    Please ensure you are paying in Comfy Credits, as WeChat and Alipay are only supported when paying in Comfy Credits
   </Accordion>
 
   <Accordion title="Do credits expire?">

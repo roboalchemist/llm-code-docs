@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/realtime/overall/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 Upstash Realtime is the easiest way to add realtime features to any Next.js project.
@@ -10,9 +14,8 @@ Upstash Realtime is the easiest way to add realtime features to any Next.js proj
 
 ## Why Upstash Realtime?
 
-* ⏰ Setup takes 60 seconds
 * 🧨 Clean APIs & first-class TypeScript support
-* ⚡ Extremely fast, zero dependencies, 1.9kB gzipped
+* ⚡ Extremely fast, zero dependencies, 2.6kB gzipped
 * 💻 Deploy anywhere: Vercel, Netlify, etc.
 * 💎 100% type-safe with zod 4 or zod mini
 * ⏱️ Built-in message histories
@@ -24,25 +27,23 @@ Upstash Realtime is the easiest way to add realtime features to any Next.js proj
 
 ## Quickstart
 
-Get Upstash Realtime running in your Next.js app in under 60 seconds.
-
 ### 1. Installation
 
 <CodeGroup>
   ```bash npm theme={"system"}
-  npm install @upstash/realtime
+  npm install @upstash/realtime @upstash/redis zod
   ```
 
   ```bash yarn theme={"system"}
-  yarn add @upstash/realtime
+  yarn add @upstash/realtime @upstash/redis zod
   ```
 
   ```bash pnpm theme={"system"}
-  pnpm add @upstash/realtime
+  pnpm add @upstash/realtime @upstash/redis zod
   ```
 
   ```bash bun theme={"system"}
-  bun install @upstash/realtime
+  bun install @upstash/realtime @upstash/redis zod
   ```
 </CodeGroup>
 
@@ -102,36 +103,75 @@ import { realtime } from "@/lib/realtime"
 export const GET = handle({ realtime })
 ```
 
-### 5. Emit Events
+### 5. Add the Provider
 
-From any server component, server action, API route:
+Wrap your application in `RealtimeProvider`:
+
+```tsx title="app/providers.tsx" theme={"system"}
+"use client"
+
+import { RealtimeProvider } from "@upstash/realtime/client"
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <RealtimeProvider>{children}</RealtimeProvider>
+}
+```
+
+```tsx title="app/layout.tsx" theme={"system"}
+import { Providers } from "./providers"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+### 6. Create Typed Client Hook
+
+Create a typed `useRealtime` hook for your client components:
+
+```typescript title="lib/realtime-client.ts" theme={"system"}
+"use client"
+
+import { createRealtime } from "@upstash/realtime/client"
+import type { RealtimeEvents } from "./realtime"
+
+export const { useRealtime } = createRealtime<RealtimeEvents>()
+```
+
+### 7. Emit Events
+
+From any server component, server action, or API route:
 
 ```typescript title="app/api/notify/route.ts" theme={"system"}
 import { realtime } from "@/lib/realtime"
 
 export const POST = async () => {
-  // 👇 event name and data are 100% type-safe
   await realtime.emit("notification.alert", "hello world!")
 
   return new Response("OK")
 }
 ```
 
-### 6. Subscribe to Events
+### 8. Subscribe to Events
 
 In any client component:
 
 ```tsx title="app/components/notifications.tsx" theme={"system"}
 "use client"
 
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 
 export default function Notifications() {
-  useRealtime<RealtimeEvents>({
-    event: "notification.alert",
-    onData(data, channel) {
-      // 100% type-safe
+  useRealtime({
+    events: ["notification.alert"],
+    onData({ event, data, channel }) {
+      console.log(`Received ${event}:`, data)
     },
   })
 
@@ -140,6 +180,14 @@ export default function Notifications() {
 ```
 
 That's it! Your app is now listening for realtime events with full type safety. 🎉
+
+### 9. Realtime Dashboard
+
+For debugging or monitoring purposes, you can use Realtime Dashboard in console.
+
+<Frame>
+  <img src="https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=c6302ea63a4fe18843e21dae2aac1893" data-og-width="1940" width="1940" data-og-height="1184" height="1184" data-path="img/realtime/dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=280&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=14b8eca7aeedae3d9a4e3305388d3b21 280w, https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=560&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=b0f5d2aa74f04ab758c7078ce564352d 560w, https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=840&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=8de27f8ea6631f3a52d69610a36582f5 840w, https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=1100&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=42898b9d1d3520518d8eb9068ab4b525 1100w, https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=1650&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=e8302daede551ef608ee81f353640f3c 1650w, https://mintcdn.com/upstash/jYDrRVdhvmR-5blr/img/realtime/dashboard.png?w=2500&fit=max&auto=format&n=jYDrRVdhvmR-5blr&q=85&s=b9da0cba1dc6f2c43faa9c4584a17f9f 2500w" />
+</Frame>
 
 ## Next Steps
 

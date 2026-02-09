@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/data-drift.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/data-drift.md
-
-# Source: https://docs.aporia.com/v1/monitors/data-drift.md
-
 # Data Drift
 
 ### Why Monitor Data Drift?

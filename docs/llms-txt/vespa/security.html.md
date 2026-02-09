@@ -9,5 +9,5 @@
 - [**Cloudflare Workers**](cloudflare-workers)describes how you can access mutal TLS protected Vespa Cloud endpoints using Cloudflare Workers.
 - [**Whitepaper**](whitepaper) is an in-depth description of the security architecture of Vespa Cloud.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

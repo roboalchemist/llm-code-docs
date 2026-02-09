@@ -14,12 +14,12 @@ To enable log forwarding in a project, you need to be a [project admin](https://
 For pricing information for real-time logs forwarding, refer to the **Observability and performance monitoring** section of the [Upsun pricing page](https://upsun.com/pricing/).
 
 ### Which logs are forwarded?
-When log forwarding is enabled, Upsun forwards logs sent to journald.  
+When log forwarding is enabled, Upsun forwards logs sent to journald.
 
-By default, Upsun sends the following logs to journald: 
+By default, Upsun sends the following logs to journald:
 - `stdout` and `stderr` logs from your application
    Note: You can configure your application to use syslog to send these (or additional) messages to journald.
-- MariaDB/MySQL slow query logs 
+- MariaDB/MySQL slow query logs
 - Redis logs (all except command-level operations and low-level internals)
 
 Logs in files are not forwarded to journald.
@@ -31,17 +31,24 @@ If your third-party service isn't supported, you can forward to a [syslog endpoi
 
 ### Integrated third-party services
 
-Integrations exist for the following third-party services to enable log forwarding:
+Upsun supports forwarding logs not only to custom remote syslog endpoints but also directly to a set of
+popular third‑party log management and observability services. These integrations allow you to centralize logs from
+applications, services, and infrastructure into your existing monitoring stack:
 
-- [New Relic](https://newrelic.com/)
-- [Splunk](https://www.splunk.com/)
-- [Sumo Logic](https://www.sumologic.com/)
+- **[Sumo Logic](https://www.sumologic.com/)** – Cloud-based log management and analytics.
+- **[New Relic](https://newrelic.com/)** – Unified observability platform with logs and metrics.
+- **[Splunk](https://www.splunk.com/)** – Searchable log platform for monitoring and operational intelligence.
+- **[Datadog](https://www.datadoghq.com/)** – Observability suite with log collection and processing.
+- **[Loggly](https://www.loggly.com/)** – Cloud-native log monitoring, aggregation, and alerting.
+- **[LogDNA (Mezmo)](https://www.mezmo.com/)** – Centralized log management and analysis in real time.
+- **[Papertrail](https://www.papertrail.com/)** – Real-time log aggregation via syslog.
+- **[Logz.io](https://logz.io/)** – ELK-based log analytics and monitoring.
 
 ### Enable a log forwarding integration
 
-#### Using the CLI 
+#### Using the CLI
 
-To enable log forwarding for a specific project using the [Upsun CLI](https://docs.upsun.com../../administration/cli.md),
+To enable log forwarding for a specific project using the [Upsun CLI](https://docs.upsun.com/administration/cli.md),
 follow the steps for your selected service.
 
 View your logs in the **Logs** dashboard.
@@ -149,6 +156,92 @@ upsun integration:add --type httplog --url "https://<ELASTICSEARCH_URL>:<PORT>/<
 
 Once you've [added the service](https://docs.upsun.com../../add-services.md),
 to start forwarding logs [trigger a redeploy](https://docs.upsun.com../../development/troubleshoot.md#force-a-redeploy).
+
+### Excluding services from HTTP log forwarding
+
+All log forwarding integrations support an `excluded_services` property. This allows you to prevent logs from specific applications or services (including workers) from being forwarded to an external logging provider.
+
+This is useful for reducing noise, limiting log volume, or excluding non-critical services. The exclusion list is defined at the project level and applies to all environments.
+
+#### Supported integrations
+
+The `excluded_services` property is supported by all log forwarder types, including:
+
+- Syslog
+- Sumologic
+- Splunk
+- HTTP log forwarding
+- New Relic
+- OTLP
+
+#### Excluding apps or services
+
+By default, logs from all apps and services are forwarded. To exclude specific services, define them using `excluded_services`:
+
+```yaml  {location=".upsun/config.yaml"}
+logs_forwarders:
+  - type: httplog
+    endpoint: https://logs.example.com
+    excluded_services:
+      - cache
+      - debug-worker
+```
+In this example, logs from the `cache` service and the `debug-worker` worker are not forwarded.
+
+**Note**: 
+
+Note that the same exclusion list applies to all environments. If a listed app or service does not exist in an environment, it is silently ignored. No error is raised.
+
+**Note**: 
+
+``excluded_services`` removes the specified apps or services from log forwarding while all other apps and services continue to forward logs as normal. Note that these exclusions apply globally across environments.
+
+### Naming consistency
+
+When defining exclusions, you can list:
+
+- Apps (for example - `app`, `api`)
+- Services (for example - `cache`, `database`)
+- Workers (for example - `debug-worker`)
+
+Make sure to use the `service` or `app` name **exactly as defined in your project configuration**.
+
+#### Including services explicitly
+
+You can optionally define an `included_services` list to control exactly which services are forwarded. If `included_services` is set, only the listed services are forwarded.
+
+```yaml  {location=".upsun/config.yaml"}
+logs_forwarders:
+  - type: syslog
+    host: syslog.example.com
+    included_services:
+      - app
+      - api
+```
+#### Combining include and exclude rules
+
+You can use both `included_services` and `excluded_services` together. The following rules apply:
+- If `included_services` is not set, all services are included by default
+- If `included_services` is set, only those services are included
+- `excluded_services` always removes services from the active set
+
+```yaml  {location=".upsun/config.yaml"}
+logs_forwarders:
+  - type: syslog
+    host: syslog.example.com
+    included_services:
+      - app
+      - api
+      - worker
+      - cache
+    excluded_services:
+      - cache
+```
+Result: logs from `app`, `api`, and `worker` are forwarded.
+
+**Note**: 
+
+Note that a service cannot appear in both lists. Configurations that include the same service in both lists are invalid.
 
 ## Log levels
 

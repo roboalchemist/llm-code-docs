@@ -11,7 +11,7 @@ Adding an image block to your checkout is a simple yet powerful way to build tru
 This experience is designed for **all visitors** — it should display for **100% of checkout traffic.**\
 Every shopper benefits from seeing social proof, especially first-time buyers who may not be familiar with your brand yet.
 
-### What this Experience does
+### What this Personalization does
 
 This experience adds a single image to your Shopify checkout page.\
 The block features a bold, single-line statement that communicates scale, trust, or social proof right where it matters most.
@@ -32,18 +32,18 @@ Use the Single Image Social Proof when you want to:
 * Strengthen checkout messaging without adding offers or promotions
 
 {% hint style="success" %}
-**Pro Tip:** A Checkout Experience can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
+**Pro Tip:** A Checkout Personalization can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
 {% endhint %}
 
 ### Why it matters
 
 Checkout is where hesitation peaks. A short, confident line of social proof can be the reassurance shoppers need to complete their purchase. It builds trust, confirms quality, and helps close the gap between “almost buying” and conversion.
 
-## How to Set Up This Checkout Experience in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
+## How to Set Up This Checkout Personalization in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
 
 {% embed url="<https://www.loom.com/share/d0183bf48d8743b48ca188b11fb235c1>" %}
 
-1. Go to Experiences > **Checkout**
+1. Go to Personalizations > **Checkout**
 2. Select **Static Images**
 3. Add a **Block name**
 4. Rename the **Location ID** to be descriptive
@@ -67,8 +67,8 @@ Checkout is where hesitation peaks. A short, confident line of social proof can 
 11. You can update the content, launch a different Theme or Template, and update styles or javascript
 12. Add **Targeting** to choose which shoppers you want to see this block. It will be set to all visitors by default.
 13. **Save** your Experience
-14. **Preview** your Checkout Experience on desktop and mobile
-15. When everything looks good, **Schedule Your Experience** or **Activate** to go live
+14. **Preview** your Checkout Personalization on desktop and mobile
+15. When everything looks good, **Schedule Your Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
 
 {% hint style="info" %}

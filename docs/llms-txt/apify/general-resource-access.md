@@ -59,7 +59,7 @@ Even if your access is set to **Restricted** there are a few built-in exceptions
 
 Builds of public Actors are always accessible to anyone who can view the Actor — regardless of the Actor owner’s account **General resource access** setting.
 
-This ensures that public Actors in the Apify Store continue to work as expected. For example, if you open a public Actor in Console, you’ll also be able to view its build details, download logs, or inspect the source package — without needing extra permissions or a token.
+This ensures that public Actors in Apify Store continue to work as expected. For example, if you open a public Actor in Console, you’ll also be able to view its build details, download logs, or inspect the source package — without needing extra permissions or a token.
 
 This exception exists to maintain usability and avoid breaking workflows that rely on public Actors. It only applies to builds of Actors that are marked as **public**. For private Actors, build access still follows the general resource access setting of the owner’s account.
 
@@ -74,7 +74,7 @@ When you share an Actor with a collaborator, you can choose to share read-only a
 
 #### Automatically sharing runs with public Actor creators
 
-If you’re using a public Actor from the Apify Store, you can choose to automatically share your runs of that Actor with its creator. This helps developers monitor usage and troubleshoot issues more effectively.
+If you’re using a public Actor from Apify Store, you can choose to automatically share your runs of that Actor with its creator. This helps developers monitor usage and troubleshoot issues more effectively.
 
 * This setting is opt-in and can be enabled under **Account Settings → Privacy**
 * When enabled, your runs of public Actors are automatically visible to the Actor’s creator
@@ -139,11 +139,11 @@ The signature can be temporary (set to expire after a specified duration) or per
 
 Only selected *dataset* and *key-value store* endpoints support pre-signed URLs.<br /><!-- -->This allows fine-grained control over what data can be shared without authentication.
 
-| Resource           | Link                                                                                                             | Validity               | Notes                                                                                                   |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------- |
-| *Datasets*         | https://docs.apify.com/api/v2/dataset-items-get.md (`/v2/datasets/:datasetId/items`)                             | Temporary or Permanent | The link provides access to all dataset items.                                                          |
-| *Key-value stores* | https://docs.apify.com/api/v2/key-value-store-keys-get.md (`/v2/key-value-stores/:storeId/keys`)                 | Temporary or Permanent | Returns the list of keys in a store.                                                                    |
-| *Key-value stores* | https://docs.apify.com/api/v2/key-value-store-record-get.md (`/v2/key-value-stores/:storeId/records/:recordKey`) | *Permanent only*       | The public URL for a specific record is always permanent - it stays valid as long as the record exists. |
+| Resource           | Link                                                                                                                              | Validity               | Notes                                                                                                   |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| *Datasets*         | [Dataset items](https://docs.apify.com/api/v2/dataset-items-get.md) (`/v2/datasets/:datasetId/items`)                             | Temporary or Permanent | The link provides access to all dataset items.                                                          |
+| *Key-value stores* | [List of keys](https://docs.apify.com/api/v2/key-value-store-keys-get.md) (`/v2/key-value-stores/:storeId/keys`)                  | Temporary or Permanent | Returns the list of keys in a store.                                                                    |
+| *Key-value stores* | [Single record](https://docs.apify.com/api/v2/key-value-store-record-get.md) (`/v2/key-value-stores/:storeId/records/:recordKey`) | *Permanent only*       | The public URL for a specific record is always permanent - it stays valid as long as the record exists. |
 
 Automatically generated signed URLs
 
@@ -239,7 +239,7 @@ If the `expiresInSecs` option is not specified, the generated link will be *perm
 
 If you need finer control — for example, generating links without using Apify client — you can sign URLs manually using our reference implementation.
 
-https://github.com/apify/apify-client-js/blob/5efd68a3bc78c0173a62775f79425fad78f0e6d1/src/resource_clients/dataset.ts#L179
+[Check the reference implementation in Apify clients](https://github.com/apify/apify-client-js/blob/5efd68a3bc78c0173a62775f79425fad78f0e6d1/src/resource_clients/dataset.ts#L179)
 
 Manual signing uses standard *HMAC (SHA-256)* with `urlSigningSecretKey` of the resource and can be easily integrated.
 
@@ -253,7 +253,7 @@ This is very useful if you wish to expose a storage publicly with an easy to rem
 
 ## Implications for public Actor developers
 
-If you own a public Actor in the Apify Store, you need to make sure that your Actor will work even for users who have restricted access to their resources. Over time, you might see a growing number of users with *General resource access* set to *Restricted*.
+If you own a public Actor in Apify Store, you need to make sure that your Actor will work even for users who have restricted access to their resources. Over time, you might see a growing number of users with *General resource access* set to *Restricted*.
 
 In practice, this means that all API calls originating from the Actor need to have a valid API token. If you are using Apify SDK, this should be the default behavior. See the detailed guide below for more information.
 
@@ -269,7 +269,7 @@ This section provides a practical guide and best practices to help you update yo
 
 #### Always authenticate API requests
 
-All API requests from your Actor should be authenticated. When using the https://docs.apify.com/sdk/js/ or https://docs.apify.com/api/client/js/, this is done automatically.
+All API requests from your Actor should be authenticated. When using the [Apify SDK](https://docs.apify.com/sdk/js/) or [Apify Client](https://docs.apify.com/api/client/js/), this is done automatically.
 
 If your Actor makes direct API calls, include the API token manually:
 
@@ -303,7 +303,7 @@ await Actor.pushData({ recordUrl });
 ```
 
 
-To learn more about generating pre-signed URLs, refer to the section https://docs.apify.com/platform/collaboration/general-resource-access.md#pre-signed-urls.
+To learn more about generating pre-signed URLs, refer to the section [Sharing restricted resources with pre-signed URLs](https://docs.apify.com/platform/collaboration/general-resource-access.md#pre-signed-urls).
 
 Using Console URLs
 

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/instruction-adherence.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Instruction Adherence
 
 > Assess instruction adherence in AI outputs using Galileo Guardrail Metrics to ensure prompt-driven models generate precise and actionable results.

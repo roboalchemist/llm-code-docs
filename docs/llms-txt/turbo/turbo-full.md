@@ -4,11 +4,71 @@ Source: https://turbo.build/llms-full.txt
 
 ---
 
-- [Introduction](/index.md): Welcome to the Turborepo documentation!
+- [Community](/docs/community): Learn about the Turborepo community.
 
-Welcome to the Turborepo documentation!
+# Community
 
-***
+Turborepo has a large and active community of developers across the world. Here's how you can get involved.
+
+## Contributing
+
+* [Documentation](https://github.com/vercel/turborepo/tree/main/docs): Suggest improvements or even write new sections to help build understanding of how to use Turborepo.
+* [Examples](https://github.com/vercel/turborepo/tree/main/examples): Help developers integrate Turborepo with other tools and services by improving an example.
+* [Code](https://github.com/vercel/turborepo/blob/main/CONTRIBUTING.md): Learn more about the underlying architecture, contribute bug fixes, and suggest new features.
+
+## Discussions
+
+If you have a question about Turborepo or want to help others, join the conversation:
+
+* [GitHub Discussions](https://github.com/vercel/turborepo/discussions)
+* [Vercel Community](https://community.vercel.com/tag/turborepo)
+
+## Acknowledgements
+
+Turborepo was originally created by [Jared Palmer](https://x.com/jaredpalmer) as a closed-source enterprise software offering. In late 2021, [Vercel acquired Turborepo](https://vercel.com/blog/vercel-acquires-turborepo) and open sourced the codebase.
+
+Today, Turborepo has dedicated full-time team working on it as well as a growing list of [open source contributors](https://github.com/vercel/turborepo/graphs/contributors).
+
+### Inspiration / Prior Art
+
+At [Vercel](https://vercel.com/), we believe deeply in the open source movement and in the power of open collaboration. To that end, it's important to provide meaningful attribution to the projects and people that inspire(d) us and our work.
+
+We'd like to make a special shoutout to other build systems, monorepo tools, and prior art:
+
+* Bazel - [https://bazel.build](https://bazel.build)
+* Buck - [https://buck.build](https://buck.build)
+* Please - [https://please.build](https://please.build)
+* Pants - [https://www.pantsbuild.org](https://www.pantsbuild.org)
+* Scoot - [https://github.com/twitter/scoot](https://github.com/twitter/scoot)
+* TSDX - [https://tsdx.io](https://tsdx.io)
+* Lerna - [https://lerna.js.org](https://lerna.js.org)
+* Lage - [https://microsoft.github.io/lage](https://microsoft.github.io/lage)
+* Backfill - [https://github.com/microsoft/backfill](https://github.com/microsoft/backfill)
+* Bolt - [https://github.com/boltpkg/bolt](https://github.com/boltpkg/bolt)
+* Rush - [https://rushjs.io](https://rushjs.io)
+* Preconstruct - [https://preconstruct.tools](https://preconstruct.tools)
+* Nx - [https://nx.dev](https://nx.dev)
+* Yarn - [https://yarnpkg.com](https://yarnpkg.com)
+* npm - [https://www.npmjs.com](https://www.npmjs.com)
+* pnpm - [https://pnpm.js.org](https://pnpm.js.org)
+
+### Additional Thanks
+
+Additionally, we're grateful to:
+
+* [Rick Button](https://x.com/rickbutton) for donating the `turbo` package name on npm
+* [Iheanyi Ekechukwu](https://x.com/kwuchu) for helping Jared pick up Golang during the Pandemic!
+* [Kenneth Chau](https://x.com/kenneth_chau) for Lage's Scope and Pipeline API and docs
+* [Miguel Oller](https://mobile.x.com/ollermi) and [MakeSwift.com](https://www.makeswift.com/) for piloting Turborepo
+* [Eric Koslow](https://x.com/ekosz1), [Jack Hanford](https://x.com/jackhanford), and [Lattice.com](https://lattice.com/) for piloting Turborepo
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [Introduction](/docs): Welcome to the Turborepo documentation!
+
+# Introduction
 
 ## What is Turborepo?
 
@@ -20,13 +80,13 @@ From individual developers to the largest enterprise engineering organizations i
 
 Monorepos have many advantages - but **they struggle to scale**. Each workspace has its own test suite, its own linting, and its own build process. A single monorepo might have **thousands of tasks to execute**.
 
-![A representation of a typical monorepo. The first application took 110 seconds to complete its tasks. The second application took 140 seconds to complete its tasks. The shared package between them took 90 seconds to complete its tasks.](/images/docs/why-turborepo-problem.png)
+<img alt="A representation of a typical monorepo. The first application took 110 seconds to complete its tasks. The second application took 140 seconds to complete its tasks. The shared package between them took 90 seconds to complete its tasks." src={__img0} placeholder="blur" />
 
 These slowdowns can dramatically affect the way your teams build software, especially at scale. Feedback loops need to be fast so developers can deliver high-quality code quickly.
 
 ## The monorepo solution
 
-![The monorepo from before using Turborepo, showing how it can hit cache to complete tasks for all three packages in 80 milliseconds.](/images/docs/why-turborepo-solution.png)
+<img alt="The monorepo from before using Turborepo, showing how it can hit cache to complete tasks for all three packages in 80 milliseconds." src={__img1} placeholder="blur" />
 
 **Turborepo solves your monorepo's scaling problem**. [Remote Cache](/docs/core-concepts/remote-caching) stores the result of all your tasks, meaning that **your CI never needs to do the same work twice**.
 
@@ -44,10 +104,13 @@ We will do our best to keep jargon to a minimum - but there are some need-to-kno
 
 If you have questions about anything related to Turborepo, you're always welcome to ask the community on [GitHub Discussions](https://github.com/vercel/turborepo/discussions), [Vercel Community](https://community.vercel.com/tag/turborepo), and [Twitter](https://twitter.com/turborepo).
 
+---
 
-- [Support policy](/support-policy.md): Learn about Turborepo's Support policy.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [Support policy](/docs/support-policy): Learn about Turborepo's Support policy.
+
+# Support policy
 
 ## Package managers
 
@@ -162,10 +225,81 @@ Deprecated APIs are in the process of being removed. Any feature we intend to re
 
 * `TURBO_REMOTE_ONLY` and `--remote-only`: Use [`TURBO_CACHE`](/docs/reference/system-environment-variables) or [--cache](/docs/reference/run#--cache-options)
 
+---
 
-- [Core concepts](/core-concepts/index.md): Learn about the core concepts behind Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Card, Cards } from '#components/card';
+- [Telemetry](/docs/telemetry): Learn more about Turborepo's anonymous telemetry.
+
+# Telemetry
+
+Vercel Inc. (Vercel) may collect telemetry data about your use of Turborepo as explained below.
+Telemetry data allows us to monitor and improve Turborepo and the Vercel platform by
+collecting anonymous data about its usage and host information. The data may be used to broadly identify,
+troubleshoot, or respond to issues that impact users.
+
+Collection of telemetry data is optional. If you do not want telemetry data collected, you may [opt-out](#how-do-i-opt-out).
+
+## Why
+
+Telemetry allows us to accurately gauge Turborepo feature usage, pain points, and customization across all users.
+This data enables us to better tailor Turborepo to the masses, ensuring its continued growth, relevance, and best-in-class developer experience.
+Furthermore, this data allows us to verify if improvements are improving the baseline of all applications.
+
+## What is collected
+
+We track general usage information, specifically, we track the following with anonymized telemetry data using random identifiers:
+
+* Command invoked ([turbo run](/docs/reference/run), [turbo prune](/docs/reference/prune), [turbo gen](/docs/reference/generate), etc.)
+* Version of `turbo`
+* General machine information (e.g. number of CPUs, macOS/Windows/Linux, whether or not the command was run within CI)
+* Size of application (total number of workspaces)
+* We **DO NOT** collect any metrics which may contain sensitive data. This includes, but is not limited to: task names, package names, sensitive argument or flag values, environment variables, file paths, or contents of files.
+
+**Note**: This list is regularly audited to ensure its accuracy.
+
+You can view exactly what is being collected by setting the following environment variable: `TURBO_TELEMETRY_DEBUG=1`.
+
+Additionally, all possible events can be viewed by browsing the [events](https://github.com/vercel/turborepo/blob/main/crates/turborepo-telemetry/src/events) file directly.
+
+## How do I opt out?
+
+### Disable
+
+You may opt out-by running:
+
+```bash title="Terminal"
+turbo telemetry disable
+```
+
+You can also opt out by setting any of the following environment variables:
+
+* `TURBO_TELEMETRY_DISABLED=1`
+* `DO_NOT_TRACK=1` (Learn more about [Console Do Not Track (DNT)](https://consoledonottrack.com/))
+
+### Status
+
+You may check the status of telemetry collection at any time by running:
+
+```sh title="Terminal"
+turbo telemetry status
+```
+
+### Enable
+
+You may re-enable telemetry if you'd like to re-join the program by running the following:
+
+```sh title="Terminal"
+turbo telemetry enable
+```
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [Core concepts](/docs/core-concepts): Learn about the core concepts behind Turborepo.
+
+# Core concepts
 
 Learn more about the core concepts of Turborepo:
 
@@ -179,10 +313,13 @@ Learn more about the core concepts of Turborepo:
   <Card title="Package and Task Graphs" href="/docs/core-concepts/package-and-task-graph" description="How Turborepo relates your tasks to each other" />
 </Cards>
 
+---
 
-- [Internal Packages](/core-concepts/internal-packages.md): Learn how to build Internal Packages in your monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [Internal Packages](/docs/core-concepts/internal-packages): Learn how to build Internal Packages in your monorepo.
+
+# Internal Packages
 
 Internal Packages are libraries whose source code is inside your Workspace. You can quickly make Internal Packages to share code within your monorepo and choose to [publish them to the npm registry](/docs/guides/publishing-libraries) if you need to later.
 
@@ -235,7 +372,7 @@ In the [Creating an Internal Package guide](/docs/crafting-your-repository/creat
 You can then import the package into your code like you're used to doing with an external package:
 
 ```tsx title="./apps/web/app/page.tsx"
-import { Button } from '@repo/ui'; // [!code highlight]
+import { Button } from "@repo/ui"; // [!code highlight]
 
 export default function Page() {
   return <Button>Submit</Button>;
@@ -326,11 +463,13 @@ Additionally, the process of publishing a package to the npm registry requires s
 
 For a detailed guide, visit [our Publishing packages guide](/docs/guides/publishing-libraries).
 
+---
 
-- [Package and Task Graphs](/core-concepts/package-and-task-graph.md): Turborepo builds a Task Graph based on your configuration and repository structure.
+[View full sitemap](/sitemap.md)
 
-import { File, Folder, Files } from '#components/files';
-import { Callout } from '#components/callout';
+- [Package and Task Graphs](/docs/core-concepts/package-and-task-graph): Turborepo builds a Task Graph based on your configuration and repository structure.
+
+# Package and Task Graphs
 
 ## Package Graph
 
@@ -343,7 +482,7 @@ This sets the groundwork for the Task Graph, where you'll define how **tasks** r
 In `turbo.json`, you express how tasks relate to each other. You can think of these relationships as
 dependencies between tasks, but we have a more formal name for them: the Task Graph.
 
-<Callout type="good-to-know">
+<Callout type="info">
   You can generate a visualization of the task graph for your tasks using [the
   `--graph` flag](/docs/reference/run#--graph-file-type).
 </Callout>
@@ -385,7 +524,7 @@ You also have a `build` task that depends on `^build`:
 
 Turborepo will build a task graph like this:
 
-![Task graph visualization. The diagram has one node at the top named "apps/web" with two lines that connect to other nodes, "packages/ui" and "packages/utils" respectively.](/images/docs/simple-task-graph.png)
+<img alt="Task graph visualization. The diagram has one node at the top named &#x22;apps/web&#x22; with two lines that connect to other nodes, &#x22;packages/ui&#x22; and &#x22;packages/utils&#x22; respectively." src={__img0} placeholder="blur" />
 
 ### Transit Nodes
 
@@ -412,7 +551,7 @@ the `ui` package does not. You also have a `turbo.json` that configures the
 
 Turborepo will build this Task Graph:
 
-![A Task Graph visualization with a Transit Node. The diagram has one node at the top named "apps/doc" with a line that connects to a "packages/ui" node. This node does not have a "build" task. The "packages/ui" node has another line to a "packages/core" node that does have a "build" task.](/images/docs/transitive-nodes.png)
+<img alt="A Task Graph visualization with a Transit Node. The diagram has one node at the top named &#x22;apps/doc&#x22; with a line that connects to a &#x22;packages/ui&#x22; node. This node does not have a &#x22;build&#x22; task. The &#x22;packages/ui&#x22; node has another line to a &#x22;packages/core&#x22; node that does have a &#x22;build&#x22; task." src={__img1} placeholder="blur" />
 
 You can think of this graph in a series of steps:
 
@@ -451,10 +590,13 @@ Let's say your monorepo has many apps and many packages. All packages have
 says that when you run `turbo run build`, even if an app doesn't implement `build`
 the `test` task of all packages that are dependencies will show up in the graph.
 
+---
 
-- [Package types](/core-concepts/package-types.md): Learn about the different types of packages in a workspace.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [Package types](/docs/core-concepts/package-types): Learn about the different types of packages in a workspace.
+
+# Package types
 
 In Turborepo, we talk about two types of packages:
 
@@ -477,12 +619,13 @@ An example of an exception for this rule is installing your Application Package 
 
 Library Packages contain code that you intend to share around your workspace. They aren't independently deployable. Instead, they support the Application Packages to create the final deployables from your repository. You might also refer to these packages as [Internal Packages](/docs/core-concepts/internal-packages), which have their own sub-types.
 
+---
 
-- [Remote Caching](/core-concepts/remote-caching.md): Share cache artifacts across machines for even faster builds.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { PlatformTabs, PackageManagerTabs, Tab } from '#components/tabs';
-import { ThemeAwareImage } from '#components/theme-aware-image';
+- [Remote Caching](/docs/core-concepts/remote-caching): Share cache artifacts across machines for even faster builds.
+
+# Remote Caching
 
 Turborepo's [task cache](/docs/crafting-your-repository/caching) saves time by never doing the same work twice.
 
@@ -490,16 +633,16 @@ But there's a problem: **the cache is local to your machine**. When you're worki
 
 <ThemeAwareImage
   dark={{
-  alt: 'Local caching creates a cache on each system.',
-  src: '/images/docs/local-caching-dark.png',
+  alt: "Local caching creates a cache on each system.",
+  src: LocalCachingDarkImage,
   props: {
     width: 896,
     height: 345,
   },
 }}
   light={{
-  alt: 'Local caching creates a cache on each system.',
-  src: '/images/docs/local-caching-light.png',
+  alt: "Local caching creates a cache on each system.",
+  src: LocalCachingLightImage,
   props: {
     width: 896,
     height: 345,
@@ -509,7 +652,7 @@ But there's a problem: **the cache is local to your machine**. When you're worki
 
 Since Turborepo only caches to the local filesystem by default, the same task (`turbo run build`) must be **re-executed on each machine** (by you, by your teammates, by your CI, by your PaaS, etc.) even when all of the task inputs are identical — which **wastes time and resources**.
 
-<Callout type="good-to-know">
+<Callout type="info">
   You don't have to use Remote Caching to use Turborepo. While Remote Caching
   will bring the most significant speedups, you can make your existing workflows
   faster without Remote Caching, too.
@@ -521,16 +664,16 @@ What if you could share a single Turborepo cache across your entire team (and ev
 
 <ThemeAwareImage
   dark={{
-  alt: 'Remote caching creates a shared cache for your entire team.',
-  src: '/images/docs/remote-caching-dark.png',
+  alt: "Remote caching creates a shared cache for your entire team.",
+  src: RemoteCachingDarkImage,
   props: {
     width: 896,
     height: 489,
   },
 }}
   light={{
-  alt: 'Remote caching creates a shared cache for your entire team.',
-  src: '/images/docs/remote-caching-light.png',
+  alt: "Remote caching creates a shared cache for your entire team.",
+  src: RemoteCachingLightImage,
   props: {
     width: 896,
     height: 489,
@@ -540,9 +683,9 @@ What if you could share a single Turborepo cache across your entire team (and ev
 
 Turborepo can securely communicate with a remote cache - a cloud server that stores the results of your tasks. This can save enormous amounts of time by **preventing duplicated work across your entire organization**.
 
-Remote Caching is free and can be used with both [managed providers](https://turborepo.com/docs/core-concepts/remote-caching#managed-remote-cache-with-vercel) or as a [self-hosted cache](https://turborepo.com/docs/core-concepts/remote-caching#self-hosting).
+Remote Caching is free and can be used with both [managed providers](https://turborepo.dev/docs/core-concepts/remote-caching#managed-remote-cache-with-vercel) or as a [self-hosted cache](https://turborepo.dev/docs/core-concepts/remote-caching#self-hosting).
 
-<Callout>
+<Callout type="info">
   Remote Caching is a powerful feature of Turborepo, but, with great power,
   comes great responsibility. Make sure you are caching correctly first and
   double check [handling of environment
@@ -591,7 +734,7 @@ You can also use your package manager if you do not have [global `turbo`](/docs/
   </Tab>
 </PackageManagerTabs>
 
-<Callout>
+<Callout type="info">
   If your Remote Cache is configured to use single-sign-on you will need to run
   `npx turbo login --sso-team=team-name` in order to get a cache token with the
   correct privileges.
@@ -626,7 +769,7 @@ Then, run the same build again. If things are working properly, `turbo` should n
 
 ### Remote Caching on Vercel
 
-If you are building and hosting your apps on Vercel, Remote Caching will be automatically set up on your behalf once you use `turbo`. Refer to the [Vercel documentation](https://vercel.com/docs/concepts/monorepos/remote-caching?utm_source=turborepo.com\&utm_medium=referral\&utm_campaign=docs-link) for more information.
+If you are building and hosting your apps on Vercel, Remote Caching will be automatically set up on your behalf once you use `turbo`. Refer to the [Vercel documentation](https://vercel.com/docs/concepts/monorepos/remote-caching?utm_source=turborepo.dev\&utm_medium=referral\&utm_campaign=docs-link) for more information.
 
 ### Artifact Integrity and Authenticity Verification
 
@@ -639,8 +782,8 @@ To enable this feature, set the `remoteCache` options on your `turbo.json` confi
 ```jsonc title="./turbo.json"
 {
   "remoteCache": {
-    "signature": true // [!code highlight]
-  }
+    "signature": true, // [!code highlight]
+  },
 }
 ```
 
@@ -679,16 +822,17 @@ The Turborepo community has created open-source implementations of the Remote Ca
 * [`ducktors/turborepo-remote-cache`](https://github.com/ducktors/turborepo-remote-cache)
 * [`Tapico/tapico-turborepo-remote-cache`](https://github.com/Tapico/tapico-turborepo-remote-cache)
 
+---
 
-- [Caching](/crafting-your-repository/caching.md): Learn about caching in Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Step, Steps } from '#components/steps';
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [Caching](/docs/crafting-your-repository/caching): Learn about caching in Turborepo.
+
+# Caching
 
 Turborepo uses caching to speed up builds, ensuring you **never do the same work twice**. When your task is cacheable, Turborepo will restore the results of your task from cache using a fingerprint from the first time the task ran.
 
-![12 tasks are being ran in 3 packages, resulting in a ">>> FULL TURBO" cache hit. The total time it takes to restore these tasks from cache is 80 milliseconds.](/images/docs/why-turborepo-solution.png)
+<img alt="12 tasks are being ran in 3 packages, resulting in a &#x22;>>> FULL TURBO&#x22; cache hit. The total time it takes to restore these tasks from cache is 80 milliseconds." src={__img0} placeholder="blur" />
 
 Turborepo's caching results in significant time savings when working locally - and is even more powerful when [Remote Caching](/docs/core-concepts/remote-caching) is enabled, sharing a cache among your entire team and CI.
 
@@ -699,7 +843,7 @@ On this page, you'll learn:
 * [What Turborepo uses for the inputs and outputs to a hash](/docs/crafting-your-repository/caching#task-inputs)
 * [How to troubleshoot caching issues](#troubleshooting)
 
-<Callout type="good-to-know">
+<Callout type="info">
   Turborepo assumes that your tasks are **deterministic**. If a task is able to
   produce different outputs given the set of inputs that Turborepo is aware of,
   caching may not work as expected.
@@ -761,7 +905,7 @@ You can try out Turborepo's caching behavior in three steps:
 
     Run `turbo build` again. You will see a message like this:
 
-    ![A terminal window showing two tasks that have been ran through turbo. They successfully complete in 116 milliseconds.](/images/docs/full-turbo.png)
+        <img alt="A terminal window showing two tasks that have been ran through turbo. They successfully complete in 116 milliseconds." src={__img1} placeholder="blur" />
   </Step>
 </Steps>
 
@@ -799,6 +943,48 @@ For information on how to connect your CI machines to Remote Cache, visit [the C
   documentation](/docs/core-concepts/remote-caching#self-hosting)
 </Callout>
 
+## Git Worktree Cache Sharing
+
+When working with [Git worktrees](https://git-scm.com/docs/git-worktree), Turborepo automatically shares the local filesystem cache between the main worktree and any linked worktrees. This enables:
+
+* **Cache hits across branches**: Work done on one branch is available when you switch to another branch in a different worktree
+* **Reduced disk usage**: Avoids duplicate cache entries across worktrees
+* **Faster iteration**: Switching between feature branches benefits from existing cache
+
+### How it works
+
+Git worktrees allow you to have multiple working directories attached to the same repository, each checked out to a different branch. When you create a linked worktree with `git worktree add`, Turborepo detects this configuration and automatically redirects the cache to the main worktree's `.turbo/cache` directory.
+
+```bash title="Terminal"
+# Create a linked worktree for a feature branch
+git worktree add ../my-feature feature-branch
+
+# Run turbo in the linked worktree - cache is shared with main worktree
+cd ../my-feature
+turbo build
+```
+
+When worktree cache sharing is active, you'll see a message in the output:
+
+```
+• Remote caching enabled, using shared worktree cache
+```
+
+<Callout type="info">
+  If you set an explicit [`cacheDir`](/docs/reference/configuration#cachedir) in
+  your `turbo.json`, worktree cache sharing is disabled and each worktree will
+  use its own cache directory as specified.
+</Callout>
+
+### With Remote Caching
+
+Git worktree cache sharing works alongside [Remote Caching](/docs/core-concepts/remote-caching). When both are enabled:
+
+* **Local cache** is shared between worktrees on the same machine
+* **Remote cache** is shared across all machines and CI
+
+This means a task built in one worktree can be restored from the shared local cache in another worktree instantly, without a network request. If the local cache doesn't have the artifact, Turborepo will fall back to the Remote Cache as usual.
+
 ## What gets cached?
 
 Turborepo caches two types of outputs: Task outputs and Logs.
@@ -829,14 +1015,14 @@ Under the hood, Turborepo creates two hashes: a global hash and a task hash. If 
 
 ### Global hash inputs
 
-| Input                                                                                  | Example                                                                                                                                                    |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resolved task definition from root `turbo.json`<br /> and package `turbo.json`         | Changing [`outputs`](/docs/reference/configuration#outputs) in either root `turbo.json` or [Package Configuration](/docs/reference/package-configurations) |
-| Lockfile changes that affect the Workspace root                                        | Updating dependencies in root `package.json` will cause **all** tasks to miss cache                                                                        |
-| [`globalDependencies`](/docs/reference/configuration#globaldependencies) file contents | Changing `./.env` when it is listed in `globalDependencies` will cause **all** tasks to miss cache                                                         |
-| Values of variables listed in [`globalEnv`](/docs/reference/configuration#globalenv)   | Changing the value of `GITHUB_TOKEN` when it is listed in `globalEnv`                                                                                      |
-| Flag values that affect task runtime                                                   | Using behavior-changing flags like `--cache-dir`, `--framework-inference`, or `--env-mode`                                                                 |
-| Arbitrary passthrough arguments                                                        | `turbo build -- --arg=value` will cause **all** tasks to miss cache when compared to either `turbo build` or `turbo build -- --arg=diff` (including dependencies of `build` that did not receive `--arg=value`)                                                     |
+| Input                                                                                  | Example                                                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resolved task definition from root `turbo.json` and package `turbo.json`               | Changing [`outputs`](/docs/reference/configuration#outputs) in either root `turbo.json` or [Package Configuration](/docs/reference/package-configurations)                                                      |
+| Lockfile changes that affect the Workspace root                                        | Updating dependencies in root `package.json` will cause **all** tasks to miss cache                                                                                                                             |
+| [`globalDependencies`](/docs/reference/configuration#globaldependencies) file contents | Changing `./.env` when it is listed in `globalDependencies` will cause **all** tasks to miss cache                                                                                                              |
+| Values of variables listed in [`globalEnv`](/docs/reference/configuration#globalenv)   | Changing the value of `GITHUB_TOKEN` when it is listed in `globalEnv`                                                                                                                                           |
+| Flag values that affect task runtime                                                   | Using behavior-changing flags like `--cache-dir`, `--framework-inference`, or `--env-mode`                                                                                                                      |
+| Arbitrary passthrough arguments                                                        | `turbo build -- --arg=value` will cause **all** tasks to miss cache when compared to either `turbo build` or `turbo build -- --arg=diff` (including dependencies of `build` that did not receive `--arg=value`) |
 
 ### Package hash inputs
 
@@ -893,60 +1079,25 @@ While these situations are rare, be sure to test the behavior of your projects t
 
 Now that you've seen how Turborepo's caching makes your repository faster, let's take a look at how to develop applications and libraries in your Turborepo.
 
+---
 
-- [Configuring tasks](/crafting-your-repository/configuring-tasks.md): Learn how to describe the workflows in your repository to get them done as fast as possible.
+[View full sitemap](/sitemap.md)
 
-import { LinkToDocumentation } from '#components/link-to-documentation';
-import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
-import { Files, File, Folder } from '#components/files';
-import { ThemeAwareImage } from '#components/theme-aware-image';
+- [Configuring tasks](/docs/crafting-your-repository/configuring-tasks): Learn how to describe the workflows in your repository to get them done as fast as possible.
+
+# Configuring tasks
 
 A task is a script that Turborepo runs. You can express relationships between tasks in your [`turbo.json` configuration](/docs/reference/configuration) and [Package Graph](/docs/core-concepts/package-and-task-graph#package-graph).
 
 Turborepo will always parallelize any work that it can to ensure everything runs as fast as possible. This is faster than running tasks one at a time, and it's a part of what makes Turborepo so fast.
 
-For example, <code style={{textWrap: "wrap"}}>yarn workspaces run lint && yarn workspaces run build && yarn workspaces run test</code> would look like this:
+For example, `yarn workspaces run lint && yarn workspaces run build && yarn workspaces run test` would look like this:
 
-<ThemeAwareImage
-  dark={{
-  alt: 'A graphical representation of `turbo run lint test build`. It shows all tasks running in parallel, with much less empty space where scripts are not being ran.',
-  src: '/images/docs/slow-tasks-dark.png',
-  props: {
-    width: 778,
-    height: 331,
-  },
-}}
-  light={{
-  alt: 'A graphical representation of `turbo run lint test build`. It shows all tasks running in parallel, with much less empty space where scripts are not being ran.',
-  src: '/images/docs/slow-tasks-light.png',
-  props: {
-    width: 778,
-    height: 331,
-  },
-}}
-/>
+<img alt="A graphical representation of tasks running sequentially, with lots of empty space where scripts are not being ran." src={__img0} placeholder="blur" />
 
 But, to get the same work done **faster** with Turborepo, you can use `turbo run lint build test`:
 
-<ThemeAwareImage
-  dark={{
-  alt: 'A graphical representation of `turbo run lint test build`. It shows all tasks running in parallel, with much less empty space where scripts are not being ran.',
-  src: '/images/docs/turborepo-tasks-fast-dark.png',
-  props: {
-    width: 778,
-    height: 448,
-  },
-}}
-  light={{
-  alt: 'A graphical representation of `turbo run lint test build`. It shows all tasks running in parallel, with much less empty space where scripts are not being ran.',
-  src: '/images/docs/turborepo-tasks-fast-light.png',
-  props: {
-    width: 778,
-    height: 448,
-  },
-}}
-/>
+<img alt="A graphical representation of turbo run lint test build. It shows all tasks running in parallel, with much less empty space where scripts are not being ran." src={__img1} placeholder="blur" />
 
 ## Getting started
 
@@ -1186,7 +1337,7 @@ You can also run scripts in the `package.json` in the Workspace root using `turb
   </Tab>
 </Tabs>
 
-With the Root Task now registered, `turbo run lint:root` will now run the task. You can also run `turbo run lint lint:root` to run all your linting tasks.
+With the Root Task now registered, you can use `turbo run lint:root` from the root or `turbo run //#lint:root` in any of the workspaces to run the task. You can also run `turbo run lint lint:root` to run all your linting tasks.
 
 #### When to use Root Tasks
 
@@ -1201,6 +1352,13 @@ With the Root Task now registered, `turbo run lint:root` will now run the task. 
 [Package Configurations](/docs/reference/package-configurations) are `turbo.json` files that are placed directly into a package. This allows a package to define specific behavior for its own tasks without affecting the rest of the repository.
 
 In large monorepos with many teams, this allows teams greater control over their own tasks. To learn more, visit [the Package Configurations documentation](/docs/reference/package-configurations)
+
+### Composing configurations
+
+[Package Configurations](/docs/reference/package-configurations) can be composed for greater control with less configuration:
+
+* [**Extending from other packages**](/docs/reference/package-configurations#extending-from-other-packages): Create shared configuration packages that multiple packages can extend from, enabling shared `turbo.json` configurations.
+* [**Adding to extended configurations**](/docs/reference/package-configurations#extending-arrays-with-turbo_extends): Use the `$TURBO_EXTENDS$` microsyntax to add to inherited array values like `outputs` and `env` instead of replacing them.
 
 ### Long-running tasks with runtime dependencies
 
@@ -1299,12 +1457,13 @@ These Transit Nodes create a relationship between your package dependencies usin
 
 There are more options available in [the Configuring `turbo.json` documentation](/docs/reference/configuration) that you will explore in the coming guides. For now, you can start running a few tasks to see how the basics work.
 
+---
 
-- [Constructing CI](/crafting-your-repository/constructing-ci.md): Learn how Turborepo can help you efficiently complete all the necessary tasks and accelerate your development workflow.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
-import { Step, Steps } from '#components/steps';
+- [Constructing CI](/docs/crafting-your-repository/constructing-ci): Learn how Turborepo can help you efficiently complete all the necessary tasks and accelerate your development workflow.
+
+# Constructing CI
 
 Turborepo speeds up builds, lints, tests, and any other tasks that you need to do in your Continuous Integration pipelines. Through parallelization and [Remote Caching](/docs/core-concepts/remote-caching), Turborepo makes your CI dramatically faster.
 
@@ -1314,10 +1473,10 @@ For examples of how to connect your CI vendor to Remote Cache and run tasks, vis
 
 To enable Remote Caching for your CI, setup the environment variables for Turborepo to access your Remote Cache.
 
-| Environment Variable | Description                                                                                                                                                                                                                                                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TURBO_TOKEN`        | The Bearer token to access the Remote Cache                                                                                                                                                                                                                                                                                  |
-| `TURBO_TEAM`         | The account name associated with your repository. When using{' '} <a href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache" rel="noreferrer noopener" target="_blank">Vercel Remote Cache</a>, this is [your team's slug](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Get+team+slug). |
+| Environment Variable | Description                                                                                                                                                                                                                         |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TURBO_TOKEN`        | The Bearer token to access the Remote Cache                                                                                                                                                                                         |
+| `TURBO_TEAM`         | The account name associated with your repository. When using [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching), this is [your team's slug](https://vercel.com/docs/accounts/create-a-team#find-your-team-id). |
 
 When you run tasks through `turbo`, your CI will be able to hit cache, speeding up your pipelines.
 
@@ -1365,9 +1524,9 @@ turbo run build --affected
 You'll want to use this flag in situations like:
 
 * You're running many tasks across packages in your monorepo, and only want to run those tasks in packages with code changes.
-* You’re *not* using a Remote Cache, but still want to do as little work as possible in CI.
-* You *are* using a Remote Cache, and you’re in a large repository. By minimizing the amount of tasks that will be restored from cache, there will be less data to send across the network, resulting in faster cache restoration.
-* You’re already using [advanced filtering techniques](/docs/reference/run#advanced-filtering-examples) or [`turbo-ignore`](/docs/reference/turbo-ignore) to create the same or similar behavior as `--affected`. You likely have the opportunity to simplify your scripting using this new flag.
+* You're *not* using a Remote Cache, but still want to do as little work as possible in CI.
+* You *are* using a Remote Cache, and you're in a large repository. By minimizing the amount of tasks that will be restored from cache, there will be less data to send across the network, resulting in faster cache restoration.
+* You're already using [advanced filtering techniques](/docs/reference/run#advanced-filtering-examples) or [`turbo-ignore`](/docs/reference/turbo-ignore) to create the same or similar behavior as `--affected`. You likely have the opportunity to simplify your scripting using this new flag.
   * `--affected` will can handle shallow clones more gracefully than bespoke filtering because it falls back to running all tasks.
 
 #### Using `--affected` in GitHub Actions
@@ -1388,7 +1547,7 @@ As your codebase and CI grow, you may start to look for more ways to get even fa
 
     Start by cloning your repository. Note that a clone with history to the cloning depth you plan on using is necessary for comparisons.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       By default, `turbo-ignore` uses the parent commit. To customize for more
       depth, see [the turbo-ignore reference](/docs/reference/turbo-ignore).
     </Callout>
@@ -1487,17 +1646,24 @@ Check your configuration for the `env` and `globalEnv` keys.
 
 You now have everything you need to ship applications with Turborepo. To learn more about specific use cases, [check the Guides](/docs/guides) or [dive deeper into core concepts](/docs/core-concepts).
 
+---
 
-- [Creating an Internal Package](/crafting-your-repository/creating-an-internal-package.md): Learn how to create an Internal Package for your monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { Files, File, Folder } from '#components/files';
+- [Creating an Internal Package](/docs/crafting-your-repository/creating-an-internal-package): Learn how to create an Internal Package for your monorepo.
+
+# Creating an Internal Package
+
+<CopyPrompt
+  title="Create an internal package in Turborepo"
+  prompt={
+  "Create a new internal package in this Turborepo.\n1) Set up the package directory and package.json\n2) Configure TypeScript with tsconfig.json\n3) Set up exports and install it in an app\n\nWalk me through each step."
+}
+/>
 
 [Internal Packages](/docs/core-concepts/internal-packages) are the building blocks of your workspace, giving you a powerful way to share code and functionality across your repo. Turborepo automatically understands the relationships between Internal Packages using the dependencies in `package.json`, creating a [Package Graph](/docs/core-concepts/package-and-task-graph#package-graph) under the hood to optimize your repository's workflows.
 
-![Visual representation of a Package Graph in a Turborepo.](/images/docs/package-graph.png)
+<img alt="Visual representation of a Package Graph in a Turborepo." src={__img0} placeholder="blur" />
 
 Let's create your first Internal Package to share math utilities in your repo using the guidance in the [Anatomy of a package](/docs/crafting-your-repository/structuring-a-repository#anatomy-of-a-package) section and the [Compiled Packages](/docs/core-concepts/internal-packages#compiled-packages) pattern. In the steps below, we assume you've [created a new repository using `create-turbo`](/docs/getting-started/installation) or are using a similarly structured repository.
 
@@ -1777,7 +1943,7 @@ Let's create your first Internal Package to share math utilities in your repo us
     `@repo/math` is now available in the `web` application, you can use it in your code:
 
     ```tsx title="apps/web/src/app/page.tsx"
-    import { add } from '@repo/math/add';
+    import { add } from "@repo/math/add";
 
     function Page() {
       return <div>{add(1, 2)}</div>;
@@ -1841,7 +2007,7 @@ When you're creating [Application Packages](/docs/core-concepts/package-types#ap
 
 Additionally, Application Packages are not meant to be installed into other packages. Instead, they should be thought of as an entrypoint to your [Package Graph](/docs/core-concepts/package-and-task-graph#package-graph).
 
-<Callout type="good-to-know">
+<Callout type="info">
   There are [rare
   exceptions](/docs/core-concepts/package-types#installing-an-applicaiton-package-into-another-package)
   to this rule.
@@ -1851,11 +2017,13 @@ Additionally, Application Packages are not meant to be installed into other pack
 
 With a new Internal Package in place, you can start [configuring tasks](/docs/crafting-your-repository/configuring-tasks).
 
+---
 
-- [Developing applications](/crafting-your-repository/developing-applications.md): Learn how to develop applications in your repository.
+[View full sitemap](/sitemap.md)
 
-import { Tabs, Tab } from '#components/tabs';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [Developing applications](/docs/crafting-your-repository/developing-applications): Learn how to develop applications in your repository.
+
+# Developing applications
 
 Developing applications in a monorepo unlocks powerful workflows, enabling you to make atomic commits to source control with easy access to code.
 
@@ -2023,11 +2191,13 @@ Instead, create a `turbo dev:teardown` script that you run separately after you'
 
 Once you have a version of your application that you'd like to deploy, it's time to learn how to configure environment variables in Turborepo.
 
+---
 
-- [Crafting your repository](/crafting-your-repository/index.md): Design and build your Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Card, Cards } from '#components/card';
-import { Callout } from '#components/callout';
+- [Crafting your repository](/docs/crafting-your-repository): Design and build your Turborepo.
+
+# Crafting your repository
 
 Architecting a monorepo is a careful process. Through these guides, you'll learn how to design and build a monorepo that will make every team faster - no matter the size.
 
@@ -2071,12 +2241,13 @@ By the time you've read through all of this section, you should have a good unde
 
 We also have more guides centered around [specific tools, use cases, and other topics](/docs/guides).
 
+---
 
-- [Managing dependencies](/crafting-your-repository/managing-dependencies.md): Learn how to manage dependencies in your monorepo's workspace.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [Managing dependencies](/docs/crafting-your-repository/managing-dependencies): Learn how to manage dependencies in your monorepo's workspace.
+
+# Managing dependencies
 
 * **External dependencies** come from [the npm registry](https://www.npmjs.com/), allowing you to leverage valuable code from the ecosystem to build your applications and libraries faster.
 * **Internal dependencies** let you share functionality within your repository, dramatically improving discoverability and usability of shared code. We will discuss how to build an Internal Package in [the next guide](/docs/crafting-your-repository/creating-an-internal-package).
@@ -2133,7 +2304,7 @@ import { LinkToDocumentation } from '#components/link-to-documentation';
 
 When you install a dependency in your repository, you should install it directly in the package that uses it. The package's `package.json` will have every dependency that the package needs. This is true for both external and internal dependencies.
 
-<Callout type="good-to-know">
+<Callout type="info">
   Note that your package manager may choose to [use a different node\_modules
   location than the package](#node_modules-locations).
 </Callout>
@@ -2146,7 +2317,7 @@ To quickly install dependencies in multiple packages, you can use your package m
     pnpm add jest --save-dev --recursive --filter=web --filter=@repo/ui --filter=docs
     ```
 
-    <LinkToDocumentation href="https://pnpm.io/cli/recursive">pnpm documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://pnpm.io/cli/recursive" text="pnpm documentation" />
   </Tab>
 
   <Tab value="yarn">
@@ -2157,9 +2328,7 @@ To quickly install dependencies in multiple packages, you can use your package m
     yarn workspace @repo/ui add jest --dev
     ```
 
-    <LinkToDocumentation href="https://classic.yarnpkg.com/en/docs/cli/add">
-      Yarn 1 documentation
-    </LinkToDocumentation>
+    <LinkToDocumentation href="https://classic.yarnpkg.com/en/docs/cli/add" text="Yarn 1 documentation" />
 
     Yarn 2+:
 
@@ -2167,9 +2336,7 @@ To quickly install dependencies in multiple packages, you can use your package m
     yarn workspaces foreach -R --from '{web,@repo/ui}' add jest --dev
     ```
 
-    <LinkToDocumentation href="https://yarnpkg.com/cli/workspaces/foreach#usage">
-      Yarn 2+ documentation
-    </LinkToDocumentation>
+    <LinkToDocumentation href="https://yarnpkg.com/cli/workspaces/foreach#usage" text="Yarn 2+ documentation" />
   </Tab>
 
   <Tab value="npm">
@@ -2177,15 +2344,16 @@ To quickly install dependencies in multiple packages, you can use your package m
     npm install jest --workspace=web --workspace=@repo/ui --save-dev
     ```
 
-    <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/config#workspace">npm documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/config#workspace" text="npm documentation" />
   </Tab>
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install jest --filter=web --filter=@repo/ui --dev
+    cd apps/web && bun install jest --dev
+    cd packages/ui && bun install jest --dev
     ```
 
-    <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://bun.sh/docs/install/workspaces" text="bun documentation" />
   </Tab>
 </PackageManagerTabs>
 
@@ -2248,7 +2416,9 @@ You can use your package manager to update dependency versions in one command.
     pnpm up --recursive typescript@latest
     ```
 
-    <small>[→ pnpm documentation](https://pnpm.io/cli/update#--recursive--r)</small>
+    <small>
+      [-> pnpm documentation](https://pnpm.io/cli/update#--recursive--r)
+    </small>
   </Tab>
 
   <Tab value="yarn">
@@ -2258,7 +2428,9 @@ You can use your package manager to update dependency versions in one command.
     yarn upgrade-interactive --latest
     ```
 
-    <small>[→ Yarn 1 documentation](https://classic.yarnpkg.com/en/docs/cli/upgrade-interactive)</small>
+    <small>
+      [-> Yarn 1 documentation](https://classic.yarnpkg.com/en/docs/cli/upgrade-interactive)
+    </small>
 
     Yarn 2+:
 
@@ -2266,7 +2438,9 @@ You can use your package manager to update dependency versions in one command.
     yarn upgrade typescript@latest --upgrade
     ```
 
-    <small>[→ Yarn 2+ documentation](https://yarnpkg.com/cli/up)</small>
+    <small>
+      [-> Yarn 2+ documentation](https://yarnpkg.com/cli/up)
+    </small>
   </Tab>
 
   <Tab value="npm">
@@ -2274,13 +2448,17 @@ You can use your package manager to update dependency versions in one command.
     npm install typescript@latest --workspaces
     ```
 
-    <small>[→ npm documentation](https://docs.npmjs.com/cli/v7/using-npm/config#workspaces)</small>
+    <small>
+      [-> npm documentation](https://docs.npmjs.com/cli/v7/using-npm/config#workspaces)
+    </small>
   </Tab>
 
   <Tab value="bun">
     No equivalent
 
-    <small>[→ Bun documentation](https://bun.sh/docs/install/workspaces)</small>
+    <small>
+      [-> Bun documentation](https://bun.sh/docs/install/workspaces)
+    </small>
   </Tab>
 </PackageManagerTabs>
 
@@ -2298,13 +2476,13 @@ Your IDE's refactoring tooling can find and replace the version of a dependency 
 
 Now that you know how to manage dependencies effectively in a workspace, let's [create an Internal Package](/docs/crafting-your-repository/creating-an-internal-package) to be used as a dependency in your monorepo.
 
+---
 
-- [Running tasks](/crafting-your-repository/running-tasks.md): Learn how to run tasks in your repository through the `turbo` CLI.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { LinkToDocumentation } from '#components/link-to-documentation';
-import { InVersion } from '#components/in-version';
+- [Running tasks](/docs/crafting-your-repository/running-tasks): Learn how to run tasks in your repository through the `turbo` CLI.
+
+# Running tasks
 
 Turborepo optimizes the developer workflows in your repository by automatically parallelizing and caching tasks. Once a task is [registered in `turbo.json`](/docs/crafting-your-repository/configuring-tasks), you have a powerful new toolset for running the scripts in your repository:
 
@@ -2329,7 +2507,7 @@ For tasks that you run frequently, you can write your `turbo` commands directly 
 }
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   `turbo` is an alias for `turbo run` - but we recommend using `turbo run` in
   `package.json` and CI workflows to avoid potential collisions with possible
   `turbo` subcommands that could be added in the future.
@@ -2385,7 +2563,7 @@ turbo build
 
 In the example above, the `turbo build` command will run the `build` task for the `docs` package using the `build` task registered in `turbo.json`.
 
-<Callout type="good-to-know">
+<Callout type="info">
   [Using a filter](#using-filters) will override Automatic Package Scoping.
 </Callout>
 
@@ -2492,14 +2670,13 @@ Multiple filters are combined as a **union**, meaning that the [Task Graph](/doc
 
 When you start running tasks in your repository, you might start noticing that your tasks get faster. Next, you'll explore [caching](/docs/crafting-your-repository/caching) and how `turbo` makes it so you never do the same work twice.
 
+---
 
-- [Structuring a repository](/crafting-your-repository/structuring-a-repository.md): Start by creating a repository using the conventions of the ecosystem.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab, Tabs } from '#components/tabs';
-import { Step, Steps } from '#components/steps';
-import { File, Folder, Files } from '#components/files';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [Structuring a repository](/docs/crafting-your-repository/structuring-a-repository): Start by creating a repository using the conventions of the ecosystem.
+
+# Structuring a repository
 
 `turbo` is built on top of [Workspaces](https://vercel.com/docs/vercel-platform/glossary#workspace), a feature of package managers in the JavaScript ecosystem that allows you to group multiple packages in one repository.
 
@@ -2680,7 +2857,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
           - "packages/*"
         ```
 
-        <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml">pnpm workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml" text="pnpm workspace documentation" />
       </Tab>
 
       <Tab value="yarn">
@@ -2693,7 +2870,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
         }
         ```
 
-        <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared">yarn workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared" text="yarn workspace documentation" />
       </Tab>
 
       <Tab value="npm">
@@ -2706,7 +2883,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
         }
         ```
 
-        <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces">npm workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces" text="npm workspace documentation" />
       </Tab>
 
       <Tab value="bun">
@@ -2719,7 +2896,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
         }
         ```
 
-        <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://bun.sh/docs/install/workspaces" text="bun workspace documentation" />
       </Tab>
     </PackageManagerTabs>
 
@@ -2877,9 +3054,7 @@ Note that this example uses the [Just-in-Time Package](/docs/core-concepts/inter
 This would allow you to import `add` and `subtract` functions from the `@repo/math` package like so:
 
 ```ts title="./apps/my-app/src/index.ts"
-import { GRAVITATIONAL_CONSTANT, SPEED_OF_LIGHT } from '@repo/math';
-import { add } from '@repo/math/add';
-import { subtract } from '@repo/math/subtract';
+
 ```
 
 Using exports this way provides three major benefits:
@@ -2909,10 +3084,25 @@ Of course, you'll want some source code in your package. Packages commonly use a
 
 With your Workspace configured, you can now use your package manager to [install dependencies into your packages](/docs/crafting-your-repository/managing-dependencies).
 
+---
 
-- [Understanding your repository](/crafting-your-repository/understanding-your-repository.md): Learn how to understand your repository structure using Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [Understanding your repository](/docs/crafting-your-repository/understanding-your-repository): Learn how to understand your repository structure using Turborepo.
+
+# Understanding your repository
 
 Turborepo includes tools for understanding your repository structure, that can help you use and optimize your codebase.
+
+## `turbo devtools`
+
+`turbo devtools` provides a browser-based visualization of your package graph. This tool can be helpful for diagnosing issues with your task graph and understanding the structure of your monorepo.
+
+```bash title="Terminal"
+turbo devtools
+```
+
+For more information, see the [reference documentation](/docs/reference/devtools).
 
 ## `turbo ls`
 
@@ -3049,12 +3239,20 @@ With `turbo query`, you can find all the packages and the reason why they were i
 }
 ```
 
+---
 
-- [Upgrading](/crafting-your-repository/upgrading.md): Learn how to upgrade `turbo` to get the latest improvements to your repository.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Steps, Step } from '#components/steps';
-import { Callout } from '#components/callout';
+- [Upgrading](/docs/crafting-your-repository/upgrading): Learn how to upgrade `turbo` to get the latest improvements to your repository.
+
+# Upgrading
+
+<CopyPrompt
+  title="Upgrade Turborepo to version 2.0"
+  prompt={
+  "Upgrade this repository from Turborepo 1.x to 2.0.\n1) Run the migration codemod\n2) Add packageManager field to package.json\n3) Handle any breaking changes\n\nWalk me through each step."
+}
+/>
 
 ## Upgrading to 2.0
 
@@ -3094,7 +3292,7 @@ import { Callout } from '#components/callout';
 
     Additionally, a `name` field will be added to any `package.json` in the Workspace that doesn't have one.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       You may also manually run each codemod individually. Visit [the codemods
       page](/docs/reference/turbo-codemod#turborepo-2x) for more information.
     </Callout>
@@ -3167,14 +3365,20 @@ import { Callout } from '#components/callout';
   </Step>
 </Steps>
 
+---
 
-- [Using environment variables](/crafting-your-repository/using-environment-variables.md): Learn how to handle environments for your applications.
+[View full sitemap](/sitemap.md)
 
-import { Fragment } from 'react';
-import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
-import { Accordion, Accordions } from '#components/accordion';
-import frameworks from '@turbo/types/src/json/frameworks.json';
+- [Using environment variables](/docs/crafting-your-repository/using-environment-variables): Learn how to handle environments for your applications.
+
+# Using environment variables
+
+<CopyPrompt
+  title="Configure environment variables in Turborepo"
+  prompt={
+  "Configure environment variables for this Turborepo.\n1) Add environment variables to turbo.json for cache hashing\n2) Set up .env file handling\n3) Configure Strict Mode for safety\n\nAnalyze my setup and walk me through each step."
+}
+/>
 
 Environment variable inputs are a vital part of your applications that you'll need to account for in your Turborepo configuration.
 
@@ -3190,7 +3394,7 @@ There are three important questions when working with environment variables in T
   serious issues like shipping your preview deployments to production.
 </Callout>
 
-<Callout type="good-to-know">
+<Callout type="info">
   Turborepo also uses [System Environment
   Variables](/docs/reference/system-environment-variables) to configure its own
   behavior. Below, you'll find information about environment variables for your
@@ -3215,7 +3419,7 @@ Turborepo needs to be aware of your environment variables to account for changes
 * **globalEnv**: Changes to the values of any environment variables in this list will change the hash for all tasks.
 * **env**: Includes changes to the values of environment variables that affect the task, allowing for better granularity. For example, a `lint` task probably doesn't need to miss cache when the value of `API_KEY` changes, but a `build` task likely should.
 
-<Callout type="good-to-know">
+<Callout type="info">
   Turborepo supports wildcards for environment variables so you can easily
   account for all environment variables with a given prefix. Visit [the API
   reference for `env`](/docs/reference/configuration#wildcards) for more.
@@ -3225,37 +3429,24 @@ Turborepo needs to be aware of your environment variables to account for changes
 
 Turborepo automatically adds prefix wildcards to your [`env`](/docs/reference/configuration#env) key for common frameworks. If you're using one of the frameworks below in a package, you don't need to specify environment variables with these prefixes:
 
-<table>
-  <thead>
-    <tr>
-      <th>Framework</th>
+| Framework        | `env` wildcards        |
+| ---------------- | ---------------------- |
+| Next.js          | `NEXT_PUBLIC_*`        |
+| Vite             | `VITE_*`               |
+| Create React App | `REACT_APP_*`          |
+| Gatsby           | `GATSBY_*`             |
+| Nuxt             | `NUXT_*`, `NUXT_ENV_*` |
+| Expo             | `EXPO_PUBLIC_*`        |
+| Astro            | `PUBLIC_*`             |
+| SvelteKit        | `PUBLIC_*`             |
+| Remix            | `REMIX_*`              |
+| SolidStart       | `VITE_*`               |
+| RedwoodJS        | `REDWOOD_ENV_*`        |
+| Sanity           | `SANITY_STUDIO_*`      |
 
-      <th>
-        <span>
-          <code>env</code> wildcards
-        </span>
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {frameworks.map(({ name, envWildcards }) => (
-          <tr key={name}>
-            <td>{name}</td>
-            <td>
-              {envWildcards.map((envWildcard, index) => (
-                <Fragment key={envWildcard}>
-                  {index !== 0 ? <span>, </span> : null}
-                  <code>{envWildcard}</code>
-                </Fragment>
-              ))}
-            </td>
-          </tr>
-        ))}
-  </tbody>
-</table>
-
-<Callout type="good-to-know">Framework inference is per-package.</Callout>
+<Callout type="info">
+  Framework inference is per-package.
+</Callout>
 
 If you'd like to opt out of Framework Inference, you can do so by:
 
@@ -3368,16 +3559,16 @@ You can capture multiple `.env` files at once using a `*`.
 
 ## Best practices
 
-### Use `.env` files in packages
+### Use `.env` files in Application Packages
 
-Using a `.env` file at the root of the repository is not recommended. Instead, we recommend placing your `.env` files into the packages where they're used.
+Using a `.env` file at the root of the repository is not recommended. Instead, we recommend placing your `.env` files into the [Application Packages](/docs/core-concepts/package-types#application-packages) where they're used.
 
 This practice more closely models the runtime behavior of your applications since environment variables exist in each application's runtime individually. Additionally, as your monorepo scales, this practice makes it easier to manage each application's environment, preventing environment variable leakage across applications.
 
-<Callout type="good-to-know">
+<Callout type="info">
   You may find it easier to use a root `.env` file when incrementally migrating
   to a monorepo. Tools like [dotenv](https://www.npmjs.com/package/dotenv) can
-  load `.env` files from different locations.
+  load `.env` files from different locations. We encourage making a goal of not using a root `.env` file after completing your migration.
 </Callout>
 
 ### Use `eslint-config-turbo`
@@ -3486,13 +3677,20 @@ Below are examples of proper environment variable configuration for a few popula
 
 Once you've accounted for your environment variables, you're ready to start building the CI pipelines that build, check, and deploy your applications, at the speed of `turbo`.
 
+---
 
-- [Add to an existing repository](/getting-started/add-to-existing-repository.md): Using Turborepo with your existing repository
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Step, Steps } from '#components/steps';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [Add to an existing repository](/docs/getting-started/add-to-existing-repository): Using Turborepo with your existing repository
+
+# Add to an existing repository
+
+<CopyPrompt
+  title="Add Turborepo to an existing repository"
+  prompt={
+  "Add Turborepo to this existing repository.\n1) Install turbo globally and locally\n2) Create turbo.json with tasks for my scripts\n3) Update .gitignore for Turborepo\n\nAnalyze my repository and walk me through each step."
+}
+/>
 
 Turborepo can be incrementally adopted in **any repository, single or multi-package**, to speed up the developer and CI workflows of the repository.
 
@@ -3508,7 +3706,7 @@ To learn more about Turborepo in single-package workspaces, visit [the dedicated
 
 `turbo` is built on top of Workspaces, a feature of the major package managers in the JavaScript ecosystem. This makes it easy to adopt in your existing codebase.
 
-<Callout type="good-to-know">
+<Callout type="info">
   If you're finding that `turbo` is having issues like not being able to
   discover packages in your workspace or not following your dependency graph,
   visit our [Structuring a
@@ -3583,7 +3781,7 @@ familiar with Turborepo.
       <Tab value="Next.js">
         ```json title="./turbo.json"
         {
-          "$schema": "https://turborepo.com/schema.json",
+          "$schema": "https://turborepo.dev/schema.json",
           "tasks": {
             "build": {
               "dependsOn": ["^build"],
@@ -3616,7 +3814,7 @@ familiar with Turborepo.
       <Tab value="Vite">
         ```json title="./turbo.json"
         {
-          "$schema": "https://turborepo.com/schema.json",
+          "$schema": "https://turborepo.dev/schema.json",
           "tasks": {
             "build": {
               "outputs": ["dist/**"]
@@ -3709,7 +3907,7 @@ familiar with Turborepo.
       </Tab>
     </PackageManagerTabs>
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       Depending on your repository, you may need to use the
       [`dangerouslyDisablePackageManagerCheck`](/docs/reference/configuration#dangerouslydisablepackagemanagercheck)
       while migrating or in situations where you can't use the `packageManager` key
@@ -3724,7 +3922,7 @@ familiar with Turborepo.
 
     The `workspaces` field tells your package manager which directories contain your packages. Common patterns include `apps/*` for applications and `packages/*` for shared libraries.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       If you're working with a single-package repository, you can skip this step as
       workspaces aren't needed.
     </Callout>
@@ -3737,7 +3935,7 @@ familiar with Turborepo.
           - "packages/*"
         ```
 
-        <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml">pnpm workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml" text="pnpm workspace documentation" />
       </Tab>
 
       <Tab value="yarn">
@@ -3750,7 +3948,7 @@ familiar with Turborepo.
         }
         ```
 
-        <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared">yarn workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared" text="yarn workspace documentation" />
       </Tab>
 
       <Tab value="npm">
@@ -3763,7 +3961,7 @@ familiar with Turborepo.
         }
         ```
 
-        <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces">npm workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces" text="npm workspace documentation" />
       </Tab>
 
       <Tab value="bun">
@@ -3776,7 +3974,7 @@ familiar with Turborepo.
         }
         ```
 
-        <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun workspace documentation</LinkToDocumentation>
+        <LinkToDocumentation href="https://bun.sh/docs/install/workspaces" text="bun workspace documentation" />
       </Tab>
     </PackageManagerTabs>
 
@@ -3846,36 +4044,38 @@ familiar with Turborepo.
   </Step>
 </Steps>
 
+---
 
-- [Editor integration](/getting-started/editor-integration.md): Making the most of Turborepo
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [Editor integration](/docs/getting-started/editor-integration): Making the most of Turborepo
+
+# Editor integration
 
 To get the best experience with `turbo`, Turborepo provides a few utilities for integrating with your editor.
 
 ## JSON Schema for `turbo.json`
 
 Turborepo uses [JSON Schema](https://json-schema.org/) to give you auto-complete in your
-`turbo.json` file. By including the `$schema` key in your `turbo.json`, your editor is able to
-provide full documentation and linting in case you have invalid shapes or missing keys.
+`turbo.json` files. By including the `$schema` key in your `turbo.json`, your editor is able to
+provide full documentation and linting for invalid configuration.
 
-### Sourcing from the web
+### Sourcing from web
 
-A `schema.json` is accessible at the URL shown below. This has the advantage of not needing to run your package manager's install command to see in-editor validation.
-
-```json title="./turbo.json"
-{
-  "$schema": "https://turborepo.com/schema.json"
-}
-```
-
-There is also a major versioned `schema.json` available, following the format of `https://turborepo.com/schema.<version>.json`.
+Starting with Turborepo 2.5.7, versioned schemas are available via subdomain, following the format `https://v<version>.turborepo.dev/schema.json`. The version uses a dash separator.
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.v1.json"
+  "$schema": "https://v2-5-7.turborepo.dev/schema.json"
 }
 ```
+
+This has the advantage of not needing to run your package manager's install command to see in-editor validation, while also ensuring you're using the schema that matches your installed version of `turbo`.
+
+<Callout type="info" title="Unversioned schema">
+  If you're using a version of Turborepo older than 2.5.7 or prefer an
+  unversioned schema, you can use `https://turborepo.dev/schema.json` instead.
+</Callout>
 
 ### Sourcing from `node_modules`
 
@@ -3887,7 +4087,7 @@ Starting in Turborepo 2.4, `schema.json` is available in `node_modules` once you
 }
 ```
 
-<Callout title="node_modules location">
+<Callout type="info" title="node_modules location">
   We recommend installing `turbo` at the root of your repository, so the path
   for the schema should point to `node_modules` at the root of your repository.
   In [Package Configurations](/docs/reference/package-configurations), you may
@@ -3914,12 +4114,13 @@ Visit the [VSCode Extension Marketplace](https://marketplace.visualstudio.com/it
   express your interest.
 </Callout>
 
+---
 
-- [Start with an example](/getting-started/examples.md): Start with an example Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { ExamplesTable } from '#components/examples-table';
-import { Callout } from '#components/callout';
+- [Start with an example](/docs/getting-started/examples): Start with an example Turborepo.
+
+# Start with an example
 
 Use `create-turbo` to bootstrap an example with your favorite tooling.
 
@@ -3975,19 +4176,20 @@ The following examples are maintained by the Turborepo core team. Dependencies a
 
 The community curates a set of examples to showcase ways to use common tools and libraries with Turborepo. To bootstrap your monorepo with one of the examples, use the `--example` flag:
 
-<Callout type="good-to-know">
+<Callout type="info">
   GitHub Issues for these examples will be closed. If you find problems, please
   submit a pull request with fixes.
 </Callout>
 
 <ExamplesTable />
 
+---
 
-- [Getting started](/getting-started/index.md): Get started with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Card, Cards } from '#components/card';
-import { Step, Steps } from '#components/steps';
-import { Tab, Tabs } from '#components/tabs';
+- [Getting started](/docs/getting-started): Get started with Turborepo.
+
+# Getting started
 
 If you're new to Turborepo, you can follow these steps to get started.
 
@@ -4035,11 +4237,13 @@ If you're new to Turborepo, you can follow these steps to get started.
   </Step>
 </Steps>
 
+---
 
-- [Installation](/getting-started/installation.md): Learn how to get started with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+- [Installation](/docs/getting-started/installation): Learn how to get started with Turborepo.
+
+# Installation
 
 Get started with Turborepo in a few moments using:
 
@@ -4117,7 +4321,7 @@ Once installed globally, you can run your scripts through `turbo` from your term
 * `turbo generate`: Run [Generators](/docs/guides/generating-code) to add new code to your repository
 * `cd apps/docs && turbo build`: Run the `build` script in the `docs` package and its dependencies. For more, visit the [Automatic Package Scoping section](/docs/crafting-your-repository/running-tasks#automatic-package-scoping).
 
-<Callout type="good-to-know">
+<Callout type="info">
   `turbo` is an alias for [`turbo run`](/docs/reference/run). For example,
   `turbo build` and `turbo run build` will both run your `build` task.
 </Callout>
@@ -4167,12 +4371,136 @@ You can continue to use your global installation of `turbo` to run commands. Glo
 
 This lets you to get the best of both installations: easily run commands in your terminal while maintaining a pinned version for consistent usage for all developers in the repository.
 
+---
 
-- [Generating code](/guides/generating-code.md): Learn how to generate code using Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [Using AI with Turborepo](/docs/guides/ai): Get the most out of AI coding assistants in your Turborepo.
+
+# Using AI with Turborepo
+
+Turborepo is designed to work seamlessly with AI coding assistants. Turborepo provides features that help AI understand your repository and work more efficiently.
+
+## Agent Skill
+
+[Agent Skills](https://agentskills.io) are an open standard that give new capabilities and expertise to agents. They're folders of instructions, scripts, and resources that agents can use to do things more accurately and efficiently.
+
+You can add the Turborepo Skill to your agent, making it an expert in Turborepo and monorepos:
+
+```bash title="Terminal"
+npx skills add vercel/turborepo
+```
+
+The Skill teaches agents:
+
+* Best practices for Turborepo configuration
+* Monorepo patterns and conventions
+* Anti-patterns to avoid
+* Performance optimization techniques
+
+## Git worktrees for parallel agents
+
+When running multiple AI agents in parallel on the same repository, [Git worktrees](https://git-scm.com/docs/git-worktree) prevent conflicts by allowing each agent to work in its own directory while sharing Git history.
+
+Turborepo automatically shares the local cache across worktrees, so agents benefit from each other's cached task results:
+
+```bash title="Terminal"
+# Agent 1 creates a cache
+turbo run build
+
+# Create a worktree for Agent 2
+git branch feature-branch && git worktree add ../agent-2-worktree feature-branch
+
+# Agent 2 gets a cache hit from Agent 1's work
+cd ../agent-2-worktree && turbo run build
+```
+
+Combined with [Remote Caching](/docs/core-concepts/remote-caching), this enables fast feedback loops across multiple agents working simultaneously.
+
+## Task descriptions
+
+Add a `description` field to your task definitions in `turbo.json` to help AI tools understand what each task does:
+
+```json title="turbo.json"
+{
+  "tasks": {
+    "build": {
+      "description": "Compiles TypeScript and bundles the application",
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "description": "Runs the test suite with coverage",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "description": "Checks code style and catches common errors"
+    }
+  }
+}
+```
+
+Descriptions help AI assistants:
+
+* **Understand your repository**: AI can quickly grasp what each task does without reading implementation details
+* **Make better suggestions**: With context about task purposes, AI can provide more relevant recommendations
+* **Onboard faster**: New team members (human or AI) can understand your build system at a glance
+
+## Searching documentation
+
+The `turbo docs` command lets you search the Turborepo documentation directly from your terminal:
+
+```bash title="Terminal"
+turbo docs "package configurations"
+```
+
+Results link to versioned documentation matching your installed version of `turbo`, ensuring you get accurate information for your setup.
+
+This is particularly useful when working with AI assistants that can execute shell commands. Instead of searching the web, you can get precise documentation links directly.
+
+## Machine-readable documentation
+
+Turborepo's documentation site is optimized for AI consumption in several ways:
+
+### Markdown responses
+
+When fetching documentation with appropriate headers, the site returns Markdown instead of HTML, preserving your AI's context window:
+
+```bash title="Terminal"
+curl -sL -H "Accept: text/markdown" https://turborepo.dev/docs
+```
+
+### Direct Markdown routes
+
+Append `.md` to any documentation URL to get a Markdown version:
+
+* `https://turborepo.dev/docs.md`
+* `https://turborepo.dev/docs/crafting-your-repository/caching.md`
+
+### Machine-readable sitemap
+
+A sitemap is available at `https://turborepo.dev/sitemap.md`, allowing agents to discover what documentation exists.
+
+### Versioned documentation
+
+Documentation for specific Turborepo versions is available on subdomains. For example, the 2.7.6 documentation is at `https://v2-7-6.turborepo.dev/docs`.
+
+This is useful when your AI needs to reference documentation matching your exact Turborepo version.
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [Generating code](/docs/guides/generating-code): Learn how to generate code using Turborepo.
+
+# Generating code
+
+<CopyPrompt
+  title="Create a custom code generator in Turborepo"
+  prompt={
+  "Create a custom code generator for this Turborepo.\n1) Set up a generator configuration with Plop\n2) Define prompts to gather input\n3) Create actions to generate files\n\nWalk me through each step."
+}
+/>
 
 Splitting your monorepo into packages is a great way to organize your code, speed up tasks, and improve the local development
 experience. With Turborepo's code generation, it's easy to generate new source code for packages, modules,
@@ -4207,7 +4535,7 @@ Create a new workspace in your monorepo by copying from a remote package.
 turbo gen workspace --copy https://github.com/vercel/turborepo/tree/main/examples/with-tailwind/packages/tailwind-config
 ```
 
-<Callout>
+<Callout type="info">
   **Note**: When adding from a remote source, Turborepo is unable to verify that your repo has all of the required dependencies, and is using the correct package manager. In this case, some manual modifications may be required to get the new workspace working as expected within your repository.
 </Callout>
 
@@ -4473,7 +4801,6 @@ used to define the generator's prompts, and actions.
 In its simplest form, a generator configuration file looks like:
 
 ```ts title="turbo/generators/config.ts"
-import type { PlopTypes } from "@turbo/gen";
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   // create a generator
@@ -4500,7 +4827,6 @@ Prompts are written using [Plop prompts](https://plopjs.com/documentation/#using
 Actions can use [built-in Plop actions](https://plopjs.com/documentation/#built-in-actions), or [custom action functions](https://plopjs.com/documentation/#functionsignature-custom-action) that you define yourself:
 
 ```ts title="turbo/generators/config.ts"
-import type { PlopTypes } from "@turbo/gen";
 
 const customAction: PlopTypes.CustomActionFunction = async (answers) => {
   // fetch data from a remote API
@@ -4545,8 +4871,13 @@ See [bypassing prompts](https://plopjs.com/documentation/#bypassing-prompts) in 
 
 View all available [options](/docs/reference/generate#run-generator-name) for `gen`.
 
+---
 
-- [Handling platforms](/guides/handling-platforms.md): Learn how to handle caching around operating systems, architectures, and other arbitrary conditions for Turborepo tasks.
+[View full sitemap](/sitemap.md)
+
+- [Handling platforms](/docs/guides/handling-platforms): Learn how to handle caching around operating systems, architectures, and other arbitrary conditions for Turborepo tasks.
+
+# Handling platforms
 
 ## Node.js versions
 
@@ -4563,11 +4894,11 @@ First, create a script that accounts for the hash contributors that you are inte
 ```js title="./scripts/create-turbo-cache-key.js"
 #!/usr/bin/env node
 
-const { writeFileSync } = require('fs');
-const { join } = require('path');
+const { writeFileSync } = require("fs");
+const { join } = require("path");
 
 const { platform, arch } = process;
-const file = 'turbo-cache-key.json';
+const file = "turbo-cache-key.json";
 const str = JSON.stringify({ platform, arch });
 console.log(`Generating cache key: ${str}`);
 writeFileSync(file, str);
@@ -4623,16 +4954,21 @@ Last, you'll want to ensure that you run the script before running `turbo`. For 
 
 `turbo run build` will now take into account the contents of `turbo-cache-key.json` when calculating the hash for the `build` task.
 
+---
 
-- [Guides](/guides/index.md): Learn how to use your favorite tooling in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Cards, Card } from '#components/card';
+- [Guides](/docs/guides): Learn how to use your favorite tooling in a Turborepo.
+
+# Guides
 
 Turborepo works with your favorite frameworks, CI providers, tools, and use cases.
 
 In our community-supported guides, you'll find examples of how to use `turbo` with the rest of your tooling.
 
 <Cards>
+  <Card title="Using AI" description="Get the most out of AI coding assistants" href="/docs/guides/ai" />
+
   <Card title="Frameworks" description="Integrate frameworks into your Turborepo" href="/docs/guides/frameworks" />
 
   <Card title="Continuous Integration" description="Use Turborepo with your CI" href="/docs/guides/ci-vendors" />
@@ -4652,12 +4988,20 @@ In our community-supported guides, you'll find examples of how to use `turbo` wi
   <Card title="Multi-language support" description="Many languages, one repository" href="/docs/guides/multi-language" />
 </Cards>
 
+---
 
-- [Microfrontends](/guides/microfrontends.md): Learn how to use Turborepo's built-in microfrontends proxy for local development.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+- [Microfrontends](/docs/guides/microfrontends): Learn how to use Turborepo's built-in microfrontends proxy for local development.
+
+# Microfrontends
+
+<CopyPrompt
+  title="Set up microfrontends in Turborepo"
+  prompt={
+  "Set up microfrontends in this Turborepo.\n1) Create microfrontends.json configuration\n2) Configure application ports and routing\n3) Set up base paths for my framework\n\nWalk me through each step."
+}
+/>
 
 Microfrontends are an architectural pattern where a web application is decomposed into smaller, independently developed and deployed applications that work together.
 
@@ -4703,7 +5047,7 @@ In production, these applications might be deployed separately and composed toge
 
 Turborepo provides a built-in proxy server that automatically routes traffic between your microfrontend applications during development. The proxy reads a `microfrontends.json` configuration file and starts when you run `turbo dev`.
 
-<Callout>
+<Callout type="info">
   You can try the following instructions with the monorepo created by `npx
     create-turbo@latest -e with-microfrontends`.
 </Callout>
@@ -4714,7 +5058,7 @@ Create a `microfrontends.json` file in your parent application. This application
 
 ```json title="./apps/web/microfrontends.json"
 {
-  "$schema": "https://turborepo.com/microfrontends/schema.json",
+  "$schema": "https://turborepo.dev/microfrontends/schema.json",
   "applications": {
     "web": {
       "development": {
@@ -4772,10 +5116,10 @@ If you're using a framework, set the base path according to the needs of the fra
 <Tabs items={['Next.js', 'Vite']} storageKey="framework-preference">
   <Tab value="Next.js">
     ```ts title="./apps/my-app/next.config.ts"
-    import type { NextConfig } from 'next';
+    import type { NextConfig } from "next";
 
     const nextConfig: NextConfig = {
-      basePath: '/docs',
+      basePath: "/docs",
     };
 
     export default nextConfig;
@@ -4784,10 +5128,10 @@ If you're using a framework, set the base path according to the needs of the fra
 
   <Tab value="Vite">
     ```ts title="./apps/my-app/vite.config.ts"
-    import { defineConfig } from 'vite';
+    import { defineConfig } from "vite";
 
     export default defineConfig({
-      base: '/admin',
+      base: "/admin",
     });
     ```
   </Tab>
@@ -4926,7 +5270,7 @@ Organize routes into logical groups for better maintainability:
 
 ```json title="./apps/web/microfrontends.json"
 {
-  "$schema": "https://turborepo.com/microfrontends/schema.json",
+  "$schema": "https://turborepo.dev/microfrontends/schema.json",
   "applications": {
     "marketing": {
       "development": {
@@ -5052,7 +5396,7 @@ Here's a full example of a microfrontends configuration for an e-commerce platfo
 
 ```json title="./apps/web/microfrontends.json"
 {
-  "$schema": "https://turborepo.com/microfrontends/schema.json",
+  "$schema": "https://turborepo.dev/microfrontends/schema.json",
   "options": {
     "localProxyPort": 3024
   },
@@ -5132,10 +5476,20 @@ With this configuration:
 * The `blog` app handles blog posts and author pages
 * The `shop` app handles e-commerce functionality
 
+---
 
-- [Migrating from Nx](/guides/migrating-from-nx.md): Learn how to migrate to Turborepo from Nx.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+- [Migrating from Nx](/docs/guides/migrating-from-nx): Learn how to migrate to Turborepo from Nx.
+
+# Migrating from Nx
+
+<CopyPrompt
+  title="Migrate from Nx to Turborepo"
+  prompt={
+  "Help me migrate this repository from Nx to Turborepo.\n1) Update workspace configuration and .gitignore\n2) Convert nx.json to turbo.json\n3) Remove Nx dependencies and plugins\n\nAnalyze my current setup and walk me through each step."
+}
+/>
 
 This guide will help you migrate an existing Nx repository to Turborepo.
 
@@ -5154,7 +5508,7 @@ By contrast, Nx uses layers of plugins, dependencies, and other Nx-specific code
 
 ### Greater control of source code
 
-Nx’s philosophy involves wrapping your code with layers of plugins, dependencies, and Nx-specific code. While these layers of code are optional, they provide a great deal of Nx's value and are recommended by Nx, so most Nx repos have them. When migrating to Turborepo, many developers explain that these layers tend to create a layer of obfuscation that abstracts their repository away from their control, causing issues.
+Nx's philosophy involves wrapping your code with layers of plugins, dependencies, and Nx-specific code. While these layers of code are optional, they provide a great deal of Nx's value and are recommended by Nx, so most Nx repos have them. When migrating to Turborepo, many developers explain that these layers tend to create a layer of obfuscation that abstracts their repository away from their control, causing issues.
 
 Turborepo chooses to let you handle your tooling on your own terms, configuring (or not configuring) any of your tooling as you please.
 
@@ -5269,7 +5623,7 @@ Migrating to Turborepo will likely require deleting previous configuration that 
 
 ## Migration steps
 
-Our goal for this migration is to get a working Turborepo task as quickly as possible, so that you can adopt Turborepo features incrementally. We’ll start by using the Nx scaffolder to create a repository with a Next.js app.
+Our goal for this migration is to get a working Turborepo task as quickly as possible, so that you can adopt Turborepo features incrementally. We'll start by using the Nx scaffolder to create a repository with a Next.js app.
 
 ```bash title="Terminal"
 npx create-nx-workspace --preset=next --ci=skip --e2eTestRunner=none --style=tailwind --nextAppDir=true --nextSrcDir=false --packageManager=pnpm --appName=starter
@@ -5338,7 +5692,7 @@ Add a `package.json` to the `starter` application. Create a `package.json` at `.
 
 ### Step 4: Remove Nx plugin
 
-Remove the Nx plugin from ./apps/starter/next.config.js. The example file below doesn’t have configuration, though your existing Next.js application may need some.
+Remove the Nx plugin from ./apps/starter/next.config.js. The example file below doesn't have configuration, though your existing Next.js application may need some.
 
 ```js title="./apps/starter/next.config.js"
 /** @type {import('next').NextConfig} */
@@ -5537,7 +5891,7 @@ You may also configure a self-hosted Remote Cache.
 
 ## Advanced migration considerations
 
-While the migration guide above is a good starting point, the breadth of possibilities and capabilities of monorepos means that its difficult to create generalized instructions for all cases. Below, we’ve listed some common next steps that you may be thinking about.
+While the migration guide above is a good starting point, the breadth of possibilities and capabilities of monorepos means that its difficult to create generalized instructions for all cases. Below, we've listed some common next steps that you may be thinking about.
 
 ### Migrate complex monorepos incrementally
 
@@ -5555,15 +5909,15 @@ Historically, Nx has recommended installing all dependencies in the root of the 
 
 ### Creating shared packages
 
-You’ll follow roughly the same set of steps as above to add a package to your package manager’s workspace.
+You'll follow roughly the same set of steps as above to add a package to your package manager's workspace.
 
-1. Ensure the package’s directory is included in the workspace definition (like `./packages/*` ).
+1. Ensure the package's directory is included in the workspace definition (like `./packages/*` ).
 2. Add a `package.json` to the package with the scripts it needs to run.
 3. Check task dependencies in `turbo.json` to make sure your dependency graph meets your requirements.
 
 ### Multi-language monorepos
 
-Turborepo natively supports JavaScript and TypeScript, with secondary support for any other languages you’d like to use. [Visit the Multi-Language support documentation](/docs/guides/multi-language) to learn more.
+Turborepo natively supports JavaScript and TypeScript, with secondary support for any other languages you'd like to use. [Visit the Multi-Language support documentation](/docs/guides/multi-language) to learn more.
 
 ## Configuration equivalents
 
@@ -5609,11 +5963,13 @@ Configuration found in `nx.json` can be mapped to `turbo.json` using the tables 
 | `--no-cloud`     | [`--cache`](/docs/reference/run#--cache-options)                        |
 | `--verbose`      | [`--verbosity`](/docs/reference/run#--verbosity)                        |
 
+---
 
-- [Multi-language support](/guides/multi-language.md): Learn how to use multiple languages with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [Multi-language support](/docs/guides/multi-language): Learn how to use multiple languages with Turborepo.
+
+# Multi-language support
 
 Turborepo is built on the conventions of the JavaScript ecosystem to find scripts and tasks to execute - but it doesn't care what those scripts do. Following [the guidance for specifying a package in a JavaScript workspace](/docs/crafting-your-repository/structuring-a-repository#specifying-packages-in-a-monorepo), you can add any other language or toolchain to Turborepo.
 
@@ -5628,7 +5984,7 @@ As an example, you may have a Rust project in the `./cli` directory in your repo
       - "cli" // [!code highlight]
     ```
 
-    <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml">pnpm workspace documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://pnpm.io/pnpm-workspace_yaml" text="pnpm workspace documentation" />
   </Tab>
 
   <Tab value="yarn">
@@ -5642,7 +5998,7 @@ As an example, you may have a Rust project in the `./cli` directory in your repo
     }
     ```
 
-    <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared">yarn workspace documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://yarnpkg.com/features/workspaces#how-are-workspaces-declared" text="yarn workspace documentation" />
   </Tab>
 
   <Tab value="npm">
@@ -5656,7 +6012,7 @@ As an example, you may have a Rust project in the `./cli` directory in your repo
     }
     ```
 
-    <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces">npm workspace documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://docs.npmjs.com/cli/v7/using-npm/workspaces#defining-workspaces" text="npm workspace documentation" />
   </Tab>
 
   <Tab value="bun">
@@ -5670,7 +6026,7 @@ As an example, you may have a Rust project in the `./cli` directory in your repo
     }
     ```
 
-    <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">Bun workspace documentation</LinkToDocumentation>
+    <LinkToDocumentation href="https://bun.sh/docs/install/workspaces" text="Bun workspace documentation" />
   </Tab>
 </PackageManagerTabs>
 
@@ -5764,11 +6120,20 @@ Given a `turbo.json` with a `build` task like:
 
 `turbo build` will first create the artifacts for the Rust CLI and then build the `web` application.
 
+---
 
-- [Publishing libraries](/guides/publishing-libraries.md): Learn how to publish libraries to the npm registry from a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
+- [Publishing libraries](/docs/guides/publishing-libraries): Learn how to publish libraries to the npm registry from a monorepo.
+
+# Publishing libraries
+
+<CopyPrompt
+  title="Set up library publishing in Turborepo"
+  prompt={
+  "Set up a publishable library package in this Turborepo.\n1) Configure bundling with tsup\n2) Set up package.json exports for ESM and CJS\n3) Configure Changesets for versioning and publishing\n\nWalk me through each step."
+}
+/>
 
 Publishing a package to the npm registry from a monorepo can be a smooth experience, with the right tools.
 
@@ -5831,7 +6196,7 @@ Finally, we should update our package entrypoints. Inside `package.json`, change
 }
 ```
 
-<Callout>
+<Callout type="info">
   It is not required to bundle to both `cjs` and `esm`. However, it is recommended, as it allows your package to be used in a wider variety of environments.
 
   If you run into errors by using `main`, `module` and `types`, take a look at the [tsup docs](https://tsup.egoist.dev/#bundle-formats).
@@ -5950,24 +6315,26 @@ If your packages are public, set Changeset's `access` to `public`:
 }
 ```
 
-<Callout>
+<Callout type="info">
   We recommend `publish-packages` so that it doesn't conflict with npm's
   built-in `publish` script.
 </Callout>
 
 This means that when you run `publish-packages`, your monorepo gets built, linted, tested and published - and you benefit from all of Turborepo's speedups.
 
+---
 
-- [Single-package workspaces](/guides/single-package-workspaces.md): Learn how to use Turborepo in a single-package workspace.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [Single-package workspaces](/docs/guides/single-package-workspaces): Learn how to use Turborepo in a single-package workspace.
+
+# Single-package workspaces
 
 While Turborepo is highly effective in [multi-package workspaces](https://vercel.com/docs/vercel-platform/glossary#multi-package-workspace) (commonly referred to as monorepos), it can also be used to make [single-package workspaces](https://vercel.com/docs/vercel-platform/glossary#single-package-workspace) faster.
 
 Turborepo's most important features work in single-package workspaces including local and [Remote Caching](/docs/core-concepts/remote-caching) and task parallelization. Features that don't work are ones that don't make sense in the context of a single package, like package tasks (`app#build`).
 
-<Callout type="good-to-know">
+<Callout type="info">
   Examples of single-package workspaces are the output of `npx create-next-app`
   or `npm create vite`.
 </Callout>
@@ -6044,7 +6411,7 @@ Then, create tasks in `turbo.json` to run these scripts in order:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "dev": {
       "dependsOn": ["db:seed"],
@@ -6086,7 +6453,7 @@ You can create a configuration like this one:
 
 ```json title="turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "lint": {},
     "format": {},
@@ -6109,7 +6476,7 @@ For instance, a script for checking types using `tsc --noEmit` can be configured
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "check-types": {
       "inputs": ["**/*.{ts,tsx}"]
@@ -6118,14 +6485,17 @@ For instance, a script for checking types using `tsc --noEmit` can be configured
 }
 ```
 
+---
 
-- [Skipping tasks](/guides/skipping-tasks.md): Never do the same work twice.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [Skipping tasks](/docs/guides/skipping-tasks): Never do the same work twice.
+
+# Skipping tasks
 
 [Caching](/docs/crafting-your-repository/caching) dramatically speeds up your tasks - but you may be able to go even faster by using `npx turbo-ignore`. If a workspace is unaffected by your code changes, you can completely skip executing a task altogether.
 
-Let's say you want to skip the unit tests for your `web` workspace when there aren't any changes to your `web` application (or its package dependencies). If you are already using [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching), you will probably get a cache hit - but you would still spend time provisioning the CI container, installing `npm` dependencies, and other things that can take a while.
+Let's say you want to skip the unit tests for your `web` workspace when there aren't any changes to your `web` application (or its package dependencies). If you are already using [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching), you will probably get a cache hit - but you would still spend time provisioning the CI container, installing `npm` dependencies, and other things that can take a while.
 
 Ideally, you would do a quick check to see if any of that work needs to happen in the first place.
 
@@ -6189,8 +6559,13 @@ When not on Vercel, specify a commit for comparison using the `--fallback` flag.
 
 On Vercel, you can specify the `--fallback` flag to give Vercel a git ref to compare against when the default comparison is not available. By default, Vercel compares to the most recently deployed SHA so this is useful for use cases like avoiding a deploy for the first commit to a branch.
 
+---
 
-- [Invalid environment variable prefix](/messages/invalid-env-prefix.md): Learn more about errors with invalid environment variable prefixes in Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [Invalid environment variable prefix](/docs/messages/invalid-env-prefix): Learn more about errors with invalid environment variable prefixes in Turborepo.
+
+# Invalid environment variable prefix
 
 ## Why this error occurred
 
@@ -6218,8 +6593,13 @@ Remove the `$` prefix from your environment variable declaration.
 You can migrate to the `env` and `globalEnv` keys using `npx @turbo/codemod migrate-env-var-dependencies`.
 Check out [the codemod's documentation for more details](/docs/reference/turbo-codemod#turborepo-1x).
 
+---
 
-- [Missing root task in turbo.json](/messages/missing-root-task-in-turbo-json.md): Learn more about errors for missing root tasks in turbo.json in Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [Missing root task in turbo.json](/docs/messages/missing-root-task-in-turbo-json): Learn more about errors for missing root tasks in turbo.json in Turborepo.
+
+# Missing root task in turbo.json
 
 ## Why this error occurred
 
@@ -6267,8 +6647,13 @@ However, if the root task does call `turbo`, this can cause infinite recursion. 
 on the root task. Instead, you can determine the tasks that this root task depends on, and depend on those directly.
 For instance, if `//#build` depends on `app#lint` and `docs#lint`, then you can declare those as dependencies.
 
+---
 
-- [Package task in single-package workspace error](/messages/package-task-in-single-package-workspace.md): Learn more about errors with package tasks in single-package workspaces.
+[View full sitemap](/sitemap.md)
+
+- [Package task in single-package workspace error](/docs/messages/package-task-in-single-package-workspace): Learn more about errors with package tasks in single-package workspaces.
+
+# Package task in single-package workspace error
 
 ## Why this error occurred
 
@@ -6301,12 +6686,17 @@ Remove the package name from the task declaration.
 
 Alternatively, if you would like to have multiple packages, you can [specify the workspaces in your repository](/docs/getting-started/add-to-existing-repository).
 
+---
 
-- [Recursive `turbo` invocations](/messages/recursive-turbo-invocations.md): Learn more about errors with recursive scripts and tasks in Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [Recursive `turbo` invocations](/docs/messages/recursive-turbo-invocations): Learn more about errors with recursive scripts and tasks in Turborepo.
+
+# Recursive `turbo` invocations
 
 ## Why this error occurred
 
-When a cycle of `turbo` invocations is detected in a [single-package workspace](https://turborepo.com/docs/guides/single-package-workspaces), Turborepo will error to prevent the recursive calls to itself. Typically, this situation occurs for one of two reasons:
+When a cycle of `turbo` invocations is detected in a [single-package workspace](https://turborepo.dev/docs/guides/single-package-workspaces), Turborepo will error to prevent the recursive calls to itself. Typically, this situation occurs for one of two reasons:
 
 ### Recursion in scripts and tasks
 
@@ -6336,12 +6726,17 @@ To resolve this, ensure that the name of the script in `package.json` is not the
 
 A misconfigured workspace can make it appear that a [multi-package workspace](https://vercel.com/docs/vercel-platform/glossary#multi-package-workspace) is a single-package workspace. This causes Turborepo to infer that the repository is of the wrong type, causing it to see the script in `package.json` to be recursive.
 
-Your repo can end up in this state in a few ways, with the most common being that the [packages are not defined according to your package manager](https://turborepo.com/docs/crafting-your-repository/structuring-a-repository#specifying-packages-in-a-monorepo). An npm workspace that is missing the `workspaces` field in `package.json` or a pnpm workspace that is missing a `pnpm-workspace.yaml` file can result in this error message.
+Your repo can end up in this state in a few ways, with the most common being that the [packages are not defined according to your package manager](https://turborepo.dev/docs/crafting-your-repository/structuring-a-repository#specifying-packages-in-a-monorepo). An npm workspace that is missing the `workspaces` field in `package.json` or a pnpm workspace that is missing a `pnpm-workspace.yaml` file can result in this error message.
 
 Check that your repository is complying with standards for multi-package workspaces and correct any issues.
 
+---
 
-- [Unnecessary package task syntax error](/messages/unnecessary-package-task-syntax.md): Learn more about errors with unnecessary package task syntax in Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [Unnecessary package task syntax error](/docs/messages/unnecessary-package-task-syntax): Learn more about errors with unnecessary package task syntax in Turborepo.
+
+# Unnecessary package task syntax error
 
 ## Why this error occurred
 
@@ -6379,8 +6774,13 @@ Remove the package prefix from the task name:
 }
 ```
 
+---
 
-- [bin](/reference/bin.md): API reference for the `turbo bin` command
+[View full sitemap](/sitemap.md)
+
+- [bin](/docs/reference/bin): API reference for the `turbo bin` command
+
+# bin
 
 Get the path to the `turbo` binary.
 
@@ -6392,13 +6792,17 @@ When using [**global `turbo`**](/docs/getting-started/installation#global-instal
 
 When using [**local `turbo`**](/docs/getting-started/installation#repository-installation), this will be the path to the local `turbo` binary. When `turbo` is installed in your repository, it is likely to be a path to `node_modules`.
 
+---
 
-- [boundaries](/reference/boundaries.md): API reference for the `turbo boundaries` command
+[View full sitemap](/sitemap.md)
 
-import { ExperimentalBadge } from '#components/experimental-badge';
-import { Callout } from '#components/callout';
+- [boundaries](/docs/reference/boundaries): API reference for the `turbo boundaries` command
 
-<ExperimentalBadge>Experimental</ExperimentalBadge>
+# boundaries
+
+<ExperimentalBadge>
+  Experimental
+</ExperimentalBadge>
 
 Boundaries ensure that Turborepo features work correctly by checking for package manager Workspace violations.
 
@@ -6406,7 +6810,7 @@ Boundaries ensure that Turborepo features work correctly by checking for package
 turbo boundaries
 ```
 
-<Callout title="Boundaries RFC">
+<Callout type="info" title="Boundaries RFC">
   This feature is experimental, and we're looking for your feedback on [the
   Boundaries RFC](https://github.com/vercel/turborepo/discussions/9435).
 </Callout>
@@ -6495,13 +6899,13 @@ Tags allow you to ensure that the wrong package isn't getting imported somewhere
 applied even for dependencies of dependencies, so if you import a package that in turn imports another package
 with a denied tag, you will still get a rule violation.
 
+---
 
-- [Configuring turbo.json](/reference/configuration.md): Learn how to configure Turborepo through `turbo.json`.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { InVersion } from '#components/in-version';
-import { ExperimentalBadge } from '#components/experimental-badge';
-import Link from 'next/link';
+- [Configuring turbo.json](/docs/reference/configuration): Learn how to configure Turborepo through `turbo.json`.
+
+# Configuring turbo.json
 
 Configure the behavior of `turbo` by using a `turbo.json` file in your Workspace's root directory. You can also:
 
@@ -6514,20 +6918,21 @@ Configure the behavior of `turbo` by using a `turbo.json` file in your Workspace
 
 ```jsonc title="./apps/web/turbo.json"
 {
-  "extends": ["//"]
+  "extends": ["//"],
 }
 ```
 
 Extend from the root `turbo.json` to create specific configuration for a package using [Package Configurations](/docs/reference/package-configurations).
 
-* The only valid value for `extends` is `["//"]` to inherit configuration from the root `turbo.json`.
+* The `extends` array must start with `["//"]` to inherit configuration from the root `turbo.json`.
+* You can also extend from other packages (e.g., `["//", "shared-config"]`).
 * If `extends` is used in the root `turbo.json`, it will be ignored.
 
 ### `globalDependencies`
 
 ```jsonc title="./turbo.json"
 {
-  "globalDependencies": [".env", "tsconfig.json"]
+  "globalDependencies": [".env", "tsconfig.json"],
 }
 ```
 
@@ -6544,7 +6949,7 @@ By default, only the root package.json and lockfile are included in [the global 
 
 ```jsonc title="./turbo.json"
 {
-  "globalEnv": ["GITHUB_TOKEN", "PACKAGE_VERSION", "NODE_ENV"]
+  "globalEnv": ["GITHUB_TOKEN", "PACKAGE_VERSION", "NODE_ENV"],
 }
 ```
 
@@ -6556,7 +6961,7 @@ For more on wildcard and negation syntax, [see the `env` section](#env).
 
 ```jsonc title="./turbo.json"
 {
-  "globalPassThroughEnv": ["AWS_SECRET_KEY", "GITHUB_TOKEN"]
+  "globalPassThroughEnv": ["AWS_SECRET_KEY", "GITHUB_TOKEN"],
 }
 ```
 
@@ -6607,7 +7012,7 @@ Set/limit the maximum concurrency for task execution. Must be an integer greater
 
 ```jsonc title="./turbo.json"
 {
-  "concurrency": "1"
+  "concurrency": "1",
 }
 ```
 
@@ -6615,13 +7020,13 @@ Set/limit the maximum concurrency for task execution. Must be an integer greater
 
 Default: `false`
 
-Turborepo uses your repository's lockfile to determine caching behavior, [Package Graphs](https://turborepo.com/docs/core-concepts/internal-packages), and more. Because of this, we use [the `packageManager` field](https://nodejs.org/api/packages.html#packagemanager) to help you stabilize your Turborepo.
+Turborepo uses your repository's lockfile to determine caching behavior, [Package Graphs](https://turborepo.dev/docs/core-concepts/internal-packages), and more. Because of this, we use [the `packageManager` field](https://nodejs.org/api/packages.html#packagemanager) to help you stabilize your Turborepo.
 
 To help with incremental migration or in situations where you can't use the `packageManager` field, you may use `--dangerously-disable-package-manager-check` to opt out of this check and assume the risks of unstable lockfiles producing unpredictable behavior. When disabled, Turborepo will attempt a best-effort discovery of the intended package manager meant for the repository.
 
 ```jsonc title="./turbo.json"
 {
-  "dangerouslyDisablePackageManagerCheck": true
+  "dangerouslyDisablePackageManagerCheck": true,
 }
 ```
 
@@ -6629,7 +7034,7 @@ To help with incremental migration or in situations where you can't use the `pac
   You may also opt out of this check via
   [`flag`](/docs/reference/run#--dangerously-disable-package-manager-check) or
   the
-  [`TURBO_DANGEROUSLY_DISABLE_PACKAGE_MANAGER_CHECK`](https://turborepo.com/docs/reference/system-environment-variables)
+  [`TURBO_DANGEROUSLY_DISABLE_PACKAGE_MANAGER_CHECK`](https://turborepo.dev/docs/reference/system-environment-variables)
   environment variable.
 </Callout>
 
@@ -6641,9 +7046,17 @@ Specify the filesystem cache directory.
 
 ```jsonc title="./turbo.json"
 {
-  "cacheDir": ".turbo/cache"
+  "cacheDir": ".turbo/cache",
 }
 ```
+
+<Callout type="info">
+  When no `cacheDir` is specified and you're working in a [Git
+  worktree](https://git-scm.com/docs/git-worktree), Turborepo automatically
+  shares the cache with the main worktree. This allows cache hits across
+  different branches checked out in separate worktrees. Setting an explicit
+  `cacheDir` disables this behavior.
+</Callout>
 
 ### `daemon`
 
@@ -6653,11 +7066,11 @@ Turborepo runs a background process to pre-calculate some expensive operations. 
 
 ```jsonc title="./turbo.json"
 {
-  "daemon": true
+  "daemon": true,
 }
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   When running in a CI environment the daemon is always disabled regardless of
   this setting.
 </Callout>
@@ -6673,17 +7086,59 @@ Turborepo's Environment Modes allow you to control which environment variables a
 
 ```jsonc title="./turbo.json"
 {
-  "envMode": "strict"
+  "envMode": "strict",
 }
 ```
 
 Read more about [Environment Modes](/docs/crafting-your-repository/using-environment-variables#environment-modes).
 
+### `futureFlags`
+
+```jsonc title="./turbo.json"
+{
+  "futureFlags": {
+    "errorsOnlyShowHash": true,
+  },
+}
+```
+
+Enable experimental features that will become the default behavior in future versions of Turborepo.
+
+<Callout type="info">
+  `futureFlags` can only be set in the root `turbo.json`. An error will be
+  thrown if set in a [Package
+  Configuration](/docs/reference/package-configurations).
+</Callout>
+
+#### `errorsOnlyShowHash`
+
+Default: `false`
+
+When using [`outputLogs: "errors-only"`](#outputlogs), show task hashes when tasks start and complete successfully. This provides visibility into which tasks are running without showing full output logs.
+
+With this flag enabled, successful tasks will show messages like:
+
+* `cache miss, executing <hash> (only logging errors)` - when a task starts execution
+* `cache hit, replaying logs (no errors) <hash>` - when a task is restored from cache
+
+```jsonc title="./turbo.json"
+{
+  "futureFlags": {
+    "errorsOnlyShowHash": true,
+  },
+  "tasks": {
+    "build": {
+      "outputLogs": "errors-only",
+    },
+  },
+}
+```
+
 ### `tags` <ExperimentalBadge>Experimental</ExperimentalBadge>
 
 ```jsonc title="./apps/web/turbo.json"
 {
-  "tags": ["utils"]
+  "tags": ["utils"],
 }
 ```
 
@@ -6703,27 +7158,65 @@ In the example below, we've defined three tasks under the `tasks` key: `build`, 
 
 ```jsonc title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
     },
     "test": {
       "outputs": ["coverage/**"],
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
     },
     "dev": {
       "cache": false,
-      "persistent": true
-    }
-  }
+      "persistent": true,
+    },
+  },
 }
 ```
 
 ## Task options
 
 Using the options available in the tasks you define in `tasks`, you can describe how `turbo` will run your tasks.
+
+### `extends` (task-level)
+
+Controls whether a task inherits configuration from the extends chain. This option is only available in [Package Configurations](/docs/reference/package-configurations), not in the root `turbo.json`.
+
+```jsonc title="./packages/ui/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false, // Exclude this task from the package
+    },
+  },
+}
+```
+
+| Value            | Behavior                                                                                                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `false`          | Task is excluded from inheritance. If no other config is provided, the task won't exist for this package. If other config is provided, creates a fresh task definition with no inheritance. |
+| `true` (default) | Task inherits configuration normally from the extends chain.                                                                                                                                |
+
+See [Excluding tasks from inheritance](/docs/reference/package-configurations#excluding-tasks-from-inheritance) for examples and more details.
+
+### `description`
+
+A human- or agent-readable description of what a task does.
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "description": "Compiles the application for production deployment",
+    },
+  },
+}
+```
+
+This field is for documentation purposes only and does not affect task execution or caching behavior.
 
 ### `dependsOn`
 
@@ -6739,9 +7232,9 @@ Prefixing a string in `dependsOn` with a `^` tells `turbo` that the task must wa
 {
   "tasks": {
     "build": {
-      "dependsOn": ["^build"]
-    }
-  }
+      "dependsOn": ["^build"],
+    },
+  },
 }
 ```
 
@@ -6755,9 +7248,9 @@ Task names without the `^` prefix describe a task that depends on a different ta
 {
   "tasks": {
     "test": {
-      "dependsOn": ["lint", "build"]
-    }
-  }
+      "dependsOn": ["lint", "build"],
+    },
+  },
 }
 ```
 
@@ -6787,16 +7280,16 @@ The list of environment variables a task depends on.
 {
   "tasks": {
     "build": {
-      "env": ["DATABASE_URL"] // Impacts hash of all build tasks
+      "env": ["DATABASE_URL"], // Impacts hash of all build tasks
     },
     "web#build": {
-      "env": ["API_SERVICE_KEY"] // Impacts hash of web's build task
-    }
-  }
+      "env": ["API_SERVICE_KEY"], // Impacts hash of web's build task
+    },
+  },
 }
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   Turborepo automatically includes environment variables prefixed by common
   frameworks through [Framework
   Inference](/docs/crafting-your-repository/using-environment-variables#framework-inference).
@@ -6856,9 +7349,9 @@ An allowlist of environment variables that should be made available to this task
   "tasks": {
     "build": {
       // Values will be available within `build` scripts
-      "passThroughEnv": ["AWS_SECRET_KEY", "GITHUB_TOKEN"]
-    }
-  }
+      "passThroughEnv": ["AWS_SECRET_KEY", "GITHUB_TOKEN"],
+    },
+  },
 }
 ```
 
@@ -6879,9 +7372,9 @@ See [`$TURBO_ROOT$`](#turbo_root) if output paths need to be relative to the rep
   "tasks": {
     "build": {
       // Cache all files emitted to the packages's `dist` directory
-      "outputs": ["dist/**"]
-    }
-  }
+      "outputs": ["dist/**"],
+    },
+  },
 }
 ```
 
@@ -6897,13 +7390,13 @@ Defines if task outputs should be cached. Setting `cache` to false is useful for
 {
   "tasks": {
     "build": {
-      "outputs": [".svelte-kit/**", "dist/**"] // File outputs will be cached
+      "outputs": [".svelte-kit/**", "dist/**"], // File outputs will be cached
     },
     "dev": {
       "cache": false, // No outputs will be cached
-      "persistent": true
-    }
-  }
+      "persistent": true,
+    },
+  },
 }
 ```
 
@@ -6923,9 +7416,9 @@ Visit the [file glob specification](/docs/reference/globs) for more information 
 {
   "tasks": {
     "test": {
-      "inputs": ["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts"]
-    }
-  }
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts"],
+    },
+  },
 }
 ```
 
@@ -6945,9 +7438,9 @@ the special string `$TURBO_DEFAULT$` within the `inputs` array to restore `turbo
   "tasks": {
     "check-types": {
       // Consider all default inputs except the package's README
-      "inputs": ["$TURBO_DEFAULT$", "!README.md"]
-    }
-  }
+      "inputs": ["$TURBO_DEFAULT$", "!README.md"],
+    },
+  },
 }
 ```
 
@@ -6962,11 +7455,52 @@ Starting a file glob with `$TURBO_ROOT$` will change the glob to be relative to 
   "tasks": {
     "check-types": {
       // Consider all Typescript files in `src/` and the root tsconfig.json as inputs
-      "inputs": ["$TURBO_ROOT$/tsconfig.json", "src/**/*.ts"]
-    }
-  }
+      "inputs": ["$TURBO_ROOT$/tsconfig.json", "src/**/*.ts"],
+    },
+  },
 }
 ```
+
+#### `$TURBO_EXTENDS$`
+
+When using [Package Configurations](/docs/reference/package-configurations), array fields completely replace the values from the root `turbo.json` by default. The `$TURBO_EXTENDS$` microsyntax changes this behavior to **append** instead of **replace**.
+
+This microsyntax can be used in the following array fields:
+
+* `dependsOn`
+* `env`
+* `inputs`
+* `outputs`
+* `passThroughEnv`
+* `with`
+
+For example, if your root `turbo.json` defines:
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"],
+    },
+  },
+}
+```
+
+A Package Configuration can add additional outputs while keeping the root outputs:
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // Inherits "dist/**" from root, and adds ".next/**"
+      "outputs": ["$TURBO_EXTENDS$", ".next/**", "!.next/cache/**"],
+    },
+  },
+}
+```
+
+Without `$TURBO_EXTENDS$`, the `outputs` array would be completely replaced with `[".next/**", "!.next/cache/**"]`, dropping the `"dist/**"` from the root configuration.
 
 ### `outputLogs`
 
@@ -6986,11 +7520,18 @@ Set output logging verbosity. Can be overridden by the [`--output-logs`](/docs/r
 {
   "tasks": {
     "build": {
-      "outputLogs": "new-only"
-    }
-  }
+      "outputLogs": "new-only",
+    },
+  },
 }
 ```
+
+<Callout type="info">
+  When using `errors-only`, you can enable the
+  [`errorsOnlyShowHash`](#errorsonlyshowhash) future flag to show task hashes
+  when tasks complete successfully, providing visibility into running tasks
+  without full output logs.
+</Callout>
 
 ### `persistent`
 
@@ -7006,9 +7547,9 @@ This option is most useful for development servers or other "watch" tasks.
 {
   "tasks": {
     "dev": {
-      "persistent": true
-    }
-  }
+      "persistent": true,
+    },
+  },
 }
 ```
 
@@ -7027,9 +7568,9 @@ This option is most useful for scripts that can be manipulated while they are ru
   "tasks": {
     "test:watch": {
       "interactive": true,
-      "persistent": true
-    }
-  }
+      "persistent": true,
+    },
+  },
 }
 ```
 
@@ -7089,10 +7630,10 @@ You can add an allowlist and a denylist:
         // permit only packages with the `ui` tag
         "allow": ["ui"],
         // and ban packages with the `unsafe` tag
-        "deny": ["unsafe"]
-      }
-    }
-  }
+        "deny": ["unsafe"],
+      },
+    },
+  },
 }
 ```
 
@@ -7104,10 +7645,10 @@ Both the allowlist and the denylist can be omitted.
     "utils": {
       "dependencies": {
         // only packages with the `unsafe` tag are banned, all other packages permitted
-        "deny": ["unsafe"]
-      }
-    }
-  }
+        "deny": ["unsafe"],
+      },
+    },
+  },
 }
 ```
 
@@ -7119,10 +7660,10 @@ Rules can also be added for a tag's dependents, i.e. packages that import this t
     "utils": {
       "dependents": {
         // only packages with the `web` tag can import packages with the `utils` tag
-        "allow": ["web"]
-      }
-    }
-  }
+        "allow": ["web"],
+      },
+    },
+  },
 }
 ```
 
@@ -7132,7 +7673,7 @@ The global `remoteCache` option has a variety of fields for configuring remote c
 
 ```jsonc title="./turbo.json"
 {
-  "remoteCache": {}
+  "remoteCache": {},
 }
 ```
 
@@ -7198,11 +7739,13 @@ Must start with `team_` or it will not be used.
 The slug of the Remote Cache team.
 Value will be passed as `slug` in the querystring for all Remote Cache HTTP calls.
 
+---
 
-- [create-turbo](/reference/create-turbo.md): Quickly set up a new Turborepo repository from scratch.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { ExamplesTable } from '#components/examples-table';
+- [create-turbo](/docs/reference/create-turbo): Quickly set up a new Turborepo repository from scratch.
+
+# create-turbo
 
 The easiest way to get started with Turborepo is by using `create-turbo`. Use this CLI tool to quickly start building a new monorepo, with everything set up for you.
 
@@ -7326,10 +7869,101 @@ You can also use a custom starter or example by using a GitHub URL. This is usef
 -h, --help: Display help for command
 ```
 
+---
 
-- [eslint-config-turbo](/reference/eslint-config-turbo.md): Learn more about eslint-config-turbo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [devtools](/docs/reference/devtools): API reference for the `turbo devtools` command
+
+# devtools
+
+Visualize your monorepo's package graph in the browser.
+
+```bash title="Terminal"
+turbo devtools [options]
+```
+
+This command starts a local server and opens your browser to a visualization of your monorepo's package graph.
+
+## Options
+
+### `--port`
+
+The port to run the devtools server on. Defaults to `9876`.
+
+```bash title="Terminal"
+turbo devtools --port 3000
+```
+
+### `--no-open`
+
+Do not automatically open the browser when the server starts.
+
+```bash title="Terminal"
+turbo devtools --no-open
+```
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [docs](/docs/reference/docs): API reference for the `turbo docs` command
+
+# docs
+
+Search the Turborepo documentation directly from the command line.
+
+```bash title="Terminal"
+turbo docs <query>
+```
+
+## Usage
+
+The `docs` command searches the Turborepo documentation and returns matching pages.
+
+```bash title="Terminal"
+turbo docs "caching"
+```
+
+Example output:
+
+```txt title="Terminal"
+Found 5 results for 'caching':
+
+1. Caching: https://v2-7-5.turborepo.dev/docs/core-concepts/caching
+
+2. Remote Caching: https://v2-7-5.turborepo.dev/docs/core-concepts/remote-caching
+
+3. Caching Tasks: https://v2-7-5.turborepo.dev/docs/crafting-your-repository/caching
+
+4. Local Caching: https://v2-7-5.turborepo.dev/docs/core-concepts/local-caching
+
+5. Cache Troubleshooting: https://v2-7-5.turborepo.dev/docs/troubleshooting/cache-issues
+```
+
+Results link to the versioned documentation site that matches your installed version of `turbo`.
+
+## Options
+
+### `--docs-version`
+
+Override the documentation version to search. By default, `turbo docs` uses the version of `turbo` you have installed.
+
+```bash title="Terminal"
+turbo docs "task dependencies" --docs-version 2.8.0
+```
+
+## Minimum version
+
+The minimum supported version is **2.7.5**.
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [eslint-config-turbo](/docs/reference/eslint-config-turbo): Learn more about eslint-config-turbo.
+
+# eslint-config-turbo
 
 [The `eslint-config-turbo` package](https://www.npmjs.com/package/eslint-config-turbo) helps you find environment variables that are used in your code that are not a part of Turborepo's hashing. Environment variables used in your source code that are not accounted for in `turbo.json` will be highlighted in your editor and errors will show as ESLint output.
 
@@ -7358,7 +7992,7 @@ Install `eslint-config-turbo` into the location where your ESLint configuration 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install --dev eslint-config-turbo --filter=@acme/eslint-config
+    cd packages/eslint-config && bun install eslint-config-turbo --dev
     ```
   </Tab>
 </PackageManagerTabs>
@@ -7366,7 +8000,6 @@ Install `eslint-config-turbo` into the location where your ESLint configuration 
 ## Usage (Flat Config `eslint.config.js`)
 
 ```js title="./packages/eslint-config/base.js"
-import turboConfig from 'eslint-config-turbo/flat';
 
 export default [
   ...turboConfig,
@@ -7377,17 +8010,16 @@ export default [
 You can also configure rules available in the configuration:
 
 ```js title="./packages/eslint-config/base.js"
-import turboConfig from 'eslint-config-turbo/flat';
 
 export default [
   ...turboConfig,
   // Other configuration
   {
     rules: {
-      'turbo/no-undeclared-env-vars': [
-        'error',
+      "turbo/no-undeclared-env-vars": [
+        "error",
         {
-          allowList: ['^ENV_[A-Z]+$'],
+          allowList: ["^ENV_[A-Z]+$"],
         },
       ],
     },
@@ -7421,10 +8053,13 @@ You can also configure rules available in the configuration:
 }
 ```
 
+---
 
-- [eslint-plugin-turbo](/reference/eslint-plugin-turbo.md): Learn more about eslint-plugin-turbo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [eslint-plugin-turbo](/docs/reference/eslint-plugin-turbo): Learn more about eslint-plugin-turbo.
+
+# eslint-plugin-turbo
 
 [The `eslint-plugin-turbo` package](https://www.npmjs.com/package/eslint-plugin-turbo) helps you find environment variables that are used in your code that are not a part of Turborepo's hashing. Environment variables used in your source code that are not accounted for in `turbo.json` will be highlighted in your editor and errors will show as ESLint output.
 
@@ -7453,7 +8088,7 @@ Install `eslint-plugin-turbo` into the location where your ESLint configuration 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install --dev eslint-plugin-turbo --filter=@acme/eslint-config
+    cd packages/eslint-config && bun install eslint-plugin-turbo --dev
     ```
   </Tab>
 </PackageManagerTabs>
@@ -7463,15 +8098,13 @@ Install `eslint-plugin-turbo` into the location where your ESLint configuration 
 ESLint v9 uses the Flat Config format seen below:
 
 ```js title="./packages/eslint-config/base.js"
-import turbo from 'eslint-plugin-turbo';
 
-export default [turbo.configs['flat/recommended']];
+export default [turbo.configs["flat/recommended"]];
 ```
 
 Otherwise, you may configure the rules you want to use under the rules section.
 
 ```js title="./packages/eslint-config/base.js"
-import turbo from 'eslint-plugin-turbo';
 
 export default [
   {
@@ -7479,7 +8112,7 @@ export default [
       turbo,
     },
     rules: {
-      'turbo/no-undeclared-env-vars': 'error',
+      "turbo/no-undeclared-env-vars": "error",
     },
   },
 ];
@@ -7488,7 +8121,6 @@ export default [
 ## Example (Flat Config `eslint.config.js`)
 
 ```js title="./packages/eslint-config/base.js"
-import turbo from 'eslint-plugin-turbo';
 
 export default [
   {
@@ -7496,10 +8128,10 @@ export default [
       turbo,
     },
     rules: {
-      'turbo/no-undeclared-env-vars': [
-        'error',
+      "turbo/no-undeclared-env-vars": [
+        "error",
         {
-          allowList: ['^ENV_[A-Z]+$'],
+          allowList: ["^ENV_[A-Z]+$"],
         },
       ],
     },
@@ -7543,10 +8175,13 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
+---
 
-- [generate](/reference/generate.md): API reference for the `turbo generate` command
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [generate](/docs/reference/generate): API reference for the `turbo generate` command
+
+# generate
 
 Extend your Turborepo with new apps and packages.
 
@@ -7559,7 +8194,7 @@ turbo generate
 
 For more information and practical use cases for writing custom generators, visit [the "Generating code" guide](/docs/guides/generating-code).
 
-<Callout type="good-to-know">
+<Callout type="info">
   `turbo gen` is an alias for `turbo generate`. Additionally, `run` is the
   default command so `turbo gen` is equivalent to `turbo generate run`.
 </Callout>
@@ -7632,8 +8267,13 @@ Prevent filtering dependencies by workspace type when selecting dependencies to 
 
 In a rare case, your GitHub URL might contain a branch name with a slash (e.g. `bug/fix-1`) and the path to the example (e.g. `foo/bar`). In this case, you must specify the path to the example separately.
 
+---
 
-- [File glob specification](/reference/globs.md): Learn about the file glob specification used by `turbo`.
+[View full sitemap](/sitemap.md)
+
+- [File glob specification](/docs/reference/globs): Learn about the file glob specification used by `turbo`.
+
+# File glob specification
 
 File globs are used throughout Turborepo for configuring which files to include or exclude in various contexts, allowing you to specifically define the files you want `turbo` to use.
 
@@ -7664,10 +8304,13 @@ File globs are used throughout Turborepo for configuring which files to include 
 | `dist/**/*.js`     | Recursively match all `.js` files in the `dist` directory and its sub-directories                 |
 | `../scripts/**`    | Up one directory, match all files and sub-directories in the `scripts` directory                  |
 
+---
 
-- [Turborepo API reference](/reference/index.md): Learn about Turborepo's APIs using the reference.
+[View full sitemap](/sitemap.md)
 
-import { Card, Cards } from '#components/card';
+- [Turborepo API reference](/docs/reference): Learn about Turborepo's APIs using the reference.
+
+# Turborepo API reference
 
 Turborepo's API reference is broken up into the following sections:
 
@@ -7712,6 +8355,8 @@ Turborepo's API reference is broken up into the following sections:
 
   <Card title="bin" href="/docs/reference/bin" description="Get the path to the `turbo` binary." />
 
+  <Card title="docs" href="/docs/reference/docs" description="Search the Turborepo documentation." />
+
   <Card title="telemetry" href="/docs/reference/telemetry" description="Manage telemetry for the machine." />
 </Cards>
 
@@ -7754,8 +8399,13 @@ Disables the update notification. This notification will be automatically disabl
 
 Alternatively, you can disable the notification using [the `TURBO_NO_UPDATE_NOTIFIER` environment variable](/docs/reference/system-environment-variables).
 
+---
 
-- [info](/reference/info.md): API reference for the `turbo info` command
+[View full sitemap](/sitemap.md)
+
+- [info](/docs/reference/info): API reference for the `turbo info` command
+
+# info
 
 Print debugging information about your Turborepo.
 
@@ -7787,8 +8437,13 @@ Environment:
    stdin: false
 ```
 
+---
 
-- [link](/reference/link.md): API reference for the `turbo link` command
+[View full sitemap](/sitemap.md)
+
+- [link](/docs/reference/link): API reference for the `turbo link` command
+
+# link
 
 Link the repository to a Remote Cache provider.
 
@@ -7824,8 +8479,13 @@ The scope to which you are linking. For example, when using Vercel, this is your
 turbo link --scope=your-team
 ```
 
+---
 
-- [login](/reference/login.md): API reference for the `turbo login` command
+[View full sitemap](/sitemap.md)
+
+- [login](/docs/reference/login): API reference for the `turbo login` command
+
+# login
 
 Log in to your Remote Cache provider.
 
@@ -7865,8 +8525,13 @@ turbo login --sso-team=slug-for-team
 
 Manually enter token instead of requesting one from a login service.
 
+---
 
-- [logout](/reference/logout.md): API reference for the `turbo logout` command
+[View full sitemap](/sitemap.md)
+
+- [logout](/docs/reference/logout): API reference for the `turbo logout` command
+
+# logout
 
 Log out of the account associated with your Remote Cache provider.
 
@@ -7874,10 +8539,13 @@ Log out of the account associated with your Remote Cache provider.
 turbo logout
 ```
 
+---
 
-- [ls](/reference/ls.md): API reference for the `turbo ls` command
+[View full sitemap](/sitemap.md)
 
-import { ExperimentalBadge } from '#components/experimental-badge';
+- [ls](/docs/reference/ls): API reference for the `turbo ls` command
+
+# ls
 
 List packages in your monorepo.
 
@@ -7922,8 +8590,13 @@ Format to output the results. `json` or `pretty` (default)
 turbo ls --output=json
 ```
 
+---
 
-- [Options overview](/reference/options-overview.md): Flags, configurations, and System Environment Variables for Turborepo
+[View full sitemap](/sitemap.md)
+
+- [Options overview](/docs/reference/options-overview): Flags, configurations, and System Environment Variables for Turborepo
+
+# Options overview
 
 There are three ways to manage the behavior of a `turbo` invocation:
 
@@ -7962,7 +8635,7 @@ The three strategies listed above are in order of precedence. Where a flag value
   | Disable version print          | -     | [`TURBO_PRINT_VERSION_DISABLED`](/docs/reference/system-environment-variables#turbo_print_version_disabled)         | -                                                                                         |
   | Disable telemetry message      | -     | [`TURBO_TELEMETRY_MESSAGE_DISABLED`](/docs/reference/system-environment-variables#turbo_telemetry_message_disabled) | -                                                                                         |
   | Disable global `turbo` warning | -     | [`TURBO_GLOBAL_WARNING_DISABLED`](/docs/reference/system-environment-variables#turbo_global_warning_disabled)       | -                                                                                         |
-  | No update notifier             | -     | [`TURBO_NO_UPDATE_NOTIFIER`](/docs/reference/system-environment-variables#turbo_no_update_notifier)                 | [`noUpdateNotifier`](https://turborepo.com/docs/reference/configuration#noupdatenotifier) |
+  | No update notifier             | -     | [`TURBO_NO_UPDATE_NOTIFIER`](/docs/reference/system-environment-variables#turbo_no_update_notifier)                 | [`noUpdateNotifier`](https://turborepo.dev/docs/reference/configuration#noupdatenotifier) |
 </div>
 
 ### Task running and logs
@@ -7982,7 +8655,7 @@ The three strategies listed above are in order of precedence. Where a flag value
   | Streamed logs prefix              | [`--log-prefix`](/docs/reference/run#--log-prefix-option)                                                        | -                                                                                                                                                 | -                                                                                                              |
   | Task logs output level            | [`--output-logs-option`](/docs/reference/run#--output-logs-option)                                               | -                                                                                                                                                 | [`outputLogs`](/docs/reference/configuration#outputlogs)                                                       |
   | Global inputs                     | [`--global-deps`](/docs/reference/run#--global-deps-file-glob)                                                   | -                                                                                                                                                 | [`globalDependencies`](/docs/reference/configuration#globaldependencies)                                       |
-  | Terminal colors                   | [`--color`](/docs/reference#--color)                                                                             | [FORCE\_COLOR](/docs/reference/system-environment-variables#force_color)                                                                           | -                                                                                                              |
+  | Terminal colors                   | [`--color`](/docs/reference#--color)                                                                             | [FORCE\_COLOR](/docs/reference/system-environment-variables#force_color)                                                                          | -                                                                                                              |
 </div>
 
 ### Environment variables
@@ -8026,11 +8699,13 @@ The three strategies listed above are in order of precedence. Where a flag value
   | Daemon                 | [`--daemon` / `--no-daemon`](/docs/reference/run#--daemon-and---no-daemon) | -                                                                                                           | [`daemon`](/docs/reference/configuration#daemon) |
 </div>
 
+---
 
-- [Package Configurations](/reference/package-configurations.md): Learn how to use Package Configurations to bring greater task flexibility to your monorepo's package.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { ExperimentalBadge } from '#components/experimental-badge';
+- [Package Configurations](/docs/reference/package-configurations): Learn how to use Package Configurations to bring greater task flexibility to your monorepo's package.
+
+# Package Configurations
 
 Many monorepos can declare a `turbo.json` in the root directory with a
 [task description](/docs/reference/configuration#tasks) that applies to all packages. But, sometimes, a monorepo can contain packages that need to configure their tasks differently.
@@ -8050,19 +8725,248 @@ key:
     "build": {
       // Custom configuration for the build task in this package
     },
-    "special-task": {} // New task specific to this package
-  }
+    "special-task": {}, // New task specific to this package
+  },
 }
 ```
 
-<Callout>
-  For now, the only valid value for the `extends` key is `["//"]`. `//` is a
-  special name used to identify the root directory of the monorepo.
+<Callout type="info">
+  The `extends` array must start with `["//"]`. `//` is a special name used to
+  identify the root directory of the monorepo. You can also extend from other
+  packages by adding them after `//` (e.g., `["//", "shared-config"]`).
 </Callout>
 
-Configuration in a package can override any of [the configurations for a
-task](/docs/reference/configuration#defining-tasks). Any keys that are not included are inherited
-from the extended `turbo.json`.
+## Inheritance behavior
+
+When a Package Configuration extends the root `turbo.json`, task properties are inherited differently depending on their type.
+
+### Scalar fields are inherited
+
+Scalar fields like `outputLogs`, `cache`, `persistent`, and `interactive` are **inherited** from the root configuration. You only need to specify them in a Package Configuration if you want to override them.
+
+For example, if your root `turbo.json` sets `"outputLogs": "hash-only"` for a task, all packages inherit that setting automatically.
+
+### Array fields replace by default
+
+Array fields like `outputs`, `env`, `inputs`, `dependsOn`, and `passThroughEnv` **completely replace** the root configuration's values by default.
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"],
+      "env": ["NODE_ENV"],
+    },
+  },
+}
+```
+
+```jsonc title="./apps/my-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // This REPLACES the root outputs - "dist/**" is NOT included
+      "outputs": [".next/**"],
+    },
+  },
+}
+```
+
+### Extending arrays with `$TURBO_EXTENDS$`
+
+To **add** to inherited array values instead of replacing them, use the [`$TURBO_EXTENDS$` microsyntax](/docs/reference/configuration#turbo_extends):
+
+```jsonc title="./apps/my-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // Inherits "dist/**" from root AND adds ".next/**"
+      "outputs": ["$TURBO_EXTENDS$", ".next/**"],
+    },
+  },
+}
+```
+
+The `$TURBO_EXTENDS$` marker must be the first element in the array. It works with `outputs`, `env`, `inputs`, `dependsOn`, `passThroughEnv`, and `with`.
+
+### Extending from other packages
+
+Package Configurations can extend from other packages' `turbo.json` files, not just the root. This enables composing shared task configurations across packages.
+
+Extend from any package by using its `name` from `package.json` in your `extends` array. For example, if you have a Next.js app at `./apps/web` with `"name": "web"` in its `package.json`:
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"],
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+    },
+  },
+}
+```
+
+Another Next.js app can extend from it to share the same configuration:
+
+```jsonc title="./apps/docs/turbo.json"
+{
+  "extends": ["//", "web"],
+  "tasks": {
+    "build": {
+      // Additional customization specific to this package
+      "env": ["NEXT_PUBLIC_DOCS_URL"],
+    },
+  },
+}
+```
+
+<Callout type="warn">
+  When extending from multiple configurations, the root (`"//"`) must always be
+  listed **first** in the `extends` array.
+</Callout>
+
+#### Inheritance order
+
+When extending from multiple configurations, task definitions are merged in the order they appear in the `extends` array:
+
+1. Root `turbo.json` (`"//"`) is applied first
+2. Each additional package configuration is applied in order
+3. The current package's configuration is applied last
+
+Later configurations override earlier ones for scalar fields. For array fields, see [Extending arrays with `$TURBO_EXTENDS$`](#extending-arrays-with-turbo_extends) to append instead of replace.
+
+#### Patterns for sharing configuration
+
+**Extend from an existing package**: If you already have a package with the configuration you want to share, other packages can extend from it directly. This works well when one package serves as the "canonical" example for similar packages (e.g., your main Next.js app that other Next.js apps can extend from).
+
+**Create a dedicated configuration package**: For larger monorepos, you may want to create packages specifically for sharing configuration. This keeps configuration separate from application code and makes it clear that other packages depend on these settings. These packages typically only contain a `package.json` and `turbo.json`.
+
+<Tabs items={["shared-config/package.json", "shared-config/turbo.json", "apps/web/turbo.json"]}>
+  <Tab value="shared-config/package.json">
+    ```json title="./packages/shared-config/package.json"
+    {
+      "name": "shared-config",
+      "private": true
+    }
+    ```
+  </Tab>
+
+  <Tab value="shared-config/turbo.json">
+    ```jsonc title="./packages/shared-config/turbo.json"
+    {
+      "extends": ["//"],
+      "tasks": {
+        "build": {
+          "outputs": ["dist/**"]
+        },
+        "dev": {
+          "cache": false,
+          "persistent": true
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab value="apps/web/turbo.json">
+    ```jsonc title="./apps/web/turbo.json"
+    {
+      "extends": ["//", "shared-config"],
+      "tasks": {
+        "build": {
+          "env": ["MY_API_URL"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Excluding tasks from inheritance
+
+When extending from the root or other packages, your package inherits all their task definitions by default. You can use the task-level `extends` field to opt out of specific tasks.
+
+#### Excluding a task entirely
+
+To completely exclude an inherited task from your package, set `extends: false` with no other configuration:
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {},
+    "lint": {},
+    "test": {},
+  },
+}
+```
+
+```jsonc title="./packages/ui/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false, // This package does not have a lint task
+    },
+  },
+}
+```
+
+When you run `turbo run lint`, the `ui` package will be skipped entirely for the `lint` task.
+
+#### Creating a fresh task definition
+
+To create a new task definition that doesn't inherit any configuration from the extends chain, use `extends: false` along with other task configuration:
+
+```jsonc title="./packages/special-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "extends": false, // Don't inherit from root
+      "outputs": ["out/**"],
+      "env": ["SPECIAL_VAR"],
+    },
+  },
+}
+```
+
+This is useful when you need completely different task configuration that shouldn't merge with inherited values.
+
+#### Exclusions propagate through the chain
+
+When a package excludes a task, that exclusion propagates to packages that extend from it:
+
+```jsonc title="./packages/base-config/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false, // Exclude lint from this config
+    },
+  },
+}
+```
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//", "base-config"],
+  "tasks": {
+    // web does not inherit lint from root because base-config excluded it
+  },
+}
+```
+
+<Callout type="info">
+  Task-level `extends` is only available in Package Configurations. Using
+  `extends` on a task in the root `turbo.json` will result in a validation
+  error.
+</Callout>
 
 ## Examples
 
@@ -8077,9 +8981,9 @@ with a single `turbo.json` at the root like this:
 {
   "tasks": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**", ".svelte-kit/**"]
-    }
-  }
+      "outputs": [".next/**", "!.next/cache/**", ".svelte-kit/**"],
+    },
+  },
 }
 ```
 
@@ -8095,9 +8999,9 @@ configuration in the SvelteKit package in `apps/my-svelte-kit-app/turbo.json`:
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": [".svelte-kit/**"]
-    }
-  }
+      "outputs": [".svelte-kit/**"],
+    },
+  },
 }
 ```
 
@@ -8169,40 +9073,9 @@ but continue to inherit any other tasks defined at the root.
 
 ## Comparison to package-specific tasks
 
-At first glance, Package Configurations may sound a lot like the
-[`package#task` syntax](/docs/crafting-your-repository/configuring-tasks#depending-on-a-specific-task-in-a-specific-package) in the root `turbo.json`. The features are
-similar, but have one significant difference: when you declare a package-specific task
-in the root `turbo.json`, it *completely* overwrites the baseline task
-configuration. With a Package Configuration, the task configuration is merged
-instead.
+The [`package#task` syntax](/docs/crafting-your-repository/configuring-tasks#depending-on-a-specific-task-in-a-specific-package) in the root `turbo.json` **completely overwrites** all task configuration—nothing is inherited.
 
-Consider the example of the monorepo with multiple Next.js apps and a Sveltekit
-app again. With a package-specific task, you might configure your root
-`turbo.json` like this:
-
-```jsonc title="./turbo.json"
-{
-  "tasks": {
-    "build": {
-      "outputLogs": "hash-only",
-      "inputs": ["src/**"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "my-sveltekit-app#build": {
-      "outputLogs": "hash-only", // must duplicate this
-      "inputs": ["src/**"], // must duplicate this
-      "outputs": [".svelte-kit/**"]
-    }
-  }
-}
-```
-
-In this example, `my-sveltekit-app#build` completely overwrites `build` for the
-Sveltekit app, so `outputLogs` and `inputs` also need to be duplicated.
-
-With Package Configurations, `outputLogs` and `inputs` are inherited, so
-you don't need to duplicate them. You only need to override `outputs` in
-`my-sveltekit-app` config.
+With Package Configurations, scalar fields are inherited and only the fields you specify are overridden. This means less duplication when you only need to change one or two properties.
 
 <Callout type="info">
   Although there are no plans to remove package-specific task configurations, we
@@ -8244,20 +9117,20 @@ Package Configuration for `my-nextjs-app`:
 {
   "tasks": {
     "my-nextjs-app#build": {
-      // ❌ This is not allowed. Even though it's
+      // This is not allowed. Even though it's
       // referencing the correct package, "my-nextjs-app"
       // is inferred, and we don't need to specify it again.
       // This syntax also has different behavior, so we do not want to allow it.
       // (see "Comparison to package-specific tasks" section)
     },
     "my-sveltekit-app#build": {
-      // ❌ Changing configuration for the "my-sveltekit-app" package
+      // Changing configuration for the "my-sveltekit-app" package
       // from Package Configuration in "my-nextjs-app" is not allowed.
     },
     "build": {
-      // ✅ just use the task name!
-    }
-  }
+      // Just use the task name!
+    },
+  },
 }
 ```
 
@@ -8267,9 +9140,9 @@ Note that the `build` task can still depend on a package-specific task:
 {
   "tasks": {
     "build": {
-      "dependsOn": ["some-pkg#compile"] // [!code highlight]
-    }
-  }
+      "dependsOn": ["some-pkg#compile"], // [!code highlight]
+    },
+  },
 }
 ```
 
@@ -8290,10 +9163,13 @@ to the [Dry Run](/docs/reference/run#--dry----dry-run) output. If you run `turbo
 output will include the combination of all `turbo.json` configurations that were
 considered before running the `build` task.
 
+---
 
-- [prune](/reference/prune.md): API reference for the `turbo prune` command
+[View full sitemap](/sitemap.md)
 
-import { File, Folder, Files } from '#components/files';
+- [prune](/docs/reference/prune): API reference for the `turbo prune` command
+
+# prune
 
 Generate a partial monorepo for a target package. The output will be placed into a directory named `out` containing the following:
 
@@ -8567,10 +9443,13 @@ The `pnpm deploy` generated directory has a self-contained `node_modules` with h
 This results in a portable package that can be directly copied to a server and used without additional steps.
 The repository structure is not retained, as the focus is on producing a standalone deployable package.
 
+---
 
-- [query](/reference/query.md): API reference for the `turbo query` command
+[View full sitemap](/sitemap.md)
 
-import { ExperimentalBadge } from '#components/experimental-badge';
+- [query](/docs/reference/query): API reference for the `turbo query` command
+
+# query
 
 <ExperimentalBadge />
 
@@ -8598,10 +9477,13 @@ When passed a file path, the command will read the file and run the query.
 turbo query query.gql
 ```
 
+---
 
-- [run](/reference/run.md): API reference for the `turbo run` command
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
+- [run](/docs/reference/run): API reference for the `turbo run` command
+
+# run
 
 Run tasks specified in `turbo.json`.
 
@@ -8613,7 +9495,7 @@ turbo run [tasks] [options] [-- [args passed to tasks]]
 * **\[options]**: Options are used to control the behavior of the `turbo run` command. Available flag options are described below.
 * **\[-- \[args passed to tasks]]**: You may also pass arguments to the underlying scripts. Note that all arguments will be passed to all tasks that are named in the run command.
 
-<Callout type="good-to-know">
+<Callout type="info">
   `turbo run` is aliased to `turbo`. `turbo run build lint check-types` is the
   same as `turbo build lint check-types`. We recommend [using `turbo run` in CI
   pipelines](/docs/crafting-your-repository/constructing-ci#use-turbo-run-in-ci)
@@ -8750,7 +9632,7 @@ turbo run build --cwd=./somewhere/else/in/your/repo
 
 ### `--dangerously-disable-package-manager-check`
 
-Turborepo uses your repository's lockfile to determine caching behavior, [Package Graphs](https://turborepo.com/docs/core-concepts/internal-packages), and more. Because of this, we use [the `packageManager` field](https://nodejs.org/api/packages.html#packagemanager) to help you stabilize your Turborepo.
+Turborepo uses your repository's lockfile to determine caching behavior, [Package Graphs](https://turborepo.dev/docs/core-concepts/internal-packages), and more. Because of this, we use [the `packageManager` field](https://nodejs.org/api/packages.html#packagemanager) to help you stabilize your Turborepo.
 
 To help with incremental migration or in situations where you cannot use the `packageManager` field, you may use `--dangerously-disable-package-manager-check` to opt out of this check and assume the risks of unstable lockfiles producing unpredictable behavior. When disabled, Turborepo will attempt a best-effort discovery of the intended package manager meant for the repository.
 
@@ -8790,7 +9672,7 @@ Task details include useful information like (list is non-exhaustive):
 
 Controls the available environment variables in the task's runtime.
 
-<Callout type="good-to-know">
+<Callout type="info">
   `PATH`, `SHELL`, and `SYSTEMROOT` are always available to the task.
 </Callout>
 
@@ -8841,7 +9723,15 @@ Filters can be combined to create combinations of packages, directories, and git
 | Directory   | Specify directories to capture a list of packages to run tasks. **When used with other filters, must be wrapped in `{}`**. | `turbo run build --filter=./apps/*` |
 | Git commits | Using Git specifiers, specify packages with source control changes. **Must be wrapped in `[]`**.                           | `turbo run build --filter=[HEAD^1]` |
 
-<Callout type="good-to-know">`-F` is an alias for `--filter`.</Callout>
+<Callout type="info">
+  `-F`
+
+   is an alias for 
+
+  `--filter`
+
+  .
+</Callout>
 
 #### Microsyntaxes for filtering
 
@@ -8860,7 +9750,7 @@ You can also run a specific task for a specific package in the format of `packag
 turbo run web#lint
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   This will also run the task's dependencies. To run a task without its
   dependencies, use [the `--only` flag](#--only).
 </Callout>
@@ -8900,7 +9790,7 @@ turbo run test --filter=@acme/*{./packages/*}[HEAD^1]
 
 Ignore existing cached artifacts and re-execute all tasks.
 
-<Callout type="good-to-know">
+<Callout type="info">
   `--force` will overwrite existing task caches.
 </Callout>
 
@@ -8963,7 +9853,7 @@ Default: `auto`
 
 Set the ordering for log output.
 
-By default, `turbo` will use `grouped` logs in CI environments and `stream` logs everywhere else. This flag is not applicable when using [the terminal UI](https://turborepo.com/docs/reference/configuration#ui).
+By default, `turbo` will use `grouped` logs in CI environments and `stream` logs everywhere else. This flag is not applicable when using [the terminal UI](https://turborepo.dev/docs/reference/configuration#ui).
 
 ```bash title="Terminal"
 turbo run build --log-order=stream
@@ -9044,7 +9934,7 @@ Given this `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"]
@@ -9165,7 +10055,7 @@ turbo run build --team=my-team --token=xxxxxxxxxxxxxxxxx
 
 This value can also be set using [the `TURBO_TOKEN` system variable](/docs/reference/system-environment-variables). If both are present, the flag value will override the system variable.
 
-<Callout type="good-to-know">
+<Callout type="info">
   If you are using [Vercel Remote
   Cache](https://vercel.com/docs/monorepos/remote-caching) and building your
   project on Vercel, you do not need to use this flag. This value will be
@@ -9202,8 +10092,13 @@ turbo run build --verbosity=2
 turbo run build -vvv
 ```
 
+---
 
-- [scan](/reference/scan.md): API reference for the `turbo scan` command
+[View full sitemap](/sitemap.md)
+
+- [scan](/docs/reference/scan): API reference for the `turbo scan` command
+
+# scan
 
 Enable faster tooling for your Turborepo locally with one, interactive command.
 
@@ -9220,10 +10115,13 @@ You'll be taken through a short series of steps to enable the fastest settings f
 * **Check for Turborepo LSP**:
   Visit the [VSCode Extension Marketplace](https://marketplace.visualstudio.com/items?itemName=Vercel.turbo-vsc) and install the Turborepo LSP extension for your IDE.
 
+---
 
-- [System environment variables](/reference/system-environment-variables.md): Learn about system variables used by Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Heading } from 'fumadocs-ui/components/heading';
+- [System environment variables](/docs/reference/system-environment-variables): Learn about system variables used by Turborepo.
+
+# System environment variables
 
 By setting certain environment variables, you can change Turborepo's behavior. This can be useful for creating specific configurations for different environments and machines.
 
@@ -9232,27 +10130,38 @@ System environment variables are always overridden by flag values provided direc
 <table id="system-environment-variables-table">
   <thead>
     <tr>
-      <th>Variable</th>
-      <th>Description</th>
+      <th>
+        Variable
+      </th>
+
+      <th>
+        Description
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <tr id="force_color">
       <td>
-        <code>FORCE\_COLOR</code>
+        <code>
+          FORCE_COLOR
+        </code>
       </td>
 
-      <td>Forces color to be shown in terminal logs</td>
+      <td>
+        Forces color to be shown in terminal logs
+      </td>
     </tr>
 
     <tr id="turbo_api">
       <td>
-        <code>TURBO\_API</code>
+        <code>
+          TURBO_API
+        </code>
       </td>
 
       <td>
-        Set the base URL for{' '}
+        Set the base URL for{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Cache</a>.
       </td>
     </tr>
@@ -9260,12 +10169,12 @@ System environment variables are always overridden by flag values provided direc
     <tr id="turbo_binary_path">
       <td>
         <code>
-          <code>TURBO\_BINARY\_PATH</code>
+          TURBO_BINARY_PATH
         </code>
       </td>
 
       <td>
-        Manually set the path to the <code>turbo</code> binary. By default,{' '}
+        Manually set the path to the <code>turbo</code> binary. By default,{" "}
         <code>turbo</code> will automatically discover the binary so you should
         only use this in rare circumstances.
       </td>
@@ -9274,81 +10183,84 @@ System environment variables are always overridden by flag values provided direc
     <tr id="turbo_cache">
       <td>
         <code>
-          <code>TURBO\_CACHE</code>
+          TURBO_CACHE
         </code>
       </td>
 
       <td>
-        Control reading and writing for cache sources. Uses the same syntax as{' '}
-
-        <a href="/docs/reference/run#--cache-options">
-          {' '}
-
-          <code>--cache</code>
-        </a>
-
-        .
+        Control reading and writing for cache sources. Uses the same syntax as
+        <code>[--cache](/docs/reference/run#--cache-options)</code>.
       </td>
     </tr>
 
     <tr id="turbo_cache_dir">
       <td>
-        <code>TURBO\_CACHE\_DIR</code>
+        <code>
+          TURBO_CACHE_DIR
+        </code>
       </td>
 
       <td>
-        Sets the cache directory, similar to using{' '}
+        <span>
+          Sets the cache directory, similar to using
+        </span>
 
-        <a href="/docs/reference/run#--cache-dir-path">
-          {' '}
+        {" "}
 
-          <code>--cache-dir</code>
-        </a>
+        <code>
+          [--cache-dir](/docs/reference/run#--cache-dir-path)
+        </code>
 
-        {' '}
-
-        flag.
+        <span>
+           flag.
+        </span>
       </td>
     </tr>
 
     <tr id="turbo_ci_vendor_env_key">
       <td>
-        <code>TURBO\_CI\_VENDOR\_ENV\_KEY</code>
+        <code>
+          TURBO_CI_VENDOR_ENV_KEY
+        </code>
       </td>
 
       <td>
-        Set a prefix for environment variables that you want
-        <strong>excluded</strong> from <a href="/docs/crafting-your-repository/using-environment-variables#framework-inference">
-        Framework Inference
-        </a>.<span />
-        <strong>NOTE</strong>: This does not need to be set by the user and should
-        be configured automatically by supported platforms.
+        <span>Set a prefix for environment variables that you want</span>
+        <strong> excluded</strong> <span>from</span> [Framework
+        Inference](/docs/crafting-your-repository/using-environment-variables#framework-inference).{" "}
+
+        <div />
+
+        <strong>NOTE</strong>: This does not need to be set by the user and
+        should be configured automatically by supported platforms.
       </td>
     </tr>
 
     <tr id="turbo_dangerously_disable_package_manager_check">
       <td>
-        <code>TURBO\_DANGEROUSLY\_DISABLE\_PACKAGE\_MANAGER\_CHECK</code>
+        <code>
+          TURBO_DANGEROUSLY_DISABLE_PACKAGE_MANAGER_CHECK
+        </code>
       </td>
 
       <td>
-        Disable checking the <code>packageManager</code> field in{' '}
-        <code>package.json</code>. You may run into{' '}
+        Disable checking the <code>packageManager</code>
+        field in <code>package.json</code>.
 
-        <a href="/docs/reference/run#--dangerously-disable-package-manager-check">
-          errors and unexpected caching behavior
-        </a>
+        <div />
 
-        {' '}
-
-        when disabling this check. Use <code>true</code> or <code>1</code> to
-        disable.
+        You may run into [errors and unexpected caching
+        behavior](/docs/reference/run#--dangerously-disable-package-manager-check)
+        when disabling this check. Use <code>true</code>
+        or <code>1</code> to disable.
       </td>
     </tr>
 
     <tr id="turbo_download_local_enabled">
       <td>
-        <code>TURBO\_DOWNLOAD\_LOCAL\_ENABLED</code>
+        <code>
+          TURBO_DOWNLOAD_LOCAL_ENABLED
+        </code>
       </td>
 
       <td>
@@ -9359,7 +10271,9 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_force">
       <td>
-        <code>TURBO\_FORCE</code>
+        <code>
+          TURBO_FORCE
+        </code>
       </td>
 
       <td>
@@ -9370,7 +10284,9 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_global_warning_disabled">
       <td>
-        <code>TURBO\_GLOBAL\_WARNING\_DISABLED</code>
+        <code>
+          TURBO_GLOBAL_WARNING_DISABLED
+        </code>
       </td>
 
       <td>
@@ -9381,7 +10297,9 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_print_version_disabled">
       <td>
-        <code>TURBO\_PRINT\_VERSION\_DISABLED</code>
+        <code>
+          TURBO_PRINT_VERSION_DISABLED
+        </code>
       </td>
 
       <td>
@@ -9392,73 +10310,138 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_log_order">
       <td>
-        <code>TURBO\_LOG\_ORDER</code>
+        <code>
+          TURBO_LOG_ORDER
+        </code>
       </td>
 
       <td>
-        Set the <a href="/docs/reference/run#--log-order-option">log order</a>.
-        Allowed values are <code>grouped</code> and <code>default</code>.
+        <span>
+          Set the
+        </span>
+
+        {" "}
+
+        <a href="/docs/reference/run#--log-order-option">
+          log order
+        </a>
+
+        <span>
+          . Allowed values are
+        </span>
+
+        <code>
+          grouped
+        </code>
+
+        <span>
+          and
+        </span>
+
+        {" "}
+
+        <code>
+          default
+        </code>
+
+        <span>
+          .
+        </span>
       </td>
     </tr>
 
     <tr id="turbo_login">
       <td>
-        <code>TURBO\_LOGIN</code>
+        <code>
+          TURBO_LOGIN
+        </code>
       </td>
 
       <td>
-        Set the URL used to log in to{' '}
-        <a href="/docs/core-concepts/remote-caching">Remote Cache</a>. Only
-        needed for self-hosted Remote Caches that implement an endpoint that
-        dynamically creates tokens.
+        Set the URL used to log in to [Remote
+        Cache](/docs/core-concepts/remote-caching).
+
+        <div />
+
+        Only needed for self-hosted Remote Caches that implement an endpoint
+        that dynamically creates tokens.
       </td>
     </tr>
 
     <tr id="turbo_no_update_notifier">
       <td>
-        <code>TURBO\_NO\_UPDATE\_NOTIFIER</code>
+        <code>
+          TURBO_NO_UPDATE_NOTIFIER
+        </code>
       </td>
 
       <td>
-        Remove the update notifier that appears when a new version of{' '}
-        <code>turbo</code> is available. You can also use{' '}
+        Remove the update notifier that appears when a new version of
+        <code>turbo</code>is available.
+
+        <div />
+
+        You can also use
         <code>NO\_UPDATE\_NOTIFIER</code> per ecosystem convention.
       </td>
     </tr>
 
     <tr id="turbo_platform_env">
       <td>
-        <code>TURBO\_PLATFORM\_ENV</code>
+        <code>
+          TURBO_PLATFORM_ENV
+        </code>
       </td>
 
       <td>
         A CSV of environment variable keys that are configured in a supported CI
-        environment (Vercel). <strong>NOTE</strong>: This variable is meant for
+        environment (Vercel).
+
+        <div />
+
+        <strong>NOTE</strong>: This variable is meant for
         platforms looking to implement zero-configuration environment variables.
-        You are not meant to use this variable as an end user.{' '}
+        You are not meant to use this variable as an end user.
       </td>
     </tr>
 
     <tr id="turbo_platform_env_disabled">
       <td>
-        <code>TURBO\_PLATFORM\_ENV\_DISABLED</code>
+        <code>
+          TURBO_PLATFORM_ENV_DISABLED
+        </code>
       </td>
 
       <td>
-        Disable checking environment variables configured in your{' '}
-        <code>turbo.json</code> against those set on your supported platform
+        <span>
+          Disable checking environment variables configured in your
+        </span>
+
+        {" "}
+
+        <code>
+          turbo.json
+        </code>
+
+        {" "}
+
+        <span>
+          against those set on your supported platform
+        </span>
       </td>
     </tr>
 
     <tr id="turbo_preflight">
       <td>
-        <code>TURBO\_PREFLIGHT</code>
+        <code>
+          TURBO_PREFLIGHT
+        </code>
       </td>
 
       <td>
         Enables sending a preflight request before every cache artifact and
         analytics request. The follow-up upload and download will follow
-        redirects. Only applicable when{' '}
+        redirects. Only applicable when{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Caching</a> is
         configured.
       </td>
@@ -9466,11 +10449,13 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_remote_cache_read_only">
       <td>
-        <code>TURBO\_REMOTE\_CACHE\_READ\_ONLY</code>
+        <code>
+          TURBO_REMOTE_CACHE_READ_ONLY
+        </code>
       </td>
 
       <td>
-        Prevent writing to the{' '}
+        Prevent writing to the{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Cache</a> - but
         still allow reading.
       </td>
@@ -9478,64 +10463,72 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_remote_cache_signature_key">
       <td>
-        <code>TURBO\_REMOTE\_CACHE\_SIGNATURE\_KEY</code>
+        <code>
+          TURBO_REMOTE_CACHE_SIGNATURE_KEY
+        </code>
       </td>
 
       <td>
-        Sign artifacts with a secret key. For more information, visit{' '}
-
-        <a href="/docs/core-concepts/remote-caching#artifact-integrity-and-authenticity-verification">
-          the Artifact Integrity section
-        </a>
-
-        .
+        Sign artifacts with a secret key. For more information, visit [the Artifact Integrity section](/docs/core-concepts/remote-caching#artifact-integrity-and-authenticity-verification).
       </td>
     </tr>
 
     <tr id="turbo_remote_cache_timeout">
       <td>
-        <code>TURBO\_REMOTE\_CACHE\_TIMEOUT</code>
+        <code>
+          TURBO_REMOTE_CACHE_TIMEOUT
+        </code>
       </td>
 
       <td>
-        Set a timeout in seconds for <code>turbo</code> to get artifacts from{' '}
+        Set a timeout in seconds for <code>turbo</code> to get artifacts from{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Cache</a>.
       </td>
     </tr>
 
     <tr id="turbo_remote_cache_upload_timeout">
       <td>
-        <code>TURBO\_REMOTE\_CACHE\_UPLOAD\_TIMEOUT</code>
+        <code>
+          TURBO_REMOTE_CACHE_UPLOAD_TIMEOUT
+        </code>
       </td>
 
       <td>
-        Set a timeout in seconds for <code>turbo</code> to upload artifacts to{' '}
+        Set a timeout in seconds for <code>turbo</code> to upload artifacts to{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Cache</a>.
       </td>
     </tr>
 
     <tr id="turbo_remote_only">
       <td>
-        <code>TURBO\_REMOTE\_ONLY</code>
+        <code>
+          TURBO_REMOTE_ONLY
+        </code>
       </td>
 
-      <td>Always ignore the local filesystem cache for all tasks.</td>
+      <td>
+        Always ignore the local filesystem cache for all tasks.
+      </td>
     </tr>
 
     <tr id="turbo_run_summary">
       <td>
-        <code>TURBO\_RUN\_SUMMARY</code>
+        <code>
+          TURBO_RUN_SUMMARY
+        </code>
       </td>
 
       <td>
-        Generate a <a href="/docs/reference/run#--summarize">Run Summary</a>{' '}
+        Generate a <a href="/docs/reference/run#--summarize">Run Summary</a>{" "}
         when you run tasks.
       </td>
     </tr>
 
     <tr id="turbo_scm_base">
       <td>
-        <code>TURBO\_SCM\_BASE</code>
+        <code>
+          TURBO_SCM_BASE
+        </code>
       </td>
 
       <td>
@@ -9546,7 +10539,9 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_scm_head">
       <td>
-        <code>TURBO\_SCM\_HEAD</code>
+        <code>
+          TURBO_SCM_HEAD
+        </code>
       </td>
 
       <td>
@@ -9557,61 +10552,60 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_team">
       <td>
-        <code>TURBO\_TEAM</code>
+        <code>
+          TURBO_TEAM
+        </code>
       </td>
 
       <td>
-        The account name associated with your repository. When using{' '}
-
-        <a href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache" rel="noreferrer noopener" target="_blank">
-          Vercel Remote Cache
-        </a>
-
-        , this is [your team's slug](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Get+team+slug).
+        The account name associated with your repository. When using{" "}
+        [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache), this is [your team's slug](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Get+team+slug).
       </td>
     </tr>
 
     <tr id="turbo_teamid">
       <td>
-        <code>TURBO\_TEAMID</code>
+        <code>
+          TURBO_TEAMID
+        </code>
       </td>
 
       <td>
-        The account identifier associated with your repository. When using{' '}
-
-        <a href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache" rel="noreferrer noopener" target="_blank">
-          Vercel Remote Cache
-        </a>
-
-        , this is your team's ID.
+        The account identifier associated with your repository. When using [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache), this is your team's ID.
       </td>
     </tr>
 
     <tr id="turbo_telemetry_message_disabled">
       <td>
-        <code>TURBO\_TELEMETRY\_MESSAGE\_DISABLED</code>
+        <code>
+          TURBO_TELEMETRY_MESSAGE_DISABLED
+        </code>
       </td>
 
       <td>
-        Disable the message notifying you that{' '}
+        Disable the message notifying you that{" "}
         <a href="/docs/telemetry">Telemetry</a> is enabled.
       </td>
     </tr>
 
     <tr id="turbo_token">
       <td>
-        <code>TURBO\_TOKEN</code>
+        <code>
+          TURBO_TOKEN
+        </code>
       </td>
 
       <td>
-        The Bearer token for authentication to access{' '}
+        The Bearer token for authentication to access{" "}
         <a href="/docs/core-concepts/remote-caching">Remote Cache</a>.
       </td>
     </tr>
 
     <tr id="turbo_ui">
       <td>
-        <code>TURBO\_UI</code>
+        <code>
+          TURBO_UI
+        </code>
       </td>
 
       <td>
@@ -9621,25 +10615,21 @@ System environment variables are always overridden by flag values provided direc
 
     <tr id="turbo_concurrency">
       <td>
-        <code>TURBO\_CONCURRENCY</code>
+        <code>
+          TURBO_CONCURRENCY
+        </code>
       </td>
 
       <td>
-        Controls{' '}
-
-        <a href="/repo/docs/reference/run#--concurrency-number--percentage">
-          concurrency
-        </a>
-
-        {' '}
-
-        settings in run or watch mode.
+        Controls [concurrency](/repo/docs/reference/run#--concurrency-number--percentage) settings in run or watch mode.
       </td>
     </tr>
 
     <tr id="turbo_sso_login_callback_port">
       <td>
-        <code>TURBO\_SSO\_LOGIN\_CALLBACK\_PORT</code>
+        <code>
+          TURBO_SSO_LOGIN_CALLBACK_PORT
+        </code>
       </td>
 
       <td>
@@ -9660,10 +10650,13 @@ Turborepo will make the following environment variables available within your ta
 | `TURBO_IS_TUI` | When using the [TUI](/docs/reference/configuration#ui), this variable is set to `true`.                                                              |
 | `TURBO_IS_MFE` | When using the [microfrontends](/docs/guides/microfrontends), this variable is set to the port defined in `microfrontends.json` for the application. |
 
+---
 
-- [telemetry](/reference/telemetry.md): API reference for the `turbo telemetry` command
+[View full sitemap](/sitemap.md)
 
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [telemetry](/docs/reference/telemetry): API reference for the `turbo telemetry` command
+
+# telemetry
 
 ```bash title="Terminal"
 turbo telemetry [argument]
@@ -9701,12 +10694,13 @@ Disable telemetry for this machine.
 turbo telemetry disable
 ```
 
+---
 
-- [@turbo/codemod](/reference/turbo-codemod.md): Learn more about how Turborepo uses codemods to make version migrations easy.
+[View full sitemap](/sitemap.md)
 
-import { Tabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Accordion, Accordions } from '#components/accordion';
+- [@turbo/codemod](/docs/reference/turbo-codemod): Learn more about how Turborepo uses codemods to make version migrations easy.
+
+# @turbo/codemod
 
 Turborepo provides codemod transformations and automatic migration scripts to help upgrade your Turborepo codebase when a feature is deprecated.
 
@@ -9740,6 +10734,23 @@ All the codemods you need to upgrade will be run for you.
 The codemods below are used for migration paths in the second major version of Turborepo.
 
 <Accordions>
+  <Accordion title="update-versioned-schema-json (2.7.5)" id="update-versioned-schema-json">
+    Updates the `$schema` URL in `turbo.json` files to use the versioned subdomain format. This applies to both root and workspace `turbo.json` files.
+
+    ```bash title="Terminal"
+    npx @turbo/codemod update-versioned-schema-json
+    ```
+
+    **Example**
+
+    ```diff title="./turbo.json"
+    {
+    - "$schema": "https://turborepo.dev/schema.json",
+    + "$schema": "https://v2-7-5.turborepo.dev/schema.json",
+    }
+    ```
+  </Accordion>
+
   <Accordion title="update-schema-json-url (2.0.0)" id="update-schema-json-url">
     Updates a versioned schema.json URL to v2.
 
@@ -9751,8 +10762,8 @@ The codemods below are used for migration paths in the second major version of T
 
     ```diff title="./turbo.json"
     {
-    - "$schema": "https://turborepo.com/schema.v1.json",
-    + "$schema": "https://turborepo.com/schema.v2.json",
+    - "$schema": "https://turborepo.dev/schema.v1.json",
+    + "$schema": "https://turborepo.dev/schema.v2.json",
     }
     ```
   </Accordion>
@@ -9909,7 +10920,7 @@ The codemods below are used for migration paths in the first major version of Tu
 
     ```diff title="./turbo.json"
     {
-      "$schema": "https://turborepo.com/schema.json",
+      "$schema": "https://turborepo.dev/schema.json",
     - "experimentalGlobalPassThroughEnv": ["CC"],
     + "globalPassThroughEnv": ["CC"],
       "pipeline": {
@@ -9933,7 +10944,7 @@ The codemods below are used for migration paths in the first major version of Tu
 
     ```diff title="./turbo.json"
     {
-      "$schema": "https://turborepo.com/schema.json",
+      "$schema": "https://turborepo.dev/schema.json",
     - "globalEnv": ["THIS_*_IS_LITERAL"],
     - "globalPassThroughEnv": ["!LITERAL_LEADING_EXCLAMATION"],
     +  "globalEnv": ["THIS_\\*_IS_LITERAL"],
@@ -9961,7 +10972,7 @@ The codemods below are used for migration paths in the first major version of Tu
 
     ```diff title="turbo.json"
     {
-      "$schema": "https://turborepo.com/schema.json",
+      "$schema": "https://turborepo.dev/schema.json",
       "globalDependencies": [".env"],
       "globalEnv": ["CI_ENV"],
       "pipeline": {
@@ -9997,7 +11008,7 @@ The codemods below are used for migration paths in the first major version of Tu
     ```diff title="./turbo.json"
     // After, turbo.json
     {
-      "$schema": "https://turborepo.com/schema.json",
+      "$schema": "https://turborepo.dev/schema.json",
     - "globalDependencies": [".env", "$CI_ENV"],
     + "globalDependencies": [".env"],
     + "globalEnv": ["CI_ENV"],
@@ -10070,7 +11081,7 @@ The codemods below are used for migration paths in the first major version of Tu
       <Tab value="turbo.json">
         ```diff title="./turbo.json"
         + {
-        +   "$schema": "https://turborepo.com/schema.json",
+        +   "$schema": "https://turborepo.dev/schema.json",
         +   "pipeline": {
         +     ...
         +   }
@@ -10081,8 +11092,13 @@ The codemods below are used for migration paths in the first major version of Tu
   </Accordion>
 </Accordions>
 
+---
 
-- [@turbo/gen](/reference/turbo-gen.md): Quickly generate new code in your Turborepo.
+[View full sitemap](/sitemap.md)
+
+- [@turbo/gen](/docs/reference/turbo-gen): Quickly generate new code in your Turborepo.
+
+# @turbo/gen
 
 Use this package for type definitions in your [Turborepo code generators](/docs/reference/generate).
 
@@ -10108,8 +11124,13 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
 
 For more information, [visit the Generating code guide](/docs/guides/generating-code).
 
+---
 
-- [turbo-ignore](/reference/turbo-ignore.md): Learn how to use turbo-ignore to skip tasks in CI.
+[View full sitemap](/sitemap.md)
+
+- [turbo-ignore](/docs/reference/turbo-ignore): Learn how to use turbo-ignore to skip tasks in CI.
+
+# turbo-ignore
 
 Use `turbo` to determine if a package or its dependencies have changes. This can be useful for quickly skipping tasks in CI.
 
@@ -10130,8 +11151,13 @@ Because `turbo-ignore` is most often used before installing dependencies into th
 * First, check for a `turbo` entry in root `package.json#devDependencies` or `package.json#dependencies`. If a version is found there, it will be used.
 * If no `entry` is found in `package.json`, `turbo.json` will be read for its schema. If [the `tasks` key](/docs/reference/configuration#tasks) is found, use `turbo@^2`. If the `pipeline` from Turborepo v1 is found, use `turbo@^1`.
 
+---
 
-- [unlink](/reference/unlink.md): API reference for the `turbo unlink` command
+[View full sitemap](/sitemap.md)
+
+- [unlink](/docs/reference/unlink): API reference for the `turbo unlink` command
+
+# unlink
 
 Disconnect the repository from Remote Cache.
 
@@ -10139,8 +11165,13 @@ Disconnect the repository from Remote Cache.
 turbo unlink
 ```
 
+---
 
-- [watch](/reference/watch.md): API reference for the `watch` command
+[View full sitemap](/sitemap.md)
+
+- [watch](/docs/reference/watch): API reference for the `watch` command
+
+# watch
 
 Re-run tasks in your repository, based on code changes.
 
@@ -10189,10 +11220,13 @@ files for changes and will re-run tasks in packages that have changed. If a task
 
 Watch Mode has some logic to prevent this from happening using file hashes, but it isn't foolproof. To avoid this issue, we recommend removing any task outputs from git.
 
+---
 
-- [Buildkite](/guides/ci-vendors/buildkite.md): Learn how to use Buildkite with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [Buildkite](/docs/guides/ci-vendors/buildkite): Learn how to use Buildkite with Turborepo.
+
+# Buildkite
 
 The following example shows how to use Turborepo with [Buildkite](https://buildkite.com/).
 
@@ -10215,7 +11249,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],
@@ -10306,7 +11340,7 @@ To create your pipeline in the Buildkite dashboard, you'll need to first upload 
 
 ```yaml title=".buildkite/pipeline.yml"
 steps:
-  - label: ':pipeline:'
+  - label: ":pipeline:"
     command: buildkite-agent pipeline upload
 ```
 
@@ -10325,7 +11359,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens). Copy the value to a safe place. You'll need it in a moment.
 
-   ![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+   <img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 2. Obtain [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL) and copy its value as well. Both values will be used in the next step.
 
@@ -10335,7 +11369,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
    ```yaml title=".buildkite/pipeline.yml"
    steps:
-     - label: ':test_tube: Test'
+     - label: ":test_tube: Test"
        command: |
          npm install
          npm test
@@ -10345,7 +11379,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
                TURBO_TOKEN: TURBO_TOKEN
                TURBO_TEAM: TURBO_TEAM
 
-     - label: ':hammer: Build'
+     - label: ":hammer: Build"
        command: |
          npm install
          npm run build
@@ -10358,11 +11392,20 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
    Commit and push these changes to your repository, and on the next pipeline run, the secrets will be applied and Vercel Remote Caching will be active.
 
+---
 
-- [CircleCI](/guides/ci-vendors/circleci.md): Learn how to use CircleCI with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [CircleCI](/docs/guides/ci-vendors/circleci): Learn how to use CircleCI with Turborepo.
+
+# CircleCI
+
+<CopyPrompt
+  title="Set up CircleCI for Turborepo"
+  prompt={
+  "Set up CircleCI for this Turborepo.\n1) Create a .circleci/config.yml file\n2) Configure the TURBO_UI=false workaround\n3) Set up Remote Caching (optional)\n\nWalk me through each step."
+}
+/>
 
 The following example shows how to use Turborepo with [CircleCI](https://circleci.com/).
 
@@ -10392,7 +11435,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],
@@ -10538,25 +11581,33 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+<img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 Copy the value to a safe place. You'll need it in a moment.
 
 2. Go to your CircleCI project settings and click on the **Environment Variables** tab. Create a new secret called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-![CircleCI Environment Variables](/images/docs/circleci-environment-variables.png)
-![CircleCI Create Environment Variables](/images/docs/circleci-create-environment-variables.png)
+<img alt="CircleCI Environment Variables" src={__img1} placeholder="blur" />
+<img alt="CircleCI Create Environment Variables" src={__img2} placeholder="blur" />
 
 3. Make a second secret called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
 4. CircleCI automatically loads environment variables stored in project settings into the CI environment. No modifications are necessary for the CI file.
 
+---
 
-- [GitHub Actions](/guides/ci-vendors/github-actions.md): Learn how to use GitHub Actions with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Steps, Step } from '#components/steps';
-import { Callout } from '#components/callout';
+- [GitHub Actions](/docs/guides/ci-vendors/github-actions): Learn how to use GitHub Actions with Turborepo.
+
+# GitHub Actions
+
+<CopyPrompt
+  title="Set up GitHub Actions CI for Turborepo"
+  prompt={
+  "Set up GitHub Actions CI for this Turborepo.\n1) Create a CI workflow file at .github/workflows/ci.yml\n2) Configure caching for my package manager\n3) Set up Remote Caching with Vercel (optional)\n\nWalk me through each step."
+}
+/>
 
 The following example shows how to use Turborepo with [GitHub Actions](https://github.com/features/actions).
 
@@ -10579,7 +11630,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**", "other-output-dirs/**"],
@@ -10788,7 +11839,7 @@ To use Remote Caching, retrieve the team and token for the Remote Cache for your
   <Step>
     Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-    ![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+        <img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
     Copy the value to a safe place. You'll need it in a moment.
   </Step>
@@ -10796,19 +11847,19 @@ To use Remote Caching, retrieve the team and token for the Remote Cache for your
   <Step>
     Go to your GitHub repository settings and click on the **Secrets** and then **Actions** tab. Create a new secret called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-    ![GitHub Secrets](/images/docs/github-actions-secrets.png)
-    ![GitHub Secrets Create](/images/docs/github-actions-create-secret.png)
+        <img alt="GitHub Secrets" src={__img1} placeholder="blur" />
+        <img alt="GitHub Secrets Create" src={__img2} placeholder="blur" />
   </Step>
 
   <Step>
     Create a new repository variable (click the **Variables** tab) called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       Using a repository variable rather than a secret will keep GitHub Actions from
       censoring your team name in log output.
     </Callout>
 
-    ![GitHub Repository Variables](/images/docs/vercel-team-repo-var.png)
+        <img alt="GitHub Repository Variables" src={__img3} placeholder="blur" />
   </Step>
 
   <Step>
@@ -10893,7 +11944,7 @@ The following steps show how you could use [actions/cache](https://github.com/ac
             uses: actions/setup-node@v4
             with:
               node-version: 20
-              cache: 'npm'
+              cache: "npm"
 
           - name: Install dependencies
             run: npm install
@@ -10904,10 +11955,20 @@ The following steps show how you could use [actions/cache](https://github.com/ac
   </Step>
 </Steps>
 
+---
 
-- [GitLab CI](/guides/ci-vendors/gitlab-ci.md): Learn how to use GitLab CI with Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [GitLab CI](/docs/guides/ci-vendors/gitlab-ci): Learn how to use GitLab CI with Turborepo.
+
+# GitLab CI
+
+<CopyPrompt
+  title="Set up GitLab CI for Turborepo"
+  prompt={
+  "Set up GitLab CI for this Turborepo.\n1) Create a .gitlab-ci.yml file\n2) Configure caching for my package manager\n3) Set up Remote Caching with environment variables (optional)\n\nWalk me through each step."
+}
+/>
 
 The following example shows how to use Turborepo with [GitLab CI](https://docs.gitlab.com/ee/ci/).
 
@@ -10930,7 +11991,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".svelte-kit/**"],
@@ -11037,23 +12098,26 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+<img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 Copy the value to a safe place. You'll need it in a moment.
 
 2. Go to your GitLab repository settings and click on the **Settings** and then **CI/CD** tab. Create a new variable called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-![GitLab CI Variables](/images/docs/gitlab-ci-variables.png)
-![GitLab CI Create Variable](/images/docs/gitlab-ci-create-variable.png)
+<img alt="GitLab CI Variables" src={__img1} placeholder="blur" />
+<img alt="GitLab CI Create Variable" src={__img2} placeholder="blur" />
 
 3. Make a second secret called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
 Remote Caching will now be operational in your GitLab workflows.
 
+---
 
-- [Continuous Integration](/guides/ci-vendors/index.md): Recipes for using Turborepo with Vercel, GitHub Actions, and other continuous integration providers.
+[View full sitemap](/sitemap.md)
 
-import { Cards, Card } from '#components/card';
+- [Continuous Integration](/docs/guides/ci-vendors): Recipes for using Turborepo with Vercel, GitHub Actions, and other continuous integration providers.
+
+# Continuous Integration
 
 Turborepo not only speeds up builds, but also the rest of your Continuous Integration pipeline by using [Remote Caching](/docs/core-concepts/remote-caching). Below are a few platform recipes to use Turborepo with your CI providers.
 
@@ -11076,18 +12140,21 @@ Turborepo not only speeds up builds, but also the rest of your Continuous Integr
 To enable Remote Caching for your CI:
 
 1. Setup the environment variables for Turborepo in your CI to access your Remote Cache.
-   | Variable | Description |
-   | ----------- | ----------- |
-   | `TURBO_TOKEN` | The Bearer token to access the Remote Cache |
-   | `TURBO_TEAM` | The account name associated with your repository. When using{' '} <a href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache" rel="noreferrer noopener" target="_blank">Vercel Remote Cache</a>, this is [your team's slug](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Get+team+slug). |
+   | Variable      | Description                                                                                                                                                                                                                                                                                                             |
+   | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `TURBO_TOKEN` | The Bearer token to access the Remote Cache                                                                                                                                                                                                                                                                             |
+   | `TURBO_TEAM`  | The account name associated with your repository. When using <a href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache" rel="noreferrer noopener" target="_blank">Vercel Remote Cache</a>, this is [your team's slug](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Get+team+slug). |
 2. Clone your repository.
 3. Install your dependencies through your package manager.
 4. Run your tasks through `turbo`.
 
+---
 
-- [Travis CI](/guides/ci-vendors/travis-ci.md): How to use Travis CI with Turborepo to optimize your CI workflow
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [Travis CI](/docs/guides/ci-vendors/travis-ci): How to use Travis CI with Turborepo to optimize your CI workflow
+
+# Travis CI
 
 The following example shows how to use Turborepo with [Travis CI](https://www.travis-ci.com/).
 
@@ -11110,7 +12177,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".svelte-kit/**"],
@@ -11211,22 +12278,27 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens)
 
-![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+<img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 Copy the value to a safe place. You'll need it in a moment.
 
 2. Go to your Travis repository settings and scroll down to the *Environment Variables* section. Create a new variable called `TURBO_TOKEN` and enter the value of your Scoped Access Token.
 
-![Travis CI Variables](/images/docs/travis-ci-environment-variables.png)
+<img alt="Travis CI Variables" src={__img1} placeholder="blur" />
 
 3. Make a second secret called `TURBO_TEAM` and set it to your team slug - the part after `vercel.com/` in [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL). For example, the slug for `vercel.com/acme` is `acme`.
 
 4. Travis CI automatically loads environment variables stored in project settings into the CI environment. No modifications are necessary for the CI file.
 
+---
 
-- [Vercel](/guides/ci-vendors/vercel.md): Learn how to use Turborepo on Vercel.
+[View full sitemap](/sitemap.md)
 
-![](/images/docs/turborepo-x-vercel.png)
+- [Vercel](/docs/guides/ci-vendors/vercel): Learn how to use Turborepo on Vercel.
+
+# Vercel
+
+<img alt="" src={__img0} placeholder="blur" />
 
 Vercel's zero-config integration with Turborepo automatically understands your monorepo.
 
@@ -11234,17 +12306,19 @@ To deploy your Turborepo on Vercel, [create a new project](https://vercel.com/ne
 
 For more information about deploying your Turborepo to Vercel, [visit the Vercel documentation](https://vercel.com/docs/concepts/monorepos/turborepo).
 
+---
 
-- [Framework bindings in libraries](/guides/frameworks/framework-bindings.md): Learn how to create framework bindings in packages.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [Framework bindings in libraries](/docs/guides/frameworks/framework-bindings): Learn how to create framework bindings in packages.
+
+# Framework bindings in libraries
 
 Framework bindings in a [Library Package](/docs/core-concepts/package-types#library-packages) integrate your library's code more deeply with a framework by leveraging APIs from the framework directly in the library.
 
 To do this, use the `peerDependencies` field in `package.json` of the library, which makes the framework APIs available in your library without installing it directly in the package.
 
-<Callout type="good-to-know">
+<Callout type="info">
   On this page, we'll be using Next.js for examples, but the concepts below
   apply to any framework or other dependency.
 </Callout>
@@ -11262,7 +12336,7 @@ Add a `peerDependency` to your library for the dependency that you intend to cre
 }
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   In the example above, the `peerDependency` for `next` accepts any version. You
   may want to specify a range (for example, `">=15"`) according to your needs.
   Additionally, for older package managers, you may need to instruct your
@@ -11273,8 +12347,6 @@ Add a `peerDependency` to your library for the dependency that you intend to cre
 This will make the dependency available in your library, allowing you to write code like below. Note the `className` prop, which sets a default styling for this component in the monorepo and can be overridden in the `props` object.
 
 ```tsx title="./packages/ui/src/link.tsx"
-import Link from 'next/link';
-import type { ComponentProps } from 'react';
 
 type CustomLinkProps = ComponentProps<typeof Link>;
 
@@ -11311,17 +12383,20 @@ The example below shows a library with two entrypoints, each for a different typ
 }
 ```
 
-<Callout type="good-to-know">
+<Callout type="info">
   In the example above, the `peerDependency` for `next` accepts any version. You
   may want to specify a range (for example, `">=15"`) according to your needs.
 </Callout>
 
 This concept can be applied to any number of frameworks or other dependencies that you'd like to provide bindings for.
 
+---
 
-- [Frameworks](/guides/frameworks/index.md): Integrate your favorite framework into Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Cards, Card } from '#components/card';
+- [Frameworks](/docs/guides/frameworks): Integrate your favorite framework into Turborepo.
+
+# Frameworks
 
 Turborepo works with **any framework**. Below, you'll find guides for the most common frameworks being used with Turborepo.
 
@@ -11335,11 +12410,13 @@ Turborepo works with **any framework**. Below, you'll find guides for the most c
   <Card title="Nuxt" href="/docs/guides/frameworks/nuxt" />
 </Cards>
 
+---
 
-- [Next.js](/guides/frameworks/nextjs.md): Learn how to use Next.js in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [Next.js](/docs/guides/frameworks/nextjs): Learn how to use Next.js in a monorepo.
+
+# Next.js
 
 [Next.js](https://nextjs.org) is the React framework for the web. Used by some of the world's largest companies, Next.js enables you to create high-quality web applications with the power of React components.
 
@@ -11374,6 +12451,13 @@ To get started with Next.js in a Turborepo quickly, follow the [quickstart](/doc
 </PackageManagerTabs>
 
 ## Adding a Next.js application to an existing repository
+
+<CopyPrompt
+  title="Set up Next.js in an existing monorepo"
+  prompt={
+  "Set up a Next.js application in this Turborepo.\n1) Create the app\n2) Integrate with the rest of the monorepo\n3) Update turbo.json if needed\n\nWalk me through each step."
+}
+/>
 
 Use [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app) to set up a new Next.js application in a package. From the root of your repository, run:
 
@@ -11464,20 +12548,21 @@ By default, the new application will use the tasks defined in the root `turbo.js
 When using Next.js with [Turborepo's microfrontends](/docs/guides/microfrontends), make sure to set the `basePath` property for child applications. This ensures the assets like images and CSS will be routed to the correct application.
 
 ```ts title="./apps/my-app/next.config.ts"
-import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  basePath: '/docs',
+  basePath: "/docs",
 };
 
 export default nextConfig;
 ```
 
+---
 
-- [Nuxt](/guides/frameworks/nuxt.md): Learn more about using Nuxt in your monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [Nuxt](/docs/guides/frameworks/nuxt): Learn more about using Nuxt in your monorepo.
+
+# Nuxt
 
 [Nuxt](https://nuxt.com/) is an open source framework that makes web development intuitive and powerful.
 
@@ -11512,6 +12597,13 @@ To get started with Nuxt in a Turborepo quickly, use [the `with-vue-nuxt` exampl
 </PackageManagerTabs>
 
 ## Adding a Nuxt application to an existing repository
+
+<CopyPrompt
+  title="Set up Nuxt in an existing monorepo"
+  prompt={
+  "Set up a Nuxt application in this Turborepo.\n1) Create the app\n2) Integrate with the rest of the monorepo\n3) Update turbo.json if needed\n\nWalk me through each step."
+}
+/>
 
 Use [Nuxi](https://www.npmjs.com/package/nuxi), Nuxt's CLI, to set up a new Nuxt application in a package. From the root of your repository, run:
 
@@ -11602,18 +12694,19 @@ By default, the new application will use the tasks defined in the root `turbo.js
 When using Nuxt with [Turborepo's microfrontends](/docs/guides/microfrontends), make sure to set the `base` property for child applications. This ensures the assets like images and CSS will be routed to the correct application.
 
 ```ts title="./apps/my-app/vite.config.ts"
-import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/admin',
+  base: "/admin",
 });
 ```
 
+---
 
-- [SvelteKit](/guides/frameworks/sveltekit.md): Learn more about using SvelteKit in your monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [SvelteKit](/docs/guides/frameworks/sveltekit): Learn more about using SvelteKit in your monorepo.
+
+# SvelteKit
 
 [SvelteKit](https://kit.svelte.dev/) is a framework for rapidly developing robust, performant web applications using Svelte.
 
@@ -11648,6 +12741,13 @@ To get started with SvelteKit in a Turborepo quickly, use [the `with-svelte` exa
 </PackageManagerTabs>
 
 ## Adding a SvelteKit application to an existing repository
+
+<CopyPrompt
+  title="Set up SvelteKit in an existing monorepo"
+  prompt={
+  "Set up a SvelteKit application in this Turborepo.\n1) Create the app\n2) Integrate with the rest of the monorepo\n3) Update turbo.json if needed\n\nWalk me through each step."
+}
+/>
 
 Use [`npm create svelte`](https://kit.svelte.dev/docs/creating-a-project) to set up a new SvelteKit application in a package. From the root of your repository, run:
 
@@ -11738,18 +12838,19 @@ By default, the new application will use the tasks defined in the root `turbo.js
 When using Svelte with [Turborepo's microfrontends](/docs/guides/microfrontends), make sure to set the `base` property for child applications. This ensures the assets like images and CSS will be routed to the correct application.
 
 ```ts title="./apps/my-app/vite.config.ts"
-import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/admin',
+  base: "/admin",
 });
 ```
 
+---
 
-- [Vite](/guides/frameworks/vite.md): Learn more about using Vite in your monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
+- [Vite](/docs/guides/frameworks/vite): Learn more about using Vite in your monorepo.
+
+# Vite
 
 [Vite](https://vitejs.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
 
@@ -11784,6 +12885,13 @@ To get started with Vite in a Turborepo quickly, use [the `with-vite` example](h
 </PackageManagerTabs>
 
 ## Adding a Vite application to an existing repository
+
+<CopyPrompt
+  title="Set up Vite in an existing monorepo"
+  prompt={
+  "Set up a Vite application in this Turborepo.\n1) Create the app\n2) Integrate with the rest of the monorepo\n3) Update turbo.json if needed\n\nWalk me through each step."
+}
+/>
 
 Use [`npm create vite`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) to set up a new Vite application in a package. From the root of your repository, run:
 
@@ -11874,18 +12982,26 @@ By default, the new application will use the tasks defined in the root `turbo.js
 When using Vite with [Turborepo's microfrontends](/docs/guides/microfrontends), make sure to set the `base` property for child applications. This ensures the assets like images and CSS will be routed to the correct application.
 
 ```ts title="./apps/my-app/vite.config.ts"
-import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/admin',
+  base: "/admin",
 });
 ```
 
+---
 
-- [Biome](/guides/tools/biome.md): Learn how to use Biome in your Turborepo projects.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+- [Biome](/docs/guides/tools/biome): Learn how to use Biome in your Turborepo projects.
+
+# Biome
+
+<CopyPrompt
+  title="Set up Biome in a Turborepo"
+  prompt={
+  "Set up Biome for formatting and linting in this Turborepo.\n1) Install Biome\n2) Create scripts\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
 
 [Biome](https://biomejs.dev/) is a fast formatter for JavaScript, TypeScript, JSX, and JSON that saves CI and developer time.
 
@@ -11941,12 +13057,20 @@ To create a [Root Task](/docs/crafting-your-repository/configuring-tasks#registe
 
 You'll now be able to run these scripts using `turbo run format-and-lint` and `turbo run format-and-lint:fix`.
 
+---
 
-- [Docker](/guides/tools/docker.md): Learn how to use Docker in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+- [Docker](/docs/guides/tools/docker): Learn how to use Docker in a monorepo.
+
+# Docker
+
+<CopyPrompt
+  title="Set up Docker in a Turborepo"
+  prompt={
+  "Set up Docker deployments for an application in this Turborepo.\n1) Use turbo prune to create a pruned monorepo\n2) Create an optimized Dockerfile\n3) Configure Remote Caching for Docker builds\n\nWalk me through each step."
+}
+/>
 
 Building a [Docker](https://www.docker.com/) image is a common way to deploy all sorts of applications. However, doing so from a monorepo has several challenges.
 
@@ -12163,16 +13287,23 @@ RUN yarn turbo run build
 `turbo` will now be able to hit your Remote Cache. To see a Turborepo cache hit for a non-cached Docker build image, run a command like this one from your project root:
 
 ```bash title="Terminal"
-docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache
+docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM="your-team-name" --build-arg TURBO_TOKEN="your-token" --no-cache
 ```
 
+---
 
-- [ESLint](/guides/tools/eslint.md): Learn how to use ESLint in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Files, Folder, File } from '#components/files';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+- [ESLint](/docs/guides/tools/eslint): Learn how to use ESLint in a monorepo.
+
+# ESLint
+
+<CopyPrompt
+  title="Set up ESLint in a Turborepo"
+  prompt={
+  "Set up ESLint in this Turborepo.\n1) Create a shared ESLint config package\n2) Configure packages to use the shared config\n3) Set up linting in turbo.json\n\nWalk me through each step."
+}
+/>
 
 ESLint is a static analysis tool for quickly finding and fixing problems in your JavaScript code.
 
@@ -12285,7 +13416,6 @@ In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
 We can then import the configuration like this:
 
 ```js title="./apps/web/eslint.config.js"
-import { nextJsConfig } from '@repo/eslint-config/next-js';
 
 /** @type {import("eslint").Linter.Config} */
 export default nextJsConfig;
@@ -12294,7 +13424,6 @@ export default nextJsConfig;
 Additionally, you can add configuration specific to the package like this:
 
 ```js title="./apps/web/eslint.config.js"
-import { nextJsConfig } from '@repo/eslint-config/next-js';
 
 /** @type {import("eslint").Linter.Config} */
 export default [
@@ -12359,8 +13488,8 @@ A configuration for Next.js may look like this:
 /* Custom ESLint configuration for use with Next.js apps. */
 module.exports = {
   extends: [
-    'eslint-config-turbo',
-    'eslint-config-next',
+    "eslint-config-turbo",
+    "eslint-config-next",
     // ...your other ESLint configurations
   ].map(require.resolve),
   // ...your other configuration
@@ -12435,7 +13564,7 @@ We can then import the config like this:
 ```js title="./apps/web/.eslintrc.js"
 module.exports = {
   root: true,
-  extends: ['@repo/eslint-config/next.js'],
+  extends: ["@repo/eslint-config/next.js"],
 };
 ```
 
@@ -12455,13 +13584,17 @@ The `package.json` for each package where you'd like to run ESLint should look l
 
 With your scripts prepared, you can then create your Turborepo task:
 
-```bash title="./turbo.json"
+```json title="./turbo.json"
 {
   "tasks": {
-    "lint": {}
+    "lint": {
+      "dependsOn": ["^lint"]
+    }
   }
 }
 ```
+
+Using `dependsOn` with `^lint` ensures that changes to dependencies like `@repo/eslint-config` will invalidate the cache for your `lint` task, even though the configuration package doesn't have a `lint` script itself.
 
 You can now run `turbo lint` with [global `turbo`](/docs/getting-started/installation#global-installation) or create a script in your root `package.json`:
 
@@ -12473,10 +13606,13 @@ You can now run `turbo lint` with [global `turbo`](/docs/getting-started/install
 }
 ```
 
+---
 
-- [Tools](/guides/tools/index.md): Learn how to use your favorite tools in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Cards, Card } from '#components/card';
+- [Tools](/docs/guides/tools): Learn how to use your favorite tools in a monorepo.
+
+# Tools
 
 Turborepo works with **all of your favorite tooling**. Below, you'll find guides for the most common tools being used with Turborepo.
 
@@ -12489,6 +13625,8 @@ Turborepo works with **all of your favorite tooling**. Below, you'll find guides
 
   <Card title="Jest" href="/docs/guides/tools/jest" />
 
+  <Card title="Oxc (oxlint, oxfmt)" href="/docs/guides/tools/oxc" />
+
   <Card title="Prisma" href="/docs/guides/tools/prisma" />
 
   <Card title="shadcn/ui" href="/docs/guides/tools/shadcn-ui" />
@@ -12500,13 +13638,20 @@ Turborepo works with **all of your favorite tooling**. Below, you'll find guides
   <Card title="Vitest" href="/docs/guides/tools/vitest" />
 </Cards>
 
+---
 
-- [Jest](/guides/tools/jest.md): Learn how to use Jest in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+- [Jest](/docs/guides/tools/jest): Learn how to use Jest in a Turborepo.
+
+# Jest
+
+<CopyPrompt
+  title="Set up Jest in a Turborepo"
+  prompt={
+  "Set up Jest in this Turborepo.\n1) Install Jest where needed\n2) Create test scripts\n3) Set up testing in turbo.json\n\nWalk me through each step."
+}
+/>
 
 [Jest](https://jestjs.io/) is a common test runner with a vast ecosystem. Integrating with Turborepo will lead to enormous speed-ups.
 
@@ -12554,7 +13699,8 @@ Install `jest` into the packages where you plan on having test suites. For this 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install jest --dev --filter=@repo/ui --filter=web
+    cd apps/web && bun install jest --dev
+    cd packages/ui && bun install jest --dev
     ```
   </Tab>
 </PackageManagerTabs>
@@ -12682,10 +13828,225 @@ You can now either run this task using [global `turbo`](/docs/getting-started/in
   </Tab>
 </Tabs>
 
+---
 
-- [Playwright](/guides/tools/playwright.md): Learn how to use Playwright in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { Tabs, Tab, PackageManagerTabs } from '#components/tabs';
+- [Oxc (oxlint and oxfmt)](/docs/guides/tools/oxc): Learn how to use oxlint and oxfmt in your Turborepo projects.
+
+# Oxc (oxlint and oxfmt)
+
+<CopyPrompt
+  title="Set up Oxc tools in a Turborepo"
+  prompt={
+  "Set up oxlint and oxfmt in this Turborepo.\n1) Install the tools\n2) Create scripts\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
+
+[Oxc](https://oxc.rs/) is a collection of high-performance JavaScript and TypeScript tools written in Rust, including [oxlint](https://oxc.rs/docs/guide/usage/linter) (a fast linter) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter) (a fast formatter).
+
+<CreateTurboCallout />
+
+## Using Oxc tools with Turborepo
+
+Similar to [Biome](/docs/guides/tools/biome), oxlint and oxfmt are **extraordinarily fast** tools. For this reason, we recommend using [Root Tasks](/docs/crafting-your-repository/configuring-tasks#registering-root-tasks) rather than creating separate scripts in each of your packages.
+
+<Callout type="info" title="Caching behavior">
+  Using oxlint or oxfmt at the root of the project will result in cache misses
+  for all tasks when you upgrade versions or change configuration. If you prefer
+  the tradeoff of higher cache hit ratios in these situations over less
+  configuration, you can still run these tools in separate scripts like the
+  other recommendations in our guides.
+</Callout>
+
+## Setting up oxlint
+
+### Install oxlint
+
+First, install oxlint in your repository:
+
+<PackageManagerTabs>
+  <Tab value="pnpm">
+    ```bash title="Terminal"
+    pnpm add --save-dev oxlint
+    ```
+  </Tab>
+
+  <Tab value="yarn">
+    ```bash title="Terminal"
+    yarn add --dev oxlint
+    ```
+  </Tab>
+
+  <Tab value="npm">
+    ```bash title="Terminal"
+    npm install --save-dev oxlint
+    ```
+  </Tab>
+
+  <Tab value="bun">
+    ```bash title="Terminal"
+    bun add --dev oxlint
+    ```
+  </Tab>
+</PackageManagerTabs>
+
+### Create scripts
+
+Add scripts to the root `package.json` of your repository:
+
+```json title="./package.json"
+{
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix ."
+  }
+}
+```
+
+### Create root tasks
+
+Register the scripts to Turborepo as [Root Tasks](/docs/crafting-your-repository/configuring-tasks#registering-root-tasks):
+
+```json title="./turbo.json"
+{
+  "tasks": {
+    "//#lint": {},
+    "//#lint:fix": {
+      "cache": false
+    }
+  }
+}
+```
+
+You can now run `turbo run lint` to lint your entire repository.
+
+## Setting up oxfmt
+
+oxfmt is a fast code formatter for JavaScript and TypeScript, designed to be a drop-in replacement for Prettier.
+
+<Callout type="warn" title="oxfmt is experimental">
+  oxfmt is currently in alpha and may not have full feature parity with
+  Prettier. Check the [oxfmt
+  documentation](https://oxc.rs/docs/guide/usage/formatter) for the latest
+  status and supported options.
+</Callout>
+
+### Install oxfmt
+
+Install oxfmt as a dev dependency:
+
+<PackageManagerTabs>
+  <Tab value="pnpm">
+    ```bash title="Terminal"
+    pnpm add --save-dev oxfmt
+    ```
+  </Tab>
+
+  <Tab value="yarn">
+    ```bash title="Terminal"
+    yarn add --dev oxfmt
+    ```
+  </Tab>
+
+  <Tab value="npm">
+    ```bash title="Terminal"
+    npm install --save-dev oxfmt
+    ```
+  </Tab>
+
+  <Tab value="bun">
+    ```bash title="Terminal"
+    bun add --dev oxfmt
+    ```
+  </Tab>
+</PackageManagerTabs>
+
+### Create scripts
+
+Add formatting scripts to the root `package.json`:
+
+```json title="./package.json"
+{
+  "scripts": {
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt ."
+  }
+}
+```
+
+### Create root tasks
+
+Register the scripts to Turborepo:
+
+```json title="./turbo.json"
+{
+  "tasks": {
+    "//#format": {},
+    "//#format:fix": {
+      "cache": false
+    }
+  }
+}
+```
+
+You can now run `turbo run format` to check formatting and `turbo run format:fix` to format your code.
+
+## Using oxlint and oxfmt together
+
+For repositories using both tools, you can orchestrate them with a unified quality task:
+
+```json title="./package.json"
+{
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt ."
+  }
+}
+```
+
+```json title="./turbo.json"
+{
+  "tasks": {
+    "//#quality": {
+      "dependsOn": ["//#lint", "//#format"]
+    },
+    "//#quality:fix": {
+      "dependsOn": ["//#lint:fix", "//#format:fix"]
+    },
+    "//#lint": {},
+    "//#lint:fix": {
+      "cache": false
+    },
+    "//#format": {},
+    "//#format:fix": {
+      "cache": false
+    }
+  }
+}
+```
+
+With this configuration:
+
+* Run `turbo run quality` to check both linting and formatting
+* Run `turbo run quality:fix` to fix both linting and formatting issues
+
+---
+
+[View full sitemap](/sitemap.md)
+
+- [Playwright](/docs/guides/tools/playwright): Learn how to use Playwright in a Turborepo.
+
+# Playwright
+
+<CopyPrompt
+  title="Set up Playwright in a Turborepo"
+  prompt={
+  "Set up Playwright end-to-end testing in this Turborepo.\n1) Create a Playwright package\n2) Configure dependencies for proper cache invalidation\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
 
 [Playwright](https://playwright.dev/) enables reliable end-to-end testing for modern web apps.
 
@@ -12814,17 +14175,24 @@ You can also create a common package for shared utilities that you need in your 
   </Tab>
 </PackageManagerTabs>
 
+---
 
-- [Prisma](/guides/tools/prisma.md): Learn how to use Prisma in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+- [Prisma](/docs/guides/tools/prisma): Learn how to use Prisma in a Turborepo.
+
+# Prisma
+
+<CopyPrompt
+  title="Set up Prisma in a Turborepo"
+  prompt={
+  "Set up Prisma in this Turborepo.\n1) Create a database package\n2) Configure the Prisma client\n3) Set up scripts for migrations and generation\n\nWalk me through each step."
+}
+/>
 
 [Prisma](https://www.prisma.io/) unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety & auto-completion.
 
-[Their official guide](https://www.prisma.io/docs/guides/using-prisma-orm-with-turborepo#1-create-your-monorepo-using-turborepo) describes how to integrate Prisma into a Turborepo, including:
+[Their official guide](https://www.prisma.io/docs/guides/turborepo) describes how to integrate Prisma into a Turborepo, including:
 
 * Prisma client initialization
 * Packaging the client as an [Internal Package](/docs/core-concepts/internal-packages)
@@ -12840,10 +14208,20 @@ To get started with our community-supported Prisma example, run:
 npx create-turbo@latest -e with-prisma
 ```
 
+---
 
-- [shadcn/ui](/guides/tools/shadcn-ui.md): Learn how to use shadcn/ui in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+- [shadcn/ui](/docs/guides/tools/shadcn-ui): Learn how to use shadcn/ui in a Turborepo.
+
+# shadcn/ui
+
+<CopyPrompt
+  title="Set up shadcn/ui in a Turborepo"
+  prompt={
+  "Set up shadcn/ui in this Turborepo.\n1) Initialize shadcn/ui for monorepos\n2) Add components to the UI package\n3) Use components in applications\n\nWalk me through each step."
+}
+/>
 
 [shadcn/ui](https://ui.shadcn.com/docs/monorepo) is an open-source set of beautifully designed components made with Tailwind CSS that you can copy and paste into your apps.
 
@@ -12909,12 +14287,20 @@ To add a component, run:
 
 To learn more about using shadcn/ui in Turborepo, [visit the docs for shadcn/ui](https://ui.shadcn.com/docs/monorepo).
 
+---
 
-- [Storybook](/guides/tools/storybook.md): Learn how to use Storybook in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
+- [Storybook](/docs/guides/tools/storybook): Learn how to use Storybook in a Turborepo.
+
+# Storybook
+
+<CopyPrompt
+  title="Set up Storybook in a Turborepo"
+  prompt={
+  "Set up Storybook in this Turborepo.\n1) Create a Storybook app\n2) Connect it to the UI package\n3) Set up turbo.json tasks\n\nWalk me through each step."
+}
+/>
 
 [Storybook](https://storybook.js.org/) is a popular way to build UI components in an isolated environment. By putting Storybook into your Turborepo, you can easily develop your design system right alongside your applications.
 
@@ -13027,7 +14413,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     Follow the prompts to create an application. For the rest of this guide, we'll assume React and TypeScript.
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       After going through Storybook's onboarding, you can [uninstall the onboarding
       addon](https://github.com/storybookjs/addon-onboarding/blob/main/README.md).
     </Callout>
@@ -13059,7 +14445,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @repo/ui --filter=storybook
+        cd apps/storybook && bun install @repo/ui
         ```
       </Tab>
     </PackageManagerTabs>
@@ -13073,13 +14459,13 @@ If you'd rather use a template, this guide is walking through how to build [this
     As an example, here is a story for the `Button` component from `@repo/ui/button`.
 
     ```tsx title="./apps/storybook/src/stories/Button.stories.tsx"
-    import type { Meta, StoryObj } from '@storybook/react';
-    import { Button } from '@repo/ui/button';
+    import type { Meta, StoryObj } from "@storybook/react";
+    import { Button } from "@repo/ui/button";
 
     const meta = {
-      title: 'Example/Button',
+      title: "Example/Button",
       component: Button,
-      tags: ['autodocs'],
+      tags: ["autodocs"],
     } satisfies Meta<typeof Button>;
 
     export default meta;
@@ -13087,8 +14473,8 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     export const Primary: Story = {
       args: {
-        appName: 'Button',
-        children: 'I am a primary button.',
+        appName: "Button",
+        children: "I am a primary button.",
       },
     };
     ```
@@ -13181,7 +14567,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
     + import { Button } from "./button";
     ```
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       You may also need to update [absolute
       imports](/docs/guides/tools/typescript#use-nodejs-subpath-imports-instead-of-typescript-compiler-paths)
       according to your changes and usage.
@@ -13210,7 +14596,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @storybook/react --filter=@repo/ui --save-dev
+        cd packages/ui && bun install @storybook/react --dev
         ```
       </Tab>
     </PackageManagerTabs>
@@ -13250,7 +14636,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
     }
     ```
 
-    <Callout type="good-to-know">
+    <Callout type="info">
       If you are using the [Compiled Package
       pattern](/docs/core-concepts/internal-packages#compiled-packages), you may
       also need to add `^build` to your `dependsOn`.
@@ -13290,12 +14676,20 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 
 If your UI package exports its own CSS, you'll need to add it to the renders in the Storybook app, similar to how you would add it to your applications. [The Storybook documentation](https://storybook.js.org/docs/configure/styling-and-css#css) recommends you add it to the `.storybook/preview.ts` file.
 
+---
 
-- [Tailwind CSS](/guides/tools/tailwind.md): Learn how to use Tailwind CSS in a Turborepo.
+[View full sitemap](/sitemap.md)
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
+- [Tailwind CSS](/docs/guides/tools/tailwind): Learn how to use Tailwind CSS in a Turborepo.
+
+# Tailwind CSS
+
+<CopyPrompt
+  title="Set up Tailwind CSS in a Turborepo"
+  prompt={
+  "Set up Tailwind CSS in this Turborepo.\n1) Create a shared Tailwind config package\n2) Configure the UI package to use it\n3) Set up applications to use the styles\n\nWalk me through each step."
+}
+/>
 
 [Tailwind CSS](https://tailwindcss.com/) is a CSS framework that allows you to rapidly build modern websites without ever leaving your HTML.
 
@@ -13331,7 +14725,9 @@ If you'd rather use a template, this guide is walking through how to build [this
 
 ## Guide
 
-<Callout type="info">This guide is for Tailwind CSS v4.</Callout>
+<Callout type="info">
+  This guide is for Tailwind CSS v4.
+</Callout>
 
 <Steps>
   <Step>
@@ -13377,7 +14773,7 @@ If you'd rather use a template, this guide is walking through how to build [this
   <Step>
     ### Create a shared Tailwind CSS configuration package
 
-    First, build an [Internal Package](https://turborepo.com/docs/core-concepts/internal-packages) with four files:
+    First, build an [Internal Package](https://turborepo.dev/docs/core-concepts/internal-packages) with four files:
 
     <Tabs items={["package.json", "shared-styles.css", "postcss.config.js (Optional)"]}>
       <Tab value="package.json">
@@ -13405,7 +14801,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         This `shared-styles.css` file will be shared to the libraries and applications in the repository. The variables shown will be available anywhere that the file is included.
 
         ```css title="./packages/tailwind-config/shared-styles.css"
-        @import 'tailwindcss';
+        @import "tailwindcss";
 
         @theme {
           --blue-1000: #2a8af6;
@@ -13421,7 +14817,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         ```js title="./packages/tailwind-config/postcss.config.js"
         export const postcssConfig = {
           plugins: {
-            '@tailwindcss/postcss': {},
+            "@tailwindcss/postcss": {},
           },
         };
         ```
@@ -13462,7 +14858,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         }
         ```
 
-        <Callout type="good-to-know">
+        <Callout type="info">
           Above, we've only included the code related to setting up Tailwind. The full
           package.json is
           [here](https://github.com/vercel/turborepo/tree/main/examples/with-tailwind/packages/ui/package.json).
@@ -13506,7 +14902,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
         ```css title="./packages/ui/src/styles.css"
         /* Component-level styles for the UI package */
-        @import 'tailwindcss' prefix(ui);
+        @import "tailwindcss" prefix(ui);
         ```
 
         <Callout type="info">
@@ -13544,7 +14940,8 @@ If you'd rather use a template, this guide is walking through how to build [this
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @repo/ui @repo/tailwind-config --dev --filter=@repo/ui --filter=web
+        cd apps/web && bun install @repo/ui @repo/tailwind-config --dev
+        cd packages/ui && bun install @repo/ui @repo/tailwind-config --dev
         ```
       </Tab>
     </PackageManagerTabs>
@@ -13554,21 +14951,21 @@ If you'd rather use a template, this guide is walking through how to build [this
     <Tabs items={["globals.css", "layout.tsx", "postcss.config.js (Optional)"]}>
       <Tab value="globals.css">
         ```css title="./apps/web/app/globals.css"
-        @import 'tailwindcss';
-        @import '@repo/tailwind-config';
+        @import "tailwindcss";
+        @import "@repo/tailwind-config";
         ```
       </Tab>
 
       <Tab value="layout.tsx">
         ```tsx title="./apps/web/app/layout.tsx"
-        import '@repo/ui/styles.css';
-        import './globals.css';
+        import "@repo/ui/styles.css";
+        import "./globals.css";
         ```
       </Tab>
 
       <Tab value="postcss.config.js (Optional)">
         ```js title="./apps/web/postcss.config.js"
-        import { postcssConfig } from '@repo/tailwind-config/postcss';
+        import { postcssConfig } from "@repo/tailwind-config/postcss";
 
         export default postcssConfig;
         ```
@@ -13577,13 +14974,20 @@ If you'd rather use a template, this guide is walking through how to build [this
   </Step>
 </Steps>
 
+---
 
-- [TypeScript](/guides/tools/typescript.md): Learn how to use TypeScript in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
-import { LinkToDocumentation } from '#components/link-to-documentation';
+- [TypeScript](/docs/guides/tools/typescript): Learn how to use TypeScript in a monorepo.
+
+# TypeScript
+
+<CopyPrompt
+  title="Set up TypeScript in a Turborepo"
+  prompt={
+  "Set up TypeScript in this Turborepo.\n1) Create a shared TypeScript config package\n2) Configure packages to use the shared config\n3) Set up type checking in turbo.json\n\nWalk me through each step."
+}
+/>
 
 TypeScript is an excellent tool in monorepos, allowing teams to safely add types to their JavaScript code. While there is some complexity to getting set up, this guide will walk you through the important parts of a TypeScript setup for most use cases.
 
@@ -13652,9 +15056,7 @@ Inside `packages/typescript-config`, you have a few `json` files which represent
 }
 ```
 
-<LinkToDocumentation href="https://www.typescriptlang.org/tsconfig">
-  `tsconfig` options reference
-</LinkToDocumentation>
+<LinkToDocumentation href="https://www.typescriptlang.org/tsconfig" text="tsconfig options reference" />
 
 ### Creating the rest of the package
 
@@ -13680,7 +15082,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "workspace:*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -13691,7 +15093,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -13702,7 +15104,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -13713,7 +15115,7 @@ First, install the `@repo/typescript-config` package into your package:
     {
       "devDependencies": {
          "@repo/typescript-config": "workspace:*",
-         "typescript": "latest",
+         "typescript": "latest"
       }
     }
     ```
@@ -13838,11 +15240,11 @@ With these two files in place, your editor will now navigate to the original sou
 
 ### Use Node.js subpath imports instead of TypeScript compiler `paths`
 
-It's possible to create absolute imports in your packages using [the TypeScript compiler's `paths` option](https://www.typescriptlang.org/tsconfig#paths), but these paths can cause failed compilation when using [Just-in-Time Packages](https://turborepo.com/docs/core-concepts/internal-packages#just-in-time-packages). [As of TypeScript 5.4](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/#auto-import-support-for-subpath-imports), you can use [Node.js subpath imports](https://nodejs.org/api/packages.html#imports) instead for a more robust solution.
+It's possible to create absolute imports in your packages using [the TypeScript compiler's `paths` option](https://www.typescriptlang.org/tsconfig#paths), but these paths can cause failed compilation when using [Just-in-Time Packages](https://turborepo.dev/docs/core-concepts/internal-packages#just-in-time-packages). [As of TypeScript 5.4](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4/#auto-import-support-for-subpath-imports), you can use [Node.js subpath imports](https://nodejs.org/api/packages.html#imports) instead for a more robust solution.
 
 #### Just-in-Time Packages
 
-In [Just-in-Time packages](https://turborepo.com/docs/core-concepts/internal-packages#just-in-time-packages), `imports` must target the source code in the package, since build outputs like `dist` won't be created.
+In [Just-in-Time packages](https://turborepo.dev/docs/core-concepts/internal-packages#just-in-time-packages), `imports` must target the source code in the package, since build outputs like `dist` won't be created.
 
 <Tabs storageKey="ts-imports-jit" items={["package.json", "Source code"]}>
   <Tab value="package.json">
@@ -13870,7 +15272,7 @@ In [Just-in-Time packages](https://turborepo.com/docs/core-concepts/internal-pac
 
 #### Compiled Packages
 
-In [Compiled packages](https://turborepo.com/docs/core-concepts/internal-packages#compiled-packages), `imports` target the built outputs for the package.
+In [Compiled packages](https://turborepo.dev/docs/core-concepts/internal-packages#compiled-packages), `imports` target the built outputs for the package.
 
 <Tabs storageKey="ts-imports-compiled" items={["package.json", "Source code"]}>
   <Tab value="package.json">
@@ -13885,7 +15287,7 @@ In [Compiled packages](https://turborepo.com/docs/core-concepts/internal-package
 
   <Tab value="Source code">
     ```tsx title="./packages/ui/button.tsx"
-    import { MY_STRING } from '#utils.js'; // Uses .js extension // [!code highlight]
+    import { MY_STRING } from "#utils.js"; // Uses .js extension // [!code highlight]
 
     export const Button = () => {
       return <button>{MY_STRING}</button>;
@@ -13914,20 +15316,30 @@ We don't recommend using TypeScript Project References as they introduce both an
 
 This can result in differences between the linting errors that show in your editor and when you run `tsc` scripts to check types. If this is an issue for you, consider [keeping the TypeScript dependency on the same version](/docs/crafting-your-repository/managing-dependencies#keeping-dependencies-on-the-same-version).
 
+---
 
-- [Vitest](/guides/tools/vitest.md): Learn how to use Vitest in a monorepo.
+[View full sitemap](/sitemap.md)
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
-import { Tab, Tabs } from '#components/tabs';
+- [Vitest](/docs/guides/tools/vitest): Learn how to use Vitest in a monorepo.
+
+# Vitest
+
+<CopyPrompt
+  title="Set up Vitest in a Turborepo"
+  prompt={
+  "Set up Vitest in this Turborepo.\n1) Install Vitest where needed\n2) Create test scripts\n3) Set up testing in turbo.json\n\nWalk me through each step."
+}
+/>
 
 [Vitest](https://vitest.dev/) is a test runner from the Vite ecosystem. Integrating it with Turborepo will lead to enormous speed-ups.
 
 [The Vitest documentation](https://vitest.dev/guide/workspace) shows how to create a "Vitest Projects" configuration that runs all tests in the monorepo from one root command, enabling behavior like merged coverage reports out-of-the-box. This feature doesn't follow modern best practices for monorepos, since its designed for compatibility with Jest (whose Workspace feature was built before [package manager Workspaces](/docs/crafting-your-repository/structuring-a-repository)).
 
-<Callout type="warning">
-  Vitest has deprecated workspaces in favor of projects. When using projects, individual project vitest configs can't extend the root config anymore since they would inherit the projects configuration. Instead, a separate shared file like `vitest.shared.ts` is needed.
+<Callout type="warn">
+  Vitest has deprecated workspaces in favor of projects. When using projects,
+  individual project vitest configs can't extend the root config anymore since
+  they would inherit the projects configuration. Instead, a separate shared file
+  like `vitest.shared.ts` is needed.
 </Callout>
 
 Because of this you have two options, each with their own tradeoffs:
@@ -13939,7 +15351,7 @@ Because of this you have two options, each with their own tradeoffs:
 
 To improve on cache hit rates and only run tests with changes, you can choose to configure tasks per-package, splitting up the Vitest command into separate, cacheable scripts in each package. This speed comes with the tradeoff that you'll need to create merged coverage reports yourself.
 
-<Callout>
+<Callout type="info">
   For a complete example, run `npx create-turbo@latest --example with-vitest` or
   [visit the example's source
   code](https://github.com/vercel/turborepo/tree/main/examples/with-vitest).
@@ -13999,7 +15411,7 @@ When you run your test suite in CI, it logs results and eventually exits upon co
 
 Because of this difference, we recommend specifying **two separate Turborepo tasks**: one for running your tests, and one for running them in watch mode.
 
-<Callout>
+<Callout type="info">
   This strategy below creates two tasks, one for local development and one for
   CI. You could choose to make the `test` task for local development and create
   some `test:ci` task instead.
@@ -14080,7 +15492,7 @@ Turborepo tasks to accomplish will look like:
     "test": {
       "dependsOn": ["^test", "@repo/vitest-config#build"],
       "outputs": ["coverage.json"]
-    }
+    },
     "merge-json-reports": {
       "inputs": ["coverage/raw/**"],
       "outputs": ["coverage/merged/**"]
@@ -14089,7 +15501,7 @@ Turborepo tasks to accomplish will look like:
       "dependsOn": ["merge-json-reports"],
       "inputs": ["coverage/merge"],
       "outputs": ["coverage/report/**"]
-    },
+    }
   }
 }
 ```
@@ -14169,31 +15581,29 @@ First, create a shared configuration package since individual projects can't ext
 export const sharedConfig = {
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
     // Other shared configuration
-  }
+  },
 };
 ```
 
 Then, create your root Vitest configuration using projects:
 
 ```ts title="./vitest.config.ts"
-import { defineConfig } from 'vitest/config';
-import { sharedConfig } from '@repo/vitest-config';
 
 export default defineConfig({
   ...sharedConfig,
   projects: [
     {
-      name: 'packages',
-      root: './packages/*',
+      name: "packages",
+      root: "./packages/*",
       test: {
         ...sharedConfig.test,
         // Project-specific configuration
-      }
-    }
-  ]
+      },
+    },
+  ],
 });
 ```
 
@@ -14215,15 +15625,13 @@ In this setup, your packages maintain their individual Vitest configurations tha
 Then create the Vitest configuration:
 
 ```ts title="./packages/ui/vitest.config.ts"
-import { defineConfig } from 'vitest/config';
-import { sharedConfig } from '@repo/vitest-config';
 
 export default defineConfig({
   ...sharedConfig,
   test: {
     ...sharedConfig.test,
     // Package-specific overrides if needed
-  }
+  },
 });
 ```
 
@@ -14259,3 +15667,7 @@ While your root `package.json` includes scripts for running tests globally:
 ```
 
 This configuration allows developers to run `pnpm test:projects` or `pnpm test:projects:watch` at the root for a seamless local development experience using Vitest projects, while CI continues to use `turbo run test` to leverage package-level caching. **You'll still need to handle merged coverage reports manually as described in the previous section**.
+
+---
+
+[View full sitemap](/sitemap.md)

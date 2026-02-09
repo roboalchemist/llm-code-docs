@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/api-refence/queues/pause-queue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pause Queue
 
 > Pause a queue to stop the delivery of enqueued messages
@@ -95,7 +99,3 @@ components:
       description: QStash authentication token passed as a query parameter
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

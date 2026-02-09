@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/api.md
 
-# Source: https://docs.convex.dev/generated-api/api.md
-
-# Source: https://docs.convex.dev/api.md
-
 # Convex
 
 TypeScript backend SDK, client libraries, and CLI for Convex.

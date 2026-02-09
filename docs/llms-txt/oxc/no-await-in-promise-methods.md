@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-await-in-promise-methods.md
 ---
-# unicorn/no-await-in-promise-methods&#x20;
 
 ### What it does
 

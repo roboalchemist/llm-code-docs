@@ -1,9 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/websets/exports/schedule-an-export.md
+# Source: https://exa.ai/docs/websets/api/websets/exports/schedule-an-export.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # null
 
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

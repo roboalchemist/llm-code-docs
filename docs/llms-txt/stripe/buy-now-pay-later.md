@@ -27,8 +27,12 @@ You can manually list buy now, pay later payment methods if you build your own p
 
 ## Payments
 
-At checkout, the customer chooses to pay with a buy now, pay later service. Then the customer creates or logs into an account with the buy now, pay later provider. Next, the customer accepts or declines the terms of the repayment plan, and then returns to the business’ site.
-![](https://b.stripecdn.com/docs-statics-srv/assets/payment_flow.09ed159dfe639622d54b186cc7973db6.svg)
+In the buy now, pay later checkout process, the customer:
+
+1. Chooses to pay by installments with a buy now, pay later service.
+1. Creates or logs into an account with the buy now, pay later provider.
+1. Accepts or declines the terms of the repayment plan.
+1. Returns to the business’ site.
 
 ## Product support
 

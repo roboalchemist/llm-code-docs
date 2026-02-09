@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun supports building and deploying applications written in Elixir. There is no default flavor for the build phase, but you can define it explicitly in your build hook. Upsun Elixir images support both committed dependencies and download-on-demand. The underlying Erlang version is 22.0.7.
 
@@ -20,8 +20,6 @@ When you deploy your app, you always get the latest available patches.
    - 1.18
 
    - 1.15
-
-   - 1.14
 
 ### Specify the language
 
@@ -162,6 +160,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
 
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
+
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 
 - [Network Storage](https://docs.upsun.com/add-services/network-storage.md#usage-example)
@@ -188,7 +188,7 @@ Consult each of the individual service documentation to see how to retrieve and 
 
 The services configuration is available in the environment variable `PLATFORM_RELATIONSHIPS`.
 
-Given a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) defined in `.upsun/config.yaml`:
+Given a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md) defined in `.upsun/config.yaml`:
 
 ```yaml  {location=".upsun/config.yaml"}
 applications:

@@ -12,7 +12,7 @@ Convex functions use async / await. If you don't await all your promises (e.g. `
 
 ### How?[​](#how "Direct link to How?")
 
-We recommend the [no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises/) eslint rule with TypeScript.
+We recommend the [no-floating-promises](https://typescript-eslint.io/rules/no-floating-promises/) rule of typescript-eslint.
 
 ## Avoid `.filter` on database queries[​](#avoid-filter-on-database-queries "Direct link to avoid-filter-on-database-queries")
 
@@ -206,37 +206,53 @@ Public functions can be called by anyone, including potentially malicious attack
 
 ### Example[​](#example-1 "Direct link to Example")
 
-convex/messages.ts
+convex/movies.ts
 
 TS
 
 ```
-// ❌ -- could be used to update any document (not just `messages`)
-export const updateMessage = mutation({
-  handler: async (ctx, { id, update }) => {
-    await ctx.db.patch(id, update);
+// ❌ -- `id` and `update` are not validated, so a client could pass
+//       any Convex value (the type at runtime could mismatch the
+//       TypeScript type). In particular, `update` could contain
+//       fields other than `title` and `director`.
+export const updateMovie = mutation({
+  handler: async (
+    ctx,
+    {
+      id,
+      update,
+    }: {
+      id: Id<"movies">;
+      update: Pick<Doc<"movies">, "title" | "director">;
+    },
+  ) => {
+    await ctx.db.patch("movies", id, update);
   },
 });
 
-// ✅ -- can only be called with an ID from the messages table, and can only update
-// the `body` and `author` fields
-export const updateMessage = mutation({
+// ✅ -- This can only be called with an ID from the movies table,
+//       and an `update` object with only the `title`/`director` fields
+export const updateMovie = mutation({
   args: {
-    id: v.id("messages"),
+    id: v.id("movies"),
     update: v.object({
-      body: v.optional(v.string()),
-      author: v.optional(v.string()),
+      title: v.string(),
+      director: v.string(),
     }),
   },
   handler: async (ctx, { id, update }) => {
-    await ctx.db.patch(id, update);
+    await ctx.db.patch("movies", id, update);
   },
 });
 ```
 
 ### How?[​](#how-4 "Direct link to How?")
 
-Search for `query`, `mutation`, and `action` in your Convex codebase, and ensure that all of them have argument validators (and optionally return value validators). If you have `httpAction`s, you may want to use something like `zod` to validate that the HTTP request is the shape you expect.
+Search for `query`, `mutation`, and `action` in your Convex codebase, and ensure that all of them have argument validators (and optionally return value validators).
+
+You can also check automatically that your functions have argument validators with the [`@convex-dev/require-argument-validators` ESLint rule](/eslint.md#require-argument-validators).
+
+If you use HTTP actions, you may want to use an argument validation library like [Zod](https://zod.dev) to validate that the HTTP request is the shape you expect.
 
 ## Use some form of access control for all public functions[​](#use-some-form-of-access-control-for-all-public-functions "Direct link to Use some form of access control for all public functions")
 
@@ -864,3 +880,84 @@ export const trySendMessage = mutation({
   },
 });
 ```
+
+## Always include the table name when calling `ctx.db` functions[​](#always-include-the-table-name-when-calling-ctxdb-functions "Direct link to always-include-the-table-name-when-calling-ctxdb-functions")
+
+### Why?[​](#why-11 "Direct link to Why?")
+
+Since version 1.31.0 of the `convex` NPM package, the `ctx.db` functions accept a table name as the first argument. While this first argument is currently optional, passing the table name adds an additional safeguard which will be required for custom ID generation in the future.
+
+### Example[​](#example-5 "Direct link to Example")
+
+convex/movies.ts
+
+TS
+
+```
+// ❌
+await ctx.db.get(movieId);
+await ctx.db.patch(movieId, { title: "Whiplash" });
+await ctx.db.replace(movieId, {
+  title: "Whiplash",
+  director: "Damien Chazelle",
+  votes: 0,
+});
+await ctx.db.delete(movieId);
+
+// ✅            vvvvvvvv
+await ctx.db.get("movies", movieId);
+await ctx.db.patch("movies", movieId, { title: "Whiplash" });
+await ctx.db.replace("movies", movieId, {
+  title: "Whiplash",
+  director: "Damien Chazelle",
+  votes: 0,
+});
+await ctx.db.delete("movies", movieId);
+```
+
+### How?[​](#how-10 "Direct link to How?")
+
+Search for calls of `db.get`, `db.patch`, `db.replace` and `db.delete` in your Convex codebase, and ensure that all of them pass a table name as the first argument.
+
+You can also check automatically that a table name argument is passed with the [`@convex-dev/explicit-table-ids` ESLint rule](/eslint.md#explicit-table-ids).
+
+You can migrate existing code automatically by using the autofix in the ESLint rule, or with the `@convex-dev/codemod` standalone tool.
+
+[Learn more on news.convex.dev →](https://news.convex.dev/db-table-name/)
+
+## Don’t use `Date.now()` in queries[​](#date-in-queries "Direct link to date-in-queries")
+
+### Why?[​](#why-12 "Direct link to Why?")
+
+When you subscribe to a query, Convex [will automatically run it again](/realtime.md) if the data that it accesses in the database change. The query is not re-run when `Date.now()` changes, because it wouldn’t be desirable to re-run a query every millisecond. So, if your query depends on the current time, it might return stale results.
+
+Also, using `Date.now()` in a query can cause the Convex query cache to be invalidated more frequently than necessary. In general, Convex will automatically re-use Convex query results if the query is called with the same arguments. However, when using `Date.now()` in a query, the query cache will be invalidated frequently in order to avoid showing results that are too old. This will unnecessarily increase the work that the database has to do.
+
+### Example[​](#example-6 "Direct link to Example")
+
+convex/posts.ts
+
+TS
+
+```
+// ❌
+const releasedPosts = await ctx.db
+  .query("posts")
+  .withIndex("by_released_at", (q) => q.lte("releasedAt", Date.now()))
+  .take(100);
+
+// ✅
+const releasedPosts = await ctx.db
+  .query("posts")
+  // `isReleased` is set to `true` by a scheduled function after `releasedAt` is reached
+  .withIndex("by_is_released", (q) => q.eq("isReleased", true))
+  .take(100);
+```
+
+### How?[​](#how-11 "Direct link to How?")
+
+Search for usages of `Date.now()` in your Convex queries, or in functions that are called from a Convex query.
+
+If you want to compare the current time with a timestamp stored in a database document, consider adding a coarser field to the document that you update from a [scheduled function](/scheduling/scheduled-functions.md) (see the example above). This way, the query cache is only invalidated explicitly when data changes.
+
+Alternatively, you can pass in the target time in as an explicit argument from the client. For best caching results, the client should avoid changing this argument frequently, for instance by rounding the time down to the most recent minute, so all client requests within that minute use the same arguments.

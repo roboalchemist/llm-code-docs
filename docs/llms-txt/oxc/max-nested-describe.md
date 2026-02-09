@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/max-nested-describe.md
 ---
-# jest/max-nested-describe&#x20;
 
 ### What it does
 
@@ -13,7 +12,7 @@ This rule enforces a maximum depth to nested `describe()` calls.
 
 Nesting `describe()` blocks too deeply can make the test suite hard to read and understand.
 
-### Example
+### Examples
 
 The following patterns are considered warnings (with the default option of
 `{ "max": 5 } `):

@@ -1,10 +1,18 @@
-# Source: https://docs.perplexity.ai/guides/sec-guide.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/filters/sec-guide.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SEC Filings Filter Guide
 
 <Note>
   The `search_mode: "sec"` parameter allows you to tailor your searches specifically to U.S. Securities and Exchange Commission (SEC) filings, prioritizing official financial documents, disclosures, and regulatory filings from public companies.
 </Note>
+
+<Info>
+  The `search_mode: "sec"` feature is currently only available in the Chat Completions API. For the Agentic Research API, use domain filters to target SEC sources (e.g., `sec.gov`).
+</Info>
 
 ## Overview
 

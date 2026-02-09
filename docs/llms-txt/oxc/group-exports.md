@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/group-exports.md
 ---
-# import/group-exports&#x20;
 
 ### What it does
 

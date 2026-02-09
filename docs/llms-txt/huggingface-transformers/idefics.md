@@ -1,10 +1,6 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/idefics.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/idefics.md
 
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/idefics.md
-
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/idefics.md
-
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/idefics.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/idefics.md
 
 # Image tasks with IDEFICS
 
@@ -55,7 +51,7 @@ Let's start by loading the model's 9 billion parameters checkpoint:
 ```
 
 Just like for other Transformers models, you need to load a processor and the model itself from the checkpoint.
-The IDEFICS processor wraps a [LlamaTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/llama2#transformers.LlamaTokenizer) and IDEFICS image processor into a single processor to take care of
+The IDEFICS processor wraps a [LlamaTokenizer](/docs/transformers/v5.0.0/en/model_doc/llama2#transformers.LlamaTokenizer) and IDEFICS image processor into a single processor to take care of
 preparing text and image inputs for the model.
 
 ```py

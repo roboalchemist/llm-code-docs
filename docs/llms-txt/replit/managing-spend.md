@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/managing-spend.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Your Spend
 
 > Control AI costs and monitor spending with usage alerts, budgets, Plan Mode, and autonomy settings. Learn strategies to optimize your Replit usage and reduce unnecessary token consumption.
@@ -94,10 +98,6 @@ Consider using [lower autonomy settings](/replitai/autonomy-level) when working 
 
 If you're on a Core or Teams plan and need additional credits beyond your monthly subscription allowance, you can purchase credit packs directly from your billing page. Credit packs have discounts when you buy larger amounts, making them ideal for covering temporary usage spikes or preparing for larger projects.
 
-<Note>
-  Credit packs are gradually rolling out to customers, so you may not have access yet. If you have any questions, you can [contact our Support team](https://replit.com/help).
-</Note>
-
 ### Available credit packs
 
 Credit packs are available in four sizes, with increasing discounts on larger purchases:
@@ -107,7 +107,7 @@ Credit packs are available in four sizes, with increasing discounts on larger pu
 ### How credit packs work
 
 * **Purchase location**: Available on your billing page for Core and Teams plan customers
-* **Expiration**: Credit packs expire three months after the purchase date
+* **Expiration**: Credit packs expire six months after the purchase date
 * **No renewal**: Credit packs do not automatically renew
 * **No rollover**: Unused credits from a pack do not roll over after expiration
 * **Automatic usage**: Credits are automatically used from the credit pack that expires earliest first, helping you maximize the value of your purchases
@@ -141,10 +141,6 @@ For organizations, you can set your usage budget from the [settings page](https:
 ### Organization admin controls
 
 Organization admins can manage AI model access and integrations from the [organization billing settings](https://replit.com/t/replit/settings/billing).
-
-**Disable Agent high-power model**
-
-Enable this setting to block all users in the organization from using higher power models.
 
 **Disable external AI model integrations**
 

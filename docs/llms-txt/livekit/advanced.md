@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/advanced.md
 
-# Source: https://docs.livekit.io/home/client/tracks/advanced.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Codecs & more
+LiveKit docs › Media › Codecs & more
 
 ---
 
@@ -374,7 +372,7 @@ coroutineScope.launch {
 
 ---
 
-This document was rendered at 2025-11-18T23:54:51.418Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/advanced.md](https://docs.livekit.io/home/client/tracks/advanced.md).
+This document was rendered at 2026-02-03T03:25:16.669Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/advanced.md](https://docs.livekit.io/transport/media/advanced.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

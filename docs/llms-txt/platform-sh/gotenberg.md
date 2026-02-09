@@ -7,7 +7,7 @@ For more information, see the [Gotenberg documentation](https://gotenberg.dev/do
 
 ## Supported versions
 
-- 8
+   - 8
 
 You can select the major version. But the latest compatible minor version is applied automatically and can’t be overridden.
 
@@ -108,7 +108,7 @@ You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so lo
 and matches in both the application and services configuration.
 
 With the above definition, Upsun uses the `http` endpoint,
-providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) (the network address a service is accessible from) that is identical to the _name_ of that service.
+providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md) (the network address a service is accessible from) that is identical to the _name_ of that service.
 
 The `http` endpoint uses port `3000` by default.
 

@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/4point-Hoops.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/4point-Hoops.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # 4Point Hoops | AI Basketball Analytics Platform
 

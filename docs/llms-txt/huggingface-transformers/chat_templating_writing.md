@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/chat_templating_writing.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/chat_templating_writing.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/chat_templating_writing.md
 
 # Writing a chat template
 
@@ -21,8 +19,8 @@ If you stare at this for a while, you should realize that this is actually very 
 the message, followed by an end-of-sequence token. If `add_generation_prompt=True`, it adds
 the starting header for an assistant message to the end of the conversation.
 
-Load the written template as a string and assign it to the tokenizer's `chat_template` attribute. Once set, the template is used whenever you call [apply_chat_template()](/docs/transformers/v4.57.3/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template). It is also saved
-with the tokenizer whenever [save_pretrained()](/docs/transformers/v4.57.3/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained) or [push_to_hub()](/docs/transformers/v4.57.3/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) is called. The template is saved in the `chat_template.jinja` file in the tokenizer directory. You can
+Load the written template as a string and assign it to the tokenizer's `chat_template` attribute. Once set, the template is used whenever you call [apply_chat_template()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template). It is also saved
+with the tokenizer whenever [save_pretrained()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained) or [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) is called. The template is saved in the `chat_template.jinja` file in the tokenizer directory. You can
 edit this file directly to change the template, which is often easier than manipulating a template string.
 
 ## Template writing tips
@@ -96,7 +94,7 @@ We strongly recommend using `-` to ensure only the intended content is printed.
 ### Special variables and callables
 
 The only constants in a template are the `messages` variable and the `add_generation_prompt` boolean. However, you have
-access to **any other keyword arguments that are passed** to the [apply_chat_template()](/docs/transformers/v4.57.3/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template) method.
+access to **any other keyword arguments that are passed** to the [apply_chat_template()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template) method.
 
 This provides flexibility and enables support for use-cases we may not have thought of while designing the spec. The most common additional variable is `tools`, which contains a list of tools in JSON schema format. Although you can use any variable name you like, we highly recommend sticking to convention and using `tools` for this purpose. This makes templates more compatible with the standard API.
 
@@ -245,7 +243,7 @@ Some templates may not even need the `name` key, in which case, you can write yo
 
 ## Contribute
 
-Once a template is ready, set it to the `chat_template` attribute in the tokenizer and test it with [apply_chat_template()](/docs/transformers/v4.57.3/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template). If it works as expected, then upload it to the Hub with [push_to_hub()](/docs/transformers/v4.57.3/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub).
+Once a template is ready, set it to the `chat_template` attribute in the tokenizer and test it with [apply_chat_template()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.apply_chat_template). If it works as expected, then upload it to the Hub with [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub).
 
 Even if you're not the model owner, it is still helpful to add a template for a model with an empty or incorrect chat template. Open a [pull request](https://hf.co/docs/hub/repositories-pull-requests-discussions) on the model repository to add the template!
 

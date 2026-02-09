@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/secret-rotation/mysql-credentials.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MySQL Credentials Rotation
 
 > Learn how to automatically rotate MySQL credentials.
@@ -52,6 +56,11 @@
 
        * **Database Username 1** - the username of the first user that will be used for rotation.
        * **Database Username 2** - the username of the second user that will be used for rotation.
+
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/mysql-credentials/mysql-credentials-advance-parameters.png" alt="Rotation Advance Parameters" />
+
+    * **Rotation Statement** - the template string query to generate password for the rotated user.
+    * **Password Requirements** - the requirements for the password of the MySQL users that will be created for the rotation.
 
     5. Specify the secret names that the active credentials should be mapped to. Then click **Next**.
        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-rotations-v2/mysql-credentials/mysql-credentials-secrets-mapping.png" alt="Rotation Secrets Mapping" />

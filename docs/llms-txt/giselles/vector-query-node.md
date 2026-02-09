@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/vector-query-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vector Query Node
 
 > Learn how the Vector Query Node in Giselle executes queries against vector store data sources to enable Retrieval-Augmented Generation (RAG).
@@ -59,8 +63,3 @@ The `Result` output of the Vector Query Node contains the collection of retrieve
 <Note>
   For more information on how to set up a data source for querying, see our documentation on the [GitHub Vector Store Node](github-vector-store-node) and [Document Vector Store Node](document-vector-store-node).
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

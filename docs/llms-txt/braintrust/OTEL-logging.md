@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/OTEL-logging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using OpenTelemetry for LLM observability
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/OTEL-logging/OTEL-logging.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2024-10-31</div>
@@ -8,7 +12,7 @@
 
 <img src="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=521682a208916c54ffecc973c633f691" alt="Popular AI SDKs -> OTel -> traces" data-og-width="2400" width="2400" data-og-height="1261" height="1261" data-path="cookbook/assets/OTEL-logging/otel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=280&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=50cade7305388cf8dcccfd819a2dc6aa 280w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=560&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=7cc3e120e4b179911a4514d0137f4e5f 560w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=840&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=1d611018dd693d7c3d85046fb42939c1 840w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=1100&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=0d00a62f22c2738f7a7d8995130d0311 1100w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=1650&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=8c3812707fb0122500b17014ec51f0e0 1650w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel.png?w=2500&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=6f4df202a885972f5a642c9086b5b551 2500w" />
 
-In Braintrust, we enable observability in AI applications through [**logging**](/core/logs). Logs are the recorded data and metadata from an AI routine — we record the inputs and outputs of your LLM calls to help you understand and debug your application. We want to make it simple for you to log to Braintrust from many different environments, so we defined a way to set up Braintrust as an OpenTelemetry backend. This guide will walk you through how to log to Braintrust from a sample project built with the Vercel AI SDK.
+In Braintrust, we enable observability in AI applications through [**logging**](/observe/view-logs). Logs are the recorded data and metadata from an AI routine — we record the inputs and outputs of your LLM calls to help you understand and debug your application. We want to make it simple for you to log to Braintrust from many different environments, so we defined a way to set up Braintrust as an OpenTelemetry backend. This guide will walk you through how to log to Braintrust from a sample project built with the Vercel AI SDK.
 
 ## Getting started
 
@@ -30,7 +34,7 @@ OPENAI_API_KEY=<your-api-key>
 
 <Note>
   You can also use the OpenAI API by adding your Braintrust API key and using
-  the Braintrust [AI Proxy](/guides/proxy).
+  the Braintrust [AI Proxy](/deploy/ai-proxy).
 </Note>
 
 ## Setting up OTel
@@ -54,7 +58,7 @@ Replace `<Your API Key>` with your Braintrust API key, and `<Your Project Name>`
   The `BRAINTRUST_PARENT` environment variable sets the trace's parent project
   or experiment. You can use a prefix like `project_id:`, `project_name:`, or
   `experiment_id:` here, or pass in a [**span
-  slug**](/guides/traces#distributed-tracing) (`span.export()`) to nest the
+  slug**](/instrument/custom-tracing#distributed-tracing) (`span.export()`) to nest the
   trace under a span within the parent object.
 </Note>
 
@@ -147,7 +151,7 @@ Open your Braintrust project to the **Logs** page, and select **What orders have
 
 <img src="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/OTEL-logging/otel-demo.gif?s=777f592d047db8e02807297400180516" alt="LLM calls and logs side by side" data-og-width="3384" width="3384" data-og-height="1882" height="1882" data-path="cookbook/assets/OTEL-logging/otel-demo.gif" data-optimize="true" data-opv="3" />
 
-Because this application is using multi-step streaming and tool calls, the logs are especially interesting. In Braintrust, logs consist of [traces](/guides/traces), which roughly correspond to a single request or interaction in your application. Traces consist of one or more spans, each of which corresponds to a unit of work in your application. In this example, each step and tool call is logged inside of its own span. This level of granularity makes it easier to debug issues, track user behavior, and collect data into datasets.
+Because this application is using multi-step streaming and tool calls, the logs are especially interesting. In Braintrust, logs consist of [traces](/instrument/custom-tracing), which roughly correspond to a single request or interaction in your application. Traces consist of one or more spans, each of which corresponds to a unit of work in your application. In this example, each step and tool call is logged inside of its own span. This level of granularity makes it easier to debug issues, track user behavior, and collect data into datasets.
 
 ### Filtering your logs
 
@@ -165,11 +169,6 @@ This is valuable data that can be used to evaluate the quality of accuracy of yo
 
 Now that you’re able to log your application in Braintrust, you can explore other workflows like:
 
-* Adding your [tools](/core/functions/tools) to your library and using them in [experiments](/core/experiments) and the [playground](/core/playground)
-* Creating [custom scorers](/core/functions/scorers) to assess the quality of your LLM calls
-* Adding your logs to a [dataset](/core/datasets) and running evaluations comparing models and prompts
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Adding your [tools](/deploy/functions) to your library and using them in [experiments](/evaluate/run-evaluations) and the [playground](/evaluate/playgrounds)
+* Creating [custom scorers](/evaluate/write-scorers) to assess the quality of your LLM calls
+* Adding your logs to a [dataset](/annotate/datasets) and running evaluations comparing models and prompts

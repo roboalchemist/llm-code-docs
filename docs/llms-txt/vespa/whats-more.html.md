@@ -17,5 +17,5 @@ The _Vespa basics_ articles introduces the central concepts in Vespa, but can't 
 
 Read more in the full [features](../learn/features.html) list.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

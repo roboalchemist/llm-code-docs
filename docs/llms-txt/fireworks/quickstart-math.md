@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/quickstart-math.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Single-Turn Training Quickstart
 
 > Train a model to be an expert at answering GSM8K math questions

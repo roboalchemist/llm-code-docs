@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/json.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📃 JSON
 
 To add any json file, use the data\_type as `json`. Headers are included for each line, so for example if you have a json like `{"age": 18}`, then it will be added as `age: 18`.
@@ -19,7 +23,7 @@ Here are the supported sources for loading `json`:
 ## Example
 
 <CodeGroup>
-  ```python python
+  ```python python theme={null}
   from embedchain import App
 
   app = App()
@@ -31,7 +35,7 @@ Here are the supported sources for loading `json`:
   # As of October 2023, Elon Musk's net worth is $255.2 billion.
   ```
 
-  ```json temp.json
+  ```json temp.json theme={null}
   {
       "question": "What is your net worth, Elon Musk?",
       "answer": "As of October 2023, Elon Musk's net worth is $255.2 billion, making him one of the wealthiest individuals in the world."

@@ -28,7 +28,7 @@ Choosing the right platforms is key to reaching your target audience. Here's a b
 
   Use Apify's Discord
 
-  You can also promote your tools through https://discord.com/invite/crawlee-apify-801163717915574323.
+  You can also promote your tools through [Apify's Discord](https://discord.com/invite/crawlee-apify-801163717915574323).
 
 * *Twitter (X)*: Good for short updates, feature announcements, and quick interactions with users. The tech community on Twitter is very active, which makes it a great spot for sharing tips and getting noticed.
 

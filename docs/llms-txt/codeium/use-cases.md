@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/best-practices/use-cases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Common Use Cases
+
+> Common use cases for Windsurf including code generation, unit test generation, code documentation, API integration, and code refactoring.
 
 Windsurf serves a variety of use cases at a high level. However, we see certain use cases to be more common than others, especially among our enterprise customers within their production codebases.
 

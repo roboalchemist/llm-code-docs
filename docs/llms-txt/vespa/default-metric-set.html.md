@@ -341,7 +341,7 @@ vds.filestor.allthreads.update.count
 
  | request | rate | Number of requests processed. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

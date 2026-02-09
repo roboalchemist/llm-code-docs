@@ -23,8 +23,8 @@ When the Stripe Reader S700 is on, you can check the battery level in the chargi
 | ---- | ---------------------------------------------------------------------------------------- |
 |      | The reader is fully charged with the power cable connected.                              |
 |      | (flashing) The reader is charging.                                                       |
-|      | The reader’s battery level is low (10-20% remaining).                                    |
-|      | The reader’s battery level is critically low (1-9% remaining) or drained (1% remaining). |
+|      | The reader’s battery level is low (10–20% remaining).                                    |
+|      | The reader’s battery level is critically low (1–9% remaining) or drained (1% remaining). |
 |      | The reader is off, or the reader is on with the power cable disconnected.                |
 
 To prolong the rechargeable battery life, the battery charging rate is reduced outside the 15C (59F) to 45C (113F) temperature rate. The charging stops if the unit temperature is below 0C (32F) or above 60C (140F).
@@ -103,15 +103,20 @@ The Stripe Reader S700 software consists of four components: the reader applicat
 
 | Countries                    | Reader     | Firmware     | Configuration          | ROM      |
 | ---------------------------- | ---------- | ------------ | ---------------------- | -------- |
-| US                           | `2.37.2.0` | `1.00.00.35` | `szzz_us_v11`          | `2.2.17` |
-| CA                           | `2.37.2.0` | `1.00.00.35` | `szzz_ca_v4`           | `2.2.17` |
-| AU                           | `2.37.2.0` | `1.00.00.35` | `szzz_prod_au_v11`     | `2.2.17` |
-| MYNZ                         | `2.37.2.0` | `1.00.00.35` | `szzz_prod_apac_on_v5` | `2.2.17` |
-| SG                           | `2.37.2.0` | `1.00.00.35` | `szzz_prod_apac_on_v5` | `2.2.17` |
-| GBIEFI                       | `2.37.2.0` | `1.00.00.35` | `szzz_prod_eu_off_v3`  | `2.2.17` |
-| ATBEDKFRITDENLESSECZLUPTCHNO | `2.37.2.0` | `1.00.00.35` | `szzz_prod_eu_on_v5`   | `2.2.17` |
+| US                           | `2.38.2.0` | `1.00.00.35` | `szzz_us_v11`          | `2.2.17` |
+| CA                           | `2.38.2.0` | `1.00.00.35` | `szzz_ca_v4`           | `2.2.17` |
+| AU                           | `2.38.2.0` | `1.00.00.35` | `szzz_prod_au_v11`     | `2.2.17` |
+| MYNZ                         | `2.38.2.0` | `1.00.00.35` | `szzz_prod_apac_on_v5` | `2.2.17` |
+| SG                           | `2.38.2.0` | `1.00.00.35` | `szzz_prod_apac_on_v5` | `2.2.17` |
+| GBIEFI                       | `2.38.2.0` | `1.00.00.35` | `szzz_prod_eu_off_v3`  | `2.2.17` |
+| ATBEDKFRITDENLESSECZLUPTCHNO | `2.38.2.0` | `1.00.00.35` | `szzz_prod_eu_on_v5`   | `2.2.17` |
 
 ### Reader software changelog
+
+#### 2026-01-13 (version 2.38.2.0)
+
+- General bug fixes and improvements.
+- Added a fix to always play payment audio tones at correct volume regardless of device volume.
 
 #### 2025-11-12 (version 2.37.2.0)
 
@@ -200,7 +205,7 @@ The Stripe Reader S700 software consists of four components: the reader applicat
 - Added support for Accessible PIN payments.
 - Fixed a race condition bug that caused contactless payments to fail with the error “Underlying request took too long. Please check your local network.”
 - Fixed a bug where a Norwegian card showed Swedish text.
-- Fixed a bug where accessiblity mode did not read out the “Incorrect PIN entered” message.
+- Fixed a bug where accessibility mode did not read out the “Incorrect PIN entered” message.
 
 #### 2024-06-25 (version 2.24.2.0)
 

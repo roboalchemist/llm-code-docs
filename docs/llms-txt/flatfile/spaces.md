@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/spaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Spaces
 
 > Micro-applications for content and data storage
@@ -27,7 +31,7 @@ The following example depicts a **Space** with:
 The current view has the **Users** sheet under the **Company Workbook** selected.
 
 <Frame caption="An example of a fully-configured space">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/space-example.png" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=49ad6138c2fee745646c144c865c8a7b" data-og-width="2920" width="2920" data-og-height="1816" height="1816" data-path="core-concepts/assets/space-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=1f7c7ebe07361dae7bfe30a7c7f0fc0f 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=dee2cbd288d996ae20c225cf100527c3 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e9cda2d3bc6464eaf8bb7f9c672f7358 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=1d6b8afbd46978d45692543c4b8d4856 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=03e60341fb74145bd9aa037531bbced1 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/space-example.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=714d734494266aa79f1972b1d69ed612 2500w" />
 </Frame>
 
 ## Basic Blueprint Structure
@@ -62,7 +66,7 @@ When integrating Flatfile into your application workflows:
 * **CRM Integration**: When a customer in your CRM moves to the "onboarding" stage, you may create a new Space via the API for them to complete their data onboarding process.
 * **Account Creation**: When a new account is created in your application, you may automatically create a new Space for them via the API.
 
-```mermaid
+```mermaid  theme={null}
 graph TD
     A[CRM Customer] -->|Moves to onboarding stage| B[Create Space via API]
     C[New Account Created] -->|In your application| D[Create Space via API]
@@ -79,7 +83,7 @@ For direct customer collaboration and embedded applications:
 * **Direct Collaboration**: When working with a new customer directly, you may create a new Space via the Dashboard and invite them to the Space.
 * **Embedding Flatfile**: In an [Embedded App](/embedding/overview), you may create a new Space every time a user clicks a button to start a new import.
 
-```mermaid
+```mermaid  theme={null}
 graph TD
     A[Working with Customer] -->|Direct collaboration| B[Create Space via Dashboard]
     C[Embedded App User] -->|Clicks import button| D[Create Space via API]
@@ -91,7 +95,7 @@ graph TD
 You may also rename "Space" to any other term you prefer, such as "Project" or "Customer". Each App may have a different name for a Space, but they all have the same underlying structure.
 
 <Frame caption="App settings with Spaces named &#x22;Projects&#x22;">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/app-settings.png" width="400" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c1d2cb160c8805bf59bdd3d227e76691" width="400" data-og-width="1134" data-og-height="1184" data-path="core-concepts/assets/app-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f9da65cc68a4a0c3a3b9b8fc5e5a7527 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=0d49bd55b7128cdcbd960b6859a0ca24 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b2c8d3655c15b03b6fa3c49bc0b9da23 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=87b0a59a9a75131d6fe1c2f426adebd2 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=427ce1de51e04f3f71388b13ca6d64e1 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/app-settings.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e659471afc4a7382d067776173080d44 2500w" />
 </Frame>
 
 ### Space Namespaces
@@ -120,7 +124,7 @@ When a new space is created, Flatfile automatically creates a `space:configure` 
 
   For example, this listener implementation configures a space with a [Blueprint](/core-concepts/blueprints) containing two [workbooks](/core-concepts/workbooks) and a Welcome Guide [document](/core-concepts/documents) – both defined in another file – as well as adding some light [theming](/guides/theme-your-space):
 
-  ```javascript
+  ```javascript  theme={null}
   listener.use(configureSpace({
     workbooks: [companyWorkbook, customerWorkbook],
     documents: [welcomeGuideDocument],
@@ -144,7 +148,7 @@ When a new space is created, Flatfile automatically creates a `space:configure` 
 Here's how to manually configure a Space using the job lifecycle approach. This example demonstrates creating a [Blueprint](/core-concepts/blueprints) by defining workbooks with sheets and fields, custom actions, a welcome document, and theme customization, with complete control over the configuration process and proper job lifecycle management.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import api from "@flatfile/api";
 
@@ -259,7 +263,7 @@ Here's how to manually configure a Space using the job lifecycle approach. This 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from "@flatfile/listener";
   import api from "@flatfile/api";
 

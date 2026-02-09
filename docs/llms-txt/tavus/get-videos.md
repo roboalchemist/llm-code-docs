@@ -1,50 +1,67 @@
 # Source: https://docs.tavus.io/api-reference/video-request/get-videos.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Videos
 
 > This endpoint returns a list of all Videos created by the account associated with the API Key in use.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/videos
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/videos
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
+  /v2/videos:
+    get:
+      tags:
+        - Videos
+      summary: List Videos
+      description: >
+        This endpoint returns a list of all Videos created by the account
+        associated with the API Key in use.
+      operationId: listVideos
+      parameters:
+        - in: query
+          name: limit
           schema:
-            - type: integer
-              description: The number of videos to return per page. Default is 10.
-        page:
+            type: integer
+          description: The number of videos to return per page. Default is 10.
+        - in: query
+          name: page
           schema:
-            - type: integer
-              description: The page number to return. Default is 1.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: integer
+          description: The page number to return. Default is 1.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -117,48 +134,27 @@ paths:
                             If the video has an error, this will contain the
                             error message.
                           example: ''
-              total_count:
-                allOf:
-                  - type: integer
+                  total_count:
+                    type: integer
                     description: The total number of videos given the filters provided.
-        examples:
-          example:
-            value:
-              data:
-                - video_id: 783537ef5
-                  video_name: My First Video
-                  status: generating
-                  data:
-                    script: Hello from Tavus! Enjoy your new replica
-                  download_url: ''
-                  hosted_url: <string>
-                  stream_url: ''
-                  status_details: ''
-                  background_url: ''
-                  background_source_url: ''
-                  still_image_thumbnail_url: ''
-                  gif_thumbnail_url: ''
-                  error_details: ''
-              total_count: 123
-        description: ''
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

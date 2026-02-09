@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/data-enrichment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Enrichment
 
 > Enhance datasets with Tavily's APIs.
@@ -29,8 +33,3 @@
 ### Step 3: Read The Open Source Code
 
 <Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/tavily-sheets" horizontal />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/scoring-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Score Requests
 
 Every PromptLayer request can be given an integer score 0-100.
@@ -38,16 +42,11 @@ By default, an individual score is named default. You can enrich a request with 
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-score \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "score": <YOUR SCORE>,
-      "name": <YOUR SCORE NAME>,
+      "name": <YOUR SCORE NAME>
     }'
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

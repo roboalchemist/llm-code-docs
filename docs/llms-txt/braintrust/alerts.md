@@ -1,70 +1,222 @@
-# Source: https://braintrust.dev/docs/guides/automations/alerts.md
+# Source: https://braintrust.dev/docs/admin/automations/alerts.md
 
-# Alerts
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-Alerts let you trigger an action when conditions are met on new logs in Braintrust. You can trigger an action to a webhook URL or to a Slack channel via Braintrust's Slack integration.
+# Set up alerts
+
+> Configure webhooks and Slack notifications
+
+Alerts notify you when events occur in Braintrust. Send notifications to webhooks or Slack channels to catch errors, track quality issues, monitor usage patterns, or track prompt deployment changes.
 
 <Note>
-  If you are on a hybrid deployment, alerts are available starting with `v0.0.72`. The Slack integration is available starting with `v1.1.29`.
+  [Enable the Slack integration](/admin/organizations#enable-slack-integration) before creating an alert to send to a Slack channel.
 </Note>
 
-## Create an alert
+## Alert types
+
+Braintrust supports two types of alerts:
+
+* **Log alerts**: Trigger when conditions are met on production logs
+* **Environment alerts**: Trigger when prompt environments are assigned or removed
+
+## Create a log alert
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select <Icon icon="bell" /> **Alerts**.
+3. Click **+ Alert**.
+4. Enter alert name.
+5. Select **Log event** as the event type.
+6. Configure alert conditions:
+   * **SQL filter**: Query that defines which logs trigger the alert. See [Write SQL filters](#write-sql-filters) for examples.
+   * **Interval**: How often to check for matching logs (5 min, 30 min, 1 hr, 4 hr, 12 hr, 24 hr).
+7. Select an action type:
+   * **Webhook**: Enter the webhook URL to send a [JSON payload](#webhook-payloads) to.
+   * **Slack**: Select a Slack channel using the searchable dropdown.
+
+     The channel list refreshes automatically every 7 days. To trigger a manual refresh, click **Refresh channels**. If your channel doesn't appear, you can enter its <Tooltip tip="To find a channel ID in Slack: Right-click the channel name, click &#x22;View channel details&#x22;, and scroll to the bottom and copy the channel ID.">channel ID</Tooltip> manually.
+8. Click **Test alert** to verify the configuration.
+
+   Braintrust runs the filter on recent logs. If matching logs exist, a test payload is sent. Check your webhook endpoint or Slack channel for the test message.
+9. Click **Save**.
+
+<Tip>
+  You can also create log alerts directly from the <Icon icon="activity" /> **Logs** or <Icon icon="chart-no-axes-column" /> **Monitor** pages. Apply filters to your logs, then select <Icon icon="ellipsis" /> > **Create alert from filters** in the toolbar. The SQL filter automatically populates with your current filters.
+</Tip>
+
+## Create an environment alert
+
+Environment alerts notify you when prompt environments are updated. Use them to track deployments, monitor version changes, or trigger downstream workflows when prompts are promoted across environments.
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select <Icon icon="bell" /> **Alerts**.
+3. Click **+ Alert**.
+4. Enter alert name.
+5. Select **Environment update** as the event type.
+6. Optionally filter by specific environments (e.g., only alert on "production" changes).
+7. Select an action type:
+   * **Webhook**: Enter the webhook URL to send a [JSON payload](#webhook-payloads) to.
+   * **Slack**: Select a Slack channel using the searchable dropdown.
+
+     The channel list refreshes automatically every 7 days. To trigger a manual refresh, click **Refresh channels**. If your channel doesn't appear, you can enter its <Tooltip tip="To find a channel ID in Slack: Right-click the channel name, click &#x22;View channel details&#x22;, and scroll to the bottom and copy the channel ID.">channel ID</Tooltip> manually.
+8. Click **Save**.
 
 <Note>
-  Enable the Slack integration in **Settings** > **Integrations** before creating an alert to send to a Slack channel.
+  Environment alerts trigger immediately when environments are updated. Unlike log alerts, they don't have intervals or SQL filters. Testing is not available for environment alerts.
 </Note>
 
-1. Go to **Configuration > Alerts**.
-2. Enter a name for your alert.
-3. Optionally, enter a BTQL filter clause. If included, the alert will trigger when a logged event matches the filter.
-4. Select the interval for how frequently the alert should check for matching events
-5. Select the action to take when the alert is triggered. For webhooks, enter the Webhook URL in the **Webhook URL** field. For Slack, enter the Slack channel ID in the **Slack channel** field. To find the channel ID in Slack, right-click the channel and select **View channel details**.
+## Common alert patterns
 
-## Webhook payload
+<Tabs>
+  <Tab title="Log alerts">
+    **Error monitoring**: Catch production issues immediately.
 
-When a webhook alert is triggered, it sends a `JSON` payload to your webhook URL with the following structure:
+    * SQL filter: `error IS NOT NULL AND metadata.environment = 'production'`
+    * Action: Post to Slack #incidents channel or create tickets in issue trackers
 
-```json  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-{
-  "organization": {
-    "id": "org_123",
-    "name": "your-organization"
-  },
-  "project": {
-    "id": "proj_456",
-    "name": "your-project"
-  },
-  "automation": {
-    "id": "c5b32408-8568-4bff-9299-8cdd56979b67",
-    "name": "High-Priority Factuality",
-    "description": "Alert on factuality scores for logs with priority 0 in metadata",
-    "event_type": "logs",
-    "btql_filter": "metadata.priority = 0 AND scores.Factuality < 0.9",
-    "interval_seconds": 3600,
-    "url": "https://braintrust.dev/app/your-organization/p/your-project/configuration/alerts?aid=c5b32408-8568-4bff-9299-8cdd56979b67"
-  },
-  "details": {
-    "is_test": false,
-    "message": "High-Priority Factuality: 5 logs triggered alert in the last 1 hour",
-    "time_start": "2025-05-12T10:00:00.000Z",
-    "time_end": "2025-05-12T11:00:00.000Z",
-    "count": 5,
-    "related_logs_url": "https://braintrust.dev/app/your-organization/p/your-project/logs?search=..."
-  }
-}
-```
+    **Quality thresholds**: Track when model performance drops below acceptable levels.
 
-## Test alerts
+    * SQL filter: `scores.factuality < 0.8 AND metadata.environment = 'production'`
+    * Interval: Run hourly to catch quality regressions
+    * Action: Send to monitoring systems or trigger automated remediation
 
-Before saving or updating an alert, you can test it to confirm behavior with the **Test alert** button. Braintrust will trigger the alert as if the initiating event occurred, running it through the BTQL filter on recent data. If matching logs are found, a test payload will be sent to your webhook URL.
+    **Cost monitoring**: Alert on expensive requests.
 
-<img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=a433406ea1228135bc94168b951ab130" alt="Test webhook alert" data-og-width="1394" width="1394" data-og-height="1036" height="1036" data-path="guides/automations/test-alert.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=9f6fb39ffbb5c17e9862cdcf703fb3ce 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=684d00bc4aed2cb2808d519830d58c0d 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=6f539b5c4ecc3ed01fcb077aed2f113d 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=6721feaec318cd1126973af386d97814 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=9bb0381d2b68d77ebe2559f8c2f04bfd 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=9787dff556f1e458a9fb96381c8f5b8e 2500w" />
+    * SQL filter: `metrics.estimated_cost > 1.0`
+    * Action: Webhook to cost tracking systems or budget management tools
 
-If no matching logs are found, you may need to adjust your BTQL filter or the alert interval.
+    **Model-specific issues**: Alert on problems with a particular model.
 
-<img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=b94c45083bb590b758316da67c1ff82e" alt="Test webhook alert failed" data-og-width="1394" width="1394" data-og-height="1036" height="1036" data-path="guides/automations/test-alert-failed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=302e9f3bb73c53be5619ba7f1f303889 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=67b2bc263a19d901b4e88a71a6ca28fb 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=f7b09c6f9c2f4b34bd6e5eed65da7828 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=7aabf054aa7dc997ad56ecd986e7d1f9 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=3a6ecdeb5840aff5eb04d17a83161d6b 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/test-alert-failed.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=f46ec748ee2e4336166b1cb92d45932e 2500w" />
+    * SQL filter: `metadata.model = 'gpt-4o' AND (error IS NOT NULL OR scores.accuracy < 0.8)`
+    * Action: Post to team channel for model performance investigation
 
+    **Feature-specific monitoring**: Track specific workflows or user segments.
 
----
+    * SQL filter: `metadata.user_tier = 'enterprise' AND metadata.feature = 'summarization'`
+    * Action: Post to team channel for priority investigation
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+    **Combined conditions**: Alert on multiple conditions for critical requests.
+
+    * SQL filter: `(scores.accuracy < 0.7 OR error IS NOT NULL) AND metadata.priority = 'high'`
+    * Action: Immediate Slack notification to on-call team
+
+    **Usage spikes**: Monitor when request volume exceeds normal levels.
+
+    * Action: Use external systems to track historical rates and webhook alerts to capture spikes
+  </Tab>
+
+  <Tab title="Environment alerts">
+    **Deployment tracking**: Monitor when prompts are promoted to production.
+
+    * Environment filter: `production`
+    * Action: Post to Slack #deployments channel
+
+    **Multi-environment monitoring**: Track changes across all environments.
+
+    * Environment filter: Leave empty to monitor all environments
+    * Action: Webhook to deployment tracking system
+
+    **Critical environment protection**: Get immediate notification of staging or production changes.
+
+    * Environment filter: `staging, production`
+    * Action: Slack notification to team channel
+
+    **Audit trail**: Log all environment changes to external systems.
+
+    * Environment filter: Leave empty
+    * Action: Webhook to audit logging service
+  </Tab>
+</Tabs>
+
+## Webhook payloads
+
+<Tabs>
+  <Tab title="Log alerts">
+    When a log alert triggers a webhook, it sends this JSON structure:
+
+    ```json  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+    {
+      "organization": {
+        "id": "org_123",
+        "name": "your-organization"
+      },
+      "project": {
+        "id": "proj_456",
+        "name": "your-project"
+      },
+      "automation": {
+        "id": "c5b32408-8568-4bff-9299-8cdd56979b67",
+        "name": "High-Priority Factuality",
+        "description": "Alert on factuality scores for priority logs",
+        "event_type": "logs",
+        "btql_filter": "metadata.priority = 0 AND scores.Factuality < 0.9",
+        "interval_seconds": 3600,
+        "url": "https://braintrust.dev/app/your-org/p/your-project/configuration/alerts?aid=..."
+      },
+      "details": {
+        "is_test": false,
+        "message": "High-Priority Factuality: 5 logs triggered alert in the last 1 hour",
+        "time_start": "2025-05-12T10:00:00.000Z",
+        "time_end": "2025-05-12T11:00:00.000Z",
+        "count": 5,
+        "related_logs_url": "https://braintrust.dev/app/your-org/p/your-project/logs?search=..."
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Environment alerts">
+    When an environment alert triggers a webhook, it sends this JSON structure:
+
+    ```json  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+    {
+      "organization": {
+        "id": "org_123",
+        "name": "your-organization"
+      },
+      "project": {
+        "id": "proj_456",
+        "name": "your-project"
+      },
+      "automation": {
+        "id": "c5b32408-8568-4bff-9299-8cdd56979b67",
+        "name": "Production Environment Changes",
+        "description": "Alert when production environment is updated",
+        "event_type": "environment_update"
+      },
+      "details": {
+        "environment": {
+          "slug": "production"
+        },
+        "prompt": {
+          "id": "prompt_789",
+          "slug": "summarizer"
+        },
+        "new_version": "v3.2.1",
+        "action": "update"
+      }
+    }
+    ```
+
+    The `action` field will be either `"update"` (environment assigned to prompt) or `"delete"` (environment removed from prompt). When `action` is `"delete"`, the `new_version` field will be `null`.
+  </Tab>
+</Tabs>
+
+## Limitations
+
+For hybrid deployments:
+
+* Alerts are available starting with v0.0.72.
+* The Slack integration is available starting with v1.1.29.
+
+For Slack workspaces with more than 100,000 channels:
+
+* The channel list shows the most recently active channels. If your target channel doesn't appear, use the manual <Tooltip tip="To find a channel ID in Slack: Right-click the channel name, click &#x22;View channel details&#x22;, and scroll to the bottom and copy the channel ID.">channel ID</Tooltip> entry option.
+
+## Next steps
+
+* [Manage data](/admin/automations/data-management) with export and retention automations
+* [View logs](/observe/view-logs) to understand alert triggers
+* [Monitor deployments](/deploy/monitor) with dashboards
+* [SQL reference](/reference/sql) for advanced filter queries

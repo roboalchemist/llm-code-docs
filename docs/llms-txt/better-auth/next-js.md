@@ -4,11 +4,7 @@
 
 Better Auth Next.js example.
 
-***
 
-title: Next.js Example
-description: Better Auth Next.js example.
------------------------------------------
 
 This is an example of how to use Better Auth with Next.
 
@@ -47,4 +43,8 @@ See [Demo](https://demo.better-auth.com)
 ### SSO Login Example
 
 For this example, we utilize DummyIDP. Initiate the login from the [DummyIDP login](https://dummyidp.com/apps/app_01k16v4vb5yytywqjjvv2b3435/login), click "Proceed", and from here it will direct you to user's dashboard.
+
+### SCIM Sync Example
+
+For this example, we utilize DummyIDP. Head out to the [IDP dashboard](https://dummyidp.com/apps/app_01k16v4vb5yytywqjjvv2b3435) and try to add, update or remove users, then go to the admin page or directly to your database and watch the synchronization work.
 

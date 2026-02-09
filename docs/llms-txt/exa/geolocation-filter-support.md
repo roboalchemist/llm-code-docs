@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/geolocation-filter-support.md
+# Source: https://exa.ai/docs/changelog/geolocation-filter-support.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Geolocation Filter Support
 
@@ -69,8 +73,3 @@ The response structure remains unchanged - geolocation filtering affects result 
 ## Need Help?
 
 If you have any questions about location filtering or need help with your specific use case, please reach out to [hello@exa.ai](mailto:hello@exa.ai).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

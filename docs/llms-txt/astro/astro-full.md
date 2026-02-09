@@ -92,9 +92,9 @@ The `.astro` UI language is a superset of HTML: any valid HTML is valid Astro te
 
 We then made sure that you could also use your favorite UI component languages that you already know, and even reuse components you might already have. React, Preact, Svelte, Vue, Solid, and others, including web components, are all supported for authoring UI components in an Astro project.
 
-Astro was designed to be less complex than other UI frameworks and languages. One big reason for this is that Astro was designed to render on the server, not in the browser. That means that you don’t need to worry about: hooks (React), stale closures (also React), refs (Vue), observables (Svelte), atoms, selectors, reactions, or derivations. There is no reactivity on the server, so all of that complexity melts away.
+Astro was designed to be less complex than other UI frameworks and languages. One big reason for this is that Astro was designed to render on the server, not in the browser. That means that you don’t need to worry about hooks (React), stale closures (also React), refs (Vue), observables (Svelte), atoms, selectors, reactions, or derivations. There is no reactivity on the server, so all of that complexity melts away.
 
-One of our favorite sayings is: **opt in to complexity.** We designed Astro to remove as much “required complexity” as possible from the developer experience, especially as you onboard for the first time. You can build a “Hello World” example website in Astro with just HTML and CSS. Then, when you need to build something more powerful, you can incrementally reach for new features and APIs as you go.
+One of our favorite sayings is **opt in to complexity.** We designed Astro to remove as much “required complexity” as possible from the developer experience, especially as you onboard for the first time. You can build a “Hello World” example website in Astro with just HTML and CSS. Then, when you need to build something more powerful, you can incrementally reach for new features and APIs as you go.
 
 ### Developer-focused
 
@@ -2169,8 +2169,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![sarah11918](https://avatars.githubusercontent.com/u/5098874?s=64 "sarah11918")](https://github.com/sarah11918)
 * [![dreyfus92](https://avatars.githubusercontent.com/u/85648028?s=64 "dreyfus92")](https://github.com/dreyfus92)
 * [![Nin3lee](https://avatars.githubusercontent.com/u/30520689?s=64 "Nin3lee")](https://github.com/Nin3lee)
-* [![delucis](https://avatars.githubusercontent.com/u/357379?s=64 "delucis")](https://github.com/delucis)
 * [![liruifengv](https://avatars.githubusercontent.com/u/25167721?s=64 "liruifengv")](https://github.com/liruifengv)
+* [![delucis](https://avatars.githubusercontent.com/u/357379?s=64 "delucis")](https://github.com/delucis)
 * [![astrobot-houston](https://avatars.githubusercontent.com/u/108291165?s=64 "astrobot-houston")](https://github.com/astrobot-houston)
 * [![Waxer59](https://avatars.githubusercontent.com/u/78129249?s=64 "Waxer59")](https://github.com/Waxer59)
 * [![100gle](https://avatars.githubusercontent.com/u/36526527?s=64 "100gle")](https://github.com/100gle)
@@ -2191,87 +2191,91 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![trueberryless](https://avatars.githubusercontent.com/u/99918022?s=64 "trueberryless")](https://github.com/trueberryless)
 * [![Chrissdroid](https://avatars.githubusercontent.com/u/29927270?s=64 "Chrissdroid")](https://github.com/Chrissdroid)
 * [![AitorMT](https://avatars.githubusercontent.com/u/25897764?s=64 "AitorMT")](https://github.com/AitorMT)
-* [![kecrily](https://avatars.githubusercontent.com/u/45708948?s=64 "kecrily")](https://github.com/kecrily)
 * [![jp-knj](https://avatars.githubusercontent.com/u/70939128?s=64 "jp-knj")](https://github.com/jp-knj)
+* [![kecrily](https://avatars.githubusercontent.com/u/45708948?s=64 "kecrily")](https://github.com/kecrily)
 * [![ematipico](https://avatars.githubusercontent.com/u/602478?s=64 "ematipico")](https://github.com/ematipico)
 * [![vrabe](https://avatars.githubusercontent.com/u/8216525?s=64 "vrabe")](https://github.com/vrabe)
-* [![kyosuke](https://avatars.githubusercontent.com/u/13069?s=64 "kyosuke")](https://github.com/kyosuke)
 * [![Fryuni](https://avatars.githubusercontent.com/u/11063910?s=64 "Fryuni")](https://github.com/Fryuni)
-* [![jasikpark](https://avatars.githubusercontent.com/u/10626596?s=64 "jasikpark")](https://github.com/jasikpark)
+* [![kyosuke](https://avatars.githubusercontent.com/u/13069?s=64 "kyosuke")](https://github.com/kyosuke)
 * [![alexnguyennz](https://avatars.githubusercontent.com/u/54233296?s=64 "alexnguyennz")](https://github.com/alexnguyennz)
+* [![jasikpark](https://avatars.githubusercontent.com/u/10626596?s=64 "jasikpark")](https://github.com/jasikpark)
 * [![ElianCodes](https://avatars.githubusercontent.com/u/15145918?s=64 "ElianCodes")](https://github.com/ElianCodes)
 * [![Princesseuh](https://avatars.githubusercontent.com/u/3019731?s=64 "Princesseuh")](https://github.com/Princesseuh)
 * [![matthewp](https://avatars.githubusercontent.com/u/361671?s=64 "matthewp")](https://github.com/matthewp)
-* [![agustinmulet](https://avatars.githubusercontent.com/u/31162600?s=64 "agustinmulet")](https://github.com/agustinmulet)
 * [![jonathantneal](https://avatars.githubusercontent.com/u/188426?s=64 "jonathantneal")](https://github.com/jonathantneal)
+* [![agustinmulet](https://avatars.githubusercontent.com/u/31162600?s=64 "agustinmulet")](https://github.com/agustinmulet)
 * [![at-the-vr](https://avatars.githubusercontent.com/u/88548999?s=64 "at-the-vr")](https://github.com/at-the-vr)
 * [![Genteure](https://avatars.githubusercontent.com/u/11240579?s=64 "Genteure")](https://github.com/Genteure)
 * [![HiDeoo](https://avatars.githubusercontent.com/u/494699?s=64 "HiDeoo")](https://github.com/HiDeoo)
 * [![casungo](https://avatars.githubusercontent.com/u/25723446?s=64 "casungo")](https://github.com/casungo)
 * [![mingjunlu](https://avatars.githubusercontent.com/u/40516784?s=64 "mingjunlu")](https://github.com/mingjunlu)
+* [![florian-lefebvre](https://avatars.githubusercontent.com/u/69633530?s=64 "florian-lefebvre")](https://github.com/florian-lefebvre)
+* [![renovate\[bot\]](https://avatars.githubusercontent.com/u/29139614?s=64 "renovate\[bot\]")](https://github.com/renovate\[bot])
 * [![bluwy](https://avatars.githubusercontent.com/u/34116392?s=64 "bluwy")](https://github.com/bluwy)
 * [![Egpereira](https://avatars.githubusercontent.com/u/12275019?s=64 "Egpereira")](https://github.com/Egpereira)
 * [![natemoo-re](https://avatars.githubusercontent.com/u/7118177?s=64 "natemoo-re")](https://github.com/natemoo-re)
 * [![Hanawa02](https://avatars.githubusercontent.com/u/11237366?s=64 "Hanawa02")](https://github.com/Hanawa02)
 * [![aFuzzyBear](https://avatars.githubusercontent.com/u/28299972?s=64 "aFuzzyBear")](https://github.com/aFuzzyBear)
-* [![MoustaphaDev](https://avatars.githubusercontent.com/u/81974850?s=64 "MoustaphaDev")](https://github.com/MoustaphaDev)
 * [![JuanPabloDiaz](https://avatars.githubusercontent.com/u/25883220?s=64 "JuanPabloDiaz")](https://github.com/JuanPabloDiaz)
-* [![florian-lefebvre](https://avatars.githubusercontent.com/u/69633530?s=64 "florian-lefebvre")](https://github.com/florian-lefebvre)
-* [![fredoist](https://avatars.githubusercontent.com/u/7684330?s=64 "fredoist")](https://github.com/fredoist)
+* [![MoustaphaDev](https://avatars.githubusercontent.com/u/81974850?s=64 "MoustaphaDev")](https://github.com/MoustaphaDev)
 * [![pioupia](https://avatars.githubusercontent.com/u/49518790?s=64 "pioupia")](https://github.com/pioupia)
-* [![renovate\[bot\]](https://avatars.githubusercontent.com/u/29139614?s=64 "renovate\[bot\]")](https://github.com/renovate\[bot])
-* [![sasoria](https://avatars.githubusercontent.com/u/7903076?s=64 "sasoria")](https://github.com/sasoria)
+* [![fredoist](https://avatars.githubusercontent.com/u/7684330?s=64 "fredoist")](https://github.com/fredoist)
 * [![maxchang3](https://avatars.githubusercontent.com/u/36927158?s=64 "maxchang3")](https://github.com/maxchang3)
-* [![roikat](https://avatars.githubusercontent.com/u/243017214?s=64 "roikat")](https://github.com/roikat)
-* [![bjohansebas](https://avatars.githubusercontent.com/u/103585995?s=64 "bjohansebas")](https://github.com/bjohansebas)
-* [![sarasate](https://avatars.githubusercontent.com/u/1528803?s=64 "sarasate")](https://github.com/sarasate)
+* [![sasoria](https://avatars.githubusercontent.com/u/7903076?s=64 "sasoria")](https://github.com/sasoria)
 * [![piro-hiroki](https://avatars.githubusercontent.com/u/103011756?s=64 "piro-hiroki")](https://github.com/piro-hiroki)
-* [![JuanM04](https://avatars.githubusercontent.com/u/16712703?s=64 "JuanM04")](https://github.com/JuanM04)
+* [![sarasate](https://avatars.githubusercontent.com/u/1528803?s=64 "sarasate")](https://github.com/sarasate)
+* [![bjohansebas](https://avatars.githubusercontent.com/u/103585995?s=64 "bjohansebas")](https://github.com/bjohansebas)
+* [![opaquem](https://avatars.githubusercontent.com/u/258272880?s=64 "opaquem")](https://github.com/opaquem)
 * [![mrienstra](https://avatars.githubusercontent.com/u/669326?s=64 "mrienstra")](https://github.com/mrienstra)
+* [![JuanM04](https://avatars.githubusercontent.com/u/16712703?s=64 "JuanM04")](https://github.com/JuanM04)
 * [![VoxelMC](https://avatars.githubusercontent.com/u/20650404?s=64 "VoxelMC")](https://github.com/VoxelMC)
+* [![tarikrital](https://avatars.githubusercontent.com/u/52907282?s=64 "tarikrital")](https://github.com/tarikrital)
 * [![ascorbic](https://avatars.githubusercontent.com/u/213306?s=64 "ascorbic")](https://github.com/ascorbic)
 * [![dragomano](https://avatars.githubusercontent.com/u/229402?s=64 "dragomano")](https://github.com/dragomano)
 * [![kirii86](https://avatars.githubusercontent.com/u/47194884?s=64 "kirii86")](https://github.com/kirii86)
 * [![antonyfaris](https://avatars.githubusercontent.com/u/11766500?s=64 "antonyfaris")](https://github.com/antonyfaris)
+* [![Yusaku01](https://avatars.githubusercontent.com/u/64152685?s=64 "Yusaku01")](https://github.com/Yusaku01)
 * [![glopzel](https://avatars.githubusercontent.com/u/74939915?s=64 "glopzel")](https://github.com/glopzel)
-* [![tarikrital](https://avatars.githubusercontent.com/u/52907282?s=64 "tarikrital")](https://github.com/tarikrital)
 * [![afucher](https://avatars.githubusercontent.com/u/3756185?s=64 "afucher")](https://github.com/afucher)
 * [![shuuji3](https://avatars.githubusercontent.com/u/1425259?s=64 "shuuji3")](https://github.com/shuuji3)
 * [![kimulaco](https://avatars.githubusercontent.com/u/11986753?s=64 "kimulaco")](https://github.com/kimulaco)
 * [![martrapp](https://avatars.githubusercontent.com/u/94928215?s=64 "martrapp")](https://github.com/martrapp)
-* [![DerTimonius](https://avatars.githubusercontent.com/u/103483059?s=64 "DerTimonius")](https://github.com/DerTimonius)
 * [![helmerdx](https://avatars.githubusercontent.com/u/11061182?s=64 "helmerdx")](https://github.com/helmerdx)
+* [![randomguy-2650](https://avatars.githubusercontent.com/u/150704902?s=64 "randomguy-2650")](https://github.com/randomguy-2650)
+* [![DerTimonius](https://avatars.githubusercontent.com/u/103483059?s=64 "DerTimonius")](https://github.com/DerTimonius)
 * [![luoingly](https://avatars.githubusercontent.com/u/101558384?s=64 "luoingly")](https://github.com/luoingly)
-* [![mayank99](https://avatars.githubusercontent.com/u/9084735?s=64 "mayank99")](https://github.com/mayank99)
 * [![AbrahamX3](https://avatars.githubusercontent.com/u/78459953?s=64 "AbrahamX3")](https://github.com/AbrahamX3)
-* [![lilnasy](https://avatars.githubusercontent.com/u/69170106?s=64 "lilnasy")](https://github.com/lilnasy)
-* [![asgoshawk](https://avatars.githubusercontent.com/u/42184309?s=64 "asgoshawk")](https://github.com/asgoshawk)
-* [![clemenzi](https://avatars.githubusercontent.com/u/77632836?s=64 "clemenzi")](https://github.com/clemenzi)
+* [![mayank99](https://avatars.githubusercontent.com/u/9084735?s=64 "mayank99")](https://github.com/mayank99)
 * [![itskitto](https://avatars.githubusercontent.com/u/12174733?s=64 "itskitto")](https://github.com/itskitto)
+* [![erbierc](https://avatars.githubusercontent.com/u/58832428?s=64 "erbierc")](https://github.com/erbierc)
+* [![clemenzi](https://avatars.githubusercontent.com/u/77632836?s=64 "clemenzi")](https://github.com/clemenzi)
+* [![asgoshawk](https://avatars.githubusercontent.com/u/42184309?s=64 "asgoshawk")](https://github.com/asgoshawk)
+* [![lilnasy](https://avatars.githubusercontent.com/u/69170106?s=64 "lilnasy")](https://github.com/lilnasy)
 * [![CaptainOfPhB](https://avatars.githubusercontent.com/u/30765485?s=64 "CaptainOfPhB")](https://github.com/CaptainOfPhB)
 * [![diegognt](https://avatars.githubusercontent.com/u/181699?s=64 "diegognt")](https://github.com/diegognt)
 * [![karolhas](https://avatars.githubusercontent.com/u/99908851?s=64 "karolhas")](https://github.com/karolhas)
 * [![itsmatteomanf](https://avatars.githubusercontent.com/u/20746019?s=64 "itsmatteomanf")](https://github.com/itsmatteomanf)
 * [![zadeviggers](https://avatars.githubusercontent.com/u/74938858?s=64 "zadeviggers")](https://github.com/zadeviggers)
-* [![randomguy-2650](https://avatars.githubusercontent.com/u/150704902?s=64 "randomguy-2650")](https://github.com/randomguy-2650)
 * [![yuto343](https://avatars.githubusercontent.com/u/43196286?s=64 "yuto343")](https://github.com/yuto343)
 * [![Eric-llos](https://avatars.githubusercontent.com/u/85624552?s=64 "Eric-llos")](https://github.com/Eric-llos)
 * [![XindiShang](https://avatars.githubusercontent.com/u/89835661?s=64 "XindiShang")](https://github.com/XindiShang)
+* [![Eyozy](https://avatars.githubusercontent.com/u/110926935?s=64 "Eyozy")](https://github.com/Eyozy)
 * [![SnowDingo](https://avatars.githubusercontent.com/u/101443426?s=64 "SnowDingo")](https://github.com/SnowDingo)
 * [![ryuapp](https://avatars.githubusercontent.com/u/114303361?s=64 "ryuapp")](https://github.com/ryuapp)
 * [![BryceRussell](https://avatars.githubusercontent.com/u/19967622?s=64 "BryceRussell")](https://github.com/BryceRussell)
 * [![leoj3n](https://avatars.githubusercontent.com/u/990216?s=64 "leoj3n")](https://github.com/leoj3n)
-* [![alexanderniebuhr](https://avatars.githubusercontent.com/u/45965090?s=64 "alexanderniebuhr")](https://github.com/alexanderniebuhr)
+* [![louisescher](https://avatars.githubusercontent.com/u/66965600?s=64 "louisescher")](https://github.com/louisescher)
 * [![codersjj](https://avatars.githubusercontent.com/u/44868357?s=64 "codersjj")](https://github.com/codersjj)
+* [![alexanderniebuhr](https://avatars.githubusercontent.com/u/45965090?s=64 "alexanderniebuhr")](https://github.com/alexanderniebuhr)
 * [![anaxite](https://avatars.githubusercontent.com/u/89195061?s=64 "anaxite")](https://github.com/anaxite)
 * [![teinett](https://avatars.githubusercontent.com/u/1038168?s=64 "teinett")](https://github.com/teinett)
+* [![ld-web](https://avatars.githubusercontent.com/u/46715342?s=64 "ld-web")](https://github.com/ld-web)
+* [![fkatsuhiro](https://avatars.githubusercontent.com/u/113022468?s=64 "fkatsuhiro")](https://github.com/fkatsuhiro)
 * [![mottox2](https://avatars.githubusercontent.com/u/7007253?s=64 "mottox2")](https://github.com/mottox2)
 * [![RezixDev](https://avatars.githubusercontent.com/u/128291517?s=64 "RezixDev")](https://github.com/RezixDev)
 * [![OliverSpeir](https://avatars.githubusercontent.com/u/115520730?s=64 "OliverSpeir")](https://github.com/OliverSpeir)
 * [![JusticeMatthew](https://avatars.githubusercontent.com/u/72817096?s=64 "JusticeMatthew")](https://github.com/JusticeMatthew)
-* [![louisescher](https://avatars.githubusercontent.com/u/66965600?s=64 "louisescher")](https://github.com/louisescher)
 * [![hkbertoson](https://avatars.githubusercontent.com/u/44106297?s=64 "hkbertoson")](https://github.com/hkbertoson)
-* [![Eyozy](https://avatars.githubusercontent.com/u/110926935?s=64 "Eyozy")](https://github.com/Eyozy)
 * [![yeonjulee1005](https://avatars.githubusercontent.com/u/57179957?s=64 "yeonjulee1005")](https://github.com/yeonjulee1005)
 * [![apatel369](https://avatars.githubusercontent.com/u/33442948?s=64 "apatel369")](https://github.com/apatel369)
 * [![agriffard](https://avatars.githubusercontent.com/u/703248?s=64 "agriffard")](https://github.com/agriffard)
@@ -2280,25 +2284,25 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![tkskto](https://avatars.githubusercontent.com/u/12536486?s=64 "tkskto")](https://github.com/tkskto)
 * [![n-tong009](https://avatars.githubusercontent.com/u/66517416?s=64 "n-tong009")](https://github.com/n-tong009)
 * [![autroshot](https://avatars.githubusercontent.com/u/95019875?s=64 "autroshot")](https://github.com/autroshot)
-* [![Adammatthiesen](https://avatars.githubusercontent.com/u/30383579?s=64 "Adammatthiesen")](https://github.com/Adammatthiesen)
-* [![crutchcorn](https://avatars.githubusercontent.com/u/9100169?s=64 "crutchcorn")](https://github.com/crutchcorn)
 * [![clearlyTHUYDOAN](https://avatars.githubusercontent.com/u/22087604?s=64 "clearlyTHUYDOAN")](https://github.com/clearlyTHUYDOAN)
 * [![fhiromasa](https://avatars.githubusercontent.com/u/74556046?s=64 "fhiromasa")](https://github.com/fhiromasa)
 * [![magnum-zx](https://avatars.githubusercontent.com/u/46154381?s=64 "magnum-zx")](https://github.com/magnum-zx)
+* [![crutchcorn](https://avatars.githubusercontent.com/u/9100169?s=64 "crutchcorn")](https://github.com/crutchcorn)
+* [![Adammatthiesen](https://avatars.githubusercontent.com/u/30383579?s=64 "Adammatthiesen")](https://github.com/Adammatthiesen)
 * [![arisa-fukuzaki](https://avatars.githubusercontent.com/u/25793187?s=64 "arisa-fukuzaki")](https://github.com/arisa-fukuzaki)
 * [![caioferrarezi](https://avatars.githubusercontent.com/u/14830190?s=64 "caioferrarezi")](https://github.com/caioferrarezi)
 * [![Elib27](https://avatars.githubusercontent.com/u/92606530?s=64 "Elib27")](https://github.com/Elib27)
 * [![jdwilkin4](https://avatars.githubusercontent.com/u/67210629?s=64 "jdwilkin4")](https://github.com/jdwilkin4)
 * [![Jothsa](https://avatars.githubusercontent.com/u/58094796?s=64 "Jothsa")](https://github.com/Jothsa)
 * [![Panelinio](https://avatars.githubusercontent.com/u/139560930?s=64 "Panelinio")](https://github.com/Panelinio)
-* [![sujang958](https://avatars.githubusercontent.com/u/59335584?s=64 "sujang958")](https://github.com/sujang958)
-* [![NinuzIBZ](https://avatars.githubusercontent.com/u/68387835?s=64 "NinuzIBZ")](https://github.com/NinuzIBZ)
-* [![tejapaturu](https://avatars.githubusercontent.com/u/37566594?s=64 "tejapaturu")](https://github.com/tejapaturu)
-* [![pyronaur](https://avatars.githubusercontent.com/u/988095?s=64 "pyronaur")](https://github.com/pyronaur)
-* [![milovangudelj](https://avatars.githubusercontent.com/u/49202538?s=64 "milovangudelj")](https://github.com/milovangudelj)
-* [![michaelbe812](https://avatars.githubusercontent.com/u/29756792?s=64 "michaelbe812")](https://github.com/michaelbe812)
 * [![palmiak](https://avatars.githubusercontent.com/u/2342458?s=64 "palmiak")](https://github.com/palmiak)
-* [![BassamXYZ](https://avatars.githubusercontent.com/u/100040151?s=64 "BassamXYZ")](https://github.com/BassamXYZ)
+* [![michaelbe812](https://avatars.githubusercontent.com/u/29756792?s=64 "michaelbe812")](https://github.com/michaelbe812)
+* [![milovangudelj](https://avatars.githubusercontent.com/u/49202538?s=64 "milovangudelj")](https://github.com/milovangudelj)
+* [![pyronaur](https://avatars.githubusercontent.com/u/988095?s=64 "pyronaur")](https://github.com/pyronaur)
+* [![ninuzdellalb](https://avatars.githubusercontent.com/u/68387835?s=64 "ninuzdellalb")](https://github.com/ninuzdellalb)
+* [![sujang958](https://avatars.githubusercontent.com/u/59335584?s=64 "sujang958")](https://github.com/sujang958)
+* [![tejapaturu](https://avatars.githubusercontent.com/u/37566594?s=64 "tejapaturu")](https://github.com/tejapaturu)
+* [![ankddev](https://avatars.githubusercontent.com/u/190183925?s=64 "ankddev")](https://github.com/ankddev)
 * [![Pukimaa](https://avatars.githubusercontent.com/u/58347116?s=64 "Pukimaa")](https://github.com/Pukimaa)
 * [![RafidMuhymin](https://avatars.githubusercontent.com/u/63650415?s=64 "RafidMuhymin")](https://github.com/RafidMuhymin)
 * [![ralacerda](https://avatars.githubusercontent.com/u/19380403?s=64 "ralacerda")](https://github.com/ralacerda)
@@ -2310,41 +2314,43 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![manchan4869](https://avatars.githubusercontent.com/u/65327974?s=64 "manchan4869")](https://github.com/manchan4869)
 * [![staticWagomU](https://avatars.githubusercontent.com/u/34824645?s=64 "staticWagomU")](https://github.com/staticWagomU)
 * [![imbant](https://avatars.githubusercontent.com/u/17983739?s=64 "imbant")](https://github.com/imbant)
-* [![bandantonio](https://avatars.githubusercontent.com/u/16765690?s=64 "bandantonio")](https://github.com/bandantonio)
-* [![wtchnm](https://avatars.githubusercontent.com/u/37726261?s=64 "wtchnm")](https://github.com/wtchnm)
 * [![angelmarfil](https://avatars.githubusercontent.com/u/59626670?s=64 "angelmarfil")](https://github.com/angelmarfil)
-* [![ankddev](https://avatars.githubusercontent.com/u/190183925?s=64 "ankddev")](https://github.com/ankddev)
+* [![bandantonio](https://avatars.githubusercontent.com/u/16765690?s=64 "bandantonio")](https://github.com/bandantonio)
+* [![BassamXYZ](https://avatars.githubusercontent.com/u/100040151?s=64 "BassamXYZ")](https://github.com/BassamXYZ)
+* [![wtchnm](https://avatars.githubusercontent.com/u/37726261?s=64 "wtchnm")](https://github.com/wtchnm)
 * [![garysassano](https://avatars.githubusercontent.com/u/10464497?s=64 "garysassano")](https://github.com/garysassano)
 * [![olets](https://avatars.githubusercontent.com/u/3282350?s=64 "olets")](https://github.com/olets)
 * [![IgorKowalczyk](https://avatars.githubusercontent.com/u/49127376?s=64 "IgorKowalczyk")](https://github.com/IgorKowalczyk)
 * [![Singebob](https://avatars.githubusercontent.com/u/24290044?s=64 "Singebob")](https://github.com/Singebob)
+* [![Njong392](https://avatars.githubusercontent.com/u/81039882?s=64 "Njong392")](https://github.com/Njong392)
+* [![NightFeather0615](https://avatars.githubusercontent.com/u/77222233?s=64 "NightFeather0615")](https://github.com/NightFeather0615)
+* [![nermalcat69](https://avatars.githubusercontent.com/u/73933669?s=64 "nermalcat69")](https://github.com/nermalcat69)
+* [![mogeko](https://avatars.githubusercontent.com/u/26341224?s=64 "mogeko")](https://github.com/mogeko)
+* [![tinymachine](https://avatars.githubusercontent.com/u/171986?s=64 "tinymachine")](https://github.com/tinymachine)
 * [![Kenzo-Wada](https://avatars.githubusercontent.com/u/79452224?s=64 "Kenzo-Wada")](https://github.com/Kenzo-Wada)
 * [![lorenzolewis](https://avatars.githubusercontent.com/u/15347255?s=64 "lorenzolewis")](https://github.com/lorenzolewis)
-* [![marsidev](https://avatars.githubusercontent.com/u/56328053?s=64 "marsidev")](https://github.com/marsidev)
 * [![mhstrkmp](https://avatars.githubusercontent.com/u/5558193?s=64 "mhstrkmp")](https://github.com/mhstrkmp)
-* [![tinymachine](https://avatars.githubusercontent.com/u/171986?s=64 "tinymachine")](https://github.com/tinymachine)
-* [![mogeko](https://avatars.githubusercontent.com/u/26341224?s=64 "mogeko")](https://github.com/mogeko)
-* [![nermalcat69](https://avatars.githubusercontent.com/u/73933669?s=64 "nermalcat69")](https://github.com/nermalcat69)
-* [![NightFeather0615](https://avatars.githubusercontent.com/u/77222233?s=64 "NightFeather0615")](https://github.com/NightFeather0615)
-* [![Njong392](https://avatars.githubusercontent.com/u/81039882?s=64 "Njong392")](https://github.com/Njong392)
+* [![marsidev](https://avatars.githubusercontent.com/u/56328053?s=64 "marsidev")](https://github.com/marsidev)
+* [![dependabot\[bot\]](https://avatars.githubusercontent.com/u/49699333?s=64 "dependabot\[bot\]")](https://github.com/dependabot\[bot])
 * [![dorasans](https://avatars.githubusercontent.com/u/75212478?s=64 "dorasans")](https://github.com/dorasans)
 * [![ktym4a](https://avatars.githubusercontent.com/u/51779800?s=64 "ktym4a")](https://github.com/ktym4a)
+* [![lostra01](https://avatars.githubusercontent.com/u/9054858?s=64 "lostra01")](https://github.com/lostra01)
 * [![mantaroh](https://avatars.githubusercontent.com/u/3241026?s=64 "mantaroh")](https://github.com/mantaroh)
 * [![melon95](https://avatars.githubusercontent.com/u/35761035?s=64 "melon95")](https://github.com/melon95)
 * [![miroim](https://avatars.githubusercontent.com/u/22488175?s=64 "miroim")](https://github.com/miroim)
-* [![erbierc](https://avatars.githubusercontent.com/u/58832428?s=64 "erbierc")](https://github.com/erbierc)
 * [![nokazn](https://avatars.githubusercontent.com/u/41154684?s=64 "nokazn")](https://github.com/nokazn)
 * [![paulrudy](https://avatars.githubusercontent.com/u/1110792?s=64 "paulrudy")](https://github.com/paulrudy)
 * [![santiemanuel](https://avatars.githubusercontent.com/u/3680835?s=64 "santiemanuel")](https://github.com/santiemanuel)
 * [![openscript](https://avatars.githubusercontent.com/u/1105080?s=64 "openscript")](https://github.com/openscript)
 * [![chriswburke](https://avatars.githubusercontent.com/u/362261?s=64 "chriswburke")](https://github.com/chriswburke)
 * [![mitian233](https://avatars.githubusercontent.com/u/13678847?s=64 "mitian233")](https://github.com/mitian233)
-* [![lostra01](https://avatars.githubusercontent.com/u/9054858?s=64 "lostra01")](https://github.com/lostra01)
+* [![cristhian-fs](https://avatars.githubusercontent.com/u/141838499?s=64 "cristhian-fs")](https://github.com/cristhian-fs)
+* [![danielcuque](https://avatars.githubusercontent.com/u/81493003?s=64 "danielcuque")](https://github.com/danielcuque)
 * [![AkashRajpurohit](https://avatars.githubusercontent.com/u/30044630?s=64 "AkashRajpurohit")](https://github.com/AkashRajpurohit)
 * [![florluzduarte](https://avatars.githubusercontent.com/u/77161808?s=64 "florluzduarte")](https://github.com/florluzduarte)
-* [![danielcuque](https://avatars.githubusercontent.com/u/81493003?s=64 "danielcuque")](https://github.com/danielcuque)
 * [![guidiego](https://avatars.githubusercontent.com/u/10289071?s=64 "guidiego")](https://github.com/guidiego)
 * [![JavGuerra](https://avatars.githubusercontent.com/u/6777224?s=64 "JavGuerra")](https://github.com/JavGuerra)
+* [![jhuleatt](https://avatars.githubusercontent.com/u/3759507?s=64 "jhuleatt")](https://github.com/jhuleatt)
 * [![selfire1](https://avatars.githubusercontent.com/u/70809675?s=64 "selfire1")](https://github.com/selfire1)
 * [![KoriIku](https://avatars.githubusercontent.com/u/86508666?s=64 "KoriIku")](https://github.com/KoriIku)
 * [![lumamontes](https://avatars.githubusercontent.com/u/60052718?s=64 "lumamontes")](https://github.com/lumamontes)
@@ -2354,10 +2360,9 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![richeklein](https://avatars.githubusercontent.com/u/99479?s=64 "richeklein")](https://github.com/richeklein)
 * [![ItzRoBeerT](https://avatars.githubusercontent.com/u/105317145?s=64 "ItzRoBeerT")](https://github.com/ItzRoBeerT)
 * [![seppegadeyne](https://avatars.githubusercontent.com/u/18264851?s=64 "seppegadeyne")](https://github.com/seppegadeyne)
-* [![simonswiss](https://avatars.githubusercontent.com/u/485747?s=64 "simonswiss")](https://github.com/simonswiss)
-* [![tordans](https://avatars.githubusercontent.com/u/111561?s=64 "tordans")](https://github.com/tordans)
 * [![vuecat](https://avatars.githubusercontent.com/u/16623919?s=64 "vuecat")](https://github.com/vuecat)
-* [![dependabot\[bot\]](https://avatars.githubusercontent.com/u/49699333?s=64 "dependabot\[bot\]")](https://github.com/dependabot\[bot])
+* [![tordans](https://avatars.githubusercontent.com/u/111561?s=64 "tordans")](https://github.com/tordans)
+* [![simonswiss](https://avatars.githubusercontent.com/u/485747?s=64 "simonswiss")](https://github.com/simonswiss)
 * [![coderfee](https://avatars.githubusercontent.com/u/18255987?s=64 "coderfee")](https://github.com/coderfee)
 * [![vedxp](https://avatars.githubusercontent.com/u/87353286?s=64 "vedxp")](https://github.com/vedxp)
 * [![tony-sull](https://avatars.githubusercontent.com/u/15836226?s=64 "tony-sull")](https://github.com/tony-sull)
@@ -2371,7 +2376,7 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![DevRohit06](https://avatars.githubusercontent.com/u/66678395?s=64 "DevRohit06")](https://github.com/DevRohit06)
 * [![radenpioneer](https://avatars.githubusercontent.com/u/7355835?s=64 "radenpioneer")](https://github.com/radenpioneer)
 * [![thepassle](https://avatars.githubusercontent.com/u/17054057?s=64 "thepassle")](https://github.com/thepassle)
-* [![LiHowe](https://avatars.githubusercontent.com/u/30686223?s=64 "LiHowe")](https://github.com/LiHowe)
+* [![nicdun](https://avatars.githubusercontent.com/u/28926450?s=64 "nicdun")](https://github.com/nicdun)
 * [![darusk](https://avatars.githubusercontent.com/u/110596249?s=64 "darusk")](https://github.com/darusk)
 * [![emily-shen](https://avatars.githubusercontent.com/u/69125074?s=64 "emily-shen")](https://github.com/emily-shen)
 * [![VLTHellolin](https://avatars.githubusercontent.com/u/119287439?s=64 "VLTHellolin")](https://github.com/VLTHellolin)
@@ -2387,7 +2392,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![ws-rush](https://avatars.githubusercontent.com/u/37883750?s=64 "ws-rush")](https://github.com/ws-rush)
 * [![ykcory](https://avatars.githubusercontent.com/u/124225078?s=64 "ykcory")](https://github.com/ykcory)
 * [![bengeois](https://avatars.githubusercontent.com/u/20949060?s=64 "bengeois")](https://github.com/bengeois)
-* [![fflaten](https://avatars.githubusercontent.com/u/3436158?s=64 "fflaten")](https://github.com/fflaten)
 * [![favanso](https://avatars.githubusercontent.com/u/71955135?s=64 "favanso")](https://github.com/favanso)
 * [![evadecker](https://avatars.githubusercontent.com/u/4117920?s=64 "evadecker")](https://github.com/evadecker)
 * [![eric-burel](https://avatars.githubusercontent.com/u/7983005?s=64 "eric-burel")](https://github.com/eric-burel)
@@ -2396,33 +2400,35 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![davidumoru](https://avatars.githubusercontent.com/u/92310163?s=64 "davidumoru")](https://github.com/davidumoru)
 * [![David-Large](https://avatars.githubusercontent.com/u/87678248?s=64 "David-Large")](https://github.com/David-Large)
 * [![cravend](https://avatars.githubusercontent.com/u/7117993?s=64 "cravend")](https://github.com/cravend)
+* [![coding-in-public](https://avatars.githubusercontent.com/u/86967271?s=64 "coding-in-public")](https://github.com/coding-in-public)
 * [![CBID2](https://avatars.githubusercontent.com/u/105683440?s=64 "CBID2")](https://github.com/CBID2)
 * [![csarnataro](https://avatars.githubusercontent.com/u/11388820?s=64 "csarnataro")](https://github.com/csarnataro)
 * [![emjio](https://avatars.githubusercontent.com/u/26915891?s=64 "emjio")](https://github.com/emjio)
 * [![breadadams](https://avatars.githubusercontent.com/u/5795227?s=64 "breadadams")](https://github.com/breadadams)
 * [![Because789](https://avatars.githubusercontent.com/u/867257?s=64 "Because789")](https://github.com/Because789)
-* [![0xflotus](https://avatars.githubusercontent.com/u/26602940?s=64 "0xflotus")](https://github.com/0xflotus)
+* [![avilyre](https://avatars.githubusercontent.com/u/66757451?s=64 "avilyre")](https://github.com/avilyre)
 * [![ahmed-n-abdeltwab](https://avatars.githubusercontent.com/u/62723180?s=64 "ahmed-n-abdeltwab")](https://github.com/ahmed-n-abdeltwab)
-* [![nicdun](https://avatars.githubusercontent.com/u/28926450?s=64 "nicdun")](https://github.com/nicdun)
-* [![leen-neel](https://avatars.githubusercontent.com/u/49027876?s=64 "leen-neel")](https://github.com/leen-neel)
+* [![0xflotus](https://avatars.githubusercontent.com/u/26602940?s=64 "0xflotus")](https://github.com/0xflotus)
 * [![Morritz](https://avatars.githubusercontent.com/u/12800230?s=64 "Morritz")](https://github.com/Morritz)
+* [![leen-neel](https://avatars.githubusercontent.com/u/49027876?s=64 "leen-neel")](https://github.com/leen-neel)
 * [![pReya](https://avatars.githubusercontent.com/u/4677417?s=64 "pReya")](https://github.com/pReya)
 * [![mhdcodes](https://avatars.githubusercontent.com/u/9967336?s=64 "mhdcodes")](https://github.com/mhdcodes)
 * [![debiru](https://avatars.githubusercontent.com/u/36402166?s=64 "debiru")](https://github.com/debiru)
 * [![baevm](https://avatars.githubusercontent.com/u/91272406?s=64 "baevm")](https://github.com/baevm)
 * [![MartinFerret](https://avatars.githubusercontent.com/u/90469240?s=64 "MartinFerret")](https://github.com/MartinFerret)
+* [![kannansuresh](https://avatars.githubusercontent.com/u/61264139?s=64 "kannansuresh")](https://github.com/kannansuresh)
+* [![fflaten](https://avatars.githubusercontent.com/u/3436158?s=64 "fflaten")](https://github.com/fflaten)
+* [![LiHowe](https://avatars.githubusercontent.com/u/30686223?s=64 "LiHowe")](https://github.com/LiHowe)
 * [![newtoallofthis123](https://avatars.githubusercontent.com/u/78465651?s=64 "newtoallofthis123")](https://github.com/newtoallofthis123)
 * [![jacobdalamb](https://avatars.githubusercontent.com/u/44789941?s=64 "jacobdalamb")](https://github.com/jacobdalamb)
-* [![swift502](https://avatars.githubusercontent.com/u/24359130?s=64 "swift502")](https://github.com/swift502)
-* [![sunapi386](https://avatars.githubusercontent.com/u/1029022?s=64 "sunapi386")](https://github.com/sunapi386)
-* [![kannansuresh](https://avatars.githubusercontent.com/u/61264139?s=64 "kannansuresh")](https://github.com/kannansuresh)
 * [![kanadgupta](https://avatars.githubusercontent.com/u/8854718?s=64 "kanadgupta")](https://github.com/kanadgupta)
 * [![jdbruxelles](https://avatars.githubusercontent.com/u/18559798?s=64 "jdbruxelles")](https://github.com/jdbruxelles)
-* [![jhuleatt](https://avatars.githubusercontent.com/u/3759507?s=64 "jhuleatt")](https://github.com/jhuleatt)
 * [![Je12emy](https://avatars.githubusercontent.com/u/34408108?s=64 "Je12emy")](https://github.com/Je12emy)
+* [![swift502](https://avatars.githubusercontent.com/u/24359130?s=64 "swift502")](https://github.com/swift502)
+* [![sunapi386](https://avatars.githubusercontent.com/u/1029022?s=64 "sunapi386")](https://github.com/sunapi386)
 * [![RobertAKARobin](https://avatars.githubusercontent.com/u/6268177?s=64 "RobertAKARobin")](https://github.com/RobertAKARobin)
+* [![inwardmovement](https://avatars.githubusercontent.com/u/9438102?s=64 "inwardmovement")](https://github.com/inwardmovement)
 * [![millette](https://avatars.githubusercontent.com/u/50741?s=64 "millette")](https://github.com/millette)
-* [![ld-web](https://avatars.githubusercontent.com/u/46715342?s=64 "ld-web")](https://github.com/ld-web)
 * [![Rolanddoda](https://avatars.githubusercontent.com/u/18482346?s=64 "Rolanddoda")](https://github.com/Rolanddoda)
 * [![RolginRoman](https://avatars.githubusercontent.com/u/5978625?s=64 "RolginRoman")](https://github.com/RolginRoman)
 * [![ffxsam](https://avatars.githubusercontent.com/u/12532733?s=64 "ffxsam")](https://github.com/ffxsam)
@@ -2435,8 +2441,7 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![motss](https://avatars.githubusercontent.com/u/10607759?s=64 "motss")](https://github.com/motss)
 * [![tem235](https://avatars.githubusercontent.com/u/5091416?s=64 "tem235")](https://github.com/tem235)
 * [![tobySolutions](https://avatars.githubusercontent.com/u/96334363?s=64 "tobySolutions")](https://github.com/tobySolutions)
-* [![inwardmovement](https://avatars.githubusercontent.com/u/9438102?s=64 "inwardmovement")](https://github.com/inwardmovement)
-* [![coding-in-public](https://avatars.githubusercontent.com/u/86967271?s=64 "coding-in-public")](https://github.com/coding-in-public)
+* [![aaronlamz](https://avatars.githubusercontent.com/u/3964466?s=64 "aaronlamz")](https://github.com/aaronlamz)
 * [![lukemcdonald](https://avatars.githubusercontent.com/u/299173?s=64 "lukemcdonald")](https://github.com/lukemcdonald)
 * [![MareStare](https://avatars.githubusercontent.com/u/193320883?s=64 "MareStare")](https://github.com/MareStare)
 * [![MaxTheTurtle0](https://avatars.githubusercontent.com/u/129096443?s=64 "MaxTheTurtle0")](https://github.com/MaxTheTurtle0)
@@ -2453,6 +2458,7 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![serhalp](https://avatars.githubusercontent.com/u/1377702?s=64 "serhalp")](https://github.com/serhalp)
 * [![Scalamando](https://avatars.githubusercontent.com/u/16595528?s=64 "Scalamando")](https://github.com/Scalamando)
 * [![wobsoriano](https://avatars.githubusercontent.com/u/13049130?s=64 "wobsoriano")](https://github.com/wobsoriano)
+* [![XinChou16](https://avatars.githubusercontent.com/u/24493056?s=64 "XinChou16")](https://github.com/XinChou16)
 * [![lhz960904](https://avatars.githubusercontent.com/u/29157111?s=64 "lhz960904")](https://github.com/lhz960904)
 * [![lstephensca](https://avatars.githubusercontent.com/u/31998110?s=64 "lstephensca")](https://github.com/lstephensca)
 * [![my-astro](https://avatars.githubusercontent.com/u/190968675?s=64 "my-astro")](https://github.com/my-astro)
@@ -2469,7 +2475,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![Tsukistar](https://avatars.githubusercontent.com/u/36409869?s=64 "Tsukistar")](https://github.com/Tsukistar)
 * [![zhuchentong](https://avatars.githubusercontent.com/u/4535888?s=64 "zhuchentong")](https://github.com/zhuchentong)
 * [![abhikjain360](https://avatars.githubusercontent.com/u/43034252?s=64 "abhikjain360")](https://github.com/abhikjain360)
-* [![XinChou16](https://avatars.githubusercontent.com/u/24493056?s=64 "XinChou16")](https://github.com/XinChou16)
 * [![vitoriapena](https://avatars.githubusercontent.com/u/16581093?s=64 "vitoriapena")](https://github.com/vitoriapena)
 * [![vivitt](https://avatars.githubusercontent.com/u/91918142?s=64 "vivitt")](https://github.com/vivitt)
 * [![Zastinian](https://avatars.githubusercontent.com/u/82119938?s=64 "Zastinian")](https://github.com/Zastinian)
@@ -2496,13 +2501,12 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![estruyf](https://avatars.githubusercontent.com/u/2900833?s=64 "estruyf")](https://github.com/estruyf)
 * [![emma-sg](https://avatars.githubusercontent.com/u/5727389?s=64 "emma-sg")](https://github.com/emma-sg)
 * [![Erik-McKelvey](https://avatars.githubusercontent.com/u/43917961?s=64 "Erik-McKelvey")](https://github.com/Erik-McKelvey)
-* [![PanConDev](https://avatars.githubusercontent.com/u/10679967?s=64 "PanConDev")](https://github.com/PanConDev)
+* [![pyricvex](https://avatars.githubusercontent.com/u/10679967?s=64 "pyricvex")](https://github.com/pyricvex)
 * [![Franqsanz](https://avatars.githubusercontent.com/u/44296203?s=64 "Franqsanz")](https://github.com/Franqsanz)
 * [![falvarador](https://avatars.githubusercontent.com/u/8008909?s=64 "falvarador")](https://github.com/falvarador)
 * [![felixsanz](https://avatars.githubusercontent.com/u/6182099?s=64 "felixsanz")](https://github.com/felixsanz)
 * [![ogabrielp](https://avatars.githubusercontent.com/u/15015260?s=64 "ogabrielp")](https://github.com/ogabrielp)
-* [![jazzypants1989](https://avatars.githubusercontent.com/u/102560332?s=64 "jazzypants1989")](https://github.com/jazzypants1989)
-* [![aaronlamz](https://avatars.githubusercontent.com/u/3964466?s=64 "aaronlamz")](https://github.com/aaronlamz)
+* [![gaeulbyul](https://avatars.githubusercontent.com/u/830515?s=64 "gaeulbyul")](https://github.com/gaeulbyul)
 * [![addonion](https://avatars.githubusercontent.com/u/51356696?s=64 "addonion")](https://github.com/addonion)
 * [![AdamPrendergast](https://avatars.githubusercontent.com/u/550193?s=64 "AdamPrendergast")](https://github.com/AdamPrendergast)
 * [![afonsojramos](https://avatars.githubusercontent.com/u/19473034?s=64 "afonsojramos")](https://github.com/afonsojramos)
@@ -2511,14 +2515,15 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![alfredogonzalezmartinez](https://avatars.githubusercontent.com/u/48945157?s=64 "alfredogonzalezmartinez")](https://github.com/alfredogonzalezmartinez)
 * [![alvgaona](https://avatars.githubusercontent.com/u/13088001?s=64 "alvgaona")](https://github.com/alvgaona)
 * [![alvinometric](https://avatars.githubusercontent.com/u/107407814?s=64 "alvinometric")](https://github.com/alvinometric)
+* [![urban-adeininger](https://avatars.githubusercontent.com/u/244899711?s=64 "urban-adeininger")](https://github.com/urban-adeininger)
 * [![andremralves](https://avatars.githubusercontent.com/u/71379045?s=64 "andremralves")](https://github.com/andremralves)
 * [![ArinaKosiakov](https://avatars.githubusercontent.com/u/112902422?s=64 "ArinaKosiakov")](https://github.com/ArinaKosiakov)
 * [![atilafassina](https://avatars.githubusercontent.com/u/2382552?s=64 "atilafassina")](https://github.com/atilafassina)
-* [![avilyre](https://avatars.githubusercontent.com/u/66757451?s=64 "avilyre")](https://github.com/avilyre)
 * [![bartosztrusinski](https://avatars.githubusercontent.com/u/33166095?s=64 "bartosztrusinski")](https://github.com/bartosztrusinski)
 * [![branberry](https://avatars.githubusercontent.com/u/20285369?s=64 "branberry")](https://github.com/branberry)
 * [![calebeby](https://avatars.githubusercontent.com/u/13206945?s=64 "calebeby")](https://github.com/calebeby)
 * [![CheukTsai](https://avatars.githubusercontent.com/u/58281730?s=64 "CheukTsai")](https://github.com/CheukTsai)
+* [![neotherapper](https://avatars.githubusercontent.com/u/1514154?s=64 "neotherapper")](https://github.com/neotherapper)
 * [![Jhon-H](https://avatars.githubusercontent.com/u/88730883?s=64 "Jhon-H")](https://github.com/Jhon-H)
 * [![jcha0713](https://avatars.githubusercontent.com/u/29053796?s=64 "jcha0713")](https://github.com/jcha0713)
 * [![Jvictorvieira](https://avatars.githubusercontent.com/u/62016742?s=64 "Jvictorvieira")](https://github.com/Jvictorvieira)
@@ -2535,8 +2540,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![leohxj](https://avatars.githubusercontent.com/u/1506900?s=64 "leohxj")](https://github.com/leohxj)
 * [![LuMiSxh](https://avatars.githubusercontent.com/u/76248448?s=64 "LuMiSxh")](https://github.com/LuMiSxh)
 * [![Trombach](https://avatars.githubusercontent.com/u/19306765?s=64 "Trombach")](https://github.com/Trombach)
-* [![gaeulbyul](https://avatars.githubusercontent.com/u/830515?s=64 "gaeulbyul")](https://github.com/gaeulbyul)
-* [![neotherapper](https://avatars.githubusercontent.com/u/1514154?s=64 "neotherapper")](https://github.com/neotherapper)
 * [![HALQME](https://avatars.githubusercontent.com/u/68320771?s=64 "HALQME")](https://github.com/HALQME)
 * [![TKDev7](https://avatars.githubusercontent.com/u/30705623?s=64 "TKDev7")](https://github.com/TKDev7)
 * [![X7md](https://avatars.githubusercontent.com/u/54203033?s=64 "X7md")](https://github.com/X7md)
@@ -2546,45 +2549,40 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![teplostanski](https://avatars.githubusercontent.com/u/56846024?s=64 "teplostanski")](https://github.com/teplostanski)
 * [![isaac-mcfadyen](https://avatars.githubusercontent.com/u/6243993?s=64 "isaac-mcfadyen")](https://github.com/isaac-mcfadyen)
 * [![isamardzija](https://avatars.githubusercontent.com/u/74252988?s=64 "isamardzija")](https://github.com/isamardzija)
-* [![jacksmithxyz](https://avatars.githubusercontent.com/u/122728490?s=64 "jacksmithxyz")](https://github.com/jacksmithxyz)
+* [![techne98](https://avatars.githubusercontent.com/u/122728490?s=64 "techne98")](https://github.com/techne98)
 * [![AsyncBanana](https://avatars.githubusercontent.com/u/58297401?s=64 "AsyncBanana")](https://github.com/AsyncBanana)
 * [![vandorsx](https://avatars.githubusercontent.com/u/140852203?s=64 "vandorsx")](https://github.com/vandorsx)
 * [![DerYeger](https://avatars.githubusercontent.com/u/7950094?s=64 "DerYeger")](https://github.com/DerYeger)
 * [![JEverhart383](https://avatars.githubusercontent.com/u/7818951?s=64 "JEverhart383")](https://github.com/JEverhart383)
 * [![jeffdrumgod](https://avatars.githubusercontent.com/u/504327?s=64 "jeffdrumgod")](https://github.com/jeffdrumgod)
-* [![AlexNodex](https://avatars.githubusercontent.com/u/17162626?s=64 "AlexNodex")](https://github.com/AlexNodex)
-* [![alexpdraper](https://avatars.githubusercontent.com/u/6441503?s=64 "alexpdraper")](https://github.com/alexpdraper)
-* [![amaimus](https://avatars.githubusercontent.com/u/35699916?s=64 "amaimus")](https://github.com/amaimus)
-* [![albertogiunta](https://avatars.githubusercontent.com/u/5568337?s=64 "albertogiunta")](https://github.com/albertogiunta)
-* [![wonderbeel](https://avatars.githubusercontent.com/u/1643060?s=64 "wonderbeel")](https://github.com/wonderbeel)
-* [![altano](https://avatars.githubusercontent.com/u/1009?s=64 "altano")](https://github.com/altano)
-* [![aboudard](https://avatars.githubusercontent.com/u/767767?s=64 "aboudard")](https://github.com/aboudard)
-* [![AishaBlake](https://avatars.githubusercontent.com/u/7365296?s=64 "AishaBlake")](https://github.com/AishaBlake)
-* [![notjb](https://avatars.githubusercontent.com/u/3164034?s=64 "notjb")](https://github.com/notjb)
-* [![haasal](https://avatars.githubusercontent.com/u/104835302?s=64 "haasal")](https://github.com/haasal)
-* [![alex-drocks](https://avatars.githubusercontent.com/u/69808183?s=64 "alex-drocks")](https://github.com/alex-drocks)
-* [![thekidisalright](https://avatars.githubusercontent.com/u/125706322?s=64 "thekidisalright")](https://github.com/thekidisalright)
-* [![alextison](https://avatars.githubusercontent.com/u/59065561?s=64 "alextison")](https://github.com/alextison)
-* [![hrynko](https://avatars.githubusercontent.com/u/28267443?s=64 "hrynko")](https://github.com/hrynko)
-* [![heldinz](https://avatars.githubusercontent.com/u/851278?s=64 "heldinz")](https://github.com/heldinz)
-* [![gachikuku](https://avatars.githubusercontent.com/u/11743804?s=64 "gachikuku")](https://github.com/gachikuku)
-* [![alvarosabu](https://avatars.githubusercontent.com/u/4699008?s=64 "alvarosabu")](https://github.com/alvarosabu)
-* [![3w36zj6](https://avatars.githubusercontent.com/u/52315048?s=64 "3w36zj6")](https://github.com/3w36zj6)
-* [![aaronkai](https://avatars.githubusercontent.com/u/1002694?s=64 "aaronkai")](https://github.com/aaronkai)
-* [![arafays](https://avatars.githubusercontent.com/u/6192554?s=64 "arafays")](https://github.com/arafays)
-* [![alfawal](https://avatars.githubusercontent.com/u/61620817?s=64 "alfawal")](https://github.com/alfawal)
-* [![AceCodePt](https://avatars.githubusercontent.com/u/19394616?s=64 "AceCodePt")](https://github.com/AceCodePt)
-* [![adamlevoy](https://avatars.githubusercontent.com/u/81095429?s=64 "adamlevoy")](https://github.com/adamlevoy)
-* [![AdamGEmerson](https://avatars.githubusercontent.com/u/35545129?s=64 "AdamGEmerson")](https://github.com/AdamGEmerson)
-* [![adamgajzlerowicz](https://avatars.githubusercontent.com/u/675615?s=64 "adamgajzlerowicz")](https://github.com/adamgajzlerowicz)
-* [![adam-lynch](https://avatars.githubusercontent.com/u/1427241?s=64 "adam-lynch")](https://github.com/adam-lynch)
-* [![armgitaar](https://avatars.githubusercontent.com/u/30202878?s=64 "armgitaar")](https://github.com/armgitaar)
-* [![ADRlANO](https://avatars.githubusercontent.com/u/35582648?s=64 "ADRlANO")](https://github.com/ADRlANO)
-* [![adrian-burkhart](https://avatars.githubusercontent.com/u/59536294?s=64 "adrian-burkhart")](https://github.com/adrian-burkhart)
+* [![jazzypants1989](https://avatars.githubusercontent.com/u/102560332?s=64 "jazzypants1989")](https://github.com/jazzypants1989)
 * [![adrianlyjak](https://avatars.githubusercontent.com/u/2024018?s=64 "adrianlyjak")](https://github.com/adrianlyjak)
 * [![apz-gh](https://avatars.githubusercontent.com/u/20273871?s=64 "apz-gh")](https://github.com/apz-gh)
 * [![ahmedrowaihi](https://avatars.githubusercontent.com/u/67356781?s=64 "ahmedrowaihi")](https://github.com/ahmedrowaihi)
 * [![aidankmcalister](https://avatars.githubusercontent.com/u/105178005?s=64 "aidankmcalister")](https://github.com/aidankmcalister)
+* [![AishaBlake](https://avatars.githubusercontent.com/u/7365296?s=64 "AishaBlake")](https://github.com/AishaBlake)
+* [![aboudard](https://avatars.githubusercontent.com/u/767767?s=64 "aboudard")](https://github.com/aboudard)
+* [![altano](https://avatars.githubusercontent.com/u/1009?s=64 "altano")](https://github.com/altano)
+* [![wonderbeel](https://avatars.githubusercontent.com/u/1643060?s=64 "wonderbeel")](https://github.com/wonderbeel)
+* [![albertogiunta](https://avatars.githubusercontent.com/u/5568337?s=64 "albertogiunta")](https://github.com/albertogiunta)
+* [![amaimus](https://avatars.githubusercontent.com/u/35699916?s=64 "amaimus")](https://github.com/amaimus)
+* [![alexpdraper](https://avatars.githubusercontent.com/u/6441503?s=64 "alexpdraper")](https://github.com/alexpdraper)
+* [![AlexNodex](https://avatars.githubusercontent.com/u/17162626?s=64 "AlexNodex")](https://github.com/AlexNodex)
+* [![haasal](https://avatars.githubusercontent.com/u/104835302?s=64 "haasal")](https://github.com/haasal)
+* [![alex-drocks](https://avatars.githubusercontent.com/u/69808183?s=64 "alex-drocks")](https://github.com/alex-drocks)
+* [![adrian-burkhart](https://avatars.githubusercontent.com/u/59536294?s=64 "adrian-burkhart")](https://github.com/adrian-burkhart)
+* [![ADRlANO](https://avatars.githubusercontent.com/u/35582648?s=64 "ADRlANO")](https://github.com/ADRlANO)
+* [![armgitaar](https://avatars.githubusercontent.com/u/30202878?s=64 "armgitaar")](https://github.com/armgitaar)
+* [![adam-lynch](https://avatars.githubusercontent.com/u/1427241?s=64 "adam-lynch")](https://github.com/adam-lynch)
+* [![adamgajzlerowicz](https://avatars.githubusercontent.com/u/675615?s=64 "adamgajzlerowicz")](https://github.com/adamgajzlerowicz)
+* [![AdamGEmerson](https://avatars.githubusercontent.com/u/35545129?s=64 "AdamGEmerson")](https://github.com/AdamGEmerson)
+* [![adamlevoy](https://avatars.githubusercontent.com/u/81095429?s=64 "adamlevoy")](https://github.com/adamlevoy)
+* [![AceCodePt](https://avatars.githubusercontent.com/u/19394616?s=64 "AceCodePt")](https://github.com/AceCodePt)
+* [![alfawal](https://avatars.githubusercontent.com/u/61620817?s=64 "alfawal")](https://github.com/alfawal)
+* [![arafays](https://avatars.githubusercontent.com/u/6192554?s=64 "arafays")](https://github.com/arafays)
+* [![aaronkai](https://avatars.githubusercontent.com/u/1002694?s=64 "aaronkai")](https://github.com/aaronkai)
+* [![3w36zj6](https://avatars.githubusercontent.com/u/52315048?s=64 "3w36zj6")](https://github.com/3w36zj6)
+* [![notjb](https://avatars.githubusercontent.com/u/3164034?s=64 "notjb")](https://github.com/notjb)
 
 # Editor setup
 
@@ -2596,7 +2594,7 @@ Customize your code editor to improve the Astro developer experience and unlock 
 
 [Section titled “VS Code”](#vs-code)
 
-[VS Code](https://code.visualstudio.com/) is a popular code editor for web developers, built by Microsoft. The VS Code engine also powers popular in-browser code editors like [GitHub Codespaces](https://github.com/features/codespaces) and [Gitpod](https://gitpod.io/).
+[VS Code](https://code.visualstudio.com/) is a popular code editor for web developers, built by Microsoft. The VS Code engine also powers popular in-browser code editors like [GitHub Codespaces](https://github.com/features/codespaces).
 
 Astro works with any code editor. However, VS Code is our recommended editor for Astro projects. We maintain an official [Astro VS Code Extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) that unlocks several key features and developer experience improvements for Astro projects.
 
@@ -2645,7 +2643,7 @@ In addition to local editors, Astro also runs well on in-browser hosted editors,
 
 * [StackBlitz](https://stackblitz.com/) and [CodeSandbox](https://codesandbox.io/) - online editors that run in your browser, with built-in syntax highlighting support for `.astro` files. No installation or configuration required!
 * [GitHub.dev](https://github.dev/) - allows you to install the Astro VS Code extension as a [web extension](https://code.visualstudio.com/api/extension-guides/web-extensions), which gives you access to only some of the full extension features. Currently, only syntax highlighting is supported.
-* [IDX](https://idx.dev) and [Gitpod](https://gitpod.io/) - a full dev environment in the cloud that can install the official Astro VS Code Extension from Open VSX.
+* [Firebase Studio](https://firebase.studio/) - a full dev environment in the cloud that can install the official Astro VS Code Extension from Open VSX.
 
 ## Other tools
 
@@ -2819,7 +2817,7 @@ Astro Actions allow you to define and call backend functions with type-safety. A
 
 Use actions instead of API endpoints for seamless communication between your client and server code and to:
 
-* Automatically validate JSON and form data inputs using [Zod validation](https://zod.dev/?id=primitives).
+* Automatically validate JSON and form data inputs using [Zod validation](/en/reference/modules/astro-zod/).
 * Generate type-safe functions to call your backend from the client and even [from HTML form actions](#call-actions-from-an-html-form-action). No need for manual `fetch()` calls.
 * Standardize backend errors with the [`ActionError`](/en/reference/modules/astro-actions/#actionerror) object.
 
@@ -2833,7 +2831,7 @@ src/actions/index.ts
 
 ```ts
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -2878,13 +2876,13 @@ Follow these steps to define an action and call it in a `script` tag in your Ast
    }
    ```
 
-2. Import the `defineAction()` utility from `astro:actions`, and the `z` object from `astro:schema`.
+2. Import the `defineAction()` utility from `astro:actions`, and the `z` object from `astro/zod`.
 
    src/actions/index.ts
 
    ```diff
    +import { defineAction } from 'astro:actions';
-   +import { z } from 'astro:schema';
+   +import { z } from 'astro/zod';
 
 
    export const server = {
@@ -2892,13 +2890,13 @@ Follow these steps to define an action and call it in a `script` tag in your Ast
    }
    ```
 
-3. Use the `defineAction()` utility to define a `getGreeting` action. The `input` property will be used to validate input parameters with a [Zod](https://zod.dev) schema and the `handler()` function includes the backend logic to run on the server.
+3. Use the `defineAction()` utility to define a `getGreeting` action. The `input` property will be used to validate input parameters with a [Zod schema](/en/reference/modules/astro-zod/#common-data-type-validators) and the `handler()` function includes the backend logic to run on the server.
 
    src/actions/index.ts
 
    ```diff
    import { defineAction } from 'astro:actions';
-   import { z } from 'astro:schema';
+   import { z } from 'astro/zod';
 
 
    export const server = {
@@ -3061,7 +3059,7 @@ src/actions/index.ts
 
 ```diff
 import { defineAction, ActionError } from "astro:actions";
-import { z } from "astro:schema";
+import { z } from "astro/zod";
 
 
 export const server = {
@@ -3153,7 +3151,7 @@ src/actions/index.ts
 
 ```diff
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -3187,7 +3185,7 @@ src/actions/index.ts
 
 ```ts
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -3251,7 +3249,7 @@ The following example shows a validated newsletter registration form that accept
 
    ```diff
    import { defineAction } from 'astro:actions';
-   import { z } from 'astro:schema';
+   import { z } from 'astro/zod';
 
 
    export const server = {
@@ -3383,7 +3381,7 @@ src/actions/index.ts
 
 ```ts
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -4190,7 +4188,7 @@ src/actions/index.ts
 ```ts
 import { db, Comment } from 'astro:db';
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -4371,7 +4369,7 @@ This command will verify that your local changes can be made without data loss a
 
 [Section titled “Pushing breaking schema changes”](#pushing-breaking-schema-changes)
 
-Caution
+Danger
 
 **This will destroy your database**. Only perform this command if you do not need your production data.
 
@@ -4635,7 +4633,7 @@ Tip
 
 There is no official authentication solution for Astro, but you can find [community “auth” integrations](https://astro.build/integrations/?search=auth) in the integrations directory.
 
-See how to [add authentication with Supabase](/en/guides/backend/supabase/#adding-authentication-with-supabase) or [add authentication with Firebase](/en/guides/backend/google-firebase/#adding-authentication-with-firebase) in our dedicated guides for these backend services.
+See how to [add authentication with Supabase](/en/guides/backend/supabase/#adding-authentication-with-supabase) or [add authentication with Firebase](/en/guides/backend/firebase/#adding-authentication-with-firebase) in our dedicated guides for these backend services.
 
 ## Better Auth
 
@@ -4970,11 +4968,11 @@ Note that many of these pages are **stubs**: they’re collections of resources 
 
 * ![](/logos/appwriteio.svg)
 
-  ### [Appwrite](/en/guides/backend/appwriteio/)
+  ### [Appwrite](/en/guides/backend/appwrite/)
 
 * ![](/logos/firebase.svg)
 
-  ### [Firebase](/en/guides/backend/google-firebase/)
+  ### [Firebase](/en/guides/backend/firebase/)
 
 * ![](/logos/neon.svg)
 
@@ -6251,9 +6249,9 @@ NEON_DATABASE_URL=your_production_branch_url
 
 [Prisma Postgres](https://www.prisma.io/) is a fully managed, serverless Postgres database built for modern web apps.
 
-## Connect via Prisma ORM (Recommended)
+## Connect with Prisma ORM (Recommended)
 
-[Section titled “Connect via Prisma ORM (Recommended)”](#connect-via-prisma-orm-recommended)
+[Section titled “Connect with Prisma ORM (Recommended)”](#connect-with-prisma-orm-recommended)
 
 [Prisma ORM](https://www.prisma.io/orm) is the recommended way to connect to your Prisma Postgres database. It provides type-safe queries, migrations, and global performance.
 
@@ -6271,13 +6269,13 @@ Run the following commands to install the necessary Prisma dependencies:
 
 ```bash
 npm install prisma tsx --save-dev
-npm install @prisma/extension-accelerate @prisma/client
+npm install @prisma/adapter-pg @prisma/client
 ```
 
 Once installed, initialize Prisma in your project with the following command:
 
 ```bash
-npx prisma init --db --output ../src/generated/prisma
+npx prisma init --db --output ./generated
 ```
 
 You’ll need to answer a few questions while setting up your Prisma Postgres database. Select the region closest to your location and a memorable name for your database, like “My Astro Project.”
@@ -6295,14 +6293,12 @@ Even if you don’t need any specific data models yet, Prisma requires at least 
 
 The following example defines a `Post` model as a placeholder. Add the model to your schema to get started. You can safely delete or replace it later with models that reflect your actual data.
 
-Update the generator provider from `prisma-client-js` to `prisma-client` in your `prisma/schema.prisma` file:
-
 prisma/schema.prisma
 
 ```diff
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "./generated"
 }
 
 
@@ -6321,6 +6317,16 @@ datasource db {
 ```
 
 Learn more about configuring your Prisma ORM setup in the [Prisma schema reference](https://www.prisma.io/docs/concepts/components/prisma-schema).
+
+### Generate client
+
+[Section titled “Generate client”](#generate-client)
+
+Run the following command to generate the Prisma Client from your schema:
+
+```bash
+npx prisma generate
+```
 
 ### Generate migration files
 
@@ -6341,13 +6347,13 @@ Inside of `/src/lib`, create a `prisma.ts` file. This file will initialize and e
 src/lib/prisma.ts
 
 ```typescript
-import { PrismaClient } from "../generated/prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '../../prisma/generated/client';
 
 
-const prisma = new PrismaClient({
-  datasourceUrl: import.meta.env.DATABASE_URL,
-}).$extends(withAccelerate());
+const connectionString = import.meta.env.DATABASE_URL;
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
 
 export default prisma;
@@ -6393,23 +6399,24 @@ const posts = await prisma.post.findMany({
 
 It is best practice to handle queries in an API route. For more information on how to use Prisma ORM in your Astro project, see the [Astro + Prisma ORM Guide](https://www.prisma.io/docs/guides/astro).
 
-## Direct TCP connection
+## Connect with Other ORMs and Libraries
 
-[Section titled “Direct TCP connection”](#direct-tcp-connection)
+[Section titled “Connect with Other ORMs and Libraries”](#connect-with-other-orms-and-libraries)
 
-To connect to Prisma Postgres via direct TCP, you can create a direct connection string in your Prisma Console. This allows you to connect any other ORM, database library, or tool of your choice.
+You can connect to Prisma Postgres via direct TCP using any other ORM, database library, or tool of your choice. Create a direct connection string in your Prisma Console to get started.
 
 ### Prerequisites
 
 [Section titled “Prerequisites”](#prerequisites-1)
 
+* An Astro project with an adapter installed to enable [on-demand rendering (SSR)](/en/guides/on-demand-rendering/).
 * A [Prisma Postgres](https://pris.ly/ppg) database with a TCP enabled connection string
 
 ### Install dependencies
 
 [Section titled “Install dependencies”](#install-dependencies)
 
-This example will make a direct TCP connection using [`pg`, a PostgreSQL client for Node.js](https://github.com/brianc/node-postgres).
+This example uses [`pg`, a PostgreSQL client for Node.js](https://github.com/brianc/node-postgres) to make a direct TCP connection.
 
 Run the following command to install the `pg` package:
 
@@ -7604,6 +7611,24 @@ You can configure it to use the Astro Docs MCP server for documentation access b
 
 [More info on using MCP servers with the Claude Code GitHub Action](https://github.com/anthropics/claude-code-action?tab=readme-ov-file#using-custom-mcp-configuration)
 
+#### Codex CLI
+
+[Section titled “Codex CLI”](#codex-cli)
+
+Codex CLI is a command-line AI coding tool that can use the Astro Docs MCP server to access documentation while generating Astro code.
+
+You can configure MCP servers at the global level in the `~/.codex/config.toml` file, or in a `.codex/config.toml` file in a project root.
+
+\~/.codex/config.toml
+
+```toml
+[mcp_servers.astro-docs]
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.docs.astro.build/mcp"]
+```
+
+[More info on using MCP servers with Codex CLI](https://developers.openai.com/codex/mcp)
+
 #### Cursor
 
 [Section titled “Cursor”](#cursor)
@@ -7724,6 +7749,30 @@ You can configure MCP servers at the global level in the `~/.gemini/settings.jso
 
 [More info on using MCP servers with Gemini CLI](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md)
 
+#### Google Antigravity
+
+[Section titled “Google Antigravity”](#google-antigravity)
+
+[Google Antigravity](https://antigravity.google/) is an agentic development platform.
+
+1. Open `~/.gemini/antigravity/mcp_config.json` by following the [Connecting Custom MCP Servers guide](https://antigravity.google/docs/mcp#connecting-custom-mcp-servers).
+
+2. Add the following configuration to `mcp_config.json`:
+
+   mcp\_config.json
+
+   ```json
+   {
+     "mcpServers": {
+       "astro-docs": {
+         "serverUrl": "https://mcp.docs.astro.build/mcp"
+       }
+     }
+   }
+   ```
+
+3. Save the file and click “Refresh” in the “Manage MCPs” tab.
+
 #### Zed
 
 [Section titled “Zed”](#zed)
@@ -7799,6 +7848,30 @@ MCP Configuration
 ```
 
 [More info on using Opencode AI](https://opencode.ai/)
+
+#### GitHub Copilot Coding Agent
+
+[Section titled “GitHub Copilot Coding Agent”](#github-copilot-coding-agent)
+
+[GitHub Copilot](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent) can be used as a coding agent powered by GitHub Actions. Enabling the Astro Docs MCP server allows it to access the latest Astro documentation when answering questions or performing coding tasks.
+
+You can configure it to use the Astro Docs MCP server for documentation access by adding the following to your repository’s Copilot coding agent settings available at `https://github.com/<your-org>/<your-repo>/settings/copilot/coding_agent`:
+
+MCP Configuration
+
+```json
+{
+  "mcpServers": {
+    "astro-docs": {
+      "type": "http",
+      "url": "https://mcp.docs.astro.build/mcp",
+      "tools": ["mcp__astro-docs__search_astro_docs"]
+    }
+  }
+}
+```
+
+Learn more about [extending GitHub Copilot coding agent with MCP servers](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/extend-coding-agent-with-mcp).
 
 ### Usage
 
@@ -8135,7 +8208,7 @@ Note that many of these pages are **stubs**: they’re collections of resources 
 
 * ![](/logos/apostrophecms.svg)
 
-  ### [Apostrophe](/en/guides/cms/apostrophecms/)
+  ### [ApostropheCMS](/en/guides/cms/apostrophecms/)
 
 * ![](/logos/builderio.svg)
 
@@ -8291,7 +8364,7 @@ Note that many of these pages are **stubs**: they’re collections of resources 
 
 * ![](/logos/wordpress.svg)
 
-  ### [WordPress](/en/guides/cms/wordpress/)
+  ### [Wordpress](/en/guides/cms/wordpress/)
 
 ## Why use a CMS?
 
@@ -9520,31 +9593,300 @@ const post = gqlResponse?.allBlogArticle?.edges?.[0]?.node;
 
 > Add content to your Astro project using CloudCannon as a CMS
 
-[CloudCannon](https://cloudcannon.com) is a Git-based headless content management system that provides a visual editor for your content.
+[CloudCannon](https://cloudcannon.com) is a Git-based headless content management system that provides a visual editor for your content and UI components, providing a rich, live editing experience.
+
+Tip
+
+If you’re starting a project from scratch, you can use the [CloudCannon Astro Starter Template](https://cloudcannon.com/templates/astro-starter/) with commonly used CloudCannon features to cut down on setup time.
+
+## Integrating with Astro
+
+[Section titled “Integrating with Astro”](#integrating-with-astro)
+
+This guide will describe the process of configuring CloudCannon as a CMS for Astro using the CloudCannon Site Dashboard.
+
+The Site Dashboard provides you with an organized view of your Astro files and the ability to edit them using:
+
+* A [Data Editor](https://cloudcannon.com/documentation/articles/the-data-editor/) for managing structured data files and markup.
+* A [Content Editor](https://cloudcannon.com/documentation/articles/the-content-editor/) for WYSIWYG rich text editing in a minimal view.
+* A [Visual Editor](https://cloudcannon.com/documentation/articles/the-visual-editor/) for an interactive preview of your site, allowing you to edit directly on the page.
+
+You can also configure role-based access to a minimal [Source Editor](https://cloudcannon.com/documentation/articles/the-source-editor/), an in-browser code editor for making minor changes to the source code of your files.
+
+## Prerequisites
+
+[Section titled “Prerequisites”](#prerequisites)
+
+1. A CloudCannon account. If you don’t have an account, you can [sign up with CloudCannon](https://app.cloudcannon.com/register).
+2. An existing Astro project stored locally, or on one of CloudCannon’s supported Git providers: GitHub, GitLab, or Bitbucket. If you do not have an existing project, you can start with CloudCannon’s [Astro Starter Template](https://cloudcannon.com/templates/astro-starter/).
+
+## Configure a new CloudCannon Site
+
+[Section titled “Configure a new CloudCannon Site”](#configure-a-new-cloudcannon-site)
+
+The following steps will configure a new CloudCannon Site from your dashboard. This Site will connect to an existing Astro repository and allow you to manage and edit your content with CloudCannon’s WYSIWYG text editor.
+
+1. In your CloudCannon Organization Home page, create a new Site.
+2. Authenticate your Git provider and select the Astro repository you want to connect to.
+3. Choose a name for your Site, then CloudCannon will create the Site and start syncing your files.
+4. Follow CloudCannon’s guided tasks in your Site dashboard for completing your Site setup, including creating a CloudCannon configuration file (`cloudcannnon.config.yml`)
+5. Save your configuration file to commit it with your CloudCannon preferences to your Git repository.
+
+You can now explore your Site Dashboard to see your Astro files and edit them with the Content Editor.
+
+You may also want to take advantage of some CloudCannon features, such as [organizing your files into collections](#cloudcannon-collections-and-schemas), [creating CloudCannon schemas](#create-a-cloudcannon-schema-for-a-collection), and setting up your project for [visual editing](#configure-visual-editing).
+
+For more detailed instructions, see [CloudCannon’s Getting Started Guide](https://cloudcannon.com/documentation/guides/getting-started-with-cloudcannon/).
+
+## CloudCannon collections and schemas
+
+[Section titled “CloudCannon collections and schemas”](#cloudcannon-collections-and-schemas)
+
+If you use [Astro’s content collections](/en/guides/content-collections/), then you will be familiar with CloudCannon’s concepts of collections (used for organization/navigation in your Site Dashboard) and schemas (used to define the format of new content entries).
+
+Your CloudCannon Site Dashboard allows you to organize your Astro project’s pages and content into collections: groups of related files with a similar format. This allows you to see similar types of content together for ease of editing and makes your content files easy to navigate, sort, and filter.
+
+### Create a CloudCannon schema for a collection
+
+[Section titled “Create a CloudCannon schema for a collection”](#create-a-cloudcannon-schema-for-a-collection)
+
+To ensure that the data properties of your CloudCannon entries match the Zod validation `schema` defined in your content collection, you can create a [CloudCannon schema](https://cloudcannon.com/documentation/articles/what-is-a-schema/) (a blank template document for creating a new entry). Creating a template schema can ensure that any new documents created in CloudCannon will have the properties required by your content collection and avoid type errors in your project. Your CloudCannon schema can also include default values to start new documents, such as an author name for a single-person blog.
+
+The following example will create a CloudCannon schema based on an Astro content collection (`blog`) for blog posts written in Markdown. This schema will be available when [creating a new entry](#creating-a-new-entry) from the CloudCannon “Posts” collection:
+
+1. Create a folder at `.cloudcannon/schemas/` if it does not already exist.
+
+2. Add an existing blank file in this folder to be used as a default blog post template. The name is unimportant, but the file must have the same file extension as your Astro content collection entries (e.g. `post.md`).
+
+3. Provide the necessary frontmatter fields required by your content collection’s schema. You do not need to provide any values for these, but any content you do include will be automatically included when a new entry is created. These are fields that will be available in the sidebar of your Content Editor.
+
+   The following example schema for a blog post has placeholders for the title, author, and date:
+
+   .cloudcannon/schemas/post.md
+
+   ```markdown
+   ---
+   title:
+   author:
+   date:
+   ---
+   ```
+
+4. In your CloudCannon configuration file’s `collections_config` property, add the file path to your schema under the CloudCannon collection under the “Posts” collection.
+
+   cloudcannon.config.yml
+
+   ```diff
+   collections_config:
+     posts:
+       path: content/blog
+       name: Posts
+       icon: post_add
+       +schemas:
+         +default:
+           +path: .cloudcannon/schemas/post.md
+           +name: Blog Post Entry
+   ```
+
+## Creating a new entry
+
+[Section titled “Creating a new entry”](#creating-a-new-entry)
+
+In your CloudCannon Site Dashboard, you can create new content using the “Add” button. You will be able to select an entry type from the schemas you have defined in `cloudcannon.config.yml`, depending on which collection you are currently in.
+
+You can also upload files to CloudCannon, or create new files directly in your Astro project. When you save your Site changes, new files created in either location will be synchronized and available in both CloudCannon and your Astro project.
+
+The following example will create a new blog post from the CloudCannon Site Dashboard “Posts” collection using the `post.md` template schema created to satisfy the `blog` Astro content collection:
+
+1. In the CloudCannon Site Dashboard, navigate to the collection representing the kind of content you want to add. For example, navigate to the “Posts” collection to add a new blog post.
+
+2. Use the “Add” button to create a new post. If you have configured CloudCannon’s `post.md` schema, then you can choose the default blog post entry to create a new post.
+
+3. Fill the necessary fields in the sidebar of your Content Editor (e.g. `title`, `author`, `date`), and post content and save your post.
+
+4. This post is saved locally in CloudCannon and should now be visible from your Site Dashboard in your “Posts” collection. You can view and edit all your individual posts from this dashboard page.
+
+5. When you are ready to commit this new post back to your Astro repository, select “Save” in the Site navigation sidebar from your Site Dashboard. This will show you all unsaved changes made to your site since your last commit back to your repository and allow you to review and select which ones to save or discard.
+
+6. Return to view your Astro project files and pull new changes from git. You will now find a new `.md` file inside the specified directory for this new post, for example:
+
+   * src/
+
+     * content/
+
+       * blog/
+
+         * **my-new-post.md**
+
+7. Navigate to that file in your code editor and verify that you can see the Markdown content you entered. For example:
+
+   ```markdown
+   ---
+   title: My New Post
+   author: Sarah
+   date: 2025-11-12
+   ---
+
+
+   This is my very first post created in CloudCannon. I am **super** excited!
+   ```
+
+## Rendering CloudCannon content
+
+[Section titled “Rendering CloudCannon content”](#rendering-cloudcannon-content)
+
+Use Astro’s Content Collections API to [query and display your posts and collections](/en/guides/content-collections/#querying-collections), just as you would in any Astro project.
+
+### Displaying a collection list
+
+[Section titled “Displaying a collection list”](#displaying-a-collection-list)
+
+The following example displays a list of each post title, with a link to an individual post page.
+
+src/pages/blog.astro
+
+```astro
+---
+import { getCollection } from 'astro:content';
+
+
+const posts = await getCollection('blog');
+---
+<ul>
+  {posts.map(post => (
+    <li>
+      <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+    </li>
+  ))}
+</ul>
+```
+
+### Displaying a single entry
+
+[Section titled “Displaying a single entry”](#displaying-a-single-entry)
+
+To display content from an individual post, you can import and use the `<Content />` component to [render your content to HTML](/en/guides/content-collections/#rendering-body-content):
+
+src/pages/blog/my-first-post.astro
+
+```astro
+---
+import { getEntry, render } from 'astro:content';
+
+
+const entry = await getEntry('blog', 'my-first-post');
+const { Content } = await render(entry);
+---
+
+
+<main>
+  <h1>{entry.data.title}</h1>
+  <p>By: {entry.data.author}</p>
+  <Content />
+</main>
+```
+
+For more information on querying, filtering, displaying your collections content, and more, see the full content [collections documentation](/en/guides/content-collections/).
+
+## Deploying CloudCannon + Astro
+
+[Section titled “Deploying CloudCannon + Astro”](#deploying-cloudcannon--astro)
+
+To deploy your website, visit our [deployment guides](/en/guides/deploy/) and follow the instructions for your preferred hosting provider.
+
+## Configure Visual Editing
+
+[Section titled “Configure Visual Editing”](#configure-visual-editing)
+
+CloudCannon’s [Visual Editor](https://cloudcannon.com/documentation/articles/the-visual-editor/) allows you to see and edit text, images, and other content in a live, interactive preview of your site. These updates can be made using editable regions, data panels, and the sidebar.
+
+Follow [CloudCannon’s guide to set up visual editing](https://cloudcannon.com/documentation/guides/set-up-visual-editing/) (also available in your Site Dashboard). This will show you how to define [editable regions](https://cloudcannon.com/documentation/guides/set-up-visual-editing/an-overview-of-editable-regions/) of your live preview by setting HTML `data-` attributes on DOM elements, or by inserting web components.
+
+For example, the following template creates an editable `author` value that can be updated in the live preview:
+
+```html
+<p>By: <editable-text data-prop="author">{author}</editable-text></p>
+```
+
+### Visual Editing with components
+
+[Section titled “Visual Editing with components”](#visual-editing-with-components)
+
+CloudCannon allows you to [define Component Editable Regions](https://cloudcannon.com/documentation/guides/set-up-visual-editing/visual-editing-for-components/) for live re-rendering of Astro components in the Visual Editor. This gives you the same interactive editing experience for your Astro components.
+
+1. Install the [`@cloudcannon/editable-regions`](https://github.com/CloudCannon/editable-regions) package.
+
+   * npm
+
+     ```shell
+     npm install @cloudcannon/editable-regions
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm add @cloudcannon/editable-regions
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn add @cloudcannon/editable-regions
+     ```
+
+2. Add the `editableRegions` integration to your Astro config:
+
+   astro.config.mjs
+
+   ```diff
+   import { defineConfig } from 'astro/config';
+   +import editableRegions from "@cloudcannon/editable-regions/astro-integration";
+
+
+   export default defineConfig({
+     // ...
+     integrations: [editableRegions()],
+     // ...
+   });
+   ```
+
+3. Follow [CloudCannon’s instructions to register your components](https://cloudcannon.com/documentation/guides/set-up-visual-editing/visual-editing-for-components/#register-your-components). This tells CloudCannon that those components should be bundled for client-side use in the Visual Editor.
+
+4. Add the appropriate attributes to your components for visual editing. For example, the following `CTA.astro` component properties, such as description and button color, can be updated in CloudCannon’s Visual Editor:
+
+   src/components/CTA.astro
+
+   ```astro
+   ---
+   const { description, link, buttonText, buttonColor } = Astro.props;
+   ---
+
+
+   <p data-editable="text" data-prop="description">{description}</p>
+   <a href={link}>
+       <span data-editable="text" data-prop="buttonText" style={`background-color: ${buttonColor}`}>{buttonText}</span>
+   </a>
+   ```
+
+Tip
+
+Also see CloudCannon’s [Astro Bookshop integration](https://cloudcannon.com/blog/how-cloudcannons-live-editing-works-with-astro-and-bookshop/) that allows you to add a `bookshop:live` directive to mark any component in your Astro template for live editing. It also allows you to configure live-editable [CloudCannon Snippets](https://cloudcannon.com/documentation/articles/what-is-a-snippet/) for visual editing and page building with components, including in your MDX Markdown content.
 
 ## Official Resources
 
 [Section titled “Official Resources”](#official-resources)
 
+* [CloudCannon: The Astro CMS](https://cloudcannon.com/astro-cms/)
 * [Astro Starter Template](https://cloudcannon.com/templates/astro-starter/)
-* [Astro Multilingual Starter Template](https://cloudcannon.com/templates/astro-multilingual-starter/)
-* [Astro Starter Guide](https://cloudcannon.com/documentation/guides/astro-starter-guide/)
-* [Bookshop & Astro Guide](https://cloudcannon.com/documentation/guides/bookshop-astro-guide/)
-* [Astro Beginner Tutorial Series](https://cloudcannon.com/tutorials/astro-beginners-tutorial-series/)
+* Video: [Getting started with Astro and CloudCannon CMS: WYSIWYG blogging](https://www.youtube.com/watch?v=VCbZV-SCr20)
 * Blog: [How CloudCannon’s live editing works with Astro and Bookshop](https://cloudcannon.com/blog/how-cloudcannons-live-editing-works-with-astro-and-bookshop/)
-* Blog: [Out-of-this-world support for all Astro users](https://cloudcannon.com/blog/out-of-this-world-support-for-all-astro-users/)
+* [Bookshop & Astro Guide](https://cloudcannon.com/documentation/guides/bookshop-astro-guide/)
 
 ## Community Resources
 
 [Section titled “Community Resources”](#community-resources)
 
-* [CloudCannon announces official support for Astro](https://astro.build/blog/astro-cloudcannon-support/)
-
-## Themes
-
-[Section titled “Themes”](#themes)
-
-* [![](/_astro/sendit.Cu8vxERj_ZX2Pho.webp) Sendit](https://astro.build/themes/details/sendit/)
+* Video: [Astro CMS for Visual Editing: Getting Started with CloudCannon](https://www.youtube.com/watch?v=YcH53e1YamE)
 
 # Contentful & Astro
 
@@ -10928,7 +11270,7 @@ There are two options for adding Decap to Astro:
        <meta charset="utf-8" />
        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
        <meta name="robots" content="noindex" />
-       <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+       <link href="config.yml" type="text/yaml" rel="cms-config-url" />
        <title>Content Manager</title>
      </head>
      <body>
@@ -16858,19 +17200,23 @@ src/content.config.ts
 
 ```ts
 // 1. Import utilities from `astro:content`
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 
 
 // 2. Import loader(s)
 import { glob, file } from 'astro/loaders';
 
 
-// 3. Define your collection(s)
+// 3. Import Zod
+import { z } from 'astro/zod';
+
+
+// 4. Define your collection(s)
 const blog = defineCollection({ /* ... */ });
 const dogs = defineCollection({ /* ... */ });
 
 
-// 4. Export a single `collections` object to register your collection(s)
+// 5. Export a single `collections` object to register your collection(s)
 export const collections = { blog, dogs };
 ```
 
@@ -16888,13 +17234,14 @@ Astro provides [two built-in loader functions](/en/reference/content-loader-refe
 
 The [`glob()` loader](/en/reference/content-loader-reference/#glob-loader) creates entries from directories of Markdown, MDX, Markdoc, JSON, YAML, or TOML files from anywhere on the filesystem. It accepts a `pattern` of entry files to match using glob patterns supported by [micromatch](https://github.com/micromatch/micromatch#matching-features), and a base file path of where your files are located. Each entry’s `id` will be automatically generated from its file name. Use this loader when you have one file per entry.
 
-The [`file()` loader](/en/reference/content-loader-reference/#file-loader) creates multiple entries from a single local file. Each entry in the file must have a unique `id` key property. It accepts a `base` file path to your file and optionally a [`parser` function](#parser-function) for data files it cannot parse automatically. Use this loader when your data file can be parsed as an array of objects.
+The [`file()` loader](/en/reference/content-loader-reference/#file-loader) creates multiple entries from a single local file. Each entry in the file must have a unique `id` key property. It accepts a `base` file path to your file and optionally a [`parser` function](#parser-function) for data files it cannot parse automatically, or to parse data asynchronously. Use this loader when your data file can be parsed as an array of objects.
 
 src/content.config.ts
 
 ```ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders'; // Not available with legacy API
+import { z } from 'astro/zod';
 
 
 const blog = defineCollection({
@@ -17035,13 +17382,14 @@ Tip
 
 In order for Astro to recognize a new or updated schema, you may need to restart the dev server or [sync the content layer](/en/reference/cli-reference/#astro-dev) (`s + enter`) to define the `astro:content` module.
 
-Every frontmatter or data property of your collection entries must be defined using a Zod data type:
+Every frontmatter or data property of your collection entries must be defined using a [Zod data type](/en/reference/modules/astro-zod/#common-data-type-validators):
 
 src/content.config.ts
 
 ```ts
-import { defineCollection, z } from 'astro:content';
-import { glob, file } from 'astro/loaders'; // Not available with legacy API
+import { defineCollection } from 'astro:content';
+import { glob, file } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 
 const blog = defineCollection({
@@ -17072,49 +17420,15 @@ export const collections = { blog, dogs };
 
 Astro uses [Zod](https://github.com/colinhacks/zod) to power its content schemas. With Zod, Astro is able to validate every file’s data within a collection *and* provide automatic TypeScript types when you go to query content from inside your project.
 
-To use Zod in Astro, import the `z` utility from `"astro:content"`. This is a re-export of the Zod library, and it supports all of the features of Zod.
+To use Zod in Astro, import the `z` utility from `"astro/zod"`. This is a re-export of the Zod library, and it supports all of the features of Zod.
 
-```ts
-// Example: A cheatsheet of many common Zod datatypes
-import { z, defineCollection } from 'astro:content';
-
-
-defineCollection({
-  schema: z.object({
-    isDraft: z.boolean(),
-    title: z.string(),
-    sortOrder: z.number(),
-    image: z.object({
-      src: z.string(),
-      alt: z.string(),
-    }),
-    author: z.string().default('Anonymous'),
-    language: z.enum(['en', 'es']),
-    tags: z.array(z.string()),
-    footnote: z.string().optional(),
-
-
-    // In YAML, dates written without quotes around them are interpreted as Date objects
-    publishDate: z.date(), // e.g. 2024-09-17
-
-
-    // Transform a date string (e.g. "2022-07-08") to a Date object
-    updatedDate: z.string().transform((str) => new Date(str)),
-
-
-    authorContact: z.string().email(),
-    canonicalURL: z.string().url(),
-  })
-})
-```
-
-See [Zod’s README](https://github.com/colinhacks/zod) for complete documentation on how Zod works and what features are available.
+See the [`z` utility reference](/en/reference/modules/astro-zod/) for a cheatsheet of common datatypes and to learn how Zod works and what features are available.
 
 ##### Zod schema methods
 
 [Section titled “Zod schema methods”](#zod-schema-methods)
 
-All [Zod schema methods](https://zod.dev/?id=schema-methods) (e.g. `.parse()`, `.transform()`) are available, with some limitations. Notably, performing custom validation checks on images using `image().refine()` is unsupported.
+All [Zod schema methods](/en/reference/modules/astro-zod/#using-zod-methods) (e.g. `.parse()`, `.transform()`) are available, with some limitations. Notably, performing custom validation checks on images using `image().refine()` is unsupported.
 
 #### Defining collection references
 
@@ -17129,8 +17443,9 @@ A common example is a blog post that references reusable author profiles stored 
 src/content.config.ts
 
 ```ts
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, reference } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 
 const blog = defineCollection({
@@ -17777,6 +18092,12 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
   ### [DeployHQ](/en/guides/deploy/deployhq/)
 
   Static
+
+* ![](/logos/edgeone-pages.svg)
+
+  ### [EdgeOne Pages](/en/guides/deploy/edgeone-pages/)
+
+  On demand Static
 
 * ![](/logos/firebase.svg)
 
@@ -19546,13 +19867,26 @@ Your Astro site will be built and deployed to your server. You can enable automa
 
 See [DeployHQ’s documentation](https://www.deployhq.com/support) for more info on advanced deployment features.
 
+# Deploy your Astro Site to EdgeOne Pages
+
+> How to deploy your Astro site to the web on EdgeOne Pages.
+
+You can deploy your Astro project on [EdgeOne Pages](https://pages.edgeone.ai/), a fullstack development platform with a global edge network that can build your site from a Git connection or from the EdgeOne CLI.
+
+## Official Resources
+
+[Section titled “Official Resources”](#official-resources)
+
+* [EdgeOne Astro Framework Guide](https://pages.edgeone.ai/document/framework-astro)
+* [EdgeOne Astro template](https://github.com/TencentEdgeOne/astro-template)
+
 # Deploy your Astro Site to Google’s Firebase Hosting
 
 > How to deploy your Astro site to the web using Google’s Firebase Hosting.
 
 [Firebase Hosting](https://firebase.google.com/products/hosting) is a service provided by Google’s [Firebase](https://firebase.google.com/) app development platform, which can be used to deploy an Astro site.
 
-See our separate guide for [adding Firebase backend services](/en/guides/backend/google-firebase/) such as databases, authentication, and storage.
+See our separate guide for [adding Firebase backend services](/en/guides/backend/firebase/) such as databases, authentication, and storage.
 
 ## Project Configuration
 
@@ -20219,7 +20553,7 @@ Don’t forget to add the permission `Cloud Run Invoker` to the `allUsers` group
 
 [Heroku](https://www.heroku.com/) is a platform-as-a-service for building, running, and managing modern apps in the cloud. You can deploy an Astro site to Heroku using this guide.
 
-Danger
+Caution
 
 The following instructions use [the deprecated `heroku-static-buildpack`](https://github.com/heroku/heroku-buildpack-static#warning-heroku-buildpack-static-is-deprecated). Please see [Heroku’s documentation for using `heroku-buildpack-nginx`](https://github.com/dokku/heroku-buildpack-nginx) instead.
 
@@ -22010,13 +22344,13 @@ export async function GET({ params, request }) {
 }
 ```
 
-You can also type your endpoint functions using the `APIRoute` type:
+You can also get type safety in your endpoint functions using the `APIRoute` type with the `satisfies` operator:
 
 ```ts
 import type { APIRoute } from "astro";
 
 
-export const GET: APIRoute = async ({ params, request }) => {...}
+export const GET = (async ({ params, request }) => { /* ... */ }) satisfies APIRoute;
 ```
 
 ### `params` and Dynamic routing
@@ -22034,7 +22368,7 @@ import type { APIRoute } from "astro";
 const usernames = ["Sarah", "Chris", "Yan", "Elian"];
 
 
-export const GET: APIRoute = ({ params, request }) => {
+export const GET = (({ params, request }) => {
   const id = params.id;
 
 
@@ -22043,7 +22377,7 @@ export const GET: APIRoute = ({ params, request }) => {
       name: usernames[id],
     }),
   );
-};
+}) satisfies APIRoute;
 
 
 export function getStaticPaths() {
@@ -22056,7 +22390,7 @@ export function getStaticPaths() {
 }
 ```
 
-This will generate four JSON endpoints at build time: `/api/0.json`, `/api/1.json`, `/api/2.json` and `/api/3.json`. Dynamic routing with endpoints works the same as it does with pages, but because the endpoint is a function and not a component, [props](/en/reference/routing-reference/#data-passing-with-props) aren’t supported.
+This will generate four JSON endpoints at build time: `/api/0.json`, `/api/1.json`, `/api/2.json` and `/api/3.json`. Dynamic routing with endpoints works the same as it does with pages. In static mode, you can [pass props to the endpoint using `getStaticPaths()`](/en/reference/routing-reference/#data-passing-with-props). However, with on-demand rendering, since the endpoint is a function and not a component, passing props is not supported.
 
 ### `request`
 
@@ -22070,13 +22404,13 @@ src/pages/request-path.json.ts
 import type { APIRoute } from "astro";
 
 
-export const GET: APIRoute = ({ params, request }) => {
+export const GET = (({ params, request }) => {
   return new Response(
     JSON.stringify({
       path: new URL(request.url).pathname,
     }),
   );
-};
+}) satisfies APIRoute;
 ```
 
 ## Server Endpoints (API Routes)
@@ -22156,40 +22490,40 @@ You can also export an `ALL` function to match any method that doesn’t have a 
 src/pages/methods.json.ts
 
 ```ts
-export const GET: APIRoute = ({ params, request }) => {
+export const GET = (({ params, request }) => {
   return new Response(
     JSON.stringify({
       message: "This was a GET!",
     }),
   );
-};
+}) satisfies APIRoute;
 
 
-export const POST: APIRoute = ({ request }) => {
+export const POST = (({ request }) => {
   return new Response(
     JSON.stringify({
       message: "This was a POST!",
     }),
   );
-};
+}) satisfies APIRoute;
 
 
-export const DELETE: APIRoute = ({ request }) => {
+export const DELETE = (({ request }) => {
   return new Response(
     JSON.stringify({
       message: "This was a DELETE!",
     }),
   );
-};
+}) satisfies APIRoute;
 
 
-export const ALL: APIRoute = ({ request }) => {
+export const ALL = (({ request }) => {
   return new Response(
     JSON.stringify({
       message: `This was a ${request.method}!`,
     }),
   );
-};
+}) satisfies APIRoute;
 ```
 
 If you define a `GET` function but no `HEAD` function, Astro will automatically handle `HEAD` requests by calling the `GET` function and stripping the body from the response.
@@ -22208,7 +22542,7 @@ In SSR mode, the `request` property returns a fully usable [`Request`](https://d
 src/pages/test-post.json.ts
 
 ```ts
-export const POST: APIRoute = async ({ request }) => {
+export const POST = (async ({ request }) => {
   if (request.headers.get("Content-Type") === "application/json") {
     const body = await request.json();
     const name = body.name;
@@ -22226,7 +22560,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 
   return new Response(null, { status: 400 });
-};
+}) satisfies APIRoute;
 ```
 
 ### Redirects
@@ -22586,7 +22920,9 @@ There are three kinds of environment variables, determined by the combination of
   import { API_SECRET } from "astro:env/server";
   ```
 
-  By default, secrets are only validated at runtime. You can enable validating private variables on start by [configuring `validateSecrets: true`](/en/reference/configuration-reference/#envvalidatesecrets).
+  By default, all secrets are validated whenever anything is imported from the `astro:env/server` module. This means, secrets may be validated even when they are not imported. You may need to [pass dummy environment variables](#setting-environment-variables) to satisfy this validation during the build.
+
+  You can also enable validating secrets on start by [configuring `validateSecrets: true`](/en/reference/configuration-reference/#envvalidatesecrets).
 
 Note
 
@@ -23378,7 +23714,7 @@ import myImage from '../assets/my_image.png'; // Image is 1600x900
 />
 ```
 
-The `<Image />` component accepts [several component properties](/en/reference/modules/astro-assets/#image-properties) as well as any attributes accepted by the HTML `<img>` tag.
+The `<Image />` component accepts [several component properties](/en/reference/modules/astro-assets/#image-) as well as any attributes accepted by the HTML `<img>` tag.
 
 The following example provides a `class` to the image component which will apply to the final `<img>` element.
 
@@ -23453,7 +23789,7 @@ import myImage from '../assets/my_image.png'; // Image is 1600x900
 </picture>
 ```
 
-See details about [the `<Picture />` component properties](/en/reference/modules/astro-assets/#picture-properties) in the `astro:assets` reference.
+See details about [the `<Picture />` component properties](/en/reference/modules/astro-assets/#picture-) in the `astro:assets` reference.
 
 ### Responsive image behavior
 
@@ -23667,7 +24003,7 @@ The [Astro template syntax](/en/reference/astro-syntax/) also supports writing a
 
 Local images must be imported from the relative path from the existing `.astro` file, or you can configure and use an [import alias](/en/guides/imports/#aliases). Then, you can access the image’s `src` and other properties to use in the `<img>` tag.
 
-Imported image assets match the following signature:
+Imported image assets match the [`ImageMetadata` type](/en/reference/modules/astro-assets/#imagemetadata-1) and have the following signature:
 
 ```ts
 interface ImageMetadata {
@@ -23789,7 +24125,8 @@ The `image` helper for the content collections schema lets you validate and impo
 src/content.config.ts
 
 ```ts
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 
 const blogCollection = defineCollection({
@@ -25802,7 +26139,7 @@ export default defineDb({
 **Type:** `'node' | 'web'`\
 **Default:** `'node'`
 
-**Added in:** `@astrojs/db@0.18.0` New
+**Added in:** `@astrojs/db@0.18.0`
 
 Configures the driver to use to connect to your database in production.
 
@@ -25990,15 +26327,26 @@ These commands are called automatically when using a GitHub CI action, and can b
 
 **Flags:**
 
+* `--db-app-token <token>` Provide the remote database app token directly instead of `ASTRO_DB_APP_TOKEN`.
+* `--dry-run` Print the generated SQL statements without applying them.
 * `--force-reset` Reset all production data if a breaking schema change is required.
+* `--remote` Push to your remote database instead of the local database file. Requires the `ASTRO_DB_REMOTE_URL` environment variable to be set, and either `ASTRO_DB_APP_TOKEN` to be set in the environment or a value passed with the `--db-app-token` command-line argument.
 
-Safely push database configuration changes to your project database. This will check for any risk of data loss and guide you on any recommended migration steps. If a breaking schema change must be made, use the `--force-reset` flag to reset all production data.
+Safely push database configuration changes to your project database. This will check for any risk of data loss and guide you on any recommended migration steps. Use `--remote` to apply changes to your remote database. If a breaking schema change must be made, use `--force-reset` to reset all production data.
 
 ### `astro db verify`
 
 [Section titled “astro db verify”](#astro-db-verify)
 
-Check for any differences between your local and remote database configurations. This is automatically run by `astro db push`. `verify` will compare your local `db/config.ts` file with the remote database and warn if changes are detected.
+**Flags:**
+
+* `--db-app-token <token>` Provide the remote database app token directly instead of `ASTRO_DB_APP_TOKEN`.
+* `--json` Print a machine-readable JSON result from `verify`.
+* `--remote` Compare against your remote database instead of the local database file. Requires the `ASTRO_DB_REMOTE_URL` environment variable to be set, and either `ASTRO_DB_APP_TOKEN` to be set in the environment or a value passed with the `--db-app-token` command-line argument.
+
+Compares your local schema against the remote database to check for any differences between your local and remote database configurations. This is automatically run by `astro db push`.
+
+`verify` will compare your local `db/config.ts` file with the remote database and warn if changes are detected. It will exit with a non-zero code if changes are required or unsafe, making it useful for CI.
 
 ### `astro db execute <file-path>`
 
@@ -26006,9 +26354,10 @@ Check for any differences between your local and remote database configurations.
 
 **Flags:**
 
-* `--remote` Run against your libSQL-compatible database. Omit to run against your development server.
+* `--db-app-token <token>` Provide the remote database app token directly instead of `ASTRO_DB_APP_TOKEN`.
+* `--remote` Run against your libSQL-compatible database. Omit to run against your local database file. Requires the `ASTRO_DB_REMOTE_URL` environment variable to be set, and either `ASTRO_DB_APP_TOKEN` to be set in the environment or a value passed with the `--db-app-token` command-line argument.
 
-Execute a `.ts` or `.js` file to read or write to your database. This accepts a file path as an argument, and supports usage of the `astro:db` module to write type-safe queries. Use the `--remote` flag to run against your libSQL-compatible database, or omit the flag to run against your development server. See how to [seed development data](/en/guides/astro-db/#seed-your-database-for-development) for an example file.
+Execute a `.ts` or `.js` file to read or write to your database. This accepts a file path as an argument, and supports usage of the `astro:db` module to write type-safe queries. Use the `--remote` flag to run against your libSQL-compatible database, or omit the flag to run against your local database file. See how to [seed development data](/en/guides/astro-db/#seed-your-database-for-development) for an example file.
 
 ### `astro db shell --query <sql-string>`
 
@@ -26017,9 +26366,15 @@ Execute a `.ts` or `.js` file to read or write to your database. This accepts a 
 **Flags:**
 
 * `--query` Raw SQL query to execute.
-* `--remote` Run against your libSQL-compatible database. Omit to run against your development server.
+* `--remote` Run against your libSQL-compatible database. Omit to run against your local database file. Requires the `ASTRO_DB_REMOTE_URL` environment variable to be set, and either `ASTRO_DB_APP_TOKEN` to be set in the environment or a value passed with the `--db-app-token` command-line argument.
 
-Execute a raw SQL query against your database. Use the `--remote` flag to run against your libSQL-compatible database, or omit the flag to run against your development server.
+Execute a raw SQL query against your database.
+
+The following example selects all rows from a `Comment` table in a remote database:
+
+```sh
+npx astro db shell --query "SELECT * FROM Comment;" --remote
+```
 
 ## Astro DB utility reference
 
@@ -26597,6 +26952,7 @@ To override the default image node, you can configure an `.astro` component to b
 
    ```astro
    ---
+   import type { ImageMetadata } from "astro";
    import { Image } from "astro:assets";
    interface Props {
      src: ImageMetadata;
@@ -26613,6 +26969,7 @@ To override the default image node, you can configure an `.astro` component to b
 
    ```diff
    ---
+   import type { ImageMetadata } from "astro";
    import { Image } from "astro:assets";
    interface Props {
      src: ImageMetadata | string;
@@ -26671,7 +27028,7 @@ The following steps will create a custom Markdoc image tag to display a `<figure
 
    ```astro
    ---
-   // src/components/MarkdocFigure.astro
+   import type { ImageMetadata } from "astro";
    import { Image } from "astro:assets";
 
 
@@ -26990,8 +27347,9 @@ To include MDX files in a content collection, make sure that your [collection lo
 src/content.config.ts
 
 ```js
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 
 const blog = defineCollection({
@@ -28263,7 +28621,7 @@ When self-hosting, you can load environment variables through CLI commands or co
 * dotenvx
 
   ```shell
-  npx dotenvx run -- node ./dist/server/entry.mjs
+  npx @dotenvx/dotenvx run -- node ./dist/server/entry.mjs
   ```
 
 * Docker
@@ -28970,7 +29328,7 @@ actions.ts
 
 ```diff
 import { defineAction, type SafeResult } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 +import { getActionState } from '@astrojs/react/actions';
 
 
@@ -29540,6 +29898,64 @@ export default defineConfig({
 });
 ```
 
+### `chunks`
+
+[Section titled “chunks”](#chunks)
+
+**Type:** `Record<string, (item: SitemapItem) => SitemapItem | undefined>`
+
+**Added in:** `@astrojs/sitemap@3.7.0` New
+
+A map of functions that allows you to split your sitemap into multiple files based on custom logic. Each key in the object becomes the name of a separate sitemap file, and its corresponding function determines which URLs will be included in that chunk. This can be useful for instance if a specific section of your website changes very often and you’d like to specify a different change frequency for its entries.
+
+Each chunk function receives a `SitemapItem` and for each item returns either:
+
+* the modified `SitemapItem`, if the URL should be included in this chunk
+* `undefined`, if the URL should not be included in this chunk
+
+The example below shows how to split URLs into different sitemap files based on their path:
+
+astro.config.mjs
+
+```diff
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+
+
+export default defineConfig({
+  site: 'https://example.com',
+  integrations: [
+    sitemap({
++      chunks: {
+        +'blog': (item) => {
+          +if (/blog/.test(item.url)) {
+            +item.changefreq = 'weekly';
+            +item.lastmod = new Date();
+            +item.priority = 0.9;
+            +return item;
++          }
++        },
+        +'glossary': (item) => {
+          +if (/glossary/.test(item.url)) {
+            +item.changefreq = 'monthly';
+            +item.lastmod = new Date();
+            +item.priority = 0.7;
+            +return item;
++          }
++        }
++      },
+    }),
+  ],
+});
+```
+
+This configuration will generate the following files:
+
+* `sitemap-blog-0.xml`
+* `sitemap-glossary-0.xml`
+
+URLs that don’t match any chunk will be placed in a default `sitemap-pages-0.xml` file.
+
 ### `i18n`
 
 [Section titled “i18n”](#i18n)
@@ -29678,7 +30094,7 @@ The given configuration will generate sitemap files at `https://example.com/astr
 **Type:** `{ news?: boolean; xhtml?: boolean; image?: boolean; video?: boolean; }`\
 **Default:** `{ news: true, xhtml: true, image: true, video: true }`
 
-**Added in:** `@astrojs/sitemap@3.6.0` New
+**Added in:** `@astrojs/sitemap@3.6.0`
 
 An object of XML namespaces to exclude from the generated sitemap.
 
@@ -30420,7 +30836,9 @@ By default, an ISR function caches for the duration of your deployment. You can 
 
 [Section titled “Time-based invalidation”](#time-based-invalidation)
 
-You can change the length of time to cache routes this by configuring an `expiration` value in seconds:
+By default, when ISR is enabled, routes use [Vercel’s cache shielding](https://vercel.com/docs/incremental-static-regeneration#differences-between-isr-and-cache-control-headers) and any Cache-Control headers are ignored. Configuring an `expiration` value (in seconds) allows you to control how long routes are cached. This means Cache-Control directives set by your application are also respected.
+
+The following example defines `expiration` to cache all pages on first request and save them for 1 day:
 
 astro.config.mjs
 
@@ -30433,18 +30851,17 @@ export default defineConfig({
   // ...
   adapter: vercel({
     isr: {
-      // caches all pages on first request and saves for 1 day
       expiration: 60 * 60 * 24,
     },
   }),
 });
 ```
 
-##### Excluding paths from caching
+##### On-demand invalidation
 
-[Section titled “Excluding paths from caching”](#excluding-paths-from-caching)
+[Section titled “On-demand invalidation”](#on-demand-invalidation)
 
-To implement Vercel’s [Draft mode](https://vercel.com/docs/build-output-api/v3/features#draft-mode), or [On-Demand Incremental Static Regeneration (ISR)](https://vercel.com/docs/build-output-api/v3/features#on-demand-incremental-static-regeneration-isr), you can create a bypass token and provide it to the `isr` config along with any routes to exclude from caching:
+To programmatically invalidate cached pages, create a bypass token and provide it to the `isr` config:
 
 astro.config.mjs
 
@@ -30458,11 +30875,40 @@ export default defineConfig({
         isr: {
             // A secret random string that you create.
             bypassToken: "005556d774a8",
+        }
+    })
+})
+```
+
+You can then invalidate a cached page by sending a HEAD or GET request to the page URL with the `x-prerender-revalidate` header set to your bypass token. See [Vercel’s on-demand ISR documentation](https://vercel.com/docs/build-output-api/v3/features#on-demand-incremental-static-regeneration-isr) for details.
+
+##### Draft mode
+
+[Section titled “Draft mode”](#draft-mode)
+
+To bypass the ISR cache and render fresh content (e.g., for previewing unpublished CMS content), use [Vercel’s Draft mode](https://vercel.com/docs/build-output-api/v3/features#draft-mode). This requires [defining a `bypassToken`](#on-demand-invalidation) in your configuration and reusing its value in your pages to [set a cookie](/en/guides/on-demand-rendering/#cookies) named `__prerender_bypass`.
+
+##### Excluding paths from caching
+
+[Section titled “Excluding paths from caching”](#excluding-paths-from-caching)
+
+Use the `exclude` option to prevent specific routes from being cached by ISR. These paths will always be rendered fresh on each request:
+
+astro.config.mjs
+
+```js
+import { defineConfig } from 'astro/config';
+import vercel from '@astrojs/vercel';
+
+
+export default defineConfig({
+    adapter: vercel({
+        isr: {
             // Paths that will always be served fresh.
             exclude: [
-              '/preview',
-              '/auth/[page]',
-              /^\/api\/.+/ // Regular expressions supported since @astrojs/vercel@v8.1.0
+                '/preview',
+                '/auth/[page]',
+                /^\/api\/.+/ // Regular expressions supported since @astrojs/vercel@v8.1.0
             ]
         }
     })
@@ -31316,14 +31762,14 @@ export default defineConfig({
 })
 ```
 
-All non-mapped `locales` will follow your `prefixDefaultLocales` configuration. However, even if this value is `false`, page files for your `defaultLocale` must also exist within a localized folder. For the configuration above, an `/en/` folder is required.
+All non-mapped `locales` will follow your `prefixDefaultLocales` configuration.
 
 With the above configuration:
 
 * The file `/fr/about.astro` will create the URL `https://fr.example.com/about`.
 * The file `/es/about.astro` will create the URL `https://example.es/about`.
 * The file `/ja/about.astro` will create the URL `https://example.com/ja/about`.
-* The file `/en/about.astro` will create the URL `https://example.com/about`.
+* The file `/about.astro` will create the URL `https://example.com/about`.
 
 The above URLs will also be returned by the `getAbsoluteLocaleUrl()` and `getAbsoluteLocaleUrlList()` functions.
 
@@ -31487,6 +31933,9 @@ const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 
 <p>{greatPost.frontmatter.title}</p>
 <p>Written by: {greatPost.frontmatter.author}</p>
+
+
+{greatPost.compiledContent()}
 
 
 <p>Post Archive:</p>
@@ -32780,7 +33229,7 @@ export const onRequest = async (context, next) => {
 
 [Section titled “Middleware types”](#middleware-types)
 
-You can import and use the utility function `defineMiddleware()` to take advantage of type safety:
+You can import and use the utility function [`defineMiddleware()`](/en/reference/modules/astro-middleware/#definemiddleware) to take advantage of type safety:
 
 src/middleware.ts
 
@@ -32889,7 +33338,7 @@ validation response
 
 **Added in:** `astro@4.13.0`
 
-The `APIContext` exposes a method called `rewrite()` which works the same way as [Astro.rewrite](/en/guides/routing/#rewrites).
+The `APIContext` exposes a method called [`rewrite()`](/en/reference/api-reference/#rewrite) which works the same way as [Astro.rewrite](/en/guides/routing/#rewrites).
 
 Use `context.rewrite()` inside middleware to display a different page’s content without [redirecting](/en/guides/routing/#dynamic-redirects) your visitor to a new page. This will trigger a new rendering phase, causing any middleware to be re-executed.
 
@@ -32939,7 +33388,7 @@ export function onRequest (context, next) {
 
 The `next()` function accepts the same payload of [the `Astro.rewrite()` function](/en/reference/api-reference/#rewrite). The location of the rewrite path can be provided as a string, URL, or `Request`.
 
-When you have multiple middleware functions chained via [sequence()](#chaining-middleware), submitting a path to `next()` will rewrite the `Request` in place and the middleware will not execute again. The next middleware function in the chain will receive the new `Request` with its updated `context`:
+When you have multiple middleware functions chained via [sequence()](#chaining-middleware), submitting a path to `next()` will rewrite the `Request` in place and the middleware will not execute again. The next middleware function in the chain will receive the new `Request` with its updated `context`.
 
 Calling `next()` with this signature will create a new `Request` object using the old `ctx.request`. This means that trying to consume `Request.body`, either before or after this rewrite, will throw a runtime error. This error is often raised with [Astro Actions that use HTML forms](/en/guides/actions/#call-actions-from-an-html-form-action). In these cases, we recommend handling rewrites from your Astro templates using `Astro.rewrite()` instead of using middleware.
 
@@ -34059,7 +34508,7 @@ import rocket from '../assets/rocket.png';
 <img src={rocket.src} alt="A rocketship in space.">
 ```
 
-Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-properties) and note that several will differ from Gatsby’s attributes.
+Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-) and note that several will differ from Gatsby’s attributes.
 
 To continue using [images in Markdown (`.md`) files](/en/guides/images/#images-in-markdown-files) using standard Markdown syntax (`![]()`), you may need to update the link. Using the HTML `<img>` tag directly is not supported in `.md` files for local images, and must be converted to Markdown syntax.
 
@@ -35147,7 +35596,7 @@ See more about [Styling in Astro](/en/guides/styling/).
 
 Convert any Next `<Image />` components to [Astro’s own image component](/en/guides/images/) in `.astro` or `.mdx` files, or to a [standard HTML `<img>` / JSX `<img />`](/en/guides/images/#images-in-ui-framework-components) tag as appropriate in your React components.
 
-Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-properties) and note that several will differ from Next’s attributes.
+Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-) and note that several will differ from Next’s attributes.
 
 src/pages/index.astro
 
@@ -35912,7 +36361,7 @@ See more about [Styling in Astro](/en/guides/styling/).
 
 Convert any [Nuxt `<nuxt-img/>` or `<nuxt-picture/>` components](https://image.nuxt.com/usage/nuxt-img) to [Astro’s own image component](/en/guides/images/) in `.astro` or `.mdx` files, or to a [standard HTML `<img>`](/en/guides/images/#images-in-ui-framework-components) or `<picture>` tag as appropriate in your Vue components.
 
-Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-properties) and note that several will differ from Nuxt’s attributes.
+Astro’s `<Image />` component works in `.astro` and `.mdx` files only. See a [full list of its component attributes](/en/reference/modules/astro-assets/#image-) and note that several will differ from Nuxt’s attributes.
 
 src/pages/index.astro
 
@@ -38012,7 +38461,7 @@ src/actions/addToCart.ts
 
 ```ts
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -42800,7 +43249,7 @@ If you were using the image integration in Astro v2.x, complete the following st
 
    Change all `import` statements from `@astrojs/image/components` to `astro:assets` in order to use the new built-in `<Image />` component.
 
-   Remove any component attributes that are not [currently supported image asset properties](/en/reference/modules/astro-assets/#image-properties).
+   Remove any component attributes that are not [currently supported image asset properties](/en/reference/modules/astro-assets/#image-).
 
    For example, `aspectRatio` is no longer supported, as it is now automatically inferred from the `width` and `height` attributes.
 
@@ -43022,7 +43471,7 @@ This guide will help you migrate from Astro v3 to Astro v4.
 
 Need to upgrade an older project to v3? See our [older migration guide](/en/guides/upgrade-to/v3/).
 
-Need to see the v3 docs? Visit this [older version of the docs site (unmaintained v3.6 snapshot)](https://docs-git-v3-docs-unmaintained-astrodotbuild.vercel.app/).
+Need to see the v3 docs? Visit this [older version of the docs site (unmaintained v3.6 snapshot)](https://web.archive.org/web/20231203051122/https://docs.astro.build/en/getting-started/).
 
 ## Upgrade Astro
 
@@ -43138,7 +43587,7 @@ There should not be any significant breaking changes if you use actively updated
 
 The following changes are considered breaking changes in Astro. Breaking changes may or may not provide temporary backwards compatibility, and all documentation is updated to refer to only the current, supported code.
 
-If you need to refer to the documentation for a v3.x project, you can browse this [(unmaintained) snapshot of the docs from before v4.0 was released](https://docs-git-v3-docs-unmaintained-astrodotbuild.vercel.app/).
+If you need to refer to the documentation for a v3.x project, you can browse this [(unmaintained) snapshot of the docs from before v4.0 was released](https://web.archive.org/web/20231203051122/https://docs.astro.build/en/getting-started/).
 
 ### Renamed: `entrypoint` (Integrations API)
 
@@ -44811,7 +45260,7 @@ Update your adapter to change the type of `entryPoints` from `RouteData` to `Int
 }
 ```
 
-See the [API reference for `IntegrationRouteData`](/en/reference/integrations-reference/#integrationroutedata-type-reference).
+See the [API reference for `IntegrationRouteData`](/en/reference/integrations-reference/#integrationroutedata).
 
 ### Changed: `distURL` is now an array (Integrations API)
 
@@ -44842,7 +45291,7 @@ if (route.distURL) {
 }
 ```
 
-See the [API reference for `IntegrationRouteData`](/en/reference/integrations-reference/#integrationroutedata-type-reference).
+See the [API reference for `IntegrationRouteData`](/en/reference/integrations-reference/#integrationroutedata).
 
 ### Changed: Arguments passed to `app.render()` (Adapter API)
 
@@ -45376,7 +45825,7 @@ Links with the `data-astro-reload` attribute will be ignored by the router and a
 
 [Section titled “Trigger navigation”](#trigger-navigation)
 
-You can also trigger client-side navigation via events not normally listened to by the `<ClientRouter />` router using `navigate`. This function from the `astro:transitions/client` module can be used in scripts, and in framework components that are hydrated with a [client directive](/en/reference/directives-reference/#client-directives).
+You can also trigger client-side navigation via events not normally listened to by the `<ClientRouter />` router using [`navigate()`](/en/reference/modules/astro-transitions/#navigate). This function from the `astro:transitions/client` module can be used in scripts, and in framework components that are hydrated with a [client directive](/en/reference/directives-reference/#client-directives).
 
 The following example shows an Astro component that navigates a visitor to another page they select from a menu:
 
@@ -45457,21 +45906,9 @@ import { ClientRouter } from "astro:transitions";
 </html>
 ```
 
-The `navigate` method takes these arguments:
-
-* `href` (required) - The new page to navigate to.
-
-* `options` - An optional object with the following properties:
-
-  * `history`: `"push"` | `"replace"` | `"auto"`
-
-    * `"push"`: the router will use `history.pushState` to create a new entry in the browser history.
-    * `"replace"`: the router will use `history.replaceState` to update the URL without adding a new entry into navigation.
-    * `"auto"` (default): the router will attempt `history.pushState`, but if the URL is not one that can be transitioned to, the current URL will remain with no changes to the browser history.
-
-  * `formData`: A [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object for `POST` requests.
-
 For backward and forward navigation through the browser history, you can combine `navigate()` with the built-in `history.back()`, `history.forward()` and `history.go()` functions of the browser. If `navigate()` is called during the server-side render of your component, it has no effect.
+
+See the `astro:transitions` reference for more information about the [`navigate()` options](/en/reference/modules/astro-transitions/#navigate).
 
 ### Replace entries in the browser history
 
@@ -45481,9 +45918,7 @@ Normally, each time you navigate, a new entry is written to the browser’s hist
 
 The `<ClientRouter />` router allows you to overwrite history entries by adding the `data-astro-history` attribute to any individual `<a>` tag.
 
-The `data-astro-history` attribute can be set to the same three values as the [`history` option of the `navigate()` function](#trigger-navigation):
-
-`data-astro-history`: `"push"` | `"replace"` | `"auto"`
+The `data-astro-history` attribute can be set to the same three values as the [`history` option of the `navigate()` function](/en/reference/modules/astro-transitions/#history-option):
 
 * `"push"`: the router will use `history.pushState` to create a new entry in the browser history.
 * `"replace"`: the router will use `history.replaceState` to update the URL without adding a new entry into navigation.
@@ -45526,6 +45961,38 @@ src/components/Form.astro
 ```astro
 <form action="/contact" data-astro-reload>
 ```
+
+### Navigating with user input
+
+[Section titled “Navigating with user input”](#navigating-with-user-input)
+
+The `navigate()` API does not perform sanitization on the URLs passed to it. If you are using user input to determine the URL to navigate to, you should validate the input before passing it to `navigate()`.
+
+For example, a `?redirect` query parameter could be used to navigate away from your site (`?redirect=http://example.com`) or to execute arbitrary code (`?redirect=javascript:alert('Evil code')`) if the value is not sanitized before use.
+
+One way to implement this safely is to ensure only a set of known paths can be redirected to:
+
+src/pages/index.astro
+
+```astro
+<script>
+  import { navigate } from 'astro:transitions/client';
+
+
+  const params = new URLSearchParams(window.location.search);
+  const redirect = params.get('redirect');
+  const allowedPaths = ['/home', '/about', '/contact'];
+
+
+  if (allowedPaths.includes(redirect)) {
+    navigate(redirect);
+  }
+</script>
+```
+
+The exact kind of sanitization you need will depend on your site and what you want to allow.
+
+Consider enabling Astro’s [experimental Content Security Policy feature](/en/reference/experimental-flags/csp/) to help protect against cross-site scripting (XSS) risks if using user input with the `navigate()` API.
 
 ## Fallback control
 
@@ -45716,7 +46183,7 @@ This event is used:
 * To alter loading, such as loading content you’ve defined in a template rather than from the external URL.
 * To change the `direction` of the navigation (which is usually either `forward` or `backward`) for custom animation.
 
-Here is an example of using the `astro:before-preparation` event to load a spinner before the content is loaded and stop it immediately after loading. Note that using the `loader` callback in this way allows asynchronous execution of code.
+Here is an example of using the `astro:before-preparation` event to load a spinner before the content is loaded and stop it immediately after loading. Note that using the [`loader` callback](/en/reference/modules/astro-transitions/#loader) in this way allows asynchronous execution of code.
 
 ```astro
 <script is:inline>
@@ -45794,7 +46261,7 @@ At this point of the lifecycle, you could choose to define your own swap impleme
 
 **Added in:** `astro@4.15.0`
 
-The `swapFunctions` object of the `astro:transitions/client` module provides five utility functions that handle specific swap-related tasks, including handling document attributes, page elements, and script execution. These functions can be used directly to define a custom swap implementation.
+The [`swapFunctions` object](/en/reference/modules/astro-transitions/#swapfunctions) of the `astro:transitions/client` module provides five utility functions that handle specific swap-related tasks, including handling document attributes, page elements, and script execution. These functions can be used directly to define a custom swap implementation.
 
 The following example demonstrates how to use these functions to recreate Astro’s built-in swap implementation:
 
@@ -45887,7 +46354,7 @@ We strongly recommend you always include a `<title>` in each page for accessibil
 
 [Section titled “prefers-reduced-motion”](#prefers-reduced-motion)
 
-Astro’s `<ClientRouter />` component includes a CSS media query that disables *all* view transition animations, including fallback animation, whenever the [`prefer-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) setting is detected. Instead, the browser will simply swap the DOM elements without an animation.
+Astro’s `<ClientRouter />` component includes a CSS media query that disables *all* view transition animations, including fallback animation, whenever the [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) setting is detected. Instead, the browser will simply swap the DOM elements without an animation.
 
 # Astro recipes
 
@@ -45929,13 +46396,13 @@ Astro’s official recipes are short, focused how-to guides that walk a reader t
 
   Learn how to call endpoints from the server in Astro.
 
-* ### [Customize file names in the build output](/en/recipes/customizing-output-filenames/)
-
-  Learn how to change the default naming pattern for your built assets like JavaScript, CSS, and images in Astro using Vite's Rollup options.
-
 * ### [Verify a Captcha](/en/recipes/captcha/)
 
   Learn how to create an API route and fetch it from the client.
+
+* ### [Customize file names in the build output](/en/recipes/customizing-output-filenames/)
+
+  Learn how to change the default naming pattern for your built assets like JavaScript, CSS, and images in Astro using Vite's Rollup options.
 
 * ### [Build your Astro site with Docker](/en/recipes/docker/)
 
@@ -47113,7 +47580,6 @@ Bun ships with a fast, built-in, Jest-compatible test runner through the [`bun t
 
 Using Bun with Astro? Add your blog post or video to this page!
 
-* [Building a Cloudflare Pages site with Bun](https://blog.otterlord.dev/posts/hello-from-bun/) - blog post
 * [Using Bun with Astro and Cloudflare Pages](https://handerson.hashnode.dev/using-bun-with-astro-and-cloudflare-pages) - blog post
 
 # Call endpoints from the server
@@ -47934,7 +48400,8 @@ See the [resources section](#resources) for external links to related topics suc
    src/content.config.ts
 
    ```ts
-   import { defineCollection, z } from 'astro:content';
+   import { defineCollection } from 'astro:content';
+   import { z } from 'astro/zod';
 
 
    const blogCollection = defineCollection({
@@ -48420,12 +48887,7 @@ Translate the routes of your pages for each language.
 
 [Section titled “Community libraries”](#community-libraries)
 
-* [astro-i18next](https://github.com/yassinedoghri/astro-i18next) — An Astro integration for i18next including some utility components.
-* [astro-i18n](https://github.com/alexandre-fernandez/astro-i18n) — A TypeScript-first internationalization library for Astro.
-* [astro-i18n-aut](https://github.com/jlarmstrongiv/astro-i18n-aut) — An Astro integration for i18n that supports the `defaultLocale` without page generation. The integration is adapter agnostic and UI framework agnostic.
-* [astro-react-i18next](https://github.com/jeremyxgo/astro-react-i18next) — An Astro integration that seamlessly enables the use of i18next and react-i18next in React components on Astro websites.
-* [paraglide](https://inlang.com/c/astro) — A fully type-safe i18n library specifically designed for partial hydration patterns like Astro islands.
-* [astro-loader-i18n](https://github.com/openscript/astro-loader-i18n) — An Astro glob content loader for i18n files and folder structures supporting the translation of routes.
+Find [community-built i18n utilities](https://astro.build/integrations/?search=i18n) that you can add to your Astro project in our integrations directory.
 
 # Create a dev toolbar app
 
@@ -50995,10 +51457,10 @@ If not provided, Astro will fallback to its default behavior for fetching error 
 
 [Section titled “routeData”](#routedata)
 
-**Type:** `RouteData`\
+**Type:** [`RouteData`](/en/reference/integrations-reference/#routedata)\
 **Default:** `app.match(request)`
 
-Provides a value for [`integrationRouteData`](/en/reference/integrations-reference/#integrationroutedata-type-reference) if you already know the route to render. Doing so will bypass the internal call to [`app.match()`](#appmatch) to determine the route to render.
+Defines the information about a route. This is useful when you already know the route to render. Doing so will bypass the internal call to [`app.match()`](#appmatch) to determine the route to render.
 
 ```js
 const routeData = app.match(request);
@@ -52658,6 +53120,18 @@ Specifies a number, in seconds, for which the cookie is valid.
 **Type:** `string`
 
 Specifies a subpath of the domain in which the cookie is applied.
+
+##### `partitioned`
+
+[Section titled “partitioned”](#partitioned)
+
+**Type:** `boolean`
+
+**Added in:** `astro@5.17.0` New
+
+If true, the cookie is a [partitioned cookie](https://developer.mozilla.org/en-US/docs/Web/Privacy/Guides/Privacy_sandbox/Partitioned_cookies). Partitioned cookies can only be read within the context of the top-level site on which they were set, which allows cross-site tracking to be blocked while still enabling legitimate uses of third-party cookies.
+
+Partitioned cookies must be set with `secure: true`.
 
 ##### `sameSite`
 
@@ -54899,6 +55373,19 @@ Whether to enable the Astro Dev Toolbar. This toolbar allows you to inspect your
 
 This option is scoped to the entire project, to only disable the toolbar for yourself, run `npm run astro preferences disable devToolbar`. To disable the toolbar for all your Astro projects, run `npm run astro preferences disable devToolbar --global`.
 
+### devToolbar.placement
+
+[Section titled “devToolbar.placement”](#devtoolbarplacement)
+
+**Type:** `'bottom-left' | 'bottom-center' | 'bottom-right'`\
+**Default:** `'bottom-center'`
+
+**Added in:** `astro@5.17.0` New
+
+The default placement of the Astro Dev Toolbar on the screen.
+
+The placement of the toolbar can still be changed via the toolbar settings UI. Once changed, the user’s preference is saved in `localStorage` and overrides this configuration value.
+
 ## Prefetch Options
 
 [Section titled “Prefetch Options”](#prefetch-options)
@@ -55025,6 +55512,19 @@ The service entrypoint can be either one of the included services, or a third-pa
 Whether or not to limit the size of images that the Sharp image service will process.
 
 Set `false` to bypass the default image size limit for the Sharp image service and process large images.
+
+#### image.service.config.kernel
+
+[Section titled “image.service.config.kernel”](#imageserviceconfigkernel)
+
+**Type:** `string | undefined`\
+**Default:** `undefined`
+
+**Added in:** `astro@5.17.0` New
+
+The default [kernel used for resizing images](https://sharp.pixelplumbing.com/api-resize/#resize) in the Sharp image service.
+
+By default this is `undefined`, which maps to Sharp’s default kernel of `lanczos3`.
 
 ### image.domains
 
@@ -56153,7 +56653,7 @@ const json = await response.json();
 
 **Added in:** `astro@4.16.6`
 
-Whether or not the Container API renders components as if they were [page partials](/en/basics/astro-pages/#page-partials). This is usually the behavior you want when rendering `components.boolean` so you can render components without a full page shell.
+Whether or not the Container API renders components as if they were [page partials](/en/basics/astro-pages/#page-partials). The default `true` setting renders the component in isolation without a full page shell.
 
 To render a component as a full Astro page, including `<!DOCTYPE html>`, you can opt-out of this behavior by setting `partial` to `false`:
 
@@ -56195,7 +56695,7 @@ Astro provides two built-in loaders to help you fetch your collections. Both off
 
 The `glob()` loader creates entries from directories of files from anywhere on the filesystem. The supported file types are Markdown, MDX, Markdoc, JSON, YAML, and TOML files.
 
-This loader accepts an object with the following properties: `pattern`, `base` (optional), and `generateId` (optional).
+This loader accepts an object with the following properties: `pattern`, `base` (optional), `generateId` (optional), and `retainBody` (optional).
 
 src/content.config.ts
 
@@ -56212,6 +56712,16 @@ const pages = defineCollection({
 const blog = defineCollection({
   /* Retrieve all Markdown and MDX files in your blog directory. */
   loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/data/blog" }),
+  schema: /* ... */
+});
+const notes = defineCollection({
+  /* Retrieve all Markdown files in your notes directory and prevent
+   * the raw body of content files from being stored in the data store. */
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/data/notes',
+    retainBody: false
+  }),
   schema: /* ... */
 });
 const authors = defineCollection({
@@ -56258,6 +56768,25 @@ A callback function that returns a unique string per entry in a collection. It a
 * `data` - the parsed, unvalidated data of the entry
 
 By default it uses [`github-slugger`](https://github.com/Flet/github-slugger) to generate a slug with [kebab-cased](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) words.
+
+#### `retainBody`
+
+[Section titled “retainBody”](#retainbody)
+
+**Type:** `boolean`\
+**Default:** `true`
+
+**Added in:** `astro@5.17.0` New
+
+Whether or not to store the raw body of content files in the data store.
+
+When `retainBody` is `false`, [`entry.body`](/en/reference/modules/astro-content/#body) will be `undefined` instead of containing the raw file contents.
+
+Setting this property to `false` significantly reduces the deployed size of the data store and helps avoid hitting size limits for sites with very large collections.
+
+For Markdown files, the rendered body will still be available in the [`entry.rendered.html` property](/en/reference/content-loader-reference/#rendered), and the [`entry.filePath` property](/en/reference/content-loader-reference/#filepath) will still point to the original file.
+
+For MDX collections, this will dramatically reduce the size of the collection, as there will no longer be any body retained in the store.
 
 ### `file()` loader
 
@@ -56312,7 +56841,7 @@ An optional object with the following properties:
 
 [Section titled “parser()”](#parser)
 
-**Type:** `(text: string) => Record<string, Record<string, unknown>> | Array<Record<string, unknown>>`
+**Type:** `(text: string) => Record<string, Record<string, unknown>> | Array<Record<string, unknown>> | Promise<Record<string, Record<string, unknown>> | Array<Record<string, unknown>>>`
 
 A callback function to create a collection from a file’s contents. Use it when you need to process file not supported by default (e.g. `.csv`) or when using [nested `.json` documents](/en/guides/content-collections/#nested-json-documents).
 
@@ -56360,7 +56889,7 @@ loader.ts
 
 ```ts
 import type { Loader, LoaderContext } from 'astro/loaders';
-import { z } from 'astro:content';
+import { z } from 'astro/zod';
 import { loadFeedData } from "./feed.js";
 
 
@@ -56390,7 +56919,8 @@ These configuration options can then be set when defining a collection:
 src/content.config.ts
 
 ```ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import myLoader from '../../loader.ts';
 
 
@@ -59068,7 +59598,7 @@ The `file` loader can’t determine which parser to use. Please provide a custom
 
 # Font family not found
 
-> No data was found for the `cssVariable` passed to the `<Font />` component or to the `getFontData()` function.
+> No data was found for the `cssVariable` passed to the `<Font />` component.
 
 ## What went wrong?
 
@@ -60753,7 +61283,7 @@ These properties are added to all pages and **completely override Astro’s defa
 
 **Added in:** `astro@5.9.0`
 
-A list of valid sources for the `script-src` and `style-src` directives.
+A list of valid sources for the `script-src` and `style-src` directives, including [values for subclasses](#adding-values-for-subclasses).
 
 The `script-src` and `style-src` directives are handled by Astro by default, and use the `'self'` resource. This means that scripts and styles can only be downloaded by the current host (usually the current website).
 
@@ -60793,6 +61323,100 @@ After the build, the `<meta>` element will instead apply your sources to the `st
     content="
       script-src https://cdn.example.com 'sha256-somehash';
       style-src 'self' https://styles.cdn.example.com 'sha256-somehash';
+    "
+  >
+</head>
+```
+
+##### Adding values for subclasses
+
+[Section titled “Adding values for subclasses”](#adding-values-for-subclasses)
+
+You can also use this field to add valid values that belong to [`script-src-attr`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src-attr), [`script-src-elem`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src-elem), [`style-src-attr`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src-attr) and [`style-src-elem`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src-elem), such as `unsafe-hashes` and `unsafe-inline`.
+
+For example, if you have an external library that adds scripts or inline styles to some HTML elements of the page, you can add `unsafe-inline` to tell the browser that they are safe to render.
+
+astro.config.mjs
+
+```js
+import { defineConfig } from 'astro/config';
+
+
+export default defineConfig({
+  experimental: {
+    csp: {
+      styleDirective: {
+        resources: [
+          "'unsafe-inline'"
+        ]
+      },
+      scriptDirective: {
+        resources: [
+          "'unsafe-inline'"
+        ]
+      }
+    }
+  }
+});
+```
+
+After the build, `style-src` and `script-src` directives will contain the `'unsafe-line'` resource:
+
+```html
+<head>
+  <meta
+    http-equiv="content-security-policy"
+    content="
+      script-src 'unsafe-line';
+      style-src 'unsafe-line';
+    "
+  >
+</head>
+```
+
+##### Multiple resources
+
+[Section titled “Multiple resources”](#multiple-resources)
+
+When resources are inserted multiple times or from multiple sources (e.g. defined in your `csp` config and added using [the CSP runtime API](#runtime-apis)), Astro will remove any duplicates, and merge the new ones.
+
+In the following example, the directives `img-src https://global.cdn.example.org` and `default-src https://global.cdn.example.org` are set in `csp` configuration and will be applied to all pages.
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    csp: {
+      directives: [
+        "img-src https://global.cdn.example.org",
+        "default-src https://global.cdn.example.org"
+      ]
+    }
+  }
+})
+```
+
+Additionally, on an individual page, the resources `img-src https://vendor.cdn.example.org/` and `default-src https://global.cdn.example.org/ https://vendor.cdn.example.org/` are added using the [Astro.csp.insertDirective](#cspinsertdirective).
+
+src/pages/index.astro
+
+```astro
+---
+Astro.csp.insertDirective("img-src https://vendor.cdn.example.org")
+Astro.csp.insertDirective("default-src https://global.cdn.example.org https://vendor.cdn.example.org")
+---
+```
+
+During the build, the resources of the directives `img-src` and `default-src` for the `index.html` page are merged and deduplicated to create the appropriate headers.
+
+```html
+<head>
+  <meta
+    http-equiv="content-security-policy"
+    content="
+        img-src https://global.cdn.example.org https://vendor.cdn.example.org;
+        default-src https://global.cdn.example.org https://vendor.cdn.example.org;
     "
   >
 </head>
@@ -61101,11 +61725,11 @@ src/components/Head.astro
 
 ```diff
 ---
-+import { Font } from 'astro:assets';
++import { Font } from "astro:assets";
 ---
 
 
-+<Font cssVariable='--font-roboto' preload />
++<Font cssVariable="--font-roboto" preload />
 
 
 <style>
@@ -61121,7 +61745,7 @@ src/components/Head.astro
 
 1. `experimental.fonts` accepts an array of font objects. For each font, you must specify a `provider`, the family `name`, and define a `cssVariable` to refer to your font.
 
-   * [`provider`](#provider): You can choose from the list of [built-in remote providers](#available-remote-font-providers), build your own [custom font provider](#build-your-own-font-provider), or use the [local provider](#local-font-variants) to register local font files.
+   * [`provider`](#provider): You can choose from the list of [built-in providers](#available-font-providers) or build your own [custom font provider](#build-your-own-font-provider).
    * [`name`](#name): Choose a font family supported by your provider.
    * [`cssVariable`](#cssvariable-1): Must be a valid [ident](https://developer.mozilla.org/en-US/docs/Web/CSS/ident) in the form of a CSS variable.
 
@@ -61144,7 +61768,7 @@ src/components/Head.astro
    });
    ```
 
-   More configuration options, such as defining [fallback font families](#fallbacks) and which [`weights`](#weights), [`styles`](#styles) and [`subsets`](#subsets) to download, are available and some will depend on your chosen provider.
+   More configuration options, such as defining [fallback font families](#fallbacks) and which [`weights`](#weights), [`styles`](#styles), [`subsets`](#subsets) and [`formats`](#formats) to download, are available and some will depend on your chosen provider.
 
    See the full [configuration reference](#font-configuration-reference) to learn more.
 
@@ -61154,7 +61778,7 @@ src/components/Head.astro
 
    ```diff
    ---
-   +import { Font } from 'astro:assets';
+   +import { Font } from "astro:assets";
    ---
 
 
@@ -61182,7 +61806,7 @@ src/components/Head.astro
      src/styles/global.css
 
      ```diff
-     @import 'tailwindcss';
+     @import "tailwindcss";
 
 
      @theme inline {
@@ -61208,539 +61832,218 @@ src/components/Head.astro
      };
      ```
 
-## Available remote font providers
+## Available font providers
 
-[Section titled “Available remote font providers”](#available-remote-font-providers)
+[Section titled “Available font providers”](#available-font-providers)
 
-Astro re-exports most [unifont](https://github.com/unjs/unifont/) providers. You can also [make a custom Astro font provider](#build-your-own-font-provider) for any unifont provider.
+Fonts are loaded using a provider, which either downloads font files from a remote service or loads local font files from disk. Astro exports built-in providers for common services. You can also [make a custom Astro font provider](#build-your-own-font-provider).
 
-The following providers have built-in support:
-
-* [Adobe](https://fonts.adobe.com/)
-* [Bunny](https://fonts.bunny.net/)
-* [Fontshare](https://www.fontshare.com/)
-* [Fontsource](https://fontsource.org/)
-* [Google](https://fonts.google.com/)
-
-To use a built-in remote provider, configure `provider` with the appropriate value for your chosen font provider:
-
-* Adobe
-
-  ```js
-  provider: fontProviders.adobe({ id: 'your-id' })
-  ```
-
-  Pass the Adobe font provider an ID loaded as an [environment variable in your Astro config file](/en/guides/environment-variables/#in-the-astro-config-file).
-
-* Bunny
-
-  ```js
-  provider: fontProviders.bunny()
-  ```
-
-* Fontshare
-
-  ```js
-  provider: fontProviders.fontshare()
-  ```
-
-* Fontsource
-
-  ```js
-  provider: fontProviders.fontsource()
-  ```
-
-* Google
-
-  ```js
-  provider: fontProviders.google()
-  ```
-
-  Additionally, the `google()` font provider accepts all options available for the [unifont Google `ProviderOption`](https://github.com/unjs/unifont/blob/main/src/providers/google.ts#L10-L26):
-
-  ```js
-  provider: fontProviders.google({
-    glyphs: {
-      Roboto: ["a"]
-    }
-  })
-  ```
-
-## Usage examples
-
-[Section titled “Usage examples”](#usage-examples)
+To use a built-in font provider, import `fontProviders` and configure [`provider`](#provider) with the appropriate value for your chosen font provider:
 
 astro.config.mjs
 
 ```js
-import { defineConfig, fontProviders } from "astro/config";
-
-
-export default defineConfig({
-  experimental: {
-    fonts: [
-      {
-        name: "Roboto",
-        cssVariable: "--font-roboto"
-        provider: fontProviders.google(),
-        // Default included:
-        // weights: [400] ,
-        // styles: ["normal", "italics"],
-        // subsets: ["latin"],
-        // fallbacks: ["sans-serif"],
-      },
-      {
-        name: "Inter",
-        cssVariable: "--font-inter",
-        provider: fontProviders.fontsource(),
-        // Specify weights that are actually used
-        weights: [400, 500, 600, 700],
-        // Specify styles that are actually used
-        styles: ["normal"],
-        // Download only font files for characters used on the page
-        subsets: ["latin", "cyrillic"],
-      },
-      {
-        name: "JetBrains Mono",
-        cssVariable: "--font-jetbrains-mono",
-        provider: fontProviders.fontsource(),
-        // Download only font files for characters used on the page
-        subsets: ["latin", "latin-ext"],
-        // Use a fallback font family matching the intended appearance
-        fallbacks: ["monospace"],
-      },
-      {
-        name: "Poppins",
-        cssVariable: "--font-poppins",
-        provider: "local",
-        // Weight and style are not specified so Astro
-        // will try to infer them for each variant
-        variants: [
-          {
-            src: [
-              "./src/assets/fonts/Poppins-regular.woff2",
-              "./src/assets/fonts/Poppins-regular.woff",
-            ]
-          },
-          {
-            src: [
-              "./src/assets/fonts/Poppins-bold.woff2",
-              "./src/assets/fonts/Poppins-bold.woff",
-            ]
-          },
-        ]
-      }
-    ],
-  }
-});
+import { fontProviders } from "astro/config";
 ```
 
-## `<Font />` component reference
+* [Adobe](#adobe)
+* [Bunny](#bunny)
+* [Fontshare](#fontshare)
+* [Fontsource](#fontsource)
+* [Google](#google)
+* [Google Icons](#google-icons)
+* [Local](#local)
 
-[Section titled “\<Font /> component reference”](#font--component-reference)
+### Adobe
 
-This component outputs style tags and can optionally output preload links for a given font family.
+[Section titled “Adobe”](#adobe)
 
-It must be imported and added to your page `<head>`. This is commonly done in a component such as `Head.astro` that is used in a common site layout for global use but may be added to individual pages as needed.
+Retrieves fonts from [Adobe](https://fonts.adobe.com/):
 
-With this component, you have control over which font family is used on which page, and which fonts are preloaded.
-
-### cssVariable
-
-[Section titled “cssVariable”](#cssvariable)
-
-**Example type:** `"--font-roboto" | "--font-comic-sans" | ...`
-
-The [`cssVariable`](#cssvariable-1) registered in your Astro configuration:
-
-src/components/Head.astro
-
-```astro
----
-import { Font } from 'astro:assets';
----
-
-
-<Font cssVariable="--font-roboto" />
+```js
+provider: fontProviders.adobe({ id: "your-id" })
 ```
 
-### preload
+Pass the Adobe font provider an ID loaded as an [environment variable in your Astro config file](/en/guides/environment-variables/#in-the-astro-config-file).
 
-[Section titled “preload”](#preload)
+### Bunny
 
-**Type:** `boolean | { weight?: string | number; style?: string; subset?: string }[]`\
-**Default:** `false`
+[Section titled “Bunny”](#bunny)
 
-Whether to output [preload links](https://web.dev/learn/performance/optimize-web-fonts#preload) or not:
+Retrieves fonts from [Bunny](https://fonts.bunny.net/):
 
-src/components/Head.astro
-
-```astro
----
-import { Font } from 'astro:assets';
----
-
-
-<Font cssVariable="--font-roboto" preload />
+```js
+provider: fontProviders.bunny()
 ```
 
-With the `preload` directive, the browser will immediately begin downloading all possible font links during page load.
+### Fontshare
 
-#### Granular preloads
+[Section titled “Fontshare”](#fontshare)
 
-[Section titled “Granular preloads”](#granular-preloads)
+Retrieves fonts from [Fontshare](https://www.fontshare.com/):
 
-**Added in:** `astro@5.15.0`
-
-You may not always want to preload every font link, as this can block loading other important resources or may download fonts that are not needed for the current page.
-
-To selectively control which font files are preloaded, you can provide an array of objects describing any combination of font `weight`, `style`, or `subset` to preload.
-
-The following example will only preload font files with a `400` weight or a `normal` style in the `latin` subset:
-
-src/components/Head.astro
-
-```astro
----
-import { Font } from 'astro:assets';
----
-
-
-<Font
-  cssVariable="--font-roboto"
-  preload={[
-    { subset: 'latin', style: 'normal' },
-    { weight: '400' },
-  ]}
-/>
+```js
+provider: fontProviders.fontshare()
 ```
 
-Variable weight font files will be preloaded if any weight within its range is requested. For example, a font file for font weight `100 900` will be included when `400` is specified in a `preload` object.
+### Fontsource
 
-## Accessing font data programmatically
+[Section titled “Fontsource”](#fontsource)
 
-[Section titled “Accessing font data programmatically”](#accessing-font-data-programmatically)
+Retrieves fonts from [Fontsource](https://fontsource.org/):
 
-The `getFontData()` function is intended for retrieving lower-level font family data programmatically, for example, in an [API Route](/en/guides/endpoints/#server-endpoints-api-routes) or to generate your own meta tags.
+```js
+provider: fontProviders.fontsource()
+```
 
-### `getFontData()`
+### Google
 
-[Section titled “getFontData()”](#getfontdata)
+[Section titled “Google”](#google)
 
-**Type:** `(cssVariable: CssVariable) => FontData[]`
+Retrieves fonts from [Google](https://fonts.google.com/):
 
-**Added in:** `astro@5.14.0`
+```js
+provider: fontProviders.google()
+```
 
-Returns an array of `FontData` objects for the provided [`cssVariable`](#cssvariable-1), which contains `src`, `weight` and `style`.
+The provider comes with family specific [options](#options).
 
-The following example uses `getFontData()` to get the font buffer from the URL when using [satori](https://github.com/vercel/satori) to generate OpenGraph images:
+#### experimental.glyphs
 
-src/pages/og.png.ts
+[Section titled “experimental.glyphs”](#experimentalglyphs)
 
-```tsx
-import type{ APIRoute } from "astro"
-import { getFontData } from "astro:assets"
-import satori from "satori"
+**Type:** `string[]`
 
+Allows specifying a list of glyphs to be included in the font for each font family. This can reduce the size of the font file:
 
-export const GET: APIRoute = (context) => {
-  const data = getFontData("--font-roboto")
-
-
-  const svg = await satori(
-    <div style={{ color: "black" }}>hello, world</div>,
-    {
-      width: 600,
-      height: 400,
-      fonts: [
-        {
-          name: "Roboto",
-          data: await fetch(new URL(data[0].src[0].url, context.url.origin)).then(res => res.arrayBuffer()),
-          weight: 400,
-          style: "normal",
-        },
-      ],
-    },
-  )
-
-
+```js
+{
   // ...
+  provider: fontProviders.google(),
+  options: {
+    experimental: {
+      glyphs: ["a"]
+    }
+  }
 }
 ```
 
-## Font configuration reference
+#### experimental.variableAxis
 
-[Section titled “Font configuration reference”](#font-configuration-reference)
+[Section titled “experimental.variableAxis”](#experimentalvariableaxis)
 
-All properties of your fonts must be configured in the Astro config. Some properties are common to both remote and local fonts, and other properties are available depending on your chosen font provider.
+**Type:** `Partial<Record<VariableAxis, ([string, string] | string)[]>>`
 
-### Common properties
-
-[Section titled “Common properties”](#common-properties)
-
-The following properties are available for remote and local fonts. `provider`, `name`, and `cssVariable` are required.
-
-astro.config.mjs
+Allows setting variable axis configuration:
 
 ```js
-import { defineConfig, fontProviders } from "astro/config";
-
-
-export default defineConfig({
-  experimental: {
-    fonts: [{
-      provider: fontProviders.google(),
-      name: "Roboto",
-      cssVariable: "--font-roboto"
-    }]
+{
+  // ...
+  provider: fontProviders.google(),
+  options: {
+    experimental: {
+      variableAxis: {
+        slnt: [["-15", "0"]],
+        CASL: [["0", "1"]],
+        CRSV: ["1"],
+        MONO: [["0", "1"]],
+      }
+    }
   }
-});
+}
 ```
 
-#### provider
+### Google Icons
 
-[Section titled “provider”](#provider)
+[Section titled “Google Icons”](#google-icons)
 
-**Type:** `AstroFontProvider | "local"`
+**Added in:** `astro@5.16.9`
 
-The source of your font files. You can use a [built-in provider](#available-remote-font-providers), write your own [custom provider](#build-your-own-font-provider), or set to `"local"` to use local font files:
-
-astro.config.mjs
+Retrieves fonts from [Google Icons](https://fonts.google.com/icons):
 
 ```js
-import { defineConfig, fontProviders } from "astro/config";
+provider: fontProviders.googleicons()
+```
 
+The provider comes with family specific [options](#options).
 
-export default defineConfig({
-  experimental: {
-    fonts: [{
-      provider: fontProviders.google(),
-      name: "Roboto",
-      cssVariable: "--font-roboto"
-    }]
+#### experimental.glyphs
+
+[Section titled “experimental.glyphs”](#experimentalglyphs-1)
+
+**Type:** `string[]`
+
+when resolving the new Material Symbols icons, allows specifying a list of glyphs to be included in the font for each font family. This can reduce the size of the font file:
+
+```js
+{
+  // ...
+  provider: fontProviders.googleicons(),
+  options: {
+    experimental: {
+      glyphs: ["a"]
+    }
   }
-});
+}
 ```
 
-#### name
+### Local
 
-[Section titled “name”](#name)
+[Section titled “Local”](#local)
 
-**Type:** `string`
+**Added in:** `astro@5.16.13`
 
-The font family name, as identified by your font provider:
+Retrieves fonts from disk:
 
 ```js
-name: "Roboto"
+provider: fontProviders.local()
 ```
 
-#### cssVariable
+The provider comes with required family specific [options](#options).
 
-[Section titled “cssVariable”](#cssvariable-1)
+#### variants
 
-**Type:** `string`
-
-A valid [ident](https://developer.mozilla.org/en-US/docs/Web/CSS/ident) of your choosing in the form of a CSS variable (i.e. starting with `--`):
-
-```js
-cssVariable: "--font-roboto"
-```
-
-#### fallbacks
-
-[Section titled “fallbacks”](#fallbacks)
-
-**Type:** `string[]`\
-**Default:** `["sans-serif"]`
-
-An array of fonts to use when your chosen font is unavailable, or loading. Fallback fonts will be chosen in the order listed. The first available font will be used:
-
-```js
-fallbacks: ["CustomFont", "serif"]
-```
-
-To disable fallback fonts completely, configure an empty array:
-
-```js
-fallbacks: []
-```
-
-Specify at least a [generic family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#generic-name) matching the intended appearance of your font. Astro will then attempt to generate [optimized fallbacks](https://developer.chrome.com/blog/font-fallbacks) using font metrics. To disable this optimization, set `optimizedFallbacks` to false.
-
-#### optimizedFallbacks
-
-[Section titled “optimizedFallbacks”](#optimizedfallbacks)
-
-**Type:** `boolean`\
-**Default:** `true`
-
-Whether or not to enable Astro’s default optimization when generating fallback fonts. You may disable this default optimization to have full control over how [`fallbacks`](#fallbacks) are generated:
-
-```js
-optimizedFallbacks: false
-```
-
-### Remote font properties
-
-[Section titled “Remote font properties”](#remote-font-properties)
-
-Further configuration options are available for remote fonts. Set these to customize the data loaded from your [font provider](#available-remote-font-providers), for example to only download certain font weights or styles. For more control, more [granular configuration](#granular-remote-font-configuration) is available.
-
-Under the hood, these options are handled by [unifont](https://github.com/unjs/unifont/). Some properties may not be supported by some providers and may be handled differently by each provider.
-
-#### weights
-
-[Section titled “weights”](#weights)
-
-**Type:** `(number | string)[]`\
-**Default:** `[400]`
-
-An array of [font weights](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight). If no value is specified in your configuration, only weight `400` is included by default to prevent unnecessary downloads. You will need to include this property to access any other font weights:
-
-```js
-weights: [200, "400", "bold"]
-```
-
-If the associated font is a [variable font](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide), you can specify a range of weights:
-
-```js
-weights: ["100 900"]
-```
-
-#### styles
-
-[Section titled “styles”](#styles)
-
-**Type:** `("normal" | "italic" | "oblique")[]`\
-**Default:** `["normal", "italic"]`
-
-An array of [font styles](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style):
-
-```js
-styles: ["normal", "oblique"]
-```
-
-#### subsets
-
-[Section titled “subsets”](#subsets)
-
-**Type:** `string[]`\
-**Default:** `["latin"]`
-
-Defines a list of [font subsets](https://knaap.dev/posts/font-subsetting/) to preload.
-
-```js
-subsets: ["latin"]
-```
-
-#### display
-
-[Section titled “display”](#display)
-
-**Type:** `"auto" | "block" | "swap" | "fallback" | "optional"`\
-**Default:** `"swap"`
-
-Defines [how a font displays](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) based on when it is downloaded and ready for use:
-
-```js
-display: "block"
-```
-
-#### unicodeRange
-
-[Section titled “unicodeRange”](#unicoderange)
-
-**Type:** `string[]`\
-**Default:** `undefined`
-
-Determines when a font must be downloaded and used based on a specific [range of unicode characters](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range). If a character on the page matches the configured range, the browser will download the font and all characters will be available for use on the page. To configure a subset of characters preloaded for a single font, see the [subsets](#subsets) property instead.
-
-This can be useful for localization to avoid unnecessary font downloads when a specific part of your website uses a different alphabet and will be displayed with a separate font. For example, a website that offers both English and Japanese versions can prevent the browser from downloading the Japanese font on English versions of the page that do not contain any of the Japanese characters provided in `unicodeRange`.
-
-```js
-unicodeRange: ["U+26"]
-```
-
-#### stretch
-
-[Section titled “stretch”](#stretch)
-
-**Type:** `string`\
-**Default:** `undefined`
-
-A [font stretch](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-stretch):
-
-```js
-stretch: "condensed"
-```
-
-#### featureSettings
-
-[Section titled “featureSettings”](#featuresettings)
-
-**Type:** `string`\
-**Default:** `undefined`
-
-Controls the [typographic font features](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-feature-settings) (e.g. ligatures, small caps, or swashes):
-
-```js
-featureSettings: "'smcp' 2"
-```
-
-#### variationSettings
-
-[Section titled “variationSettings”](#variationsettings)
-
-**Type:** `string`\
-**Default:** `undefined`
-
-Font [variation settings](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-variation-settings):
-
-```js
-variationSettings: "'xhgt' 0.7"
-```
-
-### Local font `variants`
-
-[Section titled “Local font variants”](#local-font-variants)
+[Section titled “variants”](#variants)
 
 **Type:** `LocalFontFamily["variants"]`
 
-The `variants` property is required when using local font files. Each variant represents a [`@font-face` declaration](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/) and requires a `weight`, `style`, and `src` value.
+The `options.variants` property is required. Each variant represents a [`@font-face` declaration](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/) and requires a [`src`](#src).
 
-Additionally, [some other properties of remote fonts](#other-properties) may be specified within each variant.
+Additionally, [some other properties](#other-properties) may be specified within each variant.
 
 astro.config.mjs
 
 ```js
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 
 export default defineConfig({
     experimental: {
         fonts: [{
-            provider: "local",
+            provider: fontProviders.local(),
             name: "Custom",
             cssVariable: "--font-custom",
-            variants: [
-                {
-                    weight: 400,
-                    style: "normal",
-                    src: ["./src/assets/fonts/custom-400.woff2"]
-                },
-                {
-                    weight: 700,
-                    style: "normal",
-                    src: ["./src/assets/fonts/custom-700.woff2"]
-                }
-                // ...
-            ]
+            options: {
+                variants: [
+                    {
+                        weight: 400,
+                        style: "normal",
+                        src: ["./src/assets/fonts/custom-400.woff2"]
+                    },
+                    {
+                        weight: 700,
+                        style: "normal",
+                        src: ["./src/assets/fonts/custom-700.woff2"]
+                    }
+                    // ...
+                ]
+            }
         }]
     }
 });
 ```
 
-#### weight
+##### weight
 
 [Section titled “weight”](#weight)
 
@@ -61761,7 +62064,7 @@ weight: "100 900"
 
 When the value is not set, by default Astro will try to infer the value based on the first [`source`](#src).
 
-#### style
+##### style
 
 [Section titled “style”](#style)
 
@@ -61776,7 +62079,7 @@ style: "normal"
 
 When the value is not set, by default Astro will try to infer the value based on the first [`source`](#src).
 
-#### src
+##### src
 
 [Section titled “src”](#src)
 
@@ -61812,11 +62115,11 @@ You can also specify a [tech](https://developer.mozilla.org/en-US/docs/Web/CSS/@
 src: [{ url:"./src/assets/fonts/MyFont.woff2", tech: "color-COLRv1" }]
 ```
 
-#### Other properties
+##### Other properties
 
 [Section titled “Other properties”](#other-properties)
 
-The following options from remote font families are also available for local font families within variants:
+The following options from font families are also available for local font families within variants:
 
 * [display](#display)
 * [unicodeRange](#unicoderange)
@@ -61827,31 +62130,476 @@ The following options from remote font families are also available for local fon
 astro.config.mjs
 
 ```js
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 
 export default defineConfig({
     experimental: {
         fonts: [{
-            provider: "local",
+            provider: fontProviders.local(),
             name: "Custom",
             cssVariable: "--font-custom",
-            variants: [
-                {
-                    weight: 400,
-                    style: "normal",
-                    src: ["./src/assets/fonts/custom-400.woff2"],
-                    display: "block"
-                }
-            ]
+            options: {
+                variants: [
+                    {
+                        weight: 400,
+                        style: "normal",
+                        src: ["./src/assets/fonts/custom-400.woff2"],
+                        display: "block"
+                    }
+                ]
+            }
         }]
     }
 });
 ```
 
-## Granular remote font configuration
+## Usage examples
 
-[Section titled “Granular remote font configuration”](#granular-remote-font-configuration)
+[Section titled “Usage examples”](#usage-examples)
+
+astro.config.mjs
+
+```js
+import { defineConfig, fontProviders } from "astro/config";
+
+
+export default defineConfig({
+  experimental: {
+    fonts: [
+      {
+        name: "Roboto",
+        cssVariable: "--font-roboto",
+        provider: fontProviders.google(),
+        // Default included:
+        // weights: [400] ,
+        // styles: ["normal", "italics"],
+        // subsets: ["latin"],
+        // fallbacks: ["sans-serif"],
+        // formats: ["woff2"],
+      },
+      {
+        name: "Inter",
+        cssVariable: "--font-inter",
+        provider: fontProviders.fontsource(),
+        // Specify weights that are actually used
+        weights: [400, 500, 600, 700],
+        // Specify styles that are actually used
+        styles: ["normal"],
+        // Download only font files for characters used on the page
+        subsets: ["latin", "cyrillic"],
+        // Download more font formats
+        formats: ["woff2", "woff"],
+      },
+      {
+        name: "JetBrains Mono",
+        cssVariable: "--font-jetbrains-mono",
+        provider: fontProviders.fontsource(),
+        // Download only font files for characters used on the page
+        subsets: ["latin", "latin-ext"],
+        // Use a fallback font family matching the intended appearance
+        fallbacks: ["monospace"],
+      },
+      {
+        name: "Poppins",
+        cssVariable: "--font-poppins",
+        provider: fontProviders.local(),
+        options: {
+          // Weight and style are not specified so Astro
+          // will try to infer them for each variant
+          variants: [
+            {
+              src: [
+                "./src/assets/fonts/Poppins-regular.woff2",
+                "./src/assets/fonts/Poppins-regular.woff",
+              ]
+            },
+            {
+              src: [
+                "./src/assets/fonts/Poppins-bold.woff2",
+                "./src/assets/fonts/Poppins-bold.woff",
+              ]
+            },
+          ]
+        }
+      }
+    ],
+  }
+});
+```
+
+## `<Font />` component reference
+
+[Section titled “\<Font /> component reference”](#font--component-reference)
+
+This component outputs style tags and can optionally output preload links for a given font family.
+
+It must be imported and added to your page `<head>`. This is commonly done in a component such as `Head.astro` that is used in a common site layout for global use but may be added to individual pages as needed.
+
+With this component, you have control over which font family is used on which page, and which fonts are preloaded.
+
+### cssVariable
+
+[Section titled “cssVariable”](#cssvariable)
+
+**Example type:** `"--font-roboto" | "--font-comic-sans" | ...`
+
+The [`cssVariable`](#cssvariable-1) registered in your Astro configuration:
+
+src/components/Head.astro
+
+```astro
+---
+import { Font } from "astro:assets";
+---
+
+
+<Font cssVariable="--font-roboto" />
+```
+
+### preload
+
+[Section titled “preload”](#preload)
+
+**Type:** `boolean | { weight?: string | number; style?: string; subset?: string }[]`\
+**Default:** `false`
+
+Whether to output [preload links](https://web.dev/learn/performance/optimize-web-fonts#preload) or not:
+
+src/components/Head.astro
+
+```astro
+---
+import { Font } from "astro:assets";
+---
+
+
+<Font cssVariable="--font-roboto" preload />
+```
+
+With the `preload` directive, the browser will immediately begin downloading all possible font links during page load.
+
+#### Granular preloads
+
+[Section titled “Granular preloads”](#granular-preloads)
+
+**Added in:** `astro@5.15.0`
+
+You may not always want to preload every font link, as this can block loading other important resources or may download fonts that are not needed for the current page.
+
+To selectively control which font files are preloaded, you can provide an array of objects describing any combination of font `weight`, `style`, or `subset` to preload.
+
+The following example will only preload font files with a `400` weight or a `normal` style in the `latin` subset:
+
+src/components/Head.astro
+
+```astro
+---
+import { Font } from "astro:assets";
+---
+
+
+<Font
+  cssVariable="--font-roboto"
+  preload={[
+    { subset: "latin", style: "normal" },
+    { weight: "400" },
+  ]}
+/>
+```
+
+Variable weight font files will be preloaded if any weight within its range is requested. For example, a font file for font weight `100 900` will be included when `400` is specified in a `preload` object.
+
+## Accessing font data programmatically
+
+[Section titled “Accessing font data programmatically”](#accessing-font-data-programmatically)
+
+The [`fontData`](#fontdata) object allows you to retrieve lower-level font family data programmatically. For example, you can use it in an [API Route](/en/guides/endpoints/#server-endpoints-api-routes) to generate OpenGraph images using [satori](https://github.com/vercel/satori), combined with proper [formats](#formats) configuration:
+
+src/pages/og.png.tsx
+
+```tsx
+import type{ APIRoute } from "astro"
+import { fontData } from "astro:assets"
+import satori from "satori"
+
+
+export const GET: APIRoute = (context) => {
+  const data = fontData["--font-roboto"]
+
+
+  const svg = await satori(
+    <div style={{ color: "black" }}>hello, world</div>,
+    {
+      width: 600,
+      height: 400,
+      fonts: [
+        {
+          name: "Roboto",
+          data: await fetch(new URL(data[0].src[0].url, context.url.origin)).then(res => res.arrayBuffer()),
+          weight: 400,
+          style: "normal",
+        },
+      ],
+    },
+  )
+
+
+  // ...
+}
+```
+
+### `fontData`
+
+[Section titled “fontData”](#fontdata)
+
+**Type:** `Record<CssVariable, Array<FontData>>`
+
+**Added in:** `astro@5.16.12`
+
+An object where each key is a [`cssVariable`](#cssvariable-1) and the value is an array describing the associated fonts. Each font is an object containing an array of `src` available for that font and the following optional properties: `weight` and `style`.
+
+## Font configuration reference
+
+[Section titled “Font configuration reference”](#font-configuration-reference)
+
+All properties of your fonts must be configured in the Astro config. Set these to customize the data loaded from your [font provider](#available-font-providers), for example, to only download certain font weights or styles. For more control, more [granular configuration](#granular-font-configuration) is available.
+
+Each provider is responsible for handling these options, so availability and support for the following properties may vary.
+
+[`provider`](#provider), [`name`](#name), and [`cssVariable`](#cssvariable-1) are required.
+
+### provider
+
+[Section titled “provider”](#provider)
+
+**Type:** `FontProvider`
+
+The source of your font files. You can use a [built-in provider](#available-font-providers) or write your own [custom provider](#build-your-own-font-provider):
+
+astro.config.mjs
+
+```js
+import { defineConfig, fontProviders } from "astro/config";
+
+
+export default defineConfig({
+  experimental: {
+    fonts: [{
+      provider: fontProviders.google(),
+      name: "Roboto",
+      cssVariable: "--font-roboto"
+    }]
+  }
+});
+```
+
+### name
+
+[Section titled “name”](#name)
+
+**Type:** `string`
+
+The font family name, as identified by your font provider:
+
+```js
+name: "Roboto"
+```
+
+### cssVariable
+
+[Section titled “cssVariable”](#cssvariable-1)
+
+**Type:** `string`
+
+A valid [ident](https://developer.mozilla.org/en-US/docs/Web/CSS/ident) of your choosing in the form of a CSS variable (i.e. starting with `--`):
+
+```js
+cssVariable: "--font-roboto"
+```
+
+### fallbacks
+
+[Section titled “fallbacks”](#fallbacks)
+
+**Type:** `string[]`\
+**Default:** `["sans-serif"]`
+
+An array of fonts to use when your chosen font is unavailable, or loading. Fallback fonts will be chosen in the order listed. The first available font will be used:
+
+```js
+fallbacks: ["CustomFont", "serif"]
+```
+
+To disable fallback fonts completely, configure an empty array:
+
+```js
+fallbacks: []
+```
+
+Specify at least a [generic family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#generic-name) matching the intended appearance of your font. Astro will then attempt to generate [optimized fallbacks](https://developer.chrome.com/blog/font-fallbacks) using font metrics. To disable this optimization, set `optimizedFallbacks` to false.
+
+### optimizedFallbacks
+
+[Section titled “optimizedFallbacks”](#optimizedfallbacks)
+
+**Type:** `boolean`\
+**Default:** `true`
+
+Whether or not to enable Astro’s default optimization when generating fallback fonts. You may disable this default optimization to have full control over how [`fallbacks`](#fallbacks) are generated:
+
+```js
+optimizedFallbacks: false
+```
+
+### weights
+
+[Section titled “weights”](#weights)
+
+**Type:** `(number | string)[]`\
+**Default:** `[400]`
+
+An array of [font weights](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight). If no value is specified in your configuration, only weight `400` is included by default to prevent unnecessary downloads. You will need to include this property to access any other font weights:
+
+```js
+weights: [200, "400", "bold"]
+```
+
+If the associated font is a [variable font](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/Variable_fonts_guide), you can specify a range of weights:
+
+```js
+weights: ["100 900"]
+```
+
+### styles
+
+[Section titled “styles”](#styles)
+
+**Type:** `("normal" | "italic" | "oblique")[]`\
+**Default:** `["normal", "italic"]`
+
+An array of [font styles](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style):
+
+```js
+styles: ["normal", "oblique"]
+```
+
+### subsets
+
+[Section titled “subsets”](#subsets)
+
+**Type:** `string[]`\
+**Default:** `["latin"]`
+
+Defines a list of [font subsets](https://knaap.dev/posts/font-subsetting/) to preload.
+
+```js
+subsets: ["latin"]
+```
+
+### formats
+
+[Section titled “formats”](#formats)
+
+**Type:** `("woff2" | "woff" | "otf" | "ttf" | "eot")[]`\
+**Default:** `["woff2"]`
+
+**Added in:** `astro@5.16.7`
+
+An array of [font formats](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face/src#font_formats):
+
+```js
+formats: ["woff2", "woff"]
+```
+
+### options
+
+[Section titled “options”](#options)
+
+**Type:** `Record<string, any>`
+
+**Added in:** `astro@5.16.12`
+
+An object to pass provider specific options. It is typed automatically based on the font family [provider](#provider):
+
+```js
+options: {
+  experimental: {
+    glyphs: ["a"]
+  }
+}
+```
+
+### display
+
+[Section titled “display”](#display)
+
+**Type:** `"auto" | "block" | "swap" | "fallback" | "optional"`\
+**Default:** `"swap"`
+
+Defines [how a font displays](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display) based on when it is downloaded and ready for use:
+
+```js
+display: "block"
+```
+
+### unicodeRange
+
+[Section titled “unicodeRange”](#unicoderange)
+
+**Type:** `string[]`\
+**Default:** `undefined`
+
+Determines when a font must be downloaded and used based on a specific [range of unicode characters](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range). If a character on the page matches the configured range, the browser will download the font and all characters will be available for use on the page. To configure a subset of characters preloaded for a single font, see the [subsets](#subsets) property instead.
+
+This can be useful for localization to avoid unnecessary font downloads when a specific part of your website uses a different alphabet and will be displayed with a separate font. For example, a website that offers both English and Japanese versions can prevent the browser from downloading the Japanese font on English versions of the page that do not contain any of the Japanese characters provided in `unicodeRange`.
+
+```js
+unicodeRange: ["U+26"]
+```
+
+### stretch
+
+[Section titled “stretch”](#stretch)
+
+**Type:** `string`\
+**Default:** `undefined`
+
+A [font stretch](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-stretch):
+
+```js
+stretch: "condensed"
+```
+
+### featureSettings
+
+[Section titled “featureSettings”](#featuresettings)
+
+**Type:** `string`\
+**Default:** `undefined`
+
+Controls the [typographic font features](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-feature-settings) (e.g. ligatures, small caps, or swashes):
+
+```js
+featureSettings: "'smcp' 2"
+```
+
+### variationSettings
+
+[Section titled “variationSettings”](#variationsettings)
+
+**Type:** `string`\
+**Default:** `undefined`
+
+Font [variation settings](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-variation-settings):
+
+```js
+variationSettings: "'xhgt' 0.7"
+```
+
+## Granular font configuration
+
+[Section titled “Granular font configuration”](#granular-font-configuration)
 
 **Added in:** `astro@5.15.6`
 
@@ -61891,87 +62639,417 @@ export default defineConfig({
 
 [Section titled “Build your own font provider”](#build-your-own-font-provider)
 
-If you do not wish to use one of the [built-in providers](#available-remote-font-providers) (eg. you want to use a 3rd-party unifont provider or build something for a private registry), you can build your own.
+If you do not wish to use one of the [built-in providers](#available-font-providers) (e.g. you want to use a [3rd-party unifont provider](#supporting-a-3rd-party-unifont-provider) or [build something for a private registry](#supporting-a-private-registry)), you can build your own.
 
-An Astro font provider is made up of two parts: the config object and the actual implementation.
+The preferred method for implementing a custom font provider is to export a function that returns [the `FontProvider` object](#the-font-provider-object) and takes the [configuration](#config) as a parameter.
 
-1. Using the `defineAstroFontProvider()` type helper, create a function that returns a font provider config object containing:
+### The font provider object
 
-   * `entrypoint`: A URL, a path relative to the root, or a package import.
-   * `config`: An optional serializable object passed to the unifont provider.
+[Section titled “The font provider object”](#the-font-provider-object)
 
-   - Without config
+The experimental Fonts API allows you to access fonts in a unified way. Each family requires the use of an Astro Font Provider to retrieve font faces.
 
-     provider/config.ts
+A `FontProvider` is an object containing required [`name`](#name-1) and [`resolveFont()`](#resolvefont) properties. It also has optional [`config`](#config), [`init()`](#init) and [`listFonts()`](#listfonts) properties available.
 
-     ```ts
-     import { defineAstroFontProvider } from 'astro/config';
+The `FontProvider` type accepts a generic for family [options](#options).
+
+#### `name`
+
+[Section titled “name”](#name-1)
+
+**Type:** `string`
+
+A unique name for the provider, used in logs and for identification.
+
+#### `resolveFont()`
+
+[Section titled “resolveFont()”](#resolvefont)
+
+**Type:** `(options: ResolveFontOptions) => Awaitable<{ fonts: FontFaceData[] } | undefined>`
+
+Used to retrieve and return font face data based on the given options.
+
+#### `config`
+
+[Section titled “config”](#config)
+
+**Type:** `Record<string, any>`\
+**Default:** `undefined`
+
+A serializable object, used for identification.
+
+#### `init()`
+
+[Section titled “init()”](#init)
+
+**Type:** `(context: FontProviderInitContext) => Awaitable<void>`\
+**Default:** `undefined`
+
+Optional callback, used to perform any initialization logic.
+
+##### `context.storage`
+
+[Section titled “context.storage”](#contextstorage)
+
+**Type:** `Storage`
+
+Useful for caching
+
+##### `context.root`
+
+[Section titled “context.root”](#contextroot)
+
+**Type:** `URL`
+
+The project root, useful for resolving local files paths.
+
+#### `listFonts()`
+
+[Section titled “listFonts()”](#listfonts)
+
+**Type:** `() => Awaitable<string[] | undefined>`\
+**Default:** `undefined`
+
+Optional callback, used to return the list of available font names.
+
+### Supporting a private registry
+
+[Section titled “Supporting a private registry”](#supporting-a-private-registry)
+
+The following example defines a font provider for a private registry:
+
+* Simple
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import { retrieveFonts, type Fonts } from "./utils.js",
 
 
-     export function myProvider() {
-         return defineAstroFontProvider({
-             entrypoint: new URL('./implementation.js', import.meta.url)
-         });
-     };
-     ```
-
-   - With config
-
-     provider/config.ts
-
-     ```ts
-     import { defineAstroFontProvider } from 'astro/config';
+  export function registryFontProvider(): FontProvider {
+    let data: Fonts = {}
 
 
-     interface Config {
-         // ...
-     };
+    return {
+      name: "registry",
+      init: async () => {
+        data = await retrieveFonts(token);
+      },
+      listFonts: () => {
+        return Object.keys(data);
+      },
+      resolveFont: ({ familyName, ...rest }) => {
+        const fonts = data[familyName];
+        if (fonts) {
+          return { fonts };
+        }
+        return undefined;
+      },
+    };
+  }
+  ```
+
+* Provider options
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import { retrieveFonts, type Fonts } from "./utils.js",
 
 
-     export function myProvider(config: Config) {
-         return defineAstroFontProvider({
-             entrypoint: new URL('./implementation.js', import.meta.url),
-             config
-         });
-     };
-     ```
-
-2. Create a second file to export your unifont `provider` implementation:
-
-   implementation.ts
-
-   ```ts
-   import { defineFontProvider } from "unifont";
+  interface Config {
+    token: string;
+  }
 
 
-   export const provider = defineFontProvider("my-provider", async (options, ctx) => {
-       // fetch/define your custom fonts
-       // ...
-   });
-   ```
-
-   Tip
-
-   You can check out [the source code for unifont’s providers](https://github.com/unjs/unifont/blob/main/src/providers/) to learn more about how to create a unifont provider.
-
-3. Add your custom provider to your font configuration.
-
-   astro.config.mjs
-
-   ```js
-   import { defineConfig } from "astro/config";
-   import { myProvider } from "./provider/config";
+  export function registryFontProvider(config: Config): FontProvider {
+    let data: Fonts = {}
 
 
-   export default defineConfig({
-     experimental: {
-       fonts: [{
-         provider: myProvider(),
-         // ...
-       }]
-     }
-   });
-   ```
+    return {
+      name: "registry",
+      config,
+      init: async () => {
+        data = await retrieveFonts(token);
+      },
+      listFonts: () => {
+        return Object.keys(data);
+      },
+      resolveFont: ({ familyName, ...rest }) => {
+        const fonts = data[familyName];
+        if (fonts) {
+          return { fonts };
+        }
+        return undefined;
+      },
+    };
+  }
+  ```
+
+* Family options
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import { retrieveFonts, type Fonts } from "./utils.js",
+
+
+  interface FamilyOptions {
+    minimal?: boolean;
+  }
+
+
+  export function registryFontProvider(): FontProvider<FamilyOptions | undefined> {
+    let data: Fonts = {}
+
+
+    return {
+      name: "registry",
+      init: async () => {
+        data = await retrieveFonts(token);
+      },
+      listFonts: () => {
+        return Object.keys(data);
+      },
+      // options is typed as FamilyOptions | undefined
+      resolveFont: ({ familyName, options, ...rest }) => {
+        const fonts = data[familyName];
+        if (fonts) {
+          return { fonts };
+        }
+        return undefined;
+      },
+    };
+  }
+  ```
+
+You can then register this font provider in the Astro config:
+
+* Simple
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { registryFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: registryFontProvider(),
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
+
+* Provider options
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { registryFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: registryFontProvider({
+                token: "..."
+              }),
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
+
+* Family options
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { registryFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: registryFontProvider(),
+              options: {
+                minimal: true
+              },
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
+
+### Supporting a 3rd-party unifont provider
+
+[Section titled “Supporting a 3rd-party unifont provider”](#supporting-a-3rd-party-unifont-provider)
+
+You can define an Astro font provider using a unifont provider under the hood:
+
+* Simple
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import type { InitializedProvider } from "unifont";
+  import { acmeProvider } from "@acme/unifont-provider"
+
+
+  export function acmeFontProvider(): FontProvider {
+    const provider = acmeProvider();
+    let initializedProvider: InitializedProvider | undefined;
+    return {
+      name: provider._name,
+      async init(context) {
+        initializedProvider = await provider(context);
+      },
+      async resolveFont({ familyName, ...rest }) {
+        return await initializedProvider?.resolveFont(familyName, rest);
+      },
+      async listFonts() {
+        return await initializedProvider?.listFonts?.();
+      },
+    };
+  }
+  ```
+
+* Provider options
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import type { InitializedProvider } from "unifont";
+  import { acmeProvider, type AcmeOptions } from "@acme/unifont-provider"
+
+
+  export function acmeFontProvider(config?: AcmeOptions): FontProvider {
+    const provider = acmeProvider(config);
+    let initializedProvider: InitializedProvider | undefined;
+    return {
+      name: provider._name,
+      config,
+      async init(context) {
+        initializedProvider = await provider(context);
+      },
+      async resolveFont({ familyName, ...rest }) {
+        return await initializedProvider?.resolveFont(familyName, rest);
+      },
+      async listFonts() {
+        return await initializedProvider?.listFonts?.();
+      },
+    };
+  }
+  ```
+
+* Family options
+
+  font-provider.ts
+
+  ```ts
+  import type { FontProvider } from "astro";
+  import type { InitializedProvider } from "unifont";
+  import { acmeProvider, type AcmeFamilyOptions } from "@acme/unifont-provider"
+
+
+  export function acmeFontProvider(): FontProvider<AcmeFamilyOptions | undefined> {
+    const provider = acmeProvider();
+    let initializedProvider: InitializedProvider<AcmeFamilyOptions> | undefined;
+    return {
+      name: provider._name,
+      async init(context) {
+        initializedProvider = await provider(context);
+      },
+      async resolveFont({ familyName, ...rest }) {
+        return await initializedProvider?.resolveFont(familyName, rest);
+      },
+      async listFonts() {
+        return await initializedProvider?.listFonts?.();
+      },
+    };
+  }
+  ```
+
+You can then register this font provider in the Astro config:
+
+* Simple
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { acmeFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: acmeFontProvider(),
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
+
+* Provider options
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { acmeFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: acmeFontProvider({
+                token: "..."
+              }),
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
+
+* Family options
+
+  astro.config.ts
+
+  ```ts
+  import { defineConfig } from "astro/config";
+  import { acmeFontProvider } from "./font-provider";
+
+
+  export default defineConfig({
+      experimental: {
+          fonts: [{
+              provider: acmeFontProvider(),
+              options: {
+                minimal: true
+              },
+              name: "Custom",
+              cssVariable: "--font-custom"
+          }]
+      }
+  });
+  ```
 
 ## Caching
 
@@ -62622,7 +63700,8 @@ Just like with build-time collections, you can use [Zod schemas](/en/guides/cont
 src/live.config.ts
 
 ```ts
-import { z, defineLiveCollection } from 'astro:content';
+import { defineLiveCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { apiLoader } from './loaders/api-loader';
 
 
@@ -62683,13 +63762,18 @@ Live loaders can provide cache hints to help with response caching. You can use 
 my-loader.ts
 
 ```ts
+import type { LiveLoader } from "astro/loaders";
+import { loadStoreProduct, loadStoreProducts, getLastModifiedDate } from "./store";
+import type { MyData } from "./types";
+
+
 export function myLoader(config): LiveLoader<MyData> {
   return {
     name: 'cached-loader',
     loadCollection: async ({ filter }) => {
-      // ... fetch data
+      const products = await loadStoreProducts(filter);
       return {
-        entries: data.map((item) => ({
+        entries: products.map((item) => ({
           id: item.id,
           data: item,
           // You can optionally provide cache hints for each entry
@@ -62701,13 +63785,13 @@ export function myLoader(config): LiveLoader<MyData> {
           // All fields are optional, and are combined with each entry's cache hints
           // tags are merged from all entries
           // lastModified is the most recent lastModified of all entries and the collection
-          lastModified: new Date(item.lastModified),
+          lastModified: getLastModifiedDate(products),
           tags: ['products'],
         },
       };
     },
     loadEntry: async ({ filter }) => {
-      // ... fetch single item
+      const item = await loadStoreProduct(filter);
       return {
         id: item.id,
         data: item,
@@ -62963,7 +64047,7 @@ If you need more control over environment variables in Astro, we recommend you u
 **Type:** `boolean | object`\
 **Default:** `false`
 
-**Added in:** `astro@5.16.0` New
+**Added in:** `astro@5.16.0`
 
 This experimental feature enables automatic optimization of your [SVG components](/en/guides/images/#svg-components) using [SVGO](https://svgo.dev/) during build time.
 
@@ -63313,7 +64397,7 @@ In dev mode and when using an adapter to render on demand, Astro doesn’t know 
 
 [Section titled “getConfiguredImageService & imageConfig”](#getconfiguredimageservice--imageconfig)
 
-If you implement your own endpoint as an Astro endpoint, you can use `getConfiguredImageService` and `imageConfig` to call your service’s `parseURL` and `transform` methods and provide the image config.
+If you implement your own endpoint as an Astro endpoint, you can use [`getConfiguredImageService`](/en/reference/modules/astro-assets/#getconfiguredimageservice) and [`imageConfig`](/en/reference/modules/astro-assets/#imageconfig) to call your service’s `parseURL` and `transform` methods and provide the image config.
 
 To access the image service config ([`image.service.config`](/en/reference/configuration-reference/#imageservice)), you can use `imageConfig.service.config`.
 
@@ -63351,7 +64435,7 @@ export const GET: APIRoute = async ({ request }) => {
 
 [Section titled “getURL()”](#geturl)
 
-**Type:** `(options: ImageTransform, imageConfig: AstroConfig['image']) => string | Promise<string>`
+**Type:** `(options: ImageTransform, imageConfig: AstroConfig[‘image’]) => string | Promise<string>`
 
 **Added in:** `astro@2.1.0`
 
@@ -63361,29 +64445,13 @@ For local services, this hook returns the URL of the endpoint that generates you
 
 For external services, this hook returns the final URL of the image.
 
-For both types of services, `options` are the properties passed by the user as attributes of the `<Image />` component or as options to `getImage()`. They are of the following type:
-
-```ts
-export type ImageTransform = {
-    // ESM imported images | remote/public image paths
-    src: ImageMetadata | string;
-    width?: number | undefined;
-    height?: number | undefined;
-    widths?: number[] | undefined;
-    densities?: (number | `${number}x`)[] | undefined;
-    quality?: ImageQuality  | undefined;
-    format?: OutputFormat | undefined;
-    fit?: ImageFit | undefined;
-    position?: string | undefined;
-    [key: string]: any;
-};
-```
+For both types of services, `options` are the properties passed by the user as attributes of the `<Image />` component or as options to `getImage()`.
 
 ### `parseURL()`
 
 [Section titled “parseURL()”](#parseurl)
 
-**Type:** `(url: URL, imageConfig: AstroConfig['image']) => { src: string, [key: string]: any } | undefined | Promise<{ src: string, [key: string]: any }> | Promise<undefined>`
+**Type:** `(url: URL, imageConfig: AstroConfig[‘image’]) => { src: string, [key: string]: any } | undefined | Promise<{ src: string, [key: string]: any }> | Promise<undefined>`
 
 **Added in:** `astro@2.1.0`
 
@@ -63395,7 +64463,7 @@ This hook parses the generated URLs by `getURL()` back into an object with the d
 
 [Section titled “transform()”](#transform)
 
-**Type:** `(inputBuffer: Uint8Array, options: { src: string, [key: string]: any }, imageConfig: AstroConfig['image']) => Promise<{ data: Uint8Array; format: ImageOutputFormat }>`
+**Type:** `(inputBuffer: Uint8Array, options: { src: string, [key: string]: any }, imageConfig: AstroConfig[‘image’]) => Promise<{ data: Uint8Array; format: ImageOutputFormat }>`
 
 **Added in:** `astro@2.1.0`
 
@@ -63409,7 +64477,7 @@ You must return a `format` to ensure that the proper MIME type is served to user
 
 [Section titled “getHTMLAttributes()”](#gethtmlattributes)
 
-**Type:** `(options: ImageTransform, imageConfig: AstroConfig['image'] ) => Record<string, any> | Promise<Record<string, any>>`
+**Type:** `(options: ImageTransform, imageConfig: AstroConfig[‘image’] ) => Record<string, any> | Promise<Record<string, any>>`
 
 **Added in:** `astro@2.1.0`
 
@@ -63421,7 +64489,7 @@ This hook returns all additional attributes used to render the image as HTML, ba
 
 [Section titled “getSrcSet()”](#getsrcset)
 
-**Type:** `(options: ImageTransform, imageConfig: AstroConfig['image'] ) => UnresolvedSrcSetValue[] | Promise<UnresolvedSrcSetValue[]>`
+**Type:** `(options: ImageTransform, imageConfig: AstroConfig[‘image’] ) => UnresolvedSrcSetValue[] | Promise<UnresolvedSrcSetValue[]>`
 
 **Added in:** `astro@3.3.0`
 
@@ -63443,7 +64511,7 @@ export type UnresolvedSrcSetValue = {
 
 [Section titled “validateOptions()”](#validateoptions)
 
-**Type:** `(options: ImageTransform, imageConfig: AstroConfig['image'] ) => ImageTransform | Promise<ImageTransform>`
+**Type:** `(options: ImageTransform, imageConfig: AstroConfig[‘image’] ) => ImageTransform | Promise<ImageTransform>`
 
 **Added in:** `astro@2.1.4`
 
@@ -63477,604 +64545,33 @@ export default defineConfig({
 });
 ```
 
-## Utilities
+## Typing custom image service props
 
-[Section titled “Utilities”](#utilities)
+[Section titled “Typing custom image service props”](#typing-custom-image-service-props)
 
-Astro exposes a number of helper functions that can be used to develop a custom image service. These utilities can be imported from `astro/assets/utils`:
+**Added in:** `astro@5.16.6`
 
-```ts
-import {
-    isRemoteAllowed,
-    matchHostname,
-    matchPathname,
-    matchPattern,
-    matchPort,
-    matchProtocol,
-    isESMImportedImage,
-    isRemoteImage,
-    resolveSrc,
-    imageMetadata,
-    emitESMImage,
-    emitImageMetadata,
-    getOrigQueryParams,
-    inferRemoteSize,
-    propsToFilename,
-    hashTransform
-} from "astro/assets/utils";
-```
+If your image service supports additional props in Astro’s `<Image>` component, `<Picture>` component, or the `getImage()` function, you can add types for these by extending the `Astro.CustomImageProps` interface.
 
-### `isRemoteAllowed()`
-
-[Section titled “isRemoteAllowed()”](#isremoteallowed)
-
-**Type:** `(src: string, { domains, remotePatterns }: { domains: string[], remotePatterns: RemotePattern[] }) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Determines whether a given remote resource, identified by its source URL, is allowed based on specified domains and remote patterns.
+For example, to add a custom `blur` prop that your image service supports:
 
 ```ts
-import { isRemoteAllowed } from 'astro/assets/utils';
-
-
-const testImageURL = 'https://example.com/images/test.jpg';
-const domains = ['example.com', 'anotherdomain.com'];
-const remotePatterns = [
-  { protocol: 'https', hostname: 'images.example.com', pathname: '/**' }, // Allow any path under this hostname
-];
-
-
-const url = new URL(testImageURL);
-const isAllowed = isRemoteAllowed(url.href, { domains, remotePatterns });
-
-
-console.log(`Is the remote image allowed? ${isAllowed}`);
-```
-
-### `matchHostname()`
-
-[Section titled “matchHostname()”](#matchhostname)
-
-**Type:** `(url: URL, hostname?: string, allowWildcard = false) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Matches a given URL’s hostname against a specified hostname, with optional support for wildcard patterns.
-
-```ts
-import { matchHostname } from 'astro/assets/utils';
-
-
-const testURL = new URL('https://sub.example.com/path/to/resource');
-
-
-// Example usage of matchHostname
-const hostnameToMatch = 'example.com';
-
-
-// Match without wildcard
-const isMatchWithoutWildcard = matchHostname(testURL, hostnameToMatch);
-console.log(`Does the hostname match without wildcard? ${isMatchWithoutWildcard}`); // Output: false
-
-
-// Match with wildcard
-const isMatchWithWildcard = matchHostname(testURL, hostnameToMatch, true);
-console.log(`Does the hostname match with wildcard? ${isMatchWithWildcard}`); // Output: true
-```
-
-### `matchPathname()`
-
-[Section titled “matchPathname()”](#matchpathname)
-
-**Type:** `(url: URL, pathname?: string, allowWildcard = false) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Matches a given URL’s pathname against a specified pattern, with optional support for wildcards.
-
-```ts
-import { matchPathname } from 'astro/assets/utils';
-
-
-const testURL = new URL('https://example.com/images/photo.jpg');
-
-
-// Example pathname to match
-const pathnameToMatch = '/images/photo.jpg';
-
-
-// Match without wildcard
-const isMatchWithoutWildcard = matchPathname(testURL, pathnameToMatch);
-console.log(`Does the pathname match without wildcard? ${isMatchWithoutWildcard}`); // Output: true
-
-
-// Match with wildcard
-const wildcardPathname = '/images/*';
-const isMatchWithWildcard = matchPathname(testURL, wildcardPathname, true);
-console.log(`Does the pathname match with wildcard? ${isMatchWithWildcard}`); // Output: true
-```
-
-### `matchPattern()`
-
-[Section titled “matchPattern()”](#matchpattern)
-
-**Type:** `(url: URL, remotePattern: RemotePattern) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Evaluates whether a given URL matches the specified remote pattern based on protocol, hostname, port, and pathname.
-
-```ts
-import { matchPattern } from 'astro/assets/utils';
-
-
-const testURL = new URL('https://images.example.com/photos/test.jpg');
-
-
-// Define a remote pattern to match the URL
-const remotePattern = {
-  protocol: 'https',
-  hostname: 'images.example.com',
-  pathname: '/photos/**', // Wildcard to allow all files under /photos/
-  port: '', // Optional: Match any port or leave empty for default
-};
-
-
-// Check if the URL matches the remote pattern
-const isPatternMatched = matchPattern(testURL, remotePattern);
-
-
-console.log(`Does the URL match the remote pattern? ${isPatternMatched}`); // Output: true
-```
-
-### `matchPort()`
-
-[Section titled “matchPort()”](#matchport)
-
-**Type:** `(url: URL, port?: string) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Checks if the given URL’s port matches the specified port. If no port is provided, it returns `true`.
-
-```ts
-import { matchPort } from 'astro/assets/utils';
-
-
-const testURL1 = new URL('https://example.com:8080/resource');
-const testURL2 = new URL('https://example.com/resource');
-
-
-// Example usage of matchPort
-const portToMatch = '8080';
-
-
-// Match a URL with a port specified
-const isPortMatch1 = matchPort(testURL1, portToMatch);
-console.log(`Does the port match? ${isPortMatch1}`); // Output: true
-
-
-// Match a URL without a port specified (default port will be assumed)
-const isPortMatch2 = matchPort(testURL2, portToMatch);
-console.log(`Does the port match? ${isPortMatch2}`); // Output: false
-
-
-// Check a URL without explicitly providing a port (defaults to true if port is undefined)
-const isPortMatch3 = matchPort(testURL1);
-console.log(`Does the port match (no port specified)? ${isPortMatch3}`); // Output: true
-```
-
-### `matchProtocol()`
-
-[Section titled “matchProtocol()”](#matchprotocol)
-
-**Type:** `(url: URL, protocol?: string) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Compares the protocol of the provided URL with a specified protocol.
-
-```ts
-import { matchProtocol } from 'astro/assets/utils';
-
-
-const testURL1 = new URL('https://example.com/resource');
-const testURL2 = new URL('http://example.com/resource');
-
-
-// Example usage of matchProtocol
-const protocolToMatch = 'https';
-
-
-// Match a URL with correct protocol
-const isProtocolMatch1 = matchProtocol(testURL1, protocolToMatch);
-console.log(`Does the protocol match for testURL1? ${isProtocolMatch1}`); // Output: true
-
-
-// Match a URL with incorrect protocol
-const isProtocolMatch2 = matchProtocol(testURL2, protocolToMatch);
-console.log(`Does the protocol match for testURL2? ${isProtocolMatch2}`); // Output: false
-
-
-// Match a URL without explicitly providing a protocol (defaults to true if protocol is undefined)
-const isProtocolMatch3 = matchProtocol(testURL1);
-console.log(`Does the protocol match (no protocol specified)? ${isProtocolMatch3}`); // Output: true
-```
-
-### `isESMImportedImage()`
-
-[Section titled “isESMImportedImage()”](#isesmimportedimage)
-
-**Type:** `(src: ImageMetadata | string) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Determines if the given source is an ECMAScript Module (ESM) imported image.
-
-```ts
-import { isESMImportedImage } from 'astro/assets/utils';
-
-
-// Example usage of isESMImportedImage
-const imageMetadataExample = {
-  src: '/images/photo.jpg',
-  width: 800,
-  height: 600,
-  format: 'jpg',
-};
-
-
-const filePathExample = '/images/photo.jpg';
-
-
-// Check if the input is an ESM imported image
-const isMetadataImage = isESMImportedImage(imageMetadataExample);
-console.log(`Is imageMetadataExample an ESM imported image? ${isMetadataImage}`); // Output: true
-
-
-const isFilePathImage = isESMImportedImage(filePathExample);
-console.log(`Is filePathExample an ESM imported image? ${isFilePathImage}`); // Output: false
-```
-
-### `isRemoteImage()`
-
-[Section titled “isRemoteImage()”](#isremoteimage)
-
-**Type:** `(src: ImageMetadata | string) => boolean`
-
-**Added in:** `astro@4.0.0`
-
-Determines if the provided source is a remote image URL in the form of a string.
-
-```ts
-import { isRemoteImage } from 'astro/assets/utils';
-
-
-// Example usage of isRemoteImage
-const remoteImageUrl = 'https://example.com/images/photo.jpg';
-const localImageMetadata = {
-  src: '/images/photo.jpg',
-  width: 800,
-  height: 600,
-  format: 'jpg',
-};
-
-
-// Check if the input is a remote image URL
-const isRemote1 = isRemoteImage(remoteImageUrl);
-console.log(`Is remoteImageUrl a remote image? ${isRemote1}`); // Output: true
-
-
-const isRemote2 = isRemoteImage(localImageMetadata);
-console.log(`Is localImageMetadata a remote image? ${isRemote2}`); // Output: false
-```
-
-### `resolveSrc()`
-
-[Section titled “resolveSrc()”](#resolvesrc)
-
-**Type:** `(src: UnresolvedImageTransform['src']) => Promise<string | ImageMetadata>`
-
-**Added in:** `astro@4.0.0`
-
-Returns the image source. This function ensures that if `src` is a Promise (e.g., a dynamic `import()`), it is awaited and the correct `src` is extracted. If `src` is already a resolved value, it is returned as-is.
-
-```ts
-import { resolveSrc } from 'astro/assets/utils';
-import localImage from "./images/photo.jpg";
-
-
-const resolvedLocal = await resolveSrc(localImage);
-// will be `{ src: '/images/photo.jpg', width: 800, height: 600, format: 'jpg' }`
-
-
-const resolvedRemote = await resolveSrc("https://example.com/remote-img.jpg");
-// will be `"https://example.com/remote-img.jpg"`
-
-
-const resolvedDynamic = await resolveSrc(import("./images/dynamic-image.jpg"))
-// will be `{ src: '/images/dynamic-image.jpg', width: 800, height: 600, format: 'jpg' }`
-```
-
-### `imageMetadata()`
-
-[Section titled “imageMetadata()”](#imagemetadata)
-
-**Type:** `(data: Uint8Array, src?: string) => Promise<Omit<ImageMetadata, 'src' | 'fsPath'>>`
-
-**Added in:** `astro@4.0.0`
-
-Extracts image metadata such as dimensions, format, and orientation from the provided image data.
-
-```ts
-import { imageMetadata } from 'astro/assets/utils';
-
-
-async function extractImageMetadata() {
-  // Example image data (Uint8Array)
-  const exampleImageData = new Uint8Array([/* ...binary image data... */]);
-
-
-  // Optional source path (useful for debugging or additional metadata context)
-  const sourcePath = '/images/photo.jpg';
-
-
-  try {
-    // Extract metadata from the image data
-    const metadata = await imageMetadata(exampleImageData, sourcePath);
-
-
-    console.log('Extracted Image Metadata:', metadata);
-    // Example output:
-    // {
-    //   width: 800,
-    //   height: 600,
-    //   format: 'jpg',
-    //   orientation: undefined
-    // }
-  } catch (error) {
-    console.error('Failed to extract metadata from image:', error);
+declare namespace Astro {
+  interface CustomImageProps {
+    /** Apply a Gaussian blur with this radius to the image. */
+    blur?: number;
   }
 }
-
-
-await extractImageMetadata();
 ```
 
-### `emitESMImage()`
+You can expose these types to users by making your image service an [Astro integration](/en/reference/integrations-reference/) and using the [`injectTypes()`](/en/reference/integrations-reference/#injecttypes-option) helper.
 
-[Section titled “emitESMImage()”](#emitesmimage)
+Then, users will be able to get autocomplete and type safety for your custom props:
 
-Deprecated
-
-Use the [`emitImageMetadata`](#emitimagemetadata) function instead.
-
-**Type:** `(id: string | undefined, _watchMode: boolean, experimentalSvgEnabled: boolean, fileEmitter?: FileEmitter) => Promise<ImageMetadataWithContents | undefined>`
-
-**Added in:** `astro@4.0.0`
-
-Processes an image file and emits its metadata and optionally its contents. In build mode, the function uses `fileEmitter` to generate an asset reference. In development mode, it resolves to a local file URL with query parameters for metadata.
-
-```ts
-import { emitESMImage } from 'astro/assets/utils';
-
-
-const imageId = '/images/photo.jpg';
-const unusedWatchMode = false; // Deprecated, unused
-const unusedExperimentalSvgEnabled = false; // Set to `true` only if you are using SVG and want the file data to be embedded
-
-
-try {
-  const result = await emitESMImage(imageId, unusedWatchMode, unusedExperimentalSvgEnabled);
-  if (result) {
-    console.log('Image metadata with contents:', result);
-    // Example output:
-    // {
-    //   width: 800,
-    //   height: 600,
-    //   format: 'jpg',
-    //   contents: Uint8Array([...])
-    // }
-  } else {
-    console.log('No metadata was emitted for this image.');
-  }
-} catch (error) {
-  console.error('Failed to emit ESM image:', error);
-}
-```
-
-### `emitImageMetadata()`
-
-[Section titled “emitImageMetadata()”](#emitimagemetadata)
-
-**Type:** `(id: string | undefined, fileEmitter?: FileEmitter) => Promise<ImageMetadataWithContents | undefined>`
-
-**Added in:** `astro@5.7.0`
-
-Processes an image file and emits its metadata and optionally its contents. In build mode, the function uses `fileEmitter` to generate an asset reference. In development mode, it resolves to a local file URL with query parameters for metadata.
-
-```ts
-import { emitImageMetadata } from 'astro/assets/utils';
-
-
-const imageId = '/images/photo.jpg';
-
-
-try {
-  const result = await emitImageMetadata(imageId);
-  if (result) {
-    console.log('Image metadata with contents:', result);
-    // Example output:
-    // {
-    //   width: 800,
-    //   height: 600,
-    //   format: 'jpg',
-    //   contents: Uint8Array([...])
-    // }
-  } else {
-    console.log('No metadata was emitted for this image.');
-  }
-} catch (error) {
-  console.error('Failed to emit ESM image:', error);
-}
-```
-
-### `getOrigQueryParams()`
-
-[Section titled “getOrigQueryParams()”](#getorigqueryparams)
-
-**Type:** `(params: URLSearchParams) => Pick<ImageMetadata, 'width' | 'height' | 'format'> | undefined`
-
-**Added in:** `astro@4.0.0`
-
-Retrieves the `width`, `height`, and `format` of an image from a [`URLSearchParams` object](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams). If any of these parameters are missing or invalid, the function returns `undefined`.
-
-```ts
-import { getOrigQueryParams } from 'astro/assets/utils';
-
-
-const url = new URL('https://example.com/image.jpg?width=800&height=600&format=jpg');
-const queryParams = url.searchParams;
-
-
-// Extract the original query parameters
-const origParams = getOrigQueryParams(queryParams);
-
-
-if (origParams) {
-  console.log('Original query parameters:', origParams);
-  // Example output:
-  // {
-  //   width: 800,
-  //   height: 600,
-  //   format: 'jpg'
-  // }
-} else {
-  console.log('Failed to extract original query parameters.');
-}
-```
-
-### `inferRemoteSize()`
-
-[Section titled “inferRemoteSize()”](#inferremotesize)
-
-**Type:** `(url: string) => Promise<Omit<ImageMetadata, 'src' | 'fsPath'>>`
-
-**Added in:** `astro@4.0.0`
-
-Infers the dimensions of a remote image by streaming its data and analyzing it progressively until sufficient metadata is available.
-
-```ts
-import { inferRemoteSize } from 'astro/assets/utils';
-
-
-async function getRemoteImageSize() {
-  const remoteImageUrl = 'https://example.com/image.jpg';
-
-
-  try {
-    // Infer remote image size from the URL
-    const imageSize = await inferRemoteSize(remoteImageUrl);
-
-
-    console.log('Inferred remote image size:', imageSize);
-    // Example output:
-    // {
-    //   width: 1920,
-    //   height: 1080,
-    //   format: 'jpg'
-    // }
-  } catch (error) {
-    console.error('Failed to infer the size of the remote image:', error);
-  }
-}
-
-
-await getRemoteImageSize();
-```
-
-### `propsToFilename()`
-
-[Section titled “propsToFilename()”](#propstofilename)
-
-**Type:** `(filePath: string, transform: ImageTransform, hash: string) => string`
-
-**Added in:** `astro@4.0.0`
-
-Generates a formatted filename for an image based on its source path, transformation properties, and a unique hash.
-
-The formatted filename follows this structure:
-
-`<prefixDirname>/<baseFilename>_<hash><outputExtension>`
-
-* `prefixDirname`: If the image is an ESM imported image, this is the directory name of the original file path; otherwise, it will be an empty string.
-* `baseFilename`: The base name of the file or a hashed short name if the file is a `data:` URI.
-* `hash`: A unique hash string generated to distinguish the transformed file.
-* `outputExtension`: The desired output file extension derived from the `transform.format` or the original file extension.
-
-```ts
-import { propsToFilename } from 'astro/assets/utils';
-
-
-function generateTransformedFilename() {
-  const filePath = '/images/photo.jpg';
-  const transform = {
-    format: 'png',
-    src: '/images/photo.jpg'
-  };
-  const hash = 'abcd1234';
-
-
-  // Generate the transformed filename based on the file path, transformation, and hash
-  const filename = propsToFilename(filePath, transform, hash);
-
-
-  console.log('Generated transformed filename:', filename);
-  // Example output: '/images/photo_abcd1234.png'
-}
-
-
-generateTransformedFilename();
-```
-
-### `hashTransform()`
-
-[Section titled “hashTransform()”](#hashtransform)
-
-**Type:** `(transform: ImageTransform, imageService: string, propertiesToHash: string[]) => string`
-
-**Added in:** `astro@4.0.0`
-
-Transforms the provided `transform` object into a hash string based on selected properties and the specified `imageService`.
-
-```ts
-import { hashTransform } from 'astro/assets/utils';
-
-
-function generateTransformHash() {
-  const transform = {
-    src: '/images/photo.jpg',
-    width: 800,
-    height: 600,
-    format: 'jpg',
-  };
-
-
-  const imageService = 'astroImageService';
-  const propertiesToHash = ['width', 'height', 'format'];
-
-
-  // Generate the hash based on the transform, image service, and properties
-  const hash = hashTransform(transform, imageService, propertiesToHash);
-
-
-  console.log('Generated transform hash:', hash);
-  // Example output: 'd41d8cd98f00b204e9800998ecf8427e'
-}
-
-
-generateTransformHash();
+```astro
+<Image blur="yes" src={myPhoto}  />
+//     ^^^^^^^^^^
+//     Type 'string' is not assignable to type 'number | undefined'.
 ```
 
 # Astro Integration API
@@ -64274,7 +64771,7 @@ export default {
 
 [Section titled “addRenderer() option”](#addrenderer-option)
 
-**Type:** `(renderer:` [`AstroRenderer`](https://github.com/withastro/astro/blob/fdd607c5755034edf262e7b275732519328a33b2/packages/astro/src/%40types/astro.ts#L872-L883) `) => void;`\
+**Type:** `(renderer: AstroRenderer) => void;`\
 **Examples:** [`svelte`](https://github.com/withastro/astro/blob/main/packages/integrations/svelte/src/index.ts), [`react`](https://github.com/withastro/astro/blob/main/packages/integrations/react/src/index.ts), [`preact`](https://github.com/withastro/astro/blob/main/packages/integrations/preact/src/index.ts), [`vue`](https://github.com/withastro/astro/blob/main/packages/integrations/vue/src/index.ts), [`solid`](https://github.com/withastro/astro/blob/main/packages/integrations/solid/src/index.ts)
 
 A callback function to add a component framework renderer (i.e. React, Vue, Svelte, etc). You can browse the examples and type definition above for more advanced options, but here are the 2 main options to be aware of:
@@ -64294,7 +64791,7 @@ The functions `clientEntrypoint` and `serverEntrypoint` accept a `URL`.
 
 **Added in:** `astro@1.5.0`
 
-If your integration depends on some configuration file that Vite doesn’t watch and/or needs a full dev server restart to take effect, add it with `addWatchFile`. Whenever that file changes, the Astro dev server will be reloaded (you can check when a reload happens with `isRestart`).
+If your integration depends on some configuration file that Vite doesn’t watch and/or needs a full dev server restart to take effect, add it with `addWatchFile()`. Whenever that file changes, the Astro dev server will be reloaded (you can check when a reload happens with [`isRestart`](#isrestart-option)).
 
 Example usage:
 
@@ -64308,7 +64805,7 @@ addWatchFile(new URL('./ec.config.mjs', config.root));
 
 [Section titled “addClientDirective() option”](#addclientdirective-option)
 
-**Type:** `(directive:` [`ClientDirectiveConfig`](https://github.com/withastro/astro/blob/00327c213f74627ac9ca1dec774efa5bf71e9375/packages/astro/src/%40types/astro.ts#L1872-L1875) `) => void;`
+**Type:** `(directive: ClientDirectiveConfig) => void;`
 
 **Added in:** `astro@2.6.0`
 
@@ -64447,7 +64944,7 @@ export default {
 
 [Section titled “addMiddleware() option”](#addmiddleware-option)
 
-**Type:** `(middleware:` [`AstroIntegrationMiddleware`](https://github.com/withastro/astro/blob/852ac0f75dfca1b2602e9cdbfa0447d9998e2449/packages/astro/src/%40types/astro.ts#L2124-L2127) `) => void;`
+**Type:** `(middleware: AstroIntegrationMiddleware) => void;`
 
 **Added in:** `astro@3.5.0`
 
@@ -64472,7 +64969,7 @@ export default () => ({
 });
 ```
 
-Middleware is defined in a package with an `onRequest` function, as with user-defined middleware.
+Middleware is defined in a package with an [`onRequest()` function](/en/reference/modules/astro-middleware/#onrequest), as with user-defined middleware.
 
 @my-package/middleware.js
 
@@ -64523,7 +65020,7 @@ export default () => ({
 
 A callback function to inject routes into an Astro project. Injected routes can be [`.astro` pages](/en/basics/astro-pages/) or [`.js` and `.ts` route handlers](/en/guides/endpoints/#static-file-endpoints).
 
-`injectRoute` takes an object with a `pattern` and an `entrypoint`.
+`injectRoute()` takes an object with a `pattern` and an `entrypoint`.
 
 * `pattern` - where the route should be output in the browser, for example `/foo/bar`. A `pattern` can use Astro’s filepath syntax for denoting dynamic routes, for example `/foo/[bar]` or `/foo/[...bar]`. Note that a file extension is **not** needed in the `pattern`.
 * `entrypoint` - a bare module specifier pointing towards the `.astro` page or `.js`/`.ts` route handler that handles the route denoted in the `pattern`.
@@ -64600,9 +65097,9 @@ The **`stage`** denotes how this script (the `content`) should be inserted. Some
   injectScript('page-ssr', 'import "global-styles.css";');
   ```
 
-#### `createCodegenDir`
+#### `createCodegenDir()`
 
-[Section titled “createCodegenDir”](#createcodegendir)
+[Section titled “createCodegenDir()”](#createcodegendir)
 
 **Type:** `() => URL;`
 
@@ -64654,7 +65151,7 @@ const integration = {
 
 [Section titled “route option”](#route-option)
 
-**Type:** [`RouteOptions`](https://github.com/withastro/astro/blob/3b10b97a4fecd1dfd959b160a07b5b8427fe40a7/packages/astro/src/types/public/integrations.ts#L14-L27)
+**Type:** `{ readonly component: string; prerender?: boolean; }`
 
 An object with a `component` property to identify the route and the following additional values to allow you to configure the generated route: `prerender`.
 
@@ -64731,7 +65228,7 @@ If the final value after running all the hooks is `undefined`, the route will fa
 
 [Section titled “routes option”](#routes-option)
 
-**Type:** [`IntegrationResolvedRoute[]`](#integrationresolvedroute-type-reference)
+**Type:** [`IntegrationResolvedRoute[]`](#integrationresolvedroute)
 
 A list of all routes with their associated metadata.
 
@@ -64884,33 +65381,33 @@ export default {
 
 An object providing callback functions to interact with the [dev toolbar](/en/reference/dev-toolbar-app-reference/):
 
-##### `on()`
+##### `toolbar.on()`
 
-[Section titled “on()”](#on)
+[Section titled “toolbar.on()”](#toolbaron)
 
 **Type:** `<T>(event: string, callback: (data: T) => void) => void`
 
 A function that takes an event name as first argument and a callback function as second argument. This allows you to receive a message from a dev toolbar app with data associated to that event.
 
-##### `onAppInitialized()`
+##### `toolbar.onAppInitialized()`
 
-[Section titled “onAppInitialized()”](#onappinitialized)
+[Section titled “toolbar.onAppInitialized()”](#toolbaronappinitialized)
 
 **Type:** `(appId: string, callback: (data: Record<string, never>) => void) => void`
 
 A function fired when a dev toolbar app is initialized. The first argument is the id of the app that was initialized. The second argument is a callback function to run when the app is initialized.
 
-##### `onAppToggled()`
+##### `toolbar.onAppToggled()`
 
-[Section titled “onAppToggled()”](#onapptoggled)
+[Section titled “toolbar.onAppToggled()”](#toolbaronapptoggled)
 
 **Type:** `(appId: string, callback: (data: { state: boolean; }) => void) => void`
 
 A function fired when a dev toolbar app is toggled on or off. The first argument is the id of the app that was toggled. The second argument is a callback function providing the state to execute when the application is toggled.
 
-##### `send()`
+##### `toolbar.send()`
 
-[Section titled “send()”](#send)
+[Section titled “toolbar.send()”](#toolbarsend)
 
 **Type:** `<T>(event: string, payload: T) => void`
 
@@ -64926,7 +65423,7 @@ A function that sends a message to the dev toolbar that an app can listen for. T
 
 A function for integrations to trigger an update to the content layer during `astro dev`. This can be used, for example, to register a webhook endpoint during dev, or to open a socket to a CMS to listen for changes.
 
-By default, `refreshContent` will refresh all collections. You can optionally pass a `loaders` property, which is an array of loader names. If provided, only collections that use those loaders will be refreshed. For example, A CMS integration could use this property to only refresh its own collections.
+By default, `refreshContent()` will refresh all collections. You can optionally pass a `loaders` property, which is an array of loader names. If provided, only collections that use those loaders will be refreshed. For example, A CMS integration could use this property to only refresh its own collections.
 
 You can also pass a `context` object to the loaders. This can be used to pass arbitrary data such as the webhook body, or an event from the websocket.
 
@@ -64993,9 +65490,9 @@ The loader can then access the `refreshContextData` property to get the webhook 
 
 [Section titled “address option”](#address-option)
 
-**Type:** [`AddressInfo`](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules__types_node_net_d_._net_.addressinfo.html)
+**Type:** `AddressInfo`
 
-The address, family and port number supplied by the [Node.js Net module](https://nodejs.org/api/net.html).
+The address, family and port number supplied by the [`server.address()` method of the Node.js Net module](https://nodejs.org/api/net.html#serveraddress).
 
 ### `astro:server:done`
 
@@ -65080,7 +65577,7 @@ export default {
 
 **Type:** `Map<string, PageBuildData>`
 
-A `Map` with a list of pages as key and their build data as value.
+A `Map` with a list of pages as key and [their build data](#the-pagebuilddata-object) as value.
 
 This can be used to perform an action if a route matches a criteria:
 
@@ -65098,6 +65595,56 @@ export default {
   }
 }
 ```
+
+##### The `PageBuildData` object
+
+[Section titled “The PageBuildData object”](#the-pagebuilddata-object)
+
+Describes how to build a page.
+
+###### `PageBuildData.key`
+
+[Section titled “PageBuildData.key”](#pagebuilddatakey)
+
+**Type:** `string`
+
+**Added in:** `astro@4.8.0`
+
+Specifies a unique identifier for the page.
+
+###### `PageBuildData.component`
+
+[Section titled “PageBuildData.component”](#pagebuilddatacomponent)
+
+**Type:** `string`
+
+Specifies the source component URL.
+
+###### `PageBuildData.route`
+
+[Section titled “PageBuildData.route”](#pagebuilddataroute)
+
+**Type:** [`RouteData`](#routedata)
+
+Describes the information about the page route.
+
+###### `PageBuildData.moduleSpecifier`
+
+[Section titled “PageBuildData.moduleSpecifier”](#pagebuilddatamodulespecifier)
+
+**Type:** `string`
+
+Defines a string that can be resolved into a file path for the module.
+
+###### `PageBuildData.styles`
+
+[Section titled “PageBuildData.styles”](#pagebuilddatastyles)
+
+**Type:** `Array<{ depth: number; order: number; sheet: { type: 'inline'; content: string } | { type: 'external'; src: string } }>`
+
+**Added in:** `astro@2.4.0`
+
+A list of styles to render on the page. Each style contains its `depth` in the components tree and its display `order` on the page, as well as an indication of whether this should be applied as an inline or external style.
 
 #### `target` option
 
@@ -65176,9 +65723,11 @@ export default {
 
 [Section titled “manifest option”](#manifest-option)
 
-**Type:** [`SerializedSSRManifest`](https://github.com/withastro/astro/blob/3b10b97a4fecd1dfd959b160a07b5b8427fe40a7/packages/astro/src/core/app/types.ts#L91-L109)
+**Type:** `SerializedSSRManifest`
 
-Allows you to create a custom build by accessing the SSR manifest.
+Allows you to create a custom build by accessing a serialized version of the [`SSRManifest`](#ssrmanifest). This contains the same information as `SSRManifest`, with some properties converted to serializable formats.
+
+The following example checks the [`i18n.strategy`](#ssrmanifesti18nstrategy) configuration stored in the `manifest`:
 
 ```js
 export default {
@@ -65193,6 +65742,70 @@ export default {
   },
 }
 ```
+
+##### `manifest.routes`
+
+[Section titled “manifest.routes”](#manifestroutes)
+
+**Type:** `SerializedRouteInfo[]`
+
+Defines a list of serialized route information. Each route contains the same properties as [`SSRManifest.routes`](#ssrmanifestroutes), with `routeData` converted to a JSON-serializable format.
+
+##### `manifest.assets`
+
+[Section titled “manifest.assets”](#manifestassets)
+
+**Type:** `string[]`
+
+Defines a list of serialized asset file paths.
+
+##### `manifest.componentMetadata`
+
+[Section titled “manifest.componentMetadata”](#manifestcomponentmetadata)
+
+**Type:** `[string, SSRComponentMetadata][]`
+
+**Added in:** `astro@2.1.7`
+
+Defines an array of key-value pairs where the first element is the component identifier and the second is an object describing the build metadata.
+
+##### `manifest.inlinedScripts`
+
+[Section titled “manifest.inlinedScripts”](#manifestinlinedscripts)
+
+**Type:** `[string, string][]`
+
+Defines an array of key-value pairs where each entry is a tuple. The first element is the script identifier and the second is the script content.
+
+##### `manifest.clientDirectives`
+
+[Section titled “manifest.clientDirectives”](#manifestclientdirectives)
+
+**Type:** `[string, string][]`
+
+**Added in:** `astro@2.5.0`
+
+Defines an array of key-value pairs where the first element is the directive name (e.g. `load`, `visible`) and the second is the directive’s implementation code.
+
+##### `manifest.serverIslandNameMap`
+
+[Section titled “manifest.serverIslandNameMap”](#manifestserverislandnamemap)
+
+**Type:** `[string, string][]`
+
+**Added in:** `astro@4.12.0`
+
+Defines an array of key-value pairs where each entry is a tuple. The first element is the component path and the second is the assigned name.
+
+##### `manifest.key`
+
+[Section titled “manifest.key”](#manifestkey)
+
+**Type:** `string`
+
+**Added in:** `astro@4.13.4`
+
+Specifies the cryptographic key, serialized as a string, used for encrypting server island props.
 
 #### `entryPoints` option
 
@@ -65267,7 +65880,9 @@ export default {
 
 **Type:** [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL)
 
-A URL path to the build output directory. Note that if you need a valid absolute path string, you should use Node’s built-in [`fileURLToPath`](https://nodejs.org/api/url.html#urlfileurltopathurl-options) utility.
+A URL path to the build output directory.
+
+The following example uses Node’s built-in [`fileURLToPath()`](https://nodejs.org/api/url.html#urlfileurltopathurl-options) utility to compute a valid absolute path string for a file provided by the integration:
 
 ```js
 import { fileURLToPath } from 'node:url';
@@ -65310,7 +65925,9 @@ export default {
 
 **Type:** [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL)
 
-A URL path to the build output directory. Note that if you need a valid absolute path string, you should use Node’s built-in [`fileURLToPath`](https://nodejs.org/api/url.html#urlfileurltopathurl-options) utility.
+A URL path to the build output directory.
+
+The following example uses Node’s built-in [`fileURLToPath()`](https://nodejs.org/api/url.html#urlfileurltopathurl-options) utility to compute a valid absolute path string for a file provided by the integration before writing to it:
 
 ```js
 import { writeFile } from 'node:fs/promises';
@@ -65339,7 +65956,7 @@ Caution
 
 This property is deprecated since v5.0. Check the [migration guide](/en/guides/upgrade-to/v5/#deprecated-routes-on-astrobuilddone-hook-integration-api).
 
-**Type:** [`IntegrationRouteData[]`](#integrationroutedata-type-reference)
+**Type:** [`IntegrationRouteData[]`](#integrationroutedata)
 
 A list of all generated routes alongside their associated metadata.
 
@@ -65356,7 +65973,7 @@ You can reference the full `IntegrationRouteData` type below, but the most commo
 
 **Added in:** `astro@5.0.0`
 
-Contains URLs to output files paths, grouped by [`IntegrationResolvedRoute`](#integrationresolvedroute-type-reference) `pattern` property.
+Contains URLs to output files paths, grouped by [`IntegrationResolvedRoute`](#integrationresolvedroute) `pattern` property.
 
 #### `pages` option
 
@@ -65364,7 +65981,7 @@ Contains URLs to output files paths, grouped by [`IntegrationResolvedRoute`](#in
 
 **Type:** `{ pathname: string }[]`
 
-A list of all generated pages. It is an object with one property.
+A list of all generated pages. Each entry is an object with one property:
 
 * `pathname` - the finalized path of the page.
 
@@ -65389,6 +66006,31 @@ Astro reserves the `astro:` prefix for future built-in hooks. Please choose a di
 ## Integration types reference
 
 [Section titled “Integration types reference”](#integration-types-reference)
+
+The following types can be imported from the `astro` module:
+
+```ts
+import type {
+  AstroIntegrationLogger,
+  AstroIntegrationMiddleware,
+  AstroMiddlewareInstance,
+  AstroRenderer,
+  ClientDirectiveConfig,
+  HookParameters,
+  IntegrationResolvedRoute,
+  RedirectConfig,
+  RouteData,
+  RoutePart,
+  RouteType,
+  SSRComponentMetadata,
+  SSRLoadedRenderer,
+  SSRLoadedRendererValue,
+  SSRManifest,
+  ValidRedirectStatus,
+  // The following are deprecated:
+  IntegrationRouteData,
+} from "astro";
+```
 
 ### `AstroIntegrationLogger`
 
@@ -65459,11 +66101,101 @@ The example above will produce logs with `[astro-format]` by default, and `[astr
 [astro-format/build] Build finished.
 ```
 
+### `AstroIntegrationMiddleware`
+
+[Section titled “AstroIntegrationMiddleware”](#astrointegrationmiddleware)
+
+**Type:** `{ order: "pre" | "post"; entrypoint: string | URL; }`
+
+Describes a [middleware added by an integration](#addmiddleware-option).
+
+#### `AstroIntegrationMiddleware.order`
+
+[Section titled “AstroIntegrationMiddleware.order”](#astrointegrationmiddlewareorder)
+
+**Type:** `"pre" | "post"`
+
+Specifies whether the middleware should run before (`pre`) or after (`post`) other middleware.
+
+#### `AstroIntegrationMiddleware.entrypoint`
+
+[Section titled “AstroIntegrationMiddleware.entrypoint”](#astrointegrationmiddlewareentrypoint)
+
+**Type:** `string | URL`
+
+Defines the import path of the middleware.
+
+### `AstroMiddlewareInstance`
+
+[Section titled “AstroMiddlewareInstance”](#astromiddlewareinstance)
+
+**Type:** `{ onRequest?: MiddlewareHandler; }`
+
+An object containing an [`onRequest()`](/en/reference/modules/astro-middleware/#onrequest) property defined with the project’s middleware function when it exists.
+
+### `AstroRenderer`
+
+[Section titled “AstroRenderer”](#astrorenderer)
+
+**Type:** `{ name: string; clientEntrypoint?: string | URL; serverEntrypoint: string | URL; }`
+
+Describes a [component framework renderer added by an integration](#addrenderer-option).
+
+#### `AstroRenderer.name`
+
+[Section titled “AstroRenderer.name”](#astrorenderername)
+
+**Type:** `string`
+
+The name of the component framework renderer.
+
+#### `AstroRenderer.clientEntrypoint`
+
+[Section titled “AstroRenderer.clientEntrypoint”](#astrorenderercliententrypoint)
+
+**Type:** `string | URL`
+
+Defines the import path of the renderer that runs on the client whenever your component is used.
+
+#### `AstroRenderer.serverEntrypoint`
+
+[Section titled “AstroRenderer.serverEntrypoint”](#astrorendererserverentrypoint)
+
+**Type:** `string | URL`
+
+Defines the import path of the renderer that runs during server-side requests or static builds whenever your component is used.
+
+### `ClientDirectiveConfig`
+
+[Section titled “ClientDirectiveConfig”](#clientdirectiveconfig)
+
+**Type:** `{ name: string; entrypoint: string | URL; }`
+
+Describes a [custom client directive added by an integration](#addclientdirective-option).
+
+#### `ClientDirectiveConfig.name`
+
+[Section titled “ClientDirectiveConfig.name”](#clientdirectiveconfigname)
+
+**Type:** `string`
+
+A custom name for the event triggered by the directive.
+
+#### `ClientDirectiveConfig.entrypoint`
+
+[Section titled “ClientDirectiveConfig.entrypoint”](#clientdirectiveconfigentrypoint)
+
+**Type:** `string | URL`
+
+Defines the import path of the code executed whenever the directive is used.
+
 ### `HookParameters`
 
 [Section titled “HookParameters”](#hookparameters)
 
-You can get the type of a hook’s arguments by passing the hook’s name to the `HookParameters` utility type. In the following example, a function’s `options` argument is typed to match the parameters of the `astro:config:setup` hook:
+You can get the type of a hook’s arguments by passing the hook’s name to the `HookParameters` utility type.
+
+In the following example, a function’s `options` argument is typed to match the parameters of the [`astro:config:setup` hook](#astroconfigsetup):
 
 ```ts
 import type { HookParameters } from 'astro';
@@ -65474,32 +66206,30 @@ function mySetup(options: HookParameters<'astro:config:setup'>) {
 }
 ```
 
-### `IntegrationResolvedRoute` type reference
+### `IntegrationResolvedRoute`
 
-[Section titled “IntegrationResolvedRoute type reference”](#integrationresolvedroute-type-reference)
+[Section titled “IntegrationResolvedRoute”](#integrationresolvedroute)
+
+A subset of [`RouteData`](#routedata) with remapped properties.
 
 ```ts
-interface IntegrationResolvedRoute {
+interface IntegrationResolvedRoute extends Pick<
+    RouteData,
+    'generate' | 'params' | 'pathname' | 'segments' | 'type' | 'redirect' | 'origin'
+  > & {
   pattern: RouteData['route'];
   patternRegex: RouteData['pattern'];
   entrypoint: RouteData['component'];
   isPrerendered: RouteData['prerender'];
   redirectRoute?: IntegrationResolvedRoute;
-  generate: (data?: any) => string;
-  params: string[];
-  pathname?: string;
-  segments: RoutePart[][];
-  type: RouteType;
-  redirect?: RedirectConfig;
-  origin: 'internal' | 'external' | 'project';
 }
 ```
 
-#### `pattern`
+#### `IntegrationResolvedRoute.pattern`
 
-[Section titled “pattern”](#pattern)
+[Section titled “IntegrationResolvedRoute.pattern”](#integrationresolvedroutepattern)
 
-**Type:** `string`
+**Type:** [`RouteData['route']`](#routedataroute)
 
 Allows you to identify the type of route based on its path. Here are some examples of paths associated with their pattern:
 
@@ -65507,80 +66237,134 @@ Allows you to identify the type of route based on its path. Here are some exampl
 * `src/pages/blog/[...slug].astro` will be `/blog/[...slug]`
 * `src/pages/site/[blog]/[...slug].astro` will be `/site/[blog]/[...slug]`
 
-#### `patternRegex`
+#### `IntegrationResolvedRoute.patternRegex`
 
-[Section titled “patternRegex”](#patternregex)
+[Section titled “IntegrationResolvedRoute.patternRegex”](#integrationresolvedroutepatternregex)
 
-**Type:** `RegExp`
+**Type:** [`RouteData['pattern']`](#routedatapattern)
 
 Allows you to access a regex used for matching an input URL against a requested route.
 
 For example, given a `[fruit]/about.astro` path, the regex will be `/^\/([^/]+?)\/about\/?$/`. Using `pattern.test("banana/about")` will return `true`.
 
-#### `entrypoint`
+#### `IntegrationResolvedRoute.entrypoint`
 
-[Section titled “entrypoint”](#entrypoint)
+[Section titled “IntegrationResolvedRoute.entrypoint”](#integrationresolvedrouteentrypoint)
 
-**Type:** `string`
+**Type:** [`RouteData['component']`](#routedatacomponent)
 
 The URL pathname of the source component.
 
-#### `isPrerendered`
+#### `IntegrationResolvedRoute.isPrerendered`
 
-[Section titled “isPrerendered”](#isprerendered)
+[Section titled “IntegrationResolvedRoute.isPrerendered”](#integrationresolvedrouteisprerendered)
 
-**Type:** `boolean`
+**Type:** [`RouteData['prerender']`](#routedataprerender)
 
 Determines whether the route use [on demand rendering](/en/guides/on-demand-rendering/). The value will be `true` for projects configured with:
 
 * `output: 'static'` when the route does not export `const prerender = true`
 * `output: 'server'` when the route exports `const prerender = false`
 
-#### `redirectRoute`
+#### `IntegrationResolvedRoute.redirectRoute`
 
-[Section titled “redirectRoute”](#redirectroute)
+[Section titled “IntegrationResolvedRoute.redirectRoute”](#integrationresolvedrouteredirectroute)
 
 **Type:** `IntegrationResolvedRoute | undefined`
 
 When the value of `IntegrationResolvedRoute.type` is `redirect`, the value will be the `IntegrationResolvedRoute` to redirect to. Otherwise, the value will be undefined.
 
-#### `generate()`
+### `RedirectConfig`
 
-[Section titled “generate()”](#generate)
+[Section titled “RedirectConfig”](#redirectconfig)
+
+**Type:** `string | { status: ValidRedirectStatus; destination: string; }`
+
+Describes the destination of a redirect. This can be a string or an object containing information about the status code and its destination.
+
+### `RouteData`
+
+[Section titled “RouteData”](#routedata)
+
+Describes the information about a route.
+
+#### `RouteData.route`
+
+[Section titled “RouteData.route”](#routedataroute)
+
+**Type:** `string`
+
+Defines the current route pattern. Here are some examples of paths associated with their pattern:
+
+* `src/pages/index.astro` will be `/`
+* `src/pages/blog/[...slug].astro` will be `/blog/[...slug]`
+* `src/pages/site/[blog]/[...slug].astro` will be `/site/[blog]/[...slug]`
+
+#### `RouteData.component`
+
+[Section titled “RouteData.component”](#routedatacomponent)
+
+**Type:** `string`
+
+Specifies the source component URL.
+
+#### `RouteData.generate()`
+
+[Section titled “RouteData.generate()”](#routedatagenerate)
 
 **Type:** `(data?: any) => string`
 
 A function that provides the optional parameters of the route, interpolates them with the route pattern, and returns the path name of the route.
 
-For example, with a route such as `/blog/[...id].astro`, the `generate` function could return:
+For example, with a route such as `/blog/[...id].astro`, the `generate()` function could return:
 
 ```js
-console.log(generate({ id: 'presentation' })) // will log `/blog/presentation`
+generate({ id: 'presentation' }) // will output `/blog/presentation`
 ```
 
-#### `params`
+#### `RouteData.params`
 
-[Section titled “params”](#params)
+[Section titled “RouteData.params”](#routedataparams)
 
 **Type:** `string[]`
 
 Allows you to access the route `params`. For example, when a project uses the following [dynamic routes](/en/guides/routing/#dynamic-routes) `/pages/[lang]/[...slug].astro`, the value will be `['lang', '...slug']`.
 
-#### `pathname`
+#### `RouteData.pathname`
 
-[Section titled “pathname”](#pathname)
+[Section titled “RouteData.pathname”](#routedatapathname)
 
 **Type:** `string | undefined`
 
 For regular routes, the value will be the URL pathname where this route will be served. When the project uses [dynamic routes](/en/guides/routing/#dynamic-routes) (ie. `[dynamic]` or `[...spread]`), the pathname will be undefined.
 
-#### `segments`
+#### `RouteData.distURL`
 
-[Section titled “segments”](#segments)
+[Section titled “RouteData.distURL”](#routedatadisturl)
+
+**Type:** `URL[] | undefined`
+
+**Added in:** `astro@5.0.0`
+
+Defines the paths of the physical files emitted by this route. When a route isn’t prerendered, the value is either `undefined` or an empty array.
+
+#### `RouteData.pattern`
+
+[Section titled “RouteData.pattern”](#routedatapattern)
+
+**Type:** `RegExp`
+
+Specifies a regex to use for matching an input URL against a requested route.
+
+For example, given a `[fruit]/about.astro` path, the regex will be `/^\/([^/]+?)\/about\/?$/`. Using `pattern.test("banana/about")` will return `true`.
+
+#### `RouteData.segments`
+
+[Section titled “RouteData.segments”](#routedatasegments)
 
 **Type:** `RoutePart[][]`
 
-Allows you to access the route [`params`](#params) with additional metadata. Each object contains the following properties:
+Allows you to access the route [`params`](#routedataparams) with additional metadata. Each object contains the following properties:
 
 * `content`: the `param` name,
 * `dynamic`: whether the route is dynamic or not,
@@ -65596,167 +66380,769 @@ For example, the following route `/pages/[blog]/[...slug].astro` will output the
 ]
 ```
 
-#### `type`
+#### `RouteData.type`
 
-[Section titled “type”](#type)
+[Section titled “RouteData.type”](#routedatatype)
 
-**Type:** `RouteType`
+**Type:** [`RouteType`](#routetype)
 
-Allows you to identify the type of route. Possible values are:
+Allows you to identify the [type of route](#routetype).
+
+#### `RouteData.prerender`
+
+[Section titled “RouteData.prerender”](#routedataprerender)
+
+**Type:** `boolean`
+
+Determines whether a route uses [on demand rendering](/en/guides/on-demand-rendering/) or is statically prerendered at build time.
+
+See also [`prerendered`](/en/reference/routing-reference/#prerender) in the routing reference.
+
+#### `RouteData.redirect`
+
+[Section titled “RouteData.redirect”](#routedataredirect)
+
+**Type:** `RedirectConfig | undefined`
+
+Allows you to access the route to redirect to.
+
+#### `RouteData.redirectRoute`
+
+[Section titled “RouteData.redirectRoute”](#routedataredirectroute)
+
+**Type:** `RouteData | undefined`
+
+Specifies the `RouteData` to redirect to when [`RouteData.type`](#routedatatype) is `redirect`.
+
+#### `RouteData.fallbackRoutes`
+
+[Section titled “RouteData.fallbackRoutes”](#routedatafallbackroutes)
+
+**Type:** `RouteData[]`
+
+**Added in:** `astro@3.5.6`
+
+Defines a list of `RouteData` to fallback to when [`i18n.fallback`](/en/reference/configuration-reference/#i18nfallback) has a list of locales.
+
+#### `RouteData.isIndex`
+
+[Section titled “RouteData.isIndex”](#routedataisindex)
+
+**Type:** `boolean`
+
+Specifies if the route is a directory index (e.g. `src/pages/index.astro`, `src/pages/blog/index.astro`).
+
+#### `RouteData.origin`
+
+[Section titled “RouteData.origin”](#routedataorigin)
+
+**Type:** `'internal' | 'external' | 'project'`
+
+**Added in:** `astro@5.0.0`
+
+Determines if a route comes from Astro core (`internal`), an integration (`external`) or the user’s project (`project`).
+
+### `RoutePart`
+
+[Section titled “RoutePart”](#routepart)
+
+**Type:** `{ content: string; dynamic: boolean; spread: boolean; }`
+
+Describes a route segment.
+
+#### `RoutePart.content`
+
+[Section titled “RoutePart.content”](#routepartcontent)
+
+**Type:** `string`
+
+Specifies the parameter name for the route. For example:
+
+* `about.astro` has the name `about`
+* `[slug].astro` has the name `slug`
+* `[...id].astro` has the name `id`
+
+#### `RoutePart.dynamic`
+
+[Section titled “RoutePart.dynamic”](#routepartdynamic)
+
+**Type:** `boolean`
+
+Whether the route is dynamic or not.
+
+#### `RoutePart.spread`
+
+[Section titled “RoutePart.spread”](#routepartspread)
+
+**Type:** `boolean`
+
+Whether the dynamic route uses the spread syntax or not.
+
+### `RouteType`
+
+[Section titled “RouteType”](#routetype)
+
+**Type:** `'page' | 'endpoint' | 'redirect' | 'fallback'`
+
+A union of supported route types:
 
 * `page`: a route that lives in the file system, usually an Astro component
 * `endpoint`: a route that lives in the file system, usually a JS file that exposes endpoints methods
 * `redirect`: a route points to another route that lives in the file system
-* `fallback`: a route that doesn’t exist in the file system that needs to be handled with other means, usually the middleware
+* `fallback`: a route that doesn’t exist in the file system that needs to be handled with other means, usually a middleware
 
-#### `redirect`
+### `SSRComponentMetadata`
 
-[Section titled “redirect”](#redirect)
+[Section titled “SSRComponentMetadata”](#ssrcomponentmetadata)
 
-**Type:** `RedirectConfig | undefined`
+**Type:** `{ propagation: PropagationHint; containsHead: boolean; }`
 
-Allows you to access the route to redirect to. This can be a string or an object containing information about the status code and its destination.
+Describes the build metadata of a component rendered by the server.
 
-#### `origin`
+#### `SSRComponentMetadata.propagation`
 
-[Section titled “origin”](#origin)
+[Section titled “SSRComponentMetadata.propagation”](#ssrcomponentmetadatapropagation)
 
-**Type:** `'internal' | 'external' | 'project'`
+**Type:** `'none' | 'self' | 'in-tree'`
 
-Determines if a route comes from Astro core (`internal`), an integration (`external`) or the user’s project (`project`).
+A description of how to render head content from this component, including whether the Astro runtime needs to wait for a component:
 
-### `IntegrationRouteData` type reference
+* `none`: The component does not propagate the head content.
+* `self`: The component appends the head content.
+* `in-tree`: Another component within this component’s dependency tree appends the head content.
 
-[Section titled “IntegrationRouteData type reference”](#integrationroutedata-type-reference)
+#### `SSRComponentMetadata.containsHead`
 
-Caution
-
-This type is deprecated since v5.0. Use [`IntegrationResolvedRoute`](#integrationresolvedroute-type-reference) instead.
-
-A smaller version of the `RouteData` that is used in the integrations.
-
-```ts
-interface IntegrationRouteData {
-  type: RouteType;
-  component: string;
-  pathname?: string;
-  pattern: RegExp;
-  params: string[];
-  segments: { content: string; dynamic: boolean; spread: boolean; }[][];
-  generate: (data?: any) => string;
-  prerender: boolean;
-  distURL?: URL[];
-  redirect?: RedirectConfig;
-  redirectRoute?: IntegrationRouteData;
-}
-```
-
-#### `type`
-
-[Section titled “type”](#type-1)
-
-**Type:** `RouteType`
-
-Allows you to identify the type of the route. The value can be:
-
-* `page`: a route that lives in the file system, usually an Astro component
-* `endpoint`: a route that lives in the file system, usually a JS file that exposes endpoints methods
-* `redirect`: a route that points to another route that lives in the file system
-* `fallback`: a route that doesn’t exist in the file system and needs to be handled with other means, usually middleware
-
-#### `component`
-
-[Section titled “component”](#component)
-
-**Type:** `string`
-
-Allows you to access the source component URL pathname.
-
-#### `pathname`
-
-[Section titled “pathname”](#pathname-1)
-
-**Type:** `string | undefined`
-
-For regular routes, the value will be the URL pathname where this route will be served. When the project uses [dynamic routes](/en/guides/routing/#dynamic-routes) (ie. `[dynamic]` or `[...spread]`), the pathname will be undefined.
-
-#### `pattern`
-
-[Section titled “pattern”](#pattern-1)
-
-**Type:** `RegExp`
-
-Allows you to access a regex used for matching an input URL against a requested route.
-
-For example, given a `[fruit]/about.astro` path, the regex will be `/^\/([^/]+?)\/about\/?$/`. Using `pattern.test("banana/about")` will return `true`.
-
-#### `params`
-
-[Section titled “params”](#params-1)
-
-**Type:** `string[]`
-
-Allows you to access the route `params`. For example, when a project uses the following [dynamic routes](/en/guides/routing/#dynamic-routes) `/pages/[lang]/[...slug].astro`, the value will be `['lang', '...slug']`.
-
-#### `segments`
-
-[Section titled “segments”](#segments-1)
-
-**Type:** `{ content: string; dynamic: boolean; spread: boolean; }[][]`
-
-Allows you to access the route [`params`](#params-1) with additional metadata. Each object contains the following properties:
-
-* `content`: the `param`,
-* `dynamic`: whether the route is dynamic or not,
-* `spread`: whether the dynamic route uses the spread syntax or not.
-
-For example, the following route `/pages/[lang]/index.astro` will output the segments `[[ { content: 'lang', dynamic: true, spread: false } ]]`.
-
-#### `generate()`
-
-[Section titled “generate()”](#generate-1)
-
-**Type:** `(data?: any) => string`
-
-A function that provides the optional parameters of the route, interpolates them with the route pattern, and returns the path name of the route.
-
-For example, with a route such as `/blog/[...id].astro`, the `generate` function could return:
-
-```js
-console.log(generate({ id: 'presentation' })) // will log `/blog/presentation`
-```
-
-#### `prerender`
-
-[Section titled “prerender”](#prerender)
+[Section titled “SSRComponentMetadata.containsHead”](#ssrcomponentmetadatacontainshead)
 
 **Type:** `boolean`
 
-Determines whether the route is prerendered or not.
+Determines whether the component contains the head content.
 
-#### `distURL`
+### `SSRLoadedRenderer`
 
-[Section titled “distURL”](#disturl)
+[Section titled “SSRLoadedRenderer”](#ssrloadedrenderer)
 
-**Type:** `URL[] | undefined`
+**Type:** `{ name: string; clientEntrypoint?: string | URL; ssr: SSRLoadedRendererValue; }`
 
-The paths of the physical files emitted by this route. When a route **isn’t** prerendered, the value is either `undefined` or an empty array.
+Describes a renderer available for the server to use. This is a subset of [`AstroRenderer`](#astrorenderer) with additional properties.
 
-#### `redirect`
+#### `SSRLoadedRenderer.ssr`
 
-[Section titled “redirect”](#redirect-1)
+[Section titled “SSRLoadedRenderer.ssr”](#ssrloadedrendererssr)
 
-**Type:** `RedirectConfig | undefined`
+**Type:** [`SSRLoadedRendererValue`](#ssrloadedrenderervalue)
 
-Allows you to access the route to redirect to. This can be a string or an object containing information about the status code and its destination.
+Defines the functions and configuration used by the server for this framework.
 
-#### `redirectRoute`
+### `SSRLoadedRendererValue`
 
-[Section titled “redirectRoute”](#redirectroute-1)
+[Section titled “SSRLoadedRendererValue”](#ssrloadedrenderervalue)
+
+Contains the functions and configuration necessary to render components on the server from a specific UI framework.
+
+#### `SSRLoadedRendererValue.name`
+
+[Section titled “SSRLoadedRendererValue.name”](#ssrloadedrenderervaluename)
+
+**Type:** `string`
+
+Specifies the name identifier for the renderer.
+
+#### `SSRLoadedRendererValue.check()`
+
+[Section titled “SSRLoadedRendererValue.check()”](#ssrloadedrenderervaluecheck)
+
+**Type:** `AsyncRendererComponentFn<boolean>`
+
+Determines whether the renderer should handle the component.
+
+#### `SSRLoadedRendererValue.renderToStaticMarkup()`
+
+[Section titled “SSRLoadedRendererValue.renderToStaticMarkup()”](#ssrloadedrenderervaluerendertostaticmarkup)
+
+**Type:** `AsyncRendererComponentFn<{ html: string; attrs?: Record<string, string>; }>`
+
+Renders a framework component to static HTML markup on the server.
+
+#### `SSRLoadedRendererValue.supportsAstroStaticSlot`
+
+[Section titled “SSRLoadedRendererValue.supportsAstroStaticSlot”](#ssrloadedrenderervaluesupportsastrostaticslot)
+
+**Type:** `boolean`
+
+**Added in:** `astro@2.5.0`
+
+Indicates whether the renderer supports Astro’s static slot optimization. When true, Astro prevents the removal of nested slots within islands.
+
+#### `SSRLoadedRendererValue.renderHydrationScript()`
+
+[Section titled “SSRLoadedRendererValue.renderHydrationScript()”](#ssrloadedrenderervaluerenderhydrationscript)
+
+**Type:** `() => string`
+
+**Added in:** `astro@4.1.0`
+
+Returns a framework-specific hydration script that must be injected into the HTML before the first component that uses this renderer.
+
+### `SSRManifest`
+
+[Section titled “SSRManifest”](#ssrmanifest)
+
+An object containing build configuration and project metadata that the server adapters use at runtime to serve on-demand rendered pages.
+
+#### `SSRManifest.hrefRoot`
+
+[Section titled “SSRManifest.hrefRoot”](#ssrmanifesthrefroot)
+
+**Type:** `string`
+
+**Added in:** `astro@4.12.0`
+
+Specifies the root path used to generate URLs.
+
+#### `SSRManifest.adapterName`
+
+[Section titled “SSRManifest.adapterName”](#ssrmanifestadaptername)
+
+**Type:** `string`
+
+Defines the name of the [server adapter](/en/guides/on-demand-rendering/#server-adapters) used for on-demand rendering.
+
+#### `SSRManifest.routes`
+
+[Section titled “SSRManifest.routes”](#ssrmanifestroutes)
+
+**Type:** `RouteInfo[]`
+
+A list of information about the routes available in this project. Each entry contains the following properties.
+
+##### `RouteInfo.routeData`
+
+[Section titled “RouteInfo.routeData”](#routeinforoutedata)
+
+**Type:** [`RouteData`](#routedata)
+
+An object describing known information about a route.
+
+##### `RouteInfo.file`
+
+[Section titled “RouteInfo.file”](#routeinfofile)
+
+**Type:** `string`
+
+Specifies the file path to the built route entrypoint.
+
+##### `RouteInfo.links`
+
+[Section titled “RouteInfo.links”](#routeinfolinks)
+
+**Type:** `string[]`
+
+Defines a list of [HTML `link` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link) required by this route.
+
+##### `RouteInfo.scripts`
+
+[Section titled “RouteInfo.scripts”](#routeinfoscripts)
+
+**Type:** `Array<{ children: string; stage: string } | { type: 'inline' | 'external'; value: string }>`
+
+Defines a list of scripts associated with this route. This includes both integration-injected scripts with `children` and `stage` properties and hoisted scripts with `type` and `value` properties.
+
+##### `RouteInfo.styles`
+
+[Section titled “RouteInfo.styles”](#routeinfostyles)
+
+**Type:** `Array<{ type: "inline"; content: string; } | { type: "external"; src: string; }>`
+
+**Added in:** `astro@2.4.0`
+
+Defines the list of stylesheets associated with this route. This includes both inline styles and stylesheet URLs.
+
+#### `SSRManifest.site`
+
+[Section titled “SSRManifest.site”](#ssrmanifestsite)
+
+**Type:** `string`
+
+Specifies the [configured `site`](/en/reference/configuration-reference/#site).
+
+#### `SSRManifest.base`
+
+[Section titled “SSRManifest.base”](#ssrmanifestbase)
+
+**Type:** `string`
+
+Specifies the [configured `base` path](/en/reference/configuration-reference/#base) to deploy to.
+
+#### `SSRManifest.userAssetsBase`
+
+[Section titled “SSRManifest.userAssetsBase”](#ssrmanifestuserassetsbase)
+
+**Type:** `string | undefined`
+
+**Added in:** `astro@5.3.1`
+
+Specifies the base path to use in development mode for user-generated assets, such as scripts and styles.
+
+#### `SSRManifest.trailingSlash`
+
+[Section titled “SSRManifest.trailingSlash”](#ssrmanifesttrailingslash)
+
+**Type:** [`AstroConfig['trailingSlash']`](/en/reference/configuration-reference/#trailingslash)
+
+**Added in:** `astro@3.5.4`
+
+Specifies the [configured behavior for trailing slashes](/en/reference/configuration-reference/#trailingslash) in development mode and for on-demand rendered pages.
+
+#### `SSRManifest.buildFormat`
+
+[Section titled “SSRManifest.buildFormat”](#ssrmanifestbuildformat)
+
+**Type:** [`NonNullable<AstroConfig['build']>['format']`](/en/reference/configuration-reference/#buildformat)
+
+**Added in:** `astro@4.2.2`
+
+Specifies the [configured output file format](/en/reference/configuration-reference/#buildformat).
+
+#### `SSRManifest.compressHTML`
+
+[Section titled “SSRManifest.compressHTML”](#ssrmanifestcompresshtml)
+
+**Type:** `boolean`
+
+**Added in:** `astro@2.7.2`
+
+Determines whether [HTML minification is enabled in the project configuration](/en/reference/configuration-reference/#compresshtml).
+
+#### `SSRManifest.assetsPrefix`
+
+[Section titled “SSRManifest.assetsPrefix”](#ssrmanifestassetsprefix)
+
+**Type:** `string | ({ fallback: string; } & Record<string, string>) | undefined`
+
+**Added in:** `astro@2.3.1`
+
+Specifies the [configured prefix for Astro-generated asset links](/en/reference/configuration-reference/#buildassetsprefix).
+
+#### `SSRManifest.renderers`
+
+[Section titled “SSRManifest.renderers”](#ssrmanifestrenderers)
+
+**Type:** `SSRLoadedRenderer[]`
+
+A list of renderers (e.g. React, Vue, Svelte, MDX) available for the server to use.
+
+#### `SSRManifest.clientDirectives`
+
+[Section titled “SSRManifest.clientDirectives”](#ssrmanifestclientdirectives)
+
+**Type:** `Map<string, string>`
+
+**Added in:** `astro@2.5.0`
+
+Defines a mapping of client directive names (e.g. `load`, `visible`) to their implementation code. This includes both [built-in client directives](/en/reference/directives-reference/#client-directives) and [custom client directives](/en/reference/directives-reference/#custom-client-directives).
+
+#### `SSRManifest.entryModules`
+
+[Section titled “SSRManifest.entryModules”](#ssrmanifestentrymodules)
+
+**Type:** `Record<string, string>`
+
+Defines a mapping of entrypoints to their output file paths.
+
+#### `SSRManifest.inlinedScripts`
+
+[Section titled “SSRManifest.inlinedScripts”](#ssrmanifestinlinedscripts)
+
+**Type:** `Map<string, string>`
+
+**Added in:** `astro@4.5.0`
+
+Defines a mapping of script identifiers to their content for scripts that will be inlined in the HTML output.
+
+#### `SSRManifest.assets`
+
+[Section titled “SSRManifest.assets”](#ssrmanifestassets)
+
+**Type:** `Set<string>`
+
+Defines a set of file paths for all assets that are part of the build.
+
+#### `SSRManifest.componentMetadata`
+
+[Section titled “SSRManifest.componentMetadata”](#ssrmanifestcomponentmetadata)
+
+**Type:** `Map<string, SSRComponentMetadata>`
+
+**Added in:** `astro@2.1.7`
+
+Defines a mapping of component identifiers to their build metadata. Each entry contains information about the [`propagation`](#ssrcomponentmetadatapropagation) behavior and whether it contains head elements.
+
+#### `SSRManifest.pageModule`
+
+[Section titled “SSRManifest.pageModule”](#ssrmanifestpagemodule)
+
+**Type:** `{ page: ImportComponentInstance; onRequest?: MiddlewareHandler; renderers: SSRLoadedRenderer[]; }`
+
+**Added in:** `astro@2.7.0`
+
+Specifies information about a page module.
+
+##### `SSRManifest.pageModule.page()`
+
+[Section titled “SSRManifest.pageModule.page()”](#ssrmanifestpagemodulepage)
+
+**Type:** `() => Promise<ComponentInstance>`
+
+A function to retrieve an instance of the page component.
+
+##### `SSRManifest.pageModule.onRequest()`
+
+[Section titled “SSRManifest.pageModule.onRequest()”](#ssrmanifestpagemoduleonrequest)
+
+**Type:** [`MiddlewareHandler`](/en/reference/modules/astro-middleware/#middlewarehandler)
+
+**Added in:** `astro@3.0.3`
+
+An [Astro middleware function](/en/reference/modules/astro-middleware/#onrequest) when defined in the user project.
+
+##### `SSRManifest.pageModule.renderers`
+
+[Section titled “SSRManifest.pageModule.renderers”](#ssrmanifestpagemodulerenderers)
+
+**Type:** `SSRLoadedRenderer[]`
+
+A list of renderers that a server can use for this page.
+
+#### `SSRManifest.pageMap`
+
+[Section titled “SSRManifest.pageMap”](#ssrmanifestpagemap)
+
+**Type:** `Map<string, () => Promise<typeof pageModule>>`
+
+Defines a mapping of component paths to their importable instances.
+
+#### `SSRManifest.serverIslandMap`
+
+[Section titled “SSRManifest.serverIslandMap”](#ssrmanifestserverislandmap)
+
+**Type:** `Map<string, () => Promise<ComponentInstance>>`
+
+**Added in:** `astro@4.12.0`
+
+Defines a mapping of server island IDs to their component instances.
+
+#### `SSRManifest.serverIslandNameMap`
+
+[Section titled “SSRManifest.serverIslandNameMap”](#ssrmanifestserverislandnamemap)
+
+**Type:** `Map<string, string>`
+
+**Added in:** `astro@4.12.0`
+
+Defines a mapping of server island component paths to their assigned names.
+
+#### `SSRManifest.key`
+
+[Section titled “SSRManifest.key”](#ssrmanifestkey)
+
+**Type:** `Promise<CryptoKey>`
+
+**Added in:** `astro@4.13.4`
+
+Determines the [cryptographic key](https://developer.mozilla.org/en-US/docs/Web/API/CryptoKey) used for encrypting server island props.
+
+#### `SSRManifest.i18n`
+
+[Section titled “SSRManifest.i18n”](#ssrmanifesti18n)
+
+**Type:** `SSRManifestI18n | undefined`
+
+**Added in:** `astro@3.5.0`
+
+Specifies the resolved [`i18n` configuration](/en/reference/configuration-reference/#i18n) when enabled in the project.
+
+##### `SSRManifest.i18n.strategy`
+
+[Section titled “SSRManifest.i18n.strategy”](#ssrmanifesti18nstrategy)
+
+**Type:** `"manual" | "pathname-prefix-always" | "pathname-prefix-other-locales" | "pathname-prefix-always-no-redirect" | "domains-prefix-always" | "domains-prefix-other-locales" | "domains-prefix-always-no-redirect"`
+
+Defines the [i18n routing strategy](/en/reference/configuration-reference/#i18nrouting) configured. This determines how locales are handled in URLs and whether redirects occur.
+
+##### `SSRManifest.i18n.locales`
+
+[Section titled “SSRManifest.i18n.locales”](#ssrmanifesti18nlocales)
+
+**Type:** `Locales`
+
+Specifies a list of [supported locales configured in the project](/en/reference/configuration-reference/#i18nlocales).
+
+##### `SSRManifest.i18n.defaultLocale`
+
+[Section titled “SSRManifest.i18n.defaultLocale”](#ssrmanifesti18ndefaultlocale)
+
+**Type:** `string`
+
+Determines the [default locale configured in the project](/en/reference/configuration-reference/#i18ndefaultlocale).
+
+##### `SSRManifest.i18n.fallback`
+
+[Section titled “SSRManifest.i18n.fallback”](#ssrmanifesti18nfallback)
+
+**Type:** `Record<string, string> | undefined`
+
+Specifies a mapping of locales to their fallback locales as [configured in `i18n.fallback`](/en/reference/configuration-reference/#i18nfallback).
+
+##### `SSRManifest.i18n.fallbackType`
+
+[Section titled “SSRManifest.i18n.fallbackType”](#ssrmanifesti18nfallbacktype)
+
+**Type:** `"redirect" | "rewrite"`
+
+Determines the [configured fallback strategy for the project](/en/reference/configuration-reference/#i18nroutingfallbacktype).
+
+##### `SSRManifest.i18n.domainLookupTable`
+
+[Section titled “SSRManifest.i18n.domainLookupTable”](#ssrmanifesti18ndomainlookuptable)
+
+**Type:** `Record<string, string>`
+
+A mapping of [configured domains](/en/reference/configuration-reference/#i18ndomains) to their associated locales.
+
+#### `SSRManifest.middleware`
+
+[Section titled “SSRManifest.middleware”](#ssrmanifestmiddleware)
+
+**Type:** `() => Promise<AstroMiddlewareInstance> | AstroMiddlewareInstance`
+
+**Added in:** `astro@4.2.5`
+
+Defines an instance to load the middleware.
+
+#### `SSRManifest.actions`
+
+[Section titled “SSRManifest.actions”](#ssrmanifestactions)
+
+**Type:** `() => Promise<{ server: Record<string, ActionClient>; }> | { server: Record<string, ActionClient>; }`
+
+**Added in:** `astro@5.4.2`
+
+An object, or a function that returns an object, with a `server` property that maps action names to their callable functions.
+
+#### `SSRManifest.checkOrigin`
+
+[Section titled “SSRManifest.checkOrigin”](#ssrmanifestcheckorigin)
+
+**Type:** `boolean`
+
+**Added in:** `astro@4.6.0`
+
+Determines whether [origin checking is enabled in the security configuration](/en/reference/configuration-reference/#securitycheckorigin).
+
+#### `SSRManifest.allowedDomains`
+
+[Section titled “SSRManifest.allowedDomains”](#ssrmanifestalloweddomains)
+
+**Type:** `Partial<RemotePattern>[]`
+
+Specifies the [configured list of permitted host patterns](/en/reference/configuration-reference/#securityalloweddomains) for incoming requests when using on-demand rendering.
+
+#### `SSRManifest.sessionConfig`
+
+[Section titled “SSRManifest.sessionConfig”](#ssrmanifestsessionconfig)
+
+**Type:** `SessionConfig<TDriver> & { driverModule?: () => Promise<{ default: () => unstorage.Driver }>; }`
+
+**Added in:** `astro@5.1.0`
+
+An object containing the [resolved session configuration](/en/reference/configuration-reference/#session-options) and an additional property defining the driver in use.
+
+#### `SSRManifest.cacheDir`
+
+[Section titled “SSRManifest.cacheDir”](#ssrmanifestcachedir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Specifies the [configured directory for caching build artifacts](/en/reference/configuration-reference/#cachedir).
+
+#### `SSRManifest.srcDir`
+
+[Section titled “SSRManifest.srcDir”](#ssrmanifestsrcdir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Specifies the [configured directory that Astro will read the site from](/en/reference/configuration-reference/#srcdir).
+
+#### `SSRManifest.outDir`
+
+[Section titled “SSRManifest.outDir”](#ssrmanifestoutdir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Specifies the [configured directory in which to write the final build](/en/reference/configuration-reference/#outdir).
+
+#### `SSRManifest.publicDir`
+
+[Section titled “SSRManifest.publicDir”](#ssrmanifestpublicdir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Specifies the [configured directory for the static assets](/en/reference/configuration-reference/#publicdir).
+
+#### `SSRManifest.buildClientDir`
+
+[Section titled “SSRManifest.buildClientDir”](#ssrmanifestbuildclientdir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Determines the path where client-side build artifacts (e.g. JavaScript, CSS) are output within the build directory.
+
+#### `SSRManifest.buildServerDir`
+
+[Section titled “SSRManifest.buildServerDir”](#ssrmanifestbuildserverdir)
+
+**Type:** `string | URL`
+
+**Added in:** `astro@5.2.0`
+
+Determines the path where server-side build artifacts are output within the build directory.
+
+#### `SSRManifest.csp`
+
+[Section titled “SSRManifest.csp”](#ssrmanifestcsp)
+
+**Type:** `SSRManifestCSP | undefined`
+
+**Added in:** `astro@5.9.0`
+
+Describes the [Content Security Policy configuration](/en/reference/experimental-flags/csp/).
+
+##### `SSRManifest.csp.cspDestination`
+
+[Section titled “SSRManifest.csp.cspDestination”](#ssrmanifestcspcspdestination)
+
+**Type:** `'adapter' | 'meta' | 'header' | undefined`
+
+Specifies whether CSP directives should be injected as a `meta` element, as a response `header`, or by the [`adapter` when it supports setting response headers](/en/reference/adapter-reference/#experimentalstaticheaders).
+
+##### `SSRManifest.csp.algorithm`
+
+[Section titled “SSRManifest.csp.algorithm”](#ssrmanifestcspalgorithm)
+
+**Type:** `'SHA-256' | 'SHA-384' | 'SHA-512'`
+
+Specifies the [configured hash function](/en/reference/experimental-flags/csp/#algorithm).
+
+##### `SSRManifest.csp.scriptHashes`
+
+[Section titled “SSRManifest.csp.scriptHashes”](#ssrmanifestcspscripthashes)
+
+**Type:** `string[]`
+
+Specifies a list of generated hashes for project scripts and [user-supplied hashes](/en/reference/experimental-flags/csp/#hashes) for external scripts.
+
+##### `SSRManifest.csp.scriptResources`
+
+[Section titled “SSRManifest.csp.scriptResources”](#ssrmanifestcspscriptresources)
+
+**Type:** `string[]`
+
+Specifies a list of valid sources combining the [configured script resources](/en/reference/experimental-flags/csp/#resources) and the [injected script resources](/en/reference/experimental-flags/csp/#cspinsertscriptresource).
+
+##### `SSRManifest.csp.isStrictDynamic`
+
+[Section titled “SSRManifest.csp.isStrictDynamic”](#ssrmanifestcspisstrictdynamic)
+
+**Type:** `boolean`
+
+Determines whether support for [dynamic script injection is enabled in the configuration](/en/reference/experimental-flags/csp/#strictdynamic).
+
+##### `SSRManifest.csp.styleHashes`
+
+[Section titled “SSRManifest.csp.styleHashes”](#ssrmanifestcspstylehashes)
+
+**Type:** `string[]`
+
+Specifies a list of generated hashes for project styles and [user-supplied hashes](/en/reference/experimental-flags/csp/#hashes) for external styles.
+
+##### `SSRManifest.csp.styleResources`
+
+[Section titled “SSRManifest.csp.styleResources”](#ssrmanifestcspstyleresources)
+
+**Type:** `string[]`
+
+Specifies a list of valid sources combining the [configured style resources](/en/reference/experimental-flags/csp/#resources) and the [injected style resources](/en/reference/experimental-flags/csp/#cspinsertstyleresource).
+
+##### `SSRManifest.csp.directives`
+
+[Section titled “SSRManifest.csp.directives”](#ssrmanifestcspdirectives)
+
+**Type:** `CspDirective[]`
+
+Specifies the [configured list of valid sources](/en/reference/experimental-flags/csp/#directives) for specific content types.
+
+#### `SSRManifest.internalFetchHeaders`
+
+[Section titled “SSRManifest.internalFetchHeaders”](#ssrmanifestinternalfetchheaders)
+
+**Type:** `Record<string, string>`
+
+**Added in:** `astro@5.15.0`
+
+Specifies the headers that are automatically added to internal fetch requests made during rendering.
+
+### `ValidRedirectStatus`
+
+[Section titled “ValidRedirectStatus”](#validredirectstatus)
+
+**Type:** `301 | 302 | 303 | 307 | 308 | 300 | 304`
+
+A union of supported redirect status code.
+
+### Deprecated type imports
+
+[Section titled “Deprecated type imports”](#deprecated-type-imports)
+
+The following types are deprecated and will be removed in a future major version:
+
+#### `IntegrationRouteData`
+
+[Section titled “IntegrationRouteData”](#integrationroutedata)
+
+Caution
+
+This type is deprecated since v5.0. Use [`IntegrationResolvedRoute`](#integrationresolvedroute) instead.
+
+A smaller version of the [`RouteData`](#routedata) that is used in the integrations.
+
+```ts
+type IntegrationRouteData = Omit<
+  RouteData,
+  'isIndex' | 'fallbackRoutes' | 'redirectRoute' | 'origin'
+> & {
+  redirectRoute?: IntegrationRouteData;
+};
+```
+
+##### `redirectRoute`
+
+[Section titled “redirectRoute”](#redirectroute)
 
 **Type:** `IntegrationRouteData | undefined`
 
-When the value of `RouteData.type` is `redirect`, the value will contains the `IntegrationRouteData` of the route to redirect to. Otherwise, the value will be undefined.
+When the value of [`RouteData.type`](#routedatatype) is `redirect`, the value will contains the `IntegrationRouteData` of the route to redirect to. Otherwise, the value will be undefined.
 
 ## Allow installation with `astro add`
 
@@ -65858,7 +67244,7 @@ When you are ready to remove this flag and migrate to the new Content Layer API 
 src/content/config.ts
 
 ```js
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 
 
 const blog = defineCollection({ })
@@ -65902,7 +67288,7 @@ src/actions/index.ts
 
 ```ts
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
 
 export const server = {
@@ -65935,7 +67321,7 @@ Return values are parsed using the [devalue library](https://github.com/Rich-Har
 
 **Type:** `ZodType | undefined`
 
-An optional property that accepts a Zod validator (e.g. Zod object, Zod discriminated union) to validate handler inputs at runtime. If the action fails to validate, [a `BAD_REQUEST` error](#actionerror) is returned and the `handler` is not called.
+An optional property that accepts a [Zod validator](/en/reference/modules/astro-zod/#common-data-type-validators) (e.g. Zod object, Zod discriminated union) to validate handler inputs at runtime. If the action fails to validate, [a `BAD_REQUEST` error](#actionerror) is returned and the `handler` is not called.
 
 If `input` is omitted, the `handler` will receive an input of type `unknown` for JSON requests and type `FormData` for form requests.
 
@@ -66450,7 +67836,7 @@ A union type of standard HTTP status codes [defined by IANA](https://www.iana.or
 
 **Type:** `ZodType`
 
-**Added in:** `astro@5.16.0` New
+**Added in:** `astro@5.16.0`
 
 A utility type that automatically infers the TypeScript type of an action’s input based on its Zod schema. This can be useful to reference an action’s [`input` validator type](#input-validator) as an object in your own type definitions.
 
@@ -66516,13 +67902,17 @@ Astro provides built-in components and helper functions for optimizing and displ
 
 [Section titled “Imports from astro:assets”](#imports-from-astroassets)
 
+The following helpers are imported from the virtual assets module:
+
 ```js
 import {
   Image,
   Picture,
   getImage,
   inferRemoteSize,
- } from 'astro:assets';
+  getConfiguredImageService,
+  imageConfig,
+} from 'astro:assets';
 ```
 
 ### `<Image />`
@@ -66560,13 +67950,9 @@ import myImage from "../assets/my_image.png"; // Image is 1600x900
 />
 ```
 
-#### Image properties
-
-[Section titled “Image properties”](#image-properties)
-
 The `<Image />` component accepts the following listed properties and [responsive image properties](#responsive-image-properties) in addition to all properties accepted by the HTML `<img>` tag.
 
-##### src (required)
+#### `src` (required)
 
 [Section titled “src (required)”](#src-required)
 
@@ -66618,7 +68004,7 @@ The format of the `src` value of your image file depends on where your image fil
   />
   ```
 
-##### alt (required)
+#### `alt` (required)
 
 [Section titled “alt (required)”](#alt-required)
 
@@ -66628,11 +68014,11 @@ Use the required `alt` attribute to provide a string of [descriptive alt text](h
 
 If an image is merely decorative (i.e. doesn’t contribute to the understanding of the page), set `alt=""` so that screen readers and other assistive technologies know to ignore the image.
 
-##### width and height (required for images in `public/`)
+#### `width` and `height` (required for images in `public/`)
 
 [Section titled “width and height (required for images in public/)”](#width-and-height-required-for-images-in-public)
 
-**Type:** `number | undefined`
+**Type:** ``number | `${number}` | undefined``
 
 These properties define the dimensions to use for the image.
 
@@ -66642,7 +68028,7 @@ When using images in their original aspect ratio, `width` and `height` are optio
 
 However, both of these properties are required for images stored in your `public/` folder as Astro is unable to analyze these files.
 
-##### densities
+#### `densities`
 
 [Section titled “densities”](#densities)
 
@@ -66689,7 +68075,7 @@ import myImage from '../assets/my_image.png';
 />
 ```
 
-##### widths
+#### `widths`
 
 [Section titled “widths”](#widths)
 
@@ -66706,6 +68092,8 @@ The `widths` and `sizes` attributes will be automatically generated for responsi
 Do not provide a value for `densities` when using this value. Only one of these two values can be used to generate a `srcset`.
 
 Widths that are larger than the original image will be ignored to avoid upscaling the image.
+
+src/components/MyComponent.astro
 
 ```astro
 ---
@@ -66744,7 +68132,7 @@ import myImage from '../assets/my_image.png'; // Image is 1600x900
 />
 ```
 
-##### sizes
+#### `sizes`
 
 [Section titled “sizes”](#sizes)
 
@@ -66758,7 +68146,7 @@ The `widths` and `sizes` attributes will be automatically generated for responsi
 
 The generated `sizes` attribute for `constrained` and `full-width` images is based on the assumption that the image is displayed close to the full width of the screen when the viewport is smaller than the image’s width. If it is significantly different (e.g. if it’s in a multi-column layout on small screens), you may need to adjust the `sizes` attribute manually for best results.
 
-##### format
+#### `format`
 
 [Section titled “format”](#format)
 
@@ -66768,7 +68156,7 @@ You can optionally state the [image file type](https://developer.mozilla.org/en-
 
 By default, the `<Image />` component will produce a `.webp` file.
 
-##### quality
+#### `quality`
 
 [Section titled “quality”](#quality)
 
@@ -66779,7 +68167,7 @@ By default, the `<Image />` component will produce a `.webp` file.
 * a preset (`low`, `mid`, `high`, `max`) that is automatically normalized between formats.
 * a number from `0` to `100` (interpreted differently between formats).
 
-##### inferSize
+#### `inferSize`
 
 [Section titled “inferSize”](#infersize)
 
@@ -66805,7 +68193,7 @@ import { Image } from 'astro:assets';
 
 `inferSize` can fetch the dimensions of a [remote image from a domain that has not been authorized](/en/guides/images/#authorizing-remote-images), however the image itself will remain unprocessed.
 
-##### priority
+#### `priority`
 
 [Section titled “priority”](#priority)
 
@@ -66835,6 +68223,35 @@ fetchpriority="high"
 ```
 
 These individual attributes can still be set manually if you need to customize them further.
+
+#### `background`
+
+[Section titled “background”](#background)
+
+**Type:** `string | undefined`
+
+**Added in:** `astro@5.17.0` New
+
+The background color to use when flattening an image to transform it into the requested output `format`.
+
+By default, Sharp uses a black background when flattening an image. Specifying a different background color is especially useful when transforming images with transparent backgrounds to a format that does not support transparency (e.g. `.jpeg`):
+
+src/components/MyComponent.astro
+
+```astro
+---
+import { Image } from 'astro:assets';
+import myImage from '../assets/my_image.png';
+---
+<Image
+  src={myImage}
+  alt="A description of my image"
+  format="jpeg"
+  background="#ffffff"
+/>
+```
+
+Values are passed directly to the image service. Sharp accepts [any value the `color-string` package can parse](https://github.com/Qix-/color-string/blob/master/README.md#parsing).
 
 ### `<Picture />`
 
@@ -66875,13 +68292,9 @@ import myImage from "../assets/my_image.png"; // Image is 1600x900
 </picture>
 ```
 
-#### Picture properties
+`<Picture />` accepts all the properties of [the `<Image />` component](#image-), including [responsive image properties](#responsive-image-properties), plus the following:
 
-[Section titled “Picture properties”](#picture-properties)
-
-`<Picture />` accepts all the properties of [the `<Image />` component](#image-properties), including [responsive image properties](#responsive-image-properties), plus the following:
-
-##### `formats`
+#### `formats`
 
 [Section titled “formats”](#formats)
 
@@ -66889,15 +68302,15 @@ import myImage from "../assets/my_image.png"; // Image is 1600x900
 
 An array of image formats to use for the `<source>` tags. Entries will be added as `<source>` elements in the order they are listed, and this order determines which format is displayed. For the best performance, list the most modern format first (e.g. `webp` or `avif`). By default, this is set to `['webp']`.
 
-##### `fallbackFormat`
+#### `fallbackFormat`
 
 [Section titled “fallbackFormat”](#fallbackformat)
 
-**Type:** `ImageOutputFormat`
+**Type:** [`ImageOutputFormat`](#imageoutputformat)
 
 Format to use as a fallback value for the `<img>` tag. Defaults to `.png` for static images (or `.jpg` if the image is a JPG), `.gif` for animated images, and `.svg` for SVG files.
 
-##### `pictureAttributes`
+#### `pictureAttributes`
 
 [Section titled “pictureAttributes”](#pictureattributes)
 
@@ -66944,7 +68357,7 @@ import myImage from "../my_image.png"; // Image is 1600x900
 
 Setting the [`layout`](#layout) property on an [`<Image />`](#image-) or [`<Picture />`](#picture-) component creates a responsive image and enables additional property settings.
 
-MyComponent.astro
+src/components/MyComponent.astro
 
 ```astro
 ---
@@ -66997,7 +68410,7 @@ Responsive Image Styles
 
 You can override the default `object-fit` and `object-position` styles by setting the [`fit`](#fit) and [`position`](#position) props on the `<Image />` or `<Picture />` component.
 
-##### layout
+##### `layout`
 
 [Section titled “layout”](#layout)
 
@@ -67038,7 +68451,7 @@ import myImage from '../assets/my_image.png';
 <Image src={myImage} alt="This will disable responsive images" layout="none" />
 ```
 
-##### fit
+##### `fit`
 
 [Section titled “fit”](#fit)
 
@@ -67051,7 +68464,7 @@ Enabled when the [`layout`](#layout) property is set or configured. Defines how 
 
 Values match those of CSS `object-fit`. Defaults to `cover`, or the value of [`image.objectFit`](/en/reference/configuration-reference/#imageobjectfit) if set. Can be used to override the default `object-fit` styles.
 
-##### position
+##### `position`
 
 [Section titled “position”](#position)
 
@@ -67076,7 +68489,11 @@ Caution
 
 The `getImage()` function is intended for generating images destined to be used somewhere else than directly in HTML, for example in an [API Route](/en/guides/endpoints/#server-endpoints-api-routes). It also allows you to create your own custom `<Image />` component.
 
-`getImage()` takes an options object with the [same properties as the Image component](#image-properties) (except `alt`).
+This takes an options object with the [same properties as the Image component](#image-) (except `alt`) and returns a [`GetImageResult` object](#getimageresult).
+
+The following example generates an AVIF `background-image` for a `<div />`:
+
+src/components/Background.astro
 
 ```astro
 ---
@@ -67088,44 +68505,968 @@ const optimizedBackground = await getImage({src: myBackground, format: 'avif'})
 ---
 
 
-<div style={`background-image: url(${optimizedBackground.src});`}></div>
+<div style={`background-image: url(${optimizedBackground.src});`}><slot /></div>
 ```
 
-It returns an object with the following type:
-
-```ts
-type GetImageResult = {
-  /* Additional HTML attributes needed to render the image (width, height, style, etc..) */
-  attributes: Record<string, any>;
-  /* Validated parameters passed */
-  options: ImageTransform;
-  /* Original parameters passed */
-  rawOptions: ImageTransform;
-  /* Path to the generated image */
-  src: string;
-  srcSet: {
-    /* Generated values for srcset, every entry has a url and a size descriptor */
-    values: SrcSetValue[];
-    /* A value ready to use in`srcset` attribute */
-    attribute: string;
-  };
-}
-```
-
-### inferRemoteSize()
+### `inferRemoteSize()`
 
 [Section titled “inferRemoteSize()”](#inferremotesize)
 
-**Type:** `(url: string) => Promise<Omit<ImageMetadata, 'src' | 'fsPath'>>`
+**Type:** `(url: string) => Promise<Omit<ImageMetadata, ‘src’ | ‘fsPath’>>`
 
 **Added in:** `astro@4.12.0`
 
-A function to infer the dimensions of remote images. This can be used as an alternative to passing the `inferSize` property.
+A function to set the original `width` and `height` of a remote image automatically. This can be used as an alternative to passing the [`inferSize` ](#infersize)property.
 
 ```ts
 import { inferRemoteSize } from 'astro:assets';
-const {width, height} = await inferRemoteSize("https://example.com/cat.png");
+const { width, height } = await inferRemoteSize("https://example.com/cat.png");
 ```
+
+### `getConfiguredImageService()`
+
+[Section titled “getConfiguredImageService()”](#getconfiguredimageservice)
+
+**Type:** `() => Promise<ImageService>`
+
+**Added in:** `astro@2.1.3`
+
+Retrieves the resolved [image service](/en/reference/configuration-reference/#imageservice).
+
+### `imageConfig`
+
+[Section titled “imageConfig”](#imageconfig)
+
+**Type:** [`AstroConfig["image"]`](/en/reference/configuration-reference/#image-options)
+
+**Added in:** `astro@3.0.9`
+
+The [configuration options for images](/en/reference/configuration-reference/#image-options) set by the user and merged with all defaults.
+
+## `astro:assets` types
+
+[Section titled “astro:assets types”](#astroassets-types)
+
+The following types are imported from the virtual assets module:
+
+```ts
+import type {
+  LocalImageProps,
+  RemoteImageProps,
+} from "astro/assets";
+```
+
+### `LocalImageProps`
+
+[Section titled “LocalImageProps”](#localimageprops)
+
+**Type:** `ImageSharedProps<T> & { src: ImageMetadata | Promise<{ default: ImageMetadata; }> }`
+
+Describes the [properties of a local image](#image-). This ensures that [`src`](#src-required) matches the shape of an imported image.
+
+Learn more about [imported images in `src/`](/en/guides/images/#images-in-src) with an example usage.
+
+### `RemoteImageProps`
+
+[Section titled “RemoteImageProps”](#remoteimageprops)
+
+**Types:**
+
+* `ImageSharedProps<T> & { src: string; inferSize: true; }`
+* `ImageSharedProps<T> & { src: string; inferSize?: false | undefined; }`
+
+Describes the [properties of a remote image](#image-). This ensures that when [`inferSize`](#infersize) is not provided or is set to `false`, both [`width` and `height`](#width-and-height-required-for-images-in-public) are required.
+
+## Imports from `astro/assets`
+
+[Section titled “Imports from astro/assets”](#imports-from-astroassets-1)
+
+The following helpers are imported from the regular assets module:
+
+```ts
+import {
+  baseService,
+  getConfiguredImageService,
+  getImage,
+  isLocalService,
+} from "astro/assets";
+```
+
+### `baseService`
+
+[Section titled “baseService”](#baseservice)
+
+**Type:** `Omit<LocalImageService, ‘transform’>`
+
+The built-in local image service which can be extended to [create a custom image service](/en/reference/image-service-reference/).
+
+The following example reuses the `baseService` to create a new image service:
+
+src/image-service.ts
+
+```ts
+import { baseService } from "astro/assets";
+
+
+const newImageService = {
+ getURL: baseService.getURL,
+ parseURL: baseService.parseURL,
+ getHTMLAttributes: baseService.getHTMLAttributes,
+ async transform(inputBuffer, transformOptions) {...}
+}
+```
+
+### `getConfiguredImageService()`
+
+[Section titled “getConfiguredImageService()”](#getconfiguredimageservice-1)
+
+See [`getConfiguredImageService()`](#getconfiguredimageservice) from `astro:assets`.
+
+### `getImage()`
+
+[Section titled “getImage()”](#getimage-1)
+
+**Type:** `(options: UnresolvedImageTransform, imageConfig: AstroConfig[‘image’]) => Promise<GetImageResult>`
+
+A function similar to [`getImage()`](#getimage) from `astro:assets` with two required arguments: an `options` object with [the same properties as the Image component](#image-) and a second object for the [image configuration](/en/reference/configuration-reference/#image-options).
+
+### `isLocalService()`
+
+[Section titled “isLocalService()”](#islocalservice)
+
+**Type:** `(service: ImageService | undefined) => boolean`
+
+Checks the type of an image service and returns `true` when this is a [local service](#localimageservice).
+
+## `astro/assets` types
+
+[Section titled “astro/assets types”](#astroassets-types-1)
+
+The following types are imported from the regular assets module:
+
+```ts
+import type {
+  LocalImageProps,
+  RemoteImageProps,
+} from "astro/assets";
+```
+
+### `LocalImageProps`
+
+[Section titled “LocalImageProps”](#localimageprops-1)
+
+See [`LocalImageProps`](#localimageprops) from `astro:assets`.
+
+### `RemoteImageProps`
+
+[Section titled “RemoteImageProps”](#remoteimageprops-1)
+
+See [`RemoteImageProps`](#remoteimageprops) from `astro:assets`.
+
+## Imports from `astro/assets/utils`
+
+[Section titled “Imports from astro/assets/utils”](#imports-from-astroassetsutils)
+
+The following helpers are imported from the `utils` directory in the regular assets module and can be used to [build an image service](/en/reference/image-service-reference/):
+
+```ts
+import {
+  isRemoteAllowed,
+  matchHostname,
+  matchPathname,
+  matchPattern,
+  matchPort,
+  matchProtocol,
+  isESMImportedImage,
+  isRemoteImage,
+  resolveSrc,
+  imageMetadata,
+  emitImageMetadata,
+  getOrigQueryParams,
+  inferRemoteSize,
+  propsToFilename,
+  hashTransform,
+  /* The following are deprecated: */
+  emitESMImage,
+} from "astro/assets/utils";
+```
+
+### `isRemoteAllowed()`
+
+[Section titled “isRemoteAllowed()”](#isremoteallowed)
+
+**Type:** `(src: string, { domains, remotePatterns }: { domains: string[], remotePatterns: RemotePattern[] }) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Determines whether a given remote resource, identified by its source URL, is allowed based on specified domains and remote patterns.
+
+```ts
+import { isRemoteAllowed } from 'astro/assets/utils';
+
+
+const url = new URL('https://example.com/images/test.jpg');
+const domains = ['example.com', 'anotherdomain.com'];
+const remotePatterns = [
+  {
+    protocol: 'https',
+    hostname: 'images.example.com',
+    pathname: '/**', // Allow any path under this hostname
+  }
+];
+
+
+isRemoteAllowed(url.href, { domains, remotePatterns }); // Output: `true`
+```
+
+### `matchHostname()`
+
+[Section titled “matchHostname()”](#matchhostname)
+
+**Type:** `(url: URL, hostname?: string, allowWildcard = false) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Matches a given URL’s hostname against a specified hostname, with optional support for wildcard patterns.
+
+```ts
+import { matchHostname } from 'astro/assets/utils';
+
+
+const url = new URL('https://sub.example.com/path/to/resource');
+
+
+matchHostname(url, 'example.com'); // Output: `false`
+matchHostname(url, 'example.com', true); // Output: `true`
+```
+
+### `matchPathname()`
+
+[Section titled “matchPathname()”](#matchpathname)
+
+**Type:** `(url: URL, pathname?: string, allowWildcard = false) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Matches a given URL’s pathname against a specified pattern, with optional support for wildcards.
+
+```ts
+import { matchPathname } from 'astro/assets/utils';
+
+
+const testURL = new URL('https://example.com/images/photo.jpg');
+
+
+matchPathname(testURL, '/images/photo.jpg'); // Output: `true`
+matchPathname(testURL, '/images/'); // Output: `false`
+matchPathname(testURL, '/images/*', true); // Output: `true`
+```
+
+### `matchPattern()`
+
+[Section titled “matchPattern()”](#matchpattern)
+
+**Type:** `(url: URL, remotePattern: RemotePattern) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Evaluates whether a given URL matches the specified remote pattern based on protocol, hostname, port, and pathname.
+
+```ts
+import { matchPattern } from 'astro/assets/utils';
+
+
+const url = new URL('https://images.example.com/photos/test.jpg');
+const remotePattern = {
+  protocol: 'https',
+  hostname: 'images.example.com',
+  pathname: '/photos/**', // Allow all files under /photos/
+};
+
+
+matchPattern(url, remotePattern); // Output: `true`
+```
+
+### `matchPort()`
+
+[Section titled “matchPort()”](#matchport)
+
+**Type:** `(url: URL, port?: string) => boolean`\
+**Default:** `true`
+
+**Added in:** `astro@4.0.0`
+
+Checks if the given URL’s port matches the specified port. If no port is provided, it returns `true`.
+
+```ts
+import { matchPort } from 'astro/assets/utils';
+
+
+const urlWithPort = new URL('https://example.com:8080/resource');
+const urlWithoutPort = new URL('https://example.com/resource');
+
+
+matchPort(urlWithPort, '8080'); // Output: `true`
+matchPort(urlWithoutPort, '8080'); // Output: `false`
+```
+
+### `matchProtocol()`
+
+[Section titled “matchProtocol()”](#matchprotocol)
+
+**Type:** `(url: URL, protocol?: string) => boolean`\
+**Default:** `true`
+
+**Added in:** `astro@4.0.0`
+
+Compares the protocol of the provided URL with a specified protocol. This returns `true` if the protocol matches or if no protocol is provided.
+
+```ts
+import { matchProtocol } from 'astro/assets/utils';
+
+
+const secureUrl = new URL('https://example.com/resource');
+const regularUrl = new URL('http://example.com/resource');
+
+
+matchProtocol(secureUrl, 'https'); // Output: `true`
+matchProtocol(regularUrl, 'https'); // Output: `false`
+```
+
+### `isESMImportedImage()`
+
+[Section titled “isESMImportedImage()”](#isesmimportedimage)
+
+**Type:** `(src: ImageMetadata | string) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Determines if the given source is an ECMAScript Module (ESM) imported image.
+
+```ts
+import { isESMImportedImage } from 'astro/assets/utils';
+
+
+const imageMetadata = {
+  src: '/images/photo.jpg',
+  width: 800,
+  height: 600,
+  format: 'jpg',
+};
+const filePath = '/images/photo.jpg';
+
+
+isESMImportedImage(imageMetadata); // Output: `true`
+isESMImportedImage(filePath); // Output: `false`
+```
+
+### `isRemoteImage()`
+
+[Section titled “isRemoteImage()”](#isremoteimage)
+
+**Type:** `(src: ImageMetadata | string) => boolean`
+
+**Added in:** `astro@4.0.0`
+
+Determines if the provided source is a remote image URL in the form of a string.
+
+```ts
+import { isRemoteImage } from 'astro/assets/utils';
+
+
+const imageUrl = 'https://example.com/images/photo.jpg';
+const localImage = {
+  src: '/images/photo.jpg',
+  width: 800,
+  height: 600,
+  format: 'jpg',
+};
+
+
+isRemoteImage(imageUrl); // Output: `true`
+isRemoteImage(localImage); // Output: `false`
+```
+
+### `resolveSrc()`
+
+[Section titled “resolveSrc()”](#resolvesrc)
+
+**Type:** `(src: UnresolvedImageTransform[‘src’]) => Promise<string | ImageMetadata>`
+
+**Added in:** `astro@4.0.0`
+
+Returns the image source. This function ensures that if `src` is a Promise (e.g., a dynamic `import()`), it is awaited and the correct `src` is extracted. If `src` is already a resolved value, it is returned as-is.
+
+```ts
+import { resolveSrc } from 'astro/assets/utils';
+import localImage from "./images/photo.jpg";
+
+
+const resolvedLocal = await resolveSrc(localImage);
+// Example value: `{ src: '/@fs/home/username/dev/astro-project/src/images/photo.jpg', width: 800, height: 600, format: 'jpg' }`
+
+
+const resolvedRemote = await resolveSrc("https://example.com/remote-img.jpg");
+// Value: `"https://example.com/remote-img.jpg"`
+
+
+const resolvedDynamic = await resolveSrc(import("./images/dynamic-image.jpg"))
+// Example value: `{ src: '/@fs/home/username/dev/astro-project/src/images/dynamic-image.jpg', width: 800, height: 600, format: 'jpg' }`
+```
+
+### `imageMetadata()`
+
+[Section titled “imageMetadata()”](#imagemetadata)
+
+**Type:** `(data: Uint8Array, src?: string) => Promise<Omit<ImageMetadata, ‘src’ | ‘fsPath’>>`
+
+**Added in:** `astro@4.0.0`
+
+Extracts image metadata such as dimensions, format, and orientation from the provided image data.
+
+```ts
+import { imageMetadata } from 'astro/assets/utils';
+
+
+const binaryImage = new Uint8Array([/* ...binary image data... */]);
+const sourcePath = '/images/photo.jpg';
+
+
+const metadata = await imageMetadata(binaryImage, sourcePath);
+// Example value:
+// {
+//    width: 800,
+//    height: 600,
+//    format: 'jpg',
+//    orientation: undefined
+// }
+```
+
+### `emitImageMetadata()`
+
+[Section titled “emitImageMetadata()”](#emitimagemetadata)
+
+**Type:** `(id: string | undefined, fileEmitter?: Rollup.EmitFile) => Promise<(ImageMetadata & { contents?: Buffer }) | undefined>`
+
+**Added in:** `astro@5.7.0`
+
+Processes an image file and emits its metadata and optionally its contents. In build mode, the function uses `fileEmitter` to generate an asset reference. In development mode, it resolves to a local file URL with query parameters for metadata.
+
+```ts
+import { emitImageMetadata } from 'astro/assets/utils';
+
+
+const imageId = '/images/photo.jpg';
+const metadata = await emitImageMetadata(imageId);
+// Example value:
+// {
+//    src: '/@fs/home/username/dev/astro-project/src/images/photo.jpg?origWidth=800&origHeight=600&origFormat=jpg',
+//    width: 800,
+//    height: 600,
+//    format: 'jpg',
+//    contents: Uint8Array([...])
+// }
+```
+
+### `getOrigQueryParams()`
+
+[Section titled “getOrigQueryParams()”](#getorigqueryparams)
+
+**Type:** `(params: URLSearchParams) => Pick<ImageMetadata, ‘width’ | ‘height’ | ‘format’> | undefined`
+
+**Added in:** `astro@4.0.0`
+
+Retrieves the `width`, `height`, and `format` of an image from a [`URLSearchParams` object](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams). If any of these parameters are missing or invalid, the function returns `undefined`.
+
+```ts
+import { getOrigQueryParams } from 'astro/assets/utils';
+
+
+const url = new URL('https://example.com/image.jpg?width=800&height=600&format=jpg');
+const origParams = getOrigQueryParams(url.searchParams);
+// Example value:
+// {
+//    width: 800,
+//    height: 600,
+//    format: 'jpg'
+// }
+```
+
+### `inferRemoteSize()`
+
+[Section titled “inferRemoteSize()”](#inferremotesize-1)
+
+**Type:** `(url: string) => Promise<Omit<ImageMetadata, ‘src’ | ‘fsPath’>>`
+
+**Added in:** `astro@4.0.0`
+
+Infers the dimensions of a remote image by streaming its data and analyzing it progressively until sufficient metadata is available.
+
+```ts
+import { inferRemoteSize } from 'astro/assets/utils';
+
+
+const remoteImageUrl = 'https://example.com/image.jpg';
+const imageSize = await inferRemoteSize(remoteImageUrl);
+// Example value:
+// {
+//    width: 1920,
+//    height: 1080,
+//    format: 'jpg'
+// }
+```
+
+### `propsToFilename()`
+
+[Section titled “propsToFilename()”](#propstofilename)
+
+**Type:** `(filePath: string, transform: ImageTransform, hash: string) => string`
+
+**Added in:** `astro@4.0.0`
+
+Generates a formatted filename for an image based on its source path, transformation properties, and a unique hash.
+
+The formatted filename follows this structure:
+
+`<prefixDirname>/<baseFilename>_<hash><outputExtension>`
+
+* `prefixDirname`: If the image is an ESM imported image, this is the directory name of the original file path; otherwise, it will be an empty string.
+* `baseFilename`: The base name of the file or a hashed short name if the file is a `data:` URI.
+* `hash`: A unique hash string generated to distinguish the transformed file.
+* `outputExtension`: The desired output file extension derived from the `transform.format` or the original file extension.
+
+```ts
+import { propsToFilename } from 'astro/assets/utils';
+
+
+const filePath = '/images/photo.jpg';
+const transform = { format: 'png', src: filePath };
+const hash = 'abcd1234';
+
+
+const filename = propsToFilename(filePath, transform, hash);
+// Example value: '/images/photo_abcd1234.png'
+```
+
+### `hashTransform()`
+
+[Section titled “hashTransform()”](#hashtransform)
+
+**Type:** `(transform: ImageTransform, imageService: string, propertiesToHash: string[]) => string`
+
+**Added in:** `astro@4.0.0`
+
+Transforms the provided `transform` object into a hash string based on selected properties and the specified `imageService`.
+
+```ts
+import { hashTransform } from 'astro/assets/utils';
+
+
+const transform = {
+  src: '/images/photo.jpg',
+  width: 800,
+  height: 600,
+  format: 'jpg',
+};
+const imageService = 'astro/assets/services/sharp';
+const propertiesToHash = ['width', 'height', 'format'];
+
+
+const hash = hashTransform(transform, imageService, propertiesToHash);
+// Example value: 'd41d8cd98f00b204e9800998ecf8427e'
+```
+
+### `emitESMImage()`
+
+[Section titled “emitESMImage()”](#emitesmimage)
+
+Deprecated
+
+Use the [`emitImageMetadata`](#emitimagemetadata) function instead.
+
+**Type:** `(id: string | undefined, _watchMode: boolean, experimentalSvgEnabled: boolean, fileEmitter?: Rollup.EmitFile) => Promise<(ImageMetadata & { contents?: Buffer }) | undefined>`
+
+**Added in:** `astro@4.0.0`
+
+Processes an image file and emits its metadata and optionally its contents. In build mode, the function uses `fileEmitter` to generate an asset reference. In development mode, it resolves to a local file URL with query parameters for metadata.
+
+```ts
+import { emitESMImage } from 'astro/assets/utils';
+
+
+const imageId = '/images/photo.jpg';
+const unusedWatchMode = false; // Deprecated, unused
+const unusedExperimentalSvgEnabled = false; // Set to `true` only if you are using SVG and want the file data to be embedded
+const image = await emitESMImage(imageId, unusedWatchMode, unusedExperimentalSvgEnabled);
+// Example value:
+// {
+//    src: '/@fs/home/username/dev/astro-project/src/images/photo.jpg?origWidth=800&origHeight=600&origFormat=jpg',
+//    width: 800,
+//    height: 600,
+//    format: 'jpg',
+//    contents: Uint8Array([...])
+// }
+```
+
+## `astro` types
+
+[Section titled “astro types”](#astro-types)
+
+```ts
+import type {
+  GetImageResult,
+  ImageTransform,
+  UnresolvedImageTransform,
+  ImageMetadata,
+  ImageInputFormat,
+  ImageOutputFormat,
+  ImageQuality,
+  ImageQualityPreset,
+  RemotePattern,
+  ImageService,
+  ExternalImageService,
+  LocalImageService,
+  ImageServiceConfig,
+} from "astro";
+```
+
+### `GetImageResult`
+
+[Section titled “GetImageResult”](#getimageresult)
+
+**Type:** `object`
+
+**Added in:** `astro@2.2.0`
+
+Describes the result of the transformation after the call to [`getImage()`](/en/reference/modules/astro-assets/#getimage).
+
+#### `attributes`
+
+[Section titled “attributes”](#attributes)
+
+**Type:** `Record<string, any>`
+
+Defines the additional HTML attributes needed to render the image (e.g. width, height, style).
+
+#### `options`
+
+[Section titled “options”](#options)
+
+**Type:** [`ImageTransform`](#imagetransform)
+
+Describes the transformation settings after validation.
+
+#### `rawOptions`
+
+[Section titled “rawOptions”](#rawoptions)
+
+**Type:** [`ImageTransform`](#imagetransform)
+
+Describes the original transformation settings.
+
+#### `src`
+
+[Section titled “src”](#src)
+
+**Type:** `string`
+
+The path to the generated image.
+
+#### `srcSet`
+
+[Section titled “srcSet”](#srcset)
+
+**Type:** `{ values: { transform: ImageTransform; descriptor?: string; attributes?: Record<string, any>; url: string; }[]; attribute: string; }`
+
+**Added in:** `astro@3.3.0`
+
+An object describing how to render the [`srcset` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#srcset).
+
+##### `values`
+
+[Section titled “values”](#values)
+
+**Type:** `{ transform: ImageTransform; descriptor?: string; attributes?: Record<string, any>; url: string; }[]`
+
+An array of generated values where each entry includes a URL and a size descriptor. This can be used to manually generate the value of the `srcset` attribute.
+
+##### `attribute`
+
+[Section titled “attribute”](#attribute)
+
+**Type:** `string`
+
+A value ready to use in the `srcset` attribute.
+
+### `ImageTransform`
+
+[Section titled “ImageTransform”](#imagetransform)
+
+**Type:** `object`
+
+Defines the options accepted by the image transformation service. This contains a required `src` property, optional predefined properties, and any additional properties required by the image service:
+
+#### `src`
+
+[Section titled “src”](#src-1)
+
+**Type:** `ImageMetadata | string`
+
+Defines the path to a local image in the `public` directory, the URL of a remote image, or the data from an imported image.
+
+#### `width`
+
+[Section titled “width”](#width)
+
+**Type:** `number | undefined`
+
+The width of the image.
+
+#### `height`
+
+[Section titled “height”](#height)
+
+**Type:** `number | undefined`
+
+The height of the image.
+
+#### `widths`
+
+[Section titled “widths”](#widths-1)
+
+**Type:** `number[] | undefined`
+
+**Added in:** `astro@3.3.0`
+
+A list of widths to generate for the image.
+
+#### `densities`
+
+[Section titled “densities”](#densities-1)
+
+**Type:** ``(number | `${number}x`)[] | undefined``
+
+**Added in:** `astro@3.3.0`
+
+A list of pixel densities to generate for the image.
+
+#### `quality`
+
+[Section titled “quality”](#quality-1)
+
+**Type:** `ImageQuality | undefined`
+
+The desired quality for the output image.
+
+#### `format`
+
+[Section titled “format”](#format-1)
+
+**Type:** `ImageOutputFormat | undefined`
+
+The desired format for the output image.
+
+#### `fit`
+
+[Section titled “fit”](#fit-1)
+
+**Type:** `'fill' | 'contain' | 'cover' | 'none' | 'scale-down' | string | undefined`
+
+**Added in:** `astro@5.0.0`
+
+Defines a list of allowed values for the `object-fit` CSS property, extensible with any string.
+
+#### `position`
+
+[Section titled “position”](#position-1)
+
+**Type:** `string | undefined`
+
+**Added in:** `astro@5.0.0`
+
+Controls the value for the `object-position` CSS property.
+
+### `UnresolvedImageTransform`
+
+[Section titled “UnresolvedImageTransform”](#unresolvedimagetransform)
+
+**Type:** `Omit<ImageTransform, “src”> & { src: ImageMetadata | string | Promise<{ default: ImageMetadata }>; inferSize?: boolean; }`
+
+Represents an image with transformation options. This contains the same properties as the [`ImageTransform` type](#imagetransform) with a different `src` type and an additional `inferSize` property.
+
+#### `src`
+
+[Section titled “src”](#src-2)
+
+**Type:** `ImageMetadata | string | Promise<{ default: ImageMetadata }>`
+
+The path to an image imported or located in the `public` directory, or the URL of a remote image.
+
+#### `inferSize`
+
+[Section titled “inferSize”](#infersize-1)
+
+**Type:** `boolean`
+
+Determines whether the width and height of the image should be inferred.
+
+See also the [`inferSize` attribute](/en/reference/modules/astro-assets/#infersize) available on `<Image />`.
+
+### `ImageMetadata`
+
+[Section titled “ImageMetadata”](#imagemetadata-1)
+
+**Type:** `{ src: string; width: number; height: number; format: ImageInputFormat; orientation?: number; }`
+
+**Added in:** `astro@2.1.3`
+
+Describes the data collected during image import. This contains the following properties:
+
+#### `src`
+
+[Section titled “src”](#src-3)
+
+**Type:** `string`
+
+The absolute path of the image on the filesystem.
+
+#### `width`
+
+[Section titled “width”](#width-1)
+
+**Type:** `number`
+
+The width of the image.
+
+#### `height`
+
+[Section titled “height”](#height-1)
+
+**Type:** `number`
+
+The height of the image.
+
+#### `format`
+
+[Section titled “format”](#format-2)
+
+**Type:** [`ImageInputFormat`](#imageinputformat)
+
+The format of the image.
+
+#### `orientation`
+
+[Section titled “orientation”](#orientation)
+
+**Type:** `number`
+
+**Added in:** `astro@2.8.3`
+
+The image orientation when its metadata contains this information.
+
+### `ImageInputFormat`
+
+[Section titled “ImageInputFormat”](#imageinputformat)
+
+**Type:** `"jpeg" | "jpg" | "png" | "tiff" | "webp" | "gif" | "svg" | "avif"`
+
+**Added in:** `astro@2.2.0`
+
+Describes a union of supported formats for imported images.
+
+### `ImageOutputFormat`
+
+[Section titled “ImageOutputFormat”](#imageoutputformat)
+
+**Type:** `string | "jpeg" | "jpg" | "png" | "webp" | "svg" | "avif"`
+
+**Added in:** `astro@2.2.0`
+
+Specifies the format for output images. This can be a predefined literal or any string.
+
+### `ImageQuality`
+
+[Section titled “ImageQuality”](#imagequality)
+
+**Type:** `ImageQualityPreset | number`
+
+**Added in:** `astro@2.2.0`
+
+Represents the perceptual quality of the output image as a union of predefined literals, a string, or a number.
+
+### `ImageQualityPreset`
+
+[Section titled “ImageQualityPreset”](#imagequalitypreset)
+
+**Type:** `string | "low" | "mid" | "high" | "max"`
+
+**Added in:** `astro@2.2.0`
+
+Defines the available presets to control image quality, extensible with any string.
+
+### `RemotePattern`
+
+[Section titled “RemotePattern”](#remotepattern)
+
+**Type:** `{ hostname?: string; pathname?: string; protocol?: string; port?: string; }`
+
+**Added in:** `astro@5.14.2`
+
+Describes a remote host through four optional properties: `hostname`, `pathname`, `protocol`, and `port`.
+
+### `ImageService`
+
+[Section titled “ImageService”](#imageservice)
+
+**Type:** `ExternalImageService | LocalImageService`
+
+Defines the hooks that a local or external image service must provide.
+
+### `ExternalImageService`
+
+[Section titled “ExternalImageService”](#externalimageservice)
+
+**Type:** `object`
+
+Defines the hooks that an external image transformation service must provide. This requires a [`getUrl()` hook](/en/reference/image-service-reference/#geturl) and supports [three additional hooks](/en/reference/image-service-reference/#hooks).
+
+Learn how to build [external services](/en/reference/image-service-reference/#external-services) in the Image Service API reference with example usage.
+
+### `LocalImageService`
+
+[Section titled “LocalImageService”](#localimageservice)
+
+**Type:** `object`
+
+Defines the hooks that a local image transformation service must provide. This requires [`getUrl()`](/en/reference/image-service-reference/#geturl), [`parseUrl()`](/en/reference/image-service-reference/#parseurl), and [`transform()`](/en/reference/image-service-reference/#transform) hooks, and supports [additional hooks](/en/reference/image-service-reference/#hooks).
+
+Learn how to build [local services](/en/reference/image-service-reference/#local-services) in the Image Service API reference with example usage.
+
+### `ImageServiceConfig`
+
+[Section titled “ImageServiceConfig”](#imageserviceconfig)
+
+**Type:** `{ entrypoint: 'astro/assets/services/sharp' | string; config?: T; }`
+
+**Added in:** `astro@2.3.3`
+
+Describes the configuration object for an image service. This contains the following properties:
+
+#### `entrypoint`
+
+[Section titled “entrypoint”](#entrypoint)
+
+**Type:** `'astro/assets/services/sharp' | string`
+
+A package or path to the image service module. This can be Astro’s built-in Sharp service or a third-party service.
+
+#### `config`
+
+[Section titled “config”](#config)
+
+**Type:** `Record<string, any>`
+
+A configuration object passed to the image service. The shape depends on the specific service being used.
 
 # Config imports API Reference
 
@@ -67264,7 +69605,6 @@ Content collections offer APIs to configure and query your Markdown or MDX docum
 
 ```js
 import {
-  z,
   defineCollection,
   getCollection,
   getEntry,
@@ -67327,7 +69667,7 @@ A `loader` is either an object or a function that allows you to load data from a
 
 **Added in:** `astro@2.0.0`
 
-`schema` is an optional Zod object to configure the type and shape of document frontmatter for a collection. Each value must use [a Zod validator](https://github.com/colinhacks/zod).
+`schema` is an optional Zod object to configure the type and shape of document frontmatter for a collection. Each value must use [a Zod validator](/en/reference/modules/astro-zod/#common-data-type-validators).
 
 [See the `Content Collection` guide](/en/guides/content-collections/#defining-the-collection-schema) for example usage.
 
@@ -67551,9 +69891,11 @@ An object of frontmatter properties inferred from your collection schema ([see `
 
 [Section titled “body”](#body)
 
-**Type:** `string`
+**Type:** `string | undefined`
 
 A string containing the raw, uncompiled body of the Markdown or MDX document.
+
+Note that if [`retainBody`](/en/reference/content-loader-reference/#retainbody) is set to `false`, this value will be `undefined` instead of containing the raw file contents.
 
 ### `CollectionKey`
 
@@ -68155,20 +70497,22 @@ Middleware allows you to intercept requests and responses and inject behaviors d
 
 [Section titled “Imports from astro:middleware”](#imports-from-astromiddleware)
 
+The following helpers are imported from the virtual middleware module:
+
 ```js
 import {
-  sequence,
-  createContext,
-  trySerializeLocals,
   defineMiddleware,
- } from 'astro:middleware';
+  sequence,
+} from 'astro:middleware';
 ```
 
 ### `defineMiddleware()`
 
 [Section titled “defineMiddleware()”](#definemiddleware)
 
-You can import and use the utility function `defineMiddleware()` to take advantage of type safety:
+**Type:** `(fn: MiddlewareHandler) => MiddlewareHandler`
+
+A function for defining a middleware function with type safety. When you use this utility, the [`context`](#context) and [`next()`](#next) arguments are automatically typed, and you will get a Typescript error if you try to return a [value not supported in your middleware](#middlewarehandler).
 
 src/middleware.ts
 
@@ -68176,10 +70520,8 @@ src/middleware.ts
 import { defineMiddleware } from "astro:middleware";
 
 
-// `context` and `next` are automatically typed
 export const onRequest = defineMiddleware((context, next) => {
-
-
+  /* your middleware logic */
 });
 ```
 
@@ -68187,7 +70529,7 @@ export const onRequest = defineMiddleware((context, next) => {
 
 [Section titled “sequence()”](#sequence)
 
-**Type:** `(...handlers: MiddlewareHandler[]) => MiddlewareHandler`
+**Type:** `(…handlers: MiddlewareHandler[]) => MiddlewareHandler`
 
 A function that accepts middleware functions as arguments, and will execute them in the order in which they are passed.
 
@@ -68197,12 +70539,27 @@ src/middleware.js
 import { sequence } from "astro:middleware";
 
 
-async function validation(_, next) {...}
-async function auth(_, next) {...}
-async function greeting(_, next) {...}
+async function validation(context, next) {/* ... */}
+async function auth(context, next) {/* ... */}
+async function greeting(context, next) {/* ... */}
 
 
 export const onRequest = sequence(validation, auth, greeting);
+```
+
+## Imports from `astro/middleware`
+
+[Section titled “Imports from astro/middleware”](#imports-from-astromiddleware-1)
+
+The following helpers can be imported from the regular middleware module when you build an [Astro Integration](/en/reference/integrations-reference/):
+
+```js
+import {
+  createContext,
+  defineMiddleware,
+  sequence,
+  trySerializeLocals,
+} from "astro/middleware";
 ```
 
 ### `createContext()`
@@ -68213,9 +70570,21 @@ export const onRequest = sequence(validation, auth, greeting);
 
 **Added in:** `astro@2.8.0`
 
-A low-level API to create an [`APIContext`](/en/reference/api-reference/)to be passed to an Astro middleware `onRequest()` function.
+A low-level API to create an [`APIContext`](/en/reference/api-reference/)to be passed to an Astro middleware [`onRequest()` function](#onrequest).
 
 This function can be used by integrations/adapters to programmatically execute the Astro middleware.
+
+### `defineMiddleware()`
+
+[Section titled “defineMiddleware()”](#definemiddleware-1)
+
+See [`defineMiddleware()`](#definemiddleware) from `astro:middleware`.
+
+### `sequence()`
+
+[Section titled “sequence()”](#sequence-1)
+
+See [`sequence()`](#sequence) from `astro:middleware`.
 
 ### `trySerializeLocals()`
 
@@ -68227,6 +70596,163 @@ This function can be used by integrations/adapters to programmatically execute t
 
 A low-level API that takes in any value and tries to return a serialized version (a string) of it. If the value cannot be serialized, the function will throw a runtime error.
 
+## `astro/middleware` types
+
+[Section titled “astro/middleware types”](#astromiddleware-types)
+
+The following types are imported from the regular middleware module:
+
+```js
+import type {
+  CreateContext,
+} from "astro/middleware";
+```
+
+### `CreateContext`
+
+[Section titled “CreateContext”](#createcontext-1)
+
+**Type:** `{ request: Request; params?: Params; userDefinedLocales?: string[]; defaultLocale: string; locals: App.Locals; }`
+
+**Added in:** `astro@2.8.0`
+
+An object to [create a context](#createcontext) to be passed to an Astro middleware. This contains the following properties:
+
+#### `request`
+
+[Section titled “request”](#request)
+
+**Type:** `Request`
+
+The incoming [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.
+
+#### `params`
+
+[Section titled “params”](#params)
+
+**Type:** `Params`
+
+An object containing the optional parameters to be passed to [`Astro.params`](/en/reference/api-reference/#params).
+
+#### `userDefinedLocales`
+
+[Section titled “userDefinedLocales”](#userdefinedlocales)
+
+**Type:** `string[]`
+
+**Added in:** `astro@3.5.0`
+
+A list of supported locales defined in the [user’s `i18n` configuration](/en/reference/configuration-reference/#i18nlocales).
+
+#### `defaultLocale`
+
+[Section titled “defaultLocale”](#defaultlocale)
+
+**Type:** `string`
+
+**Added in:** `astro@4.16.0`
+
+The default locale defined in the [user’s `i18n` configuration](/en/reference/configuration-reference/#i18ndefaultlocale).
+
+#### `locals`
+
+[Section titled “locals”](#locals)
+
+**Type:** `App.Locals`
+
+**Added in:** `astro@5.0.0`
+
+An object for storing arbitrary information from a middleware, accessible to the user via [`Astro.locals`](/en/reference/api-reference/#locals).
+
+Learn more about [storing data in `locals`](/en/guides/middleware/#storing-data-in-contextlocals) with example usage.
+
+## `astro` types
+
+[Section titled “astro types”](#astro-types)
+
+```js
+import type {
+  MiddlewareHandler,
+  MiddlewareNext,
+  RewritePayload,
+} from "astro";
+```
+
+### `MiddlewareHandler`
+
+[Section titled “MiddlewareHandler”](#middlewarehandler)
+
+**Type:** `(context: APIContext, next: MiddlewareNext) => Promise<Response> | Response | Promise<void> | void`
+
+Represents an Astro middleware function. Middleware handlers receive two arguments and can either return a `Response` directly or call `next()` to invoke the next middleware in the chain. Alternatively, you can use [`defineMiddleware()`](#definemiddleware) to get type safety for your middleware.
+
+The following example imports the `MiddlewareHandler` type to get type safety in the [`onRequest()`](#onrequest) function:
+
+src/middleware.ts
+
+```ts
+import type { MiddlewareHandler } from "astro";
+
+
+export const onRequest: MiddlewareHandler = (context, next) => {
+  /* the middleware logic */
+};
+```
+
+A middleware handler receives the following properties:
+
+#### `context`
+
+[Section titled “context”](#context)
+
+**Type:** [`APIContext`](/en/reference/api-reference/)
+
+An [Astro context](/en/reference/api-reference/) object mirroring many of the `Astro` global properties.
+
+#### `next()`
+
+[Section titled “next()”](#next)
+
+**Type:** [`MiddlewareNext`](#middlewarenext)
+
+A function that calls all the subsequent middleware in the chain and returns a `Response`. For example, other middleware could modify the HTML body of a response and awaiting the result of `next()` would allow your middleware to respond to those changes.
+
+Since Astro v4.13.0, `next()` accepts an optional URL path parameter in the form of a string, `URL`, or `Request` to [rewrite](/en/guides/routing/#rewrites) the current request without retriggering a new rendering phase.
+
+The following example uses `next()` to serve content from a different path when the current path matches `/old-path`:
+
+src/middleware.ts
+
+```ts
+import type { MiddlewareHandler } from "astro";
+
+
+export const onRequest: MiddlewareHandler = (context, next) => {
+  if (context.url.pathname === '/old-path') {
+    return next('/new-path');
+  }
+  return next();
+};
+```
+
+### `MiddlewareNext`
+
+[Section titled “MiddlewareNext”](#middlewarenext)
+
+**Type:** `(rewritePayload?: RewritePayload) => Promise<Response>`
+
+Represents the [`next()` function](#next) passed to middleware handlers.
+
+### `RewritePayload`
+
+[Section titled “RewritePayload”](#rewritepayload)
+
+**Type:** `string | URL | Request`
+
+**Added in:** `astro@4.13.0`
+
+Represents the destination for a [rewrite](/en/guides/routing/#rewrites) when passed to the [`next()`](#next) function.
+
 ## Middleware exports
 
 [Section titled “Middleware exports”](#middleware-exports)
@@ -68237,42 +70763,20 @@ When defining your project’s middleware in `src/middleware.js`, export the fol
 
 [Section titled “onRequest()”](#onrequest)
 
-**Type:** `(context: APIContext, next: MiddlewareNext) => Promise<Response> | Response | Promise<void> | void`
+**Type:** [`MiddlewareHandler`](#middlewarehandler)
 
-A required exported function from `src/middleware.js` that will be called before rendering every page or API route. It receives two arguments: [context](#context) and [next()](#next). `onRequest()` must return a `Response`: either directly, or by calling `next()`.
+A required exported function from `src/middleware.js` that will be called before rendering every page or API route. It receives two arguments: [`context`](#context) and [`next()`](#next). `onRequest()` must return a `Response`: either directly, or by calling `next()`.
 
 src/middleware.js
 
 ```js
 export function onRequest (context, next) {
-    // intercept response data from a request
-    // optionally, transform the response
-    // return a Response directly, or the result of calling `next()`
-    return next();
+  // intercept response data from a request
+  // optionally, transform the response
+  // return a Response directly, or the result of calling `next()`
+  return next();
 };
 ```
-
-Your `onRequest()` function will be called with the following arguments:
-
-#### `context`
-
-[Section titled “context”](#context)
-
-**Type:** `APIContext`
-
-The first argument of `onRequest()` is a context object. It mirrors many of the `Astro` global properties.
-
-See [Endpoint contexts](/en/reference/api-reference/) for more information about the context object.
-
-#### `next()`
-
-[Section titled “next()”](#next)
-
-**Type:** `(rewritePayload?: string | URL | Request) => Promise<Response>`
-
-The second argument of `onRequest()` is a function that calls all the subsequent middleware in the chain and returns a `Response`. For example, other middleware could modify the HTML body of a response and awaiting the result of `next()` would allow your middleware to respond to those changes.
-
-Since Astro v4.13.0, `next()` accepts an optional URL path parameter in the form of a string, `URL`, or `Request` to [rewrite](/en/guides/routing/#rewrites) the current request without retriggering a new rendering phase.
 
 # View Transitions Router API Reference
 
@@ -68291,14 +70795,18 @@ For features and usage examples, [see our View Transitions guide](/en/guides/vie
 [Section titled “Imports from astro:transitions”](#imports-from-astrotransitions)
 
 ```ts
-import { ClientRouter, fade, slide } from 'astro:transitions';
+import {
+  ClientRouter,
+  fade,
+  slide,
+} from 'astro:transitions';
 ```
 
 ### `<ClientRouter />`
 
 [Section titled “\<ClientRouter />”](#clientrouter-)
 
-**Added in:** `astro@3.0.0`
+**Added in:** `astro@5.0.0`
 
 Opt in to using view transitions on individual pages by importing and adding the `<ClientRouter />` routing component to `<head>` on every desired page.
 
@@ -68320,6 +70828,15 @@ src/pages/index.astro
 ```
 
 See more about how to [control the router](/en/guides/view-transitions/#router-control) and [add transition directives](/en/guides/view-transitions/#transition-directives) to page elements and components.
+
+The `<ClientRouter />` component accepts the following props:
+
+#### `fallback`
+
+**Type:** [`Fallback`](#fallback)\
+**Default:** `animate`
+
+Defines the fallback strategy to use for browsers that do not support the [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API).
 
 ### `fade`
 
@@ -68373,16 +70890,22 @@ import { slide } from 'astro:transitions';
 
 [Section titled “Imports from astro:transitions/client”](#imports-from-astrotransitionsclient)
 
-```astro
-<script>
-  import {
-    navigate,
-    supportsViewTransitions,
-    transitionEnabledOnThisPage,
-    getFallback,
-    swapFunctions,
-  } from 'astro:transitions/client';
-</script>
+```ts
+import {
+  getFallback,
+  navigate,
+  supportsViewTransitions,
+  swapFunctions,
+  transitionEnabledOnThisPage,
+  /* The following are scheduled for deprecation in v6: */
+  isTransitionBeforePreparationEvent,
+  isTransitionBeforeSwapEvent,
+  TRANSITION_AFTER_PREPARATION,
+  TRANSITION_AFTER_SWAP,
+  TRANSITION_BEFORE_PREPARATION,
+  TRANSITION_BEFORE_SWAP,
+  TRANSITION_PAGE_LOAD,
+} from 'astro:transitions/client';
 ```
 
 ### `navigate()`
@@ -68393,9 +70916,11 @@ import { slide } from 'astro:transitions';
 
 **Added in:** `astro@3.2.0`
 
-A function that executes a navigation to the given `href` using the View Transitions API.
+Executes a navigation to the given `href` using the View Transitions API.
 
 This function signature is based on the [`navigate` function from the browser Navigation API](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate). Although based on the Navigation API, this function is implemented on top of the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) to allow for navigation without reloading the page.
+
+`navigate()` does not perform sanitization on the `href` parameter. [Sanitize user input](/en/guides/view-transitions/#navigating-with-user-input) if you use it to determine the URL to navigate to.
 
 #### `history` option
 
@@ -68462,8 +70987,8 @@ This option mimics the [`state` option](https://developer.mozilla.org/en-US/docs
 
 The element that triggered this navigation, if any. This element will be available in the following events:
 
-* `astro:before-preparation`
-* `astro:before-swap`
+* [`astro:before-preparation`](#astrobefore-preparation-event)
+* [`astro:before-swap`](#astrobefore-swap-event)
 
 ### `supportsViewTransitions`
 
@@ -68475,11 +71000,11 @@ The element that triggered this navigation, if any. This element will be availab
 
 Whether or not view transitions are supported and enabled in the current browser.
 
-### `transitionEnabledOnThisPage`
+### `transitionEnabledOnThisPage()`
 
-[Section titled “transitionEnabledOnThisPage”](#transitionenabledonthispage)
+[Section titled “transitionEnabledOnThisPage()”](#transitionenabledonthispage)
 
-**Type:** `boolean`
+**Type:** `() => boolean`
 
 **Added in:** `astro@3.2.0`
 
@@ -68489,17 +71014,20 @@ Whether or not the current page has view transitions enabled for client-side nav
 
 [Section titled “getFallback()”](#getfallback)
 
-**Type:** `() => 'none' | 'animate' | 'swap'`
+**Type:** `() => Fallback`\
+**Default:** `animate`
 
 **Added in:** `astro@3.6.0`
 
-Returns the fallback strategy to use in browsers that do not support view transitions.
+Returns the fallback strategy to use (`animate` by default) in browsers that do not support view transitions.
 
 See the guide on [Fallback control](/en/guides/view-transitions/#fallback-control) for how to choose and configure the fallback behavior.
 
 ### `swapFunctions`
 
 [Section titled “swapFunctions”](#swapfunctions)
+
+**Type:** `object`
 
 **Added in:** `astro@4.15.0`
 
@@ -68549,6 +71077,349 @@ Stores the element in focus on the current page and returns a function that when
 
 Replaces the old body with the new body. Then, goes through every element in the old body that should be persisted and have a matching element in the new body and swaps the old element back in place.
 
+### Deprecated imports
+
+[Section titled “Deprecated imports”](#deprecated-imports)
+
+The following imports are scheduled for deprecation in v6. You can still use them in your project, but you may prefer to update your code now.
+
+#### `isTransitionBeforePreparationEvent()`
+
+**Type:** `(value: any) => boolean`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This function is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+Determines whether the given value matches a [`TransitionBeforePreparationEvent`](#transitionbeforepreparationevent). This can be useful when you need to narrow the type of an event in an event listener.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import {
+    isTransitionBeforePreparationEvent,
+    TRANSITION_BEFORE_PREPARATION,
+  } from "astro:transitions/client";
+
+
+  function listener(event: Event) {
+    const setting = isTransitionBeforePreparationEvent(event) ? 1 : 2;
+    /* do something with setting */
+  }
+
+
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, listener);
+</script>
+```
+
+#### `isTransitionBeforeSwapEvent()`
+
+**Type:** `(value: any) => boolean`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This function is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+Determines whether the given value matches a [`TransitionBeforeSwapEvent`](#transitionbeforeswapevent). This can be useful when you need to narrow the type of an event in an event listener.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import {
+    isTransitionBeforeSwapEvent,
+    TRANSITION_BEFORE_SWAP,
+  } from "astro:transitions/client";
+
+
+  function listener(event: Event) {
+    const setting = isTransitionBeforeSwapEvent(event) ? 1 : 2;
+    /* do something with setting */
+  }
+
+
+  document.addEventListener(TRANSITION_BEFORE_SWAP, listener);
+</script>
+```
+
+#### `TRANSITION_BEFORE_PREPARATION`
+
+**Type:** `'astro:before-preparation'`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This constant is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+A constant to avoid writing the `astro:before-preparation` event name in plain text when you define an event.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import { TRANSITION_BEFORE_PREPARATION } from "astro:transitions/client";
+
+
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, () => {
+    /* the listener logic */
+  });
+</script>
+```
+
+#### `TRANSITION_AFTER_PREPARATION`
+
+**Type:** `'astro:after-preparation'`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This constant is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+A constant to avoid writing the `astro:after-preparation` event name in plain text when you define an event.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import { TRANSITION_AFTER_PREPARATION } from "astro:transitions/client";
+
+
+  document.addEventListener(TRANSITION_AFTER_PREPARATION, () => {
+    /* the listener logic */
+  });
+</script>
+```
+
+#### `TRANSITION_BEFORE_SWAP`
+
+**Type:** `'astro:before-swap'`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This constant is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+A constant to avoid writing the `astro:before-swap` event name in plain text when you define an event.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import { TRANSITION_BEFORE_SWAP } from "astro:transitions/client";
+
+
+  document.addEventListener(TRANSITION_BEFORE_SWAP, () => {
+    /* the listener logic */
+  });
+</script>
+```
+
+#### `TRANSITION_AFTER_SWAP`
+
+**Type:** `'astro:after-swap'`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This constant is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+A constant to avoid writing the `astro:after-swap` event name in plain text when you define an event.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import { TRANSITION_AFTER_SWAP } from "astro:transitions/client";
+
+
+  document.addEventListener(TRANSITION_AFTER_SWAP, () => {
+    /* the listener logic */
+  });
+</script>
+```
+
+#### `TRANSITION_PAGE_LOAD`
+
+**Type:** `'astro:page-load'`
+
+**Added in:** `astro@3.6.0`
+
+Scheduled for deprecation
+
+This constant is scheduled for deprecation in v6. You can still use it in your project, but you may prefer to update your code now.
+
+A constant to avoid writing the `astro:page-load` event name in plain text when you define an event.
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import { TRANSITION_PAGE_LOAD } from "astro:transitions/client";
+
+
+  document.addEventListener(TRANSITION_PAGE_LOAD, () => {
+    /* the listener logic */
+  });
+</script>
+```
+
+## `astro:transitions/client` types
+
+[Section titled “astro:transitions/client types”](#astrotransitionsclient-types)
+
+```ts
+import type {
+  Direction,
+  Fallback,
+  NavigationTypeString,
+  Options,
+  TransitionBeforePreparationEvent,
+  TransitionBeforeSwapEvent,
+} from 'astro:transitions/client';
+```
+
+### `Direction`
+
+[Section titled “Direction”](#direction)
+
+**Type:** `'forward' | 'back'`
+
+**Added in:** `astro@3.2.0`
+
+A union of animation directions:
+
+* `forward`: navigating to the next page in the history or to a new page.
+* `back`: navigating to the previous page in the history.
+
+### `Fallback`
+
+[Section titled “Fallback”](#fallback)
+
+**Type:** `'none' | 'animate' | 'swap'`
+
+**Added in:** `astro@3.2.0`
+
+A union of fallback strategies to use in browsers that do not support view transitions:
+
+* `animate`: Astro will simulate view transitions using custom attributes before updating page content.
+* `swap`: Astro will not attempt to animate the page. Instead, the old page will be immediately replaced by the new one.
+* `none`: Astro will not do any animated page transitions at all. Instead, you will get full page navigation in non-supporting browsers.
+
+Learn more about [controlling the fallback strategy](/en/guides/view-transitions/#fallback-control) with the `ClientRouter`.
+
+### `NavigationTypeString`
+
+[Section titled “NavigationTypeString”](#navigationtypestring)
+
+**Type:** `'push' | 'replace' | 'traverse'`
+
+**Added in:** `astro@3.6.0`
+
+A union of supported history navigation events.
+
+### `TransitionBeforePreparationEvent`
+
+[Section titled “TransitionBeforePreparationEvent”](#transitionbeforepreparationevent)
+
+**Type:** `Event`
+
+**Added in:** `astro@3.6.0`
+
+Represents an [`astro:before-preparation` event](#astrobefore-preparation-event). This can be useful to type the event received by a listener:
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import {
+    TRANSITION_BEFORE_PREPARATION,
+    type TransitionBeforePreparationEvent
+  } from "astro:transitions/client";
+
+
+  function listener(event: TransitionBeforePreparationEvent) {
+    /* do something */
+  }
+
+
+  document.addEventListener(TRANSITION_BEFORE_PREPARATION, listener);
+</script>
+```
+
+### `TransitionBeforeSwapEvent`
+
+[Section titled “TransitionBeforeSwapEvent”](#transitionbeforeswapevent)
+
+**Type:** `Event`
+
+**Added in:** `astro@3.6.0`
+
+Represents an [`astro:before-swap` event](#astrobefore-swap-event). This can be useful to type the event received by a listener:
+
+src/pages/index.astro
+
+```astro
+---
+---
+
+
+<script>
+  import {
+    TRANSITION_BEFORE_SWAP,
+    type TransitionBeforeSwapEvent
+  } from "astro:transitions/client";
+
+
+  function listener(event: TransitionBeforeSwapEvent) {
+    /* do something */
+  }
+
+
+  document.addEventListener(TRANSITION_BEFORE_SWAP, listener);
+</script>
+```
+
 ## Lifecycle events
 
 [Section titled “Lifecycle events”](#lifecycle-events)
@@ -68557,6 +71428,10 @@ Replaces the old body with the new body. Then, goes through every element in the
 
 [Section titled “astro:before-preparation event”](#astrobefore-preparation-event)
 
+**Type:** [`TransitionBeforePreparationEvent`](#transitionbeforepreparationevent)
+
+**Added in:** `astro@3.6.0`
+
 An event dispatched at the beginning of a navigation using the View Transitions router. This event happens before any request is made and any browser state is changed.
 
 This event has the attributes:
@@ -68564,7 +71439,7 @@ This event has the attributes:
 * [`info`](#info)
 * [`sourceElement`](#sourceelement)
 * [`navigationType`](#navigationtype)
-* [`direction`](#direction)
+* [`direction`](#direction-1)
 * [`from`](#from)
 * [`to`](#to)
 * [`formData`](#formdata)
@@ -68576,6 +71451,10 @@ Read more about how to use this event on the [View Transitions guide](/en/guides
 
 [Section titled “astro:after-preparation event”](#astroafter-preparation-event)
 
+**Type:** `Event`
+
+**Added in:** `astro@3.6.0`
+
 An event dispatched after the next page in a navigation using View Transitions router is loaded.
 
 This event has no attributes.
@@ -68586,6 +71465,10 @@ Read more about how to use this event on the [View Transitions guide](/en/guides
 
 [Section titled “astro:before-swap event”](#astrobefore-swap-event)
 
+**Type:** [`TransitionBeforeSwapEvent`](#transitionbeforeswapevent)
+
+**Added in:** `astro@3.6.0`
+
 An event dispatched after the next page is parsed, prepared, and linked into a document in preparation for the transition but before any content is swapped between the documents.
 
 This event can’t be canceled. Calling `preventDefault()` is a no-op.
@@ -68595,7 +71478,7 @@ This event has the attributes:
 * [`info`](#info)
 * [`sourceElement`](#sourceelement)
 * [`navigationType`](#navigationtype)
-* [`direction`](#direction)
+* [`direction`](#direction-1)
 * [`from`](#from)
 * [`to`](#to)
 * [`viewTransition`](#viewtransition)
@@ -68607,6 +71490,8 @@ Read more about how to use this event on the [View Transitions guide](/en/guides
 
 [Section titled “astro:after-swap event”](#astroafter-swap-event)
 
+**Type:** `Event`
+
 An event dispatched after the contents of the page have been swapped but before the view transition ends.
 
 The history entry and scroll position have already been updated when this event is triggered.
@@ -68614,6 +71499,8 @@ The history entry and scroll position have already been updated when this event 
 ### `astro:page-load` event
 
 [Section titled “astro:page-load event”](#astropage-load-event)
+
+**Type:** `Event`
 
 An event dispatched after a page completes loading, whether from a navigation using view transitions or native to the browser.
 
@@ -68625,11 +71512,13 @@ When view transitions is enabled on the page, code that would normally execute o
 
 **Added in:** `astro@3.6.0`
 
+The following attributes are common to both the [`astro:before-preparation`](#astrobefore-preparation-event) and [`astro:before-swap`](#astrobefore-swap-event) events, except for some that are only available with one or the other.
+
 #### `info`
 
 [Section titled “info”](#info)
 
-**Type:** `URL`
+**Type:** `any`
 
 Arbitrary data defined during navigation.
 
@@ -68657,25 +71546,24 @@ The document for the next page in the navigation. The contents of this document 
 
 [Section titled “navigationType”](#navigationtype)
 
-**Type:** `'push' | 'replace' | 'traverse'`
+**Type:** [`NavigationTypeString`](#navigationtypestring)
 
 Which kind of history navigation is happening.
 
 * `push`: a new `NavigationHistoryEntry` is being created for the new page.
 * `replace`: the current `NavigationHistoryEntry` is being replaced with an entry for the new page.
-* `traverse`: no `NavigationHistoryEntry` is created. The position in the history is changing. The direction of the traversal is given on the [`direction` attribute](#direction)
+* `traverse`: no `NavigationHistoryEntry` is created. The position in the history is changing. The direction of the traversal is given on the [`direction` attribute](#direction-1).
 
 #### `direction`
 
-[Section titled “direction”](#direction)
+[Section titled “direction”](#direction-1)
 
-**Type:** `Direction`
+**Type:** `string`
 
-The direction of the transition.
+The direction of the transition:
 
-* `forward`: navigating to the next page in the history or to a new page.
-* `back`: navigating to the previous page in the history.
-* Anything else some other listener might have set.
+* In an [`astro:before-preparation` event](#astrobefore-preparation-event), this can be used to define custom directions. The property is writable and accepts any string.
+* In an [`astro:before-swap` event](#astrobefore-swap-event), this can be used to retrieve the transition direction. The property is readonly and its value can be a predefined [`Direction`](#direction) or any string that an `astro:before-preparation` event listener might have set.
 
 #### `from`
 
@@ -68697,11 +71585,10 @@ The URL of the page being navigated to. This property can be modified, the value
 
 [Section titled “formData”](#formdata)
 
-**Type:** `FormData | undefined`
+**Type:** `FormData | undefined`\
+**Available in:** [`astro:before-preparation` event](#astrobefore-preparation-event)
 
-A `FormData` object for `POST` requests.
-
-When this attribute is set, a `POST` request will be sent to the [`to` URL](#to) with the given form data object as the content instead of the normal `GET` request.
+When set, a `POST` request will be sent to the [`to` URL](#to) with the given `FormData` object as the content instead of the normal `GET` request.
 
 When submitting an HTML form with view transitions enabled, this field is automatically set to the data in the form. When using the [`navigate()` function](#navigate), this value is the same as given in the options.
 
@@ -68709,7 +71596,8 @@ When submitting an HTML form with view transitions enabled, this field is automa
 
 [Section titled “loader()”](#loader)
 
-**Type:** `() => Promise<void>`
+**Type:** `() => Promise<void>`\
+**Available in:** [`astro:before-preparation` event](#astrobefore-preparation-event)
 
 Implementation of the following phase in the navigation (loading the next page). This implementation can be overridden to add extra behavior.
 
@@ -68717,7 +71605,8 @@ Implementation of the following phase in the navigation (loading the next page).
 
 [Section titled “viewTransition”](#viewtransition)
 
-**Type:** [`ViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition)
+**Type:** [`ViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition)\
+**Available in:** [`astro:before-swap` event](#astrobefore-swap-event)
 
 The view transition object used in this navigation. On browsers that do not support the [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API), this is an object implementing the same API for convenience but without the DOM integration.
 
@@ -68725,19 +71614,145 @@ The view transition object used in this navigation. On browsers that do not supp
 
 [Section titled “swap()”](#swap)
 
-**Type:** `() => void`
+**Type:** `() => void`\
+**Available in:** [`astro:before-swap` event](#astrobefore-swap-event)
 
-Implementation of the document swap logic.
-
-Read more about [building a custom swap function](/en/guides/view-transitions/#building-a-custom-swap-function) in the View Transitions guide.
-
-By default, this implementation will call the following functions in order:
+Calls the default document swap logic. By default, this implementation will call the following functions in order:
 
 1. [`deselectScripts()`](#deselectscripts)
 2. [`swapRootAttributes()`](#swaprootattributes)
 3. [`swapHeadElements()`](#swapheadelements)
 4. [`saveFocus()`](#savefocus)
 5. [`swapBodyElement()`](#swapbodyelement)
+
+Read more about [building a custom swap function](/en/guides/view-transitions/#building-a-custom-swap-function) in the View Transitions guide.
+
+# Zod API Reference
+
+[Zod](https://github.com/colinhacks/zod) is a TypeScript-based schema declaration and validation library. This allows you to define schemas you can use to validate data and transform data, from a simple type (e.g. `string`, `number`) to complex data structures (e.g. nested objects).
+
+The `astro/zod` module exposes a re-export of Zod that gives you access to all the features of Zod v3. By using this module, you do not need to install Zod yourself. This also ensures that your project uses the same API versions as Astro when using features such as [Content Collections](/en/guides/content-collections/) or [Actions](/en/guides/actions/).
+
+See [Zod v3 website](https://v3.zod.dev/) for complete documentation on how Zod works and what features are available.
+
+## Imports from `astro/zod`
+
+[Section titled “Imports from astro/zod”](#imports-from-astrozod)
+
+```ts
+import { z } from 'astro/zod';
+```
+
+### `z`
+
+[Section titled “z”](#z)
+
+**Type:** `object`
+
+The `z` utility gives you access to validators for a wide range of data types, methods and types for working with your data.
+
+Learn more about the `z` utility in [Zod documentation](https://v3.zod.dev/?id=basic-usage)
+
+#### Common data type validators
+
+[Section titled “Common data type validators”](#common-data-type-validators)
+
+With Zod, you can validate any type of data, such as [primitives](https://v3.zod.dev/?id=primitives), [objects](https://v3.zod.dev/?id=objects), [arrays](https://v3.zod.dev/?id=arrays) and more.
+
+The following example shows a cheatsheet of many common Zod data types to create a `user` schema:
+
+```ts
+import { z } from 'astro/zod';
+
+
+const user = z.object({
+  username: z.string(),
+  name: z.string().min(2),
+  email: z.string().email(),
+  role: z.enum(["admin", "editor"]),
+  language: z.enum(["en", "fr", "es"]).default("en"),
+  hobbies: z.array(z.string()),
+  age: z.number(),
+  isEmailConfirmed: z.boolean(),
+  inscriptionDate: z.date(),
+  website: z.string().url().optional(),
+});
+```
+
+#### Extracting a Typescript type
+
+[Section titled “Extracting a Typescript type”](#extracting-a-typescript-type)
+
+Zod allows you to create a Typescript type from any schema [using Zod type inference](https://v3.zod.dev/?id=type-inference). This can be useful for describing an expected data structure when [defining component props](/en/guides/typescript/#component-props).
+
+The following example create a `User` type based on the previous schema:
+
+```ts
+type User = z.infer<typeof user>;
+
+
+/* The `User` type will be:
+ * type User = {
+ *   username: string;
+ *   name: string;
+ *   email: string;
+ *   role: "admin" | "editor";
+ *   language: "en" | "fr" | "es";
+ *   hobbies: string[];
+ *   age: number;
+ *   isEmailConfirmed: boolean;
+ *   inscriptionDate: Date;
+ *   website?: string | undefined;
+ * }
+ */
+```
+
+#### Using Zod methods
+
+[Section titled “Using Zod methods”](#using-zod-methods)
+
+Zod provides various [schema methods](https://v3.zod.dev/?id=schema-methods) to customize error messages, transform data, or create custom validation logics.
+
+```ts
+// Customize the error message
+const nonEmptyStrings = z.string().array().nonempty({
+  message: "Can't be empty!",
+});
+
+
+// Validate a data from a schema
+nonEmptyStrings.parse([]); // will throws our custom error
+
+
+// Create an object from a URL for a decorative img
+const decorativeImg = z.string().transform((value) => {
+  return { src: value, alt: "" };
+});
+
+
+// Create a custom validator and error message for a string
+const constrainedString = z
+  .string()
+  .refine((val) => val.length > 0 && val.length <= 255, {
+    message: "Must be between 1 and 255 characters.",
+  });
+```
+
+### Individual imports
+
+[Section titled “Individual imports”](#individual-imports)
+
+Alternatively, you can import all the Zod validators, methods and types available in the [`z` utility](#z) directly from the module.
+
+The following example imports `coerce` to create a `Date` object from a date string:
+
+```ts
+import { coerce } from 'astro/zod';
+
+
+const publishedOn = coerce.date();
+const publicationDate = publishedOn.parse("2025-12-03");
+```
 
 # Programmatic Astro API (experimental)
 
@@ -69294,7 +72309,7 @@ An optional optimization to exclude unnecessary files from the bundle shipped to
 
 An array of keywords relevant to your component, used to help others [find your component on npm](https://www.npmjs.com/search?q=keywords:astro-component,withastro) and in any other search catalogs.
 
-Add `astro-component` or `withastro` as a special keyword to maximize its discoverability in the Astro ecosystem.
+Add `astro-component`, `astro-integration`, or `withastro` as a special keyword to maximize its discoverability in the Astro ecosystem.
 
 ```json
 {
@@ -69417,7 +72432,7 @@ Do you need some help building your integration, or just want to meet other inte
 
 [Section titled “package.json data”](#packagejson-data)
 
-The library is automatically updated weekly, pulling in every package published to npm with the `astro-component` or `withastro` keyword.
+The library is automatically updated weekly, pulling in every package published to npm with the `astro-component`, `astro-integration`, or `withastro` keyword.
 
 The integrations library reads the `name`, `description`, `repository`, and `homepage` data from your `package.json`.
 
@@ -69431,7 +72446,7 @@ Need to override the information our library reads from npm? No problem! [File a
 
 [Section titled “Categories”](#categories)
 
-In addition to the required `astro-component` or `withastro` keyword, special keywords are also used to automatically organize packages. Including any of the keywords below will add your integration to the matching category in our integrations library.
+In addition to the required `astro-component`, `astro-integration`, or `withastro` keyword, special keywords are also used to automatically organize packages. Including any of the keywords below will add your integration to the matching category in our integrations library.
 
 | category          | keywords                                     |
 | ----------------- | -------------------------------------------- |
@@ -74658,7 +77673,9 @@ Upgrade to the latest version of Astro, and upgrade all integrations to their la
    // Import the glob loader
    import { glob } from "astro/loaders";
    // Import utilities from `astro:content`
-   import { z, defineCollection } from "astro:content";
+   import { defineCollection } from "astro:content";
+   // Import Zod
+   import { z } from "astro/zod";
    // Define a `loader` and `schema` for each collection
    const blog = defineCollection({
        loader: glob({ pattern: '**/[^_]*.md', base: "./src/blog" }),
@@ -74937,7 +77954,7 @@ This guide covers how to update your version of Astro and related dependencies, 
 
 [Section titled “What has changed?”](#what-has-changed)
 
-The latest release of Astro is v5.16.0.
+The latest release of Astro is v5.17.1.
 
 You can find an exhaustive list of all changes in [Astro’s changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md), and important instructions for upgrading to each new [major version](#major-changes) in our [upgrade guides](#upgrade-guides).
 
@@ -75052,8 +78069,8 @@ See the upgrade guides below for an explanation of changes, comparing the new ve
 Documentation for older versions of Astro is not maintained, but is available as a static snapshot. Use these versions of docs if you are unable to upgrade your project, but still wish to consult guides and reference:
 
 * [unmaintained v4.16.17 snapshot](https://v4.docs.astro.build/en/getting-started/)
-* [unmaintained v3.6.3 snapshot](https://docs-git-v3-docs-unmaintained-astrodotbuild.vercel.app/)
-* [unmaintained v2.10.15 snapshot](https://deploy-preview-4405--astro-docs-2.netlify.app/en/getting-started/)
+* [unmaintained v3.6.3 snapshot](https://web.archive.org/web/20231203051122/https://docs.astro.build/en/getting-started/)
+* [unmaintained v2.10.15 snapshot](https://web.archive.org/web/20230822134745/https://docs.astro.build/en/getting-started)
 
 ## Semantic versioning
 

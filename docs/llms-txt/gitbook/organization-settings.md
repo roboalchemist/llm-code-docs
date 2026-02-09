@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/organization-settings.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/organization-settings.md
-
-# Source: https://gitbook.com/docs/account-management/organization-settings.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/organization-settings.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/organization-settings.md
 
@@ -18,7 +14,7 @@ Only Admins in an organization can access organization settings.
 
 View and manage the settings for your GitBook organization. These include member management, sign-in methods, merge rules, billing and plans.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYgogvrz0Ecl0yLrSB76Y%2Forganization-settings.svg?alt=media&#x26;token=dc004e70-4b00-44ef-94ca-e9c7571c1166" alt="A GitBook screenshot showing the organization settings page"><figcaption><p>Your organization settings page.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuslrejntFsDDPniNzkHX%2F22_01_06_organization_settings%402x.png?alt=media&#x26;token=091849b3-8e2b-4aee-a146-7409e6a17495" alt="A GitBook screenshot showing the organization settings page"><figcaption><p>Your organization settings page.</p></figcaption></figure>
 
 ### How to access the settings for an organization
 

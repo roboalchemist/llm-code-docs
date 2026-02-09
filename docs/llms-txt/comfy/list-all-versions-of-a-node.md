@@ -1,142 +1,84 @@
 # Source: https://docs.comfy.org/api-reference/registry/list-all-versions-of-a-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all versions of a node
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /nodes/{nodeId}/versions
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes/{nodeId}/versions
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        nodeId:
+  /nodes/{nodeId}/versions:
+    get:
+      tags:
+        - Registry
+      summary: List all versions of a node
+      operationId: ListNodeVersions
+      parameters:
+        - in: path
+          name: nodeId
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        statuses:
+            type: string
+        - in: query
+          name: statuses
           schema:
-            - type: array
-              items:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersionStatus'
-        include_status_reason:
-          schema:
-            - type: boolean
-              default: false
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
             items:
-              allOf:
-                - $ref: '#/components/schemas/NodeVersion'
-        examples:
-          example:
-            value:
-              - changelog: <string>
-                comfy_node_extract_status: <string>
-                createdAt: '2023-11-07T05:31:56Z'
-                dependencies:
-                  - <string>
-                deprecated: true
-                downloadUrl: <string>
-                id: <string>
-                node_id: <string>
-                status: NodeVersionStatusActive
-                status_reason: <string>
-                supported_accelerators:
-                  - <string>
-                supported_comfyui_frontend_version: <string>
-                supported_comfyui_version: <string>
-                supported_os:
-                  - <string>
-                tags:
-                  - <string>
-                tags_admin:
-                  - <string>
-                version: <string>
-        description: List of all node versions
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Node banned
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - description: >-
-                      Optional detailed information about the error or hints for
-                      resolving it.
-                    items:
-                      type: string
-                    type: array
-              message:
-                allOf:
-                  - description: A clear and concise description of the error.
-                    type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Node not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+              $ref: '#/components/schemas/NodeVersionStatus'
+            type: array
+        - in: query
+          name: include_status_reason
+          schema:
+            default: false
+            type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NodeVersion'
+                type: array
+          description: List of all node versions
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Node banned
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Node not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    NodeVersionStatus:
+      enum:
+        - NodeVersionStatusActive
+        - NodeVersionStatusDeleted
+        - NodeVersionStatusBanned
+        - NodeVersionStatusPending
+        - NodeVersionStatusFlagged
+      type: string
     NodeVersion:
       properties:
         changelog:
@@ -202,13 +144,28 @@ components:
             unique for the node.
           type: string
       type: object
-    NodeVersionStatus:
-      enum:
-        - NodeVersionStatusActive
-        - NodeVersionStatusDeleted
-        - NodeVersionStatusBanned
-        - NodeVersionStatusPending
-        - NodeVersionStatusFlagged
-      type: string
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
+    Error:
+      properties:
+        details:
+          description: >-
+            Optional detailed information about the error or hints for resolving
+            it.
+          items:
+            type: string
+          type: array
+        message:
+          description: A clear and concise description of the error.
+          type: string
+      type: object
 
 ````

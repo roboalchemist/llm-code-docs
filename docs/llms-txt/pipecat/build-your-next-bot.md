@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/getting-started/build-your-next-bot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build Your Next Bot
 
 > Scaffold a new Pipecat project with the CLI
@@ -78,8 +82,3 @@ Ready to deploy your bot? Choose between managed cloud hosting or self-hosted in
     30+ production-ready examples for inspiration
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

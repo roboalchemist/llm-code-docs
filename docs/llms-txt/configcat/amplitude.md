@@ -2,6 +2,8 @@
 
 # Amplitude - Add feature flag changes to your charts
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 There are two available integration opportunities between ConfigCat and Amplitude:
@@ -78,7 +80,7 @@ Code samples:
 * Swift (iOS)
 * Other languages
 
-```
+```js
 const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPoll, {
     setupHooks: (hooks) =>
         hooks.on('flagEvaluated', evaluationDetails => {
@@ -96,9 +98,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
             amplitude.identify(identifyEvent);
         }),
 });
-```
 
 ```
+
+```tsx
 <ConfigCatProvider
   sdkKey="#YOUR_SDK_KEY"
   pollingMode={PollingMode.AutoPoll}
@@ -121,9 +124,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
   }}
 >
 </ConfigCatProvider>
-```
 
 ```
+
+```python
 def on_flag_evaluated(evaluation_details):
    # Send an `$exposure` event.
    amplitude.track(
@@ -148,9 +152,10 @@ client = configcatclient.get('#YOUR-SDK-KEY#',
         hooks=Hooks(on_flag_evaluated=on_flag_evaluated)
     )
 )
-```
 
 ```
+
+```go
 client := configcat.NewCustomClient(configcat.Config{SDKKey: "#YOUR-SDK-KEY#",
     Hooks: &configcat.Hooks{OnFlagEvaluated: func(details *configcat.EvaluationDetails) {
          // Send an `$exposure` event.
@@ -169,9 +174,10 @@ client := configcat.NewCustomClient(configcat.Config{SDKKey: "#YOUR-SDK-KEY#",
          identifyObj.Set("configcat_" + details.Data.Key, details.Value)
          amplitude.Identify(identifyObj, amplitude.EventOptions{UserID: details.Data.User.(*configcat.UserData).Identifier})
     }}})
-```
 
 ```
+
+```java
 ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
    options.hooks().addOnFlagEvaluated(details -> {
       // Send an `$exposure` event.
@@ -190,9 +196,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
       amplitude.logEvent(event);
    });
 });
-```
 
 ```
+
+```java
 ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
    options.hooks().addOnFlagEvaluated(details -> {
       // Send an `$exposure` event.
@@ -209,9 +216,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
       identify.set("configcat_" + details.getKey(), details.getValue())
     });
 });
-```
 
 ```
+
+```swift
 let client = ConfigCatClient.get(sdkKey: "#YOUR-SDK-KEY#") { options in
    options.hooks.addOnFlagEvaluated { details in
       // Send an `$exposure` event.
@@ -230,6 +238,7 @@ let client = ConfigCatClient.get(sdkKey: "#YOUR-SDK-KEY#") { options in
       amplitude.identify(identify: identify)
    }
 }
+
 ```
 
 While our documentation primarily provides code examples for languages that Amplitude natively supports and has an official SDK, you can integrate with other languages by sending an event to Amplitude with a third-party SDK or with using the [Amplitude's Upload request API](https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/#upload-request).

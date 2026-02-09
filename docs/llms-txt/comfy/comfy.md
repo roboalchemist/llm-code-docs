@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/settings/comfy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Comfy Settings
 
 > Detailed description of ComfyUI core setting options

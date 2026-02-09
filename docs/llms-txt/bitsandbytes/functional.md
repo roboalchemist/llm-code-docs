@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/functional.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/functional.md
 
 # Overview
 The `bitsandbytes.functional` API provides the low-level building blocks for the library's features.
@@ -13,7 +13,7 @@ The `bitsandbytes.functional` API provides the low-level building blocks for the
 ## LLM.int8()[[bitsandbytes.functional.int8_linear_matmul]]
 #### bitsandbytes.functional.int8_linear_matmul[[bitsandbytes.functional.int8_linear_matmul]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L1744)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L1744)
 
 Performs an 8-bit integer matrix multiplication.
 
@@ -38,7 +38,7 @@ The result of the operation.
 
 #### bitsandbytes.functional.int8_mm_dequant[[bitsandbytes.functional.int8_mm_dequant]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L1770)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L1770)
 
 Performs dequantization on the result of a quantized int8 matrix multiplication.
 
@@ -62,7 +62,7 @@ The dequantized result with an optional bias, with dtype `torch.float16`.
 
 #### bitsandbytes.functional.int8_vectorwise_dequant[[bitsandbytes.functional.int8_vectorwise_dequant]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L1930)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L1930)
 
 Dequantizes a tensor with dtype `torch.int8` to `torch.float32`.
 
@@ -80,7 +80,7 @@ The dequantized tensor.
 
 #### bitsandbytes.functional.int8_vectorwise_quant[[bitsandbytes.functional.int8_vectorwise_quant]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L1944)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L1944)
 
 Quantizes a tensor with dtype `torch.float16` to `torch.int8` in accordance to the `LLM.int8()` algorithm.
 
@@ -104,7 +104,7 @@ A tuple containing the quantized tensor and relevant statistics.
 ## 4-bit[[bitsandbytes.functional.dequantize_4bit]]
 #### bitsandbytes.functional.dequantize_4bit[[bitsandbytes.functional.dequantize_4bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L931)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L931)
 
 Dequantizes a packed 4-bit quantized tensor.
 
@@ -134,19 +134,19 @@ The dequantized tensor.
 
 #### bitsandbytes.functional.dequantize_fp4[[bitsandbytes.functional.dequantize_fp4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L907)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L907)
 
 #### bitsandbytes.functional.dequantize_nf4[[bitsandbytes.functional.dequantize_nf4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L919)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L919)
 
 #### bitsandbytes.functional.gemv_4bit[[bitsandbytes.functional.gemv_4bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L1510)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L1510)
 
 #### bitsandbytes.functional.quantize_4bit[[bitsandbytes.functional.quantize_4bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L826)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L826)
 
 Quantize tensor A in blocks of 4-bit values.
 
@@ -178,25 +178,25 @@ A tuple containing the quantization results.
 
 #### bitsandbytes.functional.quantize_fp4[[bitsandbytes.functional.quantize_fp4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L800)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L800)
 
 #### bitsandbytes.functional.quantize_nf4[[bitsandbytes.functional.quantize_nf4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L813)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L813)
 
 #### bitsandbytes.functional.QuantState[[bitsandbytes.functional.QuantState]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L393)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L393)
 
 container for quantization state components to work with Params4bit and similar classes
 
-as_dictbitsandbytes.functional.QuantState.as_dicthttps://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L505[{"name": "packed", "val": " = False"}]
+as_dictbitsandbytes.functional.QuantState.as_dicthttps://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L505[{"name": "packed", "val": " = False"}]
 
 returns dict of tensors and strings to use in serialization via _save_to_state_dict()
 param: packed -- returns dict[str, torch.Tensor] for state_dict fit for safetensors saving
 #### from_dict[[bitsandbytes.functional.QuantState.from_dict]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L454)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L454)
 
 unpacks components of state_dict into QuantState
 where necessary, convert into strings, torch.dtype, ints, etc.
@@ -213,7 +213,7 @@ For more details see [8-Bit Approximations for Parallelism in Deep Learning](htt
 
 #### bitsandbytes.functional.dequantize_blockwise[[bitsandbytes.functional.dequantize_blockwise]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L641)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L641)
 
 Dequantize a tensor in blocks of values.
 
@@ -243,7 +243,7 @@ The dequantized tensor. The datatype is indicated by `quant_state.dtype` and def
 
 #### bitsandbytes.functional.quantize_blockwise[[bitsandbytes.functional.quantize_blockwise]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L570)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L570)
 
 Quantize a tensor in blocks of values.
 
@@ -276,7 +276,7 @@ A tuple containing the quantization results.
 ## Utility[[bitsandbytes.functional.get_ptr]]
 #### bitsandbytes.functional.get_ptr[[bitsandbytes.functional.get_ptr]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/functional.py#L378)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/functional.py#L378)
 
 Gets the memory address of the first element of a tenso
 

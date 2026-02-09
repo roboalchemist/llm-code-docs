@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/api/plugin-api/normal-module-factory-hooks.md
 
-import { Collapse, CollapsePanel } from '@components/Collapse';
-
 # NormalModuleFactory
 
 `NormalModuleFactory` is used by the [Compiler](/api/javascript-api/compiler.md) to generate modules (`NormalModule`). Starting from each entry module (`entry`), it resolves the dependency requests of the modules to obtain the final paths of the dependencies. Based on these final paths, it creates `NormalModule` instances. It then further resolves the dependency requests of the newly created modules. This process is recursive, creating each module as a `NormalModule` through `NormalModuleFactory`.
@@ -34,30 +32,7 @@ compiler.hooks.compilation.tap(
 );
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="ResolveData.ts" key="ResolveData">
-    <>
-      ```ts
-      export type ResolveData = {
-        contextInfo: {
-          issuer: string;
-        };
-        context: string;
-        request: string;
-        fileDependencies: string[];
-        missingDependencies: string[];
-        contextDependencies: string[];
-        createData?: {
-          request?: string;
-          userRequest?: string;
-          resource?: string;
-        };
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+ResolveData.ts
 ## `factorize`
 
 `AsyncSeriesBailHook<[ResolveData]>`
@@ -78,30 +53,7 @@ compiler.hooks.compilation.tap(
 );
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="ResolveData.ts" key="ResolveData">
-    <>
-      ```ts
-      export type ResolveData = {
-        contextInfo: {
-          issuer: string;
-        };
-        context: string;
-        request: string;
-        fileDependencies: string[];
-        missingDependencies: string[];
-        contextDependencies: string[];
-        createData?: {
-          request?: string;
-          userRequest?: string;
-          resource?: string;
-        };
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+ResolveData.ts
 :::warning
 Returning module instance is not supported for now. This hook will affect the module creation process, so use it with caution.
 :::
@@ -124,30 +76,7 @@ compiler.hooks.compilation.tap(
 );
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="ResolveData.ts" key="ResolveData">
-    <>
-      ```ts
-      export type ResolveData = {
-        contextInfo: {
-          issuer: string;
-        };
-        context: string;
-        request: string;
-        fileDependencies: string[];
-        missingDependencies: string[];
-        contextDependencies: string[];
-        createData?: {
-          request?: string;
-          userRequest?: string;
-          resource?: string;
-        };
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+ResolveData.ts
 :::warning
 Returning module instance or `false` is not supported for now.
 :::
@@ -172,30 +101,7 @@ compiler.hooks.compilation.tap(
 );
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="ResolveData.ts" key="ResolveData">
-    <>
-      ```ts
-      export type ResolveData = {
-        contextInfo: {
-          issuer: string;
-        };
-        context: string;
-        request: string;
-        fileDependencies: string[];
-        missingDependencies: string[];
-        contextDependencies: string[];
-        createData?: {
-          request?: string;
-          userRequest?: string;
-          resource?: string;
-        };
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+ResolveData.ts
 ## `resolveForScheme`
 
 `AsyncSeriesBailHook<[ResourceDataWithData]>`
@@ -217,16 +123,4 @@ compiler.hooks.compilation.tap(
 );
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="ResourceDataWithData.ts" key="ResourceDataWithData">
-    ```ts
-    type ResourceDataWithData = {
-      resource: string;
-      path: string;
-      query?: string;
-      fragment?: string;
-      data?: Record<string, any>;
-    };
-    ```
-  </CollapsePanel>
-</Collapse>
+ResourceDataWithData.ts

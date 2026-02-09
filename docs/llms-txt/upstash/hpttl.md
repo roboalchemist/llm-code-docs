@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpttl.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpttl.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HPTTL
 
@@ -26,18 +12,18 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="fields" type="string | number | (string | number)[]" required>
-  The field(s) to retrieve the TTL for.
+<ParamField body="fields" type="Union[str, List[str]]" required>
+  The field or list of fields to retrieve the TTL for.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number[]" required>
-  The remaining TTL in milliseconds for each field.
+<ResponseField type="List[int]" required>
+  A list of integers representing the remaining TTL in milliseconds for each field.
 
   * `-2` if the field does not exist in the hash or if the key doesn't exist.
   * `-1` if the field exists but has no associated expiration.
@@ -46,11 +32,10 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("my-key", "my-field", "my-value");
-  await redis.hpexpire("my-key", "my-field", 1000);
-  const ttl = await redis.hpttl("my-key", "my-field");
+  ```py Example theme={"system"}
+  redis.hset(hash_name, field, value)
+  redis.hpexpire(hash_name, field, 1000)
 
-  console.log(ttl); // e.g., [950]
+  assert redis.hpttl(hash_name, field) == [950]
   ```
 </RequestExample>

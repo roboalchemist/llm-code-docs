@@ -16,14 +16,14 @@ Only internal structure.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#key)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L71)key
+### [**](#key)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L71)key
 
 **key: str
 
-### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L69)model\_config
+### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L69)model\_config
 
 **model\_config: Undefined
 
-### [**](#size)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L72)size
+### [**](#size)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L72)size
 
 **size: int

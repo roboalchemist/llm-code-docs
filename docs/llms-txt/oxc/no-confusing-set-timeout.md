@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-confusing-set-timeout.md
 ---
-# jest/no-confusing-set-timeout&#x20;
 
 ### What it does
 
@@ -15,7 +14,7 @@ Disallow confusing usages of jest.setTimeout
 * being called multiple times
 * being called after other Jest functions like hooks, `describe`, `test`, or `it`
 
-### Example
+### Examples
 
 All of these are invalid case:
 

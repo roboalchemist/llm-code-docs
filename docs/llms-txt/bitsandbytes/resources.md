@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/explanations/resources.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/explanations/resources.md
 
 # Papers, related resources & how to cite
 

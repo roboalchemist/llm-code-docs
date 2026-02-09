@@ -60,6 +60,10 @@ You can configure different types of welcome messages using the Welcome skill:
 
 * In the `Outro message` pop-up, customize the message as required, and click `OK`. You can add different types of responses in the message.  You can apply the [response filter](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters) to the outro message.
 
+{% hint style="info" %}
+**Note:** Predefined response filters (`Dialog` and `LLaMB Skill`) are available for the `Outro Message Skill.`
+{% endhint %}
+
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FX8gVwgc2VM66xkpRDmzS%2FScreenshot%202025-10-27%20at%2012.07.35%E2%80%AFPM.png?alt=media&#x26;token=a196cdfb-dd49-4a3b-a557-151c3b71c8cd" alt=""><figcaption></figcaption></figure>
 
 ### **To create an outro, follow these steps:**

@@ -1,104 +1,137 @@
 # Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/gateway/overview.md
 
-# Gateway Overview
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/platform/overview.md
 
-## What is any-llm-gateway?
+# Managed Platform Overview
 
-any-llm-gateway is a FastAPI-based proxy server that adds production-grade budget enforcement, API key management, and usage analytics on top of any-llm's multi-provider foundation. It sits between your applications and LLM providers, giving you complete control over costs, access, and observability.
+## What is the any-llm Managed Platform?
 
-## Why use the gateway?
+The any-llm managed platform is a cloud-hosted service that provides secure API key vaulting and usage tracking for all your LLM providers. Instead of managing multiple provider API keys across your codebase, you get a single virtual key that works with any supported provider while keeping your credentials encrypted and your usage tracked.
 
-Managing LLM costs and access at scale is challenging. Give users unrestricted access and you risk runaway costs. Lock it down too much and you slow down innovation. any-llm-gateway solves this by providing:
+The managed platform is available at [any-llm.ai](https://any-llm.ai).
 
-- **Cost Control**: Set budgets that automatically enforce or track spending limits
-- **Access Management**: Issue, revoke, and monitor API keys generated for user access without exposing provider credentials
-- **Complete Visibility**: Track every request with full token counts, costs, and metadata
-- **Production-Ready**: Deploy with Docker and Postgres, Kubernetes-ready
+## Why use the Managed Platform?
+
+Managing LLM API keys and tracking costs across multiple providers is challenging:
+
+- **Security risks**: API keys scattered across `.env` files, CI/CD pipelines, and developer machines
+- **No visibility**: Difficult to track spending across OpenAI, Anthropic, Google, and other providers
+- **Key rotation pain**: Updating keys means touching multiple systems and codebases
+- **No performance insights**: No easy way to measure latency, throughput, or reliability
+
+The managed platform solves these problems:
+
+- **Secure Key Vault**: Your provider API keys are encrypted client-side before storage—we never see your raw keys
+- **Single Virtual Key**: One `ANY_LLM_KEY` works across all providers
+- **Usage Analytics**: Track tokens, costs, and performance metrics without logging prompts or responses
+- **Zero Infrastructure**: No servers to deploy, no databases to manage
 
 ## How it works
 
-The gateway acts as a transparent proxy between your applications and LLM providers. Here's the request flow:
+The managed platform acts as a secure credential manager and usage tracker. Here's the flow:
 
-1. **Your application** sends a request to the gateway (instead of directly to OpenAI, Anthropic, etc.)
-2. **The gateway** authenticates the request, checks budget limits, and tracks usage
-3. **The gateway** routes to the appropriate provider based on the model format
-4. **The provider** processes the request and returns the response
-5. **The gateway** logs the usage and returns the response to your application
+1. **You add provider keys** to the platform dashboard (keys are encrypted in your browser before upload)
+2. **You get a virtual key** (`ANY_LLM_KEY`) that represents your project
+3. **Your application** uses the `PlatformProvider` with your virtual key
+4. **The SDK** authenticates with the platform, retrieves and decrypts your provider key client-side
+5. **Your request** goes directly to the LLM provider (OpenAI, Anthropic, etc.)
+6. **Usage metadata** (tokens, model, latency) is reported back—never your prompts or responses
 
-    ```bash
-    curl -X POST http://localhost:8000/v1/chat/completions \
-      -H "X-AnyLLM-Key: Bearer your-secure-master-key" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "openai:gpt-5",
-        "messages": [{"role": "user", "content": "Hello!"}]
-      }'
-    ```
-  > Learn how to set up your secure master key [here](authentication.md)  
-
-<p align="center" width="100%">
-  <img src="../../images/gateway.png" alt="Diagram showing application connecting to gateway, which then routes to multiple LLM providers (OpenAI, Anthropic, Google, etc). The gateway interfaces with a PostgreSQL database for storing usage, budgets, and keys." width="70%" align="center"/>
-</p>
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          Your Application                               │
+│                                                                         │
+│   from any_llm import completion                                        │
+│   completion(provider="platform", model="openai:gpt-4", ...)            │
+└──────────────────────────────┬──────────────────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        any-llm SDK (PlatformProvider)                   │
+│                                                                         │
+│  1. Authenticate with platform using ANY_LLM_KEY                        │
+│  2. Receive encrypted provider key                                      │
+│  3. Decrypt provider key locally (client-side)                          │
+│  4. Make request directly to provider                                   │
+│  5. Report usage metadata (tokens, latency) to platform                 │
+└────────────────┬─────────────────────────────────────┬──────────────────┘
+                 │                                     │
+                 ▼                                     ▼
+┌─────────────────────────────┐       ┌────────────────────────────────────┐
+│   any-llm Managed Platform  │       │        LLM Provider                │
+│                             │       │   (OpenAI, Anthropic, etc.)        │
+│  • Encrypted key storage    │       │                                    │
+│  • Usage tracking           │       │   Your prompts/responses go        │
+│  • Cost analytics           │       │   directly here—never through      │
+│  • Performance metrics      │       │   our platform                     │
+└─────────────────────────────┘       └────────────────────────────────────┘
+```
 
 ## Key Features
 
-### Smart Budget Management
+### Client-Side Encryption
 
-Create shared budget tiers with automatic daily, weekly, or monthly resets. Budgets can be:
+Your provider API keys are encrypted in your browser using XChaCha20-Poly1305 before being sent to our servers. The encryption key is derived from your account credentials and never leaves your device. This means:
 
-- **Shared across multiple users** - Perfect for team or organization-wide limits
-- **Automatically enforced** - Requests are rejected when budgets are exceeded
-- **Tracking-only mode** - Monitor spending without blocking requests
-- **Auto-resetting** - No manual intervention required for recurring budgets
+- We cannot read your provider API keys
+- Even if our database were compromised, your keys remain encrypted
+- You maintain full control over your credentials
 
-[Set up your first budget →](budget-management.md)
 
-### Flexible API Key System
+### Privacy-First Usage Tracking
 
-Choose between two authentication patterns:
+The platform tracks usage metadata to provide cost and performance insights:
 
-**Master Key Authentication**
-- Ideal for trusted services and internal tools
-- Full access to all gateway features
+**What we track for you:**
 
-**Virtual API Keys**
-- Create scoped keys with fine-grained control
-- Set expiration dates for time-limited access
-- Associate with users for spend tracking
-- Add custom metadata for tracking
-- Activate, deactivate, or revoke on demand
+- Token counts (input and output)
+- Model name and provider
+- Request timestamps
+- Performance metrics (latency, throughput)
 
-[Set up your keys →](authentication.md)
+**What we never track:**
 
-### Complete Usage Analytics
+- Your prompts
+- Model responses
+- Any content from your conversations
 
-Every request is logged with comprehensive details:
+### Project Organization
 
-- Full token counts (prompt, completion, total)
-- Per-request costs based on admin-configured per-token pricing
-- Request metadata and timestamps
-- User and API key attribution
+Organize your usage by project, team, or environment:
 
-Track spending per user, view detailed usage history, and get the observability you need for cost attribution and chargebacks.
+- Create separate projects for development, staging, and production
+- Track costs per project
+- Set up different provider keys per project
 
-### Production-Ready Deployment
+## Platform vs. Gateway
 
-- **Quick Start**: Deploy with Docker in minutes
-- **Flexible Configuration**: Configure via YAML or environment variables
-- **Database**: Designed for PostgreSQL
-- **Kubernetes Ready**: Built-in liveness and readiness probes
+any-llm offers two solutions for managing LLM access. Choose the one that fits your needs:
 
-### Performance Impact
-The gateway adds minimal latency (<50ms) to requests while providing complete observability.
+| Feature | Managed Platform | Self-Hosted Gateway |
+|---------|-----------------|---------------------|
+| **Deployment** | Cloud-hosted (no infrastructure) | Self-hosted (Docker + Postgres) |
+| **Key Storage** | Client-side encrypted vault | Your own configuration |
+| **Budget Enforcement** | Coming soon | Built-in |
+| **User Management** | Per-project | Full user/key management |
+| **Request Routing** | Direct to provider, no proxy | Through your gateway |
+| **Best For** | Teams wanting zero-ops key management and usage tracking| Organizations needing full control |
+
+You can also use both together—store your provider keys in the managed platform and use them in a self-hosted gateway deployment.
+
+## Current Status
+
+The any-llm managed platform is in **open beta**. During the beta:
+
+- **Free access** to all features
+- Core encryption and key management are **production-ready**
+- Dashboard UX and advanced features are being refined
+- Feedback is welcome at [any-llm.ai](https://any-llm.ai)
 
 ## Getting Started
 
-For comprehensive setup instructions, see the [Quick Start Guide](quickstart.md).
+Ready to try the managed platform?
 
-## Next Steps
-
-- **[Quick Start](quickstart.md)** - Deploy and configure your first gateway
-- **[Authentication](authentication.md)** - Set up master keys and virtual API keys
-- **[Budget Management](budget-management.md)** - Configure spending limits and tracking
-- **[Configuration](configuration.md)** - Learn about all configuration options
-- **[API Reference](api-reference.md)** - Explore the complete API
+1. Create an account at [any-llm.ai](https://any-llm.ai)
+2. Add your provider API keys
+3. Get your virtual key
+4. Make your first request

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/training/loading.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Loading Checkpoints
 
 > Resume training from existing checkpoints to continue where you left off

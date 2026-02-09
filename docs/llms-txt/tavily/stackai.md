@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/stackai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # StackAI
 
 > Using Tavily in StackAI to enhance your AI workflows with real-time web data.
@@ -161,8 +165,3 @@ To optimize your Tavily integration in StackAI:
 
 * Tightly constrain Tavily queries to specific intent, time range, and domains to avoid noisy retrieval.
 * Force concise, structured outputs (bullets/JSON with only required fields) to reduce tokens and parsing errors.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

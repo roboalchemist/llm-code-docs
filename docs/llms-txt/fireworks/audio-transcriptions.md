@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/audio-transcriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transcribe audio
 
 <CardGroup cols={1}>
@@ -40,7 +44,6 @@
 
   * `mms_fa` optimal accuracy for multilingual speech.
   * `tdnn_ffn` optimal accuracy for English-only speech.
-  * `gentle` best accuracy for English-only speech (requires a dedicated endpoint, contact us at <a href="mailto:inquiries@fireworks.ai">[inquiries@fireworks.ai](mailto:inquiries@fireworks.ai)</a>).
 </ParamField>
 
 <ParamField query="language" type="string | null" optional>
@@ -102,7 +105,7 @@
     </ResponseField>
 
     <ResponseField name="language" type="string" required>
-      The language of the transcribed/translated text.
+      The language(s) of the transcribed/translated text. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
     </ResponseField>
 
     <ResponseField name="duration" type="number" required>
@@ -157,6 +160,10 @@
 
         <ResponseField name="text" type="string" required>
           The text content of the segment.
+        </ResponseField>
+
+        <ResponseField name="language" type="string" required>
+          The language(s) of the segment. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
         </ResponseField>
 
         <ResponseField name="start" type="number" required>

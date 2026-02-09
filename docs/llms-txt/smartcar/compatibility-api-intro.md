@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/compatibility-api-intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compatibility API Overview
 
 > The Compatibility API helps you determine if a specific vehicle is supported by Smartcar before launching the Connect flow. This allows you to provide a seamless user experience by verifying eligibility up front.

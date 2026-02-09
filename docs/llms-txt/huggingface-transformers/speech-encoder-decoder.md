@@ -1,8 +1,8 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/speech-encoder-decoder.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/speech-encoder-decoder.md
 
 # Speech Encoder Decoder Models
 
-The [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be used to initialize a speech-to-text model
+The [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be used to initialize a speech-to-text model
 with any pretrained speech autoencoding model as the encoder (*e.g.* [Wav2Vec2](wav2vec2), [Hubert](hubert)) and any pretrained autoregressive model as the decoder.
 
 The effectiveness of initializing speech-sequence-to-text-sequence models with pretrained checkpoints for speech
@@ -10,11 +10,11 @@ recognition and speech translation has *e.g.* been shown in [Large-Scale Self- a
 Translation](https://huggingface.co/papers/2104.06678) by Changhan Wang, Anne Wu, Juan Pino, Alexei Baevski, Michael Auli,
 Alexis Conneau.
 
-An example of how to use a [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) for inference can be seen in [Speech2Text2](speech_to_text_2).
+An example of how to use a [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) for inference can be seen in [Speech2Text2](speech_to_text_2).
 
 ## Randomly initializing `SpeechEncoderDecoderModel` from model configurations
 
-[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be randomly initialized from an encoder and a decoder config. In the following example, we show how to do this using the default [Wav2Vec2Model](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Model) configuration for the encoder
+[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be randomly initialized from an encoder and a decoder config. In the following example, we show how to do this using the default [Wav2Vec2Model](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Model) configuration for the encoder
 and the default `BertForCausalLM` configuration for the decoder.
 
 ```python
@@ -29,10 +29,10 @@ and the default `BertForCausalLM` configuration for the decoder.
 
 ## Initialising `SpeechEncoderDecoderModel` from a pretrained encoder and a pretrained decoder
 
-[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be initialized from a pretrained encoder checkpoint and a pretrained decoder checkpoint. Note that any pretrained Transformer-based speech model, *e.g.* [Wav2Vec2](wav2vec2), [Hubert](hubert) can serve as the encoder and both pretrained auto-encoding models, *e.g.* BERT, pretrained causal language models, *e.g.* GPT2, as well as the pretrained decoder part of sequence-to-sequence models, *e.g.* decoder of BART, can be used as the decoder.
+[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) can be initialized from a pretrained encoder checkpoint and a pretrained decoder checkpoint. Note that any pretrained Transformer-based speech model, *e.g.* [Wav2Vec2](wav2vec2), [Hubert](hubert) can serve as the encoder and both pretrained auto-encoding models, *e.g.* BERT, pretrained causal language models, *e.g.* GPT2, as well as the pretrained decoder part of sequence-to-sequence models, *e.g.* decoder of BART, can be used as the decoder.
 Depending on which architecture you choose as the decoder, the cross-attention layers might be randomly initialized.
-Initializing [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) from a pretrained encoder and decoder checkpoint requires the model to be fine-tuned on a downstream task, as has been shown in [the *Warm-starting-encoder-decoder blog post*](https://huggingface.co/blog/warm-starting-encoder-decoder).
-To do so, the `SpeechEncoderDecoderModel` class provides a [SpeechEncoderDecoderModel.from_encoder_decoder_pretrained()](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel.from_encoder_decoder_pretrained) method.
+Initializing [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) from a pretrained encoder and decoder checkpoint requires the model to be fine-tuned on a downstream task, as has been shown in [the *Warm-starting-encoder-decoder blog post*](https://huggingface.co/blog/warm-starting-encoder-decoder).
+To do so, the `SpeechEncoderDecoderModel` class provides a [SpeechEncoderDecoderModel.from_encoder_decoder_pretrained()](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel.from_encoder_decoder_pretrained) method.
 
 ```python
 >>> from transformers import SpeechEncoderDecoderModel
@@ -44,7 +44,7 @@ To do so, the `SpeechEncoderDecoderModel` class provides a [SpeechEncoderDecoder
 
 ## Loading an existing `SpeechEncoderDecoderModel` checkpoint and perform inference
 
-To load fine-tuned checkpoints of the `SpeechEncoderDecoderModel` class, [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) provides the `from_pretrained(...)` method just like any other model architecture in Transformers.
+To load fine-tuned checkpoints of the `SpeechEncoderDecoderModel` class, [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) provides the `from_pretrained(...)` method just like any other model architecture in Transformers.
 
 To perform inference, one uses the `generate` method, which allows to autoregressively generate text. This method supports various forms of decoding, such as greedy, beam search and multinomial sampling.
 
@@ -105,14 +105,14 @@ speech inputs) and `labels` (which are the `input_ids` of the encoded target seq
 
 #### transformers.SpeechEncoderDecoderConfig[[transformers.SpeechEncoderDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_encoder_decoder/configuration_speech_encoder_decoder.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_encoder_decoder/configuration_speech_encoder_decoder.py#L25)
 
-[SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig) is the configuration class to store the configuration of a
-[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel). It is used to instantiate an Encoder Decoder model according to the specified
+[SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig) is the configuration class to store the configuration of a
+[SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel). It is used to instantiate an Encoder Decoder model according to the specified
 arguments, defining the encoder and decoder configs.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -143,22 +143,22 @@ Examples:
 >>> model = SpeechEncoderDecoderModel.from_pretrained("my-model", config=encoder_decoder_config)
 ```
 
-from_encoder_decoder_configstransformers.SpeechEncoderDecoderConfig.from_encoder_decoder_configshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_encoder_decoder/configuration_speech_encoder_decoder.py#L94[{"name": "encoder_config", "val": ": PreTrainedConfig"}, {"name": "decoder_config", "val": ": PreTrainedConfig"}, {"name": "**kwargs", "val": ""}][SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)An instance of a configuration object
+from_encoder_decoder_configstransformers.SpeechEncoderDecoderConfig.from_encoder_decoder_configshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_encoder_decoder/configuration_speech_encoder_decoder.py#L93[{"name": "encoder_config", "val": ": PreTrainedConfig"}, {"name": "decoder_config", "val": ": PreTrainedConfig"}, {"name": "**kwargs", "val": ""}][SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)An instance of a configuration object
 
-Instantiate a [SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig) (or a derived class) from a pre-trained encoder model
+Instantiate a [SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig) (or a derived class) from a pre-trained encoder model
 configuration and decoder model configuration.
 
 **Parameters:**
 
 kwargs (*optional*) : Dictionary of keyword arguments. Notably: 
 
-encoder ([PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : An instance of a configuration object that defines the encoder config.
+encoder ([PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : An instance of a configuration object that defines the encoder config.
 
-decoder ([PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : An instance of a configuration object that defines the decoder config.
+decoder ([PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : An instance of a configuration object that defines the decoder config.
 
 **Returns:**
 
-`[SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)`
+`[SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)`
 
 An instance of a configuration object
 
@@ -166,11 +166,11 @@ An instance of a configuration object
 
 #### transformers.SpeechEncoderDecoderModel[[transformers.SpeechEncoderDecoderModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L57)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L54)
 
 The bare Speech Encoder Decoder Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -178,12 +178,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L309[{"name": "inputs", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "input_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **inputs** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L308[{"name": "inputs", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.BoolTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "input_values", "val": ": torch.FloatTensor | None = None"}, {"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **inputs** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, feature_dim)`, *optional*) --
   Float values of input raw speech waveform or speech features. Values can be obtained by loading a `.flac`
   or `.wav` audio file into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.*
   via the torchcodec library (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `inputs`, either the [Wav2Vec2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) or
-  [Speech2TextProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) should be used for padding and conversion into a tensor of type
+  To prepare the array into `inputs`, either the [Wav2Vec2Processor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) or
+  [Speech2TextProcessor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) should be used for padding and conversion into a tensor of type
   `torch.FloatTensor`.
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -195,8 +195,8 @@ forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingf
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -208,7 +208,7 @@ forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingf
 - **decoder_attention_mask** (`torch.BoolTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Default behavior: generate a tensor that ignores pad tokens in `decoder_input_ids`. Causal mask will also
   be used by default.
-- **encoder_outputs** (`tuple[torch.FloatTensor]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -217,8 +217,8 @@ forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingf
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -246,20 +246,20 @@ forwardtransformers.SpeechEncoderDecoderModel.forwardhttps://github.com/huggingf
   Float values of input raw speech waveform. Values can be obtained by loading a *.flac* or *.wav* audio file
   into an array of type *list[float]* or a *numpy.ndarray*, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into *input_values*, the [Wav2Vec2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) should be used for padding and conversion
-  into a tensor of type *torch.FloatTensor*. See [Wav2Vec2Processor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor.__call__) for details.
+  To prepare the array into *input_values*, the [Wav2Vec2Processor](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor) should be used for padding and conversion
+  into a tensor of type *torch.FloatTensor*. See [Wav2Vec2Processor.__call__()](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Processor.__call__) for details.
 - **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
   `feature_extractor_class`. See `feature_extractor_class.__call__` for details (`processor_class` uses
   `feature_extractor_class` for processing audios).
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)) and inputs.
+elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -287,7 +287,7 @@ elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/tran
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) forward method, overrides the `__call__` special method.
+The [SpeechEncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -321,7 +321,7 @@ Examples:
 
 **Parameters:**
 
-config ([PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig), *optional*) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 encoder (`PreTrainedModel`, *optional*) : The encoder model to use.
 
@@ -329,15 +329,15 @@ decoder (`PreTrainedModel`, *optional*) : The decoder model to use.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)) and inputs.
+elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/speech-encoder-decoder#transformers.SpeechEncoderDecoderConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -367,7 +367,7 @@ elements depending on the configuration ([SpeechEncoderDecoderConfig](/docs/tran
   self-attention heads.
 #### from_encoder_decoder_pretrained[[transformers.SpeechEncoderDecoderModel.from_encoder_decoder_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L166)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_encoder_decoder/modeling_speech_encoder_decoder.py#L163)
 
 Instantiate an encoder and a decoder from one or two base classes of the library from pretrained model
 checkpoints.
@@ -392,9 +392,9 @@ Example:
 
 **Parameters:**
 
-encoder_pretrained_model_name_or_path (`str`, *optional*) : Information necessary to initiate the encoder. Can be either:  - A string, the *model id* of a pretrained model hosted inside a model repo on huggingface.co. - A path to a *directory* containing model weights saved using [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.save_pretrained), e.g., `./my_model_directory/`. 
+encoder_pretrained_model_name_or_path (`str`, *optional*) : Information necessary to initiate the encoder. Can be either:  - A string, the *model id* of a pretrained model hosted inside a model repo on huggingface.co. - A path to a *directory* containing model weights saved using [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.save_pretrained), e.g., `./my_model_directory/`. 
 
-decoder_pretrained_model_name_or_path (`str`, *optional*, defaults to `None`) : Information necessary to initiate the decoder. Can be either:  - A string, the *model id* of a pretrained model hosted inside a model repo on huggingface.co. - A path to a *directory* containing model weights saved using [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.save_pretrained), e.g., `./my_model_directory/`. 
+decoder_pretrained_model_name_or_path (`str`, *optional*, defaults to `None`) : Information necessary to initiate the decoder. Can be either:  - A string, the *model id* of a pretrained model hosted inside a model repo on huggingface.co. - A path to a *directory* containing model weights saved using [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.save_pretrained), e.g., `./my_model_directory/`. 
 
 model_args (remaining positional arguments, *optional*) : All remaining positional arguments will be passed to the underlying model's `__init__` method. 
 

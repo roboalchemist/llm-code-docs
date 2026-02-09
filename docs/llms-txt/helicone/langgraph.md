@@ -2,17 +2,9 @@
 
 # Source: https://docs.helicone.ai/gateway/integrations/langgraph.md
 
-# Source: https://docs.helicone.ai/other-integrations/langgraph.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/langgraph.md
-
-# Source: https://docs.helicone.ai/other-integrations/langgraph.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/langgraph.md
-
-# Source: https://docs.helicone.ai/other-integrations/langgraph.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/langgraph.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LangGraph Integration
 
@@ -44,7 +36,8 @@ export const strings = {
   installRequiredDependencies: "Install required dependencies",
   installSDK: tool => `Install ${tool}`,
   logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
+  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>.",
+  modifyBasePath: "Modify the base URL path",
   optional: "Optional",
   relatedGuides: "Related Guides",
   replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
@@ -56,10 +49,9 @@ export const strings = {
   useTheSDK: tool => `Use the ${tool} SDK`,
   verifyInHelicone: "Verify your requests in Helicone",
   verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
   viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
+  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
+  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently."
 };
 
 ## Introduction
@@ -227,6 +219,10 @@ You can add custom properties when calling your agent with `invoke()`:
   )
   ```
 </CodeGroup>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
 
 ## Related Documentation
 

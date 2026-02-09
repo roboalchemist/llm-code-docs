@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/xls_r.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/xls_r.md
 
 # XLS-R
 
@@ -28,7 +28,7 @@ The original code can be found [here](https://github.com/pytorch/fairseq/tree/ma
 
 - XLS-R is a speech model that accepts a float array corresponding to the raw waveform of the speech signal.
 - XLS-R model was trained using connectionist temporal classification (CTC) so the model output has to be decoded using
-  [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
+  [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
 
 XLS-R's architecture is based on the Wav2Vec2 model, refer to [Wav2Vec2's documentation page](wav2vec2) for API reference.
 

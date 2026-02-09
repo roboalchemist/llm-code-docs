@@ -25,9 +25,9 @@ If you use Stripe’s default [dynamic payment methods](https://docs.stripe.com/
 
 If necessary, you can add the crypto payment method to your payment integration manually.
 
-# Stripe-hosted page
+# Checkout
 
-> This is a Stripe-hosted page for when platform is web and payment-ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?platform=web&payment-ui=stripe-hosted.
+> This is a Checkout for when payment-ui is checkout. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?payment-ui=checkout.
 
 When creating a new [Checkout Session](https://docs.stripe.com/api/checkout/sessions.md), you need to:
 
@@ -119,11 +119,11 @@ Check these faucet services for more testing token options:
 - [Amoy POL](https://faucet.polygon.technology/)
 
 
-# Advanced integration
+# Elements
 
-> This is a Advanced integration for when platform is web and payment-ui is elements. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?platform=web&payment-ui=elements.
+> This is a Elements for when payment-ui is elements. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?payment-ui=elements.
 
-Embed a custom payment form in your website or application using the [Payment Element](https://docs.stripe.com/payments/payment-element.md). The Payment Element automatically supports crypto and other payment methods. For additional configuration and customization options, see [Accept a payment](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements).
+Embed a custom payment form in your website or application using the [Payment Element](https://docs.stripe.com/payments/payment-element.md). The Payment Element automatically supports crypto and other payment methods. For additional configuration and customization options, see [Accept a payment](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents).
 
 ## Set up Stripe [Server-side]
 
@@ -181,7 +181,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -194,7 +194,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -217,13 +217,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -838,7 +838,7 @@ By default, the Payment Element only collects the necessary billing address deta
 
 ### Request Apple Pay merchant token
 
-If you’ve configured your integration to [accept Apple Pay payments](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#apple-pay-and-google-pay), we recommend configuring the Apple Pay interface to return a merchant token to enable merchant initiated transactions (MIT). [Request the relevant merchant token type](https://docs.stripe.com/apple-pay/merchant-tokens.md?pay-element=web-pe) in the Payment Element.
+If you’ve configured your integration to [accept Apple Pay payments](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#apple-pay-and-google-pay), we recommend configuring the Apple Pay interface to return a merchant token to enable merchant initiated transactions (MIT). [Request the relevant merchant token type](https://docs.stripe.com/apple-pay/merchant-tokens.md?pay-element=web-pe) in the Payment Element.
 
 ## Optional: Fetch updates from the server [Client-side]
 
@@ -1298,7 +1298,7 @@ Check these faucet services for more testing token options:
 
 # Direct API
 
-> This is a Direct API for when platform is web and payment-ui is direct-api. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?platform=web&payment-ui=direct-api.
+> This is a Direct API for when payment-ui is direct-api. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?payment-ui=direct-api.
 
 Integrate Pay with Crypto directly through the *Payment Intents API* (The Payment Intents API tracks the lifecycle of a customer checkout flow and triggers additional authentication steps when required by regulatory mandates, custom Radar fraud rules, or redirect-based payment methods).
 
@@ -1358,7 +1358,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -1371,7 +1371,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -1394,13 +1394,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -1914,7 +1914,9 @@ Listen for these events rather than waiting on a callback from the client. On th
 There are a few options for receiving and running business actions:
 
 - **Manually:** Use the [Stripe Dashboard](https://dashboard.stripe.com/test/payments) to view all your Stripe payments, send email receipts, handle payouts, or retry failed payments.
-- **Custom code:** [Build a webhook](https://docs.stripe.com/payments/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
+
+- **Custom code:** [Build a webhook](https://docs.stripe.com/webhooks/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
+
 - **Prebuilt apps:** Handle common business events, like [automation](https://stripe.partners/?f_category=automation) or [marketing and sales](https://stripe.partners/?f_category=marketing-and-sales), by integrating a partner application.
 
 ### Supported currencies 
@@ -1995,7 +1997,7 @@ Check these faucet services for more testing token options:
 
 # iOS
 
-> This is a iOS for when platform is mobile and payment-ui is ios. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?platform=mobile&payment-ui=ios.
+> This is a iOS for when payment-ui is mobile and platform is ios. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?payment-ui=mobile&platform=ios.
 
 We recommend you use the [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?=ios), an embeddable payment form, to add Pay with Crypto and other payment methods to your integration with the least amount of effort.
 
@@ -2059,7 +2061,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -2072,7 +2074,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -2095,13 +2097,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -2653,7 +2655,7 @@ Listen for these events rather than waiting on a callback from the client. On th
 
 - **Build a custom webhook**
 
-  [Build a custom webhook](https://docs.stripe.com/payments/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
+  [Build a custom webhook](https://docs.stripe.com/webhooks/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
 
 - **Integrate a prebuilt app**
 
@@ -2662,9 +2664,9 @@ Listen for these events rather than waiting on a callback from the client. On th
 
 # Android
 
-> This is a Android for when platform is mobile and payment-ui is android. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?platform=mobile&payment-ui=android.
+> This is a Android for when payment-ui is mobile and platform is android. View the full page at https://docs.stripe.com/payments/accept-stablecoin-payments?payment-ui=mobile&platform=android.
 
-We recommend you use the [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?platform=android), an embeddable payment form, to add Pay with Crypto and other payment methods to your integration with the least amount of effort.
+We recommend you use the [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=android), an embeddable payment form, to add Pay with Crypto and other payment methods to your integration with the least amount of effort.
 
 Pay with Crypto is a [single-use](https://docs.stripe.com/payments/payment-methods.md#usage) payment method where customers are required to [authenticate](https://docs.stripe.com/payments/payment-methods.md#customer-actions) their payment. Customers are redirected from your app, authorize the payment with Stripe, then return to your app. You’re [immediately notified](https://docs.stripe.com/payments/payment-methods.md#payment-notification) when the payment succeeds or fails.
 
@@ -2726,7 +2728,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -2739,7 +2741,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -2762,13 +2764,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -2804,9 +2806,9 @@ dependencies {
   // ...
 
   // Stripe Android SDK
-  implementation("com.stripe:stripe-android:22.2.0")
+  implementation("com.stripe:stripe-android:22.6.1")
   // Include the financial connections SDK to support US bank account as a payment method
-  implementation("com.stripe:financial-connections:22.2.0")
+  implementation("com.stripe:financial-connections:22.6.1")
 }
 ```
 
@@ -2821,9 +2823,9 @@ dependencies {
   // ...
 
   // Stripe Android SDK
-  implementation 'com.stripe:stripe-android:22.2.0'
+  implementation 'com.stripe:stripe-android:22.6.1'
   // Include the financial connections SDK to support US bank account as a payment method
-  implementation 'com.stripe:financial-connections:22.2.0'
+  implementation 'com.stripe:financial-connections:22.6.1'
 }
 ```
 
@@ -3259,7 +3261,7 @@ Listen for these events rather than waiting on a callback from the client. On th
 
 - **Build a custom webhook**
 
-  [Build a custom webhook](https://docs.stripe.com/payments/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
+  [Build a custom webhook](https://docs.stripe.com/webhooks/handling-payment-events.md#build-your-own-webhook) handler to listen for events and build custom asynchronous payment flows. Test and debug your webhook integration locally with the Stripe CLI.
 
 - **Integrate a prebuilt app**
 
@@ -3336,3 +3338,136 @@ Check these faucet services for more testing token options:
 - [Sepolia ETH](https://faucets.chain.link/sepolia)
 - [Amoy POL](https://faucet.polygon.technology/)
 
+
+## Optional: Handle the redirect manually [Server-side]
+
+The best way to handle redirects is to use Stripe.js with `confirmPayment`. If you need to manually redirect your customers:
+
+1. Provide the URL to redirect your customers to after they complete their payment.
+
+```curl
+curl https://api.stripe.com/v1/payment_intents/pi_1DRuHnHgsMRlo4MtwuIAUe6u/confirm \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d payment_method=pm_1EnPf7AfTbPYpBIFLxIc8SD9 \
+  --data-urlencode return_url="https://shop.example.com/crtA6B28E1"
+```
+
+```cli
+stripe payment_intents confirm pi_1DRuHnHgsMRlo4MtwuIAUe6u \
+  --payment-method=pm_1EnPf7AfTbPYpBIFLxIc8SD9 \
+  --return-url="https://shop.example.com/crtA6B28E1"
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+payment_intent = client.v1.payment_intents.confirm(
+  'pi_1DRuHnHgsMRlo4MtwuIAUe6u',
+  {
+    payment_method: 'pm_1EnPf7AfTbPYpBIFLxIc8SD9',
+    return_url: 'https://shop.example.com/crtA6B28E1',
+  },
+)
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+payment_intent = client.v1.payment_intents.confirm(
+  "pi_1DRuHnHgsMRlo4MtwuIAUe6u",
+  {
+    "payment_method": "pm_1EnPf7AfTbPYpBIFLxIc8SD9",
+    "return_url": "https://shop.example.com/crtA6B28E1",
+  },
+)
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$paymentIntent = $stripe->paymentIntents->confirm(
+  'pi_1DRuHnHgsMRlo4MtwuIAUe6u',
+  [
+    'payment_method' => 'pm_1EnPf7AfTbPYpBIFLxIc8SD9',
+    'return_url' => 'https://shop.example.com/crtA6B28E1',
+  ]
+);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+PaymentIntentConfirmParams params =
+  PaymentIntentConfirmParams.builder()
+    .setPaymentMethod("pm_1EnPf7AfTbPYpBIFLxIc8SD9")
+    .setReturnUrl("https://shop.example.com/crtA6B28E1")
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+PaymentIntent paymentIntent =
+  client.v1().paymentIntents().confirm("pi_1DRuHnHgsMRlo4MtwuIAUe6u", params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const paymentIntent = await stripe.paymentIntents.confirm(
+  'pi_1DRuHnHgsMRlo4MtwuIAUe6u',
+  {
+    payment_method: 'pm_1EnPf7AfTbPYpBIFLxIc8SD9',
+    return_url: 'https://shop.example.com/crtA6B28E1',
+  }
+);
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.PaymentIntentConfirmParams{
+  PaymentMethod: stripe.String("pm_1EnPf7AfTbPYpBIFLxIc8SD9"),
+  ReturnURL: stripe.String("https://shop.example.com/crtA6B28E1"),
+}
+result, err := sc.V1PaymentIntents.Confirm(
+  context.TODO(), "pi_1DRuHnHgsMRlo4MtwuIAUe6u", params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new PaymentIntentConfirmOptions
+{
+    PaymentMethod = "pm_1EnPf7AfTbPYpBIFLxIc8SD9",
+    ReturnUrl = "https://shop.example.com/crtA6B28E1",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.PaymentIntents;
+PaymentIntent paymentIntent = service.Confirm("pi_1DRuHnHgsMRlo4MtwuIAUe6u", options);
+```
+
+1. Confirm the `PaymentIntent` has a status of `requires_action`. The type for the `next_action` will be `redirect_to_url`.
+
+```json
+"next_action": {
+  "type": "redirect_to_url",
+  "redirect_to_url": {
+    "url": "https://hooks.stripe.com/...",
+    "return_url": "https://example.com/checkout/complete"
+  }
+}
+```
+
+1. Redirect the customer to the URL provided in the `next_action` property.
+
+When the customer finishes the payment process, they’re sent to the `return_url` destination. The `payment_intent` and `payment_intent_client_secret` URL query parameters are included and you can pass through your own query parameters, as described above.

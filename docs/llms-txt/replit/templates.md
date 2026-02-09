@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Developer Frameworks
 
 > If your Replit App can be used as a good starting point for other project, you might want to submit it as a developer framework! Let's learn what a Replit developer framework is and how to make a good one.

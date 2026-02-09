@@ -10,20 +10,30 @@ Visit the App Store to [download](https://apps.apple.com/app/id6469037234) Jam f
 
 ### **What can you do with Jam for iOS?**
 
-Meet Jam for iOS - the fastest way to capture dev-ready bug reports from mobile and send them to your issue tracker. Every ticket automatically includes technical details (OS, device, battery levels, etc.) so you don’t have to. This gives devs all the context they need to fix issues faster.<br>
+Meet Jam for iOS - the fastest way to capture dev-ready bug reports from mobile and send them to your issue tracker. Every ticket automatically includes technical details (OS, device, battery levels, etc.), so you don’t have to. This gives devs all the context they need to fix issues faster.<br>
 
 * **Record your screen** to capture and share mobile bugs with ease.
+* **AI-generated title & summary**: When you use voice-over during the screen recording, Jam will automatically transcribe and summarize the content, and generate a title and description for your Jam. No more typing required.
+* **Auto-captioning**: When you're narrating your recording, Jam automatically generates captions that make it easier for others to understand what's happening in Jam, even without audio.
 * **Trim, annotate, and add comments** to clarify the issue you want to share.
 * **Create** a shareable link or send straight to your favorite issue tracker in seconds.
 * **Watch** existing Jams in your workspace.
+
+### AI-assisted Title, Description, and Captions
+
+If you are using the microphone to voice-over a Jam, the AI will automatically transcribe and summarize the content and fill in the Jam's title and description. In addition, the video will get automatic captions.
+
+Here is the list of supported languages (if a region isn’t supported, it will use the nearest equivalent - favouring a model that is already installed):<br>
+
+* English, French, German, Italian, Portuguese, Spanish, Japanese, Korean, Chinese (Simplified and Traditional)
 
 ### How to record a Jam on iOS?
 
 1. Open Jam, click the big strawberry 🍓
 2. Click "Start Broadcast" to Jam.
-3. Navigate to your target app/website to record the issue.
+3. Navigate to your target app/website to record the issue and provide a voice-over of the details needed to understand what's going on.
 4. When you're done, stop broadcasting directly or by navigating back to the Jam app.
 5. Trim the video, add description,  and click "Create Link".
-6. Wait a few seconds until your Jam is ready to share, we will automatically copy the link to your clipboard if Jam is in focus!
+6. Wait a few seconds until your Jam is ready to share. We will automatically copy the link to your clipboard if Jam is in focus.
 
 <div><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fk4c83hZTRQF81hL2yrSg%2FIMG_2818.PNG?alt=media&#x26;token=ade99466-2505-47e1-ad72-a24df1030358" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FpERnUDzslYuVMltAdUJ0%2FIMG_2819.PNG?alt=media&#x26;token=c4da3dd2-f915-4ac3-9a73-1cbf3256c680" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FylLSWGr93Dp87XcyJLEl%2FIMG_2820.PNG?alt=media&#x26;token=1e3a366e-c963-4571-b002-025dcbca8336" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fe8g4BHTGkiK9qGggdzLZ%2FIMG_2822.PNG?alt=media&#x26;token=b30ecdfb-c6ab-4c20-8b54-72d01d1f69d2" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKytWNSZ0N84txgKeQZV3%2FIMG_2823.PNG?alt=media&#x26;token=a2809f3c-5d72-4f63-b94a-a174d74607f1" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6rvoe60BtAXyOvg3oPxQ%2FIMG_2825.PNG?alt=media&#x26;token=02cbb93d-a5de-41d3-9e3d-509560f9f195" alt=""><figcaption></figcaption></figure></div>

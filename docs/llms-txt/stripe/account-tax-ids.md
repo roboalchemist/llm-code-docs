@@ -79,7 +79,7 @@ In the Invoice Editor, scroll down to the **Advanced Options** section. Click th
 
 Advanced Options section in the Invoice Editor
 
-#### API
+#### Customer v1
 
 After you add a tax ID to your account, you can use the API to specify up to 25 tax IDs with the `account_tax_ids` parameter for creating [invoices](https://docs.stripe.com/api/invoices/create.md#create_invoice-account_tax_ids), [subscriptions](https://docs.stripe.com/api/subscriptions/create.md#create_subscription-invoice_settings-account_tax_ids), and [subscription schedules](https://docs.stripe.com/api/subscription_schedules/create.md#create_subscription_schedule-default_settings-invoice_settings-account_tax_ids). You must pass a list of object IDs to the `account_tax_ids` parameter.
 
@@ -89,6 +89,31 @@ The following example sets `account_tax_ids` during invoice creation:
 curl https://api.stripe.com/v1/invoices \
   -u "<<YOUR_SECRET_KEY>>:" \
   -d customer="{{CUSTOMER_ID}}" \
+  -d "account_tax_ids[0]"=txi_123 \
+  -d "account_tax_ids[1]"=txi_456
+```
+
+​​You can use the update endpoints for [invoices](https://docs.stripe.com/api/invoices/update.md#update_invoice-account_tax_ids), [subscriptions](https://docs.stripe.com/api/subscriptions/update.md#update_subscription-invoice_settings-account_tax_ids), and [subscription schedules](https://docs.stripe.com/api/subscription_schedules/update.md#update_subscription_schedule-default_settings-invoice_settings-account_tax_ids) to add, change, or remove account tax IDs.
+
+The following example sets `account_tax_ids` on an existing subscription:
+
+```curl
+curl https://api.stripe.com/v1/subscriptions/{{SUBSCRIPTION_ID}} \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d "invoice_settings[account_tax_ids][0]"=txi_123 \
+  -d "invoice_settings[account_tax_ids][1]"=txi_456
+```
+
+#### Accounts v2
+
+After you add a tax ID to your account, you can use the API to specify up to 25 tax IDs with the `account_tax_ids` parameter for creating [invoices](https://docs.stripe.com/api/invoices/create.md#create_invoice-account_tax_ids), [subscriptions](https://docs.stripe.com/api/subscriptions/create.md#create_subscription-invoice_settings-account_tax_ids), and [subscription schedules](https://docs.stripe.com/api/subscription_schedules/create.md#create_subscription_schedule-default_settings-invoice_settings-account_tax_ids). You must pass a list of object IDs to the `account_tax_ids` parameter.
+
+The following example sets `account_tax_ids` during invoice creation:
+
+```curl
+curl https://api.stripe.com/v1/invoices \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d customer_account="{{CUSTOMERACCOUNT_ID}}" \
   -d "account_tax_ids[0]"=txi_123 \
   -d "account_tax_ids[1]"=txi_456
 ```
@@ -215,6 +240,7 @@ Currently, Stripe Invoicing supports the following tax ID types in the following
 | PE      | pe_ruc     | Peruvian RUC number                                                                                     | 12345678901           | Yes                        |
 | PH      | ph_tin     | Philippines Tax Identification Number                                                                   | 123456789012          | Yes                        |
 | PL      | eu_vat     | European VAT number                                                                                     | PL1234567890          | Yes                        |
+| PL      | pl_nip     | Polish NIP number                                                                                       | 1234567890            | No                         |
 | PT      | eu_vat     | European VAT number                                                                                     | PT123456789           | Yes                        |
 | RO      | eu_vat     | European VAT number                                                                                     | RO1234567891          | Yes                        |
 | RO      | ro_tin     | Romanian tax ID number                                                                                  | 1234567890123         | No                         |

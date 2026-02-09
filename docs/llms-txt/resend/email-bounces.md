@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/email-bounces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Email Bounces
 
 > Understanding and resolving delivery issues.
@@ -17,11 +21,8 @@ When an email bounces, Resend receives a message from the recipient's mail serve
 There are three types of bounces:
 
 1. `Permanent` - also known as "hard bounce,” where the recipient's mail server rejects the email and will never be delivered.
-
    * `General` - The recipient's email provider sent a hard bounce message.
    * `NoEmail` - It was not possible to retrieve the recipient email address from the bounce message.
-   * `Suppressed` - The recipient's email address is on the suppression list because it has a history of producing hard bounces.
-   * `OnAccountSuppressionList` - Resend has suppressed sending to this address because it has previously "hard bounced."
 
 2. `Transient` - also known as "soft bounce,” where the recipient's mail server rejects the email but it could be delivered in the future.
    * `General` - The recipient's email provider sent a general bounce message. You might be able to send a message to the same recipient in the future if the issue that caused the message to bounce is resolved.

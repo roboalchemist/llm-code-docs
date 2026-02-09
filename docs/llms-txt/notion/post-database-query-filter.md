@@ -1,194 +1,95 @@
 # Source: https://developers.notion.com/reference/post-database-query-filter.md
 
-# Notion API
-
-## Objects
-
-### Block
-- [Rich text](/reference/rich-text)
-
-### Page
-- [Page properties](/reference/page-property-values)
-  - [Page property items](/reference/property-item-object)
-
-### Database
-- [Database](/reference/database)
-
-### Data source
-- [Data source properties](/reference/property-object)
-
-### Comment
-- [Comment attachment](/reference/comment-attachment)
-- [Comment display name](/reference/comment-display-name)
-
-### File
-- [File Upload](/reference/file-upload)
-
-### User
-- [User](/reference/user)
-
-### Parent
-- [Parent](/reference/parent-object)
-
-### Emoji
-- [Emoji](/reference/emoji-object)
-
-### Unfurl attribute (Link Previews)
-- [Unfurl attribute (Link Previews)](/reference/unfurl-attribute-object)
-
-## Endpoints
-
-### Authentication
-- [Create a token](/reference/create-a-token) (POST)
-- [Introspect token](/reference/introspect-token) (POST)
-- [Revoke token](/reference/revoke-token) (POST)
-- [Refresh a token](/reference/refresh-a-token) (POST)
-
-### Blocks
-- [Append block children](/reference/append-block-children) (PATCH)
-- [Retrieve a block](/reference/retrieve-a-block) (GET)
-- [Retrieve block children](/reference/retrieve-block-children) (GET)
-- [Update a block](/reference/update-a-block) (PATCH)
-- [Delete a block](/reference/delete-a-block) (DEL)
-
-### Pages
-- [Create a page](/reference/create-a-page) (POST)
-- [Retrieve a page](/reference/retrieve-a-page) (GET)
-- [Retrieve a page property item](/reference/retrieve-a-page-property) (GET)
-- [Update page](/reference/update-page) (PATCH)
-  - [Trash a page](/reference/trash-a-page)
-
-### Databases
-- [Create a database](/reference/create-database) (POST)
-- [List databases](/reference/list-databases) (GET)
-- [Delete a database](/reference/delete-database) (DEL)
-```
-
-# Post a Database Query Filter
-
-[Post](https://docs.rapidapi.com/reference/post-database-query-filter)
-
-## Request Method
-POST
-
-## Path Parameters
-- `databaseId` (string): The ID of the database to query.
-
-## Response
-The response will contain a list of entries that match the query criteria.
-
-## Example Request
-
-```http
-POST https://example.com/api/database/query
-Content-Type: application/json
-Authorization: Bearer API_KEY
-
-{
-  "databaseId": "your_database_id",
-  "filter": {
-    "field": "title",
-    "operator": "==",
-    "value": "my_query"
-  }
-}
-```
-
-## Example Response
-
-```json
-[
-  {
-    "id": 1,
-    "title": "My Query",
-    "content": "This is my query result."
-  },
-  {
-    "id": 2,
-    "title": "Another Query",
-    "content": "This is another query result."
-  }
-]
-```
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Filter database entries
 
-> ❗️Deprecated as of version 2025-09-03
-> 
-> This page describes the API for versions up to and including `2022-06-28`. In the new `2025-09-03` version, the concepts of databases and data sources were split up, as described in [Upgrading to 2025-09-03](/docs/upgrade-guide-2025-09-03).
-> 
-> Refer to the new page instead:
-> 
-> *   [Filter data source entries](/reference/filter-data-source-entries)
+<Danger>
+  **Deprecated as of version 2025-09-03**
+
+  This page describes the API for versions up to and including `2022-06-28`. In the new `2025-09-03` version, the concepts of databases and data sources were split up, as described in [Upgrading to 2025-09-03](/guides/get-started/upgrade-guide-2025-09-03).
+
+  Refer to the new page instead:
+
+  * [Filter data source entries](/reference/filter-data-source-entries)
+</Danger>
 
 When you [query a database](/reference/post-database-query), you can send a `filter` object in the body of the request that limits the returned entries based on the specified criteria.
 
-For example, the below query limits the response to entries where the `"Task completed"` checkbox property value is `true`:
+For example, the below query limits the response to entries where the `"Task completed"` `checkbox` property value is `true`:
 
-```bash
-curl -X POST 'https://api.notion.com/v1/databases/897e5a76ae524b489fdfe71f5945d1af/query' \
-  -H 'Authorization: Bearer "$NOTION_API_KEY"' \
-  -H 'Notion-Version: 2022-06-28' \
-  -H "Content-Type: application/json" \
---data '{
-  "filter": {
-    "property": "Task completed",
-    "checkbox": {
-        "equals": true
-   }
-  }
-}'
-```
+<CodeGroup>
+  ```curl cURL theme={null}
+  curl -X POST 'https://api.notion.com/v1/databases/897e5a76ae524b489fdfe71f5945d1af/query' \
+    -H 'Authorization: Bearer '"$NOTION_API_KEY"'' \
+    -H 'Notion-Version: 2022-06-28' \
+    -H "Content-Type: application/json" \
+  --data '{
+    "filter": {
+      "property": "Task completed",
+      "checkbox": {
+          "equals": true
+     }
+    }
+  }'
+  ```
+</CodeGroup>
 
 Here is the same query using the [Notion SDK for JavaScript](https://github.com/makenotion/notion-sdk-js):
 
-```javascript
-const { Client } = require('@notionhq/client');
+<CodeGroup>
+  ```javascript JavaScript theme={null}
+  const { Client } = require('@notionhq/client');
 
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-// replace with your own database ID
-const databaseId = 'd9824bdc-8445-4327-be8b-5b47500af6ce';
+  const notion = new Client({ auth: process.env.NOTION_API_KEY });
+  // replace with your own database ID
+  const databaseId = 'd9824bdc-8445-4327-be8b-5b47500af6ce';
 
-const filteredRows = async () => {
-	const response = await notion.databases.query({
-	  database_id: databaseId,
-	  filter: {
-	    property: "Task completed",
-	    checkbox: {
-	      equals: true
-	    }
-	  },
-	});
-  return response;
-}
-```
+  const filteredRows = async () => {
+  	const response = await notion.databases.query({
+  	  database_id: databaseId,
+  	  filter: {
+  	    property: "Task completed",
+  	    checkbox: {
+  	      equals: true
+  	    }
+  	  },
+  	});
+    return response;
+  }
+  ```
+</CodeGroup>
 
 Filters can be chained with the `and` and `or` keys so that multiple filters are applied at the same time. (See [Query a database](/reference/post-database-query) for additional examples.)
 
-```json
-{
-  "and": [
-    {
-      "property": "Done",
-      "checkbox": {
-        "equals": true
-      }
-    }, 
-    {
-      "or": [
-        {
-          "property": "Tags",
-          "contains": "A"
-        },
-        {
-          "property": "Tags",
-          "contains": "B"
+<CodeGroup>
+  ```json JSON theme={null}
+  {
+    "and": [
+      {
+        "property": "Done",
+        "checkbox": {
+          "equals": true
         }
-      ]
-    }
-  ]
-}
-```
+      },
+      {
+        "or": [
+          {
+            "property": "Tags",
+            "contains": "A"
+          },
+          {
+            "property": "Tags",
+            "contains": "B"
+          }
+        ]
+      }
+    ]
+  }
+  ```
+</CodeGroup>
 
 If no filter is provided, all the pages in the database will be returned with pagination.
 
@@ -196,1080 +97,556 @@ If no filter is provided, all the pages in the database will be returned with pa
 
 Each `filter` object contains the following fields:
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `property` | `string` | The name of the property as it appears in the database, or the property ID. | `"Task completed"` |
-| `checkbox` | `string` | The type of checkbox filter. Valid values are `equals`, `does_not_equal`, `date`, `file`, `formula`, `multi_select`, `number`, `people`, `phone_number`, `relation`, `rich_text`, `select`, `status`, `timestamp`, `verification`, `ID`. | `object` |
-|  | `boolean` | Whether a checkbox property value matches the provided value exactly. Returns or excludes all database entries with an exact value match. | `false` |
-|  | `boolean` | Whether a checkbox property value differs from the provided value. Returns or excludes all database entries with a difference in values. | `true` |
+| Field                                                                                                                                                                                                                              | Type     | Description                                                                                                                                                                                                                                                 | Example value                    |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------- |
+| `property`                                                                                                                                                                                                                         | `string` | The name of the property as it appears in the database, or the property ID.                                                                                                                                                                                 | `"Task completed"`               |
+| `checkbox`<br />`date`<br />`files`<br />`formula`<br />`multi_select`<br />`number`<br />`people`<br />`phone_number`<br />`relation`<br />`rich_text`<br />`select`<br />`status`<br />`timestamp`<br />`verification`<br />`ID` | `object` | The type-specific filter condition for the query. Only types listed in the Field column of this table are supported. <br /> <br /> Refer to [type-specific filter conditions](#type-specific-filter-conditions) for details on corresponding object values. | `"checkbox": { "equals": true }` |
 
-### Example checkbox filter object
-
-```json
-{
-  "filter": {
-    "property": "Task completed",
-    "checkbox": {
-      "equals": true
+<CodeGroup>
+  ```json Example checkbox filter object theme={null}
+  {
+    "filter": {
+      "property": "Task completed",
+      "checkbox": {
+        "equals": true
+      }
     }
   }
-}
-```
+  ```
+</CodeGroup>
 
-> 👍The filter object mimics the database [filter option in the Notion UI](https://www.notion.so/help/views-filters-and-sorts).
+<Check>
+  The filter object mimics the database [filter option in the Notion UI](https://www.notion.so/help/views-filters-and-sorts).
+</Check>
 
 ## Type-specific filter conditions
 
 ### Checkbox
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `equals` | `boolean` | Whether a checkbox property value matches the provided value exactly. Returns or excludes all database entries with an exact value match. | `false` |
-| `does_not_equal` | `boolean` | Whether a checkbox property value differs from the provided value. Returns or excludes all database entries with a difference in values. | `true` |
+| Field            | Type      | Description                                                                                                                                               | Example value |
+| :--------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `equals`         | `boolean` | Whether a `checkbox` property value matches the provided value exactly. <br /> <br /> Returns or excludes all database entries with an exact value match. | `false`       |
+| `does_not_equal` | `boolean` | Whether a `checkbox` property value differs from the provided value. <br /> <br /> Returns or excludes all database entries with a difference in values.  | `true`        |
+
+<CodeGroup>
+  ```json Example checkbox filter condition theme={null}
+  {
+    "filter": {
+      "property": "Task completed",
+      "checkbox": {
+        "does_not_equal": true
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
 ### Date
 
-> 📘For the `after`, `before`, `equals`, `on_or_before`, and `on_or_after` fields, if a date string with a time is provided, then the comparison is done with millisecond precision.
-> 
-> If no timezone is provided, then the timezone defaults to UTC.
+<Note>
+  For the `after`, `before`, `equals, on_or_before`, and `on_or_after` fields, if a date string with a time is provided, then the comparison is done with millisecond precision.
+
+  If no timezone is provided, then the timezone defaults to UTC.
+</Note>
 
 A date filter condition can be used to limit `date` property value types and the [timestamp](#timestamp) property types `created_time` and `last_edited_time`.
 
 The condition contains the below fields:
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `after` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. Returns database entries where the date property value is after the provided date. | `"2021-05-10"`<br>`"2021-05-10T12:00:00"`<br>`"2021-10-15T12:00:00-07:00"` |
-| `before` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. Returns database entries where the date property value is before the provided date. | `"2021-05-10"`<br>`"2021-05-10T12:00:00"`<br>`"2021-10-15T12:00:00-07:00"` |
+| Field          | Type                                                               | Description                                                                                                                                                   | Example value                                                                                |
+| :------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------- |
+| `after`        | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. <br /> <br /> Returns database entries where the date property value is after the provided date.        | `"2021-05-10"`<br /><br /> `"2021-05-10T12:00:00"`<br /><br /> `"2021-10-15T12:00:00-07:00"` |
+| `before`       | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. <br /> <br /> Returns database entries where the date property value is before the provided date.       | `"2021-05-10"`<br /><br /> `"2021-05-10T12:00:00"`<br /><br /> `"2021-10-15T12:00:00-07:00"` |
+| `equals`       | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. <br /> <br /> Returns database entries where the date property value is the provided date.              | `"2021-05-10"`<br /><br /> `"2021-05-10T12:00:00"`<br /><br /> `"2021-10-15T12:00:00-07:00"` |
+| `is_empty`     | `true`                                                             | The value to compare the date property value against. Returns database entries where the date property value contains no data.                                | `true`                                                                                       |
+| `is_not_empty` | `true`                                                             | The value to compare the date property value against. Returns database entries where the date property value is not empty.                                    | `true`                                                                                       |
+| `next_month`   | `object` (empty)                                                   | A filter that limits the results to database entries where the date property value is within the next month.                                                  | `{}`                                                                                         |
+| `next_week`    | `object` (empty)                                                   | A filter that limits the results to database entries where the date property value is within the next week.                                                   | `{}`                                                                                         |
+| `next_year`    | `object` (empty)                                                   | A filter that limits the results to database entries where the date property value is within the next year.                                                   | `{}`                                                                                         |
+| `on_or_after`  | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. <br /> <br /> Returns database entries where the date property value is on or after the provided date.  | `"2021-05-10"`<br /><br /> `"2021-05-10T12:00:00"`<br /><br /> `"2021-10-15T12:00:00-07:00"` |
+| `on_or_before` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against. <br /> <br /> Returns database entries where the date property value is on or before the provided date. | `"2021-05-10"`<br /><br /> `"2021-05-10T12:00:00"`<br /><br /> `"2021-10-15T12:00:00-07:00"` |
+| `past_month`   | `object` (empty)                                                   | A filter that limits the results to database entries where the `date` property value is within the past month.                                                | `{}`                                                                                         |
+| `past_week`    | `object` (empty)                                                   | A filter that limits the results to database entries where the `date` property value is within the past week.                                                 | `{}`                                                                                         |
+| `past_year`    | `object` (empty)                                                   | A filter that limits the results to database entries where the `date` property value is within the past year.                                                 | `{}`                                                                                         |
+| `this_week`    | `object` (empty)                                                   | A filter that limits the results to database entries where the `date` property value is this week.                                                            | `{}`                                                                                         |
 
-```json
-{
-  "filter": {
-    "property": "Task completed",
-    "checkbox": {
-      "does_not_equal": true
+<CodeGroup>
+  ```json Example date filter condition theme={null}
+  {
+    "filter": {
+      "property": "Due date",
+      "date": {
+        "on_or_after": "2023-02-08"
+      }
     }
   }
-}
-```
-```
-
-# Date Filters
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `equals` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against.<br/>Returns database entries where the date property value is the provided date. | `"2021-05-10"`<br>`"2021-05-10T12:00:00"`<br>`"2021-10-15T12:00:00-07:00"` |
-| `is_empty` | `true` | The value to compare the date property value against.<br/>Returns database entries where the date property value contains no data. | `true` |
-| `is_not_empty` | `true` | The value to compare the date property value against.<br/>Returns database entries where the date property value is not empty. | `true` |
-| `next_month` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the next month. | `{}` |
-| `next_week` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the next week. | `{}` |
-| `next_year` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the next year. | `{}` |
-| `on_or_after` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against.<br/>Returns database entries where the date property value is on or after the provided date. | `"2021-05-10"`<br>`"2021-05-10T12:00:00"`<br>`"2021-10-15T12:00:00-07:00"` |
-| `on_or_before` | `string` ([ISO 8601 date](https://en.wikipedia.org/wiki/ISO_8601)) | The value to compare the date property value against.<br/>Returns database entries where the date property value is on or before the provided date. | `"2021-05-10"`<br>`"2021-05-10T12:00:00"`<br>`"2021-10-15T12:00:00-07:00"` |
-| `past_month` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the past month. | `{}` |
-| `past_week` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the past week. | `{}` |
-| `past_year` | `object` (empty) | A filter that limits the results to database entries where the date property value is within the past year. | `{}` |
-| `this_week` | `object` (empty) | A filter that limits the results to database entries where the date property value is this week. | `{}` |
-
-## Example date filter condition
-
-```json
-{
-  "filter": {
-    "property": "Due date",
-    "date": {
-      "on_or_after": "2023-02-08"
-    }
-  }
-}
-```
+  ```
+</CodeGroup>
 
 ### Files
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `is_empty` | `true` | Whether the files property value does not contain any data.<br/>Returns all database entries with an empty `files` property value. | `true` |
-| `is_not_empty` | `true` | Whether the `files` property value contains data.<br/>Returns all entries with a populated `files` property value. | `true` |
+| Field          | Type   | Description                                                                                                                                  | Example value |
+| :------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `is_empty`     | `true` | Whether the files property value does not contain any data. <br /> <br /> Returns all database entries with an empty `files` property value. | `true`        |
+| `is_not_empty` | `true` | Whether the `files` property value contains data. <br /> <br /> Returns all entries with a populated `files` property value.                 | `true`        |
 
-### Example files filter condition
-
-```json
-{
-  "filter": {
-    "property": "Blueprint",
-    "files": {
-      "is_not_empty": true
+<CodeGroup>
+  ```json Example files filter condition theme={null}
+  {
+    "filter": {
+      "property": "Blueprint",
+      "files": {
+        "is_not_empty": true
+      }
     }
   }
-}
-```
+  ```
+</CodeGroup>
 
 ### Formula
 
 The primary field of the `formula` filter condition object matches the type of the formula’s result. For example, to filter a formula property that computes a `checkbox`, use a `formula` filter condition object with a `checkbox` field containing a checkbox filter condition as its value.
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `checkbox` | `object` | A [checkbox](#checkbox) filter condition to compare the formula result against.<br/>Returns database entries where the formula result matches the provided condition. | Refer to the [checkbox](#checkbox) filter condition. |
-| `date` | `object` | A [date](#date) filter condition to compare the formula result against.<br/>Returns database entries where the formula result matches the provided condition. | Refer to the [date](#date) filter condition. |
-| `number` | `object` | A [number](#number) filter condition to compare the formula result against.<br/>Returns database entries where the formula result matches the provided condition. | Refer to the [number](#number) filter condition. |
-| `string` | `object` | A [rich text](#rich-text) filter condition to compare the formula result against.<br/>Returns database entries where the formula result matches the provided condition. | Refer to the [rich text](#rich-text) filter condition. |
+| Field      | Type     | Description                                                                                                                                                                       | Example value                                          |
+| :--------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------- |
+| `checkbox` | `object` | A [checkbox](#checkbox) filter condition to compare the formula result against. <br /> <br /> Returns database entries where the formula result matches the provided condition.   | Refer to the [checkbox](#checkbox) filter condition.   |
+| `date`     | `object` | A [date](#date) filter condition to compare the formula result against. <br /> <br /> Returns database entries where the formula result matches the provided condition.           | Refer to the [date](#date) filter condition.           |
+| `number`   | `object` | A [number](#number) filter condition to compare the formula result against. <br /> <br /> Returns database entries where the formula result matches the provided condition.       | Refer to the [number](#number) filter condition.       |
+| `string`   | `object` | A [rich text](#rich-text) filter condition to compare the formula result against. <br /> <br /> Returns database entries where the formula result matches the provided condition. | Refer to the [rich text](#rich-text) filter condition. |
 
-### Example formula filter condition
-
-```json
-{
-  "filter": {
-    "property": "One month deadline",
-    "formula": {
-      "date": {
-          "after": "2021-05-10"
+<CodeGroup>
+  ```json Example formula filter condition theme={null}
+  {
+    "filter": {
+      "property": "One month deadline",
+      "formula": {
+        "date":{
+            "after": "2021-05-10"
+        }
       }
     }
   }
-}
-```
+  ```
+</CodeGroup>
 
 ### Multi-select
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `contains` | `string` | The value to compare the multi-select property value against.<br/>Returns database entries where the multi-select value matches the provided string. | `"Marketing"` |
-| `does_not_contain` | `string` | The value to compare the multi-select property value against.<br/>Returns database entries where the multi-select value does not match the provided string. | `"Engineering"` |
-| `is_empty` | `true` | Whether the multi-select property value is empty.<br/>Returns database entries where the multi-select value does not contain any data. | `true` |
-| `is_not_empty` | `true` | Whether the multi-select property value is not empty.<br/>Returns database entries where the multi-select value does contains data. | `true` |
+| Field              | Type     | Description                                                                                                                                                           | Example value   |
+| :----------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+| `contains`         | `string` | The value to compare the multi-select property value against. <br /> <br /> Returns database entries where the multi-select value matches the provided string.        | `"Marketing"`   |
+| `does_not_contain` | `string` | The value to compare the multi-select property value against. <br /> <br /> Returns database entries where the multi-select value does not match the provided string. | `"Engineering"` |
+| `is_empty`         | `true`   | Whether the multi-select property value is empty. <br /> <br /> Returns database entries where the multi-select value does not contain any data.                      | `true`          |
+| `is_not_empty`     | `true`   | Whether the multi-select property value is not empty. <br /> <br /> Returns database entries where the multi-select value does contains data.                         | `true`          |
 
-### Example multi-select filter condition
-
-```json
-{
-  "filter": {
-    "property": "Product Line",
-    "contains": "Marketing"
+<CodeGroup>
+  ```json Example multi-select filter condition theme={null}
+  {
+    "filter": {
+      "property": "Programming language",
+      "multi_select": {
+        "contains": "TypeScript"
+      }
+    }
   }
-}
-```
-
-# Filter Conditions
-
-## Boolean
-
-### `and`
-
-The `and` filter condition combines multiple filters, ensuring that all conditions must be met for an entry to be included.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `false` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `not_in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `or`
-
-The `or` filter condition combines multiple filters, allowing for at least one condition to be met for an entry to be included.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is in the list of values. | `true` |
-
-### `not_in`
-
-The `not_in` filter condition excludes values from the list of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the provided value. | `true` |
-| `not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not the same as the provided value. | `true` |
-| `in` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is not in the list of values. | `true` |
-
-### `between`
-
-The `between` filter condition specifies a range of values.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `boolean` | The boolean value to compare the value against. Returns database entries where the value differs from the provided value. | `true` |
-| `equals` | `boolean` | The boolean value to compare the value against. Returns database entries where the value is the same as the
-
-# Database Property Filters
-
-## General Syntax
-
-To apply a filter condition to a database property, use the following syntax:
-
-```json
-{
-  "filter": {
-    "property": "property_name",
-    "value": "value_to_compare"
-  }
-}
-```
-
-### Example
-
-```json
-{
-  "filter": {
-    "property": "Description",
-    "value": "cross-team"
-  }
-}
-```
-
-## Type-Specific Filter Conditions
-
-### String
-
-- **`equals`**: Compares the property value to a specific string.
-- **`is_empty`**: Checks if the property value is empty.
-- **`is_not_empty`**: Checks if the property value is not empty.
-- **`starts_with`**: Compares the property value to a specific string.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `equals` | `string` | The string to compare the property value against. Returns database entries with a property value matching the provided string. | `"Moved to Q2"` |
-| `is_empty` | `true` | Whether the property value does not contain any data. Returns database entries with a property value that is empty. | `true` |
-| `is_not_empty` | `true` | Whether the property value contains any data. Returns database entries with a property value that contains data. | `true` |
-| `starts_with` | `string` | The string to compare the property value against. Returns database entries with a property value starting with the provided string. | `"Moved"` |
-
-### Array
-
-- **`any`**: Compares the property value to a list of objects, using any of the defined comparison operators (`equals`, `is_empty`, `is_not_empty`, or `starts_with`).
-- **`every`**: Compares the property value to a list of objects, using all of the defined comparison operators (`equals`, `is_empty`, `is_not_empty`, or `starts_with`).
-- **`none`**: Compares the property value to a list of objects, using none of the defined comparison operators (`equals`, `is_empty`, `is_not_empty`, or `starts_with`).
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `any` | `object` | The value to compare each array element against. Can be a filter condition for any other type. Returns database entries where the array element matches the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
-| `every` | `object` | The value to compare each array element against. Can be a filter condition for any other type. Returns database entries where all array elements match the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
-| `none` | `object` | The value to compare each array element against. Can be a filter condition for any other type. Returns database entries where none of the array elements match the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
-
-### Date
-
-- **`date`**: A date filter condition to compare the array element against a date. Returns database entries where the array element matches the provided date.
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `date` | `object` | A date filter condition to compare the array element against a date. Returns database entries where the array element matches the provided date. | Refer to the date filter condition. |
+  ```
+</CodeGroup>
 
 ### Number
 
-- **`number`**: A number filter condition to compare the array element against a number. Returns database entries where the array element matches the provided number.
+| Field                      | Type     | Description                                                                                                                                                                          | Example value |
+| :------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `does_not_equal`           | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value differs from the provided `number`.                | `42`          |
+| `equals`                   | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value is the same as the provided number.                | `42`          |
+| `greater_than`             | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value exceeds the provided `number`.                     | `42`          |
+| `greater_than_or_equal_to` | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value is equal to or exceeds the provided `number`.      | `42`          |
+| `is_empty`                 | `true`   | Whether the `number` property value is empty. <br /> <br /> Returns database entries where the number property value does not contain any data.                                      | `true`        |
+| `is_not_empty`             | `true`   | Whether the number property value is not empty. <br /> <br /> Returns database entries where the number property value contains data.                                                | `true`        |
+| `less_than`                | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value is less than the provided `number`.                | `42`          |
+| `less_than_or_equal_to`    | `number` | The `number` to compare the number property value against. <br /> <br /> Returns database entries where the number property value is equal to or is less than the provided `number`. | `42`          |
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `number` | `object` | A number filter condition to compare the array element against a number. Returns database entries where the array element matches the provided number. | Refer to the number filter condition. |
+<CodeGroup>
+  ```json Example number filter condition theme={null}
+  {
+    "filter": {
+      "property": "Estimated working days",
+      "number": {
+        "less_than_or_equal_to": 5
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+### People
+
+You can apply a people filter condition to `people`, `created_by`, and `last_edited_by` database property types.
+
+The people filter condition contains the following fields:
+
+| Field              | Type              | Description                                                                                                                                                    | Example value                            |
+| :----------------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
+| `contains`         | `string` (UUIDv4) | The value to compare the people property value against. <br /> <br /> Returns database entries where the people property value contains the provided `string`. | `"6c574cee-ca68-41c8-86e0-1b9e992689fb"` |
+| `does_not_contain` | `string` (UUIDv4) | The value to compare the people property value against. Returns database entries where the people property value does not contain the provided `string`.       | `"6c574cee-ca68-41c8-86e0-1b9e992689fb"` |
+| `is_empty`         | `true`            | Whether the people property value does not contain any data. <br /> <br /> Returns database entries where the people property value does not contain any data. | `true`                                   |
+| `is_not_empty`     | `true`            | Whether the people property value contains data. <br /> <br /> Returns database entries where the people property value is not empty.                          | `true`                                   |
+
+<CodeGroup>
+  ```json Example people filter condition theme={null}
+  {
+    "filter": {
+      "property": "Last edited by",
+      "people": {
+        "contains": "c2f20311-9e54-4d11-8c79-7398424ae41e"
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+### Relation
+
+| Field              | Type              | Description                                                                                                                                                        | Example value                            |
+| :----------------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
+| `contains`         | `string` (UUIDv4) | The value to compare the relation property value against. <br /> <br /> Returns database entries where the relation property value contains the provided `string`. | `"6c574cee-ca68-41c8-86e0-1b9e992689fb"` |
+| `does_not_contain` | `string` (UUIDv4) | The value to compare the relation property value against. <br /> <br /> Returns entries where the relation property value does not contain the provided `string`.  | `"6c574cee-ca68-41c8-86e0-1b9e992689fb"` |
+| `is_empty`         | `true`            | Whether the relation property value does not contain data. <br /> <br /> Returns database entries where the relation property value does not contain any data.     | `true`                                   |
+| `is_not_empty`     | `true`            | Whether the relation property value contains data. <br /> <br /> Returns database entries where the property value is not empty.                                   | `true`                                   |
+
+<CodeGroup>
+  ```json Example relation filter condition theme={null}
+  {
+    "filter": {
+      "property": "✔️ Task List",
+      "relation": {
+        "contains": "0c1f7cb280904f18924ed92965055e32"
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+### Rich text
+
+| Field              | Type     | Description                                                                                                                                                             | Example value   |
+| :----------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------- |
+| `contains`         | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that includes the provided `string`.         | `"Moved to Q2"` |
+| `does_not_contain` | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that does not include the provided `string`. | `"Moved to Q2"` |
+| `does_not_equal`   | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that does not match the provided `string`.   | `"Moved to Q2"` |
+| `ends_with`        | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that ends with the provided `string`.        | `"Q2"`          |
+| `equals`           | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that matches the provided `string`.          | `"Moved to Q2"` |
+| `is_empty`         | `true`   | Whether the text property value does not contain any data. <br /> <br /> Returns database entries with a text property value that is empty.                             | `true`          |
+| `is_not_empty`     | `true`   | Whether the text property value contains any data. <br /> <br /> Returns database entries with a text property value that contains data.                                | `true`          |
+| `starts_with`      | `string` | The `string` to compare the text property value against. <br /> <br /> Returns database entries with a text property value that starts with the provided `string`.      | "Moved"         |
+
+<CodeGroup>
+  ```json Example rich text filter condition theme={null}
+  {
+    "filter": {
+      "property": "Description",
+      "rich_text": {
+        "contains": "cross-team"
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
 ### Rollup
 
 A rollup database property can evaluate to an array, date, or number value. The filter condition for the rollup property contains a `rollup` key and a corresponding object value that depends on the computed value type.
 
-#### Filter Conditions for Array Rollup Values
+#### Filter conditions for `array` rollup values
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `any` | `object` | The value to compare each rollup property value against. Can be a filter condition for any other type. Returns database entries where the rollup property value matches the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
-| `every` | `object` | The value to compare each rollup property value against. Can be a filter condition for any other type. Returns database entries where every rollup property value matches the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
-| `none` | `object` | The value to compare each rollup property value against. Can be a filter condition for any other type. Returns database entries where no rollup property value matches the provided criteria. | `"rich_text": {"contains": "Take Fig on a walk"}` |
+| Field   | Type     | Description                                                                                                                                                                                                                                        | Example value                                       |
+| :------ | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+| `any`   | `object` | The value to compare each rollup property value against. Can be a [filter condition](#type-specific-filter-conditions) for any other type. <br /> <br /> Returns database entries where the rollup property value matches the provided criteria.   | `"rich_text": { "contains": "Take Fig on a walk" }` |
+| `every` | `object` | The value to compare each rollup property value against. Can be a [filter condition](#type-specific-filter-conditions) for any other type. <br /> <br /> Returns database entries where every rollup property value matches the provided criteria. | `"rich_text": { "contains": "Take Fig on a walk" }` |
+| `none`  | `object` | The value to compare each rollup property value against. Can be a [filter condition](#type-specific-filter-conditions) for any other type. <br /> <br /> Returns database entries where no rollup property value matches the provided criteria.    | `"rich_text": { "contains": "Take Fig on a walk" }` |
 
-#### Filter Conditions for Date Rollup Values
+<CodeGroup>
+  ```json Example array rollup filter condition theme={null}
+  {
+    "filter": {
+      "property": "Related tasks",
+      "rollup": {
+        "any": {
+          "rich_text": {
+            "contains": "Migrate database"
+          }
+        }
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+#### Filter conditions for `date` rollup values
 
 A rollup value is stored as a `date` only if the "Earliest date", "Latest date", or "Date range" computation is selected for the property in the Notion UI.
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `date` | `object` | A date filter condition to compare the rollup value against. Returns database entries where the rollup value matches the provided condition. | Refer to the date filter condition. |
+| Field  | Type     | Description                                                                                                                                                         | Example value                                |
+| :----- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------- |
+| `date` | `object` | A [date](#date) filter condition to compare the rollup value against. <br /> <br /> Returns database entries where the rollup value matches the provided condition. | Refer to the [date](#date) filter condition. |
 
-#### Filter Conditions for Number Rollup Values
+<CodeGroup>
+  ```json Example date rollup filter condition theme={null}
+  {
+    "filter": {
+      "property": "Parent project due date",
+      "rollup": {
+        "date": {
+          "on_or_before": "2023-02-08"
+        }
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `number` | `object` | A number filter condition to compare the rollup value against. Returns database entries where the rollup value matches the provided condition. | Refer to the number filter condition. |
+#### Filter conditions for `number` rollup values
+
+| Field    | Type     | Description                                                                                                                                                             | Example value                                    |
+| :------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------- |
+| `number` | `object` | A [number](#number) filter condition to compare the rollup value against. <br /> <br /> Returns database entries where the rollup value matches the provided condition. | Refer to the [number](#number) filter condition. |
+
+<CodeGroup>
+  ```json Example number rollup filter condition theme={null}
+  {
+    "filter": {
+      "property": "Total estimated working days",
+      "rollup": {
+        "number": {
+          "does_not_equal": 42
+        }
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
 ### Select
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `equals` | `string` | The string to compare the select property value against. Returns database entries where the select property value matches the provided string. | `"This week"` |
-| `does_not_equal` | `string` | The string to compare the select property value against. Returns database entries where the select property value does not match the provided string. | `"Backlog"` |
-| `is_empty` | `true` | Whether the select property value does not contain data. Returns database entries where the select property value is empty. | `true` |
-| `is_not_empty` | `true` | Whether the select property value contains data. Returns database entries where the select property value is not empty. | `true` |
+| Field            | Type     | Description                                                                                                                                                             | Example value |
+| :--------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `equals`         | `string` | The `string` to compare the select property value against. <br /> <br /> Returns database entries where the select property value matches the provided string.          | `"This week"` |
+| `does_not_equal` | `string` | The `string` to compare the select property value against. <br /> <br /> Returns database entries where the select property value does not match the provided `string`. | `"Backlog"`   |
+| `is_empty`       | `true`   | Whether the select property value does not contain data. <br /> <br /> Returns database entries where the select property value is empty.                               | `true`        |
+| `is_not_empty`   | `true`   | Whether the select property value contains data. <br /> <br /> Returns database entries where the select property value is not empty.                                   | `true`        |
+
+<CodeGroup>
+  ```json Example select filter condition theme={null}
+  {
+    "filter": {
+      "property": "Frontend framework",
+      "select": {
+        "equals": "React"
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
 ### Status
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `equals` | `string` | The string to compare the status property value against. Returns database entries where the status property value matches the provided string. | `"This week"` |
-| `does_not_equal` | `string` | The string to compare the status property value against. Returns database entries where the status property value does not match the provided string. | `"Backlog"` |
-| `is_empty` | `true` | Whether the status property value does not contain data. Returns database entries where the status property value is empty. | `true` |
-| `is_not_empty` | `true` | Whether the status property value contains data. Returns database entries where the status property value is not empty. | `true` |
+| Field            | Type   | Description                                                                                                                                                         | Example value |
+| :--------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------ |
+| equals           | string | The string to compare the status property value against. <br /> <br /> Returns database entries where the status property value matches the provided string.        | "This week"   |
+| does\_not\_equal | string | The string to compare the status property value against. <br /> <br /> Returns database entries where the status property value does not match the provided string. | "Backlog"     |
+| is\_empty        | true   | Whether the status property value does not contain data. <br /> <br /> Returns database entries where the status property value is empty.                           | true          |
+| is\_not\_empty   | true   | Whether the status property value contains data. <br /> <br /> Returns database entries where the status property value is not empty.                               | true          |
+
+<CodeGroup>
+  ```json Example status filter condition theme={null}
+  {
+    "filter": {
+      "property": "Project status",
+      "status": {
+        "equals": "Not started"
+      }
+    }
+  }
+  ```
+</CodeGroup>
 
 ### Timestamp
 
 Use a timestamp filter condition to filter results based on `created_time` or `last_edited_time` values.
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `timestamp` | `created_time last_edited_time` | A constant string representing the type of timestamp to use as a filter. | `"created_time"` |
-| `created_time` | `object` | A date filter condition used to filter the specified timestamp. | Refer to the date filter condition. |
+| Field                            | Type                             | Description                                                              | Example value                                |
+| :------------------------------- | :------------------------------- | :----------------------------------------------------------------------- | :------------------------------------------- |
+| timestamp                        | created\_time last\_edited\_time | A constant string representing the type of timestamp to use as a filter. | "created\_time"                              |
+| created\_time last\_edited\_time | object                           | A date filter condition used to filter the specified timestamp.          | Refer to the [date](#date) filter condition. |
 
-#### Example Timestamp Filter Condition for Created Time
-
-```json
-{
-  "filter": {
-    "timestamp": "created_time",
-    "created_time": {
-      "on_or_before": "2022-10-13"
+<CodeGroup>
+  ```json Example timestamp filter condition for created_time theme={null}
+  {
+    "filter": {
+      "timestamp": "created_time",
+      "created_time": {
+        "on_or_before": "2022-10-13"
+      }
     }
   }
-}
-```
+  ```
+</CodeGroup>
 
-> The `timestamp` filter condition does not require a property name. The API throws an error if you provide one.
+<Warning>
+  The `timestamp` filter condition does not require a property name. The API throws an error if you provide one.
+</Warning>
 
 ### Verification
 
-The `timestamp` filter condition does not require a property name. The API throws an error if you provide one.
-```
+| Field  | Type   | Description                                                                                                                                                                                      | Example value |
+| :----- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| status | string | The verification status being queried. Valid options are: `verified`, `expired`, `none` <br /> <br /> Returns database entries where the current verification status matches the queried status. | "verified"    |
 
-# Database Query Filters
-
-## The filter object
-
-A database query filter is a JSON object that specifies one or more fields to search for values that match. You can use any combination of filters to create complex queries.
-
-### Example filter object
-
-```json
-{
-  "filter": {
-    "field1": {
-      "type": "string",
-      "value": "example value"
-    },
-    "field2": {
-      "type": "number",
-      "value": 123
+<CodeGroup>
+  ```json Example verification filter condition for getting verified pages theme={null}
+  {
+    "filter": {
+      "property": "verification",
+      "verification": {
+        "status": "verified"
+      }
     }
   }
-}
-```
-
-### Type-specific filter conditions
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `number` | The value to compare the field value against. Returns database entries where the field value differs from the provided value. | `42` |
-| `equals` | `number` | The value to compare the field value against. Returns database entries where the field value is the same as the provided value. | `42` |
-| `greater_than` | `number` | The value to compare the field value against. Returns database entries where the field value exceeds the provided value. | `42` |
-| `greater_than_or_equal_to` | `number` | The value to compare the field value against. Returns database entries where the field value is equal to or exceeds the provided value. | `42` |
-| `less_than` | `number` | The value to compare the field value against. Returns database entries where the field value is less than the provided value. | `42` |
-| `less_than_or_equal_to` | `number` | The value to compare the field value against. Returns database entries where the field value is equal to or is less than the provided value. | `42` |
-
-### Example filter object with multiple fields
-
-```json
-{
-  "filter": {
-    "field1": {
-      "type": "string",
-      "value": "example value"
-    },
-    "field2": {
-      "type": "number",
-      "value": 123
-    },
-    "field3": {
-      "type": "boolean",
-      "value": true
-    }
-  }
-}
-```
-
-## Type-specific filter conditions
-
-### Checkbox
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `checkbox` | `boolean` | Whether the field value matches the specified value. | `true` |
-| `equals` | `boolean` | Whether the field value matches the specified value. | `true` |
-
-### Date
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `date` | `string` | A date string in YYYY-MM-DD format. | `"2023-09-16"` |
-| `date_between` | `string` | A date range string in YYYY-MM-DD format. | `"2023-09-15 00:00:00"`, `"2023-09-17 00:00:00"` |
-| `date_before` | `string` | A date string in YYYY-MM-DD format before which the field value should match. | `"2023-09-15"` |
-| `date_after` | `string` | A date string in YYYY-MM-DD format after which the field value should match. | `"2023-09-17"` |
-
-### Files
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `file` | `object` | A file object containing properties like `name`, `url`, `size`, etc. | `{"name": "file1.pdf", "url": "https://example.com/file1.pdf", "size": 1024}` |
-| `file_in_folder` | `string` | A folder ID that the file belongs to. | `"folder1"` |
-
-### Formula
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `formula` | `string` | A complex expression using operators and functions. | `"A + B * C / D"` |
-
-### Multi-select
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `select` | `array` | An array of select options. | `["option1", "option2"]` |
-| `select_in` | `string` | A folder ID that the select option belongs to. | `"folder1"` |
-
-### Number
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `number` | `string` | A number string in decimal format. | `"123.45"` |
-| `number_between` | `string` | A number range string in decimal format. | `"123.45 00:00:00"` |
-| `number_before` | `string` | A number string in decimal format before which the value should match. | `"123.45"` |
-| `number_after` | `string` | A number string in decimal format after which the value should match. | `"123.45"` |
-
-### People
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `person` | `object` | A person object containing properties like `name`, `title`, `department`, etc. | `{"name": "John Doe", "title": "Manager", "department": "Sales"}` |
-| `person_in` | `string` | A folder ID that the person belongs to. | `"folder1"` |
-
-### Relation
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `relation` | `string` | A relation ID that the object belongs to. | `"relation1"` |
-
-### Rich text
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `rich_text` | `string` | A rich text string. | `"This is a rich text string."` |
-
-### Rollup
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `rollup` | `string` | A rollup ID that the object belongs to. | `"rollup1"` |
-
-### Select
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `select` | `string` | A select option. | `"option1"` |
-
-### Status
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `status` | `string` | The verification status being queried. Valid options are: `verified`, `expired`, `none`. | `"verified"` |
-
-### Timestamp
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `timestamp` | `string` | A timestamp string in YYYY-MM-DD HH:mm:ss format. | `"2023-09-16 14:30:00"` |
-
-### Verification
-
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `verification` | `object` | A verification object containing properties like `status`, `expires_at`, etc. | `{"status": "verified", "expires_at": "2023-09-17 00:00:00"}` |
+  ```
+</CodeGroup>
 
 ### ID
 
-| Field | Type | Description | Example value |
-| --- | --- | --- | --- |
-| `does_not_equal` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value differs from the provided value. | `42` |
-| `equals` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value is the same as the provided value. | `42` |
-| `greater_than` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value exceeds the provided value. | `42` |
-| `greater_than_or_equal_to` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value is equal to or exceeds the provided value. | `42` |
-| `less_than` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value is less than the provided value. | `42` |
-| `less_than_or_equal_to` | `number` | The value to compare the ID property value against. Returns database entries where the ID property value is equal to or is less than the provided value. | `42` |
+Use a timestamp filter condition to filter results based on the `unique_id` value.
 
-### Example verification filter condition for getting verified pages
+| Field                      | Type     | Description                                                                                                                                                                            | Example value |
+| :------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
+| `does_not_equal`           | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value differs from the provided value.                | `42`          |
+| `equals`                   | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value is the same as the provided value.              | `42`          |
+| `greater_than`             | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value exceeds the provided value.                     | `42`          |
+| `greater_than_or_equal_to` | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value is equal to or exceeds the provided value.      | `42`          |
+| `less_than`                | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value is less than the provided value.                | `42`          |
+| `less_than_or_equal_to`    | `number` | The value to compare the unique\_id property value against. <br /> <br /> Returns database entries where the unique\_id property value is equal to or is less than the provided value. | `42`          |
 
-```json
-{
-  "filter": {
-    "property": "verification",
-    "verification": {
-      "status": "verified"
+<CodeGroup>
+  ```json Example ID filter condition theme={null}
+  {
+    "filter": {
+      "and": [
+        {
+          "property": "ID",
+          "unique_id": {
+            "greater_than": 1
+          }
+        },
+        {
+          "property": "ID",
+          "unique_id": {
+            "less_than": 3
+          }
+        }
+      ]
     }
   }
-}
-```
-
-### Example ID filter condition
-
-```json
-{
-  "filter": {
-    "and": [
-      {
-        "property": "ID",
-        "unique_id": {
-          "greater_than": 1
-        }
-      },
-      {
-        "property": "ID",
-        "unique_id": {
-          "less_than": 3
-        }
-      }
-    ]
-  }
-}
-```
+  ```
+</CodeGroup>
 
 ## Compound filter conditions
 
 You can use a compound filter condition to limit the results of a database query based on multiple conditions. This mimics filter chaining in the Notion UI.
 
-### Example filter chain in the Notion UI
-
-![1340](https://files.readme.io/14ec7e8-Untitled.png)
+<Frame caption="An example filter chain in the Notion UI">
+  <img src="https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=f7a7a738dcd526d2c1180c7f479fda31" data-og-width="1340" width="1340" data-og-height="550" height="550" data-path="images/reference/14ec7e8-Untitled.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=280&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=74076d8d77ce119ad4222ff009e9a2f3 280w, https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=560&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=b5e107d9997d2ae086142ec3ab26a8e5 560w, https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=840&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=d28c960cd11aae9fdf549ef117bc083f 840w, https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=1100&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=e90173e96691e72285909367d9400052 1100w, https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=1650&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=1b1cfcae6ead754a7a07962d6bca75c7 1650w, https://mintcdn.com/notion-demo/kSI9TVzPayvF1_1o/images/reference/14ec7e8-Untitled.png?w=2500&fit=max&auto=format&n=kSI9TVzPayvF1_1o&q=85&s=b7d558fd776aab38922cc29c8fb61a12 2500w" />
+</Frame>
 
 The above filters in the Notion UI are equivalent to the following compound filter condition via the API:
 
-```json
-{
-  "and": [
-    {
-      "property": "Done",
-      "checkbox": {
-        "equals": true
-      }
-    },
-    {
-      "or": [
-        {
-          "property": "Tags",
-          "contains": "A"
-        },
-        {
-          "property": "Tags",
-          "contains": "B"
-        }
-      ]
-    }
-  ]
-}
-```
-
-A compound filter condition contains an `and` or `or` key with a value that is an array of filter objects or nested compound filter objects. Nesting is supported up to two levels deep.
-
-### Example compound filter conditions
-
-#### Example compound filter condition for a checkbox and number property value
-
-```json
-{
-  "filter": {
+<CodeGroup>
+  ```json JSON theme={null}
+  {
     "and": [
       {
-        "property": "Complete",
+        "property": "Done",
         "checkbox": {
           "equals": true
         }
       },
       {
-        "property": "Working days",
-        "number": {
-          "greater_than": 10
-        }
-      }
-    ]
-  }
-}
-```
-
-#### Example nested filter condition
-
-```json
-{
-  "filter": {
-    "or": [
-      {
-        "property": "Description",
-        "rich_text": {
-          "contains": "2023"
-        }
-      },
-      {
-        "and": [
+        "or": [
           {
-            "property": "Department",
-            "select": {
-              "equals": "Engineering"
-            }
+            "property": "Tags",
+            "contains": "A"
           },
           {
-            "property": "Priority goal",
-            "checkbox": {
-              "equals": true
-            }
+            "property": "Tags",
+            "contains": "B"
           }
         ]
       }
     ]
   }
-}
-```
-```
+  ```
+</CodeGroup>
+
+A compound filter condition contains an `and` or `or` key with a value that is an array of filter objects or nested compound filter objects. Nesting is supported up to two levels deep.
+
+| Field | Type    | Description                                                                                                                                                                                | Example value                |
+| :---- | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------- |
+| `and` | `array` | An array of [filter](#type-specific-filter-conditions) objects or compound filter conditions. <br /> <br /> Returns database entries that match **all** of the provided filter conditions. | Refer to the examples below. |
+| or    | array   | An array of [filter](#type-specific-filter-conditions) objects or compound filter conditions. <br /> <br /> Returns database entries that match **any** of the provided filter conditions  | Refer to the examples below. |
+
+### Example compound filter conditions
+
+<CodeGroup>
+  ```json Example compound filter condition for a checkbox and number property value theme={null}
+  {
+    "filter": {
+      "and": [
+        {
+          "property": "Complete",
+          "checkbox": {
+            "equals": true
+          }
+        },
+        {
+          "property": "Working days",
+          "number": {
+            "greater_than": 10
+          }
+        }
+      ]
+    }
+  }
+  ```
+</CodeGroup>
+
+<CodeGroup>
+  ```json Example nested filter condition theme={null}
+  {
+    "filter": {
+      "or": [
+        {
+          "property": "Description",
+          "rich_text": {
+            "contains": "2023"
+          }
+        },
+        {
+          "and": [
+            {
+              "property": "Department",
+              "select": {
+                "equals": "Engineering"
+              }
+            },
+            {
+              "property": "Priority goal",
+              "checkbox": {
+                "equals": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+  ```
+</CodeGroup>

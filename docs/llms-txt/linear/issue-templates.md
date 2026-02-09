@@ -45,7 +45,7 @@ Long text | Multi-line text input
 Dropdown | One value can be selected among options you provide
 Checkboxes | One or more values can be selected among options you provide
 Date | Date picker, not tied to any issue property
-Instructions | Static text that you can use to provide context for how to fill the form, or a particular field in it
+Instructions | Static text that you can use to provide context for how to fill the form, or a particular field in it. Instructions text will be included in the description of the created issue.
 
 ### Property form fields
 
@@ -63,9 +63,7 @@ If you don't see the template, check that you're creating the issue from the rig
 
 ## Default templates
 
-Default templates are templates that are automatically applied when creating a new issue, given the conditions are met. Configure default templates from a team's template settings page. You can configure defaults differently for members of your team or people who are not part of your team. 
-
-Form templates are only available as default for non-team members to make sure filing issues remains low-lift for team members.
+Default templates are templates that are automatically applied when creating a new issue, given the conditions are met. Configure default templates from a team's template settings page. You can configure defaults differently for members of your team or people who are not part of your team. Form templates are only available as default templates for non-team members.
 
 ![Default templates in Linear settings](https://webassets.linear.app/images/ornj730p/production/d6eebc35f66823df066e862e923953b55def74c7-1520x506.png?q=95&auto=format&dpr=2)
 

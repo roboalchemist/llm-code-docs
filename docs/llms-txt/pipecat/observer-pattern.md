@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/observer-pattern.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Observer Pattern
 
 > Understanding and implementing observers in Pipecat
@@ -96,8 +100,3 @@ Observers are particularly useful for:
 * Monitoring pipeline behavior
 * Collecting metrics
 * Converting internal frames to external messages
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

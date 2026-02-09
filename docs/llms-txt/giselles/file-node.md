@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/file-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File Node
 
 > Learn how the File Node in Giselle allows you to upload and use files like PDFs, images, and text as inputs for your AI workflows.

@@ -1,10 +1,14 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/certificates/profiles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Certificate Profiles
 
 ## Concept
 
-A certificate profile is a configuration set specifying how leaf certificates should be issued for a group of end-entities including the [issuing CA](/documentation/platform/pki/ca/overview), a [certificate template](/documentation/platform/pki/certificates/templates), and the [enrollment method](/documentation/platform/pki/enrollment-methods/overview) (e.g. ACME, EST, API, etc.) used to enroll certificates.
+A certificate profile is a configuration set specifying how leaf certificates should be issued for a group of end-entities including the [issuing CA](/documentation/platform/pki/ca/overview), a [certificate policy](/documentation/platform/pki/certificates/policies), and the [enrollment method](/documentation/platform/pki/enrollment-methods/overview) (e.g. ACME, EST, API, etc.) used to enroll certificates.
 
 You typically request certificates against a certificate profile through its associated enrollment method. Each method defines its own interaction flow which you can read more about in its respective documentation.
 
@@ -20,8 +24,10 @@ Here's some guidance on each field:
 
 * Name: A slug-friendly name for the profile such as `web-servers`.
 * Description: An optional description for the profile.
-* Issuing CA: The [issuing CA](/documentation/platform/pki/ca/overview) that should be used to issue certificates for the profile.
-* Certificate Template: The [certificate template](/documentation/platform/pki/certificates/templates) that should be used to validate certificate requests for the profile.
+* Issuer Type: The type of issuer that should be used to issue certificates for the profile; this can be either `Certificate Authority` or `Self-Signed`. If `Self-Signed` is selected, then the profile will only support the API enrollment method and be used to issue self-signed certificates over REST API.
+* Issuing CA: The [issuing CA](/documentation/platform/pki/ca/overview) that should be used to issue certificates for the profile when the **Issuer Type** is set to `Certificate Authority`.
+* Certificate Policy: The [certificate policy](/documentation/platform/pki/certificates/policies) that should be used to validate certificate requests for the profile.
 * Enrollment Method: The enrollment method that should be used to enroll certificates for the profile such as ACME, EST, API, etc.
+* Default Certificate TTL: An optional fallback validity period used when a TTL is not explicitly specified in the certificate request. The default TTL must not exceed the maximum validity defined in the associated [certificate policy](/documentation/platform/pki/certificates/policies).
 
 Depending on which enrollment method you choose, you may be presented with additional enrollment-specific configuration fields.

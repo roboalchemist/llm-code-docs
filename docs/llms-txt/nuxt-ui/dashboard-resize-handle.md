@@ -16,9 +16,7 @@ It is automatically displayed when the `resizable` prop is set, **you don't have
 
 Even though this component is automatically displayed when the `resizable` prop is set, you can use the `resize-handle` slot of the [DashboardSidebar](/docs/components/dashboard-sidebar) and [DashboardPanel](/docs/components/dashboard-panel) components to customize the handle.
 
-<code-group>
-
-```vue [layouts/dashboard.vue]
+```vue
 <template>
   <UDashboardGroup>
     <UDashboardSidebar resizable>
@@ -35,9 +33,10 @@ Even though this component is automatically displayed when the `resizable` prop 
     <slot />
   </UDashboardGroup>
 </template>
+
 ```
 
-```vue [pages/index.vue]
+```vue
 <script setup lang="ts">
 definePageMeta({
   layout: 'dashboard'
@@ -56,15 +55,11 @@ definePageMeta({
     </template>
   </UDashboardPanel>
 </template>
+
 ```
 
-</code-group>
-
-<note>
-
-In this example, we add an `after` pseudo-element to display a vertical line on hover.
-
-</note>
+> [!NOTE]
+> In this example, we add an `after` pseudo-element to display a vertical line on hover.
 
 ## API
 
@@ -99,7 +94,7 @@ interface DashboardResizeHandleSlots {
 export default defineAppConfig({
   ui: {
     dashboardResizeHandle: {
-      base: 'hidden lg:block touch-none select-none cursor-ew-resize relative before:absolute before:inset-y-0 before:-left-1.5 before:-right-1.5'
+      base: 'hidden lg:block touch-none select-none cursor-ew-resize relative before:absolute before:inset-y-0 before:-left-1.5 before:-right-1.5 before:z-1'
     }
   }
 })
@@ -107,8 +102,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

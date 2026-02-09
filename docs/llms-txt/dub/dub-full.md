@@ -4,6 +4,26 @@ Source: https://dub.co/docs/llms-full.txt
 
 ---
 
+# Approve a bounty submission
+Source: https://dub.co/docs/api-reference/endpoint/approve-a-bounty-submission
+
+post /bounties/{bountyId}/submissions/{submissionId}/approve
+Approve a bounty submission. Optionally specify a custom reward amount.
+
+
+
+# Ban a partner
+Source: https://dub.co/docs/api-reference/endpoint/ban-a-partner
+
+post /partners/ban
+Ban a partner from your program. This will disable all links and mark all commissions as canceled.
+
+<Note>
+  Partners endpoints require an [Advanced plan](https://dub.co/pricing)
+  subscription or higher.
+</Note>
+
+
 # Bulk create links
 Source: https://dub.co/docs/api-reference/endpoint/bulk-create-links
 
@@ -149,6 +169,14 @@ Delete a link for the authenticated workspace.
 
 
 
+# List bounty submissions
+Source: https://dub.co/docs/api-reference/endpoint/list-submissions-for-a-bounty
+
+get /bounties/{bountyId}/submissions
+List all submissions for a specific bounty.
+
+
+
 # Register a domain
 Source: https://dub.co/docs/api-reference/endpoint/register-a-domain
 
@@ -160,6 +188,14 @@ Register a domain for the authenticated workspace. Only available for Enterprise
   customers](https://dub.co/enterprise). Please [contact
   us](https://dub.co/contact/sales) to get access.
 </Note>
+
+
+# Reject a bounty submission
+Source: https://dub.co/docs/api-reference/endpoint/reject-a-bounty-submission
+
+post /bounties/{bountyId}/submissions/{submissionId}/reject
+Reject a bounty submission with a specified reason and optional note.
+
 
 
 # Retrieve a customer
@@ -505,7 +541,7 @@ Dub API returns machine readable error codes, human readable error messages and 
 
 Here is how an error response looks like:
 
-```json  theme={null}
+```json theme={null}
 {
   "error": {
     "code": "not_found",
@@ -585,20 +621,20 @@ These list API methods share a common set of parameters that allow you to contro
 
 ### Parameters
 
-<ParamField body="page" type="string" default="1">
+<ParamField type="string">
   The page number to retrieve. By default, the first page is returned.
 </ParamField>
 
-<ParamField body="pageSize" type="string">
+<ParamField type="string">
   The number of items to retrieve per page. The default value varies by
   endpoint. Maximum value is 100.
 </ParamField>
 
-<ParamField body="sortBy" type="string">
+<ParamField type="string">
   The field to sort the results by.
 </ParamField>
 
-<ParamField body="sortOrder" type="string">
+<ParamField type="string">
   The order to sort the results by. Can be `asc` or `desc`.
 </ParamField>
 
@@ -675,7 +711,7 @@ You can create a publishable key by following these steps:
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -687,7 +723,7 @@ You can create a publishable key by following these steps:
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -887,7 +923,7 @@ If you're using our [Analytics API](/api-reference/endpoint/retrieve-analytics),
 If you're expecting high volume, fast-changing data (e.g. thousands of clicks on your links per day) and would prefer to store the data on your end, we recommend using our [real-time webhooks feature](https://dub.co/blog/introducing-webhooks) instead.
 
 <Frame>
-  <img src="https://assets.dub.co/blog/webhook-event-logs.jpg" alt="Webhook event logs" />
+  <img alt="Webhook event logs" />
 </Frame>
 
 [Webhooks](/concepts/webhooks/introduction) are *push-based*, meaning that Dub will send events to your webhook receiver endpoint when specific events occur, while a REST API is *pull-based*, meaning that you need to consistently poll the API endpoint to get real-time updates.
@@ -921,7 +957,7 @@ You can create an API key by following these steps:
     Go to **Settings** > [**API Keys**](https://app.dub.co/settings/tokens) in your workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6493e58033c7a98e84664fafa2acb53d" alt="Workspace API keys on Dub" width="1468" height="249" data-og-width="1295" data-og-height="687" data-path="images/workspace-api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b86a609f47d24e8ff58964ece34864ef 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=04acf462bf4dc0c99c78dbdd9a862484 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=34d2ba2509f531f699c8a3af959bed5a 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1a6273708e71a50c2c8e1eec4d8ee140 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0ca6a30b47ee4fadbe59658ac86ad78e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/workspace-api-keys.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=5fe4492b33d785b20c68f559a143cff7 2500w" />
+      <img alt="Workspace API keys on Dub" />
     </Frame>
   </Step>
 
@@ -935,13 +971,13 @@ You can create an API key by following these steps:
     * **Machine**: A machine user will be added to your workspace, and an API key associated with that machine user will be created.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a0d7699b93f7ad32c8964ed1cedd65e7" alt="Add new API key on Dub" width="1468" height="249" data-og-width="902" data-og-height="828" data-path="images/add-new-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=15d4dd4759471d5ec7c43486fc0f7e66 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8cc977fd0797ed4e7653033cdfd39389 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8d549657d43d11b345bcaf48e70bfb20 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f8d58424c460ac03cc7759bb0e84e8ae 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1aadf8911936e5eef509795f8f959112 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/add-new-api-key.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3587feca5b4fae801315953d671ff714 2500w" />
+      <img alt="Add new API key on Dub" />
     </Frame>
 
     Click on the **Create API Key** button to create the key. Make sure to copy your API key and store it in a safe place. You won't be able to see it again.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c8a52da3ff2678850ce6569da5104a06" alt="API Key created on Dub" data-og-width="592" width="592" data-og-height="390" height="390" data-path="images/api-key-created.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8b39311b149baad5489d138d77202f6b 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94276f4c1701fec9cb4430c7be050290 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9c7886cc478afabd3c056bd9136889ef 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c77bf640e550b38c81f54aea40994379 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=12e2d9e11e291252a300ccbd3549635d 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-key-created.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6eb996917831616e541ca49e10808003 2500w" />
+      <img alt="API Key created on Dub" />
     </Frame>
   </Step>
 
@@ -983,13 +1019,13 @@ On Dub, you can create API keys that are associated with a "Machine user". This 
 </Warning>
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f085cda5b9d9cbe8a04ddba64d3293cc" alt="Creating an API key associated with a machine user on Dub" width="1528" height="974" data-og-width="794" data-og-height="563" data-path="images/api-machine-users.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6dde53d285800a892590df2f123a47e1 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=10ca92f39b1a4252c9748a2116118b95 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b294692ba07616be6d0cc6f1d0cf8f7c 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=97bbe55faf7906a8ab695151f3afdc7d 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=575d8dd29e60b3e25a237fbb147af7a4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/api-machine-users.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6726aa3bc87b0038fd26ba6c5de077a0 2500w" />
+  <img alt="Creating an API key associated with a machine user on Dub" />
 </Frame>
 
 These machine users will show up on your workspace's **People** tab, but will not contribute to your workspace's user count.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=823d1d725759cc1de777d41b8274a6e2" alt="Machine user on Dub" width="1468" height="249" data-og-width="712" data-og-height="188" data-path="images/machine-user.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7c1575a4c6ea752052111dd60aa10b28 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c20c5608d7bff74a8f82226337d2d066 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=aa33850d0be3795865294ba046ee4ecf 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=2edacfacddaedacc375e4df4b92c3930 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b850576a537c2b3507e5fade5dd6c70b 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/machine-user.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6a11511bd60862237d63bff4d3498bee 2500w" />
+  <img alt="Machine user on Dub" />
 </Frame>
 
 <Tip>
@@ -1399,7 +1435,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "clicks": 100,
       "leads": 5,
@@ -1414,7 +1450,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "start": "2024-01-01T00:00:00.000Z",
@@ -1439,7 +1475,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "id": "clux0rgak00011...",
@@ -1463,7 +1499,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "country": "US",
@@ -1483,7 +1519,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "country": "US",
@@ -1503,7 +1539,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "country": "US",
@@ -1523,7 +1559,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "continent": "NA",
@@ -1541,7 +1577,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "device": "iPhone",
@@ -1559,7 +1595,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "browser": "Chrome",
@@ -1577,7 +1613,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "os": "iOS",
@@ -1595,7 +1631,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "referer": "Google",
@@ -1613,7 +1649,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "refererUrl": "https://www.google.com",
@@ -1631,7 +1667,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "utm_source": "newsletter",
@@ -1649,7 +1685,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "utm_medium": "email",
@@ -1667,7 +1703,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "utm_campaign": "summer_sale",
@@ -1685,7 +1721,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "utm_term": "discount",
@@ -1703,7 +1739,7 @@ Each of these events can be aggregated in different ways by using the `groupBy` 
 
     Example response:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "utm_content": "banner",
@@ -2082,12 +2118,12 @@ With Dub's [Analytics API](/api-reference/endpoint/retrieve-analytics), you can 
 
 Here are some open-source examples of how you can use the Analytics API to build your own custom analytics dashboards:
 
-<CardGroup cols={2}>
-  <Card title="OSS Gallery" icon="github" href="https://github.com/dubinc/oss-gallery" color="#333333">
+<CardGroup>
+  <Card title="OSS Gallery" icon="github" href="https://github.com/dubinc/oss-gallery">
     Programmatically shorten links and fetch real-time click analytics with Dub
   </Card>
 
-  <Card title="Cap.so" icon="github" href="https://github.com/CapSoftware/Cap/blob/2d619ca7ad19247657cf059e10ac74e02f03ef04/apps/web/actions/videos/get-analytics.ts" color="#333333">
+  <Card title="Cap.so" icon="github" href="https://github.com/CapSoftware/Cap/blob/2d619ca7ad19247657cf059e10ac74e02f03ef04/apps/web/actions/videos/get-analytics.ts">
     How Cap.so fetches real-time click analytics for their recording links
   </Card>
 </CardGroup>
@@ -2095,7 +2131,7 @@ Here are some open-source examples of how you can use the Analytics API to build
 And here's another [real-world example](https://x.com/meetassembly/status/1901691081579794505) of a custom analytics dashboard built with the Analytics API:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8eaa95c0d56de0a7ac293b2b6ecc9564" alt="Assembly link analytics" data-og-width="1506" width="1506" data-og-height="1562" height="1562" data-path="images/assembly-link-analytics.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a0675500c5867a995f5fdb827d0aeddb 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aefb181ca4b304bd91ab02ae1397cc9d 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a341f1d13ace02ff6c08af3dd1ae960e 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=858cd7f03457f1e4bb4e2e43137f4c0c 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=cb63f65f3959b77b5fa028803c0489b8 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/assembly-link-analytics.jpg?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c721e02aaeaea039e83903a8ada0d813 2500w" />
+  <img alt="Assembly link analytics" />
 </Frame>
 
 
@@ -3596,7 +3632,7 @@ Learn how to use deep link attribution to track conversions events with Dub.
 Dub's powerful [attribution platform](https://dub.co/analytics) lets you understand how well your deep links are translating to actual users and revenue dollars inside your app.
 
 <Frame>
-  <img src="https://assets.dub.co/blog/introducing-dub-conversions.webp" alt="Conversion analytics" />
+  <img alt="Conversion analytics" />
 </Frame>
 
 <Note>
@@ -3623,7 +3659,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -3635,7 +3671,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -3683,7 +3719,7 @@ Then, you'll need generate a [publishable key](/api-reference/publishable-keys) 
 To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+  <img alt="Enabling conversion tracking for a workspace" />
 </Frame>
 
 Once these are set up, we can start tracking conversion events for your deep links.
@@ -3694,9 +3730,9 @@ Once these are set up, we can start tracking conversion events for your deep lin
   <Tab title="React Native">
     Install the [Dub React Native SDK](/sdks/client-side-mobile/installation-guides/react-native) and initialize it with your publishable key and short link domain.
 
-    <Steps titleSize="h3">
+    <Steps>
       <Step title="Install the Dub React Native SDK">
-        ```sh  theme={null}
+        ```sh theme={null}
         # With npm
         npm install @dub/react-native
 
@@ -3713,7 +3749,7 @@ Once these are set up, we can start tracking conversion events for your deep lin
 
         **Option 1**: Use the `DubProvider` to wrap your app
 
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { DubProvider } from "@dub/react-native";
 
         export default function App() {
@@ -3730,7 +3766,7 @@ Once these are set up, we can start tracking conversion events for your deep lin
 
         **Option 2**: Manually initialize the Dub SDK
 
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import dub from "@dub/react-native";
 
         export default function App() {
@@ -3751,7 +3787,7 @@ Once these are set up, we can start tracking conversion events for your deep lin
   <Tab title="iOS">
     Install the [Dub iOS SDK](/sdks/client-side-mobile/installation-guides/swift) and initialize it with your publishable key and short link domain.
 
-    <Steps titleSize="h3">
+    <Steps>
       <Step title="Install the Dub iOS SDK">
         Before installing, ensure your environment meets these minimum requirements:
 
@@ -4139,19 +4175,19 @@ Once you've enabled conversion tracking for your links, all your tracked convers
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -4168,7 +4204,7 @@ Learn how to use deferred deep linking to track conversions and traffic.
 Deferred deep linking allows you to track which link a user came from even when they don't have your app installed.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0d6deb0ee0df581e29fd7b5d915b0f43" alt="Deferred deep linking on Dub" data-og-width="1125" width="1125" data-og-height="549" height="549" data-path="images/deferred-deep-linking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2516eb6359a4fb28c53657b6405e0295 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e61346f184cdafa536152e2e9274c8ac 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7e3509dbde97fce3354538218d21564e 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c00b324cf18589d2b584e50ffba56c17 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2803fcf56ba31e36a8e8520c5dcc25b9 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/deferred-deep-linking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c80d91f803f1de8d383ea66ca620529c 2500w" />
+  <img alt="Deferred deep linking on Dub" />
 </Frame>
 
 When a user clicks a link without the app installed, they're redirected to the app store. After installing and opening the app, you can retrieve the original link information and redirect them to the appropriate screen.
@@ -4591,7 +4627,7 @@ Dub's iOS deferred deep linking solution provides two tracking approaches:
 For the deterministic approach, when an iOS user who doesn't have your app installed clicks on your deep link, Dub redirects them to a custom landing page:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=602b80ca7afb01b010ed29a46d020d8c" alt="iOS deferred deep linking landing page" data-og-width="2748" width="2748" data-og-height="2197" height="2197" data-path="images/ios-ddl-landing-page.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ad4d399cb9fdefc78a7933872572cec0 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a37ba20321fcc7b67b571bbaacf7f8bb 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b06351d41a3d25a6bf151c94eb76ee69 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=37d2560166990b7c8e7a124d0b194460 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6a8efc209e7e4e3d50c85c6d033bb6c6 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/ios-ddl-landing-page.jpg?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0a51722ba4fa32b5f866156f85083c1d 2500w" />
+  <img alt="iOS deferred deep linking landing page" />
 </Frame>
 
 This page displays two options:
@@ -4898,13 +4934,13 @@ Before you begin, make sure to follow the [quickstart guide](/concepts/deep-link
   <Step title="Remove Firebase Dynamic Links SDK">
     If you have the Firebase Dynamic Links SDK installed, remove it from your `build.gradle` file:
 
-    ```gradle  theme={null}
+    ```gradle theme={null}
     implementation 'com.google.firebase:firebase-dynamic-links:21.1.0'
     ```
 
     Remove any Firebase imports from your Kotlin/Java files:
 
-    ```java  theme={null}
+    ```java theme={null}
     import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
     import com.google.firebase.dynamiclinks.DynamicLink
     ```
@@ -4915,7 +4951,7 @@ Before you begin, make sure to follow the [quickstart guide](/concepts/deep-link
 
     However, if you were previously using Firebase’s branded domain (e.g., yourapp.page.link), you’ll need to replace it with your custom Dub domain in your app’s configuration.
 
-    ```xml  theme={null}
+    ```xml theme={null}
     <activity android:name=".MainActivity">
       <intent-filter android:autoVerify="true">
         <action android:name="android.intent.action.VIEW" />
@@ -4932,7 +4968,7 @@ Before you begin, make sure to follow the [quickstart guide](/concepts/deep-link
   <Step title="Implement Deep Link Handling">
     Override `onNewIntent` in your main activity to handle deep link opens:
 
-    ```kotlin  theme={null}
+    ```kotlin theme={null}
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         intent?.data?.let { uri ->
@@ -4986,13 +5022,13 @@ Before you begin, make sure to follow the [quickstart guide](/concepts/deep-link
   <Step title="Remove Firebase Dynamic Links SDK">
     If you have the Firebase Dynamic Links SDK installed, remove it from your `Podfile`:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     pod 'Firebase/DynamicLinks'
     ```
 
     Remove any Firebase imports like:
 
-    ```swift  theme={null}
+    ```swift theme={null}
     import FirebaseDynamicLinks
     ```
   </Step>
@@ -5010,7 +5046,7 @@ Before you begin, make sure to follow the [quickstart guide](/concepts/deep-link
 
     No changes to your app’s `Info.plist` are required unless you had other Firebase-specific deep link configurations.
 
-    ```swift  theme={null}
+    ```swift theme={null}
     import Foundation
     import UIKit
 
@@ -5086,7 +5122,7 @@ Learn how to use Dub to create deep links for your mobile app (with native suppo
 On Dub, you can create deep links that lets you to redirect users to a specific page within your mobile application.
 
 <Frame>
-  <img src="https://assets.dub.co/cms/deep-links.jpg" alt="Deep links on Dub" />
+  <img alt="Deep links on Dub" />
 </Frame>
 
 For example, you're creating an ad campaign to drive traffic to a specific product page within your mobile app.
@@ -5110,13 +5146,13 @@ Before you can create deep links, you need to configure your deep link domains i
     To do that, go to your [workspace domain settings](https://app.dub.co/settings/domains) and click on the edit button for your custom domain:
 
     <Frame>
-      <img src="https://assets.dub.co/cms/update-domain-button.png" alt="Deep link configuration files" />
+      <img alt="Deep link configuration files" />
     </Frame>
 
     In the domain modal, click on **Show advanced settings**, which will open up the Deep Link Configuration settings fields.
 
     <Frame>
-      <img src="https://assets.dub.co/cms/domain-modal-advanced-settings.png" alt="Deep link configuration settings" />
+      <img alt="Deep link configuration settings" />
     </Frame>
 
     **iOS (apple-app-site-association)**
@@ -5136,6 +5172,10 @@ Before you can create deep links, you need to configure your deep link domains i
       }
     }
     ```
+
+    <Note>
+      After updating the AASA file, you may need to reinstall your app since iOS can cache the old version of the file, which can lead to inconsistent behavior.
+    </Note>
 
     **Android (assetlinks.json)**
 
@@ -5185,7 +5225,7 @@ Now that you've configured your deep link domains, you can create deep links tha
     This is the URL that opens a specific screen or piece of content within your app. For example `https://yourapp.com/product/Apple-MacBook` opens the product detail screen for `Apple-MacBook`.
 
     <Frame>
-      <img src="https://assets.dub.co/help/dub-link-builder.jpg" alt="Deep link builder" />
+      <img alt="Deep link builder" />
     </Frame>
   </Step>
 
@@ -5210,7 +5250,7 @@ Now that you've configured your deep link domains, you can create deep links tha
     For example, you can set custom destination URLs for different devices using the link builder — use the **iOS Targeting** input for iOS devices, and the **Android Targeting** input for Android devices.
 
     <Frame>
-      <img src="https://assets.dub.co/help/device-targeting.png" alt="Deep link device targeting configuration" />
+      <img alt="Deep link device targeting configuration" />
     </Frame>
 
     Finally, click **Create link** to create your deep link. This link will act as a Firebase Dynamic Link replacement.
@@ -5498,7 +5538,7 @@ Follow our installation guide for [Swift](/sdks/client-side-mobile/installation-
 
     To do this, make a `POST` request to the [`/track/open` endpoint](/api-reference/endpoint/track-open) with the following body:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "deepLink": "https://yourdomain.link/short-link-slug"
     }
@@ -5506,7 +5546,7 @@ Follow our installation guide for [Swift](/sdks/client-side-mobile/installation-
 
     The response will be a JSON object with the following structure if the request is successful:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "clickId": "ASltDhoxBiBqKH00",
       "link": {
@@ -5633,7 +5673,7 @@ Before deploying your deep links to production, test them thoroughly using emula
   <Step title="Test on Android emulator">
     Use the Android Debug Bridge (adb) to test your deep links on an Android emulator:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     adb shell am start -W -a android.intent.action.VIEW -d "https://yourdomain.link/your-short-link" com.yourpackage.name
     ```
   </Step>
@@ -5641,7 +5681,7 @@ Before deploying your deep links to production, test them thoroughly using emula
   <Step title="Test on iOS simulator">
     Use the `xcrun` command to test your deep links on an iOS simulator:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     xcrun simctl openurl booted "https://yourdomain.link/your-short-link"
     ```
   </Step>
@@ -8622,13 +8662,13 @@ To create a webhook for your Dub workspace, you'll need to follow these steps:
 Navigate to the [**Webhooks** settings page](https://app.dub.co/webhooks) in your Dub workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d569cb73aa3ca5dfda7cb1e1b87c3ac7" alt="Create Webhook" data-og-width="1744" width="1744" data-og-height="797" height="797" data-path="images/create-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f173d9d910e80579e36b941c60f12345 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=654e3d56c4b12e3cdeee81c9a36fb7b5 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fa959672d842e0e22bb80983dae9ade7 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7adc56d43a7885c5e335850d8777672b 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=03a48d39da747c5db350309601fabfbc 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ccc84266ed8e6c3fbbb2bfcaf75ad9c3 2500w" />
+  <img alt="Create Webhook" />
 </Frame>
 
 Click on **Create Webhook** to create a new webhook.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a9d5d15b96faa129d7bbf2d68d5f0531" alt="Create Webhook Form" data-og-width="1666" width="1666" data-og-height="877" height="877" data-path="images/create-webhook-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d21cb8c7afc94d3cda49809e2993072d 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f6492689ff7ec6912d0b818e6693f8ac 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=71fc304cbb97749f6d16a81f6f38e1f0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d44c8e85a2f11e5fd84b2da205eb2de1 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0174afb41d14e3368a15ffd915d9ec1d 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/create-webhook-form.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e50147796d627066909fa0fee71cb23c 2500w" />
+  <img alt="Create Webhook Form" />
 </Frame>
 
 Fill in the required fields in the webhook creation form:
@@ -8649,13 +8689,13 @@ To view the webhook event logs, select the webhook from the [**Webhooks** settin
 Here, you'll see a list of all the webhook events that have been sent to your webhook endpoint:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=61583f0d6f5748532d0beb9bf2733305" alt="Webhook Event Logs" data-og-width="1754" width="1754" data-og-height="759" height="759" data-path="images/webhook-event-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a649c499637b949874eeff9b071d251b 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=91cc9d9afd3aec1a328f585f6c47c1eb 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=281dae9202eed49824ca9342553c4ec1 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0f2ff65f40493701f2804e585c233082 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=5b295814066594424402e131658585ed 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=34bca9ea53fc47bc903aebf398b3cd2f 2500w" />
+  <img alt="Webhook Event Logs" />
 </Frame>
 
 You can also select on a specific event, which will open up a sheet with more details about the event:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1ee55afbf7a1ee660f2066bfa8f9aad3" alt="Webhook Event Logs Details" data-og-width="1762" width="1762" data-og-height="794" height="794" data-path="images/webhook-event-logs-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c9ea832ce49a723a3dfcd3d44a110df0 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8dba030b3299fa91f78accc2f59bda21 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4bc827d19686d3100acd598b00c29d48 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a5ba1a14fb20cee8e59d304616087bb1 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f901aad3b11e294a44a77c4a051a3702 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-event-logs-details.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7005a77fd280b82046ef58730d9d8b06 2500w" />
+  <img alt="Webhook Event Logs Details" />
 </Frame>
 
 ## Sending test events
@@ -8673,13 +8713,13 @@ You can send test events to your webhook URL to ensure that it's working correct
     Select the `⋮` icon on the top right of the page, and click on **Send test event**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=dc6b36d090c8e48221763b2c2e8319aa" alt="Send Test Event" data-og-width="1151" width="1151" data-og-height="594" height="594" data-path="images/send-test-event.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4fe7eb49919829bbedbd38d631004040 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e6fb8ee85731735d4b755621377da1f6 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c26bfc92e2c02ad7b63c822c5a9c8d66 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=abc14dff8c1e1d0c130a301745452181 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4c199a8f13f453f1c9f3fd243a06c35a 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=955a3fe573a72d0895fa5baa40488f8d 2500w" />
+      <img alt="Send Test Event" />
     </Frame>
 
     This will open up a modal where you can select the event you want to send.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=9e930435582ededf82e29086ee914a09" alt="Send Test Event Modal" data-og-width="807" width="807" data-og-height="629" height="629" data-path="images/send-test-event-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a5e00ccdba5966e4a3c99c8fd8b62c50 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=17ef388c8cd78fab504e1d1264a1cbce 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=300ecbf69b5f48f243285810fc596474 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f12fb2c7ca524830b5b1fb2290680e6b 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a442792e55feb5be86102ae7e9f57829 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-event-modal.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=9cff99f9eff45e51cfb1424bcb0847a8 2500w" />
+      <img alt="Send Test Event Modal" />
     </Frame>
   </Step>
 
@@ -8687,7 +8727,7 @@ You can send test events to your webhook URL to ensure that it's working correct
     Select the event you want to send, and click on **Send test webhook**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=924718ca0d50ff2fee6b199042e027f2" alt="Send Test Webhook" data-og-width="778" width="778" data-og-height="511" height="511" data-path="images/send-test-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b92e4daca994b5aad5b31f80b411ff0c 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=83c301643c9dc86eded815abd5ec2560 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=781edfdf61d8532588348c21a0e61d5a 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d16c8b09cd803a9e729e8849a8943d8a 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=cabb5921a3a379dbaa24d97de65c3897 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/send-test-webhook.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4150ad795f95332192d3ba8f1138604c 2500w" />
+      <img alt="Send Test Webhook" />
     </Frame>
 
     You'll see a success message and receive the webhook event in the webhook endpoint you specified.
@@ -8744,7 +8784,7 @@ Dub-Signature: c9ed6a2abf93f59d761eea69908d8de00f4437b5b6d7cd8b9bf5719cbe61bf46
 You can find your webhook's signing secret in the **Update Details** tab:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=5b4981b13c208e6a1154bb19bacbfc9e" alt="Webhook signing secret" data-og-width="1365" width="1365" data-og-height="637" height="637" data-path="images/webhook-signing-secret.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=98c661b22f788931de377d14635bbbbd 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4fb8a1c7a021f29092d905be0e7fb47f 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=be47edc7c2b1165dd48770372fb71abd 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=504d649b366a25bb2301176da1a38f4a 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fb900830d3708b801bed6028eba3cd17 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/webhook-signing-secret.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=098916459faa6a0203bfa05d1312a0d5 2500w" />
+  <img alt="Webhook signing secret" />
 </Frame>
 
 Make sure to keep this secret safe by only storing it in a secure environment variable (e.g. `DUB_WEBHOOK_SECRET`). Do not commit it to git or add it in any client-side code.
@@ -8903,7 +8943,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Appwrite for user authentication.
@@ -8926,7 +8966,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -8938,7 +8978,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -8986,37 +9026,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -9040,18 +9079,18 @@ Next, configure Appwrite to track lead conversion events during the sign up proc
     Head to [Appwrite Cloud](https://apwr.dev/appwrite-dub) and create a new project.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1e110fd5a9d9ad54ba839c24261962c2" alt="New project on Appwrite Cloud" width="1440" height="1024" data-og-width="2880" data-og-height="2048" data-path="images/conversions/appwrite/appwrite-new-project.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3a1a964f50dc62a182ac3add5aa471b2 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=98af772dee7536aafc84554cb6c5d9fb 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=393d9341b1d65c43efb12fa22f21000d 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=97c305eeaf3052ea8b14849d13d926a1 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=82e3bf852e376a686a797716fe167988 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-new-project.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c1b734e06d94d1a7bf78510fc0ed9b19 2500w" />
+      <img alt="New project on Appwrite Cloud" />
     </Frame>
 
     Create a new API key with the `sessions.write` scope enabled and save the API key for later use. You can also copy your project ID and endpoint from the project's Settings page.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=17ca65fff8249659fd7ac45e7ecf2739" alt="API key in your project on Appwrite Cloud" width="1440" height="1024" data-og-width="2880" data-og-height="2048" data-path="images/conversions/appwrite/appwrite-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c9c7691347137711e4012b3e05597b86 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3de18fff94be16a7c53b61b39cd4faf5 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ad73daf37ade8b17d8efc8e68876a93b 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e878d605bad457ba334f12171269adeb 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=60dac77d056765af6d260aeafe0bbb06 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/appwrite/appwrite-api-key.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9d17998d19d2d03a3683d32b9021dd07 2500w" />
+      <img alt="API key in your project on Appwrite Cloud" />
     </Frame>
 
     Then, in your Next.js app, install the Appwrite Node.js SDK.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm i node-appwrite
     ```
   </Step>
@@ -9059,7 +9098,7 @@ Next, configure Appwrite to track lead conversion events during the sign up proc
   <Step title="Add environment variables">
     Add the following environment variables to your app.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     NEXT_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
     NEXT_PUBLIC_APPWRITE_PROJECT=<APPWRITE_PROJECT_ID>
     NEXT_APPWRITE_KEY=<APPWRITE_API_KEY>
@@ -9250,19 +9289,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -9283,7 +9322,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Auth0 for user authentication.
@@ -9306,7 +9345,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -9318,7 +9357,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -9366,37 +9405,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -9478,19 +9516,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -9511,7 +9549,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Better Auth for user authentication.
@@ -9534,7 +9572,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -9546,7 +9584,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -9594,37 +9632,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -9692,19 +9729,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -9725,7 +9762,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Clerk for user authentication.
@@ -9748,7 +9785,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -9760,7 +9797,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -9808,37 +9845,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -9857,7 +9893,7 @@ You can install the `@dub/analytics` script in several different ways:
 
 Next, configure Clerk to track lead conversion events when a new user signs up. Here's a quick video showing how to do this:
 
-<iframe width="100%" height="469px" className="rounded-xl" src="https://www.loom.com/embed/7338589f0c0c4ee1b71c9f2aa28aac87?sid=04c67f3b-1bec-468a-b0c7-5b24d24cd96e" title="Loom video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="Loom video player" />
 
 Here's a quick summary of the steps:
 
@@ -9865,7 +9901,7 @@ Here's a quick summary of the steps:
   <Step title="Add environment variables">
     Add the following environment variables to your app:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # get it here: https://dashboard.clerk.com/apps/new
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
     CLERK_SECRET_KEY=your_secret_key
@@ -10076,19 +10112,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -10109,7 +10145,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 ## Prerequisites
@@ -10130,7 +10166,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -10142,7 +10178,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -10196,7 +10232,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -10217,7 +10253,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -10227,37 +10263,36 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     You can install the `@dub/analytics` script in several different ways:
 
     <CardGroup>
-      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
       <Card
         title="Framer"
         icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
         href="/sdks/client-side/installation-guides/framer"
-        horizontal
       />
 
-      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
     </CardGroup>
 
     You must configure the **publishable key** you generated in step 1 when installing the analytics script. Without this key, client-side conversion tracking will not work.
@@ -10308,7 +10343,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
 
 Once the analytics script is installed, you can start tracking lead events in your application on the client-side.
 
-### Track leads from URL query parameters
+### Track leads from URL query parameters (recommended)
 
 If you redirect users to a thank-you page after a successful action, you can track leads by reading query parameters from the URL.
 
@@ -10507,19 +10542,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -10540,7 +10575,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 However, there are times where signups alone might not be the clearest indicator of a lead conversion event. For instance, you might want to track a more meaningful lead event such as:
@@ -10552,7 +10587,7 @@ However, there are times where signups alone might not be the clearest indicator
 In these cases, you can use deferred lead tracking to defer the actual lead event creation to a subsequent request:
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=4d102c1a60ddb2c30782484e6f43e7a4" alt="A diagram showing how deferred lead tracking works" data-og-width="2081" width="2081" data-og-height="1011" height="1011" data-path="images/conversions/deferred-lead-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=280&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=f4a85ae3565321622c627212382b7729 280w, https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=560&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=3ff2b4f17197725c306b3f52241e3098 560w, https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=840&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=91a33ae29521cc61f1629c76995a8a64 840w, https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=1100&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=5e3d5d4f838c05f452d03e026f3618cb 1100w, https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=1650&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=aa1e90e0d534696e50e321ac8eab227f 1650w, https://mintcdn.com/dub/kbPgPLgaQdzIeSwY/images/conversions/deferred-lead-tracking.png?w=2500&fit=max&auto=format&n=kbPgPLgaQdzIeSwY&q=85&s=6ae674c5afe00f5121398e2489a6c524 2500w" />
+  <img alt="A diagram showing how deferred lead tracking works" />
 </Frame>
 
 <Tip>
@@ -10581,7 +10616,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -10593,7 +10628,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -10641,37 +10676,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -10938,19 +10972,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -10971,7 +11005,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Google Tag Manager to manage client-side tracking scripts.
@@ -10994,7 +11028,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -11006,7 +11040,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -11060,12 +11094,12 @@ First, you'll need to add the Dub analytics script to your website using Google 
 In your GTM workspace, navigate to the **Tags** section and click **New** to create a new tag.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0cfbc7b1e007b875e07ce1f1dc515a2d" alt="GTM New Tag" width="1440" height="1024" data-og-width="1724" data-og-height="883" data-path="images/conversions/google-tag-manager/gtm-new-tag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=74ce03be3bf713f4c490b5dbfa94765c 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bcf8538cba389b7ffac4a54e161a64fc 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b804e8f707831306a5e0e9ce41aa7829 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=262905c3f40f6c3b63ea36bda8d9e617 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7bb5ecd68dc271c4a3875102d9c33051 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33af6a4952dc13d40341b6dd8859d398 2500w" />
+  <img alt="GTM New Tag" />
 </Frame>
 
 Select **Custom HTML** as the tag type and add the following code:
 
-```html  theme={null}
+```html theme={null}
 <script>
   (function (c, n) {
     c[n] =
@@ -11112,7 +11146,7 @@ To read the `dub_id` cookie that Dub Analytics sets, you'll need to create a Use
 In your GTM workspace, navigate to the **Variables** section and click **New** to create a new variable.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=7f15c28151c737b96609a81e1068a614" alt="GTM Dub ID Cookie Variable" width="1440" height="1024" data-og-width="1708" data-og-height="819" data-path="images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=280&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=c9092e7fd7bb6b045f9ea86f24a8e472 280w, https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=560&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=300d2834a7727cbcfe7db0b520d0cb85 560w, https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=840&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=a69ddecf24447d03eff638ca405a9532 840w, https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=1100&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=5d1c69cdf10ac39700fd854eb9062f76 1100w, https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=1650&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=5084890e0ffee44bf8f2d573efbf1234 1650w, https://mintcdn.com/dub/0qTWKCmxoHXve81d/images/conversions/google-tag-manager/gtm-dub-id-cookie-variable.png?w=2500&fit=max&auto=format&n=0qTWKCmxoHXve81d&q=85&s=754f0f7bf20cec565bc56c26a7f23129 2500w" />
+  <img alt="GTM Dub ID Cookie Variable" />
 </Frame>
 
 Configure the variable with the following settings:
@@ -11129,13 +11163,68 @@ Click **Save** to create the variable.
   when tracking conversion events.
 </Note>
 
-### Step 3: Create Lead Tracking Tag for Form Submissions
+### Step 3: Tracking lead events
 
-Next, create a tag to track leads when users submit forms on your website.
+There are two ways to track lead events with Google Tag Manager:
 
-Create another **Custom HTML** tag with the following code:
+* [Thank You Page Tracking (Recommended)](#option-1%3A-thank-you-page-tracking-recommended)
+* [Form Submission Tracking](#option-2%3A-form-submission-tracking)
 
-```html  theme={null}
+#### Option 1: Thank You Page Tracking (Recommended)
+
+This method tracks leads when users land on a thank-you or success page after completing a form. This approach is more reliable as it's less likely to be blocked by ad blockers and provides better data accuracy.
+
+Create a **Custom HTML** tag with the following code:
+
+```html theme={null}
+<script>
+  (function () {
+    // Get query parameters from URL
+    var params = new URLSearchParams(window.location.search);
+    var email = params.get("email");
+    var name = params.get("name");
+
+    // Get dub_id from cookie using GTM variable
+    var clickId = {{Dub ID Cookie}} || "";
+
+    // Only track the lead event if email and clickId are present
+    if (email && clickId) {
+      dubAnalytics.trackLead({
+        eventName: "Sign Up",
+        customerExternalId: email,
+        customerName: name || email,
+        customerEmail: email,
+        clickId: clickId,
+      });
+    }
+  })();
+</script>
+```
+
+<Note>
+  **Important**: Make sure to pass along the `email` and `name` query parameters
+  to the thank-you page so that the lead event can be attributed to the correct
+  customer.
+</Note>
+
+Configure this tag to fire on specific pages by creating a **Page View** trigger with conditions:
+
+* Trigger Type: **Page View**
+* This trigger fires on: **Some Page Views**
+* Add conditions like:
+  * **Page URL** contains `/thank-you`
+  * Or **Page Path** equals `/success`
+  * Or whatever URL pattern matches your thank-you pages
+
+Name this tag "Dub Lead Tracking - Thank You Page" and save it.
+
+#### Option 2: Form Submission Tracking
+
+This method tracks leads immediately when users submit forms on your website. Note that this approach may be less reliable due to ad blockers and timing issues.
+
+Create a **Custom HTML** tag with the following code:
+
+```html theme={null}
 <script>
   (function () {
     // Get form data - customize these selectors based on your form
@@ -11149,15 +11238,14 @@ Create another **Custom HTML** tag with the following code:
     // Get dub_id from cookie using GTM variable
     var clickId = {{Dub ID Cookie}} || "";
 
-    // Only track if email is present
-    if (email) {
-      // Track the lead event
+    // Only track the lead event if email and clickId are present
+    if (email && clickId) {
       dubAnalytics.trackLead({
         eventName: "Sign Up",
         customerExternalId: email,
-        customerName: name || undefined,
+        customerName: name || email,
         customerEmail: email,
-        clickId: clickId || undefined,
+        clickId: clickId,
       });
     }
   })();
@@ -11179,47 +11267,6 @@ Configure this tag to fire on **Form Submission** by creating a new trigger:
 
 Name this tag "Dub Lead Tracking - Form Submission" and save it.
 
-### Step 4: Create Lead Tracking Tag for Thank You Pages
-
-For tracking leads on thank-you pages (recommended approach), create another **Custom HTML** tag:
-
-```html  theme={null}
-<script>
-  (function () {
-    // Get query parameters from URL
-    var params = new URLSearchParams(window.location.search);
-    var email = params.get("email");
-    var name = params.get("name");
-
-    // Get dub_id from cookie using GTM variable
-    var clickId = {{Dub ID Cookie}} || "";
-
-    // Only track if email is present
-    if (email) {
-      // Track the lead event
-      dubAnalytics.trackLead({
-        eventName: "Sign Up",
-        customerExternalId: email,
-        customerName: name || undefined,
-        customerEmail: email,
-        clickId: clickId || undefined,
-      });
-    }
-  })();
-</script>
-```
-
-Configure this tag to fire on specific pages by creating a **Page View** trigger with conditions:
-
-* Trigger Type: **Page View**
-* This trigger fires on: **Some Page Views**
-* Add conditions like:
-  * **Page URL** contains `/thank-you`
-  * Or **Page Path** equals `/success`
-  * Or whatever URL pattern matches your thank-you pages
-
-Name this tag "Dub Lead Tracking - Thank You Page" and save it.
-
 Here's the full list of attributes you can pass when sending a lead event:
 
 | Property             | Required | Description                                                                                                                                                                                                                                                                                                                                                                       |
@@ -11239,9 +11286,10 @@ To test your GTM setup, you can use the **Preview** mode in Google Tag Manager:
 
 1. **Enable Preview Mode**: In your GTM workspace, click the **Preview** button in the top right corner
 2. **Enter your website URL** and click **Connect**
-3. **Navigate to a page** with a form or your thank-you page
-4. **Submit a test form** or visit the thank-you page with query parameters
-5. **Check the GTM debugger** to see if your tags are firing correctly
+3. **Test your chosen tracking method**:
+   * **For Option 1 (Thank You Page)**: Navigate to your thank-you page with query parameters (e.g., `?email=test@example.com&name=Test User`)
+   * **For Option 2 (Form Submission)**: Navigate to a page with a form and submit a test form
+4. **Check the GTM debugger** to see if your tags are firing correctly
 
 ### Verify lead tracking
 
@@ -11254,9 +11302,9 @@ You can also verify that leads are being tracked by:
 ### Common troubleshooting tips
 
 * **Tag not firing**: Check that your triggers are configured correctly and that the conditions match your page structure
-* **Form data not captured**: Verify that your DOM selectors match your actual form field IDs or names
-* **Multiple events**: Make sure your tags aren't firing multiple times by checking trigger conditions
 * **Missing publishable key**: Ensure you've replaced the placeholder with your actual publishable key
+* **Query parameters missing** (Option 1): Ensure your form redirects to the thank-you page with the required query parameters
+* **Form data not captured** (Option 2): Verify that your DOM selectors match your actual form field IDs or names
 
 <Warning>
   **Client-Side Tracking Limitations**:
@@ -11276,19 +11324,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -11309,7 +11357,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 This guide shows you how to track lead conversion events with HubSpot as your CRM.
@@ -11332,7 +11380,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -11344,7 +11392,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -11392,37 +11440,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -11440,7 +11487,7 @@ You can install the `@dub/analytics` script in several different ways:
 Finally, install the [HubSpot Dub Integration](https://app.dub.co/integrations/hubspot) to your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=2cbc22a672f1eaecb50d83439f84b722" alt="HubSpot Dub Integration" data-og-width="1026" width="1026" data-og-height="659" height="659" data-path="images/conversions/hubspot/installed-hubspot-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=280&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=3f2d54f69fd7c316fc89e87982c6f12d 280w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=560&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=2efb80c5d22973ab27f5cc2130fa3edb 560w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=840&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=75c99431c912d9e9a3fa7cdaa8f9d2b4 840w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=1100&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=f31d229d93355adc7478ff571d139c6d 1100w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=1650&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=e8553163eb46c7295931cab24cf977d8 1650w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/installed-hubspot-integration.png?w=2500&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=8772aff2eee6d22f67e5bf8219541324 2500w" />
+  <img alt="HubSpot Dub Integration" />
 </Frame>
 
 ### Integration Setup
@@ -11452,13 +11499,13 @@ During the installation, Dub will create 3 properties to your contact object on 
 * **Dub Partner Email** - Email address of the partner associated with the short link
 
 <Frame>
-  <img src="https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=1aea7bc62a2bb2fdf275c64957449422" alt="HubSpot Contact Properties Created by Dub Integration" data-og-width="2516" width="2516" data-og-height="1008" height="1008" data-path="images/conversions/hubspot/hubspot-dub-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=280&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=2af8372316360c207a3ca24411cfbc4f 280w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=560&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=356677ea1f0783350cceb0b62d8017f8 560w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=840&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=ed4ab5f10e84ec87f919c1e7e921b72f 840w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=1100&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=0fbb976e8780249aa7c04d8bdd936285 1100w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=1650&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=97bd90ccc638223db2585b3e9ce25746 1650w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-dub-properties.png?w=2500&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=b4e867d986ed81719db2c0669146df85 2500w" />
+  <img alt="HubSpot Contact Properties Created by Dub Integration" />
 </Frame>
 
 <Tip>
   If you can't see these properties in your HubSpot contact object after
-  installation, something went wrong with the integration setup. Please [contact
-  us](mailto:support@dub.co) for assistance.
+  installation, something might've gone wrong with the integration setup. Please [contact
+  us](https://dub.co/contact/support) for assistance.
 </Tip>
 
 ### Set Your Closed Won Deal Stage ID
@@ -11470,7 +11517,7 @@ If you've customized your pipeline (i.e. changed or added deal stages in HubSpot
 Once set, any HubSpot deal marked as **Closed Won** will automatically be tracked in Dub as a sale conversion event, including its deal value.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=4d4b14da0cc8552a28dc1b230df9d41f" alt="Add custom deal stage ID to HubSpot Integration Settings" data-og-width="1356" width="1356" data-og-height="522" height="522" data-path="images/conversions/hubspot/hubspot-custom-deal-stage-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=280&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=526cdc560f2bc198a4fe849b04c5dd10 280w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=560&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=2a2787bd3d01779899f38df95a2ca504 560w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=840&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=662f9109703e696e1fe25aa80f96f14c 840w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=1100&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=c7bcc39e043f1ac24b0350466d255020 1100w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=1650&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=a9215f01ea6d1e5fd3ca6dde5ca31193 1650w, https://mintcdn.com/dub/FXRjcdT3tyFnZPLN/images/conversions/hubspot/hubspot-custom-deal-stage-id.png?w=2500&fit=max&auto=format&n=FXRjcdT3tyFnZPLN&q=85&s=f384b7535bfbd8a9a35af39bbfb474b3 2500w" />
+  <img alt="Add custom deal stage ID to HubSpot Integration Settings" />
 </Frame>
 
 ## Option 1: Using HubSpot Forms
@@ -11488,7 +11535,7 @@ Here's how you can set it up:
     This makes sure the value captured by your script is stored on the contact record. Without mapping to a property, HubSpot won’t persist the `dub_id` value.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=a8a09cc8a620d07eb4c3ff22ce80a33f" alt="Segment Dub (Actions) Mapping" width="1440" height="1024" data-og-width="1769" data-og-height="1405" data-path="images/conversions/hubspot/hubspot-forms-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=280&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=4252100b9d5a1df6caf6f61a6404d43b 280w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=560&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=c11a91e54af80f284ed847f5c64b5948 560w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=840&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=d12b8f1ed0639e3f1bc10b0582ca8fc4 840w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=1100&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=f60fcab04f3acff5d3a48eb7d376682b 1100w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=1650&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=d533cd7216d6e6ede0d0ee827838542a 1650w, https://mintcdn.com/dub/4atD6Qmc1QmxgkWq/images/conversions/hubspot/hubspot-forms-setup.png?w=2500&fit=max&auto=format&n=4atD6Qmc1QmxgkWq&q=85&s=0569b8daa55b13091197d637e97af824 2500w" />
+      <img alt="Segment Dub (Actions) Mapping" />
     </Frame>
   </Step>
 
@@ -11552,7 +11599,7 @@ Since HubSpot doesn't let you add a hidden field to the scheduling form, you sho
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -11564,7 +11611,7 @@ Since HubSpot doesn't let you add a hidden field to the scheduling form, you sho
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -11652,19 +11699,19 @@ Since HubSpot doesn't let you add a hidden field to the scheduling form, you sho
   </Step>
 </Steps>
 
-## Tracking sale conversion events
+## Tracking conversion events
 
 After a prospect attends your demo call, you'll typically create a deal in HubSpot to track the sales opportunity.
 
 Dub's HubSpot integration automatically sets up webhooks to track both deal creation and deal closure events, providing complete visibility into your sales funnel.
 
-### When a deal is created
+### When a deal is created (lead event)
 
-When you create a deal in HubSpot for a contact who came through your Dub links, the integration automatically tracks this as a lead conversion event in Dub.
+When you create a deal in HubSpot for a contact who came through your Dub links, the integration automatically tracks this as a [lead event](https://dub.co/docs/conversions/leads/introduction) in Dub.
 
-### When a deal is closed
+### When a deal is closed (sale event)
 
-When a deal moves to a **Closed Won** status in HubSpot, the integration automatically tracks a sale event in Dub using the deal amount as the sale value.
+When a deal moves to a **Closed Won** status in HubSpot, the integration automatically [tracks a sale event](https://dub.co/docs/conversions/sales/introduction) in Dub using the deal amount as the sale value.
 
 If a deal is not being tracked as a sale in Dub, make sure you've set the correct Closed Won Deal Stage ID in your [HubSpot Integration Settings](#set-your-closed-won-deal-stage-id).
 
@@ -11686,7 +11733,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application as lead events on Dub.
@@ -11709,7 +11756,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -11721,7 +11768,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -11769,37 +11816,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -11819,17 +11865,17 @@ You can install the `@dub/analytics` script in several different ways:
 Depending on which authentication framework you're using, we have a few pre-built guides to help you track lead events when a new user signs up for your SaaS application:
 
 <CardGroup>
-  <Card title="Clerk" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/clerk" horizontal />
+  <Card title="Clerk" icon="shield-halved" href="https://dub.co/docs/conversions/leads/clerk" />
 
-  <Card title="Better Auth" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/better-auth" horizontal />
+  <Card title="Better Auth" icon="shield-halved" href="https://dub.co/docs/conversions/leads/better-auth" />
 
-  <Card title="NextAuth.js" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/next-auth" horizontal />
+  <Card title="NextAuth.js" icon="shield-halved" href="https://dub.co/docs/conversions/leads/next-auth" />
 
-  <Card title="Supabase" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/supabase" horizontal />
+  <Card title="Supabase" icon="shield-halved" href="https://dub.co/docs/conversions/leads/supabase" />
 
-  <Card title="Auth0" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/auth0" horizontal />
+  <Card title="Auth0" icon="shield-halved" href="https://dub.co/docs/conversions/leads/auth0" />
 
-  <Card title="Appwrite" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/appwrite" horizontal />
+  <Card title="Appwrite" icon="shield-halved" href="https://dub.co/docs/conversions/leads/appwrite" />
 </CardGroup>
 
 If you're not using any of the frameworks listed above, you can use the following steps to track lead events:
@@ -12002,19 +12048,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -12035,7 +12081,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses NextAuth.js for user authentication.
@@ -12058,7 +12104,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -12070,7 +12116,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -12118,37 +12164,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -12301,19 +12346,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -12334,7 +12379,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Segment to track conversions.
@@ -12357,7 +12402,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -12369,7 +12414,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -12417,37 +12462,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -12471,7 +12515,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     Head to [Segment Dub (Actions)](https://app.segment.com/goto-my-workspace/destinations/catalog/actions-dub) and add the destination to your Segment workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9e3c7e9eaf6f0ce1ee7bcc62095c655b" alt="Segment Dub (Actions) destination" width="1440" height="1024" data-og-width="2980" data-og-height="1604" data-path="images/conversions/segment/segment-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bcb37ef4846b838df6369c88b39059ed 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=495011b9c9c8bd411b543171f262e2ec 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=81f6d0f2c6ca3705f1eb5e72d7967341 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3203c4a5275a1861eb6b805e1eb25d71 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8fccffa2c45e762f4681aa7545f176ef 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b3cacf99d1336d21712f17fbe644db0b 2500w" />
+      <img alt="Segment Dub (Actions) destination" />
     </Frame>
   </Step>
 
@@ -12485,7 +12529,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     Once completed, click **Save Changes**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bf6c8a6bc3219ad57c6517e8443a30b7" alt="Segment Dub (Actions) Basic Settings" width="1440" height="1024" data-og-width="2984" data-og-height="930" data-path="images/conversions/segment/segment-basic-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=07209334bd0a5ad56b647d83798d899b 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=dec42b47ce8a2c631d8277184dc824a2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2b7046995846845751512ea28c2150ab 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3b1a8d449b9c74ff47f1860d7d76ca31 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c1e0c41afb2e88e62580ec935901517c 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2b78cd3d54da626ebf33527e030b4fc7 2500w" />
+      <img alt="Segment Dub (Actions) Basic Settings" />
     </Frame>
   </Step>
 
@@ -12495,13 +12539,13 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     By default, this action is configured to send lead data to Dub when the **Event Name** is **Sign Up**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=96f84d94d51cdaf6ec8b10d85bcd4c62" alt="Segment Dub (Actions) Mapping" width="1440" height="1024" data-og-width="2698" data-og-height="1722" data-path="images/conversions/segment/segment-track-lead-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=02c38f9716327adfc310dc2975f07e5e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4be18119a6477c9a99acd6325374eda6 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1dfba04d7c18c0d812e0463576d4743b 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3ab0eeb61eb505eeb88b19b26a485a10 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5c60e2e9140f9d5372c59421517cb135 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-action.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=47c0f42849a6654dcaab44abeca25377 2500w" />
+      <img alt="Segment Dub (Actions) Mapping" />
     </Frame>
 
     Below the selected action, you’ll see the mapping for that action.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bece939bdc16ec81d4b5465c2eb51864" alt="Segment Dub (Actions) Mapping" width="1440" height="1024" data-og-width="1016" data-og-height="723" data-path="images/conversions/segment/segment-track-lead-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d349fa54575ef1ce6083f8d4b40daa9e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e239860e76c6e71e7b34e4b725a01de5 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0d6a58316bdd2bce07440d93d0a454ff 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ada5b02f79a0f23d4a71af6d21ae39e3 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=063abeb1f93969034c5151f1f4b91e98 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-lead-mapping.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=78ff56af1d01b95c078d414d4d2de929 2500w" />
+      <img alt="Segment Dub (Actions) Mapping" />
     </Frame>
 
     You can customize the trigger and mapping to fit the specific needs of your application.
@@ -12516,7 +12560,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
 
     You’ll also need to ensure that the `clickId` field is properly mapped in your Segment Actions destination so that it’s forwarded correctly to Dub.
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { Analytics } from "@segment/analytics-node";
 
     const segment = new Analytics({
@@ -12575,19 +12619,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -12608,7 +12652,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `lead` event 
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking new user sign-ups for a SaaS application that uses Supabase for user authentication.
@@ -12631,7 +12675,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -12643,7 +12687,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -12691,37 +12735,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -12884,19 +12927,19 @@ Once you've completed the setup, all your tracked conversions will show up in [D
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -12913,7 +12956,7 @@ Learn how to track conversion analytics with Dub.
 Dub's powerful [attribution platform](https://dub.co/analytics) lets you understand how well your links are translating to actual users and revenue dollars.
 
 <Frame>
-  <img src="https://assets.dub.co/blog/introducing-dub-conversions.webp" alt="Conversion analytics" />
+  <img alt="Conversion analytics" />
 </Frame>
 
 In this guide, we'll walk you through the steps to get started with conversion tracking on Dub.
@@ -12936,7 +12979,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -12948,7 +12991,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -12998,43 +13041,42 @@ Next, you'll need to install the [@dub/analytics client-side SDK](/sdks/client-s
 This script detects the `dub_id` query parameter and storing it as a first-party cookie, which will be used to attribute subsequent conversion events to the original link.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-click-event.png" alt="A diagram showing how click events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how click events are tracked in the conversion funnel" />
 </Frame>
 
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -13062,23 +13104,23 @@ The recommended way to track conversions on Dub is using [server-side tracking](
 Depending on which framework you're using, you can use our [native SDKs](/sdks/overview):
 
 <CardGroup>
-  <Card title="TypeScript" icon="npm" href="/sdks/typescript" horizontal>
+  <Card title="TypeScript" icon="npm" href="/sdks/typescript">
     TypeScript library for the Dub API
   </Card>
 
-  <Card title="Go" icon="golang" href="/sdks/go" iconType="brands" horizontal>
+  <Card title="Go" icon="golang" href="/sdks/go">
     Go library for the Dub API
   </Card>
 
-  <Card title="Python" icon="python" href="/sdks/python" horizontal>
+  <Card title="Python" icon="python" href="/sdks/python">
     Python library for the Dub API
   </Card>
 
-  <Card title="Ruby" icon="gem" href="/sdks/ruby" horizontal>
+  <Card title="Ruby" icon="gem" href="/sdks/ruby">
     Ruby library for the Dub API
   </Card>
 
-  <Card title="PHP" icon="php" href="/sdks/php" horizontal>
+  <Card title="PHP" icon="php" href="/sdks/php">
     PHP library for the Dub API
   </Card>
 </CardGroup>
@@ -13099,30 +13141,30 @@ The first event you'll want to track is a `lead` event. This happens when a user
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 Our most common lead event is `Sign Up`, which happens when a user signs up for an account. Depending on which authentication framework you're using, here are a few examples of how to send `Sign Up` lead events:
 
 <CardGroup>
-  <Card title="Clerk" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/clerk" horizontal />
+  <Card title="Clerk" icon="shield-halved" href="https://dub.co/docs/conversions/leads/clerk" />
 
-  <Card title="Better Auth" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/better-auth" horizontal />
+  <Card title="Better Auth" icon="shield-halved" href="https://dub.co/docs/conversions/leads/better-auth" />
 
-  <Card title="NextAuth.js" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/next-auth" horizontal />
+  <Card title="NextAuth.js" icon="shield-halved" href="https://dub.co/docs/conversions/leads/next-auth" />
 
-  <Card title="Supabase" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/supabase" horizontal />
+  <Card title="Supabase" icon="shield-halved" href="https://dub.co/docs/conversions/leads/supabase" />
 
-  <Card title="Auth0" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/auth0" horizontal />
+  <Card title="Auth0" icon="shield-halved" href="https://dub.co/docs/conversions/leads/auth0" />
 
-  <Card title="Appwrite" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/appwrite" horizontal />
+  <Card title="Appwrite" icon="shield-halved" href="https://dub.co/docs/conversions/leads/appwrite" />
 </CardGroup>
 
 The lead event will serve as the source of truth for the customer's identity and which link they came from. This means that all subsequent actions performed by the customer (e.g. upgrading their plan, purchasing a product) will automatically be attributed to the original link.
 
 To learn more about tracking lead events with Dub, refer to the following resources:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tracking lead events" icon="book-open" href="https://dub.co/docs/conversions/leads/introduction">
     Read the full guide on tracking lead events with Dub
   </Card>
@@ -13141,22 +13183,22 @@ The second event you'll want to send is a `sale` event. This happens when a user
 * Purchasing a product
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how sale events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how sale events are tracked in the conversion funnel" />
 </Frame>
 
 Depending on which payment processor you're using, we offer native integrations for the following:
 
-<CardGroup cols={2}>
-  <Card title="Stripe" icon="stripe" href="https://dub.co/docs/conversions/sales/stripe" horizontal />
+<CardGroup>
+  <Card title="Stripe" icon="stripe" href="https://dub.co/docs/conversions/sales/stripe" />
 
-  <Card title="Shopify" icon="shopify" href="https://dub.co/docs/conversions/sales/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="https://dub.co/docs/conversions/sales/shopify" />
 </CardGroup>
 
 Alternatively, you can also send sale events manually using [our SDKs](/sdks/overview) or the [`POST /track/sale` API endpoint](https://dub.co/docs/api-reference/endpoint/track-sale).
 
 To learn more about tracking sale events with Dub, refer to the following resources:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tracking sale events" icon="book-open" href="https://dub.co/docs/conversions/sales/introduction">
     Read the full guide on tracking sale events with Dub
   </Card>
@@ -13173,37 +13215,37 @@ Once you've enabled conversion tracking for your links, all your tracked convers
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 ## Example Apps
 
-<CardGroup cols={2}>
-  <Card title="Dub conversion tracking demo" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/stripe" color="#333333">
+<CardGroup>
+  <Card title="Dub conversion tracking demo" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/stripe">
     Example app that shows how to track conversion events with Dub.
   </Card>
 
-  <Card title="Segment + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/segment" color="#333333">
+  <Card title="Segment + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/segment">
     Example app that shows how to track conversion events with Segment and Dub.
   </Card>
 
-  <Card title="Clerk + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/clerk" color="#333333">
+  <Card title="Clerk + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/clerk">
     Example app that shows how to track Clerk signup events with Dub.
   </Card>
 
-  <Card title="Cal.com + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/cal" color="#333333">
+  <Card title="Cal.com + Dub demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/cal">
     Example app that shows how to track Cal.com booking events with Dub.
   </Card>
 </CardGroup>
@@ -13226,7 +13268,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `sale` event 
 * Purchasing a product from your online store
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sales conversion events with Dub on the client-side.
@@ -13253,7 +13295,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -13265,7 +13307,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -13319,7 +13361,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -13340,7 +13382,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -13350,37 +13392,36 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     You can install the `@dub/analytics` script in several different ways:
 
     <CardGroup>
-      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
       <Card
         title="Framer"
         icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
         href="/sdks/client-side/installation-guides/framer"
-        horizontal
       />
 
-      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
     </CardGroup>
 
     You must configure the **publishable key** you generated in step 1 when installing the analytics script. Without this key, client-side conversion tracking will not work.
@@ -13431,7 +13472,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
 
 Once the analytics script is installed, you can start tracking sale events in your application on the client-side.
 
-### Track sales from URL query parameters
+### Track sales from URL query parameters (recommended)
 
 If you redirect users to a confirmation page after a successful purchase, you can track sales by reading query parameters from the URL.
 
@@ -13567,26 +13608,28 @@ You can also track sales directly when users complete a checkout form on your we
       </form>
 
       <script>
-        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-          e.preventDefault();
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Track the sale event
-          dubAnalytics.trackSale({
-            eventName: "Purchase",
-            customerExternalId: "cus_RBfbD57H", // can also be customer email
-            amount: 5000, // $50.00
-            invoiceId: "in_1MtHbELkdIwH",
+            // Track the sale event
+            dubAnalytics.trackSale({
+              eventName: "Purchase",
+              customerExternalId: "cus_RBfbD57H", // can also be customer email
+              amount: 5000, // $50.00
+              invoiceId: "in_1MtHbELkdIwH",
 
-            // Additional props for direct sale tracking (without prior lead event):
-            // clickId: "cm3w...", // Read from dub_id cookie
-            // customerName: "John Doe",
-            // customerEmail: "john@example.com",
-            // customerAvatar: "https://example.com/avatar.jpg",
-            // currency: "usd",
-            // paymentProcessor: "stripe",
-            // metadata: { plan: "pro" },
+              // Additional props for direct sale tracking (without prior lead event):
+              // clickId: "cm3w...", // Read from dub_id cookie
+              // customerName: "John Doe",
+              // customerEmail: "john@example.com",
+              // customerAvatar: "https://example.com/avatar.jpg",
+              // currency: "usd",
+              // paymentProcessor: "stripe",
+              // metadata: { plan: "pro" },
+            });
           });
-        });
       </script>
     </body>
   </html>
@@ -13638,19 +13681,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your c
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -13671,7 +13714,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `sale` event 
 * Purchasing a product from your online store
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sales conversion events **without a prior lead event**. This is useful when you want to attribute a sale directly to a click, bypassing the lead tracking step.
@@ -13685,8 +13728,16 @@ Direct sale tracking is ideal for scenarios where:
 * You're tracking sales for users who haven't signed up or created an account
 
 <Note>
-  If you're tracking both leads and sales in your conversion funnel, use [server-side tracking](/conversions/sales/introduction) or [client-side tracking](/conversions/sales/client-side) instead.
+  If you're tracking both leads and sales in your conversion funnel, use
+  [server-side tracking](/conversions/sales/introduction) or [client-side
+  tracking](/conversions/sales/client-side) instead.
 </Note>
+
+<Warning>
+  [Lead commission
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be created when using direct sale tracking.
+</Warning>
 
 ## Prerequisites
 
@@ -13706,7 +13757,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -13718,7 +13769,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -13772,7 +13823,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -13793,7 +13844,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -13803,37 +13854,36 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     You can install the `@dub/analytics` script in several different ways:
 
     <CardGroup>
-      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
       <Card
         title="Framer"
         icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
         href="/sdks/client-side/installation-guides/framer"
-        horizontal
       />
 
-      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
     </CardGroup>
 
     You must configure the **publishable key** you generated in step 1 when installing the analytics script. Without this key, client-side conversion tracking will not work.
@@ -13897,7 +13947,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
   function getCookie(name: string) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
   }
 
   export function OrderConfirmationPage() {
@@ -13920,7 +13970,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
           customerExternalId: customerId,
           amount: parseInt(amount), // Amount in cents
           invoiceId: invoiceId || undefined,
-          
+
           // Required for direct sale tracking:
           clickId: clickId,
           customerName: "John Doe", // Optional: customer name
@@ -13950,7 +14000,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
+          if (parts.length === 2) return parts.pop().split(";").shift();
         }
 
         // Get query parameters from URL
@@ -13969,7 +14019,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
             customerExternalId: customerId,
             amount: parseInt(amount), // Amount in cents
             invoiceId: invoiceId || undefined,
-            
+
             // Required for direct sale tracking:
             clickId: clickId,
             customerName: "John Doe", // Optional: customer name
@@ -13999,12 +14049,12 @@ You can also track direct sales when users complete a checkout form on your webs
   function getCookie(name: string) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
   }
 
   export function CheckoutForm() {
     const { trackSale } = useAnalytics();
-    
+
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
 
@@ -14018,7 +14068,7 @@ You can also track direct sales when users complete a checkout form on your webs
           customerExternalId: "cus_RBfbD57H",
           amount: 5000, // $50.00
           invoiceId: "in_1MtHbELkdIwH",
-          
+
           // Required for direct sale tracking:
           clickId: clickId,
           customerName: "John Doe",
@@ -14056,34 +14106,36 @@ You can also track direct sales when users complete a checkout form on your webs
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
+          if (parts.length === 2) return parts.pop().split(";").shift();
         }
 
-        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-          e.preventDefault();
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Get click ID from cookie
-          const clickId = getCookie("dub_id");
+            // Get click ID from cookie
+            const clickId = getCookie("dub_id");
 
-          if (clickId) {
-            // Track the direct sale event
-            dubAnalytics.trackSale({
-              eventName: "Purchase",
-              customerExternalId: "cus_RBfbD57H",
-              amount: 5000, // $50.00
-              invoiceId: "in_1MtHbELkdIwH",
-              
-              // Required for direct sale tracking:
-              clickId: clickId,
-              customerName: "John Doe",
-              customerEmail: "john@example.com",
-              customerAvatar: "https://example.com/avatar.jpg",
-              currency: "usd",
-              paymentProcessor: "stripe",
-              metadata: { plan: "pro" },
-            });
-          }
-        });
+            if (clickId) {
+              // Track the direct sale event
+              dubAnalytics.trackSale({
+                eventName: "Purchase",
+                customerExternalId: "cus_RBfbD57H",
+                amount: 5000, // $50.00
+                invoiceId: "in_1MtHbELkdIwH",
+
+                // Required for direct sale tracking:
+                clickId: clickId,
+                customerName: "John Doe",
+                customerEmail: "john@example.com",
+                customerAvatar: "https://example.com/avatar.jpg",
+                currency: "usd",
+                paymentProcessor: "stripe",
+                metadata: { plan: "pro" },
+              });
+            }
+          });
       </script>
     </body>
   </html>
@@ -14107,7 +14159,7 @@ You can also track direct sales from your backend by passing the `clickId` param
     eventName: "Purchase",
     invoiceId: "in_1MtHbELkdIwH",
     currency: "usd",
-    
+
     // Required for direct sale tracking:
     clickId: "cm3w...", // Pass the click ID from your frontend
     customerName: "John Doe",
@@ -14129,7 +14181,7 @@ You can also track direct sales from your backend by passing the `clickId` param
       'event_name': 'Purchase',
       'invoice_id': 'in_1MtHbELkdIwH',
       'currency': 'usd',
-      
+
       # Required for direct sale tracking:
       'click_id': 'cm3w...', # Pass the click ID from your frontend
       'customer_name': 'John Doe',
@@ -14157,7 +14209,7 @@ You can also track direct sales from your backend by passing the `clickId` param
       EventName:          "Purchase",
       InvoiceId:          "in_1MtHbELkdIwH",
       Currency:           "usd",
-      
+
       // Required for direct sale tracking:
       ClickId:         "cm3w...", // Pass the click ID from your frontend
       CustomerName:    "John Doe",
@@ -14183,7 +14235,7 @@ You can also track direct sales from your backend by passing the `clickId` param
     event_name: 'Purchase',
     invoice_id: 'in_1MtHbELkdIwH',
     currency: 'usd',
-    
+
     # Required for direct sale tracking:
     click_id: 'cm3w...', # Pass the click ID from your frontend
     customer_name: 'John Doe',
@@ -14239,7 +14291,9 @@ Here are the properties you can include when sending a sale event:
 | `customerAvatar`     | No       | **\[For direct sale tracking]**: The avatar URL of the customer.                                                                                           |
 
 <Note>
-  **When to track sale**: Track sale events only after a user successfully completes a purchase or payment-related action. Ensure the event is triggered **only after the backend confirms the payment was successful**.
+  **When to track sale**: Track sale events only after a user successfully
+  completes a purchase or payment-related action. Ensure the event is triggered
+  **only after the backend confirms the payment was successful**.
 </Note>
 
 ## View your conversions
@@ -14249,19 +14303,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your co
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -14300,7 +14354,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -14312,7 +14366,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -14376,12 +14430,12 @@ First, you'll need to add the Dub analytics script to your website using Google 
 In your GTM workspace, navigate to the **Tags** section and click **New** to create a new tag.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0cfbc7b1e007b875e07ce1f1dc515a2d" alt="GTM New Tag" width="1440" height="1024" data-og-width="1724" data-og-height="883" data-path="images/conversions/google-tag-manager/gtm-new-tag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=74ce03be3bf713f4c490b5dbfa94765c 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bcf8538cba389b7ffac4a54e161a64fc 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b804e8f707831306a5e0e9ce41aa7829 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=262905c3f40f6c3b63ea36bda8d9e617 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7bb5ecd68dc271c4a3875102d9c33051 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-new-tag.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33af6a4952dc13d40341b6dd8859d398 2500w" />
+  <img alt="GTM New Tag" />
 </Frame>
 
 Select **Custom HTML** as the tag type and add the following code:
 
-```html  theme={null}
+```html theme={null}
 <script>
   !(function (c, n) {
     c[n] =
@@ -14412,13 +14466,62 @@ Configure the tag to fire on **All Pages** by setting the trigger to **All Pages
 
 Name this tag "Dub Analytics Script" and save it.
 
-### Step 2: Create Sales Tracking Tag for Checkout Forms
+### Step 2: Tracking sales events
 
-Next, create a tag to track sales when users complete checkout forms on your website.
+There are two ways to track sales events with Google Tag Manager:
 
-Create another **Custom HTML** tag with the following code:
+* [Order Confirmation Page Tracking (Recommended)](#option-1-order-confirmation-page-tracking-recommended)
+* [Checkout Form Submission Tracking](#option-2-checkout-form-submission-tracking)
 
-```html  theme={null}
+#### Option 1: Order Confirmation Page Tracking (Recommended)
+
+This method tracks sales when users land on an order confirmation or success page after completing a purchase. This approach is more reliable as it's less likely to be blocked by ad blockers and provides better data accuracy.
+
+Create a **Custom HTML** tag with the following code:
+
+```html theme={null}
+<script>
+  (function () {
+    // Get query parameters from URL
+    var params = new URLSearchParams(window.location.search);
+    var customerId = params.get("customer_id");
+    var amount = params.get("amount");
+    var invoiceId = params.get("invoice_id");
+
+    // Only track if customer ID and amount are present
+    if (customerId && amount) {
+      // Track the sale event
+      dubAnalytics.trackSale({
+        eventName: "Purchase",
+        customerExternalId: customerId,
+        amount: parseInt(amount), // Amount in cents
+        invoiceId: invoiceId || undefined,
+        currency: "usd", // Customize as needed
+        paymentProcessor: "stripe", // Customize as needed
+      });
+    }
+  })();
+</script>
+```
+
+Configure this tag to fire on specific pages by creating a **Page View** trigger with conditions:
+
+* Trigger Type: **Page View**
+* This trigger fires on: **Some Page Views**
+* Add conditions like:
+  * **Page URL** contains `/order-confirmation`
+  * Or **Page Path** equals `/checkout/success`
+  * Or whatever URL pattern matches your order confirmation pages
+
+Name this tag "Dub Sales Tracking - Order Confirmation" and save it.
+
+#### Option 2: Checkout Form Submission Tracking
+
+This method tracks sales immediately when users complete checkout forms on your website. Note that this approach may be less reliable due to ad blockers and timing issues.
+
+Create a **Custom HTML** tag with the following code:
+
+```html theme={null}
 <script>
   (function () {
     // Get checkout data - customize these selectors based on your form
@@ -14463,46 +14566,6 @@ Configure this tag to fire on **Form Submission** by creating a new trigger:
 
 Name this tag "Dub Sales Tracking - Checkout Form" and save it.
 
-### Step 3: Create Sales Tracking Tag for Order Confirmation Pages
-
-For tracking sales on order confirmation pages (recommended approach), create another **Custom HTML** tag:
-
-```html  theme={null}
-<script>
-  (function () {
-    // Get query parameters from URL
-    var params = new URLSearchParams(window.location.search);
-    var customerId = params.get("customer_id");
-    var amount = params.get("amount");
-    var invoiceId = params.get("invoice_id");
-
-    // Only track if customer ID and amount are present
-    if (customerId && amount) {
-      // Track the sale event
-      dubAnalytics.trackSale({
-        eventName: "Purchase",
-        customerExternalId: customerId,
-        amount: parseInt(amount), // Amount in cents
-        invoiceId: invoiceId || undefined,
-        currency: "usd", // Customize as needed
-        paymentProcessor: "stripe", // Customize as needed
-      });
-    }
-  })();
-</script>
-```
-
-Configure this tag to fire on specific pages by creating a **Page View** trigger with conditions:
-
-* Trigger Type: **Page View**
-* This trigger fires on: **Some Page Views**
-* Add conditions like:
-  * **Page URL** contains `/order-confirmation`
-  * Or **Page Path** equals `/checkout/success`
-  * Or whatever URL pattern matches your order confirmation pages
-
-Name this tag "Dub Sales Tracking - Order Confirmation" and save it.
-
 Here are the properties you can include when sending a sale event:
 
 | Property             | Required | Description                                                                                                                                                |
@@ -14525,9 +14588,10 @@ To test your GTM setup, you can use the **Preview** mode in Google Tag Manager:
 
 1. **Enable Preview Mode**: In your GTM workspace, click the **Preview** button in the top right corner
 2. **Enter your website URL** and click **Connect**
-3. **Navigate to a checkout page** or your order confirmation page
-4. **Complete a test purchase** or visit the confirmation page with query parameters
-5. **Check the GTM debugger** to see if your tags are firing correctly
+3. **Test your chosen tracking method**:
+   * **For Option 1 (Order Confirmation)**: Navigate to your order confirmation page with query parameters (e.g., `?customer_id=123&amount=1000&invoice_id=inv_456`)
+   * **For Option 2 (Form Submission)**: Navigate to a checkout page and complete a test purchase form
+4. **Check the GTM debugger** to see if your tags are firing correctly
 
 ### Verify sales tracking
 
@@ -14540,9 +14604,11 @@ You can also verify that sales are being tracked by:
 ### Common troubleshooting tips
 
 * **Tag not firing**: Check that your triggers are configured correctly and that the conditions match your page structure
-* **Form data not captured**: Verify that your DOM selectors match your actual form field IDs or names
+* **Form data not captured** (Option 2): Verify that your DOM selectors match your actual checkout form field IDs or names
+* **Query parameters missing** (Option 1): Ensure your checkout process redirects to the confirmation page with the required query parameters
 * **Amount formatting**: Ensure amounts are in cents (e.g., \$10.00 = 1000 cents)
 * **Multiple events**: Make sure your tags aren't firing multiple times by checking trigger conditions
+* **Duplicate tracking**: Verify you've only implemented one tracking method (Option 1 OR Option 2, not both)
 * **Missing publishable key**: Ensure you've replaced the placeholder with your actual publishable key
 
 <Warning>
@@ -14563,19 +14629,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your co
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -14596,7 +14662,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `sale` event 
 * Purchasing a product from your online store
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sales conversion events with Dub.
@@ -14623,7 +14689,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -14635,7 +14701,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -14683,37 +14749,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -14732,12 +14797,12 @@ You can install the `@dub/analytics` script in several different ways:
 
 Next, depending on which payment processor you're using, you can leverage our native integrations to track sale events:
 
-<CardGroup cols={1}>
-  <Card title="Stripe" icon="stripe" href="/conversions/sales/stripe" horizontal>
+<CardGroup>
+  <Card title="Stripe" icon="stripe" href="/conversions/sales/stripe">
     Tracking sale conversion events with Stripe and the Dub SDK
   </Card>
 
-  <Card title="Shopify" icon="shopify" href="/conversions/sales/shopify" horizontal>
+  <Card title="Shopify" icon="shopify" href="/conversions/sales/shopify">
     Tracking sale conversion events with Shopify and the Dub SDK
   </Card>
 </CardGroup>
@@ -14865,19 +14930,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your c
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 ## Currency conversion support
@@ -14917,7 +14982,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `sale` event 
 * Purchasing a product from your online store
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sales conversion events for a SaaS application that uses Segment to track conversions.
@@ -14940,7 +15005,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -14952,7 +15017,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -15000,37 +15065,36 @@ Then, you'd want to install the `@dub/analytics` script to your website to track
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -15056,7 +15120,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     Head to [Segment Dub (Actions)](https://app.segment.com/goto-my-workspace/destinations/catalog/actions-dub) and add the destination to your Segment workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9e3c7e9eaf6f0ce1ee7bcc62095c655b" alt="Segment Dub (Actions) destination" width="1440" height="1024" data-og-width="2980" data-og-height="1604" data-path="images/conversions/segment/segment-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bcb37ef4846b838df6369c88b39059ed 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=495011b9c9c8bd411b543171f262e2ec 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=81f6d0f2c6ca3705f1eb5e72d7967341 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3203c4a5275a1861eb6b805e1eb25d71 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8fccffa2c45e762f4681aa7545f176ef 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-actions.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b3cacf99d1336d21712f17fbe644db0b 2500w" />
+      <img alt="Segment Dub (Actions) destination" />
     </Frame>
   </Step>
 
@@ -15070,7 +15134,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     Once completed, click **Save Changes**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bf6c8a6bc3219ad57c6517e8443a30b7" alt="Segment Dub (Actions) Basic Settings" width="1440" height="1024" data-og-width="2984" data-og-height="930" data-path="images/conversions/segment/segment-basic-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=07209334bd0a5ad56b647d83798d899b 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=dec42b47ce8a2c631d8277184dc824a2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2b7046995846845751512ea28c2150ab 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3b1a8d449b9c74ff47f1860d7d76ca31 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c1e0c41afb2e88e62580ec935901517c 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-basic-settings.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2b78cd3d54da626ebf33527e030b4fc7 2500w" />
+      <img alt="Segment Dub (Actions) Basic Settings" />
     </Frame>
   </Step>
 
@@ -15080,13 +15144,13 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
     By default, this action is configured to send sale data to Dub when the **Event Name** is **Order Completed**.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=55fe25f2f67c2be294a407af7e725cd1" alt="Segment Dub (Actions) Mapping" width="1440" height="1024" data-og-width="2682" data-og-height="1800" data-path="images/conversions/segment/segment-track-sale-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8a56ba4d883439abf3e1500a2a8da940 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=92cdb99c664cd20ab7954c48c8464aa6 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d4da705b47b0dcc14e64957508d4b50a 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5fe1b9076ba92a3b1f30f974e6a61e6f 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e041297b8a3249d6de2e7a0212c187d6 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-action.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c8bd87462f0e32e465dcd2c52501ed5e 2500w" />
+      <img alt="Segment Dub (Actions) Mapping" />
     </Frame>
 
     Below the selected action, you’ll see the mapping for that action.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=464f15009d7cbbc63ff6e07c93397392" alt="Segment Dub (Actions) Mapping" width="1440" height="1024" data-og-width="2880" data-og-height="1718" data-path="images/conversions/segment/segment-track-sale-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=defaf31217068f2a6043626a2d37b08b 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6e28fc723aa6c7dacdd068e05e767dee 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3526a950fc8c8314ddbb14c544b7ca57 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5ca55af24136c425466fec55ed23b0ce 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bdb72e33f8a90de9101173c7884c060b 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/segment/segment-track-sale-mapping.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=898171ba51db22c196c3890e837379e8 2500w" />
+      <img alt="Segment Dub (Actions) Mapping" />
     </Frame>
 
     You can customize the trigger and mapping to fit the specific needs of your application.
@@ -15099,7 +15163,7 @@ Next, configure [Segment Dub (Actions)](https://app.segment.com/goto-my-workspac
 
     Make sure to include relevant properties such as `userId`, `payment_processor`, `order_id`, `currency`, and `revenue` in the payload.
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { Analytics } from "@segment/analytics-node";
 
     const segment = new Analytics({
@@ -15156,19 +15220,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your c
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 
@@ -15185,12 +15249,12 @@ Learn how to track sale conversion events with Shopify and Dub
 When it comes to [conversion tracking](/conversions/quickstart), a `sale` event happens when a user purchases a product from your Shopify store.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=157e896388f79922fcebb31855721d13" alt="A diagram showing how lead events are tracked in the conversion funnel" data-og-width="1387" width="1387" data-og-height="694" height="694" data-path="images/shopify-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fb38e6dce31107643296e59761634b09 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6cac2f4cfa7e487b9d565123f7327e75 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=9c1833111d85d0d9bef5ed08a10018f1 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f68e8cb7a9d8cc73a9033a6fafbdb896 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1033332ae1ea1c733a7777071ab3c5e0 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify-conversion-tracking.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a0eb26b91e24a9fe6013b7fdc6585f8d 2500w" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sale events from Shopify by leveraging Dub's Shopify integration.
 
-<iframe width="100%" height="469px" className="rounded-xl" src="https://www.loom.com/embed/936970b8db5b41488657fa92ffec384a?sid=04030975-6d7e-4126-8487-a1d9a3095efc" title="Loom video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="Loom video player" />
 
 ## Step 1: Enable conversion tracking for your links
 
@@ -15209,7 +15273,7 @@ There are a few ways to do this:
     Install the [Dub Shopify App](https://d.to/shopify/app) from the App Store.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=db64b4f582cc7fbcf8ab3c3f419513ba" alt="The connection status in the Dub app" data-og-width="2462" width="2462" data-og-height="1470" height="1470" data-path="images/shopify/shopify-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=99be7cb71113f6b59085264e51077216 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=97406171627afc25dddbc32589704ff0 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8dd2d7ad787edc6e80c1d3c3f84a5458 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fc6a55899a887868c574bbb98befaebc 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a3ac04088efe4cc2d1e77c58f4df859e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=2bcb290e5018168a179d54fc9bfaee46 2500w" />
+      <img alt="The connection status in the Dub app" />
     </Frame>
   </Step>
 
@@ -15221,13 +15285,13 @@ There are a few ways to do this:
     You'll be redirected back to your Shopify store after this step and you'll see a list of the links in your Dub workspace:
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=24b1576d1df96314bd235a80792da17b" alt="The list of links in your Dub workspace" data-og-width="1480" width="1480" data-og-height="810" height="810" data-path="images/shopify/shopify-links-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=028a9f36d511dac5b98161cc9a0a33b0 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=308b1cd761319102680c370c276d38a8 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=895dd70477b09527bbc234591912c839 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f0acd909d5a125fd1c2cc6fbac4aa715 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=78fc255420e20c185365a19634e3fb0b 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-links-table.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=99c3e8fd7be534f21fe1416a1450460f 2500w" />
+      <img alt="The list of links in your Dub workspace" />
     </Frame>
 
     With the Shopify app, you can also create [conversion-enabled links](/conversions//quickstart#step-1%3A-enable-conversion-tracking-for-your-links) directly from your Shopify store:
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e6d453fce40b3cab9541397a6e651fed" alt="Create a conversion-enabled link from your Shopify store" data-og-width="1480" width="1480" data-og-height="810" height="810" data-path="images/shopify/shopify-create-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=356ff4021c5785974770c880771bf5b1 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ecc99977dc618e76232f5b7e3a22e8ef 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7a11ddd7fba125c789a2e99c1a39e91e 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c2ff4429b6929158efaa9b7b7e648168 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=baa03fae99832eac628abaf268cb4de5 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-create-link.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=586e1640c6b1dc1fa3bf6cb25d64054b 2500w" />
+      <img alt="Create a conversion-enabled link from your Shopify store" />
     </Frame>
 
     If you want a more powerful link builder, you can also use the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) to create conversion-enabled links.
@@ -15245,7 +15309,7 @@ There are a few ways to do this:
     5. Locate the **Analytics Script** for the Dub Shopify app and toggle it to activate.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b9d6b8c577fc62435e81da381deff6b6" alt="Enable the Dub Analytics script in your Shopify theme" data-og-width="1412" width="1412" data-og-height="983" height="983" data-path="images/shopify/shopify-enable-tracking-script.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=00720d7b5b41664b91583029ca770b50 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=87662f2a7554a1e21a99e6eda8636cbd 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e04f6b379749465c280b98e74b166e29 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=19afd70e33fc905f367bc177e6c696fe 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=54a6538fd634de8631db53f1049c0f2a 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0d077d63724ef208aeacd80723953b37 2500w" />
+      <img alt="Enable the Dub Analytics script in your Shopify theme" />
     </Frame>
   </Step>
 </Steps>
@@ -15266,19 +15330,19 @@ And that's it – you're all set! You can now sit back, relax, and watch your c
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 ## Currency conversion support
@@ -15322,7 +15386,7 @@ When it comes to [conversion tracking](/conversions/quickstart), a `sale` event 
 * Purchasing a product from your online store
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 In this guide, we will be focusing on tracking sale events with Stripe as the payment processor by leveraging Dub's Stripe integration.
@@ -15338,7 +15402,7 @@ Here's how you can install the Dub Stripe integration:
     Navigate to the [Dub Stripe Integration](https://d.to/stripe/app) on the Stripe App Marketplace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e7cce5cca6ef3da4612678c1ea1b4171" alt="The Dub integration page on the Stripe App Marketplace" data-og-width="1340" width="1340" data-og-height="993" height="993" data-path="images/stripe/stripe-app-marketplace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7f2636abdc3b10e9e1fc9e39cf4fa4ee 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=205db0d24d21987178fd6d8e0e8bffae 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=84fb60be555a40840186e8fa9e51c357 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d566c4c6a61de3c33fec1bb9c1cbe860 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=13094b4ce82c3dd3374b4a4896416034 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1306cc653c2d9b795c39f1edca32964f 2500w" />
+      <img alt="The Dub integration page on the Stripe App Marketplace" />
     </Frame>
   </Step>
 
@@ -15346,18 +15410,19 @@ Here's how you can install the Dub Stripe integration:
     On the top right, click on **Install app** to install the Dub app on your Stripe account.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e80d6bf163cc6d2516997dca0557c776" alt="The Stripe integration installation flow" data-og-width="1325" width="1325" data-og-height="964" height="964" data-path="images/stripe/stripe-app-install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=93181a1a975aec3403291374209ed785 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=64cfc0d3d2bc7916c46fd30d33a5bc10 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fb76783214e1b02a6f968a5035770b14 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=709dba497ab89b9390805cce8c4e1982 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a6f7170dca388594f6418c6ce0cd334e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=99f0dd9b1f951948c4aecb786c1bce1f 2500w" />
+      <img alt="The Stripe integration installation flow" />
     </Frame>
 
     <Tip>
-      Alternatively, you can also install the Stripe app in a [Stripe sandbox](https://docs.stripe.com/sandboxes) first to test
-      your end-to-end flow without involving real money.
+      Alternatively, you can also install the Stripe app in a [Stripe
+      sandbox](https://docs.stripe.com/sandboxes) first to test your end-to-end flow
+      without involving real money.
     </Tip>
 
     Once the app is installed, click on **Continue to app settings** to finish the installation.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=02df497eb3dce3cc474865305f727652" alt="Continue to app settings" data-og-width="1264" width="1264" data-og-height="855" height="855" data-path="images/stripe/stripe-app-install-continue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3a9b16306215e3054a3c433ffe744dd2 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=26eae0ab46c075d5e6a9bc2a0a84cfa3 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=db4ed3ce4dfd87a56e4ae26300289ebb 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=647202cdab9fc3b1d2242394cbe9c033 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ff35f11d9cd7006160b9e820a7174047 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a69b1fcc97665ea903ae4f75caf0dd78 2500w" />
+      <img alt="Continue to app settings" />
     </Frame>
   </Step>
 
@@ -15365,19 +15430,19 @@ Here's how you can install the Dub Stripe integration:
     In the app settings page, click on **Connect workspace** to connect your Stripe account with your Dub workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e2a8612e59068a456bcbb8873d7b9a0d" alt="Connect Stripe to Dub" data-og-width="1712" width="1712" data-og-height="845" height="845" data-path="images/stripe/stripe-app-connect-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=156067c801c43c268b49cc58a17c24e9 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6a74dcebd4ffeadbefd352666c547973 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=379e1750ddc85fe46c5b66c68a328c31 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=46e7913f145fb710546e4f3457fde4ed 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bdfbf2b8a9f73a448395001bb8b1875e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a8c4c559547d0f2a3f97bb5116b14e9e 2500w" />
+      <img alt="Connect Stripe to Dub" />
     </Frame>
 
     This will redirect you to the [Dub OAuth flow](/integrations/quickstart), where you can select the Dub workspace you want to connect to your Stripe account.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=507a2f6a329b10b0f3362fed30b45a09" alt="Select the Dub workspace you want to connect to your Stripe account" data-og-width="1084" width="1084" data-og-height="771" height="771" data-path="images/stripe/select-dub-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ea14fdaffbec53a73ec97f1709266102 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1df2007387e1be63e6995db483dc8258 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d60eff5c7e4412135145ec9289ac405d 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b4d52c066cea9eb96bc525eca0726d47 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f19c67d0498a229868f159678b35594e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a1fb74026172f2906ddf1b859c187bf3 2500w" />
+      <img alt="Select the Dub workspace you want to connect to your Stripe account" />
     </Frame>
 
     Once you click on **Authorize**, you will be redirected back to the Dub app settings page on Stripe, where you should see that the integration is now installed.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f51caac85233a51918084c10962a4f33" alt="The Stripe integration is now installed" data-og-width="1057" width="1057" data-og-height="558" height="558" data-path="images/stripe/stripe-app-installed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=00c157698e1348fff6ceb734bdca8df6 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=62dec831f32d81857bebd303b4468319 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=5b6bd7596a3c48e274b4c47ba228b075 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7d9d59cf969f93994a77054ff4093c54 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3e25e3100d51970498cebe3e7a6e39b9 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bbeb91808eb821ca8d3e5a098b93f9ea 2500w" />
+      <img alt="The Stripe integration is now installed" />
     </Frame>
   </Step>
 </Steps>
@@ -15409,7 +15474,9 @@ Depending on your setup, there are a few ways you can track sales with the Dub S
 </Tip>
 
 <Note>
-  When using Stripe Payment Links, lead webhooks and [lead rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types) are not created. Only sale events will be tracked.
+  When using Stripe Payment Links, lead and sale events are tracked but lead webhooks and [lead
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be generated.
 </Note>
 
 If you're using [Stripe Payment Links](https://docs.stripe.com/payment-links), simply add a `?dub_client_reference_id=1` query parameter to your Stripe Payment Link when shortening it on Dub.
@@ -15417,7 +15484,7 @@ If you're using [Stripe Payment Links](https://docs.stripe.com/payment-links), s
 Then, when a user clicks on the shortened link, Dub will automatically append the unique click ID as the `client_reference_id` [query parameter](https://docs.stripe.com/payment-links/url-parameters) to the payment link.
 
 <Frame>
-  <img src="https://assets.dub.co/cms/conversions-payment-links.jpg" alt="Stripe payment link with Dub click ID" />
+  <img alt="Stripe payment link with Dub click ID" />
 </Frame>
 
 Finally, when the user completes the checkout flow, Dub will automatically [track the sale event](/api-reference/endpoint/track-sale) and [update the customer's `customerExternalId`](/api-reference/endpoint/update-a-customer) with their Stripe customer ID for future reference.
@@ -15576,7 +15643,7 @@ First, you'll need to complete the following prerequisites:
 3. [Install the @dub/analytics client-side SDK](/sdks/client-side/introduction)
 4. [Install the Dub server-side SDK](/sdks/overview#server-side-sdks)
 
-Then, when you [create a checkout session](https://docs.stripe.com/api/checkout/sessions/create), pass your customer's unique user ID in your database as the `dubCustomerId` value in the `metadata` field.
+Then, when you [create a checkout session](https://docs.stripe.com/api/checkout/sessions/create), pass your customer's unique user ID in your database as the `dubCustomerExternalId` value in the `metadata` field.
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -15596,14 +15663,33 @@ const stripeSession = await stripe.checkout.sessions.create({
   mode: "subscription",
   client_reference_id: user.teamId,
   metadata: {
-    dubCustomerId: user.id, // the unique user ID of the customer in your database
+    dubCustomerExternalId: user.id, // the unique user ID of the customer in your database
   },
 });
 ```
 
 This way, when the customer completes their checkout session, Dub will automatically associate the checkout session details (invoice amount, currency, etc.) with the customer – and by extension, the original click event.
 
+<Warning>
+  If you're using [guest checkout](https://docs.stripe.com/payments/checkout/guest-customers) (e.g. with `mode: "payment"`), the `customer` field in the `checkout.session.completed` webhook event will be `null`, and sales won't be tracked on Dub.
+
+  To fix this, set `customer_creation` to `always` when [creating your checkout session](https://docs.stripe.com/api/checkout/sessions/create#create_checkout_session-customer_creation):
+
+  ```javascript Node.js theme={null}
+  const stripeSession = await stripe.checkout.sessions.create({
+    // ... other options
+    customer_creation: "always", // ensures a Stripe customer is created
+  });
+  ```
+</Warning>
+
 ### Option 3: Using Stripe Customers
+
+<Note>
+  When using Stripe Customers, lead and sale events are tracked but [lead
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be generated.
+</Note>
 
 Alternatively, if you don't use Stripe's [checkout session creation flow](#option-2%3A-using-stripe-checkout-recommended), you can also pass the user ID and the click event ID (`dub_id`) in the [Stripe customer creation flow](https://docs.stripe.com/api/customers/create).
 
@@ -15613,7 +15699,7 @@ First, you'll need to complete the following prerequisites:
 2. [Enable conversion tracking for your links](/conversions/quickstart#step-1%3A-enable-conversion-tracking-for-your-links)
 3. [Install the @dub/analytics client-side SDK](/sdks/client-side/introduction)
 
-Then, when you [create a Stripe customer](https://docs.stripe.com/api/customers/create), pass the user's unique user ID in your database as the `dubCustomerId` value in the `metadata` field.
+Then, when you [create a Stripe customer](https://docs.stripe.com/api/customers/create), pass the user's unique user ID in your database as the `dubCustomerExternalId` value in the `metadata` field.
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -15630,13 +15716,13 @@ await stripe.customers.create({
   email: user.email,
   name: user.name,
   metadata: {
-    dubCustomerId: user.id,
+    dubCustomerExternalId: user.id,
     dubClickId: dub_id,
   },
 });
 ```
 
-Alternatively, you can also pass the `dubCustomerId` and `dubClickId` values in the `metadata` field of the [Stripe customer update flow](https://docs.stripe.com/api/customers/update):
+Alternatively, you can also pass the `dubCustomerExternalId` and `dubClickId` values in the `metadata` field of the [Stripe customer update flow](https://docs.stripe.com/api/customers/update):
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -15651,13 +15737,35 @@ const dub_id = req.headers.get("dub_id");
 
 await stripe.customers.update(user.id, {
   metadata: {
-    dubCustomerId: user.id,
+    dubCustomerExternalId: user.id,
     dubClickId: dub_id,
   },
 });
 ```
 
 This way, when the customer makes a purchase, Dub will automatically associate the purchase details (invoice amount, currency, etc.) with the original click event.
+
+## Tracking free trials
+
+Dub supports tracking [subscription free trials](https://docs.stripe.com/billing/subscriptions/trials) as lead events on Dub. This is useful for products with free trials since you might want to track trial activations as part of your attribution flow.
+
+To enable free trial tracking, go to your Stripe integration settings and enable the **Track Free Trials** option:
+
+<Frame>
+  <img alt="The Stripe integration settings page" />
+</Frame>
+
+Optionally, you can also configure the integration to track the [provisioned quantity](https://docs.stripe.com/billing/subscriptions/quantities) in the subscription as separate lead events.
+
+This is useful if you have a [lead-based reward](https://dub.co/help/article/partner-rewards#configuring-reward-types) for your [partner program](https://dub.co/partners) and want to reward partners for each unit of the subscription that their customers purchase (e.g. \$50 per lead/provisioned seat).
+
+<Tip>
+  To differentiate between [manually tracked lead events](/conversions/leads/introduction) and free trial lead events for lead reward types, use the `Customer` `Source` [reward condition](https://dub.co/help/article/partner-rewards#adding-reward-conditions) to filter for `free trial` lead events:
+
+  <Frame>
+    <img alt="The lead reward free trial condition" />
+  </Frame>
+</Tip>
 
 ## Currency conversion support
 
@@ -15718,16 +15826,16 @@ When tracking sale conversions from Stripe, Dub automatically excludes taxes fro
 
 For **checkout sessions**, Dub calculates the sale amount by subtracting the tax amount from the total:
 
-```javascript  theme={null}
+```javascript theme={null}
 // Sale amount calculation for checkout sessions
-saleAmount = amount_total - total_details.amount_tax
+saleAmount = amount_total - total_details.amount_tax;
 ```
 
 For **invoices**, Dub uses the `total_excluding_tax` field when available:
 
-```javascript  theme={null}
+```javascript theme={null}
 // Sale amount calculation for invoices
-saleAmount = total_excluding_tax ?? amount_paid
+saleAmount = total_excluding_tax ?? amount_paid;
 ```
 
 This ensures that the sale amounts recorded in Dub reflect the actual revenue before taxes, providing more accurate metrics for:
@@ -15737,18 +15845,10 @@ This ensures that the sale amounts recorded in Dub reflect the actual revenue be
 * Analytics and conversion metrics
 
 <Note>
-  Tax amounts are automatically excluded from all sale events tracked through the Stripe integration, including one-time purchases, subscriptions, and recurring invoices.
+  Tax amounts are automatically excluded from all sale events tracked through
+  the Stripe integration, including one-time purchases, subscriptions, and
+  recurring invoices.
 </Note>
-
-## Free trials and \$0 sales
-
-Dub does not track free trials or \$0 sale events from Stripe. This means:
-
-* Checkout sessions with `amount_total` of `0` will not be recorded as sale events
-* Invoices with `amount_paid` of `0` will not be tracked
-* Free trial periods will not generate sale events until the first paid invoice
-
-Sale events will only be tracked when actual revenue is generated (i.e., when the customer is charged a non-zero amount).
 
 ## View conversion results
 
@@ -15757,25 +15857,25 @@ And that's it – you're all set! You can now sit back, relax, and watch your c
 * **Time-series**: A [time-series view](https://app.dub.co/dub/analytics?view=timeseries) of the number clicks, leads and sales.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7380bc6120ade538b2b65eefdc76d3ed" alt="Time-series line chart" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/timeseries-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=430758e529cd22c5d28f976ee7da5379 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9cf861c9aa7cf680f46ce32585303d2b 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=999b05a7805bd208b4649fc67a3b45e0 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=42baa1d9d42c26ed191875fef033128a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=127ee673f66f2079f236985ec754416e 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/timeseries-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c0696bb18043dd86388f03d09aed450 2500w" />
+  <img alt="Time-series line chart" />
 </Frame>
 
 * **Funnel chart**: A [funnel chart view](http://app.dub.co/analytics?view=funnel) visualizing the conversion & dropoff rates across the different steps in the conversion funnel (clicks → leads → sales).
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6275caafcfc3be6d8b498149222f225e" alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/funnel-chart.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=df57b14d04dd585c5236f6fcf16a4963 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fc1689a06ce8ceecf1487faca8730d06 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b69533d460a2bc95964d7f6d2e5f23f4 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=43b86431662a4c214a36fbf5405abb4a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=687f900f0b8732301c43c8ee18ca7dd4 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/funnel-chart.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=aed9e63c7fd1fb67c463920c73911cba 2500w" />
+  <img alt="Funnel chart view showing the conversion & dropoff rates from clicks → leads → sales" />
 </Frame>
 
 * **Real-time events stream**: A [real-time events stream](https://app.dub.co/events) of every single conversion event that occurs across all your links in your workspace.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c2467f9fa2e755f06b3e7b147fa0bd81" alt="The Events Stream dashboard on Dub" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="images/conversions/events-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8e747ccc2f01015e014a9b4fbc98d588 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4a0c65b37cf99181b712beb063e46dc2 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=345d5b0b36c6f2093ea7b6a97d73ff49 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5deb48ab5e08bf2e31447fd32615c05e 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=33d6f27b5c067eb8586cfea15fe0a040 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/events-table.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=132a7592c8ecf518b31c043dad2093f4 2500w" />
+  <img alt="The Events Stream dashboard on Dub" />
 </Frame>
 
 ## Example Apps
 
-<CardGroup cols={2}>
-  <Card title="Dub + Stripe Demo App" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/stripe" color="#333333">
+<CardGroup>
+  <Card title="Dub + Stripe Demo App" icon="github" href="https://github.com/dubinc/examples/tree/main/conversions/stripe">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -15792,19 +15892,19 @@ Integrations allow you to extend the capabilities of Dub and seamlessly connect 
 
 These are the integrations that are officially supported and actively maintained by Dub.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Zapier"
     href="https://dub.co/integrations/zapier"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzlmz336000fjeqynwhfv8vo_S4yz4ak"
-        alt="Zapier logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzlmz336000fjeqynwhfv8vo_S4yz4ak"
+      alt="Zapier logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Zapier
   </Card>
@@ -15813,14 +15913,14 @@ These are the integrations that are officially supported and actively maintained
     title="Make.com"
     href="https://dub.co/integrations/make"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzlmyxup0001jeqyaka3dvdd_GSp2tii"
-        alt="Make.com logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzlmyxup0001jeqyaka3dvdd_GSp2tii"
+      alt="Make.com logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Make.com
   </Card>
@@ -15829,14 +15929,14 @@ These are the integrations that are officially supported and actively maintained
     title="Stripe"
     href="https://dub.co/integrations/stripe"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzra1ya60001wnj4a89zcg9h_jtyaGa7"
-        alt="Stripe logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzra1ya60001wnj4a89zcg9h_jtyaGa7"
+      alt="Stripe logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Stripe
   </Card>
@@ -15845,14 +15945,14 @@ These are the integrations that are officially supported and actively maintained
     title="Shopify"
     href="https://dub.co/integrations/shopify"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/int_iWOtrZgmcyU6XDwKr4AYYqLN_jUmF77W"
-        alt="Shopify logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/int_iWOtrZgmcyU6XDwKr4AYYqLN_jUmF77W"
+      alt="Shopify logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Shopify
   </Card>
@@ -15861,14 +15961,14 @@ These are the integrations that are officially supported and actively maintained
     title="Segment"
     href="https://dub.co/integrations/segment"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/int_zGnSElTzimbz20OWnXerPoKv_Noy3Xhk"
-        alt="Segment logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/int_zGnSElTzimbz20OWnXerPoKv_Noy3Xhk"
+      alt="Segment logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Segment
   </Card>
@@ -15877,14 +15977,14 @@ These are the integrations that are officially supported and actively maintained
     title="Wordpress"
     href="https://dub.co/integrations/wordpress"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzrjifgn0004tyvlu72oxcc2_GrLz146"
-        alt="Wordpress logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzrjifgn0004tyvlu72oxcc2_GrLz146"
+      alt="Wordpress logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Wordpress
   </Card>
@@ -15893,14 +15993,14 @@ These are the integrations that are officially supported and actively maintained
     title="Raycast"
     href="https://dub.co/integrations/raycast"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzlmyzlx0005jeqy95pjrwbz_Yg767eU"
-        alt="Raycast logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzlmyzlx0005jeqy95pjrwbz_Yg767eU"
+      alt="Raycast logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Raycast
   </Card>
@@ -15909,14 +16009,14 @@ These are the integrations that are officially supported and actively maintained
     title="Slack"
     href="https://dub.co/integrations/slack"
     icon={
-    <div className="h-8 w-8">
-      <img
-        src="https://dubassets.com/integrations/clzu59rx9000110bm5fnlzwuj_Y93aiyc"
-        alt="Slack logo"
-        className="h-full w-full rounded-full"
-      />
-    </div>
-  }
+  <div className="h-8 w-8">
+    <img
+      src="https://dubassets.com/integrations/clzu59rx9000110bm5fnlzwuj_Y93aiyc"
+      alt="Slack logo"
+      className="h-full w-full rounded-full"
+    />
+  </div>
+}
   >
     Integrate Dub with Slack
   </Card>
@@ -15966,6 +16066,10 @@ Dub supports OAuth 2.0 authentication, which is **recommended** if you build int
 
 We recommend you use a OAuth client library to integrate the OAuth flow. You can find recommended libraries in a variety of programming languages [here](https://oauth.net/code/).
 
+<Info>
+  OAuth endpoints (`/oauth/authorize`, `/oauth/token`, `/oauth/userinfo`) are not available in the Dub SDKs. You'll need to call these endpoints directly using HTTP requests or an OAuth client library.
+</Info>
+
 ### Set up OAuth 2.0
 
 Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
@@ -15986,22 +16090,28 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
 
     Parameters:
 
-    | Property        | Description                                                                                                                       |
-    | --------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-    | `client_id`     | The client ID of your OAuth application.                                                                                          |
-    | `redirect_uri`  | The URL to redirect the user to after they authorize the application. Make sure this URL is registered in your OAuth application. |
-    | `response_type` | Expected response type. It should be `code`.                                                                                      |
-    | `scope`         | A space separated list of scopes that you want to request access to. Read more about scopes [here](#scopes).                      |
-    | `state`         | The state parameter to prevent against CSRF attacks. Read more about it [here](https://auth0.com/docs/protocols/state-parameters) |
+    | Property                | Description                                                                                                                       |
+    | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+    | `client_id`             | The client ID of your OAuth application.                                                                                          |
+    | `redirect_uri`          | The URL to redirect the user to after they authorize the application. Make sure this URL is registered in your OAuth application. |
+    | `response_type`         | Expected response type. It should be `code`.                                                                                      |
+    | `scope`                 | A space separated list of scopes that you want to request access to. Read more about scopes [here](#scopes).                      |
+    | `state`                 | The state parameter to prevent against CSRF attacks. Read more about it [here](https://auth0.com/docs/protocols/state-parameters) |
+    | `code_challenge`        | Required for PKCE. The code challenge generated from the `code_verifier`.                                                         |
+    | `code_challenge_method` | Required for PKCE. The method used to generate the code challenge. It should be `S256`.                                           |
+
+    <Info>
+      PKCE (Proof Key for Code Exchange) is enabled by default and recommended for all applications. If you include `code_challenge` and `code_challenge_method` in the authorization request, you must also include the `code_verifier` when exchanging the code for an access token in Step 3.
+    </Info>
 
     An example URL would look like this:
 
     ```
-    GET https://app.dub.co/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=SOME_SCOPE&state=SOME_STATE
+    GET https://app.dub.co/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=code&scope=SOME_SCOPE&state=SOME_STATE&code_challenge=YOUR_CODE_CHALLENGE&code_challenge_method=S256
     ```
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=9240c00da1818db1b5c240d525c6554e" alt="OAuth consent screen" width="1468" height="249" data-og-width="1074" data-og-height="680" data-path="images/oauth-consent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=4e9640001e1826dd956c72a7582e3015 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=cc99650cb31f495cb4c612c8ae77137b 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b5e9ed33187958fb7c972386f559334d 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=15014b57a6eb184b8f27898641c2867e 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0fcd01f7c9931531d78a3bcb59d9b729 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/oauth-consent.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=feef6629b46f9eae08efd878e86840f5 2500w" />
+      <img alt="OAuth consent screen" />
     </Frame>
   </Step>
 
@@ -16012,43 +16122,81 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
     POST https://api.dub.co/oauth/token
     ```
 
-    Here's an example using the fetch API:
-
-    ```js  theme={null}
-    await fetch("https://api.dub.co/oauth/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        code: "YOUR_AUTHORIZATION_CODE",
-        client_id: "YOUR_CLIENT_ID",
-        client_secret: "YOUR_CLIENT_SECRET",
-        redirect_uri: "YOUR_REDIRECT_URI",
-        grant_type: "authorization_code",
-      }),
-    });
-    ```
-
     <Warning>
       The `Content-Type` header should be set to `application/x-www-form-urlencoded`.
     </Warning>
 
-    Parameters:
+    <Tabs>
+      <Tab title="With PKCE (recommended)">
+        We recommend using the [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) flow for all applications, especially native desktop or mobile applications and single-page apps (SPAs) where the `client_secret` cannot be hidden.
 
-    | Property        | Description                                                                  |
-    | --------------- | ---------------------------------------------------------------------------- |
-    | `code`          | The code you received when the user was redirected back to your application. |
-    | `client_id`     | The client ID of your OAuth application.                                     |
-    | `client_secret` | The client secret of your OAuth application.                                 |
-    | `redirect_uri`  | The same redirect URI you used in the authorization URL.                     |
-    | `grant_type`    | The grant type. It should be `authorization_code`.                           |
+        With PKCE, the `client_secret` is **never sent to the authorization server**, preventing the `client_secret` from being leaked from the client application.
+
+        ```js theme={null}
+        await fetch("https://api.dub.co/oauth/token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            code: "YOUR_AUTHORIZATION_CODE",
+            client_id: "YOUR_CLIENT_ID",
+            code_verifier: "YOUR_CODE_VERIFIER",
+            redirect_uri: "YOUR_REDIRECT_URI",
+            grant_type: "authorization_code",
+          }),
+        });
+        ```
+
+        Parameters:
+
+        | Property        | Description                                                                  |
+        | --------------- | ---------------------------------------------------------------------------- |
+        | `code`          | The code you received when the user was redirected back to your application. |
+        | `client_id`     | The client ID of your OAuth application.                                     |
+        | `code_verifier` | The original code verifier used to generate the `code_challenge` in Step 2.  |
+        | `redirect_uri`  | The same redirect URI you used in the authorization URL.                     |
+        | `grant_type`    | The grant type. It should be `authorization_code`.                           |
+
+        For example, the [Dub Raycast extension](https://github.com/raycast/extensions/tree/main/extensions/dub) uses PKCE to authenticate users.
+      </Tab>
+
+      <Tab title="With client secret">
+        If you're building a server-side application where the `client_secret` can be securely stored, you can use the standard flow.
+
+        ```js theme={null}
+        await fetch("https://api.dub.co/oauth/token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            code: "YOUR_AUTHORIZATION_CODE",
+            client_id: "YOUR_CLIENT_ID",
+            client_secret: "YOUR_CLIENT_SECRET",
+            redirect_uri: "YOUR_REDIRECT_URI",
+            grant_type: "authorization_code",
+          }),
+        });
+        ```
+
+        Parameters:
+
+        | Property        | Description                                                                  |
+        | --------------- | ---------------------------------------------------------------------------- |
+        | `code`          | The code you received when the user was redirected back to your application. |
+        | `client_id`     | The client ID of your OAuth application.                                     |
+        | `client_secret` | The client secret of your OAuth application.                                 |
+        | `redirect_uri`  | The same redirect URI you used in the authorization URL.                     |
+        | `grant_type`    | The grant type. It should be `authorization_code`.                           |
+      </Tab>
+    </Tabs>
 
     Response:
 
     After a successful request, you will receive a JSON response with the access token.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "access_token": "dub_access_token_ae8ebf6f97e6200d886ef48a5...",
       "refresh_token": "7f5acfbe14bca0a20fe6e430ddb7bb494eed160bd...",
@@ -16057,14 +16205,38 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
       "scope": "links.write tags.write domains.read"
     }
     ```
+  </Step>
 
-    We recommend using the [PKCE](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce) flow for native desktop or mobile application or a single-page app (SPA) where the `client_secret` cannot be hidden.
+  <Step title="Retrieve user and workspace info">
+    After obtaining an access token, you can retrieve information about the authenticated user and their workspace by calling the userinfo endpoint:
 
-    With PKCE, the `client_secret` is **never sent to the authorization server**, preventing the `client_secret` from being leaked from the client application.
+    ```
+    GET https://api.dub.co/oauth/userinfo
+    ```
 
-    Instead of using the `client_secret`, you will need to generate a `code_verifier` and `code_challenge` and use them to exchange for an access token.
+    Here's an example using curl:
 
-    For example [Dub Raycast extension](https://github.com/raycast/extensions/tree/main/extensions/dub) uses PKCE to authenticate users.
+    ```bash theme={null}
+    curl --request GET \
+      --url https://api.dub.co/oauth/userinfo \
+      --header 'Authorization: Bearer <ACCESS_TOKEN>'
+    ```
+
+    Response:
+
+    ```json theme={null}
+    {
+      "id": "user_id",
+      "name": "John Doe",
+      "image": "https://example.com/avatar.png",
+      "workspace": {
+        "id": "ws_abc123",
+        "slug": "acme",
+        "name": "Acme Inc",
+        "logo": "https://example.com/logo.png"
+      }
+    }
+    ```
   </Step>
 
   <Step title="Make an API request with the access token">
@@ -16074,7 +16246,7 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
 
     Here is an example of how you can create a link using the [Dub TypeScript SDK](/sdks/typescript):
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { Dub } from "dub";
 
     const dub = new Dub({
@@ -16088,7 +16260,7 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
 
     Or pass the access token in the header: `Authorization: Bearer <ACCESS_TOKEN>`
 
-    ```shell  theme={null}
+    ```shell theme={null}
       curl --request POST \
       --url https://api.dub.co/links \
       --header 'Authorization: Bearer <ACCESS_TOKEN>' \
@@ -16122,7 +16294,7 @@ Here is a step-by-step guide on how to set up OAuth 2.0 authentication with Dub.
 
     After a successful request, you will receive a JSON response with the new access token.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "access_token": "dub_access_token_ae8ebf6f97e6200d886ef48a5...",
       "refresh_token": "7f5acfbe14bca0a20fe6e430ddb7bb494eed160bd...",
@@ -16142,25 +16314,23 @@ You can request access to specific scopes when redirecting users to the Dub OAut
 
 Dub supports the following scopes for OAuth 2.0:
 
-| Scope              | Description                                                         |
-| ------------------ | ------------------------------------------------------------------- |
-| `workspaces.read`  | Read access to workspaces.                                          |
-| `workspaces.write` | Write access to workspaces.                                         |
-| `links.read`       | Read access to links.                                               |
-| `links.write`      | Write access to links.                                              |
-| `tags.read`        | Read access to tags.                                                |
-| `tags.write`       | Write access to tags.                                               |
-| `analytics.read`   | Read access to analytics.                                           |
-| `domains.read`     | Read access to domains.                                             |
-| `domains.write`    | Write access to domains.                                            |
-| `folders.read`     | Read access to folders.                                             |
-| `folders.write`    | Write access to folders.                                            |
-| `user.read`        | Read access to user information. This scope is included by default. |
+| Scope            | Description                                                         |
+| ---------------- | ------------------------------------------------------------------- |
+| `links.read`     | Read access to links.                                               |
+| `links.write`    | Write access to links.                                              |
+| `tags.read`      | Read access to tags.                                                |
+| `tags.write`     | Write access to tags.                                               |
+| `analytics.read` | Read access to analytics.                                           |
+| `domains.read`   | Read access to domains.                                             |
+| `domains.write`  | Write access to domains.                                            |
+| `folders.read`   | Read access to folders.                                             |
+| `folders.write`  | Write access to folders.                                            |
+| `user.read`      | Read access to user information. This scope is included by default. |
 
 ### Examples
 
-<CardGroup cols={2}>
-  <Card title="OAuth 2.0 Example" icon="github" href="https://github.com/dubinc/examples/tree/main/oauth" color="#333333">
+<CardGroup>
+  <Card title="OAuth 2.0 Example" icon="github" href="https://github.com/dubinc/examples/tree/main/oauth">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -16206,7 +16376,7 @@ Here are some of the features that Dub offers:
 
 To get started with Dub, you can do any of the following:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Try our API" icon="code" href="/api-reference/introduction">
     Learn how to use Dub's API to interact with Dub programmatically
   </Card>
@@ -16227,7 +16397,7 @@ To get started with Dub, you can do any of the following:
 
 ## Stay up to date
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Read our blog" icon="newspaper" href="https://dub.co/blog">
     Learn about the latest features and updates from Dub
   </Card>
@@ -16244,7 +16414,7 @@ Source: https://dub.co/docs/local-development
 A guide on how to run Dub's codebase locally.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f32c52de94aaedcbc56bdf8b8e05d409" alt="Dub Logo on a gradient background" width="1200" height="630" data-og-width="1200" data-og-height="630" data-path="images/logo-background-gradient.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a636f495e47fc235f1e875d09ee78932 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c3887a857d4f0c6705d2e82b69a7924c 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=dd6a66a791086fe615ab4241fa3e14ef 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3df0b2b5a952fb71a9ddbb0cdbbbb103 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9193de40361c79058631c8c4eb725201 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a169891e21bae2e50d216901b1062d93 2500w" />
+  <img alt="Dub Logo on a gradient background" />
 </Frame>
 
 ## Introduction
@@ -16316,7 +16486,7 @@ To run Dub locally, you'll need to set up the following:
 
 Watch this video from our friends at Tinybird to learn how to set up Dub locally:
 
-<iframe width="100%" className="aspect-video" src="https://www.youtube.com/embed/9GNYcS9BHhc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Step 1: Local setup
 
@@ -16378,7 +16548,7 @@ Next, you'll need to set up the [Tinybird](https://tinybird.co) Clickhouse datab
 
     If you have `brew`, install `pipx` by running `brew install pipx`. If not, you can check [installation guide](https://pipx.pypa.io/stable/installation/) for other options. After that, install the Tinybird CLI with `pipx install tinybird-cli` (requires Python >= 3.8).
 
-    Run `tb login --interactive` and paste your `admin` Auth Token.
+    Run `tb auth --interactive` and paste your `admin` Auth Token.
   </Step>
 
   <Step title="Publish Tinybird datasource and endpoints">
@@ -16430,17 +16600,23 @@ Next, you'll need to set up the [Upstash](https://upstash.com) Redis database. T
 
     For better performance & read times, we recommend setting up a global database with several read regions.
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=2ee9689bbeda53180edd455f8c956cd1" alt="Upstash Redis database" data-og-width="1136" width="1136" data-og-height="700" height="700" data-path="images/upstash-create-db.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8b8dc7dd83e29c8db00f8355fca0ec61 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=71298ed8724a5d460e442cdf4116431b 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fd5dc6a440f37a11cc4f4b41aa258f56 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6e178b4c8c8bb49a43e222d6fd700da3 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e82e83548ed1c551acbe4cac993b1fd0 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3433cb56300f917e0e383c950c7a48ce 2500w" /></Frame>
+    <Frame>
+      <img alt="Upstash Redis database" />
+    </Frame>
   </Step>
 
   <Step title="Set up Upstash Redis environment variables">
     Once your database is created, copy the `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` from the **REST API** section into your `.env` file.
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=18c2630daafe831a527a0986447ec63e" alt="Upstash Redis tokens" data-og-width="704" width="704" data-og-height="285" height="285" data-path="images/upstash-redis-tokens.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d7fc2a492b789e9f031a20cadedc7950 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=13abd3ad52519c9e1d9c63c5e4fdf3d8 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=290698786b30e1c7273fcb37e073bf72 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=47c9499ab1f8f73504a0c923bb65e785 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=21a616076690d31f2c9017ea740e6c7c 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=665dd5c816a1f2add0f9fa2e74c951ee 2500w" /></Frame>
+    <Frame>
+      <img alt="Upstash Redis tokens" />
+    </Frame>
 
     Navigate to the [QStash tab](https://console.upstash.com/qstash) and copy the `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, and `QSTASH_NEXT_SIGNING_KEY` from the **Request Builder** section into your `.env` file.
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e4d9708c4755d8ccf5d0049261fc4f04" alt="Upstash QStash tokens" data-og-width="692" width="692" data-og-height="264" height="264" data-path="images/upstash-qstash-tokens.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=62ce63fea95a613328082fa3b8c44799 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=776c3859e62443b2899cb8540dd74220 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=febf1cce0100b465b109abf0512f0a2a 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3f73f9d422ce9151c63fa83161f481c8 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=583a3c2b0032ede7a19a5069e3d735a3 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b8d81db0d04fe8d157ce08938f80a6ac 2500w" /></Frame>
+    <Frame>
+      <img alt="Upstash QStash tokens" />
+    </Frame>
   </Step>
 
   <Step title="Optional: Set up Ngrok tunnel">
@@ -16534,7 +16710,7 @@ Prerequisites:
     Once your database is created, you'll be prompted to select your language or Framework. Select **Prisma**.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c3fc78f41d81058aef9dcfa4b8b7b85e" alt="PlanetScale choose framework" data-og-width="1342" width="1342" data-og-height="832" height="832" data-path="images/planetscale-choose-framework.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bfc938c736d0f5c167b6923c47231dbe 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=80d6b3e51ed81b0d2fc8b7cae4960f88 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0874c505c7d81ffef35c598a9928326d 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f56173ab5bde31e34f4ca2f76164678d 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6ac0f0a26ff7d2b4e3d3cb85cda3955e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=64a709af05dbed2f220b6318aae53711 2500w" />
+      <img alt="PlanetScale choose framework" />
     </Frame>
   </Step>
 
@@ -16542,7 +16718,7 @@ Prerequisites:
     Then, you'll have to create a new password for your database. Once the password is created, scroll down to the **Add credentials to .env** section and copy the `DATABASE_URL` into your `.env` file.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e942daf967c745ea5050bca9f21d249a" alt="PlanetScale add credentials" data-og-width="1315" width="1315" data-og-height="434" height="434" data-path="images/planetscale-add-credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bbab7ca87889d90ecb5da26392da6cde 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0ab022859606d358ff75cce2b81acadf 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e65e67b801dd24a7becf4effcf56a2e2 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3178fc3db20b2c2d44fcf4b8bcf7e333 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d77e105b4b0e634c59ebd582c73b0723 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8a9584d70e60c5dbced3a344353fe874 2500w" />
+      <img alt="PlanetScale add credentials" />
     </Frame>
   </Step>
 
@@ -16629,7 +16805,7 @@ With [Dub Partners](https://dub.co/partners), you can build an embedded referral
 This way, your users can automatically enroll in your partner program **without needing to leave your app and sign up on a third-party platform**.
 
 <Frame>
-  <video src="https://assets.dub.co/cms/dub-partners-whitelabeled-embed.mp4" autoPlay loop muted controls playsInline />
+  <video />
 </Frame>
 
 In this guide, we'll walk you through the steps to get started with Dub's embedded referral dashboard feature.
@@ -16639,12 +16815,12 @@ In this guide, we'll walk you through the steps to get started with Dub's embedd
 Before we dive in, here's an open-source example app showing Dub's embedded referral dashboard in action: [acme.dub.sh](https://acme.dub.sh)
 
 <Frame>
-  <video src="https://github.com/user-attachments/assets/67e7c51c-db5b-4f37-b050-6963957d5315" autoPlay loop muted controls playsInline />
+  <video />
 </Frame>
 
 You can also view the source code for the example app on [GitHub](https://github.com/dubinc/examples/tree/main/embed/referrals):
 
-<Card title="Dub embedded referral dashboard demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/embed/referrals" color="#333333">
+<Card title="Dub embedded referral dashboard demo app" icon="github" href="https://github.com/dubinc/examples/tree/main/embed/referrals">
   View the source code for [acme.dub.sh](https://acme.dub.sh) on GitHub.
 </Card>
 
@@ -16653,7 +16829,7 @@ You can also view the source code for the example app on [GitHub](https://github
 First, you need to create a server API route that generates a public token, which will be used by the embedded referral dashboard to fetch real-time conversions and earnings data from the client-side.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=605b8a714d18cd49979fee5a33190bec" alt="A diagram of the embed token flow" data-og-width="2081" width="2081" data-og-height="1011" height="1011" data-path="images/embed-token-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=18c6112a2ead5e168b7b86e5395cd830 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=36ad23575f0a2d5c1aec462f09d62287 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=089bbfdb2cd9379dcd2d85c8c37d4e71 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e5208f7df3fc873fcb569374fe9b26a8 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=261035e3213bccb9c9fe4cb840ef6331 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/embed-token-diagram.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=6ae3d8d41d39b3784d5a23d94c58eee2 2500w" />
+  <img alt="A diagram of the embed token flow" />
 </Frame>
 
 ### Using server-side SDKs
@@ -16848,7 +17024,7 @@ First, install the [NPM package](https://www.npmjs.com/package/@dub/embed-react)
 
 Then use the component in your React application:
 
-```tsx  theme={null}
+```tsx theme={null}
 import { useState, useEffect } from "react";
 import { DubEmbed } from "@dub/embed-react";
 
@@ -16878,7 +17054,7 @@ export default function App() {
 
 Alternatively, if you're not using React (or you're not on React `v18.2.0` or higher), you can add the iframe directly to your HTML:
 
-```tsx  theme={null}
+```tsx theme={null}
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -16913,15 +17089,15 @@ export default function App() {
 
 The embedded referral dashboard supports the following options for styling and behavior:
 
-<ParamField body="data" type="referrals | analytics" required>
+<ParamField type="referrals | analytics">
   The type of embed to use. In this case, we're using the `referrals` type.
 </ParamField>
 
-<ParamField body="theme" type="light | dark | system" default="light">
+<ParamField type="light | dark | system">
   The theme of the embed.
 </ParamField>
 
-<ParamField body="themeOptions" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Available options:
 
   * `backgroundColor`: The background color of the embed.
@@ -16973,7 +17149,7 @@ Set up dual-sided incentives for your affiliate/referral programs with link-base
 With [Dub Partners](https://dub.co/partners), you can create dual-sided incentives for your affiliate/referral programs, which give special discounts to customers who sign up via a referral link.
 
 <Frame>
-  <video src="https://assets.dub.co/cms/dub-partners-dual-sided-incentives.mp4" loop autoPlay muted playsInline />
+  <video />
 </Frame>
 
 Some examples include:
@@ -17011,13 +17187,13 @@ If you're using Stripe for payments, you can follow these steps to set up direct
     First, navigate to the partner group that you want to create a discount for. Under the Discount tab, you'll be able to create a discount for the group
 
     <Frame>
-      <img src="https://assets.dub.co/cms/group-discounts-empty.png" alt="Group discounts page" />
+      <img alt="Group discounts page" />
     </Frame>
 
     If you already have a discount set up for your default group, you can just duplicate it. If not, click Create to create your first group discount:
 
     <Frame>
-      <img src="https://assets.dub.co/cms/new-discount-reward.png" alt="Program discounts tab" />
+      <img alt="Program discounts tab" />
     </Frame>
 
     **New Stripe coupon**
@@ -17292,7 +17468,7 @@ If you're using Stripe for payments, you can follow these steps to set up direct
     Once this is set up, eligible customers will automatically see the coupon code applied at checkout:
 
     <Frame>
-      <img src="https://assets.dub.co/cms/stripe-coupon-applied.png" alt="Stripe coupon applied" />
+      <img alt="Stripe coupon applied" />
     </Frame>
   </Step>
 </Steps>
@@ -17315,13 +17491,13 @@ If you prefer a no-code solution, you can set up Stripe promo-code-based discoun
     First, navigate to the partner group that you want to create a discount for. Under the Discount tab, you'll be able to create a discount for the group
 
     <Frame>
-      <img src="https://assets.dub.co/cms/group-discounts-empty.png" alt="Group discounts page" />
+      <img alt="Group discounts page" />
     </Frame>
 
     If you already have a discount set up for your default group, you can just duplicate it. If not, click Create to create your first group discount:
 
     <Frame>
-      <img src="https://assets.dub.co/cms/new-discount-reward.png" alt="Program discounts tab" />
+      <img alt="Program discounts tab" />
     </Frame>
 
     **New Stripe coupon**
@@ -17343,13 +17519,13 @@ If you prefer a no-code solution, you can set up Stripe promo-code-based discoun
     Open the partner profile that you'd like to create a discount code for, then click Create Code in the "Discount codes" section.
 
     <Frame>
-      <img src="https://assets.dub.co/cms/partner-create-code.png" alt="Partner links page" />
+      <img alt="Partner links page" />
     </Frame>
 
     Here you can select which referral link you'd like to associate the code with. Then you can create the discount code.
 
     <Frame>
-      <img src="https://assets.dub.co/cms/new-discount-code.png" alt="Partner links page" />
+      <img alt="Partner links page" />
     </Frame>
 
     <Warning>
@@ -17360,7 +17536,7 @@ If you prefer a no-code solution, you can set up Stripe promo-code-based discoun
     After the code has been created, you'll see its value populated in the Discount Code section, and it is ready for use. In the Partner Dashboard, they'll also see the associated discount code within their partner links.
 
     <Frame>
-      <img src="https://assets.dub.co/cms/partner-code-created.png" alt="Partner links page with discount code" />
+      <img alt="Partner links page with discount code" />
     </Frame>
   </Step>
 </Steps>
@@ -17373,7 +17549,7 @@ To do that, all you need is to install the `@dub/analytics` script with client-s
 
 This data will be stored as a JSON-stringified object in the `dub_partner_data` cookie in the following format:
 
-```json  theme={null}
+```json theme={null}
 {
   "clickId": "xxx", // unique ID of the click event
   "partner": {
@@ -17445,7 +17621,7 @@ Here is a quick example of how you can display a discount banner using the `useA
 Here's an example of how the discount banner will look like:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=26eca59d43a93804f2307991c6c83381" alt="A screenshot of the Dub partner data example" data-og-width="1459" width="1459" data-og-height="910" height="910" data-path="images/dub-partner-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1cddbb18fa5680a8b943e711c9f149af 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1e7cd48c98e1f9581cf3236121fe5db8 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5ce2586be1efc07dad033c7b19ee7e35 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ee8c5867250241cbb95f4057467f2cbf 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5689a83bcda7e8c7afd5cd6f1c00a982 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4c61d9783f0a56384024a310a10a5698 2500w" />
+  <img alt="A screenshot of the Dub partner data example" />
 </Frame>
 
 
@@ -17474,7 +17650,7 @@ First, you'll need to install the [@dub/analytics client-side SDK](/sdks/client-
 This script detects the `dub_id` query parameter and storing it as a first-party cookie, which will be used to attribute subsequent conversion events to the original link.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-click-event.png" alt="A diagram showing how click events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how click events are tracked in the conversion funnel" />
 </Frame>
 
 On top of that, it also:
@@ -17485,37 +17661,36 @@ On top of that, it also:
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 <Check>
@@ -17539,7 +17714,7 @@ Once the script is installed, make sure to verify that [client-side click tracki
 In case you missed it, you'll also need to allowlist your site's domain to ensure the client-side click events are ingested by Dub. To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and add your site's domain to the **Allowed Hostnames** list.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+  <img alt="Enabling conversion tracking for a workspace" />
 </Frame>
 
 <Tip>
@@ -17561,23 +17736,23 @@ The recommended way to track conversions on Dub is using [server-side tracking](
 Depending on which framework you're using, you can use our [native SDKs](/sdks/overview):
 
 <CardGroup>
-  <Card title="TypeScript" icon="npm" href="/sdks/typescript" horizontal>
+  <Card title="TypeScript" icon="npm" href="/sdks/typescript">
     TypeScript library for the Dub API
   </Card>
 
-  <Card title="Go" icon="golang" href="/sdks/go" iconType="brands" horizontal>
+  <Card title="Go" icon="golang" href="/sdks/go">
     Go library for the Dub API
   </Card>
 
-  <Card title="Python" icon="python" href="/sdks/python" horizontal>
+  <Card title="Python" icon="python" href="/sdks/python">
     Python library for the Dub API
   </Card>
 
-  <Card title="Ruby" icon="gem" href="/sdks/ruby" horizontal>
+  <Card title="Ruby" icon="gem" href="/sdks/ruby">
     Ruby library for the Dub API
   </Card>
 
-  <Card title="PHP" icon="php" href="/sdks/php" horizontal>
+  <Card title="PHP" icon="php" href="/sdks/php">
     PHP library for the Dub API
   </Card>
 </CardGroup>
@@ -17598,30 +17773,30 @@ The first event you'll want to track is a `lead` event. This happens when a user
 * Joining a mailing list
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 Our most common lead event is `Sign Up`, which happens when a user signs up for an account. Depending on which authentication framework you're using, here are a few examples of how to send `Sign Up` lead events:
 
 <CardGroup>
-  <Card title="Clerk" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/clerk" horizontal />
+  <Card title="Clerk" icon="shield-halved" href="https://dub.co/docs/conversions/leads/clerk" />
 
-  <Card title="Better Auth" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/better-auth" horizontal />
+  <Card title="Better Auth" icon="shield-halved" href="https://dub.co/docs/conversions/leads/better-auth" />
 
-  <Card title="NextAuth.js" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/next-auth" horizontal />
+  <Card title="NextAuth.js" icon="shield-halved" href="https://dub.co/docs/conversions/leads/next-auth" />
 
-  <Card title="Supabase" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/supabase" horizontal />
+  <Card title="Supabase" icon="shield-halved" href="https://dub.co/docs/conversions/leads/supabase" />
 
-  <Card title="Auth0" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/auth0" horizontal />
+  <Card title="Auth0" icon="shield-halved" href="https://dub.co/docs/conversions/leads/auth0" />
 
-  <Card title="Appwrite" icon="shield-halved" iconType="solid" href="https://dub.co/docs/conversions/leads/appwrite" horizontal />
+  <Card title="Appwrite" icon="shield-halved" href="https://dub.co/docs/conversions/leads/appwrite" />
 </CardGroup>
 
 The lead event will serve as the source of truth for the customer's identity and which link they came from. This means that all subsequent actions performed by the customer (e.g. upgrading their plan, purchasing a product) will automatically be attributed to the original link.
 
 To learn more about tracking lead events with Dub, refer to the following resources:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tracking lead events" icon="book-open" href="https://dub.co/docs/conversions/leads/introduction">
     Read the full guide on tracking lead events with Dub
   </Card>
@@ -17640,22 +17815,22 @@ The second event you'll want to send is a `sale` event. This happens when a user
 * Purchasing a product
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how sale events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how sale events are tracked in the conversion funnel" />
 </Frame>
 
 Depending on which payment processor you're using, we offer native integrations for the following:
 
-<CardGroup cols={2}>
-  <Card title="Stripe" icon="stripe" href="https://dub.co/docs/conversions/sales/stripe" horizontal />
+<CardGroup>
+  <Card title="Stripe" icon="stripe" href="https://dub.co/docs/conversions/sales/stripe" />
 
-  <Card title="Shopify" icon="shopify" href="https://dub.co/docs/conversions/sales/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="https://dub.co/docs/conversions/sales/shopify" />
 </CardGroup>
 
 Alternatively, you can also send sale events manually using [our SDKs](/sdks/overview) or the [`POST /track/sale` API endpoint](https://dub.co/docs/api-reference/endpoint/track-sale).
 
 To learn more about tracking sale events with Dub, refer to the following resources:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tracking sale events" icon="book-open" href="https://dub.co/docs/conversions/sales/introduction">
     Read the full guide on tracking sale events with Dub
   </Card>
@@ -17677,7 +17852,7 @@ Once you have conversion tracking up and running, you can follow these steps to 
 5. Set up a [whitelabeled referral dashboard](/partners/embedded-referrals) that lives directly inside your app so your users can automatically enroll in your partner program without leaving your app.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/cms/dub-partners.jpg" alt="Dub Partners" />
+  <img alt="Dub Partners" />
 </Frame>
 
 
@@ -17700,9 +17875,9 @@ Before you get started, make sure you have the following:
 
 This quick start guide will show you how to get started with Dub React Native SDK in your React Native app.
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Install the Dub React Native SDK">
-    ```sh  theme={null}
+    ```sh theme={null}
     # With npm
     npm install @dub/react-native
 
@@ -17719,7 +17894,7 @@ This quick start guide will show you how to get started with Dub React Native SD
 
     **Option 1**: Use the `DubProvider` to wrap your app
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { DubProvider } from "@dub/react-native";
 
     export default function App() {
@@ -17736,7 +17911,7 @@ This quick start guide will show you how to get started with Dub React Native SD
 
     **Option 2**: Manually initialize the Dub SDK
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import dub from "@dub/react-native";
 
     export default function App() {
@@ -17752,7 +17927,7 @@ This quick start guide will show you how to get started with Dub React Native SD
     ```
   </Step>
 
-  <Step title="Track deep link open events" id="track-open">
+  <Step title="Track deep link open events">
     Call `trackOpen` on the `dub` instance to track deep link and deferred deep link open events.
     The `trackOpen` function should be called once without a `deepLink` parameter on first launch, and then
     again with the `deepLink` parameter whenever the app is opened from a deep link.
@@ -17888,8 +18063,8 @@ This quick start guide will show you how to get started with Dub React Native SD
 
 Here are some open-source code examples that you can reference:
 
-<CardGroup cols={2}>
-  <Card title="React Native" icon="github" href="https://github.com/dubinc/dub-react-native/tree/main/example" color="#333333">
+<CardGroup>
+  <Card title="React Native" icon="github" href="https://github.com/dubinc/dub-react-native/tree/main/example">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -17914,7 +18089,7 @@ Before you get started, make sure you have the following:
 
 This quick start guide will show you how to get started with Dub iOS SDK in your Swift project.
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Install the Dub iOS SDK">
     Before installing, ensure your environment meets these minimum requirements:
 
@@ -17985,7 +18160,7 @@ This quick start guide will show you how to get started with Dub iOS SDK in your
     </CodeGroup>
   </Step>
 
-  <Step title="Track deep link open events" id="track-open">
+  <Step title="Track deep link open events">
     Call `trackOpen` on the `dub` instance to track deep link and deferred deep link open events.
     The `trackOpen` function should be called once without a `deepLink` parameter on first launch, and then
     again with the `deepLink` parameter whenever the app is opened from a deep link.
@@ -18311,12 +18486,12 @@ This quick start guide will show you how to get started with Dub iOS SDK in your
 
 Here are some open-source code examples that you can reference:
 
-<CardGroup cols={2}>
-  <Card title="Swift (SwiftUI)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/SwiftUI" color="#333333">
+<CardGroup>
+  <Card title="Swift (SwiftUI)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/SwiftUI">
     See the full example on GitHub.
   </Card>
 
-  <Card title="Swift (UIKit)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/UIKit" color="#333333">
+  <Card title="Swift (UIKit)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/UIKit">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -18357,16 +18532,16 @@ Dub currently supports the following client-side mobile SDKs:
 
 Here are some open-source code examples that you can reference:
 
-<CardGroup cols={2}>
-  <Card title="Swift (SwiftUI)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/SwiftUI" color="#333333">
+<CardGroup>
+  <Card title="Swift (SwiftUI)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/SwiftUI">
     See the full example on GitHub.
   </Card>
 
-  <Card title="Swift (UIKit)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/UIKit" color="#333333">
+  <Card title="Swift (UIKit)" icon="github" href="https://github.com/dubinc/dub-ios/tree/main/Examples/UIKit">
     See the full example on GitHub.
   </Card>
 
-  <Card title="React Native" icon="github" href="https://github.com/dubinc/dub-react-native/tree/main/example" color="#333333">
+  <Card title="React Native" icon="github" href="https://github.com/dubinc/dub-react-native/tree/main/example">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -18401,7 +18576,7 @@ Here's how you can enable client-side click-tracking with the `@dub/analytics` s
     Then, you'll need to allowlist your site's domain to allow the client-side click events to be ingested by Dub. To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and add your site's domain to the **Allowed Hostnames** list.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -18451,13 +18626,13 @@ Here's how you can enable client-side click-tracking with the `@dub/analytics` s
     Here's the full list of parameters you can pass to the script:
 
     <Accordion title="Parameters">
-      <ParamField body="apiHost" type="url" default="https://api.dub.co">
+      <ParamField type="url">
         The base URL for the Dub API. This is useful for [setting up reverse
         proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
         adblockers.
       </ParamField>
 
-      <ParamField body="attributionModel" type="first-click | last-click" default="last-click">
+      <ParamField type="first-click | last-click">
         The attribution model to use for the analytics event. The following
         attribution models are available:
 
@@ -18467,46 +18642,46 @@ Here's how you can enable client-side click-tracking with the `@dub/analytics` s
           touchpoint in the customer journey.
       </ParamField>
 
-      <ParamField body="cookieOptions" type="CookieOption Object">
+      <ParamField type="CookieOption Object">
         <Expandable title="properties">
-          <ParamField body="domain" type="string">
+          <ParamField type="string">
             Specifies the value for the `Domain` Set-Cookie attribute. This is useful
             for cross-domain tracking. Example: `.example.com`
           </ParamField>
 
-          <ParamField body="expires" type="integer" default="90">
+          <ParamField type="integer">
             Specifies the `Date` object to be the value for the `Expires` Set-Cookie
             attribute. Example: `new Date('2024-12-31')`
           </ParamField>
 
-          <ParamField body="expiresInDays" type="integer" default="90">
+          <ParamField type="integer">
             Specifies the number (in days) to be the value for the `Expires`
             Set-Cookie attribute. Example: `90`
           </ParamField>
 
-          <ParamField body="path" type="string" default="/">
+          <ParamField type="string">
             Specifies the value for the `Path` Set-Cookie attribute. By default, the
             path is considered the "default path". Example: `/`
           </ParamField>
         </Expandable>
       </ParamField>
 
-      <ParamField body="domainsConfig" type="JSON-stringified object">
+      <ParamField type="JSON-stringified object">
         Configure the domains that Dub will track. The following properties are available:
 
         <Expandable title="properties">
-          <ParamField body="refer" type="string">
+          <ParamField type="string">
             The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer)
             (previously `shortDomain`).
             Example: `refer.dub.co`
           </ParamField>
 
-          <ParamField body="site" type="string">
+          <ParamField type="string">
             The Dub short domain for tracking site visits.
             Example: `site.dub.co`
           </ParamField>
 
-          <ParamField body="outbound" type="string | string[]">
+          <ParamField type="string | string[]">
             An array of domains for cross-domain tracking. When configured, the existing
             `dub_id` cookie will be automatically appended to all outbound links
             targeting these domains to enable cross-domain tracking across different
@@ -18516,12 +18691,12 @@ Here's how you can enable client-side click-tracking with the `@dub/analytics` s
         </Expandable>
       </ParamField>
 
-      <ParamField body="queryParams" type="string[]" default="[&#x22;via&#x22;]">
+      <ParamField type="string[]">
         An array of query parameters to listen to for client-side click-tracking (e.g.
         `?via=abc123`).
       </ParamField>
 
-      <ParamField body="scriptProps" type="HTMLScriptElement Object">
+      <ParamField type="HTMLScriptElement Object">
         Custom properties to pass to the script tag. Refer to
         [MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement) for
         all available options.
@@ -18554,7 +18729,7 @@ If you're using [Dub Partners](/partners/quickstart) with [dual-sided incentives
 
 This data will be stored as a JSON-stringified object in the `dub_partner_data` cookie in the following format:
 
-```json  theme={null}
+```json theme={null}
 {
   "clickId": "xxx", // unique ID of the click event
   "partner": {
@@ -18626,7 +18801,7 @@ Here is a quick example of how you can display a discount banner using the `useA
 Here's an example of how the discount banner will look like:
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=26eca59d43a93804f2307991c6c83381" alt="A screenshot of the Dub partner data example" data-og-width="1459" width="1459" data-og-height="910" height="910" data-path="images/dub-partner-data.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1cddbb18fa5680a8b943e711c9f149af 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1e7cd48c98e1f9581cf3236121fe5db8 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5ce2586be1efc07dad033c7b19ee7e35 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ee8c5867250241cbb95f4057467f2cbf 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5689a83bcda7e8c7afd5cd6f1c00a982 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/dub-partner-data.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4c61d9783f0a56384024a310a10a5698 2500w" />
+  <img alt="A screenshot of the Dub partner data example" />
 </Frame>
 
 ## Manually tracking clicks with the `trackClick()` function
@@ -18643,11 +18818,11 @@ The `trackClick()` function allows you to manually trigger click events from you
 
 The `trackClick()` function accepts an object with the following parameters:
 
-<ParamField body="domain" type="string" required>
+<ParamField type="string">
   The domain of the short link (e.g. `getacme.link`)
 </ParamField>
 
-<ParamField body="key" type="string" required>
+<ParamField type="string">
   The short link slug (e.g. `john`)
 </ParamField>
 
@@ -18729,19 +18904,19 @@ Learn how to use the @dub/analytics script to track conversion events on the cli
 By default, the script handles the detection of the `dub_id` query parameter and storing it as a first-party cookie:
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-click-event.png" alt="A diagram showing how click events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how click events are tracked in the conversion funnel" />
 </Frame>
 
 Then, when a conversion event occurs (e.g. a user signs up for an account), you can check for the `dub_id` cookie and attribute the conversion to the original click by [tracking a lead event](/conversions/leads/introduction).
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-lead-event.png" alt="A diagram showing how lead events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how lead events are tracked in the conversion funnel" />
 </Frame>
 
 Finally, when the user completes a purchase (e.g. subscribing to a plan, purchasing a product, etc.), you can [track a sale event](/conversions/sales/introduction). Under the hood, Dub will automatically attribute the sale to the original link click.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-sale-event.png" alt="A diagram showing how sale events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how sale events are tracked in the conversion funnel" />
 </Frame>
 
 ## Quickstart
@@ -18762,7 +18937,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     2. Toggle the **Workspace-level Conversion Tracking** switch to enable conversion tracking for the workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f810945d33a42f45de3e06647b2cfd15" alt="Enabling conversion tracking for a workspace" data-og-width="3082" width="3082" data-og-height="1529" height="1529" data-path="images/conversions/enable-conversion-tracking-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=514f7549b9a65a40fc4224ea68859e06 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=9c002882f7093efb76ae4be72e5f0312 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=d4da71527556174d30b71c0f9acdad6f 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=c887363f92b258c3493267e2f4a3dd8e 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e1b23eb5cf148df63105fdc572e6936b 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/enable-conversion-tracking-workspace.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=1623f4206427342d87df828a17d66438 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     This option will enable conversion tracking in the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for all future links.
@@ -18774,7 +18949,7 @@ First, you'll need to enable conversion tracking for your Dub links to be able t
     To enable conversion tracking for a specific link, open the [Dub Link Builder](https://dub.co/help/article/dub-link-builder) for a link and toggle the **Conversion Tracking** switch.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4153d4a981e2a13324464ca3d30625cd" alt="Enabling conversion tracking for a link" data-og-width="2345" width="2345" data-og-height="908" height="908" data-path="images/conversions/enable-conversion-tracking.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0984b50a4b6987e7bc4f8f3975559d0e 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=673093d978579d5cd19e22b2c786f6a4 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=94cb269be979162dd8bb74b2a5b614e9 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=4572ec2e03c96b50d1da93f8b3f04636 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f0a017e718cc81ae682e89809e4dab25 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/enable-conversion-tracking.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=078ec13ca0166c3b751d24271c1d2171 2500w" />
+      <img alt="Enabling conversion tracking for a link" />
     </Frame>
 
     <Tip>
@@ -18830,7 +19005,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     This provides an additional layer of security by ensuring only authorized domains can track conversions using your publishable key.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=da26eba128e89211e7bfd7cf46ba32e0" alt="Enabling conversion tracking for a workspace" data-og-width="2979" width="2979" data-og-height="2018" height="2018" data-path="images/conversions/allowed-hostnames.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=58dbd9580cedff38a40a0f6ad6fe7188 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ace60f5cf513d21281be79ead24189e6 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=33fff99044f2b77702dcc24ade6f67d7 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=134d6038e2ad8da21e39a7b8e797fee2 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=b3051b73df5fdf2bd16b5db5aa4d34a5 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/allowed-hostnames.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=e3f56a578de0f460c8a77f08aa33e437 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
 
     You can group your hostnames when adding them to the allow list:
@@ -18851,7 +19026,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     To do that, navigate to your [workspace's Analytics settings page](https://app.dub.co/settings/analytics) and generate a new publishable key under the **Publishable Key** section.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=76add1f30a997ba897f10acdc21b51b5" alt="Enabling conversion tracking for a workspace" data-og-width="2985" width="2985" data-og-height="2021" height="2021" data-path="images/conversions/publishable-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=280&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=f0f995d217914793d81c0a42ccda502a 280w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=560&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=62a390272e2b24b6ae8cf3ba98dac66f 560w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=840&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=cdb86db75f933f33be21d4a0e8293227 840w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1100&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab9b7ec6577587e197e1fefeaa250216 1100w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=1650&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=ab5f37e61472d2c6118f7b640a5fdb50 1650w, https://mintcdn.com/dub/7gz73MV2fRr5fJas/images/conversions/publishable-key.png?w=2500&fit=max&auto=format&n=7gz73MV2fRr5fJas&q=85&s=6d83d47d0988ee0d895606f8b2e683c6 2500w" />
+      <img alt="Enabling conversion tracking for a workspace" />
     </Frame>
   </Step>
 
@@ -18861,37 +19036,36 @@ Then, you'll need to install the Dub client-side script and set up the necessary
     You can install the `@dub/analytics` script in several different ways:
 
     <CardGroup>
-      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+      <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+      <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
       <Card
         title="Framer"
         icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
         href="/sdks/client-side/installation-guides/framer"
-        horizontal
       />
 
-      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+      <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+      <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+      <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+      <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
     </CardGroup>
 
     You must configure the **publishable key** you generated in step 1 when installing the analytics script. Without this key, client-side conversion tracking will not work.
@@ -18942,7 +19116,7 @@ Then, you'll need to install the Dub client-side script and set up the necessary
 
 Once the analytics script is installed, you can start tracking lead events in your application on the client-side.
 
-### Track leads from URL query parameters
+### Track leads from URL query parameters (recommended)
 
 If you redirect users to a thank-you page after a successful action, you can track leads by reading query parameters from the URL.
 
@@ -19119,7 +19293,7 @@ Ensure the event is triggered **only after the backend confirms the action was c
 
 Once the analytics script is installed, you can start tracking sale events in your application on the client-side.
 
-### Track sales from URL query parameters
+### Track sales from URL query parameters (recommended)
 
 If you redirect users to a confirmation page after a successful purchase, you can track sales by reading query parameters from the URL.
 
@@ -19255,26 +19429,28 @@ You can also track sales directly when users complete a checkout form on your we
       </form>
 
       <script>
-        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-          e.preventDefault();
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Track the sale event
-          dubAnalytics.trackSale({
-            eventName: "Purchase",
-            customerExternalId: "cus_RBfbD57H", // can also be customer email
-            amount: 5000, // $50.00
-            invoiceId: "in_1MtHbELkdIwH",
+            // Track the sale event
+            dubAnalytics.trackSale({
+              eventName: "Purchase",
+              customerExternalId: "cus_RBfbD57H", // can also be customer email
+              amount: 5000, // $50.00
+              invoiceId: "in_1MtHbELkdIwH",
 
-            // Additional props for direct sale tracking (without prior lead event):
-            // clickId: "cm3w...", // Read from dub_id cookie
-            // customerName: "John Doe",
-            // customerEmail: "john@example.com",
-            // customerAvatar: "https://example.com/avatar.jpg",
-            // currency: "usd",
-            // paymentProcessor: "stripe",
-            // metadata: { plan: "pro" },
+              // Additional props for direct sale tracking (without prior lead event):
+              // clickId: "cm3w...", // Read from dub_id cookie
+              // customerName: "John Doe",
+              // customerEmail: "john@example.com",
+              // customerAvatar: "https://example.com/avatar.jpg",
+              // currency: "usd",
+              // paymentProcessor: "stripe",
+              // metadata: { plan: "pro" },
+            });
           });
-        });
       </script>
     </body>
   </html>
@@ -19518,13 +19694,13 @@ Follow these steps to add the script to your site:
 * Paste the Dub analytics script in the **Start of head tag** section.
 * Click on the **Save** button to save the changes.
 
-```html  theme={null}
+```html theme={null}
 <script src="https://www.dubcdn.com/analytics/script.js" defer></script>
 ```
 
 If you're using [Dub Partners](/partners/quickstart) for affiliate management, you will also need to set up the `data-domains` property to enable [client-side click-tracking](/sdks/client-side/features/click-tracking).
 
-```html  theme={null}
+```html theme={null}
 <script
   src="https://www.dubcdn.com/analytics/script.js"
   defer
@@ -19550,13 +19726,13 @@ Read the [client-side click-tracking guide](/sdks/client-side/features/click-tra
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -19566,29 +19742,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -19597,28 +19773,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -19627,7 +19803,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -19649,14 +19825,14 @@ This guide will walk you through the process of integrating Dub Analytics with G
     * Select **Custom HTML** as the tag type
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=67ab7bf5950699602502df9bb057c098" alt="Select Custom HTML tag" data-og-width="2238" width="2238" data-og-height="1426" height="1426" data-path="images/conversions/google-tag-manager/gtm-select-custom-html-tag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=98f15d806840705c884b69195dba1318 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=360f33347afeea0e59dc8ed7673060ea 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c942a286dec789b0b84be2cbfe5ad42b 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=fb745a99fd5c085d10b08e83dacf4cbe 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3699fa2d894ef20ad47723c27e3fe594 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-select-custom-html-tag.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=330632a53b714129fc9b82db31d89d01 2500w" />
+      <img alt="Select Custom HTML tag" />
     </Frame>
   </Step>
 
   <Step title="Add the Dub Analytics Script">
     In the Custom HTML section, you'll need to add the Dub Analytics script. Copy and paste the following code into the **HTML** field:
 
-    ```js  theme={null}
+    ```js theme={null}
     <script>
       var script = document.createElement("script");
       script.defer = true;
@@ -19666,12 +19842,12 @@ This guide will walk you through the process of integrating Dub Analytics with G
     ```
 
     <Frame>
-      <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7d2f4cf5060d39418c5d115bd21c04f3" alt="Add dub analytics script" data-og-width="1924" width="1924" data-og-height="1320" height="1320" data-path="images/conversions/google-tag-manager/gtm-add-dub-script.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=71e6e675885d42abd5d68155846b6e2a 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=0856bc79522806509e61383bc2fb437c 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=e1f7afa3d9bcdee4d9a3b3d66464d696 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=249dc67239671f528a372f94f9ef4a31 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=acd39b04615176ab18535644eb477e77 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/conversions/google-tag-manager/gtm-add-dub-script.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9a3209141e2cd50640316f5cbb792ac6 2500w" />
+      <img alt="Add dub analytics script" />
     </Frame>
 
     If you're using [Dub Partners](/partners/quickstart) for affiliate management, you will also need to set up the `data-domains` property to enable [client-side click-tracking](/sdks/client-side/features/click-tracking).
 
-    ```js  theme={null}
+    ```js theme={null}
     <script>
       ...
       var script = document.createElement("script");
@@ -19715,13 +19891,13 @@ This guide will walk you through the process of integrating Dub Analytics with G
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -19731,29 +19907,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -19762,28 +19938,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -19792,7 +19968,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -19807,13 +19983,13 @@ With `@dub/analytics`, you can track lead and sale conversions on your website, 
 
 You can add the `@dub/analytics` script to your website same way you would add Google Analytics script or any other JavaScript code – by adding the `@dub/analytics` script in the `<head>` section of your HTML file.
 
-```html  theme={null}
+```html theme={null}
 <script src="https://www.dubcdn.com/analytics/script.js" defer></script>
 ```
 
 If you're using [Dub Partners](/partners/quickstart) for affiliate management, you will also need to set up the `data-domains` property to enable [client-side click-tracking](/sdks/client-side/features/click-tracking).
 
-```html  theme={null}
+```html theme={null}
 <script
   src="https://www.dubcdn.com/analytics/script.js"
   defer
@@ -19839,13 +20015,13 @@ Read the [client-side click-tracking guide](/sdks/client-side/features/click-tra
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -19855,29 +20031,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -19886,28 +20062,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -19916,7 +20092,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -19933,7 +20109,7 @@ With Dub Analytics, you can track lead and sale conversions on your website, ena
 
 This quick start guide will show you how to get started with Dub Analytics on your website.
 
-<Steps titleSize="h3">
+<Steps>
   <Step title="Install package">
     Using the package manager of your choice, add the `@dub/analytics` to your project.
 
@@ -20021,13 +20197,13 @@ This quick start guide will show you how to get started with Dub Analytics on yo
 
 You can pass the following props to the `<Analytics />` component to customize its behavior:
 
-<ParamField body="apiHost" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="attributionModel" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -20037,46 +20213,46 @@ You can pass the following props to the `<Analytics />` component to customize i
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="cookieOptions" type="CookieOption Object">
+<ParamField type="CookieOption Object">
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute. Example: `90`
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="domainsConfig" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer)
       (previously `shortDomain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing
       `dub_id` cookie will be automatically appended to all outbound links
       targeting these domains to enable cross-domain tracking across different
@@ -20086,12 +20262,12 @@ You can pass the following props to the `<Analytics />` component to customize i
   </Expandable>
 </ParamField>
 
-<ParamField body="queryParams" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
 
-<ParamField body="scriptProps" type="HTMLScriptElement Object">
+<ParamField type="HTMLScriptElement Object">
   Custom properties to pass to the script tag. Refer to
   [MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement) for
   all available options.
@@ -20108,7 +20284,7 @@ With `@dub/analytics`, you can track lead and sale conversions on your Shopify s
 You can add the `@dub/analytics` script to your Shopify store simply by installing the [Dub Shopify App](https://d.to/shopify/app) from the App Store.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=db64b4f582cc7fbcf8ab3c3f419513ba" alt="The connection status in the Dub app" data-og-width="2462" width="2462" data-og-height="1470" height="1470" data-path="images/shopify/shopify-app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=99be7cb71113f6b59085264e51077216 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=97406171627afc25dddbc32589704ff0 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8dd2d7ad787edc6e80c1d3c3f84a5458 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fc6a55899a887868c574bbb98befaebc 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a3ac04088efe4cc2d1e77c58f4df859e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-app.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=2bcb290e5018168a179d54fc9bfaee46 2500w" />
+  <img alt="The connection status in the Dub app" />
 </Frame>
 
 Then, make sure to activate the `@dub/analytics` script by following these steps:
@@ -20120,7 +20296,7 @@ Then, make sure to activate the `@dub/analytics` script by following these steps
 5. Locate the **Analytics Script** for the Dub app and toggle it to activate.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b9d6b8c577fc62435e81da381deff6b6" alt="Enable the Dub Analytics script in your Shopify theme" data-og-width="1412" width="1412" data-og-height="983" height="983" data-path="images/shopify/shopify-enable-tracking-script.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=00720d7b5b41664b91583029ca770b50 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=87662f2a7554a1e21a99e6eda8636cbd 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e04f6b379749465c280b98e74b166e29 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=19afd70e33fc905f367bc177e6c696fe 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=54a6538fd634de8631db53f1049c0f2a 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/shopify/shopify-enable-tracking-script.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0d077d63724ef208aeacd80723953b37 2500w" />
+  <img alt="Enable the Dub Analytics script in your Shopify theme" />
 </Frame>
 
 <Check>
@@ -20139,7 +20315,7 @@ Then, make sure to activate the `@dub/analytics` script by following these steps
 
 Here's a video showing how to install and activate the `@dub/analytics` script in your Shopify store:
 
-<iframe width="100%" height="469px" className="rounded-xl" src="https://www.loom.com/embed/936970b8db5b41488657fa92ffec384a?sid=04030975-6d7e-4126-8487-a1d9a3095efc" title="Loom video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="Loom video player" />
 
 
 # Webflow
@@ -20157,13 +20333,13 @@ Follow these steps to add the script to your site:
 * Choose **[Custom Code](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags?topics=site-settings)** from the menu and paste the Dub analytics script in the **Head Code** section.
 * Click on the **Save Changes** button and then **Publish** your changes.
 
-```html  theme={null}
+```html theme={null}
 <script src="https://www.dubcdn.com/analytics/script.js" defer></script>
 ```
 
 If you're using [Dub Partners](/partners/quickstart) for affiliate management, you will also need to set up the `data-domains` property to enable [client-side click-tracking](/sdks/client-side/features/click-tracking).
 
-```html  theme={null}
+```html theme={null}
 <script
   src="https://www.dubcdn.com/analytics/script.js"
   defer
@@ -20189,13 +20365,13 @@ Read the [client-side click-tracking guide](/sdks/client-side/features/click-tra
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -20205,29 +20381,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -20236,28 +20412,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -20266,7 +20442,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -20288,13 +20464,13 @@ Follow these steps to add the script to your site:
 * Paste the Dub analytics script in the header area.
 * Click on the **Update File** button to save the changes.
 
-```html  theme={null}
+```html theme={null}
 <script src="https://www.dubcdn.com/analytics/script.js" defer></script>
 ```
 
 If you're using [Dub Partners](/partners/quickstart) for affiliate management, you will also need to set up the `data-domains` property to enable [client-side click-tracking](/sdks/client-side/features/click-tracking).
 
-```html  theme={null}
+```html theme={null}
 <script
   src="https://www.dubcdn.com/analytics/script.js"
   defer
@@ -20320,13 +20496,13 @@ Read the [client-side click-tracking guide](/sdks/client-side/features/click-tra
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -20336,29 +20512,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -20367,28 +20543,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -20397,7 +20573,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -20413,7 +20589,7 @@ Learn more about the @dub/analytics script and how to install it.
 The script handles the detection of the `dub_id` query parameter and storing it as a first-party cookie, which will be used to attribute subsequent conversion events to the original link.
 
 <Frame>
-  <img className="rounded-lg border border-gray-100" src="https://assets.dub.co/help/conversion-click-event.png" alt="A diagram showing how click events are tracked in the conversion funnel" />
+  <img alt="A diagram showing how click events are tracked in the conversion funnel" />
 </Frame>
 
 If you're using Dub Partners, this script also lets you [track clicks on the client-side](/sdks/client-side/features/click-tracking) using query parameters (e.g. `?via=john`). This gives you the flexibility to track clicks directly on your website or app, without needing to rely on link redirects.
@@ -20423,37 +20599,36 @@ If you're using Dub Partners, this script also lets you [track clicks on the cli
 You can install the `@dub/analytics` script in several different ways:
 
 <CardGroup>
-  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" horizontal />
+  <Card title="React" icon="react" href="/sdks/client-side/installation-guides/react" />
 
-  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" horizontal />
+  <Card title="Manual installation" icon="browser" href="/sdks/client-side/installation-guides/manual" />
 
   <Card
     title="Framer"
     icon={
-    <svg
-      width="74"
-      height="111"
-      viewBox="0 0 74 111"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-7 h-7"
-    >
-      <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
-      <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
-      <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
-    </svg>
-  }
+  <svg
+    width="74"
+    height="111"
+    viewBox="0 0 74 111"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-7 h-7"
+  >
+    <path d="M0 0H73.8374V36.9892H36.9187L0 0Z" fill="#eb5611" />
+    <path d="M0 36.989H36.9187L73.8374 73.9796H0V36.989Z" fill="#eb5611" />
+    <path d="M0 73.9797H36.9187V110.97L0 73.9797Z" fill="#eb5611" />
+  </svg>
+}
     href="/sdks/client-side/installation-guides/framer"
-    horizontal
   />
 
-  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" horizontal />
+  <Card title="Shopify" icon="shopify" href="/sdks/client-side/installation-guides/shopify" />
 
-  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" horizontal />
+  <Card title="WordPress" icon="wordpress" href="/sdks/client-side/installation-guides/wordpress" />
 
-  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" horizontal />
+  <Card title="Webflow" icon="webflow" href="/sdks/client-side/installation-guides/webflow" />
 
-  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" horizontal />
+  <Card title="Google Tag Manager" icon="google" href="/sdks/client-side/installation-guides/google-tag-manager" />
 </CardGroup>
 
 ## Features
@@ -20469,13 +20644,13 @@ The `@dub/analytics` script comes with the following features:
 
 You can pass the following props to the `@dub/analytics` script to customize its behavior:
 
-<ParamField body="data-api-host" type="url" default="https://api.dub.co">
+<ParamField type="url">
   The base URL for the Dub API. This is useful for [setting up reverse
   proxies](/sdks/client-side/features/reverse-proxy-support) to avoid
   adblockers.
 </ParamField>
 
-<ParamField body="data-attribution-model" type="first-click | last-click" default="last-click">
+<ParamField type="first-click | last-click">
   The attribution model to use for the analytics event. The following
   attribution models are available:
 
@@ -20485,29 +20660,29 @@ You can pass the following props to the `@dub/analytics` script to customize its
     touchpoint in the customer journey.
 </ParamField>
 
-<ParamField body="data-cookie-options" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Custom properties to pass to the cookie. Refer to
   [MDN's Set-Cookie documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) for
   all available options.
 
   <Expandable title="properties">
-    <ParamField body="domain" type="string">
+    <ParamField type="string">
       Specifies the value for the `Domain` Set-Cookie attribute. This is useful
       for cross-domain tracking. Example: `.example.com`
     </ParamField>
 
-    <ParamField body="expires" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the `Date` object to be the value for the `Expires` Set-Cookie
       attribute. Example: `new Date('2024-12-31')`
     </ParamField>
 
-    <ParamField body="expiresInDays" type="integer" default="90">
+    <ParamField type="integer">
       Specifies the number (in days) to be the value for the `Expires`
       Set-Cookie attribute.
 
       For example, to set the cookie window to 60 days (instead of the default 90 days), you can add the following to your script:
 
-      ```html  theme={null}
+      ```html theme={null}
       <script
         src="https://www.dubcdn.com/analytics/script.js"
         defer
@@ -20516,28 +20691,28 @@ You can pass the following props to the `@dub/analytics` script to customize its
       ```
     </ParamField>
 
-    <ParamField body="path" type="string" default="/">
+    <ParamField type="string">
       Specifies the value for the `Path` Set-Cookie attribute. By default, the
       path is considered the "default path". Example: `/`
     </ParamField>
   </Expandable>
 </ParamField>
 
-<ParamField body="data-domains" type="JSON-stringified object">
+<ParamField type="JSON-stringified object">
   Configure the domains that Dub will track. The following properties are available:
 
   <Expandable title="properties">
-    <ParamField body="refer" type="string">
+    <ParamField type="string">
       The Dub custom domain for [referral program client-side click tracking](http://d.to/clicks/refer) (previously `data-short-domain`).
       Example: `refer.dub.co`
     </ParamField>
 
-    <ParamField body="site" type="string">
+    <ParamField type="string">
       The Dub short domain for tracking site visits.
       Example: `site.dub.co`
     </ParamField>
 
-    <ParamField body="outbound" type="string | string[]">
+    <ParamField type="string | string[]">
       An array of domains for cross-domain tracking. When configured, the existing `dub_id` cookie
       will be automatically appended to all outbound links targeting these domains to enable
       cross-domain tracking across different applications.
@@ -20546,7 +20721,7 @@ You can pass the following props to the `@dub/analytics` script to customize its
   </Expandable>
 </ParamField>
 
-<ParamField body="data-query-params" type="string[]" default="[&#x22;via&#x22;]">
+<ParamField type="string[]">
   An array of query parameters to listen to for client-side click-tracking (e.g.
   `?via=abc123`).
 </ParamField>
@@ -20555,12 +20730,12 @@ You can pass the following props to the `@dub/analytics` script to customize its
 
 Here are some open-source code examples that you can reference:
 
-<CardGroup cols={2}>
-  <Card title="Dub Analytics with Client-side Click Tracking + Reverse Proxy" icon="github" href="https://github.com/dubinc/analytics/tree/main/apps/nextjs-reverse-proxy" color="#333333">
+<CardGroup>
+  <Card title="Dub Analytics with Client-side Click Tracking + Reverse Proxy" icon="github" href="https://github.com/dubinc/analytics/tree/main/apps/nextjs-reverse-proxy">
     See the full example on GitHub.
   </Card>
 
-  <Card title="Dub Analytics with Geolocation" icon="github" href="https://github.com/dubinc/analytics/tree/main/apps/nextjs-geolocation-script" color="#333333">
+  <Card title="Dub Analytics with Geolocation" icon="github" href="https://github.com/dubinc/analytics/tree/main/apps/nextjs-geolocation-script">
     See the full example on GitHub.
   </Card>
 </CardGroup>
@@ -20706,7 +20881,7 @@ Learn how to integrate Dub with Go.
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 go get github.com/dubinc/dub-go
 ```
 
@@ -20714,7 +20889,7 @@ go get github.com/dubinc/dub-go
 
 Here's how you can use the Dub Go SDK to create a link and retrieve click analytics in timeseries format for it:
 
-```go  theme={null}
+```go theme={null}
 package main
 
 import (
@@ -20773,12 +20948,12 @@ You can also check out the [Go SDK quickstart](/sdks/quickstart/go) for a basic 
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Go Package" icon="golang" href="https://d.to/go/sdk">
     Download and install the Dub Go SDK on GitHub
   </Card>
 
-  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-go/blob/main/README.md">
+  <Card title="SDK Reference" icon="book" href="https://github.com/dubinc/dub-go/blob/main/README.md">
     View the complete SDK reference documentation
   </Card>
 
@@ -20797,7 +20972,7 @@ Open-source client libraries for the Dub API
 
 Dub offers server-side SDKs for many popular programming languages:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="TypeScript" icon="npm" href="/sdks/typescript">
     TypeScript library for the Dub API
   </Card>
@@ -20821,7 +20996,7 @@ Dub offers server-side SDKs for many popular programming languages:
 
 ## Client-side SDKs
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="@dub/analytics" icon="js" href="/sdks/client-side/introduction">
     Dub analytics SDK
   </Card>
@@ -20829,7 +21004,7 @@ Dub offers server-side SDKs for many popular programming languages:
 
 ## Client-side mobile SDKs
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="dub-ios" icon="swift" href="/sdks/client-side-mobile/introduction">
     Dub iOS SDK
   </Card>
@@ -20837,7 +21012,7 @@ Dub offers server-side SDKs for many popular programming languages:
 
 ## Embedded Dashboards
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Referrals Embed" icon="window" href="/sdks/embed/referrals">
     Embed the Dub Referrals dashboard in your application
   </Card>
@@ -20845,7 +21020,7 @@ Dub offers server-side SDKs for many popular programming languages:
 
 ## CLI
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Dub CLI" icon="terminal" href="/sdks/cli">
     Shorten and manage your links directly from your terminal
   </Card>
@@ -20859,7 +21034,7 @@ Learn how to integrate Dub with PHP.
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 composer require dub/dub-php
 ```
 
@@ -20867,7 +21042,7 @@ composer require dub/dub-php
 
 Here's how you can use the Dub PHP SDK to create a link and retrieve click analytics in timeseries format for it:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 declare(strict_types=1);
@@ -20926,12 +21101,12 @@ If you're using a different PHP framework, you can refer to the [PHP SDK quickst
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Packagist" icon="php" href="https://d.to/php/sdk">
     Download and install the Dub PHP SDK on Packagist
   </Card>
 
-  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-php/blob/main/README.md">
+  <Card title="SDK Reference" icon="book" href="https://github.com/dubinc/dub-php/blob/main/README.md">
     View the complete SDK reference documentation
   </Card>
 
@@ -20952,7 +21127,7 @@ Learn how to integrate Dub with Python.
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 pip install dub
 ```
 
@@ -20960,7 +21135,7 @@ pip install dub
 
 Here's how you can use the Dub Python SDK to create a link and retrieve click analytics in timeseries format for it:
 
-```python  theme={null}
+```python theme={null}
 import os
 import dub
 from dub.models import operations
@@ -21004,12 +21179,12 @@ If you're using a different Python framework, you can refer to the [Python SDK q
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="PyPI Package" icon="python" href="https://d.to/python/sdk">
     Download and install the Dub Python SDK on PyPI
   </Card>
 
-  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-python/blob/main/README.md">
+  <Card title="SDK Reference" icon="book" href="https://github.com/dubinc/dub-python/blob/main/README.md">
     View the complete SDK reference documentation
   </Card>
 
@@ -21030,7 +21205,7 @@ Learn how to integrate Dub with Ruby.
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 gem install dub
 ```
 
@@ -21038,7 +21213,7 @@ gem install dub
 
 Here's how you can use the Dub Ruby SDK to create a link and retrieve click analytics in timeseries format for it:
 
-```ruby  theme={null}
+```ruby theme={null}
 require 'dub'
 
 # Initialize the Dub SDK with your API key
@@ -21087,12 +21262,12 @@ If you're using a different Ruby framework, you can refer to the [Ruby SDK quick
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="RubyGems Package" icon="gem" href="https://d.to/ruby/sdk">
     Download and install the Dub Ruby SDK on RubyGems
   </Card>
 
-  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-ruby/blob/main/README.md">
+  <Card title="SDK Reference" icon="book" href="https://github.com/dubinc/dub-ruby/blob/main/README.md">
     View the complete SDK reference documentation
   </Card>
 
@@ -21131,7 +21306,7 @@ Learn how to integrate Dub with TypeScript.
 
 Here's how you can use the Dub TypeScript SDK to create a link and retrieve click analytics in timeseries format for it:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Dub } from "dub";
 
 // Initialize the Dub SDK with your API key
@@ -21175,12 +21350,12 @@ If you're using a different JavaScript framework, you can refer to the [TypeScri
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="NPM Package" icon="npm" href="https://d.to/ts/sdk">
     Download and install the Dub TypeScript SDK on NPM
   </Card>
 
-  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-ts/blob/main/README.md">
+  <Card title="SDK Reference" icon="book" href="https://github.com/dubinc/dub-ts/blob/main/README.md">
     View the complete SDK reference documentation
   </Card>
 
@@ -21200,7 +21375,7 @@ Source: https://dub.co/docs/self-hosting
 An end-to-end guide on how to self-host Dub – the open-source link attribution platform.
 
 <Frame>
-  <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f32c52de94aaedcbc56bdf8b8e05d409" alt="Dub Logo on a gradient background" width="1200" height="630" data-og-width="1200" data-og-height="630" data-path="images/logo-background-gradient.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a636f495e47fc235f1e875d09ee78932 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=c3887a857d4f0c6705d2e82b69a7924c 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=dd6a66a791086fe615ab4241fa3e14ef 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3df0b2b5a952fb71a9ddbb0cdbbbb103 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=9193de40361c79058631c8c4eb725201 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/logo-background-gradient.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=a169891e21bae2e50d216901b1062d93 2500w" />
+  <img alt="Dub Logo on a gradient background" />
 </Frame>
 
 You can self-host Dub on your own servers and cloud infrastructure for greater control over your data and design. This guide will walk you through the entire process of setting up Dub on your own servers.
@@ -21335,18 +21510,22 @@ Next, you'll need to set up the [Upstash](https://upstash.com) Redis database. T
 
     For better performance & read times, we recommend setting up a global database with several read regions.
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=2ee9689bbeda53180edd455f8c956cd1" alt="Upstash Redis database" data-og-width="1136" width="1136" data-og-height="700" height="700" data-path="images/upstash-create-db.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8b8dc7dd83e29c8db00f8355fca0ec61 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=71298ed8724a5d460e442cdf4116431b 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fd5dc6a440f37a11cc4f4b41aa258f56 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6e178b4c8c8bb49a43e222d6fd700da3 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e82e83548ed1c551acbe4cac993b1fd0 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-create-db.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3433cb56300f917e0e383c950c7a48ce 2500w" /></Frame>
+    <Frame>
+      <img alt="Upstash Redis database" />
+    </Frame>
   </Step>
 
   <Step title="Set up Upstash environment variables">
     Once your database is created, copy the `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` from the **REST API** section into your `.env` file.
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=18c2630daafe831a527a0986447ec63e" alt="Upstash Redis tokens" data-og-width="704" width="704" data-og-height="285" height="285" data-path="images/upstash-redis-tokens.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d7fc2a492b789e9f031a20cadedc7950 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=13abd3ad52519c9e1d9c63c5e4fdf3d8 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=290698786b30e1c7273fcb37e073bf72 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=47c9499ab1f8f73504a0c923bb65e785 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=21a616076690d31f2c9017ea740e6c7c 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-redis-tokens.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=665dd5c816a1f2add0f9fa2e74c951ee 2500w" /></Frame>
+    <Frame>
+      <img alt="Upstash Redis tokens" />
+    </Frame>
 
     Navigate to the [QStash tab](https://console.upstash.com/qstash) and copy the `QSTASH_TOKEN`, `QSTASH_CURRENT_SIGNING_KEY`, and `QSTASH_NEXT_SIGNING_KEY` from the **Request Builder** section into your `.env` file.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e4d9708c4755d8ccf5d0049261fc4f04" alt="Upstash QStash tokens" data-og-width="692" width="692" data-og-height="264" height="264" data-path="images/upstash-qstash-tokens.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=62ce63fea95a613328082fa3b8c44799 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=776c3859e62443b2899cb8540dd74220 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=febf1cce0100b465b109abf0512f0a2a 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3f73f9d422ce9151c63fa83161f481c8 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=583a3c2b0032ede7a19a5069e3d735a3 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/upstash-qstash-tokens.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b8d81db0d04fe8d157ce08938f80a6ac 2500w" />
+      <img alt="Upstash QStash tokens" />
     </Frame>
   </Step>
 </Steps>
@@ -21372,7 +21551,7 @@ Next, you'll need to set up a [PlanetScale](https://planetscale.com/)-compatible
     Once your database is created, you'll be prompted to select your language or Framework. Select **Prisma**.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c3fc78f41d81058aef9dcfa4b8b7b85e" alt="PlanetScale choose framework" data-og-width="1342" width="1342" data-og-height="832" height="832" data-path="images/planetscale-choose-framework.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bfc938c736d0f5c167b6923c47231dbe 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=80d6b3e51ed81b0d2fc8b7cae4960f88 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0874c505c7d81ffef35c598a9928326d 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f56173ab5bde31e34f4ca2f76164678d 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6ac0f0a26ff7d2b4e3d3cb85cda3955e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-choose-framework.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=64a709af05dbed2f220b6318aae53711 2500w" />
+      <img alt="PlanetScale choose framework" />
     </Frame>
   </Step>
 
@@ -21380,7 +21559,7 @@ Next, you'll need to set up a [PlanetScale](https://planetscale.com/)-compatible
     Then, you'll have to create a new password for your database. Once the password is created, scroll down to the **Add credentials to .env** section and copy the `DATABASE_URL` into your `.env` file.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e942daf967c745ea5050bca9f21d249a" alt="PlanetScale add credentials" data-og-width="1315" width="1315" data-og-height="434" height="434" data-path="images/planetscale-add-credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bbab7ca87889d90ecb5da26392da6cde 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=0ab022859606d358ff75cce2b81acadf 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e65e67b801dd24a7becf4effcf56a2e2 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3178fc3db20b2c2d44fcf4b8bcf7e333 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d77e105b4b0e634c59ebd582c73b0723 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/planetscale-add-credentials.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8a9584d70e60c5dbced3a344353fe874 2500w" />
+      <img alt="PlanetScale add credentials" />
     </Frame>
   </Step>
 
@@ -21444,7 +21623,9 @@ We recommend using [Cloudflare R2](https://cloudflare.com/r2) for self-hosting D
 
     In your [Cloudflare account](https://dash.cloudflare.com/), create a new R2 bucket. We recommend giving your bucket a descriptive name (e.g. `dubassets`) and leaving the remaining settings as is.
 
-    <Frame>    <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5738442754e0e38dcf857eb93e06c97d" alt="Cloudflare R2 bucket" data-og-width="1736" width="1736" data-og-height="1500" height="1500" data-path="images/cloudflare-r2-create-bucket.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f942ae053c3d0603397e658da6c97a4f 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=378f709b7db6bbd3f340fea9fdb02fe9 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=30a0b73039ee2eb69bdebef89e56e7e5 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=d21f034c1d95a21745ddb8b8a9109215 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=756775954f026e73530f5b7152ba5ae9 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-bucket.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=ced219ecfc8fcf99dac7680222ca4f19 2500w" /></Frame>
+    <Frame>
+      <img alt="Cloudflare R2 bucket" />
+    </Frame>
 
     In your bucket settings, copy the **S3 API** value – you'll need it in Step 3.
   </Step>
@@ -21453,13 +21634,13 @@ We recommend using [Cloudflare R2](https://cloudflare.com/r2) for self-hosting D
     From the R2 main page, click **Manage R2 API Tokens** on the right-hand column.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=bc4a1b1d65065019f7d80cff8c27a82d" alt="Cloudflare manage API tokens" data-og-width="2368" width="2368" data-og-height="1008" height="1008" data-path="images/cloudflare-r2-manage-api-tokens.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1e207cf199900d21d63866252760c6ae 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=11a3f9d7d4e049126f969addc210ebec 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=12bcf69e77d1f6b6f1cccd06a9c3101c 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=3d874ca332713007941976b0735e1768 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=00637d5d6d678a14bb4bb908e1f396dc 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-manage-api-tokens.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5f455bc1b654c143e0951d5978b94908 2500w" />
+      <img alt="Cloudflare manage API tokens" />
     </Frame>
 
     Then, click **Create API Token**.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f8a5315ec1bc72ccf5d2954b9aec543b" alt="Cloudflare R2 API token" data-og-width="2178" width="2178" data-og-height="1490" height="1490" data-path="images/cloudflare-r2-create-api-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=2f15dceca688e55722e7deb6781b1b89 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=29f9b94feaba94549170aa00e33a322d 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=7708f40771128044e5192bd83be66599 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=63c954089d1fc20022aa8f88cfdd0b7f 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=1c38d55aebf0415b5fe03d5bcbe48067 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-create-api-token.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=b5074654de1a23ee898f4125e13e16f9 2500w" />
+      <img alt="Cloudflare R2 API token" />
     </Frame>
 
     Make sure to name your API token something relevant to the service that will be using the token.
@@ -21490,11 +21671,13 @@ We recommend using [Cloudflare R2](https://cloudflare.com/r2) for self-hosting D
 
     Then set the `STORAGE_BASE_URL` in your `.env` file to the domain you chose.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     STORAGE_BASE_URL={URL your assets as available at} # https://static.example.com
     ```
 
-    <Frame>    <img src="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=11f9d787953bed9d32da706cb35db8b4" alt="Cloudflare R2 domain" data-og-width="2200" width="2200" data-og-height="1182" height="1182" data-path="images/cloudflare-r2-public-domain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=280&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=80ab5c8b0bf44b0316e093816d574cd4 280w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=560&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=8952be438553ca89453e33ab3a19a7ca 560w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=840&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=dd5d2716da776cf546017ed2972d047a 840w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=1100&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f8b222010864b652cafc87767acdb94a 1100w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=1650&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=5797c9fec2048496967f94940109e63f 1650w, https://mintcdn.com/dub/F9cdc9nB_SI4yl65/images/cloudflare-r2-public-domain.png?w=2500&fit=max&auto=format&n=F9cdc9nB_SI4yl65&q=85&s=f7b4eceb299b3b3dd540e2e61b51eba0 2500w" /></Frame>
+    <Frame>
+      <img alt="Cloudflare R2 domain" />
+    </Frame>
   </Step>
 </Steps>
 
@@ -21542,7 +21725,7 @@ Once you've set up all of the above services, you can now deploy your app to Ver
     Make sure that your **Framework Preset** is set to **Next.js** and the **Root Directory** is set to `apps/web`.
 
     <Frame>
-            <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=66f6fb79a6c101ab92c63c1e0735b9e0" alt="Vercel Framework Preset and Root Directory" data-og-width="923" width="923" data-og-height="626" height="626" data-path="images/vercel-framework-preset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7e05bade332fda48432e929a0aa6917d 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=66974d3265e41b51384c3b5108064d25 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ae2009c4b785545c130ed5aa4719841c 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f6b64064132f3c9506c1b8c1160b48f6 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=46387bc8ac0cde9a671810b03b711325 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-framework-preset.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bb817e7f7dce533cb0ccfe32a1cf9891 2500w" />
+      <img alt="Vercel Framework Preset and Root Directory" />
     </Frame>
 
     In the **Environment Variables** section, add all of the environment variables from your `.env` file by copying all of them and pasting it into the first input field. A few notes:
@@ -21554,11 +21737,11 @@ Once you've set up all of the above services, you can now deploy your app to Ver
 
     <Tip>
       If you get a `No Output Directory called "public" was found after the build
-            completed` error, make sure that your [Vercel deployment
+                  completed` error, make sure that your [Vercel deployment
       settings](https://vercel.com/docs/deployments/configure-a-build) to make sure that they match the following:
 
       <Frame>
-                <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=25dddd473baa61b71cc17f46250ab026" alt="Vercel Deploy settings" data-og-width="965" width="965" data-og-height="881" height="881" data-path="images/vercel-deploy-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=c4496e1a97abe3e1383149d7d61915c6 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1638b59927ae6fc2a7ae710da08e8ab7 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=8aa3e8e0fdd5847d250ba1daa2f36008 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7b5fc987cdee7ce46a86f0ebc0709252 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=369ee63ec45956ae06c97e6f81841b60 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/vercel-deploy-settings.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=65f4645c463019a006112beb10a76400 2500w" />
+        <img alt="Vercel Deploy settings" />
       </Frame>
     </Tip>
   </Step>
@@ -21574,7 +21757,9 @@ Once you've set up all of the above services, you can now deploy your app to Ver
 
     Once the deployment is complete, you should be able to visit your app domain (e.g. `https://app.acme.com`) and see the following login page:
 
-    <Frame>    <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=709be2c8b07d066666910754f1dfc591" alt="Whitelabeled Login" data-og-width="1488" width="1488" data-og-height="956" height="956" data-path="images/whitelabeled-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=47cf969fc35a9280386a3d49cf4c28a2 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=59d5e848389e33cc843cdc360fe1cd7c 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=43a9b476e9032d57c68089ce7bad10fe 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=9ea0afb64097a4234cad7c59b4caea2e 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=532c32e04c756c344717ed91810148a9 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/whitelabeled-login.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7f3593559e2219d2d8222923f8d27e2d 2500w" /></Frame>
+    <Frame>
+      <img alt="Whitelabeled Login" />
+    </Frame>
   </Step>
 </Steps>
 

@@ -1059,7 +1059,7 @@ Both options offer distinct advantages, allowing you to choose the deployment ap
 
 Documentation for the various deployment strategies can be found in the following pages below (in our 'how-to' guides):
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>Deploying ZenML using ZenML Pro</strong></mark></td><td>Deploying ZenML using ZenML Pro.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-48448fe35ac6c5bff4e03f498b8ac5f9a73f319b%2Fzenml-pro.png?alt=media">zenml-pro.png</a></td><td></td><td></td><td><a href="https://docs.zenml.io/pro/deployments/self-hosted">https://docs.zenml.io/pro/deployments/self-hosted</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with Docker</strong></mark></td><td>Deploying ZenML in a Docker container.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-b1f60f21e2fb393bc2ce1fa879b2576ff1ba9b33%2Fdocker.png?alt=media">docker.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-with-docker">deploy-with-docker</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with Helm</strong></mark></td><td>Deploying ZenML in a Kubernetes cluster with Helm.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-8472d0d0d994ced4e2f3297c115a80943d4c4f08%2Fhelm.png?alt=media">helm.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-with-helm">deploy-with-helm</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with HuggingFace Spaces</strong></mark></td><td>Deploying ZenML to Hugging Face Spaces.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-da4344167bb225562e3503f4a0faf6ffcea64d2b%2Fhugging-face.png?alt=media">hugging-face.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-using-huggingface-spaces">deploy-using-huggingface-spaces</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>Deploying ZenML using ZenML Pro</strong></mark></td><td>Deploying ZenML using ZenML Pro.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-48448fe35ac6c5bff4e03f498b8ac5f9a73f319b%2Fzenml-pro.png?alt=media">zenml-pro.png</a></td><td></td><td></td><td><a href="https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment">https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with Docker</strong></mark></td><td>Deploying ZenML in a Docker container.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-b1f60f21e2fb393bc2ce1fa879b2576ff1ba9b33%2Fdocker.png?alt=media">docker.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-with-docker">deploy-with-docker</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with Helm</strong></mark></td><td>Deploying ZenML in a Kubernetes cluster with Helm.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-8472d0d0d994ced4e2f3297c115a80943d4c4f08%2Fhelm.png?alt=media">helm.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-with-helm">deploy-with-helm</a></td></tr><tr><td><mark style="color:purple;"><strong>Deploy with HuggingFace Spaces</strong></mark></td><td>Deploying ZenML to Hugging Face Spaces.</td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-da4344167bb225562e3503f4a0faf6ffcea64d2b%2Fhugging-face.png?alt=media">hugging-face.png</a></td><td></td><td></td><td><a href="deploying-zenml/deploy-using-huggingface-spaces">deploy-using-huggingface-spaces</a></td></tr></tbody></table>
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
@@ -1531,13 +1531,19 @@ Several database backup strategies are supported, depending on where and how the
 * `in-memory` - the database schema and data are stored in memory. This is the fastest backup strategy, but the backup is not persisted across container restarts, so no manual intervention is possible in case the automatic DB recovery fails after a failed DB migration. Adequate memory resources should be allocated to the ZenML server container when using this backup strategy with larger databases. This is the default backup strategy.
 * `database` - the database is copied to a backup database in the same database server. This requires the `ZENML_STORE_BACKUP_DATABASE` environment variable to be set to the name of the backup database. This backup strategy is only supported for MySQL compatible databases and the user specified in the database URL must have permissions to manage (create, drop, and modify) the backup database in addition to the main database.
 * `dump-file` - the database schema and data are dumped to a filesystem location inside the ZenML server container. This location can be customized by means of the `ZENML_STORE_BACKUP_DIRECTORY` environment variable. When this strategy is configured, users should mount a host directory in the container and point the `ZENML_STORE_BACKUP_DIRECTORY` variable to where it's mounted inside the container. If a host directory is not mounted, the dump file will be stored in the container's filesystem and will be lost when the container is removed.
+* `mydumper` - the database is backed up using mydumper/myloader. This requires the `mydumper` and `myloader` utilities to be installed in the ZenML server container. The `ZENML_STORE_MYDUMPER_THREADS`, `ZENML_STORE_MYDUMPER_COMPRESS`, `ZENML_STORE_MYDUMPER_EXTRA_ARGS`, `ZENML_STORE_MYLOADER_THREADS`, and `ZENML_STORE_MYLOADER_EXTRA_ARGS` environment variables can be used to configure the backup and restore processes.
+* `custom` - use a custom backup engine. This requires the `ZENML_STORE_CUSTOM_BACKUP_ENGINE` environment variable to be set to the class path of the custom backup engine. The class should extend from the `zenml.zen_stores.migrations.backup.base_backup_engine.BaseBackupEngine` base class and be importable from the container image that you are using for the ZenML server. Arguments for the custom backup engine can be passed using the `ZENML_STORE_CUSTOM_BACKUP_ENGINE_CONFIG` environment variable.
 
 The following additional rules are applied concerning the creation and lifetime of the backup:
 
 * a backup is not attempted if the database doesn't need to undergo a migration (e.g. when the ZenML server is upgraded to a new version that doesn't require a database schema change or if the ZenML version doesn't change at all).
-* a backup file or database is created before every database migration attempt (i.e. when the container starts). If a backup already exists (i.e. persisted in a mounted host directory or backup database), it is overwritten.
+* a backup file or database is created before every database migration attempt (i.e. when the container starts). If a backup already exists (i.e. persisted in a mounted host directory or backup database), it is NOT overwritten. Instead, the existing backup is used to rollback the database to the previous state in case the migration fails again.
 * the persistent backup file or database is cleaned up after the migration is completed successfully or if the database doesn't need to undergo a migration. This includes backups created by previous failed migration attempts.
 * the persistent backup file or database is NOT cleaned up after a failed migration. This allows the user to manually inspect and/or apply the backup if the automatic recovery fails.
+
+{% hint style="warning" %}
+When running in production where database sizes are large, you should use the `mydumper` backup strategy or write your own custom backup engine. The other backup strategies are not recommended because they are inefficient and will take a long time and consume a lot of resources to handle large databases.
+{% endhint %}
 
 The following example shows how to deploy the ZenML server to use a mounted host directory to persist the database backup file during a database migration:
 
@@ -2209,7 +2215,7 @@ To configure a backup secrets store in the Helm chart, use the same approach and
 
 ### Database backup and recovery
 
-An automated database backup and recovery feature is enabled by default for all Helm deployments. The ZenML server will automatically back up the database before every upgrade and restore it if the upgrade fails in a way that affects the database.
+An automated database backup and recovery feature is enabled by default for all Helm deployments. During Helm updates, the ZenML server will automatically back up the database before upgrading it and restore it if the upgrade fails.
 
 {% hint style="info" %}
 The database backup automatically created by the ZenML server is only temporary and only used as an immediate recovery in case of database migration failures. It is not meant to be used as a long-term backup solution. If you need to back up your database for long-term storage, you should use a dedicated backup solution.
@@ -2221,13 +2227,19 @@ Several database backup strategies are supported, depending on where and how the
 * `in-memory` - the database schema and data are stored in memory. This is the fastest backup strategy, but the backup is not persisted across pod restarts, so no manual intervention is possible in case the automatic DB recovery fails after a failed DB migration. Adequate memory resources should be allocated to the ZenML server pod when using this backup strategy with larger databases. This is the default backup strategy.
 * `database` - the database is copied to a backup database in the same database server. This requires the `backupDatabase` option to be set to the name of the backup database. This backup strategy is only supported for MySQL compatible databases and the user specified in the database URL must have permissions to manage (create, drop, and modify) the backup database in addition to the main database.
 * `dump-file` - the database schema and data are dumped to a file local to the database initialization and upgrade job. Users may optionally configure a persistent volume where the dump file will be stored by setting the `backupPVStorageSize` and optionally the `backupPVStorageClass` options. If a persistent volume is not configured, the dump file will be stored in an emptyDir volume, which is not persisted. If configured, the user is responsible for deleting the resulting PVC when uninstalling the Helm release.
+* `mydumper` - the database is backed up using mydumper/myloader. This requires the `mydumper` and `myloader` utilities to be installed in the ZenML server container. The `mydumperThreads`, `mydumperCompress`, `mydumperExtraArgs`, `myloaderThreads`, and `myloaderExtraArgs` options can be used to configure the backup and restore processes.
+* `custom` - use a custom backup engine. This requires the `customBackupEngine` option to be set to the class path of the custom backup engine. The class should extend from the `zenml.zen_stores.migrations.backup.base_backup_engine.BaseBackupEngine` base class and be importable from the container image that you are using for the ZenML server. Arguments for the custom backup engine can be passed using the `customBackupEngineConfig` option.
 
 > **NOTE:** You should also set the `podSecurityContext.fsGroup` option if you are using a persistent volume to store the dump file.
+
+{% hint style="warning" %}
+When running in production where database sizes are large, you should use the `mydumper` backup strategy or write your own custom backup engine. The other backup strategies are not recommended because they are inefficient and will take a long time and consume a lot of resources to handle large databases.
+{% endhint %}
 
 The following additional rules are applied concerning the creation and lifetime of the backup:
 
 * a backup is not attempted if the database doesn't need to undergo a migration (e.g. when the ZenML server is upgraded to a new version that doesn't require a database schema change or if the ZenML version doesn't change at all).
-* a backup file or database is created before every database migration attempt (i.e. during every Helm upgrade). If a backup already exists (i.e. persisted in a persistent volume or backup database), it is overwritten.
+* a backup file or database is created before every database migration attempt (i.e. during every Helm upgrade). If a backup already exists (i.e. persisted in a persistent volume or backup database), it is NOT overwritten. Instead, the existing backup is used to rollback the database to the previous state in case the migration fails again.
 * the persistent backup file or database is cleaned up after the migration is completed successfully or if the database doesn't need to undergo a migration. This includes backups created by previous failed migration attempts.
 * the persistent backup file or database is NOT cleaned up after a failed migration. This allows the user to manually inspect and/or apply the backup if the automatic recovery fails.
 
@@ -5426,29 +5438,33 @@ When you want to configure your pipeline with a certain stack in mind, you can d
 
 # Scheduling
 
-Learn how to set, pause and stop a schedule for pipelines.
+Learn how to create, update, activate, deactivate, and delete schedules for pipelines.
 
 {% hint style="info" %}
 Schedules don't work for all orchestrators. Here is a list of all supported orchestrators.
 {% endhint %}
 
-| Orchestrator                                                                         | Scheduling Support | Supported Schedule Types |
-| ------------------------------------------------------------------------------------ | ------------------ | ------------------------ |
-| [AirflowOrchestrator](https://docs.zenml.io/stacks/orchestrators/airflow)            | ✅                  | Cron, Interval           |
-| [AzureMLOrchestrator](https://docs.zenml.io/stacks/orchestrators/azureml)            | ✅                  | Cron, Interval           |
-| [DatabricksOrchestrator](https://docs.zenml.io/stacks/orchestrators/databricks)      | ✅                  | Cron only                |
-| [HyperAIOrchestrator](https://docs.zenml.io/stacks/orchestrators/hyperai)            | ✅                  | Cron, One-time           |
-| [KubeflowOrchestrator](https://docs.zenml.io/stacks/orchestrators/kubeflow)          | ✅                  | Cron, Interval           |
-| [KubernetesOrchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes)      | ✅                  | Cron only                |
-| [LocalOrchestrator](https://docs.zenml.io/stacks/orchestrators/local)                | ⛔️                 | N/A                      |
-| [LocalDockerOrchestrator](https://docs.zenml.io/stacks/orchestrators/local-docker)   | ⛔️                 | N/A                      |
-| [SagemakerOrchestrator](https://docs.zenml.io/stacks/orchestrators/sagemaker)        | ✅                  | Cron, Interval, One-time |
-| [SkypilotAWSOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)    | ⛔️                 | N/A                      |
-| [SkypilotAzureOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)  | ⛔️                 | N/A                      |
-| [SkypilotGCPOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)    | ⛔️                 | N/A                      |
-| [SkypilotLambdaOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm) | ⛔️                 | N/A                      |
-| [TektonOrchestrator](https://docs.zenml.io/stacks/orchestrators/tekton)              | ⛔️                 | N/A                      |
-| [VertexOrchestrator](https://docs.zenml.io/stacks/orchestrators/vertex)              | ✅                  | Cron only                |
+| Orchestrator                                                                         | Scheduling Support | Supported Schedule Types | Native Schedule Management |
+| ------------------------------------------------------------------------------------ | ------------------ | ------------------------ | -------------------------- |
+| [AirflowOrchestrator](https://docs.zenml.io/stacks/orchestrators/airflow)            | ✅                  | Cron, Interval           | ⛔️                         |
+| [AzureMLOrchestrator](https://docs.zenml.io/stacks/orchestrators/azureml)            | ✅                  | Cron, Interval           | ⛔️                         |
+| [DatabricksOrchestrator](https://docs.zenml.io/stacks/orchestrators/databricks)      | ✅                  | Cron only                | ⛔️                         |
+| [HyperAIOrchestrator](https://docs.zenml.io/stacks/orchestrators/hyperai)            | ✅                  | Cron, One-time           | ⛔️                         |
+| [KubeflowOrchestrator](https://docs.zenml.io/stacks/orchestrators/kubeflow)          | ✅                  | Cron, Interval           | ⛔️                         |
+| [KubernetesOrchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes)      | ✅                  | Cron only                | ✅                          |
+| [LocalOrchestrator](https://docs.zenml.io/stacks/orchestrators/local)                | ⛔️                 | N/A                      | N/A                        |
+| [LocalDockerOrchestrator](https://docs.zenml.io/stacks/orchestrators/local-docker)   | ⛔️                 | N/A                      | N/A                        |
+| [SagemakerOrchestrator](https://docs.zenml.io/stacks/orchestrators/sagemaker)        | ✅                  | Cron, Interval, One-time | ⛔️                         |
+| [SkypilotAWSOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)    | ⛔️                 | N/A                      | N/A                        |
+| [SkypilotAzureOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)  | ⛔️                 | N/A                      | N/A                        |
+| [SkypilotGCPOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm)    | ⛔️                 | N/A                      | N/A                        |
+| [SkypilotLambdaOrchestrator](https://docs.zenml.io/stacks/orchestrators/skypilot-vm) | ⛔️                 | N/A                      | N/A                        |
+| [TektonOrchestrator](https://docs.zenml.io/stacks/orchestrators/tekton)              | ⛔️                 | N/A                      | N/A                        |
+| [VertexOrchestrator](https://docs.zenml.io/stacks/orchestrators/vertex)              | ✅                  | Cron only                | ⛔️                         |
+
+{% hint style="info" %}
+**Native Schedule Management** means the orchestrator supports updating and deleting schedules directly through ZenML commands. When supported, commands like `zenml pipeline schedule update` and `zenml pipeline schedule delete` will automatically update/delete the schedule on the orchestrator platform (e.g., Kubernetes CronJobs). For orchestrators without this support, you'll need to manually manage schedules on the orchestrator side.
+{% endhint %}
 
 Check out [our tutorial on scheduling](https://docs.zenml.io/user-guides/tutorial/managing-scheduled-pipelines) for a practical guide on how to schedule a pipeline.
 
@@ -5476,24 +5492,54 @@ my_pipeline()
 Check out our [SDK docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-config.html#zenml.config.schedule) to learn more about the different scheduling options.
 {% endhint %}
 
-### Update/Pause/Stop a schedule
+### Update a schedule
 
-You can update or delete your schedules using the following CLI commands:
+You can update your schedule's cron expression:
 
 ```bash
-# Update the cron expression of the schedule
 zenml pipeline schedule update <SCHEDULE_NAME_OR_ID> --cron-expression='* * * * *'
-
-# Delete a schedule
-zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID>
 ```
 
-The functionality of these commands changes depending on whether the orchestrator that is running the schedule supports schedule updates/deletions:
+### Activate and deactivate a schedule
 
-* If the orchestrator supports it, this will update/delete the actual schedule as well as the schedule information stored in ZenML
-* If the orchestrator does not support it, this will only update/delete the schedule information stored in ZenML
+You can temporarily pause a schedule without deleting it using the deactivate command, and resume it later with activate:
 
-If the orchestrator **does not** support schedule management, maintaining the lifecycle of the schedule is the responsibility of the user. In these cases, we recommend the following steps:
+```bash
+# Pause a schedule (stops future executions)
+zenml pipeline schedule deactivate <SCHEDULE_NAME_OR_ID>
+
+# Resume a paused schedule
+zenml pipeline schedule activate <SCHEDULE_NAME_OR_ID>
+```
+
+{% hint style="info" %}
+For the Kubernetes orchestrator, activate/deactivate controls the CronJob's `suspend` field - this is a native Kubernetes feature that pauses schedule execution without removing the CronJob resource.
+{% endhint %}
+
+### Delete a schedule
+
+Deleting a schedule archives it by default (soft delete), which preserves references in historical pipeline runs that were triggered by this schedule:
+
+```bash
+# Archive a schedule (soft delete - default behavior)
+zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID>
+
+# Permanently delete a schedule and remove all references (hard delete)
+zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID> --hard
+```
+
+{% hint style="warning" %}
+Using `--hard` permanently removes the schedule and any historical references to it. Pipeline runs that were triggered by this schedule will no longer show the schedule association.
+{% endhint %}
+
+### Orchestrator support for schedule management
+
+The functionality of these commands changes depending on whether the orchestrator supports schedule updates/deletions (see the "Native Schedule Management" column in the table above):
+
+* **Kubernetes orchestrator**: Fully supports native schedule management. Update and delete commands will modify/remove the actual CronJob on the cluster as well as the schedule information in ZenML.
+* **Other schedulable orchestrators**: Only update/delete the schedule information stored in ZenML. The actual schedule on the orchestrator remains unchanged.
+
+If the orchestrator **does not** support native schedule management, maintaining the lifecycle of the schedule on the orchestrator side is the responsibility of the user. In these cases, we recommend the following steps:
 
 1. Find schedule on ZenML
 2. Match schedule on orchestrator side and delete
@@ -6123,6 +6169,59 @@ If you don't need all files inside your source root for step execution, see the 
 {% endhint %}
 
 
+# Execution
+
+Step and pipeline execution.
+
+This page explains what happens under the hood when ZenML executes steps in static and dynamic pipelines. Regardless of where or how a step executes (inline or in an isolated environment, synchronous or concurrent), ZenML applies the same core semantics: inputs are loaded via materializers, outputs are materialized as versioned artifacts, lineage/metadata and logs are recorded, caching policies are respected, and step/run status is published consistently.
+
+## Static pipelines
+
+In static pipelines, ZenML executes the pipeline function before running the pipeline to compile a DAG of steps, which the orchestrator then schedules according to their upstream dependencies. This pre-compilation allows ZenML to optimize execution order and validate the DAG structure before any steps run.
+
+### Execution scenarios
+
+![Static pipeline](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-1ac3d5cbe1ec72b8daee4922d18b606da488b763%2Fexecution-static.png?alt=media) ![Static pipeline with step operator](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-723920fc6e89bc0b1f9b591858849ce465068f1f%2Fexecution-static-step-operator.png?alt=media)
+
+## Dynamic pipelines
+
+[Dynamic pipelines](https://docs.zenml.io/documentation/concepts/steps_and_pipelines/dynamic_pipelines) execute the pipeline function at runtime. Each step executed inside the pipeline function can be:
+
+* **Inline** (runs inside the orchestration environment)
+* **Isolated** (runs in a separate environment via the orchestrator or a step operator)
+
+And each step call can be:
+
+* **Synchronous** (via `my_step(...)`): blocks until completion and returns the step output artifacts.
+* **Concurrent** (via `my_step.submit(...)`): starts step execution in a separate thread and returns a future. The pipeline function resumes execution immediately.
+
+### Execution scenarios
+
+#### Synchronous inline
+
+The step runs in-process inside the orchestration environment. The pipeline function blocks until the step completes.
+
+![Dynamic pipeline, synchronous inline step](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-5e44f5ac7b46db840c553bcf4ad7d32a70e44f91%2Fexecution-dynamic-sync-inline.png?alt=media)
+
+#### Concurrent inline
+
+The step runs in-process in a separate thread. The pipeline function continues immediately and only waits when results are consumed.
+
+![Dynamic pipeline, concurrent inline step](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-98cf90483e34ea7940231932c837846b4b12a944%2Fexecution-dynamic-concurrent-inline.png?alt=media)
+
+#### Synchronous isolated
+
+The step runs in a separate environment (via the orchestrator or step operator). The pipeline function blocks until the job completes.
+
+![Dynamic pipeline, synchronous isolated step](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-a2e7d2e2ad54b826a67e5b963b8b6ae6b450cdb4%2Fexecution-dynamic-sync-isolated.png?alt=media)
+
+#### Concurrent isolated
+
+The step runs in a separate environment (via the orchestrator or step operator). The pipeline function continues immediately and only waits when results are consumed.
+
+![Dynamic pipeline, concurrent isolated step](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-0227fb4502635214ec7fd2fc44e1e8b9d17d6e4c%2Fexecution-dynamic-concurrent-isolated.png?alt=media)
+
+
 # Advanced Features
 
 Advanced features and capabilities of ZenML pipelines and steps
@@ -6168,7 +6267,7 @@ You can run a single step directly:
 model, accuracy = train_classifier(X_train=X_train, y_train=y_train)
 ```
 
-This creates an [unlisted pipeline run](https://docs.zenml.io/user-guides/best-practices/keep-your-dashboard-server-clean#unlisted-runs) with just that step. If you want to bypass ZenML completely and run the underlying function directly:
+This creates a pipeline run with just that step. If you want to bypass ZenML completely and run the underlying function directly:
 
 ```python
 model, accuracy = train_classifier.entrypoint(X_train=X_train, y_train=y_train)
@@ -6269,6 +6368,59 @@ If steps 2, 3, and 4 execute in parallel and step 2 fails:
 {% hint style="info" %}
 All three execution modes are currently only supported by the `local`, `local_docker`, and `kubernetes` orchestrator flavors. For any other orchestrator flavor, the default (and only available) behavior is `CONTINUE_ON_FAILURE`. If you would like to see any of the other orchestrators extended to support the other execution modes, reach out to us in [Slack](https://zenml.io/slack-invite).
 {% endhint %}
+
+### Step Heartbeat
+
+Step heartbeat is a background mechanism that runs alongside step executions and performs two core functions:
+
+* Periodically pings the ZenML server to refresh the step's heartbeat value.
+* Retrieves the current pipeline and step status, and terminates the step if the pipeline has entered a stopping state.
+
+This enables ZenML to:
+
+* Track the liveness of a step execution and assess its health based on incoming heartbeats.
+* Gracefully interrupt running steps when a pipeline is being stopped.
+
+*Scope and current behavior*
+
+* Heartbeats are enabled only for steps executed in isolated environments. This excludes:
+  * `Inline` steps in `dynamic` pipelines.
+  * Steps run via the `local` orchestrator.
+  * Heartbeat is enabled by default.
+* A step that becomes unhealthy automatically triggers a graceful shutdown (currently supported for the `kubernetes` orchestrator).
+* When using `CONTINUE_ON_FAILURE` execution mode, heartbeat status is also used to decide whether execution tokens should be invalidated.
+
+*Configuration*
+
+You can configure how long a step may go without sending a heartbeat before it is considered unhealthy using the `heartbeat_healthy_threshold` step parameter. The default value currently applied is 30 minutes.
+
+```python
+from zenml import step
+
+@step(heartbeat_healthy_threshold=30)
+def my_step():
+    ...
+```
+
+You can disable heartbeat on the pipeline level if you pass the following configuration parameter:
+
+```python
+from zenml import pipeline
+
+@pipeline(enable_heartbeat=False)
+def my_pipeline():
+    ...
+```
+
+If you want to disable heartbeats for a *running* pipeline you can use the following ZenML store utility:
+
+```python
+from zenml.client import Client
+
+client = Client()
+
+client.zen_store.disable_run_heartbeat(run_id="run.id")
+```
 
 ## Data & Output Management
 
@@ -6832,6 +6984,407 @@ See also:
 
 * [Steps & Pipelines](https://docs.zenml.io/documentation/concepts/steps_and_pipelines) - Core building blocks
 * [YAML Configuration](https://docs.zenml.io/documentation/concepts/steps_and_pipelines/yaml_configuration) - YAML configuration
+
+
+# Dynamic Pipelines (Experimental)
+
+Write dynamic pipelines
+
+{% hint style="info" %}
+Dynamic pipelines are supported by the `local`, `local_docker`, `kubernetes`, `sagemaker`, `vertex`, and `azureml` orchestrators. Review the [Limitations and Known Issues](#limitations-and-known-issues) section for important details about running remotely.
+{% endhint %}
+
+## Why Dynamic Pipelines?
+
+Traditional ZenML pipelines require you to define the entire DAG structure at pipeline definition time. While this works well for many use cases, there are scenarios where you need more flexibility:
+
+* **Runtime-dependent workflows**: When the number of steps or their configuration depends on data computed during pipeline execution
+* **Dynamic parallelization**: When you need to spawn multiple parallel step executions based on runtime conditions
+* **Conditional execution**: When the workflow structure needs to adapt based on intermediate results
+
+Dynamic pipelines allow you to write pipelines that generate their DAG structure dynamically at runtime, giving you the power of Python's control flow (loops, conditionals) combined with ZenML's orchestration capabilities.
+
+## Basic Example
+
+The simplest dynamic pipeline uses regular Python control flow to determine step execution:
+
+```python
+from zenml import step, pipeline
+
+@step
+def generate_int() -> int:
+    return 3
+
+@step
+def do_something(index: int) -> None:
+    print(f"Processing index {index}")
+
+@pipeline(dynamic=True)
+def dynamic_pipeline() -> None:
+    count = generate_int()
+    # `count` is an artifact, we now load the data
+    count_data = count.load()
+
+    for idx in range(count_data):
+        # This will run sequentially, like regular Python code would.
+        do_something(idx)
+
+if __name__ == "__main__":
+    dynamic_pipeline()
+```
+
+In this example, the number of `do_something` steps executed depends on the value returned by `generate_int()`, which is only known at runtime.
+
+## Key Features
+
+### Dynamic Step Configuration
+
+You can configure steps dynamically within your pipeline using `with_options()`:
+
+```python
+@pipeline(dynamic=True)
+def dynamic_pipeline():
+    some_step.with_options(enable_cache=False)()
+```
+
+This allows you to modify step behavior based on runtime conditions or data.
+
+### Step Runtime Configuration
+
+You can control where a step executes by specifying its runtime:
+
+* **`runtime="inline"`**: The step runs in the orchestration environment (same process/container as the orchestrator)
+* **`runtime="isolated"`**: The orchestrator spins up a separate step execution environment (new container/process)
+
+```python
+@step(runtime="isolated")
+def some_step() -> None:
+    # This step will run in its own isolated environment
+    ...
+
+@step(runtime="inline")
+def another_step() -> None:
+    # This step will run in the orchestration environment
+    ...
+```
+
+Use `runtime="isolated"` when you need:
+
+* Better resource isolation
+* Different environment requirements
+* Parallel execution (see below)
+
+Use `runtime="inline"` when you need:
+
+* Faster execution (no container startup overhead)
+* Shared resources with the orchestrator
+* Sequential execution
+
+### Map/Reduce over collections
+
+Dynamic pipelines support a high-level map/reduce pattern over sequence-like step outputs. This lets you fan out a step across items of a collection and then reduce the results without manually writing loops or loading data in the orchestration environment.
+
+```python
+from zenml import pipeline, step
+
+@step
+def producer() -> list[int]:
+    return [1, 2, 3]
+
+@step
+def worker(value: int) -> int:
+    return value * 2
+
+@step
+def reducer(values: list[int]) -> int:
+    return sum(values)
+
+@pipeline(dynamic=True, enable_cache=False)
+def map_reduce():
+    values = producer()
+    results = worker.map(values)   # fan out over collection
+    reducer(results)               # pass list of artifacts directly
+```
+
+Key points:
+
+* `step.map(...)` fans out a step over sequence-like inputs. These inputs can be either
+  * a single list-like output artifact (see the code sample above)
+  * a list of output artifacts.
+  * the output of a `.map(...)` or `.product(...)` call if the respective step only returns a single output artifact
+* Steps can accept lists of artifacts directly as inputs (useful for reducers).
+* You can pass the mapped output directly to a downstream step without loading in the orchestration environment.
+
+#### Mapping semantics: map vs product
+
+* `step.map(...)`: If multiple sequence-like inputs are provided, all must have the same length `n`. ZenML creates `n` mapped steps where the i-th step receives the i-th element from each input.
+* `step.product(...)`: Creates a mapped step for each combination of elements across all input sequences (cartesian product).
+
+Example (cartesian product):
+
+```python
+from zenml import pipeline, step
+
+@step
+def int_values() -> list[int]:
+    return [1, 2]
+
+@step
+def str_values() -> list[str]:
+    return ["a", "b", "c"]
+
+@step
+def do_something(a: int, b: str) -> int:
+    ...
+
+@pipeline(dynamic=True)
+def cartesian_example():
+    a = int_values()
+    b = str_values()
+    # Produces 2 * 3 = 6 mapped steps
+    do_something.product(a=a, b=b)
+```
+
+#### Broadcasting inputs with unmapped(...)
+
+If you want to pass a sequence-like artifact as a whole to each mapped invocation (i.e., avoid splitting), wrap it with `unmapped(...)`:
+
+```python
+from zenml import pipeline, step, unmapped
+
+@step
+def producer(length: int) -> list[int]:
+    return [1] * length
+
+@step
+def consumer(a: int, b: list[int]) -> None:
+    # `b` is the full list for every mapped call
+    ...
+
+@pipeline(dynamic=True)
+def unmapped_example():
+    a = producer(length=3)   # list of 3 ints
+    b = producer(length=4)   # list of 4 ints
+    consumer.map(a=a, b=unmapped(b))
+```
+
+#### Unpacking mapped outputs
+
+If a mapped step returns multiple outputs, you can split them into separate lists (one per output) using `unpack()`. This returns a tuple of lists of artifact futures, aligned by mapped invocation.
+
+```python
+from zenml import pipeline, step
+
+@step
+def create_int_list() -> list[int]:
+    return [1, 2]
+
+@step
+def compute(a: int) -> tuple[int, int]:
+    return a * 2, a * 3
+
+@pipeline(dynamic=True)
+def map_pipeline():
+    ints = create_int_list()
+    results = compute.map(a=ints)  # Map over [1, 2]
+
+    # Unpack per-output across all mapped invocations
+    double, triple = results.unpack()
+
+    # Each element is an ArtifactFuture; load to get concrete values
+    doubles = [f.load() for f in double]  # [2, 4]
+    triples = [f.load() for f in triple]  # [3, 6]
+```
+
+Notes:
+
+* `results` is a future that refers to all outputs of all steps, and `unpack()` works for both `.map(...)` and `.product(...)`.
+* Each list contains future objects that refer to a single artifact.
+
+#### Manual Looping: `.chunk()` vs `.load()`
+
+When looping over artifacts manually, you need two different operations:
+
+| Method        | Purpose                  | When to Use                               |
+| ------------- | ------------------------ | ----------------------------------------- |
+| `.load()`     | Gets the **actual data** | Making decisions, filtering, control flow |
+| `.chunk(idx)` | Creates a **DAG edge**   | Passing to downstream steps               |
+
+{% hint style="info" %}
+**Mental model**: `.chunk()` is for wiring (tells the orchestrator "this step depends on item X from upstream"), `.load()` is for decisions (gets values for your Python logic). You typically need both: load to iterate and decide, chunk to wire up the DAG.
+{% endhint %}
+
+```python
+from zenml import pipeline, step
+
+@step
+def create_int_list() -> list[int]:
+    return [1, 2, 3, 4]
+
+@step
+def compute(a: int) -> int:
+    return a * 2
+
+@pipeline(dynamic=True)
+def custom_loop():
+    ints = create_int_list()
+
+    # .load() to get values for Python control flow (iteration + filtering)
+    for index, value in enumerate(ints.load()):
+        if value % 2 == 0:
+            # .chunk() to create DAG edge (wiring to downstream step)
+            chunk = ints.chunk(index=index)
+            compute(chunk)
+```
+
+### Parallel Step Execution
+
+Dynamic pipelines support true parallel execution using `step.submit()`. This method returns a `StepRunFuture` that you can use to wait for results or pass to downstream steps:
+
+```python
+from zenml import step, pipeline
+
+@step
+def some_step(arg: int) -> int:
+    return arg * 2
+
+@pipeline(dynamic=True)
+def dynamic_pipeline():
+    # Submit a step for parallel execution
+    future = some_step.submit(arg=1)
+    
+    # Wait and get artifact response(s)
+    artifact = future.result()
+    
+    # Wait and load artifact data
+    data = future.load()
+    
+    # Pass the output to another step
+    downstream_step(future)
+
+    # Run multiple steps in parallel
+    for idx in range(3):
+        some_step.submit(arg=idx)
+```
+
+The `StepRunFuture` object provides several methods:
+
+* **`result()`**: Wait for the step to complete and return the artifact response(s)
+* **`load()`**: Wait for the step to complete and load the actual artifact data
+* **Pass directly**: You can pass a `StepRunFuture` directly to downstream steps, and ZenML will automatically wait for it
+
+{% hint style="info" %}
+When using `step.submit()`, steps with `runtime="isolated"` will execute in separate containers/processes, while steps with `runtime="inline"` will execute in separate threads within the orchestration environment.
+{% endhint %}
+
+### Config Templates with `depends_on`
+
+You can use YAML configuration files to provide default parameters for steps using the `depends_on` parameter:
+
+```yaml
+# config.yaml
+steps:
+  some_step:
+    parameters:
+      arg: 3
+```
+
+```python
+# run.py
+from zenml import step, pipeline
+
+@step
+def some_step(arg: int) -> None:
+    print(f"arg is {arg}")
+
+@pipeline(dynamic=True, depends_on=[some_step])
+def dynamic_pipeline():
+    some_step()
+
+if __name__ == "__main__":
+    dynamic_pipeline.with_options(config_path="config.yaml")()
+```
+
+The `depends_on` parameter tells ZenML which steps can be configured via the YAML file. This is particularly useful when you want to allow users to configure pipeline behavior without modifying code.
+
+### Pass pipeline parameters when running snapshots from the server
+
+When running a snapshot from the server (either via the UI or the SDK/Rest API), you can now pass pipeline parameters for your dynamic pipelines.
+
+For example:
+
+```python
+from zenml.client import Client
+
+Client().trigger_pipeline(snapshot_id=<ID>, run_configuration={"parameters": {"my_param": 3}})
+```
+
+## Limitations and Known Issues
+
+### Logging
+
+Our logging storage isn't threadsafe yet, which means logs from parallel steps may be mixed up when multiple steps execute concurrently. This is a known limitation that we're working to address.
+
+### Error Handling
+
+When running multiple steps concurrently using `step.submit()`, a failure in one step does not automatically stop other steps. Instead, they continue executing until finished. You should implement your own error handling logic if you need coordinated failure behavior.
+
+### Orchestrator Support
+
+Dynamic pipelines are currently only supported by:
+
+| Orchestrator                                                                                        | Isolated steps | Handles orchestration environment failures |
+| --------------------------------------------------------------------------------------------------- | :------------: | :----------------------------------------: |
+| [LocalOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/local)              |        ❌       |                      ❌                     |
+| [LocalDockerOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/local-docker) |        ❌       |                      ❌                     |
+| [KubernetesOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/kubernetes)    |        ✅       |                      ✅                     |
+| [VertexOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/vertex)            |        ✅       |                      ❌                     |
+| [SagemakerOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/sagemaker)      |        ✅       |                      ❌                     |
+| [AzureMLOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/azureml)          |        ✅       |                      ❌                     |
+
+### Artifact Loading
+
+When you call `.load()` on an artifact in a dynamic pipeline, it synchronously loads the data. For large artifacts or when you want to maintain parallelism, consider passing the step outputs (future or artifact) directly to downstream steps instead of loading them.
+
+### Mapping Limitations
+
+* Mapping is currently supported only over artifacts produced within the same pipeline run (mapping over raw data or external artifacts is not supported).
+* Chunk size for mapped collection loading defaults to 1 and is not yet configurable.
+
+### Execution mode
+
+Currently only the `STOP_ON_FAILURE` execution mode is supported for dynamic pipelines, and will be used as a default.
+
+## Best Practices
+
+1. **Use `runtime="isolated"` for parallel steps**: This ensures better resource isolation and prevents interference between concurrent step executions.
+2. **Handle step outputs appropriately**: If you need the data immediately, use `.load()`. If you're just passing to another step, pass the output directly.
+3. **Be mindful of resource usage**: Running many steps in parallel can consume significant resources. Monitor your orchestrator's resource limits.
+4. **Test incrementally**: Start with simple dynamic pipelines and gradually add complexity. Dynamic pipelines can be harder to debug than static ones.
+5. **Use config templates for flexibility**: The `depends_on` feature allows you to make pipelines configurable without code changes.
+
+## When to Use Dynamic Pipelines
+
+Dynamic pipelines are ideal for:
+
+* **AI agent orchestration**: Coordinating multiple autonomous agents (e.g., retrieval or reasoning agents) whose interactions or number of invocations are determined at runtime
+* **Hyperparameter tuning**: Spawning multiple training runs with different configurations
+* **Data processing**: Processing variable numbers of data chunks in parallel
+* **Conditional workflows**: Adapting pipeline structure based on runtime data
+* **Dynamic batching**: Creating batches based on available data
+* **Multi-agent and collaborative AI workflows**: Building flexible, adaptive workflows where agents or LLM-driven components can be dynamically spawned, routed, or looped based on outputs, results, or user input
+
+For most standard ML workflows, traditional static pipelines are simpler and more maintainable. Use dynamic pipelines when you specifically need runtime flexibility that static pipelines cannot provide.
+
+## Real-World Example: Hierarchical Document Search
+
+The [`examples/hierarchical_doc_search_agent`](https://github.com/zenml-io/zenml/tree/main/examples/hierarchical_doc_search_agent) example combines dynamic pipelines with Pydantic AI agents for intelligent document traversal. It demonstrates:
+
+* Using `.with_options()` to pass parameters vs artifacts
+* The `.chunk()` vs `.load()` pattern: chunks for wiring the DAG, loads for making traversal decisions
+* Spawning steps dynamically based on AI agent decisions
+
+Each `traverse_node` call appears as a separate step in the DAG, created at runtime based on what the agent decides to explore.
 
 
 # Artifacts
@@ -8471,7 +9024,7 @@ Without snapshots, each scenario would require:
 * **Through REST API**: Your CI/CD system can trigger snapshots via API calls
 
 ```bash
-  curl -X POST 'https://your-zenml-server/api/v1/pipeline-snapshots/<ID>/runs' -H 'Authorization: Bearer <TOKEN>' -d '{"steps": {...}}'
+  curl -X POST 'https://your-zenml-server/api/v1/pipeline-snapshots/<ID>/runs' -H 'Authorization: Bearer <TOKEN>' -d '{"run_configuration": {...}}'
 ```
 
 * **Through Browser** (Pro feature): Non-technical stakeholders can run snapshots directly from the ZenML dashboard by simply filling in a form with the required parameters - no coding required!
@@ -8608,7 +9161,7 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <YOUR-TOKEN>' \
   -d '{
-  "steps": {"model_trainer": {"parameters": {"model_type": "rf"}}}
+  "run_configuration" { "steps": {"model_trainer": {"parameters": {"model_type": "rf"}}}}
 }'
 ```
 
@@ -10564,8 +11117,8 @@ In future versions, if none of the `replicate_local_python_environment`, `pyproj
        "uv",
        "export",
        "--extra=train",
-       "--format=requirements-txt"
-       "--directory={directory}
+       "--format=requirements-txt",
+       "--directory={directory}"
    ])
 
 
@@ -10661,6 +11214,10 @@ The available package installers are:
 * `pip`: An alternative python package installer
 
 Full documentation for how `uv` works with PyTorch can be found on the Astral Docs website [here](https://docs.astral.sh/uv/guides/integration/pytorch/). It covers some of the particular gotchas and details you might need to know.
+
+{% hint style="info" %}
+If you're using `uv` and specify a custom parent image or Dockerfile that does not have an activated virtual environment, you need to pass `python_package_installer_args={"system": None}` in your DockerSettings so that `uv` installs the packages for the Python system installation. Depending on the parent image, you might also need to include `"break-system-packages": None` in the installer args as well to make it work.
+{% endhint %}
 
 ## Private PyPI Repositories
 
@@ -11145,7 +11702,15 @@ zenml secret create agent_tools_secret \
     --google_search_api_key=AIza... \
     --weather_api_key=abc123 \
     --database_url=postgresql://user:pass@host/db
+
+# Create a private secret (only you can access it)
+zenml secret create my_private_secret --private \
+    --api_key=secret-value
 ```
+
+{% hint style="info" %}
+By default, secrets are public (visible to other users based on RBAC). Use `--private` or `-p` to create a secret only you can access. See [Private and public secrets](#private-and-public-secrets) for more details.
+{% endhint %}
 
 Alternatively, you can create the secret in an interactive session (in which ZenML will query you for the secret keys and values) by passing the `--interactive/-i` parameter:
 
@@ -11200,26 +11765,141 @@ client.create_secret(
         "organization_id": "org-..."
     }
 )
+
+# Create a private secret (only you can access it)
+client.create_secret(
+    name="my_private_secret",
+    values={"api_key": "secret-value"},
+    private=True,
+)
 ```
+
+{% hint style="info" %}
+By default, secrets are public (`private=False`). Set `private=True` to create a secret only you can access. See [Private and public secrets](#private-and-public-secrets) for more details.
+{% endhint %}
 
 Other Client methods used for secrets management include `get_secret` to fetch a secret by name or id, `update_secret` to update an existing secret, `list_secrets` to query the secrets store using a variety of filtering and sorting criteria, and `delete_secret` to delete a secret. The full Client API reference is available [here](https://sdkdocs.zenml.io/latest/core_code_docs/core-client.html).
 {% endtab %}
 {% endtabs %}
 
-## Set scope for secrets
+## Private and public secrets
 
-ZenML secrets can be scoped to a user. This allows you to create secrets that are only accessible to one user.
+ZenML secrets can be either **private** or **public**:
 
-By default, all created secrets are scoped to the active user. To create a secret and scope it to your active user instead, you can pass the `--scope` argument to the CLI command:
+* **Private secrets** are only accessible to the user who created them. No other user can view, use, or manage a private secret, regardless of their role or permissions.
+* **Public secrets** (the default) are accessible to other users based on your RBAC configuration. On ZenML Pro, access to public secrets is governed by your role-based access control settings.
+
+{% hint style="info" %}
+The `private` property takes precedence over RBAC. A private secret is **only** visible to its creator, even if RBAC would otherwise grant access to other users.
+{% endhint %}
+
+### Creating private secrets
+
+By default, secrets are created as public (`private=False`). To create a private secret:
+
+{% tabs %}
+{% tab title="CLI" %}
 
 ```shell
-zenml secret create <SECRET_NAME> \
-    --scope user \
+# Use the --private or -p flag
+zenml secret create <SECRET_NAME> --private \
     --<KEY_1>=<VALUE_1> \
     --<KEY_2>=<VALUE_2>
+
+# Short form
+zenml secret create <SECRET_NAME> -p \
+    --<KEY_1>=<VALUE_1>
 ```
 
-Scopes also act as individual namespaces. When you are referencing a secret by name in your pipelines and stacks, ZenML will look for a secret with that name scoped to the active user.
+{% endtab %}
+
+{% tab title="Python SDK" %}
+
+```python
+from zenml.client import Client
+
+client = Client()
+client.create_secret(
+    name="my_private_secret",
+    values={"api_key": "..."},
+    private=True,  # Makes this secret private
+)
+```
+
+{% endtab %}
+{% endtabs %}
+
+{% hint style="warning" %}
+Currently, setting the private status is only available via the CLI and Python SDK. The dashboard UI does not yet support creating or modifying private secrets.
+{% endhint %}
+
+### Fetching secrets with the same name
+
+Since private and public secrets exist in separate namespaces, you can have both a private and a public secret with the same name. When fetching a secret by name without specifying its visibility:
+
+* ZenML searches **private secrets first**, then public secrets
+* The first match is returned
+
+To explicitly fetch a secret of a specific visibility:
+
+{% tabs %}
+{% tab title="CLI" %}
+
+```shell
+# Explicitly fetch a private secret
+zenml secret get my_secret --private=true
+
+# Explicitly fetch a public secret
+zenml secret get my_secret --private=false
+```
+
+{% endtab %}
+
+{% tab title="Python SDK" %}
+
+```python
+from zenml.client import Client
+
+client = Client()
+
+# Explicitly fetch a private secret
+private_secret = client.get_secret("my_secret", private=True)
+
+# Explicitly fetch a public secret
+public_secret = client.get_secret("my_secret", private=False)
+```
+
+{% endtab %}
+{% endtabs %}
+
+### Updating secret visibility
+
+You can change a secret's visibility after creation:
+
+{% tabs %}
+{% tab title="CLI" %}
+
+```shell
+# Make a public secret private
+zenml secret update my_secret --private=true
+
+# Make a private secret public
+zenml secret update my_secret --private=false
+```
+
+{% endtab %}
+
+{% tab title="Python SDK" %}
+
+```python
+from zenml.client import Client
+
+client = Client()
+client.update_secret("my_secret", update_private=True)  # Make private
+```
+
+{% endtab %}
+{% endtabs %}
 
 ## Accessing registered secrets
 
@@ -11546,7 +12226,7 @@ add_tags(tags=["my_tag"], artifact="my_artifact_name_or_id")
 Alternatively, you can tag an artifact by using CLI as well:
 
 ```bash
-zenml artifacts update my_artifact -t my_tag
+zenml artifact update my_artifact -t my_tag
 ```
 
 ### Assigning tags to artifact versions
@@ -11588,7 +12268,7 @@ Moreover, you can tag an artifact version by using the CLI:
 
 ```bash
 # Tag the artifact version
-zenml artifacts versions update iris_dataset raw_2023 -t sklearn
+zenml artifact version update iris_dataset -v raw_2023 -t sklearn
 ```
 
 {% hint style="info" %}
@@ -11616,8 +12296,7 @@ from zenml import add_tags
 add_tags(tags=["my_tag"], run="run_name_or_id")
 ```
 
-Alternatively, you can use the same function within a step without\
-specifying any arguments, which will automatically tag the run:
+Alternatively, you can use the same function within a step without specifying any arguments, which will automatically tag the run:
 
 ```python
 from zenml import step, add_tags
@@ -11818,6 +12497,10 @@ ZenML makes it easy to log and retrieve this information through a simple interf
 ## Logging Metadata
 
 The primary way to log metadata in ZenML is through the `log_metadata` function, which allows you to attach JSON-serializable key-value pairs to various entities.
+
+{% hint style="info" %}
+Metadata supports primitive types (`str`, `int`, `float`, `bool`), collections (`list`, `dict`, `set`, `tuple`), and special ZenML types (`Uri`, `Path`, `DType`, `StorageSize`). Sets and tuples are automatically converted to lists during storage.
+{% endhint %}
 
 ```python
 from zenml import log_metadata
@@ -13253,6 +13936,28 @@ To set the path to the global config file, used by ZenML to manage and store the
 export ZENML_CONFIG_PATH=/path/to/somewhere
 ```
 
+## CLI output formatting
+
+### Default output format
+
+Set the default output format for all CLI list commands:
+
+```bash
+export ZENML_DEFAULT_OUTPUT=json
+```
+
+Choose from `table` (default), `json`, `yaml`, `csv`, or `tsv`. This applies to commands like `zenml stack list`, `zenml pipeline list`, etc.
+
+### Terminal width override
+
+Override the automatic terminal width detection for table rendering:
+
+```bash
+export ZENML_CLI_COLUMN_WIDTH=120
+```
+
+This is useful when running ZenML in CI/CD environments or when you want to control table formatting regardless of your terminal size.
+
 ## Server configuration
 
 For more information on server configuration, see the [ZenML Server documentation](https://docs.zenml.io/documentation/deploying-zenml/deploying-zenml/deploy-with-docker#zenml-server-configuration-options) for more, especially the section entitled "ZenML server configuration options".
@@ -13270,17 +13975,23 @@ export ZENML_ACTIVE_PROJECT_ID=<PROJECT_ID>
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
 
-# MCP Docs & llms.txt
+# LLM Tooling
 
-Access ZenML documentation via MCP server or llms.txt
+LLM tooling for ZenML - MCP servers, llms.txt, and Agent Skills
 
-### About llms.txt
+ZenML provides multiple ways to enhance your AI-assisted development workflow:
+
+* **MCP servers** for real-time doc queries and server interaction
+* **llms.txt** for grounding LLMs with ZenML documentation
+* **Agent Skills** for guided implementation of ZenML features
+
+## About llms.txt
 
 The llms.txt file format was proposed by [llmstxt.org](https://llmstxt.org/) as a standard way to provide information to help LLMs answer questions about a product/website. From their website:
 
 > We propose adding a /llms.txt markdown file to websites to provide LLM-friendly content. This file offers brief background information, guidance, and links to detailed markdown files. llms.txt markdown is human and LLM readable, but is also in a precise format allowing fixed processing methods (i.e. classical programming techniques such as parsers and regex).
 
-### ZenML's llms.txt
+## ZenML's llms.txt
 
 ZenML's documentation is now made available to LLMs at the following link:
 
@@ -13290,7 +14001,7 @@ https://docs.zenml.io/llms.txt
 
 This file contains a comprehensive summary of the ZenML documentation (containing links and descriptions) that LLMs can use to answer questions about ZenML's features, functionality, and usage.
 
-### How to use the llms.txt file
+## How to use the llms.txt file
 
 When working with LLMs (like ChatGPT, Claude, or others), you can use this file to help the model provide more accurate answers about ZenML:
 
@@ -13298,19 +14009,19 @@ When working with LLMs (like ChatGPT, Claude, or others), you can use this file 
 * While prompting, instruct the LLM to only provide answers based on information contained in the file to avoid hallucinations
 * For best results, use models with sufficient context window to process the entire file
 
-### Use llms-full.txt for complete documentation context
+## Use llms-full.txt for complete documentation context
 
 The llms-full.txt file contains the entire ZenML documentation in a single, concatenated markdown file optimized for LLMs. Use it when you want to load all docs as context at once (for example, a one-shot grounding pass) rather than querying individual pages. Access it here: <https://docs.zenml.io/llms-full.txt>. For interactive, selective queries from your IDE, the built-in MCP server is still the recommended option.
 
-### Use the built-in GitBook MCP server (recommended)
+## Use the built-in GitBook MCP server (recommended)
 
 ZenML docs are also exposed through a native GitBook MCP server that IDE agents can query in real time.
 
 * Endpoint: <https://docs.zenml.io/\\~gitbook/mcp>
 
-#### Quick setup
+### Quick setup
 
-**Claude Code (VS Code)**
+#### Claude Code (VS Code)
 
 Run the following command in your terminal to add the server:
 
@@ -13318,7 +14029,7 @@ Run the following command in your terminal to add the server:
 claude mcp add zenmldocs --transport http https://docs.zenml.io/~gitbook/mcp
 ```
 
-**Cursor**
+#### Cursor
 
 Add the server via Cursor's JSON settings (Settings → search "MCP" → Configure via JSON):
 
@@ -13335,13 +14046,17 @@ Add the server via Cursor's JSON settings (Settings → search "MCP" → Configu
 }
 ```
 
-#### Why use it
+### Why use it
 
 * Live doc queries directly from your IDE agent
 * Syntax-aware, source-of-truth answers with fewer hallucinations
 * Faster feature discovery across guides, APIs, and examples
 
 The MCP server indexes the latest released documentation, not the develop branch.
+
+{% hint style="info" %}
+**Looking to chat with your ZenML server data?** ZenML also provides its own MCP server that connects directly to your ZenML server, allowing you to query pipelines, analyze runs, and trigger executions through natural language. See the [MCP Chat with Server guide](https://docs.zenml.io/user-guides/best-practices/mcp-chat-with-server) for setup instructions.
+{% endhint %}
 
 Prefer the native GitBook MCP server above for the best experience; if you prefer working directly with llms.txt or need alternative workflows, the following tools are helpful:
 
@@ -13350,6 +14065,96 @@ To use the llms.txt file in partnership with an MCP client, you can use the foll
 * [GitMCP](https://gitmcp.io/) - A way to quickly create an MCP server for a github repository (e.g. for `zenml-io/zenml`)
 * [mcp-llms](https://github.com/parlance-labs/mcp-llms.txt/) - This shows how to use an MCP server to iteratively explore the llms.txt file with your MCP client
 * [mcp-llms-txt-explorer](https://github.com/thedaviddias/mcp-llms-txt-explorer) - A tool to help you explore and discover websites that have llms.txt files
+
+## ZenML Agent Skills
+
+Agent Skills are modular capabilities that help AI coding agents perform specific tasks. ZenML publishes skills through a plugin marketplace that works with many popular agentic coding tools.
+
+### Supported tools
+
+ZenML skills work with tools that support the Agent Skills format:
+
+| Tool                                                  | Type                    | Skills support             |
+| ----------------------------------------------------- | ----------------------- | -------------------------- |
+| [Claude Code](https://code.claude.com/)               | Anthropic's CLI agent   | Native plugin marketplace  |
+| [OpenAI Codex CLI](https://github.com/openai/codex)   | OpenAI's terminal agent | Native skills support      |
+| [GitHub Copilot](https://github.com/features/copilot) | IDE coding assistant    | Agent Skills integration   |
+| [OpenCode](https://github.com/opencode-ai/opencode)   | Open source AI agent    | Native skills support      |
+| [Amp](https://amp.dev)                                | AI coding assistant     | Agent Skills integration   |
+| [Cursor](https://cursor.sh)                           | AI-powered IDE          | Via settings configuration |
+| [Gemini CLI](https://github.com/google/gemini-cli)    | Google's terminal agent | Skills support             |
+
+### Installing ZenML skills
+
+#### Claude Code
+
+```bash
+# Add the ZenML marketplace (one-time setup)
+/plugin marketplace add zenml-io/skills
+
+# Install available skills
+/plugin install zenml-quick-wins@zenml
+```
+
+#### OpenAI Codex CLI
+
+```bash
+# Add the ZenML marketplace
+codex plugin add zenml-io/skills
+
+# Install skills
+codex plugin install zenml-quick-wins@zenml
+```
+
+### Available skills
+
+#### `zenml-quick-wins`
+
+Guides you through discovering and implementing high-impact ZenML features. The skill investigates your current setup, recommends priorities based on your stack, and helps implement improvements interactively.
+
+**Use when:**
+
+* You want to improve your ZenML setup
+* You're looking for MLOps best practices to adopt
+* You need help with features like experiment tracking, alerting, scheduling, or model governance
+
+**What it does:**
+
+1. **Investigate** - Analyzes your stack configuration and codebase
+2. **Recommend** - Prioritizes quick wins based on your current setup
+3. **Implement** - Helps you apply selected improvements
+4. **Verify** - Confirms the implementation works
+
+**Example prompts:**
+
+```
+Use zenml-quick-wins to analyze this repo and recommend the top 3 quick wins.
+
+Implement metadata logging and tags across my pipelines.
+
+Set up Slack alerts for pipeline failures.
+```
+
+See the [Quick Wins guide](https://github.com/zenml-io/zenml/blob/main/docs/book/user-guide/best-practices/quick-wins.md) for the full catalog of improvements this skill can help implement.
+
+### Coming soon
+
+We're developing additional skills to help with common ZenML workflows:
+
+* **Pipeline creation** - Scaffolding new pipelines from templates
+* **Stack setup** - Guided stack component configuration
+* **Debugging** - Investigating pipeline failures and performance issues
+* **Migration** - Migrating from other MLOps platforms and orchestrators to ZenML
+
+### Combining MCP + Skills
+
+For the best AI-assisted ZenML development experience, combine:
+
+1. **GitBook MCP server** (`https://docs.zenml.io/~gitbook/mcp`) - For doc-grounded answers
+2. **ZenML server MCP** ([setup guide](https://github.com/zenml-io/zenml/blob/main/docs/book/user-guide/best-practices/mcp-chat-with-server.md)) - For querying your live pipelines, runs, and stacks
+3. **Agent Skills** - For guided implementation of features
+
+This gives your AI assistant access to documentation, your actual ZenML data, and structured workflows for making changes.
 
 
 # FAQ
@@ -13501,6 +14306,10 @@ Using the default local database.
 ┗━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┛
 ```
 
+{% hint style="info" %}
+The output can be customized with an `--output` (json, yaml, csv, tsv, table) option and a `--columns` selection. See [environment variables](https://docs.zenml.io/documentation/environment-variables#cli-output-formatting) for more details.
+{% endhint %}
+
 The following is an example of the layout of the global config directory immediately after initialization:
 
 ```
@@ -13593,7 +14402,7 @@ zenml clean
 
 All legacy docs of ZenML
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>0.91.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.0/</a></td></tr><tr><td>0.90.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.90.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.90.0/</a></td></tr><tr><td>0.85.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.85.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.85.0/</a></td></tr><tr><td>0.84.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.3/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.3/</a></td></tr><tr><td>0.84.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.2/</a></td></tr><tr><td>0.84.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.1/</a></td></tr><tr><td>0.84.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.0/</a></td></tr><tr><td>0.83.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.1/</a></td></tr><tr><td>0.83.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.0/</a></td></tr><tr><td>0.82.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.82.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.82.0/</a></td></tr><tr><td>0.81.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.81.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.81.0/</a></td></tr><tr><td>0.80.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.2/</a></td></tr><tr><td>0.80.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.1/</a></td></tr><tr><td>0.80.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.0/</a></td></tr><tr><td>0.75.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.75.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.75.0/</a></td></tr><tr><td>0.74.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.74.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.74.0/</a></td></tr><tr><td>0.73.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.73.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.73.0/</a></td></tr><tr><td>0.72.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.72.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.72.0</a></td></tr><tr><td>0.71.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.71.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.71.0</a></td></tr><tr><td>0.70.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.70.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.70.0</a></td></tr><tr><td>0.68.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.68.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.68.1</a></td></tr><tr><td>0.68.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.68.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.68.0/</a></td></tr><tr><td>0.67.0</td><td></td><td></td><td><a href="https://app.gitbook.com/o/-MCl1Hlw9oU4xibZ-ymf/s/IAT17KUXNgudlhTyCPn4/">0.67.0</a></td></tr><tr><td>0.66.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.66.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.66.0</a></td></tr><tr><td>0.65.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.65.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.65.0/</a></td></tr><tr><td>0.64.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.64.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.64.0/</a></td></tr><tr><td>0.63.0</td><td></td><td></td><td><a href="https://app.gitbook.com/o/-MCl1Hlw9oU4xibZ-ymf/s/N7uiChp9LXuqoNrLj3U3/">0.63.0</a></td></tr><tr><td>0.62.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.62.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.62.0/</a></td></tr><tr><td>0.61.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.61.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.61.0</a></td></tr><tr><td>0.60.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.60.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.60.0/</a></td></tr><tr><td>0.58.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.2/</a></td></tr><tr><td>0.58.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.1/</a></td></tr><tr><td>0.58.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.0</a></td></tr><tr><td>0.57.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.1</a></td></tr><tr><td>0.57.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.0</a></td></tr><tr><td>0.56.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.4">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.4</a></td></tr><tr><td>0.56.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.3">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.3</a></td></tr><tr><td>0.56.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.2</a></td></tr><tr><td>0.56.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.1</a></td></tr><tr><td>0.55.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.5">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.5</a></td></tr><tr><td>0.55.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.4">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.4</a></td></tr><tr><td>0.55.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.3">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.3</a></td></tr><tr><td>0.55.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.2</a></td></tr><tr><td>0.55.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.1</a></td></tr><tr><td>0.55.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.0</a></td></tr><tr><td>0.54.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.1</a></td></tr><tr><td>0.54.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.0</a></td></tr><tr><td>0.53.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.1</a></td></tr><tr><td>0.53.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.0</a></td></tr><tr><td>0.52.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.52.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.52.0</a></td></tr><tr><td>0.51.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.51.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.51.0</a></td></tr><tr><td>0.50.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.50.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.50.0</a></td></tr><tr><td>0.47.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.47.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.47.0-legacy</a></td></tr><tr><td>0.46.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.1-legacy</a></td></tr><tr><td>0.46.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.0-legacy</a></td></tr><tr><td>0.45.6</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.6-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.6-legacy</a></td></tr><tr><td>0.45.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.5-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.5-legacy</a></td></tr><tr><td>0.45.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.4-legacy</a></td></tr><tr><td>0.45.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.3-legacy</a></td></tr><tr><td>0.45.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.2-legacy</a></td></tr><tr><td>0.44.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.4-legacy</a></td></tr><tr><td>0.44.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.3-legacy</a></td></tr><tr><td>0.44.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.2-legacy</a></td></tr><tr><td>0.44.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.1-legacy</a></td></tr><tr><td>0.43.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.1-legacy</a></td></tr><tr><td>0.43.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.0-legacy</a></td></tr><tr><td>0.42.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.2-legacy</a></td></tr><tr><td>0.42.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.1-legacy</a></td></tr><tr><td>0.42.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.0-legacy</a></td></tr><tr><td>0.41.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.41.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.41.0-legacy</a></td></tr><tr><td>0.40.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.3-legacy</a></td></tr><tr><td>0.40.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.2-legacy</a></td></tr><tr><td>0.40.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.1-legacy</a></td></tr><tr><td>0.40.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.0-legacy</a></td></tr><tr><td>0.39.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.1-legacy</a></td></tr><tr><td>0.39.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.0-legacy</a></td></tr><tr><td>0.38.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.38.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.38.0-legacy</a></td></tr><tr><td>0.37.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.37.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.37.0-legacy</a></td></tr><tr><td>0.36.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.1-legacy</a></td></tr><tr><td>0.36.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.0-legacy</a></td></tr><tr><td>0.35.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.1-legacy</a></td></tr><tr><td>0.35.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.0-legacy</a></td></tr><tr><td>0.34.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.34.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.34.0-legacy</a></td></tr><tr><td>0.33.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.33.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.33.0-legacy</a></td></tr><tr><td>0.32.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.1-legacy</a></td></tr><tr><td>0.32.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.0-legacy</a></td></tr><tr><td>0.31.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.1-legacy</a></td></tr><tr><td>0.31.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.0-legacy</a></td></tr><tr><td>0.30.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.30.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.30.0-legacy</a></td></tr><tr><td>0.20.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.5-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.5-legacy</a></td></tr><tr><td>0.20.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.4-legacy</a></td></tr><tr><td>0.20.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.3-legacy</a></td></tr><tr><td>0.20.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.2-legacy</a></td></tr><tr><td>0.20.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.0-legacy</a></td></tr><tr><td>0.13.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.2</a></td></tr><tr><td>0.13.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.1</a></td></tr><tr><td>0.13.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.0</a></td></tr><tr><td>0.12.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.12.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.12.0</a></td></tr><tr><td>0.11.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.11.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.11.0</a></td></tr><tr><td>0.10.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.10.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.10.0</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>0.93.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.93.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.93.1/</a></td></tr><tr><td>0.93.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.93.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.93.0/</a></td></tr><tr><td>0.92.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.92.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.92.0/</a></td></tr><tr><td>0.91.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.2/</a></td></tr><tr><td>0.91.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.1/</a></td></tr><tr><td>0.91.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.91.0/</a></td></tr><tr><td>0.90.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.90.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.90.0/</a></td></tr><tr><td>0.85.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.85.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.85.0/</a></td></tr><tr><td>0.84.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.3/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.3/</a></td></tr><tr><td>0.84.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.2/</a></td></tr><tr><td>0.84.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.1/</a></td></tr><tr><td>0.84.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.84.0/</a></td></tr><tr><td>0.83.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.1/</a></td></tr><tr><td>0.83.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.83.0/</a></td></tr><tr><td>0.82.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.82.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.82.0/</a></td></tr><tr><td>0.81.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.81.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.81.0/</a></td></tr><tr><td>0.80.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.2/</a></td></tr><tr><td>0.80.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.1/</a></td></tr><tr><td>0.80.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.80.0/</a></td></tr><tr><td>0.75.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.75.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.75.0/</a></td></tr><tr><td>0.74.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.74.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.74.0/</a></td></tr><tr><td>0.73.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.73.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.73.0/</a></td></tr><tr><td>0.72.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.72.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.72.0</a></td></tr><tr><td>0.71.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.71.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.71.0</a></td></tr><tr><td>0.70.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.70.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.70.0</a></td></tr><tr><td>0.68.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.68.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.68.1</a></td></tr><tr><td>0.68.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.68.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.68.0/</a></td></tr><tr><td>0.67.0</td><td></td><td></td><td><a href="https://app.gitbook.com/o/-MCl1Hlw9oU4xibZ-ymf/s/IAT17KUXNgudlhTyCPn4/">0.67.0</a></td></tr><tr><td>0.66.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/0.66.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/0.66.0</a></td></tr><tr><td>0.65.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.65.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.65.0/</a></td></tr><tr><td>0.64.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.64.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.64.0/</a></td></tr><tr><td>0.63.0</td><td></td><td></td><td><a href="https://app.gitbook.com/o/-MCl1Hlw9oU4xibZ-ymf/s/N7uiChp9LXuqoNrLj3U3/">0.63.0</a></td></tr><tr><td>0.62.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.62.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.62.0/</a></td></tr><tr><td>0.61.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.61.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.61.0</a></td></tr><tr><td>0.60.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.60.0/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.60.0/</a></td></tr><tr><td>0.58.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.2/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.2/</a></td></tr><tr><td>0.58.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.1/">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.1/</a></td></tr><tr><td>0.58.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.58.0</a></td></tr><tr><td>0.57.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.1</a></td></tr><tr><td>0.57.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.57.0</a></td></tr><tr><td>0.56.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.4">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.4</a></td></tr><tr><td>0.56.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.3">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.3</a></td></tr><tr><td>0.56.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.2</a></td></tr><tr><td>0.56.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.56.1</a></td></tr><tr><td>0.55.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.5">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.5</a></td></tr><tr><td>0.55.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.4">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.4</a></td></tr><tr><td>0.55.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.3">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.3</a></td></tr><tr><td>0.55.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.2</a></td></tr><tr><td>0.55.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.1</a></td></tr><tr><td>0.55.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.55.0</a></td></tr><tr><td>0.54.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.1</a></td></tr><tr><td>0.54.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.54.0</a></td></tr><tr><td>0.53.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.1</a></td></tr><tr><td>0.53.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.53.0</a></td></tr><tr><td>0.52.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.52.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.52.0</a></td></tr><tr><td>0.51.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.51.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.51.0</a></td></tr><tr><td>0.50.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.50.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.50.0</a></td></tr><tr><td>0.47.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.47.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.47.0-legacy</a></td></tr><tr><td>0.46.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.1-legacy</a></td></tr><tr><td>0.46.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.46.0-legacy</a></td></tr><tr><td>0.45.6</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.6-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.6-legacy</a></td></tr><tr><td>0.45.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.5-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.5-legacy</a></td></tr><tr><td>0.45.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.4-legacy</a></td></tr><tr><td>0.45.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.3-legacy</a></td></tr><tr><td>0.45.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.45.2-legacy</a></td></tr><tr><td>0.44.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.4-legacy</a></td></tr><tr><td>0.44.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.3-legacy</a></td></tr><tr><td>0.44.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.2-legacy</a></td></tr><tr><td>0.44.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.44.1-legacy</a></td></tr><tr><td>0.43.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.1-legacy</a></td></tr><tr><td>0.43.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.43.0-legacy</a></td></tr><tr><td>0.42.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.2-legacy</a></td></tr><tr><td>0.42.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.1-legacy</a></td></tr><tr><td>0.42.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.42.0-legacy</a></td></tr><tr><td>0.41.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.41.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.41.0-legacy</a></td></tr><tr><td>0.40.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.3-legacy</a></td></tr><tr><td>0.40.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.2-legacy</a></td></tr><tr><td>0.40.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.1-legacy</a></td></tr><tr><td>0.40.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.40.0-legacy</a></td></tr><tr><td>0.39.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.1-legacy</a></td></tr><tr><td>0.39.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.39.0-legacy</a></td></tr><tr><td>0.38.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.38.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.38.0-legacy</a></td></tr><tr><td>0.37.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.37.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.37.0-legacy</a></td></tr><tr><td>0.36.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.1-legacy</a></td></tr><tr><td>0.36.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.36.0-legacy</a></td></tr><tr><td>0.35.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.1-legacy</a></td></tr><tr><td>0.35.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.35.0-legacy</a></td></tr><tr><td>0.34.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.34.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.34.0-legacy</a></td></tr><tr><td>0.33.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.33.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.33.0-legacy</a></td></tr><tr><td>0.32.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.1-legacy</a></td></tr><tr><td>0.32.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.32.0-legacy</a></td></tr><tr><td>0.31.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.1-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.1-legacy</a></td></tr><tr><td>0.31.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.31.0-legacy</a></td></tr><tr><td>0.30.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.30.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.30.0-legacy</a></td></tr><tr><td>0.20.5</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.5-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.5-legacy</a></td></tr><tr><td>0.20.4</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.4-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.4-legacy</a></td></tr><tr><td>0.20.3</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.3-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.3-legacy</a></td></tr><tr><td>0.20.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.2-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.2-legacy</a></td></tr><tr><td>0.20.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.0-legacy">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.20.0-legacy</a></td></tr><tr><td>0.13.2</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.2">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.2</a></td></tr><tr><td>0.13.1</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.1">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.1</a></td></tr><tr><td>0.13.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.13.0</a></td></tr><tr><td>0.12.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.12.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.12.0</a></td></tr><tr><td>0.11.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.11.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.11.0</a></td></tr><tr><td>0.10.0</td><td></td><td></td><td><a href="https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.10.0">https://zenml-io.gitbook.io/zenml-legacy-documentation/v/0.10.0</a></td></tr></tbody></table>
 
 
 # Overview
@@ -14295,7 +15104,7 @@ Understand and adjust how ZenML versions your data.
 
 Data sits at the heart of every machine learning workflow. Managing and versioning this data correctly is essential for reproducibility and traceability within your ML pipelines. ZenML takes a proactive approach to data versioning, ensuring that every artifact—be it data, models, or evaluations—is automatically tracked and versioned upon pipeline execution.
 
-![Walkthrough of ZenML Artifact Control Plane (Dashboard available only on ZenML Pro)](broken-reference)
+![Walkthrough of ZenML Artifact Control Plane (Dashboard available only on ZenML Pro)](https://3621652509-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F75OYotLPi8TviSrtZTJZ%2Fuploads%2Fgit-blob-646b6b8aa99d1a223f2984e2cb23725b0a357a64%2Fdcp_walkthrough.gif?alt=media)
 
 This guide will delve into artifact versioning and management, showing you how to efficiently name, organize, and utilize your data with the ZenML framework.
 
@@ -15376,6 +16185,10 @@ Stack 'default' with id '...' is owned by user default and is 'private'.
 ```
 
 {% hint style="info" %}
+You can customize the output using `--columns` to show specific fields or `--output` to change the format (json, yaml, csv, tsv). Learn more in the [Quick Wins guide](https://docs.zenml.io/user-guides/best-practices/quick-wins#id-15-export-cli-data-in-multiple-formats).
+{% endhint %}
+
+{% hint style="info" %}
 As you can see a stack can be **active** on your **client**. This simply means that any pipeline you run will be using the **active stack** as its environment.
 {% endhint %}
 
@@ -15494,11 +16307,7 @@ Stack 'a_new_local_stack' with id '...' is owned by user default and is 'private
 
 ![GIF of our VS code extension, showing some of the uses of the sidebar](https://3621652509-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F75OYotLPi8TviSrtZTJZ%2Fuploads%2Fgit-blob-c37db3c6e830815eec7bed02bb5207c816a24e95%2Fzenml-extension-shortened.gif?alt=media)
 
-If you are using [our VS Code\
-extension](https://marketplace.visualstudio.com/items?itemName=ZenML.zenml-vscode),\
-you can easily view and switch your stacks by opening the sidebar (click on the\
-ZenML icon). You can then click on the stack you want to switch to as well as\
-view the stack components it's made up of.
+If you are using [our VS Code extension](https://marketplace.visualstudio.com/items?itemName=ZenML.zenml-vscode), you can easily view and switch your stacks by opening the sidebar (click on the ZenML icon). You can then click on the stack you want to switch to as well as view the stack components it's made up of.
 
 ### Run a pipeline on the new local stack
 
@@ -20264,29 +21073,40 @@ Make sure to replace `us-central1` with your actual Vertex AI region. You can fi
 
 ### Step 4: Update the Schedule
 
-Sometimes we need to modify an existing schedule. Since ZenML doesn't support direct schedule updates, we'll need to delete the old schedule and create a new one. This is a two-step process:
+Sometimes we need to modify an existing schedule. How you update a schedule depends on your orchestrator:
+
+* **Kubernetes orchestrator**: Supports direct schedule updates - ZenML will update the CronJob directly on the cluster
+* **Most other orchestrators** (including Vertex AI used in this tutorial): Do not support direct updates, so you'll need to delete the old schedule and create a new one
+
+For orchestrators that support direct updates, you can simply use:
+
+```bash
+zenml pipeline schedule update <SCHEDULE_NAME_OR_ID> --cron-expression='0 10 * * *'
+```
+
+For orchestrators like Vertex AI that don't support direct updates, follow this two-step process:
 
 1. Delete the existing schedules (both from ZenML and the orchestrator)
 2. Create a new schedule with the updated configuration
 
 #### Step 4.1: Delete the Existing Schedule
 
-First, delete the schedule from ZenML:
+First, delete the schedule from ZenML (this archives the schedule by default):
 
 ```python
-# Delete from ZenML
+# Archive the schedule from ZenML
 client.delete_schedule("daily-data-processing")
 ```
 
 Using the CLI:
 
 ```bash
-# Delete a specific schedule
+# Archive a specific schedule (soft delete)
 zenml pipeline schedule delete daily-data-processing
 ```
 
 {% hint style="warning" %}
-**Important**: You must also delete the schedule from the orchestrator. ZenML's delete command never removes the underlying orchestrator schedule.
+**Important**: For orchestrators that don't support native schedule deletion (like Vertex AI), you must also manually delete the schedule from the orchestrator. For orchestrators that do support it (like Kubernetes), ZenML will handle the orchestrator-side deletion automatically.
 {% endhint %}
 
 For Vertex AI, you need to delete the orchestrator schedule:
@@ -20376,30 +21196,45 @@ This assumes you've [registered an alerter](https://docs.zenml.io/stacks/alerter
 
 ### Step 6: Clean Up
 
-When you're done with a scheduled pipeline, proper cleanup is essential to prevent unexpected executions. You **must perform two separate deletion operations**:
+When you're done with a scheduled pipeline, proper cleanup is essential to prevent unexpected executions. The cleanup process depends on your orchestrator:
 
-1. Delete the schedule from ZenML's database
-2. Delete the schedule from the underlying orchestrator (Vertex AI in this example)
+* **Kubernetes orchestrator**: ZenML handles everything automatically - deleting the schedule in ZenML also deletes the CronJob from the cluster
+* **Most other orchestrators** (including Vertex AI): You must perform two separate deletion operations:
+  1. Delete the schedule from ZenML's database
+  2. Manually delete the schedule from the underlying orchestrator
+
+Since this tutorial uses Vertex AI, we'll demonstrate the two-step manual cleanup process.
 
 #### Step 6.1: Delete the Schedule from ZenML
 
-First, let's delete the schedule from ZenML:
+First, let's delete the schedule from ZenML. By default, deletion archives the schedule (soft delete), which preserves references in historical pipeline runs:
 
 ```python
+# Archive the schedule (soft delete - preserves historical references)
 client.delete_schedule("daily-data-processing")
 
 # Verify deletion from ZenML
 schedules = client.list_schedules()
 if not any(s.name == "daily-data-processing" for s in schedules):
-    print("Schedule deleted successfully from ZenML!")
+    print("Schedule archived successfully in ZenML!")
 else:
     print("Schedule still exists in ZenML!")
 ```
 
-#### Step 6.2: Delete the Schedule from the Orchestrator (Required)
+Using the CLI, you can also perform a hard delete if you want to permanently remove all references:
+
+```bash
+# Soft delete (archive) - default behavior
+zenml pipeline schedule delete daily-data-processing
+
+# Hard delete - permanently removes all references
+zenml pipeline schedule delete daily-data-processing --hard
+```
+
+#### Step 6.2: Delete the Schedule from the Orchestrator (Required for Vertex AI)
 
 {% hint style="warning" %}
-**CRITICAL**: Deleting a schedule from ZenML does NOT delete it from the orchestrator. If you only perform Step 6.1, your pipeline will continue to run on schedule in the orchestrator!
+**CRITICAL for Vertex AI and similar orchestrators**: Deleting a schedule from ZenML does NOT automatically delete it from the orchestrator. If you only perform Step 6.1, your pipeline will continue to run on schedule! (Note: The Kubernetes orchestrator is an exception - it handles orchestrator-side deletion automatically.)
 {% endhint %}
 
 Here's how to delete the schedule from Vertex AI:
@@ -20833,15 +21668,17 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <YOUR_TOKEN>' \
   -d '{
-    "steps": {
-      "load_data": {
-        "parameters": {
-          "data_url": "s3://production-bucket/latest-data.csv"
-        }
-      },
-      "train_model": {
-        "parameters": {
-          "model_type": "gradient_boosting"
+    "run_configuration": {
+      "steps": {
+        "load_data": {
+          "parameters": {
+            "data_url": "s3://production-bucket/latest-data.csv"
+          }
+        },
+        "train_model": {
+          "parameters": {
+            "model_type": "gradient_boosting"
+          }
         }
       }
     }
@@ -22083,6 +22920,7 @@ from zenml.config import DockerSettings
 
 docker = DockerSettings(
     parent_image="pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime",
+    python_package_installer_args={"system": None},
     requirements=["zenml", "torchvision"]
 )
 
@@ -22147,6 +22985,7 @@ Use the same CUDA image as above **plus** add Accelerate to the requirements:
 ```python
 DockerSettings(
     parent_image="pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime",
+    python_package_installer_args={"system": None},
     requirements=["zenml", "accelerate", "torchvision"]
 )
 ```
@@ -22798,6 +23637,22 @@ By implementing these scaling strategies, you can extend your ZenML pipelines to
 
 Below is a menu of 5-minute quick wins you can sprinkle into an existing ZenML project with almost no code changes. Each entry explains why it matters, the micro-setup (under 5 minutes) and any tips or gotchas to anticipate.
 
+{% hint style="info" %}
+**Automate with AI coding agents:** If you use an agentic coding tool (Claude Code, OpenAI Codex, GitHub Copilot, OpenCode, Amp, Cursor, etc.), install the `zenml-quick-wins` skill to analyze your repo and stack, get personalized recommendations, and implement quick wins interactively.
+
+```bash
+# Example for Claude Code - add the ZenML marketplace (one-time)
+/plugin marketplace add zenml-io/skills
+
+# Install the skill
+/plugin install zenml-quick-wins@zenml
+```
+
+Then ask: *"Use zenml-quick-wins to analyze this repo and recommend the top 3 quick wins to implement."*
+
+See [LLM tooling](https://github.com/zenml-io/zenml/blob/main/docs/book/reference/llms-txt.md) for setup instructions across different tools.
+{% endhint %}
+
 | Quick Win                                                                                             | What it does                                       | Why you need it                                       |
 | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
 | [Log rich metadata](#id-1-log-rich-metadata-on-every-run)                                             | Track params, metrics, and properties on every run | Foundation for reproducibility and analytics          |
@@ -22814,6 +23669,7 @@ Below is a menu of 5-minute quick wins you can sprinkle into an existing ZenML p
 | [Model Control Plane](#id-12-register-models-in-the-model-control-plane)                              | Track models and their lifecycle                   | Central hub for model lineage and governance          |
 | [Parent Docker images](#id-13-create-a-parent-docker-image-for-faster-builds)                         | Pre-configure your dependencies in a base image    | Faster builds and consistent environments             |
 | [ZenML docs via MCP](#id-14-enable-ide-ai-zenml-docs-via-mcp-server)                                  | Connect your IDE assistant to live ZenML docs      | Faster, grounded answers and doc lookups while coding |
+| [Export CLI data](#id-15-export-cli-data-in-multiple-formats)                                         | Get machine-readable output from list commands     | Perfect for scripting, automation, and data analysis  |
 
 ## 1 Log rich metadata on every run
 
@@ -22867,7 +23723,7 @@ log_metadata({
 
 **Setup** -- once you've logged metadata (see quick win #1) nothing else to do; open **Dashboard → Compare**.
 
-[![Experiment Comparison Video](broken-reference)](https://www.loom.com/share/693b2d829600492da7cd429766aeba6a)
+[![Experiment Comparison Video](https://3621652509-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F75OYotLPi8TviSrtZTJZ%2Fuploads%2Fgit-blob-2cfd746b2bc243197faeda61d625bbb44de15b88%2Fexperiment_comparison_video.png?alt=media)](https://www.loom.com/share/693b2d829600492da7cd429766aeba6a)
 
 **Compare experiments at a glance:**
 
@@ -23681,6 +24537,68 @@ Using the zenmldocs MCP server, show me how to register an MLflow experiment tra
 
 Learn more: [Access ZenML documentation via llms.txt and MCP](https://docs.zenml.io/reference/llms-txt)
 
+## 15 Export CLI data in multiple formats
+
+All `zenml list` commands support multiple output formats for scripting, CI/CD integration, and data analysis.
+
+```bash
+# Get stack data as JSON for processing with jq
+zenml stack list --output=json | jq '.items[] | select(.name=="production")'
+
+# Export pipeline runs to CSV for analysis
+zenml pipeline runs list --output=csv > pipeline_runs.csv
+
+# Get deployment info as YAML for configuration management
+zenml deployment list --output=yaml
+
+# Filter columns to see only what you need
+zenml stack list --columns=id,name,orchestrator
+
+# Combine filtering with custom output formats
+zenml pipeline list --columns=id,name,num_runs --output=json
+```
+
+**Available formats**
+
+* **json** - Structured data with pagination info, perfect for programmatic processing
+* **yaml** - Human-readable structured format, great for configuration
+* **csv** - Comma-separated values for spreadsheets and data analysis
+* **tsv** - Tab-separated values for simpler parsing
+* **table** (default) - Formatted tables with colors and alignment
+
+**Key features**
+
+* **Column filtering** - Use `--columns` to show only the fields you need
+* **Scriptable** - Combine with tools like `jq`, `grep`, `awk` for powerful automation
+* **Environment control** - Set `ZENML_DEFAULT_OUTPUT` to change the default format
+* **Width control** - Override terminal width with `ZENML_CLI_COLUMN_WIDTH` for consistent formatting
+
+**Best practices**
+
+* Use JSON format for robust parsing in scripts (includes pagination metadata)
+* Use CSV/TSV for importing into spreadsheet tools or databases
+* Use `--columns` to reduce noise and focus on relevant data
+* Set default formats via environment variables in CI/CD environments
+
+**Example automation script**
+
+```bash
+#!/bin/bash
+# Export all production stacks to a report
+
+export ZENML_DEFAULT_OUTPUT=json
+
+# Get all stacks and filter for production
+zenml stack list | jq '.items[] | select(.name | contains("prod"))' > prod_stacks.json
+
+# Generate a summary CSV
+zenml stack list --output=csv --columns=name,orchestrator,artifact_store > stack_summary.csv
+
+echo "Reports generated: prod_stacks.json and stack_summary.csv"
+```
+
+Learn more: [Environment Variables](https://docs.zenml.io/reference/environment-variables#cli-output-formatting)
+
 
 # Keep Your Dashboard Clean
 
@@ -23699,16 +24617,6 @@ zenml login --local
 Note that there are some limitations to this approach, particularly if you want to use remote infrastructure, but if there are local runs that you can do without the need for remote infrastructure, this can be a quick and easy way to keep things clean. When you're ready to reconnect to the server to continue with your shared runs, you can simply run `zenml login <remote-url>` again.
 
 ## Pipeline Runs
-
-### Unlisted Runs
-
-Pipeline runs can be created without being explicitly associated with a pipeline by passing the `unlisted` parameter when running a pipeline:
-
-```python
-pipeline_instance.run(unlisted=True)
-```
-
-Unlisted runs are not displayed on the pipeline's page in the dashboard (though they *are* displayed in the pipeline run section), keeping the pipeline's history clean and focused on the pipelines that matter most.
 
 ### Deleting Pipeline Runs
 
@@ -25430,25 +26338,51 @@ It also allows you to trigger new pipeline runs through existing run templates.
 
 ## Getting Started
 
-For the most up-to-date setup instructions and code, please refer to the [ZenML\
-MCP Server GitHub repository](https://github.com/zenml-io/mcp-zenml). We\
-recommend using the `uv` package manager to install the dependencies since it's\
-the most reliable and fastest setup experience.
+The easiest way to set up the ZenML MCP Server is through the **MCP Settings page** in the ZenML dashboard. This provides a guided experience for configuring your IDE or AI assistant to connect to your ZenML server.
 
-The setup process for the ZenML MCP Server is straightforward:‍
+### Using the Dashboard Settings Page (Recommended)
 
-### Prerequisites:
+Both ZenML OSS and ZenML Pro include an MCP settings page that generates the correct configuration for your environment.
 
-* Access to a ZenML Cloud server
+![MCP Settings Page](https://3621652509-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F75OYotLPi8TviSrtZTJZ%2Fuploads%2Fgit-blob-bcf052b9be2d2855f557ec5e006f6ad470cfaf4f%2Fmcp-settings-page.gif?alt=media)
+
+Navigate to **Settings → MCP** in your ZenML dashboard to access the configuration page. The page provides:
+
+* **Token configuration**: Enter or generate the API token needed for authentication
+* **IDE-specific instructions**: Tabbed configuration for VS Code, Claude Desktop, Cursor, Claude Code, OpenAI Codex, and other MCP clients
+* **Multiple installation methods**: Deep links for automatic setup, CLI commands, and manual JSON configuration options
+* **Docker and uv options**: Choose your preferred runtime for the MCP server
+
+#### ZenML Pro vs OSS Setup Differences
+
+| Feature              | ZenML Pro                                         | ZenML OSS                                                              |
+| -------------------- | ------------------------------------------------- | ---------------------------------------------------------------------- |
+| Token generation     | One-click PAT generation within the settings page | Paste a service account token (create via Settings → Service Accounts) |
+| Project selection    | Select which project to connect to                | Single project (automatic)                                             |
+| Configuration output | Includes project ID in generated configs          | Simplified configuration                                               |
+
+{% hint style="info" %}
+**ZenML Pro users** can generate a Personal Access Token (PAT) directly from the MCP settings page with a single click. The token will be automatically included in the generated configuration snippets.
+
+**ZenML OSS users** need to first create a service account token via **Settings → Service Accounts**, then paste it into the MCP settings page.
+{% endhint %}
+
+### Manual Setup
+
+For manual setup or the most up-to-date instructions, please refer to the [ZenML MCP Server GitHub repository](https://github.com/zenml-io/mcp-zenml). We recommend using the `uv` package manager to install the dependencies since it's the most reliable and fastest setup experience.
+
+#### Prerequisites:
+
+* Access to a ZenML server (Cloud or self-hosted)
 * [`uv`](https://docs.astral.sh/uv/) installed locally
 * A local clone of the repository
 
-### Configuration:
+#### Configuration:
 
 * Create an MCP config file with your ZenML server details
-* Configure your preferred MCP client (Claude Desktop or Cursor)
+* Configure your preferred MCP client (Claude Desktop, Cursor, VS Code, etc.)
 
-For detailed setup instructions, please refer to the [GitHub repository](https://github.com/zenml-io/mcp-zenml).
+For detailed manual setup instructions, please refer to the [GitHub repository](https://github.com/zenml-io/mcp-zenml).
 
 ## Example Usage
 
@@ -25599,7 +26533,7 @@ export ZENML_LOGGING_VERBOSITY=DEBUG
 Read more about how to set environment variables for:
 
 * For [Linux](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html#zz-3./).
-* For [macOS](https://youngstone89.medium.com/setting-up-environment-variables-in-mac-os-28e5941c771c).
+* For [macOS](https://support.apple.com/guide/terminal/use-environment-variables-apd382cc5fa-4f58-4449-b20a-41c53c006f8f/mac).
 * For [Windows](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html).
 
 ### Client and server logs
@@ -25757,652 +26691,2008 @@ Databricks provides a unified analytics platform designed specifically for big d
 * Projects requiring end-to-end governance and security
 
 
-# Overview
+# Introduction
 
 Learn about the ZenML Pro features and deployment scenarios.
 
-The [Pro version of ZenML](https://zenml.io/pro) extends the Open Source product with advanced features for enterprise-grade MLOps.
+## What is ZenML Pro?
+
+The [Pro version of ZenML](https://zenml.io/pro) extends the Open Source product with advanced features for enterprise-grade MLOps. It provides multi-user collaboration, role-based access control, flexible deployment options, and professional support to help teams scale their ML operations.
 
 ![Walkthrough of ZenML Model Control Plane](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-fee229fa198ec94c2928b50b026245d0d0a885ab%2Fmcp-walkthrough.gif?alt=media)
 
-## Key Features
-
-### Managed Production Deployment
-
-Deploy multiple ZenML servers through [workspaces](https://docs.zenml.io/pro/core-concepts/workspaces) with enterprise-grade reliability.
-
-### User Management
-
-* Create [organizations](https://docs.zenml.io/pro/core-concepts/organization) and [teams](https://docs.zenml.io/pro/core-concepts/teams) for scalable user management
-* Implement [role-based access control](https://docs.zenml.io/pro/access-management/roles) with customizable permissions
-
-### Advanced MLOps Capabilities
-
-* Enhanced [Model Control Plane](https://docs.zenml.io/user-guides/starter-guide/track-ml-models) for ML asset tracking
-* [Artifact Control Plane](https://docs.zenml.io/user-guides/starter-guide/manage-artifacts) for improved asset management
-* [Run Snapshots](https://docs.zenml.io/concepts/snapshots) for quick pipeline iteration
-* Early access to pro-specific features like triggers, filters, and usage reports
-
 {% hint style="info" %}
-Try ZenML Pro with a [free account](https://zenml.io/pro?utm_source=docs\&utm_medium=referral_link\&utm_campaign=cloud_promotion\&utm_content=signup_link).
+To get access to ZenML Pro, [book a call](https://www.zenml.io/book-your-demo).
 {% endhint %}
 
-## Deployment Options
+## ZenML OSS vs Pro Feature Comparison
+
+| Feature Category        | ZenML OSS                                                                                     | ZenML Pro                                                                                                                                                                                                                                                                          |
+| ----------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **User Management**     | Single-user mode                                                                              | Multi-user support with [SSO](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md#identity-provider), [organizations](https://docs.zenml.io/pro/core-concepts/organization), and [teams](https://docs.zenml.io/pro/core-concepts/teams) |
+| **Access Control**      | ❌ No RBAC                                                                                     | Full [role-based access control](https://docs.zenml.io/pro/access-management/roles) with customizable permissions                                                                                                                                                                  |
+| **Multi-tenancy**       | ❌ No workspaces/projects                                                                      | [Workspaces](https://docs.zenml.io/pro/core-concepts/workspaces) and [projects](https://docs.zenml.io/pro/core-concepts/projects) for team and resource isolation                                                                                                                  |
+| **ZenML Web UI**        | Basic pipeline and run visualization                                                          | Pro UI with [Model Control Plane](https://docs.zenml.io/concepts/models), [Artifact Control Plane](https://docs.zenml.io/concepts/dashboard-features), and comparison views                                                                                                        |
+| **Pipeline Execution**  | Run pipelines via SDK/CLI                                                                     | Run pipelines from the UI, manage schedules through the UI, [triggers](https://docs.zenml.io/concepts/snapshots)                                                                                                                                                                   |
+| **Stack Configuration** | User-managed stacks                                                                           | Advanced stack configurations with workspace/project-level restrictions for platform teams                                                                                                                                                                                         |
+| **Security**            | Community updates                                                                             | Prioritized security patches, SOC 2 and ISO 27001 certification                                                                                                                                                                                                                    |
+| **Deployment**          | Self-hosted only                                                                              | [SaaS](https://docs.zenml.io/pro/deployments/scenarios/saas-deployment), [Hybrid](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment), or [Self-hosted](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment) options                             |
+| **Support**             | Community support                                                                             | Professional support included (SaaS deployments)                                                                                                                                                                                                                                   |
+| **Reporting**           | Basic run tracking                                                                            | Advanced usage reports and analytics                                                                                                                                                                                                                                               |
+| **Core Features**       | <p>✅ Run pipelines on stacks<br>✅ Full observability over runs<br>✅ Artifact tracking<br></p> | <p>✅ All OSS features<br>✅ <a href="https://docs.zenml.io/concepts/snapshots">Run Snapshots</a><br>✅ Model Control Plane<br>✅ Artifact Control Plane<br>✅ Enhanced filtering and search</p>                                                                                        |
+
+## Security & Compliance
+
+All ZenML Pro deployments include:
+
+* ✅ **SOC 2 Type II** certification
+* ✅ **ISO 27001** certification
+* ✅ **Vulnerability Assessment Reports** available on request
+* ✅ **Software Bill of Materials (SBOM)** available on request
+
+## Documentation Guide
+
+This documentation is organized to help you understand, deploy, and manage ZenML Pro:
+
+| Section                                                                             | Description                                                                                         |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [**System Architecture**](https://docs.zenml.io/pro/system-architecture)            | How ZenML Pro services (Control Plane, Workspace Server, Workload Manager) communicate and interact |
+| [**Scenarios**](https://docs.zenml.io/pro/deployments/scenarios)                    | Decision guide to help you choose between SaaS, Hybrid, and Self-hosted deployments                 |
+| [**Configuration Details**](https://docs.zenml.io/pro/manage/configuration-details) | Reference for configurable options, environment variables, and permissions for each component       |
+| [**Upgrades and Updates**](https://docs.zenml.io/pro/manage/upgrades-updates)       | How to upgrade each ZenML Pro component                                                             |
+| [**Core Concepts**](https://docs.zenml.io/pro/core-concepts/hierarchy)              | Organizations, Workspaces, Projects, Teams, and Hierarchy                                           |
+| [**Access Management**](https://docs.zenml.io/pro/access-management/roles)          | Roles, Permissions, Service Accounts, and Secrets                                                   |
+
+## Pro Feature Details
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Workspaces</strong></td><td>Isolated environments for teams and projects</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-c004d0f51396ca4e93254c5cc87c7e16ed0a8e9e%2Fpro-workspaces.png?alt=media">pro-workspaces.png</a></td><td></td><td></td><td><a href="core-concepts/workspaces">workspaces</a></td></tr><tr><td><strong>Organizations</strong></td><td>Top-level entity for managing users and teams</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-3f4630a906a4871d6d36e3134d0b6a90b371460e%2Fpro-organizations.png?alt=media">pro-organizations.png</a></td><td></td><td></td><td><a href="core-concepts/organization">organization</a></td></tr><tr><td><strong>Teams</strong></td><td>Group users for simplified access management</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-5cc1ccc85c6d027aca074dd297e91300490d5ad6%2Fpro-teams.png?alt=media">pro-teams.png</a></td><td></td><td></td><td><a href="core-concepts/teams">teams</a></td></tr><tr><td><strong>Roles</strong></td><td>Customizable role-based access control</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-b8eca15363896683d019a696c0942c20dacb8241%2Fpro-roles.png?alt=media">pro-roles.png</a></td><td></td><td></td><td><a href="access-management/roles">roles</a></td></tr><tr><td><strong>Projects</strong></td><td>Organize work within workspaces</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-81257a2f218866f9623df4ca3520ec8cd3e9279e%2Fpro-projects.png?alt=media">pro-projects.png</a></td><td></td><td></td><td><a href="core-concepts/projects">projects</a></td></tr><tr><td><strong>Snapshots</strong></td><td>Trigger pipelines from dashboard, SDK, CLI, or REST API</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-257e4bc998b478bef28b16421184a6af1f5b6f7d%2Fpro-workload-managers.png?alt=media">pro-workload-managers.png</a></td><td></td><td></td><td><a href="core-concepts/snapshots">snapshots</a></td></tr><tr><td><strong>Deployment Options</strong></td><td>SaaS, Hybrid, or Full On-Prem deployments</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-d59f9d88c3da519cd77e5040f605e36295a7524a%2Fpro-self-host.png?alt=media">pro-self-host.png</a></td><td></td><td></td><td><a href="deployments/scenarios">scenarios</a></td></tr></tbody></table>
+
+
+# System Architecture
+
+Understanding ZenML Pro services and how they communicate.
+
+ZenML Pro's architecture consists of two core services that work together to execute, track, and manage your ML pipelines. Understanding these services helps you make informed decisions about deployment, security, and infrastructure.
+
+![ZenML Pro High-Level Architecture Placeholder](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-a3cb5969fca118cf4f95aa610203908395709440%2Fhigh_level_architecture_overview.png?alt=media)
+
+## Core Services
+
+A single **Control Plane** manages one or more **Workspace Servers**. This allows you to have separate workspaces for different teams, projects, or environments (dev/staging/prod) while maintaining centralized authentication and organization management.
+
+| Service                                   | Purpose                                                                                              | Deployment Location                                       |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [**Control Plane**](#control-plane)       | Authentication, RBAC, organization management (1 per organization)                                   | ZenML infrastructure (SaaS/Hybrid) or yours (Self-hosted) |
+| [**Workspace Server**](#workspace-server) | Stores metadata, serves APIs, manages entities, runs pipelines from UI (1 or more per Control Plane) | Your infrastructure (Hybrid/Self-hosted) or ZenML (SaaS)  |
+
+## Control Plane
+
+The **Control Plane** is the organization-level management layer. It sits above individual workspaces and provides centralized authentication, authorization, and administrative functions.
+
+**Key responsibilities:**
+
+* **Authentication & Identity:** User authentication with SSO integration, identity federation via OIDC and social login providers, API key management for personal access tokens and service accounts
+* **Authorization & RBAC:** Role management (Admin, Editor, Viewer), permission enforcement across workspaces, team management with shared permissions
+* **Organization Management:** Workspace lifecycle management (SaaS), user invitations and membership handling
+* **Workspace Coordination:** Workspace registry, health monitoring for Hybrid/Self-hosted deployments, version management for SaaS upgrades
+
+| Deployment      | Control Plane Location               |
+| --------------- | ------------------------------------ |
+| **SaaS**        | ZenML infrastructure (fully managed) |
+| **Hybrid**      | ZenML infrastructure (fully managed) |
+| **Self-hosted** | Your infrastructure (you manage)     |
+
+## Workspace Server
+
+The **Workspace Server** is the central hub for your ML operations. It provides the API layer that your SDK, dashboard, and orchestrators connect to for all pipeline-related operations.
+
+**Key responsibilities:**
+
+* **Metadata Storage & API:** Pipeline run tracking with status, timing, and lineage; step execution details; artifact registry (pointers to your artifact store); model registry with versions and stages
+* **Entity Management:** Stacks and components, pipeline definitions, artifact versions, code repository connections
+* **Token & Credential Management:** Short-lived service connector tokens for cloud resources, stack component authentication, API validation
+* **Integration Hub:** REST API for Python SDK, dashboard backend, orchestrator callbacks for status updates
+* **Pipeline Execution from UI:** The workspace server includes a workload manager that creates ad-hoc runner pods in a Kubernetes cluster to execute pipelines triggered from the dashboard
+
+| Deployment      | Workspace Server Location            |
+| --------------- | ------------------------------------ |
+| **SaaS**        | ZenML infrastructure (fully managed) |
+| **Hybrid**      | Your infrastructure (you manage)     |
+| **Self-hosted** | Your infrastructure (you manage)     |
+
+## Where Data Lives
+
+Understanding data residency is crucial for security and compliance:
+
+| Data Type             | Description                                           | Location                              |
+| --------------------- | ----------------------------------------------------- | ------------------------------------- |
+| **Pipeline Metadata** | Run status, step execution details, artifact pointers | Workspace Server database             |
+| **Artifacts**         | Model weights, datasets, evaluation results           | Your artifact store (S3, GCS, etc.)   |
+| **Container Images**  | Docker images with your code and dependencies         | Your container registry               |
+| **Logs**              | Execution logs from pipeline runs                     | Your configured log backend           |
+| **Secrets**           | Credentials and sensitive configuration               | ZenML secrets store or external vault |
+| **User/Org Data**     | Authentication, RBAC, organization settings           | Control Plane database                |
+
+{% hint style="success" %}
+In all ZenML deployment scenarios, your actual ML data (models, datasets, artifacts) stays in your infrastructure. Only metadata flows to the ZenML services.
+{% endhint %}
+
+## Security Considerations
+
+The Control Plane handles sensitive authentication data but never accesses your ML data, artifacts, or pipeline code:
+
+| Data Type             | Sensitivity | Storage                |
+| --------------------- | ----------- | ---------------------- |
+| User credentials      | High        | Managed through IDP    |
+| API tokens            | High        | Encrypted at rest      |
+| Organization settings | Medium      | Control Plane database |
+| Audit logs            | Medium      | Control Plane database |
+| Workspace metadata    | Low         | Control Plane database |
+
+## Related Documentation
+
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios) - Choose the right deployment option
+* [Configuration Details](https://docs.zenml.io/pro/manage/configuration-details) - Detailed configuration reference for each component
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates) - How to upgrade components
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Scenarios
+
+Compare ZenML Pro deployment scenarios to find the right fit for your organization.
+
+ZenML Pro offers three flexible deployment options to match your organization's security, compliance, and operational needs. This page helps you understand the differences and choose the right scenario for your use case.
+
+## Quick Comparison
+
+| Entity                              | SaaS                                                                    | Hybrid SaaS                                                                                | Self-hosted                                                             |
+| ----------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| **ZenML Workspace Server**          | ZenML infrastructure                                                    | Your infrastructure                                                                        | Your infrastructure                                                     |
+| **ZenML Control Plane**             | ZenML infrastructure                                                    | ZenML infrastructure                                                                       | Your infrastructure                                                     |
+| **ZenML Pro UI**                    | ZenML infrastructure                                                    | ZenML infrastructure                                                                       | Your infrastructure                                                     |
+| **Stack (Pipeline Compute & Data)** | Your infrastructure                                                     | Your infrastructure                                                                        | Your infrastructure                                                     |
+| **Setup Time**                      | ⚡ \~1 hour                                                              | \~4 hours                                                                                  | \~8 hours                                                               |
+| **Maintenance Responsibility**      | Fully managed                                                           | Partially managed (workspace maintenance required)                                         | Fully customer managed                                                  |
+| **Best For**                        | Teams wanting minimal infrastructure overhead and fastest time-to-value | Organizations with security/compliance requirements but wanting simplified user management | Organizations requiring complete data isolation and on-premises control |
+
+{% hint style="info" %}
+In all of these cases the client SDK that you pip install into your development environment is the same one found here: <https://pypi.org/project/zenml/>
+{% endhint %}
+
+## Which Scenario is Right for You?
 
 ### SaaS Deployment
 
-The simplest way to get started is with [the SaaS version of ZenML Pro](https://zenml.io/pro), which handles server management and maintenance for you.
+Choose **SaaS** if you want to get started immediately with zero infrastructure overhead.
+
+**What runs where:**
+
+* ZenML Server: ZenML infrastructure
+* Metadata and RBAC: ZenML infrastructure
+* Compute and Data: Your infrastructure
+
+**Key Benefits:**
+
+* ⚡ Fastest setup (minutes)
+* ✅ Fully managed by ZenML
+* 🚀 Immediate production readiness
+* 💰 Minimal operational overhead
+
+**Ideal for:** Startups, teams prioritizing time-to-value and operational simplicity, organizations comfortable leveraging managed cloud services.
+
+[Set up SaaS deployment →](https://docs.zenml.io/pro/deployments/scenarios/saas-deployment)
+
+### Hybrid SaaS Deployment
+
+Choose **Hybrid** if you need to keep sensitive metadata in your infrastructure while benefiting from centralized user management.
+
+**What runs where:**
+
+* ZenML Control Plane: ZenML infrastructure
+* ZenML Pro UI: ZenML infrastructure
+* ZenML Pro Server: Your infrastructure
+* Run metadata: Your infrastructure
+* Compute and Data: Your infrastructure
+
+**Key Benefits:**
+
+* 🔐 Metadata stays in your infrastructure
+* 👥 Centralized user management
+* ⚖️ Balance of control and convenience
+* 🏢 Control plane and UI fully maintained and patched by ZenML
+* ✅ Day 1 production ready
+
+**Ideal for:** Organizations with security policies requiring metadata sovereignty, teams wanting simplified identity management without full infrastructure control.
+
+[Set up Hybrid deployment →](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
 
 ### Self-hosted Deployment
 
-For organizations requiring full control, ZenML Pro can be [self-hosted](https://docs.zenml.io/pro/deployments/self-hosted). [Book a demo](https://www.zenml.io/book-your-demo) to learn more.
+Choose **Self-hosted** if you need complete control with no external dependencies.
 
-## Feature Overview
+**What runs where:**
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Workspaces</strong></td><td>Workspaces in ZenML Pro</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-c004d0f51396ca4e93254c5cc87c7e16ed0a8e9e%2Fpro-workspaces.png?alt=media">pro-workspaces.png</a></td><td></td><td></td><td><a href="core-concepts/workspaces">workspaces</a></td></tr><tr><td><strong>Organizations</strong></td><td>Organizations in ZenML Pro</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-3f4630a906a4871d6d36e3134d0b6a90b371460e%2Fpro-organizations.png?alt=media">pro-organizations.png</a></td><td></td><td></td><td><a href="core-concepts/organization">organization</a></td></tr><tr><td><strong>Teams</strong></td><td>Teams in ZenML Pro</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-5cc1ccc85c6d027aca074dd297e91300490d5ad6%2Fpro-teams.png?alt=media">pro-teams.png</a></td><td></td><td></td><td><a href="core-concepts/teams">teams</a></td></tr><tr><td><strong>Roles</strong></td><td>Roles in ZenML Pro</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-b8eca15363896683d019a696c0942c20dacb8241%2Fpro-roles.png?alt=media">pro-roles.png</a></td><td></td><td></td><td><a href="access-management/roles">roles</a></td></tr><tr><td><strong>Self-Hosted Deployments</strong></td><td>Self-hosted ZenML Pro deployments</td><td><a href="https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-d59f9d88c3da519cd77e5040f605e36295a7524a%2Fpro-self-host.png?alt=media">pro-self-host.png</a></td><td></td><td></td><td><a href="deployments/self-hosted">self-hosted</a></td></tr></tbody></table>
+* All components: Your infrastructure (completely isolated)
+
+**Key Benefits:**
+
+* 🔒 Complete data sovereignty
+* 🚫 No external network dependencies
+* 🛡️ Maximum security posture
+
+**Ideal for:** Regulated industries (healthcare, finance, defense), government organizations, enterprises with strict data residency requirements, environments requiring offline operation.
+
+[Set up Self-hosted deployment →](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment)
+
+## Making Your Choice
+
+Consider these factors when deciding:
+
+1. **Metadata Storage Requirements**: Where must your ML metadata and run data reside?
+   * Cloud-hosted is acceptable → **SaaS**
+   * Must stay in your infrastructure → **Hybrid**
+   * Must be completely isolated on-premises → **Self-hosted**
+2. **Infrastructure Complexity**: How much infrastructure control do you want?
+   * Minimal → **SaaS**
+   * Moderate → **Hybrid**
+   * Full control → **Self-hosted**
+3. **Time to Value**: How quickly do you need to be productive?
+   * Within 1 hour → **SaaS**
+   * Within 4 hours → **Hybrid**
+   * Hours to Days (depending on your complexity) → **Self-hosted**
+4. **Compliance Requirements**: What regulations apply to your organization?
+   * General business → **SaaS**
+   * Data residency rules → **Hybrid**
+   * Strict isolation requirements → **Self-hosted**
+
+{% hint style="info" %}
+Not sure which option is right for you? [Book a call](https://www.zenml.io/book-your-demo) with our team to discuss your specific requirements.
+{% endhint %}
+
+## Next Steps
+
+* **Ready to start?** [Choose SaaS Deployment](https://docs.zenml.io/pro/deployments/scenarios/saas-deployment)
+* **Need metadata control?** [Set up Hybrid Deployment](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
+* **Require complete isolation?** [Configure Self-hosted Deployment](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment)
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
 
-# Self-hosted deployment
+# SaaS
 
-Guide for installing ZenML Pro self-hosted in a Kubernetes cluster.
+Learn about ZenML Pro SaaS deployment - the fastest way to get started with production-ready MLOps.
 
-This page provides instructions for installing ZenML Pro - the ZenML Pro Control Plane and one or more ZenML Pro Workspace servers - on-premise in a Kubernetes cluster. For more general information on deploying ZenML, visit [our documentation](https://docs.zenml.io/getting-started/deploying-zenml) where we explain the different options you have.
+ZenML Pro SaaS is the fastest and easiest way to get started with enterprise-grade MLOps. With zero infrastructure setup required, you can be running production pipelines within minutes while maintaining full control over your data and compute resources.
+
+{% hint style="info" %}
+To get access to ZenML Pro, [book a call](https://www.zenml.io/book-your-demo).
+{% endhint %}
 
 ## Overview
 
-ZenML Pro can be installed as a self-hosted deployment. You need to be granted access to the ZenML Pro container images and you'll have to provide your own infrastructure: a Kubernetes cluster, a database server and a few other common prerequisites usually needed to expose Kubernetes services via HTTPs - a load balancer, an Ingress controller, HTTPs certificate(s) and DNS rule(s).
+In a SaaS deployment, ZenML manages all server infrastructure while your sensitive data and compute resources remain in your own cloud environment. This architecture provides the fastest time-to-value while maintaining data sovereignty for your ML workloads.
 
-This document will guide you through the process.
+![ZenML Pro SaaS deployment architecture](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-af36262b2904af6d61af854f044fa903809a2380%2Fcloud_architecture_scenario_1.png?alt=media)
+
+## Architecture
+
+### What Runs Where
+
+| Component         | Location                                                           | Purpose                                                        |
+| ----------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
+| ZenML Pro Server  | ZenML Infrastructure                                               | Manages pipeline orchestration and metadata                    |
+| Pro Control Plane | ZenML Infrastructure                                               | Handles authentication, RBAC, and workspace management         |
+| Metadata Store    | ZenML Infrastructure                                               | Stores pipeline runs, model metadata, and tracking information |
+| Secrets Store     | ZenML Infrastructure (default)                                     | Stores credentials for accessing your infrastructure           |
+| Compute Resources | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Executes pipeline steps and training jobs                      |
+| Data & Artifacts  | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Stores datasets, models, and pipeline artifacts                |
+
+## Key Benefits
+
+### Fastest Setup
+
+Get to production in minutes rather than weeks. There's no infrastructure provisioning required for ZenML services—updates and patches are handled automatically, and the infrastructure scales with your needs without any manual intervention.
+
+### Security & Compliance
+
+ZenML Pro SaaS is SOC 2 Type II and ISO 27001 certified. Your ML data stays in your infrastructure, maintaining data sovereignty, while all communications are encrypted in transit. If needed, you can optionally use your own secret management solution instead of the ZenML-managed one.
+
+### Production Ready from Day 1
+
+The platform comes with built-in redundancy and failover for high availability. Metadata is backed up continuously, health checks and alerting are pre-configured, and you get direct access to ZenML engineers through professional support.
+
+### Collaboration Features
+
+ZenML Pro SaaS supports full team collaboration with multi-user capabilities. You can connect your identity provider through SSO integration, manage granular permissions with role-based access control, and organize teams and resources using workspaces and projects.
+
+## Ideal Use Cases
+
+ZenML Pro SaaS works well for startups and scale-ups that need production MLOps quickly without infrastructure overhead, as well as teams without dedicated DevOps who want managed infrastructure and support. It's also a good fit for organizations with existing cloud infrastructure that are comfortable with SaaS tools, teams prioritizing velocity over complete infrastructure control, and POC or pilot projects that need to demonstrate value quickly.
+
+## Secret Management Options
+
+### Default: ZenML-Managed Secrets Store
+
+By default, ZenML Pro SaaS stores your cloud credentials securely in our managed secrets store. This requires zero configuration and provides automatic encryption at rest and in transit, with access controls managed via RBAC.
+
+### Alternative: Customer-Managed Secrets Store
+
+For organizations with strict security requirements, you can configure ZenML to use your own [secrets management](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/deploying-zenml/secret-management.md) solution such as AWS Secrets Manager, Google Cloud Secret Manager, Azure Key Vault, or HashiCorp Vault.
+
+![SaaS with customer secret store](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-eda040d58a553bde9dc9ddb3a4e7502cecd02a62%2Fcloud_architecture_saas_detailed_2.png?alt=media)
+
+This keeps all credentials within your infrastructure while still benefiting from managed ZenML services. [Book a call](https://www.zenml.io/book-your-demo) with us if you want this set up.
+
+## Network Architecture
+
+### Core Platform
+
+ZenML Pro SaaS requires no inbound connectivity into your infrastructure. All communication is initiated from your environment to ZenML, keeping your systems protected behind your firewall.
+
+### Features Requiring Limited Ingress
+
+Some features require you to whitelist ZenML to access specific resources in your environment. These include artifact visualizations (which need limited access to your artifact store), step logs (which need limited access to your artifact store or log collector), and running Snapshots (which relies on limited access to your orchestration environment). You control this access by configuring appropriate cloud IAM permissions.
+
+## Getting Started
+
+Start by [booking a demo](https://www.zenml.io/book-your-demo) to get access to ZenML Pro SaaS. Once your account is set up, connect your cloud infrastructure by configuring an artifact store (S3, GCS, Azure Blob, etc.), setting up compute resources (AWS, GCP, Azure, or Kubernetes), and providing the necessary credentials via secrets. After that, you're ready to run your pipelines and monitor them through the dashboard.
+
+## Pricing & Support
+
+ZenML Pro SaaS includes managed infrastructure and updates, professional support with SLA, regular security patches, and access to pro-exclusive features. Pricing follows a usage-based model. [Contact us](https://www.zenml.io/book-your-demo) for pricing details and custom plans.
+
+## Comparison with Other Deployments
+
+| Feature                | SaaS               | Hybrid SaaS           | Self-hosted          |
+| ---------------------- | ------------------ | --------------------- | -------------------- |
+| Setup Time             | Minutes            | Hours                 | Days                 |
+| Maintenance            | Zero               | Workspace only        | Full stack           |
+| Infrastructure Control | Minimal            | Moderate              | Complete             |
+| Data Sovereignty       | Metadata on ZenML  | Full                  | Full                 |
+| Best For               | Fast time-to-value | Security requirements | Strictest compliance |
+
+[Compare all deployment options →](https://docs.zenml.io/pro/deployments/scenarios)
+
+## Migration Path
+
+Already running ZenML OSS? Migrating to SaaS is possible with the assistance of the ZenML support team. Reach out to us at <hello@zenml.io> or on [Slack](https://zenml.io/slack) to learn more.
+
+## Related Resources
+
+* [System Architecture](https://docs.zenml.io/pro/system-architecture)
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios)
+* [Hybrid SaaS Deployment](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
+* [Self-hosted Deployment](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment)
+* [Configuration Details](https://docs.zenml.io/pro/manage/configuration-details)
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates)
+
+## Get Started
+
+Ready to get started with ZenML Pro SaaS? [Book a Demo](https://www.zenml.io/book-your-demo) or [contact us](mailto:cloud@zenml.io) with questions.
+
+
+# Hybrid
+
+Learn about ZenML Pro Hybrid SaaS deployment - balancing control with convenience for enterprise MLOps.
+
+ZenML Pro Hybrid SaaS offers the perfect balance between control and convenience. While ZenML manages user authentication and RBAC through a cloud-hosted control plane, all your data, metadata, and workspaces run securely within your own infrastructure.
 
 {% hint style="info" %}
-Please note that the SSO (Single Sign-On) feature is currently not available in the on-prem version of ZenML Pro. This feature is on our roadmap and will be added in future releases.
+To learn more about Hybrid SaaS deployment, [book a call](https://www.zenml.io/book-your-demo).
 {% endhint %}
 
-## Preparation and prerequisites
+## Overview
 
-### Software Artifacts
+The Hybrid deployment model is designed for organizations that need to keep sensitive data and metadata within their infrastructure boundaries while still benefiting from centralized user management and simplified operations.
 
-The ZenML Pro on-prem installation relies on a set of container images and Helm charts. The container images are stored in private ZenML container registries that are not available to the public.
+![ZenML Pro Hybrid SaaS deployment architecture](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-ec405329bb66d3fd6007c98f20b46c2b416b3857%2Fcloud_architecture_scenario_1_2.png?alt=media)
 
-If you haven't done so already, please [book a demo](https://www.zenml.io/book-your-demo) to get access to the private ZenML Pro container images.
+## Architecture
 
-#### ZenML Pro Control Plane Artifacts
+### What Runs Where
 
-The following artifacts are required to install the ZenML Pro control plane in your own Kubernetes cluster:
+| Component           | Location                                                           | Purpose                                                            |
+| ------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Pro Control Plane   | ZenML Infrastructure                                               | Manages authentication, RBAC, and global workspace coordination    |
+| ZenML Pro Server(s) | Your Infrastructure                                                | Handles pipeline orchestration and execution                       |
+| Metadata Store      | Your Infrastructure                                                | Stores all pipeline runs, model metadata, and tracking information |
+| Secrets Store       | Your Infrastructure                                                | Stores all credentials and sensitive configuration                 |
+| Compute Resources   | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Executes pipeline steps and training jobs                          |
+| Data & Artifacts    | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Stores datasets, models, and pipeline artifacts                    |
 
-* private container images for the ZenML Pro API server:
-  * `715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api` in AWS
-  * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-api` in GCP
-* private container images for the ZenML Pro dashboard:
-  * `715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard` in AWS
-  * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-dashboard` in GCP
-* the public ZenML Pro helm chart (as an OCI artifact): `oci://public.ecr.aws/zenml/zenml-pro`
-
-{% hint style="info" %}
-The container image tags and the Helm chart versions are both synchronized and linked to the ZenML Pro releases. You can find the ZenML Pro Helm chart along with the available released versions in the [ZenML Pro ArtifactHub repository](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro).
-
-If you're planning on copying the container images to your own private registry (recommended if your Kubernetes cluster isn't running on AWS and can't authenticate directly to the ZenML Pro container registry) make sure to include and keep the same tags.
-
-By default, the ZenML Pro Helm chart uses the same container image tags as the helm chart version. Configuring custom container image tags when setting up your Helm distribution is also possible, but not recommended because it doesn't yield reproducible results and may even cause problems if used with the wrong Helm chart version.
+{% hint style="success" %}
+All metadata, secrets, and ML artifacts remain within your infrastructure. Only authentication and authorization data flows to the ZenML control plane.
 {% endhint %}
 
-#### ZenML Pro Workspace Server Artifacts
+## Key Benefits
 
-The following artifacts are required to install ZenML Pro workspace servers in your own Kubernetes cluster:
+### Enhanced Security & Compliance
 
-* private container images for the ZenML Pro workspace server:
-  * `715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server` in AWS
-  * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server` in GCP
-* the public open-source ZenML Helm chart (as an OCI artifact): `oci://public.ecr.aws/zenml/zenml`
+All metadata stays within your infrastructure, ensuring complete data sovereignty. Credentials never leave your environment, and workspaces operate behind your security perimeter, making the deployment compatible with VPN and firewall policies.
 
-{% hint style="info" %}
-The container image tags and the Helm chart versions are both synchronized and linked to the ZenML open-source releases. To find the latest ZenML OSS release, please check the [ZenML OSS ArtifactHub repository (Helm chart versions)](https://artifacthub.io/packages/helm/zenml/zenml) or the [ZenML release page](https://github.com/zenml-io/zenml/releases).
+### Centralized Governance
 
-If you're planning on copying the container images to your own private registry (recommended if your Kubernetes cluster isn't running on AWS and can't authenticated directly to the ZenML Pro container registry) make sure to include and keep the same tags.
+The hybrid model provides unified user management through a single control plane for all workspaces. Permissions are centrally managed across teams with consistent RBAC, and you only need to configure SSO integration once. Platform teams gain global visibility across all workspaces while enforcing standardized organizational policies.
 
-By default, the ZenML OSS Helm chart uses the same container image tags as the helm chart version. Configuring custom container image tags when setting up your Helm distribution is also possible, but not recommended because it doesn't yield reproducible results and may even cause problems if used with the wrong Helm chart version.
-{% endhint %}
+### Balanced Control
 
-#### ZenML Pro Client Artifacts
+You maintain full control over workspace configuration and resources while benefiting from reduced operational overhead compared to a fully self-hosted deployment. Workspace resources can be configured to specific team needs, and workspaces can be fully isolated per team, department, or entity.
 
-If you're planning on running containerized ZenML pipelines, or using other containerization related ZenML features, you'll also need to access the public ZenML client container image located [in Docker Hub at `zenmldocker/zenml`](https://hub.docker.com/r/zenmldocker/zenml). This isn't a problem unless you're deploying ZenML Pro in an air-gapped environment, in which case you'll also have to copy the client container image into your own container registry. You'll also have to configure your code to use the correct base container registry via DockerSettings (see the [DockerSettings documentation](https://docs.zenml.io/how-to/customize-docker-builds) for more information).
+### Production Ready
 
-### Accessing the ZenML Pro Container Images
+The control plane and UI are automatically updated and maintained by ZenML, and you get direct access to ZenML experts through professional support.
 
-This section provides instructions for how to access the private ZenML Pro container images.
+## Ideal Use Cases
 
-{% hint style="info" %}
-Currently, ZenML Pro container images are only available in AWS Elastic Container Registry (ECR) and Google Cloud Platform (GCP) Artifact Registry. Support for Azure Container Registry (ACR) is on our roadmap and will be added soon.
+Hybrid SaaS works well for regulated industries (finance, healthcare, government) with strict data residency requirements, and for organizations with centralized MLOps teams managing multiple business units. It's also a good fit for companies with existing VPN or firewall policies that restrict inbound connections, enterprises requiring audit trails of all data access within their infrastructure, teams needing customization while maintaining centralized user management, and organizations with compliance requirements mandating on-premises metadata storage.
 
-The ZenML support team can provide credentials upon request, which can be used to pull these images without the need to set up any cloud provider accounts or resources. Contact support if you'd prefer this option.
-{% endhint %}
+## Architecture Details
 
-#### AWS
+### Network Security
 
-To access the ZenML Pro container images stored in AWS ECR, you need to set up an AWS IAM user or IAM role in your AWS account. The steps below outline how to create an AWS account, configure the necessary IAM entities, and pull images from the private repositories. If you're familiar with AWS or even plan on using an AWS EKS cluster to deploy ZenML Pro, then you can simply use your existing IAM user or IAM role and skip steps 1. and 2.
+Workspaces initiate outbound-only connections to the control plane, meaning no inbound connections are required to your infrastructure. This makes the deployment compatible with strict firewall policies.
 
-***
+Each workspace can be deployed in separate VPCs or networks, isolated per team, department, or customer. Different workspaces can be configured with different security policies and managed independently by different teams.
 
-* **Step 1: Create a Free AWS Account**
-  1. Visit the [AWS Free Tier page](https://aws.amazon.com/free/).
-  2. Click **Create a Free Account**.
-  3. Follow the on-screen instructions to provide your email address, create a root user, and set a secure password.
-  4. Enter your contact and payment information for verification purposes. While a credit or debit card is required, you won't be charged for free-tier eligible services.
-  5. Confirm your email and complete the verification process.
-  6. Log in to the AWS Management Console using your root user credentials.
-* **Step 2: Create an IAM User or IAM Role**
+### Data Residency
 
-  **A. Create an IAM User**
+| Data Type         | Storage Location    | Purpose                             |
+| ----------------- | ------------------- | ----------------------------------- |
+| Account metadata  | Control Plane       | Authentication only                 |
+| RBAC policies     | Control Plane       | Authorization decisions             |
+| Pipeline metadata | Your Infrastructure | Run history, metrics, parameters    |
+| Model metadata    | Your Infrastructure | Model versions, stages, annotations |
+| Artifacts         | Your Infrastructure | Datasets, models, visualizations    |
+| Secrets           | Your Infrastructure | Cloud credentials, API keys         |
+| Logs              | Your Infrastructure | Step outputs, debug information     |
 
-  1. Log in to the AWS Management Console.
-  2. Navigate to the **IAM** service.
-  3. Click **Users** in the left-hand menu, then click **Add Users**.
-  4. Provide a user name (e.g., `zenml-ecr-access`).
-  5. Select **Access Key - Programmatic access** as the AWS credential type.
-  6. Click **Next: Permissions**.
-  7. Choose **Attach policies directly**, then select the following policies:
-     * **AmazonEC2ContainerRegistryReadOnly**
-  8. Click **Next: Tags** and optionally add tags for organization purposes.
-  9. Click **Next: Review**, then **Create User**.
-  10. Note the **Access Key ID** and **Secret Access Key** displayed after creation. Save these securely.
+## Setup Process
 
-  **B. Create an IAM Role**
+### 1. Initial Configuration
 
-  1. Navigate to the **IAM** service.
-  2. Click **Roles** in the left-hand menu, then click **Create Role**.
-  3. Choose the type of trusted entity:
-     * Select **AWS Account**.
-  4. Enter your AWS account ID and click **Next**.
-  5. Select the **AmazonEC2ContainerRegistryReadOnly** policy.
-  6. Click **Next: Tags**, optionally add tags, then click **Next: Review**.
-  7. Provide a role name (e.g., `zenml-ecr-access-role`) and click **Create Role**.
-* **Step 3: Provide the IAM User/Role ARN**
+[Book a demo](https://www.zenml.io/book-your-demo) to get started. The ZenML team will set up your organization in the control plane, establish secure communication channels, and optionally configure SSO integration.
 
-  1. For an IAM user, the ARN can be found in the **Users** section under the **Summary** tab.
-  2. For an IAM role, the ARN is displayed in the **Roles** section under the **Summary** tab.
+### 2. Workspace Deployment
 
-  Send the ARN to ZenML Support so it can be granted permission to access the ZenML Pro container images and Helm charts.
-* **Step 4: Authenticate your Docker Client**
+Deploy ZenML workspaces in your infrastructure using one of the supported deployment backends: Kubernetes (recommended, including EKS, GKE, AKS, or self-managed clusters), AWS ECS, or other container orchestration platforms.
 
-  Run these steps on the machine that you'll use to pull the ZenML Pro images. It is recommended that you copy the container images into your own container registry that will be accessible from the Kubernetes cluster where ZenML Pro will be stored, otherwise you'll have to find a way to configure the Kubernetes cluster to authenticate directly to the ZenML Pro container registry and that will be problematic if your Kubernetes cluster is not running on AWS.
+Your infrastructure needs to provide a MySQL or PostgreSQL database, egress access to `cloud.zenml.io` for control plane communication, and compute resources for the ZenML server container.
 
-  **A. Install AWS CLI**
+For Kubernetes environments, we provide officially [supported Helm charts](https://artifacthub.io/packages/helm/zenml/zenml) to simplify deployment. For non-Kubernetes environments, we recommend managing the ZenML server lifecycle using infrastructure-as-code tools such as Terraform, Pulumi, or AWS CloudFormation.
 
-  1. Follow the instructions to install the AWS CLI: [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html).
+## Security Documentation
 
-  **B. Configure AWS CLI Credentials**
+For software deployed on your infrastructure, ZenML provides vulnerability assessment reports with comprehensive security analysis, a software bill of materials (SBOM) with complete dependency inventory for compliance, compliance documentation to support your security audits and certifications, and architecture review through security team consultation for deployment planning. Contact <cloud@zenml.io> to request security documentation.
 
-  1. Open a terminal and run `aws configure`
-  2. Enter the following when prompted:
-     * **Access Key ID**: Provided during IAM user creation.
-     * **Secret Access Key**: Provided during IAM user creation.
-     * **Default region name**: `eu-west-1`
-     * **Default output format**: Leave blank or enter `json`.
-  3. If you chose to use an IAM role, update the AWS CLI configuration file to specify the role you want to assume. Open the configuration file located at `~/.aws/config` and add the following:
+## Monitoring & Maintenance
 
-     ```bash
-     [profile zenml-ecr-access]
-     role_arn = <IAM-ROLE-ARN>
-     source_profile = default
-     region = eu-west-1
-     ```
+### Control Plane (ZenML Managed)
 
-     Replace `<IAM-ROLE-ARN>` with the ARN of the role you created and ensure `source_profile` points to a profile with sufficient permissions to assume the role.
+ZenML handles automatic updates, security patches, uptime monitoring, and backup and recovery for the control plane.
 
-  **C. Authenticate Docker with ECR**
+### Workspaces (Your Responsibility)
 
-  Run the following command to authenticate your Docker client with the ZenML ECR repository:
+You are responsible for database maintenance and backups, workspace version updates (with ZenML guidance), infrastructure scaling, and resource monitoring.
 
-  ```bash
-  aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 715803424590.dkr.ecr.eu-west-1.amazonaws.com
-  aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 715803424590.dkr.ecr.eu-central-1.amazonaws.com
-  ```
+### Support Included
 
-  If you used an IAM role, use the specified profile to execute commands. For example:
+Your subscription includes professional support with SLA, architecture consultation, migration assistance, and security advisory updates.
 
-  ```bash
-  aws ecr get-login-password --region eu-west-1 --profile zenml-ecr-access | docker login --username AWS --password-stdin 715803424590.dkr.ecr.eu-west-1.amazonaws.com
-  aws ecr get-login-password --region eu-central-1 --profile zenml-ecr-access | docker login --username AWS --password-stdin 715803424590.dkr.ecr.eu-central-1.amazonaws.com
-  ```
+## Comparison with Other Deployments
 
-  This will allow you to authenticate to the ZenML Pro container registries and pull the necessary images with Docker, e.g.:
+| Feature           | SaaS           | Hybrid SaaS            | Self-hosted          |
+| ----------------- | -------------- | ---------------------- | -------------------- |
+| Setup Time        | Minutes        | Hours to Days          | Days to Weeks        |
+| Metadata Location | ZenML Infra    | Your Infra             | Your Infra           |
+| Secret Management | ZenML or Yours | Your Infra             | Your Infra           |
+| User Management   | ZenML Managed  | ZenML Managed          | Self-Managed         |
+| Maintenance       | Zero           | Workspace Only         | Full Stack           |
+| Control           | Minimal        | Moderate               | Complete             |
+| Best For          | Fast start     | Security + Convenience | Strictest compliance |
 
-  ```bash
-  # Pull the ZenML Pro API image
-  docker pull 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api:<zenml-pro-version>
-  # Pull the ZenML Pro Dashboard image
-  docker pull 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard:<zenml-pro-version>
-  # Pull the ZenML Pro Server image
-  docker pull 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<zenml-oss-version>
-  ```
+[Compare all deployment options →](https://docs.zenml.io/pro/deployments/scenarios)
 
-{% hint style="info" %}
-To decide which tag to use, you should check:
+## Migration Paths
 
-* for the available ZenML Pro versions: the [ZenML Pro ArtifactHub repository (Helm chart versions)](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro)
-* for the available ZenML OSS versions: the [ZenML OSS ArtifactHub repository (Helm chart versions)](https://artifacthub.io/packages/helm/zenml/zenml) or the [ZenML GitHub releases page](https://github.com/zenml-io/zenml/releases)
+### From ZenML OSS
 
-Note that the `zenml-pro-api` and `zenml-pro-dashboard` images are stored in the `eu-west-1` region, while the `zenml-pro-server` image is stored in the `eu-central-1` region.
-{% endhint %}
+You can migrate from ZenML OSS by deploying a ZenML Pro-compatible workspace in your own infrastructure, starting from your existing ZenML OSS workspace deployment if you have one. The process involves updating your Docker image to the latest Pro Hybrid image provided by ZenML, setting required environment variables according to the ZenML Pro documentation (such as `ZENML_PRO_CONTROL_PLANE_URL`, `ZENML_PRO_CONTROL_PLANE_CLIENT_ID`, secrets, and SSO configuration), and restarting your deployment to apply these changes. After that, migrate your users and teams, then run `zenml login` to authenticate via [cloud.zenml.io](https://cloud.zenml.io) and connect your SDK clients to the new workspace.
 
-#### GCP
+### From SaaS to Hybrid
 
-To access the ZenML Pro container images stored in Google Cloud Platform (GCP) Artifact Registry, you need to set up a GCP account and configure the necessary permissions. The steps below outline how to create a GCP account, configure authentication, and pull images from the private repositories. If you're familiar with GCP or plan on using a GKE cluster to deploy ZenML Pro, you can use your existing GCP account and skip step 1.
+If you're interested in migrating from ZenML Pro SaaS to a Hybrid SaaS setup, we're here to help guide you through every step of the process. Because migration paths can vary depending on your organization's size, data residency requirements, and current ZenML setup, we recommend discussing your plans with a ZenML solutions architect. [Book a migration consultation](https://www.zenml.io/book-your-demo) or email us at <cloud@zenml.io>. Your ZenML representative will provide you with a tailored migration checklist, technical documentation, and direct support to ensure a smooth transition with minimal downtime.
 
-***
+### Between Workspaces
 
-* **Step 1: Create a GCP Account**
-  1. Visit the [Google Cloud Console](https://console.cloud.google.com/).
-  2. Click **Get Started for Free** or sign in with an existing Google account.
-  3. Follow the on-screen instructions to set up your account and create a project.
-  4. Set up billing information (required for using GCP services).
-* **Step 2: Create a Service Account**
-  1. Navigate to the [IAM & Admin > Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) page in the Google Cloud Console.
-  2. Click **Create Service Account**.
-  3. Enter a service account name (e.g., `zenml-gar-access`).
-  4. Add a description (optional) and click **Create and Continue**.
-  5. No additional permissions are needed as access will be granted directly to the Artifact Registry.
-  6. Click **Done**.
-  7. After creation, click on the service account to view its details.
-  8. Go to the **Keys** tab and click **Add Key > Create new key**.
-  9. Choose **JSON** as the key type and click **Create**.
-  10. Save the downloaded JSON key file securely - you'll need it later.
-* **Step 3: Provide the Service Account Email**
-  1. In the service account details page, copy the service account email address (it should look like `zenml-gar-access@your-project.iam.gserviceaccount.com`).
-  2. Send this email address to ZenML Support so it can be granted permission to access the ZenML Pro container images.
-* **Step 4: Authenticate your Docker Client**
+A workspace deep copy feature for migrating pipelines and artifacts between workspaces is coming soon.
 
-  Run these steps on the machine that you'll use to pull the ZenML Pro images. It is recommended that you copy the container images into your own container registry that will be accessible from the Kubernetes cluster where ZenML Pro will be stored.
+## Related Resources
 
-  **A. Install Google Cloud CLI**
+* [System Architecture](https://docs.zenml.io/pro/system-architecture)
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios)
+* [SaaS Deployment](https://docs.zenml.io/pro/deployments/scenarios/saas-deployment)
+* [Self-hosted Deployment](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment)
+* [Configuration Details](https://docs.zenml.io/pro/manage/configuration-details)
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates)
+* [Workspaces](https://docs.zenml.io/pro/core-concepts/workspaces)
+* [Organizations](https://docs.zenml.io/pro/core-concepts/organization)
 
-  1. Follow the instructions to install the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install).
-  2. Initialize the CLI by running:
+## Get Started
 
-     ```bash
-     gcloud init
-     ```
+Ready to deploy ZenML Pro in Hybrid mode? [Book a Demo](https://www.zenml.io/book-your-demo) or [contact us](mailto:cloud@zenml.io) with questions.
 
-  **B. Configure Authentication**
 
-  1. Activate the service account using the JSON key file you downloaded:
+# Kubernetes with Helm
 
-     ```bash
-     gcloud auth activate-service-account --key-file=/path/to/your-key-file.json
-     ```
-  2. Configure Docker authentication for Artifact Registry:
+Deploy ZenML Pro Hybrid using Kubernetes and Helm charts.
 
-     ```bash
-     gcloud auth configure-docker europe-west3-docker.pkg.dev
-     ```
+This guide provides step-by-step instructions for deploying ZenML Pro in a Hybrid setup using Kubernetes and Helm charts. In this deployment model, the Workspace Server runs in your infrastructure while the Control Plane is managed by ZenML.
 
-  **C. Pull the Container Images**
+**What you'll configure:**
 
-  You can now pull the ZenML Pro images:
+* Workspace Server with database connection
+* Network connectivity to ZenML Control Plane
+* Workload manager for running pipelines from the UI
+* TLS/SSL certificates and domain name
 
-  ```bash
-  # Pull the ZenML Pro API image
-  docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-api:<zenml-pro-version>
-  # Pull the ZenML Pro Dashboard image
-  docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-dashboard:<zenml-pro-version>
-  # Pull the ZenML Pro Server image
-  docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server:<zenml-oss-version>
-  ```
+## Prerequisites
 
-{% hint style="info" %}
-To decide which tag to use, you should check:
+* Kubernetes cluster (1.24+) - EKS, GKE, AKS, or self-managed
+* `kubectl` configured to access your cluster
+* `helm` CLI (3.0+) installed
+* A domain name and TLS certificate for your ZenML server
+* MySQL database (managed or self-hosted)
+* Outbound HTTPS access to `cloudapi.zenml.io`
 
-* for the available ZenML Pro versions: the [ZenML Pro ArtifactHub repository (Helm chart versions)](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro)
-* for the available ZenML OSS versions: the [ZenML OSS ArtifactHub repository (Helm chart versions)](https://artifacthub.io/packages/helm/zenml/zenml) or the [ZenML GitHub releases page](https://github.com/zenml-io/zenml/releases)
-  {% endhint %}
+**Tools (on a machine with internet access for initial setup):**
 
-### Air-Gapped Installation
+* Docker
+* Helm (3.0+)
+* Access to pull ZenML Pro images from private registries (contact <cloud@zenml.io>)
 
-If you need to install ZenML Pro in an air-gapped environment (a network with no direct internet access), you'll need to transfer all required artifacts to your internal infrastructure. Here's a step-by-step process:
+Before starting, complete the setup described in [Hybrid Deployment Overview](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment):
 
-**1. Prepare a Machine with Internet Access**
+* Step 1: Set up ZenML Pro organization
+* Step 2: Configure your infrastructure (database, networking, TLS)
+* Step 3: Obtain Pro credentials from ZenML Support
 
-First, you'll need a machine with both internet access and sufficient storage space to temporarily store all artifacts. On this machine:
+## Step 1: Prepare Helm Chart and docker images
 
-1. Follow the authentication steps described above to gain access to the private repositories
-2. Install the required tools:
-   * Docker
-   * Helm
+### Pull Container Images
 
-**2. Download All Required Artifacts**
+Access and pull from the ZenML Pro container registries:
 
-A Bash script like the following can be used to download all necessary components, or you can run the listed commands manually:
+1. Authenticate to the ZenML Pro container registries (AWS ECR or GCP Artifact Registry)
+   * Use the credentials that you provided to the ZenML Support to access the private zenml container registry
+2. Pull all required images:
+
+   * **Workspace Server image (AWS ECR):**
+     * `715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<version>`
+   * **Workspace Server image (GCP Artifact Registry):**
+     * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server:<version>`
+   * **Client image (for pipelines):**
+     * `zenmldocker/zenml:<version>`
+
+   Example pull commands (AWS ECR):
+
+   ```bash
+   docker pull 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<version>
+   docker pull zenmldocker/zenml:<version>
+   ```
+
+   Example pull commands (GCP Artifact Registry):
+
+   ```bash
+   docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server:<version>
+   docker pull zenmldocker/zenml:<version>
+   ```
+
+### Pull Helm chart
+
+For OCI-based Helm charts, you can either pull the chart or install directly. To pull the chart first:
 
 ```bash
-#!/bin/bash
-
-set -e
-
-# Set the version numbers
-ZENML_PRO_VERSION="<version>"  # e.g., "0.10.24"
-ZENML_OSS_VERSION="<version>"  # e.g., "0.73.0"
-
-# Create directories for artifacts
-mkdir -p zenml-artifacts/images
-mkdir -p zenml-artifacts/charts
-
-# Set registry URLs
-# Use the following if you're pulling from the ZenML private ECR registry
-ZENML_PRO_REGISTRY="715803424590.dkr.ecr.eu-west-1.amazonaws.com"
-ZENML_PRO_SERVER_REGISTRY="715803424590.dkr.ecr.eu-central-1.amazonaws.com"
-# Use the following if you're pulling from the ZenML private GCP Artifact Registry
-# ZENML_PRO_REGISTRY="europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro"
-# ZENML_PRO_SERVER_REGISTRY=$ZENML_PRO_REGISTRY
-ZENML_HELM_REGISTRY="public.ecr.aws/zenml"
-ZENML_DOCKERHUB_REGISTRY="zenmldocker"
-
-# Download container images
-echo "Downloading container images..."
-docker pull ${ZENML_PRO_REGISTRY}/zenml-pro-api:${ZENML_PRO_VERSION}
-docker pull ${ZENML_PRO_REGISTRY}/zenml-pro-dashboard:${ZENML_PRO_VERSION}
-docker pull ${ZENML_PRO_SERVER_REGISTRY}/zenml-pro-server:${ZENML_OSS_VERSION}
-docker pull ${ZENML_DOCKERHUB_REGISTRY}/zenml:${ZENML_OSS_VERSION}
-
-# Save images to tar files
-echo "Saving images to tar files..."
-docker save ${ZENML_PRO_REGISTRY}/zenml-pro-api:${ZENML_PRO_VERSION} > zenml-artifacts/images/zenml-pro-api.tar
-docker save ${ZENML_PRO_REGISTRY}/zenml-pro-dashboard:${ZENML_PRO_VERSION} > zenml-artifacts/images/zenml-pro-dashboard.tar
-docker save ${ZENML_PRO_SERVER_REGISTRY}/zenml-pro-server:${ZENML_OSS_VERSION} > zenml-artifacts/images/zenml-pro-server.tar
-docker save ${ZENML_DOCKERHUB_REGISTRY}/zenml:${ZENML_OSS_VERSION} > zenml-artifacts/images/zenml-client.tar
-
-# Download Helm charts
-echo "Downloading Helm charts..."
-helm pull oci://${ZENML_HELM_REGISTRY}/zenml-pro --version ${ZENML_PRO_VERSION} -d zenml-artifacts/charts
-helm pull oci://${ZENML_HELM_REGISTRY}/zenml --version ${ZENML_OSS_VERSION} -d zenml-artifacts/charts
-
-# Create a manifest file with versions
-echo "Creating manifest file..."
-cat > zenml-artifacts/manifest.txt << EOF
-ZenML Pro Version: ${ZENML_PRO_VERSION}
-ZenML OSS Version: ${ZENML_OSS_VERSION}
-Date Created: $(date)
-
-Container Images:
-- zenml-pro-api:${ZENML_PRO_VERSION}
-- zenml-pro-dashboard:${ZENML_PRO_VERSION}
-- zenml-pro-server:${ZENML_OSS_VERSION}
-- zenml-client:${ZENML_OSS_VERSION}
-
-Helm Charts:
-- zenml-pro-${ZENML_PRO_VERSION}.tgz
-- zenml-${ZENML_OSS_VERSION}.tgz
-EOF
-
-# Create final archive
-echo "Creating final archive..."
-tar czf zenml-artifacts.tar.gz zenml-artifacts/
+helm pull oci://public.ecr.aws/zenml/zenml --version <ZENML_OSS_VERSION>
 ```
 
-**3. Transfer Artifacts to Air-Gapped Environment**
+Alternatively, you can install directly from OCI (see Step 3 below).
 
-1. Copy the `zenml-artifacts.tar.gz` file to your preferred transfer medium (e.g., USB drive, approved file transfer system)
-2. Transfer the archive to a machine in your air-gapped environment that has access to your internal container registry
+## Step 2: Create Helm Values File
 
-**4. Load Artifacts in Air-Gapped Environment**
+Create a file `zenml-hybrid-values.yaml` with your configuration:
 
-Create a script to load the artifacts in your air-gapped environment or run the listed commands manually:
+```yaml
+# ZenML Server Configuration
+zenml:
+  # Analytics (optional)
+  analyticsOptIn: false
+
+  # Thread pool size for concurrent operations
+  threadPoolSize: 20
+
+  # Database Configuration
+  # Note: Workspace servers only support MySQL, not PostgreSQL
+  database:
+    maxOverflow: "-1"
+    poolSize: "10"
+
+    url: mysql://<user>:<password>@<host>:<port>/<database>
+
+  # Image Configuration
+  image:
+    repository: 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server
+
+  # Server URL (your actual domain)
+  serverURL: https://zenml.mycompany.com
+
+  # Ingress Configuration
+  ingress:
+    enabled: true
+    host: zenml.mycompany.com
+
+  # Pro Hybrid Configuration
+  pro:
+    # ZenML Control Plane endpoints
+    apiURL: https://cloudapi.zenml.io
+    dashboardURL: https://cloud.zenml.io
+    enabled: true
+    enrollmentKey: <your-enrollment-key>
+    # Your organization details
+    organizationID: <your-org-id>
+    organizationName: <your-org-name>
+    # Workspace details (provided by ZenML)
+    workspaceID: <your-workspace-id>
+    workspaceName: <your-workspace-name>
+
+  # Replica count
+  replicaCount: 1
+
+  # Secrets Store Configuration
+  secretsStore:
+    sql:
+      encryptionKey: <your-encryption-key>  # 32-byte hex string
+    type: sql
+
+# Resource Limits (adjust to your needs)
+resources:
+  limits:
+    memory: 800Mi
+  requests:
+    cpu: 100m
+    memory: 450Mi
+```
+
+**Minimum required settings:**
+
+* the database credentials (`zenml.database.url`)
+* the URL (`zenml.serverURL`) and Ingress hostname (`zenml.ingress.host`) where the ZenML Hybrid workspace server will be reachable
+* the Pro configuration (`zenml.pro.*`) with your organization and workspace details
+
+**Additional relevant settings:**
+
+* configure container registry credentials (`imagePullSecrets`) if your cluster cannot authenticate directly to the ZenML Pro container registry
+* injecting custom CA certificates (`zenml.certificates`), especially important if the TLS certificates used by the ZenML Pro services are signed by a custom Certificate Authority
+* configure HTTP proxy settings (`zenml.proxy`)
+* custom container image repository location (`zenml.image.repository`)
+* additional Ingress settings (`zenml.ingress`)
+* Kubernetes resources allocated to the pods (`resources`)
+
+## Step 3: Deploy with Helm
+
+Install the ZenML chart directly from OCI:
 
 ```bash
-#!/bin/bash
-
-set -e
-
-# Extract the archive
-echo "Extracting archive..."
-tar xzf zenml-artifacts.tar.gz
-
-# Read the manifest
-echo "Manifest:"
-cat zenml-artifacts/manifest.txt
-
-# Load images and track which ones were loaded
-echo "Loading images into Docker..."
-LOADED_IMAGES=()
-
-# Load each image and capture its reference
-image_ref=$(docker load < zenml-artifacts/images/zenml-pro-api.tar | grep "Loaded image:" | cut -d' ' -f3)
-LOADED_IMAGES+=("$image_ref")
-echo "Loaded image: $image_ref"
-
-image_ref=$(docker load < zenml-artifacts/images/zenml-pro-dashboard.tar | grep "Loaded image:" | cut -d' ' -f3)
-LOADED_IMAGES+=("$image_ref")
-echo "Loaded image: $image_ref"
-
-image_ref=$(docker load < zenml-artifacts/images/zenml-pro-server.tar | grep "Loaded image:" | cut -d' ' -f3)
-LOADED_IMAGES+=("$image_ref")
-echo "Loaded image: $image_ref"
-
-image_ref=$(docker load < zenml-artifacts/images/zenml-client.tar | grep "Loaded image:" | cut -d' ' -f3)
-LOADED_IMAGES+=("$image_ref")
-echo "Loaded image: $image_ref"
-# Tag and push images to your internal registry
-INTERNAL_REGISTRY="internal-registry.company.com"
-
-echo "Pushing images to internal registry..."
-for img in "${LOADED_IMAGES[@]}"; do
-    # Get the image name without the repository and tag
-    img_name=$(echo $img | awk -F/ '{print $NF}' | cut -d: -f1)
-    # Get the tag
-    tag=$(echo $img | cut -d: -f2)
-    
-    echo "Processing $img"
-    docker tag "$img" "${INTERNAL_REGISTRY}/zenml/$img_name:$tag"
-    docker push "${INTERNAL_REGISTRY}/zenml/$img_name:$tag"
-    echo "Pushed image: ${INTERNAL_REGISTRY}/zenml/$img_name:$tag"
-done
-
-# Copy Helm charts to your internal Helm repository (if applicable)
-echo "Helm charts are available in: zenml-artifacts/charts/"
+helm install zenml oci://public.ecr.aws/zenml/zenml \
+  --namespace zenml-hybrid \
+  --create-namespace \
+  --values zenml-hybrid-values.yaml \
+  --version <ZENML_OSS_VERSION>
 ```
 
-**5. Update Configuration**
+Or if you pulled the chart in Step 1, install from the local file:
 
-When deploying ZenML Pro in your air-gapped environment, make sure to update all references to container images in your Helm values to point to your internal registry. For example:
+```bash
+helm install zenml ./zenml-<ZENML_OSS_VERSION>.tgz \
+  --namespace zenml-hybrid \
+  --create-namespace \
+  --values zenml-hybrid-values.yaml
+```
+
+Monitor the deployment:
+
+```bash
+kubectl -n zenml-hybrid get pods -w
+```
+
+Wait for the pod to be running:
+
+```bash
+kubectl -n zenml-hybrid get pods
+# Output should show:
+# NAME                    READY   STATUS    RESTARTS   AGE
+# zenml-5c4b6d9dcd-7bhfp  1/1     Running   0          2m
+```
+
+## Step 4: Verify the Deployment
+
+### Check Service is Running
+
+```bash
+kubectl -n zenml-hybrid get svc
+kubectl -n zenml-hybrid get ingress
+```
+
+### Verify Control Plane Connection
+
+```bash
+kubectl -n zenml-hybrid logs deployment/zenml | tail -20
+```
+
+Look for messages indicating successful connection to the control plane.
+
+### Test HTTPS Connectivity
+
+```bash
+curl -k https://zenml.mycompany.com/health
+# Should return 200 OK with a JSON response
+```
+
+### Access the Dashboard
+
+1. Navigate to `https://zenml.mycompany.com` in your browser
+2. You should be redirected to ZenML Cloud login
+3. Sign in with your organization credentials
+4. You should see your workspace listed
+
+## Step 5: Configure Workload Manager
+
+The Workspace Server includes a workload manager that enables running pipelines directly from the ZenML Pro UI. This requires the workspace server to have access to a Kubernetes cluster where ad-hoc runner pods can be created.
+
+{% hint style="warning" %}
+Snapshots are only available from ZenML workspace server version 0.90.0 onwards.
+{% endhint %}
+
+### 1. Create Kubernetes Resources for Workload Manager
+
+Create a dedicated namespace and service account:
+
+```bash
+kubectl create namespace zenml-workspace-namespace
+kubectl -n zenml-workspace-namespace create serviceaccount zenml-workspace-service-account
+```
+
+### 2. Configure Workload Manager in Helm Values
+
+Add environment variables to your `zenml-hybrid-values.yaml`:
+
+**Option A: Kubernetes-based (Simplest)**
 
 ```yaml
 zenml:
-  image:
-    api:
-      repository: internal-registry.company.com/zenml/zenml-pro-api
-    dashboard:
-      repository: internal-registry.company.com/zenml/zenml-pro-dashboard
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
+
+**Option B: AWS-based (if running on EKS)**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: <your-ecr-registry>
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS: "true"
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET: s3://your-bucket/zenml-logs
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION: us-east-1
+```
+
+**Option C: GCP-based (if running on GKE)**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: <your-gcr-registry>
+```
+
+### 3. Configure Pod Resources (Optional but Recommended)
+
+```yaml
+zenml:
+    environment:
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TTL_SECONDS_AFTER_FINISHED: 86400
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 5
+```
+
+### 4. Redeploy with Updated Values
+
+```bash
+helm upgrade zenml oci://public.ecr.aws/zenml/zenml \
+  --namespace zenml-hybrid \
+  --values zenml-hybrid-values.yaml \
+  --version <ZENML_OSS_VERSION>
+```
+
+## Domain Name
+
+You'll need an FQDN for the ZenML Hybrid workspace server.
+
+* **FQDN Setup**\
+  Obtain a Fully Qualified Domain Name (FQDN) (e.g., `zenml.mycompany.com`) from your DNS provider.
+  * Identify the external Load Balancer IP address of the Ingress controller using the command `kubectl get svc -n <ingress-namespace>`. Look for the `EXTERNAL-IP` field of the Load Balancer service.
+  * Create a DNS `A` record (or `CNAME` for subdomains) pointing the FQDN to the Load Balancer IP. Example:
+    * Host: `zenml.mycompany.com`
+    * Type: `A`
+    * Value: `<Load Balancer IP>`
+  * Use a DNS propagation checker to confirm that the DNS record is resolving correctly.
+
+{% hint style="warning" %}
+Make sure you don't use a simple DNS prefix for the server (e.g. `https://zenml.cluster` is not recommended). Always use a fully qualified domain name (FQDN) (e.g. `https://zenml.ml.cluster`). The TLS certificates will not be accepted by some browsers otherwise (e.g. Chrome).
+{% endhint %}
+
+## SSL Certificate
+
+The ZenML Hybrid workspace server does not terminate SSL traffic. It is your responsibility to generate and configure the necessary SSL certificates for the workspace server.
+
+### Obtaining SSL Certificates
+
+Acquire an SSL certificate for the domain. You can use:
+
+* A commercial SSL certificate provider (e.g., DigiCert, Sectigo).
+* Free services like [Let's Encrypt](https://letsencrypt.org/) for domain validation and issuance.
+* Self-signed certificates (not recommended for production environments). **IMPORTANT**: If you are using self-signed certificates, you will need to install the CA certificate on every client machine that connects to the workspace server.
+
+### Configuring SSL Termination
+
+Once the SSL certificate is obtained, configure your load balancer or Ingress controller to terminate HTTPS traffic:
+
+**For NGINX Ingress Controller**:
+
+You can configure SSL termination globally for the NGINX Ingress Controller by setting up a default SSL certificate or configuring it at the ingress controller level, or you can specify SSL certificates when configuring the ingress in the ZenML server Helm values.
+
+Here's how you can do it globally:
+
+1. **Create a TLS Secret**
+
+   Store your SSL certificate and private key as a Kubernetes TLS secret in the namespace where the NGINX Ingress Controller is deployed.
+
+   ```bash
+   kubectl create secret tls default-ssl-secret \
+     --cert=/path/to/tls.crt \
+     --key=/path/to/tls.key \
+     -n <nginx-ingress-namespace>
+   ```
+2. **Update NGINX Ingress Controller Configurations**
+
+   Configure the NGINX Ingress Controller to use the default SSL certificate.
+
+   * If using the NGINX Ingress Controller Helm chart, modify the `values.yaml` file or use `--set` during installation:
+
+     ```yaml
+     controller:
+       extraArgs:
+         default-ssl-certificate: <nginx-ingress-namespace>/default-ssl-secret
+     ```
+
+     Or directly pass the argument during Helm installation or upgrade:
+
+     ```bash
+     helm upgrade --install ingress-nginx ingress-nginx \
+       --repo https://kubernetes.github.io/ingress-nginx \
+       --namespace <nginx-ingress-namespace> \
+       --set controller.extraArgs.default-ssl-certificate=<nginx-ingress-namespace>/default-ssl-secret
+     ```
+   * If the NGINX Ingress Controller was installed manually, edit its deployment to include the argument in the `args` section of the container:
+
+     ```yaml
+     spec:
+       containers:
+       - name: controller
+         args:
+           - --default-ssl-certificate=<nginx-ingress-namespace>/default-ssl-secret
+     ```
+
+**For Traefik**:
+
+* Configure Traefik to use TLS by creating a certificate resolver for Let's Encrypt or specifying the certificates manually in the `traefik.yml` or `values.yaml` file. Example for Let's Encrypt:
+
+  ```yaml
+  tls:
+    certificatesResolvers:
+      letsencrypt:
+        acme:
+          email: your-email@example.com
+          storage: acme.json
+          httpChallenge:
+            entryPoint: web
+  entryPoints:
+    web:
+      address: ":80"
+    websecure:
+      address: ":443"
+  ```
+* Reference the domain in your IngressRoute or Middleware configuration.
+
+{% hint style="warning" %}
+If you used a custom CA certificate to sign the TLS certificates for the ZenML Hybrid workspace server, you will need to install the CA certificates on every client machine.
+{% endhint %}
+
+### Configure Ingress in Helm Values
+
+After setting up SSL termination at the ingress controller level, configure the ZenML Helm values to use ingress:
+
+**For NGINX:**
+
+```yaml
+zenml:
+  ingress:
+    enabled: true
+    className: nginx
+    host: zenml.mycompany.com
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    tls:
+      enabled: true
+      secretName: zenml-tls
+```
+
+**For Traefik:**
+
+```yaml
+zenml:
+  ingress:
+    enabled: true
+    className: traefik
+    host: zenml.mycompany.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    tls:
+      enabled: true
+      secretName: zenml-tls
+```
+
+## Database Backup Strategy (Optional)
+
+ZenML supports backing up the database before migrations are performed. Configure the backup strategy in your values file:
+
+```yaml
+zenml:
+  database:
+    # Backup strategy: in-memory (default), dump-file, database, or disabled
+    backupStrategy: in-memory
+    # For dump-file strategy with persistent storage:
+    # backupPVStorageClass: standard
+    # backupPVStorageSize: 1Gi
+    # For database strategy (MySQL only):
+    # backupDatabase: "zenml_backup"
 ```
 
 {% hint style="info" %}
-Remember to maintain the same version tags when copying images to your internal registry to ensure compatibility between components.
+Local SQLite persistence (`zenml.database.persistence`) is only relevant when not using an external MySQL database. For hybrid deployments with external MySQL, configure backups at the database level.
 {% endhint %}
 
-{% hint style="warning" %}
-The scripts provided above are examples and may need to be adjusted based on your specific security requirements and internal infrastructure setup.
-{% endhint %}
+## Scaling & High Availability
 
-**6. Using the Helm Charts**
+### Multiple Replicas
 
-After downloading the Helm charts, you can use their local paths instead of a remote OCI registry to deploy ZenML Pro components. Here's an example of how to use them:
+```yaml
+zenml:
+  replicaCount: 3
+```
+
+### Horizontal Pod Autoscaler
+
+```yaml
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+```
+
+## Monitoring & Logging
+
+### Debug Logging
+
+Enable verbose debug logging in the ZenML server:
+
+```yaml
+zenml:
+  debug: true  # Sets ZENML_LOGGING_VERBOSITY to DEBUG
+```
+
+### Collecting Logs
+
+View server logs with:
 
 ```bash
-# Install the ZenML Pro Control Plane (e.g. zenml-pro-0.10.24.tgz)
-helm install zenml-pro ./zenml-artifacts/charts/zenml-pro-<version>.tgz \
-  --namespace zenml-pro \
-  --create-namespace \
-  --values your-values.yaml
-
-# Install a ZenML Pro Workspace Server (e.g. zenml-0.73.0.tgz)
-helm install zenml-workspace ./zenml-artifacts/charts/zenml-<version>.tgz \
-  --namespace zenml-workspace \
-  --create-namespace \
-  --values your-workspace-values.yaml
+kubectl -n zenml-hybrid logs deployment/zenml -f
 ```
 
-### Infrastructure Requirements
+## Updating the Deployment
 
-To deploy the ZenML Pro control plane and one or more ZenML Pro workspace servers, ensure the following prerequisites are met:
+### Update Configuration
 
-1. **Kubernetes Cluster**
+1. Modify `zenml-hybrid-values.yaml`
+2. Upgrade with Helm:
 
-   A functional Kubernetes cluster is required as the primary runtime environment.
-2. **Database Server(s)**
+```bash
+helm upgrade zenml oci://public.ecr.aws/zenml/zenml \
+  --namespace zenml-hybrid \
+  --values zenml-hybrid-values.yaml \
+  --version <ZENML_OSS_VERSION>
+```
 
-   The ZenML Pro Control Plane and ZenML Pro Workspace servers need to connect to an external database server. To minimize the amount of infrastructure resources needed, you can use a single database server in common for the Control Plane and for all workspaces, or you can use different database servers to ensure server-level database isolation, as long as you keep in mind the following limitations:
+### Upgrade ZenML Version
 
-   * the ZenML Pro Control Plane can be connected to either MySQL or Postgres as the external database
-   * the ZenML Pro Workspace servers can only be connected to a MySQL database (no Postgres support is available)
-   * the ZenML Pro Control Plane as well as every ZenML Pro Workspace server needs to use its own individual database (especially important when connected to the same server)
+1. Check available versions:
 
-   Ensure you have a valid username and password for the different ZenML Pro services. For improved security, it is recommended to have different users for different services. If the database user does not have permissions to create databases, you must also create a database and give the user full permissions to access and manage it (i.e. create, update and delete tables).
-3. **Ingress Controller**
+For the latest available ZenML Helm chart versions, visit: <https://artifacthub.io/packages/helm/zenml/zenml>
 
-   Install an Ingress provider in the cluster (e.g., NGINX, Traefik) to handle HTTP(S) traffic routing. Ensure the Ingress provider is properly configured to expose the cluster's services externally.
-4. **Domain Name**
+2. Update values file with new version
+3. Upgrade:
 
-   You'll need an FQDN for the ZenML Pro Control Plane as well as for every ZenML Pro workspace. For this reason, it's highly recommended to use a DNS prefix and associated SSL certificate instead of individual FQDNs and SSL certificates, to make this process easier.
+```bash
+helm upgrade zenml oci://public.ecr.aws/zenml/zenml \
+  --namespace zenml-hybrid \
+  --values zenml-hybrid-values.yaml \
+  --version <new-version>
+```
 
-   * **FQDN or DNS Prefix Setup**\
-     Obtain a Fully Qualified Domain Name (FQDN) or DNS prefix (e.g., `*.zenml-pro.mydomain.com`) from your DNS provider.
-     * Identify the external Load Balancer IP address of the Ingress controller using the command `kubectl get svc -n <ingress-namespace>`. Look for the `EXTERNAL-IP` field of the Load Balancer service.
-     * Create a DNS `A` record (or `CNAME` for subdomains) pointing the FQDN to the Load Balancer IP. Example:
-       * Host: `zenml-pro.mydomain.com`
-       * Type: `A`
-       * Value: `<Load Balancer IP>`
-     * Use a DNS propagation checker to confirm that the DNS record is resolving correctly.
+## Troubleshooting
 
-{% hint style="warning" %}
-Make sure you don't use a simple DNS prefix for the servers (e.g. `https://zenml.cluster` is not recommended). This is especially relevant for the TLS certificates that you have to prepare for these endpoints. Always use a fully qualified domain name (FQDN) (e.g. `https://zenml.ml.cluster`). The TLS certificates will not be accepted by some browsers otherwise (e.g. Chrome).
+### Pod won't start
+
+```bash
+kubectl -n zenml-hybrid describe pod zenml-xxxxx
+kubectl -n zenml-hybrid logs zenml-xxxxx
+```
+
+## Uninstalling
+
+```bash
+helm uninstall zenml --namespace zenml-hybrid
+kubectl delete namespace zenml-hybrid
+```
+
+## Next Steps
+
+* [Configure your organization in ZenML Cloud](https://cloud.zenml.io)
+* [Set up users and teams](https://docs.zenml.io/pro/core-concepts/organization)
+* [Configure stacks and service connectors](https://docs.zenml.io/stacks)
+* [Run your first pipeline](https://github.com/zenml-io/zenml/tree/main/examples/quickstart)
+
+## Related Documentation
+
+* [Hybrid Deployment Overview](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
+* [Self-hosted Deployment Guide](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md)
+* [ZenML Helm Chart Documentation](https://artifacthub.io/packages/helm/zenml/zenml)
+
+
+# AWS ECS
+
+Deploy ZenML Pro Hybrid on AWS ECS with a managed control plane.
+
+This guide provides high-level instructions for deploying ZenML Pro in a Hybrid setup on AWS ECS (Elastic Container Service).
+
+## Architecture Overview
+
+In this setup:
+
+* **ZenML workspace** runs in ECS tasks within your VPC
+* **Load balancer** handles HTTPS traffic and routes to ECS tasks
+* **Database** stores workspace metadata in AWS RDS
+* **Secrets manager** stores Pro credentials securely
+* **NAT gateway** enables outbound access to ZenML Cloud control plane
+
+## Prerequisites
+
+Before starting, complete the setup described in [Hybrid Deployment Overview](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment):
+
+* Step 1: Set up ZenML Pro organization
+* Step 2: Configure your infrastructure (database, networking, TLS)
+* Step 3: Obtain Pro credentials from ZenML Support
+
+You'll also need:
+
+* AWS Account with appropriate IAM permissions
+* Basic familiarity with AWS ECS, VPC, and RDS
+
+## Step 1: Set Up AWS Infrastructure
+
+### VPC and Subnets
+
+Create a VPC with:
+
+* **Public subnets** (at least 2 across different availability zones) - for the Application Load Balancer
+* **Private subnets** (at least 2 across different availability zones) - for ECS tasks and RDS
+
+### Security Groups
+
+Create three security groups:
+
+1. **ALB Security Group**
+   * Inbound: HTTPS (443) and HTTP (80) from `0.0.0.0/0`
+   * Outbound: HTTP (8000) to the ECS security group
+2. **ECS Security Group**
+   * Inbound: HTTP (8000) from the ALB security group
+   * Outbound: HTTPS (443) to `0.0.0.0/0` (for ZenML Cloud access)
+   * Outbound: TCP (3306 for MySQL) to the RDS security group
+3. **RDS Security Group**
+   * Inbound: TCP (3306 for MySQL) from the ECS security group
+   * Outbound: Not restricted
+
+### NAT Gateway
+
+To enable ECS tasks to reach ZenML Cloud:
+
+1. Create an Elastic IP in your AWS region
+2. Create a NAT Gateway in one of your public subnets
+3. Wait for the NAT Gateway to be available
+
+### Route Tables
+
+For your private subnets (where ECS tasks run):
+
+1. Create a route table
+2. Add a default route (`0.0.0.0/0`) pointing to the NAT Gateway
+3. Associate this route table with your private subnets
+
+## Step 2: Set Up RDS Database
+
+Create an RDS database instance. **Important**: Workspace servers only support MySQL, not PostgreSQL.
+
+**Configuration:**
+
+* **DB Engine**: MySQL 8.0+ (PostgreSQL is not supported for workspace servers)
+* **Instance Class**: `db.t3.micro` or larger depending on expected load
+* **Storage**: 100 GB initial (with automatic scaling enabled)
+* **Multi-AZ**: Enable for production deployments
+* **VPC**: Your ZenML VPC
+* **Subnet Group**: Create a DB subnet group with your private subnets
+* **Security Group**: RDS security group created above
+* **Backups**: 30 days retention minimum
+* **Logs**: Enable error, general, and slowquery logs to CloudWatch
+
+**After creation:**
+
+1. Note the database endpoint (hostname)
+2. Create the initial database: `zenml_hybrid`
+3. Create a database user with full permissions on the database
+
+## Step 3: Store Secrets in AWS Secrets Manager
+
+Store your Pro credentials securely:
+
+1. **OAuth2 Client Secret**
+   * Secret name: `zenml/pro/oauth2-client-secret`
+   * Value: Your `ZENML_SERVER_PRO_OAUTH2_CLIENT_SECRET` from ZenML
+2. (Optional) **Database Password**
+   * Secret name: `zenml/rds/password`
+   * Value: Your RDS database password
+
+Note the ARN of your OAuth2 secret - you'll reference it in the task definition.
+
+## Step 4: Create ECS IAM Roles
+
+Create two IAM roles:
+
+### Task Execution Role
+
+This role allows ECS to pull images and manage logs:
+
+* Attach: `AmazonECSTaskExecutionRolePolicy`
+* Add inline policy for Secrets Manager access:
+  * Action: `secretsmanager:GetSecretValue`
+  * Resource: Your OAuth2 secret ARN
+  * Action: `logs:CreateLogGroup`, `logs:CreateLogStream`, `logs:PutLogEvents`
+  * Resource: Your CloudWatch log group
+
+### Task Role
+
+This role is for application-level permissions (optional for basic setup):
+
+* Leave empty for now, or add policies if your tasks need to access other AWS services
+
+## Step 5: Create ECS Task Definition
+
+In the AWS Console or using AWS CLI/Terraform, create a task definition with:
+
+**Task Configuration:**
+
+* **Compatibility**: FARGATE
+* **CPU**: 512 (0.5 vCPU)
+* **Memory**: 1024 MB
+* **Network Mode**: awsvpc
+* **Execution Role**: Task execution role created above
+* **Task Role**: Task role created above
+
+**Container Configuration:**
+
+* **Image**: `715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<ZENML_OSS_VERSION>`
+* **Port Mapping**: Container port 8000 to port 8000
+* **Essential**: Yes
+
+**Environment Variables:**
+
+Set these in the task definition:
+
+| Variable                             | Value                                                                                      |
+| ------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ZENML_SERVER_DEPLOYMENT_TYPE`       | `cloud`                                                                                    |
+| `ZENML_SERVER_PRO_API_URL`           | `https://cloudapi.zenml.io`                                                                |
+| `ZENML_SERVER_PRO_DASHBOARD_URL`     | `https://cloud.zenml.io`                                                                   |
+| `ZENML_SERVER_PRO_ORGANIZATION_ID`   | Your organization ID from Step 1                                                           |
+| `ZENML_SERVER_PRO_ORGANIZATION_NAME` | Your organization name from Step 1                                                         |
+| `ZENML_SERVER_PRO_WORKSPACE_ID`      | From ZenML Support                                                                         |
+| `ZENML_SERVER_PRO_WORKSPACE_NAME`    | Your workspace name                                                                        |
+| `ZENML_SERVER_PRO_OAUTH2_AUDIENCE`   | `https://cloudapi.zenml.io`                                                                |
+| `ZENML_SERVER_SERVER_URL`            | `https://zenml.mycompany.com`                                                              |
+| `ZENML_DATABASE_URL`                 | `mysql://user:password@hostname:3306/zenml_hybrid` (MySQL only - PostgreSQL not supported) |
+| `ZENML_SERVER_HOSTNAME`              | `0.0.0.0`                                                                                  |
+| `ZENML_SERVER_PORT`                  | `8000`                                                                                     |
+| `ZENML_LOGGING_LEVEL`                | `INFO`                                                                                     |
+
+**Secrets:**
+
+Reference your secret from Secrets Manager:
+
+| Variable                                | Secret                                                                        |
+| --------------------------------------- | ----------------------------------------------------------------------------- |
+| `ZENML_SERVER_PRO_OAUTH2_CLIENT_SECRET` | `arn:aws:secretsmanager:region:account:secret:zenml/pro/oauth2-client-secret` |
+
+**Logging:**
+
+Configure CloudWatch logs:
+
+* **Log Group**: `/ecs/zenml-hybrid`
+* **Log Stream Prefix**: `ecs`
+* **Region**: Your AWS region
+
+## Step 6: Create ECS Cluster and Service
+
+Create an ECS cluster named `zenml-hybrid`.
+
+Then create an ECS service within this cluster:
+
+**Service Configuration:**
+
+* **Cluster**: zenml-hybrid
+* **Task Definition**: zenml-hybrid (latest version)
+* **Launch Type**: FARGATE
+* **Desired Count**: 1 (or more for high availability)
+* **Platform Version**: LATEST
+
+**Network Configuration:**
+
+* **VPC**: Your ZenML VPC
+* **Subnets**: Your private subnets
+* **Security Group**: ECS security group
+* **Public IP**: Disabled (tasks don't need public IPs)
+
+**Load Balancing:**
+
+* **Load Balancer Type**: Application Load Balancer
+* **Container**: zenml-server
+* **Container Port**: 8000
+* (Leave the target group selection for the next step)
+
+## Step 7: Set Up Application Load Balancer
+
+Create an Application Load Balancer (ALB):
+
+**Configuration:**
+
+* **Subnets**: Your public subnets
+* **Security Group**: ALB security group
+
+### Target Group
+
+Create a target group for your ECS service:
+
+**Health Check Configuration:**
+
+* **Protocol**: HTTP
+* **Path**: `/health`
+* **Port**: 8000
+* **Interval**: 30 seconds
+* **Timeout**: 5 seconds
+* **Healthy Threshold**: 2
+* **Unhealthy Threshold**: 3
+
+### Listeners
+
+Create two listeners on your ALB:
+
+1. **HTTPS Listener (Port 443)**
+   * **Certificate**: Your TLS certificate from ACM or imported
+   * **Default Action**: Forward to your target group
+2. **HTTP Listener (Port 80)**
+   * **Default Action**: Redirect to HTTPS (port 443)
+
+## Step 8: Configure DNS
+
+In your DNS provider (Route 53 or external):
+
+1. Create an A record (or CNAME) pointing to your ALB's DNS name
+   * **Name**: `zenml.mycompany.com`
+   * **Target**: Your ALB's DNS name or IP
+   * **Type**: A record (use Alias if in Route 53)
+2. Allow time for DNS propagation (typically 5-15 minutes)
+
+## Step 9: Verify the Deployment
+
+1. **Check ECS Service Status**
+   * Go to ECS console → Clusters → zenml-hybrid → Services
+   * Verify the service shows "Active"
+   * Check that desired and running task counts match
+2. **Check Task Logs**
+   * Go to CloudWatch → Log Groups → `/ecs/zenml-hybrid`
+   * View log stream to look for startup messages
+   * Verify no critical errors appear
+3. **Test HTTPS Access**
+   * Visit `https://zenml.mycompany.com` in your browser
+   * You should see ZenML Pro login redirecting to cloud.zenml.io
+4. **Verify Control Plane Connection**
+   * In CloudWatch logs, look for messages indicating successful connection to ZenML Cloud
+   * Check for any authentication or SSL errors
+
+## Network & Firewall Requirements
+
+### Outbound Access to ZenML Cloud
+
+Your ECS tasks need HTTPS (port 443) outbound access to:
+
+* `cloudapi.zenml.io` - For control plane authentication
+
+This is enabled by the NAT Gateway and ECS security group configuration.
+
+### Inbound Access from Clients
+
+Clients need HTTPS (port 443) inbound access to:
+
+* `zenml.mycompany.com` - Your ALB endpoint
+
+This is enabled by the ALB and ALB security group configuration.
+
+### Database Access
+
+ECS tasks need TCP access to:
+
+* Your RDS instance on port 3306 (MySQL)
+
+This is enabled by the ECS security group egress rule and RDS security group ingress rule.
+
+## Scaling & High Availability
+
+### Multiple Tasks
+
+For high availability:
+
+1. Update the ECS service's desired count to 2 or more
+2. ECS will distribute tasks across availability zones
+3. The ALB automatically distributes traffic to all healthy tasks
+
+### Auto Scaling (Optional)
+
+To automatically scale based on CPU or memory usage:
+
+1. Register a scalable target (your ECS service)
+2. Create a target tracking scaling policy
+3. Set target CPU utilization (e.g., 70%)
+
+## Monitoring & Logging
+
+### CloudWatch Logs
+
+Monitor your deployment:
+
+1. Go to CloudWatch → Log Groups → `/ecs/zenml-hybrid`
+2. Set up log filters to find errors: filter for `ERROR` or `CRITICAL`
+3. Create metric filters if needed
+
+### CloudWatch Alarms
+
+Create alarms for:
+
+* **High CPU Utilization**: Alert when average CPU > 80%
+* **Failed Tasks**: Alert when tasks exit unexpectedly
+* **Unhealthy Targets**: Alert when ALB marks tasks as unhealthy
+
+### Application Logs
+
+For production deployments:
+
+1. Forward CloudWatch logs to your centralized logging system (ELK, Datadog, etc.)
+2. Set up alerts for authentication failures to ZenML Cloud
+3. Monitor database connection errors
+
+## Database Maintenance
+
+### Backups
+
+Automated backups are configured, but:
+
+1. Verify backup retention is set to at least 30 days
+2. Test backup restoration periodically
+3. Store backups in a different region for disaster recovery
+
+### Monitoring
+
+Monitor database health:
+
+1. Check RDS Performance Insights for slow queries
+2. Review CloudWatch metrics for connection count and CPU
+3. Monitor free storage space and create alerts
+
+## (Optional) Enable Snapshot Support / Workload Manager
+
+Pipeline snapshots (running pipelines from the UI) require a workload manager. For ECS deployments, you'll typically use the AWS Kubernetes implementation if you also have a Kubernetes cluster available, or configure settings as appropriate for your infrastructure.
+
+### Prerequisites for Workload Manager
+
+To enable snapshots on ECS-deployed ZenML workspaces:
+
+1. **Kubernetes Cluster Access** - You'll need a Kubernetes cluster where the workload manager can run jobs. This could be:
+   * The same EKS cluster as your other infrastructure
+   * A separate EKS cluster dedicated to workloads
+   * Another Kubernetes distribution in your environment
+2. **Container Registry Access** - The workload manager needs access to your container registry to:
+   * Pull base ZenML images
+   * Push/pull runner images (if building them)
+3. **Storage Access** - For AWS implementation:
+   * S3 bucket for logs storage
+   * IAM permissions to read/write to the bucket
+
+### Configuration Options
+
+**Option A: AWS Kubernetes Workload Manager (Recommended for ECS)**
+
+If you have an EKS cluster or other Kubernetes cluster available:
+
+1. Create a dedicated namespace:
+
+   ```
+   kubectl create namespace zenml-workload-manager
+   kubectl -n zenml-workload-manager create serviceaccount zenml-runner
+   ```
+2. Add these environment variables to your ECS task definition:
+
+   | Variable                                                 | Value                                                                                           |
+   | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+   | `ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE`    | `zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager`              |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE`            | `zenml-workload-manager`                                                                        |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT`      | `zenml-runner`                                                                                  |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE`   | `true`                                                                                          |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY`      | Your ECR registry URI                                                                           |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS` | `true`                                                                                          |
+   | `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET`           | Your S3 bucket for logs                                                                         |
+   | `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION`           | Your AWS region                                                                                 |
+   | `ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS`              | `2` (or higher)                                                                                 |
+   | `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES`        | `{"requests": {"cpu": "500m", "memory": "512Mi"}, "limits": {"cpu": "2000m", "memory": "2Gi"}}` |
+3. Ensure the ECS task has permissions to access:
+   * The Kubernetes cluster (kubeconfig/IAM role)
+   * Your ECR registry
+   * Your S3 bucket for logs
+
+**Option B: Kubernetes-based (Simpler Alternative)**
+
+If you prefer a basic setup without AWS-specific features:
+
+Add these environment variables to your ECS task definition:
+
+| Variable                                              | Value                                                                       |
+| ----------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE` | `zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager` |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE`         | `zenml-workload-manager`                                                    |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT`   | `zenml-runner`                                                              |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE`      | Your prebuilt ZenML image URI                                               |
+
+### Updating Task Definition
+
+After configuring the workload manager environment variables:
+
+1. Create a new task definition revision with the updated environment variables
+2. Update your ECS service to use the new task definition
+3. ECS will gradually replace running tasks with the new version
+4. Monitor CloudWatch logs to verify the workload manager is operational
+
+## Troubleshooting
+
+### Task Won't Start
+
+Check ECS task logs in CloudWatch:
+
+1. Go to `/ecs/zenml-hybrid` log group
+2. Look for error messages about image pull failures or environment variable issues
+3. Verify IAM execution role has correct permissions
+
+### Database Connection Failed
+
+1. Verify database is running and accessible
+2. Check ECS security group allows outbound to RDS security group
+3. Verify `ZENML_DATABASE_URL` has correct hostname, port, and credentials
+4. Test connectivity from an ECS task using a MySQL client
+
+### Can't Reach Server via HTTPS
+
+1. Verify ALB is in "Active" state
+2. Check ALB target group - tasks should show "Healthy"
+3. Verify TLS certificate is valid for your domain
+4. Check DNS resolution: `nslookup zenml.mycompany.com`
+
+### Control Plane Connection Issues
+
+Check CloudWatch logs for:
+
+1. OAuth2 authentication errors - verify `ZENML_SERVER_PRO_OAUTH2_CLIENT_SECRET` is correct
+2. Network connectivity errors - verify NAT Gateway is operational
+3. Certificate validation errors - verify outbound HTTPS to cloudapi.zenml.io works
+
+## Updating the Deployment
+
+### Update Configuration
+
+1. Modify environment variables in the task definition
+2. Create a new task definition revision
+3. Update the ECS service to use the new task definition
+4. ECS will gradually replace old tasks with new ones
+
+### Upgrade ZenML Version
+
+1. Update the container image in the task definition
+2. Create a new task definition revision
+3. Update the ECS service
+4. Monitor CloudWatch logs during the update
+
+## Cleanup
+
+To remove the deployment:
+
+1. **Delete ECS Service**
+   * Go to ECS → Clusters → zenml-hybrid → Services
+   * Delete the zenml-server service
+   * Set desired count to 0 first
+2. **Delete ECS Cluster**
+   * Delete the cluster once service is removed
+3. **Delete ALB**
+   * Go to EC2 → Load Balancers
+   * Delete the ALB and associated target groups
+4. **Delete RDS Instance**
+   * Go to RDS → Databases
+   * Delete the zenml-hybrid-db instance
+   * Skip final snapshot if you don't need a backup
+5. **Delete VPC and Related Resources**
+   * Delete NAT Gateway (releases Elastic IP)
+   * Delete subnets, route tables, security groups
+   * Delete VPC
+6. **Clean Up Secrets**
+   * Go to Secrets Manager
+   * Delete zenml/pro/oauth2-client-secret
+
+## Next Steps
+
+* [Configure your organization in ZenML Cloud](https://cloud.zenml.io)
+* [Set up users and teams](https://docs.zenml.io/pro/core-concepts/organization)
+* [Configure stacks and service connectors](https://docs.zenml.io/stacks)
+* [Run your first pipeline](https://github.com/zenml-io/zenml/tree/main/examples/quickstart)
+
+## Related Documentation
+
+* [Hybrid Deployment Overview](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
+* [Self-hosted Deployment Guide](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md)
+* [AWS ECS Documentation](https://docs.aws.amazon.com/ecs/)
+* [AWS RDS Documentation](https://docs.aws.amazon.com/rds/)
+
+
+# Self-hosted
+
+Learn about ZenML Pro Self-hosted deployment - complete control and data sovereignty for the strictest security requirements.
+
+ZenML Pro Self-hosted deployment provides complete control and data sovereignty for organizations with the strictest security, compliance, or regulatory requirements. All ZenML components run entirely within your infrastructure with no external dependencies or internet connectivity required.
+
+{% hint style="info" %}
+To learn more about Self-hosted deployment, [book a call](https://www.zenml.io/book-your-demo).
 {% endhint %}
 
-5. **SSL Certificate**
+## Overview
 
-   The ZenML Pro services do not terminate SSL traffic. It is your responsibility to generate and configure the necessary SSL certificates for the ZenML Pro Control Plane as well as all the ZenML Pro workspaces that you will deploy (see the previous point on how to use a DNS prefix to make the process easier).
+In a Self-hosted deployment, every component of ZenML Pro runs within your isolated network environment. This architecture is designed for organizations that must operate in completely disconnected environments or have regulatory requirements preventing any external communication.
 
-   * **Obtaining SSL Certificates**
+![ZenML Pro self-hosted deployment architecture](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-707b4abe30c84e2885da6260a1ffa168727fcc36%2Fcloud_architecture_scenario_2.png?alt=media)
 
-     Acquire an SSL certificate for the domain. You can use:
+## Architecture
 
-     * A commercial SSL certificate provider (e.g., DigiCert, Sectigo).
-     * Free services like [Let's Encrypt](https://letsencrypt.org/) for domain validation and issuance.
-     * Self-signed certificates (not recommended for production environments). **IMPORTANT**: If you are using self-signed certificates, it is highly recommended to use the same self-signed CA certificate for all the ZenML Pro services (control plane and workspace servers), otherwise it will be difficult to manage the certificates on the client machines. With only one CA certificate, you can install it system-wide on all the client machines only once and then use it to sign all the TLS certificates for the ZenML Pro services.
-   * **Configuring SSL Termination**
+### What Runs Where
 
-     Once the SSL certificate is obtained, configure your load balancer or Ingress controller to terminate HTTPS traffic:
+| Component                | Location                                                           | Purpose                                                        |
+| ------------------------ | ------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Pro Control Plane        | Your Infrastructure                                                | Manages authentication, RBAC, and workspace coordination       |
+| ZenML Pro Server(s)      | Your Infrastructure                                                | Handles pipeline orchestration and execution                   |
+| Pro Metadata Store       | Your Infrastructure                                                | Stores user management, RBAC, and organizational data          |
+| Workspace Metadata Store | Your Infrastructure                                                | Stores pipeline runs, model metadata, and tracking information |
+| Secrets Store            | Your Infrastructure                                                | Stores all credentials and sensitive configuration             |
+| Identity Provider        | Your Infrastructure                                                | Handles authentication (OIDC/LDAP/SAML)                        |
+| Pro Dashboard            | Your Infrastructure                                                | Web interface for all ZenML Pro features                       |
+| Compute Resources        | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Executes pipeline steps and training jobs                      |
+| Data & Artifacts         | Your infrastructure through [stacks](https://docs.zenml.io/stacks) | Stores datasets, models, and pipeline artifacts                |
 
-     **For NGINX Ingress Controller**:
-
-     You can configure SSL termination globally for the NGINX Ingress Controller by setting up a default SSL certificate or configuring it at the ingress controller level, or you can specify SSL certificates when configuring the ingress in the ZenML server Helm values.
-
-     Here's how you can do it globally:
-
-     1. **Create a TLS Secret**
-
-        Store your SSL certificate and private key as a Kubernetes TLS secret in the namespace where the NGINX Ingress Controller is deployed.
-
-        ```bash
-        kubectl create secret tls default-ssl-secret \\
-          --cert=/path/to/tls.crt \\
-          --key=/path/to/tls.key \\
-          -n <nginx-ingress-namespace>
-
-        ```
-     2. **Update NGINX Ingress Controller Configurations**
-
-        Configure the NGINX Ingress Controller to use the default SSL certificate.
-
-        * If using the NGINX Ingress Controller Helm chart, modify the `values.yaml` file or use `-set` during installation:
-
-          ```yaml
-          controller:
-            extraArgs:
-              default-ssl-certificate: <nginx-ingress-namespace>/default-ssl-secret
-
-          ```
-
-          Or directly pass the argument during Helm installation or upgrade:
-
-          ```bash
-          helm upgrade --install ingress-nginx ingress-nginx \\
-            --repo <https://kubernetes.github.io/ingress-nginx> \\
-            --namespace <nginx-ingress-namespace> \\
-            --set controller.extraArgs.default-ssl-certificate=<nginx-ingress-namespace>/default-ssl-secret
-
-          ```
-        * If the NGINX Ingress Controller was installed manually, edit its deployment to include the argument in the `args` section of the container:
-
-          ```yaml
-          spec:
-            containers:
-            - name: controller
-              args:
-                - --default-ssl-certificate=<nginx-ingress-namespace>/default-ssl-secret
-
-          ```
-
-     **For Traefik**:
-
-     * Configure Traefik to use TLS by creating a certificate resolver for Let's Encrypt or specifying the certificates manually in the `traefik.yml` or `values.yaml` file. Example for Let's Encrypt:
-
-       ```yaml
-       tls:
-         certificatesResolvers:
-           letsencrypt:
-             acme:
-               email: your-email@example.com
-               storage: acme.json
-               httpChallenge:
-                 entryPoint: web
-       entryPoints:
-         web:
-           address: ":80"
-         websecure:
-           address: ":443"
-
-       ```
-     * Reference the domain in your IngressRoute or Middleware configuration.
-
-{% hint style="warning" %}
-If you used a custom CA certificate to sign the TLS certificates for the ZenML Pro services, you will need to install the CA certificates on every client machine, as covered in the [Install CA Certificates](#install-ca-certificates) section.
+{% hint style="success" %}
+Zero data leaves your environment. All components, metadata, and ML artifacts remain within your infrastructure boundaries.
 {% endhint %}
 
-The above are infrastructure requirements for ZenML Pro. If, in addition to ZenML, you would also like to reuse the same Kubernetes cluster to run machine learning workloads with ZenML, you will require the following additional infrastructure resources and services to be able to set up [a remote ZenML Stack](https://docs.zenml.io/user-guides/production-guide/understand-stacks):
+### Complete Isolation
 
-* [a Kubernetes ZenML Orchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes) can be set up to run on the same cluster as ZenML Pro. For authentication, you will be able to configure [a ZenML Kubernetes Service Connector using service account tokens](https://docs.zenml.io/how-to/infrastructure-deployment/auth-management/kubernetes-service-connector)
-* you'll need a container registry to store the container images built by ZenML. If you don't have one already, you can install [Docker registry](https://github.com/twuni/docker-registry.helm) on the same cluster as ZenML Pro.
-* you'll also need some form of centralized object storage to store the artifacts generated by ZenML. If you don't have one already, you can install [MinIO](https://artifacthub.io/packages/helm/bitnami/minio) on the same cluster as ZenML Pro and then configure the [ZenML S3 Artifact Store](https://docs.zenml.io/stacks/artifact-stores/s3) to use it.
-* (optional) you can install [Kaniko](https://github.com/GoogleContainerTools/kaniko) in your Kubernetes cluster to build the container images for your ZenML pipelines and then configure it as a [ZenML Kaniko Image Builder](https://docs.zenml.io/stacks/image-builders/kaniko) in your ZenML Stack.
+Users authenticate via your internal identity provider (LDAP/AD/OIDC), and the control plane running in your infrastructure handles both authentication and RBAC. All communication happens entirely within your infrastructure boundary with zero external dependencies or internet connectivity required.
 
-## Stage 1/2: Install the ZenML Pro Control Plane
+## Key Benefits
 
-### Set up Credentials
+### Maximum Security & Control
 
-If your Kubernetes cluster is not set to be authenticated to the container registry where the ZenML Pro container images are hosted, you will need to create a secret to allow the ZenML Pro server to pull the images. The following is an example of how to do this if you've received a private access key for the ZenML GCP Artifact Registry from ZenML, but you can use the same approach for your own private container registry:
+Self-hosted deployment operates with complete air-gap capability, requiring no internet connectivity for operation. All components are self-contained with zero external dependencies. You have full control over all security configurations, the system operates entirely within your security perimeter, and all logging and monitoring stays within your infrastructure for audit compliance.
+
+### Regulatory Compliance
+
+All data stays within your jurisdiction, meeting data residency requirements. The deployment is suitable for controlled data environments requiring ITAR/EAR compliance, healthcare and privacy regulations like HIPAA and GDPR, government and defense classified environments, and banking and financial regulations.
+
+### Enterprise Control
+
+You can integrate with your existing identity provider (LDAP/AD/OIDC) and deploy on any infrastructure including cloud, on-premises, or edge. You control update schedules and versions, implement your own backup and disaster recovery policies, and have full control over resource allocation and costs.
+
+## Ideal Use Cases
+
+Self-hosted deployment is essential for government and defense organizations with classified data requirements, regulated industries (healthcare, finance) with strict data residency requirements, and organizations in restricted regions with limited or no internet connectivity. It's also the right choice for research institutions handling sensitive or proprietary research data, critical infrastructure operators requiring isolated systems, companies with ITAR/EAR compliance requirements, enterprises with zero-trust policies prohibiting external communication, and organizations requiring full control over all aspects of their MLOps platform.
+
+## Deployment Options
+
+### On-Premises Data Center
+
+Deploy on your own hardware with physical servers or private cloud infrastructure. This option provides complete infrastructure control, integration with existing systems, and support for custom hardware configurations.
+
+### Private Cloud (AWS, Azure, GCP)
+
+Deploy in an isolated cloud VPC with no internet gateway and private networking only. You can use cloud-native services while leveraging cloud scalability within your security boundary.
+
+### Hybrid Multi-Cloud
+
+Deploy across multiple environments combining on-premises infrastructure with private cloud, multi-region setups for disaster recovery, or edge plus datacenter hybrid configurations. This option maintains complete isolation across all environments.
+
+## Deployment Architecture
+
+![Complete ZenML Services diagram on top of Kubernetes](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-843039f0259424fd84808b137144cf73b15d2fc5%2Ffull_zenml_infra.png?alt=media)
+
+The diagram above illustrates a complete Self-hosted ZenML Pro deployment with all components running within your organization's VPC. This architecture ensures zero external communication while providing full enterprise MLOps capabilities.
+
+### Architecture Components
+
+Client access includes browser-based access to the ZenML UI dashboard and connections from developer laptops or CI systems to workspaces.
+
+The Kubernetes cluster provides the compute and services layer across several namespaces. The `zenml-controlplane-namespace` contains the UI Pod (hosting the ZenML Pro dashboard, connecting to the control plane and all workspaces) and the Control Plane Pod (API Server and User Management/RBAC). The `zenml-workspace-namespace` contains the Workspace Server Pod with the ZenML Server, API Server, and Workload Manager that manages pipelines, stacks, and snapshots. The `zenml-runners-namespace` contains Runner Pods created on-demand for snapshots, and the `orchestrator-namespace` contains Orchestrator Pods for pipeline execution when using the Kubernetes orchestrator.
+
+The data and storage layer includes a MySQL database for workspace and control plane metadata (TCP 3306), an optional secrets backend such as AWS Secrets Manager or Vault, an artifact store (S3, GCS, or Azure Blob) for models, datasets, and artifacts, and a container registry (AWS ECR, Google Artifact Registry, or Azure) for pipeline images.
+
+## Pre-requisites
+
+Before deployment, ensure you have the necessary infrastructure, network, and resource requirements in place.
+
+For infrastructure, you need a Kubernetes cluster (recommended) or VM infrastructure, PostgreSQL database(s) for metadata storage, object storage or NFS for artifacts, a load balancer for HA configurations, and an identity provider (LDAP/AD/OIDC).
+
+Network requirements include internal DNS resolution, SSL/TLS certificates (internal CA), network connectivity between components, and firewall rules for inter-component communication.
+
+Resource requirements vary by deployment size. Contact <cloud@zenml.io> for sizing guidance based on your expected workload.
+
+## Operations & Maintenance
+
+### Updates & Upgrades
+
+ZenML provides new versions as offline bundles. The update process involves receiving the new bundle (typically by pulling Docker images via your approved transfer method), carefully reviewing the release notes and migration instructions to understand all changes and requirements, testing in a staging environment first, backing up your current database and configuration state, applying updates using Helm upgrade commands or your Infrastructure-as-Code tools, verifying functionality with health checks and tests, and monitoring for any issues post-upgrade.
+
+### Disaster Recovery
+
+Your disaster recovery plan should include PostgreSQL streaming replication to a backup site, artifact store synchronization to a DR location, version-controlled infrastructure as code for configuration backup, documented DR runbooks, and regular quarterly testing of DR procedures.
+
+## Security Hardening
+
+### Network Security
+
+Isolate ZenML components in dedicated network segments, restrict traffic to only required ports with firewall rules, encrypt all communication with TLS, and use an internal CA for certificate issuance.
+
+### Access Control
+
+Apply the principle of least privilege by granting minimal required permissions. Use dedicated service accounts for automation and log all authentication and authorization events for audit purposes.
+
+### Container Security
+
+Scan all container images before deployment, monitor container behavior at runtime, enforce security standards with pod security policies, and configure resource limits to prevent resource exhaustion attacks.
+
+## Support & Documentation
+
+### What ZenML Provides
+
+ZenML provides complete offline installation bundles, comprehensive setup and operation guides, a full software bill of materials (SBOM) for compliance, security assessment documentation with vulnerability reports, pre-deployment planning support through architecture consultation, guidance during initial setup, and new versions as offline bundles.
+
+### What You Manage
+
+You are responsible for infrastructure (hardware, networking, storage), day-to-day operations (monitoring, backups, user management), security policies (firewall rules, access controls), compliance (audit logs, security assessments), and applying new versions using the provided bundles.
+
+### Support Model
+
+Contact <cloud@zenml.io> for pre-sales architecture consultation, deployment planning and sizing, security documentation requests, offline support packages, and update and upgrade assistance.
+
+## Licensing
+
+Air-gapped deployments are provided under commercial software license agreements, with license fees and terms defined on a per-customer basis. Each contract includes detailed license terms and conditions appropriate to the deployment.
+
+## Security Documentation
+
+The following documentation is available on request for compliance and security reviews: vulnerability assessment reports with full security analysis, software bill of materials (SBOM) with complete dependency list, architecture security review with threat model and mitigations, compliance mappings for NIST, CIS, GDPR, and HIPAA, and a security hardening guide with best practices for your deployment.
+
+## Comparison with Other Deployments
+
+| Feature           | SaaS           | Hybrid SaaS         | Self-hosted  |
+| ----------------- | -------------- | ------------------- | ------------ |
+| Internet Required | Yes (metadata) | Yes (control plane) | No           |
+| Setup Time        | Minutes        | Hours/Days          | Days/Weeks   |
+| Maintenance       | Zero           | Partial             | Full control |
+| Data Location     | Mixed          | Your infra          | 100% yours   |
+| User Management   | ZenML          | ZenML               | Your IDP     |
+| Update Control    | Automatic      | Automatic CP        | You decide   |
+| Customization     | Limited        | Moderate            | Complete     |
+| Best For          | Fast start     | Balance             | Max security |
+
+[Compare all deployment options →](https://docs.zenml.io/pro/deployments/scenarios)
+
+## Migration Path
+
+### From ZenML OSS to Self-hosted Pro
+
+If you're interested in migrating from ZenML OSS to a Self-hosted Pro deployment, we're here to help guide you through every step of the process. Migration paths are highly dependent on your specific environment, infrastructure setup, and current ZenML OSS deployment configuration. It's possible to migrate existing stacks or even existing metadata from existing OSS deployments—we can figure out how and what to migrate together in a call. [Book a migration consultation](https://www.zenml.io/book-your-demo) or email us at <cloud@zenml.io>. Your ZenML representative will work with you to assess your current setup, understand your Self-hosted requirements, and provide a tailored migration plan that fits your environment.
+
+### From Other Pro Deployments
+
+If you're moving from SaaS or Hybrid to Self-hosted, migration paths can vary significantly depending on your organization's size, data residency requirements, and current ZenML setup. We recommend discussing your plans with a ZenML solutions architect. [Book a migration consultation](https://www.zenml.io/book-your-demo) or email us at <cloud@zenml.io>. Your ZenML representative will provide you with a tailored migration checklist, technical documentation, and direct support to ensure a smooth transition with minimal downtime.
+
+## Related Resources
+
+* [System Architecture](https://docs.zenml.io/pro/system-architecture)
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios)
+* [SaaS Deployment](https://docs.zenml.io/pro/deployments/scenarios/saas-deployment)
+* [Hybrid SaaS Deployment](https://docs.zenml.io/pro/deployments/scenarios/hybrid-deployment)
+* [Configuration Details](https://docs.zenml.io/pro/manage/configuration-details)
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates)
+
+## Get Started
+
+Ready to deploy ZenML Pro in a Self-hosted environment? [Book a Demo](https://www.zenml.io/book-your-demo) or [contact us](mailto:cloud@zenml.io) for detailed deployment planning.
+
+
+# Kubernetes with Helm
+
+Deploy ZenML Pro Self-hosted on Kubernetes with Helm - complete self-hosted setup with no external dependencies.
+
+This guide provides step-by-step instructions for deploying ZenML Pro in a fully air-gapped setup on Kubernetes using Helm charts. In an air-gapped deployment, all components run within your infrastructure with zero external dependencies.
+
+## Architecture Overview
+
+All components run entirely within your Kubernetes cluster and infrastructure:
+
+![ZenML Pro Self-hosted Architecture](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-843039f0259424fd84808b137144cf73b15d2fc5%2Ffull_zenml_infra.png?alt=media)
+
+## Prerequisites
+
+Before starting, you need:
+
+**Infrastructure:**
+
+* Kubernetes cluster (1.24+) within your air-gapped network
+* MySQL database (8.0+) for metadata storage (PostgreSQL also supported for control plane only)
+* Internal Docker registry (Harbor, Quay, Artifactory, etc.)
+* Load balancer or Ingress controller for HTTPS
+* NFS or object storage for artifacts (optional)
+
+**Network:**
+
+* Internal DNS resolution
+* TLS certificates signed by your internal CA
+* Network connectivity between cluster components
+
+**Tools (on a machine with internet access for initial setup):**
+
+* Docker
+* Helm (3.0+)
+* Access to pull ZenML Pro images from private registries (credentials from ZenML)
+
+## Step 1: Prepare Offline Artifacts
+
+This step is performed on a machine with internet access, then transferred to your air-gapped environment.
+
+### 1.1 Pull Container Images
+
+On a machine with internet access and access to the ZenML Pro container registries:
+
+1. Authenticate to the ZenML Pro container registries (AWS ECR or GCP Artifact Registry)
+   * Use credentials provided by ZenML Support
+   * Follow registry-specific authentication procedures
+2. Pull all required images:
+
+   * **Pro Control Plane images (AWS ECR):**
+     * `715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api:<version>`
+     * `715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard:<version>`
+   * **Pro Control Plane images (GCP Artifact Registry):**
+     * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-api:<version>`
+     * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-dashboard:<version>`
+   * **Workspace Server image (AWS ECR):**
+     * `715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<version>`
+   * **Workspace Server image (GCP Artifact Registry):**
+     * `europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server:<version>`
+   * **Client image (for pipelines):**
+     * `zenmldocker/zenml:<version>`
+
+   Example pull commands (AWS ECR):
+
+   ```bash
+   docker pull 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api:<version>
+   docker pull 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard:<version>
+   docker pull 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<version>
+   docker pull zenmldocker/zenml:<version>
+   ```
+
+   Example pull commands (GCP Artifact Registry):
+
+   ```bash
+   docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-api:<version>
+   docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-dashboard:<version>
+   docker pull europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-server:<version>
+   docker pull zenmldocker/zenml:<version>
+   ```
+3. Tag images with your internal registry:
+
+   ```
+   internal-registry.mycompany.com/zenml/zenml-pro-api:version
+   internal-registry.mycompany.com/zenml/zenml-pro-dashboard:version
+   internal-registry.mycompany.com/zenml/zenml-pro-server:version
+   internal-registry.mycompany.com/zenml/zenml:version
+   ```
+4. Save images to tar files for transfer:
+
+   ```bash
+   docker save 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api:<version> > zenml-pro-api.tar
+   docker save 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard:<version> > zenml-pro-dashboard.tar
+   docker save 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:<version> > zenml-pro-server.tar
+   docker save zenmldocker/zenml:<version> > zenml-client.tar
+   ```
+
+### 1.2 Download Helm Charts
+
+On the same machine with internet access:
+
+1. Pull the Helm charts:
+   * ZenML Pro Control Plane: `oci://public.ecr.aws/zenml/zenml-pro`
+   * ZenML Workspace Server: `oci://public.ecr.aws/zenml/zenml`
+2. Save charts as `.tgz` files for transfer
+
+{% hint style="info" %}
+**Version Synchronization**: The container image tags and the Helm chart versions are synchronized:
+
+* **ZenML Pro Control Plane**: Image tags match the ZenML Pro Helm chart version. Check the [ZenML Pro ArtifactHub repository](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro) for available versions.
+* **ZenML Workspace Server**: Image tags match the ZenML OSS Helm chart version. Check the [ZenML OSS ArtifactHub repository](https://artifacthub.io/packages/helm/zenml/zenml) or the [ZenML GitHub releases page](https://github.com/zenml-io/zenml/releases).
+
+When copying images to your internal registry, maintain the same version tags to ensure compatibility between components.
+{% endhint %}
+
+### 1.3 Create Offline Bundle
+
+Create a bundle containing all artifacts:
 
 ```
-kubectl create ns zenml-pro
+zenml-air-gapped-bundle/
+├── images/
+│   ├── zenml-pro-api.tar
+│   ├── zenml-pro-dashboard.tar
+│   ├── zenml-pro-server.tar
+│   └── zenml-client.tar
+├── charts/
+│   ├── zenml-pro-<version>.tgz
+│   └── zenml-<version>.tgz
+└── manifest.txt
+```
+
+The manifest should document:
+
+* All image names and versions
+* Helm chart versions
+* Date of bundle creation
+* Required internal registry URLs
+
+## Step 2: Transfer to Air-gapped Environment
+
+Transfer the bundle to your air-gapped environment using approved methods:
+
+* Physical media (USB drive, external drive)
+* Approved secure file transfer system
+* Air-gap transfer appliances
+* Any method compliant with your security policies
+
+## Step 3: Load Images into Internal Registry
+
+In your air-gapped environment, load the images:
+
+1. Extract all tar files:
+
+   ```
+   cd images/
+   for file in *.tar; do docker load < "$file"; done
+   ```
+2. Tag images for your internal registry:
+
+   ```
+   docker tag 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api:version internal-registry.mycompany.com/zenml/zenml-pro-api:version
+   docker tag 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard:version internal-registry.mycompany.com/zenml/zenml-pro-dashboard:version
+   docker tag 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server:version internal-registry.mycompany.com/zenml/zenml-pro-server:version
+   docker tag zenmldocker/zenml:version internal-registry.mycompany.com/zenml/zenml:version
+   ```
+3. Push images to your internal registry:
+
+   ```
+   docker push internal-registry.mycompany.com/zenml/zenml-pro-api:version
+   docker push internal-registry.mycompany.com/zenml/zenml-pro-dashboard:version
+   docker push internal-registry.mycompany.com/zenml/zenml-pro-server:version
+   docker push internal-registry.mycompany.com/zenml/zenml:version
+   ```
+
+## Step 4: Create Kubernetes Secrets
+
+```bash
+# Create namespace for ZenML Pro
+kubectl create namespace zenml-pro
+
+# Create secret for internal registry credentials (if needed)
 kubectl -n zenml-pro create secret docker-registry image-pull-secret \
-    --docker-server=europe-west3-docker.pkg.dev \
-    --docker-username=_json_key_base64 \
-    --docker-password="$(cat key.base64)" \
-    --docker-email=unused
+  --docker-server=internal-registry.mycompany.com \
+  --docker-username=<your-username> \
+  --docker-password=<your-password>
 ```
 
-The `key.base64` file should contain the base64 encoded JSON key for the GCP service account as received from the ZenML support team. The `image-pull-secret` secret will be used in the next step when installing the ZenML Pro helm chart.
+{% hint style="info" %}
+If you are using self-signed certificates, it is highly recommended to use the same self-signed CA certificate for all the ZenML Pro services (control plane and workspace servers). This simplifies certificate management - you only need to install one CA certificate system-wide on all client machines, then use it to sign all the TLS certificates for the ZenML Pro services.
+{% endhint %}
 
-### Configure the Helm Chart
+## Step 5: Set Up Databases
 
-There are a variety of options that can be configured for the ZenML Pro helm chart before installation.
+Create database instances (within your air-gapped network):
 
-You can take look at the [Helm chart README](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro) and [`values.yaml` file](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro?modal=values) and familiarize yourself with some of the configuration settings that you can customize for your ZenML Pro deployment. Alternatively, you can unpack the `README.md` and `values.yaml` files included in the helm chart:
+**Important Database Support:**
 
-```bash
-helm  pull --untar  oci://public.ecr.aws/zenml/zenml-pro --version <version>
-less zenml-pro/README.md
-less zenml-pro/values.yaml
-```
+* **Control Plane**: Supports both PostgreSQL and MySQL
+* **Workspace Servers**: Only support MySQL (PostgreSQL is not supported)
 
-This is an example Helm values YAML file that covers the most common configuration options:
+**Configuration:**
+
+* **Accessibility**: Reachable from your Kubernetes cluster
+* **Databases**: At least 2 (one for control plane, one for workspace)
+* **Users**: Create dedicated database users with permissions
+* **Backups**: Configure automated backups to local storage
+* **Monitoring**: Enable local log aggregation
+
+**Connection strings needed for later:**
+
+* Control Plane DB (PostgreSQL or MySQL): `postgresql://user:password@db-host:5432/zenml_pro` or `mysql://user:password@db-host:3306/zenml_pro`
+* Workspace DB (MySQL only): `mysql://user:password@db-host:3306/zenml_workspace`
+
+## Step 6: Configure Helm Values for Control Plane
+
+Create a file `zenml-pro-values.yaml`:
 
 ```yaml
 # Set up imagePullSecrets to authenticate to the container registry where the
@@ -26416,12 +28706,12 @@ zenml:
   image:
     api:
       # Change this to point to your own container repository or use this for direct ECR access
-      repository: 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-api
+      repository: internal-registry.mycompany.com/zenml/zenml-pro-api
       # Use this for direct GAR access
       # repository: europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-api
     dashboard:
       # Change this to point to your own container repository or use this for direct ECR access
-      repository: 715803424590.dkr.ecr.eu-west-1.amazonaws.com/zenml-pro-dashboard
+      repository: internal-registry.mycompany.com/zenml/zenml-pro-dashboard
       # Use this for direct GAR access
       # repository: europe-west3-docker.pkg.dev/zenml-cloud/zenml-pro/zenml-pro-dashboard
 
@@ -26429,7 +28719,7 @@ zenml:
   #
   # This should be set to a hostname that is associated with the Ingress
   # controller.
-  serverURL: https://zenml-pro.my.domain
+  serverURL: https://zenml-pro.internal.mycompany.com
 
   # Database configuration.
   database:
@@ -26443,13 +28733,13 @@ zenml:
       type: mysql
     
       # The host of the external database service.
-      host: my-database.my.domain
+      host: mysql.internal.mycompany.com
 
       # The username to use to connect to the external database service.
-      username: zenml
+      username: zenml_pro_user
 
       # The password to use to connect to the external database service.
-      password: my-password
+      password: <secure-password>
       
       # The name of the database to use. Will be created on first run if it
       # doesn't exist.
@@ -26457,1002 +28747,1118 @@ zenml:
       # NOTE: if the database user doesn't have permissions to create this
       # database, the database should be created manually before installing
       # the helm chart.
-      database: zenmlpro
+      database: zenml_pro
 
   ingress:
     enabled: true
     # Use the same hostname configured in `serverURL`
-    host: zenml-pro.my.domain
+    host: zenml-pro.internal.mycompany.com
 ```
 
-Minimum required settings:
+## Step 7: Deploy ZenML Pro Control Plane
 
-* the database credentials (`zenml.database.external`)
-* the URL (`zenml.serverURL`) and Ingress hostname (`zenml.ingress.host`) where the ZenML Pro Control Plane API and Dashboard will be reachable
-
-In addition to the above, the following might also be relevant for you:
-
-* configure container registry credentials (`imagePullSecrets`)
-* injecting custom CA certificates (`zenml.certificates`), especially important if the TLS certificates used by the ZenML Pro services are signed by a custom Certificate Authority
-* configure HTTP proxy settings (`zenml.proxy`)
-* custom container image repository locations (`zenml.image.api` and `zenml.image.dashboard`)
-* the username and password used for the default admin account (`zenml.auth.password`)
-* additional Ingress settings (`zenml.ingress`)
-* Kubernetes resources allocated to the pods (`resources`)
-* If you set up a common DNS prefix that you plan on using for all the ZenML Pro services, you may configure the domain of the HTTP cookies used by the ZenML Pro dashboard to match it by setting `zenml.auth.authCookieDomain` to the DNS prefix (e.g. `.my.domain` instead of `zenml-pro.my-domain`)
-
-### Install the Helm Chart
-
-{% hint style="info" %}
-Ensure that your Kubernetes cluster has access to all the container images. By default, the tags used for the container images are the same as the Helm chart version and it is recommended to keep them in sync, even though it is possible to override the tag values.
-{% endhint %}
-
-To install the helm chart (assuming the customized configuration values are in a `my-values.yaml` file), run:
+Using the local Helm chart:
 
 ```bash
-helm --namespace zenml-pro upgrade --install --create-namespace zenml-pro oci://public.ecr.aws/zenml/zenml-pro --version <version>  --values my-values.yaml
+helm install zenml-pro ./zenml-pro-<ZENML_PRO_VERSION>.tgz \
+  --namespace zenml-pro \
+  --create-namespace \
+  --values zenml-pro-values.yaml
 ```
 
-If the installation is successful, you should be able to see the following workloads running in your cluster:
+Verify deployment:
 
 ```bash
-$ kubectl -n zenml-pro get all
-NAME                                     READY   STATUS      RESTARTS   AGE
-pod/zenml-pro-5db4c4d9d-jwp6x            1/1     Running     0          1m
-pod/zenml-pro-dashboard-855c4849-qf2f6   1/1     Running     0          1m
-
-NAME                          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-service/zenml-pro             ClusterIP   172.20.230.49    <none>        80/TCP    162m
-service/zenml-pro-dashboard   ClusterIP   172.20.163.154   <none>        80/TCP    162m
-
-NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/zenml-pro             1/1     1            1           1m
-deployment.apps/zenml-pro-dashboard   1/1     1            1           1m
-
-NAME                                           DESIRED   CURRENT   READY   AGE
-replicaset.apps/zenml-pro-5db4c4d9d            1         1         1       1m
-replicaset.apps/zenml-pro-dashboard-855c4849   1         1         1       1m
+kubectl -n zenml-pro get pods
+kubectl -n zenml-pro get svc
+kubectl -n zenml-pro get ingress
 ```
 
-The Helm chart will output information explaining how to connect and authenticate to the ZenML Pro dashboard:
+Wait for all pods to be running and healthy.
+
+## Step 8: Enroll Workspace in Control Plane
+
+Before deploying the workspace server, you must enroll it in the control plane to obtain the necessary enrollment credentials.
+
+1. **Access the Control Plane Dashboard**
+   * Navigate to `https://zenml-pro.internal.mycompany.com`
+   * Log in with your admin credentials
+2. **Create an Organization** (if not already created)
+   * Go to Organization settings
+   * Create a new organization or use an existing one
+   * Note the Organization ID and Name
+3. **Enroll the Workspace**
+   * Use the enrollment script from the [Self-hosted Deployment Guide](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md#enrolling-a-workspace) or
+   * Create a workspace through the dashboard and obtain:
+     * Enrollment Key
+     * Organization ID
+     * Organization Name
+     * Workspace ID
+     * Workspace Name
+4. **Save these values** - you'll need them in the next step
+
+## Step 9: Configure Helm Values for Workspace Server
+
+Create a file `zenml-workspace-values.yaml`:
+
+```yaml
+zenml:
+    analyticsOptIn: false
+    threadPoolSize: 20
+    database:
+        maxOverflow: "-1"
+        poolSize: "10"
+        # TODO: use the actual database host and credentials
+        # Note: Workspace servers only support MySQL, not PostgreSQL
+        url: mysql://zenml_workspace_user:password@mysql.internal.mycompany.com:3306/zenml_workspace
+    image:
+        # TODO: use your actual image repository (omit the tag, which is
+        # assumed to be the same as the helm chart version)
+        repository: internal-registry.mycompany.com/zenml/zenml-pro-server
+    # TODO: use your actual server domain here
+    serverURL: https://zenml-workspace.internal.mycompany.com
+    ingress:
+        enabled: true
+        # TODO: use your actual domain here
+        host: zenml-workspace.internal.mycompany.com
+    pro:
+        apiURL: https://zenml-pro.internal.mycompany.com/api/v1
+        dashboardURL: https://zenml-pro.internal.mycompany.com
+        enabled: true
+        enrollmentKey: <enrollment-key-from-control-plane>
+        organizationID: <your-organization-id>
+        organizationName: <your-organization-name>
+        workspaceID: <your-workspace-id>
+        workspaceName: <your-workspace-name>
+    replicaCount: 1
+    secretsStore:
+        sql:
+            encryptionKey: <generate-a-64-character-hex-key>
+        type: sql
+
+# TODO: these are the minimum resources required for the ZenML server. You can
+# adjust them to your needs.
+resources:
+    limits:
+        memory: 800Mi
+    requests:
+        cpu: 100m
+        memory: 450Mi
+```
+
+## Step 10: Deploy ZenML Workspace Server
 
 ```bash
-You may access the ZenML Pro server at: https://zenml-pro.my.domain
-
-Use the following credentials:
-
-  Username: admin
-  Password: fetch the password by running:
-
-    kubectl get secret --namespace zenml-pro zenml-pro -o jsonpath="{.data.ZENML_CLOUD_ADMIN_PASSWORD}" | base64 --decode; echo
+# Deploy workspace
+helm install zenml ./zenml-<ZENML_OSS_VERSION>.tgz \
+  --namespace zenml-workspace \
+  --create-namespace \
+  --values zenml-workspace-values.yaml
 ```
 
-The credentials are for the default administrator user account provisioned on installation. With these on-hand, you can proceed to the next step and on-board additional users.
+Verify deployment:
 
-### Install CA Certificates
+```bash
+kubectl -n zenml-workspace get pods
+kubectl -n zenml-workspace get svc
+kubectl -n zenml-workspace get ingress
+```
 
-If the TLS certificates used by the ZenML Pro services are signed by a custom Certificate Authority, you need to install the CA certificates on every machine that needs to access the ZenML server:
+## Step 11: Configure Internal DNS
 
-* installing the CA certificates system-wide is usually the easiest solution. For example, on Ubuntu and Debian-based systems, you can install the CA certificates system-wide by copying the CA certificates into the `/usr/local/share/ca-certificates` directory and running `update-ca-certificates`.
-* for some browsers (e.g. Chrome), updating the system's CA certificates is not enough. You will also need to import the CA certificates into the browser.
-* for Python, you also need to set the `REQUESTS_CA_BUNDLE` environment variable to the path to the system's CA certificates bundle file (e.g. `export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`)
-* later on, when you're running containerized pipelines with ZenML, you'll also want to install those same CA certificates into the container images built by ZenML by customizing the build process via [DockerSettings](https://docs.zenml.io/how-to/customize-docker-builds). For example:
-  * customize the ZenML client container image using a Dockerfile like this:
+Update your internal DNS to resolve:
 
-    ```dockerfile
-    # Use the original ZenML client image as a base image. The ZenML version
-    # should match the version of the ZenML server you're using (e.g. 0.73.0).
-    FROM zenmldocker/zenml:<zenml-version>
-
-    # Install certificates
-    COPY my-custom-ca.crt /usr/local/share/ca-certificates/
-    RUN update-ca-certificates
-
-    ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-    ```
-  * then build and push that image to your private container registry:
-
-    ```bash
-    docker build -t my.docker.registry/my-custom-zenml-image:<zenml-version> .
-    docker push my.docker.registry/my-custom-zenml-image:<zenml-version>
-    ```
-  * and finally update your ZenML pipeline code to use the custom ZenML client image by using the `DockerSettings` class:
-
-    ```python
-    from zenml.config import DockerSettings
-    from zenml import __version__
-
-    # Define the custom base image
-    CUSTOM_BASE_IMAGE = f"my.docker.registry/my-custom-zenml-image:{__version__}"
-
-    docker_settings = DockerSettings(
-        parent_image=CUSTOM_BASE_IMAGE,
-    )
-
-    @pipeline(settings={"docker": docker_settings})
-    def my_pipeline() -> None:
-        ...
-
-    ```
-
-### Onboard Additional Users
-
-{% hint style="info" %}
-Creating user accounts is not currently supported in the ZenML Pro dashboard, because this is not a typical ZenML Pro deployment used in production. A production ZenML Pro deployment should be configured to connect to an external OAuth 2.0 / OIDC identity provider.
-
-However, this feature is currently supported with helper Python scripts, as described below.
-{% endhint %}
-
-1. The deployed ZenML Pro service will come with a pre-installed default administrator account. This admin account serves the purpose of creating and recovering other users. First you will need to get the admin password following the instructions at the previous step.
-
-   ```bash
-   kubectl get secret --namespace zenml-pro zenml-pro -o jsonpath="{.data.ZENML_CLOUD_ADMIN_PASSWORD}" | base64 --decode; echo
-   ```
-2. Create a `users.yaml` file that contains a list of all the users that you want to create for ZenML. Also set a default password. The users will be asked to change this password on their first login.
-
-   ```yaml
-   users:
-   - username: user
-     password: password1234
-   ```
-3. Run the `create_users.py` script below. This will create all of the users.
-
-   **\[file: create\_users.py]**
-
-   ```python
-   import getpass
-   from typing import Optional
-
-   import requests
-   import yaml
-   import sys
-
-   # Configuration
-   LOGIN_ENDPOINT = "/api/v1/auth/login"
-   USERS_ENDPOINT = "/api/v1/users"
-
-   def login(base_url: str, username: str, password: str):
-       """Log in and return the authentication token."""
-       # Define the headers
-       headers = {
-           'accept': 'application/json',
-           'Content-Type': 'application/x-www-form-urlencoded'
-       }
-
-       # Define the data payload
-       data = {
-           'grant_type': '',
-           'username': username,
-           'password': password,
-           'client_id': '',
-           'client_secret': '',
-           'device_code': '',
-           'audience': ''
-       }
-
-       login_url = f"{base_url}{LOGIN_ENDPOINT}"
-       response = requests.post(login_url, headers=headers, data=data)
-
-       if response.status_code == 200:
-           return response.json().get("access_token")
-       else:
-           print(f"Login failed. Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-           sys.exit(1)
-
-   def create_user(token: str, base_url: str, username: str, password: Optional[str]):
-       """Create a user with the given username."""
-       users_url = f"{base_url}{USERS_ENDPOINT}"
-       params = {
-           'username': username,
-           'password': password
-       }
-
-       # Define the headers
-       headers = {
-           'accept': 'application/json',
-           "Authorization": f"Bearer {token}"
-       }
-
-       # Make the POST request
-       response = requests.post(users_url, params=params, headers=headers, data='')
-
-       if response.status_code == 200:
-           print(f"User created successfully: {username}")
-       else:
-           print(f"Failed to create user: {username}")
-           print(f"Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-
-   def main():
-       # Get login credentials
-       base_url = input("ZenML URL: ")
-       username = input("Enter admin username: ")
-       password = getpass.getpass("Enter admin password: ")
-       # Get the YAML file path
-       yaml_file = input("Enter the path to the YAML file containing user account details: ")
-
-       # Login and get token
-       token = login(base_url, username, password)
-       print("Login successful.")
-
-       # Read users from YAML file
-       try:
-           with open(yaml_file, 'r') as file:
-               data = yaml.safe_load(file)
-       except Exception as e:
-           print(f"Error reading YAML file: {e}")
-           sys.exit(1)
-
-       users = data['users']
-
-       # Create users
-       if isinstance(users, list):
-           for user in users:
-               create_user(token, base_url, user["username"], user["password"])
-       else:
-           print("Invalid YAML format. Expected a list of user account details.")
-
-   if __name__ == "__main__":
-       main()
-   ```
-
-The script will prompt you for the URL of your deployment, the admin account username and password and finally the location of your `users.yaml` file.
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-9fb229a69e935a579913e68cf87355e16dba831f%2Fon-prem-01.png?alt=media)
-
-### Create an Organization
+* `zenml-pro.internal.mycompany.com` → Your ALB/Ingress IP
+* `zenml-workspace.internal.mycompany.com` → Your ALB/Ingress IP
 
 {% hint style="warning" %}
-The ZenML Pro admin user should only be used for administrative operations: creating other users, resetting the password of existing users and enrolling workspaces. All other operations should be executed while logged in as a regular user.
+Always use a fully qualified domain name (FQDN) (e.g. `https://zenml.ml.cluster`). Do not use a simple DNS prefix for the servers (e.g. `https://zenml.cluster` is not recommended). This is especially relevant for the TLS certificates that you prepare for these endpoints. The TLS certificates will not be accepted by some browsers (e.g. Chrome) otherwise.
 {% endhint %}
 
-Head on over to your deployment in the browser and use one of the users you just created to log in.
+## Step 12: Install Internal CA Certificate
 
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-2e2c5b8a2d28a854b05b13d9fed8d0a17c05e175%2Fon-prem-02.png?alt=media)
+If the TLS certificates used by the ZenML Pro services are signed by a custom Certificate Authority, you need to install the CA certificates on every machine that needs to access the ZenML server.
 
-After logging in for the first time, you will need to create a new password. (Be aware: For the time being only the admin account will be able to reset this password)
+### System-wide Installation
 
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-94cce62046078a2ff5378175168a83e774cacd76%2Fon-prem-03.png?alt=media)
+On all client machines that will access ZenML:
 
-Finally you can create an Organization. This Organization will host all the workspaces you enroll at the next stage.
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-4f064c829032e4b5eea537dc007bf73eafd4265d%2Fon-prem-04.png?alt=media)
-
-### Invite Other Users to the Organization
-
-Now you can invite your whole team to the org. For this open the drop-down in the top right and head over to the settings.
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-031ea88c1363d8099766dbbc505986b35fa6b11b%2Fon-prem-05.png?alt=media)
-
-Here in the members tab, add all the users you created in the previous step. Make sure to [assign the appropriate role](https://docs.zenml.io/pro/access-management/roles#organization-level-roles) to each user.
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-7e154e032247ab1ee4decf5cc819cee679f958fa%2Fon-prem-06.png?alt=media)
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-8f81b046f070607e8b88573c4ddc035161f1af1b%2Fon-prem-07.png?alt=media)
-
-Finally, send the account's username and initial password over to your team members.
-
-## Stage 2/2: Enroll and Deploy ZenML Pro workspaces
-
-Installing and updating on-prem ZenML Pro workspace servers is not automated, as it is with the SaaS version. You will be responsible for enrolling workspace servers in the right ZenML Pro organization, installing them and regularly updating them. Some scripts are provided to simplify this task as much as possible.
-
-### Enrolling a Workspace
-
-1. **Run the `enroll-workspace.py` script below**
-
-   This will collect all the necessary data, then enroll the workspace in the organization and generate a Helm `values.yaml` file template that you can use to install the workspace server:
-
-   **\[file: enroll-workspace.py]**
-
-   ```python
-   import getpass
-   import sys
-   import uuid
-   from typing import List, Optional, Tuple
-
-   import requests
-
-   DEFAULT_API_ROOT_PATH = "/api/v1"
-   DEFAULT_REPOSITORY = (
-       "715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server"
-   )
-
-   # Configuration
-   LOGIN_ENDPOINT = "/api/v1/auth/login"
-   WORKSPACE_ENDPOINT = "/api/v1/workspaces"
-   ORGANIZATION_ENDPOINT = "/api/v1/organizations"
-
-   def login(base_url: str, username: str, password: str) -> str:
-       """Log in and return the authentication token."""
-       # Define the headers
-       headers = {
-           "accept": "application/json",
-           "Content-Type": "application/x-www-form-urlencoded",
-       }
-
-       # Define the data payload
-       data = {
-           "grant_type": "",
-           "username": username,
-           "password": password,
-           "client_id": "",
-           "client_secret": "",
-           "device_code": "",
-           "audience": "",
-       }
-
-       login_url = f"{base_url}{LOGIN_ENDPOINT}"
-       response = requests.post(login_url, headers=headers, data=data)
-
-       if response.status_code == 200:
-           return response.json().get("access_token")
-       else:
-           print(f"Login failed. Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-           sys.exit(1)
-
-   def workspace_exists(
-       token: str,
-       base_url: str,
-       org_id: str,
-       workspace_name: Optional[str] = None,
-   ) -> Optional[str]:
-       """Get a workspace with a given name or url."""
-       workspace_url = f"{base_url}{WORKSPACE_ENDPOINT}"
-
-       # Define the headers
-       headers = {
-           "accept": "application/json",
-           "Authorization": f"Bearer {token}",
-       }
-       params = {
-           "organization_id": org_id,
-       }
-       if workspace_name:
-           params["workspace_name"] = workspace_name
-
-       # Create the workspace
-       response = requests.get(
-           workspace_url,
-           params=params,
-           headers=headers,
-       )
-
-       if response.status_code == 200:
-           json_response = response.json()
-           if len(json_response) > 0:
-               return json_response[0]["id"]
-       else:
-           print(f"Failed to fetch workspaces for organization: {org_id}")
-           print(f"Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-           sys.exit(1)
-
-       return None
-
-   def list_organizations(
-       token: str,
-       base_url: str,
-   ) -> List[Tuple[str, str]]:
-       """Get a list of organizations."""
-       organization_url = f"{base_url}{ORGANIZATION_ENDPOINT}"
-
-       # Define the headers
-       headers = {
-           "accept": "application/json",
-           "Authorization": f"Bearer {token}",
-       }
-
-       # Create the workspace
-       response = requests.get(
-           organization_url,
-           headers=headers,
-       )
-
-       if response.status_code == 200:
-           json_response = response.json()
-           return [(org["id"], org["name"]) for org in json_response]
-       else:
-           print("Failed to fetch organizations")
-           print(f"Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-           sys.exit(1)
-
-   def enroll_workspace(
-       token: str,
-       base_url: str,
-       org_id: str,
-       workspace_name: str,
-       delete_existing: Optional[str] = None,
-   ) -> dict:
-       """Enroll a workspace."""
-       workspace_url = f"{base_url}{WORKSPACE_ENDPOINT}"
-
-       # Define the headers
-       headers = {
-           "accept": "application/json",
-           "Authorization": f"Bearer {token}",
-       }
-
-       if delete_existing:
-           # Delete the workspace
-           response = requests.delete(
-               f"{workspace_url}/{delete_existing}",
-               headers=headers,
-           )
-
-           if response.status_code == 200:
-               print(f"Workspace deleted successfully: {delete_existing}")
-           else:
-               print(f"Failed to delete workspace: {delete_existing}")
-               print(f"Status code: {response.status_code}")
-               print(f"Response: {response.text}")
-               sys.exit(1)
-
-       # Enroll the workspace
-       response = requests.post(
-           workspace_url,
-           json={
-               "name": workspace_name,
-               "organization_id": org_id,
-           },
-           params={
-               "enroll": True,
-           },
-           headers=headers,
-       )
-
-       if response.status_code == 200:
-           workspace = response.json()
-           workspace_id = workspace.get("id")
-           print(f"Workspace enrolled successfully: {workspace_name} [{workspace_id}]")
-
-           return workspace
-       else:
-           print(f"Failed to enroll workspace: {workspace_name}")
-           print(f"Status code: {response.status_code}")
-           print(f"Response: {response.text}")
-           sys.exit(1)
-
-   def prompt(
-       prompt_text: str,
-       default_value: Optional[str] = None,
-       password: bool = False,
-   ) -> str:
-       """Prompt the user with a default value."""
-
-       while True:
-           if default_value:
-               text = f"{prompt_text} [{default_value}]: "
-           else:
-               text = f"{prompt_text}: "
-
-           if password:
-               user_input = getpass.getpass(text)
-           else:
-               user_input = input(text)
-
-           if user_input.strip() == "":
-               if default_value:
-                   return default_value
-               print("Please provide a value.")
-               continue
-           return user_input
-
-   def get_workspace_config(
-       zenml_pro_url: str,
-       organization_id: str,
-       organization_name: str,
-       workspace_id: str,
-       workspace_name: str,
-       enrollment_key: str,
-       repository: str = DEFAULT_REPOSITORY,
-   ) -> str:
-       """Get the workspace configuration.
-
-       Args:
-           workspace_id: Workspace ID.
-           workspace_name: Workspace name.
-           organization_name: Organization name.
-           enrollment_key: Enrollment key.
-           repository: Workspace docker image repository.
-
-       Returns:
-           The workspace configuration.
-       """
-       # Generate a secret key to encrypt the SQL database secrets
-       encryption_key = f"{uuid.uuid4().hex}{uuid.uuid4().hex}"
-
-       # Generate a hostname and database name from the workspace ID
-       short_workspace_id = workspace_id.replace("-", "")
-
-       return f"""
-   zenml:
-       analyticsOptIn: false
-       threadPoolSize: 20
-       database:
-           maxOverflow: "-1"
-           poolSize: "10"
-           # TODO: use the actual database host and credentials
-           url: mysql://root:password@mysql.example.com:3306/zenml{short_workspace_id}
-       image:
-           # TODO: use your actual image repository (omit the tag, which is
-           # assumed to be the same as the helm chart version)
-           repository: { repository }
-       # TODO: use your actual server domain here
-       serverURL: https://zenml.{ short_workspace_id }.example.com
-       ingress:
-           enabled: true
-           # TODO: use your actual domain here
-           host: zenml.{ short_workspace_id }.example.com
-       pro:
-           apiURL: { zenml_pro_url }/api/v1
-           dashboardURL: { zenml_pro_url }
-           enabled: true
-           enrollmentKey: { enrollment_key }
-           organizationID: { organization_id }
-           organizationName: { organization_name }
-           workspaceID: { workspace_id }
-           workspaceName: { workspace_name }
-       replicaCount: 1
-       secretsStore:
-           sql:
-               encryptionKey: { encryption_key }
-           type: sql
-
-   # TODO: these are the minimum resources required for the ZenML server. You can
-   # adjust them to your needs.
-   resources:
-       limits:
-           memory: 800Mi
-       requests:
-           cpu: 100m
-           memory: 450Mi
-   """
-
-   def main() -> None:
-       zenml_pro_url = prompt(
-           "What is the URL of your ZenML Pro instance? (e.g. https://zenml-pro.mydomain.com)",
-       )
-       username = prompt(
-           "Enter the ZenML Pro admin account username",
-           default_value="admin",
-       )
-       password = prompt(
-           "Enter the ZenML Pro admin account password", password=True
-       )
-
-       # Login and get token
-       token = login(zenml_pro_url, username, password)
-       print("Login successful.")
-
-       organizations = list_organizations(
-           token=token,
-           base_url=zenml_pro_url,
-       )
-       if len(organizations) == 0:
-           print("No organizations found. Please create an organization first.")
-           sys.exit(1)
-       elif len(organizations) == 1:
-           organization_id, organization_name = organizations[0]
-           confirm = prompt(
-               f"The following organization was found: {organization_name} [{organization_id}]. "
-               f"Use this organization? (y/n)",
-               default_value="n",
-           )
-           if confirm.lower() != "y":
-               print("Exiting.")
-               sys.exit(0)
-       else:
-           while True:
-               organizations = "\n".join(
-                   [f"{name} [{id}]" for id, name in organizations]
-               )
-               print(f"The following organizations are available:\n{organizations}")
-               organization_id = prompt(
-                   "Which organization ID should the workspace be enrolled in?",
-               )
-               if organization_id in [id for id, _ in organizations]:
-                   break
-               print("Invalid organization ID. Please try again.")
-
-       # Generate a default workspace name
-       workspace_name = f"zenml-{str(uuid.uuid4())[:8]}"
-       workspace_name = prompt(
-           "Choose a name for the workspace, or press enter to use a generated name (only lowercase letters, numbers, and hyphens are allowed)",
-           default_value=workspace_name,
-       )
-
-       existing_workspace_id = workspace_exists(
-           token=token,
-           base_url=zenml_pro_url,
-           org_id=organization_id,
-           workspace_name=workspace_name,
-       )
-
-       if existing_workspace_id:
-           confirm = prompt(
-               f"A workspace with name {workspace_name} already exists in the "
-               f"organization {organization_id}. Overwrite ? (y/n)",
-               default_value="n",
-           )
-           if confirm.lower() != "y":
-               print("Exiting.")
-               sys.exit(0)
-
-       workspace = enroll_workspace(
-           token=token,
-           base_url=zenml_pro_url,
-           org_id=organization_id,
-           workspace_name=workspace_name,
-           delete_existing=existing_workspace_id,
-       )
-
-       workspace_id = workspace.get("id")
-       organization_name = workspace.get("organization").get("name")
-       enrollment_key = workspace.get("enrollment_key")
-
-       workspace_config = get_workspace_config(
-           zenml_pro_url=zenml_pro_url,
-           workspace_name=workspace_name,
-           workspace_id=workspace_id,
-           organization_id=organization_id,
-           organization_name=organization_name,
-           enrollment_key=enrollment_key,
-       )
-
-       # Write the workspace configuration to a file
-       values_file = f"zenml-{workspace_name}-values.yaml"
-       with open(values_file, "w") as file:
-           file.write(workspace_config)
-
-       print(
-           f"""
-   The workspace was enrolled successfully. It can be accessed at:
-
-   {zenml_pro_url}/workspaces/{workspace_name}
-
-   The workspace server Helm values were written to: {values_file}
-
-   Please note the TODOs in the file and adjust them to your needs.
-
-   To install the workspace, run e.g.:
-
-       helm --namespace zenml-pro-{workspace_name} upgrade --install --create-namespace \
-           zenml oci://public.ecr.aws/zenml/zenml --version <version> \
-           --values {values_file}
-
-   """
-       )
-
-   if __name__ == "__main__":
-       main()
-
-   ```
-
-   Running the script does two things:
-
-   * it creates a workspace entry in the ZenML Pro database. The workspace will remain in a "provisioning" state and won't be accessible until you actually install it using Helm.
-   * it outputs a YAML file with Helm chart configuration values that you can use to deploy the ZenML Pro workspace server in your Kubernetes cluster.
-
-   This is an example of a generated Helm YAML file:
-
-   ```yaml
-   zenml:
-       analyticsOptIn: false
-       threadPoolSize: 20
-       database:
-           maxOverflow: "-1"
-           poolSize: "10"
-           # TODO: use the actual database host and credentials
-           url: mysql://root:password@mysql.example.com:3306/zenmlf8e306ef90e74b2f99db28298834feed
-       image:
-           # TODO: use your actual image repository (omit the tag, which is
-           # assumed to be the same as the helm chart version)
-           repository: 715803424590.dkr.ecr.eu-central-1.amazonaws.com/zenml-pro-server
-       # TODO: use your actual server domain here
-       serverURL: https://zenml.f8e306ef90e74b2f99db28298834feed.example.com
-       ingress:
-           enabled: true
-           # TODO: use your actual domain here
-           host: zenml.f8e306ef90e74b2f99db28298834feed.example.com
-       pro:
-           apiURL: https://zenml-pro.staging.cloudinfra.zenml.io/api/v1
-           dashboardURL: https://zenml-pro.staging.cloudinfra.zenml.io
-           enabled: true
-           enrollmentKey: Mt9Rw-Cdjlumel7GTCrbLpCQ5KhhtfmiDt43mVOYYsDKEjboGg9R46wWu53WQ20OzAC45u-ZmxVqQkMGj-0hWQ
-           organizationID: 0e99e236-0aeb-44cc-aff7-590e41c9a702
-           organizationName: MyOrg
-           workspaceID: f8e306ef-90e7-4b2f-99db-28298834feed
-           workspaceName: zenml-eab14ff8
-       replicaCount: 1
-       secretsStore:
-           sql:
-               encryptionKey: 155b20a388064423b1943d64f1686dd0d0aa6454be0a46839b1ee830f6565904
-           type: sql
-
-   # TODO: these are the minimum resources required for the ZenML server. You can
-   # adjust them to your needs.
-   resources:
-       limits:
-           memory: 800Mi
-       requests:
-           cpu: 100m
-           memory: 450Mi
-   ```
-2. **Configure the ZenML Pro workspace Helm chart**
-
-   **IMPORTANT**: In configuring the ZenML Pro workspace Helm chart, keep the following in mind:
-
-   * don't use the same database name for multiple workspaces
-   * don't reuse the control plane database name for the workspace server database
-
-   The ZenML Pro workspace server is nothing more than a slightly modified open-source ZenML server. The deployment even uses the official open-source helm chart.
-
-   There are a variety of options that can be configured for the ZenML Pro workspace server chart before installation. You can start by taking a look at the [Helm chart README](https://artifacthub.io/packages/helm/zenml/zenml) and [`values.yaml` file](https://artifacthub.io/packages/helm/zenml/zenml?modal=values) and familiarize yourself with some of the configuration settings that you can customize for your ZenML server deployment. Alternatively, you can unpack the `README.md` and `values.yaml` files included in the helm chart:
+1. Obtain your internal CA certificate
+2. Install it in the system certificate store:
+   * **Linux**: Copy to `/usr/local/share/ca-certificates/` and run `update-ca-certificates`
+   * **macOS**: Use `sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <cert.pem>`
+   * **Windows**: Use `certutil -addstore "Root" cert.pem`
+3. For some browsers (e.g., Chrome), updating the system's CA certificates is not enough. You will also need to import the CA certificates into the browser.
+4. For Python/ZenML client:
 
    ```bash
-   helm  pull --untar  oci://public.ecr.aws/zenml/zenml --version <version>
-   less zenml/README.md
-   less zenml/values.yaml
+   export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
    ```
 
-   To configure the Helm chart, use the generated YAML file generated at the previous step as a template and fill in the necessary values marked by `TODO` comments. At a minimum, you'll need to configure the following:
+### For Containerized Pipelines
 
-   * configure container registry credentials (`imagePullSecrets`, same as [described for the control plane](#set-up-credentials))
-   * the MySQL database credentials (`zenml.database.url`)
-   * the container image repository where the ZenML Pro workspace server container images are stored (`zenml.image.repository`)
-   * the hostname where the ZenML Pro workspace server will be reachable (`zenml.ingress.host` and `zenml.serverURL`)
+When running containerized pipelines with ZenML, you'll need to install the CA certificates into the container images built by ZenML. Customize the build process via [DockerSettings](https://docs.zenml.io/how-to/customize-docker-builds):
 
-   You may also choose to configure additional features documented in [the official OSS ZenML Helm deployment documentation pages](https://docs.zenml.io/getting-started/deploying-zenml/deploy-with-helm), if you need them:
+1. Create a custom Dockerfile:
 
-   * injecting custom CA certificates (`zenml.certificates`), especially important if the TLS certificate used for the ZenML Pro control plane is signed by a custom Certificate Authority
-   * configure HTTP proxy settings (`zenml.proxy`)
-   * set up secrets stores
-   * configure database backup and restore
-   * customize Kubernetes resources
-   * etc.
-3. **Deploy the ZenML Pro workspace server with Helm**
+   ```dockerfile
+   # Use the original ZenML client image as a base image
+   FROM zenmldocker/zenml:<zenml-version>
 
-   To install the helm chart (assuming the customized configuration values are in the generated `zenml-my-workspace-values.yaml` file), run e.g.:
+   # Install certificates
+   COPY my-custom-ca.crt /usr/local/share/ca-certificates/
+   RUN update-ca-certificates
+
+   ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+   ```
+2. Build and push the image to your internal registry:
+
+   ```bash
+   docker build -t internal-registry.mycompany.com/zenml/zenml:<zenml-version> .
+   docker push internal-registry.mycompany.com/zenml/zenml:<zenml-version>
+   ```
+3. Update your ZenML pipeline code to use the custom image:
 
    ```python
-   helm --namespace zenml-pro-f8e306ef-90e7-4b2f-99db-28298834feed upgrade --install --create-namespace zenml oci://public.ecr.aws/zenml/zenml --version <version> --values zenml-f8e306ef-90e7-4b2f-99db-28298834feed-values.yaml
+   from zenml.config import DockerSettings
+   from zenml import __version__
+
+   # Define the custom base image
+   CUSTOM_BASE_IMAGE = f"internal-registry.mycompany.com/zenml/zenml:{__version__}"
+
+   docker_settings = DockerSettings(
+       parent_image=CUSTOM_BASE_IMAGE,
+   )
+
+   @pipeline(settings={"docker": docker_settings})
+   def my_pipeline() -> None:
+       ...
    ```
 
-   The deployment is ready when the ZenML server pod is running and healthy:
+## Step 13: Verify the Deployment
 
-   ```python
-   $ kubectl -n zenml-pro-f8e306ef-90e7-4b2f-99db-28298834feed get all
-   NAME                           READY   STATUS      RESTARTS   AGE
-   pod/zenml-5c4b6d9dcd-7bhfp     1/1     Running     0          85m
+1. **Check Control Plane Health**
 
-   NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
-   service/zenml   ClusterIP   172.20.43.140   <none>        80/TCP    85m
+   ```bash
+   curl -k https://zenml-pro.internal.mycompany.com/health
+   ```
+2. **Check Workspace Health**
 
-   NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
-   deployment.apps/zenml   1/1     1            1           85m
+   ```bash
+   curl -k https://zenml-workspace.internal.mycompany.com/health
+   ```
+3. **Access the Dashboard**
+   * Navigate to `https://zenml-pro.internal.mycompany.com` in your browser
+   * Log in with admin credentials
+4. **Check Logs**
 
-   NAME                               DESIRED   CURRENT   READY   AGE
-   replicaset.apps/zenml-5c4b6d9dcd   1         1         1       85m
+   ```bash
+   kubectl -n zenml-pro logs deployment/zenml-pro
+   kubectl -n zenml-workspace logs deployment/zenml
    ```
 
-   After deployment, your workspace should show up as running in the ZenML Pro dashboard and can be accessed at the next step.
+## Step 14: (Optional) Enable Snapshot Support / Workload Manager
 
-   If you need to deploy multiple workspaces, simply run the enrollment script again with different values.
-
-### Accessing the Workspace
-
-If you use TLS certificates for the ZenML Pro control plane or workspace server signed by a custom Certificate Authority, remember to [install them on the client machines](#install-ca-certificates).
-
-#### Accessing the Workspace Dashboard
-
-The newly enrolled workspace should be accessible in the ZenML Pro workspace dashboard and the CLI now. If you're the organization admin, you may also need to add other users as workspace members, if they don't have access to the workspace yet.
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-2b9433d6692e085c9329c6a313d165df85ce1872%2Fon-prem-08.png?alt=media)
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-a3076a207c743233fe29458de7f0e78611fff893%2Fon-prem-09.png?alt=media)
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-7f327230ad7655c143c6f96562625d95a5513466%2Fon-prem-10.png?alt=media)
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-37fffe19e770a577b7ba76bf3637fce7d9f2886e%2Fon-prem-11.png?alt=media)
-
-Then follow the instructions in the "Get Started" checklist to unlock the full dashboard:
-
-![](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-bd2af732c788180298a1e3d049367122d6c77530%2Fon-prem-12.png?alt=media)
-
-#### Accessing the Workspace from the ZenML CLI
-
-To login to the workspace with the ZenML CLI, you need to pass the custom ZenML Pro API URL to the `zenml login` command:
-
-```bash
-zenml login --pro-api-url https://zenml-pro.staging.cloudinfra.zenml.io/api/v1
-```
-
-Alternatively, you can set the `ZENML_PRO_API_URL` environment variable:
-
-```bash
-export ZENML_PRO_API_URL=https://zenml-pro.staging.cloudinfra.zenml.io/api/v1
-zenml login
-```
-
-## Enabling Snapshot Support
-
-The ZenML Pro workspace server can be configured to optionally support running pipeline snapshots straight from the dashboard. This feature is not enabled by default and needs a few additional steps to be set up.
+Pipeline snapshots (running pipelines from the UI) requires additional configuration.
 
 {% hint style="warning" %}
 Snapshots are only available from ZenML workspace server version 0.90.0 onwards.
 {% endhint %}
 
-Snapshots come with some optional sub-features that can be turned on or off to customize the behavior of the feature:
+### Understanding Snapshot Sub-features
 
-* **Building runner container images**: Running pipelines from the dashboard relies on Kubernetes jobs (aka "runner" jobs) that are triggered by the ZenML workspace server. These jobs need to use container images that have the correct Python software packages installed on them to be able to launch the pipelines.
+Snapshots come with optional sub-features that can be turned on or off:
 
-  The good news is that snapshots are based on pipeline runs that have already run in the past and already have container images built and associated with them. The same container images can be reused by the ZenML workspace server for the "runner jobs". However, for this to work, the Kubernetes cluster itself has to be able to access the container registries where these images are stored. This can be achieved in several ways:
+* **Building runner container images**: Running pipelines from the UI relies on Kubernetes jobs ("runner" jobs) that need container images with the correct Python packages. You can:
+  * Reuse existing pipeline container images (requires Kubernetes cluster access to those registries)
+  * Have ZenML build "runner" images and push to a configured registry
+  * Use a single pre-built "runner" image for all runs
+* **Store logs externally**: By default, logs are extracted from runner job pods. Since pods may disappear, you can configure external log storage (currently only supported with AWS implementation).
 
-  * use implicit workload identity access to the container registry - available in most cloud providers by granting the Kubernetes service account access to the container registry
-  * configure a service account with implicit access to the container registry - associating some cloud service identity (e.g. a GCP service account, an AWS IAM role, etc.) with the Kubernetes service account used by the "runner" jobs
-  * configure an image pull secret for the service account - similar to the previous option, but using a Kubernetes secret instead of a cloud service identity
+### 1. Create Kubernetes Resources for Workload Manager
 
-  When none of the above are available or desirable, an alternative approach is to configure the ZenML workspace server itself to build these "runner" container images and push them to a different container registry. This can be achieved by setting the `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` environment variable to `true` and the `ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY` environment variable to the container registry where the "runner" images will be pushed.
+Create a dedicated namespace and service account for runner jobs:
 
-  Yet another alternative is to configure the ZenML workspace server to use a single pre-built "runner" image for all the pipeline runs. This can be achieved by keeping `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` environment variable set to `false` and the `ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE` environment variable set to the container image registry URI where the "runner" image is stored. Note that this image needs to have all requirements installed to instantiate the stack that will be used for the template run.
-* **Store logs externally**: By default, the ZenML workspace server will use the logs extracted from the "runner" job pods to populate the run template logs shown in the ZenML dashboard. These pods may disappear after a while, so the logs may not be available anymore.
+```bash
+# Create namespace
+kubectl create namespace zenml-workspace-namespace
 
-  To avoid this, you can configure the ZenML workspace server to store the logs in an external location, like an S3 bucket. This can be achieved by setting the `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS` environment variable to `true`.
+# Create service account
+kubectl -n zenml-workspace-namespace create serviceaccount zenml-workspace-service-account
 
-  This option is only currently available with the AWS implementation of the snapshots feature and also requires the `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET` environment variable to be set to point to the S3 bucket where the logs will be stored.
+# Create role with permissions to create jobs and access registry
+# (Specific permissions depend on your implementation choice below)
+```
 
-1. Decide on an implementation.
+The service account needs permissions to build images and run jobs, including access to container images and any configured bucket for logs.
 
-   There are currently three different implementations of the snapshots feature:
+### 2. Choose Implementation
 
-   * **Kubernetes**: runs pipelines in the same Kubernetes cluster as the ZenML Pro workspace server.
-   * **AWS**: extends the Kubernetes implementation to be able to build and push container images to AWS ECR and to store run the template logs in AWS S3.
-   * **GCP**: currently, this is the same as the Kubernetes implementation, but we plan to extend it to be able to push container images to GCP GCR and to store run template logs in GCP GCS.
+There are three available implementations:
 
-   If you're going for a fast, minimalistic setup, you should go for the Kubernetes implementation. If you want a complete cloud provider solution with all features enabled, you should go for the AWS implementation.
-2. Prepare Snapshots configuration.
+* **Kubernetes**: Runs pipelines in the same Kubernetes cluster as the ZenML Pro workspace server.
+* **AWS**: Extends Kubernetes implementation to build/push images to AWS ECR and store logs in AWS S3.
+* **GCP**: Currently same as Kubernetes, with plans to extend for GCP GCR and GCS support.
 
-   You'll need to prepare a list of environment variables that will be added to the Helm chart values used to deploy the ZenML workspace server.
+**Option A: Kubernetes Implementation (Simplest)**
 
-   For all implementations, the following variables are supported:
+Use the built-in Kubernetes implementation for running snapshots:
 
-   * `ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE` (mandatory): one of the values associated with the implementation you've chosen in step 1:
-     * `zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager`
-     * `zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager`
-     * `zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager`
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE` (mandatory): the Kubernetes namespace where the "runner" jobs will be launched. It must exist before the snapshots are enabled.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT` (mandatory): the Kubernetes service account to use for the "runner" jobs. It must exist before the snapshots are enabled.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` (optional): whether to build the "runner" container images or not. Defaults to `false`.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY` (optional): the container registry where the "runner" images will be pushed. Mandatory if `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` is set to `true`, ignored otherwise.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE` (optional): the "runner" container image to use. Only used if `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` is set to `false`, ignored otherwise.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS` (optional): whether to store the logs of the "runner" jobs in an external location. Defaults to `false`. Currently only supported with the AWS implementation and requires the `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET` variable to be set as well.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES` (optional): the Kubernetes pod resources specification to use for the "runner" jobs, in JSON format. Example: `{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}`.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_TTL_SECONDS_AFTER_FINISHED` (optional): the time in seconds after which to cleanup finished jobs and their pods. Defaults to 2 days.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR` (optional): the Kubernetes node selector to use for the "runner" jobs, in JSON format. Example: `{"node-pool": "zenml-pool"}`.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS` (optional): the Kubernetes tolerations to use for the "runner" jobs, in JSON format. Example: `[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]`.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_JOB_BACKOFF_LIMIT` (optional): the Kubernetes backoff limit to use for the builder and runner jobs.
-   * `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_FAILURE_POLICY` (optional): the Kubernetes pod failure policy to use for the builder and runner jobs.
-   * `ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS` (optional): the maximum number of concurrent snapshot runs that can be started at the same time by each server container or pod. Defaults to 2. If a client exceeds this number, the request will be rejected with a 429 Too Many Requests HTTP error. Note that this only limits the number of parallel snapshots that can be *started* at the same time, not the number of parallel pipeline runs.
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
 
-   For the AWS implementation, the following additional variables are supported:
+**Option B: AWS Implementation (Full Featured)**
 
-   * `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET` (optional): the S3 bucket where the logs will be stored (e.g. `s3://my-bucket/run-template-logs`). Mandatory if `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS` is set to `true`.
-   * `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION` (optional): the AWS region where the container images will be pushed (e.g. `eu-central-1`). Mandatory if `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` is set to `true`.
-3. Create the Kubernetes resources.
+For AWS-specific features including external logs and ECR integration:
 
-   For the Kubernetes implementation, you'll need to create the following resources:
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
 
-   * the Kubernetes namespace passed in the `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE` variable.
-   * the Kubernetes service account passed in the `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT` variable. This service account will be used to build images and run the "runner" jobs, so it needs to have the necessary permissions to do so (e.g. access to the container images, permissions to push container images to the configured container registry, permissions to access the configured bucket, etc.).
-4. Finally, update the ZenML workspace server configuration to use the new implementation.
+**Option C: GCP Implementation**
 
-   The environment variables you prepared in step 2 need to be added to the Helm chart values used to deploy the ZenML workspace server and the ZenML server has to be updated as covered in the [Day 2 Operations: Upgrades and Updates](#day-2-operations-upgrades-and-updates) section.
+For GCP environments:
 
-   Example updated Helm values file (minimal configuration):
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
 
-   ```yaml
-   zenml:
-       environment:
-           ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
-   ```
+### 3. Configure Runner Image
 
-   Example updated Helm values file (full AWS configuration):
+Choose how runner images are managed:
 
-   ```yaml
-   zenml:
-       environment:
-           ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: 339712793861.dkr.ecr.eu-central-1.amazonaws.com
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS: "true"
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
-           ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET: s3://my-bucket/run-template-logs
-           ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION: eu-central-1
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
-           ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
-   ```
+**Option A: Use Pre-built Runner Image (Simpler for Air-gap)**
 
-   Example updated Helm values file (full GCP configuration):
+```yaml
+zenml:
+    environment:
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "false"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE: internal-registry.mycompany.com/zenml/zenml:<ZENML_OSS_VERSION>
+```
 
-   ```yaml
-   zenml:
-       environment:
-           ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: europe-west3-docker.pkg.dev/zenml-project/zenml-snapshots/zenml
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
-           ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
-           ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
-   ```
+Pre-build your runner image and push to your internal registry. Note that this image needs to have all requirements installed to instantiate the stack that will be used for the template run.
 
-## Day 2 Operations: Upgrades and Updates
+**Option B: Have ZenML Build Runner Images**
 
-This section covers how to upgrade or update your ZenML Pro deployment. The process involves updating both the ZenML Pro Control Plane and the ZenML Pro workspace servers.
+Requires access to internal Docker registry with push permissions:
 
-{% hint style="warning" %}
-Always upgrade the ZenML Pro Control Plane first, then upgrade the workspace servers. This ensures compatibility and prevents potential issues.
+```yaml
+zenml:
+    environment:
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: internal-registry.mycompany.com/zenml
+```
+
+### 4. Environment Variable Reference
+
+All supported environment variables for workload manager configuration:
+
+| Variable                                                       | Required    | Description                                              |
+| -------------------------------------------------------------- | ----------- | -------------------------------------------------------- |
+| `ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE`          | Yes         | Implementation class (see options above)                 |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE`                  | Yes         | Kubernetes namespace for runner jobs                     |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT`            | Yes         | Kubernetes service account for runner jobs               |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE`         | No          | Whether to build runner images (default: `false`)        |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY`            | Conditional | Registry for runner images (required if building images) |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE`               | No          | Pre-built runner image (used if not building)            |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS`       | No          | Store logs externally (default: `false`, AWS only)       |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES`              | No          | Pod resources in JSON format                             |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_TTL_SECONDS_AFTER_FINISHED` | No          | Cleanup time for finished jobs (default: 2 days)         |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR`              | No          | Node selector in JSON format                             |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS`                | No          | Tolerations in JSON format                               |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_JOB_BACKOFF_LIMIT`          | No          | Backoff limit for builder/runner jobs                    |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_FAILURE_POLICY`         | No          | Pod failure policy for builder/runner jobs               |
+| `ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS`                    | No          | Max concurrent snapshot runs per pod (default: 2)        |
+
+**AWS-specific variables:**
+
+| Variable                                       | Required    | Description                                            |
+| ---------------------------------------------- | ----------- | ------------------------------------------------------ |
+| `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET` | Conditional | S3 bucket for logs (required if external logs enabled) |
+| `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION` | Conditional | AWS region (required if building images)               |
+
+### 5. Complete Configuration Examples
+
+**Minimal Kubernetes Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
+
+**Full AWS Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: 339712793861.dkr.ecr.eu-central-1.amazonaws.com
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET: s3://my-bucket/run-template-logs
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION: eu-central-1
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
+```
+
+**Full GCP Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: europe-west3-docker.pkg.dev/zenml-project/zenml-snapshots/zenml
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
+```
+
+**Air-gapped Configuration with Pre-built Runner:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "false"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE: internal-registry.mycompany.com/zenml/zenml:<ZENML_OSS_VERSION>
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TTL_SECONDS_AFTER_FINISHED: 86400
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 2
+```
+
+### 6. Update Workspace Deployment
+
+Update your workspace server Helm values with workload manager configuration and redeploy:
+
+```bash
+helm upgrade zenml ./zenml-<version>.tgz \
+  --namespace zenml-workspace \
+  --values zenml-workspace-values.yaml
+```
+
+## Step 15: Create Users and Organizations
+
+In the ZenML Pro dashboard:
+
+1. Create an organization
+2. Create users for your team
+3. Assign roles and permissions
+4. Configure teams
+
+{% hint style="info" %}
+For detailed instructions on creating users programmatically, including Python scripts for batch user creation, see the [Self-hosted Deployment Guide](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md#onboard-additional-users).
 {% endhint %}
 
-### Upgrade Checklist
+## Step 16: Access the Workspace from ZenML CLI
 
-1. **Check Available Versions and Release Notes**
-   * For ZenML Pro Control Plane:
-     * Check available versions in the [ZenML Pro ArtifactHub repository](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro)
-   * For ZenML Pro Workspace Servers:
-     * Check available versions in the [ZenML OSS ArtifactHub repository](https://artifacthub.io/packages/helm/zenml/zenml)
-     * Review the [ZenML GitHub releases page](https://github.com/zenml-io/zenml/releases) for release notes and breaking changes
-2. **Fetch and Prepare New Software Artifacts**
-   * Follow the [Software Artifacts](#software-artifacts) section to get access to the new versions of:
-     * ZenML Pro Control Plane container images and Helm chart
-     * ZenML Pro workspace server container images and Helm chart
-   * If using a private registry, copy the new container images to your private registry
-   * If you are using an air-gapped installation, follow the [Air-Gapped Installation](#air-gapped-installation) instructions
-3. **Upgrade the ZenML Pro Control Plane**
-   * Option A - In-place upgrade with existing values. Use this if you don't need to change any configuration values as part of the upgrade:
+To login to the workspace with the ZenML CLI, you need to pass the custom ZenML Pro API URL:
 
-     ```bash
-     helm --namespace zenml-pro upgrade zenml-pro oci://public.ecr.aws/zenml/zenml-pro \
-       --version <new-version> --reuse-values
-     ```
-   * Option B - Retrieve, modify and reapply values, if necessary. Use this if you need to change any configuration values as part of the upgrade or if you are performing a configuration update without upgrading the ZenML Pro Control Plane.
+```bash
+zenml login --pro-api-url https://zenml-pro.internal.mycompany.com/api/v1
+```
 
-     ```bash
-     # Get the current values
-     helm --namespace zenml-pro get values zenml-pro > current-values.yaml
+Alternatively, you can set the `ZENML_PRO_API_URL` environment variable:
 
-     # Edit current-values.yaml if needed, then upgrade
-     helm --namespace zenml-pro upgrade zenml-pro oci://public.ecr.aws/zenml/zenml-pro \
-       --version <new-or-existing-version> --values current-values.yaml
-     ```
-4. **Upgrade ZenML Pro Workspace Servers**
-   * For each workspace, perform either:
-     * Option A - In-place upgrade with existing values. Use this if you don't need to change any configuration values as part of the upgrade:
+```bash
+export ZENML_PRO_API_URL=https://zenml-pro.internal.mycompany.com/api/v1
+zenml login
+```
 
-       ```bash
-       helm --namespace zenml-pro-<workspace-name-or-id> upgrade zenml oci://public.ecr.aws/zenml/zenml \
-       --version <new-version> --reuse-values
-       ```
-     * Option B - Retrieve, modify and reapply values, if necessary. Use this if you need to change any configuration values as part of the upgrade or if you are performing a configuration update without upgrading the ZenML Pro Workspace Server.
+## Network Requirements Summary
 
-       ```bash
-       # Get the current values
-       helm --namespace zenml-pro-<workspace-name-or-id> get values zenml > current-workspace-values.yaml
+| Traffic       | Source              | Destination         | Port | Direction |
+| ------------- | ------------------- | ------------------- | ---- | --------- |
+| Web Access    | Client Machines     | Ingress Controller  | 443  | Inbound   |
+| API Access    | ZenML Client        | Workspace Server    | 443  | Inbound   |
+| Database      | Kubernetes Pods     | MySQL               | 3306 | Outbound  |
+| Registry      | Kubernetes          | Internal Registry   | 443  | Outbound  |
+| Inter-service | Kubernetes Internal | Kubernetes Services | 443  | Internal  |
 
-       # Edit current-workspace-values.yaml if needed, then upgrade
-       helm --namespace zenml-pro-<workspace-name-or-id> upgrade zenml oci://public.ecr.aws/zenml/zenml \
-       --version <new-version> --values current-workspace-values.yaml
-       ```
+## Scaling & High Availability
+
+### Multiple Control Plane Replicas
+
+```yaml
+zenml:
+  replicaCount: 3
+```
+
+### Multiple Workspace Replicas
+
+```yaml
+zenml:
+  replicaCount: 2
+```
+
+### Database Replication
+
+For HA, configure MySQL replication:
+
+1. Set up a standby database
+2. Configure binary log replication
+3. Test failover procedures
+
+## Backup & Recovery
+
+### Automated Backups
+
+Configure automated MySQL backups:
+
+* **Frequency**: Daily or more frequent
+* **Retention**: 30+ days
+* **Location**: Internal storage (not external)
+* **Testing**: Test restore procedures regularly
+
+### Backup Checklist
+
+1. Database backups (automated)
+2. Configuration backups (values.yaml files, versioned)
+3. TLS certificates (secure storage)
+4. Custom CA certificate (backup copy)
+5. Helm chart versions (archived)
+
+### Recovery Procedure
+
+Documented recovery procedure should cover:
+
+1. Database restoration steps
+2. Helm redeployment steps
+3. Data validation after restore
+4. User communication plan
+
+## Monitoring & Logging
+
+### Internal Monitoring
+
+Set up internal monitoring for:
+
+* CPU and memory usage
+* Pod restart count
+* Database connection count
+* Ingress error rates
+* Certificate expiration dates
+
+### Log Aggregation
+
+Forward logs to your internal log aggregation system:
+
+* Application logs from ZenML pods
+* Ingress logs
+* Database logs
+* Kubernetes events
+
+### Alerting
+
+Create alerts for:
+
+* Pod failures
+* High resource usage
+* Database connection errors
+* Certificate near expiration
+* Disk space warnings
+
+## Maintenance
+
+### Regular Tasks
+
+* Monitor disk space (databases, artifact storage)
+* Review and manage user access
+* Update internal CA certificate before expiration
+* Test backup and recovery procedures
+* Monitor pod logs for warnings
+
+### Periodic Updates
+
+When updating to a new ZenML version:
+
+1. Pull new images on internet-connected machine
+2. Push to internal registry
+3. Create new offline bundle with updated Helm charts
+4. Transfer bundle to air-gapped environment
+5. Update Helm charts in air-gapped environment
+6. Update image tags in values.yaml
+7. Perform helm upgrade on control plane
+8. Perform helm upgrade on workspace servers
+9. Verify health after upgrade
+10. Update client images in your custom ZenML container
+
+## Troubleshooting
+
+### Pods Won't Start
+
+Check pod logs and events:
+
+```bash
+kubectl -n zenml-pro describe pod zenml-pro-xxxxx
+kubectl -n zenml-pro logs zenml-pro-xxxxx
+```
+
+Common issues:
+
+* Image pull failures (check registry access)
+* Database connectivity (verify connection string)
+* Certificate issues (verify CA is trusted)
+
+### Database Connection Failed
+
+```bash
+# Test from pod
+kubectl -n zenml-pro exec -it zenml-pro-xxxxx -- \
+  mysql -h mysql.internal.mycompany.com -u zenml_pro_user -p zenml_pro
+```
+
+### Can't Access via HTTPS
+
+1. Verify certificate validity
+2. Verify DNS resolution
+3. Check Ingress status
+4. Verify CA certificate is installed on client
+
+### Image Pull Errors
+
+1. Verify images are in internal registry
+2. Check registry credentials in secret
+3. Verify imagePullSecrets configured correctly
+
+## Day 2 Operations
+
+For information on upgrading ZenML Pro components, see the [Upgrades & Updates](https://docs.zenml.io/pro/manage/upgrades-updates) guide.
+
+## Related Resources
+
+* [Self-hosted Deployment Overview](https://docs.zenml.io/pro/deployments/scenarios/self-hosted-deployment)
+* [Self-hosted Deployment Guide](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/self-hosted.md) - Comprehensive deployment reference
+* [Kubernetes Documentation](https://kubernetes.io/docs/)
+* [MySQL Documentation](https://dev.mysql.com/doc/)
+* [Helm Documentation](https://helm.sh/docs/)
+
+## Support
+
+For air-gapped deployments, contact ZenML Support:
+
+* Email: <cloud@zenml.io>
+* Provide: Your offline bundle, deployment status, and any error logs
+
+Request from ZenML Support:
+
+* Pre-deployment architecture consultation
+* Offline support packages
+* Update bundles and release notes
+* Security documentation (SBOM, vulnerability reports)
+
+
+# Configuration Details
+
+Reference documentation for configuring ZenML Pro components.
+
+This section provides reference documentation for configuring each ZenML Pro component. Use these guides to understand all available configuration options, environment variables, permissions, and network requirements.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Control Plane</strong></td><td>Authentication, RBAC, identity provider integration, network requirements, and resource recommendations.</td><td><a href="configuration-details/config-control-plane">config-control-plane</a></td></tr><tr><td><strong>Workspace Server</strong></td><td>Database configuration, network requirements, workload manager setup for running pipelines from UI, high availability, and resource recommendations.</td><td><a href="configuration-details/config-workspace-server">config-workspace-server</a></td></tr></tbody></table>
+
+## When to Use These Guides
+
+* **During initial deployment**: Configure components according to your infrastructure
+* **Post-deployment tuning**: Adjust settings based on usage patterns
+* **Troubleshooting**: Verify configuration when issues arise
+* **Capacity planning**: Understand resource requirements for scaling
+
+## Related Documentation
+
+* [System Architecture](https://docs.zenml.io/pro/system-architecture) - Understand how components interact
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios) - Choose the right deployment option
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates) - How to upgrade components
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Control Plane
+
+Configuration reference for the ZenML Control Plane.
+
+This page provides the configuration reference for the ZenML Control Plane. For an overview of what the Control Plane does, see [System Architecture](https://docs.zenml.io/pro/system-architecture#control-plane).
+
+{% hint style="info" %}
+This configuration is only relevant for **Self-hosted** deployments. In SaaS and Hybrid deployments, the Control Plane is fully managed by ZenML.
+{% endhint %}
+
+## Permissions
+
+When running your own Control Plane, you need database permissions (full CRUD on a dedicated control plane database, separate from workspace databases) and OAuth2/OIDC client credentials for identity provider integration.
+
+## Network Requirements
+
+The Control Plane must accept connections from and reach the following:
+
+| Direction   | Source/Destination | Protocol | Purpose                            |
+| ----------- | ------------------ | -------- | ---------------------------------- |
+| **Ingress** | User browsers      | HTTPS    | Dashboard login, UI access         |
+| **Ingress** | ZenML SDK clients  | HTTPS    | Authentication, token exchange     |
+| **Ingress** | ZenML Workspaces   | HTTPS    | Workspace registration, heartbeats |
+| **Ingress** | Identity providers | HTTPS    | SSO callbacks                      |
+| **Egress**  | Identity providers | HTTPS    | SSO authentication flows           |
+| **Egress**  | Database           | TCP      | Persistent storage                 |
+
+## Security
+
+The Control Plane handles sensitive authentication data but never accesses your ML data, artifacts, or pipeline code:
+
+| Data Type             | Sensitivity | Storage                |
+| --------------------- | ----------- | ---------------------- |
+| User credentials      | High        | Managed through IDP    |
+| API tokens            | High        | Encrypted at rest      |
+| Organization settings | Medium      | Control Plane database |
+| Audit logs            | Medium      | Control Plane database |
+| Workspace metadata    | Low         | Control Plane database |
+
+## Related Documentation
+
+* [System Architecture](https://docs.zenml.io/pro/system-architecture) - How components interact
+* [Workspace Server Configuration](https://docs.zenml.io/pro/manage/configuration-details/config-workspace-server) - Configure the Workspace Server
+* [Upgrades - Control Plane](https://docs.zenml.io/pro/manage/upgrades-updates/upgrades-control-plane) - How to upgrade the Control Plane
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Workspace Server
+
+Configuration reference for the ZenML Workspace Server.
+
+This page provides the configuration reference for the ZenML Workspace Server, including the workload manager that enables running pipelines from the UI. For an overview of what the Workspace Server does, see [System Architecture](https://docs.zenml.io/pro/system-architecture#workspace-server).
+
+{% hint style="info" %}
+This configuration is relevant for **Hybrid** and **Self-hosted** deployments. In SaaS deployments, the Workspace Server is fully managed by ZenML.
+{% endhint %}
+
+## Permissions
+
+When running your own Workspace Server, you need full CRUD permissions on a dedicated database (MySQL only, PostgreSQL not supported for workspace servers).
+
+## Network Requirements
+
+| Direction   | Source/Destination      | Protocol | Purpose                                       |
+| ----------- | ----------------------- | -------- | --------------------------------------------- |
+| **Ingress** | ZenML SDK clients       | HTTPS    | API requests from developers and CI/CD        |
+| **Ingress** | ZenML Pro Dashboard     | HTTPS    | UI data requests                              |
+| **Ingress** | Orchestrator pods/tasks | HTTPS    | Pipeline status updates, metadata logging     |
+| **Egress**  | Database                | TCP      | MySQL persistent storage                      |
+| **Egress**  | Control Plane           | HTTPS    | Authentication                                |
+| **Egress**  | Secrets backend         | HTTPS    | AWS Secrets Manager, GCP Secret Manager, etc. |
+| **Egress**  | Artifact Store          | HTTPS    | Artifact visualizations                       |
+| **Egress**  | Kubernetes API          | HTTPS    | Workload manager pod creation (port 6443)     |
+
+## Workload Manager
+
+The Workspace Server includes a workload manager that enables running pipelines directly from the ZenML Pro UI. **This requires access to a Kubernetes cluster where ad-hoc runner pods can be created.**
+
+{% hint style="warning" %}
+Snapshots are only available from ZenML workspace server version 0.90.0 onwards.
+{% endhint %}
+
+### Requirements
+
+* Kubernetes cluster (1.24+) accessible from the workspace server
+* Dedicated namespace for runner pods
+* Service account with RBAC permissions to create/manage pods
+
+### Supported Implementations
+
+| Implementation                 | Platform                                     | Use Case                                              |
+| ------------------------------ | -------------------------------------------- | ----------------------------------------------------- |
+| `KubernetesWorkloadManager`    | Any Kubernetes (EKS, GKE, AKS, self-managed) | Standard setup, fast minimalistic configuration       |
+| `AWSKubernetesWorkloadManager` | EKS                                          | AWS-native with ECR image building and S3 log storage |
+| `GCPKubernetesWorkloadManager` | GKE                                          | GCP-native with GCR support (GCS log storage planned) |
+
+### Environment Variables Reference
+
+**Required for all implementations:**
+
+| Variable                                              | Required | Description                                             |
+| ----------------------------------------------------- | -------- | ------------------------------------------------------- |
+| `ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE` | Yes      | Implementation class (see values below)                 |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE`         | Yes      | Kubernetes namespace for runner jobs (must exist)       |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT`   | Yes      | Kubernetes service account for runner jobs (must exist) |
+
+**Implementation source values:**
+
+* `zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager`
+* `zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager`
+* `zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager`
+
+**Runner image configuration:**
+
+| Variable                                               | Required    | Description                                                                                         |
+| ------------------------------------------------------ | ----------- | --------------------------------------------------------------------------------------------------- |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE` | No          | Whether to build runner images (default: `false`)                                                   |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY`    | Conditional | Registry for runner images (required if building images)                                            |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_RUNNER_IMAGE`       | No          | Pre-built runner image (used if not building). Must have all requirements to instantiate the stack. |
+
+**Optional configuration:**
+
+| Variable                                                       | Description                                        |
+| -------------------------------------------------------------- | -------------------------------------------------- |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS`       | Store logs externally (default: `false`, AWS only) |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES`              | Pod resources in JSON format                       |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_TTL_SECONDS_AFTER_FINISHED` | Cleanup time for finished jobs (default: 2 days)   |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR`              | Node selector in JSON format                       |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS`                | Tolerations in JSON format                         |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_JOB_BACKOFF_LIMIT`          | Backoff limit for builder/runner jobs              |
+| `ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_FAILURE_POLICY`         | Pod failure policy for builder/runner jobs         |
+| `ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS`                    | Max concurrent snapshot runs per pod (default: 2)  |
+
+**AWS-specific variables:**
+
+| Variable                                       | Required    | Description                                            |
+| ---------------------------------------------- | ----------- | ------------------------------------------------------ |
+| `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET` | Conditional | S3 bucket for logs (required if external logs enabled) |
+| `ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION` | Conditional | AWS region (required if building images)               |
+
+### Configuration Examples
+
+**Minimal Kubernetes Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.kubernetes_workload_manager.KubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+```
+
+**Full AWS Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.aws_kubernetes_workload_manager.AWSKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: 339712793861.dkr.ecr.eu-central-1.amazonaws.com
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_ENABLE_EXTERNAL_LOGS: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_BUCKET: s3://my-bucket/run-template-logs
+        ZENML_AWS_KUBERNETES_WORKLOAD_MANAGER_REGION: eu-central-1
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
+```
+
+**Full GCP Configuration:**
+
+```yaml
+zenml:
+    environment:
+        ZENML_SERVER_WORKLOAD_MANAGER_IMPLEMENTATION_SOURCE: zenml_cloud_plugins.gcp_kubernetes_workload_manager.GCPKubernetesWorkloadManager
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NAMESPACE: zenml-workspace-namespace
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_SERVICE_ACCOUNT: zenml-workspace-service-account
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_BUILD_RUNNER_IMAGE: "true"
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_DOCKER_REGISTRY: europe-west3-docker.pkg.dev/zenml-project/zenml-snapshots/zenml
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_POD_RESOURCES: '{"requests": {"cpu": "100m", "memory": "400Mi"}, "limits": {"memory": "700Mi"}}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_NODE_SELECTOR: '{"node-pool": "zenml-pool"}'
+        ZENML_KUBERNETES_WORKLOAD_MANAGER_TOLERATIONS: '[{"key": "node-pool", "operator": "Equal", "value": "zenml-pool", "effect": "NoSchedule"}]'
+        ZENML_SERVER_MAX_CONCURRENT_TEMPLATE_RUNS: 10
+```
+
+### Kubernetes RBAC
+
+The service account needs these permissions in the workload manager namespace:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: zenml-workload-manager
+  namespace: zenml-workspace-namespace
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create", "get", "list", "delete", "patch"]
+- apiGroups: [""]
+  resources: ["pods/logs"]
+  verbs: ["get"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get"]
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  verbs: ["create", "get", "delete"]
+```
+
+## High Availability
+
+For production deployments, consider multiple replicas (2+) behind a load balancer, database replication with read replicas, liveness/readiness probes, and auto-scaling based on CPU/memory utilization.
+
+## Related Documentation
+
+* [System Architecture](https://docs.zenml.io/pro/system-architecture) - How components interact
+* [Control Plane Configuration](https://docs.zenml.io/pro/manage/configuration-details/config-control-plane) - Configure the Control Plane
+* [Upgrades - Workspace Server](https://docs.zenml.io/pro/manage/upgrades-updates/upgrades-workspace-server) - How to upgrade the Workspace Server
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Upgrades and Updates
+
+How to upgrade ZenML Pro components.
+
+This section covers upgrading ZenML Pro components for all deployment types. Each component has its own upgrade procedures and considerations.
+
+{% hint style="warning" %}
+Always upgrade the Control Plane first, then upgrade Workspace Servers. This ensures compatibility and prevents potential issues.
+{% endhint %}
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Control Plane</strong></td><td>Upgrade procedures for the Control Plane across SaaS, Hybrid, and Self-hosted deployments.</td><td><a href="upgrades-updates/upgrades-control-plane">upgrades-control-plane</a></td></tr><tr><td><strong>Workspace Server</strong></td><td>Upgrade procedures for Workspace Servers across all deployment scenarios (includes Workload Manager updates).</td><td><a href="upgrades-updates/upgrades-workspace-server">upgrades-workspace-server</a></td></tr></tbody></table>
+
+## Before You Upgrade
+
+### Check Release Notes
+
+* For ZenML Pro Control Plane: Check available versions in the [ZenML Pro ArtifactHub repository](https://artifacthub.io/packages/helm/zenml-pro/zenml-pro)
+* For ZenML Pro Workspace Servers: Check available versions in the [ZenML OSS ArtifactHub repository](https://artifacthub.io/packages/helm/zenml/zenml) and review the [ZenML GitHub releases page](https://github.com/zenml-io/zenml/releases) for release notes and breaking changes
+
+### Backup Checklist
+
+Before any upgrade:
+
+1. **Database backup** - Export your database
+2. **Values.yaml files** - Save copies of your Helm values
+3. **TLS certificates** - Ensure certificates are backed up
+
+### Database Migrations
+
+Some updates may require database migrations:
+
+1. **Review migration related changes** in release notes
+2. **Monitor logs** for any migration-related errors
+3. **Verify data integrity** after upgrade
+4. **Test key features** (workspace access, pipeline runs, etc.)
+
+## Post-Upgrade Verification
+
+After upgrading any component:
+
+1. **Health Checks** - Verify all pods are running
+2. **Test Connectivity** - Confirm SDK can connect
+3. **Validate Functionality** - Test pipeline execution
+4. **Review Logs** - Check for errors or warnings
+
+## Related Documentation
+
+* [Configuration Details](https://docs.zenml.io/pro/manage/configuration-details) - Component configuration reference
+* [System Architecture](https://docs.zenml.io/pro/system-architecture) - Understand component interactions
+* [Scenarios](https://docs.zenml.io/pro/deployments/scenarios) - Deployment scenarios and guides
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Control Plane
+
+How to upgrade the ZenML Control Plane.
+
+This page covers upgrade procedures for the ZenML Control Plane across different deployment scenarios.
+
+{% hint style="warning" %}
+Always upgrade the Control Plane first, before upgrading Workspace Servers. This ensures compatibility and prevents potential issues.
+{% endhint %}
+
+## SaaS Deployments & Hybrid Deployments
+
+The ZenML SaaS Control Plane is periodically upgraded by the ZenML team. When an upgrade is planned, any changes to the minimum compatible workspace server version are communicated to all affected users ahead of time. This gives organizations ample time to perform required workspace server upgrades and maintain a compatible environment across their infrastructure.
+
+**No action required** - ZenML handles all Control Plane upgrades for SaaS or Hybrid deployments.
+
+## Self-hosted Deployments
+
+In self-hosted deployments, you manage the Control Plane yourself.
+
+**Tip:** Always review the [release notes](https://docs.zenml.io/changelog/pro-control-plane) before upgrading. For any issues or questions, contact ZenML Support.
+
+### Preparing updated software bundle (only in case of Air-gapped environments)
+
+For air-gapped environments:
+
+1. Request offline bundle from ZenML Support containing:
+   * Updated container images
+   * Updated Helm charts
+   * Release notes and migration guide
+   * Vulnerability assessment (if applicable)
+2. If using a private registry, copy the new container images to your private registry
+3. Transfer bundle to your air-gapped environment using approved methods
+4. Extract and load new images, tag and push to your internal registry
+
+### Upgrade Procedure
+
+To upgrade the Control Plane in a self-hosted deployment:
+
+1. **Update Helm Values:**\
+   Change the Control Plane version in your `values.yaml` file to reference the new image tag.
+2. **Apply the Upgrade:**
+
+   **Option A - In-place upgrade with existing values** (if no config changes needed):
+
+   ```bash
+   helm upgrade zenml-pro ./zenml-pro-<new-version>.tgz \
+     --namespace <your-control-plane-namespace> \
+     --reuse-values
+   ```
+
+   **Option B - Retrieve, modify and reapply values** (if config changes needed):
+
+   ```bash
+   # Get the current values
+   helm --namespace <your-control-plane-namespace> get values zenml-pro > current-values.yaml
+
+   # Edit current-values.yaml if needed, then upgrade
+   helm upgrade zenml-pro ./zenml-pro-<new-version>.tgz \
+     --namespace <your-control-plane-namespace> \
+     --values current-values.yaml
+   ```
+3. **Monitor the Upgrade:**\
+   Watch the logs and pod statuses to verify a healthy rollout:
+
+   ```bash
+   kubectl -n <your-control-plane-namespace> get pods
+   kubectl -n <your-control-plane-namespace> logs <control-plane-pod>
+   ```
+4. **Verify the Upgrade:**
+   * Check pod status
+   * Review logs
+   * Test connectivity
+   * Access the dashboard
+
+## Rollback Procedures
+
+If the upgrade fails or causes issues:
+
+1. **Helm rollback:**
+
+   ```bash
+   helm rollback zenml-pro <previous-revision> --namespace <your-control-plane-namespace>
+   ```
+2. **Verify rollback:**
+
+   ```bash
+   kubectl -n <your-control-plane-namespace> get pods
+   ```
+3. **Review logs** to understand what went wrong before attempting the upgrade again.
+
+## Related Documentation
+
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates) - Overview of upgrade procedures
+* [Upgrading Workspace Server](https://docs.zenml.io/pro/manage/upgrades-updates/upgrades-workspace-server) - Workspace Server upgrade procedures
+* [Control Plane Configuration](https://docs.zenml.io/pro/manage/configuration-details/config-control-plane) - Configuration reference
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Workspace Server
+
+How to upgrade ZenML Workspace Servers.
+
+This page covers upgrade procedures for ZenML Workspace Servers across different deployment scenarios.
+
+{% hint style="warning" %}
+Always upgrade the Control Plane first, then upgrade Workspace Servers. This ensures compatibility and prevents potential issues.
+{% endhint %}
+
+## SaaS Deployments
+
+For SaaS deployments, workspace servers can be upgraded in a self-service manner directly through the ZenML frontend.
+
+## Hybrid or self-hosted Deployments
+
+In hybrid or self-hosted deployments, you manage the Control Plane yourself.
+
+**Tip:** Always review the [release notes](https://docs.zenml.io/changelog/server-sdk) for workspace server updates before upgrading. For any issues or questions, contact ZenML Support.
+
+**Upgrade Process:**
+
+1. Navigate to workspace settings in the ZenML Pro UI
+2. Initiate the workspace upgrade
+3. The system automatically performs a database backup to ensure rollback is possible
+4. Monitor the upgrade progress in the UI
+
+This provides a safe and reliable process to keep your workspaces up to date with minimal operational overhead.
+
+## Hybrid Deployments
+
+To upgrade workspace servers in a hybrid deployment:
+
+1. **Update Helm Values:**\
+   Change the Workspace Server version in your `values.yaml` file to reference the new image tag (the version you want to upgrade to).
+2. **Apply the Upgrade:**\
+   Re-apply the Helm chart to perform the upgrade:
+
+   ```bash
+   helm upgrade <your-workspace-release-name> zenml/zenml \
+     --namespace <your-workspace-namespace> \
+     --values values.yaml
+   ```
+3. **Automatic Backup:**\
+   As part of the upgrade process, the system takes a database backup automatically before proceeding. This ensures you can safely roll back if anything goes wrong.
+4. **Monitor the Upgrade:**\
+   Watch the logs and pod statuses to verify a healthy rollout:
+
+   ```bash
+   kubectl -n <your-workspace-namespace> get pods
+   kubectl -n <your-workspace-namespace> logs <workspace-server-pod>
+   ```
+5. **Rollback on Failure:**\
+   If the upgrade fails for any reason, the system will automatically roll back to the previous workspace server version using the backup. No manual intervention is required.
+6. **Zero Downtime:**\
+   Workspace upgrades are orchestrated to be highly available—users should not experience downtime during the upgrade process.
+
+{% hint style="info" %}
+**Workload Manager Updates:** When upgrading, check the [release notes](https://docs.zenml.io/changelog/server-sdk) for any changes to workload manager configuration. If you have configured a workload manager, you may need to update environment variables in your Helm values. See [Workspace Server Configuration](https://docs.zenml.io/pro/configuration-details/config-workspace-server#workload-manager) for the full configuration reference.
+{% endhint %}
+
+## Rollback Procedures
+
+If the upgrade fails or causes issues:
+
+1. **Helm rollback:**
+
+   ```bash
+   helm rollback zenml <previous-revision> --namespace zenml-workspace
+   ```
+2. **Restore database** if needed from the backup taken before the upgrade.
+3. **Verify rollback:**
+
+   ```bash
+   kubectl -n zenml-workspace get pods
+   ```
+
+## Related Documentation
+
+* [Upgrades and Updates](https://docs.zenml.io/pro/manage/upgrades-updates) - Overview of upgrade procedures
+* [Upgrading Control Plane](https://docs.zenml.io/pro/manage/upgrades-updates/upgrades-control-plane) - Control Plane upgrade procedures
+* [Workspace Server Configuration](https://docs.zenml.io/pro/manage/configuration-details/config-workspace-server) - Configuration reference
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
@@ -27488,17 +29894,11 @@ More details about each of these concepts are available in their linked pages be
 
 Manage organizations in ZenML
 
-ZenML Pro arranges various aspects of your work experience around the concept\
-of an **Organization**. This is the top-most level structure within the ZenML Cloud environment.\
-Generally, an organization contains a group of users and one or more [workspaces](https://docs.zenml.io/pro/core-concepts/workspaces).
+ZenML Pro arranges various aspects of your work experience around the concept of an **Organization**. This is the top-most level structure within the ZenML Cloud environment. Generally, an organization contains a group of users and one or more [workspaces](https://docs.zenml.io/pro/core-concepts/workspaces).
 
 ## Inviting Team Members to Your Organization
 
-Inviting users to your organization to work on the organization's workspaces is\
-easy. Simply click `Add Member` in the Organization settings, and give them an\
-initial Role. The user will be sent an invitation email. If a user is part of an\
-organization, they can utilize their login on all workspaces they have authority to\
-access.
+Inviting users to your organization to work on the organization's workspaces is easy. Simply click `Add Member` in the Organization settings, and give them an initial Role. The user will be sent an invitation email. If a user is part of an organization, they can utilize their login on all workspaces they have authority to access.
 
 ![Image showing invite flow](https://884225131-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FoT4CiM88wQeSLTcwLU2J%2Fuploads%2Fgit-blob-13a081483e5b51dfa6295b1d8886cbf789a6583b%2Fadd_org_members.png?alt=media)
 
@@ -27526,8 +29926,6 @@ Learn how to use workspaces in ZenML Pro.
 {% endhint %}
 
 Workspaces are individual, isolated deployments of the ZenML server. Each workspace has its own set of users, roles, projects, and resources. Essentially, everything you do in ZenML Pro revolves around a workspace: all of your projects, pipelines, stacks, runs, connectors and so on are scoped to a workspace. This includes both traditional ML workflows and AI agent development projects.
-
-![Image showing the workspace page](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/.gitbook/assets/Workspace%20-%20Home.png)
 
 The ZenML server that you get through a workspace is a supercharged version of the open-source ZenML server. This means that you get all the features of the open-source version, plus some extra Pro features.
 
@@ -27575,8 +29973,6 @@ A workspace is a crucial part of your Organization and serves as a container for
 {% stepper %}
 {% step %}
 **Go to your organization page**
-
-![Image showing the create workspace page](https://github.com/zenml-io/zenml/blob/main/docs/book/getting-started/zenml-pro/.gitbook/assets/Organization%20-%20Home.png)
 {% endstep %}
 
 {% step %}
@@ -27685,7 +30081,7 @@ Some Pro-only features that you can leverage in your workspace are as follows:
 * [Model Control Plane](https://docs.zenml.io/how-to/model-management-metrics/model-control-plane/register-a-model)
 * [Artifact Control Plane](https://docs.zenml.io/how-to/data-artifact-management/handle-data-artifacts)
 * [Create snapshots out of your pipeline runs](https://docs.zenml.io/concepts/snapshots#using-the-dashboard)
-* [Run snapshots from the Dashboard](https://docs.zenml.io/concepts/snapshots#using-the-dashboard-1)
+* [Run snapshots from the Dashboard](https://docs.zenml.io/concepts/snapshots#running-the-dashboard)
 
 and [more](https://zenml.io/pro)!
 
@@ -27968,6 +30364,164 @@ For example, if you assign the "Editor" role to a team in a specific workspace, 
 4. **Document Team Purposes**: Maintain clear documentation about each team's purpose and associated projects or workspaces.
 
 By leveraging Teams in ZenML Pro, you can streamline user management, simplify access control, and better organize your MLOps workflows across your organization and workspaces.
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Snapshots
+
+Trigger pipelines from the dashboard, SDK, CLI, or REST API.
+
+A **Pipeline Snapshot** is an immutable snapshot of your pipeline that includes the pipeline DAG, code, configuration, and container images. Snapshots enable you to trigger pipeline runs without direct access to the codebase—from the ZenML Pro dashboard, Python SDK, CLI, or REST API.
+
+{% hint style="success" %}
+Running snapshots is a ZenML Pro feature. For comprehensive documentation including advanced usage patterns, see the [main Snapshots documentation](https://github.com/zenml-io/zenml/blob/main/docs/book/how-to/snapshots/snapshots.md).
+{% endhint %}
+
+## Why Use Snapshots?
+
+Snapshots solve common production challenges:
+
+* **Data Scientists** can experiment with different parameters without modifying code
+* **MLOps Engineers** can schedule retraining or integrate with CI/CD systems
+* **Stakeholders** can trigger model training through the dashboard
+* **External Systems** can invoke pipelines via REST API calls
+
+## Requirements
+
+{% hint style="warning" %}
+Snapshots require a **remote stack** with at least:
+
+* Remote orchestrator
+* Remote artifact store
+* Container registry
+
+Local stacks cannot run snapshots.
+{% endhint %}
+
+{% hint style="info" %}
+**Platform Engineers:** For snapshots to work in Hybrid or Self-hosted deployments, you must configure the workload manager on your Workspace Server. See [Workspace Server Configuration - Workload Manager](https://docs.zenml.io/pro/manage/configuration-details/config-workspace-server#workload-manager) for the required environment variables and Kubernetes RBAC setup.
+{% endhint %}
+
+## Creating Snapshots
+
+### From the CLI
+
+```bash
+zenml pipeline snapshot create <PIPELINE-SOURCE-PATH> --name=<SNAPSHOT-NAME>
+```
+
+You can also specify a configuration file and stack:
+
+```bash
+zenml pipeline snapshot create <PIPELINE-SOURCE-PATH> \
+    --name=<SNAPSHOT-NAME> \
+    --config=<PATH-TO-CONFIG-YAML> \
+    --stack=<STACK-ID-OR-NAME>
+```
+
+### From Python SDK
+
+```python
+from zenml import pipeline
+
+@pipeline
+def my_pipeline():
+    ...
+
+snapshot = my_pipeline.create_snapshot(name="production-training")
+```
+
+### From the Dashboard
+
+1. Navigate to a pipeline run
+2. Click `...` in the top right corner
+3. Select `+ New Snapshot`
+4. Enter a name and click `Create`
+
+## Running Snapshots
+
+### From the CLI
+
+```bash
+zenml pipeline snapshot run <SNAPSHOT-NAME-OR-ID>
+
+# With custom configuration
+zenml pipeline snapshot run <SNAPSHOT-NAME-OR-ID> --config=config.yaml
+```
+
+### From Python SDK
+
+```python
+from zenml.client import Client
+
+# Get the snapshot
+snapshot = Client().get_snapshot("<NAME-OR-ID>")
+
+# Optionally modify configuration
+config = snapshot.config_template
+config.steps["my_step"].parameters["my_param"] = new_value
+
+# Trigger the run
+Client().trigger_pipeline(
+    snapshot_name_or_id=snapshot.id,
+    run_configuration=config,
+)
+```
+
+### From the Dashboard
+
+1. Click `Run a Pipeline` on the Pipelines page, or navigate to a snapshot and click `Run Snapshot`
+2. Modify configuration using the built-in editor or upload a YAML file
+3. Click `Run`
+
+### From REST API
+
+```bash
+curl -X 'POST' \
+  '<YOUR-ZENML-SERVER>/api/v1/pipeline_snapshots/<SNAPSHOT-ID>/runs' \
+  -H 'Authorization: Bearer <TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "run_configuration": {
+      "steps": {
+        "train_model": {
+          "parameters": {"model_type": "rf"}
+        }
+      }
+    }
+  }'
+```
+
+{% hint style="info" %}
+For REST API authentication, use [Personal Access Tokens](https://docs.zenml.io/pro/access-management/personal-access-tokens) or [Service Accounts](https://docs.zenml.io/pro/access-management/service-accounts).
+{% endhint %}
+
+## Deleting Snapshots
+
+```bash
+zenml pipeline snapshot delete <SNAPSHOT-NAME-OR-ID>
+```
+
+Or via Python:
+
+```python
+from zenml.client import Client
+Client().delete_snapshot(name_id_or_prefix="<SNAPSHOT-NAME-OR-ID>")
+```
+
+## Important Notes
+
+{% hint style="warning" %}
+**After upgrading your ZenML server**, you need to recreate your snapshots. Snapshots are tied to specific server versions and may not work correctly after an upgrade.
+{% endhint %}
+
+## Related Documentation
+
+* [Snapshots - Full Documentation](https://github.com/zenml-io/zenml/blob/main/docs/book/how-to/snapshots/snapshots.md) - Complete reference with advanced usage
+* [Trigger Pipelines from External Systems](https://github.com/zenml-io/zenml/blob/main/docs/book/user-guide/tutorial/trigger-pipelines-from-external-systems.md) - Tutorial for CI/CD integration
+* [Workspace Server Configuration](https://docs.zenml.io/pro/manage/configuration-details/config-workspace-server#workload-manager) - Configure the workload manager that powers snapshots
+* [Service Accounts](https://docs.zenml.io/pro/access-management/service-accounts) - Set up API authentication for automated triggers
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
@@ -30008,6 +32562,7 @@ The following configuration options can be set either through the orchestrator c
 * **`privileged`** (default: False): If the container should be run in privileged mode.
 * **`pod_settings`**: Node selectors, labels, affinity, and tolerations, secrets, environment variables, image pull secrets, the scheduler name and additional arguments to apply to the Kubernetes Pods running the steps of your pipeline. These can be either specified using the Kubernetes model objects or as dictionaries.
 * **`orchestrator_pod_settings`**: Node selectors, labels, affinity, tolerations, secrets, environment variables and image pull secrets to apply to the Kubernetes Pod that is responsible for orchestrating the pipeline and starting the other Pods. These can be either specified using the Kubernetes model objects or as dictionaries.
+  * If you're specifying `init_containers` as part of the `additional_pod_spec_args` of the pod settings, you can use an `"{{ image }}"` placeholder string. This placeholder will be replaced by the image that is also used to run the orchestration or step container.
 * **`pod_name_prefix`**: Prefix for the pod names. A random suffix and the step name will be appended to create unique pod names.
 * **`pod_startup_timeout`** (default: 600): The maximum time to wait for a pending step pod to start (in seconds). The orchestrator will delete the pending pod after this time has elapsed and raise an error. If configured, the `pod_failure_retry_delay` and `pod_failure_backoff` settings will also be used to calculate the delay between retries.
 * **`pod_failure_max_retries`** (default: 3): The maximum number of retries to create a step pod that fails to start.
@@ -30272,19 +32827,43 @@ To view your scheduled jobs and their status:
 kubectl get cronjobs -n zenml
 ```
 
-To update a schedule, use the following command:
+To update a schedule's cron expression:
 
-````bash
-# This deletes both the schedule metadata in ZenML as well as the underlying CronJob
+```bash
 zenml pipeline schedule update <SCHEDULE_NAME_OR_ID> --cron-expression='0 4 * * *'
+```
+
+#### Pausing and resuming a scheduled pipeline
+
+You can temporarily pause a scheduled pipeline without deleting it using the deactivate command. This sets the CronJob's `suspend` field to `true`, preventing any new executions while preserving the CronJob resource:
+
+```bash
+# Pause the schedule (sets suspend=true on the CronJob)
+zenml pipeline schedule deactivate <SCHEDULE_NAME_OR_ID>
+
+# Resume the schedule (sets suspend=false on the CronJob)
+zenml pipeline schedule activate <SCHEDULE_NAME_OR_ID>
+```
+
+You can verify the suspend status using kubectl:
+
+```shell
+kubectl get cronjob <cronjob-name> -n zenml -o jsonpath='{.spec.suspend}'
+```
 
 #### Deleting a scheduled pipeline
 
-When you no longer need a scheduled pipeline, you can delete the schedule as follows:
+When you no longer need a scheduled pipeline, you can delete the schedule. By default, deletion archives the schedule (soft delete), which preserves references in historical pipeline runs:
+
 ```bash
-# This deletes both the schedule metadata in ZenML as well as the underlying CronJob
+# Archive the schedule (soft delete - default)
+# This removes the CronJob from Kubernetes and archives the schedule in ZenML
 zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID>
-````
+
+# Permanently delete the schedule (hard delete)
+# This removes the CronJob and permanently deletes all schedule references
+zenml pipeline schedule delete <SCHEDULE_NAME_OR_ID> --hard
+```
 
 #### Troubleshooting
 
@@ -30426,10 +33005,10 @@ This use-case assumes you have already configured a GCP service account with the
 * permissions to run a Vertex AI pipeline, (e.g. [the `Vertex AI Service Agent` role](https://cloud.google.com/vertex-ai/docs/general/access-control#aiplatform.serviceAgent)).
 * the [Storage Object Creator Role](https://cloud.google.com/iam/docs/understanding-roles#storage.objectCreator) to be able to write the pipeline JSON file to the artifact store directly.
 
-It also assumes you have already created a service account key for this service account and downloaded it to your local machine (e.g. in a `connectors-vertex-ai-workload.json` file). This is not recommended if you are conscious about security. The principle of least privilege is not applied here and the environment in which the pipeline steps are running has many permissions that it doesn't need.
+It also assumes you have already created a service account key for this service account and downloaded it to your local machine (e.g. in a `connectors-vertex-ai.json` file). This is not recommended if you are conscious about security. The principle of least privilege is not applied here and the environment in which the pipeline steps are running has many permissions that it doesn't need.
 
 ```shell
-zenml service-connector register <CONNECTOR_NAME> --type gcp --auth-method=service-account --project_id=<PROJECT_ID> --service_account_json=@connectors-vertex-ai-workload.json --resource-type gcp-generic
+zenml service-connector register <CONNECTOR_NAME> --type gcp --auth-method=service-account --project_id=<PROJECT_ID> --service_account_json=@connectors-vertex-ai.json --resource-type gcp-generic
 
 zenml orchestrator register <ORCHESTRATOR_NAME> \
     --flavor=vertex \
@@ -30480,12 +33059,12 @@ For even more granular control, you can create custom roles instead of using the
 This provides the absolute minimum permissions required for Vertex AI pipeline operations.
 {% endhint %}
 
-A key is also needed for the "client" service account. You can create a key for this service account and download it to your local machine (e.g. in a `connectors-vertex-ai-workload.json` file).
+A key is also needed for the "client" service account. You can create a key for this service account and download it to your local machine (e.g. in a `connectors-vertex-ai-client.json` file).
 
 With all the service accounts and the key ready, we can register [the GCP Service Connector](https://docs.zenml.io/how-to/infrastructure-deployment/auth-management/gcp-service-connector) and Vertex AI orchestrator as follows:
 
 ```shell
-zenml service-connector register <CONNECTOR_NAME> --type gcp --auth-method=service-account --project_id=<PROJECT_ID> --service_account_json=@connectors-vertex-ai-workload.json --resource-type gcp-generic
+zenml service-connector register <CONNECTOR_NAME> --type gcp --auth-method=service-account --project_id=<PROJECT_ID> --service_account_json=@connectors-vertex-ai-client.json --resource-type gcp-generic
 
 zenml orchestrator register <ORCHESTRATOR_NAME> \
     --flavor=vertex \
@@ -31108,7 +33687,7 @@ Create a custom policy for the execution role that SageMaker will assume:
 
 ### Client Permissions (for pipeline submission)
 
-Create a custom policy for the client/user submitting pipelines:
+Create a custom policy for the client/user submitting pipelines and training/processing jobs:
 
 ```json
 {
@@ -31126,6 +33705,12 @@ Create a custom policy for the client/user submitting pipelines:
         "sagemaker:ListPipelineExecutionSteps",
         "sagemaker:UpdatePipeline",
         "sagemaker:DeletePipeline"
+        "sagemaker:CreateProcessingJob",
+        "sagemaker:DescribeProcessingJob",
+        "sagemaker:StopProcessingJob",
+        "sagemaker:CreateTrainingJob",
+        "sagemaker:DescribeTrainingJob",
+        "sagemaker:StopTrainingJob"        
       ],
       "Resource": "*"
     },
@@ -31149,7 +33734,7 @@ Replace `ACCOUNT-ID` and `EXECUTION-ROLE-NAME` with your actual values.
 ZenML will build a Docker image called `<CONTAINER_REGISTRY_URI>/zenml:<PIPELINE_NAME>` which includes your code and use it to run your pipeline steps in Sagemaker. Check out [this page](https://docs.zenml.io/how-to/customize-docker-builds/) if you want to learn more about how ZenML builds these images and how you can customize them.
 {% endhint %}
 
-You can now run any ZenML pipeline using the Sagemaker orchestrator:
+You can now run any ZenML static pipeline or dynamic pipeline using the Sagemaker orchestrator:
 
 ```shell
 python run.py
@@ -31180,6 +33765,8 @@ Once the Studio UI has launched, click on the 'Pipeline' button on the left side
 
 ![Sagemaker Studio Pipelines](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-9098c693229e0877685b1e395196b71270f1bac4%2FsagemakerUI.png?alt=media)
 
+If you are running dynamic pipelines, you can access the training/processing jobs in the SageMaker UI by clicking on the 'Jobs' button on the left side. From there you can view the jobs that have been launched via ZenML. A training job will be created for each dynamic pipeline run and for each step in the dynamic pipeline marked to run as an isolated step.
+
 ### Debugging SageMaker Pipelines
 
 If your SageMaker pipeline encounters an error before the first ZenML step starts, the ZenML run will not appear in the ZenML dashboard. In such cases, use the [SageMaker UI](#sagemaker-ui) to review the error message and logs. Here's how:
@@ -31204,7 +33791,7 @@ Alternatively, for a more detailed view of log messages during SageMaker pipelin
 
 When running your ZenML pipeline with the Sagemaker orchestrator, the configuration set when configuring the orchestrator as a ZenML component will be used by default. However, it is possible to provide additional configuration at the pipeline or step level. This allows you to run whole pipelines or individual steps with alternative configurations. For example, this allows you to run the training process with a heavier, GPU-enabled instance type, while running other steps with lighter instances.
 
-Additional configuration for the Sagemaker orchestrator can be passed via `SagemakerOrchestratorSettings`. Here, it is possible to configure `processor_args`, which is a dictionary of arguments for the Processor. For available arguments, see the [Sagemaker documentation](https://sagemaker.readthedocs.io/en/stable/api/training/processing.html#sagemaker.processing.Processor) . Currently, it is not possible to provide custom configuration for the following attributes:
+Additional configuration for the Sagemaker orchestrator can be passed via `SagemakerOrchestratorSettings`. Here, it is possible to configure `processor_args`, which is a dictionary of arguments for the Processor. For available arguments, see the [Sagemaker documentation](https://sagemaker.readthedocs.io/en/v2/api/training/processing.html#sagemaker.processing.Processor) . Currently, it is not possible to provide custom configuration for the following attributes:
 
 * `image_uri`
 * `instance_count`
@@ -31412,6 +33999,10 @@ This approach allows for more granular tagging, giving you flexibility in how yo
 Note that if you wish to use this orchestrator to run steps on a GPU, you will need to follow [the instructions on this page](https://docs.zenml.io/user-guides/tutorial/distributed-training/) to ensure that it works. It requires adding some extra settings customization and is essential to enable CUDA for the GPU to give its full acceleration.
 
 ### Scheduling Pipelines
+
+{% hint style="warning" %}
+The SageMaker orchestrator does not support scheduling for dynamic pipelines yet.
+{% endhint %}
 
 The SageMaker orchestrator supports running pipelines on a schedule using SageMaker's native scheduling capabilities. You can configure schedules in three ways:
 
@@ -33505,6 +36096,7 @@ Out of the box, ZenML comes with a `local` deployer already part of the default 
 | ---------------------------------------------------------------------------------------- | ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Local](https://docs.zenml.io/stacks/stack-components/deployers/local)                   | `local`       | *built-in*    | This is the default Deployer. It deploys pipelines on your local machine in the form of background processes. Should be used only for running ZenML locally. |
 | [Docker](https://docs.zenml.io/stacks/stack-components/deployers/docker)                 | `docker`      | Built-in      | Deploys pipelines as locally running Docker containers                                                                                                       |
+| [Kubernetes](https://docs.zenml.io/stacks/stack-components/deployers/kubernetes)         | `kubernetes`  | `kubernetes`  | Deploys pipelines to any Kubernetes cluster with full control over resources, networking, and scaling                                                        |
 | [GCP Cloud Run](https://docs.zenml.io/stacks/stack-components/deployers/gcp-cloud-run)   | `gcp`         | `gcp`         | Deploys pipelines to Google Cloud Run for serverless execution                                                                                               |
 | [AWS App Runner](https://docs.zenml.io/stacks/stack-components/deployers/aws-app-runner) | `aws`         | `aws`         | Deploys pipelines to AWS App Runner for serverless execution                                                                                                 |
 | [Hugging Face](https://docs.zenml.io/stacks/stack-components/deployers/huggingface)      | `huggingface` | `huggingface` | Deploys pipelines to Hugging Face Spaces as Docker Spaces                                                                                                    |
@@ -33932,6 +36524,617 @@ settings = {
 def greet_pipeline(name: str = "John"):
     greet(name=name)
 ```
+
+
+# Kubernetes Deployer
+
+Deploying your pipelines to Kubernetes clusters.
+
+[Kubernetes](https://kubernetes.io/) is the industry-standard container orchestration platform for deploying and managing containerized applications at scale. The Kubernetes deployer is a [deployer](https://docs.zenml.io/stacks/stack-components/deployers) flavor included in the ZenML Kubernetes integration that deploys your pipelines to any Kubernetes cluster as production-ready services.
+
+{% hint style="warning" %}
+This component is only meant to be used within the context of a [remote ZenML installation](https://docs.zenml.io/getting-started/deploying-zenml/). Usage with a local ZenML setup may lead to unexpected behavior!
+{% endhint %}
+
+## When to use it
+
+You should use the Kubernetes deployer if:
+
+* you already have a Kubernetes cluster (EKS, GKE, AKS, or self-managed).
+* you need fine-grained control over deployment configuration (resources, networking, security).
+* you want production-grade features like autoscaling, health probes, and high availability.
+* you need to deploy to on-premises infrastructure or air-gapped environments.
+* you want to leverage existing Kubernetes expertise and tooling in your organization.
+* you need to integrate with existing Kubernetes resources (Ingress, NetworkPolicies, ServiceMonitors, etc.).
+
+## Prerequisites
+
+To use the Kubernetes deployer, you need:
+
+* The ZenML `kubernetes` integration installed:
+
+  ```shell
+  zenml integration install kubernetes
+  ```
+* [Docker](https://www.docker.com) installed and running.
+* A [remote artifact store](https://docs.zenml.io/stacks/artifact-stores/) as part of your stack.
+* A [remote container registry](https://docs.zenml.io/stacks/container-registries/) as part of your stack.
+* A running Kubernetes cluster (version 1.21 or higher recommended)
+* [Kubernetes cluster access](#kubernetes-access-and-permissions) either via `kubectl` or a service connector.
+
+### Kubernetes access and permissions
+
+You have two different options to provide cluster access to the Kubernetes deployer:
+
+* use `kubectl` to authenticate locally with your Kubernetes cluster
+* (recommended) configure [a Kubernetes Service Connector](https://docs.zenml.io/how-to/infrastructure-deployment/auth-management/kubernetes-service-connector) and link it to the Kubernetes deployer stack component.
+
+#### Kubernetes Permissions
+
+The Kubernetes deployer needs the following permissions in the target namespace:
+
+* **Deployments**: `create`, `get`, `list`, `watch`, `update`, `delete`
+* **Services**: `create`, `get`, `list`, `watch`, `update`, `delete`
+* **Secrets**: `create`, `get`, `list`, `watch`, `update`, `delete`
+* **Pods**: `get`, `list`, `watch` (for logs and status)
+* **Namespaces**: `create`, `get` (if creating namespaces)
+
+If using additional resources (Ingress, HPA, NetworkPolicy, etc.), you'll also need permissions for those resource types.
+
+#### Configuration use-case: local kubectl with context
+
+This configuration assumes you have configured `kubectl` to authenticate with your cluster (i.e. by running `kubectl config use-context <context-name>`). This is the easiest way to get started:
+
+```shell
+zenml deployer register <DEPLOYER_NAME> \
+    --flavor=kubernetes \
+    --kubernetes_context=<CONTEXT_NAME> \
+    --kubernetes_namespace=zenml-deployments
+```
+
+{% hint style="warning" %}
+This setup is not portable to other machines unless they have the same kubectl context configured. For production and team environments, use a service connector instead.
+{% endhint %}
+
+#### Configuration use-case: Kubernetes Service Connector
+
+This is the recommended approach for production and team environments. It makes credentials portable and manageable:
+
+```shell
+# Register a Kubernetes service connector
+zenml service-connector register <CONNECTOR_NAME> \
+    --type kubernetes \
+    --auth-method=token \
+    --token=<YOUR_TOKEN> \
+    --server=<CLUSTER_URL> \
+    --certificate_authority=<CA_CERT_PATH> \
+    --resource-type kubernetes-cluster
+
+# Register the deployer and link it to the connector
+zenml deployer register <DEPLOYER_NAME> \
+    --flavor=kubernetes \
+    --kubernetes_namespace=zenml-deployments \
+    --connector <CONNECTOR_NAME>
+```
+
+See the [Kubernetes Service Connector documentation](https://docs.zenml.io/how-to/infrastructure-deployment/auth-management/kubernetes-service-connector) for more authentication methods including:
+
+* Service account tokens
+* Kubeconfig files
+* Cloud provider authentication (EKS, GKE, AKS)
+
+#### Configuration use-case: In-cluster deployment
+
+If your ZenML server runs inside the same Kubernetes cluster where you want to deploy pipelines, you can use in-cluster authentication:
+
+```shell
+zenml deployer register <DEPLOYER_NAME> \
+    --flavor=kubernetes \
+    --incluster=True \
+    --kubernetes_namespace=zenml-deployments
+```
+
+This uses the service account token mounted into the pod running ZenML.
+
+### Configuring the stack
+
+With the deployer registered, you can use it in your active stack:
+
+```shell
+# Register and activate a stack with the new deployer
+zenml stack register <STACK_NAME> -D <DEPLOYER_NAME> ... --set
+```
+
+{% hint style="info" %}
+ZenML will build a Docker image called `<CONTAINER_REGISTRY_URI>/zenml:<PIPELINE_NAME>` and use it to deploy your pipeline as a Kubernetes Deployment with a Service. Check out [this page](https://docs.zenml.io/how-to/customize-docker-builds/) if you want to learn more about how ZenML builds these images and how you can customize them.
+{% endhint %}
+
+You can now [deploy any ZenML pipeline](https://docs.zenml.io/concepts/deployment) using the Kubernetes deployer:
+
+```shell
+zenml pipeline deploy --name my_deployment my_module.my_pipeline
+```
+
+## Advanced configuration
+
+The Kubernetes deployer follows a progressive complexity model, allowing you to start simple and add configuration as needed:
+
+### Level 1: Essential settings (80% of use cases)
+
+Most deployments only need these basic settings:
+
+```python
+from zenml import pipeline, step
+from zenml.integrations.kubernetes.flavors.kubernetes_deployer_flavor import (
+    KubernetesDeployerSettings
+)
+from zenml.config import ResourceSettings
+
+@step
+def greet(name: str) -> str:
+    return f"Hello {name}!"
+
+# Basic deployment settings
+settings = {
+    "deployer": KubernetesDeployerSettings(
+        namespace="my-namespace",
+        service_type="LoadBalancer",  # or "NodePort", "ClusterIP"
+        service_port=8000,
+    ),
+    "resources": ResourceSettings(
+        cpu_count=1,
+        memory="2GB",
+        min_replicas=1,
+        max_replicas=3,
+    )
+}
+
+@pipeline(settings=settings)
+def greet_pipeline(name: str = "World"):
+    greet(name=name)
+```
+
+### Level 2: Production-ready configuration
+
+For production deployments, add health probes, labels, and resource limits:
+
+```python
+settings = {
+    "deployer": KubernetesDeployerSettings(
+        namespace="production",
+        service_type="ClusterIP",  # Use with Ingress
+        service_port=8000,
+
+        
+        # Labels for organization
+        labels={
+            "environment": "production",
+            "team": "ml-platform",
+            "version": "1.0",
+        },
+        
+        # Prometheus monitoring
+        annotations={
+            "prometheus.io/scrape": "true",
+            "prometheus.io/port": "8000",
+            "prometheus.io/path": "/metrics",
+        },
+    ),
+    "resources": ResourceSettings(
+        cpu_count=2,
+        memory="4GB",
+        min_replicas=2,
+        max_replicas=10,
+    )
+}
+```
+
+### Level 3: Additional resources
+
+Deploy additional Kubernetes resources alongside your main Deployment and Service (Ingress, HorizontalPodAutoscaler, PodDisruptionBudget, NetworkPolicy, etc.):
+
+First, create a YAML file (e.g., `k8s-resources.yaml`) with your additional resources:
+
+```yaml
+# Ingress for domain-based routing
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  namespace: {{namespace}}  # ZenML fills this
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: myapp.company.com  # Your domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{name}}  # ZenML fills this with the Service name
+                port:
+                  number: {{settings.service_port}}  # ZenML fills this
+
+# HorizontalPodAutoscaler for autoscaling
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-hpa
+  namespace: {{namespace}}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{name}}  # ZenML fills this with the Deployment name
+  minReplicas: {{replicas}}  # ZenML fills this
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+
+# PodDisruptionBudget for high availability
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: my-pdb
+  namespace: {{namespace}}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      managed-by: {{labels['managed-by']}}
+      zenml-deployment-id: {{labels['zenml-deployment-id']}}
+```
+
+Then reference this file in your deployment settings:
+
+```python
+settings = {
+    "deployer": KubernetesDeployerSettings(
+        additional_resources=[
+            "./k8s-resources.yaml"
+        ],
+        strict_additional_resources=True,  # Fail if any resource fails to apply
+        # ... other settings
+    )
+}
+```
+
+**Available template variables** for use in your YAML files:
+
+Core objects (access their properties directly):
+
+* `{{deployment}}`: Full DeploymentResponse object - access via `{{deployment.id}}`, `{{deployment.name}}`, etc.
+* `{{settings}}`: Full KubernetesDeployerSettings object - access via `{{settings.service_port}}`, `{{settings.service_type}}`, etc.
+
+Common values:
+
+* `{{name}}`: Deployment/Service resource name (use this for Deployment name, Service name in Ingress, HPA target, etc.)
+* `{{namespace}}`: Kubernetes namespace
+* `{{labels}}`: Dict of all labels (includes ZenML-managed labels + custom labels)
+  * `{{labels['managed-by']}}`: Always 'zenml'
+  * `{{labels['zenml-deployment-id']}}`: Deployment UUID
+  * `{{labels['zenml-deployment-name']}}`: Human-readable deployment name
+* `{{replicas}}`: Configured replica count
+* `{{image}}`: Container image URI
+* `{{command}}`: Container command
+* `{{args}}`: Container args
+* `{{env}}`: Environment variables dict
+* `{{resources}}`: Resource requests/limits dict
+* `{{pod_settings}}`: KubernetesPodSettings object (if configured)
+
+{% hint style="warning" %}
+**Important prerequisites:**
+
+* **Ingress**: Requires an ingress controller (nginx, traefik, etc.) installed in your cluster
+* **HPA**: Requires [metrics-server](https://github.com/kubernetes-sigs/metrics-server) installed
+* **ServiceMonitor**: Requires [Prometheus Operator](https://prometheus-operator.dev/) CRDs installed
+* **CRDs**: Any custom resources must have their CRDs installed beforehand
+  {% endhint %}
+
+### Level 4: Custom Deployment and Service templates
+
+For maximum control, you can completely override the built-in Deployment and Service templates by providing your own Jinja2 templates. This allows you to customize every aspect of the core Kubernetes resources that ZenML creates.
+
+**When to use custom templates:**
+
+* You need to add features not supported by the standard settings (init containers, sidecar containers, custom volume types)
+* You want complete control over health probe configuration beyond the provided settings
+* You need specific Kubernetes features for compliance or security requirements
+* You're migrating existing Kubernetes manifests to ZenML and want to maintain the exact structure
+
+**How it works:**
+
+1. Create a directory for your custom templates (e.g., `~/.zenml/k8s-templates/`)
+2. Add one or both of these files to override the built-in templates:
+   * `deployment.yaml.j2` - Override the Deployment resource
+   * `service.yaml.j2` - Override the Service resource
+3. Configure the deployer to use your custom templates:
+
+```python
+settings = {
+    "deployer": KubernetesDeployerSettings(
+        custom_deployment_template_file="~/.zenml/k8s-templates/deployment.yaml.j2",
+        custom_service_template_file="~/.zenml/k8s-templates/service.yaml.j2",
+        # ... other settings
+    )
+}
+```
+
+**Available template variables:**
+
+Your custom templates have access to all the same context variables as the built-in templates:
+
+Core objects:
+
+* `deployment`: Full DeploymentResponse object
+* `settings`: Full KubernetesDeployerSettings object (access health probes, ports, etc. via `settings.X`)
+
+Common values:
+
+* `name`: Deployment/Service resource name
+* `namespace`: Kubernetes namespace
+* `image`: Container image URI
+* `replicas`: Number of replicas
+* `labels`: Dict of all labels
+* `command`: Container command (list)
+* `args`: Container args (list)
+* `env`: Environment variables dict
+* `resources`: Resource requests/limits dict (with `requests` and `limits` keys)
+* `pod_settings`: KubernetesPodSettings object (access volumes, affinity, tolerations, etc.)
+
+**Example: Custom deployment template with init container**
+
+Create `~/MyProject/k8s-templates/deployment.yaml.j2`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ name }}
+  namespace: {{ namespace }}
+  labels:
+    app: {{ name }}
+    managed-by: zenml
+    {% if labels %}
+    {% for key, value in labels.items() %}
+    {{ key }}: {{ value | tojson }}
+    {% endfor %}
+    {% endif %}
+spec:
+  replicas: {{ replicas | default(1) }}
+  selector:
+    matchLabels:
+      managed-by: zenml
+      zenml-deployment-id: {{ labels.get('zenml-deployment-id') | tojson }}
+  template:
+    metadata:
+      labels:
+        app: {{ name }}
+        managed-by: zenml
+        {% if labels %}
+        {% for key, value in labels.items() %}
+        {{ key }}: {{ value | tojson }}
+        {% endfor %}
+        {% endif %}
+      {% if settings.annotations %}
+      annotations:
+        {% for key, value in settings.annotations.items() %}
+        {{ key }}: {{ value | tojson }}
+        {% endfor %}
+      {% endif %}
+    spec:
+      {% if settings.service_account_name %}
+      serviceAccountName: {{ settings.service_account_name }}
+      {% endif %}
+      
+      # Custom init container
+      initContainers:
+      - name: init-setup
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo "Initializing..." && sleep 5']
+      
+      containers:
+      - name: main
+        image: {{ image }}
+        imagePullPolicy: {{ settings.image_pull_policy }}
+        {% if command %}
+        command: {{ command | to_yaml | indent(10, first=True) }}
+        {% endif %}
+        {% if args %}
+        args: {{ args | to_yaml | indent(10, first=True) }}
+        {% endif %}
+        ports:
+        - containerPort: {{ settings.service_port }}
+          name: http
+        {% if env %}
+        env:
+        {% for key, value in env.items() %}
+          - name: {{ key }}
+            value: {{ value | tojson }}
+        {% endfor %}
+        {% endif %}
+        {% if resources %}
+        resources:
+          {% if "requests" in resources %}
+          requests:
+          {% for key, value in resources.requests.items() %}
+            {{ key }}: {{ value | tojson }}
+          {% endfor %}
+          {% endif %}
+          {% if "limits" in resources %}
+          limits:
+          {% for key, value in resources.limits.items() %}
+            {{ key }}: {{ value | tojson }}
+          {% endfor %}
+          {% endif %}
+        {% endif %}
+        readinessProbe:
+          httpGet:
+            path: {{ settings.readiness_probe_path }}
+            port: {{ settings.service_port }}
+          initialDelaySeconds: {{ settings.readiness_probe_initial_delay }}
+          periodSeconds: {{ settings.readiness_probe_period }}
+        livenessProbe:
+          httpGet:
+            path: {{ settings.liveness_probe_path }}
+            port: {{ settings.service_port }}
+          initialDelaySeconds: {{ settings.liveness_probe_initial_delay }}
+          periodSeconds: {{ settings.liveness_probe_period }}
+```
+
+{% hint style="info" %}
+**Tip**: Start with ZenML's built-in templates as a reference. You can find them on GitHub:
+
+* [deployment.yaml.j2](https://github.com/zenml-io/zenml/blob/main/src/zenml/integrations/kubernetes/templates/kubernetes/deployment.yaml.j2)
+* [service.yaml.j2](https://github.com/zenml-io/zenml/blob/main/src/zenml/integrations/kubernetes/templates/kubernetes/service.yaml.j2)
+
+Copy and modify them for your needs.
+{% endhint %}
+
+{% hint style="warning" %}
+When using custom templates, you're responsible for maintaining compatibility with ZenML's deployment lifecycle. Ensure your templates:
+
+* Use the correct label selectors (`zenml-deployment-id`, `managed-by: zenml`) for resource tracking
+* Expose the correct container port (`{{ settings.service_port }}`)
+* Include health probes for proper deployment tracking
+* Pass through environment variables (`{{ env }}`)
+* Use `{{ name }}` for consistent resource naming
+  {% endhint %}
+
+### Complete settings reference
+
+For a complete list of all available settings, see the `KubernetesDeployerSettings` class. Here's a comprehensive overview organized by category:
+
+**Basic Settings** (common to all Deployers):
+
+* `auth_key`: User-defined authentication key for deployment API calls
+* `generate_auth_key`: Whether to generate a random authentication key
+* `lcm_timeout`: Maximum time in seconds to wait for deployment lifecycle operations
+
+**Essential Settings**:
+
+* `namespace`: Kubernetes namespace for the deployment (defaults to deployer's `kubernetes_namespace`)
+* `service_type`: How to expose the service - `LoadBalancer`, `NodePort`, or `ClusterIP` (default: `LoadBalancer`)
+* `service_port`: Port to expose on the service (default: `8000`)
+* `image_pull_policy`: When to pull images - `Always`, `IfNotPresent`, or `Never` (default: `IfNotPresent`)
+* `labels`: Additional labels to apply to all resources
+* `annotations`: Annotations to add to pod resources
+
+**Container Configuration**:
+
+* `command`: Override container command/entrypoint
+* `args`: Override container args
+* `service_account_name`: Kubernetes service account for pods
+* `image_pull_secrets`: List of secret names for pulling private images
+
+**Health Probes**:
+
+* `readiness_probe_path`: HTTP path for readiness probe (default: `/api/health`)
+* `readiness_probe_initial_delay`: Initial delay in seconds (default: `10`)
+* `readiness_probe_period`: Probe interval in seconds (default: `10`)
+* `readiness_probe_timeout`: Probe timeout in seconds (default: `5`)
+* `readiness_probe_failure_threshold`: Failures before marking pod not ready (default: `3`)
+* `liveness_probe_path`: HTTP path for liveness probe (default: `/api/health`)
+* `liveness_probe_initial_delay`: Initial delay in seconds (default: `30`)
+* `liveness_probe_period`: Probe interval in seconds (default: `10`)
+* `liveness_probe_timeout`: Probe timeout in seconds (default: `5`)
+* `liveness_probe_failure_threshold`: Failures before restarting pod (default: `3`)
+
+**Advanced Settings**:
+
+* `pod_settings`: Advanced pod configuration (see `KubernetesPodSettings`)
+* `additional_resources`: List of paths to YAML files with additional K8s resources
+* `strict_additional_resources`: If `True`, fail deployment if any additional resource fails (default: `True`)
+* `custom_templates_dir`: Path to directory with custom Jinja2 templates
+
+**Internal Settings**:
+
+* `wait_for_load_balancer_timeout`: Timeout for LoadBalancer IP assignment (default: `150` seconds, `0` to skip)
+* `deployment_ready_check_interval`: Interval between readiness checks (default: `2` seconds)
+
+Check out [this docs page](https://docs.zenml.io/concepts/steps_and_pipelines/configuration) for more information on how to specify settings.
+
+## Troubleshooting
+
+### Deployment stuck in pending state
+
+Check pod events and logs:
+
+```shell
+# Get deployment info
+zenml deployment describe my-deployment
+
+# Follow logs
+zenml deployment logs my-deployment -f
+
+# Check Kubernetes resources directly
+kubectl get pods -n <namespace>
+kubectl describe pod <pod-name> -n <namespace>
+```
+
+Common causes:
+
+* Insufficient cluster resources
+* Image pull errors (check image\_pull\_secrets)
+* Node selector/affinity constraints not satisfied
+* PersistentVolumeClaim pending
+
+### LoadBalancer not getting external IP
+
+If using `LoadBalancer` service type and it stays `<pending>`:
+
+* Check if your cluster supports LoadBalancer (cloud providers usually do, local clusters usually don't)
+* For local clusters, use `NodePort` instead
+* For production without LoadBalancer support, use `ClusterIP` with an Ingress
+
+### Additional resources failing to apply
+
+If using `strict_additional_resources=True` and deployment fails:
+
+```shell
+# Check which resource failed
+zenml deployment describe my-deployment
+
+# Validate resources manually
+kubectl apply --dry-run=client -f k8s-resources.yaml
+```
+
+Common issues:
+
+* Missing CRDs (install required operators)
+* Missing cluster components (metrics-server for HPA, ingress controller for Ingress)
+* Invalid resource references (check template variables)
+
+### Image pull errors
+
+If pods can't pull the container image:
+
+* Verify image exists in registry: `docker pull <image>`
+* Check `image_pull_secrets` are configured correctly
+* Verify service account has access to registry
+* Check image pull policy (`IfNotPresent` vs `Always`)
+
+## Best practices
+
+1. **Use service connectors** in production for portable, manageable credentials
+2. **Always configure health probes** for production deployments
+3. **Use Ingress with ClusterIP** instead of LoadBalancer for cost and flexibility
+4. **Use labels and annotations** for organization, monitoring, and cost tracking
+5. **Configure resource limits** to prevent resource exhaustion
+6. **Use HPA** for autoscaling based on actual load
+7. **Configure PodDisruptionBudget** for high availability during cluster updates
+8. **Keep additional resources in version control** alongside your pipeline code
 
 
 # AWS App Runner Deployer
@@ -34664,13 +37867,15 @@ The Artifact Store is a mandatory component in the ZenML stack. It is used to st
 
 Out of the box, ZenML comes with a `local` artifact store already part of the default stack that stores artifacts on your local filesystem. Additional Artifact Stores are provided by integrations:
 
-| Artifact Store                                                                                | Flavor   | Integration | URI Schema(s)      | Notes                                                                                                                            |
-| --------------------------------------------------------------------------------------------- | -------- | ----------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| [Local](https://docs.zenml.io/stacks/stack-components/artifact-stores/local)                  | `local`  | *built-in*  | None               | This is the default Artifact Store. It stores artifacts on your local filesystem. Should be used only for running ZenML locally. |
-| [Amazon S3](https://docs.zenml.io/stacks/stack-components/artifact-stores/s3)                 | `s3`     | `s3`        | `s3://`            | Uses AWS S3 as an object store backend                                                                                           |
-| [Google Cloud Storage](https://docs.zenml.io/stacks/stack-components/artifact-stores/gcp)     | `gcp`    | `gcp`       | `gs://`            | Uses Google Cloud Storage as an object store backend                                                                             |
-| [Azure](https://docs.zenml.io/stacks/stack-components/artifact-stores/azure)                  | `azure`  | `azure`     | `abfs://`, `az://` | Uses Azure Blob Storage as an object store backend                                                                               |
-| [Custom Implementation](https://docs.zenml.io/stacks/stack-components/artifact-stores/custom) | *custom* |             | *custom*           | Extend the Artifact Store abstraction and provide your own implementation                                                        |
+| Artifact Store                                                                                 | Flavor   | Integration | URI Schema(s)      | Notes                                                                                                                            |
+| ---------------------------------------------------------------------------------------------- | -------- | ----------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| [Local](https://docs.zenml.io/stacks/stack-components/artifact-stores/local)                   | `local`  | *built-in*  | None               | This is the default Artifact Store. It stores artifacts on your local filesystem. Should be used only for running ZenML locally. |
+| [Amazon S3](https://docs.zenml.io/stacks/stack-components/artifact-stores/s3)                  | `s3`     | `s3`        | `s3://`            | Uses AWS S3 as an object store backend                                                                                           |
+| [Google Cloud Storage](https://docs.zenml.io/stacks/stack-components/artifact-stores/gcp)      | `gcp`    | `gcp`       | `gs://`            | Uses Google Cloud Storage as an object store backend                                                                             |
+| [Azure](https://docs.zenml.io/stacks/stack-components/artifact-stores/azure)                   | `azure`  | `azure`     | `abfs://`, `az://` | Uses Azure Blob Storage as an object store backend                                                                               |
+| [Alibaba Cloud OSS](https://docs.zenml.io/stacks/stack-components/artifact-stores/alibaba-oss) | `s3`     | `s3`        | `s3://`            | Uses S3 integration to connect to Alibaba Cloud OSS                                                                              |
+| [MinIO](https://docs.zenml.io/stacks/stack-components/artifact-stores/minio)                   | `s3`     | `s3`        | `s3://`            | Uses S3 integration to connect to self-hosted MinIO                                                                              |
+| [Custom Implementation](https://docs.zenml.io/stacks/stack-components/artifact-stores/custom)  | *custom* |             | *custom*           | Extend the Artifact Store abstraction and provide your own implementation                                                        |
 
 If you would like to see the available flavors of Artifact Stores, you can use the command:
 
@@ -35073,8 +38278,8 @@ After having set up the IAM user and generated the access key, as described in t
 ```shell
 # Store the AWS access key in a ZenML secret
 zenml secret create s3_secret \
-    --aws_access_key_id='<YOUR_S3_ACCESS_KEY_ID>' \
-    --aws_secret_access_key='<YOUR_S3_SECRET_KEY>'
+    --access_key_id='<YOUR_S3_ACCESS_KEY_ID>' \
+    --secret_access_key='<YOUR_S3_SECRET_KEY>'
 
 # Register the S3 artifact-store and reference the ZenML secret
 zenml artifact-store register s3_store -f s3 \
@@ -35558,6 +38763,170 @@ For more, up-to-date information on the Azure Artifact Store implementation and 
 ### How do you use it?
 
 Aside from the fact that the artifacts are stored in Azure Blob Storage, using the Azure Artifact Store is no different from [using any other flavor of Artifact Store](https://docs.zenml.io/stacks/stack-components/artifact-stores/..#how-to-use-it).
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Alibaba Cloud OSS
+
+Storing artifacts in Alibaba Cloud Object Storage Service (OSS).
+
+[Alibaba Cloud Object Storage Service (OSS)](https://www.alibabacloud.com/product/object-storage-service) is an S3-compatible object storage service. Since OSS provides an S3-compatible API, you can use ZenML's S3 Artifact Store integration to connect to [Alibaba Cloud](https://www.alibabacloud.com) OSS.
+
+{% hint style="warning" %}
+**Important:** When using Alibaba Cloud OSS, you must set the following `config_kwargs`:
+
+```json
+{"signature_version": "s3", "s3": {"addressing_style": "virtual"}}
+```
+
+This is required for proper compatibility with Alibaba Cloud OSS's S3 API implementation.
+{% endhint %}
+
+### When would you want to use it?
+
+You should use the Alibaba Cloud OSS Artifact Store when:
+
+* Your infrastructure is already deployed on Alibaba Cloud and you want to maintain data locality
+* You require artifact storage in specific geographic regions served by Alibaba Cloud (China, Asia-Pacific, Europe, Middle East)
+* You need S3-compatible object storage with Alibaba Cloud's pricing model and service level agreements
+* Compliance requirements mandate data residency in Alibaba Cloud regions
+
+### How do you deploy it?
+
+Since Alibaba Cloud OSS is S3-compatible, you'll use the S3 integration. First, install it:
+
+```shell
+zenml integration install s3 -y
+```
+
+You'll also need to create an OSS bucket and obtain your access credentials from the Alibaba Cloud console.
+
+### How do you configure it?
+
+To use Alibaba Cloud OSS with ZenML, you need to configure the S3 Artifact Store with specific settings for OSS compatibility:
+
+{% hint style="info" %}
+Alibaba Cloud OSS does not support ZenML Service Connectors. Use ZenML Secrets to securely store and reference your Alibaba Cloud credentials.
+{% endhint %}
+
+{% tabs %}
+{% tab title="Using a ZenML Secret (recommended)" %}
+First, create a ZenML secret with your Alibaba Cloud credentials:
+
+```shell
+zenml secret create alibaba_secret \
+    --access_key_id='<YOUR_ALIBABA_ACCESS_KEY_ID>' \
+    --secret_access_key='<YOUR_ALIBABA_SECRET_ACCESS_KEY>'
+```
+
+Then register the artifact store with the required OSS configuration:
+
+```shell
+zenml artifact-store register alibaba_store -f s3 \
+    --path='s3://your-bucket-name' \
+    --authentication_secret=alibaba_secret \
+    --client_kwargs='{"endpoint_url": "https://oss-<region>.aliyuncs.com"}' \
+    --config_kwargs='{"signature_version": "s3", "s3": {"addressing_style": "virtual"}}'
+```
+
+{% endtab %}
+{% endtabs %}
+
+Replace `<region>` with your OSS region (e.g., `eu-central-1`, `cn-hangzhou`, `ap-southeast-1`). You can find the list of available regions and their endpoints in the [Alibaba Cloud OSS documentation](https://www.alibabacloud.com/help/en/oss/user-guide/regions-and-endpoints).
+
+Finally, add the artifact store to your stack:
+
+```shell
+zenml stack register custom_stack -a alibaba_store ... --set
+```
+
+### How do you use it?
+
+Using the Alibaba Cloud OSS Artifact Store is no different from [using any other flavor of Artifact Store](https://docs.zenml.io/stacks/stack-components/artifact-stores/..#how-to-use-it). ZenML handles the S3-compatible API translation automatically.
+
+For more details on the S3 Artifact Store configuration options, refer to the [S3 Artifact Store documentation](https://docs.zenml.io/stacks/stack-components/artifact-stores/s3).
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# MinIO
+
+Storing artifacts in MinIO object storage.
+
+[MinIO](https://min.io/) is a high-performance, S3-compatible object storage system. Since MinIO provides a fully S3-compatible API, you can use ZenML's S3 Artifact Store integration to connect to MinIO.
+
+{% hint style="warning" %}
+**Maintenance Mode**: The open-source MinIO project is currently in maintenance mode and is not accepting new changes. Only critical security fixes may be evaluated on a case-by-case basis. For development and testing purposes, MinIO remains a viable option, but for production use cases requiring active support, consider [MinIO AIStor](https://min.io/product/aistor) or alternative S3-compatible storage solutions like [Ceph RGW](https://ceph.io/en/discover/technology/#object).
+{% endhint %}
+
+### When would you want to use it?
+
+You should use the MinIO Artifact Store when:
+
+* You require self-hosted object storage for data sovereignty or compliance requirements
+* Your MLOps infrastructure runs on-premises or in a private cloud environment
+* You need S3-compatible storage co-located with your Kubernetes-based ZenML deployment
+* You want to eliminate cloud vendor dependencies while maintaining S3 API compatibility
+* You're developing locally and need a lightweight S3-compatible storage backend for testing
+
+### How do you deploy it?
+
+Since MinIO is S3-compatible, you'll use the S3 integration. First, install it:
+
+```shell
+zenml integration install s3 -y
+```
+
+You'll also need a running MinIO instance. MinIO can be deployed in various ways:
+
+* **Docker**: `docker run -p 9000:9000 -p 9001:9001 minio/minio server /data --console-address ":9001"`
+* **Kubernetes**: Follow the instructions [here](https://docs.min.io/enterprise/aistor-object-store/installation/kubernetes/install/deploy-aistor-on-kubernetes/)
+* **Binary**: Download from [MinIO's website](https://min.io/download)
+
+### How do you configure it?
+
+To use MinIO with ZenML, configure the S3 Artifact Store with your MinIO endpoint:
+
+{% tabs %}
+{% tab title="Using a ZenML Secret (recommended)" %}
+First, create a ZenML secret with your MinIO credentials:
+
+```shell
+zenml secret create minio_secret \
+    --access_key_id='<YOUR_MINIO_ACCESS_KEY>' \
+    --secret_access_key='<YOUR_MINIO_SECRET_KEY>'
+```
+
+Then register the artifact store:
+
+```shell
+zenml artifact-store register minio_store -f s3 \
+    --path='s3://your-bucket-name' \
+    --authentication_secret=minio_secret \
+    --client_kwargs='{"endpoint_url": "http://minio.example.com:9000"}'
+```
+
+{% endtab %}
+{% endtabs %}
+
+Replace `http://minio.example.com:9000` with your actual MinIO endpoint. If you're running MinIO locally for development, this might be `http://localhost:9000`.
+
+{% hint style="info" %}
+If your MinIO instance uses HTTPS with a self-signed certificate, you may need to configure SSL verification. Consult the [S3 Artifact Store documentation](https://docs.zenml.io/stacks/stack-components/s3#advanced-configuration) for advanced configuration options.
+{% endhint %}
+
+Finally, add the artifact store to your stack:
+
+```shell
+zenml stack register custom_stack -a minio_store ... --set
+```
+
+### How do you use it?
+
+Using the MinIO Artifact Store is no different from [using any other flavor of Artifact Store](https://docs.zenml.io/stacks/stack-components/artifact-stores/..#how-to-use-it). ZenML handles the S3-compatible API translation automatically.
+
+For more details on the S3 Artifact Store configuration options, refer to the [S3 Artifact Store documentation](https://docs.zenml.io/stacks/stack-components/artifact-stores/s3).
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
@@ -36860,6 +40229,945 @@ The design behind this interaction lets us separate the configuration of the fla
 {% endhint %}
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
+
+
+# Log Stores
+
+Storing and retrieving logs from your ML pipelines.
+
+The log store is a stack component responsible for collecting, storing, and retrieving logs generated during pipeline and step execution. It captures everything from standard logging output to print statements and any messages written to stdout/stderr, making it easy to debug and monitor your ML workflows.
+
+### How it works
+
+ZenML's log capture system is designed to be comprehensive and non-intrusive. Here's what happens under the hood:
+
+1. **stdout/stderr wrapping**: ZenML wraps the standard output and error streams to capture all printed messages and any output directed to these streams.
+2. **Root logger handler**: A custom handler is added to Python's root logger to capture all log messages with proper metadata from loggers that propagate to the root.
+3. **Log routing**: All captured messages are routed through a `LoggingContext` to the active log store in your stack.
+
+This approach ensures that you don't miss any output from your pipeline steps, including:
+
+* Standard Python `logging` messages
+* `print()` statements
+* Output from third-party libraries
+* Messages from subprocesses that write to stdout/stderr
+
+### When to use it
+
+The Log Store is automatically used in every ZenML stack. If you don't explicitly configure a log store, ZenML will use an [**Artifact Log Store**](https://docs.zenml.io/stacks/stack-components/log-stores/artifact) by default, which stores logs in your artifact store.
+
+You should consider configuring a dedicated log store when:
+
+* You want to use a centralized logging backend like Datadog, Jaeger, Grafana Tempo, Honeycomb, Lightstep or Dash0 for log aggregation and analysis
+* You need advanced log querying capabilities beyond what file-based storage provides
+* You're running pipelines at scale and need better log management
+* You want to integrate with your organization's existing observability infrastructure
+
+### How to use it
+
+By default, if no log store is explicitly configured in your stack, ZenML automatically creates an Artifact Log Store that uses your artifact store for log storage. This means logging works out of the box without any additional configuration.
+
+To use a different log store, you need to register it and add it to your stack:
+
+```shell
+# Register a log store (example with Datadog)
+zenml log-store register <LOG_STORE_NAME> \
+    --flavor=datadog \
+    --api_key=<DATADOG_API_KEY> \
+    --application_key=<DATADOG_APPLICATION_KEY>
+
+# Add it to your stack
+zenml stack register <STACK_NAME> -a <ARTIFACT_STORE> -o <ORCHESTRATOR> -ls <LOG_STORE_NAME> --set
+```
+
+Once configured, logs are automatically captured during pipeline execution.
+
+### Viewing Logs
+
+You can view logs through several methods:
+
+1. **ZenML Dashboard**: Navigate to a pipeline run and view step logs directly in the UI.
+2. **Programmatically**: You can fetch logs directly using the log store:
+
+```python
+from zenml.client import Client
+
+client = Client()
+
+# Get the run you want logs for
+run = client.get_pipeline_run("<RUN_NAME_OR_ID>")
+
+# Note: The log store must match the one that captured the logs
+log_store = client.active_stack.log_store
+log_entries = log_store.fetch(logs_model=run.logs, limit=1000)
+
+for entry in log_entries:
+    print(f"[{entry.level}] {entry.message}")
+```
+
+3. **External platforms**: For log stores like Datadog, you can also view logs directly in the platform's native interface.
+
+### Log Store Flavors
+
+ZenML provides several log store flavors out of the box:
+
+| Log Store                                                                                | Flavor     | Integration | Notes                                                                                           |
+| ---------------------------------------------------------------------------------------- | ---------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| [ArtifactLogStore](https://docs.zenml.io/stacks/stack-components/log-stores/artifact)    | `artifact` | *built-in*  | Default log store that writes logs to your artifact store. Zero configuration required.         |
+| [OtelLogStore](https://docs.zenml.io/stacks/stack-components/log-stores/otel)            | `otel`     | *built-in*  | Generic OpenTelemetry log store for any OTEL-compatible backend. Does not support log fetching. |
+| [DatadogLogStore](https://docs.zenml.io/stacks/stack-components/log-stores/datadog)      | `datadog`  | *built-in*  | Exports logs to Datadog's log management platform with full fetch support.                      |
+| [Custom Implementation](https://docs.zenml.io/stacks/stack-components/log-stores/custom) | *custom*   |             | Extend the log store abstraction and provide your own implementation.                           |
+
+If you would like to see the available flavors of log stores, you can use the command:
+
+```shell
+zenml log-store flavor list
+```
+
+{% hint style="info" %}
+If you're interested in understanding the base abstraction and how log stores work internally, check out the [Develop a Custom Log Store](https://docs.zenml.io/stacks/stack-components/log-stores/custom) page for a detailed explanation of the architecture.
+{% endhint %}
+
+
+# Artifact Log Store
+
+Storing logs in your artifact store.
+
+The Artifact Log Store is the default log store flavor that comes built-in with ZenML. It stores logs directly in your artifact store, providing a zero-configuration logging solution that works out of the box.
+
+{% hint style="warning" %}
+The Artifact Log Store is ZenML's implicit default. You don't need to register it as a flavor or add it to your stack. When no log store is explicitly configured, ZenML automatically uses an Artifact Log Store to handle logs. This means logging works out of the box with zero configuration.
+{% endhint %}
+
+### When to use it
+
+The Artifact Log Store is ideal when:
+
+* You want logging to work without any additional configuration
+* You prefer to keep all your pipeline data (artifacts and logs) in one place
+* You don't need advanced log querying capabilities
+* You're getting started with ZenML and want a simple setup
+
+### How it works
+
+The Artifact Log Store leverages OpenTelemetry's batching infrastructure while using a custom exporter that writes logs to your artifact store. Here's what happens during pipeline execution:
+
+1. **Log capture**: All stdout, stderr, and Python logging output is captured and routed to the log store.
+2. **Batching**: Logs are collected in batches using OpenTelemetry's `BatchLogRecordProcessor` for efficient processing.
+3. **Export**: The `ArtifactLogExporter` writes batched logs to your artifact store as JSON-formatted log files.
+4. **Finalization**: When a step completes, logs are finalized (merged if necessary) to ensure they're ready for retrieval.
+
+#### Handling Different Filesystem Types
+
+The Artifact Log Store handles different artifact store backends intelligently:
+
+* **Mutable filesystems** (local, S3, Azure): Logs are appended to a single file per step.
+* **Immutable filesystems** (GCS): Logs are written as timestamped files in a directory, then merged on finalization.
+
+This ensures consistent behavior across all supported artifact store types.
+
+### Environment Variables
+
+The Artifact Log Store uses OpenTelemetry's batch processing under the hood. You can tune the batching behavior using these environment variables:
+
+| Environment Variable                    | Default  | Description                                   |
+| --------------------------------------- | -------- | --------------------------------------------- |
+| `ZENML_LOGS_OTEL_MAX_QUEUE_SIZE`        | `100000` | Maximum queue size for batch log processor    |
+| `ZENML_LOGS_OTEL_SCHEDULE_DELAY_MILLIS` | `5000`   | Delay between batch exports in milliseconds   |
+| `ZENML_LOGS_OTEL_MAX_EXPORT_BATCH_SIZE` | `5000`   | Maximum batch size for exports                |
+| `ZENML_LOGS_OTEL_EXPORT_TIMEOUT_MILLIS` | `15000`  | Timeout for each export batch in milliseconds |
+
+These defaults are optimized for most use cases. You typically only need to adjust them for high-volume logging scenarios.
+
+### Log format
+
+Logs are stored as newline-delimited JSON (NDJSON) files. Each log entry contains the following fields:
+
+```json
+{
+  "message": "Training model with 1000 samples",
+  "level": "INFO",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "name": "my_logger",
+  "filename": "train.py",
+  "lineno": 42,
+  "module": "train",
+  "chunk_index": 0,
+  "total_chunks": 1,
+  "id": "550e8400-e29b-41d4-a716-446655440000"
+}
+```
+
+| Field          | Description                                                               |
+| -------------- | ------------------------------------------------------------------------- |
+| `message`      | The log message content                                                   |
+| `level`        | Log level (DEBUG, INFO, WARN, ERROR, CRITICAL)                            |
+| `timestamp`    | When the log was created                                                  |
+| `name`         | The name of the logger                                                    |
+| `filename`     | The source file that generated the log                                    |
+| `lineno`       | The line number in the source file                                        |
+| `module`       | The module that generated the log                                         |
+| `chunk_index`  | Index of this chunk (0 for non-chunked messages)                          |
+| `total_chunks` | Total number of chunks (1 for non-chunked messages)                       |
+| `id`           | Unique identifier for the log entry (used to reassemble chunked messages) |
+
+For large messages (>5KB), logs are automatically split into multiple chunks with sequential `chunk_index` values and a shared `id` for reassembly.
+
+### Storage location
+
+Logs are stored in the `logs` directory within your artifact store:
+
+```
+<artifact_store_path>/
+└── logs/
+    ├── <log_id_1>.log          # For mutable filesystems
+    └── <log_id_2>/              # For immutable filesystems (GCS)
+        ├── 1705312200.123.log
+        ├── 1705312205.456.log
+        └── 1705312210.789_merged.log
+```
+
+### Best practices
+
+1. **Use the default**: For most use cases, the automatic artifact log store is sufficient. Don't add complexity unless you need it.
+2. **Monitor storage**: Logs can accumulate over time. Consider implementing log retention policies for your artifact store.
+3. **Large log volumes**: If you're generating very large log volumes, consider using a dedicated log store like Datadog for better scalability and querying.
+4. **Sensitive data**: Be mindful of what you log. Avoid logging sensitive information like credentials or PII.
+
+For more information and a full list of configurable attributes, check out the [SDK Docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-log_stores.html#zenml.log_stores.artifact.artifact_log_store).
+
+
+# OpenTelemetry Log Store
+
+Exporting logs to any OpenTelemetry-compatible backend.
+
+The OpenTelemetry (OTEL) Log Store is a log store flavor that exports logs to any OpenTelemetry-compatible backend using the OTLP/HTTP protocol with JSON encoding. Built on the [OpenTelemetry Python SDK](https://opentelemetry.io/docs/languages/python/), it provides maximum flexibility for integrating with your existing observability infrastructure.
+
+{% hint style="warning" %}
+The OTEL Log Store is a **write-only** log store. It can export logs to an OTEL-compatible endpoint, but it cannot fetch logs back for display in the ZenML dashboard. If you need log retrieval capabilities, you can extend this log store and implement the `fetch()` method for your backend. See [Develop a Custom Log Store](https://docs.zenml.io/stacks/stack-components/log-stores/custom) for details on how to do this.
+{% endhint %}
+
+### When to use it
+
+The OTEL Log Store is ideal when:
+
+* You have an existing OpenTelemetry-compatible observability platform (e.g., Jaeger, Grafana Tempo, Honeycomb, Lightstep, Dash0)
+* You want to consolidate ML pipeline logs with your application logs
+* You need to export logs to a custom backend that supports OTLP
+* You're building a custom log ingestion pipeline
+
+### How it works
+
+The OTEL Log Store implements the OpenTelemetry logging specification:
+
+1. **Log capture**: All stdout, stderr, and Python logging output is captured during pipeline execution.
+2. **OTEL conversion**: Log records are converted to the OpenTelemetry log format with ZenML-specific attributes.
+3. **Batching**: Logs are batched using OpenTelemetry's `BatchLogRecordProcessor` for efficient export.
+4. **Export**: Batched logs are sent to your configured endpoint using OTLP/HTTP with JSON encoding and optionally, using data compression.
+
+#### ZenML-specific attributes
+
+Each log record includes ZenML metadata as OTEL attributes:
+
+| Attribute                 | Description                              |
+| ------------------------- | ---------------------------------------- |
+| `zenml.log.id`            | Unique identifier for the log stream     |
+| `zenml.log.source`        | Source of the log (step, pipeline, etc.) |
+| `zenml.log_store.id`      | ID of the log store component            |
+| `zenml.log_store.name`    | Name of the log store component          |
+| `zenml.user.id`           | User ID                                  |
+| `zenml.user.name`         | User name                                |
+| `zenml.project.id`        | Project ID                               |
+| `zenml.project.name`      | Project name                             |
+| `zenml.stack.id`          | Stack ID                                 |
+| `zenml.stack.name`        | Stack name                               |
+| `zenml.pipeline.id`       | Pipeline ID                              |
+| `zenml.pipeline.name`     | Pipeline name                            |
+| `zenml.pipeline.run.id`   | Pipeline run ID                          |
+| `zenml.pipeline.run.name` | Pipeline run name                        |
+| `zenml.step.run.name`     | Step name (for step-level logs)          |
+
+These attributes enable powerful filtering and querying in your observability platform.
+
+### How to use it
+
+You need to have an OpenTelemetry-compatible endpoint ready to receive logs. This could be:
+
+* A self-hosted OTEL Collector
+* A managed observability platform (Grafana Cloud, Honeycomb, etc.)
+* Any service that accepts OTLP/HTTP with JSON encoding
+
+Register the OTEL log store with your endpoint configuration:
+
+```shell
+# Register an OTEL log store
+zenml log-store register my_otel_logs \
+    --flavor=otel \
+    --endpoint=https://otel-collector.example.com/v1/logs
+
+# Add it to your stack
+zenml stack register my_stack \
+    -a my_artifact_store \
+    -o default \
+    -ls my_otel_logs \
+    --set
+```
+
+#### With authentication headers
+
+Most OTEL backends require authentication. You can pass headers using a ZenML secret:
+
+```shell
+# Create a secret with your API key
+zenml secret create otel_auth \
+    --api_key=<YOUR_API_KEY>
+
+# Register the log store with the header
+zenml log-store register my_otel_logs \
+    --flavor=otel \
+    --endpoint=https://otel-collector.example.com/v1/logs \
+    --headers='{"Authorization": "Bearer {{otel_auth.api_key}}"}'
+```
+
+#### With TLS certificates
+
+For endpoints requiring client certificates:
+
+```shell
+zenml log-store register my_otel_logs \
+    --flavor=otel \
+    --endpoint=https://secure-collector.example.com/v1/logs \
+    --certificate_file=/path/to/ca.crt \
+    --client_certificate_file=/path/to/client.crt \
+    --client_key_file=/path/to/client.key
+```
+
+### Configuration options
+
+| Parameter                 | Default       | Description                                          |
+| ------------------------- | ------------- | ---------------------------------------------------- |
+| `endpoint`                | *required*    | OTLP/HTTP endpoint URL for log ingestion             |
+| `headers`                 | `None`        | Optional headers for authentication                  |
+| `certificate_file`        | `None`        | Path to CA certificate file for TLS verification     |
+| `client_certificate_file` | `None`        | Path to client certificate file for mTLS             |
+| `client_key_file`         | `None`        | Path to client key file for mTLS                     |
+| `compression`             | `"none"`      | Compression type: `"none"`, `"gzip"`, or `"deflate"` |
+| `service_name`            | `"zenml"`     | Service name in OTEL resource attributes             |
+| `service_version`         | ZenML version | Service version in OTEL resource attributes          |
+| `max_queue_size`          | `100000`      | Maximum queue size for batch processor               |
+| `schedule_delay_millis`   | `5000`        | Delay between batch exports (milliseconds)           |
+| `max_export_batch_size`   | `5000`        | Maximum batch size for exports                       |
+| `export_timeout_millis`   | `15000`       | Timeout for each export batch (milliseconds)         |
+
+### Retry behavior
+
+The OTEL Log Store includes built-in retry logic for transient failures:
+
+* **Retried status codes**: 408, 429, 500, 502, 503, 504
+* **Connection retries**: 5 attempts with exponential backoff
+* **Read retries**: 5 attempts
+* **Backoff factor**: 0.5 seconds
+
+This ensures reliable log delivery even in unstable network conditions.
+
+### Limitations
+
+1. **No log fetching**: The OTEL Log Store cannot retrieve logs for display in the ZenML dashboard. You must use your observability platform's native interface to view logs.
+2. **Dashboard integration**: Since logs cannot be fetched, the ZenML dashboard will show "Logs not available" for steps using this log store.
+3. **Endpoint compatibility**: Your endpoint must support OTLP/HTTP with JSON encoding. Protobuf-only endpoints are not supported.
+
+### Best practices
+
+1. **Use compression**: Enable `gzip` compression for high-volume logging to reduce network bandwidth.
+2. **Tune batch settings**: Adjust `max_queue_size` and `max_export_batch_size` based on your log volume:
+   * High volume: Increase both values
+   * Low latency needs: Decrease `schedule_delay_millis`
+3. **Monitor the endpoint**: Ensure your OTEL collector or backend can handle the log volume from your pipelines.
+4. **Use secrets for credentials**: Always store API keys and tokens in ZenML secrets, not in plain text.
+
+For more information and a full list of configurable attributes, check out the [SDK Docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-log_stores.html#zenml.log_stores.otel.otel_log_store).
+
+
+# Datadog Log Store
+
+Exporting logs to Datadog's log management platform.
+
+The Datadog Log Store is a log store flavor that exports logs to [Datadog's log management platform](https://www.datadoghq.com/product/log-management/). It provides full integration with Datadog, including both log export and retrieval, enabling you to view pipeline logs directly in the ZenML dashboard.
+
+### When would you want to use it?
+
+The Datadog Log Store is ideal when:
+
+* You're already using Datadog for application monitoring and want to consolidate ML pipeline logs
+* You need advanced log querying, filtering, and alerting capabilities
+* You want to correlate ML pipeline logs with other application metrics and traces
+* You need long-term log retention with Datadog's archiving features
+* You want to view logs both in the ZenML dashboard and Datadog's native interface
+
+### How it works
+
+The Datadog Log Store extends the [OTEL Log Store](https://docs.zenml.io/stacks/stack-components/log-stores/otel) with Datadog-specific functionality:
+
+1. **Log capture**: All stdout, stderr, and Python logging output is captured during pipeline execution.
+2. **OTEL conversion**: Log records are converted to the OpenTelemetry format with ZenML-specific attributes.
+3. **Datadog export**: A custom `DatadogLogExporter` sends logs to Datadog's OTLP intake endpoint with proper attribute mapping for Datadog's log structure.
+4. **Log retrieval**: The log store uses Datadog's Logs Search API to fetch logs for display in the ZenML dashboard.
+
+#### ZenML-specific attributes
+
+Each log record includes ZenML metadata that can be used for filtering in Datadog:
+
+| Attribute                  | Description                               |
+| -------------------------- | ----------------------------------------- |
+| `@zenml.log.id`            | Unique identifier for the log stream      |
+| `@zenml.log.source`        | Source of the log (step, pipeline, etc.)  |
+| `@zenml.log.uri`           | URI where logs are stored (if applicable) |
+| `@zenml.log_store.id`      | ID of the log store component             |
+| `@zenml.log_store.name`    | Name of the log store component           |
+| `@zenml.run.id`            | Pipeline run ID                           |
+| `@zenml.log.id`            | Unique identifier for the log stream      |
+| `@zenml.log.source`        | Source of the log (step, pipeline, etc.)  |
+| `@zenml.log_store.id`      | ID of the log store component             |
+| `@zenml.log_store.name`    | Name of the log store component           |
+| `@zenml.user.id`           | User ID                                   |
+| `@zenml.user.name`         | User name                                 |
+| `@zenml.project.id`        | Project ID                                |
+| `@zenml.project.name`      | Project name                              |
+| `@zenml.stack.id`          | Stack ID                                  |
+| `@zenml.stack.name`        | Stack name                                |
+| `@zenml.pipeline.id`       | Pipeline ID                               |
+| `@zenml.pipeline.name`     | Pipeline name                             |
+| `@zenml.pipeline.run.id`   | Pipeline run ID                           |
+| `@zenml.pipeline.run.name` | Pipeline run name                         |
+| `@zenml.step.run.id`       | Step ID (for step-level logs)             |
+| `@zenml.step.run.name`     | Step name (for step-level logs)           |
+
+### How to deploy it
+
+The Datadog Log Store comes built-in with ZenML. You need:
+
+1. A Datadog account with log management enabled
+2. A Datadog API key (for log ingestion)
+3. A Datadog Application key (for log retrieval)
+
+#### Getting your keys
+
+1. **API Key**: Navigate to **Organization Settings** → **API Keys** in Datadog
+2. **Application Key**: Navigate to **Organization Settings** → **Application Keys** in Datadog
+
+{% hint style="info" %}
+Both the API key and Application key are **required** to register a Datadog log store. The API key is used for log ingestion, while the Application key is used for log retrieval (displaying logs in the ZenML dashboard).
+{% endhint %}
+
+### How to use it
+
+#### Basic setup
+
+```shell
+# Create a secret with your Datadog keys
+zenml secret create datadog_keys \
+    --api_key=<YOUR_DATADOG_API_KEY> \
+    --application_key=<YOUR_DATADOG_APPLICATION_KEY>
+
+# Register the Datadog log store
+zenml log-store register datadog_logs \
+    --flavor=datadog \
+    --api_key='{{datadog_keys.api_key}}' \
+    --application_key='{{datadog_keys.application_key}}'
+
+# Add it to your stack
+zenml stack register my_stack \
+    -a my_artifact_store \
+    -o default \
+    -ls datadog_logs \
+    --set
+```
+
+#### With a different Datadog site
+
+Datadog has multiple regional sites. Specify your site if you're not using the default (`datadoghq.com`):
+
+```shell
+zenml log-store register datadog_logs \
+    --flavor=datadog \
+    --api_key='{{datadog_keys.api_key}}' \
+    --application_key='{{datadog_keys.application_key}}' \
+    --site=datadoghq.eu  # For EU region
+```
+
+Available sites:
+
+* `datadoghq.com` (US1 - default)
+* `us3.datadoghq.com` (US3)
+* `us5.datadoghq.com` (US5)
+* `datadoghq.eu` (EU)
+* `ap1.datadoghq.com` (AP1)
+
+#### With a custom service name
+
+```shell
+zenml log-store register datadog_logs \
+    --flavor=datadog \
+    --api_key='{{datadog_keys.api_key}}' \
+    --application_key='{{datadog_keys.application_key}}' \
+    --service_name=my-ml-pipelines
+```
+
+### Configuration options
+
+| Parameter               | Default           | Description                                  |
+| ----------------------- | ----------------- | -------------------------------------------- |
+| `api_key`               | *required*        | Datadog API key for log ingestion            |
+| `application_key`       | *required*        | Datadog Application key for log retrieval    |
+| `site`                  | `"datadoghq.com"` | Datadog site (e.g., `datadoghq.eu`)          |
+| `service_name`          | `"zenml"`         | Service name shown in Datadog logs           |
+| `service_version`       | ZenML version     | Service version shown in Datadog logs        |
+| `max_export_batch_size` | `500`             | Maximum batch size (Datadog limit: 1000)     |
+| `max_queue_size`        | `100000`          | Maximum queue size for batch processor       |
+| `schedule_delay_millis` | `5000`            | Delay between batch exports (milliseconds)   |
+| `export_timeout_millis` | `15000`           | Timeout for each export batch (milliseconds) |
+
+{% hint style="warning" %}
+Datadog has a maximum batch size limit of 1000 logs per request. The `max_export_batch_size` is capped at this value.
+{% endhint %}
+
+### Viewing logs
+
+#### In ZenML Dashboard
+
+Logs are automatically fetched from Datadog when viewing step details in the ZenML dashboard. The dashboard uses Datadog's Logs Search API to retrieve logs filtered by the step's log ID.
+
+#### In Datadog
+
+Navigate to **Logs** in your Datadog dashboard and use these filters:
+
+```
+service:zenml @zenml.pipeline.run.name:<YOUR_RUN_NAME>
+```
+
+Or filter by specific step:
+
+```
+service:zenml @zenml.pipeline.run.name:<YOUR_RUN_NAME> @zenml.step.run.name:my_training_step
+```
+
+### Troubleshooting
+
+#### Logs not appearing in Datadog
+
+1. Verify your API key is correct
+2. Check that you're looking at the correct Datadog site
+3. Ensure the service name filter matches your configuration
+4. Allow a few minutes for logs to be indexed
+
+#### Logs not appearing in ZenML Dashboard
+
+1. Verify your Application key is correct
+2. Ensure the Application key has the `logs_read` scope
+3. Check that the Datadog site configuration matches
+
+#### Rate limiting
+
+If you're hitting Datadog's rate limits:
+
+* Increase `schedule_delay_millis` to reduce export frequency
+* Decrease `max_export_batch_size` for more frequent, smaller batches
+* Consider log sampling for high-volume pipelines
+
+For more information and a full list of configurable attributes, check out the [SDK Docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-log_stores.html#zenml.log_stores.datadog.datadog_log_store).
+
+
+# Develop a Custom Log Store
+
+Learning how to develop a custom log store.
+
+{% hint style="info" %}
+Before diving into the specifics of this component type, it is beneficial to familiarize yourself with our [general guide to writing custom component flavors in ZenML](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/implement-a-custom-stack-component). This guide provides an essential understanding of ZenML's component flavor concepts.
+{% endhint %}
+
+ZenML comes equipped with [Log Store implementations](https://docs.zenml.io/stacks/stack-components/log-stores/..#log-store-flavors) that you can use to store logs in your artifact store, export to OpenTelemetry-compatible backends, or send to Datadog. However, if you need to use a different logging backend, you can extend ZenML to provide your own custom Log Store implementation.
+
+### Base Abstraction
+
+The log store is responsible for collecting, storing, and retrieving logs during pipeline execution. Let's take a deeper dive into the fundamentals behind its abstraction, namely the `BaseLogStore` class:
+
+1. **Origins**: A `BaseLogStoreOrigin` represents the source of log records (e.g., a step execution). When logging starts, you register an origin with the log store, then emit logs through the log store referencing that origin. When logging ends, you deregister the origin to release resources.
+2. **Core methods**: The base class defines four abstract methods that must be implemented:
+   * `emit()`: Process and export a log record for a given origin
+   * `_release_origin()`: Called when logging for an origin is complete (cleanup resources)
+   * `flush()`: Ensure all pending logs are exported
+   * `fetch()`: Retrieve stored logs for display
+3. **Thread safety**: The base implementation includes locking mechanisms to ensure thread-safe operation.
+
+Here's a simplified view of the base implementation:
+
+```python
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Type
+import logging
+import threading
+
+from zenml.enums import StackComponentType
+from zenml.models import LogsResponse
+from zenml.stack import Flavor, StackComponent, StackComponentConfig
+from zenml.utils.logging_utils import LogEntry
+
+
+class BaseLogStoreConfig(StackComponentConfig):
+    """Base configuration for all log stores."""
+    pass
+
+
+class BaseLogStoreOrigin:
+    """Represents the source of log records (e.g., a step execution)."""
+
+    def __init__(
+        self,
+        name: str,
+        log_store: "BaseLogStore",
+        log_model: LogsResponse,
+        metadata: Dict[str, Any],
+    ) -> None:
+        self._name = name
+        self._log_store = log_store
+        self._log_model = log_model
+        self._metadata = metadata
+
+    @property
+    def name(self) -> str:
+        """The name of the origin."""
+        return self._name
+
+    @property
+    def log_model(self) -> LogsResponse:
+        """The log model associated with the origin."""
+        return self._log_model
+
+    @property
+    def metadata(self) -> Dict[str, Any]:
+        """The metadata associated with the origin."""
+        return self._metadata
+
+    def deregister(self) -> None:
+        """Deregister the origin from the log store."""
+        self._log_store.deregister_origin(self)
+
+
+class BaseLogStore(StackComponent, ABC):
+    """Base class for all ZenML log stores."""
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self._origins: Dict[str, BaseLogStoreOrigin] = {}
+        self._lock = threading.RLock()
+
+    @property
+    def origin_class(self) -> Type[BaseLogStoreOrigin]:
+        """Class of the origin used with this log store."""
+        return BaseLogStoreOrigin
+
+    def register_origin(
+        self, name: str, log_model: LogsResponse, metadata: Dict[str, Any]
+    ) -> BaseLogStoreOrigin:
+        """Register an origin for a logging context."""
+        with self._lock:
+            origin = self.origin_class(name, self, log_model, metadata)
+            self._origins[name] = origin
+            return origin
+
+    def deregister_origin(self, origin: BaseLogStoreOrigin) -> None:
+        """Deregister an origin and finalize its logs."""
+        with self._lock:
+            if origin.name not in self._origins:
+                return
+            self._release_origin(origin)
+            del self._origins[origin.name]
+            if len(self._origins) == 0:
+                self.flush(blocking=False)
+
+    @abstractmethod
+    def emit(
+        self,
+        origin: BaseLogStoreOrigin,
+        record: logging.LogRecord,
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> None:
+        """Process a log record for the given origin."""
+
+    @abstractmethod
+    def _release_origin(self, origin: BaseLogStoreOrigin) -> None:
+        """Finalize logging for an origin and release resources."""
+
+    @abstractmethod
+    def flush(self, blocking: bool = True) -> None:
+        """Flush all pending logs."""
+
+    @abstractmethod
+    def fetch(
+        self,
+        logs_model: LogsResponse,
+        start_time: Optional[datetime] = None,
+        end_time: Optional[datetime] = None,
+        limit: int = 20000,
+    ) -> List[LogEntry]:
+        """Fetch stored logs."""
+
+
+class BaseLogStoreFlavor(Flavor):
+    """Base class for all ZenML log store flavors."""
+
+    @property
+    def type(self) -> StackComponentType:
+        return StackComponentType.LOG_STORE
+
+    @property
+    def config_class(self) -> Type[BaseLogStoreConfig]:
+        return BaseLogStoreConfig
+
+    @property
+    @abstractmethod
+    def implementation_class(self) -> Type["BaseLogStore"]:
+        """Implementation class for this flavor."""
+```
+
+{% hint style="info" %}
+This is a slimmed-down version of the base implementation. For the full implementation with complete docstrings, check the [SDK docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-log_stores.html#zenml.log_stores.base_log_store).
+{% endhint %}
+
+### Extending the OTEL Log Store
+
+For most custom implementations, you'll want to extend `OtelLogStore` rather than `BaseLogStore` directly. The OTEL Log Store provides:
+
+* OpenTelemetry infrastructure (LoggerProvider, BatchLogRecordProcessor)
+* Automatic log batching and retry logic
+* Standard OTEL log format conversion
+
+To create a custom OTEL-based log store, you only need to implement:
+
+1. `get_exporter()`: Return your custom log exporter
+2. `fetch()`: Retrieve logs from your backend (optional, raise `NotImplementedError` if not supported)
+
+```python
+from typing import List, Optional, Type
+from datetime import datetime
+
+from opentelemetry.sdk._logs.export import LogExporter
+
+from zenml.log_stores.otel.otel_log_store import OtelLogStore
+from zenml.log_stores.otel.otel_flavor import OtelLogStoreConfig, OtelLogStoreFlavor
+from zenml.models import LogsResponse
+from zenml.utils.logging_utils import LogEntry
+
+
+class MyLogStoreConfig(OtelLogStoreConfig):
+    """Configuration for my custom log store."""
+    
+    my_custom_setting: str = "default_value"
+    api_key: str  # Required setting
+
+
+class MyLogStore(OtelLogStore):
+    """Custom log store implementation."""
+
+    @property
+    def config(self) -> MyLogStoreConfig:
+        return cast(MyLogStoreConfig, self._config)
+
+    def get_exporter(self) -> LogExporter:
+        """Return the log exporter for your backend."""
+        return MyCustomLogExporter(
+            endpoint=self.config.endpoint,
+            api_key=self.config.api_key,
+        )
+
+    def fetch(
+        self,
+        logs_model: LogsResponse,
+        start_time: Optional[datetime] = None,
+        end_time: Optional[datetime] = None,
+        limit: int = 20000,
+    ) -> List[LogEntry]:
+        """Fetch logs from your backend."""
+        # Implement log retrieval from your backend
+        # Return a list of LogEntry objects
+        raise NotImplementedError(
+            "Log fetching is not supported by this log store."
+        )
+
+
+class MyLogStoreFlavor(OtelLogStoreFlavor):
+    """Flavor for my custom log store."""
+
+    @property
+    def name(self) -> str:
+        return "my_custom"
+
+    @property
+    def config_class(self) -> Type[MyLogStoreConfig]:
+        return MyLogStoreConfig
+
+    @property
+    def implementation_class(self) -> Type[MyLogStore]:
+        return MyLogStore
+```
+
+### Creating a Custom Log Exporter
+
+If you're using a custom backend, you'll need to implement a log exporter. The exporter receives batches of OpenTelemetry log records and sends them to your backend:
+
+```python
+from typing import Sequence
+from opentelemetry.sdk._logs import LogData
+from opentelemetry.sdk._logs.export import LogExporter, LogExportResult
+
+
+class MyCustomLogExporter(LogExporter):
+    """Exporter that sends logs to my custom backend."""
+
+    def __init__(self, endpoint: str, api_key: str):
+        self.endpoint = endpoint
+        self.api_key = api_key
+        self._shutdown = False
+
+    def export(self, batch: Sequence[LogData]) -> LogExportResult:
+        """Export a batch of logs."""
+        if self._shutdown:
+            return LogExportResult.FAILURE
+
+        try:
+            # Convert OTEL logs to your backend's format
+            logs_data = []
+            for log_data in batch:
+                record = log_data.log_record
+                logs_data.append({
+                    "timestamp": record.timestamp,
+                    "message": str(record.body),
+                    "severity": record.severity_text,
+                    "attributes": dict(record.attributes or {}),
+                })
+
+            # Send to your backend
+            response = requests.post(
+                self.endpoint,
+                json={"logs": logs_data},
+                headers={"Authorization": f"Bearer {self.api_key}"},
+                timeout=30,
+            )
+            
+            if response.ok:
+                return LogExportResult.SUCCESS
+            return LogExportResult.FAILURE
+
+        except Exception:
+            return LogExportResult.FAILURE
+
+    def shutdown(self) -> None:
+        """Shutdown the exporter."""
+        self._shutdown = True
+```
+
+### Implementing Log Fetching
+
+If your backend supports log retrieval, implement the `fetch()` method to enable log viewing in the ZenML dashboard:
+
+```python
+def fetch(
+    self,
+    logs_model: LogsResponse,
+    start_time: Optional[datetime] = None,
+    end_time: Optional[datetime] = None,
+    limit: int = 20000,
+) -> List[LogEntry]:
+    """Fetch logs from the backend."""
+    # Query your backend using logs_model.id to filter
+    response = requests.get(
+        f"{self.config.endpoint}/logs",
+        params={
+            "log_id": str(logs_model.id),
+            "start_time": start_time.isoformat() if start_time else None,
+            "end_time": end_time.isoformat() if end_time else None,
+            "limit": limit,
+        },
+        headers={"Authorization": f"Bearer {self.config.api_key}"},
+    )
+    
+    log_entries = []
+    for log in response.json()["logs"]:
+        log_entries.append(LogEntry(
+            message=log["message"],
+            level=LoggingLevels[log["severity"].upper()],
+            timestamp=datetime.fromisoformat(log["timestamp"]),
+            name=log.get("logger_name"),
+            filename=log.get("filename"),
+            lineno=log.get("line_number"),
+        ))
+    
+    return log_entries
+```
+
+### Build Your Own Custom Log Store
+
+Follow these steps to create and register your custom log store:
+
+1. **Create the implementation**: Implement your log store class, configuration, and flavor as shown above.
+2. **Create the exporter** (if needed): Implement a custom `LogExporter` for your backend.
+3. **Register the flavor**: Use the CLI to register your custom flavor:
+
+```shell
+zenml log-store flavor register <path.to.MyLogStoreFlavor>
+```
+
+For example, if your flavor class `MyLogStoreFlavor` is defined in `flavors/my_log_store.py`:
+
+```shell
+zenml log-store flavor register flavors.my_log_store.MyLogStoreFlavor
+```
+
+{% hint style="warning" %}
+ZenML resolves the flavor class by taking the path where you initialized zenml (via `zenml init`) as the starting point of resolution. Ensure you follow [the best practice](https://docs.zenml.io/user-guides/best-practices/iac) of initializing zenml at the root of your repository.
+{% endhint %}
+
+4. **Verify registration**: Check that your flavor appears in the list:
+
+```shell
+zenml log-store flavor list
+```
+
+5. **Register and use your log store**:
+
+```shell
+zenml log-store register my_logs \
+    --flavor=my_custom \
+    --endpoint=https://my-backend.example.com/logs \
+    --api_key=<MY_API_KEY>
+
+zenml stack register my_stack -ls my_logs ... --set
+```
+
+{% hint style="info" %}
+**Important timing notes:**
+
+* The **CustomLogStoreFlavor** class is imported when registering the flavor via CLI.
+* The **CustomLogStoreConfig** class is imported when registering/updating a stack component (used for validation).
+* The **CustomLogStore** class is only imported when the component is actually used.
+
+This separation allows you to register flavors even when their dependencies aren't installed locally.
+{% endhint %}
+
+{% hint style="warning" %}
+**Important**: Log stores are instantiated on the ZenML server to fetch logs for display in the dashboard. This introduces a critical constraint on your implementation. When the ZenML dashboard or API requests logs, the server instantiates the log store and calls its `fetch()` method. This means that there can be **no external dependencies** that aren't already installed on the ZenML server.
+{% endhint %}
+
+### Best Practices
+
+1. **Extend OtelLogStore**: Unless you have specific requirements, extend `OtelLogStore` to benefit from built-in batching and retry logic.
+2. **Handle failures gracefully**: Log export failures shouldn't crash your pipeline. Return `LogExportResult.FAILURE` and log warnings.
+3. **Implement retry logic**: For network-based backends, implement retry logic in your exporter.
+4. **Use secrets for credentials**: Store API keys and tokens in ZenML secrets, not in the config directly.
+5. **Test thoroughly**: Test your implementation with various log volumes and failure scenarios.
+6. **Document configuration**: Clearly document all configuration options and their defaults.
+7. **Keep fetch() simple**: Remember that `fetch()` runs on the server with limited dependencies. Use only built-in Python libraries and HTTP APIs.
 
 
 # Step Operators
@@ -38766,7 +43074,7 @@ zenml stack register custom_stack -e mlflow_experiment_tracker ... --set
 * [Remote Experiment Tracking with MLflow Tracking Server](https://mlflow.org/docs/latest/tracking/tutorials/remote-server.html): This scenario assumes that you have already deployed an MLflow Tracking Server enabled with proxied artifact storage access. There is no restriction regarding what other types of components it can be combined with. This option requires [authentication-related parameters](#authentication-methods) to be configured for the MLflow Experiment Tracker.
 
 {% hint style="warning" %}
-Due to a [critical severity vulnerability](https://github.com/advisories/GHSA-xg73-94fp-g449) found in older versions of MLflow, we recommend using MLflow version 2.2.1 or higher.
+Due to a [critical severity vulnerability](https://github.com/advisories/GHSA-xg73-94fp-g449) found in older versions of MLflow, we recommend using MLflow version 2.2.1 or higher. ZenML supports both MLflow 2.x and 3.x versions.
 {% endhint %}
 
 * [Databricks scenario](https://www.databricks.com/product/managed-mlflow): This scenario assumes that you have a Databricks workspace, and you want to use the managed MLflow Tracking server it provides. This option requires [authentication-related parameters](#authentication-methods) to be configured for the MLflow Experiment Tracker.
@@ -38968,6 +43276,12 @@ Check out the [SDK docs](https://sdkdocs.zenml.io/latest/integration_code_docs/i
 
 Logging and visualizing experiments with neptune.ai
 
+{% hint style="warning" %}
+**Neptune.ai has been acquired by OpenAI** (announced December 2025) and Neptune's standalone services will be discontinued on March 5, 2026. While the ZenML Neptune integration remains functional until that date, we recommend migrating to an alternative experiment tracker such as [MLflow](https://docs.zenml.io/stacks/stack-components/experiment-trackers/mlflow), [Weights & Biases](https://docs.zenml.io/stacks/stack-components/experiment-trackers/wandb), or [Comet](https://docs.zenml.io/stacks/stack-components/experiment-trackers/comet).
+
+If you have existing data in Neptune that you'd like to preserve, the [neptune-exporter](https://github.com/neptune-ai/neptune-exporter) CLI tool can help you migrate your experiment data to ZenML, MLflow, W\&B, and other platforms. See the [Neptune transition hub](https://neptune.ai/blog/we-are-joining-openai) for more details about the shutdown timeline and migration options.
+{% endhint %}
+
 The Neptune Experiment Tracker is an [Experiment Tracker](https://docs.zenml.io/stacks/stack-components/experiment-trackers) flavor provided with the Neptune-ZenML integration that uses [neptune.ai](https://neptune.ai/product/experiment-tracking) to log and visualize information from your pipeline steps (e.g. models, parameters, metrics).
 
 ### When would you want to use it?
@@ -38996,7 +43310,7 @@ The Neptune Experiment Tracker needs to be configured with the credentials requi
 
 You need to configure the following credentials for authentication to Neptune:
 
-* `api_token`: [API key token](https://docs.neptune.ai/setup/setting_api_token) of your Neptune account. You can create a free Neptune account [here](https://app.neptune.ai/register). If left blank, Neptune will attempt to retrieve the token from your environment variables.
+* `api_token`: [API key token](https://web.archive.org/web/20250322035718/https://docs.neptune.ai/setup/setting_api_token/) of your Neptune account. You can create a free Neptune account [here](https://app.neptune.ai/register). If left blank, Neptune will attempt to retrieve the token from your environment variables.
 * `project`: The name of the project where you're sending the new run, in the form "workspace-name/project-name". If the project is not specified, Neptune will attempt to retrieve it from your environment variables.
 
 {% tabs %}
@@ -39052,7 +43366,7 @@ For more, up-to-date information on the Neptune Experiment Tracker implementatio
 
 ### How do you use it?
 
-To log information from a ZenML pipeline step using the Neptune Experiment Tracker component in the active stack, you need to enable an experiment tracker using the `@step` decorator. Then fetch the [Neptune run object](https://docs.neptune.ai/api/run/) and use logging capabilities as you would normally do. For example:
+To log information from a ZenML pipeline step using the Neptune Experiment Tracker component in the active stack, you need to enable an experiment tracker using the `@step` decorator. Then fetch the [Neptune run object](https://web.archive.org/web/20250311101837/https://docs.neptune.ai/api/run/) and use logging capabilities as you would normally do. For example:
 
 ```python
 from zenml.integrations.neptune.experiment_trackers.run_state import (
@@ -39275,7 +43589,7 @@ if __name__ == "__main__":
 
 ## Further reading
 
-Check [Neptune's docs](https://docs.neptune.ai/integrations/zenml/) for further information on how to use this integration and Neptune in general.
+Check [Neptune's docs](https://web.archive.org/web/20250316084453/https://docs.neptune.ai/integrations/zenml/) for further information on how to use this integration and Neptune in general.
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
@@ -40271,6 +44585,27 @@ zenml image-builder register <NAME> --flavor=local
 zenml stack register <STACK_NAME> -i <NAME> ... --set
 ```
 
+#### Use the Docker CLI for builds (subprocess mode)
+
+By default, the local image builder uses the Docker Python SDK to run builds. You can alternatively configure it to call the Docker CLI (`docker build`) via a subprocess. This can help if you require some options that are only available for Docker BuildKit, which is not supported in the Python SDK yet.
+
+Enable subprocess mode when registering or updating the component:
+
+```shell
+# Register with subprocess mode enabled
+zenml image-builder register <NAME> --flavor=local --use_subprocess_call=true
+
+# Or update an existing local image builder
+zenml image-builder update <NAME> --use_subprocess_call=true
+```
+
+In subprocess mode, the build options passed via `DockerSettings` are handled in the following way:
+
+* The `buildargs`, `labels` dictionaries are passed as `--build-arg KEY=VALUE` and `--label KEY=VALUE` respectively
+* Lists will pass multiple command line arguments with the same name for all values
+* `True` boolean values means the argument will be passed without any value (`--KEY`)
+* All other values are converted to a string and passed as `--KEY VALUE`
+
 For more information and a full list of configurable attributes of the local image builder, check out the [SDK Docs](https://sdkdocs.zenml.io/latest/core_code_docs/core-image_builders.html#zenml.image_builders.local_image_builder) .
 
 <figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
@@ -40706,6 +45041,11 @@ To use the Google Cloud image builder, we need:
   * the Docker image used by Google Cloud Build to execute the steps to build and push the Docker image. By default, the builder image will be `'gcr.io/cloud-builders/docker'`.
   * The network to which the container used to build the ZenML pipeline Docker image will be attached. More information: [Cloud build network](https://cloud.google.com/build/docs/build-config-file-schema#network).
   * The build timeout for the build, and for the blocking operation waiting for the build to finish. More information: [Build Timeout](https://cloud.google.com/build/docs/build-config-file-schema#timeout_2).
+  * The location to run Cloud Build (e.g., `us-central1`, `europe-west1`) when you need regional data residency, lower latency to nearby GCS buckets or Artifact Registry, or to use Cloud Build private pools.
+
+{% hint style="info" %}
+Even if your GCP Service Connector is scoped to a specific region, the GCP Image Builder uses the **global** Cloud Build endpoint by default. To run builds in a specific region, set the `location` parameter on the Image Builder. The Service Connector only supplies authentication and does not influence which Cloud Build region is used.
+{% endhint %}
 
 We can register the image builder and use it in our active stack:
 
@@ -40714,7 +45054,8 @@ zenml image-builder register <IMAGE_BUILDER_NAME> \
     --flavor=gcp \
     --cloud_builder_image=<BUILDER_IMAGE_NAME> \
     --network=<DOCKER_NETWORK> \
-    --build_timeout=<BUILD_TIMEOUT_IN_SECONDS>
+    --build_timeout=<BUILD_TIMEOUT_IN_SECONDS> \
+    --location=<GCP_REGION>
 
 # Register and activate a stack with the new image builder
 zenml stack register <STACK_NAME> -i <IMAGE_BUILDER_NAME> ... --set
@@ -40800,7 +45141,8 @@ zenml image-builder register <IMAGE_BUILDER_NAME> \
     --flavor=gcp \
     --cloud_builder_image=<BUILDER_IMAGE_NAME> \
     --network=<DOCKER_NETWORK> \
-    --build_timeout=<BUILD_TIMEOUT_IN_SECONDS>
+    --build_timeout=<BUILD_TIMEOUT_IN_SECONDS> \
+    --location=<GCP_REGION>
 
 # Connect the GCP Image Builder to GCP via a GCP Service Connector
 zenml image-builder connect <IMAGE_BUILDER_NAME> -i
@@ -40851,6 +45193,7 @@ zenml image-builder register <IMAGE_BUILDER_NAME> \
     --service_account_path=<PATH_TO_SERVICE_ACCOUNT_KEY> \
     --cloud_builder_image=<BUILDER_IMAGE_NAME> \
     --network=<DOCKER_NETWORK> \
+    --location=<GCP_REGION> \
     --build_timeout=<BUILD_TIMEOUT_IN_SECONDS>
 
 # Register and set a stack with the new image builder
@@ -43112,11 +47455,11 @@ text_data_report = evidently_report_step.with_options(
 The configuration shown in the example is the equivalent of running the following Evidently code inside the step:
 
 ```python
-from evidently.metrics import ColumnRegExpMetric
-from evidently.metric_preset import DataQualityPreset, TextOverviewPreset
-from evidently import ColumnMapping
-from evidently.report import Report
-from evidently.metrics.base_metric import generate_column_metrics
+from evidently.legacy.metrics import ColumnRegExpMetric
+from evidently.legacy.metric_preset import DataQualityPreset, TextOverviewPreset
+from evidently.legacy.pipeline.column_mapping import ColumnMapping
+from evidently.legacy.report import Report
+from evidently.legacy.metrics.base_metric import generate_column_metrics
 import nltk
 
 nltk.download("words")
@@ -43166,11 +47509,11 @@ We configure the `evidently_report_step` using parameters that you would normall
 There are several ways you can reference the Evidently metrics when configuring `EvidentlyMetricConfig` items:
 
 * by class name: this is the easiest way to reference an Evidently metric. You can use the name of a metric or metric preset class as it appears in the Evidently documentation (e.g.`"DataQualityPreset"`, `"DatasetDriftMetric"`).
-* by full class path: you can also use the full Python class path of the metric or metric preset class ( e.g. `"evidently.metric_preset.DataQualityPreset"`, `"evidently.metrics.DatasetDriftMetric"`). This is useful if you want to use metrics or metric presets that are not included in Evidently library.
+* by full class path: you can also use the full Python class path of the metric or metric preset class ( e.g. `"evidently.legacy.metric_preset.DataQualityPreset"`, `"evidently.legacy.metrics.DatasetDriftMetric"`). This is useful if you want to use metrics or metric presets that are not included in Evidently library.
 * by passing in the class itself: you can also import and pass in an Evidently metric or metric preset class itself, e.g.:
 
   ```python
-  from evidently.metrics import DatasetDriftMetric
+  from evidently.legacy.metrics import DatasetDriftMetric
 
   ...
 
@@ -43233,7 +47576,7 @@ text_data_report = evidently_report_step.with_options(
     parameters=dict(
         report_options = [
             (
-                "evidently.options.ColorOptions", {
+                "evidently.legacy.options.ColorOptions", {
                     "primary_color": "#5a86ad",
                     "fill_color": "#fff4f2",
                     "zero_line_color": "#016795",
@@ -43301,11 +47644,11 @@ text_data_test = evidently_test_step.with_options(
 The configuration shown in the example is the equivalent of running the following Evidently code inside the step:
 
 ```python
-from evidently.tests import TestColumnRegExp
-from evidently.test_preset import DataQualityTestPreset
-from evidently import ColumnMapping
-from evidently.test_suite import TestSuite
-from evidently.tests.base_test import generate_column_tests
+from evidently.legacy.tests import TestColumnRegExp
+from evidently.legacy.test_preset import DataQualityTestPreset
+from evidently.legacy.pipeline.column_mapping import ColumnMapping
+from evidently.legacy.test_suite import TestSuite
+from evidently.legacy.tests.base_test import generate_column_tests
 import nltk
 
 nltk.download("words")
@@ -43354,11 +47697,11 @@ We configure the `evidently_test_step` using parameters that you would normally 
 There are several ways you can reference the Evidently tests when configuring `EvidentlyTestConfig` items, similar to how you reference them in an `EvidentlyMetricConfig` object:
 
 * by class name: this is the easiest way to reference an Evidently test. You can use the name of a test or test preset class as it appears in the Evidently documentation (e.g.`"DataQualityTestPreset"`, `"TestColumnRegExp"`).
-* by full class path: you can also use the full Python class path of the test or test preset class ( e.g. `"evidently.test_preset.DataQualityTestPreset"`, `"evidently.tests.TestColumnRegExp"`). This is useful if you want to use tests or test presets that are not included in Evidently library.
+* by full class path: you can also use the full Python class path of the test or test preset class ( e.g. `"evidently.legacy.test_preset.DataQualityTestPreset"`, `"evidently.legacy.tests.TestColumnRegExp"`). This is useful if you want to use tests or test presets that are not included in Evidently library.
 * by passing in the class itself: you can also import and pass in an Evidently test or test preset class itself, e.g.:
 
   ```python
-  from evidently.tests import TestColumnRegExp
+  from evidently.legacy.tests import TestColumnRegExp
 
   ...
 
@@ -43410,7 +47753,7 @@ text_data_test = evidently_test_step.with_options(
     parameters=dict(
         test_options = [
             (
-                "evidently.options.ColorOptions", {
+                "evidently.legacy.options.ColorOptions", {
                     "primary_color": "#5a86ad",
                     "fill_color": "#fff4f2",
                     "zero_line_color": "#016795",
@@ -43435,7 +47778,7 @@ All you have to do is call the Evidently Data Validator methods when you need to
 from typing import Annotated
 from typing import Tuple
 import pandas as pd
-from evidently.pipeline.column_mapping import ColumnMapping
+from evidently.legacy.pipeline.column_mapping import ColumnMapping
 from zenml.integrations.evidently.data_validators import EvidentlyDataValidator
 from zenml.integrations.evidently.metrics import EvidentlyMetricConfig
 from zenml.integrations.evidently.tests import EvidentlyTestConfig
@@ -43556,11 +47899,11 @@ You can use the Evidently library directly in your custom pipeline steps, e.g.:
 from typing import Annotated
 from typing import Tuple
 import pandas as pd
-from evidently.report import Report
-import evidently.metric_preset as metric_preset
-from evidently.test_suite import TestSuite
-import evidently.test_preset as test_preset
-from evidently.pipeline.column_mapping import ColumnMapping
+from evidently.legacy.report import Report
+from evidently.legacy.metric_preset import DataQualityPreset
+from evidently.legacy.test_suite import TestSuite
+from evidently.legacy.test_preset import DataQualityTestPreset
+from evidently.legacy.pipeline.column_mapping import ColumnMapping
 from zenml.types import HTMLString
 from zenml import step
 
@@ -43583,7 +47926,7 @@ def data_profiler(
 
     # pre-processing (e.g. dataset preparation) can take place here
 
-    report = Report(metrics=[metric_preset.DataQualityPreset()])
+    report = Report(metrics=[DataQualityPreset()])
     report.run(
         current_data=dataset,
         reference_data=dataset,
@@ -43612,8 +47955,8 @@ def data_tester(
 
     # pre-processing (e.g. dataset preparation) can take place here
 
-    test_suite = TestSuite(metrics=[test_preset.DataQualityTestPreset()])
-    report.run(
+    test_suite = TestSuite(tests=[DataQualityTestPreset()])
+    test_suite.run(
         current_data=dataset,
         reference_data=dataset,
     )
@@ -44006,7 +48349,7 @@ Managing data in feature stores.
 
 Feature stores allow data teams to serve data via an offline store and an online low-latency store where data is kept in sync between the two. It also offers a centralized registry where features (and feature schemas) are stored for use within a team or wider organization.
 
-As a data scientist working on training your model, your requirements for how you access your batch / 'offline' data will almost certainly be different from how you access that data as part of a real-time or online inference setting. Feast solves the problem of developing [train-serve skew](https://ploomber.io/blog/train-serve-skew/) where those two sources of data diverge from each other.
+As a data scientist working on training your model, your requirements for how you access your batch / 'offline' data will almost certainly be different from how you access that data as part of a real-time or online inference setting. Feast solves the problem of developing train-serve skew where those two sources of data diverge from each other.
 
 Feature stores are a relatively recent addition to commonly-used machine learning stacks.
 
@@ -46151,7 +50494,7 @@ The MLFlow model registry will automatically use the same configuration as the M
 {% endhint %}
 
 {% hint style="warning" %}
-Due to a [critical severity vulnerability](https://github.com/advisories/GHSA-xg73-94fp-g449) found in older versions of MLflow, we recommend using MLflow version 2.2.1 or higher.
+Due to a [critical severity vulnerability](https://github.com/advisories/GHSA-xg73-94fp-g449) found in older versions of MLflow, we recommend using MLflow version 2.2.1 or higher. ZenML supports both MLflow 2.x and 3.x versions.
 {% endhint %}
 
 ## How do you use it?
@@ -46201,7 +50544,6 @@ If you are using a remote MLflow tracking server, the path will be something lik
 
 You can find the path of the model in the MLflow UI. Go to the `Artifacts` tab of the run that produced the model and click on the model. The path will be displayed in the URL:
 
-<img src="https://github.com/zenml-io/zenml/blob/main/docs/.gitbook/assets/mlflow-ui-model-uri.png" alt="Model URI in MLflow UI" data-size="original">
 {% endhint %}
 
 ### Register models via the CLI
@@ -46286,6 +50628,19 @@ $ zenml model-registry models get-version tensorflow-mnist-model -v 1
 ```
 
 Finally, to delete a registered model or a specific model version, you can use the `zenml model-registry models delete REGISTERED_MODEL_NAME` and `zenml model-registry models delete-version REGISTERED_MODEL_NAME -v VERSION` commands respectively.
+
+### MLflow 3.x and Model Stages
+
+{% hint style="info" %}
+**MLflow 3.x Users:** MLflow 3.x introduced [model aliases](https://mlflow.org/docs/latest/model-registry.html#using-registered-model-aliases) as a more flexible replacement for the traditional model stages (None, Staging, Production, Archived). When using ZenML with MLflow 3.x:
+
+* ZenML automatically maps stages to aliases: `Staging` → `staging`, `Production` → `champion`, `Archived` → `archived`
+* The stage transition API still works for backward compatibility, but uses aliases under the hood
+* Model aliases are stored in the model version metadata and can be viewed in the MLflow UI
+* You can use multiple aliases per model version for more flexible deployment workflows
+
+For more information, see the [MLflow Model Registry documentation](https://mlflow.org/docs/latest/model-registry.html).
+{% endhint %}
 
 Check out the [SDK docs](https://sdkdocs.zenml.io/latest/integration_code_docs/integrations-mlflow.html#zenml.integrations.mlflow) to see more about the interface and implementation.
 
@@ -46736,8 +51091,6 @@ formats:
 
 Dashboard equivalent:
 
-<img src="https://github.com/zenml-io/zenml/blob/main/docs/book/how-to/.gitbook/assets/.gitbook/assets/aws-s3-bucket-resource-type.png" alt="AWS Service Connector Type Details" data-size="original">
-
 Displaying information about the AWS Session Token authentication method:
 
 ```sh
@@ -46798,8 +51151,6 @@ Attributes:
 {% endcode %}
 
 Dashboard equivalent:
-
-<img src="https://github.com/zenml-io/zenml/blob/main/docs/book/how-to/.gitbook/assets/.gitbook/assets/aws-session-token-auth-method.png" alt="AWS Service Connector Type Details" data-size="original">
 
 </details>
 
@@ -49477,5627 +53828,6 @@ zenml service-connector list --name aws-sts-token
 
 
 # Connector Types
-
-
-# Docker Service Connector
-
-Configuring Docker Service Connectors to connect ZenML to Docker container registries.
-
-The ZenML Docker Service Connector allows authenticating with a Docker or OCI container registry and managing Docker clients for the registry. This connector provides pre-authenticated python-docker Python clients to Stack Components that are linked to it.
-
-```shell
-zenml service-connector list-types --type docker
-```
-
-```shell
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃           NAME           │ TYPE      │ RESOURCE TYPES     │ AUTH METHODS │ LOCAL │ REMOTE ┃
-┠──────────────────────────┼───────────┼────────────────────┼──────────────┼───────┼────────┨
-┃ Docker Service Connector │ 🐳 docker │ 🐳 docker-registry │ password     │ ✅    │ ✅     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-## Prerequisites
-
-No Python packages are required for this Service Connector. All prerequisites are included in the base ZenML Python package. Docker needs to be installed on environments where container images are built and pushed to the target container registry.
-
-## Resource Types
-
-The Docker Service Connector only supports authenticating to and granting access to a Docker/OCI container registry. This type of resource is identified by the `docker-registry` Resource Type.
-
-The resource name identifies a Docker/OCI registry using one of the following formats (the repository name is optional and ignored).
-
-* DockerHub: docker.io or `https://index.docker.io/v1/<repository-name>`
-* generic OCI registry URI: `https://host:port/<repository-name>`
-
-## Authentication Methods
-
-Authenticating to Docker/OCI container registries is done with a username and password or access token. It is recommended to use API tokens instead of passwords, wherever this is available, for example in the case of DockerHub:
-
-```sh
-zenml service-connector register dockerhub --type docker -in
-```
-
-{% code title="Example Command Output" %}
-
-```
-Please enter a name for the service connector [dockerhub]: 
-Please enter a description for the service connector []: 
-Please select a service connector type (docker) [docker]: 
-Only one resource type is available for this connector (docker-registry).
-Only one authentication method is available for this connector (password). Would you like to use it? [Y/n]: 
-Please enter the configuration for the Docker username and password/token authentication method.
-[username] Username {string, secret, required}: 
-[password] Password {string, secret, required}: 
-[registry] Registry server URL. Omit to use DockerHub. {string, optional}: 
-Successfully registered service connector `dockerhub` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃   RESOURCE TYPE    │ RESOURCE NAMES ┃
-┠────────────────────┼────────────────┨
-┃ 🐳 docker-registry │ docker.io      ┃
-┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-{% hint style="warning" %}
-This Service Connector does not support generating short-lived credentials from the username and password or token credentials configured in the Service Connector. In effect, this means that the configured credentials will be distributed directly to clients and used to authenticate directly to the target Docker/OCI registry service.
-{% endhint %}
-
-## Auto-configuration
-
-{% hint style="info" %}
-This Service Connector does not support auto-discovery and extraction of authentication credentials from local Docker clients. If this feature is useful to you or your organization, please let us know by messaging us in [Slack](https://zenml.io/slack) or [creating an issue on GitHub](https://github.com/zenml-io/zenml/issues).
-{% endhint %}
-
-## Local client provisioning
-
-This Service Connector allows configuring the local Docker client with credentials:
-
-```sh
-zenml service-connector login dockerhub
-```
-
-{% code title="Example Command Output" %}
-
-```
-Attempting to configure local client using service connector 'dockerhub'...
-WARNING! Your password will be stored unencrypted in /home/stefan/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-The 'dockerhub' Docker Service Connector connector was used to successfully configure the local Docker/OCI container registry client/SDK.
-```
-
-{% endcode %}
-
-## Stack Components use
-
-The Docker Service Connector can be used by all Container Registry stack component flavors to authenticate to a remote Docker/OCI container registry. This allows container images to be built and published to private container registries without the need to configure explicit Docker credentials in the target environment or the Stack Component.
-
-{% hint style="warning" %}
-ZenML does not yet support automatically configuring Docker credentials in container runtimes such as Kubernetes clusters (i.e. via imagePullSecrets) to allow container images to be pulled from the private container registries. This will be added in a future release.
-{% endhint %}
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# Kubernetes Service Connector
-
-Configuring Kubernetes Service Connectors to connect ZenML to Kubernetes clusters.
-
-The ZenML Kubernetes service connector facilitates authenticating and connecting to a Kubernetes cluster. The connector can be used to access to any generic Kubernetes cluster by providing pre-authenticated Kubernetes python clients to Stack Components that are linked to it and also allows configuring the local Kubernetes CLI (i.e. `kubectl`).
-
-## Prerequisites
-
-The Kubernetes Service Connector is part of the Kubernetes ZenML integration. You can either install the entire integration or use a pypi extra to install it independently of the integration:
-
-* `pip install "zenml[connectors-kubernetes]"` installs only prerequisites for the Kubernetes Service Connector Type
-* `zenml integration install kubernetes` installs the entire Kubernetes ZenML integration
-
-A local Kubernetes CLI (i.e. `kubectl` ) and setting up local `kubectl` configuration contexts is not required to access Kubernetes clusters in your Stack Components through the Kubernetes Service Connector.
-
-```shell
-$ zenml service-connector list-types --type kubernetes
-```
-
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃             NAME             │ TYPE          │ RESOURCE TYPES        │ AUTH METHODS │ LOCAL │ REMOTE ┃
-┠──────────────────────────────┼───────────────┼───────────────────────┼──────────────┼───────┼────────┨
-┃ Kubernetes Service Connector │ 🌀 kubernetes │ 🌀 kubernetes-cluster │ password     │ ✅    │ ✅     ┃
-┃                              │               │                       │ token        │       │        ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-## Resource Types
-
-The Kubernetes Service Connector only supports authenticating to and granting access to a generic Kubernetes cluster. This type of resource is identified by the `kubernetes-cluster` Resource Type.
-
-The resource name is a user-friendly cluster name configured during registration.
-
-## Authentication Methods
-
-Two authentication methods are supported:
-
-1. username and password. This is not recommended for production purposes.
-2. authentication token with or without client certificates.
-
-For Kubernetes clusters that use neither username and password nor authentication tokens, such as local K3D clusters, the authentication token method can be used with an empty token.
-
-{% hint style="warning" %}
-This Service Connector does not support generating short-lived credentials from the credentials configured in the Service Connector. In effect, this means that the configured credentials will be distributed directly to clients and used to authenticate to the target Kubernetes API. It is recommended therefore to use API tokens accompanied by client certificates if possible.
-{% endhint %}
-
-## Auto-configuration
-
-The Kubernetes Service Connector allows fetching credentials from the local Kubernetes CLI (i.e. `kubectl`) during registration. The current Kubernetes kubectl configuration context is used for this purpose. The following is an example of lifting Kubernetes credentials granting access to a GKE cluster:
-
-```sh
-zenml service-connector register kube-auto --type kubernetes --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `kube-auto` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES ┃
-┠───────────────────────┼────────────────┨
-┃ 🌀 kubernetes-cluster │ 35.185.95.223  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector describe kube-auto 
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'kube-auto' of type 'kubernetes' with id '4315e8eb-fcbd-4938-a4d7-a9218ab372a1' is owned by user 'default' and is 'private'.
-     'kube-auto' kubernetes Service Connector Details      
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ ID               │ 4315e8eb-fcbd-4938-a4d7-a9218ab372a1 ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ NAME             │ kube-auto                            ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ TYPE             │ 🌀 kubernetes                        ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ AUTH METHOD      │ token                                ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🌀 kubernetes-cluster                ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ RESOURCE NAME    │ 35.175.95.223                        ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SECRET ID        │ a833e86d-b845-4584-9656-4b041335e299 ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                  ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                  ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ OWNER            │ default                              ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SHARED           │ ➖                                   ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-16 21:45:33.224740           ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-16 21:45:33.224743           ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                  Configuration                  
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE                 ┃
-┠───────────────────────┼───────────────────────┨
-┃ server                │ https://35.175.95.223 ┃
-┠───────────────────────┼───────────────────────┨
-┃ insecure              │ False                 ┃
-┠───────────────────────┼───────────────────────┨
-┃ cluster_name          │ 35.175.95.223         ┃
-┠───────────────────────┼───────────────────────┨
-┃ token                 │ [HIDDEN]              ┃
-┠───────────────────────┼───────────────────────┨
-┃ certificate_authority │ [HIDDEN]              ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-{% hint style="info" %}
-Credentials auto-discovered and lifted through the Kubernetes Service Connector might have a limited lifetime, especially if the target Kubernetes cluster is managed through a 3rd party authentication provider such a GCP or AWS. Using short-lived credentials with your Service Connectors could lead to loss of connectivity and other unexpected errors in your pipeline.
-{% endhint %}
-
-## Local client provisioning
-
-This Service Connector allows configuring the local Kubernetes client (i.e. `kubectl`) with credentials:
-
-```sh
-zenml service-connector login kube-auto 
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠦ Attempting to configure local client using service connector 'kube-auto'...
-Cluster "35.185.95.223" set.
-⠇ Attempting to configure local client using service connector 'kube-auto'...
-⠏ Attempting to configure local client using service connector 'kube-auto'...
-Updated local kubeconfig with the cluster details. The current kubectl context was set to '35.185.95.223'.
-The 'kube-auto' Kubernetes Service Connector connector was used to successfully configure the local Kubernetes cluster client/SDK.
-```
-
-{% endcode %}
-
-## Stack Components use
-
-The Kubernetes Service Connector can be used in Orchestrator and Model Deployer stack component flavors that rely on Kubernetes clusters to manage their workloads. This allows Kubernetes container workloads to be managed without the need to configure and maintain explicit Kubernetes `kubectl` configuration contexts and credentials in the target environment and in the Stack Component.
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# AWS Service Connector
-
-Configuring AWS Service Connectors to connect ZenML to AWS resources like S3 buckets, EKS Kubernetes clusters and ECR container registries.
-
-The ZenML AWS Service Connector facilitates the authentication and access to managed AWS services and resources. These encompass a range of resources, including S3 buckets, ECR container repositories, and EKS clusters. The connector provides support for various authentication methods, including explicit long-lived AWS secret keys, IAM roles, short-lived STS tokens, and implicit authentication.
-
-To ensure heightened security measures, this connector also enables [the generation of temporary STS security tokens that are scoped down to the minimum permissions necessary](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) for accessing the intended resource. Furthermore, it includes [automatic configuration and detection of credentials locally configured through the AWS CLI](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration).
-
-This connector serves as a general means of accessing any AWS service by issuing pre-authenticated boto3 sessions. Additionally, the connector can handle specialized authentication for S3, Docker, and Kubernetes Python clients. It also allows for the configuration of local Docker and Kubernetes CLIs.
-
-```shell
-$ zenml service-connector list-types --type aws
-```
-
-```shell
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃         NAME          │ TYPE   │ RESOURCE TYPES        │ AUTH METHODS     │ LOCAL │ REMOTE ┃
-┠───────────────────────┼────────┼───────────────────────┼──────────────────┼───────┼────────┨
-┃ AWS Service Connector │ 🔶 aws │ 🔶 aws-generic        │ implicit         │ ✅    │ ✅     ┃
-┃                       │        │ 📦 s3-bucket          │ secret-key       │       │        ┃
-┃                       │        │ 🌀 kubernetes-cluster │ sts-token        │       │        ┃
-┃                       │        │ 🐳 docker-registry    │ iam-role         │       │        ┃
-┃                       │        │                       │ session-token    │       │        ┃
-┃                       │        │                       │ federation-token │       │        ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-{% hint style="info" %}
-This service connector will not be able to work if [Multi-Factor Authentication (MFA)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_cliapi.html) is enabled on the role used by the AWS CLI. When MFA is enabled, the AWS CLI generates temporary credentials that are valid for a limited time. These temporary credentials cannot be used by the ZenML AWS Service Connector, as it requires long-lived credentials to authenticate and access AWS resources.
-
-To use the AWS Service Connector with ZenML, you will need to use a different AWS CLI profile that does not have MFA enabled. You can do this by setting the `AWS_PROFILE` environment variable to the name of the profile you want to use before running the ZenML CLI commands.
-{% endhint %}
-
-## Prerequisites
-
-The AWS Service Connector is part of the AWS ZenML integration. You can either install the entire integration or use a PyPI extra to install it independently of the integration:
-
-* `pip install "zenml[connectors-aws]"` installs only prerequisites for the AWS Service Connector Type
-* `zenml integration install aws` installs the entire AWS ZenML integration
-
-It is not required to [install and set up the AWS CLI on your local machine](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) to use the AWS Service Connector to link Stack Components to AWS resources and services. However, it is recommended to do so if you are looking for a quick setup that includes using the auto-configuration Service Connector features.
-
-{% hint style="info" %}
-The auto-configuration examples in this page rely on the AWS CLI being installed and already configured with valid credentials of one type or another. If you want to avoid installing the AWS CLI, we recommend using the interactive mode of the ZenML CLI to register Service Connectors:
-
-```
-zenml service-connector register -i --type aws
-```
-
-{% endhint %}
-
-## Resource Types
-
-### Generic AWS resource
-
-This resource type allows consumers to use the AWS Service Connector to connect to any AWS service or resource. When used by connector clients, they are provided a generic Python boto3 session instance pre-configured with AWS credentials. This session can then be used to create boto3 clients for any particular AWS service.
-
-This generic AWS resource type is meant to be used with Stack Components that are not represented by other, more specific resource types, like S3 buckets, Kubernetes clusters, or Docker registries. It should be accompanied by a matching set of AWS permissions that allow access to the set of remote resources required by the client(s).
-
-The resource name represents the AWS region that the connector is authorized to access.
-
-### S3 bucket
-
-Allows users to connect to S3 buckets. When used by connector consumers, they are provided a pre-configured boto3 S3 client instance.
-
-The configured credentials must have at least the following [AWS IAM permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) associated with [the ARNs of S3 buckets ](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html)that the connector will be allowed to access (e.g. `arn:aws:s3:::*` and `arn:aws:s3:::*/*` represent all the available S3 buckets).
-
-* `s3:ListBucket`
-* `s3:GetObject`
-* `s3:PutObject`
-* `s3:DeleteObject`
-* `s3:ListAllMyBuckets`
-* `s3:GetBucketVersioning`
-* `s3:ListBucketVersions`
-* `s3:DeleteObjectVersion`
-
-{% hint style="info" %}
-If you are using the [AWS IAM role](#aws-iam-role), [Session Token](#aws-session-token), or [Federation Token](#aws-federation-token) authentication methods, you don't have to worry too much about restricting the permissions of the AWS credentials that you use to access the AWS cloud resources. These authentication methods already support [automatically generating temporary tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) with permissions down-scoped to the minimum required to access the target resource.
-{% endhint %}
-
-If set, the resource name must identify an S3 bucket using one of the following formats:
-
-* S3 bucket URI (canonical resource name): `s3://{bucket-name}`
-* S3 bucket ARN: `arn:aws:s3:::{bucket-name}`
-* S3 bucket name: `{bucket-name}`
-
-### EKS Kubernetes cluster
-
-Allows users to access an EKS cluster as a standard Kubernetes cluster resource. When used by Stack Components, they are provided a pre-authenticated Python Kubernetes client instance.
-
-The configured credentials must have at least the following [AWS IAM permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) associated with the [ARNs of EKS clusters](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) that the connector will be allowed to access (e.g. `arn:aws:eks:{region_id}:{project_id}:cluster/*` represents all the EKS clusters available in the target AWS region).
-
-* `eks:ListClusters`
-* `eks:DescribeCluster`
-
-{% hint style="info" %}
-If you are using the [AWS IAM role](#aws-iam-role), [Session Token](#aws-session-token) or [Federation Token](#aws-federation-token) authentication methods, you don't have to worry too much about restricting the permissions of the AWS credentials that you use to access the AWS cloud resources. These authentication methods already support [automatically generating temporary tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) with permissions down-scoped to the minimum required to access the target resource.
-{% endhint %}
-
-In addition to the above permissions, if the credentials are not associated with the same IAM user or role that created the EKS cluster, the IAM principal must be manually added to the EKS cluster's `aws-auth` ConfigMap, otherwise the Kubernetes client will not be allowed to access the cluster's resources. This makes it more challenging to use [the AWS Implicit](#implicit-authentication) and [AWS Federation Token](#aws-federation-token) authentication methods for this resource. For more information, [see this documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
-
-If set, the resource name must identify an EKS cluster using one of the following formats:
-
-* EKS cluster name (canonical resource name): `{cluster-name}`
-* EKS cluster ARN: `arn:aws:eks:{region}:{account-id}:cluster/{cluster-name}`
-
-EKS cluster names are region scoped. The connector can only be used to access EKS clusters in the AWS region that it is configured to use.
-
-### ECR container registry
-
-Allows Stack Components to access one or more ECR repositories as a standard Docker registry resource. When used by Stack Components, they are provided a pre-authenticated python-docker client instance.
-
-The configured credentials must have at least the following [AWS IAM permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) associated with the [ARNs of one or more ECR repositories](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) that the connector will be allowed to access (e.g. `arn:aws:ecr:{region}:{account}:repository/*` represents all the ECR repositories available in the target AWS region).
-
-* `ecr:DescribeRegistry`
-* `ecr:DescribeRepositories`
-* `ecr:ListRepositories`
-* `ecr:BatchGetImage`
-* `ecr:DescribeImages`
-* `ecr:BatchCheckLayerAvailability`
-* `ecr:GetDownloadUrlForLayer`
-* `ecr:InitiateLayerUpload`
-* `ecr:UploadLayerPart`
-* `ecr:CompleteLayerUpload`
-* `ecr:PutImage`
-* `ecr:GetAuthorizationToken`
-
-{% hint style="info" %}
-If you are using the [AWS IAM role](#aws-iam-role), [Session Token](#aws-session-token), or [Federation Token](#aws-federation-token) authentication methods, you don't have to worry too much about restricting the permissions of the AWS credentials that you use to access the AWS cloud resources. These authentication methods already support [automatically generating temporary tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) with permissions down-scoped to the minimum required to access the target resource.
-{% endhint %}
-
-This resource type is not scoped to a single ECR repository. Instead, a connector configured with this resource type will grant access to all the ECR repositories that the credentials are allowed to access under the configured AWS region (i.e. all repositories under the Docker registry URL `https://{account-id}.dkr.ecr.{region}.amazonaws.com`).
-
-The resource name associated with this resource type uniquely identifies an ECR registry using one of the following formats (the repository name is ignored, only the registry URL/ARN is used):
-
-* ECR repository URI (canonical resource name):
-
-`[https://]{account}.dkr.ecr.{region}.amazonaws.com[/{repository-name}]`
-
-* ECR repository ARN :
-
-`arn:aws:ecr:{region}:{account-id}:repository[/{repository-name}]`
-
-ECR repository names are region scoped. The connector can only be used to access ECR repositories in the AWS region that it is configured to use.
-
-## Authentication Methods
-
-### Implicit authentication
-
-[Implicit authentication](https://docs.zenml.io/stacks/best-security-practices#implicit-authentication) to AWS services using environment variables, local configuration files or IAM roles.
-
-{% hint style="warning" %}
-This method may constitute a security risk, because it can give users access to the same cloud resources and services that the ZenML Server itself is configured to access. For this reason, all implicit authentication methods are disabled by default and need to be explicitly enabled by setting the `ZENML_ENABLE_IMPLICIT_AUTH_METHODS` environment variable or the helm chart `enableImplicitAuthMethods` configuration option to `true` in the ZenML deployment.
-{% endhint %}
-
-This authentication method doesn't require any credentials to be explicitly configured. It automatically discovers and uses credentials from one of the following sources:
-
-* environment variables (AWS\_ACCESS\_KEY\_ID, AWS\_SECRET\_ACCESS\_KEY, AWS\_SESSION\_TOKEN, AWS\_DEFAULT\_REGION)
-* local configuration files [set up through the AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)(\~/aws/credentials, \~/.aws/config)
-* IAM roles for Amazon EC2, ECS, EKS, Lambda, etc. Only works when running the ZenML server on an AWS resource with an IAM role attached to it.
-
-This is the quickest and easiest way to authenticate to AWS services. However, the results depend on how ZenML is deployed and the environment where it is used and is thus not fully reproducible:
-
-* when used with the default local ZenML deployment or a local ZenML server, the credentials are the same as those used by the AWS CLI or extracted from local environment variables
-* when connected to a ZenML server, this method only works if the ZenML server is deployed in AWS and will use the IAM role attached to the AWS resource where the ZenML server is running (e.g. an EKS cluster). The IAM role permissions may need to be adjusted to allow listing and accessing/describing the AWS resources that the connector is configured to access.
-
-An IAM role may optionally be specified to be assumed by the connector on top of the implicit credentials. This is only possible when the implicit credentials have permissions to assume the target IAM role. Configuring an IAM role has all the advantages of the [AWS IAM Role](#aws-iam-role) authentication method plus the added benefit of not requiring any explicit credentials to be configured and stored:
-
-* the connector will [generate temporary STS tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) upon request by [calling the AssumeRole STS API](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerole).
-* allows implementing [a two layer authentication scheme](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) that keeps the set of permissions associated with implicit credentials down to the bare minimum and grants permissions to the privilege-bearing IAM role instead.
-* one or more optional [IAM session policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session) may also be configured to further restrict the permissions of the generated STS tokens. If not specified, IAM session policies are automatically configured for the generated STS tokens [to restrict them to the minimum set of permissions required to access the target resource](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials). Refer to the documentation for each supported Resource Type for the complete list of AWS permissions automatically granted to the generated STS tokens.
-* the default expiration period for generated STS tokens is 1 hour with a minimum of 15 minutes up to the maximum session duration setting configured for the IAM role (default is 1 hour). If you need longer-lived tokens, you can configure the IAM role to use a higher maximum expiration value (up to 12 hours) or use the AWS Federation Token or AWS Session Token authentication methods.
-
-Note that the discovered credentials inherit the full set of permissions of the local AWS client configuration, environment variables, or remote AWS IAM role. Depending on the extent of those permissions, this authentication instead method might not be recommended for production use, as it can lead to accidental privilege escalation. It is recommended to also configure an IAM role when using the implicit authentication method, or to use the [AWS IAM Role](#aws-iam-role), [AWS Session Token](#aws-session-token), or [AWS Federation Token](#aws-federation-token) authentication methods instead to limit the validity and/or permissions of the credentials being issued to connector clients.
-
-{% hint style="info" %}
-If you need to access an EKS Kubernetes cluster with this authentication method, please be advised that the EKS cluster's `aws-auth` ConfigMap may need to be manually configured to allow authentication with the implicit IAM user or role picked up by the Service Connector. For more information, [see this documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
-{% endhint %}
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes the local AWS CLI has a `connectors` AWS CLI profile already configured with credentials:
-
-```sh
-AWS_PROFILE=connectors zenml service-connector register aws-implicit --type aws --auth-method implicit --region=us-east-1
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-implicit'...
-Successfully registered service connector `aws-implicit` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┃                       │ s3://zenml-public-datasets                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-No credentials are stored with the Service Connector:
-
-```sh
-zenml service-connector describe aws-implicit 
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-implicit' of type 'aws' with id 'e3853748-34a0-4d78-8006-00422ad32884' is owned by user 'default' and is 'private'.
-                         'aws-implicit' aws Service Connector Details                         
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 9a810521-ef41-4e45-bb48-8569c5943dc6                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-implicit                                                            ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ implicit                                                                ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                                         ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 18:08:37.969928                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 18:08:37.969930                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-     Configuration      
-┏━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY │ VALUE     ┃
-┠──────────┼───────────┨
-┃ region   │ us-east-1 ┃
-┗━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Verifying access to resources (note the `AWS_PROFILE` environment points to the same AWS CLI profile used during registration, but may yield different results with a different profile, which is why this method is not suitable for reproducible results):
-
-```sh
-AWS_PROFILE=connectors zenml service-connector verify aws-implicit --resource-type s3-bucket
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Verifying service connector 'aws-implicit'...
-Service connector 'aws-implicit' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ RESOURCE TYPE │ RESOURCE NAMES                        ┃
-┠───────────────┼───────────────────────────────────────┨
-┃ 📦 s3-bucket  │ s3://zenfiles                         ┃
-┃               │ s3://zenml-demos                      ┃
-┃               │ s3://zenml-generative-chat            ┃
-┃               │ s3://zenml-public-datasets            ┃
-┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector verify aws-implicit --resource-type s3-bucket
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Verifying service connector 'aws-implicit'...
-Service connector 'aws-implicit' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ RESOURCE TYPE │ RESOURCE NAMES                                 ┃
-┠───────────────┼────────────────────────────────────────────────┨
-┃ 📦 s3-bucket  │ s3://sagemaker-studio-907999144431-m11qlsdyqr8 ┃
-┃               │ s3://sagemaker-studio-d8a14tvjsmb              ┃
-┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Depending on the environment, clients are issued either temporary STS tokens or long-lived credentials, which is a reason why this method isn't well suited for production:
-
-```sh
-AWS_PROFILE=zenml zenml service-connector describe aws-implicit --resource-type s3-bucket --resource-id zenfiles --client
-```
-
-{% code title="Example Command Output" %}
-
-```
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-Service connector 'aws-implicit (s3-bucket | s3://zenfiles client)' of type 'aws' with id 'e3853748-34a0-4d78-8006-00422ad32884' is owned by user 'default' and is 'private'.
-    'aws-implicit (s3-bucket | s3://zenfiles client)' aws Service     
-                          Connector Details                           
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                           ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ ID               │ 9a810521-ef41-4e45-bb48-8569c5943dc6            ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ NAME             │ aws-implicit (s3-bucket | s3://zenfiles client) ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ sts-token                                       ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 s3-bucket                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ s3://zenfiles                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                             ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 59m57s                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ OWNER            │ default                                         ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 18:13:34.146659                      ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 18:13:34.146664                      ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_session_token     │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector describe aws-implicit --resource-type s3-bucket --resource-id s3://sagemaker-studio-d8a14tvjsmb --client
-```
-
-{% code title="Example Command Output" %}
-
-```
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-Service connector 'aws-implicit (s3-bucket | s3://sagemaker-studio-d8a14tvjsmb client)' of type 'aws' with id 'e3853748-34a0-4d78-8006-00422ad32884' is owned by user 'default' and is 'private'.
-    'aws-implicit (s3-bucket | s3://sagemaker-studio-d8a14tvjsmb client)' aws Service     
-                                    Connector Details                                     
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                               ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 9a810521-ef41-4e45-bb48-8569c5943dc6                                ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-implicit (s3-bucket | s3://sagemaker-studio-d8a14tvjsmb client) ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ secret-key                                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 s3-bucket                                                        ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ s3://sagemaker-studio-d8a14tvjsmb                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                             ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 18:12:42.066053                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 18:12:42.066055                                          ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### AWS Secret Key
-
-[Long-lived AWS credentials](https://docs.zenml.io/stacks/best-security-practices#long-lived-credentials-api-keys-account-keys) consisting of an AWS access key ID and secret access key associated with an AWS IAM user or AWS account root user (not recommended).
-
-This method is preferred during development and testing due to its simplicity and ease of use. It is not recommended as a direct authentication method for production use cases because the clients have direct access to long-lived credentials and are granted the full set of permissions of the IAM user or AWS account root user associated with the credentials. For production, it is recommended to use [the AWS IAM Role](#aws-iam-role), [AWS Session Token](#aws-session-token), or [AWS Federation Token](#aws-federation-token) authentication method instead.
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-If you already have the local AWS CLI set up with these credentials, they will be automatically picked up when auto-configuration is used (see the example below).
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-The following assumes the local AWS CLI has a `connectors` AWS CLI profile configured with an AWS Secret Key. We need to force the ZenML CLI to use the Secret Key authentication by passing the `--auth-method secret-key` option, otherwise it would automatically use [the AWS Session Token authentication method](#aws-session-token) as an extra precaution:
-
-```sh
-AWS_PROFILE=connectors zenml service-connector register aws-secret-key --type aws --auth-method secret-key --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-secret-key'...
-Successfully registered service connector `aws-secret-key` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The AWS Secret Key was lifted up from the local host:
-
-```sh
-zenml service-connector describe aws-secret-key
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-secret-key' of type 'aws' with id 'a1b07c5a-13af-4571-8e63-57a809c85790' is owned by user 'default' and is 'private'.
-                        'aws-secret-key' aws Service Connector Details                        
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 37c97fa0-fa47-4d55-9970-e2aa6e1b50cf                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-secret-key                                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ secret-key                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ b889efe1-0e23-4e2d-afc3-bdd785ee2d80                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:23:39.982950                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:23:39.982952                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### AWS STS Token
-
-Uses [temporary STS tokens](https://docs.zenml.io/stacks/best-security-practices#short-lived-credentials) explicitly configured by the user or auto-configured from a local environment.
-
-This method has the major limitation that the user must regularly generate new tokens and update the connector configuration as STS tokens expire. On the other hand, this method is ideal in cases where the connector only needs to be used for a short period of time, such as sharing access temporarily with someone else in your team.
-
-Using other authentication methods like [IAM role](#aws-iam-role), [Session Token](#aws-session-token), or [Federation Token](#aws-federation-token) will automatically generate and refresh STS tokens for clients upon request.
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-Fetching STS tokens from the local AWS CLI is possible if the AWS CLI is already configured with valid credentials. In our example, the `connectors` AWS CLI profile is configured with an IAM user Secret Key. We need to force the ZenML CLI to use the STS token authentication by passing the `--auth-method sts-token` option, otherwise it would automatically use [the session token authentication method](#aws-session-token):
-
-```sh
-AWS_PROFILE=connectors zenml service-connector register aws-sts-token --type aws --auto-configure --auth-method sts-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-sts-token'...
-Successfully registered service connector `aws-sts-token` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows that the connector is configured with an STS token:
-
-```sh
-zenml service-connector describe aws-sts-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-sts-token' of type 'aws' with id '63e14350-6719-4255-b3f5-0539c8f7c303' is owned by user 'default' and is 'private'.
-                        'aws-sts-token' aws Service Connector Details                         
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ a05ef4ef-92cb-46b2-8a3a-a48535adccaf                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-sts-token                                                           ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ sts-token                                                               ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ bffd79c7-6d76-483b-9001-e9dda4e865ae                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 11h58m24s                                                               ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:25:40.278681                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:25:40.278684                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_session_token     │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Note the temporary nature of the Service Connector. It will become unusable in 12 hours:
-
-```sh
-zenml service-connector list --name aws-sts-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME          │ ID                                   │ TYPE   │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼───────────────┼──────────────────────────────────────┼────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ aws-sts-token │ a05ef4ef-92cb-46b2-8a3a-a48535adccaf │ 🔶 aws │ 🔶 aws-generic        │ <multiple>    │ ➖     │ default │ 11h57m51s  │        ┃
-┃        │               │                                      │        │ 📦 s3-bucket          │               │        │         │            │        ┃
-┃        │               │                                      │        │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │               │                                      │        │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### AWS IAM Role
-
-Generates [temporary STS credentials](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) by assuming an AWS IAM role.
-
-This authentication method still requires credentials to be explicitly configured. If your ZenML server is running in AWS and you're looking for an alternative that uses implicit credentials while at the same time benefits from all the security advantages of assuming an IAM role, you should [use the implicit authentication method with a configured IAM role](#implicit-authentication) instead.
-
-The connector needs to be configured with the IAM role to be assumed accompanied by an AWS secret key associated with an IAM user or an STS token associated with another IAM role. The IAM user or IAM role must have permission to assume the target IAM role. The connector will [generate temporary STS tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) upon request by [calling the AssumeRole STS API](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerole).
-
-[The best practice implemented with this authentication scheme](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) is to keep the set of permissions associated with the primary IAM user or IAM role down to the bare minimum and grant permissions to the privilege-bearing IAM role instead.
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-One or more optional [IAM session policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session) may also be configured to further restrict the permissions of the generated STS tokens. If not specified, IAM session policies are automatically configured for the generated STS tokens [to restrict them to the minimum set of permissions required to access the target resource](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials). Refer to the documentation for each supported Resource Type for the complete list of AWS permissions automatically granted to the generated STS tokens.
-
-The default expiration period for generated STS tokens is 1 hour with a minimum of 15 minutes up to the maximum session duration setting configured for the IAM role (default is 1 hour). If you need longer-lived tokens, you can configure the IAM role to use a higher maximum expiration value (up to 12 hours) or use the AWS Federation Token or AWS Session Token authentication methods.
-
-For more information on IAM roles and the AssumeRole AWS API, see [the official AWS documentation on the subject](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerole).
-
-For more information about the difference between this method and the AWS Federation Token authentication method, [consult this AWS documentation page](https://aws.amazon.com/blogs/security/understanding-the-api-options-for-securely-delegating-access-to-your-aws-account/).
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-The following assumes the local AWS CLI has a `zenml` AWS CLI profile already configured with an AWS Secret Key and an IAM role to be assumed:
-
-```sh
-AWS_PROFILE=zenml zenml service-connector register aws-iam-role --type aws --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-iam-role'...
-Successfully registered service connector `aws-iam-role` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows an IAM role and long-lived credentials:
-
-```sh
-zenml service-connector describe aws-iam-role
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-iam-role' of type 'aws' with id '8e499202-57fd-478e-9d2f-323d76d8d211' is owned by user 'default' and is 'private'.
-                         'aws-iam-role' aws Service Connector Details                         
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 2b99de14-6241-4194-9608-b9d478e1bcfc                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-iam-role                                                            ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ iam-role                                                                ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 87795fdd-b70e-4895-b0dd-8bca5fd4d10e                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ 3600s                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:28:31.679843                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:28:31.679848                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                                          Configuration                                           
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE                                                                  ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ region                │ us-east-1                                                              ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ role_arn              │ arn:aws:iam::715803424590:role/OrganizationAccountRestrictedAccessRole ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ aws_access_key_id     │ [HIDDEN]                                                               ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ aws_secret_access_key │ [HIDDEN]                                                               ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-However, clients receive temporary STS tokens instead of the AWS Secret Key configured in the connector (note the authentication method, expiration time, and credentials):
-
-```sh
-zenml service-connector describe aws-iam-role --resource-type s3-bucket --resource-id zenfiles --client
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-iam-role (s3-bucket | s3://zenfiles client)' of type 'aws' with id '8e499202-57fd-478e-9d2f-323d76d8d211' is owned by user 'default' and is 'private'.
-    'aws-iam-role (s3-bucket | s3://zenfiles client)' aws Service     
-                          Connector Details                           
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                           ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ ID               │ 2b99de14-6241-4194-9608-b9d478e1bcfc            ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ NAME             │ aws-iam-role (s3-bucket | s3://zenfiles client) ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ sts-token                                       ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 s3-bucket                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ s3://zenfiles                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                             ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 59m56s                                          ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ OWNER            │ default                                         ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:30:51.462445                      ┃
-┠──────────────────┼─────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:30:51.462449                      ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_session_token     │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### AWS Session Token
-
-Generates [temporary session STS tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) for IAM users.
-
-The connector needs to be configured with an AWS secret key associated with an IAM user or AWS account root user (not recommended). The connector will [generate temporary STS tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) upon request by calling [the GetSessionToken STS API](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken).
-
-The STS tokens have an expiration period longer than those issued through the [AWS IAM Role authentication method](#aws-iam-role) and are more suitable for long-running processes that cannot automatically re-generate credentials upon expiration.
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-The default expiration period for generated STS tokens is 12 hours with a minimum of 15 minutes and a maximum of 36 hours. Temporary credentials obtained by using the AWS account root user credentials (not recommended) have a maximum duration of 1 hour.
-
-As a precaution, when long-lived credentials (i.e. AWS Secret Keys) are detected on your environment by the Service Connector during auto-configuration, this authentication method is automatically chosen instead of the AWS [Secret Key authentication method](#aws-secret-key) alternative.
-
-Generated STS tokens inherit the full set of permissions of the IAM user or AWS account root user that is calling the GetSessionToken API. Depending on your security needs, this may not be suitable for production use, as it can lead to accidental privilege escalation. Instead, it is recommended to use the AWS Federation Token or [AWS IAM Role authentication](#aws-iam-role) methods to restrict the permissions of the generated STS tokens.
-
-For more information on session tokens and the GetSessionToken AWS API, see [the official AWS documentation on the subject](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken).
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-The following assumes the local AWS CLI has a `connectors` AWS CLI profile already configured with an AWS Secret Key:
-
-```sh
-AWS_PROFILE=connectors zenml service-connector register aws-session-token --type aws --auth-method session-token --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-session-token'...
-Successfully registered service connector `aws-session-token` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows long-lived credentials were lifted from the local environment and the AWS Session Token authentication method was configured:
-
-```sh
-zenml service-connector describe aws-session-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-session-token' of type 'aws' with id '3ae3e595-5cbc-446e-be64-e54e854e0e3f' is owned by user 'default' and is 'private'.
-                      'aws-session-token' aws Service Connector Details                       
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ c0f8e857-47f9-418b-a60f-c3b03023da54                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-session-token                                                       ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ session-token                                                           ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 16f35107-87ef-4a86-bbae-caa4a918fc15                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ 43200s                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:31:54.971869                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:31:54.971871                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-However, clients receive temporary STS tokens instead of the AWS Secret Key configured in the connector (note the authentication method, expiration time, and credentials):
-
-```sh
-zenml service-connector describe aws-session-token --resource-type s3-bucket --resource-id zenfiles --client
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-session-token (s3-bucket | s3://zenfiles client)' of type 'aws' with id '3ae3e595-5cbc-446e-be64-e54e854e0e3f' is owned by user 'default' and is 'private'.
-    'aws-session-token (s3-bucket | s3://zenfiles client)' aws Service     
-                             Connector Details                             
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ ID               │ c0f8e857-47f9-418b-a60f-c3b03023da54                 ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ NAME             │ aws-session-token (s3-bucket | s3://zenfiles client) ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ sts-token                                            ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 s3-bucket                                         ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ s3://zenfiles                                        ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                  ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 11h59m56s                                            ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                              ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:35:24.090861                           ┃
-┠──────────────────┼──────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:35:24.090863                           ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_session_token     │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### AWS Federation Token
-
-Generates [temporary STS tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) for federated users by [impersonating another user](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles).
-
-The connector needs to be configured with an AWS secret key associated with an IAM user or AWS account root user (not recommended). The IAM user must have permission to call [the GetFederationToken STS API](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken) (i.e. allow the `sts:GetFederationToken` action on the `*` IAM resource). The connector will generate temporary STS tokens upon request by calling the GetFederationToken STS API.
-
-These STS tokens have an expiration period longer than those issued through [the AWS IAM Role authentication method](#aws-iam-role) and are more suitable for long-running processes that cannot automatically re-generate credentials upon expiration.
-
-An AWS region is required and the connector may only be used to access AWS resources in the specified region.
-
-One or more optional [IAM session policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session) may also be configured to further restrict the permissions of the generated STS tokens. If not specified, IAM session policies are automatically configured for the generated STS tokens [to restrict them to the minimum set of permissions required to access the target resource](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials). Refer to the documentation for each supported Resource Type for the complete list of AWS permissions automatically granted to the generated STS tokens.
-
-{% hint style="warning" %}
-If this authentication method is used with [the generic AWS resource type](#generic-aws-resource), a session policy MUST be explicitly specified, otherwise, the generated STS tokens will not have any permissions.
-{% endhint %}
-
-The default expiration period for generated STS tokens is 12 hours with a minimum of 15 minutes and a maximum of 36 hours. Temporary credentials obtained by using the AWS account root user credentials (not recommended) have a maximum duration of 1 hour.
-
-{% hint style="info" %}
-If you need to access an EKS Kubernetes cluster with this authentication method, please be advised that the EKS cluster's `aws-auth` ConfigMap may need to be manually configured to allow authentication with the federated user. For more information, [see this documentation](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html).
-{% endhint %}
-
-For more information on user federation tokens, session policies, and the GetFederationToken AWS API, see [the official AWS documentation on the subject](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getfederationtoken).
-
-For more information about the difference between this method and [the AWS IAM Role authentication method](#aws-iam-role), [consult this AWS documentation page](https://aws.amazon.com/blogs/security/understanding-the-api-options-for-securely-delegating-access-to-your-aws-account/).
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-The following assumes the local AWS CLI has a `connectors` AWS CLI profile already configured with an AWS Secret Key:
-
-```sh
-AWS_PROFILE=connectors zenml service-connector register aws-federation-token --type aws --auth-method federation-token --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠸ Registering service connector 'aws-federation-token'...
-Successfully registered service connector `aws-federation-token` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows long-lived credentials have been picked up from the local AWS CLI configuration:
-
-```sh
-zenml service-connector describe aws-federation-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-federation-token' of type 'aws' with id '868b17d4-b950-4d89-a6c4-12e520e66610' is owned by user 'default' and is 'private'.
-                     'aws-federation-token' aws Service Connector Details                     
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ e28c403e-8503-4cce-9226-8a7cd7934763                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-federation-token                                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ federation-token                                                        ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 958b840d-2a27-4f6b-808b-c94830babd99                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ 43200s                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:36:28.619751                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:36:28.619753                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-However, clients receive temporary STS tokens instead of the AWS Secret Key configured in the connector (note the authentication method, expiration time, and credentials):
-
-```sh
-zenml service-connector describe aws-federation-token --resource-type s3-bucket --resource-id zenfiles --client
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-federation-token (s3-bucket | s3://zenfiles client)' of type 'aws' with id '868b17d4-b950-4d89-a6c4-12e520e66610' is owned by user 'default' and is 'private'.
-    'aws-federation-token (s3-bucket | s3://zenfiles client)' aws Service     
-                              Connector Details                               
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ ID               │ e28c403e-8503-4cce-9226-8a7cd7934763                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-federation-token (s3-bucket | s3://zenfiles client) ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ sts-token                                               ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 s3-bucket                                            ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ s3://zenfiles                                           ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                         ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 11h59m56s                                               ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:38:29.406986                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:38:29.406991                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE     ┃
-┠───────────────────────┼───────────┨
-┃ region                │ us-east-1 ┃
-┠───────────────────────┼───────────┨
-┃ aws_access_key_id     │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_secret_access_key │ [HIDDEN]  ┃
-┠───────────────────────┼───────────┨
-┃ aws_session_token     │ [HIDDEN]  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-## Auto-configuration
-
-The AWS Service Connector allows [auto-discovering and fetching credentials](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration) and configuration set up [by the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) during registration. The default AWS CLI profile is used unless the AWS\_PROFILE environment points to a different profile.
-
-<details>
-
-<summary>Auto-configuration example</summary>
-
-The following is an example of lifting AWS credentials granting access to the same set of AWS resources and services that the local AWS CLI is allowed to access. In this case, [the IAM role authentication method](#aws-iam-role) was automatically detected:
-
-```sh
-AWS_PROFILE=zenml zenml service-connector register aws-auto --type aws --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠹ Registering service connector 'aws-auto'...
-Successfully registered service connector `aws-auto` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                               ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃    🔶 aws-generic     │ us-east-1                                    ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃     📦 s3-bucket      │ s3://zenbytes-bucket                         ┃
-┃                       │ s3://zenfiles                                ┃
-┃                       │ s3://zenml-demos                             ┃
-┃                       │ s3://zenml-generative-chat                   ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster                             ┃
-┠───────────────────────┼──────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows how credentials have automatically been fetched from the local AWS CLI configuration:
-
-```sh
-zenml service-connector describe aws-auto
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-auto' of type 'aws' with id '9f3139fd-4726-421a-bc07-312d83f0c89e' is owned by user 'default' and is 'private'.
-                           'aws-auto' aws Service Connector Details                           
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 9cdc926e-55d7-49f0-838e-db5ac34bb7dc                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ aws-auto                                                                ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔶 aws                                                                  ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ iam-role                                                                ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔶 aws-generic, 📦 s3-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ a137151e-1778-4f50-b64b-7cf6c1f715f5                                    ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ 3600s                                                                   ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                     ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                 ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                      ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-19 19:39:11.958426                                              ┃
-┠──────────────────┼─────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-19 19:39:11.958428                                              ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                                          Configuration                                           
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE                                                                  ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ region                │ us-east-1                                                              ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ role_arn              │ arn:aws:iam::715803424590:role/OrganizationAccountRestrictedAccessRole ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ aws_access_key_id     │ [HIDDEN]                                                               ┃
-┠───────────────────────┼────────────────────────────────────────────────────────────────────────┨
-┃ aws_secret_access_key │ [HIDDEN]                                                               ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-## Local client provisioning
-
-The local AWS CLI, Kubernetes `kubectl` CLI and the Docker CLI can be [configured with credentials extracted from or generated by a compatible AWS Service Connector](https://docs.zenml.io/stacks/service-connectors-guide#configure-local-clients). Please note that unlike the configuration made possible through the AWS CLI, the Kubernetes and Docker credentials issued by the AWS Service Connector have a short lifetime and will need to be regularly refreshed. This is a byproduct of implementing a high-security profile.
-
-{% hint style="info" %}
-Configuring the local AWS CLI with credentials issued by the AWS Service Connector results in a local AWS CLI configuration profile being created with the name inferred from the first digits of the Service Connector UUID in the form -\<uuid\[:8]>. For example, a Service Connector with UUID `9f3139fd-4726-421a-bc07-312d83f0c89e` will result in a local AWS CLI configuration profile named `zenml-9f3139fd`.
-{% endhint %}
-
-<details>
-
-<summary>Local CLI configuration examples</summary>
-
-The following shows an example of configuring the local Kubernetes CLI to access an EKS cluster reachable through an AWS Service Connector:
-
-```sh
-zenml service-connector list --name aws-session-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME              │ ID                                   │ TYPE   │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼───────────────────┼──────────────────────────────────────┼────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ aws-session-token │ c0f8e857-47f9-418b-a60f-c3b03023da54 │ 🔶 aws │ 🔶 aws-generic        │ <multiple>    │ ➖     │ default │            │        ┃
-┃        │                   │                                      │        │ 📦 s3-bucket          │               │        │         │            │        ┃
-┃        │                   │                                      │        │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │                   │                                      │        │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-This checks the Kubernetes clusters that the AWS Service Connector has access to:
-
-```sh
-zenml service-connector verify aws-session-token --resource-type kubernetes-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-session-token' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES   ┃
-┠───────────────────────┼──────────────────┨
-┃ 🌀 kubernetes-cluster │ zenhacks-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Running the login CLI command will configure the local `kubectl` CLI to access the Kubernetes cluster:
-
-```sh
-zenml service-connector login aws-session-token --resource-type kubernetes-cluster --resource-id zenhacks-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠇ Attempting to configure local client using service connector 'aws-session-token'...
-Cluster "arn:aws:eks:us-east-1:715803424590:cluster/zenhacks-cluster" set.
-Context "arn:aws:eks:us-east-1:715803424590:cluster/zenhacks-cluster" modified.
-Updated local kubeconfig with the cluster details. The current kubectl context was set to 'arn:aws:eks:us-east-1:715803424590:cluster/zenhacks-cluster'.
-The 'aws-session-token' Kubernetes Service Connector connector was used to successfully configure the local Kubernetes cluster client/SDK.
-```
-
-{% endcode %}
-
-The following can be used to check that the local `kubectl` CLI is correctly configured:
-
-```sh
-kubectl cluster-info
-```
-
-{% code title="Example Command Output" %}
-
-```
-Kubernetes control plane is running at https://A5F8F4142FB12DDCDE9F21F6E9B07A18.gr7.us-east-1.eks.amazonaws.com
-CoreDNS is running at https://A5F8F4142FB12DDCDE9F21F6E9B07A18.gr7.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-```
-
-{% endcode %}
-
-A similar process is possible with ECR container registries:
-
-```sh
-zenml service-connector verify aws-session-token --resource-type docker-registry
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'aws-session-token' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   RESOURCE TYPE    │ RESOURCE NAMES                               ┃
-┠────────────────────┼──────────────────────────────────────────────┨
-┃ 🐳 docker-registry │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector login aws-session-token --resource-type docker-registry 
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠏ Attempting to configure local client using service connector 'aws-session-token'...
-WARNING! Your password will be stored unencrypted in /home/stefan/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-The 'aws-session-token' Docker Service Connector connector was used to successfully configure the local Docker/OCI container registry client/SDK.
-```
-
-{% endcode %}
-
-The following can be used to check that the local Docker client is correctly configured:
-
-```sh
-docker pull 715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml-server
-```
-
-{% code title="Example Command Output" %}
-
-```
-Using default tag: latest
-latest: Pulling from zenml-server
-e9995326b091: Pull complete 
-f3d7f077cdde: Pull complete 
-0db71afa16f3: Pull complete 
-6f0b5905c60c: Pull complete 
-9d2154d50fd1: Pull complete 
-d072bba1f611: Pull complete 
-20e776588361: Pull complete 
-3ce69736a885: Pull complete 
-c9c0554c8e6a: Pull complete 
-bacdcd847a66: Pull complete 
-482033770844: Pull complete 
-Digest: sha256:bf2cc3895e70dfa1ee1cd90bbfa599fa4cd8df837e27184bac1ce1cc239ecd3f
-Status: Downloaded newer image for 715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml-server:latest
-715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml-server:latest
-```
-
-{% endcode %}
-
-It is also possible to update the local AWS CLI configuration with credentials extracted from the AWS Service Connector:
-
-```sh
-zenml service-connector login aws-session-token --resource-type aws-generic
-```
-
-{% code title="Example Command Output" %}
-
-```
-Configured local AWS SDK profile 'zenml-c0f8e857'.
-The 'aws-session-token' AWS Service Connector connector was used to successfully configure the local Generic AWS resource client/SDK.
-```
-
-{% endcode %}
-
-A new profile is created in the local AWS CLI configuration holding the credentials. It can be used to access AWS resources and services, e.g.:
-
-```sh
-aws --profile zenml-c0f8e857 s3 ls
-```
-
-</details>
-
-## Stack Components use
-
-The [S3 Artifact Store Stack Component](https://docs.zenml.io/stacks/artifact-stores/s3) can be connected to a remote AWS S3 bucket through an AWS Service Connector.
-
-The AWS Service Connector can also be used with any Orchestrator or Model Deployer stack component flavor that relies on Kubernetes clusters to manage workloads. This allows EKS Kubernetes container workloads to be managed without the need to configure and maintain explicit AWS or Kubernetes `kubectl` configuration contexts and credentials in the target environment and in the Stack Component.
-
-Similarly, Container Registry Stack Components can be connected to an ECR Container Registry through an AWS Service Connector. This allows container images to be built and published to ECR container registries without the need to configure explicit AWS credentials in the target environment or the Stack Component.
-
-## End-to-end examples
-
-<details>
-
-<summary>EKS Kubernetes Orchestrator, S3 Artifact Store and ECR Container Registry with a multi-type AWS Service Connector</summary>
-
-This is an example of an end-to-end workflow involving Service Connectors that use a single multi-type AWS Service Connector to give access to multiple resources for multiple Stack Components. A complete ZenML Stack is registered and composed of the following Stack Components, all connected through the same Service Connector:
-
-* a [Kubernetes Orchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes) connected to an EKS Kubernetes cluster
-* an [S3 Artifact Store](https://docs.zenml.io/stacks/artifact-stores/s3) connected to an S3 bucket
-* an [ECR Container Registry](https://docs.zenml.io/stacks/container-registries/aws) stack component connected to an ECR container registry
-* a local [Image Builder](https://docs.zenml.io/stacks/image-builders/local)
-
-As a last step, a simple pipeline is run on the resulting Stack.
-
-1. [Configure the local AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) with valid IAM user account credentials with a wide range of permissions (i.e. by running `aws configure`) and install ZenML integration prerequisites:
-
-   ```sh
-   zenml integration install -y aws s3
-   ```
-
-   ```sh
-   aws configure --profile connectors
-   ```
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text AWS Access Key ID \[None]: AKIAIOSFODNN7EXAMPLE AWS Secret Access Key \[None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY Default region name \[None]: us-east-1 Default output format \[None]: json \`\`\` \`\`\`\` {% endcode %}
-
-2. Make sure the AWS Service Connector Type is available
-
-   \`
-
-\`\`sh zenml service-connector list-types --type aws \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓ ┃ NAME │ TYPE │ RESOURCE TYPES │ AUTH METHODS │ LOCAL │ REMOTE ┃ ┠───────────────────────┼────────┼───────────────────────┼──────────────────┼───────┼────────┨ ┃ AWS Service Connector │ 🔶 aws │ 🔶 aws-generic │ implicit │ ✅ │ ✅ ┃ ┃ │ │ 📦 s3-bucket │ secret-key │ │ ┃ ┃ │ │ 🌀 kubernetes-cluster │ sts-token │ │ ┃ ┃ │ │ 🐳 docker-registry │ iam-role │ │ ┃ ┃ │ │ │ session-token │ │ ┃ ┃ │ │ │ federation-token │ │ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-3. Register a multi-type AWS Service Connector using auto-configuration
-
-   \`
-
-\`\`sh AWS\_PROFILE=connectors zenml service-connector register aws-demo-multi --type aws --auto-configure \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text ⠼ Registering service connector 'aws-demo-multi'... Successfully registered service connector \`aws-demo-multi\` with access to the following resources: ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃ RESOURCE TYPE │ RESOURCE NAMES ┃ ┠───────────────────────┼──────────────────────────────────────────────┨ ┃ 🔶 aws-generic │ us-east-1 ┃ ┠───────────────────────┼──────────────────────────────────────────────┨ ┃ 📦 s3-bucket │ s3://zenfiles ┃ ┃ │ s3://zenml-demos ┃ ┃ │ s3://zenml-generative-chat ┃ ┠───────────────────────┼──────────────────────────────────────────────┨ ┃ 🌀 kubernetes-cluster │ zenhacks-cluster ┃ ┠───────────────────────┼──────────────────────────────────────────────┨ ┃ 🐳 docker-registry │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-```
-**NOTE**: from this point forward, we don't need the local AWS CLI credentials or the local AWS CLI at all. The steps that follow can be run on any machine regardless of whether it has been configured and authorized to access the AWS platform or not.
-```
-
-4\. find out which S3 buckets, ECR registries, and EKS Kubernetes clusters we can gain access to. We'll use this information to configure the Stack Components in our minimal AWS stack: an S3 Artifact Store, a Kubernetes Orchestrator, and an ECR Container Registry.
-
-````
-```sh
-zenml service-connector list-resources --resource-type s3-bucket
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 's3-bucket' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME      │ CONNECTOR TYPE │ RESOURCE TYPE │ RESOURCE NAMES                        ┃
-┠──────────────────────────────────────┼─────────────────────┼────────────────┼───────────────┼───────────────────────────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi      │ 🔶 aws         │ 📦 s3-bucket  │ s3://zenfiles                         ┃
-┃                                      │                     │                │               │ s3://zenml-demos                      ┃
-┃                                      │                     │                │               │ s3://zenml-generative-chat            ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector list-resources --resource-type kubernetes-cluster
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 'kubernetes-cluster' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME        │ CONNECTOR TYPE │ RESOURCE TYPE         │ RESOURCE NAMES      ┃
-┠──────────────────────────────────────┼───────────────────────┼────────────────┼───────────────────────┼─────────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi        │ 🔶 aws         │ 🌀 kubernetes-cluster │ zenhacks-cluster    ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector list-resources --resource-type docker-registry
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 'docker-registry' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME     │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES                                  ┃
-┠──────────────────────────────────────┼────────────────────┼────────────────┼────────────────────┼─────────────────────────────────────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi     │ 🔶 aws         │ 🐳 docker-registry │ 715803424590.dkr.ecr.us-east-1.amazonaws.com    ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-5. register and connect an S3 Artifact Store Stack Component to an S3 bucket:
-
-   \`
-
-\`\`sh zenml artifact-store register s3-zenfiles --flavor s3 --path=s3://zenfiles \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered artifact\_store \`s3-zenfiles\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml artifact-store connect s3-zenfiles --connector aws-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected artifact store `s3-zenfiles` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE │ RESOURCE NAMES ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────┼────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi │ 🔶 aws         │ 📦 s3-bucket  │ s3://zenfiles  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-6. register and connect a Kubernetes Orchestrator Stack Component to an EKS cluster:
-
-   \`
-
-\`\`sh zenml orchestrator register eks-zenml-zenhacks --flavor kubernetes --synchronous=true --kubernetes\_namespace=zenml-workloads \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered orchestrator \`eks-zenml-zenhacks\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml orchestrator connect eks-zenml-zenhacks --connector aws-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected orchestrator `eks-zenml-zenhacks` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE         │ RESOURCE NAMES   ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────────────┼──────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi │ 🔶 aws         │ 🌀 kubernetes-cluster │ zenhacks-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-7. Register and connect an EC GCP Container Registry Stack Component to an ECR container registry:
-
-   \`
-
-\`\`sh zenml container-registry register ecr-us-east-1 --flavor aws --uri=715803424590.dkr.ecr.us-east-1.amazonaws.com \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered container\_registry \`ecr-us-east-1\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml container-registry connect ecr-us-east-1 --connector aws-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected container registry `ecr-us-east-1` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES                               ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼────────────────────┼──────────────────────────────────────────────┨
-┃ bf073e06-28ce-4a4a-8100-32e7cb99dced │ aws-demo-multi │ 🔶 aws         │ 🐳 docker-registry │ 715803424590.dkr.ecr.us-east-1.amazonaws.com ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-8. Combine all Stack Components together into a Stack and set it as active (also throw in a local Image Builder for completion):
-
-   \`
-
-\`\`sh zenml image-builder register local --flavor local \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered image\_builder \`local\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml stack register aws-demo -a s3-zenfiles -o eks-zenml-zenhacks -c ecr-us-east-1 -i local --set
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Connected to the ZenML server: 'https://stefan.develaws.zenml.io'
-Stack 'aws-demo' successfully registered!
-Active repository stack set to:'aws-demo'
-```
-````
-
-{% endcode %}
-
-9. Finally, run a simple pipeline to prove that everything works as expected. We'll use the simplest pipelines possible for this example:
-
-   \`
-
-\`\`python from zenml import pipeline, step
-
-````
-@step
-def step_1() -> str:
-    """Returns the `world` string."""
-    return "world"
-
-
-@step(enable_cache=False)
-def step_2(input_one: str, input_two: str) -> None:
-    """Combines the two strings at its input and prints them."""
-    combined_str = f"{input_one} {input_two}"
-    print(combined_str)
-
-
-@pipeline
-def my_pipeline():
-    output_step_one = step_1()
-    step_2(input_one="hello", input_two=output_step_one)
-
-
-if __name__ == "__main__":
-    my_pipeline()
-```
-
-Saving that to a `run.py` file and running it gives us:
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-$ python run.py 
-Building Docker image(s) for pipeline simple_pipeline.
-Building Docker image 715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml:simple_pipeline-orchestrator.
-- Including user-defined requirements: boto3==1.26.76
-- Including integration requirements: boto3, kubernetes==18.20.0, s3fs>2022.3.0,<=2023.4.0, sagemaker==2.117.0
-No .dockerignore found, including all files inside build context.
-Step 1/10 : FROM zenmldocker/zenml:0.39.1-py3.8
-Step 2/10 : WORKDIR /app
-Step 3/10 : COPY .zenml_user_requirements .
-Step 4/10 : RUN pip install --default-timeout=60 --no-cache-dir  -r .zenml_user_requirements
-Step 5/10 : COPY .zenml_integration_requirements .
-Step 6/10 : RUN pip install --default-timeout=60 --no-cache-dir  -r .zenml_integration_requirements
-Step 7/10 : ENV ZENML_ENABLE_REPO_INIT_WARNINGS=False
-Step 8/10 : ENV ZENML_CONFIG_PATH=/app/.zenconfig
-Step 9/10 : COPY . .
-Step 10/10 : RUN chmod -R a+rw .
-Amazon ECR requires you to create a repository before you can push an image to it. ZenML is trying to push the image 715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml:simple_pipeline-orchestrator but could only detect the following repositories: []. We will try to push anyway, but in case it fails you need to create a repository named zenml.
-Pushing Docker image 715803424590.dkr.ecr.us-east-1.amazonaws.com/zenml:simple_pipeline-orchestrator.
-Finished pushing Docker image.
-Finished building Docker image(s).
-Running pipeline simple_pipeline on stack aws-demo (caching disabled)
-Waiting for Kubernetes orchestrator pod...
-Kubernetes orchestrator pod started.
-Waiting for pod of step step_1 to start...
-Step step_1 has started.
-Step step_1 has finished in 0.390s.
-Pod of step step_1 completed.
-Waiting for pod of step step_2 to start...
-Step step_2 has started.
-Hello World!
-Step step_2 has finished in 2.364s.
-Pod of step step_2 completed.
-Orchestration pod completed.
-Dashboard URL: https://stefan.develaws.zenml.io/default/pipelines/be5adfe9-45af-4709-a8eb-9522c01640ce/runs
-```
-````
-
-{% endcode %}
-
-</details>
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# GCP Service Connector
-
-Configuring GCP Service Connectors to connect ZenML to GCP resources such as GCS buckets, GKE Kubernetes clusters, and GCR container registries.
-
-The ZenML GCP Service Connector facilitates the authentication and access to managed GCP services and resources. These encompass a range of resources, including GCS buckets, GAR and GCR container repositories, and GKE clusters. The connector provides support for various authentication methods, including GCP user accounts, service accounts, short-lived OAuth 2.0 tokens, and implicit authentication.
-
-To ensure heightened security measures, this connector always issues [short-lived OAuth 2.0 tokens to clients instead of long-lived credentials](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) unless explicitly configured to do otherwise. Furthermore, it includes [automatic configuration and detection of credentials locally configured through the GCP CLI](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration).
-
-This connector serves as a general means of accessing any GCP service by issuing OAuth 2.0 credential objects to clients. Additionally, the connector can handle specialized authentication for GCS, Docker, and Kubernetes Python clients. It also allows for the configuration of local Docker and Kubernetes CLIs.
-
-```shell
-$ zenml service-connector list-types --type gcp
-```
-
-```shell
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃         NAME          │ TYPE   │ RESOURCE TYPES        │ AUTH METHODS     │ LOCAL │ REMOTE ┃
-┠───────────────────────┼────────┼───────────────────────┼──────────────────┼───────┼────────┨
-┃ GCP Service Connector │ 🔵 gcp │ 🔵 gcp-generic        │ implicit         │ ✅    │ ✅     ┃
-┃                       │        │ 📦 gcs-bucket         │ user-account     │       │        ┃
-┃                       │        │ 🌀 kubernetes-cluster │ service-account  │       │        ┃
-┃                       │        │ 🐳 docker-registry    │ external-account │       │        ┃
-┃                       │        │                       │ oauth2-token     │       │        ┃
-┃                       │        │                       │ impersonation    │       │        ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-## Prerequisites
-
-The GCP Service Connector is part of the GCP ZenML integration. You can either install the entire integration or use a PyPI extra to install it independently of the integration:
-
-* `pip install "zenml[connectors-gcp]"` installs only prerequisites for the GCP Service Connector Type
-* `zenml integration install gcp` installs the entire GCP ZenML integration
-
-It is not required to [install and set up the GCP CLI on your local machine](https://cloud.google.com/sdk/gcloud) to use the GCP Service Connector to link Stack Components to GCP resources and services. However, it is recommended to do so if you are looking for a quick setup that includes using the auto-configuration Service Connector features.
-
-{% hint style="info" %}
-The auto-configuration examples in this page rely on the GCP CLI being installed and already configured with valid credentials of one type or another. If you want to avoid installing the GCP CLI, we recommend using the interactive mode of the ZenML CLI to register Service Connectors:
-
-```
-zenml service-connector register -i --type gcp
-```
-
-{% endhint %}
-
-## Resource Types
-
-### Generic GCP resource
-
-This resource type allows Stack Components to use the GCP Service Connector to connect to any GCP service or resource. When used by Stack Components, they are provided a Python google-auth credentials object populated with a GCP OAuth 2.0 token. This credentials object can then be used to create GCP Python clients for any particular GCP service.
-
-This generic GCP resource type is meant to be used with Stack Components that are not represented by one of the other, more specific resource types like GCS buckets, Kubernetes clusters, or Docker registries. For example, it can be used with [the Google Cloud Image Builder](https://docs.zenml.io/stacks/image-builders/gcp) stack component, or [the Vertex AI Orchestrator](https://docs.zenml.io/stacks/orchestrators/vertex) and [Step Operator](https://docs.zenml.io/stacks/step-operators/vertex). It should be accompanied by a matching set of GCP permissions that allow access to the set of remote resources required by the client and Stack Component (see the documentation of each Stack Component for more details).
-
-The resource name represents the GCP project that the connector is authorized to access.
-
-### GCS bucket
-
-Allows Stack Components to connect to GCS buckets. When used by Stack Components, they are provided a pre-configured GCS Python client instance.
-
-The configured credentials must have at least the following [GCP permissions](https://cloud.google.com/iam/docs/permissions-reference) associated with the GCS buckets that it can access:
-
-* `storage.buckets.list`
-* `storage.buckets.get`
-* `storage.objects.create`
-* `storage.objects.delete`
-* `storage.objects.get`
-* `storage.objects.list`
-* `storage.objects.update`
-
-For example, the GCP `Storage Object Admin` role includes all of the required permissions, but it also includes additional permissions that are not required by the connector. Follow the principle of least privilege by creating a custom role with only the specific permissions listed above, or scope the `Storage Object Admin` role to specific buckets rather than using it project-wide.
-
-If set, the resource name must identify a GCS bucket using one of the following formats:
-
-* GCS bucket URI (canonical resource name): gs\://{bucket-name}
-* GCS bucket name: {bucket-name}
-
-### GKE Kubernetes cluster
-
-Allows Stack Components to access a GKE cluster as a standard Kubernetes cluster resource. When used by Stack Components, they are provided a pre-authenticated Python Kubernetes client instance.
-
-The configured credentials must have at least the following [GCP permissions](https://cloud.google.com/iam/docs/permissions-reference) associated with the GKE clusters that it can access:
-
-* `container.clusters.list`
-* `container.clusters.get`
-
-In addition to the above permissions, the credentials should include permissions to connect to and use the GKE cluster (i.e. some or all permissions in the Kubernetes Engine Developer role).
-
-If set, the resource name must identify a GKE cluster using one of the following formats:
-
-* GKE cluster name: `{cluster-name}`
-
-GKE cluster names are project scoped. The connector can only be used to access GKE clusters in the GCP project that it is configured to use.
-
-### GAR container registry (including legacy GCR support)
-
-{% hint style="warning" %}
-**Important Notice: Google Container Registry** [**is being replaced by Artifact Registry**](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr)\*\*. Please start using Artifact Registry for your containers. As per Google's documentation, "after May 15, 2024, Artifact Registry will host images for the gcr.io domain in Google Cloud projects without previous Container Registry usage. After March 18, 2025, Container Registry will be shut down.".
-
-Support for legacy GCR registries is still included in the GCP service connector. Users that already have GCP service connectors configured to access GCR registries may continue to use them without taking any action. However, it is recommended to transition to Google Artifact Registries as soon as possible by following [the GCP guide on this subject](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) and making the following updates to ZenML GCP Service Connectors that are used to access GCR resources:
-
-* add the IAM permissions documented here to the GCP Service Connector credentials to enable them to access the Artifact Registries.
-* users may keep the gcr.io GCR URLs already configured in the GCP Service Connectors as well as those used in linked Container Registry stack components given that these domains are redirected by Google to GAR as covered in the GCR transition guide. Alternatively, users may update the GCP Service Connector configuration and/or the Container Registry stack components to use the replacement Artifact Registry URLs.
-
-The GCP Service Connector will list the legacy GCR registries as accessible for a GCP project even if the GCP Service Connector credentials do not grant access to GCR registries. This is required for backwards-compatibility and will be removed in a future release.
-{% endhint %}
-
-Allows Stack Components to access a Google Artifact Registry as a standard Docker registry resource. When used by Stack Components, they are provided a pre-authenticated Python Docker client instance.
-
-The configured credentials must have at least the following [GCP permissions](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles):
-
-* `artifactregistry.repositories.createOnPush`
-* `artifactregistry.repositories.downloadArtifacts`
-* `artifactregistry.repositories.get`
-* `artifactregistry.repositories.list`
-* `artifactregistry.repositories.readViaVirtualRepository`
-* `artifactregistry.repositories.uploadArtifacts`
-* `artifactregistry.locations.list`
-
-The Artifact Registry Create-on-Push Writer role includes all of the above permissions.
-
-This resource type also includes legacy GCR container registry support. When used with GCR registries, the configured credentials must have at least the following [GCP permissions](https://cloud.google.com/iam/docs/understanding-roles#cloud-storage-roles):
-
-* `storage.buckets.get`
-* `storage.multipartUploads.abort`
-* `storage.multipartUploads.create`
-* `storage.multipartUploads.list`
-* `storage.multipartUploads.listParts`
-* `storage.objects.create`
-* `storage.objects.delete`
-* `storage.objects.list`
-
-The Storage Legacy Bucket Writer role includes all of the above permissions while at the same time restricting access to only the GCR buckets.
-
-If set, the resource name must identify a GAR or GCR registry using one of the following formats:
-
-* Google Artifact Registry repository URI: `[https://]<region>-docker.pkg.dev/<project-id>/<registry-id>[/<repository-name>]`
-* Google Artifact Registry name: `projects/<project-id>/locations/<location>/repositories/<repository-id>`
-* (legacy) GCR repository URI: `[https://][us.|eu.|asia.]gcr.io/<project-id>[/<repository-name>]`
-
-The connector can only be used to access GAR and GCR registries in the GCP\
-project that it is configured to use.
-
-## Authentication Methods
-
-### Implicit authentication
-
-[Implicit authentication](https://docs.zenml.io/stacks/best-security-practices#implicit-authentication) to GCP services using [Application Default Credentials](https://cloud.google.com/docs/authentication/provide-credentials-adc).
-
-{% hint style="warning" %}
-This method may constitute a security risk, because it can give users access to the same cloud resources and services that the ZenML Server itself is configured to access. For this reason, all implicit authentication methods are disabled by default and need to be explicitly enabled by setting the `ZENML_ENABLE_IMPLICIT_AUTH_METHODS` environment variable or the helm chart `enableImplicitAuthMethods` configuration option to `true` in the ZenML deployment.
-{% endhint %}
-
-This authentication method doesn't require any credentials to be explicitly configured. It automatically discovers and uses credentials from one of the following sources:
-
-* environment variables (GOOGLE\_APPLICATION\_CREDENTIALS)
-* local ADC credential files set up by running `gcloud auth application-default login` (e.g. `~/.config/gcloud/application_default_credentials.json`).
-* a GCP service account attached to the resource where the ZenML server is running. Only works when running the ZenML server on a GCP resource with a service account attached to it or when using Workload Identity (e.g. GKE cluster).
-
-This is the quickest and easiest way to authenticate to GCP services. However, the results depend on how ZenML is deployed and the environment where it is used and is thus not fully reproducible:
-
-* when used with the default local ZenML deployment or a local ZenML server, the credentials are those set up on your machine (i.e. by running `gcloud auth application-default login` or setting the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point to a service account key JSON file).
-* when connected to a ZenML server, this method only works if the ZenML server is deployed in GCP and will use the service account attached to the GCP resource where the ZenML server is running (e.g. a GKE cluster). The service account permissions may need to be adjusted to allow listing and accessing/describing the GCP resources that the connector is configured to access.
-
-Note that the discovered credentials inherit the full set of permissions of the local GCP CLI credentials or service account attached to the ZenML server GCP workload. Depending on the extent of those permissions, this authentication method might not be suitable for production use, as it can lead to accidental privilege escalation. Instead, it is recommended to use [the Service Account Key](#gcp-service-account) or [Service Account Impersonation](#gcp-service-account-impersonation) authentication methods to restrict the permissions that are granted to the connector clients.
-
-To find out more about Application Default Credentials, [see the GCP ADC documentation](https://cloud.google.com/docs/authentication/provide-credentials-adc).
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified project. When used remotely in a GCP workload, the configured project has to be the same as the project of the attached service account.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes the local GCP CLI has already been configured with user account credentials by running the `gcloud auth application-default login` command:
-
-```sh
-zenml service-connector register gcp-implicit --type gcp --auth-method implicit --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `gcp-implicit` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                      ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-No credentials are stored with the Service Connector:
-
-```sh
-zenml service-connector describe gcp-implicit
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-implicit' of type 'gcp' with id '0c49a7fe-5e87-41b9-adbe-3da0a0452e44' is owned by user 'default' and is 'private'.
-                         'gcp-implicit' gcp Service Connector Details                          
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                    ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 0c49a7fe-5e87-41b9-adbe-3da0a0452e44                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ gcp-implicit                                                             ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔵 gcp                                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ implicit                                                                 ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔵 gcp-generic, 📦 gcs-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                                          ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                  ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                       ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-19 08:04:51.037955                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-19 08:04:51.037958                                               ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-       Configuration       
-┏━━━━━━━━━━━━┯━━━━━━━━━━━━┓
-┃ PROPERTY   │ VALUE      ┃
-┠────────────┼────────────┨
-┃ project_id │ zenml-core ┃
-┗━━━━━━━━━━━━┷━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### GCP User Account
-
-[Long-lived GCP credentials](https://docs.zenml.io/stacks/best-security-practices#long-lived-credentials-api-keys-account-keys) consist of a GCP user account and its credentials.
-
-This method requires GCP user account credentials like those generated by the `gcloud auth application-default login` command.
-
-By default, the GCP connector [generates temporary OAuth 2.0 tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) from the user account credentials and distributes them to clients. The tokens have a limited lifetime of 1 hour. This behavior can be disabled by setting the `generate_temporary_tokens` configuration option to `False`, in which case, the connector will distribute the user account credentials JSON to clients instead (not recommended).
-
-This method is preferred during development and testing due to its simplicity and ease of use. It is not recommended as a direct authentication method for production use cases because the clients are granted the full set of permissions of the GCP user account. For production, it is recommended to use the GCP Service Account or GCP Service Account Impersonation authentication methods.
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified project.
-
-If you already have the local GCP CLI set up with these credentials, they will be automatically picked up when auto-configuration is used (see the example below).
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-The following assumes the local GCP CLI has been configured with GCP user account credentials by running the `gcloud auth application-default login` command:
-
-```sh
-zenml service-connector register gcp-user-account --type gcp --auth-method user-account --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `gcp-user-account` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                      ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The GCP user account credentials were lifted up from the local host:
-
-```sh
-zenml service-connector describe gcp-user-account
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-user-account' of type 'gcp' with id 'ddbce93f-df14-4861-a8a4-99a80972f3bc' is owned by user 'default' and is 'private'.
-                       'gcp-user-account' gcp Service Connector Details                        
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                    ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ ddbce93f-df14-4861-a8a4-99a80972f3bc                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ gcp-user-account                                                         ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔵 gcp                                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ user-account                                                             ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔵 gcp-generic, 📦 gcs-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 17692951-614f-404f-a13a-4abb25bfa758                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                  ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                       ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-19 08:09:44.102934                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-19 08:09:44.102936                                               ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-          Configuration           
-┏━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━┓
-┃ PROPERTY          │ VALUE      ┃
-┠───────────────────┼────────────┨
-┃ project_id        │ zenml-core ┃
-┠───────────────────┼────────────┨
-┃ user_account_json │ [HIDDEN]   ┃
-┗━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### GCP Service Account
-
-[Long-lived GCP credentials](https://docs.zenml.io/stacks/best-security-practices#long-lived-credentials-api-keys-account-keys) consisting of a GCP service account and its credentials.
-
-This method requires [a GCP service account](https://cloud.google.com/iam/docs/service-account-overview) and [a service account key JSON](https://cloud.google.com/iam/docs/service-account-creds#key-types) created for it.
-
-By default, the GCP connector [generates temporary OAuth 2.0 tokens](https://docs.zenml.io/stacks/best-security-practices#generating-temporary-and-down-scoped-credentials) from the service account credentials and distributes them to clients. The tokens have a limited lifetime of 1 hour. This behavior can be disabled by setting the `generate_temporary_tokens` configuration option to `False`, in which case, the connector will distribute the service account credentials JSON to clients instead (not recommended).
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified project. If the `project_id` is not provided, the connector will use the one extracted from the service account key JSON.
-
-If you already have the `GOOGLE_APPLICATION_CREDENTIALS` environment variable configured to point to a service account key JSON file, it will be automatically picked up when auto-configuration is used.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes a GCP service account was created, [granted permissions to access GCS buckets](#gcs-bucket) in the target project and a service account key JSON was generated and saved locally in the `connectors-devel@zenml-core.json` file:
-
-```sh
-zenml service-connector register gcp-service-account --type gcp --auth-method service-account --resource-type gcs-bucket --project_id=zenml-core --service_account_json=@connectors-devel@zenml-core.json
-```
-
-{% code title="Example Command Output" %}
-
-```
-Expanding argument value service_account_json to contents of file connectors-devel@zenml-core.json.
-Successfully registered service connector `gcp-service-account` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The GCP service connector configuration and service account credentials:
-
-```sh
-zenml service-connector describe gcp-service-account
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-service-account' of type 'gcp' with id '4b3d41c9-6a6f-46da-b7ba-8f374c3f49c5' is owned by user 'default' and is 'private'.
-    'gcp-service-account' gcp Service Connector Details    
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ ID               │ 4b3d41c9-6a6f-46da-b7ba-8f374c3f49c5 ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ NAME             │ gcp-service-account                  ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ TYPE             │ 🔵 gcp                               ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ AUTH METHOD      │ service-account                      ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 📦 gcs-bucket                        ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                           ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SECRET ID        │ 0d0a42bb-40a4-4f43-af9e-6342eeca3f28 ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                  ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                  ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ OWNER            │ default                              ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ SHARED           │ ➖                                   ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-19 08:15:48.056937           ┃
-┠──────────────────┼──────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-19 08:15:48.056940           ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            Configuration            
-┏━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━┓
-┃ PROPERTY             │ VALUE      ┃
-┠──────────────────────┼────────────┨
-┃ project_id           │ zenml-core ┃
-┠──────────────────────┼────────────┨
-┃ service_account_json │ [HIDDEN]   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### GCP Service Account impersonation
-
-Generates [temporary STS credentials](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) by [impersonating another GCP service account](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-impersonation).
-
-The connector needs to be configured with the email address of the target GCP service account to be impersonated, accompanied by a GCP service account key JSON for the primary service account. The primary service account must have permission to generate tokens for the target service account (i.e. [the Service Account Token Creator role](https://cloud.google.com/iam/docs/service-account-permissions#directly-impersonate)). The connector will generate temporary OAuth 2.0 tokens upon request by using [GCP direct service account impersonation](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-impersonation). The tokens have a configurable limited lifetime of up to 1 hour.
-
-[The best practice implemented with this authentication scheme](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) is to keep the set of permissions associated with the primary service account down to the bare minimum and grant permissions to the privilege-bearing service account instead.
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified project.
-
-If you already have the `GOOGLE_APPLICATION_CREDENTIALS` environment variable configured to point to the primary service account key JSON file, it will be automatically picked up when auto-configuration is used.
-
-<details>
-
-<summary>Configuration example</summary>
-
-For this example, we have the following set up in GCP:
-
-* a primary `empty-connectors@zenml-core.iam.gserviceaccount.com` GCP service account with no permissions whatsoever aside from the "Service Account Token Creator" role that allows it to impersonate the secondary service account below. We also generate a service account key for this account.
-* a secondary `zenml-bucket-sl@zenml-core.iam.gserviceaccount.com` GCP service account that only has permission to access the `zenml-bucket-sl` GCS bucket
-
-First, let's show that the `empty-connectors` service account has no permission to access any GCS buckets or any other resources for that matter. We'll register a regular GCP Service Connector that uses the service account key (long-lived credentials) directly:
-
-```sh
-zenml service-connector register gcp-empty-sa --type gcp --auth-method service-account --service_account_json=@empty-connectors@zenml-core.json  --project_id=zenml-core
-```
-
-{% code title="Example Command Output" %}
-
-```
-Expanding argument value service_account_json to contents of file /home/stefan/aspyre/src/zenml/empty-connectors@zenml-core.json.
-Successfully registered service connector `gcp-empty-sa` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                                                                                            ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                                                                                                ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ 💥 error: connector authorization failure: failed to list GCS buckets: 403 GET                                            ┃
-┃                       │ https://storage.googleapis.com/storage/v1/b?project=zenml-core&projection=noAcl&prettyPrint=false:                        ┃
-┃                       │ empty-connectors@zenml-core.iam.gserviceaccount.com does not have storage.buckets.list access to the Google Cloud         ┃
-┃                       │ project. Permission 'storage.buckets.list' denied on resource (or it may not exist).                                      ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ 💥 error: connector authorization failure: Failed to list GKE clusters: 403 Required "container.clusters.list"            ┃
-┃                       │ permission(s) for "projects/20219041791". [request_id: "0x84808facdac08541"                                               ┃
-┃                       │ ]                                                                                                                         ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                                                                                                         ┃
-┃                       │ us.gcr.io/zenml-core                                                                                                      ┃
-┃                       │ eu.gcr.io/zenml-core                                                                                                      ┃
-┃                       │ asia.gcr.io/zenml-core                                                                                                    ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Verifying access to individual resource types will fail:
-
-```sh
-zenml service-connector verify gcp-empty-sa --resource-type kubernetes-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-Error: Service connector 'gcp-empty-sa' verification failed: connector authorization failure: Failed to list GKE clusters:
-403 Required "container.clusters.list" permission(s) for "projects/20219041791".
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector verify gcp-empty-sa --resource-type gcs-bucket
-```
-
-{% code title="Example Command Output" %}
-
-```
-Error: Service connector 'gcp-empty-sa' verification failed: connector authorization failure: failed to list GCS buckets:
-403 GET https://storage.googleapis.com/storage/v1/b?project=zenml-core&projection=noAcl&prettyPrint=false:
-empty-connectors@zenml-core.iam.gserviceaccount.com does not have storage.buckets.list access to the Google Cloud project.
-Permission 'storage.buckets.list' denied on resource (or it may not exist).
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector verify gcp-empty-sa --resource-type gcs-bucket --resource-id zenml-bucket-sl
-```
-
-{% code title="Example Command Output" %}
-
-```
-Error: Service connector 'gcp-empty-sa' verification failed: connector authorization failure: failed to fetch GCS bucket
-zenml-bucket-sl: 403 GET https://storage.googleapis.com/storage/v1/b/zenml-bucket-sl?projection=noAcl&prettyPrint=false:
-empty-connectors@zenml-core.iam.gserviceaccount.com does not have storage.buckets.get access to the Google Cloud Storage bucket.
-Permission 'storage.buckets.get' denied on resource (or it may not exist).
-```
-
-{% endcode %}
-
-Next, we'll register a GCP Service Connector that actually uses account impersonation to access the `zenml-bucket-sl` GCS bucket and verify that it can actually access the bucket:
-
-```sh
-zenml service-connector register gcp-impersonate-sa --type gcp --auth-method impersonation --service_account_json=@empty-connectors@zenml-core.json  --project_id=zenml-core --target_principal=zenml-bucket-sl@zenml-core.iam.gserviceaccount.com --resource-type gcs-bucket --resource-id gs://zenml-bucket-sl
-```
-
-{% code title="Example Command Output" %}
-
-```
-Expanding argument value service_account_json to contents of file /home/stefan/aspyre/src/zenml/empty-connectors@zenml-core.json.
-Successfully registered service connector `gcp-impersonate-sa` with access to the following resources:
-┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┓
-┃ RESOURCE TYPE │ RESOURCE NAMES       ┃
-┠───────────────┼──────────────────────┨
-┃ 📦 gcs-bucket │ gs://zenml-bucket-sl ┃
-┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### External Account (GCP Workload Identity)
-
-Use [GCP workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to authenticate to GCP services using AWS IAM credentials, Azure Active Directory credentials or generic OIDC tokens.
-
-This authentication method only requires a GCP workload identity external account JSON file that only contains the configuration for the external account without any sensitive credentials. It allows implementing [a two layer authentication scheme](https://docs.zenml.io/stacks/best-security-practices#impersonating-accounts-and-assuming-roles) that keeps the set of permissions associated with implicit credentials down to the bare minimum and grants permissions to the privilege-bearing GCP service account instead.
-
-This authentication method can be used to authenticate to GCP services using credentials from other cloud providers or identity providers. When used with workloads running on AWS or Azure, it involves automatically picking up credentials from the AWS IAM or Azure AD identity associated with the workload and using them to authenticate to GCP services. This means that the result depends on the environment where the ZenML server is deployed and is thus not fully reproducible.
-
-{% hint style="warning" %}
-When used with AWS or Azure implicit in-cloud authentication, this method may constitute a security risk, because it can give users access to the identity (e.g. AWS IAM role or Azure AD principal) implicitly associated with the environment where the ZenML server is running. For this reason, all implicit authentication methods are disabled by default and need to be explicitly enabled by setting the `ZENML_ENABLE_IMPLICIT_AUTH_METHODS` environment variable or the helm chart `enableImplicitAuthMethods` configuration option to `true` in the ZenML deployment.
-{% endhint %}
-
-By default, the GCP connector generates temporary OAuth 2.0 tokens from the external account credentials and distributes them to clients. The tokens have a limited lifetime of 1 hour. This behavior can be disabled by setting the `generate_temporary_tokens` configuration option to `False`, in which case, the connector will distribute the external account credentials JSON to clients instead (not recommended).
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified roject. This project must be the same as the one for which the external account was configured.
-
-If you already have the GOOGLE\_APPLICATION\_CREDENTIALS environment variable configured to point to an external account key JSON file, it will be automatically picked up when auto-configuration is used.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes the following prerequisites are met, as covered in [the GCP documentation on how to configure workload identity federation with AWS](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds):
-
-* the ZenML server is deployed in AWS in an EKS cluster (or any other AWS compute environment)
-* the ZenML server EKS pods are associated with an AWS IAM role by means of an IAM OIDC provider, as covered in the [AWS documentation on how to associate a IAM role with a service account](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Alternatively, [the IAM role associated with the EKS/EC2 nodes](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html) can be used instead. This AWS IAM role provides the implicit AWS IAM identity and credentials that will be used to authenticate to GCP services.
-* a GCP workload identity pool and AWS provider are configured for the GCP project where the target resources are located, as covered in [the GCP documentation on how to configure workload identity federation with AWS](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds).
-* a GCP service account is configured with permissions to access the target resources and granted the `roles/iam.workloadIdentityUser` role for the workload identity pool and AWS provider
-* a GCP external account JSON file is generated for the GCP service account. This is used to configure the GCP connector.
-
-```sh
-zenml service-connector register gcp-workload-identity --type gcp \
-    --auth-method external-account --project_id=zenml-core \
-    --external_account_json=@clientLibraryConfig-aws-zenml.json
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `gcp-workload-identity` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                      ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-No sensitive credentials are stored with the Service Connector, just meta-information about the external provider and the external account:
-
-```sh
-zenml service-connector describe gcp-workload-identity -x
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-workload-identity' of type 'gcp' with id '37b6000e-3f7f-483e-b2c5-7a5db44fe66b' is
-owned by user 'default'.
-                        'gcp-workload-identity' gcp Service Connector Details                        
-┏━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY               │ VALUE                                                                    ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ ID                     │ 37b6000e-3f7f-483e-b2c5-7a5db44fe66b                                     ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ NAME                   │ gcp-workload-identity                                                    ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ TYPE                   │ 🔵 gcp                                                                   ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD            │ external-account                                                         ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES         │ 🔵 gcp-generic, 📦 gcs-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME          │ <multiple>                                                               ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID              │ 1ff6557f-7f60-4e63-b73d-650e64f015b5                                     ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION       │ N/A                                                                      ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN             │ N/A                                                                      ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES_SKEW_TOLERANCE │ N/A                                                                      ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ OWNER                  │ default                                                                  ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT             │ 2024-01-30 20:44:14.020514                                               ┃
-┠────────────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT             │ 2024-01-30 20:44:14.020516                                               ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                                              Configuration                                              
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY              │ VALUE                                                                         ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────┨
-┃ project_id            │ zenml-core                                                                    ┃
-┠───────────────────────┼───────────────────────────────────────────────────────────────────────────────┨
-┃ external_account_json │ {                                                                             ┃
-┃                       │   "type": "external_account",                                                 ┃
-┃                       │   "audience":                                                                 ┃
-┃                       │ "//iam.googleapis.com/projects/30267569827/locations/global/workloadIdentityP ┃
-┃                       │ ools/mypool/providers/myprovider",                                            ┃
-┃                       │   "subject_token_type": "urn:ietf:params:aws:token-type:aws4_request",        ┃
-┃                       │   "service_account_impersonation_url":                                        ┃
-┃                       │ "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/myrole@  ┃
-┃                       │ zenml-core.iam.gserviceaccount.com:generateAccessToken",                      ┃
-┃                       │   "token_url": "https://sts.googleapis.com/v1/token",                         ┃
-┃                       │   "credential_source": {                                                      ┃
-┃                       │     "environment_id": "aws1",                                                 ┃
-┃                       │     "region_url":                                                             ┃
-┃                       │ "http://169.254.169.254/latest/meta-data/placement/availability-zone",        ┃
-┃                       │     "url":                                                                    ┃
-┃                       │ "http://169.254.169.254/latest/meta-data/iam/security-credentials",           ┃
-┃                       │     "regional_cred_verification_url":                                         ┃
-┃                       │ "https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06- ┃
-┃                       │ 15"                                                                           ┃
-┃                       │   }                                                                           ┃
-┃                       │ }                                                                             ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### GCP OAuth 2.0 token
-
-Uses [temporary OAuth 2.0 tokens](https://docs.zenml.io/stacks/best-security-practices#short-lived-credentials) explicitly configured by the user.
-
-This method has the major limitation that the user must regularly generate new tokens and update the connector configuration as OAuth 2.0 tokens expire. On the other hand, this method is ideal in cases where the connector only needs to be used for a short period of time, such as sharing access temporarily with someone else in your team.
-
-Using any of the other authentication methods will automatically generate and refresh OAuth 2.0 tokens for clients upon request.
-
-A GCP project is required and the connector may only be used to access GCP resources in the specified project.
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-Fetching OAuth 2.0 tokens from the local GCP CLI is possible if the GCP CLI is already configured with valid credentials (i.e. by running `gcloud auth application-default login`). We need to force the ZenML CLI to use the OAuth 2.0 token authentication by passing the `--auth-method oauth2-token` option, otherwise, it would automatically pick up long-term credentials:
-
-```sh
-zenml service-connector register gcp-oauth2-token --type gcp --auto-configure --auth-method oauth2-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `gcp-oauth2-token` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                      ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector describe gcp-oauth2-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-oauth2-token' of type 'gcp' with id 'ec4d7d85-c71c-476b-aa76-95bf772c90da' is owned by user 'default' and is 'private'.
-                       'gcp-oauth2-token' gcp Service Connector Details                        
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                    ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ ec4d7d85-c71c-476b-aa76-95bf772c90da                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ gcp-oauth2-token                                                         ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔵 gcp                                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ oauth2-token                                                             ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔵 gcp-generic, 📦 gcs-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 4694de65-997b-4929-8831-b49d5e067b97                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 59m46s                                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                  ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                       ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-19 09:04:33.557126                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-19 09:04:33.557127                                               ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-       Configuration       
-┏━━━━━━━━━━━━┯━━━━━━━━━━━━┓
-┃ PROPERTY   │ VALUE      ┃
-┠────────────┼────────────┨
-┃ project_id │ zenml-core ┃
-┠────────────┼────────────┨
-┃ token      │ [HIDDEN]   ┃
-┗━━━━━━━━━━━━┷━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Note the temporary nature of the Service Connector. It will expire and become unusable in 1 hour:
-
-```sh
-zenml service-connector list --name gcp-oauth2-token
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME             │ ID                                   │ TYPE   │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼──────────────────┼──────────────────────────────────────┼────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ gcp-oauth2-token │ ec4d7d85-c71c-476b-aa76-95bf772c90da │ 🔵 gcp │ 🔵 gcp-generic        │ <multiple>    │ ➖     │ default │ 59m35s     │        ┃
-┃        │                  │                                      │        │ 📦 gcs-bucket         │               │        │         │            │        ┃
-┃        │                  │                                      │        │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │                  │                                      │        │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-## Auto-configuration
-
-The GCP Service Connector allows [auto-discovering and fetching credentials](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration) and configuration [set up by the GCP CLI](https://cloud.google.com/sdk/gcloud) on your local host.
-
-<details>
-
-<summary>Auto-configuration example</summary>
-
-The following is an example of lifting GCP user credentials granting access to the same set of GCP resources and services that the local GCP CLI is allowed to access. The GCP CLI should already be configured with valid credentials (i.e. by running `gcloud auth application-default login`). In this case, the [GCP user account authentication method](#gcp-user-account) is automatically detected:
-
-```sh
-zenml service-connector register gcp-auto --type gcp --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-Successfully registered service connector `gcp-auto` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃    🔵 gcp-generic     │ zenml-core                                      ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃     📦 gcs-bucket     │ gs://zenml-bucket-sl                            ┃
-┃                       │ gs://zenml-core.appspot.com                     ┃
-┃                       │ gs://zenml-core_cloudbuild                      ┃
-┃                       │ gs://zenml-datasets                             ┃
-┃                       │ gs://zenml-internal-artifact-store              ┃
-┃                       │ gs://zenml-kubeflow-artifact-store              ┃
-┃                       │ gs://zenml-project-time-series-bucket           ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector describe gcp-auto
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-auto' of type 'gcp' with id 'fe16f141-7406-437e-a579-acebe618a293' is owned by user 'default' and is 'private'.
-                           'gcp-auto' gcp Service Connector Details                            
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                    ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ fe16f141-7406-437e-a579-acebe618a293                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ gcp-auto                                                                 ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🔵 gcp                                                                   ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ user-account                                                             ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🔵 gcp-generic, 📦 gcs-bucket, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 5eca8f6e-291f-4958-ae2d-a3e847a1ad8a                                     ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                      ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                  ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                       ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-05-19 09:15:12.882929                                               ┃
-┠──────────────────┼──────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-05-19 09:15:12.882930                                               ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-          Configuration           
-┏━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━┓
-┃ PROPERTY          │ VALUE      ┃
-┠───────────────────┼────────────┨
-┃ project_id        │ zenml-core ┃
-┠───────────────────┼────────────┨
-┃ user_account_json │ [HIDDEN]   ┃
-┗━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-## Local client provisioning
-
-The local `gcloud` CLI, the Kubernetes `kubectl` CLI and the Docker CLI can be[ configured with credentials extracted from or generated by a compatible GCP Service Connector](https://docs.zenml.io/stacks/service-connectors-guide#configure-local-clients). Please note that unlike the configuration made possible through the GCP CLI, the Kubernetes and Docker credentials issued by the GCP Service Connector have a short lifetime and will need to be regularly refreshed. This is a byproduct of implementing a high-security profile.
-
-{% hint style="info" %}
-Note that the `gcloud` local client can only be configured with credentials issued by the GCP Service Connector if the connector is configured with the [GCP user account authentication method](#gcp-user-account) or the [GCP service account authentication method](#gcp-service-account) and if the `generate_temporary_tokens` option is set to true in the Service Connector configuration.
-
-Only the `gcloud` local [application default credentials](https://cloud.google.com/docs/authentication/application-default-credentials) configuration will be updated by the GCP Service Connector configuration. This makes it possible to use libraries and SDKs that use the application default credentials to access GCP resources.
-{% endhint %}
-
-<details>
-
-<summary>Local CLI configuration examples</summary>
-
-The following shows an example of configuring the local Kubernetes CLI to access a GKE cluster reachable through a GCP Service Connector:
-
-```sh
-zenml service-connector list --name gcp-user-account
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME             │ ID                                   │ TYPE   │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼──────────────────┼──────────────────────────────────────┼────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ gcp-user-account │ ddbce93f-df14-4861-a8a4-99a80972f3bc │ 🔵 gcp │ 🔵 gcp-generic        │ <multiple>    │ ➖     │ default │            │        ┃
-┃        │                  │                                      │        │ 📦 gcs-bucket         │               │        │         │            │        ┃
-┃        │                  │                                      │        │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │                  │                                      │        │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-The following lists all Kubernetes clusters accessible through the GCP Service Connector:
-
-```sh
-zenml service-connector verify gcp-user-account --resource-type kubernetes-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-user-account' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES     ┃
-┠───────────────────────┼────────────────────┨
-┃ 🌀 kubernetes-cluster │ zenml-test-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Calling the login CLI command will configure the local Kubernetes `kubectl` CLI to access the Kubernetes cluster through the GCP Service Connector:
-
-```sh
-zenml service-connector login gcp-user-account --resource-type kubernetes-cluster --resource-id zenml-test-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠴ Attempting to configure local client using service connector 'gcp-user-account'...
-Context "gke_zenml-core_zenml-test-cluster" modified.
-Updated local kubeconfig with the cluster details. The current kubectl context was set to 'gke_zenml-core_zenml-test-cluster'.
-The 'gcp-user-account' Kubernetes Service Connector connector was used to successfully configure the local Kubernetes cluster client/SDK.
-```
-
-{% endcode %}
-
-To verify that the local Kubernetes `kubectl` CLI is correctly configured, the following command can be used:
-
-```sh
-kubectl cluster-info
-```
-
-{% code title="Example Command Output" %}
-
-```
-Kubernetes control plane is running at https://35.185.95.223
-GLBCDefaultBackend is running at https://35.185.95.223/api/v1/namespaces/kube-system/services/default-http-backend:http/proxy
-KubeDNS is running at https://35.185.95.223/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-Metrics-server is running at https://35.185.95.223/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
-```
-
-{% endcode %}
-
-A similar process is possible with GCR container registries:
-
-```sh
-zenml service-connector verify gcp-user-account --resource-type docker-registry --resource-id europe-west1-docker.pkg.dev/zenml-core/test
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'gcp-user-account' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   RESOURCE TYPE    │ RESOURCE NAMES                              ┃
-┠────────────────────┼─────────────────────────────────────────────┨
-┃ 🐳 docker-registry │ europe-west1-docker.pkg.dev/zenml-core/test ┃
-┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector login gcp-user-account --resource-type docker-registry --resource-id europe-west1-docker.pkg.dev/zenml-core/test
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠦ Attempting to configure local client using service connector 'gcp-user-account'...
-WARNING! Your password will be stored unencrypted in /home/stefan/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-The 'gcp-user-account' Docker Service Connector connector was used to successfully configure the local Docker/OCI container registry client/SDK.
-```
-
-{% endcode %}
-
-To verify that the local Docker container registry client is correctly configured, the following command can be used:
-
-```sh
-docker push europe-west1-docker.pkg.dev/zenml-core/test/zenml
-```
-
-{% code title="Example Command Output" %}
-
-```
-The push refers to repository [europe-west1-docker.pkg.dev/zenml-core/test/zenml]
-d4aef4f5ed86: Pushed 
-2d69a4ce1784: Pushed 
-204066eca765: Pushed 
-2da74ab7b0c1: Pushed 
-75c35abda1d1: Layer already exists 
-415ff8f0f676: Layer already exists 
-c14cb5b1ec91: Layer already exists 
-a1d005f5264e: Layer already exists 
-3a3fd880aca3: Layer already exists 
-149a9c50e18e: Layer already exists 
-1f6d3424b922: Layer already exists 
-8402c959ae6f: Layer already exists 
-419599cb5288: Layer already exists 
-8553b91047da: Layer already exists 
-connectors: digest: sha256:a4cfb18a5cef5b2201759a42dd9fe8eb2f833b788e9d8a6ebde194765b42fe46 size: 3256
-```
-
-{% endcode %}
-
-It is also possible to update the local `gcloud` CLI configuration with credentials extracted from the GCP Service Connector:
-
-```sh
-zenml service-connector login gcp-user-account --resource-type gcp-generic
-```
-
-{% code title="Example Command Output" %}
-
-```
-Updated the local gcloud default application credentials file at '/home/user/.config/gcloud/application_default_credentials.json'
-The 'gcp-user-account' GCP Service Connector connector was used to successfully configure the local Generic GCP resource client/SDK.
-```
-
-{% endcode %}
-
-</details>
-
-## Stack Components use
-
-The[ GCS Artifact Store Stack Component](https://docs.zenml.io/stacks/artifact-stores/gcp) can be connected to a remote GCS bucket through a GCP Service Connector.
-
-The [Google Cloud Image Builder Stack Component](https://docs.zenml.io/stacks/image-builders/gcp), [VertexAI Orchestrator](https://docs.zenml.io/stacks/orchestrators/vertex), and [VertexAI Step Operator](https://docs.zenml.io/stacks/step-operators/vertex) can be connected and use the resources of a target GCP project through a GCP Service Connector.
-
-The GCP Service Connector can also be used with any Orchestrator or Model Deployer stack component flavor that relies on Kubernetes clusters to manage workloads. This allows GKE Kubernetes container workloads to be managed without the need to configure and maintain explicit GCP or Kubernetes `kubectl` configuration contexts and credentials in the target environment or in the Stack Component itself.
-
-Similarly, Container Registry Stack Components can be connected to a Google Artifact Registry or GCR Container Registry through a GCP Service Connector. This allows container images to be built and published to GAR or GCR container registries without the need to configure explicit GCP credentials in the target environment or the Stack Component.
-
-## End-to-end examples
-
-<details>
-
-<summary>GKE Kubernetes Orchestrator, GCS Artifact Store and GCR Container Registry with a multi-type GCP Service Connector</summary>
-
-This is an example of an end-to-end workflow involving Service Connectors that use a single multi-type GCP Service Connector to give access to multiple resources for multiple Stack Components. A complete ZenML Stack is registered and composed of the following Stack Components, all connected through the same Service Connector:
-
-* a [Kubernetes Orchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes) connected to a GKE Kubernetes cluster
-* a [GCS Artifact Store](https://docs.zenml.io/stacks/artifact-stores/gcp) connected to a GCS bucket
-* a [GCP Container Registry](https://docs.zenml.io/stacks/container-registries/gcp) connected to a Docker Google Artifact Registry
-* a local [Image Builder](https://docs.zenml.io/stacks/image-builders/local)
-
-As a last step, a simple pipeline is run on the resulting Stack.
-
-1. Configure the local GCP CLI with valid user account credentials with a wide range of permissions (i.e. by running `gcloud auth application-default login`) and install ZenML integration prerequisites:
-
-   ```sh
-   zenml integration install -y gcp
-   ```
-
-   ```sh
-   gcloud auth application-default login
-   ```
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Credentials saved to file: \[/home/stefan/.config/gcloud/application\_default\_credentials.json]
-
-These credentials will be used by any library that requests Application Default Credentials (ADC).
-
-Quota project "zenml-core" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
-
-```
-```
-
-{% endcode %}
-
-2. Make sure the GCP Service Connector Type is available
-
-   \`
-
-\`\`sh zenml service-connector list-types --type gcp \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓ ┃ NAME │ TYPE │ RESOURCE TYPES │ AUTH METHODS │ LOCAL │ REMOTE ┃ ┠───────────────────────┼────────┼───────────────────────┼─────────────────┼───────┼────────┨ ┃ GCP Service Connector │ 🔵 gcp │ 🔵 gcp-generic │ implicit │ ✅ │ ✅ ┃ ┃ │ │ 📦 gcs-bucket │ user-account │ │ ┃ ┃ │ │ 🌀 kubernetes-cluster │ service-account │ │ ┃ ┃ │ │ 🐳 docker-registry │ oauth2-token │ │ ┃ ┃ │ │ │ impersonation │ │ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-3. Register a multi-type GCP Service Connector using auto-configuration
-
-   \`
-
-\`\`sh zenml service-connector register gcp-demo-multi --type gcp --auto-configure \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Successfully registered service connector \`gcp-demo-multi\` with access to the following resources: ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃ RESOURCE TYPE │ RESOURCE NAMES ┃ ┠───────────────────────┼─────────────────────────────────────────────────┨ ┃ 🔵 gcp-generic │ zenml-core ┃ ┠───────────────────────┼─────────────────────────────────────────────────┨ ┃ 📦 gcs-bucket │ gs\://zenml-bucket-sl ┃ ┃ │ gs\://zenml-core.appspot.com ┃ ┃ │ gs\://zenml-core\_cloudbuild ┃ ┃ │ gs\://zenml-datasets ┃ ┠───────────────────────┼─────────────────────────────────────────────────┨ ┃ 🌀 kubernetes-cluster │ zenml-test-cluster ┃ ┠───────────────────────┼─────────────────────────────────────────────────┨ ┃ 🐳 docker-registry │ gcr.io/zenml-core ┃ ┃ │ us.gcr.io/zenml-core ┃ ┃ │ eu.gcr.io/zenml-core ┃ ┃ │ asia.gcr.io/zenml-core ┃ ┃ │ asia-docker.pkg.dev/zenml-core/asia.gcr.io ┃ ┃ │ europe-docker.pkg.dev/zenml-core/eu.gcr.io ┃ ┃ │ europe-west1-docker.pkg.dev/zenml-core/test ┃ ┃ │ us-docker.pkg.dev/zenml-core/gcr.io ┃ ┃ │ us-docker.pkg.dev/zenml-core/us.gcr.io ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-```
-**NOTE**: from this point forward, we don't need the local GCP CLI credentials or the local GCP CLI at all. The steps that follow can be run on any machine regardless of whether it has been configured and authorized to access the GCP project.
-```
-
-4\. find out which GCS buckets, GAR registries, and GKE Kubernetes clusters we can gain access to. We'll use this information to configure the Stack Components in our minimal GCP stack: a GCS Artifact Store, a Kubernetes Orchestrator, and a GCP Container Registry.
-
-````
-```sh
-zenml service-connector list-resources --resource-type gcs-bucket
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 'gcs-bucket' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE │ RESOURCE NAMES                                  ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────┼─────────────────────────────────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 📦 gcs-bucket │ gs://zenml-bucket-sl                            ┃
-┃                                      │                │                │               │ gs://zenml-core.appspot.com                     ┃
-┃                                      │                │                │               │ gs://zenml-core_cloudbuild                      ┃
-┃                                      │                │                │               │ gs://zenml-datasets                             ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector list-resources --resource-type kubernetes-cluster
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 'kubernetes-cluster' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE         │ RESOURCE NAMES     ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────────────┼────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 🌀 kubernetes-cluster │ zenml-test-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector list-resources --resource-type docker-registry
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-The following 'docker-registry' resources can be accessed by service connectors that you have configured:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES                                  ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼────────────────────┼─────────────────────────────────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 🐳 docker-registry │ gcr.io/zenml-core                               ┃
-┃                                      │                │                │                    │ us.gcr.io/zenml-core                            ┃
-┃                                      │                │                │                    │ eu.gcr.io/zenml-core                            ┃
-┃                                      │                │                │                    │ asia.gcr.io/zenml-core                          ┃
-┃                                      │                │                │                    │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                                      │                │                │                    │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                                      │                │                │                    │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                                      │                │                │                    │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                                      │                │                │                    │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-5. register and connect a GCS Artifact Store Stack Component to a GCS bucket:
-
-   \`
-
-\`\`sh zenml artifact-store register gcs-zenml-bucket-sl --flavor gcp --path=gs\://zenml-bucket-sl \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered artifact\_store \`gcs-zenml-bucket-sl\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml artifact-store connect gcs-zenml-bucket-sl --connector gcp-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (global)
-Successfully connected artifact store `gcs-zenml-bucket-sl` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE │ RESOURCE NAMES       ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────┼──────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 📦 gcs-bucket │ gs://zenml-bucket-sl ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-6. register and connect a Kubernetes Orchestrator Stack Component to a GKE cluster:
-
-   \`
-
-\`\`sh zenml orchestrator register gke-zenml-test-cluster --flavor kubernetes --synchronous=true --kubernetes\_namespace=zenml-workloads \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered orchestrator \`gke-zenml-test-cluster\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml orchestrator connect gke-zenml-test-cluster --connector gcp-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (global)
-Successfully connected orchestrator `gke-zenml-test-cluster` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE         │ RESOURCE NAMES     ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼───────────────────────┼────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 🌀 kubernetes-cluster │ zenml-test-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-7. Register and connect a GCP Container Registry Stack Component to a GAR registry:
-
-   \`
-
-\`\`sh zenml container-registry register gcr-zenml-core --flavor gcp --uri=europe-west1-docker.pkg.dev/zenml-core/test \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered container\_registry \`gcr-zenml-core\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml container-registry connect gcr-zenml-core --connector gcp-demo-multi
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (global)
-Successfully connected container registry `gcr-zenml-core` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES                              ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼────────────────────┼─────────────────────────────────────────────┨
-┃ eeeabc13-9203-463b-aa52-216e629e903c │ gcp-demo-multi │ 🔵 gcp         │ 🐳 docker-registry │ europe-west1-docker.pkg.dev/zenml-core/test ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-8. Combine all Stack Components together into a Stack and set it as active (also throw in a local Image Builder for completion):
-
-   \`
-
-\`\`sh zenml image-builder register local --flavor local \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered image\_builder \`local\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml stack register gcp-demo -a gcs-zenml-bucket-sl -o gke-zenml-test-cluster -c gcr-zenml-core -i local --set
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Stack 'gcp-demo' successfully registered!
-Active global stack set to:'gcp-demo'
-```
-````
-
-{% endcode %}
-
-9. Finally, run a simple pipeline to prove that everything works as expected. We'll use the simplest pipelines possible for this example:
-
-   \`
-
-\`\`python from zenml import pipeline, step
-
-````
-@step
-def step_1() -> str:
-    """Returns the `world` string."""
-    return "world"
-
-
-@step(enable_cache=False)
-def step_2(input_one: str, input_two: str) -> None:
-    """Combines the two strings at its input and prints them."""
-    combined_str = f"{input_one} {input_two}"
-    print(combined_str)
-
-
-@pipeline
-def my_pipeline():
-    output_step_one = step_1()
-    step_2(input_one="hello", input_two=output_step_one)
-
-
-if __name__ == "__main__":
-    my_pipeline()
-```
-
-Saving that to a `run.py` file and running it gives us:
-````
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text $ python run.py Building Docker image(s) for pipeline simple\_pipeline. Building Docker image europe-west1-docker.pkg.dev/zenml-core/test/zenml:simple\_pipeline-orchestrator. - Including integration requirements: gcsfs, google-cloud-aiplatform>=1.11.0, google-cloud-build>=3.11.0, google-cloud-container>=2.21.0, google-cloud-functions>=1.8.3, google-cloud-scheduler>=2.7.3, google-cloud-secret-manager, google-cloud-storage>=2.9.0, kfp==1.8.16, kubernetes==18.20.0, shapely<2.0 No .dockerignore found, including all files inside build context. Step 1/8 : FROM zenmldocker/zenml:0.39.1-py3.8 Step 2/8 : WORKDIR /app Step 3/8 : COPY .zenml\_integration\_requirements . Step 4/8 : RUN pip install --default-timeout=60 --no-cache-dir -r .zenml\_integration\_requirements Step 5/8 : ENV ZENML\_ENABLE\_REPO\_INIT\_WARNINGS=False Step 6/8 : ENV ZENML\_CONFIG\_PATH=/app/.zenconfig Step 7/8 : COPY . . Step 8/8 : RUN chmod -R a+rw . Pushing Docker image europe-west1-docker.pkg.dev/zenml-core/test/zenml:simple\_pipeline-orchestrator. Finished pushing Docker image. Finished building Docker image(s). Running pipeline simple\_pipeline on stack gcp-demo (caching disabled) Waiting for Kubernetes orchestrator pod... Kubernetes orchestrator pod started. Waiting for pod of step step\_1 to start... Step step\_1 has started. Step step\_1 has finished in 1.357s. Pod of step step\_1 completed. Waiting for pod of step simple\_step\_two to start... Step step\_2 has started. Hello World! Step step\_2 has finished in 3.136s. Pod of step step\_2 completed. Orchestration pod completed. Dashboard URL: <http://34.148.132.191/default/pipelines/cec118d1-d90a-44ec-8bd7-d978f726b7aa/runs> \`\`\` \`\`\`\` {% endcode %}
-
-</details>
-
-<details>
-
-<summary>VertexAI Orchestrator, GCS Artifact Store, Google Artifact Registry and GCP Image Builder with single-instance GCP Service Connectors</summary>
-
-This is an example of an end-to-end workflow involving Service Connectors that use multiple single-instance GCP Service Connectors, each giving access to a resource for a Stack Component. A complete ZenML Stack is registered and composed of the following Stack Components, all connected through its individual Service Connector:
-
-* a [VertexAI Orchestrator](https://docs.zenml.io/stacks/orchestrators/vertex) connected to the GCP project
-* a [GCS Artifact Store](https://docs.zenml.io/stacks/artifact-stores/gcp) connected to a GCS bucket
-* a [GCP Container Registry](https://docs.zenml.io/stacks/container-registries/gcp) connected to a GCR container registry
-* a [Google Cloud Image Builder](https://docs.zenml.io/stacks/image-builders/gcp) connected to the GCP project
-
-As a last step, a simple pipeline is run on the resulting Stack.
-
-1. Configure the local GCP CLI with valid user account credentials with a wide range of permissions (i.e. by running \`
-
-gcloud auth application-default login\`) and install ZenML integration prerequisites:
-
-````
-```sh
-zenml integration install -y gcp
-```
-
-```sh
-gcloud auth application-default login
-```
-````
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Credentials saved to file: \[/home/stefan/.config/gcloud/application\_default\_credentials.json]
-
-These credentials will be used by any library that requests Application Default Credentials (ADC).
-
-Quota project "zenml-core" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
-
-```
-```
-
-{% endcode %}
-
-2. Make sure the GCP Service Connector Type is available
-
-   \`
-
-\`\`sh zenml service-connector list-types --type gcp \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓ ┃ NAME │ TYPE │ RESOURCE TYPES │ AUTH METHODS │ LOCAL │ REMOTE ┃ ┠───────────────────────┼────────┼───────────────────────┼─────────────────┼───────┼────────┨ ┃ GCP Service Connector │ 🔵 gcp │ 🔵 gcp-generic │ implicit │ ✅ │ ✅ ┃ ┃ │ │ 📦 gcs-bucket │ user-account │ │ ┃ ┃ │ │ 🌀 kubernetes-cluster │ service-account │ │ ┃ ┃ │ │ 🐳 docker-registry │ oauth2-token │ │ ┃ ┃ │ │ │ impersonation │ │ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-3. Register an individual single-instance GCP Service Connector using auto-configuration for each of the resources that will be needed for the Stack Components: a GCS bucket, a GCR registry, and generic GCP access for the VertexAI orchestrator and another one for the GCP Cloud Builder:
-
-   \`
-
-\`\`sh zenml service-connector register gcs-zenml-bucket-sl --type gcp --resource-type gcs-bucket --resource-id gs\://zenml-bucket-sl --auto-configure \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Successfully registered service connector \`gcs-zenml-bucket-sl\` with access to the following resources: ┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┓ ┃ RESOURCE TYPE │ RESOURCE NAMES ┃ ┠───────────────┼──────────────────────┨ ┃ 📦 gcs-bucket │ gs\://zenml-bucket-sl ┃ ┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml service-connector register gcr-zenml-core --type gcp --resource-type docker-registry --auto-configure
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Successfully registered service connector `gcr-zenml-core` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   RESOURCE TYPE       │ RESOURCE NAMES                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────┨
-┃ 🐳 docker-registry    │ gcr.io/zenml-core                               ┃
-┃                       │ us.gcr.io/zenml-core                            ┃
-┃                       │ eu.gcr.io/zenml-core                            ┃
-┃                       │ asia.gcr.io/zenml-core                          ┃
-┃                       │ asia-docker.pkg.dev/zenml-core/asia.gcr.io      ┃
-┃                       │ europe-docker.pkg.dev/zenml-core/eu.gcr.io      ┃
-┃                       │ europe-west1-docker.pkg.dev/zenml-core/test     ┃
-┃                       │ us-docker.pkg.dev/zenml-core/gcr.io             ┃
-┃                       │ us-docker.pkg.dev/zenml-core/us.gcr.io          ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector register vertex-ai-zenml-core --type gcp --resource-type gcp-generic --auto-configure
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Successfully registered service connector `vertex-ai-zenml-core` with access to the following resources:
-┏━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃ RESOURCE TYPE  │ RESOURCE NAMES ┃
-┠────────────────┼────────────────┨
-┃ 🔵 gcp-generic │ zenml-core     ┃
-┗━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-```sh
-zenml service-connector register gcp-cloud-builder-zenml-core --type gcp --resource-type gcp-generic --auto-configure
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Successfully registered service connector `gcp-cloud-builder-zenml-core` with access to the following resources:
-┏━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃ RESOURCE TYPE  │ RESOURCE NAMES ┃
-┠────────────────┼────────────────┨
-┃ 🔵 gcp-generic │ zenml-core     ┃
-┗━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-````
-**NOTE**: from this point forward, we don't need the local GCP CLI credentials or the local GCP CLI at all. The steps that follow can be run on any machine regardless of whether it has been configured and authorized to access the GCP project.
-
-In the end, the service connector list should look like this:
-
-```sh
-zenml service-connector list
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME                         │ ID                                   │ TYPE   │ RESOURCE TYPES     │ RESOURCE NAME        │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼──────────────────────────────┼──────────────────────────────────────┼────────┼────────────────────┼──────────────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ gcs-zenml-bucket-sl          │ 405034fe-5e6e-4d29-ba62-8ae025381d98 │ 🔵 gcp │ 📦 gcs-bucket      │ gs://zenml-bucket-sl │ ➖     │ default │            │        ┃
-┠────────┼──────────────────────────────┼──────────────────────────────────────┼────────┼────────────────────┼──────────────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ gcr-zenml-core               │ 9fddfaba-6d46-4806-ad96-9dcabef74639 │ 🔵 gcp │ 🐳 docker-registry │ gcr.io/zenml-core    │ ➖     │ default │            │        ┃
-┠────────┼──────────────────────────────┼──────────────────────────────────────┼────────┼────────────────────┼──────────────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ vertex-ai-zenml-core         │ f97671b9-8c73-412b-bf5e-4b7c48596f5f │ 🔵 gcp │ 🔵 gcp-generic     │ zenml-core           │ ➖     │ default │            │        ┃
-┠────────┼──────────────────────────────┼──────────────────────────────────────┼────────┼────────────────────┼──────────────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ gcp-cloud-builder-zenml-core │ 648c1016-76e4-4498-8de7-808fd20f057b │ 🔵 gcp │ 🔵 gcp-generic     │ zenml-core           │ ➖     │ default │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-4. register and connect a GCS Artifact Store Stack Component to the GCS bucket:
-
-   \`
-
-\`\`sh zenml artifact-store register gcs-zenml-bucket-sl --flavor gcp --path=gs\://zenml-bucket-sl \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (global) Successfully registered artifact\_store \`gcs-zenml-bucket-sl\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml artifact-store connect gcs-zenml-bucket-sl --connector gcs-zenml-bucket-sl
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (global)
-Successfully connected artifact store `gcs-zenml-bucket-sl` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME      │ CONNECTOR TYPE │ RESOURCE TYPE │ RESOURCE NAMES       ┃
-┠──────────────────────────────────────┼─────────────────────┼────────────────┼───────────────┼──────────────────────┨
-┃ 405034fe-5e6e-4d29-ba62-8ae025381d98 │ gcs-zenml-bucket-sl │ 🔵 gcp         │ 📦 gcs-bucket │ gs://zenml-bucket-sl ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-5. register and connect a Google Cloud Image Builder Stack Component to the target GCP project:
-
-   \`
-
-\`\`sh zenml image-builder register gcp-zenml-core --flavor gcp \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered image\_builder \`gcp-zenml-core\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml image-builder connect gcp-zenml-core --connector gcp-cloud-builder-zenml-core 
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected image builder `gcp-zenml-core` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME               │ CONNECTOR TYPE │ RESOURCE TYPE  │ RESOURCE NAMES ┃
-┠──────────────────────────────────────┼──────────────────────────────┼────────────────┼────────────────┼────────────────┨
-┃ 648c1016-76e4-4498-8de7-808fd20f057b │ gcp-cloud-builder-zenml-core │ 🔵 gcp         │ 🔵 gcp-generic │ zenml-core     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-6. register and connect a Vertex AI Orchestrator Stack Component to the target GCP project
-
-   **NOTE**: If we do not specify a workload service account, the Vertex AI Pipelines Orchestrator uses the Compute Engine default service account in the target project to run pipelines. You must grant this account the Vertex AI Service Agent role, otherwise the pipelines will fail. More information on other configurations possible for the Vertex AI Orchestrator can be found [here](https://docs.zenml.io/stacks/orchestrators/vertex#how-to-use-it).
-
-   \`
-
-\`\`sh zenml orchestrator register vertex-ai-zenml-core --flavor=vertex --location=europe-west1 --synchronous=true \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered orchestrator \`vertex-ai-zenml-core\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml orchestrator connect vertex-ai-zenml-core --connector vertex-ai-zenml-core
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected orchestrator `vertex-ai-zenml-core` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME       │ CONNECTOR TYPE │ RESOURCE TYPE  │ RESOURCE NAMES ┃
-┠──────────────────────────────────────┼──────────────────────┼────────────────┼────────────────┼────────────────┨
-┃ f97671b9-8c73-412b-bf5e-4b7c48596f5f │ vertex-ai-zenml-core │ 🔵 gcp         │ 🔵 gcp-generic │ zenml-core     ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-7. Register and connect a GCP Container Registry Stack Component to a GCR container registry:
-
-   \`
-
-\`\`sh zenml container-registry register gcr-zenml-core --flavor gcp --uri=gcr.io/zenml-core \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Running with active stack: 'default' (repository) Successfully registered container\_registry \`gcr-zenml-core\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml container-registry connect gcr-zenml-core --connector gcr-zenml-core
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-Running with active stack: 'default' (repository)
-Successfully connected container registry `gcr-zenml-core` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES    ┃
-┠──────────────────────────────────────┼────────────────┼────────────────┼────────────────────┼───────────────────┨
-┃ 9fddfaba-6d46-4806-ad96-9dcabef74639 │ gcr-zenml-core │ 🔵 gcp         │ 🐳 docker-registry │ gcr.io/zenml-core ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-8. Combine all Stack Components together into a Stack and set it as active:
-
-   \`
-
-\`\`sh zenml stack register gcp-demo -a gcs-zenml-bucket-sl -o vertex-ai-zenml-core -c gcr-zenml-core -i gcp-zenml-core --set \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\`text Stack 'gcp-demo' successfully registered! Active repository stack set to:'gcp-demo' \`\`\` \`\`\`\` {% endcode %}
-
-9. Finally, run a simple pipeline to prove that everything works as expected. We'll use the simplest pipelines possible for this example:
-
-   \`
-
-\`\`python from zenml import pipeline, step
-
-````
-@step
-def step_1() -> str:
-    """Returns the `world` string."""
-    return "world"
-
-
-@step(enable_cache=False)
-def step_2(input_one: str, input_two: str) -> None:
-    """Combines the two strings at its input and prints them."""
-    combined_str = f"{input_one} {input_two}"
-    print(combined_str)
-
-
-@pipeline
-def my_pipeline():
-    output_step_one = step_1()
-    step_2(input_one="hello", input_two=output_step_one)
-
-
-if __name__ == "__main__":
-    my_pipeline()
-```
-
-Saving that to a `run.py` file and running it gives us:
-````
-
-{% code title="Example Command Output" %}
-
-````
-```text
-$ python run.py 
-Building Docker image(s) for pipeline simple_pipeline.
-Building Docker image gcr.io/zenml-core/zenml:simple_pipeline-orchestrator.
-- Including integration requirements: gcsfs, google-cloud-aiplatform>=1.11.0, google-cloud-build>=3.11.0, google-cloud-container>=2.21.0, google-cloud-functions>=1.8.3, google-cloud-scheduler>=2.7.3, google-cloud-secret-manager, google-cloud-storage>=2.9.0, kfp==1.8.16, shapely<2.0
-Using Cloud Build to build image gcr.io/zenml-core/zenml:simple_pipeline-orchestrator
-No .dockerignore found, including all files inside build context.
-Uploading build context to gs://zenml-bucket-sl/cloud-build-contexts/5dda6dbb60e036398bee4974cfe3eb768a138b2e.tar.gz.
-Build context located in bucket zenml-bucket-sl and object path cloud-build-contexts/5dda6dbb60e036398bee4974cfe3eb768a138b2e.tar.gz
-Using Cloud Builder image gcr.io/cloud-builders/docker to run the steps in the build. Container will be attached to network using option --network=cloudbuild.
-Running Cloud Build to build the Docker image. Cloud Build logs: https://console.cloud.google.com/cloud-build/builds/068e77a1-4e6f-427a-bf94-49c52270af7a?project=20219041791
-The Docker image has been built successfully. More information can be found in the Cloud Build logs: https://console.cloud.google.com/cloud-build/builds/068e77a1-4e6f-427a-bf94-49c52270af7a?project=20219041791.
-Finished building Docker image(s).
-Running pipeline simple_pipeline on stack gcp-demo (caching disabled)
-The attribute pipeline_root has not been set in the orchestrator configuration. One has been generated automatically based on the path of the GCPArtifactStore artifact store in the stack used to execute the pipeline. The generated pipeline_root is gs://zenml-bucket-sl/vertex_pipeline_root/simple_pipeline/simple_pipeline_default_6e72f3e1.
-/home/stefan/aspyre/src/zenml/.venv/lib/python3.8/site-packages/kfp/v2/compiler/compiler.py:1290: FutureWarning: APIs imported from the v1 namespace (e.g. kfp.dsl, kfp.components, etc) will not be supported by the v2 compiler since v2.0.0
-    warnings.warn(
-Writing Vertex workflow definition to /home/stefan/.config/zenml/vertex/8a0b53ee-644a-4fbe-8e91-d4d6ddf79ae8/pipelines/simple_pipeline_default_6e72f3e1.json.
-No schedule detected. Creating one-off vertex job...
-Submitting pipeline job with job_id simple-pipeline-default-6e72f3e1 to Vertex AI Pipelines service.
-The Vertex AI Pipelines job workload will be executed using the connectors-vertex-ai-workload@zenml-core.iam.gserviceaccount.com service account.
-Creating PipelineJob
-INFO:google.cloud.aiplatform.pipeline_jobs:Creating PipelineJob
-PipelineJob created. Resource name: projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1
-INFO:google.cloud.aiplatform.pipeline_jobs:PipelineJob created. Resource name: projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1
-To use this PipelineJob in another session:
-INFO:google.cloud.aiplatform.pipeline_jobs:To use this PipelineJob in another session:
-pipeline_job = aiplatform.PipelineJob.get('projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1')
-INFO:google.cloud.aiplatform.pipeline_jobs:pipeline_job = aiplatform.PipelineJob.get('projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1')
-View Pipeline Job:
-https://console.cloud.google.com/vertex-ai/locations/europe-west1/pipelines/runs/simple-pipeline-default-6e72f3e1?project=20219041791
-INFO:google.cloud.aiplatform.pipeline_jobs:View Pipeline Job:
-https://console.cloud.google.com/vertex-ai/locations/europe-west1/pipelines/runs/simple-pipeline-default-6e72f3e1?project=20219041791
-View the Vertex AI Pipelines job at https://console.cloud.google.com/vertex-ai/locations/europe-west1/pipelines/runs/simple-pipeline-default-6e72f3e1?project=20219041791
-Waiting for the Vertex AI Pipelines job to finish...
-PipelineJob projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1 current state:
-PipelineState.PIPELINE_STATE_RUNNING
-INFO:google.cloud.aiplatform.pipeline_jobs:PipelineJob projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1 current state:
-PipelineState.PIPELINE_STATE_RUNNING
-...
-PipelineJob run completed. Resource name: projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1
-INFO:google.cloud.aiplatform.pipeline_jobs:PipelineJob run completed. Resource name: projects/20219041791/locations/europe-west1/pipelineJobs/simple-pipeline-default-6e72f3e1
-Dashboard URL: https://34.148.132.191/default/pipelines/17cac6b5-3071-45fa-a2ef-cda4a7965039/runs
-```
-````
-
-{% endcode %}
-
-</details>
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# Azure Service Connector
-
-Configuring Azure Service Connectors to connect ZenML to Azure resources such as Blob storage buckets, AKS Kubernetes clusters, and ACR container registries.
-
-The ZenML Azure Service Connector facilitates the authentication and access to managed Azure services and resources. These encompass a range of resources, including blob storage containers, ACR repositories, and AKS clusters.
-
-This connector also supports [automatic configuration and detection of credentials](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration) locally configured through the Azure CLI.
-
-This connector serves as a general means of accessing any Azure service by issuing credentials to clients. Additionally, the connector can handle specialized authentication for Azure blob storage, Docker and Kubernetes Python clients. It also allows for the configuration of local Docker and Kubernetes CLIs.
-
-```shell
-$ zenml service-connector list-types --type azure
-```
-
-```shell
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃          NAME           │ TYPE     │ RESOURCE TYPES        │ AUTH METHODS      │ LOCAL │ REMOTE ┃
-┠─────────────────────────┼──────────┼───────────────────────┼───────────────────┼───────┼────────┨
-┃ Azure Service Connector │ 🇦 azure │ 🇦 azure-generic      │ implicit          │ ✅    │ ✅     ┃
-┃                         │          │ 📦 blob-container     │ service-principal │       │        ┃
-┃                         │          │ 🌀 kubernetes-cluster │ access-token      │       │        ┃
-┃                         │          │ 🐳 docker-registry    │                   │       │        ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-## Prerequisites
-
-The Azure Service Connector is part of the Azure ZenML integration. You can either install the entire integration or use a pypi extra to install it independently of the integration:
-
-* `pip install "zenml[connectors-azure]"` installs only prerequisites for the Azure Service Connector Type
-* `zenml integration install azure` installs the entire Azure ZenML integration
-
-It is not required to [install and set up the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli) on your local machine to use the Azure Service Connector to link Stack Components to Azure resources and services. However, it is recommended to do so if you are looking for a quick setup that includes using the auto-configuration Service Connector features.
-
-{% hint style="info" %}
-The auto-configuration option is limited to using temporary access tokens that don't work with Azure blob storage resources. To unlock the full power of the Azure Service Connector it is therefore recommended that you [configure and use an Azure service principal and its credentials](https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication-on-premises-apps?tabs=azure-portal).
-{% endhint %}
-
-## Resource Types
-
-### Generic Azure resource
-
-This resource type allows Stack Components to use the Azure Service Connector to connect to any Azure service or resource. When used by Stack Components, they are provided generic azure-identity credentials that can be used to create Azure python clients for any particular Azure service.
-
-This generic Azure resource type is meant to be used with Stack Components that are not represented by other, more specific resource type, like Azure blob storage containers, Kubernetes clusters or Docker registries. It should be accompanied by a matching set of Azure permissions that allow access to the set of remote resources required by the Stack Components.
-
-The resource name represents the name of the Azure subscription that the connector is authorized to access.
-
-### Azure blob storage container
-
-Allows users to connect to Azure Blob containers. When used by Stack Components, they are provided a pre-configured Azure Blob Storage client.
-
-The configured credentials must have at least the following Azure IAM permissions associated with the blob storage account or containers that the connector that the connector will be allowed to access:
-
-* allow read and write access to blobs (e.g. the `Storage Blob Data Contributor` role)
-* allow listing the storage accounts (e.g. the `Reader and Data Access` role). This is only required if a storage account is not configured in the connector.
-* allow listing the containers in a storage account (e.g. the `Reader and Data Access` role)
-
-If set, the resource name must identify an Azure blob storage container using one of the following formats:
-
-* Azure blob container URI (canonical resource name): `{az|abfs}://{container-name}`
-* Azure blob container name: `{container-name}`
-
-If a storage account is configured in the connector, only blob storage containers in that storage account will be accessible. Otherwise, if a resource group is configured in the connector, only blob storage containers in storage accounts in that resource group will be accessible. Finally, if neither a storage account nor a resource group is configured in the connector, all blob storage containers in all accessible storage accounts will be accessible.
-
-{% hint style="warning" %}
-The only Azure authentication methods that work with Azure blob storage resources are the implicit authentication and the service principal authentication method.
-{% endhint %}
-
-### AKS Kubernetes cluster
-
-Allows Stack Components to access an AKS cluster as a standard Kubernetes cluster resource. When used by Stack Components, they are provided a pre-authenticated python-kubernetes client instance.
-
-The configured credentials must have at least the following Azure IAM permissions associated with the AKS clusters that the connector will be allowed to access:
-
-* allow listing the AKS clusters and fetching their credentials (e.g. the `Azure Kubernetes Service Cluster Admin Role` role)
-
-If set, the resource name must identify an AKS cluster using one of the following formats:
-
-* resource group scoped AKS cluster name (canonical): `[{resource-group}/]{cluster-name}`
-* AKS cluster name: `{cluster-name}`
-
-Given that the AKS cluster name is unique within a resource group, the resource group name may be included in the resource name to avoid ambiguity. If a resource group is configured in the connector, the resource group name in the resource name must match the configured resource group. If no resource group is configured in the connector and a resource group name is not included in the resource name, the connector will attempt to find the AKS cluster in any resource group.
-
-If a resource group is configured in the connector, only AKS clusters in that resource group will be accessible.
-
-### ACR container registry
-
-Allows Stack Components to access one or more ACR registries as a standard Docker registry resource. When used by Stack Components, they are provided a pre-authenticated python-docker client instance.
-
-The configured credentials must have at least the following Azure IAM permissions associated with the ACR registries that the connector will be allowed to access:
-
-* allow access to pull and push images (e.g. the `AcrPull` and `AcrPush` roles)
-* allow access to list registries - instead of the broad `Contributor` role, use more specific permissions like `Reader` role or create a custom role with only the `Microsoft.ContainerRegistry/registries/read` permission
-
-If set, the resource name must identify an ACR registry using one of the following formats:
-
-* ACR registry URI (canonical resource name): `[https://]{registry-name}.azurecr.io`
-* ACR registry name: `{registry-name}`
-
-If a resource group is configured in the connector, only ACR registries in that resource group will be accessible.
-
-If an authentication method other than the Azure service principal is used, Entra ID authentication is used.\
-This requires the configured identity to have the `AcrPush` role to be configured.\
-If Entra ID authentication fails, admin account authentication is tried. For this the admin account must be enabled for the registry.\
-See the official Azure[documentation on the admin account](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication#admin-account) for more information.
-
-## Authentication Methods
-
-### Implicit authentication
-
-[Implicit authentication](https://docs.zenml.io/stacks/best-security-practices#implicit-authentication) to Azure services using environment variables, local configuration files, workload or managed identities.
-
-{% hint style="warning" %}
-This method may constitute a security risk, because it can give users access to the same cloud resources and services that the ZenML Server itself is configured to access. For this reason, all implicit authentication methods are disabled by default and need to be explicitly enabled by setting the `ZENML_ENABLE_IMPLICIT_AUTH_METHODS` environment variable or the helm chart `enableImplicitAuthMethods` configuration option to `true` in the ZenML deployment.
-{% endhint %}
-
-This authentication method doesn't require any credentials to be explicitly configured. It automatically discovers and uses credentials from one of the following sources:
-
-* [environment variables](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#environment-variables)
-* workload identity - if the application is deployed to an Azure Kubernetes Service with Managed Identity enabled. This option can only be used when running the ZenML server on an AKS cluster.
-* managed identity - if the application is deployed to an Azure host with Managed Identity enabled. This option can only be used when running the ZenML client or server on an Azure host.
-* Azure CLI - if a user has signed in via [the Azure CLI `az login` command](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
-
-This is the quickest and easiest way to authenticate to Azure services. However, the results depend on how ZenML is deployed and the environment where it is used and is thus not fully reproducible:
-
-* when used with the default local ZenML deployment or a local ZenML server, the credentials are the same as those used by the Azure CLI or extracted from local environment variables.
-* when connected to a ZenML server, this method only works if the ZenML server is deployed in Azure and will use the workload identity attached to the Azure resource where the ZenML server is running (e.g. an AKS cluster). The permissions of the managed identity may need to be adjusted to allows listing and accessing/describing the Azure resources that the connector is configured to access.
-
-Note that the discovered credentials inherit the full set of permissions of the local Azure CLI configuration, environment variables or remote Azure managed identity. Depending on the extent of those permissions, this authentication method might not be recommended for production use, as it can lead to accidental privilege escalation. Instead, it is recommended to use the Azure service principal authentication method to limit the validity and/or permissions of the credentials being issued to connector clients.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes the local Azure CLI has already been configured with user account credentials by running the `az login` command:
-
-```sh
-zenml service-connector register azure-implicit --type azure --auth-method implicit --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠙ Registering service connector 'azure-implicit'...
-Successfully registered service connector `azure-implicit` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃   🇦 azure-generic    │ ZenML Subscription                            ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃   📦 blob-container   │ az://demo-zenmlartifactstore                  ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ demozenmlcontainerregistry.azurecr.io         ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-No credentials are stored with the Service Connector:
-
-```sh
-zenml service-connector describe azure-implicit
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'azure-implicit' of type 'azure' with id 'ad645002-0cd4-4d4f-ae20-499ce888a00a' is owned by user 'default' and is 'private'.
-                          'azure-implicit' azure Service Connector Details                           
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                          ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ ad645002-0cd4-4d4f-ae20-499ce888a00a                                           ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ azure-implicit                                                                 ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🇦  azure                                                                       ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ implicit                                                                       ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🇦  azure-generic, 📦 blob-container, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │                                                                                ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                        ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                             ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-05 09:47:42.415949                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-05 09:47:42.415954                                                     ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### Azure Service Principal
-
-Azure service principal credentials consists of an Azure client ID and client secret. These credentials are used to authenticate clients to Azure services.
-
-For this authentication method, the Azure Service Connector requires [an Azure service principal to be created](https://learn.microsoft.com/en-us/azure/developer/python/sdk/authentication-on-premises-apps?tabs=azure-portal) and a client secret to be generated.
-
-<details>
-
-<summary>Example configuration</summary>
-
-The following assumes an Azure service principal was configured with a client secret and has permissions to access an Azure blob storage container, an AKS Kubernetes cluster and an ACR container registry. The service principal client ID, tenant ID and client secret are then used to configure the Azure Service Connector.
-
-```sh
-zenml service-connector register azure-service-principal --type azure --auth-method service-principal --tenant_id=a79f3633-8f45-4a74-a42e-68871c17b7fb --client_id=8926254a-8c3f-430a-a2fd-bdab234d491e --client_secret=AzureSuperSecret
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠙ Registering service connector 'azure-service-principal'...
-Successfully registered service connector `azure-service-principal` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃   🇦 azure-generic    │ ZenML Subscription                            ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃   📦 blob-container   │ az://demo-zenmlartifactstore                  ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ demozenmlcontainerregistry.azurecr.io         ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The Service Connector configuration shows that the connector is configured with service principal credentials:
-
-```sh
-zenml service-connector describe azure-service-principal
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                          ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 273d2812-2643-4446-82e6-6098b8ccdaa4                                           ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ azure-service-principal                                                        ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🇦  azure                                                                       ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ service-principal                                                              ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🇦  azure-generic, 📦 blob-container, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ 50d9f230-c4ea-400e-b2d7-6b52ba2a6f90                                           ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ N/A                                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                        ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                             ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-20 19:16:26.802374                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-20 19:16:26.802378                                                     ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-                     Configuration                      
-┏━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY      │ VALUE                                ┃
-┠───────────────┼──────────────────────────────────────┨
-┃ tenant_id     │ a79ff333-8f45-4a74-a42e-68871c17b7fb ┃
-┠───────────────┼──────────────────────────────────────┨
-┃ client_id     │ 8926254a-8c3f-430a-a2fd-bdab234d491e ┃
-┠───────────────┼──────────────────────────────────────┨
-┃ client_secret │ [HIDDEN]                             ┃
-┗━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-### Azure Access Token
-
-Uses [temporary Azure access tokens](https://docs.zenml.io/stacks/best-security-practices#short-lived-credentials) explicitly configured by the user or auto-configured from a local environment.
-
-This method has the major limitation that the user must regularly generate new tokens and update the connector configuration as API tokens expire. On the other hand, this method is ideal in cases where the connector only needs to be used for a short period of time, such as sharing access temporarily with someone else in your team.
-
-This is the authentication method used during auto-configuration, if you have [the local Azure CLI set up with credentials](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli). The connector will generate an access token from the Azure CLI credentials and store it in the connector configuration.
-
-{% hint style="warning" %}
-Given that Azure access tokens are scoped to a particular Azure resource and the access token generated during auto-configuration is scoped to the Azure Management API, this method does not work with Azure blob storage resources. You should use [the Azure service principal authentication method](#azure-service-principal) for blob storage resources instead.
-{% endhint %}
-
-<details>
-
-<summary>Example auto-configuration</summary>
-
-Fetching Azure session tokens from the local Azure CLI is possible if the Azure CLI is already configured with valid credentials (i.e. by running `az login`):
-
-```sh
-zenml service-connector register azure-session-token --type azure --auto-configure
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠙ Registering service connector 'azure-session-token'...
-connector authorization failure: the 'access-token' authentication method is not supported for blob storage resources
-Successfully registered service connector `azure-session-token` with access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                                                                                                  ┃
-┠───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃   🇦 azure-generic    │ ZenML Subscription                                                                                                              ┃
-┠───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃   📦 blob-container   │ 💥 error: connector authorization failure: the 'access-token' authentication method is not supported for blob storage resources ┃
-┠───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster                                                                                   ┃
-┠───────────────────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┨
-┃  🐳 docker-registry   │ demozenmlcontainerregistry.azurecr.io                                                                                           ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector describe azure-session-token 
-```
-
-{% code title="Example Command Output" %}
-
-```
-Service connector 'azure-session-token' of type 'azure' with id '94d64103-9902-4aa5-8ce4-877061af89af' is owned by user 'default' and is 'private'.
-                        'azure-session-token' azure Service Connector Details                        
-┏━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ PROPERTY         │ VALUE                                                                          ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ ID               │ 94d64103-9902-4aa5-8ce4-877061af89af                                           ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ NAME             │ azure-session-token                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ TYPE             │ 🇦 azure                                                                       ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ AUTH METHOD      │ access-token                                                                   ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE TYPES   │ 🇦 azure-generic, 📦 blob-container, 🌀 kubernetes-cluster, 🐳 docker-registry ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ RESOURCE NAME    │ <multiple>                                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SECRET ID        │ b34f2e95-ae16-43b6-8ab6-f0ee33dbcbd8                                           ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SESSION DURATION │ N/A                                                                            ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ EXPIRES IN       │ 42m25s                                                                         ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ OWNER            │ default                                                                        ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ SHARED           │ ➖                                                                             ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ CREATED_AT       │ 2023-06-05 10:03:32.646351                                                     ┃
-┠──────────────────┼────────────────────────────────────────────────────────────────────────────────┨
-┃ UPDATED_AT       │ 2023-06-05 10:03:32.646352                                                     ┃
-┗━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-     Configuration     
-┏━━━━━━━━━━┯━━━━━━━━━━┓
-┃ PROPERTY │ VALUE    ┃
-┠──────────┼──────────┨
-┃ token    │ [HIDDEN] ┃
-┗━━━━━━━━━━┷━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-Note the temporary nature of the Service Connector. It will expire and become unusable in approximately 1 hour:
-
-```sh
-zenml service-connector list --name azure-session-token 
-```
-
-{% code title="Example Command Output" %}
-
-```
-Could not import GCP service connector: No module named 'google.api_core'.
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME                │ ID                                   │ TYPE     │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼─────────────────────┼──────────────────────────────────────┼──────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ azure-session-token │ 94d64103-9902-4aa5-8ce4-877061af89af │ 🇦 azure │ 🇦 azure-generic      │ <multiple>    │ ➖     │ default │ 40m58s     │        ┃
-┃        │                     │                                      │          │ 📦 blob-container     │               │        │         │            │        ┃
-┃        │                     │                                      │          │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │                     │                                      │          │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-</details>
-
-## Auto-configuration
-
-The Azure Service Connector allows [auto-discovering and fetching credentials](https://docs.zenml.io/stacks/service-connectors-guide#auto-configuration) and [configuration set up by the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli) on your local host.
-
-{% hint style="warning" %}
-The Azure service connector auto-configuration comes with two limitations:
-
-1. it can only pick up temporary Azure access tokens and therefore cannot be used for long-term authentication scenarios
-2. it doesn't support authenticating to the Azure blob storage service. [The Azure service principal authentication method](#azure-service-principal) can be used instead.
-   {% endhint %}
-
-For an auto-configuration example, please refer to the [section about Azure access tokens](#azure-access-token).
-
-## Local client provisioning
-
-The local Azure CLI, Kubernetes `kubectl` CLI and the Docker CLI can be [configured with credentials extracted from or generated by a compatible Azure Service Connector](https://docs.zenml.io/stacks/service-connectors-guide#configure-local-clients).
-
-{% hint style="info" %}
-Note that the Azure local CLI can only be configured with credentials issued by the Azure Service Connector if the connector is configured with the [service principal authentication method](#azure-service-principal).
-{% endhint %}
-
-<details>
-
-<summary>Local CLI configuration examples</summary>
-
-The following shows an example of configuring the local Kubernetes CLI to access an AKS cluster reachable through an Azure Service Connector:
-
-```sh
-zenml service-connector list --name azure-service-principal
-```
-
-{% code title="Example Command Output" %}
-
-```
-┏━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━┯━━━━━━━━┯━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━┓
-┃ ACTIVE │ NAME                    │ ID                                   │ TYPE     │ RESOURCE TYPES        │ RESOURCE NAME │ SHARED │ OWNER   │ EXPIRES IN │ LABELS ┃
-┠────────┼─────────────────────────┼──────────────────────────────────────┼──────────┼───────────────────────┼───────────────┼────────┼─────────┼────────────┼────────┨
-┃        │ azure-service-principal │ 3df920bc-120c-488a-b7fc-0e79bc8b021a │ 🇦 azure │ 🇦 azure-generic      │ <multiple>    │ ➖     │ default │            │        ┃
-┃        │                         │                                      │          │ 📦 blob-container     │               │        │         │            │        ┃
-┃        │                         │                                      │          │ 🌀 kubernetes-cluster │               │        │         │            │        ┃
-┃        │                         │                                      │          │ 🐳 docker-registry    │               │        │         │            │        ┃
-┗━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━┷━━━━━━━━┷━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━┛
-```
-
-{% endcode %}
-
-The verify CLI command can be used to list all Kubernetes clusters accessible through the Azure Service Connector:
-
-```sh
-zenml service-connector verify azure-service-principal --resource-type kubernetes-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠙ Verifying service connector 'azure-service-principal'...
-Service connector 'azure-service-principal' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     RESOURCE TYPE     │ RESOURCE NAMES                                ┃
-┠───────────────────────┼───────────────────────────────────────────────┨
-┃ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-The login CLI command can be used to configure the local Kubernetes CLI to access a Kubernetes cluster reachable through an Azure Service Connector:
-
-```sh
-zenml service-connector login azure-service-principal --resource-type kubernetes-cluster --resource-id demo-zenml-demos/demo-zenml-terraform-cluster
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠙ Attempting to configure local client using service connector 'azure-service-principal'...
-Updated local kubeconfig with the cluster details. The current kubectl context was set to 'demo-zenml-terraform-cluster'.
-The 'azure-service-principal' Kubernetes Service Connector connector was used to successfully configure the local Kubernetes cluster client/SDK.
-```
-
-{% endcode %}
-
-The local Kubernetes CLI can now be used to interact with the Kubernetes cluster:
-
-```sh
-kubectl cluster-info
-```
-
-{% code title="Example Command Output" %}
-
-```
-Kubernetes control plane is running at https://demo-43c5776f7.hcp.westeurope.azmk8s.io:443
-CoreDNS is running at https://demo-43c5776f7.hcp.westeurope.azmk8s.io:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-Metrics-server is running at https://demo-43c5776f7.hcp.westeurope.azmk8s.io:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
-```
-
-{% endcode %}
-
-A similar process is possible with ACR container registries:
-
-```sh
-zenml service-connector verify azure-service-principal --resource-type docker-registry
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠦ Verifying service connector 'azure-service-principal'...
-Service connector 'azure-service-principal' is correctly configured with valid credentials and has access to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   RESOURCE TYPE    │ RESOURCE NAMES                        ┃
-┠────────────────────┼───────────────────────────────────────┨
-┃ 🐳 docker-registry │ demozenmlcontainerregistry.azurecr.io ┃
-┗━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-
-{% endcode %}
-
-```sh
-zenml service-connector login azure-service-principal --resource-type docker-registry --resource-id demozenmlcontainerregistry.azurecr.io
-```
-
-{% code title="Example Command Output" %}
-
-```
-⠹ Attempting to configure local client using service connector 'azure-service-principal'...
-WARNING! Your password will be stored unencrypted in /home/stefan/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-The 'azure-service-principal' Docker Service Connector connector was used to successfully configure the local Docker/OCI container registry client/SDK.
-```
-
-{% endcode %}
-
-The local Docker CLI can now be used to interact with the container registry:
-
-```sh
-docker push demozenmlcontainerregistry.azurecr.io/zenml:example_pipeline
-```
-
-{% code title="Example Command Output" %}
-
-```
-The push refers to repository [demozenmlcontainerregistry.azurecr.io/zenml]
-d4aef4f5ed86: Pushed 
-2d69a4ce1784: Pushed 
-204066eca765: Pushed 
-2da74ab7b0c1: Pushed 
-75c35abda1d1: Layer already exists 
-415ff8f0f676: Layer already exists 
-c14cb5b1ec91: Layer already exists 
-a1d005f5264e: Layer already exists 
-3a3fd880aca3: Layer already exists 
-149a9c50e18e: Layer already exists 
-1f6d3424b922: Layer already exists 
-8402c959ae6f: Layer already exists 
-419599cb5288: Layer already exists 
-8553b91047da: Layer already exists 
-connectors: digest: sha256:a4cfb18a5cef5b2201759a42dd9fe8eb2f833b788e9d8a6ebde194765b42fe46 size: 3256
-```
-
-{% endcode %}
-
-It is also possible to update the local Azure CLI configuration with credentials extracted from the Azure Service Connector:
-
-```sh
-zenml service-connector login azure-service-principal --resource-type azure-generic
-```
-
-{% code title="Example Command Output" %}
-
-```
-Updated the local Azure CLI configuration with the connector's service principal credentials.
-The 'azure-service-principal' Azure Service Connector connector was used to successfully configure the local Generic Azure resource client/SDK.
-```
-
-{% endcode %}
-
-</details>
-
-## Stack Components use
-
-The [Azure Artifact Store Stack Component](https://docs.zenml.io/stacks/artifact-stores/azure) can be connected to a remote Azure blob storage container through an Azure Service Connector.
-
-The Azure Service Connector can also be used with any Orchestrator or Model Deployer stack component flavor that relies on a Kubernetes clusters to manage workloads. This allows AKS Kubernetes container workloads to be managed without the need to configure and maintain explicit Azure or Kubernetes `kubectl` configuration contexts and credentials in the target environment or in the Stack Component itself.
-
-Similarly, Container Registry Stack Components can be connected to a ACR Container Registry through an Azure Service Connector. This allows container images to be built and published to private ACR container registries without the need to configure explicit Azure credentials in the target environment or the Stack Component.
-
-## End-to-end examples
-
-<details>
-
-<summary>AKS Kubernetes Orchestrator, Azure Blob Storage Artifact Store and ACR Container Registry with a multi-type Azure Service Connector</summary>
-
-This is an example of an end-to-end workflow involving Service Connectors that uses a single multi-type Azure Service Connector to give access to multiple resources for multiple Stack Components. A complete ZenML Stack is registered composed of the following Stack Components, all connected through the same Service Connector:
-
-* a [Kubernetes Orchestrator](https://docs.zenml.io/stacks/orchestrators/kubernetes) connected to an AKS Kubernetes cluster
-* a [Azure Blob Storage Artifact Store](https://docs.zenml.io/stacks/artifact-stores/azure) connected to an Azure blob storage container
-* an [Azure Container Registry](https://docs.zenml.io/stacks/container-registries/azure) connected to an ACR container registry
-* a local [Image Builder](https://docs.zenml.io/stacks/image-builders/local)
-
-As a last step, a simple pipeline is run on the resulting Stack.
-
-This example needs to use a remote ZenML Server that is reachable from Azure.
-
-1. Configure an Azure service principal with a client secret and give it permissions to access an Azure blob storage container, an AKS Kubernetes cluster and an ACR container registry. Also make sure you have the Azure ZenML integration installed:
-
-   ```sh
-   zenml integration install -y azure
-   ```
-2. Make sure the Azure Service Connector Type is available
-
-   ```sh
-   zenml service-connector list-types --type azure
-   ```
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` ┏━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓ ┃ NAME │ TYPE │ RESOURCE TYPES │ AUTH METHODS │ LOCAL │ REMOTE ┃ ┠─────────────────────────┼──────────┼───────────────────────┼───────────────────┼───────┼────────┨ ┃ Azure Service Connector │ 🇦 azure │ 🇦 azure-generic │ implicit │ ✅ │ ✅ ┃ ┃ │ │ 📦 blob-container │ service-principal │ │ ┃ ┃ │ │ 🌀 kubernetes-cluster │ access-token │ │ ┃ ┃ │ │ 🐳 docker-registry │ │ │ ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-3. Register a multi-type Azure Service Connector using the Azure service principal credentials set up at the first step. Note the resources that it has access to:
-
-   \`
-
-\`\`sh zenml service-connector register azure-service-principal --type azure --auth-method service-principal --tenant\_id=a79ff3633-8f45-4a74-a42e-68871c17b7fb --client\_id=8926254a-8c3f-430a-a2fd-bdab234fd491e --client\_secret=AzureSuperSecret \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` ⠸ Registering service connector 'azure-service-principal'... Successfully registered service connector \`azure-service-principal\` with access to the following resources: ┏━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ┃ RESOURCE TYPE │ RESOURCE NAMES ┃ ┠───────────────────────┼───────────────────────────────────────────────┨ ┃ 🇦 azure-generic │ ZenML Subscription ┃ ┠───────────────────────┼───────────────────────────────────────────────┨ ┃ 📦 blob-container │ az://demo-zenmlartifactstore ┃ ┠───────────────────────┼───────────────────────────────────────────────┨ ┃ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster ┃ ┠───────────────────────┼───────────────────────────────────────────────┨ ┃ 🐳 docker-registry │ demozenmlcontainerregistry.azurecr.io ┃ ┗━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ \`\`\` \`\`\`\` {% endcode %}
-
-4. register and connect an Azure Blob Storage Artifact Store Stack Component to an Azure blob container:
-
-   \`
-
-\`\`sh zenml artifact-store register azure-demo --flavor azure --path=az://demo-zenmlartifactstore \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` Successfully registered artifact\_store \`azure-demo\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml artifact-store connect azure-demo --connector azure-service-principal
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```
-Successfully connected artifact store `azure-demo` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME          │ CONNECTOR TYPE │ RESOURCE TYPE     │ RESOURCE NAMES               ┃
-┠──────────────────────────────────────┼─────────────────────────┼────────────────┼───────────────────┼──────────────────────────────┨
-┃ f2316191-d20b-4348-a68b-f5e347862196 │ azure-service-principal │ 🇦 azure       │ 📦 blob-container │ az://demo-zenmlartifactstore ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-5. register and connect a Kubernetes Orchestrator Stack Component to an AKS cluster:
-
-   \`
-
-\`\`sh zenml orchestrator register aks-demo-cluster --flavor kubernetes --synchronous=true --kubernetes\_namespace=zenml-workloads \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` Successfully registered orchestrator \`aks-demo-cluster\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml orchestrator connect aks-demo-cluster --connector azure-service-principal
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```
-Successfully connected orchestrator `aks-demo-cluster` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME          │ CONNECTOR TYPE │ RESOURCE TYPE         │ RESOURCE NAMES                                ┃
-┠──────────────────────────────────────┼─────────────────────────┼────────────────┼───────────────────────┼───────────────────────────────────────────────┨
-┃ f2316191-d20b-4348-a68b-f5e347862196 │ azure-service-principal │ 🇦 azure       │ 🌀 kubernetes-cluster │ demo-zenml-demos/demo-zenml-terraform-cluster ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-6. Register and connect an Azure Container Registry Stack Component to an ACR container registry:
-
-   \`
-
-\`\`sh zenml container-registry register acr-demo-registry --flavor azure --uri=demozenmlcontainerregistry.azurecr.io \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` Successfully registered container\_registry \`acr-demo-registry\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml container-registry connect acr-demo-registry --connector azure-service-principal
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```
-Successfully connected container registry `acr-demo-registry` to the following resources:
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃             CONNECTOR ID             │ CONNECTOR NAME          │ CONNECTOR TYPE │ RESOURCE TYPE      │ RESOURCE NAMES                        ┃
-┠──────────────────────────────────────┼─────────────────────────┼────────────────┼────────────────────┼───────────────────────────────────────┨
-┃ f2316191-d20b-4348-a68b-f5e347862196 │ azure-service-principal │ 🇦 azure       │ 🐳 docker-registry │ demozenmlcontainerregistry.azurecr.io ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-```
-````
-
-{% endcode %}
-
-7. Combine all Stack Components together into a Stack and set it as active (also throw in a local Image Builder for completion):
-
-   \`
-
-\`\`sh zenml image-builder register local --flavor local \`\`\`
-
-{% code title="Example Command Output" %}
-
-```
-```
-
-{% endcode %}
-
-\`\`\`\` \`\`\` Running with active stack: 'default' (global) Successfully registered image\_builder \`local\`. \`\`\` \`\`\`\` {% endcode %}
-
-````
-```sh
-zenml stack register gcp-demo -a azure-demo -o aks-demo-cluster -c acr-demo-registry -i local --set
-```
-
-````
-
-{% code title="Example Command Output" %}
-
-````
-```
-Stack 'gcp-demo' successfully registered!
-Active repository stack set to:'gcp-demo'
-```
-````
-
-{% endcode %}
-
-8. Finally, run a simple pipeline to prove that everything works as expected. We'll use the simplest pipelines possible for this example:
-
-   \`
-
-\`\`python from zenml import pipeline, step
-
-````
-@step
-def step_1() -> str:
-    """Returns the `world` string."""
-    return "world"
-
-
-@step(enable_cache=False)
-def step_2(input_one: str, input_two: str) -> None:
-    """Combines the two strings at its input and prints them."""
-    combined_str = f"{input_one} {input_two}"
-    print(combined_str)
-
-
-@pipeline
-def my_pipeline():
-    output_step_one = step_1()
-    step_2(input_one="hello", input_two=output_step_one)
-
-
-if __name__ == "__main__":
-    my_pipeline()
-```
-
-Saving that to a `run.py` file and running it gives us:
-````
-
-{% code title="Example Command Output" %}
-
-````
-```
-$ python run.py
-Building Docker image(s) for pipeline simple_pipeline.
-Building Docker image demozenmlcontainerregistry.azurecr.io/zenml:simple_pipeline-orchestrator.
-- Including integration requirements: adlfs==2021.10.0, azure-identity==1.10.0, azure-keyvault-keys, azure-keyvault-secrets, azure-mgmt-containerservice>=20.0.0, azureml-core==1.48.0, kubernetes, kubernetes==18.20.0
-No .dockerignore found, including all files inside build context.
-Step 1/10 : FROM zenmldocker/zenml:0.40.0-py3.8
-Step 2/10 : WORKDIR /app
-Step 3/10 : COPY .zenml_user_requirements .
-Step 4/10 : RUN pip install --default-timeout=60 --no-cache-dir  -r .zenml_user_requirements
-Step 5/10 : COPY .zenml_integration_requirements .
-Step 6/10 : RUN pip install --default-timeout=60 --no-cache-dir  -r .zenml_integration_requirements
-Step 7/10 : ENV ZENML_ENABLE_REPO_INIT_WARNINGS=False
-Step 8/10 : ENV ZENML_CONFIG_PATH=/app/.zenconfig
-Step 9/10 : COPY . .
-Step 10/10 : RUN chmod -R a+rw .
-Pushing Docker image demozenmlcontainerregistry.azurecr.io/zenml:simple_pipeline-orchestrator.
-Finished pushing Docker image.
-Finished building Docker image(s).
-Running pipeline simple_pipeline on stack gcp-demo (caching disabled)
-Waiting for Kubernetes orchestrator pod...
-Kubernetes orchestrator pod started.
-Waiting for pod of step simple_step_one to start...
-Step simple_step_one has started.
-INFO:azure.identity._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-INFO:azure.identity._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-INFO:azure.identity._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-INFO:azure.identity.aio._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-Step simple_step_one has finished in 0.396s.
-Pod of step simple_step_one completed.
-Waiting for pod of step simple_step_two to start...
-Step simple_step_two has started.
-INFO:azure.identity._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-INFO:azure.identity._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-INFO:azure.identity.aio._internal.get_token_mixin:ClientSecretCredential.get_token succeeded
-Hello World!
-Step simple_step_two has finished in 3.203s.
-Pod of step simple_step_two completed.
-Orchestration pod completed.
-Dashboard URL: https://zenml.stefan.20.23.46.143.nip.io/default/pipelines/98c41e2a-1ab0-4ec9-8375-6ea1ab473686/runs
-```
-````
-
-{% endcode %}
-
-</details>
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# HyperAI Service Connector
-
-Configuring HyperAI Connectors to connect ZenML to HyperAI instances.
-
-The ZenML HyperAI Service Connector allows authenticating with a HyperAI instance for deployment of pipeline runs. This connector provides pre-authenticated Paramiko SSH clients to Stack Components that are linked to it.
-
-```shell
-$ zenml service-connector list-types --type hyperai
-```
-
-```shell
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━┯━━━━━━━┯━━━━━━━━┓
-┃           NAME            │ TYPE       │ RESOURCE TYPES     │ AUTH METHODS │ LOCAL │ REMOTE ┃
-┠───────────────────────────┼────────────┼────────────────────┼──────────────┼───────┼────────┨
-┃ HyperAI Service Connector │ 🤖 hyperai │ 🤖 hyperai-instance │ rsa-key      │ ✅    │ ✅     ┃
-┃                           │            │                    │ dsa-key      │       │        ┃
-┃                           │            │                    │ ecdsa-key    │       │        ┃
-┃                           │            │                    │ ed25519-key  │       │        ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━┷━━━━━━━┷━━━━━━━━┛
-```
-
-## Prerequisites
-
-The HyperAI Service Connector is part of the HyperAI integration. It is necessary to install the integration in order to use this Service Connector:
-
-* `zenml integration install hyperai` installs the HyperAI integration
-
-## Resource Types
-
-The HyperAI Service Connector supports HyperAI instances.
-
-## Authentication Methods
-
-ZenML creates an SSH connection to the HyperAI instance in the background when using this Service Connector. It then provides these connections to stack components requiring them, such as the HyperAI Orchestrator. Multiple authentication methods are supported:
-
-1. RSA key based authentication.
-2. DSA (DSS) key based authentication.
-3. ECDSA key based authentication.
-4. ED25519 key based authentication.
-
-{% hint style="warning" %}
-SSH private keys configured in the connector will be distributed to all clients that use them to run pipelines with the HyperAI orchestrator. SSH keys are long-lived credentials that give unrestricted access to HyperAI instances.
-{% endhint %}
-
-When configuring the Service Connector, it is required to provide at least one hostname via `hostnames` and the `username` with which to login. Optionally, it is possible to provide an `ssh_passphrase` if applicable. This way, it is possible to use the HyperAI service connector in multiple ways:
-
-1. Create one service connector per HyperAI instance with different SSH keys.
-2. Configure a reused SSH key just once for multiple HyperAI instances, then select the individual instance when creating the HyperAI orchestrator component.
-
-## Auto-configuration
-
-{% hint style="info" %}
-This Service Connector does not support auto-discovery and extraction of authentication credentials from HyperAI instances. If this feature is useful to you or your organization, please let us know by messaging us in [Slack](https://zenml.io/slack) or [creating an issue on GitHub](https://github.com/zenml-io/zenml/issues).
-{% endhint %}
-
-## Stack Components use
-
-The HyperAI Service Connector can be used by the HyperAI Orchestrator to deploy pipeline runs to HyperAI instances.
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# AWS
-
-A simple guide to create an AWS stack to run your ZenML pipelines
-
-This page aims to quickly set up a minimal production stack on AWS. With just a few simple steps, you will set up an IAM role with specifically-scoped permissions that ZenML can use to authenticate with the relevant AWS resources.
-
-{% hint style="info" %}
-Would you like to skip ahead and deploy a full AWS ZenML cloud stack already?
-
-Check out the [in-browser stack deployment wizard](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/deploy-a-cloud-stack),\
-the [stack registration wizard](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/register-a-cloud-stack),\
-or [the ZenML AWS Terraform module](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/deploy-a-cloud-stack-with-terraform)\
-for a shortcut on how to deploy & register this stack.
-{% endhint %}
-
-## 1) Set up credentials and local environment
-
-To follow this guide, you need:
-
-* An active AWS account with necessary permissions for AWS S3, SageMaker, ECR, and ECS.
-* ZenML [installed](https://docs.zenml.io/getting-started/installation)
-* AWS CLI installed and configured with your AWS credentials. You can follow the instructions [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
-
-Once ready, navigate to the AWS console:
-
-1. Choose an AWS region: In the AWS console, choose the region where you want to deploy your ZenML stack resources. Make note of the region name (e.g., `us-east-1`, `eu-west-2`, etc.) as you will need it in subsequent steps.
-2. Create an IAM role:
-
-For this, you'll need to find out your AWS account ID. You can find this by running:
-
-```shell
-aws sts get-caller-identity --query Account --output text
-```
-
-This will output your AWS account ID. Make a note of this as you will need it in the next steps. (If you're doing anything more esoteric with your AWS account and IAM roles, this might not work for you. The account ID here that we're trying to get is the root account ID that you use to log in to the AWS console.)
-
-Then create a file named `assume-role-policy.json` with the following content:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::<YOUR_ACCOUNT_ID>:root",
-        "Service": "sagemaker.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-Make sure to replace the placeholder `<YOUR_ACCOUNT_ID>` with your actual AWS account ID that we found earlier.
-
-Now create a new IAM role that ZenML will use to access AWS resources. We'll use `zenml-role` as a role name in this example, but you can feel free to choose something else if you prefer. Run the following command to create the role:
-
-```shell
-aws iam create-role --role-name zenml-role --assume-role-policy-document file://assume-role-policy.json
-```
-
-Be sure to take note of the information that is output to the terminal, as you will need it in the next steps, especially the Role ARN.
-
-3. Create and attach least-privilege policies to the role:
-
-Instead of using broad managed policies, create custom policies that follow the principle of least privilege. First, create the necessary policy documents:
-
-**Create S3 policy document (`s3-policy.json`):**
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket",
-        "s3:GetObject",
-        "s3:PutObject",
-        "s3:DeleteObject",
-        "s3:GetBucketVersioning",
-        "s3:ListBucketVersions",
-        "s3:DeleteObjectVersion"
-      ],
-      "Resource": [
-        "arn:aws:s3:::your-bucket-name",
-        "arn:aws:s3:::your-bucket-name/*"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": "s3:ListAllMyBuckets",
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-**Create ECR policy document (`ecr-policy.json`):**
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ecr:BatchGetImage",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetAuthorizationToken",
-        "ecr:InitiateLayerUpload",
-        "ecr:UploadLayerPart",
-        "ecr:CompleteLayerUpload",
-        "ecr:PutImage",
-        "ecr:DescribeRepositories",
-        "ecr:ListRepositories",
-        "ecr:DescribeImages"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-**Create SageMaker policy document (`sagemaker-policy.json`):**
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker:CreatePipeline",
-        "sagemaker:StartPipelineExecution",
-        "sagemaker:StopPipelineExecution",
-        "sagemaker:DescribePipeline",
-        "sagemaker:DescribePipelineExecution",
-        "sagemaker:ListPipelineExecutions",
-        "sagemaker:ListPipelineExecutionSteps",
-        "sagemaker:UpdatePipeline",
-        "sagemaker:DeletePipeline",
-        "sagemaker:CreateProcessingJob",
-        "sagemaker:DescribeProcessingJob",
-        "sagemaker:StopProcessingJob",
-        "sagemaker:CreateTrainingJob",
-        "sagemaker:DescribeTrainingJob",
-        "sagemaker:StopTrainingJob"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "iam:PassRole",
-      "Resource": "arn:aws:iam::<YOUR_ACCOUNT_ID>:role/zenml-role",
-      "Condition": {
-        "StringEquals": {
-          "iam:PassedToService": "sagemaker.amazonaws.com"
-        }
-      }
-    }
-  ]
-}
-```
-
-Replace `<YOUR_ACCOUNT_ID>` and `your-bucket-name` with your actual values, then create and attach the policies:
-
-```shell
-# Create the custom policies
-aws iam create-policy --policy-name ZenML-S3-Policy --policy-document file://s3-policy.json
-aws iam create-policy --policy-name ZenML-ECR-Policy --policy-document file://ecr-policy.json
-aws iam create-policy --policy-name ZenML-SageMaker-Policy --policy-document file://sagemaker-policy.json
-
-# Attach the custom policies to the role
-aws iam attach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-S3-Policy
-aws iam attach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-ECR-Policy
-aws iam attach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-SageMaker-Policy
-```
-
-4. If you have not already, install the AWS and S3 ZenML integrations:
-
-```shell
-zenml integration install aws s3 -y
-```
-
-## 2) Create a Service Connector within ZenML
-
-Create an AWS Service Connector within ZenML. The service connector will allow ZenML and other ZenML components to authenticate themselves with AWS using the IAM role.
-
-{% tabs %}
-{% tab title="CLI" %}
-
-```shell
-zenml service-connector register aws_connector \
-  --type aws \
-  --auth-method iam-role \
-  --role_arn=<ROLE_ARN> \
-  --region=<YOUR_REGION> \
-  --aws_access_key_id=<YOUR_ACCESS_KEY_ID> \
-  --aws_secret_access_key=<YOUR_SECRET_ACCESS_KEY>
-```
-
-Replace `<ROLE_ARN>` with the ARN of the IAM role you created in the previous step, `<YOUR_REGION>` with the respective value and use your AWS access key ID and secret access key that we noted down earlier.
-{% endtab %}
-{% endtabs %}
-
-## 3) Create Stack Components
-
-### Artifact Store (S3)
-
-An [artifact store](https://docs.zenml.io/user-guides/production-guide/remote-storage) is used for storing and versioning data flowing through your pipelines.
-
-1. Before you run anything within the ZenML CLI, create an AWS S3 bucket. If you already have one, you can skip this step. (Note: the bucket name should be unique, so you might need to try a few times to find a unique name.)
-
-```shell
-aws s3api create-bucket --bucket your-bucket-name
-```
-
-Once this is done, you can create the ZenML stack component as follows:
-
-2. Register an S3 Artifact Store with the connector:
-
-```shell
-zenml artifact-store register cloud_artifact_store -f s3 --path=s3://bucket-name --connector aws_connector
-```
-
-More details [here](https://docs.zenml.io/stacks/artifact-stores/s3).
-
-### Orchestrator (SageMaker Pipelines)
-
-An [orchestrator](https://docs.zenml.io/user-guides/production-guide/cloud-orchestration) is the compute backend to run your pipelines.
-
-1. Before you run anything within the ZenML CLI, head on over to AWS and create a SageMaker domain (Skip this if you already have one). The instructions for creating a domain can be found [in the AWS core documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-quick-start.html).
-
-A SageMaker domain is a central management unit for all SageMaker users and resources within a region. It provides a single sign-on (SSO) experience and enables users to create and manage SageMaker resources, such as notebooks, training jobs, and endpoints, within a collaborative environment.
-
-When you create a SageMaker domain, you specify the configuration settings, such as the domain name, user profiles, and security settings. Each user within a domain gets their own isolated workspace, which includes a JupyterLab interface, a set of compute resources, and persistent storage.
-
-The SageMaker orchestrator in ZenML requires a SageMaker domain to run pipelines because it leverages the SageMaker Pipelines service, which is part of the SageMaker ecosystem. SageMaker Pipelines allows you to define, execute, and manage end-to-end machine learning workflows using a declarative approach.
-
-By creating a SageMaker domain, you establish the necessary environment and permissions for the SageMaker orchestrator to interact with SageMaker Pipelines and other SageMaker resources seamlessly. The domain acts as a prerequisite for using the SageMaker orchestrator in ZenML.
-
-Once this is done, you can create the ZenML stack component as follows:
-
-2. Register a SageMaker Pipelines orchestrator stack component:
-
-You'll need the IAM role ARN that we noted down earlier to register the orchestrator. This is the 'execution role' ARN you need to pass to the orchestrator.
-
-```shell
-zenml orchestrator register sagemaker-orchestrator --flavor=sagemaker --region=<YOUR_REGION> --execution_role=<ROLE_ARN>
-```
-
-**Note**: The SageMaker orchestrator utilizes the AWS configuration for operation and does not require direct connection via a service connector for authentication, as it relies on your AWS CLI configurations or environment variables.
-
-More details [here](https://docs.zenml.io/stacks/orchestrators/sagemaker).
-
-### Container Registry (ECR)
-
-A [container registry](https://docs.zenml.io/stacks/container-registries) is used to store Docker images for your pipelines.
-
-1. You'll need to create a repository in ECR. If you already have one, you can skip this step.
-
-```shell
-aws ecr create-repository --repository-name zenml --region <YOUR_REGION>
-```
-
-Once this is done, you can create the ZenML stack component as follows:
-
-2. Register an ECR container registry stack component:
-
-```shell
-zenml container-registry register ecr-registry --flavor=aws --uri=<ACCOUNT_ID>.dkr.ecr.<YOUR_REGION>.amazonaws.com --connector aws-connector
-```
-
-More details [here](https://docs.zenml.io/stacks/container-registries/aws).
-
-## 4) Create stack
-
-{% tabs %}
-{% tab title="CLI" %}
-
-```shell
-export STACK_NAME=aws_stack
-
-zenml stack register ${STACK_NAME} -o ${ORCHESTRATOR_NAME} \
-    -a ${ARTIFACT_STORE_NAME} -c ${CONTAINER_REGISTRY_NAME} --set
-```
-
-{% hint style="info" %}
-In case you want to also add any other stack components to this stack, feel free to do so.
-{% endhint %}
-{% endtab %}
-
-{% tab title="Dashboard" %}
-
-<figure><img src="https://github.com/zenml-io/zenml/blob/main/docs/book/.gitbook/assets/Create_Stack.png" alt=""><figcaption><p>Combine the three stack components and you have your AWS stack. Feel free to add any other component of your choice as well.</p></figcaption></figure>
-{% endtab %}
-{% endtabs %}
-
-## 5) And you're already done!
-
-Just like that, you now have a fully working AWS stack ready to go. Feel free to take it for a spin by running a pipeline on it.
-
-Define a ZenML pipeline:
-
-```python
-from zenml import pipeline, step
-
-@step
-def hello_world() -> str:
-    return "Hello from SageMaker!"
-
-@pipeline
-def aws_sagemaker_pipeline():
-    hello_world()
-
-if __name__ == "__main__":
-    aws_sagemaker_pipeline()
-```
-
-Save this code to run.py and execute it. The pipeline will use AWS S3 for artifact storage, Amazon SageMaker Pipelines for orchestration, and Amazon ECR for container registry.
-
-```shell
-python run.py
-```
-
-<figure><img src="https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-bce622fd61f1356f1622280b02cc8ea2b74b305c%2Frun_with_repository.png?alt=media" alt=""><figcaption><p>Sequence of events that happen when running a pipeline on a remote stack with a code repository</p></figcaption></figure>
-
-Read more in the [production guide](https://docs.zenml.io/user-guides/production-guide).
-
-## Cleanup
-
-{% hint style="warning" %}
-Make sure you no longer need the resources before deleting them. The instructions and commands that follow are DESTRUCTIVE.
-{% endhint %}
-
-Delete any AWS resources you no longer use to avoid additional charges. You'll want to do the following:
-
-```shell
-# delete the S3 bucket
-aws s3 rm s3://your-bucket-name --recursive
-aws s3api delete-bucket --bucket your-bucket-name
-
-# delete the SageMaker domain
-aws sagemaker delete-domain --domain-id <DOMAIN_ID>
-
-# delete the ECR repository
-aws ecr delete-repository --repository-name zenml-repository --force
-
-# detach custom policies from the IAM role
-aws iam detach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-S3-Policy
-aws iam detach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-ECR-Policy
-aws iam detach-role-policy --role-name zenml-role --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-SageMaker-Policy
-
-# delete the custom policies
-aws iam delete-policy --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-S3-Policy
-aws iam delete-policy --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-ECR-Policy
-aws iam delete-policy --policy-arn arn:aws:iam::<YOUR_ACCOUNT_ID>:policy/ZenML-SageMaker-Policy
-
-# delete the IAM role
-aws iam delete-role --role-name zenml-role
-```
-
-Make sure to run these commands in the same AWS region where you created the resources.
-
-By running these cleanup commands, you will delete the S3 bucket, SageMaker domain, ECR repository, and IAM role, along with their associated policies. This will help you avoid any unnecessary charges for resources you no longer need.
-
-Remember to be cautious when deleting resources and ensure that you no longer require them before running the deletion commands.
-
-## Conclusion
-
-In this guide, we walked through the process of setting up an AWS stack with ZenML to run your machine learning pipelines in a scalable and production-ready environment. The key steps included:
-
-1. Setting up credentials and the local environment by creating an IAM role with the necessary permissions.
-2. Creating a ZenML service connector to authenticate with AWS services using the IAM role.
-3. Configuring stack components, including an S3 artifact store, a SageMaker Pipelines orchestrator, and an ECR container registry.
-4. Registering the stack components and creating a ZenML stack.
-
-By following these steps, you can leverage the power of AWS services, such as S3 for artifact storage, SageMaker Pipelines for orchestration, and ECR for container management, all within the ZenML framework. This setup allows you to build, deploy, and manage machine learning pipelines efficiently and scale your workloads based on your requirements.
-
-The benefits of using an AWS stack with ZenML include:
-
-* Scalability: Leverage the scalability of AWS services to handle large-scale machine learning workloads.
-* Reproducibility: Ensure reproducibility of your pipelines with versioned artifacts and containerized environments.
-* Collaboration: Enable collaboration among team members by using a centralized stack and shared resources.
-* Flexibility: Customize and extend your stack components based on your specific needs and preferences.
-
-Now that you have a functional AWS stack set up with ZenML, you can explore more advanced features and capabilities offered by ZenML. Some next steps to consider:
-
-* Dive deeper into ZenML's [production guide](https://docs.zenml.io/user-guides/production-guide) to learn best practices for deploying and managing production-ready pipelines.
-* Explore ZenML's [integrations](https://docs.zenml.io/stacks) with other popular tools and frameworks in the machine learning ecosystem.
-* Join the [ZenML community](https://zenml.io/slack) to connect with other users, ask questions, and get support.
-
-By leveraging the power of AWS and ZenML, you can streamline your machine learning workflows, improve collaboration, and deploy production-ready pipelines with ease. What follows is a set of best practices for using your AWS stack with ZenML.
-
-## Best Practices for Using an AWS Stack with ZenML
-
-When working with an AWS stack in ZenML, consider the following best practices to optimize your workflow, enhance security, and improve cost-efficiency. These are all things you might want to do or amend in your own setup once you have tried running some pipelines on your AWS stack.
-
-### Use IAM Roles and Least Privilege Principle
-
-Always adhere to the principle of least privilege when setting up IAM roles. The guide above provides specific custom IAM policies with minimal required permissions instead of broad managed policies. This approach significantly reduces security risks by:
-
-* Limiting S3 access to only your specific bucket
-* Restricting SageMaker permissions to pipeline operations only
-* Scoping ECR access to container operations only
-* Including proper IAM PassRole conditions
-
-Regularly review and audit your [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) to ensure they remain appropriate and secure. Consider using AWS CloudTrail to monitor which permissions are actually being used and remove any unnecessary ones.
-
-### Leverage AWS Resource Tagging
-
-Implement a [consistent tagging strategy](https://aws.amazon.com/solutions/guidance/tagging-on-aws/) for all of your AWS resources that you use for your pipelines. For example, if you have S3 as an artifact store in your stack, you should tag it like shown below:
-
-```shell
-aws s3api put-bucket-tagging --bucket your-bucket-name --tagging 'TagSet=[{Key=Project,Value=ZenML},{Key=Environment,Value=Production}]'
-```
-
-These tags will help you with billing and cost allocation tracking and also with any cleanup efforts.
-
-### Implement Cost Management Strategies
-
-Use [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/) and [AWS Budgets](https://aws.amazon.com/aws-cost-management/aws-budgets/) to monitor and manage your spending. To create a cost budget:
-
-1. Create a JSON file (e.g., `budget-config.json`) defining the budget:
-
-```json
-{
-  "BudgetLimit": {
-    "Amount": "100",
-    "Unit": "USD"
-  },
-  "BudgetName": "ZenML Monthly Budget",
-  "BudgetType": "COST",
-  "CostFilters": {
-    "TagKeyValue": [
-      "user:Project$ZenML"
-    ]
-  },
-  "CostTypes": {
-    "IncludeTax": true,
-    "IncludeSubscription": true,
-    "UseBlended": false
-  },
-  "TimeUnit": "MONTHLY"
-}
-```
-
-2. Create the cost budget:
-
-```shell
-aws budgets create-budget --account-id your-account-id --budget file://budget-config.json
-```
-
-Set up cost allocation tags to track expenses related to your ZenML projects:
-
-```shell
-aws ce create-cost-category-definition --name ZenML-Projects --rules-version 1 --rules file://rules.json
-```
-
-### Use Warm Pools for your SageMaker Pipelines
-
-[Warm Pools in SageMaker](https://docs.zenml.io/stacks/orchestrators/sagemaker#using-warm-pools-for-your-pipelines) can significantly reduce the startup time of your pipeline steps, leading to faster iterations and improved development efficiency. This feature keeps compute instances in a "warm" state, ready to quickly start new jobs.
-
-To enable Warm Pools, use the `SagemakerOrchestratorSettings` class:
-
-```python
-from zenml.integrations.aws.orchestrators.sagemaker import SagemakerOrchestratorSettings
-
-sagemaker_orchestrator_settings = SagemakerOrchestratorSettings(
-    keep_alive_period_in_seconds = 300, # 5 minutes, default value
-)
-```
-
-This configuration keeps instances warm for 5 minutes after each job completes, allowing subsequent jobs to start faster if initiated within this timeframe. The reduced startup time can be particularly beneficial for iterative development processes or frequently run pipelines.
-
-### Implement a Robust Backup Strategy
-
-Regularly backup your critical data and configurations. For S3, enable versioning and consider using [cross-region replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) for disaster recovery.
-
-By following these best practices and implementing the provided examples, you can create a more secure, efficient, and cost-effective AWS stack for your ZenML projects. Remember to regularly review and update your practices as your projects evolve and as AWS introduces new features and services.
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
-
-
-# Azure
-
-A simple guide to create an Azure stack to run your ZenML pipelines
-
-This page aims to quickly set up a minimal production stack on Azure. With just a few simple steps, you will set up a resource group, a service principal with correct permissions, and the relevant ZenML stack and components.
-
-{% hint style="info" %}
-Would you like to skip ahead and deploy a full Azure ZenML cloud stack already?
-
-Check out the [in-browser stack deployment wizard](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/deploy-a-cloud-stack), the [stack registration wizard](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/register-a-cloud-stack), or [the ZenML Azure Terraform module](https://docs.zenml.io/how-to/infrastructure-deployment/stack-deployment/deploy-a-cloud-stack-with-terraform) for a shortcut on how to deploy & register this stack.
-{% endhint %}
-
-To follow this guide, you need:
-
-* An active Azure account.
-* ZenML [installed](https://docs.zenml.io/getting-started/installation).
-* ZenML `azure` integration installed with `zenml integration install azure`.
-
-## 1. Set up proper credentials
-
-You can start by [creating a service principal by creating an app registration](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb) on Azure:
-
-1. Go to the App Registrations on the Azure portal.
-2. Click on `+ New registration`,
-3. Give it a name and click register.
-
-![Azure App Registrations](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-a80fcbd259c3fb7ee23f99b80ebe9a9ce2885be0%2Fazure_1.png?alt=media)
-
-![Azure App Registrations](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-7f1788094a1b61f41fefbb6fc6a27c5d8c355c26%2Fazure_2.png?alt=media)
-
-Once you create the service principal, you will get an Application ID and Tenant ID as they will be needed later.
-
-Next, go to your service principal and click on the `Certificates & secrets` in the `Manage` menu. Here, you have to create a client secret. Note down the secret value as it will be needed later.
-
-![Azure App Registrations](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-98d7a44a9dc864b20d27fdf1c23d2a21f578d45e%2Fazure_3.png?alt=media)
-
-## 2. Create a resource group and the AzureML instance
-
-Now, you have to [create a resource group on Azure](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal). To do this, go to the Azure portal and go to the `Resource Groups` page, and click `+ Create`.
-
-![Azure Resource Groups](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-4192ce97428cfa7f6f2c7c27d1d6458f044b9cda%2Fazure_4.png?alt=media)
-
-Once the resource group is created, go to the overview page of your new resource group and click `+ Create`. This will open up the marketplace where you can select a variety of resources to create. Look for `Azure Machine Learning`.
-
-![Azure Role Assignments](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-35e217ceecb111bc7f6059f5c2d0166cb870b61b%2Fazure_5.png?alt=media)
-
-Select it, and you will start the process of creating an AzureML workspace. As you can see from the `Workspace details`, AzureML workspaces come equipped with a storage account, key vault, and application insights. It is highly recommended that you create a container registry as well.
-
-![Azure Role Assignments](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-6c1843e6feb8b5291c11aec65081afd0d0b95746%2Fazure_6.png?alt=media)
-
-## 3. Create the required role assignments with least privilege
-
-Now, that you have your app registration and the resources, you have to create the corresponding role assignments following the principle of least privilege. In order to do this, go to your resource group, open up `Access control (IAM)` on the left side and `+Add` a new role assignment.
-
-![Azure Resource Groups](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-1f674b7ac3f95d9dfc3385b237f08f7928e91be6%2Fazure-role-assignment-1.png?alt=media)
-
-### Required Role Assignments for ZenML Components
-
-**For AzureML Orchestrator:**
-
-* **`AzureML Data Scientist`** - Allows creating and managing AzureML jobs and experiments
-* **`AzureML Compute Operator`** - Allows managing compute resources (instances, clusters)
-
-**For Azure Blob Storage Artifact Store:**
-
-* **`Storage Blob Data Contributor`** - Allows read/write access to blob storage containers
-* **`Reader and Data Access`** - Required for listing containers (if needed)
-
-**For Azure Container Registry:**
-
-* **`AcrPush`** - Allows pushing container images
-* **`AcrPull`** - Allows pulling container images
-* **`Contributor`** (scoped to ACR only) - Allows listing registries for discovery
-
-### Assign the Roles
-
-In the role assignment page, search for the specific roles mentioned above:
-
-![Azure Resource Groups](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-0492f0a9d60077e7861263e98d2e13648dca8c85%2Fazure-role-assignment-2.png?alt=media)
-
-**Step 1:** Assign AzureML roles One by one, select `AzureML Data Scientist` and `AzureML Compute Operator` and click `Next`.
-
-**Step 2:** Assign Storage roles Assign `Storage Blob Data Contributor` role to your service principal.
-
-**Step 3:** Assign Container Registry roles Assign `AcrPush`, `AcrPull`, and `Contributor` (scoped to ACR resource) roles to your service principal.
-
-![Azure Resource Groups](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-7c2602705cd565b104f8c31e424faec978ce1871%2Fazure-role-assignment-3.png?alt=media)
-
-Finally, click `+Select Members`, search for your registered app by its ID, and assign each role accordingly.
-
-{% hint style="info" %}
-**Security Best Practice:** These role assignments provide the minimum permissions required for ZenML operations. Avoid using broader roles like `Contributor` or `Owner` at the resource group level, as they grant unnecessary permissions.
-{% endhint %}
-
-## 4. Create a service connector
-
-Now you have everything set up, you can go ahead and create [a ZenML Azure Service Connector](https://docs.zenml.io/how-to/infrastructure-deployment/auth-management/azure-service-connector).
-
-```bash
-zenml service-connector register azure_connector --type azure \
-  --auth-method service-principal \
-  --client_secret=<CLIENT_SECRET> \
-  --tenant_id=<TENANT_ID> \
-  --client_id=<APPLICATION_ID>
-```
-
-You will use this service connector later on to connect your components with proper authentication.
-
-## 5. Create Stack Components
-
-In order to run any workflows on Azure using ZenML, you need an artifact store, an orchestrator, and a container registry.
-
-### Artifact Store (Azure Blob Storage)
-
-For the artifact store, we will be using the storage account attached to our AzureML workspace. But before registering the component itself, you have to create a container for blob storage. To do this, go to the corresponding storage account in your workspace and create a new container:
-
-![Azure Blob Storage](https://1559531010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fu4tnWimk4Ev9z09qY15M%2Fuploads%2Fgit-blob-6a788efaa043e64462488a48b9f418f987e247d6%2Fazure_7.png?alt=media)
-
-Once you create the container, you can go ahead, register your artifact store using its path and connect it to your service connector:
-
-```bash
-zenml artifact-store register azure_artifact_store -f azure \
-  --path=<PATH_TO_YOUR_CONTAINER> \ 
-  --connector azure_connector
-```
-
-For more information regarding Azure Blob Storage artifact stores, feel free to [check the docs](https://docs.zenml.io/stacks/artifact-stores/azure).
-
-### Orchestrator (AzureML)
-
-As for the orchestrator, no additional setup is needed. Simply use the following command to register it and connect it to your service connector:
-
-```bash
-zenml orchestrator register azure_orchestrator -f azureml \
-    --subscription_id=<YOUR_AZUREML_SUBSCRIPTION_ID> \
-    --resource_group=<NAME_OF_YOUR_RESOURCE_GROUP> \
-    --workspace=<NAME_OF_YOUR_AZUREML_WORKSPACE> \ 
-    --connector azure_connector
-```
-
-For more information regarding AzureML orchestrator, feel free to [check the docs](https://docs.zenml.io/stacks/orchestrators/azureml).
-
-### Container Registry (Azure Container Registry)
-
-Similar to the orchestrator, you can register and connect your container registry using the following command:
-
-```bash
-zenml container-registry register azure_container_registry -f azure \
-  --uri=<URI_TO_YOUR_AZURE_CONTAINER_REGISTRY> \ 
-  --connector azure_connector
-```
-
-For more information regarding Azure container registries, feel free to [check the docs](https://docs.zenml.io/stacks/container-registries/azure).
-
-## 6. Create a Stack
-
-Now, you can use the registered components to create an Azure ZenML stack:
-
-```shell
-zenml stack register azure_stack \
-    -o azure_orchestrator \
-    -a azure_artifact_store \
-    -c azure_container_registry \
-    --set
-```
-
-## 7. ...and you are done.
-
-Just like that, you now have a fully working Azure stack ready to go. Feel free to take it for a spin by running a pipeline on it.
-
-Define a ZenML pipeline:
-
-```python
-from zenml import pipeline, step
-
-@step
-def hello_world() -> str:
-    return "Hello from Azure!"
-
-@pipeline
-def azure_pipeline():
-    hello_world()
-
-if __name__ == "__main__":
-    azure_pipeline()
-```
-
-Save this code to run.py and execute it. The pipeline will use Azure Blob Storage for artifact storage, AzureML for orchestration, and an Azure container registry.
-
-```shell
-python run.py
-```
-
-Now that you have a functional Azure stack set up with ZenML using least privilege permissions, you can explore more advanced features and capabilities offered by ZenML. Some next steps to consider:
-
-* Dive deeper into ZenML's [production guide](https://docs.zenml.io/user-guides/production-guide) to learn best practices for deploying and managing production-ready pipelines.
-* Explore ZenML's [integrations](https://docs.zenml.io/stacks) with other popular tools and frameworks in the machine learning ecosystem.
-* Join the [ZenML community](https://zenml.io/slack) to connect with other users, ask questions, and get support.
-
-## Best Practices for Using an Azure Stack with ZenML
-
-### Security and Least Privilege
-
-The guide above implements security best practices by:
-
-* **Using specific Azure roles** instead of broad permissions like `Owner` or `Contributor`
-* **Scoping permissions to resources** rather than subscription-wide access
-* **Separating concerns** with different roles for different components (storage, compute, registry)
-* **Following Azure's principle of least privilege** for service principal authentication
-
-### Regular Security Maintenance
-
-* **Rotate service principal credentials** regularly using Azure Key Vault
-* **Review role assignments** periodically to ensure they remain necessary
-* **Use Azure Security Center** to monitor for security recommendations
-* **Enable Azure AD Conditional Access** for additional security layers when appropriate
-
-<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>
 
 
 

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/customer-cards/create-a-customer-card.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a customer card
 
 > Define the details of the customer card.

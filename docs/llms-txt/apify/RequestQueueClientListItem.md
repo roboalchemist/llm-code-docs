@@ -2,6 +2,8 @@
 
 # RequestQueueClientListItem<!-- -->
 
+Simplified request information used in list results.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -15,11 +17,11 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L629)id
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L913)id
 
 **id: string
 
-### [**](#lockExpiresAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L634)optionallockExpiresAt
+### [**](#lockExpiresAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L918)optionallockExpiresAt
 
 **lockExpiresAt?
 
@@ -27,18 +29,18 @@
 
 : Date
 
-### [**](#method)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L633)method
+### [**](#method)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L917)method
 
 **method: [AllowedHttpMethods](https://docs.apify.com/api/client/js/api/client/js/reference.md#AllowedHttpMethods)
 
-### [**](#retryCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L630)retryCount
+### [**](#retryCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L914)retryCount
 
 **retryCount: number
 
-### [**](#uniqueKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L631)uniqueKey
+### [**](#uniqueKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L915)uniqueKey
 
 **uniqueKey: string
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L632)url
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L916)url
 
 **url: string

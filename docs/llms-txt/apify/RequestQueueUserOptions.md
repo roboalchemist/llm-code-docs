@@ -2,6 +2,8 @@
 
 # RequestQueueUserOptions<!-- -->
 
+User-specific options for RequestQueueClient.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -11,7 +13,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#clientKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L552)optionalclientKey
+### [**](#clientKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L796)optionalclientKey
 
 **clientKey?
 
@@ -19,7 +21,7 @@
 
 : string
 
-### [**](#timeoutSecs)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L553)optionaltimeoutSecs
+### [**](#timeoutSecs)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L797)optionaltimeoutSecs
 
 **timeoutSecs?
 

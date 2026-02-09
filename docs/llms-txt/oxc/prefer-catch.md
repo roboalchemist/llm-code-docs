@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/prefer-catch.md
 ---
-# promise/prefer-catch&#x20;
 
 ### What it does
 

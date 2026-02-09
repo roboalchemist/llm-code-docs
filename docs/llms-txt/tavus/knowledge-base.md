@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/knowledge-base.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge Base
 
 > Upload documents to your knowledge base for personas to reference during conversations.
@@ -125,3 +129,84 @@ In the [Create Conversation](https://docs.tavus.io/api-reference/conversations/c
   "document_tags": ["lesson-1"]
 }
 ```
+
+## Website Crawling
+
+When adding a website to your knowledge base, you have two options:
+
+### Single Page Scraping (Default)
+
+By default, when you provide a website URL, only that single page is scraped and processed. This is ideal for:
+
+* Landing pages with concentrated information
+* Specific articles or blog posts
+* Individual product pages
+
+### Multi-Page Crawling
+
+For comprehensive coverage of a website, you can enable **crawling** by providing a `crawl` configuration. This tells the system to start at your URL and follow links to discover and process additional pages.
+
+```json  theme={null}
+{
+  "document_name": "Company Docs",
+  "document_url": "https://docs.example.com/",
+  "crawl": {
+    "depth": 2,
+    "max_pages": 25
+  }
+}
+```
+
+#### Crawl Parameters
+
+| Parameter   | Range | Description                                                                                                                                                                 |
+| ----------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `depth`     | 1-10  | How many link levels to follow from the starting URL. A depth of 1 crawls pages directly linked from your starting URL; depth of 2 follows links on those pages, and so on. |
+| `max_pages` | 1-100 | Maximum number of pages to process. Crawling stops when this limit is reached.                                                                                              |
+
+#### Crawl Limits
+
+To ensure fair usage and system stability:
+
+* Maximum **100 crawl documents** per account
+* Maximum **5 concurrent crawls** at any time
+* **1-hour cooldown** between recrawls of the same document
+
+## Keeping Content Fresh
+
+Website content changes over time, and you may need to update your knowledge base to reflect those changes. For documents created with crawl configuration, you can trigger a **recrawl** to fetch fresh content.
+
+### Using the Recrawl Endpoint
+
+Send a POST request to recrawl an existing document:
+
+```bash  theme={null}
+POST https://tavusapi.com/v2/documents/{document_id}/recrawl
+```
+
+The recrawl will:
+
+1. Use the same starting URL and crawl configuration
+2. Replace old content with the new content
+3. Update `last_crawled_at` and increment `crawl_count`
+
+### Optionally Override Crawl Settings
+
+You can provide new crawl settings when triggering a recrawl:
+
+```json  theme={null}
+{
+  "crawl": {
+    "depth": 3,
+    "max_pages": 50
+  }
+}
+```
+
+### Recrawl Requirements
+
+* Document must be in `ready` or `error` state
+* At least 1 hour must have passed since the last crawl
+* Document must have been created with crawl configuration
+
+See the [Recrawl Document API reference](/api-reference/documents/recrawl-document) for complete details.

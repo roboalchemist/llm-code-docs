@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/route-question.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Route a question to a different AI model
 
 > Create an AI agent workflow that routes a question to a different AI model depending on its complexity
@@ -22,7 +26,7 @@ In this example, we'll create a workflow that routes a question to a different A
 * Directs simple questions to `gpt-4o` and complex ones to `gpt-o3-mini`
 * Returns both the answer and metadata about the routing decision
 
-````typescript  theme={null}
+````typescript  theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -97,7 +101,7 @@ export const routeAndAnswerQuestion = task({
 
 Triggering our task with a simple question shows it routing to the gpt-4o model and returning the answer with reasoning:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "question": "How many planets are there in the solar system?"
 }

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/login-code-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Login code issues
 
 If the email token you received from Pinecone is not accepted when logging in there may be a few different reasons why:

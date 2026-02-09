@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/AgentWhileLoop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building reliable AI agents
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/AgentWhileLoop/AgentWhileLoop.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2025-08-05</div>
@@ -268,11 +272,6 @@ Additionally, if you run `npm run eval:tools`, you can clearly see the differenc
 
 Start building your own while loop agent by picking a specific use case and 2-3 tools, then gradually add complexity.
 
-* [Log](/core/logs) all interactions and build [evaluation datasets](/core/datasets) from real usage patterns
-* Use [Loop](/core/loop) to improve prompts, scorers, and datasets
+* [Log](/observe/view-logs) all interactions and build [evaluation datasets](/annotate/datasets) from real usage patterns
+* Use [Loop](/observe/loop) to improve prompts, scorers, and datasets
 * Explore more agent patterns in the [cookbook](/cookbook)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

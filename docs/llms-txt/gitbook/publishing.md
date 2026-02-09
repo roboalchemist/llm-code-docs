@@ -2,10 +2,6 @@
 
 # Source: https://gitbook.com/docs/developers/integrations/publishing.md
 
-# Source: https://gitbook.com/docs/help-center/published-documentation/publishing.md
-
-# Source: https://gitbook.com/docs/developers/integrations/publishing.md
-
 # Publish your integration
 
 When you're ready to publish your integration, you're able to publish it for use within GitBook.

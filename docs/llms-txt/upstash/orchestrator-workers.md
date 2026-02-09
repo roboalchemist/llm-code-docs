@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/agents/patterns/orchestrator-workers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Orchestrator-Workers
 
 <img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=7c8aebde675a468301b2f3c136ab1ecd" data-og-width="2234" width="2234" data-og-height="842" height="842" data-path="img/workflow/agents/diagram/orchestrator-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=8fc7ae85a5d783ac46a41acc819ccb11 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=567d98e7e97f1ecd5de8c759288e6c65 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=d3176e7e279faac3cc5135333d2c57ca 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=e97f8ea8a2f72f1bb43cd1554d4641ef 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9527a8bfacd689c6925e7c5c19dec159 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/orchestrator-diagram.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=bbdc8e82d3fa5e902253ece140434df7 2500w" />
@@ -8,6 +12,7 @@ This workflow uses an orchestrator to direct multiple worker agents to handle di
 
 ```ts  theme={"system"}
 import { serve } from "@upstash/workflow/nextjs";
+import { agentWorkflow } from "@upstash/workflow-agents";
 import { WikipediaQueryRun } from "@langchain/community/tools/wikipedia_query_run";
 
 const wikiTool = new WikipediaQueryRun({
@@ -16,10 +21,11 @@ const wikiTool = new WikipediaQueryRun({
 })
 
 export const { POST } = serve(async (context) => {
-  const model = context.agents.openai('gpt-4o');
+  const agents = agentWorkflow(context);
+  const model = agents.openai('gpt-4o');
 
   // Worker agents
-  const worker1 = context.agents.agent({
+  const worker1 = agents.agent({
     model,
     name: 'worker1',
     tools: { wikiTool },
@@ -27,7 +33,7 @@ export const { POST } = serve(async (context) => {
     background: 'You are a worker agent that answers general questions about advanced physics.'
   });
 
-  const worker2 = context.agents.agent({
+  const worker2 = agents.agent({
     model,
     name: 'worker2',
     tools: { wikiTool },
@@ -35,7 +41,7 @@ export const { POST } = serve(async (context) => {
     background: 'You are a worker agent that answers questions about quantum mechanics.'
   });
 
-  const worker3 = context.agents.agent({
+  const worker3 = agents.agent({
     model,
     name: 'worker3',
     tools: { wikiTool },
@@ -44,7 +50,7 @@ export const { POST } = serve(async (context) => {
   });
 
   // Synthesizing results
-  const task = context.agents.task({
+  const task = agents.task({
     model,
     prompt: `Create a Q&A for advanced topics in physics`,
     agents: [worker1, worker2, worker3],

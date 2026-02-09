@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/apis/messages/list-messages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List messages
 
 > Lists all messages within a conversation.
@@ -7,45 +11,59 @@
 This messages are returned in chronological order. 
 
 
+
+
 ## OpenAPI
 
 ````yaml get /conversation/v1/conversations/{conversationId}/messages
+openapi: 3.0.1
+info:
+  title: Conversations API
+  description: Operations to manage ASAPP conversations
+  contact:
+    email: api-info@asapp.com
+  license:
+    name: ASAPP Software License
+    url: https://api.asapp.com/LICENSE
+  version: '0.1'
+servers:
+  - url: https://api.sandbox.asapp.com
+security:
+  - API-ID: []
+    API-Secret: []
+tags:
+  - name: Conversations
+    description: Operations to send conversational inputs to ASAPP AI services
 paths:
-  path: /conversation/v1/conversations/{conversationId}/messages
-  method: get
-  servers:
-    - url: https://api.sandbox.asapp.com
-  request:
-    security:
-      - title: API ID & API Secret
-        parameters:
-          query: {}
-          header:
-            asapp-api-id:
-              type: apiKey
-            asapp-api-secret:
-              type: apiKey
-          cookie: {}
+  /conversation/v1/conversations/{conversationId}/messages:
     parameters:
-      path:
-        conversationId:
-          schema:
-            - type: string
-              required: true
-              description: The identifier for a conversation.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              items:
-                allOf:
-                  - type: array
+      - name: conversationId
+        description: The identifier for a conversation.
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: ^[A-Z0-9]+$
+    get:
+      tags:
+        - Conversations
+      summary: List messages
+      description: |
+        Lists all messages within a conversation.
+
+        This messages are returned in chronological order. 
+      operationId: getMessages
+      responses:
+        '200':
+          description: Successfully fetched messages from a conversation
+          content:
+            application/json:
+              schema:
+                description: Response for GetMessages
+                type: object
+                properties:
+                  items:
+                    type: array
                     items:
                       description: A message sent by a participant of a conversation
                       type: object
@@ -109,27 +127,16 @@ paths:
                         messageId: 01GMXE90AEV7H3J4DPBDKB1R79
                         createdTimestamp: '2021-11-23T12:13:16.853Z'
                         clientTimestamp: '2021-11-23T12:13:14.555Z'
-            description: Response for GetMessages
-        examples:
-          example:
-            value:
-              items:
-                - text: Hello, I would like to upgrade my internet plan to GOLD.
-                  sender:
-                    role: customer
-                    externalId: '123456'
-                  messageId: 01GMXE90AEV7H3J4DPBDKB1R79
-                  createdTimestamp: '2021-11-23T12:13:16.853Z'
-                  clientTimestamp: '2021-11-23T12:13:14.555Z'
-        description: Successfully fetched messages from a conversation
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '400':
+          description: 400 - Bad request
+          content:
+            application/json:
+              schema:
+                description: Bad request response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 400-01
                       message: Bad request
@@ -148,23 +155,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Bad request response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 400-01
-                message: Bad request
-        description: 400 - Bad request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '401':
+          description: 401 - Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Unauthorized response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 401-01
                       message: Unauthorized
@@ -183,23 +183,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unauthorized response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 401-01
-                message: Unauthorized
-        description: 401 - Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '403':
+          description: 403 - Forbidden
+          content:
+            application/json:
+              schema:
+                description: Forbidden response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 403-01
                       message: Forbidden Response
@@ -218,23 +211,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Forbidden response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 403-01
-                message: Forbidden Response
-        description: 403 - Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '404':
+          description: 404 - Not Found
+          content:
+            application/json:
+              schema:
+                description: Not Found response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 404-01
                       message: Not Found
@@ -253,23 +239,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Not Found response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 404-01
-                message: Not Found
-        description: 404 - Not Found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '409':
+          description: 409 - Conflict
+          content:
+            application/json:
+              schema:
+                description: Conflict response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 409-01
                       message: Conflict
@@ -288,23 +267,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Conflict response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 409-01
-                message: Conflict
-        description: 409 - Conflict
-    '413':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '413':
+          description: 413 - Request Entity Too Large
+          content:
+            application/json:
+              schema:
+                description: Request Entity Too Large response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 413-01
                       message: Request Entity Too Large
@@ -323,23 +295,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Request Entity Too Large response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 413-01
-                message: Request Entity Too Large
-        description: 413 - Request Entity Too Large
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '422':
+          description: 422 - Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                description: Unprocessable Entity response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 422-01
                       message: Unprocessable Entity
@@ -358,23 +323,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unprocessable Entity response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 422-01
-                message: Unprocessable Entity
-        description: 422 - Unprocessable Entity
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '429':
+          description: 429 - Too Many Requests
+          content:
+            application/json:
+              schema:
+                description: Too Many Requests response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 429-01
                       message: Too Many Requests
@@ -393,23 +351,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Too Many Requests response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 429-01
-                message: Too Many Requests
-        description: 429 - Too Many Requests
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '503':
+          description: 503 - Service Unavailable
+          content:
+            application/json:
+              schema:
+                description: Service Unavailable response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 503-01
                       message: Service Unavailable
@@ -428,23 +379,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Service Unavailable response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 503-01
-                message: Service Unavailable
-        description: 503 - Service Unavailable
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        default:
+          description: 500 - Internal Server Error
+          content:
+            application/json:
+              schema:
+                description: Default error response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 500-01
                       message: Internal server error
@@ -463,18 +407,15 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Default error response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 500-01
-                message: Internal server error
-        description: 500 - Internal Server Error
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    API-ID:
+      type: apiKey
+      in: header
+      name: asapp-api-id
+    API-Secret:
+      type: apiKey
+      in: header
+      name: asapp-api-secret
 
 ````

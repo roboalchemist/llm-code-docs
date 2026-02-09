@@ -4,11 +4,7 @@
 
 Authenticate API requests using Bearer tokens instead of browser cookies
 
-***
 
-title: Bearer Token Authentication
-description: Authenticate API requests using Bearer tokens instead of browser cookies
--------------------------------------------------------------------------------------
 
 The Bearer plugin enables authentication using Bearer tokens as an alternative to browser cookies. It intercepts requests, adding the Bearer token to the Authorization header before forwarding them to your API.
 

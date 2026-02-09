@@ -4,23 +4,9 @@
 
 # Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
 
-# Source: https://dev.writer.com/home/web-search.md
-
-# Source: https://dev.writer.com/api-reference/tool-api/web-search.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
-
-# Source: https://dev.writer.com/home/web-search.md
-
-# Source: https://dev.writer.com/api-reference/tool-api/web-search.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
-
-# Source: https://dev.writer.com/home/web-search.md
-
-# Source: https://dev.writer.com/api-reference/tool-api/web-search.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Migrate from web search API to web search tool
 

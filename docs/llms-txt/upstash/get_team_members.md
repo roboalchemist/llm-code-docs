@@ -1,59 +1,89 @@
 # Source: https://upstash.com/docs/devops/developer-api/teams/get_team_members.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Team Members
 
 > This endpoint list all members of a team.
 
+
+
 ## OpenAPI
 
 ````yaml devops/developer-api/openapi.yml get /teams/{team_id}
+openapi: 3.0.4
+info:
+  title: Developer API - Upstash
+  description: >-
+    This is a documentation to specify Developer API endpoints based on the
+    OpenAPI 3.0 specification.
+  contact:
+    name: Support Team
+    email: support@upstash.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.upstash.com/v2
+security: []
+tags:
+  - name: redis
+    description: Manage redis databases.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: teams
+    description: Manage teams and team members.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: vector
+    description: Manage vector indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: search
+    description: Manage search indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: qstash
+    description: Manage QStash.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+externalDocs:
+  description: Find out more about Upstash
+  url: https://upstash.com/
 paths:
-  path: /teams/{team_id}
-  method: get
-  servers:
-    - url: https://api.upstash.com/v2
-  request:
-    security:
-      - title: basicAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path:
-        team_id:
+  /teams/{team_id}:
+    get:
+      tags:
+        - teams
+      summary: Get Team Members
+      description: This endpoint list all members of a team.
+      operationId: getTeamMembers
+      parameters:
+        - name: team_id
+          in: path
+          description: ID of the team
+          required: true
           schema:
-            - type: string
-              required: true
-              description: ID of the team
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/TeamMember'
-        examples:
-          example:
-            value:
-              - team_id: 3423cb72-e50d-43ec-a9c0-f0f359941223
-                team_name: test_team_name_2
-                member_email: example@upstash.com
-                member_role: dev
-                copy_cc: true
-        description: Team members retrieved successfully
-  deprecated: false
-  type: path
-  xMint:
-    href: /devops/developer-api/teams/get_team_members
+            type: string
+      responses:
+        '200':
+          description: Team members retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamMember'
+      security:
+        - basicAuth: []
 components:
   schemas:
     TeamMember:
@@ -88,5 +118,9 @@ components:
           example: true
       xml:
         name: teamMember
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
 
 ````

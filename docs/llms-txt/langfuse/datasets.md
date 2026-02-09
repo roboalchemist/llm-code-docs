@@ -146,7 +146,7 @@ _See [JS/TS SDK](/docs/sdk/typescript/guide) docs for details on how to initiali
 </Tab>
 
 <Tab>
-<Tabs items={["Add item", "Import CSV", "Add from trace"]}>
+<Tabs items={["Add item", "Import CSV", "Add from trace", "Add batch from observations table"]}>
 
 <Tab>
   <Video
@@ -174,6 +174,10 @@ _See [JS/TS SDK](/docs/sdk/typescript/guide) docs for details on how to initiali
   />
 </Tab>
 
+<Tab>
+  Select multiple observations from the **Observations** table, then click **Actions** → **Add to dataset**. You can create a new dataset or add to an existing one, with flexible field mapping options to control how observation data maps to dataset items. See [Batch add observations to datasets](/docs/datasets#batch-add-observations-to-datasets) for details.
+</Tab>
+
 </Tabs>
 
 </Tab>
@@ -196,19 +200,16 @@ Use the Langfuse UI or SDK to create and fetch a dataset in a folder by adding a
 <Tab>
 
 ```python
-from urllib.parse import quote
-
 dataset_name = "evaluation/qa-dataset"
-encoded_name = quote(dataset_name, safe="")  # "evaluation%2Fqa-dataset"
 
 # When creating a dataset, use the full dataset name
 langfuse.create_dataset(
     name=dataset_name,
 )
 
-# When fetching a dataset in a folder, use the encoded name
+# When fetching a dataset in a folder, use the full dataset name
 langfuse.get_dataset(
-    name=encoded_name
+    name=dataset_name
 )
 
 ```
@@ -245,9 +246,18 @@ In the UI, create a dataset and use a slash (`/`) in the name field to organize 
 
 <Callout type="info">
   **URL Encoding**: When using dataset names with slashes as path parameters in
-  the API, use URL encoding. For example, in Python: `urllib.parse.quote(name,
-  safe="")`, in TypeScript: `encodeURIComponent(name)`.
+  the API or JS/TS SDK, use URL encoding. For example, in TypeScript: `encodeURIComponent(name)`.
 </Callout>
+
+## Versioning
+
+To access Dataset Versions via the Langfuse UI, navigate to: **Datasets** > **Navigate to a specific dataset** > **Select Items Tab**. On this page you can toggle the version view.
+
+Every `add`, `update`, `delete`, or `archive` of dataset items produces a new dataset version. Versions track changes over time using timestamps.
+
+`GET` APIs return the latest version at query time by default. Support for fetching datasets at specific version timestamps via API will be added shortly.
+
+Versioning applies to dataset items only, not dataset schemas. Dataset schema changes do not create new versions.
 
 ## Schema Enforcement
 
@@ -391,6 +401,22 @@ In the UI, use `+ Add to dataset` on any observation (span, event, generation) o
 
 </Tab>
 </LangTabs>
+
+## Batch add observations to datasets
+
+You can batch add multiple observations to a dataset directly from the observations table. This is useful for quickly building test datasets from production data.
+
+The field mapping system gives you control over how observation data is transformed into dataset items. You can use the entire field as-is (e.g., map the full observation input to the dataset item input), extract specific values using JSON path expressions or build custom objects from multiple fields.
+
+1. Navigate to the **Observations** table
+2. Use filters to find relevant observations
+3. Select observations using the checkboxes
+4. Click **Actions** → **Add to dataset**
+5. Choose to create a new dataset or select an existing one
+6. Configure field mapping to control how observation data maps to dataset item fields
+7. Preview the mapping and confirm
+
+Batch operations run in the background with support for partial success. If some observations fail validation against a dataset schema, valid items are still added and errors are logged for review. You can monitor progress in **Settings** → **Batch Actions**.
 
 ## Edit/archive dataset items
 

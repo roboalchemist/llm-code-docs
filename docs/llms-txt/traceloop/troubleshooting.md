@@ -2,6 +2,10 @@
 
 # Source: https://www.traceloop.com/docs/openllmetry/troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
 > Not seeing anything? Here are some things to check.
@@ -96,8 +100,3 @@ We're here to help.
 Reach out any time over
 [Slack](https://traceloop.com/slack),
 [email](mailto:dev@traceloop.com), and we'd love to assist you.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/delete-v1prompt-2025-promptid-versionid.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Prompt Version
 
 > Delete a specific version of a prompt

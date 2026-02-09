@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-obj-calls.md
 ---
-# eslint/no-obj-calls&#x20;
 
 ### What it does
 

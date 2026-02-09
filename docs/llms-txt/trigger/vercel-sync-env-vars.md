@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/vercel-sync-env-vars.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Syncing environment variables from your Vercel projects
 
 > This example demonstrates how to sync environment variables from your Vercel project to Trigger.dev.
@@ -17,7 +21,15 @@ To sync environment variables, you just need to add our build extension to your 
   the project with the environment variables you want to sync.
 </Note>
 
-```ts trigger.config.ts theme={null}
+<Note>
+  When running the build from a Vercel build environment (e.g., during a Vercel deployment), the
+  environment variable values will be read from `process.env` instead of fetching them from the
+  Vercel API. This is determined by checking if the `VERCEL` environment variable is present. The
+  API is still used to determine which environment variables are configured for your project, but
+  the actual values come from the local environment.
+</Note>
+
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncVercelEnvVars } from "@trigger.dev/build/extensions/core";
 
@@ -55,7 +67,7 @@ export default defineConfig({
 
 To sync the environment variables, all you need to do is run our `deploy` command. You should see some output in the console indicating that the environment variables have been synced, and they should now be available in your Trigger.dev dashboard.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy
 ```
 

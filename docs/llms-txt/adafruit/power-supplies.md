@@ -62,7 +62,7 @@ We left a few types out of this table because they're a little more esoteric or 
 [12V 5A switching power supply](https://www.adafruit.com/product/352)
 This is a beefy switching supply, for when you need a lot of power! It can supply 12V DC up to 5 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard 'figure-8'...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/352)
 [Related Guides to the Product](https://learn.adafruit.com/products/352/guides)
 ### 5V 10A switching power supply
@@ -70,7 +70,7 @@ Out of Stock
 [5V 10A switching power supply](https://www.adafruit.com/product/658)
 This is a beefy switching supply, for when you need a lot of power! It can supply 5V DC up to 10 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard computer/appliance...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/658)
 [Related Guides to the Product](https://learn.adafruit.com/products/658/guides)
 ### 5V 1A (1000mA) USB port power supply - UL Listed
@@ -86,7 +86,7 @@ In Stock
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### 9 VDC 1000mA regulated switching power adapter - UL listed
@@ -100,18 +100,18 @@ Out of Stock
 
 ## Related Guides
 
-- [Adafruit 16 Channel Servo Driver with Raspberry Pi](https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi.md)
-- [Adafruit PCA9548 8-Channel STEMMA QT / Qwiic I2C Multiplexer](https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer.md)
-- [Adafruit Motor Selection Guide](https://learn.adafruit.com/adafruit-motor-selection-guide.md)
-- [Boomy Pi Airplay Boombox](https://learn.adafruit.com/boomy-pi-airplay.md)
-- [Digital Circuits 3: Combinational Circuits](https://learn.adafruit.com/combinational-logic.md)
-- [Digital Circuits 6: An EPROM Emulator](https://learn.adafruit.com/digital-circuits-6-eprom-emulator.md)
-- [Adafruit TPS65131 Split Power Supply Boost Converter](https://learn.adafruit.com/adafruit-tps65131-split-power-supply-boost-converter.md)
-- [Digital Circuits 4: Sequential Circuits](https://learn.adafruit.com/digital-circuits-4-sequential-circuits.md)
-- [Piezo Ring Tones with Raspberry Pi](https://learn.adafruit.com/piezo-ring-tones-with-raspberry-pi.md)
-- [All About Stepper Motors](https://learn.adafruit.com/all-about-stepper-motors.md)
-- [Motion-Activated Solder Fume Extractor With Lamp](https://learn.adafruit.com/motion-activated-solder-fume-extractor-with-lamp.md)
-- [Adafruit bq25185 USB / DC / Solar Charger with 5V Boost Board](https://learn.adafruit.com/adafruit-bq25185-usb-dc-solar-charger-with-5v-boost-board.md)
-- [Secret Knock Activated Drawer Lock](https://learn.adafruit.com/secret-knock-activated-drawer-lock.md)
-- [All About Batteries](https://learn.adafruit.com/all-about-batteries.md)
+- [Adafruit CH334F Mini USB Hub Breakouts](https://learn.adafruit.com/adafruit-ch334f-mini-4-port-usb-hub-breakout.md)
+- [Arduino Lesson 3. RGB LEDs](https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds.md)
+- [Debug Header for the Feather [M0]](https://learn.adafruit.com/make-a-simple-debugging-featherwing-for-the-m0.md)
 - [Adafruit SPI FRAM Breakouts](https://learn.adafruit.com/adafruit-spi-fram-breakout.md)
+- [Circuit Playground Analog Input](https://learn.adafruit.com/circuit-playground-analog-input.md)
+- [Press Your Button for Raspberry Pi](https://learn.adafruit.com/press-your-button-for-raspberry-pi.md)
+- [Step Switch Party](https://learn.adafruit.com/step-switch-party.md)
+- [Boomy Pi Airplay Boombox](https://learn.adafruit.com/boomy-pi-airplay.md)
+- [Pro Trinket Tachometer](https://learn.adafruit.com/pro-trinket-tachometer.md)
+- [Arduino Lesson 4. Eight LEDs and a Shift Register](https://learn.adafruit.com/adafruit-arduino-lesson-4-eight-leds.md)
+- [Conductive Thread](https://learn.adafruit.com/conductive-thread.md)
+- [Adafruit UPDI Friend](https://learn.adafruit.com/adafruit-updi-friend.md)
+- [Arduino Yun Temboo Twitter Tracker](https://learn.adafruit.com/arduino-yun-temboo-twitter-tracker.md)
+- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)
+- [USB to Eurorack Power Supply](https://learn.adafruit.com/usb-to-eurorack-power-supply.md)

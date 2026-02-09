@@ -54,4 +54,4 @@ By using the ridiculously large number of `99999`, we ensure that all of the use
 
 ## Next up
 
-https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md will be all about cookies, headers, and tokens, and how they're relevant when scraping an API.
+[Next lesson](https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md) will be all about cookies, headers, and tokens, and how they're relevant when scraping an API.

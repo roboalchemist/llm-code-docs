@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/strike-system-faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Strike system FAQ
 
 > Learn about warnings, banned community access, and site bans in Replit.

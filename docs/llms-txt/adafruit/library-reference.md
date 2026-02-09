@@ -1,5 +1,3 @@
-# Source: https://learn.adafruit.com/adafruit-16-channel-servo-driver-with-raspberry-pi/library-reference.md
-
 # Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/library-reference.md
 
 # Adafruit INA219 Current Sensor Breakout
@@ -97,7 +95,7 @@ This 4-wire cable is a little over 100mm / 4" long and fitted with JST-SH female
 
 <a...></a...>
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/4210)
 [Related Guides to the Product](https://learn.adafruit.com/products/4210/guides)
 ### STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable
@@ -105,7 +103,7 @@ Out of Stock
 [STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable](https://www.adafruit.com/product/4209)
 This 4-wire cable is a little over 150mm / 6" long and fitted with JST-SH female 4-pin connectors on one end and premium Dupont male headers on the other. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/4209)
 [Related Guides to the Product](https://learn.adafruit.com/products/4209/guides)
 ### Premium Male/Male Jumper Wires - 40 x 6" (150mm)
@@ -113,7 +111,7 @@ In Stock
 [Premium Male/Male Jumper Wires - 40 x 6" (150mm)](https://www.adafruit.com/product/758)
 Handy for making wire harnesses or jumpering between headers on PCB's. These premium jumper wires are 6" (150mm) long and come in a 'strip' of 40 (4 pieces of each of ten rainbow colors). They have 0.1" male header contacts on either end and fit cleanly next to each other...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/758)
 [Related Guides to the Product](https://learn.adafruit.com/products/758/guides)
 ### Full Sized Premium Breadboard - 830 Tie Points
@@ -143,18 +141,18 @@ Out of Stock
 
 ## Related Guides
 
+- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
+- [WiFi Controlled Mobile Robot](https://learn.adafruit.com/wifi-controlled-mobile-robot.md)
+- [Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors.md)
 - [Geofencing with the FONA 808 & Adafruit IO](https://learn.adafruit.com/geofencing-with-the-fona-808-and-adafruit-io.md)
-- [Nokia 5110/3310 Monochrome LCD](https://learn.adafruit.com/nokia-5110-3310-monochrome-lcd.md)
-- [Create an Internet of Things Dashboard with Adafruit IO](https://learn.adafruit.com/create-an-internet-of-things-dashboard-with-adafruit-dot-io.md)
+- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
+- [Adafruit CC3000 WiFi and Xively](https://learn.adafruit.com/adafruit-cc3000-wifi-and-xively.md)
+- [Adafruit AirLift Shield - ESP32 WiFi Co-Processor](https://learn.adafruit.com/adafruit-airlift-shield-esp32-wifi-co-processor.md)
+- [Wave Shield Talking Clock](https://learn.adafruit.com/wave-shield-talking-clock.md)
+- [Ladyada's Learn Arduino - Lesson #0](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-0.md)
+- [2.2" TFT Display](https://learn.adafruit.com/2-2-tft-display.md)
+- [LED Lightbox](https://learn.adafruit.com/led-lightbox.md)
 - [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
-- [Smart Cocktail Shaker](https://learn.adafruit.com/smart-cocktail-shaker.md)
-- [Adafruit Proto Shield for Arduino](https://learn.adafruit.com/adafruit-proto-shield-arduino.md)
-- [How to Build a Testing Jig](https://learn.adafruit.com/how-to-build-a-testing-fixture.md)
-- [Arduino Lesson 0. Getting Started](https://learn.adafruit.com/lesson-0-getting-started.md)
-- [Using NeoPixels and Servos Together](https://learn.adafruit.com/neopixels-and-servos.md)
-- [Arduino Lesson 4. Eight LEDs and a Shift Register](https://learn.adafruit.com/adafruit-arduino-lesson-4-eight-leds.md)
-- [1,500 NeoPixel LED Curtain with Raspberry Pi and Fadecandy](https://learn.adafruit.com/1500-neopixel-led-curtain-with-raspberry-pi-fadecandy.md)
-- [2.8" TFT Touchscreen](https://learn.adafruit.com/2-8-tft-touchscreen.md)
-- [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
-- [WiFi Controlled LED Christmahanukwanzaa Tree](https://learn.adafruit.com/wifi-controlled-led-christmahanukwanzaa-tree.md)
-- [Multi-tasking the Arduino - Part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1.md)
+- [How to Choose a Microcontroller](https://learn.adafruit.com/how-to-choose-a-microcontroller.md)
+- [Arduino Lesson 16. Stepper Motors](https://learn.adafruit.com/adafruit-arduino-lesson-16-stepper-motors.md)
+- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)

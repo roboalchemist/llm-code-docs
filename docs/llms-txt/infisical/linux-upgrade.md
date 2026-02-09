@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/deployment-options/linux-upgrade.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrading
 
 > How to upgrade Infisical deployment using linux package

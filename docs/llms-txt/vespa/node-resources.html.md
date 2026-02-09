@@ -85,7 +85,7 @@ Find a list of supported instance types at[AWS](https://cloud.vespa.ai/en/refere
 - [The practical search performance guide](../performance/practical-search-performance-guide.html)
 - [Autoscaling](../operations/autoscaling.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

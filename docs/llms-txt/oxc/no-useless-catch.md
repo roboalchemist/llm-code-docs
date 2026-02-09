@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-useless-catch.md
 ---
-# eslint/no-useless-catch&#x20;
 
 ### What it does
 

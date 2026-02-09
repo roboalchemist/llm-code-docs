@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/corpora/corpora-post.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Corpus
 
 > Creates a new corpus using the specified name and description
@@ -111,7 +115,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

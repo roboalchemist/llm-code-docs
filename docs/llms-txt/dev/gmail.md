@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/gmail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gmail connector
 
 > Connect WRITER Agent to Gmail to manage emails, search messages, and automate email workflows

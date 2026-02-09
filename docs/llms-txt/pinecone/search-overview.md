@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/search/search-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Search overview
 
 > Explore semantic, lexical, and hybrid search options.
@@ -26,7 +30,7 @@
 The query result size is affected by the dimension of the dense vectors and whether or not dense vector values and metadata are included in the result.
 
 <Tip>
-  If a query fails due to exceeding the 4MB result size limit, choose a lower `top_k` value, or use `include_metadata=False` or `include_values=False` to exclude metadata or values from the result.
+  If a query fails due to exceeding the 4MB result size limit, choose a lower `top_k` value, or use `include_metadata=False` or `include_values=False` to exclude metadata or values from the result. For better performance, especially with higher `top_k` values, avoid including vector values unless you need them.
 </Tip>
 
 ## Cost

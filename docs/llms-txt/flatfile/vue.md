@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/embedding/vue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vue Embedding
 
 > Embed Flatfile in Vue.js applications
@@ -8,7 +12,7 @@ Embed Flatfile in your Vue.js application using our Vue SDK. This provides Vue c
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/vue
 ```
 
@@ -18,7 +22,7 @@ npm install @flatfile/vue
 
 Use the `initializeFlatfile` composable in your Vue component:
 
-```vue
+```vue  theme={null}
 <script setup>
 import { ref } from "vue";
 import { initializeFlatfile } from "@flatfile/vue";
@@ -63,7 +67,7 @@ For authentication and security guidance, see [Advanced Configuration](./advance
   page.
 </Note>
 
-```vue
+```vue  theme={null}
 <script setup>
 import { ref } from "vue";
 import { initializeFlatfile } from "@flatfile/vue";
@@ -113,7 +117,7 @@ const toggleImport = () => {
 
 If you prefer the Options API:
 
-```vue
+```vue  theme={null}
 <script>
 import { initializeFlatfile } from "@flatfile/vue";
 
@@ -162,7 +166,7 @@ To create a new Space each time:
 1. Add a `workbook` configuration object. Read more about workbooks [here](../core-concepts/workbooks).
 2. Optionally [deploy](../core-concepts/listeners) a `listener` for custom data processing. Your listener will contain your validations and transformations
 
-```vue
+```vue  theme={null}
 <script setup>
 import { initializeFlatfile } from "@flatfile/vue";
 
@@ -193,7 +197,7 @@ For detailed workbook configuration, see the [Workbook API Reference](https://re
 
 When reusing existing Spaces, the proper pattern is to let your server handle Space creation and management:
 
-```vue
+```vue  theme={null}
 <script setup>
 import { ref } from "vue";
 import { initializeFlatfile } from "@flatfile/vue";
@@ -223,7 +227,7 @@ For server-side Space creation and management patterns, see [Server Setup](/embe
 
 The Vue SDK supports TypeScript:
 
-```vue
+```vue  theme={null}
 <script setup lang="ts">
 import { ref, Ref } from "vue";
 import { initializeFlatfile } from "@flatfile/vue";
@@ -246,7 +250,7 @@ const { Space, OpenEmbed } = initializeFlatfile(spaceProps);
 
 Add custom styles to integrate with your Vue application:
 
-```vue
+```vue  theme={null}
 <style scoped>
 .import-button {
   background-color: #4c48ef;

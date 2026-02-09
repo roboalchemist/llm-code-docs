@@ -875,7 +875,7 @@ Messages sent to vespa (route default) :
 PutDocument:	ok: 1 msgs/sec: 3.30 failed: 0 ignored: 0 latency(min, max, avg): 225, 225, 225
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

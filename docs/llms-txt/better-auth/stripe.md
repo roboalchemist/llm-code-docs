@@ -4,11 +4,7 @@
 
 Stripe plugin for Better Auth to manage subscriptions and payments.
 
-***
 
-title: Stripe
-description: Stripe plugin for Better Auth to manage subscriptions and payments.
---------------------------------------------------------------------------------
 
 The Stripe plugin integrates Stripe's payment and subscription functionality with Better Auth. Since payment and authentication are often tightly coupled, this plugin simplifies the integration of Stripe into your application, handling customer creation, subscription management, and webhook processing.
 
@@ -32,7 +28,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
 
     First, install the plugin:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -86,7 +82,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
 
     Next, install the Stripe SDK on your server:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -167,7 +163,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
     import { createAuthClient } from "better-auth/client"
     import { stripeClient } from "@better-auth/stripe/client"
 
-    export const client = createAuthClient({
+    export const authClient = createAuthClient({
         // ... your existing config
         plugins: [
             stripeClient({
@@ -185,7 +181,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -231,7 +227,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -308,7 +304,7 @@ The Stripe plugin integrates Stripe's payment and subscription functionality wit
 
 You can use this plugin solely for customer management without enabling subscriptions. This is useful if you just want to link Stripe customers to your users.
 
-By default, when a user signs up, a Stripe customer is automatically created if you set `createCustomerOnSignUp: true`. This customer is linked to the user in your database.
+When you set `createCustomerOnSignUp: true`, a Stripe customer is automatically created on signup and linked to the user in your database.
 You can customize the customer creation process:
 
 ```ts title="auth.ts"
@@ -384,6 +380,7 @@ see [plan configuration](#plan-configuration) for more.
 
 To create a subscription, use the `subscription.upgrade` method:
 
+
 ### Client Side
 
 ```ts
@@ -393,7 +390,9 @@ const { data, error } = await authClient.subscription.upgrade({
     referenceId: 123, // optional
     subscriptionId: sub_123, // optional
     metadata, // optional
+    customerType, // optional
     seats, // optional
+    locale, // optional
     successUrl,
     cancelUrl,
     returnUrl, // optional
@@ -411,7 +410,9 @@ const data = await auth.api.upgradeSubscription({
         referenceId: 123, // optional
         subscriptionId: sub_123, // optional
         metadata, // optional
+        customerType, // optional
         seats, // optional
+        locale, // optional
         successUrl,
         cancelUrl,
         returnUrl, // optional
@@ -426,70 +427,86 @@ const data = await auth.api.upgradeSubscription({
 
 ```ts
 type upgradeSubscription = {
-    /**
-     * The name of the plan to upgrade to. 
-     */
-    plan: string = "pro"
-    /**
-     * Whether to upgrade to an annual plan. 
-     */
-    annual?: boolean = true
-    /**
-     * Reference id of the subscription to upgrade. 
-     */
-    referenceId?: string = "123"
-    /**
-     * The id of the subscription to upgrade. 
-     */
-    subscriptionId?: string = "sub_123"
-    metadata?: Record<string, any>
-    /**
-     * Number of seats to upgrade to (if applicable). 
-     */
-    seats?: number = 1
-    /**
-     * Callback URL to redirect back after successful subscription. 
-     */
-    successUrl: string
-    /**
-     * If set, checkout shows a back button and customers will be directed here if they cancel payment.
-     */
-    cancelUrl: string 
-    /**
-     * URL to take customers to when they click on the billing portalâs link to return to your website.
-     */
-    returnUrl?: string
-    /**
-     * Disable redirect after successful subscription. 
-     */
-    disableRedirect: boolean = false
-
+      /**
+       * The name of the plan to upgrade to.
+       */
+      plan: string = "pro"
+      /**
+       * Whether to upgrade to an annual plan.
+       */
+      annual?: boolean = true
+      /**
+       * Reference id of the subscription. Defaults based on customerType.
+       */
+      referenceId?: string = "123"
+      /**
+       * The id of the subscription to upgrade.
+       */
+      subscriptionId?: string = "sub_123"
+      /**
+       * Additional metadata to store with the subscription.
+       */
+      metadata?: Record<string, any>
+      /**
+       * The type of customer for billing. (Default: "user")
+       */
+      customerType?: "user" | "organization"
+      /**
+       * Number of seats to upgrade to (if applicable).
+       */
+      seats?: number = 1
+      /**
+       * The IETF language tag of the locale Checkout is displayed in.
+       * If not provided or set to `auto`, the browser's locale is used.
+       */
+      locale?: string
+      /**
+       * The URL to which Stripe should send customers when payment or setup is complete.
+       */
+      successUrl: string
+      /**
+       * If set, checkout shows a back button and customers will be directed here if they cancel payment.
+       */
+      cancelUrl: string
+      /**
+       * The URL to return to from the Billing Portal (used when upgrading existing subscriptions)
+       */
+      returnUrl?: string
+      /**
+       * Disable redirect after successful subscription.
+       */
+      disableRedirect: boolean = false
+  
 }
 ```
+
 
 **Simple Example:**
 
 ```ts title="client.ts"
-await client.subscription.upgrade({
+await authClient.subscription.upgrade({
     plan: "pro",
     successUrl: "/dashboard",
     cancelUrl: "/pricing",
     annual: true, // Optional: upgrade to an annual plan
-    referenceId: "org_123", // Optional: defaults to the current logged in user ID
-    seats: 5 // Optional: for team plans
+    referenceId: "org_123", // Optional: defaults based on customerType
+    seats: 5, // Optional: for team plans
+    locale: "en" // Optional: display checkout in English
 });
 ```
 
 This will create a Checkout Session and redirect the user to the Stripe Checkout page.
 
-<Callout type="warn">
-  If the user already has an active subscription, you *must* provide the `subscriptionId` parameter. Otherwise, the user will be subscribed to (and pay for) both plans.
+<Callout type="info">
+  The plugin only supports one active or trialing subscription per reference ID (user or organization) at a time. Multiple concurrent subscriptions for the same reference ID are not supported.
+
+  If the user already has an active subscription, you **must** provide the `subscriptionId` parameter when upgrading. Otherwise, a new subscription may be created alongside the existing one, resulting in duplicate billing.
 </Callout>
 
 > **Important:** The `successUrl` parameter will be internally modified to handle race conditions between checkout completion and webhook processing. The plugin creates an intermediate redirect that ensures subscription status is properly updated before redirecting to your success page.
 
 ```ts
-const { error } = await client.subscription.upgrade({
+const { error } = await authClient.subscription.upgrade({
     plan: "pro",
     successUrl: "/dashboard",
     cancelUrl: "/pricing",
@@ -499,16 +516,12 @@ if(error) {
 }
 ```
 
-<Callout type="warn">
-  For each reference ID (user or organization), only one active or trialing subscription is supported at a time. The plugin doesn't currently support multiple concurrent active subscriptions for the same reference ID.
-</Callout>
-
 #### Switching Plans
 
 To switch a subscription to a different plan, use the `subscription.upgrade` method:
 
 ```ts title="client.ts"
-await client.subscription.upgrade({
+await authClient.subscription.upgrade({
     plan: "pro",
     successUrl: "/dashboard",
     cancelUrl: "/pricing",
@@ -522,11 +535,13 @@ This ensures that the user only pays for the new plan, and not both.
 
 To get the user's active subscriptions:
 
+
 ### Client Side
 
 ```ts
 const { data, error } = await authClient.subscription.list({
     referenceId: 123, // optional
+    customerType, // optional
 });
 ```
 
@@ -536,6 +551,7 @@ const { data, error } = await authClient.subscription.list({
 const subscriptions = await auth.api.listActiveSubscriptions({
     query: {
         referenceId: 123, // optional
+        customerType, // optional
     },
     // This endpoint requires session cookies.
     headers: await headers()
@@ -546,13 +562,18 @@ const subscriptions = await auth.api.listActiveSubscriptions({
 
 ```ts
 type listActiveSubscriptions = {
-    /**
-     * Reference id of the subscription to list. 
-     */
-    referenceId?: string = '123'
-
+      /**
+       * Reference id of the subscription to list.
+       */
+      referenceId?: string = '123'
+      /**
+       * The type of customer for billing. (Default: "user")
+       */
+      customerType?: "user" | "organization"
+  
 }
 ```
+
 
 Make sure to provide `authorizeReference` in your plugin config to authorize the reference ID
 
@@ -582,11 +603,13 @@ stripe({
 
 To cancel a subscription:
 
+
 ### Client Side
 
 ```ts
 const { data, error } = await authClient.subscription.cancel({
     referenceId: org_123, // optional
+    customerType, // optional
     subscriptionId: sub_123, // optional
     returnUrl: /account,
 });
@@ -598,6 +621,7 @@ const { data, error } = await authClient.subscription.cancel({
 const data = await auth.api.cancelSubscription({
     body: {
         referenceId: org_123, // optional
+        customerType, // optional
         subscriptionId: sub_123, // optional
         returnUrl: /account,
     },
@@ -610,21 +634,26 @@ const data = await auth.api.cancelSubscription({
 
 ```ts
 type cancelSubscription = {
-    /**
-     * Reference id of the subscription to cancel. Defaults to the userId.
-     */
-    referenceId?: string = 'org_123'
-    /**
-     * The id of the subscription to cancel. 
-     */
-    subscriptionId?: string = 'sub_123'
-    /**
-     * URL to take customers to when they click on the billing portalâs link to return to your website.
-     */
-    returnUrl: string = '/account'
-
+      /**
+       * Reference id of the subscription to cancel. Defaults based on customerType.
+       */
+      referenceId?: string = 'org_123'
+      /**
+       * The type of customer for billing. (Default: "user")
+       */
+      customerType?: "user" | "organization"
+      /**
+       * The id of the subscription to cancel.
+       */
+      subscriptionId?: string = 'sub_123'
+      /**
+       * URL to take customers to when they click on the billing portal's link to return to your website.
+       */
+      returnUrl: string = '/account'
+  
 }
 ```
+
 
 This will redirect the user to the Stripe Billing Portal where they can cancel their subscription.
 
@@ -644,15 +673,29 @@ This will redirect the user to the Stripe Billing Portal where they can cancel t
 
 #### Restoring a Canceled Subscription
 
-> <small className="font-normal">**Note:** This only works for subscriptions that are still active but scheduled to cancel. It cannot restore subscriptions that have already ended (`status: "canceled"` with `endedAt` set).</small>
+> <small className="font-normal">
+>   **Note:**
+>
+>    This only works for subscriptions that are still active but scheduled to cancel. It cannot restore subscriptions that have already ended (
+>
+>   `status: "canceled"`
+>
+>    with 
+>
+>   `endedAt`
+>
+>    set).
+> </small>
 
 If a user changes their mind after canceling a subscription (but before the subscription period ends), you can restore the subscription:
+
 
 ### Client Side
 
 ```ts
 const { data, error } = await authClient.subscription.restore({
     referenceId: 123, // optional
+    customerType, // optional
     subscriptionId: sub_123, // optional
 });
 ```
@@ -663,6 +706,7 @@ const { data, error } = await authClient.subscription.restore({
 const data = await auth.api.restoreSubscription({
     body: {
         referenceId: 123, // optional
+        customerType, // optional
         subscriptionId: sub_123, // optional
     },
     // This endpoint requires session cookies.
@@ -674,17 +718,22 @@ const data = await auth.api.restoreSubscription({
 
 ```ts
 type restoreSubscription = {
-    /**
-     * Reference id of the subscription to restore. Defaults to the userId.
-     */
-    referenceId?: string = '123'
-    /**
-     * The id of the subscription to restore. 
-     */
-    subscriptionId?: string = 'sub_123'
-
+      /**
+       * Reference id of the subscription to restore. Defaults based on customerType.
+       */
+      referenceId?: string = '123'
+      /**
+       * The type of customer for billing. (Default: "user")
+       */
+      customerType?: "user" | "organization"
+      /**
+       * The id of the subscription to restore.
+       */
+      subscriptionId?: string = 'sub_123'
+  
 }
 ```
+
 
 This will reactivate a subscription that was previously scheduled to cancel. The subscription will continue to renew automatically.
 
@@ -700,12 +749,14 @@ This will reactivate a subscription that was previously scheduled to cancel. The
 
 To create a [Stripe billing portal session](https://docs.stripe.com/api/customer_portal/sessions/create) where customers can manage their subscriptions, update payment methods, and view billing history:
 
+
 ### Client Side
 
 ```ts
 const { data, error } = await authClient.subscription.billingPortal({
     locale, // optional
     referenceId: 123, // optional
+    customerType, // optional
     returnUrl, // optional
     disableRedirect, // optional
 });
@@ -718,6 +769,7 @@ const data = await auth.api.createBillingPortal({
     body: {
         locale, // optional
         referenceId: 123, // optional
+        customerType, // optional
         returnUrl, // optional
         disableRedirect, // optional
     },
@@ -730,26 +782,32 @@ const data = await auth.api.createBillingPortal({
 
 ```ts
 type createBillingPortal = {
-    /**
-    * The IETF language tag of the locale customer portal is displayed in. If blank or auto, browser's locale is used.
-    */
-    locale?: string
-    /**
-     * Reference id of the subscription to upgrade. 
-     */
-    referenceId?: string = "123"
-    /**
-     * Return URL to redirect back after successful subscription. 
-     */
-    returnUrl?: string
-    /**
-     * Disable the automatic redirect to the billing page.
-     * @default false
-     */
-    disableRedirect?: boolean = false
-
+      /**
+      * The IETF language tag of the locale Customer Portal is displayed in.
+      * If not provided or set to `auto`, the browser's locale is used.
+      */
+      locale?: string
+      /**
+       * Reference id of the subscription.
+       */
+      referenceId?: string = "123"
+      /**
+       * The type of customer for billing. (Default: "user")
+       */
+      customerType?: "user" | "organization"
+      /**
+       * Return URL to redirect back after exiting the billing portal.
+       */
+      returnUrl?: string
+      /**
+       * Disable the automatic redirect to the billing page.
+       * @default false
+       */
+      disableRedirect?: boolean = false
+  
 }
 ```
+
 
 <Callout type="info">
   For supported locales, see the [IETF language tag documentation](https://docs.stripe.com/js/appendix/supported_locales).
@@ -763,7 +821,7 @@ By default, subscriptions are associated with the user ID. However, you can use 
 
 ```ts title="client.ts"
 // Create a subscription for an organization
-await client.subscription.upgrade({
+await authClient.subscription.upgrade({
     plan: "pro",
     referenceId: "org_123456",
     successUrl: "/dashboard",
@@ -772,7 +830,7 @@ await client.subscription.upgrade({
 });
 
 // List subscriptions for an organization
-const { data: subscriptions } = await client.subscription.list({
+const { data: subscriptions } = await authClient.subscription.list({
     query: {
         referenceId: "org_123456"
     }
@@ -784,7 +842,7 @@ const { data: subscriptions } = await client.subscription.list({
 For team or organization plans, you can specify the number of seats:
 
 ```ts
-await client.subscription.upgrade({
+await authClient.subscription.upgrade({
     plan: "team",
     referenceId: "org_123456",
     seats: 10, // 10 team members
@@ -919,6 +977,21 @@ Table Name: `user`
 ]}
 />
 
+### Organization
+
+Table Name: `organization` <small className="text-xs">(only when `organization.enabled` is `true`)</small>
+
+<DatabaseTable
+  fields={[
+  {
+    name: "stripeCustomerId",
+    type: "string",
+    description: "The Stripe customer ID for the organization",
+    isOptional: true
+  },
+]}
+/>
+
 ### Subscription
 
 Table Name: `subscription`
@@ -1038,8 +1111,6 @@ stripe({
 
 ## Options
 
-### Main Options
-
 | Option                    | Type       | Description                                                                                   |
 | ------------------------- | ---------- | --------------------------------------------------------------------------------------------- |
 | `stripeClient`            | `Stripe`   | The Stripe client instance. **Required.**                                                     |
@@ -1049,6 +1120,7 @@ stripe({
 | `getCustomerCreateParams` | `function` | Customize Stripe customer creation parameters. Receives `user` and context.                   |
 | `onEvent`                 | `function` | Callback called for any Stripe webhook event. Receives `Stripe.Event`.                        |
 | `subscription`            | `object`   | Subscription configuration. See [below](#subscription-options).                               |
+| `organization`            | `object`   | Enable Organization Customer support. See [below](#organization-options).                     |
 | `schema`                  | `object`   | Customize the database schema for the Stripe plugin.                                          |
 
 ### Subscription Options
@@ -1065,9 +1137,8 @@ stripe({
 | `onSubscriptionUpdate`     | `function`                   | Called when a subscription is updated. Receives `{ event, subscription }`.                                                    |
 | `onSubscriptionCancel`     | `function`                   | Called when a subscription is canceled. Receives `{ event, subscription, stripeSubscription, cancellationDetails }`.          |
 | `onSubscriptionDeleted`    | `function`                   | Called when a subscription is deleted. Receives `{ event, stripeSubscription, subscription }`.                                |
-| `organization`             | `object`                     | Enable organization subscription. Set `{ enabled: true }` to enable.                                                          |
 
-### Plan Configuration
+#### Plan Configuration
 
 | Option                    | Type     | Description                                                  |
 | ------------------------- | -------- | ------------------------------------------------------------ |
@@ -1089,26 +1160,64 @@ stripe({
 | `onTrialEnd`     | `function` | Called when a trial ends. Receives `{ subscription }` and context.                   |
 | `onTrialExpired` | `function` | Called when a trial expires without conversion. Receives `subscription` and context. |
 
+### Organization Options
+
+| Option                    | Type       | Description                                                                                                |
+| ------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `enabled`                 | `boolean`  | Enable Organization Customer support. **Required.**                                                        |
+| `getCustomerCreateParams` | `function` | Customize Stripe customer creation parameters for organizations. Receives `organization` and context.      |
+| `onCustomerCreate`        | `function` | Called after an organization customer is created. Receives `{ stripeCustomer, organization }` and context. |
+
 ## Advanced Usage
 
 ### Using with Organizations
 
-The Stripe plugin works well with the organization plugin. You can associate subscriptions with organizations instead of individual users:
+The Stripe plugin integrates with the [organization plugin](/docs/plugins/organization) to enable organizations as Stripe Customers. Instead of individual users, organizations become the billing entity for subscriptions. This is useful for B2B services where billing is tied to the organization rather than individual user.
+
+<Callout type="info">
+  **When Organization Customer is enabled:**
+
+  * A Stripe Customer is automatically created when an organization first subscribes
+  * Organization name changes are synced to the Stripe Customer
+  * Organizations with active subscriptions cannot be deleted
+</Callout>
+
+#### Enabling Organization Customer
+
+To enable Organization Customer, set `organization.enabled` to `true` and ensure the organization plugin is installed:
+
+```ts title="auth.ts"
+plugins: [
+    organization(),
+    stripe({
+        // ... other options
+        subscription: {
+            enabled: true,
+            plans: [...],
+        },
+        organization: { // [!code highlight]
+            enabled: true // [!code highlight]
+        } // [!code highlight]
+    })
+]
+```
+
+#### Creating Organization Subscriptions
+
+Even with Organization Customer enabled, user subscriptions remain available and are the default. To use the organization as the billing entity, pass `customerType: "organization"`:
 
 ```ts title="client.ts"
-// Get the active organization
-const { data: activeOrg } = client.useActiveOrganization();
-
-// Create a subscription for the organization
-await client.subscription.upgrade({
+await authClient.subscription.upgrade({
     plan: "team",
     referenceId: activeOrg.id,
+    customerType: "organization", // [!code highlight]
     seats: 10,
-    annual: true, // upgrade to an annual plan (optional)
     successUrl: "/org/billing/success",
     cancelUrl: "/org/billing"
 });
 ```
+
+#### Authorization
 
 Make sure to implement the `authorizeReference` function to verify that the user has permission to manage subscriptions for the organization:
 
@@ -1122,10 +1231,21 @@ subscription: {
                 organizationId: referenceId
             }
         });
-        
+
         return member?.role === "owner" || member?.role === "admin";
     }
 }
+```
+
+#### Organization Billing Email
+
+Unlike users, organization billing email is not automatically synced because organization itself doesn't have a unique email. Organizations often use a dedicated billing email separate from user accounts.
+To change the billing email after checkout, update it through the Stripe Dashboard or implement custom logic using `stripeClient`:
+
+```ts
+await stripeClient.customers.update(organization.stripeCustomerId, {
+    email: "billing@company.com"
+});
 ```
 
 ### Custom Checkout Session Parameters

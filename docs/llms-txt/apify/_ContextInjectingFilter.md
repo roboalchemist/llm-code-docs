@@ -10,7 +10,7 @@
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#filter)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L94)filter
+### [**](#filter)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L94)filter
 
 * ****filter**(record): bool
 

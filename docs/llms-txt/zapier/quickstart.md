@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/mcp/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Get up and running with Zapier MCP in 5 minutes
@@ -14,7 +18,7 @@ This guide will help you connect your AI assistant to Zapier MCP and run your fi
 <Warning>
   **Enterprise Users**: Zapier MCP is not enabled by default on Enterprise
   accounts. If you'd still like to beta test Zapier MCP, reach out
-  [here](https://mcpp.zapier.app/enterprise-access).
+  to your account manager.
 </Warning>
 
 ## Prerequisites

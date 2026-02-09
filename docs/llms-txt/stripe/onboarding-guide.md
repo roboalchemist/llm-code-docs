@@ -85,6 +85,6 @@ To make sure onboarding is successful and increase conversion for your Financial
 
 ### See also
 
-- [Connect integration guide](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct)
+- [Connect integration guide](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform)
 - [Financial Accounts for platforms documentation on opening connected accounts](https://docs.stripe.com/financial-accounts/connect/account-management/connected-accounts.md#requirements)
 - [Documentation on opening Financial Accounts for platforms](https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md)

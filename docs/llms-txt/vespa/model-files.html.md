@@ -89,5 +89,5 @@ model example {
 
 This makes the model _example_ available with the functions _foo1_ and _foo2_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

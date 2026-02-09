@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/welcome.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the REST API
 
 > Interact programmatically with your Vercel account using the SDK or direct HTTP requests.
@@ -45,13 +49,9 @@ Vercel Access Tokens are required to authenticate and use the Vercel API.
 
 Access Tokens can be created and managed from inside your [account settings](https://vercel.com/account/tokens).
 
-<img className="block dark:hidden" src="https://assets.vercel.com/image/upload/v1701697368/docs-assets/static/docs/rest-api/create-token-light.png" />
-
-<img className="hidden  dark:block" src="https://assets.vercel.com/image/upload/v1701697369/docs-assets/static/docs/rest-api/create-token-dark.png" />
-
-1. In the upper-right corner of your [dashboard](https://vercel.com/dashboard), click your profile picture, then select **Settings**
+1. In the upper-right corner of your [dashboard](https://vercel.com/dashboard), click your profile picture, then select **Account Settings** or go to the [Tokens page directly](https://vercel.com/account/settings/tokens)
 2. Select **Tokens** from the sidebar
-3. Enter a descriptive name for the token
+3. From **Create Token** section, enter a descriptive name for the token
 4. Choose the scope from the list of Teams in the drop-down menu. The scope ensures that only your specified Team(s) can use an Access Token
 5. From the drop-down, select an expiration date for the Token
 6. Click **Create Token**

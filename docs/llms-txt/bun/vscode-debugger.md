@@ -1,10 +1,13 @@
 # Source: https://bun.com/docs/guides/runtime/vscode-debugger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debugging Bun with the VS Code extension
 
 <Note>
-  VSCode extension support is currently buggy. We recommend the [Web
-  Debugger](https://bun.com/guides/runtime/web-debugger) for now.
+  VSCode extension support is currently buggy. We recommend the [Web Debugger](/guides/runtime/web-debugger) for now.
 </Note>
 
 Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-inspector-protocol/src/protocol/jsc/index.d.ts) so you can debug your code with an interactive debugger.

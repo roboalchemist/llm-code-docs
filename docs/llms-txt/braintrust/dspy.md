@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/dspy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DSPy
 
 [DSPy](https://dspy.ai) is a declarative framework for programming language models developed at Stanford NLP. Braintrust traces DSPy applications by combining LiteLLM instrumentation with DSPy-specific callbacks to capture module executions and LLM interactions.
@@ -58,8 +62,3 @@ This will automatically log:
 
 * [DSPy documentation](https://dspy.ai)
 * [LiteLLM integration](/integrations/sdk-integrations/litellm)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

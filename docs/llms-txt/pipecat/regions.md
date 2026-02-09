@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/cli/cloud/regions.md
 
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/regions.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/regions.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/regions.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/regions.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # regions
 
@@ -69,8 +65,3 @@ pipecat cloud agent list --region us-east
 <Tip>
   Choose a region close to your users for optimal latency and performance.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -18,16 +18,14 @@ By specifying formatting, style preferences, and documentation standards, Warp e
 
 {% stepper %}
 {% step %}
-
-### The Problem
+**The Problem**
 
 Developers often have different habits — formatting styles, TypeScript conventions, or comment quality.\
 Without clear rules, AI-generated code can be inconsistent or hard to maintain.
 {% endstep %}
 
 {% step %}
-
-### The Rule Setup
+**The Rule Setup**
 
 Define Rules that enforce formatting, type preferences, and doc quality.
 
@@ -46,8 +44,7 @@ The **Hemingway test** ensures code comments are simple and clear — short sent
 {% endstep %}
 
 {% step %}
-
-### Benefits
+**Benefits**
 
 * Encourages readable, maintainable code
 * Improves documentation clarity

@@ -1034,7 +1034,7 @@ The plot above shows the possible outputs from the closeness distance rank featu
 
 The plot above shows the possible outputs from the freshness rank feature using the default maxAge of 7776000s (90 days). The _linear(x)_ graph shows the default freshness output while the other graphs are logscale output for various values of the halfResponse parameter: 172800s (2 days), 604800s (7 days - the default value), 1209600s (14 days).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

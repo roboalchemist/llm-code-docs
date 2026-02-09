@@ -8,12 +8,12 @@
 
 ***
 
-Long-running https://docs.apify.com/platform/actors.md jobs may need to migrate between servers. Without state persistence, your job's progress is lost during migration, causing it to restart from the beginning on the new server. This can be costly and time-consuming.
+Long-running [Actor](https://docs.apify.com/platform/actors.md) jobs may need to migrate between servers. Without state persistence, your job's progress is lost during migration, causing it to restart from the beginning on the new server. This can be costly and time-consuming.
 
 To prevent data loss, long-running Actors should:
 
 * Periodically save (persist) their state.
-* Listen for https://docs.apify.com/sdk/js/api/apify/class/PlatformEventManager
+* Listen for [migration events](https://docs.apify.com/sdk/js/api/apify/class/PlatformEventManager)
 * Check for persisted state when starting, allowing them to resume from where they left off.
 
 For short-running Actors, the risk of restarts and the cost of repeated runs are low, so you can typically ignore state persistence.
@@ -44,12 +44,12 @@ By default, an Actor keeps its state in the server's memory. During a server swi
 
 ## Implementing state persistence
 
-The https://docs.apify.com/sdk.md handle state persistence automatically.
+The [Apify SDKs](https://docs.apify.com/sdk.md) handle state persistence automatically.
 
 This is done using the `Actor.on()` method and the `migrating` event.
 
 * The `migrating` event is triggered just before a migration occurs, allowing you to save your state.
-* To retrieve previously saved state, you can use the https://docs.apify.com/sdk/js/reference/class/Actor#getValue/https://docs.apify.com/sdk/python/reference/class/Actor#get_value methods.
+* To retrieve previously saved state, you can use the [Actor.getValue](https://docs.apify.com/sdk/js/reference/class/Actor#getValue)/[Actor.get_value](https://docs.apify.com/sdk/python/reference/class/Actor#get_value) methods.
 
 ### Code examples
 
@@ -118,11 +118,11 @@ async def main():
 ```
 
 
-For improved Actor performance consider https://docs.apify.com/academy/expert-scraping-with-apify/saving-useful-stats.md.
+For improved Actor performance consider [caching repeated page data](https://docs.apify.com/academy/expert-scraping-with-apify/saving-useful-stats.md).
 
 ## Speeding up migrations
 
-Once your Actor receives the `migrating` event, the Apify platform will shut it down and restart it on a new server within one minute. To speed this process up, once you have persisted the Actor state, you can manually reboot the Actor in the `migrating` event handler using the `Actor.reboot()` method available in the https://docs.apify.com/sdk/js/reference/class/Actor#reboot or https://docs.apify.com/sdk/python/reference/class/Actor#reboot.
+Once your Actor receives the `migrating` event, the Apify platform will shut it down and restart it on a new server within one minute. To speed this process up, once you have persisted the Actor state, you can manually reboot the Actor in the `migrating` event handler using the `Actor.reboot()` method available in the [Apify SDK for JavaScript](https://docs.apify.com/sdk/js/reference/class/Actor#reboot) or [Apify SDK for Python](https://docs.apify.com/sdk/python/reference/class/Actor#reboot).
 
 * JavaScript
 * Python

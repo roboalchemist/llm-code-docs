@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/self-hosting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Self-hosting Dub
 
 > An end-to-end guide on how to self-host Dub – the open-source link attribution platform.

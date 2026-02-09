@@ -1,127 +1,151 @@
-# Source: https://mintlify.com/docs/create/reusable-snippets.md
+# Source: https://www.mintlify.com/docs/create/reusable-snippets.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Reusable snippets
 
 > Create reusable snippets to maintain consistency across pages.
 
-One of the core principles of software development is DRY (Don't Repeat
-Yourself), which applies to documentation as
-well. If you find yourself repeating the same content in multiple places, you
-should create a custom snippet to keep your content in sync.
+One of the core principles of software development is DRY (Don't Repeat Yourself), which applies to documentation too. If you find yourself repeating the same content in multiple places, create a custom snippet for that content. Snippets contain content that you can import into other files to reuse. You control where the snippet appears on a page. If you ever need to update the content, you only need to edit the snippet rather than every file where the snippet is used.
 
-## Creating a custom snippet
+## How snippets work
 
-**Pre-condition**: You must create your snippet file in the `snippets` directory in order for the import to work.
+Snippets are any `.mdx`, `.md`, or `.jsx` files imported into another file. You can place snippet files anywhere in your project.
 
-Any page in the `snippets` directory will be treated as a snippet and will not
-be rendered into a standalone page. If you want to create a standalone page
-from the snippet, import the snippet into another file and call it as a
-component.
+When you import a snippet into another file, the snippet only appears where you import it and does not render as a standalone page. Any file in the `/snippets/` folder is always a snippet even if it is not imported into another file.
 
-### Default export
+## Create snippets
 
-1. Add content to your snippet file that you want to re-use.
+Create a file with the content you want to reuse. Snippets can contain all content types supported by Mintlify and they can import other snippets.
 
-```typescript snippets/my-snippet.mdx theme={null}
-Hello world! This is my content I want to reuse across pages.
-```
+## Import snippets into pages
 
-2. Import the snippet into your destination file.
+Import snippets into pages using either an absolute or relative path.
 
-```typescript destination-file.mdx theme={null}
----
-title: My title
-description: My Description
----
+* **Absolute imports**: Start with `/` for imports from the root of your project.
+* **Relative imports**: Use `./` or `../` to import snippets relative to the current file's location.
 
-import MySnippet from '/snippets/path/to/my-snippet.mdx';
+<Tip>
+  Relative imports enable IDE navigation. Press <kbd>CMD</kbd> and click a snippet name in your editor to jump directly to the snippet definition.
+</Tip>
 
-## Header
+### Import text
 
-Lorem impsum dolor sit amet.
+1. Add content to your snippet file that you want to reuse.
 
-<MySnippet/>
+   ```mdx shared/my-snippet.mdx wrap theme={null}
+   Hello world! This is my content I want to reuse across pages.
+   ```
 
-```
+2. Import the snippet into your destination file using either an absolute or relative path.
 
-### Exporting with variables
+   <CodeGroup>
+     ```mdx Absolute import theme={null}
+     ---
+     title: "An example page"
+     description: "This is an example page that imports a snippet."
+     ---
 
-1. Optionally, you can add variables that can be filled in via props when you import the snippet. In this example, our variable is word.
+     import MySnippet from "/shared/my-snippet.mdx";
 
-```typescript snippets/my-snippet.mdx theme={null}
-My keyword of the day is {word}.
-```
+     The snippet content displays beneath this sentence.
 
-2. Import the snippet into your destination file with the variable. The property will fill in based on your specification.
+     <MySnippet />
+     ```
 
-```typescript destination-file.mdx theme={null}
----
-title: My title
-description: My Description
----
+     ```mdx Relative import theme={null}
+     ---
+     title: "An example page"
+     description: "This is an example page that imports a snippet."
+     ---
 
-import MySnippet from '/snippets/path/to/my-snippet.mdx';
+     import MySnippet from "../shared/my-snippet.mdx";
 
-## Header
+     The snippet content displays beneath this sentence.
 
-Lorem impsum dolor sit amet.
+     <MySnippet />
+     ```
+   </CodeGroup>
 
-<MySnippet word="bananas" />
+### Import variables
 
-```
+Reference variables from a snippet in a page.
 
-### Reusable variables
+1. Export variables from a snippet file.
 
-1. Export a variable from your snippet file:
+   ```mdx shared/custom-variables.mdx theme={null}
+   export const myName = "Ronan";
 
-```typescript snippets/path/to/custom-variables.mdx theme={null}
-export const myName = "my name";
+   export const myObject = { fruit: "strawberries" };
 
-export const myObject = { fruit: "strawberries" };
-```
+   ;
+   ```
 
-2. Import the snippet from your destination file and use the variable:
+2. Import the snippet from your destination file and use the variable.
 
-```typescript destination-file.mdx theme={null}
----
-title: My title
-description: My Description
----
+   ```mdx destination-file.mdx theme={null}
+   ---
+   title: "An example page"
+   description: "This is an example page that imports a snippet with variables."
+   ---
 
-import { myName, myObject } from '/snippets/path/to/custom-variables.mdx';
+   import { myName, myObject } from "/shared/custom-variables.mdx";
 
-Hello, my name is {myName} and I like {myObject.fruit}.
-```
+   Hello, my name is {myName} and I like {myObject.fruit}.
+   ```
 
-### JSX snippets
+### Import snippets with variables
 
-1. Export a JSX component from your snippet file. (See [React components](/customize/react-components) for more information):
+Use variables to pass data to a snippet when you import it.
 
-```js icon=square-js snippets/my-jsx-snippet.jsx theme={null}
-export const MyJSXSnippet = () => {
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-    </div>
-  );
-};
-```
+1. Add variables to your snippet and pass in properties when you import it. In this example, the variable is `{word}`.
+
+   ```mdx shared/my-snippet.mdx theme={null}
+   My keyword of the day is {word}.
+   ```
+
+2. Import the snippet into your destination file with the variable. The passed property replaces the variable in the snippet definition.
+
+   ```mdx destination-file.mdx theme={null}
+   ---
+   title: "An example page"
+   description: "This is an example page that imports a snippet with a variable."
+   ---
+
+   import MySnippet from "/shared/my-snippet.mdx";
+
+   <MySnippet word="bananas" />
+   ```
+
+### Import React components
+
+1. Create a snippet with a JSX component. See [React components](/customize/react-components) for more information.
+
+   ```js components/my-jsx-snippet.jsx theme={null}
+   export const MyJSXSnippet = () => {
+     return (
+       <div>
+         <h1>Hello, world!</h1>
+       </div>
+     );
+   };
+   ```
 
 <Note>
-  Important: When creating JSX snippets, use arrow function syntax (`=>`) rather
-  than function declarations. The `function` keyword is not supported in this
-  context.
+  When creating JSX snippets, use arrow function syntax (`=>`) rather than function declarations. The `function` keyword is not supported in snippets.
 </Note>
 
-2. Import the snippet from your destination file and use the component:
+2. Import the snippet.
 
-```typescript destination-file.mdx theme={null}
----
-title: My title
-description: My Description
----
+   ```mdx destination-file.mdx theme={null}
+   ---
+   title: "An example page"
+   description: "This is an example page that imports a snippet with a React component."
+   ---
 
-import { MyJSXSnippet } from '/snippets/my-jsx-snippet.jsx';
+   import { MyJSXSnippet } from "/components/my-jsx-snippet.jsx";
 
-<MyJSXSnippet />
-```
+   <MyJSXSnippet />
+   ```

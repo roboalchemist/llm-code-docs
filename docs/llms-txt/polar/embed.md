@@ -1,10 +1,14 @@
 # Source: https://polar.sh/docs/features/checkout/embed.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedded Checkout
 
 > Embed our checkout directly on your site
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=721c4f727f588f28851d8da2322daf16" data-og-width="3680" width="3680" data-og-height="2236" height="2236" data-path="assets/features/checkout/embed/demo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e3f8f37a1c1b77a90c6665f48ce073d7 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=da785d45034ef0b276d690b0529bd798 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e0e25deefa02bde98bf7b14c2d8b9d1a 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c3e65abb8cc2a5f6cd80c060bfbd01cb 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=17fb67d868489bb4155c6f2c3b116ee4 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=87bd933324c57090e46d2120f73cd407 2500w" />
+<img src="https://polar.sh/docs/assets/features/checkout/embed/demo.png" />
 
 You can either copy and paste our code snippet to get up and running in a second or use our JavaScript library for more advanced integrations. Our embedded checkout allows you to provide a seamless purchasing experience without redirecting users away from your site.
 
@@ -24,10 +28,11 @@ The snippet looks like this:
 >
   Purchase
 </a>
+
 <script
-  src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.1/dist/embed.global.js"
   defer
   data-auto-init
+  src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"
 ></script>
 ```
 
@@ -105,7 +110,9 @@ const openCheckout = async () => {
   try {
     // This creates the checkout iframe and returns a Promise
     // that resolves when the checkout is fully loaded
-    const checkout = await PolarEmbedCheckout.create(checkoutLink, theme);
+    const checkout = await PolarEmbedCheckout.create(checkoutLink, {
+      theme,
+    });
 
     // Now you can interact with the checkout instance
     return checkout;
@@ -122,20 +129,16 @@ document.getElementById("buy-button").addEventListener("click", () => {
 
 ### Listening for checkout events
 
-You can listen for checkout events to respond to user interactions:
+You can listen for checkout events to respond to user interactions. For the `loaded` event, we recommend using the `onLoaded` callback in the `create` method to ensure it's always executed, even if the checkout loads very quickly.
 
 ```ts  theme={null}
 import { PolarEmbedCheckout } from "@polar-sh/checkout/embed";
 
 const openCheckoutWithEvents = async () => {
-  const checkout = await PolarEmbedCheckout.create("__CHECKOUT_LINK__");
-
-  // Listen for when the checkout is loaded
-  checkout.addEventListener("loaded", (event) => {
-    console.log("Checkout loaded");
-    // Call event.preventDefault() if you want to prevent the standard behavior
-    // event.preventDefault()
-    // Note: This would prevent removing the loader if it's still visible
+  const checkout = await PolarEmbedCheckout.create("__CHECKOUT_LINK__", {
+    onLoaded: (event) => {
+      console.log("Checkout loaded");
+    },
   });
 
   // Listen for when the checkout has been closed
@@ -196,7 +199,13 @@ const CheckoutButton = () => {
       try {
         const checkout = await PolarEmbedCheckout.create(
           '__CHECKOUT_LINK__',
-          'light'
+          {
+            theme: 'light',
+            onLoaded: (event) => {
+              console.log('Checkout loaded successfully');
+              // This is guaranteed to be called even if checkout loads quickly
+            }
+          }
         )
 
       setCheckoutInstance(checkout)

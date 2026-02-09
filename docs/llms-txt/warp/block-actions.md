@@ -77,7 +77,7 @@ Navigate to a bookmarked Block, by:
 Bookmarks only persist while the session is open, once you close the session they are lost. If you want to save the command and output for later use, [Share the Block](https://docs.warp.dev/terminal/blocks/block-sharing).
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-ce03da65a5db101052441f0d7e2c54cd71439e4c%2Fblock-bookmarks.gif?alt=media" alt=""><figcaption><p>Bookmarking a Block</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-ce03da65a5db101052441f0d7e2c54cd71439e4c%2Fblock-bookmarks.gif?alt=media" alt=""><figcaption><p>Bookmarking a Block</p></figcaption></figure>
 
 ## Search Within A Block
 

@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
 
-# Source: https://docs.pinecone.io/guides/production/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/production/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/production/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/production/security-overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Security overview
 
@@ -76,7 +64,7 @@ You can [manage API key permissions](/guides/assistant/admin/manage-api-keys) in
     | Role      | Permissions                                                                                                                                                                                                                                                                                                            |
     | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | ReadWrite | <ul><li>Indexes: Permissions to query, import, fetch, add, update, and delete index data.</li><li>Pinecone Assistant: Permissions to add, list, view, and delete files; chat with an assistant, and evaluate responses.</li><li>Pinecone Inference: Permissions to generate embeddings and rerank documents.</li></ul> |
-    | ReadOnly  | <ul><li>Indexes: Permissions to query, fetch, list ID, and view stats.</li><li>Pinecone Assistant: Permissions to list and view files, chat with an assistant, and evaluate responses.</li></ul>                                                                                                                       |
+    | ReadOnly  | <ul><li>Indexes: Permissions to query, fetch, list ID, and view stats.</li><li>Pinecone Assistant: Permissions to list and view files, chat with an assistant, and evaluate responses.</li><li>Pinecone Inference: Permissions to generate embeddings and rerank documents.</li></ul>                                  |
     | None      | No data plane permissions.                                                                                                                                                                                                                                                                                             |
   </Tab>
 
@@ -84,7 +72,7 @@ You can [manage API key permissions](/guides/assistant/admin/manage-api-keys) in
     | Role              | Permissions                                                                                                                                                                                                                                                                                                            |
     | :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | `DataPlaneEditor` | <ul><li>Indexes: Permissions to query, import, fetch, add, update, and delete index data.</li><li>Pinecone Assistant: Permissions to add, list, view, and delete files; chat with an assistant, and evaluate responses.</li><li>Pinecone Inference: Permissions to generate embeddings and rerank documents.</li></ul> |
-    | `DataPlaneViewer` | <ul><li>Indexes: Permissions to query, fetch, list ID, and view stats.</li><li>Pinecone Assistant: Permissions to list and view files, chat with an assistant, and evaluate responses.</li></ul>                                                                                                                       |
+    | `DataPlaneViewer` | <ul><li>Indexes: Permissions to query, fetch, list ID, and view stats.</li><li>Pinecone Assistant: Permissions to list and view files, chat with an assistant, and evaluate responses.</li><li>Pinecone Inference: Permissions to generate embeddings and rerank documents.</li></ul>                                  |
     | None              | No data plane permissions.                                                                                                                                                                                                                                                                                             |
   </Tab>
 </Tabs>
@@ -234,5 +222,5 @@ Traffic is also encrypted in transit between the Pinecone backend and cloud infr
 
 The following Pinecone SDKs support the use of proxies:
 
-* [Python SDK](/reference/python-sdk#proxy-configuration)
-* [Node.js SDK](/reference/node-sdk#proxy-configuration)
+* [Python SDK](/reference/sdks/python/overview#proxy-configuration)
+* [Node.js SDK](/reference/sdks/node/overview#proxy-configuration)

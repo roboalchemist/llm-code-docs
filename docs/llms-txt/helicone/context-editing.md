@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/concepts/context-editing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context Editing
 
 > Automatically manage conversation context by clearing old tool uses and thinking blocks for long-running AI agent sessions
@@ -375,8 +379,3 @@ context_editing: {
 <Card title="Learn More" href="https://docs.anthropic.com/en/docs/build-with-claude/context-editing">
   Anthropic Context Editing Documentation
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

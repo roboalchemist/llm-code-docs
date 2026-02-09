@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 The Webhook feature allows you to pause workflow execution and wait for a webhook URL to be called, enabling seamless integration with third-party APIs and asynchronous operations.
@@ -36,9 +40,9 @@ export const { POST } = serve(async (context) => {
   const callResult = await context.call("call webhook caller", {
     url: "https://webhook/caller",
     method: "POST",
-    body: {
+    body: JSON.stringify({
       webhookUrl: webhook.webhookUrl,
-    },
+    }),
   });
 
   // Step 3: Wait for the webhook to be called
@@ -116,8 +120,3 @@ Choose webhooks when integrating with external services that support callback UR
     Wait for the webhook to be called or timeout
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

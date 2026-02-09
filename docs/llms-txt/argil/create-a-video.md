@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/create-a-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a video
 
 > You can create a video from scratch or start with one of your templates. 
@@ -41,8 +45,3 @@
 * The maximum for video duration is 60 paragraphs and each one has a limit of 500 characters. If you maximize everything, you can get to 10 to 15 minutes depending on the avatar talking speed.
 * You can edit your script or cut it without having to regenerate it
 * Choosing dynamic splitting will allow you to create more paragphs.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.argil.ai/llms.txt

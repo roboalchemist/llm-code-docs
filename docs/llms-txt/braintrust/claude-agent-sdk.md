@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/claude-agent-sdk.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/claude-agent-sdk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude Agent SDK
 
@@ -211,8 +215,3 @@ This example creates a calculator tool and traces multi-step agent queries:
 
 * [Claude Agent SDK documentation](https://docs.claude.com/en/api/agent-sdk/)
 * [Anthropic API documentation](https://docs.anthropic.com/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

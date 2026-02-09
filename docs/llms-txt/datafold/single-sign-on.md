@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/single-sign-on.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Single Sign-On
 
 > Set up Single Sign-On with one of the following options.

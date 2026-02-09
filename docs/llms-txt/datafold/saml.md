@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/single-sign-on/saml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SAML
 
 > SAML (Security Assertion Markup Language) is a protocol that enables secure user authentication by integrating Identity Providers (IdPs) with Service Providers (SPs).

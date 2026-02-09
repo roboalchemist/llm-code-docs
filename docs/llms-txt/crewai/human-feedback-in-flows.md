@@ -1,10 +1,18 @@
 # Source: https://docs.crewai.com/en/learn/human-feedback-in-flows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Human Feedback in Flows
 
 > Learn how to integrate human feedback directly into your CrewAI Flows using the @human_feedback decorator
 
 ## Overview
+
+<Note>
+  The `@human_feedback` decorator requires **CrewAI version 1.8.0 or higher**. Make sure to update your installation before using this feature.
+</Note>
 
 The `@human_feedback` decorator enables human-in-the-loop (HITL) workflows directly within CrewAI Flows. It allows you to pause flow execution, present output to a human for review, collect their feedback, and optionally route to different listeners based on the feedback outcome.
 
@@ -577,8 +585,3 @@ async def on_slack_feedback_async(flow_id: str, slack_message: str):
 * [Flow Persistence](/en/concepts/flows#persistence) - Persisting flow state
 * [Routing with @router](/en/concepts/flows#router) - More about conditional routing
 * [Human Input on Execution](/en/learn/human-input-on-execution) - Task-level human input
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.crewai.com/llms.txt

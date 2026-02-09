@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/building-pieces/piece-authentication.md
 
-# Source: https://www.activepieces.com/docs/developers/building-pieces/piece-authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Add Piece Authentication
 

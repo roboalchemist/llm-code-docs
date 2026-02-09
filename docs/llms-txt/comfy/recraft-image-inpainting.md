@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/recraft/recraft-image-inpainting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recraft Image Inpainting - ComfyUI Native Node Documentation
 
 > Selectively modify image regions using Recraft API

@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/agent-frameworks/crewai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrewAI
 
 AI agents can leverage browser sessions to complete tasks in the web. The ways to use the browser in CrewAI agent platform are:

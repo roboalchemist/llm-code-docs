@@ -6,50 +6,40 @@
 
 # Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
 
-# Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.squared.ai/getting-started/introduction.md
+# Introduction
 
-# Source: https://docs.squared.ai/api-reference/introduction.md
+AI Activation in AI Squared refers to the process of operationalizing your AI models—bringing model outputs directly into business tools where decisions are made.
 
-# Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
+This capability allows teams to go beyond experimentation and deploy context-aware AI insights across real business workflows, such as CRMs, service platforms, or internal tools.
 
-# Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
+***
 
-# Source: https://docs.squared.ai/getting-started/introduction.md
+## What AI Activation Enables
 
-# Source: https://docs.squared.ai/api-reference/introduction.md
+With AI Activation, you can:
 
-# Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
+* **Connect any AI model** from cloud providers (e.g., SageMaker, Vertex, OpenAI) or your own endpoints
+* **Define input & output schemas** to standardize how models consume and return data
+* **Visualize model results** using low-code Data Apps
+* **Embed insights directly** inside enterprise applications like Salesforce, ServiceNow, or custom web apps
+* **Capture user feedback** to evaluate relevance and improve model performance over time
 
-# Source: https://docs.squared.ai/api-reference/introduction.md
+***
 
-# Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
+## Core Concepts
 
-# Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
+| Concept         | Description                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------- |
+| **AI Modeling** | Configure how input is passed to the model and how output is interpreted.                                |
+| **Data Apps**   | Visual components used to surface model predictions directly within business tools.                      |
+| **Feedback**    | Capture user responses (e.g., thumbs up/down, star ratings) to monitor model quality and iterate faster. |
 
-# Source: https://docs.squared.ai/getting-started/introduction.md
+***
 
-# Source: https://docs.squared.ai/api-reference/introduction.md
+## What's Next
 
-# Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
-
-# Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
-
-# Architecture Overview
-
-Multiwoven is structured into two primary components: the server and the connectors.
-
-The server delivers all the essential horizontal services needed for configuring and executing data movement tasks, such as the[ User Interface](https://github.com/Multiwoven/multiwoven-ui), [API](https://github.com/Multiwoven/multiwoven-server), Job Scheduling, etc., and is organised as a collection of microservices.
-
-Connectors are developed within the [multiwoven-integrations](https://github.com/Multiwoven/multiwoven-integrations) Ruby gem, which pushes and pulls data to and from various sources and destinations. These connectors are constructed following the [Multiwoven Protocol](https://docs.multiwoven.com/guides/architecture/multiwoven-protocol), which outlines the interface for transferring data between a source and a destination.
-
-<Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1706791257/dev%20docs%20assets/Screenshot_2024-02-01_at_5.50.40_PM_qj6ikq.png" />
-</Frame>
-
-1. [Multiwoven-UI](https://github.com/Multiwoven/multiwoven-ui) - User interface to interact with [ multiwoven-server](https://github.com/Multiwoven/multiwoven-server).
-2. [Multiwoven-Server](https://github.com/Multiwoven/multiwoven-server) - Multiwoven’s control plane. All operations in Multiwoven such as creating sources, destinations, connections, managing configurations, etc., are configured and invoked from the server.
-3. Database: Stores all connector/sync information.
-4. [Temporal ](https://temporal.io/)- Orchestrates the the sync workflows.
-5. Multiwoven-Workers - The worker connects to a source connector, pulls the data, and writes it to a destination. The workers' code resides in the [ multiwoven-server](https://github.com/Multiwoven/multiwoven-server) repo.
+Start by configuring your [AI Model](./ai-modeling), then move on to building and embedding [Data Apps](./data-apps) into your business environment.

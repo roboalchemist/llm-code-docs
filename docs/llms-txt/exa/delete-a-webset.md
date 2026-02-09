@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/websets/delete-a-webset.md
+# Source: https://exa.ai/docs/websets/api/websets/delete-a-webset.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Delete a Webset
 
@@ -6,399 +10,183 @@
 
 Once deleted, the Webset and all its Items will no longer be available.
 
+
+
 ## OpenAPI
 
 ````yaml delete /v0/websets/{id}
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/websets/{id}
-  method: delete
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v0/websets/{id}:
+    delete:
+      tags:
+        - Websets
+      summary: Delete a Webset
+      description: |-
+        Deletes a Webset.
+
+        Once deleted, the Webset and all its Items will no longer be available.
+      operationId: websets-delete
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id or externalId of the Webset
           schema:
-            - type: string
+            type: string
+      responses:
+        '200':
+          description: Webset deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webset'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
-              description: The id or externalId of the Webset
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          await exa.websets.delete('webset_id');
-
-          console.log('Webset deleted successfully');
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          exa.websets.delete('webset_id')
-
-          print('Webset deleted successfully')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type:
-                      - string
-                    description: The unique identifier for the webset
-              object:
-                allOf:
-                  - type: string
-                    const: webset
-                    default: webset
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - idle
-                      - pending
-                      - running
-                      - paused
-                    description: The status of the webset
-                    title: WebsetStatus
-              externalId:
-                allOf:
-                  - type: string
-                    description: The external identifier for the webset
-                    nullable: true
-              title:
-                allOf:
-                  - type: string
-                    description: The title of the webset
-                    nullable: true
-              searches:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebsetSearch'
-                    description: The searches that have been performed on the webset.
-              imports:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Import'
-                    description: Imports that have been performed on the webset.
-              enrichments:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebsetEnrichment'
-                    description: The Enrichments to apply to the Webset Items.
-              monitors:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Monitor'
-                    description: The Monitors for the Webset.
-              excludes:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      properties:
-                        source:
-                          type:
-                            - string
-                          enum:
-                            - import
-                            - webset
-                        id:
-                          type:
-                            - string
-                      required:
-                        - source
-                        - id
-                    description: >-
-                      The Excludes sources (existing imports or websets) that
-                      apply to all operations within this Webset. Any results
-                      found within these sources will be omitted across all
-                      search and import operations.
-              metadata:
-                allOf:
-                  - default: {}
-                    description: >-
-                      Set of key-value pairs you want to associate with this
-                      object.
-                    type:
-                      - object
-                    additionalProperties:
-                      type:
-                        - string
-                      maxLength: 1000
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the webset was created
-              updatedAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the webset was updated
-            refIdentifier: '#/components/schemas/Webset'
-            requiredProperties:
-              - id
-              - object
-              - status
-              - externalId
-              - title
-              - searches
-              - imports
-              - enrichments
-              - monitors
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              id: <string>
-              object: webset
-              status: idle
-              externalId: <string>
-              title: <string>
-              searches:
-                - id: <string>
-                  object: webset_search
-                  status: created
-                  websetId: <string>
-                  query: <string>
-                  entity:
-                    type: company
-                  criteria:
-                    - description: <string>
-                      successRate: 50
-                  count: 2
-                  behavior: override
-                  exclude:
-                    - source: import
-                      id: <string>
-                  scope:
-                    - source: import
-                      id: <string>
-                      relationship:
-                        definition: <string>
-                        limit: 5.5
-                  progress:
-                    found: 123
-                    analyzed: 123
-                    completion: 50
-                    timeLeft: 123
-                  recall:
-                    expected:
-                      total: 123
-                      confidence: high
-                      bounds:
-                        min: 123
-                        max: 123
-                    reasoning: <string>
-                  metadata: {}
-                  canceledAt: '2023-11-07T05:31:56Z'
-                  canceledReason: webset_deleted
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              imports:
-                - id: <string>
-                  object: import
-                  status: pending
-                  format: csv
-                  entity:
-                    type: <string>
-                  title: <string>
-                  count: 123
-                  metadata: {}
-                  failedReason: invalid_format
-                  failedAt: '2023-11-07T05:31:56Z'
-                  failedMessage: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              enrichments:
-                - id: <string>
-                  object: webset_enrichment
-                  status: pending
-                  websetId: <string>
-                  title: <string>
-                  description: <string>
-                  format: text
-                  options:
-                    - label: <string>
-                  instructions: <string>
-                  metadata: {}
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              monitors:
-                - id: <string>
-                  object: monitor
-                  status: enabled
-                  websetId: <string>
-                  cadence:
-                    cron: <string>
-                    timezone: Etc/UTC
-                  behavior:
-                    type: search
-                    config:
-                      query: <string>
-                      criteria:
-                        - description: <string>
-                      entity:
-                        type: <string>
-                      count: 123
-                      behavior: append
-                  lastRun:
-                    id: <string>
-                    object: monitor_run
-                    status: created
-                    monitorId: <string>
-                    type: search
-                    completedAt: '2023-11-07T05:31:56Z'
-                    failedAt: '2023-11-07T05:31:56Z'
-                    failedReason: <string>
-                    canceledAt: '2023-11-07T05:31:56Z'
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                  nextRunAt: '2023-11-07T05:31:56Z'
-                  metadata: {}
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              excludes:
-                - source: import
-                  id: <string>
-              metadata: {}
-              createdAt: '2023-11-07T05:31:56Z'
-              updatedAt: '2023-11-07T05:31:56Z'
-        description: Webset deleted
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Webset not found
-        examples: {}
-        description: Webset not found
-  deprecated: false
-  type: path
+        '404':
+          description: Webset not found
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
 components:
   schemas:
-    CompanyEntity:
+    Webset:
       type:
         - object
       properties:
-        type:
-          type: string
-          const: company
-          default: company
-      required:
-        - type
-      title: Company
-    PersonEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: person
-          default: person
-      required:
-        - type
-      title: Person
-    ArticleEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: article
-          default: article
-      required:
-        - type
-      title: Article
-    ResearchPaperEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: research_paper
-          default: research_paper
-      required:
-        - type
-      title: Research Paper
-    CustomEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: custom
-          default: custom
-        description:
+        id:
           type:
             - string
-          minLength: 2
-          maxLength: 200
+          description: The unique identifier for the webset
+        object:
+          type: string
+          const: webset
+          default: webset
+        status:
+          type:
+            - string
+          enum:
+            - idle
+            - pending
+            - running
+            - paused
+          description: The status of the webset
+          title: WebsetStatus
+        externalId:
+          type: string
+          description: The external identifier for the webset
+          nullable: true
+        title:
+          type: string
+          description: The title of the webset
+          nullable: true
+        searches:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetSearch'
+            type:
+              - object
+          description: The searches that have been performed on the webset.
+        imports:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Import'
+            type:
+              - object
+          description: Imports that have been performed on the webset.
+        enrichments:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetEnrichment'
+            type:
+              - object
+          description: The Enrichments to apply to the Webset Items.
+        monitors:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Monitor'
+            type:
+              - object
+          description: The Monitors for the Webset.
+        excludes:
+          type:
+            - array
+          items:
+            type:
+              - object
+            properties:
+              source:
+                type:
+                  - string
+                enum:
+                  - import
+                  - webset
+              id:
+                type:
+                  - string
+            required:
+              - source
+              - id
+          description: >-
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
+        metadata:
+          default: {}
+          description: Set of key-value pairs you want to associate with this object.
+          type:
+            - object
+          additionalProperties:
+            type:
+              - string
+            maxLength: 1000
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was updated
       required:
-        - type
-        - description
-      title: Custom
-    Entity:
-      oneOf:
-        - type:
-            - object
-          $ref: '#/components/schemas/CompanyEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/PersonEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/ArticleEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/ResearchPaperEntity'
-        - type:
-            - object
-          $ref: '#/components/schemas/CustomEntity'
+        - id
+        - object
+        - status
+        - externalId
+        - title
+        - searches
+        - imports
+        - enrichments
+        - monitors
+        - createdAt
+        - updatedAt
     WebsetSearch:
       type:
         - object
@@ -449,11 +237,11 @@ components:
               - object
             properties:
               description:
-                description: The description of the criterion
                 type:
                   - string
                 minLength: 1
                 maxLength: 1000
+                description: The description of the criterion
               successRate:
                 type:
                   - number
@@ -477,10 +265,10 @@ components:
             number of results may be less than this number depending on the
             search complexity.
         behavior:
+          $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           type:
             - string
-          $ref: '#/components/schemas/WebsetSearchBehavior'
           description: >-
             The behavior of the search when it is added to a Webset.
 
@@ -650,8 +438,8 @@ components:
           description: The date and time the search was canceled
           nullable: true
         canceledReason:
-          type: string
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
+          type: string
           description: The reason the search was canceled
           nullable: true
         createdAt:
@@ -813,8 +601,8 @@ components:
             The description of the enrichment task provided during the creation
             of the enrichment.
         format:
-          type: string
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
+          type: string
           description: The format of the enrichment response.
           nullable: true
         options:
@@ -872,82 +660,6 @@ components:
         - format
         - options
         - instructions
-        - createdAt
-        - updatedAt
-    MonitorRun:
-      type:
-        - object
-      properties:
-        id:
-          type:
-            - string
-          description: The unique identifier for the Monitor Run
-        object:
-          type:
-            - string
-          enum:
-            - monitor_run
-          description: The type of object
-        status:
-          type:
-            - string
-          enum:
-            - created
-            - running
-            - completed
-            - canceled
-            - failed
-          description: The status of the Monitor Run
-        monitorId:
-          type:
-            - string
-          description: The monitor that the run is associated with
-        type:
-          type:
-            - string
-          enum:
-            - search
-            - refresh
-          description: The type of the Monitor Run
-        completedAt:
-          type: string
-          format: date-time
-          description: When the run completed
-          nullable: true
-        failedAt:
-          type: string
-          format: date-time
-          description: When the run failed
-          nullable: true
-        failedReason:
-          type: string
-          description: The reason the run failed
-          nullable: true
-        canceledAt:
-          type: string
-          format: date-time
-          description: When the run was canceled
-          nullable: true
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was last updated
-      required:
-        - id
-        - object
-        - monitorId
-        - status
-        - type
-        - completedAt
-        - failedAt
-        - failedReason
-        - canceledAt
         - createdAt
         - updatedAt
     Monitor:
@@ -1063,8 +775,8 @@ components:
             - config
           description: Behavior to perform when monitor runs
         lastRun:
-          type: object
           $ref: '#/components/schemas/MonitorRun'
+          type: object
           title: MonitorRun
           description: The last run of the monitor
           nullable: true
@@ -1103,16 +815,23 @@ components:
         - metadata
         - createdAt
         - updatedAt
-    WebsetEnrichmentFormat:
-      type: string
-      enum:
-        - text
-        - date
-        - number
-        - options
-        - email
-        - phone
-        - url
+    Entity:
+      oneOf:
+        - $ref: '#/components/schemas/CompanyEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/PersonEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/ArticleEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/ResearchPaperEntity'
+          type:
+            - object
+        - $ref: '#/components/schemas/CustomEntity'
+          type:
+            - object
     WebsetSearchBehavior:
       type: string
       enum:
@@ -1123,9 +842,158 @@ components:
       enum:
         - webset_deleted
         - webset_canceled
+    WebsetEnrichmentFormat:
+      type: string
+      enum:
+        - text
+        - date
+        - number
+        - options
+        - email
+        - phone
+        - url
+    MonitorRun:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the Monitor Run
+        object:
+          type:
+            - string
+          enum:
+            - monitor_run
+          description: The type of object
+        status:
+          type:
+            - string
+          enum:
+            - created
+            - running
+            - completed
+            - canceled
+            - failed
+          description: The status of the Monitor Run
+        monitorId:
+          type:
+            - string
+          description: The monitor that the run is associated with
+        type:
+          type:
+            - string
+          enum:
+            - search
+            - refresh
+          description: The type of the Monitor Run
+        completedAt:
+          type: string
+          format: date-time
+          description: When the run completed
+          nullable: true
+        failedAt:
+          type: string
+          format: date-time
+          description: When the run failed
+          nullable: true
+        failedReason:
+          type: string
+          description: The reason the run failed
+          nullable: true
+        canceledAt:
+          type: string
+          format: date-time
+          description: When the run was canceled
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was last updated
+      required:
+        - id
+        - object
+        - monitorId
+        - status
+        - type
+        - completedAt
+        - failedAt
+        - failedReason
+        - canceledAt
+        - createdAt
+        - updatedAt
+    CompanyEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: company
+          default: company
+      required:
+        - type
+      title: Company
+    PersonEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: person
+          default: person
+      required:
+        - type
+      title: Person
+    ArticleEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: article
+          default: article
+      required:
+        - type
+      title: Article
+    ResearchPaperEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: research_paper
+          default: research_paper
+      required:
+        - type
+      title: Research Paper
+    CustomEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: custom
+          default: custom
+        description:
+          type:
+            - string
+          minLength: 2
+          maxLength: 200
+      required:
+        - type
+        - description
+      title: Custom
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

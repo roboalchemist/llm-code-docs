@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zi-yuan/keyboard-shortcuts.md
-
-# Source: https://gitbook.com/docs/documentation/fr/ressources/keyboard-shortcuts.md
-
-# Source: https://gitbook.com/docs/resources/keyboard-shortcuts.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/rissu/keyboard-shortcuts.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zi-yuan/keyboard-shortcuts.md
 

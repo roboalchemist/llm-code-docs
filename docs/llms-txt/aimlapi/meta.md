@@ -2,13 +2,8 @@
 
 # Source: https://docs.aimlapi.com/api-references/text-models-llm/meta.md
 
-# Source: https://docs.aimlapi.com/api-references/moderation-safety-models/meta.md
-
-# Source: https://docs.aimlapi.com/api-references/text-models-llm/meta.md
-
 # Meta
 
-- [Llama-3-chat-hf](/api-references/text-models-llm/meta/llama-3-chat-hf.md)
 - [Llama-3-8B-Instruct-Lite](/api-references/text-models-llm/meta/meta-llama-3-8b-instruct-lite.md)
 - [Llama-3.1-8B-Instruct-Turbo](/api-references/text-models-llm/meta/meta-llama-3.1-8b-instruct-turbo.md)
 - [Llama-3.1-70B-Instruct-Turbo](/api-references/text-models-llm/meta/meta-llama-3.1-70b-instruct-turbo.md)

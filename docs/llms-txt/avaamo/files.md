@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files.md
-
 # Files
 
 - [Pre-requisites](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/pre-requisites.md)

@@ -1,43 +1,214 @@
 # Source: https://www.daytona.io/docs/en/limits.md
 
-Daytona enforces resource limits to ensure fair usage and stability across all organizations. Your organization has access to a compute pool consisting of:
+Daytona enforces resource and requests limits to ensure fair usage and stability across all organizations.
 
-- **vCPU** — Total CPU cores available
-- **Memory** — Total RAM available
-- **Storage** — Total disk space available
+[Daytona Limits ↗](https://app.daytona.io/dashboard/limits) provides an overview of your organization's resource limits and usage.
 
-Resources are shared across all running Sandboxes, so the number of Sandboxes you can run at once depends on their individual usage.
+## Resources
 
-You can see default values and how to configure usage under [Sandbox Resources](https://www.daytona.io/docs/en/sandbox-management.md#sandbox-resources). Check your current usage and limits in the [Dashboard](https://app.daytona.io/dashboard/limits).
+Resources are shared across all running sandboxes. The number of sandboxes you can run at once depends on their individual usage.
+Organizations are automatically placed into a tier based on verification status and have access to a compute pool consisting of:
 
-## Tiers & Limit Increases
+- **Compute**: Total CPU cores available
+- **Memory**: Total RAM available
+- **Storage**: Total disk space available
 
-Organizations are automatically placed into a Tier based on verification status.\
-You can unlock higher limits by completing the following steps:
+Limits are applied to your organization's default region.
+To unlock higher limits, complete the following steps:
 
-| Tier   | Resources (vCPU / RAM / Storage) | Access Requirements                                                                                                     |
-| ------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Tier 1 | 10 / 10GiB / 30GiB               | Email verified                                                                                                          |
-| Tier 2 | 100 / 200GiB / 300GiB            | Credit card linked, $25 top-up, [GitHub connected](https://www.daytona.io/docs/en/linked-accounts.md#how-to-link-an-account). |
-| Tier 3 | 250 / 500GiB / 2000GiB           | Business email verified, Phone verified, $500 top-up.                                                                   |
-| Tier 4 | 500 / 1000GiB / 5000GiB          | $2000 top-up every 30 days.                                                                                             |
-| Custom | Custom limits                    | Contact [support@daytona.io](mailto:support@daytona.io)                                                                 |
+| **Tier**   | **Resources (vCPU / RAM / Storage)**      | **Access Requirements**                                                                              |
+| ---------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Tier 1** | **`10`** / **`10GiB`** / **`30GiB`**      | Email verified                                                                                       |
+| **Tier 2** | **`100`** / **`200GiB`** / **`300GiB`**   | Credit card linked, $25 top-up, [GitHub connected](https://www.daytona.io/docs/en/linked-accounts.md#how-to-link-an-account). |
+| **Tier 3** | **`250`** / **`500GiB`** / **`2000GiB`**  | Business email verified, $500 top-up.                                                                |
+| **Tier 4** | **`500`** / **`1000GiB`** / **`5000GiB`** | $2000 top-up every 30 days.                                                                          |
+| **Custom** | Custom limits                             | Contact [support@daytona.io](mailto:support@daytona.io)                                              |
 
-Once you meet the criteria for a higher tier, make sure to Upgrade by clicking the "Upgrade" button in the [Dashboard](https://app.daytona.io/dashboard/limits).
+Once you meet the criteria for a higher tier, upgrade your tier in the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/limits).
 
-## Manage usage dynamically
+### Resource usage
 
-You can manage your resource usage by [changing the state](http://localhost:4321/docs/sandbox-management#sandbox-lifecycle) of your Sandboxes. The table below summarizes how each state affects resource usage:
+Daytona supports managing your resources by [changing the state](https://www.daytona.io/docs/sandboxes.md#sandbox-lifecycle) of your Sandboxes. The table below summarizes how each state affects resource usage:
 
-| State      | vCPU | Memory | Storage | Notes                                                      |
-|------------|:-------:|:--------:|:------:|------------------------------------------------------------|
-| Running |   ✅    |   ✅     |  ✅   | Counts against all limits                                  |
-| Stopped |   ❌    |   ❌     |  ✅   | Frees CPU & memory, but storage is still used                 |
-| Archived|   ❌    |   ❌     |  ❌   | Data moved to cold storage, no quota impact                |
-| Deleted |   ❌    |   ❌     |  ❌   | All resources freed                                        |
+| **State**    | **vCPU** | **Memory** | **Storage** | **Description**                               |
+| ------------ | -------- | ---------- | ----------- | --------------------------------------------- |
+| **Running**  | ✅       | ✅         | ✅          | Counts against all limits                     |
+| **Stopped**  | ❌       | ❌         | ✅          | Frees CPU & memory, but storage is still used |
+| **Archived** | ❌       | ❌         | ❌          | Data moved to cold storage, no quota impact   |
+| **Deleted**  | ❌       | ❌         | ❌          | All resources freed                           |
 
-See [Sandbox Management](https://www.daytona.io/docs/en/sandbox-management.md) for more information.
+## Rate limits
 
-## Need More?
+Rate limits control how many API requests you can make within a specific time window.
+These limits are applied based on your tier, authentication status, and the type of operation you're performing.
+Rate limits for general authenticated requests are tracked per organization.
 
-If you need higher or specialized limits, reach out to [support@daytona.io](mailto:support@daytona.io).
+The following rate limits are applied for each tier:
+
+- **General requests**
+- **[Sandbox creation](#sandbox-creation)**
+- **[Sandbox lifecycle](#sandbox-lifecycle-operations)**
+
+| **Tier**   | **General Requests (per min)** | **Sandbox Creation (per min)** | **Sandbox Lifecycle (per min)** |
+| ---------- | ------------------------------ | ------------------------------ | ------------------------------- |
+| **Tier 1** | 10,000                         | 300                            | 10,000                          |
+| **Tier 2** | 20,000                         | 400                            | 20,000                          |
+| **Tier 3** | 40,000                         | 500                            | 40,000                          |
+| **Tier 4** | 50,000                         | 600                            | 50,000                          |
+| **Custom** | Custom limits                  | Custom limits                  | Custom limits                   |
+
+The general rate limit for authenticated API requests that don't fall under sandbox creation or lifecycle operations includes:
+
+- **Listing sandboxes**
+- **Getting sandbox details**
+- **Retrieving sandbox regions**
+- **Listing snapshots**
+- **Managing volumes**
+- **Viewing audit logs**
+- and other read/management operations
+
+When you exceed a rate limit, subsequent requests will fail with:
+
+- **HTTP Status**: `429 Too Many Requests`
+- **Error Response**: JSON body with rate limit details
+- **Retry-After Header**: Time to wait before retrying (in seconds)
+
+Understanding these limits helps you build robust applications that handle rate limiting gracefully and avoid service interruptions. For more information, see [best practices](#best-practices).
+
+### Rate limit headers
+
+Daytona includes rate limit information in API response headers. Header names include a suffix based on which rate limit is triggered (e.g., `-anonymous`, `-authenticated`, `-sandbox-create`, `-sandbox-lifecycle`):
+
+| Header Pattern                          | Description                                                               |
+| --------------------------------------- | ------------------------------------------------------------------------- |
+| **`X-RateLimit-Limit-{throttler}`**     | Maximum number of requests allowed in the time window                     |
+| **`X-RateLimit-Remaining-{throttler}`** | Number of requests remaining in the current window                        |
+| **`X-RateLimit-Reset-{throttler}`**     | Time in seconds until the rate limit window resets                        |
+| **`Retry-After-{throttler}`**           | Time in seconds to wait before retrying (included when limit is exceeded) |
+
+
+### Sandbox creation
+
+This rate limit applies to all sandbox creation methods, including [creation from snapshots](https://www.daytona.io/docs/snapshots.md#create-snapshots), [declarative builds](https://www.daytona.io/docs/declarative-builder.md) and any other parameters passed to `daytona.create()` ([SDK](https://www.daytona.io/docs/getting-started.md#sdks)) or POST requests to `/api/sandbox` ([API](https://www.daytona.io/docs/getting-started.md#api)).
+
+This independent limit prevents resource exhaustion while allowing you to perform lifecycle operations on existing sandboxes without restriction.
+
+:::note
+To create sandboxes at a higher rate for your use case, contact [support@daytona.io](mailto:support@daytona.io).
+:::
+
+### Sandbox lifecycle operations
+
+This rate limit applies to lifecycle and state management operations on existing sandboxes:
+
+- [**Starting** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamestart) (`POST /api/sandbox/:id/start`)
+- [**Stopping** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamestop) (`POST /api/sandbox/:id/stop`)
+- [**Deleting** sandboxes](https://www.daytona.io/docs/tools/api.md#delete-sandboxsandboxidorname) (`DELETE /api/sandbox/:id`)
+- [**Archiving** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamearchive) (`POST /api/sandbox/:id/archive`)
+- and all corresponding SDK methods
+
+These operations have a higher limit since they're often performed more frequently during development workflows.
+
+### Rate limit errors
+
+Daytona [Python](https://www.daytona.io/docs/python-sdk.md) or [TypeScript](https://www.daytona.io/docs/en/typescript-sdk.md) SDKs raise or throw a `DaytonaRateLimitError` exception (Python) or error (TypeScript) when you exceed a rate limit.
+
+All errors include [**`headers`**](#rate-limit-headers) and [**`statusCode`**](#example-rate-limit-error-response) properties, allowing access to rate limit headers directly from the error object. Headers support case-insensitive access:
+
+    ```typescript
+    try {
+      await daytona.create()
+    } catch (error) {
+      if (error instanceof DaytonaRateLimitError) {
+        console.log(error.headers?.get('x-ratelimit-remaining-sandbox-create'))
+        console.log(error.headers?.get('X-RateLimit-Remaining-Sandbox-Create')) // also works
+      }
+    }
+    ```
+    ```python
+    try:
+      daytona.create(snapshot="my-snapshot")
+    except DaytonaRateLimitError as e:
+      print(e.headers['x-ratelimit-remaining-sandbox-create'])
+      print(e.headers['X-RateLimit-Remaining-Sandbox-Create'])  # also works
+    ```
+    ```ruby
+    begin
+      daytona.create
+    rescue Daytona::Sdk::Error => e
+      puts "Error: #{e.message}"
+    end
+    ```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/common/errors.md) and [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/errors.md) references.
+
+> [**DaytonaRateLimitError (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/common/errors.md#daytonaratelimiteerror)
+>
+> [**DaytonaRateLimitError (TypeScript SDK)**](https://www.daytona.io/docs/python-sdk/common/errors.md#daytonaratelimiterror)
+>
+> [**DaytonaRateLimitError (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/errors.md#daytonaratelimiteerror)
+
+### Rate limit error response
+
+The rate limit error response is a JSON object with the following properties:
+
+- **`statusCode`**: The HTTP status code of the error
+- **`message`**: The error message
+- **`error`**: The error type
+
+```json
+{
+  "statusCode": 429,
+  "message": "Rate limit exceeded",
+  "error": "Too Many Requests"
+}
+```
+
+## Tier upgrade
+
+Unlock more resources and higher rate limits by completing verification steps. For more information, see the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/limits).
+
+:::note
+For access to custom tier requirements or resources in other regions, please contact [sales@daytona.io](mailto:sales@daytona.io).
+:::
+
+## Best practices
+
+To work effectively within rate limits, always handle `429` errors gracefully with proper retry logic. When you receive a rate limit error, implement exponential backoff—wait progressively longer between retries (1s, 2s, 4s, 8s, etc.) to avoid overwhelming the API.
+
+The following snippet demonstrates how to create a sandbox with retry logic using the TypeScript SDK:
+
+```typescript
+async function createSandboxWithRetry() {
+  let retries = 0
+  const maxRetries = 5
+
+  while (retries < maxRetries) {
+    try {
+      return await daytona.create({ snapshot: 'my-snapshot' })
+    } catch (error) {
+      if (error instanceof DaytonaRateLimitError && retries < maxRetries - 1) {
+        // Use Retry-After header if available, otherwise exponential backoff
+        const retryAfter = error.headers?.get('retry-after-sandbox-create')
+        const delay = retryAfter
+          ? parseInt(retryAfter) * 1000
+          : Math.pow(2, retries) * 1000
+        await new Promise(resolve => setTimeout(resolve, delay))
+        retries++
+      } else {
+        throw error
+      }
+    }
+  }
+}
+```
+
+**Monitor [rate limit headers](#rate-limit-headers)** (e.g., `X-RateLimit-Remaining-{throttler}`, `X-RateLimit-Reset-{throttler}`) to track your consumption and implement proactive throttling before hitting limits. These headers are available on all error objects via the `headers` property.
+
+**Cache API responses** that don't frequently change, such as [sandbox lists](https://www.daytona.io/docs/sandboxes.md#list-sandboxes) (when relatively static), [available regions](https://www.daytona.io/docs/regions.md), and [snapshot information](https://www.daytona.io/docs/snapshots.md). This reduces unnecessary API calls and helps you stay well within your limits.
+
+**Batch and optimize operations** by creating multiple sandboxes in parallel (within rate limits) rather than sequentially. Consider reusing existing sandboxes when possible instead of creating new ones for every task.
+
+**Efficiently manage sandbox lifecycle** to reduce API calls. [Archive sandboxes](https://www.daytona.io/docs/sandboxes.md#archive-sandboxes) instead of deleting and recreating them, stop sandboxes when not in use rather than deleting them, and leverage [auto-stop intervals](https://www.daytona.io/docs/sandboxes.md#auto-stop-interval) to automatically manage running sandboxes without manual intervention.
+
+**Implement request queuing** to prevent bursts that exceed limits, and use [webhooks](https://www.daytona.io/docs/webhooks.md) instead of polling for state changes to avoid unnecessary API calls. Set up monitoring and alerts for `429` errors in your application logs so you can proactively address rate limiting issues before they impact your users.

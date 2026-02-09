@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/deployment/digital-ocean.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy a Bun application on DigitalOcean
 
 [DigitalOcean](https://www.digitalocean.com/) is a cloud platform that provides a range of services for building and deploying applications.

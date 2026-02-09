@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/libraries/rust.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rust
 
 > Rust library for the Agent Client Protocol
@@ -35,8 +39,3 @@ You can read the full documentation for the `agent-client-protocol` crate on
 
 The `agent-client-protocol` crate powers the integration with external agents in
 the [Zed](https://zed.dev) editor.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

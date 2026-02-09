@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/agno.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agno
 
 [Agno](https://www.agno.com/) is a Python agent framework for building AI applications. Braintrust automatically traces Agno agents, capturing agent interactions, tool calls, and model responses (supports Agno v2 and higher).
@@ -56,8 +60,3 @@ print(response.content)
 ## Resources
 
 * [Agno documentation](https://www.agno.com/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

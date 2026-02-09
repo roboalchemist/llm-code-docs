@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content/upload-files.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/upload-files.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content/upload-files.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content/upload-files.md
-
 # Upload files
 
 You can upload various file types here to simplify data ingestion, making it easy to add your documents and seamlessly integrate important information into your system.

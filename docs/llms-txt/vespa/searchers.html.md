@@ -426,6 +426,8 @@ Any searchers should assume they are operating in a multiphase setup, meaning:
 - Federating searchers should implement both the regular `search` method and the `fill` method. The fill method must request filling down the source branches which has remaining hits in the result.
 - Backend searchers, which wish to support multiphase searching, should initially deliver unfilled hits and implement a `fill` method which fills the hits in the given result belonging to that backend with information from the backend.
 
+ **Note:**[vespa-match-features](https://vinted.engineering/2025/11/06/vespa-match-features/)is a good article on multiphase searching, result fill and match-features.
+
 ## Error handling
 
 If your searcher encounters a problem and wants to signal an error, set an error hit in the result object by calling `result.hits().addError(errorMsg)`.
@@ -448,7 +450,7 @@ It is not generally possible to prevent this from ever happening, but searchers 
 
 In a Searcher, one often will use [WordItem](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/prelude/query/WordItem.html) to modify the current query, or create a new query based on input query terms, or results from the current query. To keep linguistic settings (e.g. stemming) from the parent query, set `isFromQuery` to true - [example](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/src/main/java/ai/vespa/cloud/docsearch/DocumentationSearcher.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

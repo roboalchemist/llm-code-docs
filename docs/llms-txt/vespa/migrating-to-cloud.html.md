@@ -19,7 +19,15 @@ $ export VESPA_TENANT_NAME=mytenant
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -232,7 +240,7 @@ This is the final step in the functional validation. Please note:
 - Feed (a subset) of the data and validate that queries and other API accesses work as expected.
 - At the end of the validation process, continue to [production deployment](../operations/production-deployment.html) to set up in production zones.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

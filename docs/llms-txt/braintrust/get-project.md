@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/projects/get-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get project
 
 > Get a project object by its id
@@ -121,6 +125,10 @@ components:
         name:
           type: string
           description: Name of the project
+        description:
+          type: string
+          nullable: true
+          description: Textual description of the project
         created:
           type: string
           nullable: true
@@ -210,6 +218,58 @@ components:
           description: >-
             If true, disable real-time queries for this project. This can
             improve query performance for high-volume logs.
+        default_preprocessor:
+          $ref: '#/components/schemas/NullableSavedFunctionId'
+    NullableSavedFunctionId:
+      anyOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - function
+            id:
+              type: string
+            version:
+              type: string
+              description: The version of the function
+          required:
+            - type
+            - id
+          title: function
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - global
+            name:
+              type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
+          required:
+            - type
+            - name
+          title: global
+        - type: 'null'
+      description: >-
+        Default preprocessor for this project. When set, functions that use
+        preprocessors will use this instead of their built-in default.
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
   securitySchemes:
     bearerAuth:
       type: http
@@ -222,7 +282,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

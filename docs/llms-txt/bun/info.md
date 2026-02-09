@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/info.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun info
 
 > Display package metadata from the npm registry

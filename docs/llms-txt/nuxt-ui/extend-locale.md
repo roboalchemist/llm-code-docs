@@ -35,11 +35,9 @@ This is useful when you want to:
 - Override specific translations without redefining the entire locale
 - Customize component labels for your application
 
-<tip to="/docs/getting-started/integrations/i18n">
-
-Learn more about internationalization in the **i18n integration** documentation.
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/integrations/i18n
+> Learn more about internationalization in the i18n integration documentation.
 
 ## API
 
@@ -49,52 +47,17 @@ Extends an existing locale with the provided options, deeply merging the message
 
 #### Parameters
 
-<field-group>
-<field name="locale" type="Locale<M>" :required="true" required="true">
-
-The base locale to extend. Import from `@nuxt/ui/locale`.
-
-</field>
-
-<field name="options" type="Partial<DefineLocaleOptions<DeepPartial<M>>>" :required="true" required="true">
+The base locale to extend. Import from .
 
 The properties to override:
 
-<collapsible>
-<field-group>
-<field name="name" type="string">
-
 Override the display name of the locale.
 
-</field>
-
-<field name="code" type="string">
-
-Override the ISO code of the locale (e.g., `'en-GB'`, `'fr-CA'`).
-
-</field>
-</field-group>
-</collapsible>
-</field>
-
-<field name="dir" type="'ltr' | 'rtl'">
+Override the ISO code of the locale (e.g., , ).
 
 Override the text direction of the locale.
 
-</field>
-
-<field name="messages" type="DeepPartial<M>">
-
 Partial messages object to merge with the base locale. Only specify the messages you want to override.
-
-</field>
-
-::
-
-</field-group>
-
-::
-::
 
 **Returns:** A new `Locale<M>` object with the merged properties.
 
@@ -131,8 +94,5 @@ const locale = extendLocale(en, {
 </template>
 ```
 
-<note>
-
-The `extendLocale` utility uses deep merging, so you only need to specify the messages you want to override. All other messages will be inherited from the base locale.
-
-</note>
+> [!NOTE]
+> The `extendLocale` utility uses deep merging, so you only need to specify the messages you want to override. All other messages will be inherited from the base locale.

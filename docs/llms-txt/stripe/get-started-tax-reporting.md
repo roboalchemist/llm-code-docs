@@ -8,7 +8,7 @@ Stripe provides [capabilities](https://docs.stripe.com/connect/account-capabilit
 
 Log in to your Stripe account and use the [Tax reporting](https://dashboard.stripe.com/connect/taxes/forms) view in the Dashboard to create, modify, file, and deliver 1099 tax forms for your connected accounts. If you use a [team](https://docs.stripe.com/get-started/account/teams.md), only team members with the Tax Analyst or Administrator [user role](https://docs.stripe.com/get-started/account/teams/roles.md) can access all tax-related features.
 
-## Tax season 2025 checklist
+## Tax season 2025 checklist 
 
 Follow this guide to help you prepare for tax season.
 
@@ -36,9 +36,9 @@ Follow this guide to help you prepare for tax season.
 
 ## Prepare for Stripe outreach to your connected accounts [October 30th]
 
-- Publish a [support article](https://docs.stripe.com/connect/platform-express-dashboard-taxes-faqs.md) explaining the tax timeline and your partnership with Stripe for taxes. View the [example article](https://docs.stripe.com/connect/platform-express-dashboard-taxes-faqs.md).
+- Publish a support article explaining the tax timeline and your partnership with Stripe for taxes. View the [example article](https://docs.stripe.com/connect/platform-express-dashboard-taxes-faqs.md).
 - Required for e-delivery:
-  - Use the *Missing Email Address* filter in your 1099 dashboard or [export tax forms](https://docs.stripe.com/connect/modify-tax-forms.md?method=csv) as a CSV to identify missing email addresses, since Column B will be blank if the email is missing. [Update email addresses](https://docs.stripe.com/api/accounts/update.md#update_account-email) with the Accounts API so we can email your connected accounts.
+  - Identify missing email addresses using the *Missing Email Address* filter in your 1099 dashboard or by [exporting tax forms](https://docs.stripe.com/connect/modify-tax-forms.md?method=csv) as a CSV and looking for blank entries in Column B. Add missing email addresses using the Accounts API.
   - Make sure that your [Connect branding settings](https://dashboard.stripe.com/settings/connect/stripe-dashboard/branding) and your [support email address](https://dashboard.stripe.com/settings/public) are up to date.
   - Prepare your support teams for tax season 2025. View the [example FAQs](https://docs.stripe.com/connect/platform-express-dashboard-taxes-faqs.md) your support team might receive from your connected accounts.
 - Recommended for e-delivery:

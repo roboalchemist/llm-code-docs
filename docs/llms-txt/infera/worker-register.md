@@ -1,83 +1,72 @@
 # Source: https://docs.infera.org/api-reference/endpoint/worker-register.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Worker Register
+
+
 
 ## OpenAPI
 
 ````yaml post /worker/register_node
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.infera.org/
+    description: Infera production servers
+security: []
 paths:
-  path: /worker/register_node
-  method: post
-  servers:
-    - url: https://api.infera.org/
-      description: Infera production servers
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node_url:
-                allOf:
-                  - type: string
-                    title: Node Url
-              node_version:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Node Version
-            required: true
-            title: NodeRegistration
-            refIdentifier: '#/components/schemas/NodeRegistration'
-            requiredProperties:
-              - node_url
-        examples:
-          example:
-            value:
-              node_url: <string>
-              node_version: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /worker/register_node:
+    post:
+      summary: Worker Register
+      operationId: worker_register_worker_register_node_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeRegistration'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    NodeRegistration:
+      properties:
+        node_url:
+          type: string
+          title: Node Url
+        node_version:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Node Version
+      type: object
+      required:
+        - node_url
+      title: NodeRegistration
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:

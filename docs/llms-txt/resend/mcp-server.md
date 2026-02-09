@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/mcp-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP Server
 
 > Learn how to use the MCP Server to send emails.
@@ -36,7 +40,7 @@ Build the project locally to use this MCP server to use it in a [supported MCP c
 
 <Steps>
   <Step title="Clone this project locally.">
-    ```bash  theme={null}
+    ```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
     git clone https://github.com/resend/mcp-send-email.git
     ```
   </Step>
@@ -68,7 +72,7 @@ With the MCP server built, you can now add it to a supported MCP client.
   <Step title="Add the MCP server">
     Select **MCP** from the left sidebar and click **Add new global MCP server** and add the following config:
 
-    ```json  theme={null}
+    ```json  theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
       "mcpServers": {
         "resend": {
@@ -116,7 +120,7 @@ With the MCP server built, you can now add it to a supported MCP client.
   <Step title="Add the MCP server">
     Add the following config:
 
-    ```json  theme={null}
+    ```json  theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
       "mcpServers": {
         "resend": {

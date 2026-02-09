@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/statusline.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Status line configuration
 
 > Create a custom status line for Claude Code to display contextual information
@@ -64,7 +68,15 @@ Your status line command receives structured data via stdin in JSON format:
   "context_window": {
     "total_input_tokens": 15234,
     "total_output_tokens": 4521,
-    "context_window_size": 200000
+    "context_window_size": 200000,
+    "used_percentage": 42.5,
+    "remaining_percentage": 57.5,
+    "current_usage": {
+      "input_tokens": 8500,
+      "output_tokens": 1200,
+      "cache_creation_input_tokens": 5000,
+      "cache_read_input_tokens": 2000
+    }
   }
 }
 ```
@@ -200,21 +212,49 @@ echo "[$MODEL] 📁 ${DIR##*/}"
 
 ### Context Window Usage
 
-Display the percentage of context window consumed:
+Display the percentage of context window consumed. The `context_window` object contains:
+
+* `total_input_tokens` / `total_output_tokens`: Cumulative totals across the entire session
+* `used_percentage`: Pre-calculated percentage of context window used (0-100)
+* `remaining_percentage`: Pre-calculated percentage of context window remaining (0-100)
+* `current_usage`: Current context window usage from the last API call (may be `null` if no messages yet)
+  * `input_tokens`: Input tokens in current context
+  * `output_tokens`: Output tokens generated
+  * `cache_creation_input_tokens`: Tokens written to cache
+  * `cache_read_input_tokens`: Tokens read from cache
+
+You can use the pre-calculated `used_percentage` and `remaining_percentage` fields directly, or calculate from `current_usage` for more control.
+
+**Simple approach using pre-calculated percentages:**
 
 ```bash  theme={null}
 #!/bin/bash
 input=$(cat)
 
-INPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_input_tokens')
-OUTPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_output_tokens')
-CONTEXT_SIZE=$(echo "$input" | jq -r '.context_window.context_window_size')
 MODEL=$(echo "$input" | jq -r '.model.display_name')
-
-TOTAL_TOKENS=$((INPUT_TOKENS + OUTPUT_TOKENS))
-PERCENT_USED=$((TOTAL_TOKENS * 100 / CONTEXT_SIZE))
+PERCENT_USED=$(echo "$input" | jq -r '.context_window.used_percentage // 0')
 
 echo "[$MODEL] Context: ${PERCENT_USED}%"
+```
+
+**Advanced approach with manual calculation:**
+
+```bash  theme={null}
+#!/bin/bash
+input=$(cat)
+
+MODEL=$(echo "$input" | jq -r '.model.display_name')
+CONTEXT_SIZE=$(echo "$input" | jq -r '.context_window.context_window_size')
+USAGE=$(echo "$input" | jq '.context_window.current_usage')
+
+if [ "$USAGE" != "null" ]; then
+    # Calculate current context from current_usage fields
+    CURRENT_TOKENS=$(echo "$USAGE" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
+    PERCENT_USED=$((CURRENT_TOKENS * 100 / CONTEXT_SIZE))
+    echo "[$MODEL] Context: ${PERCENT_USED}%"
+else
+    echo "[$MODEL] Context: 0%"
+fi
 ```
 
 ## Tips
@@ -229,8 +269,3 @@ echo "[$MODEL] Context: ${PERCENT_USED}%"
 
 * If your status line doesn't appear, check that your script is executable (`chmod +x`)
 * Ensure your script outputs to stdout (not stderr)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

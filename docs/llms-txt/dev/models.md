@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Choose a model
 
 > Choose the right Palmyra model for your needs. Compare capabilities, context windows, and pricing for X5, Fin, Med, Creative, and Vision models.

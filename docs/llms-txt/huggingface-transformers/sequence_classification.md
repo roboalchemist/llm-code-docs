@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/sequence_classification.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/sequence_classification.md
 
 # Text classification
 
@@ -67,13 +67,13 @@ Create a preprocessing function to tokenize `text` and truncate sequences to be 
 ...     return tokenizer(examples["text"], truncation=True)
 ```
 
-To apply the preprocessing function over the entire dataset, use 🤗 Datasets [map](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.map) function. You can speed up `map` by setting `batched=True` to process multiple elements of the dataset at once:
+To apply the preprocessing function over the entire dataset, use 🤗 Datasets [map](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.map) function. You can speed up `map` by setting `batched=True` to process multiple elements of the dataset at once:
 
 ```py
 tokenized_imdb = imdb.map(preprocess_function, batched=True)
 ```
 
-Now create a batch of examples using [DataCollatorWithPadding](/docs/transformers/v5.0.0rc1/en/main_classes/data_collator#transformers.DataCollatorWithPadding). It's more efficient to *dynamically pad* the sentences to the longest length in a batch during collation, instead of padding the whole dataset to the maximum length.
+Now create a batch of examples using [DataCollatorWithPadding](/docs/transformers/v5.0.0/en/main_classes/data_collator#transformers.DataCollatorWithPadding). It's more efficient to *dynamically pad* the sentences to the longest length in a batch during collation, instead of padding the whole dataset to the maximum length.
 
 ```py
 >>> from transformers import DataCollatorWithPadding
@@ -113,9 +113,9 @@ Before you start training your model, create a map of the expected ids to their 
 >>> label2id = {"NEGATIVE": 0, "POSITIVE": 1}
 ```
 
-If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#train-with-pytorch-trainer)!
+If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#train-with-pytorch-trainer)!
 
-You're ready to start training your model now! Load DistilBERT with [AutoModelForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModelForSequenceClassification) along with the number of expected labels, and the label mappings:
+You're ready to start training your model now! Load DistilBERT with [AutoModelForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModelForSequenceClassification) along with the number of expected labels, and the label mappings:
 
 ```py
 >>> from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
@@ -127,9 +127,9 @@ You're ready to start training your model now! Load DistilBERT with [AutoModelFo
 
 At this point, only three steps remain:
 
-1. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.TrainingArguments). The only required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) will evaluate the accuracy and save the training checkpoint.
-2. Pass the training arguments to [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
-3. Call [train()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
+1. Define your training hyperparameters in [TrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.TrainingArguments). The only required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) will evaluate the accuracy and save the training checkpoint.
+2. Pass the training arguments to [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
+3. Call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
 
 ```py
 >>> training_args = TrainingArguments(
@@ -158,9 +158,9 @@ At this point, only three steps remain:
 >>> trainer.train()
 ```
 
-[Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) applies dynamic padding by default when you pass `tokenizer` to it. In this case, you don't need to specify a data collator explicitly.
+[Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) applies dynamic padding by default when you pass `tokenizer` to it. In this case, you don't need to specify a data collator explicitly.
 
-Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
+Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
 
 ```py
 >>> trainer.push_to_hub()
@@ -179,7 +179,7 @@ Grab some text you'd like to run inference on:
 >>> text = "This was a masterpiece. Not completely faithful to the books, but enthralling from beginning to end. Might be my favorite of the three."
 ```
 
-The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for sentiment analysis with your model, and pass your text to it:
+The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for sentiment analysis with your model, and pass your text to it:
 
 ```py
 >>> from transformers import pipeline

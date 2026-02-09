@@ -2,23 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Analytics API
 
-> Enterprise analytics API for querying Windsurf usage data
+> Enterprise analytics API for querying Windsurf usage data including autocomplete, chat, command, and Cascade metrics.
 
 ## Overview
 
@@ -41,6 +31,6 @@ Most Analytics API endpoints support these common parameters:
 
 The Analytics API provides three main endpoints:
 
-1. **[User Page Analytics](/windsurf/accounts/api-reference/user-page-analytics)** - Get user activity data from the teams page
-2. **[Cascade Analytics](/windsurf/accounts/api-reference/cascade-analytics)** - Query Cascade-specific usage metrics
-3. **[Custom Analytics](/windsurf/accounts/api-reference/custom-analytics)** - Flexible querying with custom selections, filters, and aggregations
+1. **[User Page Analytics](/plugins/accounts/api-reference/user-page-analytics)** - Get user activity data from the teams page
+2. **[Cascade Analytics](/plugins/accounts/api-reference/cascade-analytics)** - Query Cascade-specific usage metrics
+3. **[Custom Analytics](/plugins/accounts/api-reference/custom-analytics)** - Flexible querying with custom selections, filters, and aggregations

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoice-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoice metadata
 
 ## Add metadata on invoice

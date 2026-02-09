@@ -1,3 +1,9 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/change-requests/change-requests-in-a-space.md
+
+# Source: https://gitbook.com/docs/documentation/zh/collaboration/change-requests/change-requests-in-a-space.md
+
+# Source: https://gitbook.com/docs/documentation/fr/collaboration/change-requests/change-requests-in-a-space.md
+
 # Source: https://gitbook.com/docs/collaboration/change-requests/change-requests-in-a-space.md
 
 # Change requests in a space
@@ -36,7 +42,7 @@ Head to [Writing with GitBook Agent](https://gitbook.com/docs/gitbook-agent/writ
 
 You can preview the changes you’ve made in a change request by clicking the **Preview** option in the [space header](https://gitbook.com/docs/resources/gitbook-ui#space-header). This will switch to a preview of your published docs with the proposed changes included, so you can see your changes in the entire context of your published documentation.
 
-Below the **Preview** button is a URL for your site preview. Click this and your site preview will open in full in a new tab.&#x20;
+Below the **Preview** button is a URL for your site preview. Click this and your site preview will open in full in a new tab.
 
 When you open a preview URL in a new tab, you will also see [the Preview toolbar](https://gitbook.com/docs/resources/gitbook-ui/toolbar-on-published-sites-and-site-previews) at the bottom of the browser window. This toolbar lets you quickly jump back into GitBook to view, edit, or comment on the change request, or open the live version of your site.
 
@@ -52,7 +58,7 @@ If your content is published using share links or authenticated access, the prev
 
 Request a review on your change request when you want to ask members of your team to check your content before you merge the changes into the main branch.
 
-Select the **Overview** tab in the space header bar to open an overview of your change request — including all the changes you’ve made in diff view.
+Select the **Overview** tab in the space header bar to open an overview of your change request — including all the changes you’ve made in diff view.
 
 Here you can add a description to your change request to give your reviewers some context, and tag specific people that you want to check your work.
 
@@ -61,7 +67,7 @@ When you click **Request a review**, the change request’s status will change t
 If your changes don’t require a review, you have the appropriate [permissions](https://gitbook.com/docs/account-management/member-management/roles), and you don’t have any blocking [merge rules](https://gitbook.com/docs/collaboration/merge-rules), you can merge your changes into the main version directly instead.
 
 {% hint style="info" %}
-[Add GitBook Agent as a reviewer](https://gitbook.com/docs/gitbook-agent/review-change-requests-with-gitbook-agent) to your change request and it can check your content for spelling, grammar and style guide errors, suggest improvements and more.&#x20;
+[Add GitBook Agent as a reviewer](https://gitbook.com/docs/gitbook-agent/review-change-requests-with-gitbook-agent) to your change request and it can check your content for spelling, grammar and style guide errors, suggest improvements and more.
 {% endhint %}
 
 {% hint style="warning" %}

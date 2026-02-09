@@ -11,7 +11,7 @@ JetPack
 
 NVIDIA JetPack™ is the official software stack for the NVIDIA Jetson™ platform, giving you a comprehensive suite of tools and libraries for building AI-powered edge applications. JetPack 7, the latest evolution in the series, is the most advanced software stack yet, purpose-built to enable cutting-edge robotics and generative AI at the edge. With full support for NVIDIA Jetson platforms, JetPack 7 provides ultra-low latency, deterministic performance, and scalable deployment for machines that interact with the physical world.
 
-[JetPack Downloads and Notes](/embedded/jetpack/downloads &quot;vMaterials for Windows&quot;)[Jetson Linux Developer Guide](https://docs.nvidia.com/jetson/archives/r38.2/DeveloperGuide/ &quot;vMaterials for Linux &quot;)[Developer Forum](https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/jetson-thor/740 &quot;vMaterials for Linux &quot;)
+[JetPack Downloads and Notes](/embedded/jetpack/downloads &quot;vMaterials for Windows&quot;)[Jetson Linux Developer Guide](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/ &quot;vMaterials for Linux &quot;)[Developer Forum](https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/jetson-thor/740 &quot;vMaterials for Linux &quot;)
 
 * * *
 
@@ -86,31 +86,31 @@ NVIDIA Triton Inference Server™ enables seamless AI deployment across cloud an
 
 Jetson devices can be flashed with Jetson Linux through multiple methods, from command-line tools to automated scripts, with NVIDIA SDK Manager offering the most user-friendly option.
 
-[Explore Flashing](https://docs.nvidia.com/jetson/archives/r38.2/DeveloperGuide/SD/FlashingSupportJetsonThor.html)
+[Explore Flashing](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/SD/FlashingSupportJetsonThor.html)
 
 #### Security
 
 Jetson Linux delivers a comprehensive suite of security features spanning edge to cloud, including secure boot, disk encryption, runtime integrity, fTPM, and secure OTA updates.
 
-[Explore Security](https://docs.nvidia.com/jetson/archives/r38.2/DeveloperGuide/SD/Security.html)
+[Explore Security](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/SD/Security.html)
 
 #### OTA
 
 OTA (Over-the-Air) updates on Jetson enable seamless, remote delivery of software and security upgrades, keeping devices up-to-date without manual intervention.
 
-[Explore JetPack Flashing](https://docs.nvidia.com/jetson/archives/r38.2/DeveloperGuide/SD/SoftwarePackagesAndTheUpdateMechanism.html#over-the-air-update)
+[Explore JetPack Flashing](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/SD/SoftwarePackagesAndTheUpdateMechanism.html#over-the-air-update)
 
 #### Graphics Libraries
 
 Jetson supports various graphics APIs, including OpenGL, Vulkan, and EGL, enabling GPU-accelerated rendering and compute for advanced 3D graphics and UI rendering.
 
-[Explore Graphics APIs](https://docs.nvidia.com/jetson/archives/r38.2/ApiReference/index.html)
+[Explore Graphics APIs](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/SD/Graphics.html)
 
 #### Multimedia APIs
 
 Jetson Linux Multimedia APIs provide low-level access to camera and video processing hardware. This lets you create high-performance applications with fine-grained control over multimedia pipelines.
 
-[Explore Multimedia APIs](https://docs.nvidia.com/jetson/archives/r38.2/ApiReference/index.html)
+[Explore Multimedia APIs](https://docs.nvidia.com/jetson/archives/r38.4/DeveloperGuide/SD/Multimedia.html)
 
 #### Computer Vision Libraries
 

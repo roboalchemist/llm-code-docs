@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/features/embeddingmodels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedding Models
 
 To store text in a vector database, it must first be converted into a vector,
@@ -27,16 +31,12 @@ as classification, clustering, or retrieval.
 
 You can choose the following general purpose models for dense and hybrid indexes:
 
-| Name                                                                                                    | Dimension | Sequence Length | MTEB  |
-| ------------------------------------------------------------------------------------------------------- | --------- | --------------- | ----- |
-| [mixedbread-ai/mxbai-embed-large-v1](https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1)         | 1024      | 512             | 64.68 |
-| [WhereIsAI/UAE-Large-V1](https://huggingface.co/WhereIsAI/UAE-Large-V1)                                 | 1024      | 512             | 64.64 |
-| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                                 | 1024      | 512             | 64.23 |
-| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                                   | 768       | 512             | 63.55 |
-| [BAAI/bge-small-en-v1.5](https://huggingface.co/BAAI/bge-small-en-v1.5)                                 | 384       | 512             | 62.17 |
-| [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | 384       | 256             | 56.26 |
-| [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3)                                                       | 1024      | 8192            | \*    |
-| [google-bert/bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased)                   | 768       | 512             | 38.33 |
+| Name                                                                    | Dimension | Sequence Length | MTEB  |
+| ----------------------------------------------------------------------- | --------- | --------------- | ----- |
+| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) | 1024      | 512             | 64.23 |
+| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)   | 768       | 512             | 63.55 |
+| [BAAI/bge-small-en-v1.5](https://huggingface.co/BAAI/bge-small-en-v1.5) | 384       | 512             | 62.17 |
+| [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3)                       | 1024      | 8192            | \*    |
 
 <Note>
   The sequence length is not a hard limit. Models truncate the input

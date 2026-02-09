@@ -12,14 +12,14 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#charged_event_counts)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L393)charged\_event\_counts
+### [**](#charged_event_counts)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L392)charged\_event\_counts
 
 **charged\_event\_counts: dict\[str, int]
 
-### [**](#max_total_charge_usd)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L394)max\_total\_charge\_usd
+### [**](#max_total_charge_usd)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L393)max\_total\_charge\_usd
 
 **max\_total\_charge\_usd: Decimal
 
-### [**](#pricing_info)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L386)pricing\_info
+### [**](#pricing_info)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L385)pricing\_info
 
 **pricing\_info: ((([FreeActorPricingInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/FreeActorPricingInfo.md) | [FlatPricePerMonthActorPricingInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/FlatPricePerMonthActorPricingInfo.md)) | [PricePerDatasetItemActorPricingInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/PricePerDatasetItemActorPricingInfo.md)) | [PayPerEventActorPricingInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/PayPerEventActorPricingInfo.md)) | None

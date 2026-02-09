@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/code-block.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/code-block.md
-
-# Source: https://gitbook.com/docs/creating-content/blocks/code-block.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/blocks/code-block.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/code-block.md
 

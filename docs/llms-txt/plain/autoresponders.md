@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/threads/autoresponders.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Plain provides native [workspace level auto-responses](https://plain.support.site/article/auto-responses), however for more complex cases you may want to implement your own custom autoresponder.

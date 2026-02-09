@@ -2,221 +2,105 @@
 
 # Source: https://docs.stripe.com/payments/wallets.md
 
-# Source: https://docs.stripe.com/testing/wallets.md
+# Wallets
 
-# Source: https://docs.stripe.com/payments/wallets.md
+Learn about wallet payments with Stripe.
 
-# Source: https://docs.stripe.com/testing/wallets.md
+Wallets let your customers pay online or in person, using either of the following:
 
-# Source: https://docs.stripe.com/payments/wallets.md
+- A saved payment credential (a tokenized card or bank account stored in the wallet).
+- A stored wallet balance (funds held in an account with the wallet provider).
 
-# Source: https://docs.stripe.com/testing/wallets.md
+At checkout, the wallet typically authenticates your customer and passes payment details or a payment token to you or your payment processor. You don’t have to directly handle your customer’s sensitive data.
 
-# Source: https://docs.stripe.com/payments/wallets.md
+## Considerations 
 
-# Source: https://docs.stripe.com/testing/wallets.md
+Consider the following before you enable a wallet:
 
-# Test Apple and Google wallet rendering
+- **Coverage varies by country and device:** Some wallets are tied to specific platforms or operating systems, or are only popular in certain regions.
 
-Compare your integration against working demo integrations to identify possible rendering issues.
+- **Checkout and post-purchase flows can differ:** The timing and behavior of refunds, disputes, and chargebacks can be different from those of card payments. Also, wallets often don’t offer the same level of customer support as cards.
 
-The following demo shows different Stripe payment integrations with Apple Pay and Google Pay set up. Use the demo to visually compare how these wallets display in the demo integrations and your own integration.
+- **In person versus online:** Some wallets are primarily used for online payments, while others are primarily used for in-person payments (through NFC or QR codes). Make sure you enable the right type for your use case.
 
-- If the Apple Pay and Google Pay payment options appear as expected and in both the demo and your integration, they’re configured correctly.
-- If you have a valid wallet, but you don’t see it as a payment method option in the demo, [adjust your device and browser setup](https://docs.stripe.com/testing/wallets.md#device-requirements) until Apple Pay and Google Pay appear as expected.
-- If you see your wallet displayed in the demos but not in your own integration, [check your integration](https://docs.stripe.com/testing/wallets.md#integration-requirements).
+Wallets might not fit your business if you sell *subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis). Some wallets don’t support recurring payments, and others have limited support (for example, requiring customer re-authentication, limiting merchant-initiated charges, or restricting retries). If subscriptions are core to your business, confirm that the wallet supports:
 
-# Payment Element
+- Token or billing agreement creation for future charges.
+- Merchant-initiated recurring transactions (where applicable).
+- Updating and continuity when the underlying card changes.
+- Your required retry and dunning behavior.
 
-> This is a Payment Element for when ui is payment-element. View the full page at https://docs.stripe.com/testing/wallets?ui=payment-element.
+## Payment flow 
 
-For this integration path, Stripe.js detects and supports the following wallets based on the state of your device.
+Customers *confirm* (Confirming an intent indicates that the customer intends to use the current or provided payment method. Upon confirmation, the intent attempts to initiate the portions of the flow that have real-world side effects) the transaction by authenticating their wallet credentials at checkout. If using mobile, they can authenticate with fingerprint or face recognition, their mobile passcode, or by logging into their wallet app. On the web, they can also scan a QR code with their mobile phone to complete the transaction.
 
-## Check your device and browser setup 
+### Customer-facing mobile flow 
+![](https://b.stripecdn.com/docs-statics-srv/assets/mobile-select-wallet.ae8fc72d300f1439a3a7a71fb2bf5044.svg)
 
-If you can’t see your expected wallet in the demos, your device or browser might not meet the following Apple Pay or Google Pay conditions.
+Selects wallet at checkout
+![](https://b.stripecdn.com/docs-statics-srv/assets/mobile-authenticate.153e1ddb6c375274e7c82ee4bd2aeaf8.svg)
 
-- The wallet must have at least one card.
-- You must use a compatible [Apple Pay device](https://support.apple.com/en-us/102896) and [Google Pay device](https://developers.google.com/pay/issuers/overview/supported-devices#compatibility_requirements).
-- You must use a [supported version](https://docs.stripe.com/js/appendix/supported_browsers) of a [supported browser](https://docs.stripe.com/stripe-js/elements/payment-request-button.md?client=html#testing) for the wallet you’re testing.
-- Allow applicable browsers to access your wallet.
-  - Chrome: **Settings** > **Autofill and passwords** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Safari: **Settings** > **Advanced** > **Allow websites to check for Apple Pay and Apple card**
-- Don’t use a Chrome incognito window or Safari private window.
-- Confirm you’re operating from a supported [Apple Pay region](https://support.apple.com/en-us/102775) and [Google Pay region](https://support.google.com/wallet/answer/12060037?sjid=7404612469520417090-NA#zippy=%2Cuse-google-wallet-for-payments).
-- Stripe doesn’t display Apple Pay or Google Pay for IP addresses in India or for Stripe accounts based in India.
-- For Apple Pay, confirm your device supports [biometric authentication](https://support.apple.com/en-us/102626#:~:text=iPhone%20or%20.iPad,on%20all%20devices.).
+Enters wallet credentials
+![](https://b.stripecdn.com/docs-statics-srv/assets/mobile-success.162cdd6fd7119df7cb8f7329741e1e4d.svg)
 
-## Check your integration 
+Gets notification that payment is complete
 
-If you see the expected wallet payment methods in the demo payment forms, but they don’t display in your own integration, the following checkpoints might resolve the issue.
+### Customer-facing web flow
+![](https://b.stripecdn.com/docs-statics-srv/assets/checkout.4af16ecfd4f0a3f4044c56d6100c4a42.svg)
 
-### Register your domains
+Selects wallet at checkout
+![](https://b.stripecdn.com/docs-statics-srv/assets/mobile-redirect.043807104eb6fd382652e3ea987daf95.svg)
 
-Check your [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_method_domains) to confirm your domain registrations. You must [register every domain and sub-domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain) separately for each environment, including live mode and each *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes).
+Uses mobile to confirm payment
+![](https://b.stripecdn.com/docs-statics-srv/assets/success.1ee3b6d34d944693e654e84f6d1be9f3.svg)
 
-Connect users must also consider the funds flow configuration (direct or destination charge) for correct [domain registration](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain-while-using-connect).
+Gets notification that payment is complete
 
-### (Apple Pay) Register all domains when using iframes
+## Product support 
 
-To see Apple Pay in an integration using iframes you must:
+The following table shows which Stripe products support each wallet:
 
-1. Make sure the iframe and top-level site domains match if you support pre-Safari 17 browser versions.
-1. Set the `allow="payment"` attribute on the iframe.
-1. Register both the iframe domain and top-level domain of the site, if they’re different (supported by Safari 17 or later).
+| Payment method                                                                  | [Connect](https://docs.stripe.com/connect.md) | [Checkout](https://docs.stripe.com/payments/checkout.md) | [Payment Links](https://docs.stripe.com/payment-links.md) | [Payment Element](https://docs.stripe.com/payments/payment-element.md) | [Express Checkout Element](https://docs.stripe.com/elements/express-checkout-element.md) | [Mobile Payment Element](https://docs.stripe.com/payments/mobile.md) | [Subscriptions](https://docs.stripe.com/subscriptions.md) | [Invoicing](https://docs.stripe.com/invoicing.md) | [Customer Portal](https://docs.stripe.com/customer-management.md) | [Terminal](https://docs.stripe.com/terminal.md) |
+| ------------------------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------- |
+| [Alipay](https://docs.stripe.com/payments/alipay.md)                            | ✓ Supported                                   | ✓ Supported 1,2                                          | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | Invite only                                               | Invite only                                       | - Unsupported                                                     | N/A (online payments only)                      |
+| [Amazon Pay](https://docs.stripe.com/payments/amazon-pay.md)                    | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | ✓ Supported 3                                                                            | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | N/A (online payments only)                      |
+| [Apple Pay](https://docs.stripe.com/apple-pay.md)7                              | ✓ Supported                                   | ✓ Supported 5                                            | ✓ Supported                                               | ✓ Supported                                                            | ✓ Supported                                                                              | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | ✓ Supported                                     |
+| [Cash App Pay](https://docs.stripe.com/payments/cash-app-pay.md)                | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | N/A (online payments only)                      |
+| [Google Pay](https://docs.stripe.com/google-pay.md)7                            | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | ✓ Supported                                                                              | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | ✓ Supported                                     |
+| [GrabPay](https://docs.stripe.com/payments/grabpay.md)                          | ✓ Supported                                   | ✓ Supported 1,2                                          | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | ✓ Supported 4                                             | ✓ Supported                                       | - Unsupported                                                     | N/A (online payments only)                      |
+| [Link](https://docs.stripe.com/payments/wallets/link.md)                        | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported 6                                                          | ✓ Supported                                                                              | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | N/A (online payments only)                      |
+| [MB WAY](https://docs.stripe.com/payments/mb-way.md)                            | ✓ Supported                                   | ✓ Supported 1,2,3                                        | ✓ Supported                                               | ✓ Supported                                                            | ✓ Supported                                                                              | - Unsupported                                                        | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | N/A (online payments only)                      |
+| [MobilePay](https://docs.stripe.com/payments/mobilepay.md)                      | ✓ Supported                                   | ✓ Supported 1,2                                          | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | N/A (online payments only)                      |
+| [PayPal](https://docs.stripe.com/payments/paypal.md)                            | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | ✓ Supported 3                                                                            | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | N/A (online payments only)                      |
+| [PayPay](https://docs.stripe.com/payments/paypay.md)                            | ✓ Supported 8                                 | ✓ Supported 1,2,3                                        | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | N/A (online payments only)                      |
+| [Revolut Pay](https://docs.stripe.com/payments/revolut-pay.md)                  | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | ✓ Supported                                               | ✓ Supported                                       | ✓ Supported                                                       | N/A (online payments only)                      |
+| [Samsung Pay](https://docs.stripe.com/payments/samsung-pay/accept-a-payment.md) | - Unsupported                                 | - Unsupported                                            | - Unsupported                                             | - Unsupported                                                          | - Unsupported                                                                            | - Unsupported                                                        | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | ✓ Supported                                     |
+| [Satispay](https://docs.stripe.com/payments/satispay.md)                        | ✓ Supported                                   | ✓ Supported                                              | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | N/A (online payments only)                      |
+| [Vipps](https://docs.stripe.com/payments/vipps.md)                              | ✓ Supported                                   | ✓ Supported 1,2                                          | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | ✓ Supported                                                          | - Unsupported                                             | - Unsupported                                     | - Unsupported                                                     | N/A (online payments only)                      |
+| [WeChat Pay](https://docs.stripe.com/payments/wechat-pay.md)                    | ✓ Supported                                   | ✓ Supported 1,2                                          | ✓ Supported                                               | ✓ Supported                                                            | - Unsupported                                                                            | - Unsupported                                                        | ✓ Supported 4                                             | ✓ Supported 4                                     | - Unsupported                                                     | N/A (online payments only)                      |
 
-### Enable wallets for your integration
+1 Not supported when using Checkout in subscription mode.2 Not supported when using Checkout in setup mode.3 Not supported when saving payment details during payment (`setup_future_usage`).4 Invoices and Subscriptions only support the `send_invoice` [collection method](https://docs.stripe.com/api/invoices/object.md#invoice_object-collection_method).5 Checkout with [ui_mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-ui_mode) set to `embedded` supports only Safari version 17 or later and iOS version 17 or later.6 The Payment Element doesn’t support Link in Brazil or India.7 Stripe doesn’t display Apple Pay or Google Pay for IP addresses in India.8 [Request an invite](https://support.stripe.com/contact/email?topic=payment_apis) to use Connect.
 
-- Enable supported wallets in your [Payment Method Configurations](https://dashboard.stripe.com/test/settings/payment_methods) to make sure [Dynamic Payment Methods](https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods.md) can render them.
-- To manually specify wallet payment methods, include `payment_method_types= ['card']` when:
-  - [Creating the payment intent](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_types)
-  - [Initializing Elements](https://docs.stripe.com/js/elements_object/create_without_intent#stripe_elements_no_intent-options-paymentMethodTypes) from your client to  collect payment details [before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md).
+## API support 
 
+The following table describes each wallet’s compatibility with API-based payment flows:
 
-# Express Checkout Element
+| Payment method                                                              | API enum                                       | [PaymentIntents](https://docs.stripe.com/payments/payment-intents.md) | [SetupIntents](https://docs.stripe.com/payments/setup-intents.md) | [Manual capture](https://docs.stripe.com/payments/place-a-hold-on-a-payment-method.md) | [Setup future usage](https://docs.stripe.com/payments/save-during-payment.md?platform=web&ui=elements)1 | Requires redirect2 |
+| --------------------------------------------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------ |
+| [Alipay](https://docs.stripe.com/payments/alipay.md)                        | `alipay`                                       | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | No                 |
+| [Amazon Pay](https://docs.stripe.com/payments/amazon-pay.md)                | `amazon_pay`                                   | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | Yes                |
+| [Apple Pay](https://docs.stripe.com/apple-pay.md)                           | - Unsupported                                  | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | No                 |
+| [Cash App Pay](https://docs.stripe.com/payments/cash-app-pay.md)            | `cashapp`                                      | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | Yes                |
+| [Google Pay](https://docs.stripe.com/google-pay.md)                         | - Unsupported                                  | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | No                 |
+| [GrabPay](https://docs.stripe.com/payments/grabpay.md)                      | `grabpay`                                      | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | Yes                |
+| [Link](https://docs.stripe.com/payments/wallets/link.md)                    | `link`                                         | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | No                 |
+| [MB WAY](https://docs.stripe.com/payments/mb-way.md)                        | `mb_way`                                       | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | No                 |
+| [MobilePay](https://docs.stripe.com/payments/mobilepay.md)                  | `mobilepay`                                    | ✓ Supported                                                           | - Unsupported                                                     | ✓ Supported                                                                            | - Unsupported                                                                                           | Yes                |
+| [PayPal](https://docs.stripe.com/payments/paypal.md)                        | `paypal`                                       | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | Yes                |
+| [PayPay](https://docs.stripe.com/payments/paypay.md)                        | `paypay`                                       | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | Yes                |
+| [Revolut Pay](https://docs.stripe.com/payments/revolut-pay.md)              | `revolut_pay`                                  | ✓ Supported                                                           | ✓ Supported                                                       | ✓ Supported                                                                            | ✓ Supported                                                                                             | Yes                |
+| [Secure Remote Commerce](https://docs.stripe.com/secure-remote-commerce.md) | A comma-separated list of accepted card brands | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | Yes                |
+| [Vipps](https://docs.stripe.com/payments/vipps.md)                          | `vipps`                                        | ✓ Supported                                                           | - Unsupported                                                     | ✓ Supported                                                                            | - Unsupported                                                                                           | Yes                |
+| [WeChat Pay](https://docs.stripe.com/payments/wechat-pay.md)                | `wechat_pay`                                   | ✓ Supported                                                           | - Unsupported                                                     | - Unsupported                                                                          | - Unsupported                                                                                           | No                 |
 
-> This is a Express Checkout Element for when ui is express-checkout-element. View the full page at https://docs.stripe.com/testing/wallets?ui=express-checkout-element.
-
-For this integration path, Stripe.js detects and supports the following wallets based on the state of your device.
-
-## Check your device and browser setup 
-
-If you can’t see your expected wallet in the demos, your device or browser might not meet the following Apple Pay or Google Pay conditions.
-
-- The wallet must have at least one card.
-  > You can still show a wallet with no detected cards in the Express Checkout Element. Pass the [paymentMethods](https://docs.stripe.com/js/elements_object/create_express_checkout_element) object with a wallet set to `always` during creation.
-- You must use a compatible [Apple Pay device](https://support.apple.com/en-us/102896) and [Google Pay device](https://developers.google.com/pay/issuers/overview/supported-devices#compatibility_requirements).
-- You must use a [supported version](https://docs.stripe.com/js/appendix/supported_browsers) of a [supported browser](https://docs.stripe.com/elements/express-checkout-element.md#supported-browsers) for the wallet you’re testing.
-- Allow applicable browsers to access your wallet.
-  - Chrome: **Settings** > **Autofill and passwords** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Safari: **Settings** > **Advanced** > **Allow websites to check for Apple Pay and Apple card**
-  - Opera: **Settings** > **Advanced** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Edge: **Settings** > **Privacy, Search, and Services** > **Allow sites to check if you have payment methods saved**
-- Don’t use a Chrome incognito window or Safari, Edge, or Opera private window.
-- Confirm you’re operating from a supported [Apple Pay region](https://support.apple.com/en-us/102775) and [Google Pay region](https://support.google.com/wallet/answer/12060037?sjid=7404612469520417090-NA#zippy=%2Cuse-google-wallet-for-payments).
-- Stripe doesn’t display Apple Pay or Google Pay for IP addresses in India.
-- For Apple Pay, confirm your device supports [biometric authentication](https://support.apple.com/en-us/102626#:~:text=iPhone%20or%20.iPad,on%20all%20devices.).
-
-## Check your integration 
-
-If you see the expected wallet payment methods in the demo payment forms, but they don’t display in your own integration, the following checkpoints might resolve the issue.
-
-### Register your domains
-
-Check your [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_method_domains) to confirm your domain registrations. You must [register every domain and sub-domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain) separately for each environment, including live mode and each sandbox.
-
-Connect users must also consider the funds flow configuration (direct or destination charge) for correct [domain registration](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain-while-using-connect).
-
-### (Apple Pay) Register all domains when using iframes
-
-To see Apple Pay in an integration using iframes you must:
-
-1. Make sure the iframe and top-level site domains match if you support pre-Safari 17 browser versions.
-1. Set the `allow="payment"` attribute on the iframe.
-1. Register both the iframe domain and top-level domain of the site, if they’re different (supported by Safari 17 or later).
-
-### Enable wallets for your integration
-
-- Enable supported wallets in your [Payment Method Configurations](https://dashboard.stripe.com/test/settings/payment_methods) to make sure [Dynamic Payment Methods](https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods.md) can render them.
-- To manually specify wallet payment methods, include `payment_method_types= ['card']` when:
-  - [Creating the payment intent](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_types)
-  - [Initializing Elements](https://docs.stripe.com/js/elements_object/create_without_intent#stripe_elements_no_intent-options-paymentMethodTypes) from your client to  collect payment details [before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md).
-
-
-# Checkout Sessions
-
-> This is a Checkout Sessions for when ui is embedded-form. View the full page at https://docs.stripe.com/testing/wallets?ui=embedded-form.
-
-For this integration path, Stripe.js detects and supports the following wallets based on the state of your device.
-
-## Check your device and browser setup 
-
-If you can’t see your expected wallet in the demos, your device or browser might not meet the following Apple Pay or Google Pay conditions.
-
-- The wallet must have at least one card.
-- You must use a compatible [Apple Pay device](https://support.apple.com/en-us/102896) and [Google Pay device](https://developers.google.com/pay/issuers/overview/supported-devices#compatibility_requirements).
-- You must use a [supported version](https://docs.stripe.com/js/appendix/supported_browsers) of a [supported browser](https://docs.stripe.com/elements/express-checkout-element.md#supported-browsers) for the wallet you’re testing.
-- Allow applicable browsers to access your wallet.
-  - Chrome: **Settings** > **Autofill and passwords** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Safari: **Settings** > **Advanced** > **Allow websites to check for Apple Pay and Apple card**
-  - Opera: **Settings** > **Advanced** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Edge: **Settings** > **Privacy, Search, and Services** > **Allow sites to check if you have payment methods saved**
-- Don’t use a Chrome incognito window or Safari, Edge, or Opera private window.
-- Confirm you’re operating from a supported [Apple Pay region](https://support.apple.com/en-us/102775) and [Google Pay region](https://support.google.com/wallet/answer/12060037?sjid=7404612469520417090-NA#zippy=%2Cuse-google-wallet-for-payments).
-- Stripe doesn’t display Apple Pay or Google Pay for IP addresses in India.
-- For Apple Pay, confirm your device supports [biometric authentication](https://support.apple.com/en-us/102626#:~:text=iPhone%20or%20.iPad,on%20all%20devices.).
-
-## Check your integration 
-
-If you see the expected wallet payment methods in the demo payment forms, but they don’t display in your own integration, the following checkpoints might resolve the issue.
-
-### (Embedded Checkout) Register your domains
-
-Check your [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_method_domains) to confirm your domain registrations. You must [register every domain and sub-domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain) separately for each environment, including live mode and each sandbox.
-
-Connect users must also consider the funds flow (direct or destination charge) configuration for correct [domain registration](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain-while-using-connect).
-
-### Enable wallets for your integration
-
-- Enable supported wallets in your [Payment Method Configurations](https://dashboard.stripe.com/test/settings/payment_methods) to make sure [Dynamic Payment Methods](https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods.md) can render them.
-- To manually specify wallet payment methods, include `payment_method_types= ['card']` when [creating the checkout session](https://docs.stripe.com/api/checkout/session/create.md#create_checkout_session-payment_method_types).
-
-### Wallets might appear in a carousel
-
-Checkout Sessions display Apple Pay and Google Pay in a payment method carousel, rather than as standalone buttons, if:
-
-- You set [consent_collection.terms_of_service](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-consent_collection-terms_of_service) to `required`.
-- You use [custom_fields](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-custom_fields).
-- You set [tax_id_collection.required](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-tax_id_collection-required) to `if_supported`.
-- The customer’s IP address is in Finland or Sweden and non-card payment methods are also available.
-
-### Limitations
-
-- Checkout Sessions using [Stripe Tax](https://docs.stripe.com/tax.md) only show Google Pay if you enable[shipping_address_collection](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-shipping_address_collection).
-- (Embedded Checkout) Apple Pay requires Safari 17 or later because embedded checkout uses iframes with different domains.
-
-
-# Payment Request Button
-
-> This is a Payment Request Button for when ui is payment-request-button-element. View the full page at https://docs.stripe.com/testing/wallets?ui=payment-request-button-element.
-
-For this integration path, Stripe.js detects and supports the following wallets based on the state of your device.
-
-## Check your device and browser setup 
-
-If you can’t see your expected wallet in the demos, your device or browser might not meet the following Apple Pay or Google Pay conditions.
-
-- The wallet must have at least one card.
-- (Google Pay) Log out of Link. If you see **Pay with Link** in the demo, your Link account takes priority over Google Pay. To log out:
-  1. Click **Pay with link** in the demo.
-  1. In the popup, click the overflow menu (⋯) at the top right of the window.
-  1. Click **Log out**, then the **Log out** confirmation prompt.
-  1. After the popup closes, verify that you see Google Pay in the demo.
-- You must use a compatible [Apple Pay device](https://support.apple.com/en-us/102896) and [Google Pay device](https://developers.google.com/pay/issuers/overview/supported-devices#compatibility_requirements).
-- You must use a [supported version](https://docs.stripe.com/js/appendix/supported_browsers) of a [supported browser](https://docs.stripe.com/stripe-js/elements/payment-request-button.md?client=html#testing) for the wallet you’re testing.
-- Allow applicable browsers to access your wallet.
-  - Chrome: **Settings** > **Autofill and passwords** > **Payment methods** > **Allow sites to check if you have payment methods saved**
-  - Safari: **Settings** > **Advanced** > **Allow websites to check for Apple Pay and Apple card**
-- Don’t use a Chrome incognito window or Safari private window.
-- Confirm you’re operating from a supported [Apple Pay region](https://support.apple.com/en-us/102775) and [Google Pay region](https://support.google.com/wallet/answer/12060037?sjid=7404612469520417090-NA#zippy=%2Cuse-google-wallet-for-payments).
-- Stripe doesn’t display Apple Pay or Google Pay for IP addresses in India.
-- For Apple Pay, confirm your device supports [biometric authentication](https://support.apple.com/en-us/102626#:~:text=iPhone%20or%20.iPad,on%20all%20devices.).
-
-## Check your integration 
-
-If you see the expected wallet payment methods in the demo payment forms, but they don’t display in your own integration, the following checkpoints might resolve the issue.
-
-### Register your domains
-
-Check your [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_method_domains) to confirm your domain registrations. You must [register every domain and sub-domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain) separately for each environment, including live mode and each sandbox.
-
-Connect users must also consider the funds flow configuration (direct or destination charge) for correct [domain registration](https://docs.stripe.com/payments/payment-methods/pmd-registration.md?dashboard-or-api=dashboard#register-your-domain-while-using-connect).
-
-### (Apple Pay) Register all domains when using iframes
-
-To see Apple Pay in an integration using iframes you must:
-
-1. Make sure the iframe and top-level site domains match if you support pre-Safari 17 browser versions.
-1. Set the `allow="payment"` attribute on the iframe.
-1. Register both the iframe domain and top-level domain of the site, if they’re different (supported by Safari 17 or later).
-
+1 Cards and bank debit methods including SEPA debit, AU BECS direct debit, and ACSS debit support both `on_session` and `off_session` with [setup future usage](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-setup_future_usage). All other payment method types either don’t support `setup_future_usage` or only support `off_session`.2 Payment methods might require confirmation with [return_url](https://docs.stripe.com/api/payment_intents/confirm.md#confirm_payment_intent-return_url) to indicate where Stripe should redirect your customer after they complete the payment.

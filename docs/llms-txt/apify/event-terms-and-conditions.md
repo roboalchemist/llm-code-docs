@@ -38,7 +38,7 @@ These Event Terms and Conditions ("**Terms**") apply to all Events organized or 
 
 5.2. Similarly, you are responsible for:
 
-(i) Treating others with respect and professionalism. (ii) Following instructions and safety rules provided by Apify or venue staff. (iii) Adhering to the https://docs.apify.com/legal/community-code-of-conduct, as applicable. (iv) Your compliance with applicable laws and regulations.
+(i) Treating others with respect and professionalism. (ii) Following instructions and safety rules provided by Apify or venue staff. (iii) Adhering to the [Apify Community Code of Conduct](https://docs.apify.com/legal/community-code-of-conduct), as applicable. (iv) Your compliance with applicable laws and regulations.
 
 5.3. We reserve the right to deny entry or remove any attendee without refund if their behavior is inappropriate, disruptive, or violates these Terms or the rules of any given Event.
 
@@ -52,7 +52,7 @@ These Event Terms and Conditions ("**Terms**") apply to all Events organized or 
 
 ## 7. Privacy
 
-7.1. Personal data collected during registration or participation will be processed in accordance with the https://docs.apify.com/legal/privacy-policy. We process this data to manage Event participation, communication, and feedback, and may use third-party service providers (such as event platforms) as processors.
+7.1. Personal data collected during registration or participation will be processed in accordance with the [Apify Privacy Policy](https://docs.apify.com/legal/privacy-policy). We process this data to manage Event participation, communication, and feedback, and may use third-party service providers (such as event platforms) as processors.
 
 7.2. We may take photographs, videos, or recordings during the Event for documentation, reporting, and promotional purposes, which may be shared publicly (e.g., on websites or social media). If you do not wish to appear in such materials, please notify us in writing before the Event. We will make reasonable efforts to accommodate your request.
 

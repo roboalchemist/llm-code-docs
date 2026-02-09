@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/bundler/macros.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Macros
 
 > Run JavaScript functions at bundle-time with Bun macros

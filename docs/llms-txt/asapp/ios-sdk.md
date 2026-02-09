@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # iOS SDK Overview
 
 Welcome to the ASAPP iOS SDK Overview! This document guides you through the process of integrating ASAPP functionality into your iOS application. It includes the following sections:

@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/verifying-self-hosted-wallets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Verifying Self-Hosted Wallets
 
 > Using Mesh Verify for wallet verification

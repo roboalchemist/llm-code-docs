@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/product-image-generator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Product image generator using Replicate and Trigger.dev
 
 > AI-powered product image generator that transforms basic product photos into professional marketing shots using Replicate's image generation models

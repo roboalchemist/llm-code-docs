@@ -10,7 +10,7 @@ The secret input feature lets you mark specific input fields of an Actor as sens
 
 ## How to set a secret input field
 
-To make an input field secret, you need to add a `"isSecret": true` setting to the input field in the Actor's https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md, like this:
+To make an input field secret, you need to add a `"isSecret": true` setting to the input field in the Actor's [input schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md), like this:
 
 
 ```
@@ -48,7 +48,7 @@ This feature supports `string`, `object`, and `array` input types. Available edi
 
 ## Read secret input fields
 
-When you read the Actor input through `Actor.getInput()`, the encrypted fields are automatically decrypted. Decryption of string fields is supported since https://docs.apify.com/sdk/js/ 3.1.0; support for objects and arrays was added in https://docs.apify.com/sdk/js/ 3.4.2 and https://docs.apify.com/sdk/python/ 2.7.0.
+When you read the Actor input through `Actor.getInput()`, the encrypted fields are automatically decrypted. Decryption of string fields is supported since [JavaScript SDK](https://docs.apify.com/sdk/js/) 3.1.0; support for objects and arrays was added in [JavaScript SDK](https://docs.apify.com/sdk/js/) 3.4.2 and [Python SDK](https://docs.apify.com/sdk/python/) 2.7.0.
 
 
 ```
@@ -74,7 +74,7 @@ If you read the `INPUT` key from the Actor run's default key-value store directl
 
 ## Encryption mechanism
 
-The encryption mechanism used for encrypting the secret input fields is the same dual encryption as in https://en.wikipedia.org/wiki/Pretty_Good_Privacy#/media/File:PGP_diagram.svg. The secret input field is encrypted using a random key, using the `aes-256-gcm` cipher, and then the key is encrypted using a 2048-bit RSA key.
+The encryption mechanism used for encrypting the secret input fields is the same dual encryption as in [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy#/media/File:PGP_diagram.svg). The secret input field is encrypted using a random key, using the `aes-256-gcm` cipher, and then the key is encrypted using a 2048-bit RSA key.
 
 The RSA key is unique for each combination of user and Actor, ensuring that no Actor can decrypt input intended for runs of another Actor by the same user, and no user can decrypt input runs of the same Actor by a different user. This isolation of decryption keys enhances the security of sensitive input data.
 
@@ -82,4 +82,4 @@ During Actor execution, the decryption keys are passed as environment variables,
 
 ## Example Actor
 
-If you want to test the secret input live, check out the https://console.apify.com/actors/O3S2UlSKzkcnFHRRA Actor in Apify Console. If you want to dig in deeper, you can check out its https://github.com/apify/actor-example-secret-input on GitHub.
+If you want to test the secret input live, check out the [Example Secret Input](https://console.apify.com/actors/O3S2UlSKzkcnFHRRA) Actor in Apify Console. If you want to dig in deeper, you can check out its [source code](https://github.com/apify/actor-example-secret-input) on GitHub.

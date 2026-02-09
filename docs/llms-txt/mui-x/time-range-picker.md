@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/time-range-picker.md
 
-# Source: https://mui.com/x/api/date-pickers/time-range-picker.md
-
-# Source: https://mui.com/x/react-date-pickers/time-range-picker.md
-
 ---
 productId: x-date-pickers
 title: React Time Range Picker component

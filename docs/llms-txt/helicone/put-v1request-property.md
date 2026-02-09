@@ -1,103 +1,110 @@
 # Source: https://docs.helicone.ai/rest/request/put-v1request-property.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upsert Request Property
 
 > Create or update a property of a specific request.
 
+<Warning>
+  <strong>For users in the European Union:</strong> Please use `eu.api.helicone.ai` instead of
+  `api.helicone.ai`.
+</Warning>
+
+
 ## OpenAPI
 
 ````yaml put /v1/request/{requestId}/property
+openapi: 3.0.0
+info:
+  title: helicone-api
+  version: 1.0.0
+  license:
+    name: MIT
+  contact: {}
+servers:
+  - url: https://api.helicone.ai/
+  - url: http://localhost:8585/
+security: []
 paths:
-  path: /v1/request/{requestId}/property
-  method: put
-  servers:
-    - url: https://api.helicone.ai/
-    - url: http://localhost:8585/
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
-          cookie: {}
-    parameters:
-      path:
-        requestId:
+  /v1/request/{requestId}/property:
+    put:
+      tags:
+        - Request
+      operationId: PutProperty
+      parameters:
+        - in: path
+          name: requestId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              value:
-                allOf:
-                  - type: string
-              key:
-                allOf:
-                  - type: string
-            required: true
-            requiredProperties:
-              - value
-              - key
-        examples:
-          example:
-            value:
-              value: <string>
-              key: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-              error:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-            refIdentifier: '#/components/schemas/ResultSuccess_null_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-              error:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ResultError_string_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value: {}
-        description: Ok
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  type: string
+                key:
+                  type: string
+              required:
+                - value
+                - key
+              type: object
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result_null.string_'
+      security:
+        - api_key: []
 components:
-  schemas: {}
+  schemas:
+    Result_null.string_:
+      anyOf:
+        - $ref: '#/components/schemas/ResultSuccess_null_'
+        - $ref: '#/components/schemas/ResultError_string_'
+    ResultSuccess_null_:
+      properties:
+        data:
+          type: number
+          enum:
+            - null
+          nullable: true
+        error:
+          type: number
+          enum:
+            - null
+          nullable: true
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+    ResultError_string_:
+      properties:
+        data:
+          type: number
+          enum:
+            - null
+          nullable: true
+        error:
+          type: string
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
 
 ````

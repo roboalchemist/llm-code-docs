@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/servers/auth/remote-oauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remote OAuth
 
 > Integrate your FastMCP server with external identity providers like Descope, WorkOS, Auth0, and corporate SSO systems.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.11.0" />
@@ -124,7 +125,7 @@ auth = RemoteAuthProvider(
     token_verifier=token_verifier,
     authorization_servers=[AnyHttpUrl("https://auth.yourcompany.com")],
     base_url="https://api.yourcompany.com",  # Your server base URL
-    # Optional: customize allowed client redirect URIs (defaults to localhost only)
+    # Optional: restrict allowed client redirect URIs (defaults to all for DCR compatibility)
     allowed_client_redirect_uris=["http://localhost:*", "http://127.0.0.1:*"]
 )
 
@@ -134,6 +135,21 @@ mcp = FastMCP(name="Company API", auth=auth)
 This configuration creates a server that accepts tokens issued by `auth.yourcompany.com` and provides the OAuth discovery metadata that MCP clients need. The `JWTVerifier` handles token validation using your identity provider's public keys, while the `RemoteAuthProvider` generates the required OAuth endpoints.
 
 The `authorization_servers` list tells MCP clients which identity providers you trust. The `base_url` identifies your server in OAuth metadata, enabling proper token audience validation. **Important**: The `base_url` should point to your server base URL - for example, if your MCP server is accessible at `https://api.yourcompany.com/mcp`, use `https://api.yourcompany.com` as the base URL.
+
+### Overriding Advertised Scopes
+
+Some identity providers use different scope formats for authorization requests versus token claims. For example, Azure AD requires clients to request full URI scopes like `api://client-id/read`, but the token's `scp` claim contains just `read`. The `scopes_supported` parameter lets you advertise the full-form scopes in metadata while validating against the short form:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+auth = RemoteAuthProvider(
+    token_verifier=token_verifier,
+    authorization_servers=[AnyHttpUrl("https://auth.example.com")],
+    base_url="https://api.example.com",
+    scopes_supported=["api://my-api/read", "api://my-api/write"],
+)
+```
+
+When not set, `scopes_supported` defaults to the token verifier's `required_scopes`. For Azure AD specifically, see the [AzureJWTVerifier](/integrations/azure#token-verification-only-managed-identity) which handles this automatically.
 
 ### Custom Endpoints
 
@@ -211,9 +227,9 @@ WorkOS's support for Dynamic Client Registration makes it particularly well-suit
 <Note>
   `RemoteAuthProvider` also supports the `allowed_client_redirect_uris` parameter for controlling which redirect URIs are accepted from MCP clients during DCR:
 
-  * `None` (default): Only localhost patterns allowed
+  * `None` (default): All redirect URIs allowed (for DCR compatibility)
   * Custom list: Specify allowed patterns with wildcard support
-  * Empty list `[]`: Allow all (not recommended)
+  * Empty list `[]`: No redirect URIs allowed
 
   This provides defense-in-depth even though DCR providers typically validate redirect URIs themselves.
 </Note>

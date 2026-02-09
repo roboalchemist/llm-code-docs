@@ -28,7 +28,7 @@ If you are not using Boost, you may manually install the Herd MCP server.
 This is the standard configuration that works in most MCP clients.
 Make sure to replace `YOUR-SITE-PATH` with the base path to your Laravel project or remove the `env` key with the site path if you're using the global installation.
 
-```json  theme={null}
+```json theme={null}
 {
     "herd": {
         "command": "php",
@@ -46,7 +46,7 @@ Make sure to replace `YOUR-SITE-PATH` with the base path to your Laravel project
   <Accordion title="Claude Code">
     Use the Claude Code CLI to add the Herd MCP server. In the root of your project, run the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     claude mcp add herd php /Applications/Herd.app/Contents/Resources/herd-mcp.phar -e SITE_PATH="$(pwd)"
     ```
 
@@ -161,7 +161,7 @@ You may find the following files and directories helpful while you are troublesh
 
 The main directory contains all the following config files and directories and is a good start when troubleshooting issues with Herd. You may delete this folder if you plan to re-install Herd from scratch.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/
 ```
 
@@ -169,7 +169,7 @@ The main directory contains all the following config files and directories and i
 
 You can find all binaries of Herd in this directory. This includes binaries like composer or expose that ship with Herd as well as downloaded binaries like the latest PHP versions.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/bin
 ```
 
@@ -177,7 +177,7 @@ You can find all binaries of Herd in this directory. This includes binaries like
 
 All config files for all Herd services live in this directory.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/config
 ```
 
@@ -185,13 +185,13 @@ All config files for all Herd services live in this directory.
 
 The nginx directory contains a `herd.conf` and the `nginx.conf`. Herd uses both to decide which sites it serves and what happens to files. In case you see a `Bad Gateway` error, there could be an issue in one of these files.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/config/nginx
 ```
 
 Site-specific Nginx configuration files are located in the following directory:
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/config/valet/Nginx
 ```
 
@@ -199,7 +199,7 @@ Site-specific Nginx configuration files are located in the following directory:
 
 This directory contains all `php.ini` files for all PHP versions on your machine. If you use Herd Pro, it also contains `debug.ini` files that Xdebug uses when you enable it for a request. If you're in debug mode, Herd loads the normal `php.ini` and applies the `debug.ini` on top.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/config/php
 ```
 
@@ -207,7 +207,7 @@ This directory contains all `php.ini` files for all PHP versions on your machine
 
 Herd stores all logs of nginx and php-fpm in this directory. It may also contain mail logs if you use Herd Pro.
 
-```bash  theme={null}
+```bash theme={null}
 ~/Library/Application Support/Herd/Log
 ```
 
@@ -297,7 +297,7 @@ If a `herd.yml` file is present in the directory, Herd configures your applicati
 
 The command tells Herd to use a specific PHP version for this directory when serving sites or using the `herd composer` or `herd php` commands.
 
-```bash  theme={null}
+```bash theme={null}
 herd use 8.2
 herd use 8.3
 herd use 8.4
@@ -319,7 +319,7 @@ Analog to the PHP command, the `isolate-node` command lists all sites with isola
 
 You can register applications outsite of a parked path via the `herd link` command. It also supports linking multiple domains to a single application.
 
-```bash  theme={null}
+```bash theme={null}
 # Link the current directory as some-site.test
 herd link some-site
 # Link the same application via some-other-domain.test
@@ -330,7 +330,7 @@ herd link some-other-domain
 
 You can display all linked sites via `herd links`.
 
-```bash  theme={null}
+```bash theme={null}
 +------------------+-----+------------------------------+------------------------------------+-------------+---------+
 | Site             | SSL | URL                          | Path                               | PHP Version |         |
 +------------------+-----+------------------------------+------------------------------------+-------------+---------+
@@ -344,7 +344,7 @@ You can display all linked sites via `herd links`.
 
 You can tail any logs from Herd via the `herd log` command. If you run it without an argument, it displays all available log files and if your specify a service, it tails the logs of this service.
 
-```bash  theme={null}
+```bash theme={null}
 herd log
 herd log nginx
 ```
@@ -369,7 +369,7 @@ Type `herd parked`to lists all sites in parked paths.
 
 The `herd php` command runs PHP commands using the isolated executable for the site.
 
-```bash  theme={null}
+```bash theme={null}
 herd php artisan inspire
 ```
 
@@ -425,7 +425,7 @@ Run `herd unsecure` to remove the TLS certificate of the domain and the automate
 
 The command `herd use` changes the global PHP version that Herd uses to serve all sites that don't have an isolated version.
 
-```bash  theme={null}
+```bash theme={null}
 herd use 8.3
 herd use 8.4
 ```
@@ -457,7 +457,7 @@ Herd comes with global shortcuts that integrate with your system and make access
 You can set up these global shortcuts in the settings.
 
 <Frame>
-  <img alt="Screenshot of shortcut settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=09c0d5e7dd753d6b8f9b46f26fb969ea" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_shortcuts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0ce05efb12620f749c8009c1bbe732ee 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8ad26897fb96de60d49dc0da581642a0 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=28e1d47b48ad137ed37d4215afc73673 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=16699190e22595bd35f284357e859191 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=65f33c307eeda1de75a3c9e6e58eefa5 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6db8a6b3c6e9ce44053e4f15dbbed475 2500w" />
+  <img alt="Screenshot of shortcut settings" />
 </Frame>
 
 Herd supports the following shortcuts:
@@ -499,7 +499,7 @@ This way, the social authentication provider will redirect to `fwd.host`, which 
 
 You can see the setup in the following screenshot:
 
-<img src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=814d601ef3ce2050cd09c3df58f1c007" alt="Social Authentication Setup" data-og-width="2302" width="2302" data-og-height="1720" height="1720" data-path="images/docs/google-oauth-setup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9d21f517f270cbadd29aa0a7a08aff48 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e2dd9f8392d3f66562d04da1f9516304 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=791c0988a80fac5a566615ceaa1a1b3b 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ed193bb809eee279eb3963e8c9033eb1 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=81b69d62297bb67c4ccb12c77889e98b 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/google-oauth-setup.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dfcdc0dca72961bb443efeb5030c8369 2500w" />
+<img alt="Social Authentication Setup" />
 
 The `fwd.host` service will forward the request to your Herd site, allowing you to handle the social authentication as usual.
 For security reasons, the redirects are limited to Herd sites with `.test` domains only, so you cannot use this service to redirect to any other site.
@@ -509,6 +509,41 @@ For security reasons, the redirects are limited to Herd sites with `.test` domai
 Source: https://herd.laravel.com/docs/macos/changelog/index
 
 
+
+<Update label="1.25.0" description="2026-01-19">
+  ## Herd Helper Update
+
+  This version contains an update of the Herd background helper. You will need to provide your password after updating.
+
+  ## New features
+
+  * You can now place custom `.pem` certificates in `config/certificates/` to use them
+  * You can now toggle watching for "Dumps" individually
+  * Added "Laravel Boost" as an option in the site wizard
+
+  ## Fixes and Improvements
+
+  * The version and build number in Settings > About are now selectable for easier copying
+  * Running `herd link` (via CLI or GUI) will update your `.env` with the correct app URL
+  * Fixed a crash of the privileged helper on macOS Sequoia 26.2+ that could prevent nginx from stopping
+  * Fixed an issue where the Livewire Volt option was hidden when selecting WorkOS in site wizard
+  * Fixed an issue where the mail inspector sidebar would unexpectedly open when resizing the window
+  * Fixed an issue with myBB in combination with Herd
+  * Fixed an issue where running `herd init` would not work with MinIO
+  * Fixed an issue where installing Reverb would fail on PHP 8.5
+  * Dump settings are now disabled when general dump interception is paused
+  * Updated the built-in Expose binary
+  * Updated the built-in Laravel installer
+  * Updated the built-in Composer binary
+  * Updated the built-in `cacert.pem` file
+</Update>
+
+<Update label="1.24.0" description="2025-11-20">
+  ## New features
+
+  * Added full support for PHP 8.5
+  * We added a manual theme switcher, in case you want to control Herd's theme independent of your OS preference
+</Update>
 
 <Update label="1.23.0" description="2025-11-04">
   ## New features
@@ -1055,7 +1090,7 @@ In order to enable dump interception and record debug information, click on the 
 Once enabled, you may use the `dump()` function as usual. Instead of printing the dump to your browser or terminal, Herd will open a window when a new dump becomes available.
 
 <Frame>
-  <img alt="Empty state of the dump interceptor window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7973a904c46a0dc312a1ee2725f8fe8f" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_empty.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=705d5dd6a54bc84ba928330f4bcdc197 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=38bd222ca3acba2d0dbb39ef3b39eb2a 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=79853ad0b4e11a170da6df6cc97221eb 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=06c21aa6b1cddcf9732796e00335ff41 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a7b92ce7836403291bab73a169bdedc4 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_empty.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=588c2aa98ba24efc6b6405bafb6eb45e 2500w" />
+  <img alt="Empty state of the dump interceptor window" />
 </Frame>
 
 New dumps are automatically added to the top of the window, and you can clear the window by pressing the icon in the title bar of the dump window. All dumps are searchable so you can easily find what you are looking for.
@@ -1067,7 +1102,7 @@ By default, Herd only displays the output of the latest request, but you can ena
 You can select which features you need when you start debugging, so that your requests stay as fast as usual and there's no bloat when digging into a problem.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3b975ef5a985eb2051d8015d73d64a92" data-og-width="1844" width="1844" data-og-height="1342" height="1342" data-path="images/docs/dumps_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a3ce4cef8e7af2c5bd71f8cc549e1cb0 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=29cbe8f9f64e084d45280079f41e6d28 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=19c8014aa53e82cd33f2387469eb2e80 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b452cc108274a1006e4821ab70fe3bf6 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d940a060b7211ef941f030dc71e416fc 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7ac8ec169b70cdad36a87080fd8028a1 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Dumps
@@ -1077,7 +1112,7 @@ When enabled, all dumps that you run via Laravels' `dump()` or `dd()` methods au
 This also sends `dump()` calls from queued jobs to the dump window that you wouldn't see in your browser when working with real queues.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dbb2744e5da4680251b9cc53470a58d8" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_dumps.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c5d347e21953a8c71401645852a84f52 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=19ccdbef3cc55bdc058875a1b4b843f2 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=da11d625775e0c89fb00ee76e0c98590 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=94c896c42dcd7112e4abfee68c24e8d2 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7b9a36da2a35b803d5ba58eb2b48d045 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_dumps.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=435d785ec47d592fc6550101fd0f40d3 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Queries
@@ -1085,7 +1120,7 @@ This also sends `dump()` calls from queued jobs to the dump window that you woul
 You can display and debug Eloquent queries by enabling the query feature in the settings. If you want to debug specific queries, you can select the duration for these queries and skip fast ones which are good to go.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3c9b2df17fdb07f514b8b629062a6d1e" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_queries.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c7912a761607e4aca0b3e802699643fd 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cfeded8e039d7122631c7e84dd416dae 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ee62c16030165b595438c187b392f648 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=be56d44a0d3bc98dfc7f0be301c9397c 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e6a1b4ff5ddd0173749b3c5984a06450 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_queries.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8384c5202acdb3b9780a929dd3b023ee 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Jobs
@@ -1093,7 +1128,7 @@ You can display and debug Eloquent queries by enabling the query feature in the 
 Enable job logging to get a list of all jobs that your application runs. This is super useful when you work with the sync driver and are not sure if all jobs are properly triggered.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=17edcb26c0209c8a4d0b50acb973c6cc" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_jobs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b2e459d4c4bbd40006720761c16e3b4b 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ca4e266c8534dab594ae9734f1edb37a 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1806e609efa993ba3fe6c548cb441943 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=29a615d5299abc81c934c3fea72b17c2 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4ea40ea5c84f17c4a4baaa2848094604 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_jobs.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dfe63cfeb97d12226f28db4b825aeaa9 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Views
@@ -1101,7 +1136,7 @@ Enable job logging to get a list of all jobs that your application runs. This is
 Sometimes, you want to know which data gets passed to a view and which views your application loads on a specific site. This tab lists all views that Laravel renders during a request.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2b641e70287d56f352a5a27ecd8a5f9c" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_views.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a5b68586ae7337563b474523df5828c1 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8332c987ef604a504e9ea553ee3e2b33 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=0234bab3984288b0cee382c286d6dbb6 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=233c9ca7832780c8f3e5cc14dbb6777d 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=6fe6eb6cc4be00a4235f81d5e800ac56 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_views.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=f742cd71c26c2b8f3bce1e41f4324705 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## HTTP
@@ -1109,7 +1144,7 @@ Sometimes, you want to know which data gets passed to a view and which views you
 The request tab displays all outgoing HTTP requests of your application, so if you're working with an API, these calls show up in the Dumps Window and allow you to inspect them without searching through logs etc.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cf803e7594d260eccaaf4bb9e9151ca7" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_http.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8d806c654a54b9d11b8db71d951e47da 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ecd25ff0b48b031b23db8d659fb03e52 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7412fad1f05b0f4975ae826a2d00def7 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=770a51ce159b362d553b80418acae88a 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=943226cfbc27468c4543952fed47c43f 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_http.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=058a95a0e66a4aa1700c52f16d68afd5 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Logs
@@ -1117,14 +1152,14 @@ The request tab displays all outgoing HTTP requests of your application, so if y
 You can get all logs of a request without using Herd's Log Viewer or digging through log files.
 
 <Frame>
-  <img alt="Dump Window" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dc2835c70da47ce8a5fb14dc25302f54" data-og-width="1654" width="1654" data-og-height="1166" height="1166" data-path="images/docs/dumps_logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7b0ce7dba9cc5c25b7c5effa5a268fe2 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7e1505019d523af2c05e74f9c5dc9611 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=44dc4e886f2fc5cafc500d66d4a1b770 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ce6fbf79d665071f43d7b51e38de511f 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b87bf6fb54b1d4085db859f3c5974cbd 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_logs.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5865ff7ae4d6062b85fe03a2d2048549 2500w" />
+  <img alt="Dump Window" />
 </Frame>
 
 ## Troubleshooting
 
 The dumps feature uses Herds' own PHP extension so make sure it is present in your `php.ini` and the path to the extension is correct. If you think that there is a problem with the path, simply quit Herd, remove the extension from the ini file and start Herd again. This will add the extension to the configuration file with the correct path.
 
-```ini  theme={null}
+```ini theme={null}
 extension=/Applications/Herd.app/Contents/Resources/herd-ext/herd-83-arm64.so
 ```
 
@@ -1149,7 +1184,7 @@ If you are only interested in the logs of the latest request, you man use the [l
 Herd automatically polls for new logs every few seconds as long as the Logs window is open.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=722a74dd322c7ae6e4f814297dc11a7e" data-og-width="2454" width="2454" data-og-height="1512" height="1512" data-path="images/docs/log-viewer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a1b672928847ec2027725de8dedc06c5 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=99932afca188d8f00c32d07a6e926a52 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=98b86757352ea0696509ce3b84a2fa03 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=6d7279117c4554c96b032ad969de144a 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=28886826d371c2614ec0bba2b6b6aca5 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/log-viewer.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=6c72789e4efdce24c3853bb04956bfc1 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Selecting a Project and Log File
@@ -1180,7 +1215,7 @@ Herd supports a customized version of the [SPX profiler](https://github.com/beyo
 
 You can download and install the profiler extension by running this command in your terminal:
 
-```bash  theme={null}
+```bash theme={null}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/beyondcode/php-spx/HEAD/install.sh)"
 ```
 
@@ -1197,7 +1232,7 @@ You can either open the profiler dashboard from the site configuration of the Si
 Herd uses the SPX extension for PHP to profile your application and display a customized dashboard of your requests. Please make sure to enable the profiling on the top left.
 
 <Frame>
-  <img alt="Profiler Dashboard" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8ffc773f2f36d372ad69485d657119f6" data-og-width="2780" width="2780" data-og-height="1998" height="1998" data-path="images/docs/profiler_home.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a12fc74bc7ce4ddd49a4c1a88aa63e85 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1135b84d7dabf4a5017ecd4d493afcbb 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e434cc64447717e866aea4e091b2b574 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=25ad2b21d6681c1bc42bdc8a1758fe37 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2ddb2c7b9efe5e182fac51b86577f0fc 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_home.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ff194df4ea6db72de07eb958cfb5da7e 2500w" />
+  <img alt="Profiler Dashboard" />
 </Frame>
 
 ### Results
@@ -1205,21 +1240,21 @@ Herd uses the SPX extension for PHP to profile your application and display a cu
 If you click on a web request in the dashboard, it loads a breakdown of the request and allows you to inspect function calls and other operations in great detail.
 
 <Frame>
-  <img alt="Profiler Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5d1beaef8cbac4c8bfbdadd652966c49" data-og-width="2780" width="2780" data-og-height="1998" height="1998" data-path="images/docs/profiler_graph.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a77e8a04e1a3f6c6d5636827d95a7fe7 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=eb294dbe43e8b630d9c8eb631e8edead 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e4b4aa989c4f80736406b37d44a774e1 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=07046fc0bd56d82052ded457c28761ad 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=80152cbdaf48d3ed3af8af4a0b11ff9e 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_graph.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7b9bb51896147dbf8f3e586a725d2421 2500w" />
+  <img alt="Profiler Settings" />
 </Frame>
 
 ## Profiling CLI scripts
 
 While you can profile web requests via the dashboard, SPX has a profiler for CLI requests as well. When the SPX extension is active, you can run PHP scripts with `herd profile` to trigger the profiling process. As an example, you can profile artisan commands with this command:
 
-```bash  theme={null}
+```bash theme={null}
 herd profile artisan inspire
 ```
 
 This profiles the command and displays the results directly in your terminal.
 
 <Frame>
-  <img alt="Profiler Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=419bdf862fecaac956ab213db874d9e4" data-og-width="2002" width="2002" data-og-height="1086" height="1086" data-path="images/docs/profiler_cli.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=26370ecfe8b2742726a02512ee9e7d90 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=003d26bb704446e783bf942d09960d5b 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c29923905d8423ace4d80d822ba58bec 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a8576aed16b8c335e1857d9766e28626 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=bc3ed9066a95ef04d53a64898b347e80 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/profiler_cli.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ea5e91dcce6d2e7012c06ef36fca6405 2500w" />
+  <img alt="Profiler Settings" />
 </Frame>
 
 ## Profiling long-running CLI scripts
@@ -1228,7 +1263,7 @@ When you have long-running CLI scripts, such as daemonized processes, you might 
 
 You can do this by running:
 
-```bash  theme={null}
+```bash theme={null}
 herd profile --live artisan long-running-task
 ```
 
@@ -1253,7 +1288,7 @@ Laravel Tinker is a REPL for Laravel, and it allows you to interact with your ap
 You can run the Tinker site action from the [Site Manager](/macos/sites/managing-sites) to start a new tinker or Tinkerwell session directly in your site.
 
 <Frame>
-  <img alt="Tinker button in the site manager" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=764428860a4ff3a27c6a190cd356beb7" data-og-width="1872" width="1872" data-og-height="1122" height="1122" data-path="images/docs/sites_actions_tinker.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=dca4ecdd340e4b8f549fe61933a75d6f 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3b289646e381fe6b3b339e2680d38b6a 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3b138322002bf217a2361450a49b8d83 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=16bc7f7ed8c20edaea543e4fffaf1a80 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=42c4673523ea794cc48b7f6e0b84b6eb 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions_tinker.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=461e84b5ccc2975374ca6cd63dff5ff4 2500w" />
+  <img alt="Tinker button in the site manager" />
 </Frame>
 
 ## Open Tinker with a global shortcut
@@ -1261,7 +1296,7 @@ You can run the Tinker site action from the [Site Manager](/macos/sites/managing
 Herd allows you to define global system shortcuts and Tinker is part of this configuration. By pressing the global tinker shortcut, Herd starts a tinker session for the last site that you visited via your browser.
 
 <Frame>
-  <img alt="Tinker Shortcut Settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ce4b61afb1f57650423bb4896fa47c65" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_shortcuts_tinker.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c8ad1723788f6f16a29c84271d4fbeb3 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fbc3d1cf4b07885e97efc8b911da1a06 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=770ef9391e2bbd98f9df47719ad480e0 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=541288637502e1c71a954f82c45d3aa4 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ad21ceb8c8a15a2fce19e88ac1f7ee5c 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_shortcuts_tinker.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e897365d8de8e64da355b1c46ab88791 2500w" />
+  <img alt="Tinker Shortcut Settings" />
 </Frame>
 
 # Tinkerwell Integration
@@ -1272,7 +1307,7 @@ This allows you to quickly iterate on complex Eloquent queries or debug some cod
 
 <Frame>
   <a href="https://tinkerwell.app">
-    <img alt="Tinkerwell with a complex Eloquent query" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d5e8cb39e5b93c1eef9b80e6034a02e5" data-og-width="2618" width="2618" data-og-height="1720" height="1720" data-path="images/docs/tinker-tinkerwell.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=94dfc8e446dd8bfdefd8b0eb1533f4ab 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=aa479b6622361e78aaf1c7d7d1e57cb8 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6ce7f9b891f4902f98857a60e7583e8f 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3e21c433bce09e0d6d15daec1593a324 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=335ba30872c027ca8bd0e5abbe489a3e 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/tinker-tinkerwell.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b2c8d1966135960cdbae323c8b0bb247 2500w" />
+    <img alt="Tinkerwell with a complex Eloquent query" />
   </a>
 </Frame>
 
@@ -1303,7 +1338,7 @@ The exact location depends on your PHP version and device architecture.
 
 The following extensions are available:
 
-```bash  theme={null}
+```bash theme={null}
 # Apple Silicon
 /Applications/Herd.app/Contents/Resources/xdebug/xdebug-74-arm64.so
 /Applications/Herd.app/Contents/Resources/xdebug/xdebug-80-arm64.so
@@ -1330,7 +1365,7 @@ xdebug.start_upon_error=yes
 
 After saving the changes to your `php.ini` file, you need to restart Herd's services from the menu bar icon, or by running the following command in your terminal:
 
-```bash  theme={null}
+```bash theme={null}
 herd restart
 ```
 
@@ -1355,7 +1390,7 @@ Herd Pro is able to detect Xdebug headers in HTTP requests or breakpoints in PHP
 Go to the debugging settings of Herd Pro and select the configuration to detect breakpoints within PhpStorm automatically.
 
 <Frame>
-  <img alt="Debugger Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9e81ce721ccbd7124acd16ecf232c32e" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_debugger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=f39f377cfcdc9ac9ed31d3459fc1aeb1 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=95fd49cf07c14b424b079300a116bdce 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2bfc5b2510618d692a172a31561d9d98 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3eb9e2aba8386d23b4d8bc7c6ef227f6 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=80a3c8e802ecad468d4b49cd685b0fb9 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_debugger.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=576e90a1deb0117c8ab10d5ac3233718 2500w" />
+  <img alt="Debugger Settings" />
 </Frame>
 
 When you set or remove a breakpoint in PhpStorm and save the file, this creates a temporary file within the `.idea` folder of your project. Herd parses these files to detect breakpoints.
@@ -1372,7 +1407,7 @@ Herd serves sites via a PHP script and if you've dumps enabled, it also uses a `
 * Force break at first line when a script is outside the project
 
 <Frame>
-  <img alt="PHPStorm settings for Xdebug" src="https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=80f7cb10a141eb4059fd44407fa086ed" data-og-width="1964" width="1964" data-og-height="1444" height="1444" data-path="images/docs/xdebug_phpstorm_dump_loader.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=280&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=657609fc2d28245dec793ac50fdde033 280w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=560&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=e3a42e8a3d4f060fdf72332ed39052ca 560w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=840&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=8ec4e40a69e3957fd1d65f322175fdb7 840w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=1100&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=cc1fae3ab352abf5222510f03c368dad 1100w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=1650&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=1231909ebd7cb89186693cbb7c8d58bc 1650w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/docs/xdebug_phpstorm_dump_loader.png?w=2500&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=692b17622a8d3377628f736b7e10570c 2500w" />
+  <img alt="PHPStorm settings for Xdebug" />
 </Frame>
 
 If you do not use PHPStorm, you can use browser extensions for Xdebug to automatically load Xdebug.
@@ -1391,7 +1426,7 @@ You can run CLI commands via `herd debug ..` instead of using `php ...` to use t
 
 Herd has a `coverage` command that allows you to run Xdebug's coverage mode on your test suite:
 
-```bash  theme={null}
+```bash theme={null}
 herd coverage ./vendor/bin/pest --coverage
 ```
 
@@ -1429,7 +1464,7 @@ Place your custom driver in the related valet directory on your machine and Herd
 
 You can customize the paths where the [log viewer](/macos/debugging/logs) looks for log files by adjusting the `logFilesPaths()` method in the driver. The default looks like this:
 
-```php  theme={null}
+```php theme={null}
     /**
      * Get the logs paths for the application to show in Herds log viewer.
      */
@@ -1448,7 +1483,7 @@ The [Site Manager](/macos/sites/managing-sites) shows a tabular overview of your
 
 If you want to customize the overview table, you can do so by defining this method in your applications' custom driver and returning an array like the following:
 
-```php  theme={null}
+```php theme={null}
     public function siteInformation(string $sitePath, string $phpBinary): array
     {
         return [
@@ -1471,7 +1506,7 @@ Herd injects the path to the current site and the PHP binary to this method so t
 
 This example of a custom driver extends the existing Laravel Driver and modifies it to serve the application from a `web` instead of the `public` directory.
 
-```php  theme={null}
+```php theme={null}
 
 namespace Valet\Drivers\Custom;
 
@@ -1615,7 +1650,7 @@ If you plan to use MySQL, PostgreSQL or Redis, you can either download the datab
 Herd Pro provides a convenient user interface to manage services for [MySQL](/macos/herd-pro-services/mysql), [MariaDB](/macos/herd-pro-services/mariadb), [PostgreSQL](/macos/herd-pro-services/postgresql), [MongoDB](/macos/herd-pro-services/mongodb), [Typesense](/macos/herd-pro-services/typesense), [Meilisearch](/macos/herd-pro-services/meilisearch), [MinIO](/macos/herd-pro-services/minio), and [Redis](/macos/herd-pro-services/redis), and [Laravel Reverb](/macos/herd-pro-services/laravel-reverb) and you can get them up and running in seconds.
 
 <Frame>
-  <img alt="Herd Pro Services" src="https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=d55de8ba5821d184afc9253c76d4a6c6" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/features/services.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=280&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=56b2255dc0f07b83c98b8e611830485f 280w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=560&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=491f86c258816d09796cc82f29628968 560w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=840&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=8cb9c5254a2a6c21b891272eaae2dad5 840w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=1100&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=57842478e5219323de0d94d7c97529ac 1100w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=1650&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=b400b7760d0e1a01e28d5f073b4c02f5 1650w, https://mintcdn.com/herd/8sm4YnmqUuRPQUjM/images/features/services.png?w=2500&fit=max&auto=format&n=8sm4YnmqUuRPQUjM&q=85&s=087e84b0446ebd023bfd697eadd0992b 2500w" />
+  <img alt="Herd Pro Services" />
 </Frame>
 
 
@@ -1624,33 +1659,7 @@ Source: https://herd.laravel.com/docs/macos/getting-started/installation
 
 
 
-export const InlineNewsletterForm = ({id}) => <div className="newsletter-card-container">
-        <Card>
-            <div className="newsletter-card-content">
-                <h1 className="font-medium text-2xl sm:text-3xl text-gray-800 dark:text-white">Laravel Herd Quick Wins</h1>
-                <div className="text-lg text-gray-800 dark:text-white mb-4">Make the most of Herd in your first week — even if you're new to Laravel. Written for the 50,000+ devs using Herd every day.</div>
-            </div>
-            
-            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-            <form action={`https://app.kit.com/forms/${id}/subscriptions`} method="post" data-sv-form={id} data-uid="19dc730a0c" data-format="inline" data-version="5" className="pt-2 mb-8" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Please check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}">
-                <div data-style="clean">
-                    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-                    <div data-element="fields" className="formkit-fields">
-                        <input className="formkit-input w-full" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" style={{
-  borderColor: "rgb(227, 227, 227)",
-  minWidth: "350px",
-  flexGrow: 0
-}} />
-                        <button data-element="submit" className="py-3 w-full px-8 bg-brand text-white font-bold rounded-lg">
-                            <span>Subscribe</span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </Card>
-    </div>;
-
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Download Herd" icon="download" href="https://herd.laravel.com/download">
     Download Laravel Herd
   </Card>
@@ -1673,7 +1682,7 @@ After installing Herd, it serves all sites on your machine via `*.test` domains 
 
 More than 50,000 web developers use Herd every day to create awesome web applications for their users, and [they love it](https://herd.laravel.com/#testimonials).
 
-<InlineNewsletterForm id="7711601" />
+<InlineNewsletterForm />
 
 # Requirements
 
@@ -1689,7 +1698,7 @@ The onboarding process downloads the latest PHP version and installs a Herd back
 
 After the installation process is complete, you have a fully-functioning PHP and Laravel development environment. This means you can invoke the `herd`, `php`, `laravel`, and `composer` binaries from your terminal:
 
-```shell  theme={null}
+```shell theme={null}
 herd --version
 php --version
 laravel --version
@@ -1717,7 +1726,7 @@ Just quit Herd and run `valet start` to start Valet again.
 
 If you are using the [Fish](https://fishshell.com/) shell, you need to run the following command to add the Herd binaries to your path:
 
-```shell  theme={null}
+```shell theme={null}
 fish_add_path -U $HOME/Library/Application\ Support/Herd/bin/
 ```
 
@@ -1732,7 +1741,7 @@ Source: https://herd.laravel.com/docs/macos/getting-started/sites
 Herd uses the concept of *parked* paths and *linked* directories for serving sites. You can access every site in a parked path via `<directory-name>.test`. By default, Herd parks the `~/Herd` directory for you. Any PHP application in this directory is available via its `.test` domain automatically. If you have other locations for your projects, you can add them as parked paths in the general settings or link individual projects as a linked directory.
 
 <Frame>
-  <img alt="General Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c19852d44fecabeb5bc19eedc5e8e453" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/general.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=22afd9e1fa032bb21b9155850730ce93 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4869478d1f5a4152914c4a7d2167a8f0 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e1e778bc29630e44d5f9198cd41497a1 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=097afd2821b2723239b6e5aa63923d92 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3bff520c6616897ce59adf0038dd5449 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/general.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=68f07df21797b6c7ada48ed577906c1a 2500w" />
+  <img alt="General Settings" />
 </Frame>
 
 Aside from Laravel, Herd [supports many frameworks](/macos/extending-herd/supported-frameworks) and applications out-of-the-box. If your framework is not in the list, you can create a [custom driver](/macos/extending-herd/custom-drivers) to run it with Herd.
@@ -1741,7 +1750,7 @@ Aside from Laravel, Herd [supports many frameworks](/macos/extending-herd/suppor
 
 The fastest way to manage your sites and to create new applications is the command line.
 
-```shell  theme={null}
+```shell theme={null}
 cd ~/Herd
 laravel new my-new-site
 cd my-new-site
@@ -1755,7 +1764,7 @@ These commands go into your Herd directory, create a brand new Laravel applicati
 
 You can link an existing site with a specific domain via the `link` command from any directory on your machine. The `link` command uses the directory name as domain name if you don't set additional parameters.
 
-```shell  theme={null}
+```shell theme={null}
 cd ~/Sites/your-project
 herd link
 herd link custom-domain
@@ -1770,14 +1779,14 @@ If you prefer creating and linking sites via a graphical user interface, you can
 You can start the site wizard by opening the [Site Manager](/macos/sites/managing-sites) from the Herd menu bar icon and selecting the plus icon at the top left.
 
 <Frame>
-  <img src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e036cb8184e43e2c20e61521982d4545" data-og-width="1868" width="1868" data-og-height="1122" height="1122" data-path="images/docs/sites_wizard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=71559417801774d79796d3a538c151e7 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a19b9c7e83e2ba48fe3862fcf88331cb 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=83160e018710fe921d71987ae9befa3a 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e8da1ee4e77c6e49645f7eacd4f7654b 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4eeb18e2fc28519972ee9125eb85f520 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_wizard.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a8819615eb8f41d422b946d121e2e837 2500w" />
+  <img />
 </Frame>
 
 ## Unlinking an existing site
 
 You may remove a previously created link, by using the `unlink` command from any directory on your machine. The `unlink` command uses the directory name as domain name if you don't set additional parameters.
 
-```shell  theme={null}
+```shell theme={null}
 cd ~/Sites/your-project
 herd unlink
 herd unlink custom-domain
@@ -1816,8 +1825,9 @@ You can choose the PHP versions which you want to install or update in the "PHP"
 
 The supported PHP versions are:
 
-* 8.4
-* 8.3 (default)
+* 8.5
+* 8.4 (default)
+* 8.3
 * 8.2
 * 8.1
 * 8.0
@@ -1833,14 +1843,14 @@ While Herd always ships with the latest version of the Laravel CLI, you may want
 You can install this update via the PHP Settings tab.
 
 <Frame>
-  <img alt="Image of the PHP Settings of Herd with a highlight on the update button for Laravel" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8a3abb4040cdb3e7370a852012fdee47" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings-php-update-laravel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cc220cae09eaffebc518b96ca090b7d8 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=58fcca024221fe00ad2d8fd1f2a34fe1 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=26cd0755020b5066585811bc5f467dfe 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4f7cf89caa837697905dd260bd24f2a3 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5e2b52a339224887df35acf3609c46eb 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings-php-update-laravel.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2d04c560317499695c68d94a418fba93 2500w" />
+  <img alt="Image of the PHP Settings of Herd with a highlight on the update button for Laravel" />
 </Frame>
 
 ## Composer and Expose
 
 You can update Composer and Expose to their latest version with their integrated `self-update` commands but usually get them with Herd updates, too.
 
-```bash  theme={null}
+```bash theme={null}
 composer self-update
 expose self-update
 ```
@@ -1876,7 +1886,7 @@ Herd uses the concept of *parked paths* for serving sites via `.test` domains. B
 
 Let's open your terminal and go into the directory:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd
 ```
 
@@ -1892,14 +1902,14 @@ Laravel ships with an SQLite database for your application by default but if you
 
 The easiest way to download and install a fresh Laravel application is the command line. Herd ships with the Laravel installer, and it's already available in your CLI, so switch pack to the terminal and run the following command. The first line creates the application, the second line switches in your application directory for further commands.
 
-```bash  theme={null}
+```bash theme={null}
 laravel new my-first-application
 cd my-first-application
 ```
 
 If you have an existing Laravel application and git is available on your terminal, simply clone the repository and follow the setup guide for the application's readme file. It's usually something like this:
 
-```bash  theme={null}
+```bash theme={null}
 git clone path-to-your-repository
 cd repository-name
 cp .env.example .env
@@ -1912,7 +1922,7 @@ herd php artisan migrate
 
 Your application is now up and running, and you can visit it via it's `.test` domain. Herd provides a command to open your browser directly from your terminal.
 
-```bash  theme={null}
+```bash theme={null}
 herd open
 ```
 
@@ -1950,7 +1960,7 @@ You can set up and manage [services](/macos/herd-pro-services/services) directly
 You can install all these services with a few clicks and decide if you want to start them with Herd automatically or only on demand.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1e9ddb35805c0f24be4cc37832ecc9f7" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=143a7e51e9b92ed5189c1d64f04130ea 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=08309c5a6b46d8d09bbaddb00c957c5c 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3aec2a3121209890f92af9728a31965e 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=80f9b060ec397fb7cdf863fdd6978fc9 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1eccb7cd7383fa6154a32f5f8073e50c 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a2edeac7a8d42e5634472ce2c0f4af97 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Debug with Dumps
@@ -1959,20 +1969,20 @@ The most common debugging method in Laravel is using the helpers for `dump()` or
 
 Go to your terminal and start a tinker session by running the tinker command of the Herd command line interface. It proxies the tinker command of Laravel but always uses the application PHP:
 
-```bash  theme={null}
+```bash theme={null}
 herd tinker
 ```
 
 Once tinker has started, you can use the dump helper to output the string:
 
-```bash  theme={null}
+```bash theme={null}
 dump("hello from your app");
 ```
 
 When running this simple command, this opens the dump window and displays the string. You can use the `dump` and `dd` helper anywhere in your application to debug browser requests and CLI commands.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3b975ef5a985eb2051d8015d73d64a92" data-og-width="1844" width="1844" data-og-height="1342" height="1342" data-path="images/docs/dumps_settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a3ce4cef8e7af2c5bd71f8cc549e1cb0 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=29cbe8f9f64e084d45280079f41e6d28 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=19c8014aa53e82cd33f2387469eb2e80 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b452cc108274a1006e4821ab70fe3bf6 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d940a060b7211ef941f030dc71e416fc 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dumps_settings.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7ac8ec169b70cdad36a87080fd8028a1 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Test Emails
@@ -1981,7 +1991,7 @@ Testing emails can be cumbersome and even result in sending emails to your users
 
 To enable the email server for your application, go to the `env` file in the root of your application directory and make sure to update the mail settings according to the following configuration.
 
-```bash  theme={null}
+```bash theme={null}
 MAIL_MAILER=smtp
 MAIL_HOST=127.0.0.1
 MAIL_PORT=2525
@@ -1998,19 +2008,19 @@ Please make sure that your application name does not include any special charact
 
 So after you've setup up the mail service, let's test the configuration by creating a test email and sending it via tinker.
 
-```bash  theme={null}
+```bash theme={null}
 herd php artisan make:mail TestMail --markdown
 herd tinker
 ```
 
 Send the email in your tinker session via the mail facade.
 
-```php  theme={null}
+```php theme={null}
 Mail::to('sebastian@beyondcode.com')->send(new \App\Mail\TestMail());
 ```
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a05f97270532e7f58f75ca0c71698d7a" data-og-width="2774" width="2774" data-og-height="1712" height="1712" data-path="images/docs/mails-intro.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5fe04d828d9379ffbfe0c4358d117abd 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d70f76c42f366bec471a215074af8bab 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c812270bd4bb81c7b7991247745adf6f 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=0736a427709e0d1cc00549fc9d9ed9c9 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=64a6c303ddf269634f3a9a9b7e1a9a49 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=99907f4c16654a68080ecf1e3c0d49f1 2500w" />
+  <img alt="" />
 </Frame>
 
 After setting up your first Laravel application in Herd, you can now follow the docs to learn more about all features in more detail and fully leverage Herd when using it every day.
@@ -2045,7 +2055,7 @@ As described above, Herd serves all directories in your parked paths via local `
 
 If you are running a multisite and want to point multiple domains to a single WordPress installation, you can use Herd links to create more local domains. You can either do that via the Site Manager as described in the chapter [linking sites](/macos/getting-started/sites#linking-an-existing-site) or use the terminal with the commands below.
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd/my-wordpress-site
 herd link my-second-domain
 ```
@@ -2070,7 +2080,7 @@ After that, simply follow these steps:
 If you are using a different port for your database instance, make sure to add this port to the database host during the installation. When using Herd, the database username is `root` and has no password.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b8b42cbcaa62cd3b3ad5bdaad990c71e" data-og-width="1570" width="1570" data-og-height="1352" height="1352" data-path="images/docs/guides_wordpress_database.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a915cb826c5addc45f18c126fadc336a 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=08505e86b49b8837ef23742f83c15263 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5bfb0dd99bf5112099998ba5887ca323 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=eaf692677092428a43f4e37505ab06aa 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c82bf7921b47695e53f4fb78c9bf2947 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_database.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4cc083a2baae911d8545c902072d7b2a 2500w" />
+  <img alt="" />
 </Frame>
 
 Your WordPress site is now running via Herd and you can start working on it.
@@ -2079,7 +2089,7 @@ Your WordPress site is now running via Herd and you can start working on it.
 
 [Herd Pro](/#plans) allows you to debug your site with a convenient `dump` helper. So if you're working on plugins and need to output data for debugging purposes, this is super powerful. In this example, we\`re creating a very basic plugin and dumping a string and all existing posts of the fresh WordPress install.
 
-```php  theme={null}
+```php theme={null}
 /*
 Plugin Name: My Herd Plugin
 Plugin URI: https://example.com/my-herd-plugin
@@ -2102,7 +2112,7 @@ function my_custom_function() {
 When opening any page of your site, the function runs and sends the debug output to the dumps window where it looks like this example.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3794b56425f6ed2e9f87ab57bdaf3280" data-og-width="1914" width="1914" data-og-height="1660" height="1660" data-path="images/docs/guides_wordpress_dumps.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=183f6716062bc5b61088c9a145b82bcd 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=10855adf35fb9591ef3591be72b143ce 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cd1381bd9d2eb18dff2d75662d37a08b 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b4798242a440a3f1eb99ae00de45aa3d 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b73f71f7e22a2186560da91e32ae2ceb 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_dumps.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=54f4fe178b74ee9d6dfcd2d1d8361b9c 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Test Emails
@@ -2111,7 +2121,7 @@ Testing emails can be cumbersome and even result in sending emails to your users
 
 The quickest way to set up mails in Herd Pro is by defining a mailer in the `functions.php`. Simply paste the following snippet to the end of your `functions.php` to receive emails in Herd.
 
-```php  theme={null}
+```php theme={null}
 function herd_mailer($phpmailer) {
     $phpmailer->isSMTP();
     $phpmailer->Host = '127.0.0.1';
@@ -2129,7 +2139,7 @@ Every time when your application sends an email, it uses Herd's integrated mail 
 You can test this feature by logging out of your site and using the password reset form to trigger an email.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=131f3b183c1da67a1a6143dd94934499" data-og-width="2134" width="2134" data-og-height="1304" height="1304" data-path="images/docs/guides_wordpress_mails.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b0747bcf08b25316db08074e71f498eb 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5b07c818918c8923ac88979c6d4eb2c1 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c9b8d4e411fc993b4e4c9f76f3a08c5f 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ea430aa911399a2110a876e5c63016fb 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=80e205a5acff0788d624f0d8ce6cacc5 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/guides_wordpress_mails.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=318abdddd2a121e8a5ff3ddf96c01136 2500w" />
+  <img alt="" />
 </Frame>
 
 After setting up your first WordPress site in Herd, you can now follow the docs to learn more about all features in more detail and fully leverage Herd when using it every day.
@@ -2149,7 +2159,7 @@ While you can install it as a package into your existing application, it often m
 Herd provides a convenient way to set up a dedicated Reverb instance on your machine with a few clicks. It even comes secured with an optional TLS certificate.
 
 <Frame>
-  <img alt="Screenshot of MySQL settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0f679516cc6864c6f0347ccc279c627a" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-reverb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4f17e3e4f12f353ea2b91cf5c2ebb876 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=58d11542936fa9864ca43c925941fe8e 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=587e72ee734b04a4a873fc5d45174fbf 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1be3c57db1fac350e33a9372273e396e 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=13794e486f54d70f19025c4098e9f28b 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-reverb.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ae81d8d6613af803277a74bac277337b 2500w" />
+  <img alt="Screenshot of MySQL settings" />
 </Frame>
 
 ## Connecting from your Laravel application
@@ -2157,7 +2167,7 @@ Herd provides a convenient way to set up a dedicated Reverb instance on your mac
 Laravel Reverb starts the WebSocket server on port `8080` but you can change it when creating a new service in case you're already running a different service on that port or want to run multiple instances in parallel.
 After installing Reverb, you can use the following environment variables to configure the service for your application.
 
-```bash  theme={null}
+```bash theme={null}
 REVERB_APP_ID=1001
 REVERB_APP_KEY=laravel-herd
 REVERB_APP_SECRET=secret
@@ -2172,7 +2182,7 @@ Check out the [Laravel Echo documentation](https://laravel.com/docs/11.x/broadca
 Reverb constantly logs information to the running process, so if you are debugging Reverb connection,s you can open the output of the Reverb process by pressing the Open button in the logs area on the right side.
 
 <Frame>
-  <img alt="Reverb Logs" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8b98984c650ba9734012936c12c8e43d" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_reverb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4c5c4c2447c5d14e2638afcd972fd857 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=aba09bf84e670e8e0fc84738bded0879 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2668b432dddddb1e557b5165bbec3599 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f736a01e31b9cf1a6797bc06400952a3 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=70ae09a2c8680390801784714fe771f2 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_reverb.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2a57106d85e23ecc5c17c041382b6f07 2500w" />
+  <img alt="Reverb Logs" />
 </Frame>
 
 ## Updates
@@ -2202,7 +2212,7 @@ Herd Pro provides an SMTP mail server on your local machine that catches all out
 This saves you from sending emails to real users and frees you up from paying cloud services for developer email inboxes, not even requiring you to dig through log files when using the log driver. It's also super fast and organizes all emails per site.
 
 <Frame>
-  <img alt="Herd Pro Mail Server with a mail" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a05f97270532e7f58f75ca0c71698d7a" data-og-width="2774" width="2774" data-og-height="1712" height="1712" data-path="images/docs/mails-intro.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5fe04d828d9379ffbfe0c4358d117abd 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d70f76c42f366bec471a215074af8bab 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c812270bd4bb81c7b7991247745adf6f 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=0736a427709e0d1cc00549fc9d9ed9c9 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=64a6c303ddf269634f3a9a9b7e1a9a49 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-intro.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=99907f4c16654a68080ecf1e3c0d49f1 2500w" />
+  <img alt="Herd Pro Mail Server with a mail" />
 </Frame>
 
 ## Setup
@@ -2257,7 +2267,7 @@ Either specify a unique username manually, or use the `APP_NAME` environment var
 By default, the Herd Pro mail server runs on port `2525` but you can customize this configuration in the settings.
 
 <Frame>
-  <img alt="Herd Pro Mail Server Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d5d82bd5e094f047fba0a6d3ab9148b1" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_mail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=3cee717f65ee50c0170f4f2c249713f3 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b26158ab0ca5d3873e99246f58093c9d 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9348902335df6e5d1a8058b619a159e8 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7cde40c4866a304cb2a1003f0e86c0d0 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=34acfa7de14890f6430ac1b28e1b7dad 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_mail.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8e7d3ba7e87ca11b046fd42923380f5a 2500w" />
+  <img alt="Herd Pro Mail Server Settings" />
 </Frame>
 
 ## Inspecting mails
@@ -2267,7 +2277,7 @@ You may inspect the header values of an email by opening the sidebar of the emai
 The HTML source of the email or the raw email content are available via right-click on the email itself. They open in a new window, and you can open raw or HTML content of multiple mails at the same time.
 
 <Frame>
-  <img alt="Herd Pro Mail Server with a mail" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=092a2ed1314d5138b08f192d0bb33383" data-og-width="2774" width="2774" data-og-height="1712" height="1712" data-path="images/docs/mails-headers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=787e5717e0441d2ba005ef63ad189630 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=64f0a511ba23643101cb218794b33bc3 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d1764021224c945f85fe3dddcf5e2016 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c53bbeade8273206b94aa706f2248d5f 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=985a3b73a57654c1c0053bda7e6cb745 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/mails-headers.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d3344c3cc84238439beda6b1ccecc32e 2500w" />
+  <img alt="Herd Pro Mail Server with a mail" />
 </Frame>
 
 ## Attachments
@@ -2303,7 +2313,7 @@ Source: https://herd.laravel.com/docs/macos/herd-pro-services/mariadb
 MariaDB is a drop-in, fully compatible replacement for MySQL, and it's the default database engine for many Linux distributions. Many popular hosting platforms like [Laravel Forge](https://forge.laravel.com) support MariaDB databases out of the box, making the switch from local to production a breeze.
 
 <Frame>
-  <img alt="Screenshot of MySQL settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a5d392bf631c3aa8b9a4135c465c8a86" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-mariadb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9c4610815f1eee56a993bcd7ca89a9da 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9804affd57620035855bb95939d88f1e 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=31f8b7730d02b0e87de2f27fbc80c5c1 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2a19b39065e4a22116c8cd22d37dbc15 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c7f5d19b0b778a34e15ee5a44b0ce954 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mariadb.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c87efa27093044b5760830c4614520f0 2500w" />
+  <img alt="Screenshot of MySQL settings" />
 </Frame>
 
 ## Configuration
@@ -2323,14 +2333,14 @@ While Laravel applications can create a database when running the migrations for
 The service details on the right side of the selected service allow you to open TablePlus or AdminerEvo with a single click. Herd automatically detects TablePlus on your machine and provides a connection string to access the database instance. If you don't use TablePlus, it opens AdminerEvo where it inserts the correct login credentials for you.
 
 <Frame>
-  <img alt="MariaDB Sidebar" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=462afebaf471423a072e27ccf437f233" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_mariadb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8741f6bd32f987383137926b26a11528 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b779e3143501e4fc52c5e797c2f1f18d 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5a94e5cb096f06562f4929bec3b7a1d8 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9c2ccb0a0a8ee218ebf778bd19aa739e 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0cb6ea5e270264a33526e20706f06503 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mariadb.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0944dbe72a47a0ca7f99dcb051e2f56b 2500w" />
+  <img alt="MariaDB Sidebar" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 To connect your application to the server, you can use the credentials that are listed next to the running service in the settings, or you can use the ones below.
 
-```env  theme={null}
+```env theme={null}
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3307
@@ -2350,7 +2360,7 @@ As Laravel Herd allows you to start multiple MariaDB servers, you should specify
 
 For example, to connect to the MariaDB server running on port 3306, you can use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 mariadb -u root -h 127.0.0.1 -P 3306 -p
 ```
 
@@ -2373,14 +2383,14 @@ Source: https://herd.laravel.com/docs/macos/herd-pro-services/meilisearch
 Meilisearch is a powerful search engine for your application, working perfectly with [Laravel Scout](https://laravel.com/docs/11.x/scout). It allows you to add a search engine with great relevancy, typo correction, and more to your application by simply adding the `Searchable` Trait to a model.
 
 <Frame>
-  <img alt="Screenshot of Meilisearch settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d72a51d32be226143441c1c7131394eb" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-meilisearch.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fbf39ee7d84da13575e0f360578d03d8 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f64bf3ae0c341c344e1d6ef15787dc8c 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6f6ec069040b592f1fa21bc10e317e70 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1aa732268f504cc88209783dfa9d3bc3 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ea57beac79d36d70c81565ae63eb3b27 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a62cf4652288af214cc9d8c0f0bd3837 2500w" />
+  <img alt="Screenshot of Meilisearch settings" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 Like with all Herd services, you can configure the port as well as the service name of your Meilisearch instance and add the following environment variables to your `.env` file.
 
-```env  theme={null}
+```env theme={null}
 SCOUT_DRIVER=meilisearch
 MEILISEARCH_HOST=http://127.0.0.1:7700
 MEILISEARCH_KEY=LARAVEL-HERD
@@ -2388,7 +2398,7 @@ MEILISEARCH_KEY=LARAVEL-HERD
 
 When using the Meilisearch driver you will need to install the Meilisearch PHP SDK via the composer package manager:
 
-```bash  theme={null}
+```bash theme={null}
 composer require meilisearch/meilisearch-php http-interop/http-factory-guzzle
 ```
 
@@ -2399,7 +2409,7 @@ You can find additional information about using Laravel Scout with Meilisearch i
 You can open the Meilisearch Dashboard or the logs of the service from the right side of the service details.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=381dca368dda29b60cba76b48aa21eb9" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_meilisearch.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=7af381cf85755ee911f9f9d1420f3150 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e926ed5200b2a4ca8c9d699b85530ed3 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=85a35336e1de5316ed945062be005677 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f894923f1e871379cf3c1d60da521490 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=093b93ebe27c6daeb0e43603f8461de6 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_meilisearch.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f8929586252d29a2d922302c6f510259 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Dashboard
@@ -2407,7 +2417,7 @@ You can open the Meilisearch Dashboard or the logs of the service from the right
 The Meilisearch dashboard is accessible via `http://locahost:port` or by using the dashboard button in the services list.
 
 <Frame>
-  <img alt="Screenshot of the Meilisearch dashboard" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=85fa215d160b130a895cc6cbac189730" data-og-width="2882" width="2882" data-og-height="1984" height="1984" data-path="images/docs/setup-meilisearch-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f5ac4eaac05f1a5d0aaafa87c8cb690b 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a70c9edd4940c1fe8a53a165a605ab79 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=45fd6912e718756273e695f65bc2f808 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=bbd2d08612ba0642e367cd6a7923bab2 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9ed554fb54ba45d2ab0ea7fe867cd644 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-meilisearch-dashboard.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=70ecd49107d885f68fd866369901d802 2500w" />
+  <img alt="Screenshot of the Meilisearch dashboard" />
 </Frame>
 
 ## Versions
@@ -2429,7 +2439,7 @@ Source: https://herd.laravel.com/docs/macos/herd-pro-services/minio
 MinIO is an open-source, S3 compatible object storage and works perfectly if you want to use the same APIs locally that you use on your production environment. You can set up MinIO as a Herd service and log into its dashboard to create your first storage bucket with the same credentials that you use as environment variables.
 
 <Frame>
-  <img alt="Screenshot of minio settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3f961357945e0f3bfae4d4bca5472bb8" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-minio.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2ff8e42fddedcdcce32c2150df67c058 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d6246dc5c1a2ebb8e44a7580cdb05c4e 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8e8fafe49839a7425f3c8580c188f410 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c3144e8885f8332378bf8ec7371ab5a8 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=eb571ea89f3611c556a598e24351b8fb 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=71a84daba8bfedcb968418d6c393d02e 2500w" />
+  <img alt="Screenshot of minio settings" />
 </Frame>
 
 ## Configuration
@@ -2437,7 +2447,7 @@ MinIO is an open-source, S3 compatible object storage and works perfectly if you
 Before you can connect your application to MinIO, you need to create a first bucket within the dashboard. The easiest way to access the dashboard or view the logs of the service is via the Herd service configuration.
 
 <Frame>
-  <img alt="Screenshot of the MinIO configuration" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=69c2f4331f300ac1b610d2db4b985506" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_minio.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=36d8c8b2949f5971ffeb8209487a7080 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=55805e9fead2a2e680bf4c645b9c9de9 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=dfe5b486dcdae16c15bc33430156891f 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=43e5868242cd80bd189383d2f6ce45d8 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2eb93d67a5a94fa36e24f79e52ab725a 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_minio.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6e4f9d0f7d7b7c4e72b0dcba11fd31f8 2500w" />
+  <img alt="Screenshot of the MinIO configuration" />
 </Frame>
 
 ## Dashboard
@@ -2445,7 +2455,7 @@ Before you can connect your application to MinIO, you need to create a first buc
 You can access the MinIO dashboard via `http://localhost:PORT` or by using the dashboard button in the services list. Log in with the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to create your first bucket and use the object storage like in your production environment.
 
 <Frame>
-  <img alt="Screenshot of the MinIO dashboard" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1bb8feeac9813ec43bab6473fe902332" data-og-width="2666" width="2666" data-og-height="1710" height="1710" data-path="images/docs/setup-minio-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f927fe3d161ee49f7365b33a90bd676a 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4300308ef79e53aa45d8ba815404527e 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=40c267a85137ebbb55530f93b6b9249f 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=bae7e1afa13ed9ef8678ed590d4eca27 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c51fcfc397c31a7db0c5ddf6a4752697 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-minio-dashboard.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3ad9cf7b58dccb320e8512a95c86703d 2500w" />
+  <img alt="Screenshot of the MinIO dashboard" />
 </Frame>
 
 ## Configuration
@@ -2454,7 +2464,7 @@ After setting the name, port, and autostart options and starting up the service,
 
 You can then adjust your `.env` file in order to connect to your local MinIO service.
 
-```env  theme={null}
+```env theme={null}
 AWS_BUCKET=herd-bucket # Your bucket name
 AWS_ACCESS_KEY_ID=herd
 AWS_SECRET_ACCESS_KEY=secretkey
@@ -2484,7 +2494,7 @@ Source: https://herd.laravel.com/docs/macos/herd-pro-services/mongodb
 You can install the [MongoDB Community Edition](https://www.mongodb.com/products/self-managed/community-edition) from the service management section of the settings. This uses the MongoDB PHP extension and allows a seamless use of MongoDB in your application during development.
 
 <Frame>
-  <img alt="Screenshot of MongoDB settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=30da82302d5bd9a0fff9bb5760cc3ba8" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_mongodb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=cfc310cad3460bc7af1043241835bf6d 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=41d16e27801de5fb9c104015e3560929 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fb3b143c48826de1e85d085eb16d574f 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f40ca6246dbc22379d3f893ced199df5 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e28132690607ea6b1cccd51e4e15d401 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mongodb.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=eb2686f2853eb557ae2bf5a7dda3fe4a 2500w" />
+  <img alt="Screenshot of MongoDB settings" />
 </Frame>
 
 ## Configuration
@@ -2505,14 +2515,14 @@ In order to use MongoDB in combination with Laravel, you may use the `mongodb/la
 
 Run the following command to add the dependency to your application:
 
-```bash  theme={null}
+```bash theme={null}
 composer require mongodb/laravel-mongodb
 ```
 
 To connect your application to the database server, you can use the credentials that are listed next to the running service in the settings, or you can use the ones below.
 Add these settings to your `.env` file.
 
-```env  theme={null}
+```env theme={null}
 DB_CONNECTION=mongodb
 DB_PORT=27020
 DB_URI="mongodb://127.0.0.1:27020/laravel"
@@ -2545,7 +2555,7 @@ MySQL is the most popular relational database engine for web development, and se
 If you are new to Laravel and want to move from SQLite to a database service, MySQL is the best choice for most applications.
 
 <Frame>
-  <img alt="Screenshot of MySQL settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d69ab65c52b0d79a18f8582e4ecbc59d" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-mysql.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=daecc665a758ac3b4f5c6228e2d48db9 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=7e61d98b0fc8aa0bf4c89d4ee7ab541c 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5cc01e9eaf08836fbe4d15d2be67de9d 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=cdffe8c5c1bc018530e882fcc8d60f2f 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a62cc97354c83f873b5d76f189e2ed59 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-mysql.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2337900e88da64d2fcda3fe0771d16f6 2500w" />
+  <img alt="Screenshot of MySQL settings" />
 </Frame>
 
 ## Configuration
@@ -2565,14 +2575,14 @@ While Laravel applications can create a database when running the migrations for
 The service details on the right side of the selected service allow you to open TablePlus or AdminerEvo with a single click. Herd automatically detects TablePlus on your machine and provides a connection string to access the database instance. If you don't use TablePlus, it opens AdminerEvo where it inserts the correct login credentials for you.
 
 <Frame>
-  <img alt="MySQL Sidebar" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=881d70dcb9912411b9da399de9ca89be" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_mysql.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=16cad02f11777f61b74953fe8ca5b8a7 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a9facd40370b8b19a60c6fb2aa491685 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=98a745314da488df10b01fe9772421d5 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=635f78a8a5e90e6209938f41b49bf317 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fe9ac0593e0f82029ab58a6e0c9298c3 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_mysql.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=264296cb906146a29775621d11bfad97 2500w" />
+  <img alt="MySQL Sidebar" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 To connect your application to the server, you can use the credentials that are listed next to the running service in the settings, or you can use the ones below.
 
-```env  theme={null}
+```env theme={null}
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3307
@@ -2592,7 +2602,7 @@ As Laravel Herd allows you to start multiple MySQL servers, you should specify t
 
 For example, to connect to the MySQL server running on port 3306, you can use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 mysql -u root -h 127.0.0.1 -P 3306 -p
 ```
 
@@ -2621,7 +2631,7 @@ Laravel Herd Pro extends PostgreSQL by providing a number of popular extensions:
 * [pgvector](https://github.com/pgvector/pgvector) - a vector similarity search extension for PostgreSQL, which allows you to search for (among other things) OpenAI embeddings in your database.
 
 <Frame>
-  <img alt="Screenshot of PostgreSQL settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=bc79104b778b7c618e2a6a0867e44aff" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-postgresql.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8afac0656461906d9a4e9c7c6b5a1007 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a6d405362d29fa212969c6fbf83ccb3e 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4f48bce811fc67773149d1347aea63c1 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4754847fd67c5b9ad15985c0c74c5365 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5fbdcb46e195c58fc671b8a5be97de22 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-postgresql.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fbba81c1a21738ec88f36d71ac3ea1b1 2500w" />
+  <img alt="Screenshot of PostgreSQL settings" />
 </Frame>
 
 ## Configuration
@@ -2641,14 +2651,14 @@ Before you can connect your application to the database service, you need an act
 When clicking on the related button for these tools on the right side of the service details, Herd opens a connection to the database in your preferred tool and automatically logs you in.
 
 <Frame>
-  <img alt="MySQL Sidebar" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ecc2e3add8e7a47fcff20c13895dd489" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_postgresql.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fd6a02c06c9c80cd1ee13ed040cbd1ef 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=df764f595d984c126b17c66d7d8c5248 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1efbcb16d40a2ddb94ceb32905beb3f3 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4ec8cd5912c36cce01197526930e5635 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=67d9f57ceac95d4fceee4645e1d72095 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_postgresql.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4ca42b754b308c74f2dfd27f50783721 2500w" />
+  <img alt="MySQL Sidebar" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 To connect it within your application, you can use the credentials that are listed next to the running service in the settings, or you can use the ones below.
 
-```env  theme={null}
+```env theme={null}
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
@@ -2689,7 +2699,7 @@ Redis is a fast in-memory data store that is very versatile, and most Laravel ap
 You can set up a new Redis instance via the services tab of the settings.
 
 <Frame>
-  <img alt="Screenshot of MySQL settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=52dfa1ee87d018b5aec4c274e75b1efb" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-redis.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3ac25accf9a1a848417760edf3cfe8a6 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d27c456b7f617705362b206f95e2760f 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3d42515395d93c6c072d99a019faa299 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f8f4b3d9c6ccdb4a14588327a188cff9 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0966cd58faf9c216d91e022f5f78018f 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-redis.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e0e210d343e423af6d80b3cef9b34364 2500w" />
+  <img alt="Screenshot of MySQL settings" />
 </Frame>
 
 ## Configuration
@@ -2705,14 +2715,14 @@ Make sure to restart the service if you make changes to this configuration file.
 You usually don't need dedicated Redis databases within your redis instance but if you decide to do that or want to debug the content of your Redis database, you can open TablePlus directly from the menu on the right side.
 
 <Frame>
-  <img alt="MySQL Sidebar" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b7c7474e06c40e073e109cfc3b8a133e" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_redis.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=93faabe5042256a57b607213e4697cd0 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3b7bf7d96a9723994216d19c6fbf0b6a 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2439d204a45e4fffbb3efa7a4bd01fed 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=52cc5a6d4127321f90f7c768a3934519 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5a6536a3cd4d2fd9f850b3c5a64d2df4 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_redis.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=be0ec9d0930a2630957ee2749944ef70 2500w" />
+  <img alt="MySQL Sidebar" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 To connect it within your application, you can use the credentials that are listed next to the running service in the settings, or you can use the ones below.
 
-```env  theme={null}
+```env theme={null}
 # Driver configuration
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
@@ -2807,7 +2817,7 @@ To install a service, go to the settings and select the services tab. In this ta
 Every service has a binary directory where the applications files live and a data directory where the service stores the data and custom configuration. You can access both folders by right-clicking the service and selecting the destination.
 
 <Frame>
-  <img alt="Screenshot of service settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1e9ddb35805c0f24be4cc37832ecc9f7" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=143a7e51e9b92ed5189c1d64f04130ea 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=08309c5a6b46d8d09bbaddb00c957c5c 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3aec2a3121209890f92af9728a31965e 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=80f9b060ec397fb7cdf863fdd6978fc9 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1eccb7cd7383fa6154a32f5f8073e50c 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a2edeac7a8d42e5634472ce2c0f4af97 2500w" />
+  <img alt="Screenshot of service settings" />
 </Frame>
 
 ## Managing Services
@@ -2847,14 +2857,14 @@ Typesense is a lightning-fast open source search engine for your application, wo
 Herd makes setting up a Typesense service super easy:
 
 <Frame>
-  <img alt="Screenshot of Typesense settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6b7debd8169c3ebfcfb5d569b3169fcd" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/setup-typesense.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2291761b846bffb9a4bcfad2a6e21b29 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3e059c0376b8da624bf71b551934d323 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=199d15ad073422f7b1eb49004370a803 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=edeb7dd47dc8a1dca86dd4106bca2ae4 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3dcd71dcf83ab6adeea2cde987ccaa5c 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-typesense.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4486a86a1d5d1c82e57994c3537bfcd3 2500w" />
+  <img alt="Screenshot of Typesense settings" />
 </Frame>
 
 ## Connecting from your Laravel application
 
 Like with all Herd services, you can configure the port as well as the service name of your Typesense instance and then add the following environment variables to your `.env` file.
 
-```env  theme={null}
+```env theme={null}
 SCOUT_DRIVER=typesense
 TYPESENSE_API_KEY=LARAVEL-HERD
 TYPESENSE_HOST=localhost
@@ -2863,12 +2873,12 @@ TYPESENSE_HOST=localhost
 If you're using a different port, you can simply copy the connections details from the right side of the service settings. The Typesense detail view also gives you a quick access to the logs of the service.
 
 <Frame>
-  <img alt="Typesense settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5728acbd0db1ce3847e1c9a6f755101a" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/settings_services_typesense.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ebb7a81a12337b341c29947c0b1e2dc6 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f10a221d926c83f96cdddbf9415d5b05 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=838305f6a6d47a34f9a1b6e316b767bf 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f39d158a7fa27f76e370d5802a536cf5 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=27db1815b4abd32d437cd373bd8a4601 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_typesense.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=660fd2aea294ad1b570ee210aa6fc1eb 2500w" />
+  <img alt="Typesense settings" />
 </Frame>
 
 When using the Typesense with Laravel Scout you will need to install the Typesense PHP SDK via the Composer package manager:
 
-```bash  theme={null}
+```bash theme={null}
 composer require typesense/typesense-php
 ```
 
@@ -2901,7 +2911,7 @@ developer friendly license.
 You can set up a new Valkey instance via the services tab of the settings.
 
 <Frame>
-  <img alt="Screenshot of Valkey settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d694ba29d47fd0cda010e0125f47cd6e" data-og-width="1800" width="1800" data-og-height="1236" height="1236" data-path="images/docs/setup-valkey.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=239a73dad8cce80a3c8c79f41261993b 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=443278dd6194c8fb18402f8618187ace 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b4f4e2f3457d9771d7ee75c214430da3 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=94c8ce6aee0064ddf702a6275e4ab99c 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8148996ae2442fefee53c1447e20ef99 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/setup-valkey.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=107986a8a0193573fc8da9c6706e0aa0 2500w" />
+  <img alt="Screenshot of Valkey settings" />
 </Frame>
 
 ## Configuration
@@ -2917,7 +2927,7 @@ Make sure to restart the service if you make changes to this configuration file.
 You usually don't need dedicated databases within your Valkey instance, but if you decide to do that or want to debug the content of your database, you can open TablePlus directly from the menu on the right side.
 
 <Frame>
-  <img alt="Valkey Sidebar" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d7fa29ca04ac0263d6b673dfbe78ba35" data-og-width="1800" width="1800" data-og-height="1236" height="1236" data-path="images/docs/settings_services_valkey.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a8e031afd3f4b0d3ff036afba38dfa24 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=609a0884d693bbcdf598dfd2566c5e20 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=7380e2d2382436b178ff07b71cf84a23 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9155b73d1920f88227aab55c975fbc87 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=7c9646c583e1b645753cee5a7ea83ffa 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_services_valkey.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f00b407df69e97a3efaffcd8163ffa44 2500w" />
+  <img alt="Valkey Sidebar" />
 </Frame>
 
 ## Connecting from your Laravel application
@@ -2925,7 +2935,7 @@ You usually don't need dedicated databases within your Valkey instance, but if y
 To connect it within your application, you can use the credentials that are listed next to the running service in the
 settings, or you can use the ones below. Since Valkey is API compatible with Redis, the configuration is the same.
 
-```env  theme={null}
+```env theme={null}
 # Driver configuration
 CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
@@ -2962,19 +2972,19 @@ Herd has a seamless integration with [Laravel Forge](https://forge.laravel.com) 
 To use the Forge integration, you need to set up at least one Forge account in the Integrations tab of the settings. Select `Connect Service` and select Laravel Forge. Herd supports multiple Forge accounts in case you have separate accounts for your personal sites and sites that you manage at work.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e21b4bd560754a477e097a9413b9e652" data-og-width="1600" width="1600" data-og-height="1122" height="1122" data-path="images/docs/integrations_forge_connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=f102bee9855be1eadca81175fb22193e 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=223ebb41258bba0caae2ac374c99762e 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=0f52ef0a4d7ca2b10bd98066d9670065 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9a2b629e2f775c298f39c3fd55e6da72 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a092bf23a9b750667b8531dd61e08be0 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_connect.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=adfdfe5b49031919f560a95d72b3dd35 2500w" />
+  <img alt="" />
 </Frame>
 
 During the setup process, Herd connects to your Laravel Forge account and obtains an OAuth token during the authorization.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4643168e691581729f126e01b8b95446" data-og-width="2242" width="2242" data-og-height="1432" height="1432" data-path="images/docs/integrations_forge_auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a799e483870d4f152105138d3222a4a2 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c518f4b0daa22620f64bca21ce74017f 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c2fc42920fa4ff7c7e1612a52f6bfec7 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2fb13b842281d5a9b833c085f84501c5 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=282a8b6833da4632f71a29f48909e9fa 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_auth.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8b63430afdd6448e13762375e76f245d 2500w" />
+  <img alt="" />
 </Frame>
 
 When Forge and Herd are connected, it shows up in the integrations list. This means that you are ready to link local sites with sites on Forge now.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b4cc24ef2565f16352b0cf4ac2402f86" data-og-width="1600" width="1600" data-og-height="1102" height="1102" data-path="images/docs/integrations_connected.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=971e0125b63e9566603ad3f1abc09e61 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=44d329816fef2a3e60d5ef8fa998fb82 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=deae7f6c60245428b22efc7b20c0f2ca 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7a250fb1919b649d8bd51a87bc4ad6b8 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=539415287ac15e11b0ffe79bc352fe54 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_connected.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2f82309905603700a5a89c9d0cbfa8a3 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Link a Herd site with Laravel Forge
@@ -2982,13 +2992,13 @@ When Forge and Herd are connected, it shows up in the integrations list. This me
 When the integration is set up, you can open the Sites panel, select a site and press the button to connect this site to one or more sites on Forge. This allows you to access development, staging and production environments directly from one Herd site.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c60994a647b27bbee4e4d1e2a957a44f" data-og-width="1800" width="1800" data-og-height="1258" height="1258" data-path="images/docs/integrations_forge_site.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=51472310e6f8cf8bab7078206f1ff35f 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ce9a5dbe85547de9fa195ffff91f2e16 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=75b13c41ae0e6e6f83d026912d2868d9 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=fd074bd7958eb4e4e4181c0b7da0daad 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=bc2eebe89b0dd44ebcc4ca552bb0d5ec 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5d27168d78a5b9fd64b258181f706dc4 2500w" />
+  <img alt="" />
 </Frame>
 
 After you've selected a site, you can deploy the site with the icon in the main toolbar or use the other functions on the right side of the panel.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=15c038100af3be630cdbee885629b55d" data-og-width="1800" width="1800" data-og-height="1258" height="1258" data-path="images/docs/integrations_forge_site_features.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ce87fa62ae3fadc1564f6e33196e0f3d 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5b32118baef0496dd437ebf811607b6a 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=873d6166b898e2da96817a41b5514132 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1ac4b664183c1b4561aa2c033155a34a 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8b839cc9ea08186899d98d573373d997 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/integrations_forge_site_features.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=39f3432223a26f647bf17d58419473eb 2500w" />
+  <img alt="" />
 </Frame>
 
 ### Forge
@@ -3007,7 +3017,7 @@ If you want to copy some environment variables from a Forge site to recreate the
 
 The Herd integration with the Forge CLI allows you to omit servers and sites from commands which makes it super easy to interact with your sites via the command line. Just run `forge` to see all available commands or go through the list below.
 
-```bash  theme={null}
+```bash theme={null}
   command          Execute a CLI command
   deploy           Deploy a site
   open             Open a site in forge.laravel.com
@@ -3050,7 +3060,7 @@ The Herd integration with the Forge CLI allows you to omit servers and sites fro
 
 If the CLI detects more than one linked site, it asks you which one you want to use before running the command:
 
-```bash  theme={null}
+```bash theme={null}
  ┌ Select the Forge integration to use: ────────────────────────┐
  │ › ● herd.laravel.com                                         │
  │   ○ latest.herdphp.com                                       │
@@ -3061,7 +3071,7 @@ If the CLI detects more than one linked site, it asks you which one you want to 
 
 Herd stores the server and site ids in a `herd.yml` within the root of your project. This way, everyone on your team can directly access the site if they have access to the site in Forge. If you want to fully leverage the `herd.yml`, read more [here](/macos/sites/herd-yaml).
 
-```yaml  theme={null}
+```yaml theme={null}
 integrations:
   forge:
     herd.laravel.com:
@@ -3113,7 +3123,7 @@ The first step is to export all your databases from MAMP. You can do this using 
 
 If you prefer using the command line, you can use the MySQL executable that ships with MAMP:
 
-```bash  theme={null}
+```bash theme={null}
 "/Applications/MAMP/Library/bin/mysqldump" -u root -p database_name > database_name.sql
 ```
 
@@ -3137,7 +3147,7 @@ If you're using the free version of Herd, you can:
 1. Install MySQL separately via Homebrew or download it from mysql.com
 2. Import your databases using the mysql command line tool:
 
-```bash  theme={null}
+```bash theme={null}
 mysql -u root database_name < database_name.sql
 ```
 
@@ -3179,13 +3189,13 @@ MAMP and Herd handle PHP versions differently. In Herd, you can:
 
 1. Set a global PHP version via the menu bar or CLI:
 
-```bash  theme={null}
+```bash theme={null}
 herd use 8.2
 ```
 
 2. [Set per-site PHP versions](/macos/technology/php-versions#per-site-php-versions) either through the Site Manager or CLI:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd/mysite
 herd isolate 8.1
 ```
@@ -3194,7 +3204,7 @@ herd isolate 8.1
 
 Update your database configuration in your applications. For Laravel applications, modify your `.env` file:
 
-```env  theme={null}
+```env theme={null}
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306 # Or the port you configured in Herd
@@ -3207,7 +3217,7 @@ DB_PASSWORD=
 
 Unlike MAMP, Herd doesn't require manual virtual host configuration. Simply placing your project in a [parked directory](/macos/getting-started/sites) makes it accessible via its `.test` domain. If you need custom domains, you can use the `link` command:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd/mysite
 herd link custom-domain
 ```
@@ -3216,7 +3226,7 @@ herd link custom-domain
 
 If you were using SSL certificates in MAMP, you can secure your sites in Herd with a single command:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd/mysite
 herd secure
 ```
@@ -3266,7 +3276,7 @@ If you're currently using Laravel Sail for local development and want to switch 
 
 Laravel Sail uses Docker containers to provide isolated development environments, while Herd takes a native approach by running services directly on your machine. Here are the key differences:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Laravel Sail" icon="docker">
     * Uses Docker containers
     * Requires Docker Desktop
@@ -3288,7 +3298,7 @@ Laravel Sail uses Docker containers to provide isolated development environments
 
 Before switching to Herd, make sure to stop all running Sail containers:
 
-```bash  theme={null}
+```bash theme={null}
 ./vendor/bin/sail down
 ```
 
@@ -3304,7 +3314,7 @@ Your `.env` file likely contains Docker-specific configurations. Here's how to u
 
 If you're using MySQL:
 
-```env  theme={null}
+```env theme={null}
 # From Sail
 DB_HOST=mysql
 DB_PORT=3306
@@ -3318,7 +3328,7 @@ DB_PORT=3306 # Default Herd MySQL port
 
 If you're using Redis:
 
-```env  theme={null}
+```env theme={null}
 # From Sail
 REDIS_HOST=redis
 
@@ -3330,7 +3340,7 @@ REDIS_HOST=127.0.0.1
 
 If you're using Mailhog with Sail, switch to Herd's mail service:
 
-```env  theme={null}
+```env theme={null}
 # From Sail
 MAIL_HOST=mailhog
 MAIL_PORT=1025
@@ -3362,7 +3372,7 @@ For Herd Pro users, you can install these services via the Services tab in setti
 
 You can now remove Sail from your project:
 
-```bash  theme={null}
+```bash theme={null}
 composer remove laravel/sail --dev
 ```
 
@@ -3376,7 +3386,7 @@ Also, clean up Sail-related files:
 
 Update your `composer.json` scripts section to remove Sail commands. For example:
 
-```json  theme={null}
+```json theme={null}
 {
     "scripts": {
         // Remove these Sail-based scripts
@@ -3390,7 +3400,7 @@ Update your `composer.json` scripts section to remove Sail commands. For example
 
 Create a `herd.yml` file in your project root to define project-specific configurations either manually or by running `herd init`:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: your-project-name
 php: '8.3'
 services:
@@ -3406,7 +3416,7 @@ services:
 
 Initialize your project with Herd:
 
-```bash  theme={null}
+```bash theme={null}
 herd init
 ```
 
@@ -3420,14 +3430,14 @@ If you need to migrate your data from Sail's MySQL container:
 
 1. Export your database from Sail:
 
-```bash  theme={null}
+```bash theme={null}
 ./vendor/bin/sail mysql --execute="SHOW DATABASES" > databases.txt
 ./vendor/bin/sail mysqldump your_database > database_backup.sql
 ```
 
 2. Import into Herd's MySQL:
 
-```bash  theme={null}
+```bash theme={null}
 mysql -u root -P 3306 -h 127.0.0.1 -e "CREATE DATABASE your_database_name;"
 mysql -u root -P 3306 -h 127.0.0.1 your_database_name < database_backup.sql
 ```
@@ -3436,7 +3446,7 @@ mysql -u root -P 3306 -h 127.0.0.1 your_database_name < database_backup.sql
 
 Since Herd runs services natively rather than in containers, you might need to adjust file permissions:
 
-```bash  theme={null}
+```bash theme={null}
 chmod -R 755 storage bootstrap/cache
 ```
 
@@ -3471,7 +3481,7 @@ When working in a team, it's important to ensure that everyone uses the same PHP
 
 The easiest way to create the `herd.yml` file is by running the `herd init` command in your project directory.
 
-```bash  theme={null}
+```bash theme={null}
 herd init
 ```
 
@@ -3488,7 +3498,7 @@ The setup allows you to configure the following settings:
 
 The list contains the latest versions of these services and if you need other versions, check the section about [editing the `herd.yml` file](#editing-the-codeherdymlcode-file).
 
-```bash  theme={null}
+```bash theme={null}
  ~ herd-website  (main)
 › herd init --fresh
 
@@ -3514,13 +3524,13 @@ After running the wizard, a `herd.yml` file will be created in your project root
 
 If a `herd.yml` file exists in your project, Herd can automatically apply the necessary configuration via the `herd init` command.
 
-```bash  theme={null}
+```bash theme={null}
 herd init
 ```
 
 Running `herd init` checks for the presence of an `.env` file and if not, asks if the `.env.example` file should be copied. After that, this command applies the configurations, including installing and isolating the specific PHP version, aliases, services and more:
 
-```bash  theme={null}
+```bash theme={null}
  ~ herd-website  (main)
 › herd init
 
@@ -3542,7 +3552,7 @@ Running `herd init` checks for the presence of an `.env` file and if not, asks i
 
 Here is an example of a `herd.yml` file using all possible customizations:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: herd-website
 php: '8.3'
 secured: true
@@ -3584,7 +3594,7 @@ If you don't mind a long list in the Site Manager, you can also [mark your most 
 You can manage your sites via the CLI or open the Site Manager via the menu bar icon. This section of the docs explains all features of the Site Manager.
 
 <Frame>
-  <img alt="Open the Site Manager" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0458732c0a855679a6cc050665efefc0" data-og-width="880" width="880" data-og-height="460" height="460" data-path="images/docs/sites_sites.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e68ca7cc5fe19a5f3a683a9552f55844 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a56a27ff92df79149aa6597b88ae08dd 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=110c91c27d4beb69446fc5c23095389d 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=300f13f6813c3a31df8a8adce9a9fb1a 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ec22fa89c25e6f2ce409b13b49948607 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_sites.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9d35ba43c8a9253a716ba7cdf66c115f 2500w" />
+  <img alt="Open the Site Manager" />
 </Frame>
 
 The Site Manager window is divided into the list of all your sites on the left side and a site management panel for the selected site on the right side.
@@ -3594,7 +3604,7 @@ You can hide the site list if you are working with mainly one site but also refr
 Clicking on the plus button opens the site wizard that allows you to create Laravel applications or link existing ones that are not in a parked directory.
 
 <Frame>
-  <img alt="Open the Site Manager" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=67cd996dd8522976d07ddadb486d7e9d" data-og-width="1868" width="1868" data-og-height="1122" height="1122" data-path="images/docs/sites_overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e3a6a4af25b22ccea7b8ee07a7a0c844 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=132cdc66df6ab564d4ce14c7d3eb7a56 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=711915b2bd7f05c1085c49a084e65e2a 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=05a75f433634d45a891b89ad2584556c 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2020a2940b6b8da3227f2b308db49a6d 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_overview.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=97425c316e095b4565be7bf69d36c53b 2500w" />
+  <img alt="Open the Site Manager" />
 </Frame>
 
 The right side of the Sites Manager is dedicated to the selected site and always shows a general tab where you can isolate this site to a specific PHP version. This tells Herd to serve this site with a specific PHP version and not to use the [global configuration](/macos/technology/php-versions#using-different-php-versions-via-the-gui) that you apply in the settings.
@@ -3618,7 +3628,7 @@ If you open the database, Herd tries to open the application database with its t
 The log action is available for Herd Pro users and opens the [Log Viewer](/macos/debugging/logs) that ships with [Herd Pro](https://herd.laravel.com/checkout). The Profiler action enables and disables the [profiling feature](/macos/debugging/profiler).
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c85b423e650939b18e736ac0efac14c0" data-og-width="1872" width="1872" data-og-height="1122" height="1122" data-path="images/docs/sites_actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=024b530396e76dba91b8552f77e9df03 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c9628e2f385aa9aa3617666328fe1510 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=3c2f53539036439c3bc10e0faaba7b87 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0c180a34f0ec88c005905555121f8ec6 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=516b3674d903000cbb231464e6995cab 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_actions.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=8928f5ee21b006cf80fbdc3131fcc5b2 2500w" />
+  <img alt="" />
 </Frame>
 
 ### Securing Sites
@@ -3630,7 +3640,7 @@ You can serve sites via HTTPS instead of HTTP if your application requires this 
 If you are working with many sites at the same time and don't want to use multiple parked directories that you add and remove when you need them, you can group sites and they automatically appear in your own site structure on the left side.
 
 <Frame>
-  <img alt="Groups in the Site Manager" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=222167ecf7ba32d8919a5d40e188fc3e" data-og-width="1868" width="1868" data-og-height="1122" height="1122" data-path="images/docs/sites_groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=eb378047e22eb00860e71ad21a6c3497 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e9eb17b206b351f5a2394ae2b8d761a8 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=64a28161b9a2142698608832aea1c2ee 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f18af9a02a71e5ab6d5edc9f130ead0b 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=302ff9c4ef829030fe44cdfeaf299e9b 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_groups.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=71906e3253edd1feb45da92697a2dfff 2500w" />
+  <img alt="Groups in the Site Manager" />
 </Frame>
 
 ### Deleting Sites
@@ -3664,7 +3674,7 @@ You can change these settings via the Herd UI within the PHP settings section. Y
 PHP versions or set specific values per PHP version.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ae85e28aa0c761497d5f08c59dba198b" data-og-width="1460" width="1460" data-og-height="1300" height="1300" data-path="images/docs/nginx-php-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=f815b3454614663d7dd74d9117419766 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b2b55c50bbdaae3e42c8644867854e92 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9006f0c3e98d4b76a1f1625c67654ba8 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=383fcfb8f83b62c0f7efe9d780d09ef8 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dc2c263831bd081462e525cb93739918 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-settings.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=399463c5e0c19f51904e66c6e9292e58 2500w" />
+  <img alt="" />
 </Frame>
 
 You can also change the PHP version for a specific site via the Herd UI. You can either do that in the sites settings or
@@ -3678,7 +3688,7 @@ If you secure a site with a TLS/SSL certificate, this creates a dedicated Nginx 
 can make further changes to the Nginx configuration for this site in this file (see below).
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=30612f7cbdc58b29c6e35d6caa4449c6" data-og-width="1800" width="1800" data-og-height="1102" height="1102" data-path="images/docs/nginx-php-versions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8488ec9029dd12b00bfa25ed75ee6d8f 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=0766ca141417d11f864cd79ceec0206e 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=f82f5f735b085314d12c7c6713889e33 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e29c37369a1a5e34e7875a53a5140c6e 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=00d2b87b958053d69d9eeefa618656c3 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/nginx-php-versions.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1b119b300c3b3e2355648a35ca39cfb3 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Customizing the global nginx configuration
@@ -3731,7 +3741,7 @@ You can secure/unsecure a site in the [Site Manager](/macos/sites/managing-sites
 If you see a closed lock icon, the site is secure and if there is crossed out lock, the site does not have a certificate and is served via HTTP.
 
 <Frame>
-  <img alt="Secure Sites" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c65c8e6b90fe38ff3148452fc0e0c1be" data-og-width="1868" width="1868" data-og-height="1122" height="1122" data-path="images/docs/sites_secure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1d2d73721585cf4defb780676c83d2d0 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b7bdda1fc266bad91f537a262080442d 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=cd305ae76d5fd80a3d7c46e18968491e 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=d17986a9cd5f91dda2bda5ca0a5a6558 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=706675c1c17b9689c6feffc48b34a4aa 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites_secure.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=cc82e311d0f626467593e1c88bd79060 2500w" />
+  <img alt="Secure Sites" />
 </Frame>
 
 Clicking on the lock icon toggles the status of the site. If you're securing the site, you may need to confirm one or more permission related popups to create the local certificate.
@@ -3741,7 +3751,7 @@ Clicking on the lock icon toggles the status of the site. If you're securing the
 If you prefer to use the CLI, you can use the `herd secure` command to secure/unsecure a site.
 For example, if Herd serves your site via the `example-site.test` domain, you need run the following command to secure it:
 
-```shell  theme={null}
+```shell theme={null}
 # secure the current working directory
 herd secure
 
@@ -3752,7 +3762,7 @@ herd secure example-site
 To "unsecure" a site and revert back to serving its traffic over plain HTTP, use the `unsecore` command.
 Like the `secure` command, this command accepts the sitename that you wish to unsecure:
 
-```shell  theme={null}
+```shell theme={null}
 # unsecure the current working directory
 herd unsecure
 
@@ -3766,7 +3776,7 @@ After unsecuring a site, you man need to restart your browser session because ma
 
 The Herd CLI has a command to list all sites that have a local TLS certificate. You may want to use that for debugging purposes.
 
-```shell  theme={null}
+```shell theme={null}
 herd secured
 ```
 
@@ -3804,18 +3814,18 @@ To share your site using Expose, you first need to [create a free Expose account
 Once you have obtained your authentication token, you can configure it in the "Expose" tab of the preferences window.
 
 <Frame>
-  <img alt="Expose Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1b64103b11b8a97ba9558f491afaebd9" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_expose.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=03719af3085a3faeb0375acb50261671 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=ba384558581c053ca6132a5436ee1c79 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=862297472aaa2c584bb16f2753b56435 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=dfb47f6bede5a6dd3a6a7fd7eec529c8 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=16ade982d6e26e08dacb0fcb0d8d5e54 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_expose.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=863f1683c617b7e2493d059f8291c07b 2500w" />
+  <img alt="Expose Settings" />
 </Frame>
 
 Or you can use the CLI:
 
-```shell  theme={null}
+```shell theme={null}
 expose token YOUR_TOKEN_HERE
 ```
 
 Once you configured your authentication token, you can share your sites by running `herd share` or `expose share` in the site directory that you want to share.
 
-```shell  theme={null}
+```shell theme={null}
 cd ~/Herd/example-site
 
 herd share
@@ -3829,7 +3839,7 @@ herd share https://your-secured-local-site.test
 
 You can specify a subdomain or server region for best performance and by adding parameters for them to the `share` command.
 
-```shell  theme={null}
+```shell theme={null}
 herd share https://example-site.test --subdomain=my-project-name --server=us-1
 ```
 
@@ -3837,7 +3847,7 @@ herd share https://example-site.test --subdomain=my-project-name --server=us-1
 
 You may protect your share links with basic authentication by using the `--basicAuth` argument when sharing your site.
 
-```shell  theme={null}
+```shell theme={null}
 herd share https://example-site.test --basicAuth="user:password"
 ```
 
@@ -3845,7 +3855,7 @@ herd share https://example-site.test --basicAuth="user:password"
 
 If you want to use ngrok, install it according to their instructions. After that, you can share Herd sites via the terminal:
 
-```shell  theme={null}
+```shell theme={null}
 ngrok http --host-header=rewrite unsecured-site.test
 ngrok http --host-header=rewrite secured-site.test:443
 ```
@@ -3867,7 +3877,7 @@ Herd requires a specific nvm version and can't use existing nvm installations. I
 You may install and update the Node.js versions on your machine via the Herd GUI. Simply click on the button and Herd will take care of the rest.
 
 <Frame>
-  <img src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d71e7bda428edc2fb8d13b5456bdee95" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_node.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=934de439892b01a69a57d742a070583c 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5ff3dfb77e4b5cea71801bbc9f88370e 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=2468322860df5c986b1b20b3f4a79413 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4afd8042624ba43249a9e3517fe847fa 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=b32675e6048a50ea5892455f7c93b15f 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=6931a37540ffa876d14a5947e482090b 2500w" />
+  <img />
 </Frame>
 
 ## Via the CLI
@@ -3877,7 +3887,7 @@ For more information about nvm, take a look at the [official nvm documentation](
 
 ### Commands that you might use regularly
 
-```bash  theme={null}
+```bash theme={null}
 # Install node 20
 nvm install 20
 
@@ -3905,7 +3915,7 @@ If you use oh-my-zsh, Herd automatically detects the Node.js version to use when
 You may use the `herd isolate-node` command to specify which Node.js version a particular folder should use. The `isolate-node` command configures
 Herd/nvm to use the specified Node.js version for the site located in your current working directory:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/Herd/example-site
  
 herd isolate-node 21
@@ -3913,25 +3923,25 @@ herd isolate-node 21
 
 If your site name does not match the name of the directory that contains it, you may specify the site name using the `--site` option:
 
-```bash  theme={null}
+```bash theme={null}
 herd isolate-node 21 --site="site-name"
 ```
 
 You can be as specific as you want, when isolating Node.js versions:
 
-```bash  theme={null}
+```bash theme={null}
 herd isolate-node 16.13.2
 ```
 
 You may execute the `isolated-node` command to display a list of all of your isolated sites and their Node.js versions:
 
-```bash  theme={null}
+```bash theme={null}
 herd isolated-node
 ```
 
 To revert a site back to the globally installed Node.js version, you may invoke the `unisolate-node` command from the site's root directory:
 
-```bash  theme={null}
+```bash theme={null}
 herd unisolate-node
 ```
 
@@ -3940,7 +3950,7 @@ herd unisolate-node
 If you open the Node settings, Herd checks if there are new versions available and displays an update button next to every version that you can update.
 
 <Frame>
-  <img alt="Update Node.js in the Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8a0556b87455cdfa4cdfb144a6626629" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_node_update.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=5373cd10b35562bb98ef85fb29cac63b 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=76f7dfc022a33eddb76d3038a0cbdca0 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8ad859b62d8bdf39262585ec18051883 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=6e42efd9b53dd1518457e7f041737244 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=a6683618126b60df2fdac9ff9e971466 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_node_update.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9f1f9414f5dbf74018f1a52ad9c82344 2500w" />
+  <img alt="Update Node.js in the Settings" />
 </Frame>
 
 Herd uses nvm under the hood and this means that existing versions are kept when pressing the update button. The update downloads and installs the latest version and makes this one the preferred version for the related major version.
@@ -4199,13 +4209,13 @@ You may add additional PHP extensions that are not included out of the box with 
 
 To install additional extensions via Homebrew, you can compile them with the following commands. At first, Homebrew needs a base PHP for compiling the extension. This base PHP is only used for compiling the extension and Herd keeps using the static binaries, so you can still use the built-in Herd updater for PHP.
 
-```bash  theme={null}
+```bash theme={null}
 brew install php
 ```
 
 Once PHP is installed via Homebrew, you may install the extension:
 
-```bash  theme={null}
+```bash theme={null}
 pecl install [extension-name]
 ```
 
@@ -4219,7 +4229,7 @@ On an Intel Mac, it will be at `/usr/local/lib/php/pecl`.
 You may activate your custom extensions by editing your `php.ini` file.
 This file is located at `~/Library/Application Support/Herd/config/php/<version>/php.ini.`.
 
-```bash  theme={null}
+```bash theme={null}
 # Absolute path to the extension.so file
 extension=/opt/homebrew/lib/php/pecl/20220829/[extension].so
 ```
@@ -4235,13 +4245,13 @@ Source: https://herd.laravel.com/docs/macos/technology/php-settings
 The values that most developers change are the memory limit and the max upload size. You can modify them in the settings and don't need to go deep into configuration files.
 
 <Frame>
-  <img alt="Screenshot of settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=280cf026f25d384aad7b5a9e71639ef0" data-og-width="1460" width="1460" data-og-height="1226" height="1226" data-path="images/docs/settings_php_config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0755d54cb22be60d2ade51f4f283ca72 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=2a1e4c980d8efffed9b0180f3c1d1877 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f1a325853ccd6c1f2879894b51586c9d 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=0836c3a7cd78ebe20b4296da5f1a8261 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4d1f82e13c30a3e32472ac0d7a38a8e0 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_config.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=69c049d38cf53ab1bdb080ee81c89c5c 2500w" />
+  <img alt="Screenshot of settings" />
 </Frame>
 
 Herd gives you easy access to the PHP configuration files on your machine, the easiest way to get to the file is to select the php.ini directory from the context menu of the settings.
 
 <Frame>
-  <img alt="Screenshot of context menu" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=842bf0e50500c9dbe0aae22afaba86af" data-og-width="1460" width="1460" data-og-height="1226" height="1226" data-path="images/docs/settings_php_ini.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c9ef495bdf25217bd3dbdc6152e47733 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1c79b81c17b5de14bc6a584f2a71c795 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ee6081b74ebb4f5fc489afbd1d6ced7d 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=e5e7599b87da4f1e0d07dbeb2e2a29fb 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=849ee1978e7c198c71c55c10d15a05cb 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_ini.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=39a98ffb3ca0b3c0afa16b351dd266a7 2500w" />
+  <img alt="Screenshot of context menu" />
 </Frame>
 
 Each PHP version has its own `php.ini` file at `~/Library/Application Support/Herd/config/php/<version>/php.ini`.
@@ -4256,12 +4266,12 @@ All saved changes are immediately available in the CLI, but you need to restart 
 You can restart all services by clicking "Stop all" and then "Start all" in the Herd dropdown menu in the menu bar – it just takes 1-2 seconds. If a service does not restart properly, or you believe that there is a stale process still running with old settings, you can press the `Option` key when the menu is open and select `Force stop all`.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=f33cb90c9526a4545cf88e815b726db6" data-og-width="1030" width="1030" data-og-height="522" height="522" data-path="images/docs/stop-all.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=6a73e3438bc6146966481d14c79752f1 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=50daf5112c710f525b6ceea0995487b2 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=1558ddccb3ae9a28e944ec3ecfd49ba7 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=fee9f4b1a90a75d818998923ca0fd41c 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ab9d0051cf3634c8c3813c153892e3c8 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/stop-all.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=482edfa477152444f206c5258a5a2f48 2500w" />
+  <img alt="" />
 </Frame>
 
 Alternatively, you can use the `herd restart` command in the terminal.
 
-```shell  theme={null}
+```shell theme={null}
 herd restart
 ```
 
@@ -4281,13 +4291,13 @@ However, you may install and use different PHP versions for your sites and confi
 You can manage your PHP versions in the "PHP" tab of the preferences window. This window allows you to install and update PHP versions with a single click.
 
 <Frame>
-  <img alt="PÜHP Settings" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=01e2b296bcf1083c067a64448fb3a59e" data-og-width="1460" width="1460" data-og-height="1102" height="1102" data-path="images/docs/settings_php.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=814d5205dcab367927c8c4f5857c397f 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=56305abf49727320292bc7f9723cd94d 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=caea1f2fd4438b6d5a51e1d4a3da4f7b 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=c1f32ae6a2b783271955312bde4ab462 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=e3b2351c2a3656ff51aead67c1b50b6a 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/settings_php.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1805d75e46bb7f0207e95237a9dd543c 2500w" />
+  <img alt="PÜHP Settings" />
 </Frame>
 
 In order to change the global PHP version that Herd uses by default, select it in the dropdown menu in the menu bar.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cf9561d5a37eaa389c670e0244a08ec8" data-og-width="828" width="828" data-og-height="796" height="796" data-path="images/docs/dropdown_php.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=1a443bd6c891dabad1d20cbdf79e2614 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=09a171194bad039dbf92514e328a412e 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8f832bb23eb99419c2dfb7cc57581632 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=625332547196638116df0914971417ed 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=35fae0d81c6e69a95b6f3ef2df518ef6 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/dropdown_php.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8a097a32c55bb66fb3788fc4a42d4038 2500w" />
+  <img alt="" />
 </Frame>
 
 Herd uses the global PHP version for all sites that are not [isolated](#per-site-php-versions).
@@ -4296,7 +4306,7 @@ Herd uses the global PHP version for all sites that are not [isolated](#per-site
 
 If you prefer to use the CLI, you can use the `herd use` command to set the global PHP version.
 
-```shell  theme={null}
+```shell theme={null}
 herd use 8.2
 ```
 
@@ -4311,7 +4321,7 @@ You can configure the PHP version per site in the [Site Manager](/macos/sites/ma
 Just select the PHP version that you want to use for the site in the dropdown menu.
 
 <Frame>
-  <img alt="" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=43d575bfeec38ade48f0b1069ca3323a" data-og-width="1800" width="1800" data-og-height="1196" height="1196" data-path="images/docs/sites.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ac0f52cb86238074a2b66b04dc09615c 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=dbab61657028c779f437b463c73941ce 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=9448dd15ca3cffb589862c0e5eb4b3d6 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=a6a9911ecd770528c2b357f6593f1ace 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=06807e86f4ea012969518118d31df970 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/sites.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=c75c44b14e5267d073ecb0c5ea7b6788 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Per site PHP versions via the CLI
@@ -4319,7 +4329,7 @@ Just select the PHP version that you want to use for the site in the dropdown me
 If you prefer to use the CLI, you can use the `herd isolate` command to specify which PHP version a particular site should use.
 The `isolate` command configures Herd to use the specified PHP version for the site located in your current working directory:
 
-```shell  theme={null}
+```shell theme={null}
 cd ~/Herd/example-site
 
 herd isolate 8.0
@@ -4327,13 +4337,13 @@ herd isolate 8.0
 
 If your site name does not match the name of the directory that contains it, you may specify the name using the `--site` option:
 
-```shell  theme={null}
+```shell theme={null}
 herd isolate 8.0 --site="site-name"
 ```
 
 For convenience, you may use the `herd php`, `composer`, and `which-php` commands to proxy calls to the appropriate PHP CLI or tool based on the configured PHP version for the current directly and site:
 
-```shell  theme={null}
+```shell theme={null}
 herd php
 herd composer
 herd which-php
@@ -4341,13 +4351,13 @@ herd which-php
 
 You may execute the `isolated` command to display a list of all of your isolated sites and their PHP and Node.js versions:
 
-```shell  theme={null}
+```shell theme={null}
 herd isolated
 ```
 
 To revert a site back to Herd's globally installed PHP version, you may invoke the `unisolate` command from the root directory of the site:
 
-```shell  theme={null}
+```shell theme={null}
 herd unisolate
 ```
 
@@ -4356,7 +4366,7 @@ herd unisolate
 You can uninstall PHP versions from the PHP settings. Simply right-click on a version and delete it via the context menu.
 
 <Frame>
-  <img alt="Delete PHP from Settings" src="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=7e71c4f9cb248234d1f43127df5300ed" data-og-width="1460" width="1460" data-og-height="1226" height="1226" data-path="images/docs/settings_php_delete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=280&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=10f64d8605134efe0b4143f9e0d82b85 280w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=560&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=ebf73d931912bd79bca61a241d404c34 560w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=840&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=4bad7c030b785e88ac80d5a150554f39 840w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=1100&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=b589088c9de724583f888d76cd375ff5 1100w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=1650&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=858ee29f74a2a98cf49cd2c51ff15d48 1650w, https://mintcdn.com/herd/DeXoYubPfJnYhPtY/images/docs/settings_php_delete.png?w=2500&fit=max&auto=format&n=DeXoYubPfJnYhPtY&q=85&s=5f0465ab0c6da0a2622f616f0e3b1b30 2500w" />
+  <img alt="Delete PHP from Settings" />
 </Frame>
 
 If you prefer deleting a PHP version manually, you can go into the Herd application directory and delete the files from your system. Once you reopen the settings, you can reinstall them.
@@ -4434,7 +4444,7 @@ To resolve this issue, you can try the following steps:
 
 You can verify whether a VPN system extension is active using:
 
-```bash  theme={null}
+```bash theme={null}
 systemextensionsctl list
 ```
 
@@ -4451,7 +4461,7 @@ This means that the helper service isn't running in the background. Please follo
 Herd uses a helper service that runs with admin permissions to start dnsmasq and nginx. This comes with the benefit that there are no admin permissions required for the main application and if anyone finds a way to exploit Herd, they can not compromise your system.
 
 <Frame>
-  <img alt="Login Items" src="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=7b1fbea792c7d22d2b49cd922d22acd9" data-og-width="1530" width="1530" data-og-height="1322" height="1322" data-path="images/docs/login_items.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=280&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=717f0cbfd62dbaeee5a00036622e7cf3 280w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=560&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=cc4828394e18b3823772685075d78e50 560w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=840&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=8e7cda2d46f6fb9bce97ca71013c2429 840w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=1100&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=d350aa89875b4674a258a818d66f9943 1100w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=1650&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=9eb3f3cb0b5324b7707ebbeb986e48e9 1650w, https://mintcdn.com/herd/pbdN92VyM5BkjAJV/images/docs/login_items.png?w=2500&fit=max&auto=format&n=pbdN92VyM5BkjAJV&q=85&s=4439f85857d9b5da802ecc052e55c63e 2500w" />
+  <img alt="Login Items" />
 </Frame>
 
 To allow the Herd helper service to run in the background, please go to the "Login Items" section of your system settings and make sure that either `Herd` or `Beyond Code GmbH` ([us](https://beyondcode.com)) are allowed to run in the background.
@@ -4509,7 +4519,7 @@ This command shuts down all processes that Herd might run (PHP 7.4 - 8.4, Nginx 
 
 ### Shutdown all Herd services on Apple Silicon Macs
 
-```shell  theme={null}
+```shell theme={null}
 sudo killall nginx-arm64 dnsmasq-arm64 \
 php74-fpm \
 php80-fpm \
@@ -4521,7 +4531,7 @@ php84-fpm
 
 ### Shutdown all Herd services on Intel Macs
 
-```shell  theme={null}
+```shell theme={null}
 sudo killall nginx-x86 dnsmasq-x86 \
 php74-fpm \
 php80-fpm \
@@ -4580,7 +4590,7 @@ To automatically uninstall Herd, all data within Herd Pro services and all of it
 <Accordion title="Manual Uninstall Steps">
   1. Quit Herd by clicking on the icon in the menu bar and selecting "Quit".
   2. Run the following command in your shell. This will reset the permissions of Herd to start its services.
-     ```shell  theme={null}
+     ```shell theme={null}
      $ sudo rm /etc/sudoers.d/herd
      ```
   3. Make a backup of your Herd Pro services `~/Library/Application Support/Herd/config/services`

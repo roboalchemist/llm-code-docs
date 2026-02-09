@@ -14,149 +14,65 @@
 
 # Source: https://docs.frigade.com/api-reference/flows/overview.md
 
-# Source: https://docs.frigade.com/sdk/overview.md
-
-# Source: https://docs.frigade.com/platform/overview.md
-
-# Source: https://docs.frigade.com/overview.md
-
-# Source: https://docs.frigade.com/integrations/overview.md
-
-# Source: https://docs.frigade.com/component/overview.md
-
-# Source: https://docs.frigade.com/api-reference/users/overview.md
-
-# Source: https://docs.frigade.com/api-reference/groups/overview.md
-
-# Source: https://docs.frigade.com/api-reference/flows/overview.md
-
-# Source: https://docs.frigade.com/sdk/overview.md
-
-# Source: https://docs.frigade.com/platform/overview.md
-
-# Source: https://docs.frigade.com/overview.md
-
-# Source: https://docs.frigade.com/integrations/overview.md
-
-# Source: https://docs.frigade.com/component/overview.md
-
-# Source: https://docs.frigade.com/api-reference/users/overview.md
-
-# Source: https://docs.frigade.com/api-reference/groups/overview.md
-
-# Source: https://docs.frigade.com/api-reference/flows/overview.md
-
-# Source: https://docs.frigade.com/sdk/overview.md
-
-# Source: https://docs.frigade.com/platform/overview.md
-
-# Source: https://docs.frigade.com/overview.md
-
-# Source: https://docs.frigade.com/integrations/overview.md
-
-# Source: https://docs.frigade.com/component/overview.md
-
-# Source: https://docs.frigade.com/api-reference/users/overview.md
-
-# Source: https://docs.frigade.com/api-reference/groups/overview.md
-
-# Source: https://docs.frigade.com/api-reference/flows/overview.md
-
-# Source: https://docs.frigade.com/sdk/overview.md
-
-# Source: https://docs.frigade.com/platform/overview.md
-
-# Source: https://docs.frigade.com/overview.md
-
-# Source: https://docs.frigade.com/integrations/overview.md
-
-# Source: https://docs.frigade.com/component/overview.md
-
-# Source: https://docs.frigade.com/api-reference/users/overview.md
-
-# Source: https://docs.frigade.com/api-reference/groups/overview.md
-
-# Source: https://docs.frigade.com/api-reference/flows/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get all Flows
 
 > Get all Flows for your organization.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/public/flows
+openapi: 3.0.0
+info:
+  title: Frigade API
+  description: Official Frigade API documentation
+  version: '1.0'
+  contact: {}
+servers: []
+security: []
+tags: []
 paths:
-  path: /v1/public/flows
-  method: get
-  request:
-    security:
-      - title: bearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Authentication header of the form `Bearer: <token>`, where
-                `<token>` is either your public or private API key. [See when to
-                use which](/v2/api-reference/authorization)
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - description: The data returned by the query
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ExternalizedFlow'
-              offset:
-                allOf:
-                  - type: number
-                    description: The current pagination offset (if any)
-                    default: 0
-                    example: 0
-              limit:
-                allOf:
-                  - type: number
-                    description: The total number of records returned in this response
-                    default: 100
-                    example: 100
-            refIdentifier: '#/components/schemas/PaginatedResult'
-        examples:
-          example:
-            value:
-              data:
-                - id: 123
-                  name: New User Announcement
-                  data: >-
-                    {"steps": [{"id": "step_1", "title": "Welcome to my app!",
-                    "subtitle": "Let me show you around."}]}
-                  targetingLogic: user.property('isAdmin') == true
-                  type: CHECKLIST
-                  slug: flow_abc
-                  createdAt: '2024-01-01T00:00:00Z'
-                  modifiedAt: '2024-01-01T00:00:00Z'
-                  version: 1
-                  status: ACTIVE
-                  codeSnippet: <Frigade.Announcement flowId="my-flow-id" />
-              offset: 0
-              limit: 100
-        description: Return all flows.
-  deprecated: false
-  type: path
+  /v1/public/flows:
+    get:
+      tags:
+        - flows
+      description: Get all Flows for your organization.
+      operationId: FlowsController_find
+      parameters: []
+      responses:
+        '200':
+          description: Return all flows.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResult'
+      security:
+        - bearer: []
 components:
   schemas:
+    PaginatedResult:
+      type: object
+      properties:
+        data:
+          description: The data returned by the query
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalizedFlow'
+        offset:
+          type: number
+          description: The current pagination offset (if any)
+          default: 0
+          example: 0
+        limit:
+          type: number
+          description: The total number of records returned in this response
+          default: 100
+          example: 100
     ExternalizedFlow:
       type: object
       properties:
@@ -226,5 +142,14 @@ components:
           type: string
           description: The original code snippet for the Flow when it was created
           example: <Frigade.Announcement flowId="my-flow-id" />
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: >-
+        Authentication header of the form `Bearer: <token>`, where `<token>` is
+        either your public or private API key. [See when to use
+        which](/v2/api-reference/authorization)
 
 ````

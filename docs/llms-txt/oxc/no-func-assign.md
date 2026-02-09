@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-func-assign.md
 ---
-# eslint/no-func-assign&#x20;
 
 ### What it does
 

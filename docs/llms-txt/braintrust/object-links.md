@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/reference/object-links.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Share via URL
 
 Braintrust supports a convenient method for generating permanent links (permalinks) to experiment and dataset objects in your workspace by using their unique object IDs. This allows you to share, bookmark, or automate navigation to specific resources.
@@ -51,8 +55,3 @@ You can use object permalinks to:
 * Bookmark important experiments or datasets
 * Automate navigation in documentation or scripts
 * Share direct links with collaborators
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

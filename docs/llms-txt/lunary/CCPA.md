@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/more/security/CCPA.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CCPA compliance guide
 
 For those serving Californian users, grasping the nuances of secure and private data handling is crucial. Lunary, capable of being integrated into your own infrastructure without accessing your data, stands as a highly compliant CCPA observability solution.
@@ -66,8 +70,3 @@ You can remove a user from a Lunary instance via the Lunary user interface. To d
 * Select "Users" from the sidebar menu
 * Search and click on the concerned user
 * Click "Delete" to remove them and all their associated data from Lunary.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

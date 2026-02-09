@@ -54,7 +54,7 @@ LiveKit docs › Get Started › Overview
 
 ---
 
-This document was rendered at 2025-12-31T18:29:39.540Z.
+This document was rendered at 2026-02-03T03:25:24.568Z.
 For the latest version of this document, see [https://docs.livekit.io/reference.md](https://docs.livekit.io/reference.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

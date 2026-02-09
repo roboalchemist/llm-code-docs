@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/openclip.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenCLIP
 
 export const PyEmbeddingOpenclipImageSearch = "import io\n\nfrom PIL import Image\n\nquery_image_uri = \"http://farm1.staticflickr.com/200/467715466_ed4a31801f_z.jpg\"\nimage_bytes = requests.get(query_image_uri).content\nquery_image = Image.open(io.BytesIO(image_bytes))\nactual = table.search(query_image).limit(1).to_pydantic(Images)[0]\nprint(actual.label == \"dog\")\n\nother = (\n    table.search(query_image, vector_column_name=\"vec_from_bytes\")\n    .limit(1)\n    .to_pydantic(Images)[0]\n)\nprint(other.label)\n";
@@ -45,8 +49,3 @@ Because we're using a multimodal embedding function, we can also search using im
     {PyEmbeddingOpenclipImageSearch}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

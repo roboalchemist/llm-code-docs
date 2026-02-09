@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/basic-auth-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BasicAuthInput
 
 > Schema for BasicAuthInput - HTTP Basic authentication configuration
@@ -102,8 +106,3 @@ Fireflies will send: `Authorization: Basic dXNlcjpwYXNz`
 * [DownloadAuthInput](/schema/input/download-auth-input) - Parent authentication configuration
 * [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) - Alternative authentication method
 * [DownloadAuthType](/schema/enum/download-auth-type) - Authentication type enum
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

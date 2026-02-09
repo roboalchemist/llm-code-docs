@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/datasets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datasets
 
 > Curate and export LLM request/response data for fine-tuning, evaluation, and analysis

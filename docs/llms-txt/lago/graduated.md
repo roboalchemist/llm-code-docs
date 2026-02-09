@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/charge-models/graduated.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Graduated
 
 Select the graduated charge model if you want to define **several price tiers**.

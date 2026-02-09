@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/semver.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Semver
 
 > Use Bun's semantic versioning API

@@ -4,17 +4,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/llm/azure.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/azure.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/azure.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/azure.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/azure.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/azure.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/azure.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Azure
 
@@ -66,8 +58,3 @@ Before using Azure OpenAI LLM services, you need:
 * `AZURE_CHATGPT_API_KEY`: Your Azure OpenAI API key
 * `AZURE_CHATGPT_ENDPOINT`: Your Azure OpenAI endpoint URL
 * `AZURE_CHATGPT_MODEL`: Your model deployment name
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

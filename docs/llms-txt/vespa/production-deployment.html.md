@@ -129,7 +129,7 @@ Find alternative deployment procedures in the next sections.
 
 Find the 'zone' endpoint to use under Endpoints in the [console](https://console.vespa-cloud.com/). There is an mTLS endpoint for each zone by default. See [configuring mTLS](../security/guide#configuring-mtls) for how to use mTLS certificates.
 
-You can also add [access tokens](../security/guide#configure-tokens) in the console as an alternative to mTLS, and specify [global](../reference/applications/deployment.html#endpoints-global) and [private](../reference/applications/deployment.html#endpoint-private) endpoints in _deployment.xml_.
+You can also add [access tokens](../security/guide#configuring-tokens) in the console as an alternative to mTLS, and specify [global](../reference/applications/deployment.html#endpoints-global) and [private](../reference/applications/deployment.html#endpoint-private) endpoints in _deployment.xml_.
 
 Write data efficiently using the [document/v1 API](../reference/api/document-v1.html) using HTTP/2, or with the [Vespa CLI](../clients/vespa-cli.html). There is also a [Java library](../clients/vespa-feed-client.html#java-library).
 
@@ -233,7 +233,7 @@ There are three recommended options:
 2. **Use private endpoints via AWS PrivateLink or GCP Private Service Connect:** Vespa allows you to set up private endpoints for exclusive access from your own, co-located VPCs. This requires less administrative overhead than general VPC peering and is also more secure. Refer to [private endpoints](private-endpoints.html).
 3. **Run Vespa workloads in your own account/project (Enclave):** The Vespa Cloud Enclave feature allows you to have all your Vespa workloads run in your own account. In this case, you can set up any required peering to open the connection into your application. While generally available, using Vespa Cloud Enclave requires significantly more effort from the application team in terms of operating the service, and is only recommended for larger applications that can justify the additional work from e.g., a security or interoperability perspective. Refer to [Vespa Cloud Enclave](enclave/enclave).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

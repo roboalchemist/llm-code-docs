@@ -2,10 +2,7 @@
 
 # Delete Integration
 
-```
-DELETE 
-/v1/integrations/:integrationId
-```
+Copy page
 
 This endpoint removes a Integration identified by the `integrationId` parameter.
 

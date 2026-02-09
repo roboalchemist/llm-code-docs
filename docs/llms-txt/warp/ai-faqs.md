@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/ai-faqs.md
+# Source: https://docs.warp.dev/agent-platform/agent/ai-faqs.md
 
 # AI FAQs
 
@@ -6,7 +6,7 @@
 
 ### What data is sent and/or stored when using Agents in Warp?
 
-See our [Privacy Page](https://docs.warp.dev/privacy/privacy) for more information on how we handle data used by Agents in Warp.
+See our [Privacy Page](https://docs.warp.dev/support-and-community/privacy-and-security/privacy) for more information on how we handle data used by Agents in Warp.
 
 ### What happened to the old Warp AI chat panel?
 
@@ -14,11 +14,11 @@ Agent Mode has replaced the Warp AI chat panel. Agent Mode is more powerful in a
 
 ### Is my data used for model training?
 
-Warp reserves the right to use data collected to train models and improve Warp. Warp has Zero Data Retention with all it's model providers (e.g. Anthropic, OpenAI, etc.). Please learn more about telemetry in our [Privacy Page](https://docs.warp.dev/privacy/privacy).
+Warp reserves the right to use data collected to train models and improve Warp. Warp has Zero Data Retention with all its model providers (e.g. Anthropic, OpenAI, etc.). Please learn more about telemetry in our [Privacy Page](https://docs.warp.dev/support-and-community/privacy-and-security/privacy).
 
 ### What model are you using for Agent Mode?
 
-Warp supports a curated list of LLMs from providers like OpenAI, Anthropic, and Gemini. To view the full list of supported models and learn how to switch between them, visit the [model-choice](https://docs.warp.dev/agents/using-agents/model-choice "mention") page.
+Warp supports a curated list of LLMs from providers like OpenAI, Anthropic, and Gemini. To view the full list of supported models and learn how to switch between them, visit the [Model Choice](https://docs.warp.dev/agent-platform/agent/using-agents/model-choice) page.
 
 ### Can I use my own LLM API key?
 
@@ -28,9 +28,9 @@ Organizations on the Enterprise plan can enable a “Bring Your Own LLM” optio
 
 Every Warp plan includes a set number of AI credits per user per month. Please refer to [pricing](https://www.warp.dev/pricing) to compare plans.
 
-AI credit limits apply to Agent Mode, [Generate](https://docs.warp.dev/agents/generate), and [AI autofill in Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows#ai-autofill). When you have used up your allotted credits for the cycle, you will not be able to issue any more AI credits until the cycle renews.
+AI credit limits apply to Agent Mode, [Generate](https://docs.warp.dev/agent-platform/agent/generate), and [AI autofill in Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows#ai-autofill). When you have used up your allotted credits for the cycle, you will not be able to issue any more AI credits until the cycle renews.
 
-For questions around what counts as a AI credit, what counts as a token, and how often credits refresh, please refer to [ai-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits "mention")and more on the [plans-and-pricing](https://docs.warp.dev/support-and-billing/plans-and-pricing "mention")page.
+For questions around what counts as a AI credit, what counts as a token, and how often credits refresh, please refer to [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits) and more on the [Plans & Pricing](https://docs.warp.dev/support-and-community/plans-and-billing/plans-and-pricing) page.
 
 ## Common AI error messages
 
@@ -43,7 +43,7 @@ To fix this, try:
 * Starting a new conversation
 * Reducing the number of blocks or lines attached to your query
 
-#### **"Monthly request limit exceeded" or "Monthly credit limit exceeded" errors**
+#### "Monthly request limit exceeded" or "Monthly credit limit exceeded" errors
 
 Once you exceed your AI credits on the Turbo plan (see [pricing](https://www.warp.dev/pricing) for current limits), premium models will be disabled until your quota resets at the start of your next billing cycle.
 
@@ -58,9 +58,9 @@ This message means your account has been blocked from using AI features, typical
 To resolve or clarify this, please contact our team at <appeals@warp.dev> if you believe this was an error. We'll review your case and respond as soon as possible.
 
 {% hint style="warning" %}
-Note that any error that does not mention <appeals@warp.dev> isn't related to being blocked and should be reported as feedback or a bug. See [sending-us-feedback](https://docs.warp.dev/support-and-billing/sending-us-feedback "mention") for more.
+Note that any error that does not mention <appeals@warp.dev> isn't related to being blocked and should be reported as feedback or a bug. See [Sending Us Feedback](https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback) for more.
 {% endhint %}
 
 ## Gathering AI debugging ID
 
-In cases where you have issues with the Agent, we may ask for the AI debugging ID to troubleshoot the specific conversation. To gather the debugging ID, see [#gathering-ai-debugging-id](https://docs.warp.dev/support-and-billing/sending-us-feedback#gathering-ai-debugging-id "mention") for detailed steps.
+In cases where you have issues with the Agent, we may ask for the AI debugging ID to troubleshoot the specific conversation. To gather the debugging ID, see [Gathering AI Debugging ID](https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback#gathering-ai-debugging-id) for detailed steps.

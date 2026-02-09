@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/security/operation-permission-rules.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Permission Rules for Operations
 
 ## Overview

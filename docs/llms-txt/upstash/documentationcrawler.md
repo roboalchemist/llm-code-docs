@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/search/tools/documentationcrawler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Documentation Crawler
 
 > A tool to crawl docs and feed Upstash Search database

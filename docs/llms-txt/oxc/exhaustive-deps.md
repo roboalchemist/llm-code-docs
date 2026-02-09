@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/react/exhaustive-deps.md
 ---
-# react/exhaustive-deps&#x20;
 
 ### What it does
 
@@ -44,7 +43,7 @@ This rule accepts a configuration object with the following properties:
 
 ### additionalHooks
 
-type: `string | null`
+type: `string`
 
 default: `null`
 

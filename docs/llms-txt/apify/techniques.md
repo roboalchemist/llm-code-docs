@@ -14,7 +14,7 @@ When a scraper is detected, a website can respond in a variety of ways:
 
 This is a complete block which usually has a response status code of **403**. Usually, you'll hit an **Access denied** page if you have bad IP address or the website is restricted in the country of the IP address.
 
-> For a better understanding of what all the HTTP status codes mean, we recommend checking out https://http.cat/ which provides a highly professional description for each status code.
+> For a better understanding of what all the HTTP status codes mean, we recommend checking out [HTTP Cat](https://http.cat/) which provides a highly professional description for each status code.
 
 ## Captcha page
 
@@ -42,4 +42,4 @@ The website responds with data, but the data is totally fake, which is very diff
 
 ## Next up
 
-In the https://docs.apify.com/academy/anti-scraping/techniques/rate-limiting.md of this course, you'll be learning about **rate limiting**, which is a technique used to prevent a large amount of requests from being sent from one user.
+In the [first lesson](https://docs.apify.com/academy/anti-scraping/techniques/rate-limiting.md) of this course, you'll be learning about **rate limiting**, which is a technique used to prevent a large amount of requests from being sent from one user.

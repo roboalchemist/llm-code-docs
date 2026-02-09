@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/broadcasts/create-broadcast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Broadcast
 
 > Create a new broadcast to send to your contacts.
@@ -84,13 +88,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <ResendParamField body="topic_id" type="string">
-  <TopicBetaBanner />
-
   The topic ID that the broadcast will be scoped to.
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -103,7 +105,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->broadcasts->create([
@@ -114,7 +116,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -129,7 +131,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Broadcasts.create(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -143,23 +145,26 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Resend::Broadcasts.create(params)
   ```
 
-  ```go Go theme={null}
-  import "fmt"
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  params := &resend.CreateBroadcastRequest{
-    SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    From:       "Acme <onboarding@resend.dev>",
-    Html:       "Hi {{{FIRST_NAME|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    Subject:    "Hello, world!",
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	params := &resend.CreateBroadcastRequest{
+  		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  		From:      "Acme <onboarding@resend.dev>",
+  		Html:      "Hi {{{FIRST_NAME|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  		Subject:   "Hello, world!",
+  	}
+
+  	client.Broadcasts.Create(params)
   }
-
-  broadcast, _ := client.Broadcasts.Create(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateBroadcastOptions, Resend, Result};
 
   #[tokio::main]
@@ -179,7 +184,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend resend = new Resend("re_xxxxxxxxx");
 
   CreateBroadcastOptions params = CreateBroadcastOptions.builder()
@@ -192,7 +197,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   CreateBroadcastResponseSuccess data = resend.broadcasts().create(params);
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -210,7 +215,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Broadcast Id={0}", resp.Content );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/broadcasts' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -224,7 +229,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
   }

@@ -12,33 +12,9 @@
 
 # Source: https://docs.pipecat.ai/cli/overview.md
 
-# Source: https://docs.pipecat.ai/server/utilities/text/overview.md
-
-# Source: https://docs.pipecat.ai/guides/telephony/overview.md
-
-# Source: https://docs.pipecat.ai/guides/learn/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/overview.md
-
-# Source: https://docs.pipecat.ai/cli/overview.md
-
-# Source: https://docs.pipecat.ai/server/utilities/text/overview.md
-
-# Source: https://docs.pipecat.ai/guides/telephony/overview.md
-
-# Source: https://docs.pipecat.ai/guides/learn/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/overview.md
-
-# Source: https://docs.pipecat.ai/deployment/overview.md
-
-# Source: https://docs.pipecat.ai/cli/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # CLI Overview
 
@@ -104,8 +80,3 @@ pipecat cloud --help
 <Card title="Create Your First Bot" icon="rocket" href="/cli/init">
   Scaffold a new project with pipecat init
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

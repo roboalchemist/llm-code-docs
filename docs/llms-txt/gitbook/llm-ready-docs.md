@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/llm-ready-docs.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/llm-ready-docs.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/llm-ready-docs.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/llm-ready-docs.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/llm-ready-docs.md
 

@@ -29,7 +29,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__aenter__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L104)\_\_aenter\_\_
+### [**](#__aenter__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L104)\_\_aenter\_\_
 
 * **async **\_\_aenter\_\_**(): [EventManager](https://crawlee.dev/python/api/class/EventManager)
 
@@ -39,7 +39,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns [EventManager](https://crawlee.dev/python/api/class/EventManager)
 
-### [**](#__aexit__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L117)\_\_aexit\_\_
+### [**](#__aexit__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L117)\_\_aexit\_\_
 
 * **async **\_\_aexit\_\_**(exc\_type, exc\_value, exc\_traceback): None
 
@@ -57,7 +57,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns None
 
-### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L63)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L63)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, persist\_state\_interval, close\_timeout): None
 
@@ -77,7 +77,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns None
 
-### [**](#emit)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L233)emit
+### [**](#emit)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L239)emit
 
 * ****emit**(\*: , event: [Event](https://crawlee.dev/python/api/enum/Event), event\_data: [EventData](https://crawlee.dev/python/api#EventData)): None
 * ****emit**(\*: , event: Literal\[Event.PERSIST\_STATE], event\_data: [EventPersistStateData](https://crawlee.dev/python/api/class/EventPersistStateData)): None
@@ -104,7 +104,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns None
 
-### [**](#off)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L201)off
+### [**](#off)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L207)off
 
 * ****off**(\*, event, listener): None
 
@@ -124,7 +124,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns None
 
-### [**](#on)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L155)on
+### [**](#on)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L157)on
 
 * ****on**(\*: , event: [Event](https://crawlee.dev/python/api/enum/Event), listener: [EventListener](https://crawlee.dev/python/api#EventListener)\[Any]): None
 * ****on**(\*: , event: Literal\[Event.PERSIST\_STATE], listener: [EventListener](https://crawlee.dev/python/api#EventListener)\[[EventPersistStateData](https://crawlee.dev/python/api/class/EventPersistStateData)]): None
@@ -151,7 +151,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
   #### Returns None
 
-### [**](#wait_for_all_listeners_to_complete)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L243)wait\_for\_all\_listeners\_to\_complete
+### [**](#wait_for_all_listeners_to_complete)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L249)wait\_for\_all\_listeners\_to\_complete
 
 * **async **wait\_for\_all\_listeners\_to\_complete**(\*, timeout): None
 
@@ -169,7 +169,7 @@ It allows for registering event listeners, emitting events, and ensuring all lis
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#active)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_event_manager.py#L100)active
+### [**](#active)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_event_manager.py#L100)active
 
 **active: bool
 

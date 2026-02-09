@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/user-selected-batcap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Selected Battery Capacity
 
 > This flow can be launched using the URL provided by the [battery capacity](/docs/api-reference/get-nominal-capacity) endpoint.

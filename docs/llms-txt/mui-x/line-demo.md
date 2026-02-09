@@ -37,7 +37,7 @@ export default function SimpleLineChart() {
           { data: pData, label: 'pv' },
           { data: uData, label: 'uv' },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
         margin={margin}
       />
@@ -130,7 +130,7 @@ export default function DashedLineChart() {
           { data: pData, label: 'pv', id: 'pvId' },
           { data: uData, label: 'uv', id: 'uvId' },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
         sx={{
           [`.${lineElementClasses.root}, .${markElementClasses.root}`]: {
@@ -183,7 +183,7 @@ export default function BiaxialLineChart() {
           { data: pData, label: 'pv', yAxisId: 'leftAxisId' },
           { data: uData, label: 'uv', yAxisId: 'rightAxisId' },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[
           { id: 'leftAxisId', width: 50 },
           { id: 'rightAxisId', position: 'right' },
@@ -226,7 +226,7 @@ export default function LineChartWithReferenceLines() {
           { data: pData, label: 'pv', type: 'line' },
           { data: uData, label: 'uv', type: 'line' },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
         margin={margin}
       >
@@ -260,12 +260,12 @@ export default function LineChartConnectNulls() {
   return (
     <Stack sx={{ width: '100%', height: 400 }}>
       <LineChart
-        xAxis={[{ data: xData, scaleType: 'point' }]}
+        xAxis={[{ data: xData, scaleType: 'point', height: 28 }]}
         series={[{ data }]}
         margin={margin}
       />
       <LineChart
-        xAxis={[{ data: xData, scaleType: 'point' }]}
+        xAxis={[{ data: xData, scaleType: 'point', height: 28 }]}
         series={[{ data, connectNulls: true }]}
         margin={margin}
       />
@@ -669,7 +669,7 @@ export default function CustomLineMarks() {
             showMark: ({ index }) => index % 2 === 0,
           },
         ]}
-        xAxis={[{ scaleType: 'point', data: xLabels }]}
+        xAxis={[{ scaleType: 'point', data: xLabels, height: 28 }]}
         yAxis={[{ width: 50 }]}
         margin={margin}
       />

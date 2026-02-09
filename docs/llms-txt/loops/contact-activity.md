@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/contacts/contact-activity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contact activity timeline
 
 > The contact activity timeline is a great way to see all the activity for a specific contact.

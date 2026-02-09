@@ -10,41 +10,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/cicd/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/cicd/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/cicd/gitlab.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/gitlab.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GitLab
 

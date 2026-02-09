@@ -4,11 +4,7 @@
 
 Implementing email and password authentication with Better Auth.
 
-***
 
-title: Email & Password
-description: Implementing email and password authentication with Better Auth.
------------------------------------------------------------------------------
 
 Email and password authentication is a common method used by many applications. Better Auth provides a built-in email and password authenticator that you can easily integrate into your project.
 
@@ -43,6 +39,7 @@ export const auth = betterAuth({
 
 To sign a user up, you can use the `signUp.email` function provided by the client.
 
+
 ### Client Side
 
 ```ts
@@ -73,29 +70,30 @@ const data = await auth.api.signUpEmail({
 
 ```ts
 type signUpEmail = {
-    /**
-     * The name of the user.
-     */
-    name: string = "John Doe"
-    /**
-     * The email address of the user.
-     */
-    email: string = "john.doe@example.com"
-    /**
-     * The password of the user. It should be at least 8 characters long and max 128 by default.
-     */
-    password: string = "password1234"
-    /**
-     * An optional profile image of the user.
-     */
-    image?: string = "https://example.com/image.png"
-    /**
-     * An optional URL to redirect to after the user signs up.
-     */
-    callbackURL?: string = "https://example.com/callback"
-
+      /**
+       * The name of the user.
+       */
+      name: string = "John Doe"
+      /**
+       * The email address of the user.
+       */
+      email: string = "john.doe@example.com"
+      /**
+       * The password of the user. It should be at least 8 characters long and max 128 by default.
+       */
+      password: string = "password1234"
+      /**
+       * An optional profile image of the user.
+       */
+      image?: string = "https://example.com/image.png"
+      /**
+       * An optional URL to redirect to after the user signs up.
+       */
+      callbackURL?: string = "https://example.com/callback"
+  
 }
 ```
+
 
 <Callout>
   These are the default properties for the sign up email endpoint, however it's possible that with [additional fields](/docs/concepts/typescript#additional-fields) or special plugins you can pass more properties to the endpoint.
@@ -104,6 +102,7 @@ type signUpEmail = {
 ### Sign In
 
 To sign a user in, you can use the `signIn.email` function provided by the client.
+
 
 ### Client Side
 
@@ -135,25 +134,26 @@ const data = await auth.api.signInEmail({
 
 ```ts
 type signInEmail = {
-    /**
-     * The email address of the user.
-     */
-    email: string = "john.doe@example.com"
-    /**
-     * The password of the user. It should be at least 8 characters long and max 128 by default.
-     */
-    password: string = "password1234"
-    /**
-     * If false, the user will be signed out when the browser is closed. (optional) (default: true)
-     */
-    rememberMe?: boolean = true
-    /**
-     * An optional URL to redirect to after the user signs in. (optional)
-     */
-    callbackURL?: string = "https://example.com/callback"
-
+      /**
+       * The email address of the user.
+       */
+      email: string = "john.doe@example.com"
+      /**
+       * The password of the user. It should be at least 8 characters long and max 128 by default.
+       */
+      password: string = "password1234"
+      /**
+       * If false, the user will be signed out when the browser is closed. (optional) (default: true)
+       */
+      rememberMe?: boolean = true
+      /**
+       * An optional URL to redirect to after the user signs in. (optional)
+       */
+      callbackURL?: string = "https://example.com/callback"
+  
 }
 ```
+
 
 <Callout>
   These are the default properties for the sign in email endpoint, however it's possible that with [additional fields](/docs/concepts/typescript#additional-fields) or special plugins you can pass different properties to the endpoint.
@@ -162,6 +162,7 @@ type signInEmail = {
 ### Sign Out
 
 To sign a user out, you can use the `signOut` function provided by the client.
+
 
 ### Client Side
 
@@ -183,9 +184,10 @@ await auth.api.signOut({
 
 ```ts
 type signOut = {
-
+  
 }
 ```
+
 
 you can pass `fetchOptions` to redirect onSuccess
 
@@ -325,6 +327,7 @@ Additionally, you can provide an `onPasswordReset` callback to execute logic aft
 
 Once you configured your server you can call `requestPasswordReset` function to send reset password link to user. If the user exists, it will trigger the `sendResetPassword` function you provided in the auth config.
 
+
 ### Client Side
 
 ```ts
@@ -349,17 +352,18 @@ const data = await auth.api.requestPasswordReset({
 
 ```ts
 type requestPasswordReset = {
-    /**
-     * The email address of the user to send a password reset email to 
-     */
-    email: string = "john.doe@example.com"
-    /**
-     * The URL to redirect the user to reset their password. If the token isn't valid or expired, it'll be redirected with a query parameter `?error=INVALID_TOKEN`. If the token is valid, it'll be redirected with a query parameter `?token=VALID_TOKEN 
-     */
-    redirectTo?: string = "https://example.com/reset-password"
-
+      /**
+       * The email address of the user to send a password reset email to 
+       */
+      email: string = "john.doe@example.com"
+      /**
+       * The URL to redirect the user to reset their password. If the token isn't valid or expired, it'll be redirected with a query parameter `?error=INVALID_TOKEN`. If the token is valid, it'll be redirected with a query parameter `?token=VALID_TOKEN 
+       */
+      redirectTo?: string = "https://example.com/reset-password"
+  
 }
 ```
+
 
 When a user clicks on the link in the email, they will be redirected to the reset password page. You can add the reset password page to your app. Then you can use `resetPassword` function to reset the password. It takes an object with the following properties:
 
@@ -371,6 +375,7 @@ const { data, error } = await authClient.resetPassword({
   token,
 });
 ```
+
 
 ### Client Side
 
@@ -396,21 +401,23 @@ const data = await auth.api.resetPassword({
 
 ```ts
 type resetPassword = {
-    /**
-     * The new password to set 
-     */
-    newPassword: string = "password1234"
-    /**
-     * The token to reset the password 
-     */
-    token: string
-
+      /**
+       * The new password to set 
+       */
+      newPassword: string = "password1234"
+      /**
+       * The token to reset the password 
+       */
+      token: string
+  
 }
 ```
+
 
 ### Update password
 
 A user's password isn't stored in the user table. Instead, it's stored in the account table. To change the password of a user, you can use one of the following approaches:
+
 
 ### Client Side
 
@@ -440,21 +447,22 @@ const data = await auth.api.changePassword({
 
 ```ts
 type changePassword = {
-    /**
-     * The new password to set 
-     */
-    newPassword: string = "newpassword1234"
-    /**
-     * The current user password 
-     */
-    currentPassword: string = "oldpassword1234"
-    /**
-     * When set to true, all other active sessions for this user will be invalidated
-     */
-    revokeOtherSessions?: boolean = true
-
+      /**
+       * The new password to set 
+       */
+      newPassword: string = "newpassword1234"
+      /**
+       * The current user password 
+       */
+      currentPassword: string = "oldpassword1234"
+      /**
+       * When set to true, all other active sessions for this user will be invalidated
+       */
+      revokeOtherSessions?: boolean = true
+  
 }
 ```
+
 
 ### Configuration
 

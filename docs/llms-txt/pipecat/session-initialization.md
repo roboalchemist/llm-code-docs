@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/session-initialization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Initialization
 
 > Learn how to set up connections between users and your Pipecat voice AI bot
@@ -35,7 +39,6 @@ async def bot(runner_args: RunnerArguments):
         params=TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         webrtc_connection=runner_args.webrtc_connection,
     )
@@ -168,11 +171,11 @@ async def on_client_ready(rtvi):
     await task.queue_frames([LLMRunFrame()])
 ```
 
-<Important>
+<Note>
   For client/server room-based connections, waiting for `on_client_ready` is
   crucial - starting too early can cause the client to miss part of the initial
   message.
-</Important>
+</Note>
 
 ## Process Isolation
 
@@ -244,8 +247,3 @@ Now that you understand session initialization, let's explore the different tran
   Learn how Pipecat's pipeline architecture orchestrates frame processing for
   voice AI applications
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

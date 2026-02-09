@@ -1,15 +1,27 @@
 # Source: https://docs.frigade.com/component/hint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hint
 
 > Hints are a great way to subtly call attention to specific parts of your UI
 
 <Frame>
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/hint.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2da7d591eb61dcb9cec7eb90e6b6a9a4"
     style={{
     width: "350px",
   }}
+    data-og-width="390"
+    width="390"
+    data-og-height="440"
+    height="440"
+    data-path="images/components/hint.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=49177bd51b9a24bb32c8d707eac66332 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=9b5c06a32647218ad936be59da8b6305 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=74b6f27baa0bfe0471addc1145af6f22 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8afbb6903463f6587367da28e3e200a1 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=719ae4f59f847c0ed1a6d29f35c7451f 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/hint.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=86626bebb6613e9f1f49fc0b98ea4577 2500w"
   />
 </Frame>
 
@@ -37,7 +49,7 @@ The `Hint` component provides users with contextual guidance without interruptin
 
 <Tabs>
   <Tab title="Code">
-    ```tsx App.tsx
+    ```tsx App.tsx theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/smartcar-updates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Subscribing to Smartcar Updates and Notifications
 
 > Sign up for product announcements, marketing emails, changelog alerts, and status notifications so you can stay up to date with Smartcar.
@@ -50,8 +54,3 @@ Monitor the status of individual vehicle brands and their APIs:
 <Info>
   By subscribing to these channels, you'll receive proactive notifications about planned maintenance, service disruptions, and platform updates that may affect your integration.
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

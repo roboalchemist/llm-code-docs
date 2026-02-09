@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/trust-and-safety.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Trust and Safety at Replit
 
 > At Replit, we strive to create a fun and creative community that is also trusted and safe. To achieve this goal, we have implemented rules and policies that promote positive behavior and protect our users. In this document, you will find a summary of our key rules, tips on how to report any concerns, and information on where you can learn more.

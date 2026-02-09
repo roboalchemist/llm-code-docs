@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/storage-and-databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Storage and Databases
 
 > Learn about file storage and database options on Replit.
@@ -38,7 +42,7 @@ Learn more about the following Replit tools to set up and manage your app's data
 <CardGroup>
   <Card title="Database" href="/cloud-services/storage-and-databases/sql-database/" icon="database">
     Ideal for structured data and representing data relationships.
-    Backed by Neon's serverless PostgresSQL solution that scales with your app.
+    Backed by a fully-managed PostgresSQL database that scales with your app.
   </Card>
 
   <Card title="App Storage" href="/cloud-services/storage-and-databases/object-storage/" icon="bucket">
@@ -75,7 +79,7 @@ Store product information, customer profiles, and order history in the database.
 Use SQL queries to filter products by category, search for items, and manage customer orders.
 
 <Frame>
-  <img src="https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=ecabc5958aca20a29280aa274a8d9316" alt="screenshot of an E-commerce app" data-og-width="3308" width="3308" data-og-height="2004" height="2004" data-path="images/databases/use-case-ecommerce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=280&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=305c5229d67aab31242accf284fbdb6a 280w, https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=560&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=b3c50354360f10435b38301d33072f20 560w, https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=840&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=49f6f5b3e5271c299d89dc4a617303e8 840w, https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=1100&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=059e374e51a3215bdaacbb9ce4e27c51 1100w, https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=1650&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=fa59af061095c65cc571fe9c43432793 1650w, https://mintcdn.com/replit/jSmYU1wBTvl8UMyc/images/databases/use-case-ecommerce.png?w=2500&fit=max&auto=format&n=jSmYU1wBTvl8UMyc&q=85&s=171e109e38a88053be8d449218391caf 2500w" />
+  <img src="https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=a970847ef9253b625186bf408bde2b7f" alt="screenshot of an E-commerce app" data-og-width="1440" width="1440" data-og-height="872" height="872" data-path="images/databases/use-case-ecommerce.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=280&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=fa7a3ba735fb4994b04fb31d6c29aaee 280w, https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=560&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=46e0efc5e183953c92a012149e8b4fa8 560w, https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=840&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=7ca1e8b46ba7a9ea26f1275c341c5371 840w, https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=1100&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=fac391285b8d6b4cff8d53c77d5f81f8 1100w, https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=1650&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=0377f1616fc7178dff322a815162b922 1650w, https://mintcdn.com/replit/tlGd6oyGOaUUeRxr/images/databases/use-case-ecommerce.jpg?w=2500&fit=max&auto=format&n=tlGd6oyGOaUUeRxr&q=85&s=5dba163fccbf233dabddce2fba173468 2500w" />
 </Frame>
 
 ### File sharing app

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/adagrad.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/adagrad.md
 
 # AdaGrad
 
@@ -8,9 +8,9 @@
 
 #### bitsandbytes.optim.Adagrad[[bitsandbytes.optim.Adagrad]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L8)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L8)
 
-__init__bitsandbytes.optim.Adagrad.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Adagrad.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-2) --
   The learning rate.
@@ -63,9 +63,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.Adagrad8bit[[bitsandbytes.optim.Adagrad8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L75)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L75)
 
-__init__bitsandbytes.optim.Adagrad8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L76[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 8"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Adagrad8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L76[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 8"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-2) --
   The learning rate.
@@ -118,9 +118,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.Adagrad32bit[[bitsandbytes.optim.Adagrad32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L143)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L143)
 
-__init__bitsandbytes.optim.Adagrad32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adagrad.py#L144[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Adagrad32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adagrad.py#L144[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.01"}, {"name": "lr_decay", "val": " = 0"}, {"name": "weight_decay", "val": " = 0"}, {"name": "initial_accumulator_value", "val": " = 0"}, {"name": "eps", "val": " = 1e-10"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-2) --
   The learning rate.

@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/github.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub OAuth 🤝 FastMCP
 
 > Secure your FastMCP server with GitHub OAuth
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.0" />
@@ -181,81 +182,3 @@ mcp = FastMCP(name="Production GitHub App", auth=auth_provider)
 
   For complete details on these parameters, see the [OAuth Proxy documentation](/servers/auth/oauth-proxy#configuration-parameters).
 </Note>
-
-## Environment Variables
-
-<VersionBadge version="2.12.1" />
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the GitHub provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.github.GitHubProvider` to use GitHub authentication.
-  </ParamField>
-</Card>
-
-### GitHub-Specific Configuration
-
-These environment variables provide default values for the GitHub provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_CLIENT_ID" required>
-    Your GitHub OAuth App Client ID (e.g., `Ov23liAbcDefGhiJkLmN`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_CLIENT_SECRET" required>
-    Your GitHub OAuth App Client Secret
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_BASE_URL" default="http://localhost:8000">
-    Public URL where OAuth endpoints will be accessible (includes any mount path)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_ISSUER_URL" default="Uses BASE_URL">
-    Issuer URL for OAuth metadata (defaults to `BASE_URL`). Set to root-level URL when mounting under a path prefix to avoid 404 logs. See [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for details.
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_REDIRECT_PATH" default="/auth/callback">
-    Redirect path configured in your GitHub OAuth App
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_REQUIRED_SCOPES" default="[&#x22;user&#x22;]">
-    Comma-, space-, or JSON-separated list of required GitHub scopes (e.g., `user repo` or `["user","repo"]`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_GITHUB_TIMEOUT_SECONDS" default="10">
-    HTTP request timeout for GitHub API calls
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Use the GitHub provider
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.github.GitHubProvider
-
-# GitHub OAuth credentials
-FASTMCP_SERVER_AUTH_GITHUB_CLIENT_ID=Ov23liAbcDefGhiJkLmN
-FASTMCP_SERVER_AUTH_GITHUB_CLIENT_SECRET=github_pat_...
-FASTMCP_SERVER_AUTH_GITHUB_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_GITHUB_REQUIRED_SCOPES=user,repo
-```
-
-With environment variables set, your server code simplifies to:
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-
-# Authentication is automatically configured from environment
-mcp = FastMCP(name="GitHub Secured App")
-
-@mcp.tool
-async def list_repos() -> list[str]:
-    """List the authenticated user's repositories."""
-    # Your tool implementation here
-    pass
-```

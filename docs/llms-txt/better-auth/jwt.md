@@ -4,11 +4,7 @@
 
 Authenticate users with JWT tokens in services that can't use the session
 
-***
 
-title: JWT
-description: Authenticate users with JWT tokens in services that can't use the session
---------------------------------------------------------------------------------------
 
 The JWT plugin provides endpoints to retrieve a JWT token and a JWKS endpoint to verify the token.
 
@@ -41,7 +37,7 @@ The JWT plugin provides endpoints to retrieve a JWT token and a JWKS endpoint to
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -87,7 +83,7 @@ The JWT plugin provides endpoints to retrieve a JWT token and a JWKS endpoint to
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -233,21 +229,6 @@ In case a JWT with a different `kid` is received, it is recommended to fetch the
   }
 ```
 
-### OAuth Provider Mode
-
-If you are making your system oAuth compliant (such as when utilizing the OIDC or MCP plugins), you **MUST** disable the `/token` endpoint (oAuth equivalent `/oauth2/token`) and disable setting the jwt header (oAuth equivalent `/oauth2/userinfo`).
-
-```ts title="auth.ts"
-betterAuth({
-  disabledPaths: [
-    "/token",
-  ],
-  plugins: [jwt({
-    disableSettingJwtHeader: true,
-  })]
-})
-```
-
 #### Example using jose with remote JWKS
 
 ```ts
@@ -308,6 +289,21 @@ async function validateToken(token: string) {
 // Usage example
 const token = 'your.jwt.token' // this is the token you get from the /api/auth/token endpoint
 const payload = await validateToken(token)
+```
+
+### OAuth Provider Mode
+
+If you are making your system oAuth compliant (such as when utilizing the OIDC or MCP plugins), you **MUST** disable the `/token` endpoint (oAuth equivalent `/oauth2/token`) and disable setting the jwt header (oAuth equivalent `/oauth2/userinfo`).
+
+```ts title="auth.ts"
+betterAuth({
+  disabledPaths: [
+    "/token",
+  ],
+  plugins: [jwt({
+    disableSettingJwtHeader: true,
+  })]
+})
 ```
 
 ### Remote JWKS Url

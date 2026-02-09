@@ -10,80 +10,58 @@
 
 # Source: https://docs.openpipe.ai/features/chat-completions/overview.md
 
-# Source: https://docs.openpipe.ai/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.openpipe.ai/features/evaluations/overview.md
+# Chat Completions
 
-# Source: https://docs.openpipe.ai/features/dpo/overview.md
+Once your fine-tuned model is deployed, you're ready to start generating chat completions.
 
-# Source: https://docs.openpipe.ai/features/datasets/overview.md
+First, make sure you've set up the SDK properly. See the [OpenPipe SDK](/getting-started/openpipe-sdk) section for more details. Once the SDK is installed and you've added the right
+`OPENPIPE_API_KEY` to your environment variables, you're almost done.
 
-# Source: https://docs.openpipe.ai/features/criteria/overview.md
+The last step is to update the model that you're querying to match the ID of your new fine-tuned model.
 
-# Source: https://docs.openpipe.ai/features/chat-completions/overview.md
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    from openpipe import OpenAI
 
-# Source: https://docs.openpipe.ai/overview.md
+    # Find the config values in "Installing the SDK"
+    client = OpenAI()
 
-# Source: https://docs.openpipe.ai/features/evaluations/overview.md
+    completion = client.chat.completions.create(
+        # model="gpt-4o", - original model
+        model="openpipe:your-fine-tuned-model-id",
+        messages=[{"role": "system", "content": "count to 10"}],
+        metadata={"prompt_id": "counting", "any_key": "any_value"},
+    )
+    ```
+  </Tab>
 
-# Source: https://docs.openpipe.ai/features/dpo/overview.md
+  <Tab title="NodeJS">
+    ```typescript  theme={null}
+    import OpenAI from "openpipe/openai";
 
-# Source: https://docs.openpipe.ai/features/datasets/overview.md
+    // Find the config values in "Installing the SDK"
+    const client = OpenAI();
 
-# Source: https://docs.openpipe.ai/features/criteria/overview.md
+    const completion = await client.chat.completions.create({
+      // model: "gpt-4o", - original model
+      model: "openpipe:your-fine-tuned-model-id",
+      messages: [{ role: "user", content: "Count to 10" }],
+      metadata: {
+        prompt_id: "counting",
+        any_key: "any_value",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
-# Source: https://docs.openpipe.ai/features/chat-completions/overview.md
+Queries to your fine-tuned models will now be shown in the [Request Logs](/features/request-logs) panel.
 
-# Source: https://docs.openpipe.ai/overview.md
+<Frame><img src="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=9793a1cf9b93f47f780dbb5511db13ea" alt="" data-og-width="2246" width="2246" data-og-height="1084" height="1084" data-path="images/features/running-inference-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=280&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=b6a26c678ae6926fad357248886ad4b0 280w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=560&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=cba67de1872e47766d203c7fc0db4129 560w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=840&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=33e0faca772dd1316c2467887bb8625d 840w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=1100&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=bead6f5bf0bc44768f3cd9ecc2f37505 1100w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=1650&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=0ddfcb40319668e83ddfb62c52775fe2 1650w, https://mintcdn.com/openpipe/ODS5wc6pSZpoOUK8/images/features/running-inference-logs.png?w=2500&fit=max&auto=format&n=ODS5wc6pSZpoOUK8&q=85&s=07498ed95d5d073f0d9be10d46949f1f 2500w" /></Frame>
 
-# Source: https://docs.openpipe.ai/features/evaluations/overview.md
-
-# Source: https://docs.openpipe.ai/features/dpo/overview.md
-
-# Source: https://docs.openpipe.ai/features/datasets/overview.md
-
-# Source: https://docs.openpipe.ai/features/criteria/overview.md
-
-# Source: https://docs.openpipe.ai/features/chat-completions/overview.md
-
-# Source: https://docs.openpipe.ai/overview.md
-
-# Source: https://docs.openpipe.ai/features/evaluations/overview.md
-
-# Source: https://docs.openpipe.ai/features/dpo/overview.md
-
-# Source: https://docs.openpipe.ai/features/datasets/overview.md
-
-# Source: https://docs.openpipe.ai/features/criteria/overview.md
-
-# Source: https://docs.openpipe.ai/features/chat-completions/overview.md
-
-# Source: https://docs.openpipe.ai/overview.md
-
-# Overview
-
-> OpenPipe is a streamlined platform designed to help product-focused teams train specialized LLM models as replacements for slow and expensive prompts.
-
-## What We Provide
-
-Here are a few of the features we offer:
-
-* [**Unified SDK**](/getting-started/openpipe-sdk): Collect and utilize interaction data to fine-tune a custom model and continually refine and enhance model performance. Switching requests from your previous LLM provider to your new model is as simple as changing the model name. All our models implement the OpenAI inference format, so you won't have to change how you parse its response.
-
-* [**Data Capture**](/features/request-logs): OpenPipe captures every request and response and stores it for your future use.
-
-  * [**Request Logs**](/features/request-logs): We help you automatically log your past requests and tag them for easy filtering.
-  * [**Upload Data**](/features/datasets/uploading-data): OpenPipe also allows you to import fine-tuning data from OpenAI-compatible JSONL files.
-  * [**Export Data**](/features/datasets/exporting-data): Once your request logs are recorded, you can export them at any time.
-
-* [**Fine-Tuning**](/features/fine-tuning/overview): With all your LLM requests and responses in one place, it's easy to select the data you want to fine-tune on and kick off a job.
-
-  * [**Pruning Rules**](/features/pruning-rules): By removing large chunks of unchanging text and fine-tuning a model on the compacted data, we can reduce the size of incoming requests and save you money on inference.
-
-* [**Model Hosting**](/features/chat-completions): After we've trained your model, OpenPipe will automatically begin hosting it.
-
-  * [**Caching**](/features/caching): Improve performance and reduce costs by caching previously generated responses.
-
-* [**Evaluations**](/features/evaluations/overview): Compare your models against one another and OpenAI base models. Set up custom instructions and get quick insights into your models' performance.
-
-Welcome to the OpenPipe community!
+Feel free to run some sample inference on the [PII Redaction model](https://app.openpipe.ai/p/BRZFEx50Pf/fine-tunes/efb0d474-97b6-4735-a0af-55643b50600a/general) in our public project.

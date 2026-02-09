@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/mermaid-diagrams.md
+# Source: https://www.mintlify.com/docs/components/mermaid-diagrams.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Mermaid
 
@@ -8,7 +12,7 @@
 
 For a complete list of supported diagram types and syntax, see the [Mermaid documentation](https://mermaid.js.org/intro/).
 
-```mermaid  theme={null}
+```mermaid placement="top-right" theme={null}
   flowchart LR
     subgraph subgraph1
         direction TB
@@ -28,7 +32,7 @@ For a complete list of supported diagram types and syntax, see the [Mermaid docu
 ```
 
 ````mdx Mermaid flowchart example theme={null}
-```mermaid
+```mermaid placement="top-right"
   flowchart LR
     subgraph subgraph1
         direction TB
@@ -45,6 +49,55 @@ For a complete list of supported diagram types and syntax, see the [Mermaid docu
     %% Link *within* subgraph2:
     %% subgraph2 inherits the direction of the top-level graph (LR)
     outside ---> top2
+```
+````
+
+## Interactive controls
+
+All Mermaid diagrams include interactive zoom and pan controls. By default, controls appear when the diagram height exceeds 120px.
+
+* **Zoom in/out**: Use the zoom buttons to increase or decrease the diagram scale.
+* **Pan**: Use the directional arrows to move around the diagram.
+* **Reset view**: Click the reset button to return to the original view.
+
+The controls are especially useful for large or complex diagrams that don't fit entirely in the viewport.
+
+## Properties
+
+<ResponseField name="actions" type="boolean">
+  Show or hide the interactive controls. When set, this overrides the default behavior (controls shown when diagram height exceeds 120px).
+</ResponseField>
+
+<ResponseField name="placement" type="string" default="bottom-right">
+  Position of the interactive controls. Options: `top-left`, `top-right`, `bottom-left`, `bottom-right`.
+</ResponseField>
+
+### Examples
+
+Hide controls on a diagram:
+
+````mdx  theme={null}
+```mermaid actions={false}
+flowchart LR
+    A --> B
+```
+````
+
+Show controls in the top-left corner:
+
+````mdx  theme={null}
+```mermaid placement="top-left"
+flowchart LR
+    A --> B
+```
+````
+
+Combine both properties:
+
+````mdx  theme={null}
+```mermaid placement="top-left" actions={true}
+flowchart LR
+    A --> B
 ```
 ````
 

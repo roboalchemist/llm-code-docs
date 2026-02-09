@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.ARRTRIM
 
@@ -26,30 +12,30 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
+<ParamField body="path" type="str" required>
   The path of the array.
 </ParamField>
 
-<ParamField body="start" type="integer" required>
+<ParamField body="start" type="int" required>
   The start index of the range.
 </ParamField>
 
-<ParamField body="stop" type="integer" required>
+<ParamField body="stop" type="int" required>
   The stop index of the range.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer[]" required>
+<ResponseField type="List[int]" required>
   The length of the array after the trimming.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const length = await redis.json.arrtrim("key", "$.path.to.array", 2, 10);
+  ```py Example theme={"system"}
+  length = redis.json.arrtrim("key", "$.path.to.array", 2, 10)
   ```
 </RequestExample>

@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/partners/link-based-discounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Link-based discounts
 
 > Set up dual-sided incentives for your affiliate/referral programs with link-based and promo code-based discounts

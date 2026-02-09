@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/wake-check-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WakeCheckFilter
 
 > Processor that passes frames only after detecting wake phrases in transcriptions
@@ -94,8 +98,3 @@ graph TD
 * Passes all non-transcription frames through unchanged
 * Error handling produces ErrorFrames for robust operation
 * Case-insensitive matching for natural language use
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

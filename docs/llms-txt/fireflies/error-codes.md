@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/miscellaneous/error-codes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error codes
 
 > Error codes and their explanations
@@ -314,6 +318,29 @@ Returned when an unsupported meeting platform URL is provided to the `addToLiveM
       "extensions": {
         "code": "unsupported_platform",
         "status": 400,
+      }
+    }
+  ]
+}
+```
+
+### `require_ai_credits`
+
+Returned when you have insufficient AI credits to perform AI-powered operations like AskFred queries. You may need to upgrade your plan or purchase additional credits.
+
+```json  theme={null}
+{
+  "errors": [
+    {
+	  ... other fields for error
+      "message": "You do not have sufficient AI credits to perform this action",
+      "code": "require_ai_credits",
+      "extensions": {
+        "code": "require_ai_credits",
+        "status": 402,
+        "helpUrls": [
+          "https://app.fireflies.ai/upgrade"
+        ]
       }
     }
   ]

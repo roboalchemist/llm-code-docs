@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/unicorn/no-invalid-fetch-options.md
 ---
-# unicorn/no-invalid-fetch-options&#x20;
 
 ### What it does
 

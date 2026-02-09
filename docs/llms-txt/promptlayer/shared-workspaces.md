@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/shared-workspaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Organizations & Workspaces
 
 The Organizations & Workspaces feature in PromptLayer provides a comprehensive system for team collaboration and resource management. Organizations serve as the top-level container for your company, while workspaces allow you to organize projects, teams, and resources within your organization.
@@ -28,6 +32,8 @@ Organizations support different user roles:
 * **Owner**: Full administrative access, billing management, and ability to manage all workspaces
 * **Admin**: Can manage users, create workspaces, and access all workspace data
 * **Member**: Default role with access to assigned workspaces
+
+For more granular workspace-level permission control, [RBAC (Role-Based Access Control)](/why-promptlayer/rbac) allows you to define custom roles and fine-grained permissions at the workspace level.
 
 ### Managing Your Organization
 
@@ -86,8 +92,3 @@ Organizations typically structure workspaces by team (Engineering, Data Science,
 * Billing is managed at the organization level
 * Workspace limits depend on your subscription plan
 * Usage is tracked across all workspaces in your organization
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

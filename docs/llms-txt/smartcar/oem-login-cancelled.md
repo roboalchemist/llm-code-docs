@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/oem-login-cancelled.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OEM Login Cancelled
 
 > This error occurs when a user went to authorize directly with the OEM but exited the flow for some reason.

@@ -1,103 +1,143 @@
-# Source: https://braintrust.dev/docs/guides/automations/data-management.md
+# Source: https://braintrust.dev/docs/admin/automations/data-management.md
 
-# Data management
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-Data management automations let you export data to S3 and manage data retention for your Braintrust project.
+# Manage data
 
-## S3 export
+> Export to S3 and configure retention policies
 
-S3 export automations allow you to periodically export your Braintrust data to an AWS S3 bucket. This is ideal for archiving data, running offline analysis, or feeding data into data warehouses like
-[Snowflake](https://www.snowflake.com/) or [Databricks](https://databricks.com/).
+Automate data export to S3 and configure retention policies to manage storage costs and comply with data privacy regulations.
+
+## Export to S3
+
+Periodically export logs, experiments, or datasets to AWS S3 buckets.
 
 <Warning>
-  If you are on a hybrid deployment, S3 export is available starting with `v1.1.0`.<br />
+  For hybrid deployments, S3 export is available starting with v1.1.0.
+
   We plan to support export to Google Cloud Storage and Azure Blob Storage in the future. If you'd like to see this feature, please [get in touch](mailto:support@braintrust.dev).
 </Warning>
 
-<img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=74be50e7a60805bbb50494af2dd11c95" alt="Create S3 export automation" data-og-width="1394" width="1394" data-og-height="1486" height="1486" data-path="guides/automations/create-s3-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=9f1e71127e312a230aefd0b8307fd3bd 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=b6c5432451f44e271f540510cb12bfcc 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=2a050154148f4a187f3c2a639b1ea751 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=db5fd771785147e3bdcbcf8e37469028 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=273f94000b38768de8f371401b4f06d0 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-s3-export.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=36e43f1b9feb9c35cba72cd3c71d4e96 2500w" />
+### Create S3 export
 
-### Configure S3 export automation
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select <Icon icon="database-zap" /> **Data management**.
+3. Click **+ Create automation**.
+4. Select **S3 export** type.
+5. Configure export settings:
+   * **Name**: Identify the export.
+   * **Data to export**: Logs (traces), Logs (spans), or Custom BTQL query.
+   * **S3 path**: Target bucket and prefix (e.g., `s3://my-bucket/braintrust/logs`). Once the automation is created, this path cannot be changed.
+   * **Role ARN**: IAM role ARN that Braintrust will assume.
+   * **Format**: JSON Lines or Parquet.
+   * **Interval**: How often to export (5 min to 24 hr).
+6. Click **Test automation** to verify S3 access.
+7. Click **Save**.
 
-* **Automation name**: A descriptive name for your export automation
-* **Description** (optional): Additional context about the export automation's purpose
-* **Type**: Select **S3 export**
-* **Data to export**: Choose what data to export
-  * **Logs (traces)**: One row per trace, including scores, token counts, cost, and other metrics
-  * **Logs (spans)**: One row per span (lower level)
-  * **Custom BTQL query**: Write your own BTQL query to define the exact data to export
-* **S3 export path**: The S3 path to export the results to (for example, `s3://your-bucket-name/path/to/export`). Once the automation is created, this path cannot be changed
-* **Role ARN**: The ARN of an IAM role you create in AWS. The UI will help you configure this role
-* **Format**: The file format for the exported data. Choose between JSON Lines and Parquet
-* **Interval**: How frequently the automation should run and export data. Options: 5 minutes, 30 minutes, 1 hour, 4 hours, 12 hours, 24 hours. Defaults to 1 hour
+### Configure AWS IAM
 
-### Export limits and throughput
+When creating an S3 export, Braintrust provides step-by-step instructions to configure the required IAM role.
 
-Each export interval can process up to 100,000 rows. This limit applies to the data type you're exporting:
+1. In the export configuration dialog, expand **Role creation instructions**.
+2. Follow the guided steps to create an IAM role with the correct trust policy and S3 permissions.
 
-* **Logs (traces)**: Rows are traces
-* **Logs (spans)**: Rows are spans
-* **Custom BTQL query**: Rows are whatever your query returns
+### Export data types
 
-If you're ingesting data faster than this limit, the automation won't finish exporting all new data each interval, and a backlog will accumulate. See [Troubleshooting](#export-falling-behind) for how to resolve this.
+**Logs (traces)**: One row per trace with scores, metrics, and metadata. Use this for high-level analysis.
 
-### Historical data export
+**Logs (spans)**: One row per span for detailed execution traces. Use this for debugging or fine-grained analysis.
 
-When you create a new S3 export automation for **Logs (traces)** or **Logs (spans)**, it starts exporting from the **beginning of your data**, not from when the automation was created. This means the automation will first process all historical records before catching up to current data. If you have a large amount of historical data, the initial catch-up may take multiple intervals to complete.
+**Custom query**: Define exactly what data to export using SQL or BTQL:
 
-For **Custom BTQL query** exports, the starting point depends on your query. If you include a date filter (e.g., `filter: created > "2025-01-01"`), the export will only include matching records.
+<CodeGroup>
+  ```sql SQL syntax theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  SELECT id, input, output, scores, metadata
+  FROM project_logs('project-id', shape => 'traces')
+  WHERE metadata.environment = 'production'
+  ```
+
+  ```sql BTQL syntax theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  select: id, input, output, scores, metadata
+  from: project_logs('project-id') traces
+  filter: metadata.environment = 'production'
+  ```
+</CodeGroup>
 
 ### S3 folder structure
 
-Exported files are organized into date-based folders in S3. The folder date represents **when the automation ran**, not when the records were created. For example, if your automation runs on 2025-12-08 and exports records that were originally created on 2025-12-01, those records will appear in the `2025-12-08/` folder.
+Exported files are organized by export run date:
 
-This means if your automation is catching up on a backlog of historical data, records from multiple creation dates may end up in the same S3 folder (the folder for the day the export ran).
+```
+s3://my-bucket/braintrust/logs/
+  2025-12-08/
+    export_001.jsonl
+    export_002.jsonl
+  2025-12-09/
+    export_001.jsonl
+```
 
-### Configure AWS for S3 export
+The folder date represents when the automation ran, not when records were created. Historical data exports may contain records from multiple creation dates in a single folder.
 
-The export configuration relies on you creating an IAM role that Braintrust can assume and use to write to your S3 bucket.
-This role gets assumed with an [external ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html) that
-includes your organization ID, project ID, and an automation-specific ID. If you'd like to reuse this role for multiple export automations across your organization, you can use a wildcard, for example, `bt:<your organization ID>:*`.
+### Export throughput
 
-### Test and run export automations
+Each export interval can process up to 100,000 rows:
 
-Before saving or updating an export automation, you can test it to confirm behavior using the **Test automation** button. Braintrust will attempt to write (and delete) a small test file to your S3 bucket using the configured IAM role.
+* For traces: 100,000 traces per interval
+* For spans: 100,000 spans per interval
+* For custom queries: 100,000 result rows per interval
 
-### View export runs and manual triggers
+If you're ingesting data faster than this limit, decrease the interval (e.g., from 1 hour to 30 minutes) to prevent backlog.
 
-After creating an export automation, click the **status icon** next to your automation to open the Automation runs modal.
+### Historical data
 
-<img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/automation-status.gif?s=883befead8b5e9508d81c83c6967a3da" alt="Automation status" data-og-width="800" width="800" data-og-height="618" height="618" data-path="guides/automations/automation-status.gif" data-optimize="true" data-opv="3" />
+New S3 exports start from the beginning of your data, not from creation time. The automation processes all historical records before catching up to current data.
 
-From this modal you can:
+For large datasets, initial catch-up may take multiple intervals. This is expected behavior.
 
-* **View run history**: See total rows processed, data size, and duration across all runs
-* **Check last run status**: View details of the most recent run, including any errors
-* **Run once**: Manually trigger the automation immediately
-* **Refresh**: Re-fetch the latest status from the server
-* **Reset automation**: Clear the cursor and execution history, restarting the export from the beginning of your data. This is useful if the automation has encountered errors or you want to re-export all historical data.
+### Monitor exports
+
+View export status and history:
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select <Icon icon="database-zap" /> **Data management**.
+3. Click the status icon next to your export.
+4. View run history, rows processed, data size, and timing.
+
+From this modal:
+
+* **Run once**: Manually trigger an immediate export.
+* **Reset automation**: Clear history and restart from the beginning.
+* **View errors**: See failure details and troubleshoot issues.
 
 ### Troubleshooting
 
-#### Export falling behind
+**Export falling behind**: If you see "Max iterations reached" warnings:
 
-If your export automation shows the following warning in the [Automation runs modal](#view-export-runs-and-manual-triggers), the automation couldn't process all available data in a single interval:
+* This is normal during initial historical data processing.
+* If it persists after catch-up, decrease the interval to run more frequently.
+* Consider splitting into multiple exports with BTQL filters.
 
-> Max iterations reached while running the cron job. This may result in the export falling behind.
+**Query timeouts**: For trace exports timing out:
 
-This is **expected** when you first create an automation that needs to process historical data - see [Historical data export](#historical-data-export). The automation will continue catching up over subsequent runs.
+* Ensure you're on data plane v1.1.27 or later.
+* Use the **Reset automation** button to restart.
+* If problems persist, create a new trace export automation.
 
-However, if you see this warning **persistently after the initial catch-up**, it indicates your ongoing data ingestion rate exceeds what the automation can process per interval. To resolve this, decrease the interval (e.g., from 1 hour to 30 minutes) to run the automation more frequently.
+**IAM errors**: If test automation fails with permission errors:
 
-#### Query timeouts (trace exports)
+* Verify the IAM role ARN is correct.
+* Check the trust policy includes the correct external ID.
+* Ensure S3 policy grants required permissions.
+* Confirm the bucket and prefix exist.
 
-If your trace export automation fails with a timeout error like `Failed to run BrainstoreQuery: Query cancelled: Timeout` in the [Automation runs modal](#view-export-runs-and-manual-triggers), this can occur due to a bug that was resolved in data plane v1.1.27. If you're on v1.1.27 or later, reset the automation using the "Reset automation" button. If you created the automation on an older version and resetting doesn't help, try creating a new trace export automation.
-
-### Create S3 export automations via API
+### Create S3 exports via API
 
 When creating an S3 export automation via the API, you must perform two steps:
 
-1. **Create the automation** using [`POST /v1/project_automation`](https://www.braintrust.dev/docs/api-reference/projectautomations/create-project_automation)
-2. **Register the cron job** using `POST /automation/cron`
+1. **Create the automation** using [`POST /v1/project_automation`](https://www.braintrust.dev/docs/api-reference/projectautomations/create-project_automation).
+2. **Register the cron job** using `POST /automation/cron`.
 
 <Warning>
   If you create an S3 export automation via the API, you must call `POST /automation/cron` after creating the automation to register it. This step is automatically handled when creating automations through the UI, but is required when using the API directly. If you skip this step, you will encounter validation errors when attempting to view the automation status or trigger it manually.
@@ -120,34 +160,70 @@ curl -X POST https://api.braintrust.dev/automation/cron \
 
 Replace `<YOUR_AUTOMATION_ID>` with the ID returned from the `POST /v1/project_automation` call, and `<YOUR_API_KEY>` with your API key or service token. Use your API key for the `Authorization` header to authenticate the API call. For the `service_token` field in the request body, you can use either an API key (`sk-*`) or a service token (`bt-st-*`) that has **read permission on the project** containing the automation. This can be the same API key used for authentication.
 
-## Data retention
+## Configure retention
 
-Data retention automations allow you to configure objects in your project to be automatically deleted after a configurable time period. This is helpful for managing storage/cost and complying with data privacy regulations.
+Automatically delete old data to manage storage and comply with regulations.
+
+### Create retention policy
+
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Project**, select <Icon icon="database-zap" /> **Data management**.
+3. Click **+ Create automation**.
+4. Select **Data retention** type.
+5. Configure settings:
+   * **Object type**: Logs, Experiments, or Datasets.
+   * **Retention period**: Days to keep data before deletion.
+6. Click **Save**.
 
 <Warning>
-  If you are on a hybrid deployment, a preview of data retention is available on `v1.1.21`.
-  Data retention will soft-delete data by marking it unused, but it will not immediately purge the unused data files. A background process will clean up unused data over the next 24 hours, allowing a grace period to restore data that was unintentionally wiped by a configured retention policy.
-
-  Ensure you have configured a service token for your data plane. See the [data plane manager docs](/guides/self-hosting/advanced#data-plane-manager) for more details.
+  Retention policies permanently delete data. Deleted logs, experiments, and dataset rows cannot be recovered.
 </Warning>
 
-<img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=5c0721b06b2776131f1455a105e4f4a2" alt="Create data retention automation" data-og-width="1394" width="1394" data-og-height="1035" height="1035" data-path="guides/automations/create-retention.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=4f272415ab36c009edb9c5519ada039e 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=240214b6f0fb3a4d786682f959843273 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=fbc56ced2df0af513f2bb3a55fe4c5dc 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=dc479007a01e20bccb93b6363527fa72 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=6207db7e2591c036681460802267e95a 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/guides/automations/create-retention.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=2698f953b4f53019ae2e92a3487f1b67 2500w" />
+### How retention works
 
-### Configure data retention
+**Logs**: Individual logs are deleted when their creation timestamp exceeds the retention period.
 
-* **Automation name**: An auto-generated name for your retention automation
-* **Description** (optional): Additional context about the automation's purpose
-* **Type**: Select **Data retention**
-* **Object type**: Target object type for this retention policy. Currently supports logs, experiments, and datasets
-* **Retention period**: The time period in days to retain matching objects. Once objects are older than this time period they will be automatically marked for deletion and purged from Braintrust
+**Experiments**: Entire experiments (metadata and all rows) are deleted when the experiment creation timestamp exceeds the retention period.
 
-### Definitions and additional details
+**Datasets**: Individual dataset rows are deleted when their creation timestamp exceeds the retention period. The dataset itself remains and can accept new rows.
 
-* **Logs**: Individual logs will be deleted from your project when the log creation timestamp is outside the configured retention period.
-* **Experiments**: All experiment rows and experiment metadata will be deleted from your project when the experiment creation timestamp is outside the configured retention period.
-* **Datasets**: Individual dataset rows will be deleted from your dataset when the row creation timestamp is outside the configured retention period. Note that the dataset itself will not be deleted, so you may write new rows to it at any time.
+### Soft deletion
 
+For hybrid deployments (v1.1.21+), data is soft-deleted by marking it unused. A background process purges unused files within 24 hours, providing a grace period to restore accidentally deleted data.
 
----
+<Note>
+  Configure a service token for your data plane to enable retention. See [Data plane manager](/admin/self-hosting/advanced#data-plane-manager) for details.
+</Note>
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+### Common retention patterns
+
+**Production logs**: 90 days
+
+```
+Keep recent logs for debugging, delete older data to manage costs.
+```
+
+**Development logs**: 7 days
+
+```
+Keep short-term history for active development, clean up test data quickly.
+```
+
+**Experiments**: 180 days
+
+```
+Retain completed evaluations for half a year, then archive or delete.
+```
+
+**Compliance**: 30 days
+
+```
+Meet regulatory requirements by automatically deleting user data after 30 days.
+```
+
+## Next steps
+
+* [Set up alerts](/admin/automations/alerts) to monitor data quality
+* [View logs](/observe/view-logs) to understand what gets exported
+* [Export data](/annotate/export) via the API for one-time exports
+* [Self-hosting advanced](/admin/self-hosting/advanced) for data plane configuration

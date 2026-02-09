@@ -2,6 +2,8 @@
 
 # Continuous Integration - The Backbone of Modern Software Development
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 In the rapidly evolving landscape of software development, Continuous Integration (CI) has emerged as an essential practice. It represents a fundamental shift in the approach to software building and testing, emphasizing speed, efficiency, and early error detection. Here, we explore the ins and outs of Continuous Integration and its pivotal role in modern software development.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/custom-certificate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Certificate
 
 When an [Endpoint](/core-concepts/apps/connecting-to-apps/app-endpoints/overview) requires a Certificate to perform SSL / TLS termination on your behalf, you can opt to provide your own certificate and private key instead of Aptible managing them via [Managed TLS](/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls). Start by generating a [Certificate Signing Request](https://en.wikipedia.org/wiki/Certificate_signing_request)(CSR) using [these steps](/how-to-guides/app-guides/generate-certificate-signing-requests). With the certificate and private key in hand:

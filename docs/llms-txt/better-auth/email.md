@@ -4,11 +4,7 @@
 
 Learn how to use email with Better Auth.
 
-***
 
-title: Email
-description: Learn how to use email with Better Auth.
------------------------------------------------------
 
 Email is a key part of Better Auth, required for all users regardless of their authentication method. Better Auth provides email and password authentication out of the box, and a lot of utilities to help you manage email verification, password reset, and more.
 
@@ -206,6 +202,6 @@ export const auth = betterAuth({
   timing attacks. On serverless platforms, use `waitUntil` or similar to ensure the email is sent.
 </Callout>
 
-Check out the [Email and Password](/docs/authentication/email-password#forget-password) guide for more details on how to implement password reset in your app.
-Also you can check out the [Otp verification](/docs/plugins/email-otp#reset-password) guide for how to implement password reset with OTP in your app.
+Check out the [Email and Password](/docs/authentication/email-password#request-password-reset) guide for more details on how to implement password reset in your app.
+Also you can check out the [Otp verification](/docs/plugins/email-otp#reset-password-with-otp) guide for how to implement password reset with OTP in your app.
 

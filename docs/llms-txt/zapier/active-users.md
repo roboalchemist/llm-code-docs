@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/active-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Active users retention
 
 > At Zapier, churn means a user used your integration in their Zaps 29 - 56 days ago, but hasn't run a successful task in one of those Zaps in the past 28 days. This user is considered to have churned from the integration. Maybe they switched to using a competing integration or their workflow had a more periodic or seasonal cadence.

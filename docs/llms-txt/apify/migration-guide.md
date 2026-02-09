@@ -6,14 +6,14 @@
 
 ***
 
-This guide explains how to migrate your existing Actors to use https://docs.apify.com/platform/actors/development/permissions.md#how-actor-permissions-work. Before you start, make sure your Actor uses the latest https://docs.apify.com/sdk.
+This guide explains how to migrate your existing Actors to use [limited permissions](https://docs.apify.com/platform/actors/development/permissions.md#how-actor-permissions-work). Before you start, make sure your Actor uses the latest [Apify SDK](https://docs.apify.com/sdk).
 
 Recommended minimum SDK versions:
 
-* JavaScript SDK: https://github.com/apify/apify-sdk-js/releases/tag/apify%403.4.4
-* Python SDK: https://github.com/apify/apify-sdk-python/releases/tag/v3.0.0
+* JavaScript SDK: [apify@3.4.4](https://github.com/apify/apify-sdk-js/releases/tag/apify%403.4.4)
+* Python SDK: [v3.0.0](https://github.com/apify/apify-sdk-python/releases/tag/v3.0.0)
 
-Before you start it's helpful to understand https://docs.apify.com/platform/actors/development/permissions.md#how-actor-permissions-work.
+Before you start it's helpful to understand [what access restrictions limited permissions impose](https://docs.apify.com/platform/actors/development/permissions.md#how-actor-permissions-work).
 
 ## Test your Actor with limited permissions before migrating
 
@@ -25,6 +25,8 @@ You can do the same using the Apify Client as well:
 
 
 ```
+import { ACTOR_PERMISSION_LEVEL } from '@apify/consts';
+
 await apifyClient.actor(actorId).call(input, {
     forcePermissionLevel: ACTOR_PERMISSION_LEVEL.LIMITED_PERMISSIONS,
 });
@@ -35,13 +37,13 @@ Or just using the API:
 
 
 ```
-POST https://api.apify.com/v2/acts/<actor_id>/runs?**forcePermissionLevel=LIMITED_PERMISSIONS**
+POST https://api.apify.com/v2/acts/<actor_id>/runs?forcePermissionLevel=LIMITED_PERMISSIONS
 ```
 
 
 ## Common migration paths
 
-Most public Actors can migrate to limited permissions with minor adjustments, if any. The general prerequisite is to **update the Actor to use the latest https://docs.apify.com/sdk**. To assess what needs to change in your Actor, review these areas:
+Most public Actors can migrate to limited permissions with minor adjustments, if any. The general prerequisite is to **update the Actor to use the latest [Apify SDK](https://docs.apify.com/sdk)**. To assess what needs to change in your Actor, review these areas:
 
 * How your Actor uses storages (e.g. named storages and storages provided via input)
 * Whether it requests correct resource access for user-provided storages
@@ -135,7 +137,7 @@ Re-create cache only under limited permissions.
 
 Create the new storage *only once the Actor runs with limited permissions*. Only that way the access is retained in follow-up runs.
 
-If the contents of the named storage are critical for your Actor to keep functioning for users and it is impossible, costly or highly impractical to migrate, contact support or reach out to us https://discord.gg/eN73Xdhtqc. We can discuss the available options.
+If the contents of the named storage are critical for your Actor to keep functioning for users and it is impossible, costly or highly impractical to migrate, contact support or reach out to us [on the community forum](https://discord.gg/eN73Xdhtqc). We can discuss the available options.
 
 ### The Actor needs to know whether the user is paying
 
@@ -149,4 +151,4 @@ const { userIsPaying } = Actor.getEnv();
 
 ### The Actor uses Proxy
 
-Similarly, if your Actor uses https://docs.apify.com/platform/proxy.md and needs to retrieve the user's proxy password, it should get it from the `APIFY_PROXY_PASSWORD` environment variable instead of calling the `/users/me` endpoint or, preferably, rely on the SDK to handle proxy configuration automatically.
+Similarly, if your Actor uses [Proxy](https://docs.apify.com/platform/proxy.md) and needs to retrieve the user's proxy password, it should get it from the `APIFY_PROXY_PASSWORD` environment variable instead of calling the `/users/me` endpoint or, preferably, rely on the SDK to handle proxy configuration automatically.

@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/debugging/logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log Viewer
 
 # Inspect local log files

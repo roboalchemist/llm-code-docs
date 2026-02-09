@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/use-cases/data-processing-etl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data processing & ETL workflows
 
 > Learn how to use Trigger.dev for data processing and ETL (Extract, Transform, Load), including web scraping, database synchronization, batch enrichment and more.
@@ -55,7 +59,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
     Simple CSV import pipeline. Receives file upload, parses CSV rows, validates data, imports to database with progress tracking.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[importCSV] --> B[parseCSVFile]
           B --> C[validateRows]
@@ -69,7 +73,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
     **Coordinator pattern with parallel extraction**. Batch triggers parallel extraction from multiple sources (APIs, databases, S3), transforms and validates data, loads to data warehouse with monitoring.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[runETLPipeline] --> B[coordinateExtraction]
           B --> C[batchTriggerAndWait]
@@ -92,7 +96,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
     **Coordinator pattern with browser automation**. Launches headless browsers in parallel to scrape multiple pages, extracts structured data, cleans and normalizes content, stores in database.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[scrapeSite] --> B[coordinateScraping]
           B --> C[batchTriggerAndWait]
@@ -115,7 +119,7 @@ Build complex data pipelines that process large datasets without timeouts. Handl
     **Coordinator pattern with rate limiting**. Fetches records needing enrichment, batch triggers parallel API calls with configurable concurrency to respect rate limits, validates enriched data, updates database.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[enrichRecords] --> B[fetchRecordsToEnrich]
           B --> C[coordinateEnrichment]

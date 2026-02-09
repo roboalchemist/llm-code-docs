@@ -1,10 +1,8 @@
 # Source: https://docs.intelligems.io/checkout/testing-checkout-experiences.md
 
-# Testing Checkout Experiences
+# Testing Checkout Personalizations
 
-Intelligems enables your org to run real-time split tests on different Checkout Experiences. This article will walk you through how to run a Checkout Experience Test with Intelligems and some best practices.
-
-### Understanding Checkout Experience Tests
+### Understanding Checkout Personalization Tests
 
 There are two main ways to test blocks in your checkout:
 
@@ -15,7 +13,7 @@ The setup process in Shopify differs slightly depending on which type of test yo
 
 ### Step 1: Create a New Test
 
-Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click **Create New Test** above the experiments table. Select **Checkout Experience Test** and then **Create Test**.
+Navigate to the "A/B Tests" tab in the menu on the left-hand side of the Intelligems app. Once you're there, click **Create New Test** above the experiments table. Select **Checkout** and then **Create Test**.
 
 ### Step 2: Enter the Test Details
 
@@ -26,15 +24,18 @@ Fill in the **Test Name** and **Test Description** for the experiment you are cr
 * "Header vs. Below Total Location Test"
 * "Green vs. Blue vs. Red Transformation Badge"
 * "Warranty Badge Content Test Q4"
+* "3 Products vs. 1 Product"
+* "Upsell Above Total vs. Above Shipping"
 
 You will also select your **primary goal**. This will not affect what data is tracked or available to view, but will allow Intelligems to display analytics so that the most important information is surfaced first.
 
-**Common goals for Checkout Experience tests:**
+**Common goals for Checkout tests:**
 
 * Checkout conversion rate
 * Order completion rate
 * Revenue per visitor
 * Average order value
+* Units per order
 
 ### Step 3: Create Your Test Groups
 
@@ -44,7 +45,7 @@ Create between two and five groups to include in the test by clicking on the '+'
 The more groups you have, the longer it will take to get statistically significant results. You’ll need about 300 orders for each group in the test to detect a 10% change in conversion with 90% confidence.
 {% endhint %}
 
-### Step 4: Configure Checkout Experiences for Each Group
+### Step 4: Configure Checkout Personalizations for Each Group
 
 Once you've created your groups, go to the **Modifications** step. Here's where the setup differs based on your test type.
 
@@ -77,12 +78,12 @@ When testing different content in the same location, each test group needs:
 
 Since all groups share the same Location ID, you only need to add one block to your Shopify checkout.
 
-#### Creating Experiences for Each Group
+#### Creating Personalizations for Each Group
 
 For each test group:
 
 1. Click into the group's modifications
-2. Add a Checkout Experience modification
+2. Add a Checkout Personalization modification
 3. Configure the block content and styling
 4. Set the appropriate Location ID based on your test type
 5. Save the group
@@ -137,16 +138,18 @@ That's it! Intelligems will automatically show the correct variation to each vis
 
 #### Why This Is Safe
 
-A key advantage of Intelligems Checkout Experiences: **Adding blocks to your Shopify checkout doesn't make them immediately visible to customers.**
+A key advantage of Intelligems Checkout Personalizations: **Adding blocks to your Shopify checkout doesn't make them immediately visible to customers.**
 
 Unlike typical Shopify checkout changes that go live immediately, Intelligems blocks only appear when:
 
 * The test is started in Intelligems, OR
-* An Experience containing that block is activated
+* A Personalization containing that block is activated
 
 This means you can safely add all your test blocks to Shopify checkout, configure them, and preview them without any risk of customers seeing them before you're ready.
 
-If a Location ID isn't associated with an active test or Experience, it simply won't appear on the checkout page.
+{% hint style="info" %}
+If a Location ID isn't associated with an active test or Personalization, it simply won't appear on the checkout page.
+{% endhint %}
 
 ### Step 6: Set Up Targeting If Needed
 
@@ -161,11 +164,11 @@ The targeting tool allows you to apply specific conditions to certain site visit
 You can learn more about targeting [here](https://docs.intelligems.io/general-features/targeting).
 
 {% hint style="warning" %}
-**A note on targeting: If you had any targeting options set on the Offer Experiences you used to define your test groups, these will be ignored in lieu of test-level targeting.**
+**A note on targeting: If you had any targeting options set on the Offer Personalizations you used to define your test groups, these will be ignored in lieu of test-level targeting.**
 
-* Experience-level audience targeting is ignored. The audience targeting used on the test (or lack thereof) is used in its place.
-* Experience-level currency targeting is ignored. The currency targeting used on the test (or lack thereof) is used in its place.
-* Experience-level page targeting is ignored. The page targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level audience targeting is ignored. The audience targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level currency targeting is ignored. The currency targeting used on the test (or lack thereof) is used in its place.
+* Personalization-level page targeting is ignored. The page targeting used on the test (or lack thereof) is used in its place.
   {% endhint %}
 
 ### Step 8: Start Your Test

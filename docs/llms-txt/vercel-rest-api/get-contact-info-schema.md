@@ -1,285 +1,237 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get contact info schema
 
 > Some TLDs require additional contact information. Use this endpoint to get the schema for the tld-specific contact information for a domain.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/registrar/domains/{domain}/contact-info/schema
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/registrar/domains/{domain}/contact-info/schema
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        domain:
+  /v1/registrar/domains/{domain}/contact-info/schema:
+    get:
+      tags:
+        - domains-registrar
+      summary: Get contact info schema
+      description: >-
+        Some TLDs require additional contact information. Use this endpoint to
+        get the schema for the tld-specific contact information for a domain.
+      operationId: getContactInfoSchema
+      parameters:
+        - name: domain
+          in: path
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            $ref: '#/components/schemas/DomainName'
+          required: true
+        - name: teamId
+          in: query
           schema:
-            - type: string
-              required: false
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getContactInfoSchema
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.domainsRegistrar.getContactInfoSchema({
-              domain: "tricky-issue.name",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties: {}
-        examples:
-          example:
-            value: {}
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 400
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - bad_request
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/BadRequest'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-          - type: object
-            properties:
-              issues:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/Issue'
-              message:
-                allOf:
-                  - type: string
-            description: The request did not match the expected schema
-            refIdentifier: '#/components/schemas/HttpApiDecodeError'
-            requiredProperties:
-              - issues
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 400
-              code: bad_request
-              message: <string>
-        description: There was something wrong with the request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 401
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - unauthorized
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Unauthorized'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 401
-              code: unauthorized
-              message: <string>
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 403
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - not_authorized_for_scope
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/NotAuthorizedForScope'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 403
-              code: not_authorized_for_scope
-              message: <string>
-        description: NotAuthorizedForScope
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 429
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - too_many_requests
-              message:
-                allOf:
-                  - type: string
-              retryAfter:
-                allOf:
-                  - type: object
-                    required:
-                      - value
-                      - str
-                    properties:
-                      value:
-                        type: number
-                      str:
-                        type: string
-                    additionalProperties: false
-              limit:
-                allOf:
-                  - type: object
-                    required:
-                      - total
-                      - remaining
-                      - reset
-                    properties:
-                      total:
-                        type: number
-                      remaining:
-                        type: number
-                      reset:
-                        type: number
-                    additionalProperties: false
-            refIdentifier: '#/components/schemas/TooManyRequests'
-            requiredProperties:
-              - status
-              - code
-              - message
-              - retryAfter
-              - limit
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 429
-              code: too_many_requests
-              message: <string>
-              retryAfter:
-                value: 123
-                str: <string>
-              limit:
-                total: 123
-                remaining: 123
-                reset: 123
-        description: TooManyRequests
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 500
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - internal_server_error
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/InternalServerError'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 500
-              code: internal_server_error
-              message: <string>
-        description: InternalServerError
-  deprecated: false
-  type: path
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: There was something wrong with the request
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/BadRequest'
+                  - $ref: '#/components/schemas/HttpApiDecodeError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: NotAuthorizedForScope
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotAuthorizedForScope'
+        '429':
+          description: TooManyRequests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequests'
+        '500':
+          description: InternalServerError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+        - bearerToken: []
 components:
   schemas:
+    DomainName:
+      type: string
+      description: A valid domain name
+    BadRequest:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 400
+        code:
+          type: string
+          enum:
+            - bad_request
+        message:
+          type: string
+      additionalProperties: false
+    HttpApiDecodeError:
+      type: object
+      required:
+        - issues
+        - message
+      properties:
+        issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Issue'
+        message:
+          type: string
+      additionalProperties: false
+      description: The request did not match the expected schema
+    Unauthorized:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 401
+        code:
+          type: string
+          enum:
+            - unauthorized
+        message:
+          type: string
+      additionalProperties: false
+    NotAuthorizedForScope:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 403
+        code:
+          type: string
+          enum:
+            - not_authorized_for_scope
+        message:
+          type: string
+      additionalProperties: false
+    TooManyRequests:
+      type: object
+      required:
+        - status
+        - code
+        - message
+        - retryAfter
+        - limit
+      properties:
+        status:
+          type: number
+          enum:
+            - 429
+        code:
+          type: string
+          enum:
+            - too_many_requests
+        message:
+          type: string
+        retryAfter:
+          type: object
+          required:
+            - value
+            - str
+          properties:
+            value:
+              type: number
+            str:
+              type: string
+          additionalProperties: false
+        limit:
+          type: object
+          required:
+            - total
+            - remaining
+            - reset
+          properties:
+            total:
+              type: number
+            remaining:
+              type: number
+            reset:
+              type: number
+          additionalProperties: false
+      additionalProperties: false
+    InternalServerError:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 500
+        code:
+          type: string
+          enum:
+            - internal_server_error
+        message:
+          type: string
+      additionalProperties: false
     Issue:
       type: object
       required:
@@ -315,5 +267,10 @@ components:
               type: string
           additionalProperties: false
           description: an object to be decoded into a globally shared symbol
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

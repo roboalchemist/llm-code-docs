@@ -1,217 +1,281 @@
 # Source: https://www.promptfoo.dev/docs/integrations/mcp-server/
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-integrations/mcp-server" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Promptfoo MCP Server | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-integrations-mcp-server--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-integrations-mcp-server--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/integrations/mcp-server/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Promptfoo MCP Server | Promptfoo"><meta data-rh="true" name="description" content="Deploy promptfoo as Model Context Protocol server enabling external AI agents to access evaluation and red teaming capabilities"><meta data-rh="true" property="og:description" content="Deploy promptfoo as Model Context Protocol server enabling external AI agents to access evaluation and red teaming capabilities"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/integrations/mcp-server/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/integrations/mcp-server/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/integrations/mcp-server/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Integrations","item":"https://www.promptfoo.dev/docs/category/integrations"},{"@type":"ListItem","position":2,"name":"MCP Server","item":"https://www.promptfoo.dev/docs/integrations/mcp-server"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+# Promptfoo MCP Server
 
+## Prerequisites
 
+- Node.js installed on your system
+- A promptfoo project with some evaluations (for testing the connection)
+- Cursor IDE, Claude Desktop, or another MCP-compatible AI tool
 
+## Quick Start
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+### 1. Start the Server
 
+```bash
+# For Cursor, Claude Desktop (STDIO transport)
+npx promptfoo@latest mcp --transport stdio
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+# For web tools (HTTP transport)
+npx promptfoo@latest mcp --transport http --port 3100
+```
 
+### 2. Configure Your AI Tool
 
+**Cursor**: Create `.cursor/mcp.json` in your project root
 
+```json
+{
+  "mcpServers": {
+    "promptfoo": {
+      "command": "npx",
+      "args": ["promptfoo@latest", "mcp", "--transport", "stdio"],
+      "description": "Promptfoo MCP server for LLM evaluation and testing"
+    }
+  }
+}
+```
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/installation/"><span title="Install Promptfoo" class="linkLabel_fEdy">Install Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/getting-started/"><span title="Getting Started" class="linkLabel_fEdy">Getting Started</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/configuration/"><span title="Configuration" class="categoryLinkLabel_ufhF">Configuration</span></a><button aria-label="Collapse sidebar category &#x27;Configuration&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/guide/"><span title="Guide" class="linkLabel_fEdy">Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/reference/"><span title="Reference" class="linkLabel_fEdy">Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/prompts/"><span title="Prompts" class="linkLabel_fEdy">Prompts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/test-cases/"><span title="Test Cases" class="linkLabel_fEdy">Test Cases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/outputs/"><span title="Output Formats" class="linkLabel_fEdy">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/chat/"><span title="Chat threads" class="linkLabel_fEdy">Chat threads</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/datasets/"><span title="Dataset generation" class="linkLabel_fEdy">Dataset generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/scenarios/"><span title="Scenarios" class="linkLabel_fEdy">Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/caching/"><span title="Caching" class="linkLabel_fEdy">Caching</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/telemetry/"><span title="Telemetry" class="linkLabel_fEdy">Telemetry</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tracing/"><span title="Tracing" class="linkLabel_fEdy">Tracing</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/usage/"><span title="Usage" class="categoryLinkLabel_ufhF">Usage</span></a><button aria-label="Expand sidebar category &#x27;Usage&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/configuration/expected-outputs/"><span title="Assertions &amp; metrics" class="categoryLinkLabel_ufhF">Assertions &amp; metrics</span></a><button aria-label="Expand sidebar category &#x27;Assertions &amp; metrics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/providers/"><span title="Providers" class="categoryLinkLabel_ufhF">Providers</span></a><button aria-label="Expand sidebar category &#x27;Providers&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--active" href="/docs/category/integrations/"><span title="Integrations" class="categoryLinkLabel_ufhF">Integrations</span></a><button aria-label="Collapse sidebar category &#x27;Integrations&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/python/"><span title="Python" class="linkLabel_fEdy">Python</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/mcp/"><span title="Model Context Protocol (MCP)" class="linkLabel_fEdy">Model Context Protocol (MCP)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/integrations/mcp-server/"><span title="MCP Server" class="linkLabel_fEdy">MCP Server</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/azure-pipelines/"><span title="Azure Pipelines" class="linkLabel_fEdy">Azure Pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/bitbucket-pipelines/"><span title="Bitbucket Pipelines" class="linkLabel_fEdy">Bitbucket Pipelines</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/burp/"><span title="Burp Suite" class="linkLabel_fEdy">Burp Suite</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/ci-cd/"><span title="CI/CD" class="linkLabel_fEdy">CI/CD</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/circle-ci/"><span title="CircleCI" class="linkLabel_fEdy">CircleCI</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/github-action/"><span title="GitHub Actions" class="linkLabel_fEdy">GitHub Actions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/gitlab-ci/"><span title="GitLab CI" class="linkLabel_fEdy">GitLab CI</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/google-sheets/"><span title="Google Sheets" class="linkLabel_fEdy">Google Sheets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/helicone/"><span title="Helicone" class="linkLabel_fEdy">Helicone</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/jenkins/"><span title="Jenkins" class="linkLabel_fEdy">Jenkins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/jest/"><span title="Jest &amp; Vitest" class="linkLabel_fEdy">Jest &amp; Vitest</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/langfuse/"><span title="Langfuse" class="linkLabel_fEdy">Langfuse</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/looper/"><span title="Looper" class="linkLabel_fEdy">Looper</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/mocha-chai/"><span title="Mocha/Chai" class="linkLabel_fEdy">Mocha/Chai</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/n8n/"><span title="n8n" class="linkLabel_fEdy">n8n</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/portkey/"><span title="Portkey AI" class="linkLabel_fEdy">Portkey AI</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/sharepoint/"><span title="SharePoint" class="linkLabel_fEdy">SharePoint</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/sonarqube/"><span title="SonarQube" class="linkLabel_fEdy">SonarQube</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/integrations/travis-ci/"><span title="Travis CI" class="linkLabel_fEdy">Travis CI</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/red-teaming/"><span title="Red teaming" class="categoryLinkLabel_ufhF">Red teaming</span></a><button aria-label="Collapse sidebar category &#x27;Red teaming&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/code-scanning/"><span title="Code scanning" class="categoryLinkLabel_ufhF">Code scanning</span></a><button aria-label="Expand sidebar category &#x27;Code scanning&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/guides/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a><button aria-label="Expand sidebar category &#x27;Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/enterprise/"><span title="Enterprise" class="categoryLinkLabel_ufhF">Enterprise</span></a><button aria-label="Expand sidebar category &#x27;Enterprise&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/contributing/"><span title="Contributing" class="linkLabel_fEdy">Contributing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/write-for-promptfoo/"><span title="Write for Promptfoo" class="linkLabel_fEdy">Write for Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/faq/"><span title="FAQ" class="linkLabel_fEdy">FAQ</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/releases/"><span title="Release Notes" class="linkLabel_fEdy">Release Notes</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/integrations/"><span>Integrations</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">MCP Server</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Promptfoo MCP Server</h1></header>
-<p>Expose promptfoo&#x27;s eval tools to AI agents via Model Context Protocol (MCP).</p>
-<div class="theme-admonition theme-admonition-info admonition_WCGJ alert alert--info"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Prerequisites</div><div class="admonitionContent_pbrs"><ul>
-<li class="">Node.js installed on your system</li>
-<li class="">A promptfoo project with some evaluations (for testing the connection)</li>
-<li class="">Cursor IDE, Claude Desktop, or another MCP-compatible AI tool</li>
-</ul></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="quick-start">Quick Start<a href="#quick-start" class="hash-link" aria-label="Direct link to Quick Start" title="Direct link to Quick Start" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="1-start-the-server">1. Start the Server<a href="#1-start-the-server" class="hash-link" aria-label="Direct link to 1. Start the Server" title="Direct link to 1. Start the Server" translate="no">​</a></h3>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># For Cursor, Claude Desktop (STDIO transport)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> stdio</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># For web tools (HTTP transport)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> http </span><span class="token parameter variable" style="color:#36acaa">--port</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3100</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="2-configure-your-ai-tool">2. Configure Your AI Tool<a href="#2-configure-your-ai-tool" class="hash-link" aria-label="Direct link to 2. Configure Your AI Tool" title="Direct link to 2. Configure Your AI Tool" translate="no">​</a></h3>
-<p><strong>Cursor</strong>: Create <code>.cursor/mcp.json</code> in your project root</p>
-<div class="language-json codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">.cursor/mcp.json</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-json codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;mcpServers&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;promptfoo&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;command&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;npx&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;args&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;promptfoo@latest&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;mcp&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;--transport&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;stdio&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;description&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Promptfoo MCP server for LLM evaluation and testing&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<div class="theme-admonition theme-admonition-warning admonition_WCGJ alert alert--warning"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Development vs Production Configuration</div><div class="admonitionContent_pbrs"><p><strong>For regular usage:</strong> Always use <code>npx promptfoo@latest</code> as shown above.</p><p><strong>For promptfoo contributors:</strong> The repository&#x27;s <code>.cursor/mcp.json</code> runs from source code for development. It requires the repo&#x27;s dev dependencies and won&#x27;t work elsewhere.</p></div></div>
-<p><strong>Claude Desktop</strong>: Add to config file</p>
-<p>Config file locations:</p>
-<ul>
-<li class=""><strong>macOS:</strong> <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
-<li class=""><strong>Windows:</strong> <code>%APPDATA%\Claude\claude_desktop_config.json</code></li>
-<li class=""><strong>Linux:</strong> <code>~/.config/Claude/claude_desktop_config.json</code></li>
-</ul>
-<div class="language-json codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">claude_desktop_config.json</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-json codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;mcpServers&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;promptfoo&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;command&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;npx&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;args&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;promptfoo@latest&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;mcp&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;--transport&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;stdio&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;description&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Promptfoo MCP server for LLM evaluation and testing&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
-<p><strong>Restart your AI tool</strong> after adding the configuration.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="3-test-the-connection">3. Test the Connection<a href="#3-test-the-connection" class="hash-link" aria-label="Direct link to 3. Test the Connection" title="Direct link to 3. Test the Connection" translate="no">​</a></h3>
-<p>After restarting your AI tool, you should see promptfoo tools available. Try asking:</p>
-<blockquote>
-<p>&quot;List my recent evaluations using the promptfoo tools&quot;</p>
-</blockquote>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="available-tools">Available Tools<a href="#available-tools" class="hash-link" aria-label="Direct link to Available Tools" title="Direct link to Available Tools" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="core-evaluation-tools">Core Evaluation Tools<a href="#core-evaluation-tools" class="hash-link" aria-label="Direct link to Core Evaluation Tools" title="Direct link to Core Evaluation Tools" translate="no">​</a></h3>
-<ul>
-<li class=""><strong><code>list_evaluations</code></strong> - Browse your evaluation runs with optional dataset filtering</li>
-<li class=""><strong><code>get_evaluation_details</code></strong> - Get comprehensive results, metrics, and test cases for a specific evaluation</li>
-<li class=""><strong><code>run_evaluation</code></strong> - Execute evaluations with custom parameters, test case filtering, and concurrency control</li>
-<li class=""><strong><code>share_evaluation</code></strong> - Generate publicly shareable URLs for evaluation results</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="generation-tools">Generation Tools<a href="#generation-tools" class="hash-link" aria-label="Direct link to Generation Tools" title="Direct link to Generation Tools" translate="no">​</a></h3>
-<ul>
-<li class=""><strong><code>generate_dataset</code></strong> - Generate test datasets using AI for comprehensive evaluation coverage</li>
-<li class=""><strong><code>generate_test_cases</code></strong> - Generate test cases with assertions for existing prompts</li>
-<li class=""><strong><code>compare_providers</code></strong> - Compare multiple AI providers side-by-side for performance and quality</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="redteam-security-tools">Redteam Security Tools<a href="#redteam-security-tools" class="hash-link" aria-label="Direct link to Redteam Security Tools" title="Direct link to Redteam Security Tools" translate="no">​</a></h3>
-<ul>
-<li class=""><strong><code>redteam_run</code></strong> - Execute comprehensive security testing against AI applications with dynamic attack probes</li>
-<li class=""><strong><code>redteam_generate</code></strong> - Generate adversarial test cases for redteam security testing with configurable plugins and strategies</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="configuration--testing">Configuration &amp; Testing<a href="#configuration--testing" class="hash-link" aria-label="Direct link to Configuration &amp; Testing" title="Direct link to Configuration &amp; Testing" translate="no">​</a></h3>
-<ul>
-<li class=""><strong><code>validate_promptfoo_config</code></strong> - Validate configuration files using the same logic as the CLI</li>
-<li class=""><strong><code>test_provider</code></strong> - Test AI provider connectivity, credentials, and response quality</li>
-<li class=""><strong><code>run_assertion</code></strong> - Test individual assertion rules against outputs for debugging</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="example-workflows">Example Workflows<a href="#example-workflows" class="hash-link" aria-label="Direct link to Example Workflows" title="Direct link to Example Workflows" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="1-basic-evaluation-workflow">1. Basic Evaluation Workflow<a href="#1-basic-evaluation-workflow" class="hash-link" aria-label="Direct link to 1. Basic Evaluation Workflow" title="Direct link to 1. Basic Evaluation Workflow" translate="no">​</a></h3>
-<p>Ask your AI assistant:</p>
-<blockquote>
-<p>&quot;Help me run an evaluation. First, validate my config, then list recent evaluations, and finally run a new evaluation with just the first 5 test cases.&quot;</p>
-</blockquote>
-<p>The AI will use these tools in sequence:</p>
-<ol>
-<li class=""><code>validate_promptfoo_config</code> - Check your configuration</li>
-<li class=""><code>list_evaluations</code> - Show recent runs</li>
-<li class=""><code>run_evaluation</code> - Execute with test case filtering</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="2-provider-comparison">2. Provider Comparison<a href="#2-provider-comparison" class="hash-link" aria-label="Direct link to 2. Provider Comparison" title="Direct link to 2. Provider Comparison" translate="no">​</a></h3>
-<blockquote>
-<p>&quot;Compare the performance of GPT-4, Claude 3, and Gemini Pro on my customer support prompt.&quot;</p>
-</blockquote>
-<p>The AI will:</p>
-<ol>
-<li class=""><code>test_provider</code> - Verify each provider works</li>
-<li class=""><code>compare_providers</code> - Run side-by-side comparison</li>
-<li class="">Analyze results and provide recommendations</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="3-security-testing">3. Security Testing<a href="#3-security-testing" class="hash-link" aria-label="Direct link to 3. Security Testing" title="Direct link to 3. Security Testing" translate="no">​</a></h3>
-<blockquote>
-<p>&quot;Run a security audit on my chatbot prompt to check for jailbreak vulnerabilities.&quot;</p>
-</blockquote>
-<p>The AI will:</p>
-<ol>
-<li class=""><code>redteam_generate</code> - Create adversarial test cases</li>
-<li class=""><code>redteam_run</code> - Execute security tests</li>
-<li class=""><code>get_evaluation_details</code> - Analyze vulnerabilities found</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="4-dataset-generation">4. Dataset Generation<a href="#4-dataset-generation" class="hash-link" aria-label="Direct link to 4. Dataset Generation" title="Direct link to 4. Dataset Generation" translate="no">​</a></h3>
-<blockquote>
-<p>&quot;Generate 20 diverse test cases for my email classification prompt, including edge cases.&quot;</p>
-</blockquote>
-<p>The AI will:</p>
-<ol>
-<li class=""><code>generate_dataset</code> - Create test data with AI</li>
-<li class=""><code>generate_test_cases</code> - Add appropriate assertions</li>
-<li class=""><code>run_evaluation</code> - Test the generated cases</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="transport-types">Transport Types<a href="#transport-types" class="hash-link" aria-label="Direct link to Transport Types" title="Direct link to Transport Types" translate="no">​</a></h2>
-<p>Choose the appropriate transport based on your use case:</p>
-<ul>
-<li class=""><strong>STDIO (<code>--transport stdio</code>)</strong>: For desktop AI tools (Cursor, Claude Desktop) that communicate via stdin/stdout</li>
-<li class=""><strong>HTTP (<code>--transport http</code>)</strong>: For web applications, APIs, and remote integrations that need HTTP endpoints</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="1-start-small">1. Start Small<a href="#1-start-small" class="hash-link" aria-label="Direct link to 1. Start Small" title="Direct link to 1. Start Small" translate="no">​</a></h3>
-<p>Begin with simple tools like <code>list_evaluations</code> and <code>validate_promptfoo_config</code> before moving to more complex operations.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="2-use-filtering">2. Use Filtering<a href="#2-use-filtering" class="hash-link" aria-label="Direct link to 2. Use Filtering" title="Direct link to 2. Use Filtering" translate="no">​</a></h3>
-<p>When working with large datasets:</p>
-<ul>
-<li class="">Filter evaluations by dataset ID</li>
-<li class="">Use test case indices to run partial evaluations</li>
-<li class="">Apply prompt/provider filters for focused testing</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="3-iterative-testing">3. Iterative Testing<a href="#3-iterative-testing" class="hash-link" aria-label="Direct link to 3. Iterative Testing" title="Direct link to 3. Iterative Testing" translate="no">​</a></h3>
-<ol>
-<li class="">Validate configuration first</li>
-<li class="">Test providers individually before comparisons</li>
-<li class="">Run small evaluation subsets before full runs</li>
-<li class="">Review results with <code>get_evaluation_details</code></li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="4-security-first">4. Security First<a href="#4-security-first" class="hash-link" aria-label="Direct link to 4. Security First" title="Direct link to 4. Security First" translate="no">​</a></h3>
-<p>When using redteam tools:</p>
-<ul>
-<li class="">Start with basic plugins before advanced attacks</li>
-<li class="">Review generated test cases before running</li>
-<li class="">Always analyze results thoroughly</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="troubleshooting">Troubleshooting<a href="#troubleshooting" class="hash-link" aria-label="Direct link to Troubleshooting" title="Direct link to Troubleshooting" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="server-issues">Server Issues<a href="#server-issues" class="hash-link" aria-label="Direct link to Server Issues" title="Direct link to Server Issues" translate="no">​</a></h3>
-<p><strong>Server won&#x27;t start:</strong></p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Verify promptfoo installation</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Check if you have a valid promptfoo project</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest validate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Test the MCP server manually</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> stdio</span><br></span></code></pre></div></div>
-<p><strong>Port conflicts (HTTP mode):</strong></p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Use a different port</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> http </span><span class="token parameter variable" style="color:#36acaa">--port</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8080</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Check what&#x27;s using port 3100</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">lsof</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-i</span><span class="token plain"> :3100  </span><span class="token comment" style="color:#999988;font-style:italic"># macOS/Linux</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">netstat</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-ano</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> findstr :3100  </span><span class="token comment" style="color:#999988;font-style:italic"># Windows</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="ai-tool-connection-issues">AI Tool Connection Issues<a href="#ai-tool-connection-issues" class="hash-link" aria-label="Direct link to AI Tool Connection Issues" title="Direct link to AI Tool Connection Issues" translate="no">​</a></h3>
-<p><strong>AI tool can&#x27;t connect:</strong></p>
-<ol>
-<li class=""><strong>Verify config syntax:</strong> Ensure your JSON configuration exactly matches the examples above</li>
-<li class=""><strong>Check file paths:</strong> Confirm config files are in the correct locations</li>
-<li class=""><strong>Restart completely:</strong> Close your AI tool entirely and reopen it</li>
-<li class=""><strong>Test HTTP endpoint:</strong> For HTTP transport, verify with <code>curl http://localhost:3100/health</code></li>
-</ol>
-<p><strong>Tools not appearing:</strong></p>
-<ol>
-<li class="">Look for MCP or &quot;tools&quot; indicators in your AI tool&#x27;s interface</li>
-<li class="">Try asking explicitly: &quot;What promptfoo tools do you have access to?&quot;</li>
-<li class="">Check your AI tool&#x27;s logs for MCP connection errors</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="tool-specific-errors">Tool-Specific Errors<a href="#tool-specific-errors" class="hash-link" aria-label="Direct link to Tool-Specific Errors" title="Direct link to Tool-Specific Errors" translate="no">​</a></h3>
-<p><strong>&quot;Eval not found&quot;:</strong></p>
-<ul>
-<li class="">Use <code>list_evaluations</code> first to see available evaluation IDs</li>
-<li class="">Ensure you&#x27;re in a directory with promptfoo evaluation data</li>
-</ul>
-<p><strong>&quot;Config error&quot;:</strong></p>
-<ul>
-<li class="">Run <code>validate_promptfoo_config</code> to check your configuration</li>
-<li class="">Verify <code>promptfooconfig.yaml</code> exists and is valid</li>
-</ul>
-<p><strong>&quot;Provider error&quot;:</strong></p>
-<ul>
-<li class="">Use <code>test_provider</code> to diagnose connectivity and authentication issues</li>
-<li class="">Check your API keys and provider configurations</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="advanced-usage">Advanced Usage<a href="#advanced-usage" class="hash-link" aria-label="Direct link to Advanced Usage" title="Direct link to Advanced Usage" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="custom-http-integrations">Custom HTTP Integrations<a href="#custom-http-integrations" class="hash-link" aria-label="Direct link to Custom HTTP Integrations" title="Direct link to Custom HTTP Integrations" translate="no">​</a></h3>
-<p>For HTTP transport, you can integrate with any system that supports HTTP:</p>
-<div class="language-javascript codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-javascript codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Example: Call MCP server from Node.js</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> response </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">await</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">fetch</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;http://localhost:3100/mcp&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token literal-property property" style="color:#36acaa">method</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;POST&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token literal-property property" style="color:#36acaa">headers</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token string-property property" style="color:#36acaa">&#x27;Content-Type&#x27;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;application/json&#x27;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token literal-property property" style="color:#36acaa">body</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token constant" style="color:#36acaa">JSON</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">stringify</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token literal-property property" style="color:#36acaa">method</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;tools/call&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token literal-property property" style="color:#36acaa">params</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token literal-property property" style="color:#36acaa">name</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;list_evaluations&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token literal-property property" style="color:#36acaa">arguments</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token literal-property property" style="color:#36acaa">datasetId</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;my-dataset&#x27;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="environment-variables">Environment Variables<a href="#environment-variables" class="hash-link" aria-label="Direct link to Environment Variables" title="Direct link to Environment Variables" translate="no">​</a></h3>
-<p>The MCP server respects all promptfoo environment variables:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Set provider API keys</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">OPENAI_API_KEY</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">sk-</span><span class="token punctuation" style="color:#393A34">..</span><span class="token plain">.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">ANTHROPIC_API_KEY</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">sk-ant-</span><span class="token punctuation" style="color:#393A34">..</span><span class="token plain">.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Configure promptfoo behavior</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_CONFIG_DIR</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/path/to/configs</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_OUTPUT_DIR</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">/path/to/outputs</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Start server with environment</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> stdio</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="resources">Resources<a href="#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources" translate="no">​</a></h2>
-<ul>
-<li class=""><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" class="">MCP Protocol Documentation</a></li>
-<li class=""><a href="https://promptfoo.dev" target="_blank" rel="noopener noreferrer" class="">Promptfoo Documentation</a></li>
-<li class=""><a href="https://github.com/promptfoo/promptfoo/tree/main/examples" target="_blank" rel="noopener noreferrer" class="">Example Configurations</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/integrations/mcp-server.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/integrations/mcp/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Model Context Protocol (MCP)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/integrations/azure-pipelines/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Azure Pipelines</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#quick-start" class="table-of-contents__link toc-highlight">Quick Start</a><ul><li><a href="#1-start-the-server" class="table-of-contents__link toc-highlight">1. Start the Server</a></li><li><a href="#2-configure-your-ai-tool" class="table-of-contents__link toc-highlight">2. Configure Your AI Tool</a></li><li><a href="#3-test-the-connection" class="table-of-contents__link toc-highlight">3. Test the Connection</a></li></ul></li><li><a href="#available-tools" class="table-of-contents__link toc-highlight">Available Tools</a><ul><li><a href="#core-evaluation-tools" class="table-of-contents__link toc-highlight">Core Evaluation Tools</a></li><li><a href="#generation-tools" class="table-of-contents__link toc-highlight">Generation Tools</a></li><li><a href="#redteam-security-tools" class="table-of-contents__link toc-highlight">Redteam Security Tools</a></li><li><a href="#configuration--testing" class="table-of-contents__link toc-highlight">Configuration &amp; Testing</a></li></ul></li><li><a href="#example-workflows" class="table-of-contents__link toc-highlight">Example Workflows</a><ul><li><a href="#1-basic-evaluation-workflow" class="table-of-contents__link toc-highlight">1. Basic Evaluation Workflow</a></li><li><a href="#2-provider-comparison" class="table-of-contents__link toc-highlight">2. Provider Comparison</a></li><li><a href="#3-security-testing" class="table-of-contents__link toc-highlight">3. Security Testing</a></li><li><a href="#4-dataset-generation" class="table-of-contents__link toc-highlight">4. Dataset Generation</a></li></ul></li><li><a href="#transport-types" class="table-of-contents__link toc-highlight">Transport Types</a></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a><ul><li><a href="#1-start-small" class="table-of-contents__link toc-highlight">1. Start Small</a></li><li><a href="#2-use-filtering" class="table-of-contents__link toc-highlight">2. Use Filtering</a></li><li><a href="#3-iterative-testing" class="table-of-contents__link toc-highlight">3. Iterative Testing</a></li><li><a href="#4-security-first" class="table-of-contents__link toc-highlight">4. Security First</a></li></ul></li><li><a href="#troubleshooting" class="table-of-contents__link toc-highlight">Troubleshooting</a><ul><li><a href="#server-issues" class="table-of-contents__link toc-highlight">Server Issues</a></li><li><a href="#ai-tool-connection-issues" class="table-of-contents__link toc-highlight">AI Tool Connection Issues</a></li><li><a href="#tool-specific-errors" class="table-of-contents__link toc-highlight">Tool-Specific Errors</a></li></ul></li><li><a href="#advanced-usage" class="table-of-contents__link toc-highlight">Advanced Usage</a><ul><li><a href="#custom-http-integrations" class="table-of-contents__link toc-highlight">Custom HTTP Integrations</a></li><li><a href="#environment-variables" class="table-of-contents__link toc-highlight">Environment Variables</a></li></ul></li><li><a href="#resources" class="table-of-contents__link toc-highlight">Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+**Development vs Production Configuration**
+
+**For regular usage:** Always use `npx promptfoo@latest` as shown above.
+
+**For promptfoo contributors:** The repository's `.cursor/mcp.json` runs from source code for development. It requires the repo's dev dependencies and won't work elsewhere.
+
+**Claude Desktop**: Add to config file
+
+Config file locations:
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "promptfoo": {
+      "command": "npx",
+      "args": ["promptfoo@latest", "mcp", "--transport", "stdio"],
+      "description": "Promptfoo MCP server for LLM evaluation and testing"
+    }
+  }
+}
+```
+
+**Restart your AI tool** after adding the configuration.
+
+### 3. Test the Connection
+
+After restarting your AI tool, you should see promptfoo tools available. Try asking:
+
+> "List my recent evaluations using the promptfoo tools"
+
+## Available Tools
+
+### Core Evaluation Tools
+
+- **`list_evaluations`** - Browse your evaluation runs with optional dataset filtering
+- **`get_evaluation_details`** - Get comprehensive results, metrics, and test cases for a specific evaluation
+- **`run_evaluation`** - Execute evaluations with custom parameters, test case filtering, and concurrency control
+- **`share_evaluation`** - Generate publicly shareable URLs for evaluation results
+
+### Generation Tools
+
+- **`generate_dataset`** - Generate test datasets using AI for comprehensive evaluation coverage
+- **`generate_test_cases`** - Generate test cases with assertions for existing prompts
+- **`compare_providers`** - Compare multiple AI providers side-by-side for performance and quality
+
+### Redteam Security Tools
+
+- **`redteam_run`** - Execute comprehensive security testing against AI applications with dynamic attack probes
+- **`redteam_generate`** - Generate adversarial test cases for redteam security testing with configurable plugins and strategies
+
+### Configuration & Testing
+
+- **`validate_promptfoo_config`** - Validate configuration files using the same logic as the CLI
+- **`test_provider`** - Test AI provider connectivity, credentials, and response quality
+- **`run_assertion`** - Test individual assertion rules against outputs for debugging
+
+## Example Workflows
+
+### 1. Basic Evaluation Workflow
+
+Ask your AI assistant:
+
+> "Help me run an evaluation. First, validate my config, then list recent evaluations, and finally run a new evaluation with just the first 5 test cases."
+
+The AI will use these tools in sequence:
+
+1. `validate_promptfoo_config` - Check your configuration
+2. `list_evaluations` - Show recent runs
+3. `run_evaluation` - Execute with test case filtering
+
+### 2. Provider Comparison
+
+> "Compare the performance of GPT-4, Claude 3, and Gemini Pro on my customer support prompt."
+
+The AI will:
+
+1. `test_provider` - Verify each provider works
+2. `compare_providers` - Run side-by-side comparison
+3. Analyze results and provide recommendations
+
+### 3. Security Testing
+
+> "Run a security audit on my chatbot prompt to check for jailbreak vulnerabilities."
+
+The AI will:
+
+1. `redteam_generate` - Create adversarial test cases
+2. `redteam_run` - Execute security tests
+3. `get_evaluation_details` - Analyze vulnerabilities found
+
+### 4. Dataset Generation
+
+> "Generate 20 diverse test cases for my email classification prompt, including edge cases."
+
+The AI will:
+
+1. `generate_dataset` - Create test data with AI
+2. `generate_test_cases` - Add appropriate assertions
+3. `run_evaluation` - Test the generated cases
+
+## Transport Types
+
+Choose the appropriate transport based on your use case:
+
+- **STDIO (`--transport stdio`)**: For desktop AI tools (Cursor, Claude Desktop) that communicate via stdin/stdout
+- **HTTP (`--transport http`)**: For web applications, APIs, and remote integrations that need HTTP endpoints
+
+## Best Practices
+
+### 1. Start Small
+
+Begin with simple tools like `list_evaluations` and `validate_promptfoo_config` before moving to more complex operations.
+
+### 2. Use Filtering
+
+When working with large datasets:
+
+- Filter evaluations by dataset ID
+- Use test case indices to run partial evaluations
+- Apply prompt/provider filters for focused testing
+
+### 3. Iterative Testing
+
+1. Validate configuration first
+2. Test providers individually before comparisons
+3. Run small evaluation subsets before full runs
+4. Review results with `get_evaluation_details`
+
+### 4. Security First
+
+When using redteam tools:
+
+- Start with basic plugins before advanced attacks
+- Review generated test cases before running
+- Always analyze results thoroughly
+
+## Troubleshooting
+
+### Server Issues
+
+**Server won't start:**
+
+```bash
+# Verify promptfoo installation
+npx promptfoo@latest --version
+
+# Check if you have a valid promptfoo project
+npx promptfoo@latest validate
+
+# Test the MCP server manually
+npx promptfoo@latest mcp --transport stdio
+```
+
+**Port conflicts (HTTP mode):**
+
+```bash
+# Use a different port
+npx promptfoo@latest mcp --transport http --port 8080
+
+# Check what's using port 3100
+lsof -i :3100  # macOS/Linux
+netstat -ano | findstr :3100  # Windows
+```
+
+### AI Tool Connection Issues
+
+**AI tool can't connect:**
+
+1. **Verify config syntax:** Ensure your JSON configuration exactly matches the examples above
+2. **Check file paths:** Confirm config files are in the correct locations
+3. **Restart completely:** Close your AI tool entirely and reopen it
+4. **Test HTTP endpoint:** For HTTP transport, verify with `curl http://localhost:3100/health`
+
+**Tools not appearing:**
+
+1. Look for MCP or "tools" indicators in your AI tool's interface
+2. Try asking explicitly: "What promptfoo tools do you have access to?"
+3. Check your AI tool's logs for MCP connection errors
+
+### Tool-Specific Errors
+
+**"Eval not found":**
+
+- Use `list_evaluations` first to see available evaluation IDs
+- Ensure you're in a directory with promptfoo evaluation data
+
+**"Config error":**
+
+- Run `validate_promptfoo_config` to check your configuration
+- Verify `promptfooconfig.yaml` exists and is valid
+
+**"Provider error":**
+
+- Use `test_provider` to diagnose connectivity and authentication issues
+- Check your API keys and provider configurations
+
+## Advanced Usage
+
+### Custom HTTP Integrations
+
+For HTTP transport, you can integrate with any system that supports HTTP:
+
+```javascript
+// Example: Call MCP server from Node.js
+const response = await fetch('http://localhost:3100/mcp', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    method: 'tools/call',
+    params: {
+      name: 'list_evaluations',
+      arguments: { datasetId: 'my-dataset' },
+    },
+  }),
+});
+```
+
+### Environment Variables
+
+The MCP server respects all promptfoo environment variables:
+
+```bash
+# Set provider API keys
+export OPENAI_API_KEY=sk-...
+export ANTHROPIC_API_KEY=sk-...
+
+# Configure promptfoo behavior
+export PROMPTFOO_CONFIG_DIR=/path/to/configs
+export PROMPTFOO_OUTPUT_DIR=/path/to/outputs
+
+# Start server with environment
+npx promptfoo@latest mcp --transport stdio
+```
+
+## Resources
+
+- [MCP Protocol Documentation](https://modelcontextprotocol.io/)
+- [Promptfoo Documentation](https://promptfoo.dev/)
+- [Example Configurations](https://github.com/promptfoo/promptfoo/tree/main/examples)

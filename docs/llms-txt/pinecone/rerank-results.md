@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/search/rerank-results.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rerank results
 
 > Improve the quality of results with reranking.
@@ -202,7 +206,7 @@ For example, the following code searches for the 3 records most semantically rel
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: unstable" \
+    -H "X-Pinecone-Api-Version: unstable" \
     -d '{
           "query": {
               "inputs": {"text": "Disease prevention"},
@@ -618,7 +622,7 @@ For example, the following code uses the hosted `bge-reranker-v2-m3` model to re
   curl https://api.pinecone.io/rerank \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -d '{
     "model": "bge-reranker-v2-m3",

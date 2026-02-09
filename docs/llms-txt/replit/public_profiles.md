@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/public_profiles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Public Profiles
 
 > Learn how to create and customize your organization's public profile on Replit to showcase your brand, products, and public Replit Apps to the community.

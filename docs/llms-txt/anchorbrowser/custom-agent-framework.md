@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/agent-frameworks/custom-agent-framework.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Integration
 
 Anchor Browser enables integration with custom AI frameworks to empower agents with the ability to navigate and interact with the web effectively. You can leverage browser sessions within your own custom AI framework to automate workflows, explore the web, or interact with web content dynamically.

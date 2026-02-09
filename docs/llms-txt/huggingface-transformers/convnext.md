@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/convnext.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/convnext.md
 
 # ConvNeXT
 
@@ -26,7 +26,7 @@ This model was contributed by [nielsr](https://huggingface.co/nielsr). The origi
 
 A list of official Hugging Face and community (indicated by 🌎) resources to help you get started with ConvNeXT.
 
-- [ConvNextForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
+- [ConvNextForImageClassification](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
 - See also: [Image classification task guide](../tasks/image_classification)
 
 If you're interested in submitting a resource to be included here, please feel free to open a Pull Request and we'll review it! The resource should ideally demonstrate something new instead of duplicating an existing resource.
@@ -35,15 +35,15 @@ If you're interested in submitting a resource to be included here, please feel f
 
 #### transformers.ConvNextConfig[[transformers.ConvNextConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/convnext/configuration_convnext.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/convnext/configuration_convnext.py#L24)
 
-This is the configuration class to store the configuration of a [ConvNextModel](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextModel). It is used to instantiate an
+This is the configuration class to store the configuration of a [ConvNextModel](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextModel). It is used to instantiate an
 ConvNeXT model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the ConvNeXT
 [facebook/convnext-tiny-224](https://huggingface.co/facebook/convnext-tiny-224) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 ```python
@@ -89,11 +89,11 @@ out_indices (`list[int]`, *optional*) : If used as backbone, list of indices of 
 
 #### transformers.ConvNextImageProcessor[[transformers.ConvNextImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/convnext/image_processing_convnext.py#L64)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/convnext/image_processing_convnext.py#L61)
 
 Constructs a ConvNeXT image processor.
 
-preprocesstransformers.ConvNextImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/convnext/image_processing_convnext.py#L200[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "crop_pct", "val": ": typing.Optional[float] = None"}, {"name": "resample", "val": ": typing.Optional[PIL.Image.Resampling] = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": ChannelDimension = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **images** (`ImageInput`) --
+preprocesstransformers.ConvNextImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/convnext/image_processing_convnext.py#L197[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "crop_pct", "val": ": float | None = None"}, {"name": "resample", "val": ": PIL.Image.Resampling | None = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | list[float] | None = None"}, {"name": "image_std", "val": ": float | list[float] | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **images** (`ImageInput`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **do_resize** (`bool`, *optional*, defaults to `self.do_resize`) --
@@ -114,16 +114,16 @@ do_resize (`bool`, *optional*, defaults to `True`) : Controls whether to resize 
 
 size (`dict[str, int]` *optional*, defaults to `{"shortest_edge" : 384}`): Resolution of the output image after `resize` is applied. If `size["shortest_edge"]` >= 384, the image is resized to `(size["shortest_edge"], size["shortest_edge"])`. Otherwise, the smaller edge of the image will be matched to `int(size["shortest_edge"]/crop_pct)`, after which the image is cropped to `(size["shortest_edge"], size["shortest_edge"])`. Only has an effect if `do_resize` is set to `True`. Can be overridden by `size` in the `preprocess` method.
 
-crop_pct (`float` *optional*, defaults to 224 / 256) : Percentage of the image to crop. Only has an effect if `do_resize` is `True` and size  1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
+crop_pct (`float` *optional*, defaults to 224 / 256) : Percentage of the image to crop. Only has an effect if `do_resize` is `True` and size  1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ConvNextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextConfig)) and inputs.
+elements depending on the configuration ([ConvNextConfig](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each stage) of shape `(batch_size, num_channels, height, width)`. Hidden-states (also
   called feature maps) of the model at the output of each stage.
-The [ConvNextForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextForImageClassification) forward method, overrides the `__call__` special method.
+The [ConvNextForImageClassification](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -155,15 +155,15 @@ Example:
 
 **Parameters:**
 
-config ([ConvNextForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextForImageClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ConvNextForImageClassification](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextForImageClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
+A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ConvNextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/convnext#transformers.ConvNextConfig)) and inputs.
+elements depending on the configuration ([ConvNextConfig](/docs/transformers/v5.0.0/en/model_doc/convnext#transformers.ConvNextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/parsing-templates.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/parsing-templates.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/parsing-templates.md
-
 # Parsing templates
 
 {% hint style="info" %}

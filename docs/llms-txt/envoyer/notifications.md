@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/projects/notifications.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Notifications
 
 > Receive notifications from Envoyer.
@@ -12,9 +16,9 @@ Envoyer can optionally notify you after a deployment completes and inform you wh
 
 Envoyer supports a variety of notification channels, and you are welcome to configure multiple channels for your project:
 
-*   Slack
-*   Email
-*   Discord
-*   Microsoft Teams
+* Slack
+* Email
+* Discord
+* Microsoft Teams
 
 After you have selected a channel, you will be asked to provide a name for the channel, webhook URL, or email address. Once you've finished providing this information, click **Add Channel** to confirm.

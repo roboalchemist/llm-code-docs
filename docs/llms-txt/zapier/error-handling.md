@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Improve error response handling
 
 > Errors from your API cause pain for users at two vital points:

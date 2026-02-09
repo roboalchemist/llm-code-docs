@@ -45,5 +45,5 @@ In addition, some public Java classes and methods are marked with the com.yahoo.
 
 Data written to Vespa is compatible between adjacent releases. For self-hosted systems, it may be necessary to upgrade through each minor release rather than in larger leaps to ensure Vespa can read existing data. This is a good practice in any case.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

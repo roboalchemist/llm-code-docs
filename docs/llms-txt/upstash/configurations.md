@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
 
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configure Upstash Ratelimit Strapi Plugin
 

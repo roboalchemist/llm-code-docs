@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/getting-started/developers/rate-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Rate Limits and Retry Logic
 
 > Learn about API rate limits and recommended retry logic.
@@ -15,10 +19,10 @@ ASAPP sets a **100 requests per second** limit to prevent API abuse rather than 
 
 ## Behavior When Limits are Reached
 
-If daily limits are reached:
+If you reach daily limits:
 
 * Calls to the endpoint will receive a 429 'Too Many Requests' response status code for the remainder of the day.
-* In cases of suspected abuse, API tokens may be revoked to temporarily suspend access to production services. ASAPP will inform you via ServiceDesk in such cases.
+* In cases of suspected abuse, ASAPP may revoke API tokens to temporarily suspend access to production services. ASAPP will inform you via ServiceDesk in such cases.
 
 ## Recommended Retry Logic
 
@@ -41,5 +45,5 @@ ASAPP recommends implementing the following retry logic using an exponential bac
 **Do not implement retries** for 4xx error codes except for 429.
 
 <Note>
-  If you receive a `409 Conflict`, then the entity has been persisted.
+  If you receive a `409 Conflict`, then the system has persisted the entity.
 </Note>

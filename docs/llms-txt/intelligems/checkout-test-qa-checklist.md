@@ -4,7 +4,7 @@
 
 ## How Checkout Tests Work:
 
-When you create and save your Checkout Experience Test, you configure blocks in Intelligems and add them to your Shopify checkout using unique Location IDs. Once you start your test, Intelligems will automatically display the correct block to each shopper based on their test group and other defined criteria.
+When you create and save your Checkout Test, you configure blocks in Intelligems and add them to your Shopify checkout using unique Location IDs. Once you start your test, Intelligems will automatically display the correct block to each shopper based on their test group and other defined criteria.
 
 ## What to Check First:
 
@@ -70,9 +70,9 @@ Be sure to test multiple scenarios to ensure the blocks are always displaying co
 * Different checkout states and products
 * If you have a control group with no block, verify nothing appears
 * Verify targeting is working (if applicable)
-* Test on multiple devices and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies.
+* Test on multiple devices (desktop and mobile) and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies.
 
-Complete these steps in each test group, being sure to refresh or newly navigate to checkout when you switch to a new test group! If you notice any issues, or have any questions, please feel free to [reach out to Intelligems support!](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)
+Complete these steps in each test group, being sure to refresh or newly navigate to checkout when you switch to a new test group! If you notice any issues, or have any questions, please feel free to [reach out to support!](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)
 
 ### What happens next?
 

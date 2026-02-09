@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/ai-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI actions
 
 > Zapier's [AI Actions](https://actions.zapier.com/) is an AI alpha product designed to work with natural language-based products. It leverages the Zapier platform, with over [6000 apps](https://zapier.com/apps). You can include the capabilities of Zapier's platform in your own product.

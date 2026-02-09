@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZSCORE
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
@@ -37,16 +23,9 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
 
-  await redis.zadd("key", 
-      { score: 1, member: "m1" },
-      { score: 2, member: "m2" },
-      { score: 3, member: "m3" },
-      { score: 4, member: "m4" },
-  )
-
-  const score = await redis.zscore("key", "m2")
-  console.log(score) // 2
+  assert redis.zscore("myset", "a") == 1
   ```
 </RequestExample>

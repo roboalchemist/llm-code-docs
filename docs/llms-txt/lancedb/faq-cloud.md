@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/faq/faq-cloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LanceDB Cloud FAQ
 
 > Commonly asked questions about LanceDB Cloud.
@@ -127,8 +131,3 @@ following:
 
 If you do not need to query from the unindexed data, you can call `fast_search` to
 make queries faster, with the unindexed data excluded.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

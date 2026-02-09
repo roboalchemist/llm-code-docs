@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ToolOCR.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Python functions to extract text from images
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ToolOCR/ToolOCR.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2024-11-22</div>
@@ -158,17 +162,12 @@ Hit the copy icon to duplicate your prompt and start tweaking. You can also twea
 
 Once you're satisfied with the prompt, hit **Update** to save the changes. Each time you save the prompt, you
 create a new version. To learn more about how to use a prompt in your code, check out the
-[prompts guide](/core/functions/prompts#using-prompts-in-your-code).
+[prompts guide](/evaluate/write-prompts#using-prompts-in-your-code).
 
 ## Next steps
 
 Now that you've written tool and prompt Python functions in Braintrust, you can:
 
-* [Deploy the prompt in your app](/core/functions/prompts#using-prompts-in-your-code)
-* [Conduct more detailed evaluations](/core/experiments)
-* Learn about [logging LLM calls](/core/logs) to create a data flywheel
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Deploy the prompt in your app](/evaluate/write-prompts#using-prompts-in-your-code)
+* [Conduct more detailed evaluations](/evaluate/run-evaluations)
+* Learn about [logging LLM calls](/observe/view-logs) to create a data flywheel

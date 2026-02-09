@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/replicate-image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image-to-image generation using Replicate and nano-banana
 
 > Learn how to generate images from source image URLs using Replicate and Trigger.dev.
@@ -10,7 +14,7 @@ This example demonstrates how to use Trigger.dev to generate images from source 
 
 ## Task code
 
-```tsx trigger/generateImage.tsx theme={null}
+```tsx trigger/generateImage.tsx theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { task, wait } from "@trigger.dev/sdk";
 import Replicate, { Prediction } from "replicate";

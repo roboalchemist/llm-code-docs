@@ -1,18 +1,18 @@
-# Source: https://mintlify.com/docs/deploy/cloudflare.md
+# Source: https://www.mintlify.com/docs/deploy/cloudflare.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cloudflare
 
-> Host documentation on a custom subpath with Cloudflare Workers.
+> Host documentation at a subpath on Cloudflare Workers.
 
-To host your documentation at a custom subpath such as `yoursite.com/docs` using Cloudflare, you will need to create and configure a Cloudflare Worker.
+To host your documentation at a subpath such as `yoursite.com/docs` using Cloudflare, you must create and configure a Cloudflare Worker.
 
 <Info>
   Before you begin, you need a Cloudflare account and a domain name (can be managed on or off Cloudflare).
 </Info>
-
-## Repository structure
-
-Your documentation files must be organized within your repository to match your chosen subpath structure. For example, if you want your documentation at `yoursite.com/docs`, you would create a `docs/` directory with all of your documentation files.
 
 ## Set up a Cloudflare Worker
 
@@ -63,7 +63,7 @@ async function handleRequest(request) {
       return await fetch(request);
     }
     
-    // If the request is to the docs subdirectory
+    // If the request is to the docs subpath
     if (/^\/docs/.test(urlObject.pathname)) {
       // Then Proxy to Mintlify
       const DOCS_URL = "[SUBDOMAIN].mintlify.dev";
@@ -149,7 +149,7 @@ try {
     return await fetch(request);
   }
   
-  // If the request is to the docs subdirectory
+  // If the request is to the docs subpath
   if (/^\/docs/.test(urlObject.pathname)) {
     // Proxy to Mintlify
     const DOCS_URL = "[SUBDOMAIN].mintlify.dev";

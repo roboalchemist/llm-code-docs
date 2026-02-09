@@ -8,84 +8,6 @@
 
 # Source: https://langfuse.com/docs/evaluation/overview.md
 
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/evaluation-methods/overview.md
-
-# Source: https://langfuse.com/docs/api-and-data-platform/overview.md
-
-# Source: https://langfuse.com/docs/prompt-management/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/overview.md
-
-# Source: https://langfuse.com/docs/observability/overview.md
-
-# Source: https://langfuse.com/docs/metrics/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/evaluation-methods/overview.md
-
-# Source: https://langfuse.com/docs/api-and-data-platform/overview.md
-
-# Source: https://langfuse.com/docs/prompt-management/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/typescript/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/python/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/overview.md
-
-# Source: https://langfuse.com/docs/observability/overview.md
-
-# Source: https://langfuse.com/docs/metrics/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
-# Source: https://langfuse.com/docs/api-and-data-platform/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
-# Source: https://langfuse.com/docs/api-and-data-platform/overview.md
-
-# Source: https://langfuse.com/docs/prompt-management/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/typescript/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/python/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/overview.md
-
-# Source: https://langfuse.com/docs/observability/overview.md
-
-# Source: https://langfuse.com/docs/metrics/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
-# Source: https://langfuse.com/docs/api-and-data-platform/overview.md
-
-# Source: https://langfuse.com/docs/prompt-management/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/typescript/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/python/overview.md
-
-# Source: https://langfuse.com/docs/observability/sdk/overview.md
-
-# Source: https://langfuse.com/docs/observability/overview.md
-
-# Source: https://langfuse.com/docs/metrics/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/overview.md
-
-# Source: https://langfuse.com/docs/evaluation/experiments/overview.md
-
 # Source: https://langfuse.com/docs/api-and-data-platform/overview.md
 
 ---
@@ -120,10 +42,16 @@ import {
   Activity,
   Download,
   Cloud,
-  Sliders,
+  Blocks,
 } from "lucide-react";
 
 <Cards num={3}>
+  <Card
+    title="MCP Server"
+    href="/docs/api-and-data-platform/features/mcp-server"
+    icon={<Blocks />}
+    arrow
+  />
   <Card
     title="Public API"
     href="/docs/api-and-data-platform/features/public-api"
@@ -146,12 +74,6 @@ import {
     title="Export to Blob Storage"
     href="/docs/api-and-data-platform/features/export-to-blob-storage"
     icon={<Cloud />}
-    arrow
-  />
-  <Card
-    title="Export for Fine-Tuning"
-    href="/docs/api-and-data-platform/features/fine-tuning"
-    icon={<Sliders />}
     arrow
   />
   <Card

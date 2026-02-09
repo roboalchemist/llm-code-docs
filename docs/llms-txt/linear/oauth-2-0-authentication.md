@@ -37,7 +37,7 @@ Name | Description
 * `admin` - Full access to admin level endpoints. You should never ask for this permission unless it's absolutely needed
 
 See [App authentication](https://linear.app/developers/agents?noRedirect=1#actor-and-scopes) for agent-specific scopes such as  `app:assignable` or `app:mentionable`.
-`state` | (optional) Prevents CSRF attacks and should always be supplied. Read more about it [here](https://auth0.com/docs/protocols/state-parameters)
+`state` | (optional, **recommended**) Prevents CSRF attacks and should always be supplied. Read more about it [here](https://auth0.com/docs/protocols/state-parameters).
 `prompt=consent` | (optional) The consent screen is displayed every time, even if all scopes were previously granted. This can be useful if you want to give users the opportunity to connect multiple workspaces.
 `actor` | Define how the OAuth application should create issues, comments and other changes:
 
@@ -197,13 +197,16 @@ curl https://api.linear.app/graphql \
 
 ## Revoke an access token
 
-To revoke a user's access to your application pass the access token as Bearer token in the authorization header (`Authorization: Bearer <ACCESS_TOKEN>`) or as the `access_token` form field.
+To revoke a user’s access, call the revocation endpoint and include the token to be revoked in the `token` form field of the request body.
 
-You can also revoke access using a refresh token by passing it as the `refresh_token` form field. 
+If available, include `token_type_hint` (`access_token` or `refresh_token`) to help the server identify the token.
 
 ```http
 POST https://api.linear.app/oauth/revoke HTTP/1.1
 ```
+
+> [!NOTE]
+> Note: For backwards compatibility, we still accept revocation via the `Authorization` header or the legacy `access_token` / `refresh_token` form fields. New integrations should use the `token` field. The `token` field must not be combined with legacy fields.
 
 ### Response
 
@@ -216,6 +219,8 @@ Expected HTTP status:
 ## Migrate to using refresh tokens
 
 To ease the transition to refresh tokens for OAuth2 applications that aren't currently using them, we've added a temporary endpoint to migrate any old, long-lived access token to a new, short-lived access token with a refresh token.
+
+You'll still need to enable refresh tokens on your application to use them going forward after you migrate your old tokens.
 
 ```http
 POST https://api.linear.app/oauth/migrate_old_token HTTP/1.1

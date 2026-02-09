@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/deployments/speculative-decoding.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Speculative Decoding
 
 > Speed up generation with draft models and n-gram speculation
@@ -36,7 +40,7 @@ Speed up text generation by using a smaller "draft" model to assist the main mod
     Use a smaller model to speed up generation:
 
     ```bash  theme={null}
-    firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+    firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
       --draft-model="accounts/fireworks/models/llama-v3p2-1b-instruct" \
       --draft-token-count=4
     ```
@@ -46,7 +50,7 @@ Speed up text generation by using a smaller "draft" model to assist the main mod
     Use input history for speculation (no draft model needed):
 
     ```bash  theme={null}
-    firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+    firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
       --ngram-speculation-length=3 \
       --draft-token-count=4
     ```

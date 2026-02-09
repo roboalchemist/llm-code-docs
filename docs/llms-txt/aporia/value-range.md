@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/value-range.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/value-range.md
-
-# Source: https://docs.aporia.com/v1/monitors/value-range.md
-
 # Value Range
 
 ### Why Monitor Value Range?

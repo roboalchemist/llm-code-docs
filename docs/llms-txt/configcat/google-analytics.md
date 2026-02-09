@@ -2,6 +2,8 @@
 
 # Google Analytics - Send feature flag analytics to Google Analytics
 
+Copy page
+
 ## Sending Feature Flag Evaluation Analytics to Google Analytics[​](#sending-feature-flag-evaluation-analytics-to-google-analytics "Direct link to Sending Feature Flag Evaluation Analytics to Google Analytics")
 
 Integrate your feature flag evaluations with [Google Analytics experiments](https://developers.google.com/analytics/devguides/collection/ga4/integration) to gain advanced insights into how your features are used and to assess the outcomes of A/B tests.
@@ -28,7 +30,7 @@ Code samples:
 * React
 * Other languages
 
-```
+```js
 const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPoll, {
     setupHooks: (hooks) =>
         hooks.on('flagEvaluated', evaluationDetails => {
@@ -40,9 +42,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
                 });
         }),
 });
-```
 
 ```
+
+```tsx
 <ConfigCatProvider
   sdkKey="#YOUR_SDK_KEY"
   pollingMode={PollingMode.AutoPoll}
@@ -59,6 +62,7 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
   }}
 >
 </ConfigCatProvider>
+
 ```
 
 While our documentation primarily provides code examples for JavaScript-based SDKs, you can integrate with other languages by utilizing the [Send Measurement Protocol events to Google Analytics](https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag) endpoint. Here's how to set it up:

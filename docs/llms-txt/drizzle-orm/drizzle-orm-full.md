@@ -981,6 +981,1700 @@ await db.query.users.findMany();
 - Using cache with views
 
 
+Source: https://orm.drizzle.team/docs/column-types/cockroach
+
+
+import Section from '@mdx/Section.astro';
+import Callout from '@mdx/Callout.astro';
+import Npm from '@mdx/Npm.astro';
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+We have native support for all of them, yet if that's not enough for you, feel free to create **[custom types](/docs/custom-types)**.
+
+<Callout title='important' type='warning'>
+All examples in this part of the documentation do not use database column name aliases, and column names are generated from TypeScript keys. 
+
+You can use database aliases in column names if you want, and you can also use the `casing` parameter to define a mapping strategy for Drizzle. 
+
+You can read more about it [here](/docs/sql-schema-declaration#shape-your-data-schema)
+</Callout>
+
+### bigint
+`int` `int8` `int64` `integer`
+
+Signed 8-byte integer     
+
+If you're expecting values above 2^31 but below 2^53, you can utilize `mode: 'number'` and deal with javascript number as opposed to bigint.
+<Section>
+```typescript
+import { bigint, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	bigint: bigint({ mode: 'number' })
+});
+
+// will be inferred as `number`
+bigint: bigint({ mode: 'number' })
+
+// will be inferred as `bigint`
+bigint: bigint({ mode: 'bigint' })
+```
+
+```sql
+CREATE TABLE "table" (
+	"bigint" bigint
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { bigint, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	bigint1: bigint().default(10),
+	bigint2: bigint().default(sql`'10'::bigint`)
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"bigint1" bigint DEFAULT 10,
+	"bigint2" bigint DEFAULT '10'::bigint
+);
+```
+</Section>
+
+### smallint
+`smallint` `int2`  
+Small-range signed 2-byte integer   
+
+<Section>
+```typescript
+import { smallint, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	smallint: smallint()
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"smallint" smallint
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { smallint, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	smallint1: smallint().default(10),
+	smallint2: smallint().default(sql`'10'::smallint`)
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"smallint1" smallint DEFAULT 10,
+	"smallint2" smallint DEFAULT '10'::smallint
+);
+```
+</Section>
+
+### int4
+
+Signed 4-byte integer     
+
+<Section>
+```typescript
+import { int4, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	int4: int4()
+});
+
+```
+
+```sql
+CREATE TABLE "table" (
+	"int4" int4
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { int4, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	int1: int4().default(10),
+	int2: int4().default(sql`'10'::int4`)
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"int1" int4 DEFAULT 10,
+	"int2" int4 DEFAULT '10'::int4
+);
+```
+</Section>
+
+
+### int8
+
+An alias of **[bigint.](#bigint)**
+
+### int2
+
+An alias of **[smallint.](#smallint)**
+
+### ---
+
+### bool
+Cockroach provides the standard SQL type bool.
+
+For more info please refer to the official Cockroach **[docs.](https://www.cockroachlabs.com/docs/stable/bool)**
+
+<Section>
+```typescript
+import { bool, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	boolean: bool()
+});
+
+```
+
+```sql
+CREATE TABLE "table" (
+	"boolean" bool
+);
+```
+</Section>
+
+## ---
+
+### string
+`text` `varchar`, `char`
+
+The `STRING` data type stores a string of Unicode characters.
+
+<Callout>
+For PostgreSQL compatibility, CockroachDB supports the following STRING-related types and their aliases:
+
+`VARCHAR` (and alias `CHARACTER VARYING`)
+`CHAR` (and alias `CHARACTER`)
+`NAME`
+</Callout>
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/string)**
+  
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+<Section>
+```typescript
+import { string, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+  stringColumn: string(), // equivalent to `text` PostgreSQL type
+  stringColumn1: string({ length: 256 }), // equivalent to `varchar(256)` PostgreSQL type
+});
+
+// will be inferred as text: "value1" | "value2" | null
+stringColumn: string({ enum: ["value1", "value2"] })
+```
+
+```sql
+CREATE TABLE "table" (
+	"stringColumn" string,
+    "stringColumn1" string(256),
+);
+```
+</Section>
+
+### text
+
+CockroachDB alias for `STRING`:
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/string)**
+  
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+<Section>
+```typescript
+import { text, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+  text: text()
+});
+
+// will be inferred as text: "value1" | "value2" | null
+text: text({ enum: ["value1", "value2"] })
+```
+
+```sql
+CREATE TABLE "table" (
+	"text" text
+);
+```
+</Section>
+
+### varchar
+`character varying(n)` `varchar(n)`  
+
+`STRING` alias used to stay compatible with PostgreSQL
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/string)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to PostgreSQL docs.
+<Section>
+```typescript
+import { varchar, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+  varchar1: varchar(),
+  varchar2: varchar({ length: 256 }),
+});
+
+// will be inferred as text: "value1" | "value2" | null
+varchar: varchar({ enum: ["value1", "value2"] }),
+```
+
+```sql
+CREATE TABLE "table" (
+	"varchar1" varchar,
+	"varchar2" varchar(256)
+);
+```
+</Section>
+
+### char
+`character(n)` `char(n)`  
+
+`STRING` alias used to stay compatible with PostgreSQL
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/string)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to PostgreSQL docs.
+<Section>
+```typescript
+import { char, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+  char1: char(),
+  char2: char({ length: 256 }),
+});
+
+// will be inferred as text: "value1" | "value2" | null
+char: char({ enum: ["value1", "value2"] }),
+```
+
+```sql
+CREATE TABLE "table" (
+	"char1" char,
+	"char2" char(256)
+);
+```
+</Section>
+
+## ---
+
+https://www.cockroachlabs.com/docs/stable/float
+
+### decimal
+
+`numeric` `decimal` `dec`
+The DECIMAL data type stores exact, fixed-point numbers. This type is used when it is important to preserve exact precision, for example, with monetary data.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/decimal)**
+
+<Section>
+```typescript
+import { decimal, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+  decimal1: decimal(),
+  decimal2: decimal({ precision: 100 }),
+  decimal3: decimal({ precision: 100, scale: 20 }),
+  decimalNum: decimal({ mode: 'number' }),
+  decimalBig: decimal({ mode: 'bigint' }),
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"decimal1" decimal,
+	"decimal2" decimal(100),
+	"decimal3" decimal(100, 20),
+	"decimalNum" decimal,
+	"decimalBig" decimal
+);
+```
+</Section>
+
+### numeric
+An alias of **[decimal.](#decimal)**
+
+### float
+`float` `float8` `double precision`  
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/float)**  
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { float, cockroachTable } from "drizzle-orm/cockroach-core";  
+
+const table = cockroachTable('table', {
+	float1: float(),
+	float2: float().default(10.10),
+	float3: float().default(sql`'10.10'::float`),
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"float1" float,
+	"float2" float default 10.10,
+	"float3" float default '10.10'::float
+);
+```
+</Section>
+
+### real
+`real` `float4`  
+Single precision floating-point number (4 bytes)
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/float)**  
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { real, cockroachTable } from "drizzle-orm/cockroach-core";  
+
+const table = cockroachTable('table', {
+	real1: real(),
+	real2: real().default(10.10),
+	real3: real().default(sql`'10.10'::real`),
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"real1" real,
+	"real2" real default 10.10,
+	"real3" real default '10.10'::real
+);
+```
+</Section>
+
+### double precision
+
+An alias of **[float.](#float)**
+
+## ---
+
+### jsonb
+`jsonb`  
+
+The JSONB data type stores JSON (JavaScript Object Notation) data as a binary representation of the JSONB value, which eliminates whitespace, duplicate keys, and key ordering
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/jsonb)**
+<Section>
+```typescript
+import { jsonb, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+	jsonb1: jsonb(),
+	jsonb2: jsonb().default({ foo: "bar" }),
+	jsonb3: jsonb().default(sql`'{foo: "bar"}'::jsonb`),
+});
+```
+```sql
+CREATE TABLE "table" (
+	"jsonb1" jsonb,
+	"jsonb2" jsonb default '{"foo": "bar"}'::jsonb,
+	"jsonb3" jsonb default '{"foo": "bar"}'::jsonb
+);
+```
+</Section>
+
+You can specify `.$type<..>()` for json object inference, it **won't** check runtime values. 
+It provides compile time protection for default values, insert and select schemas.
+
+```typescript
+// will be inferred as { foo: string }
+jsonb: jsonb().$type<{ foo: string }>();
+
+// will be inferred as string[]
+jsonb: jsonb().$type<string[]>();
+
+// won't compile
+jsonb: jsonb().$type<string[]>().default({});
+```
+
+## ---
+
+### bit
+`bit`  
+
+The BIT data types store bit arrays. With BIT, the length is fixed.
+
+<br />
+
+**Size**
+
+The number of bits in a BIT value is determined as follows:
+
+| Type&nbsp;declaration		| Logical&nbsp;size	|
+|:------------------		|:--------------	|
+| BIT						| 1 bit				|
+| BIT(N)					| N bits			|
+
+<br />
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/bit)**
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { cockroachTable, bit } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	bit1: bit(),
+	bit2: bit({ length: 15 }),
+	bit3: bit({ length: 15 }).default('10011'),
+	bit4: bit({ length: 15 }).default(sql`'10011'`)
+});
+```
+```sql
+CREATE TABLE "table" (
+	"bit1" bit,
+	"bit2" bit(15),
+	"bit3" bit(15) DEFAULT '10011',
+	"bit4" bit(15) DEFAULT '10011'
+);
+
+```
+</Section>
+
+### varbit
+`varbit`
+
+The VARBIT data types store bit arrays. With VARBIT, the length can be variable.
+
+<br />
+
+**Size**
+
+The number of bits in a VARBIT value is determined as follows:
+
+| Type&nbsp;declaration		| Logical&nbsp;size													|
+|:------------------		|:--------------													|
+| VARBIT					| variable&nbsp;with&nbsp;no&nbsp;maximum							|
+| VARBIT(N)					| variable&nbsp;with&nbsp;a&nbsp;maximum&nbsp;of&nbsp;N&nbsp;bits	|
+
+<br />
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/bit)**
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { cockroachTable, bit } from "drizzle-orm/cockroach-core";
+
+export const table = cockroachTable('table', {
+	varbit1: varbit(),
+	varbit2: varbit({ length: 15 }),
+	varbit3: varbit({ length: 15 }).default('10011'),
+	varbit4: varbit({ length: 15 }).default(sql`'10011'`)
+});
+```
+```sql
+CREATE TABLE "table" (
+	"varbit1" varbit,
+	"varbit2" varbit(15),
+	"varbit3" varbit(15) DEFAULT '10011',
+	"varbit4" varbit(15) DEFAULT '10011'
+);
+```
+
+</Section>
+
+## ---
+
+### uuid
+`uuid`
+
+The UUID (Universally Unique Identifier) data type stores a 128-bit value that is unique across both space and time.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/uuid)**
+
+```ts
+import { uuid, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+  uuid1: uuid(),
+  uuid2: uuid().defaultRandom(),
+  uuid3: uuid().default('a0ee-bc99-9c0b-4ef8-bb6d-6bb9-bd38-0a11')
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"uuid1" uuid,
+	"uuid2" uuid default gen_random_uuid(),
+	"uuid3" uuid default 'a0ee-bc99-9c0b-4ef8-bb6d-6bb9-bd38-0a11'
+);
+```
+
+## ---
+
+### time
+`time` `timetz` `time with timezone` `time without timezone`  
+
+The `TIME` data type stores the time of day in UTC.
+The `TIMETZ` data type stores a time of day with a time zone offset from UTC.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/time)**
+
+<Section>
+```typescript
+import { time, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+  time1: time(),
+  time2: time({ withTimezone: true }),
+  time3: time({ precision: 6 }),
+  time4: time({ precision: 6, withTimezone: true })
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"time1" time,
+	"time2" time with timezone,
+	"time3" time(6),
+	"time4" time(6) with timezone
+);
+```
+</Section>
+
+### timestamp
+`timestamp` `timestamptz` `timestamp with time zone` `timestamp without time zone`  
+
+The TIMESTAMP and TIMESTAMPTZ data types store a date and time pair in UTC.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/timestamp)**
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { timestamp, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+  timestamp1: timestamp(),
+	timestamp2: timestamp({ precision: 6, withTimezone: true }),
+	timestamp3: timestamp().defaultNow(),
+	timestamp4: timestamp().default(sql`now()`),
+});
+```
+```sql
+CREATE TABLE "table" (
+	"timestamp1" timestamp,
+	"timestamp2" timestamp (6) with time zone,
+	"timestamp3" timestamp default now(),
+	"timestamp4" timestamp default now()
+);
+```
+</Section>
+
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+timestamp: timestamp({ mode: "date" }),
+
+// will infer as string
+timestamp: timestamp({ mode: "string" }),
+```
+
+> The `string` mode does not perform any mappings for you. This mode was added to Drizzle ORM to provide developers
+with the possibility to handle dates and date mappings themselves, depending on their needs.
+Drizzle will pass raw dates as strings `to` and `from` the database, so the behavior should be as predictable as possible 
+and aligned 100% with the database behavior
+
+> The `date` mode is the regular way to work with dates. Drizzle will take care of all mappings between the database and the JS Date object
+
+### date
+`date`  
+
+The DATE data type stores a year, month, and day.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/date)**
+<Section>
+```typescript
+import { date, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+	date: date(),
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"date" date
+);
+```
+</Section>
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+date: date({ mode: "date" }),
+
+// will infer as string
+date: date({ mode: "string" }),
+```
+### interval
+`interval`  
+
+Stores a value that represents a span of time.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/interval)** 
+
+<Section>
+```typescript
+import { interval, cockroachTable } from "drizzle-orm/cockroach-core";
+
+const table = cockroachTable('table', {
+	interval1: interval(),
+  interval2: interval({ fields: 'day' }),
+  interval3: interval({ fields: 'month' , precision: 6 }),
+});
+
+```
+
+```sql
+CREATE TABLE "table" (
+	"interval1" interval,
+	"interval2" interval day,
+	"interval3" interval(6) month
+);
+```
+</Section>
+
+## ---
+
+### enum 
+`enum` `enumerated types`  
+Enumerated (enum) types are data types that comprise a static, ordered set of values. 
+They are equivalent to the enum types supported in a number of programming languages. 
+An example of an enum type might be the days of the week, or a set of status values for a piece of data.
+
+For more info please refer to the official CockroachDB **[docs.](https://www.cockroachlabs.com/docs/stable/enum)**
+<Section>
+```typescript
+import { cockroachEnum, cockroachTable } from "drizzle-orm/cockroach-core";
+
+export const moodEnum = cockroachEnum('mood', ['sad', 'ok', 'happy']);
+
+export const table = cockroachTable('table', {
+  mood: moodEnum(),
+});
+```
+
+```sql
+CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
+
+CREATE TABLE "table" (
+	"mood" mood
+);
+```
+</Section>
+
+## ---
+
+### Customizing data type
+Every column builder has a `.$type()` method, which allows you to customize the data type of the column. 
+
+This is useful, for example, with unknown or branded types:
+```ts
+type UserId = number & { __brand: 'user_id' };
+type Data = {
+	foo: string;
+	bar: number;
+};
+
+const users = cockroachTable('users', {
+  id: int().$type<UserId>().primaryKey(),
+  jsonField: json().$type<Data>(),
+});
+```
+
+### Identity Columns
+
+<Callout type="info">
+To use this feature you would need to have `drizzle-orm@0.32.0` or higher and `drizzle-kit@0.23.0` or higher
+</Callout>
+
+PostgreSQL and CockroachDB supports identity columns as a way to automatically generate unique integer values for a column. These values are generated using sequences and can be defined using the GENERATED AS IDENTITY clause.
+
+**Types of Identity Columns**
+- `GENERATED ALWAYS AS IDENTITY`: The database always generates a value for the column. Manual insertion or updates to this column are not allowed unless the OVERRIDING SYSTEM VALUE clause is used.
+- `GENERATED BY DEFAULT AS IDENTITY`: The database generates a value by default, but manual values can also be inserted or updated. If a manual value is provided, it will be used instead of the system-generated value.
+
+**Usage example**
+```ts
+import { pgTable, integer, text } from 'drizzle-orm/pg-core' 
+
+export const ingredients = pgTable("ingredients", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity({ startWith: 1000 }),
+  name: text().notNull(),
+  description: text(),
+});
+```
+
+You can specify all properties available for sequences in the `.generatedAlwaysAsIdentity()` function. Additionally, you can specify custom names for these sequences
+
+PostgreSQL docs [reference](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-PARMS-GENERATED-IDENTITY).
+
+### Default value
+The `DEFAULT` clause specifies a default value to use for the column if no value
+is explicitly provided by the user when doing an `INSERT`.
+If there is no explicit `DEFAULT` clause attached to a column definition,
+then the default value of the column is `NULL`.
+
+An explicit `DEFAULT` clause may specify that the default value is `NULL`,
+a string constant, a blob constant, a signed-number, or any constant expression enclosed in parentheses.
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { integer, pgTable, uuid } from "drizzle-orm/pg-core";
+
+const table = pgTable('table', {
+	integer1: integer().default(42),
+	integer2: integer().default(sql`'42'::integer`),
+	uuid1: uuid().defaultRandom(),
+	uuid2: uuid().default(sql`gen_random_uuid()`),
+});
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "table" (
+	"integer1" integer DEFAULT 42,
+	"integer2" integer DEFAULT '42'::integer,
+	"uuid1" uuid DEFAULT gen_random_uuid(),
+	"uuid2" uuid DEFAULT gen_random_uuid()
+);
+```
+</Section>
+
+When using `$default()` or `$defaultFn()`, which are simply different aliases for the same function, 
+you can generate defaults at runtime and use these values in all insert queries. 
+
+These functions can assist you in utilizing various implementations such as `uuid`, `cuid`, `cuid2`, and many more.
+
+<Callout type="info" emoji="ℹ️">
+	Note: This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`
+</Callout>
+
+```ts
+import { text, pgTable } from "drizzle-orm/pg-core";
+import { createId } from '@paralleldrive/cuid2';
+
+const table = pgTable('table', {
+	id: text().$defaultFn(() => createId()),
+});
+```
+
+When using `$onUpdate()` or `$onUpdateFn()`, which are simply different aliases for the same function, 
+you can generate defaults at runtime and use these values in all update queries. 
+
+Adds a dynamic update value to the column. The function will be called when the row is updated, 
+and the returned value will be used as the column value if none is provided.
+If no default (or $defaultFn) value is provided, the function will be called
+when the row is inserted as well, and the returned value will be used as the column value.
+
+<Callout type="info" emoji="ℹ️">
+	Note: This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`
+</Callout>
+
+```ts
+import { integer, timestamp, text, pgTable } from "drizzle-orm/pg-core";
+
+const table = pgTable('table', {
+	updateCounter: integer().default(sql`1`).$onUpdateFn((): SQL => sql`${table.update_counter} + 1`),
+	updatedAt: timestamp({ mode: 'date', precision: 3 }).$onUpdate(() => new Date()),
+    	alwaysNull: text().$type<string | null>().$onUpdate(() => null),
+});
+```
+
+
+### Not null
+`NOT NULL` constraint dictates that the associated column may not contain a `NULL` value.
+
+<Section>
+```typescript
+import { integer, pgTable } from "drizzle-orm/pg-core";
+
+const table = pgTable('table', {
+	integer: integer().notNull(),
+});
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "table" (
+	"integer" integer NOT NULL
+);
+```
+</Section>
+
+
+### Primary key
+A primary key constraint indicates that a column, or group of columns, can be used as a unique identifier for rows in the table. 
+This requires that the values be both unique and not null.
+<Section>
+```typescript
+import { serial, pgTable } from "drizzle-orm/pg-core";
+
+const table = pgTable('table', {
+	id: serial().primaryKey(),
+});
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "table" (
+	"id" serial PRIMARY KEY NOT NULL
+);
+```
+</Section>
+
+
+Source: https://orm.drizzle.team/docs/column-types/mssql
+
+
+import Section from '@mdx/Section.astro';
+import Callout from '@mdx/Callout.astro';
+import Npm from '@mdx/Npm.astro';
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+We have native support for all of them, yet if that's not enough for you, feel free to create **[custom types](/docs/custom-types)**.
+
+<Callout title='important' type='warning'>
+All examples in this part of the documentation do not use database column name aliases, and column names are generated from TypeScript keys. 
+
+You can use database aliases in column names if you want, and you can also use the `casing` parameter to define a mapping strategy for Drizzle. 
+
+You can read more about it [here](/docs/sql-schema-declaration#shape-your-data-schema)
+</Callout>
+
+### int
+Signed 4-byte integer     
+
+<Section>
+```typescript
+import { int, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	int: int()
+});
+
+```
+
+```sql
+CREATE TABLE [table] (
+	[int] int
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { int, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = pgTable('table', {
+	int1: int().default(10),
+});
+
+```
+
+```sql
+CREATE TABLE [table] (
+	[int1] int DEFAULT 10
+);
+```
+</Section>
+
+### smallint
+`smallint`
+
+Small-range signed 2-byte integer   
+
+<Section>
+```typescript
+import { smallint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	smallint: smallint()
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[smallint] smallint
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { smallint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	smallint1: smallint().default(10),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[smallint1] smallint DEFAULT 10
+);
+```
+</Section>
+
+### tinyint
+`tinyint`
+
+Small-range signed 1-byte integer   
+
+<Section>
+```typescript
+import { tinyint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	tinyint: tinyint()
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[tinyint] tinyint
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { tinyint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	tinyint1: tinyint().default(10),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[tinyint1] tinyint DEFAULT 10
+);
+```
+</Section>
+
+### bigint
+`bigint`
+
+Signed 8-byte integer  
+
+If you're expecting values above 2^31 but below 2^53, you can utilise `mode: 'number'` and deal with javascript number as opposed to bigint.
+<Section>
+```typescript
+import { bigint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	bigint: bigint({ mode: 'number' })
+});
+
+// will be inferred as `number`
+bigint: bigint({ mode: 'number' })
+
+// will be inferred as `bigint`
+bigint: bigint({ mode: 'bigint' })
+
+// will be inferred as `string`
+bigint: bigint({ mode: 'string' })
+```
+
+```sql
+CREATE TABLE [table] (
+	[bigint] bigint
+);
+```
+</Section>
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { bigint, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	bigint1: bigint({ mode: 'number' }).default(10)
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[bigint1] bigint DEFAULT 10
+);
+```
+</Section>
+
+## ---
+
+### bit
+
+An integer data type that can take a value of `1`, `0`, or `NULL`
+
+Drizzle will accept `true` or `false` as values instead of `1` and `0`
+
+<Section>
+```typescript
+import { bit, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+	bit: bit()
+});
+
+```
+
+```sql
+CREATE TABLE [table] (
+	[bit] bit
+);
+```
+</Section>
+
+## ---
+
+### text
+`text`  
+Variable-length non-Unicode data in the code page of the server and with a maximum string length 
+of 2^31 - 1 (2,147,483,647)
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/ntext-text-and-image-transact-sql?view=sql-server-ver17#text)**
+  
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+<Section>
+```typescript
+import { text, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  text: text()
+});
+
+// will be inferred as text: "value1" | "value2" | null
+text: text({ enum: ["value1", "value2"] })
+```
+
+```sql
+CREATE TABLE [table] (
+	[text] text
+);
+```
+</Section>
+
+### ntext
+`text`  
+Variable-length Unicode data with a maximum string length of 2^30 - 1 (1,073,741,823).
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/ntext-text-and-image-transact-sql?view=sql-server-ver17#text)**
+  
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+<Section>
+```typescript
+import { text, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  ntext: ntext()
+});
+
+// will be inferred as text: "value1" | "value2" | null
+ntext: ntext({ enum: ["value1", "value2"] })
+```
+
+```sql
+CREATE TABLE [table] (
+	[ntext] ntext
+);
+```
+</Section>
+
+### varchar
+`varchar(n|max)`  
+Variable-size string data. Use n to define the string size in bytes and can be a value from 1 through 8,000
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/char-and-varchar-transact-sql?view=sql-server-ver17#varchar---n--max--)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to MSSQL docs.
+<Section>
+```typescript
+import { varchar, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  varchar1: varchar(),
+  varchar2: varchar({ length: 256 }),
+  varchar3: varchar({ length: 'max' })
+});
+
+// will be inferred as text: "value1" | "value2" | null
+varchar: varchar({ enum: ["value1", "value2"] }),
+```
+
+```sql
+CREATE TABLE [table] (
+	[varchar1] varchar,
+	[varchar2] varchar(256),
+	[varchar3] varchar(max)
+);
+```
+</Section>
+
+### nvarchar
+`nvarchar(n|max)`  
+Variable-size string data. The value of n defines the string size in byte-pairs
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql?view=sql-server-ver17#nvarchar---n--max--)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to MSSQL docs.
+<Section>
+```typescript
+import { nvarchar, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  nvarchar1: nvarchar(),
+  nvarchar2: nvarchar({ length: 256 }),
+});
+
+// will be inferred as text: "value1" | "value2" | null
+nvarchar: nvarchar({ enum: ["value1", "value2"] }),
+
+// will be inferred as `json`
+nvarchar: nvarchar({ mode: 'json' })
+```
+
+```sql
+CREATE TABLE [table] (
+	[nvarchar1] nvarchar,
+	[nvarchar2] nvarchar(256)
+);
+```
+</Section>
+
+### char
+`char(n)`  
+
+Fixed-size string data. n defines the string size in bytes and must be a value from 1 through 8,000
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/char-and-varchar-transact-sql?view=sql-server-ver17#char---n--)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to MSSQL docs.
+<Section>
+```typescript
+import { char, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  char1: char(),
+  char2: char({ length: 256 }),
+});
+
+// will be inferred as text: "value1" | "value2" | null
+char: char({ enum: ["value1", "value2"] }),
+```
+
+```sql
+CREATE TABLE [table] (
+	[char1] char,
+	[char2] char(256)
+);
+```
+</Section>
+
+### nchar
+`nchar(n)`  
+
+Fixed-size string data. n defines the string size in byte-pairs, and must be a value from 1 through 4,000
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql?view=sql-server-ver17#nchar---n--)**
+
+You can define `{ enum: ["value1", "value2"] }` config to infer `insert` and `select` types, it **won't** check runtime values.
+
+The `length` parameter is optional according to MSSQL docs.
+<Section>
+```typescript
+import { nchar, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  nchar1: nchar(),
+  nchar2: nchar({ length: 256 }),
+});
+
+// will be inferred as text: "value1" | "value2" | null
+nchar: nchar({ enum: ["value1", "value2"] }),
+```
+
+```sql
+CREATE TABLE [table] (
+	[nchar1] nchar,
+	[nchar2] nchar(256)
+);
+```
+</Section>
+
+## ---
+
+### binary
+
+Fixed-length binary data with a length of n bytes, where n is a value from 1 through 8,000. The storage size is n bytes.
+
+<Section>
+```typescript
+import { binary, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	binary: binary(),
+	binary1: binary({ length: 256 })
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[binary] binary,
+	[binary1] binary(256)
+);
+```
+</Section>
+
+### varbinary
+
+Variable-length binary data. n can be a value from 1 through 8,000. max indicates that the maximum storage size is 2^31-1 bytes
+
+<Section>
+```typescript
+import { varbinary, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	varbinary: varbinary(),
+	varbinary1: varbinary({ length: 256 }),
+	varbinary2: varbinary({ length: 'max' })
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[varbinary] varbinary,
+	[varbinary1] varbinary(256),
+	[varbinary2] varbinary(max)
+);
+```
+</Section>
+
+## ---
+
+### numeric
+`numeric`
+
+Fixed precision and scale numbers. When maximum precision is used, valid values are from -10^38 + 1 through 10^38 - 1
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver17#decimal---p---s----and-numeric---p---s---)**
+
+<Section>
+```typescript
+import { numeric, mssqlTable } from "drizzle-orm/mssql-core";
+
+export const table = mssqlTable('table', {
+  numeric1: numeric(),
+  numeric2: numeric({ precision: 100 }),
+  numeric3: numeric({ precision: 100, scale: 20 })
+//   numericNum: numeric({ mode: 'number' }),
+//   numericBig: numeric({ mode: 'bigint' }),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[numeric1] numeric,
+	[numeric2] numeric(100),
+	[numeric3] numeric(100, 20)
+);
+```
+</Section>
+
+### decimal
+An alias of **[numeric.](#numeric)**
+
+### real
+
+The ISO synonym for real is float(24).
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/float-and-real-transact-sql?view=sql-server-ver17)**  
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { real, mssqlTable } from "drizzle-orm/mssql-core";  
+
+const table = mssqlTable('table', {
+	real1: real(),
+	real2: real().default(10.10)
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[real1] real,
+	[real2] real default 10.10
+);
+```
+</Section>
+
+### float
+
+float [ (n) ] Where n is the number of bits that are used to store the mantissa of the float number in scientific notation and, therefore, dictates the precision and storage size. If n is specified, it must be a value between 1 and 53. The default value of n is 53.
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/float-and-real-transact-sql?view=sql-server-ver17#syntax)**  
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { float, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	float1: float(),
+	float1: float({ precision: 16 })
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[float1] float,
+	[float2] float(16)
+);
+```
+</Section>
+
+## ---
+
+### time
+`time`
+
+Defines a time of a day. The time is without time zone awareness and is based on a 24-hour clock.
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/time-transact-sql?view=sql-server-ver17#time-description)**
+
+<Section>
+```typescript
+import { time, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+  time1: time(),
+  time2: time({ mode: 'string' }),
+  time3: time({ precision: 6 }),
+  time4: time({ precision: 6, mode: 'date' })
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[time1] time,
+	[time2] time,
+	[time3] time(6),
+	[time4] time(6)
+);
+```
+</Section>
+
+### date
+`date`  
+
+Calendar date (year, month, day)
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/date-transact-sql?view=sql-server-ver17#date-description)**
+<Section>
+```typescript
+import { date, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	date: date(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[date] date
+);
+```
+</Section>
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+date: date({ mode: "date" }),
+
+// will infer as string
+date: date({ mode: "string" }),
+```
+
+### datetime
+`datetime`  
+
+Defines a date that is combined with a time of day with fractional seconds that is based on a 24-hour clock.
+
+<Callout title='MSSQL docs'>
+Avoid using datetime for new work. Instead, use the time, date, datetime2, and datetimeoffset data types. These types align with the SQL Standard, and are more portable. time, datetime2 and datetimeoffset provide more seconds precision. datetimeoffset provides time zone support for globally deployed applications.
+</Callout>
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/datetime-transact-sql?view=sql-server-ver17#description)**
+<Section>
+```typescript
+import { datetime, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	datetime: datetime(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[datetime] datetime
+);
+```
+</Section>
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+datetime: datetime({ mode: "date" }),
+
+// will infer as string
+datetime: datetime({ mode: "string" }),
+```
+
+### datetime2
+`datetime2`  
+
+Defines a date that is combined with a time of day that is based on 24-hour clock. datetime2 can be considered as an extension of the existing datetime type that has a larger date range, a larger default fractional precision, and optional user-specified precision.
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/datetime2-transact-sql?view=sql-server-ver17#datetime2-description)**
+<Section>
+```typescript
+import { datetime2, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	datetime2: datetime2(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[datetime2] datetime2
+);
+```
+</Section>
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+datetime2: datetime2({ mode: "date" }),
+
+// will infer as string
+datetime2: datetime2({ mode: "string" }),
+```
+
+### datetimeoffset
+`datetimeoffset`  
+
+Defines a date that is combined with a time of a day based on a 24-hour clock like datetime2, and adds time zone awareness based on Coordinated Universal Time (UTC).
+
+For more info please refer to the official MSSQL **[docs.](https://learn.microsoft.com/en-us/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-ver17#datetimeoffset-description)**
+<Section>
+```typescript
+import { datetimeoffset, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	datetimeoffset: datetimeoffset(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[datetimeoffset] datetimeoffset
+);
+```
+</Section>
+You can specify either `date` or `string` infer modes:
+```typescript
+// will infer as date
+datetimeoffset: datetimeoffset({ mode: "date" }),
+
+// will infer as string
+datetimeoffset: datetimeoffset({ mode: "string" }),
+```
+
+## ---
+
+### Customizing data type
+Every column builder has a `.$type()` method, which allows you to customize the data type of the column. 
+
+This is useful, for example, with unknown or branded types:
+```ts
+type UserId = number & { __brand: 'user_id' };
+type Data = {
+	foo: string;
+	bar: number;
+};
+
+const users = mssqlTable('users', {
+  id: int().$type<UserId>().primaryKey(),
+  jsonField: json().$type<Data>(),
+});
+```
+
+### Default value
+The `DEFAULT` clause specifies a default value to use for the column if no value
+is explicitly provided by the user when doing an `INSERT`.
+If there is no explicit `DEFAULT` clause attached to a column definition,
+then the default value of the column is `NULL`.
+
+An explicit `DEFAULT` clause may specify that the default value is `NULL`,
+a string constant, a blob constant, a signed-number, or any constant expression enclosed in parentheses.
+
+<Section>
+```typescript
+import { sql } from "drizzle-orm";
+import { int, mssqlTable, text } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	integer: integer().default(42),
+	text: text().default('text'),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[integer1] integer DEFAULT 42,
+	[text] text DEFAULT 'text',
+);
+```
+</Section>
+
+When using `$default()` or `$defaultFn()`, which are simply different aliases for the same function, 
+you can generate defaults at runtime and use these values in all insert queries. 
+
+<Callout type="info" emoji="ℹ️">
+	Note: This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`
+</Callout>
+
+```ts
+import { text, mssqlTable } from "drizzle-orm/mssql-core";
+import { createId } from '@paralleldrive/cuid2';
+
+const table = mssqlTable('table', {
+	id: text().$defaultFn(() => createId()),
+});
+```
+
+When using `$onUpdate()` or `$onUpdateFn()`, which are simply different aliases for the same function, 
+you can generate defaults at runtime and use these values in all update queries. 
+
+Adds a dynamic update value to the column. The function will be called when the row is updated, 
+and the returned value will be used as the column value if none is provided.
+If no default (or $defaultFn) value is provided, the function will be called
+when the row is inserted as well, and the returned value will be used as the column value.
+
+<Callout type="info" emoji="ℹ️">
+	Note: This value does not affect the `drizzle-kit` behavior, it is only used at runtime in `drizzle-orm`
+</Callout>
+
+```ts
+import { int, datetime2, text, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	updateCounter: int().default(sql`1`).$onUpdateFn((): SQL => sql`${table.updateCounter} + 1`),
+	updatedAt: datetime2({ mode: 'date', precision: 3 }).$onUpdate(() => new Date()),
+	alwaysNull: text().$type<string | null>().$onUpdate(() => null),
+});
+```
+
+
+### Not null
+`NOT NULL` constraint dictates that the associated column may not contain a `NULL` value.
+
+<Section>
+```typescript
+import { int, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = mssqlTable('table', {
+	int: int().notNull(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[int] int NOT NULL
+);
+```
+</Section>
+
+
+### Primary key
+A primary key constraint indicates that a column, or group of columns, can be used as a unique identifier for rows in the table. 
+This requires that the values be both unique and not null.
+<Section>
+```typescript
+import { int, mssqlTable } from "drizzle-orm/mssql-core";
+
+const table = pgTable('table', {
+	id: int().primaryKey(),
+});
+```
+
+```sql
+CREATE TABLE [table] (
+	[id] int PRIMARY KEY
+);
+```
+</Section>
+
+
 Source: https://orm.drizzle.team/docs/column-types/mysql
 
 import Section from '@mdx/Section.astro';
@@ -1290,6 +2984,100 @@ const table = mysqlTable('table', {
 ```sql
 CREATE TABLE `table` (
 	`varbinary` varbinary(2)
+);
+```
+</Section>
+
+## ---
+
+### blob
+
+<Callout type='warning'>
+Available starting from `drizzle-orm@1.0.0-beta.2`
+</Callout>
+
+A `BLOB` is a binary large object that can hold a variable amount of data.
+<Section>
+```typescript
+import { blob, mysqlTable } from "drizzle-orm/mysql-core";
+
+const table = mysqlTable('table', {
+	blob: blob()
+});
+```
+
+```sql
+CREATE TABLE `table` (
+	`blob` blob
+);
+```
+</Section>
+
+### tinyblob
+
+<Callout type='warning'>
+Available starting from `drizzle-orm@1.0.0-beta.2`
+</Callout>
+
+A `TINYBLOB` is a binary large object that can hold a variable amount of data.
+<Section>
+```typescript
+import { tinyblob, mysqlTable } from "drizzle-orm/mysql-core";
+
+const table = mysqlTable('table', {
+	tinyblob: tinyblob()
+});
+```
+
+```sql
+CREATE TABLE `table` (
+	`tinyblob` tinyblob
+);
+```
+</Section>
+
+### mediumblob
+
+<Callout type='warning'>
+Available starting from `drizzle-orm@1.0.0-beta.2`
+</Callout>
+
+A `MEDIUMBLOB` is a binary large object that can hold a variable amount of data.
+<Section>
+```typescript
+import { mediumblob, mysqlTable } from "drizzle-orm/mysql-core";
+
+const table = mysqlTable('table', {
+	mediumblob: mediumblob()
+});
+```
+
+```sql
+CREATE TABLE `table` (
+	`mediumblob` mediumblob
+);
+```
+</Section>
+
+### longblob
+
+<Callout type='warning'>
+Available starting from `drizzle-orm@1.0.0-beta.2`
+</Callout>
+
+A `LONGBLOB` is a binary large object that can hold a variable amount of data.
+<Section>
+```typescript
+import { longblob, mysqlTable } from "drizzle-orm/mysql-core";
+
+const table = mysqlTable('table', {
+	longblob: longblob()
+});
+```
+
+```sql
+CREATE TABLE `table` (
+	`longblob` longblob
 );
 ```
 </Section>
@@ -1753,7 +3541,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"int" integer
 );
 ```
@@ -1772,7 +3560,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"int1" integer DEFAULT 10,
 	"int2" integer DEFAULT '10'::int
 );
@@ -1794,7 +3582,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"smallint" smallint
 );
 ```
@@ -1812,7 +3600,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"smallint1" smallint DEFAULT 10,
 	"smallint2" smallint DEFAULT '10'::smallint
 );
@@ -1842,7 +3630,7 @@ bigint: bigint({ mode: 'bigint' })
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"bigint" bigint
 );
 ```
@@ -1860,7 +3648,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"bigint1" bigint DEFAULT 10,
 	"bigint2" bigint DEFAULT '10'::bigint
 );
@@ -1884,7 +3672,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"serial" serial NOT NULL
 );
 ```
@@ -1905,7 +3693,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"smallserial" smallserial NOT NULL
 );
 ```
@@ -1928,7 +3716,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"bigserial" bigserial NOT NULL
 );
 ```
@@ -1952,8 +3740,33 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"boolean" boolean
+);
+```
+</Section>
+
+## ---
+
+### bytea
+
+PostgreSQL provides the standard SQL type bytea.
+
+For more info please refer to the official PostgreSQL **[docs.](https://www.postgresql.org/docs/current/datatype-binary.html)**
+
+<Section>
+```typescript
+import { bytea, pgTable } from "drizzle-orm/pg-core";
+
+export const table = pgTable('table', {
+	bytea: bytea()
+});
+
+```
+
+```sql
+CREATE TABLE IF NOT EXISTS "table" (
+	"bytea" bytea,
 );
 ```
 </Section>
@@ -1980,7 +3793,7 @@ text: text({ enum: ["value1", "value2"] })
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"text" text
 );
 ```
@@ -2009,7 +3822,7 @@ varchar: varchar({ enum: ["value1", "value2"] }),
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"varchar1" varchar,
 	"varchar2" varchar(256)
 );
@@ -2039,7 +3852,7 @@ char: char({ enum: ["value1", "value2"] }),
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"char1" char,
 	"char2" char(256)
 );
@@ -2068,7 +3881,7 @@ export const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"numeric1" numeric,
 	"numeric2" numeric(100),
 	"numeric3" numeric(100, 20),
@@ -2100,7 +3913,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"real1" real,
 	"real2" real default 10.10,
 	"real3" real default '10.10'::real
@@ -2127,7 +3940,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"double1" double precision,
 	"double2" double precision default 10.10,
 	"double3" double precision default '10.10'::double precision
@@ -2156,7 +3969,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"json1" json,
 	"json2" json default '{"foo": "bar"}'::json,
 	"json3" json default '{"foo": "bar"}'::json
@@ -2193,7 +4006,7 @@ const table = pgTable('table', {
 });
 ```
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"jsonb1" jsonb,
 	"jsonb2" jsonb default '{"foo": "bar"}'::jsonb,
 	"jsonb3" jsonb default '{"foo": "bar"}'::jsonb
@@ -2217,6 +4030,33 @@ jsonb: jsonb().$type<string[]>().default({});
 
 ## ---
 
+### uuid
+`uuid`
+
+The data type uuid stores Universally Unique Identifiers (UUID) as defined by RFC 4122, ISO/IEC 9834-8:2005, and related standards
+
+For more info please refer to the official PostgreSQL **[docs.](https://www.postgresql.org/docs/current/datatype-uuid.html)**
+
+```ts
+import { uuid, pgTable } from "drizzle-orm/pg-core";
+
+const table = pgTable('table', {
+  uuid1: uuid(),
+  uuid2: uuid().defaultRandom(),
+  uuid3: uuid().default('a0ee-bc99-9c0b-4ef8-bb6d-6bb9-bd38-0a11')
+});
+```
+
+```sql
+CREATE TABLE "table" (
+	"uuid1" uuid,
+	"uuid2" uuid default gen_random_uuid(),
+	"uuid3" uuid default 'a0ee-bc99-9c0b-4ef8-bb6d-6bb9-bd38-0a11'
+);
+```
+
+## ---
+
 ### time
 `time` `timetz` `time with timezone` `time without timezone`  
 Time of day with or without time zone.
@@ -2236,7 +4076,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"time1" time,
 	"time2" time with timezone,
 	"time3" time(6),
@@ -2263,7 +4103,7 @@ const table = pgTable('table', {
 });
 ```
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"timestamp1" timestamp,
 	"timestamp2" timestamp (6) with time zone,
 	"timestamp3" timestamp default now(),
@@ -2325,7 +4165,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"date" date
 );
 ```
@@ -2357,7 +4197,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"interval1" interval,
 	"interval2" interval day,
 	"interval3" interval(6) month
@@ -2388,7 +4228,7 @@ const items = pgTable('items', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "items" (
+CREATE TABLE "items" (
 	"point" point,
 	"pointObj" point
 );
@@ -2416,7 +4256,7 @@ const items = pgTable('items', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "items" (
+CREATE TABLE "items" (
 	"line" line,
 	"lineObj" line
 );
@@ -2446,7 +4286,7 @@ export const table = pgTable('table', {
 ```sql
 CREATE TYPE mood AS ENUM ('sad', 'ok', 'happy');
 
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"mood" mood
 );
 ```
@@ -2530,7 +4370,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"integer1" integer DEFAULT 42,
 	"integer2" integer DEFAULT '42'::integer,
 	"uuid1" uuid DEFAULT gen_random_uuid(),
@@ -2593,7 +4433,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"integer" integer NOT NULL
 );
 ```
@@ -2613,7 +4453,7 @@ const table = pgTable('table', {
 ```
 
 ```sql
-CREATE TABLE IF NOT EXISTS "table" (
+CREATE TABLE "table" (
 	"id" serial PRIMARY KEY NOT NULL
 );
 ```
@@ -4351,6 +6191,232 @@ For more details about column types, see the **[SQLite column types in Drizzle.]
 
 
 
+Source: https://orm.drizzle.team/docs/connect-effect-postgres
+
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Steps from '@mdx/Steps.astro';
+import WhatsNextPostgres from "@mdx/WhatsNextPostgres.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+
+# Drizzle \<\> Effect Postgres
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.9` and higher.
+
+Effect is only available for PostgreSQL right now and soon be implemented for all other dialects
+
+On how to upgrade (read more [here](/docs/upgrade-v1))
+</Callout>
+
+<Prerequisites>
+- Database [connection basics](/docs/connect-overview) with Drizzle
+- Effect - [website](https://effect.website/docs)
+- **@effect/sql-pg** - A PostgreSQL toolkit for Effect - [read here](https://effect-ts.github.io/effect/docs/sql-pg)
+</Prerequisites>
+
+Drizzle has native support for Effect PostgreSQL connections with the `@effect/sql-pg` driver.
+
+#### Step 1 - Install packages
+<Npm>
+drizzle-orm effect @effect/sql-pg pg
+-D drizzle-kit @types/pg
+</Npm>
+
+#### Step 2 - Initialize the driver and make a query
+
+Drizzle provides an Effect-native API that integrates with Effect's service pattern. Use `PgDrizzle.makeWithDefaults()` 
+to quickly create a Drizzle database instance with sensible defaults (no logging, no caching).
+
+```typescript copy
+import 'dotenv/config';
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { PgClient } from '@effect/sql-pg';
+import * as Effect from 'effect/Effect';
+import * as Redacted from 'effect/Redacted';
+import { sql } from 'drizzle-orm';
+import { types } from 'pg';
+
+// Configure the PgClient layer with type parsers
+const PgClientLive = PgClient.layer({
+  url: Redacted.make(process.env.DATABASE_URL!),
+  types: {
+    getTypeParser: (typeId, format) => {
+      // Return raw values for date/time types to let Drizzle handle parsing
+      if ([1184, 1114, 1082, 1186, 1231, 1115, 1185, 1187, 1182].includes(typeId)) {
+        return (val: any) => val;
+      }
+      return types.getTypeParser(typeId, format);
+    },
+  },
+});
+
+const program = Effect.gen(function*() {
+  // Create the database with default services (no logging, no caching)
+  const db = yield* PgDrizzle.makeWithDefaults();
+
+  // Execute queries
+  const result = yield* db.execute<{ id: number }>(sql`SELECT 1 as id`);
+  console.log(result);
+});
+
+// Run the program with the PgClient layer
+Effect.runPromise(program.pipe(Effect.provide(PgClientLive)));
+```
+
+#### Step 3 - Create a DB Layer for dependency injection
+
+For larger applications, create a reusable DB layer that can be composed with other services. This follows Effect's 
+recommended pattern for dependency injection:
+
+```typescript copy
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { PgClient } from '@effect/sql-pg';
+import * as Context from 'effect/Context';
+import * as Effect from 'effect/Effect';
+import * as Layer from 'effect/Layer';
+import * as Redacted from 'effect/Redacted';
+import { types } from 'pg';
+import * as relations from './schema/relations';
+
+// Configure the PgClient layer
+const PgClientLive = PgClient.layer({
+  url: Redacted.make(process.env.DATABASE_URL!),
+  types: {
+    getTypeParser: (typeId, format) => {
+      if ([1184, 1114, 1082, 1186, 1231, 1115, 1185, 1187, 1182].includes(typeId)) {
+        return (val: any) => val;
+      }
+      return types.getTypeParser(typeId, format);
+    },
+  },
+});
+
+// Create the DB effect with default services
+const dbEffect = PgDrizzle.make({ relations }).pipe(
+  Effect.provide(PgDrizzle.DefaultServices)
+);
+
+// Define a DB service tag for dependency injection
+class DB extends Context.Tag('DB')<DB, Effect.Effect.Success<typeof dbEffect>>() {}
+
+// Create a layer that provides the DB service
+const DBLive = Layer.effect(
+  DB,
+  Effect.gen(function*() {
+    return yield* dbEffect;
+  }),
+);
+
+// Compose all layers together
+const AppLive = Layer.provideMerge(DBLive, PgClientLive);
+
+// Use the DB service in your application
+const program = Effect.gen(function*() {
+  const db = yield* DB;
+  const users = yield* db.select().from(usersTable);
+  return users;
+});
+
+// Run with all dependencies provided
+Effect.runPromise(program.pipe(Effect.provide(AppLive)));
+```
+
+#### Advanced: Custom logger and cache configuration
+
+For more control over logging and caching, use `PgDrizzle.make()` directly and provide your own service implementations.
+
+##### Logger configuration
+
+By default, `makeWithDefaults()` uses a no-op logger (no logging). You can enable logging by providing 
+a different `EffectLogger` implementation:
+
+```typescript copy
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { EffectLogger } from 'drizzle-orm/effect-postgres';
+import * as Effect from 'effect/Effect';
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.make({ /* schema, relations, casing */ }).pipe(
+    // Enable Effect-based logging (uses Effect.log with annotations)
+    Effect.provide(EffectLogger.layer),
+    // Provide remaining default services (cache)
+    Effect.provide(PgDrizzle.DefaultServices),
+  );
+
+  const users = yield* db.select().from(usersTable);
+  return users;
+});
+```
+
+**Available logger options:**
+- `EffectLogger.Default` - No-op logger (no logging occurs) - this is the default
+- `EffectLogger.layer` - Logs queries using Effect's `Effect.log()` with annotations for query SQL and parameters. Integrates with Effect's logging infrastructure.
+- `EffectLogger.fromDrizzle(logger)` - Wraps a Drizzle `Logger` instance for use with Effect
+- `EffectLogger.layerFromDrizzle(logger)` - Creates an Effect Layer from a Drizzle logger
+
+<Callout type='info'>
+When using `EffectLogger.layer`, queries are logged via Effect's logging system. You can configure the output 
+format by providing a different Effect logger layer (e.g., `Logger.pretty` for development, `Logger.json` for production).
+</Callout>
+
+**Using a Drizzle logger:**
+
+```typescript copy
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { EffectLogger } from 'drizzle-orm/effect-postgres';
+import * as Effect from 'effect/Effect';
+import { DefaultLogger } from 'drizzle-orm';
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.make({ /* schema, relations, casing */ }).pipe(
+    // Use a Drizzle logger wrapped for Effect
+    Effect.provide(EffectLogger.layerFromDrizzle(new DefaultLogger())),
+    // Provide remaining default services (cache)
+    Effect.provide(PgDrizzle.DefaultServices),
+  );
+
+  const users = yield* db.select().from(usersTable);
+  return users;
+});
+```
+
+##### Cache configuration
+
+Similarly, you can provide a custom cache implementation:
+
+```typescript copy
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { EffectLogger } from 'drizzle-orm/effect-postgres';
+import { EffectCache } from 'drizzle-orm/cache/core/cache-effect';
+import * as Effect from 'effect/Effect';
+import { MyCustomCache } from './cache';
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.make({ /* schema, relations, casing */ }).pipe(
+    // Provide a custom cache wrapped for Effect
+    Effect.provide(EffectCache.layerFromDrizzle(new MyCustomCache())),
+    // Provide remaining default services (logger)
+    Effect.provide(PgDrizzle.DefaultServices),
+  );
+
+  const users = yield* db.select().from(usersTable);
+  return users;
+});
+```
+
+**Available cache options:**
+- `EffectCache.Default` - No-op cache (no caching occurs) - this is the default
+- `EffectCache.fromDrizzle(cache)` - Wraps a Drizzle `Cache` instance for use with Effect
+- `EffectCache.layerFromDrizzle(cache)` - Creates an Effect Layer from a Drizzle cache (useful for composing with other layers)
+
+#### What's next?
+
+<WhatsNextPostgres/>
+
+
 Source: https://orm.drizzle.team/docs/connect-expo-sqlite
 
 import Npm from "@mdx/Npm.astro";
@@ -5201,42 +7267,200 @@ await db.select().from(users);
 <WhatsNextPostgres/>
 
 
+Source: https://orm.drizzle.team/docs/connect-planetscale-postgres
+
+import Npm from "@mdx/Npm.astro";
+import Callout from "@mdx/Callout.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Section from "@mdx/Section.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import WhatsNextPostgres from "@mdx/WhatsNextPostgres.astro";
+
+# Drizzle \<\> PlanetScale Postgres
+
+<Prerequisites>
+
+- Database [connection basics](/docs/connect-overview) with Drizzle
+- PlanetScale Postgres database - [docs](https://planetscale.com/docs/postgres)
+- Drizzle PostgreSQL drivers - [docs](/docs/get-started-postgresql)
+
+</Prerequisites>
+
+PlanetScale offers both MySQL (Vitess) and PostgreSQL databases. This page covers connecting to PlanetScale Postgres.
+
+For PlanetScale MySQL, see the [PlanetScale MySQL connection guide](/docs/connect-planetscale).
+
+With Drizzle ORM you can connect to PlanetScale Postgres using:
+
+- The standard `node-postgres` driver
+- The `@neondatabase/serverless` driver for serverless environments
+
+For detailed instructions on creating a PlanetScale Postgres database and obtaining credentials, see the [PlanetScale Postgres documentation](https://planetscale.com/docs/postgres/tutorials/planetscale-postgres-drizzle).
+
+## node-postgres
+
+#### Step 1 - Install packages
+
+<Npm>drizzle-orm pg -D drizzle-kit @types/pg</Npm>
+
+#### Step 2 - Initialize the driver and make a query
+
+<CodeTabs items={["Connection URL", "With config", "With existing client"]}>
+```typescript copy
+import { drizzle } from 'drizzle-orm/node-postgres';
+
+const db = drizzle(process.env.DATABASE_URL);
+
+const result = await db.execute('select 1');
+
+````
+```typescript copy
+import { drizzle } from 'drizzle-orm/node-postgres';
+
+const db = drizzle({
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  }
+});
+
+const result = await db.execute('select 1');
+````
+
+```typescript copy
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+const db = drizzle({ client: pool });
+
+const result = await db.execute("select 1");
+```
+
+</CodeTabs>
+
+## Neon serverless driver
+
+PlanetScale Postgres also supports connections via the [Neon serverless driver](https://planetscale.com/docs/postgres/connecting/neon-serverless-driver). This is a good option for serverless environments like Vercel Functions, Cloudflare Workers, or AWS Lambda.
+
+The driver supports two modes:
+
+- **HTTP mode** — Faster for single queries and non-interactive transactions
+- **WebSocket mode** — Required for interactive transactions or session-based features
+
+#### Step 1 - Install packages
+
+<Npm>drizzle-orm @neondatabase/serverless -D drizzle-kit</Npm>
+
+#### Step 2 - Initialize the driver and make a query
+
+<CodeTabs items={["Neon HTTP", "Neon WebSockets"]}>
+```typescript copy
+import { neon, neonConfig } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
+
+// Required for PlanetScale Postgres connections
+neonConfig.fetchEndpoint = (host) => `https://${host}/sql`;
+
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle({ client: sql });
+
+const result = await db.execute('select 1');
+
+````
+<Section>
+```typescript copy
+import { Pool, neonConfig } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-serverless';
+
+// Required for PlanetScale Postgres connections
+neonConfig.pipelineConnect = false;
+neonConfig.wsProxy = (host, port) => `${host}/v2?address=${host}:${port}`;
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const db = drizzle({ client: pool });
+
+const result = await db.execute('select 1');
+````
+
+```typescript copy
+// For Node.js environments - install 'ws' package
+import ws from "ws";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-serverless";
+
+neonConfig.webSocketConstructor = ws;
+// Required for PlanetScale Postgres connections
+neonConfig.pipelineConnect = false;
+neonConfig.wsProxy = (host, port) => `${host}/v2?address=${host}:${port}`;
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const db = drizzle({ client: pool });
+
+const result = await db.execute("select 1");
+```
+
+</Section>
+</CodeTabs>
+
+<Callout title="Connection URL format">
+  {`postgresql://{username}:{password}@{host}:{port}/postgres?sslmode=verify-full`}
+</Callout>
+
+<Callout title="Connection ports" type="info">
+  PlanetScale Postgres supports two connection ports:
+
+`5432`: Direct connection to PostgreSQL. Total connections are limited by your cluster's `max_connections` setting.
+
+`6432`: Connection via PgBouncer for connection pooling. Recommended when you have many simultaneous connections.
+
+  </Callout>
+
+#### What's next?
+
+<WhatsNextPostgres />
+
+
 Source: https://orm.drizzle.team/docs/connect-planetscale
 
-import Npm from '@mdx/Npm.astro';
-import Callout from '@mdx/Callout.astro';
-import Tabs from '@mdx/Tabs.astro';
-import Tab from '@mdx/Tab.astro';
-import AnchorCards from '@mdx/AnchorCards.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from "@mdx/Callout.astro";
+import Tabs from "@mdx/Tabs.astro";
+import Tab from "@mdx/Tab.astro";
+import AnchorCards from "@mdx/AnchorCards.astro";
 import WhatsNextPostgres from "@mdx/WhatsNextPostgres.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from "@mdx/CodeTabs.astro";
 
-# Drizzle \<\> PlanetScale
+# Drizzle \<\> PlanetScale MySQL
 
 <Prerequisites>
+
 - Database [connection basics](/docs/connect-overview) with Drizzle
 - PlanetScale database - [website](https://planetscale.com/docs)
 - PlanetScale http driver - [GitHub](https://github.com/planetscale/database-js)
 - Drizzle MySQL drivers - [docs](/docs/get-started-mysql)
+
 </Prerequisites>
 
-According to the **[official website](https://planetscale.com)**, 
-PlanetScale is the world's most advanced serverless MySQL platform.
+PlanetScale offers both MySQL (Vitess) and PostgreSQL databases. This page covers connecting to PlanetScale MySQL.
 
-With Drizzle ORM you can access PlanetScale over http
+For PlanetScale Postgres, see the [PlanetScale Postgres connection guide](/docs/connect-planetscale-postgres).
+
+With Drizzle ORM you can access PlanetScale MySQL over http
 through their official **[`database-js`](https://github.com/planetscale/database-js)**
 driver from serverless and serverfull environments with our `drizzle-orm/planetscale-serverless` package.
 
-You can also access PlanetScale through TCP with `mysql2` driver — **[see here.](/docs/get-started-mysql)**
+You can also access PlanetScale MySQL through TCP with `mysql2` driver — **[see here.](/docs/get-started-mysql)**
 
 #### Step 1 - Install packages
-<Npm>
-drizzle-orm @planetscale/database
--D drizzle-kit
-</Npm>
+
+<Npm>drizzle-orm @planetscale/database -D drizzle-kit</Npm>
 
 #### Step 2 - Initialize the driver and make a query
+
 ```typescript copy"
 import { drizzle } from "drizzle-orm/planetscale-serverless";
 
@@ -5264,12 +7488,13 @@ const client = new Client({
 const db = drizzle({ client });
 ```
 
-Make sure to checkout the PlanetScale official **[MySQL courses](https://planetscale.com/courses/mysql-for-developers)**, 
+Make sure to checkout the PlanetScale official **[MySQL courses](https://planetscale.com/courses/mysql-for-developers)**,
 we think they're outstanding 🙌
 
 #### What's next?
 
-<WhatsNextPostgres/>
+<WhatsNextPostgres />
+
 
 Source: https://orm.drizzle.team/docs/connect-prisma-postgres
 
@@ -5827,26 +8052,40 @@ Source: https://orm.drizzle.team/docs/custom-types
 
 import Tab from '@mdx/Tab.astro';
 import Tabs from '@mdx/Tabs.astro';
+import Callout from '@mdx/Callout.astro'
 
 # Common way of defining custom types
 
 ## Examples
 
-The best way to see how `customType` definition is working is to check how existing data types in postgres and mysql could be defined using `customType` function from Drizzle ORM.
+The best way to see how `customType` definition is working is to check how existing data types
+could be defined using `customType` function from Drizzle ORM.
 
 
-<Tabs items={['Postgres Data Types', 'MySql Data Types']}>
-  <Tab>
+<Callout title='info'>
+Each dialect exposes `customType` function 
 
-**Serial**
+```ts
+import { customType } from 'drizzle-orm/pg-core';
+...
+import { customType } from 'drizzle-orm/mysql-core';
+...
+import { customType } from 'drizzle-orm/sqlite-core';
+...
+import { customType } from 'drizzle-orm/gel-core';
+...
+import { customType } from 'drizzle-orm/singlestore-core';
+```
+</Callout>
 
+**Integer**
 ```typescript copy
 import { customType } from 'drizzle-orm/pg-core';
 
-const customSerial = customType<{ data: number; notNull: true; default: true }>(
+const customSerial = customType<{ data: number; }>(
   {
     dataType() {
-      return 'serial';
+      return 'integer';
     },
   },
 );
@@ -5930,112 +8169,15 @@ const usersTable = pgTable('users', {
     .default(sql`now()`),
 });
 ```
-  </Tab>
-  <Tab>
 
-**Serial**
 
-```typescript copy
-import { customType } from 'drizzle-orm/mysql-core';
-
-const customInt = customType<{ data: number; notNull: false; default: false }>(
-  {
-    dataType() {
-      return 'int';
-    },
-  },
-);
-```
-
-**Text**
-
-```typescript copy
-import { customType } from 'drizzle-orm/mysql-core';
-
-const customText = customType<{ data: string }>({
-  dataType() {
-    return 'text';
-  },
-});
-```
-
-**Boolean**
-
-```typescript copy
-import { customType } from 'drizzle-orm/mysql-core';
-
-const customBoolean = customType<{ data: boolean }>({
-  dataType() {
-    return 'boolean';
-  },
-  fromDriver(value) {
-    if (typeof value === 'boolean') {
-      return value;
-    }
-    return value === 1;
-  },
-});
-```
-
-**Json**
-
-```typescript copy
-import { customType } from 'drizzle-orm/mysql-core';
-
-const customJson = <TData>(name: string) =>
-  customType<{ data: TData; driverData: string }>({
-    dataType() {
-      return 'json';
-    },
-    toDriver(value: TData): string {
-      return JSON.stringify(value);
-    },
-  })(name);
-```
-
-**Timestamp**
-
-```typescript copy
-import { customType } from 'drizzle-orm/mysql-core';
-
-const customTimestamp = customType<
-  { data: Date; driverData: string; config: { fsp: number } }
->({
-  dataType(config) {
-    const precision = typeof config.fsp !== 'undefined'
-      ? ` (${config.fsp})`
-      : '';
-    return `timestamp${precision}`;
-  },
-  fromDriver(value: string): Date {
-    return new Date(value);
-  },
-});
-```
-
-Usage for all types will be same as defined functions in Drizzle ORM. For example:
-
-```typescript copy
-const usersTable = mysqlTable('userstest', {
-  id: customInt('id').primaryKey(),
-  name: customText('name').notNull(),
-  verified: customBoolean('verified').notNull().default(false),
-  jsonb: customJson<string[]>('jsonb'),
-  createdAt: customTimestamp('created_at', { fsp: 2 }).notNull().default(
-    sql`now()`,
-  ),
-});
-```
-
-  </Tab>
-</Tabs>
 
 ## TS-doc for type definitions 
 
 You can check ts-doc for `types` and `param` definition.
 
 ```typescript
-export type CustomTypeValues = {
+export interface CustomTypeValues = {
   /**
    * Required type for custom column, that will infer proper type model
    *
@@ -6048,9 +8190,23 @@ export type CustomTypeValues = {
   data: unknown;
 
   /**
+ 	 * Type helper, that represents what type database driver is returning for specific database data type
+ 	 *
+ 	 * Needed only in case driver's output and input for type differ
+ 	 *
+ 	 * Defaults to {@link driverData}
+ 	 */
+ 	driverOutput?: unknown;
+
+  /**
    * Type helper, that represents what type database driver is accepting for specific database data type
    */
   driverData?: unknown;
+
+  /**
+ 	 * Type helper, that represents what type field returns after being aggregated to JSON for Relational Queries
+ 	 */
+ 	jsonData?: unknown;
 
   /**
    * What config type should be used for {@link CustomTypeParams} `dataType` generation
@@ -6115,7 +8271,7 @@ export interface CustomTypeParams<T extends CustomTypeValues> {
   dataType: (config: T['config']) => string;
 
   /**
-   * Optional mapping function, between user input and driver
+   * Optional mapping function, between user input and what database driver will provide to the database
    * @example
    * For example, when using jsonb we need to map JS/TS object to string before writing to database
    * ```
@@ -6127,7 +8283,7 @@ export interface CustomTypeParams<T extends CustomTypeValues> {
   toDriver?: (value: T['data']) => T['driverData'];
 
   /**
-   * Optional mapping function, that is responsible for data mapping from database to JS/TS code
+   * Optional mapping function, that is used for transforming data returned by driver to desired column's output format
    * @example
    * For example, when using timestamp we need to map string Date representation to JS Date
    * ```
@@ -6135,8 +8291,105 @@ export interface CustomTypeParams<T extends CustomTypeValues> {
    *  return new Date(value);
    * },
    * ```
+   * 
+   * It'll cause the returned data to change from:
+ 	 * ```
+ 	 * {
+ 	 * 	customField: "2025-04-07T03:25:16.635Z";
+ 	 * }
+ 	 * ```
+ 	 * to:
+ 	 * ```
+ 	 * {
+ 	 * 	customField: new Date("2025-04-07T03:25:16.635Z");
+ 	 * }
+ 	 * ```
    */
   fromDriver?: (value: T['driverData']) => T['data'];
+
+  	/**
+ 	 * Optional mapping function, that is used for transforming data returned by transofmed to JSON in database data to desired format
+ 	 *
+ 	 * Used by [relational queries](https://orm.drizzle.team/docs/rqb-v2)
+ 	 *
+ 	 * Defaults to {@link fromDriver} function
+ 	 * @example
+ 	 * For example, when querying bigint column via [RQB](https://orm.drizzle.team/docs/rqb-v2) or [JSON functions](https://orm.drizzle.team/docs/json-functions), the result field will be returned as it's string representation, as opposed to bigint from regular query
+ 	 * To handle that, we need a separate function to handle such field's mapping:
+ 	 * ```
+ 	 * fromJson(value: string): bigint {
+ 	 * 	return BigInt(value);
+ 	 * },
+ 	 * ```
+ 	 *
+ 	 * It'll cause the returned data to change from:
+ 	 * ```
+ 	 * {
+ 	 * 	customField: "5044565289845416380";
+ 	 * }
+ 	 * ```
+ 	 * to:
+ 	 * ```
+ 	 * {
+ 	 * 	customField: 5044565289845416380n;
+ 	 * }
+ 	 * ```
+ 	 */
+ 	fromJson?: (value: T['jsonData']) => T['data'];
+
+  	/**
+ 	 * Optional selection modifier function, that is used for modifying selection of column inside [JSON functions](https://orm.drizzle.team/docs/json-functions)
+ 	 *
+ 	 * Additional mapping that could be required for such scenarios can be handled using {@link fromJson} function
+ 	 *
+ 	 * Used by [relational queries](https://orm.drizzle.team/docs/rqb-v2)
+ 	 * @example
+ 	 * For example, when using bigint we need to cast field to text to preserve data integrity
+ 	 * ```
+ 	 * forJsonSelect(identifier: SQL, sql: SQLGenerator, arrayDimensions?: number): SQL {
+ 	 * 	return sql`${identifier}::text`
+ 	 * },
+ 	 * ```
+ 	 *
+ 	 * This will change query from:
+ 	 * ```
+ 	 * SELECT
+ 	 * 	row_to_json("t".*)
+ 	 * 	FROM
+ 	 * 	(
+ 	 * 		SELECT
+ 	 * 		"table"."custom_bigint" AS "bigint"
+ 	 * 		FROM
+ 	 * 		"table"
+ 	 * 	) AS "t"
+ 	 * ```
+ 	 * to:
+ 	 * ```
+ 	 * SELECT
+ 	 * 	row_to_json("t".*)
+ 	 * 	FROM
+ 	 * 	(
+ 	 * 		SELECT
+ 	 * 		"table"."custom_bigint"::text AS "bigint"
+ 	 * 		FROM
+ 	 * 		"table"
+ 	 * 	) AS "t"
+ 	 * ```
+ 	 *
+ 	 * Returned by query object will change from:
+ 	 * ```
+ 	 * {
+ 	 * 	bigint: 5044565289845416000; // Partial data loss due to direct conversion to JSON format
+ 	 * }
+ 	 * ```
+ 	 * to:
+ 	 * ```
+ 	 * {
+ 	 * 	bigint: "5044565289845416380"; // Data is preserved due to conversion of field to text before JSON-ification
+ 	 * }
+ 	 * ```
+ 	 */
+ 	forJsonSelect?: (identifier: SQL, sql: SQLGenerator, arrayDimensions?: number) => SQL;
 }
 ```
 
@@ -6332,7 +8585,7 @@ await db.delete(users).where(eq(users.name, 'Dan'));
 
 ### Limit
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'MySQL': true, 'SQLite': true, 'SingleStore': true }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'MySQL': true, 'SQLite': true, 'SingleStore': true, 'MSSQL': false, 'CockroachDB': false }} />
 
 Use `.limit()` to add `limit` clause to the query - for example:
 <Section>
@@ -6366,8 +8619,8 @@ delete from "users" where "users"."name" = $1 order by "name" asc, "name2" desc;
 ```
 </Section>
 
-### Delete with return
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false}} />
+### Returning
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 You can delete a row and get it back in PostgreSQL and SQLite:
 ```typescript copy
 const deletedUser = await db.delete(users)
@@ -6378,6 +8631,16 @@ const deletedUser = await db.delete(users)
 const deletedUserIds: { deletedId: number }[] = await db.delete(users)
   .where(eq(users.name, 'Dan'))
   .returning({ deletedId: users.id });
+```
+
+## Output
+<IsSupportedChipGroup chips={{ 'MSSQL': true }} />
+You can insert a row and get it back in PostgreSQL and SQLite like such:
+```typescript copy
+await db.insert(users).values({ name: "Dan" }).output();
+
+// partial return
+await db.insert(users).values({ name: "Partial Dan" }).output({ insertedId: users.id });
 ```
 
 ## WITH DELETE clause
@@ -6534,14 +8797,14 @@ You can have multiple config files in the project, it's very useful when you hav
 It's very useful since you can have many separate schemas for different databases in the same project 
 and have different migration folders for them.  
   
-Migration folder contains `.sql` migration files and `_meta` folder which is used by `drizzle-kit`
+Migration folder contains folders with `.sql` migration files which is used by `drizzle-kit`
 
 <Section>
 ```plaintext {3}
 📦 <project root>
  ├ ...
  ├ 📂 drizzle
- │ ├ 📂 _meta
+ │ ├ 📂 20242409125510_premium_mister_fear
  │ ├ 📜 user.ts 
  │ ├ 📜 post.ts 
  │ └ 📜 comment.ts 
@@ -6553,7 +8816,7 @@ Migration folder contains `.sql` migration files and `_meta` folder which is use
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
-  dialect: "postgresql", // "mysql" | "sqlite" | "postgresql" | "turso" | "singlestore"
+  dialect: "postgresql", // "mysql" | "sqlite" | "postgresql" | "turso" | "singlestore" | "mssql"
   schema: "./src/schema/*",
   out: "./drizzle",
 });
@@ -6903,11 +9166,10 @@ export default defineConfig({
 ```
 
 ### `schemaFilter`
-<Callout>
-If you want to run multiple projects with one database - check out [our guide](/docs/goodies#multi-project-schema).
-</Callout>
 
-<rem025/>
+Was changed starting from `1.0.0-beta.1` version!
+
+<Callout type='warning' collapsed="How it works in 0.x versions">
 `drizzle-kit push` and `drizzle-kit pull` will by default manage all tables in `public` schema.
 You can configure list of tables, schemas and extensions via `tablesFilters`, `schemaFilter` and `extensionFilters` options.
 
@@ -6917,6 +9179,22 @@ You can configure list of tables, schemas and extensions via `tablesFilters`, `s
 | :------------ | :-----------------   |
 | type          | `string[]` |
 | default       | `["public"]`                    |
+| commands      | `push` `pull`   |
+
+</Callout>
+
+<Callout>
+If you want to run multiple projects with one database - check out [our guide](/docs/goodies#multi-project-schema).
+</Callout>
+
+`drizzle-kit push` and `drizzle-kit pull` will by default manage all schemas.
+
+`schemaFilter` option lets you specify [`glob`](https://www.digitalocean.com/community/tools/glob?comments=true&glob=/**/*.js&matches=false&tests=//%20This%20will%20match%20as%20it%20ends%20with%20'.js'&tests=/hello/world.js&tests=//%20This%20won't%20match!&tests=/test/some/globs) 
+based schema names filter, e.g. `["public", "auth"]` or `"tenant_*"`
+
+|               |                      |
+| :------------ | :-----------------   |
+| type          | `string[]` |
 | commands      | `push` `pull`   |
 
 <rem025/>
@@ -7440,17 +9718,18 @@ export const users = p.pgTable("users", {
 └─┬──────────────────────┘                  
   │                                           
   └ 1. read previous migration folders
-    2. find diff between current and previous scheama
+    2. find diff between current and previous schema
     3. prompt developer for renames if necessary
   ┌ 4. generate SQL migration and persist to file
   │    ┌─┴───────────────────────────────────────┐  
   │      📂 drizzle       
-  │      ├ 📂 _meta
-  │      └ 📜 0000_premium_mister_fear.sql
+  │      └ 📂 20242409125510_premium_mister_fear
+  │        ├ 📜 migration.sql
+  │        └ 📜 snapshot.json
   v
 ```
 ```sql
--- drizzle/0000_premium_mister_fear.sql
+-- drizzle/20242409125510_premium_mister_fear/migration.sql
 
 CREATE TABLE "users" (
  "id" SERIAL PRIMARY KEY,
@@ -7503,8 +9782,9 @@ npx drizzle-kit generate --name=init
 ```plaintext {4}
 📦 <project root>
  ├ 📂 drizzle
- │ ├ 📂 _meta
- │ └ 📜 0000_init.sql 
+ │ └ 📂 20242409125510_init
+ │   ├ 📜 snapshot.json
+ │   └ 📜 migration.sql
  ├ 📂 src
  └ …
 ```
@@ -7537,14 +9817,13 @@ drizzle-kit generate --custom --name=seed-users
 ```plaintext {5}
 📦 <project root>
  ├ 📂 drizzle
- │ ├ 📂 _meta
- │ ├ 📜 0000_init.sql 
- │ └ 📜 0001_seed-users.sql 
+ │ ├ 📂 20242409125510_init
+ │ └ 📂 20242409125510_seed-users
  ├ 📂 src
  └ …
 ```
 ```sql
--- ./drizzle/0001_seed-users.sql
+-- ./drizzle/20242409125510_seed/migration.sql
 
 INSERT INTO "users" ("name") VALUES('Dan');
 INSERT INTO "users" ("name") VALUES('Andrew');
@@ -7620,13 +9899,12 @@ And it will successfully generate
 📦 <project root>
  ├ …
  ├ 📂 migrations
- │ ├ 📂 _meta
- │ ├ 📜 0000_init.sql 
- │ └ 📜 0001_seed-users.sql 
+ │ ├ 📂 20242409125510_init
+ │ └ 📂 20242409125510_seed-users
  └ …
 ```
 ```sql
--- ./drizzle/0001_seed-users.sql
+-- ./drizzle/20242409125510_seed-users/migration.sql
 
 INSERT INTO "users" ("name") VALUES('Dan');
 INSERT INTO "users" ("name") VALUES('Andrew');
@@ -7671,9 +9949,8 @@ Drizzle Kit `migrate` command triggers a sequence of events:
 <Section>
 ```plaintext
   ├ 📂 drizzle       
-  │ ├ 📂 _meta
-  │ ├ 📜 0000_premium_mister_fear.sql
-  │ └ 📜 0001_delicate_professor_xavie.sql
+  │ ├ 📂 20242409125510_premium_mister_fear
+  │ └ 📂 20242409135510_delicate_professor_xavie
   └ …
 ```
 ```plaintext
@@ -7802,8 +10079,7 @@ it will generate
 📦 <project root>
  ├ …
  ├ 📂 migrations
- │ ├ 📂 _meta
- │ └ 📜 0000_init.sql 
+ │ ├ 📂 20242409125510_init
  └ …
 ```
 ```sql
@@ -7990,6 +10266,26 @@ export default defineConfig({
 ```
 </CodeTabs>
 
+### Initial pull
+
+<Callout type='error'>
+This feature is available on  `1.0.0-beta.2` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+You can use the `--init` flag to mark the pulled schema as an applied migration in your database, 
+so that all subsequent migrations are diffed against the initial one
+
+```shell
+npx drizzle-kit push --init
+```
+
 ### Including tables, schemas and extensions
 `drizzle-kit push` will by default manage all tables in `public` schema.
 You can configure list of tables, schemas and extensions via `tablesFilters`, `schemaFilter` and `extensionFilters` options.
@@ -7997,7 +10293,7 @@ You can configure list of tables, schemas and extensions via `tablesFilters`, `s
 |                     |                                                                                               |
 | :------------------ | :-------------------------------------------------------------------------------------------- |
 | `tablesFilter`      | `glob` based table names filter, e.g. `["users", "user_info"]` or `"user*"`. Default is `"*"` |
-| `schemaFilter`      | Schema names filter, e.g. `["public", "drizzle"]`. Default is `["public"]`                    |
+| `schemaFilter`      | `glob` based schema names filter, e.g. `["public", "drizzle"]` or `"drizzle*"`. Default is `"*"`                     |
 | `extensionsFilters` | List of installed database extensions, e.g. `["postgis"]`. Default is `[]`                    |
 <br/>
 
@@ -9167,26 +11463,15 @@ import Callout from '@mdx/Callout.astro';
 To use this feature you would need to have `drizzle-orm@0.32.0` or higher and `drizzle-kit@0.23.0` or higher
 </Callout>
 
-Generated columns in SQL are a feature that allows you to create columns in a table whose values are automatically computed based on expressions involving other columns within the same table. This can help ensure data consistency, simplify database design, and improve query performance.
-
-There are two types of generated columns:
-
 1. Virtual (or non-persistent) Generated Columns: These columns are computed dynamically whenever they are queried. They do not occupy storage space in the database.
 
 2. Stored (or persistent) Generated Columns: These columns are computed when a row is inserted or updated and their values are stored in the database. This allows them to be indexed and can improve query performance since the values do not need to be recomputed for each query.
-
-Generated columns can be especially useful for:
-
-- Deriving new data from existing columns
-- Automating calculations to avoid manual updates
-- Enforcing data integrity and consistency
-- Simplifying application logic by keeping complex calculations within the database schema
 
 <Callout type="info">
     The implementation and usage of generated columns can vary significantly across different SQL databases. PostgreSQL, MySQL, and SQLite each have unique features, capabilities, and limitations when it comes to generated columns. In this section, we will explore these differences in detail to help you understand how to best utilize generated columns in each database system.
 </Callout>
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore(WIP)"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore(WIP)", "MSSQL", "CockroachDB"]}>
   <Tab>
     #### Database side
     **Types**: `STORED` only
@@ -9211,33 +11496,39 @@ Generated columns can be especially useful for:
     that will generate this column data for you.
 
     #### Features 
-    This function can accept generated expression in 3 ways:
+    This function can accept generated expression in 2 ways:
+
+    <Callout type='warning' collapsed="What was changed starting from 1.0.0-beta.12 version">
+    
+    In previous versions, `.generatedAlwaysAs()` also accepted literals as expressions.
 
     **`string`**
     <CodeTab>
     ```ts
     export const test = pgTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(`hello world!`),
+        generatedName: text("gen_name").generatedAlwaysAs(`'hello world!'`),
     });
     ```
     ```sql
-    CREATE TABLE IF NOT EXISTS "test" (
-	    "gen_name" text GENERATED ALWAYS AS (hello world!) STORED
+    CREATE TABLE "test" (
+	    "gen_name" text GENERATED ALWAYS AS ('hello world!') STORED
     );
     ```
     </CodeTab>
+    
+    </Callout>
 
     **`sql`** tag - if you want drizzle to escape some values for you
 
     <CodeTab>
     ```ts
     export const test = pgTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(sql`hello "world"!`),
+        generatedName: text("gen_name").generatedAlwaysAs(sql`'hello "world"!'`),
     });
     ```
     ```sql
-    CREATE TABLE IF NOT EXISTS "test" (
-	    "gen_name" text GENERATED ALWAYS AS (hello "world"!) STORED
+    CREATE TABLE "test" (
+	    "gen_name" text GENERATED ALWAYS AS ('hello "world"!') STORED
     );
     ```
     </CodeTab>
@@ -9248,14 +11539,14 @@ Generated columns can be especially useful for:
     export const test = pgTable("test", {
         name: text("first_name"),
         generatedName: text("gen_name").generatedAlwaysAs(
-          (): SQL => sql`hi, ${test.name}!`
+          (): SQL => sql`'hi, ' || ${test.name} || '!'`
         ),
     });
     ```
     ```sql
-    CREATE TABLE IF NOT EXISTS "test" (
+    CREATE TABLE "test" (
 	    "first_name" text,
-	    "gen_name" text GENERATED ALWAYS AS (hi, "test"."first_name"!) STORED
+	    "gen_name" text GENERATED ALWAYS AS ('hi, ' || "test"."first_name" || '!') STORED
     );
     ```
     </CodeTab>
@@ -9290,13 +11581,13 @@ Generated columns can be especially useful for:
     );
     ```
     ```sql {4}
-    CREATE TABLE IF NOT EXISTS "test" (
+    CREATE TABLE "test" (
     	"id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "test_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
     	"content" text,
     	"content_search" "tsvector" GENERATED ALWAYS AS (to_tsvector('english', "test"."content")) STORED
     );
     --> statement-breakpoint
-    CREATE INDEX IF NOT EXISTS "idx_content_search" ON "test" USING gin ("content_search");
+    CREATE INDEX "idx_content_search" ON "test" USING gin ("content_search");
     ```
     </CodeTab>
    </CodeTabs>
@@ -9321,56 +11612,67 @@ Generated columns can be especially useful for:
     For more info, please check [MySQL Alter Generated](https://dev.mysql.com/doc/refman/8.4/en/alter-table-generated-columns.html) docs and [MySQL create generated](https://dev.mysql.com/doc/refman/8.4/en/create-table-generated-columns.html) docs
 
     #### Drizzle side
+    In Drizzle you can specify `.generatedAlwaysAs()` function on any column type and add a supported sql query, 
+    that will generate this column data for you.
 
     #### Features 
+    This function can accept generated expression in 2 ways:
+
+    <Callout type='warning' collapsed="What was changed starting from 1.0.0-beta.12 version">
+    
+    In previous versions, `.generatedAlwaysAs()` also accepted literals as expressions.
 
     **`string`**
     <CodeTab>
     ```ts
     export const test = mysqlTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(`hello world!`),
+        generatedName: text("gen_name").generatedAlwaysAs(`'hello world!'`),
     });
     ```
+
     ```sql
-    CREATE TABLE `test` (
-	    `gen_name` text GENERATED ALWAYS AS (hello world!) VIRTUAL
+    CREATE TABLE "test" (
+	    "gen_name" text GENERATED ALWAYS AS ('hello world!') VIRTUAL
     );
     ```
     </CodeTab>
+    
+    </Callout>
 
     **`sql`** tag - if you want drizzle to escape some values for you
 
     <CodeTab>
     ```ts
     export const test = mysqlTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(sql`hello "world"!`),
+        generatedName: text("gen_name").generatedAlwaysAs(sql`'hello "world"!'`),
     });
     ```
     ```sql
     CREATE TABLE `test` (
-	    `gen_name` text GENERATED ALWAYS AS (hello "world"!) VIRTUAL
+	    `gen_name` text GENERATED ALWAYS AS ('hello "world"!') VIRTUAL
     );
     ```
     </CodeTab>
 
     **`callback`** - if you need to reference columns from a table
 
-    <CodeTab>
+     <CodeTab>
     ```ts
     export const test = mysqlTable("test", {
         name: text("first_name"),
         generatedName: text("gen_name").generatedAlwaysAs(
-          (): SQL => sql`hi, ${test.name}!`
+          (): SQL => sql`'hi, ' || ${test.name} || '!'`
         ),
     });
     ```
     ```sql
     CREATE TABLE `test` (
-    	`first_name` text,
-    	`gen_name` text GENERATED ALWAYS AS (hi, `test`.`first_name`!) VIRTUAL
+  	  `first_name` text,
+  	  `gen_name` text GENERATED ALWAYS AS ('hi, ' || `test`.`first_name` || '!') VIRTUAL
     );
     ```
     </CodeTab>
+
     #### Limitations
     Drizzle Kit will also have limitations for `push` command:
     1. You can't change the generated constraint expression and type using `push`. Drizzle-kit will ignore this change. To make it work, you would need to `drop the column`, `push`, and then `add a column with a new expression`. This was done due to the complex mapping from the database side, where the schema expression will be modified on the database side and, on introspection, we will get a different string. We can't be sure if you changed this expression or if it was changed and formatted by the database. As long as these are generated columns and `push` is mostly used for prototyping on a local database, it should be fast to `drop` and `create` generated columns. Since these columns are `generated`, all the data will be restored
@@ -9384,22 +11686,22 @@ Generated columns can be especially useful for:
         id2: int("id2"),
         name: text("name"),
         storedGenerated: text("stored_gen").generatedAlwaysAs(
-          (): SQL => sql`${users.name} || 'hello'`,
+          (): SQL => sql`concat(${users.name}, ' ', 'hello')`,
           { mode: "stored" }
         ),
         virtualGenerated: text("virtual_gen").generatedAlwaysAs(
-          (): SQL => sql`${users.name} || 'hello'`,
+          (): SQL => sql`concat(${users.name}, ' ', 'hello')`,
           { mode: "virtual" }
         ),
-    })
+    });
     ```
     ```sql
     CREATE TABLE `users` (
-	    `id` int,
-	    `id2` int,
-	    `name` text,
-	    `stored_gen` text GENERATED ALWAYS AS (`users`.`name` || 'hello') STORED,
-	    `virtual_gen` text GENERATED ALWAYS AS (`users`.`name` || 'hello') VIRTUAL
+      `id` int,
+      `id2` int,
+      `name` text,
+      `stored_gen` text GENERATED ALWAYS AS (concat(`users`.`name`, ' ', 'hello')) STORED,
+      `virtual_gen` text GENERATED ALWAYS AS (concat(`users`.`name`, ' ', 'hello')) VIRTUAL
     );
     ```
     </CodeTab>
@@ -9425,30 +11727,47 @@ Generated columns can be especially useful for:
     For more info, please check [SQLite](https://www.sqlite.org/gencol.html) docs 
 
     #### Drizzle side
+    In Drizzle you can specify `.generatedAlwaysAs()` function on any column type and add a supported sql query, 
+    that will generate this column data for you.
 
-    #### Features
+    #### Features 
+    This function can accept generated expression in 2 ways:
+
+    <Callout type='warning' collapsed="What was changed starting from 1.0.0-beta.12 version">
+    
+    In versions before 1.0.0-beta.12, `.generatedAlwaysAs()` also accepted literals as expressions.
+
     **`string`**
+    <CodeTab>
     ```ts
     export const test = sqliteTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(`hello world!`),
+        id: int("id").primaryKey(),
+        generatedName: text("gen_name").generatedAlwaysAs(`'hello world!'`),
     });
     ```
+
     ```sql
     CREATE TABLE `test` (
-	    `gen_name` text GENERATED ALWAYS AS (hello world!) VIRTUAL
+	    `id` integer PRIMARY KEY,
+	    `gen_name` text GENERATED ALWAYS AS ('hello world!') VIRTUAL
     );
     ```
+    </CodeTab>
+    
+    </Callout>
 
     **`sql`** tag - if you want drizzle to escape some values for you
 
     ```ts
     export const test = sqliteTable("test", {
-        generatedName: text("gen_name").generatedAlwaysAs(sql`hello "world"!`),
+        id: int("id").primaryKey(),
+        generatedName: text("gen_name").generatedAlwaysAs(sql`'hello "world"!'`),
     });
     ```
     ```sql
     CREATE TABLE `test` (
-	    `gen_name` text GENERATED ALWAYS AS (hello "world"!) VIRTUAL
+      `id` integer PRIMARY KEY,
+      `gen_name` text GENERATED ALWAYS AS ('hello "world"!') VIRTUAL
     );
     ```
 
@@ -9458,14 +11777,14 @@ Generated columns can be especially useful for:
     export const test = sqliteTable("test", {
         name: text("first_name"),
         generatedName: text("gen_name").generatedAlwaysAs(
-          (): SQL => sql`hi, ${test.name}!`
+          (): SQL => sql`'hi,' || ${test.name} || '!'`
         ),
     });
     ```
     ```sql
     CREATE TABLE `test` (
-	    `first_name` text,
-	    `gen_name` text GENERATED ALWAYS AS (hi, "first_name"!) VIRTUAL
+      `first_name` text,
+      `gen_name` text GENERATED ALWAYS AS ('hi,' || "first_name" || '!') VIRTUAL
     );
     ```
 
@@ -9476,7 +11795,7 @@ Generated columns can be especially useful for:
     3. You can't change a `stored` generated expression in an existing column for the same reason as above. However, you can change a `virtual` expression.
     4. You can't change the generated constraint type from `virtual` to `stored` for the same reason as above. However, you can change from `stored` to `virtual`.
 
-   <CodeTabs items={["index.ts", "schema.ts"]}>
+  <CodeTabs items={["schema.ts"]}>
 	<CodeTab>
 	```typescript copy
     export const users = sqliteTable("users", {
@@ -9506,8 +11825,259 @@ Generated columns can be especially useful for:
   <Tab>
   Work in Progress
   </Tab>
+  <Tab>
+    #### Database side
+    **Types**: `PERSISTED`, `VIRTUAL`
+
+    **How It Works**
+    - Defined with an expression in the table schema.
+    - Virtual columns are computed during read operations.
+    - Persisted columns are computed during write operations and stored.
+
+    For more info, please check [MSSQL](https://learn.microsoft.com/en-us/sql/relational-databases/tables/specify-computed-columns-in-a-table?view=sql-server-ver17) docs
+
+    #### Drizzle side
+    In Drizzle you can specify `.generatedAlwaysAs()` function on any column type and add a supported sql query, 
+    that will generate this column data for you.
+
+    #### Features 
+    This function can accept generated expression in 2 ways:
+
+    <Callout type='warning' collapsed="What was changed starting from 1.0.0-beta.12 version">
+    
+    In previous versions, `.generatedAlwaysAs()` also accepted literals as expressions.
+
+    **`string`**
+    <CodeTab>
+    ```ts
+    export const test = mssqlTable("test", {
+        generatedName: text("gen_name").generatedAlwaysAs(`'hello world!'`),
+    });
+    ```
+    ```sql
+    CREATE TABLE [test] (
+	    [gen_name] AS ('hello world!')
+    );
+    ```
+    </CodeTab>
+    </Callout>
+
+    **`sql`** tag - if you want drizzle to escape some values for you
+
+    <CodeTab>
+    ```ts
+    export const test = mssqlTable("test", {
+        id: int("id"),
+        generatedName: text("gen_name").generatedAlwaysAs(sql`hello "world"!`),
+    });
+    ```
+    ```sql
+    CREATE TABLE [test] (
+	    [id] int,
+	    [gen_name] AS ('hello "world"!') 
+    );
+    ```
+    </CodeTab>
+
+    **`callback`** - if you need to reference columns from a table
+
+    <CodeTab>
+    ```ts
+    export const test = mssqlTable("test", {
+        name: text("first_name"),
+        generatedName: text("gen_name").generatedAlwaysAs(
+          (): SQL => sql`concat('hi,', ' ', ${test.name}, '!')`
+        ),
+    });
+    ```
+    ```sql
+    CREATE TABLE [test] (
+    	[first_name] text,
+    	[gen_name] AS (concat('hi,', ' ', [test].[first_name], '!')) 
+    );
+    ```
+    </CodeTab>
+  </Tab>
+  <Tab>
+    In Drizzle you can specify `.generatedAlwaysAs()` function on any column type and add a supported sql query, 
+    that will generate this column data for you.
+
+    #### Features 
+    This function can accept generated expression in 2 ways:
+
+    <Callout type='warning' collapsed="What was changed starting from 1.0.0-beta.12 version">
+    
+    In previous versions, `.generatedAlwaysAs()` also accepted literals as expressions.
+
+    **`string`**
+    <CodeTab>
+    ```ts
+    export const test = cockroachTable("test", {
+        generatedName: text("gen_name").generatedAlwaysAs(`'hello world!'`),
+    });
+    ```
+    ```sql
+    CREATE TABLE "test" (
+    	"gen_name" string GENERATED ALWAYS AS ('hello world!') STORED
+    );
+    ```
+    </CodeTab>
+    </Callout>
+
+    **`sql`** tag - if you want drizzle to escape some values for you
+
+    <CodeTab>
+    ```ts
+    export const test = cockroachTable("test", {
+        generatedName: text("gen_name").generatedAlwaysAs(sql`'hello "world"!'`),
+    });
+    ```
+    ```sql
+    CREATE TABLE "test" (
+	    "gen_name" string GENERATED ALWAYS AS ('hello "world"!') STORED
+    );
+    ```
+    </CodeTab>
+
+    **`callback`** - if you need to reference columns from a table
+    <CodeTab>
+    ```ts
+    export const test = cockroachTable("test", {
+        name: text("first_name"),
+        generatedName: text("gen_name").generatedAlwaysAs(
+          (): SQL => sql`'hi, ' || ${test.name} || '!'`
+        ),
+    });
+    ```
+
+    ```sql
+    CREATE TABLE "test" (
+    	"first_name" string,
+    	"gen_name" string GENERATED ALWAYS AS ('hi, ' || "test"."first_name" || '!') STORED
+    );
+    ```
+    </CodeTab>
+
+    **Example** generated columns with full-text search
+   <CodeTabs items={["schema.ts"]}>
+	<CodeTab>
+	```typescript copy {17-19}
+    import { SQL, sql } from "drizzle-orm";
+    import { customType, index, int4, cockroachTable, text } from "drizzle-orm/cockroach-core";
+
+    const tsVector = customType<{ data: string }>({
+      dataType() {
+        return "tsvector";
+      },
+    });
+
+    export const test = cockroachTable(
+      "test",
+      {
+        id: int4().primaryKey().generatedAlwaysAsIdentity(),
+        content: text("content"),
+        contentSearch: tsVector("content_search", {
+          dimensions: 3,
+        }).generatedAlwaysAs(
+          (): SQL => sql`to_tsvector('english', ${test.content})`
+        ),
+      },
+      (t) => [
+        index("idx_content_search").using("gin", t.contentSearch)
+      ]
+    );
+    ```
+    ```sql {4}
+    CREATE TABLE "test" (
+    	"id" int4 PRIMARY KEY GENERATED ALWAYS AS IDENTITY (INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
+    	"content" string,
+    	"content_search" tsvector GENERATED ALWAYS AS (to_tsvector('english', "test"."content")) STORED
+    );
+    CREATE INDEX "idx_content_search" ON "test" USING gin ("content_search");
+    ```
+    </CodeTab>
+   </CodeTabs>
+  </Tab> 
 </Tabs>
 
+
+Source: https://orm.drizzle.team/docs/get-started-cockroach
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import WhatsNextPostgres from "@mdx/WhatsNextPostgres.astro";
+
+# Drizzle \<\> PostgreSQL
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+- Database [connection basics](/docs/connect-overview) with Drizzle
+- node-postgres [basics](https://node-postgres.com/)
+</Prerequisites>
+
+Drizzle has native support for PostgreSQL connections with the `node-postgres` driver.
+
+#### Step 1 - Install packages
+<Npm>
+drizzle-orm@beta pg
+-D drizzle-kit@beta @types/pg
+</Npm>
+
+#### Step 2 - Initialize the driver and make a query
+<CodeTabs items={["node-postgres", "node-postgres with config"]}>
+```typescript copy
+// Make sure to install the 'pg' package 
+import { drizzle } from 'drizzle-orm/cockroach';
+
+const db = drizzle(process.env.DATABASE_URL);
+ 
+const result = await db.execute('select 1');
+```
+```typescript copy
+// Make sure to install the 'pg' package 
+import { drizzle } from 'drizzle-orm/cockroach';
+
+// You can specify any property from the node-postgres connection options
+const db = drizzle({ 
+  connection: { 
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  }
+});
+ 
+const result = await db.execute('select 1');
+```
+</CodeTabs>
+
+If you need to provide your existing driver:
+
+```typescript copy
+// Make sure to install the 'pg' package 
+import { drizzle } from "drizzle-orm/cockroach";
+import { Pool } from "pg";
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+const db = drizzle({ client: pool });
+ 
+const result = await db.execute('select 1');
+```
+
+#### What's next?
+
+<WhatsNextPostgres/>
 
 Source: https://orm.drizzle.team/docs/get-started-gel
 
@@ -9578,6 +12148,91 @@ const result = await db.execute('select 1');
 
 <WhatsNextPostgres/>
 
+
+Source: https://orm.drizzle.team/docs/get-started-mssql
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import WhatsNextMSSQL from "@mdx/WhatsNextMSSQL.astro";
+
+# Drizzle \<\> MSSQL
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+- Database [connection basics](/docs/connect-overview) with Drizzle
+- node-mssql [basics](https://github.com/tediousjs/node-mssql)
+</Prerequisites>
+
+Drizzle has native support for MSSQL connections with the `mssql` driver.
+
+#### Step 1 - Install packages
+<Npm>
+drizzle-orm@beta mssql
+-D drizzle-kit@beta
+</Npm>
+
+#### Step 2 - Initialize the driver and make a query
+<CodeTabs items={["mssql", "mssql with config"]}>
+```typescript copy
+// Make sure to install the 'mssql' package 
+import { drizzle } from 'drizzle-orm/node-mssql';
+
+const db = drizzle(process.env.DATABASE_URL);
+ 
+const result = await db.execute('select 1');
+```
+```typescript copy
+// Make sure to install the 'pg' package 
+import { drizzle } from 'drizzle-orm/node-mssql';
+
+// You can specify any property from the mssql connection options
+const db = drizzle({ 
+  connection: { 
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
+  }
+});
+ 
+const result = await db.execute('select 1');
+```
+</CodeTabs>
+
+<Callout type='warning'>
+As long as the `node-mssql` driver requires `await` on `Pool` initialization, we need to `await` it before each request - unless you are providing your own Pool instance to Drizzle. In that case, when you want to access `db.$client`, you first need to `await` it, and then use it
+
+```ts
+const awaitedClient = await db.$client;
+const response = awaitedClient.query...
+```
+</Callout>
+
+If you need to provide your existing driver:
+
+```typescript copy
+// Make sure to install the 'mssql' package 
+import { drizzle } from "drizzle-orm/node-mssql";
+import type { ConnectionPool } from 'mssql';
+
+const pool = await mssql.connect(connectionString);
+const db = drizzle({ client: pool });
+ 
+const result = await db.execute('select 1');
+```
+
+#### What's next?
+
+<WhatsNextMSSQL/>
 
 Source: https://orm.drizzle.team/docs/get-started-mysql
 
@@ -10334,9 +12989,393 @@ To run a script with `bun`, use the following command:
 bun src/index.ts
 ```
 
+Source: https://orm.drizzle.team/docs/get-started/cockroach-existing
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectCockroach from '@mdx/get-started/cockroach/IntrospectCockroach.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectCockroach from '@mdx/get-started/cockroach/ConnectCockroach.mdx'
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import QueryDatabaseUpdated from '@mdx/get-started/QueryDatabaseUpdated.mdx';
+import UpdateSchema from '@mdx/get-started/cockroach/UpdateSchema.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and CockroachDB in existing project
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **node-postgres** - package for querying your PostgreSQL database - [read here](https://node-postgres.com/)
+</Prerequisites>
+
+<FileStructure/>
+
+#### Step 1 - Install **node-postgres** package
+<Npm>
+  drizzle-orm@beta pg dotenv
+  -D drizzle-kit@beta tsx @types/pg
+</Npm>
+
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+<Callout title='tips'>
+If you don't have a PostgreSQL database yet and want to create one for testing, you can use our guide on how to set up PostgreSQL in Docker.
+
+The PostgreSQL in Docker guide is available [here](/docs/guides/postgresql-local-setup). Go set it up, generate a database URL (explained in the guide), and come back for the next steps
+</Callout>
+
+#### Step 3 - Setup Drizzle config file
+
+<SetupConfig dialect='cockroach' env_variable='DATABASE_URL'/>
+
+#### Step 4 - Introspect your database
+
+<IntrospectCockroach/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+<ConnectCockroach/>
+
+#### Step 7 - Query the database
+
+<QueryDatabase dialect='cockroach' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+<QueryDatabaseUpdated dialect='cockroach' env_variable='DATABASE_URL' />
+
+Source: https://orm.drizzle.team/docs/get-started/cockroach-new
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import ConnectCockroach from '@mdx/get-started/cockroach/ConnectCockroach.mdx'
+import CreateTable from '@mdx/get-started/cockroach/CreateTable.mdx'
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and CockroachDB
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **node-postgres** - package for querying your PostgreSQL database - [read here](https://node-postgres.com/)
+</Prerequisites>
+
+Drizzle has native support for CockroachDB connections with the `node-postgres` and `postgres.js` drivers.
+
+We will use `node-postgres` for this get started example. But if you want to find more ways to connect to postgresql check
+our [CockroachDB Connection](/docs/get-started-cockroach) page 
+
+<FileStructure/>
+
+#### Step 1 - Install **node-postgres** package
+<Npm>
+  drizzle-orm@beta pg dotenv
+  -D drizzle-kit@beta tsx @types/pg
+</Npm>
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+#### Step 3 - Connect Drizzle ORM to the database
+
+<ConnectCockroach/>
+
+#### Step 4 - Create a table
+
+<CreateTable />
+
+#### Step 5 - Setup Drizzle config file
+
+<SetupConfig dialect='cockroach' env_variable='DATABASE_URL'/>
+
+#### Step 6 - Applying changes to the database
+
+<ApplyChanges />
+
+#### Step 7 - Seed and Query the database
+
+<QueryDatabase dialect='cockroach' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
 Source: https://orm.drizzle.team/docs/get-started/d1-existing
 
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectSQLite from '@mdx/get-started/sqlite/IntrospectSqlite.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectSQLiteCloud from '@mdx/get-started/sqlite/ConnectSQLiteCloud.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import QueryDatabaseUpdated from '@mdx/get-started/QueryDatabaseUpdated.mdx';
+import UpdateSchema from '@mdx/get-started/sqlite/UpdateSchema.mdx';
 
+<Breadcrumbs/>
+
+# Get Started with Drizzle and D1 in existing project
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **Cloudflare D1** - Serverless SQL database to query from your Workers and Pages projects - [read here](https://developers.cloudflare.com/d1/)
+  - **wrangler** - Cloudflare Developer Platform command-line interface - [read here](https://developers.cloudflare.com/workers/wrangler)
+</Prerequisites>
+
+<FileStructure/>
+
+#### Step 1 - Install required package
+<InstallPackages lib=''/>
+
+#### Step 2 - Setup wrangler.toml
+
+You would need to have a `wrangler.toml` file for D1 database and will look something like this:
+```toml
+name = "YOUR PROJECT NAME"
+main = "src/index.ts"
+compatibility_date = "2022-11-07"
+node_compat = true
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "YOUR DB NAME"
+database_id = "YOUR DB ID"
+migrations_dir = "drizzle"
+```
+
+#### Step 3 - Setup Drizzle config file
+
+**Drizzle config** - a configuration file that is used by [Drizzle Kit](/docs/kit-overview) and contains all the information about your database connection, migration folder and schema files.
+
+Create a `drizzle.config.ts` file in the root of your project and add the following content:
+
+```typescript copy filename="drizzle.config.ts"
+import 'dotenv/config';
+import { defineConfig } from 'drizzle-kit';
+
+export default defineConfig({
+  out: './drizzle',
+  schema: './src/db/schema.ts',
+  dialect: 'sqlite',
+  driver: 'd1-http',
+  dbCredentials: {
+    accountId: process.env.CLOUDFLARE_ACCOUNT_ID!,
+    databaseId: process.env.CLOUDFLARE_DATABASE_ID!,
+    token: process.env.CLOUDFLARE_D1_TOKEN!,
+  },
+});
+```
+<Callout title='tips'>
+You can check [our tutorial](/docs/guides/d1-http-with-drizzle-kit) on how to get env variables from CloudFlare
+</Callout>
+
+#### Step 4 - Introspect your database
+
+<IntrospectSQLite/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+```typescript copy
+import { drizzle } from 'drizzle-orm/d1';
+
+export interface Env {
+  <BINDING_NAME>: D1Database;
+}
+export default {
+  async fetch(request: Request, env: Env) {
+    const db = drizzle(env.<BINDING_NAME>);
+  },
+};
+```
+
+#### Step 7 - Query the database
+
+```typescript copy
+import { drizzle } from 'drizzle-orm/d1';
+
+export interface Env {
+  <BINDING_NAME>: D1Database;
+}
+export default {
+  async fetch(request: Request, env: Env) {
+    const db = drizzle(env.<BINDING_NAME>);
+
+    const user: typeof usersTable.$inferInsert = {
+      name: 'John',
+      age: 30,
+      email: 'john@example.com',
+    };
+
+    await db.insert(usersTable).values(user);
+    console.log('New user created!');
+
+    const users = await db.select().from(usersTable);
+    console.log('Getting all users from the database: ', users);
+    /*
+    const users: {
+      id: number;
+      name: string;
+      age: number;
+      email: string;
+    }[]
+    */
+
+    await db
+      .update(usersTable)
+      .set({
+        age: 31,
+      })
+      .where(eq(usersTable.email, user.email));
+    console.log('User info updated!');
+
+    await db.delete(usersTable).where(eq(usersTable.email, user.email));
+    console.log('User deleted!');
+
+    return Response.json(users);
+  },
+};
+```
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+```typescript copy filename="src/index.ts"
+import 'dotenv/config';
+import { eq } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/sqlite-cloud';
+import { usersTable } from './db/schema';
+
+async function main() {
+  const db = drizzle(env.<BINDING_NAME>);
+
+  const user: typeof usersTable.$inferInsert = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+    phone: '123-456-7890',
+  };
+
+  await db.insert(usersTable).values(user);
+  console.log('New user created!');
+
+  const users = await db.select().from(usersTable);
+  console.log('Getting all users from the database: ', users);
+  /*
+  const users: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+    phone: string | null;
+  }[]
+  */
+
+  await db
+    .update(usersTable)
+    .set({
+      age: 31,
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log('User info updated!');
+
+  await db.delete(usersTable).where(eq(usersTable.email, user.email));
+  console.log('User deleted!');
+
+  return Response.json(users);
+}
+
+main();
+```
 
 Source: https://orm.drizzle.team/docs/get-started/d1-new
 
@@ -10373,7 +13412,7 @@ import ConnectLibsql from '@mdx/get-started/sqlite/ConnectLibsql.mdx';
 <FileStructure />
 
 #### Step 1 - Install required packages
-<InstallPackages lib=''/>
+<InstallPackages lib='wrangler'/>
 
 #### Step 2 - Setup wrangler.toml
 
@@ -10406,11 +13445,21 @@ export default {
 };
 ```
 
-#### Step 4 - Create a table
+#### Step 4 - Generate wrangler types 
+
+<Npx>
+wrangler types
+</Npx>
+
+<Callout>
+The output of this command will be a `worker-configuration.d.ts` file.
+</Callout>
+
+#### Step 5 - Create a table
 
 <CreateTable/>
 
-#### Step 5 - Setup Drizzle config file
+#### Step 6 - Setup Drizzle config file
 
 **Drizzle config** - a configuration file that is used by [Drizzle Kit](/docs/kit-overview) and contains all the information about your database connection, migration folder and schema files.
 
@@ -10436,11 +13485,11 @@ export default defineConfig({
 You can check [our tutorial](/docs/guides/d1-http-with-drizzle-kit) on how to get env variables from CloudFlare
 </Callout>
 
-#### Step 6 - Applying changes to the database
+#### Step 7 - Applying changes to the database
 
 <ApplyChanges />
 
-#### Step 7 - Seed and Query the database
+#### Step 8 - Seed and Query the database
 
 ```typescript copy
 import { drizzle } from 'drizzle-orm/d1';
@@ -10457,13 +13506,346 @@ export default {
 };
 ```
 
-#### Step 8 - Run index.ts file
+#### Step 9 - Run index.ts file
 
 <RunFile/>
 
 Source: https://orm.drizzle.team/docs/get-started/do-existing
 
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectSQLite from '@mdx/get-started/sqlite/IntrospectSqlite.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectSQLiteCloud from '@mdx/get-started/sqlite/ConnectSQLiteCloud.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import QueryDatabaseUpdated from '@mdx/get-started/QueryDatabaseUpdated.mdx';
+import UpdateSchema from '@mdx/get-started/sqlite/UpdateSchema.mdx';
 
+<Breadcrumbs/>
+
+# Get Started with Drizzle and SQLite Durable Objects in existing project
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **Cloudflare SQLite Durable Objects** - SQLite database embedded within a Durable Object - [read here](https://developers.cloudflare.com/durable-objects/api/sql-storage/)
+  - **wrangler** - Cloudflare Developer Platform command-line interface - [read here](https://developers.cloudflare.com/workers/wrangler)
+</Prerequisites>
+
+<FileStructure/>
+
+#### Step 1 - Install required package
+<InstallPackages lib=''/>
+
+#### Step 2 - Setup wrangler.toml
+
+You would need to have a `wrangler.toml` file for D1 database and will look something like this:
+```toml
+#:schema node_modules/wrangler/config-schema.json
+name = "sqlite-durable-objects"
+main = "src/index.ts"
+compatibility_date = "2024-11-12"
+compatibility_flags = [ "nodejs_compat" ]
+
+# Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
+# Durable Objects can live for as long as needed. Use these when you need a long-running "server", such as in realtime apps.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects
+[[durable_objects.bindings]]
+name = "MY_DURABLE_OBJECT"
+class_name = "MyDurableObject"
+
+# Durable Object migrations.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#migrations
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MyDurableObject"]
+
+# We need rules so we can import migrations in the next steps
+[[rules]] 
+type = "Text"
+globs = ["**/*.sql"]
+fallthrough = true
+```
+
+#### Step 3 - Setup Drizzle config file
+
+**Drizzle config** - a configuration file that is used by [Drizzle Kit](/docs/kit-overview) and contains all the information about your database connection, migration folder and schema files.
+
+Create a `drizzle.config.ts` file in the root of your project and add the following content:
+
+```typescript copy filename="drizzle.config.ts"
+import 'dotenv/config';
+import { defineConfig } from 'drizzle-kit';
+
+export default defineConfig({
+  out: './drizzle',
+  schema: './src/db/schema.ts',
+  dialect: 'sqlite',
+  driver: 'durable-sqlite',
+});
+```
+<Callout title='tips'>
+You can check [our tutorial](/docs/guides/d1-http-with-drizzle-kit) on how to get env variables from CloudFlare
+</Callout>
+
+#### Step 4 - Introspect your database
+
+<IntrospectSQLite/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+```typescript copy
+import { drizzle, type DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
+import { DurableObject } from 'cloudflare:workers'
+
+export class MyDurableObject extends DurableObject {
+	storage: DurableObjectStorage;
+	db: DrizzleSqliteDODatabase;
+
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+		this.storage = ctx.storage;
+		this.db = drizzle(this.storage, { logger: false });
+	}
+}
+```
+
+#### Step 7 - Query the database
+
+```typescript copy
+import { drizzle, DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
+import { DurableObject } from 'cloudflare:workers'
+import { migrate } from 'drizzle-orm/durable-sqlite/migrator';
+import migrations from '../drizzle/migrations';
+import { usersTable } from './db/schema';
+
+export class MyDurableObject extends DurableObject {
+  storage: DurableObjectStorage;
+  db: DrizzleSqliteDODatabase<any>;
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.storage = ctx.storage;
+    this.db = drizzle(this.storage, { logger: false });
+
+    // Make sure all migrations complete before accepting queries.
+    // Otherwise you will need to run `this.migrate()` in any function
+    // that accesses the Drizzle database `this.db`.
+    ctx.blockConcurrencyWhile(async () => {
+      await this._migrate();
+    });
+  }
+
+  async insertAndList(user: typeof usersTable.$inferInsert) {
+    await this.insert(user);
+    return this.select();
+  }
+
+  async insert(user: typeof usersTable.$inferInsert) {
+    await this.db.insert(usersTable).values(user);
+  }
+
+  async select() {
+    return this.db.select().from(usersTable);
+  }
+
+  async _migrate() {
+    migrate(this.db, migrations);
+  }
+}
+
+export default {
+  /**
+   * This is the standard fetch handler for a Cloudflare Worker
+   *
+   * @param request - The request submitted to the Worker from the client
+   * @param env - The interface to reference bindings declared in wrangler.toml
+   * @param ctx - The execution context of the Worker
+   * @returns The response to be sent back to the client
+   */
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const id: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName('durable-object');
+    const stub = env.MY_DURABLE_OBJECT.get(id);
+
+    // Option A - Maximum performance.
+    // Prefer to bundle all the database interaction within a single Durable Object call
+    // for maximum performance, since database access is fast within a DO.
+    const usersAll = await stub.insertAndList({
+      name: 'John',
+      age: 30,
+      email: 'john@example.com',
+    });
+    console.log('New user created. Getting all users from the database: ', users);
+    /*
+    const users: {
+      id: number;
+      name: string;
+      age: number;
+      email: string;
+      phone: string | null;
+    }[]
+    */
+
+    // Option B - Slow but maybe useful sometimes for debugging.
+    // You can also directly call individual Drizzle queries if they are exposed
+    // but keep in mind every query is a round-trip to the Durable Object instance.
+    await stub.insert({
+      name: 'John',
+      age: 30,
+      email: 'john@example.com',
+    });
+    console.log('New user created!');
+
+    const users = await stub.select();
+    console.log('Getting all users from the database: ', users);
+    /*
+    const users: {
+      id: number;
+      name: string;
+      age: number;
+      email: string;
+      phone: string | null;
+    }[]
+    */
+
+    return Response.json(users);
+  }
+}
+```
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+```typescript copy filename="src/index.ts"
+import { drizzle, DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
+import { DurableObject } from 'cloudflare:workers'
+import { migrate } from 'drizzle-orm/durable-sqlite/migrator';
+import migrations from '../drizzle/migrations';
+import { usersTable } from './db/schema';
+
+export class MyDurableObject extends DurableObject {
+  storage: DurableObjectStorage;
+  db: DrizzleSqliteDODatabase<any>;
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.storage = ctx.storage;
+    this.db = drizzle(this.storage, { logger: false });
+
+    // Make sure all migrations complete before accepting queries.
+    // Otherwise you will need to run `this.migrate()` in any function
+    // that accesses the Drizzle database `this.db`.
+    ctx.blockConcurrencyWhile(async () => {
+      await this._migrate();
+    });
+  }
+
+  async insertAndList(user: typeof usersTable.$inferInsert) {
+    await this.insert(user);
+    return this.select();
+  }
+
+  async insert(user: typeof usersTable.$inferInsert) {
+    await this.db.insert(usersTable).values(user);
+  }
+
+  async select() {
+    return this.db.select().from(usersTable);
+  }
+
+  async _migrate() {
+    migrate(this.db, migrations);
+  }
+}
+
+export default {
+  /**
+   * This is the standard fetch handler for a Cloudflare Worker
+   *
+   * @param request - The request submitted to the Worker from the client
+   * @param env - The interface to reference bindings declared in wrangler.toml
+   * @param ctx - The execution context of the Worker
+   * @returns The response to be sent back to the client
+   */
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const id: DurableObjectId = env.MY_DURABLE_OBJECT.idFromName('durable-object');
+    const stub = env.MY_DURABLE_OBJECT.get(id);
+
+    // Option A - Maximum performance.
+    // Prefer to bundle all the database interaction within a single Durable Object call
+    // for maximum performance, since database access is fast within a DO.
+    const usersAll = await stub.insertAndList({
+      name: 'John',
+      age: 30,
+      email: 'john@example.com',
+      phone: '123-456-7890',
+    });
+    console.log('New user created. Getting all users from the database: ', users);
+    /*
+    const users: {
+      id: number;
+      name: string;
+      age: number;
+      email: string;
+      phone: string | null;
+    }[]
+    */
+
+    // Option B - Slow but maybe useful sometimes for debugging.
+    // You can also directly call individual Drizzle queries if they are exposed
+    // but keep in mind every query is a round-trip to the Durable Object instance.
+    await stub.insert({
+      name: 'John',
+      age: 30,
+      email: 'john@example.com',
+      phone: '123-456-7890',
+    });
+    console.log('New user created!');
+
+    const users = await stub.select();
+    console.log('Getting all users from the database: ', users);
+    /*
+    const users: {
+      id: number;
+      name: string;
+      age: number;
+      email: string;
+      phone: string | null;
+    }[]
+    */
+
+    return Response.json(users);
+  }
+}
+```
 
 Source: https://orm.drizzle.team/docs/get-started/do-new
 
@@ -10500,10 +13882,7 @@ import ConnectLibsql from '@mdx/get-started/sqlite/ConnectLibsql.mdx';
 <FileStructure />
 
 #### Step 1 - Install required packages
-<Npm>
-  drizzle-orm dotenv
-  -D drizzle-kit wrangler @cloudflare/workers-types
-</Npm>
+<InstallPackages lib='wrangler'/>
 
 #### Step 2 - Setup wrangler.toml
 
@@ -10538,7 +13917,6 @@ fallthrough = true
 #### Step 3 - Connect Drizzle ORM to the database
 
 ```ts
-/// <reference types="@cloudflare/workers-types" />
 import { drizzle, type DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
 import { DurableObject } from 'cloudflare:workers'
 
@@ -10596,7 +13974,6 @@ npx drizzle-kit generate
 You can apply migrations only from Cloudflare Workers. 
 To achieve this, let's define the migrate functionality in MyDurableObject:
 ```ts copy {4-5,17-19}
-/// <reference types="@cloudflare/workers-types" />
 import { drizzle, type DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
 import { DurableObject } from 'cloudflare:workers'
 import { migrate } from 'drizzle-orm/durable-sqlite/migrator';
@@ -10621,7 +13998,6 @@ export class MyDurableObject extends DurableObject {
 #### Step 8 - Migrate and Query the database
 
 ```typescript copy
-/// <reference types="@cloudflare/workers-types" />
 import { drizzle, DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
 import { DurableObject } from 'cloudflare:workers'
 import { migrate } from 'drizzle-orm/durable-sqlite/migrator';
@@ -10703,6 +14079,359 @@ export default {
 	}
 }
 ```
+
+Source: https://orm.drizzle.team/docs/get-started/effect-postgresql-existing
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectPostgreSQL from '@mdx/get-started/postgresql/IntrospectPostgreSQL.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectEffect from '@mdx/get-started/postgresql/ConnectEffect.mdx'
+import UpdateSchema from '@mdx/get-started/postgresql/UpdateSchema.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and Effect PostgreSQL in existing project
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.13` and higher.
+
+Effect is only available for PostgreSQL right now and soon be implemented for all other dialects
+
+On how to upgrade (read more [here](/docs/upgrade-v1))
+</Callout>
+
+<Prerequisites>
+  - **Effect** - Effect is a powerful TS library designed to help developers easily create complex, synchronous, and asynchronous programs. - [read more](https://effect.website/docs)
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **@effect/sql-pg** - A PostgreSQL toolkit for Effect - [read here](https://effect-ts.github.io/effect/docs/sql-pg)
+</Prerequisites>
+
+<FileStructure/>
+
+#### Step 1 - Install required packages
+<InstallPackages lib='effect @effect/sql-pg pg' devlib=' @types/pg'/>
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+<Callout title='tips'>
+If you don't have a PostgreSQL database yet and want to create one for testing, you can use our guide on how to set up PostgreSQL in Docker.
+
+The PostgreSQL in Docker guide is available [here](/docs/guides/postgresql-local-setup). Go set it up, generate a database URL (explained in the guide), and come back for the next steps
+</Callout>
+
+#### Step 3 - Setup Drizzle config file
+
+<SetupConfig dialect='postgresql' env_variable='DATABASE_URL'/>
+
+#### Step 4 - Introspect your database
+
+<IntrospectPostgreSQL/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+<ConnectEffect/>
+
+#### Step 7 - Query the database
+
+```ts
+import 'dotenv/config';
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { PgClient } from '@effect/sql-pg';
+import * as Effect from 'effect/Effect';
+import * as Redacted from 'effect/Redacted';
+import { types } from 'pg';
+import { eq } from 'drizzle-orm';
+import { usersTable } from './db/schema';
+
+const PgClientLive = PgClient.layer({
+  url: Redacted.make(process.env.DATABASE_URL!),
+  types: {
+    getTypeParser: (typeId, format) => {
+      if ([1184, 1114, 1082, 1186, 1231, 1115, 1185, 1187, 1182].includes(typeId)) {
+        return (val: any) => val;
+      }
+      return types.getTypeParser(typeId, format);
+    },
+  },
+});
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.makeWithDefaults();
+
+  const user: typeof usersTable.$inferInsert = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+  };
+
+  yield* db.insert(usersTable).values(user);
+  console.log('New user created!')
+
+  const users = yield* db.select().from(usersTable);
+  console.log('Getting all users from the database: ', users)
+  /*
+  const users: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  }[]
+  */
+
+  yield* db
+    .update(usersTable)
+    .set({
+      age: 31,
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log('User info updated!')
+
+  yield* db.delete(usersTable).where(eq(usersTable.email, user.email));
+  console.log('User deleted!')
+});
+
+Effect.runPromise(program.pipe(Effect.provide(PgClientLive)));
+```
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+```ts
+import 'dotenv/config';
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { PgClient } from '@effect/sql-pg';
+import * as Effect from 'effect/Effect';
+import * as Redacted from 'effect/Redacted';
+import { types } from 'pg';
+import { eq } from 'drizzle-orm';
+import { usersTable } from './db/schema';
+
+const PgClientLive = PgClient.layer({
+  url: Redacted.make(process.env.DATABASE_URL!),
+  types: {
+    getTypeParser: (typeId, format) => {
+      if ([1184, 1114, 1082, 1186, 1231, 1115, 1185, 1187, 1182].includes(typeId)) {
+        return (val: any) => val;
+      }
+      return types.getTypeParser(typeId, format);
+    },
+  },
+});
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.makeWithDefaults();
+
+  const user: typeof usersTable.$inferInsert = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+    phone: '123-456-7890',
+  };
+
+  yield* db.insert(usersTable).values(user);
+  console.log('New user created!')
+
+  const users = yield* db.select().from(usersTable);
+  console.log('Getting all users from the database: ', users)
+  /*
+  const users: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+    phone: string | null;
+  }[]
+  */
+
+  yield* db
+    .update(usersTable)
+    .set({
+      age: 31,
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log('User info updated!')
+
+  yield* db.delete(usersTable).where(eq(usersTable.email, user.email));
+  console.log('User deleted!')
+});
+
+Effect.runPromise(program.pipe(Effect.provide(PgClientLive)));
+```
+
+
+Source: https://orm.drizzle.team/docs/get-started/effect-postgresql-new
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import ConnectEffect from '@mdx/get-started/postgresql/ConnectEffect.mdx'
+import CreateTable from '@mdx/get-started/postgresql/CreateTable.mdx'
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and Effect PostgreSQL
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.13` and higher.
+
+Effect is only available for PostgreSQL right now and soon be implemented for all other dialects
+
+On how to upgrade (read more [here](/docs/upgrade-v1))
+</Callout>
+
+<Prerequisites>
+  - **Effect** - Effect is a powerful TS library designed to help developers easily create complex, synchronous, and asynchronous programs. - [read more](https://effect.website/docs)
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **@effect/sql-pg** - A PostgreSQL toolkit for Effect - [read here](https://effect-ts.github.io/effect/docs/sql-pg)
+</Prerequisites>
+
+Drizzle has native support for Effect PostgreSQL connections with the `@effect/sql-pg` driver.
+
+<FileStructure/>
+
+#### Step 1 - Install required packages
+<InstallPackages lib='effect @effect/sql-pg pg' devlib=' @types/pg'/>
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+<Callout title='tips'>
+If you don't have a PostgreSQL database yet and want to create one for testing, you can use our guide on how to set up PostgreSQL in Docker.
+
+The PostgreSQL in Docker guide is available [here](/docs/guides/postgresql-local-setup). Go set it up, generate a database URL (explained in the guide), and come back for the next steps
+</Callout>
+
+#### Step 3 - Connect Drizzle ORM to the database
+
+<ConnectEffect />
+
+#### Step 4 - Create a table
+
+<CreateTable />
+
+#### Step 5 - Setup Drizzle config file
+
+<SetupConfig dialect='postgresql' env_variable='DATABASE_URL'/>
+
+#### Step 6 - Applying changes to the database
+
+<ApplyChanges />
+
+#### Step 7 - Seed and Query the database
+
+Let's **update** the `src/index.ts` file with queries to create, read, update, and delete users
+
+```ts
+import 'dotenv/config';
+import * as PgDrizzle from 'drizzle-orm/effect-postgres';
+import { PgClient } from '@effect/sql-pg';
+import * as Effect from 'effect/Effect';
+import * as Redacted from 'effect/Redacted';
+import { types } from 'pg';
+import { eq } from 'drizzle-orm';
+import { usersTable } from './db/schema';
+
+const PgClientLive = PgClient.layer({
+  url: Redacted.make(process.env.DATABASE_URL!),
+  types: {
+    getTypeParser: (typeId, format) => {
+      if ([1184, 1114, 1082, 1186, 1231, 1115, 1185, 1187, 1182].includes(typeId)) {
+        return (val: any) => val;
+      }
+      return types.getTypeParser(typeId, format);
+    },
+  },
+});
+
+const program = Effect.gen(function*() {
+  const db = yield* PgDrizzle.makeWithDefaults();
+
+  const user: typeof usersTable.$inferInsert = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com',
+  };
+
+  yield* db.insert(usersTable).values(user);
+  console.log('New user created!')
+
+  const users = yield* db.select().from(usersTable);
+  console.log('Getting all users from the database: ', users)
+  /*
+  const users: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  }[]
+  */
+
+  yield* db
+    .update(usersTable)
+    .set({
+      age: 31,
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log('User info updated!')
+
+  yield* db.delete(usersTable).where(eq(usersTable.email, user.email));
+  console.log('User deleted!')
+});
+
+Effect.runPromise(program.pipe(Effect.provide(PgClientLive)));
+```
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
 
 Source: https://orm.drizzle.team/docs/get-started/expo-existing
 
@@ -11315,6 +15044,175 @@ main();
 ```
 
 #### Step 9 - Run index.ts file
+
+<RunFile/>
+
+Source: https://orm.drizzle.team/docs/get-started/mssql-existing
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectMSSQL from '@mdx/get-started/mssql/IntrospectMSSQL.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectMSSQL from '@mdx/get-started/mssql/ConnectMSSQL.mdx'
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import QueryDatabaseUpdated from '@mdx/get-started/QueryDatabaseUpdated.mdx';
+import UpdateSchema from '@mdx/get-started/mssql/UpdateSchema.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and MSSQL in existing project
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **node-mssql** - package for querying your MSSQL database - [read here](https://github.com/tediousjs/node-mssql)
+</Prerequisites>
+
+<FileStructure/>
+
+#### Step 1 - Install **mssql** package
+<Npm>
+  drizzle-orm@beta mssql dotenv
+  -D drizzle-kit@beta tsx
+</Npm>
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+#### Step 3 - Setup Drizzle config file
+
+<SetupConfig dialect='mssql' env_variable='DATABASE_URL'/>
+
+#### Step 4 - Introspect your database
+
+<IntrospectMSSQL/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+<ConnectMSSQL/>
+
+#### Step 7 - Query the database
+
+<QueryDatabase dialect='node-mssql' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+<QueryDatabaseUpdated dialect='node-mssql' env_variable='DATABASE_URL' />
+
+Source: https://orm.drizzle.team/docs/get-started/mssql-new
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import ConnectMSSQL from '@mdx/get-started/mssql/ConnectMSSQL.mdx'
+import CreateTable from '@mdx/get-started/mssql/CreateTable.mdx'
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and MSSQL
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.2` and higher.
+</Callout>
+
+<br/>
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **node-mssql** - package for querying your MSSQL database - [read here](https://github.com/tediousjs/node-mssql)
+</Prerequisites>
+
+Drizzle has native support for PostgreSQL connections with the `node-mssql` driver.
+
+<FileStructure/>
+
+#### Step 1 - Install **mssql** package
+<Npm>
+  drizzle-orm@beta mssql dotenv
+  -D drizzle-kit@beta tsx
+</Npm>
+
+#### Step 2 - Setup connection variables
+
+<SetupEnv env_variable='DATABASE_URL' />
+
+{/* <Callout title='tips'>
+If you don't have a PostgreSQL database yet and want to create one for testing, you can use our guide on how to set up PostgreSQL in Docker.
+
+The PostgreSQL in Docker guide is available [here](/docs/guides/postgresql-local-setup). Go set it up, generate a database URL (explained in the guide), and come back for the next steps
+</Callout> */}
+
+#### Step 3 - Connect Drizzle ORM to the database
+
+<ConnectMSSQL/>
+
+#### Step 4 - Create a table
+
+<CreateTable />
+
+#### Step 5 - Setup Drizzle config file
+
+<SetupConfig dialect='mssql' env_variable='DATABASE_URL'/>
+
+#### Step 6 - Applying changes to the database
+
+<ApplyChanges />
+
+#### Step 7 - Seed and Query the database
+
+<QueryDatabase dialect='node-mssql' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
 
 <RunFile/>
 
@@ -12297,6 +16195,10 @@ import TransferCode from '@mdx/get-started/TransferCode.mdx';
   - **database-js** - PlanetScale serverless driver - [read here](https://github.com/planetscale/database-js)
 </Prerequisites>
 
+<Callout title='PlanetScale also offers Postgres' type='info'>
+Looking for PostgreSQL? Check out our [PlanetScale Postgres guide](/docs/get-started/planetscale-postgres-existing)
+</Callout>
+
 <Callout title='important' type='warning'>
 For this tutorial, we will use the `database-js` driver to make **HTTP** calls to the PlanetScale database. If you need to
 connect to PlanetScale through TCP, you can refer to our [MySQL Get Started](/docs/get-started/mysql-new) page
@@ -12425,6 +16327,10 @@ import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
   - **database-js** - PlanetScale serverless driver - [read here](https://github.com/planetscale/database-js)
 </Prerequisites>
 
+<Callout title='PlanetScale also offers Postgres' type='info'>
+Looking for PostgreSQL? Check out our [PlanetScale Postgres guide](/docs/get-started/planetscale-postgres-new)
+</Callout>
+
 <Callout title='important' type='warning'>
 For this tutorial, we will use the `database-js` driver to make **HTTP** calls to the PlanetScale database. If you need to
 connect to PlanetScale through TCP, you can refer to our [MySQL Get Started](/docs/get-started/mysql-new) page
@@ -12473,6 +16379,185 @@ To get all the necessary environment variables to connect through the `database-
 #### Step 8 - Run index.ts file
 
 <RunFile/>
+
+Source: https://orm.drizzle.team/docs/get-started/planetscale-postgres-existing
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+import IntrospectPostgreSQL from '@mdx/get-started/postgresql/IntrospectPostgreSQL.mdx';
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+import TransferCode from '@mdx/get-started/TransferCode.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import ConnectPlanetScalePostgres from '@mdx/get-started/postgresql/ConnectPlanetScalePostgres.mdx'
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import QueryDatabaseUpdated from '@mdx/get-started/QueryDatabaseUpdated.mdx';
+import UpdateSchema from '@mdx/get-started/postgresql/UpdateSchema.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and PlanetScale Postgres in existing project
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **PlanetScale Postgres** - PostgreSQL database platform - [read here](https://planetscale.com/docs/postgres)
+  - **node-postgres** - package for querying your PostgreSQL database - [read here](https://node-postgres.com/)
+</Prerequisites>
+
+<Callout title='PlanetScale also offers MySQL' type='info'>
+Looking for MySQL? Check out our [PlanetScale MySQL guide](/docs/get-started/planetscale-existing)
+</Callout>
+
+PlanetScale offers both MySQL (Vitess) and PostgreSQL databases. This guide covers connecting to PlanetScale Postgres using the standard `node-postgres` driver.
+
+For detailed instructions on creating a PlanetScale Postgres database and obtaining credentials, see the [PlanetScale Postgres documentation](https://planetscale.com/docs/postgres/tutorials/planetscale-postgres-drizzle).
+
+<FileStructure/>
+
+#### Step 1 - Install **node-postgres** package
+<InstallPackages lib='pg' devlib=' @types/pg'/>
+
+#### Step 2 - Setup connection variables
+
+Create a `.env` file in the root of your project and add your database connection variable:
+
+```plaintext copy
+DATABASE_URL=postgresql://{username}:{password}@{host}:{port}/postgres?sslmode=verify-full
+```
+
+<Callout title='tips'>
+You can obtain your connection credentials from the PlanetScale dashboard by navigating to your database, clicking **"Connect"**, and creating a **"Default role"**. See the [PlanetScale connection guide](https://planetscale.com/docs/postgres/tutorials/planetscale-postgres-drizzle#create-credentials-and-connect) for detailed steps.
+</Callout>
+
+#### Step 3 - Setup Drizzle config file
+
+<SetupConfig dialect='postgresql' env_variable='DATABASE_URL'/>
+
+#### Step 4 - Introspect your database
+
+<IntrospectPostgreSQL/>
+
+#### Step 5 - Transfer code to your actual schema file
+
+<TransferCode/>
+
+#### Step 6 - Connect Drizzle ORM to the database
+
+<ConnectPlanetScalePostgres/>
+
+#### Step 7 - Query the database
+
+<QueryDatabase dialect='node-postgres' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
+#### Step 9 - Update your table schema (optional)
+
+<UpdateSchema/>
+
+#### Step 10 - Applying changes to the database (optional)
+
+<ApplyChanges />
+
+#### Step 11 - Query the database with a new field (optional)
+
+<QueryDatabaseUpdated dialect='node-postgres' env_variable='DATABASE_URL' />
+
+
+Source: https://orm.drizzle.team/docs/get-started/planetscale-postgres-new
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Npm from "@mdx/Npm.astro";
+import Callout from '@mdx/Callout.astro';
+import Steps from '@mdx/Steps.astro';
+import AnchorCards from '@mdx/AnchorCards.astro';
+import Breadcrumbs from '@mdx/Breadcrumbs.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTabs from "@mdx/CodeTabs.astro";
+import FileStructure from '@mdx/get-started/FileStructure.mdx';
+import InstallPackages from '@mdx/get-started/InstallPackages.mdx';
+import ConnectPlanetScalePostgres from '@mdx/get-started/postgresql/ConnectPlanetScalePostgres.mdx'
+import CreateTable from '@mdx/get-started/postgresql/CreateTable.mdx'
+import SetupConfig from '@mdx/get-started/SetupConfig.mdx';
+import ApplyChanges from '@mdx/get-started/ApplyChanges.mdx';
+import RunFile from '@mdx/get-started/RunFile.mdx';
+import QueryDatabase from '@mdx/get-started/QueryDatabase.mdx';
+import SetupEnv from '@mdx/get-started/SetupEnv.mdx';
+
+<Breadcrumbs/>
+
+# Get Started with Drizzle and PlanetScale Postgres
+
+<Prerequisites>
+  - **dotenv** - package for managing environment variables - [read here](https://www.npmjs.com/package/dotenv)
+  - **tsx** - package for running TypeScript files - [read here](https://tsx.is/)
+  - **PlanetScale Postgres** - PostgreSQL database platform - [read here](https://planetscale.com/docs/postgres)
+  - **node-postgres** - package for querying your PostgreSQL database - [read here](https://node-postgres.com/)
+</Prerequisites>
+
+<Callout title='PlanetScale also offers MySQL' type='info'>
+Looking for MySQL? Check out our [PlanetScale MySQL guide](/docs/get-started/planetscale-new)
+</Callout>
+
+PlanetScale offers both MySQL (Vitess) and PostgreSQL databases. This guide covers connecting to PlanetScale Postgres using the standard `node-postgres` driver.
+
+For detailed instructions on creating a PlanetScale Postgres database and obtaining credentials, see the [PlanetScale Postgres documentation](https://planetscale.com/docs/postgres/tutorials/planetscale-postgres-drizzle).
+
+<FileStructure/>
+
+#### Step 1 - Install **node-postgres** package
+<InstallPackages lib='pg' devlib=' @types/pg'/>
+
+#### Step 2 - Setup connection variables
+
+Create a `.env` file in the root of your project and add your database connection variable:
+
+```plaintext copy
+DATABASE_URL=postgresql://{username}:{password}@{host}:{port}/postgres?sslmode=verify-full
+```
+
+<Callout title='tips'>
+You can obtain your connection credentials from the PlanetScale dashboard by navigating to your database, clicking **"Connect"**, and creating a **"Default role"**. See the [PlanetScale connection guide](https://planetscale.com/docs/postgres/tutorials/planetscale-postgres-drizzle#create-credentials-and-connect) for detailed steps.
+</Callout>
+
+#### Step 3 - Connect Drizzle ORM to the database
+
+<ConnectPlanetScalePostgres/>
+
+#### Step 4 - Create a table
+
+<CreateTable />
+
+#### Step 5 - Setup Drizzle config file
+
+<SetupConfig dialect='postgresql' env_variable='DATABASE_URL'/>
+
+#### Step 6 - Applying changes to the database
+
+<ApplyChanges />
+
+#### Step 7 - Seed and Query the database
+
+<QueryDatabase dialect='node-postgres' env_variable='DATABASE_URL'/>
+
+#### Step 8 - Run index.ts file
+
+<RunFile/>
+
 
 Source: https://orm.drizzle.team/docs/get-started/postgresql-existing
 
@@ -14517,7 +18602,7 @@ import CodeTabs from '@mdx/CodeTabs.astro';
 ## Type API
 To retrieve a type from your table schema for `select` and `insert` queries, you can make use of our type helpers.
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
 <Tab>
 ```ts
 import { serial, text, pgTable } from 'drizzle-orm/pg-core';
@@ -14598,6 +18683,46 @@ type SelectUser = InferSelectModel<typeof users>;
 type InsertUser = InferInsertModel<typeof users>;
 ```
 </Tab>
+<Tab>
+```ts
+import { int, text, mssqlTable } from 'drizzle-orm/mssql-core';
+import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm'
+
+const users = mssqlTable('users', {
+  id: int().primaryKey(),
+  name: text().notNull(),
+});
+
+type SelectUser = typeof users.$inferSelect;
+type InsertUser = typeof users.$inferInsert;
+// or
+type SelectUser = typeof users._.$inferSelect;
+type InsertUser = typeof users._.$inferInsert;
+// or
+type SelectUser = InferSelectModel<typeof users>;
+type InsertUser = InferInsertModel<typeof users>;
+```
+</Tab>
+<Tab>
+```ts
+import { int4, text, cockroachTable } from 'drizzle-orm/cockroach-core';
+import { type InferSelectModel, type InferInsertModel } from 'drizzle-orm'
+
+const users = cockroachTable('users', {
+  id: int4().primaryKey(),
+  name: text().notNull(),
+});
+
+type SelectUser = typeof users.$inferSelect;
+type InsertUser = typeof users.$inferInsert;
+// or
+type SelectUser = typeof users._.$inferSelect;
+type InsertUser = typeof users._.$inferInsert;
+// or
+type SelectUser = InferSelectModel<typeof users>;
+type InsertUser = InferInsertModel<typeof users>;
+```
+</Tab>
 </Tabs>
 
 
@@ -14640,10 +18765,10 @@ const db = drizzle({ logger: new MyLogger() });
 
 
 ## Multi-project schema
-**Table creator** API lets you define customise table names.  
+**Table creator** API lets you define customize table names.  
 It's very useful when you need to keep schemas of different projects in one database.
 
-<CodeTabs items={["PostgreSQL","MySQL","SQLite", "SingleStore"]}>
+<CodeTabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
 ```ts {3}
 import { serial, text, pgTableCreator } from 'drizzle-orm/pg-core';
 
@@ -14677,11 +18802,31 @@ const users = sqliteTable('users', {
 ```ts {3}
 import { int, text, singlestoreTableCreator } from 'drizzle-orm/singlestore-core';
 
-const mysqlTable = singlestoreTableCreator((name) => `project1_${name}`);
+const singlestoreTable = singlestoreTableCreator((name) => `project1_${name}`);
 
 const users = singlestoreTable('users', {
   id: int('id').primaryKey(),
   name: text('name').notNull(),
+});
+```
+```ts {3}
+import { int, text, mssqlTableCreator } from 'drizzle-orm/mssql-core';
+
+const mssqlTable = mssqlTableCreator((name) => `project1_${name}`);
+
+const users = mssqlTable('users', {
+  id: int().primaryKey(),
+  name: text().notNull(),
+});
+```
+```ts {3}
+import { int4, text, cockroachTableCreator } from 'drizzle-orm/cockroach-core';
+
+const pgTable = cockroachTableCreator((name) => `project1_${name}`);
+
+const users = pgTable('users', {
+  id: int4().primaryKey(),
+  name: text().notNull(),
 });
 ```
 </CodeTabs>
@@ -14724,7 +18869,7 @@ const query = db
 If you have some complex queries to execute and `drizzle-orm` can't handle them yet,
 you can use the `db.execute` method to execute raw `parametrized` queries.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
     <Tab>
     ```ts
     const statement = sql`select * from ${users} where ${users.id} = ${userId}`;
@@ -14757,13 +18902,27 @@ you can use the `db.execute` method to execute raw `parametrized` queries.
     const res: SingleStoreRawQueryResult = await db.execute(statement);
     ```
     </Tab>
+        <Tab>
+    ```typescript copy
+    import { sql } from "drizzle-orm";
+
+    const statement = sql`select * from ${users} where ${users.id} = ${userId}`;
+    const res = await db.execute(statement);
+    ```
+    </Tab>
+    <Tab>
+    ```ts
+    const statement = sql`select * from ${users} where ${users.id} = ${userId}`;
+    const res = await db.execute(statement)
+    ```
+    </Tab>
 </Tabs>
 
 
 ## Standalone query builder
 Drizzle ORM provides a standalone query builder that allows you to build queries
 without creating a database instance and get generated SQL.
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore"]}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore", "MSSQL", "CockroachDB"]}>
     <Tab>
         ```typescript copy
         import { QueryBuilder } from 'drizzle-orm/pg-core';
@@ -14804,20 +18963,49 @@ without creating a database instance and get generated SQL.
         const { sql, params } = query.toSQL();
         ```
     </Tab>
+    <Tab>
+        ```typescript copy
+        import { QueryBuilder } from 'drizzle-orm/mssql-core';
+
+        const qb = new QueryBuilder();
+
+        const query = qb.select().from(users).where(eq(users.name, 'Dan'));
+        const { sql, params } = query.toSQL();
+        ```
+    </Tab>
+    <Tab>
+        ```typescript copy
+        import { QueryBuilder } from 'drizzle-orm/cockroach-core';
+
+        const qb = new QueryBuilder();
+
+        const query = qb.select().from(users).where(eq(users.name, 'Dan'));
+        const { sql, params } = query.toSQL();
+        ```
+    </Tab>
 </Tabs>
 
-## Get typed table columns
-You can get a typed table columns map,
+## Get typed columns
+You can get a typed columns map,
 very useful when you need to omit certain columns upon selection.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore"]}>
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
+
+<br/>
+
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
       <CodeTabs items={["index.ts", "schema.ts"]}>
         ```ts
-        import { getTableColumns } from "drizzle-orm";
+        import { getColumns } from "drizzle-orm";
         import { user } from "./schema";
 
-        const { password, role, ...rest } = getTableColumns(user);
+        const { password, role, ...rest } = getColumns(user);
 
         await db.select({ ...rest }).from(users);
         ```
@@ -14837,10 +19025,10 @@ very useful when you need to omit certain columns upon selection.
   <Tab>
       <CodeTabs items={["index.ts", "schema.ts"]}>
         ```ts
-        import { getTableColumns } from "drizzle-orm";
+        import { getColumns } from "drizzle-orm";
         import { user } from "./schema";
 
-        const { password, role, ...rest } = getTableColumns(user);
+        const { password, role, ...rest } = getColumns(user);
 
         await db.select({ ...rest }).from(users);
         ```
@@ -14860,10 +19048,10 @@ very useful when you need to omit certain columns upon selection.
   <Tab>
       <CodeTabs items={["index.ts", "schema.ts"]}>
         ```ts
-        import { getTableColumns } from "drizzle-orm";
+        import { getColumns } from "drizzle-orm";
         import { user } from "./schema";
 
-        const { password, role, ...rest } = getTableColumns(user);
+        const { password, role, ...rest } = getColumns(user);
 
         await db.select({ ...rest }).from(users);
         ```
@@ -14883,15 +19071,15 @@ very useful when you need to omit certain columns upon selection.
   <Tab>
       <CodeTabs items={["index.ts", "schema.ts"]}>
         ```ts
-        import { getTableColumns } from "drizzle-orm";
+        import { getColumns } from "drizzle-orm";
         import { user } from "./schema";
 
-        const { password, role, ...rest } = getTableColumns(user);
+        const { password, role, ...rest } = getColumns(user);
 
         await db.select({ ...rest }).from(users);
         ```
         ```ts
-        import { int, text, mysqlTable } from "drizzle-orm/singlestore-core";
+        import { int, text, singlestoreTable } from "drizzle-orm/singlestore-core";
 
         export const user = singlestoreTable("user", {
           id: int("id").primaryKey().autoincrement(),
@@ -14903,10 +19091,56 @@ very useful when you need to omit certain columns upon selection.
         ```
       </CodeTabs>
   </Tab>
+  <Tab>
+      <CodeTabs items={["index.ts", "schema.ts"]}>
+        ```ts
+        import { getColumns } from "drizzle-orm";
+        import { user } from "./schema";
+
+        const { password, role, ...rest } = getColumns(user);
+
+        await db.select({ ...rest }).from(users);
+        ```
+        ```ts
+        import { int, text, mssqlTable } from "drizzle-orm/mssql-core";
+
+        export const user = mssqlTable("user", {
+          id: int().primaryKey(),
+          name: text(),
+          email: text(),
+          password: text(),
+          role: text().$type<"admin" | "customer">(),
+        });
+        ```
+      </CodeTabs>
+  </Tab>
+  <Tab>
+      <CodeTabs items={["index.ts", "schema.ts"]}>
+        ```ts
+        import { getColumns } from "drizzle-orm";
+        import { user } from "./schema";
+
+        const { password, role, ...rest } = getColumns(user);
+
+        await db.select({ ...rest }).from(users);
+        ```
+        ```ts
+        import { int4, text, pgTable } from "drizzle-orm/cockroach-core";
+
+        export const user = pgTable("user", {
+          id: int4().primaryKey(),
+          name: text(),
+          email: text(),
+          password: text(),
+          role: text().$type<"admin" | "customer">(),
+        });
+        ```
+      </CodeTabs>
+  </Tab>
 </Tabs>
 
 ## Get table information
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore"]}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
     ```ts copy
     import { getTableConfig, pgTable } from 'drizzle-orm/pg-core';
@@ -14974,6 +19208,39 @@ very useful when you need to omit certain columns upon selection.
   } = getTableConfig(table);
   ```
   </Tab>
+  <Tab>
+  ```ts copy
+  import { getTableConfig, mssqlTable } from 'drizzle-orm/mssql-core';
+
+  export const table = mssqlTable(...);
+
+  const {
+    columns,
+    indexes,
+    checks,
+    primaryKeys,
+    name,
+    schema,
+  } = getTableConfig(table);
+  ```
+  </Tab>
+  <Tab>
+    ```ts copy
+    import { getTableConfig, cockroachTable } from 'drizzle-orm/cockroach-core';
+
+    export const table = cockroachTable(...);
+
+    const {
+      columns,
+      indexes,
+      foreignKeys,
+      checks,
+      primaryKeys,
+      name,
+      schema,
+    } = getTableConfig(table);
+    ```
+  </Tab>
 </Tabs>
 
 ## Compare objects types (instanceof alternative)
@@ -14999,14 +19266,14 @@ This API is a successor to an undefined `drizzle({} as any)` API which we've use
 
 We decided to build and expose a proper API, every `drizzle` driver now has `drizzle.mock()`:
 ```ts
-import { drizzle } from "drizzle-orm/node-postgres";
+import { drizzle } from "drizzle-orm/...";
 
 const db = drizzle.mock();
 ```
 
 you can provide schema if necessary for types
 ```ts
-import { drizzle } from "drizzle-orm/node-postgres";
+import { drizzle } from "drizzle-orm/...";
 import * as schema from "./schema"
 
 const db = drizzle.mock({ schema });
@@ -16377,6 +20644,7 @@ import IsSupportedChipGroup from "@mdx/IsSupportedChipGroup.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from '@mdx/CodeTabs.astro';
 import CodeTab from '@mdx/CodeTab.astro';
+import Callout from "@mdx/Callout.astro";
 
 <IsSupportedChipGroup chips={{PostgreSQL: true, MySQL: true, SQLite: true}}/>
 
@@ -16439,15 +20707,22 @@ To include specific columns you can use `.select()` method like this:
   ```
 </Section>
 
-To include all columns with extra columns you can use `getTableColumns()` utility function like this:
+To include all columns with extra columns you can use `getColumns()` utility function like this:
+
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 
 <Section>
   ```ts copy {5,6}
-  import { getTableColumns, sql } from 'drizzle-orm';
+  import { getColumns, sql } from 'drizzle-orm';
 
   await db
     .select({
-      ...getTableColumns(posts),
+      ...getColumns(posts),
       titleLength: sql<number>`length(${posts.title})`,
     })
     .from(posts);
@@ -16465,13 +20740,19 @@ To include all columns with extra columns you can use `getTableColumns()` utilit
   ```
 </Section>
 
-To exclude columns you can use `getTableColumns()` utility function like this:
+To exclude columns you can use `getColumns()` utility function like this:
+
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
 
 <Section>
   ```ts copy {3,5}
-  import { getTableColumns } from 'drizzle-orm';
+  import { getColumns } from 'drizzle-orm';
 
-  const { content, ...rest } = getTableColumns(posts); // exclude "content" column
+  const { content, ...rest } = getColumns(posts); // exclude "content" column
 
   await db.select({ ...rest }).from(posts); // select all other columns
   ```
@@ -16491,17 +20772,17 @@ This is how you can include or exclude columns with joins:
 <CodeTabs items={["index.ts", "schema.ts"]}>
   <CodeTab>
     ```ts copy {5,9,10,11}
-    import { eq, getTableColumns } from 'drizzle-orm';
+    import { eq, getColumns } from 'drizzle-orm';
     import { comments, posts, users } from './db/schema';
 
     // exclude "userId" and "postId" columns from "comments"
-    const { userId, postId, ...rest } = getTableColumns(comments);
+    const { userId, postId, ...rest } = getColumns(comments);
 
     await db
       .select({
         postId: posts.id, // include "id" column from "posts"
         comment: { ...rest }, // include all other columns
-        user: users, // equivalent to getTableColumns(users)
+        user: users, // equivalent to getColumns(users)
       })
       .from(posts)
       .leftJoin(comments, eq(posts.id, comments.postId))
@@ -17203,6 +21484,7 @@ import Section from "@mdx/Section.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from '@mdx/CodeTabs.astro';
 import CodeTab from '@mdx/CodeTab.astro';
+import Callout from '@mdx/Callout.astro';
 
 <Prerequisites>
 - Get started with [PostgreSQL](/docs/get-started-postgresql)
@@ -17270,9 +21552,15 @@ await db.insert(stores).values({
 
 To compute the distance between the objects you can use `<->` operator. This is how you can query for the nearest location by coordinates in Drizzle:
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 <Section>
 ```ts {9, 14, 17}
-import { getTableColumns, sql } from 'drizzle-orm';
+import { getColumns, sql } from 'drizzle-orm';
 import { stores } from './schema';
 
 const point = {
@@ -17284,7 +21572,7 @@ const sqlDistance = sql`location <-> point(${point.x}, ${point.y})`;
 
 await db
   .select({
-    ...getTableColumns(stores),
+    ...getColumns(stores),
     distance: sql`round((${sqlDistance})::numeric, 2)`,
   })
   .from(stores)
@@ -17333,6 +21621,7 @@ Source: https://orm.drizzle.team/docs/postgis-geometry-point
 import Section from "@mdx/Section.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from '@mdx/CodeTabs.astro';
+import Callout from "@mdx/Callout.astro";
 import CodeTab from '@mdx/CodeTab.astro';
 
 <Prerequisites>
@@ -17413,9 +21702,15 @@ await db.insert(stores).values({
 
 To compute the distance between the objects you can use `<->` operator and `ST_Distance()` function, which for `geometry types` returns the minimum planar distance between two geometries. This is how you can query for the nearest location by coordinates in Drizzle with PostGIS:
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 <Section>
 ```ts copy {9, 14, 17}
-import { getTableColumns, sql } from 'drizzle-orm';
+import { getColumns, sql } from 'drizzle-orm';
 import { stores } from './schema';
 
 const point = {
@@ -17427,7 +21722,7 @@ const sqlPoint = sql`ST_SetSRID(ST_MakePoint(${point.x}, ${point.y}), 4326)`;
 
 await db
   .select({
-    ...getTableColumns(stores),
+    ...getColumns(stores),
     distance: sql`ST_Distance(${stores.location}, ${sqlPoint})`,
   })
   .from(stores)
@@ -17476,6 +21771,7 @@ import Section from "@mdx/Section.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from '@mdx/CodeTabs.astro';
 import CodeTab from '@mdx/CodeTab.astro';
+import Callout from '@mdx/Callout.astro';
 
 <Prerequisites>
 - Get started with [PostgreSQL](/docs/get-started-postgresql)
@@ -17816,9 +22112,15 @@ await db.select().from(posts)
 
 To rank the search results, you can use the `ts_rank` or `ts_rank_cd` functions and `orderBy` method:
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 <Section>
 ```ts copy {6,7,12,13,18-20}
-import { desc, getTableColumns, sql } from 'drizzle-orm';
+import { desc, getColumns, sql } from 'drizzle-orm';
 
 const search = 'culture | Europe | Italy | adventure';
 
@@ -17828,7 +22130,7 @@ const matchQuery = sql`(
 
 await db
   .select({
-    ...getTableColumns(posts),
+    ...getColumns(posts),
     rank: sql`ts_rank(${matchQuery})`,
     rankCd: sql`ts_rank_cd(${matchQuery})`,
   })
@@ -19298,6 +23600,7 @@ import Section from "@mdx/Section.astro";
 import IsSupportedChipGroup from "@mdx/IsSupportedChipGroup.astro";
 import Prerequisites from "@mdx/Prerequisites.astro";
 import CodeTabs from '@mdx/CodeTabs.astro';
+import Callout from "@mdx/Callout.astro";
 import CodeTab from '@mdx/CodeTab.astro';
 
 <IsSupportedChipGroup chips={{PostgreSQL: true, MySQL: true, SQLite: true}}/>
@@ -19389,10 +23692,16 @@ This is how you can do it:
 
 Drizzle has simple and flexible API, which lets you easily create custom solutions. This is how you do custom function for updating specific columns in multiple rows due to the conflict in PostgreSQL and SQLite:
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 <CodeTabs items={["index.ts", "schema.ts"]}>
   <CodeTab>
     ```ts copy {43,46}
-    import { SQL, getTableColumns, sql } from 'drizzle-orm';
+    import { SQL, getColumns, sql } from 'drizzle-orm';
     import { PgTable } from 'drizzle-orm/pg-core';
     import { SQLiteTable } from 'drizzle-orm/sqlite-core';
     import { users } from './schema';
@@ -19404,7 +23713,7 @@ Drizzle has simple and flexible API, which lets you easily create custom solutio
       table: T,
       columns: Q[],
     ) => {
-      const cls = getTableColumns(table);
+      const cls = getColumns(table);
 
       return columns.reduce((acc, column) => {
         const colName = cls[column].name;
@@ -19648,7 +23957,7 @@ Drizzle has simple and flexible API, which lets you easily create custom solutio
 <CodeTabs items={["index.ts", "schema.ts"]}>
   <CodeTab>
     ```ts copy {36,38}
-    import { SQL, getTableColumns, sql } from 'drizzle-orm';
+    import { SQL, getColumns, sql } from 'drizzle-orm';
     import { MySqlTable } from 'drizzle-orm/mysql-core';
     import { users } from './schema';
 
@@ -19656,7 +23965,7 @@ Drizzle has simple and flexible API, which lets you easily create custom solutio
       table: T,
       columns: Q[],
     ) => {
-      const cls = getTableColumns(table);
+      const cls = getColumns(table);
       return columns.reduce((acc, column) => {
         acc[column] = sql`values(${cls[column]})`;
         return acc;
@@ -19916,7 +24225,7 @@ then the default value of the column is `NULL`.
 An explicit `DEFAULT` clause may specify that the default value is `NULL`,
 a string constant, a blob constant, a signed-number, or any constant expression enclosed in parentheses.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
     ```typescript
@@ -19932,7 +24241,7 @@ a string constant, a blob constant, a signed-number, or any constant expression 
     ```
 
     ```sql
-    CREATE TABLE IF NOT EXISTS "table" (
+    CREATE TABLE "table" (
       "integer1" integer DEFAULT 42,
       "integer2" integer DEFAULT '42'::integer,
       "uuid1" uuid DEFAULT gen_random_uuid(),
@@ -20001,6 +24310,50 @@ a string constant, a blob constant, a signed-number, or any constant expression 
     ```
     </Section>
   </Tab>
+  <Tab>
+    <Section>
+    ```typescript
+    import { sql } from "drizzle-orm";
+    import { int, time, mssqlTable } from "drizzle-orm/mssql-core";
+    
+    const table = mssqlTable("table", {
+      int: int().default(42),
+      description: text().default(`This is your dashboard!`),
+    });
+    ```
+    ```sql
+    CREATE TABLE [table] (
+      [int] int DEFAULT 42,
+      [description] text DEFAULT 'This is your dashboard!'
+    );
+    ```
+    </Section>
+  </Tab>
+  <Tab>
+    <Section>
+    ```typescript
+    import { sql } from "drizzle-orm";
+    import { int4, uuid, cockroachTable } from "drizzle-orm/cockroach-core";
+
+    const table = cockroachTable('table', {
+      integer1: int4().default(42),
+      integer2: int4().default(sql`'42'::int4`),
+      uuid1: uuid().defaultRandom(),
+      uuid2: uuid().default(sql`gen_random_uuid()`),
+    });
+    ```
+
+    ```sql
+    CREATE TABLE "table" (
+      "integer1" int4 DEFAULT 42,
+      "integer2" int4 DEFAULT '42'::integer,
+      "uuid1" uuid DEFAULT gen_random_uuid(),
+      "uuid2" uuid DEFAULT gen_random_uuid()
+    );
+    ```
+    </Section>
+
+  </Tab> 
 </Tabs>
 
 ### Not null
@@ -20010,7 +24363,7 @@ By default, a column can hold **NULL** values. The `NOT NULL` constraint enforce
 This enforces a field to always contain a value, which means that you cannot insert a new record,
 or update a record without adding a value to this field.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```typescript copy
@@ -20022,7 +24375,7 @@ or update a record without adding a value to this field.
       ```
 
       ```sql
-      CREATE TABLE IF NOT EXISTS "table" (
+      CREATE TABLE "table" (
         "integer" integer NOT NULL
       );
       ```
@@ -20063,7 +24416,7 @@ or update a record without adding a value to this field.
     </Section>
 
   </Tab>
-    <Tab>
+  <Tab>
     <Section>
       ```typescript
       import { int, singlestoreTable } from "drizzle-orm/singlestore-core";
@@ -20079,8 +24432,41 @@ or update a record without adding a value to this field.
       );
       ```
     </Section>
-
   </Tab>
+  <Tab>
+    <Section>
+      ```typescript
+      import { int, mssqlTable } from "drizzle-orm/mssql-core";
+
+      const table = mssqlTable('table', {
+        int: int().notNull(),
+      });
+      ```
+
+      ```sql
+      CREATE TABLE [table] (
+        [int] int NOT NULL
+      );
+      ```
+    </Section>
+  </Tab>
+    <Tab>
+    <Section>
+      ```typescript copy
+      import { int4, cockroachTable } from "drizzle-orm/cockroach-core";
+
+      const table = cockroachTable('table', {
+        integer: int4().notNull(),
+      });
+      ```
+
+      ```sql
+      CREATE TABLE "table" (
+        "integer" int4 NOT NULL
+      );
+      ```
+    </Section>
+  </Tab> 
 </Tabs>
 
 ### Unique
@@ -20095,7 +24481,7 @@ A `PRIMARY KEY` constraint automatically has a `UNIQUE` constraint.
   You can have many `UNIQUE` constraints per table, but only one `PRIMARY KEY` constraint per table.
 </Callout>
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```typescript copy
@@ -20127,24 +24513,24 @@ A `PRIMARY KEY` constraint automatically has a `UNIQUE` constraint.
       ```
 
       ```sql
-      CREATE TABLE IF NOT EXISTS "composite_example" (
+      CREATE TABLE "composite_example" (
 	      "id" integer,
         "name" text,
         CONSTRAINT "composite_example_id_name_unique" UNIQUE("id","name"),
         CONSTRAINT "custom_name" UNIQUE("id","name")
       );
 
-      CREATE TABLE IF NOT EXISTS "table" (
+      CREATE TABLE "table" (
       	"id" integer,
       	CONSTRAINT "custom_name" UNIQUE("id")
       );
 
-      CREATE TABLE IF NOT EXISTS "user" (
+      CREATE TABLE "user" (
       	"id" integer,
       	CONSTRAINT "user_id_unique" UNIQUE("id")
       );
 
-      CREATE TABLE IF NOT EXISTS "user_nulls_example" (
+      CREATE TABLE "user_nulls_example" (
         "id" integer,
         CONSTRAINT "custom_name" UNIQUE NULLS NOT DISTINCT("id"),
         CONSTRAINT "user_nulls_example_id_unique" UNIQUE NULLS NOT DISTINCT("id")
@@ -20283,6 +24669,93 @@ A `PRIMARY KEY` constraint automatically has a `UNIQUE` constraint.
     </Section>
 
   </Tab>
+  <Tab>
+    <Callout type='warning'>
+    With MSSQL you can't create unique constraint on `text`, `ntext`, `varchar(max)`, `nvarchar(max)`
+    </Callout>
+    <Section>
+      ```typescript
+      import { int, varchar, unique, mssqlTable } from "drizzle-orm/mssql-core";
+
+      export const user = mssqlTable('user', {
+        id: int().unique(),
+      });
+
+      export const table = mssqlTable('table', {
+        id: int().unique('custom_name'),
+      });
+
+      export const composite = mssqlTable('composite_example', {
+        id: int(),
+        name: varchar({ length: 256 }),
+      }, (t) => [
+        unique().on(t.id, t.name),
+        unique('custom_name').on(t.id, t.name)
+      ]);
+      ```
+
+      ```sql
+      CREATE TABLE [user] (
+      	[id] int,
+      	CONSTRAINT [user_id_key] UNIQUE([id])
+      );
+
+      CREATE TABLE [table] (
+      	[id] int,
+      	CONSTRAINT [custom_name] UNIQUE([id])
+      );
+
+      CREATE TABLE [composite_example] (
+        [id] int,
+        [name] varchar(256),
+        CONSTRAINT [composite_example_id_name_key] UNIQUE([id],[name]),
+        CONSTRAINT [custom_name] UNIQUE([id],[name])
+      );
+      ```
+    </Section>
+
+  </Tab>
+  <Tab>
+    <Section>
+      ```typescript copy
+      import { int4, text, unique, cockroachTable } from "drizzle-orm/cockroach-core";
+
+      export const user = cockroachTable('user', {
+        id: int4().unique(),
+      });
+
+      export const table = cockroachTable('table', {
+        id: int4().unique('custom_name'),
+      });
+
+      export const composite = cockroachTable('composite_example', {
+        id: int4(),
+        name: text(),
+      }, (t) => [
+        unique().on(t.id, t.name),
+        unique('custom_name').on(t.id, t.name)
+      ]);
+      ```
+      ```sql
+      CREATE TABLE "user" (
+      	"id" integer,
+      	CONSTRAINT "user_id_unique" UNIQUE("id")
+      );
+
+      CREATE TABLE "table" (
+      	"id" integer,
+      	CONSTRAINT "custom_name" UNIQUE("id")
+      );
+
+      CREATE TABLE "composite_example" (
+	      "id" integer,
+        "name" text,
+        CONSTRAINT "composite_example_id_name_unique" UNIQUE("id","name"),
+        CONSTRAINT "custom_name" UNIQUE("id","name")
+      );
+      ```
+    </Section>
+  </Tab> 
 </Tabs>
 
 ### Check
@@ -20293,7 +24766,7 @@ If you define a `CHECK` constraint on a column it will allow only certain values
 
 If you define a `CHECK` constraint on a table it can limit the values in certain columns based on values in other columns in the row.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```typescript copy
@@ -20313,7 +24786,7 @@ If you define a `CHECK` constraint on a table it can limit the values in certain
       );
       ```
       ```sql
-      CREATE TABLE IF NOT EXISTS "users" (
+      CREATE TABLE "users" (
 	      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	      "username" text NOT NULL,
 	      "age" integer,
@@ -20384,6 +24857,64 @@ If you define a `CHECK` constraint on a table it can limit the values in certain
   <Tab>
     Currently not supported in SingleStore
   </Tab>
+<Tab>
+    <Section>
+      ```typescript copy
+      import { sql } from "drizzle-orm";
+      import { check, int, mssqlTable, text } from "drizzle-orm/mssql-core";
+
+      export const users = mssqlTable(
+        "users",
+        {
+          id: int().primaryKey(),
+          username: text().notNull(),
+          age: integer(),
+        },
+        (table) => [
+          check("age_check1", sql`${table.age} > 21`),
+        ]
+      );
+      ```
+      ```sql
+      CREATE TABLE [users] (
+	      [id] int PRIMARY KEY,
+	      [username] text NOT NULL,
+	      [age] integer,
+	      CONSTRAINT [age_check1] CHECK ([users].[age] > 21)
+      );
+      ```
+    </Section>
+
+  </Tab> 
+  <Tab>
+    <Section>
+      ```typescript copy
+      import { sql } from "drizzle-orm";
+      import { check, int4, cockroachTable, text, uuid } from "drizzle-orm/cockroach-core";
+
+      export const users = cockroachTable(
+        "users",
+        {
+          id: uuid().defaultRandom().primaryKey(),
+          username: text().notNull(),
+          age: int4(),
+        },
+        (table) => [
+          check("age_check1", sql`${table.age} > 21`),
+        ]
+      );
+      ```
+      ```sql
+      CREATE TABLE "users" (
+	      "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	      "username" text NOT NULL,
+	      "age" int4,
+	      CONSTRAINT "age_check1" CHECK ("users"."age" > 21)
+      );
+      ```
+    </Section>
+
+  </Tab> 
 </Tabs>
 
 ### Primary Key
@@ -20393,7 +24924,7 @@ Primary keys must contain `UNIQUE` values, and cannot contain `NULL` values.
 
 A table can have only **ONE** primary key; and in the table, this primary key can consist of single or multiple columns (fields).
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```typescript copy
@@ -20409,11 +24940,11 @@ A table can have only **ONE** primary key; and in the table, this primary key ca
       ```
 
       ```sql
-      CREATE TABLE IF NOT EXISTS "user" (
+      CREATE TABLE "user" (
         "id" serial PRIMARY KEY
       );
 
-      CREATE TABLE IF NOT EXISTS "table" (
+      CREATE TABLE "table" (
         "cuid" text PRIMARY KEY
       );
       ```
@@ -20498,6 +25029,51 @@ A table can have only **ONE** primary key; and in the table, this primary key ca
     </Section>
 
   </Tab>
+  <Tab>
+    <Section>
+      ```typescript
+      import { int, text, mssqlTable } from "drizzle-orm/mssql-core";
+
+      export const user = mssqlTable("user", {
+        id: int().primaryKey(),
+      })
+      ```
+
+      ```sql
+      CREATE TABLE [user] (
+        [id] int,
+        CONSTRAINT [user_pkey] PRIMARY KEY [id]
+      );
+      ```
+    </Section>
+
+  </Tab>
+  <Tab>
+    <Section>
+      ```typescript copy
+      import { int4, text, cockroachTable } from "drizzle-orm/cockroach-core";
+
+      const user = cockroachTable('user', {
+        id: int4().primaryKey(),
+      });
+
+      const table = cockroachTable('table', {
+        id: text().primaryKey(),
+      });
+      ```
+
+      ```sql
+      CREATE TABLE "user" (
+        "id" int4 PRIMARY KEY
+      );
+
+      CREATE TABLE "table" (
+        "cuid" text PRIMARY KEY
+      );
+      ```
+    </Section>
+
+  </Tab> 
 </Tabs>
 
 ### Composite Primary Key
@@ -20505,7 +25081,7 @@ A table can have only **ONE** primary key; and in the table, this primary key ca
 Just like `PRIMARY KEY`, composite primary key uniquely identifies each record in a table using multiple fields.
 
 Drizzle ORM provides a standalone `primaryKey` operator for that:
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```typescript copy {18, 19}
@@ -20534,7 +25110,7 @@ Drizzle ORM provides a standalone `primaryKey` operator for that:
       ```sql {6, 9}
       ...
 
-      CREATE TABLE IF NOT EXISTS "books_to_authors" (
+      CREATE TABLE "books_to_authors" (
         "author_id" integer,
         "book_id" integer,
         PRIMARY KEY("book_id","author_id")
@@ -20655,6 +25231,81 @@ Drizzle ORM provides a standalone `primaryKey` operator for that:
     </Section>
 
   </Tab>
+  <Tab>
+    <Section>
+      ```typescript {18, 19}
+      import { int, text, primaryKey, mssqlTable } from "drizzle-orm/mssql-core";
+
+      export const user = mssqlTable("user", {
+        id: int().primaryKey(),
+        name: text(),
+      });
+
+      export const book = mssqlTable("book", {
+        id: int().primaryKey(),
+        name: text(),
+      });
+
+      export const booksToAuthors = mssqlTable("books_to_authors", {
+        authorId: int("author_id"),
+        bookId: int("book_id"),
+      }, (table) => [
+        primaryKey({ columns: [table.bookId, table.authorId] }),
+        // Or PK with custom name
+        primaryKey({ name: 'custom_name', columns: [table.bookId, table.authorId] }),
+      ]);
+      ```
+
+      ```sql {6}
+      ...
+
+      CREATE TABLE [books_to_authors] (
+        [author_id] int,
+        [book_id] int,
+        CONSTRAINT [custom_name] PRIMARY KEY([book_id], [author_id])
+      );
+      ```
+    </Section>
+
+  </Tab>
+  <Tab>
+    <Section>
+      ```typescript copy {18, 19}
+      import { int4, text, primaryKey, cockroachTable } from "drizzle-orm/cockroach-core";
+
+      export const user = cockroachTable("user", {
+        id: int4().primaryKey(),
+        name: text(),
+      });
+
+      export const book = cockroachTable("book", {
+        id: int4("id").primaryKey(),
+        name: text("name"),
+      });
+
+      export const booksToAuthors = cockroachTable("books_to_authors", {
+        authorId: int4("author_id"),
+        bookId: int4("book_id"),
+      }, (table) => [
+        primaryKey({ columns: [table.bookId, table.authorId] }),
+        // Or PK with custom name
+        primaryKey({ name: 'custom_name', columns: [table.bookId, table.authorId] }),
+      ]);
+      ```
+
+      ```sql {6, 9}
+      ...
+
+      CREATE TABLE "books_to_authors" (
+        "author_id" int4,
+        "book_id" int4,
+        PRIMARY KEY("book_id","author_id")
+      );
+
+      ALTER TABLE "books_to_authors" ADD CONSTRAINT "custom_name" PRIMARY KEY("book_id","author_id");
+      ```
+    </Section>
+  </Tab> 
 </Tabs>
 
 ### Foreign key
@@ -20666,7 +25317,7 @@ The table with the foreign key is called the child table, and the table with the
 Drizzle ORM provides several ways to declare foreign keys.
 You can declare them in a column declaration statement:
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     ```typescript copy {11}
     import { serial, text, integer, pgTable } from "drizzle-orm/pg-core";
@@ -20721,12 +25372,45 @@ You can declare them in a column declaration statement:
   <Tab>
     Currently not supported in SingleStore
   </Tab>
+  <Tab>
+    ```typescript {11}
+    import { int, text, mssqlTable } from "drizzle-orm/mssql-core";
+
+    export const user = mssqlTable("user", {
+      id: int().primaryKey(),
+      name: text(),
+    });
+
+    export const book = mssqlTable("book", {
+      id: int().primaryKey(),
+      name: text(),
+      authorId: int("author_id").references(() => user.id)
+    });
+    ```
+
+  </Tab>
+    <Tab>
+    ```typescript copy {11}
+    import { int4, text, cockroachTable } from "drizzle-orm/cockroach-core";
+
+    export const user = cockroachTable("user", {
+      id: int4().primaryKey(),
+      name: text(),
+    });
+
+    export const book = cockroachTable("book", {
+      id: int4().primaryKey(),
+      name: text(),
+      authorId: int4("author_id").references(() => user.id)
+    });
+    ```
+  </Tab>
 </Tabs>
 
 If you want to do a self reference, due to a TypeScript limitations you will have to either explicitly
 set return type for reference callback or use a standalone `foreignKey` operator.
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     ```typescript copy {6,16-19}
     import { serial, text, integer, foreignKey, pgTable, AnyPgColumn } from "drizzle-orm/pg-core";
@@ -20805,9 +25489,58 @@ set return type for reference callback or use a standalone `foreignKey` operator
   <Tab>
     Currently not supported in SingleStore
   </Tab>
+    <Tab>
+    ```typescript {6,16-19}
+    import { int, text, foreignKey, mssqlTable, AnyMsSQLColumn } from "drizzle-orm/mssql-core";
+
+    export const user = mssqlTable("user", {
+      id: int().primaryKey(),
+      name: text(),
+      parentId: int("parent_id").references((): AnyMsSQLColumn => user.id)
+    });
+
+    //or
+    export const user = mssqlTable("user", {
+      id: int().primaryKey(),
+      name: text(),
+      parentId: int("parent_id"),
+    }, (table) => [
+      foreignKey({
+        columns: [table.parentId],
+        foreignColumns: [table.id],
+        name: "custom_fk"
+      })
+    ]);
+    ```
+  </Tab>
+  <Tab>
+    ```typescript copy {6,16-19}
+    import { int4, text, foreignKey, cockroachTable, AnyCockroachColumn } from "drizzle-orm/cockroach-core";
+
+    export const user = cockroachTable("user", {
+      id: int4().primaryKey(),
+      name: text(),
+      parentId: int4("parent_id").references((): AnyCockroachColumn => user.id)
+    });
+
+    // or
+    export const user = cockroachTable("user", {
+      id: int4().primaryKey(),
+      name: text(),
+      parentId: int4("parent_id"),
+    }, (table) => [
+      foreignKey({
+        columns: [table.parentId],
+        foreignColumns: [table.id],
+        name: "custom_fk"
+      })
+    ]);
+    ```
+
+  </Tab>
 </Tabs>
-To declare multicolumn foreign keys you can use a dedicated `foreignKey` operator:
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+To declare multi-column foreign keys you can use a dedicated `foreignKey` operator:
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     ```typescript copy {4-5,14-15,18-21}
     import { serial, text, foreignKey, pgTable, AnyPgColumn } from "drizzle-orm/pg-core";
@@ -20886,13 +25619,62 @@ To declare multicolumn foreign keys you can use a dedicated `foreignKey` operato
   <Tab>
     Currently not supported in SingleStore
   </Tab>
+  <Tab>
+    ```typescript copy {4-5,14-15,18-21}
+    import { int, text, primaryKey, foreignKey, mssqlTable, AnyMsSqlColumn } from "drizzle-orm/mssql-core";
+
+    export const user = mssqlTable("user", {
+      firstName: text(),
+      lastName: text(),
+    }, (table) => [
+      primaryKey({ columns: [table.firstName, table.lastName]})
+    ]);
+
+    export const profile = mssqlTable("profile", {
+      id: int().primaryKey(),
+      userFirstName: text("user_first_name"),
+      userLastName: text("user_last_name"),
+    }, (table) => [
+      foreignKey({
+        columns: [table.userFirstName, table.userLastName],
+        foreignColumns: [user.firstName, user.lastName],
+        name: "custom_name"
+      })
+    ]);
+    ```
+
+  </Tab>
+    <Tab>
+    ```typescript copy {4-5,14-15,18-21}
+    import { int4, text, foreignKey, cockroachTable, AnyCockroachColumn } from "drizzle-orm/cockroach-core";
+
+    export const user = cockroachTable("user", {
+      firstName: text(),
+      lastName: text(),
+    }, (table) => [
+      primaryKey({ columns: [table.firstName, table.lastName]})
+    ]);
+
+    export const profile = cockroachTable("profile", {
+      id: int4().primaryKey(),
+      userFirstName: text("user_first_name"),
+      userLastName: text("user_last_name"),
+    }, (table) => [
+      foreignKey({
+        columns: [table.userFirstName, table.userLastName],
+        foreignColumns: [user.firstName, user.lastName],
+        name: "custom_fk"
+      })
+    ])
+    ```
+  </Tab>
 </Tabs>
 
 ## Indexes
 
 Drizzle ORM provides API for both `index` and `unique index` declaration:
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
     ```typescript copy {9-10}
@@ -21036,6 +25818,78 @@ index('name')
     ```
     </Section>
   </Tab>
+  <Tab>
+    <Section>
+    ```typescript copy {8-9}
+    import { int, text, index, uniqueIndex, mssqlTable } from "drizzle-orm/mssql-core";
+
+    export const user = mysqlTable("user", {
+      id: int().primaryKey(),
+      name: text(),
+      email: text(),
+    }, (table) => [
+      index("name_idx").on(table.name),
+      uniqueIndex("email_idx").on(table.email),
+    ]);
+    ```
+    ```sql {5-6}
+    CREATE TABLE [user] (
+      ...
+    );
+
+    CREATE INDEX [name_idx] ON [user] ([name]);
+    CREATE UNIQUE INDEX [email_idx] ON [user] ([email]);
+    ```
+    </Section>
+
+    <Callout type='warning'>
+    With MSSQL you can't create unique index on `text`, `ntext`, `varchar(max)`, `nvarchar(max)`
+    </Callout>
+
+    Drizzle ORM provides set of params for index creation:
+
+    ```typescript
+    // Index declaration reference
+    index("name")
+      .on(table.name)
+      .where(sql``)
+    ```
+  </Tab>
+    <Tab>
+    <Section>
+    ```typescript copy {9-10}
+    import { int4, text, index, uniqueIndex, cockroachTable } from "drizzle-orm/cockroach-core";
+
+    export const user = cockroachTable("user", {
+      id: int4().primaryKey(),
+      name: text(),
+      email: text(),
+    }, (table) => [
+      index("name_idx").on(table.name),
+      uniqueIndex("email_idx").on(table.email)
+    ]);
+    ```
+    ```sql {5-6}
+    CREATE TABLE "user" (
+      ...
+    );
+
+    CREATE INDEX "name_idx" ON "user" ("name");
+    CREATE UNIQUE INDEX "email_idx" ON "user" ("email");
+    ```
+    </Section>
+    ```ts
+    // First example, with `.on()`
+    index('name')
+      .on(table.column1.asc(), table.column2) or .onOnly(table.column1.desc(), table.column2, ...)
+      .where(sql``)
+
+    // Second Example, with `.using()`
+    index('name')
+      .using('btree', table.column1.asc(), sql`lower(${table.column2})`)
+      .where(sql``) // sql expression
+    ```
+  </Tab>
 </Tabs>
 
 
@@ -21050,7 +25904,6 @@ import Tabs from '@mdx/Tabs.astro';
 # SQL Insert
 Drizzle ORM provides you the most SQL-like way to insert rows into the database tables.
 
-## Insert one row
 Inserting data with Drizzle is extremely straightforward and sql-like. See for yourself:
 
 <Section>
@@ -21074,8 +25927,8 @@ const newUser: NewUser = { name: "Alef" };
 await insertUser(newUser);
 ```
 
-## Insert returning
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false}} />
+## returning
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 You can insert a row and get it back in PostgreSQL and SQLite like such:
 ```typescript copy
 await db.insert(users).values({ name: "Dan" }).returning();
@@ -21084,8 +25937,8 @@ await db.insert(users).values({ name: "Dan" }).returning();
 await db.insert(users).values({ name: "Partial Dan" }).returning({ insertedId: users.id });
 ```
 
-## Insert $returningId
-<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'SQLite': false, 'MySQL': true, 'SingleStore': true }} />
+## $returningId
+<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'SQLite': false, 'MySQL': true, 'SingleStore': true, 'MSSQL': false, 'CockroachDB': false }} />
 
 MySQL itself doesn't have native support for `RETURNING` after using `INSERT`. There is only one way to do it for `primary keys` with `autoincrement` (or `serial`) types, where you can access `insertId` and `affectedRows` fields. We've prepared an automatic way for you to handle such cases with Drizzle and automatically receive all inserted IDs as separate objects
 
@@ -21121,6 +25974,16 @@ const result = await db.insert(usersTableDefFn).values([{ name: 'John' }, { name
 
 > If there is no primary keys -> type will be `{}[]` for such queries
 
+## output
+<IsSupportedChipGroup chips={{ 'MSSQL': true }} />
+You can insert a row and get it back in PostgreSQL and SQLite like such:
+```typescript copy
+await db.insert(users).values({ name: "Dan" }).output();
+
+// partial return
+await db.insert(users).values({ name: "Partial Dan" }).output({ insertedId: users.id });
+```
+
 ## Insert multiple rows
 ```typescript copy
 await db.insert(users).values([{ name: 'Andrew' }, { name: 'Dan' }]);
@@ -21130,7 +25993,7 @@ await db.insert(users).values([{ name: 'Andrew' }, { name: 'Dan' }]);
 Drizzle ORM provides simple interfaces for handling upserts and conflicts.
 
 ### On conflict do nothing
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false, 'SingleStore': false, 'CockroachDB': true }} />
 
 `onConflictDoNothing` will cancel the insert if there's a conflict:
 
@@ -21207,7 +26070,7 @@ await db.insert(users)
 ```
 
 ### On duplicate key update
-<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'SQLite': false, 'MySQL': true, 'SingleStore': true }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'SQLite': false, 'MySQL': true, 'SingleStore': true, 'CockroachDB': false }} />
 
 MySQL supports [`ON DUPLICATE KEY UPDATE`](https://dev.mysql.com/doc/refman/8.0/en/insert-on-duplicate.html) instead of `ON CONFLICT` clauses. MySQL will automatically determine the conflict target based on the primary key and unique indexes, and will update the row if *any* unique index conflicts.
 
@@ -21814,9 +26677,8 @@ drizzle-kit generate --custom --name=seed-users
 ```plaintext {5}
 📦 <project root>
  ├ 📂 drizzle
- │ ├ 📂 _meta
- │ ├ 📜 0000_init.sql 
- │ └ 📜 0001_seed-users.sql 
+ │ ├ 📂 20242409125510_init_sql
+ │ └ 📂 20242409135510_delicate_seed-users
  ├ 📂 src
  └ …
 ```
@@ -23576,15 +28438,14 @@ Add `generate` and `migrate` commands to `package.json` and run our first migrat
 $ npm run generate
 ...
 
-[✓] Your SQL migration file ➜ drizzle/0000_pale_mister_fear.sql 🚀
+[✓] Your SQL migration file ➜ drizzle/20242409125510_pale_mister_fear/migration.sql 🚀
 ```
 
 Done! We now have our first SQL migration file 🥳
 ```plaintext {4}
 📦 <project root>
  ├ 📂 drizzle
- │ ├ 📂 _meta
- │ └ 📜 0000_pale_mister_fear.sql
+ │ ├ 📂 20242409125510_pale_mister_fear
  ├ 📂 src
  ├ 📜 drizzle.config.ts
  └ 📜 package.json
@@ -23610,7 +28471,7 @@ When your project involves a set of read replica instances, and you require a co
 SELECT queries from read replicas, as well as performing create, delete, and update operations on the primary 
 instance, you can leverage the `withReplicas()` function within Drizzle
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
 <Tab>
 ```ts copy
 import { sql } from 'drizzle-orm';
@@ -23723,6 +28584,47 @@ const read2 = drizzle({ client: read2Client });
 const db = withReplicas(primaryDb, [read1, read2]);
 ```
 </Tab>
+<Tab>
+```ts copy
+import { sql } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/mssql-postgres';
+import { boolean, mssqlTable, int, text, timestamp, withReplicas } from 'drizzle-orm/mssql-core';
+
+const usersTable = mssqlTable('users', {
+	id: int().primaryKey(),
+	name: text().notNull(),
+	verified: boolean().notNull().default(false),
+	createdAt: timestamp('created_at').notNull(),
+});
+
+const primaryDb = drizzle("postgres://user:password@host:port/primary_db");
+const read1 = drizzle("postgres://user:password@host:port/read_replica_1");
+const read2 = drizzle("postgres://user:password@host:port/read_replica_2");
+
+const db = withReplicas(primaryDb, [read1, read2]);
+```
+</Tab>
+<Tab>
+```ts copy
+import { sql } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/cockroach';
+import { boolean, jsonb, cockroachTable, int4, text, timestamp, withReplicas } from 'drizzle-orm/cockroach-core';
+
+const usersTable = cockroachTable('users', {
+	id: int4().primaryKey(),
+	name: text().notNull(),
+	verified: boolean().notNull().default(false),
+	jsonb: jsonb().$type<string[]>(),
+	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+});
+
+const primaryDb = drizzle("postgres://user:password@host:port/primary_db");
+const read1 = drizzle("postgres://user:password@host:port/read_replica_1");
+const read2 = drizzle("postgres://user:password@host:port/read_replica_2");
+
+const db = withReplicas(primaryDb, [read1, read2]);
+```
+</Tab>
 </Tabs>
 
 You can now use the `db` instance the same way you did before. Drizzle will 
@@ -23766,6 +28668,2661 @@ const db = withReplicas(primaryDb, [read1, read2], (replicas) => {
 
 await db.select().from(usersTable)
 ```
+
+Source: https://orm.drizzle.team/docs/relations-schema-declaration
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Callout from '@mdx/Callout.astro';
+import SimpleLinkCards from '@mdx/SimpleLinkCards.astro';
+import CodeTabs from "@mdx/CodeTabs.astro";
+import Section from '@mdx/Section.astro';
+import Flex from "@mdx/Flex.astro"
+import LinksList from "@mdx/LinksList.astro"
+
+# Drizzle Relations Fundamentals
+
+In the world of databases, especially relational databases, the concept of relations is absolutely fundamental.
+Think of "relations" as the connections and links between different pieces of data. Just like in real life, 
+where people have relationships with each other, or objects are related to categories, databases use relations to model how different 
+types of information are connected and work together.
+
+### Normalization
+Normalization is the process of organizing data in your database to reduce redundancy (duplication) and improve data integrity 
+(accuracy and consistency). Think of it like tidying up a messy filing cabinet. Instead of having all sorts of papers 
+crammed into one folder, you organize them into logical folders and categories to make everything easier to find and manage.
+
+<Callout collapsed="Why is Normalization Important?">
+- **Reduces Data Redundancy**: Imagine storing a customer's address every time they place an order. If the address changes, you'd have to update it in multiple places! Normalization helps you store information in one place and refer to it from other places, minimizing repetition.
+- **Improves Data Integrity**: Less redundancy means less chance of inconsistencies. If you update an address in one place, it's updated everywhere it's needed.
+- **Prevents Anomalies**: Normalization helps prevent issues like:
+  1. **Insertion Anomalies**: Difficulty adding new data because you're missing related information.
+  2. **Update Anomalies**: Having to update the same information in multiple rows.
+  3. **Deletion Anomalies**: Accidentally losing valuable information when you delete something seemingly unrelated.
+- **Easier to Understand and Maintain**: A normalized database is generally more logically structured and easier to understand, query, and modify.
+</Callout>
+
+Normalization is often described in terms of "normal forms" (1NF, 2NF, 3NF, and beyond). While the details can get quite technical, the core ideas are straightforward:
+
+#### 1NF (First Normal Form): `Atomic Values`
+
+**Goal**: Each column should hold a single, indivisible value. No repeating groups of data within a single cell
+
+**Example**: Instead of having a single `address` column that stores `123 Main St, City, USA`, you'd 
+break it down into separate columns: `street_address`, `city`, `state`, `zip_code`.
+
+```sql
+-- Unnormalized (violates 1NF)
+CREATE TABLE Customers_Unnormalized (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255) -- Problem: Multiple pieces of info in one column
+);
+
+-- Normalized to 1NF
+CREATE TABLE Customers_1NF (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(255),
+    street_address VARCHAR(255),
+    city VARCHAR(255),
+    state VARCHAR(255),
+    zip_code VARCHAR(10)
+);
+```
+
+#### 2NF (Second Normal Form): `Eliminate Redundant Data Dependent on Part of the Key`
+
+**Goal**: Applies when you have a table with a composite primary key (a primary key made up of two or more columns). 
+2NF ensures that all non-key attributes are fully dependent on the entire composite primary key, not just part of it.
+
+Imagine we have a table called `order_items`. This table tracks items within orders, and we use a composite primary key (`order_id`, `product_id`) 
+because a single order can have multiple of the same product (though in this simplified example, let's assume each product appears only 
+once per order for clarity, but the composite key logic still applies).
+
+<Callout collapsed="Expand for visual example">
+```sql
+CREATE TABLE OrderItems_Unnormalized (
+    order_id INT,
+    product_id VARCHAR(10),
+    product_name VARCHAR(100),
+    product_price DECIMAL(10, 2),
+    quantity INT,
+    order_date DATE,
+    PRIMARY KEY (order_id, product_id) -- Composite Primary Key
+);
+
+INSERT INTO OrderItems_Unnormalized (order_id, product_id, product_name, product_price, quantity, order_date) VALUES
+(101, 'A123', 'Laptop', 1200.00, 1, '2023-10-27'),
+(101, 'B456', 'Mouse', 25.00, 2, '2023-10-27'),
+(102, 'A123', 'Laptop', 1200.00, 1, '2023-10-28'),
+(103, 'C789', 'Keyboard', 75.00, 1, '2023-10-29');
+```
+```
++------------------------------------------------------------------------------------+
+| OrderItems_Unnormalized                                                            |
++------------------------------------------------------------------------------------+
+| PK (order_id, product_id) | product_name | product_price | quantity | order_date   |
++------------------------------------------------------------------------------------+
+| 101, A123               | Laptop       | 1200.00       | 1        | 2023-10-27     |
+| 101, B456               | Mouse        | 25.00         | 2        | 2023-10-27     |
+| 102, A123               | Laptop       | 1200.00       | 1        | 2023-10-28     |
+| 103, C789               | Keyboard     | 75.00         | 1        | 2023-10-29     |
++------------------------------------------------------------------------------------+
+```
+</Callout>
+
+**Problem**: Notice that `product_name` and `product_price` are repeated whenever the same `product_id` appears in different orders. 
+These attributes are only dependent on `product_id`, which is part of the composite primary key (`order_id`, `product_id`), but not the entire key. 
+This is a partial dependency.
+
+To achieve 2NF, we need to remove the partially dependent attributes (`product_name`, `product_price`) and place them in a separate table where they are 
+fully dependent on the primary key of that new table.
+
+<Callout collapsed="Normalization to 2NF: Visual explanation">
+```
++-------------------+     1:M     +---------------------------+
+| Products          | <---------- | OrderItems_2NF            |
++-------------------+             +---------------------------+
+| PK product_id     |             | PK (order_id, product_id) |
+| product_name      |             | quantity                  |
+| product_price     |             | order_date                |
++-------------------+             | FK product_id             |
+                                  +---------------------------+
+```
+```sql
+CREATE TABLE Products (
+    product_id VARCHAR(10) PRIMARY KEY,
+    product_name VARCHAR(100),
+    product_price DECIMAL(10, 2)
+);
+
+CREATE TABLE OrderItems_2NF (
+    order_id INT,
+    product_id VARCHAR(10),
+    quantity INT,
+    order_date DATE,
+    PRIMARY KEY (order_id, product_id), -- Composite Primary Key remains
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) -- Foreign Key to Products
+);
+
+-- Insert data into Products
+INSERT INTO Products (product_id, product_name, product_price) VALUES
+('A123', 'Laptop', 1200.00),
+('B456', 'Mouse', 25.00),
+('C789', 'Keyboard', 75.00);
+
+-- Insert data into OrderItems_2NF (referencing Products)
+INSERT INTO OrderItems_2NF (order_id, product_id, quantity, order_date) VALUES
+(101, 'A123', 1, '2023-10-27'),
+(101, 'B456', 2, '2023-10-27'),
+(102, 'A123', 1, '2023-10-28'),
+(103, 'C789', 1, '2023-10-29');
+```
+</Callout>
+
+#### 3NF (Third Normal Form): `Eliminate Redundant Data Dependent on Non-Key Attributes`
+
+**Goal**: Remove data that is dependent on other non-key attributes. This is about eliminating transitive dependencies.
+
+**Problem**: Let's say we have a `suppliers` table. We store supplier information, including their `zip_code`, `city`, and `state`. `supplier_id` is the primary key.
+
+<Callout collapsed="">
+```sql
+CREATE TABLE suppliers (
+    supplier_id VARCHAR(10) PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    zip_code VARCHAR(10),
+    city VARCHAR(100),
+    state VARCHAR(50)
+);
+
+INSERT INTO suppliers (supplier_id, supplier_name, zip_code, city, state) VALUES
+('S1', 'Acme Corp', '12345', 'Anytown', 'NY'),
+('S2', 'Beta Inc', '67890', 'Otherville', 'CA'),
+('S3', 'Gamma Ltd', '12345', 'Anytown', 'NY');
+```
+```
++---------------------------------------------------------------+
+| suppliers                                                     |
++---------------------------------------------------------------+
+| PK supplier_id | supplier_name | zip_code | city      | state |
++---------------------------------------------------------------+
+| S1             | Acme Corp     | 12345    | Anytown    | NY   |
+| S2             | Beta Inc      | 67890    | Otherville | CA   |
+| S3             | Gamma Ltd     | 12345    | Anytown    | NY   |
++---------------------------------------------------------------+
+```
+</Callout>
+
+**Solution**: To achieve 3NF, we remove the attributes dependent on the non-key attribute (`city`, `state` dependent on `zip_code`) and put 
+them into a separate table keyed by the non-key attribute itself (`zip_code`).
+
+<Callout collapsed="Normalization to 3NF: Visual explanation">
+```
++-------------------+     1:M     +--------------------+
+| zip_codes         | <---------- | suppliers          |
++-------------------+             +--------------------+
+| PK zip_code       |             | PK supplier_id     |
+| city              |             | supplier_name      |
+| state             |             | FK zip_code        |
++-------------------+             +--------------------+
+```
+```sql
+CREATE TABLE zip_codes (
+    zip_code VARCHAR(10) PRIMARY KEY,
+    city VARCHAR(100),
+    state VARCHAR(50)
+);
+
+CREATE TABLE suppliers (
+    supplier_id VARCHAR(10) PRIMARY KEY,
+    supplier_name VARCHAR(255),
+    zip_code VARCHAR(10), -- Foreign Key to zip_codes
+    FOREIGN KEY (zip_code) REFERENCES zip_codes(zip_code)
+);
+
+-- Insert data into zip_codes
+INSERT INTO zip_codes (zip_code, city, state) VALUES
+('12345', 'Anytown', 'NY'),
+('67890', 'Otherville', 'CA');
+
+-- Insert data into suppliers (referencing zip_codes)
+INSERT INTO suppliers (supplier_id, supplier_name, zip_code) VALUES
+('S1', 'Acme Corp', '12345'),
+('S2', 'Beta Inc', '67890'),
+('S3', 'Gamma Ltd', '12345');
+```
+</Callout>
+
+<Callout title="Good to know">
+There are additional normal forms, such as `4NF`, `5NF`, `6NF`, `EKNF`, `ETNF`, and `DKNF`. We won't cover these here, but we will create a 
+dedicated set of tutorials for them in our guides and tutorials section.
+</Callout>
+
+### Database Relationships
+#### One-to-One
+
+In a one-to-one relationship, each record in `table A` is related to at most one record in `table B`, and each record in `table B` is
+related to at most one record in `table A`. It's a very direct, exclusive pairing.
+
+<Callout collapsed="Use Cases & Examples">
+1. **User Profiles and User Account Details**: Think of a website. Each user account (in a Users table) might have exactly one user profile (in a UserProfiles table) containing more detailed information.
+2. **Employees and Parking Spaces**: An Employees table and a ParkingSpaces table. Each employee might be assigned at most one parking space, and each parking space is assigned to at most one employee.
+3. **Splitting Tables for Organization**: Sometimes, you might split a very wide table into two for better organization or security reasons, maintaining a 1-1 relationship between them.
+
+```
+Table A (One Side)      Table B (One Side)
++---------+             +---------+
+| PK (A)  | <---------> | FK (A)  | (Foreign Key referencing Table A)
+| ...     |             | ...     |
++---------+             +---------+
+```
+</Callout>
+
+
+#### One-to-Many
+
+In a one-to-many relationship, one record in `table A` can be related to many records in `table B`, but each 
+record in `table B` is related to at most one record in `table A`. Think of it as a "parent-child" relationship.
+
+<Callout collapsed="Use Cases & Examples">
+1. **Customers and Orders**: One customer can place many orders, but each order belongs to only one customer.
+2. **Authors and Books**: One author can write many books, but (let's simplify for now and say) each book is written by one primary author.
+3. **Departments and Employees**: One department can have many employees, but each employee belongs to only one department.
+
+```
+Table A (One Side)      Table B (Many Side)
++---------+             +---------+
+| PK (A)  | ----------> | FK (A)  | (Foreign Key referencing Table A)
+| ...     |             | ...     |
++---------+             +---------+
+     (One)                  (Many)
+```
+</Callout>
+
+#### Many-to-Many
+
+In a many-to-many relationship, one record in `table A` can be related to many records in `table B`, and one 
+record in `table B` can be related to many records in `table A`. It's a more complex, bidirectional relationship.
+
+<Callout collapsed="Use Cases & Examples">
+1. **Students and Courses**: One student can enroll in many courses, and one course can have many students enrolled.
+2. **Products and Categories**: One product can belong to multiple categories (e.g., a "T-shirt" can be
+in "Clothing" and "Summer Wear" categories), and one category can contain many products.
+3. **Authors and Books**: A book can be written by multiple authors, and an author can write multiple books.
+
+```
+Table A (Many Side)    Junction Table      Table B (Many Side)
++---------+          +-------------+     +---------+
+| PK (A)  | -------->| FK (A)      | <----| FK (B)  |
+| ...     |          | FK (B)      |     | ...     |
++---------+          +-------------+     +---------+
+     (Many)             (Junction)          (Many)
+```
+</Callout>
+
+Many-to-many relationships are not directly implemented with foreign keys between the two main tables. 
+Instead, you need a `junction` table (also called an associative table or bridging table). 
+This table acts as an intermediary to link records from both tables.
+
+```sql
+-- Table for Students (Many side)
+CREATE TABLE students (
+    iid INT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- Table for Courses (Many side)
+CREATE TABLE courses (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    credits INT
+);
+
+-- Junction Table: Enrollments (Connects Students and Courses - M-M relationship)
+CREATE TABLE enrollments (
+    id INT PRIMARY KEY AUTO_INCREMENT, -- Optional, but good practice for junction tables
+    student_id INT,
+    course_id INT,
+    enrollment_date DATE,
+    -- Composite Foreign Keys (often part of a composite primary key or unique constraint)
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (course_id) REFERENCES courses(id),
+    UNIQUE KEY (student_id, course_id) -- Prevent duplicate enrollments for the same student and course
+);
+```
+
+### Why Foreign Keys?
+
+You might think of foreign key constraints as simply a way to validate data - ensuring 
+that when you enter a value in a foreign key column, that value actually exists in the primary key 
+column of another table. And you'd be partially right! This value checking is the mechanism foreign keys use.
+
+But it's crucial to understand that this validation is not the end goal, it's the means 
+to a much larger purpose. Foreign key constraints are fundamentally about:
+
+<Callout collapsed="1. Explicitly Defining and Enforcing Relationships">
+
+We've discussed relationships like `One-to-Many` between Customers and Orders. 
+A foreign key is the SQL language's way of telling the database: 
+
+> Hey database, I want to enforce a 1-M relationship here. Every value in the customer_id column of the
+Orders table must correspond to a valid customer_id in the Customers table.
+
+It's not just a suggestion; it's a constraint the database actively enforces. 
+The database becomes relationship-aware because of the foreign key.
+</Callout>
+
+<Callout collapsed="2. Maintaining Referential Integrity">
+- This is the core of "data integrity" in the context of relationships. Referential integrity means 
+that relationships between tables remain consistent and valid over time.
+- Foreign keys prevent orphaned records. What's an orphaned record? In our Customer-Order example, 
+an order that exists in the Orders table but doesn't have a corresponding customer in the Customers 
+table would be an orphan. Foreign keys prevent this from happening (or control what happens 
+if you try to delete a customer with orders - via CASCADE, SET NULL, etc.).
+- Why is preventing orphans important? Orphaned records break the logical structure of your data. 
+If you have an order without a customer, you lose crucial context. Queries become unreliable, reports
+ become inaccurate, and your application's logic can break down.
+
+**Example**:
+```
+Without a foreign key, you could accidentally delete a customer from the Customers 
+table while their orders still exist in the Orders table. Suddenly, you have orders that point to 
+a customer that no longer exists! A foreign key constraint prevents this data inconsistency.
+```
+</Callout>
+
+<Callout collapsed="3. Facilitating Database Design and Understanding">
+- Foreign keys are not just about technical enforcement; they are also a crucial part of database design documentation.
+- When you see a foreign key in a database schema, it immediately tells you: 
+`Table 'X' is related to Table 'Y' in this way.` It's a clear visual and structural indicator of relationships.
+- This makes databases easier to understand, maintain, and evolve over time. New developers can quickly 
+grasp how different parts of the database are connected.
+</Callout>
+
+In essence, foreign key constraints are not just about checking values; they are about:
+
+1. Defining the rules of your data relationships
+2. Actively enforcing those rules at the database level
+3. Guaranteeing data integrity and consistency within those relationships
+4. Making your database more robust, reliable, and understandable
+
+### Why NOT Foreign Keys?
+
+While highly beneficial, there are some scenarios where you might reconsider or use Foreign Keys with caution. 
+These are typically edge cases and often involve trade-offs.
+
+<Callout collapsed="1. Performance Overhead in Very High-Write Environments">
+- **Scenario**: Extremely high-volume transactional systems (e.g., real-time logging, very high-frequency trading
+platforms, massive IoT data ingestion).
+- **Explanation**: Every time you insert or update data in a table with a foreign key, the database system 
+needs to perform checks to ensure referential integrity. In extremely high-write scenarios, these 
+checks can introduce a small but potentially noticeable performance overhead.
+</Callout>
+
+<Callout collapsed="2. Distributed Database Systems and Cross-Node Foreign Keys:">
+- **Scenario**: Systems where data is distributed across multiple database nodes or clusters (common in sharded databases, cloud environments, and microservices).
+- **Explanation**:  Cross-node foreign keys can introduce significant complexity and performance overhead. Validating referential integrity requires communication between nodes, leading to increased latency. Distributed transactions needed to maintain consistency are also more complex and can be less performant than local transactions. In such architectures, application-level data integrity checks or eventual consistency models might be considered alternatives.
+</Callout>
+
+<Callout collapsed="3. Legacy Systems and Data Integration with Non-Relational Data:">
+- **Scenario**: Integrating a relational database with older legacy systems or non-relational data stores (e.g., NoSQL, flat files, external APIs).
+- **Explanation**:  Legacy systems or non-relational data might not consistently adhere to the referential integrity rules enforced by foreign keys.  Imposing foreign keys in such scenarios can lead to data import issues, data inconsistencies, and might necessitate complex data transformation or application-level integrity management instead. You might need to carefully evaluate the data quality and consistency of the external sources and potentially rely on application logic or ETL processes to ensure data integrity instead of strictly enforcing foreign keys at the database level.
+</Callout>
+
+You can also check out some great explanations from the PlanetScale team in their [article](https://planetscale.com/docs/learn/operating-without-foreign-key-constraints#why-does-planetscale-not-recommend-constraints)
+
+### Polymorphic Relations
+
+Polymorphic relationships are a more advanced concept that allows a single relationship to point to 
+different types of entities or tables. It's about creating more flexible and adaptable relationships when 
+you have different kinds of data that share some commonality.
+
+Imagine you have an `activities` log. An activity could be a `comment` a `like` or a `share`.
+Each of these `activity` types has different details. Instead of creating separate tables and 
+relationships for each activity type and the things they relate to, you might use a polymorphic approach.
+
+<Callout collapsed="Common Scenarios & Examples">
+- **Comments/Reviews**: A "Comment" might be related to different types of content: articles, products, videos, etc. 
+Instead of having separate article_id, product_id, video_id columns in a Comments table, you can use a 
+polymorphic relationship.
+```
++---------------------+
+| **Comments**        |
++---------------------+
+| PK comment_id       |
+| commentable_type    | ------>  [Polymorphic Relationship]
+| commentable_id      | -------->
+| user_id             |
+| comment_text        |
+| ...                 |
++---------------------+
+          ^
+          |
++---------------------+    +---------------------+    +---------------------+
+| **Articles**        |    | **Products**        |    | **Videos**          |
++---------------------+    +---------------------+    +---------------------+
+| PK article_id       |    | PK product_id       |    | PK video_id         |
+| ...                 |    | ...                 |    | ...                 |
++---------------------+    +---------------------+    +---------------------+
+```
+- **Notifications:** A notification could be related to a user, an order, a system event, etc.
+```
++----------------------+
+| **Notifications**    |
++----------------------+
+| PK notification_id  |
+| notifiable_type     | ------>  [Polymorphic Relationship]
+| notifiable_id       | -------->
+| user_id             |
+| message             |
+| ...                  |
++----------------------+
+           ^
+           |
++---------------------+    +---------------------+    +-----------------------+
+| **Users**           |    | **Orders**          |    | **System Events**     |
++---------------------+    +---------------------+    +-----------------------+
+| PK user_id          |    | PK order_id         |    | PK event_id           |
+| ...                 |    | ...                 |    | ...                   |
++---------------------+    +---------------------+    +-----------------------+
+```
+</Callout>
+
+Polymorphic relationships are more complex and are often handled at the application level or 
+using more advanced database features (depending on the specific database system). Standard SQL doesn't 
+have direct, built-in support for enforcing polymorphic foreign key constraints in the same way as regular foreign keys.
+
+Source: https://orm.drizzle.team/docs/relations-v1-v2
+
+import Callout from '@mdx/Callout.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import Section from '@mdx/Section.astro';
+import Npx from "@mdx/Npx.astro";
+import Npm from "@mdx/Npm.astro";
+import CodeTabs from '@mdx/CodeTabs.astro';
+import CodeTab from '@mdx/CodeTab.astro';
+
+# Migrating to Relational Queries version 2
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.1` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+<Prerequisites>
+- **Drizzle Relations v1** - [read here](/docs/relations)
+- **Relational Queries v1** - [read here](/docs/rqb)
+- **drizzle-kit pull** - [read here](/docs/drizzle-kit-pull)
+- **Relations Fundamentals** - [read here](/docs/relations-schema-declaration)
+</Prerequisites>
+
+<Callout>
+Below is the table of contents. Click an item to jump to that section:
+
+- [What is working differently from v1](#what-was-changed-and-is-working-differently-from-v1)  
+- [New features in v2](2#what-is-new)  
+- [How to migrate relations definition from v1 to v2](#how-to-migrate-relations-schema-definition-from-v1-to-v2)  
+- [How to migrate queries from v1 to v2](#how-to-migrate-queries-from-v1-to-v2)  
+- [Partial upgrade, or how to stay on v1 even after an upgrade?](#partial-upgrade-or-how-to-stay-on-rqb-v1-even-after-an-upgrade)  
+- [Internal changes(imports, internal types, etc.)](#internal-changes)
+</Callout>
+
+### API changes
+#### What is working differently from v1
+
+{/* ##### Drizzle Relations schema definition */}
+
+One of the biggest updates were in **Relations Schema definition**
+
+The first difference is that you no longer need to specify `relations` for each table separately in different objects and 
+then pass them all to `drizzle()` along with your schema. In Relational Queries v2, you now have one dedicated place to
+specify all the relations for all the tables you need. 
+
+The `r` parameter in the callback provides comprehensive autocomplete 
+functionality - including all tables from your schema and functions such as `one`, `many`, and `through` - essentially 
+offering everything you need to specify your relations.
+
+```ts
+// relations.ts
+import * as schema from "./schema"
+import { defineRelations } from "drizzle-orm"
+
+export const relations = defineRelations(schema, (r) => ({
+    ...
+}));
+```
+```ts
+// index.ts
+import { relations } from "./relations"
+import { drizzle } from "drizzle-orm/..."
+
+const db = drizzle(process.env.DATABASE_URL, { relations })
+```
+
+##### What is different?
+
+<Callout collapsed="Schema Definition">
+```ts copy {21-28}
+import * as p from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text(),
+	invitedBy: p.integer('invited_by'),
+});
+
+export const posts = p.pgTable('posts', {
+	id: p.integer().primaryKey(),
+	content: p.text(),
+	authorId: p.integer('author_id'),
+});
+```
+</Callout>
+
+**One place for all your relations**
+
+<Callout title="❌ v1">
+```ts
+import { relations } from "drizzle-orm/_relations";
+import { users, posts } from './schema';
+
+export const usersRelation = relations(users, ({ one, many }) => ({
+  invitee: one(users, {
+    fields: [users.invitedBy],
+    references: [users.id],
+  }),
+  posts: many(posts),
+}));
+
+export const postsRelation = relations(posts, ({ one, many }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+  }),
+}));
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+import { defineRelations } from "drizzle-orm";
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    invitee: r.one.users({
+      from: r.users.invitedBy,
+      to: r.users.id,
+    }),
+    posts: r.many.posts(),
+  },
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  },
+}));
+```
+</Callout>
+
+You can still separate it into different `parts`, and you can make the parts any size you want
+
+```ts
+import { defineRelations, defineRelationsPart } from 'drizzle-orm';
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    invitee: r.one.users({
+      from: r.users.invitedBy,
+      to: r.users.id,
+    }),
+    posts: r.many.posts(),
+  }
+}));
+
+export const part = defineRelationsPart(schema, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  }
+}));
+```
+
+and then you can provide it to the db instance
+
+```ts
+const db = drizzle(process.env.DB_URL, { relations: { ...relations, ...part } })
+```
+
+**Define `many` without `one`**
+
+In v1, if you wanted only the `many` side of a relationship, you had to specify the `one` side on the other end, 
+which made for a poor developer experience.
+
+In v2, you can simply use the `many` side without any additional steps
+
+<Callout title="❌ v1">
+```ts
+import { relations } from "drizzle-orm/_relations";
+import { users, posts } from './schema';
+
+export const usersRelation = relations(users, ({ one, many }) => ({
+  posts: many(posts),
+}));
+
+export const postsRelation = relations(posts, ({ one, many }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+  }),
+}));
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+import { defineRelations } from "drizzle-orm";
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    posts: r.many.posts({
+      from: r.users.id,
+      to: r.posts.authorId,
+    }),
+  },
+}));
+```
+</Callout>
+
+**New `optional` option**
+
+`optional: false` at the type level makes the `author` key in the `posts` object required. 
+This should be used when you are certain that this specific entity will always exist.
+
+<Callout title="❌ v1">
+Was not supported in v1
+</Callout>
+
+<Callout title='✅ v2'>
+```ts {9}
+import { defineRelations } from "drizzle-orm";
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    posts: r.many.posts({
+      from: r.users.id,
+      to: r.posts.authorId,
+      optional: false,
+    }),
+  },
+}));
+```
+</Callout>
+
+**No modes in `drizzle()`**
+
+We found a way to use the same strategy for all MySQL dialects, so there's no need to specify them
+
+<Callout title="❌ v1">
+```ts
+import * as schema from './schema'
+
+const db = drizzle(process.env.DATABASE_URL, { mode: "planetscale", schema });
+// or
+const db = drizzle(process.env.DATABASE_URL, { mode: "default", schema });
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+import { relations } from './relations'
+
+const db = drizzle(process.env.DATABASE_URL, { relations });
+```
+</Callout>
+
+**`from` and `to` upgrades**
+
+We've renamed `fields` to `from` and `references` to `to`, and we made both accept either a single value or an array
+
+<Callout title="❌ v1">
+```ts
+...
+author: one(users, {
+  fields: [posts.authorId],
+  references: [users.id],
+}),
+...
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+... 
+author: r.one.users({
+  from: r.posts.authorId,
+  to: r.users.id,
+}),
+...
+```
+```ts
+... 
+author: r.one.users({
+  from: [r.posts.authorId],
+  to: [r.users.id],
+}),
+...
+```
+</Callout>
+
+**`relationName` -> `alias`**
+
+<Callout title="❌ v1">
+```ts
+import { relations } from "drizzle-orm/_relations";
+import { users, posts } from './schema';
+
+export const postsRelation = relations(posts, ({ one }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+	  relationName: "author_post",
+  }),
+}));
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+import { defineRelations } from "drizzle-orm";
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+      alias: "author_post",
+    }),
+  },
+}));
+```
+</Callout>
+
+**`custom types` new functions**
+
+There are a few new function were added to custom types, so you can control how data is mapped on Relational Queries v2:
+
+<Callout collapsed='fromJson'>
+Optional mapping function, that is used for transforming data returned by transformed to JSON in database data to desired format
+For example, when querying bigint column via [RQB](https://orm.drizzle.team/docs/rqb-v2) or [JSON functions](https://orm.drizzle.team/docs/json-functions), the result field will be returned as it's string representation, as opposed to bigint from regular query
+To handle that, we need a separate function to handle such field's mapping:
+```ts
+fromJson(value: string): bigint {
+	return BigInt(value);
+},
+```
+It'll cause the returned data to change from:
+```ts
+{
+	customField: "5044565289845416380";
+}
+```
+to:
+```ts
+{
+	customField: 5044565289845416380n;
+}
+```
+</Callout> 
+<Callout collapsed='forJsonSelect'>
+Optional selection modifier function, that is used for modifying selection of column inside [JSON functions](https://orm.drizzle.team/docs/json-functions)
+Additional mapping that could be required for such scenarios can be handled using fromJson function
+Used by [relational queries](https://orm.drizzle.team/docs/rqb-v2)
+
+For example, when using bigint we need to cast field to text to preserve data integrity
+```ts
+forJsonSelect(identifier: SQL, sql: SQLGenerator, arrayDimensions?: number): SQL {
+	return sql`${identifier}::text`
+},
+```
+This will change query from:
+```sql
+SELECT
+	row_to_json("t".*)
+	FROM
+	(
+		SELECT
+		"table"."custom_bigint" AS "bigint"
+		FROM
+		"table"
+	) AS "t"
+```
+to:
+```sql
+SELECT
+	row_to_json("t".*)
+	FROM
+	(
+		SELECT
+		"table"."custom_bigint"::text AS "bigint"
+		FROM
+		"table"
+	) AS "t"
+```
+Returned by query object will change from:
+```ts
+{
+	bigint: 5044565289845416000; // Partial data loss due to direct conversion to JSON format
+}
+```
+to:
+```ts
+{
+	bigint: "5044565289845416380"; // Data is preserved due to conversion of field to text before JSON-ification
+}
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+const customBytes = customType<{
+ 	data: Buffer;
+ 	driverData: Buffer;
+ 	jsonData: string;
+ }>({
+ 	dataType: () => 'bytea',
+ 	fromJson: (value) => {
+ 		return Buffer.from(value.slice(2, value.length), 'hex');
+ 	},
+ 	forJsonSelect: (identifier, sql, arrayDimensions) =>
+ 		sql`${identifier}::text${sql.raw('[]'.repeat(arrayDimensions ?? 0))}`,
+ });
+```
+
+</Callout>
+
+##### What is new?
+
+**`through` for many-to-many relations**
+
+Previously, you would need to query through a junction table and then map it out for every response
+
+You don't need to do it now!
+
+<Callout collapsed='Schema'>
+```ts
+import * as p from "drizzle-orm/pg-core";
+
+export const users = p.pgTable("users", {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+  verified: p.boolean().notNull(),
+});
+
+export const groups = p.pgTable("groups", {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const usersToGroups = p.pgTable(
+  "users_to_groups",
+  {
+    userId: p
+      .integer("user_id")
+      .notNull()
+      .references(() => users.id),
+    groupId: p
+      .integer("group_id")
+      .notNull()
+      .references(() => groups.id),
+  },
+  (t) => [p.primaryKey({ columns: [t.userId, t.groupId] })]
+);
+```
+</Callout>
+
+<Callout title="❌ v1">
+```ts
+export const usersRelations = relations(users, ({ many }) => ({
+  usersToGroups: many(usersToGroups),
+}));
+
+export const groupsRelations = relations(groups, ({ many }) => ({
+  usersToGroups: many(usersToGroups),
+}));
+
+export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
+  group: one(groups, {
+    fields: [usersToGroups.groupId],
+    references: [groups.id],
+  }),
+  user: one(users, {
+    fields: [usersToGroups.userId],
+    references: [users.id],
+  }),
+}));
+```
+```ts
+// Query example
+const response = await db.query.users.findMany({
+  with: {
+    usersToGroups: {
+      columns: {},
+      with: {
+        group: true,
+      },
+    },
+  },
+});
+```
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+import * as schema from './schema';
+import { defineRelations } from 'drizzle-orm';
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    groups: r.many.groups({
+      from: r.users.id.through(r.usersToGroups.userId),
+      to: r.groups.id.through(r.usersToGroups.groupId),
+    }),
+  },
+  groups: {
+    participants: r.many.users(),
+  },
+}));
+```
+```ts
+// Query example
+const response = await db.query.users.findMany({
+  with: {
+    groups: true,
+  },
+});
+```
+</Callout>
+
+**Predefined filters**
+
+<Callout title="❌ v1">
+Was not supported in v1
+</Callout>
+
+<Callout title='✅ v2'>
+```ts {10-12}
+import * as schema from './schema';
+import { defineRelations } from 'drizzle-orm';
+
+export const relations = defineRelations(schema,
+  (r) => ({
+    groups: {
+      verifiedUsers: r.many.users({
+        from: r.groups.id.through(r.usersToGroups.groupId),
+        to: r.users.id.through(r.usersToGroups.userId),
+        where: {
+          verified: true,
+        },
+      }),
+    },
+  })
+);
+```
+```ts {4}
+// Query example: get groups with all verified users
+const response = await db.query.groups.findMany({
+  with: {
+    verifiedUsers: true,
+  },
+});
+```
+</Callout>
+
+##### `where` is now object
+
+<Callout title="❌ v1">
+```ts
+const response = db._query.users.findMany({
+  where: (users, { eq }) => eq(users.id, 1),
+});
+```
+</Callout>
+
+<Callout title="✅ v2">
+```ts
+const response = db.query.users.findMany({
+  where: {
+    id: 1,
+  },
+});
+```
+
+For a complete API Reference please check our [Select Filters docs](/docs/rqb-v2#select-filters)
+</Callout>
+
+<Callout collapsed='Complex filter example using RAW'>
+```ts
+// schema.ts
+import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+
+export const users = pgTable("users", {
+  id: integer("id").primaryKey(),
+  name: text("name"),
+  email: text("email").notNull(),
+  age: integer("age"),
+  createdAt: timestamp("created_at").defaultNow(),
+  lastLogin: timestamp("last_login"),
+  subscriptionEnd: timestamp("subscription_end"),
+  lastActivity: timestamp("last_activity"),
+  preferences: jsonb("preferences"),      // JSON column for user settings/preferences
+  interests: text("interests").array(),     // Array column for user interests
+});
+```
+```ts
+const response = db.query.users.findMany({
+  where: {
+    AND: [
+      {
+        OR: [
+          { RAW: (table) => sql`LOWER(${table.name}) LIKE 'john%'` },
+          { name: { ilike: "jane%" } },
+        ],
+      },
+      {
+        OR: [
+          { RAW: (table) => sql`${table.preferences}->>'theme' = 'dark'` },
+          { RAW: (table) => sql`${table.preferences}->>'theme' IS NULL` },
+        ],
+      },
+      { RAW: (table) => sql`${table.age} BETWEEN 25 AND 35` },
+    ],
+  },
+});
+```
+</Callout>
+
+##### `orderBy` is now object
+
+<Callout title="❌ v1">
+```ts
+const response = db._query.users.findMany({
+  orderBy: (users, { asc }) => [asc(users.id)],
+});
+```
+</Callout>
+
+<Callout title="✅ v2">
+```ts
+const response = db.query.users.findMany({
+  orderBy: { id: "asc" },
+});
+```
+</Callout>
+
+##### Filtering by relations
+
+<Callout title="❌ v1">
+Was not supported in v1
+</Callout>
+
+<Callout title='✅ v2'>
+Example: Get all users whose ID>10 and who have at least one post with content starting with “M”
+
+```ts
+const usersWithPosts = await db.query.usersTable.findMany({
+  where: {
+    id: {
+      gt: 10
+    },
+    posts: {
+      content: {
+        like: 'M%'
+      }
+    }
+  },
+});
+```
+</Callout>
+
+##### Using offset on related objects
+
+<Callout title="❌ v1">
+Was not supported in v1
+</Callout>
+
+<Callout title='✅ v2'>
+```ts
+await db.query.posts.findMany({
+	limit: 5,
+	offset: 2, // correct ✅
+	with: {
+		comments: {
+			offset: 3, // correct ✅
+			limit: 3,
+		},
+	},
+});
+```
+</Callout>
+
+#### How to migrate relations schema definition from v1 to v2
+
+##### **Option 1**: Using `drizzle-kit pull`
+
+In new version `drizzle-kit pull` supports pulling `relations.ts` file in a new syntax:
+
+##### Step 1
+
+<Npx>
+drizzle-kit pull
+</Npx>
+
+#### Step 2 
+
+Transfer generated relations code from `drizzle/relations.ts` to the file you are using to specify your relations 
+```plaintext {4-5}
+ ├ 📂 drizzle
+ │ ├ 📂 meta
+ │ ├ 📜 migration.sql
+ │ ├ 📜 relations.ts ────────┐
+ │ └ 📜 schema.ts            |
+ ├ 📂 src                    │ 
+ │ ├ 📂 db                   │
+ │ │ ├ 📜 relations.ts <─────┘
+ │ │ └ 📜 schema.ts 
+ │ └ 📜 index.ts         
+ └ …
+```
+
+<Callout>
+`drizzle/relations.ts` includes an import of all tables from `drizzle/schema.ts`, which looks like this:
+```ts
+import * as schema from './schema'
+```
+
+You may need to change this import to a file where ALL your schema tables are located. 
+
+If there are multiple schema files, you can do the following:
+```ts
+import * as schema1 from './schema1'
+import * as schema2 from './schema2'
+...
+```
+</Callout>
+
+#### Step 3
+
+Change drizzle database instance creation and provide `relations` object instead of `schema`
+
+<Callout title='Before'>
+```ts
+import * as schema from './schema'
+import { drizzle } from 'drizzle-orm/...'
+
+const db = drizzle('<url>', { schema })
+```
+</Callout>
+
+<Callout title='After'>
+```ts
+// should be imported from a file in Step 2
+import { relations } from './relations'
+import { drizzle } from 'drizzle-orm/...'
+
+const db = drizzle('<url>', { relations })
+```
+</Callout>
+
+<Callout>
+If you had MySQL dialect, you can remove `mode` from `drizzle()` as long as it's not needed in version 2
+</Callout>
+
+
+##### Manual migration
+
+If you want to migrate manually, you can check our [Drizzle Relations section](/docs/relations-v2) for the complete API reference and examples of one-to-one, one-to-many, and many-to-many relations.
+
+#### How to migrate queries from v1 to v2
+
+##### Migrate `where` statements
+
+You can check our [Select Filters docs](/docs/rqb-v2#select-filters) to see examples and a complete API reference.
+
+With the new syntax, you can use `AND`, `OR`, `NOT`, and `RAW`, plus all the filtering operators that 
+were previously available in Relations v1.
+
+**Examples**
+<CodeTabs items={["simple eq", "using AND", "using OR", "using NOT", "complex example using RAW"]}>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    age: 15,
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name"
+from "users" 
+where ("users"."age" = $1)
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    age: 15,
+    name: 'John'
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name"
+from "users" 
+where ("users"."age" = $1 and "users"."name" = $2)
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = await db.query.users.findMany({
+  where: {
+    OR: [
+      {
+        id: {
+          gt: 10,
+        },
+      },
+	  {
+		name: {
+          like: "John%",
+        },
+	  }
+    ],
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name" 
+from "users" 
+where ("users"."id" > $1 or "users"."name" like $2)
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    NOT: {
+      id: {
+        gt: 10,
+      },
+    },
+    name: {
+      like: "John%",
+    },
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name" 
+from "users" 
+where (not "users"."id" > $1 and "users"."name" like $2)
+```
+</CodeTab>
+<CodeTab>
+```ts
+// schema.ts
+import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+
+export const users = pgTable("users", {
+  id: integer("id").primaryKey(),
+  name: text("name"),
+  email: text("email").notNull(),
+  age: integer("age"),
+  createdAt: timestamp("created_at").defaultNow(),
+  lastLogin: timestamp("last_login"),
+  subscriptionEnd: timestamp("subscription_end"),
+  lastActivity: timestamp("last_activity"),
+  preferences: jsonb("preferences"),      // JSON column for user settings/preferences
+  interests: text("interests").array(),     // Array column for user interests
+});
+```
+```ts
+const response = db.query.users.findMany({
+  where: {
+    AND: [
+      {
+        OR: [
+          { RAW: (table) => sql`LOWER(${table.name}) LIKE 'john%'` },
+          { name: { ilike: "jane%" } },
+        ],
+      },
+      {
+        OR: [
+          { RAW: (table) => sql`${table.preferences}->>'theme' = 'dark'` },
+          { RAW: (table) => sql`${table.preferences}->>'theme' IS NULL` },
+        ],
+      },
+      { RAW: (table) => sql`${table.age} BETWEEN 25 AND 35` },
+    ],
+  },
+});
+```
+```sql
+```
+</CodeTab>
+</CodeTabs>
+
+##### Migrate `orderBy` statements
+
+Order by was simplified to a single object, where you specify the column and the sort direction (`asc` or `desc`)
+
+<Callout title="❌ v1">
+```ts
+const response = db._query.users.findMany({
+  orderBy: (users, { asc }) => [asc(users.id)],
+});
+```
+</Callout>
+
+<Callout title="✅ v2">
+```ts
+const response = db.query.users.findMany({
+  orderBy: { id: "asc" },
+});
+```
+</Callout>
+
+##### Migrate `many-to-many` queries
+
+Relational Queries v1 had a very complex way of managing many-to-many queries.
+You had to use junction tables to query through them explicitly, and then map those tables out, like this:
+
+```ts
+const response = await db.query.users.findMany({
+  with: {
+    usersToGroups: {
+      columns: {},
+      with: {
+        group: true,
+      },
+    },
+  },
+});
+```
+
+After upgrading to Relational Queries v2, your many-to-many relation will look like this:
+
+```ts
+import * as schema from './schema';
+import { defineRelations } from 'drizzle-orm';
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    groups: r.many.groups({
+      from: r.users.id.through(r.usersToGroups.userId),
+      to: r.groups.id.through(r.usersToGroups.groupId),
+    }),
+  },
+  groups: {
+    participants: r.many.users(),
+  },
+}));
+```
+
+And when you migrate your query, it will become this:
+
+```ts
+// Query example
+const response = await db.query.users.findMany({
+  with: {
+    groups: true,
+  },
+});
+```
+
+#### Partial upgrade or how to stay on RQB v1 even after an upgrade?
+
+We've made an upgrade in a way, that all previous queries and relations definitions are still available for you. In this case you can migrate your codebase query by query without a need for a huge refactoring
+
+##### Step 1: Change relations import
+
+To define relations using Relational Queries v1, you would need to import it from `drizzle-orm`
+
+<Callout type='error' title='v1'>
+```ts
+import { relations } from 'drizzle-orm';
+```
+</Callout>
+
+In Relational Queries v2 we moved it to `drizzle-orm/_relations` to give you some time for a migration
+
+<Callout title='v2'>
+```ts
+import { relations } from "drizzle-orm/_relations";
+```
+</Callout>
+
+##### Step 2: Replace your queries to `._query`
+
+To use Relational Queries v1 you had to write `db.query.`
+
+<Callout type='error' title='v1'>
+```ts
+await db.query.users.findMany();
+```
+</Callout>
+
+In Relational Queries v2, we moved it to `db._query` so that `db.query` could be used for a new syntax, 
+while still giving you the option to use the old syntax via `db._query`.
+
+We had a long discussion about whether we should just deprecate `db.query` and replace it with 
+something like `db.query2` or `db.queryV2`. In the end, we decided that all new APIs should remain 
+as simple as `db.query`, and that requiring you to replace all of your queries with `db._query` if you
+want to keep using the old syntax is preferable to forcing everyone in the future to use 
+`db.queryV2`, `db.queryV3`, `db.queryV4`, etc.
+
+<Callout title='v2'>
+```ts
+// Using RQBv1
+await db._query.users.findMany();
+
+// Using RQBv2
+await db.query.users.findMany();
+```
+</Callout>
+
+##### Step 3
+
+Define new relations or pull them using [this guide](#how-to-migrate-relations-schema-definition-from-v1-to-v2), 
+then use them in your new queries or migrate your existing queries one by one.
+
+
+### Internal changes
+
+1. Every `drizzle` database, `session`, `migrator` and `transaction` instance, gained 2 additional generic arguments for RQB v2 queries
+
+<Callout collapsed='Examples'>
+**migrator**
+<Callout type='error' title='before'>
+```ts
+export async function migrate<
+  TSchema extends Record<string, unknown>
+>(
+  db: NodePgDatabase<TSchema>,
+  config: MigrationConfig,
+) {
+  ...
+}
+```
+</Callout>
+<Callout title='now'>
+```ts {3,5}
+export async function migrate<
+ TSchema extends Record<string, unknown>,
+ TRelations extends AnyRelations
+>(
+  db: NodePgDatabase<TSchema, TRelations>,
+  config: MigrationConfig,
+) {
+  ...
+}
+```
+</Callout>
+**session**
+<Callout type='error' title='before'>
+```ts
+export class NodePgSession<
+  TFullSchema extends Record<string, unknown>,
+  TSchema extends V1.TablesRelationalConfig,
+> extends PgSession<NodePgQueryResultHKT, TFullSchema, TSchema>
+```
+</Callout>
+<Callout title='now'>
+```ts {3,4,6}
+export class NodePgSession<
+  TFullSchema extends Record<string, unknown>,
+  TRelations extends AnyRelations,
+  TTablesConfig extends TablesRelationalConfig,
+  TSchema extends V1.TablesRelationalConfig,
+> extends PgSession<NodePgQueryResultHKT, TFullSchema, TRelations, TTablesConfig, TSchema>
+```
+</Callout>
+**transaction**
+<Callout type='error' title='before'>
+```ts
+export class NodePgTransaction<
+  TFullSchema extends Record<string, unknown>,
+  TSchema extends V1.TablesRelationalConfig,
+> extends PgTransaction<NodePgQueryResultHKT, TFullSchema, TSchema>
+```
+</Callout>
+<Callout title='now'>
+```ts {3,4,6}
+export class NodePgTransaction<
+  TFullSchema extends Record<string, unknown>,
+  TRelations extends AnyRelations,
+  TTablesConfig extends TablesRelationalConfig,
+  TSchema extends V1.TablesRelationalConfig,
+> extends PgTransaction<NodePgQueryResultHKT, TFullSchema, TRelations, TTablesConfig, TSchema>
+```
+</Callout>
+**driver**
+<Callout type='error' title='before'>
+```ts
+export class NodePgDatabase<
+  TSchema extends Record<string, unknown> = Record<string, never>,
+> extends PgDatabase<NodePgQueryResultHKT, TSchema>
+```
+</Callout>
+<Callout title='now'>
+```ts {3,4}
+export class NodePgDatabase<
+  TSchema extends Record<string, unknown> = Record<string, never>,
+  TRelations extends AnyRelations = EmptyRelations,
+> extends PgDatabase<NodePgQueryResultHKT, TSchema, TRelations>
+```
+</Callout>
+</Callout>
+
+2. Updated `DrizzleConfig` generic with `TRelations` argument and `relations: TRelations` field
+
+<Callout collapsed='Examples'>
+<Callout type='error' title='before'>
+```ts
+export interface DrizzleConfig<
+  TSchema extends Record<string, unknown> = Record<string, never>
+> {
+  logger?: boolean | Logger;
+  schema?: TSchema;
+  casing?: Casing;
+}
+```
+</Callout>
+
+<Callout title='now'>
+```ts {8}
+export interface DrizzleConfig<
+  TSchema extends Record<string, unknown> = Record<string, never>,
+  TRelations extends AnyRelations = EmptyRelations,
+> {
+  logger?: boolean | Logger;
+  schema?: TSchema;
+  casing?: Casing;
+  relations?: TRelations;
+}
+```
+</Callout>
+</Callout>
+
+3. The following entities have been moved from `drizzle-orm` and `drizzle-orm/relations` to `drizzle-orm/_relations`. The original imports now 
+include new types used by Relational Queries v2, so make sure to update your imports if you intend to use the older types:
+
+<Callout collapsed='A list of all moved entities'>
+- `Relation`
+- `Relations`
+- `One`
+- `Many`
+- `TableRelationsKeysOnly`
+- `ExtractTableRelationsFromSchema`
+- `ExtractObjectValues`
+- `ExtractRelationsFromTableExtraConfigSchema`
+- `getOperators`
+- `Operators`
+- `getOrderByOperators`
+- `OrderByOperators`
+- `FindTableByDBName`
+- `DBQueryConfig`
+- `TableRelationalConfig`
+- `TablesRelationalConfig`
+- `RelationalSchemaConfig`
+- `ExtractTablesWithRelations`
+- `ReturnTypeOrValue`
+- `BuildRelationResult`
+- `NonUndefinedKeysOnly`
+- `BuildQueryResult`
+- `RelationConfig`
+- `extractTablesRelationalConfig`
+- `relations`
+- `createOne`
+- `createMany`
+- `NormalizedRelation`
+- `normalizeRelation`
+- `createTableRelationsHelpers`
+- `TableRelationsHelpers`
+- `BuildRelationalQueryResult`
+- `mapRelationalRow`
+</Callout>
+
+4. In the same manner, `${dialect}-core/query-builders/query` files were moved to `${dialect}-core/query-builders/_query` 
+with RQB v2's alternatives being put in their place
+
+<Callout collapsed='Examples'>
+<Callout type='error' title='before'>
+```ts
+import { RelationalQueryBuilder, PgRelationalQuery } from './query-builders/query.ts';
+```
+</Callout>
+
+<Callout title='now'>
+```ts
+import { _RelationalQueryBuilder, _PgRelationalQuery } from './query-builders/_query.ts';
+```
+</Callout>
+</Callout>
+
+
+Source: https://orm.drizzle.team/docs/relations-v2
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import IsSupportedChipGroup from '@mdx/IsSupportedChipGroup.astro';
+import Callout from '@mdx/Callout.astro';
+import Section from '@mdx/Section.astro';
+import Prerequisites from "@mdx/Prerequisites.astro";
+import CodeTab from '@mdx/CodeTab.astro';
+import CodeTabs from '@mdx/CodeTabs.astro';
+import Npm from '@mdx/Npm.astro';
+
+# Drizzle relations
+
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.1` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+<Prerequisites>  
+  - **Relations Fundamentals** - get familiar with the concepts of foreign key constraints, soft relations, database normalization, etc - [read here](/docs/rqb-fundamentals)
+  - **Declare schema** - get familiar with how to define drizzle schemas - [read here](/docs/sql-schema-declaration)
+  - **Database connection** - get familiar with how to connect to database using drizzle - [read here](/docs/get-started-postgresql)
+</Prerequisites>
+
+The sole purpose of Drizzle relations is to let you query your relational data in the most simple and concise way:
+
+<CodeTabs items={["Relational queries", "Select with joins"]}>
+<Section>
+```ts
+import { drizzle } from 'drizzle-orm/…';
+import { defineRelations } from 'drizzle-orm';
+import * as p from 'drizzle-orm/pg-core';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text().notNull()
+});
+
+export const posts = p.pgTable('posts', {
+	id: p.integer().primaryKey(),
+	content: p.text().notNull(),
+	ownerId: p.integer('owner_id'),
+});
+
+const relations = defineRelations({ users, posts }, (r) => ({
+	posts: {
+		author: r.one.users({
+			from: r.posts.ownerId,
+			to: r.users.id,
+		}),
+	}
+}))
+
+const db = drizzle(client, { relations });
+
+const result = db.query.posts.findMany({
+  with: {
+    author: true,
+  },
+});
+```
+```ts
+[{
+  id: 10,
+  content: "My first post!",
+  author: {
+    id: 1,
+    name: "Alex"
+  }
+}]
+```
+</Section>
+<Section>
+```ts
+import { drizzle } from 'drizzle-orm/…';
+import { eq } from 'drizzle-orm';
+import { posts, users } from './schema';
+
+const db = drizzle(client);
+
+const res = await db.select()
+                    .from(posts)
+                    .leftJoin(users, eq(posts.ownerId, users.id))
+                    .orderBy(posts.id)
+const mappedResult =  
+```
+</Section>
+</CodeTabs>
+
+### `one()`
+Here is a list of all fields available for `.one()` in drizzle relations
+
+```ts {3-11}
+const relations = defineRelations({ users, posts }, (r) => ({
+	posts: {
+		author: r.one.users({
+			from: r.posts.ownerId,
+			to: r.users.id,
+			optional: false,
+      alias: 'custom_name',
+			where: {
+				verified: true,
+			}
+		}),
+	}
+}))
+```
+
+- `author` key is a custom key that appears in the `posts` object when using Drizzle relational queries.
+- `r.one.users` defines that `author` will be a single object from the `users` table rather than an array of objects.
+- `from: r.posts.ownerId` specifies the table from which we are establishing a soft relation. 
+In this case, the relation starts from the `ownerId` column in the `posts` table.
+- `to: r.users.id` specifies the table to which we are establishing a soft relation. 
+In this case, the relation points to the `id` column in the `users` table.
+- `optional: false` at the type level makes the `author` key in the posts object `required`. 
+This should be used when you are certain that this specific entity will always exist.
+- `alias` is used to add a specific alias to relationships between tables. If you have multiple identical relationships between two tables, you should 
+differentiate them using `alias`
+- `where` condition can be used for polymorphic relations. It fetches relations based on a `where` statement.
+For example, in the case above, only `verified authors` will be retrieved. Learn more about polymorphic relations [here](/docs/relations-schema-declaration#polymorphic-relations).
+
+### `many()`
+
+Here is a list of all fields available for `.many()` in drizzle relations
+
+```ts {3-11}
+const relations = defineRelations({ users, posts }, (r) => ({
+	users: {
+		feed: r.many.posts({
+			from: r.users.id,
+			to: r.posts.ownerId,
+			optional: false,
+      alias: 'custom_name',
+			where: {
+				approved: true,
+			}
+		}),
+	}
+}))
+```
+
+- `feed` key is a custom key that appears in the `users` object when using Drizzle relational queries.
+- `r.many.posts` defines that `feed` will be an array of objects from the `posts` table rather than just an object
+- `from: r.users.id` specifies the table from which we are establishing a soft relation. 
+In this case, the relation starts from the `id` column in the `users` table.
+- `to: r.posts.ownerId` specifies the table to which we are establishing a soft relation. 
+In this case, the relation points to the `ownerId` column in the `posts` table.
+- `optional: false` at the type level makes the `feed` key in the posts object `required`. 
+This should be used when you are certain that this specific entity will always exist.
+- `alias` is used to add a specific alias to relationships between tables. If you have multiple identical relationships between two tables, you should 
+differentiate them using `alias`
+- `where` condition can be used for polymorphic relations. It fetches relations based on a `where` statement.
+For example, in the case above, only `approved posts` will be retrieved. Learn more about polymorphic relations [here](/docs/relations-schema-declaration#polymorphic-relations).
+
+## ---
+
+### One-to-one
+Drizzle ORM provides you an API to define `one-to-one` relations between tables with the `defineRelations` function.
+
+An example of a `one-to-one` relation between users and users, where a user can invite another (this example uses a self reference):
+
+```typescript copy {10-17}
+import { pgTable, serial, text, boolean } from 'drizzle-orm/pg-core';
+import { defineRelations } from 'drizzle-orm';
+
+export const users = pgTable('users', {
+	id: integer().primaryKey(),
+	name: text(),
+	invitedBy: integer('invited_by'),
+});
+
+export const relations = defineRelations({ users }, (r) => ({
+	users: {
+		invitee: r.one.users({
+			from: r.users.invitedBy,
+			to: r.users.id,
+		})
+	}
+}));
+```
+
+Another example would be a user having a profile information stored in separate table. In this case, because the foreign key is stored in the "profile_info" table, the user relation have neither fields or references. This tells Typescript that `user.profileInfo` is nullable:
+
+```typescript copy {15-22}
+import { pgTable, serial, text, integer, jsonb } from 'drizzle-orm/pg-core';
+import { defineRelations } from 'drizzle-orm';
+
+export const users = pgTable('users', {
+	id: integer().primaryKey(),
+	name: text(),
+});
+
+export const profileInfo = pgTable('profile_info', {
+	id: serial().primaryKey(),
+	userId: integer('user_id').references(() => users.id),
+	metadata: jsonb(),
+});
+
+export const relations = defineRelations({ users, profileInfo }, (r) => ({
+	users: {
+		profileInfo: r.one.profileInfo({
+			from: r.users.id,
+			to: r.profileInfo.userId,
+		})
+	}
+}));
+
+const user = await db.query.posts.findFirst({ with: { profileInfo: true } });
+//____^? type { id: number, profileInfo: { ... } | null  }
+```
+
+### One-to-many
+Drizzle ORM provides you an API to define `one-to-many` relations between tables with `defineRelations` function. 
+
+Example of `one-to-many` relation between users and posts they've written:
+
+```typescript copy {15-25}
+import { pgTable, serial, text, integer } from 'drizzle-orm/pg-core';
+import { defineRelations } from 'drizzle-orm';
+
+export const users = pgTable('users', {
+	id: integer('id').primaryKey(),
+	name: text('name'),
+});
+
+export const posts = pgTable('posts', {
+	id: integer('id').primaryKey(),
+	content: text('content'),
+	authorId: integer('author_id'),
+});
+
+export const relations = defineRelations({ users, posts }, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  },
+  users: {
+    posts: r.many.posts(),
+  },
+}));
+```
+
+Now lets add comments to the posts:
+```typescript copy {9-14,22,27-32}
+...
+
+export const posts = pgTable('posts', {
+	id: integer('id').primaryKey(),
+	content: text('content'),
+	authorId: integer('author_id'),
+});
+
+export const comments = pgTable("comments", {
+  id: integer().primaryKey(),
+  text: text(),
+  authorId: integer("author_id"),
+  postId: integer("post_id"),
+});
+
+export const relations = defineRelations({ users, posts, comments }, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+    comments: r.many.comments(),
+  },
+  users: {
+    posts: r.many.posts(),
+  },
+  comments: {
+    post: r.one.posts({
+      from: r.comments.postId,
+      to: r.posts.id,
+    }),
+  },
+}));
+```
+
+
+### Many-to-many
+Drizzle ORM provides you an API to define `many-to-many` relations between tables through so called `junction` or `join` tables,
+they have to be explicitly defined and store associations between related tables.  
+
+Example of `many-to-many` relation between users and groups we are using `through` to bypass junction table selection and directly select many `groups` for each `user`.
+```typescript copy {27-39}
+import { defineRelations } from 'drizzle-orm';
+import { integer, pgTable, primaryKey, text } from 'drizzle-orm/pg-core';
+
+export const users = pgTable('users', {
+  id: integer().primaryKey(),
+  name: text(),
+});
+
+export const groups = pgTable('groups', {
+  id: integer().primaryKey(),
+  name: text(),
+});
+
+export const usersToGroups = pgTable(
+  'users_to_groups',
+  {
+    userId: integer('user_id')
+      .notNull()
+      .references(() => users.id),
+    groupId: integer('group_id')
+      .notNull()
+      .references(() => groups.id),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.groupId] })],
+);
+
+export const relations = defineRelations({ users, groups, usersToGroups },
+  (r) => ({
+    users: {
+      groups: r.many.groups({
+        from: r.users.id.through(r.usersToGroups.userId),
+        to: r.groups.id.through(r.usersToGroups.groupId),
+      }),
+    },
+    groups: {
+      participants: r.many.users(),
+    },
+  })
+);
+```
+
+**Query example:**
+```ts
+const res = await db.query.users.findMany({
+  with: { 
+    groups: true 
+  },
+});
+
+// response type
+type Response = {
+  id: number;
+  name: string | null;
+  groups: {
+    id: number;
+    name: string | null;
+  }[];
+}[];
+```
+
+<Callout type='error' title='Relational Queries v1'>
+Previously, you would need to query through a `junction` table and then map it out for every response
+
+❌ You don't need to do it now!
+```ts
+const response = await db._query.users.findMany({
+	with: {
+		usersToGroups: {
+			columns: {},
+			with: {
+				groups: true,
+			},
+		},
+	},
+});
+
+// response type
+type Response = {
+  id: number;
+  name: string | null;
+  usersToGroups: {
+    groups: {
+       id: number;
+       name: string | null;
+    }
+  }[];
+}[];
+```
+</Callout>
+
+### Predefined filters
+
+Predefined `where` statements in Drizzle's relation definitions are a type of polymorphic relations implementation, but it's not fully it. Essentially, they allow you to
+connect tables not only by selecting specific columns but also through custom `where` statements. Let's look at some examples:
+
+We can define a relation between `groups` and `users` so that when querying group's users, we only retrieve those whose `verified` column is set to `true`
+<CodeTabs items={["Relations", "Schema"]}>
+<Section>
+```ts
+import { defineRelations } from "drizzle-orm";
+import * as p from "drizzle-orm/pg-core";
+import * as schema from './schema';
+
+export const relations = defineRelations(schema,(r) => ({
+    groups: {
+      verifiedUsers: r.many.users({
+        from: r.groups.id.through(r.usersToGroups.groupId),
+        to: r.users.id.through(r.usersToGroups.userId),
+        where: {
+          verified: true,
+        },
+      }),
+    },
+  })
+);
+
+...
+
+await db.query.groups.findMany({
+    with: {
+      verifiedUsers: true,
+    },
+});
+```
+</Section>
+<Section>
+```ts
+import { defineRelations } from "drizzle-orm";
+import * as p from "drizzle-orm/pg-core";
+
+export const users = p.pgTable("users", {
+  id: p.integer().primaryKey(),
+  name: p.text().notNull(),
+  verified: p.boolean().notNull(),
+});
+
+export const groups = p.pgTable("groups", {
+  id: p.integer().primaryKey(),
+  title: p.text().notNull(),
+});
+
+export const usersToGroups = p.pgTable(
+  "users_to_groups",
+  {
+    userId: p
+      .integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    groupId: p
+      .integer("group_id")
+      .notNull()
+      .references(() => groups.id, { onDelete: "cascade" }),
+  },
+  (t) => [p.primaryKey({ columns: [t.groupId, t.userId] })]
+);
+```
+</Section>
+</CodeTabs>
+
+<Callout type='warning'>
+You can only specify filters on the target (to) table. So in this example, the where clause will only include columns from the `users` table since we are establishing a relation **TO** users
+
+```ts {7}
+export const relations = defineRelations(schema,(r) => ({
+    groups: {
+      verifiedUsers: r.many.users({
+        from: r.groups.id.through(r.usersToGroups.groupId),
+        to: r.users.id.through(r.usersToGroups.userId),
+        where: {
+          verified: true,
+        },
+      }),
+    },
+  })
+);
+```
+</Callout>
+
+## ---
+
+### Relations Parts
+
+In a case you need to separate relations config into several parts you can use `defineRelationsPart` helpers
+
+```ts
+import { defineRelations, defineRelationsPart } from 'drizzle-orm';
+import * as schema from "./schema";
+
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    invitee: r.one.users({
+      from: r.users.invitedBy,
+      to: r.users.id,
+    }),
+    posts: r.many.posts(),
+  }
+}));
+
+export const part = defineRelationsPart(schema, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  }
+}));
+```
+
+and then you can provide it to the db instance
+
+```ts
+const db = drizzle(process.env.DB_URL, { relations: { ...relations, ...part } })
+```
+
+<Callout type='warning'>
+There are a few rules you would need to follow to make sure it `defineRelationsParts` works as expected
+
+**Rule 1**: If you specify reltions with parts, when passing it to drizzle db function you would need to specify it in the right order(main relations goes first)
+```ts
+// ✅
+const db = drizzle(process.env.DB_URL, { relations: { ...relations, ...part } })
+
+// ❌
+const db = drizzle(process.env.DB_URL, { relations: { ...part, ...relations } })
+```
+
+<Callout collapsed="Why it's important?">
+Even if there will be no type or runtime error, this is how "..." works with objects. As long as main relation 
+recursively infer all tables names, so it can be available in autocomplete. Here is an example:
+
+```ts
+export const relations = defineRelations(schema, (r) => ({
+  users: {
+    invitee: r.one.users({
+      from: r.users.invitedBy,
+      to: r.users.id,
+    }),
+    posts: r.many.posts(),
+  }
+}));
+
+export const part = defineRelationsPart(schema, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  }
+}));
+```
+
+Here `relations` and `part` can be represented and this object:
+```json
+// relations
+{
+  "users": {"invitee": {...}, "posts": {...}},
+  // added here, so all tables from schema will exist in autocomplete
+  "posts": {}
+}
+
+// part
+{
+  "posts": {"author": {...}}
+}
+```
+
+Having `{ ...relations, ...part }` will result in 
+```json
+{
+  "users": {"invitee": {...}, "posts": {...}},
+  "posts": {"author": {...}}
+}
+```
+
+and having `{ ...relations, ...part }` will result in
+```json
+{
+  "users": {"invitee": {...}, "posts": {...}},
+  // As you can see in the final object, posts relations information will be lost
+  "posts": {}
+}
+```
+
+</Callout>
+
+**Rule 2**: You should have min relations, so drizzle can infer all of the table for autocomplete. If you want to have only parts, then 
+one of your parts should be empty, like this:
+
+```ts
+export const mainPart = defineRelationsPart(schema);
+```
+
+In this case, all tables will be inferred correctly, and you'll have complete information about your schema
+</Callout>
+
+## ---
+
+### Performance
+
+When working with relations in Drizzle ORM, especially in applications with 
+significant data or complex queries, optimizing database performance is crucial.  
+Indexes play a vital role in speeding up data retrieval, particularly when querying 
+related data. This section outlines recommended indexing strategies for each type 
+of relationship defined using Drizzle ORM.
+
+##### One-to-one Relationships
+
+In a one-to-one relationship, like the "user invites user" example or the
+"user has profile info" example, the key performance consideration is efficient joining 
+of the related tables.
+
+<Callout>
+For optimal performance in one-to-one relationships, you should create an index 
+on the foreign key column in the table that is being referenced 
+(the "target" table in the relation).
+</Callout>
+
+<Callout collapsed='Why it is important'>
+When you query data with related one-to-one information, Drizzle performs a JOIN operation. An index on the foreign key column allows the database to quickly 
+locate the related row in the target table, significantly speeding up the join process.
+</Callout>
+
+**Example:**
+```typescript
+import * as p from 'drizzle-orm/pg-core';
+import { defineRelations } from 'drizzle-orm';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text(),
+});
+
+export const profileInfo = p.pgTable('profile_info', {
+	id: p.integer().primaryKey(),
+	userId: p.integer('user_id').references(() => users.id),
+	metadata: p.jsonb(),
+});
+
+export const relations = defineRelations({ users, profileInfo }, (r) => ({
+	users: {
+		profileInfo: r.one.profileInfo({
+			from: r.users.id,
+			to: r.profileInfo.userId,
+		})
+	}
+}));
+```
+
+To optimize queries fetching user data along with their profile information, 
+you should create an index on the `userId` column in the `profile_info` table.
+
+```typescript {13-15,21}
+import * as p from 'drizzle-orm/pg-core';
+import { defineRelations } from 'drizzle-orm';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text(),
+});
+
+export const profileInfo = pgTable('profile_info', {
+	id: p.integer().primaryKey(),
+	userId: p.integer('user_id').references(() => users.id),
+	metadata: p.jsonb(),
+}, (table) => [
+  p.index('profile_info_user_id_idx').on(table.userId)
+]);
+
+export const relations = defineRelations({ users, profileInfo }, (r) => ({
+	users: {
+		profileInfo: r.one.profileInfo({
+			from: r.users.id,
+			to: r.profileInfo.userId,
+		})
+	}
+}));
+```
+```sql
+CREATE INDEX idx_profile_info_user_id ON profile_info (user_id);
+```
+
+#### One-to-many Relationships
+
+Similar to one-to-one relationships, one-to-many relations benefit significantly 
+from indexing to optimize join operations. Consider the "users and posts" example where one user can have many posts.
+
+<Callout>
+For one-to-many relationships, create an index on the foreign key column in the table that represents the "many" side of the relationship (the table with the foreign key referencing the "one" side).
+</Callout>
+
+<Callout collapsed='Why it is important'>
+When you fetch a user with their posts or posts with their authors, joins are performed.
+Indexing the foreign key (`authorId` in `posts` table) allows the database to efficiently 
+retrieve all posts associated with a given user or quickly find the author of a post.
+</Callout>
+
+**Example:**
+```typescript
+import * as p from "drizzle-orm/pg-core";
+import { defineRelations } from 'drizzle-orm';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text(),
+});
+
+export const posts = p.pgTable('posts', {
+	id: p.integer().primaryKey(),
+	content: p.text(),
+	authorId: p.integer('author_id'),
+});
+
+export const relations = defineRelations({ users, posts }, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  },
+  users: {
+    posts: r.many.posts(),
+  },
+}));
+```
+
+To optimize queries involving users and their posts, create an index on the `authorId` column in the `posts` table.
+
+```typescript {13-15}
+import * as p from "drizzle-orm/pg-core";
+import { defineRelations } from 'drizzle-orm';
+
+export const users = p.pgTable('users', {
+	id: p.integer().primaryKey(),
+	name: p.text(),
+});
+
+export const posts = p.pgTable('posts', {
+	id: p.integer().primaryKey(),
+	content: p.text(),
+	authorId: p.integer('author_id'),
+}, (t) => [
+  index('posts_author_id_idx').on(table.authorId)
+]);
+
+export const relations = defineRelations({ users, posts }, (r) => ({
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+    }),
+  },
+  users: {
+    posts: r.many.posts(),
+  },
+}));
+```
+```sql
+CREATE INDEX idx_posts_author_id ON posts (author_id);
+```
+
+#### Many-to-many Relationships
+
+Many-to-many relationships, implemented using junction tables, require a slightly 
+more nuanced indexing strategy to ensure optimal query performance. 
+Consider the "users and groups" example with the `usersToGroups` junction table.
+
+<Callout>
+For many-to-many relationships, it is generally recommended to create the following 
+indexes on the junction table:
+1.  **Index on each foreign key column individually:** This optimizes queries that 
+filter or join based on a single side of the relationship 
+(e.g., finding all groups for a user OR all users in a group).
+2.  **Composite index on both foreign key columns together:** This is crucial for 
+efficiently resolving the many-to-many relationship itself. It speeds up queries that need to find the connections between both entities.
+</Callout>
+
+<Callout collapsed='Why it is important'>
+When querying many-to-many relations, especially when using `through` in Drizzle ORM, the database needs to efficiently navigate the junction table.
+
+- Indexes on individual foreign key columns (`userId`, `groupId` in `usersToGroups`) help when you are querying from one side to find the other (e.g., "find groups for a user").
+- The composite index on `(userId, groupId)` in `usersToGroups` is particularly important for quickly finding all relationships defined in the junction table. This is used when Drizzle ORM resolves the `many-to-many` relation to fetch related entities.
+</Callout>
+
+**Example:**
+
+In the "users and groups" example, the `usersToGroups` junction table connects `users` and `groups`.
+
+```typescript
+import { defineRelations } from 'drizzle-orm';
+import * as p from 'drizzle-orm/pg-core';
+
+export const users = p.pgTable('users', {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const groups = p.pgTable('groups', {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const usersToGroups = p.pgTable(
+  'users_to_groups',
+  {
+    userId: p.integer('user_id')
+      .notNull()
+      .references(() => users.id),
+    groupId: p.integer('group_id')
+      .notNull()
+      .references(() => groups.id),
+  },
+  (t) => [p.primaryKey({ columns: [t.userId, t.groupId] })],
+);
+
+export const relations = defineRelations({ users, groups, usersToGroups },
+  (r) => ({
+    users: {
+      groups: r.many.groups({
+        from: r.users.id.through(r.usersToGroups.userId),
+        to: r.groups.id.through(r.usersToGroups.groupId),
+      }),
+    },
+    groups: {
+      participants: r.many.users(),
+    },
+  })
+);
+```
+
+To optimize queries for users and groups, create indexes on `usersToGroups` table as follows:
+
+```typescript {26-28}
+import { defineRelations } from 'drizzle-orm';
+import * as p from 'drizzle-orm/pg-core';
+
+export const users = p.pgTable('users', {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const groups = p.pgTable('groups', {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const usersToGroups = p.pgTable(
+  'users_to_groups',
+  {
+    userId: p.integer('user_id')
+      .notNull()
+      .references(() => users.id),
+    groupId: p.integer('group_id')
+      .notNull()
+      .references(() => groups.id),
+  },
+  (t) => [
+    p.primaryKey({ columns: [t.userId, t.groupId] }),
+    p.index('users_to_groups_user_id_idx').on(table.userId),
+    p.index('users_to_groups_group_id_idx').on(table.groupId),
+    p.index('users_to_groups_composite_idx').on(table.userId, table.groupId),
+  ],
+);
+
+export const relations = defineRelations({ users, groups, usersToGroups },
+  (r) => ({
+    users: {
+      groups: r.many.groups({
+        from: r.users.id.through(r.usersToGroups.userId),
+        to: r.groups.id.through(r.usersToGroups.groupId),
+      }),
+    },
+    groups: {
+      participants: r.many.users(),
+    },
+  })
+);
+```
+```sql
+CREATE INDEX idx_users_to_groups_user_id ON users_to_groups (user_id);
+CREATE INDEX idx_users_to_groups_group_id ON users_to_groups (group_id);
+CREATE INDEX idx_users_to_groups_composite ON users_to_groups (userId, groupId);
+```
+
+By applying these indexing strategies, you can significantly improve the performance of your Drizzle ORM applications when working with relational data, especially as your data volume grows and your queries become more complex. Remember to choose the indexes that best suit your specific query patterns and application needs.
+
+## ---
+
+### Foreign keys
+
+You might've noticed that `relations` look similar to foreign keys — they even have a `references` property. So what's the difference?
+
+While foreign keys serve a similar purpose, defining relations between tables, they work on a different level compared to `relations`.
+
+Foreign keys are a database level constraint, they are checked on every `insert`/`update`/`delete` operation and throw an error if a constraint is violated.
+On the other hand, `relations` are a higher level abstraction, they are used to define relations between tables on the application level only.
+They do not affect the database schema in any way and do not create foreign keys implicitly.
+
+What this means is `relations` and foreign keys can be used together, but they are not dependent on each other.
+You can define `relations` without using foreign keys (and vice versa), which allows them to be used with databases that do not support foreign keys.
+
+The following two examples will work exactly the same in terms of querying the data using Drizzle relational queries.
+
+<CodeTabs items={["schema1.ts", "schema2.ts"]}>
+<CodeTab>
+```ts {15}
+export const users = p.pgTable("users", {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const profileInfo = p.pgTable("profile_info", {
+  id: p.integer().primaryKey(),
+  userId: p.integer("user_id"),
+  metadata: p.jsonb(),
+});
+
+export const relations = defineRelations({ users, profileInfo }, (r) => ({
+  users: {
+    profileInfo: r.one.profileInfo({
+      from: r.users.id,
+      to: r.profileInfo.userId,
+    }),
+  },
+}));
+```
+</CodeTab>
+<CodeTab>
+```ts {15}
+export const users = p.pgTable("users", {
+  id: p.integer().primaryKey(),
+  name: p.text(),
+});
+
+export const profileInfo = p.pgTable("profile_info", {
+  id: p.integer().primaryKey(),
+  userId: p.integer("user_id").references(() => users.id),
+  metadata: p.jsonb(),
+});
+
+export const relations = defineRelations({ users, profileInfo }, (r) => ({
+  users: {
+    profileInfo: r.one.profileInfo({
+      from: r.users.id,
+      to: r.profileInfo.userId,
+    }),
+  },
+}));
+```
+</CodeTab>
+</CodeTabs>
+
+### Disambiguating relations
+
+Drizzle also provides the `alias` option as a way to disambiguate
+relations when you define multiple of them between the same two tables. For
+example, if you define a `posts` table that has the `author` and `reviewer`
+relations.
+
+```ts {19,22,29,34}
+import { pgTable, integer, text } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
+ 
+export const users = pgTable('users', {
+	id: integer('id').primaryKey(),
+	name: text('name'),
+});
+
+export const posts = pgTable('posts', {
+	id: integer('id').primaryKey(),
+	content: text('content'),
+	authorId: integer('author_id'),
+	reviewerId: integer('reviewer_id'),
+});
+ 
+export const relations = defineRelations({ users, posts }, (r) => ({
+  users: {
+    posts: r.many.posts({
+      alias: "author",
+    }),
+    reviewedPosts: r.many.posts({
+      alias: "reviewer",
+    }),
+  },
+  posts: {
+    author: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+      alias: "author",
+    }),
+    reviewer: r.one.users({
+      from: r.posts.authorId,
+      to: r.users.id,
+      alias: "reviewer",
+    }),
+  },
+}));
+```
+
+### Troubleshooting
+
+
 
 Source: https://orm.drizzle.team/docs/relations
 
@@ -24196,6 +31753,7 @@ In Drizzle, we have specific predefined RLS roles and functions for RLS with bot
 
 ## Enable RLS
 
+<Callout type='warning' collapsed="How it works in 0.x versions">
 If you just want to enable RLS on a table without adding policies, you can use `.enableRLS()`
 
 As mentioned in the PostgreSQL documentation:
@@ -24209,6 +31767,23 @@ import { integer, pgTable } from 'drizzle-orm/pg-core';
 export const users = pgTable('users', {
 	id: integer(),
 }).enableRLS();
+```
+</Callout>
+
+Starting from `v1.0.0-beta.1` `.enableRLS()` is deprecated and 
+if you just want to enable RLS on a table without adding policies, you can use `pgTable.withRLS(...)`
+
+As mentioned in the PostgreSQL documentation:
+
+> If no policy exists for the table, a default-deny policy is used, meaning that no rows are visible or can be modified. 
+Operations that apply to the whole table, such as TRUNCATE and REFERENCES, are not subject to row security.
+
+```ts
+import { integer, pgTable } from 'drizzle-orm/pg-core';
+
+export const users = pgTable.withRLS('users', {
+	id: integer(),
+});
 ```
 
 <Callout title='important'>
@@ -24408,6 +31983,13 @@ export default defineConfig({
 
 With Drizzle, you can also specify RLS policies on views. For this, you need to use `security_invoker` in the view's WITH options. Here is a small example:
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
+
 ```ts {5}
 ...
 
@@ -24418,7 +32000,7 @@ export const roomsUsersProfiles = pgView("rooms_users_profiles")
   .as((qb) =>
     qb
       .select({
-        ...getTableColumns(roomsUsers),
+        ...getColumns(roomsUsers),
         email: profiles.email,
       })
       .from(roomsUsers)
@@ -24700,9 +32282,10 @@ async function getRooms() {
 }
 ```
 
-Source: https://orm.drizzle.team/docs/rqb
+Source: https://orm.drizzle.team/docs/rqb-v2
 
 import Tab from '@mdx/Tab.astro';
+import Npm from '@mdx/Npm.astro';
 import Tabs from '@mdx/Tabs.astro';
 import Callout from '@mdx/Callout.astro';
 import CodeTabs from '@mdx/CodeTabs.astro';
@@ -24712,7 +32295,18 @@ import IsSupportedChipGroup from '@mdx/IsSupportedChipGroup.astro';
 
 # Drizzle Queries
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': false }} />
+<Callout type='error'>
+This page explains concepts available on drizzle versions `1.0.0-beta.1` and higher.
+</Callout>
+
+<Npm>
+drizzle-orm@beta
+drizzle-kit@beta -D
+</Npm>
+
+<br/>
+
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': true }} />
 
 Drizzle ORM is designed to be a thin typed layer on top of SQL. 
 We truly believe we've designed the best way to operate an SQL database from TypeScript and it's time to make it better.  
@@ -24727,10 +32321,10 @@ We've made sure you have both the best-in-class developer experience and perform
 <CodeTabs items={["index.ts", "schema.ts"]}>
 	<CodeTab>
 	```typescript copy /schema/3
-	import * as schema from './schema';
+	import { relations } from './schema';
 	import { drizzle } from 'drizzle-orm/...';
 
-	const db = drizzle({ schema });
+	const db = drizzle({ relations });
 
 	const result = await db.query.users.findMany({
 		with: {
@@ -24759,183 +32353,146 @@ We've made sure you have both the best-in-class developer experience and perform
 	```
 	</CodeTab>
 
-	```typescript copy
-	import { integer, serial, text, pgTable } from 'drizzle-orm/pg-core';
-	import { relations } from 'drizzle-orm';
-
-	export const users = pgTable('users', {
-		id: serial('id').primaryKey(),
-		name: text('name').notNull(),
-	});
-
-	export const usersRelations = relations(users, ({ many }) => ({
-		posts: many(posts),
-	}));
-
-	export const posts = pgTable('posts', {
-		id: serial('id').primaryKey(),
-		content: text('content').notNull(),
-		authorId: integer('author_id').notNull(),
-	});
-
-	export const postsRelations = relations(posts, ({ one }) => ({
-		author: one(users, { fields: [posts.authorId], references: [users.id] }),
-	}));
+	```typescript {15-25} copy
+    import { defineRelations } from "drizzle-orm";
+    import * as p from "drizzle-orm/pg-core";
+    
+    export const posts = p.pgTable("posts", {
+      id: p.integer().primaryKey(),
+      content: p.text().notNull(),
+      authorId: p.integer("author_id").notNull(),
+    });
+    
+    export const users = p.pgTable("users", {
+      id: p.integer().primaryKey(),
+      name: p.text().notNull(),
+    });
+    
+    export const relations = defineRelations({ users, posts }, (r) => ({
+      posts: {
+        author: r.one.users({
+          from: r.posts.authorId,
+          to: r.users.id,
+        }),
+      },
+      users: {
+        posts: r.many.users(),
+      },
+    }));
 	```
 </CodeTabs>
 
-⚠️ If you have SQL schema declared in multiple files you can do it like that
-<CodeTabs items={["index.ts", "schema1.ts", "schema2.ts"]}>
-	```typescript copy /schema/3
-	import * as schema1 from './schema1';
-	import * as schema2 from './schema2';
-	import { drizzle } from 'drizzle-orm/...';
-
-	const db = drizzle({ schema: { ...schema1, ...schema2 } });
-
-	const result = await db.query.users.findMany({
-		with: {
-			posts: true			
-		},
-	});
-	```
-	
-	```ts
-	// schema declaration in the first file
-	```
-	```ts
-	// schema declaration in the second file
-	```
-</CodeTabs>
-
-
-## Modes
-Drizzle relational queries always generate exactly one SQL statement to run on the database and it has certain caveats. 
-To have best in class support for every database out there we've introduced **`modes`**.  
-
-Drizzle relational queries use lateral joins of subqueries under the hood and for now PlanetScale does not support them.
-
-When using **mysql2** driver with regular **MySQL** database — you should specify `mode: "default"`
-When using **mysql2** driver with **PlanetScale** — you need to specify `mode: "planetscale"`
-
-```ts copy
-import * as schema from './schema';
-import { drizzle } from "drizzle-orm/mysql2";
-import mysql from "mysql2/promise";
-
-const connection = await mysql.createConnection({
-  uri: process.env.PLANETSCALE_DATABASE_URL,
-});
-
-const db = drizzle({ client: connection, schema, mode: 'planetscale' });
-```
-
-## Querying
 Relational queries are an extension to Drizzle's original **[query builder](/docs/select)**.
 You need to provide all `tables` and `relations` from your schema file/files upon `drizzle()` 
 initialization and then just use the `db.query` API.
 <Callout type="info" emoji="ℹ️">
 	`drizzle` import path depends on the **[database driver](/docs/connect-overview)** you're using.
 </Callout>
-<CodeTabs items={["index.ts", "schema.ts"]}>
+<CodeTabs items={["index.ts", "schema.ts", "relations.ts"]}>
 <CodeTab>
 ```ts
-import * as schema from './schema';
+import { relations } from './relations';
 import { drizzle } from 'drizzle-orm/...';
 
-const db = drizzle({ schema });
-
-await db.query.users.findMany(...);
-```
-```ts
-// if you have schema in multiple files
-import * as schema1 from './schema1';
-import * as schema2 from './schema2';
-import { drizzle } from 'drizzle-orm/...';
-
-const db = drizzle({ schema: { ...schema1, ...schema2 } });
+const db = drizzle({ relations });
 
 await db.query.users.findMany(...);
 ```
 </CodeTab>
 ```typescript copy
-	import { type AnyPgColumn, boolean, integer, pgTable, primaryKey, serial, text, timestamp } from 'drizzle-orm/pg-core';
+import { type AnyPgColumn, boolean, integer, pgTable, primaryKey, text, timestamp } from 'drizzle-orm/pg-core';
 
-	import { relations } from 'drizzle-orm';
+export const users = pgTable('users', {
+	id: integer().primaryKey(),
+	name: text().notNull(),
+	invitedBy: integer('invited_by').references((): AnyPgColumn => users.id),
+});
 
-	export const users = pgTable('users', {
-		id: serial('id').primaryKey(),
-		name: text('name').notNull(),
-		verified: boolean('verified').notNull(),
-		invitedBy: integer('invited_by').references((): AnyPgColumn => users.id),
-	});
+export const groups = pgTable('groups', {
+	id: integer().primaryKey(),
+	name: text().notNull(),
+	description: text(),
+});
 
-	export const usersRelations = relations(users, ({ one, many }) => ({
-		invitee: one(users, { fields: [users.invitedBy], references: [users.id] }),
-		usersToGroups: many(usersToGroups),
-		posts: many(posts),
-	}));
+export const usersToGroups = pgTable('users_to_groups', {
+	id: integer().primaryKey(),
+	userId: integer('user_id').notNull().references(() => users.id),
+	groupId: integer('group_id').notNull().references(() => groups.id),
+}, (t) => [
+	primaryKey(t.userId, t.groupId)
+]);
 
-	export const groups = pgTable('groups', {
-		id: serial('id').primaryKey(),
-		name: text('name').notNull(),
-		description: text('description'),
-	});
+export const posts = pgTable('posts', {
+	id: integer().primaryKey(),
+	content: text().notNull(),
+	authorId: integer('author_id').references(() => users.id),
+	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
 
-	export const groupsRelations = relations(groups, ({ many }) => ({
-		usersToGroups: many(usersToGroups),
-	}));
+export const comments = pgTable('comments', {
+	id: integer().primaryKey(),
+	content: text().notNull(),
+	creator: integer().references(() => users.id),
+	postId: integer('post_id').references(() => posts.id),
+	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
 
-	export const usersToGroups = pgTable('users_to_groups', {
-		id: serial('id').primaryKey(),
-		userId: integer('user_id').notNull().references(() => users.id),
-		groupId: integer('group_id').notNull().references(() => groups.id),
-	}, (t) => [
-		primaryKey({ columns: [t.userId, t.groupId] })
-	]);
+export const commentLikes = pgTable('comment_likes', {
+	id: integer().primaryKey(),
+	creator: integer().references(() => users.id),
+	commentId: integer('comment_id').references(() => comments.id),
+	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+```
+```typescript copy
+import { defineRelations } from 'drizzle-orm';
+import * as schema from './schema';
 
-	export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
-		group: one(groups, { fields: [usersToGroups.groupId], references: [groups.id] }),
-		user: one(users, { fields: [usersToGroups.userId], references: [users.id] }),
-	}));
-
-	export const posts = pgTable('posts', {
-		id: serial('id').primaryKey(),
-		content: text('content').notNull(),
-		authorId: integer('author_id').references(() => users.id),
-		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-	});
-
-	export const postsRelations = relations(posts, ({ one, many }) => ({
-		author: one(users, { fields: [posts.authorId], references: [users.id] }),
-		comments: many(comments),
-	}));
-
-	export const comments = pgTable('comments', {
-		id: serial('id').primaryKey(),
-		content: text('content').notNull(),
-		creator: integer('creator').references(() => users.id),
-		postId: integer('post_id').references(() => posts.id),
-		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-	});
-
-	export const commentsRelations = relations(comments, ({ one, many }) => ({
-		post: one(posts, { fields: [comments.postId], references: [posts.id] }),
-		author: one(users, { fields: [comments.creator], references: [users.id] }),
-		likes: many(commentLikes),
-	}));
-
-	export const commentLikes = pgTable('comment_likes', {
-		id: serial('id').primaryKey(),
-		creator: integer('creator').references(() => users.id),
-		commentId: integer('comment_id').references(() => comments.id),
-		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-	});
-
-	export const commentLikesRelations = relations(commentLikes, ({ one }) => ({
-		comment: one(comments, { fields: [commentLikes.commentId], references: [comments.id] }),
-		author: one(users, { fields: [commentLikes.creator], references: [users.id] }),
-	}));
+export const relations = defineRelations(schema, (r) => ({
+    users: {
+      invitee: r.one.users({
+        from: r.users.invitedBy,
+        to: r.users.id,
+      }),
+      groups: r.many.groups({
+        from: r.users.id.through(r.usersToGroups.userId),
+        to: r.groups.id.through(r.usersToGroups.groupId),
+      }),
+      posts: r.many.posts(),
+    },
+    groups: {
+      users: r.many.users(),
+    },
+    posts: {
+      author: r.one.users({
+        from: r.posts.authorId,
+        to: r.users.id,
+      }),
+      comments: r.many.comments(),
+    },
+    comments: {
+      post: r.one.posts({
+        from: r.comments.postId,
+        to: r.posts.id,
+      }),
+      author: r.one.users({
+        from: r.comments.creator,
+        to: r.users.id,
+      }),
+      likes: r.many.commentLikes(),
+    },
+    commentLikes: {
+      comment: r.one.comments({
+        from: r.commentLikes.commentId,
+        to: r.comments.id,
+      }),
+      author: r.one.users({
+        from: r.commentLikes.creator,
+        to: r.users.id,
+      }),
+    },
+  })
+);
 ```
 </CodeTabs>
 
@@ -25115,28 +32672,229 @@ relational queries API lets you define filters and conditions with the list of o
 You can either import them from `drizzle-orm` or use from the callback syntax:
 <Section>
 ```typescript copy
-import { eq } from 'drizzle-orm';
-
 const users = await db.query.users.findMany({
-	where: eq(users.id, 1)
-})
+	where: {
+		id: 1
+	}
+});
 ```
-```ts copy
-const users = await db.query.users.findMany({
-	where: (users, { eq }) => eq(users.id, 1),
-})
+```sql
+select * from users where id = 1
 ```
 </Section>
 
 Find post with `id=1` and comments that were created before particular date:
 ```typescript copy
 await db.query.posts.findMany({
-	where: (posts, { eq }) => (eq(posts.id, 1)),
-	with: {
-		comments: {
-			where: (comments, { lt }) => lt(comments.createdAt, new Date()),
-		},
-	},
+  where: {
+    id: 1,
+  },
+  with: {
+    comments: {
+      where: {
+        createdAt: { lt: new Date() },
+      },
+    },
+  },
+});
+```
+
+**List of all filter operators**
+```ts
+where: {
+    OR: [],
+    AND: [],
+    NOT: {},
+    RAW: (table) => sql`${table.id} = 1`,
+
+    // filter by relations
+    [relation]: {},
+
+	  // filter by columns
+    [column]: {
+      OR: [],
+      AND: [],
+      NOT: {},
+      eq: 1,
+      ne: 1,
+      gt: 1,
+      gte: 1,
+      lt: 1,
+      lte: 1,
+      in: [1],
+      notIn: [1],
+      like: "",
+      ilike: "",
+      notLike: "",
+      notIlike: "",
+      isNull: true,
+      isNotNull: true,
+      arrayOverlaps: [1, 2],
+      arrayContained: [1, 2],
+      arrayContains: [1, 2]
+    },
+},
+```
+
+**Examples**
+<CodeTabs items={["simple eq", "using AND", "using OR", "using NOT", "complex example using RAW"]}>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    age: 15,
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name"
+from "users" 
+where ("users"."age" = 15)
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    age: 15,
+    name: 'John'
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name"
+from "users" 
+where ("users"."age" = 15 and "users"."name" = 'John')
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = await db.query.users.findMany({
+  where: {
+    OR: [
+      {
+        id: {
+          gt: 10,
+        },
+      },
+	  {
+		name: {
+          like: "John%",
+        },
+	  }
+    ],
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name" 
+from "users" 
+where ("users"."id" > 10 or "users"."name" like 'John%')
+```
+</CodeTab>
+<CodeTab>
+```ts
+const response = db.query.users.findMany({
+  where: {
+    NOT: {
+      id: {
+        gt: 10,
+      },
+    },
+    name: {
+      like: "John%",
+    },
+  },
+});
+```
+```sql {3}
+select "users"."id" as "id", "users"."name" as "name" 
+from "users" 
+where (not "users"."id" > 10 and "users"."name" like 'John%')
+```
+</CodeTab>
+<CodeTab>
+```ts
+// schema.ts
+import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+
+export const users = pgTable("users", {
+  id: integer("id").primaryKey(),
+  name: text("name"),
+  email: text("email").notNull(),
+  age: integer("age"),
+  createdAt: timestamp("created_at").defaultNow(),
+  lastLogin: timestamp("last_login"),
+  subscriptionEnd: timestamp("subscription_end"),
+  lastActivity: timestamp("last_activity"),
+  preferences: jsonb("preferences"),      // JSON column for user settings/preferences
+  interests: text("interests").array(),     // Array column for user interests
+});
+```
+```ts
+const response = db.query.users.findMany({
+  where: {
+    AND: [
+      {
+        OR: [
+          { RAW: (table) => sql`LOWER(${table.name}) LIKE 'john%'` },
+          { name: { ilike: "jane%" } },
+        ],
+      },
+      {
+        OR: [
+          { RAW: (table) => sql`${table.preferences}->>'theme' = 'dark'` },
+          { RAW: (table) => sql`${table.preferences}->>'theme' IS NULL` },
+        ],
+      },
+      { RAW: (table) => sql`${table.age} BETWEEN 25 AND 35` },
+    ],
+  },
+});
+```
+```sql
+select "d0"."id" as "id", "d0"."name" as "name", 
+"d0"."email" as "email", "d0"."age" as "age", 
+"d0"."created_at" as "createdAt", "d0"."last_login" as "lastLogin", 
+"d0"."subscription_end" as "subscriptionEnd", "d0"."last_activity" as "lastActivity", 
+"d0"."preferences" as "preferences", "d0"."interests" as "interests" 
+from "users" as "d0" 
+where ((LOWER("d0"."name") LIKE 'john%' or "d0"."name" ilike 'jane%') 
+and ("d0"."preferences"->>'theme' = 'dark' or "d0"."preferences"->>'theme' IS NULL) 
+and "d0"."age" BETWEEN 25 AND 35)
+```
+</CodeTab>
+</CodeTabs>
+
+### Relations Filters
+
+With Drizzle Relations, you can filter not only by the table you're querying but also by any table you include in the query.
+
+**Example:** Get all `users` whose ID>10 and who have at least one post with content starting with "M"
+```ts
+const usersWithPosts = await db.query.usersTable.findMany({
+  where: {
+    id: {
+      gt: 10
+    },
+    posts: {
+      content: {
+        like: 'M%'
+      }
+    }
+  },
+});
+```
+
+**Example:** Get all `users` with posts, only if user has at least 1 post
+```ts
+const response = db.query.users.findMany({
+  with: {
+    posts: true,
+  },
+  where: {
+    posts: true,
+  },
 });
 ```
 
@@ -25162,10 +32920,901 @@ await db.query.posts.findMany({
 ```
 
 <Callout type="warning" emoji="⚠️">
-  `offset` is only available for top level query.
+  `offset` now can be used in with tables as well!
 </Callout>
 ```typescript 
 await db.query.posts.findMany({
+	limit: 5,
+	offset: 2, // correct ✅
+	with: {
+		comments: {
+			offset: 3, // correct ✅
+			limit: 3,
+		},
+	},
+});
+```
+
+Find posts with comments from the 5th to the 10th post:
+```typescript copy
+await db.query.posts.findMany({
+	with: {
+		comments: true,
+	},
+  limit: 5,
+  offset: 5,
+});
+```
+
+### Order By
+Drizzle provides API for ordering in the relational query builder.  
+
+You can use same ordering **[core API](/docs/select#order-by)** or use
+`order by` operator from the callback with no imports.  
+
+<Callout title='important'>
+When you use multiple `orderBy` statements in the same table, they will be included in the query in the same order in which you added them
+</Callout>
+
+<Section>
+```typescript copy
+await db.query.posts.findMany({
+  orderBy: {
+    id: "asc",
+  },
+});
+```
+</Section>
+
+**Order by `asc` + `desc`:**
+```typescript copy
+  await db.query.posts.findMany({
+    orderBy: { id: "asc" },
+    with: {
+      comments: {
+        orderBy: { id: "desc" },
+      },
+    },
+  });
+```
+
+You can also use custom `sql` in order by statement:
+
+```typescript copy
+await db.query.posts.findMany({
+  orderBy: (t) => sql`${t.id} asc`,
+  with: {
+    comments: {
+      orderBy: (t, { desc }) => desc(t.id),
+    },
+  },
+});
+```
+
+### Include custom fields
+Relational query API lets you add custom additional fields. 
+It's useful when you need to retrieve data and apply additional functions to it.
+<Callout type="warning" emoji="⚠️">
+	As of now aggregations are not supported in `extras`, please use **[`core queries`](/docs/select)** for that.
+</Callout>
+
+<Section>
+```typescript copy {5}
+import { sql } from 'drizzle-orm';
+
+await db.query.users.findMany({
+	extras: {
+		loweredName: sql`lower(${users.name})`,
+	},
+})
+```
+```typescript copy {3}
+await db.query.users.findMany({
+	extras: {
+		loweredName: (users, { sql }) => sql`lower(${users.name})`,
+	},
+})
+```
+</Section>
+
+`lowerName` as a key will be included to all fields in returned object.
+
+<Callout type="warning" emoji="⚠️">
+  If you will specify `.as("<alias>")` for any extras field - drizzle will ignore it
+</Callout>
+
+To retrieve all users with groups, but with the fullName field included (which is a concatenation of firstName and lastName), 
+you can use the following query with the Drizzle relational query builder.
+
+<Section>
+```typescript copy
+const res = await db.query.users.findMany({
+	extras: {
+		fullName: (users, { sql }) => sql<string>`concat(${users.name}, " ", ${users.name})`,
+	},
+	with: {
+		usersToGroups: {
+			with: {
+				group: true,
+			},
+		},
+	},
+});
+```
+```ts
+// result type
+const res: {
+	id: number;
+	name: string;
+	verified: boolean;
+	invitedBy: number | null;
+	fullName: string;
+	usersToGroups: {
+			group: {
+					id: number;
+					name: string;
+					description: string | null;
+			};
+	}[];
+}[];
+
+```
+</Section>
+
+
+To retrieve all posts with comments and add an additional field to calculate the size of the post content and the size of each comment content:
+<Section>
+```typescript copy
+const res = await db.query.posts.findMany({
+	extras: {
+		contentLength: (table, { sql }) => sql<number>`length(${table.content})`,
+	},
+	with: {
+		comments: {
+			extras: {
+				commentSize: (table, { sql }) => sql<number>`length(${table.content})`,
+			},
+		},
+	},
+});
+```
+```ts
+// result type
+const res: {
+	id: number;
+	createdAt: Date;
+	content: string;
+	authorId: number | null;
+	contentLength: number;
+	comments: {
+			id: number;
+			createdAt: Date;
+			content: string;
+			creator: number | null;
+			postId: number | null;
+			commentSize: number;
+	}[];
+};
+```
+</Section>
+
+### Include subqueries
+
+You can also use subqueries within Relational Queries to leverage the power of custom SQL syntax
+
+**Get users with posts and total posts count for each user**
+```ts
+import { posts } from './schema';
+import { eq } from 'drizzle-orm';
+
+await db.query.users.findMany({
+  with: {
+    posts: true
+  },
+  extras: {
+    totalPostsCount: (table) => db.$count(posts, eq(posts.authorId, table.id)),
+  }
+});
+```
+```sql
+select "d0"."id" as "id", "d0"."name" as "name", "posts"."r" as "posts", 
+((select count(*) from "posts" where "posts"."author_id" = "d0"."id")) as "totalPostsCount" 
+from "users" as "d0" 
+left join lateral(
+  select coalesce(json_agg(row_to_json("t".*)), '[]') as "r" 
+  from (select "d1"."id" as "id", "d1"."content" as "content", "d1"."author_id" as "authorId" from "posts" as "d1" where "d0"."id" = "d1"."author_id") as "t"
+) as "posts" on true
+```
+
+### Prepared statements
+Prepared statements are designed to massively improve query performance — [see here.](/docs/perf-queries)
+
+In this section, you can learn how to define placeholders and execute prepared statements 
+using the Drizzle relational query builder.
+
+##### **Placeholder in `where`**
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    where: { id: { eq: sql.placeholder("id") } },
+    with: {
+      posts: {
+        where: { id: 1 },
+      },
+    },
+}).prepare("query_name");
+
+const usersWithPosts = await prepared.execute({ id: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    where: { id: { eq: sql.placeholder("id") } },
+    with: {
+      posts: {
+        where: { id: 1 },
+      },
+    },
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ id: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    where: { id: { eq: sql.placeholder("id") } },
+    with: {
+      posts: {
+        where: { id: 1 },
+      },
+    },
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ id: 1 });
+```
+</Section>
+</Tab>
+</Tabs>
+
+
+##### **Placeholder in `limit`**
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    with: {
+      posts: {
+        limit: sql.placeholder("limit"),
+      },
+    },
+  }).prepare("query_name");
+
+const usersWithPosts = await prepared.execute({ limit: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    with: {
+      posts: {
+        limit: sql.placeholder("limit"),
+      },
+    },
+  }).prepare();
+
+const usersWithPosts = await prepared.execute({ limit: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    with: {
+      posts: {
+        limit: sql.placeholder("limit"),
+      },
+    },
+  }).prepare();
+
+const usersWithPosts = await prepared.execute({ limit: 1 });
+```
+</Section>
+</Tab>
+</Tabs>
+
+
+##### **Placeholder in `offset`**
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+	offset: sql.placeholder('offset'),
+	with: {
+		posts: true,
+	},
+}).prepare('query_name');
+
+const usersWithPosts = await prepared.execute({ offset: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+	offset: sql.placeholder('offset'),
+	with: {
+		posts: true,
+	},
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ offset: 1 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+	offset: sql.placeholder('offset'),
+	with: {
+		posts: true,
+	},
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ offset: 1 });
+```
+</Section>
+</Tab>
+</Tabs>
+
+##### **Multiple placeholders**
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    limit: sql.placeholder("uLimit"),
+    offset: sql.placeholder("uOffset"),
+    where: {
+      OR: [{ id: { eq: sql.placeholder("id") } }, { id: 3 }],
+    },
+    with: {
+      posts: {
+        where: { id: { eq: sql.placeholder("pid") } },
+        limit: sql.placeholder("pLimit"),
+      },
+    },
+}).prepare("query_name");
+
+const usersWithPosts = await prepared.execute({ pLimit: 1, uLimit: 3, uOffset: 1, id: 2, pid: 6 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    limit: sql.placeholder("uLimit"),
+    offset: sql.placeholder("uOffset"),
+    where: {
+      OR: [{ id: { eq: sql.placeholder("id") } }, { id: 3 }],
+    },
+    with: {
+      posts: {
+        where: { id: { eq: sql.placeholder("pid") } },
+        limit: sql.placeholder("pLimit"),
+      },
+    },
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ pLimit: 1, uLimit: 3, uOffset: 1, id: 2, pid: 6 });
+```
+</Section>
+</Tab>
+<Tab>
+<Section>
+```ts copy
+const prepared = db.query.users.findMany({
+    limit: sql.placeholder("uLimit"),
+    offset: sql.placeholder("uOffset"),
+    where: {
+      OR: [{ id: { eq: sql.placeholder("id") } }, { id: 3 }],
+    },
+    with: {
+      posts: {
+        where: { id: { eq: sql.placeholder("pid") } },
+        limit: sql.placeholder("pLimit"),
+      },
+    },
+}).prepare();
+
+const usersWithPosts = await prepared.execute({ pLimit: 1, uLimit: 3, uOffset: 1, id: 2, pid: 6 });
+```
+</Section>
+</Tab>
+</Tabs>
+
+
+Source: https://orm.drizzle.team/docs/rqb
+
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
+import Callout from '@mdx/Callout.astro';
+import CodeTabs from '@mdx/CodeTabs.astro';
+import CodeTab from '@mdx/CodeTab.astro';
+import Section from '@mdx/Section.astro';
+import IsSupportedChipGroup from '@mdx/IsSupportedChipGroup.astro';
+
+# Drizzle Queries
+
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': true }} />
+
+Drizzle ORM is designed to be a thin typed layer on top of SQL. 
+We truly believe we've designed the best way to operate an SQL database from TypeScript and it's time to make it better.  
+  
+Relational queries are meant to provide you with a great developer experience for querying 
+nested relational data from an SQL database, avoiding multiple joins and complex data mappings.  
+
+It is an extension to the existing schema definition and query builder. 
+You can opt-in to use it based on your needs. 
+We've made sure you have both the best-in-class developer experience and performance.  
+
+<CodeTabs items={["index.ts", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy /schema/3
+	import * as schema from './schema';
+	import { drizzle } from 'drizzle-orm/...';
+
+	const db = drizzle({ schema });
+
+	const result = await db._query.users.findMany({
+		with: {
+			posts: true			
+		},
+	});
+	```
+
+	```ts
+	[{
+		id: 10,
+		name: "Dan",
+		posts: [
+			{
+				id: 1,
+				content: "SQL is awesome",
+				authorId: 10,
+			},
+			{
+				id: 2,
+				content: "But check relational queries",
+				authorId: 10,
+			}
+		]
+	}]
+	```
+	</CodeTab>
+
+	```typescript copy
+	import { integer, serial, text, pgTable } from 'drizzle-orm/pg-core';
+	import { relations } from 'drizzle-orm';
+
+	export const users = pgTable('users', {
+		id: serial('id').primaryKey(),
+		name: text('name').notNull(),
+	});
+
+	export const usersRelations = relations(users, ({ many }) => ({
+		posts: many(posts),
+	}));
+
+	export const posts = pgTable('posts', {
+		id: serial('id').primaryKey(),
+		content: text('content').notNull(),
+		authorId: integer('author_id').notNull(),
+	});
+
+	export const postsRelations = relations(posts, ({ one }) => ({
+		author: one(users, { fields: [posts.authorId], references: [users.id] }),
+	}));
+	```
+</CodeTabs>
+
+⚠️ If you have SQL schema declared in multiple files you can do it like that
+<CodeTabs items={["index.ts", "schema1.ts", "schema2.ts"]}>
+	```typescript copy /schema/3
+	import * as schema1 from './schema1';
+	import * as schema2 from './schema2';
+	import { drizzle } from 'drizzle-orm/...';
+
+	const db = drizzle({ schema: { ...schema1, ...schema2 } });
+
+	const result = await db._query.users.findMany({
+		with: {
+			posts: true			
+		},
+	});
+	```
+	
+	```ts
+	// schema declaration in the first file
+	```
+	```ts
+	// schema declaration in the second file
+	```
+</CodeTabs>
+
+
+## Modes
+Drizzle relational queries always generate exactly one SQL statement to run on the database and it has certain caveats. 
+To have best in class support for every database out there we've introduced **`modes`**.  
+
+Drizzle relational queries use lateral joins of subqueries under the hood and for now PlanetScale does not support them.
+
+When using **mysql2** driver with regular **MySQL** database — you should specify `mode: "default"`
+When using **mysql2** driver with **PlanetScale** — you need to specify `mode: "planetscale"`
+
+```ts copy
+import * as schema from './schema';
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
+
+const connection = await mysql.createConnection({
+  uri: process.env.PLANETSCALE_DATABASE_URL,
+});
+
+const db = drizzle({ client: connection, schema, mode: 'planetscale' });
+```
+
+## Querying
+Relational queries are an extension to Drizzle's original **[query builder](/docs/select)**.
+You need to provide all `tables` and `relations` from your schema file/files upon `drizzle()` 
+initialization and then just use the `db._query` API.
+<Callout type="info" emoji="ℹ️">
+	`drizzle` import path depends on the **[database driver](/docs/connect-overview)** you're using.
+</Callout>
+<CodeTabs items={["index.ts", "schema.ts"]}>
+<CodeTab>
+```ts
+import * as schema from './schema';
+import { drizzle } from 'drizzle-orm/...';
+
+const db = drizzle({ schema });
+
+await db._query.users.findMany(...);
+```
+```ts
+// if you have schema in multiple files
+import * as schema1 from './schema1';
+import * as schema2 from './schema2';
+import { drizzle } from 'drizzle-orm/...';
+
+const db = drizzle({ schema: { ...schema1, ...schema2 } });
+
+await db._query.users.findMany(...);
+```
+</CodeTab>
+```typescript copy
+	import { type AnyPgColumn, boolean, integer, pgTable, primaryKey, serial, text, timestamp } from 'drizzle-orm/pg-core';
+
+	import { relations } from 'drizzle-orm';
+
+	export const users = pgTable('users', {
+		id: serial('id').primaryKey(),
+		name: text('name').notNull(),
+		verified: boolean('verified').notNull(),
+		invitedBy: integer('invited_by').references((): AnyPgColumn => users.id),
+	});
+
+	export const usersRelations = relations(users, ({ one, many }) => ({
+		invitee: one(users, { fields: [users.invitedBy], references: [users.id] }),
+		usersToGroups: many(usersToGroups),
+		posts: many(posts),
+	}));
+
+	export const groups = pgTable('groups', {
+		id: serial('id').primaryKey(),
+		name: text('name').notNull(),
+		description: text('description'),
+	});
+
+	export const groupsRelations = relations(groups, ({ many }) => ({
+		usersToGroups: many(usersToGroups),
+	}));
+
+	export const usersToGroups = pgTable('users_to_groups', {
+		id: serial('id').primaryKey(),
+		userId: integer('user_id').notNull().references(() => users.id),
+		groupId: integer('group_id').notNull().references(() => groups.id),
+	}, (t) => [
+		primaryKey({ columns: [t.userId, t.groupId] })
+	]);
+
+	export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
+		group: one(groups, { fields: [usersToGroups.groupId], references: [groups.id] }),
+		user: one(users, { fields: [usersToGroups.userId], references: [users.id] }),
+	}));
+
+	export const posts = pgTable('posts', {
+		id: serial('id').primaryKey(),
+		content: text('content').notNull(),
+		authorId: integer('author_id').references(() => users.id),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	});
+
+	export const postsRelations = relations(posts, ({ one, many }) => ({
+		author: one(users, { fields: [posts.authorId], references: [users.id] }),
+		comments: many(comments),
+	}));
+
+	export const comments = pgTable('comments', {
+		id: serial('id').primaryKey(),
+		content: text('content').notNull(),
+		creator: integer('creator').references(() => users.id),
+		postId: integer('post_id').references(() => posts.id),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	});
+
+	export const commentsRelations = relations(comments, ({ one, many }) => ({
+		post: one(posts, { fields: [comments.postId], references: [posts.id] }),
+		author: one(users, { fields: [comments.creator], references: [users.id] }),
+		likes: many(commentLikes),
+	}));
+
+	export const commentLikes = pgTable('comment_likes', {
+		id: serial('id').primaryKey(),
+		creator: integer('creator').references(() => users.id),
+		commentId: integer('comment_id').references(() => comments.id),
+		createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	});
+
+	export const commentLikesRelations = relations(commentLikes, ({ one }) => ({
+		comment: one(comments, { fields: [commentLikes.commentId], references: [comments.id] }),
+		author: one(users, { fields: [commentLikes.creator], references: [users.id] }),
+	}));
+```
+</CodeTabs>
+
+Drizzle provides `.findMany()` and `.findFirst()` APIs.
+### Find many
+<Section>
+```typescript copy
+const users = await db._query.users.findMany();
+```
+```ts
+// result type
+const result: {
+	id: number;
+	name: string;
+	verified: boolean;
+	invitedBy: number | null;
+}[];
+```
+</Section>
+
+### Find first
+<Callout>
+  `.findFirst()` will add `limit 1` to the query.
+</Callout>
+<Section>
+```typescript copy
+const user = await db._query.users.findFirst();
+```
+```ts
+// result type
+const result: {
+	id: number;
+	name: string;
+	verified: boolean;
+	invitedBy: number | null;
+};
+```
+</Section>
+
+### Include relations
+
+`With` operator lets you combine data from multiple related tables and properly aggregate results.
+
+**Getting all posts with comments:**
+```typescript copy
+const posts = await db._query.posts.findMany({
+	with: {
+		comments: true,
+	},
+});
+```
+
+**Getting first post with comments:**
+```typescript copy
+const post = await db._query.posts.findFirst({
+	with: {
+		comments: true,
+	},
+});
+```
+
+You can chain nested with statements as much as necessary.  
+For any nested `with` queries Drizzle will infer types using [Core Type API](/docs/goodies#type-api).
+  
+**Get all users with posts. Each post should contain a list of comments:**
+```typescript copy
+const users = await db._query.users.findMany({
+	with: {
+		posts: {
+			with: {
+				comments: true,
+			},
+		},
+	},
+});
+```
+
+### Partial fields select
+`columns` parameter lets you include or omit columns you want to get from the database.
+
+<Callout type="info" emoji="ℹ️">
+  Drizzle performs partial selects on the query level, no additional data is transferred from the database.
+
+  Keep in mind that **a single SQL statement is outputted by Drizzle.**
+</Callout>
+
+**Get all posts with just `id`, `content` and include `comments`:**
+```typescript copy
+const posts = await db._query.posts.findMany({
+	columns: {
+		id: true,
+		content: true,
+	},
+	with: {
+		comments: true,
+	}
+});
+```
+
+**Get all posts without `content`:**
+```typescript copy
+const posts = await db._query.posts.findMany({
+	columns: {
+		content: false,
+	},
+});
+```
+
+<Callout type="info" emoji="ℹ️">
+When both `true` and `false` select options are present, all `false` options are ignored.
+</Callout>
+
+If you include the `name` field and exclude the `id` field, `id` exclusion will be redundant, 
+all fields apart from `name` would be excluded anyways.  
+  
+**Exclude and Include fields in the same query:**
+<Section>
+```typescript copy
+const users = await db._query.users.findMany({
+	columns: {
+		name: true,
+		id: false //ignored
+	},
+});
+```
+```ts
+// result type
+const users: {
+	name: string;
+};
+```
+</Section>
+
+**Only include columns from nested relations:**
+<Section>
+```typescript copy
+const res = await db._query.users.findMany({
+	columns: {},
+	with: {
+		posts: true
+	}
+});
+```
+```ts
+// result type
+const res: {
+	posts: {
+		id: number,
+		text: string
+	}
+}[];
+```
+</Section>
+
+### Nested partial fields select
+Just like with **[`partial select`](#partial-select)**, you can include or exclude columns of nested relations:
+```typescript copy
+const posts = await db._query.posts.findMany({
+	columns: {
+		id: true,
+		content: true,
+	},
+	with: {
+		comments: {
+			columns: {
+				authorId: false
+			}
+		}
+	}
+});
+```
+
+### Select filters
+Just like in our SQL-like query builder, 
+relational queries API lets you define filters and conditions with the list of our **[`operators`](/docs/operators)**.  
+
+You can either import them from `drizzle-orm` or use from the callback syntax:
+<Section>
+```typescript copy
+import { eq } from 'drizzle-orm';
+
+const users = await db._query.users.findMany({
+	where: eq(users.id, 1)
+})
+```
+```ts copy
+const users = await db._query.users.findMany({
+	where: (users, { eq }) => eq(users.id, 1),
+})
+```
+</Section>
+
+Find post with `id=1` and comments that were created before particular date:
+```typescript copy
+await db._query.posts.findMany({
+	where: (posts, { eq }) => (eq(posts.id, 1)),
+	with: {
+		comments: {
+			where: (comments, { lt }) => lt(comments.createdAt, new Date()),
+		},
+	},
+});
+```
+
+### Limit & Offset
+Drizzle ORM provides `limit` & `offset` API for queries and for the nested entities.
+  
+**Find 5 posts:**
+```typescript copy
+await db._query.posts.findMany({
+	limit: 5,
+});
+```
+
+**Find posts and get 3 comments at most:**
+```typescript copy
+await db._query.posts.findMany({
+	with: {
+		comments: {
+			limit: 3,
+		},
+	},
+});
+```
+
+<Callout type="warning" emoji="⚠️">
+  `offset` is only available for top level query.
+</Callout>
+```typescript 
+await db._query.posts.findMany({
 	limit: 5,
 	offset: 2, // correct ✅
 	with: {
@@ -25179,7 +33828,7 @@ await db.query.posts.findMany({
 
 Find posts with comments from the 5th to the 10th post:
 ```typescript copy
-await db.query.posts.findMany({
+await db._query.posts.findMany({
 	limit: 5,
   offset: 5,
 	with: {
@@ -25198,12 +33847,12 @@ You can use same ordering **[core API](/docs/select#order-by)** or use
 ```typescript copy
 import { desc, asc } from 'drizzle-orm';
 
-await db.query.posts.findMany({
+await db._query.posts.findMany({
 	orderBy: [asc(posts.id)],
 });
 ```
 ```typescript copy
-await db.query.posts.findMany({
+await db._query.posts.findMany({
 	orderBy: (posts, { asc }) => [asc(posts.id)],
 });
 ```
@@ -25211,7 +33860,7 @@ await db.query.posts.findMany({
 
 **Order by `asc` + `desc`:**
 ```typescript copy
-await db.query.posts.findMany({
+await db._query.posts.findMany({
 	orderBy: (posts, { asc }) => [asc(posts.id)],
 	with: {
 		comments: {
@@ -25232,14 +33881,14 @@ It's useful when you need to retrieve data and apply additional functions to it.
 ```typescript copy {5}
 import { sql } from 'drizzle-orm';
 
-await db.query.users.findMany({
+await db._query.users.findMany({
 	extras: {
 		loweredName: sql`lower(${users.name})`.as('lowered_name'),
 	},
 })
 ```
 ```typescript copy {3}
-await db.query.users.findMany({
+await db._query.users.findMany({
 	extras: {
 		loweredName: (users, { sql }) => sql`lower(${users.name})`.as('lowered_name'),
 	},
@@ -25258,7 +33907,7 @@ you can use the following query with the Drizzle relational query builder.
 
 <Section>
 ```typescript copy
-const res = await db.query.users.findMany({
+const res = await db._query.users.findMany({
 	extras: {
 		fullName: sql<string>`concat(${users.name}, " ", ${users.name})`.as('full_name'),
 	},
@@ -25295,7 +33944,7 @@ const res: {
 To retrieve all posts with comments and add an additional field to calculate the size of the post content and the size of each comment content:
 <Section>
 ```typescript copy
-const res = await db.query.posts.findMany({
+const res = await db._query.posts.findMany({
 	extras: (table, { sql }) => ({
 		contentLength: (sql<number>`length(${table.content})`).as('content_length'),
 	}),
@@ -25339,7 +33988,7 @@ using the Drizzle relational query builder.
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	where: ((users, { eq }) => eq(users.id, placeholder('id'))),
 	with: {
 		posts: {
@@ -25355,7 +34004,7 @@ const usersWithPosts = await prepared.execute({ id: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	where: ((users, { eq }) => eq(users.id, placeholder('id'))),
 	with: {
 		posts: {
@@ -25371,7 +34020,7 @@ const usersWithPosts = await prepared.execute({ id: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	where: ((users, { eq }) => eq(users.id, placeholder('id'))),
 	with: {
 		posts: {
@@ -25392,7 +34041,7 @@ const usersWithPosts = await prepared.execute({ id: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	with: {
 		posts: {
 			limit: placeholder('limit'),
@@ -25407,7 +34056,7 @@ const usersWithPosts = await prepared.execute({ limit: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	with: {
 		posts: {
 			limit: placeholder('limit'),
@@ -25422,7 +34071,7 @@ const usersWithPosts = await prepared.execute({ limit: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	with: {
 		posts: {
 			limit: placeholder('limit'),
@@ -25442,7 +34091,7 @@ const usersWithPosts = await prepared.execute({ limit: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	offset: placeholder('offset'),
 	with: {
 		posts: true,
@@ -25456,7 +34105,7 @@ const usersWithPosts = await prepared.execute({ offset: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	offset: placeholder('offset'),
 	with: {
 		posts: true,
@@ -25470,7 +34119,7 @@ const usersWithPosts = await prepared.execute({ offset: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	offset: placeholder('offset'),
 	with: {
 		posts: true,
@@ -25488,7 +34137,7 @@ const usersWithPosts = await prepared.execute({ offset: 1 });
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	limit: placeholder('uLimit'),
 	offset: placeholder('uOffset'),
 	where: ((users, { eq, or }) => or(eq(users.id, placeholder('id')), eq(users.id, 3))),
@@ -25507,7 +34156,7 @@ const usersWithPosts = await prepared.execute({ pLimit: 1, uLimit: 3, uOffset: 1
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	limit: placeholder('uLimit'),
 	offset: placeholder('uOffset'),
 	where: ((users, { eq, or }) => or(eq(users.id, placeholder('id')), eq(users.id, 3))),
@@ -25526,7 +34175,7 @@ const usersWithPosts = await prepared.execute({ pLimit: 1, uLimit: 3, uOffset: 1
 <Tab>
 <Section>
 ```ts copy
-const prepared = db.query.users.findMany({
+const prepared = db._query.users.findMany({
 	limit: placeholder('uLimit'),
 	offset: placeholder('uOffset'),
 	where: ((users, { eq, or }) => or(eq(users.id, placeholder('id')), eq(users.id, 3))),
@@ -25555,14 +34204,12 @@ import Callout from '@mdx/Callout.astro';
 
 # Table schemas
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': true, 'SQLite': false, 'SingleStore': true }} />
-
-Drizzle ORM provides you an API for declaring SQL schemas for PostgreSQL and MySQL dialects.
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': true, 'SQLite': false, 'SingleStore': true, 'MSSQL': true, 'CockroachDB': true }} />
 
 If you declare an entity within a schema, query builder will prepend schema names in queries:<br/>
 `select * from "schema"."users"`
 
-<Tabs items={['PostgreSQL', 'MySQL', "SQLite", "SingleStore"]}>
+<Tabs items={['PostgreSQL', 'MySQL', "SQLite", "SingleStore", 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
     ```ts copy {3,5,7}
@@ -25640,6 +34287,58 @@ If you declare an entity within a schema, query builder will prepend schema name
     ```
     </Section>
   </Tab>
+  <Tab>
+    <Section>
+    ```ts {3,5}
+    import { int, text, mssqlSchema } from "drizzle-orm/mssql-core";
+
+    export const mySchema = mssqlSchema("my_schema")
+
+    export const mySchemaUsers = mySchema.table("users", {
+      id: int().primaryKey(),
+      name: text(),
+    });
+    ```
+    ```sql
+    CREATE SCHEMA [my_schema];
+
+    CREATE TABLE [my_schema].[users] (
+      [id] int PRIMARY KEY,
+      [name] text
+    );
+    ```
+    </Section>
+  </Tab>
+  <Tab>
+    <Section>
+    ```ts copy {3,5,7}
+    import { int4, text, cockroachSchema } from "drizzle-orm/cockroach-core";
+
+    export const mySchema = cockroachSchema("my_schema");
+
+    export const colors = mySchema.enum('colors', ['red', 'green', 'blue']);
+
+    export const mySchemaUsers = mySchema.table('users', {
+      id: int4().primaryKey(),
+      name: text(),
+      color: colors().default('red'),
+    });
+
+    
+    ```
+    ```sql
+    CREATE SCHEMA "my_schema";
+
+    CREATE TYPE "my_schema"."colors" AS ENUM ('red', 'green', 'blue');
+
+    CREATE TABLE "my_schema"."users" (
+      "id" serial PRIMARY KEY,
+      "name" text,
+      "color" "my_schema"."colors" DEFAULT 'red'
+    );
+    ```
+    </Section>
+  </Tab>
 </Tabs>
 
 {/* TODO: ??? example > **Warning**
@@ -25651,6 +34350,8 @@ If you declare an entity within a schema, query builder will prepend schema name
 Source: https://orm.drizzle.team/docs/seed-functions
 
 import Callout from '@mdx/Callout.astro';
+import Tab from "@mdx/Tab.astro";
+import Tabs from "@mdx/Tabs.astro";
 
 # Generators
 
@@ -25697,11 +34398,11 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates values from given array
 
-|  | param      | default                   | type
-|:-| :--------  | :--------                 | :--------
-|  |`values`    |--                         |`any[]` \| `{ weight: number; values: any[] }[]`
-|  |`isUnique`  |database column uniqueness |`boolean`
-|  |`arraySize` |--                         |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`values`    |--                           |`any[]` \| `{ weight: number; values: any[] }[]`
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 
 <rem025 />
@@ -25759,7 +34460,7 @@ Generates numbers with a floating point within the given range
 
 |  | param      | default                                                                                               | type
 |:-| :--------  | :--------                                                                                             | :--------
-|  |`isUnique`  |database column uniqueness                                                                             |`boolean`
+|  |`isUnique`  |`database column uniqueness`                                                                           |`boolean`
 |  |`precision` |`100`                                                                                                  |`number`
 |  |`maxValue`  |``` `precision * 1000` if isUnique equals false``` ``` `precision * count` if isUnique equals true```  |`number`
 |  |`minValue`  |`-maxValue`                                                                                            |`number`
@@ -25804,7 +34505,7 @@ Generates integers within the given range
 
 |  | param      | default                                                                            | type
 |:-| :--------  | :--------                                                                          | :--------
-|  |`isUnique`  |database column uniqueness                                                          |`boolean`
+|  |`isUnique`  |`database column uniqueness`                                                        |`boolean`
 |  |`maxValue`  |``` `1000` if isUnique equals false``` ``` `count * 10` if isUnique equals true```  |`number \| bigint`
 |  |`minValue`  |`-maxValue`                                                                         |`number \| bigint`
 |  |`arraySize` |--                                                                                  |`number`
@@ -26053,10 +34754,10 @@ Generates time intervals.
 
 Example of a generated value: `1 year 12 days 5 minutes`
 
-|  | param      | default            | type
-|:-| :--------  | :--------          | :--------
-|  |`isUnique`  | column uniqueness  |`boolean`
-|  |`arraySize` |--                  |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 ```ts 
@@ -26084,10 +34785,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates random strings
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 ```ts 
@@ -26140,10 +34841,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates a person's first name
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 ```ts 
@@ -26171,10 +34872,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates a person's last name
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 ```ts 
@@ -26202,10 +34903,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates a person's full name
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 ```ts 
@@ -26339,10 +35040,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates country's names
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 
@@ -26371,10 +35072,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates city's names
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 
@@ -26403,9 +35104,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates street address
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 
@@ -26462,10 +35164,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates postal codes
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 
@@ -26522,10 +35224,10 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 <rem025 />
 Generates random company's names
 
-|  | param      | default    | type
-|:-| :--------  | :--------  | :--------
-|  |`isUnique`  |--          |`boolean`
-|  |`arraySize` |--          |`number`
+|  | param      | default                     | type
+|:-| :--------  | :--------                   | :--------
+|  |`isUnique`  |`database column uniqueness` |`boolean`
+|  |`arraySize` |--                           |`number`
 
 <rem025 />
 
@@ -26587,7 +35289,7 @@ Generates 2D points within specified ranges for x and y coordinates.
 
 |  | param       | default                                                                                 | type
 |:-| :--------   | :--------                                                                               | :--------
-|  |`isUnique`   |database column uniqueness                                                               |`boolean`
+|  |`isUnique`   |`database column uniqueness`                                                             |`boolean`
 |  |`maxXValue`  |``` `10 * 1000` if isUnique equals false``` ``` `10 * count` if isUnique equals true```  |`number`
 |  |`minXValue`  |`-maxXValue`                                                                             |`number`
 |  |`maxYValue`  |``` `10 * 1000` if isUnique equals false``` ``` `10 * count` if isUnique equals true```  |`number`
@@ -26640,7 +35342,7 @@ line equation: a*x + b*y + c = 0
 
 |  | param       | default                                                                                 | type
 |:-| :--------   | :--------                                                                               | :--------
-|  |`isUnique`   |database column uniqueness                                                               |`boolean`
+|  |`isUnique`   |`database column uniqueness`                                                             |`boolean`
 |  |`maxAValue`  |``` `10 * 1000` if isUnique equals false``` ``` `10 * count` if isUnique equals true```  |`number`
 |  |`minAValue`  |`-maxAValue`                                                                             |`number`
 |  |`maxBValue`  |``` `10 * 1000` if isUnique equals false``` ``` `10 * count` if isUnique equals true```  |`number`
@@ -26688,6 +35390,269 @@ await seed(db, schema, { count: 1000 }).refine((funcs) => ({
 
 ```
 
+### `bitString`
+
+<rem025 />
+Generates bit strings based on specified parameters.
+
+|  | param       | default                                                                                 | type
+|:-| :--------   | :--------                                                                               | :--------
+|  |`isUnique`   |`database column uniqueness`                                                             |`boolean`
+|  |`dimensions` |`database column bit-length`                                                             |`number`
+|  |`arraySize`  |--                                                                                       |`number`
+<rem025 />
+
+```ts 
+import { seed } from "drizzle-seed";
+
+await seed(db, schema, { count: 1000 }).refine((funcs) => ({
+  bitStringTable: {
+    columns: {
+      bit: funcs.bitString({
+        // desired length of each bit string (e.g., `dimensions = 3` produces values like `'010'`).
+        dimensions: 12,
+
+        // property that controls if generated values gonna be unique or not;
+        isUnique: true,
+
+        // number of elements in each one-dimensional array (If specified, arrays will be generated);
+        arraySize: 3,
+      }),
+    },
+  },
+}));
+
+```
+
+### `inet`
+
+<rem025 />
+Generates ip addresses based on specified parameters.
+
+|  | param       | default                                                                                 | type
+|:-| :--------   | :--------                                                                               | :--------
+|  |`isUnique`   |`database column uniqueness`                                                             |`boolean`
+|  |`arraySize`  |--                                                                                       |`number`
+|  |`ipAddress`  |`'ipv4'`                                                                                 |`'ipv4' \| 'ipv6'`
+|  |`includeCidr`|`true`                                                                                   |`boolean`
+<rem025 />
+
+```ts 
+import { seed } from "drizzle-seed";
+
+await seed(db, schema, { count: 1000 }).refine((funcs) => ({
+  inetTable: {
+    columns: {
+      inet: funcs.inet({
+        // property that controls if generated values gonna be unique or not;
+        isUnique: true,
+
+        // number of elements in each one-dimensional array (If specified, arrays will be generated);
+        arraySize: 3,
+
+        // type of IP address to generate — either "ipv4" or "ipv6";
+        ipAddress: "ipv4",
+
+        // determines whether generated IPs include a CIDR suffix.
+        includeCidr: true,
+      }),
+    },
+  },
+}));
+```
+
+### `geometry`
+
+<rem025 />
+Generates geometry objects based on the given parameters.
+
+<Callout title='warnings'>
+<Tabs items={['arraySize', 'srid']}>
+<Tab>
+Currently, if you set arraySize to a value greater than 1 
+or try to insert more than one `geometry point` element into a `geometry(point, 0)[]` column in PostgreSQL or CockroachDB via drizzle-orm, 
+you’ll encounter an error.
+
+This bug is already in the backlog.
+
+<Callout title="❌">
+```ts {13}
+import { seed } from "drizzle-seed";
+import { geometry, pgTable } from 'drizzle-orm/pg-core';
+
+const geometryTable = pgTable('geometry_table', {
+	geometryArray: geometry('geometry_array', { type: 'point', srid: 0 }).array(3),
+});
+
+await seed(db, { geometryTable }, { count: 1000 }).refine((funcs) => ({
+  geometryTable: {
+    columns: {
+      geometryArray: funcs.geometry({
+        // currently arraySize with values > 1 are not supported
+        arraySize: 3,
+      }),
+    },
+  },
+}));
+```
+</Callout>
+
+<Callout title='✅'>
+```ts {13}
+import { seed } from "drizzle-seed";
+import { geometry, pgTable } from 'drizzle-orm/pg-core';
+
+const geometryTable = pgTable('geometry_table', {
+	geometryArray: geometry('geometry_array', { type: 'point', srid: 0 }).array(1),
+});
+
+await seed(db, { geometryTable }, { count: 1000 }).refine((funcs) => ({
+  geometryTable: {
+    columns: {
+      geometryArray: funcs.geometry({
+        // will work as expected
+        arraySize: 1,
+      }),
+    },
+  },
+}));
+```
+</Callout>
+</Tab>
+
+<Tab>
+Currently, if you set the SRID of a `geometry(point)` column to anything other than 0 (for example, 4326) in your drizzle-orm table declaration, 
+you’ll encounter an error during the seeding process.
+
+This bug is already in the backlog.
+
+<Callout title="❌">
+```ts {5}
+import { seed } from "drizzle-seed";
+import { geometry, pgTable } from 'drizzle-orm/pg-core';
+
+const geometryTable = pgTable('geometry_table', {
+	geometryColumn: geometry('geometry_column', { type: 'point', srid: 4326 }),
+});
+
+await seed(db, { geometryTable }, { count: 1000 }).refine((funcs) => ({
+  geometryTable: {
+    columns: {
+      geometryColumn: funcs.geometry({
+        srid: 4326,
+      }),
+    },
+  },
+}));
+```
+</Callout>
+
+<Callout title='✅'>
+```ts {5}
+import { seed } from "drizzle-seed";
+import { geometry, pgTable } from 'drizzle-orm/pg-core';
+
+const geometryTable = pgTable('geometry_table', {
+	geometryColumn: geometry('geometry_column', { type: 'point', srid: 0 }),
+});
+
+await seed(db, { geometryTable }, { count: 1000 }).refine((funcs) => ({
+  geometryTable: {
+    columns: {
+      geometryColumn: funcs.geometry({
+        srid: 4326,
+      }),
+    },
+  },
+}));
+```
+</Callout>
+</Tab>
+</Tabs>
+</Callout>
+
+|  | param          | default                                                                                 | type
+|:-| :--------      | :--------                                                                               | :--------
+|  |`isUnique`      |`database column uniqueness`                                                             |`boolean`
+|  |`arraySize`     |--                                                                                       |`number`
+|  |`type`          |`'point'`                                                                                |`'point'`
+|  |`srid`          |`4326`                                                                                   |`4326 \| 3857`
+|  |`decimalPlaces` |`6`                                                                                      |`1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7`
+<rem025 />
+
+```ts 
+import { seed } from "drizzle-seed";
+
+await seed(db, schema, { count: 1000 }).refine((funcs) => ({
+  geometryTable: {
+    columns: {
+      geometryPointTuple: funcs.geometry({
+        // property that controls if generated values gonna be unique or not;
+        isUnique: true,
+
+        // number of elements in each one-dimensional array (If specified, arrays will be generated);
+        arraySize: 1,
+
+        // geometry type to generate; currently only `'point'` is supported;
+        type: "point",
+
+        // Spatial Reference System Identifier: determines what type of point will be generated - either `4326` or `3857`;
+        srid: 4326,
+
+        // number of decimal places for points when `srid` is `4326` (e.g., `decimalPlaces = 3` produces values like `'point(30.723 46.482)'`).
+        decimalPlaces: 5,
+      }),
+    },
+  },
+}));
+
+```
+
+### `vector`
+
+<rem025 />
+Generates vectors based on the provided parameters.
+
+|  | param          | default                                                      | type
+|:-| :--------      | :--------                                                    | :--------
+|  |`isUnique`      |`database column uniqueness`                                  |`boolean`
+|  |`arraySize`     |--                                                            |`number`
+|  |`decimalPlaces` |`2`                                                           |`number`
+|  |`dimensions`    |`database column’s dimensions`                                |`number`
+|  |`minValue`      |`-1000`                                                       |`number`
+|  |`maxValue`      |`1000`                                                        |`number`
+<rem025 />
+
+```ts 
+import { seed } from "drizzle-seed";
+
+await seed(db, schema, { count: 1000 }).refine((funcs) => ({
+  vectorTable: {
+    columns: {
+      vector: funcs.vector({
+        // property that controls if generated values gonna be unique or not;
+        isUnique: true,
+
+        // number of elements in each one-dimensional array (If specified, arrays will be generated);
+        arraySize: 3,
+
+        // number of decimal places for each vector element (e.g., `decimalPlaces = 3` produces values like `1.123`);
+        decimalPlaces: 5,
+
+        // number of elements in each generated vector (e.g., `dimensions = 3` produces values like `[1,2,3]`);
+        dimensions: 12,
+
+        // minimum allowed value for each vector element;
+        minValue: -100,
+
+        // maximum allowed value for each vector element.
+        maxValue: 100,
+      }),
+    },
+  },
+}));
+
+```
 
 Source: https://orm.drizzle.team/docs/seed-limitations
 
@@ -26705,7 +35670,7 @@ import IsSupportedChipGroup from '@mdx/IsSupportedChipGroup.astro';
 
 # Drizzle Seed
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': true, 'CockroachDB': true, 'MS SQL': true }} />
 
 <Callout type='warning'>
   `drizzle-seed` can only be used with `drizzle-orm@0.36.4` or higher. Versions lower than this may work at runtime but could have type issues and identity column issues, as this patch was introduced in `drizzle-orm@0.36.4`
@@ -26802,7 +35767,7 @@ main();
 
 Different dialects will have different strategies for database resetting
 
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'CockroachDB', 'MS SQL']}>
 <Tab>
 For PostgreSQL, the `drizzle-seed` package will generate `TRUNCATE` statements with the `CASCADE` option to 
 ensure that all tables are empty after running the reset function
@@ -26835,6 +35800,55 @@ DELETE FROM tableName1;
 DELETE FROM tableName2;
 ...
 PRAGMA foreign_keys = ON;
+```
+
+</Tab>
+<Tab>
+For SingleStore, the `drizzle-seed` package will first disable `FOREIGN_KEY_CHECKS` to ensure the next step won't fail, and then 
+generate `TRUNCATE` statements to empty the content of all tables
+
+```sql
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE tableName1;
+TRUNCATE tableName2;
+...
+SET FOREIGN_KEY_CHECKS = 1;
+```
+
+</Tab>
+<Tab>
+For CockroachDB, the `drizzle-seed` package will generate `TRUNCATE` statements with the `CASCADE` option to 
+ensure that all tables are empty after running the reset function
+
+```sql
+TRUNCATE tableName1, tableName2, ... CASCADE;
+```
+
+</Tab>
+<Tab>
+For MS SQL, the `drizzle-seed` package first gathers information about all foreign key constraints that reference 
+or are contained in the tables specified as the second argument(your schema) to the `reset` function.
+
+It then iterates over those tables, drops all foreign key constraints related to each table, and truncates each table.
+
+Finally, the package recreates the original foreign key constraints for each table.
+
+```sql
+-- gather information about all fk constraints
+
+-- drops all fk constraints related to each table
+ALTER TABLE [<schemaName>].[<tableName>] DROP CONSTRAINT [<fkName>];
+
+-- truncates each table
+TRUNCATE TABLE [<schemaName>].[<tableName>];
+
+-- recreates the original fk constraints
+ALTER TABLE [<schemaName>].[<tableName>] 
+ADD CONSTRAINT [<fkName>] 
+FOREIGN KEY([<columnName>])
+REFERENCES [<refSchemaName>].[<refTableName>] ([<refColumnName>])
+ON DELETE <onDeleteAction>
+ON UPDATE <onUpdateAction>;
 ```
 
 </Tab>
@@ -27777,7 +36791,7 @@ It natively supports mostly every query feature and capability of every dialect,
 and whatever it doesn't support yet, can be added by the user with the powerful [`sql`](/docs/sql) operator.
 
 For the following examples, let's assume you have a `users` table defined like this:
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'SingleStore', 'MSSQL', 'CockroachDB']}>
 <Tab>
 ```typescript
 import { pgTable, serial, text } from 'drizzle-orm/pg-core';
@@ -27819,6 +36833,28 @@ export const users = singlestoreTable('users', {
   id: int('id').primaryKey(),
   name: text('name').notNull(),
   age: int('age'),
+});
+```
+</Tab>
+<Tab>
+```typescript
+import { mssqlTable, int, text } from 'drizzle-orm/mssql-core';
+
+export const users = pgTable('users', {
+  id: int().primaryKey(),
+  name: text().notNull(),
+  age: int(),
+});
+```
+</Tab>
+<Tab>
+```typescript
+import { cockroachTable, int4, text } from 'drizzle-orm/cockroach-core';
+
+export const users = pgTable('users', {
+  id: int4().primaryKey(),
+  name: text().notNull(),
+  age: int4(),
 });
 ```
 </Tab>
@@ -27889,6 +36925,17 @@ Drizzle cannot perform any type casts based on the provided type generic, becaus
 If you need to apply runtime transformations to the returned value, you can use the [`.mapWith()`](/docs/sql#sqlmapwith) method.
 </Callout>
 
+<Callout title='Info'>
+Starting from `v1.0.0-beta.1` you can use `.as()` for columns:
+
+```ts
+const result = await db.select({
+  id: users.id,
+  lowerName: users.name.as("lower"),
+}).from(users);
+```
+</Callout>
+
 ### Conditional select
 
 You can have a dynamic selection object based on some condition:
@@ -27943,19 +36990,29 @@ select distinct on ("name") "name" from "users" order by "name";
 Powered by TypeScript, Drizzle APIs let you build your select queries in a variety of flexible ways.
 
 Sneak peek of advanced partial select, for more detailed advanced usage examples - see our [dedicated guide](/docs/guides/include-or-exclude-columns).
+
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
+
+<br/>
+
 <CodeTabs items={["example 1", "example 2", "example 3", "example 4"]}>
 ```ts
-import { getTableColumns, sql } from 'drizzle-orm';
+import { getColumns, sql } from 'drizzle-orm';
 
 await db.select({
-    ...getTableColumns(posts),
+    ...getColumns(posts),
     titleLength: sql<number>`length(${posts.title})`,
   }).from(posts);
 ```
 ```ts
-import { getTableColumns } from 'drizzle-orm';
+import { getColumns } from 'drizzle-orm';
 
-const { content, ...rest } = getTableColumns(posts); // exclude "content" column
+const { content, ...rest } = getColumns(posts); // exclude "content" column
 await db.select({ ...rest }).from(posts); // select all other columns
 ```
 ```ts
@@ -28129,6 +37186,8 @@ await searchPosts(filters);
 ## ---
 
 ### Limit & offset
+<IsSupportedChipGroup chips={{ 'MSSQL': false }} />
+
 Use `.limit()` and `.offset()` to add `limit` and `offset` clauses to the query - for example, to implement pagination:
 <Section>
 ```typescript
@@ -28138,6 +37197,40 @@ await db.select().from(users).limit(10).offset(10);
 ```sql
 select "id", "name", "age" from "users" limit 10;
 select "id", "name", "age" from "users" limit 10 offset 10;
+```
+</Section>
+
+### Fetch & offset
+
+<IsSupportedChipGroup chips={{ 'MSSQL': true }} />
+
+<Callout>
+In MSSQL, `FETCH` and `OFFSET` are part of the `ORDER BY` clause, so they can only be used after the `.orderBy()` function
+</Callout>
+
+<Section>
+```typescript
+await db.select().from(users).orderBy(asc(users.id)).offset(5);
+await db.select().from(users).orderBy(asc(users.id)).offset(5).fetch(10);
+```
+```sql
+select [id], [name], [age] from [users] offset 5 rows;
+select [id], [name], [age] from [users] offset 5 rows fetch next 10 rows;
+```
+</Section>
+
+### Top
+
+<IsSupportedChipGroup chips={{ 'MSSQL': true }} />
+
+Limits the rows returned in a query result set to a specified number of rows
+
+<Section>
+```typescript
+await db.select().from(users).top(10);
+```
+```sql
+select top (10) [id], [name], [age] from [users];
 ```
 </Section>
 
@@ -28164,7 +37257,7 @@ select "id", "name", "age" from "users" order by "name" asc, "name2" desc;
 </Section>
 
 ### Advanced pagination
-Powered by TypeScript, Drizzle APIs let you implement all possible SQL paginations and sorting approaches.
+Powered by TypeScript, Drizzle APIs let you implement all possible SQL pagination and sorting approaches.
 
 Sneak peek of advanced pagination, for more detailed advanced
 usage examples - see our dedicated [limit offset pagination](/docs/guides/limit-offset-pagination)
@@ -28594,7 +37687,7 @@ db
 
 ### Iterator
 
-<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL[WIP]': false, 'SQLite[WIP]': false, 'SingleStore[WIP]': false }} />
+<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL[WIP]': false, 'SQLite[WIP]': false, 'SingleStore[WIP]': false, 'MSSQL': true, 'CockroachDB[WIP]': false }} />
 
 If you need to return a very large amount of rows from a query and you don't want to load them all into memory, you can use `.iterator()` to convert the query into an async iterator:
 
@@ -28623,7 +37716,7 @@ for await (const row of iterator) {
 
 The `USE INDEX` hint suggests to the optimizer which indexes to consider when processing the query. The optimizer is not forced to use these indexes but will prioritize them if they are suitable.
 
-<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': false }} />
 
 ```ts copy
 export const users = mysqlTable('users', {
@@ -28651,7 +37744,7 @@ await db.select()
 
 The `IGNORE INDEX` hint tells the optimizer to avoid using specific indexes for the query. MySQL will consider all other indexes (if any) or perform a full table scan if necessary.
 
-<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': false }} />
 
 ```ts copy
 export const users = mysqlTable('users', {
@@ -28680,7 +37773,7 @@ await db.select()
 
 The `FORCE INDEX` hint forces the optimizer to use the specified index(es) for the query. If the specified index cannot be used, MySQL will not fall back to other indexes; it might resort to a full table scan instead.
 
-<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'MySQL': true, 'PostgreSQL': false, 'SQLite': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': false }} />
 
 ```ts copy
 export const users = mysqlTable('users', {
@@ -28709,46 +37802,17 @@ Source: https://orm.drizzle.team/docs/sequences
 
 import IsSupportedChipGroup from '@mdx/IsSupportedChipGroup.astro';
 import Callout from '@mdx/Callout.astro';
+import Tab from '@mdx/Tab.astro';
+import Tabs from '@mdx/Tabs.astro';
 
 # Sequences
 
-<Callout type="info">
-To use this feature you would need to have `drizzle-orm@0.32.0` or higher and `drizzle-kit@0.23.0` or higher
-</Callout>
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': false, 'MySQL': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': false, 'MySQL': false, 'SingleStore': false }} />
+Sequences in PostgreSQL and CockroachDB are special single-row tables created to generate unique identifiers, often used for auto-incrementing primary key values. They provide a thread-safe way to generate unique sequential values across multiple sessions.
 
-Sequences in PostgreSQL are special single-row tables created to generate unique identifiers, often used for auto-incrementing primary key values. They provide a thread-safe way to generate unique sequential values across multiple sessions.
-<br/>
-
-**Key Features**
-- Creation and Initialization: Use CREATE SEQUENCE to create a new sequence. Parameters such as increment value, start value, min/max values, and cache size can be specified.
-
-- Manipulation Functions
-    - `nextval('sequence_name')`: Advances the sequence and returns the next value.
-    - `currval('sequence_name')`: Returns the current value of the sequence for the current session.
-    - `setval('sequence_name', value)`: Sets the sequence's current value.
-    - `lastval()`: Returns the last value returned by nextval in the current session.
-
-- Ownership: Sequences can be linked to table columns using the OWNED BY clause. Dropping the table or column will automatically drop the associated sequence.
-- Cycling: Sequences can be set to cycle when they reach their maximum or minimum value using the CYCLE option. The default is NO CYCLE.
-- Caching: Sequence values can be preallocated using the CACHE option for improved performance.
-<br/>
-
-**Limitations**
-- Gaps: Sequences are not gapless. Aborted transactions or crashes can lead to gaps in the sequence values.
-- Concurrency: While sequences provide unique values across sessions, the values may be out of order when considering all sessions.
-- No Rollback: Changes to sequences are not rolled back if a transaction fails. This ensures unique values but can lead to gaps.
-- Crash Recovery: Unlogged sequences or sequences modified before a crash might not be properly restored to their previous state.
-<br/>
-
-**Practical Use**
-- Default Behavior: By default, sequences increment by 1 and start at 1.
-- Custom Behavior: Custom start points, increments, min/max values, and cycling can be specified.
-- Associations: Commonly associated with table columns for auto-incrementing fields, making management of unique identifiers seamless.
-<br/>
-
-**Usage Example**
+<Tabs items={['PostgreSQL', 'CockroachDB']}>
+<Tab>
 ```ts
 import { pgSchema, pgSequence } from "drizzle-orm/pg-core";
 
@@ -28769,6 +37833,30 @@ export const customSequence = pgSequence("name", {
 export const customSchema = pgSchema('custom_schema');
 export const customSequence = customSchema.sequence("name");
 ```
+</Tab>
+<Tab>
+```ts
+import { cockroachSchema, cockroachSequence } from "drizzle-orm/cockroach-core";
+
+// No params specified
+export const customSequence = cockroachSequence("name");
+
+// Sequence with params
+export const customSequence = cockroachSequence("name", {
+      startWith: 100,
+      maxValue: 10000,
+      minValue: 100,
+      cycle: true,
+      cache: 10,
+      increment: 2
+});
+
+// Sequence in custom schema
+export const customSchema = cockroachSchema('custom_schema');
+export const customSequence = customSchema.sequence("name");
+```
+</Tab>
+</Tabs>
 
 Source: https://orm.drizzle.team/docs/set-operations
 
@@ -28788,7 +37876,7 @@ Combine all results from two query blocks into a single result, omitting any dup
 
 Get all names from customers and users tables without duplicates.
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29018,6 +38106,122 @@ Get all names from customers and users tables without duplicates.
     </CodeTab>
   </CodeTabs>
   </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { union } from 'drizzle-orm/mssql-core'
+    import { users, customers } from './schema'
+
+    const allNamesForUserQuery = db.select({ name: users.name }).from(users);
+
+    const result = await union(
+		allNamesForUserQuery,
+		db.select({ name: customers.name }).from(customers)
+	).limit(10);
+    ```
+    ```sql
+    (select [name] from [sellers])
+    union
+    (select [name] from [customers])
+    limit @limit
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { users, customers } from './schema'
+
+    const result = await db
+      .select({ name: users.name })
+      .from(users)
+      .union(db.select({ name: customers.name }).from(customers))
+      .limit(10);
+    ```
+    ```sql
+    (select [name] from [sellers])
+    union
+    (select [name] from [customers])
+    limit @limit
+    ```
+    </CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int, mssqlTable, ntext, nvarchar } from "drizzle-orm/mssql-core";
+
+    const users = mssqlTable('sellers', {
+        id: int().primaryKey(),
+        name: nvarchar({ length: 256 }).notNull(),
+        address: ntext(),
+    });
+    
+    const customers = mssqlTable('customers', {
+        id: int().primaryKey(),
+        name: nvarchar({ length: 256 }).notNull(),
+        city: ntext(),
+        email: nvarchar({ length: 256 }).notNull()
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { union } from 'drizzle-orm/cockroach-core'
+    import { users, customers } from './schema'
+
+    const allNamesForUserQuery = db.select({ name: users.name }).from(users);
+
+    const result = await union(
+		allNamesForUserQuery,
+		db.select({ name: customers.name }).from(customers)
+	).limit(10);
+    ```
+    ```sql
+    (select "name" from "sellers")
+    union
+    (select "name" from "customers")
+    limit $1
+    ```
+    </CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { users, customers } from './schema'
+
+    const result = await db
+      .select({ name: users.name })
+      .from(users)
+      .union(db.select({ name: customers.name }).from(customers))
+      .limit(10);
+    ```
+    ```sql
+    (select "name" from "sellers")
+    union
+    (select "name" from "customers")
+    limit $1
+    ```
+	</CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int4, cockroachTable, text, varchar } from "drizzle-orm/cockroach-core";
+
+    const users = cockroachTable('sellers', {
+        id: int4().primaryKey(),
+        name: varchar({ length: 256 }).notNull(),
+        address: text(),
+    });
+    
+    const customers = cockroachTable('customers', {
+        id: int4().primaryKey(),
+        name: varchar({ length: 256 }).notNull(),
+        city: text(),
+        email: varchar({ length: 256 }).notNull()
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
 </Tabs>
 
 ### Union All
@@ -29028,7 +38232,7 @@ representing in-store sales. In this case, you want to combine the data from bot
 single result set. Since there might be duplicate transactions, 
 you want to keep all the records and not eliminate duplicates.
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29256,6 +38460,118 @@ you want to keep all the records and not eliminate duplicates.
     </CodeTab>
   </CodeTabs>
   </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { unionAll } from 'drizzle-orm/mssql-core'
+    import { onlineSales, inStoreSales } from './schema'
+
+    const onlineTransactions = db.select({ transaction: onlineSales.transactionId }).from(onlineSales);
+    const inStoreTransactions = db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales);
+
+    const result = await unionAll(onlineTransactions, inStoreTransactions);
+    ```
+    ```sql
+    (select [transaction_id] from [online_sales])
+    union all
+    (select [transaction_id] from [in_store_sales])
+    ```
+    </CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { onlineSales, inStoreSales } from './schema'
+
+    const result = await db
+      .select({ transaction: onlineSales.transactionId })
+      .from(onlineSales)
+      .unionAll(
+        db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
+      );
+    ```
+    ```sql
+    (select [transaction_id] from [online_sales])
+    union all
+    (select [transaction_id] from [in_store_sales])
+    ```
+	</CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int, mssqlTable, timestamp } from "drizzle-orm/mssql-core";
+
+    const onlineSales = mysqlTable('online_sales', {
+        transactionId: int('transaction_id').primaryKey(),
+        productId: int('product_id').unique(),
+        quantitySold: int('quantity_sold'),
+        saleDate: timestamp('sale_date', { mode: 'date' }),
+    });
+    
+    const inStoreSales = mysqlTable('in_store_sales', {
+        transactionId: int('transaction_id').primaryKey(),
+        productId: int('product_id').unique(),
+        quantitySold: int('quantity_sold'),
+        saleDate: timestamp('sale_date', { mode: 'date' }),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { unionAll } from 'drizzle-orm/cockroach-core'
+    import { onlineSales, inStoreSales } from './schema'
+
+    const onlineTransactions = db.select({ transaction: onlineSales.transactionId }).from(onlineSales);
+    const inStoreTransactions = db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales);
+
+    const result = await unionAll(onlineTransactions, inStoreTransactions);
+    ```
+    ```sql
+    select "transaction_id" from "online_sales"
+    union all
+    select "transaction_id" from "in_store_sales"
+    ```
+    </CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { onlineSales, inStoreSales } from './schema'
+
+    const result = await db
+      .select({ transaction: onlineSales.transactionId })
+      .from(onlineSales)
+      .unionAll(
+        db.select({ transaction: inStoreSales.transactionId }).from(inStoreSales)
+      );
+    ```
+    ```sql
+    select "transaction_id" from "online_sales"
+    union all
+    select "transaction_id" from "in_store_sales"
+    ```
+	</CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int4, cockroachTable, text, timestamp, varchar } from "drizzle-orm/cockroach-core";
+
+    const onlineSales = cockroachTable('online_sales', {
+        transactionId: int4('transaction_id').primaryKey(),
+        productId: int4('product_id').unique(),
+        quantitySold: int4('quantity_sold'),
+        saleDate: timestamp('sale_date', { mode: 'date' }),
+    });
+    
+    const inStoreSales = cockroachTable('in_store_sales', {
+        transactionId: int4('transaction_id').primaryKey(),
+        productId: int4('product_id').unique(),
+        quantitySold: int4('quantity_sold'),
+        saleDate: timestamp('sale_date', { mode: 'date' }),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
 </Tabs>
 
 ### Intersect
@@ -29269,7 +38585,7 @@ enrollments of the same course by the same student.
 In this scenario, you want to find courses that are common between the two departments but don't want 
 to count the same course multiple times even if multiple students from the same department are enrolled in it.
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29362,7 +38678,7 @@ to count the same course multiple times even if multiple students from the same 
         courseName: varchar('course_name', { length: 256 }).notNull(),
     });
     
-    const depB = pgTable('department_b_courses', {
+    const depB = mysqlTable('department_b_courses', {
         studentId: int('student_id'),
         courseName: varchar('course_name', { length: 256 }).notNull(),
     });
@@ -29455,16 +38771,116 @@ to count the same course multiple times even if multiple students from the same 
     </CodeTab>
     <CodeTab>
 	```typescript copy
-    import { int, mysqlTable, varchar } from "drizzle-orm/singlestore-core";
+    import { int, singlestoreTable, varchar } from "drizzle-orm/singlestore-core";
 
-    const depA = mysqlTable('department_a_courses', {
+    const depA = singlestoreTable('department_a_courses', {
         studentId: int('student_id'),
         courseName: varchar('course_name', { length: 256 }).notNull(),
     });
     
-    const depB = pgTable('department_b_courses', {
+    const depB = singlestoreTable('department_b_courses', {
         studentId: int('student_id'),
         courseName: varchar('course_name', { length: 256 }).notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { intersect } from 'drizzle-orm/mssql-core'
+    import { depA, depB } from './schema'
+
+    const departmentACourses = db.select({ courseName: depA.courseName }).from(depA);
+    const departmentBCourses = db.select({ courseName: depB.courseName }).from(depB);
+
+    const result = await intersect(departmentACourses, departmentBCourses);
+    ```
+    ```sql
+    (select `projects_name` from `department_a_projects`)
+    intersect
+    (select `projects_name` from `department_b_projects`)
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```typescript copy
+    import { depA, depB } from './schema'
+
+    const result = await db
+      .select({ courseName: depA.courseName })
+      .from(depA)
+      .intersect(db.select({ courseName: depB.courseName }).from(depB));
+    ```
+    ```sql
+    (select `projects_name` from `department_a_projects`)
+    intersect
+    (select `projects_name` from `department_b_projects`)
+    ```
+    </CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int, mssqlTable, varchar } from "drizzle-orm/mssqlTable-core";
+
+    const depA = mssqlTable('department_a_courses', {
+        studentId: int('student_id'),
+        courseName: varchar('course_name', { length: 256 }).notNull(),
+    });
+    
+    const depB = mssqlTable('department_b_courses', {
+        studentId: int('student_id'),
+        courseName: varchar('course_name', { length: 256 }).notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab>
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { intersect } from 'drizzle-orm/cockroach-core'
+    import { depA, depB } from './schema'
+
+    const departmentACourses = db.select({ courseName: depA.courseName }).from(depA);
+    const departmentBCourses = db.select({ courseName: depB.courseName }).from(depB);
+
+    const result = await intersect(departmentACourses, departmentBCourses);
+    ```
+    ```sql
+    select "course_name" from "department_a_courses"
+    intersect
+    select "course_name" from "department_b_courses"
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```typescript copy
+    import { depA, depB } from './schema'
+
+    const result = await db
+      .select({ courseName: depA.courseName })
+      .from(depA)
+      .intersect(db.select({ courseName: depB.courseName }).from(depB));
+    ```
+    ```sql
+    select "course_name" from "department_a_courses"
+    intersect
+    select "course_name" from "department_b_courses"
+    ```
+    </CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int4, cockroachTable, varchar } from "drizzle-orm/cockroach-core";
+
+    const depA = cockroachTable('department_a_courses', {
+        studentId: int4('student_id'),
+        courseName: varchar('course_name').notNull(),
+    });
+    
+    const depB = cockroachTable('department_b_courses', {
+        studentId: int4('student_id'),
+        courseName: varchar('course_name').notNull(),
     });
     ```
     </CodeTab>
@@ -29484,7 +38900,7 @@ In this scenario, you want to find products that are ordered by both regular cus
 but you want to retain the quantity information, even if the same product is ordered multiple 
 times by different customers.
 
-<Tabs items={["PostgreSQL", "MySQL", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLlite", "SingleStore", "MSSQL" ,"CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29622,7 +39038,80 @@ times by different customers.
   </CodeTabs>
   </Tab>
   <Tab>
+  Not supported by SQLite
+  </Tab> 
+  <Tab>
   Not supported by SingleStore
+  </Tab> 
+  <Tab>
+  Not supported by MSSQL
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { intersectAll } from 'drizzle-orm/cockroach-core'
+    import { regularCustomerOrders, vipCustomerOrders } from './schema'
+
+    const regularOrders = db.select({ 
+        productId: regularCustomerOrders.productId,
+        quantityOrdered: regularCustomerOrders.quantityOrdered }
+    ).from(regularCustomerOrders);
+
+    const vipOrders = db.select({ 
+        productId: vipCustomerOrders.productId,
+        quantityOrdered: vipCustomerOrders.quantityOrdered }
+    ).from(vipCustomerOrders);
+
+    const result = await intersectAll(regularOrders, vipOrders);
+    ```
+    ```sql
+    select "product_id", "quantity_ordered" from "regular_customer_orders"
+    intersect all
+    select "product_id", "quantity_ordered" from "vip_customer_orders"
+    ```
+	</CodeTab>
+    ```ts copy
+    import { regularCustomerOrders, vipCustomerOrders } from './schema'
+
+    const result = await db
+        .select({
+          productId: regularCustomerOrders.productId,
+          quantityOrdered: regularCustomerOrders.quantityOrdered,
+        })
+        .from(regularCustomerOrders)
+        .intersectAll(
+          db
+            .select({
+              productId: vipCustomerOrders.productId,
+              quantityOrdered: vipCustomerOrders.quantityOrdered,
+            })
+            .from(vipCustomerOrders)
+        );
+    ```
+    ```sql
+    select "product_id", "quantity_ordered" from "regular_customer_orders"
+    intersect all
+    select "product_id", "quantity_ordered" from "vip_customer_orders"
+    ```
+    <CodeTab>
+	```typescript copy
+    import { int4, cockroachTable } from "drizzle-orm/cockroach-core";
+
+    const regularCustomerOrders = cockroachTable('regular_customer_orders', {
+        customerId: int4('customer_id').primaryKey(),
+        productId: int4('product_id').notNull(),
+        quantityOrdered: int4('quantity_ordered').notNull(),
+    });
+    
+    const vipCustomerOrders = cockroachTable('vip_customer_orders', {
+        customerId: int4('customer_id').primaryKey(),
+        productId: int4('product_id').notNull(),
+        quantityOrdered: int4('quantity_ordered').notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
   </Tab> 
 </Tabs>
 
@@ -29637,7 +39126,7 @@ In this scenario, you want to identify the projects that are exclusive to one de
 not shared with the other department. You don't want to count the same project 
 multiple times, even if multiple employees from the same department are assigned to it.
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29823,16 +39312,116 @@ multiple times, even if multiple employees from the same department are assigned
     </CodeTab>
     <CodeTab>
 	```typescript 
-    import { int, mysqlTable, varchar } from "drizzle-orm/singlestore-core";
+    import { int, singlestoreTable, varchar } from "drizzle-orm/singlestore-core";
 
-    const depA = mysqlTable('department_a_projects', {
+    const depA = singlestoreTable('department_a_projects', {
         employeeId: int('employee_id'),
         projectsName: varchar('projects_name', { length: 256 }).notNull(),
     });
     
-    const depB = mysqlTable('department_b_projects', {
+    const depB = singlestoreTable('department_b_projects', {
         employeeId: int('employee_id'),
         projectsName: varchar('projects_name', { length: 256 }).notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { except } from 'drizzle-orm/mssql-core'
+    import { depA, depB } from './schema'
+
+    const departmentACourses = db.select({ courseName: depA.projectsName }).from(depA);
+    const departmentBCourses = db.select({ courseName: depB.projectsName }).from(depB);
+
+    const result = await except(departmentACourses, departmentBCourses);
+    ```
+    ```sql
+    (select `projects_name` from `department_a_projects`)
+    except
+    (select `projects_name` from `department_b_projects`)
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { depA, depB } from './schema'
+
+    const result = await db
+        .select({ courseName: depA.projectsName })
+        .from(depA)
+        .except(db.select({ courseName: depB.projectsName }).from(depB));
+    ```
+    ```sql
+    (select `projects_name` from `department_a_projects`)
+    except
+    (select `projects_name` from `department_b_projects`)
+    ```
+    </CodeTab>
+    <CodeTab>
+	```typescript 
+    import { int, mssqlTable, nvarchar } from "drizzle-orm/mssql-core";
+
+    const depA = mssqlTable('department_a_projects', {
+        employeeId: int('employee_id'),
+        projectsName: nvarchar('projects_name', { length: 256 }).notNull(),
+    });
+    
+    const depB = mssqlTable('department_b_projects', {
+        employeeId: int('employee_id'),
+        projectsName: nvarchar('projects_name', { length: 256 }).notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { except } from 'drizzle-orm/cockroach-core'
+    import { depA, depB } from './schema'
+
+    const departmentACourses = db.select({ courseName: depA.projectsName }).from(depA);
+    const departmentBCourses = db.select({ courseName: depB.projectsName }).from(depB);
+
+    const result = await except(departmentACourses, departmentBCourses);
+    ```
+    ```sql
+    select "projects_name" from "department_a_projects"
+    except
+    select "projects_name" from "department_b_projects"
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { depA, depB } from './schema'
+
+    const result = await db
+        .select({ courseName: depA.projectsName })
+        .from(depA)
+        .except(db.select({ courseName: depB.projectsName }).from(depB));
+    ```
+    ```sql
+    select "projects_name" from "department_a_projects"
+    except
+    select "projects_name" from "department_b_projects"
+    ```
+    </CodeTab>
+    <CodeTab>
+	```typescript copy
+    import { int4, cockroachTable, varchar } from "drizzle-orm/cockroach-core";
+
+    const depA = cockroachTable('department_a_projects', {
+        employeeId: int4('employee_id'),
+        projectsName: varchar('projects_name').notNull(),
+    });
+    
+    const depB = cockroachTable('department_b_projects', {
+        employeeId: int4('employee_id'),
+        projectsName: varchar('projects_name').notNull(),
     });
     ```
     </CodeTab>
@@ -29850,7 +39439,7 @@ In this case, you want to keep track of the quantity of each product, even if it
 In this scenario, you want to find products that are exclusively ordered by regular customers and not 
 ordered by VIP customers. You want to retain the quantity information, even if the same product is ordered multiple times by different regular customers.
 
-<Tabs items={["PostgreSQL", "MySQL", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
   <Tab>
   <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
 	<CodeTab>
@@ -29988,8 +39577,83 @@ ordered by VIP customers. You want to retain the quantity information, even if t
   </CodeTabs>
   </Tab> 
   <Tab>
+  Not supported by SQLite
+  </Tab>
+  <Tab>
   Not supported by SingleStore
   </Tab>
+  <Tab>
+  Not supported by MSSQL
+  </Tab>
+  <Tab>
+  <CodeTabs items={["import-pattern", "builder-pattern", "schema.ts"]}>
+	<CodeTab>
+	```typescript copy
+    import { exceptAll } from 'drizzle-orm/cockroach-core'
+    import { regularCustomerOrders, vipCustomerOrders } from './schema'
+
+    const regularOrders = db.select({ 
+        productId: regularCustomerOrders.productId,
+        quantityOrdered: regularCustomerOrders.quantityOrdered }
+    ).from(regularCustomerOrders);
+
+    const vipOrders = db.select({ 
+        productId: vipCustomerOrders.productId,
+        quantityOrdered: vipCustomerOrders.quantityOrdered }
+    ).from(vipCustomerOrders);
+
+    const result = await exceptAll(regularOrders, vipOrders);
+    ```
+    ```sql
+    select "product_id", "quantity_ordered" from "regular_customer_orders"
+    except all
+    select "product_id", "quantity_ordered" from "vip_customer_orders"
+    ```
+	</CodeTab>
+    <CodeTab>
+    ```ts copy
+    import { regularCustomerOrders, vipCustomerOrders } from './schema'
+ 
+    const result = await db
+        .select({
+          productId: regularCustomerOrders.productId,
+          quantityOrdered: regularCustomerOrders.quantityOrdered,
+        })
+        .from(regularCustomerOrders)
+        .exceptAll(
+          db
+            .select({
+              productId: vipCustomerOrders.productId,
+              quantityOrdered: vipCustomerOrders.quantityOrdered,
+            })
+            .from(vipCustomerOrders)
+        );
+    ```
+    ```sql
+    select "product_id", "quantity_ordered" from "regular_customer_orders"
+    except all
+    select "product_id", "quantity_ordered" from "vip_customer_orders"
+    ```
+    </CodeTab>
+	<CodeTab>
+	```typescript copy
+    import { int4, cockroachTable } from "drizzle-orm/cockroach-core";
+
+    const regularCustomerOrders = cockroachTable('regular_customer_orders', {
+        customerId: int4('customer_id').primaryKey(),
+        productId: int4('product_id').notNull(),
+        quantityOrdered: int4('quantity_ordered').notNull(),
+    });
+    
+    const vipCustomerOrders = cockroachTable('vip_customer_orders', {
+        customerId: int4('customer_id').primaryKey(),
+        productId: int4('product_id').notNull(),
+        quantityOrdered: int4('quantity_ordered').notNull(),
+    });
+    ```
+    </CodeTab>
+  </CodeTabs>
+  </Tab> 
 </Tabs>
 
 
@@ -30013,6 +39677,39 @@ and migrations (using Drizzle-Kit).
 <Callout> 
 If you are using Drizzle-Kit for the migration process, make sure to export all the models defined in your schema files so that Drizzle-Kit can import them and use them in the migration diff process. 
 </Callout>
+
+<CodeTabs items={["Using imports", "Using callback", "Using import *"]}>
+```ts
+import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+
+export const usersTable = pgTable("users", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar().notNull(),
+  age: integer().notNull(),
+  email: varchar().notNull().unique(),
+});
+```
+```ts
+import { pgTable } from "drizzle-orm/pg-core";
+
+export const usersTable = pgTable("users", (t) => ({
+  id: t.integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: t.varchar().notNull(),
+  age: t.integer().notNull(),
+  email: t.varchar().notNull().unique(),
+}));
+```
+```ts
+import * as p from "drizzle-orm/pg-core";
+
+export const usersTable = p.pgTable("users", {
+  id: p.integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: p.varchar().notNull(),
+  age: p.integer().notNull(),
+  email: p.varchar().notNull().unique(),
+});
+```
+</CodeTabs>
 
 ## Organize your schema files 
 You can declare your SQL schema directly in TypeScript either in a single `schema.ts` file,
@@ -31068,7 +40765,7 @@ await db.transaction(async (tx) => {
 
 We provide dialect-specific transaction configuration APIs:
 
-<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore"]}>
+<Tabs items={["PostgreSQL", "MySQL", "SQLite", "SingleStore", "MSSQL", "CockroachDB"]}>
 <Tab>
 ```ts copy {6-8}
 await db.transaction(
@@ -31154,6 +40851,46 @@ interface SingleStoreTransactionConfig {
     | "serializable";
   accessMode?: "read only" | "read write";
   withConsistentSnapshot?: boolean;
+}
+```
+</Tab>
+<Tab>
+```ts copy {6-8}
+await db.transaction(
+  async (tx) => {
+    await tx.update(accounts).set({ balance: sql`${accounts.balance} - 100.00` }).where(eq(users.name, "Dan"));
+    await tx.update(accounts).set({ balance: sql`${accounts.balance} + 100.00` }).where(eq(users.name, "Andrew"));
+  }, {
+    isolationLevel: "read committed",
+  }
+);
+
+interface MsSqlTransactionConfig {
+  isolationLevel?: 'read uncommitted' | 'read committed' | 'repeatable read' | 'serializable' | 'snapshot';
+}
+```
+</Tab>
+<Tab>
+```ts copy {6-8}
+await db.transaction(
+  async (tx) => {
+    await tx.update(accounts).set({ balance: sql`${accounts.balance} - 100.00` }).where(eq(users.name, "Dan"));
+    await tx.update(accounts).set({ balance: sql`${accounts.balance} + 100.00` }).where(eq(users.name, "Andrew"));
+  }, {
+    isolationLevel: "read committed",
+    accessMode: "read write",
+    deferrable: true,
+  }
+);
+
+interface CockroachTransactionConfig {
+  isolationLevel?:
+    | "read uncommitted"
+    | "read committed"
+    | "repeatable read"
+    | "serializable";
+  accessMode?: "read only" | "read write";
+  deferrable?: boolean;
 }
 ```
 </Tab>
@@ -32846,8 +42583,14 @@ export async function createPost(data: InsertPost) {
 
 Read more about select query in the [documentation](/docs/select).
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 ```typescript copy filename="src/queries/select.ts" {5, 16, 41}
-import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
+import { asc, between, count, eq, getColumns, sql } from 'drizzle-orm';
 import { db } from '../db';
 import { SelectUser, usersTable, postsTable } from '../schema';
 
@@ -32876,7 +42619,7 @@ export async function getUsersWithPostsCount(
 > {
   return db
     .select({
-      ...getTableColumns(usersTable),
+      ...getColumns(usersTable),
       postsCount: count(postsTable.id),
     })
     .from(usersTable)
@@ -33550,8 +43293,14 @@ export async function createPost(data: InsertPost) {
 
 Read more about select query in the [documentation](/docs/select).
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 ```typescript copy filename="src/db/queries/select.ts" {5, 16, 41}
-import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
+import { asc, between, count, eq, getColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
 import { SelectUser, postsTable, usersTable } from '../schema';
 
@@ -33580,7 +43329,7 @@ export async function getUsersWithPostsCount(
 > {
   return db
     .select({
-      ...getTableColumns(usersTable),
+      ...getColumns(usersTable),
       postsCount: count(postsTable.id),
     })
     .from(usersTable)
@@ -33897,8 +43646,14 @@ export async function createPost(data: InsertPost) {
 
 Read more about select query in the [documentation](/docs/select).
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 ```typescript copy filename="src/db/queries/select.ts" {5, 16, 41}
-import { asc, count, eq, getTableColumns, gt, sql } from 'drizzle-orm';
+import { asc, count, eq, getColumns, gt, sql } from 'drizzle-orm';
 import { db } from '../index';
 import { SelectUser, postsTable, usersTable } from '../schema';
 
@@ -33927,7 +43682,7 @@ export async function getUsersWithPostsCount(
 > {
   return db
     .select({
-      ...getTableColumns(usersTable),
+      ...getColumns(usersTable),
       postsCount: count(postsTable.id),
     })
     .from(usersTable)
@@ -34212,8 +43967,14 @@ export async function createPost(data: InsertPost) {
 
 Read more about select query in the [documentation](/docs/select).
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 ```typescript copy filename="src/db/queries/select.ts" {5, 16, 41}
-import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
+import { asc, between, count, eq, getColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
 import { SelectUser, postsTable, usersTable } from '../schema';
 
@@ -34242,7 +44003,7 @@ export async function getUsersWithPostsCount(
 > {
   return db
     .select({
-      ...getTableColumns(usersTable),
+      ...getColumns(usersTable),
       postsCount: count(postsTable.id),
     })
     .from(usersTable)
@@ -34551,8 +44312,14 @@ export async function createPost(data: InsertPost) {
 
 Read more about select query in the [documentation](/docs/select).
 
+<Callout type='warning'>
+`getColumns` available starting from `drizzle-orm@1.0.0-beta.2`(read more [here](/docs/upgrade-v1))
+
+If you are on pre-1 version(like `0.45.1`) then use `getTableColumns`
+</Callout>
+
 ```typescript copy filename="src/db/queries/select.ts" {5, 16, 41}
-import { asc, between, count, eq, getTableColumns, sql } from 'drizzle-orm';
+import { asc, between, count, eq, getColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
 import { SelectUser, postsTable, usersTable } from '../schema';
 
@@ -34581,7 +44348,7 @@ export async function getUsersWithPostsCount(
 > {
   return db
     .select({
-      ...getTableColumns(usersTable),
+      ...getColumns(usersTable),
       postsCount: count(postsTable.id),
     })
     .from(usersTable)
@@ -35733,7 +45500,7 @@ await db.update(users)
 
 ### Limit
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'MySQL': true, 'SQLite': true, 'SingleStore': true }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': false, 'MySQL': true, 'SQLite': true, 'SingleStore': true, 'MSSQL': false, 'CockroachDB': false }} />
 
 Use `.limit()` to add `limit` clause to the query - for example:
 <Section>
@@ -35767,14 +45534,58 @@ update "users" set "verified" = $1 order by "name" asc, "name2" desc;
 ```
 </Section>
 
-### Update with returning
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false , 'SingleStore': false}} />
+### Returning
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': false , 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 You can update a row and get it back in PostgreSQL and SQLite:
 ```typescript copy
 const updatedUserId: { updatedId: number }[] = await db.update(users)
   .set({ name: 'Mr. Dan' })
   .where(eq(users.name, 'Dan'))
   .returning({ updatedId: users.id });
+```
+
+### Output
+<IsSupportedChipGroup chips={{ 'MSSQL': true }} />
+You can update a row and get back the row before updated and after:
+
+```typescript copy
+type User = typeof users.$inferSelect;
+
+const updatedUserId: User[] = await db.update(users)
+  .set({ name: 'Mr. Dan' })
+  .where(eq(users.name, 'Dan'))
+  .output();
+```
+
+To return partial users after update: 
+
+```ts
+const updatedUserId: { inserted: { updatedId: number }}[] = await db.update(users)
+  .set({ name: 'Mr. Dan' })
+  .where(eq(users.name, 'Dan'))
+  .output({ inserted: { updatedId: users.id }});
+```
+
+To return rows that were in database before update:
+
+```ts
+type User = typeof users.$inferSelect;
+
+const updatedUserId: { deleted: User }[] = await db.update(users)
+  .set({ name: 'Mr. Dan' })
+  .where(eq(users.name, 'Dan'))
+  .output({ deleted: true });
+```
+
+To return both previous and new version on a row:
+
+```ts
+type User = typeof users.$inferSelect;
+
+const updatedUserId: { deleted: User, inserted: User }[] = await db.update(users)
+  .set({ name: 'Mr. Dan' })
+  .where(eq(users.name, 'Dan'))
+  .output({ deleted: true, inserted: true });
 ```
 
 ## `with update` clause
@@ -35810,7 +45621,7 @@ returning "id"
 
 ## Update ... from
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': true, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': true, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 
 As the SQLite documentation mentions:
 
@@ -35857,7 +45668,7 @@ from "cities" "c"
 ```
 </Section>
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': false, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': false, 'SingleStore': false, 'MSSQL': false, 'CockroachDB': true }} />
 
 In Postgres, you can also return columns from the joined tables.
 <Section>
@@ -36019,6 +45830,61 @@ export default defineConfig({
     }
 })
 ```
+
+Source: https://orm.drizzle.team/docs/upgrade-v1
+
+import Npm from "@mdx/Npm.astro";
+import Npx from "@mdx/Npx.astro";
+import Prerequisites from "@mdx/Prerequisites.astro";
+
+# Upgrading to Drizzle v1 RC
+
+<Prerequisites>
+  - **beta.1** release notes - a set of changes between `latest` and `beta` versions - [read here](https://github.com/drizzle-team/drizzle-orm/blob/beta/changelogs/drizzle-orm/1.0.0-beta.1.md)
+  - **beta.2** release notes - additional set of changes between `latest` and `beta` versions - [read here](https://github.com/drizzle-team/drizzle-orm/releases/tag/v1.0.0-beta.2)
+  - Ideally read all other `beta.X` changes to be familiar with everything that was fixed and changed
+</Prerequisites>
+
+Drizzle release candidate is living on [`beta` branch](https://github.com/drizzle-team/drizzle-orm/tree/beta) in drizzle repository and under the `beta` tag on npm. So to install
+it you would need to run:
+
+<Npm>
+drizzle-orm@beta
+-D drizzle-kit@beta
+</Npm>
+
+It follows the `1.0.0-beta.x` release pattern, so you'll see versions such as `1.0.0-beta.7`, `1.0.0-beta.8`, and so on. 
+Release notes for each beta update are available on [GitHub releases](https://github.com/drizzle-team/drizzle-orm/tags)
+
+#### Step 1 - Run `drizzle-kit up`
+
+> Linked discussion: https://github.com/drizzle-team/drizzle-orm/discussions/2832
+
+We've updated the migrations folder structure by:
+- removing `journal.json`
+- grouping SQL files and snapshots into separate migration folders
+- removing the `drizzle-kit drop` command
+
+These changes eliminate potential Git conflicts with the journal file and simplify the process of dropping or fixing conflicted migrations
+
+In upcoming `beta` releases, we'll introduce commutativity checks to help guide you through team migration conflicts, detect possible collisions, and suggest ways to resolve them
+> Commutativity discussion: https://github.com/drizzle-team/drizzle-orm/discussions/5005
+
+To migrate previous folders to a new format you would need to run
+
+<Npx>
+drizzle-kit up
+</Npx>
+
+#### Step 2 - Update Relational Queries to v2
+
+We've explained all the RQBv2 changes in detail, along with options for updating your codebase:
+
+- [How to migrate relations definition from v1 to v2](/docs/relations-v1-v2#how-to-migrate-relations-schema-definition-from-v1-to-v2)  
+- [How to migrate queries from v1 to v2](/docs/relations-v1-v2#how-to-migrate-queries-from-v1-to-v2)  
+- [Partial upgrade, or how to stay on v1 even after an upgrade?](/docs/relations-v1-v2#partial-upgrade-or-how-to-stay-on-rqb-v1-even-after-an-upgrade)  
+
+#### Step 3 - Done ✅
 
 Source: https://orm.drizzle.team/docs/valibot
 
@@ -36519,7 +46385,7 @@ import Section from '@mdx/Section.astro';
 
 # Views
 
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'SQLite': true, 'MySQL': true, 'SingleStore': false, 'MSSQL': true, 'CockroachDB': true }} />
 There're several ways you can declare views with Drizzle ORM.  
 
 You can declare views that have to be created or you can declare views that already exist in the database. 
@@ -36530,7 +46396,7 @@ When views are created with either inlined or standalone query builders, view co
 yet when you use `sql` you have to explicitly declare view columns schema.
 
 ### Declaring views
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```ts filename="schema.ts" copy {13-14}
@@ -36603,12 +46469,33 @@ yet when you use `sql` you have to explicitly declare view columns schema.
       ```
     </Section>
   </Tab>
-</Tabs>
+    <Tab>
+    <Section>
+      ```ts filename="schema.ts" copy {13-14}
+      import { mssqlTable, mssqlView, int, text, timestamp } from "drizzle-orm/mssql-core";
 
-If you need a subset of columns you can use `.select({ ... })` method in query builder, like this:
+      export const user = mssqlTable("user", {
+        id: int(),
+        name: text(),
+        email: text(),
+        password: text(),
+        role: text().$type<"admin" | "customer">(),
+        createdAt: timestamp("created_at"),
+        updatedAt: timestamp("updated_at"),
+      });
+
+      export const userView = mssqlView("user_view").as((qb) => qb.select().from(user));
+      export const customersView = mssqlView("customers_view").as((qb) => qb.select().from(user).where(eq(user.role, "customer")));
+      ```
+      ```sql
+      CREATE VIEW [user_view] AS (SELECT * FROM "user");
+      CREATE VIEW [customers_view] AS (SELECT * FROM "user" WHERE "role" = 'customer');
+      ```
+    </Section>
+    If you need a subset of columns you can use `.select({ ... })` method in query builder, like this:
 <Section>
   ```ts {4-6}
-  export const customersView = pgView("customers_view").as((qb) => {
+  export const customersView = mssqlView("customers_view").as((qb) => {
     return qb
       .select({
         id: user.id,
@@ -36619,12 +46506,38 @@ If you need a subset of columns you can use `.select({ ... })` method in query b
   });
   ```
   ```sql
-  CREATE VIEW "customers_view" AS SELECT "id", "name", "email" FROM "user" WHERE "role" = 'customer';
+  CREATE VIEW [customers_view] AS (SELECT "id", "name", "email" FROM "user" WHERE "role" = 'customer');
   ```
 </Section>
+  </Tab>
+  <Tab>
+    <Section>
+      ```ts filename="schema.ts" copy {13-14}
+      import { cockroachTable, cockroachView, int4, text, timestamp } from "drizzle-orm/cockroach-core";
+
+      export const user = cockroachTable("user", {
+        id: int4(),
+        name: text(),
+        email: text(),
+        password: text(),
+        role: text().$type<"admin" | "customer">(),
+        createdAt: timestamp("created_at"),
+        updatedAt: timestamp("updated_at"),
+      });
+
+      export const userView = cockroachView("user_view").as((qb) => qb.select().from(user));
+      export const customersView = cockroachView("customers_view").as((qb) => qb.select().from(user).where(eq(user.role, "customer")));
+      ```
+      ```sql
+      CREATE VIEW "user_view" AS SELECT * FROM "user";
+      CREATE VIEW "customers_view" AS SELECT * FROM "user" WHERE "role" = 'customer';
+      ```
+    </Section>
+  </Tab>
+</Tabs>
 
 You can also declare views using `standalone query builder`, it works exactly the same way:
-<Tabs items={['PostgreSQL', 'MySQL', 'SQLite']}>
+<Tabs items={['PostgreSQL', 'MySQL', 'SQLite', 'MSSQL', 'CockroachDB']}>
   <Tab>
     <Section>
       ```ts filename="schema.ts" copy {3, 15-16}
@@ -36703,6 +46616,58 @@ You can also declare views using `standalone query builder`, it works exactly th
       ```
     </Section>
   </Tab>
+  <Tab>
+    <Section>
+      ```ts filename="schema.ts" copy {3, 15-16}
+      import { int, text, mssqlView, mssqlTable, QueryBuilder } from "drizzle-orm/mssql-core";
+
+      const qb = new QueryBuilder();
+
+      export const user = mssqlTable("user", {
+        id: integer().primaryKey(),
+        name: text(),
+        email: text(),
+        password: text(),
+        role: text().$type<"admin" | "customer">(),
+        createdAt: integer("created_at"),
+        updatedAt: integer("updated_at"),
+      });
+
+      export const userView = mssqlView("user_view").as((qb) => qb.select().from(user));
+      export const customerView = mssqlView("customers_view").as((qb) => qb.select().from(user).where(eq(user.role, "customer")));
+      ```
+      ```sql
+      CREATE VIEW [user_view] AS (SELECT * FROM "user");
+      CREATE VIEW [customers_view] AS (SELECT * FROM "user" WHERE "role" = 'customer');
+      ```
+    </Section>
+  </Tab>
+  <Tab>
+    <Section>
+      ```ts filename="schema.ts" copy {3, 15-16}
+      import { cockroachTable, cockroachView, int4, text, timestamp, QueryBuilder} from "drizzle-orm/cockroach-core";
+      
+      const qb = new QueryBuilder();
+
+      export const user = cockroachTable("user", {
+        id: int4(),
+        name: text(),
+        email: text(),
+        password: text(),
+        role: text().$type<"admin" | "customer">(),
+        createdAt: timestamp("created_at"),
+        updatedAt: timestamp("updated_at"),
+      });
+
+      export const userView = cockroachView("user_view").as(qb.select().from(user));
+      export const customersView = cockroachView("customers_view").as(qb.select().from(user).where(eq(user.role, "customer")));
+      ```
+      ```sql
+      CREATE VIEW "user_view" AS SELECT * FROM "user";
+      CREATE VIEW "customers_view" AS SELECT * FROM "user" WHERE "role" = 'customer';
+      ```
+    </Section>
+  </Tab>
 </Tabs>
 
 ### Declaring views with raw SQL
@@ -36755,17 +46720,18 @@ export const trimmedUser = pgMaterializedView("trimmed_user", {
 ```
 
 ### Materialized views
-<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': false }} />
+<IsSupportedChipGroup chips={{ 'PostgreSQL': true, 'MySQL': false, 'SQLite': false, 'MSSQL': false, 'Cockroach': true }} />
 
-According to the official docs, PostgreSQL has both **[`regular`](https://www.postgresql.org/docs/current/sql-createview.html)**
+According to the official docs, PostgreSQL and CockroachDB have both **[`regular`](https://www.postgresql.org/docs/current/sql-createview.html)**
 and **[`materialized`](https://www.postgresql.org/docs/current/sql-creatematerializedview.html)** views.
   
-Materialized views in PostgreSQL use the rule system like views do, but persist the results in a table-like form.
+Materialized views in PostgreSQL and CockroachDB use the rule system like views do, but persist the results in a table-like form.
 {/* This means that when a query is executed against a materialized view, the results are returned directly from the materialized view,
 like from a table, rather than being reconstructed by executing the query against the underlying base tables that make up the view. */}
 
-Drizzle ORM natively supports PostgreSQL materialized views:
 
+<Tabs items={['PostgreSQL', 'CockroachDB']}>
+<Tab>
 <Section>
 ```ts filename="schema.ts" copy
 const newYorkers = pgMaterializedView('new_yorkers').as((qb) => qb.select().from(users).where(eq(users.cityId, 1)));
@@ -36783,12 +46749,35 @@ await db.refreshMaterializedView(newYorkers).concurrently();
 
 await db.refreshMaterializedView(newYorkers).withNoData();
 ```
+</Tab>
+<Tab>
+<Section>
+```ts filename="schema.ts" copy
+const newYorkers = cockroachMaterializedView('new_yorkers').as((qb) => qb.select().from(users).where(eq(users.cityId, 1)));
+```
+```sql
+CREATE MATERIALIZED VIEW "new_yorkers" AS SELECT * FROM "users";
+```
+</Section>
+
+You can then refresh materialized views in the application runtime:
+```ts copy
+await db.refreshMaterializedView(newYorkers);
+
+await db.refreshMaterializedView(newYorkers).concurrently();
+
+await db.refreshMaterializedView(newYorkers).withNoData();
+```
+</Tab>
+</Tabs>
 
 ### Extended example
 <Callout type="info" emoji="ℹ️">
 All the parameters inside the query will be inlined, instead of replaced by `$1`, `$2`, etc.
 </Callout>
 
+<Tabs items={['PostgreSQL', 'CockroachDB']}>
+<Tab>
 ```ts copy
 // regular view
 const newYorkers = pgView('new_yorkers')
@@ -36832,6 +46821,40 @@ const newYorkers2 = pgMaterializedView('new_yorkers')
     return qb.with(sq).select().from(sq).where(sql`${users.homeCity} = 1`);
   });
 ```
+</Tab>
+<Tab>
+```ts copy
+// regular view
+const newYorkers = cockroachView('new_yorkers')
+  .as((qb) => {
+    const sq = qb
+      .$with('sq')
+      .as(
+        qb.select({ userId: users.id, cityId: cities.id })
+          .from(users)
+          .leftJoin(cities, eq(cities.id, users.homeCity))
+          .where(sql`${users.age1} > 18`),
+      );
+    return qb.with(sq).select().from(sq).where(sql`${users.homeCity} = 1`);
+  });
+
+// materialized view
+const newYorkers2 = cockroachMaterializedView('new_yorkers')
+  .withNoData()
+  .as((qb) => {
+    const sq = qb
+      .$with('sq')
+      .as(
+        qb.select({ userId: users.id, cityId: cities.id })
+          .from(users)
+          .leftJoin(cities, eq(cities.id, users.homeCity))
+          .where(sql`${users.age1} > 18`),
+      );
+    return qb.with(sq).select().from(sq).where(sql`${users.homeCity} = 1`);
+  });
+```
+</Tab>
+</Tabs>
 
 
 Source: https://orm.drizzle.team/docs/why-drizzle

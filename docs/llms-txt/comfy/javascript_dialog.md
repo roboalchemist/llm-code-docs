@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_dialog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dialog API
 
 The Dialog API provides standardized dialogs that work consistently across desktop and web environments. Extension authors will find the prompt and confirm methods most useful.

@@ -94,7 +94,7 @@ If you’re a platform and you’re not using [Stripe-hosted onboarding](https:/
 You must provide the following agreements to your connected accounts before they can start using the Issuing Spend Card Program:
 
 - [Stripe Connected Account Agreement](https://stripe.com/legal/connect-account)
-- [Stripe Issuing Accountholder Terms](https://stripe.com/legal/issuing-accountholder)
+- [Stripe Issuing Accountholder Terms](https://stripe.com/legal/ssa-services-terms#stripe-issuing-accountholder-united-states)
 - **Issuing Bank Terms**
   - *Celtic Bank Users only:* [Issuing Bank Terms - Spend Card (Celtic Bank)](https://stripe.com/legal/celtic-spend-card)
   - *Cross River Bank Users only:* [Issuing Bank Terms - Spend Card (Cross River Bank)](https://stripe.com/legal/issuing/crb-spend-card)
@@ -131,7 +131,7 @@ If you or your connected accounts create an `individual` type [Cardholder](https
 You must provide the following agreements to your connected accounts before they can start using the Issuing Charge Card Program:
 
 - [Stripe Connected Account Agreement](https://stripe.com/legal/connect-account)
-- [Stripe Issuing Accountholder Terms](https://stripe.com/legal/issuing-accountholder) or Custom Platform Accountholder Terms
+- [Stripe Issuing Accountholder Terms](https://stripe.com/legal/ssa-services-terms#stripe-issuing-accountholder-united-states) or Custom Platform Accountholder Terms
 - **Issuing Bank Terms**
   - *Celtic Bank Users only:* [Issuing Bank Terms - Charge Card (Celtic Bank)](https://stripe.com/legal/celtic-charge-card)
   - *Cross River Bank Users only:* [Issuing Bank Terms - Charge Card (Cross River Bank)](https://stripe.com/legal/issuing/crb-charge-card)
@@ -163,7 +163,7 @@ In the context of authorized user agreements and disclosures, if you or your con
 
 You must provide the following agreements to your connected accounts before they can start using your Issuing Commercial Prepaid Debit Card Program:
 
-- [Stripe Connected Account Agreement](https://stripe.com/legal/connect-account)
+- [Stripe Connected Account Agreement](https://stripe.com/legal/ssa-services-terms#stripe-financial-accounts-for-platforms-formerly-stripe-treasury-connected-accounts)
 - [Stripe Issuing Accountholder Terms](https://stripe.com/legal/issuing-accountholder)
 - **Issuing Bank Terms**
   - *Sutton Bank users only*: [Issuing Bank Terms - Payout Card (Sutton Bank)](https://stripe.com/legal/issuing/sutton/payout-card-terms)
@@ -181,7 +181,7 @@ In the context of authorized user agreements and disclosures, if you or your con
 You must provide the following terms of service to your connected accounts and record their agreement before they can start using your Financial Accounts for platforms Program:
 
 - [Stripe Services Agreement](https://stripe.com/legal/ssa)
-- [Financial Accounts for platforms Terms - Connected Accounts](https://stripe.com/legal/ssa#services-terms)
+- [Financial Accounts for platforms Terms - Connected Accounts](https://stripe.com/legal/ssa-services-terms#stripe-issuing-accountholder-united-states)
 
 ## Required agreements and disclosures for fees, credits, and rewards programs 
 

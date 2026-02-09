@@ -219,7 +219,24 @@ The `in` membership operator uses a slightly modified if-syntax:
 if (expression1in[expression2, expression3, ..., expressionN], trueExpression, falseExpression)
 ```
 
-If expression1 is equal to either of expression1 through expressionN, then trueExpression is used, otherwise falseExpression.
+If expression1 is equal to either of expression2 through expressionN, then trueExpression is used, otherwise falseExpression.
+
+## The switch function
+
+ **Note:** Available from Vespa 8.626.55
+
+The `switch` function chooses between multiple sub-expressions based on matching a value. It provides a more readable alternative to chained `if` statements when selecting from several options.
+
+```
+switch (discriminant) {
+    case value1: result1,
+    case value2: result2,
+    ...
+    default: defaultResult
+}
+```
+
+The `discriminant` expression is compared for equality against each `case` value expression in order. When a match is found, the corresponding result expression is evaluated and returned. If no case matches, the `default` result is returned. All expressions may be any ranking expression. At least one `case` must be specified. The `default` must be specified.
 
 ## The foreach function
 
@@ -710,13 +727,14 @@ Matrix multiplication of `x` (usually a vector) and `w` (weights), with `b` adde
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
 - [Arithmetic operations](#arithmetic-operations)
 - [Mathematical scalar functions](#mathematical-scalar-functions)
 - [The if function](#the-if-function)
+- [The switch function](#the-switch-function)
 - [The foreach function](#the-foreach-function)
 - [Tensor functions](#tensor-functions)
 - [Primitive functions](#primitive-functions)

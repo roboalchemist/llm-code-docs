@@ -13,16 +13,14 @@ Although this example uses a generic web app, the same pattern applies to **Pyth
 
 {% stepper %}
 {% step %}
-
-### The Challenge
+**The Challenge**
 
 You’ve built your app and suddenly realize — it should have been containerized from the start.\
 Manually configuring Docker files, image sizes, and environment variables takes time and breaks flow.
 {% endstep %}
 
 {% step %}
-
-### The Prompt
+**The Prompt**
 
 Use this prompt inside Warp’s AI input:
 
@@ -47,8 +45,7 @@ Warp will detect frameworks, infer services, and produce a ready-to-run setup.
 {% endstep %}
 
 {% step %}
-
-### Review and Customize
+**Review and Customize**
 
 Warp outputs:
 

@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/pivoting.md
 
-# Source: https://mui.com/x/react-data-grid/server-side-data/pivoting.md
-
-# Source: https://mui.com/x/react-data-grid/pivoting.md
-
 ---
 title: Data Grid - Pivoting
 ---

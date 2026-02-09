@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/generative-ai-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understand generative AI
 
 > Learn how generative AI works and how to leverage Writer's models, safety, and best practices for building AI-powered applications.

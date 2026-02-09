@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/upstream-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upstream Errors
 
 > Thrown when the OEM servers or vehicle failed to process the request.

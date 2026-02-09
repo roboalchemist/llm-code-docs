@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/gpu.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hardware support
 
 ## Nvidia
@@ -11,6 +15,7 @@ Check your compute compatibility to see if your card is supported:
 
 | Compute Capability | Family              | Cards                                                                                                                         |
 | ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 12.1               | NVIDIA              | `GB10 (DGX Spark)`                                                                                                            |
 | 12.0               | GeForce RTX 50xx    | `RTX 5060` `RTX 5060 Ti` `RTX 5070` `RTX 5070 Ti` `RTX 5080` `RTX 5090`                                                       |
 |                    | NVIDIA Professional | `RTX PRO 4000 Blackwell` `RTX PRO 4500 Blackwell` `RTX PRO 5000 Blackwell` `RTX PRO 6000 Blackwell`                           |
 | 9.0                | NVIDIA              | `H200` `H100`                                                                                                                 |
@@ -34,7 +39,7 @@ Check your compute compatibility to see if your card is supported:
 | 5.0                | GeForce GTX         | `GTX 750 Ti` `GTX 750` `NVS 810`                                                                                              |
 |                    | Quadro              | `K2200` `K1200` `K620` `M1200` `M520` `M5000M` `M4000M` `M3000M` `M2000M` `M1000M` `K620M` `M600M` `M500M`                    |
 
-For building locally to support older GPUs, see [developer.md](./development.md#linux-cuda-nvidia)
+For building locally to support older GPUs, see [developer](./development#linux-cuda-nvidia)
 
 ### GPU Selection
 
@@ -55,7 +60,7 @@ sudo modprobe nvidia_uvm`
 
 Ollama supports the following AMD GPUs via the ROCm library:
 
-> \[!NOTE]
+> **NOTE:**
 > Additional AMD GPU support is provided by the Vulkan Library - see below.
 
 ### Linux Support
@@ -132,9 +137,9 @@ Ollama supports GPU acceleration on Apple devices via the Metal API.
 
 ## Vulkan GPU Support
 
-> \[!NOTE]
+> **NOTE:**
 > Vulkan is currently an Experimental feature.  To enable, you must set OLLAMA\_VULKAN=1 for the Ollama server as
-> described in the [FAQ](faq.md#how-do-i-configure-ollama-server)
+> described in the [FAQ](faq#how-do-i-configure-ollama-server)
 
 Additional GPU support on Windows and Linux is provided via
 [Vulkan](https://www.vulkan.org/). On Windows most GPU vendors drivers come
@@ -161,6 +166,6 @@ sudo setcap cap_perfmon+ep /usr/local/bin/ollama
 
 To select specific Vulkan GPU(s), you can set the environment variable
 `GGML_VK_VISIBLE_DEVICES` to one or more numeric IDs on the Ollama server as
-described in the [FAQ](faq.md#how-do-i-configure-ollama-server). If you
+described in the [FAQ](faq#how-do-i-configure-ollama-server). If you
 encounter any problems with Vulkan based GPUs, you can disable all Vulkan GPUs
 by setting `GGML_VK_VISIBLE_DEVICES=-1`

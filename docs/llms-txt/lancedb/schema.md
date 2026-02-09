@@ -1,28 +1,36 @@
 # Source: https://docs.lancedb.com/tables/schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Schema and Data Evolution
 
 > Learn how to manage table schemas in LanceDB, including adding, altering, and dropping columns.
 
 export const AlterVectorColumn = "vector_dim = 768  # Your embedding dimension\ntable_name = \"vector_alter_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"embedding\": np.random.random(vector_dim).tolist(),\n    },\n]\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\ntable.alter_columns(\n    dict(path=\"embedding\", data_type=pa.list_(pa.float32(), vector_dim))\n)\n";
 
-export const DropColumnsMultiple = "table_name = \"schema_evolution_drop_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200.00,\n        \"temp_col1\": \"X\",\n        \"temp_col2\": 100,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\n\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\n# Remove the second temporary column\ntable.drop_columns([\"temp_col2\"])\n";
+export const DropColumnsMultiple = "# Remove the second temporary column\ntable.drop_columns([\"temp_col2\"])\n";
 
-export const DropColumnsSingle = "table_name = \"schema_evolution_drop_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200.00,\n        \"temp_col1\": \"X\",\n        \"temp_col2\": 100,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Smartphone\",\n        \"price\": 800.00,\n        \"temp_col1\": \"Y\",\n        \"temp_col2\": 200,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Headphones\",\n        \"price\": 150.00,\n        \"temp_col1\": \"Z\",\n        \"temp_col2\": 300,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\n\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\n# Remove the first temporary column\ntable.drop_columns([\"temp_col1\"])\n";
+export const DropColumnsSingle = "# Remove the first temporary column\ntable.drop_columns([\"temp_col1\"])\n";
 
-export const AlterColumnsMultiple = "table_name = \"schema_evolution_alter_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200,\n        \"discount_price\": 1080.0,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\nschema = pa.schema(\n    {\n        \"id\": pa.int64(),\n        \"name\": pa.string(),\n        \"price\": pa.int32(),\n        \"discount_price\": pa.float64(),\n        \"vector\": pa.list_(pa.float32(), 128),\n    }\n)\n\ntable = db.create_table(table_name, data, schema=schema, mode=\"overwrite\")\ntable.alter_columns({\"path\": \"discount_price\", \"rename\": \"sale_price\"})\n\n# Rename, change type, and make nullable in one operation\ntable.alter_columns(\n    {\n        \"path\": \"sale_price\",\n        \"rename\": \"final_price\",\n        \"data_type\": pa.float64(),\n        \"nullable\": True,\n    }\n)\n";
+export const AlterColumnsMultiple = "# Rename, change type, and make nullable in one operation\ntable.alter_columns(\n    {\n        \"path\": \"sale_price\",\n        \"rename\": \"final_price\",\n        \"data_type\": pa.float64(),\n        \"nullable\": True,\n    }\n)\n";
 
-export const AlterColumnsNullable = "table_name = \"schema_evolution_alter_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200,\n        \"discount_price\": 1080.0,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\nschema = pa.schema(\n    {\n        \"id\": pa.int64(),\n        \"name\": pa.string(),\n        \"price\": pa.int32(),\n        \"discount_price\": pa.float64(),\n        \"vector\": pa.list_(pa.float32(), 128),\n    }\n)\n\ntable = db.create_table(table_name, data, schema=schema, mode=\"overwrite\")\n\n# Make the name column nullable\ntable.alter_columns({\"path\": \"name\", \"nullable\": True})\n";
+export const AlterColumnsNullable = "# Make the name column nullable\ntable.alter_columns({\"path\": \"name\", \"nullable\": True})\n";
 
-export const AlterColumnsDataType = "table_name = \"schema_evolution_alter_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200,\n        \"discount_price\": 1080.0,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\nschema = pa.schema(\n    {\n        \"id\": pa.int64(),\n        \"name\": pa.string(),\n        \"price\": pa.int32(),\n        \"discount_price\": pa.float64(),\n        \"vector\": pa.list_(pa.float32(), 128),\n    }\n)\n\ntable = db.create_table(table_name, data, schema=schema, mode=\"overwrite\")\n\n# Change price from int32 to int64 for larger numbers\ntable.alter_columns({\"path\": \"price\", \"data_type\": pa.int64()})\n";
+export const AlterColumnsDataType = "# Change price from int32 to int64 for larger numbers\ntable.alter_columns({\"path\": \"price\", \"data_type\": pa.int64()})\n";
 
-export const AlterColumnsRename = "table_name = \"schema_evolution_alter_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200,\n        \"discount_price\": 1080.0,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Smartphone\",\n        \"price\": 800,\n        \"discount_price\": 720.0,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\nschema = pa.schema(\n    {\n        \"id\": pa.int64(),\n        \"name\": pa.string(),\n        \"price\": pa.int32(),\n        \"discount_price\": pa.float64(),\n        \"vector\": pa.list_(pa.float32(), 128),\n    }\n)\n\ntable = db.create_table(table_name, data, schema=schema, mode=\"overwrite\")\n\n# Rename discount_price to sale_price\ntable.alter_columns({\"path\": \"discount_price\", \"rename\": \"sale_price\"})\n";
+export const AlterColumnsRename = "# Rename discount_price to sale_price\ntable.alter_columns({\"path\": \"discount_price\", \"rename\": \"sale_price\"})\n";
 
-export const AddColumnsNullable = "table_name = \"schema_evolution_add_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\n# Add a nullable timestamp column\ntable.add_columns({\"last_ordered\": \"cast(NULL as timestamp)\"})\n";
+export const SchemaAlterSetup = "table_name = \"schema_evolution_alter_example\"\nif data is None:\n    data = [\n        {\n            \"id\": 1,\n            \"name\": \"Laptop\",\n            \"price\": 1200,\n            \"discount_price\": 1080.0,\n            \"vector\": np.random.random(128).tolist(),\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Smartphone\",\n            \"price\": 800,\n            \"discount_price\": 720.0,\n            \"vector\": np.random.random(128).tolist(),\n        },\n    ]\nschema = pa.schema(\n    {\n        \"id\": pa.int64(),\n        \"name\": pa.string(),\n        \"price\": pa.int32(),\n        \"discount_price\": pa.float64(),\n        \"vector\": pa.list_(pa.float32(), 128),\n    }\n)\ntable = tmp_db.create_table(table_name, data, schema=schema, mode=\"overwrite\")\n";
 
-export const AddColumnsDefaultValues = "table_name = \"schema_evolution_add_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Smartphone\",\n        \"price\": 800.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\n# Add a stock status column with default value\ntable.add_columns({\"in_stock\": \"cast(true as boolean)\"})\n";
+export const AddColumnsNullable = "# Add a nullable timestamp column\ntable.add_columns({\"last_ordered\": \"cast(NULL as timestamp)\"})\n";
 
-export const AddColumnsCalculated = "table_name = \"schema_evolution_add_example\"\ndb = tmp_db\ndata = [\n    {\n        \"id\": 1,\n        \"name\": \"Laptop\",\n        \"price\": 1200.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Smartphone\",\n        \"price\": 800.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Headphones\",\n        \"price\": 150.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Monitor\",\n        \"price\": 350.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Keyboard\",\n        \"price\": 80.00,\n        \"vector\": np.random.random(128).tolist(),\n    },\n]\n\ntable = db.create_table(table_name, data, mode=\"overwrite\")\n\n# Add a discounted price column (10% discount)\ntable.add_columns({\"discounted_price\": \"cast((price * 0.9) as float)\"})\n";
+export const AddColumnsDefaultValues = "# Add a stock status column with default value\ntable.add_columns({\"in_stock\": \"cast(true as boolean)\"})\n";
+
+export const AddColumnsCalculated = "# Add a discounted price column (10% discount)\ntable.add_columns({\"discounted_price\": \"cast((price * 0.9) as float)\"})\n";
+
+export const SchemaAddSetup = "table_name = \"schema_evolution_add_example\"\nif data is None:\n    data = [\n        {\n            \"id\": 1,\n            \"name\": \"Laptop\",\n            \"price\": 1200.00,\n            \"vector\": np.random.random(128).tolist(),\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Smartphone\",\n            \"price\": 800.00,\n            \"vector\": np.random.random(128).tolist(),\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Headphones\",\n            \"price\": 150.00,\n            \"vector\": np.random.random(128).tolist(),\n        },\n    ]\ntable = tmp_db.create_table(table_name, data, mode=\"overwrite\")\n";
 
 Schema evolution enables non-breaking modifications to a database table's structure — such as adding columns, altering data types, or dropping fields — to adapt to evolving data requirements without service interruptions.
 LanceDB supports ACID-compliant schema evolution through granular operations (add/alter/drop columns), allowing you to:
@@ -53,44 +61,11 @@ New columns are populated based on SQL expressions you provide.
 
 First, let's create a sample table with product data to demonstrate schema evolution:
 
-```python  theme={"theme":{"light":"vitesse-light","dark":"catppuccin-mocha"}}
-table_name = "schema_evolution_add_example"
-
-data = [
-    {
-        "id": 1,
-        "name": "Laptop",
-        "price": 1200.00,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 2,
-        "name": "Smartphone",
-        "price": 800.00,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 3,
-        "name": "Headphones",
-        "price": 150.00,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 4,
-        "name": "Monitor",
-        "price": 350.00,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 5,
-        "name": "Keyboard",
-        "price": 80.00,
-        "vector": np.random.random(128).tolist(),
-    },
-]
-
-table = db.create_table(table_name, data, mode="overwrite")
-```
+<CodeGroup>
+  <CodeBlock filename="Python" language="Python" icon="python">
+    {SchemaAddSetup}
+  </CodeBlock>
+</CodeGroup>
 
 ### Adding Calculated Columns
 
@@ -139,58 +114,11 @@ method in Python or [`alterColumns`](https://lancedb.github.io/lancedb/js/classe
 
 Create a table with a custom schema to demonstrate column alterations:
 
-```python  theme={"theme":{"light":"vitesse-light","dark":"catppuccin-mocha"}}
-table_name = "schema_evolution_alter_example"
-
-data = [
-    {
-        "id": 1,
-        "name": "Laptop",
-        "price": 1200,
-        "discount_price": 1080.0,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 2,
-        "name": "Smartphone",
-        "price": 800,
-        "discount_price": 720.0,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 3,
-        "name": "Headphones",
-        "price": 150,
-        "discount_price": 135.0,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 4,
-        "name": "Monitor",
-        "price": 350,
-        "discount_price": 315.0,
-        "vector": np.random.random(128).tolist(),
-    },
-    {
-        "id": 5,
-        "name": "Keyboard",
-        "price": 80,
-        "discount_price": 72.0,
-        "vector": np.random.random(128).tolist(),
-    },
-]
-schema = pa.schema(
-    {
-        "id": pa.int64(),
-        "name": pa.string(),
-        "price": pa.int32(),
-        "discount_price": pa.float64(),
-        "vector": pa.list_(pa.float32(), 128),
-    }
-)
-
-table = db.create_table(table_name, data, schema=schema, mode="overwrite")
-```
+<CodeGroup>
+  <CodeBlock filename="Python" language="Python" icon="python">
+    {SchemaAlterSetup}
+  </CodeBlock>
+</CodeGroup>
 
 ### Renaming Columns
 
@@ -315,8 +243,3 @@ A common schema evolution task is converting a generic list column to a fixed-si
     {AlterVectorColumn}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

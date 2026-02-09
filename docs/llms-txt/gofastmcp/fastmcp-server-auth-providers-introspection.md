@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-providers-introspection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # introspection
 
 # `fastmcp.server.auth.providers.introspection`
@@ -29,11 +33,7 @@ mcp = FastMCP("My Protected Server", auth=verifier)
 
 ## Classes
 
-### `IntrospectionTokenVerifierSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/introspection.py#L43" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-Settings for OAuth 2.0 Token Introspection verification.
-
-### `IntrospectionTokenVerifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/introspection.py#L65" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `IntrospectionTokenVerifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/introspection.py#L42" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 OAuth 2.0 Token Introspection verifier (RFC 7662).
 
@@ -41,8 +41,12 @@ This verifier validates opaque tokens by calling an OAuth 2.0 token introspectio
 endpoint. Unlike JWT verification which is stateless, token introspection requires
 a network call to the authorization server for each token validation.
 
-The verifier authenticates to the introspection endpoint using HTTP Basic Auth
-with the provided client\_id and client\_secret, as specified in RFC 7662.
+The verifier authenticates to the introspection endpoint using either:
+
+* HTTP Basic Auth (client\_secret\_basic, default): credentials in Authorization header
+* POST body authentication (client\_secret\_post): credentials in request body
+
+Both methods are specified in RFC 6749 (OAuth 2.0) and RFC 7662 (Token Introspection).
 
 Use this when:
 
@@ -53,7 +57,7 @@ Use this when:
 
 **Methods:**
 
-#### `verify_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/introspection.py#L184" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `verify_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/introspection.py#L154" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 verify_token(self, token: str) -> AccessToken | None
@@ -62,7 +66,8 @@ verify_token(self, token: str) -> AccessToken | None
 Verify a bearer token using OAuth 2.0 Token Introspection (RFC 7662).
 
 This method makes a POST request to the introspection endpoint with the token,
-authenticated using HTTP Basic Auth with the client credentials.
+authenticated using the configured client authentication method (client\_secret\_basic
+or client\_secret\_post).
 
 **Args:**
 

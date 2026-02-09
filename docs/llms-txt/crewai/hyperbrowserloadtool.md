@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/hyperbrowserloadtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hyperbrowser Load Tool
 
 > The `HyperbrowserLoadTool` enables web scraping and crawling using Hyperbrowser.

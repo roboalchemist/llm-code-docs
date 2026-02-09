@@ -2,27 +2,17 @@
 
 # Source: https://docs.stripe.com/billing/customer.md
 
-# Source: https://docs.stripe.com/invoicing/customer.md
-
-# Source: https://docs.stripe.com/billing/customer.md
-
-# Source: https://docs.stripe.com/invoicing/customer.md
-
-# Source: https://docs.stripe.com/billing/customer.md
-
-# Source: https://docs.stripe.com/invoicing/customer.md
-
-# Source: https://docs.stripe.com/billing/customer.md
-
-# Source: https://docs.stripe.com/invoicing/customer.md
-
 # Customers
 
-Learn how to use the Customer resource with Stripe Invoicing.
+Learn how to use the Customer resource with Stripe Billing.
 
-Create a customer for every new user or business you want to bill. When you create a new customer, set up a [minimal customer profile](https://docs.stripe.com/invoicing/customer.md#customer-profile) to help generate more useful invoices, and enable Smart Retries (if you’re an [Invoicing Plus](https://stripe.com/invoicing/pricing) user). After you set up your customer, you can issue one-off invoices or create *subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis).
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
-> Before you create a new customer, make sure that the customer doesn’t already exist in the Dashboard. Creating multiple customer entries for the same customer can cause you problems later on, such as when you need to reconcile transaction history or coordinate saved payment methods.
+The *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) resource is a core entity within Stripe. Use it to store all of the profile, billing, and tax information required to bill a customer for *subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis) and one-off *invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice).
+
+## Manage customers 
+
+Create a customer for every new user or business you want to bill. When creating a new customer, set a [minimum customer profile](https://docs.stripe.com/billing/customer.md#minimum-customer-profile) to help create useful invoices and enable Smart Retries (dunning). After creating and configuring this customer, use it to create a subscription and issue one-off invoices.
 
 #### Dashboard
 
@@ -73,84 +63,7 @@ To delete a customer, complete these steps:
 
 #### API
 
-Before you create a new customer, verify that the customer doesn’t already exist. For example, pass an email address to the [list all customers](https://docs.stripe.com/api/customers/list.md) API.
-
-```curl
-curl -G https://api.stripe.com/v1/customers \
-  -u "<<YOUR_SECRET_KEY>>:" \
-  -d email={EMAIL_ADDRESS}
-```
-
-```cli
-stripe customers list  \
-  --email={EMAIL_ADDRESS}
-```
-
-```ruby
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
-
-customers = client.v1.customers.list({email: '{EMAIL_ADDRESS}'})
-```
-
-```python
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = StripeClient("<<YOUR_SECRET_KEY>>")
-
-# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-customers = client.v1.customers.list({"email": "{EMAIL_ADDRESS}"})
-```
-
-```php
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$customers = $stripe->customers->all(['email' => '{EMAIL_ADDRESS}']);
-```
-
-```java
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
-
-CustomerListParams params =
-  CustomerListParams.builder().setEmail("{EMAIL_ADDRESS}").build();
-
-// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-StripeCollection<Customer> stripeCollection = client.v1().customers().list(params);
-```
-
-```node
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const customers = await stripe.customers.list({
-  email: '{EMAIL_ADDRESS}',
-});
-```
-
-```go
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CustomerListParams{Email: stripe.String("{EMAIL_ADDRESS}")}
-result := sc.V1Customers.List(context.TODO(), params)
-```
-
-```dotnet
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-var options = new CustomerListOptions { Email = "{EMAIL_ADDRESS}" };
-var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.Customers;
-StripeList<Customer> customers = service.List(options);
-```
-
-The following example shows how to create a new customer with an email address and a default payment method. See [create a customer](https://docs.stripe.com/api/customers/create.md) for a full list of arguments you can pass to the API.
+Before billing a customer, you need to create a Customer object that you can configure with a name, email, and payment method. You can read more about this in the [integration guide](https://docs.stripe.com/billing/subscriptions/build-subscriptions.md), but here’s a basic example:
 
 ```curl
 curl https://api.stripe.com/v1/customers \
@@ -269,50 +182,102 @@ var service = client.V1.Customers;
 Customer customer = service.Create(options);
 ```
 
-## Customer profiles 
+See how to [create a customer](https://docs.stripe.com/api/customers/create.md) with the API for a complete list of parameters.
 
-​​Use a basic customer profile for invoice and receipt generation or as a lightweight customer relationship management system (CRM) for your application. To create a minimal customer profile, set these properties:
+## Available properties and uses 
 
-- Email address.
-- Customer name.
-- Metadata with a reference to your application’s internal customer ID.
+The Customer resource has many useful properties you can set to customize billing. This section explains the properties you can store on the Customer, and the effects of each.
 
-Stripe uses your customer’s [email address](https://docs.stripe.com/api/customers/object.md#customer_object-email) to notify them of payment failures. Stripe also uses email addresses to notify customers when they need to perform an action to complete a payment.
+### Customer profile
 
-Store the internal customer ID for your application in the [metadata](https://docs.stripe.com/api/customers/object.md#customer_object-metadata) attribute. Like most Stripe resources, the `Customer` resource includes a [Metadata](https://docs.stripe.com/api/metadata.md) object hash to flexibly store contextual key-value information. To aid in auditing and support, store your internal customer ID as a key-value pair on the `Customer` resource. This allows you to search for the customer using your internal reference ID. We recommend storing Stripe customer IDs against the internal customer model of your application.
+A basic customer profile is useful for invoice and receipt generation, and can generally act as a lightweight customer relationship management system (CRM) for your application. You can also use [affiliate and referral Stripe apps](https://marketplace.stripe.com/categories/affiliate_and_referrals) to set up and manage referral and affiliate programs with Stripe, get customer information, and automate commission adjustments from the Stripe Dashboard.
 
-### Billing and shipping addresses 
+#### Minimal customer profile 
 
-Use the [address attributes](https://docs.stripe.com/api/customers/object.md#customer_object-address) to set a billing address for invoicing and credit notes. For physical good delivery, add a [shipping](https://docs.stripe.com/api/customers/object.md#customer_object-shipping) address.
+When creating a customer, set these properties:
 
-> Invoices, credit notes, and receipts display the billing address—a common requirement for tax compliance.
+- Email address
+- Customer name
+- Metadata with a reference to the internal customer ID of your application
 
-### Email and PDF language localization 
+An [email address](https://docs.stripe.com/api/customers/object.md#customer_object-email) lets Stripe notify the customer of failed payments or when completing a payment requires further action, as part of the [Automatic Collection](https://docs.stripe.com/invoicing/automatic-collection.md) process.
 
-When you create a customer, use the **Language** dropdown to add their preferred language. (You can also add or edit a customer’s preferred language in the **Customer details** page or when creating an invoice.) Stripe uses the chosen language to localize invoice emails and PDFs, receipt emails and PDFs, and credit note PDFs.
+Store the internal customer ID of your application in the [metadata](https://docs.stripe.com/api/customers/object.md#customer_object-metadata) attribute. Like most Stripe resources, the Customer resource includes a [Metadata](https://docs.stripe.com/api/metadata.md) object hash to flexibly store contextual key-value information. To aid in auditing and support, store your internal customer ID as a key-value pair on the Customer resource. This allows you to search for the customer using your internal reference ID. Conversely, we recommend storing Stripe customer IDs against the internal customer model of your application.
 
-To update the language through the API, use the [preferred_locales](https://docs.stripe.com/api/customers/object.md#customer_object-preferred_locales) parameter. This parameter accepts an ordered list of preferred languages sorted by preference. These preferred locale values are based on [RFC-4646](https://tools.ietf.org/html/rfc4646). Examples include en for English, or fr-CA for Canadian French. To learn more, see [Customer preferred languages](https://docs.stripe.com/invoicing/customize.md#customer-language).
+#### Billing and shipping addresses 
 
-## Customer properties 
+Use the address properties to set an [address](https://docs.stripe.com/api/customers/object.md#customer_object-address) for billing (invoicing, credit notes, and so on), and a [shipping](https://docs.stripe.com/api/customers/object.md#customer_object-shipping) address (for physical goods).
 
-The following table contains additional customer properties:
+While a shipping address is most relevant to businesses delivering physical goods, a billing address is useful because it displays on invoices, credit notes, and receipts—a common requirement for tax compliance.
 
-| Property             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Payment properties   | Stripe uses the [payment](https://docs.stripe.com/payments.md) details associated with a customer to collect payment. A customer can have multiple ways to make a payment, including the [Payment Methods API](https://docs.stripe.com/payments/payment-methods.md) and [Customer credit balance](https://docs.stripe.com/invoicing/customer/balance.md). Customers are single-currency, which means that after you assign a currency, invoice the customer, or set a customer credit balance, you can’t change the currency. You can see this locked state in the Dashboard in a disabled **Currency** dropdown. If you need to bill a single entity with multiple currencies, create a new customer for each currency.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| Invoicing properties | All [invoicing-related resources](https://docs.stripe.com/api/customers/create.md#create_customer-invoice_settings) are associated with the billed customer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Tax properties       | To meet tax jurisdiction requirements, you might need to include customer tax ID numbers and other tax-related information on your invoices. ​​It’s your responsibility to make sure your customer’s invoices contain all of the correct information, such as [tax IDs](https://docs.stripe.com/invoicing/customer/tax-ids.md), [tax exemption status](https://docs.stripe.com/api/customers/create.md#create_customer-tax_exempt), and [addresses](https://docs.stripe.com/invoicing/customer.md#addresses). Tax IDs provide a way to store and render one or more tax ID numbers on invoices. The tax exemption status indicates whether the entity is taxable. By default, a customer’s `tax_exempt` status is set to `none`—meaning it’s a taxable billing entity. However, you can set the `tax_exempt` parameter to `reverse` for customers that must pay the invoice’s tax. You can also flag the customer as being tax exempt by setting the status to `exempt`. To learn more about using `tax_exempt` and `reverse`, see [Tax Rates](https://docs.stripe.com/billing/taxes/tax-rates.md#tax-exempt-and-reverse-charge). |
+#### Email and PDF language localization 
+
+Localize Stripe-generated emails and PDFs by setting the `preferred_locales` property. This property accepts an ordered list of preferred languages, sorted by preference. These preferred locale values are based on [RFC-4646](https://tools.ietf.org/html/rfc4646). Examples include “en” for English, or “fr-CA” for Canadian French. See the [Customizing invoices](https://docs.stripe.com/invoicing/customize.md#customer-language) page for more information.
+
+#### Per-customer invoice settings 
+
+For further details on customizing invoice contents on a per-customer basis, see the [Customizing invoices](https://docs.stripe.com/invoicing/customize.md) page. It explains [custom fields](https://docs.stripe.com/invoicing/customize.md#custom-fields), [invoice footer](https://docs.stripe.com/invoicing/customize.md#footer-field) content, and how to [customize the invoice number](https://docs.stripe.com/invoicing/customize.md#invoice-numbering-schemes).
+
+### Payment 
+
+All payments are collected from [payment](https://docs.stripe.com/payments.md) details associated with a customer, and a customer can have multiple ways to make a payment, including:
+
+- [Payment Methods](https://docs.stripe.com/payments/payment-methods.md)
+- [Customer Credit Balance](https://docs.stripe.com/billing/customer.md#customer-balance)
+
+Customers are [single-currency](https://docs.stripe.com/billing/customer.md#currency), meaning after you’ve assigned a currency, invoiced the customer, or [set a customer credit balance](https://docs.stripe.com/billing/customer.md#customer-balance), you can’t change the currency. This locked status is visible in the Dashboard in a disabled **Currency** dropdown.
+
+If you need to bill a single entity with multiple currencies, create a new customer for each currency.
+
+### Invoicing 
+
+All invoicing-related resources are associated with the customer being billed. These resources include:
+
+- [Pending invoice items](https://docs.stripe.com/billing/invoices/subscription.md#adding-draft-invoice-items)
+- [Subscriptions](https://docs.stripe.com/billing/subscriptions/overview.md)
+- [Invoices](https://docs.stripe.com/invoicing/overview.md)
+- [Receipts](https://docs.stripe.com/receipts.md)
+- [Invoice settings](https://docs.stripe.com/api/customers/create.md#create_customer-invoice_settings)
+
+### Tax info 
+
+To meet tax jurisdiction requirements, you might need to include customer tax ID numbers and other information on invoices. It’s ultimately your responsibility to make sure your customer’s invoices contain the correct information. This includes [tax IDs](https://docs.stripe.com/billing/customer/tax-ids.md), [tax exemption status](https://docs.stripe.com/api/customers/create.md#create_customer-tax_exempt), and [addresses](https://docs.stripe.com/billing/customer.md#addresses).
+
+Tax IDs provide a way to store and render one or more tax ID numbers on invoices. Tax exemption status indicates whether the entity is taxable. By default, a customer’s `tax_exempt` status is set to `none`, meaning it’s a taxable billing entity. However, you can flag a customer as being responsible for paying the tax on an invoice by setting the `tax_exempt` property to `reverse`, or flag them as being tax exempt by setting the status to `exempt`. You can read more about using `tax_exempt` and `reverse` on the [Tax Rates](https://docs.stripe.com/billing/taxes/tax-rates.md#tax-exempt-and-reverse-charge) page.
 
 ## Common tasks 
 
-Here are some of the common tasks you can perform with the `Customer` resource:
+This section explains some of the common tasks you might perform with the Customer resource.
 
-- **Send an invoice to a customer**: After you create the customer, you can [send them an invoice](https://docs.stripe.com/invoicing/dashboard.md#create-invoice).
+### Create a subscription 
 
-- **Store a customer credit balance**: The customer credit balance feature allows you to assign credit and debit adjustments to a specific customer and then apply the resulting balance toward future invoices for them.
+Before you can create a new subscription, you need to create a customer for billing purposes.
 
-- **Add and validate tax ID numbers**: Displaying a customer’s tax ID on an invoice is a common requirement, and Stripe allows you to add multiple tax IDs to a customer. Their tax IDs display in the header of invoice and credit note PDFs. See the [Customer tax IDs](https://docs.stripe.com/invoicing/customer/tax-ids.md) page for more details.
+1. [Create the customer](https://docs.stripe.com/billing/customer.md#create).
+1. Define your [product](https://docs.stripe.com/products-prices/manage-prices.md#create-product) catalog and [prices](https://docs.stripe.com/products-prices/manage-prices.md#create-price).
+1. [Create a subscription](https://docs.stripe.com/billing/subscriptions/overview.md) using the customer created in step one and a price (or multiple prices) from step two.
 
-- **Set the currency for a customer**: You can set the default currency to charge a customer for invoices using the Dashboard by navigating to the **Customers** page, selecting your customer, and clicking **Edit** next to **Details**. See the [Multi-currency customers](https://docs.stripe.com/invoicing/multi-currency-customers.md) page for more details on billing the same customer using a different currency than their default currency.
+You can continue to update the customer’s details after you create the subscription until an invoice is [finalized](https://docs.stripe.com/invoicing.md). Any changes apply to the next billing period, when a new invoice is generated using the latest status of the customer when rendering PDFs, emails, and the hosted invoice page. Read the [How subscriptions work](https://docs.stripe.com/billing/subscriptions/overview.md) page for more detailed information.
 
-- **Create customers in bulk**: Bulk upload Customers using [Productivity Stripe Apps](https://marketplace.stripe.com/categories/productivity).
+### Send a one-off (manual) invoice to a customer 
+
+Unlike subscription invoices, you manually issue one-off invoices and they don’t follow an automated schedule. This makes them useful for billing one-off orders or work, such as setup and installation fees, consultancy fees, or single orders for physical goods.
+
+1. [Create the customer](https://docs.stripe.com/billing/customer.md#create).
+1. [Create a new draft invoice](https://docs.stripe.com/invoicing/dashboard.md#create-invoice) by adding invoice line items with a description, quantity, unit price, and tax rate.
+1. [Set the invoice payment method](https://docs.stripe.com/invoicing/dashboard.md#create-invoice). You can collect payment for an invoice either by automatically charging the payment method on file, or by emailing the invoice to the customer.
+1. Finalize the invoice.
+
+See the [one-off invoices documentation](https://docs.stripe.com/invoicing/dashboard.md#create-invoice) for full details on how to create and collect payment for one-off invoices.
+
+### Store a customer credit balance 
+
+The [customer credit balance](https://docs.stripe.com/billing/customer/balance.md) feature allows you to assign credit and debit adjustments to a specific customer. The resulting balance is applied to future invoices for that customer.
+
+### Add and validate tax ID numbers
+
+Displaying a customer’s tax ID on invoice documents is a common requirement. With Stripe, you can add one or multiple [tax IDs](https://docs.stripe.com/billing/customer/tax-ids.md) to a customer. A customer’s tax IDs are displayed in the header of invoice and credit note PDFs. See the [Tax IDs](https://docs.stripe.com/billing/customer/tax-ids.md) page for more details.
+
+### Set the currency for a customer 
+
+The `currency` property is a three-letter [ISO code for the currency](https://docs.stripe.com/currencies.md) that you charge the customer in for recurring billing purposes. You can set the currency in the Dashboard by navigating to the **Customers** > **Details** page and clicking **Update details**. After you set the currency, you can’t change it. Creating an invoice, invoice item, or credit balance for the customer also permanently sets the customer’s currency.

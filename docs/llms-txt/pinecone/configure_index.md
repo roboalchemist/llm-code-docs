@@ -1,570 +1,719 @@
 # Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/configure_index.md
 
-# Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/configure_index.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configure an index
 
-> Configure an existing index. For serverless indexes, you can configure index deletion protection, tags, and integrated inference embedding settings for the index. For pod-based indexes, you can configure the pod size, number of replicas, tags, and index deletion protection.
+> Configure an existing index. For guidance and examples, see [Manage indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
 
-It is not possible to change the pod type of a pod-based index. However, you can create a collection from a pod-based index and then [create a new pod-based index with a different pod type](http://docs.pinecone.io/guides/indexes/pods/create-a-pod-based-index#create-a-pod-index-from-a-collection) from the collection. For guidance and examples, see [Configure an index](http://docs.pinecone.io/guides/indexes/pods/manage-pod-based-indexes).
+<RequestExample>
+  ```shell curl theme={null}
+  # EXAMPLE REQUEST 1: Serverless index (on-demand)
+  # Enable deletion protection and add tags to an 
+  # existing on-demand index.
+  PINECONE_API_KEY="YOUR_API_KEY"
+  INDEX_NAME="YOUR_INDEX_NAME"
+
+  curl -X PATCH "https://api.pinecone.io/indexes/$INDEX_NAME" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Api-Key: $PINECONE_API_KEY" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
+    -d '{
+          "deletion_protection": "enabled",
+          "tags": {
+            "tag1": "value1",
+            "tag2": "value2"
+          }
+        }'
+
+  # EXAMPLE REQUEST 2: Serverless index (dedicated)
+  # Add a replica to an existing dedicated index.
+  PINECONE_API_KEY="YOUR_API_KEY"
+  INDEX_NAME="YOUR_INDEX_NAME"
+
+  curl -X PATCH "https://api.pinecone.io/indexes/$INDEX_NAME" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Api-Key: $PINECONE_API_KEY" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
+    -d '{
+          "spec": {
+            "serverless": {
+              "read_capacity": {
+                "mode": "Dedicated",
+                "dedicated": {
+                  "node_type": "b1",
+                  "scaling": "Manual",
+                  "manual": {
+                    "shards": 2,
+                    "replicas": 2
+                  }
+                }
+              }
+            }
+          }
+        }'
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json curl theme={null}
+  // EXAMPLE RESPONSE 1: Serverless index (on-demand)
+  // Enable deletion protection and add tags to an 
+  // existing on-demand index.
+  {
+    "name": "example-serverless-ondemand-index",
+    "vector_type": "dense",
+    "metric": "cosine",
+    "dimension": 1024,
+    "status": {
+      "ready": true,
+      "state": "Ready"
+    },
+    "host": "example-serverless-ondemand-index-bhnyigt.svc.aped-4627-b74a.pinecone.io",
+    "spec": {
+      "serverless": {
+        "region": "us-east-1",
+        "cloud": "aws",
+        "read_capacity": {
+          "mode": "OnDemand",
+          "status": {
+            "state": "Ready",
+            "current_shards": null,
+            "current_replicas": null
+          }
+        }
+      }
+    },
+    "deletion_protection": "enabled",
+    "tags": {
+      "tag1": "value1",
+      "tag2": "value2"
+    },
+    "embed": {
+      "model": "llama-text-embed-v2",
+      "field_map": {
+        "text": "text"
+      },
+      "dimension": 1024,
+      "metric": "cosine",
+      "write_parameters": {
+        "dimension": 1024,
+        "input_type": "passage",
+        "truncate": "END"
+      },
+      "read_parameters": {
+        "dimension": 1024,
+        "input_type": "query",
+        "truncate": "END"
+      },
+      "vector_type": "dense"
+    }
+  }
+
+  // EXAMPLE RESPONSE 2: Serverless index (dedicated)
+  // Add a replica to an existing dedicated index.
+  {
+    "name": "example-serverless-dedicated-index",
+    "vector_type": "dense",
+    "metric": "cosine",
+    "dimension": 1536,
+    "status": {
+      "ready": true,
+      "state": "Ready"
+    },
+    "host": "example-serverless-dedicated-index-bhnyigt.svc.aped-4627-b74a.pinecone.io",
+    "spec": {
+      "serverless": {
+        "region": "us-east-1",
+        "cloud": "aws",
+        "read_capacity": {
+          "mode": "Dedicated",
+          "dedicated": {
+            "node_type": "b1",
+            "scaling": "Manual",
+            "manual": {
+              "shards": 1,
+              "replicas": 2 <-- desired state
+            }
+          },
+          "status": {
+            "state": "Scaling",
+            "current_shards": 1,
+            "current_replicas": 1 <-- current state
+          }
+        }
+      }
+    },
+    "deletion_protection": "enabled",
+    "tags": {
+      "tag0": "value0"
+    }
+  }
+  ```
+</ResponseExample>
+
 
 ## OpenAPI
 
-````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-04/db_control_2025-04.oas.yaml patch /indexes/{index_name}
+````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-10/db_control_2025-10.oas.yaml patch /indexes/{index_name}
+openapi: 3.0.3
+info:
+  title: Pinecone Control Plane API
+  description: >-
+    Pinecone is a vector database that makes it easy to search and retrieve
+    billions of high-dimensional vectors.
+  contact:
+    name: Pinecone Support
+    url: https://support.pinecone.io
+    email: support@pinecone.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 2025-10
+servers:
+  - url: https://api.pinecone.io
+    description: Production API endpoints
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Manage Indexes
+    description: Actions that manage indexes
+externalDocs:
+  description: More Pinecone.io API docs
+  url: https://docs.pinecone.io/introduction
 paths:
-  path: /indexes/{index_name}
-  method: patch
-  servers:
-    - url: https://api.pinecone.io
-      description: Production API endpoints
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Api-Key:
-              type: apiKey
-              description: >-
-                An API Key is required to call Pinecone APIs. Get yours from the
-                [console](https://app.pinecone.io/).
-          cookie: {}
-    parameters:
-      path:
-        index_name:
+  /indexes/{index_name}:
+    patch:
+      tags:
+        - Manage Indexes
+      summary: Configure an index
+      description: >-
+        Configure an existing index. For guidance and examples, see [Manage
+        indexes](https://docs.pinecone.io/guides/manage-data/manage-indexes).
+      operationId: configure_index
+      parameters:
+        - in: header
+          name: X-Pinecone-Api-Version
+          description: Required date-based version header
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The name of the index to configure.
+            default: 2025-10
+            type: string
           style: simple
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              spec:
-                allOf:
-                  - type: object
-                    properties:
-                      pod:
-                        type: object
-                        properties:
-                          replicas:
-                            description: >-
-                              The number of replicas. Replicas duplicate your
-                              index. They provide higher availability and
-                              throughput. Replicas can be scaled up or down as
-                              your needs change.
-                            default: 1
-                            type: integer
-                            format: int32
-                            minimum: 1
-                          pod_type:
-                            description: >-
-                              The type of pod to use. One of `s1`, `p1`, or `p2`
-                              appended with `.` and one of `x1`, `x2`, `x4`, or
-                              `x8`.
-                            default: p1.x1
-                            type: string
-                    required:
-                      - pod
-              deletion_protection:
-                allOf:
-                  - $ref: '#/components/schemas/DeletionProtection'
-              tags:
-                allOf:
-                  - $ref: '#/components/schemas/IndexTags'
-              embed:
-                allOf:
-                  - example:
-                      field_map:
-                        text: your-text-field
-                      model: multilingual-e5-large
-                      read_parameters:
-                        input_type: query
-                        truncate: NONE
-                      write_parameters:
-                        input_type: passage
-                    description: >-
-                      Configure the integrated inference embedding settings for
-                      this index.
-
-
-                      You can convert an existing index to an integrated index
-                      by specifying the embedding model and field_map. The index
-                      vector type and dimension must match the model vector type
-                      and dimension, and the index similarity metric must be
-                      supported by the model. Refer to the [model
-                      guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
-                      for available models and model details.
-
-
-                      You can later change the embedding configuration to update
-                      the field map, read parameters, or write parameters. Once
-                      set, the model cannot be changed.
-                    type: object
-                    properties:
-                      model:
-                        example: multilingual-e5-large
-                        description: >-
-                          The name of the embedding model to use with the index.
-                          The index dimension and model dimension must match,
-                          and the index similarity metric must be supported by
-                          the model. The index embedding model cannot be changed
-                          once set.
-                        type: string
-                      field_map:
-                        example:
-                          text: your-text-field
-                        description: >-
-                          Identifies the name of the text field from your
-                          document model that will be embedded.
-                        type: object
-                      read_parameters:
-                        description: The read parameters for the embedding model.
-                        type: object
-                      write_parameters:
-                        description: The write parameters for the embedding model.
-                        type: object
-            required: true
-            description: Configuration used to scale an index.
-            refIdentifier: '#/components/schemas/ConfigureIndexRequest'
-        examples:
-          vertical-scaling:
-            summary: Vertical scaling with pod size
-            value:
-              spec:
-                pod:
-                  pod_type: p1.x2
-          horizontal-scaling:
-            summary: Horizontal scaling with replicas
-            value:
-              spec:
-                pod:
-                  replicas: 4
-          scaling-both:
-            summary: Scaling both pod size and number of replicas
-            value:
-              spec:
-                pod:
-                  pod_type: p1.x2
-                  replicas: 4
-          disable-deletion-protection:
-            summary: Disable deletion protection for the index
-            value:
-              delete_protection: disabled
-          update-index-tags:
-            summary: Update tag0 and delete tag1
-            value:
-              tags:
-                tag0: new-val
-                tag1: ''
+        - in: path
+          name: index_name
+          description: The name of the index to configure.
+          required: true
+          schema:
+            type: string
+          example: test-index
+          style: simple
+      requestBody:
         description: The desired pod size and replica configuration for the index.
-  response:
-    '202':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - example: example-index
-                    description: >
-                      The name of the index. Resource name must be 1-45
-                      characters long, start and end with an alphanumeric
-                      character, and consist only of lower case alphanumeric
-                      characters or '-'.
-                    type: string
-                    minLength: 1
-                    maxLength: 45
-              dimension:
-                allOf:
-                  - example: 1536
-                    description: The dimensions of the vectors to be inserted in the index.
-                    type: integer
-                    format: int32
-                    minimum: 1
-                    maximum: 20000
-              metric:
-                allOf:
-                  - description: >-
-                      The distance metric to be used for similarity search. You
-                      can use 'euclidean', 'cosine', or 'dotproduct'. If the
-                      'vector_type' is 'sparse', the metric must be
-                      'dotproduct'. If the `vector_type` is `dense`, the metric
-                      defaults to 'cosine'.
-                    type: string
-                    enum:
-                      - cosine
-                      - euclidean
-                      - dotproduct
-              host:
-                allOf:
-                  - example: semantic-search-c01b5b5.svc.us-west1-gcp.pinecone.io
-                    description: The URL address where the index is hosted.
-                    type: string
-              private_host:
-                allOf:
-                  - example: >-
-                      semantic-search-c01b5b5.svc.private.us-west1-gcp.pinecone.io
-                    description: The private endpoint URL of an index.
-                    type: string
-              deletion_protection:
-                allOf:
-                  - $ref: '#/components/schemas/DeletionProtection'
-              tags:
-                allOf:
-                  - $ref: '#/components/schemas/IndexTags'
-              embed:
-                allOf:
-                  - $ref: '#/components/schemas/ModelIndexEmbed'
-              spec:
-                allOf:
-                  - example:
-                      pod:
-                        environment: us-east-1-aws
-                        metadata_config:
-                          indexed:
-                            - genre
-                            - title
-                            - imdb_rating
-                        pod_type: p1.x1
-                        pods: 1
-                        replicas: 1
-                        shards: 1
-                    type: object
-                    properties:
-                      byoc:
-                        $ref: '#/components/schemas/ByocSpec'
-                      pod:
-                        $ref: '#/components/schemas/PodSpec'
-                      serverless:
-                        $ref: '#/components/schemas/ServerlessSpec'
-              status:
-                allOf:
-                  - example:
-                      ready: true
-                      state: ScalingUpPodSize
-                    type: object
-                    properties:
-                      ready:
-                        type: boolean
-                      state:
-                        type: string
-                        enum:
-                          - Initializing
-                          - InitializationFailed
-                          - ScalingUp
-                          - ScalingDown
-                          - ScalingUpPodSize
-                          - ScalingDownPodSize
-                          - Terminating
-                          - Ready
-                          - Disabled
-                    required:
-                      - ready
-                      - state
-              vector_type:
-                allOf:
-                  - description: >-
-                      The index vector type. You can use 'dense' or 'sparse'. If
-                      'dense', the vector dimension must be specified.  If
-                      'sparse', the vector dimension should not be specified.
-                    default: dense
-                    type: string
-            description: >-
-              The IndexModel describes the configuration and status of a
-              Pinecone index.
-            refIdentifier: '#/components/schemas/IndexModel'
-            requiredProperties:
-              - name
-              - metric
-              - status
-              - spec
-              - host
-              - vector_type
-        examples:
-          example:
-            value:
-              name: example-index
-              dimension: 1536
-              metric: cosine
-              host: semantic-search-c01b5b5.svc.us-west1-gcp.pinecone.io
-              private_host: semantic-search-c01b5b5.svc.private.us-west1-gcp.pinecone.io
-              deletion_protection: disabled
-              tags:
-                tag0: val0
-                tag1: val1
-              embed:
-                field_map:
-                  text: your-text-field
-                metric: cosine
-                model: multilingual-e5-large
-                read_parameters:
-                  input_type: query
-                  truncate: NONE
-                write_parameters:
-                  input_type: passage
-              spec:
-                pod:
-                  environment: us-east-1-aws
-                  metadata_config:
-                    indexed:
-                      - genre
-                      - title
-                      - imdb_rating
-                  pod_type: p1.x1
-                  pods: 1
-                  replicas: 1
-                  shards: 1
-              status:
-                ready: true
-                state: ScalingUpPodSize
-              vector_type: dense
-        description: >-
-          The request to configure the index has been accepted. Check the  index
-          status to see when the change has been applied.
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - &ref_0
-                    example: 500
-                    description: The HTTP status code of the error.
-                    type: integer
-              error:
-                allOf:
-                  - &ref_1
-                    example:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigureIndexRequest'
+            examples:
+              vertical-scaling:
+                summary: Vertical scaling with pod size
+                value:
+                  spec:
+                    pod:
+                      pod_type: p1.x2
+              horizontal-scaling:
+                summary: Horizontal scaling with replicas
+                value:
+                  spec:
+                    pod:
+                      replicas: 4
+              scaling-both:
+                summary: Scaling both pod size and number of replicas
+                value:
+                  spec:
+                    pod:
+                      pod_type: p1.x2
+                      replicas: 4
+              disable-deletion-protection:
+                summary: Disable deletion protection for the index
+                value:
+                  delete_protection: disabled
+              update-index-tags:
+                summary: Update tag0 and delete tag1
+                value:
+                  tags:
+                    tag0: new-val
+                    tag1: ''
+        required: true
+      responses:
+        '202':
+          description: >-
+            The request to configure the index has been accepted. Check the 
+            index status to see when the change has been applied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexModel'
+        '400':
+          description: Bad request. The request body included invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                index-metric-validation-error:
+                  summary: Validation error
+                  value:
+                    error:
                       code: INVALID_ARGUMENT
                       message: >-
-                        Index name must contain only lowercase alphanumeric
-                        characters or hyphens, and must not begin or end with a
-                        hyphen.
-                    description: Detailed information about the error that occurred.
-                    type: object
-                    properties:
-                      code:
-                        type: string
-                        enum:
-                          - OK
-                          - UNKNOWN
-                          - INVALID_ARGUMENT
-                          - DEADLINE_EXCEEDED
-                          - QUOTA_EXCEEDED
-                          - NOT_FOUND
-                          - ALREADY_EXISTS
-                          - PERMISSION_DENIED
-                          - UNAUTHENTICATED
-                          - RESOURCE_EXHAUSTED
-                          - FAILED_PRECONDITION
-                          - ABORTED
-                          - OUT_OF_RANGE
-                          - UNIMPLEMENTED
-                          - INTERNAL
-                          - UNAVAILABLE
-                          - DATA_LOSS
-                          - FORBIDDEN
-                          - UNPROCESSABLE_ENTITY
-                          - PAYMENT_REQUIRED
-                      message:
-                        example: >-
-                          Index name must contain only lowercase alphanumeric
-                          characters or hyphens, and must not begin or end with
-                          a hyphen.
-                        type: string
-                      details:
-                        description: >-
-                          Additional information about the error. This field is
-                          not guaranteed to be present.
-                        type: object
-                    required:
-                      - code
-                      - message
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - status
-              - error
-            example: &ref_3
-              error:
-                code: QUOTA_EXCEEDED
-                message: >-
-                  The index exceeds the project quota of 5 pods by 2 pods.
-                  Upgrade your account or change the project settings to
-                  increase the quota.
-              status: 429
-        examples:
-          index-metric-validation-error:
-            summary: Validation error
-            value:
-              error:
-                code: INVALID_ARGUMENT
-                message: >-
-                  Bad request. The request body included invalid request
-                  parameters.
-              status: 400
-        description: Bad request. The request body included invalid request parameters.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          unauthorized:
-            summary: Unauthorized
-            value:
-              error:
-                code: UNAUTHENTICATED
-                message: Invalid API key.
-              status: 401
-        description: 'Unauthorized. Possible causes: Invalid API key.'
-    '402':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          payment-required:
-            summary: Payment required
-            value:
-              error:
-                code: PAYMENT_REQUIRED
-                message: >-
-                  Request failed. Pay all past due invoices to lift restrictions
-                  on your account.
-              status: 402
-        description: >-
-          Payment required. Organization is on a paid plan and is delinquent on
-          payment.
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          unauthorized:
-            summary: Forbidden
-            value:
-              error:
-                code: FORBIDDEN
-                message: Increase your quota or upgrade to create more indexes.
-              status: 403
-        description: You've exceed your pod quota.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          index-not-found:
-            summary: Index not found
-            value:
-              error:
-                code: NOT_FOUND
-                message: Index example-index not found.
-              status: 404
-        description: Index not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          missing-field:
-            summary: Unprocessable entity
-            value:
-              error:
-                code: UNPROCESSABLE_ENTITY
-                message: >-
-                  Failed to deserialize the JSON body into the target type:
-                  missing field `metric` at line 1 column 16
-              status: 422
-        description: Unprocessable entity. The request body could not be deserialized.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          internal-server-error:
-            summary: Internal server error
-            value:
-              error:
-                code: UNKNOWN
-                message: Internal server error
-              status: 500
-        description: Internal server error.
-  deprecated: false
-  type: path
+                        Bad request. The request body included invalid request
+                        parameters.
+                    status: 400
+        '401':
+          description: 'Unauthorized. Possible causes: Invalid API key.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unauthorized:
+                  summary: Unauthorized
+                  value:
+                    error:
+                      code: UNAUTHENTICATED
+                      message: Invalid API key.
+                    status: 401
+        '402':
+          description: >-
+            Payment required. Organization is on a paid plan and is delinquent
+            on payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                payment-required:
+                  summary: Payment required
+                  value:
+                    error:
+                      code: PAYMENT_REQUIRED
+                      message: >-
+                        Request failed. Pay all past due invoices to lift
+                        restrictions on your account.
+                    status: 402
+        '403':
+          description: You've exceed your pod quota.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unauthorized:
+                  summary: Forbidden
+                  value:
+                    error:
+                      code: FORBIDDEN
+                      message: Increase your quota or upgrade to create more indexes.
+                    status: 403
+        '404':
+          description: Index not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                index-not-found:
+                  summary: Index not found
+                  value:
+                    error:
+                      code: NOT_FOUND
+                      message: Index example-index not found.
+                    status: 404
+        '422':
+          description: Unprocessable entity. The request body could not be deserialized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                missing-field:
+                  summary: Unprocessable entity
+                  value:
+                    error:
+                      code: UNPROCESSABLE_ENTITY
+                      message: >-
+                        Failed to deserialize the JSON body into the target
+                        type: missing field `metric` at line 1 column 16
+                    status: 422
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                internal-server-error:
+                  summary: Internal server error
+                  value:
+                    error:
+                      code: UNKNOWN
+                      message: Internal server error
+                    status: 500
 components:
   schemas:
+    ConfigureIndexRequest:
+      description: Configuration used to scale an index.
+      type: object
+      properties:
+        spec:
+          description: >-
+            The spec object defines how the index should be deployed.  Only some
+            attributes of an index's spec may be updated.  In general, you can
+            modify settings related to scaling and  configuration but you cannot
+            change the cloud or region  where the index is hosted.
+          oneOf:
+            - title: Serverless
+              type: object
+              properties:
+                serverless:
+                  description: Updated configuration for serverless indexes
+                  type: object
+                  properties:
+                    read_capacity:
+                      $ref: '#/components/schemas/ReadCapacity'
+              required:
+                - serverless
+              additionalProperties: false
+            - title: Pod-based
+              type: object
+              properties:
+                pod:
+                  description: Updated configuration for pod-based indexes
+                  type: object
+                  properties:
+                    replicas:
+                      description: >-
+                        The number of replicas. Replicas duplicate your index.
+                        They provide higher availability and throughput.
+                        Replicas can be scaled up or down as your needs change.
+                      default: 1
+                      type: integer
+                      format: int32
+                      minimum: 1
+                    pod_type:
+                      description: >-
+                        The type of pod to use. One of `s1`, `p1`, or `p2`
+                        appended with `.` and one of `x1`, `x2`, `x4`, or `x8`.
+                      default: p1.x1
+                      type: string
+              required:
+                - pod
+              additionalProperties: false
+            - title: BYOC
+              type: object
+              properties:
+                byoc:
+                  description: Updated configuration for a BYOC index
+                  type: object
+                  properties:
+                    read_capacity:
+                      $ref: '#/components/schemas/ReadCapacity'
+              required:
+                - byoc
+              additionalProperties: false
+        deletion_protection:
+          $ref: '#/components/schemas/DeletionProtection'
+        tags:
+          $ref: '#/components/schemas/IndexTags'
+        embed:
+          example:
+            field_map:
+              text: your-text-field
+            model: multilingual-e5-large
+            read_parameters:
+              input_type: query
+              truncate: NONE
+            write_parameters:
+              input_type: passage
+          description: >-
+            Configure the integrated inference embedding settings for this
+            index.
+
+
+            You can convert an existing index to an integrated index by
+            specifying the embedding model and field_map. The index vector type
+            and dimension must match the model vector type and dimension, and
+            the index similarity metric must be supported by the model. Refer to
+            the [model
+            guide](https://docs.pinecone.io/guides/index-data/create-an-index#embedding-models)
+            for available models and model details.
+
+
+            You can later change the embedding configuration to update the field
+            map, read parameters, or write parameters. Once set, the model
+            cannot be changed.
+          type: object
+          properties:
+            model:
+              example: multilingual-e5-large
+              description: >-
+                The name of the embedding model to use with the index. The index
+                dimension and model dimension must match, and the index
+                similarity metric must be supported by the model. The index
+                embedding model cannot be changed once set.
+              type: string
+            field_map:
+              example:
+                text: your-text-field
+              description: >-
+                Identifies the name of the text field from your document model
+                that will be embedded.
+              type: object
+            read_parameters:
+              description: The read parameters for the embedding model.
+              type: object
+            write_parameters:
+              description: The write parameters for the embedding model.
+              type: object
+    IndexModel:
+      description: >-
+        The IndexModel describes the configuration and status of a Pinecone
+        index.
+      type: object
+      properties:
+        name:
+          example: example-index
+          description: >
+            The name of the index. Resource name must be 1-45 characters long,
+            start and end with an alphanumeric character, and consist only of
+            lower case alphanumeric characters or '-'.
+          type: string
+          minLength: 1
+          maxLength: 45
+        dimension:
+          example: 1536
+          description: The dimensions of the vectors to be inserted in the index.
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 20000
+        metric:
+          description: >-
+            The distance metric to be used for similarity search. You can use
+            'euclidean', 'cosine', or 'dotproduct'. If the 'vector_type' is
+            'sparse', the metric must be 'dotproduct'. If the `vector_type` is
+            `dense`, the metric defaults to 'cosine'.
+
+            Possible values: `cosine`, `euclidean`, or `dotproduct`.
+          x-enum:
+            - cosine
+            - euclidean
+            - dotproduct
+          type: string
+        host:
+          example: semantic-search-c01b5b5.svc.us-west1-gcp.pinecone.io
+          description: The URL address where the index is hosted.
+          type: string
+        private_host:
+          example: semantic-search-c01b5b5.svc.private.us-west1-gcp.pinecone.io
+          description: The private endpoint URL of an index.
+          type: string
+        deletion_protection:
+          $ref: '#/components/schemas/DeletionProtection'
+        tags:
+          $ref: '#/components/schemas/IndexTags'
+        embed:
+          $ref: '#/components/schemas/ModelIndexEmbed'
+        spec:
+          example:
+            pod:
+              environment: us-east-1-aws
+              metadata_config:
+                indexed:
+                  - genre
+                  - title
+                  - imdb_rating
+              pod_type: p1.x1
+              pods: 1
+              replicas: 1
+              shards: 1
+          description: The spec object defines how the index should be deployed.
+          type: object
+          oneOf:
+            - title: Serverless
+              type: object
+              properties:
+                serverless:
+                  $ref: '#/components/schemas/ServerlessSpecResponse'
+              required:
+                - serverless
+              additionalProperties: false
+            - title: Pod-based
+              type: object
+              properties:
+                pod:
+                  $ref: '#/components/schemas/PodSpec'
+              required:
+                - pod
+              additionalProperties: false
+            - title: BYOC
+              type: object
+              properties:
+                byoc:
+                  $ref: '#/components/schemas/ByocSpecResponse'
+              required:
+                - byoc
+              additionalProperties: false
+        status:
+          example:
+            ready: true
+            state: ScalingUpPodSize
+          description: The current status of the index
+          type: object
+          properties:
+            ready:
+              description: Whether the index is ready for use
+              type: boolean
+            state:
+              description: >-
+                The state of the index.
+
+                Possible values: `Initializing`, `InitializationFailed`,
+                `ScalingUp`, `ScalingDown`, `ScalingUpPodSize`,
+                `ScalingDownPodSize`, `Terminating`, `Ready`, or `Disabled`.
+              x-enum:
+                - Initializing
+                - InitializationFailed
+                - ScalingUp
+                - ScalingDown
+                - ScalingUpPodSize
+                - ScalingDownPodSize
+                - Terminating
+                - Ready
+                - Disabled
+              type: string
+          required:
+            - ready
+            - state
+        vector_type:
+          description: >-
+            The index vector type. You can use 'dense' or 'sparse'. If 'dense',
+            the vector dimension must be specified.  If 'sparse', the vector
+            dimension should not be specified.
+          default: dense
+          type: string
+      required:
+        - name
+        - metric
+        - status
+        - spec
+        - host
+        - vector_type
+    ErrorResponse:
+      example:
+        error:
+          code: QUOTA_EXCEEDED
+          message: >-
+            The index exceeds the project quota of 5 pods by 2 pods. Upgrade
+            your account or change the project settings to increase the quota.
+        status: 429
+      description: The response shape used for all error responses.
+      type: object
+      properties:
+        status:
+          example: 500
+          description: The HTTP status code of the error.
+          type: integer
+        error:
+          example:
+            code: INVALID_ARGUMENT
+            message: >-
+              Index name must contain only lowercase alphanumeric characters or
+              hyphens, and must not begin or end with a hyphen.
+          description: Detailed information about the error that occurred.
+          type: object
+          properties:
+            code:
+              description: >-
+                The error code.
+
+                Possible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`,
+                `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`,
+                `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`,
+                `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`,
+                `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`,
+                `DATA_LOSS`, `FORBIDDEN`, `UNPROCESSABLE_ENTITY`, or
+                `PAYMENT_REQUIRED`.
+              x-enum:
+                - OK
+                - UNKNOWN
+                - INVALID_ARGUMENT
+                - DEADLINE_EXCEEDED
+                - QUOTA_EXCEEDED
+                - NOT_FOUND
+                - ALREADY_EXISTS
+                - PERMISSION_DENIED
+                - UNAUTHENTICATED
+                - RESOURCE_EXHAUSTED
+                - FAILED_PRECONDITION
+                - ABORTED
+                - OUT_OF_RANGE
+                - UNIMPLEMENTED
+                - INTERNAL
+                - UNAVAILABLE
+                - DATA_LOSS
+                - FORBIDDEN
+                - UNPROCESSABLE_ENTITY
+                - PAYMENT_REQUIRED
+              type: string
+            message:
+              example: >-
+                Index name must contain only lowercase alphanumeric characters
+                or hyphens, and must not begin or end with a hyphen.
+              description: A human-readable description of the error
+              type: string
+            details:
+              description: >-
+                Additional information about the error. This field is not
+                guaranteed to be present.
+              type: object
+          required:
+            - code
+            - message
+      required:
+        - status
+        - error
+    ReadCapacity:
+      description: >-
+        By default the index will be created with read capacity  mode
+        `OnDemand`. If you prefer to allocate dedicated read  nodes for your
+        workload, you must specify mode `Dedicated` and additional
+        configurations for `node_type` and `scaling`.
+      discriminator:
+        propertyName: mode
+        mapping:
+          OnDemand: '#/components/schemas/ReadCapacityOnDemandSpec'
+          Dedicated: '#/components/schemas/ReadCapacityDedicatedSpec'
+      oneOf:
+        - $ref: '#/components/schemas/ReadCapacityOnDemandSpec'
+        - $ref: '#/components/schemas/ReadCapacityDedicatedSpec'
+    DeletionProtection:
+      description: >-
+        Whether [deletion
+        protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection)
+        is enabled/disabled for the index.
+
+        Possible values: `disabled` or `enabled`.
+      default: disabled
+      x-enum:
+        - disabled
+        - enabled
+      type: string
     IndexTags:
       example:
         tag0: val0
@@ -601,11 +750,13 @@ components:
             'euclidean', 'cosine', or 'dotproduct'. If not specified, the metric
             will be defaulted according to the model. Cannot be updated once
             set.
-          type: string
-          enum:
+
+            Possible values: `cosine`, `euclidean`, or `dotproduct`.
+          x-enum:
             - cosine
             - euclidean
             - dotproduct
+          type: string
         dimension:
           example: 1536
           description: The dimensions of the vectors to be inserted in the index.
@@ -635,38 +786,36 @@ components:
           type: object
       required:
         - model
-    DeletionProtection:
-      description: >
-        Whether [deletion
-        protection](http://docs.pinecone.io/guides/manage-data/manage-indexes#configure-deletion-protection)
-        is enabled/disabled for the index.
-      default: disabled
-      type: string
-      enum:
-        - disabled
-        - enabled
-    ServerlessSpec:
-      description: Configuration needed to deploy a serverless index.
+    ServerlessSpecResponse:
+      description: Configuration of a serverless index.
       type: object
       properties:
         cloud:
           example: aws
-          description: The public cloud where you would like your index hosted.
-          type: string
-          enum:
+          description: |-
+            The public cloud where you would like your index hosted.
+            Possible values: `gcp`, `aws`, or `azure`.
+          x-enum:
             - gcp
             - aws
             - azure
+          type: string
         region:
           example: us-east-1
           description: The region where you would like your index to be created.
           type: string
+        read_capacity:
+          $ref: '#/components/schemas/ReadCapacityResponse'
         source_collection:
-          type: string
+          example: movie-embeddings
           description: The name of the collection to be used as the source for the index.
+          type: string
+        schema:
+          $ref: '#/components/schemas/MetadataSchema'
       required:
         - cloud
         - region
+        - read_capacity
     PodSpec:
       example:
         environment: us-east1-gcp
@@ -680,6 +829,7 @@ components:
         replicas: 1
         shards: 1
         source_collection: movie-embeddings
+      title: Pod-based
       description: Configuration needed to deploy a pod-based index.
       type: object
       properties:
@@ -746,17 +896,242 @@ components:
       required:
         - environment
         - pod_type
-    ByocSpec:
-      example:
-        environment: aws-us-east-1-b921
-      description: Configuration needed to deploy an index in a BYOC environment.
+    ByocSpecResponse:
+      title: BYOC
+      description: Configuration of a BYOC index.
       type: object
       properties:
         environment:
           example: aws-us-east-1-b921
           description: The environment where the index is hosted.
           type: string
+        read_capacity:
+          $ref: '#/components/schemas/ReadCapacityResponse'
+        schema:
+          $ref: '#/components/schemas/MetadataSchema'
       required:
         - environment
+        - read_capacity
+    ReadCapacityOnDemandSpec:
+      example:
+        mode: OnDemand
+      title: On-demand
+      type: object
+      properties:
+        mode:
+          description: >-
+            The mode of the index. Possible values: `OnDemand` or `Dedicated`.
+            Defaults to `OnDemand`. If set to `Dedicated`,
+            `dedicated.node_type`, and `dedicated.scaling` must be specified.
+          type: string
+      required:
+        - mode
+      additionalProperties: false
+    ReadCapacityDedicatedSpec:
+      example:
+        dedicated:
+          manual:
+            replicas: 1
+            shards: 1
+          node_type: t1
+          scaling: Manual
+        mode: Dedicated
+      title: Dedicated
+      type: object
+      properties:
+        mode:
+          description: >-
+            The mode of the index. Possible values: `OnDemand` or `Dedicated`.
+            Defaults to `OnDemand`. If set to `Dedicated`,
+            `dedicated.node_type`, and `dedicated.scaling` must be specified.
+          type: string
+        dedicated:
+          $ref: '#/components/schemas/ReadCapacityDedicatedConfig'
+      required:
+        - mode
+        - dedicated
+      additionalProperties: true
+    ReadCapacityResponse:
+      description: Response containing read capacity configuration
+      discriminator:
+        propertyName: mode
+        mapping:
+          OnDemand: '#/components/schemas/ReadCapacityOnDemandSpecResponse'
+          Dedicated: '#/components/schemas/ReadCapacityDedicatedSpecResponse'
+      oneOf:
+        - $ref: '#/components/schemas/ReadCapacityOnDemandSpecResponse'
+        - $ref: '#/components/schemas/ReadCapacityDedicatedSpecResponse'
+    MetadataSchema:
+      example:
+        fields:
+          description:
+            filterable: true
+          genre:
+            filterable: true
+          year:
+            filterable: true
+      description: >-
+        Schema for the behavior of Pinecone's internal metadata index. By
+        default, all metadata is indexed; when `schema` is present, only fields
+        which are present in the `fields` object with a `filterable: true` are
+        indexed. Note that `filterable: false` is not currently supported.
+      type: object
+      properties:
+        fields:
+          description: >-
+            A map of metadata field names to their configuration. The field name
+            must be a valid metadata field name. The field name must be unique.
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              filterable:
+                description: >-
+                  Whether the field is filterable. If true, the field is indexed
+                  and can be used in filters. Only true values are allowed.
+                type: boolean
+      required:
+        - fields
+    ReadCapacityDedicatedConfig:
+      description: >-
+        Configuration for dedicated read capacity. See  [this
+        guide](https://docs.pinecone.io/guides/index-data/dedicated-read-nodes)
+        for more details on  how to configure dedicated read capacity.
+      type: object
+      properties:
+        node_type:
+          description: >-
+            The type of machines to use. Available options: `b1` and `t1`. `t1`
+            includes increased processing power and memory.
+          type: string
+        scaling:
+          description: The type of scaling strategy to use.
+          type: string
+        manual:
+          $ref: '#/components/schemas/ScalingConfigManual'
+    ReadCapacityOnDemandSpecResponse:
+      example:
+        mode: OnDemand
+        status:
+          state: Ready
+      title: On-demand
+      type: object
+      properties:
+        mode:
+          description: >-
+            The mode of the index. Possible values: `OnDemand` or `Dedicated`.
+            Defaults to `OnDemand`. If set to `Dedicated`,
+            `dedicated.node_type`, and `dedicated.scaling` must be specified.
+          type: string
+        status:
+          $ref: '#/components/schemas/ReadCapacityStatus'
+      required:
+        - mode
+        - status
+      additionalProperties: false
+    ReadCapacityDedicatedSpecResponse:
+      example:
+        dedicated:
+          manual:
+            replicas: 2
+            shards: 2
+          node_type: t1
+          scaling: Manual
+        mode: Dedicated
+        status:
+          current_replicas: 2
+          current_shards: 2
+          state: Ready
+      title: Dedicated
+      type: object
+      properties:
+        mode:
+          description: >-
+            The mode of the index. Possible values: `OnDemand` or `Dedicated`.
+            Defaults to `OnDemand`. If set to `Dedicated`,
+            `dedicated.node_type`, and `dedicated.scaling` must be specified.
+          type: string
+        dedicated:
+          $ref: '#/components/schemas/ReadCapacityDedicatedConfig'
+        status:
+          $ref: '#/components/schemas/ReadCapacityStatus'
+      required:
+        - mode
+        - dedicated
+        - status
+      additionalProperties: false
+    ScalingConfigManual:
+      description: The config to use for manual read capacity scaling.
+      type: object
+      properties:
+        replicas:
+          description: >-
+            The number of replicas to use. Replicas duplicate the compute
+            resources and data of an index, allowing higher query throughput and
+            availability. Setting replicas to 0 disables the index but can be
+            used to reduce costs while usage is paused.
+          type: integer
+          format: int32
+          minimum: 0
+        shards:
+          description: >-
+            The number of shards to use. Shards determine the storage capacity
+            of an index, with each shard providing 250 GB of storage.
+          type: integer
+          format: int32
+          minimum: 1
+    ReadCapacityStatus:
+      description: >-
+        The current status of factors affecting the read capacity of a
+        serverless index
+      type: object
+      properties:
+        state:
+          description: >-
+            The `state` describes the overall status of factors relating to the
+            read capacity of an index. 
+
+
+            Available values:
+
+            - `Ready` is the state most of the time
+
+            - `Scaling` if the number of replicas or shards has been recently
+            updated by calling the [configure index
+            endpoint](https://docs.pinecone.io/reference/api/2025-10/control-plane/configure_index)
+
+            - `Migrating` if the index is being migrated to a new `node_type`
+
+            - `Error` if there is an error with the read capacity configuration.
+            In that case, see `error_message` for more details.
+          type: string
+        current_replicas:
+          description: >-
+            The number of replicas. Each replica has dedicated  compute
+            resources and data storage. Increasing this number  will increase
+            the total throughput of the index.
+          type: integer
+          format: int32
+        current_shards:
+          description: >-
+            The number of shards. Each shard has dedicated storage.  Increasing
+            shards alleiviates index fullness. 
+          type: integer
+          format: int32
+        error_message:
+          description: >-
+            An optional error message indicating any issues with your read
+            capacity configuration
+          type: string
+      required:
+        - state
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Api-Key
+      description: >-
+        An API Key is required to call Pinecone APIs. Get yours from the
+        [console](https://app.pinecone.io/).
 
 ````

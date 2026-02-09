@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/number.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Number Validation Plugin
 
 > Comprehensive validation for numeric data during the Flatfile import process with support for ranges, formats, and special number types.
@@ -21,7 +25,7 @@ The plugin modifies records by setting the cleaned, parsed numeric value and att
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-number
 ```
 
@@ -59,7 +63,7 @@ The `validateNumber` function accepts a single configuration object with the fol
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateNumber } from '@flatfile/plugin-validate-number';
 
@@ -73,7 +77,7 @@ The `validateNumber` function accepts a single configuration object with the fol
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateNumber } from '@flatfile/plugin-validate-number';
 
@@ -91,7 +95,7 @@ The `validateNumber` function accepts a single configuration object with the fol
 ### Currency Validation
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateNumber } from '@flatfile/plugin-validate-number';
 
@@ -113,7 +117,7 @@ The `validateNumber` function accepts a single configuration object with the fol
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateNumber } from '@flatfile/plugin-validate-number';
 
@@ -139,7 +143,7 @@ The `validateNumber` function accepts a single configuration object with the fol
 ### Direct Validation Function
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { validateNumberField } from '@flatfile/plugin-validate-number';
 
   const customValidation = () => {
@@ -158,7 +162,7 @@ The `validateNumber` function accepts a single configuration object with the fol
   };
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { validateNumberField } from '@flatfile/plugin-validate-number';
 
   const customValidation = (): void => {
@@ -194,7 +198,7 @@ A function of type `(listener: FlatfileListener) => void` that registers the val
 **Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   listener.use(
     validateNumber({
       fields: ['score'],
@@ -205,7 +209,7 @@ A function of type `(listener: FlatfileListener) => void` that registers the val
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   listener.use(
     validateNumber({
       fields: ['score'],
@@ -236,7 +240,7 @@ A standalone utility function that validates a single value against validation r
 **Error Handling Example:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { validateNumberField } from '@flatfile/plugin-validate-number';
 
   const result = validateNumberField('not-a-number', {});
@@ -248,7 +252,7 @@ A standalone utility function that validates a single value against validation r
   console.log(result2.value); // Outputs: 99.99
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { validateNumberField } from '@flatfile/plugin-validate-number';
 
   const result = validateNumberField('not-a-number', {});

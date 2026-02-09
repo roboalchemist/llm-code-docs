@@ -24,11 +24,9 @@ defineShortcuts({
 - The composable uses VueUse's [`useEventListener`](https://vueuse.org/core/useEventListener/) to handle keydown events.
 - For a complete list of available shortcut keys, refer to the [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values) API documentation. Note that the key should be written in lowercase.
 
-<tip to="/docs/components/kbd">
-
-Learn how to display shortcuts in components in the **Kbd** component documentation.
-
-</tip>
+> [!TIP]
+> See: /docs/components/kbd
+> Learn how to display shortcuts in components in the Kbd component documentation.
 
 ## API
 
@@ -38,26 +36,15 @@ Define keyboard shortcuts for your application.
 
 #### Parameters
 
-<field-group>
-<field name="config" type="ShortcutsConfig" :required="true" required="true">
-
 An object where keys are shortcut definitions and values are either handler functions or shortcut configuration objects.
-
-</field>
-
-<field name="options" type="ShortcutsOptions">
 
 Optional configuration for the shortcuts behavior.
 
-<collapsible>
-<field name="chainDelay" type="number">
+The delay between key presses to consider the shortcut as chained. Default is .
 
-The delay between key presses to consider the shortcut as chained. Default is `250`.
+When enabled, shortcuts work consistently across different keyboard layouts (Arabic, Hebrew) by matching physical key positions rather than character values.
 
-</field>
-</collapsible>
-</field>
-</field-group>
+false (default): Uses e.key for character-based matching (Layout specific)true: Uses e.code for physical key matching (Layout agnostic)
 
 #### Shortcut definition
 
@@ -87,23 +74,11 @@ Each shortcut can be defined as a function or an object with the following prope
 
 #### Parameters
 
-<field-group>
-<field name="handler" type="() => void" :required="true" required="true">
-
 Function to be executed when the shortcut is triggered.
-
-</field>
-
-<field name="usingInput" type="boolean | string">
 
 Controls when the shortcut should trigger based on input focus:
 
-- `false` (default): Shortcut only triggers when no input is focused
-- `true`: Shortcut triggers even when any input is focused
-- `string`: Shortcut only triggers when the specified input (by name) is focused
-
-</field>
-</field-group>
+false (default): Shortcut only triggers when no input is focusedtrue: Shortcut triggers even when any input is focusedstring: Shortcut only triggers when the specified input (by name) is focused
 
 ## Examples
 
@@ -146,26 +121,8 @@ defineShortcuts({
 
 ### Extracting shortcuts from menu items
 
-The `extractShortcuts` utility can be used to automatically define shortcuts from menu items:
+Use the `extractShortcuts` utility to automatically define shortcuts from menu items.
 
-```vue
-<script setup lang="ts">
-const items = [{
-  label: 'Save',
-  icon: 'i-lucide-file-down',
-  kbds: ['meta', 'S'],
-  onSelect() {
-    save()
-  }
-}, {
-  label: 'Copy',
-  icon: 'i-lucide-copy',
-  kbds: ['meta', 'C'],
-  onSelect() {
-    copy()
-  }
-}]
-
-defineShortcuts(extractShortcuts(items))
-</script>
-```
+> [!TIP]
+> See: /docs/composables/extract-shortcuts
+> Learn more about the extractShortcuts utility.

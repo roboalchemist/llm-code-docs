@@ -1,101 +1,100 @@
 # Source: https://docs.fireworks.ai/api-reference/list-secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Secrets
 
 > Lists all secrets for an account. Note that the `value` field is not returned in the response for security reasons. Only the `name` and `key_name` fields are included for each secret.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/accounts/{account_id}/secrets
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/secrets
-  method: get
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/secrets:
+    get:
+      tags:
+        - Gateway
+      summary: List Secrets
+      description: >-
+        Lists all secrets for an account. Note that the `value` field is not
+        returned in the response for security reasons. Only the `name` and
+        `key_name` fields are included for each secret.
+      operationId: Gateway_ListSecrets
+      parameters:
+        - name: pageSize
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-      query:
-        pageSize:
+            type: integer
+            format: int32
+        - name: pageToken
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-        pageToken:
+            type: string
+        - name: filter
+          description: Unused but required to use existing ListRequest functionality.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-        filter:
+            type: string
+        - name: orderBy
+          description: Unused but required to use existing ListRequest functionality.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Unused but required to use existing ListRequest functionality.
-        orderBy:
+            type: string
+        - name: readMask
+          description: >-
+            The fields to be returned in the response. If empty or "*", all
+            fields will be returned.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Unused but required to use existing ListRequest functionality.
-        readMask:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: false
-              description: >-
-                The fields to be returned in the response. If empty or "*", all
-                fields will be returned.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              secrets:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      $ref: '#/components/schemas/gatewaySecret'
-              nextPageToken:
-                allOf:
-                  - type: string
-              totalSize:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The total number of secrets.
-            refIdentifier: '#/components/schemas/gatewayListSecretsResponse'
-        examples:
-          example:
-            value:
-              secrets:
-                - name: <string>
-                  keyName: <string>
-                  value: sk-1234567890abcdef
-              nextPageToken: <string>
-              totalSize: 123
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayListSecretsResponse'
 components:
   schemas:
+    gatewayListSecretsResponse:
+      type: object
+      properties:
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewaySecret'
+            type: object
+        nextPageToken:
+          type: string
+        totalSize:
+          type: integer
+          format: int32
+          description: The total number of secrets.
     gatewaySecret:
       type: object
       properties:
@@ -119,5 +118,13 @@ components:
       required:
         - name
         - keyName
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

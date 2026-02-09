@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/account-access/what-email-does-github-authentication-use.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What email does GitHub authentication use?
 
 When you authenticate with Fireworks using GitHub, we use the **primary email address** associated with your GitHub account for identification and account management.

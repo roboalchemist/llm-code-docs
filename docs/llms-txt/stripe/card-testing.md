@@ -13,7 +13,7 @@ Fraudulent activity such as card testing is an unavoidable part of online commer
 Card testers use both card setup and payments to determine whether the stolen or enumerated card information they have is valid or not. To quickly validate many card numbers, fraudsters use scripts to test a large amount of card information at once, and collect 3DS or issuer responses to validate which card information is valid. After they have identified the valid cards, they can cash them with merchants or resell confirmed cards on the dark web.
 
 - **Card Setup**—This is a method preferred by fraudsters, as card validation and authorizations during card setup don’t typically show up on cardholder statements. This reduces the likelihood of card holders noticing and reporting the fraudulent activity.
-- **Payments**—Card testers create small amount payments, which are cardholders are less likely to notice and reported as fraudulent.
+- **Payments**—Card testers create small amount payments, which cardholders are less likely to notice and report as fraudulent.
 
 ## Card testing consequences 
 
@@ -42,9 +42,6 @@ You can identify most card testing activity by a significant increase in failed 
 - **A spike in failed or blocked payments.** You can see the trends on [the Dashboard home page](https://dashboard.stripe.com/dashboard), the [transactions](https://dashboard.stripe.com/payments) list view, and you can examine the block reasons on the payment details page.
 - **A spike in requests with 402 errors**. You can see the volume spike on the [Developers](https://dashboard.stripe.com/developers) page, examine 402 failures on the [failed Logs](https://dashboard.stripe.com/logs?error_type=card_error) page or listen to webhooks and API responses, in particular with an [outcome of “generic_decline”](https://docs.stripe.com/declines/codes.md).
 - **A spike in suspicious payments** with low transaction amounts, often with nonsensical customer names and emails. To avoid disputes, we recommend refunding these suspicious transactions if they get through the existing defenses.
-![Identify card testing](https://b.stripecdn.com/docs-statics-srv/assets/identify-card-testing.b93053f0e243f06d55968d8717cbf3c0.png)
-
-Payment blocked due to suspected card testing
 
 ## Prevent card testing 
 
@@ -117,7 +114,7 @@ Use the Dashboard, [webhooks](https://docs.stripe.com/webhooks.md), or continuou
 - Limit the number of customers of the same type that can be created
 - Filter out requests with certain user agents or other parameters
 
-To do so, you can leverage [custom rules](https://docs.stripe.com/radar/rules/reference.md#velocity-rules) in Radar for Fraud Teams. We cover that in the next section.
+To do so, you can use [custom rules](https://docs.stripe.com/radar/rules/reference.md#velocity-rules) in Radar for Fraud Teams. We cover that in the next section.
 
 ### Use a combination of mitigations 
 

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/deploy/gitlab.md
+# Source: https://www.mintlify.com/docs/deploy/gitlab.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GitLab
 
@@ -52,7 +56,9 @@ We use access tokens and webhooks to authenticate and sync changes between GitLa
     3. Click **Save Changes**.
 
     <Frame>
-      <img src="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=882adfd7c2a3349608bc6240aa5b467d" alt="The Git Settings page in the Mintlify dashboard. The GitLab configuration settings are highlighted." data-og-width="2994" width="2994" data-og-height="1704" height="1704" data-path="images/gitlab/gitlab-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=280&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=92f573381038c697fb061a9793cbea4d 280w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=560&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=634591e44b502650a859b04aba4f3f07 560w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=840&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=82eda65fcc9475daf4c9d20eb1f5ac77 840w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=1100&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=cc48a4ac66d50a65dcc4913111b26943 1100w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=1650&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=7932ae6cf49e9ba69d8133ff9f17fa23 1650w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-config.png?w=2500&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=106cb2e8a7eb3bdaef7f994bfcd31da8 2500w" />
+      <img src="https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=98809a957ecd59f3d2f2bd747086c5a2" alt="The GitLab configuration panel in the Git Settings page of the Mintlify dashboard." className="block dark:hidden" data-og-width="1096" width="1096" data-og-height="980" height="980" data-path="images/gitlab/gitlab-config-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=280&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=d126923362e8a1a04c5c363cc763d4c9 280w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=560&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=97f88b329f0ace8ab59777844583144a 560w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=840&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=07081ed0cb66ee2ce008d8b3dbecf462 840w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=1100&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=0c7d8715659c16920627eb0e57fb2605 1100w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=1650&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=1315b468f05d1a9036b979e3a975b885 1650w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-light.png?w=2500&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=c930bbb01934b367591f5f431040569b 2500w" />
+
+      <img src="https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=b4834ea4d6ebf771b7af095589a194ac" alt="The GitLab configuration panel in the Git Settings page of the Mintlify dashboard." className="hidden dark:block" data-og-width="1096" width="1096" data-og-height="980" height="980" data-path="images/gitlab/gitlab-config-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=280&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=8d373c471a7f164d54366aa9e2945b70 280w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=560&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=42b8beb83e53ee846ce1088b31711e2b 560w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=840&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=1be52531d1bdd832f47a546f3add357d 840w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=1100&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=bd77c60ab1d2829ea4f5be0f3b17c9ad 1100w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=1650&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=32f2f35d16704fa661ccf963a7d47635 1650w, https://mintcdn.com/mintlify/TMkAdDUtcJGNvRU5/images/gitlab/gitlab-config-dark.png?w=2500&fit=max&auto=format&n=TMkAdDUtcJGNvRU5&q=85&s=d3428778d1c96107c42ebfa2f0e570dc 2500w" />
     </Frame>
   </Step>
 </Steps>
@@ -63,41 +69,59 @@ Webhooks allow us to receive events when changes are made so that we can
 automatically trigger deployments.
 
 <Steps>
-  <Step title="Navigate to Settings > Webhooks and click 'Add new Webhook'">
+  <Step title="Add new webhook">
+    1. In GitLab, navigate to **Settings** > **Webhooks**.
+    2. Click **Add new webhook**.
+
     <Frame>
       <img src="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=760e8faa2437ecf8ff2739c4dfa0bdc4" alt="Screenshot of the Webhooks page in the GitLab dashboard." data-og-width="3014" width="3014" data-og-height="1704" height="1704" data-path="images/gitlab/gitlab-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=280&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=08c3f527fcd75de5c88682d6fc08018e 280w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=560&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=c7579b9b8372dc9781dd1da38b1e404e 560w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=840&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=a0225726564aa9987b44bfb35f750c35 840w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=1100&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=006a5aa0f321344da2d528c928f3bf4d 1100w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=1650&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=99c65eb0a83da2b793c1608ea3a47cbc 1650w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-webhook.png?w=2500&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=a8943cc826fc0bb2ab6db79ece619d8c 2500w" />
     </Frame>
   </Step>
 
   <Step title="Set up URL and webhook">
-    In the "URL" field, enter the endpoint `https://leaves.mintlify.com/gitlab-webhook` and name the webhook "Mintlify".
+    Name the webhook **Mintlify**.
+
+    In the **URL** field, enter the endpoint `https://leaves.mintlify.com/gitlab-webhook`.
   </Step>
 
-  <Step title="Paste token">
-    Paste the Webhook token generated after setting up the connection.
+  <Step title="Get webtoken">
+    In your Mintlify dashboard, click **Show Webtoken**. Copy the webtoken.
 
     <Frame>
-      <img src="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=60c68dd86fa476e90af8cec2e5ee7c81" alt="Screenshot of the GitLab connection in the Mintlify dashboard. The Show Webtoken button is highlighted." data-og-width="555" width="555" data-og-height="527" height="527" data-path="images/gitlab/gitlab-show-webtoken.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=280&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=90210c502642ebd9e493440279b675b7 280w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=560&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=6533a778a099d0c4fc65e04e64587444 560w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=840&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=6f4e8533153ee8efa98864377656a377 840w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=1100&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=b29eaa2ea7df3ca4e21fba49835a8360 1100w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=1650&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=c1e857545a40103103e5958f03faecc7 1650w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-show-webtoken.png?w=2500&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=74798e74cae86d02520e756f0d7cfb37 2500w" />
+      <img src="https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=50d2acef9a5f88b607128f7c5292743c" alt="Screenshot of the GitLab connection in the Mintlify dashboard." className="block dark:hidden" data-og-width="1082" width="1082" data-og-height="980" height="980" data-path="images/gitlab/show-webtoken-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=280&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=75f9af453ff0b78c0405cf1c4c9553e2 280w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=560&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=e334492f35f31817572cdbee609bbb73 560w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=840&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=fa1f1e35ddf128b2c3ac11f1c0e07a03 840w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=1100&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=45c9ffca8d89232461ab659452ede15a 1100w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=1650&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=55bfb53452c1e4978ec8e553214a15c6 1650w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-light.png?w=2500&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=1ac1e1d5884482dcc2070aef8ea11ccc 2500w" />
+
+      <img src="https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=9fa9732011ac61c1250ebae004de87be" alt="Screenshot of the GitLab connection in the Mintlify dashboard." className="hidden dark:block" data-og-width="1082" width="1082" data-og-height="980" height="980" data-path="images/gitlab/show-webtoken-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=280&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=2c31e6d34ed886094a1d1c8d65470ad3 280w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=560&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=2fec0be80893185d3c7321f18d17b25d 560w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=840&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=adab69cea59f22ef581e265c83f027e7 840w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=1100&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=c5b46752749e9e3f76804499817387fe 1100w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=1650&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=fe78cb48d5c090f0a931c477e425d678 1650w, https://mintcdn.com/mintlify/iZZGgKQ6swbDUuUa/images/gitlab/show-webtoken-dark.png?w=2500&fit=max&auto=format&n=iZZGgKQ6swbDUuUa&q=85&s=a29df1dda62856dc842ba1d3ee64becb 2500w" />
     </Frame>
   </Step>
 
+  <Step title="Paste webtoken">
+    In GitLab, paste the webtoken from your Mintlify dashboard in the **Secret token** field.
+  </Step>
+
   <Step title="Select events">
-    Select these events to trigger the webhook:
+    Select the following events to trigger the webhook:
 
     * **Push events** (All branches)
     * **Merge requests events**
+  </Step>
 
-    When you're done it should look like this:
+  <Step title="Verify the webhook">
+    You should see the following settings after configuring the webhook:
+
+    * **Name**: Mintlify
+    * **URL**: `https://leaves.mintlify.com/gitlab-webhook`
+    * **Secret token**: The webtoken from your Mintlify dashboard
+    * **Events**: **Push events** (All branches) and **Merge requests events**
+
+    Add the webhook.
 
     <Frame>
       <img src="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=00c0ce70ce9e8dbc2712f71aaeef3362" alt="The Webhook page in the GitLab dashboard. The settings to configure for Mintlify are highlighted." data-og-width="1161" width="1161" data-og-height="1740" height="1740" data-path="images/gitlab/gitlab-project-webtoken.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=280&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=d78ea01ef0a043783195c6d548d20eea 280w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=560&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=b77667d112aa91a2db02ab5fb356f733 560w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=840&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=7b2f55fe589a11b9e5ce5633b62c34ad 840w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=1100&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=531491f03816a11e44b651c921dc1789 1100w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=1650&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=24770ed142d0cf9b7bfb0dc307c13449 1650w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken.png?w=2500&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=e8644419580dc23875105fb06f3f4433 2500w" />
     </Frame>
   </Step>
 
-  <Step title="Test the Webhook">
-    After creating the Webhook, click the "Test" dropdown and select "Push events" to send a sample payload to ensure it's configured correctly. It'll say "Hook executed successfully: HTTP 200" if configured correctly.
-
-    This will help you verify that everything is working correctly and that your documentation will sync properly with your GitLab repository.
+  <Step title="Test the webhook">
+    After you create the webhook, click the **Test** dropdown. Click **Push events** to send a sample payload. If the test returns `Hook executed successfully: HTTP 200`, your webhook is configured correctly.
 
     <Frame>
       <img src="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=3ad52f7ac39124a4c03944256d0b79d3" alt="Screenshot of the GitLab Webhooks page. The 'Push events' menu item is highlighted in the 'Test' menu." data-og-width="1161" width="1161" data-og-height="724" height="724" data-path="images/gitlab/gitlab-project-webtoken-test.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=280&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=d174db5e7ba73d19a9431adca65ebe6c 280w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=560&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=9dfb2d09246cb81c0074a2a429e940f7 560w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=840&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=3db14fb7784c9380f627336622f73a8f 840w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=1100&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=68dc65bc33081a8a08c869f7f1ea8761 1100w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=1650&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=ebd368461ffa4880d63a3ecbda59d84e 1650w, https://mintcdn.com/mintlify/GiucHIlvP3i5L17o/images/gitlab/gitlab-project-webtoken-test.png?w=2500&fit=max&auto=format&n=GiucHIlvP3i5L17o&q=85&s=1e510fe852d154bb8aca3dd2c20387aa 2500w" />

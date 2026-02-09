@@ -2,13 +2,9 @@
 
 # Source: https://docs.comfy.org/community/links.md
 
-# Source: https://docs.comfy.org/development/core-concepts/links.md
-
-# Source: https://docs.comfy.org/community/links.md
-
-# Source: https://docs.comfy.org/development/core-concepts/links.md
-
-# Source: https://docs.comfy.org/community/links.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Community links
 

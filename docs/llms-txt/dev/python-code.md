@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/python-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add custom Python code
 
 Agent Builder provides two ways to add custom Python code to your agents: using **Python code** blocks in your blueprint for inline logic, and using the code editor to create reusable functions and manage files.

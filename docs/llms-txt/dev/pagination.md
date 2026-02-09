@@ -1,18 +1,8 @@
-# Source: https://dev.writer.com/components/pagination.md
-
 # Source: https://dev.writer.com/api-reference/pagination.md
 
-# Source: https://dev.writer.com/components/pagination.md
-
-# Source: https://dev.writer.com/api-reference/pagination.md
-
-# Source: https://dev.writer.com/components/pagination.md
-
-# Source: https://dev.writer.com/api-reference/pagination.md
-
-# Source: https://dev.writer.com/components/pagination.md
-
-# Source: https://dev.writer.com/api-reference/pagination.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Paginate API results
 

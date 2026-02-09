@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # EXPIREAT
 
@@ -26,24 +12,44 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to set the timeout on.
 </ParamField>
 
-<ParamField body="unix" type="integer">
-  A unix timestamp in seconds at which point the key will expire.
+<ParamField body="unix_time_seconds" type="int | datetime.datetime" required>
+  The timeout in unix seconds timestamp as int or a datetime.datetime object.
+</ParamField>
+
+<ParamField body="nx" type="bool">
+  Set expiry only when the key has no expiry
+</ParamField>
+
+<ParamField body="xx" type="bool">
+  Set expiry only when the key has an existing expiry
+</ParamField>
+
+<ParamField body="gt" type="bool">
+  Set expiry only when the new expiry is greater than current one
+</ParamField>
+
+<ParamField body="lt" type="bool">
+  Set expiry only when the new expiry is less than current one
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  `1` if the timeout was set, `0` otherwise
+<ResponseField type="bool">
+  `True` if the timeout was set
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("mykey", "Hello");
-  const tenSecondsFromNow = Math.floor(Date.now() / 1000) + 10;
-  await redis.expireat("mykey", tenSecondsFromNow);
+  ```py Example theme={"system"}
+  # With a datetime object
+  redis.set("mykey", "Hello")
+  redis.expireat("mykey", datetime.datetime.now() + datetime.timedelta(seconds=5))
+
+  # With a unix timestamp
+  redis.set("mykey", "Hello")
+  redis.expireat("mykey", int(time.time()) + 5)
   ```
 </RequestExample>

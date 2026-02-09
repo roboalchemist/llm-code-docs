@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/intro/basics/cli/projects.md
 
-# Source: https://docs.livekit.io/home/cli/projects.md
-
-LiveKit docs › LiveKit CLI › Project management
+LiveKit docs › Understanding LiveKit › LiveKit CLI › Project management
 
 ---
 
-# LiveKit CLI project management
+# Project management
 
 > Add, list, and manage projects in the LiveKit CLI.
 
@@ -14,7 +12,7 @@ LiveKit docs › LiveKit CLI › Project management
 
 Use the `lk project` commands to manage LiveKit projects used by the CLI. A project is a composed of a URL, API key, and API secret that point to a LiveKit deployment, plus a name to reference the project in the CLI. You can set a default project that is used by other commands when no project is specified.
 
-For instructions to install the CLI, see the LiveKit CLI [Getting started](https://docs.livekit.io/home/cli.md) guide.
+For instructions to install the CLI, see the LiveKit CLI [Setup](https://docs.livekit.io/intro/basics/cli/start.md) guide.
 
 ```shell
 lk project [command [command options]]
@@ -257,7 +255,7 @@ Example output:
 
 ---
 
-This document was rendered at 2025-11-18T23:54:55.420Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cli/projects.md](https://docs.livekit.io/home/cli/projects.md).
+This document was rendered at 2026-02-03T03:24:51.972Z.
+For the latest version of this document, see [https://docs.livekit.io/intro/basics/cli/projects.md](https://docs.livekit.io/intro/basics/cli/projects.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/semantic-kernel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Semantic Kernel Integration
 
 > Integrate Helicone AI Gateway with Microsoft Semantic Kernel to access 100+ LLM providers with unified observability.
@@ -299,6 +303,10 @@ Here's a full example that tests multiple models:
       asyncio.run(main())
   ```
 </CodeGroup>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
 
 ## Related Documentation
 

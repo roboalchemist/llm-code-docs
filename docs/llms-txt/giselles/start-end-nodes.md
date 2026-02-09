@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/start-end-nodes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Start Node & End Node
 
 > Learn how Start and End Nodes in Giselle define the boundaries of your workflow, establishing where user input enters and where the final output is collected.
@@ -109,8 +113,3 @@ For your app to be runnable, there must be a valid path from the Start Node to t
 | Created automatically  | Yes, as a pair      | No               |
 
 Start and End Nodes are essential for creating functional apps that accept user input and deliver processed results.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

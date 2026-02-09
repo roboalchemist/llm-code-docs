@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/accounts/source-control.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Source Control
 
 > Connect to source control providers to deploy your projects.
@@ -12,10 +16,10 @@ Project owners must connect their source control providers before they can deplo
 
 Envoyer supports four source control providers:
 
-*   <a href="https://github.com"><Icon icon="github" /> GitHub</a>
-*   <a href="https://bitbucket.com"><Icon icon="bitbucket" /> Bitbucket</a>
-*   <a href="https://gitlab.com"><Icon icon="gitlab" /> GitLab</a>
-*   <a href="https://about.gitlab.com/install/"><Icon icon="gitlab" /> GitLab Self-Hosted</a>
+* <a href="https://github.com"><Icon icon="github" /> GitHub</a>
+* <a href="https://bitbucket.com"><Icon icon="bitbucket" /> Bitbucket</a>
+* <a href="https://gitlab.com"><Icon icon="gitlab" /> GitLab</a>
+* <a href="https://about.gitlab.com/install/"><Icon icon="gitlab" /> GitLab Self-Hosted</a>
 
 Below we will discuss some issues that may arise when using each provider and how you can address them.
 

@@ -52,11 +52,8 @@ Use the `color` prop to change the ring color when the InputTags is focused.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variants
 
@@ -88,11 +85,8 @@ Use the `icon` prop to show an [Icon](/docs/components/icon) inside the InputTag
 </template>
 ```
 
-<note>
-
-Use the `leading` and `trailing` props to set the icon position or the `leading-icon` and `trailing-icon` props to set a different icon for each position.
-
-</note>
+> [!NOTE]
+> Use the `leading` and `trailing` props to set the icon position or the `leading-icon` and `trailing-icon` props to set a different icon for each position.
 
 ### Avatar
 
@@ -114,23 +108,15 @@ Use the `delete-icon` prop to customize the delete [Icon](/docs/components/icon)
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Loading
 
@@ -152,23 +138,15 @@ Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -230,7 +208,7 @@ interface InputTagsProps {
   /**
    * The icon displayed to delete a tag.
    */
-  deleteIcon?: string | object | undefined;
+  deleteIcon?: any;
   /**
    * Highlight the ring color like a focus state.
    */
@@ -239,11 +217,11 @@ interface InputTagsProps {
   /**
    * The controlled value of the tags input. Can be bind as `v-model`.
    */
-  modelValue?: AcceptableInputValue[] | null | undefined;
+  modelValue?: T[] | null | undefined;
   /**
    * The value of the tags that should be added. Use when you do not need to control the state of the tags input
    */
-  defaultValue?: AcceptableInputValue[] | undefined;
+  defaultValue?: T[] | undefined;
   /**
    * When `true`, allow adding tags on paste. Work in conjunction with delimiter prop.
    */
@@ -276,11 +254,11 @@ interface InputTagsProps {
   /**
    * Convert the input value to the desired type. Mandatory when using objects as values and using `TagsInputInput`
    */
-  convertValue?: ((value: string) => AcceptableInputValue) | undefined;
+  convertValue?: ((value: string) => T) | undefined;
   /**
    * Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix or when using object as values
    */
-  displayValue?: ((value: AcceptableInputValue) => string) | undefined;
+  displayValue?: ((value: T) => string) | undefined;
   /**
    * The name of the field. Submitted with its owning form as part of a name/value pair.
    */
@@ -292,7 +270,7 @@ interface InputTagsProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -304,7 +282,7 @@ interface InputTagsProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -312,7 +290,7 @@ interface InputTagsProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -320,9 +298,8 @@ interface InputTagsProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
-  autocomplete?: string | undefined;
-  enterKeyHint?: "search" | "enter" | "done" | "go" | "next" | "previous" | "send" | undefined;
+  loadingIcon?: any;
+  enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send" | undefined;
   form?: string | undefined;
   formaction?: string | undefined;
   formenctype?: string | undefined;
@@ -331,14 +308,13 @@ interface InputTagsProps {
   formtarget?: string | undefined;
   list?: string | undefined;
   readonly?: Booleanish | undefined;
+  autocomplete?: "on" | "off" | (string & {}) | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">
-
-This component also supports all native `<input>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+> This component also supports all native `<input>` HTML attributes.
 
 ### Slots
 
@@ -365,10 +341,10 @@ interface InputTagsEmits {
   change: (payload: [event: Event]) => void;
   blur: (payload: [event: FocusEvent]) => void;
   focus: (payload: [event: FocusEvent]) => void;
-  update:modelValue: (payload: [payload: AcceptableInputValue[]]) => void;
-  invalid: (payload: [payload: AcceptableInputValue]) => void;
-  addTag: (payload: [payload: AcceptableInputValue]) => void;
-  removeTag: (payload: [payload: AcceptableInputValue]) => void;
+  update:modelValue: (payload: [payload: T[]]) => void;
+  invalid: (payload: [payload: T]) => void;
+  addTag: (payload: [payload: T]) => void;
+  removeTag: (payload: [payload: T]) => void;
 }
 ```
 
@@ -725,8 +701,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

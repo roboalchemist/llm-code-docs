@@ -28,7 +28,7 @@ For code examples on how to connect to Google SERP proxies, see the  section.
 
 ### Username parameters
 
-The `username` field enables you to pass various https://docs.apify.com/platform/proxy/usage.md#username-parameters, such as groups and country, for your proxy connection.
+The `username` field enables you to pass various [parameters](https://docs.apify.com/platform/proxy/usage.md#username-parameters), such as groups and country, for your proxy connection.
 
 When using Google SERP proxy, the username should always be:
 
@@ -38,9 +38,9 @@ groups-GOOGLE_SERP
 ```
 
 
-Unlike https://docs.apify.com/platform/proxy/datacenter-proxy.md or https://docs.apify.com/platform/proxy/residential-proxy.md proxies, there is no https://docs.apify.com/platform/proxy/usage.md#sessions parameter.
+Unlike [datacenter](https://docs.apify.com/platform/proxy/datacenter-proxy.md) or [residential](https://docs.apify.com/platform/proxy/residential-proxy.md) proxies, there is no [session](https://docs.apify.com/platform/proxy/usage.md#sessions) parameter.
 
-If you use the `country` https://docs.apify.com/platform/proxy/usage.md, the Google proxy location is used if you access a website whose hostname (stripped of `www.`) starts with **google**.
+If you use the `country` [parameter](https://docs.apify.com/platform/proxy/usage.md), the Google proxy location is used if you access a website whose hostname (stripped of `www.`) starts with **google**.
 
 ## Country selection
 
@@ -52,13 +52,13 @@ For example:
 
 * Shopping results from Great Britain: `http://www.google.co.uk/seach?tbm=shop&q=<query>`
 
-See a https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/List_of_Google_domains.html of available domain names for specific countries. When using them, remember to prepend the domain name with the `www.` prefix.
+See a [full list](https://ipfs.io/ipfs/QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco/wiki/List_of_Google_domains.html) of available domain names for specific countries. When using them, remember to prepend the domain name with the `www.` prefix.
 
 ## Examples
 
 ### Using the Apify SDK
 
-If you are developing your own Apify https://docs.apify.com/platform/actors.md using the https://docs.apify.com/sdk.md and https://crawlee.dev/, the most efficient way to use Google SERP proxy is https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler. This is because Google SERP proxy https://docs.apify.com/platform/proxy.md. Alternatively, you can use the https://github.com/apify/got-scraping https://www.npmjs.com/package/got-scraping by specifying the proxy URL in the options. For Python, you can leverage the https://pypi.org/project/requests/ library along with the Apify SDK.
+If you are developing your own Apify [Actor](https://docs.apify.com/platform/actors.md) using the [Apify SDK](https://docs.apify.com/sdk.md) and [Crawlee](https://crawlee.dev/), the most efficient way to use Google SERP proxy is [CheerioCrawler](https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler). This is because Google SERP proxy [only returns a page's HTML](https://docs.apify.com/platform/proxy.md). Alternatively, you can use the [got-scraping](https://github.com/apify/got-scraping) [npm package](https://www.npmjs.com/package/got-scraping) by specifying the proxy URL in the options. For Python, you can leverage the [requests](https://pypi.org/project/requests/) library along with the Apify SDK.
 
 The following examples get a list of search results for the keyword **wikipedia** from the USA (`google.com`).
 
@@ -138,13 +138,13 @@ await Actor.exit();
 
 ### Using standard libraries and languages
 
-You can find your proxy password on the https://console.apify.com/proxy/access of Apify Console.
+You can find your proxy password on the [Proxy page](https://console.apify.com/proxy/access) of Apify Console.
 
 > The `username` field is **not** your Apify username.<br />Instead, you specify proxy settings (e.g. `groups-GOOGLE_SERP`).<br />Use `groups-GOOGLE_SERP` to use proxies from all available countries.
 
-For examples using https://www.php.net/, you need to have the https://www.php.net/manual/en/book.curl.php extension enabled in your PHP installation. See https://www.php.net/manual/en/curl.installation.php for more information.
+For examples using [PHP](https://www.php.net/), you need to have the [cURL](https://www.php.net/manual/en/book.curl.php) extension enabled in your PHP installation. See [installation instructions](https://www.php.net/manual/en/curl.installation.php) for more information.
 
-Examples in https://www.python.org/download/releases/2.0/ use the https://pypi.org/project/six/ library. Run `pip install six` to enable it.
+Examples in [Python 2](https://www.python.org/download/releases/2.0/) use the [six](https://pypi.org/project/six/) library. Run `pip install six` to enable it.
 
 The following examples get the HTML of search results for the keyword **wikipedia** from the USA (**google.com**).
 

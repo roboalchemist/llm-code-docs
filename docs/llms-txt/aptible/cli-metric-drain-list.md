@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-metric-drain-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible metric_drain:list
 
 This command lets you list the [Metric Drains](/core-concepts/observability/metrics/metrics-drains/overview) you have configured for your [Environments](/core-concepts/architecture/environments).

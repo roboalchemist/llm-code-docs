@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/vehicle-incompatible.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicle Incompatible
 
 > This error occurs when a user tries to authorize an incompatible vehicle in Smartcar Connect.
@@ -18,7 +22,7 @@ In order to be compatible, a vehicle must:
 * Be capable of the required permissions that your application is requesting access to
 * If the user’s vehicle is incompatible, Smartcar will let the user know and offer them to share their vehicle’s VIN, make, model, and year with your application.
 
-This error is triggered when a user selects an unspported make, or selects "I don't see my brand..." and then hits "Back to application"
+This error is triggered when a user selects an unsupported make, or selects "I don't see my brand..." and then hits "Back to application"
 
 <Frame caption="Vehicle Incompatible">
   <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0490adb032508a9965758ab02c26cd29" data-og-width="2643" width="2643" data-og-height="1472" height="1472" data-path="images/errors/connect-errors/vehicle-incompatible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4d6f086ca74d32d88ccd37991392679c 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0ce9294c9716e4f64008d1c22305b363 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e082e76f4139fbbe58199d68373f3a4d 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8bdde4128b6703822e6614c214ccd8e1 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=97adb5491804bc5589800448937d8491 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c90da19a6ad6ceebe5bdad7963ff051c 2500w" />

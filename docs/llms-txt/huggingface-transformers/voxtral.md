@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/voxtral.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/voxtral.md
 
 # Voxtral
 
@@ -337,16 +337,16 @@ This model was contributed by [Eustache Le Bihan](https://huggingface.co/eustlb)
 
 #### transformers.VoxtralConfig[[transformers.VoxtralConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/configuration_voxtral.py#L119)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/configuration_voxtral.py#L118)
 
-This is the configuration class to store the configuration of a [VoxtralForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration). It is used to instantiate an
+This is the configuration class to store the configuration of a [VoxtralForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration). It is used to instantiate an
 Voxtral model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the Voxtral-Mini-3B.
 
 e.g. [mistralai/Voxtral-Mini-3B-2507](https://huggingface.co/mistralai/Voxtral-Mini-3B-2507)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import VoxtralForConditionalGeneration, VoxtralConfig
@@ -375,17 +375,17 @@ projector_hidden_act (`str`, *optional*, defaults to `"gelu"`) : The activation 
 
 #### transformers.VoxtralEncoderConfig[[transformers.VoxtralEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/configuration_voxtral.py#L20)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/configuration_voxtral.py#L19)
 
-This is the configuration class to store the configuration of a [VoxtralEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralEncoder). It is used to instantiate a
+This is the configuration class to store the configuration of a [VoxtralEncoder](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralEncoder). It is used to instantiate a
 Voxtral audio encoder according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the audio encoder of the Voxtral
 architecture.
 
 e.g. [mistralai/Voxtral-Mini-3B-2507](https://huggingface.co/mistralai/Voxtral-Mini-3B-2507)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import VoxtralEncoderConfig, VoxtralEncoder
@@ -428,99 +428,46 @@ attention_dropout (`float`, *optional*, defaults to 0.0) : The dropout ratio for
 
 #### transformers.VoxtralProcessor[[transformers.VoxtralProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/processing_voxtral.py#L64)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/processing_voxtral.py#L69)
 
-Constructs a Voxtral processor which wraps [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and
-[MistralCommonBackend](/docs/transformers/v5.0.0rc1/en/model_doc/mistral3#transformers.MistralCommonBackend) into a single processor that inherits both the audio feature extraction and
-tokenizer functionalities.
+Constructs a VoxtralProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-apply_chat_templatetransformers.VoxtralProcessor.apply_chat_templatehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/processing_voxtral.py#L104[{"name": "conversation", "val": ": typing.Union[list[dict[str, str]], list[list[dict[str, str]]]]"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.AllKwargsForChatTemplate]"}]- **conversation** (`Union[list[Dict, [str, str]], list[list[dict[str, str]]]]`) --
-  The conversation to format.0
+[VoxtralProcessor](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralProcessor) offers all the functionalities of [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [MistralCommonBackend](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.MistralCommonBackend). See the
+[~WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) and [~MistralCommonBackend](/docs/transformers/v5.0.0/en/model_doc/pixtral#transformers.MistralCommonBackend) for more information.
 
-This method applies the model's chat completion template given a conversation. It relies on MistralCommonBackend's
-[apply_chat_template()](/docs/transformers/v5.0.0rc1/en/model_doc/mistral3#transformers.MistralCommonBackend.apply_chat_template) to prepare input ids to the model and on WhisperFeatureExtractor's
-[__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) to prepare input features to the model.
+__call__transformers.VoxtralProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/processing_voxtral.py#L222[{"name": "text", "val": ": str | list[str] | list[list[str]] | None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.voxtral.processing_voxtral.VoxtralProcessorKwargs]"}]- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **max_source_positions** (`int`, *optional*, defaults to `3000`) --
+  Maximum number of positions per chunk when splitting mel spectrogram features along the time dimension.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-Note that audio is padded to the nearest 30-second multiple prior to mel feature extraction.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0
 
-A `conversation` is a list of messages, where each message is a dictionary with a `role` and a `content` field.
-For Voxtral, `role` can be `"user"` or `"assistant"`.
-The `content` field can be a string or a list of dictionaries with a `type` field. See example below.
-
-```python
-from huggingface_hub import hf_hub_download
-from transformers.audio_utils import load_audio_as
-
-audio_url = "https://huggingface.co/datasets/hf-internal-testing/dummy-audio-samples/resolve/main/bcn_weather.mp3"
-audio_path = hf_hub_download(repo_id="hf-internal-testing/dummy-audio-samples", filename="bcn_weather.mp3", repo_type="dataset")
-audio_base64 = load_audio_as(audio_path, return_format="base64", force_mono=True)
-
-# audio + text
-conversation = [
-    {
-        "role": "user",
-        "content": [
-            {"type": "audio", "url": audio_url},
-            {"type": "audio", "path": audio_path},
-            {"type": "audio", "base64": audio_base64},
-            {"type": "text", "text": "How many audio do you hear?"},
-        ],
-    },
-]
-
-processor = VoxtralProcessor.from_pretrained("mistralai/Voxtral-Mini-3B-2507")
-inputs = processor.apply_chat_template(conversation)
-```
+Method to prepare text to be fed as input to the model. This method forwards the `text`
+arguments to MistralCommonBackend's `__call__()` to encode
+the text. Please refer to the docstring of the above methods for more information.
+This method does not support audio. To prepare the audio, please use:
+1. `apply_chat_template` `apply_chat_template()` method.
+2. `apply_transcription_request` `apply_transcription_request()` method.
 
 **Parameters:**
 
-feature_extractor ([WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor)) : The feature extractor is a required input.
+feature_extractor (`WhisperFeatureExtractor`) : The feature extractor is a required input.
 
-tokenizer ([MistralCommonBackend](/docs/transformers/v5.0.0rc1/en/model_doc/mistral3#transformers.MistralCommonBackend)) : The tokenizer is a required input.
-#### apply_transcription_request[[transformers.VoxtralProcessor.apply_transcription_request]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/processing_voxtral.py#L274)
-
-This method applies the model's transcription request template given a language and audio.
-It relies on MistralCommonBackend and WhisperFeatureExtractor to prepare input ids and input features to the model.
-
-```python
-from transformers import VoxtralProcessor
-
-model_id = "mistralai/Voxtral-Mini-3B-2507"
-processor = VoxtralProcessor.from_pretrained(model_id)
-
-language = "en"
-audio = "https://huggingface.co/datasets/hf-internal-testing/dummy-audio-samples/resolve/main/obama.mp3"
-
-# set the language is already know for better accuracy
-inputs = processor.apply_transcription_request(language=language, audio=audio, model_id=model_id)
-
-# but you can also let the model detect the language automatically
-inputs = processor.apply_transcription_request(audio=audio, model_id=model_id)
-```
-
-**Parameters:**
-
-audio (`str`, `list[str]`, `np.ndarray`, `torch.Tensor`, `list[np.ndarray]`, `list[torch.Tensor]`) : The audio or batch of audio to be prepared. If provided as a string, it should correspond to the path or url of the audio file.
-
-model_id (`str` : The hub model id of the model to use for transcription.
-
-language (`str`, `list[Union[str, None]]`, *optional*) : The language or languages of the audio. If not provided or None, automatic language detection will be used for all audio. If provided as a string (a language code in the [ISO 639-1 alpha-2 format](https://en.wikipedia.org/wiki/ISO_639-1) e.g. `"en"`), it will be applied uniformly to all audio. If provided as a list of strings/ None values, e.g. `["en", None, "fr"]`, will be applied to each audio individually with a one-to-one mapping, with a None value indicating automatic language detection for that audio.
-
-sampling_rate (`int`, *optional*) : The sampling rate of the audio. Necessary if it is provided as `np.ndarray`, `torch.Tensor`, `list[np.ndarray]`, `list[torch.Tensor]`. Used to avoid silent errors when passing audio that is not in the expected sampling rate.
-
-format (`str`, `list[str]`, *optional*) : The format of the audio, necessary if is provided as `np.ndarray`, `torch.Tensor`, `list[np.ndarray]`, `list[torch.Tensor]`.
+tokenizer (`MistralCommonBackend`) : The tokenizer is a required input.
 
 ## VoxtralEncoder[[transformers.VoxtralEncoder]]
 
 #### transformers.VoxtralEncoder[[transformers.VoxtralEncoder]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/modeling_voxtral.py#L240)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/modeling_voxtral.py#L238)
 
 The Voxtral encoder, which is a Whisper encoder.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -528,29 +475,29 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.VoxtralEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/modeling_voxtral.py#L296[{"name": "input_features", "val": ""}, {"name": "attention_mask", "val": " = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.LongTensor` of shape `(batch_size, feature_size, sequence_length)`) --
+forwardtransformers.VoxtralEncoder.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/modeling_voxtral.py#L293[{"name": "input_features", "val": ""}, {"name": "attention_mask", "val": " = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_features** (`torch.LongTensor` of shape `(batch_size, feature_size, sequence_length)`) --
   Float values of mel features extracted from the raw speech waveform. Raw speech waveform can be
   obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]` or a
   `numpy.ndarray`, *e.g.* via the soundfile library (`pip install soundfile`). To prepare the array into
-  `input_features`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for extracting the mel features, padding
-  and conversion into a tensor of type `torch.FloatTensor`. See [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__)
+  `input_features`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for extracting the mel features, padding
+  and conversion into a tensor of type `torch.FloatTensor`. See [__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__)
 - **attention_mask** (`torch.Tensor`)`, *optional*) --
   Voxtral does not support masking of the `input_features`, this argument is preserved for compatibility,
   but it is not used. By default the silence in the input log mel spectrogram are ignored.0
 
 **Parameters:**
 
-config ([VoxtralEncoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([VoxtralEncoderConfig](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralEncoderConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 ## VoxtralForConditionalGeneration[[transformers.VoxtralForConditionalGeneration]]
 
 #### transformers.VoxtralForConditionalGeneration[[transformers.VoxtralForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/modeling_voxtral.py#L372)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/modeling_voxtral.py#L369)
 
 The Voxtral model, which consists of Whisper encoder, a multi-modal projector and a LLama language model.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -558,17 +505,17 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.VoxtralForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/voxtral/modeling_voxtral.py#L430[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "input_features", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.VoxtralForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/modeling_voxtral.py#L423[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "input_features", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **input_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([VoxtralProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralProcessor) uses
-  [WhisperFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor). See [WhisperFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__) for details ([VoxtralProcessor](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralProcessor) uses
+  [WhisperFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -585,8 +532,8 @@ forwardtransformers.VoxtralForConditionalGeneration.forwardhttps://github.com/hu
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -608,18 +555,18 @@ forwardtransformers.VoxtralForConditionalGeneration.forwardhttps://github.com/hu
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralConfig)) and inputs.
+elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -632,7 +579,7 @@ elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [VoxtralForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [VoxtralForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -673,22 +620,59 @@ Example:
 
 **Parameters:**
 
-config ([VoxtralForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([VoxtralForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralForConditionalGeneration)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0.0rc1/en/model_doc/voxtral#transformers.VoxtralConfig)) and inputs.
+elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+#### get_audio_features[[transformers.VoxtralForConditionalGeneration.get_audio_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/voxtral/modeling_voxtral.py#L400)
+
+This method is used to get the audio embeddings from input features (a log mel spectrogram), meaning inferring the audio encoder and the multi-modal projector.
+
+Example:
+
+```python
+```
+
+**Parameters:**
+
+input_features (`torch.FloatTensor`) : Float values of mel features extracted from the raw speech waveform. Raw speech waveform can be obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]` or a `numpy.ndarray`, *e.g.* via the soundfile library (`pip install soundfile`). To prepare the array into `input_features`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for extracting the mel features, padding and conversion into a tensor of type `torch.FloatTensor`. See [__call__()](/docs/transformers/v5.0.0/en/model_doc/whisper#transformers.WhisperFeatureExtractor.__call__)
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([VoxtralConfig](/docs/transformers/v5.0.0/en/model_doc/voxtral#transformers.VoxtralConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 

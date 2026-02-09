@@ -2,42 +2,21 @@
 
 # Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
 
-# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
-
-# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Deno Deploy
 
-This is a step-by-step guide on how to use Upstash Redis to create a view
-counter in your Deno deploy project.
+[Source Code](https://github.com/upstash/qstash-examples/tree/main/deno-deploy)
 
-### Create a database
+This is a step by step guide on how to receive webhooks from QStash in your Deno
+deploy project.
 
-Create a Redis database using [Upstash Console](https://console.upstash.com) or
-[Upstash CLI](https://github.com/upstash/cli). Select the global to minimize the
-latency from all edge locations. Copy the `UPSTASH_REDIS_REST_URL` and
-`UPSTASH_REDIS_REST_TOKEN` for the next steps.
-
-### Create a Deno deploy project
+### 1. Create a new project
 
 Go to [https://dash.deno.com/projects](https://dash.deno.com/projects) and
 create a new playground project.
-
-<img src="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=6cb71bf83b9a0df25b5457e6efe3b500" alt="" data-og-width="2056" width="2056" data-og-height="1308" height="1308" data-path="img/redis-deno/create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=280&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=2de9ae1edfca54b35d9eb159e59e38de 280w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=560&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=b5ef2baf9818d05d0480b7db02405566 560w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=840&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=ee6916085e844938a85477e1d470b811 840w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=1100&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=439b4d7d78a4300e13fdd43929d8fcaf 1100w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=1650&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=3d0f34898f283b2f5d94e7948effd09d 1650w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/create.png?w=2500&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=29fd67668409aa7d02ffe551861a6ff4 2500w" />
 
 ### 2. Edit the handler function
 
@@ -45,23 +24,72 @@ Then paste the following code into the browser editor:
 
 ```ts  theme={"system"}
 import { serve } from "https://deno.land/std@0.142.0/http/server.ts";
-import { Redis } from "https://deno.land/x/upstash_redis@v1.14.0/mod.ts";
+import { Receiver } from "https://deno.land/x/upstash_qstash@v0.1.4/mod.ts";
 
-serve(async (_req: Request) => {
-  if (!_req.url.endsWith("favicon.ico")) {
-    const redis = new Redis({
-      url: "UPSTASH_REDIS_REST_URL",
-      token: "UPSTASH_REDIS_REST_TOKEN",
+serve(async (req: Request) => {
+  const r = new Receiver({
+    currentSigningKey: Deno.env.get("QSTASH_CURRENT_SIGNING_KEY")!,
+    nextSigningKey: Deno.env.get("QSTASH_NEXT_SIGNING_KEY")!,
+  });
+
+  const isValid = await r
+    .verify({
+      signature: req.headers.get("Upstash-Signature")!,
+      body: await req.text(),
+    })
+    .catch((err: Error) => {
+      console.error(err);
+      return false;
     });
 
-    const counter = await redis.incr("deno-counter");
-    return new Response(JSON.stringify({ counter }), { status: 200 });
+  if (!isValid) {
+    return new Response("Invalid signature", { status: 401 });
   }
+
+  console.log("The signature was valid");
+
+  // do work
+
+  return new Response("OK", { status: 200 });
 });
 ```
 
-### 3. Deploy and Run
+### 3. Add your signing keys
+
+Click on the `settings` button at the top of the screen and then click
+`+ Add Variable`
+
+Get your current and next signing key from
+[Upstash](https://console.upstash.com/qstash) and then set them in deno deploy.
+
+<img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=fcd35bafc9752ac36a93de5ff8142c18" alt="" data-og-width="3016" width="3016" data-og-height="1666" height="1666" data-path="img/qstash/deno_deploy_env.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=d489d42d7b134d28b4863cde8544efac 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=44d5b15af4e1a47614ac4b583c79270e 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=36e34a30f657a0809203e6e6bfdc87f3 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=3b6fb4bc9c79c2461d822890da31f2bf 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=ff3513e131ffdb82378f2c53abf7ba20 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/deno_deploy_env.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=65cb2066cc2ab3ee9ceda1620c354751 2500w" />
+
+### 4. Deploy
 
 Simply click on `Save & Deploy` at the top of the screen.
 
-<img src="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=9b2c12804600632014a6ca7303a9f72c" alt="" data-og-width="2962" width="2962" data-og-height="1492" height="1492" data-path="img/redis-deno/deploy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=280&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=c9e4dbe9329b0b51b99fa30ad58a424c 280w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=560&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=cb6f0245fe154bc06c1d809f59529eac 560w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=840&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=4ac9892f2d8417eeed6a6a506b24c127 840w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=1100&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=aab0ddf63ead58d891eec12d37d8a9a7 1100w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=1650&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=3e12f7b42470a62802bc2cd354047cbc 1650w, https://mintcdn.com/upstash/fy-PVAyWJaRFn1UN/img/redis-deno/deploy.png?w=2500&fit=max&auto=format&n=fy-PVAyWJaRFn1UN&q=85&s=547347df1aaece994b978b022e13b038 2500w" />
+### 5. Publish a message
+
+Make note of the url displayed in the top right. This is the public url of your
+project.
+
+```bash  theme={"system"}
+curl --request POST "https://qstash.upstash.io/v2/publish/https://early-frog-33.deno.dev" \
+     -H "Authorization: Bearer <QSTASH_TOKEN>" \
+     -H "Content-Type: application/json" \
+     -d "{ \"hello\": \"world\"}"
+```
+
+In the logs you should see something like this:
+
+```basheurope-west3isolate start time: 2.21 ms theme={"system"}
+Listening on http://localhost:8000/
+The signature was valid
+```
+
+## Next Steps
+
+That's it, you have successfully created a secure deno API, that receives and
+verifies incoming webhooks from qstash.
+
+Learn more about publishing a message to qstash [here](/qstash/howto/publishing)

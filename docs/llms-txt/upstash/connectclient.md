@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/connectclient.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Your Client
 
 Upstash works with Redis® API, that means you can use any Redis client with

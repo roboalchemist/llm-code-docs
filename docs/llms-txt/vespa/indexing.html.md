@@ -130,7 +130,7 @@ the following will happen for the different partial updates:
 | field2 | The update fails |
 | field1 and field2 | field1 and field2 are updated |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

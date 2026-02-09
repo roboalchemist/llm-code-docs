@@ -2,21 +2,9 @@
 
 # Source: https://docs.frigade.com/sdk/hooks/flow.md
 
-# Source: https://docs.frigade.com/sdk/js/flow.md
-
-# Source: https://docs.frigade.com/sdk/hooks/flow.md
-
-# Source: https://docs.frigade.com/sdk/js/flow.md
-
-# Source: https://docs.frigade.com/sdk/hooks/flow.md
-
-# Source: https://docs.frigade.com/sdk/js/flow.md
-
-# Source: https://docs.frigade.com/sdk/hooks/flow.md
-
-# Source: https://docs.frigade.com/sdk/js/flow.md
-
-# Source: https://docs.frigade.com/sdk/hooks/flow.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # useFlow
 
@@ -36,7 +24,7 @@ The `useFlow` hook is especially useful if you want to build a highly custom exp
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useFlow } from "@frigade/react";
 
 function MyComponent() {

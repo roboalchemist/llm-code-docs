@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/how-to/supported-metrics-and-operators.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Defining Rules
 
 > Explore supported metrics and operators in Galileo Protect to configure precise rulesets and enhance AI application monitoring and decision-making.
@@ -17,7 +21,7 @@ Your Rules should evaluate to False for the base case, and to True for unwanted 
 In the example above, the "*input/output shall never contain PII*" is encoded into a Rule like below:
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.pii,
       operator=gp.RuleOperator.contains,
@@ -25,7 +29,7 @@ In the example above, the "*input/output shall never contain PII*" is encoded in
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "pii",
       "operator": "contains",
@@ -89,7 +93,7 @@ Used to detect and stop prompt injections in the input (Read more about [Prompt 
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.prompt_injection,
       operator=gp.RuleOperator.any,
@@ -97,7 +101,7 @@ Used to detect and stop prompt injections in the input (Read more about [Prompt 
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "prompt_injection",
       "operator": "any",
@@ -147,7 +151,7 @@ Used to detect and stop Personal Identifiable Information (PII). When applied on
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.pii,
       operator=gp.RuleOperator.any,
@@ -155,7 +159,7 @@ Used to detect and stop Personal Identifiable Information (PII). When applied on
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "pii",
       "operator": "any",
@@ -189,7 +193,7 @@ Generally, we see 0.1 as a good threshold below which we're confident the respon
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.context_adherence_luna,
       operator=gp.RuleOperator.lt,
@@ -197,7 +201,7 @@ Generally, we see 0.1 as a good threshold below which we're confident the respon
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "adherence_nli",
       "operator": "lt",
@@ -233,7 +237,7 @@ Used to detect and stop toxic or foul language in the input (user query) or outp
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.toxicity,
       operator=gp.RuleOperator.gt,
@@ -241,7 +245,7 @@ Used to detect and stop toxic or foul language in the input (user query) or outp
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "toxicity",
       "operator": "gt",
@@ -277,7 +281,7 @@ Detect sexist or biased language. When applied on the input, it can be used to d
 **Example:**
 
 <CodeGroup>
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "sexist",
       "operator": "gt",
@@ -285,7 +289,7 @@ Detect sexist or biased language. When applied on the input, it can be used to d
   },
   ```
 
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.sexist,
       operator=gp.RuleOperator.gt,
@@ -336,7 +340,7 @@ Primary tone detected from the text. When applied on the input, it can be used t
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=gp.RuleMetrics.tone,
       operator=gp.RuleOperator.neq,
@@ -344,7 +348,7 @@ Primary tone detected from the text. When applied on the input, it can be used t
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "tone",
       "operator": "neq",
@@ -360,7 +364,7 @@ If you have a [registered scorer](https://docs.rungalileo.io/galileo/gen-ai-stud
 **Example:**
 
 <CodeGroup>
-  ```py Python
+  ```py Python theme={null}
   gp.Rule(
       metric=<registered-metric-name>,
       operator=<operator>,
@@ -368,7 +372,7 @@ If you have a [registered scorer](https://docs.rungalileo.io/galileo/gen-ai-stud
   )
   ```
 
-  ```json REST API
+  ```json REST API theme={null}
   {
       "metric": "<registered-metric-name>",
       "operator": "<operator>",

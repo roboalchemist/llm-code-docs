@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/interactive.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Interactive mode
 
 > Use a rich interactive terminal experience to explore your codebase, build new features, debug issues, and integrate your tools.
@@ -79,6 +83,8 @@ Entering a new line in the input box depends on your terminal configuration and 
 | `/new`             | Start a new conversation with no message history            |
 | `/permissions`     | View and manage tool permissions                            |
 | `/request-id`      | Show the request ID for the current conversation            |
+| `/rules`           | View loaded rules and their attachment status               |
+| `/skills`          | View loaded skills and their token counts                   |
 | `/task`            | Open task manager to add, edit, and manage tasks            |
 | `/verbose`         | Toggle verbose output for tools                             |
 | `/vim`             | Toggle Vim mode for advanced text editing                   |

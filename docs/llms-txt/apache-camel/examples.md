@@ -4,7 +4,7 @@
 
 We offer several examples in [Camel Quarkus examples repository](https://github.com/apache/camel-quarkus-examples). To learn how to use them, please follow the [First steps](first-steps.md) chapter of the User guide.
 
-Number of Examples: 29
+Number of Examples: 30
 
  
 | Example | Description |
@@ -37,4 +37,5 @@ Number of Examples: 29
 | [Tokenize a CSV file](https://github.com/apache/camel-quarkus-examples/tree/main/file-split-log-xml) | Shows how to define a Camel route in XML for tokenizing a CSV a file. |
 | [Unstructured Data Extraction with LangChain4j](https://github.com/apache/camel-quarkus-examples/tree/main/data-extract-langchain4j) | Shows how to convert unstructured text data to structured Java objects helped with a Large Language Model and LangChain4j |
 | [Upload a file to an AWS S3 bucket](https://github.com/apache/camel-quarkus-examples/tree/main/aws2-s3) | Shows how to produce and consume messages to an aws2-s3 bucket. |
+| [Variables](https://github.com/apache/camel-quarkus-examples/tree/main/variables) | Uses the Camel variables which can be configured from application.properties. |
 | [Vertx-Websocket Chat](https://github.com/apache/camel-quarkus-examples/tree/main/vertx-websocket-chat) | Shows how to configure a WebSocket server and interact with connected peers. |

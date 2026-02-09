@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/webhook-event-forwarder.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Event Forwarder
 
 > Forward all Flatfile events to a webhook URL for language-agnostic integration with external systems
@@ -19,7 +23,7 @@ The plugin listens for all events (`**`), packages the full event object as a JS
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-webhook-event-forwarder
 ```
 
@@ -43,14 +47,14 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
 
   listener.use(webhookEventForward('https://webhook.site/your-unique-id'));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
 
@@ -61,7 +65,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
 ### Configuration with Callback and Debug
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
 
@@ -77,7 +81,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
   listener.use(webhookEventForward('https://webhook.site/your-unique-id', myCallback, options));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -98,7 +102,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
 ### Advanced Usage with Async Callback
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
 
@@ -115,7 +119,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
   listener.use(webhookEventForward('https://api.my-service.com/flatfile-hook', handleWebhookResponse));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -137,7 +141,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
 ### Error Handling Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
 
@@ -157,7 +161,7 @@ By default, the plugin listens for every event (`**`) emitted by the Flatfile li
   listener.use(webhookEventForward('https://httpstat.us/500', myCallback, { debug: true }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from './listener'; // Your listener instance
   import { webhookEventForward } from '@flatfile/plugin-webhook-event-forwarder';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -205,7 +209,7 @@ To troubleshoot issues:
 
 The plugin uses a `try...catch` block to handle errors during the `fetch` call. If an error occurs (including non-ok HTTP responses like 4xx or 5xx), it will not crash the listener process. Instead, it constructs a standardized error object:
 
-```json
+```json  theme={null}
 {
   "error": true,
   "message": "Error received, please try again",

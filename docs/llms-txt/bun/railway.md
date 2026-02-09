@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/deployment/railway.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy a Bun application on Railway
 
 > Deploy Bun applications to Railway with this step-by-step guide covering CLI and dashboard methods, optional PostgreSQL setup, and automatic SSL configuration.

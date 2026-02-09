@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/databases/sql-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft SQL Server
 
 <Note>
@@ -28,11 +32,14 @@ CREATE SCHEMA datafold_tmp;
 CREATE LOGIN DatafoldUser WITH PASSWORD = 'SOMESECUREPASSWORD';
 CREATE USER DatafoldUser FOR LOGIN DatafoldUser;
 
+/* Allow the user to create views */
+GRANT CREATE VIEW TO DatafoldUser;
+
 /* Grant read access to diff tables */
 GRANT SELECT ON SCHEMA::YourSchema TO DatafoldUser;
 
 /* Grant read + write access to datafold_tmp schema */
-GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::datafold_tmp TO DatafoldUser;
+GRANT CONTROL ON SCHEMA::datafold_tmp TO DatafoldUser;
 ```
 
 ## Configure in Datafold

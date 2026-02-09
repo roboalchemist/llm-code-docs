@@ -1,119 +1,200 @@
 # Source: https://infisical.com/docs/documentation/platform/event-subscriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Event Subscriptions
 
 > Subscribe to events in Infisical for real-time updates
 
-<Info>
-  **Note:** Event Subscriptions is a paid feature. - **Infisical Cloud users:** Event Subscriptions is available under
-  the **Enterprise Tier**. - **Self-Hosted Infisical:** Please contact [sales@infisical.com](mailto:sales@infisical.com)
-  to purchase an enterprise license.
-</Info>
+<Note>
+  Event Subscriptions is a paid feature that is available under the Enterprise license.
+  Please contact [sales@infisical.com](mailto:sales@infisical.com).
+</Note>
 
-Event Subscriptions in Infisical allow you to receive real-time notifications when specific actions occur within your account or organization. These notifications include changes to secrets, users, teams, and many more **coming soon**.
+Event Subscriptions allow you to receive real-time notifications when specific actions occur within your Infisical projects. You can subscribe to changes such as secret modifications, with support for additional resource types coming soon.
 
 ## How It Works
 
-* Server receives message over pubsub connection indicating changes have occurred
-* Server processes the change notification
-* Updated data is synchronized across all connected Infisical instances
-* Client applications receive real-time updates through [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
-* All servers maintain consistent state without manual intervention
+Event Subscriptions use [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) to deliver real-time updates to your applications:
 
-This ensures your infrastructure stays up-to-date automatically, without requiring restarts or manual synchronization.
+1. Your application opens an SSE connection to the Infisical Events API.
+2. When a subscribed event occurs (e.g., a secret is updated), Infisical pushes a notification through the connection.
+3. Your application receives the event instantly and can take appropriate action.
 
 <Note>
   Event Subscriptions are designed for real-time communication and do not include persistence or replay
-  capabilities—events are delivered once and are not stored for future retrieval.
+  capabilities—events are delivered once and are not stored for future retrieval. Ensure your application
+  maintains an active connection to receive events.
 </Note>
 
-## Supported Resources
+## Supported Events
 
-You can currently subscribe to notifications for the following resources and event types:
+You can subscribe to the following event types:
 
-* **Secrets**
-  * `secret:created`: Triggered when a secret is created
-  * `secret:updated`: Triggered when a secret is updated
-  * `secret:deleted`: Triggered when a secret is deleted
+### Secrets
+
+| Event                    | Description                                   |
+| ------------------------ | --------------------------------------------- |
+| `secret:create`          | Triggered when a new secret is created        |
+| `secret:update`          | Triggered when an existing secret is modified |
+| `secret:delete`          | Triggered when a secret is removed            |
+| `secret:import-mutation` | Triggered when a secret changes via an import |
 
 ## Permissions Setup
 
-To receive events on a supported resource, the identity must have `Subscribe` action permission on that resource.
-
-Follow these steps to set up the necessary permissions:
+To receive events, the machine identity must have the **Secret Events** permission with the appropriate actions enabled.
 
 <Steps>
-  <Step title="Select a project and copy the Project ID">
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/select-project.png" alt="Select Project" />
+  <Step title="Open Project Roles">
+    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-detail.png" alt="Project Detail" />
+    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-access.png" alt="Project Access" />
 
-    On your project page, open **Project Settings** from the sidebar.
-
-    In the Project name section, click **Copy Project ID** to copy your Project ID, or extract it from the URL:
-    `https://app.infisical.com/project/<your_project_id>/settings`
+    Go to **Access Management** and select **Project Roles**.
   </Step>
 
-  <Step title="Navigate to Access Management and open Project Roles">
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-detail.png" alt="Project Detail" /> <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-access.png" alt="Project
-    Access" /> Navigate to **Access Management**, then select **Project Roles**.
+  <Step title="Create or edit a role">
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-role.png" alt="Project Role" />
+
+    Create a new role for event subscriptions, or edit an existing one.
   </Step>
 
-  <Step title="Select an existing role or create a new one">
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/project-role.png" alt="Project Role" /> You can either edit an existing role or create a new role
-    for event subscriptions.
+  <Step title="Add a policy to the role">
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/role-detail.png" alt="Role Detail" />
+
+    Select the resources the role should have access to.
+
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/add-policy.png" alt="Add policy" />
   </Step>
 
-  <Step title="Assign policies to the role">
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/role-detail.png" alt="Role Detail" /> Select the specific resources that the role should have access
-    to. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/add-policy.png" alt="Add policy" />
-  </Step>
-
-  <Step title="Enable the Subscribe action in permissions">
+  <Step title="Enable event actions">
         <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/policy-setting.png" alt="Policy setting" />
 
-    Ensure the **Subscribe** action is selected for the relevant resources and events.
-
-    ## Conditions
-
-    By default, the role will have access to all events for the selected resources in this project.
-
-    <AccordionGroup>
-      <Accordion title="Full Access">
-                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/access-full.png" alt="Policy setting" />
-      </Accordion>
-
-      <Accordion title="Path Prefix">
-                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/access-path.png" alt="Policy setting" />
-      </Accordion>
-
-      <Accordion title="Environment">
-                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/access-dev.png" alt="Policy setting" />
-      </Accordion>
-    </AccordionGroup>
+    Enable the actions corresponding to the events you want to receive (e.g., read, create, update, delete).
   </Step>
 </Steps>
 
+### Filtering Events with Conditions
+
+You can scope events to specific secret paths, environments, or other conditions.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/policy-condition.png" alt="Policy condition" />
+
+This allows you to receive only the events relevant to your use case, reducing noise and improving efficiency.
+
 ## Getting Started
 
-Currently, events are only available via [API](/api-reference/endpoints/events) but will soon be available in our SDKs, Kubernetes Operator, and more.
+Event Subscriptions are currently available via the [Events API](/api-reference/endpoints/events). Support for SDKs, Kubernetes Operator, and other integrations is coming soon.
 
-### API Usage
+### Prerequisites
 
-You need an auth token to use this API. To get an authentication token, follow the authentication guide for one of our supported auth methods from the [machine identities documentation](/documentation/platform/identities/machine-identities#authentication-methods).
+You need an authentication token from a machine identity. Follow the [machine identities documentation](/documentation/platform/identities/machine-identities#authentication-methods) to set up authentication.
 
-#### Creating a Subscription
+### Subscribing to Events
+
+To subscribe to events, make a request to the events endpoint with your project ID and optional filters.
 
 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/postman-subscribe.png" alt="Postman Subscription" />
 
-**Request Parameters:**
+#### Request Parameters
 
-* `projectId`: Project whose events you want to subscribe to
-* `register`: List of event filters
-  * `conditions`: Conditions to filter events on
-    * `environmentSlug`: Project environment
-    * `secretPath`: Path of the secrets
+| Parameter                               | Type   | Description                                            |
+| --------------------------------------- | ------ | ------------------------------------------------------ |
+| `projectId`                             | string | The ID of the project to subscribe to                  |
+| `register`                              | array  | List of event filters                                  |
+| `register[].conditions`                 | object | Optional conditions to filter events                   |
+| `register[].conditions.environmentSlug` | string | Filter by environment (e.g., `dev`, `staging`, `prod`) |
+| `register[].conditions.secretPath`      | string | Filter by secret path (e.g., `/api/keys`)              |
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/events/postman-sse-response.png" alt="Postman Subscription Response" />
+The endpoint responds with `Content-Type: text/event-stream` to initiate an SSE connection. In the cURL example below, we use the `-N` flag to keep the connection open to receive incoming events from Infisical.
 
-The subscribe endpoint responds with a `text/event-stream` content type to initiate SSE streaming.
+```bash  theme={"dark"}
+curl -X POST -N --location \
+  'https://app.infisical.com/api/v1/events/subscribe/project-events' \
+  --header 'Content-Type: application/json' \
+  --header "Authorization: Bearer <identity-access-token>" \
+  --data '{
+    "projectId": "<project-id>",
+    "register": [
+      {
+        "event": "secret:create",
+        "conditions": {
+          "environmentSlug": "dev",
+          "secretPath": "/micro_service1"
+        }
+      },
+      {
+        "event": "secret:update",
+        "conditions": {
+          "environmentSlug": "staging",
+          "secretPath": "/**"
+        }
+      },
+      {
+        "event": "secret:delete",
+        "conditions": {
+          "environmentSlug": "prod",
+          "secretPath": "/database"
+        }
+      },
+      {
+        "event": "secret:import-mutation",
+        "conditions": {
+          "environmentSlug": "prod",
+          "secretPath": "/database"
+        }
+      }
+    ]
+  }'
+```
 
-For more specific details, please refer to our [API Reference](/api-reference/endpoints/events).
+### Response Format
+
+<AccordionGroup>
+  <Accordion title="Secret Changes">
+    * Event triggered on a secret change
+
+    ```json  theme={"dark"}
+    {
+        "projectType": "secret-manager",
+        "data": {
+            "eventType": "secret:create|update|delete",
+            "payload": [
+              {
+                "environment": "staging",
+                "secretPath": "/",
+                "secretKey": "SECRET_KEY1"
+              },
+              {
+                "environment": "staging",
+                "secretPath": "/",
+                "secretKey": "SECRET_KEY2"
+              }
+            ],
+        }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Secret Import Mutation">
+    * Event triggered on a secret change in an import
+
+    ```json  theme={"dark"}
+    {
+        "projectType": "secret-manager",
+        "data": {
+            "eventType": "secret:import-mutation",
+            "payload": {
+                "environment": "staging",
+                "secretPath": "/"
+            }
+        }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  For complete API specifications and additional examples, see the [API Reference](/api-reference/endpoints/events).
+</Tip>

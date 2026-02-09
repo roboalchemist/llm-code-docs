@@ -13,7 +13,7 @@ $ export MAVEN_OPTS="-Xms128m -Xmx1024m"
 $ ./bootstrap.sh java && mvn install
 ```
 
-See [vespa.ai releases](https://vespa.ai/releases).
+See [vespa.ai releases](../../learn/releases.html).
 
 ## Container images
 
@@ -42,7 +42,7 @@ $ dnf install -y vespa
 
 Package repository hosting is graciously provided by [Cloudsmith](https://cloudsmith.com) which is a fully hosted, cloud-native and universal package management solution:[![OSS hosting by Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&style=flat-square)](https://cloudsmith.com)
 
- **Important:** Please note that the retention of released RPMs in the repository is limited to the latest 50 releases. Use the Docker images (above) for installations of specific versions older than this. Any problems with released rpm packages will be fixed in subsequent releases, please [report any issues](https://vespa.ai/support) - troubleshoot using the [install example](/en/operations/self-managed/multinode-systems.html#aws-ec2-singlenode).
+ **Important:** Please note that the retention of released RPMs in the repository is limited to the latest 50 releases. Use the Docker images (above) for installations of specific versions older than this. Any problems with released rpm packages will be fixed in subsequent releases, please [report any issues](https://vespa.ai/support/) - troubleshoot using the [install example](/en/operations/self-managed/multinode-systems.html#aws-ec2-singlenode).
 
 Refer to [vespa.spec](https://github.com/vespa-engine/vespa/blob/master/dist/vespa.spec). Build RPMs for a given Vespa version X.Y.Z:
 
@@ -54,18 +54,18 @@ $ docker run --rm -ti -v $(pwd):/wd:Z -w /wd \
          docker.io/vespaengine/vespa-build-almalinux-8:latest \
          make -f .copr/Makefile rpms outdir=/wd
 $ ls *.rpm | grep -v debug
-vespa-8.617.12-1.el8.src.rpm
-vespa-8.617.12-1.el8.x86_64.rpm
-vespa-ann-benchmark-8.617.12-1.el8.x86_64.rpm
-vespa-base-8.617.12-1.el8.x86_64.rpm
-vespa-base-libs-8.617.12-1.el8.x86_64.rpm
-vespa-clients-8.617.12-1.el8.x86_64.rpm
-vespa-config-model-fat-8.617.12-1.el8.x86_64.rpm
-vespa-jars-8.617.12-1.el8.x86_64.rpm
-vespa-libs-8.617.12.el8.x86_64.rpm
-vespa-malloc-8.617.12-1.el8.x86_64.rpm
-vespa-node-admin-8.617.12-1.el8.x86_64.rpm
-vespa-tools-8.617.12-1.el8.x86_64.rpm
+vespa-8.634.24-1.el8.src.rpm
+vespa-8.634.24-1.el8.x86_64.rpm
+vespa-ann-benchmark-8.634.24-1.el8.x86_64.rpm
+vespa-base-8.634.24-1.el8.x86_64.rpm
+vespa-base-libs-8.634.24-1.el8.x86_64.rpm
+vespa-clients-8.634.24-1.el8.x86_64.rpm
+vespa-config-model-fat-8.634.24-1.el8.x86_64.rpm
+vespa-jars-8.634.24-1.el8.x86_64.rpm
+vespa-libs-8.634.24.el8.x86_64.rpm
+vespa-malloc-8.634.24-1.el8.x86_64.rpm
+vespa-node-admin-8.634.24-1.el8.x86_64.rpm
+vespa-tools-8.634.24-1.el8.x86_64.rpm
 ```
 
 Find most utilities in the vespa-x.y.z\*.rpm - other RPMs:
@@ -87,5 +87,5 @@ Find most utilities in the vespa-x.y.z\*.rpm - other RPMs:
 | vespa-malloc | Vespa has its own memory allocator, _vespa-malloc_ - refer to _/opt/vespa/etc/vespamalloc.conf_ |
 | vespa-clients | _vespa-feed-client.jar_ - see [vespa-feed-client](../../clients/vespa-feed-client.html) |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

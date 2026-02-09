@@ -70,6 +70,6 @@ If the issue only happens on your network, try the following:
 - For Ethernet, try using different network cables.
 - Confirm smart readers have the expected IP and subnet assigned.
 - If you’re using smart readers and our Terminal SDK on a separate point of sale device:
-  - On your point of sale device, try resolving `10-42-42-42.test.device.stripe-terminal-local-reader.net` to an IP address. That hostname should resolve to the IP `10.42.42.42`.  If it resolves to a different IP, or if DNS resolution fails, configure your point of sale device to use [Cloudflare DNS servers](https://1.1.1.1/dns/) (`1.1.1.1` and `1.0.0.1`) or [Google DNS servers](https://developers.google.com/speed/public-dns) (`8.8.8.8` and `8.8.4.4`) and try again.
+  - On your point of sale device, try resolving `10-42-42-42.test.device.stripe-terminal-local-reader.net` to an IP address. That hostname should resolve to the IP `10.42.42.42`. If it resolves to a different IP, or if DNS resolution fails, configure your point of sale device to use [Cloudflare DNS servers](https://1.1.1.1/dns/) (`1.1.1.1` and `1.0.0.1`) or [Google DNS servers](https://developers.google.com/speed/public-dns) (`8.8.8.8` and `8.8.4.4`) and try again.
   - Check your router’s configuration to see if connections between wireless (WiFi) clients and wired (Ethernet) clients are being blocked.
   - Make sure you can ping the Terminal reader’s IP address from your point of sale device.

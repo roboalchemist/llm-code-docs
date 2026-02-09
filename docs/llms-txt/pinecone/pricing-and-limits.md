@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/pricing-and-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pricing and limits
 
 > Understand Pinecone Assistant pricing and service limits.
@@ -87,7 +91,7 @@ When you [retrieve context snippets](/guides/assistant/context-snippets-overview
 | ---------- | --------------------------- |
 | Starter    | Free (500k max per project) |
 | Standard   | \$5/million tokens          |
-| Enterprise | \$8/million tokens          |
+| Enterprise | \$5/million tokens          |
 
 <Note>
   Context retrieval tokens appear as **Assistants Context Tokens Processed** on invoices and `prompt_tokens` in API responses. In API responses, `completion_tokens` will always be 0 because, unlike for chat, there is no answer from a model.
@@ -107,7 +111,7 @@ When you [retrieve context snippets](/guides/assistant/context-snippets-overview
 | Enterprise | \$8/million tokens | \$15/million tokens |
 
 <Note>
-  Evaluation input tokens appear as **Assistants Evaluation Tokens Processed** on invoices and `prompt_tokens` in API responses. Evalulation output tokens appear as as **Assistants Evaluation Tokens Out** on invoices and `completion_tokens` in API responses.
+  Evaluation input tokens appear as **Assistants Evaluation Tokens Processed** on invoices and `prompt_tokens` in API responses. Evaluation output tokens appear as as **Assistants Evaluation Tokens Out** on invoices and `completion_tokens` in API responses.
 </Note>
 
 ### Storage
@@ -147,7 +151,7 @@ Additionally, the following limits apply to [multimodal PDFs](/guides/assistant/
 | :---------------------------- | :----------- | :------------ | :-------------- |
 | Max file size                 | 10 MB        | 50 MB         | 50 MB           |
 | Page limit                    | 100          | 100           | 100             |
-| Multimodal PDFs per assistant | 1            | 20            | 20              |
+| Multimodal PDFs per assistant | 10           | 20            | 20              |
 
 ### Rate limits
 

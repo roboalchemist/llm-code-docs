@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/command/windsurf-related-features.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Lenses
 
-> Shortcuts for common operations
+> Use Windsurf code lenses for quick Explain, Refactor, and Docstring operations on functions and classes directly in the editor.
 
 ## Explain, Refactor, and Add Docstring
 

@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/flows/known-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Technical Limits
 
 > Technical limits for Activepieces execution
@@ -39,7 +43,11 @@
 </Info>
 
 * **Maximum File Size**: **10 MB**\
-  (Configurable via `AP_MAX_FILE_SIZE_MB`, default: **4 MB**)
+  (Configurable via `AP_MAX_FILE_SIZE_MB`, default: **25 MB**)
+
+* **Maximum Flow Run Log Size**: **25 MB**\
+  (Configurable via `AP_MAX_FLOW_RUN_LOG_SIZE_MB`, default: **25 MB**)
+  > This is the total combined size of all inputs and outputs for each step in a single flow run.
 
 ***
 

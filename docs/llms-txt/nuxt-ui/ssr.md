@@ -14,9 +14,7 @@ Nuxt UI, by default, injects to the `<head>` of the document color variables tha
 
 You can do that by using `@unhead` in the following way:
 
-<code-group sync="vite">
-
-```ts [ssr.ts]
+```ts
 import { createHead, renderSSRHead } from '@unhead/vue/server'
 
 // Create the header with unhead
@@ -25,9 +23,10 @@ const head = createHead()
 // Render SSR header and append it to the SSR application instance
 const payload = await renderSSRHead(head)
 app.head.push(payload.headTags)
+
 ```
 
-```ts [resources/js/ssr.ts (Laravel Inertia)]
+```ts
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import ui from '@nuxt/ui/vue-plugin'
@@ -64,9 +63,10 @@ createServer(
     },
     { cluster: true },
 )
+
 ```
 
-```ts [inertia/app/ssr.ts (AdonisJS Inertia)]
+```ts
 import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import ui from '@nuxt/ui/vue-plugin'
@@ -103,9 +103,8 @@ createServer(
     },
     { cluster: true },
 )
-```
 
-</code-group>
+```
 
 ### Color Scheme Detection
 
@@ -113,9 +112,7 @@ The same goes to the color scheme detection. To avoid flashings in the SSR becau
 
 Adding the script below to the `<head>` of your document will detect if the user is using dark theme, and therefore, render the SSR in the dark theme as well.
 
-<code-group sync="vite">
-
-```html [index.html]
+```html
 <script>
 const theme = localStorage.getItem('vueuse-color-scheme');
 if (theme === 'dark' || (theme === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -124,9 +121,10 @@ if (theme === 'dark' || (theme === null && window.matchMedia('(prefers-color-sch
     document.documentElement.classList.remove('dark');
 }
 </script>
+
 ```
 
-```html [resources/views/app.blade.php (Laravel Inertia)]
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -149,9 +147,10 @@ if (theme === 'dark' || (theme === null && window.matchMedia('(prefers-color-sch
     </div>
   </body>
 </html>
+
 ```
 
-```html [resources/views/inertia_layout.edge (AdonisJS Inertia)]
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -172,9 +171,8 @@ if (theme === 'dark' || (theme === null && window.matchMedia('(prefers-color-sch
     @inertia({ class: 'isolate' })
   </body>
 </html>
-```
 
-</code-group>
+```
 
 ### Icons Display
 

@@ -106,24 +106,24 @@ In Stock
 [Lithium Ion Polymer Battery - 3.7v 500mAh](https://www.adafruit.com/product/1578)
 Lithium-ion polymer (also known as 'lipo' or 'lipoly') batteries are thin, light, and powerful. The output ranges from 4.2V when completely charged to 3.7V. This battery has a capacity of 500mAh for a total of about 1.9 Wh. If you need a larger (or smaller!) battery, <a...></a...>
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/1578)
 [Related Guides to the Product](https://learn.adafruit.com/products/1578/guides)
 
 ## Related Guides
 
-- [Steven Universe Wearable, Fusable Gem](https://learn.adafruit.com/steven-universe-wearable-fusable-gem.md)
-- [Gemma 3D Printed Tree Topper](https://learn.adafruit.com/gemma-3d-printed-tree-topper.md)
-- [LOVE Light](https://learn.adafruit.com/love-light.md)
-- [Make a Snow Globe with Circuit Playground Express & MakeCode](https://learn.adafruit.com/make-a-snowglobe-with-circuit-playground-makecode.md)
-- [NeoPixel Basketball Hoop](https://learn.adafruit.com/neopixel-mini-basketball-hoop.md)
-- [8BitBox](https://learn.adafruit.com/8bitbox.md)
-- [Easy Sparkle Pocket T-Shirt](https://learn.adafruit.com/easy-sparkle-pocket-t-shirt.md)
-- [Haptic Headband](https://learn.adafruit.com/haptic-headband.md)
+- [Sound Activated Shark Mask](https://learn.adafruit.com/sound-activated-shark-mask.md)
 - [SNES EZ Key Bluefruit Game Pad](https://learn.adafruit.com/snes-ez-key-bluefruit-game-pad.md)
-- [Chirping Plush Owl Toy](https://learn.adafruit.com/chirping-plush-owl-toy.md)
-- [3D Printed Camera LED Ring](https://learn.adafruit.com/3d-printed-camera-led-ring.md)
+- [Color-sensor Driven NeoPixel Dress](https://learn.adafruit.com/color-sensor-driven-neopixel-dress.md)
+- [Adafruit MicroLipo and MiniLipo Battery Chargers](https://learn.adafruit.com/adafruit-microlipo-and-minilipo-battery-chargers.md)
 - [Cartoon Network and Make Code - Rose Quartz Shield Umbrella](https://learn.adafruit.com/cartoon-network-and-make-code-rose-quartz-shield-umbrella.md)
-- [Heart Rate Badge](https://learn.adafruit.com/heart-rate-badge.md)
-- [Flora+NeoPixel LED Skateboard Upgrade](https://learn.adafruit.com/flora-neopixel-led-skateboard-upgrade.md)
-- [Drama Piñata](https://learn.adafruit.com/customizable-reusable-pinata.md)
+- [Ursula's Seashell Necklace](https://learn.adafruit.com/ursulas-seashell-necklace.md)
+- [Wireless Control Button for WLED Projects](https://learn.adafruit.com/wireless-control-button-for-wled-projects.md)
+- [Bunny Ears with MakeCode](https://learn.adafruit.com/bunny-ears-with-makecode.md)
+- [VU Meter Baseball Hat](https://learn.adafruit.com/vu-meter-baseball-hat.md)
+- [Glowing Fascinator Hat with Gemma M0 and MakeCode](https://learn.adafruit.com/glowing-fascinator-hat-gemma-m0-makecode.md)
+- [LED Masquerade Masks](https://learn.adafruit.com/led-masquerade-masks.md)
+- [Han Solo Blaster Cosplay](https://learn.adafruit.com/han-solo-blaster-cosplay.md)
+- [Convert your Model M Keyboard to Bluetooth with Bluefruit EZ-Key HID](https://learn.adafruit.com/convert-your-model-m-keyboard-to-bluetooth-with-bluefruit-ez-key-hid.md)
+- [Chameleon Scarf](https://learn.adafruit.com/chameleon-scarf.md)
+- [Kaleidoscope Eyes (Trinket-Powered NeoPixel LED Ring Goggles)](https://learn.adafruit.com/kaleidoscope-eyes-neopixel-led-goggles-trinket-gemma.md)

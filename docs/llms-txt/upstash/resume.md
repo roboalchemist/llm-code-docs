@@ -6,114 +6,73 @@
 
 # Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/resume.md
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/resume.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/features/dlq/resume.md
+# Resume
 
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/resume.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/resume.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/resume.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/resume.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/resume.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/resume.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/resume.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/resume.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/resumable-query/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/resume.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/resume.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/resume.md
-
-# Resume Workflow Run
-
-> Resume a failed workflow run from where its left off
-
-When a workflow run fails, it's automatically moved to the DLQ (Dead Letter Queue) where it can be analyzed and resumed.
-The resume feature allows you to continue a failed workflow run from exactly where it failed, without re-executing successfully completed steps.
-
-This is particularly useful for long-running workflows where you don't want to lose progress from successful steps when a single step fails.
-
-When you resume a workflow, a fresh workflow run is created.
-All data from successfully executed steps is maintained.
-
-You can overwrite the workflow's run ID, retries and flow control settings by passing the respective headers in the resume request.
-
-<Note>
-  You can make changes to the workflow code as long as these changes come after the failed steps.
-  However, making changes before the failed step will break the code and is not allowed.
-
-  For more details, check out [Handle workflow route code changes](/workflow/howto/changes) page.
-</Note>
+> Resumes a previously started query to fetch additional results.
 
 ## Request
 
-<ParamField path="dlqId" type="string" required>
-  The ID of the DLQ message containing the failed workflow run
+<ParamField body="uuid" type="string" required>
+  The unique identifier returned from the start resumable query request.
 </ParamField>
 
-<ParamField header="Upstash-Flow-Control-Key" type="string">
-  Optional. Overwrite the flow control key for the resumed workflow. If not provided, the original workflow run configuration will be reused.
+<ParamField body="additionalK" type="number" required>
+  The number of additional results to fetch.
 </ParamField>
-
-<ParamField header="Upstash-Flow-Control-Value" type="string">
-  Optional. Overwrite the flow control values for the resumed workflow. If not provided, the original workflow run configuration will be reused.
-</ParamField>
-
-<ParamField header="Upstash-Retries" type="integer">
-  Optional. Overwrite the retry configuration for the resumed workflow steps.
-</ParamField>
-
-<RequestExample>
-  ```sh  theme={"system"}
-  curl -X POST https://qstash.upstash.io/v2/dlq/resume/dlq_XYZ
-  -H "Authorization: Bearer <token>" 
-  -H "Upstash-Workflow-RunId: my-resumed-workflow-XYZ" 
-  ```
-</RequestExample>
 
 ## Response
 
-<ResponseField name="workflowRunId" type="string">
-  The ID of the resumed workflow run
+<ResponseField name="Scores" type="Object[]">
+  <Expandable defaultOpen="true">
+    <ResponseField name="id" type="string" required>
+      The id of the vector.
+    </ResponseField>
+
+    <ResponseField name="score" type="number" required>
+      The similarity score of the vector, calculated based on the distance
+      metric of your index.
+    </ResponseField>
+
+    <ResponseField name="vector" type="number[]">
+      The dense vector value for dense and hybrid indexes.
+    </ResponseField>
+
+    <ResponseField name="sparseVector" type="Object[]">
+      The sparse vector value for sparse and hybrid indexes.
+
+      <Expandable defaultOpen="true">
+        <ResponseField name="indices" type="number[]">
+          Indices of the non-zero valued dimensions.
+        </ResponseField>
+
+        <ResponseField name="values" type="number[]">
+          Values of the non-zero valued dimensions.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="metadata" type="Object">
+      The metadata of the vector, if any.
+    </ResponseField>
+
+    <ResponseField name="data" type="string">
+      The unstructured data of the vector, if any.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
-<ResponseField name="workflowCreatedAt" type="integer">
-  Unix timestamp when the resumed workflow run was created
-</ResponseField>
-
-<ResponseExample>
-  ```json  theme={"system"}
-  {
-    "workflowRunId": "my-resumed-workflow-XYZ",
-    "workflowCreatedAt": 1748527971000
-  }
+<RequestExample>
+  ```sh curl theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/resumable-query-next \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{
+      "uuid": "550e8400-e29b-41d4-a716-446655440000",
+      "additionalK": 2
+    }'
   ```
-</ResponseExample>
+</RequestExample>

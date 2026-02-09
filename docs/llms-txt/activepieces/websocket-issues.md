@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/troubleshooting/websocket-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Websocket Issues
 
 > Troubleshoot websocket connection problems
@@ -15,8 +19,3 @@ To resolve these issues:
 1. Ensure your reverse proxy is properly configured for websocket connections
 2. Check our [Setup HTTPS](/install/guides/setup-ssl) guide for correct configuration examples
 3. Some browsers block http websocket connections, please setup SSL to resolve this issue.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

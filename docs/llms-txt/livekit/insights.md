@@ -8,10 +8,6 @@ LiveKit docs › Agent Observability › Insights in LiveKit Cloud
 
 > View transcripts, traces, logs, and audio recordings in LiveKit Cloud.
 
-> ℹ️ **Beta feature**
-> 
-> Agent observability is currently in beta and free until the end of 2025.
-
 ## Overview
 
 LiveKit Cloud includes a built-in observability stack optimized for voice agents. It includes transcripts, traces, and logs in a unified timeline with actual audio recordings for each of your agent sessions. This gives you access to comprehensive insights on your agent's behavior and user experience.
@@ -91,7 +87,7 @@ await session.start({
 
 ---
 
-This document was rendered at 2025-12-31T18:29:38.678Z.
+This document was rendered at 2026-02-03T03:25:22.993Z.
 For the latest version of this document, see [https://docs.livekit.io/deploy/observability/insights.md](https://docs.livekit.io/deploy/observability/insights.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

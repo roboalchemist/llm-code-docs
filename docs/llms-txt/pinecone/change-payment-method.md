@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
 
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Change your payment method
 
@@ -425,8 +413,8 @@ To change from one marketplace to another, you'll need to:
 3. Cancel your subscription in the old marketplace
 
 <Tabs>
-  <Tab title="AWS/Microsoft → Google Cloud">
-    To change from paying through the AWS or Microsoft Marketplace to paying through the Google Cloud Marketplace, do the following:
+  <Tab title="Any marketplace → Google Cloud">
+    To change to a Google Cloud Marketplace billing account, do the following:
 
     1. Subscribe to Pinecone in the Google Cloud Marketplace:
 
@@ -440,14 +428,14 @@ To change from one marketplace to another, you'll need to:
 
     2. Connect your existing org to your Google account:
 
-       1. On the **Connect GCP to Pinecone** page, select the Pinecone organization that you want to change from AWS or Microsoft to Google.
+       1. On the **Connect GCP to Pinecone** page, select the Pinecone organization that you want to use Google Cloud Marketplace.
 
           <Note>If you see a message saying that the subscription is still in process, wait a few minutes, refresh the page, and proceed only when the message has disappeared.</Note>
        2. On the **Confirm GCP marketplace connection** modal, click **Connect**. This takes you to your organization in the Pinecone console.
 
           Going forward, your usage of Pinecone will be billed through the Google Cloud Marketplace.
 
-    3. Cancel your subscription in the AWS or Microsoft Marketplace:
+    3. Cancel your subscription in your previous marketplace:
 
        * For AWS:
          1. In the AWS Marketplace, go to the [Manage subscriptions](https://console.aws.amazon.com/marketplace) page in the AWS Marketplace.
@@ -460,8 +448,8 @@ To change from one marketplace to another, you'll need to:
          4. Confirm the cancellation.
   </Tab>
 
-  <Tab title="Google Cloud/Microsoft → AWS">
-    To change from paying through the Google Cloud Marketplace or Microsoft Marketplace to paying through the AWS Marketplace, do the following:
+  <Tab title="Any marketplace → AWS">
+    To change to an AWS Marketplace billing account, do the following:
 
     1. Subscribe to Pinecone in the AWS Marketplace:
 
@@ -475,14 +463,14 @@ To change from one marketplace to another, you'll need to:
 
     2. Connect your existing org to your AWS account:
 
-       1. On the **Connect AWS to Pinecone** page, select the Pinecone organization that you want to change from Google Cloud or Microsoft to AWS.
+       1. On the **Connect AWS to Pinecone** page, select the Pinecone organization that you want to change to AWS Marketplace.
 
           <Note>If you see a message saying that the subscription is still in process, wait a few minutes, refresh the page, and proceed only when the message has disappeared.</Note>
        2. On the **Confirm AWS marketplace connection** modal, click **Connect**. This takes you to your organization in the Pinecone console.
 
           Going forward, your usage of Pinecone will be billed through the AWS Marketplace.
 
-    3. Cancel your subscription in the Google Cloud Marketplace or Microsoft Marketplace:
+    3. Cancel your subscription in your previous marketplace:
 
        * For Google Cloud Marketplace:
          1. Go to the [Orders](https://console.cloud.google.com/marketplace/orders) page.
@@ -495,8 +483,8 @@ To change from one marketplace to another, you'll need to:
          4. Confirm the cancellation.
   </Tab>
 
-  <Tab title="Google Cloud/AWS → Microsoft">
-    To change from paying through the Google Cloud Marketplace or AWS Marketplace to paying through the Microsoft Marketplace, do the following:
+  <Tab title="Any marketplace → Microsoft">
+    To change to a Microsoft Marketplace billing account, do the following:
 
     1. Subscribe to Pinecone in the Microsoft Marketplace:
 
@@ -513,14 +501,14 @@ To change from one marketplace to another, you'll need to:
 
     2. Connect your existing org to your Microsoft account:
 
-       1. On the **Connect Azure to Pinecone** page, select the Pinecone organization that you want to change from Google Cloud or AWS to Microsoft.
+       1. On the **Connect Azure to Pinecone** page, select the Pinecone organization that you want to change to Microsoft Marketplace.
 
           <Note>If you see a message saying that the subscription is still in process, wait a few minutes, refresh the page, and proceed only when the message has disappeared.</Note>
        2. On the **Confirm Azure marketplace connection** modal, click **Connect**. This takes you to your organization in the Pinecone console.
 
           Going forward, your usage of Pinecone will be billed through the Microsoft Marketplace.
 
-    3. Cancel your subscription in the Google Cloud Marketplace or AWS Marketplace:
+    3. Cancel your subscription in your previous marketplace:
 
        * For Google Cloud Marketplace:
          1. Go to the [Orders](https://console.cloud.google.com/marketplace/orders) page.

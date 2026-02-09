@@ -29,7 +29,7 @@ Warning: This storage client is not safe for concurrent access from multiple cra
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create_dataset_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_file_system/_storage_client.py#L43)create\_dataset\_client
+### [**](#create_dataset_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_file_system/_storage_client.py#L43)create\_dataset\_client
 
 * **async **create\_dataset\_client**(\*, id, name, alias, configuration): [DatasetClient](https://crawlee.dev/python/api/class/DatasetClient)
 
@@ -48,7 +48,7 @@ Warning: This storage client is not safe for concurrent access from multiple cra
 
   #### Returns [DatasetClient](https://crawlee.dev/python/api/class/DatasetClient)
 
-### [**](#create_kvs_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_file_system/_storage_client.py#L57)create\_kvs\_client
+### [**](#create_kvs_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_file_system/_storage_client.py#L57)create\_kvs\_client
 
 * **async **create\_kvs\_client**(\*, id, name, alias, configuration): [KeyValueStoreClient](https://crawlee.dev/python/api/class/KeyValueStoreClient)
 
@@ -67,7 +67,7 @@ Warning: This storage client is not safe for concurrent access from multiple cra
 
   #### Returns [KeyValueStoreClient](https://crawlee.dev/python/api/class/KeyValueStoreClient)
 
-### [**](#create_rq_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_file_system/_storage_client.py#L71)create\_rq\_client
+### [**](#create_rq_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_file_system/_storage_client.py#L71)create\_rq\_client
 
 * **async **create\_rq\_client**(\*, id, name, alias, configuration): [RequestQueueClient](https://crawlee.dev/python/api/class/RequestQueueClient)
 
@@ -86,7 +86,7 @@ Warning: This storage client is not safe for concurrent access from multiple cra
 
   #### Returns [RequestQueueClient](https://crawlee.dev/python/api/class/RequestQueueClient)
 
-### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
+### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
 
 * ****get\_rate\_limit\_errors**(): dict\[int, int]
 
@@ -98,7 +98,7 @@ Warning: This storage client is not safe for concurrent access from multiple cra
 
   #### Returns dict\[int, int]
 
-### [**](#get_storage_client_cache_key)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_file_system/_storage_client.py#L38)get\_storage\_client\_cache\_key
+### [**](#get_storage_client_cache_key)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_file_system/_storage_client.py#L38)get\_storage\_client\_cache\_key
 
 * ****get\_storage\_client\_cache\_key**(configuration): Hashable
 

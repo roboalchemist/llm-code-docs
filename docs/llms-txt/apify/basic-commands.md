@@ -93,7 +93,7 @@ Usually, the file is called `INPUT`, but the exact key is defined in the `ACTOR_
 
 ## Key-value store access
 
-Use the https://docs.apify.com/platform/storage/key-value-store.md to read and write arbitrary files
+Use the [Key-value store](https://docs.apify.com/platform/storage/key-value-store.md) to read and write arbitrary files
 
 * JavaScript
 * Python
@@ -141,7 +141,7 @@ async def main():
 
 ## Push results to the dataset
 
-Store larger results in a https://docs.apify.com/platform/storage/dataset.md, an append-only object storage
+Store larger results in a [Dataset](https://docs.apify.com/platform/storage/dataset.md), an append-only object storage
 
 Note that Datasets can optionally be equipped with the schema that ensures only certain kinds of objects are stored in them.
 

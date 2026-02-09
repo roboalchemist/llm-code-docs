@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/data/state/participant-attributes.md
 
-# Source: https://docs.livekit.io/home/client/state/participant-attributes.md
-
-LiveKit docs › LiveKit SDKs › State synchronization › Participant attributes
+LiveKit docs › Data › State synchronization › Participant attributes
 
 ---
 
@@ -19,7 +17,7 @@ Each LiveKit participant has two fields for application-specific state:
 
 These fields are stored and managed by the LiveKit server, and are automatically synchronized to new participants who join the room later.
 
-Initial values can be set in the participant’s [access token](https://docs.livekit.io/concepts/authentication.md), ensuring the value is immediately available when the participant connects.
+Initial values can be set in the participant's [access token](https://docs.livekit.io/frontends/authentication.md), ensuring the value is immediately available when the participant connects.
 
 While the metadata field is a single string, the attributes field is a key-value store. This allows fine-grained updates to different parts of the state without affecting or transmitting the values of other keys.
 
@@ -29,7 +27,7 @@ To delete an attribute key, set its value to an empty string (`''`).
 
 ## Update frequency
 
-Attributes and metadata are not suitable for high-frequency updates (more than once every few seconds) due to synchronization overhead on the server. If you need to send updates more frequently, consider using [data packets](https://docs.livekit.io/home/client/data/packets.md) instead.
+Attributes and metadata are not suitable for high-frequency updates (more than once every few seconds) due to synchronization overhead on the server. If you need to send updates more frequently, consider using [data packets](https://docs.livekit.io/transport/data/packets.md) instead.
 
 ## Size limits
 
@@ -37,7 +35,7 @@ Metadata and attributes each have a 64 KiB limit. For attributes, this limit inc
 
 ## Usage from LiveKit SDKs
 
-The LiveKit SDKs receive events on attributes and metadata changes for both the local participant and any remote participants in the room. See [Handling events](https://docs.livekit.io/home/client/events.md#events) for more information.
+The LiveKit SDKs receive events on attributes and metadata changes for both the local participant and any remote participants in the room. See [Handling events](https://docs.livekit.io/intro/basics/rooms-participants-tracks/webhooks-events.md#handling-events) for more information.
 
 Participants must have the `canUpdateOwnMetadata` permission in their access token to update their own attributes or metadata.
 
@@ -294,7 +292,7 @@ val response = call.execute()
 
 ---
 
-This document was rendered at 2025-11-18T23:54:52.818Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/state/participant-attributes.md](https://docs.livekit.io/home/client/state/participant-attributes.md).
+This document was rendered at 2026-02-03T03:25:19.528Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/data/state/participant-attributes.md](https://docs.livekit.io/transport/data/state/participant-attributes.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

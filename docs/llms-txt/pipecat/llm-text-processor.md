@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/frame/llm-text-processor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLMTextProcessor
 
 > A processor for aggregating LLMTextFrames into logical units before passing them to downstream services
@@ -73,8 +77,3 @@ pipeline = Pipeline(
     ]
 )
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

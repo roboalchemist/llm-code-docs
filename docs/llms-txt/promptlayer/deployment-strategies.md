@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/onboarding-guides/deployment-strategies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployment Strategies
 
 > Choose from three integration patterns. Direct SDK calls, webhook caching, or managed agents.
@@ -177,8 +181,3 @@ Learn more: **[Agents documentation ↗](/why-promptlayer/agents)**
 ***
 
 > ✉️ **Need a hand?** Ping us in Discord or email [hello@promptlayer.com](mailto:hello@promptlayer.com)—happy to chat architecture!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -23,7 +23,7 @@ Creating a multi-currency test is generally similar to any other Price Test, wit
 
 The main differences in setting up a Price Test that is not in your default currency are:
 
-1. You will need to update the currency on the Modifications tab to match your test currency as shown in the screenshot below:
+1. Once you've added your test product(s) in the Modifications tab, you will need to update the currency to match your desired test currency as shown in the screenshot below:
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f107855e1bb4ea8f689c564b19b13e0f78e7d63%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
 

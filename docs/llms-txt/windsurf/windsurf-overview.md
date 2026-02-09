@@ -2,67 +2,60 @@
 
 # Source: https://docs.windsurf.com/command/windsurf-overview.md
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
+# Command
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
+> Use Windsurf Command (Cmd/Ctrl+I) for inline code generation and edits with natural language. No premium credits required.
 
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
+**Command** generates new or edits existing code via natural language inputs, directly in the editor window.
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
+<Tip>Command does NOT consume any premium model credits.</Tip>
 
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
+To invoke Command, press `⌘+I` on Mac or `Ctrl+I` on Windows/Linux.
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
+You can enter a prompt in natural language and hit the Submit button (or `⌘+⏎`/`Ctrl+⏎`) to forward the instruction to the AI.
 
-# Source: https://docs.windsurf.com/command/windsurf-overview.md
+If you highlight a section of code before invoking Command, then the AI will edit the selection spanned by the highlighted lines.
+Otherwise, it will generate code at your cursor's location.
 
-# Source: https://docs.windsurf.com/context-awareness/windsurf-overview.md
+<Frame style={{ border: 'none', background: 'none' }}>
+  <img src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=355f106c06d14c5150b8fd6ade2544d8" data-og-width="1786" width="1786" data-og-height="1018" height="1018" data-path="assets/windsurf-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=280&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=927da1f69fbaabe5ba9a17e0f88cfefd 280w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=560&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=b4785a636080ad292d742119776f9538 560w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=840&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=63f27f54aae36f7c7c48b59ff86a1dc8 840w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=1100&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=7c67b7a3910176da619cf57b45f2577f 1100w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=1650&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=8d30a6e68e175618f8b9dcd079cfcfd8 1650w, https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command.png?w=2500&fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=c0964663193b983f1b612706b362cd2a 2500w" />
+</Frame>
 
-# Overview
+You can accept, reject, or follow-up a generation by clicking the corresponding code lens above the generated diff,or by using the appropriate shortcuts (`Cmd/Ctrl+Enter`/`Cmd/Ctrl+Delete`)
 
-> On codebase context and related features
+# Models
 
-Windsurf's context engine builds a deep understanding of your codebase, past actions, and next intent.
+Command comes with its own set of models that are optimized for current-file edits.
 
-Historically, code-generation approaches focused on fine-tuning large language models (LLMs) on a codebase,
-which is difficult to scale to the needs of every individual user.
-A more recent and popular approach leverages retrieval-augmented generation (RAG),
-which focuses on techniques to construct highly relevant, context-rich prompts
-to elicit accurate answers from an LLM.
+<Frame>
+  <video autoPlay muted loop playsInline src="https://mintcdn.com/codeium/vRt4FQOyBeZpD2Pu/assets/windsurf-command-models.mp4?fit=max&auto=format&n=vRt4FQOyBeZpD2Pu&q=85&s=56ff76bccc777e7bb30af7d4a4991325" data-path="assets/windsurf-command-models.mp4" />
+</Frame>
 
-We've implemented an optimized RAG approach to codebase context,
-which produces higher quality suggestions and fewer hallucinations.
+<Tip> Windsurf Fast is the fastest, most accurate model available.</Tip>
 
-<Note>
-  Windsurf offers full fine-tuning for enterprises, and the best solution
-  combines fine-tuning with RAG.
-</Note>
+# Terminal Command
 
-## Default Context
+You can use Command in the terminal (`Cmd/Ctrl+I`) to generate the proper CLI syntax using prompts in natural language.
 
-Out of the box, Windsurf takes multiple relevant sources of context into consideration.
+<Frame style={{ border: 'none', background: 'none' }}>
+  <img src="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=b03f1498ac0b7dc344270f975f9a234f" data-og-width="980" width="980" data-og-height="164" height="164" data-path="assets/windsurf-terminal-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=280&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ec94b782cbe3b3d0a3e8d44ce7b27c74 280w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=560&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=9e3839c701ba2308cbc754842c8472a4 560w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=840&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=25245a6097e94c63ed47cb382097f82b 840w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1100&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=ecfdf898fe06e81255add438d3daff49 1100w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=1650&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=c46a449c560b98a2e295e904601a3c51 1650w, https://mintcdn.com/codeium/qJj_RRojefb93yIg/assets/windsurf-terminal-command.png?w=2500&fit=max&auto=format&n=qJj_RRojefb93yIg&q=85&s=44ec229230a00b642a4aa61f1d4c571c 2500w" />
+</Frame>
 
-* The current file and other open files in your IDE, which are often very relevant to the code you are currently writing.
-* The entire local codebase is then indexed (including files that are not open),
-  and relevant code snippets are sourced by Windsurf's retrieval engine as you write code, ask questions, or invoke commands.
-* For Pro users, we offer expanded context lengths increased indexing limits, and higher limits on custom context and pinned context items.
-* For Teams and Enterprise users, Windsurf can also index remote repositories.
-  This is useful for companies whose development organization works across multiple repositories.
+# Best Practices
 
-## Chat-Specific Context Features
+Command is great for file-scoped, in-line changes that you can describe as an instruction in natural language.
+Here are some pointers to keep in mind:
 
-When conversing with Windsurf Chat, you have various ways of leveraging codebase context,
-like [@-mentions](/chat/overview/#mentions) or custom guidelines.
-See the [Chat page](/chat/overview) for more information.
+* The model that powers Command is larger than the one powering autocomplete.
+  It is slower but more capable, and it is trained to be especially good at instruction-following.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://exafunction.github.io/public/videos/chat/inline-mention.mp4" />
+* If you highlight a block of code before invoking Command, it will edit the selection. Otherwise, it will do a pure generation.
 
-## Frequently Asked Questions (FAQs)
-
-### Does Windsurf index my codebase?
-
-Yes, Windsurf does index your codebase. It also uses LLMs to perform retrieval-augmented generation (RAG) on your codebase using our own [M-Query](https://youtu.be/DuZXbinJ4Uc?feature=shared\&t=606) techniques.
-
-Indexing performance and features vary based on your workflow and your Windsurf plan. For more information, please visit our [context awareness page](https://windsurf.com/context).
+* Using Command effectively can be an art. Simple prompts like "Fix this" or "Refactor" will likely work
+  thanks to Windsurf's context awareness.
+  A specific prompt like "Write a function that takes two inputs of type `Diffable` and implements the Myers diff algorithm"
+  that contains a clear objective and references to relevant context may help the model even more.

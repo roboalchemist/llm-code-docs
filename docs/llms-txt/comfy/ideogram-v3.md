@@ -2,13 +2,9 @@
 
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/ideogram/ideogram-v3.md
 
-# Source: https://docs.comfy.org/tutorials/partner-nodes/ideogram/ideogram-v3.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/image/ideogram/ideogram-v3.md
-
-# Source: https://docs.comfy.org/tutorials/partner-nodes/ideogram/ideogram-v3.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/image/ideogram/ideogram-v3.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Ideogram V3 - ComfyUI Native Node Documentation
 

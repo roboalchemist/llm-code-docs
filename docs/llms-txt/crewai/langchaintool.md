@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/ai-ml/langchaintool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain Tool
 
 > The `LangChainTool` is a wrapper for LangChain tools and query engines.

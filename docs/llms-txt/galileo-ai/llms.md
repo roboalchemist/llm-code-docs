@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/llms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLMs
 
 > Integrate large language models (LLMs) into Galileo Evaluate to assess performance, refine outputs, and enhance generative AI model capabilities.

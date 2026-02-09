@@ -2,21 +2,9 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
 
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Field Mappings
 
@@ -38,7 +26,7 @@ default HubSpot properties, you may want to update the mappings before Unify
 starts syncing data.
 
 In the [HubSpot integration settings](https://app.unifygtm.com/dashboard/settings/integrations/hubspot),
-look for the **Company**, **Person**, and **Email Message** field mappings at
+look for the **Company** and **Person** field mappings at
 the bottom of the page. Select one to view and edit the field configuration.
 
 <Frame caption="Customize which fields are synced to and from HubSpot.">
@@ -181,14 +169,5 @@ person was enrolled in.
     | **Unify Most Recent Reply Classification**<br />*Text* | High-level classification of the most recent reply received from a person. It will be either "Positive", "Objection", "Neutral", "Automated", or "Negative".      |
     | **Unify Initial Reply Tags**<br />*Text*               | Comma-separated list of classification tags of the initial reply received from a person. For example, "Ready to meet, Needs more information".                    |
     | **Unify Most Recent Reply Tags**<br />*Text*           | Comma-separated list of classification tags of the most recent reply received from a person. For example, "Ready to meet, Needs more information".                |
-  </Accordion>
-
-  <Accordion title="Email Messages">
-    | Field                                | Description                                                    |
-    | ------------------------------------ | -------------------------------------------------------------- |
-    | **Universal Message ID**<br />*Text* | Globally unique identifier that exists for all email messages. |
-    | **Subject**<br />*Text*              | Subject of the email.                                          |
-    | **HTML Content**<br />*Text*         | Body of the email.                                             |
-    | **Sent At**<br />*Date*              | Date and time the email was sent.                              |
   </Accordion>
 </AccordionGroup>

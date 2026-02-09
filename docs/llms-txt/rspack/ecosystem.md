@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/start/ecosystem.md
 
-import { Tag } from '@components/Tag';
-
 # Ecosystem
 
 ## Rstack
@@ -10,38 +8,39 @@ Rstack is a unified JavaScript toolchain centered on Rspack, with high performan
 
 ### Rsbuild
 
-<Tag color="geekblue">Build tool</Tag>
+Build tool
 
 [Rsbuild](https://github.com/web-infra-dev/rsbuild) is a high-performance build tool powered by Rspack. It provides a set of thoughtfully designed default build configs, offering an out-of-the-box development experience and can fully unleash the performance advantages of Rspack.
 
 ### Rslib
 
-<Tag color="geekblue">Library development tool</Tag>
+Library development tool
 
 [Rslib](https://github.com/web-infra-dev/rslib) is a library development tool based on Rsbuild, which reuses the carefully designed build configuration and plugin system of Rsbuild. It allows developers to create JavaScript libraries in a simple and intuitive way.
 
 ### Rspress
 
-<Tag color="geekblue">Static site generator</Tag>
-<Tag color="purple">React</Tag>
+Static site generator
+
+React
 
 [Rspress](https://github.com/web-infra-dev/rspress) is a static site generator based on Rsbuild, React and MDX. It comes with a default documentation theme, and you can quickly build a documentation site with Rspress. You can also customize the theme to meet your personalized static site needs, such as blog sites, product homepages, etc.
 
 ### Rsdoctor
 
-<Tag color="geekblue">Build analyzer</Tag>
+Build analyzer
 
 [Rsdoctor](https://github.com/web-infra-dev/rsdoctor) is a build analyzer that can visually display the build process, such as compilation time, code changes before and after compilation, module reference relationships, duplicate modules, etc.
 
 ### Rstest
 
-<Tag color="geekblue">Testing framework</Tag>
+Testing framework
 
 [Rstest](https://github.com/web-infra-dev/rstest) is a testing framework powered by Rspack. It delivers comprehensive, first-class support for the Rspack ecosystem, enabling seamless integration into existing Rspack-based projects.
 
 ### Rslint
 
-<Tag color="geekblue">Linter</Tag>
+Linter
 
 [Rslint](https://github.com/web-infra-dev/rslint) is a high-performance JavaScript and TypeScript linter based on typescript-go. It offers strong compatibility with the ESLint and TypeScript-ESLint ecosystem, allowing for seamless replacement, and provides lightning-fast linting speeds.
 
@@ -49,15 +48,17 @@ Rstack is a unified JavaScript toolchain centered on Rspack, with high performan
 
 ### Angular Rspack
 
-<Tag color="geekblue">Build tool</Tag>
-<Tag color="purple">Angular</Tag>
+Build tool
+
+Angular
 
 [Angular Rspack](https://github.com/nrwl/angular-rspack) is a set of plugins and tools to make it easy and straightforward to build Angular applications with Rspack and Rsbuild.
 
 ### Docusaurus
 
-<Tag color="geekblue">Static site generator</Tag>
-<Tag color="purple">React</Tag>
+Static site generator
+
+React
 
 [Docusaurus](https://docusaurus.io/) is a static site generator for building, deploying, and maintaining open source project websites easily.
 
@@ -65,15 +66,17 @@ Docusaurus supports Rspack as the bundler since v3.6, see [Docusaurus Faster](ht
 
 ### Modern.js
 
-<Tag color="geekblue">Web framework</Tag>
-<Tag color="purple">React</Tag>
+Web framework
+
+React
 
 [Modern.js](https://modernjs.dev/en/) is a Rsbuild-based progressive React framework that supports nested routes, SSR, and provides out-of-the-box CSS solutions such as styled components and Tailwind CSS.
 
 ### Next.js
 
-<Tag color="geekblue">Web framework</Tag>
-<Tag color="purple">React</Tag>
+Web framework
+
+React
 
 [Next.js](https://nextjs.org/) is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
 
@@ -81,8 +84,9 @@ Rspack team and Next.js team have partnered to provide the `next-rspack` plugin.
 
 ### Nuxt
 
-<Tag color="geekblue">Web framework</Tag>
-<Tag color="purple">Vue</Tag>
+Web framework
+
+Vue
 
 [Nuxt](https://nuxt.com/) is a free and open-source framework with an intuitive and extendable way to create type-safe, performant and production-grade full-stack web applications and websites with Vue.js.
 
@@ -90,8 +94,9 @@ Nuxt v3.14 introduces a new first-class Nuxt builder for Rspack, see [Nuxt 3.14]
 
 ### Nx
 
-<Tag color="geekblue">Build system</Tag>
-<Tag color="purple">Monorepo</Tag>
+Build system
+
+Monorepo
 
 [Nx](https://nx.dev/) is a powerful open-source build system that provides tools and techniques for enhancing developer productivity, optimizing CI performance, and maintaining code quality.
 
@@ -99,15 +104,17 @@ Rspack team and Nx team have collaborated to provide the [Rspack Nx plugin](http
 
 ### Rspeedy
 
-<Tag color="geekblue">Build tool</Tag>
-<Tag color="purple">Lynx</Tag>
+Build tool
+
+Lynx
 
 [Rspeedy](https://lynxjs.org/rspeedy/) is an Rspack-based build tool designed specifically for Lynx applications. [Lynx](https://lynxjs.org/) is a family of technologies empowering developers to use their existing web skills to create truly native UIs for both mobile and web from a single codebase.
 
 ### Re.Pack
 
-<Tag color="geekblue">Build tool</Tag>
-<Tag color="purple">React Native</Tag>
+Build tool
+
+React Native
 
 [Re.Pack](https://github.com/callstack/repack) is a build tool for building your React Native application.
 
@@ -115,7 +122,7 @@ Re.Pack v5 uses Rspack and React Native community CLI's plugin system to allow y
 
 ### Storybook
 
-<Tag color="geekblue">UI development</Tag>
+UI development
 
 [Storybook Rsbuild](https://storybook.rsbuild.rs/) allows you to use Rsbuild as the build tool for Storybook, and provides UI framework integrations like React and Vue.
 

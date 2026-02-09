@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/cli/cloud/secrets.md
 
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/secrets.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/secrets.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/secrets.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/secrets.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # secrets
 
@@ -245,8 +241,3 @@ pipecat cloud secrets image-pull-secret my-registry-creds https://index.docker.i
 <Card title="More about secrets" icon="key" href="/deployment/pipecat-cloud/fundamentals/secrets">
   Learn more about managing application secrets
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

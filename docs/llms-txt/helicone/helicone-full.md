@@ -17,7 +17,7 @@ When developing and testing LLM applications, you often make the same requests r
 
 ## Why Helicone Caching
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Save Money" icon="dollar-sign">
     Avoid repeated charges for identical requests while testing and debugging
   </Card>
@@ -47,7 +47,7 @@ Helicone generates unique cache keys by hashing:
 
 Any change in these components creates a new cache entry:
 
-```typescript  theme={null}
+```typescript theme={null}
 // ✅ Cache hit - identical requests
 const request1 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "Hello" }] };
 const request2 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "Hello" }] };
@@ -72,7 +72,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   <Step title="Enable caching">
     Add the `Helicone-Cache-Enabled` header to your requests:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     {
       "Helicone-Cache-Enabled": "true"
     }
@@ -82,7 +82,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   <Step title="Make your request">
     Execute your LLM request - the first call will be cached:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import OpenAI from "openai";
 
     const client = new OpenAI({
@@ -107,7 +107,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   <Step title="Verify caching works">
     Make the same request again - it should return instantly from cache:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // This exact same request will return a cached response
     const cachedResponse = await client.chat.completions.create(
       {
@@ -126,13 +126,13 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
 
 ## Configuration
 
-<ParamField header="Helicone-Cache-Enabled" type="string" required>
+<ParamField type="string">
   Enable or disable caching for the request.
 
   Example: `"true"` to enable caching
 </ParamField>
 
-<ParamField header="Cache-Control" type="string">
+<ParamField type="string">
   Set cache duration using standard HTTP cache control directives.
 
   Default: `"max-age=604800"` (7 days)
@@ -140,7 +140,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   Example: `"max-age=3600"` for 1 hour cache
 </ParamField>
 
-<ParamField header="Helicone-Cache-Bucket-Max-Size" type="string">
+<ParamField type="string">
   Number of different responses to store for the same request. Useful for non-deterministic prompts.
 
   Default: `"1"` (single response cached)
@@ -148,13 +148,13 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   Example: `"3"` to cache up to 3 different responses
 </ParamField>
 
-<ParamField header="Helicone-Cache-Seed" type="string">
+<ParamField type="string">
   Create separate cache namespaces for different users or contexts.
 
   Example: `"user-123"` to maintain user-specific cache
 </ParamField>
 
-<ParamField header="Helicone-Cache-Ignore-Keys" type="string">
+<ParamField type="string">
   Comma-separated JSON keys to exclude from cache key generation.
 
   Example: `"request_id,timestamp"` to ignore these fields when generating cache keys
@@ -174,7 +174,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
       Learn more about provider caching [here](/gateway/concepts/prompt-caching).
     </Note>
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const response = await client.chat.completions.create(
       {
         model: "gpt-4o-mini",
@@ -256,7 +256,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   <Tab title="User-Specific Caching">
     Cache responses separately for different users or contexts:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const userId = "user-123";
 
     const response = await client.chat.completions.create(
@@ -281,8 +281,8 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
   </Tab>
 </Tabs>
 
-<Frame caption="Dashboard view of cache hits, cost and time saved">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=cdbb32a25a9a39f419924ad9561782fe" alt="Helicone Dashboard showing the number of cache hits, cost, and time saved." data-og-width="1440" width="1440" data-og-height="796" height="796" data-path="images/example-cache.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=9657f1f66fb926f69665ac6ce69df224 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=33772b98f4d1e17a9ecf37ba0c5d698d 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=b685d87c6570bfe9673d099dca7bd51d 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=7a477867f1689b3940892b9fa0889f2a 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=1030c2f702b89fb202e1eacf2e6c246f 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-cache.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=06e97c208237637fc6804b6ac5a4f9b8 2500w" />
+<Frame>
+  <img alt="Helicone Dashboard showing the number of cache hits, cost, and time saved." />
 </Frame>
 
 ## Understanding Caching
@@ -291,7 +291,7 @@ const request4 = { model: "gpt-4o-mini", messages: [{ role: "user", content: "He
 
 Check cache status by examining response headers:
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await client.chat.completions.create(
   { /* your request */ },
   { 
@@ -318,7 +318,7 @@ console.log(bucketIndex); // Index of cached response used
 
 Set how long responses stay cached using the `Cache-Control` header:
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   "Cache-Control": "max-age=3600"  // 1 hour
 }
@@ -337,7 +337,7 @@ Set how long responses stay cached using the `Cache-Control` header:
 
 Control how many different responses are stored for the same request:
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   "Helicone-Cache-Bucket-Max-Size": "3"
 }
@@ -365,7 +365,7 @@ openai.completion("give me a random number") -> "42" | "47" | "17"  # Cache Hit
 
 Create separate cache namespaces using seeds:
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   "Helicone-Cache-Seed": "user-123"
 }
@@ -389,7 +389,7 @@ openai.completion("random number") -> "17"  # Consistent per seed
 
 Exclude specific JSON fields from cache key generation:
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   "Helicone-Cache-Ignore-Keys": "request_id,timestamp,session_id"
 }
@@ -397,7 +397,7 @@ Exclude specific JSON fields from cache key generation:
 
 When these fields are ignored, requests with different values for these fields will still hit the same cache entry:
 
-```typescript  theme={null}
+```typescript theme={null}
 // First request
 const response1 = await openai.chat.completions.create(
   {
@@ -451,7 +451,7 @@ const response2 = await openai.chat.completions.create(
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Prompt Caching" icon="server" href="/gateway/concepts/prompt-caching">
     Cache prompts on provider servers for reduced token costs and faster processing
   </Card>
@@ -485,8 +485,8 @@ Source: https://docs.helicone.ai/features/advanced-usage/custom-properties
 
 When building AI applications, you often need to track and analyze requests by different dimensions like project, feature, or workflow stage. Custom Properties let you tag LLM requests with metadata, enabling advanced filtering, cost analysis per user or feature, and performance tracking across different parts of your application.
 
-<Frame caption="Custom Properties appear as headers in the `Request` table. ">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=7e53f85d10a2d085eae205eccad42b98" alt="Helicone Custom Properties feature for filtering and segmenting data in the Request table." data-og-width="1440" width="1440" data-og-height="796" height="796" data-path="images/example-custom-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=4cfee61498cb09118afd9ef553b9f002 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=66008b2568a53484d28a141fe224534d 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=019fd23f3fc94221218fd3eec4c57e9d 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=7af78f1438e315826529ae45a638699a 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=13fc68baa607a40b073fafaec0f0d61d 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-custom-properties.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=a365c1189c4903ffda446062c6a6c917 2500w" />
+<Frame>
+  <img alt="Helicone Custom Properties feature for filtering and segmenting data in the Request table." />
 </Frame>
 
 ## Why use Custom Properties
@@ -687,7 +687,7 @@ Custom properties are metadata attached to each request that help you:
   <Tab title="Customer Support Bot">
     Track support interactions by ticket ID and case details for debugging and cost analysis:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Initial customer inquiry
     const response = await client.chat.completions.create(
       {
@@ -737,13 +737,13 @@ Custom properties are metadata attached to each request that help you:
 
 Custom properties use a simple header-based format:
 
-<ParamField header="Helicone-Property-[Name]" type="string">
+<ParamField type="string">
   Any custom metadata you want to track. Replace `[Name]` with your property name.
 
   Example: `Helicone-Property-Environment: staging`
 </ParamField>
 
-<ParamField header="Helicone-User-Id" type="string">
+<ParamField type="string">
   Special reserved property for user tracking. Enables per-user cost analytics and usage metrics. See [User Metrics](/observability/user-metrics) for detailed tracking capabilities.
 
   Example: `Helicone-User-Id: user-123`
@@ -755,7 +755,7 @@ Custom properties use a simple header-based format:
 
 You can update properties after a request is made using the [REST API](/rest/request/put-v1request-property):
 
-```typescript  theme={null}
+```typescript theme={null}
 // Get the request ID from the response
 const { data, response } = await client.chat.completions
   .create({ /* your request */ })
@@ -789,7 +789,7 @@ Once you've added custom properties to your requests, you can filter and retriev
 
 Filter requests by a single property value:
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -812,7 +812,7 @@ curl --request POST \
 
 Combine multiple property filters using AND/OR operators:
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -847,7 +847,7 @@ curl --request POST \
 
 Filter by properties AND other criteria like date range or model:
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -879,7 +879,7 @@ curl --request POST \
 ### Common Mistake
 
 <Accordion title="❌ WRONG - Properties without request_response_rmt wrapper">
-  ```bash  theme={null}
+  ```bash theme={null}
   # This will return empty results even if data exists
   curl --request POST \
     --url https://api.helicone.ai/v1/request/query-clickhouse \
@@ -898,7 +898,7 @@ curl --request POST \
 </Accordion>
 
 <Accordion title="✅ CORRECT - Properties with request_response_rmt wrapper">
-  ```bash  theme={null}
+  ```bash theme={null}
   # This will correctly return filtered results
   curl --request POST \
     --url https://api.helicone.ai/v1/request/query-clickhouse \
@@ -922,7 +922,7 @@ See the [full Query API documentation](/rest/request/post-v1requestquery-clickho
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="User Metrics" icon="chart-line" href="/features/advanced-usage/user-metrics">
     Track per-user costs and usage with the special Helicone-User-Id property
   </Card>
@@ -969,7 +969,7 @@ For example, you can limit users to `1000 requests per day` or `60 requests per 
 
 Set up rate limiting by adding the `Helicone-RateLimit-Policy` header to your requests:
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await client.chat.completions.create(
   {
     model: "gpt-4o-mini",
@@ -995,25 +995,25 @@ The `Helicone-RateLimit-Policy` header uses this format:
 
 ### Parameters
 
-<ParamField header="quota" type="number" required>
+<ParamField type="number">
   Maximum number of requests (or cost in cents) allowed within the time window.
 
   Example: `1000` for 1000 requests
 </ParamField>
 
-<ParamField header="w" type="number" required>
+<ParamField type="number">
   Time window in seconds. Minimum is 60 seconds.
 
   Example: `3600` for 1 hour, `86400` for 1 day
 </ParamField>
 
-<ParamField header="u" type="string">
+<ParamField type="string">
   Unit type: `request` (default) or `cents` for cost-based limiting.
 
   Example: `u=cents` to limit by spending instead of request count
 </ParamField>
 
-<ParamField header="s" type="string">
+<ParamField type="string">
   Segment type: `user` for per-user limits, or custom property name for per-property limits. Omit for global limits.
 
   Example: `s=user` or `s=organization`
@@ -1106,7 +1106,7 @@ Limit your entire application's usage:
 
 Limit each user individually:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Each user gets 1000 requests per day
 const response = await client.chat.completions.create(
   {
@@ -1130,7 +1130,7 @@ const response = await client.chat.completions.create(
 
 Limit by spending instead of request count:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Limit to $5.00 per hour per user
 const response = await client.chat.completions.create(
   {
@@ -1150,7 +1150,7 @@ const response = await client.chat.completions.create(
 
 Limit by [custom properties](/observability/custom-properties) like organization or tier:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Each organization gets 5000 requests per hour
 const response = await client.chat.completions.create(
   {
@@ -1172,7 +1172,7 @@ Extracting the headers allows you to test your rate limit policy in a local envi
 
 If your rate limit policy is **active**, the following headers will be returned:
 
-```bash  theme={null}
+```bash theme={null}
 Helicone-RateLimit-Limit: "number" // the request/cost quota allowed in the time window.
 Helicone-RateLimit-Policy: "[quota];w=[time_window];u=[unit];s=[segment]" // the active rate limit policy.
 Helicone-RateLimit-Remaining: "number" // the remaining quota in the time window.
@@ -1223,7 +1223,7 @@ When building AI applications, you need real-world signals about response qualit
   <Step title="Make a request and capture the ID">
     Capture the Helicone request ID from your LLM response:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import OpenAI from "openai";
 
     const openai = new OpenAI({
@@ -1253,7 +1253,7 @@ When building AI applications, you need real-world signals about response qualit
     <Accordion title="Alternative: Getting request ID from response">
       You can also try to get the Helicone ID from response headers, though this may not always be available:
 
-      ```typescript  theme={null}
+      ```typescript theme={null}
       const response = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: [{ role: "user", content: "Explain quantum computing" }]
@@ -1273,7 +1273,7 @@ When building AI applications, you need real-world signals about response qualit
   <Step title="Submit feedback rating">
     Send a positive or negative rating for the response:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const feedback = await fetch(
       `https://api.helicone.ai/v1/request/${heliconeId}/feedback`,
       {
@@ -1308,7 +1308,7 @@ Feedback collection requires minimal configuration:
   <Accordion title="Processing multiple feedback ratings">
     When you need to submit feedback for multiple requests, use parallel API calls:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Note: There is no bulk feedback endpoint - each rating requires a separate API call
     const feedbackBatch = [
       { requestId: "f47ac10b-58cc-4372-a567-0e02b2c3d479", rating: true },
@@ -1455,7 +1455,7 @@ Feedback collection requires minimal configuration:
   <Tab title="Code Generation Evaluation">
     Collect feedback on generated code quality:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // After generating code for the user
     const codeGenResponse = await openai.chat.completions.create(
       {
@@ -1500,7 +1500,7 @@ Feedback collection requires minimal configuration:
   <Tab title="Customer Support Bot">
     Measure effectiveness of automated support responses:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Support ticket handler
     async function handleSupportQuery(ticketId: string, query: string) {
       const requestId = `ticket-${ticketId}-${Date.now()}`;
@@ -1570,7 +1570,7 @@ User feedback creates a continuous improvement loop for your AI application:
 
 Track user actions that indicate response quality:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Code completion acceptance (like Cursor)
 async function trackCodeCompletion(requestId: string, suggestion: string) {
   // Monitor if user accepts the completion
@@ -1615,7 +1615,7 @@ async function trackSearchResult(requestId: string, results: string[]) {
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
     Segment feedback by feature, user type, or experiment for deeper insights
   </Card>
@@ -1791,7 +1791,7 @@ When LLM Security is enabled, Helicone:
   * Higher accuracy threat detection
   * More nuanced understanding of context and intent
 * Blocks detected threats and returns an error response:
-  ```tsx  theme={null}
+  ```tsx theme={null}
   {
     "success": false,
     "error": {
@@ -1920,7 +1920,7 @@ If the message is not flagged, the proxy forwards it to the chat completion endp
 
 Here's an example of the error response when flagged:
 
-```json  theme={null}
+```json theme={null}
 {
   "success": false,
   "error": {
@@ -1957,11 +1957,11 @@ When you make an LLM call with a prompt ID, the AI Gateway compiles your saved p
 
 The AI Gateway automatically determines which prompt version to use based on the parameters you provide:
 
-<ParamField body="environment" type="string">
+<ParamField type="string">
   Uses the version deployed to that environment (e.g., production, staging, development)
 </ParamField>
 
-<ParamField body="version_id" type="string">
+<ParamField type="string">
   Uses a specific version directly by its ID
 </ParamField>
 
@@ -2158,7 +2158,7 @@ Since partials are resolved before variables, variables within partials can be c
 
 <Tabs>
   <Tab title="Temperature Override">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Saved prompt has temperature: 0.8
     const response = await openai.chat.completions.create({
       prompt_id: "abc123",
@@ -2169,7 +2169,7 @@ Since partials are resolved before variables, variables within partials can be c
   </Tab>
 
   <Tab title="Max Tokens Override">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Saved prompt has max_tokens: 500
     const response = await openai.chat.completions.create({
       prompt_id: "abc123", 
@@ -2180,7 +2180,7 @@ Since partials are resolved before variables, variables within partials can be c
   </Tab>
 
   <Tab title="Response Format Override">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Saved prompt has no response format
     const response = await openai.chat.completions.create({
       prompt_id: "abc123",
@@ -2197,7 +2197,7 @@ Since partials are resolved before variables, variables within partials can be c
 
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Overview" icon="book" href="/features/advanced-usage/prompts/overview">
     Get started with Prompt Management
   </Card>
@@ -2219,7 +2219,7 @@ When building LLM applications, you need to manage prompt templates, handle vari
 
 Traditional prompt development involves hardcoded prompts in application code, messy string substitution, and frustrating and rebuilding deployments for every iteration. This creates friction that slows down experimentation and your team's ability to ship.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Iterate Without Code Changes" icon="rocket">
     Test and deploy prompt changes instantly without rebuilding or redeploying your application
   </Card>
@@ -2244,10 +2244,10 @@ Traditional prompt development involves hardcoded prompts in application code, m
     Build a prompt in the Playground. Save any prompt with clear commit histories and tags.
 
     <Frame>
-      <video width="100%" autoPlay loop muted playsInline>
-        <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/Prompts2025-A.mp4" type="video/mp4" />
+      <video>
+        <source type="video/mp4" />
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/create_prompt_placeholder.png" alt="Creating a prompt in Helicone dashboard" />
+        <img alt="Creating a prompt in Helicone dashboard" />
       </video>
     </Frame>
   </Step>
@@ -2256,10 +2256,10 @@ Traditional prompt development involves hardcoded prompts in application code, m
     Experiment with different variables, inputs, and models until you reach desired output. Variables can be used anywhere, even in tool schemas.
 
     <Frame>
-      <video width="100%" autoPlay loop muted playsInline>
-        <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/Prompts2025-B.mp4" type="video/mp4" />
+      <video>
+        <source type="video/mp4" />
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/test_prompt_placeholder.png" alt="Testing prompts with variables and different models" />
+        <img alt="Testing prompts with variables and different models" />
       </video>
     </Frame>
   </Step>
@@ -2469,13 +2469,13 @@ Variables can be used within JSON schemas for tools and response formatting. Thi
 
 **Value Replacement**: When a variable tag is the only content in a string, it gets replaced with the actual data type:
 
-```json  theme={null}
+```json theme={null}
 "enum": "{{hc:tools:array}}" → "enum": ["search", "calculator", "weather"]
 ```
 
 **String Substitution**: When variables are part of a larger string, normal regex replacement occurs:
 
-```json  theme={null}
+```json theme={null}
 "description": "Available for {{hc:name:string}} users" → "description": "Available for premium users"
 ```
 
@@ -2486,10 +2486,10 @@ Variables can be used within JSON schemas for tools and response formatting. Thi
 You can easily manage different deployment environments for your prompts directly in the Helicone dashboard. Create and deploy prompts to production, staging, development, or any custom environment you need.
 
 <Frame>
-  <video width="100%" autoPlay loop muted playsInline>
-    <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/Prompts2025-Environment.mp4" type="video/mp4" />
+  <video>
+    <source type="video/mp4" />
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/environment_placeholder.png" alt="Managing prompt environments in Helicone dashboard" />
+    <img alt="Managing prompt environments in Helicone dashboard" />
   </video>
 </Frame>
 
@@ -2585,7 +2585,7 @@ Learn more about how prompts are assembled and compiled in the [Prompt Assembly]
 
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Prompt Assembly" icon="puzzle-piece" href="/features/advanced-usage/prompts/assembly">
     Understand how prompts are compiled from templates and runtime parameters
   </Card>
@@ -2630,13 +2630,13 @@ The SDK is a great option for users that need direct interaction with compiled p
 
 <Tabs>
   <Tab title="TypeScript">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @helicone/helpers
     ```
   </Tab>
 
   <Tab title="Python">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install helicone-helpers openai
     ```
 
@@ -2666,7 +2666,7 @@ The SDK is a great option for users that need direct interaction with compiled p
 
     For direct SDK integration:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { HeliconePromptManager } from '@helicone/helpers';
 
     const promptManager = new HeliconePromptManager({
@@ -2694,7 +2694,7 @@ The SDK is a great option for users that need direct interaction with compiled p
 
     The main class for direct SDK integration:
 
-    ```python  theme={null}
+    ```python theme={null}
     from helicone_helpers import HeliconePromptManager
 
     prompt_manager = HeliconePromptManager(
@@ -3177,7 +3177,7 @@ Prompt partials use the format `{{hcp:prompt_id:index:environment}}`:
 
 **Examples:**
 
-```text  theme={null}
+```text theme={null}
 {{hcp:abc123:0}}                   // Message 0 from prompt abc123 (production)
 {{hcp:abc123:1:staging}}           // Message 1 from prompt abc123 (staging)
 {{hcp:xyz789:2:development}}       // Message 2 from prompt xyz789 (development)
@@ -3193,7 +3193,7 @@ Prompt partials use the format `{{hcp:prompt_id:index:environment}}`:
 
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Overview" icon="book" href="/features/advanced-usage/prompts/overview">
     Get started with Prompt Management
   </Card>
@@ -3235,7 +3235,7 @@ When running evaluation frameworks to measure model performance, you need visibi
   <Step title="Report scores to Helicone">
     Send evaluation results using the Helicone API:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Get the request ID from response headers
     const requestId = response.headers.get("helicone-id");
 
@@ -3393,7 +3393,7 @@ The scores API expects this exact format:
   <Tab title="Code Generation Quality">
     Evaluate code generation for correctness, style, and functionality:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Evaluate generated code quality
     async function evaluateCodeGeneration(
       prompt: string,
@@ -3442,7 +3442,7 @@ The scores API expects this exact format:
   <Tab title="Helpfulness & Safety">
     Evaluate model outputs for helpfulness, safety, and alignment:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Multi-dimensional evaluation for chatbots
     async def evaluate_chat_response(user_query, assistant_response, requestId):
         # Use LLM as judge for subjective metrics
@@ -3490,7 +3490,7 @@ The scores API expects this exact format:
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Experiments" icon="flask" href="/features/experiments">
     Compare different configurations with consistent scoring
   </Card>
@@ -3508,7 +3508,131 @@ The scores API expects this exact format:
   </Card>
 </CardGroup>
 
-<Snippet file="questions-section.mdx" />
+<Snippet />
+
+
+# Token Limit Exception Handlers
+Source: https://docs.helicone.ai/features/advanced-usage/token-limit-exception-handlers
+
+Automatically handle requests that exceed a model's context window using truncate, middle-out, or fallback strategies.
+
+When prompts get large, requests can exceed the model's maximum context window. Helicone can automatically apply strategies to keep your request within limits or switch to a fallback model — without changing your app code.
+
+## What This Does
+
+* Estimates tokens for your request based on model and content
+* Accounts for reserved output tokens (e.g., `max_tokens`, `max_output_tokens`)
+* Applies a chosen strategy only when the estimated input exceeds the allowed context
+
+<Note>
+  Helicone uses provider-aware heuristics to estimate tokens and a best-effort approach across different request shapes.
+</Note>
+
+## Strategies
+
+* Truncate (`truncate`): Normalize and trim message content to reduce token count.
+* Middle-out (`middle-out`): Preserve the beginning and end of messages while trimming middle content to fit the limit.
+* Fallback (`fallback`): Switch to an alternate model when the request is too large. Provide multiple candidates in the request body `model` field as a comma-separated list (first is primary, second is fallback).
+
+<Info>
+  For `fallback`, Helicone picks the second candidate if needed. When under the limit, Helicone normalizes the `model` to the primary. If your body lacks `model`, set `Helicone-Model-Override`.
+</Info>
+
+## Quick Start
+
+Add the `Helicone-Token-Limit-Exception-Handler` header to enable a strategy.
+
+<CodeGroup>
+  ```typescript Node.js theme={null}
+  import { OpenAI } from "openai";
+
+  const client = new OpenAI({
+    baseURL: "https://ai-gateway.helicone.ai/v1",
+    apiKey: process.env.HELICONE_API_KEY,
+  });
+
+  // Middle-out strategy
+  await client.chat.completions.create(
+    {
+      model: "gpt-4o", // or "gpt-4o, gpt-4o-mini" for fallback
+      messages: [
+        { role: "user", content: "A very long prompt ..." }
+      ],
+      max_tokens: 256
+    },
+    {
+      headers: {
+        "Helicone-Token-Limit-Exception-Handler": "middle-out"
+      }
+    }
+  );
+  ```
+
+  ```python Python theme={null}
+  from openai import OpenAI
+  import os
+
+  client = OpenAI(
+      base_url="https://ai-gateway.helicone.ai/v1",
+      api_key=os.getenv("HELICONE_API_KEY"),
+  )
+
+  # Fallback strategy with model candidates
+  resp = client.chat.completions.create(
+      model="gpt-4o, gpt-4o-mini",
+      messages=[{"role": "user", "content": "A very long prompt ..."}],
+      max_tokens=256,
+      extra_headers={
+          "Helicone-Token-Limit-Exception-Handler": "fallback",
+      }
+  )
+  ```
+
+  ```bash cURL theme={null}
+  curl --request POST \
+       --url https://ai-gateway.helicone.ai/v1/chat/completions \
+       -H "Content-Type: application/json" \
+       -H "Authorization: Bearer $HELICONE_API_KEY" \
+       -H "Helicone-Token-Limit-Exception-Handler: truncate" \
+       --data '{
+         "model": "gpt-4o",
+         "messages": [{"role": "user", "content": "A very long prompt ..."}],
+         "max_tokens": 256
+       }'
+  ```
+</CodeGroup>
+
+## Configuration
+
+Enable and control via headers:
+
+<ParamField type="string">
+  One of: `truncate`, `middle-out`, `fallback`.
+</ParamField>
+
+<ParamField type="string">
+  Optional. Used for token estimation and model selection when the request body doesn't include a `model` or you need to override it.
+</ParamField>
+
+### Fallback Model Selection
+
+* Provide candidates in the body: `model: "primary, fallback"`
+* Helicone chooses the fallback when input exceeds the allowed context
+* When under the limit, Helicone normalizes the `model` to the primary
+
+## Notes
+
+* Token estimation is heuristic and provider-aware; behavior is best-effort across request shapes.
+* Allowed context accounts for requested completion tokens (e.g., `max_tokens`).
+* Changes are applied before the provider call; your logged request reflects the applied strategy.
+
+***
+
+<Accordion title="Need more help?">
+  Additional questions or feedback? Reach out to
+  [help@helicone.ai](mailto:help@helicone.ai) or [schedule a
+  call](https://cal.com/team/helicone/helicone-discovery) with us.
+</Accordion>
 
 
 # User Metrics & Analytics
@@ -3520,7 +3644,7 @@ Analyze how users interact with your AI features through comprehensive user metr
 
 ### Key User Metrics
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Active Users" icon="users">
     Daily, weekly, and monthly active users
     Track user growth and retention trends
@@ -3582,7 +3706,7 @@ Track users across sessions and requests:
 
 Enrich user data with additional context:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Add user segmentation data
 {
   headers: {
@@ -3601,7 +3725,7 @@ Enrich user data with additional context:
 
 Understand how users interact with your AI:
 
-```json  theme={null}
+```json theme={null}
 {
   "user_behavior": {
     "avg_requests_per_day": 24,
@@ -3646,7 +3770,7 @@ Track how engaged users are with your AI features:
 
 Helicone automatically groups users based on behavior:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Power Users" icon="zap">
     High request volume, long sessions
     Top 10% of users by usage
@@ -3672,7 +3796,7 @@ Helicone automatically groups users based on behavior:
 
 Create segments based on your business logic:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Business tier segmentation
 {
   "free_tier": {
@@ -3750,7 +3874,7 @@ Track how new users adopt your AI features:
 
 Track how user behavior changes over time:
 
-```json  theme={null}
+```json theme={null}
 {
   "user_evolution": {
     "week_1": {
@@ -3802,7 +3926,7 @@ Understand what drives long-term usage:
 
 Measure the quality of AI interactions:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Success Rate" icon="check-circle">
     Percentage of requests that achieve user goals
     Track by user segment and feature
@@ -3828,7 +3952,7 @@ Measure the quality of AI interactions:
 
 Identify where users struggle:
 
-```json  theme={null}
+```json theme={null}
 {
   "friction_analysis": {
     "high_retry_requests": {
@@ -3863,7 +3987,7 @@ Track individual user preferences:
 
 Use metrics to personalize experiences:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Personalized model selection based on user history
 const getUserPreferredModel = (userId: string) => {
   const userMetrics = getUserMetrics(userId);
@@ -3968,7 +4092,7 @@ Receive regular user analytics:
 
 Create views tailored to your needs:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Product Dashboard" icon="users">
     User engagement, feature adoption, satisfaction
     Focus on product-market fit metrics
@@ -4012,7 +4136,7 @@ Responsible user analytics practices:
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Set Up User Tracking" icon="user" href="/features/sessions">
     Implement user IDs and session tracking
   </Card>
@@ -4062,9 +4186,9 @@ Navigate to **Settings → Alerts** in your Helicone dashboard to create new ale
 
 <Steps>
   <Step title="Configure">
-    <Frame caption="Configuring an alert in Helicone">
-      <div style={{ width: "70%", margin: "0 auto" }}>
-        <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=3ce561c80479f0ab31bb68555c95dbb3" alt="Alert configuration interface showing metric, threshold, and time window" style={{ width: "100%" }} data-og-width="1526" width="1526" data-og-height="892" height="892" data-path="images/alerts/1AL-simple.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=4cd6fd87b83b031c23c670d0f836e039 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=d00b3192a41c5a064088d5fea04954ea 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=c739cda235f7a04b9bb5cf58bb25d47c 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=66cde0ccf64a22e0489b400756329abb 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=5c1ee9c98459e6a0d786cf8b99168981 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/1AL-simple.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=9fa116795e1d965974decf38461c499b 2500w" />
+    <Frame>
+      <div>
+        <img alt="Alert configuration interface showing metric, threshold, and time window" />
       </div>
     </Frame>
 
@@ -4072,9 +4196,9 @@ Navigate to **Settings → Alerts** in your Helicone dashboard to create new ale
   </Step>
 
   <Step title="Advanced Configuration (optional)">
-    <Frame caption="Advanced alert configuration options">
-      <div style={{ width: "70%", margin: "0 auto" }}>
-        <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=79da4f3e5f5df478e43e75a907a2c81f" alt="Advanced configuration showing filters and minimum request thresholds" style={{ width: "100%" }} data-og-width="1526" width="1526" data-og-height="1692" height="1692" data-path="images/alerts/2AL-advanced.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=b384a02a177d52759c851f6f9612f60c 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=8d46548322509d3aeb80560a10498f22 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=2eb939ca1f362e30991cbc22df72602e 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=176d9b2e306bd553fb5892ca5da7e846 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=75ca3b9052c18895d8feb5a958882d9f 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/2AL-advanced.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=84ddf41aab4012609a7fdf4908d4569a 2500w" />
+    <Frame>
+      <div>
+        <img alt="Advanced configuration showing filters and minimum request thresholds" />
       </div>
     </Frame>
 
@@ -4086,9 +4210,9 @@ Navigate to **Settings → Alerts** in your Helicone dashboard to create new ale
   </Step>
 
   <Step title="Configure notifications">
-    <Frame caption="Setting up alert notifications">
-      <div style={{ width: "70%", margin: "0 auto" }}>
-        <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=a0a878a5ab17ed4e8bae4ed2c8ecf79a" alt="Alert notification configuration showing email and Slack options" style={{ width: "100%" }} data-og-width="1566" width="1566" data-og-height="1076" height="1076" data-path="images/alerts/3AL-notifications.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=9e1a42a519fc64171e1236afa9bc8e5a 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=9828466dbc0db8827961ca94db9f4bd4 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=c992aafd9df9254cd46bb5fd8a06ec2e 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=d0e0e5391b9f2e3edca333b6a55a5736 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=db9ac20af534f2ddba4deb8b66ef130d 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/3AL-notifications.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=3d103832087fac0daabfaac8eafc909b 2500w" />
+    <Frame>
+      <div>
+        <img alt="Alert notification configuration showing email and Slack options" />
       </div>
     </Frame>
 
@@ -4100,12 +4224,12 @@ Navigate to **Settings → Alerts** in your Helicone dashboard to create new ale
   </Step>
 
   <Step title="Monitor">
-    <Frame caption="Helicone Alerts Dashboard showing configured alerts and their status">
-      <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=f8f4b07a3bc8d6a315f345e1e0989729" alt="Helicone alerts dashboard with list of configured alerts" data-og-width="1713" width="1713" data-og-height="952" height="952" data-path="images/alerts/AL-alerts-view.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=d8386406ab0eb60c7e8dc2980a20b078 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=f5b76ebb644db6c8f89112051d03c97d 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=e5bf2982c3f5352512c0d94f4fbd4d93 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=8ec758ec8e837ed875db1b065792fb48 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=80d5bda9f144cdb2772fe09a65449332 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-alerts-view.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=82b2f816f98b280a9bc9e4160b93e6af 2500w" />
+    <Frame>
+      <img alt="Helicone alerts dashboard with list of configured alerts" />
     </Frame>
 
-    <Frame caption="Alert history showing recent triggers">
-      <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=f21ca811933523b76261a116d94a1f6a" alt="Alert history view showing recent trigger events" data-og-width="3224" width="3224" data-og-height="1614" height="1614" data-path="images/alerts/AL-history.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=bd8276423f8f5a439e84d9e8cb77e77e 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=25e1997137b535dc08781bd2dea5e4b4 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=c84907aca7874106bef0ce12e3331bfb 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=de54cd3ae36ed4e6797a05c41bdf1b87 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=372b4e322760956922b385acf3bba4eb 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-history.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=4c13f574e6e0c0c292cef7e9f1b3b2fa 2500w" />
+    <Frame>
+      <img alt="Alert history view showing recent trigger events" />
     </Frame>
 
     View all configured alerts, their current status, and recent trigger history in the dashboard. When an alert triggers, you can immediately see affected requests and investigate the issue.
@@ -4151,9 +4275,9 @@ Fine-tune your alerts with these optional settings:
 
 ### Email Notifications
 
-<Frame caption="Example alert notification email">
-  <div style={{ maxHeight: "600px", overflow: "hidden" }}>
-    <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=757484179f8beb006ecf70948e917fe0" alt="Email notification showing alert details and link to dashboard" style={{ width: "100%", height: "auto", maxHeight: "600px", objectFit: "contain" }} data-og-width="1054" width="1054" data-og-height="1610" height="1610" data-path="images/alerts/AL-email-example.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=24c4d1ba2bbaedf526a17663f57b3c50 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=6ffa55779cf8d5413a9fafe6301779e3 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=34fe2f379836e75d7781075dc66e7fac 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=6fe248f5441897db710085349e97819e 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=c31fb118f20239084b13ac2ba08c689c 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-email-example.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=211fd7bf1e6ae821022d5646751ab7a1 2500w" />
+<Frame>
+  <div>
+    <img alt="Email notification showing alert details and link to dashboard" />
   </div>
 </Frame>
 
@@ -4168,13 +4292,13 @@ When creating or editing an alert:
 
 After connecting, you can simply select any channel from your workspace. Slack messages include the same details as emails with rich formatting and direct links to view affected requests.
 
-<Frame caption="Example alert notification in Slack">
-  <img src="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=fb222cca2ecbf686402f94047e2655b2" alt="Slack notification showing alert details and link to dashboard" data-og-width="1234" width="1234" data-og-height="722" height="722" data-path="images/alerts/AL-slack.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=280&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=4a021d914c24ba8aec5af8a28f096c0a 280w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=560&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=4a0b186324a49431e3c40c848644a0c4 560w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=840&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=b96884814cc9e9688ff43063e11c093d 840w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=1100&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=886661082150fbf52268aea970aa010e 1100w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=1650&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=b617b4fb04f21b3ece72db41e5010c40 1650w, https://mintcdn.com/helicone/LoV173ICj3D4jr2U/images/alerts/AL-slack.webp?w=2500&fit=max&auto=format&n=LoV173ICj3D4jr2U&q=85&s=2286f65329baa90d814e52b3747a085d 2500w" />
+<Frame>
+  <img alt="Slack notification showing alert details and link to dashboard" />
 </Frame>
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
     Filter alerts by environment, feature, or user segment
   </Card>
@@ -4202,7 +4326,7 @@ Transform your LLM requests into curated datasets for model fine-tuning, evaluat
 
 ## Why Use Datasets
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Fine-Tuning" icon="brain">
     Create training datasets from your best requests for custom model fine-tuning
   </Card>
@@ -4231,7 +4355,7 @@ The easiest way to create datasets is by selecting requests from your logs:
     Use [custom properties](/observability/custom-properties) and filters to find the requests you want
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=37fe83061c37219821ae7b242afbd2e8" alt="Filtering requests with custom properties and search criteria" data-og-width="1588" width="1588" data-og-height="466" height="466" data-path="images/datasets/filters.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=39a32b7b33bdae4b259a5f284ce43b59 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=20f7cd6825009ee3346c74be0ee3937b 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=04bbe907ecde0730e74e8d278211a894 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=b97fc791353acef6cca3826dc76654b4 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=46f98ce95d72985fab53132ce2baf6e0 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/filters.webp?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=514026471ca1d9600c062b8ceb11e836 2500w" />
+      <img alt="Filtering requests with custom properties and search criteria" />
     </Frame>
   </Step>
 
@@ -4239,7 +4363,7 @@ The easiest way to create datasets is by selecting requests from your logs:
     Check the boxes next to requests you want to include in your dataset
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=3ff1badd9fb09cfc0fb9425c374d2ac6" alt="Selecting multiple requests to add to dataset" data-og-width="1662" width="1662" data-og-height="1678" height="1678" data-path="images/datasets/datasets-select.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=5b50b92c9526701c8420625ac4135c42 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=335bc90feb12d28cecce8e0817eca8b3 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=7414c4ce9c6820c7a018d4b0f7f3dd57 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=8a11d18aa8bc88d853eb577636e01036 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=739326bf33f38515149378ca9bfc6832 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-select.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=057bd50b6387f2d2355f13c9ce27e13c 2500w" />
+      <img alt="Selecting multiple requests to add to dataset" />
     </Frame>
   </Step>
 
@@ -4247,7 +4371,7 @@ The easiest way to create datasets is by selecting requests from your logs:
     Click "Add to Dataset" and choose to create a new dataset or add to an existing one
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=098889f862bf167f5c73f21a28d5be6d" alt="Adding selected requests to a dataset" data-og-width="958" width="958" data-og-height="612" height="612" data-path="images/datasets/dataset-add.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=170445b334ab0f5bbddee31cd9bc9a98 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=44cc79273136d589c5271716c1aca659 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=f941b1a4908d989fb28ad88f0372fe46 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=7f6a337b20ba3ffdc796ac2620ba89d0 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=1aa3f60490080a4f915675bde1525acb 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/dataset-add.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=4e13c3dedccad6d8ee7b94239d3475b3 2500w" />
+      <img alt="Adding selected requests to a dataset" />
     </Frame>
   </Step>
 </Steps>
@@ -4256,7 +4380,7 @@ The easiest way to create datasets is by selecting requests from your logs:
 
 Create datasets programmatically for automated workflows:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Create a new dataset
 const response = await fetch('https://api.helicone.ai/v1/helicone-dataset', {
   method: 'POST',
@@ -4294,7 +4418,7 @@ Transform raw requests into high-quality training data through careful curation:
 
   <Step title="Review each example">
     <Frame>
-      <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=056646f09202b7f2083286491889a941" alt="Dataset curation interface showing request details for review" data-og-width="2150" width="2150" data-og-height="1426" height="1426" data-path="images/datasets/datasets-edit.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=165c165e5cc158ec303bf17a86fe0db9 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=4e75bcf92e53ae1c2715da41f4cf75ad 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=d3cd057af0b007b984c342f1addb8f61 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=720c321937f44fa3c26bb1cd922db34e 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=ed888032d40398283bc315d7f2e29db6 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-edit.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=2079f962d790c03df81ef38f21c05fed 2500w" />
+      <img alt="Dataset curation interface showing request details for review" />
     </Frame>
 
     Examine each request/response pair for:
@@ -4330,8 +4454,8 @@ Transform raw requests into high-quality training data through careful curation:
 
 Access all your datasets at [helicone.ai/datasets](https://us.helicone.ai/datasets):
 
-<Frame caption="Manage all your curated datasets in one place">
-  <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=b8d63f741eb16833a0aab1ea739356d1" alt="Helicone datasets dashboard with list of datasets and their metadata" data-og-width="2322" width="2322" data-og-height="1198" height="1198" data-path="images/datasets/datasets-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=88fa5e1e95f6d967a29f79cc4b500bc3 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=7004550662e7a62eb6193c0cdfd4bd82 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=df91bde5ff456d98f3d8fbfada167e26 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=464fa3745d010638efe3bfd2ebaeaa5f 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=d5b1c3e75c84aa4a9418b06f5bb9f037 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-dashboard.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=ddaf6b1c2524052176d8e3aacace58ff 2500w" />
+<Frame>
+  <img alt="Helicone datasets dashboard with list of datasets and their metadata" />
 </Frame>
 
 From the dashboard you can:
@@ -4347,15 +4471,15 @@ From the dashboard you can:
 
 Download your datasets in various formats:
 
-<Frame caption="Export options for downloading your dataset">
-  <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=6d8394979cab30f69b83b96068d70938" alt="Dataset export dialog showing different format options" data-og-width="1074" width="1074" data-og-height="958" height="958" data-path="images/datasets/datasets-export.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=964b7d3756b216da536112178ff335f6 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=20c214917c9a86db64bddddc74bdf876 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=b9ce601d63bb0b3b337c42838ac4469a 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=a1c03b96db4aff640412c525b0c9269d 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=ed2828915de6a8589c964ed24fdecda4 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/datasets/datasets-export.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=e4ac08d313deac17119c09348aea7e77 2500w" />
+<Frame>
+  <img alt="Dataset export dialog showing different format options" />
 </Frame>
 
 <Tabs>
   <Tab title="Fine-Tuning (JSONL)">
     Perfect for OpenAI fine-tuning format:
 
-    ```json  theme={null}
+    ```json theme={null}
     {"messages": [{"role": "user", "content": "Hello"}, {"role": "assistant", "content": "Hi there!"}]}
     {"messages": [{"role": "user", "content": "Help me"}, {"role": "assistant", "content": "I'd be happy to help!"}]}
     ```
@@ -4366,7 +4490,7 @@ Download your datasets in various formats:
   <Tab title="Analysis (CSV)">
     Structured format for spreadsheet analysis:
 
-    ```csv  theme={null}
+    ```csv theme={null}
     request_id,created_at,model,prompt_tokens,completion_tokens,cost,user_message,assistant_response
     req_123,2024-01-15,gpt-4o,50,100,0.002,"Hello","Hi there!"
     req_124,2024-01-15,gpt-4o,45,95,0.0019,"Help me","I'd be happy to help!"
@@ -4380,7 +4504,7 @@ Download your datasets in various formats:
 
 Retrieve dataset contents programmatically:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Query dataset contents
 const response = await fetch(`https://api.helicone.ai/v1/helicone-dataset/${datasetId}/query`, {
   method: 'POST',
@@ -4429,7 +4553,7 @@ The most common use case - using your expensive model logs to train cheaper, fas
 
 Build evaluation datasets to test model performance:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Create eval sets for different capabilities
 const datasets = {
   reasoning: 'Complex multi-step problems with verified solutions',
@@ -4447,8 +4571,8 @@ Use these to:
 
 ### Continuous Improvement Pipeline
 
-<Frame caption="Use scores and user feedback to identify your best examples">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=a8181381e7f337ae64baeded1c9699d9" alt="Filtering requests by scores to identify best examples for datasets" data-og-width="1278" width="1278" data-og-height="770" height="770" data-path="images/datasets/scores.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=87672c9e9eb76d81072f5b6c741fade4 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=5075357477331946840eeb42ef025ad2 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=700a6b36621b46d060013e74f481398b 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d21e6847eb91130c8c71e636ab80c7b9 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=b0fb2167301a2f39478092ce8adf4b60 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/datasets/scores.webp?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=51383f98d78a0454ff5e9f44c808ce97 2500w" />
+<Frame>
+  <img alt="Filtering requests by scores to identify best examples for datasets" />
 </Frame>
 
 Build a data flywheel for model improvement:
@@ -4465,7 +4589,7 @@ Build a data flywheel for model improvement:
 
 ## Best Practices
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quality over Quantity" icon="star">
     Choose fewer, high-quality examples rather than large datasets with mixed quality
   </Card>
@@ -4485,7 +4609,7 @@ Build a data flywheel for model improvement:
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
     Tag requests to make dataset creation easier with filtering
   </Card>
@@ -4533,7 +4657,7 @@ Helicone Query Language (HQL) lets you query your Helicone analytics data direct
 
 ### Top costly requests (last 7 days)
 
-```sql  theme={null}
+```sql theme={null}
 SELECT 
   request_created_at,
   request_model,
@@ -4547,7 +4671,7 @@ LIMIT 100
 
 ### Error rate (last 24 hours)
 
-```sql  theme={null}
+```sql theme={null}
 SELECT 
   COUNTIf(status BETWEEN 400 AND 599) AS error_count,
   COUNT() AS total_requests,
@@ -4558,7 +4682,7 @@ WHERE request_created_at >= toDateTime64(now(), 3) - INTERVAL 24 HOUR
 
 ### Active users by day (last 14 days)
 
-```sql  theme={null}
+```sql theme={null}
 SELECT 
   toDate(request_created_at) AS day,
   COUNT(DISTINCT user_id) AS dau
@@ -4570,7 +4694,7 @@ ORDER BY day
 
 ### Session analysis using custom properties
 
-```sql  theme={null}
+```sql theme={null}
 SELECT 
   properties['Helicone-Session-Id'] AS session_id,
   COUNT(*) AS requests,
@@ -4585,7 +4709,7 @@ LIMIT 100
 
 ### Cost by model (last 30 days)
 
-```sql  theme={null}
+```sql theme={null}
 SELECT 
   request_model,
   sum(cost) AS total_cost,
@@ -4607,18 +4731,109 @@ ORDER BY total_cost DESC
 
 Saved queries can be revisited and shared within your organization.
 
-### Via API
+### Via REST API
 
-Interactive API documentation is available at: [https://api.helicone.ai/docs/#/HeliconeSql](https://api.helicone.ai/docs/#/HeliconeSql)
+The HQL REST API allows you to execute SQL queries programmatically. All endpoints require authentication via API key.
+
+#### Authentication
+
+Include your API key in the `Authorization` header:
+
+```bash theme={null}
+Authorization: Bearer <YOUR_API_KEY>
+```
+
+#### Execute a Query
+
+**Endpoint:** `POST https://api.helicone.ai/v1/helicone-sql/execute`
+
+```bash theme={null}
+curl -X POST "https://api.helicone.ai/v1/helicone-sql/execute" \
+  -H "Authorization: Bearer <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sql": "SELECT request_model, COUNT(*) as count FROM request_response_rmt WHERE request_created_at > now() - INTERVAL 7 DAY GROUP BY request_model ORDER BY count DESC LIMIT 10"
+  }'
+```
+
+**Response:**
+
+```json theme={null}
+{
+  "data": {
+    "rows": [
+      {"request_model": "gpt-4o", "count": 1500},
+      {"request_model": "claude-3-opus", "count": 800}
+    ],
+    "elapsedMilliseconds": 124,
+    "size": 2048,
+    "rowCount": 2
+  }
+}
+```
+
+#### Get Schema
+
+**Endpoint:** `GET https://api.helicone.ai/v1/helicone-sql/schema`
+
+Returns available tables and columns for querying.
+
+```bash theme={null}
+curl -X GET "https://api.helicone.ai/v1/helicone-sql/schema" \
+  -H "Authorization: Bearer <YOUR_API_KEY>"
+```
+
+#### Download Results as CSV
+
+**Endpoint:** `POST https://api.helicone.ai/v1/helicone-sql/download`
+
+Executes a query and returns a signed URL to download the results as CSV.
+
+```bash theme={null}
+curl -X POST "https://api.helicone.ai/v1/helicone-sql/download" \
+  -H "Authorization: Bearer <YOUR_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sql": "SELECT * FROM request_response_rmt WHERE request_created_at > now() - INTERVAL 1 DAY LIMIT 1000"
+  }'
+```
+
+#### Saved Queries
+
+You can also manage saved queries programmatically:
+
+* `GET /v1/helicone-sql/saved-queries` - List all saved queries
+* `POST /v1/helicone-sql/saved-query` - Create a new saved query
+* `GET /v1/helicone-sql/saved-query/{queryId}` - Get a specific saved query
+* `PUT /v1/helicone-sql/saved-query/{queryId}` - Update a saved query
+* `DELETE /v1/helicone-sql/saved-query/{queryId}` - Delete a saved query
+
+Interactive API documentation: [https://api.helicone.ai/docs/#/HeliconeSql](https://api.helicone.ai/docs/#/HeliconeSql)
+
+<Warning>
+  **Cost Values Are Stored as Integers**
+
+  Cost values in ClickHouse are stored multiplied by 1,000,000,000 (one billion) for precision. When querying costs via the API, divide by this multiplier to get the actual USD value:
+
+  ```sql theme={null}
+  SELECT
+    request_model,
+    sum(cost) / 1000000000 AS total_cost_usd
+  FROM request_response_rmt
+  WHERE request_created_at > now() - INTERVAL 7 DAY
+  GROUP BY request_model
+  ```
+</Warning>
 
 ### API Limits
 
 * **Query limit**: 300,000 rows maximum per query
+* **Timeout**: 30 seconds per query
 * **Rate limits**: 100 queries/min, 10 CSV downloads/min
 
 ## Related
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
     Enrich requests to make querying easier and more powerful
   </Card>
@@ -4655,10 +4870,10 @@ The Helicone Prompt Editor enables you to:
 * Connect to any major AI provider (Anthropic, OpenAI, Google, Meta, DeepSeek and more)
 
 <Frame>
-  <video width="100%" autoPlay loop muted playsInline>
-    <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/prompts1_2.mp4" type="video/mp4" />
+  <video>
+    <source type="video/mp4" />
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/feature1.png" alt="Prompt building interface" />
+    <img alt="Prompt building interface" />
   </video>
 </Frame>
 
@@ -4671,10 +4886,10 @@ Take full control of your prompt versions:
 * Deploy any version using just the prompt ID
 
 <Frame>
-  <video width="100%" autoPlay loop muted playsInline>
-    <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/prompts2_2.mp4" type="video/mp4" />
+  <video>
+    <source type="video/mp4" />
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/feature2.png" alt="Version control interface" />
+    <img alt="Version control interface" />
   </video>
 </Frame>
 
@@ -4687,10 +4902,10 @@ Write prompts faster and more efficiently:
 * Perform any edits you describe with natural language (⌘K)
 
 <Frame>
-  <video width="100%" autoPlay loop muted playsInline>
-    <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/prompts3_2.mp4" type="video/mp4" />
+  <video>
+    <source type="video/mp4" />
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/feature3.png" alt="Prompt testing interface" />
+    <img alt="Prompt testing interface" />
   </video>
 </Frame>
 
@@ -4702,10 +4917,10 @@ Test and refine your prompts instantly:
 * Experiment with different models, messages, temperatures, and parameters
 
 <Frame>
-  <video width="100%" autoPlay loop muted playsInline>
-    <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/prompts4_2.mp4" type="video/mp4" />
+  <video>
+    <source type="video/mp4" />
 
-    <img src="https://mintlify.s3.us-west-1.amazonaws.com/helicone/static/features/prompts/feature4.png" alt="Prompt testing interface" />
+    <img alt="Prompt testing interface" />
   </video>
 </Frame>
 
@@ -4723,7 +4938,7 @@ We're excited to launch Auto-Improve, an intelligent prompt optimization tool th
 3. Get a new suggested optimized version of your prompt
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=124e56b9ceb7ca006b21df6d2d61c1ee" alt="Auto-Improve feature interface" data-og-width="2588" width="2588" data-og-height="1686" height="1686" data-path="images/prompts/auto-improve.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=20f0066fac9c69a47bf994e819813801 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=60327f7b264b7f43724a802144da4842 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=0034a510623c9f5b42c04e993e89d5be 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=7e1611fd2532407b4d3bd1ba99ad9437 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=6dca9de15f9fd868f89b507404b92e88 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/prompts/auto-improve.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a01068eba24a8ce0de24a5aada2ca6c6 2500w" />
+  <img alt="Auto-Improve feature interface" />
 </Frame>
 
 ### Key Benefits
@@ -4745,7 +4960,7 @@ We're excited to launch Auto-Improve, an intelligent prompt optimization tool th
 
 ### For OpenAI users or Azure
 
-```tsx  theme={null}
+```tsx theme={null}
 const openai = new OpenAI({
   baseURL: "https://generate.helicone.ai/v1",
   defaultHeaders: {
@@ -4774,7 +4989,7 @@ const response = await openai.chat.completions.create({
 
 Bash exmaple
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/prompt/helicone-test/compile \
   --header "Content-Type: application/json" \
@@ -4790,7 +5005,7 @@ curl --request POST \
 
 Javascript example with openai
 
-```tsx  theme={null}
+```tsx theme={null}
 const promptTemplate = await fetch(
   "https://api.helicone.ai/v1/prompt/helicone-test/compile",
   {
@@ -4827,7 +5042,7 @@ Deploy your [Editor](/features/prompts/editor) prompts effortlessly with a light
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 npm install @helicone/generate
 ```
 
@@ -4835,7 +5050,7 @@ npm install @helicone/generate
 
 ### Simple usage with just a prompt ID
 
-```typescript  theme={null}
+```typescript theme={null}
 import { generate } from "@helicone/generate";
 
 // model, temperature, messages inferred from id
@@ -4846,7 +5061,7 @@ console.log(response);
 
 ### With variables
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await generate({
   promptId: "prompt-id",
   inputs: {
@@ -4860,7 +5075,7 @@ console.log(response);
 
 ### With Helicone properties
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await generate({
   promptId: "prompt-id",
   userId: "ajwt2kcoe",
@@ -4873,7 +5088,7 @@ console.log(response);
 
 ### In a chat
 
-```typescript  theme={null}
+```typescript theme={null}
 const promptId = "homework-helper";
 const chat = [];
 
@@ -4942,7 +5157,7 @@ Receive comprehensive insights about your LLM application's performance with aut
 
 ## Why Reports
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Stay Informed" icon="envelope">
     Weekly summaries delivered directly to your inbox or Slack
   </Card>
@@ -4971,8 +5186,8 @@ Weekly reports provide key metrics from the past 7 days:
 
 Navigate to **Settings → Reports** in your Helicone dashboard.
 
-<Frame caption="Configure report delivery settings for email and Slack">
-  <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=2c1014ea2f70bf3c0764252fbe86cb6b" alt="Report configuration interface showing email and Slack delivery options" data-og-width="2696" width="2696" data-og-height="1070" height="1070" data-path="images/enable-reports.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=740932561c99c9b520c593ee61b17dc8 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=c2179acf523cca4d1ede76fa53726e55 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=7514c2aaffa85c2837ded8d1268f0bfd 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=d1e667df5e1cf42489be6b0464a0d1e9 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=2a42fcca27e0fcdfceddf6cc4469ae8d 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/enable-reports.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=c20628f6109f433b2d3f0378838c11e1 2500w" />
+<Frame>
+  <img alt="Report configuration interface showing email and Slack delivery options" />
 </Frame>
 
 <Steps>
@@ -4995,8 +5210,8 @@ Navigate to **Settings → Reports** in your Helicone dashboard.
 
 ## Report Format
 
-<Frame caption="Example weekly report showing key metrics and trends">
-  <img src="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=9d898c1c7c805e8bae5604c14604663d" alt="Helicone weekly report showing cost, requests, error rate, and session metrics" data-og-width="4191" width="4191" data-og-height="2358" height="2358" data-path="images/reports-example.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=280&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=a27de4ab7d3a655be3376d6617b459b5 280w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=560&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=380b1b3f151dbda85cc6acd18fa32f9c 560w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=840&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=4a4478bd700bdedd981451fd843524e0 840w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=1100&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=5a3dc78aeec61fe9d0506378f0902108 1100w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=1650&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=6c49bc7a3fa53a3d86189624434af183 1650w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/reports-example.webp?w=2500&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=e87b6823226f850ccf3f2bd18048b718 2500w" />
+<Frame>
+  <img alt="Helicone weekly report showing cost, requests, error rate, and session metrics" />
 </Frame>
 
 ### Email Reports
@@ -5017,7 +5232,7 @@ Reports show week-over-week comparisons of your key metrics, helping you identif
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Alerts" icon="bell" href="/features/alerts">
     Real-time notifications for cost spikes and errors
   </Card>
@@ -5041,8 +5256,8 @@ When building AI agents or complex workflows, your application often makes multi
 * **Track multi-step conversations**: Reconstruct the complete flow of chatbot interactions and complex tasks
 * **Analyze performance**: Measure outcomes across entire interaction sequences, not just individual requests
 
-<Frame caption="Example: A Session creating an outline for a book about space">
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=b084d6b8351f7c5e442486a840d5c42b" alt="Helicone example of a session template for monitoring and managing inputs from requests sent to your AI applications." data-og-width="5324" width="5324" data-og-height="3128" height="3128" data-path="images/sessions/helicone-session-ui.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=0898b67f7a8ce4521404df46d0de6938 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e3e409c797a435a77b07159928dec6af 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=8f00dc1c5520f7fdd9f7d0ea7d95ccb1 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=0358bd1fad3b2a3efc3d6bf7286b0830 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=ea64868858362af78ce6813b7ef698ab 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-ui.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d42de142d864f649a99afc15821e6b95 2500w" />
+<Frame>
+  <img alt="Helicone example of a session template for monitoring and managing inputs from requests sent to your AI applications." />
 </Frame>
 
 ## Quick Start
@@ -5051,7 +5266,7 @@ When building AI agents or complex workflows, your application often makes multi
   <Step title="Add Session Headers">
     Include three required headers in your LLM requests:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     {
       "Helicone-Session-Id": "unique-session-id",
       "Helicone-Session-Path": "/trace-path", 
@@ -5063,7 +5278,7 @@ When building AI agents or complex workflows, your application often makes multi
   <Step title="Structure Your Paths">
     Use path syntax to represent parent-child relationships:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     "/abstract"                    // Top-level trace
     "/abstract/outline"           // Child trace
     "/abstract/outline/lesson-1"  // Grandchild trace
@@ -5073,7 +5288,7 @@ When building AI agents or complex workflows, your application often makes multi
   <Step title="Make Your Request">
     Execute your LLM request with the session headers included:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const response = await client.chat.completions.create(
       { 
         messages: [{ role: "user", content: "Hello" }], 
@@ -5119,7 +5334,7 @@ The session ID is a unique identifier that groups all related requests together.
 * Different IDs = separate sessions, even if they're related
 * Reusing IDs across different workflows will mix unrelated requests
 
-```typescript  theme={null}
+```typescript theme={null}
 // ✅ Good - unique per conversation
 const sessionId = randomUUID(); // Different for each user conversation
 
@@ -5146,7 +5361,7 @@ Think of session paths as **conceptual groupings** rather than chronological ord
 
 **How Hierarchy Works:**
 
-```typescript  theme={null}
+```typescript theme={null}
 "/conversation"                    // Root level
 "/conversation/initial_question"   // Child of conversation  
 "/conversation/followup"          // Another child of conversation
@@ -5155,7 +5370,7 @@ Think of session paths as **conceptual groupings** rather than chronological ord
 
 **Path Design Patterns:**
 
-```typescript  theme={null}
+```typescript theme={null}
 // Workflow pattern - good for AI agents
 "/task"
 "/task/research" 
@@ -5195,19 +5410,19 @@ The session name is a high-level grouping that makes it easy to filter and organ
 
 ### Required Headers
 
-<ParamField header="Helicone-Session-Id" type="string" required>
+<ParamField type="string">
   Unique identifier for the session. Use UUIDs to avoid conflicts.
 
   Example: `"550e8400-e29b-41d4-a716-446655440000"`
 </ParamField>
 
-<ParamField header="Helicone-Session-Path" type="string" required>
+<ParamField type="string">
   Path representing the trace hierarchy using `/` syntax. Shows parent-child relationships.
 
   Example: `"/abstract"` or `"/parent/child"`
 </ParamField>
 
-<ParamField header="Helicone-Session-Name" type="string" required>
+<ParamField type="string">
   Human-readable name for the session type. Groups similar workflows together.
 
   Example: `"Course Plan"` or `"Customer Support"`
@@ -5338,7 +5553,7 @@ The session name is a high-level grouping that makes it easy to filter and organ
   <Tab title="Pull Request Review">
     Track an automated PR review workflow with multiple analysis steps:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const sessionId = randomUUID();
 
     // Initial PR analysis
@@ -5391,7 +5606,7 @@ The session name is a high-level grouping that makes it easy to filter and organ
   <Tab title="API Documentation Generator">
     Track a multi-step API documentation generation workflow:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const sessionId = randomUUID();
 
     // Analyze API endpoints
@@ -5444,13 +5659,13 @@ The session name is a high-level grouping that makes it easy to filter and organ
   </Tab>
 </Tabs>
 
-<Card title="Complete Session Example" icon="js" iconType="duotone" color="#FF" href="https://github.com/Helicone/helicone/blob/main/examples/session_example/index.ts">
+<Card title="Complete Session Example" icon="js" href="https://github.com/Helicone/helicone/blob/main/examples/session_example/index.ts">
   Full JavaScript implementation showing session hierarchy and tracking
 </Card>
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Vector Database Logging" icon="database" href="/integrations/vectordb/logger-sdk">
     Track vector database queries and embeddings alongside LLM calls
   </Card>
@@ -5503,7 +5718,7 @@ When building LLM applications, you often need to react to events in real-time, 
   <Step title="Set up webhook endpoint">
     Navigate to the [webhooks page](https://us.helicone.ai/webhooks) and add your webhook URL:
 
-        <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=1e33234a69e66e2301579529814c96cb" alt="webhook name" data-og-width="1320" width="1320" data-og-height="1256" height="1256" data-path="images/webhooks/webhook-name.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=2acb74a46a727a84d1e7965482550ee2 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=87f61a938fb3d28b0d477173a581dc0c 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=6fac06949cc9821a7446d987df3dcc5b 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=c6bdb704a5c9735bc1513fc1bcadfee5 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=139040b5aca1034247385a4f9c9813fb 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhook-name.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=348e99461ce86907bec9a3ac416778c4 2500w" />
+    <img alt="webhook name" />
 
     <Note>
       Your webhook endpoint should accept POST requests.
@@ -5513,7 +5728,7 @@ When building LLM applications, you often need to react to events in real-time, 
   <Step title="Configure events and filters">
     Select which events trigger webhooks and add any property filters:
 
-        <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=b3f0894fc03b6e45cf72dc23f19919c5" alt="webhook configuration" data-og-width="1326" width="1326" data-og-height="1258" height="1258" data-path="images/webhooks/webhooks2.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=9d2a16f400f146936df153304dce9545 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=31de3ca76c01613eaa4a0d4bc84c6d58 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=225d7a15f70ef1c3ca8212fdf37e31b9 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=4c1ea92574b1d9ff7ac7db65690792e0 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=5dd461df9c87a5c1af53632979e21fc2 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/webhooks/webhooks2.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=05cd9da82d7bdb1e8945284490011bd3 2500w" />
+    <img alt="webhook configuration" />
 
     <Note>
       You can also create webhooks programmatically using our [REST API](/rest/webhooks/post-v1webhooks).
@@ -5523,7 +5738,7 @@ When building LLM applications, you often need to react to events in real-time, 
   <Step title="Secure your endpoint">
     Copy the HMAC key from the dashboard and validate webhook signatures:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import crypto from "crypto";
 
     function verifySignature(payload, signature, secret) {
@@ -5562,7 +5777,7 @@ Configure your webhook behavior through the [dashboard](https://us.helicone.ai/w
   <Accordion title="Property Filters">
     Filter webhooks based on custom properties you set in requests:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     // In your LLM request
     headers: {
       "Helicone-Property-Environment": "production",
@@ -5586,7 +5801,7 @@ Configure your webhook behavior through the [dashboard](https://us.helicone.ai/w
   <Tab title="Compliance Monitoring">
     Monitor AI responses for regulatory compliance and policy violations:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     export default async function handler(req, res) {
       const { request_id, request_response_url, user_id, metadata } = req.body;
       
@@ -5641,7 +5856,7 @@ Configure your webhook behavior through the [dashboard](https://us.helicone.ai/w
   <Tab title="Data Pipeline">
     Stream LLM data to external systems:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     export default async function handler(req, res) {
       const { request_id, request_response_url, user_id, model } = req.body;
       
@@ -5686,7 +5901,7 @@ Webhooks deliver structured data about completed LLM requests:
 
 **Standard payload:**
 
-```json  theme={null}
+```json theme={null}
 {
   "request_id": "550e8400-e29b-41d4-a716-446655440000",
   "user_id": "user-123", // Only if set in original request
@@ -5697,7 +5912,7 @@ Webhooks deliver structured data about completed LLM requests:
 
 **Enhanced payload (when `include_data` is enabled):**
 
-```json  theme={null}
+```json theme={null}
 {
   "request_id": "550e8400-e29b-41d4-a716-446655440000",
   "user_id": "user-123",
@@ -5720,7 +5935,7 @@ Webhooks deliver structured data about completed LLM requests:
 
 The `request_response_url` contains complete, untruncated data:
 
-```javascript  theme={null}
+```javascript theme={null}
 // Fetch complete data
 const response = await fetch(request_response_url);
 const { request, response: llmResponse } = await response.json();
@@ -5740,7 +5955,7 @@ console.log("Finish reason:", llmResponse.choices[0].finish_reason);
 
 **Always verify webhook signatures:**
 
-```javascript  theme={null}
+```javascript theme={null}
 function verifyWebhookSignature(payload, signature, secret) {
   const hmac = crypto.createHmac("sha256", secret);
   hmac.update(JSON.stringify(payload));
@@ -5781,7 +5996,7 @@ if (!isValid) {
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Scores" icon="star" href="/features/advanced-usage/scores">
     Score LLM responses automatically via webhooks for quality monitoring
   </Card>
@@ -5827,7 +6042,7 @@ When developing webhook integrations, you need to test how your application hand
   <Step title="Create webhook handler">
     Set up a local server to receive webhook events:
 
-    ```python  theme={null}
+    ```python theme={null}
     from fastapi import FastAPI, Request
     import json
 
@@ -5851,7 +6066,7 @@ When developing webhook integrations, you need to test how your application hand
     ```
 
     <Accordion title="Node.js webhook handler example">
-      ```javascript  theme={null}
+      ```javascript theme={null}
       const express = require('express');
       const app = express();
 
@@ -5878,7 +6093,7 @@ When developing webhook integrations, you need to test how your application hand
   <Step title="Set up ngrok tunnel">
     Install and configure ngrok to expose your local server:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Install ngrok (macOS)
     brew install ngrok
 
@@ -5997,7 +6212,7 @@ When developing webhook integrations, you need to test how your application hand
   <Tab title="Event Processing Pipeline">
     Build a complete webhook processing system:
 
-    ```python  theme={null}
+    ```python theme={null}
     import asyncio
     from fastapi import FastAPI, Request, BackgroundTasks
     import aioredis
@@ -6070,7 +6285,7 @@ When developing webhook integrations, you need to test how your application hand
 
 ## Related Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Webhooks" icon="webhook" href="/features/webhooks">
     Learn about webhook events, payloads, and production configuration
   </Card>
@@ -6091,6 +6306,384 @@ When developing webhook integrations, you need to test how your application hand
 <QuestionsSection />
 
 
+# Context Editing
+Source: https://docs.helicone.ai/gateway/concepts/context-editing
+
+Automatically manage conversation context by clearing old tool uses and thinking blocks for long-running AI agent sessions
+
+Context editing enables automatic management of conversation context by intelligently clearing old tool uses and thinking blocks. This can greatly reduce costs in long-running sessions with minimal tradeoffs in context performance.
+
+<Info>
+  Context editing is currently supported for **Anthropic models only**. The configuration is ignored when routing to other providers.
+</Info>
+
+## Why Context Editing
+
+<CardGroup>
+  <Card title="Prevent Context Overflow" icon="memory">
+    Automatically clear old tool results before hitting context limits
+  </Card>
+
+  <Card title="Reduce Token Costs" icon="dollar-sign">
+    Keep only relevant context, reducing input tokens on subsequent calls
+  </Card>
+
+  <Card title="Enable Long Sessions" icon="clock">
+    Run AI agents for longer periods without manual context management
+  </Card>
+</CardGroup>
+
+***
+
+## Quick Start
+
+Enable context editing with a simple configuration. The AI Gateway handles the translation to Anthropic's native format.
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import OpenAI from "openai";
+  import { HeliconeChatCreateParams } from "@helicone/helpers";
+
+  const client = new OpenAI({
+    apiKey: process.env.HELICONE_API_KEY,
+    baseURL: "https://ai-gateway.helicone.ai/v1",
+  });
+
+  const response = await client.chat.completions.create({
+    model: "claude-sonnet-4-20250514",
+    messages: [
+      { role: "system", content: "You are a helpful coding assistant." },
+      { role: "user", content: "Help me debug this application..." }
+      // ... many tool calls and responses
+    ],
+    tools: [/* your tools */],
+    context_editing: {
+      enabled: true
+    }
+  } as HeliconeChatCreateParams);
+  ```
+
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      api_key=os.environ.get("HELICONE_API_KEY"),
+      base_url="https://ai-gateway.helicone.ai/v1",
+  )
+
+  response = client.chat.completions.create(
+      model="claude-sonnet-4-20250514",
+      messages=[
+          {"role": "system", "content": "You are a helpful coding assistant."},
+          {"role": "user", "content": "Help me debug this application..."}
+          # ... many tool calls and responses
+      ],
+      tools=[# your tools],
+      context_editing={
+          "enabled": True
+      }
+  )
+  ```
+
+  ```bash theme={null}
+  curl https://ai-gateway.helicone.ai/v1/chat/completions \
+    -H "Authorization: Bearer $HELICONE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-sonnet-4-20250514",
+      "messages": [
+        {"role": "system", "content": "You are a helpful coding assistant."},
+        {"role": "user", "content": "Help me debug this application..."}
+      ],
+      "tools": [],
+      "context_editing": {
+        "enabled": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+***
+
+## Configuration Options
+
+The `context_editing` object supports two strategies for managing context:
+
+### Clear Tool Uses
+
+Automatically clear old tool use results when context grows too large:
+
+```typescript theme={null}
+context_editing: {
+  enabled: true,
+  clear_tool_uses: {
+    // Trigger clearing when input tokens exceed this threshold
+    trigger: 100000,
+
+    // Keep the most recent N tool uses
+    keep: 5,
+
+    // Ensure at least this many tokens are cleared
+    clear_at_least: 20000,
+
+    // Never clear results from these tools
+    exclude_tools: ["get_user_preferences", "read_config"],
+
+    // Clear tool inputs (arguments) but keep outputs
+    clear_tool_inputs: true
+  }
+}
+```
+
+| Parameter           | Type      | Description                             |
+| ------------------- | --------- | --------------------------------------- |
+| `trigger`           | number    | Token threshold to trigger clearing     |
+| `keep`              | number    | Number of recent tool uses to preserve  |
+| `clear_at_least`    | number    | Minimum tokens to clear when triggered  |
+| `exclude_tools`     | string\[] | Tool names that should never be cleared |
+| `clear_tool_inputs` | boolean   | Clear tool inputs while keeping outputs |
+
+### Clear Thinking
+
+Manage thinking/reasoning blocks in multi-turn conversations:
+
+```typescript theme={null}
+context_editing: {
+  enabled: true,
+  clear_thinking: {
+    // Keep the N most recent thinking turns, or "all" to keep everything
+    keep: 3
+  }
+}
+```
+
+| Parameter | Type            | Description                                |
+| --------- | --------------- | ------------------------------------------ |
+| `keep`    | number \| "all" | Number of thinking turns to keep, or "all" |
+
+***
+
+## Complete Example
+
+Here's a full configuration for a long-running coding agent:
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import OpenAI from "openai";
+  import { HeliconeChatCreateParams } from "@helicone/helpers";
+
+  const client = new OpenAI({
+    apiKey: process.env.HELICONE_API_KEY,
+    baseURL: "https://ai-gateway.helicone.ai/v1",
+  });
+
+  const response = await client.chat.completions.create({
+    model: "claude-sonnet-4-20250514",
+    messages: conversationHistory,
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "read_file",
+          description: "Read a file from the filesystem",
+          parameters: {
+            type: "object",
+            properties: {
+              path: { type: "string", description: "File path to read" }
+            },
+            required: ["path"]
+          }
+        }
+      },
+      {
+        type: "function",
+        function: {
+          name: "write_file",
+          description: "Write content to a file",
+          parameters: {
+            type: "object",
+            properties: {
+              path: { type: "string" },
+              content: { type: "string" }
+            },
+            required: ["path", "content"]
+          }
+        }
+      },
+      {
+        type: "function",
+        function: {
+          name: "run_command",
+          description: "Execute a shell command",
+          parameters: {
+            type: "object",
+            properties: {
+              command: { type: "string" }
+            },
+            required: ["command"]
+          }
+        }
+      }
+    ],
+    reasoning_effort: "medium",
+    context_editing: {
+      enabled: true,
+      clear_tool_uses: {
+        trigger: 150000,        // Trigger at 150k tokens
+        keep: 10,               // Keep last 10 tool uses
+        clear_at_least: 50000,  // Clear at least 50k tokens
+        exclude_tools: ["read_file"],  // Always keep file reads
+        clear_tool_inputs: true  // Clear large file contents from inputs
+      },
+      clear_thinking: {
+        keep: 5  // Keep last 5 thinking blocks
+      }
+    },
+    max_completion_tokens: 16000
+  } as HeliconeChatCreateParams);
+  ```
+
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="claude-sonnet-4-20250514",
+      messages=conversation_history,
+      tools=[
+          {
+              "type": "function",
+              "function": {
+                  "name": "read_file",
+                  "description": "Read a file from the filesystem",
+                  "parameters": {
+                      "type": "object",
+                      "properties": {
+                          "path": {"type": "string", "description": "File path to read"}
+                      },
+                      "required": ["path"]
+                  }
+              }
+          },
+          {
+              "type": "function",
+              "function": {
+                  "name": "write_file",
+                  "description": "Write content to a file",
+                  "parameters": {
+                      "type": "object",
+                      "properties": {
+                          "path": {"type": "string"},
+                          "content": {"type": "string"}
+                      },
+                      "required": ["path", "content"]
+                  }
+              }
+          }
+      ],
+      reasoning_effort="medium",
+      context_editing={
+          "enabled": True,
+          "clear_tool_uses": {
+              "trigger": 150000,
+              "keep": 10,
+              "clear_at_least": 50000,
+              "exclude_tools": ["read_file"],
+              "clear_tool_inputs": True
+          },
+          "clear_thinking": {
+              "keep": 5
+          }
+      },
+      max_completion_tokens=16000
+  )
+  ```
+
+  ```bash theme={null}
+  curl https://ai-gateway.helicone.ai/v1/chat/completions \
+    -H "Authorization: Bearer $HELICONE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-sonnet-4-20250514",
+      "messages": [...],
+      "tools": [...],
+      "reasoning_effort": "medium",
+      "context_editing": {
+        "enabled": true,
+        "clear_tool_uses": {
+          "trigger": 150000,
+          "keep": 10,
+          "clear_at_least": 50000,
+          "exclude_tools": ["read_file"],
+          "clear_tool_inputs": true
+        },
+        "clear_thinking": {
+          "keep": 5
+        }
+      },
+      "max_completion_tokens": 16000
+    }'
+  ```
+</CodeGroup>
+
+***
+
+## Responses API Support
+
+Context editing works with both the Chat Completions API and the [Responses API](/gateway/concepts/responses-api):
+
+```typescript theme={null}
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  apiKey: process.env.HELICONE_API_KEY,
+  baseURL: "https://ai-gateway.helicone.ai/v1",
+});
+
+const response = await client.responses.create({
+  model: "claude-sonnet-4-20250514",
+  input: conversationInput,
+  tools: [/* your tools */],
+  context_editing: {
+    enabled: true,
+    clear_tool_uses: {
+      trigger: 100000,
+      keep: 5
+    }
+  }
+});
+```
+
+***
+
+## Default Behavior
+
+When `context_editing.enabled` is `true` but no specific strategies are provided, the AI Gateway uses sensible defaults:
+
+```typescript theme={null}
+// Minimal configuration
+context_editing: {
+  enabled: true
+}
+
+// Equivalent to
+context_editing: {
+  enabled: true,
+  clear_tool_uses: {}  // Uses Anthropic defaults
+}
+```
+
+***
+
+## Related Features
+
+* [Reasoning](/gateway/concepts/reasoning) - Extended thinking that benefits from context editing
+* [Prompt Caching](/gateway/concepts/prompt-caching) - Cache static context for cost savings
+* [Sessions](/features/sessions) - Track and analyze long-running agent sessions
+
+<Card title="Learn More" href="https://docs.anthropic.com/en/docs/build-with-claude/context-editing">
+  Anthropic Context Editing Documentation
+</Card>
+
+
 # Error Handling & Fallback
 Source: https://docs.helicone.ai/gateway/concepts/error-handling
 
@@ -6102,7 +6695,7 @@ Helicone AI Gateway automatically tries multiple billing methods to ensure your 
 
 The AI Gateway supports two billing methods:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Pass-Through Billing (PTB)" icon="credit-card">
     Pay-as-you-go with Helicone credits. Simple, no provider account needed.
   </Card>
@@ -6177,7 +6770,7 @@ When both billing methods fail, the gateway returns the **most actionable error*
 
     **Example**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "error": {
         "message": "Authentication failed",
@@ -6199,7 +6792,7 @@ When both billing methods fail, the gateway returns the **most actionable error*
 
     **Example**:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "error": {
         "message": "Insufficient credits",
@@ -6242,7 +6835,7 @@ When you see an error, you can determine which billing method it came from:
 
 ## Best Practices
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Configure Both Methods" icon="shield-check">
     Set up both PTB and BYOK for maximum reliability. If one fails, the other serves as backup.
   </Card>
@@ -6270,7 +6863,7 @@ When you see an error, you can determine which billing method it came from:
 
 ### Retry Logic Example
 
-```typescript  theme={null}
+```typescript theme={null}
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -6313,7 +6906,7 @@ async function callWithRetry(maxRetries = 3) {
 
 ### Error Classification
 
-```typescript  theme={null}
+```typescript theme={null}
 function classifyError(error: any) {
   const status = error?.status || 500;
 
@@ -6363,6 +6956,256 @@ function classifyError(error: any) {
 </Info>
 
 
+# Image Generation
+Source: https://docs.helicone.ai/gateway/concepts/image-generation
+
+Generate images through Helicone's AI Gateway using models with native image output like Nano Banana Pro
+
+Helicone's AI Gateway supports image generation through models with native image output capabilities. Use the unified OpenAI-compatible API to generate images - the Gateway handles provider-specific translations automatically.
+
+<Info>
+  Image generation is currently supported for **Nano Banana Pro (gemini-3-pro-image-preview)** via Google AI Studio. Support for additional providers will be added in future updates.
+</Info>
+
+***
+
+## Quick Start
+
+<Tabs>
+  <Tab title="Chat Completions">
+    ```typescript theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.HELICONE_API_KEY,
+      baseURL: "https://ai-gateway.helicone.ai/v1",
+    });
+
+    const response = await client.chat.completions.create({
+      model: "gemini-3-pro-image-preview/google-ai-studio",
+      messages: [
+        { role: "user", content: "Generate an image of a sunset over mountains" }
+      ],
+      max_tokens: 8192
+    });
+
+    // Access generated images
+    const images = response.choices[0].message.images;
+    ```
+  </Tab>
+
+  <Tab title="Responses API">
+    ```typescript theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.HELICONE_API_KEY,
+      baseURL: "https://ai-gateway.helicone.ai/v1",
+    });
+
+    const response = await client.responses.create({
+      model: "gemini-3-pro-image-preview/google-ai-studio",
+      input: "Generate an image of a sunset over mountains",
+      max_output_tokens: 8192
+    });
+
+    // Access generated images from output
+    const messageOutput = response.output.find(item => item.type === "message");
+    const imageContent = messageOutput?.content.find(c => c.type === "output_image");
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Configuration
+
+To enable image generation:
+
+1. Set the `model` to one that supports image output (currently `gemini-3-pro-image-preview/google-ai-studio`, also known as Nano Banana Pro)
+2. Optionally configure `image_generation` to control aspect ratio and size
+
+<Tabs>
+  <Tab title="Chat Completions">
+    ```typescript theme={null}
+    {
+      model: "gemini-3-pro-image-preview/google-ai-studio",
+      messages: [...],
+      image_generation: {
+        aspect_ratio: "16:9",
+        image_size: "2K"
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Responses API">
+    ```typescript theme={null}
+    {
+      model: "gemini-3-pro-image-preview/google-ai-studio",
+      input: "...",
+      image_generation: {
+        aspect_ratio: "16:9",
+        image_size: "2K"
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### image\_generation
+
+| Parameter      | Type   | Description                                            |
+| -------------- | ------ | ------------------------------------------------------ |
+| `aspect_ratio` | string | Image aspect ratio (e.g., `"16:9"`, `"1:1"`, `"9:16"`) |
+| `image_size`   | string | Image resolution (e.g., `"2K"`, `"1K"`)                |
+
+<Note>
+  The `image_generation` field is optional. If omitted, the model uses default settings. However, if you specify `image_generation`, both `aspect_ratio` and `image_size` are required.
+</Note>
+
+***
+
+## Handling Responses
+
+### Chat Completions
+
+<Tabs>
+  <Tab title="Streaming">
+    When streaming, images arrive in chunks via the `images` delta field:
+
+    ```json theme={null}
+    // Image chunks arrive in delta
+    {
+      "choices": [{
+        "delta": {
+          "images": [{
+            "type": "image_url",
+            "image_url": {
+              "url": "data:image/png;base64,iVBORw0KGgo..."
+            }
+          }]
+        }
+      }]
+    }
+    ```
+  </Tab>
+
+  <Tab title="Non-Streaming">
+    Non-streaming responses include images in the message:
+
+    ```json theme={null}
+    {
+      "id": "chatcmpl-abc123",
+      "object": "chat.completion",
+      "model": "gemini-3-pro-image-preview",
+      "choices": [{
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Here's the image you requested:",
+          "images": [{
+            "type": "image_url",
+            "image_url": {
+              "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+            }
+          }]
+        },
+        "finish_reason": "stop"
+      }],
+      "usage": {
+        "prompt_tokens": 12,
+        "completion_tokens": 1024,
+        "total_tokens": 1036
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Responses API
+
+<Tabs>
+  <Tab title="Streaming">
+    Streaming events follow the Responses API format:
+
+    ```json theme={null}
+    // Content part added for image
+    {
+      "type": "response.content_part.added",
+      "item_id": "msg_abc123",
+      "output_index": 0,
+      "content_index": 0,
+      "part": {
+        "type": "output_image",
+        "image_url": ""
+      }
+    }
+
+    // Content part done with full image
+    {
+      "type": "response.content_part.done",
+      "item_id": "msg_abc123",
+      "output_index": 0,
+      "content_index": 0,
+      "part": {
+        "type": "output_image",
+        "image_url": "data:image/png;base64,iVBORw0KGgo..."
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Non-Streaming">
+    ```json theme={null}
+    {
+      "id": "resp_abc123",
+      "object": "response",
+      "status": "completed",
+      "model": "gemini-3-pro-image-preview",
+      "output": [
+        {
+          "id": "msg_abc123",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "Here's the image you requested:"
+            },
+            {
+              "type": "output_image",
+              "image_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+            }
+          ]
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 1024
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Supported Models
+
+| Model                                         | Provider Route   | Description                                                              |
+| --------------------------------------------- | ---------------- | ------------------------------------------------------------------------ |
+| `gemini-3-pro-image-preview/google-ai-studio` | Google AI Studio | Nano Banana Pro - Google's multimodal model with native image generation |
+
+***
+
+## Related
+
+* [Reasoning](/gateway/concepts/reasoning) - Enable reasoning for complex tasks
+* [Responses API](/gateway/concepts/responses-api) - Alternative API format with image support
+
+
 # Prompt Caching
 Source: https://docs.helicone.ai/gateway/concepts/prompt-caching
 
@@ -6372,7 +7215,7 @@ Prompt caching allows you to cache frequently-used context (system prompts, exam
 
 ## Why Prompt Caching
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Reduce Token Costs" icon="dollar-sign">
     Cached prompts are processed at significantly reduced rates by providers (up to 90% savings)
   </Card>
@@ -6396,7 +7239,7 @@ Prompt caching allows you to cache frequently-used context (system prompts, exam
 
 ### Quick Start
 
-```typescript  theme={null}
+```typescript theme={null}
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -6424,7 +7267,7 @@ const response = await client.chat.completions.create({
 
 OpenAI charges standard rates for cache writes and offers significant discounts for cache reads. Exact pricing varies by model.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Helicone Model Registry" href="https://helicone.ai/models">
     View supported models and their caching capabilities
   </Card>
@@ -6444,11 +7287,11 @@ Anthropic provides advanced caching with **cache control breakpoints** (up to 4 
 
 The `@helicone/helpers` SDK extends OpenAI types to support Anthropic's cache control through the OpenAI-compatible interface:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @helicone/helpers
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 import OpenAI from "openai";
 import { HeliconeChatCreateParams } from "@helicone/helpers";
 
@@ -6507,7 +7350,7 @@ Anthropic uses `user_id` as a cache key on their servers. When using the OpenAI-
 * `safety_identifier`
 * `user`
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await client.chat.completions.create({
   model: "claude-3.5-haiku",
   messages: [/* your messages */],
@@ -6605,14 +7448,319 @@ Gemini 2.5 Pro has different rates for larger contexts:
 | >200K tokens | \$2.50/MTok | \$0.625/MTok | \$2.875/MTok        |
 
 
+# Reasoning
+Source: https://docs.helicone.ai/gateway/concepts/reasoning
+
+Enable reasoning through a unified API on Helicone's AI Gateway
+
+Helicone's AI Gateway provides a unified interface for reasoning across providers. Use the same parameters regardless of provider - the Gateway handles the translation automatically.
+
+***
+
+## Quick Start
+
+<Tabs>
+  <Tab title="Chat Completions">
+    ```typescript theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.HELICONE_API_KEY,
+      baseURL: "https://ai-gateway.helicone.ai/v1",
+    });
+
+    const response = await client.chat.completions.create({
+      model: "claude-sonnet-4-20250514",
+      messages: [
+        { role: "user", content: "What is the sum of the first 100 prime numbers?" }
+      ],
+      reasoning_effort: "medium",
+      max_completion_tokens: 16000
+    });
+    ```
+  </Tab>
+
+  <Tab title="Responses API">
+    ```typescript theme={null}
+    import OpenAI from "openai";
+
+    const client = new OpenAI({
+      apiKey: process.env.HELICONE_API_KEY,
+      baseURL: "https://ai-gateway.helicone.ai/v1",
+    });
+
+    const response = await client.responses.create({
+      model: "claude-sonnet-4-20250514",
+      input: "What is the sum of the first 100 prime numbers?",
+      reasoning: {
+        effort: "medium"
+      }
+    });
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Configuration
+
+<Tabs>
+  <Tab title="Chat Completions">
+    ```typescript theme={null}
+    {
+      reasoning_effort: "low" | "medium" | "high",
+      reasoning_options: {
+        budget_tokens: 8000  // Optional token budget
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Responses API">
+    ```typescript theme={null}
+    {
+      reasoning: {
+        effort: "low" | "medium" | "high"
+      },
+      reasoning_options: {
+        budget_tokens: 8000  // Optional token budget
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### reasoning\_effort
+
+| Level    | Description                         |
+| -------- | ----------------------------------- |
+| `low`    | Light reasoning for simple tasks    |
+| `medium` | Balanced reasoning                  |
+| `high`   | Deep reasoning for complex problems |
+
+<Note>
+  For Anthropic models, the default is 4096 max completion tokens with 2048 budget reasoning tokens.
+</Note>
+
+### reasoning\_options.budget\_tokens
+
+The `budget_tokens` parameter sets the maximum number of tokens the model can use for reasoning.
+
+<Warning>
+  **For Google (Gemini) models:** `reasoning_effort` is **required** to enable thinking. Passing `budget_tokens` alone will **not** enable reasoning - you must also specify `reasoning_effort`.
+</Warning>
+
+```typescript theme={null}
+// ✅ Correct: reasoning_effort enables thinking, budget_tokens limits it
+{
+  reasoning_effort: "high",
+  reasoning_options: { budget_tokens: 4096 }
+}
+
+// ❌ Incorrect for Gemini: budget_tokens alone does nothing
+{
+  reasoning_options: { budget_tokens: 4096 }  // Reasoning will be disabled
+}
+```
+
+***
+
+## Handling Responses
+
+### Chat Completions
+
+<Tabs>
+  <Tab title="Streaming">
+    When streaming, reasoning content arrives in chunks via the `reasoning` delta field, followed by content, and finally `reasoning_details` with the finish reason:
+
+    ```json theme={null}
+    // Reasoning chunks arrive first
+    {
+      "choices": [{
+        "delta": { "reasoning": "Let me think about this..." }
+      }]
+    }
+
+    // Then content chunks
+    {
+      "choices": [{
+        "delta": { "content": "The answer is 42." }
+      }]
+    }
+
+    // Final chunk includes reasoning_details with signature
+    {
+      "choices": [{
+        "delta": {
+          "reasoning_details": [{
+            "thinking": "The user is asking for...",
+            "signature": "EpICCkYIChgCKkCfWt1pnGxEcz48yQJvie3ppkXZ8ryd..."
+          }]
+        },
+        "finish_reason": "stop"
+      }]
+    }
+    ```
+  </Tab>
+
+  <Tab title="Non-Streaming">
+    Non-streaming responses include the full reasoning in the message:
+
+    ```json theme={null}
+    {
+      "id": "msg_01S1QpjYur8kLeEVKVoKxdTP",
+      "object": "chat.completion",
+      "model": "claude-haiku-4-5-20251001",
+      "choices": [{
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Why don't scientists trust atoms?\n\nBecause they make up everything!",
+          "reasoning": "The user is asking for a very short joke. I should provide something quick, light, and funny...",
+          "reasoning_details": [{
+            "thinking": "The user is asking for a very short joke...",
+            "signature": "Ev8DCkYIChgCKkBeHyembBdwl8C/a/8luinDP0w5/oQP..."
+          }]
+        },
+        "finish_reason": "stop"
+      }],
+      "usage": {
+        "prompt_tokens": 58,
+        "completion_tokens": 108,
+        "total_tokens": 166
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Responses API
+
+<Tabs>
+  <Tab title="Streaming">
+    Streaming events follow the Responses API format:
+
+    ```json theme={null}
+    // Reasoning summary text delta
+    {
+      "type": "response.reasoning_summary_text.delta",
+      "item_id": "rs_0ab50bce3156357b...",
+      "output_index": 0,
+      "summary_index": 0,
+      "delta": "Let me think about this..."
+    }
+
+    // Reasoning item complete
+    {
+      "type": "response.output_item.done",
+      "output_index": 0,
+      "item": {
+        "id": "rs_0ab50bce3156357b...",
+        "type": "reasoning",
+        "summary": [{
+          "type": "summary_text",
+          "text": "**Crafting the response**\n\nThe user wants..."
+        }]
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Non-Streaming (OpenAI)">
+    ```json theme={null}
+    {
+      "id": "resp_038bfaf6e50f1c45...",
+      "object": "response",
+      "status": "completed",
+      "model": "gpt-5-mini-2025-08-07",
+      "output": [
+        {
+          "id": "rs_038bfaf6e50f1c45...",
+          "type": "reasoning",
+          "summary": [{
+            "type": "summary_text",
+            "text": "**Generating programming jokes**\n\nThe user wants a short joke..."
+          }]
+        },
+        {
+          "id": "msg_038bfaf6e50f1c45...",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [{
+            "type": "output_text",
+            "text": "To understand recursion, you must first understand recursion."
+          }]
+        }
+      ],
+      "usage": {
+        "input_tokens": 17,
+        "output_tokens": 336,
+        "output_tokens_details": {
+          "reasoning_tokens": 320
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Non-Streaming (Anthropic)">
+    Anthropic responses include `encrypted_content` for reasoning validation:
+
+    ```json theme={null}
+    {
+      "id": "msg_017G4K2w5s6zEn3KZ6jp455j",
+      "object": "response",
+      "status": "completed",
+      "model": "claude-haiku-4-5-20251001",
+      "output": [
+        {
+          "id": "rs_msg_017G4K2w5s6zEn3KZ6jp455j_0",
+          "type": "reasoning",
+          "summary": [{
+            "type": "summary_text",
+            "text": "The user wants me to tell a short joke about programming..."
+          }],
+          "encrypted_content": "EuYGCkYIChgCKkBxEozbYO/Z5AL2tlDHwBHcBEOG..."
+        },
+        {
+          "id": "msg_msg_017G4K2w5s6zEn3KZ6jp455j",
+          "type": "message",
+          "status": "completed",
+          "role": "assistant",
+          "content": [{
+            "type": "output_text",
+            "text": "Why do programmers prefer dark mode?\n\nBecause light attracts bugs!"
+          }]
+        }
+      ],
+      "usage": {
+        "input_tokens": 47,
+        "output_tokens": 294
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+  Anthropic models always return `encrypted_content` (signatures) in reasoning items. These signatures validate the reasoning chain and are required for multi-turn conversations. Other providers like OpenAI can optionally return signatures when configured.
+</Note>
+
+***
+
+## Related
+
+* [Responses API](/gateway/concepts/responses-api) - Alternative API format with reasoning support
+* [Context Editing](/gateway/concepts/context-editing) - Manage context in long reasoning sessions
+
+
 # Responses API
 Source: https://docs.helicone.ai/gateway/concepts/responses-api
 
 Use the OpenAI Responses API format through Helicone AI Gateway with your Helicone API key
 
-<Info>
-  Currently, the Responses API is not supported for Anthropic models.
-</Info>
+The Responses API is OpenAI's newer interface for conversational AI that supports advanced features like reasoning, tool use, and streaming. Helicone's AI Gateway supports the Responses API format for both OpenAI and Anthropic models.
 
 ## Quick Start
 
@@ -6652,7 +7800,7 @@ Use your Helicone API key and the AI Gateway base URL. Then call the OpenAI SDK'
   print(response.output_text)
   ```
 
-  ```bash curl theme={null}
+  ```bash theme={null}
   curl https://ai-gateway.helicone.ai/v1/responses \
     -H "Authorization: Bearer $HELICONE_API_KEY" \
     -H "Content-Type: application/json" \
@@ -6674,54 +7822,303 @@ Use your Helicone API key and the AI Gateway base URL. Then call the OpenAI SDK'
 * Helicone AI Gateway overview: [https://docs.helicone.ai/gateway/overview](https://docs.helicone.ai/gateway/overview)
 
 
+# Claude Agent SDK Integration
+Source: https://docs.helicone.ai/gateway/integrations/claude-agent-sdk
+
+Use Helicone AI Gateway with the Claude Agent SDK for building AI agents with automatic observability
+
+## Introduction
+
+The [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/typescript) allows you to build powerful AI agents that can use tools and make decisions autonomously.
+
+<Note>
+  This integration uses [Helicone's Model Context Protocol (MCP)](https://github.com/Helicone/helicone/tree/main/helicone-mcp) to provide seamless AI Gateway access to your Claude agents.
+</Note>
+
+## Integration Steps
+
+<Steps>
+  <Step title={strings.generateKey}>
+    Sign up at [helicone.ai](https://www.helicone.ai) and generate an [API key](https://us.helicone.ai/settings/api-keys).
+
+    Make sure to have some [credits](https://us.helicone.ai/credits) available in your Helicone account to make requests (or BYOK).
+  </Step>
+
+  <Step title="Install the Helicone MCP Package">
+    <CodeGroup>
+      ```bash npm theme={null}
+      npm install @helicone/mcp
+      ```
+
+      ```bash yarn theme={null}
+      yarn add @helicone/mcp
+      ```
+
+      ```bash pnpm theme={null}
+      pnpm add @helicone/mcp
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Configure MCP Server in Your Application">
+    <Tabs>
+      <Tab title="Claude Desktop (Development)">
+        Add to your Claude Desktop configuration:
+
+        * **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+        * **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+        ```json theme={null}
+        {
+          "mcpServers": {
+            "helicone": {
+              "command": "npx",
+              "args": ["@helicone/mcp@latest"],
+              "env": {
+                "HELICONE_API_KEY": "sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx"
+              }
+            }
+          }
+        }
+        ```
+
+        The Helicone MCP tools will be automatically available in Claude Desktop.
+      </Tab>
+
+      <Tab title="Claude Agent SDK">
+        ```typescript theme={null}
+        import { query } from '@anthropic-ai/claude-agent-sdk';
+
+        // Make a query with Helicone MCP
+        const result = await query({
+          prompt: 'Use the use_ai_gateway tool to ask GPT-4o: "What is Helicone?"',
+          options: {
+            mcpServers: {
+              helicone: {
+                command: 'npx',
+                args: ['@helicone/mcp'],
+                env: {
+                  HELICONE_API_KEY: process.env.HELICONE_API_KEY
+                }
+              }
+            },
+            // Explicitly allow Helicone MCP tools (recommended for production)
+            allowedTools: [
+              'mcp__helicone__use_ai_gateway',
+              'mcp__helicone__query_requests',
+              'mcp__helicone__query_sessions'
+            ]
+          }
+        });
+
+        // Extract the response
+        for await (const message of result.sdkMessages) {
+          if (message.type === 'result' && message.result) {
+            console.log('Response:', message.result);
+          }
+        }
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Test the Integration">
+    ```typescript theme={null}
+    import { query } from '@anthropic-ai/claude-agent-sdk';
+
+    const result = await query({
+      prompt: 'Use the use_ai_gateway tool to generate a creative story about AI using gpt-4o with temperature 0.8',
+      options: {
+        mcpServers: {
+          helicone: {
+            command: 'npx',
+            args: ['@helicone/mcp'],
+            env: {
+              HELICONE_API_KEY: process.env.HELICONE_API_KEY
+            }
+          }
+        },
+        allowedTools: ['mcp__helicone__use_ai_gateway']
+      }
+    });
+
+    // Get the response
+    for await (const message of result.sdkMessages) {
+      if (message.type === 'result' && message.result) {
+        console.log(message.result);
+      }
+    }
+    ```
+
+    The agent will automatically use the `use_ai_gateway` tool to make the request through Helicone AI Gateway.
+  </Step>
+</Steps>
+
+## Available MCP Tools
+
+### `use_ai_gateway`
+
+Make requests to any LLM provider through Helicone AI Gateway with automatic observability.
+
+**Parameters:**
+
+* `model` (required): Model name (e.g., `gpt-4o`, `claude-sonnet-4`, `gemini-2.0-flash` - see [Supported Models](https://helicone.ai/models) for more)
+* `messages` (required): Array of conversation messages
+* `max_tokens` (optional): Maximum tokens to generate
+* `temperature` (optional): Response randomness (0-2)
+* `sessionId` (optional): Session ID for request grouping
+* `sessionName` (optional): Human-readable session name
+* `userId` (optional): User identifier for tracking
+* `customProperties` (optional): Custom metadata for filtering
+
+### `query_requests`
+
+Query historical requests for debugging and analysis with filters, pagination, and sorting.
+
+### `query_sessions`
+
+Query conversation sessions with filtering, search, and time range capabilities.
+
+## Complete Working Examples
+
+### Basic Agent with Session Tracking
+
+```typescript theme={null}
+import { query } from '@anthropic-ai/claude-agent-sdk';
+
+// Configure MCP server
+const mcpConfig = {
+  helicone: {
+    command: 'npx',
+    args: ['@helicone/mcp'],
+    env: {
+      HELICONE_API_KEY: process.env.HELICONE_API_KEY
+    }
+  }
+};
+
+// Make a request with session tracking
+const sessionId = `chat-${Date.now()}`;
+const result = await query({
+  prompt: `Use the use_ai_gateway tool to ask Claude Sonnet: "Plan a 3-day trip to Japan"
+
+Use these settings:
+- sessionId: "${sessionId}"
+- sessionName: "travel-planning"
+- customProperties: {"topic": "travel", "destination": "japan"}`,
+  options: {
+    mcpServers: mcpConfig,
+    allowedTools: ['mcp__helicone__use_ai_gateway']
+  }
+});
+
+// Extract response
+for await (const message of result.sdkMessages) {
+  if (message.type === 'result' && message.result) {
+    console.log('Travel Plan:', message.result);
+  }
+}
+```
+
+### Multi-Model Comparison
+
+```typescript theme={null}
+import { query } from '@anthropic-ai/claude-agent-sdk';
+
+const sessionId = `comparison-${Date.now()}`;
+const result = await query({
+  prompt: `Compare responses from multiple models on: "Explain quantum computing in simple terms"
+
+1. Use GPT-4o-mini (fast, cost-effective)
+2. Use Claude Sonnet (high quality)
+3. Use GPT-4o (balanced)
+
+Use sessionId: "${sessionId}" for all requests so I can compare them later.`,
+  options: {
+    mcpServers: {
+      helicone: {
+        command: 'npx',
+        args: ['@helicone/mcp'],
+        env: {
+          HELICONE_API_KEY: process.env.HELICONE_API_KEY
+        }
+      }
+    },
+    allowedTools: ['mcp__helicone__use_ai_gateway']
+  }
+});
+
+// Get comparison results
+for await (const message of result.sdkMessages) {
+  if (message.type === 'result') {
+    console.log('Comparison:', message.result);
+  }
+}
+```
+
+### Self-Analyzing Agent
+
+```typescript theme={null}
+import { query } from '@anthropic-ai/claude-agent-sdk';
+
+const result = await query({
+  prompt: `Perform a task and then analyze your own performance:
+
+1. Use the use_ai_gateway tool to generate a haiku about AI
+2. Then use query_requests to check how much the request cost
+3. Use query_sessions to see your recent activity
+4. Provide a summary of your performance and costs`,
+  options: {
+    mcpServers: {
+      helicone: {
+        command: 'npx',
+        args: ['@helicone/mcp'],
+        env: {
+          HELICONE_API_KEY: process.env.HELICONE_API_KEY
+        }
+      }
+    },
+    allowedTools: [
+      'mcp__helicone__use_ai_gateway',
+      'mcp__helicone__query_requests',
+      'mcp__helicone__query_sessions'
+    ]
+  }
+});
+
+// Get self-analysis
+for await (const message of result.sdkMessages) {
+  if (message.type === 'result') {
+    console.log('Self-Analysis:', message.result);
+  }
+}
+```
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Model Registry" icon="list" href="https://helicone.ai/models">
+    Browse all supported models and providers
+  </Card>
+
+  <Card title="Dashboard" icon="chart-line" href="https://us.helicone.ai">
+    View your agent's requests and analytics
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Set up automatic failovers and routing
+  </Card>
+
+  <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
+    Learn about advanced filtering and analytics
+  </Card>
+</CardGroup>
+
+
 # OpenAI Codex
 Source: https://docs.helicone.ai/gateway/integrations/codex
 
 Use OpenAI Codex CLI and SDK with Helicone AI Gateway to log your coding agent interactions.
-
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
 
 <Info>
   This integration uses the [AI Gateway](/gateway/overview), which provides a unified API for multiple LLM providers. The AI Gateway is currently in beta.
@@ -6731,7 +8128,7 @@ export const strings = {
 
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title="Configure Codex config file">
@@ -6755,7 +8152,7 @@ export const strings = {
   <Step title="Set your Helicone API key">
     Set the `HELICONE_API_KEY` environment variable:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
   </Step>
@@ -6763,7 +8160,7 @@ export const strings = {
   <Step title="Run Codex with Helicone">
     Use Codex as normal. Your requests will automatically be logged to Helicone:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # If you set model_provider in config.toml
     codex "What files are in the current directory?"
 
@@ -6773,10 +8170,10 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Codex CLI") }} />
+    <div />
 
     <Tip>
-      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
     </Tip>
   </Step>
 </Steps>
@@ -6785,11 +8182,11 @@ export const strings = {
 
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title="Install the Codex SDK">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @openai/codex-sdk
     ```
   </Step>
@@ -6797,7 +8194,7 @@ export const strings = {
   <Step title="Configure the SDK with Helicone">
     Initialize the Codex SDK with the AI Gateway base URL:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { Codex } from "@openai/codex-sdk";
 
     const codex = new Codex({
@@ -6820,7 +8217,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Codex SDK") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -6833,23 +8230,313 @@ Once integrated with Helicone AI Gateway, you can take advantage of:
 * **Custom Properties**: Add metadata to your requests for better organization
 * **Rate Limiting**: Control usage and prevent abuse
 
-## {strings.relatedGuides}
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
 
-<CardGroup cols={2}>
-  <Card title="AI Gateway Overview" icon="book-open" href="/gateway/overview" iconType="light" vertical>
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="book-open" href="/gateway/overview">
     Learn more about Helicone's AI Gateway and its features
   </Card>
 
-  <Card title="Responses API Support" icon="code" href="/gateway/concepts/responses-api" iconType="light" vertical>
+  <Card title="Responses API Support" icon="code" href="/gateway/concepts/responses-api">
     Use the OpenAI Responses API format through Helicone AI Gateway
   </Card>
 
-  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing" iconType="light" vertical>
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
     Configure automatic routing and fallbacks for reliability
   </Card>
 
-  <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties" iconType="light" vertical>
+  <Card title="Custom Properties" icon="tag" href="/features/advanced-usage/custom-properties">
     Add metadata to your requests for better tracking and organization
+  </Card>
+</CardGroup>
+
+
+# DSPy
+Source: https://docs.helicone.ai/gateway/integrations/dpsy
+
+Integrate Helicone AI Gateway with DSPy to access 100+ LLM providers with unified observability and optimization.
+
+## Introduction
+
+[DSPy](https://dspy.ai) is a declarative framework for building modular AI software with structured code instead of brittle prompts, offering algorithms that compile AI programs into effective prompts and weights for language models across classifiers, RAG pipelines, and agent loops.
+
+## Integration Steps
+
+<Steps>
+  <Step title={strings.generateKey}>
+    <div />
+  </Step>
+
+  <Step title={strings.setApiKey}>
+    Create a `.env` file in your project.
+
+    ```env theme={null}
+    HELICONE_API_KEY=sk-helicone-...
+    ```
+  </Step>
+
+  <Step title={strings.installSDK("DSPy")}>
+    ```bash Python theme={null}
+    pip install dspy
+    ```
+  </Step>
+
+  <Step title={strings.startUsing("DSPy")}>
+    ```python Python theme={null}
+    import dspy
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    # Configure DSPy to use Helicone AI Gateway
+    lm = dspy.LM(
+      'gpt-4o-mini',  # or any other model from the Helicone model registry
+      api_key=os.getenv('HELICONE_API_KEY'),
+      api_base='https://ai-gateway.helicone.ai/'
+    )
+
+    dspy.configure(lm=lm)
+
+    print(lm("Hello, world!"))
+    ```
+
+    <div />
+  </Step>
+
+  <Step title={strings.verifyInHelicone}>
+    <div />
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
+  </Step>
+</Steps>
+
+## Complete Working Examples
+
+### Basic Chain of Thought
+
+```python Python theme={null}
+import dspy
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Configure Helicone AI Gateway
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1'
+)
+dspy.configure(lm=lm)
+
+# Define a module
+qa = dspy.ChainOfThought('question -> answer')
+
+# Run inference
+response = qa(question="How many floors are in the castle David Gregory inherited?")
+
+print('Answer:', response.answer)
+print('Reasoning:', response.reasoning)
+```
+
+### Custom Generation Configuration
+
+Configure temperature, max\_tokens, and other parameters:
+
+```python Python theme={null}
+import dspy
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Configure with custom generation parameters
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    temperature=0.9,
+    max_tokens=2000
+)
+dspy.configure(lm=lm)
+
+# Use with any DSPy module
+predict = dspy.Predict("question -> creative_answer")
+response = predict(question="Write a creative story about AI")
+print(response.creative_answer)
+```
+
+### Tracking with Custom Properties
+
+Add custom properties to track and filter your requests in the Helicone dashboard:
+
+```python Python theme={null}
+import dspy
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Configure with custom Helicone headers
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    extra_headers={
+        # Session tracking
+        'Helicone-Session-Id': 'dspy-example-session',
+        'Helicone-Session-Name': 'Question Answering',
+
+        # User tracking
+        'Helicone-User-Id': 'user-123',
+
+        # Custom properties for filtering
+        'Helicone-Property-Environment': 'production',
+        'Helicone-Property-Module': 'chain-of-thought',
+        'Helicone-Property-Version': '1.0.0'
+    }
+)
+dspy.configure(lm=lm)
+
+# Use normally
+qa = dspy.ChainOfThought('question -> answer')
+response = qa(question="What is DSPy?")
+print(response.answer)
+```
+
+## Helicone Prompts Integration
+
+Use Helicone Prompts for centralized prompt management with DSPy signatures:
+
+```python Python theme={null}
+import dspy
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Configure with prompt parameters
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    extra_body={
+        'prompt_id': 'customer-support-prompt-id',
+        'version_id': 'version-uuid',
+        'environment': 'production',
+        'inputs': {
+            'customer_name': 'Sarah',
+            'issue_type': 'technical'
+        }
+    }
+)
+dspy.configure(lm=lm)
+```
+
+<Note>
+  Learn more about [Prompts with AI Gateway](/gateway/concepts/prompt-caching).
+</Note>
+
+## Advanced Features
+
+### Rate Limiting
+
+Configure rate limits for your DSPy applications:
+
+```python Python theme={null}
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    extra_headers={
+        'Helicone-Rate-Limit-Policy': 'basic-100'
+    }
+)
+```
+
+### Caching
+
+Enable intelligent caching to reduce costs:
+
+```python Python theme={null}
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    cache=True  # DSPy's built-in caching works with Helicone
+)
+```
+
+### Session Tracking for Multi-Turn Conversations
+
+Track entire conversation flows in DSPy programs:
+
+```python Python theme={null}
+import uuid
+
+session_id = str(uuid.uuid4())
+
+lm = dspy.LM(
+    'gpt-4o-mini',
+    api_key=os.getenv('HELICONE_API_KEY'),
+    api_base='https://ai-gateway.helicone.ai/v1',
+    extra_headers={
+        'Helicone-Session-Id': session_id,
+        'Helicone-Session-Name': 'Customer Support',
+        'Helicone-Session-Path': '/support/chat'
+    }
+)
+dspy.configure(lm=lm)
+
+# All calls in this session will be grouped together
+qa = dspy.ChainOfThought('question -> answer')
+
+# Multiple turns
+response1 = qa(question="What is your return policy?")
+response2 = qa(question="How long does shipping take?")
+response3 = qa(question="Do you ship internationally?")
+
+# View the full conversation in Helicone Sessions
+```
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Configure intelligent routing and automatic failover
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
+  </Card>
+
+  <Card title="Prompt Management" icon="code" href="/gateway/concepts/prompt-caching">
+    Version and manage prompts with Helicone Prompts
+  </Card>
+
+  <Card title="Custom Properties" icon="tags" href="/features/advanced-usage/custom-properties">
+    Add metadata to track and filter your requests
+  </Card>
+
+  <Card title="Sessions" icon="link" href="/features/sessions">
+    Track multi-turn conversations and user sessions
+  </Card>
+
+  <Card title="Rate Limiting" icon="gauge" href="/features/advanced-usage/custom-rate-limits">
+    Configure rate limits for your applications
+  </Card>
+
+  <Card title="Caching" icon="bolt" href="/features/advanced-usage/caching">
+    Reduce costs and latency with intelligent caching
   </Card>
 </CardGroup>
 
@@ -6858,50 +8545,6 @@ Once integrated with Helicone AI Gateway, you can take advantage of:
 Source: https://docs.helicone.ai/gateway/integrations/langchain
 
 Integrate Helicone AI Gateway with LangChain to access 100+ LLM providers with unified observability.
-
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
 
 ## Introduction
 
@@ -6928,14 +8571,14 @@ export const strings = {
   </Step>
 
   <Step title="Set environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     # Your Helicone API key
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
 
     Create a `.env` file in your project:
 
-    ```env  theme={null}
+    ```env theme={null}
     HELICONE_API_KEY=sk-helicone-...
     ```
   </Step>
@@ -7006,7 +8649,7 @@ export const strings = {
       The **only changes** from a standard LangChain setup are the `apiKey`, `baseURL` (or `base_url` in Python), and optional tracking headers. Everything else stays the same!
     </Info>
 
-    <div dangerouslySetInnerHTML={{ __html: strings.modelRegistryDescription }} />
+    <div />
   </Step>
 
   <Step title="Use LangChain normally">
@@ -7037,7 +8680,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.viewRequestsInDashboard}>
-    <div dangerouslySetInnerHTML={{ __html: strings.viewRequestsInDashboardDescription("LangChain") }} />
+    <div />
 
     * Request/response bodies
     * Latency metrics
@@ -7047,7 +8690,7 @@ export const strings = {
     * Session tracking
 
     <Tip>
-      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
     </Tip>
   </Step>
 </Steps>
@@ -7418,9 +9061,13 @@ You can add custom properties to track and filter your requests:
   ```
 </CodeGroup>
 
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
     Learn about Helicone's AI Gateway features and capabilities
   </Card>
@@ -7451,54 +9098,239 @@ You can add custom properties to track and filter your requests:
 </CardGroup>
 
 
+# Langfuse Integration
+Source: https://docs.helicone.ai/gateway/integrations/langfuse
+
+Integrate Helicone AI Gateway with Langfuse to access 100+ LLM providers with observability and LLM tracing.
+
+## Introduction
+
+[Langfuse](https://langfuse.com/) is an open-source LLM observability and analytics platform that provides tracing, monitoring, and analytics for LLM applications.
+
+<Note>
+  This integration requires only **two changes** to your existing Langfuse code - updating the base URL and API key.
+</Note>
+
+## Integration Steps
+
+<Steps>
+  <Step title={strings.generateKey}>
+    <div />
+
+    Create a `.env` file in your project:
+
+    ```env theme={null}
+    HELICONE_API_KEY=sk-helicone-...
+    ```
+  </Step>
+
+  <Step title="Install Langfuse packages">
+    ```bash theme={null}
+    pip install langfuse python-dotenv
+    ```
+  </Step>
+
+  <Step title="Create a Langfuse OpenAI client using Helicone">
+    Use Langfuse's OpenAI client wrapper with Helicone's base URL:
+
+    ```python theme={null}
+    import os
+    from dotenv import load_dotenv
+    from langfuse.openai import openai
+
+    # Load environment variables
+    load_dotenv()
+
+    # Create an OpenAI client with Helicone's base URL
+    client = openai.OpenAI(
+        api_key=os.getenv("HELICONE_API_KEY"),
+        base_url="https://ai-gateway.helicone.ai/"
+    )
+    ```
+  </Step>
+
+  <Step title="Make requests with Langfuse tracing">
+    Your existing Langfuse code continues to work without any changes:
+
+    ```python theme={null}
+    # Make a chat completion request
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Tell me a fun fact about space."}
+        ],
+        name="fun-fact-request"  # Optional: Name of the generation in Langfuse
+    )
+
+    # Print the assistant's reply
+    print(response.choices[0].message.content)
+    ```
+
+    <div />
+  </Step>
+
+  <Step title={strings.viewRequestsInDashboard}>
+    <div />
+
+    * Request/response bodies
+    * Latency metrics
+    * Token usage and costs
+    * Model performance analytics
+    * Error tracking
+    * LLM traces and spans in Langfuse
+    * Session tracking
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
+  </Step>
+</Steps>
+
+## Complete Working Example
+
+```python theme={null}
+#!/usr/bin/env python3
+
+import os
+from dotenv import load_dotenv
+from langfuse.openai import openai
+
+# Load environment variables
+load_dotenv()
+
+# Create an OpenAI client with Helicone's base URL
+client = openai.OpenAI(
+    api_key=os.getenv("HELICONE_API_KEY"),
+    base_url="https://ai-gateway.helicone.ai/"
+)
+
+# Make a chat completion request
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me a fun fact about space."}
+    ],
+    name="fun-fact-request"  # Optional: Name of the generation in Langfuse
+)
+
+# Print the assistant's reply
+print(response.choices[0].message.content)
+```
+
+### Streaming Responses
+
+Langfuse supports streaming responses with full observability:
+
+```python theme={null}
+# Streaming example
+stream = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "user", "content": "Write a short story about a robot learning to code."}
+    ],
+    stream=True,
+    name="streaming-story"
+)
+
+print("🤖 Assistant (streaming):")
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="", flush=True)
+print("\n")
+```
+
+### Nested Example
+
+```python theme={null}
+import os
+from dotenv import load_dotenv
+from langfuse import observe
+from langfuse.openai import openai
+
+load_dotenv()
+
+client = openai.OpenAI(
+    base_url="https://ai-gateway.helicone.ai/",
+    api_key=os.getenv("HELICONE_API_KEY"),
+)
+
+@observe()  # This decorator enables tracing of the function
+def analyze_text(text: str):
+    # First LLM call: Summarize the text
+    summary_response = summarize_text(text)
+    summary = summary_response.choices[0].message.content
+
+    # Second LLM call: Analyze the sentiment of the summary
+    sentiment_response = analyze_sentiment(summary)
+    sentiment = sentiment_response.choices[0].message.content
+
+    return {
+        "summary": summary,
+        "sentiment": sentiment
+    }
+
+@observe()  # Nested function to be traced
+def summarize_text(text: str):
+    return client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You summarize texts in a concise manner."},
+            {"role": "user", "content": f"Summarize the following text:\n{text}"}
+        ],
+        name="summarize-text"
+    )
+
+@observe()  # Nested function to be traced
+def analyze_sentiment(summary: str):
+    return client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You analyze the sentiment of texts."},
+            {"role": "user", "content": f"Analyze the sentiment of the following summary:\n{summary}"}
+        ],
+        name="analyze-sentiment"
+    )
+
+# Example usage
+text_to_analyze = "OpenAI's GPT-4 model has significantly advanced the field of AI, setting new standards for language generation."
+analyze_text(text_to_analyze)
+```
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Configure intelligent routing and automatic failover
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
+  </Card>
+
+  <Card title="Custom Properties" icon="tags" href="/features/advanced-usage/custom-properties">
+    Add metadata to track and filter your requests
+  </Card>
+
+  <Card title="Sessions" icon="link" href="/features/sessions">
+    Track multi-turn conversations and user sessions
+  </Card>
+
+  <Card title="Rate Limiting" icon="gauge" href="/features/advanced-usage/custom-rate-limits">
+    Configure rate limits for your applications
+  </Card>
+</CardGroup>
+
+
 # LangGraph Integration
 Source: https://docs.helicone.ai/gateway/integrations/langgraph
 
 Integrate Helicone AI Gateway with LangGraph to build multi-agent workflows with access to 100+ LLM providers.
-
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
 
 ## Introduction
 
@@ -7553,7 +9385,7 @@ Follow the same setup as [LangChain AI Gateway integration](/gateway/integration
 </CodeGroup>
 
 <Tip>
-  While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+  While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
 </Tip>
 
 ## Migration Example
@@ -7666,9 +9498,13 @@ You can add custom properties when calling your agent with `invoke()`:
   ```
 </CodeGroup>
 
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
     Learn about Helicone's AI Gateway features and capabilities
   </Card>
@@ -7695,6 +9531,275 @@ You can add custom properties when calling your agent with `invoke()`:
 </CardGroup>
 
 
+# LiteLLM Integration
+Source: https://docs.helicone.ai/gateway/integrations/litellm
+
+Use Helicone AI Gateway with LiteLLM to get top tier observability for your LLM requests.
+
+## Introduction
+
+[LiteLLM](https://www.litellm.ai/) is an self-hosted interface for calling LLM APIs.
+
+## Integration Steps
+
+<Steps>
+  <Step title={strings.generateKey}>
+    <div />
+  </Step>
+
+  <Step title={strings.setApiKey}>
+    <div />
+
+    ```env theme={null}
+    HELICONE_API_KEY=sk-helicone-...
+    ```
+  </Step>
+
+  <Step title={installSDK("LiteLLM")}>
+    ```bash theme={null}
+    pip install litellm python-dotenv
+    ```
+  </Step>
+
+  <Step title="Use LiteLLM with Helicone">
+    Add the `helicone/` prefix to any model name to logg requests for Helicone:
+
+    ```python theme={null}
+    import os
+    from litellm import completion
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    # Route through Helicone by adding "helicone/" prefix
+    response = completion(
+        model="helicone/gpt-4o",
+        messages=[{"role": "user", "content": "What is the capital of France?"}],
+        api_key=os.getenv("HELICONE_API_KEY")
+    )
+
+    print(response.choices[0].message.content)
+    ```
+
+    <div />
+  </Step>
+
+  <Step title={strings.viewRequestsInDashboard}>
+    <div />
+
+    <div />
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
+  </Step>
+</Steps>
+
+## Complete Working Examples
+
+### Basic Completion
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Simple completion
+response = completion(
+    model="helicone/gpt-4o-mini",
+    messages=[{"role": "user", "content": "Tell me a fun fact about space"}],
+    api_key=os.getenv("HELICONE_API_KEY")
+)
+
+print(response.choices[0].message.content)
+```
+
+### Streaming Responses
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Streaming example
+response = completion(
+    model="helicone/claude-4.5-sonnet",
+    messages=[{"role": "user", "content": "Write a short story about a robot learning to paint"}],
+    stream=True,
+    api_key=os.getenv("HELICONE_API_KEY")
+)
+
+print("🤖 Assistant (streaming):")
+for chunk in response:
+    if hasattr(chunk.choices[0].delta, 'content') and chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="", flush=True)
+print("\n")
+```
+
+### Custom Properties and Session Tracking
+
+Add metadata to track and filter your requests:
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+response = completion(
+    model="helicone/gpt-4o-mini",
+    messages=[{"role": "user", "content": "What's the weather like?"}],
+    api_key=os.getenv("HELICONE_API_KEY"),
+    metadata={
+        "Helicone-Session-Id": "session-abc-123",
+        "Helicone-Session-Name": "Weather Assistant",
+        "Helicone-User-Id": "user-789",
+        "Helicone-Property-Environment": "production",
+        "Helicone-Property-App-Version": "2.1.0",
+        "Helicone-Property-Feature": "weather-query"
+    }
+)
+
+print(response.choices[0].message.content)
+```
+
+## Provider Selection and Fallback
+
+Helicone's AI Gateway supports automatic failover between providers:
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Automatic routing (cheapest provider)
+response = completion(
+    model="helicone/gpt-4o",
+    messages=[{"role": "user", "content": "Hello!"}],
+    api_key=os.getenv("HELICONE_API_KEY")
+)
+
+# Manual provider selection
+response = completion(
+    model="helicone/claude-4.5-sonnet/anthropic",
+    messages=[{"role": "user", "content": "Hello!"}],
+    api_key=os.getenv("HELICONE_API_KEY")
+)
+
+# Multiple provider fallback chain
+# Try OpenAI first, then Anthropic if it fails
+response = completion(
+    model="helicone/gpt-4o/openai,claude-4.5-sonnet/anthropic",
+    messages=[{"role": "user", "content": "Hello!"}],
+    api_key=os.getenv("HELICONE_API_KEY")
+)
+```
+
+## Advanced Features
+
+### Caching
+
+Enable caching to reduce costs and latency for repeated requests:
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Enable caching for this request
+response = completion(
+    model="helicone/gpt-4o",
+    messages=[{"role": "user", "content": "What is 2+2?"}],
+    api_key=os.getenv("HELICONE_API_KEY"),
+    metadata={
+        "Helicone-Cache-Enabled": "true"
+    }
+)
+
+print(response.choices[0].message.content)
+
+# Subsequent identical requests will be served from cache
+response2 = completion(
+    model="helicone/gpt-4o",
+    messages=[{"role": "user", "content": "What is 2+2?"}],
+    api_key=os.getenv("HELICONE_API_KEY"),
+    metadata={
+        "Helicone-Cache-Enabled": "true"
+    }
+)
+
+print(response2.choices[0].message.content)
+```
+
+### Rate Limiting
+
+Apply rate limiting policies to control request rates:
+
+```python theme={null}
+import os
+from litellm import completion
+from dotenv import load_dotenv
+
+load_dotenv()
+
+response = completion(
+    model="helicone/gpt-4o",
+    messages=[{"role": "user", "content": "Hello"}],
+    api_key=os.getenv("HELICONE_API_KEY"),
+    metadata={
+        "Helicone-Rate-Limit-Policy": "basic-100"
+    }
+)
+
+print(response.choices[0].message.content)
+```
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Configure intelligent routing and automatic failover
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
+  </Card>
+
+  <Card title="Custom Properties" icon="tags" href="/features/advanced-usage/custom-properties">
+    Add metadata to track and filter your requests
+  </Card>
+
+  <Card title="Sessions" icon="link" href="/features/sessions">
+    Track multi-turn conversations and user sessions
+  </Card>
+
+  <Card title="Rate Limiting" icon="gauge" href="/features/advanced-usage/custom-rate-limits">
+    Configure rate limits for your applications
+  </Card>
+
+  <Card title="Caching" icon="bolt" href="/features/advanced-usage/caching">
+    Reduce costs and latency with intelligent caching
+  </Card>
+
+  <Card title="LiteLLM Documentation" icon="book" href="https://docs.litellm.ai">
+    Official LiteLLM documentation
+  </Card>
+</CardGroup>
+
+
 # LlamaIndex Integration
 Source: https://docs.helicone.ai/gateway/integrations/llamaindex
 
@@ -7710,13 +9815,13 @@ The Helicone LLM for LlamaIndex lets you send OpenAI‑compatible requests throu
 
 ## Install
 
-```bash  theme={null}
+```bash theme={null}
 pip install llama-index-llms-helicone
 ```
 
 ## Usage
 
-```python  theme={null}
+```python theme={null}
 from llama_index.llms.helicone import Helicone
 from llama_index.llms.openai_like.base import ChatMessage
 
@@ -7735,14 +9840,14 @@ print(str(response))
 ### Parameters
 
 * model: OpenAI‑compatible model name routed via Helicone. See the
-  <a href="https://www.helicone.ai/models" target="_blank">model registry</a>.
+  <a href="https://www.helicone.ai/models">model registry</a>.
 * api\_base (optional): Base URL for Helicone AI Gateway (defaults to the package’s `DEFAULT_API_BASE`). Can also be set via `HELICONE_API_BASE`.
 * api\_key: Your Helicone API key. You can set via constructor or `HELICONE_API_KEY`.
 * default\_headers (optional): Add additional headers; the `Authorization: Bearer <api_key>` header is set automatically.
 
 ## Environment Variables
 
-```bash  theme={null}
+```bash theme={null}
 export HELICONE_API_KEY=sk-helicone-...
 # Optional override
 export HELICONE_API_BASE=https://ai-gateway.helicone.ai/v1
@@ -7750,7 +9855,7 @@ export HELICONE_API_BASE=https://ai-gateway.helicone.ai/v1
 
 ## Advanced Configuration
 
-```python  theme={null}
+```python theme={null}
 from llama_index.llms.helicone import Helicone
 
 llm = Helicone(
@@ -7768,7 +9873,7 @@ llm = Helicone(
 ```
 
 <Tip>
-  While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+  While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
 </Tip>
 
 ## Notes
@@ -7777,7 +9882,11 @@ llm = Helicone(
 * All requests appear in the Helicone dashboard with full request/response visibility and cost tracking.
 * Learn more about routing and model coverage:
   * <a href="/gateway/provider-routing">Provider routing</a>
-  * <a href="https://www.helicone.ai/models" target="_blank">Model registry</a>
+  * <a href="https://www.helicone.ai/models">Model registry</a>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
 
 
 # n8n Integration
@@ -7817,7 +9926,7 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
       Learn more about installing community nodes in the [n8n documentation](https://docs.n8n.io/integrations/community-nodes/installation/).
     </Info>
 
-        <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=fd158863923b5bc1f55f29c693590dcd" alt="n8n install community node" data-og-width="1216" width="1216" data-og-height="954" height="954" data-path="images/integrations/n8n/install-node.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=b780385ccab5c1195d5d10c770a98031 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=098db0df5da2cf22885de3362807075a 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=c12ff38cca41d67f82a3ea33a8729463 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=e0f9157fb10a5d4e93f5b1241da74109 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=32e15e1126c1e38cede61cbad27e4aed 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/install-node.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=2185e7b3975e3bf3b9ff58b0368c909e 2500w" />
+    <img alt="n8n install community node" />
   </Step>
 
   <Step title="Configure Helicone credentials">
@@ -7829,7 +9938,7 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
     4. Enter your Helicone API key
     5. Click **Save**
 
-        <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=3872ecc182e76a01710d11184d828ecf" alt="n8n credentials tab" data-og-width="3172" width="3172" data-og-height="1654" height="1654" data-path="images/integrations/n8n/credentials-tab.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=33ae9efb35079672b9e06e3d50e02dcf 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=6ae0b62d9df132e36d3a437698f94fce 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=70dd0d698c71d99f114c2ea1c2ef7ef0 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=654c2a69f694bbf061b04c3a3935a89b 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=29c67a6cc4a1860954d3e9f5330c6381 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/credentials-tab.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=754e73f97a6da50af468ebbe6e9a9d7e 2500w" />
+       <img alt="n8n credentials tab" />
   </Step>
 
   <Step title="Add the Helicone Chat Model node to your workflow">
@@ -7837,11 +9946,12 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
     2. Click "+" to add a node
     3. Search for "Helicone Chat Model"
     4. Configure the node:
+
        * **Credentials**: Select your saved Helicone credentials
        * **Model**: Choose any model from the [model registry](https://helicone.ai/models) (e.g., `gpt-4.1-mini`, `claude-3-opus-20240229`)
        * **Options**: Configure temperature, max tokens, and other model parameters
 
-        <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=d44f932a4fde7e43fa125363c285d92e" alt="n8n search for Helicone node" data-og-width="3162" width="3162" data-og-height="1852" height="1852" data-path="images/integrations/n8n/search-node.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=e74db155ad359b6ffc7df7cb51b8c9fd 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=a0f94d819ac2fcae74c9d6c766c97be5 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=e88877e7902e59538ae0abe4934a10f2 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=082a5e1db12a1d877fef2d6189bed3dd 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=225829ba88b7730353e7658378c5f6b7 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/search-node.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=6fb62f2f5019823484ba1b32445fd3c7 2500w" />
+       <img alt="n8n search for Helicone node" />
 
     <Note>
       The Helicone Chat Model node outputs a LangChain-compatible model that can be used with other AI nodes in n8n.
@@ -7858,7 +9968,7 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
     Example workflow:
     Chat Input → Helicone Chat Model → Chat Output
 
-        <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=84379c0b28b21cb73c57bdf267e14759" alt="n8n workflow example" data-og-width="3526" width="3526" data-og-height="2468" height="2468" data-path="images/integrations/n8n/demo.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=0102cabf9e07e229644e7091c86858d2 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=d55a61dbfec15238c9c82d6522cf736f 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=39e33e7107602192ccda79ab81f69312 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=942cba0458647bd02fd136bed1f2bddd 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=01847acb9479b173e612db02e70bde35 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/demo.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=7d695e0cbaef8547b1f43b75b7e0a902 2500w" />
+    <img alt="n8n workflow example" />
   </Step>
 
   <Step title="View requests in Helicone dashboard">
@@ -7871,7 +9981,11 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
     * Session tracking for multi-turn conversations
     * Custom properties for filtering and analysis
 
-        <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=51fa1b6b7be6534edd7c3669624f23fd" alt="Helicone dashboard verification" data-og-width="3094" width="3094" data-og-height="2464" height="2464" data-path="images/integrations/n8n/helicone-verify.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=b50e6747f4b36b8bc439adbb3fdc804b 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=6d0ddc1cb8c78177f74b4303ce186d3c 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=0b3d0bf03e31fa20e5bfce14a73ccedd 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=297f6456174e626ed744723dab36d566 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=703f7c275c4b6d36971c66685a0419e3 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=8c45fffa4d7cf4f6486ad2313100d26e 2500w" />
+      <img alt="Helicone dashboard verification" />
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
   </Step>
 </Steps>
 
@@ -7928,7 +10042,7 @@ Configure the node with custom properties to track workflow metadata:
 2. Expand **Helicone Options** → **Custom Properties**
 3. Add a JSON object:
 
-```json  theme={null}
+```json theme={null}
 {
   "workflow_name": "customer-onboarding",
   "environment": "production",
@@ -7965,9 +10079,13 @@ All requests from this node will include these properties in Helicone.
 * [Helicone Discord](https://discord.gg/7aSCGCGUeu)
 * [GitHub Repository](https://github.com/Helicone/n8n-nodes-helicone)
 
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
     Learn about Helicone's AI Gateway features and capabilities
   </Card>
@@ -7990,6 +10108,432 @@ All requests from this node will include these properties in Helicone.
 
   <Card title="Sessions" icon="link" href="/features/sessions">
     Track multi-turn conversations and user sessions
+  </Card>
+</CardGroup>
+
+
+# OpenAI Agents Integration
+Source: https://docs.helicone.ai/gateway/integrations/openai-agents
+
+Integrate Helicone AI Gateway with OpenAI Agents SDK to build AI agents with tools and full observability.
+
+## Introduction
+
+[OpenAI Agents SDK](https://github.com/openai/agents) is a framework for building AI agents with tool calling, multi-step reasoning, and structured outputs.
+
+<Steps>
+  <Step title={strings.generateKey}>
+    ```js theme={null}
+    HELICONE_API_KEY=sk-helicone-...
+    ```
+  </Step>
+
+  <Step title={strings.installSDK('OpenAI Agents SDK')}>
+    ```bash theme={null}
+    npm install @openai/agents openai
+    # or
+    pip install openai-agents
+    ```
+  </Step>
+
+  <Step title="Configure OpenAI Agents with Helicone AI Gateway">
+    <CodeGroup>
+      ```typescript TypeScript theme={null}
+      import { Agent, setDefaultOpenAIClient } from "@openai/agents";
+      import OpenAI from "openai";
+      import dotenv from "dotenv";
+
+      dotenv.config();
+
+      const client = new OpenAI({
+        baseURL: "https://ai-gateway.helicone.ai/v1",
+        apiKey: process.env.HELICONE_API_KEY
+      });
+
+      // Set the client globally for all agents
+      setDefaultOpenAIClient(client);
+      ```
+
+      ```python Python theme={null}
+      import os
+      from agents import set_default_openai_client
+      from openai import OpenAI
+
+      client = OpenAI(
+          base_url="https://ai-gateway.helicone.ai/v1",
+          api_key=os.getenv("HELICONE_API_KEY")
+      )
+
+      # Set the client globally for all agents
+      set_default_openai_client(client)
+      ```
+    </CodeGroup>
+
+    <div />
+  </Step>
+
+  <Step title="Use OpenAI Agents normally">
+    Your existing OpenAI Agents code continues to work without any changes:
+
+    <CodeGroup>
+      ```typescript TypeScript theme={null}
+      import { Agent, run, tool } from "@openai/agents";
+      import { z } from "zod";
+
+      // Define tools
+      const calculator = tool({
+        name: "calculator",
+        description: "Perform basic arithmetic operations",
+        parameters: z.object({
+          operation: z.enum(["add", "subtract", "multiply", "divide"]),
+          a: z.number(),
+          b: z.number()
+        }),
+        async execute({ operation, a, b }) {
+          switch (operation) {
+            case "add":
+              return a + b;
+            case "subtract":
+              return a - b;
+            case "multiply":
+              return a * b;
+            case "divide":
+              if (b === 0) return "Error: Division by zero";
+              return a / b;
+          }
+        }
+      });
+
+      // Create an agent with tools
+      const agent = new Agent({
+        name: "Assistant",
+        instructions: "You are a helpful assistant.",
+        tools: [calculator],
+        model: "gpt-4o-mini",
+      });
+
+      // Run the agent
+      const result = await run(agent, "Multiply 2 by 2");
+      console.log(result.finalOutput);
+      ```
+
+      ```python Python theme={null}
+      from agents import Agent, Runner, tool
+      from typing import Literal
+
+      # Define tools
+      @tool
+      def calculator(operation: Literal["add", "subtract", "multiply", "divide"], a: float, b: float) -> float | str:
+          """Perform basic arithmetic operations."""
+          if operation == "add":
+              return a + b
+          elif operation == "subtract":
+              return a - b
+          elif operation == "multiply":
+              return a * b
+          elif operation == "divide":
+              if b == 0:
+                  return "Error: Division by zero"
+              return a / b
+
+      # Create an agent with tools
+      agent = Agent(
+          name="Assistant",
+          instructions="You are a helpful assistant.",
+          tools=[calculator],
+          model="gpt-4o-mini"
+      )
+
+      # Run the agent
+      result = Runner.run_sync(agent, "Multiply 2 by 2")
+      print(result.final_output)
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title={strings.viewRequestsInDashboard}>
+    <div />
+
+    * Request/response bodies
+    * Latency metrics
+    * Token usage and costs
+    * Model performance analytics
+    * Tool usage tracking
+    * Agent reasoning steps
+    * Error tracking
+    * Session tracking
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
+  </Step>
+</Steps>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Configure intelligent routing and automatic failover
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
+  </Card>
+
+  <Card title="Prompt Management" icon="code" href="/gateway/concepts/prompt-caching">
+    Version and manage prompts with Helicone Prompts
+  </Card>
+
+  <Card title="Custom Properties" icon="tags" href="/features/advanced-usage/custom-properties">
+    Add metadata to track and filter your requests
+  </Card>
+
+  <Card title="Sessions" icon="link" href="/features/sessions">
+    Track multi-turn conversations and user sessions
+  </Card>
+
+  <Card title="Rate Limiting" icon="gauge" href="/features/advanced-usage/custom-rate-limits">
+    Configure rate limits for your applications
+  </Card>
+
+  <Card title="Tool Usage Tracking" icon="wrench" href="/features/tool-usage">
+    Monitor tool calls and function usage in your agents
+  </Card>
+</CardGroup>
+
+
+# Integrations Overview
+Source: https://docs.helicone.ai/gateway/integrations/overview
+
+Integrate Helicone AI Gateway with popular frameworks and tools to access 100+ LLM providers with top tier observability
+
+Helicone AI Gateway integrates with most AI frameworks and development tools to give you access to 100+ LLM providers and top tier observability.
+
+## Why Use Helicone Integrations?
+
+<CardGroup>
+  <Card title="Minimal Code Changes" icon="code">
+    Most integrations require only updating your base URL and API key - your existing code stays the same
+  </Card>
+
+  <Card title="100+ Models Available" icon="database">
+    Access GPT, Claude, Gemini, and many more models through a single endpoint
+  </Card>
+
+  <Card title="Full Observability" icon="chart-line">
+    Track all requests, costs, latency, and errors in one unified dashboard
+  </Card>
+
+  <Card title="Automatic Failover" icon="shield-check">
+    Built-in routing and fallback logic keeps your applications running
+  </Card>
+</CardGroup>
+
+## Popular Integrations
+
+Most often, integrating to Helicone is as simple as updating your `baseURL` to `"https://ai-gateway.helicone.ai/v1"` and adding your Helicone API key as a header.
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
+<CardGroup>
+  <Card title="LangChain" icon="link" href="/gateway/integrations/langchain">
+    Works with both Python and TypeScript.
+  </Card>
+
+  <Card title="LangGraph" icon="route" href="/gateway/integrations/langgraph">
+    Building stateful, multi-actor applications with LLMs.
+  </Card>
+
+  <Card title="LlamaIndex" icon="indent" href="/gateway/integrations/llamaindex">
+    Get full observability for your LlamaIndex searches.
+  </Card>
+
+  <Card title="Vercel AI SDK" icon="sparkles" href="/getting-started/integration-method/vercelai">
+    Route, monitor, debug, and improve your AI applications.
+  </Card>
+
+  <Card title="Zapier" icon="plug" href="/gateway/integrations/zapier">
+    Use LLMs in your automation workflows with full observability.
+  </Card>
+
+  <Card title="Codex" icon="terminal" href="/gateway/integrations/codex">
+    Enhance your code generation capabilities.
+  </Card>
+</CardGroup>
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Provider Routing" icon="route" href="/gateway/provider-routing">
+    Configure intelligent routing and automatic failover
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
+  </Card>
+
+  <Card title="Quick Start Guide" icon="rocket" href="/getting-started/quick-start">
+    Get started with Helicone AI Gateway in 5 minutes
+  </Card>
+</CardGroup>
+
+
+# PostHog Integration
+Source: https://docs.helicone.ai/gateway/integrations/posthog
+
+Integrate Helicone AI Gateway with PostHog to automatically export LLM request events to your PostHog analytics platform for unified product analytics.
+
+## Introduction
+
+[PostHog](https://www.posthog.com/) is a comprehensive product analytics platform that helps you understand user behavior and product performance.
+
+<Steps>
+  <Step title={strings.generateKey}>
+    <p>Sign up at <a href="https://www.helicone.ai">helicone.ai</a> and generate an <a href="https://us.helicone.ai/settings/api-keys">API key</a>.</p>
+    <p>Create a <a href="https://posthog.com">Posthog account</a> if you don't have one. Get your Project API Key from your <a href="https://us.posthog.com/settings/project">PostHog project settings</a>.</p>
+
+    ```env theme={null}
+    HELICONE_API_KEY=sk-helicone-...
+    POSTHOG_PROJECT_API_KEY=phc_...
+
+    # Optional: PostHog host (defaults to https://app.posthog.com)
+    # Only needed if using self-hosted PostHog
+    # POSTHOG_CLIENT_API_HOST=https://app.posthog.com
+    ```
+  </Step>
+
+  <Step title={strings.installSDK('OpenAI')}>
+    <CodeGroup>
+      ```bash TypeScript theme={null}
+      npm install openai
+      # or
+      yarn add openai
+      ```
+
+      ```bash Python theme={null}
+      pip install openai
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Configure OpenAI client with Helicone AI Gateway">
+    <CodeGroup>
+      ```typescript TypeScript theme={null}
+      import { OpenAI } from "openai";
+      import dotenv from "dotenv";
+
+      dotenv.config();
+
+      const client = new OpenAI({
+        baseURL: "https://ai-gateway.helicone.ai",
+        apiKey: process.env.HELICONE_API_KEY,
+        defaultHeaders: {
+          "Helicone-Posthog-Key": POSTHOG_PROJECT_API_KEY,
+          "Helicone-Posthog-Host": POSTHOG_CLIENT_API_HOST
+        },
+      });
+      ```
+
+      ```python Python theme={null}
+      import os
+      from openai import OpenAI
+      from dotenv import load_dotenv
+
+      load_dotenv()
+
+      client = OpenAI(
+          base_url="https://ai-gateway.helicone.ai",
+          api_key=os.getenv("HELICONE_API_KEY"),
+          default_headers={
+              "Helicone-Posthog-Key": os.getenv("POSTHOG_PROJECT_API_KEY"),
+              "Helicone-Posthog-Host": os.getenv("POSTHOG_CLIENT_API_HOST")
+          },
+      )
+      ```
+    </CodeGroup>
+
+    <div />
+  </Step>
+
+  <Step title={strings.useTheSDK('OpenAI')}>
+    Your existing OpenAI code continues to work without any changes. Events will automatically be exported to PostHog.
+
+    <CodeGroup>
+      ```typescript TypeScript theme={null}
+        const response = await client.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages: [{ role: "user", content: "Hello, world!" }],
+          temperature: 0.7,
+        });
+
+        console.log(response.choices[0]?.message?.content);
+      ```
+
+      ```python Python theme={null}
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": "Hello, world!"}],
+            temperature=0.7,
+        )
+
+        print("Completion:", response.choices[0].message.content)
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title={strings.verifyInHelicone}>
+    <div />
+
+    1. Go to your <a href="https://us.posthog.com/events">PostHog Events</a> page
+    2. Look for events with the <code>helicone\_request</code> event name
+    3. Each event contains metadata about the LLM request including:
+       * Model used
+       * Token counts
+       * Latency
+       * Cost
+       * Request/response data
+  </Step>
+</Steps>
+
+<Tip>
+  While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+</Tip>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
+## Related Documentation
+
+<CardGroup>
+  <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
+    Learn about Helicone's AI Gateway features and capabilities
+  </Card>
+
+  <Card title="Custom Properties" icon="tags" href="/features/advanced-usage/custom-properties">
+    Add metadata to track and filter your requests
+  </Card>
+
+  <Card title="Sessions" icon="link" href="/features/sessions">
+    Track multi-turn conversations and user sessions
+  </Card>
+
+  <Card title="Model Registry" icon="database" href="https://helicone.ai/models">
+    Browse all available models and providers
   </Card>
 </CardGroup>
 
@@ -8023,14 +10567,14 @@ Integrate Helicone AI Gateway with Microsoft Semantic Kernel to access 100+ LLM 
   </Step>
 
   <Step title="Set environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     # Your Helicone API key
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
 
     Create a `.env` file in your project:
 
-    ```env  theme={null}
+    ```env theme={null}
     HELICONE_API_KEY=sk-helicone-...
     ```
   </Step>
@@ -8135,7 +10679,7 @@ Integrate Helicone AI Gateway with Microsoft Semantic Kernel to access 100+ LLM 
     * Error tracking
 
     <Tip>
-      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
     </Tip>
   </Step>
 </Steps>
@@ -8146,7 +10690,7 @@ Here's what migrating an existing Semantic Kernel application looks like:
 
 ### Before (Direct OpenAI)
 
-```csharp  theme={null}
+```csharp theme={null}
 var builder = Kernel.CreateBuilder();
 
 builder.AddOpenAIChatCompletion(
@@ -8159,7 +10703,7 @@ var kernel = builder.Build();
 
 ### After (Helicone AI Gateway)
 
-```csharp  theme={null}
+```csharp theme={null}
 var builder = Kernel.CreateBuilder();
 
 builder.AddOpenAIChatCompletion(
@@ -8295,9 +10839,13 @@ Here's a full example that tests multiple models:
   ```
 </CodeGroup>
 
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
     Learn about Helicone's AI Gateway features and capabilities
   </Card>
@@ -8321,50 +10869,6 @@ Source: https://docs.helicone.ai/gateway/integrations/vercel-ai-sdk
 
 Integrate Helicone AI Gateway with Vercel AI SDK to access 100+ LLM providers with full observability.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 ## Introduction
 
 [Vercel AI SDK](https://sdk.vercel.ai) is a TypeScript toolkit for building AI-powered applications with React, Next.js, Vue, and more.
@@ -8385,7 +10889,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=sk-helicone-...
     ```
   </Step>
@@ -8411,7 +10915,7 @@ export const strings = {
   </Step>
 
   <Step title="Configure Vercel AI SDK with Helicone">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { createHelicone } from '@helicone/ai-sdk-provider';
     import { generateText } from 'ai';
 
@@ -8432,6 +10936,10 @@ export const strings = {
     <Info>
       You can switch between [100+ models](https://helicone.ai/models) without changing your code. Just update the model name!
     </Info>
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
   </Step>
 </Steps>
 
@@ -8439,7 +10947,7 @@ export const strings = {
 
 ### Basic Text Generation
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import { generateText } from 'ai';
 
@@ -8457,7 +10965,7 @@ console.log(text);
 
 ### Streaming Text
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import { streamText } from 'ai';
 
@@ -8478,11 +10986,46 @@ for await (const chunk of result.textStream) {
 console.log('\n\nStream completed!');
 ```
 
+### UI Message Stream Response
+
+Convert streaming results to a UI-compatible response format:
+
+```typescript theme={null}
+import { createHelicone } from '@helicone/ai-sdk-provider';
+import { streamText } from 'ai';
+
+const helicone = createHelicone({
+  apiKey: process.env.HELICONE_API_KEY
+});
+
+const result = streamText({
+  model: helicone("gpt-4o-mini", {
+    extraBody: {
+      helicone: {
+        tags: ["simple-stream-test"],
+        properties: {
+          test: "toUIMessageStreamResponse",
+        },
+      },
+    },
+  }),
+  prompt: 'Say "Hello streaming world!"',
+});
+
+const response = result.toUIMessageStreamResponse();
+
+console.log(
+  "Response headers:",
+  Object.fromEntries(response.headers.entries())
+);
+// Just checks that we can create it - actual consumption needs to be in a server
+```
+
 ### Provider Selection
 
 By default, Helicone's AI gateway automatically routes to the cheapest provider. You can also manually select a specific provider:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import { generateText } from 'ai';
 
@@ -8511,7 +11054,7 @@ const manualResult = await generateText({
 
 ### With Custom Properties and Session Tracking
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import { generateText } from 'ai';
 
@@ -8539,7 +11082,7 @@ const result = await generateText({
 
 ### Tool Calling
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import { generateText, tool } from 'ai';
 import { z } from 'zod';
@@ -8567,11 +11110,140 @@ const result = await generateText({
 console.log(result.text);
 ```
 
+### Agents
+
+Use Vercel AI SDK's Agent API with Helicone to build multi-step reasoning agents:
+
+```typescript theme={null}
+import { createHelicone } from "@helicone/ai-sdk-provider";
+import { Experimental_Agent as Agent, tool, jsonSchema, stepCountIs } from "ai";
+
+const helicone = createHelicone({
+  apiKey: process.env.HELICONE_API_KEY!
+});
+
+const weatherAgent = new Agent({
+  model: helicone("claude-4.5-haiku"),
+  stopWhen: stepCountIs(5),
+  tools: {
+    getWeather: tool({
+      description: "Get the current weather for a location",
+      inputSchema: jsonSchema({
+        type: "object",
+        properties: {
+          location: {
+            type: "string",
+            description: "The city and state, e.g. San Francisco, CA",
+          },
+          unit: {
+            type: "string",
+            enum: ["celsius", "fahrenheit"],
+            default: "fahrenheit",
+            description: "Temperature unit",
+          },
+        },
+        required: ["location"],
+      }),
+      execute: async ({ location, unit }) => {
+        // Simulate weather API call
+        const temp =
+          unit === "celsius"
+            ? Math.floor(Math.random() * 30 + 5)
+            : Math.floor(Math.random() * 86 + 32);
+        const conditions = ["sunny", "cloudy", "rainy", "partly cloudy"][
+          Math.floor(Math.random() * 4)
+        ];
+        const result = {
+          location,
+          temperature: temp,
+          unit: unit || "fahrenheit",
+          conditions,
+          description: `It's ${conditions} in ${location} with a temperature of ${temp}°${unit?.charAt(0).toUpperCase() || "F"}.`,
+        };
+        console.log(`Result: ${JSON.stringify(result)}`);
+        return result;
+      },
+    }),
+    calculateWindChill: tool({
+      description: "Calculate wind chill temperature",
+      inputSchema: jsonSchema({
+        type: "object",
+        properties: {
+          temperature: {
+            type: "number",
+            description: "Temperature in Fahrenheit",
+          },
+          windSpeed: {
+            type: "number",
+            description: "Wind speed in mph",
+          },
+        },
+        required: ["temperature", "windSpeed"],
+      }),
+      execute: async ({ temperature, windSpeed }) => {
+        const windChill =
+          35.74 +
+          0.6215 * temperature -
+          35.75 * Math.pow(windSpeed, 0.16) +
+          0.4275 * temperature * Math.pow(windSpeed, 0.16);
+        const result = {
+          temperature,
+          windSpeed,
+          windChill: Math.round(windChill),
+          description: `With a temperature of ${temperature}°F and wind speed of ${windSpeed} mph, the wind chill feels like ${Math.round(windChill)}°F.`,
+        };
+        console.log(`Result: ${JSON.stringify(result)}`);
+        return result;
+      },
+    }),
+  },
+});
+
+try {
+  console.log("🌤️  Asking about weather in multiple cities...\n");
+
+  const result = await weatherAgent.generate({
+    prompt:
+      "You are a helpful weather assistant. When asked about weather, use the getWeather tool to provide accurate information.\n\nWhat is the weather like in San Francisco, CA and New York, NY? Also, if the wind speed in San Francisco is 15 mph, what would the wind chill feel like?"
+  });
+
+  console.log("=== Agent Response ===");
+  console.log(result.text);
+
+  console.log("\n=== Usage Statistics ===");
+  console.log(`Total tokens: ${result.usage?.totalTokens || "N/A"}`);
+  console.log(`Finish reason: ${result.finishReason}`);
+  console.log(`Steps taken: ${result.steps?.length || 0}`);
+
+  if (result.steps && result.steps.length > 0) {
+    console.log("\n=== Steps Breakdown ===");
+    result.steps.forEach((step, index) => {
+      console.log(`Step ${index + 1}: ${step.finishReason}`);
+      if (step.toolCalls && step.toolCalls.length > 0) {
+        console.log(
+          `  Tool calls: ${step.toolCalls.map((tc) => tc.toolName).join(", ")}`
+        );
+        step.toolCalls.forEach((tc, i) => {
+          console.log(
+            `    Tool ${i + 1}: ${tc.toolName}(${JSON.stringify(tc.input)})`
+          );
+        });
+      }
+    });
+  }
+} catch (error) {
+  console.error("❌ Error running agent:", error);
+  if (error instanceof Error) {
+    console.error("Error details:", error.message);
+  }
+}
+```
+
 ### Helicone Prompts Integration
 
 Use prompts created in your Helicone dashboard instead of hardcoding messages in your application:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createHelicone } from '@helicone/ai-sdk-provider';
 import type { WithHeliconePrompt } from '@helicone/ai-sdk-provider';
 import { generateText } from 'ai';
@@ -8616,11 +11288,20 @@ const result = await generateText({
 
 ### Additional Examples
 
-For more comprehensive examples, check out the [GitHub repository](https://github.com/Helicone/ai-sdk-provider/tree/main/examples):
+For more comprehensive examples, check out the [GitHub repository](https://github.com/Helicone/ai-sdk-provider/tree/main/examples).
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
+## Additional Resources
+
+* [Vercel AI SDK Documentation](https://ai-sdk.dev/providers/community-providers/helicone)
+* [Helicone AI SDK Provider Github](https://github.com/Helicone/ai-sdk-provider)
 
 ## Related Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway Overview" icon="arrow-progress" href="/gateway/overview">
     Learn about Helicone's AI Gateway features and capabilities
   </Card>
@@ -8654,12 +11335,6 @@ For more comprehensive examples, check out the [GitHub repository](https://githu
   </Card>
 </CardGroup>
 
-## Additional Resources
-
-* [Vercel AI SDK Documentation](https://sdk.vercel.ai)
-* [Helicone AI SDK Provider GitHub](https://github.com/Helicone/ai-sdk-provider)
-* [Helicone AI SDK Provider on Vercel](https://ai-sdk.dev/providers/community-providers/helicone)
-
 
 # Zapier Integration
 Source: https://docs.helicone.ai/gateway/integrations/zapier
@@ -8678,8 +11353,8 @@ Use the Helicone app on Zapier to generate chat completions from any supported m
 
 <Steps>
   <Step title="Create a Helicone API key">
-    Create a Helicone account at <a href="https://www.helicone.ai/" target="_blank">helicone.ai</a> and generate an
-    <a href="https://us.helicone.ai/settings/api-keys" target="_blank">API key</a>.
+    Create a Helicone account at <a href="https://www.helicone.ai/">helicone.ai</a> and generate an
+    <a href="https://us.helicone.ai/settings/api-keys">API key</a>.
 
     <Note>
       You can use a write-only key for logging requests. Learn more about
@@ -8695,7 +11370,7 @@ Use the Helicone app on Zapier to generate chat completions from any supported m
   </Step>
 
   <Step title="Configure the Chat Completion action">
-    * Model: pick any supported model (see <a href="https://www.helicone.ai/models" target="_blank">model registry</a>).
+    * Model: pick any supported model (see <a href="https://www.helicone.ai/models">model registry</a>).
     * Messages: map your trigger fields (e.g., prompt text) into the user message.
 
     <Info>
@@ -8712,7 +11387,7 @@ Use the Helicone app on Zapier to generate chat completions from any supported m
     Open your Helicone dashboard and check the Requests tab to see your Zapier‑originated requests, costs, and latencies.
 
     <Tip>
-      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+      While you're here, why not <a href="https://github.com/helicone/helicone">give us a star on GitHub</a>? It helps us a lot!
     </Tip>
   </Step>
 </Steps>
@@ -8737,6 +11412,10 @@ It also has a blank curl request, in the event that you don't find an action you
 * If a request fails, review the error in the Zap run details and the corresponding request in Helicone for provider/model‑specific messages.
 * To switch models later, update the model field in the Zap action or use Helicone routing/policies to control traffic centrally.
 
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
+
 
 # AI Gateway Overview
 Source: https://docs.helicone.ai/gateway/overview
@@ -8747,7 +11426,7 @@ Helicone AI Gateway provides a unified API for 100+ LLM providers through the Op
 
 ## Why Use AI Gateway?
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="One SDK for All Models" icon="code">
     Use OpenAI SDK to access GPT, Claude, Gemini, and 100+ other models
   </Card>
@@ -8784,7 +11463,7 @@ All through a single endpoint: `https://ai-gateway.helicone.ai`
 
 Add two lines to your existing OpenAI code to unlock 100+ models with automatic observability:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -8821,7 +11500,7 @@ Helicone offers a complete platform for production AI applications, while OpenRo
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Get Started in 5 Minutes" icon="rocket" href="/getting-started/quick-start">
     Set up AI Gateway and make your first request
   </Card>
@@ -8953,25 +11632,25 @@ Without the AI Gateway, using managed prompts requires multiple steps:
 
 Use these parameters in your chat completions request to integrate with saved prompts:
 
-<ParamField body="prompt_id" type="string" required>
+<ParamField type="string">
   The ID of your saved prompt from the Helicone dashboard
 </ParamField>
 
-<ParamField body="environment" type="string" default="production">
+<ParamField type="string">
   Which environment version to use: `development`, `staging`, or `production`
 </ParamField>
 
-<ParamField body="inputs" type="object" required>
+<ParamField type="object">
   Variables to fill in your prompt template (e.g., `{"customer_name": "John", "issue_type": "billing"}`)
 </ParamField>
 
-<ParamField body="model" type="string" required>
+<ParamField type="string">
   Any supported model - works with the unified gateway format
 </ParamField>
 
 ## Example Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await client.chat.completions.create({
   model: "gpt-4o-mini",
   prompt_id: "customer_support_v2",
@@ -8986,7 +11665,7 @@ const response = await client.chat.completions.create({
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Create Your First Prompt" icon="pencil" href="/features/advanced-usage/prompts">
     Learn to build prompts with variables in the dashboard
   </Card>
@@ -9006,7 +11685,7 @@ Never worry about provider outages again. The AI Gateway automatically routes yo
 
 ## The Problem
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Provider Outages" icon="circle-exclamation">
     Provider downtime breaks your app and frustrates users
   </Card>
@@ -9032,7 +11711,7 @@ Provider routing gives you access to the same model across multiple providers. W
 
 Zero configuration required. Just request a model:
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await client.chat.completions.create({
   model: "gpt-4o-mini",
   messages: [{ role: "user", content: "Hello!" }]
@@ -9072,7 +11751,7 @@ The default routing handles most use cases. Customize only if you need specific 
 
 Force requests to only use one provider by adding the provider name after a slash:
 
-```typescript  theme={null}
+```typescript theme={null}
 model: "gpt-4o-mini/openai"  // Only route through OpenAI
 ```
 
@@ -9084,7 +11763,7 @@ model: "gpt-4o-mini/openai"  // Only route through OpenAI
 
 Target a specific deployment you've configured in [Provider Settings](https://us.helicone.ai/providers):
 
-```typescript  theme={null}
+```typescript theme={null}
 model: "gpt-4o-mini/azure/clm1a2b3c"  // Your Azure deployment ID
 ```
 
@@ -9096,7 +11775,7 @@ model: "gpt-4o-mini/azure/clm1a2b3c"  // Your Azure deployment ID
 
 Specify exactly which providers to try, in order:
 
-```typescript  theme={null}
+```typescript theme={null}
 model: "gpt-4o-mini/azure,gpt-4o-mini/openai,gpt-4o-mini"
 ```
 
@@ -9120,7 +11799,7 @@ Add your provider API keys in [Provider Settings](https://us.helicone.ai/provide
 
 Prevent automatic routing from using specific providers:
 
-```typescript  theme={null}
+```typescript theme={null}
 model: "!openai,gpt-4o-mini"  // Use any provider EXCEPT OpenAI
 ```
 
@@ -9146,7 +11825,7 @@ The gateway automatically tries the next provider when encountering these errors
 
 Your production app uses GPT-4. OpenAI goes down at 3am.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Your code doesn't change
 const response = await client.chat.completions.create({
   model: "gpt-4o-mini",
@@ -9160,7 +11839,7 @@ const response = await client.chat.completions.create({
 
 Your company has \$100k in Azure credits to burn before year-end.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Prioritize Azure but keep fallback for reliability
 const response = await client.chat.completions.create({
   model: "gpt-4o-mini/azure,gpt-4o-mini",  
@@ -9174,7 +11853,7 @@ const response = await client.chat.completions.create({
 
 GDPR requires EU customer data to stay in EU regions.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Use your custom EU deployment
 await client.chat.completions.create({
   model: "gpt-4o/azure/eu-frankfurt-deployment",  // Your CUID
@@ -9188,7 +11867,7 @@ await client.chat.completions.create({
 
 You notice one provider is experiencing higher latency or errors today.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Exclude the problematic provider from automatic routing
 const response = await client.chat.completions.create({
   model: "!openai,gpt-4o-mini",
@@ -9200,7 +11879,7 @@ const response = await client.chat.completions.create({
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Browse Models" icon="grid" href="https://helicone.ai/models">
     Explore all available models and providers
   </Card>
@@ -9236,7 +11915,7 @@ When you append `:online` to an Anthropic model name (e.g., `claude-3-5-sonnet-2
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={null}
+    ```python theme={null}
     import openai
 
     client = openai.OpenAI(
@@ -9264,7 +11943,7 @@ When you append `:online` to an Anthropic model name (e.g., `claude-3-5-sonnet-2
   </Tab>
 
   <Tab title="Node.js">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from 'openai';
 
     const openai = new OpenAI({
@@ -9294,7 +11973,7 @@ When you append `:online` to an Anthropic model name (e.g., `claude-3-5-sonnet-2
   </Tab>
 
   <Tab title="cURL">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl https://gateway.helicone.ai/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer YOUR_ANTHROPIC_API_KEY" \
@@ -9317,7 +11996,7 @@ When you append `:online` to an Anthropic model name (e.g., `claude-3-5-sonnet-2
 
 You can customize the web search behavior by including a `plugins` parameter in your request body:
 
-```json  theme={null}
+```json theme={null}
 {
   "model": "claude-3-5-sonnet-20241022:online",
   "messages": [...],
@@ -9349,7 +12028,7 @@ You can customize the web search behavior by including a `plugins` parameter in 
 
 When web search is used, the response includes annotations with citation information:
 
-```json  theme={null}
+```json theme={null}
 {
   "choices": [
     {
@@ -9386,7 +12065,7 @@ When web search is used, the response includes annotations with citation informa
 
 Web search requests are billed at standard Anthropic rates plus any additional costs for web search usage. The usage statistics include:
 
-```json  theme={null}
+```json theme={null}
 {
   "usage": {
     "input_tokens": 1000,
@@ -9419,7 +12098,7 @@ You can use Helicone with your OpenAI compatible models that are deployed on Any
 
 Follow the Helicone integration as normal in the [proxy approach](/getting-started/integration-method/openai-proxy) but add the following header.
 
-```bash  theme={null}
+```bash theme={null}
 Helicone-OpenAI-API-Base: https://api.endpoints.anyscale.com/v1
 ```
 
@@ -9454,7 +12133,7 @@ Integrate Helicone with Crew AI, a multi-agent framework supporting multiple LLM
   <Step title="Set OPENAI_BASE_URL">
     Configure your environment to route API calls through Helicone:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
 
     os.environ["OPENAI_BASE_URL"] = f"https://oai.helicone.ai/{HELICONE_API_KEY}/v1"
@@ -9479,7 +12158,7 @@ CrewAI supports multiple LLM providers. Here's how to configure different provid
 
 ### OpenAI (Alternative Method)
 
-```python  theme={null}
+```python theme={null}
 from crewai import LLM
 
 llm = LLM(
@@ -9494,7 +12173,7 @@ llm = LLM(
 
 ### Anthropic
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="anthropic/claude-3-sonnet-20240229-v1:0",
     base_url="https://anthropic.helicone.ai/v1",
@@ -9507,7 +12186,7 @@ llm = LLM(
 
 ### Gemini
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="gemini/gemini-1.5-pro-latest",
     base_url="https://gateway.helicone.ai",
@@ -9521,7 +12200,7 @@ llm = LLM(
 
 ### Groq
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="groq/llama-3.2-90b-text-preview",
     base_url="https://groq.helicone.ai/openai/v1",
@@ -9541,7 +12220,7 @@ CrewAI supports many LLM providers through LiteLLM integration. If your preferre
 
 For example, if a provider's Helicone documentation shows:
 
-```python  theme={null}
+```python theme={null}
 # Provider's Helicone documentation
 base_url = "https://provider.helicone.ai"
 headers = {
@@ -9552,7 +12231,7 @@ headers = {
 
 You would configure your CrewAI LLM like this:
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="provider/model-name",
     base_url="https://provider.helicone.ai",
@@ -9570,7 +12249,7 @@ llm = LLM(
 
 Add custom properties to track and filter requests:
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="your-model",
     base_url="your-helicone-endpoint",
@@ -9596,7 +12275,7 @@ Learn more about:
 
 Enable response caching to reduce costs and latency:
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="your-model",
     base_url="your-helicone-endpoint",
@@ -9614,7 +12293,7 @@ Learn more about [Caching](/features/advanced-usage/caching)
 
 Track and version your prompts:
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="your-model",
     base_url="your-helicone-endpoint",
@@ -9633,7 +12312,7 @@ Learn more about [Prompts](/features/prompts)
 
 Create agents using different LLM providers:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task
 
 # Research agent using OpenAI
@@ -9738,7 +12417,7 @@ You can follow their documentation here: [https://api-docs.deepseek.com/](https:
   </Step>
 
   <Step title="Set HELICONE_API_KEY and DEEPSEEK_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     DEEPSEEK_API_KEY=<your API key>
     ```
@@ -9751,7 +12430,7 @@ You can follow their documentation here: [https://api-docs.deepseek.com/](https:
 
     and then add the following authentication headers:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     Authorization: Bearer <your API key>
     ```
   </Step>
@@ -9761,7 +12440,7 @@ Now you can access all the models on DeepSeek AI with a simple fetch call:
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
       --url https://deepseek.helicone.ai/chat/completions \
       --header 'Content-Type: application/json' \
@@ -9797,7 +12476,7 @@ You can seamlessly integrate Helicone with the OpenAI compatible models that are
 
 The integration process closely mirrors the [proxy approach](/integrations/openai/javascript). The only distinction lies in the modification of the base\_url to point to the dedicated Hyperbolic endpoint `https://hyperbolic.helicone.ai/v1`.
 
-```bash  theme={null}
+```bash theme={null}
 base_url="https://hyperbolic.helicone.ai/v1"
 ```
 
@@ -9825,7 +12504,7 @@ Please ensure that the base\_url is correctly set to ensure successful integrati
     <Note>Helicone write only API keys are only required if passing auth in URL path [read more here.](/faq/secret-vs-public-key)
     Alternatively, pass auth in as header.</Note>
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_WRITE_API_KEY=<your API key>
     HYPERBOLIC_API_KEY=<your API key>
     ```
@@ -9920,20 +12599,20 @@ Connect Helicone with LiteLLM using callbacks to log and monitor API calls acros
 
 Add `HELICONE_API_KEY` to your environment variables.
 
-```bash  theme={null}
+```bash theme={null}
 export HELICONE_API_KEY=sk-<your-api-key>
 # You can also set it in your code (See below)
 ```
 
 Tell LiteLLM you want to log your data to Helicone
 
-```python  theme={null}
+```python theme={null}
 litellm.success_callback=["helicone"]
 ```
 
 ## Complete code
 
-```python  theme={null}
+```python theme={null}
 from litellm import completion
 import os
 
@@ -10001,7 +12680,7 @@ Replace `{API_KEY}` with your actual Helicone API Key.
 
 The request body follows this structure:
 
-```typescript  theme={null}
+```typescript theme={null}
 export type HeliconeAsyncLogRequest = {
   providerRequest: ProviderRequest;
   providerResponse: ProviderResponse;
@@ -10042,7 +12721,7 @@ export type Timing = {
 
 Here's a complete example of logging a request to a custom model:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer your_api_key" \
 -H "Content-Type: application/json" \
@@ -10081,7 +12760,7 @@ Helicone supports token tracking for custom model integrations. To enable this, 
 
 ### OpenAI-style Format
 
-```json  theme={null}
+```json theme={null}
 {
   "providerResponse": {
     "json": {
@@ -10098,7 +12777,7 @@ Helicone supports token tracking for custom model integrations. To enable this, 
 
 ### Anthropic-style Format
 
-```json  theme={null}
+```json theme={null}
 {
   "providerResponse": {
     "json": {
@@ -10114,7 +12793,7 @@ Helicone supports token tracking for custom model integrations. To enable this, 
 
 ### Google-style Format
 
-```json  theme={null}
+```json theme={null}
 {
   "providerResponse": {
     "json": {
@@ -10131,7 +12810,7 @@ Helicone supports token tracking for custom model integrations. To enable this, 
 
 ### Alternative Format
 
-```json  theme={null}
+```json theme={null}
 {
   "providerResponse": {
     "json": {
@@ -10151,7 +12830,7 @@ If your model returns token counts in a different format, you can transform the 
 
 You can add custom properties to your requests by including them in the `meta` field:
 
-```json  theme={null}
+```json theme={null}
 "meta": {
   "Helicone-Property-User-Id": "user-123",
   "Helicone-Property-App-Version": "1.2.3",
@@ -10163,7 +12842,7 @@ You can add custom properties to your requests by including them in the `meta` f
 
 To group requests into sessions, include a session ID in the `meta` field:
 
-```json  theme={null}
+```json theme={null}
 "meta": {
   "Helicone-Session-Id": "session-123456"
 }
@@ -10173,7 +12852,7 @@ To group requests into sessions, include a session ID in the `meta` field:
 
 To associate requests with specific users, include a user ID in the `meta` field:
 
-```json  theme={null}
+```json theme={null}
 "meta": {
   "Helicone-User-Id": "user-123456"
 }
@@ -10191,7 +12870,7 @@ The timing information is optional but recommended for accurate latency metrics.
 
 Example in JavaScript:
 
-```javascript  theme={null}
+```javascript theme={null}
 const startTime = new Date();
 // Make your API call
 const endTime = new Date();
@@ -10212,7 +12891,7 @@ const timing = {
 
 Here's a complete example using Python's `requests` library:
 
-```python  theme={null}
+```python theme={null}
 import requests
 import time
 import json
@@ -10284,7 +12963,7 @@ For more examples and detailed usage, check out our [Manual Logger with Streamin
 
 ### Basic Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-helicone-api-key" \
@@ -10339,7 +13018,7 @@ curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 
 You can now log string responses directly using the `textBody` field:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-helicone-api-key" \
@@ -10374,7 +13053,7 @@ curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 
 For streaming responses, you can include the time to first token:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-helicone-api-key" \
@@ -10426,13 +13105,13 @@ Logging calls to custom models is supported via the Helicone Python SDK.
 
 <Steps>
   <Step title="Install the Helicone helpers package">
-    ```bash  theme={null}
+    ```bash theme={null}
     go get github.com/helicone/go-helicone-helpers
     ```
   </Step>
 
   <Step title="Set `HELICONE_API_KEY` as an environment variable">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=sk-<your-api-key>
     ```
 
@@ -10440,7 +13119,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
   </Step>
 
   <Step title="Create a new HeliconeManualLogger instance">
-    ```go  theme={null}
+    ```go theme={null}
     package main
 
     import (
@@ -10473,7 +13152,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
   </Step>
 
   <Step title="Define your operation and make the request">
-    ```go  theme={null}
+    ```go theme={null}
     // Define your request
     request := logger.ILogRequest{
         Model: "gpt-4o",
@@ -10511,7 +13190,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
 
 ### ManualLogger
 
-```go  theme={null}
+```go theme={null}
 type ManualLogger struct {
 	apiKey          string
 	headers         map[string]string
@@ -10531,7 +13210,7 @@ type LoggerOptions struct {
 
 ### LogOptions
 
-```go  theme={null}
+```go theme={null}
 type LogOptions struct {
 	StartTime         int64
 	EndTime           int64
@@ -10543,7 +13222,7 @@ type LogOptions struct {
 
 ### LogRequest
 
-```go  theme={null}
+```go theme={null}
 func (l *ManualLogger) LogRequest(request HeliconeLogRequest, operation func(*ResultRecorder) (any, error),
     additionalHeaders map[string]string
 ) (any, error) {
@@ -10561,7 +13240,7 @@ type HeliconeLogRequest interface{}
 
 ### ResultRecorder
 
-```go  theme={null}
+```go theme={null}
 type ResultRecorder struct {
 	results map[string]interface{}
 }
@@ -10591,13 +13270,13 @@ Logging calls to custom models is supported via the Helicone Python SDK.
 
 <Steps>
   <Step title="Install the Helicone helpers package">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install helicone-helpers
     ```
   </Step>
 
   <Step title="Set `HELICONE_API_KEY` as an environment variable">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=sk-<your-api-key>
     ```
 
@@ -10605,7 +13284,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
   </Step>
 
   <Step title="Create a new HeliconeManualLogger instance">
-    ```python  theme={null}
+    ```python theme={null}
     from openai import OpenAI
     from helicone_helpers import HeliconeManualLogger
     from helicone_helpers.manual_logger import HeliconeResultRecorder
@@ -10627,7 +13306,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
   </Step>
 
   <Step title="Define your operation and make the request">
-    ```python  theme={null}
+    ```python theme={null}
     def chat_completion_operation(result_recorder: HeliconeResultRecorder):
         response = client.chat.completions.create(
             **result_recorder.request
@@ -10661,7 +13340,7 @@ Logging calls to custom models is supported via the Helicone Python SDK.
 
 ### HeliconeManualLogger
 
-```python  theme={null}
+```python theme={null}
 class HeliconeManualLogger:
     def __init__(
         self,
@@ -10673,7 +13352,7 @@ class HeliconeManualLogger:
 
 ### LoggingOptions
 
-```python  theme={null}
+```python theme={null}
 class LoggingOptions(TypedDict, total=False):
     start_time: float
     end_time: float
@@ -10683,7 +13362,7 @@ class LoggingOptions(TypedDict, total=False):
 
 ### log\_request
 
-```python  theme={null}
+```python theme={null}
 def log_request(
     self,
     request: dict,
@@ -10702,7 +13381,7 @@ def log_request(
 
 ### send\_log
 
-```python  theme={null}
+```python theme={null}
 def send_log(
     self,
     provider: Optional[str],
@@ -10721,7 +13400,7 @@ def send_log(
 
 ### HeliconeResultRecorder
 
-```python  theme={null}
+```python theme={null}
 class HeliconeResultRecorder:
     def __init__(self, request: dict):
         """Initialize with request data"""
@@ -10739,7 +13418,7 @@ class HeliconeResultRecorder:
 
 For direct logging of string responses:
 
-```python  theme={null}
+```python theme={null}
 import time
 from helicone_helpers import HeliconeManualLogger, LoggingOptions
 
@@ -10779,7 +13458,7 @@ helicone.send_log(
 
 For streaming responses with Python, you can use the `log_request` method with time to first token tracking:
 
-```python  theme={null}
+```python theme={null}
 from helicone_helpers import HeliconeManualLogger, LoggingOptions
 import openai
 import time
@@ -10836,7 +13515,7 @@ result = helicone.log_request(
 
 ### Using with Anthropic
 
-```python  theme={null}
+```python theme={null}
 from helicone_helpers import HeliconeManualLogger
 import anthropic
 
@@ -10884,7 +13563,7 @@ result = helicone.log_request(
 
 For custom models that don't have a specific provider integration:
 
-```python  theme={null}
+```python theme={null}
 from helicone_helpers import HeliconeManualLogger
 import requests
 
@@ -10928,7 +13607,7 @@ For more examples and detailed usage, check out our [Manual Logger with Streamin
 
 For direct control over streaming responses, you can use the `send_log` method to manually track time to first token:
 
-```python  theme={null}
+```python theme={null}
 import time
 from helicone_helpers import HeliconeManualLogger, LoggingOptions
 import openai
@@ -10994,13 +13673,13 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
   <Tab title="Basic Usage">
     <Steps>
       <Step title="To get started, install the `@helicone/helpers` package">
-        ```bash  theme={null}
+        ```bash theme={null}
         npm install @helicone/helpers
         ```
       </Step>
 
       <Step title="Set `HELICONE_API_KEY` as an environment variable">
-        ```bash  theme={null}
+        ```bash theme={null}
         export HELICONE_API_KEY=sk-<your-api-key>
         ```
 
@@ -11008,7 +13687,7 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
       </Step>
 
       <Step title="Create a new HeliconeManualLogger instance">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { HeliconeManualLogger } from "@helicone/helpers";
 
         const heliconeLogger = new HeliconeManualLogger({
@@ -11020,7 +13699,7 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
       </Step>
 
       <Step title="Log your request">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         const reqBody = {
           model: "text-embedding-ada-002",
           input: "The food was delicious and the waiter was very friendly.",
@@ -11053,13 +13732,13 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
   <Tab title="Logging Chat Completion">
     <Steps>
       <Step title="Install dependencies">
-        ```bash  theme={null}
+        ```bash theme={null}
         npm install @helicone/helpers openai
         ```
       </Step>
 
       <Step title="Set up the logger and OpenAI client">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { HeliconeManualLogger } from "@helicone/helpers";
         import OpenAI from "openai";
 
@@ -11076,7 +13755,7 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
       </Step>
 
       <Step title="Using logSingleRequest for non-streaming responses">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         // Define your request
         const requestBody = {
           model: "gpt-4o-mini",
@@ -11098,7 +13777,7 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
       </Step>
 
       <Step title="Using logSingleStream for streaming responses">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         const streamingRequestBody = {
           model: "gpt-4o-mini",
           messages: [{ role: "user", content: "Write a short story about AI" }],
@@ -11122,13 +13801,13 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
   <Tab title="On Vercel">
     <Steps>
       <Step title="Install dependencies">
-        ```bash  theme={null}
+        ```bash theme={null}
         npm install @helicone/helpers together-ai next
         ```
       </Step>
 
       <Step title="Create an API route handler with Together AI">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         // app/api/chat/route.ts
         import { HeliconeManualLogger } from "@helicone/helpers";
         import { after } from "next/server";
@@ -11199,7 +13878,7 @@ Logging calls to custom models is supported via the Helicone NodeJS SDK.
 
 ### HeliconeManualLogger
 
-```typescript  theme={null}
+```typescript theme={null}
 class HeliconeManualLogger {
 constructor(opts: IHeliconeManualLogger);
 }
@@ -11213,7 +13892,7 @@ loggingEndpoint?: string; // defaults to https://api.hconeai.com/custom/v1/log
 
 ### HeliconeLogBuilder
 
-```typescript  theme={null}
+```typescript theme={null}
 class HeliconeLogBuilder {
   constructor(
     logger: HeliconeManualLogger,
@@ -11239,7 +13918,7 @@ The `HeliconeLogBuilder` provides a simplified way to handle streaming LLM respo
 
 ### logRequest
 
-```typescript  theme={null}
+```typescript theme={null}
 logRequest<T>(
     request: HeliconeLogRequest,
     operation: (resultRecorder: HeliconeResultRecorder) => Promise<T>,
@@ -11251,7 +13930,7 @@ logRequest<T>(
 
 1. `request`: `HeliconeLogRequest` - The request object to log
 
-```typescript  theme={null}
+```typescript theme={null}
 type HeliconeLogRequest = ILogRequest | HeliconeCustomEventRequest; // ILogRequest is the type for the request object for custom model logging
 
 // The name and structure of the prompt field depends on the model you are using.
@@ -11266,7 +13945,7 @@ type ILogRequest = {
 
 2. `operation`: `(resultRecorder: HeliconeResultRecorder) => Promise<T>` - The operation to be executed and logged
 
-```typescript  theme={null}
+```typescript theme={null}
 class HeliconeResultRecorder {
   private results: Record<string, any> = {};
 
@@ -11292,7 +13971,7 @@ The `HeliconeManualLogger` class provides several methods for logging different 
 
 Used for logging non-streaming requests and responses with full control over the operation.
 
-```typescript  theme={null}
+```typescript theme={null}
 logRequest<T>(
   request: HeliconeLogRequest,
   operation: (resultRecorder: HeliconeResultRecorder) => Promise<T>,
@@ -11308,7 +13987,7 @@ logRequest<T>(
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const result = await helicone.logRequest(
   requestBody,
   async (resultRecorder) => {
@@ -11324,7 +14003,7 @@ const result = await helicone.logRequest(
 
 Used for logging streaming operations with full control over stream handling.
 
-```typescript  theme={null}
+```typescript theme={null}
 logStream<T>(
   request: HeliconeLogRequest,
   operation: (resultRecorder: HeliconeStreamResultRecorder) => Promise<T>,
@@ -11340,7 +14019,7 @@ logStream<T>(
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const stream = await helicone.logStream(
   requestBody,
   async (resultRecorder) => {
@@ -11360,7 +14039,7 @@ const stream = await helicone.logStream(
 
 A simplified method for logging a single ReadableStream without needing to manage the operation.
 
-```typescript  theme={null}
+```typescript theme={null}
 logSingleStream(
   request: HeliconeLogRequest,
   stream: ReadableStream,
@@ -11376,7 +14055,7 @@ logSingleStream(
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await llmProvider.createChatCompletion({
   stream: true,
   ...requestBody,
@@ -11395,7 +14074,7 @@ return streamForUser;
 
 Used for logging a single request with a response body without needing to manage the operation.
 
-```typescript  theme={null}
+```typescript theme={null}
 logSingleRequest(
   request: HeliconeLogRequest,
   body: string,
@@ -11414,7 +14093,7 @@ logSingleRequest(
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const response = await llmProvider.createCompletion(requestBody);
 await helicone.logSingleRequest(requestBody, JSON.stringify(response), {
   additionalHeaders: { "Helicone-User-Id": userId },
@@ -11425,7 +14104,7 @@ await helicone.logSingleRequest(requestBody, JSON.stringify(response), {
 
 The recommended method for handling streaming responses with better error handling and simplified workflow.
 
-```typescript  theme={null}
+```typescript theme={null}
 logBuilder(
   request: HeliconeLogRequest,
   additionalHeaders?: Record<string, string>
@@ -11439,7 +14118,7 @@ logBuilder(
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 // Create a log builder
 const heliconeLogBuilder = helicone.logBuilder(requestBody, {
   "Helicone-User-Id": userId,
@@ -11472,7 +14151,7 @@ Helicone provides an asynchronous stream parser for efficient handling of stream
 
 Here's an example of how to use the async stream parser with a custom integration:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { HeliconeManualLogger } from "@helicone/helpers";
 
 // Initialize the Helicone logger
@@ -11508,7 +14187,7 @@ The async stream parser offers several benefits:
 
 When building applications with Next.js App Router on Vercel, you can use the `after` function to log streaming responses without blocking the client response:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { HeliconeManualLogger } from "@helicone/helpers";
 import { after } from "next/server";
 import Together from "together-ai";
@@ -11583,7 +14262,7 @@ You can follow their documentation here: [https://docs.mistral.ai/](https://docs
   </Step>
 
   <Step title="Set HELICONE_API_KEY and MISTRAL_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     MISTRAL_API_KEY=<your API key>
     ```
@@ -11596,7 +14275,7 @@ You can follow their documentation here: [https://docs.mistral.ai/](https://docs
 
     and then add the following authentication headers:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     Authorization: Bearer <your API key>
     ```
   </Step>
@@ -11606,7 +14285,7 @@ Now you can access all the models on Mistral AI with a simple fetch call:
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   --header "Authorization: Bearer $MISTRAL_API_KEY" \
   --header "Content-Type: application/json" \
@@ -11619,7 +14298,7 @@ curl \
 
 ### TypeScript Example
 
-```typescript  theme={null}
+```typescript theme={null}
 const httpClient = new HTTPClient();
 httpClient.addHook("beforeRequest", async (req) => {
   req.headers.set("Helicone-Auth", `Bearer ${process.env.HELICONE_API_KEY}`);
@@ -11680,7 +14359,7 @@ You can follow their documentation here: [https://docs.tokenfactory.nebius.com/]
   </Step>
 
   <Step title="Set HELICONE_API_KEY and NEBIUS_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     NEBIUS_API_KEY=<your API key>
     ```
@@ -11693,7 +14372,7 @@ You can follow their documentation here: [https://docs.tokenfactory.nebius.com/]
 
     and then add the following authentication headers:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     Authorization: Bearer <your API key>
     ```
   </Step>
@@ -11703,7 +14382,7 @@ Now you can access all the models on Nebius Token Factory with a simple fetch ca
 
 ## Example - Text Completion
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   --header "Authorization: Bearer $NEBIUS_API_KEY" \
   --header "Content-Type: application/json" \
@@ -11721,7 +14400,7 @@ curl \
 
 ## Example - Image Generation
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   --header "Authorization: Bearer $NEBIUS_API_KEY" \
   --header "Content-Type: application/json" \
@@ -11761,7 +14440,7 @@ You can follow their documentation here: [https://novita.ai/docs](https://novita
   </Step>
 
   <Step title="Set HELICONE_API_KEY and NOVITA_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     NOVITA_API_KEY=<your API key>
     ```
@@ -11774,7 +14453,7 @@ You can follow their documentation here: [https://novita.ai/docs](https://novita
 
     and then add the following authentication headers:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     Authorization: Bearer <your API key>
     ```
   </Step>
@@ -11784,7 +14463,7 @@ Now you can access all the models on Novita AI with a simple fetch call:
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl \
   --header "Authorization: Bearer $NOVITA_API_KEY" \
   --header "Content-Type: application/json" \
@@ -11822,13 +14501,13 @@ path. This ensures that an issue with Helicone will not cause an outage to your 
   <Tab title="Node.js">
     <Steps>
       <Step title="Install Helicone Async">
-        ```bash  theme={null}
+        ```bash theme={null}
         npm install @helicone/async
         ```
       </Step>
 
       <Step title="Initialize Logger">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { HeliconeAsyncLogger } from "@helicone/async";
         import OpenAI from "openai";
 
@@ -11867,7 +14546,7 @@ path. This ensures that an issue with Helicone will not cause an outage to your 
       <Step title="Properties">
         You can set properties on the logger to be used in Helicone using the `withProperties` method. (These can be used for [Sessions](/features/sessions), [User Metrics](/features/advanced-usage/user-metrics), and more.)
 
-        ```typescript  theme={null}
+        ```typescript theme={null}
         const sessionId = randomUUID();
 
         logger.withProperties({
@@ -11887,13 +14566,13 @@ path. This ensures that an issue with Helicone will not cause an outage to your 
   <Tab title="Python">
     <Steps>
       <Step title="Install Helicone Async">
-        ```bash  theme={null}
+        ```bash theme={null}
         pip install helicone-async
         ```
       </Step>
 
       <Step title="Initialize Logger">
-        ```python  theme={null}
+        ```python theme={null}
         from helicone_async import HeliconeAsyncLogger
         from openai import OpenAI
 
@@ -11923,7 +14602,7 @@ path. This ensures that an issue with Helicone will not cause an outage to your 
       <Step title="Properties">
         You can set properties on the logger to be used in Helicone using the `set_properties` method. (These can be used for [Sessions](/features/sessions), [User Metrics](/features/advanced-usage/user-metrics), and more.)
 
-        ```python  theme={null}
+        ```python theme={null}
         session_id = str(uuid.uuid4())
 
         logger.set_properties({
@@ -11947,7 +14626,7 @@ You can completely disable all logging to Helicone if needed when using the asyn
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={null}
+    ```python theme={null}
     # Disable all logging in async mode
     logger.disable_logging()
 
@@ -12005,7 +14684,7 @@ You can follow their documentation here: [https://openrouter.ai/docs#quick-start
   </Step>
 
   <Step title="Set HELICONE_API_KEY and OPENROUTER_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     OPENROUTER_API_KEY=<your API key>
     ```
@@ -12029,7 +14708,7 @@ Now you can access all the models on OpenRouter with a simple fetch call:
 
 ## Example
 
-```typescript  theme={null}
+```typescript theme={null}
 fetch("https://openrouter.helicone.ai/api/v1/chat/completions", {
   method: "POST",
   headers: {
@@ -12084,7 +14763,7 @@ You can follow their documentation here: [https://docs.perplexity.ai/](https://d
   </Step>
 
   <Step title="Set HELICONE_API_KEY and PERPLEXITY_API_KEY as environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     PERPLEXITY_API_KEY=<your API key>
     ```
@@ -12097,7 +14776,7 @@ You can follow their documentation here: [https://docs.perplexity.ai/](https://d
 
     and then add the following authentication headers:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     Authorization: Bearer <your API key>
     ```
   </Step>
@@ -12107,7 +14786,7 @@ Now you can access all the models on Perplexity AI with a simple fetch call:
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://perplexity.helicone.ai/chat/completions \
   --header "Authorization: Bearer $PERPLEXITY_API_KEY" \
@@ -12145,7 +14824,7 @@ Combine Helicone's LLM analytics with PostHog, a comprehensive product analytics
 
     <Tabs>
       <Tab title="Python">
-        ```python  theme={null}
+        ```python theme={null}
         client = OpenAI(
         	api_key="<your-api-key-here>", # Replace with your OpenAI API key
         	base_url="https://oai.helicone.ai/v1" # Set the API endpoint
@@ -12159,7 +14838,7 @@ Combine Helicone's LLM analytics with PostHog, a comprehensive product analytics
       </Tab>
 
       <Tab title="Node.js">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { Configuration, OpenAIApi } from "openai";
 
         const configuration = new Configuration({
@@ -12179,7 +14858,7 @@ Combine Helicone's LLM analytics with PostHog, a comprehensive product analytics
       </Tab>
 
       <Tab title="Terminal">
-        ```bash  theme={null}
+        ```bash theme={null}
         curl --request POST \
         	--url https://oai.helicone.ai/v1/chat/completions \
         	--header "Authorization: Bearer $OPENAI_API_KEY" \
@@ -12228,7 +14907,7 @@ You can seamlessly integrate Helicone with your OpenAI compatible models that ar
 
 The integration process closely mirrors the [proxy approach](/integrations/openai/javascript). The only distinction lies in the modification of the base\_url to point to the dedicated TogetherAI endpoint `https://together.helicone.ai/v1`.
 
-```bash  theme={null}
+```bash theme={null}
 base_url="https://together.helicone.ai/v1"
 ```
 
@@ -12242,7 +14921,7 @@ Helicone now provides enhanced support for streaming with Together AI through ou
 
 Here's an example of how to use Helicone's manual logging with Together AI's streaming functionality:
 
-```typescript  theme={null}
+```typescript theme={null}
 import Together from "together-ai";
 import { HeliconeManualLogger } from "@helicone/helpers";
 
@@ -12298,63 +14977,17 @@ Source: https://docs.helicone.ai/getting-started/integration-method/vercelai
 
 Integrate Vercel AI SDK with Helicone to monitor, debug, and improve your AI applications.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
@@ -12595,7 +15228,7 @@ If you're already using a custom base URL for an OpenAI-compatible vendor, you c
 
 ### Example with Custom Vendor
 
-```javascript  theme={null}
+```javascript theme={null}
 import { createOpenAI } from "@ai-sdk/openai";
 
 const openai = createOpenAI({
@@ -12617,7 +15250,7 @@ const response = streamText({
 
 You can also dynamically set the target URL per request:
 
-```javascript  theme={null}
+```javascript theme={null}
 const response = streamText({
   model: openai("gpt-4o"),
   prompt: "Hello world",
@@ -12643,7 +15276,7 @@ Understand how Helicone solves the core challenges of building production LLM ap
 Now that your requests are flowing through Helicone, let's explore what you can do with the platform.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=ecbd77e794c87f4dd44ab8036847d8d7" alt="Helicone dashboard showing comprehensive LLM observability metrics." data-og-width="2372" width="2372" data-og-height="1540" height="1540" data-path="images/introduction/intro-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=de609db02577fe23861bbfed647f8722 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=cd7e16b5b646e5932da8fe1fa782548b 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a36d2229b6220668cfaeeb2b9e601a76 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e2628ca8ec3992df76c2da5a14e0ba6a 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=fcb2633971da0dbff129e0cb5a986945 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=68800d2c6ba254e9c09dd66de724d270 2500w" />
+  <img alt="Helicone dashboard showing comprehensive LLM observability metrics." />
 </Frame>
 
 ## What is Helicone?
@@ -12654,7 +15287,7 @@ In short: **monitor everything, route intelligently, never go down.**
 
 ## The Problems We Solve
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Reliability Issues" icon="shield">
     Provider outages break your application. No visibility when requests fail. Manual fallback logic is complex and error-prone.
   </Card>
@@ -12799,7 +15432,7 @@ Helicone is unique in offering both AI Gateway and full observability in one pla
 
 ## Start Exploring Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Gateway" href="/gateway/overview" icon="route">
     Use 100+ models through one unified API with automatic fallbacks
   </Card>
@@ -12840,7 +15473,7 @@ Use the familiar OpenAI SDK to access 100+ LLM models across OpenAI, Anthropic, 
 
     <Tabs>
       <Tab title="TypeScript">
-        ```typescript  theme={null}
+        ```typescript theme={null}
         import { OpenAI } from "openai";
 
         const client = new OpenAI({
@@ -12856,7 +15489,7 @@ Use the familiar OpenAI SDK to access 100+ LLM models across OpenAI, Anthropic, 
       </Tab>
 
       <Tab title="Python">
-        ```python  theme={null}
+        ```python theme={null}
         from openai import OpenAI
 
         client = OpenAI(
@@ -12872,7 +15505,7 @@ Use the familiar OpenAI SDK to access 100+ LLM models across OpenAI, Anthropic, 
       </Tab>
 
       <Tab title="cURL">
-        ```bash  theme={null}
+        ```bash theme={null}
         curl https://ai-gateway.helicone.ai/chat/completions \
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer $HELICONE_API_KEY" \
@@ -12910,7 +15543,7 @@ Use the familiar OpenAI SDK to access 100+ LLM models across OpenAI, Anthropic, 
 
 Now that data is flowing, explore what Helicone can do for you:
 
-<Card title="Explore The Platform" href="/getting-started/platform-overview" icon="rocket" horizontal>
+<Card title="Explore The Platform" href="/getting-started/platform-overview" icon="rocket">
   Understand how Helicone solves common LLM development challenges.
 </Card>
 
@@ -12929,26 +15562,172 @@ Deploy Helicone using Docker. Quick setup guide for running a containerized inst
 
 To run all services in a single Docker container, you can use the `helicone-all-in-one` image.
 
+## Quick Start (Local)
+
 Get [Docker](https://docs.docker.com/get-docker/) and run the container:
 
-```bash  theme={null}
-docker pull helicone/helicone-all-in-one:v2025.08.08
-docker run -d --name helicone-all-in-one -p 3000:3000 -p 8585:8585 -p 5432:5432 -p 8123:8123 -p 9000:9000 helicone/helicone-all-in-one:v2025.08.08
+```bash theme={null}
+docker pull helicone/helicone-all-in-one:latest
+docker run -d \
+  --name helicone \
+  -p 3000:3000 \
+  -p 8585:8585 \
+  -p 9080:9080 \
+  helicone/helicone-all-in-one:latest
 ```
+
+Access the dashboard at `http://localhost:3000`.
 
 ## Example to test the Jawn service
 
-```bash  theme={null}
-curl --location 'http://localhost:8585/v1/gateway/oai/v1/completions' \
+```bash theme={null}
+curl --location 'http://localhost:8585/v1/gateway/oai/v1/chat/completions' \
 --header "Content-Type: application/json" \
---header "Authorization: Bearer {{OPENAI_API_KEY}}" \
---header "Helicone-Auth: Bearer {{HELICONE_API_KEY}}" \
+--header "Authorization: Bearer $OPENAI_API_KEY" \
+--header "Helicone-Auth: Bearer $HELICONE_API_KEY" \
 --data '{
     "model": "gpt-4o-mini",
-    "prompt": "Count to 5",
-    "stream": false
+    "messages": [{"role": "user", "content": "Hello"}]
   }'
 ```
+
+## Production Setup (Remote Server)
+
+When deploying to a remote server (EC2, VPS, etc.), configure your server's public IP or domain:
+
+```bash theme={null}
+# Replace YOUR_IP with your server's public IP or domain
+export PUBLIC_URL="http://YOUR_IP:3000"
+export JAWN_URL="http://YOUR_IP:8585"
+export S3_URL="http://YOUR_IP:9080"
+
+docker run -d \
+  --name helicone \
+  -p 3000:3000 \
+  -p 8585:8585 \
+  -p 9080:9080 \
+  -e SITE_URL="$PUBLIC_URL" \
+  -e BETTER_AUTH_URL="$PUBLIC_URL" \
+  -e BETTER_AUTH_SECRET="$(openssl rand -base64 32)" \
+  -e NEXT_PUBLIC_APP_URL="$PUBLIC_URL" \
+  -e NEXT_PUBLIC_HELICONE_JAWN_SERVICE="$JAWN_URL" \
+  -e NEXT_PUBLIC_IS_ON_PREM=true \
+  -e S3_ENDPOINT="$S3_URL" \
+  helicone/helicone-all-in-one:latest
+```
+
+## Environment Variables
+
+The container uses these environment variables (with defaults for local development):
+
+| Variable                            | Default                    | Description                                                                         |
+| ----------------------------------- | -------------------------- | ----------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_HELICONE_JAWN_SERVICE` | `http://localhost:8585`    | URL browsers use to reach the API. **Must be public URL for remote deployments.**   |
+| `S3_ENDPOINT`                       | `http://localhost:9080`    | URL browsers use for presigned URLs. **Must be public URL for remote deployments.** |
+| `S3_ACCESS_KEY`                     | `minioadmin`               | MinIO access key                                                                    |
+| `S3_SECRET_KEY`                     | `minioadmin`               | MinIO secret key                                                                    |
+| `S3_BUCKET_NAME`                    | `request-response-storage` | S3 bucket for request/response bodies                                               |
+| `BETTER_AUTH_SECRET`                | `change-me-in-production`  | Auth secret. **Generate a secure value for production.**                            |
+| `SITE_URL`                          | -                          | Public URL of the web dashboard                                                     |
+| `BETTER_AUTH_URL`                   | -                          | Same as SITE\_URL                                                                   |
+| `NEXT_PUBLIC_APP_URL`               | -                          | Same as SITE\_URL                                                                   |
+| `NEXT_PUBLIC_IS_ON_PREM`            | -                          | Set to `true` for non-localhost deployments                                         |
+
+## Port Requirements
+
+| Port | Service              | Required For                    |
+| ---- | -------------------- | ------------------------------- |
+| 3000 | Web Dashboard        | Browser access                  |
+| 8585 | Jawn API + LLM Proxy | Browser API calls, LLM proxying |
+| 9080 | MinIO S3             | Request/response body storage   |
+| 5432 | PostgreSQL           | Internal (can be restricted)    |
+| 8123 | ClickHouse           | Internal (can be restricted)    |
+
+**Important:** Ports 3000, 8585, and 9080 must be accessible from browsers accessing the dashboard.
+
+## User Account Setup
+
+### Create Account
+
+Navigate to `http://YOUR_IP:3000/signup` and create your account.
+
+### Email Verification
+
+The container doesn't include email services. Manually verify users:
+
+```bash theme={null}
+docker exec -u postgres helicone psql -d helicone_test -c \
+  "UPDATE \"user\" SET \"emailVerified\" = true WHERE email = 'your@email.com';"
+```
+
+### Organization Setup
+
+Users need an organization. If you see "No organization ID found" errors:
+
+```bash theme={null}
+# Get your user ID
+docker exec -u postgres helicone psql -d helicone_test -c \
+  "SELECT id, email FROM \"user\" WHERE email = 'your@email.com';"
+
+# Create organization (save the returned ID)
+docker exec -u postgres helicone psql -d helicone_test -c \
+  "INSERT INTO organization (name, is_personal) VALUES ('My Org', true) RETURNING id;"
+
+# Add user to organization (replace USER_ID and ORG_ID)
+docker exec -u postgres helicone psql -d helicone_test -c \
+  "INSERT INTO organization_member (\"user\", organization, org_role) \
+   VALUES ('USER_ID', 'ORG_ID', 'admin');"
+```
+
+## Supported LLM Providers
+
+* OpenAI: `http://YOUR_IP:8585/v1/gateway/oai/v1/chat/completions`
+* Anthropic: `http://YOUR_IP:8585/v1/gateway/anthropic/v1/messages`
+
+Other providers (Vertex AI, AWS Bedrock, Azure OpenAI) are not supported in the self-hosted version.
+
+## Important Notes
+
+### Data Persistence
+
+Container restarts will wipe all data. For production, mount Docker volumes:
+
+```bash theme={null}
+-v helicone-postgres:/var/lib/postgresql/data \
+-v helicone-clickhouse:/var/lib/clickhouse \
+-v helicone-minio:/data
+```
+
+### Security
+
+Port 8585 does not require authentication for proxying requests. Anyone with access can proxy LLM requests through your endpoint. Restrict access via firewall rules.
+
+### HTTPS
+
+For HTTPS support, use a reverse proxy (Caddy, nginx, Traefik) in front of the container. See the [Cloud Deployment guide](/getting-started/self-host/cloud) for a Caddy example.
+
+## Troubleshooting
+
+### API calls fail with connection refused
+
+The web app tries to connect to `localhost:8585` instead of your public IP. Verify the environment variable was set:
+
+```bash theme={null}
+curl http://YOUR_IP:3000/__ENV.js | grep JAWN
+# Should show your public IP, not localhost
+```
+
+### Infinite redirect loop
+
+Missing `NEXT_PUBLIC_IS_ON_PREM=true` environment variable.
+
+### "Invalid origin" error on sign-in
+
+All URL environment variables must use the same origin (public IP or domain). Don't mix `localhost` with public IPs.
+
+### "No organization ID found" error
+
+User needs to be added to an organization. See the Organization Setup section above.
 
 
 # Kubernetes Self-Hosting
@@ -12988,7 +15767,7 @@ Previous version: [v2](https://github.com/Helicone/helicone-helm-v2)
 You can now deploy all Helicone components with a single command using the provided
 `helm-compose.yaml` configuration:
 
-```bash  theme={null}
+```bash theme={null}
 helm compose up
 ```
 
@@ -13001,7 +15780,7 @@ This will deploy the complete Helicone stack including:
 
 To tear down all components:
 
-```bash  theme={null}
+```bash theme={null}
 helm compose down
 ```
 
@@ -13011,7 +15790,7 @@ Alternatively, you can install components individually:
 
 1. Install necessary helm dependencies:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    cd helicone && helm dependency build
    ```
 
@@ -13021,7 +15800,7 @@ Alternatively, you can install components individually:
 
 4. Install/upgrade each Helm chart individually:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    # Install core Helicone application components
    helm upgrade --install helicone-core ./helicone-core -f values.yaml
 
@@ -13037,7 +15816,7 @@ Alternatively, you can install components individually:
 
 5. Verify the deployment:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    kubectl get pods
    ```
 
@@ -13053,7 +15832,7 @@ Kubernetes cluster state with the desired state defined in your Git repos.
 
 1. Port-forward to access the ArgoCD server:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    kubectl port-forward svc/argocd-server -n argocd 8080:443
    ```
 
@@ -13061,7 +15840,7 @@ Kubernetes cluster state with the desired state defined in your Git repos.
 
 3. Get the initial admin password:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
    ```
 
@@ -13077,7 +15856,7 @@ visualize metrics from all your services.
 
 1. Port-forward to access the Grafana server:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    kubectl port-forward svc/grafana -n monitoring 3000:80
    ```
 
@@ -13085,7 +15864,7 @@ visualize metrics from all your services.
 
 3. Get the admin password (if using default configuration):
 
-   ```bash  theme={null}
+   ```bash theme={null}
    kubectl get secret grafana -n monitoring -o jsonpath="{.data.admin-password}" | base64 -d
    ```
 
@@ -13114,7 +15893,7 @@ Make sure to enable the following CORS policy on the S3 bucket, such that the we
 URL's from the bucket. To do so in AWS, in the bucket settings, set the following under Permissions
 -> Cross-origin resource sharing (CORS):
 
-```yaml  theme={null}
+```yaml theme={null}
 [
   {
     'AllowedHeaders': ['*'],
@@ -13132,25 +15911,25 @@ To set up an Aurora postgresql database using Terraform, follow these steps:
 
 1. Navigate to the terraform/aurora directory:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    cd terraform/aurora
    ```
 
 2. Initialize Terraform:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    terraform init
    ```
 
 3. Validate the Terraform configuration:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    terraform validate
    ```
 
 4. Apply the Terraform configuration to create the Aurora cluster:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    terraform apply
    ```
 
@@ -13172,14 +15951,14 @@ Comprehensive guides to help you deploy and manage your own instance of Helicone
 
 Helicone offers multiple deployment methods to suit your infrastructure and scalability needs. Choose the one that best fits your requirements:
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Manual Installation" icon="server" href="/getting-started/self-host/manual" description="Set up each component individually for full control. Ideal for customized environments." horizontal iconType="light" />
+<CardGroup>
+  <Card title="Manual Installation" icon="server" href="/getting-started/self-host/manual" description="Set up each component individually for full control. Ideal for customized environments." />
 
-  <Card title="Docker Compose" icon="docker" href="/getting-started/self-host/docker" description="Quickly set up Helicone using Docker Compose. Perfect for local development and simple deployments." horizontal iconType="light" />
+  <Card title="Docker Compose" icon="docker" href="/getting-started/self-host/docker" description="Quickly set up Helicone using Docker Compose. Perfect for local development and simple deployments." />
 
-  <Card title="Kubernetes" icon="cubes" href="/getting-started/self-host/kubernetes" description="Deploy Helicone on your Kubernetes cluster using Helm charts. Suitable for scalable and resilient deployments." horizontal iconType="light" />
+  <Card title="Kubernetes" icon="cubes" href="/getting-started/self-host/kubernetes" description="Deploy Helicone on your Kubernetes cluster using Helm charts. Suitable for scalable and resilient deployments." />
 
-  <Card title="Cloud Deployment" icon="cloud" href="/getting-started/self-host/cloud" description="Set up Helicone on cloud infrastructure like AWS. Ideal for production-ready environments with robust infrastructure." horizontal iconType="light" />
+  <Card title="Cloud Deployment" icon="cloud" href="/getting-started/self-host/cloud" description="Set up Helicone on cloud infrastructure like AWS. Ideal for production-ready environments with robust infrastructure." />
 </CardGroup>
 
 ## Choosing the Right Deployment Option
@@ -13249,7 +16028,7 @@ You'll need:
 
 Create a project directory and install packages:
 
-```bash  theme={null}
+```bash theme={null}
 mkdir stock-agent-helicone
 cd stock-agent-helicone
 pip install openai yfinance python-dotenv helicone-helpers
@@ -13268,7 +16047,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Set up the Agent with Helicone">
     First, let's create our agent class an initialize an OpenAI client with Helicone integration. We'll also initialize the [Helicone Manual Logger](https://docs.helicone.ai/getting-started/integration-method/manual-logger-python#manual-logger-python) to log tool usage:
 
-    ```python  theme={null}
+    ```python theme={null}
     import json
     import uuid
     from typing import Optional, Dict, Any, List
@@ -13308,7 +16087,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Initialize Session Tracking">
     Sessions help you track complete agent conversations and see how tools chain together:
 
-    ```python  theme={null}
+    ```python theme={null}
     def start_new_session(self):
         """Initialize a new session for tracking."""
         self.session_id = str(uuid.uuid4())
@@ -13324,7 +16103,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Create and Monitor Tools with Sessions & Manual Logging">
     Each tool execution is logged separately with detailed results:
 
-    ```python  theme={null}
+    ```python theme={null}
     def get_stock_price(self, ticker_symbol: str) -> Optional[str]:
         """Fetches the current stock price."""
         def price_operation(result_recorder):
@@ -13496,7 +16275,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Implement the Agent's Decision-Making Loop">
     Implement the main processing loop, which calls tools as needed until it has a complete answer:
 
-    ```python  theme={null}
+    ```python theme={null}
     def process_user_query(self, user_query: str) -> str:
         """Processes a user query with comprehensive Helicone logging."""
         self.conversation_history.append({"role": "user", "content": user_query})
@@ -13591,7 +16370,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Add the Chat Interface">
     Finally, create the interactive chat loop, which serves as the entry point for the agent and kicks off the session:
 
-    ```python  theme={null}
+    ```python theme={null}
     def chat(self):
         """Interactive chat loop with session tracking."""
         print("Stock Information Agent with Helicone Monitoring")
@@ -13623,7 +16402,7 @@ OPENAI_API_KEY=your_openai_key_here
   <Step title="Run Your Agent">
     Running the agent is simple, navigate to the project directory and run the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     python stock_agent.py
     ```
   </Step>
@@ -13663,7 +16442,7 @@ In your Helicone dashboard, you'll see each operation tracked in detail as part 
 With Sessions integration, your agent's operations appear beautifully organized in your Helicone dashboard:
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=dfc21faedd0a17584f5c6051a1300be1" alt="Helicone Sessions view showing agent operations with timeline and detailed request tracking" data-og-width="2558" width="2558" data-og-height="1329" height="1329" data-path="images/sessions/helicone-session-financial-agent.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e02ab21552b0d3952851ac2173b0e6b2 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=3f13547a600254d3141b1a23708fa315 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=316ba6cc1afe9e7d94e4002e62581591 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=0cff28925ccfa9539039d144571ced3c 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=ac4d9f8bd1965254fd22166252ed7b12 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/sessions/helicone-session-financial-agent.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=7c41455b8afecc878b789e452a454b49 2500w" />
+  <img alt="Helicone Sessions view showing agent operations with timeline and detailed request tracking" />
 </Frame>
 
 The session view shows:
@@ -13704,7 +16483,7 @@ Track timing for both LLM reasoning and tool execution to optimize agent perform
 
 <AccordionGroup>
   <Accordion title="Click to expand the full agent code">
-    ```python  theme={null}
+    ```python theme={null}
     import json
     import uuid
     from typing import Optional, Dict, Any, List
@@ -14159,15 +16938,15 @@ For direct provider integrations, we use our open-source cost repository with pr
 
 The most critical aspect of cost tracking is understanding your unit economics - what drives costs in your application and how to optimize them.
 
-<Frame caption="Session cost breakdown showing unit economics across different user interactions">
-  <img src="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=6d51b6313b5988e78d6f38f5033f8a81" alt="Helicone dashboard showing session-level cost breakdown with request counts and average costs per session type" data-og-width="3454" width="3454" data-og-height="1138" height="1138" data-path="images/sessions/session-metrics.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=280&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=dd5e5ceeafb9ef14c5af4f768532a965 280w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=560&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=d925d3ce970f75122615328f5541a131 560w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=840&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=45a9db2909f12463712b7a331fee335f 840w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=1100&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=ba15b6d92ead62378e581c4294caa7cf 1100w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=1650&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=dd9554f73ce11eced8edb6d51cbfec4d 1650w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/sessions/session-metrics.webp?w=2500&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=0e6324fd1a6ba41fe36447960e39ecbf 2500w" />
+<Frame>
+  <img alt="Helicone dashboard showing session-level cost breakdown with request counts and average costs per session type" />
 </Frame>
 
 ### Sessions: Your Cost Foundation
 
 [Sessions](/features/sessions) group related requests to show the true cost of user interactions. Instead of seeing individual API calls, you see complete workflows:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Track a complete customer support interaction
 const response = await client.chat.completions.create(
   { 
@@ -14193,11 +16972,11 @@ This reveals insights like:
 
 Use [custom properties](/features/advanced-usage/custom-properties) to slice costs by the dimensions that matter to your business:
 
-<Frame caption="Cost breakdown by user tier showing premium users generate 3x more value than cost">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ec8a7d26fee614033f2b382f5618fcef" alt="Dashboard showing cost segmentation by user tiers with ROI analysis" data-og-width="2564" width="2564" data-og-height="1366" height="1366" data-path="images/custom-properties/properties-page.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=68afec31a741ea76d8ef15258ac2088a 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d8a09a1ee7b409d086d3fc5bac49f86f 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ef162658bf9bd124ab61ee9c6d0ce2d2 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=26330999b9c2425e4306be2acff41331 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=782b549eaa44c8dcfc9b0a689b9755b6 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/custom-properties/properties-page.webp?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=f92b78ed98859e35cee6a84ff5a2508e 2500w" />
+<Frame>
+  <img alt="Dashboard showing cost segmentation by user tiers with ROI analysis" />
 </Frame>
 
-```typescript  theme={null}
+```typescript theme={null}
 headers: {
   "Helicone-Property-UserTier": "premium",
   "Helicone-Property-Feature": "document-analysis",
@@ -14219,8 +16998,8 @@ The [AI Gateway](/gateway/overview) doesn't just track costs - it actively optim
 
 The [Model Registry](https://helicone.ai/models) shows all supported models with real-time pricing across providers. The AI Gateway automatically sorts by cost to find the cheapest option:
 
-<Frame caption="Model Registry showing price comparison across providers">
-  <img src="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=8a6c4679725ba09df63121df10be2de7" alt="Helicone Model Registry interface showing models sorted by price across different providers" data-og-width="2302" width="2302" data-og-height="908" height="908" data-path="images/model-selection.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=280&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=3367c2307c621c0a17ce661248ae2b37 280w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=560&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=4ab9db26db48dada785b07962ff863ab 560w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=840&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=a227e4abff0ed55a81c4f828915ddbbe 840w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=1100&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=c5fb6d8e557873112830f3f59ecb5536 1100w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=1650&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=0ad77f7d19fa071e8a751fb1e5f3ed0d 1650w, https://mintcdn.com/helicone/K0iTieGnNg2WsNq1/images/model-selection.webp?w=2500&fit=max&auto=format&n=K0iTieGnNg2WsNq1&q=85&s=2ebe0feed4469cfcf43811f4f21eb846 2500w" />
+<Frame>
+  <img alt="Helicone Model Registry interface showing models sorted by price across different providers" />
 </Frame>
 
 ### How Automatic Optimization Works
@@ -14229,7 +17008,7 @@ The [Model Registry](https://helicone.ai/models) shows all supported models with
 2. **[Cost-Based Routing](/gateway/provider-routing#smart-routing-algorithm)** - Automatically selects the cheapest available provider
 3. **[Smart Fallbacks](/gateway/provider-routing#failover-triggers)** - If one provider fails, routes to the next cheapest option
 
-```typescript  theme={null}
+```typescript theme={null}
 // One request, multiple potential providers
 await gateway.chat.completions.create({
   model: "claude-3.5-sonnet",
@@ -14244,8 +17023,8 @@ await gateway.chat.completions.create({
 
 ## Cost Prevention & Alerts
 
-<Frame caption="Cost alert configuration with spending thresholds and real-time notifications">
-  <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=a4fbd06770b64b9d0970caa0daa80616" alt="Alert configuration interface showing daily and monthly spending limits" data-og-width="2536" width="2536" data-og-height="1024" height="1024" data-path="images/alerts/alert-triggered.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=57fc921e8eb5dd84a16d95d5855889ba 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=a3bfd0859e9bbff27ce23abde2ba833f 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=c01fe0c492bb65a9191397cc72c5d169 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=76f96d49fdaa1ade5f7441bda8014d3c 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=85f784d9255c2a90ff8a4dfb012a3fe9 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/alerts/alert-triggered.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=051bad70f38653d842d7e6588901e045 2500w" />
+<Frame>
+  <img alt="Alert configuration interface showing daily and monthly spending limits" />
 </Frame>
 
 ### Setting Smart Alerts
@@ -14262,11 +17041,11 @@ The key is understanding your baseline spending patterns and setting alerts that
 
 Enable [caching](/features/advanced-usage/caching) to eliminate redundant API calls entirely:
 
-<Frame caption="Cache performance showing 73% hit rate saving $1,247 this month">
-  <img src="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=1a3a46805f953e48ab3267917c455c83" alt="Dashboard showing cache hit rates and associated cost savings" data-og-width="1180" width="1180" data-og-height="772" height="772" data-path="images/caching.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=280&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=f24c59826a4ba96fefa38f7ba371ea1f 280w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=560&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=2f44055ab72d902657e4e38701146afb 560w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=840&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=dea6376f9dee9827848d5420bdf3bf9a 840w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=1100&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=b63ce405984fe3d3141b0cdb1bd763f6 1100w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=1650&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=971bcb02d30592e1a982cd211047de71 1650w, https://mintcdn.com/helicone/mei53w0pDEM5bxFI/images/caching.webp?w=2500&fit=max&auto=format&n=mei53w0pDEM5bxFI&q=85&s=dc1b8951709df03b24d8078dc3f9a91f 2500w" />
+<Frame>
+  <img alt="Dashboard showing cache hit rates and associated cost savings" />
 </Frame>
 
-```typescript  theme={null}
+```typescript theme={null}
 headers: {
   "Helicone-Cache-Enabled": "true",
   "Cache-Control": "max-age=3600"  // 1 hour cache
@@ -14304,7 +17083,7 @@ Configure automated reports in **Settings → Reports** to receive them via:
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Set Up Alerts" icon="bell" href="/features/alerts">
     Configure spending thresholds before they become problems
   </Card>
@@ -14333,19 +17112,10 @@ Helicone provides an efficient platform for identifying and rectifying errors in
 Helicone's request page allows you to filter results by status code, a unique identifier that corresponds to various states of web requests. This feature enables you to pinpoint errors, providing essential information about their timing and location.
 
 <Frame>
-    <img
-      src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=37fdd1cb114471330b82b291b614dcb9"
-      alt="Filter web request results by status code on Helicone's request
-  page."
-      data-og-width="2198"
-      width="2198"
-      data-og-height="1534"
-      height="1534"
-      data-path="images/use-cases/status-filter.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=746f5d6c96de8d34bcc7c9119a77cd81 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=d2efd5ce2ecd4d710953b396f2483118 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=68c6a5f6536e362c719285aab0e13d31 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=17b9f37c48ddebe9408508f41b9afd29 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=37ee9368de5946d4e602e63cc4769af9 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/status-filter.png?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=afa1ace49185765a8c9543ff360762e3 2500w"
-    />
+  <img
+    alt="Filter web request results by status code on Helicone's request
+page."
+  />
 </Frame>
 
 We are currently developing dedicated error filters to further enhance your debugging experience. If you are interested in this feature, please support us by upvoting the feature request [here](https://www.helicone.ai/roadmap).
@@ -14359,55 +17129,28 @@ Helicone's 'Playground' feature offers a platform for debugging your 'prompt'. T
 1. Open a request.
 
 <Frame>
-    <img
-      src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=ecdeff8d84beb2aa027d1b14d595f487"
-      alt="View detailed logging details on Helicone's Requests
-  page."
-      data-og-width="2730"
-      width="2730"
-      data-og-height="1842"
-      height="1842"
-      data-path="images/use-cases/view-request.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=b6ed846e0447d3541767553bbcd8d916 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=80b7931825fe1dd84d77dcd4dfb29f8b 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=881efcc122201d5bd8512278d218d9fb 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=509a4dcf8cdd20d4421740d960fe114f 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=44548b5fff758aa5ced779d18bf35454 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/view-request.png?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=7d7811e68e03881c50c1dee3b73efb77 2500w"
-    />
+  <img
+    alt="View detailed logging details on Helicone's Requests
+page."
+  />
 </Frame>
 
 2. Click on the 'Playground' button.
 
 <Frame>
-    <img
-      src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=8b0f258110af171b838498c94fffd648"
-      alt="Access the Playground feature for prompt debugging in
-  Helicone"
-      data-og-width="798"
-      width="798"
-      data-og-height="520"
-      height="520"
-      data-path="images/use-cases/playground-button.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=37a550be5210b6fe4cae84b5a117ea0d 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=7575f7cef1f914422166d3a12be2daef 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=72bac582cdee9cd92e98ba8e733313be 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=03e33c2374b4f15ce6754946ab365e21 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=468d6a25420dbc7b3094b3ed1df4a63b 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground-button.png?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=088e9ff8c08b38fcc198ad4f8994fbfa 2500w"
-    />
+  <img
+    alt="Access the Playground feature for prompt debugging in
+Helicone"
+  />
 </Frame>
 
 3. Input and execute your prompt to view the results.
 
 <Frame>
-    <img
-      src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=63d5f6d87ee25cbe7382e95381a3bf05"
-      alt="Use Helicone's Playground to test prompts in a sandbox
-  environment"
-      data-og-width="2718"
-      width="2718"
-      data-og-height="1840"
-      height="1840"
-      data-path="images/use-cases/playground.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=5cf2603f7c10f14d1b4e14fe0fe551a2 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=cfd44fb34eda15e0de8bd4f0898ee563 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=8cffa37338963724d3608d5445147e96 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=88cd517c4132908c52890317ec9aa85a 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=ac9282146a6a090c65ef202dcdff7d83 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/playground.png?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=fcb0ce4a6c4e5d34775452a280d68ae5 2500w"
-    />
+  <img
+    alt="Use Helicone's Playground to test prompts in a sandbox
+environment"
+  />
 </Frame>
 
 Please note, the Playground tool is a sandbox environment, so feel free to experiment with different prompts and settings to optimize results for your project.
@@ -14420,7 +17163,7 @@ Effortlessly track and manage your development, staging, and production environm
 
 Many organizations operate across multiple environments, such as development, staging, and production. To differentiate these environments, you can establish a `Helicone-Property-Environment` property. In the example below, we assign the "development" property to the environment:
 
-```python  theme={null}
+```python theme={null}
 client.chat.completions.create(
     # ...
     extra_headers={
@@ -14436,19 +17179,19 @@ If you are utilizing any other libraries or packages, please refer to our [Custo
 On the [request page](https://www.helicone.ai/requests), you can conveniently view all the environments that your organization has employed.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ba613389f4e6b9f9e2a1d5c35298d5c2" alt="View environments tracked by Helicone on the Requests page." data-og-width="2530" width="2530" data-og-height="1222" height="1222" data-path="images/environment-cp/1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=fb85e384f29dc7674ffec819d1b4eea3 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=999f192e424691e8e913b26e4bf0a6e3 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=72b344842702c1bb5e953ae23c0c00b8 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=5eecc006177c09440911330ac56d9fca 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=823819236e7dcda62e23368e86cb391f 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/1.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d454c4114ce66c26a10aabc704e3d61f 2500w" />
+  <img alt="View environments tracked by Helicone on the Requests page." />
 </Frame>
 
 Additionally, you can filter by environment to view all the requests made within that specific environment.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=8a762f18db68944d70bf2ef6d8af9bb8" alt="Filter requests by specific environments on the Requests page." data-og-width="2598" width="2598" data-og-height="862" height="862" data-path="images/environment-cp/2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=2223fa76b0c0fb032caebedb1190beee 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=f9e33a1a2ce602a8c731924802c400d2 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=fd9dcd5e3d14211cf21def0c87aba218 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=1e4784b6db03855f7c05d6c931d3f3b8 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=3a8579eb1ae3bfeaf2a58faba3415945 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=056b94d029197cca86503910d6cc5d67 2500w" />
+  <img alt="Filter requests by specific environments on the Requests page." />
 </Frame>
 
 Efficiently add filters to your requests to view all the requests made in a particular environment.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=137cefc38e64e27126e6c33a5a4c7352" alt="Add filters to specify environment within Helicone." data-og-width="1546" width="1546" data-og-height="474" height="474" data-path="images/environment-cp/3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=26b31ee1d9553c8910a8daf987c82b32 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d9770e7f00692812bc1fb3dce0fc9a33 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=295e2ada0498e1398cb397f6d1a4cfe9 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=0a952d942a427921a708016a274d4649 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=98791d485c4edf9d5b8c9adad866bd27 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=767d985acf021dd295a3d37a57f4877b 2500w" />
+  <img alt="Add filters to specify environment within Helicone." />
 </Frame>
 
 Helicone also offers a dedicated page to view all the environments that your organization has utilized. You can also view the number of requests made in each environment.
@@ -14456,7 +17199,7 @@ Helicone also offers a dedicated page to view all the environments that your org
 Visit the [properties page](https://www.helicone.ai/properties) to view all the environments that your organization has employed.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=31e2f7b213b75f908695dd9628e89333" alt="View cost, usage and latency associated with a custom property on the Properties page." data-og-width="3376" width="3376" data-og-height="1892" height="1892" data-path="images/environment-cp/4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=73490a478531298182421677f24c0155 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=e37bc957589f08da5cb243e9ad4456ff 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=dbb0bd048d78c0c191fbb42129c6493a 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ec6064884c98de67fa18af59eda8d083 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=6f2534ceebf0461b1dbdc20adbef3755 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=013ae787139437345709918a137c28a3 2500w" />
+  <img alt="View cost, usage and latency associated with a custom property on the Properties page." />
 </Frame>
 
 
@@ -14469,7 +17212,7 @@ Extract, transform, and load data from Helicone into your data warehouse using o
 
 The easiest way to extract your data is using our official npm package:
 
-```bash  theme={null}
+```bash theme={null}
 # Export to JSONL (recommended for large datasets)
 HELICONE_API_KEY="your-api-key" npx @helicone/export --start-date 2024-01-01 --include-body
 
@@ -14515,7 +17258,7 @@ For custom integrations or programmatic access, use our [REST API](/rest/request
 
 **Get all requests:**
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -14529,7 +17272,7 @@ curl --request POST \
 
 **Filter by custom property:**
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -14551,7 +17294,7 @@ curl --request POST \
 
 **Filter by date range AND property:**
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query-clickhouse \
   --header "Content-Type: application/json" \
@@ -14617,7 +17360,7 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
     On the top right, click `Start Experiment`.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a9189c9e766f12164ba8f0f14dd1950c" alt="Start button in the Prompts tab for initiating an experiment in Helicone." data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/start-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=9d6d336280162b2ed89f41ee08f3365e 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a3e45e39df1c3cef666f885769be1238 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=6dfccce6746e9baf139a42f947f23ef0 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=796b1663bdc0bef762c3239884a37f70 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=ce131936f8fffc03591d7120085a6e36 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/start-button.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=b759667a19af8199d9aeb9dc6255c96f 2500w" />
+      <img alt="Start button in the Prompts tab for initiating an experiment in Helicone." />
     </Frame>
   </Step>
 
@@ -14631,7 +17374,7 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
     </Tip>
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=953a43ec336fba471298b8f78cc69b83" alt="Selecting a base prompt to start an experiment in Helicone." data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/select-prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=173c5ce6cd59d76265393262c838a392 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=8b04e17a3b1612550e281eed90fb273c 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=b290ed7ee6af1dc1992efb2f1c1c11a8 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=1cbffa457c95c7d0b4d87cbf1c89ab40 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e088343ed7847dfb5a61eddde589e048 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/select-prompt.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d77327324bd179ad5ec4e0ccfda37ea5 2500w" />
+      <img alt="Selecting a base prompt to start an experiment in Helicone." />
     </Frame>
   </Step>
 
@@ -14640,7 +17383,7 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
     one to test your experiment on.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=c4ac69d32c361a18b76a0b242071c583" alt="Editing a prompt without affecting the original prompt in production." data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/edit-prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a6bce4a2960eadf84c6057bf24b72f1e 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=716709b7745cf0c0cf4e79ee95543eba 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=030f303fb8763b389b92fbc969feb979 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=864ff9ea02ce3127404ad70ee20fd8a1 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=dd7b907c37e320b534d06020f45e0d3d 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/edit-prompt.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a485b395ca602e61c874384e6b147c54 2500w" />
+      <img alt="Editing a prompt without affecting the original prompt in production." />
     </Frame>
   </Step>
 
@@ -14649,12 +17392,12 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
 
     <Tip>
       To run your experiment on a random dataset, click `Generate random
-            dataset`. We will pick up to 10 random data from your existing
-      requests.{" "}
+                  dataset`. We will pick up to 10 random data from your existing
+      requests.
     </Tip>
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=26103e7178268ef560348b2bc85d30c7" alt="Configuring an experiment with a different dataset, model, and provider keys in Helicone." data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d5dbe687b1d3c2f7e5eba7e97e786faa 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=5d6f57053bd9e7ff9b7542d31130c030 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=02d8255df04486fdbaf0e1a8b9e663e6 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=07ab01513874f310431ed952193d6e28 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e4f3cd5fc5d5dde0298a2df2ca2ef949 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/config.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=9e0a05149eaf1cec144f6ea9edce2539 2500w" />
+      <img alt="Configuring an experiment with a different dataset, model, and provider keys in Helicone." />
     </Frame>
   </Step>
 
@@ -14663,7 +17406,7 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
     selected.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=af9cebbbd3b5d07f159e29fe598b60f3" alt="Confirming changes to your prompt in Helicone's Diff Viewer before running an experiment. " data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/confirm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=5ac87a3df6862b83bdcccc290951e79f 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=95e128a20401eecfaadd5e1c8acf286d 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=0858a6489e369ed62c3b54f30a19237d 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=8898d3f2df4c9a71666022242c8323d6 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=b0fa7e3f98c49dea9836350e49edabe5 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/experiments/confirm.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=9e9c053687c35c4b53f2cf65daaa7ac3 2500w" />
+      <img alt="Confirming changes to your prompt in Helicone's Diff Viewer before running an experiment. " />
     </Frame>
   </Step>
 
@@ -14672,7 +17415,7 @@ To start an experiment, first, go to the [Prompts](https://www.helicone.ai/promp
     associated outputs from the base prompt and the experiment.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=c8f5436ad8ebff5dd21677790e71eac4" alt="Comparing the outputs of an experiment compared to the original prompt in Helicone." data-og-width="1868" width="1868" data-og-height="1118" height="1118" data-path="images/use-cases/experiments/view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=9720a87471ae4056b9bead51ecc12ecd 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=8fb7bd1d8d5f41e014b95a2c98fff966 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=98a4042c71041ab68f1a940f14b83bdd 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=4723a138b2d99f6ef779aeb78acc4bcb 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=cdaafe46c77c86b71c9b44eadb159c8d 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/experiments/view.png?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=d9f02bc853596323f0779d0cb233fcd7 2500w" />
+      <img alt="Comparing the outputs of an experiment compared to the original prompt in Helicone." />
     </Frame>
   </Step>
 </Steps>
@@ -14688,7 +17431,7 @@ Learn how to fine-tune large language models with Helicone and OpenPipe to optim
     Navigate to `Settings` -> `Connections` in your Helicone dashboard and configure the OpenPipe integration.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=a01654b47e3f5a161c510e1343b68f36" alt="Configure OpenPipe Integration" data-og-width="3456" width="3456" data-og-height="1928" height="1928" data-path="images/use-cases/fine-tune/openpipe-integration.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=db17f99abfcc2c7b3c5d7fa8b6ac9595 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=e9c37827e1606f12468ac8f8795d570f 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=a7fc83ee31e93b4df7e543b9c5ec03a3 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=9eebd2eeb7369a56b9096cf0fa8f9f5c 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=63e6dd835c7db60ff9e6cbd46ad91b07 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-integration.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=56bd0bb643989bf00fc0d592ee229962 2500w" />
+      <img alt="Configure OpenPipe Integration" />
     </Frame>
 
     This integration allows you to manage your fine-tuning datasets and jobs seamlessly within Helicone.
@@ -14700,7 +17443,7 @@ Learn how to fine-tune large language models with Helicone and OpenPipe to optim
     * **Recommendation**: Start with 50-200 examples that are representative of the tasks you want the model to perform.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=bc3bae83e7d99cc5e96743b126c38a0f" alt="Create a new dataset" data-og-width="3456" width="3456" data-og-height="1926" height="1926" data-path="images/use-cases/fine-tune/dataset.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=7fa9b82c52bdae70e029114558693ec1 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=ac80a9c31c5659f8dcfb9d40b11fe9a6 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=c2dc85512ef48671338cea21e3c195c1 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=0cae9d33ef32d40eca5de4f1feac2d65 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=60b1229513b911200b538471581e4a9a 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/dataset.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=3837bb8eb25fe0588e63c8c68cf55d89 2500w" />
+      <img alt="Create a new dataset" />
     </Frame>
 
     Ensure your dataset includes clear input-output pairs to guide the model during fine-tuning.
@@ -14713,7 +17456,7 @@ Learn how to fine-tune large language models with Helicone and OpenPipe to optim
     * **Modify as Needed**: Make adjustments to ensure the dataset aligns closely with your desired outcomes.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=2d91397aca9771e8e412feef687bb0d1" alt="Evaluate your dataset" data-og-width="3456" width="3456" data-og-height="1928" height="1928" data-path="images/use-cases/fine-tune/openpipe-button.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=2e5b517afcdf34fd776989239e468002 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=3eb02e74b0c462c0dabd6ba73d87d104 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=65b6fe1202d679f1715faedf5963bd73 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=db371f368f3f9102dae34b2bd0340167 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=4d7f7e3f01ef44a3fdc00e7609550624 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/openpipe-button.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=60f73d442714a7169484bda1de0649e5 2500w" />
+      <img alt="Evaluate your dataset" />
     </Frame>
 
     Regular evaluation helps in creating a robust fine-tuning dataset that enhances model performance.
@@ -14727,7 +17470,7 @@ Learn how to fine-tune large language models with Helicone and OpenPipe to optim
     * **Validation Metrics**: Define how you'll measure the model's performance during training.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=f4c834715c6cb2b338fc89a16407e97b" alt="Configure your fine-tuning job" width="300" data-og-width="1202" data-og-height="1750" data-path="images/use-cases/fine-tune/fine-tune-config.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=280&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=fa7edd2d3b487e62eda39a2979fbb750 280w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=560&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=479471345b6946aa1c96e068102bcc73 560w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=840&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=91b821e878d9b35510268f082502b822 840w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=1100&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=35aa5281a294f218dfe7b76899c68900 1100w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=1650&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=c2e1b4e672101ba14a18fb1d015c61a2 1650w, https://mintcdn.com/helicone/H0xDJmuTzfSrq5RW/images/use-cases/fine-tune/fine-tune-config.webp?w=2500&fit=max&auto=format&n=H0xDJmuTzfSrq5RW&q=85&s=b799efda4c236c68960a9704de602c63 2500w" />
+      <img alt="Configure your fine-tuning job" />
     </Frame>
 
     After configuring, initiate the fine-tuning process. Helicone and OpenPipe handle the heavy lifting, providing you with progress updates.
@@ -14763,7 +17506,7 @@ The [Request API](/rest/request/post-v1requestquery) allows you to fetch all req
 
 Here's how to fetch all requests for a specific session:
 
-```javascript  theme={null}
+```javascript theme={null}
 const response = await fetch("https://api.helicone.ai/v1/request/query", {
   method: "POST",
   headers: {
@@ -14820,7 +17563,7 @@ The [Request API](/rest/request/post-v1requestquery) allows you to build a reque
 </Note>
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=dd4eaf668f2ce44202c6f67ce069967b" alt="Helicone Request API example showing how you can built a request and specify filtering criteria and other advanced capabilities." data-og-width="1440" width="1440" data-og-height="796" height="796" data-path="images/use-cases/example-user-request.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d98f2e0cf2b44091d53a49cb9fe2e275 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=9ec39ee87acaf1eb79b0ea25fce339be 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=7cc180dbe391c777b5c44bf91f404272 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=617bd6a9d141b018ed099a01e9977376 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=c6863bb488a5ecd107dcc1a8c5b85933 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/use-cases/example-user-request.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=afc8cae8044df2531451d9c1ad53b0b4 2500w" />
+  <img alt="Helicone Request API example showing how you can built a request and specify filtering criteria and other advanced capabilities." />
 </Frame>
 
 ## Use Cases
@@ -14834,7 +17577,7 @@ The [Request API](/rest/request/post-v1requestquery) allows you to build a reque
 
 Here's an example to get all the requests where `user_id` is `abc@email.com`.
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query \
   --header "Content-Type: application/json" \
@@ -14852,7 +17595,7 @@ curl --request POST \
 
 <Tip>
   By using the [Request API](/rest/request/post-v1requestquery), the code
-  snippet will dynamically populate on the page, so you can copy and paste.{" "}
+  snippet will dynamically populate on the page, so you can copy and paste.
 </Tip>
 
 ## Adding Additional Filters
@@ -14861,7 +17604,7 @@ You can structure your query to add any number of filters.
 
 **Note**: To add multiple filters, change the filter to a branch and nest the ANDs/ORs as an abstract syntax tree.
 
-```bash  theme={null}
+```bash theme={null}
 curl --request POST \
   --url https://api.helicone.ai/v1/request/query \
   --header "Content-Type: application/json" \
@@ -14917,13 +17660,13 @@ Incorporate the following steps into your Github Actions workflow:
 
 1. Add the proxy to your workflow:
 
-```bash  theme={null}
+```bash theme={null}
 curl -s https://raw.githubusercontent.com/Helicone/helicone/main/mitmproxy.sh | bash -s start
 ```
 
 2. Set your ENV variables:
 
-```yml  theme={null}
+```yml theme={null}
 OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 HELICONE_API_KEY: ${{ secrets.HELICONE_API_KEY }}
 REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
@@ -14935,7 +17678,7 @@ Variables can also be set within your test. For more information, refer to the [
 
 ## Example
 
-```yml  theme={null}
+```yml theme={null}
 # ...Rest of yml
 tests:
   steps:
@@ -14975,7 +17718,7 @@ Below is an example script which augments the CSV exported from Helicone with an
 
 Adding gold answer column to the CSV:
 
-```python  theme={null}
+```python theme={null}
 """
 add_mock_gold.py
 
@@ -15014,7 +17757,7 @@ print(f"✅ Wrote {len(df)} rows to data_with_gold.csv, each with a mock gold_an
 
 Ragas provides several metrics with which to evaluate LLM responses. The below script showcases how to take in as input the human annotated CSV, then evaluate based on the [answer correctness](https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/answer_correctness/) and [semantic answer similarity](https://docs.ragas.io/en/v0.1.21/concepts/metrics/semantic_similarity.html) metric.
 
-```python  theme={null}
+```python theme={null}
 """
 evaluate_llm_outputs.py
 
@@ -15140,7 +17883,7 @@ Follow [https://docs.helicone.ai/rest/request/post-v1request-score](https://docs
 
 Here is an example script which submits scores outputted from Ragas to annotate each corresponding request:
 
-```python  theme={null}
+```python theme={null}
 """
 score_requests.py
 
@@ -15267,7 +18010,7 @@ Helicone's Manual Logger provides powerful capabilities for tracking LLM request
 
 First, install the `@helicone/helpers` package:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @helicone/helpers
 # or
 yarn add @helicone/helpers
@@ -15279,7 +18022,7 @@ pnpm add @helicone/helpers
 
 Initialize the HeliconeManualLogger with your API key:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { HeliconeManualLogger } from "@helicone/helpers";
 
 const helicone = new HeliconeManualLogger({
@@ -15299,7 +18042,7 @@ The HeliconeManualLogger provides several methods for working with streams:
 
 The recommended method for handling streaming responses with improved error handling:
 
-```typescript  theme={null}
+```typescript theme={null}
 logBuilder(
   request: HeliconeLogRequest,
   additionalHeaders?: Record<string, string>
@@ -15310,7 +18053,7 @@ logBuilder(
 
 A flexible method that gives you full control over stream handling:
 
-```typescript  theme={null}
+```typescript theme={null}
 async logStream<T>(
   request: HeliconeLogRequest,
   operation: (resultRecorder: HeliconeStreamResultRecorder) => Promise<T>,
@@ -15322,7 +18065,7 @@ async logStream<T>(
 
 A simplified method for logging a single ReadableStream:
 
-```typescript  theme={null}
+```typescript theme={null}
 async logSingleStream(
   request: HeliconeLogRequest,
   stream: ReadableStream,
@@ -15334,7 +18077,7 @@ async logSingleStream(
 
 For logging a single request with a response body:
 
-```typescript  theme={null}
+```typescript theme={null}
 async logSingleRequest(
   request: HeliconeLogRequest,
   body: string,
@@ -15346,7 +18089,7 @@ async logSingleRequest(
 
 The new `logBuilder` method provides better error handling and simplified stream management:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/chat/route.ts
 import { HeliconeManualLogger } from "@helicone/helpers";
 import { after } from "next/server";
@@ -15395,7 +18138,7 @@ The `logBuilder` approach offers several advantages:
 
 ### OpenAI
 
-```typescript  theme={null}
+```typescript theme={null}
 import OpenAI from "openai";
 import { HeliconeManualLogger } from "@helicone/helpers";
 
@@ -15430,7 +18173,7 @@ async function generateStreamingResponse(prompt: string, userId: string) {
 
 ### Together AI
 
-```typescript  theme={null}
+```typescript theme={null}
 import Together from "together-ai";
 import { HeliconeManualLogger } from "@helicone/helpers";
 
@@ -15468,7 +18211,7 @@ export async function generateWithTogetherAI(prompt: string, userId: string) {
 
 ### Anthropic
 
-```typescript  theme={null}
+```typescript theme={null}
 import Anthropic from "@anthropic-ai/sdk";
 import { HeliconeManualLogger } from "@helicone/helpers";
 
@@ -15503,7 +18246,7 @@ async function generateWithAnthropic(prompt: string, userId: string) {
 
 Here's how to use the manual logger in a Next.js API route:
 
-```typescript  theme={null}
+```typescript theme={null}
 // pages/api/generate.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import OpenAI from "openai";
@@ -15560,7 +18303,7 @@ export default async function handler(
 
 For Next.js App Router, you can use Vercel's `after` function to log requests without blocking the response:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/generate/route.ts
 import { HeliconeManualLogger } from "@helicone/helpers";
 import { after } from "next/server";
@@ -15609,7 +18352,7 @@ export async function POST(request: Request) {
 
 You can also use the manual logger to log custom events:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Log a tool usage
 await helicone.logSingleRequest(
   {
@@ -15643,7 +18386,7 @@ await helicone.logSingleRequest(
 
 The `logStream`, `logSingleStream`, and `logBuilder` methods automatically track the time to first token, which is a valuable metric for understanding LLM response latency:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Using logBuilder (recommended)
 const heliconeLogBuilder = helicone.logBuilder(requestBody, {
   "Helicone-User-Id": userId,
@@ -15708,7 +18451,7 @@ Before getting started, you'll need:
 
 First, install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @helicone/helpers openai dotenv
 # or
 yarn add @helicone/helpers openai dotenv
@@ -15724,7 +18467,7 @@ pnpm add @helicone/helpers openai dotenv
 
 Create a `.env` file in your project root:
 
-```bash  theme={null}
+```bash theme={null}
 OPENAI_API_KEY=your_openai_api_key_here
 HELICONE_API_KEY=your_helicone_api_key_here
 ```
@@ -15733,7 +18476,7 @@ HELICONE_API_KEY=your_helicone_api_key_here
 
 Here's a complete example that demonstrates the entire batch workflow with Helicone logging:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { HeliconeManualLogger } from "@helicone/helpers";
 import OpenAI from "openai";
 import fs from "fs";
@@ -15985,7 +18728,7 @@ if (require.main === module) {
 
 The `HeliconeManualLogger` is configured with your API key and the logging endpoint:
 
-```typescript  theme={null}
+```typescript theme={null}
 const heliconeLogger = new HeliconeManualLogger({
   apiKey: process.env.HELICONE_API_KEY!,
   loggingEndpoint: "https://api.worker.helicone.ai/oai/v1/log",
@@ -16011,7 +18754,7 @@ Each batch result is logged individually to Helicone with:
 * **Batch response data**: Includes the actual LLM response
 * **Custom metadata**: Adds batch-specific tracking properties
 
-```typescript  theme={null}
+```typescript theme={null}
 await heliconeLogger.logSingleRequest(
   modifiedRequest,
   JSON.stringify(modifiedResponse),
@@ -16030,7 +18773,7 @@ await heliconeLogger.logSingleRequest(
 
 The example modifies model names to distinguish batch requests:
 
-```typescript  theme={null}
+```typescript theme={null}
 const modifiedRequest = {
   ...originalRequest,
   model: originalRequest.model + "-batch"
@@ -16045,7 +18788,7 @@ This helps you filter and analyze batch vs. real-time requests in Helicone's das
 
 Add custom properties to track additional metadata:
 
-```typescript  theme={null}
+```typescript theme={null}
 "Helicone-Property-Department": "marketing",
 "Helicone-Property-CampaignId": "q4-2024",
 "Helicone-Property-Priority": "high"
@@ -16055,7 +18798,7 @@ Add custom properties to track additional metadata:
 
 Implement robust error handling for production use:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function logWithRetry(request: any, response: any, headers: any, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -16074,7 +18817,7 @@ async function logWithRetry(request: any, response: any, headers: any, maxRetrie
 
 Track the entire batch lifecycle in Helicone:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Log batch creation
 await heliconeLogger.logSingleRequest(
   { batch_id: batch.id, operation: "batch_created" },
@@ -16141,21 +18884,21 @@ It will extract parameters from a user query, call our API with Function Calling
 
 Before we get started, make sure you have the following in place:
 
-1. **Python**: Make sure you have Python installed. You can grab it from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">here</a>.
-2. **OpenAI API Key**: You'll need <a href="https://platform.openai.com/docs/quickstart/create-and-export-an-api-key" target="_blank" rel="noopener">this</a> to get a response from OpenAI's API.
-3. **Helicone API Key**: You'll need this to monitor your chatbot's performance. Get one for free <a href="https://www.helicone.ai/signup" target="_blank" rel="noopener">here</a>.
+1. **Python**: Make sure you have Python installed. You can grab it from <a href="https://www.python.org/downloads/">here</a>.
+2. **OpenAI API Key**: You'll need <a href="https://platform.openai.com/docs/quickstart/create-and-export-an-api-key">this</a> to get a response from OpenAI's API.
+3. **Helicone API Key**: You'll need this to monitor your chatbot's performance. Get one for free <a href="https://www.helicone.ai/signup">here</a>.
 
 ## Setting up your environment
 
 First, install the necessary packages by running:
 
-```bash  theme={null}
+```bash theme={null}
 pip install pydantic openai python-dotenv
 ```
 
 Next, create a `.env` file in your project's root directory and add your API keys:
 
-```bash  theme={null}
+```bash theme={null}
 OPENAI_API_KEY=your_openai_api_key_here
 HELICONE_API_KEY=your_helicone_api_key_here
 ```
@@ -16170,7 +18913,7 @@ Let's break down the code and see how it all fits together.
 
 We start with a few Pydantic models to define the data we're working with. While Pydantic is not necessary (you can just define your schema in JSON), it is recommended by OpenAI.
 
-```python  theme={null}
+```python theme={null}
 class FlightSearchParams(BaseModel):
     departure: str
     arrival: str
@@ -16202,7 +18945,7 @@ This is the main class describing the Chatbot's functionality. Let's take a look
 
 Here, we initialize the chatbot with your OpenAI API key and a small sample database of flights.
 
-```python  theme={null}
+```python theme={null}
 def __init__(self, api_key: str):
     self.client = OpenAI(api_key=api_key)
     self.flights_db = [
@@ -16231,7 +18974,7 @@ def __init__(self, api_key: str):
 
 Next, we define the `_search_flights` method.
 
-```python  theme={null}
+```python theme={null}
 def _search_flights(self, departure: str, arrival: str, date: Optional[str] = None) -> List[dict]:
     matches = []
     for flight in self.flights_db:
@@ -16252,7 +18995,7 @@ This method searches the database for flights that match the given criteria. It 
 
 Now we process user input to extract search parameters and find matching flights:
 
-```python  theme={null}
+```python theme={null}
 def process_query(self, user_query: str) -> str:
     try:
         parameter_extraction = self.client.chat.completions.create(
@@ -16319,7 +19062,7 @@ Structured outputs come with a built-in safety feature that allows your chatbot 
 
 Since a refusal doesn't match the `response_format` schema you provided, the API introduces a `refusal` field to indicate when the model has declined to respond. This helps you handle refusals gracefully and prevents errors when trying to fit the response into your specified format.
 
-But what if you want to review all the queries your chatbot refused—perhaps to identify any false positives? This is where <a href="https://helicone.ai/" target="_blank" rel="noopener">Helicone</a> comes into play.
+But what if you want to review all the queries your chatbot refused—perhaps to identify any false positives? This is where <a href="https://helicone.ai/">Helicone</a> comes into play.
 
 With Helicone's request logger, you can view details of all requests made to your chatbot and easily filter for those containing a refusal field. This gives you instant insight into which requests were declined, providing a solid starting point for improving your code or prompts.
 
@@ -16335,7 +19078,7 @@ With Helicone's request logger, you can view details of all requests made to you
     This is the code you'll need to add to your chatbot to log all requests in
     Helicone.
 
-    ```python  theme={null}
+    ```python theme={null}
     self.client = OpenAI(
     api_key=api_key,
     base_url="https://oai.helicone.ai/v1",
@@ -16349,7 +19092,7 @@ With Helicone's request logger, you can view details of all requests made to you
     The dashboard is where you can view and filter requests. Simply filter for those with a refusal field to quickly see all instances where your chatbot refused to respond.
 
     <Frame>
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=861ec5cfd9801f2c71496e4c65d661a8" alt="Filtering for refusals on Helicone's Request page" data-og-width="1376" width="1376" data-og-height="488" height="488" data-path="images/guide/cookbooks/helicone-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e404d068626606ea76b93b7bb7f27f9a 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=b4f8c91dcd3e41aa8451de1054be1d01 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=c19e0f6475cd37e83cd6bfebf8ea5634 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=73dc970bfb41ab1b2f93eeabb0fc13c4 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=eab89c793b62cd210790b33a1adfbc25 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/cookbooks/helicone-dashboard.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=13c1be2d04b5cdae3a5546faf2f6f003 2500w" />
+      <img alt="Filtering for refusals on Helicone's Request page" />
     </Frame>
   </Step>
 
@@ -16362,7 +19105,7 @@ With Helicone's request logger, you can view details of all requests made to you
 
 So, let's bring it all together with a simple `main` function that serves as our entry point:
 
-```python  theme={null}
+```python theme={null}
 def main():
     # Initialize chatbot with your API key
     chatbot = FlightChatbot(os.getenv('OPENAI_API_KEY'))
@@ -16387,7 +19130,7 @@ if __name__ == "__main__":
 
 ### Here's the entire script
 
-```python  theme={null}
+```python theme={null}
 from pydantic import BaseModel
 from typing import Optional, List
 import json
@@ -16572,7 +19315,7 @@ if __name__ == "__main__":
 1. Make sure your `.env` file is set up with your API keys.
 2. Run the script:
 
-```bash  theme={null}
+```bash theme={null}
 python your_script_name.py
 ```
 
@@ -16580,8 +19323,8 @@ That's it! You now have a fully functioning flight search chatbot that can take 
 
 ## What's next?
 
-<CardGroup cols={1}>
-  <Card title="Just integrated with Helicone?" icon="lightbulb" href="https://docs.helicone.ai/getting-started/quick-start#whats-next" iconType="light" vertical>
+<CardGroup>
+  <Card title="Just integrated with Helicone?" icon="lightbulb" href="https://docs.helicone.ai/getting-started/quick-start#whats-next">
     Explore top features like custom properties, prompt experiments, and more.
   </Card>
 </CardGroup>
@@ -16596,7 +19339,7 @@ One of the significant advantages of using UUIDs as request IDs is the ability t
 
 This feature facilitates the tracking of request IDs without the necessity of receiving a response from Helicone.
 
-```python  theme={null}
+```python theme={null}
 
 import uuid
 
@@ -16817,8 +19560,6 @@ Prompting thinking models requires a different mindset and approach compared to 
   call](https://cal.com/team/helicone/helicone-discovery) with us.
 </Accordion>
 
-{" "}
-
 
 # Replaying LLM Sessions
 Source: https://docs.helicone.ai/guides/cookbooks/replay-session
@@ -16961,8 +19702,8 @@ Understanding how changes impact your AI agents in real-world interactions is cr
     **After setting up and running your session through Helicone, you can view it in Helicone:**
 
     <Frame>
-      <video width="100%" controls>
-        <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/session_debate.mp4" type="video/mp4" />
+      <video>
+        <source type="video/mp4" />
 
         Your browser does not support the video tag.
       </video>
@@ -17064,8 +19805,8 @@ Understanding how changes impact your AI agents in real-world interactions is cr
     After replaying, use Helicone's dashboard to compare the original and modified sessions to evaluate improvements.
 
     <Frame>
-      <video width="100%" controls>
-        <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/session_debate_replay.mp4" type="video/mp4" />
+      <video>
+        <source type="video/mp4" />
 
         Your browser does not support the video tag.
       </video>
@@ -17103,7 +19844,7 @@ Use [Custom Properties](features/advanced-usage/custom-properties) to segment yo
 
 Here are some methods that we recommend for data segmentation:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Use Case 1" href="/use-cases/segmentation#use-case-1-tracking-environments">
     Tracking Environments
   </Card>
@@ -17120,7 +19861,7 @@ Here are some methods that we recommend for data segmentation:
 <Note>
   If you have other use cases, we'd love to know! Send us an
   [email](mailto:help@helicone.ai) or [schedule a
-  call](https://cal.com/team/helicone/helicone-discovery) with us.{" "}
+  call](https://cal.com/team/helicone/helicone-discovery) with us.
 </Note>
 
 ## Use Case 1: Tracking Environments
@@ -17131,7 +19872,7 @@ Organizations use **Custom Properties** to track different environments (i.e. de
 
 <Steps>
   <Step title="Add the 'Environment' property and assign a value.">
-    ```python  theme={null}
+    ```python theme={null}
     client.chat.completions.create(
         # ...
         extra_headers={
@@ -17144,28 +19885,28 @@ Organizations use **Custom Properties** to track different environments (i.e. de
   <Step title="Send a request.">
     You will then see the `Environment` property appear in the Requests page.
 
-    <Frame caption="In this example, we now have a property called 'environment'.">
-      <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=8a762f18db68944d70bf2ef6d8af9bb8" alt="Example of the Helicone Requests page showing a custom property named 'environment'." data-og-width="2598" width="2598" data-og-height="862" height="862" data-path="images/environment-cp/2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=2223fa76b0c0fb032caebedb1190beee 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=f9e33a1a2ce602a8c731924802c400d2 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=fd9dcd5e3d14211cf21def0c87aba218 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=1e4784b6db03855f7c05d6c931d3f3b8 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=3a8579eb1ae3bfeaf2a58faba3415945 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/2.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=056b94d029197cca86503910d6cc5d67 2500w" />
+    <Frame>
+      <img alt="Example of the Helicone Requests page showing a custom property named 'environment'." />
     </Frame>
 
     You can choose to hide the custom property by deselecting it under `Columns`.
 
-    <Frame caption="You can modify other properties in a similar manner.">
-      <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=a1ced5a9e3122ec2fcc8398311459064" alt="Example of modifying Helicone's interface to show or hide a custom property." data-og-width="940" width="940" data-og-height="602" height="602" data-path="images/environment-cp/cp-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=83c0a178c7de3d7cd271906623a95697 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=789935870afe4334810c53c868f13834 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=18ce3b910f1ebcbd3ad0a4b91451cf36 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=92c466e9778edc22073d0cbbfdb0108f 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ab4d78d6dcd15b5e2e281e3deed6049c 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/cp-1.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=38c6d97246dbae89eacca8d742df54c1 2500w" />
+    <Frame>
+      <img alt="Example of modifying Helicone's interface to show or hide a custom property." />
     </Frame>
   </Step>
 
   <Step title="Filter by custom properties">
-    <Frame caption="Filter all requests labelled as 'development'.">
-      <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=137cefc38e64e27126e6c33a5a4c7352" alt="Example of filtering requests labeled 'development' in Helicone." data-og-width="1546" width="1546" data-og-height="474" height="474" data-path="images/environment-cp/3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=26b31ee1d9553c8910a8daf987c82b32 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d9770e7f00692812bc1fb3dce0fc9a33 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=295e2ada0498e1398cb397f6d1a4cfe9 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=0a952d942a427921a708016a274d4649 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=98791d485c4edf9d5b8c9adad866bd27 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/3.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=767d985acf021dd295a3d37a57f4877b 2500w" />
+    <Frame>
+      <img alt="Example of filtering requests labeled 'development' in Helicone." />
     </Frame>
   </Step>
 
   <Step title="View metrics associated with a custom property. ">
     Go to the `Properties` page, and select `Environment`. You will see metrics associated with this custom property.
 
-    <Frame caption="View total costs, requests and average latency for `Environment'.">
-      <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=31e2f7b213b75f908695dd9628e89333" alt="Viewing metrics associated with the 'Environment' custom property on Helicone's Properties page." data-og-width="3376" width="3376" data-og-height="1892" height="1892" data-path="images/environment-cp/4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=73490a478531298182421677f24c0155 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=e37bc957589f08da5cb243e9ad4456ff 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=dbb0bd048d78c0c191fbb42129c6493a 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ec6064884c98de67fa18af59eda8d083 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=6f2534ceebf0461b1dbdc20adbef3755 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/environment-cp/4.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=013ae787139437345709918a137c28a3 2500w" />
+    <Frame>
+      <img alt="Viewing metrics associated with the 'Environment' custom property on Helicone's Properties page." />
     </Frame>
   </Step>
 </Steps>
@@ -17178,7 +19919,7 @@ A common method of data segmentation is by `user type`. For example, you might w
 
 To do this, create a `user_type` custom property and assign either **"paid"** or **"free"**.
 
-```python  theme={null}
+```python theme={null}
 client.chat.completions.create(
     # ...
     extra_headers={
@@ -17191,14 +19932,14 @@ Then, you can filter by paid/free users, or view associated metrics in the same 
 
 <Tip>
   Data segmentation can become powerful when you combine it with other
-  properties.{" "}
+  properties.
 </Tip>
 
 ### Further Segmentation
 
 Suppose you want to understand the behavior of paying users when they use a specific feature (i.e. spellcheck). You can add a `Feature` custom property.
 
-```python  theme={null}
+```python theme={null}
 client.chat.completions.create(
     # ...
     extra_headers={
@@ -17210,7 +19951,7 @@ client.chat.completions.create(
 
 You can create highly detailed segment by adding even more custom properties. For example, you may segment users further by `plan` and `Job ID`. There are no limits on the number of custom properties you can add.
 
-```python  theme={null}
+```python theme={null}
 client.chat.completions.create(
     # ...
     extra_headers={
@@ -17264,7 +20005,7 @@ This guide shows you how to build a customer support assistant that intelligentl
 
 Install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @ai-sdk/gateway ai
 ```
 
@@ -17272,7 +20013,7 @@ npm install @ai-sdk/gateway ai
 
 Set up a client that routes through Helicone for monitoring:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createGateway } from '@ai-sdk/gateway';
 import { generateText, tool } from 'ai';
 import { z } from 'zod';
@@ -17290,7 +20031,7 @@ const gateway = createGateway({
 
 Use `gpt-4o-nano` with tool calling for precise classification:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tool } from 'ai';
 import { z } from 'zod';
 
@@ -17326,7 +20067,7 @@ async function classifyQueryComplexity(query: string): Promise<'simple' | 'compl
 
 Use different models based on query complexity to optimize costs:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function handleCustomerQuery(query: string, customerId: string) {
   const complexity = await classifyQueryComplexity(query);
   
@@ -17379,7 +20120,7 @@ async function handleCustomerQuery(query: string, customerId: string) {
 
 Cache all queries regardless of complexity for maximum cost savings:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function handleQueryWithCache(query: string, customerId: string) {
   const complexity = await classifyQueryComplexity(query);
   
@@ -17422,7 +20163,7 @@ async function handleQueryWithCache(query: string, customerId: string) {
 
 Here's the full implementation:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createGateway } from '@ai-sdk/gateway';
 import { generateText } from 'ai';
 
@@ -17516,7 +20257,7 @@ View your assistant's performance in Helicone:
 4. **User Analytics**: See which customers need the most support
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=ecbd77e794c87f4dd44ab8036847d8d7" alt="Helicone dashboard showing model usage and costs" data-og-width="2372" width="2372" data-og-height="1540" height="1540" data-path="images/introduction/intro-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=de609db02577fe23861bbfed647f8722 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=cd7e16b5b646e5932da8fe1fa782548b 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=a36d2229b6220668cfaeeb2b9e601a76 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e2628ca8ec3992df76c2da5a14e0ba6a 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=fcb2633971da0dbff129e0cb5a986945 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/introduction/intro-dashboard.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=68800d2c6ba254e9c09dd66de724d270 2500w" />
+  <img alt="Helicone dashboard showing model usage and costs" />
 </Frame>
 
 ## Optimize Based on Data
@@ -17530,7 +20271,7 @@ Use Helicone's analytics to:
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom Properties" href="/features/advanced-usage/custom-properties" icon="tag">
     Track additional metadata
   </Card>
@@ -17575,13 +20316,13 @@ An AI debate simulator where:
 
 Install the required dependencies:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @ai-sdk/openai @ai-sdk/gateway ai openai
 ```
 
 Set up your environment variables:
 
-```env  theme={null}
+```env theme={null}
 VERCEL_AI_GATEWAY_API_KEY=your_vercel_gateway_key
 HELICONE_API_KEY=your_helicone_key
 ```
@@ -17592,7 +20333,7 @@ HELICONE_API_KEY=your_helicone_key
 
 Create a basic debate generation endpoint using the Vercel AI SDK:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/vercel-ai-debate/route.ts
 import { createGateway } from '@ai-sdk/gateway';
 import { generateText } from 'ai';
@@ -17646,7 +20387,7 @@ export async function POST(request: Request) {
 
 Enable real-time debate streaming for better user experience:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/vercel-ai-stream/route.ts
 import { createGateway } from '@ai-sdk/gateway';
 import { streamText } from 'ai';
@@ -17692,7 +20433,7 @@ export async function POST(request: Request) {
 
 Use the OpenAI SDK directly with Vercel AI Gateway routing:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/openai-debate/route.ts
 import OpenAI from 'openai';
 
@@ -17746,7 +20487,7 @@ export async function POST(request: Request) {
 
 Enable streaming with the OpenAI SDK:
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/api/openai-stream/route.ts
 import OpenAI from 'openai';
 
@@ -17806,7 +20547,7 @@ export async function POST(request: Request) {
 
 Create a debate interface that supports all integration methods:
 
-```tsx  theme={null}
+```tsx theme={null}
 // app/debate/page.tsx
 'use client';
 
@@ -17944,7 +20685,7 @@ Use Helicone's property filters to analyze:
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sessions" href="/features/sessions" icon="comments">
     Track multi-turn debates
   </Card>
@@ -17969,7 +20710,7 @@ Source: https://docs.helicone.ai/guides/overview
 Guides for building, optimizing, and analyzing LLM applications with Helicone.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=4e3641e47414a6aa12cd940b0f2c3697" alt="Helicone's guides for building, optimizing, and analyzing LLM applications with Helicone." data-og-width="2096" width="2096" data-og-height="1179" height="1179" data-path="images/guide/guides-cover.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=de3449c5373a11b38ccf8ad383655ec3 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=6942835da3df2aef54578d490b7d4900 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=f3626ee41dd7f1775ed8b678b92c1ea0 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=28cdafec49e7f0b2d35dfa8901abd0bb 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d066df949f45e203822a8b8f76c7ded1 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/guides-cover.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=2f604f6abb8542f43f829fb610c7b382 2500w" />
+  <img alt="Helicone's guides for building, optimizing, and analyzing LLM applications with Helicone." />
 </Frame>
 
 ## How-to Guides
@@ -17978,64 +20719,64 @@ Practical, task-oriented guides for solving specific problems with Helicone. The
 
 ### Data Management & Analytics
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Debug your LLM app" icon="bug" href="/guides/cookbooks/debugging" vertical iconType="light">
+<CardGroup>
+  <Card title="Debug your LLM app" icon="bug" href="/guides/cookbooks/debugging">
     Identify and fix errors in your LLM application using Helicone's debugging tools.
   </Card>
 
-  <Card title="ETL / Data extraction" icon="database" href="/guides/cookbooks/etl" vertical iconType="light">
+  <Card title="ETL / Data extraction" icon="database" href="/guides/cookbooks/etl">
     Extract and export your LLM data for analysis and reporting.
   </Card>
 
-  <Card title="Segment data with Custom Properties" icon="chart-pie" href="/guides/cookbooks/segmentation" vertical iconType="light">
+  <Card title="Segment data with Custom Properties" icon="chart-pie" href="/guides/cookbooks/segmentation">
     Track costs and behaviors by environment, user type, and custom dimensions.
   </Card>
 
-  <Card title="Label request data" icon="tags" href="/guides/cookbooks/labeling-request-data" vertical iconType="light">
+  <Card title="Label request data" icon="tags" href="/guides/cookbooks/labeling-request-data">
     Add labels to requests for easier searching and filtering.
   </Card>
 
-  <Card title="Get user requests" icon="user" href="/guides/cookbooks/getting-user-requests" vertical iconType="light">
+  <Card title="Get user requests" icon="user" href="/guides/cookbooks/getting-user-requests">
     Retrieve user-specific requests for monitoring and cost tracking.
   </Card>
 
-  <Card title="Get session data" icon="comments" href="/guides/cookbooks/getting-sessions" vertical iconType="light">
+  <Card title="Get session data" icon="comments" href="/guides/cookbooks/getting-sessions">
     Access conversation threads and session history.
   </Card>
 </CardGroup>
 
 ### Advanced Features
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Replay LLM sessions" icon="rotate-right" href="/guides/cookbooks/replay-session" iconType="light" vertical>
+<CardGroup>
+  <Card title="Replay LLM sessions" icon="rotate-right" href="/guides/cookbooks/replay-session">
     Replay and analyze past LLM sessions for optimization.
   </Card>
 
-  <Card title="Run experiments" icon="flask" href="/guides/cookbooks/experiments" vertical iconType="light">
+  <Card title="Run experiments" icon="flask" href="/guides/cookbooks/experiments">
     A/B test prompts and model configurations.
   </Card>
 
-  <Card title="Fine-tune models" icon="sliders" href="/guides/cookbooks/fine-tune" vertical iconType="light">
+  <Card title="Fine-tune models" icon="sliders" href="/guides/cookbooks/fine-tune">
     Prepare datasets and track fine-tuning workflows.
   </Card>
 
-  <Card title="Predefine request IDs" icon="fingerprint" href="/guides/cookbooks/predefining-request-id" vertical iconType="light">
+  <Card title="Predefine request IDs" icon="fingerprint" href="/guides/cookbooks/predefining-request-id">
     Set custom request IDs for better tracking.
   </Card>
 </CardGroup>
 
 ### Integration & Environment
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Track environments" icon="sitemap" iconType="light" href="/guides/cookbooks/environment-tracking" vertical>
+<CardGroup>
+  <Card title="Track environments" icon="sitemap" href="/guides/cookbooks/environment-tracking">
     Separate dev, staging, and production environments.
   </Card>
 
-  <Card title="GitHub Actions integration" icon="github" href="/guides/cookbooks/github-actions" vertical iconType="light">
+  <Card title="GitHub Actions integration" icon="github" href="/guides/cookbooks/github-actions">
     Monitor LLM calls in your CI/CD pipelines.
   </Card>
 
-  <Card title="Manual logger streaming" icon="waves" href="/guides/cookbooks/manual-logger-streaming" vertical iconType="light">
+  <Card title="Manual logger streaming" icon="waves" href="/guides/cookbooks/manual-logger-streaming">
     Implement custom streaming with the logger SDK.
   </Card>
 </CardGroup>
@@ -18046,28 +20787,28 @@ Practical, task-oriented guides for solving specific problems with Helicone. The
 
 Step-by-step guides for learning by building complete applications with Helicone. Perfect for understanding how different features work together.
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Build an AI Agent System" icon="robot" href="/guides/cookbooks/ai-agents" vertical iconType="light">
+<CardGroup>
+  <Card title="Build an AI Agent System" icon="robot" href="/guides/cookbooks/ai-agents">
     Create a complete AI agent with tool calling, memory, and observability.
   </Card>
 
-  <Card title="Customer Support Assistant" icon="headset" href="/guides/cookbooks/vercel-ai-gateway" vertical iconType="light">
+  <Card title="Customer Support Assistant" icon="headset" href="/guides/cookbooks/vercel-ai-gateway">
     Build a multi-model assistant that routes queries based on complexity.
   </Card>
 
-  <Card title="AI Debate Simulator" icon="message-circle" href="/guides/cookbooks/vercel-ai-gateway-demo" vertical iconType="light">
+  <Card title="AI Debate Simulator" icon="message-circle" href="/guides/cookbooks/vercel-ai-gateway-demo">
     Create an interactive debate app showcasing different integration methods.
   </Card>
 
-  <Card title="Evaluation System with Ragas" icon="chart-line" href="/guides/cookbooks/helicone-evals-with-ragas" vertical iconType="light">
+  <Card title="Evaluation System with Ragas" icon="chart-line" href="/guides/cookbooks/helicone-evals-with-ragas">
     Implement comprehensive LLM evaluation using Helicone and Ragas.
   </Card>
 
-  <Card title="Chatbot with Structured Outputs" icon="message-bot" href="/guides/cookbooks/openai-structured-outputs" vertical iconType="light">
+  <Card title="Chatbot with Structured Outputs" icon="message-bot" href="/guides/cookbooks/openai-structured-outputs">
     Build a chatbot using OpenAI's structured outputs and function calling.
   </Card>
 
-  <Card title="Thinking Models Implementation" icon="brain" href="/guides/cookbooks/prompt-thinking-models" vertical iconType="light">
+  <Card title="Thinking Models Implementation" icon="brain" href="/guides/cookbooks/prompt-thinking-models">
     Work with reasoning models like DeepSeek R1 and OpenAI o1/o3.
   </Card>
 </CardGroup>
@@ -18082,57 +20823,57 @@ Educational resources to deepen your understanding of LLM concepts and best prac
 
 Master the art of crafting effective prompts for optimal LLM performance.
 
-<CardGroup cols={1} gap="medium">
-  <Card title="Overview" icon="house" href="/guides/prompt-engineering/overview" horizontal iconType="light">
+<CardGroup>
+  <Card title="Overview" icon="house" href="/guides/prompt-engineering/overview">
     Learn the basics of prompt engineering and how to craft effective LLM
     prompts.
   </Card>
 </CardGroup>
 
-<CardGroup cols={2} gap="medium">
-  <Card title="Prompt thinking models" icon="brain" href="/guides/cookbooks/prompt-thinking-models" horizontal iconType="light">
+<CardGroup>
+  <Card title="Prompt thinking models" icon="brain" href="/guides/cookbooks/prompt-thinking-models">
     Learn how to effectively prompt thinking models like DeepSeek R1 and OpenAI
     o1/o3.
   </Card>
 
-  <Card title="Be specific and clear" icon="bullseye-arrow" href="/guides/prompt-engineering/be-specific-and-clear" horizontal iconType="light">
+  <Card title="Be specific and clear" icon="bullseye-arrow" href="/guides/prompt-engineering/be-specific-and-clear">
     Create concise prompts for better LLM responses.
   </Card>
 
-  <Card title="Use structured formats" icon="table-list" href="/guides/prompt-engineering/use-structured-formats" horizontal iconType="light">
+  <Card title="Use structured formats" icon="table-list" href="/guides/prompt-engineering/use-structured-formats">
     Format the generated output for easier parsing and interpretation.
   </Card>
 
-  <Card title="Role-playing" icon="user-gear" href="/guides/prompt-engineering/leverage-role-playing" horizontal iconType="light">
+  <Card title="Role-playing" icon="user-gear" href="/guides/prompt-engineering/leverage-role-playing">
     Assign specific roles in system prompts to set the style, tone, and content.
   </Card>
 
-  <Card title="Few-shot learning" icon="graduation-cap" href="/guides/prompt-engineering/implement-few-shot-learning" horizontal iconType="light">
+  <Card title="Few-shot learning" icon="graduation-cap" href="/guides/prompt-engineering/implement-few-shot-learning">
     Provide examples of desired outputs to guide the LLM towards better
     responses.
   </Card>
 
-  <Card title="Use constrained outputs" icon="ruler-combined" href="/guides/prompt-engineering/use-constrained-outputs" horizontal iconType="light">
+  <Card title="Use constrained outputs" icon="ruler-combined" href="/guides/prompt-engineering/use-constrained-outputs">
     Set clear rules for the model’s responses to improve accuracy and
     consistency.
   </Card>
 
-  <Card title="Chain-of-thought prompting" icon="stairs" href="/guides/prompt-engineering/use-chain-of-thought-prompting" horizontal iconType="light">
+  <Card title="Chain-of-thought prompting" icon="stairs" href="/guides/prompt-engineering/use-chain-of-thought-prompting">
     Encourage the model to generate intermediate reasoning steps before arriving
     at a final answer.
   </Card>
 
-  <Card title="Thread-of-thought prompting" icon="arrow-progress" href="/guides/prompt-engineering/use-thread-of-thought-prompting" horizontal iconType="light">
+  <Card title="Thread-of-thought prompting" icon="arrow-progress" href="/guides/prompt-engineering/use-thread-of-thought-prompting">
     Build on previous ideas to maintain a coherent line of reasoning between
     interactions.
   </Card>
 
-  <Card title="Least-to-most prompting" icon="grid-dividers" href="/guides/prompt-engineering/use-least-to-most-prompting" horizontal iconType="light">
+  <Card title="Least-to-most prompting" icon="grid-dividers" href="/guides/prompt-engineering/use-least-to-most-prompting">
     Break down complex problems into smaller parts, gradually increasing in
     complexity.
   </Card>
 
-  <Card title="Meta-Prompting" icon="wand-magic-sparkles" href="/guides/prompt-engineering/use-meta-prompting" horizontal iconType="light">
+  <Card title="Meta-Prompting" icon="wand-magic-sparkles" href="/guides/prompt-engineering/use-meta-prompting">
     Use LLMs to create and refine prompts dynamically.
   </Card>
 </CardGroup>
@@ -18169,7 +20910,7 @@ The rule of thumb is to provide just enough instructions and context to help gui
 ## Examples
 
 <AccordionGroup>
-  <Accordion title="Example 1: Generating marketing ideas." defaultOpen>
+  <Accordion title="Example 1: Generating marketing ideas.">
     Be direct and unambiguous in your request.
 
     **Vague:**
@@ -18255,7 +20996,7 @@ Few-shot learning involves including a small number of input-output examples (us
 
     **Prompt:**
 
-    ```python  theme={null}
+    ```python theme={null}
     You are an assistant helping to draft professional email responses.
 
     Example 1:
@@ -18426,7 +21167,7 @@ Source: https://docs.helicone.ai/guides/prompt-engineering/overview
 Prompt engineering is the strategic crafting of prompts to guide Large Language Models to produce accurate and desired outputs.
 
 <Frame>
-  <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=7447119758538c66c354a02067c2ce63" alt="Helicone's guides for prompt engineering to guide Large Language Models to produce accurate and desired outputs." data-og-width="4191" width="4191" data-og-height="2358" height="2358" data-path="images/guide/prompt-engineering/overview.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=f4a7db96d2dcd03d265ecfd87efcde00 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=7c23591b72cfc881764d065d83313180 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=1e00bc3adb8bf415787835b91505b626 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=752cf1c3b6a4755b4b82254ef681b477 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=c3d14174fbbbd4ebdc2e98a3989cb0f7 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/guide/prompt-engineering/overview.webp?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=d4bbab7ea75e5d0afa1182fc96e5cf7d 2500w" />
+  <img alt="Helicone's guides for prompt engineering to guide Large Language Models to produce accurate and desired outputs." />
 </Frame>
 
 ## Before prompt engineering
@@ -18467,8 +21208,6 @@ Prompt engineering is the strategic crafting of prompts to guide Large Language 
 ## FAQ
 
 <AccordionGroup>
-  {" "}
-
   <Accordion title="How often should I update my prompts?">
     Regularly: Especially if you notice changes in the model's performance or
     after updates to the model. - After use feedback: Incorporate feedback to
@@ -18476,15 +21215,11 @@ Prompt engineering is the strategic crafting of prompts to guide Large Language 
     prompt to cover new functionalities or use cases.
   </Accordion>
 
-  {" "}
-
   <Accordion title="What's the difference between prompt engineering vs. fine-tuning?">
     Prompt engineering is modifying the input prompts to guide the model's
     responses without changing the model itself. Fine-tuning is training the model
     on additional data to adjust its internal parameters for specific tasks.
   </Accordion>
-
-  {" "}
 
   <Accordion title="What are some common mistakes with prompt engineering?">
     * **Vague instructions**: Leads to unpredictable outputs. - **Overcomplicating
@@ -18501,23 +21236,17 @@ Prompt engineering is the strategic crafting of prompts to guide Large Language 
     The optimal balance is aiming for concise prompts that include all necessary information without unnecessary verbosity.
   </Accordion>
 
-  {" "}
-
   <Accordion title="Can prompt engineering remove biases?">
     Yes. When you carefully craft prompts to avoid sensitive topics or by
     instructing the model to follow ethical guidelines, you can reduce the
     likelihood of biased or inappropriate responses.
   </Accordion>
 
-  {" "}
-
   <Accordion title="Do I need to be technical to prompt engineer?">
     * For simple prompt adjustment, no extensive technical background is needed. -
       For complex tasks or with the intention to optimize performance, some
       familiarity with AI concepts is helpful.
   </Accordion>
-
-  {" "}
 
   <Accordion title="Can you cut cost with prompt engineering?">
     Yes. A well-written prompt can minimize the number of tokens required for both
@@ -19094,7 +21823,7 @@ Comprehensive guide to all Helicone headers. Learn how to access and implement v
 
 ## Supported Headers
 
-<ResponseField name="Helicone-Auth" type="string (HELICONE_API_KEY)" required>
+<ResponseField name="Helicone-Auth" type="string (HELICONE_API_KEY)">
   This is the first header you will use, which authenticates you to send requests to the Helicone API. Here's the format: `"Helicone-Auth": "Bearer <HELICONE_API_KEY>"`. Remember to replace it with your actual Helicone API key.
 
   <Note>
@@ -19172,10 +21901,22 @@ Comprehensive guide to all Helicone headers. Learn how to access and implement v
   Whether to exclude the request from the response. Set to `true` or  `false`.
 </ResponseField>
 
+<ResponseField name="Helicone-Token-Limit-Exception-Handler" type="string (truncate | middle-out | fallback)">
+  Control how Helicone handles requests that would exceed a model's context window. Accepted values:
+
+  * `truncate` — Best-effort normalization and trimming of message content to reduce token count.
+  * `middle-out` — Preserve the beginning and end of messages while removing middle content to fit within the limit. Uses token estimation to keep high-value context.
+  * `fallback` — Switch to an alternate model when input exceeds the context limit. Provide multiple candidates in the request body's `model` field as a comma-separated list (e.g., `"gpt-4o, gpt-4o-mini"`). Helicone picks the second model as the fallback when needed. When under the limit, Helicone normalizes the `model` field to the primary model.
+
+  <Note>
+    If your request body does not include a `model` or you need to override it for estimation, set `Helicone-Model-Override`. For fallbacks, specify multiple `model` candidates in the body; only the first two are considered.
+  </Note>
+</ResponseField>
+
 <ResponseField name="Helicone-Cache-Enabled" type="boolean">
   Whether to cache your responses. Set to `true` or  `false`. You can customize the behavior of the cache feature by setting additional headers in your request.
 
-  <Accordion title="Additional headers" defaultOpen>
+  <Accordion title="Additional headers">
     | Parameter                        | Description                                                                                   |
     | -------------------------------- | --------------------------------------------------------------------------------------------- |
     | `Cache-control`                  | Specify the cache limit as a `string` in *seconds*, i.e. `max-age=3600` is 1 hour.            |
@@ -19190,7 +21931,7 @@ Comprehensive guide to all Helicone headers. Learn how to access and implement v
   Retry requests to overcome rate limits and overloaded servers. Set to `true` or `false`.
   You can customize the behavior of the retries feature by setting additional headers in your request.
 
-  <Accordion title="Additional headers" defaultOpen>
+  <Accordion title="Additional headers">
     | Parameter                    | Descriptionretru                                                 |
     | ---------------------------- | ---------------------------------------------------------------- |
     | `helicone-retry-num`         | Number of retries as a `number`.                                 |
@@ -19232,65 +21973,19 @@ Source: https://docs.helicone.ai/integrations/anthropic/claude-code
 
 Integrate Helicone to log your Claude Code interactions.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.exportBaseUrl("Anthropic")}>
-    ```bash  theme={null}
+    ```bash theme={null}
     export ANTHROPIC_BASE_URL=https://anthropic.helicone.ai/<your-helicone-api-key>
     ```
   </Step>
@@ -19298,13 +21993,13 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
   <Step title={strings.logYourRequest}>
     In your terminal, replace "what is the meaning of life?" with your own prompt.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     claude -p 'what is the meaning of life?'
     ```
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Claude Code") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -19314,55 +22009,9 @@ Source: https://docs.helicone.ai/integrations/anthropic/curl
 
 Use cURL to integrate Anthropic with Helicone to log your Anthropic LLM usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
-
-## {strings.howToIntegrate}
 
 <Steps>
   <Step title="Create an account + Generate an API Key">
@@ -19375,7 +22024,7 @@ export const strings = {
       Please ensure to replace API keys with your own.
     </Note>
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl --request POST \
       --url https://anthropic.helicone.ai/v1/messages \
       --header "Content-Type: application/json" \
@@ -19423,7 +22072,7 @@ Use Anthropic's JavaScript SDK to integrate with Helicone to log your Anthropic 
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -19468,7 +22117,7 @@ Use LangChain to integrate Anthropic with Helicone to log your Anthropic LLM usa
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     export HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -19509,7 +22158,7 @@ Use LangChain to integrate Anthropic with Helicone to log your Anthropic LLM usa
 
 Enhance your integration by using **AnthropicMultiModal** with Helicone to process images and generate text descriptions. Follow the code below to add this functionality to your application.
 
-```python  theme={null}
+```python theme={null}
 import os
 from llama_index.multi_modal_llms.anthropic import AnthropicMultiModal
 from llama_index.core.multi_modal_llms.generic_utils import load_image_urls
@@ -19558,7 +22207,7 @@ Use Anthropic's Python SDK to integrate with Helicone to log your Anthropic LLM 
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```Python  theme={null}
+    ```Python theme={null}
     export HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -19595,63 +22244,17 @@ Source: https://docs.helicone.ai/integrations/azure/curl
 
 Use cURL to integrate Azure OpenAI with Helicone to log your Azure OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.modifyBasePath}>
-    ```bash  theme={null}
+    ```bash theme={null}
     curl --request POST \
         --url "https://oai.helicone.ai/openai/deployments/$DEPLOYMENT_NAME/chat/completions?api-version=$API_VERSION" \
         --header "Helicone-Auth: Bearer $HELICONE_API_KEY" \
@@ -19673,23 +22276,11 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Azure OpenAI") }} />
+    <div />
   </Step>
 </Steps>
 
-<div dangerouslySetInnerHTML={{ __html: strings.azureOpenAIDocs }} />
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models" icon="brain" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
+<div />
 
 
 # Azure OpenAI with JavaScript
@@ -19697,63 +22288,17 @@ Source: https://docs.helicone.ai/integrations/azure/javascript
 
 Use JavaScript to integrate Azure OpenAI with Helicone to log your Azure OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<YOUR_HELICONE_API_KEY>
     AZURE_OPENAI_API_KEY=<YOUR_AZURE_OPENAI_API_KEY>
     ```
@@ -19765,7 +22310,7 @@ export const strings = {
     </Note>
 
     <CodeGroup>
-      ```javascript  theme={null}
+      ```javascript theme={null}
       const client = new OpenAI({
         baseURL: "https://oai.helicone.ai/openai/deployments/[DEPLOYMENT_NAME]",
         defaultHeaders: {
@@ -19796,7 +22341,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.startUsing("Azure OpenAI")}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const response = await client.chat.completions.create({
       model: "[MODEL_NAME]",
       messages: [{ role: "user", content: "What is the meaning of life?" }]
@@ -19807,23 +22352,11 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Azure OpenAI") }} />
+    <div />
   </Step>
 </Steps>
 
-<div dangerouslySetInnerHTML={{ __html: strings.azureOpenAIDocs }} />
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Environment Tracking" icon="viruses" href="/guides/cookbooks/environment-tracking" iconType="light" vertical>
-    {strings.environmentTrackingCookbookDescription}
-  </Card>
-
-  <Card title="Integration with GitHub Actions" icon="github" href="/guides/cookbooks/github-actions" iconType="light" vertical>
-    {strings.githubActionsCookbookDescription}
-  </Card>
-</CardGroup>
+<div />
 
 
 # Azure OpenAI with LangChain
@@ -19831,63 +22364,17 @@ Source: https://docs.helicone.ai/integrations/azure/langchain
 
 Use LangChain to integrate Azure OpenAI with Helicone to log your Azure OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<YOUR_HELICONE_API_KEY>
     AZURE_OPENAI_API_KEY=<YOUR_AZURE_OPENAI_API_KEY>
     ```
@@ -19988,23 +22475,11 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Azure OpenAI") }} />
+    <div />
   </Step>
 </Steps>
 
-<div dangerouslySetInnerHTML={{ __html: strings.azureOpenAIDocs }} />
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="How to Prompt Thinking Models" icon="brain" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-
-  <Card title="Getting User Requests" icon="user" href="/guides/cookbooks/getting-user-requests" iconType="light" vertical>
-    {strings.gettingUserRequestsCookbookDescription}
-  </Card>
-</CardGroup>
+<div />
 
 
 # Azure OpenAI with Python
@@ -20012,63 +22487,17 @@ Source: https://docs.helicone.ai/integrations/azure/python
 
 Use Python to integrate Azure OpenAI with Helicone to log your Azure OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```python  theme={null}
+    ```python theme={null}
     HELICONE_API_KEY=<YOUR_HELICONE_API_KEY>
     AZURE_OPENAI_API_KEY=<YOUR_AZURE_OPENAI_API_KEY>
     ```
@@ -20144,7 +22573,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.startUsing("Azure OpenAI")}>
-    ```python  theme={null}
+    ```python theme={null}
     response = azure_openai.chat.completions.create(
       model="[MODEL_NAME]",
       messages=[{"role": "User", "content": "What is the meaning of life?"}]
@@ -20155,23 +22584,11 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Azure OpenAI") }} />
+    <div />
   </Step>
 </Steps>
 
-<div dangerouslySetInnerHTML={{ __html: strings.azureOpenAIDocs }} />
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Environment Tracking" icon="sitemap" href="/guides/cookbooks/environment-tracking" iconType="light" vertical>
-    {strings.environmentTrackingCookbookDescription}
-  </Card>
-
-  <Card title="Getting User Requests" icon="user" href="/guides/cookbooks/getting-user-requests" iconType="light" vertical>
-    {strings.gettingUserRequestsCookbookDescription}
-  </Card>
-</CardGroup>
+<div />
 
 
 # AWS Bedrock JavaScript SDK Integration
@@ -20192,13 +22609,13 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
 
   <Step title="Run the Bedrock command with the Helicone Proxy">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import {
       BedrockRuntimeClient,
       InvokeModelCommand,
@@ -20265,7 +22682,7 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export AWS_ACCESS_KEY_ID=<your AWS access key ID>
     export AWS_SECRET_ACCESS_KEY=<your AWS secret access key>
@@ -20276,13 +22693,13 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your JavaScript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @helicone/async @aws-sdk/client-bedrock-runtime
     ```
   </Step>
 
   <Step title="Import required modules and initialize Helicone Logger">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { HeliconeAsyncLogger } from "@helicone/async";
     import * as bedrock from "@aws-sdk/client-bedrock-runtime";
     import util from "util";
@@ -20299,7 +22716,7 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   </Step>
 
   <Step title="Configure AWS Bedrock client">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const client = new bedrock.BedrockRuntimeClient({
       region: process.env.AWS_REGION,
       credentials: {
@@ -20311,7 +22728,7 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   </Step>
 
   <Step title="Create a command for the Bedrock model">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const command = new bedrock.ConverseCommand({
       messages: [
         {
@@ -20325,7 +22742,7 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
   </Step>
 
   <Step title="Send the request and handle the response">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     async function sendRequest() {
       try {
         const data = await client.send(command);
@@ -20347,7 +22764,7 @@ Learn how to integrate AWS Bedrock with Helicone using JavaScript.
 
 Here's a complete example that puts all the steps together:
 
-```javascript  theme={null}
+```javascript theme={null}
 import { HeliconeAsyncLogger } from "@helicone/async";
 import * as bedrock from "@aws-sdk/client-bedrock-runtime";
 import util from "util";
@@ -20421,13 +22838,13 @@ Learn how to integrate AWS Bedrock with Helicone using Python.
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
 
   <Step title="Run the Bedrock command with the Helicone Proxy">
-    ```python  theme={null}
+    ```python theme={null}
     import boto3
     import json
     import os
@@ -20489,7 +22906,7 @@ Learn how to integrate AWS Bedrock with Helicone using Python.
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export AWS_ACCESS_KEY_ID=<your AWS access key ID>
     export AWS_SECRET_ACCESS_KEY=<your AWS secret access key>
@@ -20500,13 +22917,13 @@ Learn how to integrate AWS Bedrock with Helicone using Python.
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your JavaScript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install helicone-async boto3
     ```
   </Step>
 
   <Step title="Import required modules and initialize Helicone Logger">
-    ```python  theme={null}
+    ```python theme={null}
     from helicone_async import HeliconeAsyncLogger
     import boto3
     import json
@@ -20518,13 +22935,13 @@ Learn how to integrate AWS Bedrock with Helicone using Python.
   </Step>
 
   <Step title="Configure AWS Bedrock client">
-    ```python  theme={null}
+    ```python theme={null}
     client = boto3.client("bedrock-runtime", region_name=os.getenv("AWS_REGION"))
     ```
   </Step>
 
   <Step title="Send the request and handle the response">
-    ```python  theme={null}
+    ```python theme={null}
 
     response = client.invoke_model(
         body=json.dumps(body),
@@ -20552,7 +22969,7 @@ Use the custom logging endpoint to log any operation to Helicone - database quer
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer <your-api-key>" \
 -H "Content-Type: application/json" \
@@ -20615,7 +23032,7 @@ When it happened:
 
 ### Database Query
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer <your-api-key>" \
 -H "Content-Type: application/json" \
@@ -20648,7 +23065,7 @@ curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 
 ### External API Call
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer <your-api-key>" \
 -H "Content-Type: application/json" \
@@ -20680,7 +23097,7 @@ curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 
 ### ML Model Inference
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer <your-api-key>" \
 -H "Content-Type: application/json" \
@@ -20735,7 +23152,7 @@ POST https://api.worker.helicone.ai/custom/v1/log
 
 ### Request Body
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   providerRequest: {
     url: "custom-model-nopath";
@@ -20768,50 +23185,6 @@ Source: https://docs.helicone.ai/integrations/data/logger-sdk
 
 Log any custom operations using Helicone's Logger SDK for complete observability across your application stack.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 The Logger SDK allows you to log any custom operation to Helicone - database queries, API calls, ML inference, file processing, or any other operation you want to track.
 
 <Steps>
@@ -20828,9 +23201,9 @@ The Logger SDK allows you to log any custom operation to Helicone - database que
   </Step>
 
   <Step title={strings.setApiKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
   </Step>
@@ -20937,7 +23310,7 @@ The Logger SDK allows you to log any custom operation to Helicone - database que
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("any data operation") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -21080,7 +23453,7 @@ What happened. Should include:
 
 For more examples, check out our [GitHub examples](https://github.com/Helicone/helicone/tree/main/examples/data).
 
-<div dangerouslySetInnerHTML={{ __html: strings.heliconeLoggerAPIReference }} />
+<div />
 
 ## Related Guides
 
@@ -21111,7 +23484,7 @@ Use cURL to integrate Gemini AI with Helicone to log your Gemini AI usage.
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export GOOGLE_GENERATIVE_API_KEY=<your Google Generative AI API key>
     ```
@@ -21120,7 +23493,7 @@ Use cURL to integrate Gemini AI with Helicone to log your Gemini AI usage.
   <Step title="Send a request using cURL">
     Use the following cURL command to send a request to the Google Generative AI API through the Helicone proxy:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl --request POST \
       --url "https://gateway.helicone.ai/v1beta/models/$MODEL_NAME:generateContent?key=$GOOGLE_GENERATIVE_API_KEY" \
       --header "Content-Type: application/json" \
@@ -21163,7 +23536,7 @@ Use Gemini's JavaScript SDK to integrate with Helicone to log your Gemini AI usa
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export GOOGLE_API_KEY=<your Google Generative AI API key>
     ```
@@ -21172,13 +23545,13 @@ Use Gemini's JavaScript SDK to integrate with Helicone to log your Gemini AI usa
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your Javascript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install node-fetch
     ```
   </Step>
 
   <Step title="Send a request using fetch">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const fetch = require('node-fetch');
 
     const url = `https://gateway.helicone.ai/v1beta/models/model-name:generateContent?key=${process.env.GOOGLE_API_KEY}`;
@@ -21219,7 +23592,7 @@ Use Gemini's JavaScript SDK to integrate with Helicone to log your Gemini AI usa
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export GOOGLE_API_KEY=<your Google Generative AI API key>
     ```
@@ -21228,13 +23601,13 @@ Use Gemini's JavaScript SDK to integrate with Helicone to log your Gemini AI usa
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your Javascript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @google/genai
     ```
   </Step>
 
   <Step title="Import and configure the client">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { GoogleGenAI } from "@google/genai";
 
     if (!process.env.GOOGLE_API_KEY) {
@@ -21260,7 +23633,7 @@ Use Gemini's JavaScript SDK to integrate with Helicone to log your Gemini AI usa
   </Step>
 
   <Step title="Generate content using the model">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     async function generateContent() {
       const response = await genAI.models.generateContent({
         model: "gemini-2.0-flash-001",
@@ -21297,7 +23670,7 @@ Use Gemini's Python SDK to integrate with Helicone to log your Gemini AI usage.
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your Helicone API key>
     export GOOGLE_API_KEY=<your Google Generative AI API key>
     ```
@@ -21306,13 +23679,13 @@ Use Gemini's Python SDK to integrate with Helicone to log your Gemini AI usage.
   <Step title="Install the Google Generative AI SDK">
     Ensure you have the necessary packages installed in your Python environment:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install -U -q "google-genai"
     ```
   </Step>
 
   <Step title="Import and configure the client">
-    ```python  theme={null}
+    ```python theme={null}
     from google import genai
     import os
 
@@ -21331,7 +23704,7 @@ Use Gemini's Python SDK to integrate with Helicone to log your Gemini AI usage.
     <Note>
       If you're using Vertex AI integration (with `GOOGLE_GENAI_USE_VERTEXAI=True`), you need to modify the target URL to point to the Vertex AI endpoint:
 
-      ```python  theme={null}
+      ```python theme={null}
       # Use this target URL when GOOGLE_GENAI_USE_VERTEXAI=True
       "helicone-target-url": f'https://{os.environ.get("GOOGLE_CLOUD_LOCATION")}-aiplatform.googleapis.com'
       ```
@@ -21341,7 +23714,7 @@ Use Gemini's Python SDK to integrate with Helicone to log your Gemini AI usage.
   </Step>
 
   <Step title="Generate content using the model">
-    ```python  theme={null}
+    ```python theme={null}
     response = client.models.generate_content(
         model='gemini-2.0-flash',
         contents='Tell me a story in 300 words.'
@@ -21361,7 +23734,7 @@ Currently, the Gemini Python SDK doesn't support setting headers at request time
 
 ### Client Factory Method for User-Specific Headers
 
-```python  theme={null}
+```python theme={null}
 from typing import Optional, List, Tuple, Any
 from google import genai
 import os
@@ -21481,7 +23854,7 @@ Use cURL to integrate Vertex AI with Helicone to log your Vertex AI usage.
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your API key>
     export GCLOUD_API_KEY=<your Google Cloud API key>
     ```
@@ -21490,7 +23863,7 @@ Use cURL to integrate Vertex AI with Helicone to log your Vertex AI usage.
   <Step title="Send a request using CURL">
     Use the following CURL command to send a request to the Vertex AI API through the Helicone proxy:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl --request POST \
       --url "https://gateway.helicone.ai/v1/projects/$PROJECT_ID/locations/$LOCATION/publishers/google/models/$MODEL_NAME:streamGenerateContent" \
       --header "Authorization: Bearer $GCLOUD_API_KEY" \
@@ -21534,7 +23907,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your API key>
     export GCLOUD_API_KEY=<your Google Cloud API key>
     ```
@@ -21543,13 +23916,13 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your Javascript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install node-fetch
     ```
   </Step>
 
   <Step title="Send a request using fetch">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const fetch = require('node-fetch');
 
     const url = 'https://gateway.helicone.ai/v1/projects/your-project-id/locations/your-location/publishers/google/models/model-name:streamGenerateContent';
@@ -21587,7 +23960,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your API key>
     export GCLOUD_API_KEY=<your Google Cloud API key>
     ```
@@ -21596,13 +23969,13 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   <Step title="Install necessary packages">
     Ensure you have the necessary packages installed in your Javascript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @google-cloud/vertexai
     ```
   </Step>
 
   <Step title="Import VertexAI and configure the client">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { VertexAI } from "@google-cloud/vertexai";
 
     const vertex_ai = new VertexAI({
@@ -21614,7 +23987,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Set up custom headers">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const customHeaders = new Headers({
       "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
       "Helicone-Target-URL": `https://${LOCATION}-aiplatform.googleapis.com`,
@@ -21623,7 +23996,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Define request options">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const requestOptions = {
       customHeaders: customHeaders,
     } as RequestOptions;
@@ -21631,7 +24004,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Get the generative model">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const generativeModel = vertex_ai.preview.getGenerativeModel(
       {
         model: "model-name"
@@ -21642,7 +24015,7 @@ Use Vertex AI's JavaScript SDK to integrate with Helicone to log your Vertex AI 
   </Step>
 
   <Step title="Generate content">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const result = await generativeModel.generateContent({
       contents: [{ role: "user", parts: [{ text: "How are you doing today?" }] }],
     });
@@ -21671,7 +24044,7 @@ Use Vertex AI's Python SDK to integrate with Helicone to log your Vertex AI usag
   </Step>
 
   <Step title="Set API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your API key>
     export PROJECT_ID=<your Google Cloud project ID>
     export LOCATION=<your location>
@@ -21681,13 +24054,13 @@ Use Vertex AI's Python SDK to integrate with Helicone to log your Vertex AI usag
   <Step title="Install required packages">
     Ensure you have the necessary packages installed in your Python environment:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install google-cloud-aiplatform
     ```
   </Step>
 
   <Step title="Import libraries">
-    ```python  theme={null}
+    ```python theme={null}
     from vertexai.generative_models import GenerativeModel
     import vertexai
     import os
@@ -21695,7 +24068,7 @@ Use Vertex AI's Python SDK to integrate with Helicone to log your Vertex AI usag
   </Step>
 
   <Step title="Initialize Vertex AI with Helicone">
-    ```python  theme={null}
+    ```python theme={null}
     HELICONE_API_KEY = os.environ.get("HELICONE_API_KEY")
     PROJECT_ID = os.environ.get("PROJECT_ID")
     LOCATION = os.environ.get("LOCATION")
@@ -21714,7 +24087,7 @@ Use Vertex AI's Python SDK to integrate with Helicone to log your Vertex AI usag
   </Step>
 
   <Step title="Initialize the model and generate content">
-    ```python  theme={null}
+    ```python theme={null}
     model = GenerativeModel("gemini-1.5-flash-001")
     response = model.generate_content("Tell me a fun fact about space.")
     print(response.text)
@@ -21728,7 +24101,7 @@ For more control over logging, especially with asynchronous and streaming respon
 
 <Steps>
   <Step title="Install additional required packages">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install python-dotenv helicone
     ```
   </Step>
@@ -21736,7 +24109,7 @@ For more control over logging, especially with asynchronous and streaming respon
   <Step title="Create a log builder example">
     This example demonstrates using the Helicone log builder with both async and streaming responses:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import asyncio
     from dotenv import load_dotenv
@@ -21835,7 +24208,7 @@ For more control over logging, especially with asynchronous and streaming respon
   <Step title="Create the HeliconeManualLogger helper">
     Create a file named `helicone_helpers.py` with the following content:
 
-    ```python  theme={null}
+    ```python theme={null}
     import json
     import os
     import aiohttp
@@ -21938,7 +24311,7 @@ Use cURL to integrate Groq with Helicone to log your Groq usage.
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -21980,7 +24353,7 @@ Use Groq's JavaScript SDK to integrate with Helicone to log your Groq usage.
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -22024,7 +24397,7 @@ Use Groq's Python SDK to integrate with Helicone to log your Groq usage.
   </Step>
 
   <Step title="Set HELICONE_API_KEY as an environment variable">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your API key>
     ```
   </Step>
@@ -22126,7 +24499,7 @@ Use cURL to integrate Llama with Helicone to log your Llama LLM usage.
   </Step>
 
   <Step title="Modify the API base and add the `Helicone-Auth` header">
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST https://llama.helicone.ai/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $LLAMA_API_KEY" \
@@ -22156,63 +24529,17 @@ Source: https://docs.helicone.ai/integrations/llama/javascript
 
 Use the OpenAI JavaScript SDK to integrate with Llama via Helicone to log your Llama usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     LLAMA_API_KEY=<your-llama-api-key>
     ```
@@ -22270,21 +24597,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Llama") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Llama Python SDK
@@ -22292,63 +24607,17 @@ Source: https://docs.helicone.ai/integrations/llama/python
 
 Use the OpenAI Python SDK to integrate with Llama via Helicone to log your Llama usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     LLAMA_API_KEY=<your-llama-api-key>
     ```
@@ -22416,21 +24685,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Llama") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Nvidia NIM cURL Integration
@@ -22438,65 +24695,19 @@ Source: https://docs.helicone.ai/integrations/nvidia/curl
 
 Use cURL to integrate Nvidia NIM with Helicone to log your Nvidia LLM usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [Nvidia NIM](https://build.nvidia.com/) API. For other Nvidia inference providers that are OpenAI-compatible, such as Dynamo, see [here](/integrations/nvidia/dynamo).
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.modifyBasePath}>
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST https://nvidia.helicone.ai/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $NVIDIA_API_KEY" \
@@ -22516,7 +24727,7 @@ This integration is used to log usage with the [Nvidia NIM](https://build.nvidia
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Nvidia NIM") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -22526,65 +24737,19 @@ Source: https://docs.helicone.ai/integrations/nvidia/dynamo
 
 Use Nvidia Dynamo with Helicone for comprehensive logging and monitoring.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 Use Nvidia Dynamo or other OpenAI-compatible Nvidia inference providers with Helicone by routing through our gateway with custom headers.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     NVIDIA_API_KEY=<your-nvidia-api-key>
     ```
@@ -22659,7 +24824,7 @@ Use Nvidia Dynamo or other OpenAI-compatible Nvidia inference providers with Hel
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Dynamo") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -22669,65 +24834,19 @@ Source: https://docs.helicone.ai/integrations/nvidia/javascript
 
 Use the OpenAI JavaScript SDK to integrate with Nvidia NIM via Helicone to log your Nvidia usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [Nvidia NIM](https://build.nvidia.com/) API. For other Nvidia inference providers that are OpenAI-compatible, such as Dynamo, see [here](/integrations/nvidia/dynamo).
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     NVIDIA_API_KEY=<your-nvidia-api-key>
     ```
@@ -22757,21 +24876,9 @@ This integration is used to log usage with the [Nvidia NIM](https://build.nvidia
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Nvidia") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Nvidia NIM Python SDK
@@ -22779,65 +24886,19 @@ Source: https://docs.helicone.ai/integrations/nvidia/python
 
 Use the OpenAI Python SDK to integrate with Nvidia NIM via Helicone to log your Nvidia usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [Nvidia NIM](https://build.nvidia.com/) API. For other Nvidia inference providers that are OpenAI-compatible, such as Dynamo, see [here](/integrations/nvidia/dynamo).
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     NVIDIA_API_KEY=<your-nvidia-api-key>
     ```
@@ -22874,21 +24935,9 @@ This integration is used to log usage with the [Nvidia NIM](https://build.nvidia
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("Nvidia") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Ollama Javascript Integration
@@ -22906,13 +24955,13 @@ Use Helicone's JavaScript SDK to log your Ollama usage.
 
 <Steps>
   <Step title="To get started, install the `@helicone/helpers` package">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @helicone/helpers
     ```
   </Step>
 
   <Step title="Setup the logger">
-    ```typescript  theme={null}
+    ```typescript theme={null}
       import { HeliconeManualLogger } from "@helicone/helpers";
 
       const logger = new HeliconeManualLogger({
@@ -22922,7 +24971,7 @@ Use Helicone's JavaScript SDK to log your Ollama usage.
   </Step>
 
   <Step title="Call your LLM and log the request">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const reqBody = {
       model: "phi3:mini",
       messages: [{
@@ -22955,7 +25004,7 @@ Use Helicone's JavaScript SDK to log your Ollama usage.
 
 The above example uses `phi3:mini` model and the `Chat Completion` interface. The same can be done with a regular `completion` request:
 
-```typescript  theme={null}
+```typescript theme={null}
 // ...
 const reqBody = {
   model: "llama3.1",
@@ -22989,63 +25038,17 @@ Source: https://docs.helicone.ai/integrations/openai/curl
 
 Use cURL to integrate OpenAI with Helicone to log your OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.modifyBasePath}>
-    ```bash  theme={null}
+    ```bash theme={null}
     curl --request POST \
         --url https://oai.helicone.ai/v1/chat/completions \
         --header "Authorization: Bearer $OPENAI_API_KEY" \
@@ -23066,21 +25069,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models" icon="brain" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI JavaScript SDK
@@ -23088,69 +25079,23 @@ Source: https://docs.helicone.ai/integrations/openai/javascript
 
 Use OpenAI's JavaScript SDK to integrate with Helicone to log your OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
-<video width="100%" controls autoplay loop>
-  <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/Helicone+Tutorial+Video.mp4" type="video/mp4" />
+<video>
+  <source type="video/mp4" />
 
   Your browser does not support the video tag.
 </video>
 
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
@@ -23189,7 +25134,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.useTheSDK("OpenAI")}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: "What is the meaning of life?" }]
@@ -23200,21 +25145,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI with LangChain
@@ -23222,63 +25155,17 @@ Source: https://docs.helicone.ai/integrations/openai/langchain
 
 Use LangChain to integrate OpenAI with Helicone to log your OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
@@ -23331,21 +25218,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="Trace, replay, and debug LLM sessions" icon="arrows-rotate" href="/guides/cookbooks/replay-llm-sessions" iconType="light" vertical>
-    {strings.replayLlmSessionsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI with LlamaIndex
@@ -23353,63 +25228,17 @@ Source: https://docs.helicone.ai/integrations/openai/llamaindex
 
 Use LlamaIndex to integrate with Helicone to log your LlamaIndex usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```python  theme={null}
+    ```python theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
@@ -23447,21 +25276,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="LLM Tracking with multiple environments" icon="viruses" href="/guides/cookbooks/environment-tracking" iconType="light" vertical>
-    {strings.environmentTrackingCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI Python SDK
@@ -23469,69 +25286,23 @@ Source: https://docs.helicone.ai/integrations/openai/python
 
 Use OpenAI's Python SDK to integrate with Helicone to log your OpenAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
-## {strings.howToIntegrate}
-
-<video width="100%" controls autoplay loop>
-  <source src="https://marketing-assets-helicone.s3.us-west-2.amazonaws.com/Helicone+OpenAI+Python+Tutorial.mp4" type="video/mp4" />
+<video>
+  <source type="video/mp4" />
 
   Your browser does not support the video tag.
 </video>
 
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
@@ -23561,7 +25332,7 @@ export const strings = {
   </Step>
 
   <Step title={strings.useTheSDK("OpenAI")}>
-    ```python  theme={null}
+    ```python theme={null}
     chat_completion = client.chat.completions.create(
       model="gpt-4o-mini",
       messages=[{"role": "user", "content": "What is the meaning of life?"}]
@@ -23572,71 +25343,15 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI Realtime API
 Source: https://docs.helicone.ai/integrations/openai/realtime
 
 Integrate OpenAI's Realtime API with Helicone to monitor and analyze your real-time conversations.
-
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
 
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
@@ -23646,15 +25361,13 @@ OpenAI's Realtime API enables low-latency, multi-modal conversational experience
 
 By integrating with Helicone, you can monitor performance, analyze interactions, and gain valuable insights into your real-time conversations.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
      // For OpenAI
      OPENAI_API_KEY=<your-openai-api-key>
      HELICONE_API_KEY=<your-helicone-api-key>
@@ -23742,7 +25455,7 @@ By integrating with Helicone, you can monitor performance, analyze interactions,
   </Step>
 
   <Step title={strings.handleWebSocketEvents}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     ws.on("message", function incoming(message) {
       try {
         const response = JSON.parse(message.toString());
@@ -23782,21 +25495,9 @@ By integrating with Helicone, you can monitor performance, analyze interactions,
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI Realtime API") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="Trace, replay, and debug LLM sessions" icon="arrows-rotate" href="/guides/cookbooks/replay-llm-sessions" iconType="light" vertical>
-    {strings.replayLlmSessionsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # OpenAI Responses API
@@ -23804,72 +25505,26 @@ Source: https://docs.helicone.ai/integrations/openai/responses
 
 Integrate OpenAI Responses API with Helicone to monitor and analyze your model's responses.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 OpenAI Responses enable you to provide text or image inputs to generate text or JSON outputs by calling your own custom code or use built-in tools like web search or file search. By integrating them with Helicone, you can monitor performance, analyze interactions, and gain valuable insights into your responses.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     OPENAI_API_KEY=<your-openai-api-key>
     ```
   </Step>
 
   <Step title={strings.modifyBasePath}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import OpenAI from "openai";
 
     const openai = new OpenAI({
@@ -24010,21 +25665,9 @@ OpenAI Responses enable you to provide text or image inputs to generate text or 
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("OpenAI Responses API") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with OpenAI structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="Use Chain-of-Thought Prompting" icon="stairs" href="/guides/prompt-engineering/use-chain-of-thought-prompting" iconType="light" vertical>
-    {strings.chainOfThoughtPromptingCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Legacy Integrations
@@ -24070,7 +25713,7 @@ Otherwise, use the [AI Gateway](/gateway/overview) for better reliability, flexi
 
 Ready to switch to the unified API? It's simple:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Before: Provider-specific proxy
 const client = new OpenAI({
   baseURL: "https://oai.helicone.ai/v1",
@@ -24097,7 +25740,7 @@ Log responses from any external tools used in your LLM applications to Helicone 
 
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer your_api_key" \
 -H "Content-Type: application/json" \
@@ -24172,7 +25815,7 @@ Replace `{API_KEY}` with your actual API Key.
 
 ### Body
 
-```typescript  theme={null}
+```typescript theme={null}
 export type HeliconeAsyncLogRequest = {
   providerRequest: ProviderRequest;
   providerResponse: ProviderResponse;
@@ -24219,50 +25862,6 @@ Source: https://docs.helicone.ai/integrations/tools/logger-sdk
 
 Log LLM responses from any external tools used in your LLM applications using Helicone's Logger SDK.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Steps>
   <Step title={strings.getStartedWithPackage}>
     <CodeGroup>
@@ -24277,9 +25876,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.setApiKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
   </Step>
@@ -24436,18 +26035,191 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("any tool") }} />
+    <div />
   </Step>
 </Steps>
 
 For more complex examples including APIs, database queries, and document search, check out our [full examples on GitHub](https://github.com/Helicone/helicone/tree/main/examples/tools/python).
 
-<div dangerouslySetInnerHTML={{ __html: strings.heliconeLoggerAPIReference }} />
+<div />
 
 ## Related Guides
 
 * [How to use Helicone Sessions](/guides/sessions)
 * [How to use Helicone Custom Properties](/guides/custom-properties)
+
+
+# Helicone MCP Server
+Source: https://docs.helicone.ai/integrations/tools/mcp
+
+Query your Helicone observability data directly from MCP-compatible AI assistants using the Helicone MCP server.
+
+The Helicone MCP (Model Context Protocol) server enables AI assistants like Claude Desktop, Cursor, and other MCP-compatible tools to query your Helicone observability data directly. This allows you to debug errors, search logs, analyze performance, and examine request/response bodies without leaving your AI assistant.
+
+## Quick Start
+
+<Steps>
+  <Step title="Generate a Helicone API Key">
+    1. Go to [Settings → API Keys](https://us.helicone.ai/settings/api-keys) (or [EU](https://eu.helicone.ai/settings/api-keys))
+    2. Click **Generate New Key**
+    3. Copy your API key
+  </Step>
+
+  <Step title="Add to Your MCP Client">
+    Add the Helicone MCP server to your client's configuration file:
+
+    <Tabs>
+      <Tab title="Claude Desktop">
+        **Config file location:**
+
+        * macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+        * Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+        ```json theme={null}
+        {
+          "mcpServers": {
+            "helicone": {
+              "command": "npx",
+              "args": ["@helicone/mcp@latest"],
+              "env": {
+                "HELICONE_API_KEY": "sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx"
+              }
+            }
+          }
+        }
+        ```
+      </Tab>
+
+      <Tab title="Claude Code">
+        **Config file location:**
+
+        * Project-level: `.mcp.json` in your project root
+        * Global: `~/.claude.json`
+
+        ```json theme={null}
+        {
+          "mcpServers": {
+            "helicone": {
+              "command": "npx",
+              "args": ["@helicone/mcp@latest"],
+              "env": {
+                "HELICONE_API_KEY": "sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx"
+              }
+            }
+          }
+        }
+        ```
+      </Tab>
+
+      <Tab title="Cursor">
+        **Config file location:**
+
+        * macOS/Linux: `~/.cursor/mcp.json`
+        * Windows: `%USERPROFILE%\.cursor\mcp.json`
+
+        ```json theme={null}
+        {
+          "mcpServers": {
+            "helicone": {
+              "command": "npx",
+              "args": ["@helicone/mcp@latest"],
+              "env": {
+                "HELICONE_API_KEY": "sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx"
+              }
+            }
+          }
+        }
+        ```
+      </Tab>
+
+      <Tab title="Codex">
+        **Config file location:** `~/.codex/config.toml`
+
+        ```toml theme={null}
+        [mcp_servers.helicone]
+        command = "npx"
+        args = ["@helicone/mcp@latest"]
+
+        [mcp_servers.helicone.env]
+        HELICONE_API_KEY = "sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx"
+        ```
+      </Tab>
+    </Tabs>
+
+    <Note>
+      Replace `sk-helicone-xxxxxxx-xxxxxxx-xxxxxxx-xxxxxxx` with your actual API key.
+    </Note>
+  </Step>
+
+  <Step title="Restart Your Client">
+    Restart your MCP client (Claude Desktop, Cursor, etc.) to load the new configuration.
+  </Step>
+</Steps>
+
+## Available Tools
+
+### `query_requests`
+
+Query requests with filters, pagination, sorting, and optional body content.
+
+**Parameters:**
+
+| Parameter       | Type    | Description                                                                            |
+| --------------- | ------- | -------------------------------------------------------------------------------------- |
+| `filter`        | object  | Filter criteria (model, provider, status, latency, cost, properties, time, user, etc.) |
+| `offset`        | number  | Pagination offset (default: 0)                                                         |
+| `limit`         | number  | Number of results to return (default: 100)                                             |
+| `sort`          | object  | Sort criteria                                                                          |
+| `includeBodies` | boolean | Include request/response bodies (default: false)                                       |
+
+**Example use cases:**
+
+* "Show me the last 10 failed requests"
+* "Find all requests to GPT-4 in the last hour"
+* "Search for requests with high latency"
+* "Show me requests from a specific user"
+
+### `query_sessions`
+
+Query sessions with search, time range filtering, and advanced filters.
+
+**Parameters:**
+
+| Parameter            | Type   | Description                                                         |
+| -------------------- | ------ | ------------------------------------------------------------------- |
+| `startTimeUnixMs`    | number | Start of time range (Unix timestamp in milliseconds) - **required** |
+| `endTimeUnixMs`      | number | End of time range (Unix timestamp in milliseconds) - **required**   |
+| `timezoneDifference` | number | Timezone offset in hours (e.g., -5 for EST) - **required**          |
+| `search`             | string | Search by name or metadata                                          |
+| `nameEquals`         | string | Exact session name match                                            |
+| `filter`             | object | Advanced filter criteria                                            |
+| `offset`             | number | Pagination offset (default: 0)                                      |
+| `limit`              | number | Number of results to return (default: 100)                          |
+
+**Example use cases:**
+
+* "Show me all sessions from today"
+* "Find sessions named 'checkout-flow'"
+* "Debug conversation flows in a specific time range"
+* "Analyze session performance metrics"
+
+## Filter Capabilities
+
+Both tools support comprehensive filtering options:
+
+* **Model/Provider**: Filter by specific models or providers
+* **Status/Error**: Find successful or failed requests
+* **Time**: Filter by time ranges
+* **Cost/Latency**: Filter by performance metrics
+* **Custom Properties**: Filter by your custom Helicone properties
+* **Complex Filters**: Combine filters with AND/OR logic
+
+## Related Resources
+
+* [@helicone/mcp on npm](https://www.npmjs.com/package/@helicone/mcp) - Package documentation and source
+* [Custom Properties](/features/advanced-usage/custom-properties) - Add metadata to your requests for better filtering
+* [Sessions](/features/sessions) - Group related requests into sessions
+* [User Metrics](/features/advanced-usage/user-metrics) - Track usage by user
 
 
 # Xcode Integration (AI Gateway)
@@ -24468,14 +26240,14 @@ This guide shows how to add Helicone as a model provider in Xcode so your chats 
 
    * Xcode → Settings…
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=aae1cd36d1e089a605787b9532a2f783" alt="Xcode Settings - Intelligence section" data-og-width="310" width="310" data-og-height="330" height="330" data-path="images/integrations/xcode/xcode-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=4d437d155a86fd68aae0b41091b05f9d 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=d2f17c80b3758505b21849a9597952e0 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=746b50aea418290f8fe37542132a4b44 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=2be0b5143ed7791b9f61b026d699188d 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=4dd47f1c785c70e22c8c6182d8c8c94e 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-settings.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=0dc2baa8a891008cec6928b34734046e 2500w" />
+   <img alt="Xcode Settings - Intelligence section" />
 
 2. Add Helicone as a model provider
 
    * Select the Intelligence tab
    * Click "Add a model provider…"
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=e679d5cc098ecc0dcb3a148fdd02d75e" alt="Add model provider dialog in Xcode" data-og-width="726" width="726" data-og-height="466" height="466" data-path="images/integrations/xcode/xcode-add-model.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=9371f7154759d643e6527825270518fc 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=ce0997be508c5bd63ec25239f74dcb74 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=15091c32c3be04afdc8e32092c7cc00b 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=aa8969ec7cac551cc9281521c3678958 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=ff63b6e4b8fff4e682108dabf8f8ba53 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-add-model.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=232bb6bf34ec230eccd20459797f425a 2500w" />
+   <img alt="Add model provider dialog in Xcode" />
 
    * Fill the form with:
      * URL: `https://ai-gateway.helicone.ai`
@@ -24483,27 +26255,27 @@ This guide shows how to add Helicone as a model provider in Xcode so your chats 
      * API Key Header: `Authorization`
      * Description: `Helicone` (you can name this however you like)
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=26b7f05c2acca39533cd87334828566e" alt="Add model provider dialog in Xcode" data-og-width="498" width="498" data-og-height="406" height="406" data-path="images/integrations/xcode/xcode-configure-helicone.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=1cf23c5dcf4fdc10ce9f6dee98836c64 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=f0451212360cda601485b590ba78b6c6 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=21ca9f2aee6ddbb30d3f3a79bd784295 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=7fd7c572cf6463cf305b8dce6bcaf097 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=35934a56b65cee26a2f9657f47598b57 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-configure-helicone.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=13c5871f100d39210320c123cc9a2fa6 2500w" />
+   <img alt="Add model provider dialog in Xcode" />
 
 3. Confirm models are available
 
    * After saving, Xcode should list available models from Helicone
    * There are many models; use Favorites to pin the ones you use most
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=d506848e7f041d0f1519b08e30028450" alt="Models list in Xcode with favorites" data-og-width="696" width="696" data-og-height="447" height="447" data-path="images/integrations/xcode/xcode-models-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=5847d509f13c29c1fb4fbcde5396c88c 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=ecb04f725fbfb82bc4ea4b5b6bd8061c 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=a2bf56d9a34dbbdf41ddff8e3b8f7148 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=d524f901185dc0729cbd8cf448652cc6 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=6f75d57bfdf1d6cd3b54d7be856cac79 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-models-list.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=d1cb8b17bde3582107c0e9aeea242174 2500w" />
+   <img alt="Models list in Xcode with favorites" />
 
 4. Start chatting and view logs in Helicone
 
    * Use the chat in Xcode with your selected model
    * Open the Helicone dashboard to see your requests, tokens, and costs
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=01ec946b832a499d0810c12bac3d71c7" alt="Chatting in Xcode and viewing requests in Helicone" data-og-width="929" width="929" data-og-height="739" height="739" data-path="images/integrations/xcode/xcode-chat.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=5c76bc31496cb7cb6f696df09290c56a 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=a88670177a3a15d4c2778c92802ca6ce 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=453a959283187dc43ba8ad36aeef99cb 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=1371b3fca8a8bd5b794af40ecba37bfe 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=12cf2fe91400bd27aa3f9f79cd9b7bc0 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=4060920ff20b34cb5bd5c9a08971071c 2500w" />
+   <img alt="Chatting in Xcode and viewing requests in Helicone" />
 
 5. Switch chat model
 
    * In the chat widget, press the dropdown to select a new model.
 
-   <img src="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=83453e27763e0b5a17f7424a201007d2" alt="Chatting in Xcode and viewing requests in Helicone" data-og-width="453" width="453" data-og-height="446" height="446" data-path="images/integrations/xcode/xcode-chat-model-select.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=280&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=9640298d21fd75d9990e6e86e696b4f1 280w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=560&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=6d7f129beac478b153c60d44baa411ca 560w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=840&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=09ebfdb4e79a61de94010c6b3b4efae3 840w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=1100&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=03775fec60d5fcabdc39424cfd09b8d3 1100w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=1650&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=2edea38c60d806dfe84dfe0b388d228a 1650w, https://mintcdn.com/helicone/f5fOPlFeMMiXGcWR/images/integrations/xcode/xcode-chat-model-select.png?w=2500&fit=max&auto=format&n=f5fOPlFeMMiXGcWR&q=85&s=fdb197dd45d6924f3faf7cfc7cebdec8 2500w" />
+   <img alt="Chatting in Xcode and viewing requests in Helicone" />
 
 ## Notes
 
@@ -24516,53 +26288,9 @@ Source: https://docs.helicone.ai/integrations/vectordb/curl
 
 Log any Vector DB interactions to Helicone using cURL.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 ## Example
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.worker.helicone.ai/custom/v1/log \
 -H "Authorization: Bearer <YOUR_HELICONE_API_KEY>" \
 -H "Content-Type: application/json" \
@@ -24622,11 +26350,11 @@ POST https://api.worker.helicone.ai/custom/v1/log
 | ------------- | -------------------------------- |
 | Authorization | Bearer `<YOUR_HELICONE_API_KEY>` |
 
-<div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+<div />
 
 ### Body
 
-```typescript  theme={null}
+```typescript theme={null}
 export type HeliconeAsyncLogRequest = {
   providerRequest: ProviderRequest;
   providerResponse: ProviderResponse;
@@ -24676,50 +26404,6 @@ Source: https://docs.helicone.ai/integrations/vectordb/logger-sdk
 
 Log any Vector DB interactions using Helicone's Logger SDK.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Steps>
   <Step title={strings.getStartedWithPackage}>
     <CodeGroup>
@@ -24734,9 +26418,9 @@ export const strings = {
   </Step>
 
   <Step title={strings.setApiKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export HELICONE_API_KEY=<your-helicone-api-key>
     ```
   </Step>
@@ -24828,11 +26512,11 @@ export const strings = {
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("any Vector DB") }} />
+    <div />
   </Step>
 </Steps>
 
-<div dangerouslySetInnerHTML={{ __html: strings.heliconeLoggerAPIReference }} />
+<div />
 
 
 # xAI cURL Integration
@@ -24840,65 +26524,19 @@ Source: https://docs.helicone.ai/integrations/xai/curl
 
 Use cURL to integrate xAI with Helicone to log your xAI LLM usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [xAI](https://x.ai) API.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.modifyBasePath}>
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST https://x.helicone.ai/v1/chat/completions \
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $XAI_API_KEY" \
@@ -24918,7 +26556,7 @@ This integration is used to log usage with the [xAI](https://x.ai) API.
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("xAI") }} />
+    <div />
   </Step>
 </Steps>
 
@@ -24928,65 +26566,19 @@ Source: https://docs.helicone.ai/integrations/xai/javascript
 
 Use the OpenAI JavaScript SDK to integrate with xAI via Helicone to log your xAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [xAI](https://x.ai) API.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```javascript  theme={null}
+    ```javascript theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     XAI_API_KEY=<your-xai-api-key>
     ```
@@ -25016,21 +26608,9 @@ This integration is used to log usage with the [xAI](https://x.ai) API.
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("xAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # xAI with OpenAI Python SDK
@@ -25038,65 +26618,19 @@ Source: https://docs.helicone.ai/integrations/xai/python
 
 Use the OpenAI Python SDK to integrate with xAI via Helicone to log your xAI usage.
 
-export const strings = {
-  additionalHeadersForSessions: "Helicone provides additional headers to help you manage and analyze your sessions.",
-  azureOpenAIDocs: `To learn more about the differences between OpenAI and AzureOpenAI, review the <a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/overview">documentation here</a>.`,
-  chainOfThoughtPromptingCookbookDescription: "Craft effective prompts, ideal for complex responses requiring multi-step problem solving.",
-  chatbotCookbookDescription: "This step-by-step guide covers function calling, response formatting and monitoring with Helicone.",
-  createHeliconeManualLogger: "Create a new HeliconeManualLogger instance",
-  configureWebSocketConnection: "Configure WebSocket connection",
-  environmentTrackingCookbookDescription: "Effortlessly track and manage your environments with Helicone across different deployment contexts.",
-  exportBaseUrl: tool => `Export your ${tool} base URL`,
-  getStartedWithPackage: "To get started, install the @helicone/helpers package",
-  generateKey: "Create an account and generate an API key",
-  generateKeyInstructions: `Log into <a href="https://www.helicone.ai" target="_blank">Helicone</a> or create an account. Once you have an account, you can generate an <a href="https://helicone.ai/developer" target="_blank">API key here</a>.`,
-  generateSessionId: "Generate the unique session ID that will be used to track the session.",
-  gettingUserRequestsCookbookDescription: "Retrieve user-specific requests to monitor, debug, and track costs for individual users.",
-  githubActionsCookbookDescription: "Automate the monitoring and caching of your LLM calls in your CI pipelines for better deployment processes.",
-  groupingCallsWithSessions: "Grouping Calls with Helicone Sessions",
-  handleWebSocketEvents: "Handle WebSocket events",
-  heliconeLoggerAPIReference: `To learn more about the <code>HeliconeManualLogger</code> API, see the <a href="/getting-started/integration-method/custom" target="_blank">API Reference here</a>.`,
-  howToIntegrate: "How to Integrate",
-  howToPromptThinkingModelsCookbookDescription: "Best practices to to effectively prompt thinking models like Deepseek and OpenAI o1-o3 for optimal results.",
-  howToUseSessions: "To group related API calls and analyze them collectively, you can use Helicone's session tracking features. This is useful for grouping all interactions within a single conversation or user session.",
-  includeHeadersInRequests: "Include headers in your requests",
-  includeSessionHeaders: "Include the session headers when you make API requests. This way, the session information is attached to each request, allowing Helicone to group and analyze them together.",
-  installRequiredDependencies: "Install required dependencies",
-  installSDK: tool => `Install ${tool}`,
-  logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
-  optional: "Optional",
-  relatedGuides: "Related Guides",
-  replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
-  sessionManagement: "Session Management",
-  setApiKey: "Set up your Helicone API key in your .env file",
-  setUpToolBaseUrl: tool => `Set up your ${tool} base URL`,
-  setUpToolApiKey: tool => `Set up your ${tool} API key as an environment variable`,
-  startUsing: tool => `Start using ${tool} with Helicone`,
-  useTheSDK: tool => `Use the ${tool} SDK`,
-  verifyInHelicone: "Verify your requests in Helicone",
-  verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
-  viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
-};
-
 <Warning>
   This integration method is maintained but no longer actively developed. For the best experience and latest features, use our new [AI Gateway](/gateway/overview) with unified API access to 100+ models.
 </Warning>
 
 This integration is used to log usage with the [xAI](https://x.ai) API.
 
-## {strings.howToIntegrate}
-
 <Steps>
   <Step title={strings.generateKey}>
-    <div dangerouslySetInnerHTML={{ __html: strings.generateKeyInstructions }} />
+    <div />
   </Step>
 
   <Step title={strings.setApiKey}>
-    ```bash  theme={null}
+    ```bash theme={null}
     HELICONE_API_KEY=<your-helicone-api-key>
     XAI_API_KEY=<your-xai-api-key>
     ```
@@ -25133,21 +26667,9 @@ This integration is used to log usage with the [xAI](https://x.ai) API.
   </Step>
 
   <Step title={strings.verifyInHelicone}>
-    <div dangerouslySetInnerHTML={{ __html: strings.verifyInHeliconeDesciption("xAI") }} />
+    <div />
   </Step>
 </Steps>
-
-## {strings.relatedGuides}
-
-<CardGroup cols={2}>
-  <Card title="Building a chatbot with structured outputs" icon="lightbulb" href="/guides/cookbooks/openai-structured-outputs" iconType="light" vertical>
-    {strings.chatbotCookbookDescription}
-  </Card>
-
-  <Card title="How to Prompt Thinking Models Effectively" icon="arrows-rotate" href="/guides/cookbooks/prompt-thinking-models" iconType="light" vertical>
-    {strings.howToPromptThinkingModelsCookbookDescription}
-  </Card>
-</CardGroup>
 
 
 # Dify
@@ -25178,8 +26700,8 @@ Dify is an open-source LLM app development platform. Its intuitive interface com
   <Step title="Configure API Base in Dify to use Helicone">
     Choose whichever provider you are using that is [supported by Helicone](/getting-started/integration-method/gateway#approved-domains). Here is an example using OpenAI.
 
-    <Frame caption="Set your API base to the Helicone API URL with your API key in the path.">
-      <img src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=3ea08f4b5844ad4f38c379d4a5c08b39" alt="dify example" data-og-width="1368" width="1368" data-og-height="886" height="886" data-path="images/integrations/dify.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=004648b5dd43c0a1847ac54e4e6e7994 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=06ddb9e02493afba01c214c3e440c843 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=fd8d3ca1856f4efa70cf48983a56c3cd 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=4d4d5485f4ce3609bc13199d86729503 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=e2147b8a8acc61889e40bd25d0eccae3 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/integrations/dify.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=87ac7550f2f83bc6e4e0d27603203a8a 2500w" />
+    <Frame>
+      <img alt="dify example" />
     </Frame>
 
     It's that simple!
@@ -25205,7 +26727,7 @@ Use LangGraph to integrate Helicone with your LLM workflows.
   </Step>
 
   <Step title="Set required API keys as environment variables">
-    ```bash  theme={null}
+    ```bash theme={null}
     # Required for all integrations
     export HELICONE_API_KEY=<your Helicone API key>
 
@@ -25260,7 +26782,7 @@ Use LangGraph to integrate Helicone with your LLM workflows.
   <Step title="Add custom properties to your requests">
     You can add custom properties to your LangGraph agent invocations when calling `invoke()`:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // Run the agent with custom Helicone properties
     const result = await agent.invoke(
       { messages: [new HumanMessage("what is the current weather in sf")] },
@@ -25285,7 +26807,7 @@ Use LangGraph to integrate Helicone with your LLM workflows.
 
 ### OpenAI Example
 
-```typescript  theme={null}
+```typescript theme={null}
 // Import necessary dependencies
 import { ChatOpenAI } from "@langchain/openai";
 import { MemorySaver } from "@langchain/langgraph";
@@ -25337,7 +26859,7 @@ const result = await agent.invoke(
 
 ### Anthropic Example
 
-```typescript  theme={null}
+```typescript theme={null}
 // Import necessary dependencies
 import { ChatAnthropic } from "@langchain/anthropic";
 import { MemorySaver } from "@langchain/langgraph";
@@ -25406,7 +26928,7 @@ Integrating Helicone with Ragas allows you to monitor and analyze the performanc
 
 ## Integration Steps
 
-<iframe width="100%" height="420" src="https://www.youtube.com/embed/SUOI5M5K934?autoplay=1&mute=1" />
+<iframe />
 
 <Steps>
   <Step title="Create an account + Generate an API Key">
@@ -25421,7 +26943,7 @@ Integrating Helicone with Ragas allows you to monitor and analyze the performanc
   <Step title="Install required packages">
     Install the necessary Python packages for the integration:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install ragas openai
     ```
   </Step>
@@ -25429,7 +26951,7 @@ Integrating Helicone with Ragas allows you to monitor and analyze the performanc
   <Step title="Set up the environment">
     Configure your environment with the Helicone API key and OpenAI API key:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
 
     HELICONE_API_KEY = "your_helicone_api_key_here"
@@ -25443,7 +26965,7 @@ Integrating Helicone with Ragas allows you to monitor and analyze the performanc
   <Step title="Prepare your dataset">
     Create a dataset for evaluation using the Hugging Face `datasets` library:
 
-    ```python  theme={null}
+    ```python theme={null}
     from datasets import Dataset
 
     data_samples = {
@@ -25463,7 +26985,7 @@ Integrating Helicone with Ragas allows you to monitor and analyze the performanc
   <Step title="Evaluate with Ragas">
     Use Ragas to evaluate your RAG system:
 
-    ```python  theme={null}
+    ```python theme={null}
     from ragas import evaluate
     from ragas.metrics import faithfulness, answer_relevancy, context_precision
 
@@ -25523,7 +27045,7 @@ Our proxy is designed with minimal business logic to maximize performance and re
 
 * **Post-Response Logging**: After returning the entire response to you, we send logs to Kafka to be consumed by a completely separate service. This ensures that logging does not impact the response time of your requests.
 
-<Icon icon="check" size={32} /> **Your requests are handled efficiently and reliably
+<Icon icon="check" /> **Your requests are handled efficiently and reliably
 with Helicone.**
 
 ## Deployment Practices
@@ -25544,7 +27066,7 @@ To maintain the stability and reliability of our proxy, we follow rigorous deplo
 
 The following sequence diagram illustrates how we log only after the response is returned:
 
-```mermaid  theme={null}
+```mermaid theme={null}
 sequenceDiagram
     participant Client
     participant Helicone Proxy
@@ -25570,7 +27092,7 @@ In this approach, your application communicates directly with the LLM provider. 
 
 Here's a sequence diagram illustrating the asynchronous logging process:
 
-```mermaid  theme={null}
+```mermaid theme={null}
 sequenceDiagram
     participant Client
     participant Your Application
@@ -25592,7 +27114,7 @@ We provide SDKs and guides to help you set up asynchronous logging easily:
 
 * **Custom Model Integration**: Integrate any custom LLM, including open-source models like Llama and GPT-Neo, with Helicone. [Learn more](https://docs.helicone.ai/getting-started/integration-method/custom).
 
-<Icon icon="check" size={32} /> **With asynchronous logging, Helicone stays out of
+<Icon icon="check" /> **With asynchronous logging, Helicone stays out of
 your critical path.**
 
 # FAQ
@@ -25662,7 +27184,7 @@ For these non-streaming requests, OpenAI provides a `usage` tag in the response,
 
 Here is an example of how the `usage` tag might look in a response:
 
-```json  theme={null}
+```json theme={null}
 "usage": {
 	"prompt_tokens": 11,
 	"completion_tokens": 9,
@@ -25741,19 +27263,10 @@ To demonstrate the negligible latency introduced by Helicone's proxy, we conduct
 The metrics show that Helicone's latency **closely matches that of direct requests to OpenAI**. The slight differences at the right tail indicate a minimal overhead introduced by Helicone, which is negligible in most practical applications. This demonstrates that using Helicone's proxy does not significantly impact the performance of your LLM requests.
 
 <Frame>
-    <img
-      src="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=3b111dbcf889d3a84e263f94d0736280"
-      alt="Comparison of latency between OpenAI and Helicone proxies for LLM
-  requests"
-      data-og-width="562"
-      width="562"
-      data-og-height="432"
-      height="432"
-      data-path="images/getting-started/openai-helicone.png"
-      data-optimize="true"
-      data-opv="3"
-      srcset="https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=280&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=5df3c97c5ff1fcb815db5f9e4330742b 280w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=560&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=4a21d2c6a3cb02905a888a0a7dcef939 560w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=840&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=63df84591ec53b2dd7839f132dd2a70a 840w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=1100&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=9201483c62337953e5dff1775db1ff90 1100w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=1650&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=044877488a358ba0854762e6e6e9f868 1650w, https://mintcdn.com/helicone/NVRJN0bOLLl-z8a0/images/getting-started/openai-helicone.png?w=2500&fit=max&auto=format&n=NVRJN0bOLLl-z8a0&q=85&s=2719cc5d6132f8df500cbc59612c258f 2500w"
-    />
+  <img
+    alt="Comparison of latency between OpenAI and Helicone proxies for LLM
+requests"
+  />
 </Frame>
 
 # FAQ
@@ -25868,7 +27381,7 @@ We will use `DeepInfra` as our example.
 
 Create a new file in `packages/cost/models/providers/[provider-name].ts`:
 
-```tsx  theme={null}
+```tsx theme={null}
 import { BaseProvider } from "./base";
 
 export class DeepInfraProvider extends BaseProvider {
@@ -25892,7 +27405,7 @@ This handles auth because the `BaseProvider` class handles the standard `Bearer 
 
 For non-OpenAI compatible providers, you'll need to override additional methods. You can find options by reviewing the `BaseProvider` definition.
 
-```tsx  theme={null}
+```tsx theme={null}
 export class CustomProvider extends BaseProvider {
   // ... basic configuration
 
@@ -25913,7 +27426,7 @@ export class CustomProvider extends BaseProvider {
 
 Update `packages/cost/models/providers/index.ts`:
 
-```tsx  theme={null}
+```tsx theme={null}
 import { DeepInfraProvider } from "./deepinfra";
 
 export const providers = [
@@ -25926,7 +27439,7 @@ export const providers = [
 
 Update `web/data/providers.ts` to include the new provider:
 
-```tsx  theme={null}
+```tsx theme={null}
 ...,
   {
     id: "deepinfra",
@@ -25945,7 +27458,7 @@ Update `web/data/providers.ts` to include the new provider:
 
 Include provider in `packages/cost/models/provider-helpers.ts` within the `heliconeProviderToModelProviderName` function, so the mapping is done by the AI Gateway correctly.
 
-```tsx  theme={null}
+```tsx theme={null}
 case "DEEPINFRA":
     return "deepinfra";
 case "NOVITA":
@@ -25954,7 +27467,7 @@ case "NOVITA":
 
 Also, go to the `getUsageProcessor` function within `packages/cost/usage.ts`  and add the provider. If your provider require a custom usage processor (non-OpenAI compatible), you will need to add it here.
 
-```tsx  theme={null}
+```tsx theme={null}
 export function getUsageProcessor(
   provider: ModelProviderName
 ): IUsageProcessor | null {
@@ -25976,7 +27489,7 @@ We need to add the provider to the list of priorities so the gateway knows how m
 
 Go to `packages/cost/models/providers/priorities.ts` and include your provider within the `PROVIDER_PRIORITIES` constant variable.
 
-```tsx  theme={null}
+```tsx theme={null}
 export const PROVIDER_PRIORITIES: Record<ModelProviderName, number> = {
   // Priority 1: BYOK (Bring Your Own Key) - Reserved for user's own API keys
   // Priority 2: Helicone-hosted inference
@@ -25993,7 +27506,7 @@ export const PROVIDER_PRIORITIES: Record<ModelProviderName, number> = {
 
 Head to `worker/test/setup.ts` and include your new provider within the `supabase-js` mock.
 
-```tsx  theme={null}
+```tsx theme={null}
 vi.mock("@supabase/supabase-js", () => ({
   createClient: vi.fn(() => ({
 	  // ....
@@ -26033,7 +27546,7 @@ Include the model within the `models` object. This can contain all model version
 
 Make sure to research each value and include the tokenizer in the `Tokenizer` interface type if it is not there already.
 
-```tsx  theme={null}
+```tsx theme={null}
 import type { ModelConfig } from "../../../types";
 
 export const models = {
@@ -26062,7 +27575,7 @@ Make sure to review the provider's page itself since the inference cost changes 
 
 Make sure the initial key `"mistral-nemo:deepinfra"` is human-readable and friendly. It's what users will call!
 
-```tsx  theme={null}
+```tsx theme={null}
 import { ModelProviderName } from "../../../providers";
 import type { ModelProviderConfig } from "../../../types";
 import { MistralNemoModelName } from "./models";
@@ -26113,7 +27626,7 @@ Two important things to note here:
 
 * Some providers have multiple deployment regions:
 
-```tsx  theme={null}
+```tsx theme={null}
 endpointConfigs: {
   "global": {
     pricing: [/* global pricing */],
@@ -26129,7 +27642,7 @@ endpointConfigs: {
 
 * Pricing Configuration
 
-```tsx  theme={null}
+```tsx theme={null}
 pricing: [
   {
     threshold: 0,              // Context length threshold
@@ -26157,7 +27670,7 @@ Update `packages/cost/models/authors/[author]/index.ts` to include the new model
 
 You don't need to update anything if the model family has already been created.
 
-```jsx  theme={null}
+```jsx theme={null}
 /**
  * Mistral model registry aggregation
  * Combines all models and endpoints from subdirectories
@@ -26189,7 +27702,7 @@ Update `packages/cost/models/authors/[author]/metadata.ts` to fetch models.
 
 You don't need to update anything if the author has already been created.
 
-```jsx  theme={null}
+```jsx theme={null}
 /**
  * Mistral metadata
  */
@@ -26208,7 +27721,7 @@ export const mistralMetadata = {
 
 Update types for the new model family in `packages/cost/models/registry-types.ts`.
 
-```tsx  theme={null}
+```tsx theme={null}
 import { mistralEndpointConfig } from "./authors/mistralai";
 import { mistralModels } from "./authors/mistralai";
 
@@ -26225,7 +27738,7 @@ const modelProviderConfigs = {
 
 Add your new model to the `packages/cost/models/registry.ts`:
 
-```tsx  theme={null}
+```tsx theme={null}
 import { mistralModels, mistralEndpointConfig } from "./authors/mistral";
 
 const allModels = {
@@ -26249,7 +27762,7 @@ Feel free to use the existing tests there as reference.
 
 Make sure to rerun snapshots before deploying.
 
-```bash  theme={null}
+```bash theme={null}
 cd <your-path-to-the-repo>/helicone/helicone/packages && npx jest -u
 ```
 
@@ -26259,7 +27772,7 @@ cd <your-path-to-the-repo>/helicone/helicone/packages && npx jest -u
 
 **Solution**: Override the `auth()` method with custom logic:
 
-```tsx  theme={null}
+```tsx theme={null}
 auth(authContext: AuthContext): ComplexAuth {
   return {
     "Authorization": `Bearer ${authContext.providerKeys?.custom}`,
@@ -26273,7 +27786,7 @@ auth(authContext: AuthContext): ComplexAuth {
 
 **Solution**: Override the `buildBody()` method:
 
-```tsx  theme={null}
+```tsx theme={null}
 buildBody(request: OpenAIRequest): CustomRequest {
   return {
     // Transform OpenAI format to provider format
@@ -26288,7 +27801,7 @@ buildBody(request: OpenAIRequest): CustomRequest {
 
 **Solution**: Use threshold-based pricing:
 
-```tsx  theme={null}
+```tsx theme={null}
 pricing: [
   { threshold: 0, inputCostPerToken: 0.0000005 },
   { threshold: 100000, inputCostPerToken: 0.000001 },
@@ -26341,8 +27854,8 @@ The primary reason Helicone users choose to integrate with Helicone using Proxy 
 
 It's as easy as changing the base URL to point to Helicone, and we'll forward the request to the LLM and return the response to you.
 
-<Frame caption="Proxy: flow of data. ">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=90db47b04ce80d9bf27166fa6d68ecb3" alt="Helicone Proxy data flow illustrating simple integration by changing the base URL for instant request forwarding and response handling." data-og-width="1440" width="1440" data-og-height="796" height="796" data-path="images/example-proxy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=47eb3a50c2b98f6ae808fb364de56a31 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=2ed6fd395a62f3107f87816348256cd3 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ab6159ff57c495b51cb1bc7385a90a1d 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=687896e60b0355a3d2a8a30a28270614 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=10ee2a9e6042b57592e4685e8a2734ec 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-proxy.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=2a4eae7d22f68dfebd95edf2cf55f235 2500w" />
+<Frame>
+  <img alt="Helicone Proxy data flow illustrating simple integration by changing the base URL for instant request forwarding and response handling." />
 </Frame>
 
 Since the proxy sits on the edge and is the gatekeeper of the requests, you get access to a suite of Gateway tools such as caching, rate limiting, API key management, threat detection, moderations and more.
@@ -26397,8 +27910,8 @@ Helicone Async allows for a more flexible workflow where the actual logging of t
 
 [Get started with OpenLLMetry](/getting-started/integration-method/openllmetry).
 
-<Frame caption="Async: flow of data. ">
-  <img src="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=ce6f840f6525ddc355937a56e9363042" alt="Helicone Async workflow illustrating non-blocking event logging for improved application stability." data-og-width="1440" width="1440" data-og-height="796" height="796" data-path="images/example-async.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=280&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=e9f2717b546ccd021f5999e1228dfecc 280w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=560&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=2b83b34d37d6466d32f8cec8c3215954 560w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=840&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=d508d435a079b9b7360de611356febc7 840w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=1100&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=dc433dfc6b4da999912796637049095e 1100w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=1650&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=e9052907de2e63d6630e038a8f497196 1650w, https://mintcdn.com/helicone/G4P7vGvFxEkwlqHM/images/example-async.png?w=2500&fit=max&auto=format&n=G4P7vGvFxEkwlqHM&q=85&s=f8864dba7d10a8b00446e08685880b87 2500w" />
+<Frame>
+  <img alt="Helicone Async workflow illustrating non-blocking event logging for improved application stability." />
 </Frame>
 
 <Warning>
@@ -26450,13 +27963,13 @@ https://ai-gateway.helicone.ai/v1/models
 
 ## Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl https://ai-gateway.helicone.ai/v1/models
 ```
 
 ## Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "object": "list",
   "data": [
@@ -26509,13 +28022,13 @@ A model is considered multimodal if it meets either of these criteria:
 
 ## Example Request
 
-```bash  theme={null}
+```bash theme={null}
 curl https://ai-gateway.helicone.ai/v1/models/multimodal
 ```
 
 ## Example Response
 
-```json  theme={null}
+```json theme={null}
 {
   "object": "list",
   "data": [
@@ -26744,7 +28257,7 @@ Permanently deletes a prompt and all associated versions.
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt to delete
 </ParamField>
 
@@ -26785,11 +28298,11 @@ Permanently deletes a specific version of a prompt while keeping the prompt and 
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
-<ParamField path="versionId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt version to delete
 </ParamField>
 
@@ -26910,7 +28423,7 @@ Retrieves detailed information about a specific prompt including its metadata.
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt to retrieve
 </ParamField>
 
@@ -26972,17 +28485,17 @@ Returns the input variables that were used when a specific prompt version was ex
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
-<ParamField path="versionId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt version
 </ParamField>
 
 ### Query Parameters
 
-<ParamField query="requestId" type="string" required>
+<ParamField type="string">
   The request ID to retrieve inputs from
 </ParamField>
 
@@ -27090,13 +28603,13 @@ Updates the tags associated with a prompt. This replaces all existing tags with 
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
 ### Request Body
 
-<ParamField body="tags" type="string[]" required>
+<ParamField type="string[]">
   Array of tag strings to set for the prompt
 </ParamField>
 
@@ -27153,15 +28666,15 @@ Creates a new prompt with the specified name, tags, and initial prompt body. Ret
 
 ### Request Body
 
-<ParamField body="name" type="string" required>
+<ParamField type="string">
   Name of the prompt
 </ParamField>
 
-<ParamField body="tags" type="string[]" required>
+<ParamField type="string[]">
   Array of tags to associate with the prompt
 </ParamField>
 
-<ParamField body="promptBody" type="OpenAIChatRequest" required>
+<ParamField type="OpenAIChatRequest">
   The initial prompt body following OpenAI chat completion format
 </ParamField>
 
@@ -27243,13 +28756,13 @@ Updates the name of an existing prompt.
 
 ### Path Parameters
 
-<ParamField path="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt to rename
 </ParamField>
 
 ### Request Body
 
-<ParamField body="name" type="string" required>
+<ParamField type="string">
   The new name for the prompt
 </ParamField>
 
@@ -27298,19 +28811,19 @@ Retrieves a paginated list of prompts based on search criteria and tag filters.
 
 ### Request Body
 
-<ParamField body="search" type="string" required>
+<ParamField type="string">
   Search term to filter prompts by name
 </ParamField>
 
-<ParamField body="tagsFilter" type="string[]" required>
+<ParamField type="string[]">
   Array of tags to filter prompts (shows prompts with any of these tags)
 </ParamField>
 
-<ParamField body="page" type="number" required>
+<ParamField type="number">
   Page number for pagination (0-based)
 </ParamField>
 
-<ParamField body="pageSize" type="number" required>
+<ParamField type="number">
   Number of prompts to return per page
 </ParamField>
 
@@ -27396,11 +28909,11 @@ Retrieves the prompt version assigned to a specific environment (e.g., productio
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
-<ParamField body="environment" type="string" required>
+<ParamField type="string">
   The environment to query (e.g., "production", "staging", "development")
 </ParamField>
 
@@ -27438,7 +28951,7 @@ Retrieves the prompt version assigned to a specific environment (e.g., productio
   ISO timestamp when the version was created
 </ResponseField>
 
-<ResponseField name="s3_url" type="string" optional>
+<ResponseField name="s3_url" type="string">
   S3 URL where the prompt body is stored
 </ResponseField>
 
@@ -27497,7 +29010,7 @@ Retrieves the currently designated production version of a specific prompt.
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
@@ -27531,7 +29044,7 @@ Retrieves the currently designated production version of a specific prompt.
   ISO timestamp when the version was created
 </ResponseField>
 
-<ResponseField name="s3_url" type="string" optional>
+<ResponseField name="s3_url" type="string">
   S3 URL where the prompt body is stored (if applicable)
 </ResponseField>
 
@@ -27587,7 +29100,7 @@ Retrieves statistics about the total number of versions and major versions for a
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
@@ -27647,7 +29160,7 @@ Retrieves detailed information about a specific prompt version, including the fu
 
 ### Request Body
 
-<ParamField body="promptVersionId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt version to retrieve
 </ParamField>
 
@@ -27677,7 +29190,7 @@ Retrieves detailed information about a specific prompt version, including the fu
   The commit message for this version
 </ResponseField>
 
-<ResponseField name="environment" type="string" optional>
+<ResponseField name="environment" type="string">
   The environment this version is assigned to (e.g., "production", "staging")
 </ResponseField>
 
@@ -27685,7 +29198,7 @@ Retrieves detailed information about a specific prompt version, including the fu
   ISO timestamp when the version was created
 </ResponseField>
 
-<ResponseField name="s3_url" type="string" optional>
+<ResponseField name="s3_url" type="string">
   S3 URL where the prompt body is stored
 </ResponseField>
 
@@ -27742,11 +29255,11 @@ Retrieves all versions of a specific prompt, optionally filtered by major versio
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
-<ParamField body="majorVersion" type="number" optional>
+<ParamField type="number">
   Filter versions by specific major version number
 </ParamField>
 
@@ -27782,7 +29295,7 @@ Returns an array of prompt version objects.
   ISO timestamp when the version was created
 </ResponseField>
 
-<ResponseField name="s3_url" type="string" optional>
+<ResponseField name="s3_url" type="string">
   S3 URL where the prompt body is stored (if applicable)
 </ResponseField>
 
@@ -27850,27 +29363,27 @@ Creates a new version of an existing prompt with updated content. Can create eit
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt to update
 </ParamField>
 
-<ParamField body="promptVersionId" type="string" required>
+<ParamField type="string">
   The unique identifier of the current prompt version to base the update on
 </ParamField>
 
-<ParamField body="newMajorVersion" type="boolean" required>
+<ParamField type="boolean">
   Whether to create a new major version (true) or minor version (false)
 </ParamField>
 
-<ParamField body="environment" type="string">
+<ParamField type="string">
   Optional environment to set for this new version (e.g., "production", "staging", "development")
 </ParamField>
 
-<ParamField body="commitMessage" type="string" required>
+<ParamField type="string">
   A description of the changes made in this version
 </ParamField>
 
-<ParamField body="promptBody" type="OpenAIChatRequest" required>
+<ParamField type="OpenAIChatRequest">
   The updated prompt body following OpenAI chat completion format
 </ParamField>
 
@@ -27953,15 +29466,15 @@ Updates the environment for a specific prompt version. Environments can be "prod
 
 ### Request Body
 
-<ParamField body="promptId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt
 </ParamField>
 
-<ParamField body="promptVersionId" type="string" required>
+<ParamField type="string">
   The unique identifier of the prompt version to update
 </ParamField>
 
-<ParamField body="environment" type="string" required>
+<ParamField type="string">
   The environment to set for this version (e.g., "production", "staging", "development")
 </ParamField>
 
@@ -28098,7 +29611,7 @@ A filter is either a FilterLeaf or a FilterBranch, and can be composed of multip
 
 Here is how it is represented in typescript:
 
-```ts  theme={null}
+```ts theme={null}
 export interface FilterBranch {
   left: FilterNode;
   operator: "or" | "and"; // Can add more later
@@ -28110,7 +29623,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 This allows us to build complex filters like this:
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "operator": "and",
@@ -28144,7 +29657,7 @@ Retrieve all requests visible in the request table at Helicone.
   `api.helicone.ai`.
 </Warning>
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="NPM Package (Recommended)" href="https://www.npmjs.com/package/@helicone/export" icon="npm">
     Use our CLI tool: `npx @helicone/export` - No installation required!
   </Card>
@@ -28162,7 +29675,7 @@ Retrieve all requests visible in the request table at Helicone.
 
 The easiest way to export data is using our CLI tool:
 
-```bash  theme={null}
+```bash theme={null}
 # Export with npx (no installation required)
 HELICONE_API_KEY="your-api-key" npx @helicone/export --start-date 2024-01-01 --limit 10000 --include-body
 
@@ -28203,7 +29716,7 @@ that would be visible in the request table at
 <Warning>
   **Common Mistake:** When filtering by **custom properties**, you MUST wrap them in a `request_response_rmt` object. Forgetting this wrapper will return empty results `{"data":[],"error":null}` even when data exists.
 
-  ```json  theme={null}
+  ```json theme={null}
   // ❌ WRONG - Missing request_response_rmt wrapper
   {
     "filter": {
@@ -28236,7 +29749,7 @@ A filter is either a **FilterLeaf** or a **FilterBranch**, and can be composed o
 
 #### TypeScript Types
 
-```ts  theme={null}
+```ts theme={null}
 export interface FilterBranch {
   left: FilterNode;
   operator: "or" | "and";
@@ -28256,7 +29769,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 #### Simple Filter (Single Condition)
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "request_response_rmt": {
@@ -28272,7 +29785,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 **Each condition is a separate leaf, connected with `and`/`or` operators:**
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "left": {
@@ -28296,7 +29809,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 #### Match All Requests (No Filter)
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": "all"
 }
@@ -28310,7 +29823,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 **Single date filter:**
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "request_response_rmt": {
@@ -28328,7 +29841,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
   **Important:** Each date condition must be a separate leaf! Don't put both `gte` and `lte` in the same object.
 </Warning>
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "left": {
@@ -28366,7 +29879,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 **Single property:**
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "request_response_rmt": {
@@ -28382,7 +29895,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 **Combining property filter with other filters:**
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "left": {
@@ -28410,7 +29923,7 @@ export type FilterNode = FilterLeaf | FilterBranch | "all";
 
 This example shows how to combine a date range with a property filter:
 
-```json  theme={null}
+```json theme={null}
 {
   "filter": {
     "left": {
@@ -28475,7 +29988,7 @@ If you're getting empty results when you know data exists, check these common is
 **1. Missing `request_response_rmt` wrapper for properties**
 
 <Accordion title="❌ WRONG - Properties without wrapper">
-  ```bash  theme={null}
+  ```bash theme={null}
   curl --request POST \
     --url https://api.helicone.ai/v1/request/query-clickhouse \
     --header "Content-Type: application/json" \
@@ -28495,7 +30008,7 @@ If you're getting empty results when you know data exists, check these common is
 </Accordion>
 
 <Accordion title="✅ CORRECT - Properties with request_response_rmt wrapper">
-  ```bash  theme={null}
+  ```bash theme={null}
   curl --request POST \
     --url https://api.helicone.ai/v1/request/query-clickhouse \
     --header "Content-Type: application/json" \

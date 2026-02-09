@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/batch-inference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Batch API
 
 > Process large-scale async workloads
@@ -47,7 +51,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl create dataset batch-input-dataset ./batch_input_data.jsonl
+        firectl dataset create batch-input-dataset ./batch_input_data.jsonl
         ```
       </Tab>
 
@@ -91,7 +95,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl create batch-inference-job \
+        firectl batch-inference-job create \
           --model accounts/fireworks/models/llama-v3p1-8b-instruct \
           --input-dataset-id batch-input-dataset
         ```
@@ -99,7 +103,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
         With additional parameters:
 
         ```bash  theme={null}
-        firectl create batch-inference-job \
+        firectl batch-inference-job create \
           --job-id my-batch-job \
           --model accounts/fireworks/models/llama-v3p1-8b-instruct \
           --input-dataset-id batch-input-dataset \
@@ -141,10 +145,10 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
       <Tab title="firectl">
         ```bash  theme={null}
         # Get job status
-        firectl get batch-inference-job my-batch-job
+        firectl batch-inference-job get my-batch-job
 
         # List all batch jobs
-        firectl list batch-inference-jobs
+        firectl batch-inference-job list
         ```
       </Tab>
 
@@ -172,7 +176,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
 
       <Tab title="firectl">
         ```bash  theme={null}
-        firectl download dataset batch-output-dataset
+        firectl dataset download batch-output-dataset
         ```
       </Tab>
 
@@ -236,7 +240,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
     **Resume processing:**
 
     ```bash  theme={null}
-    firectl create batch-inference-job \
+    firectl batch-inference-job create \
       --continue-from original-job-id \
       --model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --output-dataset-id new-output-dataset
@@ -247,7 +251,7 @@ Process large volumes of requests asynchronously at 50% lower cost. Batch API is
     **Download complete lineage:**
 
     ```bash  theme={null}
-    firectl download dataset output-dataset-id --download-lineage
+    firectl dataset download output-dataset-id --download-lineage
     ```
 
     Downloads all datasets in the continuation chain.

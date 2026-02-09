@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/exa-research.md
+# Source: https://exa.ai/docs/reference/exa-research.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exa Research
 
@@ -424,8 +428,3 @@ Build a timeline of major OpenAI product releases from 2015 – 2023.
     such requests.
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

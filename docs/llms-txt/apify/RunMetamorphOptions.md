@@ -2,6 +2,8 @@
 
 # RunMetamorphOptions<!-- -->
 
+Options for metamorphing a Run into another Actor.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -11,7 +13,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#build)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L281)optionalbuild
+### [**](#build)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L500)optionalbuild
 
 **build?
 
@@ -19,7 +21,7 @@
 
 : string
 
-### [**](#contentType)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L280)optionalcontentType
+### [**](#contentType)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L499)optionalcontentType
 
 **contentType?
 

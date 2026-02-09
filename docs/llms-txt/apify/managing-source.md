@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/managing-source.md
 
-# II - Managing source
+# Managing source
 
 **View in-depth answers for all three of the quiz questions that were provided in the corresponding lesson about managing source code.**
 

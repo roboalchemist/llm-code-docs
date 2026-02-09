@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/advanced-filters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Advanced Filters
 
 > Learn how to use Flatfile's Advanced Filters to efficiently filter and search through your data

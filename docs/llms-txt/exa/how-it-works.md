@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/how-it-works.md
+# Source: https://exa.ai/docs/websets/api/how-it-works.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # How It Works
 
@@ -153,8 +157,3 @@ Set your update frequency with:
   }
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

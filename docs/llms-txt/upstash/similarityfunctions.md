@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/features/similarityfunctions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vector Similarity Functions
 
 When creating a vector index in Upstash Vector, you have the flexibility to choose from different vector similarity functions.
